@@ -15,7 +15,7 @@ import com.tencent.widget.VerticalGallery.OnSelectViewDataUpdateListener;
 public class IphonePickerView
   extends LinearLayout
 {
-  public static int a;
+  public static int a = -7829368;
   private static int b = -12303292;
   private Button jdField_a_of_type_AndroidWidgetButton;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
@@ -26,11 +26,6 @@ public class IphonePickerView
   private IphonePickerView.InnerAdapter[] jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter;
   private WheelView[] jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
   private int c = 0;
-  
-  static
-  {
-    jdField_a_of_type_Int = -7829368;
-  }
   
   public IphonePickerView(Context paramContext)
   {
@@ -48,23 +43,23 @@ public class IphonePickerView
     {
       if (paramInt == 0)
       {
-        ((WheelTextView)paramView).setTextSize(20.0F);
-        ((WheelTextView)paramView).setTextColor(jdField_a_of_type_Int);
+        paramView = (WheelTextView)paramView;
+        paramView.setTextSize(20.0F);
+        paramView.setTextColor(jdField_a_of_type_Int);
+        return;
       }
+      paramView = (WheelTextView)paramView;
+      paramView.setTextSize(20.0F);
+      paramView.setTextColor(b);
     }
-    else {
-      return;
-    }
-    ((WheelTextView)paramView).setTextSize(20.0F);
-    ((WheelTextView)paramView).setTextColor(b);
   }
   
   private void a(View paramView, boolean paramBoolean)
   {
     if ((paramView instanceof WheelTextView))
     {
-      StringBuilder localStringBuilder = new StringBuilder(((WheelTextView)paramView).getText());
-      ((WheelTextView)paramView).setContentDescription(localStringBuilder);
+      paramView = (WheelTextView)paramView;
+      paramView.setContentDescription(new StringBuilder(paramView.getText()));
     }
   }
   
@@ -82,75 +77,102 @@ public class IphonePickerView
   
   public int a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView.length)) {
-      throw new IllegalArgumentException("Error column index " + paramInt);
+    if (paramInt >= 0)
+    {
+      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
+      if (paramInt < localObject.length) {
+        return localObject[paramInt].getSelectedItemPosition();
+      }
     }
-    return this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[paramInt].getSelectedItemPosition();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Error column index ");
+    ((StringBuilder)localObject).append(paramInt);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   public void a()
   {
-    findViewById(2131379543).setVisibility(8);
+    findViewById(2131378890).setVisibility(8);
   }
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter.length)) {
-      throw new IllegalArgumentException("Error column index " + paramInt);
+    if (paramInt >= 0)
+    {
+      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter;
+      if (paramInt < localObject.length)
+      {
+        localObject[paramInt].notifyDataSetChanged();
+        return;
+      }
     }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter[paramInt].notifyDataSetChanged();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Error column index ");
+    ((StringBuilder)localObject).append(paramInt);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   public void a(IphonePickerView.PickerViewAdapter paramPickerViewAdapter)
   {
     Object localObject1 = getContext().getResources();
-    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131167123);
-    b = ((Resources)localObject1).getColor(2131167079);
-    setBackgroundColor(((Resources)localObject1).getColor(2131167084));
-    Object localObject2 = findViewById(2131379366);
+    jdField_a_of_type_Int = ((Resources)localObject1).getColor(2131167148);
+    b = ((Resources)localObject1).getColor(2131167102);
+    setBackgroundColor(((Resources)localObject1).getColor(2131167107));
+    Object localObject2 = findViewById(2131378716);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167136));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167161));
     }
-    localObject2 = findViewById(2131379367);
+    localObject2 = findViewById(2131378717);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167136));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167161));
     }
-    localObject2 = findViewById(2131370411);
+    localObject2 = findViewById(2131370070);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167135));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167160));
     }
-    localObject2 = findViewById(2131370391);
+    localObject2 = findViewById(2131370053);
     if (localObject2 != null) {
-      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167135));
+      ((View)localObject2).setBackgroundColor(((Resources)localObject1).getColor(2131167160));
     }
     this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter = paramPickerViewAdapter;
     this.c = this.jdField_a_of_type_ComTencentMobileqqConditionsearchWidgetIphonePickerView$PickerViewAdapter.getColumnCount();
-    if ((this.c <= 0) || (this.c > 3)) {
-      throw new RuntimeException("Unsupportted column count " + this.c);
-    }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[this.c];
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter = new IphonePickerView.InnerAdapter[this.c];
-    paramPickerViewAdapter = (WheelView)findViewById(2131365588);
-    localObject1 = (WheelView)findViewById(2131368575);
-    localObject2 = (WheelView)findViewById(2131371782);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131379364));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379392));
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new IphonePickerView.1(this));
-    }
-    a(paramPickerViewAdapter, 0);
-    if (this.c < 2) {
-      ((WheelView)localObject1).setVisibility(8);
-    }
-    while (this.c < 3)
+    int i = this.c;
+    if ((i > 0) && (i <= 3))
     {
-      ((WheelView)localObject2).setVisibility(8);
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView = new WheelView[i];
+      this.jdField_a_of_type_ArrayOfComTencentMobileqqConditionsearchWidgetIphonePickerView$InnerAdapter = new IphonePickerView.InnerAdapter[i];
+      paramPickerViewAdapter = (WheelView)findViewById(2131365431);
+      localObject1 = (WheelView)findViewById(2131368318);
+      localObject2 = (WheelView)findViewById(2131371408);
+      this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131378714));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378743));
+      Button localButton = this.jdField_a_of_type_AndroidWidgetButton;
+      if (localButton != null) {
+        localButton.setOnClickListener(new IphonePickerView.1(this));
+      }
+      a(paramPickerViewAdapter, 0);
+      if (this.c < 2)
+      {
+        ((WheelView)localObject1).setVisibility(8);
+      }
+      else
+      {
+        ((WheelView)localObject1).setVisibility(0);
+        a((WheelView)localObject1, 1);
+      }
+      if (this.c < 3)
+      {
+        ((WheelView)localObject2).setVisibility(8);
+        return;
+      }
+      ((WheelView)localObject2).setVisibility(0);
+      a((WheelView)localObject2, 2);
       return;
-      ((WheelView)localObject1).setVisibility(0);
-      a((WheelView)localObject1, 1);
     }
-    ((WheelView)localObject2).setVisibility(0);
-    a((WheelView)localObject2, 2);
+    paramPickerViewAdapter = new StringBuilder();
+    paramPickerViewAdapter.append("Unsupportted column count ");
+    paramPickerViewAdapter.append(this.c);
+    throw new RuntimeException(paramPickerViewAdapter.toString());
   }
   
   public void setPickListener(IphonePickerView.IphonePickListener paramIphonePickListener)
@@ -160,10 +182,19 @@ public class IphonePickerView
   
   public void setSelection(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 >= this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView.length)) {
-      throw new IllegalArgumentException("Error column index " + paramInt1);
+    if (paramInt1 >= 0)
+    {
+      localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView;
+      if (paramInt1 < localObject.length)
+      {
+        localObject[paramInt1].setSelection(paramInt2, true);
+        return;
+      }
     }
-    this.jdField_a_of_type_ArrayOfComTencentMobileqqRemindWidgetWheelView[paramInt1].setSelection(paramInt2, true);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Error column index ");
+    ((StringBuilder)localObject).append(paramInt1);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   public void setTips(int paramInt)
@@ -173,7 +204,7 @@ public class IphonePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.conditionsearch.widget.IphonePickerView
  * JD-Core Version:    0.7.0.1
  */

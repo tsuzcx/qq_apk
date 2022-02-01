@@ -20,8 +20,9 @@ public class DownloadCallbackNativeImpl
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      this.jdField_a_of_type_JavaUtilMap.clear();
+    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    if (localMap != null) {
+      localMap.clear();
     }
   }
   
@@ -32,8 +33,12 @@ public class DownloadCallbackNativeImpl
   
   public void a(DownloadNativeApi.IDownloadObserver paramIDownloadObserver)
   {
-    if ((paramIDownloadObserver != null) && (this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.contains(paramIDownloadObserver))) {
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramIDownloadObserver);
+    if (paramIDownloadObserver != null)
+    {
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      if ((localArrayList != null) && (!localArrayList.contains(paramIDownloadObserver))) {
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramIDownloadObserver);
+      }
     }
   }
   
@@ -42,18 +47,23 @@ public class DownloadCallbackNativeImpl
     if (this.jdField_a_of_type_JavaUtilMap == null) {
       this.jdField_a_of_type_JavaUtilMap = new HashMap();
     }
-    if ((paramDownloadTaskInfo == null) || (TextUtils.isEmpty(paramDownloadTaskInfo.jdField_a_of_type_JavaLangString))) {}
-    while (this.jdField_a_of_type_JavaUtilMap.containsKey(paramDownloadTaskInfo.jdField_a_of_type_JavaLangString)) {
-      return;
+    if (paramDownloadTaskInfo != null)
+    {
+      if (TextUtils.isEmpty(paramDownloadTaskInfo.jdField_a_of_type_JavaLangString)) {
+        return;
+      }
+      if (!this.jdField_a_of_type_JavaUtilMap.containsKey(paramDownloadTaskInfo.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_JavaUtilMap.put(paramDownloadTaskInfo.jdField_a_of_type_JavaLangString, paramDownloadTaskInfo);
+      }
     }
-    this.jdField_a_of_type_JavaUtilMap.put(paramDownloadTaskInfo.jdField_a_of_type_JavaLangString, paramDownloadTaskInfo);
   }
   
   public void a(DownloadInfo paramDownloadInfo, int paramInt) {}
   
   public void a(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.containsKey(paramString))) {
+    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    if ((localMap != null) && (localMap.containsKey(paramString))) {
       ((DownloadTaskInfo)this.jdField_a_of_type_JavaUtilMap.get(paramString)).c = true;
     }
   }
@@ -61,33 +71,29 @@ public class DownloadCallbackNativeImpl
   public void a(List<DownloadInfo> paramList)
   {
     if (paramList == null) {
-      label4:
       return;
-    } else {
-      paramList = paramList.iterator();
     }
-    for (;;)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (!paramList.hasNext()) {
-        break label4;
-      }
       Object localObject = (DownloadInfo)paramList.next();
-      if (localObject == null) {
-        break;
-      }
-      DownloadStateInfo localDownloadStateInfo = new DownloadStateInfo();
-      localDownloadStateInfo.a((DownloadInfo)localObject);
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((DownloadNativeApi.IDownloadObserver)((Iterator)localObject).next()).d(localDownloadStateInfo);
+      if (localObject != null)
+      {
+        DownloadStateInfo localDownloadStateInfo = new DownloadStateInfo();
+        localDownloadStateInfo.a((DownloadInfo)localObject);
+        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((DownloadNativeApi.IDownloadObserver)((Iterator)localObject).next()).d(localDownloadStateInfo);
+        }
       }
     }
   }
   
   public void b(DownloadNativeApi.IDownloadObserver paramIDownloadObserver)
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramIDownloadObserver);
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localArrayList != null) {
+      localArrayList.remove(paramIDownloadObserver);
     }
   }
   
@@ -174,25 +180,20 @@ public class DownloadCallbackNativeImpl
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
     if (paramList == null) {
-      label4:
       return;
-    } else {
-      paramList = paramList.iterator();
     }
-    for (;;)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (!paramList.hasNext()) {
-        break label4;
-      }
       Object localObject = (DownloadInfo)paramList.next();
-      if (localObject == null) {
-        break;
-      }
-      DownloadStateInfo localDownloadStateInfo = new DownloadStateInfo();
-      localDownloadStateInfo.a((DownloadInfo)localObject);
-      localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (((Iterator)localObject).hasNext()) {
-        ((DownloadNativeApi.IDownloadObserver)((Iterator)localObject).next()).c(localDownloadStateInfo);
+      if (localObject != null)
+      {
+        DownloadStateInfo localDownloadStateInfo = new DownloadStateInfo();
+        localDownloadStateInfo.a((DownloadInfo)localObject);
+        localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+        while (((Iterator)localObject).hasNext()) {
+          ((DownloadNativeApi.IDownloadObserver)((Iterator)localObject).next()).c(localDownloadStateInfo);
+        }
       }
     }
   }
@@ -242,7 +243,7 @@ public class DownloadCallbackNativeImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.local.DownloadCallbackNativeImpl
  * JD-Core Version:    0.7.0.1
  */

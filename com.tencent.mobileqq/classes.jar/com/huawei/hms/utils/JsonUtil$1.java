@@ -10,13 +10,13 @@ final class JsonUtil$1
   
   public Object run()
   {
-    this.a.setAccessible(this.b);
+    this.val$field.setAccessible(this.val$flag);
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.utils.JsonUtil.1
  * JD-Core Version:    0.7.0.1
  */

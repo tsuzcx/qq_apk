@@ -61,29 +61,32 @@ public class HardwareConverter
   private boolean addMuxerTrack()
   {
     int i;
-    if ((!this.mCopyAudio) || (HardwareConverter.ConverterContext.access$100(this.context) != null))
-    {
+    if ((this.mCopyAudio) && (HardwareConverter.ConverterContext.access$100(this.context) == null)) {
+      i = 0;
+    } else {
       i = 1;
-      if ((this.mCopyVideo) && (HardwareConverter.ConverterContext.access$400(this.context) == null)) {
-        break label181;
-      }
     }
-    label181:
-    for (int j = 1;; j = 0)
+    int j;
+    if ((this.mCopyVideo) && (HardwareConverter.ConverterContext.access$400(this.context) == null)) {
+      j = 0;
+    } else {
+      j = 1;
+    }
+    if ((i != 0) && (j != 0))
     {
-      if ((i == 0) || (j == 0)) {
-        break label186;
-      }
+      HardwareConverter.ConverterContext localConverterContext;
       if (this.mCopyAudio)
       {
-        HardwareConverter.ConverterContext.access$502(this.context, this.mMuxer.addTrack(HardwareConverter.ConverterContext.access$100(this.context)));
+        localConverterContext = this.context;
+        HardwareConverter.ConverterContext.access$502(localConverterContext, this.mMuxer.addTrack(HardwareConverter.ConverterContext.access$100(localConverterContext)));
         if (ConvertLog.isColorLevel()) {
           ConvertLog.d("HardwareConverter", 2, new Object[] { "muxer: adding audio track." });
         }
       }
       if (this.mCopyVideo)
       {
-        HardwareConverter.ConverterContext.access$602(this.context, this.mMuxer.addTrack(HardwareConverter.ConverterContext.access$400(this.context)));
+        localConverterContext = this.context;
+        HardwareConverter.ConverterContext.access$602(localConverterContext, this.mMuxer.addTrack(HardwareConverter.ConverterContext.access$400(localConverterContext)));
         if (ConvertLog.isColorLevel()) {
           ConvertLog.d("HardwareConverter", 2, new Object[] { "muxer: adding video track." });
         }
@@ -93,81 +96,74 @@ public class HardwareConverter
       }
       this.mMuxer.start();
       return true;
-      i = 0;
-      break;
     }
-    label186:
     return false;
   }
   
   private boolean decodeVideoToEncode(boolean paramBoolean)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
     MediaCodecWrapper.BufferData localBufferData = this.mVideoDecoder.dequeueOutputBuffer();
-    if (localBufferData == null) {}
-    MediaCodec.BufferInfo localBufferInfo;
-    int j;
-    do
+    if (localBufferData == null) {
+      return paramBoolean;
+    }
+    MediaCodec.BufferInfo localBufferInfo = localBufferData.info;
+    int j = localBufferData.index;
+    boolean bool2 = false;
+    if (j != -1) {
+      HardwareConverter.ConverterContext.access$702(this.context, 0);
+    }
+    if (j == -1)
     {
-      do
-      {
+      HardwareConverter.ConverterContext.access$708(this.context);
+      if (HardwareConverter.ConverterContext.access$700(this.context) <= 20) {
         return paramBoolean;
-        localBufferInfo = localBufferData.info;
-        j = localBufferData.index;
-        if (j != -1) {
-          HardwareConverter.ConverterContext.access$702(this.context, 0);
-        }
-        if (j != -1) {
-          break;
-        }
-        HardwareConverter.ConverterContext.access$708(this.context);
-      } while (HardwareConverter.ConverterContext.access$700(this.context) <= 20);
+      }
       throw new Exception("TooManyDecodeTimeOut");
-    } while ((j == -3) || (j == -2));
+    }
+    if (j == -3) {
+      return paramBoolean;
+    }
+    if (j == -2) {
+      return paramBoolean;
+    }
     if ((localBufferInfo.flags & 0x2) != 0)
     {
       this.mVideoDecoder.releaseOutputBuffer(localBufferData.index);
       return paramBoolean;
     }
     int i;
-    if ((this.mAccurateSeek) && (localBufferInfo.presentationTimeUs < this.mBeginTimeUs))
-    {
+    if ((this.mAccurateSeek) && (localBufferInfo.presentationTimeUs < this.mBeginTimeUs)) {
       i = 1;
-      boolean bool1 = bool3;
-      if (localBufferInfo.size != 0)
-      {
-        bool1 = bool3;
-        if (i == 0) {
-          bool1 = true;
-        }
-      }
-      this.mVideoDecoder.getInnerMediaCodec().releaseOutputBuffer(j, bool1);
-      if (bool1)
-      {
-        this.mOutputSurface.awaitNewImage();
-        this.mOutputSurface.drawImage();
-        this.mInputSurface.setPresentationTime(localBufferInfo.presentationTimeUs * 1000L);
-        this.mInputSurface.swapBuffers();
-        if (HardwareConverter.ConverterContext.access$800(this.context) < 0L) {
-          HardwareConverter.ConverterContext.access$802(this.context, localBufferInfo.presentationTimeUs);
-        }
-        float f = (float)(localBufferInfo.presentationTimeUs - HardwareConverter.ConverterContext.access$800(this.context)) / (float)this.mDurationUs;
-        this.processor.onProgress((int)(f * 10000.0F));
-      }
-      if ((localBufferInfo.flags & 0x4) == 0) {
-        break label317;
-      }
-      this.mVideoEncoder.getInnerMediaCodec().signalEndOfInputStream();
-      paramBoolean = bool2;
-    }
-    label317:
-    for (;;)
-    {
-      return paramBoolean;
+    } else {
       i = 0;
-      break;
     }
+    boolean bool1 = bool2;
+    if (localBufferInfo.size != 0)
+    {
+      bool1 = bool2;
+      if (i == 0) {
+        bool1 = true;
+      }
+    }
+    this.mVideoDecoder.getInnerMediaCodec().releaseOutputBuffer(j, bool1);
+    if (bool1)
+    {
+      this.mOutputSurface.awaitNewImage();
+      this.mOutputSurface.drawImage();
+      this.mInputSurface.setPresentationTime(localBufferInfo.presentationTimeUs * 1000L);
+      this.mInputSurface.swapBuffers();
+      if (HardwareConverter.ConverterContext.access$800(this.context) < 0L) {
+        HardwareConverter.ConverterContext.access$802(this.context, localBufferInfo.presentationTimeUs);
+      }
+      float f = (float)(localBufferInfo.presentationTimeUs - HardwareConverter.ConverterContext.access$800(this.context)) / (float)this.mDurationUs;
+      this.processor.onProgress((int)(f * 10000.0F));
+    }
+    if ((localBufferInfo.flags & 0x4) != 0)
+    {
+      this.mVideoEncoder.getInnerMediaCodec().signalEndOfInputStream();
+      paramBoolean = true;
+    }
+    return paramBoolean;
   }
   
   private void doExtractDecodeEditEncodeMux()
@@ -176,57 +172,68 @@ public class HardwareConverter
     boolean bool5 = false;
     boolean bool3 = false;
     boolean bool4 = false;
-    boolean bool1 = false;
     boolean bool2 = false;
-    if (((this.mCopyVideo) && (!bool4)) || ((this.mCopyAudio) && (!bool3)))
+    boolean bool1 = false;
+    while (((this.mCopyVideo) && (!bool5)) || ((this.mCopyAudio) && (!bool3)))
     {
       this.isInterrupted = Thread.interrupted();
-      if (this.isInterrupted) {
+      boolean bool6 = this.isInterrupted;
+      int j = 1;
+      if (bool6)
+      {
         ConvertLog.e("HardwareConverter", 1, new Object[] { "doExtractDecodeEditEncodeMux Interrupted" });
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    boolean bool6 = bool3;
-    if (this.mCopyAudio)
-    {
       bool6 = bool3;
-      if (!bool3) {
-        if (HardwareConverter.ConverterContext.access$100(this.context) != null)
-        {
-          bool6 = bool3;
-          if (!bool5) {}
-        }
-        else
-        {
-          if (HardwareConverter.ConverterContext.access$100(this.context) == null) {
-            break label318;
+      if (this.mCopyAudio)
+      {
+        bool6 = bool3;
+        if (!bool3) {
+          if (HardwareConverter.ConverterContext.access$100(this.context) != null)
+          {
+            bool6 = bool3;
+            if (!bool4) {}
           }
-          bool6 = processAudio(localByteBuffer);
+          else if (HardwareConverter.ConverterContext.access$100(this.context) != null)
+          {
+            bool6 = processAudio(localByteBuffer);
+          }
+          else
+          {
+            HardwareConverter.ConverterContext localConverterContext = this.context;
+            MediaExtractor localMediaExtractor = this.mAudioExtractor;
+            HardwareConverter.ConverterContext.access$102(localConverterContext, localMediaExtractor.getTrackFormat(localMediaExtractor.getSampleTrackIndex()));
+            bool6 = bool3;
+          }
         }
       }
-    }
-    label131:
-    if ((HardwareConverter.ConverterContext.access$200(this.context) - HardwareConverter.ConverterContext.access$300(this.context) <= 0L) || (bool6) || (!this.mCopyAudio)) {}
-    for (int i = 1;; i = 0)
-    {
-      boolean bool9 = bool4;
-      boolean bool7 = bool1;
-      boolean bool8 = bool2;
+      int i = j;
+      if (HardwareConverter.ConverterContext.access$200(this.context) - HardwareConverter.ConverterContext.access$300(this.context) > 0L)
+      {
+        i = j;
+        if (!bool6) {
+          if (!this.mCopyAudio) {
+            i = j;
+          } else {
+            i = 0;
+          }
+        }
+      }
+      boolean bool9 = bool5;
+      boolean bool7 = bool2;
+      boolean bool8 = bool1;
       if (this.mCopyVideo)
       {
-        bool9 = bool4;
-        bool7 = bool1;
-        bool8 = bool2;
+        bool9 = bool5;
+        bool7 = bool2;
+        bool8 = bool1;
         if (i != 0) {
           if (HardwareConverter.ConverterContext.access$400(this.context) != null)
           {
-            bool9 = bool4;
-            bool7 = bool1;
-            bool8 = bool2;
-            if (!bool5) {}
+            bool9 = bool5;
+            bool7 = bool2;
+            bool8 = bool1;
+            if (!bool4) {}
           }
           else
           {
@@ -238,149 +245,132 @@ public class HardwareConverter
             if (!bool1) {
               bool2 = decodeVideoToEncode(bool1);
             }
-            bool9 = bool4;
-            bool7 = bool2;
-            bool8 = bool3;
-            if (!bool4)
+            bool9 = bool5;
+            bool7 = bool3;
+            bool8 = bool2;
+            if (!bool5)
             {
               bool9 = writeEncodeVideoData();
-              bool8 = bool3;
-              bool7 = bool2;
+              bool8 = bool2;
+              bool7 = bool3;
             }
           }
         }
       }
+      bool5 = bool9;
       bool3 = bool6;
-      bool4 = bool9;
-      bool1 = bool7;
-      bool2 = bool8;
-      if (bool5) {
-        break;
+      bool2 = bool7;
+      bool1 = bool8;
+      if (!bool4)
+      {
+        bool4 = addMuxerTrack();
+        bool5 = bool9;
+        bool3 = bool6;
+        bool2 = bool7;
+        bool1 = bool8;
       }
-      bool5 = addMuxerTrack();
-      bool3 = bool6;
-      bool4 = bool9;
-      bool1 = bool7;
-      bool2 = bool8;
-      break;
-      label318:
-      HardwareConverter.ConverterContext.access$102(this.context, this.mAudioExtractor.getTrackFormat(this.mAudioExtractor.getSampleTrackIndex()));
-      bool6 = bool3;
-      break label131;
     }
   }
   
   private boolean extractorVideoDataToDecode(boolean paramBoolean)
   {
     MediaCodecWrapper.BufferData localBufferData = this.mVideoDecoder.getInputBuffer();
-    if ((localBufferData == null) || (localBufferData.index == -1)) {}
-    label70:
-    label94:
-    label236:
-    label247:
-    label253:
-    do
+    if (localBufferData != null)
     {
-      return paramBoolean;
-      int k = this.mVideoExtractor.readSampleData(localBufferData.buffer, 0);
-      long l = this.mVideoExtractor.getSampleTime();
-      int j;
-      if ((this.mEndTimeUs > 0L) && (l >= this.mEndTimeUs))
-      {
-        i = 1;
-        if (k >= 0)
-        {
-          MediaCodecWrapper localMediaCodecWrapper = this.mVideoDecoder;
-          int m = localBufferData.index;
-          if (i == 0) {
-            break label236;
-          }
-          j = 4;
-          localMediaCodecWrapper.queueInputBuffer(m, k, l, j);
-        }
-        if (this.mVideoExtractor.advance()) {
-          break label247;
-        }
+      if (localBufferData.index == -1) {
+        return paramBoolean;
       }
-      for (boolean bool = true;; bool = false)
-      {
-        if (i == 0)
-        {
-          paramBoolean = bool;
-          if (!bool) {
-            break;
-          }
-        }
-        paramBoolean = true;
-        if (ConvertLog.isColorLevel()) {
-          ConvertLog.d("HardwareConverter", 2, new Object[] { "video extractor: EOS, size = " + k });
-        }
-        i = localBufferData.index;
-        if (k < 0) {
-          break label259;
-        }
-        localBufferData = this.mVideoDecoder.getInputBuffer();
-        if ((localBufferData != null) && (localBufferData.index != -1)) {
-          break label253;
-        }
-        if (ConvertLog.isColorLevel()) {
-          ConvertLog.d("HardwareConverter", 2, new Object[] { "no video decoder input buffer 1" });
-        }
-        return true;
+      int k = this.mVideoExtractor.readSampleData(localBufferData.buffer, 0);
+      long l1 = this.mVideoExtractor.getSampleTime();
+      long l2 = this.mEndTimeUs;
+      if ((l2 > 0L) && (l1 >= l2)) {
+        i = 1;
+      } else {
         i = 0;
-        break label70;
-        j = this.mVideoExtractor.getSampleFlags();
-        break label94;
+      }
+      Object localObject;
+      if (k >= 0)
+      {
+        localObject = this.mVideoDecoder;
+        int m = localBufferData.index;
+        int j;
+        if (i != 0) {
+          j = 4;
+        } else {
+          j = this.mVideoExtractor.getSampleFlags();
+        }
+        ((MediaCodecWrapper)localObject).queueInputBuffer(m, k, l1, j);
+      }
+      paramBoolean = this.mVideoExtractor.advance() ^ true;
+      if ((i == 0) && (!paramBoolean)) {
+        return paramBoolean;
+      }
+      if (ConvertLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("video extractor: EOS, size = ");
+        ((StringBuilder)localObject).append(k);
+        ConvertLog.d("HardwareConverter", 2, new Object[] { ((StringBuilder)localObject).toString() });
       }
       int i = localBufferData.index;
+      if (k >= 0)
+      {
+        localBufferData = this.mVideoDecoder.getInputBuffer();
+        if ((localBufferData != null) && (localBufferData.index != -1))
+        {
+          i = localBufferData.index;
+        }
+        else
+        {
+          if (ConvertLog.isColorLevel()) {
+            ConvertLog.d("HardwareConverter", 2, new Object[] { "no video decoder input buffer 1" });
+          }
+          return true;
+        }
+      }
       this.mVideoDecoder.queueInputBuffer(i, 0, 0L, 4);
-    } while (!ConvertLog.isColorLevel());
-    label259:
-    ConvertLog.d("HardwareConverter", 2, new Object[] { "videoDecoder.queueInputBuffer, MediaCodec.BUFFER_FLAG_END_OF_STREAM " });
-    return true;
+      if (ConvertLog.isColorLevel()) {
+        ConvertLog.d("HardwareConverter", 2, new Object[] { "videoDecoder.queueInputBuffer, MediaCodec.BUFFER_FLAG_END_OF_STREAM " });
+      }
+      return true;
+    }
+    return paramBoolean;
   }
   
   private long[] getVideoParam(MediaFormat paramMediaFormat, String paramString)
   {
-    int k = paramMediaFormat.getInteger("width");
-    int m = paramMediaFormat.getInteger("height");
+    int j = paramMediaFormat.getInteger("width");
+    int k = paramMediaFormat.getInteger("height");
     long l = paramMediaFormat.getLong("durationUs");
     MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-    paramMediaFormat = null;
     try
     {
       localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(24);
-      paramMediaFormat = paramString;
+      paramMediaFormat = localMediaMetadataRetriever.extractMetadata(24);
     }
-    catch (IllegalArgumentException paramString)
+    catch (IllegalArgumentException paramMediaFormat)
     {
-      for (;;)
+      paramMediaFormat.printStackTrace();
+      paramMediaFormat = null;
+    }
+    int i;
+    if (paramMediaFormat != null) {
+      try
       {
-        int i;
-        paramString.printStackTrace();
-        continue;
-        try
-        {
-          int j = Integer.parseInt(paramMediaFormat);
-          i = j;
-        }
-        catch (NumberFormatException paramString)
-        {
-          ConvertLog.e("HardwareConverter", 1, "Video rotation format error ", paramString);
-        }
+        i = Integer.parseInt(paramMediaFormat);
       }
-    }
-    i = 0;
-    if (paramMediaFormat == null)
-    {
+      catch (NumberFormatException paramString)
+      {
+        ConvertLog.e("HardwareConverter", 1, "Video rotation format error ", paramString);
+      }
+    } else {
       i = 0;
-      localMediaMetadataRetriever.release();
-      if (ConvertLog.isColorLevel()) {
-        ConvertLog.d("HardwareConverter", 2, new Object[] { "Video size is ", Integer.valueOf(k), "x", Integer.valueOf(m), ", rotation: ", paramMediaFormat });
-      }
-      return new long[] { k, m, i, l };
     }
+    localMediaMetadataRetriever.release();
+    if (ConvertLog.isColorLevel()) {
+      ConvertLog.d("HardwareConverter", 2, new Object[] { "Video size is ", Integer.valueOf(j), "x", Integer.valueOf(k), ", rotation: ", paramMediaFormat });
+    }
+    return new long[] { j, k, i, l };
   }
   
   private boolean prepareCodec(String paramString, VideoConverter.Processor paramProcessor)
@@ -393,8 +383,12 @@ public class HardwareConverter
       }
       throw new IOException("Unable to find an appropriate codec for video/avc");
     }
-    if (ConvertLog.isColorLevel()) {
-      ConvertLog.d("HardwareConverter", 2, new Object[] { "Found video codec: " + ((MediaCodecInfo)localObject).getName() });
+    if (ConvertLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Found video codec: ");
+      localStringBuilder.append(((MediaCodecInfo)localObject).getName());
+      ConvertLog.d("HardwareConverter", 2, new Object[] { localStringBuilder.toString() });
     }
     int i = prepareExtractor(paramString);
     localObject = this.mVideoExtractor.getTrackFormat(i);
@@ -419,8 +413,10 @@ public class HardwareConverter
     {
       this.mEndTimeUs = (paramString.endTime * 1000L);
       this.mBeginTimeUs = (paramString.beginTime * 1000L);
-      this.mDurationUs = (this.mEndTimeUs - this.mBeginTimeUs);
-      this.mVideoExtractor.seekTo(this.mBeginTimeUs, 2);
+      long l1 = this.mEndTimeUs;
+      long l2 = this.mBeginTimeUs;
+      this.mDurationUs = (l1 - l2);
+      this.mVideoExtractor.seekTo(l2, 2);
       this.mAudioExtractor.seekTo(this.mBeginTimeUs, 2);
     }
     if (paramString.isMute) {
@@ -452,98 +448,95 @@ public class HardwareConverter
     this.mVideoExtractor = new MediaExtractor();
     this.mVideoExtractor.setDataSource(paramString);
     int i = MediaCodecUtil.getAndSelectVideoTrackIndex(this.mVideoExtractor);
-    if (i < 0) {
-      throw new IOException("No video track found in " + paramString);
+    if (i >= 0) {
+      return i;
     }
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("No video track found in ");
+    localStringBuilder.append(paramString);
+    throw new IOException(localStringBuilder.toString());
   }
   
   private void prepareVideoEncoder(VideoConverterConfig paramVideoConverterConfig, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i;
-    int j;
-    if (!paramVideoConverterConfig.setRotation)
-    {
-      i = paramInt1;
-      j = paramInt2;
+    int j = paramInt1;
+    int i = paramInt2;
+    if (!paramVideoConverterConfig.setRotation) {
       if (paramInt3 != 90)
       {
-        if (paramInt3 != 270) {
-          break label254;
-        }
-        j = paramInt2;
-        i = paramInt1;
+        j = paramInt1;
+        i = paramInt2;
+        if (paramInt3 != 270) {}
       }
-    }
-    for (;;)
-    {
-      MediaFormat localMediaFormat = MediaFormat.createVideoFormat("video/avc", Math.round(j * paramVideoConverterConfig.scaleRate / 16.0F) * 16, Math.round(i * paramVideoConverterConfig.scaleRate / 16.0F) * 16);
-      localMediaFormat.setInteger("color-format", 2130708361);
-      localMediaFormat.setInteger("bitrate", paramVideoConverterConfig.videoBitRate);
-      localMediaFormat.setFloat("frame-rate", paramVideoConverterConfig.videoFrameRate);
-      localMediaFormat.setInteger("i-frame-interval", paramVideoConverterConfig.iFrameInterval);
-      if (paramVideoConverterConfig.setProfileLevel)
+      else
       {
-        localMediaFormat.setInteger("profile", paramVideoConverterConfig.profile);
-        localMediaFormat.setInteger("level", paramVideoConverterConfig.level);
+        i = paramInt1;
+        j = paramInt2;
       }
-      if ((paramVideoConverterConfig.bitrateMode != -1) && (Build.VERSION.SDK_INT >= 21)) {
-        localMediaFormat.setInteger("bitrate-mode", paramVideoConverterConfig.bitrateMode);
-      }
-      if (ConvertLog.isColorLevel()) {
-        ConvertLog.d("HardwareConverter", 2, new Object[] { "video format: ", localMediaFormat });
-      }
-      paramVideoConverterConfig = new AtomicReference();
-      this.mVideoEncoder = MediaCodecUtil.createVideoEncoder(localMediaFormat, paramVideoConverterConfig);
-      this.mInputSurface = new InputSurface((Surface)paramVideoConverterConfig.get());
-      this.mInputSurface.makeCurrent();
-      return;
-      label254:
-      i = paramInt2;
-      j = paramInt1;
     }
+    MediaFormat localMediaFormat = MediaFormat.createVideoFormat("video/avc", Math.round(j * paramVideoConverterConfig.scaleRate / 16.0F) * 16, Math.round(i * paramVideoConverterConfig.scaleRate / 16.0F) * 16);
+    localMediaFormat.setInteger("color-format", 2130708361);
+    localMediaFormat.setInteger("bitrate", paramVideoConverterConfig.videoBitRate);
+    localMediaFormat.setFloat("frame-rate", paramVideoConverterConfig.videoFrameRate);
+    localMediaFormat.setInteger("i-frame-interval", paramVideoConverterConfig.iFrameInterval);
+    if (paramVideoConverterConfig.setProfileLevel)
+    {
+      localMediaFormat.setInteger("profile", paramVideoConverterConfig.profile);
+      localMediaFormat.setInteger("level", paramVideoConverterConfig.level);
+    }
+    if ((paramVideoConverterConfig.bitrateMode != -1) && (Build.VERSION.SDK_INT >= 21)) {
+      localMediaFormat.setInteger("bitrate-mode", paramVideoConverterConfig.bitrateMode);
+    }
+    if (ConvertLog.isColorLevel()) {
+      ConvertLog.d("HardwareConverter", 2, new Object[] { "video format: ", localMediaFormat });
+    }
+    paramVideoConverterConfig = new AtomicReference();
+    this.mVideoEncoder = MediaCodecUtil.createVideoEncoder(localMediaFormat, paramVideoConverterConfig);
+    this.mInputSurface = new InputSurface((Surface)paramVideoConverterConfig.get());
+    this.mInputSurface.makeCurrent();
   }
   
   private boolean processAudio(ByteBuffer paramByteBuffer)
   {
-    boolean bool = false;
     MediaCodec.BufferInfo localBufferInfo = new MediaCodec.BufferInfo();
     localBufferInfo.size = this.mAudioExtractor.readSampleData(paramByteBuffer, 0);
-    if (localBufferInfo.size < 0) {}
-    do
-    {
+    if (localBufferInfo.size < 0) {
       return true;
-      localBufferInfo.presentationTimeUs = this.mAudioExtractor.getSampleTime();
-      localBufferInfo.flags = this.mAudioExtractor.getSampleFlags();
-      this.mMuxer.writeSampleData(HardwareConverter.ConverterContext.access$500(this.context), paramByteBuffer, localBufferInfo);
-      if (!this.mAudioExtractor.advance()) {
-        bool = true;
-      }
-      HardwareConverter.ConverterContext.access$302(this.context, localBufferInfo.presentationTimeUs);
-    } while ((this.mEndTimeUs > 0L) && (localBufferInfo.presentationTimeUs >= this.mEndTimeUs));
-    return bool;
+    }
+    localBufferInfo.presentationTimeUs = this.mAudioExtractor.getSampleTime();
+    localBufferInfo.flags = this.mAudioExtractor.getSampleFlags();
+    this.mMuxer.writeSampleData(HardwareConverter.ConverterContext.access$500(this.context), paramByteBuffer, localBufferInfo);
+    boolean bool = this.mAudioExtractor.advance();
+    HardwareConverter.ConverterContext.access$302(this.context, localBufferInfo.presentationTimeUs);
+    if ((this.mEndTimeUs > 0L) && (localBufferInfo.presentationTimeUs >= this.mEndTimeUs)) {
+      return true;
+    }
+    return bool ^ true;
   }
   
   private boolean writeEncodeVideoData()
   {
-    boolean bool = false;
     MediaCodecWrapper.BufferData localBufferData = this.mVideoEncoder.dequeueOutputBuffer();
-    if (localBufferData == null) {}
-    MediaCodec.BufferInfo localBufferInfo;
-    int i;
-    do
-    {
+    boolean bool = false;
+    if (localBufferData == null) {
       return false;
-      localBufferInfo = localBufferData.info;
-      i = localBufferData.index;
-    } while ((i == -1) || (i == -3));
+    }
+    MediaCodec.BufferInfo localBufferInfo = localBufferData.info;
+    int i = localBufferData.index;
+    if (i == -1) {
+      return false;
+    }
+    if (i == -3) {
+      return false;
+    }
     if (i == -2)
     {
-      if (HardwareConverter.ConverterContext.access$600(this.context) >= 0) {
-        throw new IOException("video encoder changed its output format again?");
+      if (HardwareConverter.ConverterContext.access$600(this.context) < 0)
+      {
+        HardwareConverter.ConverterContext.access$402(this.context, this.mVideoEncoder.getInnerMediaCodec().getOutputFormat());
+        return false;
       }
-      HardwareConverter.ConverterContext.access$402(this.context, this.mVideoEncoder.getInnerMediaCodec().getOutputFormat());
-      return false;
+      throw new IOException("video encoder changed its output format again?");
     }
     if ((localBufferInfo.flags & 0x2) != 0)
     {
@@ -569,118 +562,171 @@ public class HardwareConverter
     if (ConvertLog.isColorLevel()) {
       ConvertLog.d("HardwareConverter", 2, new Object[] { "shutting down encoder, decoder" });
     }
-    if (this.mOutputSurface != null) {
-      this.mOutputSurface.release();
+    Object localObject = this.mOutputSurface;
+    if (localObject != null) {
+      ((OutputSurface)localObject).release();
     }
-    if (this.mInputSurface != null) {
-      this.mInputSurface.release();
+    localObject = this.mInputSurface;
+    if (localObject != null) {
+      ((InputSurface)localObject).release();
     }
-    if (this.mVideoEncoder != null)
+    localObject = this.mVideoEncoder;
+    if (localObject != null)
     {
-      this.mVideoEncoder.stop();
+      ((MediaCodecWrapper)localObject).stop();
       this.mVideoEncoder.release();
     }
-    if (this.mVideoDecoder != null)
+    localObject = this.mVideoDecoder;
+    if (localObject != null)
     {
-      this.mVideoDecoder.stop();
+      ((MediaCodecWrapper)localObject).stop();
       this.mVideoDecoder.release();
     }
-    if (this.mMuxer != null)
+    localObject = this.mMuxer;
+    if (localObject != null)
     {
-      this.mMuxer.release();
+      ((MediaMuxer)localObject).release();
       this.mMuxer = null;
     }
-    if (this.mVideoExtractor != null)
+    localObject = this.mVideoExtractor;
+    if (localObject != null)
     {
-      this.mVideoExtractor.release();
+      ((MediaExtractor)localObject).release();
       this.mVideoExtractor = null;
     }
-    if (this.mAudioExtractor != null)
+    localObject = this.mAudioExtractor;
+    if (localObject != null)
     {
-      this.mAudioExtractor.release();
+      ((MediaExtractor)localObject).release();
       this.mAudioExtractor = null;
     }
   }
   
+  /* Error */
   public void run()
   {
-    try
-    {
-      this.processor.onProgress(0);
-      if (!prepareCodec(this.originalVideoPath, this.processor))
-      {
-        this.processor.onFail(new Exception("noNeedCompress"));
-        try
-        {
-          release();
-          return;
-        }
-        catch (Exception localException1)
-        {
-          this.processor.onFail(localException1);
-          ConvertLog.e("HardwareConverter", 1, "release Hw Resource error", localException1);
-          return;
-        }
-      }
-      doExtractDecodeEditEncodeMux();
-      if (this.isInterrupted)
-      {
-        this.isInterrupted = false;
-        this.processor.onCancel();
-      }
-      for (;;)
-      {
-        try
-        {
-          release();
-          return;
-        }
-        catch (Exception localException2)
-        {
-          this.processor.onFail(localException2);
-          ConvertLog.e("HardwareConverter", 1, "release Hw Resource error", localException2);
-          return;
-        }
-        this.processor.onProgress(10000);
-        this.processor.onSuccess();
-      }
-      try
-      {
-        release();
-        throw localObject;
-      }
-      catch (Exception localException5)
-      {
-        for (;;)
-        {
-          this.processor.onFail(localException5);
-          ConvertLog.e("HardwareConverter", 1, "release Hw Resource error", localException5);
-        }
-      }
-    }
-    catch (Exception localException3)
-    {
-      localException3 = localException3;
-      ConvertLog.e("HardwareConverter", 1, "Converter run error", localException3);
-      this.processor.onFail(localException3);
-      try
-      {
-        release();
-        return;
-      }
-      catch (Exception localException4)
-      {
-        this.processor.onFail(localException4);
-        ConvertLog.e("HardwareConverter", 1, "release Hw Resource error", localException4);
-        return;
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   4: iconst_0
+    //   5: invokeinterface 224 2 0
+    //   10: aload_0
+    //   11: aload_0
+    //   12: getfield 80	com/tencent/richmedia/videocompress/converter/HardwareConverter:originalVideoPath	Ljava/lang/String;
+    //   15: aload_0
+    //   16: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   19: invokespecial 606	com/tencent/richmedia/videocompress/converter/HardwareConverter:prepareCodec	(Ljava/lang/String;Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;)Z
+    //   22: ifne +49 -> 71
+    //   25: aload_0
+    //   26: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   29: new 156	java/lang/Exception
+    //   32: dup
+    //   33: ldc_w 608
+    //   36: invokespecial 161	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   39: invokeinterface 612 2 0
+    //   44: aload_0
+    //   45: invokevirtual 613	com/tencent/richmedia/videocompress/converter/HardwareConverter:release	()V
+    //   48: return
+    //   49: astore_1
+    //   50: aload_0
+    //   51: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   54: aload_1
+    //   55: invokeinterface 612 2 0
+    //   60: ldc 27
+    //   62: iconst_1
+    //   63: ldc_w 615
+    //   66: aload_1
+    //   67: invokestatic 376	com/tencent/richmedia/videocompress/utils/ConvertLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   70: return
+    //   71: aload_0
+    //   72: invokespecial 617	com/tencent/richmedia/videocompress/converter/HardwareConverter:doExtractDecodeEditEncodeMux	()V
+    //   75: aload_0
+    //   76: getfield 243	com/tencent/richmedia/videocompress/converter/HardwareConverter:isInterrupted	Z
+    //   79: ifeq +20 -> 99
+    //   82: aload_0
+    //   83: iconst_0
+    //   84: putfield 243	com/tencent/richmedia/videocompress/converter/HardwareConverter:isInterrupted	Z
+    //   87: aload_0
+    //   88: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   91: invokeinterface 620 1 0
+    //   96: goto +24 -> 120
+    //   99: aload_0
+    //   100: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   103: sipush 10000
+    //   106: invokeinterface 224 2 0
+    //   111: aload_0
+    //   112: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   115: invokeinterface 623 1 0
+    //   120: aload_0
+    //   121: invokevirtual 613	com/tencent/richmedia/videocompress/converter/HardwareConverter:release	()V
+    //   124: return
+    //   125: astore_1
+    //   126: goto +51 -> 177
+    //   129: astore_1
+    //   130: ldc 27
+    //   132: iconst_1
+    //   133: ldc_w 625
+    //   136: aload_1
+    //   137: invokestatic 376	com/tencent/richmedia/videocompress/utils/ConvertLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   140: aload_0
+    //   141: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   144: aload_1
+    //   145: invokeinterface 612 2 0
+    //   150: aload_0
+    //   151: invokevirtual 613	com/tencent/richmedia/videocompress/converter/HardwareConverter:release	()V
+    //   154: return
+    //   155: astore_1
+    //   156: aload_0
+    //   157: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   160: aload_1
+    //   161: invokeinterface 612 2 0
+    //   166: ldc 27
+    //   168: iconst_1
+    //   169: ldc_w 615
+    //   172: aload_1
+    //   173: invokestatic 376	com/tencent/richmedia/videocompress/utils/ConvertLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   176: return
+    //   177: aload_0
+    //   178: invokevirtual 613	com/tencent/richmedia/videocompress/converter/HardwareConverter:release	()V
+    //   181: goto +24 -> 205
+    //   184: astore_2
+    //   185: aload_0
+    //   186: getfield 82	com/tencent/richmedia/videocompress/converter/HardwareConverter:processor	Lcom/tencent/richmedia/videocompress/VideoConverter$Processor;
+    //   189: aload_2
+    //   190: invokeinterface 612 2 0
+    //   195: ldc 27
+    //   197: iconst_1
+    //   198: ldc_w 615
+    //   201: aload_2
+    //   202: invokestatic 376	com/tencent/richmedia/videocompress/utils/ConvertLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   205: aload_1
+    //   206: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	207	0	this	HardwareConverter
+    //   49	18	1	localException1	Exception
+    //   125	1	1	localObject	Object
+    //   129	16	1	localException2	Exception
+    //   155	51	1	localException3	Exception
+    //   184	18	2	localException4	Exception
+    // Exception table:
+    //   from	to	target	type
+    //   44	48	49	java/lang/Exception
+    //   0	44	125	finally
+    //   71	96	125	finally
+    //   99	120	125	finally
+    //   130	150	125	finally
+    //   0	44	129	java/lang/Exception
+    //   71	96	129	java/lang/Exception
+    //   99	120	129	java/lang/Exception
+    //   120	124	155	java/lang/Exception
+    //   150	154	155	java/lang/Exception
+    //   177	181	184	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmedia.videocompress.converter.HardwareConverter
  * JD-Core Version:    0.7.0.1
  */

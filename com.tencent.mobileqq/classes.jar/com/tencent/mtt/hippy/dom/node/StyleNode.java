@@ -17,23 +17,23 @@ public class StyleNode
   @HippyControllerProps(name="alignItems")
   public void setAlignItems(String paramString)
   {
-    if (paramString == null) {}
-    for (paramString = a.e;; paramString = a.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_")))
-    {
-      setAlignItems(paramString);
-      return;
+    if (paramString == null) {
+      paramString = a.e;
+    } else {
+      paramString = a.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_"));
     }
+    setAlignItems(paramString);
   }
   
   @HippyControllerProps(name="alignSelf")
   public void setAlignSelf(String paramString)
   {
-    if (paramString == null) {}
-    for (paramString = a.a;; paramString = a.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_")))
-    {
-      setAlignSelf(paramString);
-      return;
+    if (paramString == null) {
+      paramString = a.a;
+    } else {
+      paramString = a.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_"));
     }
+    setAlignSelf(paramString);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="borderWidth")
@@ -51,38 +51,28 @@ public class StyleNode
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="bottom")
   public void setBottomPositionValues(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPosition(3, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPosition(3, paramFloat);
   }
   
   @HippyControllerProps(name="display")
   public void setDisplay(String paramString)
   {
     FlexNodeStyle.a locala = FlexNodeStyle.a.a;
-    int i = -1;
-    switch (paramString.hashCode())
-    {
-    default: 
-      switch (i)
-      {
-      }
-      break;
-    }
-    for (paramString = locala;; paramString = FlexNodeStyle.a.b)
-    {
-      setDisplay(paramString);
-      return;
-      if (!paramString.equals("none")) {
-        break;
-      }
+    int i;
+    if ((paramString.hashCode() == 3387192) && (paramString.equals("none"))) {
       i = 0;
-      break;
+    } else {
+      i = -1;
     }
+    if (i != 0) {
+      paramString = locala;
+    } else {
+      paramString = FlexNodeStyle.a.b;
+    }
+    setDisplay(paramString);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="flex")
@@ -100,12 +90,12 @@ public class StyleNode
   @HippyControllerProps(name="flexDirection")
   public void setFlexDirection(String paramString)
   {
-    if (paramString == null) {}
-    for (paramString = com.tencent.mtt.hippy.dom.a.b.c;; paramString = com.tencent.mtt.hippy.dom.a.b.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_")))
-    {
-      setFlexDirection(paramString);
-      return;
+    if (paramString == null) {
+      paramString = com.tencent.mtt.hippy.dom.a.b.c;
+    } else {
+      paramString = com.tencent.mtt.hippy.dom.a.b.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_"));
     }
+    setFlexDirection(paramString);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="flexGrow")
@@ -123,35 +113,32 @@ public class StyleNode
   @HippyControllerProps(name="flexWrap")
   public void setFlexWrap(String paramString)
   {
-    if (paramString == null) {}
-    for (paramString = k.a;; paramString = k.valueOf(paramString.toUpperCase(Locale.US)))
-    {
-      setWrap(paramString);
-      return;
+    if (paramString == null) {
+      paramString = k.a;
+    } else {
+      paramString = k.valueOf(paramString.toUpperCase(Locale.US));
     }
+    setWrap(paramString);
   }
   
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="height")
   public void setHeight(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setStyleHeight(paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setStyleHeight(paramFloat);
   }
   
   @HippyControllerProps(name="justifyContent")
   public void setJustifyContent(String paramString)
   {
-    if (paramString == null) {}
-    for (paramString = e.a;; paramString = e.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_")))
-    {
-      setJustifyContent(paramString);
-      return;
+    if (paramString == null) {
+      paramString = e.a;
+    } else {
+      paramString = e.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_"));
     }
+    setJustifyContent(paramString);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="borderLeftWidth")
@@ -163,13 +150,10 @@ public class StyleNode
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="left")
   public void setLeftPositionValues(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPosition(0, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPosition(0, paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="margin")
@@ -217,155 +201,122 @@ public class StyleNode
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="maxHeight")
   public void setMaxHeight(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setStyleMaxHeight(paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setStyleMaxHeight(paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="maxWidth")
   public void setMaxWidth(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setStyleMaxWidth(paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setStyleMaxWidth(paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="minHeight")
   public void setMinHeight(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setStyleMinHeight(paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setStyleMinHeight(paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="minWidth")
   public void setMinWidth(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setStyleMinWidth(paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setStyleMinWidth(paramFloat);
   }
   
   @HippyControllerProps(name="overflow")
   public void setOverflow(String paramString)
   {
-    if (paramString == null) {}
-    for (paramString = i.a;; paramString = i.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_")))
-    {
-      setOverflow(paramString);
-      return;
+    if (paramString == null) {
+      paramString = i.a;
+    } else {
+      paramString = i.valueOf(paramString.toUpperCase(Locale.US).replace("-", "_"));
     }
+    setOverflow(paramString);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="padding")
   public void setPadding(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPadding(8, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPadding(8, paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="paddingBottom")
   public void setPaddingBottom(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPadding(3, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPadding(3, paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="paddingHorizontal")
   public void setPaddingHorizontal(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPadding(6, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPadding(6, paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="paddingLeft")
   public void setPaddingLeft(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPadding(0, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPadding(0, paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="paddingRight")
   public void setPaddingRight(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPadding(2, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPadding(2, paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="paddingTop")
   public void setPaddingTop(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPadding(1, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPadding(1, paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="paddingVertical")
   public void setPaddingVertical(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPadding(7, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPadding(7, paramFloat);
   }
   
   @HippyControllerProps(name="position")
   public void setPosition(String paramString)
   {
-    if (paramString == null) {}
-    for (paramString = j.a;; paramString = j.valueOf(paramString.toUpperCase(Locale.US)))
-    {
-      setPositionType(paramString);
-      return;
+    if (paramString == null) {
+      paramString = j.a;
+    } else {
+      paramString = j.valueOf(paramString.toUpperCase(Locale.US));
     }
+    setPositionType(paramString);
   }
   
   @HippyControllerProps(defaultNumber=0.0D, defaultType="number", name="borderRightWidth")
@@ -377,13 +328,10 @@ public class StyleNode
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="right")
   public void setRightPositionValues(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPosition(2, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPosition(2, paramFloat);
   }
   
   @HippyControllerProps(defaultType="boolean", name="onLayout")
@@ -401,30 +349,24 @@ public class StyleNode
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="top")
   public void setTopPositionValues(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setPosition(1, paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setPosition(1, paramFloat);
   }
   
   @HippyControllerProps(defaultNumber=(0.0D / 0.0D), defaultType="number", name="width")
   public void setWidth(float paramFloat)
   {
-    if (c.a(paramFloat)) {}
-    for (;;)
-    {
-      setStyleWidth(paramFloat);
-      return;
+    if (!c.a(paramFloat)) {
       paramFloat = PixelUtil.dp2px(paramFloat);
     }
+    setStyleWidth(paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.node.StyleNode
  * JD-Core Version:    0.7.0.1
  */

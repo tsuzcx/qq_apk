@@ -17,18 +17,16 @@ public class ProcessorDispatcher
   
   public static String a(int paramInt)
   {
-    String str = "c2c_processor";
     if (paramInt == 1) {
-      str = "troop_processor";
+      return "troop_processor";
     }
-    do
-    {
-      return str;
-      if (paramInt == 1026) {
-        return "hctopic_processor";
-      }
-    } while (paramInt != 3000);
-    return "disc_processor";
+    if (paramInt == 1026) {
+      return "hctopic_processor";
+    }
+    if (paramInt == 3000) {
+      return "disc_processor";
+    }
+    return "c2c_processor";
   }
   
   public static String a(String paramString)
@@ -38,21 +36,24 @@ public class ProcessorDispatcher
   
   public static Map<String, Pair<String, Integer>> a()
   {
-    if (jdField_a_of_type_JavaUtilMap == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_JavaUtilMap == null) {
-        a();
+    if (jdField_a_of_type_JavaUtilMap == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_JavaUtilMap == null) {
+          a();
+        }
       }
-      return jdField_a_of_type_JavaUtilMap;
     }
+    return jdField_a_of_type_JavaUtilMap;
   }
   
   private static void a()
   {
     jdField_a_of_type_JavaUtilMap = new HashMap();
-    jdField_a_of_type_JavaUtilMap.put("MessageSvc.GetMsgV4", Pair.create("accost_processor", Integer.valueOf(5002)));
-    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", Pair.create("accost_processor", Integer.valueOf(5002)));
+    Map localMap = jdField_a_of_type_JavaUtilMap;
+    Integer localInteger = Integer.valueOf(5002);
+    localMap.put("MessageSvc.GetMsgV4", Pair.create("accost_processor", localInteger));
+    jdField_a_of_type_JavaUtilMap.put("RegPrxySvc.GetMsgV2", Pair.create("accost_processor", localInteger));
     jdField_a_of_type_JavaUtilMap.put("AccostSvc.SvrMsg", Pair.create("accost_processor", Integer.valueOf(5001)));
     jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew", Pair.create("system_processor", Integer.valueOf(6002)));
     jdField_a_of_type_JavaUtilMap.put("ProfileService.Pb.ReqSystemMsgNew.Friend", Pair.create("system_processor", Integer.valueOf(6001)));
@@ -77,7 +78,7 @@ public class ProcessorDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.ProcessorDispatcher
  * JD-Core Version:    0.7.0.1
  */

@@ -1,22 +1,22 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.qqexpand.bean.chat.ExpandFriendData;
+import com.tencent.mobileqq.qqexpand.bean.feed.StrangerInfo;
 
 class LimitChatPie$17
-  implements DialogInterface.OnClickListener
+  implements Runnable
 {
-  LimitChatPie$17(LimitChatPie paramLimitChatPie) {}
+  LimitChatPie$17(LimitChatPie paramLimitChatPie, StrangerInfo paramStrangerInfo) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void run()
   {
-    ReportController.b(this.a.a, "dc00898", "", "", "0X800ADCA", "0X800ADCA", 0, 0, "", "", "", "");
+    ExpandFriendData.setNickName(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.a.mNickName);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.17
  * JD-Core Version:    0.7.0.1
  */

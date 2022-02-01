@@ -7,11 +7,12 @@ import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.search.base.presenter.IPresenter;
+import com.tencent.mobileqq.search.base.view.ISearchResultView;
+import com.tencent.mobileqq.search.base.view.SearchResultView;
+import com.tencent.mobileqq.search.business.group.model.GroupSearchModelFavorite;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.presenter.IPresenter;
-import com.tencent.mobileqq.search.view.ISearchResultView;
-import com.tencent.mobileqq.search.view.SearchResultView;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import java.util.List;
 
 public class FavoriteSearchResultGroupPresenter
@@ -19,11 +20,9 @@ public class FavoriteSearchResultGroupPresenter
 {
   public void a(ISearchResultGroupModel paramISearchResultGroupModel, ISearchResultView paramISearchResultView)
   {
-    GroupSearchModelFavorite localGroupSearchModelFavorite;
-    int i;
     if (((paramISearchResultGroupModel instanceof GroupSearchModelFavorite)) && ((paramISearchResultView instanceof SearchResultView)))
     {
-      localGroupSearchModelFavorite = (GroupSearchModelFavorite)paramISearchResultGroupModel;
+      GroupSearchModelFavorite localGroupSearchModelFavorite = (GroupSearchModelFavorite)paramISearchResultGroupModel;
       paramISearchResultView = (SearchResultView)paramISearchResultView;
       paramISearchResultGroupModel = URLDrawable.getDrawable("https://pub.idqqimg.com/pc/misc/files/20170310/4c615c46286c40e78851635a63a22dae.png", URLDrawable.URLDrawableOptions.obtain());
       if ((paramISearchResultGroupModel != null) && (paramISearchResultGroupModel.getStatus() == 2)) {
@@ -31,36 +30,32 @@ public class FavoriteSearchResultGroupPresenter
       }
       paramISearchResultView.b().setImageDrawable(paramISearchResultGroupModel);
       paramISearchResultView.a().setText(GroupSearchModelFavorite.b);
-      if (localGroupSearchModelFavorite.a() != null) {
-        break label204;
+      int i;
+      if (localGroupSearchModelFavorite.a() == null) {
+        i = 0;
+      } else {
+        i = localGroupSearchModelFavorite.a().size();
       }
-      i = 0;
-      if (i > 10) {
-        break label218;
+      if (i <= 10) {
+        paramISearchResultGroupModel = String.valueOf(i);
+      } else {
+        paramISearchResultGroupModel = "10+";
       }
-    }
-    label204:
-    label218:
-    for (paramISearchResultGroupModel = String.valueOf(i);; paramISearchResultGroupModel = "10+")
-    {
-      ((TextView)paramISearchResultView.a().findViewById(2131365693)).setText(String.format("%s条与\"", new Object[] { paramISearchResultGroupModel }));
-      paramISearchResultGroupModel = (TextView)paramISearchResultView.a().findViewById(2131365687);
+      ((TextView)paramISearchResultView.a().findViewById(2131365530)).setText(String.format("%s条与\"", new Object[] { paramISearchResultGroupModel }));
+      paramISearchResultGroupModel = (TextView)paramISearchResultView.a().findViewById(2131365524);
       if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
         paramISearchResultGroupModel.setTextColor(Color.parseColor("#004080"));
       }
       paramISearchResultGroupModel.setText(localGroupSearchModelFavorite.b());
-      ((TextView)paramISearchResultView.a().findViewById(2131365694)).setText("\"相关收藏");
+      ((TextView)paramISearchResultView.a().findViewById(2131365531)).setText("\"相关收藏");
       paramISearchResultView.a().setVisibility(8);
       paramISearchResultView.a().setOnClickListener(new FavoriteSearchResultGroupPresenter.1(this, localGroupSearchModelFavorite));
-      return;
-      i = localGroupSearchModelFavorite.a().size();
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchResultGroupPresenter
  * JD-Core Version:    0.7.0.1
  */

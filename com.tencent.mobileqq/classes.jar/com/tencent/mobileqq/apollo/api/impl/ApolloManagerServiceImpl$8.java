@@ -1,107 +1,99 @@
 package com.tencent.mobileqq.apollo.api.impl;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.apollo.api.data.IApolloDaoManagerService;
-import com.tencent.mobileqq.apollo.api.data.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.api.model.ApolloActionData;
-import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloUtilImpl;
-import com.tencent.mobileqq.apollo.utils.ApolloListenerManager;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mobileqq.vip.DownloadListener;
-import com.tencent.mobileqq.vip.DownloadTask;
+import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.apollo.game.process.CmGameServerQIPCModule;
+import com.tencent.mobileqq.apollo.handler.ApolloExtensionHandler;
+import com.tencent.mobileqq.apollo.res.api.IApolloResDownloader.OnApolloDownLoadListener;
+import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.cmshow.engine.util.CMResUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
 
 class ApolloManagerServiceImpl$8
-  extends DownloadListener
+  implements IApolloResDownloader.OnApolloDownLoadListener
 {
   ApolloManagerServiceImpl$8(ApolloManagerServiceImpl paramApolloManagerServiceImpl) {}
   
-  public void onDone(DownloadTask paramDownloadTask)
+  public void a(boolean paramBoolean, String paramString, int paramInt1, int[] paramArrayOfInt, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ApolloManager", 2, "download onDone");
-    }
-    if (paramDownloadTask.a() == 3) {
-      VipUtils.a(ApolloManagerServiceImpl.access$300(this.a), "cmshow", "Apollo", "action_download_success", 0, 0, new String[0]);
-    }
-    if (this.a.mListenerManager != null) {
-      this.a.mListenerManager.b();
-    }
-  }
-  
-  public void onDoneFile(DownloadTask paramDownloadTask)
-  {
-    if (paramDownloadTask == null) {}
-    label311:
-    label317:
-    for (;;)
+    paramInt2 = 0;
+    Object localObject;
+    if (paramBoolean)
     {
-      return;
-      Object localObject = paramDownloadTask.c;
-      paramDownloadTask = paramDownloadTask.a();
-      if (paramDownloadTask != null)
+      if ((paramInt1 > 0) && (!CMResUtil.b(paramInt1)))
       {
-        paramDownloadTask = (ApolloActionData)paramDownloadTask.getSerializable((String)localObject);
-        if (paramDownloadTask == null)
-        {
-          QLog.e("ApolloManager", 1, "action res onDoneFile but action data is null");
-          return;
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow]ApolloManager", 2, "role rsc NOT complete.");
         }
-        String str = ApolloUtilImpl.getApolloResPath(paramDownloadTask, 4);
-        if (((String)localObject).equals(ApolloUtilImpl.getApolloResPath(paramDownloadTask, 5)))
+        return;
+      }
+      if (paramArrayOfInt != null)
+      {
+        paramInt1 = paramInt2;
+        while (paramInt1 < paramArrayOfInt.length)
         {
-          try
+          if (!CMResUtil.a(paramArrayOfInt[paramInt1]))
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("ApolloManager", 2, "action res zip done acitonid=" + paramDownloadTask.actionId + " action name =" + paramDownloadTask.actionName);
-            }
-            if (!ApolloUtilImpl.isActionResDone(paramDownloadTask.actionId, paramDownloadTask.personNum))
+            if (QLog.isColorLevel())
             {
-              FileUtils.a(str, ApolloUtilImpl.getApolloResPath(paramDownloadTask, 6), false);
-              FileUtils.e(str);
-              ApolloManagerServiceImpl.access$900(this.a, paramDownloadTask);
+              paramString = new StringBuilder();
+              paramString.append("dress rsc NOT complete, id:");
+              paramString.append(paramArrayOfInt[paramInt1]);
+              QLog.d("[cmshow]ApolloManager", 2, paramString.toString());
             }
+            return;
           }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("ApolloManager", 2, "uncompressZip fail zip file: " + str, localException);
-              }
-            }
-          }
-          if (paramDownloadTask.compoundType <= 0) {
-            break label311;
-          }
+          paramInt1 += 1;
         }
-        for (boolean bool = ApolloUtilImpl.isWhiteFaceActionRscDone(paramDownloadTask.actionId, 1, paramDownloadTask.personNum, false);; bool = ApolloUtilImpl.isActionDone(paramDownloadTask))
+      }
+      paramArrayOfInt = new ArrayList(1);
+      paramArrayOfInt.add(paramString);
+      localObject = ApolloManagerServiceImpl.access$200(this.a);
+      if (localObject != null)
+      {
+        localObject = (ApolloExtensionHandler)((AppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
+        ((ApolloExtensionHandler)localObject).notifyUI(2, true, paramArrayOfInt);
+        ((ApolloExtensionHandler)localObject).a(paramString, null);
+      }
+      CmGameServerQIPCModule.a().a(paramArrayOfInt);
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfInt = new StringBuilder();
+        paramArrayOfInt.append("apollo dress download ok notifyUI uin: ");
+        paramArrayOfInt.append(((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString));
+        QLog.d("[cmshow]ApolloManager", 2, paramArrayOfInt.toString());
+      }
+    }
+    else
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        paramArrayOfInt = new ArrayList(1);
+        paramArrayOfInt.add(paramString);
+        localObject = ApolloManagerServiceImpl.access$200(this.a);
+        if (localObject != null)
         {
-          if ((!bool) || (this.a.mListenerManager == null)) {
-            break label317;
-          }
-          paramDownloadTask.status = 1;
-          localObject = ApolloManagerServiceImpl.access$300(this.a);
-          if (localObject != null) {
-            ((ApolloDaoManagerServiceImpl)((QQAppInterface)localObject).getRuntimeService(IApolloDaoManagerService.class, "all")).changeActionStatus(paramDownloadTask);
-          }
-          this.a.mListenerManager.a(paramDownloadTask);
-          return;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ApolloManager", 2, "onDoneFile panelView actionId = " + paramDownloadTask.actionId + " action name =" + paramDownloadTask.actionName);
-          break;
+          localObject = (ApolloExtensionHandler)((AppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
+          ((ApolloExtensionHandler)localObject).notifyUI(2, false, paramArrayOfInt);
+          ((ApolloExtensionHandler)localObject).a(paramString, null);
         }
+      }
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfInt = new StringBuilder();
+        paramArrayOfInt.append("apollo dress download failed ");
+        paramArrayOfInt.append(((IApolloUtil)QRoute.api(IApolloUtil.class)).wrapLogUin(paramString));
+        QLog.d("[cmshow]ApolloManager", 2, paramArrayOfInt.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl.8
  * JD-Core Version:    0.7.0.1
  */

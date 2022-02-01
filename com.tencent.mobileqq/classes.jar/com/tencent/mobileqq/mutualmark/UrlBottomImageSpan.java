@@ -46,94 +46,107 @@ public class UrlBottomImageSpan
     }
     if ((paramCharSequence instanceof URLDrawable))
     {
-      paramInt2 = 0;
-      paramInt1 = 0;
-      if (((URLDrawable)paramCharSequence).getStatus() == 1)
+      paramPaint = (URLDrawable)paramCharSequence;
+      Object localObject;
+      if (paramPaint.getStatus() == 1)
       {
-        paramInt4 = paramCharSequence.getIntrinsicWidth();
-        i = paramCharSequence.getIntrinsicHeight();
-        paramInt1 = i;
-        paramInt2 = paramInt4;
-        if (i > this.jdField_a_of_type_Int)
+        int i = paramCharSequence.getIntrinsicWidth();
+        int j = paramCharSequence.getIntrinsicHeight();
+        paramInt4 = this.jdField_a_of_type_Int;
+        paramInt2 = i;
+        paramInt1 = j;
+        if (j > paramInt4)
         {
-          paramInt1 = i;
-          paramInt2 = paramInt4;
-          if (this.jdField_a_of_type_Int > 0)
+          paramInt2 = i;
+          paramInt1 = j;
+          if (paramInt4 > 0)
           {
-            paramInt2 = paramInt4 * this.jdField_a_of_type_Int / i;
-            paramInt1 = this.jdField_a_of_type_Int;
+            paramInt2 = i * paramInt4 / j;
+            paramInt1 = paramInt4;
           }
         }
-        paramPaint = this.jdField_a_of_type_ComTencentImageURLDrawable;
-        if (paramInt2 <= 0) {
-          break label221;
+        localObject = this.jdField_a_of_type_ComTencentImageURLDrawable;
+        if (paramInt2 > 0) {
+          paramInt4 = paramInt2;
+        } else {
+          paramInt4 = 0;
         }
-        paramInt4 = paramInt2;
-        if (paramInt1 <= 0) {
-          break label227;
+        if (paramInt1 > 0) {
+          i = paramInt1;
+        } else {
+          i = 0;
         }
+        ((URLDrawable)localObject).setBounds(0, 0, paramInt4, i);
+      }
+      else
+      {
+        paramInt2 = 0;
+        paramInt1 = 0;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("draw status:");
+        ((StringBuilder)localObject).append(paramPaint.getStatus());
+        ((StringBuilder)localObject).append(" width:");
+        ((StringBuilder)localObject).append(paramInt2);
+        ((StringBuilder)localObject).append(" height:");
+        ((StringBuilder)localObject).append(paramInt1);
+        QLog.i("UrlBottomImageSpan", 2, ((StringBuilder)localObject).toString());
       }
     }
-    label221:
-    label227:
-    for (int i = paramInt1;; i = 0)
-    {
-      paramPaint.setBounds(0, 0, paramInt4, i);
-      if (QLog.isColorLevel()) {
-        QLog.i("UrlBottomImageSpan", 2, "draw status:" + ((URLDrawable)paramCharSequence).getStatus() + " width:" + paramInt2 + " height:" + paramInt1);
-      }
-      paramCanvas.save();
-      paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      paramInt4 = 0;
-      break;
-    }
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, (paramInt5 - paramInt3 - paramCharSequence.getBounds().bottom) / 2 + paramInt3);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
   
   public Drawable getDrawable()
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-      return this.jdField_a_of_type_ComTencentImageURLDrawable;
+    Object localObject1 = this.jdField_a_of_type_ComTencentImageURLDrawable;
+    if (localObject1 != null) {
+      return localObject1;
     }
     if (this.jdField_a_of_type_JavaLangString != null)
     {
-      Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      for (;;)
+      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+      localObject1 = null;
+      try
       {
-        try
+        this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject2);
+        localObject2 = this.jdField_a_of_type_MqqUtilWeakReference;
+        if (localObject2 != null) {
+          localObject1 = (Drawable.Callback)((WeakReference)localObject2).get();
+        }
+        if (localObject1 != null) {
+          this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback((Drawable.Callback)localObject1);
+        }
+        this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new UrlBottomImageSpan.1(this));
+        if (QLog.isColorLevel())
         {
-          this.jdField_a_of_type_ComTencentImageURLDrawable = URLDrawable.getDrawable(this.jdField_a_of_type_JavaLangString, (URLDrawable.URLDrawableOptions)localObject1);
-          if (this.jdField_a_of_type_MqqUtilWeakReference != null)
-          {
-            localObject1 = (Drawable.Callback)this.jdField_a_of_type_MqqUtilWeakReference.get();
-            if (localObject1 != null) {
-              this.jdField_a_of_type_ComTencentImageURLDrawable.setCallback((Drawable.Callback)localObject1);
-            }
-            this.jdField_a_of_type_ComTencentImageURLDrawable.setURLDrawableListener(new UrlBottomImageSpan.1(this));
-            if (QLog.isColorLevel())
-            {
-              StringBuilder localStringBuilder = new StringBuilder().append("getDrawable. first get url:").append(this.jdField_a_of_type_JavaLangString).append("  cb:");
-              if (localObject1 == null) {
-                break label180;
-              }
-              bool = true;
-              QLog.i("UrlBottomImageSpan", 2, bool);
-            }
-            return this.jdField_a_of_type_ComTencentImageURLDrawable;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getDrawable. first get url:");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject2).append("  cb:");
+          boolean bool;
+          if (localObject1 != null) {
+            bool = true;
+          } else {
+            bool = false;
           }
+          ((StringBuilder)localObject2).append(bool);
+          QLog.i("UrlBottomImageSpan", 2, ((StringBuilder)localObject2).toString());
         }
-        catch (Throwable localThrowable)
-        {
-          this.jdField_a_of_type_ComTencentImageURLDrawable = null;
-          QLog.e("UrlBottomImageSpan", 2, "getDrawable error: " + localThrowable.getMessage());
-          return super.getDrawable();
-        }
-        Object localObject2 = null;
-        continue;
-        label180:
-        boolean bool = false;
+        return this.jdField_a_of_type_ComTencentImageURLDrawable;
+      }
+      catch (Throwable localThrowable)
+      {
+        this.jdField_a_of_type_ComTencentImageURLDrawable = null;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getDrawable error: ");
+        ((StringBuilder)localObject2).append(localThrowable.getMessage());
+        QLog.e("UrlBottomImageSpan", 2, ((StringBuilder)localObject2).toString());
+        return super.getDrawable();
       }
     }
     return super.getDrawable();
@@ -141,73 +154,82 @@ public class UrlBottomImageSpan
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
-    paramInt2 = 0;
     paramCharSequence = getDrawable();
+    paramInt2 = 0;
     if (paramCharSequence == null) {
       return 0;
     }
-    int i;
     int j;
+    int k;
+    int i;
     if (((paramCharSequence instanceof URLDrawable)) && (((URLDrawable)paramCharSequence).getStatus() == 1))
     {
-      i = paramCharSequence.getIntrinsicWidth();
-      j = paramCharSequence.getIntrinsicHeight();
+      j = paramCharSequence.getIntrinsicWidth();
+      k = paramCharSequence.getIntrinsicHeight();
+      i = this.jdField_a_of_type_Int;
+      paramInt1 = k;
       paramInt2 = j;
-      paramInt1 = i;
-      if (j > this.jdField_a_of_type_Int)
+      if (k > i)
       {
+        paramInt1 = k;
         paramInt2 = j;
-        paramInt1 = i;
-        if (this.jdField_a_of_type_Int > 0)
+        if (i > 0)
         {
-          paramInt1 = i * this.jdField_a_of_type_Int / j;
-          paramInt2 = this.jdField_a_of_type_Int;
+          paramInt2 = j * i / k;
+          paramInt1 = i;
         }
       }
       URLDrawable localURLDrawable = this.jdField_a_of_type_ComTencentImageURLDrawable;
-      if (paramInt1 > 0)
-      {
-        i = paramInt1;
-        if (paramInt2 <= 0) {
-          break label293;
-        }
-        j = paramInt2;
-        label113:
-        localURLDrawable.setBounds(0, 0, i, j);
+      if (paramInt2 > 0) {
+        i = paramInt2;
+      } else {
+        i = 0;
       }
+      if (paramInt1 > 0) {
+        j = paramInt1;
+      } else {
+        j = 0;
+      }
+      localURLDrawable.setBounds(0, 0, i, j);
     }
-    for (;;)
+    else
     {
-      paramCharSequence = paramCharSequence.getBounds();
-      if (paramFontMetricsInt != null)
-      {
-        paramPaint = paramPaint.getFontMetricsInt();
-        j = paramPaint.bottom - paramPaint.top;
-        int k = paramCharSequence.bottom - paramCharSequence.top;
-        i = k / 2 - j / 4;
-        k /= 2;
-        j = j / 4 + k;
-        paramFontMetricsInt.ascent = (-j);
-        paramFontMetricsInt.top = (-j);
-        paramFontMetricsInt.bottom = i;
-        paramFontMetricsInt.descent = i;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("UrlBottomImageSpan", 2, "getSize size:" + paramCharSequence.right + " width:" + paramInt1 + " height:" + paramInt2 + " imageUrl:" + this.jdField_a_of_type_JavaLangString);
-      }
-      return paramCharSequence.right;
-      i = 0;
-      break;
-      label293:
-      j = 0;
-      break label113;
       paramInt1 = 0;
     }
+    paramCharSequence = paramCharSequence.getBounds();
+    if (paramFontMetricsInt != null)
+    {
+      paramPaint = paramPaint.getFontMetricsInt();
+      j = paramPaint.bottom;
+      k = paramPaint.top;
+      i = (paramCharSequence.bottom - paramCharSequence.top) / 2;
+      k = (j - k) / 4;
+      j = i - k;
+      i = -(i + k);
+      paramFontMetricsInt.ascent = i;
+      paramFontMetricsInt.top = i;
+      paramFontMetricsInt.bottom = j;
+      paramFontMetricsInt.descent = j;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramPaint = new StringBuilder();
+      paramPaint.append("getSize size:");
+      paramPaint.append(paramCharSequence.right);
+      paramPaint.append(" width:");
+      paramPaint.append(paramInt2);
+      paramPaint.append(" height:");
+      paramPaint.append(paramInt1);
+      paramPaint.append(" imageUrl:");
+      paramPaint.append(this.jdField_a_of_type_JavaLangString);
+      QLog.i("UrlBottomImageSpan", 2, paramPaint.toString());
+    }
+    return paramCharSequence.right;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.UrlBottomImageSpan
  * JD-Core Version:    0.7.0.1
  */

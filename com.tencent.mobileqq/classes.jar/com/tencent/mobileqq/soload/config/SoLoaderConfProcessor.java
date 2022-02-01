@@ -22,41 +22,45 @@ public class SoLoaderConfProcessor
   
   private void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[notifyListeners]:" + this.a.size());
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("[notifyListeners]:");
+      ((StringBuilder)???).append(this.a.size());
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, ((StringBuilder)???).toString());
     }
     ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
     try
     {
       synchronized (this.a)
       {
-        if (this.a.size() <= 0) {
-          break label162;
-        }
-        Iterator localIterator = this.a.iterator();
-        while (localIterator.hasNext())
+        if (this.a.size() > 0)
         {
-          SoLoaderConfProcessor.OnGetConfigListener localOnGetConfigListener = (SoLoaderConfProcessor.OnGetConfigListener)localIterator.next();
-          try
+          Iterator localIterator = this.a.iterator();
+          while (localIterator.hasNext())
           {
-            localOnGetConfigListener.a(paramInt);
+            SoLoaderConfProcessor.OnGetConfigListener localOnGetConfigListener = (SoLoaderConfProcessor.OnGetConfigListener)localIterator.next();
+            try
+            {
+              localOnGetConfigListener.a(paramInt);
+            }
+            catch (Throwable localThrowable2) {}
+            if (QLog.isColorLevel()) {
+              QLog.e("SoLoadWidget.SoLoadConfProcessor", 1, localThrowable2, new Object[0]);
+            }
           }
-          catch (Throwable localThrowable2) {}
-          if (QLog.isColorLevel()) {
-            QLog.e("SoLoadWidget.SoLoadConfProcessor", 1, localThrowable2, new Object[0]);
-          }
+          this.a.clear();
         }
+        return;
       }
-      this.a.clear();
+      return;
     }
     catch (Throwable localThrowable1)
     {
       if (QLog.isColorLevel()) {
         QLog.e("SoLoadWidget.SoLoadConfProcessor", 1, localThrowable1, new Object[0]);
       }
-      return;
     }
-    label162:
   }
   
   private void b(int paramInt)
@@ -81,14 +85,18 @@ public class SoLoaderConfProcessor
       QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onParsed]");
     }
     SoLoadConfBean localSoLoadConfBean = new SoLoadConfBean();
-    localSoLoadConfBean.a = paramArrayOfQConfItem;
+    localSoLoadConfBean.confFiles = paramArrayOfQConfItem;
     return localSoLoadConfBean;
   }
   
   public void a(SoLoadConfBean paramSoLoadConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onUpdate] newConf:" + paramSoLoadConfBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onUpdate] newConf:");
+      localStringBuilder.append(paramSoLoadConfBean);
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, localStringBuilder.toString());
     }
     SoConfigManager.a().a(paramSoLoadConfBean);
     b(0);
@@ -145,16 +153,26 @@ public class SoLoaderConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onReqFailed] failCode=");
+      localStringBuilder.append(paramInt);
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, localStringBuilder.toString());
     }
     b(paramInt);
   }
   
   public void onReqNoReceive()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, "onReqNoReceive: type=" + type() + "curContent:" + QConfigManager.a().a(526));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqNoReceive: type=");
+      localStringBuilder.append(type());
+      localStringBuilder.append("curContent:");
+      localStringBuilder.append(QConfigManager.a().a(526));
+      QLog.d("SoLoadWidget.SoLoadConfProcessor", 2, localStringBuilder.toString());
     }
     b(0);
   }
@@ -171,7 +189,7 @@ public class SoLoaderConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.config.SoLoaderConfProcessor
  * JD-Core Version:    0.7.0.1
  */

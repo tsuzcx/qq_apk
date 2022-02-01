@@ -11,13 +11,19 @@ public final class oidb_0xb40$FavoriteExtInfo
   public static final int Article = 1;
   public static final int PictureCollection = 3;
   public static final int Video = 2;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_type", "uint32_video_duration" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0) }, FavoriteExtInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field uint32_type = PBField.initUInt32(0);
   public final PBUInt32Field uint32_video_duration = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16 }, new String[] { "uint32_type", "uint32_video_duration" }, new Object[] { localInteger, localInteger }, FavoriteExtInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xb40.oidb_0xb40.FavoriteExtInfo
  * JD-Core Version:    0.7.0.1
  */

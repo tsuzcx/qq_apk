@@ -8,6 +8,8 @@ public abstract interface ITPDownloadProxyAidl
 {
   public abstract String getClipPlayUrl(int paramInt1, int paramInt2, int paramInt3);
   
+  public abstract String getNativeInfo(int paramInt);
+  
   public abstract String getPlayErrorCodeStr(int paramInt);
   
   public abstract String getPlayUrl(int paramInt1, int paramInt2);
@@ -28,6 +30,8 @@ public abstract interface ITPDownloadProxyAidl
   
   public abstract void setPlayState(int paramInt1, int paramInt2);
   
+  public abstract void setUpdatePlayerInfoInterval(int paramInt);
+  
   public abstract void setUserData(Map paramMap);
   
   public abstract int startClipPlay(String paramString, int paramInt, ITPPlayListenerAidl paramITPPlayListenerAidl);
@@ -42,7 +46,7 @@ public abstract interface ITPDownloadProxyAidl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.aidl.ITPDownloadProxyAidl
  * JD-Core Version:    0.7.0.1
  */

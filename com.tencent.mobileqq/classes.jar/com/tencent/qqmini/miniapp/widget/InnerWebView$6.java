@@ -18,40 +18,41 @@ class InnerWebView$6
   public Void perform(BaseRuntime paramBaseRuntime)
   {
     paramBaseRuntime = paramBaseRuntime.getPage();
-    if (!(paramBaseRuntime instanceof AppBrandPageContainer)) {
-      QMLog.d("Action", "Page is invalid");
-    }
-    for (;;)
+    if (!(paramBaseRuntime instanceof AppBrandPageContainer))
     {
+      QMLog.d("Action", "Page is invalid");
       return null;
-      paramBaseRuntime = (AppBrandPageContainer)paramBaseRuntime;
-      Object localObject = paramBaseRuntime.getShowingPage();
-      if ((localObject != null) && (((AppBrandPage)localObject).getNavBar() != null)) {
-        ((AppBrandPage)localObject).getNavBar().updateProgress((byte)2);
-      }
-      try
+    }
+    paramBaseRuntime = (AppBrandPageContainer)paramBaseRuntime;
+    Object localObject = paramBaseRuntime.getShowingPage();
+    if ((localObject != null) && (((AppBrandPage)localObject).getNavBar() != null)) {
+      ((AppBrandPage)localObject).getNavBar().updateProgress((byte)2);
+    }
+    try
+    {
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("htmlId", this.this$0.htmlId);
+      ((JSONObject)localObject).put("src", this.val$s);
+      int i = PageAction.obtain(InnerWebView.access$600(this.this$0)).getPageId();
+      if ((paramBaseRuntime.getShowingPage() != null) && (paramBaseRuntime.getShowingPage().getBrandPageWebview() != null))
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("htmlId", this.this$0.htmlId);
-        ((JSONObject)localObject).put("src", this.val$s);
-        int i = PageAction.obtain(InnerWebView.access$600(this.this$0)).getPageId();
-        if ((paramBaseRuntime.getShowingPage() != null) && (paramBaseRuntime.getShowingPage().getBrandPageWebview() != null))
-        {
-          paramBaseRuntime.getShowingPage().getBrandPageWebview().evaluateSubscribeJS("onWebviewFinishLoad", ((JSONObject)localObject).toString(), i);
-          return null;
-        }
+        paramBaseRuntime.getShowingPage().getBrandPageWebview().evaluateSubscribeJS("onWebviewFinishLoad", ((JSONObject)localObject).toString(), i);
+        return null;
       }
-      catch (Exception paramBaseRuntime)
-      {
-        QMLog.e("Action", "onPageStarted error." + paramBaseRuntime);
-      }
+    }
+    catch (Exception paramBaseRuntime)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPageStarted error.");
+      ((StringBuilder)localObject).append(paramBaseRuntime);
+      QMLog.e("Action", ((StringBuilder)localObject).toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.InnerWebView.6
  * JD-Core Version:    0.7.0.1
  */

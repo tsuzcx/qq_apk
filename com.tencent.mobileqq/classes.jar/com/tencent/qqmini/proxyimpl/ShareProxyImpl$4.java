@@ -2,21 +2,110 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
 import android.content.res.Resources;
-import com.tencent.mobileqq.widget.QQToast;
+import android.graphics.Bitmap;
+import android.os.Handler;
+import com.tencent.image.URLDrawable;
+import com.tencent.image.URLDrawable.URLDrawableOptions;
+import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.mini.reuse.MiniAppCmdInterface;
+import com.tencent.mobileqq.mini.util.ImageUtil;
+import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.launcher.model.InnerShareData;
+import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
+import eipc.EIPCClient;
+import org.json.JSONObject;
 
 class ShareProxyImpl$4
-  implements Runnable
+  implements MiniAppCmdInterface
 {
-  ShareProxyImpl$4(ShareProxyImpl paramShareProxyImpl, Activity paramActivity) {}
+  ShareProxyImpl$4(ShareProxyImpl paramShareProxyImpl, Activity paramActivity, InnerShareData paramInnerShareData, MiniAppInfo paramMiniAppInfo, int paramInt, String paramString) {}
   
-  public void run()
+  public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QQToast.a(this.a, 0, 2131720754, 1).b(this.a.getResources().getDimensionPixelSize(2131299166));
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("startShareToWeChat. isSuc:");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    QLog.d("AppBrandRuntime", 1, ((StringBuilder)localObject1).toString());
+    boolean bool = false;
+    if ((paramBoolean) && (paramJSONObject != null))
+    {
+      localObject1 = paramJSONObject.optString("jump_url");
+      if (paramJSONObject.optBoolean("needShareCallBack", false)) {
+        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+      }
+      try
+      {
+        paramJSONObject = URLDrawable.URLDrawableOptions.obtain();
+        if (this.jdField_a_of_type_AndroidAppActivity != null) {
+          paramJSONObject.mFailedDrawable = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130848661);
+        }
+        paramJSONObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelInnerShareData.sharePicPath, paramJSONObject);
+        paramJSONObject.setURLDrawableListener(new ShareProxyImpl.4.1(this, (String)localObject1));
+        Bitmap localBitmap;
+        int i;
+        String str1;
+        String str2;
+        if (paramJSONObject.getStatus() == 1)
+        {
+          localBitmap = ImageUtil.drawableToBitmap(paramJSONObject.getCurrDrawable());
+          paramJSONObject = this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl;
+          localObject2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+          i = this.jdField_a_of_type_Int;
+          str1 = this.jdField_a_of_type_JavaLangString;
+          str2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo.name;
+          localBitmap = ShareProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl, localBitmap);
+        }
+        try
+        {
+          ShareProxyImpl.a(paramJSONObject, (MiniAppInfo)localObject2, i, str1, str2, localBitmap, (String)localObject1);
+          return;
+        }
+        catch (Exception paramJSONObject) {}
+        if (paramJSONObject.getStatus() == 1) {
+          return;
+        }
+        paramJSONObject.startDownload();
+        return;
+      }
+      catch (Exception paramJSONObject) {}
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("startShareToWeChat. get an exception when handling URLbmp:");
+      ((StringBuilder)localObject2).append(paramJSONObject);
+      QLog.e("AppBrandRuntime", 1, ((StringBuilder)localObject2).toString());
+      paramJSONObject = this.jdField_a_of_type_ComTencentQqminiProxyimplShareProxyImpl;
+      localObject2 = this.jdField_a_of_type_ComTencentQqminiSdkLauncherModelMiniAppInfo;
+      ShareProxyImpl.a(paramJSONObject, (MiniAppInfo)localObject2, this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, ((MiniAppInfo)localObject2).name, (String)localObject1);
+    }
+    else
+    {
+      long l = -1L;
+      if (paramJSONObject != null)
+      {
+        paramBoolean = paramJSONObject.optBoolean("needShareCallBack", false);
+        l = paramJSONObject.optLong("retCode");
+        paramJSONObject = paramJSONObject.optString("errMsg");
+      }
+      else
+      {
+        paramJSONObject = null;
+        paramBoolean = bool;
+      }
+      if (!paramBoolean) {
+        QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_mini_share_suc", null, null);
+      }
+      if (this.jdField_a_of_type_AndroidAppActivity == null)
+      {
+        QLog.e("ShareProxyImpl", 1, "startShareToWe activity is null?!!");
+        return;
+      }
+      ThreadManagerV2.getUIHandlerV2().post(new ShareProxyImpl.4.2(this, l, paramJSONObject));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ShareProxyImpl.4
  * JD-Core Version:    0.7.0.1
  */

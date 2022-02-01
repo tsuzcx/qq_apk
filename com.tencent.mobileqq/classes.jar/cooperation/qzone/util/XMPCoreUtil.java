@@ -1,9 +1,10 @@
 package cooperation.qzone.util;
 
 import android.text.TextUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQzoneModuleManageApi;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import cooperation.qzone.thread.QzoneBaseThread;
 import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import java.io.File;
@@ -31,30 +32,30 @@ public class XMPCoreUtil
   
   public static XMPCoreUtil getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new XMPCoreUtil();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new XMPCoreUtil();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private boolean isNeedUpdate()
   {
     String str = LocalMultiProcConfig.getString("xmp_core_file_md5", null);
-    if (TextUtils.isEmpty(str)) {}
-    while (!str.equalsIgnoreCase(mXMPCoreJarMD5)) {
+    if (TextUtils.isEmpty(str)) {
       return true;
     }
-    return false;
+    return str.equalsIgnoreCase(mXMPCoreJarMD5) ^ true;
   }
   
   private boolean isXMPCoreJarExit()
   {
-    String str = QzoneModuleManager.getInstance().getModuleFilePath("xmpcore.jar");
+    String str = ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).getModuleFilePath("xmpcore.jar");
     QZLog.i("XMPCoreUtil", 4, new Object[] { "isXMPCoreJarExit path = ", str });
     if (TextUtils.isEmpty(str)) {
       return false;
@@ -67,56 +68,47 @@ public class XMPCoreUtil
     QZLog.i("XMPCoreUtil", "loadXMPCoreModule");
     if (isXMPCoreJarExit())
     {
-      QZLog.i("XMPCoreUtil", 4, new Object[] { "xmpCoreModulePath =", QzoneModuleManager.getInstance().getModuleFilePath("xmpcore.jar") });
-      this.isModuleLoadSuccess = QzoneModuleManager.getInstance().loadModule("xmpcore.jar", getClass().getClassLoader(), false, false);
-      if (this.isModuleLoadSuccess) {
+      QZLog.i("XMPCoreUtil", 4, new Object[] { "xmpCoreModulePath =", ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).getModuleFilePath("xmpcore.jar") });
+      this.isModuleLoadSuccess = ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).loadModule("xmpcore.jar", getClass().getClassLoader(), false, false);
+      if (this.isModuleLoadSuccess)
+      {
         QZLog.i("XMPCoreUtil", "loadXMPCoreModule success");
+        return;
       }
+      QZLog.i("XMPCoreUtil", "loadXMPCoreModule fail");
     }
-    else
-    {
-      return;
-    }
-    QZLog.i("XMPCoreUtil", "loadXMPCoreModule fail");
   }
   
   private HashMap<String, Object> readXMPData(String paramString1, String paramString2, String[] paramArrayOfString)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramArrayOfString == null) || (paramArrayOfString.length == 0) || (!this.isModuleLoadSuccess)) {
-      paramString1 = null;
-    }
-    Object localObject1;
-    HashMap localHashMap;
-    int j;
-    int i;
-    do
+    if ((!TextUtils.isEmpty(paramString1)) && (paramArrayOfString != null) && (paramArrayOfString.length != 0) && (this.isModuleLoadSuccess))
     {
-      do
+      paramString1 = JarReflectUtil.callSpecifiedStaticMethod("com.adobe.xmp.XmpUtil", "extractXMPMeta", false, getParamsClass(new Class[] { String.class }), new Object[] { paramString1 });
+      HashMap localHashMap = new HashMap();
+      if (paramString1 != null)
       {
-        return paramString1;
-        localObject1 = JarReflectUtil.callSpecifiedStaticMethod("com.adobe.xmp.XmpUtil", "extractXMPMeta", false, getParamsClass(new Class[] { String.class }), new Object[] { paramString1 });
-        localHashMap = new HashMap();
-        paramString1 = localHashMap;
-      } while (localObject1 == null);
-      j = paramArrayOfString.length;
-      i = 0;
-      paramString1 = localHashMap;
-    } while (i >= j);
-    paramString1 = paramArrayOfString[i];
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (;;)
-    {
-      i += 1;
-      break;
-      Object localObject2 = JarReflectUtil.callSpecifiedMethod(localObject1, "getProperty", false, getParamsClass(new Class[] { String.class, String.class }), new Object[] { paramString2, paramString1 });
-      if (localObject2 != null)
-      {
-        localObject2 = JarReflectUtil.callSpecifiedMethod(localObject2, "getValue", false, new Class[0], new Object[0]);
-        if (localObject2 != null) {
-          localHashMap.put(paramString1, localObject2);
+        int j = paramArrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          String str = paramArrayOfString[i];
+          if (!TextUtils.isEmpty(str))
+          {
+            Object localObject = JarReflectUtil.callSpecifiedMethod(paramString1, "getProperty", false, getParamsClass(new Class[] { String.class, String.class }), new Object[] { paramString2, str });
+            if (localObject != null)
+            {
+              localObject = JarReflectUtil.callSpecifiedMethod(localObject, "getValue", false, new Class[0], new Object[0]);
+              if (localObject != null) {
+                localHashMap.put(str, localObject);
+              }
+            }
+          }
+          i += 1;
         }
       }
+      return localHashMap;
     }
+    return null;
   }
   
   public void downloadXMPModule()
@@ -166,24 +158,30 @@ public class XMPCoreUtil
     if (paramXMPCoreJarLoadListener == null) {
       return;
     }
-    if (this.isModuleLoadSuccess)
+    boolean bool = this.isModuleLoadSuccess;
+    if (bool)
     {
-      paramXMPCoreJarLoadListener.loadState(this.isModuleLoadSuccess);
+      paramXMPCoreJarLoadListener.loadState(bool);
       return;
     }
-    if ((isNeedUpdate()) || (!isXMPCoreJarExit())) {}
-    for (int i = 1; i == 0; i = 0)
+    int i;
+    if ((!isNeedUpdate()) && (isXMPCoreJarExit())) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i == 0)
     {
       loadXMPCoreModule();
       paramXMPCoreJarLoadListener.loadState(this.isModuleLoadSuccess);
       return;
     }
-    QzoneModuleManager.getInstance().downloadModule("xmpcore.jar", new XMPCoreUtil.1(this, paramXMPCoreJarLoadListener));
+    ((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).downloadModule("xmpcore.jar", new XMPCoreUtil.1(this, paramXMPCoreJarLoadListener));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.XMPCoreUtil
  * JD-Core Version:    0.7.0.1
  */

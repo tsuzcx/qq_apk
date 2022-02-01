@@ -42,18 +42,20 @@ public final class SkinInfo
     paramJceOutputStream.write(this.skin_id, 0);
     paramJceOutputStream.write(this.skin_permission_state, 1);
     paramJceOutputStream.write(this.skin_name, 2);
-    if (this.pop_dialog != null) {
-      paramJceOutputStream.write(this.pop_dialog, 3);
+    Object localObject = this.pop_dialog;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.is_hide_title, 4);
-    if (this.blessing != null) {
-      paramJceOutputStream.write(this.blessing, 5);
+    localObject = this.blessing;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.SkinInfo
  * JD-Core Version:    0.7.0.1
  */

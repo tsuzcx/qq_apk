@@ -51,7 +51,8 @@ public class ReplyContainer
   
   public ReplyView a(String paramString)
   {
-    if ((this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment != null) && (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.vecReply.get() != null))
+    CertifiedAccountMeta.StComment localStComment = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
+    if ((localStComment != null) && (localStComment.vecReply.get() != null))
     {
       int j = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment.vecReply.get().size();
       if (j > 0)
@@ -71,110 +72,110 @@ public class ReplyContainer
   
   protected void a(CertifiedAccountMeta.StComment paramStComment, int paramInt, String paramString)
   {
-    if ((paramStComment == null) || (paramStComment.vecReply.size() == 0))
+    if ((paramStComment != null) && (paramStComment.vecReply.size() != 0))
     {
-      setVisibility(8);
-      return;
-    }
-    this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment = paramStComment;
-    List localList = paramStComment.vecReply.get();
-    int j = localList.size();
-    if (j > 0) {
-      if (paramInt <= 0) {
-        break label442;
-      }
-    }
-    label286:
-    label442:
-    for (paramInt = Math.min(j, paramInt);; paramInt = j)
-    {
-      this.c = paramInt;
-      setVisibility(0);
-      removeAllViews();
-      int i = 0;
-      while (i < paramInt)
+      this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment = paramStComment;
+      List localList = paramStComment.vecReply.get();
+      int j = localList.size();
+      if (j > 0)
       {
-        CertifiedAccountMeta.StReply localStReply = (CertifiedAccountMeta.StReply)localList.get(i);
-        ReplyView localReplyView = new ReplyView(getContext());
-        localReplyView.setPosition(i);
-        localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener);
-        localReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
-        localReplyView.setClickable(true);
-        localReplyView.setFocusable(true);
-        localReplyView.setData(paramStComment, localStReply, paramString);
-        addView(localReplyView);
-        i += 1;
-      }
-      if (paramInt <= j)
-      {
-        if (this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView == null)
-        {
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView = new ReplyActionView(getContext());
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.setClickable(true);
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setOnClickListener(this);
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setOnClickListener(this);
+        if (paramInt > 0) {
+          paramInt = Math.min(j, paramInt);
+        } else {
+          paramInt = j;
         }
-        if (paramInt <= this.b) {
-          break label327;
-        }
-        if (paramInt != j) {
-          break label286;
-        }
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(8);
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(0);
-      }
-      for (;;)
-      {
-        addView(this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView);
+        this.c = paramInt;
         setVisibility(0);
-        return;
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(HardCodeUtil.a(2131713353));
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
-        continue;
-        label327:
-        if (j > paramInt)
+        removeAllViews();
+        int i = 0;
+        while (i < paramInt)
         {
-          paramInt = j - paramInt;
-          if (paramInt > 0)
+          CertifiedAccountMeta.StReply localStReply = (CertifiedAccountMeta.StReply)localList.get(i);
+          ReplyView localReplyView = new ReplyView(getContext());
+          localReplyView.setPosition(i);
+          localReplyView.setOnCommentElementClickListener(this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener);
+          localReplyView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -2));
+          localReplyView.setClickable(true);
+          localReplyView.setFocusable(true);
+          localReplyView.setData(paramStComment, localStReply, paramString);
+          addView(localReplyView);
+          i += 1;
+        }
+        if (paramInt <= j)
+        {
+          if (this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView == null)
           {
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(HardCodeUtil.a(2131713351) + paramInt + HardCodeUtil.a(2131713352));
-            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView = new ReplyActionView(getContext());
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.setClickable(true);
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setOnClickListener(this);
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setOnClickListener(this);
+          }
+          if (paramInt > this.b)
+          {
+            if (paramInt == j)
+            {
+              this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(8);
+              this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(0);
+            }
+            else
+            {
+              this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setText(HardCodeUtil.a(2131713321));
+              this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
+              this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
+            }
+          }
+          else if (j > paramInt)
+          {
+            paramInt = j - paramInt;
+            if (paramInt > 0)
+            {
+              paramStComment = this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a();
+              paramString = new StringBuilder();
+              paramString.append(HardCodeUtil.a(2131713319));
+              paramString.append(paramInt);
+              paramString.append(HardCodeUtil.a(2131713320));
+              paramStComment.setText(paramString.toString());
+              this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(0);
+              this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
+            }
+          }
+          else
+          {
+            this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(8);
             this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
           }
+          addView(this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView);
         }
-        else
-        {
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.a().setVisibility(8);
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentReplyActionView.b().setVisibility(8);
-        }
+        setVisibility(0);
+        return;
       }
       setVisibility(8);
       return;
     }
+    setVisibility(8);
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    Object localObject;
+    if (i != 2131369989)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener != null)
+      if (i == 2131371510)
       {
-        this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener.a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
-        continue;
-        if (this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener != null)
-        {
-          CertifiedAccountMeta.StComment localStComment = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
-          int i = getHeight() / this.c;
-          this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localStComment, Integer.valueOf(i) });
+        localObject = this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener;
+        if (localObject != null) {
+          ((OnCommentElementClickListener)localObject).a(paramView, 10, this.jdField_a_of_type_Int, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment);
         }
       }
     }
+    else if (this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener != null)
+    {
+      localObject = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StComment;
+      i = getHeight() / this.c;
+      this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener.a(paramView, 11, this.jdField_a_of_type_Int, new Object[] { localObject, Integer.valueOf(i) });
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onLongClick(View paramView)
@@ -199,7 +200,7 @@ public class ReplyContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.ReplyContainer
  * JD-Core Version:    0.7.0.1
  */

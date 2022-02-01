@@ -46,12 +46,19 @@ public class VSEntranceWidgetBean
   
   public String toString()
   {
-    return "k = icon_image_url, value = " + this.a + "\n k = md5, value = " + this.b + "\n k = widget_id, value = " + this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("k = icon_image_url, value = ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("\n k = md5, value = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("\n k = widget_id, value = ");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSEntranceWidgetBean
  * JD-Core Version:    0.7.0.1
  */

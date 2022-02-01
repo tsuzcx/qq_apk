@@ -56,45 +56,62 @@ public class Geo2AddressParam$PoiOptions
   
   public String toString()
   {
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    if (!TextUtils.isEmpty(this.a)) {
-      localStringBuilder1.append(";address_format=").append(this.a);
-    }
-    if ((this.b > 0) && (this.b <= 5000)) {
-      localStringBuilder1.append(";radius=").append(this.b);
-    }
-    if ((this.d > 0) && (this.d <= 20) && (this.c > 0) && (this.c <= 20))
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (!TextUtils.isEmpty(this.a))
     {
-      localStringBuilder1.append(";page_index=").append(this.d);
-      localStringBuilder1.append(";page_size=").append(this.c);
+      localStringBuilder.append(";address_format=");
+      localStringBuilder.append(this.a);
     }
-    if (this.e > 0) {
-      localStringBuilder1.append(";policy=").append(this.e);
-    }
-    if ((this.f != null) && (this.f.length > 0))
+    int i = this.b;
+    if ((i > 0) && (i <= 5000))
     {
-      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder.append(";radius=");
+      localStringBuilder.append(this.b);
+    }
+    i = this.d;
+    if ((i > 0) && (i <= 20))
+    {
+      i = this.c;
+      if ((i > 0) && (i <= 20))
+      {
+        localStringBuilder.append(";page_index=");
+        localStringBuilder.append(this.d);
+        localStringBuilder.append(";page_size=");
+        localStringBuilder.append(this.c);
+      }
+    }
+    if (this.e > 0)
+    {
+      localStringBuilder.append(";policy=");
+      localStringBuilder.append(this.e);
+    }
+    Object localObject = this.f;
+    if ((localObject != null) && (localObject.length > 0))
+    {
+      localObject = new StringBuilder();
       String[] arrayOfString = this.f;
       int j = arrayOfString.length;
-      int i = 0;
+      i = 0;
       while (i < j)
       {
-        localStringBuilder2.append(arrayOfString[i]).append(",");
+        ((StringBuilder)localObject).append(arrayOfString[i]);
+        ((StringBuilder)localObject).append(",");
         i += 1;
       }
-      i = localStringBuilder2.lastIndexOf(",");
-      localStringBuilder2.delete(i, i + 1);
-      localStringBuilder1.append(";category=").append(localStringBuilder2.toString());
+      i = ((StringBuilder)localObject).lastIndexOf(",");
+      ((StringBuilder)localObject).delete(i, i + 1);
+      localStringBuilder.append(";category=");
+      localStringBuilder.append(((StringBuilder)localObject).toString());
     }
-    if (localStringBuilder1.indexOf(";") == 0) {
-      localStringBuilder1.delete(0, 1);
+    if (localStringBuilder.indexOf(";") == 0) {
+      localStringBuilder.delete(0, 1);
     }
-    return localStringBuilder1.toString();
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.lbssearch.object.param.Geo2AddressParam.PoiOptions
  * JD-Core Version:    0.7.0.1
  */

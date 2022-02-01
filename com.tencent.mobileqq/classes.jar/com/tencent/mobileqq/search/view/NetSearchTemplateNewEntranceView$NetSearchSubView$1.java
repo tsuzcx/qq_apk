@@ -10,8 +10,9 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.JumpActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.SearchUtil;
-import com.tencent.mobileqq.search.model.NetSearchTemplateNewEntranceItem;
+import com.tencent.mobileqq.kandian.glue.router.api.IRIJJumpUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateNewEntranceItem;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.util.SearchConfigUtils;
@@ -30,81 +31,82 @@ class NetSearchTemplateNewEntranceView$NetSearchSubView$1
   
   public void onClick(View paramView)
   {
-    Object localObject1 = paramView.getTag(2131378926);
-    Object localObject3 = paramView.getTag(2131378927);
-    Context localContext;
-    Object localObject2;
+    Object localObject1 = paramView.getTag(2131378314);
+    Object localObject4 = paramView.getTag(2131378315);
     if ((localObject1 != null) && ((localObject1 instanceof String)))
     {
-      localContext = paramView.getContext();
+      Context localContext = paramView.getContext();
       localObject1 = (String)localObject1;
-      localObject2 = paramView.getTag(2131378896);
-      if (!(localObject2 instanceof Integer)) {
-        break label511;
+      Object localObject2 = paramView.getTag(2131378285);
+      int i = 0;
+      if ((localObject2 instanceof Integer)) {
+        i = ((Integer)localObject2).intValue();
       }
-    }
-    label145:
-    label421:
-    label511:
-    for (int i = ((Integer)localObject2).intValue();; i = 0)
-    {
       if (TextUtils.isEmpty((CharSequence)localObject1))
       {
         localObject1 = SearchConfigUtils.c(i);
-        localObject1 = SearchConfigUtils.a((String)localObject3, 3, (String)localObject1);
-        if (QLog.isColorLevel()) {
-          QLog.d("NetSearchTemplateNewEntranceView", 2, "open Browser append suffix url = " + (String)localObject1);
-        }
-        if (localObject1 != null) {
-          break label145;
-        }
+        localObject1 = SearchConfigUtils.a((String)localObject4, 3, (String)localObject1);
+      }
+      else
+      {
+        localObject1 = SearchConfigUtils.b((String)localObject1, i);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("open Browser append suffix url = ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("NetSearchTemplateNewEntranceView", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (localObject1 == null)
+      {
         QLog.e("NetSearchTemplateNewEntranceView", 2, "NetSearchSubView click jumpurl is null");
       }
-      for (;;)
+      else
       {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        localObject1 = SearchConfigUtils.b((String)localObject1, i);
-        break;
         UniteSearchReportController.a(null, 0, i, "0X8009D5F", 0, 0, null, null);
-        localObject2 = (NetSearchTemplateNewEntranceItem)paramView.getTag(2131381651);
-        JSONObject localJSONObject = new JSONObject();
+        Object localObject7 = (NetSearchTemplateNewEntranceItem)paramView.getTag(2131380884);
+        Object localObject5 = new JSONObject();
+        Object localObject6;
         try
         {
-          localJSONObject.put("project", UniteSearchReportController.a());
-          localJSONObject.put("event_src", "client");
-          localJSONObject.put("experiment_id", UniteSearchReportController.b);
-          if (localObject2 != null)
-          {
-            QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-            ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_relatedsearch_list").obj1(((NetSearchTemplateNewEntranceItem)localObject2).a + "").obj2(((NetSearchTemplateNewEntranceItem)localObject2).d).ver1(((NetSearchTemplateNewEntranceItem)localObject2).a()).ver2(UniteSearchReportController.a(i));
-            if (localObject3 == null)
-            {
-              localObject2 = "";
-              UniteSearchReportController.a(null, localReportModelDC02528.ver4((String)localObject2).ver7(localJSONObject.toString()).session_id(localQQAppInterface.getCurrentAccountUin() + SearchUtil.a));
-            }
-          }
-          else
-          {
-            if ((!((String)localObject1).startsWith("https://")) && (!((String)localObject1).startsWith("http://"))) {
-              break label421;
-            }
-            SearchUtils.a(localContext, (String)localObject3, (String)localObject1);
-          }
+          ((JSONObject)localObject5).put("project", UniteSearchReportController.a());
+          ((JSONObject)localObject5).put("event_src", "client");
+          ((JSONObject)localObject5).put("experiment_id", UniteSearchReportController.b);
         }
         catch (JSONException localJSONException)
         {
-          for (;;)
-          {
-            QLog.e("NetSearchTemplateNewEntranceView", 2, "e = " + localJSONException);
-            continue;
-            localObject2 = localObject3.toString();
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append("e = ");
+          ((StringBuilder)localObject6).append(localJSONException);
+          QLog.e("NetSearchTemplateNewEntranceView", 2, ((StringBuilder)localObject6).toString());
+        }
+        Object localObject3;
+        if (localObject7 != null)
+        {
+          localObject6 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+          ReportModelDC02528 localReportModelDC02528 = new ReportModelDC02528().module("all_result").action("clk_relatedsearch_list");
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((NetSearchTemplateNewEntranceItem)localObject7).a);
+          localObject3 = "";
+          localStringBuilder.append("");
+          localObject7 = localReportModelDC02528.obj1(localStringBuilder.toString()).obj2(((NetSearchTemplateNewEntranceItem)localObject7).d).ver1(((NetSearchTemplateNewEntranceItem)localObject7).b()).ver2(UniteSearchReportController.a(i));
+          if (localObject4 != null) {
+            localObject3 = localObject4.toString();
           }
+          localObject3 = ((ReportModelDC02528)localObject7).ver4((String)localObject3).ver7(((JSONObject)localObject5).toString());
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append(((QQAppInterface)localObject6).getCurrentAccountUin());
+          ((StringBuilder)localObject5).append(SearchUtils.d);
+          UniteSearchReportController.a(null, ((ReportModelDC02528)localObject3).session_id(((StringBuilder)localObject5).toString()));
+        }
+        if ((!((String)localObject1).startsWith("https://")) && (!((String)localObject1).startsWith("http://")))
+        {
           if ((localContext instanceof BaseActivity))
           {
-            localObject2 = JumpParser.a(((BaseActivity)localContext).app, localContext, (String)localObject1);
-            if (localObject2 != null) {
-              ((JumpAction)localObject2).a();
+            localObject3 = JumpParser.a(((BaseActivity)localContext).app, localContext, (String)localObject1);
+            if (localObject3 != null) {
+              ((JumpAction)localObject3).a();
             } else {
               localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
             }
@@ -114,13 +116,17 @@ class NetSearchTemplateNewEntranceView$NetSearchSubView$1
             localContext.startActivity(new Intent(localContext, JumpActivity.class).setData(Uri.parse((String)localObject1)));
           }
         }
+        else {
+          ((IRIJJumpUtils)QRoute.api(IRIJJumpUtils.class)).jumpToNativeSearchResultPage(localContext, (String)localObject4, (String)localObject1);
+        }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateNewEntranceView.NetSearchSubView.1
  * JD-Core Version:    0.7.0.1
  */

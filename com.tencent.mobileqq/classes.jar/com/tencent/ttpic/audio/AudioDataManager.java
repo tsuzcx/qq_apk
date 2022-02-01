@@ -129,7 +129,11 @@ public enum AudioDataManager
   
   public void setPcmDecibel(int paramInt)
   {
-    LogUtils.d(TAG, "[decibel] pcm = " + paramInt);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[decibel] pcm = ");
+    localStringBuilder.append(paramInt);
+    LogUtils.d(str, localStringBuilder.toString());
     setDecibel(paramInt);
   }
   
@@ -140,7 +144,7 @@ public enum AudioDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.audio.AudioDataManager
  * JD-Core Version:    0.7.0.1
  */

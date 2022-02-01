@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.IphoneTitleBarActivity;
+import com.tencent.mobileqq.app.QIphoneTitleBarActivity;
 import com.tencent.mobileqq.widget.QQToast;
 
 class QQIdentiferLegacy$3
@@ -15,7 +15,7 @@ class QQIdentiferLegacy$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferLegacy.3
  * JD-Core Version:    0.7.0.1
  */

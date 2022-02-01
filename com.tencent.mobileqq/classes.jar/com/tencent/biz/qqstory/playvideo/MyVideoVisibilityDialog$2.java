@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.biz.qqstory.view.widget.LeftTabBarView;
 
 class MyVideoVisibilityDialog$2
@@ -19,7 +19,7 @@ class MyVideoVisibilityDialog$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog.2
  * JD-Core Version:    0.7.0.1
  */

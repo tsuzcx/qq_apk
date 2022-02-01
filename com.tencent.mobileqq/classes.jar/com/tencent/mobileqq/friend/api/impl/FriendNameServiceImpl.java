@@ -5,12 +5,15 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.friend.api.IFriendDataService;
 import com.tencent.mobileqq.friend.api.IFriendNameService;
+import com.tencent.mobileqq.friend.inject.FriendInjectFactory;
+import com.tencent.mobileqq.friend.inject.IContactFacadeInjectService;
 import com.tencent.mobileqq.friend.name.AccountName;
 import com.tencent.mobileqq.friend.name.AliasName;
 import com.tencent.mobileqq.friend.name.IFriendName;
 import com.tencent.mobileqq.friend.name.NickName;
 import com.tencent.mobileqq.friend.name.PhoneContactName;
 import com.tencent.mobileqq.friend.name.ProfileCardName;
+import com.tencent.mobileqq.friend.name.PublicAccountName;
 import com.tencent.mobileqq.friend.name.RemarkName;
 import com.tencent.mobileqq.friend.name.UINName;
 import com.tencent.qphone.base.util.QLog;
@@ -24,15 +27,17 @@ import mqq.app.AppRuntime;
 public class FriendNameServiceImpl
   implements IFriendNameService
 {
-  private static String STRATEGY_KEY_ACCOUNT_NAME = AccountName.class.getSimpleName();
-  private static String STRATEGY_KEY_FRIEND_ALIAS = AliasName.class.getSimpleName();
-  private static String STRATEGY_KEY_FRIEND_NICK;
-  private static String STRATEGY_KEY_FRIEND_REMARK = RemarkName.class.getSimpleName();
-  private static String STRATEGY_KEY_FRIEND_UIN = UINName.class.getSimpleName();
-  private static String STRATEGY_KEY_PHONE_CONTACT = PhoneContactName.class.getSimpleName();
-  private static String STRATEGY_KEY_PROFILE_CARD;
-  private static final String TAG = "FriendNameServiceImpl";
+  private static final String STRATEGY_KEY_ACCOUNT_NAME = AccountName.class.getSimpleName();
+  private static final String STRATEGY_KEY_FRIEND_ALIAS = AliasName.class.getSimpleName();
+  private static final String STRATEGY_KEY_FRIEND_NICK;
+  private static final String STRATEGY_KEY_FRIEND_REMARK = RemarkName.class.getSimpleName();
+  private static final String STRATEGY_KEY_FRIEND_UIN = UINName.class.getSimpleName();
+  private static final String STRATEGY_KEY_PHONE_CONTACT = PhoneContactName.class.getSimpleName();
+  private static final String STRATEGY_KEY_PROFILE_CARD;
+  private static final String STRATEGY_KEY_PUBLIC_ACCOUNT = PublicAccountName.class.getSimpleName();
+  private static final String TAG = "IMCore.friend.FriendNameServiceImpl";
   private AppInterface mApp;
+  private IContactFacadeInjectService mContactFacadeService;
   private IFriendDataService mFriendDataService;
   private HashMap<String, IFriendName> mFriendNameStrategies;
   
@@ -44,33 +49,56 @@ public class FriendNameServiceImpl
   
   private String getFriendName(String paramString, List<String> paramList)
   {
-    Object localObject = null;
-    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
-      paramList = null;
-    }
-    do
+    return getFriendName(paramString, paramList, false);
+  }
+  
+  private String getFriendName(String paramString, List<String> paramList, boolean paramBoolean)
+  {
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject3 = null;
+    if ((!bool) && (paramList != null))
     {
-      return paramList;
+      if (paramList.isEmpty()) {
+        return null;
+      }
       Friends localFriends = this.mFriendDataService.getFriend(paramString, true, true);
       Iterator localIterator = paramList.iterator();
-      paramList = (List<String>)localObject;
-      if (!localIterator.hasNext()) {
-        return paramList;
+      paramList = null;
+      Object localObject2;
+      Object localObject1;
+      do
+      {
+        do
+        {
+          localObject2 = localObject3;
+          localObject1 = paramList;
+          if (!localIterator.hasNext()) {
+            break;
+          }
+          localObject2 = (String)localIterator.next();
+          localObject1 = (IFriendName)this.mFriendNameStrategies.get(localObject2);
+        } while (localObject1 == null);
+        localObject1 = ((IFriendName)localObject1).a(paramString, localFriends, this.mApp);
+        paramList = (List<String>)localObject1;
+      } while (TextUtils.isEmpty((CharSequence)localObject1));
+      if ((paramBoolean) && ((TextUtils.isEmpty((CharSequence)localObject2)) || (STRATEGY_KEY_FRIEND_UIN.equals(localObject2))))
+      {
+        paramList = this.mContactFacadeService;
+        if (paramList != null) {
+          paramList.a(this.mApp, paramString);
+        }
       }
-      localObject = (String)localIterator.next();
-      localObject = (IFriendName)this.mFriendNameStrategies.get(localObject);
-      if (localObject == null) {
-        break;
-      }
-      localObject = ((IFriendName)localObject).a(paramString, localFriends, this.mApp);
-      paramList = (List<String>)localObject;
-    } while (!TextUtils.isEmpty((CharSequence)localObject));
-    paramList = (List<String>)localObject;
-    for (;;)
-    {
-      break;
+      return localObject1;
     }
-    return paramList;
+    return null;
+  }
+  
+  public String getBuddyName(String paramString, boolean paramBoolean)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.add(STRATEGY_KEY_PUBLIC_ACCOUNT);
+    localArrayList.add(STRATEGY_KEY_FRIEND_UIN);
+    return getFriendName(paramString, localArrayList, paramBoolean);
   }
   
   public String getFriendAlias(String paramString)
@@ -135,6 +163,8 @@ public class FriendNameServiceImpl
     this.mFriendNameStrategies.put(STRATEGY_KEY_PROFILE_CARD, new ProfileCardName());
     this.mFriendNameStrategies.put(STRATEGY_KEY_FRIEND_ALIAS, new AliasName());
     this.mFriendNameStrategies.put(STRATEGY_KEY_FRIEND_UIN, new UINName());
+    this.mFriendNameStrategies.put(STRATEGY_KEY_PUBLIC_ACCOUNT, new PublicAccountName());
+    this.mContactFacadeService = FriendInjectFactory.a();
   }
   
   public void onDestroy() {}
@@ -145,7 +175,7 @@ public class FriendNameServiceImpl
     paramString1 = paramString2;
     if (paramString2 == null)
     {
-      QLog.d("FriendNameServiceImpl", 1, "saveFriendRemark, remark is null");
+      QLog.d("IMCore.friend.FriendNameServiceImpl", 1, "saveFriendRemark, remark is null");
       paramString1 = "";
     }
     if (!paramString1.equals(localFriends.remark))
@@ -159,7 +189,7 @@ public class FriendNameServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.api.impl.FriendNameServiceImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,18 @@
 package com.tencent.mobileqq.intervideo.lite_now_biz.now_od;
 
 import android.content.Context;
+import android.net.Uri;
 import android.os.Build.VERSION;
+import android.os.Bundle;
+import android.text.TextUtils;
 import androidx.lifecycle.Observer;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.falco.utils.NetworkUtil;
 import com.tencent.ilive.base.event.ModuleEvent;
 import com.tencent.ilive.litepages.room.webmodule.jsmodule.JsBizAdapter;
 import com.tencent.ilive.litepages.room.webmodule.model.RoomExtInfo;
+import com.tencent.ilive.pages.room.RoomBizContext;
+import com.tencent.ilivesdk.roomservice_interface.model.EnterRoomInfo;
 import com.tencent.mobileqq.intervideo.lite_now_biz.event.AudioChangeEvent;
 import com.tencent.mobileqq.intervideo.lite_now_biz.js.NowAppJs;
 import com.tencent.mobileqq.intervideo.lite_now_biz.js.NowEventJs;
@@ -34,6 +39,22 @@ public class ODWebBizModule
     c();
   }
   
+  private String h()
+  {
+    Object localObject = this.roomBizContext.getEnterRoomInfo().extData.getString("mqqschema");
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return null;
+    }
+    localObject = Uri.parse((String)localObject);
+    try
+    {
+      localObject = ((Uri)localObject).getQueryParameter("anchoruid");
+      return localObject;
+    }
+    catch (Exception localException) {}
+    return null;
+  }
+  
   public RoomExtInfo a()
   {
     return null;
@@ -46,22 +67,24 @@ public class ODWebBizModule
   
   public String a(String paramString)
   {
-    String str2 = Build.VERSION.RELEASE;
+    String str = Build.VERSION.RELEASE;
     int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
-    String str1;
-    if (!StringUtil.a(paramString))
-    {
-      str1 = paramString;
-      if (paramString.contains("NowSDK/")) {}
+    if ((!StringUtil.a(paramString)) && (paramString.contains("NowSDK/"))) {
+      return paramString;
     }
-    else
-    {
-      str1 = paramString + " NowLive/" + 10305 + "_" + str2 + " QQ/8.4.8.1522 NetType/" + i + " NowSDK/18_10.20";
-    }
-    return str1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" NowLive/");
+    localStringBuilder.append(10800);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" QQ/8.4.8.1522 NetType/");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" NowSDK/18_10.20");
+    return localStringBuilder.toString();
   }
   
-  public void a()
+  protected void a()
   {
     super.a();
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new SsoJavascriptInterface(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter));
@@ -72,7 +95,7 @@ public class ODWebBizModule
     this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedRoombizmodulesWebmoduleLiteLiveJsProvider.a(new NowEventJs(this.jdField_a_of_type_ComTencentBizUiTouchWebView, this.context, this.jdField_a_of_type_ComTencentIliveLitepagesRoomWebmoduleJsmoduleJsBizAdapter, this.jdField_a_of_type_JavaUtilMap));
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return false;
   }
@@ -82,7 +105,7 @@ public class ODWebBizModule
     return "https://now.qq.com/qq/jiaoyou/index.html";
   }
   
-  public void b()
+  protected void b()
   {
     ODWebCookieManager.a().a(this.jdField_a_of_type_JavaLangString);
     ODWebCookieManager.a().a("https://yutang.qq.com/");
@@ -127,6 +150,15 @@ public class ODWebBizModule
   public void onCreate(Context paramContext)
   {
     super.onCreate(paramContext);
+    paramContext = h();
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramContext)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("&friend_uin=");
+      localStringBuilder.append(paramContext);
+      this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    }
   }
   
   public void onEnterRoom(boolean paramBoolean)
@@ -143,7 +175,7 @@ public class ODWebBizModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_od.ODWebBizModule
  * JD-Core Version:    0.7.0.1
  */

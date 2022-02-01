@@ -1,12 +1,9 @@
 package com.tencent.mobileqq.config.business;
 
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.avgame.util.AvGameLobbyConfBean;
+import com.tencent.avgame.config.data.AvGameLobbyConfBean;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.LinkedList;
@@ -18,55 +15,49 @@ public class AvGameLobbyConfProcessor
 {
   private final List<AvGameLobbyConfProcessor.OnGetConfigListener> a = new LinkedList();
   
-  public static AvGameLobbyConfBean a()
-  {
-    AvGameLobbyConfBean localAvGameLobbyConfBean = (AvGameLobbyConfBean)QConfigManager.a().a(713);
-    if (localAvGameLobbyConfBean != null) {
-      return localAvGameLobbyConfBean;
-    }
-    return new AvGameLobbyConfBean();
-  }
-  
   private void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AvGameLobbyConfProcessor", 2, "[notifyListeners]:" + this.a.size());
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("[notifyListeners]:");
+      ((StringBuilder)???).append(this.a.size());
+      QLog.d("AvGameLobbyConfProcessor", 2, ((StringBuilder)???).toString());
     }
     ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
     try
     {
       synchronized (this.a)
       {
-        if (this.a.size() <= 0) {
-          break label162;
-        }
-        Iterator localIterator = this.a.iterator();
-        while (localIterator.hasNext())
+        if (this.a.size() > 0)
         {
-          AvGameLobbyConfProcessor.OnGetConfigListener localOnGetConfigListener = (AvGameLobbyConfProcessor.OnGetConfigListener)localIterator.next();
-          try
+          Iterator localIterator = this.a.iterator();
+          while (localIterator.hasNext())
           {
-            localOnGetConfigListener.a(paramInt);
+            AvGameLobbyConfProcessor.OnGetConfigListener localOnGetConfigListener = (AvGameLobbyConfProcessor.OnGetConfigListener)localIterator.next();
+            try
+            {
+              localOnGetConfigListener.a(paramInt);
+            }
+            catch (Throwable localThrowable2) {}
+            if (QLog.isColorLevel()) {
+              QLog.e("AvGameLobbyConfProcessor", 1, localThrowable2, new Object[0]);
+            }
           }
-          catch (Throwable localThrowable2) {}
-          if (QLog.isColorLevel()) {
-            QLog.e("AvGameLobbyConfProcessor", 1, localThrowable2, new Object[0]);
-          }
+          this.a.clear();
         }
+        return;
       }
-      this.a.clear();
+      return;
     }
     catch (Throwable localThrowable1)
     {
       if (QLog.isColorLevel()) {
         QLog.e("AvGameLobbyConfProcessor", 1, localThrowable1, new Object[0]);
       }
-      return;
     }
-    label162:
   }
   
-  @NonNull
   public AvGameLobbyConfBean a(int paramInt)
   {
     if (QLog.isColorLevel()) {
@@ -75,7 +66,6 @@ public class AvGameLobbyConfProcessor
     return new AvGameLobbyConfBean();
   }
   
-  @Nullable
   public AvGameLobbyConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if (QLog.isColorLevel()) {
@@ -83,8 +73,12 @@ public class AvGameLobbyConfProcessor
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AvGameLobbyConfProcessor", 2, "onParsed " + paramArrayOfQConfItem.length);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem.length);
+        QLog.d("AvGameLobbyConfProcessor", 2, localStringBuilder.toString());
       }
       return AvGameLobbyConfBean.a(paramArrayOfQConfItem[0]);
     }
@@ -93,21 +87,19 @@ public class AvGameLobbyConfProcessor
   
   public void a(AvGameLobbyConfBean paramAvGameLobbyConfBean)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramAvGameLobbyConfBean == null) {
-        break label48;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      if (paramAvGameLobbyConfBean != null) {
+        paramAvGameLobbyConfBean = paramAvGameLobbyConfBean.toString();
+      } else {
+        paramAvGameLobbyConfBean = " empty";
       }
+      localStringBuilder.append(paramAvGameLobbyConfBean);
+      QLog.d("AvGameLobbyConfProcessor", 2, localStringBuilder.toString());
     }
-    label48:
-    for (paramAvGameLobbyConfBean = paramAvGameLobbyConfBean.toString();; paramAvGameLobbyConfBean = " empty")
-    {
-      QLog.d("AvGameLobbyConfProcessor", 2, paramAvGameLobbyConfBean);
-      a(0);
-      return;
-    }
+    a(0);
   }
   
   public Class clazz()
@@ -137,8 +129,12 @@ public class AvGameLobbyConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("AvGameLobbyConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.e("AvGameLobbyConfProcessor", 2, localStringBuilder.toString());
     }
     a(paramInt);
   }
@@ -150,7 +146,7 @@ public class AvGameLobbyConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AvGameLobbyConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -20,49 +20,49 @@ public class Type
   void calcElementCount()
   {
     boolean bool = hasMipmaps();
-    int k = getX();
-    int j = getY();
+    int j = getX();
+    int k = getY();
     int n = getZ();
-    if (hasFaces()) {}
-    for (int m = 6;; m = 1)
-    {
-      int i = k;
-      if (k == 0) {
-        i = 1;
-      }
-      k = j;
-      if (j == 0) {
-        k = 1;
-      }
-      j = n;
-      if (n == 0) {
-        j = 1;
-      }
-      n = k;
-      int i1 = i;
-      i = i * k * j * m;
-      while ((bool) && ((i1 > 1) || (n > 1) || (j > 1)))
-      {
-        k = i1;
-        if (i1 > 1) {
-          k = i1 >> 1;
-        }
-        i1 = n;
-        if (n > 1) {
-          i1 = n >> 1;
-        }
-        n = j;
-        if (j > 1) {
-          n = j >> 1;
-        }
-        i += k * i1 * n * m;
-        j = n;
-        n = i1;
-        i1 = k;
-      }
-      this.mElementCount = i;
-      return;
+    int m;
+    if (hasFaces()) {
+      m = 6;
+    } else {
+      m = 1;
     }
+    int i = j;
+    if (j == 0) {
+      i = 1;
+    }
+    j = k;
+    if (k == 0) {
+      j = 1;
+    }
+    k = n;
+    if (n == 0) {
+      k = 1;
+    }
+    n = i * j * k * m;
+    int i2 = i;
+    while ((bool) && ((i2 > 1) || (j > 1) || (k > 1)))
+    {
+      i = i2;
+      if (i2 > 1) {
+        i = i2 >> 1;
+      }
+      int i1 = j;
+      if (j > 1) {
+        i1 = j >> 1;
+      }
+      int i3 = k;
+      if (k > 1) {
+        i3 = k >> 1;
+      }
+      n += i * i1 * i3 * m;
+      i2 = i;
+      j = i1;
+      k = i3;
+    }
+    this.mElementCount = n;
   }
   
   public int getCount()
@@ -107,7 +107,7 @@ public class Type
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.Type
  * JD-Core Version:    0.7.0.1
  */

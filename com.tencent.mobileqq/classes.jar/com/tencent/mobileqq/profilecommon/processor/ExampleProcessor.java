@@ -37,8 +37,9 @@ public class ExampleProcessor
   
   public void onGetProfileDetailResponse(Bundle paramBundle, boolean paramBoolean, oidb_0x5eb.UdcUinData paramUdcUinData)
   {
+    boolean bool = QLog.isColorLevel();
     int j = 0;
-    if (QLog.isColorLevel()) {
+    if (bool) {
       QLog.d("ExampleProcessor", 2, String.format("onGetProfileDetailResponse extras=%s success=%s", new Object[] { paramBundle, Boolean.valueOf(paramBoolean) }));
     }
     int i = j;
@@ -67,7 +68,7 @@ public class ExampleProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.ExampleProcessor
  * JD-Core Version:    0.7.0.1
  */

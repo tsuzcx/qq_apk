@@ -18,7 +18,7 @@ class ShareHelper$1$3$1
     this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1.a.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$OnUseResListener.a(false);
     if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      QRUtils.a(1, 2131696460);
+      QRUtils.a(1, 2131696479);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqProfilePersonalityLabelShareHelper$1$3.jdField_a_of_type_Long == 2L)
@@ -31,7 +31,7 @@ class ShareHelper$1$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.ShareHelper.1.3.1
  * JD-Core Version:    0.7.0.1
  */

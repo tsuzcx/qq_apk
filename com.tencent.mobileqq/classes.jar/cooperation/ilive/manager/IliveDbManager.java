@@ -35,8 +35,12 @@ public class IliveDbManager
     AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
     if (localAppRuntime != null)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("IliveFileDbManager", 4, "getCurrentUin = " + localAppRuntime.getAccount());
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getCurrentUin = ");
+        localStringBuilder.append(localAppRuntime.getAccount());
+        QLog.i("IliveFileDbManager", 4, localStringBuilder.toString());
       }
       return localAppRuntime.getAccount();
     }
@@ -46,73 +50,110 @@ public class IliveDbManager
   public static String getILiveEnterInfo(int paramInt)
   {
     Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
-    String str = "";
-    switch (paramInt)
+    String str;
+    if (paramInt != 1)
     {
-    }
-    for (;;)
-    {
-      localObject = ((SharedPreferences)localObject).getString(str, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("IliveFileDbManager", 1, "get sp key:" + str + " value = " + (String)localObject);
+      if (paramInt != 2) {
+        str = "";
+      } else {
+        str = "key_shop_pic_url";
       }
-      return localObject;
-      str = "key_shop_title";
-      continue;
-      str = "key_shop_pic_url";
     }
+    else {
+      str = "key_shop_title";
+    }
+    localObject = ((SharedPreferences)localObject).getString(str, "");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get sp key:");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" value = ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("IliveFileDbManager", 1, localStringBuilder.toString());
+    }
+    return localObject;
   }
   
   public static IliveConfigBean getIliveConfigBean(int paramInt)
   {
     Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
-    String str = "";
-    switch (paramInt)
+    String str;
+    if (paramInt != 1)
     {
-    }
-    for (;;)
-    {
-      localObject = ((SharedPreferences)localObject).getString(str, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("IliveFileDbManager", 1, "getIliveConfigBean get sp key:" + str + " json value = " + (String)localObject);
+      if (paramInt != 2) {
+        str = "";
+      } else {
+        str = "ilive_plugin_last_use";
       }
-      return IliveConfigBean.a((String)localObject);
-      str = "ilive_plugin_new_data";
-      continue;
-      str = "ilive_plugin_last_use";
     }
+    else {
+      str = "ilive_plugin_new_data";
+    }
+    localObject = ((SharedPreferences)localObject).getString(str, "");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIliveConfigBean get sp key:");
+      localStringBuilder.append(str);
+      localStringBuilder.append(" json value = ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("IliveFileDbManager", 1, localStringBuilder.toString());
+    }
+    return IliveConfigBean.a((String)localObject);
   }
   
   public static String getIliveDrawerData(String paramString)
   {
     Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
-    paramString = paramString + "_" + getCurrentUin();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(getCurrentUin());
+    paramString = localStringBuilder.toString();
     localObject = ((SharedPreferences)localObject).getString(paramString, "");
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveFileDbManager", 1, "getIliveDrawerData sp key:" + paramString + " value = " + (String)localObject);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIliveDrawerData sp key:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" value = ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("IliveFileDbManager", 1, localStringBuilder.toString());
     }
     return localObject;
   }
   
   public static int getIliveSwitch(int paramInt)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
-    String str = "";
-    switch (paramInt)
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
+    if (paramInt != 1)
     {
-    }
-    for (;;)
-    {
-      str = str + "_" + getCurrentUin();
-      paramInt = localSharedPreferences.getInt(str, 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("IliveFileDbManager", 1, "get sp key:" + str + " value = " + paramInt);
+      if (paramInt != 2) {
+        str = "";
+      } else {
+        str = "is_show_shop";
       }
-      return paramInt;
-      str = "is_show_anchor_entrance";
-      continue;
-      str = "is_show_shop";
     }
+    else {
+      str = "is_show_anchor_entrance";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(getCurrentUin());
+    String str = localStringBuilder.toString();
+    paramInt = ((SharedPreferences)localObject).getInt(str, 0);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get sp key:");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(" value = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("IliveFileDbManager", 1, ((StringBuilder)localObject).toString());
+    }
+    return paramInt;
   }
   
   public static boolean saveIliveConfigBean(int paramInt, IliveConfigBean paramIliveConfigBean)
@@ -120,30 +161,43 @@ public class IliveDbManager
     if (paramIliveConfigBean == null) {
       return false;
     }
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
-    String str = "";
-    switch (paramInt)
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
+    String str;
+    if (paramInt != 1)
     {
-    }
-    for (;;)
-    {
-      paramIliveConfigBean = IliveConfigBean.a(paramIliveConfigBean);
-      boolean bool = localSharedPreferences.edit().putString(str, paramIliveConfigBean).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("IliveFileDbManager", 1, "saveIliveConfigBean set sp key:" + str + " json value = " + paramIliveConfigBean);
+      if (paramInt != 2) {
+        str = "";
+      } else {
+        str = "ilive_plugin_last_use";
       }
-      return bool;
-      str = "ilive_plugin_new_data";
-      continue;
-      str = "ilive_plugin_last_use";
     }
+    else {
+      str = "ilive_plugin_new_data";
+    }
+    paramIliveConfigBean = IliveConfigBean.a(paramIliveConfigBean);
+    boolean bool = ((SharedPreferences)localObject).edit().putString(str, paramIliveConfigBean).commit();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveIliveConfigBean set sp key:");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(" json value = ");
+      ((StringBuilder)localObject).append(paramIliveConfigBean);
+      QLog.d("IliveFileDbManager", 1, ((StringBuilder)localObject).toString());
+    }
+    return bool;
   }
   
   public static void saveIliveData(int paramInt, QqLiveMsg paramQqLiveMsg)
   {
-    QLog.i("IliveFileDbManager", 1, "saveIliveData isQQLivePgc = " + paramInt + " qqLiveMsg = " + paramQqLiveMsg);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("saveIliveData isQQLivePgc = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" qqLiveMsg = ");
+    localStringBuilder.append(paramQqLiveMsg);
+    QLog.i("IliveFileDbManager", 1, localStringBuilder.toString());
     saveIliveSwitch(1, paramInt);
-    if ((paramQqLiveMsg != null) || ((paramQqLiveMsg != null) && (!TextUtils.isEmpty(paramQqLiveMsg.anchorUrl)) && (!TextUtils.isEmpty(paramQqLiveMsg.viewerUrl))))
+    if ((paramQqLiveMsg != null) && (!TextUtils.isEmpty(paramQqLiveMsg.anchorUrl)) && (!TextUtils.isEmpty(paramQqLiveMsg.viewerUrl)))
     {
       saveIliveSwitch(2, paramQqLiveMsg.isShopEntrance);
       saveIlivePluginConfig(paramQqLiveMsg);
@@ -159,11 +213,21 @@ public class IliveDbManager
   
   public static boolean saveIliveDrawerData(String paramString1, String paramString2)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
-    paramString1 = paramString1 + "_" + getCurrentUin();
-    boolean bool = localSharedPreferences.edit().putString(paramString1, paramString2).commit();
-    if (QLog.isColorLevel()) {
-      QLog.d("IliveFileDbManager", 1, "saveIliveDrawerData sp key:" + paramString1 + " value = " + paramString2);
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(getCurrentUin());
+    paramString1 = localStringBuilder.toString();
+    boolean bool = ((SharedPreferences)localObject).edit().putString(paramString1, paramString2).commit();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveIliveDrawerData sp key:");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" value = ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("IliveFileDbManager", 1, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
@@ -171,26 +235,32 @@ public class IliveDbManager
   private static boolean saveIliveDrawerShoppingInfo(QqLiveMsg paramQqLiveMsg)
   {
     SharedPreferences.Editor localEditor = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4).edit();
-    if (TextUtils.isEmpty(paramQqLiveMsg.ShopText))
-    {
-      str = "";
-      localEditor.putString("key_shop_title", str);
-      if (!TextUtils.isEmpty(paramQqLiveMsg.ShopPicUrl)) {
-        break label124;
-      }
+    boolean bool = TextUtils.isEmpty(paramQqLiveMsg.ShopText);
+    String str = "";
+    Object localObject;
+    if (bool) {
+      localObject = "";
+    } else {
+      localObject = paramQqLiveMsg.ShopText;
     }
-    label124:
-    for (String str = "";; str = paramQqLiveMsg.ShopPicUrl)
-    {
-      localEditor.putString("key_shop_pic_url", str);
-      boolean bool = localEditor.commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("IliveFileDbManager", 1, "set sp key:shop_drawer_enter value = " + paramQqLiveMsg.ShopText + "  " + paramQqLiveMsg.ShopPicUrl);
-      }
-      return bool;
-      str = paramQqLiveMsg.ShopText;
-      break;
+    localEditor.putString("key_shop_title", (String)localObject);
+    if (TextUtils.isEmpty(paramQqLiveMsg.ShopPicUrl)) {
+      localObject = str;
+    } else {
+      localObject = paramQqLiveMsg.ShopPicUrl;
     }
+    localEditor.putString("key_shop_pic_url", (String)localObject);
+    bool = localEditor.commit();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("set sp key:shop_drawer_enter value = ");
+      ((StringBuilder)localObject).append(paramQqLiveMsg.ShopText);
+      ((StringBuilder)localObject).append("  ");
+      ((StringBuilder)localObject).append(paramQqLiveMsg.ShopPicUrl);
+      QLog.d("IliveFileDbManager", 1, ((StringBuilder)localObject).toString());
+    }
+    return bool;
   }
   
   private static void saveIlivePluginConfig(QqLiveMsg paramQqLiveMsg)
@@ -204,34 +274,50 @@ public class IliveDbManager
     localIliveConfigBean.d = paramQqLiveMsg.anchorUrlMd5;
     localIliveConfigBean.jdField_a_of_type_JavaLangString = paramQqLiveMsg.viewerUrl;
     localIliveConfigBean.b = paramQqLiveMsg.viewerUrlMd5;
-    QLog.e("IliveFileDbManager", 1, "saveIlivePluginConfig anchorMd5 = " + localIliveConfigBean.d + " mWatchPluginMd5 = " + localIliveConfigBean.b);
+    paramQqLiveMsg = new StringBuilder();
+    paramQqLiveMsg.append("saveIlivePluginConfig anchorMd5 = ");
+    paramQqLiveMsg.append(localIliveConfigBean.d);
+    paramQqLiveMsg.append(" mWatchPluginMd5 = ");
+    paramQqLiveMsg.append(localIliveConfigBean.b);
+    QLog.e("IliveFileDbManager", 1, paramQqLiveMsg.toString());
     saveIliveConfigBean(1, localIliveConfigBean);
   }
   
   public static boolean saveIliveSwitch(int paramInt1, int paramInt2)
   {
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
-    String str = "";
-    switch (paramInt1)
+    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("qq_vas_ilive", 4);
+    if (paramInt1 != 1)
     {
-    }
-    for (;;)
-    {
-      str = str + "_" + getCurrentUin();
-      boolean bool = localSharedPreferences.edit().putInt(str, paramInt2).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("IliveFileDbManager", 1, "set sp key:" + str + " value = " + paramInt2);
+      if (paramInt1 != 2) {
+        str = "";
+      } else {
+        str = "is_show_shop";
       }
-      return bool;
-      str = "is_show_anchor_entrance";
-      continue;
-      str = "is_show_shop";
     }
+    else {
+      str = "is_show_anchor_entrance";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(getCurrentUin());
+    String str = localStringBuilder.toString();
+    boolean bool = ((SharedPreferences)localObject).edit().putInt(str, paramInt2).commit();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("set sp key:");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(" value = ");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("IliveFileDbManager", 1, ((StringBuilder)localObject).toString());
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.manager.IliveDbManager
  * JD-Core Version:    0.7.0.1
  */

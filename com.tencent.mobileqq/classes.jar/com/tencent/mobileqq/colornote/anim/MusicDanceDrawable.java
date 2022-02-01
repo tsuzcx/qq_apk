@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.colornote.anim;
 
 import android.content.Context;
+import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.ColorFilter;
 import android.graphics.Paint;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
+import android.util.DisplayMetrics;
+import com.tencent.mobileqq.config.api.IAppSettingApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
@@ -26,6 +27,14 @@ public class MusicDanceDrawable
   private int d;
   private int e;
   private int f = 0;
+  
+  private static int a(float paramFloat, Resources paramResources)
+  {
+    if (paramFloat == 0.0F) {
+      return 0;
+    }
+    return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
+  }
   
   public void a(int paramInt)
   {
@@ -75,8 +84,11 @@ public class MusicDanceDrawable
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramInt3);
     this.b = paramInt2;
-    this.c = AIOUtils.a(2.0F, paramContext.getResources());
-    if (this.c < 0) {}
+    this.c = a(2.0F, paramContext.getResources());
+    paramContext = (IAppSettingApi)QRoute.api(IAppSettingApi.class);
+    if ((this.c < 0) && (paramContext.isDebugVersion())) {
+      throw new IllegalStateException("MusicDanceView#mBarPadding mast > 0");
+    }
     paramInt3 = (paramInt1 - this.c * 2) / 3;
     paramInt1 = 0;
     while ((this.jdField_a_of_type_JavaUtilList.size() < 3) && (paramInt1 < 3))
@@ -86,10 +98,10 @@ public class MusicDanceDrawable
     }
   }
   
-  public void draw(@NonNull Canvas paramCanvas)
+  public void draw(Canvas paramCanvas)
   {
-    this.jdField_a_of_type_Int = 0;
     int i = 0;
+    this.jdField_a_of_type_Int = 0;
     while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
       MusicDanceDrawable.MusicBar localMusicBar = (MusicDanceDrawable.MusicBar)this.jdField_a_of_type_JavaUtilList.get(i);
@@ -123,7 +135,9 @@ public class MusicDanceDrawable
       {
         double d1 = ((Double)jdField_a_of_type_ArrayOfJavaUtilList[i].get(this.f)).doubleValue();
         MusicDanceDrawable.MusicBar localMusicBar = (MusicDanceDrawable.MusicBar)this.jdField_a_of_type_JavaUtilList.get(i);
-        localMusicBar.a((int)(d1 * MusicDanceDrawable.MusicBar.c(localMusicBar)));
+        double d2 = MusicDanceDrawable.MusicBar.c(localMusicBar);
+        Double.isNaN(d2);
+        localMusicBar.a((int)(d2 * d1));
         i += 1;
       }
       scheduleSelf(this, 50L);
@@ -137,7 +151,7 @@ public class MusicDanceDrawable
   
   public void setAlpha(int paramInt) {}
   
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter) {}
+  public void setColorFilter(ColorFilter paramColorFilter) {}
   
   public void stop()
   {
@@ -146,7 +160,7 @@ public class MusicDanceDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.anim.MusicDanceDrawable
  * JD-Core Version:    0.7.0.1
  */

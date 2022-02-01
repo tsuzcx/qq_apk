@@ -11,14 +11,17 @@ class MagicFaceDataEntity$1
   
   public void run()
   {
-    AVLog.printColorLog("MagicFaceDataEntity", "reloadDecrateList 2:" + this.a);
-    MagicFaceDataEntity.1.1 local1 = new MagicFaceDataEntity.1.1(this);
-    this.this$0.a.a().post(local1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("reloadDecrateList 2:");
+    ((StringBuilder)localObject).append(this.a);
+    AVLog.printColorLog("MagicFaceDataEntity", ((StringBuilder)localObject).toString());
+    localObject = new MagicFaceDataEntity.1.1(this);
+    this.this$0.a.a().post((Runnable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicFaceDataEntity.1
  * JD-Core Version:    0.7.0.1
  */

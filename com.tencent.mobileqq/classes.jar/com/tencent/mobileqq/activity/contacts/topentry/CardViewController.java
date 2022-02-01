@@ -62,8 +62,12 @@ public class CardViewController
     if (j < 0) {
       i = 0;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "loadCardSize = " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadCardSize = ");
+      localStringBuilder.append(i);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
     return i;
   }
@@ -71,8 +75,12 @@ public class CardViewController
   private long a()
   {
     long l = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager.a(2);
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "getCardDisplayInterval = " + l);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getCardDisplayInterval = ");
+      localStringBuilder.append(l);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
     return l;
   }
@@ -84,29 +92,38 @@ public class CardViewController
   
   private SharedPreferences a()
   {
-    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null) {
-      this.jdField_a_of_type_AndroidContentSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("CardViewControllermay_know_sp" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 0);
+    if (this.jdField_a_of_type_AndroidContentSharedPreferences == null)
+    {
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("CardViewControllermay_know_sp");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0);
     }
     return this.jdField_a_of_type_AndroidContentSharedPreferences;
   }
   
   private void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "decreaseCurrentDelCount " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decreaseCurrentDelCount ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("CardViewController", 2, ((StringBuilder)localObject).toString());
     }
     int i = b();
-    SharedPreferences.Editor localEditor = a();
+    Object localObject = a();
     i -= paramInt;
     paramInt = i;
     if (i < 0) {
       paramInt = 0;
     }
-    localEditor.putInt("CardViewControllerdelete_count", paramInt);
+    ((SharedPreferences.Editor)localObject).putInt("CardViewControllerdelete_count", paramInt);
     if (paramInt == 0) {
-      localEditor.putLong("CardViewControllerdisplay_not_2", 0L);
+      ((SharedPreferences.Editor)localObject).putLong("CardViewControllerdisplay_not_2", 0L);
     }
-    localEditor.apply();
+    ((SharedPreferences.Editor)localObject).apply();
   }
   
   private void a(ArrayList<MayKnowRecommend> paramArrayList)
@@ -146,31 +163,40 @@ public class CardViewController
       }
       return;
     }
+    for (;;)
+    {
+      throw paramArrayList;
+    }
   }
   
   private void a(List<MayKnowRecommend> paramList)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("refreshCardData: ");
-      if (paramList != null) {
-        break label52;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshCardData: ");
+      String str;
+      if (paramList == null) {
+        str = "NULL";
+      } else {
+        str = paramList.toString();
       }
+      localStringBuilder.append(str);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
-    label52:
-    for (String str = "NULL";; str = paramList.toString())
-    {
-      QLog.d("CardViewController", 2, str);
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCardViewController$MayKnowListener.a(paramList);
-      return;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCardViewController$MayKnowListener.a(paramList);
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "reallyCheckLocalUpdate, fromNetwork = " + paramBoolean1 + ", isSuccess = " + paramBoolean2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reallyCheckLocalUpdate, fromNetwork = ");
+      localStringBuilder.append(paramBoolean1);
+      localStringBuilder.append(", isSuccess = ");
+      localStringBuilder.append(paramBoolean2);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
     ThreadManagerV2.excute(new CardViewController.2(this), 16, null, true);
   }
@@ -188,7 +214,7 @@ public class CardViewController
     if (QLog.isColorLevel()) {
       QLog.d("CardViewController", 2, "getMKRDataFromNetwork");
     }
-    if (!NetworkUtil.g(BaseApplicationImpl.getContext()))
+    if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext()))
     {
       if (QLog.isColorLevel()) {
         QLog.d("CardViewController", 2, "getMKRDataFromNetwork when network error, abort");
@@ -200,25 +226,7 @@ public class CardViewController
   
   private boolean a(MayKnowRecommend paramMayKnowRecommend)
   {
-    if (paramMayKnowRecommend != null)
-    {
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.b(paramMayKnowRecommend.uin))
-      {
-        boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.a(paramMayKnowRecommend.uin, false, true);
-        if (bool) {}
-        for (int i = 1;; i = 0)
-        {
-          paramMayKnowRecommend.friendStatus = i;
-          if (bool) {
-            break;
-          }
-          return true;
-        }
-        return false;
-      }
-      paramMayKnowRecommend.friendStatus = 2;
-    }
-    return false;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private boolean a(String paramString, List<MayKnowRecommend> paramList)
@@ -239,17 +247,19 @@ public class CardViewController
   
   private int b()
   {
-    int i = 0;
     int j = a().getInt("CardViewControllerdelete_count", 0);
-    if (j < 0) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("CardViewController", 2, "loadCurrentDelCount = " + i);
-      }
-      return i;
-      i = j;
+    int i = j;
+    if (j < 0) {
+      i = 0;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadCurrentDelCount = ");
+      localStringBuilder.append(i);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
+    }
+    return i;
   }
   
   private ArrayList<MayKnowRecommend> b()
@@ -257,70 +267,68 @@ public class CardViewController
     if (QLog.isColorLevel()) {
       QLog.d("CardViewController", 2, "calcDisplayingMKRList");
     }
-    ArrayList localArrayList1 = c();
+    Object localObject = c();
     int k = a();
-    int j = localArrayList1.size();
-    ArrayList localArrayList2 = new ArrayList(k);
+    int m = ((ArrayList)localObject).size();
+    ArrayList localArrayList = new ArrayList(k);
     long l1 = NetConnInfoCenter.getServerTimeMillis();
     long l2 = a();
+    int j = 0;
     int i = 0;
-    if ((i >= j) || (localArrayList2.size() >= k))
+    MayKnowRecommend localMayKnowRecommend;
+    while ((i < m) && (localArrayList.size() < k))
     {
-      label69:
-      i = 0;
-      localArrayList1.removeAll(localArrayList2);
-      j = localArrayList1.size() - 1;
-      if ((j < 0) || (localArrayList2.size() >= k))
-      {
-        if ((i == 0) || (a() == 2)) {
-          break label242;
+      localMayKnowRecommend = (MayKnowRecommend)((ArrayList)localObject).get(i);
+      if (a(localMayKnowRecommend)) {
+        if ((localMayKnowRecommend.cardDisplayTimestamp + l2 > l1) && (!a(localMayKnowRecommend.uin, localArrayList)))
+        {
+          localArrayList.add(localMayKnowRecommend);
         }
-        c();
-        return b();
+        else
+        {
+          if (localMayKnowRecommend.cardDisplayTimestamp != 0L) {
+            break;
+          }
+          localArrayList.add(localMayKnowRecommend);
+        }
       }
+      i += 1;
     }
-    else
+    ((ArrayList)localObject).removeAll(localArrayList);
+    i = ((ArrayList)localObject).size() - 1;
+    while ((i >= 0) && (localArrayList.size() < k))
     {
-      localMayKnowRecommend = (MayKnowRecommend)localArrayList1.get(i);
+      localMayKnowRecommend = (MayKnowRecommend)((ArrayList)localObject).get(i);
       if (a(localMayKnowRecommend))
       {
-        if ((localMayKnowRecommend.cardDisplayTimestamp + l2 <= l1) || (a(localMayKnowRecommend.uin, localArrayList2))) {
-          break label184;
-        }
-        localArrayList2.add(localMayKnowRecommend);
+        localArrayList.add(localMayKnowRecommend);
+        j = 1;
       }
-      for (;;)
+      i -= 1;
+    }
+    localObject = localArrayList;
+    if (j != 0)
+    {
+      localObject = localArrayList;
+      if (a() != 2)
       {
-        i += 1;
-        break;
-        label184:
-        if (localMayKnowRecommend.cardDisplayTimestamp != 0L) {
-          break label69;
-        }
-        localArrayList2.add(localMayKnowRecommend);
+        c();
+        localObject = b();
       }
     }
-    MayKnowRecommend localMayKnowRecommend = (MayKnowRecommend)localArrayList1.get(j);
-    if (a(localMayKnowRecommend))
-    {
-      localArrayList2.add(localMayKnowRecommend);
-      i = 1;
-    }
-    for (;;)
-    {
-      j -= 1;
-      break;
-      label242:
-      return localArrayList2;
-    }
+    return localObject;
   }
   
   private ArrayList<MayKnowRecommend> c()
   {
     ArrayList localArrayList = this.jdField_a_of_type_ComTencentMobileqqAppMayknowRecommendManager.c();
     Collections.sort(localArrayList, new CardViewController.3(this));
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "getOrderedMKRListFromLocal = " + localArrayList);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getOrderedMKRListFromLocal = ");
+      localStringBuilder.append(localArrayList);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
     return localArrayList;
   }
@@ -357,18 +365,16 @@ public class CardViewController
       QLog.d("CardViewController", 2, "getCurrentDisplayingMKRList");
     }
     ArrayList localArrayList = new ArrayList();
-    if (a() == 0) {}
-    for (;;)
-    {
+    if (a() == 0) {
       return localArrayList;
-      int i = 0;
-      int j = 0;
-      Object localObject2;
-      if (this.jdField_a_of_type_JavaUtilArrayList != null)
-      {
-        localObject2 = this.jdField_a_of_type_JavaLangObject;
-        i = j;
-      }
+    }
+    int i = 0;
+    int j = 0;
+    Object localObject;
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
+    {
+      localObject = this.jdField_a_of_type_JavaLangObject;
+      i = j;
       try
       {
         if (this.jdField_a_of_type_JavaUtilArrayList != null)
@@ -380,16 +386,16 @@ public class CardViewController
             i = 1;
           }
         }
-        if (i != 0) {
-          continue;
-        }
-        localObject2 = b();
-        a((ArrayList)localObject2);
-        localArrayList.addAll((Collection)localObject2);
-        return localArrayList;
       }
       finally {}
     }
+    if (i == 0)
+    {
+      localObject = b();
+      a((ArrayList)localObject);
+      localArrayList1.addAll((Collection)localObject);
+    }
+    return localArrayList1;
   }
   
   public void a()
@@ -399,8 +405,12 @@ public class CardViewController
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "deleteMayKnowRecommend, uin = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deleteMayKnowRecommend, uin = ");
+      localStringBuilder.append(paramString);
+      QLog.d("CardViewController", 2, localStringBuilder.toString());
     }
     d();
     this.jdField_a_of_type_ComTencentMobileqqAppFriendListHandler.cancelMayKnowRecommend(paramString);
@@ -416,53 +426,55 @@ public class CardViewController
       if (a())
       {
         int i;
-        if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1800000L)
-        {
+        if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1800000L) {
           i = 1;
-          if (i == 0) {
-            break label124;
-          }
+        } else {
+          i = 0;
+        }
+        if (i != 0)
+        {
           Bundle localBundle = new Bundle();
           localBundle.putString("from", "fetch");
-          if (a(localBundle)) {
-            break label108;
+          if (!a(localBundle))
+          {
+            if (QLog.isColorLevel()) {
+              QLog.d("CardViewController", 2, "do local checkUpdate. msg: \"Time is not up, network update is not allowed or network error [1]\"");
+            }
+            a(false, true);
+            return;
           }
           if (QLog.isColorLevel()) {
-            QLog.d("CardViewController", 2, "do local checkUpdate. msg: \"Time is not up, network update is not allowed or network error [1]\"");
+            QLog.d("CardViewController", 2, "do network checkUpdate. msg: \"send network request done\"");
+          }
+        }
+        else
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("CardViewController", 2, "do local checkUpdate. msg: \"Update too frequently, network update is not allowed\"");
           }
           a(false, true);
         }
-        label108:
-        while (!QLog.isColorLevel())
-        {
-          return;
-          i = 0;
-          break;
-        }
-        QLog.d("CardViewController", 2, "do network checkUpdate. msg: \"send network request done\"");
-        return;
-        label124:
+      }
+      else
+      {
         if (QLog.isColorLevel()) {
-          QLog.d("CardViewController", 2, "do local checkUpdate. msg: \"Update too frequently, network update is not allowed\"");
+          QLog.d("CardViewController", 2, "do local checkUpdate. msg: \"Time is not up, network update is not allowed [2]\"");
         }
         a(false, true);
-        return;
       }
+    }
+    else
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("CardViewController", 2, "do local checkUpdate. msg: \"Time is not up, network update is not allowed [2]\"");
+        QLog.d("CardViewController", 2, "try checkUpdate， closed");
       }
-      a(false, true);
-      return;
+      a(null);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("CardViewController", 2, "try checkUpdate， closed");
-    }
-    a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CardViewController
  * JD-Core Version:    0.7.0.1
  */

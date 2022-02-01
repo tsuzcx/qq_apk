@@ -26,23 +26,40 @@ public class TroopAioTopADInfo
     Object localObject = new Date(this.validTime * 1000L);
     localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.SIMPLIFIED_CHINESE).format((Date)localObject);
     StringBuilder localStringBuilder = new StringBuilder("TroopAioTopADInfo{");
-    localStringBuilder.append("troopUin='").append(this.troopUin).append('\'');
-    localStringBuilder.append(", adId=").append(this.adId);
-    localStringBuilder.append(", backgroundUrl='").append(this.backgroundUrl).append('\'');
-    localStringBuilder.append(", moreUrl='").append(this.moreUrl).append('\'');
-    localStringBuilder.append(", picUrl='").append(this.picUrl).append('\'');
-    localStringBuilder.append(", validTime=").append((String)localObject);
-    localStringBuilder.append(", showType=").append(this.showType);
-    localStringBuilder.append(", strWord='").append(this.strWord).append('\'');
-    localStringBuilder.append(", uiUrl='").append(this.uiUrl).append('\'');
-    localStringBuilder.append(", jumpUrl='").append(this.jumpUrl).append('\'');
+    localStringBuilder.append("troopUin='");
+    localStringBuilder.append(this.troopUin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", adId=");
+    localStringBuilder.append(this.adId);
+    localStringBuilder.append(", backgroundUrl='");
+    localStringBuilder.append(this.backgroundUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", moreUrl='");
+    localStringBuilder.append(this.moreUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", picUrl='");
+    localStringBuilder.append(this.picUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", validTime=");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", showType=");
+    localStringBuilder.append(this.showType);
+    localStringBuilder.append(", strWord='");
+    localStringBuilder.append(this.strWord);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uiUrl='");
+    localStringBuilder.append(this.uiUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", jumpUrl='");
+    localStringBuilder.append(this.jumpUrl);
+    localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopAioTopADInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,15 +6,8 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
 import com.tencent.gamecenter.http.utils.AsyncHttpConnection;
-import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionHandler;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.apollo.process.data.CmGameAppInterface;
-import com.tencent.mobileqq.apollo.process.sso.CmGameSSoHandler;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.open.adapter.CommonDataAdapter;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -69,27 +62,22 @@ public class ReportInfoManager
         paramString = new JSONArray(paramString);
         int j = paramString.length();
         int i = 0;
-        for (;;)
+        while (i < j)
         {
-          if (i < j) {
-            try
-            {
-              JSONObject localJSONObject = paramString.getJSONObject(i);
-              ReportInfoManager.ReportInfo localReportInfo = new ReportInfoManager.ReportInfo();
-              localReportInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("appid");
-              localReportInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("actionname");
-              localReportInfo.jdField_c_of_type_JavaLangString = localJSONObject.getString("timestamp");
-              this.reportAdInfoList.add(localReportInfo);
-              i += 1;
-            }
-            catch (JSONException localJSONException)
-            {
-              for (;;)
-              {
-                localJSONException.printStackTrace();
-              }
-            }
+          try
+          {
+            JSONObject localJSONObject = paramString.getJSONObject(i);
+            ReportInfoManager.ReportInfo localReportInfo = new ReportInfoManager.ReportInfo();
+            localReportInfo.jdField_a_of_type_JavaLangString = localJSONObject.getString("appid");
+            localReportInfo.jdField_b_of_type_JavaLangString = localJSONObject.getString("actionname");
+            localReportInfo.jdField_c_of_type_JavaLangString = localJSONObject.getString("timestamp");
+            this.reportAdInfoList.add(localReportInfo);
           }
+          catch (JSONException localJSONException)
+          {
+            localJSONException.printStackTrace();
+          }
+          i += 1;
         }
         return;
       }
@@ -118,18 +106,14 @@ public class ReportInfoManager
         localJSONObject2.put("actionname", localReportInfo.jdField_b_of_type_JavaLangString);
         localJSONObject2.put("timestamp", localReportInfo.jdField_c_of_type_JavaLangString);
         localJSONArray.put(localJSONObject2);
-        continue;
-        return localJSONObject1.toString();
       }
+      localJSONObject1.put("items", localJSONArray);
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
     }
-    for (;;)
-    {
-      localJSONObject1.put("items", localJSONException);
-    }
+    return localJSONObject1.toString();
   }
   
   public void clearReportInfo(Context paramContext)
@@ -160,15 +144,12 @@ public class ReportInfoManager
       localJSONObject.put("net_type", paramReportPGActInfo.g);
       localJSONObject.put("resolution", paramReportPGActInfo.h);
       localJSONObject.put("ret_id", paramReportPGActInfo.i);
-      return localJSONObject.toString();
     }
     catch (JSONException paramReportPGActInfo)
     {
-      for (;;)
-      {
-        paramReportPGActInfo.printStackTrace();
-      }
+      paramReportPGActInfo.printStackTrace();
     }
+    return localJSONObject.toString();
   }
   
   public ReportInfoManager.ReportPGActInfo genClickReportInfo(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -203,30 +184,10 @@ public class ReportInfoManager
   {
     return paramContext.getSharedPreferences("gamecenter_preferences", 0).getString("report_info", "");
   }
-  
-  public void reportGameCenterChannel(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, int paramInt, ReportInfoManager.ReportCallBack paramReportCallBack)
-  {
-    paramReportCallBack = new ReportInfoManager.ReportChannlInfo();
-    paramReportCallBack.channel_id = paramString2;
-    paramReportCallBack.pos_id = paramString3;
-    paramReportCallBack.pos_name = paramString4;
-    paramReportCallBack.resource_id = paramString5;
-    paramReportCallBack.schedule_id = paramString6;
-    paramReportCallBack.appid = paramString7;
-    paramReportCallBack.oper_type = paramInt;
-    paramReportCallBack.act_id = paramString1;
-    paramString1 = CmGameUtil.a();
-    if ((paramString1 instanceof QQAppInterface))
-    {
-      ((IApolloExtensionHandler)paramString1.getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER)).a(paramReportCallBack);
-      return;
-    }
-    ((CmGameSSoHandler)CmGameUtil.a().getBusinessHandler(CmGameAppInterface.jdField_a_of_type_JavaLangString)).a(paramReportCallBack);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.ReportInfoManager
  * JD-Core Version:    0.7.0.1
  */

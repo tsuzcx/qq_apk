@@ -12,21 +12,26 @@ class QQStoryShareGroupProfileActivity$1
   
   public void run()
   {
-    QQStoryActivityManager localQQStoryActivityManager = (QQStoryActivityManager)SuperManager.a(18);
-    ArrayList localArrayList = localQQStoryActivityManager.a(this.this$0);
+    Object localObject = (QQStoryActivityManager)SuperManager.a(18);
+    ArrayList localArrayList = ((QQStoryActivityManager)localObject).a(this.this$0);
     int i = localArrayList.size();
     if (i >= 4)
     {
-      localQQStoryActivityManager.a(((Integer)localArrayList.get(0)).intValue() + 1, ((Integer)localArrayList.get(i - 1)).intValue());
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, "QQStoryShareGroupProfileActivity activity stack full, size = " + i + ", start clear!");
+      ((QQStoryActivityManager)localObject).a(((Integer)localArrayList.get(0)).intValue() + 1, ((Integer)localArrayList.get(i - 1)).intValue());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("QQStoryShareGroupProfileActivity activity stack full, size = ");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(", start clear!");
+        QLog.d("zivonchen", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.1
  * JD-Core Version:    0.7.0.1
  */

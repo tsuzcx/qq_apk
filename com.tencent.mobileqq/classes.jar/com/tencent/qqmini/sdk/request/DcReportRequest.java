@@ -33,16 +33,18 @@ public class DcReportRequest
   
   protected String getCmdName()
   {
-    if (this.cmdName != null) {
-      return this.cmdName;
+    String str = this.cmdName;
+    if (str != null) {
+      return str;
     }
     return "DcReport";
   }
   
   protected String getModule()
   {
-    if (this.module != null) {
-      return this.module;
+    String str = this.module;
+    if (str != null) {
+      return str;
     }
     return "mini_app_dcreport";
   }
@@ -50,50 +52,53 @@ public class DcReportRequest
   public JSONObject getResponse(byte[] paramArrayOfByte, JSONObject paramJSONObject)
   {
     if (paramArrayOfByte == null) {
-      paramJSONObject = null;
+      return null;
     }
-    for (;;)
+    int i;
+    do
     {
-      return paramJSONObject;
       try
       {
         Object localObject;
-        int i;
         if ("ThirdDcReport".equals(this.cmdName))
         {
           localObject = new REPORT.StThirdDcReportRsp();
           ((REPORT.StThirdDcReportRsp)localObject).mergeFrom(paramArrayOfByte);
           i = ((REPORT.StThirdDcReportRsp)localObject).ret.get();
         }
-        while (i != 0)
+        else if ("GameDcReport".equals(this.cmdName))
         {
-          QMLog.d("ProtoBufRequest", "onResponse fail.retCode = " + i);
-          return null;
-          if ("GameDcReport".equals(this.cmdName))
-          {
-            localObject = new REPORT.StGameDcReportRsp();
-            ((REPORT.StGameDcReportRsp)localObject).mergeFrom(paramArrayOfByte);
-            i = ((REPORT.StGameDcReportRsp)localObject).ret.get();
-          }
-          else
-          {
-            localObject = new REPORT.StDcReportRsp();
-            ((REPORT.StDcReportRsp)localObject).mergeFrom(paramArrayOfByte);
-            i = ((REPORT.StDcReportRsp)localObject).ret.get();
-          }
+          localObject = new REPORT.StGameDcReportRsp();
+          ((REPORT.StGameDcReportRsp)localObject).mergeFrom(paramArrayOfByte);
+          i = ((REPORT.StGameDcReportRsp)localObject).ret.get();
         }
-        return null;
+        else
+        {
+          localObject = new REPORT.StDcReportRsp();
+          ((REPORT.StDcReportRsp)localObject).mergeFrom(paramArrayOfByte);
+          i = ((REPORT.StDcReportRsp)localObject).ret.get();
+        }
       }
       catch (Exception paramArrayOfByte)
       {
-        QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("onResponse fail.");
+        paramJSONObject.append(paramArrayOfByte);
+        QMLog.d("ProtoBufRequest", paramJSONObject.toString());
+        return null;
       }
-    }
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("onResponse fail.retCode = ");
+      paramArrayOfByte.append(i);
+      QMLog.d("ProtoBufRequest", paramArrayOfByte.toString());
+      return null;
+    } while (i != 0);
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.DcReportRequest
  * JD-Core Version:    0.7.0.1
  */

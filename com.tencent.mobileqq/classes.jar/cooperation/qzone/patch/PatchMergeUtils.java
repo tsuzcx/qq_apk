@@ -11,7 +11,7 @@ public class PatchMergeUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 6
     //   3: new 15	java/util/jar/JarOutputStream
     //   6: dup
     //   7: new 17	java/io/FileOutputStream
@@ -19,15 +19,15 @@ public class PatchMergeUtils
     //   11: aload_2
     //   12: invokespecial 20	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   15: invokespecial 23	java/util/jar/JarOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   18: astore_2
-    //   19: new 25	java/util/jar/JarFile
-    //   22: dup
-    //   23: new 27	java/io/File
-    //   26: dup
-    //   27: aload_0
-    //   28: invokespecial 28	java/io/File:<init>	(Ljava/lang/String;)V
-    //   31: invokespecial 31	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
-    //   34: astore 4
+    //   18: astore 5
+    //   20: new 25	java/util/jar/JarFile
+    //   23: dup
+    //   24: new 27	java/io/File
+    //   27: dup
+    //   28: aload_0
+    //   29: invokespecial 28	java/io/File:<init>	(Ljava/lang/String;)V
+    //   32: invokespecial 31	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
+    //   35: astore_2
     //   36: new 25	java/util/jar/JarFile
     //   39: dup
     //   40: new 27	java/io/File
@@ -35,350 +35,323 @@ public class PatchMergeUtils
     //   44: aload_1
     //   45: invokespecial 28	java/io/File:<init>	(Ljava/lang/String;)V
     //   48: invokespecial 31	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
-    //   51: astore_1
+    //   51: astore_0
     //   52: new 33	java/util/HashSet
     //   55: dup
     //   56: invokespecial 34	java/util/HashSet:<init>	()V
-    //   59: astore_0
-    //   60: aload_1
+    //   59: astore_1
+    //   60: aload_0
     //   61: invokevirtual 38	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
-    //   64: astore 5
+    //   64: astore 6
     //   66: iconst_1
     //   67: istore_3
-    //   68: aload 5
+    //   68: aload 6
     //   70: invokeinterface 44 1 0
-    //   75: ifeq +150 -> 225
-    //   78: aload 5
-    //   80: invokeinterface 48 1 0
-    //   85: checkcast 50	java/util/jar/JarEntry
-    //   88: astore 6
-    //   90: aload 6
-    //   92: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   95: ldc 56
-    //   97: invokevirtual 62	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   100: ifeq +67 -> 167
-    //   103: aload 6
-    //   105: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   108: ldc 64
-    //   110: invokevirtual 67	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   113: ifeq +54 -> 167
-    //   116: new 69	java/util/zip/ZipEntry
-    //   119: dup
-    //   120: iload_3
-    //   121: invokestatic 73	cooperation/qzone/patch/PatchMergeUtils:getDexName	(I)Ljava/lang/String;
-    //   124: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   127: astore 7
-    //   129: aload_1
-    //   130: new 69	java/util/zip/ZipEntry
-    //   133: dup
-    //   134: aload 6
-    //   136: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   139: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   142: invokevirtual 78	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   145: astore 6
-    //   147: aload_2
-    //   148: aload 7
-    //   150: aload 6
-    //   152: invokestatic 82	cooperation/qzone/patch/PatchMergeUtils:writeZipEntry	(Ljava/util/jar/JarOutputStream;Ljava/util/zip/ZipEntry;Ljava/io/InputStream;)V
-    //   155: aload 6
-    //   157: invokevirtual 87	java/io/InputStream:close	()V
-    //   160: iload_3
-    //   161: iconst_1
-    //   162: iadd
-    //   163: istore_3
-    //   164: goto +496 -> 660
-    //   167: aload_0
-    //   168: aload 6
-    //   170: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   173: invokevirtual 91	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   176: pop
-    //   177: new 69	java/util/zip/ZipEntry
-    //   180: dup
-    //   181: aload 6
-    //   183: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   186: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   189: astore 7
-    //   191: aload_1
-    //   192: new 69	java/util/zip/ZipEntry
-    //   195: dup
-    //   196: aload 6
-    //   198: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   201: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   204: invokevirtual 78	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   207: astore 6
-    //   209: aload_2
-    //   210: aload 7
-    //   212: aload 6
-    //   214: invokestatic 82	cooperation/qzone/patch/PatchMergeUtils:writeZipEntry	(Ljava/util/jar/JarOutputStream;Ljava/util/zip/ZipEntry;Ljava/io/InputStream;)V
-    //   217: aload 6
-    //   219: invokevirtual 87	java/io/InputStream:close	()V
-    //   222: goto +438 -> 660
-    //   225: aload 4
-    //   227: invokevirtual 38	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
-    //   230: astore 5
-    //   232: aload 5
-    //   234: invokeinterface 44 1 0
-    //   239: ifeq +186 -> 425
-    //   242: aload 5
-    //   244: invokeinterface 48 1 0
-    //   249: checkcast 50	java/util/jar/JarEntry
-    //   252: astore 6
-    //   254: aload 6
-    //   256: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   259: ldc 56
-    //   261: invokevirtual 62	java/lang/String:startsWith	(Ljava/lang/String;)Z
-    //   264: ifeq +68 -> 332
-    //   267: aload 6
-    //   269: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   272: ldc 64
-    //   274: invokevirtual 67	java/lang/String:endsWith	(Ljava/lang/String;)Z
-    //   277: ifeq +55 -> 332
-    //   280: new 69	java/util/zip/ZipEntry
-    //   283: dup
-    //   284: iload_3
-    //   285: invokestatic 73	cooperation/qzone/patch/PatchMergeUtils:getDexName	(I)Ljava/lang/String;
-    //   288: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   291: astore 7
-    //   293: aload 4
-    //   295: new 69	java/util/zip/ZipEntry
-    //   298: dup
-    //   299: aload 6
-    //   301: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   304: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   307: invokevirtual 78	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   310: astore 6
-    //   312: aload_2
-    //   313: aload 7
-    //   315: aload 6
-    //   317: invokestatic 82	cooperation/qzone/patch/PatchMergeUtils:writeZipEntry	(Ljava/util/jar/JarOutputStream;Ljava/util/zip/ZipEntry;Ljava/io/InputStream;)V
-    //   320: aload 6
-    //   322: invokevirtual 87	java/io/InputStream:close	()V
-    //   325: iload_3
-    //   326: iconst_1
-    //   327: iadd
-    //   328: istore_3
-    //   329: goto +334 -> 663
-    //   332: aload_0
-    //   333: aload 6
-    //   335: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   338: invokevirtual 94	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   341: ifne +52 -> 393
-    //   344: new 69	java/util/zip/ZipEntry
-    //   347: dup
-    //   348: aload 6
-    //   350: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   353: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   356: astore 7
-    //   358: aload 4
-    //   360: new 69	java/util/zip/ZipEntry
-    //   363: dup
-    //   364: aload 6
-    //   366: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   369: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
-    //   372: invokevirtual 78	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   375: astore 6
-    //   377: aload_2
-    //   378: aload 7
-    //   380: aload 6
-    //   382: invokestatic 82	cooperation/qzone/patch/PatchMergeUtils:writeZipEntry	(Ljava/util/jar/JarOutputStream;Ljava/util/zip/ZipEntry;Ljava/io/InputStream;)V
-    //   385: aload 6
-    //   387: invokevirtual 87	java/io/InputStream:close	()V
-    //   390: goto +273 -> 663
-    //   393: getstatic 100	java/lang/System:out	Ljava/io/PrintStream;
-    //   396: new 102	java/lang/StringBuilder
-    //   399: dup
-    //   400: invokespecial 103	java/lang/StringBuilder:<init>	()V
-    //   403: ldc 105
-    //   405: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   408: aload 6
-    //   410: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   413: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   416: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   419: invokevirtual 117	java/io/PrintStream:println	(Ljava/lang/String;)V
-    //   422: goto +241 -> 663
-    //   425: aload_2
-    //   426: ifnull +7 -> 433
-    //   429: aload_2
-    //   430: invokevirtual 118	java/util/jar/JarOutputStream:close	()V
-    //   433: aload 4
-    //   435: ifnull +8 -> 443
-    //   438: aload 4
-    //   440: invokevirtual 119	java/util/jar/JarFile:close	()V
-    //   443: aload_1
-    //   444: ifnull +7 -> 451
-    //   447: aload_1
-    //   448: invokevirtual 119	java/util/jar/JarFile:close	()V
-    //   451: iconst_1
-    //   452: ireturn
-    //   453: astore_2
-    //   454: aconst_null
-    //   455: astore_0
-    //   456: aconst_null
-    //   457: astore_1
-    //   458: aload 5
-    //   460: astore 4
-    //   462: aload_2
-    //   463: invokevirtual 122	java/lang/Exception:printStackTrace	()V
-    //   466: aload_1
-    //   467: ifnull +7 -> 474
-    //   470: aload_1
-    //   471: invokevirtual 118	java/util/jar/JarOutputStream:close	()V
-    //   474: aload_0
-    //   475: ifnull +7 -> 482
-    //   478: aload_0
-    //   479: invokevirtual 119	java/util/jar/JarFile:close	()V
-    //   482: aload 4
-    //   484: ifnull +8 -> 492
-    //   487: aload 4
-    //   489: invokevirtual 119	java/util/jar/JarFile:close	()V
-    //   492: iconst_0
-    //   493: ireturn
-    //   494: astore_0
-    //   495: aconst_null
-    //   496: astore_1
-    //   497: aconst_null
-    //   498: astore 4
-    //   500: aconst_null
-    //   501: astore_2
-    //   502: aload_2
-    //   503: ifnull +7 -> 510
-    //   506: aload_2
-    //   507: invokevirtual 118	java/util/jar/JarOutputStream:close	()V
-    //   510: aload 4
-    //   512: ifnull +8 -> 520
-    //   515: aload 4
-    //   517: invokevirtual 119	java/util/jar/JarFile:close	()V
-    //   520: aload_1
-    //   521: ifnull +7 -> 528
-    //   524: aload_1
-    //   525: invokevirtual 119	java/util/jar/JarFile:close	()V
-    //   528: aload_0
-    //   529: athrow
-    //   530: astore_0
-    //   531: goto -98 -> 433
-    //   534: astore_0
-    //   535: goto -92 -> 443
-    //   538: astore_0
-    //   539: goto -88 -> 451
-    //   542: astore_1
-    //   543: goto -69 -> 474
-    //   546: astore_0
-    //   547: goto -65 -> 482
-    //   550: astore_0
-    //   551: goto -59 -> 492
-    //   554: astore_2
-    //   555: goto -45 -> 510
-    //   558: astore_2
-    //   559: goto -39 -> 520
-    //   562: astore_1
-    //   563: goto -35 -> 528
-    //   566: astore_0
-    //   567: aconst_null
-    //   568: astore_1
-    //   569: aconst_null
-    //   570: astore 4
-    //   572: goto -70 -> 502
-    //   575: astore_0
-    //   576: aconst_null
-    //   577: astore_1
-    //   578: goto -76 -> 502
-    //   581: astore_0
-    //   582: goto -80 -> 502
-    //   585: astore 6
-    //   587: aload_0
-    //   588: astore_2
-    //   589: aload_1
-    //   590: astore 5
-    //   592: aload 4
-    //   594: astore_1
-    //   595: aload 6
-    //   597: astore_0
-    //   598: aload_2
-    //   599: astore 4
-    //   601: aload 5
-    //   603: astore_2
-    //   604: goto -102 -> 502
-    //   607: astore 4
-    //   609: aconst_null
-    //   610: astore_0
-    //   611: aload_2
-    //   612: astore_1
-    //   613: aload 4
-    //   615: astore_2
-    //   616: aload 5
-    //   618: astore 4
-    //   620: goto -158 -> 462
-    //   623: astore 6
-    //   625: aload 4
-    //   627: astore_0
-    //   628: aload_2
-    //   629: astore_1
-    //   630: aload 6
-    //   632: astore_2
-    //   633: aload 5
-    //   635: astore 4
-    //   637: goto -175 -> 462
-    //   640: astore 6
-    //   642: aload 4
-    //   644: astore_0
-    //   645: aload_2
-    //   646: astore 5
-    //   648: aload 6
-    //   650: astore_2
-    //   651: aload_1
-    //   652: astore 4
-    //   654: aload 5
-    //   656: astore_1
-    //   657: goto -195 -> 462
-    //   660: goto -592 -> 68
-    //   663: goto -431 -> 232
+    //   75: istore 4
+    //   77: iload 4
+    //   79: ifeq +152 -> 231
+    //   82: aload 6
+    //   84: invokeinterface 48 1 0
+    //   89: checkcast 50	java/util/jar/JarEntry
+    //   92: astore 7
+    //   94: aload 7
+    //   96: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   99: ldc 56
+    //   101: invokevirtual 62	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   104: ifeq +68 -> 172
+    //   107: aload 7
+    //   109: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   112: ldc 64
+    //   114: invokevirtual 67	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   117: ifeq +55 -> 172
+    //   120: new 69	java/util/zip/ZipEntry
+    //   123: dup
+    //   124: iload_3
+    //   125: invokestatic 73	cooperation/qzone/patch/PatchMergeUtils:getDexName	(I)Ljava/lang/String;
+    //   128: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   131: astore 8
+    //   133: aload_0
+    //   134: new 69	java/util/zip/ZipEntry
+    //   137: dup
+    //   138: aload 7
+    //   140: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   143: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   146: invokevirtual 78	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   149: astore 7
+    //   151: aload 5
+    //   153: aload 8
+    //   155: aload 7
+    //   157: invokestatic 82	cooperation/qzone/patch/PatchMergeUtils:writeZipEntry	(Ljava/util/jar/JarOutputStream;Ljava/util/zip/ZipEntry;Ljava/io/InputStream;)V
+    //   160: aload 7
+    //   162: invokevirtual 87	java/io/InputStream:close	()V
+    //   165: iload_3
+    //   166: iconst_1
+    //   167: iadd
+    //   168: istore_3
+    //   169: goto -101 -> 68
+    //   172: aload_1
+    //   173: aload 7
+    //   175: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   178: invokevirtual 91	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   181: pop
+    //   182: new 69	java/util/zip/ZipEntry
+    //   185: dup
+    //   186: aload 7
+    //   188: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   191: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   194: astore 8
+    //   196: aload_0
+    //   197: new 69	java/util/zip/ZipEntry
+    //   200: dup
+    //   201: aload 7
+    //   203: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   206: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   209: invokevirtual 78	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   212: astore 7
+    //   214: aload 5
+    //   216: aload 8
+    //   218: aload 7
+    //   220: invokestatic 82	cooperation/qzone/patch/PatchMergeUtils:writeZipEntry	(Ljava/util/jar/JarOutputStream;Ljava/util/zip/ZipEntry;Ljava/io/InputStream;)V
+    //   223: aload 7
+    //   225: invokevirtual 87	java/io/InputStream:close	()V
+    //   228: goto -160 -> 68
+    //   231: aload_2
+    //   232: invokevirtual 38	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
+    //   235: astore 6
+    //   237: aload 6
+    //   239: invokeinterface 44 1 0
+    //   244: ifeq +200 -> 444
+    //   247: aload 6
+    //   249: invokeinterface 48 1 0
+    //   254: checkcast 50	java/util/jar/JarEntry
+    //   257: astore 7
+    //   259: aload 7
+    //   261: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   264: ldc 56
+    //   266: invokevirtual 62	java/lang/String:startsWith	(Ljava/lang/String;)Z
+    //   269: ifeq +68 -> 337
+    //   272: aload 7
+    //   274: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   277: ldc 64
+    //   279: invokevirtual 67	java/lang/String:endsWith	(Ljava/lang/String;)Z
+    //   282: ifeq +55 -> 337
+    //   285: new 69	java/util/zip/ZipEntry
+    //   288: dup
+    //   289: iload_3
+    //   290: invokestatic 73	cooperation/qzone/patch/PatchMergeUtils:getDexName	(I)Ljava/lang/String;
+    //   293: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   296: astore 8
+    //   298: aload_2
+    //   299: new 69	java/util/zip/ZipEntry
+    //   302: dup
+    //   303: aload 7
+    //   305: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   308: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   311: invokevirtual 78	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   314: astore 7
+    //   316: aload 5
+    //   318: aload 8
+    //   320: aload 7
+    //   322: invokestatic 82	cooperation/qzone/patch/PatchMergeUtils:writeZipEntry	(Ljava/util/jar/JarOutputStream;Ljava/util/zip/ZipEntry;Ljava/io/InputStream;)V
+    //   325: aload 7
+    //   327: invokevirtual 87	java/io/InputStream:close	()V
+    //   330: iload_3
+    //   331: iconst_1
+    //   332: iadd
+    //   333: istore_3
+    //   334: goto -97 -> 237
+    //   337: aload_1
+    //   338: aload 7
+    //   340: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   343: invokevirtual 94	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   346: ifne +52 -> 398
+    //   349: new 69	java/util/zip/ZipEntry
+    //   352: dup
+    //   353: aload 7
+    //   355: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   358: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   361: astore 8
+    //   363: aload_2
+    //   364: new 69	java/util/zip/ZipEntry
+    //   367: dup
+    //   368: aload 7
+    //   370: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   373: invokespecial 74	java/util/zip/ZipEntry:<init>	(Ljava/lang/String;)V
+    //   376: invokevirtual 78	java/util/jar/JarFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   379: astore 7
+    //   381: aload 5
+    //   383: aload 8
+    //   385: aload 7
+    //   387: invokestatic 82	cooperation/qzone/patch/PatchMergeUtils:writeZipEntry	(Ljava/util/jar/JarOutputStream;Ljava/util/zip/ZipEntry;Ljava/io/InputStream;)V
+    //   390: aload 7
+    //   392: invokevirtual 87	java/io/InputStream:close	()V
+    //   395: goto -158 -> 237
+    //   398: getstatic 100	java/lang/System:out	Ljava/io/PrintStream;
+    //   401: astore 8
+    //   403: new 102	java/lang/StringBuilder
+    //   406: dup
+    //   407: invokespecial 103	java/lang/StringBuilder:<init>	()V
+    //   410: astore 9
+    //   412: aload 9
+    //   414: ldc 105
+    //   416: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   419: pop
+    //   420: aload 9
+    //   422: aload 7
+    //   424: invokevirtual 54	java/util/jar/JarEntry:getName	()Ljava/lang/String;
+    //   427: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   430: pop
+    //   431: aload 8
+    //   433: aload 9
+    //   435: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   438: invokevirtual 117	java/io/PrintStream:println	(Ljava/lang/String;)V
+    //   441: goto -204 -> 237
+    //   444: aload 5
+    //   446: invokevirtual 118	java/util/jar/JarOutputStream:close	()V
+    //   449: aload_2
+    //   450: invokevirtual 119	java/util/jar/JarFile:close	()V
+    //   453: aload_0
+    //   454: invokevirtual 119	java/util/jar/JarFile:close	()V
+    //   457: iconst_1
+    //   458: ireturn
+    //   459: astore_1
+    //   460: goto +88 -> 548
+    //   463: astore_1
+    //   464: goto +28 -> 492
+    //   467: astore_1
+    //   468: aconst_null
+    //   469: astore_0
+    //   470: goto +78 -> 548
+    //   473: astore_1
+    //   474: aconst_null
+    //   475: astore_0
+    //   476: goto +16 -> 492
+    //   479: astore_1
+    //   480: aconst_null
+    //   481: astore_2
+    //   482: aload_2
+    //   483: astore_0
+    //   484: goto +64 -> 548
+    //   487: astore_1
+    //   488: aconst_null
+    //   489: astore_2
+    //   490: aload_2
+    //   491: astore_0
+    //   492: goto +23 -> 515
+    //   495: astore_1
+    //   496: aconst_null
+    //   497: astore_2
+    //   498: aload_2
+    //   499: astore_0
+    //   500: aload_0
+    //   501: astore 5
+    //   503: goto +45 -> 548
+    //   506: astore_1
+    //   507: aconst_null
+    //   508: astore_2
+    //   509: aload_2
+    //   510: astore_0
+    //   511: aload 6
+    //   513: astore 5
+    //   515: aload_1
+    //   516: invokevirtual 122	java/lang/Exception:printStackTrace	()V
+    //   519: aload 5
+    //   521: ifnull +8 -> 529
+    //   524: aload 5
+    //   526: invokevirtual 118	java/util/jar/JarOutputStream:close	()V
+    //   529: aload_2
+    //   530: ifnull +7 -> 537
+    //   533: aload_2
+    //   534: invokevirtual 119	java/util/jar/JarFile:close	()V
+    //   537: aload_0
+    //   538: ifnull +7 -> 545
+    //   541: aload_0
+    //   542: invokevirtual 119	java/util/jar/JarFile:close	()V
+    //   545: iconst_0
+    //   546: ireturn
+    //   547: astore_1
+    //   548: aload 5
+    //   550: ifnull +8 -> 558
+    //   553: aload 5
+    //   555: invokevirtual 118	java/util/jar/JarOutputStream:close	()V
+    //   558: aload_2
+    //   559: ifnull +7 -> 566
+    //   562: aload_2
+    //   563: invokevirtual 119	java/util/jar/JarFile:close	()V
+    //   566: aload_0
+    //   567: ifnull +7 -> 574
+    //   570: aload_0
+    //   571: invokevirtual 119	java/util/jar/JarFile:close	()V
+    //   574: goto +5 -> 579
+    //   577: aload_1
+    //   578: athrow
+    //   579: goto -2 -> 577
+    //   582: astore_1
+    //   583: goto -134 -> 449
+    //   586: astore_1
+    //   587: goto -134 -> 453
+    //   590: astore_0
+    //   591: iconst_1
+    //   592: ireturn
+    //   593: astore_1
+    //   594: goto -65 -> 529
+    //   597: astore_1
+    //   598: goto -61 -> 537
+    //   601: astore_0
+    //   602: goto -57 -> 545
+    //   605: astore 5
+    //   607: goto -49 -> 558
+    //   610: astore_2
+    //   611: goto -45 -> 566
+    //   614: astore_0
+    //   615: goto -41 -> 574
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	666	0	paramString1	String
-    //   0	666	1	paramString2	String
-    //   0	666	2	paramString3	String
-    //   67	262	3	i	int
-    //   34	566	4	localObject1	Object
-    //   607	7	4	localException1	Exception
-    //   618	35	4	localObject2	Object
-    //   1	654	5	localObject3	Object
-    //   88	321	6	localObject4	Object
-    //   585	11	6	localObject5	Object
-    //   623	8	6	localException2	Exception
-    //   640	9	6	localException3	Exception
-    //   127	252	7	localZipEntry	ZipEntry
+    //   0	618	0	paramString1	String
+    //   0	618	1	paramString2	String
+    //   0	618	2	paramString3	String
+    //   67	267	3	i	int
+    //   75	3	4	bool	boolean
+    //   18	536	5	localObject1	Object
+    //   605	1	5	localException	Exception
+    //   1	511	6	localEnumeration	java.util.Enumeration
+    //   92	331	7	localObject2	Object
+    //   131	301	8	localObject3	Object
+    //   410	24	9	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   3	19	453	java/lang/Exception
-    //   3	19	494	finally
-    //   429	433	530	java/lang/Exception
-    //   438	443	534	java/lang/Exception
-    //   447	451	538	java/lang/Exception
-    //   470	474	542	java/lang/Exception
-    //   478	482	546	java/lang/Exception
-    //   487	492	550	java/lang/Exception
-    //   506	510	554	java/lang/Exception
-    //   515	520	558	java/lang/Exception
-    //   524	528	562	java/lang/Exception
-    //   19	36	566	finally
-    //   36	52	575	finally
-    //   52	66	581	finally
-    //   68	160	581	finally
-    //   167	222	581	finally
-    //   225	232	581	finally
-    //   232	325	581	finally
-    //   332	390	581	finally
-    //   393	422	581	finally
-    //   462	466	585	finally
-    //   19	36	607	java/lang/Exception
-    //   36	52	623	java/lang/Exception
-    //   52	66	640	java/lang/Exception
-    //   68	160	640	java/lang/Exception
-    //   167	222	640	java/lang/Exception
-    //   225	232	640	java/lang/Exception
-    //   232	325	640	java/lang/Exception
-    //   332	390	640	java/lang/Exception
-    //   393	422	640	java/lang/Exception
+    //   52	66	459	finally
+    //   68	77	459	finally
+    //   82	165	459	finally
+    //   172	228	459	finally
+    //   231	237	459	finally
+    //   237	330	459	finally
+    //   337	395	459	finally
+    //   398	441	459	finally
+    //   52	66	463	java/lang/Exception
+    //   68	77	463	java/lang/Exception
+    //   82	165	463	java/lang/Exception
+    //   172	228	463	java/lang/Exception
+    //   231	237	463	java/lang/Exception
+    //   237	330	463	java/lang/Exception
+    //   337	395	463	java/lang/Exception
+    //   398	441	463	java/lang/Exception
+    //   36	52	467	finally
+    //   36	52	473	java/lang/Exception
+    //   20	36	479	finally
+    //   20	36	487	java/lang/Exception
+    //   3	20	495	finally
+    //   3	20	506	java/lang/Exception
+    //   515	519	547	finally
+    //   444	449	582	java/lang/Exception
+    //   449	453	586	java/lang/Exception
+    //   453	457	590	java/lang/Exception
+    //   524	529	593	java/lang/Exception
+    //   533	537	597	java/lang/Exception
+    //   541	545	601	java/lang/Exception
+    //   553	558	605	java/lang/Exception
+    //   562	566	610	java/lang/Exception
+    //   570	574	614	java/lang/Exception
   }
   
   public static String getDexName(int paramInt)
@@ -386,7 +359,11 @@ public class PatchMergeUtils
     if (paramInt == 1) {
       return "classes.dex";
     }
-    return "classes" + paramInt + ".dex";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("classes");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".dex");
+    return localStringBuilder.toString();
   }
   
   private static void writeZipEntry(JarOutputStream paramJarOutputStream, ZipEntry paramZipEntry, InputStream paramInputStream)
@@ -412,7 +389,7 @@ public class PatchMergeUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.patch.PatchMergeUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -17,6 +17,7 @@ import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
 import com.tencent.mobileqq.filemanager.fileviewer.data.DeviceImageInfo;
 import com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel;
 import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.ImageFileInfo;
+import com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase.OnTransEventListener;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -67,40 +68,21 @@ public class DeviceFileModel
     return false;
   }
   
-  private void o()
-  {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    if (localObject == null) {
-      if (QLog.isColorLevel()) {
-        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-      } while (!TextUtils.isEmpty(((FileManagerEntity)localObject).getFilePath()));
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).msgSeq);
-    } while (localObject == null);
-    localObject = (MessageForDeviceSingleStruct)localObject;
-    this.jdField_a_of_type_Long = ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a((MessageForDeviceSingleStruct)localObject);
-  }
-  
   private void p()
   {
     FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
-    if (localFileManagerEntity == null) {
+    if (localFileManagerEntity == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
       }
-    }
-    do
-    {
       return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.msgSeq);
-    } while (localObject == null);
-    Object localObject = (MessageForDeviceSingleStruct)localObject;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localFileManagerEntity.peerUin, localFileManagerEntity.peerType, localFileManagerEntity.msgSeq);
+    if (localObject == null) {
+      return;
+    }
+    localObject = (MessageForDeviceSingleStruct)localObject;
     ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().b((MessageForDeviceSingleStruct)localObject);
     localFileManagerEntity.status = 3;
     this.jdField_a_of_type_Long = -1L;
@@ -108,20 +90,22 @@ public class DeviceFileModel
   
   public int a()
   {
-    int i = e();
-    int j = super.a();
-    if (j != 0) {
-      return j;
+    int j = e();
+    int i = super.a();
+    if (i != 0) {
+      return i;
     }
-    switch (i)
+    i = 2;
+    if (j != 0)
     {
-    case 1: 
-    default: 
-      return 1;
-    case 0: 
-      return 6;
+      if (j != 2) {
+        return 1;
+      }
     }
-    return 2;
+    else {
+      i = 6;
+    }
+    return i;
   }
   
   public IDownloadController a()
@@ -155,7 +139,7 @@ public class DeviceFileModel
     return localArrayList;
   }
   
-  public void a()
+  protected void a()
   {
     if (this.jdField_a_of_type_ComTencentDeviceFileDeviceFileObserver != null) {
       return;
@@ -164,7 +148,7 @@ public class DeviceFileModel
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentDeviceFileDeviceFileObserver);
   }
   
-  public void b()
+  protected void b()
   {
     if (this.jdField_a_of_type_ComTencentDeviceFileDeviceFileObserver != null)
     {
@@ -175,10 +159,34 @@ public class DeviceFileModel
   
   public int d()
   {
-    if (FileManagerUtil.b(d())) {
+    if (FileManagerUtil.a(d())) {
       return 3;
     }
     return super.d();
+  }
+  
+  public void d()
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileViewerAdapter.a();
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("DeviceFileModel<FileAssistant>", 2, "fileEntity = null");
+      }
+      return;
+    }
+    if (!TextUtils.isEmpty(((FileManagerEntity)localObject).getFilePath())) {
+      return;
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((FileManagerEntity)localObject).peerUin, ((FileManagerEntity)localObject).peerType, ((FileManagerEntity)localObject).msgSeq);
+    if (localObject == null) {
+      return;
+    }
+    localObject = (MessageForDeviceSingleStruct)localObject;
+    this.jdField_a_of_type_Long = ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a((MessageForDeviceSingleStruct)localObject);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener.d();
+    }
   }
   
   public int h()
@@ -188,7 +196,7 @@ public class DeviceFileModel
   
   public int i()
   {
-    if (FileManagerUtil.b(d())) {
+    if (FileManagerUtil.a(d())) {
       return 2;
     }
     if (m()) {
@@ -199,12 +207,12 @@ public class DeviceFileModel
   
   public boolean i()
   {
-    return NetworkUtil.h(this.jdField_a_of_type_AndroidAppActivity);
+    return NetworkUtil.isWifiConnected(this.jdField_a_of_type_AndroidAppActivity);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.fileviewer.model.DeviceFileModel
  * JD-Core Version:    0.7.0.1
  */

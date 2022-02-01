@@ -36,20 +36,16 @@ public final class StoryTagUtil
   
   public static boolean a(Context paramContext, String paramString)
   {
+    paramContext = paramContext.getPackageManager();
     boolean bool = false;
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    paramContext = null;
     try
     {
-      paramString = localPackageManager.getPackageInfo(paramString, 0);
-      paramContext = paramString;
+      paramContext = paramContext.getPackageInfo(paramString, 0);
     }
-    catch (PackageManager.NameNotFoundException paramString)
+    catch (PackageManager.NameNotFoundException paramContext)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramContext.printStackTrace();
+      paramContext = null;
     }
     if (paramContext != null) {
       bool = true;
@@ -59,13 +55,19 @@ public final class StoryTagUtil
   
   public static boolean a(Context paramContext, String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return false;
+    boolean bool = false;
+    if (paramString1 != null)
+    {
+      if (paramString2 == null) {
+        return false;
+      }
+      Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
+      paramString1 = String.valueOf(paramString1);
+      bool = true;
+      localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "https://story.now.qq.com/mobile/tag/index.html", paramString1, String.valueOf(paramString2) }));
+      paramContext.startActivity(localIntent);
     }
-    Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", String.format("%s?tag_id=%s&tag_type=%s&_wv=3&_nav_alpha=0&_bid=2910", new Object[] { "https://story.now.qq.com/mobile/tag/index.html", String.valueOf(paramString1), String.valueOf(paramString2) }));
-    paramContext.startActivity(localIntent);
-    return true;
+    return bool;
   }
   
   public static void b(Context paramContext, String paramString)
@@ -78,7 +80,7 @@ public final class StoryTagUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.StoryTagUtil
  * JD-Core Version:    0.7.0.1
  */

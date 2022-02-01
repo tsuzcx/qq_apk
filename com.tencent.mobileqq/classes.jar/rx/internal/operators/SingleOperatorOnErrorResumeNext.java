@@ -13,14 +13,17 @@ public class SingleOperatorOnErrorResumeNext<T>
   
   private SingleOperatorOnErrorResumeNext(Single<? extends T> paramSingle, Func1<Throwable, ? extends Single<? extends T>> paramFunc1)
   {
-    if (paramSingle == null) {
-      throw new NullPointerException("originalSingle must not be null");
-    }
-    if (paramFunc1 == null) {
+    if (paramSingle != null)
+    {
+      if (paramFunc1 != null)
+      {
+        this.originalSingle = paramSingle;
+        this.resumeFunctionInCaseOfError = paramFunc1;
+        return;
+      }
       throw new NullPointerException("resumeFunctionInCaseOfError must not be null");
     }
-    this.originalSingle = paramSingle;
-    this.resumeFunctionInCaseOfError = paramFunc1;
+    throw new NullPointerException("originalSingle must not be null");
   }
   
   public static <T> SingleOperatorOnErrorResumeNext<T> withFunction(Single<? extends T> paramSingle, Func1<Throwable, ? extends Single<? extends T>> paramFunc1)
@@ -30,10 +33,10 @@ public class SingleOperatorOnErrorResumeNext<T>
   
   public static <T> SingleOperatorOnErrorResumeNext<T> withOther(Single<? extends T> paramSingle1, Single<? extends T> paramSingle2)
   {
-    if (paramSingle2 == null) {
-      throw new NullPointerException("resumeSingleInCaseOfError must not be null");
+    if (paramSingle2 != null) {
+      return new SingleOperatorOnErrorResumeNext(paramSingle1, new SingleOperatorOnErrorResumeNext.1(paramSingle2));
     }
-    return new SingleOperatorOnErrorResumeNext(paramSingle1, new SingleOperatorOnErrorResumeNext.1(paramSingle2));
+    throw new NullPointerException("resumeSingleInCaseOfError must not be null");
   }
   
   public void call(SingleSubscriber<? super T> paramSingleSubscriber)
@@ -45,7 +48,7 @@ public class SingleOperatorOnErrorResumeNext<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.SingleOperatorOnErrorResumeNext
  * JD-Core Version:    0.7.0.1
  */

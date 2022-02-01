@@ -30,23 +30,18 @@ public class FaceColorTransferFilter
     f1 = 0.21F * f2 + 0.72F * f3 + 0.07F * f4;
     if (f1 > 0.75F) {
       f1 = 1.0F;
+    } else if (f1 < 0.5F) {
+      f1 = 1.15F;
+    } else {
+      f1 = Math.abs(0.75F - f1) * 0.15F / 0.25F + 1.0F;
     }
-    for (;;)
-    {
-      addParam(new UniformParam.Float3fParam("originAverageFaceColor", Math.min(f2 * f1, 1.0F), Math.min(f3 * f1, 1.0F), Math.min(f1 * f4, 1.0F)));
-      addParam(new UniformParam.Float3fParam("cartoonAverageFaceColor", 242.0F / 255.0F, 211.0F / 255.0F, 180.0F / 255.0F));
-      return;
-      if (f1 < 0.5F) {
-        f1 = 1.15F;
-      } else {
-        f1 = Math.abs(0.75F - f1) * 0.15F / (0.75F - 0.5F) + 1.0F;
-      }
-    }
+    addParam(new UniformParam.Float3fParam("originAverageFaceColor", Math.min(f2 * f1, 1.0F), Math.min(f3 * f1, 1.0F), Math.min(f4 * f1, 1.0F)));
+    addParam(new UniformParam.Float3fParam("cartoonAverageFaceColor", 0.9490196F, 0.827451F, 0.7058824F));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.stylizefilter.FaceColorTransferFilter
  * JD-Core Version:    0.7.0.1
  */

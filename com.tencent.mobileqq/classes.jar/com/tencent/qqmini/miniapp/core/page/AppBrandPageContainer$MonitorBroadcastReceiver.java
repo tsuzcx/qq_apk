@@ -12,29 +12,27 @@ class AppBrandPageContainer$MonitorBroadcastReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    boolean bool;
     if ((paramIntent != null) && (paramIntent.getAction() != null) && (paramIntent.getAction().equals("action.qq.miniapp.show.monitorview")))
     {
-      bool = paramIntent.getBooleanExtra("show", true);
-      paramIntent = new StringBuilder().append("onReceive action action.qq.miniapp.show.monitorview, ");
+      paramContext = "show";
+      boolean bool = paramIntent.getBooleanExtra("show", true);
+      paramIntent = new StringBuilder();
+      paramIntent.append("onReceive action action.qq.miniapp.show.monitorview, ");
       if (!bool) {
-        break label89;
+        paramContext = "hide";
       }
-    }
-    label89:
-    for (paramContext = "show";; paramContext = "hide")
-    {
-      QMLog.d("minisdk-start-AppBrandPageContainer", paramContext + " monitor view!");
+      paramIntent.append(paramContext);
+      paramIntent.append(" monitor view!");
+      QMLog.d("minisdk-start-AppBrandPageContainer", paramIntent.toString());
       if (AppBrandPageContainer.access$500(this.this$0) != bool) {
         this.this$0.toggleMonitorPanel();
       }
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPageContainer.MonitorBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

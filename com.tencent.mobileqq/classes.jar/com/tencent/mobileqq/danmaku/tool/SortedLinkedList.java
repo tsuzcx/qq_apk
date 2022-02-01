@@ -27,8 +27,16 @@ public class SortedLinkedList<T>
     {
       paramList = (BaseDanmaku)paramNode.jdField_a_of_type_JavaLangObject;
       long l = Math.abs(paramList.d() - paramLong);
-      if (l > 60000L) {
-        Logger.d("DanmakuDataSource", "Danmaku upload to screen fail, deltaTime = " + l + " , curTime = " + paramLong + ", curDanmaku = " + paramList);
+      if (l > 60000L)
+      {
+        paramNode = new StringBuilder();
+        paramNode.append("Danmaku upload to screen fail, deltaTime = ");
+        paramNode.append(l);
+        paramNode.append(" , curTime = ");
+        paramNode.append(paramLong);
+        paramNode.append(", curDanmaku = ");
+        paramNode.append(paramList);
+        Logger.d("DanmakuDataSource", paramNode.toString());
       }
     }
   }
@@ -45,29 +53,31 @@ public class SortedLinkedList<T>
   
   public List<T> a(long paramLong, List<T> paramList, int paramInt)
   {
-    SortedLinkedList.Node localNode = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node;
+    SortedLinkedList.Node localNode1 = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node;
     int j;
-    for (int i = 0; (i < paramInt) && (localNode != this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$TimeComparator.a(localNode.jdField_a_of_type_JavaLangObject, paramLong) <= 0); i = j)
+    for (int i = 0; (i < paramInt) && (localNode1 != this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node) && (this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$TimeComparator.a(localNode1.jdField_a_of_type_JavaLangObject, paramLong) <= 0); i = j)
     {
       j = i;
       if (paramList != null)
       {
-        paramList.add(localNode.jdField_a_of_type_JavaLangObject);
+        paramList.add(localNode1.jdField_a_of_type_JavaLangObject);
         j = i + 1;
       }
       this.jdField_a_of_type_Int -= 1;
-      localNode = localNode.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node;
+      localNode1 = localNode1.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node;
     }
-    a(paramLong, paramList, localNode);
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node = localNode;
-    localNode.b = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node;
+    a(paramLong, paramList, localNode1);
+    SortedLinkedList.Node localNode2 = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node;
+    localNode2.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node = localNode1;
+    localNode1.b = localNode2;
     return paramList;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node;
-    this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node.b = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node;
+    SortedLinkedList.Node localNode = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node;
+    localNode.jdField_a_of_type_ComTencentMobileqqDanmakuToolSortedLinkedList$Node = localNode;
+    localNode.b = localNode;
     this.jdField_a_of_type_Int = 0;
   }
   
@@ -119,7 +129,7 @@ public class SortedLinkedList<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.tool.SortedLinkedList
  * JD-Core Version:    0.7.0.1
  */

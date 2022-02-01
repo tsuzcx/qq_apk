@@ -2,9 +2,8 @@ package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.app.FavEmoRoamingObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.CustomEmotionData;
-import com.tencent.mobileqq.emosm.favroaming.FavroamingManager;
+import com.tencent.mobileqq.emosm.api.IFavroamingManagerService;
 import com.tencent.mobileqq.widget.QQToast;
 
 class EditActivity$1
@@ -12,7 +11,7 @@ class EditActivity$1
 {
   EditActivity$1(EditActivity paramEditActivity) {}
   
-  public void onModifyFavData(boolean paramBoolean, Object paramObject)
+  protected void onModifyFavData(boolean paramBoolean, Object paramObject)
   {
     EditActivity.a(this.a);
     if (paramBoolean)
@@ -20,19 +19,19 @@ class EditActivity$1
       paramObject = (CustomEmotionData)paramObject;
       if (paramObject != null)
       {
-        ((FavroamingManager)this.a.app.getManager(QQManagerFactory.FAV_ROAMING_MANAGER)).c(paramObject);
+        ((IFavroamingManagerService)this.a.app.getRuntimeService(IFavroamingManagerService.class)).updateCustomEmotionDataOCR(paramObject);
         EditActivity.b(this.a);
       }
     }
-    while (!(paramObject instanceof String)) {
-      return;
+    else if ((paramObject instanceof String))
+    {
+      QQToast.a(this.a, 1, (String)paramObject, 1).a();
     }
-    QQToast.a(this.a, 1, (String)paramObject, 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EditActivity.1
  * JD-Core Version:    0.7.0.1
  */

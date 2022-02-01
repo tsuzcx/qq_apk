@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.takevideo.slideshow.core;
 
 import com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo;
-import com.tencent.mobileqq.richmedia.mediacodec.recorder.HWEncodeListener;
+import com.tencent.mobileqq.videocodec.mediacodec.recorder.HWEncodeListener;
 import com.tencent.qphone.base.util.QLog;
 
 class VideoToVideo$1
@@ -14,8 +14,12 @@ class VideoToVideo$1
     synchronized (VideoToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo))
     {
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeError, errorCode= " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onEncodeError, errorCode= ");
+        localStringBuilder.append(paramInt);
+        QLog.d("VideoToVideo", 2, localStringBuilder.toString());
       }
       VideoToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo).notifyAll();
       return;
@@ -27,8 +31,12 @@ class VideoToVideo$1
     synchronized (VideoToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo))
     {
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.c = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "onEncodeFinish, filePath= " + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onEncodeFinish, filePath= ");
+        localStringBuilder.append(paramString);
+        QLog.d("VideoToVideo", 2, localStringBuilder.toString());
       }
       VideoToVideo.a(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo).notifyAll();
       return;
@@ -37,14 +45,27 @@ class VideoToVideo$1
   
   public void onEncodeFrame()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext != null) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.d) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.b))
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext;
+    if ((localObject != null) && (!((SlideShowProcessor.ConvertContext)localObject).d) && (!this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.b))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "cancel mergeVideoTask path : " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b + " currContext id : " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext + "  mCanceled : " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.b);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("cancel mergeVideoTask path : ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowSlideItemInfo.b);
+        ((StringBuilder)localObject).append(" currContext id : ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext);
+        ((StringBuilder)localObject).append("  mCanceled : ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.b);
+        QLog.d("VideoToVideo", 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreVideoToVideo.b(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext);
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoToVideo", 2, "after cancel : " + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.b);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("after cancel : ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoSlideshowCoreSlideShowProcessor$ConvertContext.b);
+        QLog.d("VideoToVideo", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -53,7 +74,7 @@ class VideoToVideo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.core.VideoToVideo.1
  * JD-Core Version:    0.7.0.1
  */

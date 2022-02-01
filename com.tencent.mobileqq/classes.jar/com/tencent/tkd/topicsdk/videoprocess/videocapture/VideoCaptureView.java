@@ -15,6 +15,7 @@ import com.tencent.tkd.R.id;
 import com.tencent.tkd.R.layout;
 import com.tencent.tkd.topicsdk.common.DisplayUtils;
 import com.tencent.tkd.topicsdk.widget.HorizontalListView;
+import com.tencent.tkd.topicsdk.widget.dialog.CommonProgressDialog;
 import com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout;
 import com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout.OnCaptureOperateCallback;
 import com.tencent.tkd.topicsdk.widget.videocapture.CaptureOperateTouchLayout.OnIndicatorPressCallback;
@@ -27,7 +28,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureContract$IVideoCaptureView;", "context", "Landroid/content/Context;", "videoInfo", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "initialProgress", "", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;FLandroid/util/AttributeSet;)V", "adapter", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/PreviewImageAdapter;", "candidateView", "Landroid/view/ViewGroup;", "captureOperateLayout", "Lcom/tencent/tkd/topicsdk/widget/videocapture/CaptureOperateTouchLayout;", "captureToastTextView", "Landroid/widget/TextView;", "imageUpdateListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/ImageUpdateListener;", "indicator", "Landroid/widget/ImageView;", "getInitialProgress", "()F", "listView", "Lcom/tencent/tkd/topicsdk/widget/HorizontalListView;", "presenter", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCapturePresenter;", "progressTextView", "getVideoInfo", "()Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "videoMeasureScaleView", "Lcom/tencent/tkd/topicsdk/widget/videocapture/VideoMeasureScaleView;", "confirmClick", "", "outputPicListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/OutputPicListener;", "getCandidateView", "getPreviewImageCount", "", "getPreviewImageHeight", "getPreviewImageWidth", "getProgress", "getSeekVideoPosition", "initCaptureOperateView", "initData", "initIndicatorView", "initListView", "initView", "isValidFilePath", "", "onAttachedToWindow", "onCandidateVideoPrepared", "duration", "", "onDetachedFromWindow", "onIndicatorChange", "percent", "isDoingLongPress", "onPreviewImageListInitialized", "dataList", "", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask;", "onPreviewImageListRefresh", "onPreviewImageLoaded", "dataPosition", "captureTask", "onPreviewImageUpdate", "bitmap", "Landroid/graphics/Bitmap;", "path", "", "onPreviewVideoPrepared", "durationInMills", "onSeekCandidateImage", "position", "setImageUpdateListener", "CaptureVideoInfo", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView;", "Landroid/widget/LinearLayout;", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureContract$IVideoCaptureView;", "context", "Landroid/content/Context;", "videoInfo", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "initialProgress", "", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;FLandroid/util/AttributeSet;)V", "adapter", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/PreviewImageAdapter;", "candidateView", "Landroid/view/ViewGroup;", "captureOperateLayout", "Lcom/tencent/tkd/topicsdk/widget/videocapture/CaptureOperateTouchLayout;", "captureToastTextView", "Landroid/widget/TextView;", "coverProcessDialog", "Lcom/tencent/tkd/topicsdk/widget/dialog/CommonProgressDialog;", "imageUpdateListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/ImageUpdateListener;", "indicator", "Landroid/widget/ImageView;", "listView", "Lcom/tencent/tkd/topicsdk/widget/HorizontalListView;", "presenter", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCapturePresenter;", "progressTextView", "getVideoInfo", "()Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/VideoCaptureView$CaptureVideoInfo;", "videoMeasureScaleView", "Lcom/tencent/tkd/topicsdk/widget/videocapture/VideoMeasureScaleView;", "confirmClick", "", "outputPicListener", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/OutputPicListener;", "getCandidateView", "getPreviewImageCount", "", "getPreviewImageHeight", "getPreviewImageWidth", "getProgress", "getSeekVideoPosition", "initCaptureOperateView", "initCoverProcessDialog", "initData", "initIndicatorView", "initListView", "initView", "onAttachedToWindow", "onCandidateVideoPrepared", "duration", "", "onDetachedFromWindow", "onIndicatorChange", "percent", "isDoingLongPress", "", "onPreviewImageListInitialized", "dataList", "", "Lcom/tencent/tkd/topicsdk/videoprocess/videocapture/CaptureTask;", "onPreviewImageListRefresh", "onPreviewImageLoaded", "dataPosition", "captureTask", "onPreviewImageUpdate", "bitmap", "Landroid/graphics/Bitmap;", "path", "", "onPreviewVideoPrepared", "durationInMills", "onSeekCandidateImage", "position", "setImageUpdateListener", "showCoverProcessDialog", "isVisible", "CaptureVideoInfo", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 @SuppressLint({"ViewConstructor"})
 public final class VideoCaptureView
   extends LinearLayout
@@ -44,6 +45,7 @@ public final class VideoCaptureView
   @NotNull
   private final VideoCaptureView.CaptureVideoInfo jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo;
   private HorizontalListView jdField_a_of_type_ComTencentTkdTopicsdkWidgetHorizontalListView;
+  private CommonProgressDialog jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
   private CaptureOperateTouchLayout jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout;
   private VideoMeasureScaleView jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureVideoMeasureScaleView;
   private TextView b;
@@ -58,9 +60,9 @@ public final class VideoCaptureView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo = paramCaptureVideoInfo;
     this.jdField_a_of_type_Float = paramFloat;
-    LayoutInflater.from(paramContext).inflate(R.layout.l, (ViewGroup)this, true);
+    LayoutInflater.from(paramContext).inflate(R.layout.k, (ViewGroup)this, true);
     a();
-    d();
+    e();
   }
   
   private final void a()
@@ -81,32 +83,33 @@ public final class VideoCaptureView
     localObject = getContext();
     Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
     a((Context)localObject);
-    localObject = findViewById(R.id.bT);
+    localObject = findViewById(R.id.bn);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.video_capture_iv_cover)");
     this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)localObject);
-    localObject = findViewById(R.id.bW);
+    localObject = findViewById(R.id.bq);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.video_capture_operate_layout)");
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout = ((CaptureOperateTouchLayout)localObject);
-    localObject = findViewById(R.id.bU);
+    localObject = findViewById(R.id.bo);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.video_capture_iv_indicator)");
     this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localObject);
-    localObject = findViewById(R.id.bX);
+    localObject = findViewById(R.id.br);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.video_capture_progress_time)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localObject);
-    localObject = findViewById(R.id.bZ);
+    localObject = findViewById(R.id.bt);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.video_capture_tv_toast)");
     this.b = ((TextView)localObject);
-    localObject = findViewById(R.id.bV);
+    localObject = findViewById(R.id.bp);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "findViewById(R.id.video_capture_measure_layout)");
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureVideoMeasureScaleView = ((VideoMeasureScaleView)localObject);
     b();
     c();
+    d();
   }
   
   private final void a(Context paramContext)
   {
     this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocapturePreviewImageAdapter = new PreviewImageAdapter(paramContext);
-    paramContext = findViewById(R.id.bY);
+    paramContext = findViewById(R.id.bs);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.video_capture_recyclerview)");
     this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetHorizontalListView = ((HorizontalListView)paramContext);
     paramContext = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetHorizontalListView;
@@ -208,16 +211,30 @@ public final class VideoCaptureView
   
   private final void d()
   {
+    Object localObject = getContext();
+    if (localObject != null)
+    {
+      this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog = new CommonProgressDialog((Context)localObject, 2);
+      localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+      if (localObject == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("coverProcessDialog");
+      }
+      ((CommonProgressDialog)localObject).a("请稍等...");
+    }
+  }
+  
+  private final void e()
+  {
     VideoCapturePresenter localVideoCapturePresenter = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCapturePresenter;
     if (localVideoCapturePresenter == null) {
       Intrinsics.throwUninitializedPropertyAccessException("presenter");
     }
-    localVideoCapturePresenter.a(this.jdField_a_of_type_Float);
+    localVideoCapturePresenter.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo);
     localVideoCapturePresenter = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCapturePresenter;
     if (localVideoCapturePresenter == null) {
       Intrinsics.throwUninitializedPropertyAccessException("presenter");
     }
-    localVideoCapturePresenter.a(this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo);
+    localVideoCapturePresenter.a(this.jdField_a_of_type_Float);
   }
   
   public final float a()
@@ -256,56 +273,35 @@ public final class VideoCaptureView
   public void a(int paramInt)
   {
     Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocapturePreviewImageAdapter;
-    int i;
-    ImageView localImageView;
     if (localObject != null)
     {
       localObject = ((PreviewImageAdapter)localObject).a();
-      if (localObject != null)
+      if ((localObject != null) && ((((Collection)localObject).isEmpty() ^ true)))
       {
-        if (((Collection)localObject).isEmpty()) {
-          break label94;
-        }
-        i = 1;
-        if (i != 0)
+        ImageView localImageView;
+        if (paramInt < ((List)localObject).size())
         {
-          if (paramInt >= ((List)localObject).size()) {
-            break label99;
-          }
-          localObject = (CaptureTask)((List)localObject).get(paramInt);
+          localObject = ((CaptureTask)((List)localObject).get(paramInt)).a();
           if (localObject != null)
           {
-            localObject = ((CaptureTask)localObject).a();
-            if (localObject != null)
-            {
-              localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-              if (localImageView == null) {
-                Intrinsics.throwUninitializedPropertyAccessException("indicator");
-              }
-              localImageView.setImageBitmap((Bitmap)localObject);
+            localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+            if (localImageView == null) {
+              Intrinsics.throwUninitializedPropertyAccessException("indicator");
             }
+            localImageView.setImageBitmap((Bitmap)localObject);
           }
         }
-      }
-    }
-    for (;;)
-    {
-      return;
-      label94:
-      i = 0;
-      break;
-      label99:
-      localObject = (CaptureTask)((List)localObject).get(((List)localObject).size() - 1);
-      if (localObject != null)
-      {
-        localObject = ((CaptureTask)localObject).a();
-        if (localObject != null)
+        else
         {
-          localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
-          if (localImageView == null) {
-            Intrinsics.throwUninitializedPropertyAccessException("indicator");
+          localObject = ((CaptureTask)((List)localObject).get(((List)localObject).size() - 1)).a();
+          if (localObject != null)
+          {
+            localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+            if (localImageView == null) {
+              Intrinsics.throwUninitializedPropertyAccessException("indicator");
+            }
+            localImageView.setImageBitmap((Bitmap)localObject);
           }
-          localImageView.setImageBitmap((Bitmap)localObject);
         }
       }
     }
@@ -318,19 +314,21 @@ public final class VideoCaptureView
     if (localObject != null)
     {
       localObject = ((PreviewImageAdapter)localObject).a();
-      if (localObject == null) {}
-    }
-    for (localObject = CollectionsKt.toMutableList((Collection)localObject);; localObject = null)
-    {
-      if ((localObject != null) && (paramInt >= 0) && (paramInt < ((List)localObject).size()))
+      if (localObject != null)
       {
-        ((List)localObject).set(paramInt, paramCaptureTask);
-        paramCaptureTask = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocapturePreviewImageAdapter;
-        if (paramCaptureTask != null) {
-          paramCaptureTask.a((List)localObject);
-        }
+        localObject = CollectionsKt.toMutableList((Collection)localObject);
+        break label38;
       }
-      return;
+    }
+    localObject = null;
+    label38:
+    if ((localObject != null) && (paramInt >= 0) && (paramInt < ((List)localObject).size()))
+    {
+      ((List)localObject).set(paramInt, paramCaptureTask);
+      paramCaptureTask = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocapturePreviewImageAdapter;
+      if (paramCaptureTask != null) {
+        paramCaptureTask.a((List)localObject);
+      }
     }
   }
   
@@ -389,6 +387,39 @@ public final class VideoCaptureView
     }
   }
   
+  public void a(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      localCommonProgressDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+      if (localCommonProgressDialog == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("coverProcessDialog");
+      }
+      if (localCommonProgressDialog.isShowing()) {
+        return;
+      }
+      d();
+      localCommonProgressDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+      if (localCommonProgressDialog == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("coverProcessDialog");
+      }
+      localCommonProgressDialog.show();
+      return;
+    }
+    CommonProgressDialog localCommonProgressDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+    if (localCommonProgressDialog == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("coverProcessDialog");
+    }
+    if (localCommonProgressDialog.isShowing())
+    {
+      localCommonProgressDialog = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetDialogCommonProgressDialog;
+      if (localCommonProgressDialog == null) {
+        Intrinsics.throwUninitializedPropertyAccessException("coverProcessDialog");
+      }
+      localCommonProgressDialog.dismiss();
+    }
+  }
+  
   public int b()
   {
     DisplayUtils localDisplayUtils = DisplayUtils.a;
@@ -432,7 +463,16 @@ public final class VideoCaptureView
     return (i - localDisplayUtils.a(localContext, 22.5F) * 2) / 11;
   }
   
-  public void onAttachedToWindow()
+  public final int d()
+  {
+    CaptureOperateTouchLayout localCaptureOperateTouchLayout = this.jdField_a_of_type_ComTencentTkdTopicsdkWidgetVideocaptureCaptureOperateTouchLayout;
+    if (localCaptureOperateTouchLayout == null) {
+      Intrinsics.throwUninitializedPropertyAccessException("captureOperateLayout");
+    }
+    return localCaptureOperateTouchLayout.a() + this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCaptureView$CaptureVideoInfo.a();
+  }
+  
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     VideoCapturePresenter localVideoCapturePresenter = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCapturePresenter;
@@ -442,7 +482,7 @@ public final class VideoCaptureView
     localVideoCapturePresenter.b();
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     VideoCapturePresenter localVideoCapturePresenter = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureVideoCapturePresenter;
     if (localVideoCapturePresenter == null) {
@@ -460,7 +500,7 @@ public final class VideoCaptureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.VideoCaptureView
  * JD-Core Version:    0.7.0.1
  */

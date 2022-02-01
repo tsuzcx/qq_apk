@@ -35,30 +35,30 @@ public class StyleChildTransformFilter
   FaceOffNoseOcclusionFilter mFace = new FaceOffNoseOcclusionFilter();
   private float[] mFullscreenVerticesPortrait;
   private float[] mInitTextureCoordinatesPortrait;
-  public boolean needCalFaceMoveDownParam = true;
+  public boolean needCalFaceMoveDownParam;
   private int[] tex = new int[3];
-  private ReshapeType useMeshType = ReshapeType.NORMAL;
+  private ReshapeType useMeshType;
   
   public StyleChildTransformFilter(int paramInt1, int paramInt2, String paramString)
   {
     super(FRAGMENT_SHADER);
+    int i = 1;
+    this.needCalFaceMoveDownParam = true;
+    this.useMeshType = ReshapeType.NORMAL;
     File localFile = new File(paramString);
-    if ((localFile.isFile()) && (localFile.exists())) {}
-    for (;;)
-    {
-      if ((GLCapabilities.supportVTF()) && (i != 0))
-      {
-        updateFilterShader(VERTEX_SHADER, FRAGMENT_SHADER);
-        this.useMeshType = ReshapeType.VTF;
-        setInitMesh(VideoMaterial.toFlatArray(VideoMaterial.genFullScreenVertices(this.XCOORD_NUM, this.YCOORD_NUM, 0.0F, 1.0F, 0.0F, 1.0F)), VideoMaterial.toFlatArray(VideoMaterial.genFullScreenVertices(this.XCOORD_NUM, this.YCOORD_NUM, 0.0F, 1.0F, 0.0F, 1.0F)));
-        this.mFace.loadFaceTex(paramString);
-      }
-      this.width = paramInt1;
-      this.height = paramInt2;
-      initParams(paramInt1, paramInt2);
-      return;
+    if ((!localFile.isFile()) || (!localFile.exists())) {
       i = 0;
     }
+    if ((GLCapabilities.supportVTF()) && (i != 0))
+    {
+      updateFilterShader(VERTEX_SHADER, FRAGMENT_SHADER);
+      this.useMeshType = ReshapeType.VTF;
+      setInitMesh(VideoMaterial.toFlatArray(VideoMaterial.genFullScreenVertices(this.XCOORD_NUM, this.YCOORD_NUM, 0.0F, 1.0F, 0.0F, 1.0F)), VideoMaterial.toFlatArray(VideoMaterial.genFullScreenVertices(this.XCOORD_NUM, this.YCOORD_NUM, 0.0F, 1.0F, 0.0F, 1.0F)));
+      this.mFace.loadFaceTex(paramString);
+    }
+    this.width = paramInt1;
+    this.height = paramInt2;
+    initParams(paramInt1, paramInt2);
   }
   
   private void loadWarpTex(int paramInt, float[] paramArrayOfFloat)
@@ -73,63 +73,53 @@ public class StyleChildTransformFilter
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
     this.mFace.ApplyGLSLFilter();
   }
   
   public void calFaceParam(List<PointF> paramList)
   {
-    float f;
     if (this.needCalFaceMoveDownParam)
     {
-      f = AlgoUtils.getDistance((PointF)paramList.get(84), (PointF)paramList.get(9)) / AlgoUtils.getDistance((PointF)paramList.get(0), (PointF)paramList.get(18));
-      if (f >= 0.9F) {
-        break label78;
+      float f2 = AlgoUtils.getDistance((PointF)paramList.get(84), (PointF)paramList.get(9)) / AlgoUtils.getDistance((PointF)paramList.get(0), (PointF)paramList.get(18));
+      float f1 = 1.0F;
+      if (f2 < 0.9F)
+      {
+        f1 = 0.0F;
       }
-      f = 0.0F;
-    }
-    for (;;)
-    {
-      this.faceParam = f;
+      else if (f2 <= 1.0F)
+      {
+        f1 = (f2 - 0.9F) / 0.1F;
+        f1 = (3.0F - f1 * 2.0F) * (f1 * f1);
+      }
+      this.faceParam = f1;
       this.needCalFaceMoveDownParam = false;
-      return;
-      label78:
-      if (f > 1.0F)
-      {
-        f = 1.0F;
-      }
-      else
-      {
-        f = (f - 0.9F) / (1.0F - 0.9F);
-        f = (3.0F - f * 2.0F) * (f * f);
-      }
     }
   }
   
   public void calMoveDownParam(List<PointF> paramList, int paramInt1, int paramInt2, float paramFloat1, float paramFloat2)
   {
-    float f1 = (float)Math.atan2(((PointF)paramList.get(53)).y - ((PointF)paramList.get(43)).y, ((PointF)paramList.get(53)).x - ((PointF)paramList.get(43)).x);
-    addParam(new UniformParam.FloatParam("sin_t", (float)Math.sin(f1)));
-    addParam(new UniformParam.FloatParam("cos_t", (float)Math.cos(f1)));
-    addParam(new UniformParam.FloatParam("downLevel", AlgoUtils.getDistance((PointF)paramList.get(0), (PointF)paramList.get(18)) * (16.0F * paramFloat2 / 480.0F) / paramFloat1 / paramInt2));
-    paramFloat2 = ((PointF)paramList.get(75)).x;
-    f1 = ((PointF)paramList.get(79)).x;
-    float f2 = ((PointF)paramList.get(67)).x;
-    paramFloat2 = (((PointF)paramList.get(71)).x + (paramFloat2 + f1 + f2)) / 4.0F;
-    f1 = ((PointF)paramList.get(75)).y;
-    f2 = ((PointF)paramList.get(79)).y;
-    float f3 = ((PointF)paramList.get(67)).y;
-    f1 = (((PointF)paramList.get(71)).y + (f1 + f2 + f3)) / 4.0F;
+    double d = (float)Math.atan2(((PointF)paramList.get(53)).y - ((PointF)paramList.get(43)).y, ((PointF)paramList.get(53)).x - ((PointF)paramList.get(43)).x);
+    addParam(new UniformParam.FloatParam("sin_t", (float)Math.sin(d)));
+    addParam(new UniformParam.FloatParam("cos_t", (float)Math.cos(d)));
+    float f1 = AlgoUtils.getDistance((PointF)paramList.get(0), (PointF)paramList.get(18));
+    f1 = paramFloat2 * 16.0F / 480.0F * f1 / paramFloat1;
+    paramFloat2 = paramInt2;
+    addParam(new UniformParam.FloatParam("downLevel", f1 / paramFloat2));
+    f1 = (((PointF)paramList.get(75)).x + ((PointF)paramList.get(79)).x + ((PointF)paramList.get(67)).x + ((PointF)paramList.get(71)).x) / 4.0F;
+    float f2 = (((PointF)paramList.get(75)).y + ((PointF)paramList.get(79)).y + ((PointF)paramList.get(67)).y + ((PointF)paramList.get(71)).y) / 4.0F;
     paramList = new float[2];
-    paramList[0] = (paramFloat2 / paramFloat1 / paramInt1);
-    paramList[1] = (f1 / paramFloat1 / paramInt2);
+    paramList[0] = (f1 / paramFloat1 / paramInt1);
+    paramList[1] = (f2 / paramFloat1 / paramFloat2);
     addParam(new UniformParam.Float2fParam("lipsCenter", paramList[0], paramList[1]));
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     this.mFace.clearGLSLSelf();
   }
   
@@ -211,12 +201,20 @@ public class StyleChildTransformFilter
     if (this.useMeshType == ReshapeType.VTF)
     {
       int i = 0;
-      while (i < this.mInitTextureCoordinatesPortrait.length / 2)
+      for (;;)
       {
-        float f1 = this.mInitTextureCoordinatesPortrait[(i * 2)] * this.width;
-        float f2 = this.mInitTextureCoordinatesPortrait[(i * 2 + 1)] * this.height;
-        this.mFullscreenVerticesPortrait[(i * 2)] = ((paramArrayOfFloat1[0] * f1 + paramArrayOfFloat1[1] * f2 + paramArrayOfFloat1[2]) / paramInt1);
-        this.mFullscreenVerticesPortrait[(i * 2 + 1)] = ((f1 * paramArrayOfFloat1[3] + f2 * paramArrayOfFloat1[4] + paramArrayOfFloat1[5]) / paramInt2);
+        paramBitmap1 = this.mInitTextureCoordinatesPortrait;
+        if (i >= paramBitmap1.length / 2) {
+          break;
+        }
+        int j = i * 2;
+        float f1 = paramBitmap1[j] * this.width;
+        paramBitmap1 = this.mInitTextureCoordinatesPortrait;
+        int k = j + 1;
+        float f2 = paramBitmap1[k] * this.height;
+        paramBitmap1 = this.mFullscreenVerticesPortrait;
+        paramBitmap1[j] = ((paramArrayOfFloat1[0] * f1 + paramArrayOfFloat1[1] * f2 + paramArrayOfFloat1[2]) / paramInt1);
+        paramBitmap1[k] = ((f1 * paramArrayOfFloat1[3] + f2 * paramArrayOfFloat1[4] + paramArrayOfFloat1[5]) / paramInt2);
         i += 1;
       }
       setPositions(this.mFullscreenVerticesPortrait, false);
@@ -228,7 +226,7 @@ public class StyleChildTransformFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StyleChildTransformFilter
  * JD-Core Version:    0.7.0.1
  */

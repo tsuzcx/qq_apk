@@ -34,19 +34,19 @@ public class RecommendLabelListPagerLoader
   {
     SLog.a("Q.qqstory.record.label.RecommendLabelListPagerLoader", "get recommend label list return %s", paramErrorMessage.toString());
     RecommendLabelListPagerLoader.GetRecommendLabelListEvent localGetRecommendLabelListEvent = new RecommendLabelListPagerLoader.GetRecommendLabelListEvent(paramErrorMessage);
-    if ((paramGetLabelListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetLabelListResponse != null) && (!paramErrorMessage.isFail()))
     {
+      localGetRecommendLabelListEvent.jdField_a_of_type_JavaUtilList = paramGetLabelListResponse.jdField_a_of_type_JavaUtilList;
+      localGetRecommendLabelListEvent.jdField_a_of_type_JavaLangString = paramGetLabelListRequest.b;
+      localGetRecommendLabelListEvent.jdField_a_of_type_Boolean = paramGetLabelListResponse.jdField_a_of_type_Boolean;
+      localGetRecommendLabelListEvent.c = TextUtils.isEmpty(paramGetLabelListRequest.jdField_c_of_type_JavaLangString);
+      this.jdField_c_of_type_JavaLangString = paramGetLabelListResponse.jdField_a_of_type_JavaLangString;
+      localGetRecommendLabelListEvent.d = this.jdField_a_of_type_Boolean;
       StoryDispatcher.a().dispatch(localGetRecommendLabelListEvent);
+      SLog.a("Q.qqstory.record.label.RecommendLabelListPagerLoader", "dispatch recommend label result %s", localGetRecommendLabelListEvent.toString());
       return;
     }
-    localGetRecommendLabelListEvent.jdField_a_of_type_JavaUtilList = paramGetLabelListResponse.jdField_a_of_type_JavaUtilList;
-    localGetRecommendLabelListEvent.jdField_a_of_type_JavaLangString = paramGetLabelListRequest.b;
-    localGetRecommendLabelListEvent.jdField_a_of_type_Boolean = paramGetLabelListResponse.jdField_a_of_type_Boolean;
-    localGetRecommendLabelListEvent.c = TextUtils.isEmpty(paramGetLabelListRequest.jdField_c_of_type_JavaLangString);
-    this.jdField_c_of_type_JavaLangString = paramGetLabelListResponse.jdField_a_of_type_JavaLangString;
-    localGetRecommendLabelListEvent.d = this.jdField_a_of_type_Boolean;
     StoryDispatcher.a().dispatch(localGetRecommendLabelListEvent);
-    SLog.a("Q.qqstory.record.label.RecommendLabelListPagerLoader", "dispatch recommend label result %s", localGetRecommendLabelListEvent.toString());
   }
   
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
@@ -64,7 +64,7 @@ public class RecommendLabelListPagerLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecommendLabelListPagerLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -38,6 +38,7 @@ public final class cmd0x9c9$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -46,12 +47,12 @@ public final class cmd0x9c9$ReqBody
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 160018, 160072, 160170, 160176, 160258, 160296, 160330, 160346, 192018, 192066, 208026, 216274, 216282, 216288, 216296, 322488, 322496, 323968, 334448, 335896, 335984, 480010, 480018 }, new String[] { "str_nick", "uint32_gender", "str_college", "uint32_constellation", "bytes_location", "uint32_age", "bytes_location_district", "bytes_hometown_district", "bytes_hometown", "str_company", "bytes_birthday", "str_stranger_nick", "bytes_stranger_declare", "uint32_love_status", "uint32_profession", "uint32_qzone_visible", "uint32_interest_visible", "uint32_stranger_profile_flag", "uint32_gift_visible", "uint32_face_flag", "uint32_guide_flag", "bytes_reqbody_5ea", "bytes_reqbody_9c7" }, new Object[] { "", Integer.valueOf(0), "", Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, "", localByteStringMicro5, "", localByteStringMicro6, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro7, localByteStringMicro8 }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 160018, 160072, 160170, 160176, 160258, 160296, 160330, 160346, 192018, 192066, 208026, 216274, 216282, 216288, 216296, 322488, 322496, 323968, 334448, 335896, 335984, 480010, 480018 }, new String[] { "str_nick", "uint32_gender", "str_college", "uint32_constellation", "bytes_location", "uint32_age", "bytes_location_district", "bytes_hometown_district", "bytes_hometown", "str_company", "bytes_birthday", "str_stranger_nick", "bytes_stranger_declare", "uint32_love_status", "uint32_profession", "uint32_qzone_visible", "uint32_interest_visible", "uint32_stranger_profile_flag", "uint32_gift_visible", "uint32_face_flag", "uint32_guide_flag", "bytes_reqbody_5ea", "bytes_reqbody_9c7" }, new Object[] { "", localInteger, "", localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, "", localByteStringMicro5, "", localByteStringMicro6, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro7, localByteStringMicro8 }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9c9.cmd0x9c9.ReqBody
  * JD-Core Version:    0.7.0.1
  */

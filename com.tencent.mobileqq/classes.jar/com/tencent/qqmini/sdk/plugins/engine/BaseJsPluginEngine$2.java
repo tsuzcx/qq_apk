@@ -11,32 +11,37 @@ class BaseJsPluginEngine$2
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if ((paramBoolean) && (BaseJsPluginEngine.access$100(this.this$0) != null)) {
+    if ((paramBoolean) && (BaseJsPluginEngine.access$100(this.this$0) != null))
+    {
       if (this.val$isConfirm)
       {
-        this.this$0.onceSubMsgCallbackSuc(BaseJsPluginEngine.access$100(this.this$0), this.val$allSubMsg, this.val$subMsgNoMaintainAuth, this.val$subMsgIgnoreAuth, false);
-        this.this$0.authDialog = null;
-      }
-    }
-    while (BaseJsPluginEngine.access$100(this.this$0) == null)
-    {
-      return;
-      if (this.val$isRefuse)
-      {
-        this.this$0.onceSubMsgCallbackSuc(BaseJsPluginEngine.access$100(this.this$0), this.val$allSubMsg, this.val$subMsgNoMaintainAuth, this.val$subMsgIgnoreAuth, true);
+        paramJSONObject = this.this$0;
+        paramJSONObject.onceSubMsgCallbackSuc(BaseJsPluginEngine.access$100(paramJSONObject), this.val$allSubMsg, this.val$subMsgNoMaintainAuth, this.val$subMsgIgnoreAuth, false);
         this.this$0.authDialog = null;
         return;
       }
-      this.this$0.onceSubMsgCallbackSuc(BaseJsPluginEngine.access$100(this.this$0), this.val$allSubMsg);
+      if (this.val$isRefuse)
+      {
+        paramJSONObject = this.this$0;
+        paramJSONObject.onceSubMsgCallbackSuc(BaseJsPluginEngine.access$100(paramJSONObject), this.val$allSubMsg, this.val$subMsgNoMaintainAuth, this.val$subMsgIgnoreAuth, true);
+        this.this$0.authDialog = null;
+        return;
+      }
+      paramJSONObject = this.this$0;
+      paramJSONObject.onceSubMsgCallbackSuc(BaseJsPluginEngine.access$100(paramJSONObject), this.val$allSubMsg);
       this.this$0.authDialog = null;
       return;
     }
-    this.this$0.onceSubMsgCallbackFail(BaseJsPluginEngine.access$100(this.this$0), "Request subscribe fail", 10003);
+    if (BaseJsPluginEngine.access$100(this.this$0) != null)
+    {
+      paramJSONObject = this.this$0;
+      paramJSONObject.onceSubMsgCallbackFail(BaseJsPluginEngine.access$100(paramJSONObject), "Request subscribe fail", 10003);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.BaseJsPluginEngine.2
  * JD-Core Version:    0.7.0.1
  */

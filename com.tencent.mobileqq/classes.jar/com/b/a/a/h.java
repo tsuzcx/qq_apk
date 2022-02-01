@@ -26,117 +26,158 @@ public final class h
   
   private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    double d1 = Math.min(paramInt1 / paramInt3, paramInt2 / paramInt4);
-    for (float f1 = 1.0F; f1 * 2.0F <= d1; f1 *= 2.0F) {}
+    double d1 = paramInt1;
+    double d2 = paramInt3;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    d1 /= d2;
+    d2 = paramInt2;
+    double d3 = paramInt4;
+    Double.isNaN(d2);
+    Double.isNaN(d3);
+    d1 = Math.min(d1, d2 / d3);
+    float f2;
+    for (float f1 = 1.0F;; f1 = f2)
+    {
+      f2 = 2.0F * f1;
+      if (f2 > d1) {
+        break;
+      }
+    }
     return (int)f1;
   }
   
   private static int a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, ImageView.ScaleType paramScaleType)
   {
-    int i;
     if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      i = paramInt3;
+      return paramInt3;
     }
-    double d1;
-    do
+    if (paramScaleType == ImageView.ScaleType.FIT_XY)
     {
-      do
+      if (paramInt1 == 0) {
+        return paramInt3;
+      }
+      return paramInt1;
+    }
+    if (paramInt1 == 0)
+    {
+      d1 = paramInt2;
+      d2 = paramInt4;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      d1 /= d2;
+      d2 = paramInt3;
+      Double.isNaN(d2);
+      return (int)(d2 * d1);
+    }
+    if (paramInt2 == 0) {
+      return paramInt1;
+    }
+    double d1 = paramInt4;
+    double d2 = paramInt3;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    d1 /= d2;
+    if (paramScaleType == ImageView.ScaleType.CENTER_CROP)
+    {
+      d2 = paramInt1;
+      Double.isNaN(d2);
+      d3 = paramInt2;
+      if (d2 * d1 < d3)
       {
-        do
-        {
-          do
-          {
-            return i;
-            if (paramScaleType != ImageView.ScaleType.FIT_XY) {
-              break;
-            }
-            i = paramInt1;
-          } while (paramInt1 != 0);
-          return paramInt3;
-          if (paramInt1 == 0) {
-            return (int)(paramInt2 / paramInt4 * paramInt3);
-          }
-          i = paramInt1;
-        } while (paramInt2 == 0);
-        d1 = paramInt4 / paramInt3;
-        if (paramScaleType != ImageView.ScaleType.CENTER_CROP) {
-          break;
-        }
-        i = paramInt1;
-      } while (paramInt1 * d1 >= paramInt2);
-      return (int)(paramInt2 / d1);
-      i = paramInt1;
-    } while (paramInt1 * d1 <= paramInt2);
-    return (int)(paramInt2 / d1);
+        Double.isNaN(d3);
+        paramInt1 = (int)(d3 / d1);
+      }
+      return paramInt1;
+    }
+    d2 = paramInt1;
+    Double.isNaN(d2);
+    double d3 = paramInt2;
+    if (d2 * d1 > d3)
+    {
+      Double.isNaN(d3);
+      paramInt1 = (int)(d3 / d1);
+    }
+    return paramInt1;
   }
   
-  public final o<Bitmap> a(j paramj)
+  protected final o<Bitmap> a(j paramj)
   {
-    label340:
-    label357:
-    for (;;)
+    synchronized (f)
     {
-      byte[] arrayOfByte;
-      BitmapFactory.Options localOptions;
-      synchronized (f)
+      try
       {
-        try
+        byte[] arrayOfByte = paramj.a;
+        BitmapFactory.Options localOptions = new BitmapFactory.Options();
+        Object localObject2;
+        Object localObject1;
+        if ((this.c == 0) && (this.d == 0))
         {
-          arrayOfByte = paramj.a;
-          localOptions = new BitmapFactory.Options();
-          Object localObject1;
-          if ((this.c == 0) && (this.d == 0))
-          {
-            localOptions.inPreferredConfig = this.b;
-            localBitmap = b.a.a(arrayOfByte);
-            localObject1 = localBitmap;
-            if (localBitmap == null) {
-              localObject1 = BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, localOptions);
-            }
-            if (localObject1 != null) {
-              break label340;
-            }
-            localObject1 = o.a(new l(paramj));
-            paramj = (j)localObject1;
-            return paramj;
-          }
-          Bitmap localBitmap = b.a.a(arrayOfByte);
-          if (localBitmap != null)
-          {
-            j = localBitmap.getWidth();
-            i = localBitmap.getHeight();
-            int k = a(this.c, this.d, j, i, this.e);
-            int m = a(this.d, this.c, i, j, this.e);
-            localOptions.inJustDecodeBounds = false;
-            localOptions.inSampleSize = a(j, i, k, m);
-            localObject1 = localBitmap;
-            if (localBitmap == null) {
-              localObject1 = BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, localOptions);
-            }
-            if ((localObject1 == null) || ((((Bitmap)localObject1).getWidth() <= k) && (((Bitmap)localObject1).getHeight() <= m))) {
-              break label357;
-            }
-            localBitmap = Bitmap.createScaledBitmap((Bitmap)localObject1, k, m, true);
-            ((Bitmap)localObject1).recycle();
-            localObject1 = localBitmap;
-            continue;
-            paramj = finally;
+          localOptions.inPreferredConfig = this.b;
+          localObject2 = b.a.a(arrayOfByte);
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, localOptions);
           }
         }
-        catch (OutOfMemoryError localOutOfMemoryError)
+        else
         {
-          u.c("Caught OOM for %d byte image, url=%s", new Object[] { Integer.valueOf(paramj.a.length), c() });
-          paramj = o.a(new l(localOutOfMemoryError));
-          return paramj;
+          localObject1 = b.a.a(arrayOfByte);
+          int i;
+          int j;
+          if (localObject1 != null)
+          {
+            i = ((Bitmap)localObject1).getWidth();
+            j = ((Bitmap)localObject1).getHeight();
+          }
+          else
+          {
+            localOptions.inJustDecodeBounds = true;
+            BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, localOptions);
+            i = localOptions.outWidth;
+            j = localOptions.outHeight;
+          }
+          int k = a(this.c, this.d, i, j, this.e);
+          int m = a(this.d, this.c, j, i, this.e);
+          localOptions.inJustDecodeBounds = false;
+          localOptions.inSampleSize = a(i, j, k, m);
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, localOptions);
+          }
+          localObject1 = localObject2;
+          if (localObject2 != null) {
+            if (((Bitmap)localObject2).getWidth() <= k)
+            {
+              localObject1 = localObject2;
+              if (((Bitmap)localObject2).getHeight() <= m) {}
+            }
+            else
+            {
+              localObject1 = Bitmap.createScaledBitmap((Bitmap)localObject2, k, m, true);
+              ((Bitmap)localObject2).recycle();
+            }
+          }
         }
+        if (localObject1 == null)
+        {
+          localObject1 = o.a(new l(paramj));
+          paramj = (j)localObject1;
+        }
+        else
+        {
+          localObject1 = o.a(localObject1, d.a(paramj));
+          paramj = (j)localObject1;
+        }
+        return paramj;
       }
-      localOptions.inJustDecodeBounds = true;
-      BitmapFactory.decodeByteArray(arrayOfByte, 0, arrayOfByte.length, localOptions);
-      int j = localOptions.outWidth;
-      int i = localOptions.outHeight;
-      continue;
-      o localo = o.a(localOutOfMemoryError, d.a(paramj));
-      paramj = localo;
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        u.c("Caught OOM for %d byte image, url=%s", new Object[] { Integer.valueOf(paramj.a.length), c() });
+        paramj = o.a(new l(localOutOfMemoryError));
+        return paramj;
+      }
+      throw paramj;
     }
   }
   
@@ -147,7 +188,7 @@ public final class h
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.a.h
  * JD-Core Version:    0.7.0.1
  */

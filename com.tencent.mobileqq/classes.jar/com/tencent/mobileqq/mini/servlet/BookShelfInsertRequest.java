@@ -27,13 +27,16 @@ public class BookShelfInsertRequest
   {
     try
     {
-      MiniBookShelf.StInsertBookShelfRsp localStInsertBookShelfRsp = new MiniBookShelf.StInsertBookShelfRsp();
-      localStInsertBookShelfRsp.mergeFrom(paramArrayOfByte);
-      return localStInsertBookShelfRsp;
+      localObject = new MiniBookShelf.StInsertBookShelfRsp();
+      ((MiniBookShelf.StInsertBookShelfRsp)localObject).mergeFrom(paramArrayOfByte);
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.d("BookShelfInsertRequest", 1, "onResponse fail." + paramArrayOfByte);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse fail.");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      QLog.d("BookShelfInsertRequest", 1, ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -45,7 +48,7 @@ public class BookShelfInsertRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.BookShelfInsertRequest
  * JD-Core Version:    0.7.0.1
  */

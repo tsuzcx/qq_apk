@@ -37,17 +37,18 @@ public class WatchFloatingWindowController
   private int a(Context paramContext, float paramFloat)
   {
     Object localObject = new FloatingScreenParams.FloatingBuilder();
-    if (paramFloat < 1.0F) {}
-    for (int i = 1;; i = 2)
+    if (paramFloat < 1.0F) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    localObject = ((FloatingScreenParams.FloatingBuilder)localObject).setShapeType(i).setCanMove(true).setCanZoom(false).setRatio(paramFloat).setFloatingCenter(300, -680).build();
+    int i = ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).enterWatchTogetherFloatingScreen(BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView, (FloatingScreenParams)localObject, FloatingWatchTogetherWrapper.CLASS_NAME);
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchFloatingWindowController", 2, new Object[] { "createFloatWindow: invoked. ", " result: ", Integer.valueOf(i) });
+    }
+    if (i == 1)
     {
-      localObject = ((FloatingScreenParams.FloatingBuilder)localObject).setShapeType(i).setCanMove(true).setCanZoom(false).setRatio(paramFloat).setFloatingCenter(300, -680).build();
-      i = ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).enterWatchTogetherFloatingScreen(BaseApplicationImpl.context, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView, (FloatingScreenParams)localObject, FloatingWatchTogetherWrapper.CLASS_NAME);
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchFloatingWindowController", 2, new Object[] { "createFloatWindow: invoked. ", " result: ", Integer.valueOf(i) });
-      }
-      if (i != 1) {
-        break;
-      }
       TogetherWatchFloatingUtil.a(paramContext, 4, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin());
       return i;
     }
@@ -58,43 +59,51 @@ public class WatchFloatingWindowController
   
   public static WatchFloatingWindowController a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController == null) {
-        jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController = new WatchFloatingWindowController();
+    if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController == null) {
+          jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController = new WatchFloatingWindowController();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController;
   }
   
   private boolean a(String paramString, int paramInt)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchFloatingWindowController", 2, "closeFloatingWindow uin is empty or data==null");
-      }
-    }
-    do
+    if ((!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData != null))
     {
-      return false;
       if ((paramString.equals(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin())) && (paramInt == this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType())) {
-        break;
+        return true;
       }
-    } while (!QLog.isColorLevel());
-    StringBuilder localStringBuilder = new StringBuilder("closeFloatingWindow uin or type not match:");
-    localStringBuilder.append("mCurType=").append(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType()).append(" sessionType=").append(paramInt).append(" mCurUin=").append(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin()).append(" uin=").append(paramString);
-    QLog.d("WatchFloatingWindowController", 2, localStringBuilder.toString());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder("closeFloatingWindow uin or type not match:");
+        localStringBuilder.append("mCurType=");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType());
+        localStringBuilder.append(" sessionType=");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" mCurUin=");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin());
+        localStringBuilder.append(" uin=");
+        localStringBuilder.append(paramString);
+        QLog.d("WatchFloatingWindowController", 2, localStringBuilder.toString());
+      }
+      return false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchFloatingWindowController", 2, "closeFloatingWindow uin is empty or data==null");
+    }
     return false;
-    return true;
   }
   
   public int a(Context paramContext, @Nonnull WatchTogetherFloatingData paramWatchTogetherFloatingData)
   {
     if (!AppNetConnInfo.isNetSupport())
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 2131694459, 0).a();
+      QQToast.a(BaseApplicationImpl.getContext(), 2131694424, 0).a();
       this.jdField_b_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData = null;
       return 4;
     }
@@ -106,34 +115,35 @@ public class WatchFloatingWindowController
       this.jdField_b_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData = null;
       return 5;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView;
+    if (localObject == null)
     {
       this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView = new WatchTogetherFloatingView(BaseApplicationImpl.getContext());
       this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a(true);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData = paramWatchTogetherFloatingData;
-      if ((this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoHeight() > 0.0D) && (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoWidth() > 0.0D)) {
-        break label200;
-      }
     }
-    label200:
-    for (float f = 0.5625F;; f = (float)(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoHeight() / this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoWidth()))
+    else
     {
-      int i = a(paramContext, f);
-      if (i == 0) {
-        break label220;
-      }
+      ((WatchTogetherFloatingView)localObject).a(paramWatchTogetherFloatingData.getSmallUrl());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData = paramWatchTogetherFloatingData;
+    float f;
+    if ((this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoHeight() > 0.0D) && (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoWidth() > 0.0D)) {
+      f = (float)(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoHeight() / this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoWidth());
+    } else {
+      f = 0.5625F;
+    }
+    int i = a(paramContext, f);
+    if (i != 0)
+    {
       this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData = null;
       this.jdField_b_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData = null;
       return i;
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a(paramWatchTogetherFloatingData.getSmallUrl());
-      break;
     }
-    label220:
     this.jdField_a_of_type_Boolean = true;
-    Intent localIntent = new Intent();
-    localIntent.putExtra("web_view_module_from", 1);
-    localIntent.putExtra("url", paramWatchTogetherFloatingData.getSmallUrl());
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule = new WebViewModule(localIntent, paramContext);
+    localObject = new Intent();
+    ((Intent)localObject).putExtra("web_view_module_from", 1);
+    ((Intent)localObject).putExtra("url", paramWatchTogetherFloatingData.getSmallUrl());
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule = new WebViewModule((Intent)localObject, paramContext);
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule.onCreate();
     TogetherWatchFloatingUtil.a(true, paramWatchTogetherFloatingData.getCurUin(), paramWatchTogetherFloatingData.getCurType(), true);
     ((IQQFloatingWindowBroadcast)QRoute.api(IQQFloatingWindowBroadcast.class)).sendWindowClosedBroadcast(BaseApplicationImpl.getContext(), 50, 0);
@@ -155,50 +165,58 @@ public class WatchFloatingWindowController
   
   public void a(double paramDouble1, double paramDouble2)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 2;
-    if (QLog.isColorLevel()) {
-      QLog.d("WatchFloatingWindowController", 2, "updateWindowSize videoWidth =" + paramDouble1 + " videoHeight=" + paramDouble2);
-    }
-    if ((paramDouble1 <= 0.0D) || (paramDouble2 <= 0.0D)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchFloatingWindowController", 2, "updateWindowSize params is invalid");
-      }
-    }
-    do
+    Object localObject;
+    if (bool)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null);
-      if ((paramDouble1 != this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoWidth()) || (paramDouble2 != this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoHeight())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("WatchFloatingWindowController", 2, "updateWindowSize params is equal");
-    return;
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.setVideoWidth(paramDouble1);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.setVideoHeight(paramDouble2);
-    float f = (float)(paramDouble2 / paramDouble1);
-    ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).updateFloatingWindowRatio(f, FloatingWatchTogetherWrapper.CLASS_NAME);
-    IQQFloatingWindow localIQQFloatingWindow = (IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class);
-    if (f < 1.0F) {
-      i = 1;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateWindowSize videoWidth =");
+      ((StringBuilder)localObject).append(paramDouble1);
+      ((StringBuilder)localObject).append(" videoHeight=");
+      ((StringBuilder)localObject).append(paramDouble2);
+      QLog.d("WatchFloatingWindowController", 2, ((StringBuilder)localObject).toString());
     }
-    localIQQFloatingWindow.updateFloatingWindowShape(i, FloatingWatchTogetherWrapper.CLASS_NAME);
+    if ((paramDouble1 > 0.0D) && (paramDouble2 > 0.0D))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null) {
+        return;
+      }
+      if ((paramDouble1 == this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoWidth()) && (paramDouble2 == this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getVideoHeight()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("WatchFloatingWindowController", 2, "updateWindowSize params is equal");
+        }
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.setVideoWidth(paramDouble1);
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.setVideoHeight(paramDouble2);
+      float f = (float)(paramDouble2 / paramDouble1);
+      ((IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class)).updateFloatingWindowRatio(f, FloatingWatchTogetherWrapper.CLASS_NAME);
+      localObject = (IQQFloatingWindow)QRoute.api(IQQFloatingWindow.class);
+      if (f < 1.0F) {
+        i = 1;
+      }
+      ((IQQFloatingWindow)localObject).updateFloatingWindowShape(i, FloatingWatchTogetherWrapper.CLASS_NAME);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("WatchFloatingWindowController", 2, "updateWindowSize params is invalid");
+    }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null) {
       return;
-      if (this.jdField_a_of_type_Boolean) {
-        break;
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WatchFloatingWindowController", 2, "closeOrQuitBusiness, but isSuccessCreateFloatingView is false");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("WatchFloatingWindowController", 2, "closeOrQuitBusiness, but isSuccessCreateFloatingView is false");
-    return;
+      return;
+    }
     a(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType(), paramInt);
   }
   
@@ -207,11 +225,14 @@ public class WatchFloatingWindowController
     if (QLog.isColorLevel()) {
       QLog.d("WatchFloatingWindowController", 2, "showFloatingWindowByPendingData");
     }
-    if (paramContext == null) {}
-    while (this.jdField_b_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null) {
+    if (paramContext == null) {
       return;
     }
-    a(paramContext, this.jdField_b_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData);
+    WatchTogetherFloatingData localWatchTogetherFloatingData = this.jdField_b_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData;
+    if (localWatchTogetherFloatingData == null) {
+      return;
+    }
+    a(paramContext, localWatchTogetherFloatingData);
   }
   
   public void a(WatchFloatingWindowController.FloatingWindowListener paramFloatingWindowListener)
@@ -226,34 +247,39 @@ public class WatchFloatingWindowController
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null) || (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView == null)) {}
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData != null)
     {
-      return;
-      if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null)) {
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView == null) {
+        return;
+      }
+      WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+      if ((localWeakReference != null) && (localWeakReference.get() != null)) {
         ((WatchFloatingWindowController.FloatingWindowListener)this.jdField_a_of_type_MqqUtilWeakReference.get()).a(paramInt2);
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a() == 1);
-    a(paramString, paramInt1, true);
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a() != 1) {
+        a(paramString, paramInt1, true);
+      }
+    }
   }
   
   public void a(String paramString, int paramInt, boolean paramBoolean)
   {
-    if (!a(paramString, paramInt)) {}
-    do
-    {
+    if (!a(paramString, paramInt)) {
       return;
-      if (this.jdField_a_of_type_Boolean) {
-        break;
+    }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WatchFloatingWindowController", 2, "closeFloatingWindow, but isSuccessCreateFloatingView is false");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("WatchFloatingWindowController", 2, "closeFloatingWindow, but isSuccessCreateFloatingView is false");
-    return;
+      return;
+    }
     this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData = null;
     this.jdField_b_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule != null)
+    WebViewModule localWebViewModule = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule;
+    if (localWebViewModule != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule.onPause();
+      localWebViewModule.onPause();
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule.onDestroy();
       this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule = null;
     }
@@ -272,43 +298,54 @@ public class WatchFloatingWindowController
   
   public void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
-      return;
-    }
-    WatchFloatingWindowController.FloatingWindowListener localFloatingWindowListener = (WatchFloatingWindowController.FloatingWindowListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
+    Object localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+    if (localObject != null)
     {
-      localFloatingWindowListener.b(i);
-      return;
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
+      localObject = (WatchFloatingWindowController.FloatingWindowListener)this.jdField_a_of_type_MqqUtilWeakReference.get();
+      int i;
+      if (paramBoolean) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ((WatchFloatingWindowController.FloatingWindowListener)localObject).b(i);
     }
   }
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule == null)) {}
-    TouchWebView localTouchWebView;
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView != null)
     {
-      return false;
-      localTouchWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule.webView;
-    } while (localTouchWebView == null);
-    return localTouchWebView.isShown();
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule;
+      if (localObject == null) {
+        return false;
+      }
+      localObject = ((WebViewModule)localObject).webView;
+      if (localObject == null) {
+        return false;
+      }
+      return ((TouchWebView)localObject).isShown();
+    }
+    return false;
   }
   
   public void b()
   {
-    int i = 2;
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null) {
       return;
-      if (this.jdField_a_of_type_Boolean) {
-        break;
+    }
+    boolean bool = this.jdField_a_of_type_Boolean;
+    int i = 2;
+    if (!bool)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("WatchFloatingWindowController", 2, "closeOrQuitBusiness, but isSuccessCreateFloatingView is false");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("WatchFloatingWindowController", 2, "closeOrQuitBusiness, but isSuccessCreateFloatingView is false");
-    return;
+      return;
+    }
     String str = this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin();
     int j = this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurType();
     if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.isIsAdm()) {
@@ -319,65 +356,78 @@ public class WatchFloatingWindowController
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView == null) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null);
-        if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getLoadingStatus() != paramInt) {
-          break;
-        }
-      } while (paramInt != 2);
-      ReportController.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh_error", 0, 0, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), "", "", "");
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchFloatingWindowController", 2, "updateLoadingStatus mLoadingStatus=" + this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getLoadingStatus() + " status=" + paramInt);
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getLoadingStatus() == paramInt)
+    {
+      if (paramInt == 2) {
+        ReportController.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh_error", 0, 0, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), "", "", "");
       }
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.setLoadingStatus(paramInt);
-      if (paramInt == 1)
+      return;
+    }
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateLoadingStatus mLoadingStatus=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getLoadingStatus());
+      ((StringBuilder)localObject).append(" status=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("WatchFloatingWindowController", 2, ((StringBuilder)localObject).toString());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.setLoadingStatus(paramInt);
+    if (paramInt == 1)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a(false);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController$WatchFloatingWindowMediaFocusChangeListener;
+      if (localObject == null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a(false);
-        if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController$WatchFloatingWindowMediaFocusChangeListener == null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController$WatchFloatingWindowMediaFocusChangeListener = new WatchFloatingWindowController.WatchFloatingWindowMediaFocusChangeListener(this.jdField_b_of_type_MqqUtilWeakReference);
-          MediaFocusManager.a().a(1, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController$WatchFloatingWindowMediaFocusChangeListener);
-          return;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController$WatchFloatingWindowMediaFocusChangeListener.a(this.jdField_b_of_type_MqqUtilWeakReference);
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController$WatchFloatingWindowMediaFocusChangeListener = new WatchFloatingWindowController.WatchFloatingWindowMediaFocusChangeListener(this.jdField_b_of_type_MqqUtilWeakReference);
+        MediaFocusManager.a().a(1, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchFloatingWindowController$WatchFloatingWindowMediaFocusChangeListener);
         return;
       }
-    } while (paramInt != 2);
-    ReportController.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh_error", 0, 0, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a();
+      ((WatchFloatingWindowController.WatchFloatingWindowMediaFocusChangeListener)localObject).a(this.jdField_b_of_type_MqqUtilWeakReference);
+      return;
+    }
+    if (paramInt == 2)
+    {
+      ReportController.b(null, "dc00899", "Grp_AIO", "", "video_tab", "clk_refresh_error", 0, 0, this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingData.getCurUin(), "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a();
+    }
   }
   
   public void b(WatchFloatingWindowController.FloatingWindowListener paramFloatingWindowListener)
   {
-    if ((this.jdField_a_of_type_MqqUtilWeakReference != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() == paramFloatingWindowListener)) {
+    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null) && (this.jdField_a_of_type_MqqUtilWeakReference.get() == paramFloatingWindowListener)) {
       this.jdField_a_of_type_MqqUtilWeakReference = null;
     }
   }
   
   public void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView == null) || (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule == null)) {}
-    TouchWebView localTouchWebView;
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView != null)
     {
-      return;
-      localTouchWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule.webView;
-    } while (localTouchWebView == null);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a(localTouchWebView);
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule.onResume();
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule;
+      if (localObject == null) {
+        return;
+      }
+      localObject = ((WebViewModule)localObject).webView;
+      if (localObject == null) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanWatchTogetherFloatingView.a((TouchWebView)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewModule.onResume();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchFloatingWindowController
  * JD-Core Version:    0.7.0.1
  */

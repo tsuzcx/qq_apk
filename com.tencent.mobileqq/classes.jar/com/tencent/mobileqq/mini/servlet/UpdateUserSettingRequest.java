@@ -26,19 +26,25 @@ public class UpdateUserSettingRequest
   
   public static INTERFACE.StUpdateUserSettingRsp onResponse(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {}
-    do
-    {
+    if (paramArrayOfByte == null) {
       return null;
-      INTERFACE.StUpdateUserSettingRsp localStUpdateUserSettingRsp = new INTERFACE.StUpdateUserSettingRsp();
-      try
+    }
+    Object localObject = new INTERFACE.StUpdateUserSettingRsp();
+    try
+    {
+      ((INTERFACE.StUpdateUserSettingRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      if (QLog.isColorLevel())
       {
-        localStUpdateUserSettingRsp.mergeFrom(decode(paramArrayOfByte));
-        return localStUpdateUserSettingRsp;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("ProtoBufRequest", 2, ((StringBuilder)localObject).toString());
       }
-      catch (Exception paramArrayOfByte) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("ProtoBufRequest", 2, "onResponse fail." + paramArrayOfByte);
+    }
     return null;
   }
   
@@ -49,7 +55,7 @@ public class UpdateUserSettingRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.UpdateUserSettingRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -11,29 +11,29 @@ public class QQResourceIdMapper
     {
     default: 
       return 0;
-    case 0: 
-      return 2130772043;
-    case 1: 
-      return 2130772045;
-    case 2: 
-      return 2130772314;
+    case 8: 
+      return 2131756304;
     case 7: 
-      return 2130772316;
-    case 3: 
-      return 2130771994;
+      return 2130772344;
     case 6: 
-      return 2130771991;
+      return 2130772003;
     case 5: 
-      return 2130771990;
+      return 2130772002;
     case 4: 
-      return 2130771995;
+      return 2130772007;
+    case 3: 
+      return 2130772006;
+    case 2: 
+      return 2130772342;
+    case 1: 
+      return 2130772067;
     }
-    return 2131755955;
+    return 2130772065;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQResourceIdMapper
  * JD-Core Version:    0.7.0.1
  */

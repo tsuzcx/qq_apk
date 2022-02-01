@@ -35,15 +35,17 @@ public class Emotion
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (Emotion)paramObject;
-    } while ((this.emotionType == paramObject.emotionType) && (ObjectUtil.equals(this.actualEmotion, paramObject.actualEmotion)));
+      return (this.emotionType == paramObject.emotionType) && (ObjectUtil.equals(this.actualEmotion, paramObject.actualEmotion));
+    }
     return false;
   }
   
@@ -59,7 +61,13 @@ public class Emotion
   
   public String toString()
   {
-    return "Emotion{actualEmotion=" + this.actualEmotion + ", emotionType=" + this.emotionType + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Emotion{actualEmotion=");
+    localStringBuilder.append(this.actualEmotion);
+    localStringBuilder.append(", emotionType=");
+    localStringBuilder.append(this.emotionType);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -69,7 +77,7 @@ public class Emotion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.model.Emotion
  * JD-Core Version:    0.7.0.1
  */

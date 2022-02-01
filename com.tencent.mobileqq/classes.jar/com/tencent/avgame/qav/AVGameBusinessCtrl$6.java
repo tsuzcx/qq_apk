@@ -22,12 +22,17 @@ class AVGameBusinessCtrl$6
           ((AVGameUIEventCallback)localWeakReference.get()).a(this.a, this.b);
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameBusinessCtrl.6
  * JD-Core Version:    0.7.0.1
  */

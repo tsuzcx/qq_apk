@@ -16,40 +16,40 @@ class EditLocalVideoActivity$16
   
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditLocalVideoActivity", 2, "onPrepared, duration:" + paramMediaPlayer.getDuration());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPrepared, duration:");
+      localStringBuilder.append(paramMediaPlayer.getDuration());
+      QLog.d("EditLocalVideoActivity", 2, localStringBuilder.toString());
     }
     EditLocalVideoActivity.a(this.a).removeMessages(9999);
     EditLocalVideoActivity.h(this.a);
     EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.a(this.a), EditLocalVideoActivity.a(this.a));
     EditLocalVideoActivity.a(this.a).a(EditLocalVideoActivity.c(this.a), EditLocalVideoActivity.d(this.a));
     EditLocalVideoActivity.a(this.a).a(paramMediaPlayer.getDuration());
-    int i;
-    int j;
     if (!EditLocalVideoActivity.a(this.a).a())
     {
       EditLocalVideoActivity.d(this.a, paramMediaPlayer.getDuration());
       if ((FileUtils.getFileSize(EditLocalVideoActivity.b(this.a)) / EditLocalVideoActivity.a(this.a).getDuration() * 15000L > this.a.a(EditLocalVideoActivity.a())) && (QLog.isColorLevel())) {
         QLog.d("EditLocalVideoActivity", 2, "prepared, there is not enough space on sdcard");
       }
-      i = paramMediaPlayer.getVideoWidth();
-      j = paramMediaPlayer.getVideoHeight();
-      if ((i <= 0) || (j <= 0)) {
-        Toast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131703671), 1).show();
+      int i = paramMediaPlayer.getVideoWidth();
+      int j = paramMediaPlayer.getVideoHeight();
+      if ((i > 0) && (j > 0))
+      {
+        EditLocalVideoActivity.e(this.a, i);
+        EditLocalVideoActivity.f(this.a, j);
+        EditLocalVideoActivity.a(this.a, i, j);
+        return;
       }
+      Toast.makeText(this.a.getApplicationContext(), HardCodeUtil.a(2131703800), 1).show();
     }
-    else
-    {
-      return;
-    }
-    EditLocalVideoActivity.e(this.a, i);
-    EditLocalVideoActivity.f(this.a, j);
-    EditLocalVideoActivity.a(this.a, i, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.16
  * JD-Core Version:    0.7.0.1
  */

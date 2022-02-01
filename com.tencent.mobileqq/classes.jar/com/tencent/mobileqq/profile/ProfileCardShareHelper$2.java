@@ -17,27 +17,29 @@ class ProfileCardShareHelper$2
       ProfileCardShareHelper.a(this.a).dismiss();
     }
     int i = -1;
-    switch ((int)paramLong)
+    int j = (int)paramLong;
+    if (j != 0)
     {
-    }
-    for (;;)
-    {
-      if (ProfileCardShareHelper.a(this.a) != null) {
-        ProfileCardShareHelper.a(this.a).a(i, ProfileCardShareHelper.a(this.a));
+      if (j == 1)
+      {
+        ProfileCardShareHelper.b(this.a);
+        i = 2;
       }
-      EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
-      return;
+    }
+    else
+    {
       ProfileCardShareHelper.a(this.a);
       i = 0;
-      continue;
-      ProfileCardShareHelper.b(this.a);
-      i = 2;
     }
+    if (ProfileCardShareHelper.a(this.a) != null) {
+      ProfileCardShareHelper.a(this.a).a(i, ProfileCardShareHelper.a(this.a));
+    }
+    EventCollector.getInstance().onItemClick(paramAdapterView, paramView, paramInt, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.ProfileCardShareHelper.2
  * JD-Core Version:    0.7.0.1
  */

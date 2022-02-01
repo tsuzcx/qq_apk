@@ -26,13 +26,14 @@ public final class Oidb_0x8fc$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 56, 66, 74, 82 }, new String[] { "uint64_group_code", "uint32_show_flag", "rpt_mem_level_info", "rpt_level_name", "uint32_update_time", "uint32_office_mode", "uint32_group_open_appid", "msg_client_info", "bytes_auth_key", "rpt_level_name_new" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro, null }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 56, 66, 74, 82 }, new String[] { "uint64_group_code", "uint32_show_flag", "rpt_mem_level_info", "rpt_level_name", "uint32_update_time", "uint32_office_mode", "uint32_group_open_appid", "msg_client_info", "bytes_auth_key", "rpt_level_name_new" }, new Object[] { Long.valueOf(0L), localInteger, null, null, localInteger, localInteger, localInteger, null, localByteStringMicro, null }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8fc.Oidb_0x8fc.ReqBody
  * JD-Core Version:    0.7.0.1
  */

@@ -28,11 +28,11 @@ public class NumberCheckBox
   public NumberCheckBox(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131167382));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getResources().getColor(2131167402));
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_Boolean) {
@@ -43,17 +43,19 @@ public class NumberCheckBox
   public void setChecked(boolean paramBoolean)
   {
     super.setChecked(paramBoolean);
-    String str2 = "";
-    String str1 = str2;
     if (paramBoolean)
     {
-      str1 = str2;
-      if (this.jdField_a_of_type_Int >= 0) {
-        str1 = String.valueOf(this.jdField_a_of_type_Int);
+      int i = this.jdField_a_of_type_Int;
+      if (i >= 0)
+      {
+        str = String.valueOf(i);
+        break label29;
       }
     }
-    if (!str1.equals(getText())) {
-      setText(str1);
+    String str = "";
+    label29:
+    if (!str.equals(getText())) {
+      setText(str);
     }
   }
   
@@ -79,7 +81,7 @@ public class NumberCheckBox
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.NumberCheckBox
  * JD-Core Version:    0.7.0.1
  */

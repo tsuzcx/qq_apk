@@ -7,12 +7,17 @@ public class FDStatsTree$ResultObj
   
   public String toString()
   {
-    return "str:" + this.jdField_a_of_type_JavaLangString + " cnt:" + this.jdField_a_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("str:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" cnt:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDStatsTree.ResultObj
  * JD-Core Version:    0.7.0.1
  */

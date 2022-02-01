@@ -14,21 +14,25 @@ class DataJsPlugin$7
   {
     if (paramBoolean)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("verifyPlugin : ");
-      if (paramJSONObject != null) {}
-      for (String str = paramJSONObject.toString();; str = "")
-      {
-        QMLog.e("DataJsPlugin", str);
-        this.val$req.ok(paramJSONObject);
-        return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("verifyPlugin : ");
+      String str;
+      if (paramJSONObject != null) {
+        str = paramJSONObject.toString();
+      } else {
+        str = "";
       }
+      localStringBuilder.append(str);
+      QMLog.e("DataJsPlugin", localStringBuilder.toString());
+      this.val$req.ok(paramJSONObject);
+      return;
     }
     this.val$req.fail("verifyPlugin failed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin.7
  * JD-Core Version:    0.7.0.1
  */

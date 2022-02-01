@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
 import android.text.TextUtils;
+import com.tencent.biz.pubaccount.LooperGifImage;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountGifPlayTimeHttpDownloader;
-import com.tencent.biz.pubaccount.util.api.IPublicAccountGifPlayTimeHttpDownloader.LooperGifImage;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.GifDrawable;
 import com.tencent.image.URLDrawableHandler;
@@ -20,17 +20,16 @@ public class PublicAccountGifPlayTimeHttpDownloaderImpl
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if (GifDrawable.isGifFile(paramFile)) {
-      if (!(paramDownloadParams.mExtraInfo instanceof JSONObject)) {
-        break label52;
-      }
-    }
-    label52:
-    for (int i = ((JSONObject)paramDownloadParams.mExtraInfo).optInt("gifPlayCount", 3);; i = 3)
+    if (GifDrawable.isGifFile(paramFile))
     {
-      return new IPublicAccountGifPlayTimeHttpDownloader.LooperGifImage(paramFile, true, i);
-      return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
+      boolean bool = paramDownloadParams.mExtraInfo instanceof JSONObject;
+      int i = 3;
+      if (bool) {
+        i = ((JSONObject)paramDownloadParams.mExtraInfo).optInt("gifPlayCount", 3);
+      }
+      return new LooperGifImage(paramFile, true, i);
     }
+    return super.decodeFile(paramFile, paramDownloadParams, paramURLDrawableHandler);
   }
   
   public URL getPubURL(String paramString)
@@ -45,17 +44,14 @@ public class PublicAccountGifPlayTimeHttpDownloaderImpl
     }
     catch (MalformedURLException paramString)
     {
-      for (;;)
-      {
-        QLog.e("PubAccountHttpDownloader", 2, "getPubURL urlString", paramString);
-        paramString = null;
-      }
+      QLog.e("PubAccountHttpDownloader", 2, "getPubURL urlString", paramString);
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountGifPlayTimeHttpDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

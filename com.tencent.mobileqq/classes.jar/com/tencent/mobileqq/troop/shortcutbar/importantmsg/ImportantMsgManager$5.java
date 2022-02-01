@@ -17,52 +17,40 @@ class ImportantMsgManager$5
     ArrayList localArrayList = paramImportantMsgItem.getMsgInfoList();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
     int i = 0;
-    label23:
-    Long localLong;
-    int j;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      localLong = (Long)localIterator.next();
-      j = localArrayList.indexOf(ImportantMsgUtil.a(localLong.longValue()));
-      if (-1 == j) {
-        break label224;
-      }
-      ((ImportantMsgItem.MsgInfo)localArrayList.get(j)).msgNeedShow = false;
-      ((ImportantMsgItem.MsgInfo)localArrayList.get(j)).msgSummary = "";
-      if (this.jdField_a_of_type_Int == 1) {
-        ((ImportantMsgItem.MsgInfo)localArrayList.get(j)).msgNotShowType = 1;
+      Long localLong = (Long)localIterator.next();
+      int j = localArrayList.indexOf(ImportantMsgUtil.a(localLong.longValue()));
+      if (-1 != j)
+      {
+        ((ImportantMsgItem.MsgInfo)localArrayList.get(j)).msgNeedShow = false;
+        ((ImportantMsgItem.MsgInfo)localArrayList.get(j)).msgSummary = "";
+        i = this.jdField_a_of_type_Int;
+        if (i == 1) {
+          ((ImportantMsgItem.MsgInfo)localArrayList.get(j)).msgNotShowType = 1;
+        } else if (i == 2) {
+          ((ImportantMsgItem.MsgInfo)localArrayList.get(j)).msgNotShowType = 2;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("delImportantMsg msgSeq:");
+        localStringBuilder.append(localLong);
+        localStringBuilder.append(" from:");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        QLog.i("ImportantMsgManager", 2, localStringBuilder.toString());
+        i = 1;
       }
     }
-    label224:
-    label225:
-    for (;;)
-    {
-      label117:
-      QLog.i("ImportantMsgManager", 2, "delImportantMsg msgSeq:" + localLong + " from:" + this.jdField_a_of_type_Int);
-      i = 1;
-      for (;;)
-      {
-        break label23;
-        if (this.jdField_a_of_type_Int != 2) {
-          break label225;
-        }
-        ((ImportantMsgItem.MsgInfo)localArrayList.get(j)).msgNotShowType = 2;
-        break label117;
-        if (i != 0) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager.a(paramImportantMsgItem.clone());
-        }
-        if ((this.jdField_a_of_type_Int != 1) && (i == 0)) {
-          break;
-        }
-        ImportantMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager, paramLong);
-        return;
-      }
+    if (i != 0) {
+      this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager.a(paramImportantMsgItem.clone());
+    }
+    if ((this.jdField_a_of_type_Int == 1) || (i != 0)) {
+      ImportantMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarImportantmsgImportantMsgManager, paramLong);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgManager.5
  * JD-Core Version:    0.7.0.1
  */

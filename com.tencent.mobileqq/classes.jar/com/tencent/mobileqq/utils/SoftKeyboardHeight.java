@@ -33,34 +33,38 @@ public class SoftKeyboardHeight
   
   public static int a(int paramInt)
   {
-    int i;
     if (paramInt == 0) {
-      i = DisplayUtil.a(BaseApplication.getContext(), 210.0F);
+      return DisplayUtil.a(BaseApplication.getContext(), 210.0F);
     }
-    do
-    {
+    if (c == 0) {
+      c = b();
+    }
+    int i = c;
+    if (paramInt > i) {
       return i;
-      if (c == 0) {
-        c = b();
-      }
-      i = paramInt;
-    } while (paramInt <= c);
-    return c;
+    }
+    return paramInt;
   }
   
   private static int b()
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (SystemBarTintManager.hasNavBar(localBaseApplication)) {
-      i = SystemBarTintManager.getNavigationBarHeight(localBaseApplication);
-    }
-    for (int i = (int)((localBaseApplication.getResources().getDisplayMetrics().heightPixels + i) * 0.4D);; i = (int)(localBaseApplication.getResources().getDisplayMetrics().heightPixels * 0.4D))
+    double d;
+    if (SystemBarTintManager.hasNavBar(localBaseApplication))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoftKeyboardHeight", 2, new Object[] { "getMaxEmotionPanelHeight, max keyboard height:", Integer.valueOf(i) });
-      }
-      return i;
+      d = SystemBarTintManager.getNavigationBarHeight(localBaseApplication) + localBaseApplication.getResources().getDisplayMetrics().heightPixels;
+      Double.isNaN(d);
     }
+    else
+    {
+      d = localBaseApplication.getResources().getDisplayMetrics().heightPixels;
+      Double.isNaN(d);
+    }
+    int i = (int)(d * 0.4D);
+    if (QLog.isColorLevel()) {
+      QLog.d("SoftKeyboardHeight", 2, new Object[] { "getMaxEmotionPanelHeight, max keyboard height:", Integer.valueOf(i) });
+    }
+    return i;
   }
   
   private void b()
@@ -77,34 +81,33 @@ public class SoftKeyboardHeight
       i = localSharedPreferences.getInt("key_height", 0);
       this.jdField_a_of_type_ComTencentMobileqqUtilsSoftKeyboardHeight$OnGetSoftHeightListener.a(i, true);
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SoftKeyboardHeight", 2, new Object[] { "getSoftKeyboardHeight, keyboard height:", Integer.valueOf(i) });
-      }
-      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
-      return i;
       i = 0;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("SoftKeyboardHeight", 2, new Object[] { "getSoftKeyboardHeight, keyboard height:", Integer.valueOf(i) });
+    }
+    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().addOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+    return i;
   }
   
   public void a()
   {
     if (this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener != null)
     {
-      if (Build.VERSION.SDK_INT < 16) {
+      if (Build.VERSION.SDK_INT < 16)
+      {
         this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeGlobalOnLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
+        return;
       }
+      this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.getViewTreeObserver().removeOnGlobalLayoutListener(this.jdField_a_of_type_AndroidViewViewTreeObserver$OnGlobalLayoutListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SoftKeyboardHeight
  * JD-Core Version:    0.7.0.1
  */

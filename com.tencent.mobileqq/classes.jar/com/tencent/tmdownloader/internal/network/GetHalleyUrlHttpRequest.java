@@ -12,12 +12,16 @@ import java.util.ArrayList;
 public class GetHalleyUrlHttpRequest
   extends PostHttpRequest
 {
-  protected static final String TAG = GetHalleyUrlHttpRequest.class.getSimpleName();
+  protected static final String TAG = "GetHalleyUrlHttpRequest";
   protected IGetHalleyUrlHttpListener mListener = null;
   
-  public void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
+  protected void onFinished(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt)
   {
-    ab.c(TAG, "onFinished errorCode: " + paramInt);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onFinished errorCode: ");
+    localStringBuilder.append(paramInt);
+    ab.c(str, localStringBuilder.toString());
     paramArrayOfByte1 = ProtocolPackage.bytes2JceObj(ProtocolPackage.unpackRequestPackage(paramArrayOfByte1).body, GetHalleyUrlReq.class);
     if (paramArrayOfByte2 == null)
     {
@@ -30,33 +34,38 @@ public class GetHalleyUrlHttpRequest
     if ((paramArrayOfByte2 != null) && (paramArrayOfByte2.body != null))
     {
       paramArrayOfByte2 = ProtocolPackage.unpageageJceResponse(paramArrayOfByte2.body, GetHalleyUrlRsp.class);
-      ab.c(TAG, "halleyTest GetHalleyUrlHttpRequest finish jceResponse = " + paramArrayOfByte2);
-      if (paramArrayOfByte2 != null) {
-        if ((this.mListener != null) && (paramInt == 0)) {
+      str = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("halleyTest GetHalleyUrlHttpRequest finish jceResponse = ");
+      localStringBuilder.append(paramArrayOfByte2);
+      ab.c(str, localStringBuilder.toString());
+      if (paramArrayOfByte2 != null)
+      {
+        if ((this.mListener != null) && (paramInt == 0))
+        {
           if ((paramArrayOfByte2 instanceof GetHalleyUrlRsp))
           {
             paramArrayOfByte2 = (GetHalleyUrlRsp)paramArrayOfByte2;
-            if (paramArrayOfByte2.ret != 0) {
-              break label183;
+            if (paramArrayOfByte2.ret == 0) {
+              this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, paramArrayOfByte2, true);
+            } else {
+              this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, paramArrayOfByte2, false);
             }
-            this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, paramArrayOfByte2, true);
           }
         }
+        else {
+          this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, null, false);
+        }
+      }
+      else {
+        this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, null, false);
       }
     }
-    for (;;)
+    else
     {
-      ab.c(TAG, "exit");
-      return;
-      label183:
-      this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, paramArrayOfByte2, false);
-      continue;
-      this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, null, false);
-      continue;
-      this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, null, false);
-      continue;
       this.mListener.onHalleyUrlHttpRequestFinish((GetHalleyUrlReq)paramArrayOfByte1, null, false);
     }
+    ab.c(TAG, "exit");
   }
   
   public void sendHalleyUrlRequest(String paramString)
@@ -75,7 +84,7 @@ public class GetHalleyUrlHttpRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.network.GetHalleyUrlHttpRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -28,16 +28,15 @@ final class ExoPlayerImplInternal$PlaybackInfoUpdate
   
   public void setPositionDiscontinuity(int paramInt)
   {
-    boolean bool = true;
-    if ((this.positionDiscontinuity) && (this.discontinuityReason != 4))
+    boolean bool2 = this.positionDiscontinuity;
+    boolean bool1 = true;
+    if ((bool2) && (this.discontinuityReason != 4))
     {
-      if (paramInt == 4) {}
-      for (;;)
-      {
-        Assertions.checkArgument(bool);
-        return;
-        bool = false;
+      if (paramInt != 4) {
+        bool1 = false;
       }
+      Assertions.checkArgument(bool1);
+      return;
     }
     this.positionDiscontinuity = true;
     this.discontinuityReason = paramInt;
@@ -45,7 +44,7 @@ final class ExoPlayerImplInternal$PlaybackInfoUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ExoPlayerImplInternal.PlaybackInfoUpdate
  * JD-Core Version:    0.7.0.1
  */

@@ -50,13 +50,21 @@ public class TPPlayProxyListenerEmptyImpl
   
   public Object getPlayInfo(long paramLong)
   {
-    TPLogUtil.i(this.tag, " empty proxy player listener , notify , getPlayInfo with type : " + paramLong);
+    String str = this.tag;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" empty proxy player listener , notify , getPlayInfo with type : ");
+    localStringBuilder.append(paramLong);
+    TPLogUtil.i(str, localStringBuilder.toString());
     return null;
   }
   
   public Object getPlayInfo(String paramString)
   {
-    TPLogUtil.i(this.tag, " empty proxy player listener , notify , getPlayInfo with key : " + paramString);
+    String str = this.tag;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" empty proxy player listener , notify , getPlayInfo with key : ");
+    localStringBuilder.append(paramString);
+    TPLogUtil.i(str, localStringBuilder.toString());
     return null;
   }
   
@@ -78,7 +86,13 @@ public class TPPlayProxyListenerEmptyImpl
   
   public void onDownloadProgressUpdate(int paramInt1, int paramInt2, long paramLong1, long paramLong2, String paramString)
   {
-    TPLogUtil.i(this.tag, " empty proxy player listener , notify , onPlayProgress, current : " + paramLong1 + ", total : " + paramLong2);
+    paramString = this.tag;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" empty proxy player listener , notify , onPlayProgress, current : ");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", total : ");
+    localStringBuilder.append(paramLong2);
+    TPLogUtil.i(paramString, localStringBuilder.toString());
   }
   
   public void onDownloadProtocolUpdate(String paramString1, String paramString2) {}
@@ -87,7 +101,19 @@ public class TPPlayProxyListenerEmptyImpl
   
   public Object onPlayCallback(int paramInt, Object paramObject1, Object paramObject2, Object paramObject3, Object paramObject4)
   {
-    TPLogUtil.i(this.tag, " empty proxy player listener , notify , onPlayCallback, messageType : " + paramInt + ",ext1:" + paramObject1 + ",ext2:" + paramObject2 + ",ext3" + paramObject3 + ",ext4" + paramObject4);
+    String str = this.tag;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" empty proxy player listener , notify , onPlayCallback, messageType : ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",ext1:");
+    localStringBuilder.append(paramObject1);
+    localStringBuilder.append(",ext2:");
+    localStringBuilder.append(paramObject2);
+    localStringBuilder.append(",ext3");
+    localStringBuilder.append(paramObject3);
+    localStringBuilder.append(",ext4");
+    localStringBuilder.append(paramObject4);
+    TPLogUtil.i(str, localStringBuilder.toString());
     return null;
   }
   
@@ -122,7 +148,7 @@ public class TPPlayProxyListenerEmptyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPPlayProxyListenerEmptyImpl
  * JD-Core Version:    0.7.0.1
  */

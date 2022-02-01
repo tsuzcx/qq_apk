@@ -18,8 +18,8 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.fragment.IphoneTitleBarFragment;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.open.agent.AuthorityControlAppDetailsFragment;
 import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.open.model.AppInfo;
@@ -44,7 +44,7 @@ public class AuthorityControlAdapter
   public AuthorityControlAdapter(IphoneTitleBarFragment paramIphoneTitleBarFragment, QQAppInterface paramQQAppInterface)
   {
     this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment = paramIphoneTitleBarFragment;
-    this.jdField_a_of_type_AndroidAppActivity = paramIphoneTitleBarFragment.getActivity();
+    this.jdField_a_of_type_AndroidAppActivity = paramIphoneTitleBarFragment.getBaseActivity();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.b = new ArrayList();
   }
@@ -70,45 +70,41 @@ public class AuthorityControlAdapter
     AuthorityControlAdapter.ViewHolder localViewHolder = (AuthorityControlAdapter.ViewHolder)paramView.getTag();
     if (this.jdField_a_of_type_Boolean)
     {
-      paramView = (CheckBox)paramView.findViewById(2131371998);
-      boolean bool;
-      if (!paramView.isChecked())
+      paramView = (CheckBox)paramView.findViewById(2131371604);
+      boolean bool = paramView.isChecked() ^ true;
+      paramView.setChecked(bool);
+      if (paramView.isChecked())
       {
-        bool = true;
-        paramView.setChecked(bool);
-        if (!paramView.isChecked()) {
-          break label155;
-        }
         this.b.add(Integer.valueOf(localViewHolder.jdField_a_of_type_Int));
-        label65:
-        if (this.b.size() <= 0) {
-          break label178;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment.rightViewText.setEnabled(true);
       }
-      for (;;)
+      else
       {
-        paramView = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(localViewHolder.jdField_a_of_type_Int);
-        if (paramView != null) {
-          paramView.a(bool);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("AuthorityControlAdapter", 2, "onLayoutAppItemClick: invoked.  mCheckedPositions: " + this.b);
-        }
-        return;
-        bool = false;
-        break;
-        label155:
         int i = localViewHolder.jdField_a_of_type_Int;
         this.b.remove(Integer.valueOf(i));
-        break label65;
-        label178:
+      }
+      if (this.b.size() > 0) {
+        this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment.rightViewText.setEnabled(true);
+      } else {
         this.jdField_a_of_type_ComTencentMobileqqFragmentIphoneTitleBarFragment.rightViewText.setEnabled(false);
       }
+      paramView = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(localViewHolder.jdField_a_of_type_Int);
+      if (paramView != null) {
+        paramView.a(bool);
+      }
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("onLayoutAppItemClick: invoked.  mCheckedPositions: ");
+        paramView.append(this.b);
+        QLog.i("AuthorityControlAdapter", 2, paramView.toString());
+      }
     }
-    paramView = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(localViewHolder.jdField_a_of_type_Int);
-    AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_AndroidAppActivity, paramView);
-    AuthorityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800B92F", new String[] { "", "", paramView.b(), "" });
+    else
+    {
+      paramView = (AppInfo)this.jdField_a_of_type_JavaUtilList.get(localViewHolder.jdField_a_of_type_Int);
+      AuthorityControlAppDetailsFragment.a(this.jdField_a_of_type_AndroidAppActivity, paramView);
+      AuthorityUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800B92F", new String[] { "", "", paramView.b(), "" });
+    }
   }
   
   private void a(AuthorityControlAdapter.ViewHolder paramViewHolder)
@@ -119,45 +115,43 @@ public class AuthorityControlAdapter
   
   private void a(AuthorityControlAdapter.ViewHolder paramViewHolder, View paramView)
   {
-    paramViewHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370073);
-    paramViewHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131371998));
-    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368435));
-    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362900));
-    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362910));
-    paramViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362890));
-    paramViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131371068);
+    paramViewHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131369751);
+    paramViewHolder.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131371604));
+    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131368187));
+    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362852));
+    paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131362862));
+    paramViewHolder.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131362842));
+    paramViewHolder.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131370702);
   }
   
   private void a(AuthorityControlAdapter.ViewHolder paramViewHolder, AppInfo paramAppInfo)
   {
     Object localObject1 = paramAppInfo.c();
-    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838812);
+    Object localObject2 = this.jdField_a_of_type_AndroidAppActivity.getResources().getDrawable(2130838632);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     if (ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null)) {
       paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    } else {
+      paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
-    for (;;)
+    localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject2);
+    localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject2);
+    localObject2 = paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
+    localURLDrawableOptions.mRequestHeight = ((ViewGroup.LayoutParams)localObject2).height;
+    localURLDrawableOptions.mRequestWidth = ((ViewGroup.LayoutParams)localObject2).width;
+    try
     {
-      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject2);
-      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject2);
-      localObject2 = paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.getLayoutParams();
-      localURLDrawableOptions.mRequestHeight = ((ViewGroup.LayoutParams)localObject2).height;
-      localURLDrawableOptions.mRequestWidth = ((ViewGroup.LayoutParams)localObject2).width;
-      try
-      {
-        localObject1 = URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions);
-        ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.b(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height, UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 6.0F)));
-        ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.j);
-        paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
-        label136:
-        paramViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramAppInfo.a());
-        return;
-        paramViewHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      }
-      catch (Throwable localThrowable)
-      {
-        break label136;
-      }
+      localObject1 = URLDrawable.getDrawable((String)localObject1, localURLDrawableOptions);
+      ((URLDrawable)localObject1).setTag(URLDrawableDecodeHandler.b(((ViewGroup.LayoutParams)localObject2).width, ((ViewGroup.LayoutParams)localObject2).height, UIUtils.a(this.jdField_a_of_type_AndroidAppActivity, 6.0F)));
+      ((URLDrawable)localObject1).setDecodeHandler(URLDrawableDecodeHandler.i);
+      paramViewHolder.jdField_b_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+      label148:
+      paramViewHolder.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramAppInfo.a());
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label148;
     }
   }
   
@@ -213,35 +207,27 @@ public class AuthorityControlAdapter
   {
     ArrayList localArrayList = new ArrayList();
     Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    label124:
-    for (;;)
+    while (localIterator1.hasNext())
     {
-      AppInfo localAppInfo1;
-      if (localIterator1.hasNext())
+      AppInfo localAppInfo1 = (AppInfo)localIterator1.next();
+      int j = 1;
+      Iterator localIterator2 = paramList.iterator();
+      AppInfo localAppInfo2;
+      do
       {
-        localAppInfo1 = (AppInfo)localIterator1.next();
-        Iterator localIterator2 = paramList.iterator();
-        AppInfo localAppInfo2;
-        do
-        {
-          if (!localIterator2.hasNext()) {
-            break;
-          }
-          localAppInfo2 = (AppInfo)localIterator2.next();
-        } while (localAppInfo1.a() != localAppInfo2.a());
-      }
-      for (int i = 0;; i = 1)
-      {
-        if (i == 0) {
-          break label124;
+        i = j;
+        if (!localIterator2.hasNext()) {
+          break;
         }
+        localAppInfo2 = (AppInfo)localIterator2.next();
+      } while (localAppInfo1.a() != localAppInfo2.a());
+      int i = 0;
+      if (i != 0) {
         localArrayList.add(localAppInfo1);
-        break;
-        this.jdField_a_of_type_JavaUtilList.clear();
-        this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
-        return;
       }
     }
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
   }
   
   public void c()
@@ -271,44 +257,37 @@ public class AuthorityControlAdapter
     if (paramView == null)
     {
       paramView = new AuthorityControlAdapter.ViewHolder(null);
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558749, null);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidAppActivity).inflate(2131558648, null);
       a(paramView, localView);
       localView.setTag(paramView);
-      a(paramInt, localView, paramView);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label98;
-      }
-      b(paramView);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       AuthorityControlAdapter.ViewHolder localViewHolder = (AuthorityControlAdapter.ViewHolder)paramView.getTag();
       localView = paramView;
       paramView = localViewHolder;
-      break;
-      label98:
+    }
+    a(paramInt, localView, paramView);
+    if (this.jdField_a_of_type_Boolean) {
+      b(paramView);
+    } else {
       a(paramView);
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    if (paramView.getId() == 2131369751) {
       a(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.authority.AuthorityControlAdapter
  * JD-Core Version:    0.7.0.1
  */

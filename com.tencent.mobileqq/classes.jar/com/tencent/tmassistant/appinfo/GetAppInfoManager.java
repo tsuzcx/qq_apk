@@ -6,7 +6,7 @@ import com.tencent.tmdownloader.f;
 
 public class GetAppInfoManager
 {
-  private static volatile GetAppInfoManager sInstance = null;
+  private static volatile GetAppInfoManager sInstance;
   
   private GetAppInfoManager()
   {
@@ -15,15 +15,16 @@ public class GetAppInfoManager
   
   public static GetAppInfoManager get()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new GetAppInfoManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new GetAppInfoManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public int requestAppInfo(AppDetailReqParam paramAppDetailReqParam, GetAppInfoCallback paramGetAppInfoCallback)
@@ -33,7 +34,7 @@ public class GetAppInfoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.appinfo.GetAppInfoManager
  * JD-Core Version:    0.7.0.1
  */

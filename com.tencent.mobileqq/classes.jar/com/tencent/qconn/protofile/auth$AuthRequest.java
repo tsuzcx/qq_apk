@@ -15,7 +15,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class auth$AuthRequest
   extends MessageMicro<AuthRequest>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 90, 98, 120, 130, 152, 160, 168, 176, 242, 248, 320, 330, 338, 402, 482, 522 }, new String[] { "response_type", "appid", "openapi", "pf", "sdkp", "sdkv", "qqv", "os", "skey", "pass_data", "md5time", "sign", "vid", "app_type", "need_paytoken", "channel_source", "app_unique_identifier", "referer", "need_universal_link", "bundleid_from_app", "universal_link_from_app", "proxy_auth_req", "state", "login_sig" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), "", "", "", "", "", "", "", Long.valueOf(0L), "", Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", Integer.valueOf(1), Boolean.valueOf(false), "", "", null, "", null }, AuthRequest.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBEnumField app_type = PBField.initEnum(0);
   public final PBStringField app_unique_identifier = PBField.initString("");
   public final PBUInt64Field appid = PBField.initUInt64(0L);
@@ -40,10 +40,17 @@ public final class auth$AuthRequest
   public final PBStringField state = PBField.initString("");
   public final PBStringField universal_link_from_app = PBField.initString("");
   public final PBUInt64Field vid = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 58, 66, 90, 98, 120, 130, 152, 160, 168, 176, 242, 248, 320, 330, 338, 402, 482, 522 }, new String[] { "response_type", "appid", "openapi", "pf", "sdkp", "sdkv", "qqv", "os", "skey", "pass_data", "md5time", "sign", "vid", "app_type", "need_paytoken", "channel_source", "app_unique_identifier", "referer", "need_universal_link", "bundleid_from_app", "universal_link_from_app", "proxy_auth_req", "state", "login_sig" }, new Object[] { localInteger, localLong, localInteger, "", "", "", "", "", "", "", localLong, "", localLong, localInteger, localInteger, localLong, "", Integer.valueOf(1), Boolean.valueOf(false), "", "", null, "", null }, AuthRequest.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qconn.protofile.auth.AuthRequest
  * JD-Core Version:    0.7.0.1
  */

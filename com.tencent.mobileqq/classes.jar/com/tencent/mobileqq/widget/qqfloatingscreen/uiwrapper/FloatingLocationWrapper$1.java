@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper;
 
-import android.view.View;
 import com.tencent.mobileqq.qqfloatingwindow.listener.IWindowStatusListener;
 
 class FloatingLocationWrapper$1
@@ -12,12 +11,12 @@ class FloatingLocationWrapper$1
   
   public void a(boolean paramBoolean)
   {
-    this.a.a(true, new View[] { this.a.mFloatingContainer });
+    this.a.a(true);
   }
   
   public void b()
   {
-    this.a.a(false, new View[] { this.a.mFloatingContainer });
+    this.a.a(false);
   }
   
   public void c()
@@ -27,7 +26,7 @@ class FloatingLocationWrapper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.qqfloatingscreen.uiwrapper.FloatingLocationWrapper.1
  * JD-Core Version:    0.7.0.1
  */

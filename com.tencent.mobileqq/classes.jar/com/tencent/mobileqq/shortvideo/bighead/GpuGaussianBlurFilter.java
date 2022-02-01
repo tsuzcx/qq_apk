@@ -60,7 +60,9 @@ public class GpuGaussianBlurFilter
     GLES20.glEnableVertexAttribArray(k);
     GLES20.glUniformMatrix4fv(m, 1, false, paramArrayOfFloat1, 0);
     GLES20.glUniformMatrix4fv(n, 1, false, arrayOfFloat, 0);
-    GLES20.glUniform1fv(GLES20.glGetUniformLocation(i, "weight"), this.mWeights.length, this.mWeights, 0);
+    j = GLES20.glGetUniformLocation(i, "weight");
+    paramArrayOfFloat1 = this.mWeights;
+    GLES20.glUniform1fv(j, paramArrayOfFloat1.length, paramArrayOfFloat1, 0);
     j = GLES20.glGetUniformLocation(i, "texelWidthOffset");
     k = GLES20.glGetUniformLocation(i, "texelHeightOffset");
     GLES20.glUniform1f(j, this.mWidthStepRatio / this.mOutputWidth);
@@ -70,9 +72,13 @@ public class GpuGaussianBlurFilter
     GLES20.glUniform1i(GLES20.glGetUniformLocation(i, "inputImageTexture"), 0);
     GLES20.glDrawArrays(5, 0, 4);
     paramInt = GLES20.glGetError();
-    if (paramInt != 0) {
-      throw new RuntimeException("error =" + paramInt);
+    if (paramInt == 0) {
+      return;
     }
+    paramArrayOfFloat1 = new StringBuilder();
+    paramArrayOfFloat1.append("error =");
+    paramArrayOfFloat1.append(paramInt);
+    throw new RuntimeException(paramArrayOfFloat1.toString());
   }
   
   public void init(int paramInt1, int paramInt2, float[] paramArrayOfFloat)
@@ -82,15 +88,21 @@ public class GpuGaussianBlurFilter
     }
     this.mWeights = paramArrayOfFloat;
     this.mProgram = GlUtil.createProgram("precision highp float;\nattribute vec4 aPosition;\nattribute vec4 inputTextureCoordinate;\nconst int GAUSSIAN_SAMPLES = 9;\n\nuniform float texelWidthOffset;\nuniform float texelHeightOffset;\nuniform mat4 uMVPMatrix;\nuniform mat4 uTextureMatrix;\n\nvarying highp vec2 textureCoordinate;\nvarying highp vec2 blurCoordinates[GAUSSIAN_SAMPLES];\n\nvoid main()\n{\n\tgl_Position = uMVPMatrix * aPosition;\n\ttextureCoordinate = (uTextureMatrix * inputTextureCoordinate).xy;\n\tblurCoordinates[0] = textureCoordinate.xy + vec2(-texelWidthOffset,-texelHeightOffset);\n\tblurCoordinates[1] = textureCoordinate.xy + vec2(0,-texelHeightOffset);\n\tblurCoordinates[2] = textureCoordinate.xy + vec2(texelWidthOffset,-texelHeightOffset);\n\tblurCoordinates[3] = textureCoordinate.xy + vec2(-texelWidthOffset,0);\n\tblurCoordinates[4] = textureCoordinate.xy + vec2(0,0);\n\tblurCoordinates[5] = textureCoordinate.xy + vec2(texelWidthOffset,0);\n\tblurCoordinates[6] = textureCoordinate.xy + vec2(-texelWidthOffset,texelHeightOffset);\n\tblurCoordinates[7] = textureCoordinate.xy + vec2(0,texelHeightOffset);\n\tblurCoordinates[8] = textureCoordinate.xy + vec2(texelWidthOffset,texelHeightOffset);\n}\n", "const lowp int GAUSSIAN_SAMPLES = 9;\nuniform sampler2D inputImageTexture;\nuniform lowp float weight[GAUSSIAN_SAMPLES]; \n\nvarying highp vec2 textureCoordinate;\nvarying highp vec2 blurCoordinates[GAUSSIAN_SAMPLES];\n\nvoid main()\n{\n\t lowp vec3 sum = vec3(0.0);\n   lowp vec4 fragColor=texture2D(inputImageTexture,textureCoordinate);\n\t\n    for (int i = 0; i < GAUSSIAN_SAMPLES; i++) {\n        sum += texture2D(inputImageTexture, blurCoordinates[i]).rgb * weight[i];\n    }\n\n    if(sum.r >= 0.79){\n\t      gl_FragColor = vec4(1.0,sum.gb,fragColor.a);\n    }else{\n         gl_FragColor = vec4(0.0,sum.gb,fragColor.a);\n    }\n}");
-    if (paramArrayOfFloat.length != 9) {
-      throw new RuntimeException("参数错误");
+    if (paramArrayOfFloat.length == 9)
+    {
+      if (this.mProgram == 0)
+      {
+        paramArrayOfFloat = new StringBuilder();
+        paramArrayOfFloat.append("failed creating program ");
+        paramArrayOfFloat.append(getClass().getSimpleName());
+        new RuntimeException(paramArrayOfFloat.toString()).printStackTrace();
+      }
+      this.mOutputWidth = paramInt1;
+      this.mOutputHeight = paramInt2;
+      this.mIsInitialized = true;
+      return;
     }
-    if (this.mProgram == 0) {
-      new RuntimeException("failed creating program " + getClass().getSimpleName()).printStackTrace();
-    }
-    this.mOutputWidth = paramInt1;
-    this.mOutputHeight = paramInt2;
-    this.mIsInitialized = true;
+    throw new RuntimeException("参数错误");
   }
   
   public void setStepRatio(float paramFloat1, float paramFloat2)
@@ -101,7 +113,7 @@ public class GpuGaussianBlurFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.bighead.GpuGaussianBlurFilter
  * JD-Core Version:    0.7.0.1
  */

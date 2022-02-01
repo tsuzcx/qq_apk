@@ -18,18 +18,22 @@ class NowLiveFragment$1
   {
     if (paramInt != 0)
     {
-      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707648), 1).a();
-      this.a.f();
+      QQToast.a(this.a.a, 1, HardCodeUtil.a(2131707673), 1).a();
+      this.a.e();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("NowLiveFragment", 2, "startLocation finish" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startLocation finish");
+      localStringBuilder.append(System.currentTimeMillis());
+      QLog.d("NowLiveFragment", 2, localStringBuilder.toString());
     }
     this.a.a(paramSosoLbsInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NowLiveFragment.1
  * JD-Core Version:    0.7.0.1
  */

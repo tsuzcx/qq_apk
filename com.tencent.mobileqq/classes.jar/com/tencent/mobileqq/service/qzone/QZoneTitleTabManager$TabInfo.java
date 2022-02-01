@@ -32,19 +32,17 @@ public class QZoneTitleTabManager$TabInfo
   
   protected QZoneTitleTabManager$TabInfo(Parcel paramParcel)
   {
+    boolean bool = true;
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Int = paramParcel.readInt();
     this.jdField_a_of_type_JavaLangString = paramParcel.readString();
     this.jdField_b_of_type_Int = paramParcel.readInt();
     this.c = paramParcel.readInt();
-    if (paramParcel.readByte() != 0) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      this.jdField_b_of_type_JavaLangString = paramParcel.readString();
-      return;
+    if (paramParcel.readByte() == 0) {
       bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    this.jdField_b_of_type_JavaLangString = paramParcel.readString();
   }
   
   public JSONObject a()
@@ -96,18 +94,13 @@ public class QZoneTitleTabManager$TabInfo
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
     paramParcel.writeInt(this.jdField_b_of_type_Int);
     paramParcel.writeInt(this.c);
-    if (this.jdField_a_of_type_Boolean) {}
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
-      return;
-    }
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeString(this.jdField_b_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneTitleTabManager.TabInfo
  * JD-Core Version:    0.7.0.1
  */

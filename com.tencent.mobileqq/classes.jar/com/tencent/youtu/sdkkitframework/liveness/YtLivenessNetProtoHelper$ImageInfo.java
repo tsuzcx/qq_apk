@@ -40,174 +40,141 @@ public class YtLivenessNetProtoHelper$ImageInfo
   private void createFileWithByte(String paramString, byte[] paramArrayOfByte)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: aconst_null
-    //   4: astore 4
-    //   6: new 57	java/io/File
-    //   9: dup
-    //   10: aload_1
-    //   11: invokespecial 60	java/io/File:<init>	(Ljava/lang/String;)V
-    //   14: astore_1
-    //   15: aload_1
-    //   16: invokevirtual 64	java/io/File:exists	()Z
-    //   19: ifeq +8 -> 27
-    //   22: aload_1
-    //   23: invokevirtual 67	java/io/File:delete	()Z
-    //   26: pop
-    //   27: aload_1
-    //   28: invokevirtual 70	java/io/File:createNewFile	()Z
-    //   31: pop
-    //   32: new 72	java/io/FileOutputStream
-    //   35: dup
-    //   36: aload_1
-    //   37: invokespecial 75	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   40: astore_3
-    //   41: new 77	java/io/BufferedOutputStream
-    //   44: dup
-    //   45: aload_3
-    //   46: invokespecial 80	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   49: astore_1
-    //   50: aload_1
-    //   51: aload_2
-    //   52: invokevirtual 83	java/io/BufferedOutputStream:write	([B)V
-    //   55: aload_1
-    //   56: invokevirtual 86	java/io/BufferedOutputStream:flush	()V
-    //   59: aload_3
-    //   60: ifnull +7 -> 67
-    //   63: aload_3
-    //   64: invokevirtual 89	java/io/FileOutputStream:close	()V
-    //   67: aload_1
-    //   68: ifnull +7 -> 75
-    //   71: aload_1
-    //   72: invokevirtual 90	java/io/BufferedOutputStream:close	()V
-    //   75: return
-    //   76: astore_2
-    //   77: aload_2
-    //   78: invokevirtual 93	java/io/IOException:printStackTrace	()V
-    //   81: goto -14 -> 67
-    //   84: astore_1
-    //   85: aload_1
-    //   86: invokevirtual 94	java/lang/Exception:printStackTrace	()V
-    //   89: return
-    //   90: astore_3
-    //   91: aconst_null
-    //   92: astore_1
-    //   93: aload 4
+    //   0: new 57	java/io/File
+    //   3: dup
+    //   4: aload_1
+    //   5: invokespecial 60	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_3
+    //   9: aconst_null
+    //   10: astore 4
+    //   12: aconst_null
+    //   13: astore_1
+    //   14: aload_3
+    //   15: invokevirtual 64	java/io/File:exists	()Z
+    //   18: ifeq +8 -> 26
+    //   21: aload_3
+    //   22: invokevirtual 67	java/io/File:delete	()Z
+    //   25: pop
+    //   26: aload_3
+    //   27: invokevirtual 70	java/io/File:createNewFile	()Z
+    //   30: pop
+    //   31: new 72	java/io/FileOutputStream
+    //   34: dup
+    //   35: aload_3
+    //   36: invokespecial 75	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   39: astore_3
+    //   40: new 77	java/io/BufferedOutputStream
+    //   43: dup
+    //   44: aload_3
+    //   45: invokespecial 80	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   48: astore_1
+    //   49: aload_1
+    //   50: aload_2
+    //   51: invokevirtual 83	java/io/BufferedOutputStream:write	([B)V
+    //   54: aload_1
+    //   55: invokevirtual 86	java/io/BufferedOutputStream:flush	()V
+    //   58: aload_3
+    //   59: invokevirtual 89	java/io/FileOutputStream:close	()V
+    //   62: goto +8 -> 70
+    //   65: astore_2
+    //   66: aload_2
+    //   67: invokevirtual 92	java/io/IOException:printStackTrace	()V
+    //   70: aload_1
+    //   71: invokevirtual 93	java/io/BufferedOutputStream:close	()V
+    //   74: return
+    //   75: astore_2
+    //   76: goto +10 -> 86
+    //   79: astore_2
+    //   80: goto +12 -> 92
+    //   83: astore_2
+    //   84: aconst_null
+    //   85: astore_1
+    //   86: goto +63 -> 149
+    //   89: astore_2
+    //   90: aconst_null
+    //   91: astore_1
+    //   92: goto +21 -> 113
     //   95: astore_2
-    //   96: aload_3
-    //   97: invokevirtual 94	java/lang/Exception:printStackTrace	()V
-    //   100: aload_1
-    //   101: ifnull +7 -> 108
-    //   104: aload_1
-    //   105: invokevirtual 89	java/io/FileOutputStream:close	()V
-    //   108: aload_2
-    //   109: ifnull -34 -> 75
-    //   112: aload_2
-    //   113: invokevirtual 90	java/io/BufferedOutputStream:close	()V
-    //   116: return
-    //   117: astore_1
-    //   118: aload_1
-    //   119: invokevirtual 94	java/lang/Exception:printStackTrace	()V
-    //   122: return
-    //   123: astore_1
-    //   124: aload_1
-    //   125: invokevirtual 93	java/io/IOException:printStackTrace	()V
-    //   128: goto -20 -> 108
-    //   131: astore_1
-    //   132: aconst_null
-    //   133: astore_3
-    //   134: aload 5
-    //   136: astore_2
-    //   137: aload_3
-    //   138: ifnull +7 -> 145
-    //   141: aload_3
-    //   142: invokevirtual 89	java/io/FileOutputStream:close	()V
-    //   145: aload_2
-    //   146: ifnull +7 -> 153
-    //   149: aload_2
-    //   150: invokevirtual 90	java/io/BufferedOutputStream:close	()V
-    //   153: aload_1
-    //   154: athrow
-    //   155: astore_3
-    //   156: aload_3
-    //   157: invokevirtual 93	java/io/IOException:printStackTrace	()V
-    //   160: goto -15 -> 145
-    //   163: astore_2
-    //   164: aload_2
-    //   165: invokevirtual 94	java/lang/Exception:printStackTrace	()V
-    //   168: goto -15 -> 153
-    //   171: astore_1
-    //   172: aload 5
-    //   174: astore_2
-    //   175: goto -38 -> 137
-    //   178: astore 4
-    //   180: aload_1
-    //   181: astore_2
-    //   182: aload 4
-    //   184: astore_1
-    //   185: goto -48 -> 137
-    //   188: astore 4
-    //   190: aload_1
-    //   191: astore_3
-    //   192: aload 4
-    //   194: astore_1
-    //   195: goto -58 -> 137
-    //   198: astore_2
-    //   199: aload_3
-    //   200: astore_1
-    //   201: aload_2
-    //   202: astore_3
-    //   203: aload 4
-    //   205: astore_2
-    //   206: goto -110 -> 96
-    //   209: astore_2
-    //   210: aload_3
-    //   211: astore 4
-    //   213: aload_2
-    //   214: astore_3
-    //   215: aload_1
-    //   216: astore_2
-    //   217: aload 4
-    //   219: astore_1
-    //   220: goto -124 -> 96
+    //   96: aconst_null
+    //   97: astore_1
+    //   98: aload 4
+    //   100: astore_3
+    //   101: goto +48 -> 149
+    //   104: astore_2
+    //   105: aconst_null
+    //   106: astore 4
+    //   108: aload_1
+    //   109: astore_3
+    //   110: aload 4
+    //   112: astore_1
+    //   113: aload_2
+    //   114: invokevirtual 94	java/lang/Exception:printStackTrace	()V
+    //   117: aload_3
+    //   118: ifnull +15 -> 133
+    //   121: aload_3
+    //   122: invokevirtual 89	java/io/FileOutputStream:close	()V
+    //   125: goto +8 -> 133
+    //   128: astore_2
+    //   129: aload_2
+    //   130: invokevirtual 92	java/io/IOException:printStackTrace	()V
+    //   133: aload_1
+    //   134: ifnull +13 -> 147
+    //   137: aload_1
+    //   138: invokevirtual 93	java/io/BufferedOutputStream:close	()V
+    //   141: return
+    //   142: astore_1
+    //   143: aload_1
+    //   144: invokevirtual 94	java/lang/Exception:printStackTrace	()V
+    //   147: return
+    //   148: astore_2
+    //   149: aload_3
+    //   150: ifnull +15 -> 165
+    //   153: aload_3
+    //   154: invokevirtual 89	java/io/FileOutputStream:close	()V
+    //   157: goto +8 -> 165
+    //   160: astore_3
+    //   161: aload_3
+    //   162: invokevirtual 92	java/io/IOException:printStackTrace	()V
+    //   165: aload_1
+    //   166: ifnull +15 -> 181
+    //   169: aload_1
+    //   170: invokevirtual 93	java/io/BufferedOutputStream:close	()V
+    //   173: goto +8 -> 181
+    //   176: astore_1
+    //   177: aload_1
+    //   178: invokevirtual 94	java/lang/Exception:printStackTrace	()V
+    //   181: aload_2
+    //   182: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	223	0	this	ImageInfo
-    //   0	223	1	paramString	String
-    //   0	223	2	paramArrayOfByte	byte[]
-    //   40	24	3	localFileOutputStream	java.io.FileOutputStream
-    //   90	7	3	localException	java.lang.Exception
-    //   133	9	3	localObject1	Object
-    //   155	2	3	localIOException	java.io.IOException
-    //   191	24	3	localObject2	Object
-    //   4	90	4	localObject3	Object
-    //   178	5	4	localObject4	Object
-    //   188	16	4	localObject5	Object
-    //   211	7	4	localObject6	Object
-    //   1	172	5	localObject7	Object
+    //   0	183	0	this	ImageInfo
+    //   0	183	1	paramString	String
+    //   0	183	2	paramArrayOfByte	byte[]
+    //   8	146	3	localObject1	Object
+    //   160	2	3	localIOException	java.io.IOException
+    //   10	101	4	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   63	67	76	java/io/IOException
-    //   71	75	84	java/lang/Exception
-    //   15	27	90	java/lang/Exception
-    //   27	41	90	java/lang/Exception
-    //   112	116	117	java/lang/Exception
-    //   104	108	123	java/io/IOException
-    //   15	27	131	finally
-    //   27	41	131	finally
-    //   141	145	155	java/io/IOException
-    //   149	153	163	java/lang/Exception
-    //   41	50	171	finally
-    //   50	59	178	finally
-    //   96	100	188	finally
-    //   41	50	198	java/lang/Exception
-    //   50	59	209	java/lang/Exception
+    //   58	62	65	java/io/IOException
+    //   49	58	75	finally
+    //   49	58	79	java/lang/Exception
+    //   40	49	83	finally
+    //   40	49	89	java/lang/Exception
+    //   14	26	95	finally
+    //   26	40	95	finally
+    //   14	26	104	java/lang/Exception
+    //   26	40	104	java/lang/Exception
+    //   121	125	128	java/io/IOException
+    //   70	74	142	java/lang/Exception
+    //   137	141	142	java/lang/Exception
+    //   113	117	148	finally
+    //   153	157	160	java/io/IOException
+    //   169	173	176	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.YtLivenessNetProtoHelper.ImageInfo
  * JD-Core Version:    0.7.0.1
  */

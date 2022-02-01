@@ -8,20 +8,20 @@ class NearbyActivity$9
 {
   NearbyActivity$9(NearbyActivity paramNearbyActivity) {}
   
-  public void a()
+  protected void a()
   {
-    this.a.a.sendEmptyMessageDelayed(2, 0L);
+    this.a.mHandler.sendEmptyMessageDelayed(2, 0L);
   }
   
-  public void b()
+  protected void b()
   {
     super.b();
-    NearbyActivity.a(this.a);
+    NearbyActivity.access$100(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity.9
  * JD-Core Version:    0.7.0.1
  */

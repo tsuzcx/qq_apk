@@ -21,7 +21,8 @@ class PTSScrollView$1
       PTSLog.e("PTSScrollView", "[triggerItemViewExposureImp] container is null.");
       return;
     }
-    this.this$0.getHitRect(PTSScrollView.access$100(this.this$0));
+    Object localObject = this.this$0;
+    ((PTSScrollView)localObject).getHitRect(PTSScrollView.access$100((PTSScrollView)localObject));
     int j = PTSScrollView.access$000(this.this$0).getChildCount();
     PTSScrollView.access$200(this.this$0).clear();
     int i = 0;
@@ -32,10 +33,10 @@ class PTSScrollView$1
       }
       i += 1;
     }
-    Iterator localIterator = PTSScrollView.access$200(this.this$0).iterator();
-    while (localIterator.hasNext())
+    localObject = PTSScrollView.access$200(this.this$0).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      i = ((Integer)localIterator.next()).intValue();
+      i = ((Integer)((Iterator)localObject).next()).intValue();
       if (!PTSScrollView.access$300(this.this$0).contains(Integer.valueOf(i))) {
         PTSScrollView.access$400(this.this$0).triggerItemViewExposure(i);
       }
@@ -47,7 +48,7 @@ class PTSScrollView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSScrollView.1
  * JD-Core Version:    0.7.0.1
  */

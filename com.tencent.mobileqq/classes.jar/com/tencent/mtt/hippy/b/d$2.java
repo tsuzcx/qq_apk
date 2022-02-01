@@ -10,28 +10,26 @@ class d$2
   
   public void run()
   {
-    if (d.c(this.a) != null) {}
-    try
+    if (d.c(this.a) != null)
     {
-      d.c(this.a).close();
-      d.f(this.a).a(0, "closed");
-      d.a(this.a, null);
-      d.a(this.a, false);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      try
+      {
+        d.c(this.a).close();
+      }
+      catch (Throwable localThrowable)
       {
         Log.d("WebSocketClient", "Error while disconnecting", localThrowable);
         d.f(this.a).a(new Exception(localThrowable));
       }
+      d.f(this.a).a(0, "closed");
+      d.a(this.a, null);
     }
+    d.a(this.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.b.d.2
  * JD-Core Version:    0.7.0.1
  */

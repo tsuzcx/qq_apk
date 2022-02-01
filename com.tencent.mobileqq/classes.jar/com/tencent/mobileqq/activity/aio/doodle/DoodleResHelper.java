@@ -10,14 +10,14 @@ import android.os.Looper;
 import android.support.v4.util.MQLruCache;
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.GlobalImageCache;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.scribble.ScribbleResMgr;
-import com.tencent.mobileqq.scribble.ScribbleResMgr.ResCallback;
+import com.tencent.mobileqq.doodle.IScribbleResMgr;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.scribble.ResCallback;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.lang.ref.WeakReference;
@@ -33,683 +33,661 @@ import java.util.Set;
 
 public class DoodleResHelper
 {
-  static volatile DoodleResHelper jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper = null;
+  static volatile DoodleResHelper jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper;
   private int jdField_a_of_type_Int = 0;
   private final String jdField_a_of_type_JavaLangString = "DoodleResHelper";
   private Map<Integer, DoodleResHelper.BitmapInfo> jdField_a_of_type_JavaUtilMap = null;
   
   public static DoodleResHelper a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper = new DoodleResHelper();
+    if (jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper == null) {
+          jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper = new DoodleResHelper();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqActivityAioDoodleDoodleResHelper;
   }
   
   private String a(String paramString, int paramInt)
   {
-    return "Aio_Doodle/Type_" + paramInt + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Aio_Doodle/Type_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   /* Error */
   public Bitmap a(int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aload_0
-    //   4: iload_1
-    //   5: iload_2
-    //   6: invokevirtual 57	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(II)Ljava/lang/String;
-    //   9: astore 8
-    //   11: aload 8
-    //   13: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   16: ifeq +9 -> 25
-    //   19: aconst_null
-    //   20: astore 6
-    //   22: aload 6
-    //   24: areturn
-    //   25: iload_2
-    //   26: ifle +251 -> 277
-    //   29: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   32: aload_0
-    //   33: aload 8
-    //   35: iconst_0
-    //   36: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   39: invokevirtual 76	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   42: astore_3
-    //   43: aload_3
-    //   44: ifnull +8 -> 52
-    //   47: aload_3
-    //   48: checkcast 78	android/graphics/Bitmap
-    //   51: areturn
-    //   52: new 80	java/io/FileInputStream
-    //   55: dup
-    //   56: aload 8
-    //   58: invokespecial 83	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   61: astore_3
-    //   62: new 85	java/io/BufferedInputStream
-    //   65: dup
-    //   66: aload_3
-    //   67: invokespecial 88	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   70: astore 5
-    //   72: aload_3
-    //   73: astore 7
-    //   75: aload 5
-    //   77: astore 6
-    //   79: aload 5
-    //   81: invokestatic 94	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   84: astore 4
-    //   86: aload 4
-    //   88: ifnull +31 -> 119
-    //   91: iconst_3
-    //   92: iload_1
-    //   93: if_icmpeq +26 -> 119
-    //   96: aload_3
-    //   97: astore 7
-    //   99: aload 5
-    //   101: astore 6
-    //   103: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   106: aload_0
-    //   107: aload 8
-    //   109: iconst_0
-    //   110: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   113: aload 4
-    //   115: invokevirtual 98	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   118: pop
-    //   119: aload_3
-    //   120: ifnull +7 -> 127
-    //   123: aload_3
-    //   124: invokevirtual 103	java/io/InputStream:close	()V
-    //   127: aload 4
-    //   129: astore 6
-    //   131: aload 5
-    //   133: ifnull -111 -> 22
-    //   136: aload 5
-    //   138: invokevirtual 103	java/io/InputStream:close	()V
-    //   141: aload 4
-    //   143: areturn
-    //   144: astore_3
-    //   145: aload 4
-    //   147: areturn
-    //   148: astore_3
-    //   149: aconst_null
-    //   150: astore_3
-    //   151: aconst_null
-    //   152: astore 5
-    //   154: aload 4
-    //   156: ifnull +8 -> 164
-    //   159: aload 4
-    //   161: invokevirtual 103	java/io/InputStream:close	()V
-    //   164: aload_3
-    //   165: astore 6
-    //   167: aload 5
-    //   169: ifnull -147 -> 22
-    //   172: aload 5
-    //   174: invokevirtual 103	java/io/InputStream:close	()V
-    //   177: aload_3
-    //   178: areturn
+    //   0: aload_0
+    //   1: iload_1
+    //   2: iload_2
+    //   3: invokevirtual 57	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(II)Ljava/lang/String;
+    //   6: astore 12
+    //   8: aload 12
+    //   10: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   13: istore_3
+    //   14: aconst_null
+    //   15: astore 4
+    //   17: aconst_null
+    //   18: astore 7
+    //   20: aconst_null
+    //   21: astore 9
+    //   23: aconst_null
+    //   24: astore 11
+    //   26: aconst_null
+    //   27: astore 10
+    //   29: aconst_null
+    //   30: astore 6
+    //   32: iload_3
+    //   33: ifeq +5 -> 38
+    //   36: aconst_null
+    //   37: areturn
+    //   38: iload_2
+    //   39: ifle +322 -> 361
+    //   42: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   45: aload_0
+    //   46: aload 12
+    //   48: iconst_0
+    //   49: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   52: invokevirtual 76	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   55: astore 5
+    //   57: aload 5
+    //   59: ifnull +9 -> 68
+    //   62: aload 5
+    //   64: checkcast 78	android/graphics/Bitmap
+    //   67: areturn
+    //   68: new 80	java/io/FileInputStream
+    //   71: dup
+    //   72: aload 12
+    //   74: invokespecial 83	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   77: astore 5
+    //   79: aload 4
+    //   81: astore 7
+    //   83: aload 5
+    //   85: astore 8
+    //   87: new 85	java/io/BufferedInputStream
+    //   90: dup
+    //   91: aload 5
+    //   93: invokespecial 88	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   96: astore 4
+    //   98: aload 11
+    //   100: astore 6
+    //   102: aload 10
+    //   104: astore 7
+    //   106: aload 4
+    //   108: invokestatic 94	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   111: astore 8
+    //   113: aload 8
+    //   115: ifnull +32 -> 147
+    //   118: iconst_3
+    //   119: iload_1
+    //   120: if_icmpeq +27 -> 147
+    //   123: aload 8
+    //   125: astore 6
+    //   127: aload 8
+    //   129: astore 7
+    //   131: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   134: aload_0
+    //   135: aload 12
+    //   137: iconst_0
+    //   138: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   141: aload 8
+    //   143: invokevirtual 98	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   146: pop
+    //   147: aload 5
+    //   149: invokevirtual 103	java/io/InputStream:close	()V
+    //   152: aload 4
+    //   154: invokevirtual 103	java/io/InputStream:close	()V
+    //   157: aload 8
+    //   159: areturn
+    //   160: astore 6
+    //   162: aload 4
+    //   164: astore 7
+    //   166: aload 6
+    //   168: astore 4
+    //   170: goto +126 -> 296
+    //   173: aload 4
+    //   175: astore 6
+    //   177: aload 7
     //   179: astore 4
-    //   181: aload_3
-    //   182: areturn
-    //   183: astore_3
-    //   184: aconst_null
-    //   185: astore 4
-    //   187: aconst_null
-    //   188: astore_3
-    //   189: aconst_null
-    //   190: astore 5
-    //   192: aload_3
-    //   193: astore 7
-    //   195: aload 5
-    //   197: astore 6
-    //   199: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   202: ifeq +18 -> 220
-    //   205: aload_3
-    //   206: astore 7
-    //   208: aload 5
+    //   181: goto +49 -> 230
+    //   184: aload 6
+    //   186: astore 7
+    //   188: aload 4
+    //   190: astore 6
+    //   192: aload 7
+    //   194: astore 4
+    //   196: goto +137 -> 333
+    //   199: aconst_null
+    //   200: astore 4
+    //   202: goto +28 -> 230
+    //   205: aconst_null
+    //   206: astore 4
+    //   208: aload 9
     //   210: astore 6
-    //   212: ldc 20
-    //   214: iconst_2
-    //   215: ldc 111
-    //   217: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   220: aload_3
-    //   221: ifnull +7 -> 228
-    //   224: aload_3
-    //   225: invokevirtual 103	java/io/InputStream:close	()V
-    //   228: aload 4
-    //   230: astore 6
-    //   232: aload 5
-    //   234: ifnull -212 -> 22
-    //   237: aload 5
-    //   239: invokevirtual 103	java/io/InputStream:close	()V
-    //   242: aload 4
-    //   244: areturn
-    //   245: astore_3
-    //   246: aload 4
-    //   248: areturn
-    //   249: astore 4
-    //   251: aconst_null
-    //   252: astore_3
-    //   253: aconst_null
-    //   254: astore 6
-    //   256: aload_3
-    //   257: ifnull +7 -> 264
-    //   260: aload_3
-    //   261: invokevirtual 103	java/io/InputStream:close	()V
-    //   264: aload 6
-    //   266: ifnull +8 -> 274
-    //   269: aload 6
-    //   271: invokevirtual 103	java/io/InputStream:close	()V
-    //   274: aload 4
-    //   276: athrow
-    //   277: aconst_null
-    //   278: areturn
-    //   279: astore_3
-    //   280: goto -153 -> 127
-    //   283: astore 4
-    //   285: goto -121 -> 164
-    //   288: astore_3
-    //   289: goto -61 -> 228
-    //   292: astore_3
-    //   293: goto -29 -> 264
-    //   296: astore_3
-    //   297: goto -23 -> 274
-    //   300: astore 4
-    //   302: aconst_null
-    //   303: astore 6
-    //   305: goto -49 -> 256
-    //   308: astore 4
-    //   310: aload 7
-    //   312: astore_3
-    //   313: goto -57 -> 256
-    //   316: astore 4
-    //   318: aconst_null
-    //   319: astore 4
-    //   321: aconst_null
-    //   322: astore 5
-    //   324: goto -132 -> 192
-    //   327: astore 4
-    //   329: aconst_null
-    //   330: astore 4
-    //   332: goto -140 -> 192
-    //   335: astore 6
-    //   337: goto -145 -> 192
-    //   340: astore 4
-    //   342: aconst_null
-    //   343: astore 6
-    //   345: aconst_null
-    //   346: astore 5
-    //   348: aload_3
-    //   349: astore 4
-    //   351: aload 6
-    //   353: astore_3
-    //   354: goto -200 -> 154
-    //   357: astore 4
-    //   359: aconst_null
-    //   360: astore 6
-    //   362: aload_3
+    //   212: goto +121 -> 333
+    //   215: astore 4
+    //   217: aconst_null
+    //   218: astore 5
+    //   220: goto +76 -> 296
+    //   223: aconst_null
+    //   224: astore 4
+    //   226: aload 4
+    //   228: astore 5
+    //   230: aload 6
+    //   232: astore 7
+    //   234: aload 5
+    //   236: astore 8
+    //   238: invokestatic 109	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   241: ifeq +19 -> 260
+    //   244: aload 6
+    //   246: astore 7
+    //   248: aload 5
+    //   250: astore 8
+    //   252: ldc 18
+    //   254: iconst_2
+    //   255: ldc 111
+    //   257: invokestatic 115	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   260: aload 5
+    //   262: ifnull +11 -> 273
+    //   265: aload 5
+    //   267: invokevirtual 103	java/io/InputStream:close	()V
+    //   270: goto +3 -> 273
+    //   273: aload 4
+    //   275: astore 5
+    //   277: aload 6
+    //   279: ifnull +79 -> 358
+    //   282: aload 6
+    //   284: invokevirtual 103	java/io/InputStream:close	()V
+    //   287: aload 4
+    //   289: areturn
+    //   290: astore 4
+    //   292: aload 8
+    //   294: astore 5
+    //   296: aload 5
+    //   298: ifnull +11 -> 309
+    //   301: aload 5
+    //   303: invokevirtual 103	java/io/InputStream:close	()V
+    //   306: goto +3 -> 309
+    //   309: aload 7
+    //   311: ifnull +8 -> 319
+    //   314: aload 7
+    //   316: invokevirtual 103	java/io/InputStream:close	()V
+    //   319: aload 4
+    //   321: athrow
+    //   322: aconst_null
+    //   323: astore 4
+    //   325: aload 4
+    //   327: astore 5
+    //   329: aload 9
+    //   331: astore 6
+    //   333: aload 5
+    //   335: ifnull +11 -> 346
+    //   338: aload 5
+    //   340: invokevirtual 103	java/io/InputStream:close	()V
+    //   343: goto +3 -> 346
+    //   346: aload 4
+    //   348: astore 5
+    //   350: aload 6
+    //   352: ifnull +6 -> 358
+    //   355: goto -73 -> 282
+    //   358: aload 5
+    //   360: areturn
+    //   361: aconst_null
+    //   362: areturn
     //   363: astore 4
-    //   365: aload 6
-    //   367: astore_3
-    //   368: goto -214 -> 154
-    //   371: astore 6
-    //   373: aload_3
-    //   374: astore 6
-    //   376: aload 4
-    //   378: astore_3
-    //   379: aload 6
-    //   381: astore 4
-    //   383: goto -229 -> 154
+    //   365: goto -43 -> 322
+    //   368: astore 4
+    //   370: goto -147 -> 223
+    //   373: astore 4
+    //   375: goto -170 -> 205
+    //   378: astore 4
+    //   380: goto -181 -> 199
+    //   383: astore 7
+    //   385: goto -201 -> 184
+    //   388: astore 6
+    //   390: goto -217 -> 173
+    //   393: astore 5
+    //   395: goto -243 -> 152
+    //   398: astore 4
+    //   400: goto -243 -> 157
+    //   403: astore 5
+    //   405: goto -132 -> 273
+    //   408: astore 5
+    //   410: aload 4
+    //   412: areturn
+    //   413: astore 5
+    //   415: goto -106 -> 309
+    //   418: astore 5
+    //   420: goto -101 -> 319
+    //   423: astore 5
+    //   425: goto -79 -> 346
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	386	0	this	DoodleResHelper
-    //   0	386	1	paramInt1	int
-    //   0	386	2	paramInt2	int
-    //   42	82	3	localObject1	Object
-    //   144	1	3	localIOException1	java.io.IOException
-    //   148	1	3	localException1	Exception
-    //   150	32	3	localBitmap1	Bitmap
-    //   183	1	3	localOutOfMemoryError1	OutOfMemoryError
-    //   188	37	3	localObject2	Object
-    //   245	1	3	localIOException2	java.io.IOException
-    //   252	9	3	localObject3	Object
-    //   279	1	3	localIOException3	java.io.IOException
-    //   288	1	3	localIOException4	java.io.IOException
-    //   292	1	3	localIOException5	java.io.IOException
-    //   296	1	3	localIOException6	java.io.IOException
-    //   312	67	3	localObject4	Object
-    //   1	159	4	localBitmap2	Bitmap
-    //   179	1	4	localIOException7	java.io.IOException
-    //   185	62	4	localBitmap3	Bitmap
-    //   249	26	4	localObject5	Object
-    //   283	1	4	localIOException8	java.io.IOException
-    //   300	1	4	localObject6	Object
-    //   308	1	4	localObject7	Object
-    //   316	1	4	localOutOfMemoryError2	OutOfMemoryError
-    //   319	1	4	localObject8	Object
-    //   327	1	4	localOutOfMemoryError3	OutOfMemoryError
-    //   330	1	4	localObject9	Object
-    //   340	1	4	localException2	Exception
-    //   349	1	4	localObject10	Object
-    //   357	1	4	localException3	Exception
-    //   363	19	4	localObject11	Object
-    //   70	277	5	localBufferedInputStream	java.io.BufferedInputStream
-    //   20	284	6	localObject12	Object
-    //   335	1	6	localOutOfMemoryError4	OutOfMemoryError
-    //   343	23	6	localObject13	Object
-    //   371	1	6	localException4	Exception
-    //   374	6	6	localObject14	Object
-    //   73	238	7	localObject15	Object
-    //   9	99	8	str	String
+    //   0	428	0	this	DoodleResHelper
+    //   0	428	1	paramInt1	int
+    //   0	428	2	paramInt2	int
+    //   13	20	3	bool	boolean
+    //   15	192	4	localObject1	Object
+    //   215	1	4	localObject2	Object
+    //   224	64	4	localBitmap	Bitmap
+    //   290	30	4	localObject3	Object
+    //   323	24	4	localObject4	Object
+    //   363	1	4	localException1	Exception
+    //   368	1	4	localOutOfMemoryError1	OutOfMemoryError
+    //   373	1	4	localException2	Exception
+    //   378	1	4	localOutOfMemoryError2	OutOfMemoryError
+    //   398	13	4	localIOException1	java.io.IOException
+    //   55	304	5	localObject5	Object
+    //   393	1	5	localIOException2	java.io.IOException
+    //   403	1	5	localIOException3	java.io.IOException
+    //   408	1	5	localIOException4	java.io.IOException
+    //   413	1	5	localIOException5	java.io.IOException
+    //   418	1	5	localIOException6	java.io.IOException
+    //   423	1	5	localIOException7	java.io.IOException
+    //   30	96	6	localObject6	Object
+    //   160	7	6	localObject7	Object
+    //   175	176	6	localObject8	Object
+    //   388	1	6	localOutOfMemoryError3	OutOfMemoryError
+    //   18	297	7	localObject9	Object
+    //   383	1	7	localException3	Exception
+    //   85	208	8	localObject10	Object
+    //   21	309	9	localObject11	Object
+    //   27	76	10	localObject12	Object
+    //   24	75	11	localObject13	Object
+    //   6	130	12	str	String
     // Exception table:
     //   from	to	target	type
-    //   136	141	144	java/io/IOException
-    //   52	62	148	java/lang/Exception
-    //   172	177	179	java/io/IOException
-    //   52	62	183	java/lang/OutOfMemoryError
-    //   237	242	245	java/io/IOException
-    //   52	62	249	finally
-    //   123	127	279	java/io/IOException
-    //   159	164	283	java/io/IOException
-    //   224	228	288	java/io/IOException
-    //   260	264	292	java/io/IOException
-    //   269	274	296	java/io/IOException
-    //   62	72	300	finally
-    //   79	86	308	finally
-    //   103	119	308	finally
-    //   199	205	308	finally
-    //   212	220	308	finally
-    //   62	72	316	java/lang/OutOfMemoryError
-    //   79	86	327	java/lang/OutOfMemoryError
-    //   103	119	335	java/lang/OutOfMemoryError
-    //   62	72	340	java/lang/Exception
-    //   79	86	357	java/lang/Exception
-    //   103	119	371	java/lang/Exception
+    //   106	113	160	finally
+    //   131	147	160	finally
+    //   68	79	215	finally
+    //   87	98	290	finally
+    //   238	244	290	finally
+    //   252	260	290	finally
+    //   68	79	363	java/lang/Exception
+    //   68	79	368	java/lang/OutOfMemoryError
+    //   87	98	373	java/lang/Exception
+    //   87	98	378	java/lang/OutOfMemoryError
+    //   106	113	383	java/lang/Exception
+    //   131	147	383	java/lang/Exception
+    //   106	113	388	java/lang/OutOfMemoryError
+    //   131	147	388	java/lang/OutOfMemoryError
+    //   147	152	393	java/io/IOException
+    //   152	157	398	java/io/IOException
+    //   265	270	403	java/io/IOException
+    //   282	287	408	java/io/IOException
+    //   301	306	413	java/io/IOException
+    //   314	319	418	java/io/IOException
+    //   338	343	423	java/io/IOException
   }
   
   /* Error */
   public Drawable a(int paramInt1, int paramInt2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: iload_2
-    //   4: ifge +9 -> 13
-    //   7: aconst_null
-    //   8: astore 6
-    //   10: aload 6
-    //   12: areturn
-    //   13: aload_0
-    //   14: iload_1
-    //   15: iload_2
-    //   16: invokevirtual 119	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:b	(II)Ljava/lang/String;
-    //   19: astore 6
-    //   21: aload 6
-    //   23: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   26: ifeq +5 -> 31
-    //   29: aconst_null
-    //   30: areturn
-    //   31: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   34: aload_0
-    //   35: aload 6
-    //   37: iconst_1
-    //   38: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   41: invokevirtual 76	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   44: astore_3
-    //   45: aload_3
-    //   46: ifnull +8 -> 54
-    //   49: aload_3
-    //   50: checkcast 121	android/graphics/drawable/Drawable
-    //   53: areturn
-    //   54: new 80	java/io/FileInputStream
-    //   57: dup
-    //   58: aload 6
-    //   60: invokespecial 83	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   63: astore_3
-    //   64: new 85	java/io/BufferedInputStream
-    //   67: dup
-    //   68: aload_3
-    //   69: invokespecial 88	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   0: iload_2
+    //   1: ifge +5 -> 6
+    //   4: aconst_null
+    //   5: areturn
+    //   6: aload_0
+    //   7: iload_1
+    //   8: iload_2
+    //   9: invokevirtual 119	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:b	(II)Ljava/lang/String;
+    //   12: astore 6
+    //   14: aload 6
+    //   16: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   19: ifeq +5 -> 24
+    //   22: aconst_null
+    //   23: areturn
+    //   24: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   27: aload_0
+    //   28: aload 6
+    //   30: iconst_1
+    //   31: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   34: invokevirtual 76	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   37: astore_3
+    //   38: aload_3
+    //   39: ifnull +8 -> 47
+    //   42: aload_3
+    //   43: checkcast 121	android/graphics/drawable/Drawable
+    //   46: areturn
+    //   47: new 80	java/io/FileInputStream
+    //   50: dup
+    //   51: aload 6
+    //   53: invokespecial 83	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   56: astore_3
+    //   57: new 85	java/io/BufferedInputStream
+    //   60: dup
+    //   61: aload_3
+    //   62: invokespecial 88	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   65: astore 4
+    //   67: aload 4
+    //   69: invokestatic 94	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
     //   72: astore 5
-    //   74: aload 5
-    //   76: invokestatic 94	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   79: astore 4
-    //   81: new 123	android/graphics/drawable/BitmapDrawable
-    //   84: dup
-    //   85: invokestatic 129	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   88: invokevirtual 133	com/tencent/common/app/BaseApplicationImpl:getApplicationContext	()Landroid/content/Context;
-    //   91: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   94: aload 4
-    //   96: invokespecial 142	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
-    //   99: astore 4
-    //   101: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   104: aload_0
-    //   105: aload 6
-    //   107: iconst_1
-    //   108: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   111: aload 4
-    //   113: invokevirtual 98	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   116: pop
-    //   117: aload_3
-    //   118: ifnull +7 -> 125
-    //   121: aload_3
-    //   122: invokevirtual 103	java/io/InputStream:close	()V
-    //   125: aload 4
-    //   127: astore 6
-    //   129: aload 5
-    //   131: ifnull -121 -> 10
-    //   134: aload 5
-    //   136: invokevirtual 103	java/io/InputStream:close	()V
-    //   139: aload 4
-    //   141: areturn
-    //   142: astore_3
-    //   143: aload 4
-    //   145: areturn
-    //   146: astore_3
-    //   147: aconst_null
+    //   74: new 123	android/graphics/drawable/BitmapDrawable
+    //   77: dup
+    //   78: invokestatic 129	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   81: invokevirtual 133	com/tencent/qphone/base/util/BaseApplication:getApplicationContext	()Landroid/content/Context;
+    //   84: invokevirtual 139	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   87: aload 5
+    //   89: invokespecial 142	android/graphics/drawable/BitmapDrawable:<init>	(Landroid/content/res/Resources;Landroid/graphics/Bitmap;)V
+    //   92: astore 5
+    //   94: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   97: aload_0
+    //   98: aload 6
+    //   100: iconst_1
+    //   101: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   104: aload 5
+    //   106: invokevirtual 98	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   109: pop
+    //   110: aload_3
+    //   111: invokevirtual 103	java/io/InputStream:close	()V
+    //   114: aload 4
+    //   116: astore 6
+    //   118: aload 6
+    //   120: invokevirtual 103	java/io/InputStream:close	()V
+    //   123: aload 5
+    //   125: areturn
+    //   126: aload 4
+    //   128: astore 6
+    //   130: aload 5
+    //   132: astore 4
+    //   134: goto +100 -> 234
+    //   137: aload 4
+    //   139: astore 6
+    //   141: aload 5
+    //   143: astore 4
+    //   145: goto +123 -> 268
     //   148: astore 5
-    //   150: aconst_null
-    //   151: astore_3
-    //   152: aload 4
-    //   154: ifnull +8 -> 162
-    //   157: aload 4
-    //   159: invokevirtual 103	java/io/InputStream:close	()V
-    //   162: aload_3
-    //   163: astore 6
-    //   165: aload 5
-    //   167: ifnull -157 -> 10
-    //   170: aload 5
-    //   172: invokevirtual 103	java/io/InputStream:close	()V
-    //   175: aload_3
-    //   176: areturn
-    //   177: astore 4
-    //   179: aload_3
-    //   180: areturn
-    //   181: astore_3
-    //   182: aconst_null
-    //   183: astore_3
-    //   184: aconst_null
-    //   185: astore 5
-    //   187: aconst_null
-    //   188: astore 4
-    //   190: aload_3
-    //   191: ifnull +7 -> 198
-    //   194: aload_3
-    //   195: invokevirtual 103	java/io/InputStream:close	()V
-    //   198: aload 4
-    //   200: astore 6
-    //   202: aload 5
-    //   204: ifnull -194 -> 10
-    //   207: aload 5
-    //   209: invokevirtual 103	java/io/InputStream:close	()V
-    //   212: aload 4
-    //   214: areturn
-    //   215: astore_3
-    //   216: aload 4
-    //   218: areturn
-    //   219: astore 4
-    //   221: aconst_null
-    //   222: astore_3
-    //   223: aconst_null
-    //   224: astore 5
-    //   226: aload_3
-    //   227: ifnull +7 -> 234
-    //   230: aload_3
-    //   231: invokevirtual 103	java/io/InputStream:close	()V
-    //   234: aload 5
-    //   236: ifnull +8 -> 244
-    //   239: aload 5
-    //   241: invokevirtual 103	java/io/InputStream:close	()V
-    //   244: aload 4
-    //   246: athrow
+    //   150: goto +52 -> 202
+    //   153: aconst_null
+    //   154: astore 5
+    //   156: aload 4
+    //   158: astore 6
+    //   160: aload 5
+    //   162: astore 4
+    //   164: goto +70 -> 234
+    //   167: aconst_null
+    //   168: astore 5
+    //   170: aload 4
+    //   172: astore 6
+    //   174: aload 5
+    //   176: astore 4
+    //   178: goto +90 -> 268
+    //   181: astore 5
+    //   183: aconst_null
+    //   184: astore 4
+    //   186: goto +16 -> 202
+    //   189: goto +39 -> 228
+    //   192: goto +70 -> 262
+    //   195: astore 5
+    //   197: aconst_null
+    //   198: astore_3
+    //   199: aload_3
+    //   200: astore 4
+    //   202: aload_3
+    //   203: ifnull +10 -> 213
+    //   206: aload_3
+    //   207: invokevirtual 103	java/io/InputStream:close	()V
+    //   210: goto +3 -> 213
+    //   213: aload 4
+    //   215: ifnull +8 -> 223
+    //   218: aload 4
+    //   220: invokevirtual 103	java/io/InputStream:close	()V
+    //   223: aload 5
+    //   225: athrow
+    //   226: aconst_null
+    //   227: astore_3
+    //   228: aconst_null
+    //   229: astore 6
+    //   231: aconst_null
+    //   232: astore 4
+    //   234: aload_3
+    //   235: ifnull +10 -> 245
+    //   238: aload_3
+    //   239: invokevirtual 103	java/io/InputStream:close	()V
+    //   242: goto +3 -> 245
+    //   245: aload 4
     //   247: astore_3
-    //   248: goto -123 -> 125
-    //   251: astore 4
-    //   253: goto -91 -> 162
-    //   256: astore_3
-    //   257: goto -59 -> 198
-    //   260: astore_3
-    //   261: goto -27 -> 234
-    //   264: astore_3
-    //   265: goto -21 -> 244
-    //   268: astore 4
-    //   270: aconst_null
-    //   271: astore 5
-    //   273: goto -47 -> 226
-    //   276: astore 4
-    //   278: goto -52 -> 226
-    //   281: astore 4
-    //   283: aconst_null
-    //   284: astore 5
-    //   286: aconst_null
-    //   287: astore 4
-    //   289: goto -99 -> 190
-    //   292: astore 4
-    //   294: aconst_null
-    //   295: astore 4
-    //   297: goto -107 -> 190
-    //   300: astore 6
-    //   302: goto -112 -> 190
-    //   305: astore 4
-    //   307: aconst_null
-    //   308: astore 6
-    //   310: aload_3
-    //   311: astore 4
-    //   313: aconst_null
+    //   248: aload 6
+    //   250: ifnull +44 -> 294
+    //   253: aload 4
+    //   255: astore 5
+    //   257: goto -139 -> 118
+    //   260: aconst_null
+    //   261: astore_3
+    //   262: aconst_null
+    //   263: astore 6
+    //   265: aconst_null
+    //   266: astore 4
+    //   268: aload_3
+    //   269: ifnull +10 -> 279
+    //   272: aload_3
+    //   273: invokevirtual 103	java/io/InputStream:close	()V
+    //   276: goto +3 -> 279
+    //   279: aload 4
+    //   281: astore_3
+    //   282: aload 6
+    //   284: ifnull +10 -> 294
+    //   287: aload 4
+    //   289: astore 5
+    //   291: goto -173 -> 118
+    //   294: aload_3
+    //   295: areturn
+    //   296: astore_3
+    //   297: goto -37 -> 260
+    //   300: astore_3
+    //   301: goto -75 -> 226
+    //   304: astore 4
+    //   306: goto -114 -> 192
+    //   309: astore 4
+    //   311: goto -122 -> 189
     //   314: astore 5
-    //   316: aload 6
-    //   318: astore_3
-    //   319: goto -167 -> 152
-    //   322: astore 4
-    //   324: aconst_null
-    //   325: astore 6
-    //   327: aload_3
-    //   328: astore 4
-    //   330: aload 6
-    //   332: astore_3
-    //   333: goto -181 -> 152
-    //   336: astore 6
-    //   338: aload_3
-    //   339: astore 6
-    //   341: aload 4
-    //   343: astore_3
-    //   344: aload 6
-    //   346: astore 4
-    //   348: goto -196 -> 152
+    //   316: goto -149 -> 167
+    //   319: astore 5
+    //   321: goto -168 -> 153
+    //   324: astore 6
+    //   326: goto -189 -> 137
+    //   329: astore 6
+    //   331: goto -205 -> 126
+    //   334: astore_3
+    //   335: aload 4
+    //   337: astore 6
+    //   339: goto -221 -> 118
+    //   342: astore_3
+    //   343: aload 5
+    //   345: areturn
+    //   346: astore_3
+    //   347: goto -134 -> 213
+    //   350: astore_3
+    //   351: goto -128 -> 223
+    //   354: astore_3
+    //   355: goto -110 -> 245
+    //   358: astore_3
+    //   359: goto -80 -> 279
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	351	0	this	DoodleResHelper
-    //   0	351	1	paramInt1	int
-    //   0	351	2	paramInt2	int
-    //   44	78	3	localObject1	Object
-    //   142	1	3	localIOException1	java.io.IOException
-    //   146	1	3	localOutOfMemoryError1	OutOfMemoryError
-    //   151	29	3	localDrawable1	Drawable
-    //   181	1	3	localException1	Exception
-    //   183	12	3	localObject2	Object
-    //   215	1	3	localIOException2	java.io.IOException
-    //   222	9	3	localObject3	Object
-    //   247	1	3	localIOException3	java.io.IOException
-    //   256	1	3	localIOException4	java.io.IOException
-    //   260	1	3	localIOException5	java.io.IOException
-    //   264	47	3	localIOException6	java.io.IOException
-    //   318	26	3	localObject4	Object
-    //   1	157	4	localObject5	Object
-    //   177	1	4	localIOException7	java.io.IOException
-    //   188	29	4	localDrawable2	Drawable
-    //   219	26	4	localObject6	Object
-    //   251	1	4	localIOException8	java.io.IOException
-    //   268	1	4	localObject7	Object
-    //   276	1	4	localObject8	Object
-    //   281	1	4	localException2	Exception
-    //   287	1	4	localObject9	Object
-    //   292	1	4	localException3	Exception
-    //   295	1	4	localObject10	Object
-    //   305	1	4	localOutOfMemoryError2	OutOfMemoryError
-    //   311	1	4	localObject11	Object
-    //   322	1	4	localOutOfMemoryError3	OutOfMemoryError
-    //   328	19	4	localObject12	Object
-    //   72	243	5	localBufferedInputStream	java.io.BufferedInputStream
-    //   8	193	6	localObject13	Object
-    //   300	1	6	localException4	Exception
-    //   308	23	6	localObject14	Object
-    //   336	1	6	localOutOfMemoryError4	OutOfMemoryError
-    //   339	6	6	localObject15	Object
+    //   0	362	0	this	DoodleResHelper
+    //   0	362	1	paramInt1	int
+    //   0	362	2	paramInt2	int
+    //   37	258	3	localObject1	Object
+    //   296	1	3	localOutOfMemoryError1	OutOfMemoryError
+    //   300	1	3	localException1	Exception
+    //   334	1	3	localIOException1	java.io.IOException
+    //   342	1	3	localIOException2	java.io.IOException
+    //   346	1	3	localIOException3	java.io.IOException
+    //   350	1	3	localIOException4	java.io.IOException
+    //   354	1	3	localIOException5	java.io.IOException
+    //   358	1	3	localIOException6	java.io.IOException
+    //   65	223	4	localObject2	Object
+    //   304	1	4	localOutOfMemoryError2	OutOfMemoryError
+    //   309	27	4	localException2	Exception
+    //   72	70	5	localObject3	Object
+    //   148	1	5	localObject4	Object
+    //   154	21	5	localObject5	Object
+    //   181	1	5	localObject6	Object
+    //   195	29	5	localObject7	Object
+    //   255	35	5	localObject8	Object
+    //   314	1	5	localOutOfMemoryError3	OutOfMemoryError
+    //   319	25	5	localException3	Exception
+    //   12	271	6	localObject9	Object
+    //   324	1	6	localOutOfMemoryError4	OutOfMemoryError
+    //   329	1	6	localException4	Exception
+    //   337	1	6	localObject10	Object
     // Exception table:
     //   from	to	target	type
-    //   134	139	142	java/io/IOException
-    //   54	64	146	java/lang/OutOfMemoryError
-    //   170	175	177	java/io/IOException
-    //   54	64	181	java/lang/Exception
-    //   207	212	215	java/io/IOException
-    //   54	64	219	finally
-    //   121	125	247	java/io/IOException
-    //   157	162	251	java/io/IOException
-    //   194	198	256	java/io/IOException
-    //   230	234	260	java/io/IOException
-    //   239	244	264	java/io/IOException
-    //   64	74	268	finally
-    //   74	101	276	finally
-    //   101	117	276	finally
-    //   64	74	281	java/lang/Exception
-    //   74	101	292	java/lang/Exception
-    //   101	117	300	java/lang/Exception
-    //   64	74	305	java/lang/OutOfMemoryError
-    //   74	101	322	java/lang/OutOfMemoryError
-    //   101	117	336	java/lang/OutOfMemoryError
+    //   67	94	148	finally
+    //   94	110	148	finally
+    //   57	67	181	finally
+    //   47	57	195	finally
+    //   47	57	296	java/lang/OutOfMemoryError
+    //   47	57	300	java/lang/Exception
+    //   57	67	304	java/lang/OutOfMemoryError
+    //   57	67	309	java/lang/Exception
+    //   67	94	314	java/lang/OutOfMemoryError
+    //   67	94	319	java/lang/Exception
+    //   94	110	324	java/lang/OutOfMemoryError
+    //   94	110	329	java/lang/Exception
+    //   110	114	334	java/io/IOException
+    //   118	123	342	java/io/IOException
+    //   206	210	346	java/io/IOException
+    //   218	223	350	java/io/IOException
+    //   238	242	354	java/io/IOException
+    //   272	276	358	java/io/IOException
   }
   
   public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
     Object localObject1 = a(paramInt1, paramInt2);
-    if (TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject1 = null;
-      return localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      return null;
     }
     if (paramInt2 > 0)
     {
       localObject1 = new File((String)localObject1);
       Object localObject2 = GlobalImageCache.a;
       Object localObject3 = ((File)localObject1).toURI().toString();
-      if (paramBoolean) {}
-      for (paramInt2 = 2;; paramInt2 = 3)
-      {
-        localObject2 = ((MQLruCache)localObject2).get(a((String)localObject3, paramInt2));
-        if (localObject2 == null) {
-          break;
-        }
+      if (paramBoolean) {
+        paramInt2 = 2;
+      } else {
+        paramInt2 = 3;
+      }
+      localObject2 = ((MQLruCache)localObject2).get(a((String)localObject3, paramInt2));
+      if (localObject2 != null) {
         return (Drawable)localObject2;
       }
-      localObject2 = BaseApplicationImpl.getContext();
+      localObject2 = BaseApplication.getContext();
       localObject3 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Context)localObject2).getResources().getDrawable(2130838095);
-      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Context)localObject2).getResources().getDrawable(2130838095);
+      ((URLDrawable.URLDrawableOptions)localObject3).mFailedDrawable = ((Context)localObject2).getResources().getDrawable(2130837945);
+      ((URLDrawable.URLDrawableOptions)localObject3).mLoadingDrawable = ((Context)localObject2).getResources().getDrawable(2130837945);
       ((URLDrawable.URLDrawableOptions)localObject3).mExtraInfo = null;
       ((URLDrawable.URLDrawableOptions)localObject3).mUseMemoryCache = false;
       if (paramInt1 == 1)
       {
         ((URLDrawable.URLDrawableOptions)localObject3).mUseUnFinishCache = false;
-        label151:
-        if ((paramInt1 != 0) && (paramInt1 != 3)) {
-          break label226;
-        }
-        ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = false;
       }
-      for (;;)
+      else
       {
-        localObject2 = URLDrawable.getDrawable((File)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
-        if (paramInt1 != 2)
-        {
-          localObject1 = localObject2;
-          if (paramInt1 != 1) {
-            break;
-          }
-        }
-        ((URLDrawable)localObject2).setIgnorePause(true);
-        return localObject2;
         ((URLDrawable.URLDrawableOptions)localObject3).mUseUnFinishCache = true;
-        if (paramBoolean)
-        {
+        if (paramBoolean) {
           ((URLDrawable.URLDrawableOptions)localObject3).isFlashPic = true;
-          break label151;
+        } else {
+          ((URLDrawable.URLDrawableOptions)localObject3).isFlashPic = false;
         }
-        ((URLDrawable.URLDrawableOptions)localObject3).isFlashPic = false;
-        break label151;
-        label226:
+      }
+      if ((paramInt1 != 0) && (paramInt1 != 3))
+      {
         if ((paramInt1 == 2) && (paramBoolean)) {
           ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
         } else if ((paramInt1 == 1) && (paramBoolean)) {
           ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = true;
         }
       }
+      else {
+        ((URLDrawable.URLDrawableOptions)localObject3).mPlayGifImage = false;
+      }
+      localObject1 = URLDrawable.getDrawable((File)localObject1, (URLDrawable.URLDrawableOptions)localObject3);
+      if ((paramInt1 == 2) || (paramInt1 == 1)) {
+        ((URLDrawable)localObject1).setIgnorePause(true);
+      }
+      return localObject1;
     }
     return null;
   }
   
   public String a(int paramInt1, int paramInt2)
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (paramInt1 == 0) {
-      localObject = ScribbleResMgr.b(1, paramInt2);
-    }
-    for (;;)
+    String str;
+    if (paramInt1 == 0)
     {
-      if (!FileUtils.a((String)localObject))
+      str = ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).GetResPath(1, paramInt2);
+    }
+    else if (paramInt1 == 1)
+    {
+      str = ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).GetResPath(2, paramInt2);
+    }
+    else
+    {
+      StringBuilder localStringBuilder;
+      if (paramInt1 == 2)
       {
-        return null;
-        if (paramInt1 == 1)
-        {
-          localObject = ScribbleResMgr.b(2, paramInt2);
-          continue;
-        }
-        if (paramInt1 == 2)
-        {
-          localObject = ScribbleResMgr.b(2, paramInt2);
-          localObject = ((String)localObject).substring(0, ((String)localObject).lastIndexOf('.')) + "ex.gif";
-          continue;
-        }
-        if (paramInt1 == 3)
-        {
-          localObject = ScribbleResMgr.b(2, paramInt2);
-          localObject = ((String)localObject).substring(0, ((String)localObject).lastIndexOf('.')) + "pre.png";
-        }
+        str = ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).GetResPath(2, paramInt2);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str.substring(0, str.lastIndexOf('.')));
+        localStringBuilder.append("ex.gif");
+        str = localStringBuilder.toString();
+      }
+      else if (paramInt1 == 3)
+      {
+        str = ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).GetResPath(2, paramInt2);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str.substring(0, str.lastIndexOf('.')));
+        localStringBuilder.append("pre.png");
+        str = localStringBuilder.toString();
       }
       else
       {
-        return localObject;
+        str = null;
       }
-      localObject = null;
     }
+    if (!FileUtils.fileExists(str)) {
+      return null;
+    }
+    return str;
   }
   
   public List<Integer> a(int paramInt)
   {
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramInt == 1) || (paramInt == 2))
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2;
+    if ((paramInt != 1) && (paramInt != 2))
     {
-      localObject = ScribbleResMgr.a().b((QQAppInterface)localObject);
-      if ((localObject != null) && (((ArrayList)localObject).size() > 0)) {
-        localArrayList.addAll((Collection)localObject);
+      if (paramInt == 0)
+      {
+        localArrayList2 = ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).GetPaintVisibleIdList();
+        if ((localArrayList2 != null) && (localArrayList2.size() > 0))
+        {
+          localArrayList1.addAll(localArrayList2);
+          return localArrayList1;
+        }
       }
     }
-    do
+    else
     {
-      do
-      {
-        return localArrayList;
-      } while (paramInt != 0);
-      localObject = ScribbleResMgr.a().a((QQAppInterface)localObject);
-    } while ((localObject == null) || (((ArrayList)localObject).size() <= 0));
-    localArrayList.addAll((Collection)localObject);
-    return localArrayList;
+      localArrayList2 = ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).GetGifVisibleIdList();
+      if ((localArrayList2 != null) && (localArrayList2.size() > 0)) {
+        localArrayList1.addAll(localArrayList2);
+      }
+    }
+    return localArrayList1;
   }
   
   public void a()
@@ -722,23 +700,21 @@ public class DoodleResHelper
     finally {}
   }
   
-  public void a(int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback)
+  public void a(int paramInt1, int paramInt2, View paramView, ResCallback paramResCallback)
   {
-    if (Looper.getMainLooper() != Looper.myLooper()) {
-      new Handler(Looper.getMainLooper()).post(new DoodleResHelper.1(this, paramInt1, paramInt2, paramView, paramResCallback));
-    }
-    QQAppInterface localQQAppInterface;
-    do
+    if (Looper.getMainLooper() != Looper.myLooper())
     {
+      new Handler(Looper.getMainLooper()).post(new DoodleResHelper.1(this, paramInt1, paramInt2, paramView, paramResCallback));
       return;
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (paramInt1 == 0)
-      {
-        ScribbleResMgr.a().a(localQQAppInterface, 3, paramInt2, paramView, paramResCallback);
-        return;
-      }
-    } while ((paramInt1 != 1) && (paramInt1 != 2));
-    ScribbleResMgr.a().a(localQQAppInterface, 4, paramInt2, paramView, paramResCallback);
+    }
+    if (paramInt1 == 0)
+    {
+      ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).StartDownloadRes(3, paramInt2, paramView, paramResCallback);
+      return;
+    }
+    if ((paramInt1 == 1) || (paramInt1 == 2)) {
+      ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).StartDownloadRes(4, paramInt2, paramView, paramResCallback);
+    }
   }
   
   public void a(Bitmap paramBitmap)
@@ -751,29 +727,40 @@ public class DoodleResHelper
       if (this.jdField_a_of_type_JavaUtilMap == null) {
         return;
       }
+      Object localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        DoodleResHelper.BitmapInfo localBitmapInfo = (DoodleResHelper.BitmapInfo)((Iterator)localObject).next();
+        if ((localBitmapInfo.jdField_a_of_type_JavaLangRefWeakReference != null) && (localBitmapInfo.jdField_a_of_type_JavaLangRefWeakReference.get() == paramBitmap))
+        {
+          localBitmapInfo.jdField_a_of_type_Boolean = true;
+          paramBitmap = new StringBuilder();
+          paramBitmap.append("releaseBitmap succ:");
+          paramBitmap.append(this.jdField_a_of_type_JavaUtilMap.size());
+          QLog.d("DoodleResHelper", 2, paramBitmap.toString());
+          return;
+        }
+      }
+      localObject = new DoodleResHelper.BitmapInfo(this);
+      ((DoodleResHelper.BitmapInfo)localObject).b = paramBitmap.getHeight();
+      ((DoodleResHelper.BitmapInfo)localObject).jdField_a_of_type_Int = paramBitmap.getWidth();
+      ((DoodleResHelper.BitmapInfo)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBitmap);
+      ((DoodleResHelper.BitmapInfo)localObject).jdField_a_of_type_Boolean = true;
+      paramBitmap = this.jdField_a_of_type_JavaUtilMap;
+      int i = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = (i + 1);
+      paramBitmap.put(Integer.valueOf(i), localObject);
+      paramBitmap = new StringBuilder();
+      paramBitmap.append("releaseBitmap add new one:");
+      paramBitmap.append(this.jdField_a_of_type_JavaUtilMap.size());
+      QLog.d("DoodleResHelper", 2, paramBitmap.toString());
+      return;
     }
     finally {}
-    Object localObject = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    while (((Iterator)localObject).hasNext())
+    for (;;)
     {
-      DoodleResHelper.BitmapInfo localBitmapInfo = (DoodleResHelper.BitmapInfo)((Iterator)localObject).next();
-      if ((localBitmapInfo.jdField_a_of_type_JavaLangRefWeakReference != null) && (localBitmapInfo.jdField_a_of_type_JavaLangRefWeakReference.get() == paramBitmap))
-      {
-        localBitmapInfo.jdField_a_of_type_Boolean = true;
-        QLog.d("DoodleResHelper", 2, "releaseBitmap succ:" + this.jdField_a_of_type_JavaUtilMap.size());
-        return;
-      }
+      throw paramBitmap;
     }
-    localObject = new DoodleResHelper.BitmapInfo(this);
-    ((DoodleResHelper.BitmapInfo)localObject).b = paramBitmap.getHeight();
-    ((DoodleResHelper.BitmapInfo)localObject).jdField_a_of_type_Int = paramBitmap.getWidth();
-    ((DoodleResHelper.BitmapInfo)localObject).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramBitmap);
-    ((DoodleResHelper.BitmapInfo)localObject).jdField_a_of_type_Boolean = true;
-    paramBitmap = this.jdField_a_of_type_JavaUtilMap;
-    int i = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_Int = (i + 1);
-    paramBitmap.put(Integer.valueOf(i), localObject);
-    QLog.d("DoodleResHelper", 2, "releaseBitmap add new one:" + this.jdField_a_of_type_JavaUtilMap.size());
   }
   
   public boolean a(int paramInt1, int paramInt2)
@@ -786,289 +773,274 @@ public class DoodleResHelper
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: iload_2
-    //   4: ifge +9 -> 13
-    //   7: aconst_null
-    //   8: astore 6
-    //   10: aload 6
-    //   12: areturn
-    //   13: aload_0
-    //   14: iload_1
+    //   1: astore 5
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: aconst_null
+    //   7: astore 9
+    //   9: aconst_null
+    //   10: astore 8
+    //   12: aconst_null
+    //   13: astore 7
     //   15: iload_2
-    //   16: invokevirtual 119	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:b	(II)Ljava/lang/String;
-    //   19: astore 6
-    //   21: aload 6
-    //   23: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   26: ifeq +5 -> 31
-    //   29: aconst_null
-    //   30: areturn
-    //   31: iload_2
-    //   32: ifle +199 -> 231
-    //   35: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   38: aload_0
-    //   39: aload 6
-    //   41: iconst_0
-    //   42: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   45: invokevirtual 76	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   48: astore_3
-    //   49: aload_3
-    //   50: ifnull +8 -> 58
-    //   53: aload_3
-    //   54: checkcast 78	android/graphics/Bitmap
-    //   57: areturn
-    //   58: new 80	java/io/FileInputStream
-    //   61: dup
-    //   62: aload 6
-    //   64: invokespecial 83	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   67: astore_3
-    //   68: new 85	java/io/BufferedInputStream
-    //   71: dup
-    //   72: aload_3
-    //   73: invokespecial 88	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   76: astore 5
-    //   78: aload 5
-    //   80: invokestatic 94	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   83: astore 4
-    //   85: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
-    //   88: aload_0
-    //   89: aload 6
-    //   91: iconst_0
-    //   92: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
-    //   95: aload 4
-    //   97: invokevirtual 98	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   100: pop
-    //   101: aload_3
-    //   102: ifnull +7 -> 109
-    //   105: aload_3
-    //   106: invokevirtual 103	java/io/InputStream:close	()V
-    //   109: aload 4
-    //   111: astore 6
-    //   113: aload 5
-    //   115: ifnull -105 -> 10
-    //   118: aload 5
-    //   120: invokevirtual 103	java/io/InputStream:close	()V
-    //   123: aload 4
-    //   125: areturn
-    //   126: astore_3
-    //   127: aload 4
-    //   129: areturn
-    //   130: astore_3
-    //   131: aconst_null
-    //   132: astore_3
-    //   133: aconst_null
-    //   134: astore 5
-    //   136: aload 4
-    //   138: ifnull +8 -> 146
-    //   141: aload 4
-    //   143: invokevirtual 103	java/io/InputStream:close	()V
-    //   146: aload_3
-    //   147: astore 6
-    //   149: aload 5
-    //   151: ifnull -141 -> 10
-    //   154: aload 5
-    //   156: invokevirtual 103	java/io/InputStream:close	()V
-    //   159: aload_3
-    //   160: areturn
-    //   161: astore 4
-    //   163: aload_3
-    //   164: areturn
-    //   165: astore_3
-    //   166: aconst_null
-    //   167: astore 4
-    //   169: aconst_null
+    //   16: ifge +5 -> 21
+    //   19: aconst_null
+    //   20: areturn
+    //   21: aload_0
+    //   22: iload_1
+    //   23: iload_2
+    //   24: invokevirtual 119	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:b	(II)Ljava/lang/String;
+    //   27: astore 10
+    //   29: aload 10
+    //   31: invokestatic 63	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   34: ifeq +5 -> 39
+    //   37: aconst_null
+    //   38: areturn
+    //   39: iload_2
+    //   40: ifle +254 -> 294
+    //   43: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   46: aload_0
+    //   47: aload 10
+    //   49: iconst_0
+    //   50: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   53: invokevirtual 76	android/support/v4/util/MQLruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   56: astore_3
+    //   57: aload_3
+    //   58: ifnull +8 -> 66
+    //   61: aload_3
+    //   62: checkcast 78	android/graphics/Bitmap
+    //   65: areturn
+    //   66: new 80	java/io/FileInputStream
+    //   69: dup
+    //   70: aload 10
+    //   72: invokespecial 83	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   75: astore 4
+    //   77: new 85	java/io/BufferedInputStream
+    //   80: dup
+    //   81: aload 4
+    //   83: invokespecial 88	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   86: astore_3
+    //   87: aload 9
+    //   89: astore 5
+    //   91: aload 8
+    //   93: astore 6
+    //   95: aload_3
+    //   96: invokestatic 94	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   99: astore 7
+    //   101: aload 7
+    //   103: astore 5
+    //   105: aload 7
+    //   107: astore 6
+    //   109: getstatic 68	com/tencent/mobileqq/app/GlobalImageCache:a	Landroid/support/v4/util/MQLruCache;
+    //   112: aload_0
+    //   113: aload 10
+    //   115: iconst_0
+    //   116: invokespecial 70	com/tencent/mobileqq/activity/aio/doodle/DoodleResHelper:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   119: aload 7
+    //   121: invokevirtual 98	android/support/v4/util/MQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   124: pop
+    //   125: aload 4
+    //   127: invokevirtual 103	java/io/InputStream:close	()V
+    //   130: aload_3
+    //   131: invokevirtual 103	java/io/InputStream:close	()V
+    //   134: aload 7
+    //   136: areturn
+    //   137: astore 6
+    //   139: aload_3
+    //   140: astore 5
+    //   142: aload 6
+    //   144: astore_3
+    //   145: goto +55 -> 200
+    //   148: aload_3
+    //   149: astore 5
+    //   151: aload 6
+    //   153: astore_3
+    //   154: goto +76 -> 230
+    //   157: aload 5
+    //   159: astore 6
+    //   161: aload_3
+    //   162: astore 5
+    //   164: aload 6
+    //   166: astore_3
+    //   167: goto +100 -> 267
     //   170: astore_3
-    //   171: aconst_null
-    //   172: astore 5
-    //   174: aload_3
-    //   175: ifnull +7 -> 182
-    //   178: aload_3
-    //   179: invokevirtual 103	java/io/InputStream:close	()V
-    //   182: aload 4
-    //   184: astore 6
-    //   186: aload 5
-    //   188: ifnull -178 -> 10
-    //   191: aload 5
-    //   193: invokevirtual 103	java/io/InputStream:close	()V
-    //   196: aload 4
-    //   198: areturn
-    //   199: astore_3
+    //   171: aload 7
+    //   173: astore 5
+    //   175: goto +25 -> 200
+    //   178: aconst_null
+    //   179: astore_3
+    //   180: goto +50 -> 230
+    //   183: aconst_null
+    //   184: astore_3
+    //   185: aload 6
+    //   187: astore 5
+    //   189: goto +78 -> 267
+    //   192: astore_3
+    //   193: aconst_null
+    //   194: astore 4
+    //   196: aload 7
+    //   198: astore 5
     //   200: aload 4
-    //   202: areturn
-    //   203: astore 4
-    //   205: aconst_null
-    //   206: astore_3
-    //   207: aconst_null
-    //   208: astore 5
-    //   210: aload_3
-    //   211: ifnull +7 -> 218
-    //   214: aload_3
-    //   215: invokevirtual 103	java/io/InputStream:close	()V
+    //   202: ifnull +11 -> 213
+    //   205: aload 4
+    //   207: invokevirtual 103	java/io/InputStream:close	()V
+    //   210: goto +3 -> 213
+    //   213: aload 5
+    //   215: ifnull +8 -> 223
     //   218: aload 5
-    //   220: ifnull +8 -> 228
-    //   223: aload 5
-    //   225: invokevirtual 103	java/io/InputStream:close	()V
-    //   228: aload 4
-    //   230: athrow
-    //   231: aconst_null
-    //   232: areturn
-    //   233: astore_3
-    //   234: goto -125 -> 109
-    //   237: astore 4
-    //   239: goto -93 -> 146
-    //   242: astore_3
-    //   243: goto -61 -> 182
-    //   246: astore_3
-    //   247: goto -29 -> 218
-    //   250: astore_3
-    //   251: goto -23 -> 228
-    //   254: astore 4
-    //   256: aconst_null
-    //   257: astore 5
-    //   259: goto -49 -> 210
-    //   262: astore 4
-    //   264: goto -54 -> 210
-    //   267: astore 4
-    //   269: aconst_null
-    //   270: astore 4
-    //   272: aconst_null
-    //   273: astore 5
-    //   275: goto -101 -> 174
-    //   278: astore 4
-    //   280: aconst_null
+    //   220: invokevirtual 103	java/io/InputStream:close	()V
+    //   223: aload_3
+    //   224: athrow
+    //   225: aconst_null
+    //   226: astore_3
+    //   227: aload_3
+    //   228: astore 4
+    //   230: aload 4
+    //   232: ifnull +11 -> 243
+    //   235: aload 4
+    //   237: invokevirtual 103	java/io/InputStream:close	()V
+    //   240: goto +3 -> 243
+    //   243: aload_3
+    //   244: astore 4
+    //   246: aload 5
+    //   248: ifnull +43 -> 291
+    //   251: aload 5
+    //   253: invokevirtual 103	java/io/InputStream:close	()V
+    //   256: aload_3
+    //   257: areturn
+    //   258: aconst_null
+    //   259: astore_3
+    //   260: aload_3
+    //   261: astore 4
+    //   263: aload 6
+    //   265: astore 5
+    //   267: aload 4
+    //   269: ifnull +11 -> 280
+    //   272: aload 4
+    //   274: invokevirtual 103	java/io/InputStream:close	()V
+    //   277: goto +3 -> 280
+    //   280: aload_3
     //   281: astore 4
-    //   283: goto -109 -> 174
-    //   286: astore 6
-    //   288: goto -114 -> 174
-    //   291: astore 4
-    //   293: aconst_null
-    //   294: astore 6
-    //   296: aconst_null
-    //   297: astore 5
-    //   299: aload_3
-    //   300: astore 4
-    //   302: aload 6
+    //   283: aload 5
+    //   285: ifnull +6 -> 291
+    //   288: goto -37 -> 251
+    //   291: aload 4
+    //   293: areturn
+    //   294: aconst_null
+    //   295: areturn
+    //   296: astore_3
+    //   297: goto -39 -> 258
+    //   300: astore_3
+    //   301: goto -76 -> 225
     //   304: astore_3
-    //   305: goto -169 -> 136
-    //   308: astore 4
-    //   310: aconst_null
-    //   311: astore 6
-    //   313: aload_3
-    //   314: astore 4
-    //   316: aload 6
-    //   318: astore_3
-    //   319: goto -183 -> 136
-    //   322: astore 6
-    //   324: aload_3
-    //   325: astore 6
-    //   327: aload 4
-    //   329: astore_3
-    //   330: aload 6
-    //   332: astore 4
-    //   334: goto -198 -> 136
+    //   305: goto -122 -> 183
+    //   308: astore_3
+    //   309: goto -131 -> 178
+    //   312: astore 6
+    //   314: goto -157 -> 157
+    //   317: astore 5
+    //   319: goto -171 -> 148
+    //   322: astore 4
+    //   324: goto -194 -> 130
+    //   327: astore_3
+    //   328: goto -194 -> 134
+    //   331: astore 4
+    //   333: goto -120 -> 213
+    //   336: astore 4
+    //   338: goto -115 -> 223
+    //   341: astore 4
+    //   343: goto -100 -> 243
+    //   346: astore 4
+    //   348: aload_3
+    //   349: areturn
+    //   350: astore 4
+    //   352: goto -72 -> 280
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	337	0	this	DoodleResHelper
-    //   0	337	1	paramInt1	int
-    //   0	337	2	paramInt2	int
-    //   48	58	3	localObject1	Object
-    //   126	1	3	localIOException1	java.io.IOException
-    //   130	1	3	localOutOfMemoryError1	OutOfMemoryError
-    //   132	32	3	localBitmap1	Bitmap
-    //   165	1	3	localException1	Exception
-    //   170	9	3	localObject2	Object
-    //   199	1	3	localIOException2	java.io.IOException
-    //   206	9	3	localObject3	Object
-    //   233	1	3	localIOException3	java.io.IOException
-    //   242	1	3	localIOException4	java.io.IOException
-    //   246	1	3	localIOException5	java.io.IOException
-    //   250	50	3	localIOException6	java.io.IOException
-    //   304	26	3	localObject4	Object
-    //   1	141	4	localBitmap2	Bitmap
-    //   161	1	4	localIOException7	java.io.IOException
-    //   167	34	4	localBitmap3	Bitmap
-    //   203	26	4	localObject5	Object
-    //   237	1	4	localIOException8	java.io.IOException
-    //   254	1	4	localObject6	Object
-    //   262	1	4	localObject7	Object
-    //   267	1	4	localException2	Exception
-    //   270	1	4	localObject8	Object
-    //   278	1	4	localException3	Exception
-    //   281	1	4	localObject9	Object
-    //   291	1	4	localOutOfMemoryError2	OutOfMemoryError
-    //   300	1	4	localObject10	Object
-    //   308	1	4	localOutOfMemoryError3	OutOfMemoryError
-    //   314	19	4	localObject11	Object
-    //   76	222	5	localBufferedInputStream	java.io.BufferedInputStream
-    //   8	177	6	localObject12	Object
-    //   286	1	6	localException4	Exception
-    //   294	23	6	localObject13	Object
-    //   322	1	6	localOutOfMemoryError4	OutOfMemoryError
-    //   325	6	6	localObject14	Object
+    //   0	355	0	this	DoodleResHelper
+    //   0	355	1	paramInt1	int
+    //   0	355	2	paramInt2	int
+    //   56	111	3	localObject1	Object
+    //   170	1	3	localObject2	Object
+    //   179	6	3	localObject3	Object
+    //   192	32	3	localObject4	Object
+    //   226	55	3	localBitmap1	Bitmap
+    //   296	1	3	localOutOfMemoryError1	OutOfMemoryError
+    //   300	1	3	localException1	Exception
+    //   304	1	3	localOutOfMemoryError2	OutOfMemoryError
+    //   308	1	3	localException2	Exception
+    //   327	22	3	localIOException1	java.io.IOException
+    //   75	217	4	localObject5	Object
+    //   322	1	4	localIOException2	java.io.IOException
+    //   331	1	4	localIOException3	java.io.IOException
+    //   336	1	4	localIOException4	java.io.IOException
+    //   341	1	4	localIOException5	java.io.IOException
+    //   346	1	4	localIOException6	java.io.IOException
+    //   350	1	4	localIOException7	java.io.IOException
+    //   1	283	5	localObject6	Object
+    //   317	1	5	localException3	Exception
+    //   4	104	6	localObject7	Object
+    //   137	15	6	localObject8	Object
+    //   159	105	6	localObject9	Object
+    //   312	1	6	localOutOfMemoryError3	OutOfMemoryError
+    //   13	184	7	localBitmap2	Bitmap
+    //   10	82	8	localObject10	Object
+    //   7	81	9	localObject11	Object
+    //   27	87	10	str	String
     // Exception table:
     //   from	to	target	type
-    //   118	123	126	java/io/IOException
-    //   58	68	130	java/lang/OutOfMemoryError
-    //   154	159	161	java/io/IOException
-    //   58	68	165	java/lang/Exception
-    //   191	196	199	java/io/IOException
-    //   58	68	203	finally
-    //   105	109	233	java/io/IOException
-    //   141	146	237	java/io/IOException
-    //   178	182	242	java/io/IOException
-    //   214	218	246	java/io/IOException
-    //   223	228	250	java/io/IOException
-    //   68	78	254	finally
-    //   78	85	262	finally
-    //   85	101	262	finally
-    //   68	78	267	java/lang/Exception
-    //   78	85	278	java/lang/Exception
-    //   85	101	286	java/lang/Exception
-    //   68	78	291	java/lang/OutOfMemoryError
-    //   78	85	308	java/lang/OutOfMemoryError
-    //   85	101	322	java/lang/OutOfMemoryError
+    //   95	101	137	finally
+    //   109	125	137	finally
+    //   77	87	170	finally
+    //   66	77	192	finally
+    //   66	77	296	java/lang/OutOfMemoryError
+    //   66	77	300	java/lang/Exception
+    //   77	87	304	java/lang/OutOfMemoryError
+    //   77	87	308	java/lang/Exception
+    //   95	101	312	java/lang/OutOfMemoryError
+    //   109	125	312	java/lang/OutOfMemoryError
+    //   95	101	317	java/lang/Exception
+    //   109	125	317	java/lang/Exception
+    //   125	130	322	java/io/IOException
+    //   130	134	327	java/io/IOException
+    //   205	210	331	java/io/IOException
+    //   218	223	336	java/io/IOException
+    //   235	240	341	java/io/IOException
+    //   251	256	346	java/io/IOException
+    //   272	277	350	java/io/IOException
   }
   
   public String b(int paramInt1, int paramInt2)
   {
-    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    String str;
     if (paramInt1 == 0) {
-      localObject = ScribbleResMgr.a(1, paramInt2);
+      str = ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).GetResIconPath(1, paramInt2);
+    } else if ((paramInt1 != 2) && (paramInt1 != 1)) {
+      str = null;
+    } else {
+      str = ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).GetResIconPath(2, paramInt2);
     }
-    for (;;)
-    {
-      if (!FileUtils.a((String)localObject))
-      {
-        return null;
-        if ((paramInt1 == 2) || (paramInt1 == 1)) {
-          localObject = ScribbleResMgr.a(2, paramInt2);
-        }
-      }
-      else
-      {
-        return localObject;
-      }
-      localObject = null;
+    if (!FileUtils.fileExists(str)) {
+      return null;
     }
+    return str;
   }
   
-  public void b(int paramInt1, int paramInt2, View paramView, ScribbleResMgr.ResCallback paramResCallback)
+  public void b(int paramInt1, int paramInt2, View paramView, ResCallback paramResCallback)
   {
-    if (Looper.getMainLooper() != Looper.myLooper()) {
-      new Handler(Looper.getMainLooper()).post(new DoodleResHelper.2(this, paramInt1, paramInt2, paramView, paramResCallback));
-    }
-    QQAppInterface localQQAppInterface;
-    do
+    if (Looper.getMainLooper() != Looper.myLooper())
     {
+      new Handler(Looper.getMainLooper()).post(new DoodleResHelper.2(this, paramInt1, paramInt2, paramView, paramResCallback));
       return;
-      localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (paramInt1 == 0)
-      {
-        ScribbleResMgr.a().a(localQQAppInterface, 1, paramInt2, paramView, paramResCallback);
-        return;
-      }
-    } while ((paramInt1 != 1) && (paramInt1 != 2));
-    ScribbleResMgr.a().a(localQQAppInterface, 2, paramInt2, paramView, paramResCallback);
+    }
+    if (paramInt1 == 0)
+    {
+      ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).StartDownloadRes(1, paramInt2, paramView, paramResCallback);
+      return;
+    }
+    if ((paramInt1 == 1) || (paramInt1 == 2)) {
+      ((IScribbleResMgr)QRoute.api(IScribbleResMgr.class)).StartDownloadRes(2, paramInt2, paramView, paramResCallback);
+    }
   }
   
   public boolean b(int paramInt1, int paramInt2)
@@ -1078,85 +1050,99 @@ public class DoodleResHelper
   
   public Bitmap c(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return null;
+    if (paramInt1 > 0) {
+      if (paramInt2 <= 0) {
+        return null;
+      }
     }
     for (;;)
     {
-      Object localObject4;
-      Object localObject5;
       try
       {
         if (this.jdField_a_of_type_JavaUtilMap == null) {
           this.jdField_a_of_type_JavaUtilMap = new HashMap();
         }
-        if (this.jdField_a_of_type_JavaUtilMap.size() <= 0) {
-          break label233;
-        }
-        localObject4 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
-        if (!((Iterator)localObject4).hasNext()) {
-          break label233;
-        }
-        localObject5 = (DoodleResHelper.BitmapInfo)((Map.Entry)((Iterator)localObject4).next()).getValue();
-        if ((localObject5 == null) || (((DoodleResHelper.BitmapInfo)localObject5).jdField_a_of_type_JavaLangRefWeakReference == null) || (((DoodleResHelper.BitmapInfo)localObject5).jdField_a_of_type_JavaLangRefWeakReference.get() == null))
+        Object localObject4;
+        Bitmap localBitmap;
+        if (this.jdField_a_of_type_JavaUtilMap.size() > 0)
         {
-          ((Iterator)localObject4).remove();
-          QLog.d("DoodleResHelper", 2, "getBitmap remove a invalid item");
-          continue;
+          localObject4 = this.jdField_a_of_type_JavaUtilMap.entrySet().iterator();
+          if (((Iterator)localObject4).hasNext())
+          {
+            localObject3 = (DoodleResHelper.BitmapInfo)((Map.Entry)((Iterator)localObject4).next()).getValue();
+            if ((localObject3 != null) && (((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_JavaLangRefWeakReference != null) && (((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+            {
+              if ((!((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_Boolean) || (((DoodleResHelper.BitmapInfo)localObject3).b != paramInt2) || (((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_Int != paramInt1)) {
+                continue;
+              }
+              if (((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_JavaLangRefWeakReference == null) {
+                break label507;
+              }
+              localBitmap = (Bitmap)((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_JavaLangRefWeakReference.get();
+              if (localBitmap == null) {
+                continue;
+              }
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append("getBitmap find idle :");
+              ((StringBuilder)localObject4).append(this.jdField_a_of_type_JavaUtilMap.size());
+              QLog.d("DoodleResHelper", 2, ((StringBuilder)localObject4).toString());
+              ((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_Boolean = false;
+              return localBitmap;
+            }
+            ((Iterator)localObject4).remove();
+            QLog.d("DoodleResHelper", 2, "getBitmap remove a invalid item");
+            continue;
+          }
         }
-        if (!((DoodleResHelper.BitmapInfo)localObject5).jdField_a_of_type_Boolean) {
-          continue;
+        QLog.d("DoodleResHelper", 2, "getBitmap add new item");
+        Object localObject3 = new DoodleResHelper.BitmapInfo(this);
+        ((DoodleResHelper.BitmapInfo)localObject3).b = paramInt2;
+        ((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_Int = paramInt1;
+        try
+        {
+          localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+          ((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localBitmap);
+          ((DoodleResHelper.BitmapInfo)localObject3).jdField_a_of_type_Boolean = false;
+          localObject4 = this.jdField_a_of_type_JavaUtilMap;
+          paramInt1 = this.jdField_a_of_type_Int;
+          this.jdField_a_of_type_Int = (paramInt1 + 1);
+          ((Map)localObject4).put(Integer.valueOf(paramInt1), localObject3);
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("getBitmap create new cache:");
+          ((StringBuilder)localObject3).append(this.jdField_a_of_type_JavaUtilMap.size());
+          QLog.d("DoodleResHelper", 2, ((StringBuilder)localObject3).toString());
+          return localBitmap;
         }
+        catch (Exception localException)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("getBitmap exception:");
+            ((StringBuilder)localObject3).append(localException);
+            QLog.e("DoodleResHelper", 2, ((StringBuilder)localObject3).toString());
+          }
+        }
+        catch (OutOfMemoryError localOutOfMemoryError)
+        {
+          localOutOfMemoryError.printStackTrace();
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("getBitmap exception OOM!");
+            ((StringBuilder)localObject3).append(localOutOfMemoryError.toString());
+            QLog.e("DoodleResHelper", 2, ((StringBuilder)localObject3).toString());
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("DoodleResHelper", 2, "getBitmap error!");
+        }
+        return null;
       }
       finally {}
-      if ((((DoodleResHelper.BitmapInfo)localObject5).b == paramInt2) && (((DoodleResHelper.BitmapInfo)localObject5).jdField_a_of_type_Int == paramInt1))
-      {
-        if (((DoodleResHelper.BitmapInfo)localObject5).jdField_a_of_type_JavaLangRefWeakReference != null) {}
-        label233:
-        Object localObject3;
-        for (Object localObject2 = (Bitmap)((DoodleResHelper.BitmapInfo)localObject5).jdField_a_of_type_JavaLangRefWeakReference.get(); localObject2 != null; localObject3 = null)
-        {
-          QLog.d("DoodleResHelper", 2, "getBitmap find idle :" + this.jdField_a_of_type_JavaUtilMap.size());
-          ((DoodleResHelper.BitmapInfo)localObject5).jdField_a_of_type_Boolean = false;
-          return localObject2;
-          QLog.d("DoodleResHelper", 2, "getBitmap add new item");
-          localObject2 = new DoodleResHelper.BitmapInfo(this);
-          ((DoodleResHelper.BitmapInfo)localObject2).b = paramInt2;
-          ((DoodleResHelper.BitmapInfo)localObject2).jdField_a_of_type_Int = paramInt1;
-          try
-          {
-            localObject4 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-            ((DoodleResHelper.BitmapInfo)localObject2).jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(localObject4);
-            ((DoodleResHelper.BitmapInfo)localObject2).jdField_a_of_type_Boolean = false;
-            localObject5 = this.jdField_a_of_type_JavaUtilMap;
-            paramInt1 = this.jdField_a_of_type_Int;
-            this.jdField_a_of_type_Int = (paramInt1 + 1);
-            ((Map)localObject5).put(Integer.valueOf(paramInt1), localObject2);
-            QLog.d("DoodleResHelper", 2, "getBitmap create new cache:" + this.jdField_a_of_type_JavaUtilMap.size());
-            return localObject4;
-          }
-          catch (OutOfMemoryError localOutOfMemoryError)
-          {
-            localOutOfMemoryError.printStackTrace();
-            if (QLog.isColorLevel()) {
-              QLog.e("DoodleResHelper", 2, "getBitmap exception OOM!" + localOutOfMemoryError.toString());
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("DoodleResHelper", 2, "getBitmap error!");
-            }
-            return null;
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.e("DoodleResHelper", 2, "getBitmap exception:" + localException);
-              }
-            }
-          }
-        }
-      }
+      return null;
+      label507:
+      Object localObject2 = null;
     }
   }
   
@@ -1167,7 +1153,7 @@ public class DoodleResHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.DoodleResHelper
  * JD-Core Version:    0.7.0.1
  */

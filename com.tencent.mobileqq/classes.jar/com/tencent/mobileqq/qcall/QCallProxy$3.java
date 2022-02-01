@@ -26,19 +26,19 @@ class QCallProxy$3
             QCallProxy.a(this.this$0).addMsgQueue(this.a, j, str, null, null, 2, null);
           }
         }
+        localCursor.close();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
       QLog.i("QCallProxy", 1, "deleteAllRecordFromDB", localThrowable);
     }
-    localThrowable.close();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qcall.QCallProxy.3
  * JD-Core Version:    0.7.0.1
  */

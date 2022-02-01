@@ -32,7 +32,10 @@ public class WnsUtil
   public static BaseLibInfo getGameBaseLibInfo()
   {
     Object localObject = WnsConfig.getConfig("qqtriton", "MiniGameBaseLib", "{\"key1\":\"https://d3g.qq.com/sngapp/app/update/20200323171054_1567/lib_1.13.0.00014.zip\",\"key2\":\"\",\"key3\":\"1.4.8\",\"key4\": {\"file_length\": 5591276},\"key5\":2}");
-    QMLog.i("minigame", "MiniEng getWnsGameBaseLibInfo " + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniEng getWnsGameBaseLibInfo ");
+    localStringBuilder.append((String)localObject);
+    QMLog.i("minigame", localStringBuilder.toString());
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       try
       {
@@ -57,7 +60,10 @@ public class WnsUtil
     if (maxTopNum == -1)
     {
       maxTopNum = WnsConfig.getConfig("qqminiapp", "miniappfullscreenminedatamaxnum", 50);
-      QMLog.d("WnsUtil", "[MiniAppUserAppInfoListManager].maxtopnum = " + maxTopNum);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[MiniAppUserAppInfoListManager].maxtopnum = ");
+      localStringBuilder.append(maxTopNum);
+      QMLog.d("WnsUtil", localStringBuilder.toString());
     }
     return maxTopNum;
   }
@@ -67,27 +73,32 @@ public class WnsUtil
     if (showFullScreen == -1) {}
     try
     {
-      String str = LoginManager.getInstance().getAccount();
-      showFullScreen = AppLoaderFactory.g().getContext().getSharedPreferences(sMiniAppProxy.getAppName(), 4).getInt(str + "_" + "miniappshowfullscreen", 1);
-      QMLog.d("WnsUtil", "[DesktopDataManager].needShowMiniAppFullScreen, showFullScreen = " + showFullScreen);
-      if (showFullScreen == 1) {
-        return true;
-      }
+      localObject = LoginManager.getInstance().getAccount();
+      SharedPreferences localSharedPreferences = AppLoaderFactory.g().getContext().getSharedPreferences(sMiniAppProxy.getAppName(), 4);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("_");
+      localStringBuilder.append("miniappshowfullscreen");
+      showFullScreen = localSharedPreferences.getInt(localStringBuilder.toString(), 1);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        showFullScreen = 1;
-        QMLog.d("WnsUtil", "[DesktopDataManager]. needShowMiniAppFullScreen Exception");
-      }
+      Object localObject;
+      label76:
+      break label76;
     }
-    return false;
+    showFullScreen = 1;
+    QMLog.d("WnsUtil", "[DesktopDataManager]. needShowMiniAppFullScreen Exception");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[DesktopDataManager].needShowMiniAppFullScreen, showFullScreen = ");
+    ((StringBuilder)localObject).append(showFullScreen);
+    QMLog.d("WnsUtil", ((StringBuilder)localObject).toString());
+    return showFullScreen == 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.utils.WnsUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,20 @@ public class WatchTogetherDataReportHelper$WTFilePlayInfo
   
   public String toString()
   {
-    return "WTFilePlayInfo{mVideoKey: " + this.jdField_a_of_type_JavaLangString + ", mVideoDurationMs: " + this.jdField_a_of_type_Int + ", mVideoPlayTimeMs: " + this.b + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WTFilePlayInfo{mVideoKey: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mVideoDurationMs: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mVideoPlayTimeMs: ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.util.WatchTogetherDataReportHelper.WTFilePlayInfo
  * JD-Core Version:    0.7.0.1
  */

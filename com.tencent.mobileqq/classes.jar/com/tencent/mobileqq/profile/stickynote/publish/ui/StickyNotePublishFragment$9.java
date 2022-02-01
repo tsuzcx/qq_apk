@@ -17,22 +17,20 @@ class StickyNotePublishFragment$9
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (com.tencent.mobileqq.text.TextUtils.getQQTextCharCount(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 300))
+    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+    if ((localCharSequence != null) && (com.tencent.mobileqq.text.TextUtils.getQQTextCharCount(String.valueOf(localCharSequence), 3) > 300))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.getActivity(), 1, 2131690324, 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.getBaseActivity(), 1, 2131690245, 0).a();
       paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
     paramEditable = StickyNotePublishUtils.a(StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment));
-    if ((android.text.TextUtils.isEmpty(paramEditable)) || (android.text.TextUtils.isEmpty(paramEditable.trim()))) {
+    if ((!android.text.TextUtils.isEmpty(paramEditable)) && (!android.text.TextUtils.isEmpty(paramEditable.trim()))) {
+      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(true);
+    } else {
       this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(false);
     }
-    for (;;)
-    {
-      if (StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment) != null) {
-        StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment).post(new StickyNotePublishFragment.9.1(this));
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment.d(true);
+    if (StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment) != null) {
+      StickyNotePublishFragment.a(this.jdField_a_of_type_ComTencentMobileqqProfileStickynotePublishUiStickyNotePublishFragment).post(new StickyNotePublishFragment.9.1(this));
     }
   }
   
@@ -47,7 +45,7 @@ class StickyNotePublishFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.ui.StickyNotePublishFragment.9
  * JD-Core Version:    0.7.0.1
  */

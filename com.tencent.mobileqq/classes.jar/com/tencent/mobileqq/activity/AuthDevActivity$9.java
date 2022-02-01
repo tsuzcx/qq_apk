@@ -1,23 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnDismissListener;
 
 class AuthDevActivity$9
-  implements View.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
   AuthDevActivity$9(AuthDevActivity paramAuthDevActivity) {}
   
-  public void onClick(View paramView)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    AuthDevActivity.access$2900(this.a);
-    EventCollector.getInstance().onViewClicked(paramView);
+    if (paramDialogInterface == AuthDevActivity.access$4300(this.a)) {
+      AuthDevActivity.access$4302(this.a, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevActivity.9
  * JD-Core Version:    0.7.0.1
  */

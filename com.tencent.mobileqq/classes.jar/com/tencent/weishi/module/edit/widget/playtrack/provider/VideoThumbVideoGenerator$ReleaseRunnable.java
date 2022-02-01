@@ -9,13 +9,16 @@ class VideoThumbVideoGenerator$ReleaseRunnable
   
   public void run()
   {
-    Logger.i("VideoThumbVideoGenerator", "release success:" + Thread.currentThread().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("release success:");
+    localStringBuilder.append(Thread.currentThread().getName());
+    Logger.i("VideoThumbVideoGenerator", localStringBuilder.toString());
     VideoThumbVideoGenerator.access$100(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbVideoGenerator.ReleaseRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,11 @@ public abstract interface IMediaPlayerMgr
   
   public abstract long getCurrentPositionMs();
   
+  public abstract long getDecodeFrameCount();
+  
   public abstract long getDurationMs();
+  
+  public abstract long getRenderFrameCount();
   
   public abstract int getVideoHeight();
   
@@ -51,6 +55,8 @@ public abstract interface IMediaPlayerMgr
   
   public abstract void setOnSeekCompleteListener(IMediaPlayerMgr.OnSeekCompleteListener paramOnSeekCompleteListener);
   
+  public abstract void setOnStopAsyncCompleteListener(IMediaPlayerMgr.OnStopAsyncCompleteListener paramOnStopAsyncCompleteListener);
+  
   public abstract void setOnSurfaceChangeListener(IMediaPlayerMgr.OnSurfaceChangeListener paramOnSurfaceChangeListener);
   
   public abstract void setOnVideoFrameOutListener(IMediaPlayerMgr.OnVideoFrameOutListener paramOnVideoFrameOutListener);
@@ -65,11 +71,13 @@ public abstract interface IMediaPlayerMgr
   
   public abstract void startPlay();
   
+  public abstract void stopAsyncPlay();
+  
   public abstract void stopPlay();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.IMediaPlayerMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -31,14 +31,15 @@ public final class stWeishiReportReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.report_list != null) {
-      paramJceOutputStream.write(this.report_list, 0);
+    ArrayList localArrayList = this.report_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stWeishiReportReq
  * JD-Core Version:    0.7.0.1
  */

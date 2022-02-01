@@ -58,30 +58,36 @@ public final class PhotoFrameView
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iContentWidth, 0);
-    if (this.stBgImagePhotoOnly != null) {
-      paramJceOutputStream.write(this.stBgImagePhotoOnly, 1);
+    MaterialFile localMaterialFile = this.stBgImagePhotoOnly;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 1);
     }
-    if (this.stBgImageText != null) {
-      paramJceOutputStream.write(this.stBgImageText, 2);
+    localMaterialFile = this.stBgImageText;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 2);
     }
-    if (this.stBgImagePhoto != null) {
-      paramJceOutputStream.write(this.stBgImagePhoto, 3);
+    localMaterialFile = this.stBgImagePhoto;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 3);
     }
-    if (this.stH5BgImagePhotoOnly != null) {
-      paramJceOutputStream.write(this.stH5BgImagePhotoOnly, 4);
+    localMaterialFile = this.stH5BgImagePhotoOnly;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 4);
     }
-    if (this.stH5BgImageText != null) {
-      paramJceOutputStream.write(this.stH5BgImageText, 5);
+    localMaterialFile = this.stH5BgImageText;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 5);
     }
-    if (this.stH5BgImagePhoto != null) {
-      paramJceOutputStream.write(this.stH5BgImagePhoto, 6);
+    localMaterialFile = this.stH5BgImagePhoto;
+    if (localMaterialFile != null) {
+      paramJceOutputStream.write(localMaterialFile, 6);
     }
     paramJceOutputStream.write(this.iTextColor, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.PhotoFrameView
  * JD-Core Version:    0.7.0.1
  */

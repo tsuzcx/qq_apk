@@ -9,10 +9,12 @@ public class ProgressControler
   
   public ProgressControler(SplitedProgressBar paramSplitedProgressBar)
   {
-    if (paramSplitedProgressBar == null) {
-      throw new InvalidParameterException("ProgressControler: progressBar is null");
+    if (paramSplitedProgressBar != null)
+    {
+      this.a = paramSplitedProgressBar;
+      return;
     }
-    this.a = paramSplitedProgressBar;
+    throw new InvalidParameterException("ProgressControler: progressBar is null");
   }
   
   public void a(int paramInt)
@@ -33,12 +35,13 @@ public class ProgressControler
   public void a(boolean paramBoolean)
   {
     SplitedProgressBar localSplitedProgressBar = this.a;
-    if (paramBoolean) {}
-    for (int i = 8;; i = 0)
-    {
-      localSplitedProgressBar.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 8;
+    } else {
+      i = 0;
     }
+    localSplitedProgressBar.setVisibility(i);
   }
   
   public void b(int paramInt)
@@ -51,7 +54,7 @@ public class ProgressControler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.ProgressControler
  * JD-Core Version:    0.7.0.1
  */

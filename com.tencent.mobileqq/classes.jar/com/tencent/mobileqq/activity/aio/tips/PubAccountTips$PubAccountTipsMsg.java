@@ -44,36 +44,18 @@ public class PubAccountTips$PubAccountTipsMsg
   
   boolean a()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_Long > 0L)
-    {
-      bool1 = bool2;
-      if (this.jdField_c_of_type_Int >= 0) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (this.jdField_a_of_type_Long > 0L) && (this.jdField_c_of_type_Int >= 0);
   }
   
   public boolean b()
   {
-    boolean bool2 = true;
     long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-    boolean bool1 = bool2;
-    if (l >= this.jdField_b_of_type_Long)
-    {
-      bool1 = bool2;
-      if (l <= this.jdField_c_of_type_Long) {
-        bool1 = false;
-      }
-    }
-    return bool1;
+    return (l < this.jdField_b_of_type_Long) || (l > this.jdField_c_of_type_Long);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.PubAccountTips.PubAccountTipsMsg
  * JD-Core Version:    0.7.0.1
  */

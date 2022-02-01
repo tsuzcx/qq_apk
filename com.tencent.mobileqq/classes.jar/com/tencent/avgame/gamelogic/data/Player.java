@@ -51,7 +51,14 @@ public class Player
   
   public boolean isSame(Player paramPlayer)
   {
-    return (paramPlayer != null) && (paramPlayer.uin != null) && (paramPlayer.uin.equalsIgnoreCase(this.uin));
+    if (paramPlayer != null)
+    {
+      paramPlayer = paramPlayer.uin;
+      if ((paramPlayer != null) && (paramPlayer.equalsIgnoreCase(this.uin))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public final void parseFrom(AvGameCommon.RoomUserInfo paramRoomUserInfo)
@@ -78,17 +85,32 @@ public class Player
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin").append("=").append(this.uin).append("|");
-    localStringBuilder.append("role").append("=").append(this.role).append("|");
-    localStringBuilder.append("nick").append("=").append(this.nick).append("|");
-    localStringBuilder.append("status").append("=").append(this.status).append("|");
-    localStringBuilder.append("enterTime").append("=").append(this.enterTime).append("|");
+    localStringBuilder.append("uin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append("|");
+    localStringBuilder.append("role");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.role);
+    localStringBuilder.append("|");
+    localStringBuilder.append("nick");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.nick);
+    localStringBuilder.append("|");
+    localStringBuilder.append("status");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.status);
+    localStringBuilder.append("|");
+    localStringBuilder.append("enterTime");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.enterTime);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.Player
  * JD-Core Version:    0.7.0.1
  */

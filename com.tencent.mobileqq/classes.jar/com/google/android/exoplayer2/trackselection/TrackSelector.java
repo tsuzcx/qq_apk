@@ -14,8 +14,9 @@ public abstract class TrackSelector
   
   protected final void invalidate()
   {
-    if (this.listener != null) {
-      this.listener.onTrackSelectionsInvalidated();
+    TrackSelector.InvalidationListener localInvalidationListener = this.listener;
+    if (localInvalidationListener != null) {
+      localInvalidationListener.onTrackSelectionsInvalidated();
     }
   }
   
@@ -25,7 +26,7 @@ public abstract class TrackSelector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.TrackSelector
  * JD-Core Version:    0.7.0.1
  */

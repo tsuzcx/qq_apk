@@ -17,26 +17,29 @@ public class WatchFloatingWindowController$WatchFloatingWindowMediaFocusChangeLi
   
   private void a(boolean paramBoolean)
   {
-    if ((this.a == null) || (this.a.get() == null)) {
-      return;
-    }
-    IVideoOuterStatusListener localIVideoOuterStatusListener = (IVideoOuterStatusListener)this.a.get();
-    if (paramBoolean)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      localIVideoOuterStatusListener.onVideoStop();
-      return;
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
+      localObject = (IVideoOuterStatusListener)this.a.get();
+      if (paramBoolean)
+      {
+        ((IVideoOuterStatusListener)localObject).onVideoStop();
+        return;
+      }
+      ((IVideoOuterStatusListener)localObject).onVideoStart(-1);
     }
-    localIVideoOuterStatusListener.onVideoStart(-1);
   }
   
   public void a(int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt != -2) && (paramInt != -1))
     {
-    case 0: 
-    default: 
-      return;
-    case 1: 
+      if (paramInt != 1) {
+        return;
+      }
       QLog.i("WatchFloatingWindowController", 1, "onFocusChange: MEDIAFOCUS_GAIN");
       WatchFloatingWindowController.a().a(false);
       a(false);
@@ -54,7 +57,7 @@ public class WatchFloatingWindowController$WatchFloatingWindowMediaFocusChangeLi
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchFloatingWindowController.WatchFloatingWindowMediaFocusChangeListener
  * JD-Core Version:    0.7.0.1
  */

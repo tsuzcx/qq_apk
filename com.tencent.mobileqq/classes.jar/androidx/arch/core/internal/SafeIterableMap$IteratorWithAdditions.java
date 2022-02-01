@@ -4,7 +4,7 @@ import androidx.annotation.NonNull;
 import java.util.Iterator;
 import java.util.Map.Entry;
 
-public class SafeIterableMap$IteratorWithAdditions
+class SafeIterableMap$IteratorWithAdditions
   implements SafeIterableMap.SupportRemove<K, V>, Iterator<Map.Entry<K, V>>
 {
   private boolean mBeforeStart = true;
@@ -15,14 +15,10 @@ public class SafeIterableMap$IteratorWithAdditions
   public boolean hasNext()
   {
     if (this.mBeforeStart) {
-      if (this.this$0.mStart == null) {}
+      return this.this$0.mStart != null;
     }
-    while ((this.mCurrent != null) && (this.mCurrent.mNext != null))
-    {
-      return true;
-      return false;
-    }
-    return false;
+    SafeIterableMap.Entry localEntry = this.mCurrent;
+    return (localEntry != null) && (localEntry.mNext != null);
   }
   
   public Map.Entry<K, V> next()
@@ -31,36 +27,39 @@ public class SafeIterableMap$IteratorWithAdditions
     {
       this.mBeforeStart = false;
       this.mCurrent = this.this$0.mStart;
-      return this.mCurrent;
     }
-    if (this.mCurrent != null) {}
-    for (SafeIterableMap.Entry localEntry = this.mCurrent.mNext;; localEntry = null)
+    else
     {
+      SafeIterableMap.Entry localEntry = this.mCurrent;
+      if (localEntry != null) {
+        localEntry = localEntry.mNext;
+      } else {
+        localEntry = null;
+      }
       this.mCurrent = localEntry;
-      break;
     }
+    return this.mCurrent;
   }
   
   public void supportRemove(@NonNull SafeIterableMap.Entry<K, V> paramEntry)
   {
-    if (paramEntry == this.mCurrent)
+    SafeIterableMap.Entry localEntry = this.mCurrent;
+    if (paramEntry == localEntry)
     {
-      this.mCurrent = this.mCurrent.mPrevious;
-      if (this.mCurrent != null) {
-        break label34;
+      this.mCurrent = localEntry.mPrevious;
+      boolean bool;
+      if (this.mCurrent == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label34:
-    for (boolean bool = true;; bool = false)
-    {
       this.mBeforeStart = bool;
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.arch.core.internal.SafeIterableMap.IteratorWithAdditions
  * JD-Core Version:    0.7.0.1
  */

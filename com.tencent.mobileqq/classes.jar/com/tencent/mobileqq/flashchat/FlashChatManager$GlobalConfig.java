@@ -71,13 +71,16 @@ public class FlashChatManager$GlobalConfig
     }
     catch (Exception paramString)
     {
-      QLog.e("FlashChat", 1, "handleFlashChatConfig failed" + paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleFlashChatConfig failed");
+      localStringBuilder.append(paramString);
+      QLog.e("FlashChat", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatManager.GlobalConfig
  * JD-Core Version:    0.7.0.1
  */

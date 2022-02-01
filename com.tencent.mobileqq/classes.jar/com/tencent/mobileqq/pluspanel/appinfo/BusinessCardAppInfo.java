@@ -23,7 +23,7 @@ public class BusinessCardAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839253;
+    return 2130839107;
   }
   
   public int getAppID()
@@ -52,7 +52,7 @@ public class BusinessCardAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131693608);
+    return BaseApplicationImpl.getContext().getString(2131693561);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
@@ -73,7 +73,7 @@ public class BusinessCardAppInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.BusinessCardAppInfo
  * JD-Core Version:    0.7.0.1
  */

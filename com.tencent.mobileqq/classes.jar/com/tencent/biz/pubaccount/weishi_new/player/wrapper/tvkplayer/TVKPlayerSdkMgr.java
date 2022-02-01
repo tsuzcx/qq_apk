@@ -37,28 +37,31 @@ public class TVKPlayerSdkMgr
   
   public void onInstallProgress(float paramFloat)
   {
-    if (this.a != null) {
-      this.a.a(paramFloat);
+    IWSPlayerSdkMgr.InstallListener localInstallListener = this.a;
+    if (localInstallListener != null) {
+      localInstallListener.a(paramFloat);
     }
   }
   
   public void onInstalledFailed(int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(paramInt);
+    IWSPlayerSdkMgr.InstallListener localInstallListener = this.a;
+    if (localInstallListener != null) {
+      localInstallListener.a(paramInt);
     }
   }
   
   public void onInstalledSuccessed()
   {
-    if (this.a != null) {
-      this.a.a();
+    IWSPlayerSdkMgr.InstallListener localInstallListener = this.a;
+    if (localInstallListener != null) {
+      localInstallListener.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.tvkplayer.TVKPlayerSdkMgr
  * JD-Core Version:    0.7.0.1
  */

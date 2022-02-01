@@ -15,6 +15,11 @@ public class ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb
   
   public ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb(QBaseActivity paramQBaseActivity)
   {
+    if (paramQBaseActivity == null)
+    {
+      QLog.e("ThirdPartyLoginUtilImpl", 1, "LoginViewOpenSDKCb constructor params wrong");
+      return;
+    }
     this.a = new WeakReference(paramQBaseActivity);
   }
   
@@ -40,7 +45,7 @@ public class ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb
       QLog.e("ThirdPartyLoginUtilImpl", 1, "onLoginFailed error: activity == null");
       return;
     }
-    QQToast.a(localQBaseActivity, 2131699597, 0).a();
+    QQToast.a(localQBaseActivity, 2131699704, 0).a();
   }
   
   public void a(String paramString)
@@ -61,7 +66,7 @@ public class ThirdPartyLoginBlockUtilImpl$LoginViewOpenSDKCb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.decoupleim.ThirdPartyLoginBlockUtilImpl.LoginViewOpenSDKCb
  * JD-Core Version:    0.7.0.1
  */

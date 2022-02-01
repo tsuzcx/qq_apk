@@ -1,8 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center_horizontal" android:focusableInTouchMode="true" android:layout_width="227.0dip" android:layout_height="128.0dip"
+<RelativeLayout android:gravity="center" android:background="@drawable/bx4" android:layout_width="43.0dip" android:layout_height="70.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/l_i" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" android:layout_centerInParent="true" android:contentDescription="@string/cli" />
-    <com.tencent.mobileqq.profile.PersonalityLabel.CornerImageView android:id="@id/lcb" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/h6q" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    <View android:id="@id/lal" android:background="@drawable/e_k" android:layout_width="fill_parent" android:layout_height="40.0dip" android:layout_alignParentBottom="true" />
-    <include android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginBottom="6.0dip" android:layout_alignParentBottom="true" layout="@layout/cip" />
+    <ImageView android:id="@id/dwf" android:layout_width="18.0dip" android:layout_height="8.0dip" android:src="@drawable/gnw" />
+    <TextView android:textSize="10.0sp" android:textColor="@color/al3" android:gravity="center" android:id="@id/k9z" android:background="@drawable/bw4" android:padding="1.0dip" android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="16.0dip" android:text="99+" />
 </RelativeLayout>

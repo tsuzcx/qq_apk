@@ -19,44 +19,54 @@ public class MoveToAction
   
   protected void a(int paramInt, float paramFloat)
   {
-    this.a = (this.d + (this.f - this.d) * paramFloat);
-    this.b = (this.e + (this.g - this.e) * paramFloat);
-    if (this.f - this.d > 0.0F)
+    float f1 = this.d;
+    float f2 = this.f;
+    this.a = ((f2 - f1) * paramFloat + f1);
+    float f3 = this.e;
+    this.b = (f3 + (this.g - f3) * paramFloat);
+    if (f2 - f1 > 0.0F)
     {
-      if (this.a >= this.f) {
-        this.a = this.f;
-      }
-      if (this.g - this.e <= 0.0F) {
-        break label162;
-      }
-      if (this.b >= this.g) {
-        this.b = this.g;
+      f1 = this.a;
+      f2 = this.f;
+      if (f1 >= f2) {
+        this.a = f2;
       }
     }
-    for (;;)
+    else
     {
-      if (paramInt >= this.c)
-      {
-        this.a = this.f;
-        this.b = this.g;
+      f1 = this.a;
+      f2 = this.f;
+      if (f1 <= f2) {
+        this.a = f2;
       }
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.a > this.f) {
-        break;
+    }
+    if (this.g - this.e > 0.0F)
+    {
+      f1 = this.b;
+      f2 = this.g;
+      if (f1 >= f2) {
+        this.b = f2;
       }
+    }
+    else
+    {
+      f1 = this.b;
+      f2 = this.g;
+      if (f1 <= f2) {
+        this.b = f2;
+      }
+    }
+    if (paramInt >= this.c)
+    {
       this.a = this.f;
-      break;
-      label162:
-      if (this.b <= this.g) {
-        this.b = this.g;
-      }
+      this.b = this.g;
     }
+    super.a(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.MoveToAction
  * JD-Core Version:    0.7.0.1
  */

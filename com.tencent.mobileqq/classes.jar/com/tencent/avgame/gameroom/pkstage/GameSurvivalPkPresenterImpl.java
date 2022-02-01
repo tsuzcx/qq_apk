@@ -1,9 +1,9 @@
 package com.tencent.avgame.gameroom.pkstage;
 
 import android.graphics.Color;
+import com.tencent.avgame.data.FontStyleConfig;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gameroom.IGameRoomPresenter;
-import com.tencent.avgame.gameroom.stage.util.FontStyleConfig;
 
 public class GameSurvivalPkPresenterImpl
   implements ISurvivalStagePresenter
@@ -29,11 +29,24 @@ public class GameSurvivalPkPresenterImpl
   
   private boolean a(EngineData paramEngineData)
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData == null) || (paramEngineData == null)) {}
-    while ((this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData == null) || (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.o() != paramEngineData.o())) {
-      return false;
+    EngineData localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localEngineData != null)
+    {
+      if (paramEngineData == null) {
+        return false;
+      }
+      bool1 = bool2;
+      if (localEngineData != null)
+      {
+        bool1 = bool2;
+        if (localEngineData.o() == paramEngineData.o()) {
+          bool1 = true;
+        }
+      }
     }
-    return true;
+    return bool1;
   }
   
   private void b()
@@ -53,29 +66,26 @@ public class GameSurvivalPkPresenterImpl
   
   private void d(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(paramEngineData.g(), paramEngineData.h());
+    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(paramEngineData.h());
   }
   
   private void e(EngineData paramEngineData)
   {
-    int i;
-    if (paramEngineData.a != null) {
-      i = 0;
-    }
-    try
+    if (paramEngineData.a != null)
     {
-      int j = Color.parseColor(paramEngineData.a.j);
-      i = j;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      int i = 0;
+      try
+      {
+        int j = Color.parseColor(paramEngineData.a.j);
+        i = j;
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
+      this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(i);
+      this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(paramEngineData.a.k, paramEngineData.a.l, paramEngineData.a.m, paramEngineData.a.n, paramEngineData.a.o);
     }
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(i);
-    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(paramEngineData.a.k, paramEngineData.a.l, paramEngineData.a.m, paramEngineData.a.n, paramEngineData.a.o);
   }
   
   public void a(EngineData paramEngineData)
@@ -85,13 +95,64 @@ public class GameSurvivalPkPresenterImpl
     }
     int i = paramEngineData.o();
     this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(paramEngineData);
+    EngineData localEngineData;
     switch (i)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData = paramEngineData.a();
-      return;
+    case 3: 
+    default: 
+      break;
+    case 10: 
+      if (!a(paramEngineData)) {
+        this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(true);
+      }
+      break;
+    case 8: 
+    case 9: 
+      if (!a(paramEngineData)) {
+        this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.e();
+      }
+      break;
+    case 6: 
+    case 7: 
+      if (!a(paramEngineData)) {
+        b(paramEngineData);
+      }
+      break;
+    case 5: 
+      if (!a(paramEngineData)) {
+        this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a();
+      }
+      break;
+    case 4: 
+      if (!a(paramEngineData))
+      {
+        localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+        if ((localEngineData != null) && (localEngineData.o() == 9)) {
+          this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.e();
+        } else {
+          this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(false);
+        }
+      }
+      break;
+    case 2: 
+      if (!a(paramEngineData)) {
+        a();
+      }
+      break;
+    case 1: 
+      if (a(paramEngineData))
+      {
+        a(paramEngineData, true);
+      }
+      else
+      {
+        localEngineData = this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData;
+        if (((localEngineData != null) && (localEngineData.o() != 0)) || (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData == null) || (paramEngineData == null)) {
+          c(paramEngineData);
+        }
+      }
+      break;
+    case 0: 
       if (a(paramEngineData))
       {
         a(paramEngineData, false);
@@ -108,52 +169,10 @@ public class GameSurvivalPkPresenterImpl
         }
         a(paramEngineData, false);
         b(paramEngineData);
-        continue;
-        if (a(paramEngineData))
-        {
-          a(paramEngineData, true);
-        }
-        else
-        {
-          c(paramEngineData);
-          continue;
-          if (!a(paramEngineData))
-          {
-            a();
-            continue;
-            if (!a(paramEngineData))
-            {
-              this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.e();
-              continue;
-              if (!a(paramEngineData)) {
-                if ((this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData != null) && (this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData.o() == 9))
-                {
-                  this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.e();
-                }
-                else
-                {
-                  this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(false);
-                  continue;
-                  if (!a(paramEngineData))
-                  {
-                    this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a(true);
-                    continue;
-                    if (!a(paramEngineData))
-                    {
-                      this.jdField_a_of_type_ComTencentAvgameGameroomPkstageISurvivalStageView.a();
-                      continue;
-                      if (!a(paramEngineData)) {
-                        b(paramEngineData);
-                      }
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
       }
+      break;
     }
+    this.jdField_a_of_type_ComTencentAvgameGamelogicDataEngineData = paramEngineData.a();
   }
   
   public void a(IGameRoomPresenter paramIGameRoomPresenter)
@@ -163,7 +182,7 @@ public class GameSurvivalPkPresenterImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.pkstage.GameSurvivalPkPresenterImpl
  * JD-Core Version:    0.7.0.1
  */

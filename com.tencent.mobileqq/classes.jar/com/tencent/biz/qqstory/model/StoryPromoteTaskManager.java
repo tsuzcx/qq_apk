@@ -44,21 +44,23 @@ public class StoryPromoteTaskManager
   
   static <T> String a(T[] paramArrayOfT)
   {
-    if ((paramArrayOfT == null) || (paramArrayOfT.length == 0)) {
-      return "()";
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append('(');
-    int j = paramArrayOfT.length - 1;
-    int i = 0;
-    while (i < j)
+    if ((paramArrayOfT != null) && (paramArrayOfT.length != 0))
     {
-      localStringBuilder.append(paramArrayOfT[i]);
-      localStringBuilder.append(", ");
-      i += 1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append('(');
+      int j = paramArrayOfT.length - 1;
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(paramArrayOfT[i]);
+        localStringBuilder.append(", ");
+        i += 1;
+      }
+      localStringBuilder.append(paramArrayOfT[j]);
+      localStringBuilder.append(')');
+      return localStringBuilder.toString();
     }
-    localStringBuilder.append(paramArrayOfT[j]);
-    return ')';
+    return "()";
   }
   
   public List<PromoteTaskEntry> a(String paramString, int paramInt)
@@ -95,56 +97,54 @@ public class StoryPromoteTaskManager
   
   public void a()
   {
-    int j = 0;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = QQStoryContext.a().a().createEntityManager();
     long l = NetConnInfoCenter.getServerTime();
-    Object localObject2 = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     this.jdField_b_of_type_JavaLangString = ((String)((StoryConfigManager)SuperManager.a(10)).b("key_story_player_promote_url", this.jdField_b_of_type_JavaLangString));
     SLog.a("StoryPromoteTaskManager", "onInit() mUrl = %s", this.jdField_b_of_type_JavaLangString);
-    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PromoteTaskEntry.class);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PromoteTaskEntry.class);
+    int j = 0;
+    Object localObject1 = localObject2;
     int i;
-    if (localObject1 != null)
+    if (localObject2 != null)
     {
       i = 0;
-      while (i < ((List)localObject1).size())
+      while (i < ((List)localObject2).size())
       {
-        PromoteTaskEntry localPromoteTaskEntry = (PromoteTaskEntry)((List)localObject1).get(i);
-        if (l > localPromoteTaskEntry.expireTime) {
-          ((List)localObject2).add(Long.valueOf(localPromoteTaskEntry.taskId));
+        localObject1 = (PromoteTaskEntry)((List)localObject2).get(i);
+        if (l > ((PromoteTaskEntry)localObject1).expireTime) {
+          localArrayList.add(Long.valueOf(((PromoteTaskEntry)localObject1).taskId));
         }
         i += 1;
       }
-      a((List)localObject1, "onInit() before delete expired local entries");
-      if (!((List)localObject2).isEmpty())
+      a((List)localObject2, "onInit() before delete expired local entries");
+      localObject1 = localObject2;
+      if (!localArrayList.isEmpty())
       {
-        a((List)localObject2);
+        a(localArrayList);
         localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(PromoteTaskEntry.class);
       }
     }
-    for (;;)
+    a((List)localObject1, "onInit() local entries");
+    if (localObject1 != null)
     {
-      a((List)localObject1, "onInit() local entries");
-      if (localObject1 != null)
+      i = j;
+      while (i < ((List)localObject1).size())
       {
-        i = j;
-        while (i < ((List)localObject1).size())
-        {
-          localObject2 = (PromoteTaskEntry)((List)localObject1).get(i);
-          this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((PromoteTaskEntry)localObject2).taskId), localObject2);
-          i += 1;
-        }
+        localObject2 = (PromoteTaskEntry)((List)localObject1).get(i);
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((PromoteTaskEntry)localObject2).taskId), localObject2);
+        i += 1;
       }
-      if ((a()) && (localObject1 != null))
+    }
+    if ((a()) && (localObject1 != null))
+    {
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (PromoteTaskEntry)((Iterator)localObject1).next();
-          this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((PromoteTaskEntry)localObject2).taskId), Long.valueOf(((PromoteTaskEntry)localObject2).promoteCount));
-        }
-        SLog.a("StoryPromoteTaskManager", "onInit() update memory count from DB; %s", this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+        localObject2 = (PromoteTaskEntry)((Iterator)localObject1).next();
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(((PromoteTaskEntry)localObject2).taskId), Long.valueOf(((PromoteTaskEntry)localObject2).promoteCount));
       }
-      return;
+      SLog.a("StoryPromoteTaskManager", "onInit() update memory count from DB; %s", this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
     }
   }
   
@@ -179,7 +179,11 @@ public class StoryPromoteTaskManager
     }
     SLog.a("StoryPromoteTaskManager", "ensureCountValidate() date is %s new date, so mTaskIdCounts should be empty, taskIdCounts=%s", str, this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
     ((StoryConfigManager)localObject).b("key_story_promote_task_date", str);
-    localObject = "update " + PromoteTaskEntry.class.getSimpleName() + " set promoteCount = 0";
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("update ");
+    ((StringBuilder)localObject).append(PromoteTaskEntry.class.getSimpleName());
+    ((StringBuilder)localObject).append(" set promoteCount = 0");
+    localObject = ((StringBuilder)localObject).toString();
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL((String)localObject);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
     SLog.a("StoryPromoteTaskManager", "ensureCountValidate() exec sql: taskEntry updated sql=%s", localObject);
@@ -195,29 +199,26 @@ public class StoryPromoteTaskManager
   
   public boolean a(PromoteTaskEntry paramPromoteTaskEntry)
   {
-    boolean bool = true;
-    if (paramPromoteTaskEntry.getStatus() == 1000)
+    int i = paramPromoteTaskEntry.getStatus();
+    boolean bool = false;
+    if (i == 1000)
     {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramPromoteTaskEntry);
-      if (paramPromoteTaskEntry.getStatus() != 1001) {}
+      if (paramPromoteTaskEntry.getStatus() == 1001) {
+        bool = true;
+      }
     }
-    for (;;)
+    else if ((paramPromoteTaskEntry.getStatus() != 1001) && (paramPromoteTaskEntry.getStatus() != 1002))
     {
-      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramPromoteTaskEntry.taskId), paramPromoteTaskEntry);
-      SLog.a("StoryPromoteTaskManager", "updateEntry %s, return %b", paramPromoteTaskEntry, Boolean.valueOf(bool));
-      return bool;
-      bool = false;
-      continue;
-      if ((paramPromoteTaskEntry.getStatus() == 1001) || (paramPromoteTaskEntry.getStatus() == 1002))
-      {
-        bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramPromoteTaskEntry);
-      }
-      else
-      {
-        SLog.e("StoryPromoteTaskManager", "updateEntry error: entry status unknown: %d", new Object[] { Integer.valueOf(paramPromoteTaskEntry.getStatus()) });
-        bool = false;
-      }
+      SLog.e("StoryPromoteTaskManager", "updateEntry error: entry status unknown: %d", new Object[] { Integer.valueOf(paramPromoteTaskEntry.getStatus()) });
     }
+    else
+    {
+      bool = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramPromoteTaskEntry);
+    }
+    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(Long.valueOf(paramPromoteTaskEntry.taskId), paramPromoteTaskEntry);
+    SLog.a("StoryPromoteTaskManager", "updateEntry %s, return %b", paramPromoteTaskEntry, Boolean.valueOf(bool));
+    return bool;
   }
   
   public boolean a(qqstory_service.RspGetPromoteTaskList paramRspGetPromoteTaskList)
@@ -225,20 +226,20 @@ public class StoryPromoteTaskManager
     ArrayList localArrayList = new ArrayList(this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.keySet());
     paramRspGetPromoteTaskList = paramRspGetPromoteTaskList.promote_tasks.get();
     int i = 0;
-    if (i < paramRspGetPromoteTaskList.size())
+    while (i < paramRspGetPromoteTaskList.size())
     {
       Object localObject = PromoteTaskItem.a((qqstory_service.PromoteTask)paramRspGetPromoteTaskList.get(i));
       Long localLong = (Long)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(((PromoteTaskItem)localObject).jdField_a_of_type_Long));
-      if (localLong != null) {}
-      for (((PromoteTaskItem)localObject).e = localLong.longValue();; ((PromoteTaskItem)localObject).e = 0L)
-      {
-        localArrayList.remove(Long.valueOf(((PromoteTaskItem)localObject).jdField_a_of_type_Long));
-        localObject = ((PromoteTaskItem)localObject).a();
-        a((PromoteTaskEntry)localObject);
-        SLog.a("StoryPromoteTaskManager", "overwriteEntries() [%d] taskEntry updated %s", Integer.valueOf(i), localObject);
-        i += 1;
-        break;
+      if (localLong != null) {
+        ((PromoteTaskItem)localObject).e = localLong.longValue();
+      } else {
+        ((PromoteTaskItem)localObject).e = 0L;
       }
+      localArrayList.remove(Long.valueOf(((PromoteTaskItem)localObject).jdField_a_of_type_Long));
+      localObject = ((PromoteTaskItem)localObject).a();
+      a((PromoteTaskEntry)localObject);
+      SLog.a("StoryPromoteTaskManager", "overwriteEntries() [%d] taskEntry updated %s", Integer.valueOf(i), localObject);
+      i += 1;
     }
     if (!localArrayList.isEmpty())
     {
@@ -263,7 +264,12 @@ public class StoryPromoteTaskManager
       localObject = new Long[paramList.size()];
       paramList.toArray((Object[])localObject);
       paramList = a((Object[])localObject);
-      paramList = "delete from " + PromoteTaskEntry.class.getSimpleName() + " where taskId in " + paramList;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("delete from ");
+      ((StringBuilder)localObject).append(PromoteTaskEntry.class.getSimpleName());
+      ((StringBuilder)localObject).append(" where taskId in ");
+      ((StringBuilder)localObject).append(paramList);
+      paramList = ((StringBuilder)localObject).toString();
       SLog.a("StoryPromoteTaskManager", "deleteListOfTasks() exec sql: taskEntry updated %s", paramList);
       return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL(paramList);
     }
@@ -317,7 +323,7 @@ public class StoryPromoteTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryPromoteTaskManager
  * JD-Core Version:    0.7.0.1
  */

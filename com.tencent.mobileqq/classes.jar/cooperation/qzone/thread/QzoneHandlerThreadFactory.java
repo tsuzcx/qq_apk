@@ -45,17 +45,16 @@ public class QzoneHandlerThreadFactory
         mHandlerThreadMap.put(paramString, localQzoneBaseThread);
         paramString = localQzoneBaseThread;
       }
-      for (;;)
+      else
       {
-        return paramString;
         paramString = localQzoneBaseThread;
         try
         {
-          if (localQzoneBaseThread.isAlive()) {
-            continue;
+          if (!localQzoneBaseThread.isAlive())
+          {
+            localQzoneBaseThread.start();
+            paramString = localQzoneBaseThread;
           }
-          localQzoneBaseThread.start();
-          paramString = localQzoneBaseThread;
         }
         catch (IllegalThreadStateException paramString)
         {
@@ -63,6 +62,7 @@ public class QzoneHandlerThreadFactory
           paramString = localQzoneBaseThread;
         }
       }
+      return paramString;
     }
   }
   
@@ -85,32 +85,33 @@ public class QzoneHandlerThreadFactory
   
   private static int getPriority(String paramString)
   {
-    if ("BackGround_HandlerThread".equalsIgnoreCase(paramString)) {}
-    do
-    {
-      do
-      {
-        return 10;
-        if ("RealTime_HandlerThread".equalsIgnoreCase(paramString)) {
-          return -1;
-        }
-        if ("Video_HandlerThread".equalsIgnoreCase(paramString)) {
-          return 0;
-        }
-      } while ("Report_HandlerThread".equalsIgnoreCase(paramString));
-      if ("Preload_HandlerThread".equalsIgnoreCase(paramString)) {
-        return 1;
-      }
-      if ("QZone_LocalPhotoThread".equalsIgnoreCase(paramString)) {
-        return 0;
-      }
-    } while ("QZone_IpcProxyThread".equalsIgnoreCase(paramString));
+    if ("BackGround_HandlerThread".equalsIgnoreCase(paramString)) {
+      return 10;
+    }
+    if ("RealTime_HandlerThread".equalsIgnoreCase(paramString)) {
+      return -1;
+    }
+    if ("Video_HandlerThread".equalsIgnoreCase(paramString)) {
+      return 0;
+    }
+    if ("Report_HandlerThread".equalsIgnoreCase(paramString)) {
+      return 10;
+    }
+    if ("Preload_HandlerThread".equalsIgnoreCase(paramString)) {
+      return 1;
+    }
+    if ("QZone_LocalPhotoThread".equalsIgnoreCase(paramString)) {
+      return 0;
+    }
+    if ("QZone_IpcProxyThread".equalsIgnoreCase(paramString)) {
+      return 10;
+    }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.thread.QzoneHandlerThreadFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -16,47 +16,50 @@ class ChatActivityFacade$QZoneNewestAioStoryFeedObserver
   public SessionInfo a;
   public WeakReference<QQAppInterface> a;
   
-  public void onGetNewestStoryFeed(boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed appRef==null");
       }
-    }
-    QQAppInterface localQQAppInterface;
-    do
-    {
       return;
-      localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if ((localQQAppInterface != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed app == null || sessionInfo == nul");
-    return;
-    if (paramBoolean) {}
-    try
+    }
+    localObject = (QQAppInterface)((WeakReference)localObject).get();
+    if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null))
     {
-      paramBundle = (FromServiceMsg)paramBundle.getParcelable("KEY_FOR_AIO_STORY_FEED_DATA");
-      if (paramBundle != null)
+      if (paramBoolean) {}
+      try
       {
-        paramBundle = QzoneAioStoryFeedRequest.onResponse(WupUtil.b(paramBundle.getWupBuffer()));
-        if (paramBundle != null) {
-          ChatActivityFacade.a(localQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
+        paramBundle = (FromServiceMsg)paramBundle.getParcelable("KEY_FOR_AIO_STORY_FEED_DATA");
+        if (paramBundle != null)
+        {
+          paramBundle = QzoneAioStoryFeedRequest.onResponse(WupUtil.b(paramBundle.getWupBuffer()));
+          if (paramBundle != null) {
+            ChatActivityFacade.a((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramBundle);
+          }
         }
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = null;
-      return;
+      catch (Exception paramBundle)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("call onGetNewestStoryFeed exception ");
+        ((StringBuilder)localObject).append(paramBundle);
+        QLog.e("UndealCount.QZoneObserver", 1, ((StringBuilder)localObject).toString());
+        return;
+      }
     }
-    catch (Exception paramBundle)
-    {
-      QLog.e("UndealCount.QZoneObserver", 1, "call onGetNewestStoryFeed exception " + paramBundle);
+    if (QLog.isColorLevel()) {
+      QLog.i("UndealCount.QZoneObserver.QZoneStoryFeeds", 2, "onGetQZoneNewestStoryFeed app == null || sessionInfo == nul");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityFacade.QZoneNewestAioStoryFeedObserver
  * JD-Core Version:    0.7.0.1
  */

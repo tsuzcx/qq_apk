@@ -7,7 +7,9 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.FrameLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.nearby.now.IHardCordUtil;
+import com.tencent.mobileqq.nearby.now.IResourceUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class QQStoryVideoPlayerErrorView
   extends FrameLayout
@@ -29,7 +31,7 @@ public class QQStoryVideoPlayerErrorView
   
   public void a()
   {
-    this.a.setText(HardCodeUtil.a(2131711064));
+    this.a.setText(((IHardCordUtil)QRoute.api(IHardCordUtil.class)).qqStr(((IResourceUtil)QRoute.api(IResourceUtil.class)).getQQStrQQStoryV88c3cc80()));
     this.a.setVisibility(0);
     this.b.setVisibility(8);
   }
@@ -42,9 +44,9 @@ public class QQStoryVideoPlayerErrorView
   
   public void a(Context paramContext)
   {
-    paramContext = LayoutInflater.from(paramContext).inflate(2131559619, this, true);
-    this.a = ((TextView)paramContext.findViewById(2131377011));
-    this.b = ((TextView)paramContext.findViewById(2131379394));
+    paramContext = LayoutInflater.from(paramContext).inflate(((IResourceUtil)QRoute.api(IResourceUtil.class)).getNearbyVideoPlayerErrorLayout(), this, true);
+    this.a = ((TextView)paramContext.findViewById(((IResourceUtil)QRoute.api(IResourceUtil.class)).getRetry()));
+    this.b = ((TextView)paramContext.findViewById(((IResourceUtil)QRoute.api(IResourceUtil.class)).getTips()));
   }
   
   public void setOnRetryClickListener(View.OnClickListener paramOnClickListener)
@@ -60,7 +62,7 @@ public class QQStoryVideoPlayerErrorView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.QQStoryVideoPlayerErrorView
  * JD-Core Version:    0.7.0.1
  */

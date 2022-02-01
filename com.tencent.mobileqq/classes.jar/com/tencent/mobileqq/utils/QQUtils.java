@@ -20,6 +20,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.ShortcutGuideActivity;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.statistics.QQBeaconReport;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.util.SkinUtils;
 import com.tencent.mobileqq.utils.kapalaiadapter.KapalaiAdapterUtil;
@@ -43,16 +44,16 @@ public class QQUtils
   
   public static Dialog a(Activity paramActivity, String paramString1, String paramString2, int paramInt)
   {
-    paramActivity = new ReportDialog(paramActivity, 2131755842);
-    paramActivity.setContentView(2131561338);
-    TextView localTextView3 = (TextView)paramActivity.findViewById(2131380767);
-    TextView localTextView4 = (TextView)paramActivity.findViewById(2131380746);
-    TextView localTextView1 = (TextView)paramActivity.findViewById(2131380737);
-    TextView localTextView2 = (TextView)paramActivity.findViewById(2131380733);
+    paramActivity = new ReportDialog(paramActivity, 2131756189);
+    paramActivity.setContentView(2131561177);
+    TextView localTextView3 = (TextView)paramActivity.findViewById(2131380032);
+    TextView localTextView4 = (TextView)paramActivity.findViewById(2131380014);
+    TextView localTextView1 = (TextView)paramActivity.findViewById(2131380005);
+    TextView localTextView2 = (TextView)paramActivity.findViewById(2131380001);
     localTextView3.setText(paramString1);
     localTextView4.setText(new SpannableString(paramString2));
-    paramString1 = (ImageView)paramActivity.findViewById(2131364587);
-    ((ImageButton)paramActivity.findViewById(2131364828)).setOnClickListener(new QQUtils.4(paramActivity));
+    paramString1 = (ImageView)paramActivity.findViewById(2131364474);
+    ((ImageButton)paramActivity.findViewById(2131364715)).setOnClickListener(new QQUtils.4(paramActivity));
     if (paramInt >= 0)
     {
       paramString1.setVisibility(0);
@@ -79,10 +80,8 @@ public class QQUtils
       localIntent.putExtra("starhomeurl", paramQQAppInterface);
       paramQQAppInterface = str;
     }
-    for (;;)
+    else
     {
-      localIntent.putExtra("uinname", paramQQAppInterface);
-      return localIntent;
       paramString = (String)paramMap.get("uin");
       int i = Integer.valueOf(paramMap.get("uinType").toString()).intValue();
       localIntent.putExtra("uin", paramString);
@@ -101,6 +100,8 @@ public class QQUtils
         localIntent.putExtra("uintype", 0);
       }
     }
+    localIntent.putExtra("uinname", paramQQAppInterface);
+    return localIntent;
   }
   
   /* Error */
@@ -108,129 +109,147 @@ public class QQUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 175	com/tencent/mobileqq/utils/ShortcutUtils:a	(Landroid/content/Context;)Z
-    //   4: ifne +7 -> 11
+    //   1: invokestatic 173	com/tencent/mobileqq/utils/ShortcutUtils:a	(Landroid/content/Context;)Z
+    //   4: ifne +5 -> 9
     //   7: aconst_null
-    //   8: astore_1
-    //   9: aload_1
-    //   10: areturn
-    //   11: getstatic 176	com/tencent/mobileqq/utils/ShortcutUtils:a	Ljava/lang/String;
-    //   14: astore_2
-    //   15: aload_0
-    //   16: invokevirtual 182	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   19: astore_0
-    //   20: aload_0
-    //   21: aload_2
-    //   22: invokestatic 188	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   25: aconst_null
-    //   26: ldc 190
-    //   28: iconst_1
-    //   29: anewarray 70	java/lang/String
-    //   32: dup
-    //   33: iconst_0
-    //   34: aload_1
-    //   35: aastore
-    //   36: aconst_null
-    //   37: invokevirtual 196	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   40: astore_0
-    //   41: aload_0
-    //   42: ifnull +60 -> 102
-    //   45: aconst_null
-    //   46: astore_2
+    //   8: areturn
+    //   9: getstatic 175	com/tencent/mobileqq/utils/ShortcutUtils:a	Ljava/lang/String;
+    //   12: astore_2
+    //   13: aload_0
+    //   14: invokevirtual 181	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   17: astore_0
+    //   18: aload_0
+    //   19: aload_2
+    //   20: invokestatic 187	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   23: aconst_null
+    //   24: ldc 189
+    //   26: iconst_1
+    //   27: anewarray 68	java/lang/String
+    //   30: dup
+    //   31: iconst_0
+    //   32: aload_1
+    //   33: aastore
+    //   34: aconst_null
+    //   35: invokevirtual 195	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
+    //   38: astore_0
+    //   39: aload_0
+    //   40: ifnull +62 -> 102
+    //   43: aconst_null
+    //   44: astore_2
+    //   45: aload_0
+    //   46: astore_1
     //   47: aload_0
-    //   48: astore_1
-    //   49: aload_0
-    //   50: invokeinterface 202 1 0
-    //   55: ifeq +33 -> 88
+    //   48: invokeinterface 201 1 0
+    //   53: ifeq +33 -> 86
+    //   56: aload_0
+    //   57: astore_1
     //   58: aload_0
-    //   59: astore_1
-    //   60: aload_0
-    //   61: aload_0
-    //   62: ldc 204
-    //   64: invokeinterface 208 2 0
-    //   69: invokeinterface 212 2 0
-    //   74: astore_2
-    //   75: aload_0
-    //   76: astore_1
+    //   59: aload_0
+    //   60: ldc 203
+    //   62: invokeinterface 207 2 0
+    //   67: invokeinterface 211 2 0
+    //   72: astore_2
+    //   73: aload_0
+    //   74: astore_1
+    //   75: aload_2
+    //   76: iconst_0
     //   77: aload_2
-    //   78: iconst_0
-    //   79: aload_2
-    //   80: arraylength
-    //   81: invokestatic 217	com/tencent/mobileqq/util/BitmapManager:a	([BII)Landroid/graphics/Bitmap;
-    //   84: astore_2
-    //   85: goto -38 -> 47
-    //   88: aload_2
-    //   89: astore_1
+    //   78: arraylength
+    //   79: invokestatic 216	com/tencent/mobileqq/util/BitmapManager:a	([BII)Landroid/graphics/Bitmap;
+    //   82: astore_2
+    //   83: goto -38 -> 45
+    //   86: aload_0
+    //   87: ifnull +9 -> 96
     //   90: aload_0
-    //   91: ifnull -82 -> 9
-    //   94: aload_0
-    //   95: invokeinterface 220 1 0
-    //   100: aload_2
-    //   101: areturn
+    //   91: invokeinterface 219 1 0
+    //   96: aload_2
+    //   97: areturn
+    //   98: astore_2
+    //   99: goto +19 -> 118
     //   102: aload_0
-    //   103: ifnull +9 -> 112
-    //   106: aload_0
-    //   107: invokeinterface 220 1 0
-    //   112: aconst_null
-    //   113: areturn
-    //   114: astore_2
-    //   115: aconst_null
-    //   116: astore_0
-    //   117: aload_0
-    //   118: astore_1
-    //   119: invokestatic 225	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   122: ifeq +34 -> 156
-    //   125: aload_0
-    //   126: astore_1
-    //   127: getstatic 12	com/tencent/mobileqq/utils/QQUtils:a	Ljava/lang/String;
-    //   130: iconst_2
-    //   131: new 227	java/lang/StringBuilder
-    //   134: dup
-    //   135: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   138: ldc 230
-    //   140: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   143: aload_2
-    //   144: invokevirtual 235	java/lang/Exception:toString	()Ljava/lang/String;
-    //   147: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   150: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   153: invokestatic 240	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   156: aload_0
-    //   157: ifnull -45 -> 112
-    //   160: aload_0
-    //   161: invokeinterface 220 1 0
-    //   166: goto -54 -> 112
-    //   169: astore_0
-    //   170: aconst_null
-    //   171: astore_1
-    //   172: aload_1
-    //   173: ifnull +9 -> 182
-    //   176: aload_1
-    //   177: invokeinterface 220 1 0
-    //   182: aload_0
-    //   183: athrow
-    //   184: astore_0
-    //   185: goto -13 -> 172
-    //   188: astore_2
-    //   189: goto -72 -> 117
+    //   103: ifnull +84 -> 187
+    //   106: goto +75 -> 181
+    //   109: astore_0
+    //   110: aconst_null
+    //   111: astore_1
+    //   112: goto +78 -> 190
+    //   115: astore_2
+    //   116: aconst_null
+    //   117: astore_0
+    //   118: aload_0
+    //   119: astore_1
+    //   120: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   123: ifeq +54 -> 177
+    //   126: aload_0
+    //   127: astore_1
+    //   128: getstatic 225	com/tencent/mobileqq/utils/QQUtils:a	Ljava/lang/String;
+    //   131: astore_3
+    //   132: aload_0
+    //   133: astore_1
+    //   134: new 227	java/lang/StringBuilder
+    //   137: dup
+    //   138: invokespecial 228	java/lang/StringBuilder:<init>	()V
+    //   141: astore 4
+    //   143: aload_0
+    //   144: astore_1
+    //   145: aload 4
+    //   147: ldc 230
+    //   149: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   152: pop
+    //   153: aload_0
+    //   154: astore_1
+    //   155: aload 4
+    //   157: aload_2
+    //   158: invokevirtual 235	java/lang/Exception:toString	()Ljava/lang/String;
+    //   161: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   164: pop
+    //   165: aload_0
+    //   166: astore_1
+    //   167: aload_3
+    //   168: iconst_2
+    //   169: aload 4
+    //   171: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   174: invokestatic 240	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   177: aload_0
+    //   178: ifnull +9 -> 187
+    //   181: aload_0
+    //   182: invokeinterface 219 1 0
+    //   187: aconst_null
+    //   188: areturn
+    //   189: astore_0
+    //   190: aload_1
+    //   191: ifnull +9 -> 200
+    //   194: aload_1
+    //   195: invokeinterface 219 1 0
+    //   200: goto +5 -> 205
+    //   203: aload_0
+    //   204: athrow
+    //   205: goto -2 -> 203
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	192	0	paramContext	Context
-    //   0	192	1	paramString	String
-    //   14	87	2	localObject	Object
-    //   114	30	2	localException1	java.lang.Exception
-    //   188	1	2	localException2	java.lang.Exception
+    //   0	208	0	paramContext	Context
+    //   0	208	1	paramString	String
+    //   12	85	2	localObject	Object
+    //   98	1	2	localException1	java.lang.Exception
+    //   115	43	2	localException2	java.lang.Exception
+    //   131	37	3	str	String
+    //   141	29	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   20	41	114	java/lang/Exception
-    //   20	41	169	finally
-    //   49	58	184	finally
-    //   60	75	184	finally
-    //   77	85	184	finally
-    //   119	125	184	finally
-    //   127	156	184	finally
-    //   49	58	188	java/lang/Exception
-    //   60	75	188	java/lang/Exception
-    //   77	85	188	java/lang/Exception
+    //   47	56	98	java/lang/Exception
+    //   58	73	98	java/lang/Exception
+    //   75	83	98	java/lang/Exception
+    //   18	39	109	finally
+    //   18	39	115	java/lang/Exception
+    //   47	56	189	finally
+    //   58	73	189	finally
+    //   75	83	189	finally
+    //   120	126	189	finally
+    //   128	132	189	finally
+    //   134	143	189	finally
+    //   145	153	189	finally
+    //   155	165	189	finally
+    //   167	177	189	finally
   }
   
   public static Bitmap a(String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -258,177 +277,213 @@ public class QQUtils
   {
     // Byte code:
     //   0: aload_0
-    //   1: invokestatic 175	com/tencent/mobileqq/utils/ShortcutUtils:a	(Landroid/content/Context;)Z
-    //   4: ifne +7 -> 11
+    //   1: invokestatic 173	com/tencent/mobileqq/utils/ShortcutUtils:a	(Landroid/content/Context;)Z
+    //   4: ifne +5 -> 9
     //   7: aconst_null
-    //   8: astore_0
-    //   9: aload_0
-    //   10: areturn
-    //   11: getstatic 176	com/tencent/mobileqq/utils/ShortcutUtils:a	Ljava/lang/String;
-    //   14: astore_2
-    //   15: aload_0
-    //   16: invokevirtual 182	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
-    //   19: astore_0
-    //   20: aload_2
-    //   21: invokestatic 188	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
-    //   24: astore_2
-    //   25: new 227	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 228	java/lang/StringBuilder:<init>	()V
+    //   8: areturn
+    //   9: getstatic 175	com/tencent/mobileqq/utils/ShortcutUtils:a	Ljava/lang/String;
+    //   12: astore_2
+    //   13: aload_0
+    //   14: invokevirtual 181	android/content/Context:getContentResolver	()Landroid/content/ContentResolver;
+    //   17: astore_0
+    //   18: aload_2
+    //   19: invokestatic 187	android/net/Uri:parse	(Ljava/lang/String;)Landroid/net/Uri;
+    //   22: astore_2
+    //   23: new 227	java/lang/StringBuilder
+    //   26: dup
+    //   27: invokespecial 228	java/lang/StringBuilder:<init>	()V
+    //   30: astore_3
+    //   31: aload_3
     //   32: ldc_w 271
     //   35: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: aload_1
-    //   39: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: ldc_w 273
-    //   45: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: astore_1
-    //   52: aload_0
-    //   53: aload_2
-    //   54: iconst_2
-    //   55: anewarray 70	java/lang/String
-    //   58: dup
-    //   59: iconst_0
-    //   60: ldc_w 275
-    //   63: aastore
+    //   38: pop
+    //   39: aload_3
+    //   40: aload_1
+    //   41: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   44: pop
+    //   45: aload_3
+    //   46: ldc_w 273
+    //   49: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: aload_3
+    //   54: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   57: astore_1
+    //   58: aload_0
+    //   59: aload_2
+    //   60: iconst_2
+    //   61: anewarray 68	java/lang/String
     //   64: dup
-    //   65: iconst_1
-    //   66: ldc_w 277
+    //   65: iconst_0
+    //   66: ldc_w 275
     //   69: aastore
-    //   70: aload_1
-    //   71: aconst_null
-    //   72: aconst_null
-    //   73: invokevirtual 196	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
-    //   76: astore_1
-    //   77: aload_1
-    //   78: ifnull +133 -> 211
-    //   81: aload_1
+    //   70: dup
+    //   71: iconst_1
+    //   72: ldc_w 277
+    //   75: aastore
+    //   76: aload_1
+    //   77: aconst_null
+    //   78: aconst_null
+    //   79: invokevirtual 195	android/content/ContentResolver:query	(Landroid/net/Uri;[Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;Ljava/lang/String;)Landroid/database/Cursor;
     //   82: astore_0
-    //   83: new 279	android/util/SparseArray
-    //   86: dup
-    //   87: invokespecial 280	android/util/SparseArray:<init>	()V
-    //   90: astore_2
-    //   91: aload_1
-    //   92: astore_0
-    //   93: aload_1
-    //   94: invokeinterface 202 1 0
-    //   99: ifeq +98 -> 197
-    //   102: aload_1
-    //   103: astore_0
-    //   104: aload_1
-    //   105: aload_1
-    //   106: ldc_w 275
-    //   109: invokeinterface 208 2 0
-    //   114: invokeinterface 283 2 0
-    //   119: astore_3
-    //   120: aload_1
-    //   121: astore_0
-    //   122: aload_2
-    //   123: aload_1
-    //   124: aload_1
-    //   125: ldc_w 277
-    //   128: invokeinterface 208 2 0
-    //   133: invokeinterface 287 2 0
-    //   138: aload_3
-    //   139: invokevirtual 291	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   142: goto -51 -> 91
-    //   145: astore_2
-    //   146: aload_1
-    //   147: astore_0
-    //   148: invokestatic 225	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   151: ifeq +34 -> 185
-    //   154: aload_1
-    //   155: astore_0
-    //   156: getstatic 12	com/tencent/mobileqq/utils/QQUtils:a	Ljava/lang/String;
-    //   159: iconst_2
-    //   160: new 227	java/lang/StringBuilder
-    //   163: dup
-    //   164: invokespecial 228	java/lang/StringBuilder:<init>	()V
-    //   167: ldc 230
-    //   169: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   172: aload_2
-    //   173: invokevirtual 235	java/lang/Exception:toString	()Ljava/lang/String;
-    //   176: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   182: invokestatic 240	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   185: aload_1
-    //   186: ifnull +9 -> 195
-    //   189: aload_1
-    //   190: invokeinterface 220 1 0
-    //   195: aconst_null
-    //   196: areturn
-    //   197: aload_2
-    //   198: astore_0
-    //   199: aload_1
-    //   200: ifnull -191 -> 9
-    //   203: aload_1
-    //   204: invokeinterface 220 1 0
-    //   209: aload_2
-    //   210: areturn
-    //   211: aload_1
-    //   212: ifnull -17 -> 195
-    //   215: aload_1
-    //   216: invokeinterface 220 1 0
-    //   221: goto -26 -> 195
-    //   224: astore_1
-    //   225: aconst_null
-    //   226: astore_0
-    //   227: aload_0
-    //   228: ifnull +9 -> 237
-    //   231: aload_0
-    //   232: invokeinterface 220 1 0
-    //   237: aload_1
-    //   238: athrow
-    //   239: astore_1
-    //   240: goto -13 -> 227
-    //   243: astore_2
-    //   244: aconst_null
-    //   245: astore_1
-    //   246: goto -100 -> 146
+    //   83: aload_0
+    //   84: ifnull +83 -> 167
+    //   87: aload_0
+    //   88: astore_1
+    //   89: new 279	android/util/SparseArray
+    //   92: dup
+    //   93: invokespecial 280	android/util/SparseArray:<init>	()V
+    //   96: astore_2
+    //   97: aload_0
+    //   98: astore_1
+    //   99: aload_0
+    //   100: invokeinterface 201 1 0
+    //   105: ifeq +46 -> 151
+    //   108: aload_0
+    //   109: astore_1
+    //   110: aload_0
+    //   111: aload_0
+    //   112: ldc_w 275
+    //   115: invokeinterface 207 2 0
+    //   120: invokeinterface 283 2 0
+    //   125: astore_3
+    //   126: aload_0
+    //   127: astore_1
+    //   128: aload_2
+    //   129: aload_0
+    //   130: aload_0
+    //   131: ldc_w 277
+    //   134: invokeinterface 207 2 0
+    //   139: invokeinterface 287 2 0
+    //   144: aload_3
+    //   145: invokevirtual 291	android/util/SparseArray:put	(ILjava/lang/Object;)V
+    //   148: goto -51 -> 97
+    //   151: aload_0
+    //   152: ifnull +9 -> 161
+    //   155: aload_0
+    //   156: invokeinterface 219 1 0
+    //   161: aload_2
+    //   162: areturn
+    //   163: astore_2
+    //   164: goto +19 -> 183
+    //   167: aload_0
+    //   168: ifnull +84 -> 252
+    //   171: goto +75 -> 246
+    //   174: astore_0
+    //   175: aconst_null
+    //   176: astore_1
+    //   177: goto +78 -> 255
+    //   180: astore_2
+    //   181: aconst_null
+    //   182: astore_0
+    //   183: aload_0
+    //   184: astore_1
+    //   185: invokestatic 224	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   188: ifeq +54 -> 242
+    //   191: aload_0
+    //   192: astore_1
+    //   193: getstatic 225	com/tencent/mobileqq/utils/QQUtils:a	Ljava/lang/String;
+    //   196: astore_3
+    //   197: aload_0
+    //   198: astore_1
+    //   199: new 227	java/lang/StringBuilder
+    //   202: dup
+    //   203: invokespecial 228	java/lang/StringBuilder:<init>	()V
+    //   206: astore 4
+    //   208: aload_0
+    //   209: astore_1
+    //   210: aload 4
+    //   212: ldc 230
+    //   214: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   217: pop
+    //   218: aload_0
+    //   219: astore_1
+    //   220: aload 4
+    //   222: aload_2
+    //   223: invokevirtual 235	java/lang/Exception:toString	()Ljava/lang/String;
+    //   226: invokevirtual 234	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   229: pop
+    //   230: aload_0
+    //   231: astore_1
+    //   232: aload_3
+    //   233: iconst_2
+    //   234: aload 4
+    //   236: invokevirtual 236	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   239: invokestatic 240	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   242: aload_0
+    //   243: ifnull +9 -> 252
+    //   246: aload_0
+    //   247: invokeinterface 219 1 0
+    //   252: aconst_null
+    //   253: areturn
+    //   254: astore_0
+    //   255: aload_1
+    //   256: ifnull +9 -> 265
+    //   259: aload_1
+    //   260: invokeinterface 219 1 0
+    //   265: goto +5 -> 270
+    //   268: aload_0
+    //   269: athrow
+    //   270: goto -2 -> 268
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	249	0	paramContext	Context
-    //   0	249	1	paramString	String
-    //   14	109	2	localObject	Object
-    //   145	65	2	localException1	java.lang.Exception
-    //   243	1	2	localException2	java.lang.Exception
-    //   119	20	3	str	String
+    //   0	273	0	paramContext	Context
+    //   0	273	1	paramString	String
+    //   12	150	2	localObject1	Object
+    //   163	1	2	localException1	java.lang.Exception
+    //   180	43	2	localException2	java.lang.Exception
+    //   30	203	3	localObject2	Object
+    //   206	29	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   83	91	145	java/lang/Exception
-    //   93	102	145	java/lang/Exception
-    //   104	120	145	java/lang/Exception
-    //   122	142	145	java/lang/Exception
-    //   20	77	224	finally
-    //   83	91	239	finally
-    //   93	102	239	finally
-    //   104	120	239	finally
-    //   122	142	239	finally
-    //   148	154	239	finally
-    //   156	185	239	finally
-    //   20	77	243	java/lang/Exception
+    //   89	97	163	java/lang/Exception
+    //   99	108	163	java/lang/Exception
+    //   110	126	163	java/lang/Exception
+    //   128	148	163	java/lang/Exception
+    //   18	83	174	finally
+    //   18	83	180	java/lang/Exception
+    //   89	97	254	finally
+    //   99	108	254	finally
+    //   110	126	254	finally
+    //   128	148	254	finally
+    //   185	191	254	finally
+    //   193	197	254	finally
+    //   199	208	254	finally
+    //   210	218	254	finally
+    //   220	230	254	finally
+    //   232	242	254	finally
   }
   
   public static String a()
   {
-    AppRuntime localAppRuntime = null;
-    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
-    if (localBaseApplicationImpl != null) {
-      localAppRuntime = localBaseApplicationImpl.getRuntime();
+    Object localObject = BaseApplicationImpl.getApplication();
+    if (localObject != null) {
+      localObject = ((BaseApplicationImpl)localObject).getRuntime();
+    } else {
+      localObject = null;
     }
-    if (localAppRuntime == null) {
+    if (localObject == null) {
       return "0";
     }
-    if (localAppRuntime.getAccount() == null) {
+    if (((AppRuntime)localObject).getAccount() == null) {
       return "0";
     }
-    return localAppRuntime.getAccount();
+    return ((AppRuntime)localObject).getAccount();
   }
   
   public static String a(Context paramContext, String paramString)
   {
     if (paramString == null) {
       return null;
+    }
+    try
+    {
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("from", "QQUtils");
+      QQBeaconReport.a("", "getAuthorityFromPermission", localHashMap);
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e(a, 1, "getAuthorityFromPermission report err:", localThrowable);
     }
     paramContext = paramContext.getPackageManager().getInstalledPackages(8);
     if (paramContext != null)
@@ -457,13 +512,19 @@ public class QQUtils
   
   public static String a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder(256);
-    localStringBuilder.append(AppConstants.SDCARD_STAR_HEAD);
+    StringBuilder localStringBuilder1 = new StringBuilder(256);
+    localStringBuilder1.append(AppConstants.SDCARD_STAR_HEAD);
     String str = MD5.toMD5(paramString);
-    str = MD5.toMD5(str + paramString);
-    localStringBuilder.append(MD5.toMD5(str + paramString));
-    localStringBuilder.append(".png");
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(str);
+    localStringBuilder2.append(paramString);
+    str = MD5.toMD5(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(str);
+    localStringBuilder2.append(paramString);
+    localStringBuilder1.append(MD5.toMD5(localStringBuilder2.toString()));
+    localStringBuilder1.append(".png");
+    return localStringBuilder1.toString();
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent)
@@ -489,115 +550,118 @@ public class QQUtils
     int i = DisplayUtils.a(paramQQAppInterface.getApp());
     paramIntent = paramBitmap;
     if (i != paramBitmap.getWidth()) {
-      if (MobileIssueSettings.c) {
-        break label128;
+      if (!MobileIssueSettings.c) {
+        paramIntent = KapalaiAdapterUtil.a().a(paramBitmap, i);
+      } else {
+        paramIntent = Bitmap.createScaledBitmap(paramBitmap, i, i, false);
       }
     }
-    label128:
-    for (paramIntent = KapalaiAdapterUtil.a().a(paramBitmap, i);; paramIntent = Bitmap.createScaledBitmap(paramBitmap, i, i, false))
-    {
-      localIntent.putExtra("android.intent.extra.shortcut.ICON", paramIntent);
-      localIntent.putExtra("duplicate", false);
-      localIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
-      paramQQAppInterface.getApp().sendOrderedBroadcast(localIntent, null);
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "createShortcut.finish.");
-      }
-      return;
+    localIntent.putExtra("android.intent.extra.shortcut.ICON", paramIntent);
+    localIntent.putExtra("duplicate", false);
+    localIntent.setAction("com.android.launcher.action.INSTALL_SHORTCUT");
+    paramQQAppInterface.getApp().sendOrderedBroadcast(localIntent, null);
+    if (QLog.isColorLevel()) {
+      QLog.d(a, 2, "createShortcut.finish.");
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
     SparseArray localSparseArray = a(paramQQAppInterface.getApp(), paramString);
-    if (localSparseArray == null) {}
-    for (;;)
-    {
+    if (localSparseArray == null) {
       return;
-      int j = localSparseArray.size();
-      int i = 0;
-      label24:
-      if (i >= j) {
-        continue;
-      }
+    }
+    int j = localSparseArray.size();
+    int i = 0;
+    while (i < j)
+    {
       int k = localSparseArray.keyAt(i);
       Object localObject1 = (String)localSparseArray.get(k);
+      Object localObject2;
       try
       {
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localObject1 = Intent.parseUri((String)localObject1, 0);
-        }
-      }
-      catch (URISyntaxException localInterruptedException2)
-      {
-        for (;;)
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
         {
-          for (;;)
+          localObject2 = Intent.parseUri((String)localObject1, 0);
+          try
           {
-            try
-            {
-              ((Intent)localObject1).addCategory("android.intent.category.BROWSABLE");
-              ((Intent)localObject1).setComponent(null);
-              localObject2 = localObject1;
-              if (Build.VERSION.SDK_INT >= 15)
-              {
-                ((Intent)localObject1).setSelector(null);
-                localObject2 = localObject1;
-              }
-              if (localObject2 == null) {
-                break;
-              }
-              str = localObject2.getStringExtra("uinname");
-              if (paramString.endsWith("sid"))
-              {
-                localObject1 = a(null, localObject2.getStringExtra("sid"), String.valueOf(k), paramQQAppInterface, true);
-                a(paramQQAppInterface, localObject2);
-              }
+            ((Intent)localObject2).addCategory("android.intent.category.BROWSABLE");
+            ((Intent)localObject2).setComponent(null);
+            localObject1 = localObject2;
+            if (Build.VERSION.SDK_INT < 15) {
+              break label181;
             }
-            catch (URISyntaxException localURISyntaxException2)
-            {
-              String str;
-              continue;
-            }
-            try
-            {
-              Thread.sleep(1000L);
-              a(paramQQAppInterface, localObject2, str, (Bitmap)localObject1);
-            }
-            catch (InterruptedException localInterruptedException2)
-            {
-              try
-              {
-                Thread.sleep(1000L);
-                i += 1;
-                break label24;
-                localURISyntaxException1 = localURISyntaxException1;
-                localObject1 = null;
-                localObject2 = localObject1;
-                if (QLog.isColorLevel())
-                {
-                  QLog.d(a, 2, "shortcutIntent parse exception " + localURISyntaxException1.getMessage());
-                  localObject2 = localObject1;
-                  continue;
-                  localObject1 = SkinUtils.a(paramQQAppInterface.getFaceDrawable(localObject2.getStringExtra("uin")));
-                  continue;
-                  localInterruptedException2 = localInterruptedException2;
-                  if (QLog.isColorLevel()) {
-                    QLog.d(a, 2, "thread sleep exception " + localInterruptedException2.getMessage());
-                  }
-                }
-              }
-              catch (InterruptedException localInterruptedException1)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.d(a, 2, "thread sleep exception " + localInterruptedException1.getMessage());
-                }
-              }
-            }
+            ((Intent)localObject2).setSelector(null);
+            localObject1 = localObject2;
           }
-          Object localObject2 = null;
+          catch (URISyntaxException localURISyntaxException1)
+          {
+            break label122;
+          }
+        }
+        else
+        {
+          localObject1 = null;
         }
       }
+      catch (URISyntaxException localURISyntaxException2)
+      {
+        localObject2 = null;
+        label122:
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = a;
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("shortcutIntent parse exception ");
+          localStringBuilder1.append(localURISyntaxException2.getMessage());
+          QLog.d((String)localObject1, 2, localStringBuilder1.toString());
+          localObject1 = localObject2;
+        }
+      }
+      label181:
+      if (localObject1 == null) {
+        return;
+      }
+      Object localObject3 = ((Intent)localObject1).getStringExtra("uinname");
+      if (paramString.endsWith("sid")) {
+        localObject2 = a(null, ((Intent)localObject1).getStringExtra("sid"), String.valueOf(k), paramQQAppInterface, true);
+      } else {
+        localObject2 = SkinUtils.a(paramQQAppInterface.getFaceDrawable(((Intent)localObject1).getStringExtra("uin")));
+      }
+      a(paramQQAppInterface, (Intent)localObject1);
+      try
+      {
+        Thread.sleep(1000L);
+      }
+      catch (InterruptedException localInterruptedException2)
+      {
+        if (QLog.isColorLevel())
+        {
+          String str = a;
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("thread sleep exception ");
+          localStringBuilder2.append(localInterruptedException2.getMessage());
+          QLog.d(str, 2, localStringBuilder2.toString());
+        }
+      }
+      a(paramQQAppInterface, (Intent)localObject1, (String)localObject3, (Bitmap)localObject2);
+      try
+      {
+        Thread.sleep(1000L);
+      }
+      catch (InterruptedException localInterruptedException1)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject2 = a;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("thread sleep exception ");
+          ((StringBuilder)localObject3).append(localInterruptedException1.getMessage());
+          QLog.d((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+        }
+      }
+      i += 1;
     }
   }
   
@@ -611,7 +675,7 @@ public class QQUtils
     localObject = paramQQAppInterface.getFaceBitmap(1, paramString1, (byte)3, true, 0);
     paramString1 = (String)localObject;
     if (localObject == null) {
-      paramString1 = ImageUtil.c();
+      paramString1 = ImageUtil.f();
     }
     a(paramQQAppInterface, localIntent, paramString2, paramString1);
   }
@@ -623,17 +687,19 @@ public class QQUtils
     }
     if (a(paramQQAppInterface.getApp(), new String[] { paramString2 }))
     {
-      paramString1 = paramQQAppInterface.getApp().getString(2131692167);
+      paramString1 = paramQQAppInterface.getApp().getString(2131692087);
       if (paramString1 != null) {
         paramMqqHandler.post(new QQUtils.1(paramQQAppInterface, paramString1, paramInt1));
       }
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(a, 2, "createShortcutWhihTips.no shortcut.");
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "createShortcutWhihTips.no shortcut.");
+      }
+      a(paramQQAppInterface, paramString1, paramString2, paramInt3);
+      paramMqqHandler.postDelayed(new QQUtils.2(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt1, paramString3), paramInt2);
     }
-    a(paramQQAppInterface, paramString1, paramString2, paramInt3);
-    paramMqqHandler.postDelayed(new QQUtils.2(a(paramQQAppInterface.getApp(), new String[] { paramString2 }), paramQQAppInterface, paramInt1, paramString3), paramInt2);
   }
   
   public static final boolean a(Context paramContext)
@@ -648,7 +714,7 @@ public class QQUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQUtils
  * JD-Core Version:    0.7.0.1
  */

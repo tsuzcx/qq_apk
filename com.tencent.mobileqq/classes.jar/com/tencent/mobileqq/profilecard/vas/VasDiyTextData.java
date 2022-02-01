@@ -100,18 +100,18 @@ public final class VasDiyTextData
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VasDiyTextData))
       {
         paramObject = (VasDiyTextData)paramObject;
-        if ((!Intrinsics.areEqual(this.diyText, paramObject.diyText)) || (this.diyTextFontId != paramObject.diyTextFontId) || (Float.compare(this.diyTextWidth, paramObject.diyTextWidth) != 0) || (Float.compare(this.diyTextHeight, paramObject.diyTextHeight) != 0) || (Float.compare(this.diyTextLocX, paramObject.diyTextLocX) != 0) || (Float.compare(this.diyTextLocY, paramObject.diyTextLocY) != 0) || (Float.compare(this.diyTextDegree, paramObject.diyTextDegree) != 0) || (Float.compare(this.diyTextScale, paramObject.diyTextScale) != 0) || (Float.compare(this.diyTextTransparency, paramObject.diyTextTransparency) != 0) || (!Intrinsics.areEqual(this.diyDefaultText, paramObject.diyDefaultText))) {}
+        if ((Intrinsics.areEqual(this.diyText, paramObject.diyText)) && (this.diyTextFontId == paramObject.diyTextFontId) && (Float.compare(this.diyTextWidth, paramObject.diyTextWidth) == 0) && (Float.compare(this.diyTextHeight, paramObject.diyTextHeight) == 0) && (Float.compare(this.diyTextLocX, paramObject.diyTextLocX) == 0) && (Float.compare(this.diyTextLocY, paramObject.diyTextLocY) == 0) && (Float.compare(this.diyTextDegree, paramObject.diyTextDegree) == 0) && (Float.compare(this.diyTextScale, paramObject.diyTextScale) == 0) && (Float.compare(this.diyTextTransparency, paramObject.diyTextTransparency) == 0) && (Intrinsics.areEqual(this.diyDefaultText, paramObject.diyDefaultText))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -168,36 +168,60 @@ public final class VasDiyTextData
   
   public int hashCode()
   {
-    int j = 0;
     String str = this.diyText;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      int k = this.diyTextFontId;
-      int m = Float.floatToIntBits(this.diyTextWidth);
-      int n = Float.floatToIntBits(this.diyTextHeight);
-      int i1 = Float.floatToIntBits(this.diyTextLocX);
-      int i2 = Float.floatToIntBits(this.diyTextLocY);
-      int i3 = Float.floatToIntBits(this.diyTextDegree);
-      int i4 = Float.floatToIntBits(this.diyTextScale);
-      int i5 = Float.floatToIntBits(this.diyTextTransparency);
-      str = this.diyDefaultText;
-      if (str != null) {
-        j = str.hashCode();
-      }
-      return ((((((((i * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + j;
+    int j = 0;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    int k = this.diyTextFontId;
+    int m = Float.floatToIntBits(this.diyTextWidth);
+    int n = Float.floatToIntBits(this.diyTextHeight);
+    int i1 = Float.floatToIntBits(this.diyTextLocX);
+    int i2 = Float.floatToIntBits(this.diyTextLocY);
+    int i3 = Float.floatToIntBits(this.diyTextDegree);
+    int i4 = Float.floatToIntBits(this.diyTextScale);
+    int i5 = Float.floatToIntBits(this.diyTextTransparency);
+    str = this.diyDefaultText;
+    if (str != null) {
+      j = str.hashCode();
+    }
+    return ((((((((i * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + j;
   }
   
   @NotNull
   public String toString()
   {
-    return "VasDiyTextData(diyText=" + this.diyText + ", diyTextFontId=" + this.diyTextFontId + ", diyTextWidth=" + this.diyTextWidth + ", diyTextHeight=" + this.diyTextHeight + ", diyTextLocX=" + this.diyTextLocX + ", diyTextLocY=" + this.diyTextLocY + ", diyTextDegree=" + this.diyTextDegree + ", diyTextScale=" + this.diyTextScale + ", diyTextTransparency=" + this.diyTextTransparency + ", diyDefaultText=" + this.diyDefaultText + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VasDiyTextData(diyText=");
+    localStringBuilder.append(this.diyText);
+    localStringBuilder.append(", diyTextFontId=");
+    localStringBuilder.append(this.diyTextFontId);
+    localStringBuilder.append(", diyTextWidth=");
+    localStringBuilder.append(this.diyTextWidth);
+    localStringBuilder.append(", diyTextHeight=");
+    localStringBuilder.append(this.diyTextHeight);
+    localStringBuilder.append(", diyTextLocX=");
+    localStringBuilder.append(this.diyTextLocX);
+    localStringBuilder.append(", diyTextLocY=");
+    localStringBuilder.append(this.diyTextLocY);
+    localStringBuilder.append(", diyTextDegree=");
+    localStringBuilder.append(this.diyTextDegree);
+    localStringBuilder.append(", diyTextScale=");
+    localStringBuilder.append(this.diyTextScale);
+    localStringBuilder.append(", diyTextTransparency=");
+    localStringBuilder.append(this.diyTextTransparency);
+    localStringBuilder.append(", diyDefaultText=");
+    localStringBuilder.append(this.diyDefaultText);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.VasDiyTextData
  * JD-Core Version:    0.7.0.1
  */

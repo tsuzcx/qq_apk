@@ -2,7 +2,7 @@ package com.huawei.hms.push.utils.ha;
 
 public class PushAnalyticsCenter
 {
-  private PushBaseAnalytics a;
+  public PushBaseAnalytics a;
   
   public static PushAnalyticsCenter getInstance()
   {

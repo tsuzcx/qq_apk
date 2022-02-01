@@ -9,26 +9,33 @@ class WatchTogetherManager$1
 {
   WatchTogetherManager$1(WatchTogetherManager paramWatchTogetherManager) {}
   
-  public void a(boolean paramBoolean, TogetherSession paramTogetherSession, int paramInt, String paramString)
+  protected void a(boolean paramBoolean, TogetherSession paramTogetherSession, int paramInt, String paramString)
   {
-    if ((!paramBoolean) || (paramTogetherSession == null)) {}
-    do
+    if (paramBoolean)
     {
-      do
-      {
+      if (paramTogetherSession == null) {
         return;
-        QLog.i("WatchTogetherManager", 1, "onGetPlayState  groupuin = " + paramTogetherSession.e);
-      } while (!(paramTogetherSession instanceof WatchTogetherSession));
-      paramString = WatchTogetherManager.a(this.a, (WatchTogetherSession)paramTogetherSession);
-    } while (paramString == null);
-    this.a.b(paramTogetherSession.e, paramString);
-    paramInt = paramString.a;
-    this.a.a("100", paramInt, null);
+      }
+      paramString = new StringBuilder();
+      paramString.append("onGetPlayState  groupuin = ");
+      paramString.append(paramTogetherSession.e);
+      QLog.i("WatchTogetherManager", 1, paramString.toString());
+      if ((paramTogetherSession instanceof WatchTogetherSession))
+      {
+        paramString = WatchTogetherManager.a(this.a, (WatchTogetherSession)paramTogetherSession);
+        if (paramString != null)
+        {
+          this.a.b(paramTogetherSession.e, paramString);
+          paramInt = paramString.a;
+          this.a.a("100", paramInt, null);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherManager.1
  * JD-Core Version:    0.7.0.1
  */

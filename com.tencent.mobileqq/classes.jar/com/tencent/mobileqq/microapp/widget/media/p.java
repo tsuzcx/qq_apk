@@ -17,21 +17,25 @@ final class p
     {
       paramTVK_IMediaPlayer = new JSONObject();
       paramTVK_IMediaPlayer.put("data", this.a.b);
-      this.a.c.evaluteJs("WeixinJSBridge.subscribeHandler(\"onVideoError\", " + paramTVK_IMediaPlayer + "," + this.a.d + ")");
-      return true;
+      paramString = this.a.c;
+      paramObject = new StringBuilder();
+      paramObject.append("WeixinJSBridge.subscribeHandler(\"onVideoError\", ");
+      paramObject.append(paramTVK_IMediaPlayer);
+      paramObject.append(",");
+      paramObject.append(this.a.d);
+      paramObject.append(")");
+      paramString.evaluteJs(paramObject.toString());
     }
     catch (JSONException paramTVK_IMediaPlayer)
     {
-      for (;;)
-      {
-        paramTVK_IMediaPlayer.printStackTrace();
-      }
+      paramTVK_IMediaPlayer.printStackTrace();
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.media.p
  * JD-Core Version:    0.7.0.1
  */

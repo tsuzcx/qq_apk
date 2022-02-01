@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool;
-import com.tencent.mobileqq.troopinfo.GroupCatalogTool.GetChoiceListCallback;
+import com.tencent.mobileqq.troop.troopcatalog.GroupCatalogTool;
+import com.tencent.mobileqq.troop.troopcatalog.GroupCatalogTool.GetChoiceListCallback;
 import com.tencent.qphone.base.util.QLog;
 
 public class TroopClassChoiceActivity$GetClassChoiceCallBack
@@ -23,7 +23,7 @@ public class TroopClassChoiceActivity$GetClassChoiceCallBack
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopClassChoiceActivity.GetClassChoiceCallBack
  * JD-Core Version:    0.7.0.1
  */

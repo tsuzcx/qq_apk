@@ -1,31 +1,24 @@
 package com.tencent.mobileqq.search.activity;
 
-import android.view.ViewTreeObserver;
-import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import android.view.inputmethod.InputMethodManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.search.view.QuickPinyinEditText;
-import com.tencent.qphone.base.util.BaseApplication;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class MixSearchWebFragment$4
-  implements ViewTreeObserver.OnGlobalLayoutListener
+  implements View.OnClickListener
 {
   MixSearchWebFragment$4(MixSearchWebFragment paramMixSearchWebFragment) {}
   
-  public void onGlobalLayout()
+  public void onClick(View paramView)
   {
-    InputMethodManager localInputMethodManager = (InputMethodManager)BaseApplicationImpl.getContext().getSystemService("input_method");
-    if (localInputMethodManager != null)
-    {
-      this.a.a.requestFocus();
-      localInputMethodManager.showSoftInput(this.a.a, 0);
-    }
-    this.a.a.getViewTreeObserver().removeGlobalOnLayoutListener(this);
+    this.a.a(3);
+    this.a.doOnBackEvent();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.MixSearchWebFragment.4
  * JD-Core Version:    0.7.0.1
  */

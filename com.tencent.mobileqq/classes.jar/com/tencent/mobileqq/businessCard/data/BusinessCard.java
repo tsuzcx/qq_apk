@@ -83,15 +83,16 @@ public class BusinessCard
   
   public static String pack(List<String> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return "";
+    if ((paramList != null) && (!paramList.isEmpty()))
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext()) {
+        localJSONArray.put((String)paramList.next());
+      }
+      return localJSONArray.toString();
     }
-    JSONArray localJSONArray = new JSONArray();
-    paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localJSONArray.put((String)paramList.next());
-    }
-    return localJSONArray.toString();
+    return "";
   }
   
   public static List<String> unPack(String paramString)
@@ -131,12 +132,13 @@ public class BusinessCard
     if (paramString == null) {
       return null;
     }
-    if (this.mobileInfos != null)
+    Object localObject = this.mobileInfos;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mobileInfos.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        CardMobileInfo localCardMobileInfo = (CardMobileInfo)localIterator.next();
+        CardMobileInfo localCardMobileInfo = (CardMobileInfo)((Iterator)localObject).next();
         if (paramString.equals(localCardMobileInfo.a)) {
           return localCardMobileInfo;
         }
@@ -145,7 +147,7 @@ public class BusinessCard
     return null;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
     if (!TextUtils.isEmpty(this.mobulesNumPacked)) {
@@ -165,7 +167,7 @@ public class BusinessCard
     }
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
     if (this.mobilesNum.size() > 0) {
@@ -185,9 +187,54 @@ public class BusinessCard
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("BusinessCard{").append("cardId=" + this.cardId).append(", bindUin=" + this.bindUin).append(", bindMobile = " + this.bindMobile).append("\n picUrl=" + this.picUrl).append("\n ocrInfo=" + this.OCRInfo).append("\n qqNum=" + this.qqNum).append("\n uinInfo=" + this.uinInfos).append("\n mobilesNum=" + this.mobilesNum).append("\n mobileInfo=" + this.mobileInfos).append(", cardType=" + this.cardType).append(", lastUpdateTime=" + this.lastUpdateTime).append('}');
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("BusinessCard{");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("cardId=");
+    localStringBuilder2.append(this.cardId);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", bindUin=");
+    localStringBuilder2.append(this.bindUin);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", bindMobile = ");
+    localStringBuilder2.append(this.bindMobile);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\n picUrl=");
+    localStringBuilder2.append(this.picUrl);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\n ocrInfo=");
+    localStringBuilder2.append(this.OCRInfo);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\n qqNum=");
+    localStringBuilder2.append(this.qqNum);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\n uinInfo=");
+    localStringBuilder2.append(this.uinInfos);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\n mobilesNum=");
+    localStringBuilder2.append(this.mobilesNum);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("\n mobileInfo=");
+    localStringBuilder2.append(this.mobileInfos);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", cardType=");
+    localStringBuilder2.append(this.cardType);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", lastUpdateTime=");
+    localStringBuilder2.append(this.lastUpdateTime);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append('}');
+    return localStringBuilder1.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -212,7 +259,7 @@ public class BusinessCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.data.BusinessCard
  * JD-Core Version:    0.7.0.1
  */

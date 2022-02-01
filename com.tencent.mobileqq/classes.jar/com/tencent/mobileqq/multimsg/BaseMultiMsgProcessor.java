@@ -19,17 +19,12 @@ public class BaseMultiMsgProcessor
   
   public boolean a(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
-      return false;
-    }
-    return true;
+    return (paramInt == 9311) || (paramInt == 9313) || (paramInt == 9351);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.BaseMultiMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

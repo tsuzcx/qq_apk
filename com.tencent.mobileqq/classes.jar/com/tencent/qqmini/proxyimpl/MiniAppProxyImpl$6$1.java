@@ -17,7 +17,12 @@ class MiniAppProxyImpl$6$1
     }
     if (MiniAppConfProcessor.c())
     {
-      QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131701424) + MiniAppConfProcessor.a() + HardCodeUtil.a(2131701423), 0).a();
+      BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131701564));
+      localStringBuilder.append(MiniAppConfProcessor.a());
+      localStringBuilder.append(HardCodeUtil.a(2131701563));
+      QQToast.a(localBaseApplicationImpl, localStringBuilder.toString(), 0).a();
       return;
     }
     QQToast.a(BaseApplicationImpl.getApplication(), "最多仅支持置顶10个小程序", 0).a();
@@ -25,7 +30,7 @@ class MiniAppProxyImpl$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.6.1
  * JD-Core Version:    0.7.0.1
  */

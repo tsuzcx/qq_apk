@@ -4,6 +4,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import com.tencent.thumbplayer.adapter.TPPlayerBaseListeners;
+import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapErrorType;
 import com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMapUtil;
 import com.tencent.thumbplayer.api.TPCommonEnum.NativeErrorType;
 import com.tencent.thumbplayer.log.TPBaseLogger;
@@ -22,31 +23,35 @@ class TPThumbPlayer$EventHandler
   
   private void handleOnAsyncCallResult(TPThumbPlayer.OnASyncCallResultInfo paramOnASyncCallResultInfo)
   {
-    switch (paramOnASyncCallResultInfo.callType)
+    int i = paramOnASyncCallResultInfo.callType;
+    if (i != 1)
     {
-    default: 
-      TPThumbPlayer.access$500(this.this$0, paramOnASyncCallResultInfo);
-      return;
-    case 1: 
-      TPThumbPlayer.access$300(this.this$0);
+      if (i != 2)
+      {
+        TPThumbPlayer.access$500(this.this$0, paramOnASyncCallResultInfo);
+        return;
+      }
+      TPThumbPlayer.access$400(this.this$0);
       return;
     }
-    TPThumbPlayer.access$400(this.this$0);
+    TPThumbPlayer.access$300(this.this$0);
   }
   
   private void handleOnError(@TPCommonEnum.NativeErrorType int paramInt1, int paramInt2)
   {
-    TPThumbPlayer.access$200(this.this$0).onError(TPNativeKeyMapUtil.convertToTPErrorType(paramInt1), paramInt2, 0L, 0L);
+    TPThumbPlayer.access$200(this.this$0).onError(TPNativeKeyMapUtil.toTPIntValue(TPNativeKeyMap.MapErrorType.class, paramInt1), paramInt2, 0L, 0L);
   }
   
   private void handleOnInfoLong(TPThumbPlayer.OnInfoLongInfo paramOnInfoLongInfo)
   {
-    switch (paramOnInfoLongInfo.infoType)
+    int i = paramOnInfoLongInfo.infoType;
+    if (i != 154)
     {
-    default: 
-      TPThumbPlayer.access$800(this.this$0, paramOnInfoLongInfo.infoType, paramOnInfoLongInfo);
-      return;
-    case 250: 
+      if (i != 250)
+      {
+        TPThumbPlayer.access$800(this.this$0, paramOnInfoLongInfo.infoType, paramOnInfoLongInfo);
+        return;
+      }
       TPThumbPlayer.access$600(this.this$0, paramOnInfoLongInfo.lParam1, paramOnInfoLongInfo.lParam2);
       return;
     }
@@ -55,17 +60,16 @@ class TPThumbPlayer$EventHandler
   
   private void handleOnInfoObject(TPThumbPlayer.OnInfoObjectInfo paramOnInfoObjectInfo)
   {
-    switch (paramOnInfoObjectInfo.infoType)
+    if (paramOnInfoObjectInfo.infoType != 502)
     {
-    default: 
       TPThumbPlayer.access$1000(this.this$0, paramOnInfoObjectInfo.infoType, paramOnInfoObjectInfo);
-    }
-    do
-    {
       return;
-    } while (!(paramOnInfoObjectInfo.objParam instanceof String));
-    TPThumbPlayer.access$900(this.this$0).subtitleData = ((String)paramOnInfoObjectInfo.objParam);
-    TPThumbPlayer.access$200(this.this$0).onSubtitleData(TPThumbPlayer.access$900(this.this$0));
+    }
+    if ((paramOnInfoObjectInfo.objParam instanceof String))
+    {
+      TPThumbPlayer.access$900(this.this$0).subtitleData = ((String)paramOnInfoObjectInfo.objParam);
+      TPThumbPlayer.access$200(this.this$0).onSubtitleData(TPThumbPlayer.access$900(this.this$0));
+    }
   }
   
   public void handleMessage(Message paramMessage)
@@ -75,28 +79,39 @@ class TPThumbPlayer$EventHandler
       TPThumbPlayer.access$000(this.this$0).error("mWeakRef is null");
       return;
     }
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      TPThumbPlayer.access$000(this.this$0).warn("message :" + paramMessage.what + "  not recognition");
-      return;
-    case 1: 
-      handleOnAsyncCallResult((TPThumbPlayer.OnASyncCallResultInfo)paramMessage.obj);
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            TPBaseLogger localTPBaseLogger = TPThumbPlayer.access$000(this.this$0);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("message :");
+            localStringBuilder.append(paramMessage.what);
+            localStringBuilder.append("  not recognition");
+            localTPBaseLogger.warn(localStringBuilder.toString());
+            return;
+          }
+          paramMessage = (TPThumbPlayer.OnErrorInfo)paramMessage.obj;
+          handleOnError(paramMessage.msgType, paramMessage.errorCode);
+          return;
+        }
+        handleOnInfoObject((TPThumbPlayer.OnInfoObjectInfo)paramMessage.obj);
+        return;
+      }
       handleOnInfoLong((TPThumbPlayer.OnInfoLongInfo)paramMessage.obj);
       return;
-    case 3: 
-      handleOnInfoObject((TPThumbPlayer.OnInfoObjectInfo)paramMessage.obj);
-      return;
     }
-    paramMessage = (TPThumbPlayer.OnErrorInfo)paramMessage.obj;
-    handleOnError(paramMessage.msgType, paramMessage.errorCode);
+    handleOnAsyncCallResult((TPThumbPlayer.OnASyncCallResultInfo)paramMessage.obj);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.player.thumbplayer.TPThumbPlayer.EventHandler
  * JD-Core Version:    0.7.0.1
  */

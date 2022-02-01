@@ -20,36 +20,38 @@ public class WebViewProgressBar
   public void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    int j;
-    int i;
-    if ((this.d != null) && (this.d.i() != 6))
+    Object localObject = this.d;
+    if ((localObject != null) && (((c)localObject).i() != 6))
     {
-      if ((this.e == null) || (this.a == null)) {
-        break label164;
-      }
-      j = (int)this.d.j();
-      if (j >= this.a.getIntrinsicWidth()) {
-        break label326;
-      }
-      i = j - this.a.getIntrinsicWidth();
-      j = this.a.getIntrinsicWidth();
-    }
-    for (;;)
-    {
-      if (i + j > 0)
+      int i;
+      if ((this.e != null) && (this.a != null))
       {
-        this.e.setBounds(0, 0, getWidth(), getHeight());
-        this.e.draw(paramCanvas);
-        if (this.b != null)
+        j = (int)this.d.j();
+        if (j < this.a.getIntrinsicWidth())
         {
-          this.b.setBounds(0, 0, getWidth(), getHeight());
-          this.b.draw(paramCanvas);
+          i = j - this.a.getIntrinsicWidth();
+          j = this.a.getIntrinsicWidth();
         }
+        else
+        {
+          i = 0;
+        }
+        j += i;
+        if (j > 0)
+        {
+          this.e.setBounds(0, 0, getWidth(), getHeight());
+          this.e.draw(paramCanvas);
+          localObject = this.b;
+          if (localObject != null)
+          {
+            ((Drawable)localObject).setBounds(0, 0, getWidth(), getHeight());
+            this.b.draw(paramCanvas);
+          }
+        }
+        this.a.setBounds(i, 0, j, getHeight());
+        this.a.draw(paramCanvas);
+        return;
       }
-      this.a.setBounds(i, 0, j + i, getHeight());
-      this.a.draw(paramCanvas);
-      return;
-      label164:
       if (this.b == null) {
         this.b = getContext().getResources().getDrawable(R.drawable.e);
       }
@@ -58,7 +60,7 @@ public class WebViewProgressBar
       if (this.a == null) {
         this.a = getContext().getResources().getDrawable(R.drawable.f);
       }
-      j = (int)this.d.j();
+      int j = (int)this.d.j();
       if (this.c) {
         this.a.setAlpha(this.d.k());
       }
@@ -67,19 +69,16 @@ public class WebViewProgressBar
         i = j - this.a.getIntrinsicWidth();
         j = this.a.getIntrinsicWidth();
       }
-      for (;;)
+      else
       {
-        this.a.setBounds(i, 0, j + i, getHeight());
-        this.a.draw(paramCanvas);
-        return;
         i = 0;
       }
-      label326:
-      i = 0;
+      this.a.setBounds(i, 0, j + i, getHeight());
+      this.a.draw(paramCanvas);
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (this.d != null) {
@@ -89,7 +88,7 @@ public class WebViewProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.WebViewProgressBar
  * JD-Core Version:    0.7.0.1
  */

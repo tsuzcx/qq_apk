@@ -15,12 +15,12 @@ public class TroopAssistantEducationBuilder
   {
     paramObject = paramView;
     if (paramView == null) {
-      paramObject = View.inflate(paramContext, 2131563125, null);
+      paramObject = View.inflate(paramContext, 2131562948, null);
     }
-    paramRecentFaceDecoder = paramObject.findViewById(2131379844);
+    paramRecentFaceDecoder = paramObject.findViewById(2131379173);
     paramRecentFaceDecoder.setTag(-1, Integer.valueOf(paramInt));
     paramRecentFaceDecoder.setOnClickListener(paramOnClickListener);
-    paramRecentFaceDecoder = paramObject.findViewById(2131379843);
+    paramRecentFaceDecoder = paramObject.findViewById(2131379172);
     paramRecentFaceDecoder.setTag(-1, Integer.valueOf(paramInt));
     paramRecentFaceDecoder.setOnClickListener(paramOnClickListener);
     paramObject.setTag(-1, Integer.valueOf(paramInt));
@@ -29,7 +29,7 @@ public class TroopAssistantEducationBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.TroopAssistantEducationBuilder
  * JD-Core Version:    0.7.0.1
  */

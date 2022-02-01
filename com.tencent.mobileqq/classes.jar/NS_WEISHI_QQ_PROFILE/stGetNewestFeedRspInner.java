@@ -36,17 +36,19 @@ public final class stGetNewestFeedRspInner
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.rspComm != null) {
-      paramJceOutputStream.write(this.rspComm, 0);
+    Object localObject = this.rspComm;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.mapItemInfo != null) {
-      paramJceOutputStream.write(this.mapItemInfo, 1);
+    localObject = this.mapItemInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_WEISHI_QQ_PROFILE.stGetNewestFeedRspInner
  * JD-Core Version:    0.7.0.1
  */

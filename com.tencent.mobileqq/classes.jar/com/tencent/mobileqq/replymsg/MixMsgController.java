@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.replymsg;
 
 import android.os.Message;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ChatMessage;
@@ -52,67 +53,67 @@ public class MixMsgController
   
   private void h(MultiMsgRequest paramMultiMsgRequest)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
       return;
-      Iterator localIterator = paramMultiMsgRequest.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = paramMultiMsgRequest.jdField_a_of_type_JavaUtilList.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject = (ChatMessage)localIterator.next();
+      if ((localObject instanceof MessageForMixedMsg))
       {
-        ChatMessage localChatMessage = (ChatMessage)localIterator.next();
-        if ((localChatMessage instanceof MessageForMixedMsg)) {
-          ((MixedMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER)).a(paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, (MessageForMixedMsg)localChatMessage, false, ((MessageForMixedMsg)localChatMessage).forwardID);
-        }
+        MixedMsgManager localMixedMsgManager = (MixedMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MIXED_MSG_MANAGER);
+        SessionInfo localSessionInfo = paramMultiMsgRequest.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+        localObject = (MessageForMixedMsg)localObject;
+        localMixedMsgManager.a(localSessionInfo, (MessageForMixedMsg)localObject, false, ((MessageForMixedMsg)localObject).forwardID);
       }
     }
   }
   
-  public void c(MultiMsgRequest paramMultiMsgRequest)
+  protected void c(MultiMsgRequest paramMultiMsgRequest)
   {
     h(paramMultiMsgRequest);
   }
   
-  public void d(MultiMsgRequest paramMultiMsgRequest)
+  protected void d(MultiMsgRequest paramMultiMsgRequest)
   {
-    int i = 0;
     Object localObject = paramMultiMsgRequest.jdField_a_of_type_JavaUtilList;
     ArrayList localArrayList = new ArrayList(1);
     QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    if (paramMultiMsgRequest.jdField_a_of_type_Int != 2) {}
-    for (boolean bool = true;; bool = false)
+    int j = paramMultiMsgRequest.jdField_a_of_type_Int;
+    int i = 0;
+    boolean bool;
+    if (j != 2) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramMultiMsgRequest.jdField_a_of_type_JavaUtilHashMap = a(a(localQQAppInterface, (List)localObject, bool), localArrayList);
+    paramMultiMsgRequest.jdField_a_of_type_JavaUtilList = localArrayList;
+    if (paramMultiMsgRequest.jdField_a_of_type_JavaUtilHashMap.size() == 0)
     {
-      paramMultiMsgRequest.jdField_a_of_type_JavaUtilHashMap = a(a(localQQAppInterface, (List)localObject, bool), localArrayList);
-      paramMultiMsgRequest.jdField_a_of_type_JavaUtilList = localArrayList;
-      if (paramMultiMsgRequest.jdField_a_of_type_JavaUtilHashMap.size() != 0) {
-        break;
-      }
       if (QLog.isColorLevel()) {
         QLog.d("ReplyMsgController", 2, "preHandleData dstMsgMap is empty");
       }
       h(paramMultiMsgRequest);
       return;
     }
-    if (paramMultiMsgRequest.jdField_a_of_type_Int == 0) {}
-    for (;;)
-    {
-      localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(i);
-      ((Message)localObject).obj = paramMultiMsgRequest;
-      ((Message)localObject).sendToTarget();
-      return;
-      if (paramMultiMsgRequest.jdField_a_of_type_Int == 2) {
-        i = 1;
-      }
+    if ((paramMultiMsgRequest.jdField_a_of_type_Int != 0) && (paramMultiMsgRequest.jdField_a_of_type_Int == 2)) {
+      i = 1;
     }
+    localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(i);
+    ((Message)localObject).obj = paramMultiMsgRequest;
+    ((Message)localObject).sendToTarget();
   }
   
-  public void g(MultiMsgRequest paramMultiMsgRequest)
+  protected void g(MultiMsgRequest paramMultiMsgRequest)
   {
     h(paramMultiMsgRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.replymsg.MixMsgController
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.troop.handler.TroopInfoHandler;
+import com.tencent.mobileqq.troop.api.handler.ITroopInfoHandler;
 import com.tencent.mobileqq.troop.utils.TroopBusinessUtil;
 import com.tencent.mobileqq.troop.utils.TroopBusinessUtil.TroopBusinessMessage;
 import com.tencent.mobileqq.util.Utils;
@@ -48,166 +48,174 @@ import tencent.im.msg.im_msg_body.Elem;
 
 public class TroopConfessUtil
 {
-  public static final String a = HardCodeUtil.a(2131715133);
+  public static final String a = HardCodeUtil.a(2131715056);
   
   public static String a(String paramString1, String paramString2)
   {
-    int i = 0;
-    for (;;)
+    try
     {
-      try
+      Object localObject = paramString1.split("&");
+      int i = 0;
+      while (i < localObject.length)
       {
-        Object localObject2 = paramString1.split("&");
-        localObject1 = paramString1;
-        if (i < localObject2.length)
+        String[] arrayOfString = JumpParser.a(localObject[i], "=");
+        if ((arrayOfString.length == 2) && ("url_prefix".equals(arrayOfString[0])) && (!TextUtils.isEmpty(arrayOfString[1])))
         {
-          String[] arrayOfString = JumpParser.a(localObject2[i], "=");
-          if ((arrayOfString.length != 2) || (!"url_prefix".equals(arrayOfString[0])) || (TextUtils.isEmpty(arrayOfString[1]))) {
-            continue;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(arrayOfString[0]);
+          ((StringBuilder)localObject).append("=");
+          ((StringBuilder)localObject).append(arrayOfString[1]);
+          String str2 = ((StringBuilder)localObject).toString();
+          String str1 = new String(Base64Util.decode(arrayOfString[1], 0));
+          localObject = str1;
+          if (!str1.contains("&gc=")) {
+            localObject = String.format("%s&gc=%s", new Object[] { str1, NearbyURLSafeUtil.a(paramString2) });
           }
-          String str = arrayOfString[0] + "=" + arrayOfString[1];
-          localObject2 = new String(Base64Util.decode(arrayOfString[1], 0));
-          localObject1 = localObject2;
-          if (!((String)localObject2).contains("&gc=")) {
-            localObject1 = String.format("%s&gc=%s", new Object[] { localObject2, NearbyURLSafeUtil.a(paramString2) });
-          }
-          paramString2 = Base64Util.encodeToString(((String)localObject1).getBytes(), 2);
-          localObject1 = paramString1.replace(str, arrayOfString[0] + "=" + paramString2);
+          paramString2 = Base64Util.encodeToString(((String)localObject).getBytes(), 2);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(arrayOfString[0]);
+          ((StringBuilder)localObject).append("=");
+          ((StringBuilder)localObject).append(paramString2);
+          paramString2 = paramString1.replace(str2, ((StringBuilder)localObject).toString());
+          return paramString2;
         }
+        i += 1;
       }
-      catch (Exception paramString2)
-      {
-        Object localObject1 = paramString1;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
+      return paramString1;
+    }
+    catch (Exception paramString2)
+    {
+      if (QLog.isColorLevel()) {
         QLog.i("Q.msg.TroopConfess", 2, paramString2.getMessage(), paramString2);
       }
-      return localObject1;
-      i += 1;
     }
-    return paramString1;
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt1, String paramString1, int paramInt2, String paramString2, String paramString3)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        localObject = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
-        if (localObject != null) {
-          continue;
-        }
+      localObject = ((ConfessManager)paramQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
+      if (localObject == null) {
         localObject = "https://ti.qq.com/honest-say/group-received.html?_bid=3104&_wv=9191&_qStyle=1";
+      } else {
+        localObject = ((ConfessConfig)localObject).o;
       }
-      catch (Exception paramContext)
+    }
+    catch (Exception paramContext)
+    {
+      for (;;)
       {
         Object localObject;
         StringBuilder localStringBuilder;
+        String str;
         continue;
-        if (paramInt1 != 1) {
-          continue;
+        if (paramInt1 == 1) {
+          str = "aio_card_say";
+        } else {
+          str = "aio_card_insert";
         }
-        String str = "aio_card_say";
-        continue;
       }
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append((String)localObject).append("&").append("adtag").append("=").append(str);
-      localStringBuilder.append("&").append("quin").append("=").append(NearbyURLSafeUtil.a(paramString1));
-      localStringBuilder.append("&").append("topicId").append("=").append(paramInt2);
-      localStringBuilder.append("&").append("sUin").append("=").append(NearbyURLSafeUtil.a(paramString2));
-      localStringBuilder.append("&").append("rUin").append("=").append(NearbyURLSafeUtil.a(paramString3));
-      paramString1 = localStringBuilder.toString();
-      paramString2 = new Intent(paramContext, QQBrowserActivity.class);
-      paramString2.putExtra("url", paramString1);
-      paramContext.startActivity(paramString2);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.msg.TroopConfess", 2, "onGroupAioConfessClick " + paramString1);
-      }
-      ThreadManager.post(new TroopConfessUtil.1(paramQQAppInterface, paramString3, paramInt1), 5, null, true);
-      return;
-      localObject = ((ConfessConfig)localObject).o;
-      continue;
-      str = "aio_card_insert";
     }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("&");
+    localStringBuilder.append("adtag");
+    localStringBuilder.append("=");
+    localStringBuilder.append(str);
+    localStringBuilder.append("&");
+    localStringBuilder.append("quin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(NearbyURLSafeUtil.a(paramString1));
+    localStringBuilder.append("&");
+    localStringBuilder.append("topicId");
+    localStringBuilder.append("=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("&");
+    localStringBuilder.append("sUin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(NearbyURLSafeUtil.a(paramString2));
+    localStringBuilder.append("&");
+    localStringBuilder.append("rUin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(NearbyURLSafeUtil.a(paramString3));
+    paramString1 = localStringBuilder.toString();
+    paramString2 = new Intent(paramContext, QQBrowserActivity.class);
+    paramString2.putExtra("url", paramString1);
+    paramContext.startActivity(paramString2);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("onGroupAioConfessClick ");
+      paramContext.append(paramString1);
+      QLog.i("Q.msg.TroopConfess", 2, paramContext.toString());
+    }
+    ThreadManager.post(new TroopConfessUtil.1(paramQQAppInterface, paramString3, paramInt1), 5, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
+    if (paramQQAppInterface == null) {
       return;
-      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.a(paramBoolean);
+    }
+    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.a(paramBoolean);
+    }
   }
   
   public static void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder, msg_comm.Msg paramMsg)
   {
-    if ((paramList1 == null) || (paramList == null) || (paramList.size() == 0)) {}
-    label258:
-    label267:
-    for (;;)
+    if ((paramList1 != null) && (paramList != null))
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       if (QLog.isColorLevel()) {
         QLog.i("Q.msg.TroopConfess", 2, "decodeTroopConfessMsgElem");
       }
       paramMsg = paramList.iterator();
-      for (;;)
+      while (paramMsg.hasNext())
       {
-        label39:
-        if (!paramMsg.hasNext()) {
-          break label267;
-        }
         paramStringBuilder = (im_msg_body.Elem)paramMsg.next();
         if ((paramStringBuilder.common_elem.has()) && (paramStringBuilder.common_elem.uint32_service_type.get() == 21) && (paramStringBuilder.common_elem.uint32_business_type.get() == 3) && (paramStringBuilder.common_elem.bytes_pb_elem.has()))
         {
-          for (;;)
+          try
           {
+            paramList = new hummer_commelem.MsgElemInfo_servtype21();
             try
             {
-              paramList = new hummer_commelem.MsgElemInfo_servtype21();
+              paramList.mergeFrom(paramStringBuilder.common_elem.bytes_pb_elem.get().toByteArray());
             }
-            catch (InvalidProtocolBufferMicroException paramStringBuilder)
-            {
-              try
-              {
-                paramList.mergeFrom(paramStringBuilder.common_elem.bytes_pb_elem.get().toByteArray());
-                if (paramList == null) {
-                  break;
-                }
-                paramStringBuilder = new TroopConfessMsg();
-                paramStringBuilder.convertFrom(paramList);
-                if (QLog.isColorLevel()) {
-                  QLog.i("Q.msg.TroopConfess", 2, String.format("decodeTroopConfessMsgElem %s", new Object[] { paramStringBuilder.toString() }));
-                }
-                paramList = (MessageForTroopConfess)MessageRecordFactory.a(-2067);
-                paramList.msgtype = -2067;
-                paramList.msg = paramStringBuilder.getSimpleMsg();
-                paramList.msgData = paramStringBuilder.getBytes();
-                paramList.isToSelf = paramStringBuilder.isToSelf();
-                if (paramList.msgData != null) {
-                  break label258;
-                }
-                if (!QLog.isColorLevel()) {
-                  break label39;
-                }
-                QLog.i("Q.msg.TroopConfess", 2, "decode msgData null");
-              }
-              catch (InvalidProtocolBufferMicroException paramStringBuilder)
-              {
-                break label251;
-              }
-              paramStringBuilder = paramStringBuilder;
-              paramList = null;
-            }
-            label251:
+            catch (InvalidProtocolBufferMicroException paramStringBuilder) {}
             paramStringBuilder.printStackTrace();
           }
-          paramList1.add(paramList);
+          catch (InvalidProtocolBufferMicroException paramStringBuilder)
+          {
+            paramList = null;
+          }
+          if (paramList == null) {
+            return;
+          }
+          paramStringBuilder = new TroopConfessMsg();
+          paramStringBuilder.convertFrom(paramList);
+          if (QLog.isColorLevel()) {
+            QLog.i("Q.msg.TroopConfess", 2, String.format("decodeTroopConfessMsgElem %s", new Object[] { paramStringBuilder.toString() }));
+          }
+          paramList = (MessageForTroopConfess)MessageRecordFactory.a(-2067);
+          paramList.msgtype = -2067;
+          paramList.msg = paramStringBuilder.getSimpleMsg();
+          paramList.msgData = paramStringBuilder.getBytes();
+          paramList.isToSelf = paramStringBuilder.isToSelf();
+          if (paramList.msgData == null)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.i("Q.msg.TroopConfess", 2, "decode msgData null");
+            }
+          }
+          else {
+            paramList1.add(paramList);
+          }
         }
       }
     }
@@ -215,25 +223,29 @@ public class TroopConfessUtil
   
   public static boolean a(BaseChatPie paramBaseChatPie)
   {
-    if ((paramBaseChatPie == null) || (paramBaseChatPie.a() == null)) {
-      return false;
+    if (paramBaseChatPie != null)
+    {
+      if (paramBaseChatPie.a() == null) {
+        return false;
+      }
+      int i = ConfessPanel.a(paramBaseChatPie.a().getResources().getDisplayMetrics().widthPixels);
+      int j = ConfessPanel.a(paramBaseChatPie);
+      i = ConfessPanel.a(paramBaseChatPie.a().getResources(), i, j);
+      if (QLog.isColorLevel()) {
+        QLog.i("TroopConfessUtil", 2, String.format("showConfessPanel dstHeight=%d", new Object[] { Integer.valueOf(i) }));
+      }
+      String str = paramBaseChatPie.a().getIntent().getStringExtra("url");
+      Intent localIntent = new Intent(paramBaseChatPie.a(), ConfessHalfScreenActivity.class);
+      localIntent.putExtra("finish_animation_up_down", true);
+      localIntent.putExtra("url", str);
+      localIntent.putExtra("isTransparentTitle", true);
+      localIntent.putExtra("confessDstHeight", i);
+      localIntent.addFlags(603979776);
+      paramBaseChatPie.a().startActivityForResult(localIntent, 15002);
+      paramBaseChatPie.a().overridePendingTransition(2130771993, 0);
+      return true;
     }
-    int i = ConfessPanel.a(paramBaseChatPie.a().getResources().getDisplayMetrics().widthPixels);
-    int j = ConfessPanel.a(paramBaseChatPie);
-    i = ConfessPanel.a(paramBaseChatPie.a().getResources(), i, j);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopConfessUtil", 2, String.format("showConfessPanel dstHeight=%d", new Object[] { Integer.valueOf(i) }));
-    }
-    String str = paramBaseChatPie.a().getIntent().getStringExtra("url");
-    Intent localIntent = new Intent(paramBaseChatPie.a(), ConfessHalfScreenActivity.class);
-    localIntent.putExtra("finish_animation_up_down", true);
-    localIntent.putExtra("url", str);
-    localIntent.putExtra("isTransparentTitle", true);
-    localIntent.putExtra("confessDstHeight", i);
-    localIntent.addFlags(603979776);
-    paramBaseChatPie.a().startActivityForResult(localIntent, 15002);
-    paramBaseChatPie.a().overridePendingTransition(2130771981, 0);
-    return true;
+    return false;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
@@ -243,7 +255,7 @@ public class TroopConfessUtil
     }
     paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
     if (paramQQAppInterface != null) {
-      return paramQQAppInterface.e();
+      return paramQQAppInterface.d();
     }
     return false;
   }
@@ -253,25 +265,41 @@ public class TroopConfessUtil
     if (paramMessageRecord.isOpenTroopMessage) {
       return true;
     }
-    if (paramMessageRecord.istroop == 1)
+    int i = paramMessageRecord.istroop;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i == 1)
     {
       paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      if ((paramQQAppInterface != null) && (paramQQAppInterface.d())) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
+      bool1 = bool2;
+      if (paramQQAppInterface != null)
+      {
+        bool1 = bool2;
+        if (paramQQAppInterface.c()) {
+          bool1 = true;
+        }
       }
     }
-    return false;
+    return bool1;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    TroopInfoHandler localTroopInfoHandler = (TroopInfoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER);
+    ITroopInfoHandler localITroopInfoHandler = (ITroopInfoHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_INFO_HANDLER);
+    boolean bool = false;
     if (!paramBoolean) {
-      localTroopInfoHandler.a(paramString, false);
+      localITroopInfoHandler.a(paramString, false);
     }
     paramQQAppInterface = ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(paramString);
-    return (paramQQAppInterface != null) && ((paramQQAppInterface.dwGroupFlagExt3 & 0x2000) == 0L);
+    paramBoolean = bool;
+    if (paramQQAppInterface != null)
+    {
+      paramBoolean = bool;
+      if ((paramQQAppInterface.dwGroupFlagExt3 & 0x2000) == 0L) {
+        paramBoolean = true;
+      }
+    }
+    return paramBoolean;
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
@@ -281,173 +309,151 @@ public class TroopConfessUtil
   
   public static boolean a(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int j;
-    int i;
     if (!TextUtils.isEmpty(paramString2))
     {
       paramString2 = paramString2.split("\\|");
-      bool1 = bool2;
       if (paramString2 != null)
       {
-        j = paramString2.length;
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
-      {
-        if (paramString2[i].equalsIgnoreCase(paramString1)) {
-          bool1 = true;
+        int j = paramString2.length;
+        int i = 0;
+        while (i < j)
+        {
+          if (paramString2[i].equalsIgnoreCase(paramString1)) {
+            return true;
+          }
+          i += 1;
         }
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public static Object[] a(String paramString)
   {
-    ArrayList localArrayList = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.msg.TroopConfess", 2, "TroopConfessUtil.getTroopMembers " + paramString);
-    }
-    if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {}
-    for (Object localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();; localObject1 = null)
+    if (QLog.isColorLevel())
     {
-      if (localObject1 == null) {}
-      String str;
-      do
-      {
-        return null;
-        str = ((QQAppInterface)localObject1).getCurrentAccountUin();
-      } while (TextUtils.isEmpty(str));
-      Object localObject2 = (TroopManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.TROOP_MANAGER);
-      int i;
-      boolean bool1;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("TroopConfessUtil.getTroopMembers ");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.i("Q.msg.TroopConfess", 2, ((StringBuilder)localObject1).toString());
+    }
+    boolean bool1 = BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface;
+    ArrayList localArrayList = null;
+    if (bool1) {
+      localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    } else {
+      localObject1 = null;
+    }
+    if (localObject1 == null) {
+      return null;
+    }
+    String str = ((QQAppInterface)localObject1).getCurrentAccountUin();
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    Object localObject2 = (TroopManager)((QQAppInterface)localObject1).getManager(QQManagerFactory.TROOP_MANAGER);
+    if (localObject2 != null)
+    {
+      localObject2 = ((TroopManager)localObject2).b(paramString);
       if (localObject2 != null)
       {
-        localObject2 = ((TroopManager)localObject2).b(paramString);
-        if (localObject2 != null) {
-          if (Utils.a(str, ((TroopInfo)localObject2).troopowneruin))
-          {
-            i = 2;
-            if ((((TroopInfo)localObject2).dwGroupFlagExt & 0x80) != 0L) {
-              break label249;
-            }
-            bool1 = true;
-          }
-        }
-      }
-      for (;;)
-      {
-        label142:
-        if ((i > 0) || (bool1))
-        {
-          bool2 = true;
-          label153:
-          if (QLog.isColorLevel()) {
-            QLog.i("Q.msg.TroopConfess", 2, String.format("TroopConfessUtil.getTroopMembers canInvite=%s memLevel:%d", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(i) }));
-          }
-          if (bool2) {
-            break label266;
-          }
-          if (i <= 0) {
-            break label260;
-          }
-        }
-        label260:
-        for (boolean bool2 = true;; bool2 = false)
-        {
-          return new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), null };
-          if (a(str, ((TroopInfo)localObject2).Administrator))
-          {
-            i = 1;
-            break;
-          }
+        if (Utils.a(str, ((TroopInfo)localObject2).troopowneruin)) {
+          i = 2;
+        } else if (a(str, ((TroopInfo)localObject2).Administrator)) {
+          i = 1;
+        } else {
           i = 0;
-          break;
-          label249:
-          bool1 = false;
-          break label142;
-          bool2 = false;
-          break label153;
         }
-        label266:
-        localObject1 = ((QQAppInterface)localObject1).getEntityManagerFactory().createEntityManager();
-        if (localObject1 != null)
-        {
-          paramString = ((EntityManager)localObject1).query(TroopMemberInfo.class, false, "troopuin=? ", new String[] { paramString }, null, null, null, null);
-          ((EntityManager)localObject1).close();
+        j = i;
+        if ((((TroopInfo)localObject2).dwGroupFlagExt & 0x80) != 0L) {
+          break label192;
         }
-        for (;;)
-        {
-          localObject1 = localArrayList;
-          if (paramString != null)
-          {
-            localArrayList = new ArrayList(paramString.size());
-            paramString = paramString.iterator();
-            for (;;)
-            {
-              localObject1 = localArrayList;
-              if (!paramString.hasNext()) {
-                break;
-              }
-              localObject1 = (TroopMemberInfo)paramString.next();
-              if (Utils.d(((TroopMemberInfo)localObject1).memberuin)) {
-                localArrayList.add(((TroopMemberInfo)localObject1).memberuin);
-              }
-            }
-          }
-          int j;
-          if (QLog.isColorLevel())
-          {
-            if (localObject1 == null)
-            {
-              j = 0;
-              QLog.i("Q.msg.TroopConfess", 2, String.format("TroopConfessUtil.getTroopMembers findUins:%d", new Object[] { Integer.valueOf(j) }));
-            }
-          }
-          else {
-            if (i <= 0) {
-              break label467;
-            }
-          }
-          label467:
-          for (bool2 = true;; bool2 = false)
-          {
-            return new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), localObject1 };
-            j = ((ArrayList)localObject1).size();
-            break;
-          }
-          paramString = null;
-        }
-        bool1 = false;
-        i = 0;
+        bool1 = true;
+        break label196;
       }
     }
+    int j = 0;
+    label192:
+    bool1 = false;
+    int i = j;
+    label196:
+    boolean bool2;
+    if ((i <= 0) && (!bool1)) {
+      bool2 = false;
+    } else {
+      bool2 = true;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("Q.msg.TroopConfess", 2, String.format("TroopConfessUtil.getTroopMembers canInvite=%s memLevel:%d", new Object[] { Boolean.valueOf(bool2), Integer.valueOf(i) }));
+    }
+    if (!bool2)
+    {
+      if (i > 0) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      return new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), null };
+    }
+    Object localObject1 = ((QQAppInterface)localObject1).getEntityManagerFactory().createEntityManager();
+    if (localObject1 != null)
+    {
+      paramString = ((EntityManager)localObject1).query(TroopMemberInfo.class, false, "troopuin=? ", new String[] { paramString }, null, null, null, null);
+      ((EntityManager)localObject1).close();
+    }
+    else
+    {
+      paramString = null;
+    }
+    localObject1 = localArrayList;
+    if (paramString != null)
+    {
+      localArrayList = new ArrayList(paramString.size());
+      paramString = paramString.iterator();
+      for (;;)
+      {
+        localObject1 = localArrayList;
+        if (!paramString.hasNext()) {
+          break;
+        }
+        localObject1 = (TroopMemberInfo)paramString.next();
+        if (Utils.d(((TroopMemberInfo)localObject1).memberuin)) {
+          localArrayList.add(((TroopMemberInfo)localObject1).memberuin);
+        }
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      if (localObject1 == null) {
+        j = 0;
+      } else {
+        j = ((ArrayList)localObject1).size();
+      }
+      QLog.i("Q.msg.TroopConfess", 2, String.format("TroopConfessUtil.getTroopMembers findUins:%d", new Object[] { Integer.valueOf(j) }));
+    }
+    if (i > 0) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    return new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), localObject1 };
   }
   
   public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
+    if (paramQQAppInterface == null) {
       return;
-      paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.b(paramBoolean);
+    }
+    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+    if (paramQQAppInterface != null) {
+      paramQQAppInterface.b(paramBoolean);
+    }
   }
   
   public static boolean b(MessageRecord paramMessageRecord)
   {
-    boolean bool2 = false;
     paramMessageRecord = TroopBusinessUtil.a(paramMessageRecord);
+    boolean bool2 = false;
     boolean bool1 = bool2;
     if (paramMessageRecord != null)
     {
@@ -466,7 +472,7 @@ public class TroopConfessUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.TroopConfessUtil
  * JD-Core Version:    0.7.0.1
  */

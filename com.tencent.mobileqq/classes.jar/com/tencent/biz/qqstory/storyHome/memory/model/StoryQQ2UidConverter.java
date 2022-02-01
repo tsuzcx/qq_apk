@@ -33,14 +33,16 @@ public class StoryQQ2UidConverter
     if (!TextUtils.equals(paramUpdateUserInfoEvent.jdField_a_of_type_JavaLangString, String.valueOf(hashCode()))) {
       return;
     }
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)) {
-      SLog.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from net. uid = %s.", paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid);
-    }
-    for (paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;; paramUpdateUserInfoEvent = null)
+    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null))
     {
-      ThreadManager.getUIHandler().post(new StoryQQ2UidConverter.2(this, paramUpdateUserInfoEvent));
-      return;
+      SLog.a("Q.qqstory.memories.StoryQQ2UidConverter", "get uid by qq from net. uid = %s.", paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid);
+      paramUpdateUserInfoEvent = paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.uid;
     }
+    else
+    {
+      paramUpdateUserInfoEvent = null;
+    }
+    ThreadManager.getUIHandler().post(new StoryQQ2UidConverter.2(this, paramUpdateUserInfoEvent));
   }
   
   public void a(StoryQQ2UidConverter.StoryQQ2UidCallback paramStoryQQ2UidCallback)
@@ -74,7 +76,7 @@ public class StoryQQ2UidConverter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.model.StoryQQ2UidConverter
  * JD-Core Version:    0.7.0.1
  */

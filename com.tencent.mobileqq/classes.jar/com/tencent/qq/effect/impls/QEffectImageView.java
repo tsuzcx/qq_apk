@@ -45,7 +45,8 @@ public class QEffectImageView
   
   public boolean isGravityEnable()
   {
-    return (this.mEffectData != null) && (this.mEffectData.gravity);
+    QEffectData localQEffectData = this.mEffectData;
+    return (localQEffectData != null) && (localQEffectData.gravity);
   }
   
   public void load(Context paramContext, QEffectView paramQEffectView, IQEffectLoad paramIQEffectLoad, QEffectData paramQEffectData)
@@ -74,7 +75,7 @@ public class QEffectImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qq.effect.impls.QEffectImageView
  * JD-Core Version:    0.7.0.1
  */

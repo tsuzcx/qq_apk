@@ -56,19 +56,24 @@ public class a
     }
     try
     {
-      String str = new URL(paramString).getHost();
-      return str;
+      String str1 = new URL(paramString).getHost();
+      return str1;
     }
     catch (Exception localException)
     {
-      Logger.INSTANCE.e(new String[] { a, "getHostFromUrl is error:", localException.getMessage() + ", url:", paramString });
+      Logger localLogger = Logger.INSTANCE;
+      String str2 = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localException.getMessage());
+      localStringBuilder.append(", url:");
+      localLogger.e(new String[] { str2, "getHostFromUrl is error:", localStringBuilder.toString(), paramString });
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.g.a
  * JD-Core Version:    0.7.0.1
  */

@@ -11,26 +11,27 @@ final class ViewUtils$1
   public void run()
   {
     Bitmap localBitmap = ViewUtils.a(this.jdField_a_of_type_AndroidViewView.getResources(), this.jdField_a_of_type_Int, Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getWidth()), Integer.valueOf(this.jdField_a_of_type_AndroidViewView.getHeight()));
-    QLog.d("ViewUtils", 2, " qrWhiteBitmap = " + localBitmap);
-    if (localBitmap != null) {}
-    try
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" qrWhiteBitmap = ");
+    localStringBuilder.append(localBitmap);
+    QLog.d("ViewUtils", 2, localStringBuilder.toString());
+    if (localBitmap != null)
     {
-      StackBlur.a(localBitmap, this.b);
-      this.jdField_a_of_type_AndroidViewView.post(new ViewUtils.1.1(this, localBitmap));
-      return;
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
+      try
+      {
+        StackBlur.a(localBitmap, this.b);
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
       {
         localOutOfMemoryError.printStackTrace();
       }
+      this.jdField_a_of_type_AndroidViewView.post(new ViewUtils.1.1(this, localBitmap));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.ViewUtils.1
  * JD-Core Version:    0.7.0.1
  */

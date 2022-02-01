@@ -4,11 +4,13 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetBigShowRecommendReq
   extends JceStruct
 {
   static ArrayList<byte[]> cache_framePics = new ArrayList();
+  public int MediaType = 0;
   public String SdkVersion = "";
   public ArrayList<byte[]> framePics = null;
   
@@ -21,10 +23,11 @@ public final class GetBigShowRecommendReq
   
   public GetBigShowRecommendReq() {}
   
-  public GetBigShowRecommendReq(ArrayList<byte[]> paramArrayList, String paramString)
+  public GetBigShowRecommendReq(ArrayList<byte[]> paramArrayList, String paramString, int paramInt)
   {
     this.framePics = paramArrayList;
     this.SdkVersion = paramString;
+    this.MediaType = paramInt;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -35,17 +38,20 @@ public final class GetBigShowRecommendReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.framePics != null) {
-      paramJceOutputStream.write(this.framePics, 0);
+    Object localObject = this.framePics;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.SdkVersion != null) {
-      paramJceOutputStream.write(this.SdkVersion, 1);
+    localObject = this.SdkVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
+    paramJceOutputStream.write(this.MediaType, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.SHADOW_BACKEND_INTERFACE.GetBigShowRecommendReq
  * JD-Core Version:    0.7.0.1
  */

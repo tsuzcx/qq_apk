@@ -65,19 +65,21 @@ public class ReportCenter
     int i;
     if (paramInt == 0)
     {
-      i = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_CGIReportFrequencySuccess");
+      i = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_CGIReportFrequencySuccess");
       paramInt = i;
       if (i == 0) {
-        paramInt = 10;
+        return 10;
       }
     }
-    do
+    else
     {
-      return paramInt;
-      i = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_CGIReportFrequencyFailed");
+      i = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_CGIReportFrequencyFailed");
       paramInt = i;
-    } while (i != 0);
-    return 100;
+      if (i == 0) {
+        paramInt = 100;
+      }
+    }
+    return paramInt;
   }
   
   protected Bundle a()
@@ -86,8 +88,12 @@ public class ReportCenter
     if (localObject1 != null) {
       this.jdField_a_of_type_JavaUtilArrayList.addAll((Collection)localObject1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportCenter", 2, "-->prepareCgiData, itemList size: " + this.jdField_a_of_type_JavaUtilArrayList.size());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("-->prepareCgiData, itemList size: ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      QLog.d("ReportCenter", 2, ((StringBuilder)localObject1).toString());
     }
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
       return null;
@@ -103,21 +109,59 @@ public class ReportCenter
       while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
         Object localObject2 = (BaseData)this.jdField_a_of_type_JavaUtilArrayList.get(i);
-        ((Bundle)localObject1).putString(i + "_1", (String)((BaseData)localObject2).attrs.get("appid"));
-        ((Bundle)localObject1).putString(i + "_2", (String)((BaseData)localObject2).attrs.get("apn"));
-        ((Bundle)localObject1).putString(i + "_3", (String)((BaseData)localObject2).attrs.get("frequency"));
-        ((Bundle)localObject1).putString(i + "_4", (String)((BaseData)localObject2).attrs.get("commandid"));
-        ((Bundle)localObject1).putString(i + "_5", (String)((BaseData)localObject2).attrs.get("resultCode"));
-        ((Bundle)localObject1).putString(i + "_6", (String)((BaseData)localObject2).attrs.get("timeCost"));
-        ((Bundle)localObject1).putString(i + "_7", (String)((BaseData)localObject2).attrs.get("reqSize"));
-        ((Bundle)localObject1).putString(i + "_8", (String)((BaseData)localObject2).attrs.get("rspSize"));
-        ((Bundle)localObject1).putString(i + "_9", (String)((BaseData)localObject2).attrs.get("detail"));
-        ((Bundle)localObject1).putString(i + "_10", (String)((BaseData)localObject2).attrs.get("uin"));
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_1");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("appid"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_2");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("apn"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_3");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("frequency"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_4");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("commandid"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_5");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("resultCode"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_6");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("timeCost"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_7");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("reqSize"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_8");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("rspSize"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_9");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("detail"));
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_10");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)((BaseData)localObject2).attrs.get("uin"));
         boolean bool = Boolean.toString(true).equals(((BaseData)localObject2).attrs.get("from_opensdk"));
-        localObject2 = MobileInfoUtil.a(bool) + "&" + (String)((BaseData)localObject2).attrs.get("deviceInfo");
-        ((Bundle)localObject1).putString(i + "_11", (String)localObject2);
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(MobileInfoUtil.getDeviceinfoForCgiReport(bool));
+        localStringBuilder2.append("&");
+        localStringBuilder2.append((String)((BaseData)localObject2).attrs.get("deviceInfo"));
+        localObject2 = localStringBuilder2.toString();
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(i);
+        localStringBuilder2.append("_11");
+        ((Bundle)localObject1).putString(localStringBuilder2.toString(), (String)localObject2);
         i += 1;
       }
+      StringBuilder localStringBuilder1;
       return localObject1;
     }
     catch (Exception localException)
@@ -125,8 +169,12 @@ public class ReportCenter
       if (QLog.isColorLevel()) {
         QLog.e("ReportCenter", 2, "-->prepareCgiData, exception.", localException);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportCenter", 2, "-->prepareCgiData, end. params: " + ((Bundle)localObject1).toString());
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("-->prepareCgiData, end. params: ");
+        localStringBuilder1.append(((Bundle)localObject1).toString());
+        QLog.d("ReportCenter", 2, localStringBuilder1.toString());
       }
     }
   }
@@ -138,30 +186,31 @@ public class ReportCenter
   
   public void a(Bundle paramBundle, String paramString1, String paramString2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (paramBundle == null) {}
-    for (;;)
-    {
+    if (paramBundle == null) {
       return;
-      try
-      {
-        CommonDataAdapter.a().a(Long.valueOf(paramString2).longValue());
-        if (QLog.isColorLevel()) {
-          QLog.d("ReportCenter", 2, "-->reportVia, bundle: " + paramBundle.toString());
-        }
-        if ((!a("report_via", paramString1)) && (!paramBoolean1)) {
-          continue;
-        }
-        this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new ReportCenter.2(this, paramString2, paramBoolean2, paramBundle, paramBoolean1));
-        return;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          CommonDataAdapter.a().a(0L);
-        }
-      }
     }
+    try
+    {
+      CommonDataAdapter.a().a(Long.valueOf(paramString2).longValue());
+    }
+    catch (Exception localException)
+    {
+      label21:
+      StringBuilder localStringBuilder;
+      break label21;
+    }
+    CommonDataAdapter.a().a(0L);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->reportVia, bundle: ");
+      localStringBuilder.append(paramBundle.toString());
+      QLog.d("ReportCenter", 2, localStringBuilder.toString());
+    }
+    if ((!a("report_via", paramString1)) && (!paramBoolean1)) {
+      return;
+    }
+    this.jdField_b_of_type_JavaUtilConcurrentExecutor.execute(new ReportCenter.2(this, paramString2, paramBoolean2, paramBundle, paramBoolean1));
   }
   
   protected void a(String paramString)
@@ -171,8 +220,18 @@ public class ReportCenter
   
   public void a(String paramString1, int paramInt1, int paramInt2, String paramString2, int paramInt3, String paramString3, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportCenter", 2, "-->reportCgi, command: " + paramString1 + " | responseCode: " + paramInt2 + " | uin: " + paramString2 + " | detail: " + paramString3);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->reportCgi, command: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" | responseCode: ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" | uin: ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" | detail: ");
+      localStringBuilder.append(paramString3);
+      QLog.d("ReportCenter", 2, localStringBuilder.toString());
     }
     this.c.execute(new ReportCenter.7(this, paramInt3, paramString1, paramString3, paramInt1, paramInt2, paramString2, paramBoolean));
   }
@@ -184,10 +243,31 @@ public class ReportCenter
   
   public void a(String paramString1, long paramLong1, long paramLong2, long paramLong3, int paramInt, long paramLong4, String paramString2, String paramString3, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportCenter", 2, "-->reportCgi, command: " + paramString1 + " | startTime: " + paramLong1 + " | reqSize:" + paramLong2 + " | rspSize: " + paramLong3 + " | responseCode: " + paramInt + " | uin: " + paramLong4 + " | appid: " + paramString2 + " | detail: " + paramString3);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->reportCgi, command: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" | startTime: ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(" | reqSize:");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(" | rspSize: ");
+      localStringBuilder.append(paramLong3);
+      localStringBuilder.append(" | responseCode: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" | uin: ");
+      localStringBuilder.append(paramLong4);
+      localStringBuilder.append(" | appid: ");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" | detail: ");
+      localStringBuilder.append(paramString3);
+      QLog.d("ReportCenter", 2, localStringBuilder.toString());
     }
-    if ((!a("report_cgi", "" + paramInt)) && (!paramBoolean1)) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt);
+    if ((!a("report_cgi", localStringBuilder.toString())) && (!paramBoolean1)) {
       return;
     }
     long l = SystemClock.elapsedRealtime();
@@ -213,8 +293,9 @@ public class ReportCenter
     }
     catch (Exception paramString1)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ReportCenter", 2, "-->reportVia 2 exception", paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportCenter", 2, "-->reportVia 2 exception", paramString1);
+      }
     }
   }
   
@@ -232,8 +313,9 @@ public class ReportCenter
     }
     catch (Exception paramString1)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("ReportCenter", 2, "-->reportVia 1 exception", paramString1);
+      if (QLog.isColorLevel()) {
+        QLog.d("ReportCenter", 2, "-->reportVia 1 exception", paramString1);
+      }
     }
   }
   
@@ -244,163 +326,173 @@ public class ReportCenter
   
   protected boolean a(String paramString, int paramInt)
   {
-    int i = 5;
-    boolean bool = false;
     int j;
+    int i;
     if (paramString.equals("report_cgi"))
     {
-      j = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_CGIReportMaxcount");
+      j = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Common_CGIReportMaxcount");
+      i = j;
       if (j != 0) {}
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportCenter", 2, "-->availableCount, report: " + paramString + " | dataSize: " + paramInt + " | maxcount: " + i);
-      }
-      if (paramInt >= i) {
-        bool = true;
-      }
-      return bool;
-      i = j;
-      continue;
-      if (paramString.equals("report_via"))
+      for (;;)
       {
-        j = OpenConfig.a(CommonDataAdapter.a().a(), null).a("Agent_ReportBatchCount");
+        i = 5;
+        break label81;
+        if (!paramString.equals("report_via")) {
+          break;
+        }
+        j = OpenConfig.a(CommonDataAdapter.a().a(), null).b("Agent_ReportBatchCount");
+        i = j;
         if (j != 0) {
-          i = j;
+          break label81;
         }
       }
-      else
-      {
-        i = 0;
-      }
+      i = 0;
     }
+    label81:
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->availableCount, report: ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" | dataSize: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" | maxcount: ");
+      localStringBuilder.append(i);
+      QLog.d("ReportCenter", 2, localStringBuilder.toString());
+    }
+    return paramInt >= i;
   }
   
   protected boolean a(String paramString1, String paramString2)
   {
-    boolean bool1 = true;
-    boolean bool3 = false;
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("ReportCenter", 2, "-->availableFrequency, report: " + paramString1 + " | ext: " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->availableFrequency, report: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" | ext: ");
+      localStringBuilder.append(paramString2);
+      QLog.d("ReportCenter", 2, localStringBuilder.toString());
     }
-    if (TextUtils.isEmpty(paramString1)) {
-      return bool2;
+    boolean bool2 = TextUtils.isEmpty(paramString1);
+    boolean bool1 = false;
+    if (bool2) {
+      return false;
     }
     if (paramString1.equals("report_cgi")) {}
-    for (;;)
+    try
     {
-      try
+      int i = Integer.parseInt(paramString2);
+      int j = a(i);
+      i = j;
+      if (this.jdField_a_of_type_JavaUtilRandom.nextInt(100) < j)
       {
-        int i = Integer.parseInt(paramString2);
-        i = a(i);
-        if (this.jdField_a_of_type_JavaUtilRandom.nextInt(100) < i)
-        {
-          bool2 = bool1;
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("ReportCenter", 2, "-->availableFrequency, result: " + bool1 + " | frequency: " + i);
-          return bool1;
-        }
-        bool1 = false;
-        continue;
+        i = j;
         if (paramString1.equals("report_via"))
         {
-          i = ReportConfig.a(paramString2);
-          if (new Random().nextInt(100) < i)
+          j = ReportConfig.a(paramString2);
+          i = j;
+          if (new Random().nextInt(100) < j)
           {
+            i = j;
             bool1 = true;
-            continue;
           }
-          bool1 = bool3;
-          continue;
         }
-        i = 100;
+        else
+        {
+          i = 100;
+        }
       }
-      catch (Exception paramString1)
+      if (QLog.isColorLevel())
       {
-        return false;
+        paramString1 = new StringBuilder();
+        paramString1.append("-->availableFrequency, result: ");
+        paramString1.append(bool1);
+        paramString1.append(" | frequency: ");
+        paramString1.append(i);
+        QLog.d("ReportCenter", 2, paramString1.toString());
       }
-      bool1 = bool3;
+      return bool1;
     }
+    catch (Exception paramString1) {}
+    return false;
   }
   
   protected Bundle b()
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject1 = ReportDatabaseHelper.a().a("report_via");
+      if (localObject1 != null) {
+        this.jdField_b_of_type_JavaUtilArrayList.addAll((Collection)localObject1);
+      }
+      if (QLog.isColorLevel())
       {
-        Object localObject1 = ReportDatabaseHelper.a().a("report_via");
-        if (localObject1 != null) {
-          this.jdField_b_of_type_JavaUtilArrayList.addAll((Collection)localObject1);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ReportCenter", 2, "-->prepareViaData, itemList size: " + this.jdField_b_of_type_JavaUtilArrayList.size());
-        }
-        int i = this.jdField_b_of_type_JavaUtilArrayList.size();
-        if (i == 0)
-        {
-          localObject1 = null;
-          return localObject1;
-        }
-        localObject1 = new JSONArray();
-        localObject4 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-        if (!((Iterator)localObject4).hasNext()) {
-          break label228;
-        }
-        Object localObject5 = (Serializable)((Iterator)localObject4).next();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("-->prepareViaData, itemList size: ");
+        ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaUtilArrayList.size());
+        QLog.d("ReportCenter", 2, ((StringBuilder)localObject1).toString());
+      }
+      int i = this.jdField_b_of_type_JavaUtilArrayList.size();
+      if (i == 0) {
+        return null;
+      }
+      localObject1 = new JSONArray();
+      Object localObject3 = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        Object localObject4 = (Serializable)((Iterator)localObject3).next();
         localJSONObject = new JSONObject();
-        localObject5 = (BaseData)localObject5;
-        Iterator localIterator = ((BaseData)localObject5).attrs.keySet().iterator();
-        if (localIterator.hasNext())
+        localObject4 = (BaseData)localObject4;
+        Iterator localIterator = ((BaseData)localObject4).attrs.keySet().iterator();
+        while (localIterator.hasNext())
         {
           String str = (String)localIterator.next();
           try
           {
-            localJSONObject.put(str, ((BaseData)localObject5).attrs.get(str));
+            localJSONObject.put(str, ((BaseData)localObject4).attrs.get(str));
           }
           catch (JSONException localJSONException2) {}
-          if (!QLog.isColorLevel()) {
-            continue;
+          if (QLog.isColorLevel()) {
+            QLog.d("ReportCenter", 2, "-->prepareViaData, put bundle to json array exception", localJSONException2);
           }
-          QLog.d("ReportCenter", 2, "-->prepareViaData, put bundle to json array exception", localJSONException2);
-          continue;
         }
-        localObject2.put(localJSONObject);
-      }
-      finally {}
-      continue;
-      label228:
-      if (QLog.isColorLevel()) {
-        QLog.d("ReportCenter", 2, "-->prepareViaData, JSONArray array: " + localObject2.toString());
-      }
-      Object localObject4 = new Bundle();
-      JSONObject localJSONObject = new JSONObject();
-      Object localObject3;
-      try
-      {
-        localJSONObject.put("data", localObject2);
-        ((Bundle)localObject4).putString("data", localJSONObject.toString());
-        localObject3 = localObject4;
-      }
-      catch (JSONException localJSONException1)
-      {
-        localObject3 = localObject4;
+        ((JSONArray)localObject1).put(localJSONObject);
       }
       if (QLog.isColorLevel())
       {
-        QLog.d("ReportCenter", 2, "-->prepareViaData, put bundle to json array exception", localJSONException1);
-        localObject3 = localObject4;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("-->prepareViaData, JSONArray array: ");
+        ((StringBuilder)localObject3).append(((JSONArray)localObject1).toString());
+        QLog.d("ReportCenter", 2, ((StringBuilder)localObject3).toString());
       }
+      localObject3 = new Bundle();
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("data", localObject1);
+        ((Bundle)localObject3).putString("data", localJSONObject.toString());
+        return localObject3;
+      }
+      catch (JSONException localJSONException1)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ReportCenter", 2, "-->prepareViaData, put bundle to json array exception", localJSONException1);
+        }
+        return localObject3;
+      }
+      throw localObject2;
     }
+    finally {}
+    for (;;) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.report.ReportCenter
  * JD-Core Version:    0.7.0.1
  */

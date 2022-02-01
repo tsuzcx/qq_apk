@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.view.View;
 import android.widget.ImageView;
+import com.tencent.biz.qcircleshadow.handler.QCircleHandler;
 import com.tencent.biz.richframework.delegate.impl.RFLog;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.qcircle.api.data.Option;
 import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
 import com.tencent.mobileqq.qcircle.tempapi.avatar.QCircleAvatarInfo;
 import cooperation.qqcircle.picload.QCircleFeedPicLoader;
 import cooperation.qqcircle.picload.QCircleOkHttpDW;
@@ -34,8 +34,9 @@ public class QCircleAvatarLoader
   private QCircleAvatarLoader()
   {
     int i = Runtime.getRuntime().availableProcessors();
-    this.mPreloadExecutor = QCircleFeedPicLoader.createPool(i, i * 2 + 1);
-    this.mLoadExecutor = QCircleFeedPicLoader.createPool(i, i * 2 + 1);
+    int j = i * 2 + 1;
+    this.mPreloadExecutor = QCircleFeedPicLoader.createPool(i, j);
+    this.mLoadExecutor = QCircleFeedPicLoader.createPool(i, j);
     initEm();
   }
   
@@ -45,15 +46,15 @@ public class QCircleAvatarLoader
     paramAvatarOption = paramAvatarOption.getUin();
     if (localImageView != null)
     {
-      if ((localImageView.getTag(2131374346) instanceof String))
+      if ((localImageView.getTag(2131373899) instanceof String))
       {
-        if (((String)localImageView.getTag(2131374346)).equals(paramAvatarOption)) {
+        if (((String)localImageView.getTag(2131373899)).equals(paramAvatarOption)) {
           return true;
         }
-        localImageView.setTag(2131374346, paramAvatarOption);
+        localImageView.setTag(2131373899, paramAvatarOption);
         return false;
       }
-      localImageView.setTag(2131374346, paramAvatarOption);
+      localImageView.setTag(2131373899, paramAvatarOption);
     }
     return false;
   }
@@ -72,15 +73,16 @@ public class QCircleAvatarLoader
   
   public static QCircleAvatarLoader g()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new QCircleAvatarLoader();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new QCircleAvatarLoader();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private EntityManager initEm()
@@ -93,30 +95,52 @@ public class QCircleAvatarLoader
     }
     catch (Exception localException)
     {
-      RFLog.e("QCircleAvatar", RFLog.USR, "getmEm " + localException);
+      int i = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getmEm ");
+      localStringBuilder.append(localException);
+      RFLog.e("QCircleAvatar", i, localStringBuilder.toString());
     }
     return null;
   }
   
   public void loadAvatar(AvatarOption paramAvatarOption)
   {
-    if ((paramAvatarOption == null) || (checkDoubleLoad(paramAvatarOption))) {}
-    do
+    if (paramAvatarOption != null)
     {
-      return;
+      if (checkDoubleLoad(paramAvatarOption)) {
+        return;
+      }
       if (paramAvatarOption.getTargetView() != null) {
-        paramAvatarOption.getTargetView().setImageDrawable(MobileQQ.sMobileQQ.getApplicationContext().getResources().getDrawable(2130840452));
+        paramAvatarOption.getTargetView().setImageDrawable(MobileQQ.sMobileQQ.getApplicationContext().getResources().getDrawable(2130840321));
       }
       paramAvatarOption.mStartTime = Long.valueOf(System.currentTimeMillis());
       paramAvatarOption.setSeq(QCircleFeedPicLoader.sAtomicInteger.getAndIncrement()).setPicType(3);
-      RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + paramAvatarOption.getSeq() + "  load seq start:" + paramAvatarOption.getUin() + " is preload:" + paramAvatarOption.isFromPreload());
-      if (!paramAvatarOption.isFromPreload()) {
-        break;
+      int i = RFLog.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("seq = ");
+      localStringBuilder.append(paramAvatarOption.getSeq());
+      localStringBuilder.append("  load seq start:");
+      localStringBuilder.append(paramAvatarOption.getUin());
+      localStringBuilder.append(" is preload:");
+      localStringBuilder.append(paramAvatarOption.isFromPreload());
+      RFLog.d("QCircleAvatar", i, localStringBuilder.toString());
+      if (paramAvatarOption.isFromPreload())
+      {
+        if (this.mCheckTask.containsKey(paramAvatarOption.getUin()))
+        {
+          i = RFLog.USR;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("seq = ");
+          localStringBuilder.append(paramAvatarOption.getSeq());
+          localStringBuilder.append("  load return, has check already");
+          RFLog.d("QCircleAvatar", i, localStringBuilder.toString());
+        }
       }
-    } while (!this.mCheckTask.containsKey(paramAvatarOption.getUin()));
-    RFLog.d("QCircleAvatar", RFLog.USR, "seq = " + paramAvatarOption.getSeq() + "  load return, has check already");
-    return;
-    checkDownLoad(paramAvatarOption);
+      else {
+        checkDownLoad(paramAvatarOption);
+      }
+    }
   }
   
   public void release()
@@ -128,12 +152,14 @@ public class QCircleAvatarLoader
     this.mTogetherOptions.clear();
     this.mPreloadExecutor.getQueue().clear();
     this.mLoadExecutor.getQueue().clear();
-    QCircleServiceImpl.getQQService().clearAvatarListener();
+    if (QCircleHandler.a() != null) {
+      QCircleHandler.a().a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.avatar.QCircleAvatarLoader
  * JD-Core Version:    0.7.0.1
  */

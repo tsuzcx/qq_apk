@@ -66,6 +66,8 @@ public abstract interface IDavEventListener
   
   public abstract void onNotRecvAudioData(boolean paramBoolean);
   
+  public abstract void onNotifyAIDenoiseTips(boolean paramBoolean);
+  
   public abstract void onOtherTerminalChatingStatus(String paramString, long paramLong, int paramInt);
   
   public abstract void onPauseAudio(String paramString);
@@ -110,7 +112,7 @@ public abstract interface IDavEventListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.engine.dav.IDavEventListener
  * JD-Core Version:    0.7.0.1
  */

@@ -13,25 +13,28 @@ class SDKAvatarSettingManager$6
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt == 1)
+      {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
+        paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager;
+        SDKAvatarSettingManager.a(paramDialogInterface, SDKAvatarSettingManager.a(paramDialogInterface), true, Long.valueOf(SDKAvatarSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager)).longValue(), true);
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.a.dismiss();
-      return;
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6C", "0X8009B6C", 0, 0, "", "", "", "");
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b();
-      SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager, SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager), true, Long.valueOf(SDKAvatarSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager)).longValue(), false);
-      continue;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009B6D", "0X8009B6D", 0, 0, "", "", "", "");
-      SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager, SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager), true, Long.valueOf(SDKAvatarSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager)).longValue(), true);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager;
+      SDKAvatarSettingManager.a(paramDialogInterface, SDKAvatarSettingManager.a(paramDialogInterface), true, Long.valueOf(SDKAvatarSettingManager.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager)).longValue(), false);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.a.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.6
  * JD-Core Version:    0.7.0.1
  */

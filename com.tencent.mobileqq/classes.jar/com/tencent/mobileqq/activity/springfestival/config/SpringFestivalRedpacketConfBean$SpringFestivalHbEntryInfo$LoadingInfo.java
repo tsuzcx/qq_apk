@@ -11,12 +11,22 @@ public class SpringFestivalRedpacketConfBean$SpringFestivalHbEntryInfo$LoadingIn
   
   public String toString()
   {
-    return "LoadingInfo{loadingTime=" + this.loadingTime + ", loadingUrl='" + this.loadingUrl + '\'' + ", loadingTips='" + this.loadingTips + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LoadingInfo{loadingTime=");
+    localStringBuilder.append(this.loadingTime);
+    localStringBuilder.append(", loadingUrl='");
+    localStringBuilder.append(this.loadingUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", loadingTips='");
+    localStringBuilder.append(this.loadingTips);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketConfBean.SpringFestivalHbEntryInfo.LoadingInfo
  * JD-Core Version:    0.7.0.1
  */

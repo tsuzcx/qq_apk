@@ -1,35 +1,56 @@
 package com.tencent.thumbplayer.core.common;
 
-public class TPDrm
+public final class TPDrm
 {
-  public static int[] getDRMCapabilities()
+  private static final String TAG = "TPDrm";
+  private static boolean mIsLibLoaded;
+  
+  static
   {
-    Object localObject1 = null;
     try
     {
-      localObject2 = native_getDRMCapabilities();
-      localObject1 = localObject2;
+      TPNativeLibraryLoader.loadLibIfNeeded(null);
+      mIsLibLoaded = true;
+      return;
     }
-    catch (Exception localException)
+    catch (UnsupportedOperationException localUnsupportedOperationException)
     {
-      for (;;)
+      TPNativeLog.printLog(4, localUnsupportedOperationException.getMessage());
+      mIsLibLoaded = false;
+    }
+  }
+  
+  public static int[] getDRMCapabilities()
+  {
+    if (isLibLoaded()) {
+      try
       {
-        Object localObject2;
-        localException.printStackTrace();
+        int[] arrayOfInt2 = native_getDRMCapabilities();
+        int[] arrayOfInt1 = arrayOfInt2;
+        if (arrayOfInt2 == null) {
+          arrayOfInt1 = new int[0];
+        }
+        return arrayOfInt1;
+      }
+      catch (Throwable localThrowable)
+      {
+        TPNativeLog.printLog(4, localThrowable.toString());
+        throw new TPNativeLibraryException("Failed to call native func.");
       }
     }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = new int[0];
-    }
-    return localObject2;
+    throw new TPNativeLibraryException("Failed to load native library.");
+  }
+  
+  private static boolean isLibLoaded()
+  {
+    return mIsLibLoaded;
   }
   
   static native int[] native_getDRMCapabilities();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPDrm
  * JD-Core Version:    0.7.0.1
  */

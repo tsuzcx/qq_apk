@@ -16,7 +16,7 @@ import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
-import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerInfo;
+import com.tencent.mobileqq.emoticon.StickerInfo;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.text.QQText;
 import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
@@ -57,48 +57,46 @@ public class MessageForText
   public static ArrayList<AtTroopMemberInfo> getTroopMemberInfoFromExtrJson(String paramString)
   {
     String str = paramString;
-    if (paramString.startsWith("{")) {}
-    try
-    {
-      localObject2 = new JSONObject(paramString).optJSONArray("0");
-      str = paramString;
-      if (localObject2 != null) {
-        str = ((JSONArray)localObject2).toString();
+    Object localObject2;
+    Object localObject1;
+    if (paramString.startsWith("{")) {
+      try
+      {
+        localObject2 = new JSONObject(paramString).optJSONArray("0");
+        str = paramString;
+        if (localObject2 != null) {
+          str = ((JSONArray)localObject2).toString();
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      Object localObject2;
-      Object localObject1;
-      for (;;)
+      catch (Exception localException)
       {
         QLog.e("MessageForText", 1, localException, new Object[0]);
         localObject1 = paramString;
       }
-      try
-      {
-        localObject1 = new JSONArray((String)localObject1);
-        int i = 0;
-        while (i < ((JSONArray)localObject1).length())
-        {
-          localObject2 = AtTroopMemberInfo.setFromJson(((JSONArray)localObject1).getJSONObject(i));
-          if (localObject2 != null) {
-            paramString.add(localObject2);
-          }
-          i += 1;
-        }
-        return paramString;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("MessageForText", 1, paramString, new Object[0]);
-        return null;
-      }
     }
     paramString = new ArrayList();
-    if (TextUtils.isEmpty(str)) {
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return null;
     }
+    try
+    {
+      localObject1 = new JSONArray((String)localObject1);
+      int i = 0;
+      while (i < ((JSONArray)localObject1).length())
+      {
+        localObject2 = AtTroopMemberInfo.setFromJson(((JSONArray)localObject1).getJSONObject(i));
+        if (localObject2 != null) {
+          paramString.add(localObject2);
+        }
+        i += 1;
+      }
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      QLog.e("MessageForText", 1, paramString, new Object[0]);
+    }
+    return null;
   }
   
   private void parseStickerMsg()
@@ -113,205 +111,207 @@ public class MessageForText
         if (this.msgtype == -1000) {
           this.msgtype = -2058;
         }
-        localObject = EmojiStickerManager.StickerInfo.transformFromJson((String)localObject);
+        localObject = StickerInfo.transformFromJson((String)localObject);
         if (localObject != null)
         {
-          ((EmojiStickerManager.StickerInfo)localObject).isDisplayed = this.isread;
+          ((StickerInfo)localObject).isDisplayed = this.isread;
+          this.stickerInfo = localObject;
+          System.currentTimeMillis();
+        }
+      }
+    }
+    else if (this.msgtype == -2058)
+    {
+      localObject = getExtInfoFromExtStr("sticker_info");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = StickerInfo.transformFromJson((String)localObject);
+        if (localObject != null)
+        {
+          ((StickerInfo)localObject).isDisplayed = this.isread;
           this.stickerInfo = localObject;
         }
       }
     }
-    do
-    {
-      do
-      {
-        System.currentTimeMillis();
-        do
-        {
-          return;
-        } while (this.msgtype != -2058);
-        localObject = getExtInfoFromExtStr("sticker_info");
-      } while (TextUtils.isEmpty((CharSequence)localObject));
-      localObject = EmojiStickerManager.StickerInfo.transformFromJson((String)localObject);
-    } while (localObject == null);
-    ((EmojiStickerManager.StickerInfo)localObject).isDisplayed = this.isread;
-    this.stickerInfo = localObject;
   }
   
   protected void doParse()
   {
-    boolean bool3 = true;
     super.doParse();
+    boolean bool3 = false;
     doParse(false);
     String str1 = getExtInfoFromExtStr("sens_msg_need_parse");
-    if (!TextUtils.isEmpty(str1)) {}
-    String str2;
-    do
-    {
-      for (;;)
+    boolean bool1;
+    if (!TextUtils.isEmpty(str1)) {
+      try
       {
-        try
-        {
-          bool1 = Boolean.parseBoolean(str1);
-          boolean bool2 = bool1;
-          if (bool1) {
-            if (!(BaseActivity.sTopActivity instanceof MultiForwardActivity))
-            {
-              bool2 = bool1;
-              if (!(BaseActivity.sTopActivity instanceof ChatHistoryActivity)) {}
-            }
-            else
-            {
-              bool2 = false;
-            }
-          }
-          if (bool2) {
-            break;
-          }
-          return;
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-        bool1 = true;
+        bool1 = Boolean.parseBoolean(str1);
       }
-      str2 = getExtInfoFromExtStr("sens_msg_ctrl_info");
-    } while (TextUtils.isEmpty(str2));
-    Object localObject = getExtInfoFromExtStr("sens_msg_confirmed");
-    if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equalsIgnoreCase("1"))) {}
-    for (boolean bool1 = bool3;; bool1 = false)
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+    } else {
+      bool1 = true;
+    }
+    boolean bool2 = bool1;
+    if (bool1) {
+      if (!(BaseActivity.sTopActivity instanceof MultiForwardActivity))
+      {
+        bool2 = bool1;
+        if (!(BaseActivity.sTopActivity instanceof ChatHistoryActivity)) {}
+      }
+      else
+      {
+        bool2 = false;
+      }
+    }
+    if (!bool2) {
+      return;
+    }
+    String str2 = getExtInfoFromExtStr("sens_msg_ctrl_info");
+    if (!TextUtils.isEmpty(str2))
     {
+      Object localObject = getExtInfoFromExtStr("sens_msg_confirmed");
+      bool1 = bool3;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        bool1 = bool3;
+        if (((String)localObject).equalsIgnoreCase("1")) {
+          bool1 = true;
+        }
+      }
       if (!bool1) {
         saveExtInfoToExtStr("sens_msg_original_text", this.msg);
       }
       localObject = new CopyOnWriteArrayList();
       ((List)localObject).add(this);
       MQPSensitiveMsgUtil.a(this, (List)localObject, bool1, HexUtil.hexStr2Bytes(str2));
-      return;
     }
   }
   
   protected void doParse(boolean paramBoolean)
   {
-    paramBoolean = false;
-    Object localObject2 = this.msg;
-    Object localObject1 = localObject2;
+    Object localObject3 = this.msg;
+    Object localObject1 = localObject3;
     if (this.msgtype == -1003)
     {
-      localObject1 = ActionMsgUtil.a((String)localObject2);
+      localObject1 = ActionMsgUtil.a((String)localObject3);
       this.action = ((MsgBody)localObject1).action;
       localObject1 = ((MsgBody)localObject1).msg;
     }
-    localObject2 = localObject1;
+    localObject3 = localObject1;
     if (localObject1 == null) {
-      localObject2 = "";
+      localObject3 = "";
     }
     if (this.istroop == 1008)
     {
-      this.sb = new PubAccountQQText((CharSequence)localObject2, 13);
+      this.sb = new PubAccountQQText((CharSequence)localObject3, 13);
       ((PubAccountQQText)this.sb).a = this.selfuin;
       ((PubAccountQQText)this.sb).b = this.frienduin;
       ((PubAccountQQText)this.sb).setBizSrc(((IPublicAccountUtil)QRoute.api(IPublicAccountUtil.class)).getSourceId(this.frienduin));
     }
-    for (;;)
+    else if ((this.istroop == 1024) && (!isSendFromLocal()))
     {
-      if ((this.sb instanceof QQText)) {
-        ((QQText)this.sb).setBizSrc("biz_src_jc_aio");
-      }
-      return;
-      if ((this.istroop == 1024) && (!isSendFromLocal()))
+      localObject1 = null;
+      boolean bool = false;
+      Object localObject4;
+      try
       {
-        localObject1 = null;
-        for (;;)
+        AppRuntime localAppRuntime1 = BaseApplicationImpl.sApplication.getAppRuntime(this.selfuin);
+        localObject1 = localAppRuntime1;
+        if (QQAppInterface.class.isInstance(localAppRuntime1))
         {
-          try
-          {
-            localAppRuntime = BaseApplicationImpl.sApplication.getAppRuntime(this.selfuin);
-            localObject1 = localAppRuntime;
-            if (!QQAppInterface.class.isInstance(localAppRuntime)) {
-              continue;
-            }
-            localObject1 = localAppRuntime;
-            boolean bool = CrmUtils.a((QQAppInterface)localAppRuntime, this.frienduin, this.istroop);
-            paramBoolean = bool;
-          }
-          catch (AccountNotMatchException localAccountNotMatchException)
-          {
-            AppRuntime localAppRuntime;
-            localAccountNotMatchException.printStackTrace();
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.e("MessageForText", 2, String.format("User %s don't match current accound", new Object[] { this.selfuin }));
-            localObject3 = localObject1;
-            continue;
-            this.sb = new QQText((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this);
-            continue;
-          }
-          if (!paramBoolean) {
-            continue;
-          }
-          this.sb = new CrmIvrText((CharSequence)localObject2, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localAppRuntime);
-          ((QQText)this.sb).setBizSrc("biz_src_jc_aio");
-          break;
-          localObject1 = localAppRuntime;
+          localObject1 = localAppRuntime1;
+          paramBoolean = CrmUtils.a((QQAppInterface)localAppRuntime1, this.frienduin, this.istroop);
+          localObject4 = localAppRuntime1;
+        }
+        else
+        {
+          localObject1 = localAppRuntime1;
+          paramBoolean = bool;
+          localObject4 = localAppRuntime1;
           if (QLog.isColorLevel())
           {
-            localObject1 = localAppRuntime;
+            localObject1 = localAppRuntime1;
             QLog.d("MessageForText", 2, "We get error AppRuntime");
+            paramBoolean = bool;
+            localObject4 = localAppRuntime1;
           }
-          paramBoolean = false;
         }
       }
-      Object localObject3;
-      if ((this.istroop == 1037) || (this.istroop == 1045) || (this.istroop == 1044))
+      catch (AccountNotMatchException localAccountNotMatchException)
       {
-        this.sb = new QQText((CharSequence)localObject2, 5, ChatTextSizeSettingActivity.a(), this);
-        if (QLog.isColorLevel()) {
-          QLog.d("MessageForText", 2, "limit chat, dont parse url:" + this.uniseq);
-        }
-      }
-      else
-      {
-        this.sb = ColorNickManager.a((String)localObject2, this, ChatTextSizeSettingActivity.a(), 13);
-        localObject1 = getExtInfoFromExtStr("disc_at_info_list");
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        localAccountNotMatchException.printStackTrace();
+        paramBoolean = bool;
+        localObject4 = localObject1;
+        if (QLog.isColorLevel())
         {
-          localObject2 = new StringBuilder((String)localObject2);
-          try
+          QLog.e("MessageForText", 2, String.format("User %s don't match current accound", new Object[] { this.selfuin }));
+          localObject4 = localObject1;
+          paramBoolean = bool;
+        }
+      }
+      if (paramBoolean) {
+        this.sb = new CrmIvrText((CharSequence)localObject3, 13, ChatTextSizeSettingActivity.a(), this, this.frienduin, this.selfuin, (QQAppInterface)localObject4);
+      } else {
+        this.sb = new QQText((CharSequence)localObject3, 13, ChatTextSizeSettingActivity.a(), this);
+      }
+      ((QQText)this.sb).setBizSrc("biz_src_jc_aio");
+    }
+    else if ((this.istroop != 1045) && (this.istroop != 1044))
+    {
+      this.sb = ColorNickManager.a((String)localObject3, this, ChatTextSizeSettingActivity.a(), 13);
+      localObject1 = getExtInfoFromExtStr("disc_at_info_list");
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject3 = new StringBuilder((String)localObject3);
+        try
+        {
+          AppRuntime localAppRuntime2 = BaseApplicationImpl.sApplication.getRuntime();
+          if (QQAppInterface.class.isInstance(localAppRuntime2))
           {
-            localObject3 = BaseApplicationImpl.sApplication.getRuntime();
-            if (!QQAppInterface.class.isInstance(localObject3)) {
-              break label593;
-            }
-            this.msg2 = AtTroopMemberSpan.a((QQAppInterface)localObject3, (StringBuilder)localObject2, (String)localObject1, this.frienduin, isSend()).toString();
+            this.msg2 = AtTroopMemberSpan.a((QQAppInterface)localAppRuntime2, (StringBuilder)localObject3, (String)localObject1, this.frienduin, isSend()).toString();
             this.sb2 = ColorNickManager.a(this.msg2, this, ChatTextSizeSettingActivity.a(), 13);
-            if (!(this.sb2 instanceof QQText)) {
-              continue;
+            if ((this.sb2 instanceof QQText)) {
+              ((QQText)this.sb2).setBizSrc("biz_src_jc_aio");
             }
-            ((QQText)this.sb2).setBizSrc("biz_src_jc_aio");
           }
-          catch (Exception localException)
+          else if (QLog.isColorLevel())
           {
-            QLog.e("MessageForText", 1, "replaceAtMsgByMarkName", localException);
-          }
-          continue;
-          label593:
-          if (QLog.isColorLevel()) {
             QLog.d("MessageForText", 2, "We get error AppRuntime");
           }
         }
+        catch (Exception localException)
+        {
+          QLog.e("MessageForText", 1, "replaceAtMsgByMarkName", localException);
+        }
       }
+    }
+    else
+    {
+      this.sb = new QQText((CharSequence)localObject3, 5, ChatTextSizeSettingActivity.a(), this);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("limit chat, dont parse url:");
+        ((StringBuilder)localObject2).append(this.uniseq);
+        QLog.d("MessageForText", 2, ((StringBuilder)localObject2).toString());
+      }
+    }
+    Object localObject2 = this.sb;
+    if ((localObject2 instanceof QQText)) {
+      ((QQText)localObject2).setBizSrc("biz_src_jc_aio");
     }
   }
   
   public String getSummaryMsg()
   {
-    if (this.sb == null) {
+    CharSequence localCharSequence = this.sb;
+    if (localCharSequence == null) {
       return this.msg;
     }
-    return this.sb.toString();
+    return localCharSequence.toString();
   }
   
   public boolean isSupportFTS()
@@ -324,13 +324,13 @@ public class MessageForText
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
     parseStickerMsg();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     String str2 = getExtInfoFromExtStr("sens_msg_original_text");
     String str1 = str2;
@@ -357,7 +357,7 @@ public class MessageForText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForText
  * JD-Core Version:    0.7.0.1
  */

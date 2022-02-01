@@ -4,6 +4,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import com.tencent.aelight.camera.util.api.IQIMShortVideoUtil;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.model.UserManager;
 import com.tencent.biz.qqstory.model.item.QQUserUIItem;
@@ -16,7 +17,7 @@ import com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerVideoData;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import dov.com.qq.im.QIMShortVideoUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -52,7 +53,8 @@ public class GameBannerVideoInfoController
     if (!super.a(paramView)) {
       return false;
     }
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData != null) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a().isGameVideo())) {
+    paramView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData;
+    if ((paramView != null) && (paramView.a().isGameVideo())) {
       StoryReportor.a("video_game", "clk_url", 0, 0, new String[] { "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a().mVid });
     }
     return true;
@@ -71,59 +73,54 @@ public class GameBannerVideoInfoController
     paramBannerViewHolder.c.setVisibility(0);
     paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
     paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    paramBannerViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839752);
+    paramBannerViewHolder.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130839610);
     paramBannerViewHolder.jdField_a_of_type_AndroidViewView.setPadding(paramBannerViewHolder.jdField_a_of_type_AndroidViewView.getPaddingLeft(), paramBannerViewHolder.jdField_a_of_type_AndroidViewView.getPaddingTop(), paramBannerViewHolder.jdField_a_of_type_AndroidViewView.getPaddingRight(), paramBannerViewHolder.jdField_a_of_type_AndroidViewView.getPaddingBottom());
     Object localObject3 = ((UserManager)SuperManager.a(2)).b(paramStoryPlayerVideoData.a().mOwnerUid);
     String str;
     if ((localObject3 != null) && (((QQUserUIItem)localObject3).isMe()))
     {
-      str = ((VideoLinkGameInfo)localObject1).d;
-      localObject2 = ((VideoLinkGameInfo)localObject1).e;
+      localObject2 = ((VideoLinkGameInfo)localObject1).d;
+      str = ((VideoLinkGameInfo)localObject1).e;
       localObject1 = ((VideoLinkGameInfo)localObject1).f;
-      localObject3 = paramBannerViewHolder.c;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label332;
+    }
+    else
+    {
+      localObject2 = ((VideoLinkGameInfo)localObject1).jdField_a_of_type_JavaLangString;
+      str = ((VideoLinkGameInfo)localObject1).b;
+      if ((localObject3 != null) && (((QQUserUIItem)localObject3).isFriend())) {
+        localObject1 = ((VideoLinkGameInfo)localObject1).c;
+      } else {
+        localObject1 = HardCodeUtil.a(2131705116);
       }
-      label176:
-      ((TextView)localObject3).setText((CharSequence)localObject1);
-      BannerVideoInfoWidget3.a(str, paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramBannerViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramBannerViewHolder.jdField_a_of_type_Int, paramBannerViewHolder.jdField_a_of_type_Int);
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject2);
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
-      if (!TextUtils.equals(this.b, paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString)) {
-        break label341;
-      }
+    }
+    localObject3 = paramBannerViewHolder.c;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject1 = HardCodeUtil.a(2131705115);
+    }
+    ((TextView)localObject3).setText((CharSequence)localObject1);
+    BannerVideoInfoWidget3.a((String)localObject2, paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramBannerViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramBannerViewHolder.jdField_a_of_type_Int, paramBannerViewHolder.jdField_a_of_type_Int);
+    paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(str);
+    paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-1);
+    if (TextUtils.equals(this.b, paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString))
+    {
       this.c = false;
     }
-    for (;;)
+    else
     {
-      if (this.c) {
-        StoryReportor.a("video_game", "exp_url", 0, 0, new String[] { "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a().mVid });
-      }
-      return;
-      str = ((VideoLinkGameInfo)localObject1).jdField_a_of_type_JavaLangString;
-      localObject2 = ((VideoLinkGameInfo)localObject1).b;
-      if ((localObject3 != null) && (((QQUserUIItem)localObject3).isFriend()))
-      {
-        localObject1 = ((VideoLinkGameInfo)localObject1).c;
-        break;
-      }
-      localObject1 = HardCodeUtil.a(2131705040);
-      break;
-      label332:
-      localObject1 = HardCodeUtil.a(2131705039);
-      break label176;
-      label341:
       this.c = true;
-      if (!QIMShortVideoUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b())) {
-        QIMShortVideoUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b());
+      if (!((IQIMShortVideoUtil)QRoute.api(IQIMShortVideoUtil.class)).isPeakAlive(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b())) {
+        ((IQIMShortVideoUtil)QRoute.api(IQIMShortVideoUtil.class)).preLoadPeakProcess(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerwidgetBannerVideoInfoWidget3.b());
       }
       this.b = paramStoryPlayerVideoData.jdField_a_of_type_JavaLangString;
+    }
+    if (this.c) {
+      StoryReportor.a("video_game", "exp_url", 0, 0, new String[] { "", "", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a().mVid });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.GameBannerVideoInfoController
  * JD-Core Version:    0.7.0.1
  */

@@ -19,19 +19,19 @@ final class Completable$5
         paramCompletableSubscriber.onError(new NullPointerException("The completable returned is null"));
         return;
       }
+      localCompletable.subscribe(paramCompletableSubscriber);
+      return;
     }
     catch (Throwable localThrowable)
     {
       paramCompletableSubscriber.onSubscribe(Subscriptions.unsubscribed());
       paramCompletableSubscriber.onError(localThrowable);
-      return;
     }
-    localThrowable.subscribe(paramCompletableSubscriber);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.Completable.5
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class TeamWorkFileImportCover$1
 {
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    SharedPreUtils.b(TeamWorkFileImportCover.a(this.a), this.a.a.getCurrentAccountUin(), "team_work_file_importing_tips_show", false);
+    SharedPreUtils.c(TeamWorkFileImportCover.a(this.a), this.a.a.getCurrentAccountUin(), "team_work_file_importing_tips_show", false);
     TeamWorkFileImportCover.a(this.a);
     TeamWorkFileImportCover.a(this.a).finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportCover.1
  * JD-Core Version:    0.7.0.1
  */

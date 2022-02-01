@@ -19,12 +19,18 @@ public class MsgTabCheckActiveRequest$MsgTabCheckActiveResponse
   
   public String toString()
   {
-    return "MsgTabCheckActiveResponse{active=" + this.b + ", nextCheckTime=" + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgTabCheckActiveResponse{active=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", nextCheckTime=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabCheckActiveRequest.MsgTabCheckActiveResponse
  * JD-Core Version:    0.7.0.1
  */

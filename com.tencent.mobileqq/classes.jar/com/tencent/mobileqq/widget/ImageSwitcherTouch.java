@@ -26,15 +26,16 @@ public class ImageSwitcherTouch
   {
     int i = paramDrawable.getIntrinsicWidth();
     int j = paramDrawable.getIntrinsicHeight();
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, i, j);
-      paramDrawable.draw(localCanvas);
-      return localObject;
+    if (paramDrawable.getOpacity() != -1) {
+      localObject = Bitmap.Config.ARGB_8888;
+    } else {
+      localObject = Bitmap.Config.RGB_565;
     }
+    Object localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    paramDrawable.setBounds(0, 0, i, j);
+    paramDrawable.draw(localCanvas);
+    return localObject;
   }
   
   public void setDrawable(Drawable paramDrawable, int paramInt1, int paramInt2)
@@ -67,7 +68,7 @@ public class ImageSwitcherTouch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ImageSwitcherTouch
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,17 +39,19 @@ public final class mobile_batch_get_profile_count_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecUinList != null) {
-      paramJceOutputStream.write(this.vecUinList, 0);
+    Object localObject = this.vecUinList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 1);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_GROUP_COUNT.mobile_batch_get_profile_count_req
  * JD-Core Version:    0.7.0.1
  */

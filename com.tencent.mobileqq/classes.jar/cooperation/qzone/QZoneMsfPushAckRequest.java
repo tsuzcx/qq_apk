@@ -40,7 +40,7 @@ public class QZoneMsfPushAckRequest
     localPushRsp.sUID = "<JIEHEBAN>";
     localPushRsp.flag = this.flag;
     localPushRsp.Mark = this.mask;
-    return WupTool.encodeWup(localPushRsp);
+    return WupTool.a(localPushRsp);
   }
   
   public JceStruct getReq()
@@ -55,7 +55,7 @@ public class QZoneMsfPushAckRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QZoneMsfPushAckRequest
  * JD-Core Version:    0.7.0.1
  */

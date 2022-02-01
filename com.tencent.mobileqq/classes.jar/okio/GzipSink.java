@@ -14,13 +14,15 @@ public final class GzipSink
   
   public GzipSink(Sink paramSink)
   {
-    if (paramSink == null) {
-      throw new IllegalArgumentException("sink == null");
+    if (paramSink != null)
+    {
+      this.deflater = new Deflater(-1, true);
+      this.sink = Okio.buffer(paramSink);
+      this.deflaterSink = new DeflaterSink(this.sink, this.deflater);
+      writeHeader();
+      return;
     }
-    this.deflater = new Deflater(-1, true);
-    this.sink = Okio.buffer(paramSink);
-    this.deflaterSink = new DeflaterSink(this.sink, this.deflater);
-    writeHeader();
+    throw new IllegalArgumentException("sink == null");
   }
   
   private void updateCrc(Buffer paramBuffer, long paramLong)
@@ -52,57 +54,45 @@ public final class GzipSink
   
   public void close()
   {
-    if (this.closed) {}
-    for (;;)
-    {
+    if (this.closed) {
       return;
-      Object localObject2 = null;
-      try
-      {
-        this.deflaterSink.finishDeflate();
-        writeFooter();
-        try
-        {
-          label21:
-          this.deflater.end();
-          localObject1 = localObject2;
-        }
-        catch (Throwable localThrowable1)
-        {
-          for (;;)
-          {
-            Object localObject1;
-            label41:
-            if (localThrowable3 != null) {
-              localThrowable2 = localThrowable3;
-            }
-          }
-        }
-        try
-        {
-          this.sink.close();
-          localObject2 = localObject1;
-        }
-        catch (Throwable localThrowable4)
-        {
-          Object localObject3 = localThrowable2;
-          if (localThrowable2 != null) {
-            break label41;
-          }
-          localObject3 = localThrowable4;
-          break label41;
-        }
-        this.closed = true;
-        if (localObject2 == null) {
-          continue;
-        }
-        Util.sneakyRethrow(localObject2);
-        return;
+    }
+    Object localObject2 = null;
+    try
+    {
+      this.deflaterSink.finishDeflate();
+      writeFooter();
+    }
+    catch (Throwable localThrowable1) {}
+    Object localObject1;
+    try
+    {
+      this.deflater.end();
+      localObject1 = localThrowable1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      localObject1 = localThrowable1;
+      if (localThrowable1 == null) {
+        localObject1 = localThrowable2;
       }
-      catch (Throwable localThrowable3)
-      {
-        break label21;
+    }
+    Object localObject3;
+    try
+    {
+      this.sink.close();
+      localObject3 = localObject1;
+    }
+    catch (Throwable localThrowable3)
+    {
+      localObject3 = localObject1;
+      if (localObject1 == null) {
+        localObject3 = localThrowable3;
       }
+    }
+    this.closed = true;
+    if (localObject3 != null) {
+      Util.sneakyRethrow(localObject3);
     }
   }
   
@@ -123,19 +113,24 @@ public final class GzipSink
   
   public void write(Buffer paramBuffer, long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramLong);
-    }
-    if (paramLong == 0L) {
+    if (paramLong >= 0L)
+    {
+      if (paramLong == 0L) {
+        return;
+      }
+      updateCrc(paramBuffer, paramLong);
+      this.deflaterSink.write(paramBuffer, paramLong);
       return;
     }
-    updateCrc(paramBuffer, paramLong);
-    this.deflaterSink.write(paramBuffer, paramLong);
+    paramBuffer = new StringBuilder();
+    paramBuffer.append("byteCount < 0: ");
+    paramBuffer.append(paramLong);
+    throw new IllegalArgumentException(paramBuffer.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.GzipSink
  * JD-Core Version:    0.7.0.1
  */

@@ -128,7 +128,11 @@ public class MiniAppProxyDefault
         }
         double d1 = paramContext.getLatitude();
         double d2 = paramContext.getLongitude();
-        paramContext = d1 + "*" + d2;
+        paramContext = new StringBuilder();
+        paramContext.append(d1);
+        paramContext.append("*");
+        paramContext.append(d2);
+        paramContext = paramContext.toString();
         return paramContext;
       }
     }
@@ -177,21 +181,19 @@ public class MiniAppProxyDefault
   
   public int getPayMode()
   {
+    boolean bool = QUAUtil.isAlienApp();
     int i = 2;
-    int j = 1;
-    if ((QUAUtil.isAlienApp()) || (QUAUtil.isMicroApp()) || (QUAUtil.isQQApp())) {
-      if (WnsConfig.getConfig("qqminiapp", "mini_game_pay_by_h5", 0) != 0) {}
-    }
-    do
+    if ((!bool) && (!QUAUtil.isMicroApp()) && (!QUAUtil.isQQApp()))
     {
-      for (;;)
-      {
-        return i;
+      if (WnsConfig.getConfig("qqminiapp", "mini_game_pay_by_h5", 1) == 1) {
         i = 1;
       }
-      i = j;
-    } while (WnsConfig.getConfig("qqminiapp", "mini_game_pay_by_h5", 1) == 1);
-    return 2;
+      return i;
+    }
+    if (WnsConfig.getConfig("qqminiapp", "mini_game_pay_by_h5", 0) == 0) {
+      return 2;
+    }
+    return 1;
   }
   
   public String getPayOpenId()
@@ -240,13 +242,24 @@ public class MiniAppProxyDefault
   
   public void onAppStateChange(MiniAppInfo paramMiniAppInfo, @AppState int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3))
     {
-    default: 
-      QMLog.e("MiniAppProxyDefault", paramMiniAppInfo.name + "," + paramMiniAppInfo.appId + ",unknown AppState " + paramInt);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMiniAppInfo.name);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramMiniAppInfo.appId);
+      localStringBuilder.append(",unknown AppState ");
+      localStringBuilder.append(paramInt);
+      QMLog.e("MiniAppProxyDefault", localStringBuilder.toString());
       return;
     }
-    QMLog.d("MiniAppProxyDefault", paramMiniAppInfo.name + "," + paramMiniAppInfo.appId + ",onAppStateChange " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramMiniAppInfo.name);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramMiniAppInfo.appId);
+    localStringBuilder.append(",onAppStateChange ");
+    localStringBuilder.append(paramInt);
+    QMLog.d("MiniAppProxyDefault", localStringBuilder.toString());
   }
   
   public boolean onCapsuleButtonCloseClick(IMiniAppContext paramIMiniAppContext, DialogInterface.OnClickListener paramOnClickListener)
@@ -304,7 +317,7 @@ public class MiniAppProxyDefault
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.proxy.service.MiniAppProxyDefault
  * JD-Core Version:    0.7.0.1
  */

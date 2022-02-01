@@ -29,25 +29,25 @@ public class GetShareGroupListResponse
     this.b = paramRspShareVideoCollectionList.total_share_group_count.get();
     this.jdField_a_of_type_JavaLangString = paramRspShareVideoCollectionList.next_cookie.get().toStringUtf8();
     this.jdField_a_of_type_Long = paramRspShareVideoCollectionList.seqno.get();
-    if (paramRspShareVideoCollectionList.is_end.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      paramRspShareVideoCollectionList = paramRspShareVideoCollectionList.collection_list.get().iterator();
-      while (paramRspShareVideoCollectionList.hasNext())
-      {
-        qqstory_struct.ShareGroupFeed localShareGroupFeed = (qqstory_struct.ShareGroupFeed)paramRspShareVideoCollectionList.next();
-        ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem();
-        localShareGroupCollectionItem.convertFrom(paramString, localShareGroupFeed);
-        this.jdField_a_of_type_JavaUtilArrayList.add(localShareGroupCollectionItem);
-      }
+    int i = paramRspShareVideoCollectionList.is_end.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
+    }
+    this.jdField_a_of_type_Boolean = bool;
+    paramRspShareVideoCollectionList = paramRspShareVideoCollectionList.collection_list.get().iterator();
+    while (paramRspShareVideoCollectionList.hasNext())
+    {
+      qqstory_struct.ShareGroupFeed localShareGroupFeed = (qqstory_struct.ShareGroupFeed)paramRspShareVideoCollectionList.next();
+      ShareGroupCollectionItem localShareGroupCollectionItem = new ShareGroupCollectionItem();
+      localShareGroupCollectionItem.convertFrom(paramString, localShareGroupFeed);
+      this.jdField_a_of_type_JavaUtilArrayList.add(localShareGroupCollectionItem);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetShareGroupListResponse
  * JD-Core Version:    0.7.0.1
  */

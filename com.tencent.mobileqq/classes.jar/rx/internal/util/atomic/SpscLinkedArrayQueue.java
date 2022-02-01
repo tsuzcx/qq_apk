@@ -96,7 +96,7 @@ public final class SpscLinkedArrayQueue<T>
     if (localObject == null) {
       return null;
     }
-    soConsumerIndex(1L + paramLong);
+    soConsumerIndex(paramLong + 1L);
     soElement(paramAtomicReferenceArray, paramInt, null);
     return localObject;
   }
@@ -105,7 +105,7 @@ public final class SpscLinkedArrayQueue<T>
   {
     AtomicReferenceArray localAtomicReferenceArray = new AtomicReferenceArray(paramAtomicReferenceArray.length());
     this.producerBuffer = localAtomicReferenceArray;
-    this.producerLookAhead = (paramLong1 + paramLong2 - 1L);
+    this.producerLookAhead = (paramLong2 + paramLong1 - 1L);
     soProducerIndex(paramLong1 + 1L);
     soElement(localAtomicReferenceArray, paramInt, paramT);
     soNext(paramAtomicReferenceArray, localAtomicReferenceArray);
@@ -134,7 +134,7 @@ public final class SpscLinkedArrayQueue<T>
   
   private boolean writeToQueue(AtomicReferenceArray<Object> paramAtomicReferenceArray, T paramT, long paramLong, int paramInt)
   {
-    soProducerIndex(1L + paramLong);
+    soProducerIndex(paramLong + 1L);
     soElement(paramAtomicReferenceArray, paramInt, paramT);
     return true;
   }
@@ -182,49 +182,50 @@ public final class SpscLinkedArrayQueue<T>
   public final boolean offer(T paramT)
   {
     AtomicReferenceArray localAtomicReferenceArray = this.producerBuffer;
-    long l = lpProducerIndex();
+    long l1 = lpProducerIndex();
     int i = this.producerMask;
-    int j = calcWrappedOffset(l, i);
-    if (l < this.producerLookAhead) {
-      return writeToQueue(localAtomicReferenceArray, paramT, l, j);
+    int j = calcWrappedOffset(l1, i);
+    if (l1 < this.producerLookAhead) {
+      return writeToQueue(localAtomicReferenceArray, paramT, l1, j);
     }
-    int k = this.producerLookAheadStep;
-    if (lvElement(localAtomicReferenceArray, calcWrappedOffset(k + l, i)) == null)
+    long l2 = this.producerLookAheadStep + l1;
+    if (lvElement(localAtomicReferenceArray, calcWrappedOffset(l2, i)) == null)
     {
-      this.producerLookAhead = (k + l - 1L);
-      return writeToQueue(localAtomicReferenceArray, paramT, l, j);
+      this.producerLookAhead = (l2 - 1L);
+      return writeToQueue(localAtomicReferenceArray, paramT, l1, j);
     }
-    if (lvElement(localAtomicReferenceArray, calcWrappedOffset(1L + l, i)) == null) {
-      return writeToQueue(localAtomicReferenceArray, paramT, l, j);
+    if (lvElement(localAtomicReferenceArray, calcWrappedOffset(1L + l1, i)) == null) {
+      return writeToQueue(localAtomicReferenceArray, paramT, l1, j);
     }
-    resize(localAtomicReferenceArray, l, j, paramT, i);
+    resize(localAtomicReferenceArray, l1, j, paramT, i);
     return true;
   }
   
   public boolean offer(T paramT1, T paramT2)
   {
     AtomicReferenceArray localAtomicReferenceArray1 = this.producerBuffer;
-    long l = this.producerIndex;
+    long l1 = this.producerIndex;
     int i = this.producerMask;
-    if (lvElement(localAtomicReferenceArray1, calcWrappedOffset(l + 2L, i)) == null)
+    long l2 = 2L + l1;
+    if (lvElement(localAtomicReferenceArray1, calcWrappedOffset(l2, i)) == null)
     {
-      i = calcWrappedOffset(l, i);
+      i = calcWrappedOffset(l1, i);
       soElement(localAtomicReferenceArray1, i + 1, paramT2);
-      soProducerIndex(l + 2L);
+      soProducerIndex(l2);
       soElement(localAtomicReferenceArray1, i, paramT1);
     }
-    for (;;)
+    else
     {
-      return true;
       AtomicReferenceArray localAtomicReferenceArray2 = new AtomicReferenceArray(localAtomicReferenceArray1.length());
       this.producerBuffer = localAtomicReferenceArray2;
-      i = calcWrappedOffset(l, i);
+      i = calcWrappedOffset(l1, i);
       soElement(localAtomicReferenceArray2, i + 1, paramT2);
       soElement(localAtomicReferenceArray2, i, paramT1);
       soNext(localAtomicReferenceArray1, localAtomicReferenceArray2);
-      soProducerIndex(l + 2L);
+      soProducerIndex(l2);
       soElement(localAtomicReferenceArray1, i, HAS_NEXT);
     }
+    return true;
   }
   
   public final T peek()
@@ -232,12 +233,11 @@ public final class SpscLinkedArrayQueue<T>
     AtomicReferenceArray localAtomicReferenceArray = this.consumerBuffer;
     long l = lpConsumerIndex();
     int i = this.consumerMask;
-    Object localObject2 = lvElement(localAtomicReferenceArray, calcWrappedOffset(l, i));
-    Object localObject1 = localObject2;
-    if (localObject2 == HAS_NEXT) {
-      localObject1 = newBufferPeek(lvNext(localAtomicReferenceArray), l, i);
+    Object localObject = lvElement(localAtomicReferenceArray, calcWrappedOffset(l, i));
+    if (localObject == HAS_NEXT) {
+      return newBufferPeek(lvNext(localAtomicReferenceArray), l, i);
     }
-    return localObject1;
+    return localObject;
   }
   
   public final T poll()
@@ -247,8 +247,13 @@ public final class SpscLinkedArrayQueue<T>
     int j = this.consumerMask;
     int k = calcWrappedOffset(l, j);
     Object localObject = lvElement(localAtomicReferenceArray, k);
-    if (localObject == HAS_NEXT) {}
-    for (int i = 1; (localObject != null) && (i == 0); i = 0)
+    int i;
+    if (localObject == HAS_NEXT) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((localObject != null) && (i == 0))
     {
       soConsumerIndex(l + 1L);
       soElement(localAtomicReferenceArray, k, null);
@@ -305,7 +310,7 @@ public final class SpscLinkedArrayQueue<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.atomic.SpscLinkedArrayQueue
  * JD-Core Version:    0.7.0.1
  */

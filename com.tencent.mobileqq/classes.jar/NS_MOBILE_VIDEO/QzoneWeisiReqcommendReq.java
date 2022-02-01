@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class QzoneWeisiReqcommendReq
   extends JceStruct
@@ -44,22 +45,25 @@ public final class QzoneWeisiReqcommendReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.keys != null) {
-      paramJceOutputStream.write(this.keys, 0);
+    Object localObject = this.keys;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.index, 1);
     paramJceOutputStream.write(this.entrance_type, 2);
-    if (this.aggregate_page_id != null) {
-      paramJceOutputStream.write(this.aggregate_page_id, 3);
+    localObject = this.aggregate_page_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.aggregate_name != null) {
-      paramJceOutputStream.write(this.aggregate_name, 4);
+    localObject = this.aggregate_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.QzoneWeisiReqcommendReq
  * JD-Core Version:    0.7.0.1
  */

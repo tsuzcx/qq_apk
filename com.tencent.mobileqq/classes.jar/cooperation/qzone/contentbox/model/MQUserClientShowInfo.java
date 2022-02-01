@@ -55,35 +55,38 @@ public class MQUserClientShowInfo
   
   public static MQUserClientShowInfo readFrom(byte[] paramArrayOfByte)
   {
+    MQUserClientShowInfo localMQUserClientShowInfo = null;
     if (paramArrayOfByte == null) {
       return null;
     }
-    paramArrayOfByte = (AllInfo)JceEncoder.a(AllInfo.class, paramArrayOfByte);
-    if (paramArrayOfByte != null)
+    Object localObject = (AllInfo)JceEncoder.a(AllInfo.class, paramArrayOfByte);
+    paramArrayOfByte = localMQUserClientShowInfo;
+    if (localObject != null)
     {
-      Object localObject = (UserClientShowInfo)JceEncoder.a(UserClientShowInfo.class, paramArrayOfByte.vecQQBigVipInfo);
-      if (localObject == null) {
+      paramArrayOfByte = (UserClientShowInfo)JceEncoder.a(UserClientShowInfo.class, ((AllInfo)localObject).vecQQBigVipInfo);
+      if (paramArrayOfByte == null) {
         return null;
       }
-      paramArrayOfByte = new MQUserClientShowInfo();
-      paramArrayOfByte.strUid = ((UserClientShowInfo)localObject).strUid;
-      paramArrayOfByte.iVipRatio = ((UserClientShowInfo)localObject).iVipRatio;
-      paramArrayOfByte.iKeepVipDays = ((UserClientShowInfo)localObject).iKeepVipDays;
-      paramArrayOfByte.iVip = ((UserClientShowInfo)localObject).iVip;
-      paramArrayOfByte.iLevel = ((UserClientShowInfo)localObject).iLevel;
-      paramArrayOfByte.iSpeed = ((UserClientShowInfo)localObject).iSpeed;
-      paramArrayOfByte.iScore = ((UserClientShowInfo)localObject).iScore;
-      paramArrayOfByte.iIsUseVipIcon = ((UserClientShowInfo)localObject).iIsUseVipIcon;
-      localObject = VipResources.a(8, (UserClientShowInfo)localObject);
+      localMQUserClientShowInfo = new MQUserClientShowInfo();
+      localMQUserClientShowInfo.strUid = paramArrayOfByte.strUid;
+      localMQUserClientShowInfo.iVipRatio = paramArrayOfByte.iVipRatio;
+      localMQUserClientShowInfo.iKeepVipDays = paramArrayOfByte.iKeepVipDays;
+      localMQUserClientShowInfo.iVip = paramArrayOfByte.iVip;
+      localMQUserClientShowInfo.iLevel = paramArrayOfByte.iLevel;
+      localMQUserClientShowInfo.iSpeed = paramArrayOfByte.iSpeed;
+      localMQUserClientShowInfo.iScore = paramArrayOfByte.iScore;
+      localMQUserClientShowInfo.iIsUseVipIcon = paramArrayOfByte.iIsUseVipIcon;
+      localObject = VipResources.a(8, paramArrayOfByte);
+      paramArrayOfByte = localMQUserClientShowInfo;
       if (localObject != null)
       {
-        paramArrayOfByte.unionVipUrl = ((QQUnionIconInfo)localObject).mIconUrl;
-        paramArrayOfByte.unionIconWidth = ((QQUnionIconInfo)localObject).mIconWidth;
-        paramArrayOfByte.unionIconHeight = ((QQUnionIconInfo)localObject).mIconHeight;
+        localMQUserClientShowInfo.unionVipUrl = ((QQUnionIconInfo)localObject).mIconUrl;
+        localMQUserClientShowInfo.unionIconWidth = ((QQUnionIconInfo)localObject).mIconWidth;
+        localMQUserClientShowInfo.unionIconHeight = ((QQUnionIconInfo)localObject).mIconHeight;
+        paramArrayOfByte = localMQUserClientShowInfo;
       }
-      return paramArrayOfByte;
     }
-    return null;
+    return paramArrayOfByte;
   }
   
   public JSONObject convertToJson()
@@ -113,7 +116,7 @@ public class MQUserClientShowInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQUserClientShowInfo
  * JD-Core Version:    0.7.0.1
  */

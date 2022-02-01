@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/m1x" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.ae.gif.giftext.DrawableImageView android:id="@id/l8t" android:background="#f4f6fbff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" />
-    <ImageView android:id="@id/l8u" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_margin="62.0dip" />
-    <ImageView android:background="@drawable/hkk" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <ImageView android:id="@id/lb7" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="12.0dip" android:layout_marginRight="12.0dip" android:src="@drawable/c18" android:layout_alignParentTop="true" android:layout_alignParentRight="true" />
-    <dov.com.qq.im.ae.gif.giftext.AEGIFOutlineTextView android:id="@id/lym" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true" />
-</RelativeLayout>

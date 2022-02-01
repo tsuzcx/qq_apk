@@ -2,7 +2,7 @@ package com.tencent.qqmini.proxyimpl;
 
 import android.app.Activity;
 import android.content.Context;
-import com.tencent.gdtad.api.adbox.GdtAdBox;
+import com.tencent.gdtad.basics.adbox.IGdtAdBox;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.AbsBoxAdView;
@@ -13,7 +13,7 @@ class AdProxyImpl$SDKBoxAdView
   extends AdProxy.AbsBoxAdView
 {
   int jdField_a_of_type_Int = 53;
-  GdtAdBox jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBox;
+  IGdtAdBox jdField_a_of_type_ComTencentGdtadBasicsAdboxIGdtAdBox;
   AdProxy.IBoxADLisener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener;
   String jdField_a_of_type_JavaLangString;
   WeakReference<Activity> jdField_a_of_type_JavaLangRefWeakReference;
@@ -46,53 +46,55 @@ class AdProxyImpl$SDKBoxAdView
   
   public void destroy()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBox != null) {
-      this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBox.b();
+    IGdtAdBox localIGdtAdBox = this.jdField_a_of_type_ComTencentGdtadBasicsAdboxIGdtAdBox;
+    if (localIGdtAdBox != null) {
+      localIGdtAdBox.b();
     }
-    this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBox = null;
+    this.jdField_a_of_type_ComTencentGdtadBasicsAdboxIGdtAdBox = null;
     this.jdField_a_of_type_JavaLangRefWeakReference = null;
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener = null;
   }
   
   public void loadAD()
   {
-    Object localObject;
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
-    {
-      localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (localObject != null) {
-        break label91;
-      }
-      localObject = new StringBuilder().append("loadAD, act is null, ");
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener == null) {
-        break label86;
-      }
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null) {
+      localObject = (Activity)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
     }
-    label86:
-    for (boolean bool = true;; bool = false)
+    if (localObject == null)
     {
-      QLog.e("AdProxyImpl", 1, bool);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadAD, act is null, ");
+      boolean bool;
       if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener != null) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+        bool = true;
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject).append(bool);
+      QLog.e("AdProxyImpl", 1, ((StringBuilder)localObject).toString());
+      localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBoxADLisener;
+      if (localObject != null) {
+        ((AdProxy.IBoxADLisener)localObject).onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
       }
       return;
-      localObject = null;
-      break;
     }
-    label91:
     this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl.requestAdInfo((Context)localObject, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, this.d, this.e, this.f, this.g, this.h, 1, new AdProxyImpl.SDKBoxAdView.1(this, (Activity)localObject));
   }
   
   public void show()
   {
-    if (this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBox != null) {
-      this.jdField_a_of_type_ComTencentGdtadApiAdboxGdtAdBox.a();
+    IGdtAdBox localIGdtAdBox = this.jdField_a_of_type_ComTencentGdtadBasicsAdboxIGdtAdBox;
+    if (localIGdtAdBox != null) {
+      localIGdtAdBox.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBoxAdView
  * JD-Core Version:    0.7.0.1
  */

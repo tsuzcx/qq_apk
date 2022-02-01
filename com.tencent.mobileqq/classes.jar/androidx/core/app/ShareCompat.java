@@ -23,25 +23,34 @@ public final class ShareCompat
   public static void configureMenuItem(@NonNull Menu paramMenu, @IdRes int paramInt, @NonNull ShareCompat.IntentBuilder paramIntentBuilder)
   {
     paramMenu = paramMenu.findItem(paramInt);
-    if (paramMenu == null) {
-      throw new IllegalArgumentException("Could not find menu item with id " + paramInt + " in the supplied menu");
+    if (paramMenu != null)
+    {
+      configureMenuItem(paramMenu, paramIntentBuilder);
+      return;
     }
-    configureMenuItem(paramMenu, paramIntentBuilder);
+    paramMenu = new StringBuilder();
+    paramMenu.append("Could not find menu item with id ");
+    paramMenu.append(paramInt);
+    paramMenu.append(" in the supplied menu");
+    throw new IllegalArgumentException(paramMenu.toString());
   }
   
   public static void configureMenuItem(@NonNull MenuItem paramMenuItem, @NonNull ShareCompat.IntentBuilder paramIntentBuilder)
   {
     Object localObject = paramMenuItem.getActionProvider();
-    if (!(localObject instanceof ShareActionProvider)) {}
-    for (localObject = new ShareActionProvider(paramIntentBuilder.getContext());; localObject = (ShareActionProvider)localObject)
-    {
-      ((ShareActionProvider)localObject).setShareHistoryFileName(".sharecompat_" + paramIntentBuilder.getContext().getClass().getName());
-      ((ShareActionProvider)localObject).setShareIntent(paramIntentBuilder.getIntent());
-      paramMenuItem.setActionProvider((ActionProvider)localObject);
-      if ((Build.VERSION.SDK_INT < 16) && (!paramMenuItem.hasSubMenu())) {
-        paramMenuItem.setIntent(paramIntentBuilder.createChooserIntent());
-      }
-      return;
+    if (!(localObject instanceof ShareActionProvider)) {
+      localObject = new ShareActionProvider(paramIntentBuilder.getContext());
+    } else {
+      localObject = (ShareActionProvider)localObject;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(".sharecompat_");
+    localStringBuilder.append(paramIntentBuilder.getContext().getClass().getName());
+    ((ShareActionProvider)localObject).setShareHistoryFileName(localStringBuilder.toString());
+    ((ShareActionProvider)localObject).setShareIntent(paramIntentBuilder.getIntent());
+    paramMenuItem.setActionProvider((ActionProvider)localObject);
+    if ((Build.VERSION.SDK_INT < 16) && (!paramMenuItem.hasSubMenu())) {
+      paramMenuItem.setIntent(paramIntentBuilder.createChooserIntent());
     }
   }
   
@@ -97,7 +106,7 @@ public final class ShareCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.ShareCompat
  * JD-Core Version:    0.7.0.1
  */

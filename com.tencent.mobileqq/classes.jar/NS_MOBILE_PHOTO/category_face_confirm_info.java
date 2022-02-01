@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class category_face_confirm_info
   extends JceStruct
 {
-  static int cache_op = 0;
+  static int cache_op;
   public String label = "";
   public int op = 0;
   public long uin = 0L;
@@ -31,15 +31,16 @@ public final class category_face_confirm_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.op, 0);
-    if (this.label != null) {
-      paramJceOutputStream.write(this.label, 1);
+    String str = this.label;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.uin, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.category_face_confirm_info
  * JD-Core Version:    0.7.0.1
  */

@@ -4,14 +4,12 @@ import android.app.Activity;
 import android.content.Context;
 import android.text.TextUtils;
 import android.view.ViewGroup;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.PublicFragmentActivity;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.VipInfoHandler;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IVasDepTemp;
+import com.tencent.mobileqq.vas.util.VasUtil;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.report.lp.LpReportInfo_dc04233;
 import dualsim.common.IKcActivationViewer;
 import dualsim.common.IKingCardInterface;
 import dualsim.common.OrderCheckResult;
@@ -26,73 +24,60 @@ public class KCWraperV2
 {
   public AtomicBoolean a = new AtomicBoolean(false);
   
+  private void a(Context paramContext, File paramFile)
+  {
+    ThreadManager.post(new KCWraperV2.1(this, paramFile, paramContext), 5, null, false);
+  }
+  
   private void a(OrderCheckResult paramOrderCheckResult)
   {
+    if (paramOrderCheckResult != null) {
+      localObject1 = paramOrderCheckResult.toString();
+    } else {
+      localObject1 = "result == null";
+    }
+    a((String)localObject1);
+    if (paramOrderCheckResult == null) {
+      return;
+    }
+    Object localObject1 = VasUtil.a();
+    if (localObject1 == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = ((AppInterface)localObject1).getAccount();
+    }
+    boolean bool1 = TextUtils.isEmpty((CharSequence)localObject1);
     int i = 1;
-    String str1;
-    if (paramOrderCheckResult != null)
+    if (!bool1)
     {
-      str1 = paramOrderCheckResult.toString();
-      a(str1);
-      if (paramOrderCheckResult != null) {
-        break label30;
+      boolean bool2 = a((String)localObject1, paramOrderCheckResult);
+      Object localObject2 = paramOrderCheckResult.phoneNum;
+      if (paramOrderCheckResult.operator == 1)
+      {
+        IVasDepTemp localIVasDepTemp = (IVasDepTemp)QRoute.api(IVasDepTemp.class);
+        if (paramOrderCheckResult.kingcard == 1) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        localIVasDepTemp.guanjiaReport((String)localObject1, (String)localObject2, bool1, paramOrderCheckResult.product, "");
+        localObject2 = (IVasDepTemp)QRoute.api(IVasDepTemp.class);
+        long l = Long.parseLong((String)localObject1);
+        if (paramOrderCheckResult.kingcard != 1) {
+          i = 0;
+        }
+        ((IVasDepTemp)localObject2).reportKCLP(l, i);
+      }
+      if (bool2)
+      {
+        paramOrderCheckResult = ((TicketManager)VasUtil.a().getManager(2)).getSkey((String)localObject1);
+        ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).sendGetBaseVipInfoReq(paramOrderCheckResult, (String)localObject1);
       }
     }
-    label30:
-    label46:
-    boolean bool2;
-    do
+    else
     {
-      return;
-      str1 = "result == null";
-      break;
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (localObject != null) {
-        break label187;
-      }
-      str1 = null;
-      if (TextUtils.isEmpty(str1)) {
-        break label207;
-      }
-      bool2 = a(str1, paramOrderCheckResult);
-    } while (!(localObject instanceof QQAppInterface));
-    Object localObject = (QQAppInterface)localObject;
-    String str2 = paramOrderCheckResult.phoneNum;
-    VipInfoHandler localVipInfoHandler = (VipInfoHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.VIPINFO_HANDLER);
-    boolean bool1;
-    label114:
-    long l;
-    if (paramOrderCheckResult.operator == 1)
-    {
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label197;
-      }
-      bool1 = true;
-      localVipInfoHandler.a(str1, str2, bool1, paramOrderCheckResult.product, "");
-      l = Long.parseLong(str1);
-      if (paramOrderCheckResult.kingcard != 1) {
-        break label202;
-      }
+      QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
     }
-    for (;;)
-    {
-      new LpReportInfo_dc04233(l, i).report();
-      if (!bool2) {
-        break;
-      }
-      localVipInfoHandler.a(((TicketManager)((QQAppInterface)localObject).getManager(2)).getSkey(str1), str1);
-      return;
-      label187:
-      str1 = ((AppRuntime)localObject).getAccount();
-      break label46;
-      label197:
-      bool1 = false;
-      break label114;
-      label202:
-      i = 0;
-    }
-    label207:
-    QLog.e("KC.TMSManager", 1, "tmsQuery can't get uin");
   }
   
   String a()
@@ -128,7 +113,7 @@ public class KCWraperV2
     if (this.a.get()) {
       return;
     }
-    Context localContext = BaseApplicationImpl.getApplication().getApplicationContext();
+    Context localContext = VasUtil.a().getApplicationContext();
     File localFile = new File(TMSManager.a().a(localContext));
     if (!localFile.exists())
     {
@@ -138,7 +123,7 @@ public class KCWraperV2
       a(false);
       return;
     }
-    ThreadManager.post(new KCWraperV2.1(this, localFile, localContext), 5, null, false);
+    a(localContext, localFile);
   }
   
   boolean a()
@@ -146,12 +131,12 @@ public class KCWraperV2
     if (this.a.get()) {
       return true;
     }
-    if (!new File(TMSManager.a().a(BaseApplicationImpl.getApplication())).exists()) {
+    if (!new File(TMSManager.a().a(VasUtil.a().getApplicationContext())).exists()) {
       return false;
     }
-    synchronized (this.a)
+    try
     {
-      try
+      synchronized (this.a)
       {
         if (QLog.isColorLevel()) {
           QLog.e(a(), 1, "wait load");
@@ -161,21 +146,18 @@ public class KCWraperV2
           QLog.e(a(), 1, "wait end");
         }
       }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          localInterruptedException.printStackTrace();
-          QLog.e(a(), 1, localInterruptedException, new Object[0]);
-        }
-      }
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      localInterruptedException.printStackTrace();
+      QLog.e(a(), 1, localInterruptedException, new Object[0]);
       return this.a.get();
     }
   }
   
   boolean a(Activity paramActivity)
   {
-    PublicFragmentActivity.a(paramActivity, KingCardActivationFragment.class);
+    ((IVasDepTemp)QRoute.api(IVasDepTemp.class)).startKingCardActivationFragment();
     return true;
   }
   
@@ -189,7 +171,7 @@ public class KCWraperV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.KCWraperV2
  * JD-Core Version:    0.7.0.1
  */

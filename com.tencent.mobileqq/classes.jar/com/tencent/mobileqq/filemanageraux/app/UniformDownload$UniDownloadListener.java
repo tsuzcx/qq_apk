@@ -59,20 +59,16 @@ public class UniformDownload$UniDownloadListener
     try
     {
       localReqDownloadUrlCheckRecmd.uin.set(Long.parseLong(paramAppInterface.getCurrentAccountUin()));
-      paramString2 = new NewIntent(paramActivity.getApplicationContext(), WebSSOAgentServlet.class);
-      paramString2.putExtra("extra_cmd", "QQApkSvc.check_download_url");
-      paramString2.putExtra("extra_data", localReqDownloadUrlCheckRecmd.toByteArray());
-      paramString2.setObserver(new UniformDownload.UniDownloadListener.1(this, paramString1, paramLong, paramBoolean));
-      paramAppInterface.startServlet(paramString2);
-      return;
     }
     catch (NumberFormatException paramString2)
     {
-      for (;;)
-      {
-        QLog.e("UniformDownloadMgr<FileAssistant>", 1, paramString2, new Object[0]);
-      }
+      QLog.e("UniformDownloadMgr<FileAssistant>", 1, paramString2, new Object[0]);
     }
+    paramString2 = new NewIntent(paramActivity.getApplicationContext(), WebSSOAgentServlet.class);
+    paramString2.putExtra("extra_cmd", "QQApkSvc.check_download_url");
+    paramString2.putExtra("extra_data", localReqDownloadUrlCheckRecmd.toByteArray());
+    paramString2.setObserver(new UniformDownload.UniDownloadListener.1(this, paramString1, paramLong, paramBoolean));
+    paramAppInterface.startServlet(paramString2);
   }
   
   public void a(boolean paramBoolean)
@@ -82,31 +78,41 @@ public class UniformDownload$UniDownloadListener
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
-      {
+      if (i != 2) {
         return true;
-        paramMessage = (Activity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
-      } while ((paramMessage == null) || (paramMessage.isFinishing()));
-      if (this.jdField_a_of_type_AndroidAppDialog == null)
-      {
-        this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(paramMessage);
-        this.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
-        this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
-        this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
-        this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(this);
-        this.jdField_a_of_type_AndroidAppDialog.setContentView(2131562006);
-        this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363584).setBackgroundColor(0);
-        ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131379091)).setText(HardCodeUtil.a(2131715737));
       }
-      this.jdField_a_of_type_AndroidAppDialog.show();
-      return true;
-    } while ((this.jdField_a_of_type_AndroidAppDialog == null) || (!this.jdField_a_of_type_AndroidAppDialog.isShowing()));
-    this.jdField_a_of_type_AndroidAppDialog.dismiss();
+      paramMessage = this.jdField_a_of_type_AndroidAppDialog;
+      if ((paramMessage != null) && (paramMessage.isShowing()))
+      {
+        this.jdField_a_of_type_AndroidAppDialog.dismiss();
+        return true;
+      }
+    }
+    else
+    {
+      paramMessage = (Activity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
+      if (paramMessage != null)
+      {
+        if (paramMessage.isFinishing()) {
+          return true;
+        }
+        if (this.jdField_a_of_type_AndroidAppDialog == null)
+        {
+          this.jdField_a_of_type_AndroidAppDialog = new ReportDialog(paramMessage);
+          this.jdField_a_of_type_AndroidAppDialog.getWindow().setBackgroundDrawable(new ColorDrawable(0));
+          this.jdField_a_of_type_AndroidAppDialog.setCanceledOnTouchOutside(false);
+          this.jdField_a_of_type_AndroidAppDialog.requestWindowFeature(1);
+          this.jdField_a_of_type_AndroidAppDialog.setOnDismissListener(this);
+          this.jdField_a_of_type_AndroidAppDialog.setContentView(2131561839);
+          this.jdField_a_of_type_AndroidAppDialog.findViewById(2131363507).setBackgroundColor(0);
+          ((TextView)this.jdField_a_of_type_AndroidAppDialog.findViewById(2131378460)).setText(HardCodeUtil.a(2131715661));
+        }
+        this.jdField_a_of_type_AndroidAppDialog.show();
+      }
+    }
     return true;
   }
   
@@ -117,29 +123,32 @@ public class UniformDownload$UniDownloadListener
   
   public void onDownloadStart(String paramString1, String paramString2, String paramString3, String paramString4, long paramLong)
   {
-    boolean bool = true;
     Object localObject1 = (TouchWebView)this.c.get();
     Activity localActivity = (Activity)this.jdField_b_of_type_JavaLangRefWeakReference.get();
     Object localObject2 = (AppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localObject1 == null) || (localActivity == null) || (localObject2 == null) || (localActivity.isFinishing())) {
-      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "download failed, webview=" + localObject1 + ", act=" + localActivity + ", app=" + localObject2);
-    }
-    do
+    if ((localObject1 != null) && (localActivity != null) && (localObject2 != null) && (!localActivity.isFinishing()))
     {
-      return;
+      boolean bool2 = false;
       this.jdField_b_of_type_Boolean = false;
-      if ((((TouchWebView)localObject1).getUrl() != null) && (((TouchWebView)localObject1).getUrl().equals(paramString1))) {}
-      for (;;)
+      boolean bool1 = bool2;
+      if (((TouchWebView)localObject1).getUrl() != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("UniformDownloadMgr<FileAssistant>", 2, "start UniformDownloadActivity: " + paramString4);
+        bool1 = bool2;
+        if (((TouchWebView)localObject1).getUrl().equals(paramString1)) {
+          bool1 = true;
         }
-        if (!"application/vnd.android.package-archive".equals(paramString4)) {
-          break;
-        }
-        a(paramString1, paramString4, paramLong, localActivity, (AppInterface)localObject2, bool);
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("start UniformDownloadActivity: ");
+        localStringBuilder.append(paramString4);
+        QLog.d("UniformDownloadMgr<FileAssistant>", 2, localStringBuilder.toString());
+      }
+      if ("application/vnd.android.package-archive".equals(paramString4))
+      {
+        a(paramString1, paramString4, paramLong, localActivity, (AppInterface)localObject2, bool1);
         return;
-        bool = false;
       }
       localObject1 = ((TouchWebView)localObject1).getUrl();
       localObject2 = new Bundle();
@@ -149,13 +158,24 @@ public class UniformDownload$UniDownloadListener
       ((Bundle)localObject2).putString("param_mime_type", paramString4);
       ((Bundle)localObject2).putString("param_refer_url", (String)localObject1);
       ((Bundle)localObject2).putBoolean("fromArkAppDownload", this.jdField_a_of_type_Boolean);
-    } while ((!UniformDownload.a(localActivity, paramString1, (Bundle)localObject2)) || (!bool));
-    localActivity.finish();
+      if ((UniformDownload.a(localActivity, paramString1, (Bundle)localObject2)) && (bool1)) {
+        localActivity.finish();
+      }
+      return;
+    }
+    paramString1 = new StringBuilder();
+    paramString1.append("download failed, webview=");
+    paramString1.append(localObject1);
+    paramString1.append(", act=");
+    paramString1.append(localActivity);
+    paramString1.append(", app=");
+    paramString1.append(localObject2);
+    QLog.e("UniformDownloadMgr<FileAssistant>", 1, paramString1.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.app.UniformDownload.UniDownloadListener
  * JD-Core Version:    0.7.0.1
  */

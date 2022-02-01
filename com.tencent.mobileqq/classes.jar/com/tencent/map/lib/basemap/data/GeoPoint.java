@@ -39,20 +39,21 @@ public class GeoPoint
   public static GeoPoint formString(String paramString)
   {
     GeoPoint localGeoPoint = new GeoPoint();
-    if (paramString != null) {}
-    try
-    {
-      paramString = paramString.split(",");
-      if ((paramString != null) && (paramString.length == 2))
+    if (paramString != null) {
+      try
       {
-        localGeoPoint.mLatitudeE6 = Integer.parseInt(paramString[0]);
-        localGeoPoint.mLongitudeE6 = Integer.parseInt(paramString[1]);
+        paramString = paramString.split(",");
+        if ((paramString != null) && (paramString.length == 2))
+        {
+          localGeoPoint.mLatitudeE6 = Integer.parseInt(paramString[0]);
+          localGeoPoint.mLongitudeE6 = Integer.parseInt(paramString[1]);
+          return localGeoPoint;
+        }
       }
-      return localGeoPoint;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return localGeoPoint;
   }
@@ -64,21 +65,14 @@ public class GeoPoint
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if ((paramObject instanceof GeoPoint))
     {
       paramObject = (GeoPoint)paramObject;
-      bool1 = bool2;
-      if (this.mLatitudeE6 == paramObject.mLatitudeE6)
-      {
-        bool1 = bool2;
-        if (this.mLongitudeE6 == paramObject.mLongitudeE6) {
-          bool1 = true;
-        }
+      if ((this.mLatitudeE6 == paramObject.mLatitudeE6) && (this.mLongitudeE6 == paramObject.mLongitudeE6)) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public int getLatitudeE6()
@@ -109,7 +103,11 @@ public class GeoPoint
   
   public String toString()
   {
-    return this.mLatitudeE6 + "," + this.mLongitudeE6;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mLatitudeE6);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.mLongitudeE6);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -120,7 +118,7 @@ public class GeoPoint
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.lib.basemap.data.GeoPoint
  * JD-Core Version:    0.7.0.1
  */

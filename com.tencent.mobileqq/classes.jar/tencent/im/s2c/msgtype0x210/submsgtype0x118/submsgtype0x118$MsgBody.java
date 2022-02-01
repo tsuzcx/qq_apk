@@ -18,13 +18,14 @@ public final class submsgtype0x118$MsgBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "uint32_push_type", "bytes_push_data", "uint32_timestamp", "msg_system_notify" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), null }, MsgBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34 }, new String[] { "uint32_push_type", "bytes_push_data", "uint32_timestamp", "msg_system_notify" }, new Object[] { localInteger, localByteStringMicro, localInteger, null }, MsgBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x118.submsgtype0x118.MsgBody
  * JD-Core Version:    0.7.0.1
  */

@@ -22,10 +22,16 @@ public class LbsInfoReportManagerUtils
     try
     {
       ((ILbsInfoReportManagerProcessor)((Class)sLbsInfoReportManagerClassList.get(0)).newInstance()).reportLbsInfo2DC(paramSosoLocation, paramString);
-      if (QLog.isColorLevel()) {
-        QLog.i("SOSO.LbsInfoReportManagerUtils", 2, "ILbsInfoReportManagerProcessor.reportLbsInfo2DC(), location = " + paramSosoLocation + ", businessTag = " + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ILbsInfoReportManagerProcessor.reportLbsInfo2DC(), location = ");
+        localStringBuilder.append(paramSosoLocation);
+        localStringBuilder.append(", businessTag = ");
+        localStringBuilder.append(paramString);
+        QLog.i("SOSO.LbsInfoReportManagerUtils", 2, localStringBuilder.toString());
+        return;
       }
-      return;
     }
     catch (Throwable paramSosoLocation)
     {
@@ -35,7 +41,7 @@ public class LbsInfoReportManagerUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.inject.LbsInfoReportManagerUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -26,37 +26,42 @@ public class VFSTrack
   
   public static void track(String paramString1, String paramString2)
   {
-    long l;
-    Long localLong;
     if (TRACE)
     {
-      l = SystemClock.elapsedRealtime();
+      long l = SystemClock.elapsedRealtime();
       if (paramString1 != null)
       {
-        localLong = (Long)sLogs.remove(paramString1);
+        Long localLong = (Long)sLogs.remove(paramString1);
         if (localLong != null)
         {
-          if (!QLog.isColorLevel()) {
-            break label89;
+          StringBuilder localStringBuilder;
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString1);
+            localStringBuilder.append(", cost=");
+            localStringBuilder.append(l - localLong.longValue());
+            QLog.i("VFSTrack_Time", 2, localStringBuilder.toString());
           }
-          QLog.i("VFSTrack_Time", 2, paramString1 + ", cost=" + (l - localLong.longValue()));
+          else
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString1);
+            localStringBuilder.append(", cost=");
+            localStringBuilder.append(l - localLong.longValue());
+            Log.i("VFSTrack_Time", localStringBuilder.toString());
+          }
         }
       }
-    }
-    for (;;)
-    {
       if (paramString2 != null) {
         sLogs.put(paramString2, Long.valueOf(l));
       }
-      return;
-      label89:
-      Log.i("VFSTrack_Time", paramString1 + ", cost=" + (l - localLong.longValue()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSTrack
  * JD-Core Version:    0.7.0.1
  */

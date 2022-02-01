@@ -19,14 +19,10 @@ class TroopAvatarWallGalleryAdapter$1
     if (QLog.isColorLevel()) {
       QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadCancelled ", new Object[0]));
     }
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramView = paramURLDrawable.getURL().toString();
+    } else {
+      paramView = "";
     }
     ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
   }
@@ -37,39 +33,33 @@ class TroopAvatarWallGalleryAdapter$1
       QLog.i("TroopAvatarWallGalleryAdapter", 2, String.format("onLoadFailed ", new Object[0]));
     }
     String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramView = paramURLDrawable.getURL().toString();
+    } else {
+      paramView = "";
     }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
-    {
-      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
+    if (paramThrowable == null) {
+      paramURLDrawable = str;
+    } else {
+      paramURLDrawable = paramThrowable.getMessage();
     }
+    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
   }
   
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
     String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramView = paramURLDrawable.getURL().toString();
+    } else {
+      paramView = "";
     }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
+    if (paramInterruptedException == null) {
+      paramURLDrawable = str;
+    } else {
+      paramURLDrawable = paramInterruptedException.getMessage();
     }
+    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
   }
   
   public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
@@ -90,21 +80,17 @@ class TroopAvatarWallGalleryAdapter$1
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarWallGalleryAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramView = paramURLDrawable.getURL().toString();
+    } else {
+      paramView = "";
     }
     ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAvatarWallGalleryAdapter.1
  * JD-Core Version:    0.7.0.1
  */

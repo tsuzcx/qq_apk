@@ -12,7 +12,8 @@ class LoginInfoActivity$3
   
   public void run()
   {
-    LoginInfoActivity.access$1202(this.this$0, new RedTouch(this.this$0, LoginInfoActivity.access$1300(this.this$0)));
+    LoginInfoActivity localLoginInfoActivity = this.this$0;
+    LoginInfoActivity.access$1202(localLoginInfoActivity, new RedTouch(localLoginInfoActivity, LoginInfoActivity.access$1300(localLoginInfoActivity)));
     LoginInfoActivity.access$1200(this.this$0).b(53);
     int i = LoginInfoActivity.access$1400(this.this$0).getTop();
     int j = LoginInfoActivity.access$1300(this.this$0).getWidth();
@@ -25,7 +26,7 @@ class LoginInfoActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginInfoActivity.3
  * JD-Core Version:    0.7.0.1
  */

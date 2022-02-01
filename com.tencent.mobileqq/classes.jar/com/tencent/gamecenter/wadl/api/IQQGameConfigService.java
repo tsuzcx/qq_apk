@@ -16,6 +16,8 @@ public abstract interface IQQGameConfigService
   
   public abstract File getConfigFile();
   
+  public abstract void handlePushConfigCheck(String paramString);
+  
   public abstract void loadConfig();
   
   public abstract void requestConfig(long paramLong);
@@ -24,7 +26,7 @@ public abstract interface IQQGameConfigService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.api.IQQGameConfigService
  * JD-Core Version:    0.7.0.1
  */

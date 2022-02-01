@@ -31,30 +31,36 @@ public class VersionManager
     }
     paramBundle = "";
     oidb_0xada.RspBody localRspBody = new oidb_0xada.RspBody();
-    ilive_nearby_user_control.GetGconfRsp localGetGconfRsp = new ilive_nearby_user_control.GetGconfRsp();
-    for (;;)
+    Object localObject = new ilive_nearby_user_control.GetGconfRsp();
+    try
     {
-      try
+      localRspBody.mergeFrom(paramArrayOfByte);
+      ((ilive_nearby_user_control.GetGconfRsp)localObject).mergeFrom(localRspBody.busi_buf.get().toByteArray());
+      paramInt = ((ilive_nearby_user_control.GetGconfRsp)localObject).ret_code.get();
+      if ((paramInt == 0) && (((ilive_nearby_user_control.GetGconfRsp)localObject).config_info.has()))
       {
-        localRspBody.mergeFrom(paramArrayOfByte);
-        localGetGconfRsp.mergeFrom(localRspBody.busi_buf.get().toByteArray());
-        paramInt = localGetGconfRsp.ret_code.get();
-        if ((paramInt != 0) || (!localGetGconfRsp.config_info.has())) {
-          continue;
-        }
-        paramArrayOfByte = localGetGconfRsp.config_info.get();
+        paramArrayOfByte = ((ilive_nearby_user_control.GetGconfRsp)localObject).config_info.get();
       }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      else
       {
-        QLog.e("VersionManager", 0, "getVersionGrayConfig error: " + paramArrayOfByte);
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("retCode: ");
+        paramArrayOfByte.append(paramInt);
+        paramArrayOfByte.append(", msg:");
+        paramArrayOfByte.append(((ilive_nearby_user_control.GetGconfRsp)localObject).err_msg.get());
+        QLog.e("VersionManager", 0, paramArrayOfByte.toString());
         paramArrayOfByte = paramBundle;
-        continue;
       }
-      paramIVersionGrayscaleCallback.a("true".equals(paramArrayOfByte));
-      return;
-      QLog.e("VersionManager", 0, "retCode: " + paramInt + ", msg:" + localGetGconfRsp.err_msg.get());
+    }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getVersionGrayConfig error: ");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      QLog.e("VersionManager", 0, ((StringBuilder)localObject).toString());
       paramArrayOfByte = paramBundle;
     }
+    paramIVersionGrayscaleCallback.a("true".equals(paramArrayOfByte));
   }
   
   private boolean a(oidb_0xada.ReqBody paramReqBody, AppInterface paramAppInterface)
@@ -68,7 +74,7 @@ public class VersionManager
     {
       paramReqBody.a2.set(str);
       paramReqBody.platform.set(1);
-      paramReqBody.version.set("8.5.5");
+      paramReqBody.version.set("8.7.0");
       paramReqBody.original_id.set(paramAppInterface.getCurrentAccountUin());
       paramReqBody.original_key.set((String)localObject);
       paramReqBody.original_id_type.set(1);
@@ -93,25 +99,25 @@ public class VersionManager
   
   public void a(AppInterface paramAppInterface, VersionManager.IVersionGrayscaleCallback paramIVersionGrayscaleCallback)
   {
-    if (paramIVersionGrayscaleCallback == null) {}
-    oidb_0xada.ReqBody localReqBody;
-    do
-    {
+    if (paramIVersionGrayscaleCallback == null) {
       return;
-      localReqBody = new oidb_0xada.ReqBody();
-    } while (!a(localReqBody, paramAppInterface));
-    long l = paramAppInterface.getLongAccountUin();
-    ilive_nearby_user_control.GetGconfReq localGetGconfReq = new ilive_nearby_user_control.GetGconfReq();
-    localGetGconfReq.uid.set(l);
-    localReqBody.cmd.set(1008);
-    localReqBody.subcmd.set(3);
-    localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetGconfReq.toByteArray()));
-    ProtoUtils.a(paramAppInterface, new VersionManager.1(this, paramIVersionGrayscaleCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+    }
+    oidb_0xada.ReqBody localReqBody = new oidb_0xada.ReqBody();
+    if (a(localReqBody, paramAppInterface))
+    {
+      long l = paramAppInterface.getLongAccountUin();
+      ilive_nearby_user_control.GetGconfReq localGetGconfReq = new ilive_nearby_user_control.GetGconfReq();
+      localGetGconfReq.uid.set(l);
+      localReqBody.cmd.set(1008);
+      localReqBody.subcmd.set(3);
+      localReqBody.busi_buf.set(ByteStringMicro.copyFrom(localGetGconfReq.toByteArray()));
+      ProtoUtils.a(paramAppInterface, new VersionManager.1(this, paramIVersionGrayscaleCallback), localReqBody.toByteArray(), "OidbSvc.0xada_0", 2778, 0, null, 0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.VersionManager
  * JD-Core Version:    0.7.0.1
  */

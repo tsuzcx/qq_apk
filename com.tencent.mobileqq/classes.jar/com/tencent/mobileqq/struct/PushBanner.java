@@ -44,51 +44,48 @@ public class PushBanner
       String[] arrayOfString = paramString.split("&");
       if (arrayOfString.length == 7)
       {
-        this.e = arrayOfString[0].substring("RESPCONDITION=".length());
-        this.f = arrayOfString[1].substring("SUBJECT=".length());
-        this.g = arrayOfString[2].substring("DESC=".length());
-        this.h = arrayOfString[3].substring("RESPDESC=".length());
-        this.i = arrayOfString[4].substring("RESPCONTENTTYPES=".length());
-        this.j = PkgTools.Decodecgi(arrayOfString[5].substring("RESPDEST=".length()));
-        int i1;
-        String str;
+        this.e = arrayOfString[0].substring(14);
+        this.f = arrayOfString[1].substring(8);
+        this.g = arrayOfString[2].substring(5);
+        this.h = arrayOfString[3].substring(9);
+        this.i = arrayOfString[4].substring(17);
+        this.j = PkgTools.decodeCgi(arrayOfString[5].substring(9));
         if ((this.j != null) && (this.j.length() > 0))
         {
-          i1 = this.j.lastIndexOf("channel_id");
+          int i1 = this.j.lastIndexOf("channel_id");
           if (i1 != -1)
           {
             paramString = this.j.substring(i1);
-            i1 = paramString.charAt("channel_id".length());
-            if (i1 != 37) {
-              break label244;
+            i1 = paramString.charAt(10);
+            String str;
+            if (i1 == 37)
+            {
+              str = paramString.substring(paramString.indexOf('%') + 3);
+              paramString = str;
+              if (str.indexOf('%') > 0) {
+                paramString = str.substring(0, str.indexOf('%'));
+              }
+              this.b = paramString;
             }
-            str = paramString.substring(paramString.indexOf('%') + 3);
-            paramString = str;
-            if (str.indexOf('%') > 0) {
-              paramString = str.substring(0, str.indexOf('%'));
+            else if (i1 == 61)
+            {
+              str = paramString.substring(paramString.indexOf('=') + 1);
+              paramString = str;
+              if (str.indexOf('&') > 0) {
+                paramString = str.substring(0, str.indexOf('&'));
+              }
+              this.b = paramString;
             }
-            this.b = paramString;
           }
         }
-        for (;;)
-        {
-          this.k = arrayOfString[6].substring("RESPCONTENTS=".length());
-          if (!"PLUGIN".equalsIgnoreCase(this.i)) {
-            break;
-          }
+        this.k = arrayOfString[6].substring(13);
+        if ("PLUGIN".equalsIgnoreCase(this.i)) {
           return true;
-          label244:
-          if (i1 == 61)
-          {
-            str = paramString.substring(paramString.indexOf('=') + 1);
-            paramString = str;
-            if (str.indexOf('&') > 0) {
-              paramString = str.substring(0, str.indexOf('&'));
-            }
-            this.b = paramString;
-          }
         }
-        return false;
+      }
+      else
+      {
+        throw new IllegalArgumentException("PushBanner Params Count must be:7");
       }
     }
     catch (Exception paramString)
@@ -97,12 +94,12 @@ public class PushBanner
         QLog.e("PushBanner", 2, "loadParams Exception:", paramString);
       }
     }
-    throw new IllegalArgumentException("PushBanner Params Count must be:7");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.struct.PushBanner
  * JD-Core Version:    0.7.0.1
  */

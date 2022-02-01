@@ -26,35 +26,44 @@ class GiftEffectResourceController$3$1
       try
       {
         localObject1 = new JSONObject((String)localObject1).getJSONArray("list");
-        if (localObject1 == null) {
-          break;
+        if (localObject1 != null) {
+          break label187;
         }
-        i = 0;
-        if (i >= ((JSONArray)localObject1).length()) {
-          break;
-        }
-        Object localObject2 = ((JSONArray)localObject1).getJSONObject(i);
-        if (localObject2 != null)
-        {
-          String str = ((JSONObject)localObject2).getString("giftId");
-          localObject2 = ((JSONObject)localObject2).getString("md5");
-          if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject2))) {
-            GiftEffectResourceController.access$500(this.this$1.this$0).put(str, localObject2);
-          }
-        }
+        return;
       }
       catch (JSONException localJSONException)
       {
-        GiftEffectResourceController.access$000(this.this$1.this$0).getServiceAdapter().getLogger().e("GiftEffectResourceController", "loadLocalResMd5Info is error:" + localJSONException.getMessage(), new Object[0]);
-        return;
+        Object localObject2 = GiftEffectResourceController.access$000(this.this$1.this$0).getServiceAdapter().getLogger();
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("loadLocalResMd5Info is error:");
+        ((StringBuilder)localObject3).append(localJSONException.getMessage());
+        ((LogInterface)localObject2).e("GiftEffectResourceController", ((StringBuilder)localObject3).toString(), new Object[0]);
       }
-      i += 1;
+      if (i < ((JSONArray)localObject1).length())
+      {
+        localObject3 = ((JSONArray)localObject1).getJSONObject(i);
+        if (localObject3 != null)
+        {
+          localObject2 = ((JSONObject)localObject3).getString("giftId");
+          localObject3 = ((JSONObject)localObject3).getString("md5");
+          if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!TextUtils.isEmpty((CharSequence)localObject3))) {
+            GiftEffectResourceController.access$500(this.this$1.this$0).put(localObject2, localObject3);
+          }
+        }
+        i += 1;
+      }
+      else
+      {
+        return;
+        label187:
+        i = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.giftservice.controller.GiftEffectResourceController.3.1
  * JD-Core Version:    0.7.0.1
  */

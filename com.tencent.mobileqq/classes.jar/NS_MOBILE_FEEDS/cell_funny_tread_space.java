@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -38,17 +39,19 @@ public final class cell_funny_tread_space
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.actions != null) {
-      paramJceOutputStream.write(this.actions, 0);
+    Object localObject = this.actions;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.extendInfo != null) {
-      paramJceOutputStream.write(this.extendInfo, 1);
+    localObject = this.extendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_funny_tread_space
  * JD-Core Version:    0.7.0.1
  */

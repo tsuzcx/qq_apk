@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.proteus;
 
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader;
+import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
 import com.tencent.mobileqq.qroute.QRoute;
 import java.net.URL;
 import org.json.JSONException;
@@ -18,32 +18,33 @@ public class ReadInjoyAdBannerGameCell
         return paramJSONObject;
       }
       paramJSONObject.put("style_ID", "ReadInjoy_ad_banner_game_cell");
-      if (!TextUtils.isEmpty(paramAdData.B)) {
+      if (!TextUtils.isEmpty(paramAdData.J)) {
         paramJSONObject.put("id_game_small_img", new JSONObject());
       }
-      if (!TextUtils.isEmpty(paramAdData.i))
+      boolean bool = TextUtils.isEmpty(paramAdData.q);
+      if (!bool)
       {
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("text", paramAdData.i);
+        ((JSONObject)localObject).put("text", paramAdData.q);
         paramJSONObject.put("id_tv_author", localObject);
       }
-      if (!TextUtils.isEmpty(paramAdData.c))
+      if (!TextUtils.isEmpty(paramAdData.k))
       {
         localObject = new JSONObject();
-        ((JSONObject)localObject).put("text", paramAdData.c);
+        ((JSONObject)localObject).put("text", paramAdData.k);
         paramJSONObject.put("id_tv_title", localObject);
       }
-      if (!TextUtils.isEmpty(paramAdData.d))
+      if (!TextUtils.isEmpty(paramAdData.l))
       {
-        localObject = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramAdData.d, 4);
+        localObject = ((IPublicAccountHttpDownloader)QRoute.api(IPublicAccountHttpDownloader.class)).makeURL(paramAdData.l, 4);
         JSONObject localJSONObject = new JSONObject();
         localJSONObject.put("image_url", ((URL)localObject).toString());
         paramJSONObject.put("id_ad_banner_bottom_imge", localJSONObject);
       }
       Object localObject = new JSONObject();
-      if (!TextUtils.isEmpty(paramAdData.D))
+      if (!TextUtils.isEmpty(paramAdData.L))
       {
-        ((JSONObject)localObject).put("text", paramAdData.D);
+        ((JSONObject)localObject).put("text", paramAdData.L);
         paramJSONObject.put("id_ad_dislike_button", localObject);
       }
       paramJSONObject.put("id_game_operate_area", new JSONObject());
@@ -64,7 +65,7 @@ public class ReadInjoyAdBannerGameCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.proteus.ReadInjoyAdBannerGameCell
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,15 @@ class WSRecommendAdapter$1
   {
     super.onDownloadSuccess(paramRockDownloadInfo);
     WSRecommendAdapter.b += 1;
-    WSLog.d("WSRecommendAdapter", "RockDownloadSuccess openDownloadWSCount = " + WSRecommendAdapter.b);
+    paramRockDownloadInfo = new StringBuilder();
+    paramRockDownloadInfo.append("RockDownloadSuccess openDownloadWSCount = ");
+    paramRockDownloadInfo.append(WSRecommendAdapter.b);
+    WSLog.d("WSRecommendAdapter", paramRockDownloadInfo.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSRecommendAdapter.1
  * JD-Core Version:    0.7.0.1
  */

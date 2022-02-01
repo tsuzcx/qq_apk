@@ -35,45 +35,46 @@ public class Container
   
   protected void attachViews(ViewBase paramViewBase)
   {
-    if (paramViewBase == null) {}
+    if (paramViewBase == null) {
+      return;
+    }
     View localView;
-    do
+    if ((paramViewBase instanceof Layout))
     {
-      for (;;)
+      if (paramViewBase.getNativeView() != null)
       {
-        return;
-        if (!(paramViewBase instanceof Layout)) {
-          break;
+        localView = paramViewBase.getNativeView();
+        if (localView != null) {
+          addView(localView, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
         }
-        if (paramViewBase.getNativeView() != null)
+      }
+      else
+      {
+        paramViewBase = ((Layout)paramViewBase).getSubViews();
+        if (paramViewBase != null)
         {
-          localView = paramViewBase.getNativeView();
-          if (localView != null) {
-            addView(localView, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
-          }
-        }
-        else
-        {
-          paramViewBase = ((Layout)paramViewBase).getSubViews();
-          if (paramViewBase != null)
-          {
-            paramViewBase = paramViewBase.iterator();
-            while (paramViewBase.hasNext()) {
-              attachViews((ViewBase)paramViewBase.next());
-            }
+          paramViewBase = paramViewBase.iterator();
+          while (paramViewBase.hasNext()) {
+            attachViews((ViewBase)paramViewBase.next());
           }
         }
       }
+    }
+    else
+    {
       localView = paramViewBase.getNativeView();
-    } while (localView == null);
-    addView(localView, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
+      if (localView != null) {
+        addView(localView, new ViewGroup.LayoutParams(paramViewBase.getComLayoutParams().mLayoutWidth, paramViewBase.getComLayoutParams().mLayoutHeight));
+      }
+    }
   }
   
   public void comLayout(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mView != null)
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null)
     {
-      this.mView.comLayout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
+      localViewBase.comLayout(0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
       layout(paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
@@ -90,7 +91,7 @@ public class Container
     removeAllViews();
   }
   
-  public ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
+  protected ViewGroup.LayoutParams generateLayoutParams(ViewGroup.LayoutParams paramLayoutParams)
   {
     ViewGroup.LayoutParams localLayoutParams = paramLayoutParams;
     if (paramLayoutParams == null) {
@@ -101,16 +102,18 @@ public class Container
   
   public int getComMeasuredHeight()
   {
-    if (this.mView != null) {
-      return this.mView.getComMeasuredHeight();
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null) {
+      return localViewBase.getComMeasuredHeight();
     }
     return 0;
   }
   
   public int getComMeasuredWidth()
   {
-    if (this.mView != null) {
-      return this.mView.getComMeasuredWidth();
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null) {
+      return localViewBase.getComMeasuredWidth();
     }
     return 0;
   }
@@ -137,42 +140,46 @@ public class Container
   
   public void measureComponent(int paramInt1, int paramInt2)
   {
-    if (this.mView != null)
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null)
     {
-      this.mView.measureComponent(paramInt1, paramInt2);
+      localViewBase.measureComponent(paramInt1, paramInt2);
       setMeasuredDimension(this.mView.getComMeasuredWidth(), this.mView.getComMeasuredHeight());
     }
   }
   
   public void onComLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mView != null) {
-      this.mView.onComLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null) {
+      localViewBase.onComLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     }
   }
   
   public void onComMeasure(int paramInt1, int paramInt2)
   {
-    if (this.mView != null)
+    ViewBase localViewBase = this.mView;
+    if (localViewBase != null)
     {
-      this.mView.onComMeasure(paramInt1, paramInt2);
+      localViewBase.onComMeasure(paramInt1, paramInt2);
       setMeasuredDimension(this.mView.getComMeasuredWidth(), this.mView.getComMeasuredHeight());
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.mView != null) && (this.mView.shouldDraw())) {
+    ViewBase localViewBase = this.mView;
+    if ((localViewBase != null) && (localViewBase.shouldDraw())) {
       this.mView.comDraw(paramCanvas);
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     onComLayout(paramBoolean, 0, 0, paramInt3 - paramInt1, paramInt4 - paramInt2);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     onComMeasure(paramInt1, paramInt2);
   }
@@ -191,7 +198,7 @@ public class Container
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container
  * JD-Core Version:    0.7.0.1
  */

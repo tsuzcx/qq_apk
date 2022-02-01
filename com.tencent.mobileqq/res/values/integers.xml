@@ -1,8 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <integer name="al">220</integer>
+    <integer name="am">150</integer>
     <integer name="a">5</integer>
     <integer name="b">4</integer>
+    <integer name="an">127</integer>
     <integer name="c">300</integer>
+    <integer name="ao">150</integer>
     <integer name="d">2</integer>
     <integer name="e">3</integer>
     <integer name="f">22</integer>
@@ -44,10 +48,9 @@
     <integer name="ac">3</integer>
     <integer name="ad">4</integer>
     <integer name="ae">18</integer>
-    <integer name="al">999</integer>
+    <integer name="ap">999</integer>
     <integer name="af">12</integer>
     <integer name="ag">16</integer>
     <integer name="ah">2100</integer>
     <integer name="ai">1800</integer>
-    <integer name="am">250</integer>
 </resources>

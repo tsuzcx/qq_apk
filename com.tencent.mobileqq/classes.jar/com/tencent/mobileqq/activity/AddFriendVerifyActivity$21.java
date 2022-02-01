@@ -1,62 +1,39 @@
 package com.tencent.mobileqq.activity;
 
-import android.graphics.drawable.Animatable;
-import android.os.Handler;
-import android.os.Message;
-import android.text.TextUtils;
-import android.widget.ImageView;
-import com.tencent.image.URLDrawable;
-import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.troop.showexternal.api.TroopShowExternalObserver;
 import com.tencent.mobileqq.widget.QQToast;
-import java.io.File;
-import java.net.MalformedURLException;
 
 class AddFriendVerifyActivity$21
-  extends Handler
+  extends TroopShowExternalObserver
 {
   AddFriendVerifyActivity$21(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  protected void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
   {
-    switch (paramMessage.what)
+    if (this.a.a != null)
     {
-    }
-    for (;;)
-    {
-      return;
-      if ((this.a.isFinishing()) || (AddFriendVerifyActivity.a(this.a) == null)) {
-        continue;
-      }
-      AddFriendVerifyActivity.a(this.a).setVisibility(0);
-      ((Animatable)AddFriendVerifyActivity.a(this.a).getDrawable()).start();
-      return;
-      if (this.a.isFinishing()) {
-        continue;
-      }
-      if (!TextUtils.isEmpty(AddFriendVerifyActivity.c(this.a))) {}
-      try
-      {
-        paramMessage = new File(AddFriendVerifyActivity.d(this.a)).toURL();
-        AddFriendVerifyActivity.a(this.a).setImageDrawable(URLDrawable.getDrawable(paramMessage, 100, 100));
-        label142:
-        if (AddFriendVerifyActivity.a(this.a) == null) {
-          continue;
-        }
-        AddFriendVerifyActivity.a(this.a).setVisibility(8);
-        return;
-        QQToast.a(this.a.getApplicationContext(), 1, 2131720409, 0).b(this.a.getTitleBarHeight());
+      if (!this.a.a.equals(paramString)) {
         return;
       }
-      catch (MalformedURLException paramMessage)
+      boolean bool = false;
+      if (!paramBoolean)
       {
-        break label142;
+        paramString = this.a;
+        QQToast.a(paramString, paramString.getString(2131696194), 0).b(this.a.getTitleBarHeight());
+        AddFriendVerifyActivity.c(this.a);
       }
+      paramString = this.a;
+      paramBoolean = bool;
+      if (paramInt3 == 1) {
+        paramBoolean = true;
+      }
+      paramString.c = paramBoolean;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.21
  * JD-Core Version:    0.7.0.1
  */

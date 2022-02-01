@@ -13,47 +13,60 @@ public class VerticalSearchConfBean
   public static VerticalSearchConfBean a(QConfItem paramQConfItem)
   {
     VerticalSearchConfBean localVerticalSearchConfBean = new VerticalSearchConfBean();
-    if (paramQConfItem != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("VerticalNavigationConfBean", 2, "parse taskid->" + paramQConfItem.jdField_a_of_type_Int + " content->" + paramQConfItem.jdField_a_of_type_JavaLangString);
-      }
-    }
-    try
+    if (paramQConfItem != null)
     {
-      paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
       Object localObject;
-      if (paramQConfItem.has("emoji"))
+      if (QLog.isColorLevel())
       {
-        localObject = paramQConfItem.optJSONObject("emoji");
-        if (localObject != null)
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parse taskid->");
+        ((StringBuilder)localObject).append(paramQConfItem.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(" content->");
+        ((StringBuilder)localObject).append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        QLog.d("VerticalNavigationConfBean", 2, ((StringBuilder)localObject).toString());
+      }
+      try
+      {
+        paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
+        boolean bool = paramQConfItem.has("emoji");
+        if (bool)
         {
-          VerticalSearchConfBean.Data localData = new VerticalSearchConfBean.Data();
-          localData.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switch", 0);
-          localData.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("iconUrl", "");
-          localData.b = ((JSONObject)localObject).optString("url", "");
-          localVerticalSearchConfBean.a.put("emoji", localData);
+          localObject = paramQConfItem.optJSONObject("emoji");
+          if (localObject != null)
+          {
+            VerticalSearchConfBean.Data localData = new VerticalSearchConfBean.Data();
+            localData.jdField_a_of_type_Int = ((JSONObject)localObject).optInt("switch", 0);
+            localData.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("iconUrl", "");
+            localData.b = ((JSONObject)localObject).optString("url", "");
+            localVerticalSearchConfBean.a.put("emoji", localData);
+          }
+        }
+        if (paramQConfItem.has("heihua"))
+        {
+          paramQConfItem = paramQConfItem.optJSONObject("heihua");
+          if (paramQConfItem != null)
+          {
+            localObject = new VerticalSearchConfBean.Data();
+            ((VerticalSearchConfBean.Data)localObject).jdField_a_of_type_Int = paramQConfItem.optInt("switch", 0);
+            ((VerticalSearchConfBean.Data)localObject).jdField_a_of_type_JavaLangString = paramQConfItem.optString("iconUrl", "");
+            ((VerticalSearchConfBean.Data)localObject).b = paramQConfItem.optString("url", "");
+            ((VerticalSearchConfBean.Data)localObject).c = paramQConfItem.optString("name", "");
+            localVerticalSearchConfBean.a.put("heihua", localObject);
+            return localVerticalSearchConfBean;
+          }
         }
       }
-      if (paramQConfItem.has("heihua"))
+      catch (Exception paramQConfItem)
       {
-        paramQConfItem = paramQConfItem.optJSONObject("heihua");
-        if (paramQConfItem != null)
+        if (QLog.isColorLevel())
         {
-          localObject = new VerticalSearchConfBean.Data();
-          ((VerticalSearchConfBean.Data)localObject).jdField_a_of_type_Int = paramQConfItem.optInt("switch", 0);
-          ((VerticalSearchConfBean.Data)localObject).jdField_a_of_type_JavaLangString = paramQConfItem.optString("iconUrl", "");
-          ((VerticalSearchConfBean.Data)localObject).b = paramQConfItem.optString("url", "");
-          ((VerticalSearchConfBean.Data)localObject).c = paramQConfItem.optString("name", "");
-          localVerticalSearchConfBean.a.put("heihua", localObject);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("parse error->");
+          ((StringBuilder)localObject).append(paramQConfItem.toString());
+          QLog.d("VerticalNavigationConfBean", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
-    catch (Exception paramQConfItem)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("VerticalNavigationConfBean", 2, "parse error->" + paramQConfItem.toString());
-    }
-    return localVerticalSearchConfBean;
     return localVerticalSearchConfBean;
   }
   
@@ -71,16 +84,14 @@ public class VerticalSearchConfBean
   
   public boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      paramString = (VerticalSearchConfBean.Data)this.a.get(paramString);
-    } while (paramString == null);
-    if (paramString.jdField_a_of_type_Int == 1) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
     }
+    paramString = (VerticalSearchConfBean.Data)this.a.get(paramString);
+    if (paramString != null) {
+      return paramString.jdField_a_of_type_Int == 1;
+    }
+    return false;
   }
   
   public String b(String paramString)
@@ -109,15 +120,18 @@ public class VerticalSearchConfBean
   
   public String toString()
   {
-    if (this.a != null) {}
-    for (String str = this.a.toString();; str = "null") {
-      return String.format("mConfigData:%s ", new Object[] { str });
+    Object localObject = this.a;
+    if (localObject != null) {
+      localObject = ((HashMap)localObject).toString();
+    } else {
+      localObject = "null";
     }
+    return String.format("mConfigData:%s ", new Object[] { localObject });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.VerticalSearchConfBean
  * JD-Core Version:    0.7.0.1
  */

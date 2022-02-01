@@ -9,14 +9,13 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.util.AdExposureChecker;
 import com.tencent.ad.tangram.util.AdExposureChecker.ExposureCallback;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.share.WSShareParam;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiShareUtil;
-import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageAdapter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
@@ -31,7 +30,6 @@ import com.tencent.gdtad.views.image.GdtDrawableLoader.Listener;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.lang.ref.WeakReference;
 import java.util.Iterator;
 import java.util.List;
@@ -62,11 +60,6 @@ public class GdtAdWSVerticalItemBottomUserController
   private TextView c;
   private TextView d;
   
-  static
-  {
-    jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = null;
-  }
-  
   public GdtAdWSVerticalItemBottomUserController(Context paramContext, WSVerticalVideoHolder paramWSVerticalVideoHolder)
   {
     super(paramContext);
@@ -78,52 +71,40 @@ public class GdtAdWSVerticalItemBottomUserController
   
   private boolean a(WSVerticalItemData paramWSVerticalItemData)
   {
-    int j = 8;
     Object localObject = GdtAdUtil.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
     paramWSVerticalItemData = new String[3];
-    label260:
-    for (;;)
+    int j = 8;
+    try
     {
-      try
+      localObject = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).display_info.basic_info.element_structure_content.label.get().iterator();
+      int i = 0;
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = ((qq_ad_get.QQAdGetRsp.AdInfo)localObject).display_info.basic_info.element_structure_content.label.get().iterator();
-        i = 0;
-        if (((Iterator)localObject).hasNext())
+        qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo.CreativeElementStructureContent.Label localLabel = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo.CreativeElementStructureContent.Label)((Iterator)localObject).next();
+        if (!TextUtils.isEmpty(localLabel.content.get()))
         {
-          qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo.CreativeElementStructureContent.Label localLabel = (qq_ad_get.QQAdGetRsp.AdInfo.DisplayInfo.BasicInfo.CreativeElementStructureContent.Label)((Iterator)localObject).next();
-          if (TextUtils.isEmpty(localLabel.content.get())) {
-            break label260;
-          }
           paramWSVerticalItemData[i] = localLabel.content.get();
           i += 1;
-          continue;
-        }
-        if (TextUtils.isEmpty(paramWSVerticalItemData[0])) {
-          break label249;
         }
       }
-      catch (Exception paramWSVerticalItemData)
-      {
-        QLog.i("GdtAdWSVerticalItemBottomUserController", 4, "showGdtIndustryLabelContainer: 后台未下发labels字段");
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSIndustryLabelContainer.setVisibility(8);
-        return false;
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramWSVerticalItemData[0]);
-      this.c.setText(paramWSVerticalItemData[1]);
-      this.d.setText(paramWSVerticalItemData[2]);
-      localObject = this.jdField_b_of_type_AndroidWidgetTextView;
       if (!TextUtils.isEmpty(paramWSVerticalItemData[0]))
       {
-        i = 0;
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(paramWSVerticalItemData[0]);
+        this.c.setText(paramWSVerticalItemData[1]);
+        this.d.setText(paramWSVerticalItemData[2]);
+        localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+        if (!TextUtils.isEmpty(paramWSVerticalItemData[0])) {
+          i = 0;
+        } else {
+          i = 8;
+        }
         ((TextView)localObject).setVisibility(i);
         localObject = this.c;
-        if (TextUtils.isEmpty(paramWSVerticalItemData[1])) {
-          break label243;
+        if (!TextUtils.isEmpty(paramWSVerticalItemData[1])) {
+          i = 0;
+        } else {
+          i = 8;
         }
-      }
-      label243:
-      for (int i = 0;; i = 8)
-      {
         ((TextView)localObject).setVisibility(i);
         localObject = this.d;
         i = j;
@@ -133,13 +114,18 @@ public class GdtAdWSVerticalItemBottomUserController
         ((TextView)localObject).setVisibility(i);
         this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSIndustryLabelContainer.setVisibility(0);
         return true;
-        i = 8;
-        break;
       }
-      label249:
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSIndustryLabelContainer.setVisibility(8);
       return false;
     }
+    catch (Exception paramWSVerticalItemData)
+    {
+      label240:
+      break label240;
+    }
+    QLog.i("GdtAdWSVerticalItemBottomUserController", 4, "showGdtIndustryLabelContainer: 后台未下发labels字段");
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSIndustryLabelContainer.setVisibility(8);
+    return false;
   }
   
   private boolean b(WSVerticalItemData paramWSVerticalItemData)
@@ -152,9 +138,11 @@ public class GdtAdWSVerticalItemBottomUserController
     }
     catch (NumberFormatException paramWSVerticalItemData)
     {
-      QLog.i("GdtAdWSVerticalItemBottomUserController", 4, "showGdtCountDownWidget: 后台未下发倒计时字段");
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSCountDownLayout.c();
+      label35:
+      break label35;
     }
+    QLog.i("GdtAdWSVerticalItemBottomUserController", 4, "showGdtCountDownWidget: 后台未下发倒计时字段");
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSCountDownLayout.c();
     return false;
   }
   
@@ -174,7 +162,7 @@ public class GdtAdWSVerticalItemBottomUserController
     return false;
   }
   
-  public void a()
+  protected void a()
   {
     WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
     if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed))) {
@@ -182,51 +170,55 @@ public class GdtAdWSVerticalItemBottomUserController
     }
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131559300;
+    return 2131559173;
   }
   
-  public void b()
+  protected void b()
   {
     WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
-    if ((localWSVerticalItemData == null) || (localWSVerticalItemData.a() == null)) {}
-    do
+    if (localWSVerticalItemData != null)
     {
-      do
-      {
+      if (localWSVerticalItemData.a() == null) {
         return;
-      } while (!(localWSVerticalItemData.a() instanceof stSimpleMetaFeed));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.nick);
-      WeishiUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.avatar);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeWidth(8);
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeColor(Color.parseColor("#66FFFFFF"));
-      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      QLog.i("GdtAdWSVerticalItemBottomUserController", 4, "onUpdateUI, victoryfxu");
-    } while ((b(localWSVerticalItemData)) || (c(localWSVerticalItemData)));
-    a(localWSVerticalItemData);
+      }
+      if ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed))
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.nick);
+        WSPicLoader.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.avatar);
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeWidth(8);
+        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setStrokeColor(Color.parseColor("#66FFFFFF"));
+        this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+        QLog.i("GdtAdWSVerticalItemBottomUserController", 4, "onUpdateUI, victoryfxu");
+        if ((!b(localWSVerticalItemData)) && (!c(localWSVerticalItemData))) {
+          a(localWSVerticalItemData);
+        }
+      }
+    }
   }
   
-  public void c()
+  protected void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSCountDownLayout != null)
+    GdtAdWSCountDownLayout localGdtAdWSCountDownLayout = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSCountDownLayout;
+    if (localGdtAdWSCountDownLayout != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSCountDownLayout.b();
+      localGdtAdWSCountDownLayout.b();
       this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSCountDownLayout = null;
     }
   }
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131367772));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131367775));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131367762));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131367766));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSCountDownLayout = ((GdtAdWSCountDownLayout)a(2131367760));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSIndustryLabelContainer = ((GdtAdWSIndustryLabelContainer)a(2131367764));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131367808));
-    this.c = ((TextView)a(2131367809));
-    this.d = ((TextView)a(2131367810));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131367531));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131367534));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)a(2131367521));
+    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)a(2131367525));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSCountDownLayout = ((GdtAdWSCountDownLayout)a(2131367519));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSIndustryLabelContainer = ((GdtAdWSIndustryLabelContainer)a(2131367523));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131367576));
+    this.c = ((TextView)a(2131367577));
+    this.d = ((TextView)a(2131367578));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -237,45 +229,41 @@ public class GdtAdWSVerticalItemBottomUserController
   
   public void onClick(View paramView)
   {
-    Object localObject;
-    if (paramView.getId() == 2131367762)
+    if (paramView.getId() == 2131367521)
     {
-      localObject = new WSShareParam();
-      ((WSShareParam)localObject).jdField_a_of_type_UserGrowthStSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
-      ((WSShareParam)localObject).jdField_a_of_type_Int = 2;
-      ((WSShareParam)localObject).jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-      ((WSShareParam)localObject).jdField_a_of_type_JavaLangString = WSVerticalBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a());
-      ((WSShareParam)localObject).jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b();
-      ((WSShareParam)localObject).c = "more_operations";
-      ((WSShareParam)localObject).a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
-      WeishiShareUtil.a(this.jdField_a_of_type_AndroidContentContext, (WSShareParam)localObject);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+      paramView = new WSShareParam();
+      paramView.jdField_a_of_type_UserGrowthStSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+      paramView.jdField_a_of_type_Int = 2;
+      paramView.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      paramView.jdField_a_of_type_JavaLangString = WSVerticalBeaconReport.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a());
+      paramView.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b();
+      paramView.c = "more_operations";
+      paramView.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment);
+      WeishiShareUtil.a(this.jdField_a_of_type_AndroidContentContext, paramView);
       return;
-      if ((this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null))
+    }
+    if ((this.jdField_a_of_type_UserGrowthStSimpleMetaFeed != null) && (a() != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment != null))
+    {
+      WSLog.b("GdtAdWSVerticalItemBottomUserController", "跳转到广告落地页");
+      if (jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
       {
-        WSLog.b("GdtAdWSVerticalItemBottomUserController", "跳转到广告落地页");
-        if (jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver == null)
+        jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
+        jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(BaseApplicationImpl.getContext());
+      }
+      paramView = new GdtAd(GdtAdUtil.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed));
+      if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
+        this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new GdtAdWSVerticalItemBottomUserController.1(this);
+      }
+      AdExposureChecker.onClick(a(), paramView, new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
+      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
+      paramView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter;
+      if ((paramView != null) && (paramView.a() != null))
+      {
+        paramView = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter.a();
+        if ((paramView != null) && (paramView.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (a() != null) && (((WSVerticalItemData)a()).a() != null))
         {
-          jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver = new GdtAppReceiver();
-          jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver.register(BaseApplicationImpl.getContext());
-        }
-        localObject = new GdtAd(GdtAdUtil.a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed));
-        if (this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback == null) {
-          this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback = new GdtAdWSVerticalItemBottomUserController.1(this);
-        }
-        AdExposureChecker.onClick(a(), (Ad)localObject, new WeakReference(this.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-        this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a();
-        if ((this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter != null) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter.a() != null))
-        {
-          localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageAdapter.a();
-          if ((localObject != null) && (((WSVerticalVideoHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam != null) && (a() != null) && (((WSVerticalItemData)a()).a() != null))
-          {
-            GdtAdUtil.a(a(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver, ((WSVerticalVideoHolder)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, false);
-            ((WSVerticalItemData)a()).a().isGdtAdclicked = true;
-          }
+          GdtAdUtil.a(a(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, jdField_a_of_type_ComTencentGdtadAditemGdtAppReceiver, paramView.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWSPlayerParam, false);
+          ((WSVerticalItemData)a()).a().isGdtAdclicked = true;
         }
       }
     }
@@ -283,7 +271,7 @@ public class GdtAdWSVerticalItemBottomUserController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSVerticalItemBottomUserController
  * JD-Core Version:    0.7.0.1
  */

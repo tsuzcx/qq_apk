@@ -38,17 +38,12 @@ import org.json.JSONObject;
 public class WebViewCheckUpdataItem
   implements CheckUpdateItemInterface
 {
-  public static final String a;
+  public static final String a = "WebViewCheckUpdataItem";
   private int jdField_a_of_type_Int = 0;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   boolean jdField_a_of_type_Boolean = false;
   boolean b = false;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = WebViewCheckUpdataItem.class.getSimpleName();
-  }
   
   public WebViewCheckUpdataItem(QQAppInterface paramQQAppInterface)
   {
@@ -57,76 +52,108 @@ public class WebViewCheckUpdataItem
   
   private void a()
   {
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject1 = new JSONObject();
     try
     {
-      Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir() + File.separator + VipWebViewReportLog.c);
-      if ((!((File)localObject).exists()) && (!((File)localObject).mkdirs()))
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir());
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append(VipWebViewReportLog.c);
+      localObject2 = new File(((StringBuilder)localObject2).toString());
+      if ((!((File)localObject2).exists()) && (!((File)localObject2).mkdirs()))
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("WebCoreDump", 2, "Can't create dir: " + localObject);
+        if (!QLog.isColorLevel()) {
+          return;
         }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Can't create dir: ");
+        ((StringBuilder)localObject1).append(localObject2);
+        QLog.e("WebCoreDump", 2, ((StringBuilder)localObject1).toString());
+        return;
       }
-      else
+      ((JSONObject)localObject1).put("js_report", this.jdField_a_of_type_Boolean);
+      ((JSONObject)localObject1).put("url_check", this.b);
+      Object localObject3;
+      if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
       {
-        localJSONObject.put("js_report", this.jdField_a_of_type_Boolean);
-        localJSONObject.put("url_check", this.b);
-        if (this.jdField_a_of_type_JavaUtilSet.size() > 0)
+        localObject2 = new JSONArray();
+        localObject3 = this.jdField_a_of_type_JavaUtilSet.iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          ((JSONArray)localObject2).put((String)((Iterator)localObject3).next());
+        }
+        ((JSONObject)localObject1).put("url_list", localObject2);
+        if (QLog.isColorLevel())
         {
-          localObject = new JSONArray();
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilSet.iterator();
-          while (localIterator.hasNext()) {
-            ((JSONArray)localObject).put((String)localIterator.next());
-          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Http capture white list=");
+          ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaUtilSet);
+          QLog.d("WebCoreDump", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      long l;
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("WebCoreDump", 2, "-->url white list is empty!");
+      }
+      if (this.jdField_a_of_type_Int > 0)
+      {
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
+        long l = System.currentTimeMillis() + this.jdField_a_of_type_Int * 1000;
+        ((SharedPreferences)localObject2).edit().putLong("nextCheckWebviewTime", l).commit();
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(l));
+          localObject3 = jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleCheckUpdateItemData nextCheckUpdateTime");
+          localStringBuilder.append((String)localObject2);
+          QLog.d((String)localObject3, 2, localStringBuilder.toString());
+        }
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir());
+      ((StringBuilder)localObject2).append(File.separator);
+      ((StringBuilder)localObject2).append(VipWebViewReportLog.c);
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((StringBuilder)localObject2).append("config.json");
+      localObject2 = new FileOutputStream(new File(((StringBuilder)localObject2).toString()));
+      ((FileOutputStream)localObject2).write(((JSONObject)localObject1).toString().getBytes());
+      ((FileOutputStream)localObject2).close();
       return;
     }
-    catch (JSONException localJSONException)
+    catch (IOException localIOException)
     {
       if (QLog.isColorLevel())
       {
-        QLog.w("WebCoreDump", 2, "-->save config failed:" + localJSONException.toString());
-        return;
-        localJSONException.put("url_list", localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("WebCoreDump", 2, "Http capture white list=" + this.jdField_a_of_type_JavaUtilSet);
-        }
-        if (this.jdField_a_of_type_Int > 0)
-        {
-          localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences();
-          l = System.currentTimeMillis() + this.jdField_a_of_type_Int * 1000;
-          ((SharedPreferences)localObject).edit().putLong("nextCheckWebviewTime", l).commit();
-          if (QLog.isColorLevel())
-          {
-            localObject = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(l));
-            QLog.d(jdField_a_of_type_JavaLangString, 2, "handleCheckUpdateItemData nextCheckUpdateTime" + (String)localObject);
-          }
-        }
-        localObject = new FileOutputStream(new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir() + File.separator + VipWebViewReportLog.c + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "config.json"));
-        ((FileOutputStream)localObject).write(localJSONException.toString().getBytes());
-        ((FileOutputStream)localObject).close();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("-->save config failed:");
+        ((StringBuilder)localObject2).append(localIOException.toString());
+        QLog.w("WebCoreDump", 2, ((StringBuilder)localObject2).toString());
         return;
       }
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      while (QLog.isColorLevel())
+      if (QLog.isColorLevel())
       {
-        QLog.w("WebCoreDump", 2, "-->save config failed:" + localFileNotFoundException.toString());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("-->save config failed:");
+        ((StringBuilder)localObject2).append(localFileNotFoundException.toString());
+        QLog.w("WebCoreDump", 2, ((StringBuilder)localObject2).toString());
         return;
-        if (QLog.isColorLevel()) {
-          QLog.d("WebCoreDump", 2, "-->url white list is empty!");
-        }
       }
     }
-    catch (IOException localIOException)
+    catch (JSONException localJSONException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("WebCoreDump", 2, "-->save config failed:" + localIOException.toString());
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("-->save config failed:");
+        ((StringBuilder)localObject2).append(localJSONException.toString());
+        QLog.w("WebCoreDump", 2, ((StringBuilder)localObject2).toString());
       }
     }
+    return;
   }
   
   public int a()
@@ -145,8 +172,8 @@ public class WebViewCheckUpdataItem
     Object localObject2 = new PreloadInfoCheckUpdate.ControlReqHead();
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).protocol_ver.set(1);
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_plat_id.set(109);
-    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_ver.set("8.5.5.5105");
-    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).os_ver.set("de12fadd");
+    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).client_ver.set("8.7.0.5295");
+    ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).os_ver.set("01328a87");
     ((PreloadInfoCheckUpdate.ControlReqHead)localObject2).uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
     ((PreloadInfoCheckUpdate.WebViewConfigReq)localObject1).head.set((MessageMicro)localObject2);
     localObject1 = ((PreloadInfoCheckUpdate.WebViewConfigReq)localObject1).toByteArray();
@@ -161,64 +188,84 @@ public class WebViewCheckUpdataItem
   
   public void a(RespItem paramRespItem)
   {
-    if (paramRespItem == null) {}
-    while (paramRespItem.eServiceID != 126) {
+    if (paramRespItem == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "handleCheckUpdateItemData respitem.cResult:" + paramRespItem.cResult);
+    if (paramRespItem.eServiceID != 126) {
+      return;
+    }
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleCheckUpdateItemData respitem.cResult:");
+      localStringBuilder.append(paramRespItem.cResult);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_Boolean = false;
     this.b = false;
     this.jdField_a_of_type_JavaUtilSet.clear();
     int i = paramRespItem.cResult;
-    Object localObject = paramRespItem.vecUpdate;
-    if ((i == 2) && (localObject.length > 4))
+    paramRespItem = paramRespItem.vecUpdate;
+    if ((i == 2) && (paramRespItem.length > 4))
     {
-      i = (int)PkgTools.getLongData((byte[])localObject, 0);
-      paramRespItem = new byte[i - 4];
-      PkgTools.copyData(paramRespItem, 0, (byte[])localObject, 4, i - 4);
-    }
-    for (;;)
-    {
+      i = (int)PkgTools.getLongData(paramRespItem, 0) - 4;
+      localObject = new byte[i];
+      PkgTools.copyData((byte[])localObject, 0, paramRespItem, 4, i);
       try
       {
-        localObject = new PreloadInfoCheckUpdate.WebViewConfigRsp();
-        ((PreloadInfoCheckUpdate.WebViewConfigRsp)localObject).mergeFrom(paramRespItem);
-        if (((PreloadInfoCheckUpdate.WebViewConfigRsp)localObject).head.code.get() == 0)
-        {
-          this.jdField_a_of_type_Boolean = ((PreloadInfoCheckUpdate.WebViewConfigRsp)localObject).js_report.get();
-          this.b = ((PreloadInfoCheckUpdate.WebViewConfigRsp)localObject).url_check.get();
-          this.jdField_a_of_type_JavaUtilSet.addAll(((PreloadInfoCheckUpdate.WebViewConfigRsp)localObject).url_list.get());
-          this.jdField_a_of_type_Int = ((PreloadInfoCheckUpdate.WebViewConfigRsp)localObject).interval.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("WebCoreDump", 2, "handleCheckUpdateItemData IsReportLog" + this.jdField_a_of_type_Boolean + ", Url_Check=" + this.b + ", interval=" + this.jdField_a_of_type_Int);
-          }
+        paramRespItem = new PreloadInfoCheckUpdate.WebViewConfigRsp();
+        paramRespItem.mergeFrom((byte[])localObject);
+        if (paramRespItem.head.code.get() != 0) {
+          break label381;
         }
-        a();
-        if (VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 1) {
-          break;
-        }
-        VipWebViewReportLog.jdField_a_of_type_JavaUtilSet = this.jdField_a_of_type_JavaUtilSet;
-        VipWebViewReportLog.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-        VipWebViewReportLog.b = this.b;
+        this.jdField_a_of_type_Boolean = paramRespItem.js_report.get();
+        this.b = paramRespItem.url_check.get();
+        this.jdField_a_of_type_JavaUtilSet.addAll(paramRespItem.url_list.get());
+        this.jdField_a_of_type_Int = paramRespItem.interval.get();
         if (!QLog.isColorLevel()) {
-          break;
+          break label381;
         }
-        QLog.d("WebCoreDump", 2, "Update VipWebViewReportLog members");
-        return;
+        paramRespItem = new StringBuilder();
+        paramRespItem.append("handleCheckUpdateItemData IsReportLog");
+        paramRespItem.append(this.jdField_a_of_type_Boolean);
+        paramRespItem.append(", Url_Check=");
+        paramRespItem.append(this.b);
+        paramRespItem.append(", interval=");
+        paramRespItem.append(this.jdField_a_of_type_Int);
+        QLog.d("WebCoreDump", 2, paramRespItem.toString());
       }
       catch (Exception paramRespItem)
       {
         paramRespItem.printStackTrace();
         if (!QLog.isColorLevel()) {
-          continue;
+          break label381;
         }
-        QLog.d("WebCoreDump", 2, "-->exception during handle checkup data:" + paramRespItem.toString());
-        continue;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("-->exception during handle checkup data:");
+      ((StringBuilder)localObject).append(paramRespItem.toString());
+      QLog.d("WebCoreDump", 2, ((StringBuilder)localObject).toString());
+    }
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("-->checkup error:result=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(",data length:");
+      ((StringBuilder)localObject).append(paramRespItem.length);
+      QLog.d("WebCoreDump", 2, ((StringBuilder)localObject).toString());
+    }
+    label381:
+    a();
+    if (VipWebViewReportLog.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() != 1)
+    {
+      VipWebViewReportLog.jdField_a_of_type_JavaUtilSet = this.jdField_a_of_type_JavaUtilSet;
+      VipWebViewReportLog.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+      VipWebViewReportLog.b = this.b;
       if (QLog.isColorLevel()) {
-        QLog.d("WebCoreDump", 2, "-->checkup error:result=" + i + ",data length:" + localObject.length);
+        QLog.d("WebCoreDump", 2, "Update VipWebViewReportLog members");
       }
     }
   }
@@ -232,47 +279,68 @@ public class WebViewCheckUpdataItem
       {
         long l1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getPreferences().getLong("nextCheckWebviewTime", 0L);
         long l2 = System.currentTimeMillis();
+        Object localObject1;
         if (QLog.isColorLevel())
         {
-          Object localObject2 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(l1));
-          String str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(l2));
-          localObject1 = jdField_a_of_type_JavaLangString;
-          localObject2 = new StringBuilder().append("isSendTemplateCheckUpdate nextCheckUpdateTime=").append((String)localObject2).append(",systemTimestamp=").append(str).append(",isSend=");
-          if (l2 <= l1) {
-            continue;
+          localObject1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(l1));
+          str = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss", Locale.CHINA).format(new Date(l2));
+          localObject2 = jdField_a_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("isSendTemplateCheckUpdate nextCheckUpdateTime=");
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(",systemTimestamp=");
+          localStringBuilder.append(str);
+          localStringBuilder.append(",isSend=");
+          if (l2 > l1)
+          {
+            bool1 = true;
+            localStringBuilder.append(bool1);
+            QLog.d((String)localObject2, 2, localStringBuilder.toString());
           }
-          bool1 = true;
-          QLog.d((String)localObject1, 2, bool1);
-        }
-        Object localObject1 = new File(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir() + File.separator + VipWebViewReportLog.c + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "config.json");
-        if (l2 <= l1)
-        {
-          boolean bool3 = ((File)localObject1).exists();
-          bool1 = bool2;
-          if (bool3) {}
         }
         else
         {
-          bool1 = true;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getFilesDir());
+          ((StringBuilder)localObject1).append(File.separator);
+          ((StringBuilder)localObject1).append(VipWebViewReportLog.c);
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+          ((StringBuilder)localObject1).append("config.json");
+          localObject1 = new File(((StringBuilder)localObject1).toString());
+          if (l2 <= l1)
+          {
+            boolean bool3 = ((File)localObject1).exists();
+            bool1 = bool2;
+            if (bool3) {}
+          }
+          else
+          {
+            bool1 = true;
+          }
+          return bool1;
         }
       }
       catch (Exception localException)
       {
-        boolean bool1 = bool2;
-        if (!QLog.isColorLevel()) {
-          continue;
+        String str;
+        Object localObject2;
+        if (QLog.isColorLevel())
+        {
+          str = jdField_a_of_type_JavaLangString;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("Can't handle JS log and HTTP capture white list config: ");
+          ((StringBuilder)localObject2).append(localException);
+          QLog.w(str, 2, ((StringBuilder)localObject2).toString());
         }
-        QLog.w(jdField_a_of_type_JavaLangString, 2, "Can't handle JS log and HTTP capture white list config: " + localException);
+        return false;
       }
-      return bool1;
-      bool1 = false;
+      boolean bool1 = false;
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.log.WebViewCheckUpdataItem
  * JD-Core Version:    0.7.0.1
  */

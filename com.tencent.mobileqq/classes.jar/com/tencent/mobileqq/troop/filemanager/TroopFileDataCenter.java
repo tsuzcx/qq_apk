@@ -3,10 +3,10 @@ package com.tencent.mobileqq.troop.filemanager;
 import android.os.SystemClock;
 import android.text.TextUtils;
 import com.tencent.mm.vfs.VFSFile;
-import com.tencent.mobileqq.app.BizTroopHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.TroopFileHandler;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.data.TroopFileTansferItemEntity;
 import com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr;
@@ -21,7 +21,7 @@ import java.util.UUID;
 
 public class TroopFileDataCenter
 {
-  static long jdField_a_of_type_Long = 0L;
+  static long jdField_a_of_type_Long;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private Map<UUID, TroopFileTransferManager.Item> jdField_a_of_type_JavaUtilMap;
   private boolean jdField_a_of_type_Boolean;
@@ -30,40 +30,40 @@ public class TroopFileDataCenter
   @Deprecated
   private void a()
   {
-    for (;;)
+    try
     {
-      Object localObject2;
-      try
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (bool) {
+        return;
+      }
+      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(this.b).iterator();
+      while (localIterator.hasNext())
       {
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (bool) {
-          return;
-        }
-        Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager().a().a(this.b).iterator();
-        if (!localIterator.hasNext()) {
-          break label180;
-        }
-        localObject2 = (TroopFileTansferItemEntity)localIterator.next();
-        if ((((TroopFileTansferItemEntity)localObject2).Id == null) || ((!TextUtils.isEmpty(((TroopFileTansferItemEntity)localObject2).FilePath)) && (!((TroopFileTansferItemEntity)localObject2).FilePath.startsWith("/")) && (!((TroopFileTansferItemEntity)localObject2).isZipInnerFile))) {
-          continue;
-        }
-        localObject2 = new TroopFileTransferManager.Item((TroopFileTansferItemEntity)localObject2);
-        switch (((TroopFileTransferManager.Item)localObject2).Status)
+        Object localObject2 = (TroopFileTansferItemEntity)localIterator.next();
+        if ((((TroopFileTansferItemEntity)localObject2).Id != null) && ((TextUtils.isEmpty(((TroopFileTansferItemEntity)localObject2).FilePath)) || (((TroopFileTansferItemEntity)localObject2).FilePath.startsWith("/")) || (((TroopFileTansferItemEntity)localObject2).isZipInnerFile)))
         {
-        case 0: 
+          localObject2 = new TroopFileTransferManager.Item((TroopFileTansferItemEntity)localObject2);
+          int i = ((TroopFileTransferManager.Item)localObject2).Status;
+          if ((i != 0) && (i != 1))
+          {
+            if (i == 8) {
+              ((TroopFileTransferManager.Item)localObject2).Status = 10;
+            }
+          }
+          else {
+            ((TroopFileTransferManager.Item)localObject2).Status = 3;
+          }
           this.jdField_a_of_type_JavaUtilMap.put(((TroopFileTransferManager.Item)localObject2).Id, localObject2);
-          break;
-        case 1: 
-          ((TroopFileTransferManager.Item)localObject2).Status = 3;
         }
       }
-      finally {}
-      continue;
-      ((TroopFileTransferManager.Item)localObject2).Status = 10;
-      continue;
-      label180:
       ThreadManager.post(new TroopFileDataCenter.2(this), 8, null, true);
       this.jdField_a_of_type_Boolean = true;
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject1;
     }
   }
   
@@ -75,7 +75,11 @@ public class TroopFileDataCenter
     }
     if (paramItem.troopuin == 0L)
     {
-      TroopFileTransferUtil.Log.b("TroopFileDataCenter", TroopFileTransferUtil.Log.a, "saveStatus. item.troopuin=0, change to:" + paramLong);
+      int i = TroopFileTransferUtil.Log.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveStatus. item.troopuin=0, change to:");
+      localStringBuilder.append(paramLong);
+      TroopFileTransferUtil.Log.b("TroopFileDataCenter", i, localStringBuilder.toString());
       paramItem.troopuin = paramLong;
     }
     if (paramItem.troopuin == 0L)
@@ -93,106 +97,112 @@ public class TroopFileDataCenter
   
   public static void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt1, int paramInt2)
   {
-    if (paramItem.Status != paramInt1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramItem.IsNewStatus = bool;
-      if (paramItem.IsNewStatus) {
-        TroopFileDataReporter.a(paramLong, paramItem, paramInt1, paramInt2);
-      }
-      paramItem.Status = paramInt1;
-      paramItem.ErrorCode = paramInt2;
-      paramItem.Pausing = 0;
-      if (paramItem.W2MPause == 1) {
-        paramItem.W2MPause = 0;
-      }
-      a(paramLong, paramItem);
-      paramItem.StatusUpdateTimeMs = 0L;
-      b(paramLong, paramItem);
-      paramItem.IsNewStatus = false;
-      b(paramLong, paramItem, paramInt2);
-      return;
+    boolean bool;
+    if (paramItem.Status != paramInt1) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramItem.IsNewStatus = bool;
+    if (paramItem.IsNewStatus) {
+      TroopFileDataReporter.a(paramLong, paramItem, paramInt1, paramInt2);
+    }
+    paramItem.Status = paramInt1;
+    paramItem.ErrorCode = paramInt2;
+    paramItem.Pausing = 0;
+    if (paramItem.W2MPause == 1) {
+      paramItem.W2MPause = 0;
+    }
+    a(paramLong, paramItem);
+    paramItem.StatusUpdateTimeMs = 0L;
+    b(paramLong, paramItem);
+    paramItem.IsNewStatus = false;
+    b(paramLong, paramItem, paramInt2);
   }
   
   public static void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, TroopFileError.SimpleErrorInfo paramSimpleErrorInfo)
   {
-    if (paramItem.Status != paramInt) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramItem.IsNewStatus = bool;
-      paramItem.Status = paramInt;
-      paramItem.ErrorCode = paramSimpleErrorInfo.a;
-      paramItem.Pausing = 0;
-      if (paramItem.W2MPause == 1) {
-        paramItem.W2MPause = 0;
-      }
-      a(paramLong, paramItem);
-      paramItem.StatusUpdateTimeMs = 0L;
-      b(paramLong, paramItem);
-      paramItem.IsNewStatus = false;
-      TroopFileError.a(TroopFileTransferUtil.a(), paramSimpleErrorInfo);
-      return;
+    boolean bool;
+    if (paramItem.Status != paramInt) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramItem.IsNewStatus = bool;
+    paramItem.Status = paramInt;
+    paramItem.ErrorCode = paramSimpleErrorInfo.a;
+    paramItem.Pausing = 0;
+    if (paramItem.W2MPause == 1) {
+      paramItem.W2MPause = 0;
+    }
+    a(paramLong, paramItem);
+    paramItem.StatusUpdateTimeMs = 0L;
+    b(paramLong, paramItem);
+    paramItem.IsNewStatus = false;
+    TroopFileError.a(TroopFileTransferUtil.a(), paramSimpleErrorInfo);
   }
   
   @Deprecated
   private boolean a()
   {
+    try
+    {
+      Object localObject1 = this.jdField_a_of_type_JavaUtilMap.values();
+      localObject1 = ((Collection)localObject1).iterator();
+      boolean bool1 = false;
+      while (((Iterator)localObject1).hasNext())
+      {
+        TroopFileTransferManager.Item localItem = (TroopFileTransferManager.Item)((Iterator)localObject1).next();
+        if ((!localItem.ThumbnailDownloading_Small) && (!localItem.ThumbnailDownloading_Large) && (!localItem.ThumbnailDownloading_Middle))
+        {
+          int i = localItem.Status;
+          boolean bool2;
+          if ((i != 6) && (i != 11))
+          {
+            bool2 = bool1;
+          }
+          else
+          {
+            if (!TextUtils.isEmpty(localItem.LocalFile))
+            {
+              bool2 = bool1;
+              if (new VFSFile(localItem.LocalFile).exists()) {
+                break label156;
+              }
+              a(this.b, localItem, 7);
+            }
+            else
+            {
+              a(this.b, localItem, 7);
+            }
+            bool2 = true;
+          }
+          label156:
+          if ((localItem.HasThumbnailFile_Small) && (!TroopFileThumbnailMgr.a(this.b, localItem, 128))) {}
+          for (;;)
+          {
+            bool1 = true;
+            break;
+            if ((!localItem.HasThumbnailFile_Large) || (TroopFileThumbnailMgr.a(this.b, localItem, 640)))
+            {
+              bool1 = bool2;
+              if (!localItem.HasThumbnailFile_Middle) {
+                break;
+              }
+              bool1 = bool2;
+              if (TroopFileThumbnailMgr.a(this.b, localItem, 383)) {
+                break;
+              }
+            }
+          }
+        }
+      }
+      return bool1;
+    }
+    finally {}
     for (;;)
     {
-      boolean bool;
-      TroopFileTransferManager.Item localItem;
-      try
-      {
-        Object localObject1 = this.jdField_a_of_type_JavaUtilMap.values();
-        localObject1 = ((Collection)localObject1).iterator();
-        bool = false;
-        if (!((Iterator)localObject1).hasNext()) {
-          break label232;
-        }
-        localItem = (TroopFileTransferManager.Item)((Iterator)localObject1).next();
-        if ((localItem.ThumbnailDownloading_Small) || (localItem.ThumbnailDownloading_Large) || (localItem.ThumbnailDownloading_Middle)) {
-          continue;
-        }
-        switch (localItem.Status)
-        {
-        default: 
-          if ((!localItem.HasThumbnailFile_Small) || (TroopFileThumbnailMgr.a(this.b, localItem, 128))) {
-            break label180;
-          }
-          bool = true;
-          break;
-        case 6: 
-        case 11: 
-          if (TextUtils.isEmpty(localItem.LocalFile)) {
-            break label165;
-          }
-        }
-      }
-      finally {}
-      if (!new VFSFile(localItem.LocalFile).exists())
-      {
-        a(this.b, localItem, 7);
-        bool = true;
-        continue;
-        label165:
-        a(this.b, localItem, 7);
-        bool = true;
-        continue;
-        label180:
-        if ((localItem.HasThumbnailFile_Large) && (!TroopFileThumbnailMgr.a(this.b, localItem, 640)))
-        {
-          bool = true;
-        }
-        else if ((localItem.HasThumbnailFile_Middle) && (!TroopFileThumbnailMgr.a(this.b, localItem, 383)))
-        {
-          bool = true;
-          continue;
-          label232:
-          return bool;
-        }
-      }
+      throw localObject2;
     }
   }
   
@@ -202,11 +212,11 @@ public class TroopFileDataCenter
     long l2 = SystemClock.uptimeMillis() - paramItem.StatusUpdateTimeMs;
     if ((jdField_a_of_type_Long == 0L) || (paramItem.StatusUpdateTimeMs == 0L) || (l2 > 5000L) || (l2 < 0L) || (l1 > 1000L) || (l1 < 0L))
     {
-      jdField_a_of_type_Long = l1 + jdField_a_of_type_Long;
+      jdField_a_of_type_Long += l1;
       paramItem.StatusUpdateTimeMs += l2;
       QQAppInterface localQQAppInterface = TroopFileTransferUtil.a();
       if (localQQAppInterface != null) {
-        ((BizTroopHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.BIZ_TROOP_HANDLER)).a(paramItem.getInfo(paramLong));
+        ((TroopFileHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_FILE_HANDLER)).a(paramItem.getInfo(paramLong));
       }
     }
   }
@@ -218,7 +228,7 @@ public class TroopFileDataCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileDataCenter
  * JD-Core Version:    0.7.0.1
  */

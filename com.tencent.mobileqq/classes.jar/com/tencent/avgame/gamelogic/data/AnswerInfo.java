@@ -59,15 +59,24 @@ public class AnswerInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin").append("=").append(this.uin).append("|");
-    localStringBuilder.append("answer_result").append("=").append(this.answer_result).append("|");
-    localStringBuilder.append("answer_index").append("=").append(this.answer_index).append("|");
+    localStringBuilder.append("uin");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append("|");
+    localStringBuilder.append("answer_result");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.answer_result);
+    localStringBuilder.append("|");
+    localStringBuilder.append("answer_index");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.answer_index);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelogic.data.AnswerInfo
  * JD-Core Version:    0.7.0.1
  */

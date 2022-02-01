@@ -27,8 +27,8 @@ public class SingleLineTextViewResourceNameGrabStrategy
         ((ResourceGrabSkinData)localObject).jdField_a_of_type_Array2dOfInt = paramView.getStateSpecs();
         ((ResourceGrabSkinData)localObject).jdField_a_of_type_ArrayOfInt = paramView.getColors();
         paramList.add(localObject);
+        return;
       }
-      return;
     }
     catch (Exception paramView)
     {
@@ -52,10 +52,11 @@ public class SingleLineTextViewResourceNameGrabStrategy
       localObject = paramView.getClass().getDeclaredField("mDrawableRight");
       ((Field)localObject).setAccessible(true);
       paramView = ((Field)localObject).get(paramView);
-      if ((paramView instanceof Drawable)) {
+      if ((paramView instanceof Drawable))
+      {
         a((Drawable)paramView, paramList, 2);
+        return;
       }
-      return;
     }
     catch (Exception paramView)
     {
@@ -109,7 +110,7 @@ public class SingleLineTextViewResourceNameGrabStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.strategy.SingleLineTextViewResourceNameGrabStrategy
  * JD-Core Version:    0.7.0.1
  */

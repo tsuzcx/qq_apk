@@ -18,10 +18,16 @@ public abstract class RestrictedContinuationImpl
     super(paramContinuation);
     if (paramContinuation != null)
     {
-      if (paramContinuation.getContext() == EmptyCoroutineContext.INSTANCE) {}
-      for (int i = 1; i == 0; i = 0) {
-        throw ((Throwable)new IllegalArgumentException("Coroutines with restricted suspension must have EmptyCoroutineContext".toString()));
+      int i;
+      if (paramContinuation.getContext() == EmptyCoroutineContext.INSTANCE) {
+        i = 1;
+      } else {
+        i = 0;
       }
+      if (i != 0) {
+        return;
+      }
+      throw ((Throwable)new IllegalArgumentException("Coroutines with restricted suspension must have EmptyCoroutineContext".toString()));
     }
   }
   
@@ -33,7 +39,7 @@ public abstract class RestrictedContinuationImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.jvm.internal.RestrictedContinuationImpl
  * JD-Core Version:    0.7.0.1
  */

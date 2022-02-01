@@ -11,8 +11,12 @@ class UploadEnv$1
   
   public void onNetworkConnect(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("UploadEnv", 2, "upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("upload2: onNetworkConnect registerNetworkStateObserver|onNetworkConnect：");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("UploadEnv", 2, localStringBuilder.toString());
     }
     UploadEnv.access$002(this.this$0, paramBoolean);
     this.val$observer.onStateChanged(paramBoolean);
@@ -20,7 +24,7 @@ class UploadEnv$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.UploadEnv.1
  * JD-Core Version:    0.7.0.1
  */

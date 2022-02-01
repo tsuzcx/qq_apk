@@ -2,16 +2,40 @@ package com.tencent.mobileqq.activity.aio.stickerrecommended.ad;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 
 public class AdEmoConfigProcessor
   extends IQConfigProcessor<AdEmoConfigBean>
 {
+  public AppInterface a()
+  {
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getApp, runtime is null ?  ");
+      boolean bool;
+      if (localAppRuntime == null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localStringBuilder.append(bool);
+      localStringBuilder.append(" , runtime instanceof QQAppInterface ? ");
+      localStringBuilder.append(localAppRuntime instanceof AppInterface);
+      QLog.d("AdEmoConfigProcessor", 2, localStringBuilder.toString());
+    }
+    if ((localAppRuntime instanceof AppInterface)) {
+      return (AppInterface)localAppRuntime;
+    }
+    return null;
+  }
+  
   @NonNull
   public AdEmoConfigBean a(int paramInt)
   {
@@ -24,44 +48,25 @@ public class AdEmoConfigProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       AdEmoConfigBean localAdEmoConfigBean = AdEmoConfigBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AdEmoConfigProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("AdEmoConfigProcessor", 2, localStringBuilder.toString());
       }
       return localAdEmoConfigBean;
     }
     return null;
   }
   
-  public QQAppInterface a()
-  {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
-    {
-      localStringBuilder = new StringBuilder().append("getApp, runtime is null ?  ");
-      if (localAppRuntime != null) {
-        break label70;
-      }
-    }
-    label70:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("AdEmoConfigProcessor", 2, bool + " , runtime instanceof QQAppInterface ? " + (localAppRuntime instanceof QQAppInterface));
-      if (!(localAppRuntime instanceof QQAppInterface)) {
-        break;
-      }
-      return (QQAppInterface)localAppRuntime;
-    }
-    return null;
-  }
-  
   public void a(AdEmoConfigBean paramAdEmoConfigBean)
   {
-    QQAppInterface localQQAppInterface = a();
-    if (localQQAppInterface != null)
+    AppInterface localAppInterface = a();
+    if (localAppInterface != null)
     {
-      String str = localQQAppInterface.getCurrentUin();
-      AdEmoCfgProvider.a(localQQAppInterface.getApp(), str, paramAdEmoConfigBean.a);
+      String str = localAppInterface.getCurrentUin();
+      AdEmoCfgProvider.a(localAppInterface.getApp(), str, paramAdEmoConfigBean.a);
     }
   }
   
@@ -99,7 +104,7 @@ public class AdEmoConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.ad.AdEmoConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

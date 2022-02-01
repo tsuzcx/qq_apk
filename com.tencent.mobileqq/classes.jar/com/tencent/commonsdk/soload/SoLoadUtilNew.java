@@ -9,11 +9,10 @@ public class SoLoadUtilNew
   
   private static boolean getLoadResult(int paramInt)
   {
-    if ((paramInt & 0x2) == 2) {}
-    while ((paramInt & 0x40000) == 262144) {
+    if ((paramInt & 0x2) == 2) {
       return true;
     }
-    return false;
+    return (paramInt & 0x40000) == 262144;
   }
   
   public static boolean loadSoByName(Context paramContext, String paramString)
@@ -21,8 +20,9 @@ public class SoLoadUtilNew
     long l1 = SystemClock.uptimeMillis();
     int i = SoLoadCore.loadSo(paramContext, paramString);
     long l2 = SystemClock.uptimeMillis();
-    if (sReport != null) {
-      sReport.report(i, paramString, l2 - l1);
+    paramContext = sReport;
+    if (paramContext != null) {
+      paramContext.report(i, paramString, l2 - l1);
     }
     return getLoadResult(i);
   }
@@ -34,7 +34,7 @@ public class SoLoadUtilNew
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.commonsdk.soload.SoLoadUtilNew
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,14 @@ public class RenderParam
   {
     RenderParam localRenderParam = new RenderParam();
     localRenderParam.id = this.id;
-    System.arraycopy(this.position, 0, localRenderParam.position, 0, this.position.length);
-    System.arraycopy(this.texCords, 0, localRenderParam.texCords, 0, this.texCords.length);
-    System.arraycopy(this.texAnchor, 0, localRenderParam.texAnchor, 0, this.texAnchor.length);
-    System.arraycopy(this.texRotate, 0, localRenderParam.texRotate, 0, this.texRotate.length);
+    float[] arrayOfFloat = this.position;
+    System.arraycopy(arrayOfFloat, 0, localRenderParam.position, 0, arrayOfFloat.length);
+    arrayOfFloat = this.texCords;
+    System.arraycopy(arrayOfFloat, 0, localRenderParam.texCords, 0, arrayOfFloat.length);
+    arrayOfFloat = this.texAnchor;
+    System.arraycopy(arrayOfFloat, 0, localRenderParam.texAnchor, 0, arrayOfFloat.length);
+    arrayOfFloat = this.texRotate;
+    System.arraycopy(arrayOfFloat, 0, localRenderParam.texRotate, 0, arrayOfFloat.length);
     localRenderParam.texScale = this.texScale;
     localRenderParam.texture = this.texture;
     return localRenderParam;
@@ -25,7 +29,7 @@ public class RenderParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.model.RenderParam
  * JD-Core Version:    0.7.0.1
  */

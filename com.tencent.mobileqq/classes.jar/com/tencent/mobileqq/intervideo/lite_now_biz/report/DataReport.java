@@ -3,7 +3,8 @@ package com.tencent.mobileqq.intervideo.lite_now_biz.report;
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.intervideo.lite_now_biz.config.NowBizConfigManager;
-import com.tencent.mobileqq.nearby.report.ODReportTask;
+import com.tencent.mobileqq.nearby.report.IODReportTask;
+import com.tencent.mobileqq.nearby.report.impl.ODReportTaskImpl;
 import com.tencent.qphone.base.util.QLog;
 import mqq.app.AppRuntime;
 
@@ -14,82 +15,91 @@ public class DataReport
     return NowBizConfigManager.a(paramBundle, paramString);
   }
   
-  public static void a(Bundle paramBundle, String paramString)
+  public static void a(Bundle paramBundle, String paramString, long paramLong1, long paramLong2)
   {
-    String str1 = NowBizConfigManager.b(paramBundle);
-    String str2 = a(paramBundle, "fromid");
-    paramBundle = a(paramBundle, "roomid");
-    if (QLog.isColorLevel()) {
-      QLog.i("NowDataReport", 1, "reportStartAudioMediaService:" + String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { "now_lite", str1, str2, paramBundle }));
+    String str = NowBizConfigManager.b(paramBundle);
+    paramBundle = a(paramBundle, "fromid");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportStartAudioMediaService:");
+      localStringBuilder.append(String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { "now_lite", str, paramBundle, Long.valueOf(paramLong2) }));
+      QLog.i("NowDataReport", 1, localStringBuilder.toString());
     }
-    new ODReportTask().b("QQ_now_room").c("audio_start").a(paramString).i("now_lite").j(str1).d(str2).a("roomId", paramBundle).a();
+    new ODReportTaskImpl().setModule("QQ_now_room").setAction("audio_start").setUin(paramString).setUserId(paramString).setAnchor(paramLong1).setAnchorId(paramLong1).setOperName("now_lite").setRes2(str).setSource(paramBundle).setReferId(paramBundle).addKeyValue("roomid", paramLong2).setInstallSrc("406").report();
   }
   
-  public static void a(Bundle paramBundle, String paramString1, String paramString2)
+  public static void a(Bundle paramBundle, String paramString1, long paramLong1, long paramLong2, String paramString2)
   {
-    String str = a(paramBundle, "fromid");
-    paramBundle = a(paramBundle, "roomid");
-    if (QLog.isColorLevel()) {
-      QLog.i("NowDataReport", 1, "reportEnterRoom:" + String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { "now_lite", paramString2, str, paramBundle }));
+    paramBundle = a(paramBundle, "fromid");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportEnterRoom:");
+      localStringBuilder.append(String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { "now_lite", paramString2, paramBundle, Long.valueOf(paramLong2) }));
+      QLog.i("NowDataReport", 1, localStringBuilder.toString());
     }
-    new ODReportTask().b("QQ_now_room").c("in").a(paramString1).i("now_lite").j(paramString2).d(str).a("roomId", paramBundle).a();
+    new ODReportTaskImpl().setModule("QQ_now_room").setAction("in").setUin(paramString1).setUserId(paramString1).setAnchor(paramLong1).setAnchorId(paramLong1).setOperName("now_lite").setRes2(paramString2).setSource(paramBundle).setReferId(paramBundle).addKeyValue("roomid", paramLong2).setInstallSrc("406").report();
   }
   
-  public static void a(Bundle paramBundle, String paramString1, String paramString2, long paramLong)
+  public static void a(Bundle paramBundle, String paramString1, long paramLong1, long paramLong2, String paramString2, long paramLong3)
   {
-    String str = a(paramBundle, "fromid");
-    paramBundle = a(paramBundle, "roomid");
-    if (QLog.isColorLevel()) {
-      QLog.i("NowDataReport", 1, "reportExitRoom:" + String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { "now_lite", paramString2, str, paramBundle }));
+    paramBundle = a(paramBundle, "fromid");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportExitRoom:");
+      localStringBuilder.append(String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { "now_lite", paramString2, paramBundle, Long.valueOf(paramLong2) }));
+      QLog.i("NowDataReport", 1, localStringBuilder.toString());
     }
-    new ODReportTask().b("QQ_now_room").c("quit").a(paramString1).i("now_lite").j(paramString2).d(str).a("roomId", paramBundle).a("timelong", paramLong).a();
+    new ODReportTaskImpl().setModule("QQ_now_room").setAction("quit").setUin(paramString1).setUserId(paramString1).setAnchor(paramLong1).setAnchorId(paramLong1).setOperName("now_lite").setRes2(paramString2).setSource(paramBundle).setReferId(paramBundle).addKeyValue("roomid", paramLong2).addKeyValue("timelong", paramLong3).setInstallSrc("406").report();
   }
   
   public static void a(Bundle paramBundle, boolean paramBoolean)
   {
     Object localObject = a(paramBundle, "fromid");
-    String str1 = a(paramBundle, "roomid");
-    String str2 = NowBizConfigManager.b(paramBundle);
-    String str3 = BaseApplicationImpl.getApplication().getRuntime().getCurrentUin();
-    if (QLog.isColorLevel())
+    String str2 = a(paramBundle, "roomid");
+    String str3 = NowBizConfigManager.b(paramBundle);
+    String str4 = BaseApplicationImpl.getApplication().getRuntime().getCurrentUin();
+    boolean bool = QLog.isColorLevel();
+    String str1 = "now_lite";
+    if (bool)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("reportNowClick:");
-      if (paramBoolean)
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportNowClick:");
+      if (paramBoolean) {
         paramBundle = "now_lite";
-        QLog.i("NowDataReport", 1, String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { paramBundle, str2, localObject, str1 }));
+      } else {
+        paramBundle = "now_jiehe";
       }
+      localStringBuilder.append(String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { paramBundle, str3, localObject, str2 }));
+      QLog.i("NowDataReport", 1, localStringBuilder.toString());
     }
-    else
-    {
-      localObject = new ODReportTask().b("QQ_now_room").c("click").a(str3).d((String)localObject);
-      if (!paramBoolean) {
-        break label160;
-      }
-    }
-    label160:
-    for (paramBundle = "now_lite";; paramBundle = "now_jiehe")
-    {
-      ((ODReportTask)localObject).i(paramBundle).j(str2).a("roomId", str1).a();
-      return;
+    localObject = new ODReportTaskImpl().setModule("QQ_now_room").setAction("click").setUin(str4).setUserId(str4).setSource((String)localObject).setReferId((String)localObject);
+    if (paramBoolean) {
+      paramBundle = str1;
+    } else {
       paramBundle = "now_jiehe";
-      break;
     }
+    ((IODReportTask)localObject).setOperName(paramBundle).setRes2(str3).addKeyValue("roomid", str2).setInstallSrc("406").report();
   }
   
-  public static void b(Bundle paramBundle, String paramString1, String paramString2)
+  public static void b(Bundle paramBundle, String paramString1, long paramLong1, long paramLong2, String paramString2)
   {
-    String str = a(paramBundle, "fromid");
-    paramBundle = a(paramBundle, "roomid");
-    if (QLog.isColorLevel()) {
-      QLog.i("NowDataReport", 1, "reportPageFinished:" + String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { "now_lite", paramString2, str, paramBundle }));
+    paramBundle = a(paramBundle, "fromid");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportPageFinished:");
+      localStringBuilder.append(String.format("version[%s] roomType[%s] fromId[%s] roomId[%s]", new Object[] { "now_lite", paramString2, paramBundle, Long.valueOf(paramLong2) }));
+      QLog.i("NowDataReport", 1, localStringBuilder.toString());
     }
-    new ODReportTask().b("QQ_now_room").c("load_finish").a(paramString1).i("now_lite").j(paramString2).d(str).a("roomId", paramBundle).a();
+    new ODReportTaskImpl().setModule("QQ_now_room").setAction("load_finish").setUin(paramString1).setUserId(paramString1).setAnchor(paramLong1).setAnchorId(paramLong1).setOperName("now_lite").setRes2(paramString2).setSource(paramBundle).setReferId(paramBundle).addKeyValue("roomid", paramLong2).setInstallSrc("406").report();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.report.DataReport
  * JD-Core Version:    0.7.0.1
  */

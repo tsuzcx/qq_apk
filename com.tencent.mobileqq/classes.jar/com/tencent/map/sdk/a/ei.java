@@ -30,7 +30,11 @@ public final class ei
       paramClass = new ei.5(this, paramClass);
       return paramClass;
     }
-    catch (NoSuchMethodException paramClass) {}
+    catch (NoSuchMethodException paramClass)
+    {
+      label33:
+      break label33;
+    }
     return null;
   }
   
@@ -39,59 +43,46 @@ public final class ei
     Type localType = paramfd.b;
     Class localClass = paramfd.a;
     paramfd = (dp)this.a.get(localType);
-    Object localObject;
     if (paramfd != null) {
-      localObject = new ei.1(this, paramfd, localType);
+      return new ei.1(this, paramfd, localType);
     }
-    do
+    paramfd = (dp)this.a.get(localClass);
+    if (paramfd != null) {
+      return new ei.4(this, paramfd, localType);
+    }
+    paramfd = a(localClass);
+    if (paramfd != null) {
+      return paramfd;
+    }
+    if (Collection.class.isAssignableFrom(localClass))
     {
-      return localObject;
-      paramfd = (dp)this.a.get(localClass);
-      if (paramfd != null) {
-        return new ei.4(this, paramfd, localType);
-      }
-      paramfd = a(localClass);
-      localObject = paramfd;
-    } while (paramfd != null);
-    if (Collection.class.isAssignableFrom(localClass)) {
       if (SortedSet.class.isAssignableFrom(localClass)) {
         paramfd = new ei.6(this);
-      }
-    }
-    for (;;)
-    {
-      localObject = paramfd;
-      if (paramfd != null) {
-        break;
-      }
-      return new ei.3(this, localClass, localType);
-      if (Set.class.isAssignableFrom(localClass))
-      {
+      } else if (Set.class.isAssignableFrom(localClass)) {
         paramfd = new ei.7(this);
-      }
-      else if (Queue.class.isAssignableFrom(localClass))
-      {
+      } else if (Queue.class.isAssignableFrom(localClass)) {
         paramfd = new ei.8(this);
-      }
-      else
-      {
+      } else {
         paramfd = new ei.9(this);
-        continue;
-        if (Map.class.isAssignableFrom(localClass))
-        {
-          if (SortedMap.class.isAssignableFrom(localClass)) {
-            paramfd = new ei.10(this);
-          } else if (((localType instanceof ParameterizedType)) && (!String.class.isAssignableFrom(fd.a(((ParameterizedType)localType).getActualTypeArguments()[0]).a))) {
-            paramfd = new ei.11(this);
-          } else {
-            paramfd = new ei.2(this);
-          }
-        }
-        else {
-          paramfd = null;
-        }
       }
     }
+    else if (Map.class.isAssignableFrom(localClass))
+    {
+      if (SortedMap.class.isAssignableFrom(localClass)) {
+        paramfd = new ei.10(this);
+      } else if (((localType instanceof ParameterizedType)) && (!String.class.isAssignableFrom(fd.a(((ParameterizedType)localType).getActualTypeArguments()[0]).a))) {
+        paramfd = new ei.11(this);
+      } else {
+        paramfd = new ei.2(this);
+      }
+    }
+    else {
+      paramfd = null;
+    }
+    if (paramfd != null) {
+      return paramfd;
+    }
+    return new ei.3(this, localClass, localType);
   }
   
   public final String toString()
@@ -101,7 +92,7 @@ public final class ei
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ei
  * JD-Core Version:    0.7.0.1
  */

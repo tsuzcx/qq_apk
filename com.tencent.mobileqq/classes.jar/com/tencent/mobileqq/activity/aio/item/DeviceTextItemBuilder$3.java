@@ -16,9 +16,9 @@ class DeviceTextItemBuilder$3
   
   public void onClick(View paramView)
   {
-    if (!NetworkUtil.d(this.a.a))
+    if (!NetworkUtil.isNetSupport(this.a.a))
     {
-      QQToast.a(this.a.a, HardCodeUtil.a(2131703258), 2000).a();
+      QQToast.a(this.a.a, HardCodeUtil.a(2131703390), 2000).a();
       return;
     }
     paramView = new Intent();
@@ -31,7 +31,7 @@ class DeviceTextItemBuilder$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DeviceTextItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

@@ -50,9 +50,10 @@ public class VideoC2CHandler
   
   private void a(C2CType0x211_SubC2CType0xb.MsgBody.MsgHeader paramMsgHeader)
   {
-    if (this.b != null)
+    String str = this.b;
+    if (str != null)
     {
-      long l = CharacterUtil.a(this.b);
+      long l = CharacterUtil.a(str);
       paramMsgHeader.uint64_to_uin.set(l);
     }
     if (this.jdField_a_of_type_Long != 0L) {
@@ -64,8 +65,13 @@ public class VideoC2CHandler
   public ToServiceMsg a(long paramLong1, int paramInt, C2CType0x211_SubC2CType0xb.MsgBody paramMsgBody, long paramLong2)
   {
     paramMsgBody = paramMsgBody.toByteArray();
-    if (QLog.isColorLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "send0x211C2CQavMsg QavMsgRecord:" + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("send0x211C2CQavMsg QavMsgRecord:");
+      localStringBuilder.append(paramLong2);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     return a(paramLong1, this.b, 529, 11, paramInt, paramMsgBody, paramLong2);
   }
@@ -120,7 +126,7 @@ public class VideoC2CHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }
@@ -129,7 +135,7 @@ public class VideoC2CHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.VideoC2CHandler
  * JD-Core Version:    0.7.0.1
  */

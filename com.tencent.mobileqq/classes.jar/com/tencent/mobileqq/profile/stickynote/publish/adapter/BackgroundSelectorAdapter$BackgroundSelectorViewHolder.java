@@ -13,12 +13,12 @@ public class BackgroundSelectorAdapter$BackgroundSelectorViewHolder
   public BackgroundSelectorAdapter$BackgroundSelectorViewHolder(BackgroundSelectorAdapter paramBackgroundSelectorAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView = ((RoundedImageView)paramView.findViewById(2131377153));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundedImageView = ((RoundedImageView)paramView.findViewById(2131376634));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.stickynote.publish.adapter.BackgroundSelectorAdapter.BackgroundSelectorViewHolder
  * JD-Core Version:    0.7.0.1
  */

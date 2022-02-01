@@ -19,7 +19,7 @@ public class CKeyFacade
 {
   private static final String TAG = "CKeyFacade|ckeygeneratorV2.so";
   static boolean bLoadSucc = false;
-  private static CKeyBeaconReport cKeyBeaconReport = null;
+  private static CKeyBeaconReport cKeyBeaconReport;
   private static int flag_11;
   private static int flag_22;
   private static int flag_33;
@@ -47,8 +47,9 @@ public class CKeyFacade
   
   static
   {
-    if (moduleUpdateInterface != null) {
-      bLoadSucc = moduleUpdateInterface.loadLibrary("ckeygeneratorV2");
+    ModuleUpdateInterface localModuleUpdateInterface = moduleUpdateInterface;
+    if (localModuleUpdateInterface != null) {
+      bLoadSucc = localModuleUpdateInterface.loadLibrary("ckeygeneratorV2");
     }
     flag_11 = 1;
     flag_22 = 2;
@@ -87,7 +88,7 @@ public class CKeyFacade
         if (localJSONObject.has("extern1"))
         {
           paramArrayOfInt[0] = localJSONObject.optInt("extern1", 0);
-          j = 0x0 | flag_11;
+          j = flag_11 | 0x0;
           paramString = Boolean.valueOf(true);
           int i = j;
           if (localJSONObject.has("extern2"))
@@ -116,10 +117,10 @@ public class CKeyFacade
       }
       catch (Exception paramString)
       {
-        return Boolean.valueOf(false);
+        return localBoolean;
       }
-      int j = 0;
       paramString = localBoolean;
+      int j = 0;
     }
   }
   
@@ -135,12 +136,9 @@ public class CKeyFacade
     }
     catch (Exception paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        paramArrayOfByte = "";
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return "";
   }
   
   public static String ckBuildSignStr(Map<String, String> paramMap)
@@ -153,7 +151,9 @@ public class CKeyFacade
       if (localStringBuilder.length() != 0) {
         localStringBuilder.append("&");
       }
-      localStringBuilder.append((String)localEntry.getKey()).append("=").append((String)localEntry.getValue());
+      localStringBuilder.append((String)localEntry.getKey());
+      localStringBuilder.append("=");
+      localStringBuilder.append((String)localEntry.getValue());
     }
     return localStringBuilder.toString();
   }
@@ -169,20 +169,19 @@ public class CKeyFacade
     paramString = paramString.split("&");
     HashMap localHashMap = new HashMap();
     int i = 0;
-    if (i < paramString.length)
+    while (i < paramString.length)
     {
       String[] arrayOfString = paramString[i].split("=");
-      if (arrayOfString.length != 2) {
+      if (arrayOfString.length != 2)
+      {
         if (arrayOfString[0].length() > 0) {
           localHashMap.put(arrayOfString[0], "");
         }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
+      else {
         localHashMap.put(arrayOfString[0], arrayOfString[1]);
       }
+      i += 1;
     }
     return ckSignature_map(localHashMap, paramLong);
   }
@@ -194,7 +193,11 @@ public class CKeyFacade
       paramMap = new String(getSignature(ckBuildSignStr(paramMap), paramLong));
       return paramMap;
     }
-    catch (Throwable paramMap) {}
+    catch (Throwable paramMap)
+    {
+      label18:
+      break label18;
+    }
     return "exception";
   }
   
@@ -216,122 +219,163 @@ public class CKeyFacade
   
   public static String getCKey(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
   {
-    for (;;)
+    try
     {
-      int j;
-      int[] arrayOfInt;
-      int i;
-      try
+      paramString6 = paramString6.split(",");
+      j = paramString6.length;
+      arrayOfInt = new int[j];
+      i = 0;
+    }
+    catch (Throwable paramString1)
+    {
+      for (;;)
       {
-        paramString6 = paramString6.split(",");
-        j = paramString6.length;
-        arrayOfInt = new int[j];
-        i = 0;
-        if (i < j) {
-          if (paramString6[i].length() == 0) {
-            arrayOfInt[i] = -1;
-          } else {
-            arrayOfInt[i] = Integer.parseInt(paramString6[i]);
-          }
-        }
+        int j;
+        int[] arrayOfInt;
+        int i;
+        continue;
+        i += 1;
       }
-      catch (Throwable paramString1)
-      {
-        return "";
+    }
+    if (i < j)
+    {
+      if (paramString6[i].length() == 0) {
+        arrayOfInt[i] = -1;
+      } else {
+        arrayOfInt[i] = Integer.parseInt(paramString6[i]);
       }
+    }
+    else
+    {
       paramString1 = getCKey(paramString1, paramLong, paramString2, paramString3, paramString4, paramString5, arrayOfInt, j, paramString7);
       return paramString1;
-      i += 1;
+      return "";
     }
   }
   
   public static String getCKey(String paramString1, long paramLong, String paramString2, String paramString3, String paramString4, String paramString5, int[] paramArrayOfInt, int paramInt, String paramString6)
   {
-    localObject1 = "";
-    String str3 = "";
-    str1 = str3;
     try
     {
-      str2 = new Exception().getStackTrace()[1].getClassName();
-      str1 = str3;
-      localObject1 = str2;
-      str3 = new Exception().getStackTrace()[1].getMethodName();
-      str1 = str3;
-      localObject1 = str2;
-      VsLog.info(str2 + "  " + str3, new Object[0]);
-      localObject1 = str3;
+      str4 = new Exception().getStackTrace()[1].getClassName();
     }
-    catch (Throwable localThrowable)
+    catch (Throwable localThrowable1)
     {
       for (;;)
       {
-        String str2;
-        label465:
-        Object localObject2 = localObject1;
-        localObject1 = str1;
+        try
+        {
+          String str4;
+          String str1;
+          label83:
+          label98:
+          if (!paramString4.trim().equals("")) {
+            break;
+          }
+          Object localObject1 = mPlatform;
+          if (paramString5 != null) {
+            if (!paramString5.trim().equals("")) {
+              break label512;
+            }
+          }
+          paramString5 = mSdtfrom;
+          paramString4 = mVsKey;
+          localObject3 = (Map)VsAppKeyVerify.getInstance().getAppKeyMap().get(localObject1);
+          str3 = paramString5;
+          str2 = paramString4;
+          if (localObject3 == null) {
+            break label515;
+          }
+          str2 = (String)((Map)localObject3).get("vskey");
+          if (str2 != null) {
+            paramString4 = str2;
+          }
+          str2 = (String)((Map)localObject3).get("sdtfrom");
+          if (str2 != null) {
+            paramString5 = str2;
+          }
+          localObject3 = (String)((Map)localObject3).get("platform");
+          str3 = paramString5;
+          str2 = paramString4;
+          if (localObject3 == null) {
+            break label515;
+          }
+          localObject1 = paramString5;
+          paramString5 = (String)localObject3;
+          if ((!TextUtils.isEmpty(paramString5)) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+          {
+            if (TextUtils.isEmpty(paramString4)) {
+              return "";
+            }
+            mBsGuid = paramString1;
+            CKeyGuard.instance();
+            str2 = CKeyGuard.genGuard(mContext);
+            if (mGuid.trim().equals("")) {
+              mGuid = VsGuidUtil.getInstance(mContext).loadVsGuid();
+            }
+            paramString3 = new String(GenCKey(paramLong, Integer.parseInt(paramString5), paramString3, paramString2, getfd((String)localObject1), paramString4, paramString1, mGuid, paramArrayOfInt, paramInt, paramString6, str2));
+            paramArrayOfInt = mContext;
+            paramString6 = cKeyBeaconReport;
+            str3 = mGuid;
+            localObject3 = mBeaconID;
+            str5 = mPkgName;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str4);
+            localStringBuilder.append("|");
+            localStringBuilder.append(str1);
+            VsReporter.reportCKey(paramArrayOfInt, paramString6, paramString5, (String)localObject1, paramString4, str3, paramString1, (String)localObject3, 0, str5, paramString5, (String)localObject1, paramString2, paramLong, paramString3, localStringBuilder.toString(), mExtInfo, str2);
+            return paramString3;
+          }
+          return "";
+        }
+        catch (Throwable paramString1)
+        {
+          return "";
+        }
+        localThrowable1 = localThrowable1;
       }
     }
+    try
+    {
+      str1 = new Exception().getStackTrace()[1].getMethodName();
+    }
+    catch (Throwable localThrowable2)
+    {
+      break label83;
+    }
+    try
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(str4);
+      ((StringBuilder)localObject1).append("  ");
+      ((StringBuilder)localObject1).append(str1);
+      VsLog.info(((StringBuilder)localObject1).toString(), new Object[0]);
+    }
+    catch (Throwable localThrowable3)
+    {
+      break label98;
+    }
+    str1 = "";
+    break label98;
+    str4 = "";
+    str1 = str4;
     if (paramString4 != null) {}
     for (;;)
     {
-      try
-      {
-        if (!paramString4.trim().equals("")) {
-          break label465;
-        }
-        str1 = mPlatform;
-        if ((paramString5 == null) || (paramString5.trim().equals("")))
-        {
-          paramString4 = mSdtfrom;
-          paramString5 = mVsKey;
-          Object localObject4 = (Map)VsAppKeyVerify.getInstance().getAppKeyMap().get(str1);
-          String str4 = paramString5;
-          Object localObject3 = str1;
-          str3 = paramString4;
-          if (localObject4 != null)
-          {
-            str3 = (String)((Map)localObject4).get("vskey");
-            if (str3 != null) {
-              paramString5 = str3;
-            }
-            str3 = (String)((Map)localObject4).get("sdtfrom");
-            if (str3 != null) {
-              paramString4 = str3;
-            }
-            localObject4 = (String)((Map)localObject4).get("platform");
-            str4 = paramString5;
-            localObject3 = str1;
-            str3 = paramString4;
-            if (localObject4 != null)
-            {
-              localObject3 = localObject4;
-              str3 = paramString4;
-              str4 = paramString5;
-            }
-          }
-          if ((TextUtils.isEmpty((CharSequence)localObject3)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4))) {
-            break;
-          }
-          mBsGuid = paramString1;
-          CKeyGuard.instance();
-          paramString4 = CKeyGuard.genGuard(mContext);
-          if (mGuid.trim().equals("")) {
-            mGuid = VsGuidUtil.getInstance(mContext).loadVsGuid();
-          }
-          paramString3 = new String(GenCKey(paramLong, Integer.parseInt((String)localObject3), paramString3, paramString2, getfd(str3), str4, paramString1, mGuid, paramArrayOfInt, paramInt, paramString6, paramString4));
-          VsReporter.reportCKey(mContext, cKeyBeaconReport, (String)localObject3, str3, str4, mGuid, paramString1, mBeaconID, 0, mPkgName, (String)localObject3, str3, paramString2, paramLong, paramString3, str2 + "|" + (String)localObject1, mExtInfo, paramString4);
-          return paramString3;
-        }
-      }
-      catch (Throwable paramString1)
-      {
-        return "";
-      }
-      paramString4 = paramString5;
+      Object localObject3;
+      String str3;
+      String str2;
+      String str5;
+      StringBuilder localStringBuilder;
+      Object localObject2 = paramString4;
       continue;
-      str1 = paramString4;
+      label512:
+      continue;
+      label515:
+      paramString5 = (String)localObject2;
+      localObject2 = str3;
+      paramString4 = str2;
     }
-    return "";
   }
   
   private static native String getCKeyVersion();
@@ -358,8 +402,10 @@ public class CKeyFacade
     }
     catch (Throwable localThrowable)
     {
-      VsLog.info("CKeyFacade|ckeygeneratorV2.so", new Object[] { "ver error" });
+      label21:
+      break label21;
     }
+    VsLog.info("CKeyFacade|ckeygeneratorV2.so", new Object[] { "ver error" });
     return "";
   }
   
@@ -482,32 +528,36 @@ public class CKeyFacade
   public void init(Context paramContext, String paramString1, String paramString2)
   {
     VsLog.info("CKeyFacade|ckeygeneratorV2.so", new Object[] { "load ckeygeneratorV2.so init" });
-    if (paramContext == null) {}
-    do
-    {
+    if (paramContext == null) {
       return;
-      mContext = paramContext.getApplicationContext();
-      if (VsAppKeyVerify.getInstance().verifyVsAppKey(mContext, paramString1))
-      {
-        mPlatform = VsAppKeyVerify.getInstance().getmPlatform();
-        mPkgName = VsAppKeyVerify.getInstance().getmPkgName();
-        mSdtfrom = VsAppKeyVerify.getInstance().getmSdtfrom();
-        mVsKey = VsAppKeyVerify.getInstance().getmVsKey();
+    }
+    mContext = paramContext.getApplicationContext();
+    if (VsAppKeyVerify.getInstance().verifyVsAppKey(mContext, paramString1))
+    {
+      mPlatform = VsAppKeyVerify.getInstance().getmPlatform();
+      mPkgName = VsAppKeyVerify.getInstance().getmPkgName();
+      mSdtfrom = VsAppKeyVerify.getInstance().getmSdtfrom();
+      mVsKey = VsAppKeyVerify.getInstance().getmVsKey();
+    }
+    if (!this.isInit)
+    {
+      if (this.isMutiInit) {
+        return;
       }
-    } while ((this.isInit) || (this.isMutiInit));
-    CKeyGuard.setModuleUpdateInterface(moduleUpdateInterface);
-    CKeyGuard.instance();
-    CKeyGuard.guardInit(mContext);
-    mSoVersion = getVersion();
-    mBsGuid = paramString2;
-    paramContext = new Thread(new CKeyFacade.1(this));
-    paramContext.setName("TVK_ckeythread");
-    paramContext.start();
-    paramContext = new Thread(new CKeyFacade.2(this));
-    paramContext.setName("TVK_guidthread");
-    paramContext.start();
-    VsReporter.reportInit(mContext, cKeyBeaconReport, mPlatform, mSdtfrom, mVsKey, mGuid, paramString2, mBeaconID, 0, mPkgName);
-    this.isInit = true;
+      CKeyGuard.setModuleUpdateInterface(moduleUpdateInterface);
+      CKeyGuard.instance();
+      CKeyGuard.guardInit(mContext);
+      mSoVersion = getVersion();
+      mBsGuid = paramString2;
+      paramContext = new Thread(new CKeyFacade.1(this));
+      paramContext.setName("TVK_ckeythread");
+      paramContext.start();
+      paramContext = new Thread(new CKeyFacade.2(this));
+      paramContext.setName("TVK_guidthread");
+      paramContext.start();
+      VsReporter.reportInit(mContext, cKeyBeaconReport, mPlatform, mSdtfrom, mVsKey, mGuid, paramString2, mBeaconID, 0, mPkgName);
+      this.isInit = true;
+    }
   }
   
   public void setInfo(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -520,7 +570,7 @@ public class CKeyFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.CKeyFacade
  * JD-Core Version:    0.7.0.1
  */

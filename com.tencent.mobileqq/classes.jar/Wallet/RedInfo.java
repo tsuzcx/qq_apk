@@ -29,8 +29,9 @@ public final class RedInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.path != null) {
-      paramJceOutputStream.write(this.path, 0);
+    String str = this.path;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.taskId, 1);
     paramJceOutputStream.write(this.isShow, 2);
@@ -38,7 +39,7 @@ public final class RedInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.RedInfo
  * JD-Core Version:    0.7.0.1
  */

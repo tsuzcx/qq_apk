@@ -42,46 +42,67 @@ public class GlCameraSurfaceView
   
   private void changeGlSurfaceSize()
   {
-    int m = 0;
-    int i = getWidth();
-    int j = getHeight();
-    if ((i == 0) || (j == 0)) {
-      return;
-    }
-    int k;
-    int n;
-    if (this.mCameraSize != null)
+    int k = getWidth();
+    int n = getHeight();
+    if (k != 0)
     {
-      k = this.mCameraSize.height;
-      n = this.mCameraSize.width;
-      Log.i("CameraSurfaceView", "changeGlSurfaceSize: " + this.mCameraSize.width + "/" + this.mCameraSize.height);
-      Log.i("CameraSurfaceView", "changeGlSurfaceSize: " + i + "/" + j);
-      if (n * i > k * j)
-      {
-        n = n * i / k;
-        k = (j - n) / 2;
-        j = i;
-        i = n;
+      if (n == 0) {
+        return;
       }
-    }
-    for (;;)
-    {
-      Log.i("CameraSurfaceView", "changeGlSurfaceSize: " + j + "/" + i);
-      Log.i("CameraSurfaceView", "changeGlSurfaceSize: " + m + "/" + k);
-      GLES20.glViewport(m, k, j, i);
-      return;
-      k = k * j / n;
-      m = (i - k) / 2;
-      i = j;
-      n = 0;
-      j = k;
-      k = n;
-      continue;
-      k = i;
-      n = 0;
-      i = j;
-      j = k;
-      k = n;
+      Object localObject = this.mCameraSize;
+      int m = 0;
+      int j = 0;
+      int i = k;
+      if (localObject != null)
+      {
+        i = ((Camera.Size)localObject).height;
+        j = this.mCameraSize.width;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("changeGlSurfaceSize: ");
+        ((StringBuilder)localObject).append(this.mCameraSize.width);
+        ((StringBuilder)localObject).append("/");
+        ((StringBuilder)localObject).append(this.mCameraSize.height);
+        Log.i("CameraSurfaceView", ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("changeGlSurfaceSize: ");
+        ((StringBuilder)localObject).append(k);
+        ((StringBuilder)localObject).append("/");
+        ((StringBuilder)localObject).append(n);
+        Log.i("CameraSurfaceView", ((StringBuilder)localObject).toString());
+        int i1 = j * k;
+        int i2 = i * n;
+        if (i1 > i2)
+        {
+          j = i1 / i;
+          n = (n - j) / 2;
+          i = k;
+          k = n;
+        }
+        else
+        {
+          i = i2 / j;
+          j = (k - i) / 2;
+        }
+      }
+      else
+      {
+        k = 0;
+        m = j;
+        j = n;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("changeGlSurfaceSize: ");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(j);
+      Log.i("CameraSurfaceView", ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("changeGlSurfaceSize: ");
+      ((StringBuilder)localObject).append(m);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(k);
+      Log.i("CameraSurfaceView", ((StringBuilder)localObject).toString());
+      GLES20.glViewport(m, k, i, j);
     }
   }
   
@@ -119,9 +140,10 @@ public class GlCameraSurfaceView
   
   public void onDrawFrame(GL10 paramGL10)
   {
-    if (this.mPreviewSt != null)
+    paramGL10 = this.mPreviewSt;
+    if (paramGL10 != null)
     {
-      this.mPreviewSt.updateTexImage();
+      paramGL10.updateTexImage();
       this.mPreviewSt.getTransformMatrix(this.transformMatrix);
     }
     GLES20.glClearColor(1.0F, 0.0F, 0.0F, 0.0F);
@@ -133,9 +155,10 @@ public class GlCameraSurfaceView
     GLES20.glBindTexture(36197, this.mTextureId);
     GLES20.glUniform1i(m, 0);
     GLES20.glUniformMatrix4fv(k, 1, false, this.transformMatrix, 0);
-    if (this.mDataBuffer != null)
+    paramGL10 = this.mDataBuffer;
+    if (paramGL10 != null)
     {
-      this.mDataBuffer.position(0);
+      paramGL10.position(0);
       GLES20.glEnableVertexAttribArray(i);
       GLES20.glVertexAttribPointer(i, 2, 5126, false, 16, this.mDataBuffer);
       this.mDataBuffer.position(2);
@@ -171,18 +194,18 @@ public class GlCameraSurfaceView
   
   public void setCameraSize(Camera.Size paramSize)
   {
-    if (paramSize.equals(this.mCameraSize)) {}
-    do
-    {
+    if (paramSize.equals(this.mCameraSize)) {
       return;
-      this.mCameraSize = paramSize;
-    } while (!this.isSurfaceCreate);
-    changeGlSurfaceSize();
+    }
+    this.mCameraSize = paramSize;
+    if (this.isSurfaceCreate) {
+      changeGlSurfaceSize();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.GlCameraSurfaceView
  * JD-Core Version:    0.7.0.1
  */

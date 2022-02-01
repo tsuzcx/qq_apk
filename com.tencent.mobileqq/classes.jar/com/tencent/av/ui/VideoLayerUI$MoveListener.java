@@ -1,7 +1,6 @@
 package com.tencent.av.ui;
 
 import android.graphics.PointF;
-import com.tencent.av.business.manager.zimu.ARZimuTask;
 import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector;
 import com.tencent.av.opengl.gesturedetectors.MoveGestureDetector.OnMoveGestureListener;
 import com.tencent.qphone.base.util.QLog;
@@ -28,23 +27,21 @@ class VideoLayerUI$MoveListener
     PointF localPointF = paramMoveGestureDetector.a();
     int i = (int)localPointF.x;
     int j = (int)localPointF.y;
-    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 0) {
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 0)
+    {
       this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, true);
     }
-    for (;;)
+    else if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
     {
-      ARZimuTask.a(false);
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(false));
-      return;
-      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
-      {
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.d(i, j);
-        this.c = ((int)paramMoveGestureDetector.a());
-        this.d = ((int)paramMoveGestureDetector.b());
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.w = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(this.e, this.jdField_a_of_type_Int, this.b, this.c, this.d);
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.o(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.w);
-      }
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.d(i, j);
+      this.c = ((int)paramMoveGestureDetector.a());
+      this.d = ((int)paramMoveGestureDetector.b());
+      paramMoveGestureDetector = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
+      paramMoveGestureDetector.w = paramMoveGestureDetector.a(this.e, this.jdField_a_of_type_Int, this.b, this.c, this.d);
+      paramMoveGestureDetector = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI;
+      paramMoveGestureDetector.o(paramMoveGestureDetector.w);
     }
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(false));
   }
   
   public boolean a(MoveGestureDetector paramMoveGestureDetector)
@@ -58,20 +55,19 @@ class VideoLayerUI$MoveListener
     paramMoveGestureDetector = paramMoveGestureDetector.a();
     int i = (int)paramMoveGestureDetector.x;
     int j = (int)paramMoveGestureDetector.y;
-    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 0) {
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, false);
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 0)
     {
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, false);
       return true;
-      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
-      {
-        if ((Math.abs(i) > 5) || (Math.abs(j) > 5)) {
-          VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, true);
-        }
-        this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.d(i, j);
-      }
     }
+    if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
+    {
+      if ((Math.abs(i) > 5) || (Math.abs(j) > 5)) {
+        VideoLayerUI.b(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI, true);
+      }
+      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.d(i, j);
+    }
+    return true;
   }
   
   public boolean b(MoveGestureDetector paramMoveGestureDetector)
@@ -83,28 +79,41 @@ class VideoLayerUI$MoveListener
       int j = (int)paramMoveGestureDetector.y;
       this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_ArrayOfComTencentAvUiGLVideoView[0].a(i, j, false);
     }
-    for (;;)
+    else if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
     {
-      if (QLog.isColorLevel())
-      {
-        QLog.w(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 1, "onMoveBegin, mTargetIndex[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t + "], startX[" + this.jdField_a_of_type_Int + "], startY[" + this.b + "], startPosition[" + this.e + "], mTopOffset[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q + "], mBottomOffset[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.r + "], mRecordCtrlBottom[" + this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k + "]");
-        QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveBegin");
-      }
-      ARZimuTask.a(true);
-      this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(true));
-      return true;
-      if ((this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t == 1) && (this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.h()))
-      {
-        this.jdField_a_of_type_Int = ((int)paramMoveGestureDetector.a());
-        this.b = ((int)paramMoveGestureDetector.b());
-        this.e = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.i();
-      }
+      this.jdField_a_of_type_Int = ((int)paramMoveGestureDetector.a());
+      this.b = ((int)paramMoveGestureDetector.b());
+      this.e = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.i();
     }
+    if (QLog.isColorLevel())
+    {
+      paramMoveGestureDetector = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMoveBegin, mTargetIndex[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.t);
+      localStringBuilder.append("], startX[");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("], startY[");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("], startPosition[");
+      localStringBuilder.append(this.e);
+      localStringBuilder.append("], mTopOffset[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.q);
+      localStringBuilder.append("], mBottomOffset[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.r);
+      localStringBuilder.append("], mRecordCtrlBottom[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.k);
+      localStringBuilder.append("]");
+      QLog.w(paramMoveGestureDetector, 1, localStringBuilder.toString());
+      QLog.d(this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.jdField_a_of_type_JavaLangString, 2, "onMoveBegin");
+    }
+    this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(Integer.valueOf(6503), Boolean.valueOf(true));
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUI.MoveListener
  * JD-Core Version:    0.7.0.1
  */

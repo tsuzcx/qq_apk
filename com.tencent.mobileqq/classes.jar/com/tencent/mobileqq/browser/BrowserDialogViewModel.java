@@ -82,7 +82,7 @@ public class BrowserDialogViewModel
     Object localObject = BaseApplication.context.getResources();
     BrowserDialogViewModel.1 local1 = new BrowserDialogViewModel.1(this, paramBrowserItem);
     BrowserDialogViewModel.2 local2 = new BrowserDialogViewModel.2(this);
-    localObject = String.format(((Resources)localObject).getString(2131690771), new Object[] { paramBrowserItem.a() });
+    localObject = String.format(((Resources)localObject).getString(2131690699), new Object[] { paramBrowserItem.a() });
     DialogUtil.a(this.jdField_a_of_type_AndroidAppActivity, 230, null, (String)localObject, local1, local2).show();
     if (QLog.isColorLevel()) {
       QLog.d("[BrowserOpt] BrowserDialogViewModel", 2, new Object[] { "[dialog] showDownloadBrowserConfirmDialog: invoked. ", " browser: ", paramBrowserItem });
@@ -102,7 +102,7 @@ public class BrowserDialogViewModel
   {
     if (this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter.getCount() <= 0)
     {
-      QRUtils.a(1, 2131695226);
+      QRUtils.a(1, 2131695222);
       if (QLog.isColorLevel()) {
         QLog.d("[BrowserOpt] BrowserDialogViewModel", 2, "[error] showPopupWindow: invoked. [没有任何浏览器时，对齐旧的错误toast]");
       }
@@ -153,17 +153,12 @@ public class BrowserDialogViewModel
     }
     if (localBrowserItem.a()) {
       BrowserUtilKt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, localBrowserItem.e());
+    } else if (PackageUtil.a(BaseApplication.context, localBrowserItem.e())) {
+      BrowserUtilKt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, localBrowserItem.e());
+    } else {
+      a(localBrowserItem);
     }
-    for (;;)
-    {
-      QLog.d("[BrowserOpt] BrowserDialogViewModel", 1, new Object[] { "[action] onAnyButtonClicked: invoked. ", " browser: ", localBrowserItem });
-      return;
-      if (PackageUtil.a(BaseApplication.context, localBrowserItem.e())) {
-        BrowserUtilKt.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, localBrowserItem.e());
-      } else {
-        a(localBrowserItem);
-      }
-    }
+    QLog.d("[BrowserOpt] BrowserDialogViewModel", 1, new Object[] { "[action] onAnyButtonClicked: invoked. ", " browser: ", localBrowserItem });
   }
   
   private void f()
@@ -177,42 +172,35 @@ public class BrowserDialogViewModel
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.isShowing()) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.dismiss();
-      if (this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter != null) {
-        this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter.a();
+    if (this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.isShowing()) {
+      try
+      {
+        this.jdField_a_of_type_ComTencentMobileqqBrowserDraggablePopup.dismiss();
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         QLog.e("[BrowserOpt] BrowserDialogViewModel", 1, "dismissPopupWindow: failed. ", localException);
       }
+    }
+    RecommendBrowserAdapter localRecommendBrowserAdapter = this.jdField_a_of_type_ComTencentMobileqqBrowserRecommendBrowserAdapter;
+    if (localRecommendBrowserAdapter != null) {
+      localRecommendBrowserAdapter.a();
     }
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131362711) {
+    if (paramView.getId() == 2131362668) {
       d();
+    } else if (paramView.getId() == 2131372089) {
+      f();
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (paramView.getId() == 2131372505) {
-        f();
-      }
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.browser.BrowserDialogViewModel
  * JD-Core Version:    0.7.0.1
  */

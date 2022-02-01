@@ -1,26 +1,50 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.nearpeople.NearbyRecommender.NearbyRecommenderUtils;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.text.TextUtils;
+import com.tencent.mobileqq.nearby.NearbyRelevantObserver;
+import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.XEditTextEx;
 
 class NearbyChatPie$10
-  implements Runnable
+  extends NearbyRelevantObserver
 {
   NearbyChatPie$10(NearbyChatPie paramNearbyChatPie) {}
   
-  public void run()
+  public void a(String paramString1, String paramString2, Object paramObject)
   {
-    String[] arrayOfString = NearbyRecommenderUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-    String str = this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent().getStringExtra("uin");
-    ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80055FE", "0X80055FE", 0, 0, arrayOfString[0], str, "", "");
-    this.this$0.N = false;
+    if (QLog.isDevelopLevel())
+    {
+      String str = this.a.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAutoInput, [");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(",");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(",");
+      localStringBuilder.append(System.currentTimeMillis());
+      localStringBuilder.append("]");
+      QLog.i(str, 4, localStringBuilder.toString());
+    }
+    if (!"tag_nearby_chat".equals(paramString1)) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    if (this.a.a != null)
+    {
+      this.a.Y();
+      this.a.a.setText(paramString2);
+      this.a.a.selectAll();
+      this.a.d = paramString2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.NearbyChatPie.10
  * JD-Core Version:    0.7.0.1
  */

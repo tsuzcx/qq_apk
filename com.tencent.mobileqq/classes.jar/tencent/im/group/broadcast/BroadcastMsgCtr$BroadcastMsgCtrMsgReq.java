@@ -45,14 +45,17 @@ public final class BroadcastMsgCtr$BroadcastMsgCtrMsgReq
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 56, 64, 72, 80, 88, 96, 104, 112, 122, 138, 144, 152, 160, 168, 176, 184, 192, 202, 208, 216, 224 }, new String[] { "uint64_from_uin", "rpt_msg_broadcast_msg_unit", "bytes_msg", "uint32_msg_type", "uint32_msg_seq", "msg_from_inst_info", "uint64_group_code", "uint64_group_uin", "uint32_spec_focus_flag", "uint32_msg_time", "whether_store_message", "uint32_msg_sys_seq", "whether_anonymous_message", "uint32_id_info", "group_info_tlv", "msg_roaming_dst_insts", "uint32_spec_hated_flag", "enum_red_packet", "uint32_feeds_topic_flag", "uint32_flag_ex2", "uint32_mem_level_name_seq", "uint32_flag_ex", "uint32_message_type", "bytes_ex2_tlv_trans2_buf", "uint32_flag_ex3", "uint32_flag_ex4", "uint32_is_total_pkg" }, new Object[] { Long.valueOf(0L), null, localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, BroadcastMsgCtrMsgReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 56, 64, 72, 80, 88, 96, 104, 112, 122, 138, 144, 152, 160, 168, 176, 184, 192, 202, 208, 216, 224 }, new String[] { "uint64_from_uin", "rpt_msg_broadcast_msg_unit", "bytes_msg", "uint32_msg_type", "uint32_msg_seq", "msg_from_inst_info", "uint64_group_code", "uint64_group_uin", "uint32_spec_focus_flag", "uint32_msg_time", "whether_store_message", "uint32_msg_sys_seq", "whether_anonymous_message", "uint32_id_info", "group_info_tlv", "msg_roaming_dst_insts", "uint32_spec_hated_flag", "enum_red_packet", "uint32_feeds_topic_flag", "uint32_flag_ex2", "uint32_mem_level_name_seq", "uint32_flag_ex", "uint32_message_type", "bytes_ex2_tlv_trans2_buf", "uint32_flag_ex3", "uint32_flag_ex4", "uint32_is_total_pkg" }, new Object[] { localLong, null, localByteStringMicro1, localInteger, localInteger, null, localLong, localLong, localInteger, localInteger, localBoolean, localInteger, localBoolean, localInteger, null, null, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, localInteger, localInteger, localInteger }, BroadcastMsgCtrMsgReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.broadcast.BroadcastMsgCtr.BroadcastMsgCtrMsgReq
  * JD-Core Version:    0.7.0.1
  */

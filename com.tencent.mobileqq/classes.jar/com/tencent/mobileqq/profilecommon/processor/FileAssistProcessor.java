@@ -30,22 +30,25 @@ public class FileAssistProcessor
   
   public void onProcessProfileModifyPush(int paramInt, ByteStringMicro paramByteStringMicro)
   {
-    if (paramInt != 42489) {}
-    while (!(this.appRuntime instanceof QQAppInterface)) {
+    if (paramInt != 42489) {
       return;
     }
-    FileAssistTopHandler localFileAssistTopHandler = (FileAssistTopHandler)((QQAppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.FILE_ASSIST_TOP);
-    if (ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get() != 0) {}
-    for (boolean bool = true;; bool = false)
+    if ((this.appRuntime instanceof QQAppInterface))
     {
+      FileAssistTopHandler localFileAssistTopHandler = (FileAssistTopHandler)((QQAppInterface)this.appRuntime).getBusinessHandler(BusinessHandlerFactory.FILE_ASSIST_TOP);
+      boolean bool;
+      if (ByteBuffer.wrap(paramByteStringMicro.toByteArray()).asShortBuffer().get() != 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       localFileAssistTopHandler.b(bool);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.processor.FileAssistProcessor
  * JD-Core Version:    0.7.0.1
  */

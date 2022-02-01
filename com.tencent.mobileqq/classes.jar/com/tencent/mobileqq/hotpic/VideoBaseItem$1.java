@@ -11,23 +11,35 @@ class VideoBaseItem$1
   
   public void onSurfaceChanged(SurfaceHolder paramSurfaceHolder)
   {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + ";broad finish start show here onsurface changed  here");
+    paramSurfaceHolder = new StringBuilder();
+    paramSurfaceHolder.append("key:");
+    paramSurfaceHolder.append(this.a.b);
+    paramSurfaceHolder.append(";broad finish start show here onsurface changed  here");
+    QLog.d("VideoBaseItem", 2, paramSurfaceHolder.toString());
   }
   
   public void onSurfaceCreated(SurfaceHolder paramSurfaceHolder)
   {
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface create ok here");
+    paramSurfaceHolder = new StringBuilder();
+    paramSurfaceHolder.append("key:");
+    paramSurfaceHolder.append(this.a.b);
+    paramSurfaceHolder.append("; broad finish start show here onsurface create ok here");
+    QLog.d("VideoBaseItem", 2, paramSurfaceHolder.toString());
   }
   
   public void onSurfaceDestory(SurfaceHolder paramSurfaceHolder)
   {
     this.a.a = true;
-    QLog.d("VideoBaseItem", 2, "key:" + this.a.b + "; broad finish start show here onsurface Destroy  here");
+    paramSurfaceHolder = new StringBuilder();
+    paramSurfaceHolder.append("key:");
+    paramSurfaceHolder.append(this.a.b);
+    paramSurfaceHolder.append("; broad finish start show here onsurface Destroy  here");
+    QLog.d("VideoBaseItem", 2, paramSurfaceHolder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.VideoBaseItem.1
  * JD-Core Version:    0.7.0.1
  */

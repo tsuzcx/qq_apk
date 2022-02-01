@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.homework.entry.ui;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.InputMethodUtil;
 
@@ -14,13 +14,13 @@ class PublishHomeWorkFragment$5
   public void onClick(View paramView)
   {
     InputMethodUtil.b(paramView);
-    this.a.getActivity().doOnBackPressed();
+    this.a.getQBaseActivity().doOnBackPressed();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment.5
  * JD-Core Version:    0.7.0.1
  */

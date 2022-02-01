@@ -14,27 +14,37 @@ public class OrientationUtil
     if (paramActivity == null) {
       return;
     }
-    int i = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getOrientation();
-    switch (paramActivity.getResources().getConfiguration().orientation)
+    int k = ((WindowManager)paramActivity.getSystemService("window")).getDefaultDisplay().getOrientation();
+    int i = paramActivity.getResources().getConfiguration().orientation;
+    int j = 0;
+    if (i != 1)
     {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      paramActivity.setRequestedOrientation(i);
-      return;
-      if ((i == 0) || (i == 1) || (!VersionUtils.c())) {
-        break;
+      if (i != 2)
+      {
+        i = j;
       }
-      i = 8;
-      continue;
-      if ((i != 0) && (i != 3) && (VersionUtils.c())) {
-        i = 9;
-      } else {
-        i = 1;
+      else
+      {
+        i = j;
+        if (k != 0)
+        {
+          i = j;
+          if (k != 1)
+          {
+            i = j;
+            if (VersionUtils.c()) {
+              i = 8;
+            }
+          }
+        }
       }
     }
+    else if ((k != 0) && (k != 3) && (VersionUtils.c())) {
+      i = 9;
+    } else {
+      i = 1;
+    }
+    paramActivity.setRequestedOrientation(i);
   }
   
   public static void b(Activity paramActivity)
@@ -46,7 +56,7 @@ public class OrientationUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.OrientationUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -2,8 +2,8 @@ package com.tencent.mobileqq.apollo.api.impl;
 
 import com.tencent.TMG.utils.QLog;
 import com.tencent.mobileqq.apollo.api.IApolloMessageService;
-import com.tencent.mobileqq.apollo.api.impl.listener.IApolloStatusOrDressChangeListener;
-import com.tencent.mobileqq.apollo.api.impl.listener.ITraceSpanMessage;
+import com.tencent.mobileqq.apollo.listener.IApolloStatusOrDressChangeListener;
+import com.tencent.mobileqq.apollo.listener.ITraceSpanMessage;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -20,7 +20,7 @@ import kotlin.jvm.internal.Intrinsics;
 import mqq.app.AppRuntime;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/api/impl/ApolloMessageServiceImpl;", "Lcom/tencent/mobileqq/apollo/api/IApolloMessageService;", "()V", "appRuntime", "Lmqq/app/AppRuntime;", "listenerMap", "", "Lcom/tencent/mobileqq/apollo/api/impl/ApolloMessageServiceImpl$Companion$MessageType;", "", "", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "addListener", "", "type", "listener", "apolloStatusOrDressChange", "", "uinList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getListeners", "onCreate", "runtime", "onDestroy", "removeListener", "reportTraceSpanMsg", "errCode", "msg", "", "(I[Ljava/lang/Object;)V", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/api/impl/ApolloMessageServiceImpl;", "Lcom/tencent/mobileqq/apollo/api/IApolloMessageService;", "()V", "appRuntime", "Lmqq/app/AppRuntime;", "listenerMap", "", "Lcom/tencent/mobileqq/apollo/api/impl/ApolloMessageServiceImpl$Companion$MessageType;", "", "", "lock", "Ljava/util/concurrent/locks/ReentrantLock;", "addListener", "", "type", "listener", "apolloStatusOrDressChange", "", "uinList", "Ljava/util/ArrayList;", "", "Lkotlin/collections/ArrayList;", "getListeners", "onCreate", "runtime", "onDestroy", "removeListener", "reportTraceSpanMsg", "errCode", "msg", "", "(I[Ljava/lang/Object;)V", "Companion", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class ApolloMessageServiceImpl
   implements IApolloMessageService
 {
@@ -78,24 +78,21 @@ public final class ApolloMessageServiceImpl
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "uinList");
     Iterator localIterator = ((Iterable)CollectionsKt.toMutableList((Collection)getListeners(ApolloMessageServiceImpl.Companion.MessageType.STATE_OR_DRESS_CHANGE))).iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      if (localObject == null) {
-        try
-        {
-          throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.apollo.api.impl.listener.IApolloStatusOrDressChangeListener");
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ApolloMessageServiceImpl", 1, "apolloStatusOrDressChange exception:", localException);
-        }
-      }
-      for (;;)
+      if (localObject != null) {}
+      try
       {
-        break;
-        ((IApolloStatusOrDressChangeListener)localException).a(paramInt, paramArrayList);
+        ((IApolloStatusOrDressChangeListener)localObject).a(paramInt, paramArrayList);
       }
+      catch (Exception localException)
+      {
+        label75:
+        break label75;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.apollo.listener.IApolloStatusOrDressChangeListener");
+      QLog.e("ApolloMessageServiceImpl", 1, "apolloStatusOrDressChange exception:", localObject);
     }
   }
   
@@ -135,30 +132,27 @@ public final class ApolloMessageServiceImpl
   {
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "msg");
     Iterator localIterator = ((Iterable)CollectionsKt.toMutableList((Collection)getListeners(ApolloMessageServiceImpl.Companion.MessageType.TRACE_SPAN_MESSAGE))).iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject = localIterator.next();
-      if (localObject == null) {
-        try
-        {
-          throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.apollo.api.impl.listener.ITraceSpanMessage");
-        }
-        catch (Exception localException)
-        {
-          QLog.e("ApolloMessageServiceImpl", 1, "reportTraceSpanMsg exception:", localException);
-        }
-      }
-      for (;;)
+      if (localObject != null) {}
+      try
       {
-        break;
-        ((ITraceSpanMessage)localException).a(paramInt, new Object[] { paramVarArgs });
+        ((ITraceSpanMessage)localObject).a(paramInt, new Object[] { paramVarArgs });
       }
+      catch (Exception localException)
+      {
+        label82:
+        break label82;
+      }
+      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.apollo.listener.ITraceSpanMessage");
+      QLog.e("ApolloMessageServiceImpl", 1, "reportTraceSpanMsg exception:", localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloMessageServiceImpl
  * JD-Core Version:    0.7.0.1
  */

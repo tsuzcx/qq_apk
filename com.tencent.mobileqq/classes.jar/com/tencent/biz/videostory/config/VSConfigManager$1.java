@@ -5,7 +5,6 @@ import com.tencent.biz.videostory.config.processor.VSStickyNoteConfBean;
 import com.tencent.biz.videostory.config.processor.VSSubscribeConfBean;
 import com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetHelper;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.vashealth.VSHealthConfigBean;
 import com.tencent.qphone.base.util.QLog;
 
 class VSConfigManager$1
@@ -16,27 +15,36 @@ class VSConfigManager$1
   public void run()
   {
     Object localObject = (VSEntranceConfBean)QConfigManager.a().a(411);
-    if (localObject != null) {
-      QLog.i("Q.videostory.config.VSConfigManager", 2, "init load conf:" + ((VSEntranceConfBean)localObject).toString());
+    StringBuilder localStringBuilder;
+    if (localObject != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init load conf:");
+      localStringBuilder.append(((VSEntranceConfBean)localObject).toString());
+      QLog.i("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
     }
     localObject = (VSSubscribeConfBean)QConfigManager.a().a(463);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSSubscribeConfBean : " + localObject);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init load VSSubscribeConfBean : ");
+      localStringBuilder.append(localObject);
+      QLog.d("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
     }
     localObject = (VSStickyNoteConfBean)QConfigManager.a().a(595);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSStickyNoteConfBean : " + localObject);
-    }
-    localObject = (VSHealthConfigBean)QConfigManager.a().a(671);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.videostory.config.VSConfigManager", 2, "init load VSHealthConfigBean : " + localObject);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init load VSStickyNoteConfBean : ");
+      localStringBuilder.append(localObject);
+      QLog.d("Q.videostory.config.VSConfigManager", 2, localStringBuilder.toString());
     }
     VSEntranceWidgetHelper.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.config.VSConfigManager.1
  * JD-Core Version:    0.7.0.1
  */

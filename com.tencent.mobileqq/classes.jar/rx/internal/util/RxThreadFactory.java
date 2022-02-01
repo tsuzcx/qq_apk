@@ -16,14 +16,17 @@ public final class RxThreadFactory
   
   public Thread newThread(Runnable paramRunnable)
   {
-    paramRunnable = new Thread(paramRunnable, this.prefix + incrementAndGet());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.prefix);
+    localStringBuilder.append(incrementAndGet());
+    paramRunnable = new Thread(paramRunnable, localStringBuilder.toString());
     paramRunnable.setDaemon(true);
     return paramRunnable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.util.RxThreadFactory
  * JD-Core Version:    0.7.0.1
  */

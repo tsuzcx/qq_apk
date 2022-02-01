@@ -64,33 +64,31 @@ public class WebEditText
   
   private int getImeAction(String paramString)
   {
-    int i = 6;
     if ("send".equals(paramString)) {
-      i = 4;
+      return 4;
     }
-    do
-    {
-      return i;
-      if ("search".equals(paramString)) {
-        return 3;
-      }
-      if ("next".equals(paramString)) {
-        return 5;
-      }
-    } while (!"go".equals(paramString));
-    return 2;
+    if ("search".equals(paramString)) {
+      return 3;
+    }
+    if ("next".equals(paramString)) {
+      return 5;
+    }
+    if ("go".equals(paramString)) {
+      return 2;
+    }
+    return 6;
   }
   
   private int getInputType(String paramString, boolean paramBoolean)
   {
-    int i = 1;
-    if (("number".equals(paramString)) || ("digit".equals(paramString)) || ("idcard".equals(paramString))) {
-      i = 2;
+    if ((!"number".equals(paramString)) && (!"digit".equals(paramString)) && (!"idcard".equals(paramString)))
+    {
+      if (paramBoolean) {
+        return 129;
+      }
+      return 1;
     }
-    while (!paramBoolean) {
-      return i;
-    }
-    return 129;
+    return 2;
   }
   
   private void parseEditStyle(Context paramContext, JSONObject paramJSONObject)
@@ -102,7 +100,7 @@ public class WebEditText
       this.mWebInputWidth = ((int)(paramJSONObject.optInt("width") * f));
       this.mWebInputHeight = ((int)(paramJSONObject.optInt("height") * f));
       this.mWebInputLeft = ((int)(paramJSONObject.optInt("left") * f));
-      this.mWebInputTop = ((int)(f * paramJSONObject.optInt("top")));
+      this.mWebInputTop = ((int)(paramJSONObject.optInt("top") * f));
       super.setTextSize(paramJSONObject.optInt("fontSize", 16));
       this.fontWeight = paramJSONObject.optString("fontWeight", "normal");
       this.textColor = paramJSONObject.optString("color", "#FFFFFFFF");
@@ -114,30 +112,31 @@ public class WebEditText
   
   private void setGravity()
   {
-    if ("left".equals(this.textAlign)) {
-      setGravity(19);
-    }
-    do
+    if ("left".equals(this.textAlign))
     {
+      setGravity(19);
       return;
-      if ("center".equals(this.textAlign))
-      {
-        setGravity(17);
-        return;
-      }
-    } while (!"right".equals(this.textAlign));
-    setGravity(21);
+    }
+    if ("center".equals(this.textAlign))
+    {
+      setGravity(17);
+      return;
+    }
+    if ("right".equals(this.textAlign)) {
+      setGravity(21);
+    }
   }
   
   private void setKeyListener(String paramString)
   {
-    if ("idcard".equals(paramString)) {
+    if ("idcard".equals(paramString))
+    {
       super.setKeyListener(DigitsKeyListener.getInstance("1234567890Xx"));
-    }
-    while (!"digit".equals(paramString)) {
       return;
     }
-    super.setKeyListener(DigitsKeyListener.getInstance("1234567890."));
+    if ("digit".equals(paramString)) {
+      super.setKeyListener(DigitsKeyListener.getInstance("1234567890."));
+    }
   }
   
   @TargetApi(16)
@@ -167,8 +166,9 @@ public class WebEditText
   
   public PageWebview getPageWebview()
   {
-    if (this.mPageWebviewRef != null) {
-      return (PageWebview)this.mPageWebviewRef.get();
+    WeakReference localWeakReference = this.mPageWebviewRef;
+    if (localWeakReference != null) {
+      return (PageWebview)localWeakReference.get();
     }
     return null;
   }
@@ -180,32 +180,34 @@ public class WebEditText
   
   public boolean initWithWebParams(NativeViewContainer paramNativeViewContainer, String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramNativeViewContainer == null)) {
-      return false;
-    }
-    Object localObject1 = super.getContext();
-    paramNativeViewContainer = new JSONObject(paramString);
-    paramString = paramNativeViewContainer.optString("type");
-    super.setInputType(getInputType(paramString, paramNativeViewContainer.optBoolean("password")));
-    setImeOptions(getImeAction(paramNativeViewContainer.optString("confirmType")));
-    int i = paramNativeViewContainer.optInt("maxLength", -1);
-    if (i != -1) {
-      super.setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
-    }
-    parseEditStyle((Context)localObject1, paramNativeViewContainer);
-    localObject1 = paramNativeViewContainer.optString("placeholder");
-    Object localObject2 = paramNativeViewContainer.optJSONObject("placeholderStyle");
-    if (localObject2 != null) {
-      super.setHintTextColor(ColorUtils.parseColor(((JSONObject)localObject2).optString("color", "#FFFFFFFF")));
-    }
-    this.adjustPosition = paramNativeViewContainer.optBoolean("adjustPosition");
-    this.confirmHold = paramNativeViewContainer.optBoolean("confirmHold", false);
-    localObject2 = paramNativeViewContainer.optString("defaultValue");
-    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-      super.setText((CharSequence)localObject2);
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
+      if (paramNativeViewContainer == null) {
+        return false;
+      }
+      Object localObject1 = super.getContext();
+      paramNativeViewContainer = new JSONObject(paramString);
+      paramString = paramNativeViewContainer.optString("type");
+      super.setInputType(getInputType(paramString, paramNativeViewContainer.optBoolean("password")));
+      setImeOptions(getImeAction(paramNativeViewContainer.optString("confirmType")));
+      int i = paramNativeViewContainer.optInt("maxLength", -1);
+      if (i != -1) {
+        super.setFilters(new InputFilter[] { new InputFilter.LengthFilter(i) });
+      }
+      parseEditStyle((Context)localObject1, paramNativeViewContainer);
+      localObject1 = paramNativeViewContainer.optString("placeholder");
+      Object localObject2 = paramNativeViewContainer.optJSONObject("placeholderStyle");
+      if (localObject2 != null) {
+        super.setHintTextColor(ColorUtils.parseColor(((JSONObject)localObject2).optString("color", "#FFFFFFFF")));
+      }
+      this.adjustPosition = paramNativeViewContainer.optBoolean("adjustPosition");
+      this.confirmHold = paramNativeViewContainer.optBoolean("confirmHold", false);
+      localObject2 = paramNativeViewContainer.optString("defaultValue");
+      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+        super.setText((CharSequence)localObject2);
+      } else {
+        super.setText("");
+      }
       i = paramNativeViewContainer.optInt("selectionStart", -1);
       int j = paramNativeViewContainer.optInt("selectionEnd", -1);
       if ((i != -1) && (j != -1) && (j > i)) {
@@ -221,8 +223,8 @@ public class WebEditText
       setGravity();
       setKeyListener(paramString);
       return true;
-      super.setText("");
     }
+    return false;
   }
   
   public boolean isAdjustPosition()
@@ -245,23 +247,31 @@ public class WebEditText
   
   public void onGlobalLayout()
   {
-    if ((this.mInputHandler != null) && (this.mInputHandler.isFocus(this.mInputId)))
+    Object localObject = this.mInputHandler;
+    if ((localObject != null) && (((WebInputHandler)localObject).isFocus(this.mInputId)))
     {
       super.requestFocus();
-      QMLog.d("WebEditText", "showSoftInput for inputId=" + this.mInputId);
-      InputMethodManager localInputMethodManager = (InputMethodManager)super.getContext().getSystemService("input_method");
-      if (localInputMethodManager != null) {
-        localInputMethodManager.showSoftInput(this, 0);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("showSoftInput for inputId=");
+      ((StringBuilder)localObject).append(this.mInputId);
+      QMLog.d("WebEditText", ((StringBuilder)localObject).toString());
+      localObject = (InputMethodManager)super.getContext().getSystemService("input_method");
+      if (localObject != null) {
+        ((InputMethodManager)localObject).showSoftInput(this, 0);
       }
     }
   }
   
   public boolean onKeyPreIme(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1) && (this.mInputHandler != null) && (this.mInputHandler.hasFocusInput()))
+    if ((paramInt == 4) && (paramKeyEvent.getAction() == 1))
     {
-      this.mInputHandler.hideCurrentInput();
-      return true;
+      WebInputHandler localWebInputHandler = this.mInputHandler;
+      if ((localWebInputHandler != null) && (localWebInputHandler.hasFocusInput()))
+      {
+        this.mInputHandler.hideCurrentInput();
+        return true;
+      }
     }
     return super.onKeyPreIme(paramInt, paramKeyEvent);
   }
@@ -301,18 +311,23 @@ public class WebEditText
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("WebEditText{");
-    localStringBuilder.append("mWebInputWidth=").append(this.mWebInputWidth);
-    localStringBuilder.append(", mWebInputHeight=").append(this.mWebInputHeight);
-    localStringBuilder.append(", mWebInputTop=").append(this.mWebInputTop);
-    localStringBuilder.append(", mWebInputLeft=").append(this.mWebInputLeft);
-    localStringBuilder.append(", mInputId=").append(this.mInputId);
+    localStringBuilder.append("mWebInputWidth=");
+    localStringBuilder.append(this.mWebInputWidth);
+    localStringBuilder.append(", mWebInputHeight=");
+    localStringBuilder.append(this.mWebInputHeight);
+    localStringBuilder.append(", mWebInputTop=");
+    localStringBuilder.append(this.mWebInputTop);
+    localStringBuilder.append(", mWebInputLeft=");
+    localStringBuilder.append(this.mWebInputLeft);
+    localStringBuilder.append(", mInputId=");
+    localStringBuilder.append(this.mInputId);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.widget.WebEditText
  * JD-Core Version:    0.7.0.1
  */

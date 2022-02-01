@@ -29,12 +29,12 @@ public class NoSaveStateFrameLayout
     return localNoSaveStateFrameLayout;
   }
   
-  public void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
+  protected void dispatchRestoreInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchThawSelfOnly(paramSparseArray);
   }
   
-  public void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
+  protected void dispatchSaveInstanceState(SparseArray<Parcelable> paramSparseArray)
   {
     dispatchFreezeSelfOnly(paramSparseArray);
   }

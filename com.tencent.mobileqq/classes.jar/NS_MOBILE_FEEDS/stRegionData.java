@@ -40,25 +40,29 @@ public final class stRegionData
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.leftTopP != null) {
-      paramJceOutputStream.write(this.leftTopP, 0);
+    Object localObject = this.leftTopP;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.rightBottomP != null) {
-      paramJceOutputStream.write(this.rightBottomP, 1);
+    localObject = this.rightBottomP;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
     paramJceOutputStream.write(this.actionType, 2);
-    if (this.actionUrl != null) {
-      paramJceOutputStream.write(this.actionUrl, 4);
+    localObject = this.actionUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.urlShowType, 5);
-    if (this.backgroundImg != null) {
-      paramJceOutputStream.write(this.backgroundImg, 6);
+    localObject = this.backgroundImg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.stRegionData
  * JD-Core Version:    0.7.0.1
  */

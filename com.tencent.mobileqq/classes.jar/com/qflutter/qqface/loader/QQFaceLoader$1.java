@@ -13,18 +13,18 @@ class QQFaceLoader$1
   
   public void run()
   {
-    if ((TextUtils.isEmpty(this.val$qqFaceParam.account)) || (QQFaceLoader.access$200(this.this$0) == null))
+    if ((!TextUtils.isEmpty(this.val$qqFaceParam.account)) && (QQFaceLoader.access$200(this.this$0) != null))
     {
-      QQFaceLoader.access$300(this.this$0).post(new QQFaceLoader.1.1(this));
+      QQFaceNativeData localQQFaceNativeData = QQFaceLoader.access$200(this.this$0).getFaceData(this.val$qqFaceParam);
+      QQFaceLoader.access$300(this.this$0).post(new QQFaceLoader.1.2(this, localQQFaceNativeData));
       return;
     }
-    QQFaceNativeData localQQFaceNativeData = QQFaceLoader.access$200(this.this$0).getFaceData(this.val$qqFaceParam);
-    QQFaceLoader.access$300(this.this$0).post(new QQFaceLoader.1.2(this, localQQFaceNativeData));
+    QQFaceLoader.access$300(this.this$0).post(new QQFaceLoader.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqface.loader.QQFaceLoader.1
  * JD-Core Version:    0.7.0.1
  */

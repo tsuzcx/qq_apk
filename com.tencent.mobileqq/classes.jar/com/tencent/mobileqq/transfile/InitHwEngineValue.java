@@ -24,9 +24,9 @@ public class InitHwEngineValue
       this.switchIpv6 = localIHwEngineValue.getIpv6Switch();
       return;
     }
-    catch (InstantiationException localInstantiationException)
+    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
     {
-      localInstantiationException.printStackTrace();
+      localIndexOutOfBoundsException.printStackTrace();
       return;
     }
     catch (IllegalAccessException localIllegalAccessException)
@@ -34,15 +34,15 @@ public class InitHwEngineValue
       localIllegalAccessException.printStackTrace();
       return;
     }
-    catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
+    catch (InstantiationException localInstantiationException)
     {
-      localIndexOutOfBoundsException.printStackTrace();
+      localInstantiationException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.InitHwEngineValue
  * JD-Core Version:    0.7.0.1
  */

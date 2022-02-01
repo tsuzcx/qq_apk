@@ -62,13 +62,13 @@ final class MapCollections$ValuesCollection
   
   public boolean removeAll(Collection<?> paramCollection)
   {
-    int i = 0;
     int j = this.a.colGetSize();
+    int i = 0;
     boolean bool = false;
     while (i < j)
     {
-      int m = i;
       int k = j;
+      int m = i;
       if (paramCollection.contains(this.a.colGetEntry(i, 1)))
       {
         this.a.colRemoveAt(i);
@@ -84,13 +84,13 @@ final class MapCollections$ValuesCollection
   
   public boolean retainAll(Collection<?> paramCollection)
   {
-    int i = 0;
     int j = this.a.colGetSize();
+    int i = 0;
     boolean bool = false;
     while (i < j)
     {
-      int m = i;
       int k = j;
+      int m = i;
       if (!paramCollection.contains(this.a.colGetEntry(i, 1)))
       {
         this.a.colRemoveAt(i);
@@ -121,7 +121,7 @@ final class MapCollections$ValuesCollection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.utils.struct.MapCollections.ValuesCollection
  * JD-Core Version:    0.7.0.1
  */

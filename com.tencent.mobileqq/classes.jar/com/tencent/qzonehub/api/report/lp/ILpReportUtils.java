@@ -32,6 +32,8 @@ public abstract interface ILpReportUtils
   
   public abstract String getIMEI();
   
+  public abstract String getIMSI();
+  
   public abstract String getInternalCacheDir();
   
   public abstract long getLongAccountUin();
@@ -66,7 +68,7 @@ public abstract interface ILpReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qzonehub.api.report.lp.ILpReportUtils
  * JD-Core Version:    0.7.0.1
  */

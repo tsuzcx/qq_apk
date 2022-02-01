@@ -18,13 +18,14 @@ public final class oidb_0xe2a$MoveVideoReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "rpt_rowkey_list", "uint32_column_id", "uint32_oper_type" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, MoveVideoReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "rpt_rowkey_list", "uint32_column_id", "uint32_oper_type" }, new Object[] { localByteStringMicro, localInteger, localInteger }, MoveVideoReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe2a.oidb_0xe2a.MoveVideoReq
  * JD-Core Version:    0.7.0.1
  */

@@ -25,32 +25,40 @@ public class AIOSingleReporter
   
   public MessageForShortVideo a(Object paramObject)
   {
-    if ((paramObject != null) && (this.jdField_b_of_type_JavaUtilHashMap != null)) {
-      return (MessageForShortVideo)this.jdField_b_of_type_JavaUtilHashMap.get(paramObject);
+    if (paramObject != null)
+    {
+      HashMap localHashMap = this.jdField_b_of_type_JavaUtilHashMap;
+      if (localHashMap != null) {
+        return (MessageForShortVideo)localHashMap.get(paramObject);
+      }
     }
     return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      ((HashMap)localObject).clear();
       this.jdField_a_of_type_JavaUtilHashMap = null;
     }
-    if (this.jdField_a_of_type_JavaUtilHashSet != null)
+    localObject = this.jdField_a_of_type_JavaUtilHashSet;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
+      ((HashSet)localObject).clear();
       this.jdField_a_of_type_JavaUtilHashSet = null;
     }
-    if (this.jdField_b_of_type_JavaUtilHashSet != null)
+    localObject = this.jdField_b_of_type_JavaUtilHashSet;
+    if (localObject != null)
     {
-      this.jdField_b_of_type_JavaUtilHashSet.clear();
+      ((HashSet)localObject).clear();
       this.jdField_b_of_type_JavaUtilHashSet = null;
     }
-    if (this.jdField_b_of_type_JavaUtilHashMap != null)
+    localObject = this.jdField_b_of_type_JavaUtilHashMap;
+    if (localObject != null)
     {
-      this.jdField_b_of_type_JavaUtilHashMap.clear();
+      ((HashMap)localObject).clear();
       this.jdField_b_of_type_JavaUtilHashMap = null;
     }
   }
@@ -75,45 +83,45 @@ public class AIOSingleReporter
   
   public void a(ChatXListView paramChatXListView)
   {
-    if ((this.jdField_a_of_type_JavaUtilHashSet == null) || (this.jdField_a_of_type_JavaUtilHashSet.size() == 0)) {
-      return;
-    }
-    long l1 = SystemClock.uptimeMillis();
-    HashSet localHashSet = new HashSet();
-    int i = paramChatXListView.getFirstVisiblePosition();
-    int k = paramChatXListView.getLastVisiblePosition();
-    int j = paramChatXListView.getHeaderViewsCount();
-    if (i > j) {}
-    for (;;)
+    HashSet localHashSet = this.jdField_a_of_type_JavaUtilHashSet;
+    if (localHashSet != null)
     {
-      if ((i < j) || (i > k)) {
-        break label147;
+      if (localHashSet.size() == 0) {
+        return;
       }
-      try
+      long l1 = SystemClock.uptimeMillis();
+      localHashSet = new HashSet();
+      int i = paramChatXListView.getFirstVisiblePosition();
+      int k = paramChatXListView.getLastVisiblePosition();
+      int j = paramChatXListView.getHeaderViewsCount();
+      if (i <= j) {
+        i = j;
+      }
+      while ((i >= j) && (i <= k))
       {
-        ChatMessage localChatMessage = (ChatMessage)paramChatXListView.getAdapter().getItem(i);
-        if ((localChatMessage != null) && ((localChatMessage instanceof MessageForShortVideo)))
+        try
         {
-          long l2 = localChatMessage.uniseq;
-          if (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(l2))) {
-            localHashSet.add(Long.valueOf(l2));
+          ChatMessage localChatMessage = (ChatMessage)paramChatXListView.getAdapter().getItem(i);
+          if ((localChatMessage != null) && ((localChatMessage instanceof MessageForShortVideo)))
+          {
+            long l2 = localChatMessage.uniseq;
+            if (this.jdField_a_of_type_JavaUtilHashSet.contains(Long.valueOf(l2))) {
+              localHashSet.add(Long.valueOf(l2));
+            }
           }
         }
-      }
-      catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
-      {
-        for (;;)
+        catch (IndexOutOfBoundsException localIndexOutOfBoundsException)
         {
           localIndexOutOfBoundsException.printStackTrace();
         }
+        i += 1;
       }
-      i += 1;
-      continue;
-      i = j;
+      this.jdField_a_of_type_JavaUtilHashSet = localHashSet;
+      paramChatXListView = new StringBuilder();
+      paramChatXListView.append("markVisibleView cost time: ");
+      paramChatXListView.append(SystemClock.uptimeMillis() - l1);
+      QLog.d("ShortVideoUtils", 2, paramChatXListView.toString());
     }
-    label147:
-    this.jdField_a_of_type_JavaUtilHashSet = localHashSet;
-    QLog.d("ShortVideoUtils", 2, "markVisibleView cost time: " + (SystemClock.uptimeMillis() - l1));
   }
   
   public void a(MessageRecord paramMessageRecord, String paramString)
@@ -174,57 +182,77 @@ public class AIOSingleReporter
   
   public boolean a(long paramLong, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null)
     {
-      paramString = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (paramString == null) {}
-    }
-    for (boolean bool = paramString.contains(Long.valueOf(paramLong));; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOSingleReporter", 2, "hasReported(): uniseq=" + paramLong + " result = " + bool);
+      paramString = (HashSet)localHashMap.get(paramString);
+      if (paramString != null)
+      {
+        bool = paramString.contains(Long.valueOf(paramLong));
+        break label41;
       }
-      return bool;
     }
+    boolean bool = false;
+    label41:
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("hasReported(): uniseq=");
+      paramString.append(paramLong);
+      paramString.append(" result = ");
+      paramString.append(bool);
+      QLog.d("AIOSingleReporter", 2, paramString.toString());
+    }
+    return bool;
   }
   
   public boolean a(MessageRecord paramMessageRecord, String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null)
     {
-      paramString = (HashSet)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      if (paramString == null) {}
-    }
-    for (boolean bool = paramString.contains(Long.valueOf(paramMessageRecord.uniseq));; bool = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOSingleReporter", 2, "hasReported(): mr.uniseq=" + paramMessageRecord.uniseq + " result = " + bool);
+      paramString = (HashSet)localHashMap.get(paramString);
+      if (paramString != null)
+      {
+        bool = paramString.contains(Long.valueOf(paramMessageRecord.uniseq));
+        break label42;
       }
-      return bool;
     }
+    boolean bool = false;
+    label42:
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("hasReported(): mr.uniseq=");
+      paramString.append(paramMessageRecord.uniseq);
+      paramString.append(" result = ");
+      paramString.append(bool);
+      QLog.d("AIOSingleReporter", 2, paramString.toString());
+    }
+    return bool;
   }
   
   public boolean a(Object paramObject)
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_JavaUtilHashSet != null) {
-      bool = this.jdField_a_of_type_JavaUtilHashSet.contains(paramObject);
+    HashSet localHashSet = this.jdField_a_of_type_JavaUtilHashSet;
+    if (localHashSet != null) {
+      return localHashSet.contains(paramObject);
     }
-    return bool;
+    return false;
   }
   
   public boolean b(Object paramObject)
   {
-    boolean bool = false;
-    if (this.jdField_b_of_type_JavaUtilHashSet != null) {
-      bool = this.jdField_b_of_type_JavaUtilHashSet.contains(paramObject);
+    HashSet localHashSet = this.jdField_b_of_type_JavaUtilHashSet;
+    if (localHashSet != null) {
+      return localHashSet.contains(paramObject);
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AIOSingleReporter
  * JD-Core Version:    0.7.0.1
  */

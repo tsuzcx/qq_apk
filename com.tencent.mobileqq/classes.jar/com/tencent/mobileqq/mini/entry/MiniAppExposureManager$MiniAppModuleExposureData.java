@@ -19,12 +19,13 @@ public class MiniAppExposureManager$MiniAppModuleExposureData
   
   public void report()
   {
-    MiniProgramLpReportDC04239.exposureReport(this.appConfig, MiniAppExposureManager.getAppType(this.appConfig), null, this.actionType, this.subActionType, null, null);
+    MiniAppConfig localMiniAppConfig = this.appConfig;
+    MiniProgramLpReportDC04239.exposureReport(localMiniAppConfig, MiniAppExposureManager.getAppType(localMiniAppConfig), null, this.actionType, this.subActionType, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppExposureManager.MiniAppModuleExposureData
  * JD-Core Version:    0.7.0.1
  */

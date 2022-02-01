@@ -1,7 +1,9 @@
 package com.tencent.qqlive.module.videoreport.dtreport.video.data;
 
-import java.util.HashMap;
+import android.view.View;
+import java.lang.ref.WeakReference;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class VideoBaseEntity$Builder
 {
@@ -12,6 +14,7 @@ public class VideoBaseEntity$Builder
   protected int pageId;
   protected Map<String, Object> videoCustomParams;
   protected int videoDuration;
+  protected WeakReference<View> videoView;
   
   public VideoBaseEntity$Builder() {}
   
@@ -24,6 +27,7 @@ public class VideoBaseEntity$Builder
     this.videoDuration = paramVideoBaseEntity.videoDuration;
     this.isBizReady = paramVideoBaseEntity.isBizReady;
     this.isIgnoreReport = paramVideoBaseEntity.isIgnoreReport;
+    this.videoView = paramVideoBaseEntity.videoView;
   }
   
   public Builder addCustomParams(Map<String, ?> paramMap)
@@ -32,7 +36,7 @@ public class VideoBaseEntity$Builder
       return this;
     }
     if (this.videoCustomParams == null) {
-      this.videoCustomParams = new HashMap(paramMap.size());
+      this.videoCustomParams = new ConcurrentHashMap(paramMap.size());
     }
     this.videoCustomParams.putAll(paramMap);
     return this;
@@ -54,6 +58,7 @@ public class VideoBaseEntity$Builder
     localVideoBaseEntity.videoDuration = this.videoDuration;
     localVideoBaseEntity.isBizReady = this.isBizReady;
     localVideoBaseEntity.isIgnoreReport = this.isIgnoreReport;
+    localVideoBaseEntity.videoView = this.videoView;
     return localVideoBaseEntity;
   }
   
@@ -65,16 +70,18 @@ public class VideoBaseEntity$Builder
   
   public Builder removeAllCustomParams()
   {
-    if (this.videoCustomParams != null) {
-      this.videoCustomParams.clear();
+    Map localMap = this.videoCustomParams;
+    if (localMap != null) {
+      localMap.clear();
     }
     return this;
   }
   
   public Builder removeCustomParam(String paramString)
   {
-    if (this.videoCustomParams != null) {
-      this.videoCustomParams.remove(paramString);
+    Map localMap = this.videoCustomParams;
+    if (localMap != null) {
+      localMap.remove(paramString);
     }
     return this;
   }
@@ -105,10 +112,18 @@ public class VideoBaseEntity$Builder
     this.videoDuration = paramInt;
     return this;
   }
+  
+  public Builder setVideoView(View paramView)
+  {
+    if (paramView != null) {
+      this.videoView = new WeakReference(paramView);
+    }
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoBaseEntity.Builder
  * JD-Core Version:    0.7.0.1
  */

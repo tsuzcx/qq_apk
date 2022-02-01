@@ -28,13 +28,15 @@ public final class BroadcastMsgCtr$BroadcastSystemMsgReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 56, 64, 72, 88, 98, 138 }, new String[] { "uint64_from_uin", "rpt_msg_broadcast_msg_unit", "bytes_msg", "uint32_msg_type", "uint32_msg_seq", "msg_from_inst_info", "uint64_group_code", "uint64_group_uin", "uint32_msg_time", "uint32_msg_sys_seq", "group_info_tlv", "msg_roaming_dst_insts" }, new Object[] { Long.valueOf(0L), null, localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null, null }, BroadcastSystemMsgReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 56, 64, 72, 88, 98, 138 }, new String[] { "uint64_from_uin", "rpt_msg_broadcast_msg_unit", "bytes_msg", "uint32_msg_type", "uint32_msg_seq", "msg_from_inst_info", "uint64_group_code", "uint64_group_uin", "uint32_msg_time", "uint32_msg_sys_seq", "group_info_tlv", "msg_roaming_dst_insts" }, new Object[] { localLong, null, localByteStringMicro, localInteger, localInteger, null, localLong, localLong, localInteger, localInteger, null, null }, BroadcastSystemMsgReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.group.broadcast.BroadcastMsgCtr.BroadcastSystemMsgReq
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ class DeviceFragment$5
 {
   DeviceFragment$5(DeviceFragment paramDeviceFragment) {}
   
-  public void b()
+  protected void b()
   {
     if (this.a.a == null) {
       return;
@@ -18,7 +18,7 @@ class DeviceFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.device.DeviceFragment.5
  * JD-Core Version:    0.7.0.1
  */

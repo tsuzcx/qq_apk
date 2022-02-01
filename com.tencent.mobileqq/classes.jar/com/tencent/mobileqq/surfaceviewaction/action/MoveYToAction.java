@@ -15,25 +15,32 @@ public class MoveYToAction
   
   protected void a(int paramInt, float paramFloat)
   {
-    this.b = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.b >= this.g) {
-        this.b = this.g;
-      }
-    }
-    for (;;)
+    int i = this.f;
+    float f1 = i;
+    int j = this.g;
+    this.b = ((int)(f1 + (j - i) * paramFloat));
+    if (j - i > 0)
     {
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.b <= this.g) {
-        this.b = this.g;
+      f1 = this.b;
+      i = this.g;
+      if (f1 >= i) {
+        this.b = i;
       }
     }
+    else
+    {
+      f1 = this.b;
+      i = this.g;
+      if (f1 <= i) {
+        this.b = i;
+      }
+    }
+    super.a(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.MoveYToAction
  * JD-Core Version:    0.7.0.1
  */

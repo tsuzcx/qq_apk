@@ -5,8 +5,6 @@ import android.support.annotation.Keep;
 @Keep
 public abstract interface AdOfflineAdapter
 {
-  public abstract String getAppVersion();
-  
   public abstract String getVersionIfExists(String paramString);
 }
 

@@ -9,24 +9,26 @@ public class MeanCalculator
   {
     this.sum += paramFloat;
     this.n += 1;
-    if (this.n == 2147483647)
+    int i = this.n;
+    if (i == 2147483647)
     {
       this.sum /= 2.0F;
-      this.n /= 2;
+      this.n = (i / 2);
     }
   }
   
   public float getMean()
   {
-    if (this.n == 0) {
+    int i = this.n;
+    if (i == 0) {
       return 0.0F;
     }
-    return this.sum / this.n;
+    return this.sum / i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.utils.MeanCalculator
  * JD-Core Version:    0.7.0.1
  */

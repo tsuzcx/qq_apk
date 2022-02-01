@@ -11,22 +11,28 @@ public class AVPreloadLog
   
   private static String a(Throwable paramThrowable, String paramString)
   {
-    String str2 = "generateThrowableString err";
-    String str1 = str2;
+    Object localObject2 = "generateThrowableString err";
+    Object localObject1 = localObject2;
     try
     {
       new ByteArrayOutputStream();
-      str1 = str2;
+      localObject1 = localObject2;
       paramString = b(paramThrowable, paramString);
-      str1 = paramString;
-      paramThrowable = paramString + a(paramThrowable.getStackTrace(), "");
+      localObject1 = paramString;
+      localObject2 = new StringBuilder();
+      localObject1 = paramString;
+      ((StringBuilder)localObject2).append(paramString);
+      localObject1 = paramString;
+      ((StringBuilder)localObject2).append(a(paramThrowable.getStackTrace(), ""));
+      localObject1 = paramString;
+      paramThrowable = ((StringBuilder)localObject2).toString();
       return paramThrowable;
     }
     catch (IOException paramThrowable)
     {
       paramThrowable.printStackTrace();
     }
-    return str1;
+    return localObject1;
   }
   
   public static String a(StackTraceElement[] paramArrayOfStackTraceElement, String paramString)
@@ -39,7 +45,9 @@ public class AVPreloadLog
       while (i < j)
       {
         StackTraceElement localStackTraceElement = paramArrayOfStackTraceElement[i];
-        localStringBuilder.append(paramString).append(localStackTraceElement).append("\n");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(localStackTraceElement);
+        localStringBuilder.append("\n");
         i += 1;
       }
       paramArrayOfStackTraceElement = localStringBuilder.toString();
@@ -64,9 +72,10 @@ public class AVPreloadLog
   
   public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (a != null)
+    LogInterface localLogInterface = a;
+    if (localLogInterface != null)
     {
-      a.d(paramString1, paramString2, paramVarArgs);
+      localLogInterface.d(paramString1, paramString2, paramVarArgs);
       return;
     }
     Log.d(paramString1, String.format(paramString2, paramVarArgs));
@@ -74,9 +83,10 @@ public class AVPreloadLog
   
   public static void a(String paramString1, Throwable paramThrowable, String paramString2)
   {
-    if (a != null)
+    LogInterface localLogInterface = a;
+    if (localLogInterface != null)
     {
-      a.printStackTrace(paramThrowable);
+      localLogInterface.printStackTrace(paramThrowable);
       return;
     }
     Log.e(paramString1, a(paramThrowable, paramString2));
@@ -89,16 +99,20 @@ public class AVPreloadLog
   
   private static String b(Throwable paramThrowable, String paramString)
   {
-    paramString = new StringBuilder().append(paramString);
-    paramString.append(": ").append(paramThrowable.getMessage()).append("\n");
-    return paramString.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(": ");
+    localStringBuilder.append(paramThrowable.getMessage());
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
   
   public static void b(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (a != null)
+    LogInterface localLogInterface = a;
+    if (localLogInterface != null)
     {
-      a.i(paramString1, paramString2, paramVarArgs);
+      localLogInterface.i(paramString1, paramString2, paramVarArgs);
       return;
     }
     Log.i(paramString1, String.format(paramString2, paramVarArgs));
@@ -106,9 +120,10 @@ public class AVPreloadLog
   
   public static void c(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (a != null)
+    LogInterface localLogInterface = a;
+    if (localLogInterface != null)
     {
-      a.e(paramString1, paramString2, paramVarArgs);
+      localLogInterface.e(paramString1, paramString2, paramVarArgs);
       return;
     }
     Log.e(paramString1, String.format(paramString2, paramVarArgs));
@@ -116,7 +131,7 @@ public class AVPreloadLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadservice.AVPreloadLog
  * JD-Core Version:    0.7.0.1
  */

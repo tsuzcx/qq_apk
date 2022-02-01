@@ -16,132 +16,167 @@ class QfavHelper$AsyncFavoritesProvider$1
   
   public void run()
   {
-    boolean bool2 = true;
-    boolean bool5 = false;
-    boolean bool4 = false;
+    Object localObject1 = this.this$0.a;
     boolean bool1 = false;
-    if (this.this$0.a == null)
+    boolean bool4 = false;
+    bool2 = false;
+    if (localObject1 == null)
     {
-      this.this$0.a(false, this.this$0.a);
+      localObject1 = this.this$0;
+      ((QfavHelper.AsyncFavoritesProvider)localObject1).a(false, ((QfavHelper.AsyncFavoritesProvider)localObject1).a);
       return;
     }
     long l1 = this.this$0.a.getLong("req_opt_type", -1L);
     long l2 = this.this$0.a.getLong("req_biz_type", -1L);
-    Object localObject1 = this.this$0.a.getString("req_biz_key");
-    Object localObject3 = this.this$0.a.getString("req_fav_uin");
-    if ((-1L == l1) || (-1L == l2) || (TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject3)))
+    Object localObject3 = this.this$0.a.getString("req_biz_key");
+    Object localObject4 = this.this$0.a.getString("req_fav_uin");
+    Bundle localBundle;
+    if ((-1L != l1) && (-1L != l2) && (!TextUtils.isEmpty((CharSequence)localObject3)) && (!TextUtils.isEmpty((CharSequence)localObject4)))
     {
-      this.this$0.a(false, this.this$0.a);
-      return;
-    }
-    Object localObject2 = BaseApplication.getContext().getContentResolver();
-    if (localObject2 == null)
-    {
-      this.this$0.a(false, this.this$0.a);
-      return;
-    }
-    Bundle localBundle = new Bundle(this.this$0.a);
-    boolean bool3;
-    if (1L == l1) {
-      bool3 = bool4;
-    }
-    for (;;)
-    {
-      try
+      localObject1 = BaseApplication.getContext().getContentResolver();
+      if (localObject1 == null)
       {
-        localObject3 = Uri.parse("content://qq.favorites/biz_related/" + (String)localObject3);
+        localObject1 = this.this$0;
+        ((QfavHelper.AsyncFavoritesProvider)localObject1).a(false, ((QfavHelper.AsyncFavoritesProvider)localObject1).a);
+        return;
+      }
+      localBundle = new Bundle(this.this$0.a);
+      if (1L == l1) {
         bool3 = bool4;
-        str = "" + l2;
+      }
+    }
+    try
+    {
+      localObject5 = new StringBuilder();
+      bool3 = bool4;
+      ((StringBuilder)localObject5).append("content://qq.favorites/biz_related/");
+      bool3 = bool4;
+      ((StringBuilder)localObject5).append((String)localObject4);
+      bool3 = bool4;
+      localObject4 = Uri.parse(((StringBuilder)localObject5).toString());
+      bool3 = bool4;
+      localObject5 = new StringBuilder();
+      bool3 = bool4;
+      ((StringBuilder)localObject5).append("");
+      bool3 = bool4;
+      ((StringBuilder)localObject5).append(l2);
+      bool3 = bool4;
+      localObject5 = ((StringBuilder)localObject5).toString();
+      bool3 = bool4;
+      localObject1 = ((ContentResolver)localObject1).query((Uri)localObject4, new String[] { "mUuid" }, "mBizType=? and mBizKey=?", new String[] { localObject5, localObject3 }, null);
+      bool1 = bool2;
+      if (localObject1 != null)
+      {
+        bool1 = bool2;
         bool3 = bool4;
-        localObject1 = ((ContentResolver)localObject2).query((Uri)localObject3, new String[] { "mUuid" }, "mBizType=? and mBizKey=?", new String[] { str, localObject1 }, null);
-        bool2 = bool1;
-        if (localObject1 != null)
+        if (((Cursor)localObject1).moveToFirst())
         {
-          bool2 = bool1;
           bool3 = bool4;
-          if (((Cursor)localObject1).moveToFirst())
-          {
-            bool3 = bool4;
-            localObject2 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("mUuid"));
-            bool2 = bool1;
-            if (localObject2 == null) {}
+          localObject3 = ((Cursor)localObject1).getString(((Cursor)localObject1).getColumnIndex("mUuid"));
+          bool1 = bool2;
+          if (localObject3 != null) {
+            try
+            {
+              localBundle.putString("rsp_fav_id", SecurityUtile.decode((String)localObject3));
+              bool1 = true;
+            }
+            catch (Exception localException1)
+            {
+              bool2 = true;
+              break label699;
+            }
           }
         }
       }
-      catch (Exception localException1)
+      bool2 = bool1;
+      if (localException1 == null) {
+        break label704;
+      }
+      bool3 = bool1;
+      localException1.close();
+      bool2 = bool1;
+    }
+    catch (Exception localException2)
+    {
+      for (;;)
       {
+        Object localObject5;
         String str;
-        ContentValues localContentValues;
-        bool1 = bool3;
-        localException1.printStackTrace();
+        Object localObject2;
+        label699:
+        bool2 = bool3;
         continue;
-      }
-      try
-      {
-        localBundle.putString("rsp_fav_id", SecurityUtile.decode((String)localObject2));
         bool2 = true;
-        bool1 = bool2;
-        if (localObject1 != null)
-        {
-          bool3 = bool2;
-          ((Cursor)localObject1).close();
-          bool1 = bool2;
-        }
-        this.this$0.a(bool1, localBundle);
-        return;
       }
-      catch (Exception localException2)
-      {
-        bool1 = true;
-        continue;
+    }
+    if (2L == l1)
+    {
+      bool3 = bool4;
+      localObject5 = new StringBuilder();
+      bool3 = bool4;
+      ((StringBuilder)localObject5).append("content://qq.favorites/biz_related/");
+      bool3 = bool4;
+      ((StringBuilder)localObject5).append((String)localObject4);
+      bool3 = bool4;
+      localObject4 = Uri.parse(((StringBuilder)localObject5).toString());
+      bool3 = bool4;
+      localObject5 = new StringBuilder();
+      bool3 = bool4;
+      ((StringBuilder)localObject5).append("");
+      bool3 = bool4;
+      ((StringBuilder)localObject5).append(l2);
+      bool2 = bool1;
+      bool3 = bool4;
+      if (localException1.delete((Uri)localObject4, "mBizType=? and mBizKey=?", new String[] { ((StringBuilder)localObject5).toString(), localObject3 }) > 0) {
+        break label740;
       }
-      if (2L == l1)
-      {
-        bool3 = bool4;
-        if (((ContentResolver)localObject2).delete(Uri.parse("content://qq.favorites/biz_related/" + (String)localObject3), "mBizType=? and mBizKey=?", new String[] { "" + l2, localObject1 }) <= 0) {
-          break label632;
-        }
-        bool1 = true;
-        break label629;
-      }
-      bool1 = bool5;
+    }
+    else
+    {
+      bool2 = bool1;
       if (3L == l1)
       {
         bool3 = bool4;
         str = this.this$0.a.getString("req_fav_id");
-        bool1 = bool5;
+        bool2 = bool1;
         bool3 = bool4;
         if (!TextUtils.isEmpty(str))
         {
           bool3 = bool4;
-          localContentValues = new ContentValues();
+          localObject5 = new ContentValues();
           bool3 = bool4;
-          localContentValues.put("mBizType", Long.valueOf(l2));
+          ((ContentValues)localObject5).put("mBizType", Long.valueOf(l2));
           bool3 = bool4;
-          localContentValues.put("mBizKey", (String)localObject1);
+          ((ContentValues)localObject5).put("mBizKey", (String)localObject3);
           bool3 = bool4;
-          localContentValues.put("mUuid", str);
+          ((ContentValues)localObject5).put("mUuid", str);
           bool3 = bool4;
-          localObject1 = ((ContentResolver)localObject2).insert(Uri.parse("content://qq.favorites/biz_related/" + (String)localObject3), localContentValues);
-          if (localObject1 != null) {}
-          for (bool1 = bool2;; bool1 = false) {
-            break;
+          localObject3 = new StringBuilder();
+          bool3 = bool4;
+          ((StringBuilder)localObject3).append("content://qq.favorites/biz_related/");
+          bool3 = bool4;
+          ((StringBuilder)localObject3).append((String)localObject4);
+          bool3 = bool4;
+          localObject2 = localException1.insert(Uri.parse(((StringBuilder)localObject3).toString()), (ContentValues)localObject5);
+          bool2 = bool1;
+          if (localObject2 != null)
+          {
+            break label740;
+            ((Exception)localObject2).printStackTrace();
           }
         }
       }
     }
-    for (;;)
-    {
-      label629:
-      break;
-      label632:
-      bool1 = false;
-    }
+    label704:
+    this.this$0.a(bool2, localBundle);
+    return;
+    localObject2 = this.this$0;
+    ((QfavHelper.AsyncFavoritesProvider)localObject2).a(false, ((QfavHelper.AsyncFavoritesProvider)localObject2).a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavHelper.AsyncFavoritesProvider.1
  * JD-Core Version:    0.7.0.1
  */

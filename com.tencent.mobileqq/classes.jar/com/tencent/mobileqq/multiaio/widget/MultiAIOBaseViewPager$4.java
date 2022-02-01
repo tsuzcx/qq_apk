@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.multiaio.widget;
 
 import android.graphics.Rect;
-import android.support.v4.view.OnApplyWindowInsetsListener;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.WindowInsetsCompat;
 import android.view.View;
+import androidx.core.view.OnApplyWindowInsetsListener;
+import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowInsetsCompat;
 
 class MultiAIOBaseViewPager$4
   implements OnApplyWindowInsetsListener
@@ -40,7 +40,7 @@ class MultiAIOBaseViewPager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.4
  * JD-Core Version:    0.7.0.1
  */

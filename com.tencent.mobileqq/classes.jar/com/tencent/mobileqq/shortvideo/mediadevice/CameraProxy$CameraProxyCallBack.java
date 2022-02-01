@@ -4,11 +4,11 @@ import android.hardware.Camera;
 
 public abstract interface CameraProxy$CameraProxyCallBack
 {
-  public abstract void onPreviewFrame(byte[] paramArrayOfByte, Camera paramCamera);
+  public abstract void a(byte[] paramArrayOfByte, Camera paramCamera);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraProxy.CameraProxyCallBack
  * JD-Core Version:    0.7.0.1
  */

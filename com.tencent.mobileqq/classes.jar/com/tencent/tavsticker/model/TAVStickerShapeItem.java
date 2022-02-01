@@ -38,24 +38,33 @@ public class TAVStickerShapeItem
   
   public String toString()
   {
-    return "TAVStickerShapeItem {layerIndex : " + this.layerIndex + ", layerName : " + this.layerName + ", layerType : " + this.layerType + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVStickerShapeItem {layerIndex : ");
+    localStringBuilder.append(this.layerIndex);
+    localStringBuilder.append(", layerName : ");
+    localStringBuilder.append(this.layerName);
+    localStringBuilder.append(", layerType : ");
+    localStringBuilder.append(this.layerType);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
     paramParcel.writeInt(this.layerIndex);
-    if (this.layerName == null) {}
-    for (String str = "";; str = this.layerName)
-    {
-      paramParcel.writeString(str);
-      paramParcel.writeInt(this.layerType);
-      return;
+    String str;
+    if (this.layerName == null) {
+      str = "";
+    } else {
+      str = this.layerName;
     }
+    paramParcel.writeString(str);
+    paramParcel.writeInt(this.layerType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.model.TAVStickerShapeItem
  * JD-Core Version:    0.7.0.1
  */

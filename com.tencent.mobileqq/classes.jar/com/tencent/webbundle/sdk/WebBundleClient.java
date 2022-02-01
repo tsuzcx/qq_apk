@@ -22,8 +22,9 @@ public class WebBundleClient
   public final IWebBundleWebView getValidWebView(@NotNull Context paramContext, String paramString)
   {
     this.webBundle = WebBundleManager.getInstance(this.bizId).getAvailableWebBundle(paramContext, paramString);
-    if (this.webBundle != null) {
-      return this.webBundle.getWebView();
+    paramContext = this.webBundle;
+    if (paramContext != null) {
+      return paramContext.getWebView();
     }
     return null;
   }
@@ -40,23 +41,20 @@ public class WebBundleClient
         paramIntent.put("type", "pushView");
         paramIntent.put("data", new JSONObject(str1));
         paramIntent.put("url", str2);
-        this.webBundle.use(paramIntent);
-        return true;
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
-        {
-          localJSONException.printStackTrace();
-        }
+        localJSONException.printStackTrace();
       }
+      this.webBundle.use(paramIntent);
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.webbundle.sdk.WebBundleClient
  * JD-Core Version:    0.7.0.1
  */

@@ -14,79 +14,91 @@ class BadTokenHooker$MyHookMethodCallback
 {
   public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if (paramMethodHookParam.throwable == null) {}
-    View localView;
-    do
-    {
+    if (paramMethodHookParam.throwable == null) {
       return;
-      localView = (View)paramMethodHookParam.args[0];
-    } while (localView == null);
-    Object localObject1 = localView.getContext();
-    Object localObject2 = localObject1;
-    if ("android.view.ContextThemeWrapper".equals(localObject1.getClass().getName())) {}
-    label295:
-    for (;;)
+    }
+    Object localObject4 = (View)paramMethodHookParam.args[0];
+    if (localObject4 == null) {
+      return;
+    }
+    Object localObject3 = ((View)localObject4).getContext();
+    Object localObject1 = localObject3;
+    Object localObject2;
+    if ("android.view.ContextThemeWrapper".equals(localObject3.getClass().getName()))
     {
       try
       {
-        localObject2 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
-        ((Field)localObject2).setAccessible(true);
-        localObject2 = ((Field)localObject2).get(localView.getContext());
-        if ((localObject2 == null) || (!(localObject2 instanceof Context))) {
-          break label295;
+        localObject1 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
+        ((Field)localObject1).setAccessible(true);
+        localObject4 = ((Field)localObject1).get(((View)localObject4).getContext());
+        localObject1 = localObject3;
+        if (localObject4 == null) {
+          break label150;
         }
-        localObject2 = (Context)localObject2;
-        localObject1 = localObject2;
-        localObject2 = localObject1;
+        localObject1 = localObject3;
+        if (!(localObject4 instanceof Context)) {
+          break label150;
+        }
+        localObject1 = (Context)localObject4;
       }
-      catch (ClassNotFoundException localClassNotFoundException)
+      catch (IllegalAccessException localIllegalAccessException) {}catch (IllegalArgumentException localIllegalArgumentException)
       {
-        Utils.a(localClassNotFoundException);
-        Object localObject3 = localObject1;
-        continue;
+        break label126;
       }
       catch (NoSuchFieldException localNoSuchFieldException)
       {
-        Utils.a(localNoSuchFieldException);
-        Object localObject4 = localObject1;
-        continue;
+        break label135;
       }
-      catch (IllegalArgumentException localIllegalArgumentException)
+      catch (ClassNotFoundException localClassNotFoundException)
       {
-        Utils.a(localIllegalArgumentException);
-        Object localObject5 = localObject1;
-        continue;
+        break label144;
       }
-      catch (IllegalAccessException localIllegalAccessException)
+      Utils.a(localClassNotFoundException);
+      localObject2 = localObject3;
+      break label150;
+      label126:
+      Utils.a(localObject2);
+      localObject2 = localObject3;
+      break label150;
+      label135:
+      Utils.a(localObject2);
+      localObject2 = localObject3;
+      break label150;
+      label144:
+      Utils.a(localObject2);
+      localObject2 = localObject3;
+    }
+    label150:
+    if (paramMethodHookParam.throwable.getCause() != null) {
+      localObject3 = paramMethodHookParam.throwable.getCause();
+    } else {
+      localObject3 = paramMethodHookParam.throwable;
+    }
+    if ((localObject2 instanceof Activity))
+    {
+      localObject4 = (Activity)localObject2;
+      if ((!((Activity)localObject4).isFinishing()) && ((localObject3 instanceof WindowManager.BadTokenException)))
       {
-        Utils.a(localIllegalAccessException);
-        Object localObject6 = localObject1;
-        continue;
-        localObject1 = paramMethodHookParam.throwable;
-        continue;
-        paramMethodHookParam.throwable = new RuntimeException(paramMethodHookParam.throwable.getMessage() + " -- context is " + localObject6.getClass().getName(), paramMethodHookParam.throwable);
-        return;
-      }
-      if (paramMethodHookParam.throwable.getCause() != null)
-      {
-        localObject1 = paramMethodHookParam.throwable.getCause();
-        if ((!(localObject2 instanceof Activity)) || (((Activity)localObject2).isFinishing()) || (!(localObject1 instanceof WindowManager.BadTokenException))) {
-          continue;
-        }
         BadTokenHooker.a(1, localObject2.getClass().getName(), paramMethodHookParam.throwable.getMessage(), 0);
         BadTokenHooker.a(2, localObject2.getClass().getName(), null, 10000);
         BadTokenHooker.a(3, localObject2.getClass().getName(), null, 60000);
         paramMethodHookParam.throwable = null;
-        ((Activity)localObject2).finish();
+        ((Activity)localObject4).finish();
+        return;
       }
     }
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(paramMethodHookParam.throwable.getMessage());
+    ((StringBuilder)localObject3).append(" -- context is ");
+    ((StringBuilder)localObject3).append(localObject2.getClass().getName());
+    paramMethodHookParam.throwable = new RuntimeException(((StringBuilder)localObject3).toString(), paramMethodHookParam.throwable);
   }
   
   public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.BadTokenHooker.MyHookMethodCallback
  * JD-Core Version:    0.7.0.1
  */

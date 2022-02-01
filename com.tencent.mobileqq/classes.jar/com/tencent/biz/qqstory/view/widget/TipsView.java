@@ -1,17 +1,14 @@
 package com.tencent.biz.qqstory.view.widget;
 
 import android.content.Context;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Path;
 import android.graphics.RectF;
-import android.graphics.drawable.BitmapDrawable;
 import android.util.AttributeSet;
 import android.view.View;
-import android.widget.PopupWindow;
 import com.tencent.mobileqq.util.DisplayUtil;
 
 public class TipsView
@@ -48,45 +45,6 @@ public class TipsView
     a();
   }
   
-  public static void a(Context paramContext, View paramView, String paramString, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7)
-  {
-    TipsView localTipsView = new TipsView(paramContext);
-    localTipsView.setText(paramString);
-    localTipsView.setBgColor(paramInt7);
-    localTipsView.setArrowPosition(paramInt1, paramInt2, paramInt5);
-    paramString = new PopupWindow(localTipsView, -2, -2);
-    paramString.setTouchable(true);
-    paramString.setOutsideTouchable(true);
-    paramString.setBackgroundDrawable(new BitmapDrawable(paramContext.getResources(), (Bitmap)null));
-    paramInt5 = (int)((paramView.getWidth() - localTipsView.a()) / 2.0F);
-    if (paramInt2 == 1) {}
-    for (;;)
-    {
-      if (paramInt1 == 1) {}
-      for (float f = DisplayUtil.a(paramContext, 5.0F);; f = -paramView.getHeight() - localTipsView.b() - DisplayUtil.a(paramContext, 5.0F))
-      {
-        paramString.showAsDropDown(paramView, paramInt3, (int)f + paramInt4);
-        localTipsView.postDelayed(new TipsView.1(paramString), paramInt6);
-        return;
-        if (paramInt2 != 2) {
-          break label191;
-        }
-        paramInt3 = (int)(paramView.getWidth() - localTipsView.a());
-        break;
-      }
-      label191:
-      paramInt3 = paramInt5;
-    }
-  }
-  
-  public float a()
-  {
-    if (this.jdField_a_of_type_Float == 0.0F) {
-      return this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString) + (super.getPaddingLeft() + super.getPaddingRight());
-    }
-    return this.jdField_a_of_type_Float;
-  }
-  
   protected void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
@@ -101,104 +59,85 @@ public class TipsView
     super.setPadding(i, i, i, i);
   }
   
-  public float b()
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.jdField_b_of_type_Float == 0.0F)
-    {
-      Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-      return localFontMetrics.bottom - localFontMetrics.top + (super.getPaddingTop() + super.getPaddingBottom()) + DisplayUtil.a(super.getContext(), 6.5F);
-    }
-    return this.jdField_b_of_type_Float;
-  }
-  
-  public void onDraw(Canvas paramCanvas)
-  {
-    int k = 0;
     Object localObject = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
     float f1 = ((Paint.FontMetrics)localObject).bottom;
-    float f2 = ((Paint.FontMetrics)localObject).top;
-    float f3 = ((Paint.FontMetrics)localObject).bottom;
-    float f4 = super.getPaddingTop();
-    int j;
+    float f3 = ((Paint.FontMetrics)localObject).top;
+    float f4 = ((Paint.FontMetrics)localObject).bottom;
+    float f5 = super.getPaddingTop();
+    int i = this.jdField_a_of_type_Int;
+    int j = 0;
+    if (i == 1) {
+      i = DisplayUtil.a(super.getContext(), 6.5F);
+    } else {
+      i = 0;
+    }
+    localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f2 = i;
+    float f6 = this.jdField_a_of_type_Float;
+    float f7 = this.jdField_b_of_type_Float;
+    if (this.jdField_a_of_type_Int == 1) {
+      i = 0;
+    } else {
+      i = DisplayUtil.a(super.getContext(), 6.5F);
+    }
+    ((RectF)localObject).set(0.0F, f2, f6, f7 - i);
+    paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, DisplayUtil.a(super.getContext(), 4.0F), DisplayUtil.a(super.getContext(), 4.0F), this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, super.getPaddingLeft(), f5 + (f1 - f3 - f4) + f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_a_of_type_AndroidGraphicsPath.reset();
+    f3 = this.jdField_a_of_type_Float;
+    f1 = f3 / 2.0F;
+    i = this.jdField_b_of_type_Int;
+    if (i == 1) {
+      f1 = this.c;
+    } else if (i == 2) {
+      f1 = f3 - this.c;
+    }
     if (this.jdField_a_of_type_Int == 1)
     {
-      i = DisplayUtil.a(super.getContext(), 6.5F);
-      localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
-      float f5 = i;
-      float f6 = this.jdField_a_of_type_Float;
-      float f7 = this.jdField_b_of_type_Float;
-      if (this.jdField_a_of_type_Int != 1) {
-        break label289;
-      }
-      j = 0;
-      label91:
-      ((RectF)localObject).set(0.0F, f5, f6, f7 - j);
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, DisplayUtil.a(super.getContext(), 4.0F), DisplayUtil.a(super.getContext(), 4.0F), this.jdField_b_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, super.getPaddingLeft(), f4 + (f1 - f2 - f3) + i, this.jdField_a_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPath.reset();
-      f1 = this.jdField_a_of_type_Float / 2.0F;
-      if (this.jdField_b_of_type_Int != 1) {
-        break label303;
-      }
-      f1 = this.c;
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Int != 1) {
-        break label325;
-      }
       this.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, 0.0F);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 - DisplayUtil.a(super.getContext(), 6.5F), i);
-      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 + DisplayUtil.a(super.getContext(), 6.5F), i);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 - DisplayUtil.a(super.getContext(), 6.5F), f2);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(f1 + DisplayUtil.a(super.getContext(), 6.5F), f2);
       this.jdField_a_of_type_AndroidGraphicsPath.close();
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-      super.onDraw(paramCanvas);
-      return;
-      i = 0;
-      break;
-      label289:
-      j = DisplayUtil.a(super.getContext(), 6.5F);
-      break label91;
-      label303:
-      if (this.jdField_b_of_type_Int == 2) {
-        f1 = this.jdField_a_of_type_Float - this.c;
-      }
     }
-    label325:
-    this.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, this.jdField_b_of_type_Float);
-    localObject = this.jdField_a_of_type_AndroidGraphicsPath;
-    f2 = DisplayUtil.a(super.getContext(), 6.5F);
-    f3 = this.jdField_b_of_type_Float;
-    if (this.jdField_a_of_type_Int == 1)
+    else
     {
-      i = 0;
-      label371:
+      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(f1, this.jdField_b_of_type_Float);
+      localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+      f2 = DisplayUtil.a(super.getContext(), 6.5F);
+      f3 = this.jdField_b_of_type_Float;
+      if (this.jdField_a_of_type_Int == 1) {
+        i = 0;
+      } else {
+        i = DisplayUtil.a(super.getContext(), 6.5F);
+      }
       ((Path)localObject).lineTo(f1 - f2, f3 - i);
       localObject = this.jdField_a_of_type_AndroidGraphicsPath;
       f2 = DisplayUtil.a(super.getContext(), 6.5F);
       f3 = this.jdField_b_of_type_Float;
-      if (this.jdField_a_of_type_Int != 1) {
-        break label470;
+      if (this.jdField_a_of_type_Int == 1) {
+        i = j;
+      } else {
+        i = DisplayUtil.a(super.getContext(), 6.5F);
       }
-    }
-    label470:
-    for (int i = k;; i = DisplayUtil.a(super.getContext(), 6.5F))
-    {
       ((Path)localObject).lineTo(f1 + f2, f3 - i);
       this.jdField_a_of_type_AndroidGraphicsPath.close();
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
-      break;
-      i = DisplayUtil.a(super.getContext(), 6.5F);
-      break label371;
     }
+    super.onDraw(paramCanvas);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    this.jdField_a_of_type_Float = (this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString) + (super.getPaddingLeft() + super.getPaddingRight()));
+    float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_Float = (super.getPaddingLeft() + super.getPaddingRight() + f1);
     Paint.FontMetrics localFontMetrics = this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics();
-    this.jdField_b_of_type_Float = (localFontMetrics.bottom - localFontMetrics.top + (super.getPaddingTop() + super.getPaddingBottom()) + DisplayUtil.a(super.getContext(), 6.5F));
+    f1 = localFontMetrics.bottom;
+    float f2 = localFontMetrics.top;
+    this.jdField_b_of_type_Float = (super.getPaddingTop() + super.getPaddingBottom() + (f1 - f2) + DisplayUtil.a(super.getContext(), 6.5F));
     super.setMeasuredDimension((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
   }
   
@@ -224,7 +163,7 @@ public class TipsView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.TipsView
  * JD-Core Version:    0.7.0.1
  */

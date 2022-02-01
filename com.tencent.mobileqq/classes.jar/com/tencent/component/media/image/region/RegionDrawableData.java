@@ -19,51 +19,73 @@ public class RegionDrawableData
   
   private int scaleToSampleRoundup(float paramFloat)
   {
-    int j = (int)Math.ceil(1.0F / paramFloat);
-    int i = j;
-    if (j > 64) {
+    int m = (int)Math.ceil(1.0F / paramFloat);
+    int k = 64;
+    int j = k;
+    int i = m;
+    if (m > 64)
+    {
       i = 64;
+      j = k;
     }
-    j = 64;
-    int k;
     while (j != 0)
     {
       k = i & j;
       if (k != 0)
       {
-        if ((i & i - 1) == 0) {
-          break label59;
+        j = k;
+        if ((i & i - 1) != 0) {
+          j = k << 1;
         }
-        return k << 1;
+        return j;
       }
       j >>= 1;
     }
     return 1;
-    label59:
-    return k;
   }
   
   public int calcSample()
   {
-    if (this.mScale == 0.0F) {}
-    for (int i = 1;; i = scaleToSampleRoundup(this.mScale))
-    {
-      this.mSample = i;
-      return i;
+    float f = this.mScale;
+    int i;
+    if (f == 0.0F) {
+      i = 1;
+    } else {
+      i = scaleToSampleRoundup(f);
     }
+    this.mSample = i;
+    return i;
   }
   
   public String toString()
   {
-    if ((this.mShowArea != null) && (this.mImageArea != null)) {
-      return "onShowAreaChanged mShowArea = " + this.mShowArea + " mImageArea = " + this.mImageArea + " scale = " + this.mScale + " mDefaultScale = " + this.mDefaultScale + " sample = " + this.mSample + " mTargetDensity = " + this.mTargetDensity + " mSourceDensity = " + this.mSourceDensity + " mIsShowRegion = " + this.mShowRegion;
+    if ((this.mShowArea != null) && (this.mImageArea != null))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onShowAreaChanged mShowArea = ");
+      localStringBuilder.append(this.mShowArea);
+      localStringBuilder.append(" mImageArea = ");
+      localStringBuilder.append(this.mImageArea);
+      localStringBuilder.append(" scale = ");
+      localStringBuilder.append(this.mScale);
+      localStringBuilder.append(" mDefaultScale = ");
+      localStringBuilder.append(this.mDefaultScale);
+      localStringBuilder.append(" sample = ");
+      localStringBuilder.append(this.mSample);
+      localStringBuilder.append(" mTargetDensity = ");
+      localStringBuilder.append(this.mTargetDensity);
+      localStringBuilder.append(" mSourceDensity = ");
+      localStringBuilder.append(this.mSourceDensity);
+      localStringBuilder.append(" mIsShowRegion = ");
+      localStringBuilder.append(this.mShowRegion);
+      return localStringBuilder.toString();
     }
     return super.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.region.RegionDrawableData
  * JD-Core Version:    0.7.0.1
  */

@@ -21,6 +21,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.qqemoticon.api.ISystemAndEmojiPanelService.DispatchKeyEventListener;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -30,14 +31,14 @@ import java.util.List;
 
 public class SystemAndEmojiUniversalPanel
   extends RelativeLayout
-  implements View.OnClickListener
+  implements View.OnClickListener, IEmoticonPanel
 {
   private static final int PRELOAD_LINE_NUM = 5;
   private static final String TAG = "EmoticonUniversalPanel";
   private float density;
   private EmoticonCallback mCallback;
   private ImageButton mDeleteButton;
-  private SystemAndEmojiUniversalPanel.DispatchKeyEventListener mDispatchKeyEventListener;
+  private ISystemAndEmojiPanelService.DispatchKeyEventListener mDispatchKeyEventListener;
   private EmotionPanelListView mEmotionPanelListView;
   private boolean mFilterSysFaceBeyond255Enable = false;
   private EditText mInputEdit;
@@ -82,7 +83,12 @@ public class SystemAndEmojiUniversalPanel
       i = j;
       if (QLog.isColorLevel())
       {
-        QLog.d("EmoticonUniversalPanel", 2, "multiWindowMode: " + this.mPanelInfo.columnNum + "->" + j);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("multiWindowMode: ");
+        localStringBuilder.append(this.mPanelInfo.columnNum);
+        localStringBuilder.append("->");
+        localStringBuilder.append(j);
+        QLog.d("EmoticonUniversalPanel", 2, localStringBuilder.toString());
         i = j;
       }
     }
@@ -99,7 +105,8 @@ public class SystemAndEmojiUniversalPanel
   
   private boolean isShowDeleteButton()
   {
-    return (this.mDeleteButton != null) && (this.mDeleteButton.getVisibility() == 0);
+    ImageButton localImageButton = this.mDeleteButton;
+    return (localImageButton != null) && (localImageButton.getVisibility() == 0);
   }
   
   private void preloadSystemEmotion(List<EmotionPanelData> paramList, ListView paramListView)
@@ -161,29 +168,27 @@ public class SystemAndEmojiUniversalPanel
   {
     if (paramAbsListView != null)
     {
-      int k = paramAbsListView.getChildCount();
+      int m = paramAbsListView.getChildCount();
       int i = 0;
-      while (i < k)
+      while (i < m)
       {
-        View localView1 = paramAbsListView.getChildAt(i);
-        if ((localView1 instanceof ViewGroup))
+        Object localObject = paramAbsListView.getChildAt(i);
+        if ((localObject instanceof ViewGroup))
         {
-          int m = ((ViewGroup)localView1).getChildCount();
-          int j = m - 1;
-          if (j >= 0)
+          localObject = (ViewGroup)localObject;
+          int k = ((ViewGroup)localObject).getChildCount() - 1;
+          int j = k;
+          while (j >= 0)
           {
-            View localView2 = ((ViewGroup)localView1).getChildAt(m - 1);
-            localView2.getLocationOnScreen(this.point);
-            this.point[0] = localView2.getLeft();
-            if ((this.minAlphaLeft > 0) && (this.point[0] + localView2.getWidth() * 2.0F / 3.0F > this.minAlphaLeft) && (this.minAlphaTop > 0) && (this.point[1] + localView2.getWidth() - this.spacing > this.minAlphaTop)) {
-              updateViewAlpha(localView2);
+            View localView = ((ViewGroup)localObject).getChildAt(k);
+            localView.getLocationOnScreen(this.point);
+            this.point[0] = localView.getLeft();
+            if ((this.minAlphaLeft > 0) && (this.point[0] + localView.getWidth() * 2.0F / 3.0F > this.minAlphaLeft) && (this.minAlphaTop > 0) && (this.point[1] + localView.getWidth() - this.spacing > this.minAlphaTop)) {
+              updateViewAlpha(localView);
+            } else {
+              localView.setAlpha(1.0F);
             }
-            for (;;)
-            {
-              j -= 1;
-              break;
-              localView2.setAlpha(1.0F);
-            }
+            j -= 1;
           }
         }
         i += 1;
@@ -195,11 +200,15 @@ public class SystemAndEmojiUniversalPanel
   {
     if ((paramView instanceof URLImageView))
     {
-      int i = this.point[1] + paramView.getWidth() - this.spacing - this.minAlphaTop;
-      float f = paramView.getWidth() / 2.0F;
-      if (i < f)
+      int i = this.point[1];
+      int j = paramView.getWidth();
+      int k = this.spacing;
+      int m = this.minAlphaTop;
+      float f1 = paramView.getWidth() / 2.0F;
+      float f2 = i + j - k - m;
+      if (f2 < f1)
       {
-        paramView.setAlpha((f - i) * 1.0F / f);
+        paramView.setAlpha((f1 - f2) * 1.0F / f1);
         return;
       }
       paramView.setAlpha(0.0F);
@@ -222,7 +231,8 @@ public class SystemAndEmojiUniversalPanel
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((this.mDispatchKeyEventListener != null) && (this.mDispatchKeyEventListener.dispatchKeyEvent(paramKeyEvent))) {
+    ISystemAndEmojiPanelService.DispatchKeyEventListener localDispatchKeyEventListener = this.mDispatchKeyEventListener;
+    if ((localDispatchKeyEventListener != null) && (localDispatchKeyEventListener.a(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -230,70 +240,72 @@ public class SystemAndEmojiUniversalPanel
   
   protected int getLayoutId()
   {
-    return 2131563076;
+    return 2131562901;
+  }
+  
+  public View getView()
+  {
+    return this;
   }
   
   public void init(IEmoticonMainPanelApp paramIEmoticonMainPanelApp)
   {
-    setBackgroundColor(getResources().getColor(2131167231));
+    setBackgroundColor(getResources().getColor(2131167262));
     this.density = getResources().getDisplayMetrics().density;
     this.spacing = ViewUtils.a(5.0F);
     this.mPanelInfo = new EmotionPanelInfo(7, 7, null);
-    this.mDeleteButton = ((ImageButton)findViewById(2131365656));
-    ImageButton localImageButton;
+    this.mDeleteButton = ((ImageButton)findViewById(2131365500));
     if (this.mInputEdit != null)
     {
       this.mDeleteButton.setVisibility(0);
       Editable localEditable = this.mInputEdit.getText();
-      localImageButton = this.mDeleteButton;
-      if (TextUtils.isEmpty(localEditable)) {
-        break label258;
-      }
+      this.mDeleteButton.setEnabled(TextUtils.isEmpty(localEditable) ^ true);
     }
-    label258:
-    for (boolean bool = true;; bool = false)
-    {
-      localImageButton.setEnabled(bool);
-      this.mDeleteButton.setOnClickListener(this);
-      this.mEmotionPanelListView = ((EmotionPanelListView)findViewById(2131366301));
-      this.mEmotionPanelListView.setDivider(null);
-      this.mEmotionPanelListView.setEdgeEffectEnabled(false);
-      this.mEmotionPanelListView.setSelector(2130850952);
-      int i = getColumnNum();
-      this.mSystemAndEmojiAdapter = new SystemAndEmojiAdapter(paramIEmoticonMainPanelApp, getContext(), i, 1, this.mPanelInfo.type, this.mCallback, 0);
-      this.mSystemAndEmojiAdapter.setLastItemAddPaddingBottom(getLastItemAddPaddingBottom());
-      this.mSystemAndEmojiAdapter.widthPixels = this.mainPanelWidth;
-      this.mSystemAndEmojiAdapter.curPanelInfo = this.mPanelInfo;
-      this.mSystemAndEmojiAdapter.setCurrentListView(this.mEmotionPanelListView);
-      this.mEmotionPanelListView.setAdapter(this.mSystemAndEmojiAdapter);
-      asyncLoadData(i);
-      return;
-    }
+    this.mDeleteButton.setOnClickListener(this);
+    this.mEmotionPanelListView = ((EmotionPanelListView)findViewById(2131366189));
+    this.mEmotionPanelListView.setDivider(null);
+    this.mEmotionPanelListView.setEdgeEffectEnabled(false);
+    this.mEmotionPanelListView.setSelector(2130850892);
+    int i = getColumnNum();
+    this.mSystemAndEmojiAdapter = new SystemAndEmojiAdapter(paramIEmoticonMainPanelApp, null, getContext(), i, 1, this.mPanelInfo.type, this.mCallback, 0);
+    this.mSystemAndEmojiAdapter.setLastItemAddPaddingBottom(getLastItemAddPaddingBottom());
+    paramIEmoticonMainPanelApp = this.mSystemAndEmojiAdapter;
+    paramIEmoticonMainPanelApp.widthPixels = this.mainPanelWidth;
+    paramIEmoticonMainPanelApp.curPanelInfo = this.mPanelInfo;
+    paramIEmoticonMainPanelApp.setCurrentListView(this.mEmotionPanelListView);
+    this.mEmotionPanelListView.setAdapter(this.mSystemAndEmojiAdapter);
+    asyncLoadData(i);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if (this.mInputEdit != null) {
-      this.mInputEdit.addTextChangedListener(this.textWatcher);
+    EditText localEditText = this.mInputEdit;
+    if (localEditText != null) {
+      localEditText.addTextChangedListener(this.textWatcher);
     }
   }
   
   public void onClick(View paramView)
   {
-    if ((paramView.getId() == 2131365656) && (this.mCallback != null)) {
-      this.mCallback.delete();
+    if (paramView.getId() == 2131365500)
+    {
+      EmoticonCallback localEmoticonCallback = this.mCallback;
+      if (localEmoticonCallback != null) {
+        localEmoticonCallback.delete();
+      }
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onDestory() {}
+  public void onDestroy() {}
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.mInputEdit != null) {
-      this.mInputEdit.removeTextChangedListener(this.textWatcher);
+    EditText localEditText = this.mInputEdit;
+    if (localEditText != null) {
+      localEditText.removeTextChangedListener(this.textWatcher);
     }
   }
   
@@ -301,28 +313,32 @@ public class SystemAndEmojiUniversalPanel
   {
     for (;;)
     {
+      int i;
       try
       {
         i = paramMotionEvent.getAction() & 0xFF;
         if (i != 0) {
-          continue;
+          break label56;
         }
         getParent().requestDisallowInterceptTouchEvent(true);
       }
       catch (Exception localException)
       {
-        int i;
         QLog.e("EmoticonUniversalPanel", 1, "onInterceptTouchEvent failed", localException);
-        continue;
       }
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      if ((i == 1) || (i == 3)) {
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
+      getParent().requestDisallowInterceptTouchEvent(false);
+      label56:
+      do
+      {
+        return super.onInterceptTouchEvent(paramMotionEvent);
+        if (i == 1) {
+          break;
+        }
+      } while (i != 3);
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt1 = getMeasuredWidth();
@@ -330,28 +346,32 @@ public class SystemAndEmojiUniversalPanel
     paramInt2 = this.mainPanelWidth;
     if (paramInt1 != paramInt2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonUniversalPanel", 2, "onMeasure: oldWidth=" + paramInt2 + " newWidth=" + paramInt1);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onMeasure: oldWidth=");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append(" newWidth=");
+        localStringBuilder.append(paramInt1);
+        QLog.d("EmoticonUniversalPanel", 2, localStringBuilder.toString());
       }
       EmotionPanelViewPool.getInstance().destory();
       EmotionPanelViewPool.widthPixels = paramInt1;
-      if (paramInt1 / localDisplayMetrics.widthPixels >= 0.66F) {
-        break label140;
+      boolean bool;
+      if (paramInt1 / localDisplayMetrics.widthPixels < 0.66F) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label140:
-    for (boolean bool = true;; bool = false)
-    {
       this.multiWindowMode = bool;
       this.mainPanelWidth = paramInt1;
       if ((this.mSystemAndEmojiAdapter != null) && (this.mDeleteButton != null)) {
         ThreadManagerV2.getUIHandlerV2().post(new SystemAndEmojiUniversalPanel.2(this));
       }
-      return;
     }
   }
   
-  public void setDispatchKeyEventListener(SystemAndEmojiUniversalPanel.DispatchKeyEventListener paramDispatchKeyEventListener)
+  public void setDispatchKeyEventListener(ISystemAndEmojiPanelService.DispatchKeyEventListener paramDispatchKeyEventListener)
   {
     this.mDispatchKeyEventListener = paramDispatchKeyEventListener;
   }
@@ -378,7 +398,7 @@ public class SystemAndEmojiUniversalPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemAndEmojiUniversalPanel
  * JD-Core Version:    0.7.0.1
  */

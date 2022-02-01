@@ -37,15 +37,33 @@ public class ReportInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nReportInfo");
-    localStringBuilder.append("\n |-").append("rpStep:").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append("\n |-").append("rpMsgRecvTime:").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append("\n |-").append("rpMsgNetwork:").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append("\n |-").append("rpThumbNetwork:").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append("\n |-").append("rpThumbDownMode:").append(this.d);
-    localStringBuilder.append("\n |-").append("rpThumbTimeDiff:").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append("\n |-").append("rpBigDownMode:").append(this.e);
-    localStringBuilder.append("\n |-").append("rpBigTimeDiff:").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append("\n |-").append("rpBigNetwork:").append(this.f);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rpStep:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rpMsgRecvTime:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rpMsgNetwork:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rpThumbNetwork:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rpThumbDownMode:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rpThumbTimeDiff:");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rpBigDownMode:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rpBigTimeDiff:");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("rpBigNetwork:");
+    localStringBuilder.append(this.f);
     return localStringBuilder.toString();
   }
   
@@ -64,7 +82,7 @@ public class ReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.ReportInfo
  * JD-Core Version:    0.7.0.1
  */

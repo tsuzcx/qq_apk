@@ -14,12 +14,13 @@ class VsyncWaiter$1$1
   {
     double d = VsyncWaiter.access$000(this.this$1.this$0).getDefaultDisplay().getRefreshRate();
     Double.isNaN(d);
+    Double.isNaN(d);
     FlutterJNI.nativeOnVsync(paramLong, paramLong + (1000000000.0D / d), this.val$cookie);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.VsyncWaiter.1.1
  * JD-Core Version:    0.7.0.1
  */

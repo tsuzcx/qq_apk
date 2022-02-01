@@ -29,7 +29,10 @@ public class ThumbnailUtils
     }
     catch (Throwable paramString)
     {
-      QLog.e("ThumbnailUtils", 1, "init failed:" + Log.getStackTraceString(paramString));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init failed:");
+      localStringBuilder.append(Log.getStackTraceString(paramString));
+      QLog.e("ThumbnailUtils", 1, localStringBuilder.toString());
     }
     return -444;
   }
@@ -40,58 +43,81 @@ public class ThumbnailUtils
     d = paramInt2;
     if (paramBoolean)
     {
-      if (c <= d) {
-        break label55;
+      int i = c;
+      int j = d;
+      double d1;
+      double d2;
+      if (i > j)
+      {
+        c = 480;
+        d1 = j;
+        d2 = paramInt1;
+        Double.isNaN(d2);
+        d2 = d2 * 1.0D / 480.0D;
+        Double.isNaN(d1);
+        d = (int)(d1 / d2);
       }
-      c = 480;
-      d = (int)(d / (paramInt1 * 1.0D / 480.0D));
+      else
+      {
+        d = 480;
+        d1 = i;
+        d2 = paramInt2;
+        Double.isNaN(d2);
+        d2 = d2 * 1.0D / 480.0D;
+        Double.isNaN(d1);
+        c = (int)(d1 / d2);
+      }
     }
-    for (;;)
-    {
-      return TrimNative.initGetFrame(paramString, c, d);
-      label55:
-      d = 480;
-      c = (int)(c / (paramInt2 * 1.0D / 480.0D));
-    }
+    return TrimNative.initGetFrame(paramString, c, d);
   }
   
   public static Bitmap a(long paramLong1, long paramLong2)
   {
-    if ((c <= 0) || (d <= 0)) {}
-    Bitmap localBitmap;
-    do
+    int i = c;
+    if (i > 0)
     {
-      return null;
-      localBitmap = Bitmap.createBitmap(c, d, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getFrame(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
+      int j = d;
+      if (j <= 0) {
+        return null;
       }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      if (TrimNative.getFrame(paramLong1, paramLong2, localBitmap) != 0)
+      {
+        if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+          localBitmap.recycle();
+        }
+        return null;
+      }
+      return localBitmap;
+    }
     return null;
-    return localBitmap;
   }
   
   public static Bitmap b(long paramLong1, long paramLong2)
   {
-    if ((a <= 0) || (b <= 0)) {}
-    Bitmap localBitmap;
-    do
+    int i = a;
+    if (i > 0)
     {
-      return null;
-      localBitmap = Bitmap.createBitmap(a, b, Bitmap.Config.ARGB_8888);
-      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) == 0) {
-        break;
+      int j = b;
+      if (j <= 0) {
+        return null;
       }
-    } while ((localBitmap == null) || (localBitmap.isRecycled()));
-    localBitmap.recycle();
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+      if (TrimNative.getThumbnail(paramLong1, paramLong2, localBitmap) != 0)
+      {
+        if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+          localBitmap.recycle();
+        }
+        return null;
+      }
+      return localBitmap;
+    }
     return null;
-    return localBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.utils.ThumbnailUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -24,12 +24,27 @@ public class ReadInJoyGdtAdParams
   @NotNull
   public String toString()
   {
-    return "jumpType = " + this.jdField_a_of_type_Int + "reportForClick = " + this.jdField_a_of_type_Boolean + "autoDownload = " + this.jdField_b_of_type_Boolean + "videoStartPositionMillis = " + this.jdField_a_of_type_Long + "isAutoPlaying = " + this.c + "filterVideoCeiling = " + this.d + "position = " + this.jdField_b_of_type_Int;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("jumpType = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("reportForClick = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("autoDownload = ");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("videoStartPositionMillis = ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("isAutoPlaying = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("filterVideoCeiling = ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("position = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.jump_action.ReadInJoyGdtAdParams
  * JD-Core Version:    0.7.0.1
  */

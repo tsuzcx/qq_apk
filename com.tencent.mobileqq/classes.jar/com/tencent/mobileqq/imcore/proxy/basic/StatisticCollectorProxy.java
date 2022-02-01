@@ -9,15 +9,17 @@ public class StatisticCollectorProxy
   
   public static void collectPerformance(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3)
   {
-    if (proxy != null) {
-      proxy.collectPerformance(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
+    StatisticCollectorProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      localProxy.collectPerformance(paramString1, paramString2, paramBoolean, paramLong1, paramLong2, paramHashMap, paramString3);
     }
   }
   
   public static void collectPerformance(String paramString1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, HashMap<String, String> paramHashMap, String paramString3, boolean paramBoolean2)
   {
-    if (proxy != null) {
-      proxy.collectPerformance(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
+    StatisticCollectorProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      localProxy.collectPerformance(paramString1, paramString2, paramBoolean1, paramLong1, paramLong2, paramHashMap, paramString3, paramBoolean2);
     }
   }
   
@@ -28,7 +30,7 @@ public class StatisticCollectorProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.basic.StatisticCollectorProxy
  * JD-Core Version:    0.7.0.1
  */

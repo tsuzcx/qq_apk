@@ -11,8 +11,9 @@ import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.emoticon.QQSysFaceUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.text.style.EmoticonSpan;
-import com.tencent.mobileqq.text.style.SmallEmojiSpan;
+import com.tencent.mobileqq.text.style.api.ISmallEmojiSpanService;
 import com.tencent.mobileqq.vas.ColorSpan;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.lang.reflect.Array;
@@ -34,171 +35,177 @@ public class ColorNickText
     {
       this.jdField_b_of_type_JavaLangString = "";
       this.jdField_a_of_type_JavaLangString = "";
-    }
-    for (;;)
-    {
       return;
-      this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
-      this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
-      paramInt = (int)(paramInt * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
-      Object localObject = new StringBuilder(paramCharSequence);
-      a(0, ((StringBuilder)localObject).length(), paramInt, (StringBuilder)localObject);
-      this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
-      if (!QQText.IS_FXXKED_MTK) {
-        this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
-      }
-      if ((paramCharSequence instanceof Spanned))
+    }
+    this.jdField_a_of_type_JavaLangString = paramCharSequence.toString();
+    this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
+    paramInt = (int)(paramInt * BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density + 0.5F);
+    Object localObject = new StringBuilder(paramCharSequence);
+    a(0, ((StringBuilder)localObject).length(), paramInt, (StringBuilder)localObject);
+    this.jdField_b_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    if (!QQText.IS_FXXKED_MTK) {
+      this.jdField_a_of_type_JavaLangString = this.jdField_b_of_type_JavaLangString;
+    }
+    if ((paramCharSequence instanceof Spanned))
+    {
+      localObject = (Spanned)paramCharSequence;
+      int k = paramCharSequence.length();
+      paramCharSequence = ((Spanned)localObject).getSpans(0, paramCharSequence.length(), Object.class);
+      paramInt = 0;
+      while (paramInt < paramCharSequence.length)
       {
-        localObject = (Spanned)paramCharSequence;
-        int k = paramCharSequence.length();
-        paramCharSequence = ((Spanned)localObject).getSpans(0, paramCharSequence.length(), Object.class);
-        paramInt = 0;
-        while (paramInt < paramCharSequence.length)
-        {
-          int j = ((Spanned)localObject).getSpanStart(paramCharSequence[paramInt]);
-          int m = ((Spanned)localObject).getSpanEnd(paramCharSequence[paramInt]);
-          int n = ((Spanned)localObject).getSpanFlags(paramCharSequence[paramInt]);
-          int i = j;
-          if (j < 0) {
-            i = 0;
-          }
-          j = m;
-          if (m > k) {
-            j = k;
-          }
-          setSpan(paramCharSequence[paramInt], i - 0, j - 0, n);
-          paramInt += 1;
+        int j = ((Spanned)localObject).getSpanStart(paramCharSequence[paramInt]);
+        int m = ((Spanned)localObject).getSpanEnd(paramCharSequence[paramInt]);
+        int n = ((Spanned)localObject).getSpanFlags(paramCharSequence[paramInt]);
+        int i = j;
+        if (j < 0) {
+          i = 0;
         }
+        j = m;
+        if (m > k) {
+          j = k;
+        }
+        setSpan(paramCharSequence[paramInt], i - 0, j - 0, n);
+        paramInt += 1;
       }
     }
   }
   
   private static String a(int paramInt1, int paramInt2)
   {
-    return "(" + paramInt1 + " ... " + paramInt2 + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" ... ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3, StringBuilder paramStringBuilder)
   {
-    int k = paramStringBuilder.length();
+    int n = paramStringBuilder.length();
     while (paramInt1 < paramInt2)
     {
-      if ((paramStringBuilder.charAt(paramInt1) == '<') && (paramInt1 < k - 2))
+      if ((paramStringBuilder.charAt(paramInt1) == '<') && (paramInt1 < n - 2))
       {
-        int i2 = paramStringBuilder.charAt(paramInt1 + 1);
+        int k = paramInt1 + 1;
+        int i3 = paramStringBuilder.charAt(k);
+        int i1;
+        int m;
         int j;
-        int i;
-        if ((i2 == 36) && (paramInt1 < k - 3))
+        Object localObject;
+        if ((i3 == 36) && (paramInt1 < n - 3))
         {
-          j = paramStringBuilder.charAt(paramInt1 + 2);
-          if (QQText.IS_FXXKED_MTK) {
-            paramStringBuilder.replace(paramInt1 + 1, paramInt1 + 3, "##");
+          i1 = paramInt1 + 2;
+          m = paramStringBuilder.charAt(i1);
+          boolean bool = QQText.IS_FXXKED_MTK;
+          j = 10;
+          if (bool) {
+            paramStringBuilder.replace(k, paramInt1 + 3, "##");
+          } else if (m == 10) {
+            paramStringBuilder.setCharAt(i1, 'ú');
           }
-          for (;;)
+          if ((m != 255) && (m != 511) && (m != 250))
           {
-            if ((j == 255) || (j == 511) || (j == 250)) {
-              break label203;
-            }
             if (paramStringBuilder.charAt(paramInt1 + 3) != '>') {
-              break label651;
+              break label701;
             }
-            j = QQSysFaceUtil.convertToLocal(j);
-            i = j;
-            if (j == 250) {
-              i = 10;
+            k = QQSysFaceUtil.convertToLocal(m);
+            if (k != 250) {
+              j = k;
             }
-            if (!QQSysFaceUtil.isValidFaceId(i)) {
-              break label651;
+            if (!QQSysFaceUtil.isValidFaceId(j)) {
+              break label701;
             }
-            a(new EmoticonSpan(i, paramInt3, 1), paramInt1, paramInt1 + 4, 33);
-            paramInt1 += 4;
-            break;
-            if (j == 10) {
-              paramStringBuilder.setCharAt(paramInt1 + 2, 'ú');
-            }
+            localObject = new EmoticonSpan(j, paramInt3, 1);
+            j = paramInt1 + 4;
+            a(localObject, paramInt1, j, 33);
           }
-          label203:
-          if ((j >= 255) && (paramInt1 + 6 < k))
+          else
           {
-            if (paramStringBuilder.charAt(paramInt1 + 6) == '>')
+            if (m >= 255)
             {
-              char[] arrayOfChar = new char[3];
-              arrayOfChar[0] = paramStringBuilder.charAt(paramInt1 + 3);
-              arrayOfChar[1] = paramStringBuilder.charAt(paramInt1 + 4);
-              arrayOfChar[2] = ((char)(paramStringBuilder.charAt(paramInt1 + 5) & 0xFF));
-              i = 0;
-              if (i < 3)
+              j = paramInt1 + 6;
+              if (j < n)
               {
-                if (arrayOfChar[i] == 'ú') {
-                  arrayOfChar[i] = '\n';
+                if (paramStringBuilder.charAt(j) != '>') {
+                  break label701;
                 }
+                localObject = new char[3];
+                localObject[0] = paramStringBuilder.charAt(paramInt1 + 3);
+                localObject[1] = paramStringBuilder.charAt(paramInt1 + 4);
+                int i = (char)(paramStringBuilder.charAt(paramInt1 + 5) & 0xFF);
+                k = 2;
+                localObject[2] = i;
+                j = 0;
+                while (j < 3)
+                {
+                  if (localObject[j] == 'ú') {
+                    localObject[j] = 10;
+                  } else if (localObject[j] == 'þ') {
+                    localObject[j] = 13;
+                  }
+                  j += 1;
+                }
+                ISmallEmojiSpanService localISmallEmojiSpanService = (ISmallEmojiSpanService)QRoute.api(ISmallEmojiSpanService.class);
+                if (m == 511) {
+                  bool = true;
+                } else {
+                  bool = false;
+                }
+                localObject = localISmallEmojiSpanService.createSmallEmojiSpan((char[])localObject, paramInt3, true, bool);
+                m = paramInt1 + 7;
+                a(localObject, paramInt1, m, 33);
                 for (;;)
                 {
-                  i += 1;
-                  break;
-                  if (arrayOfChar[i] == 'þ') {
-                    arrayOfChar[i] = '\r';
+                  j = m;
+                  if (k >= 5) {
+                    break;
                   }
+                  j = paramInt1 + k;
+                  if (paramStringBuilder.charAt(j) == '\n') {
+                    paramStringBuilder.setCharAt(j, 'ú');
+                  } else if (paramStringBuilder.charAt(j) == '\r') {
+                    paramStringBuilder.setCharAt(j, 'þ');
+                  }
+                  k += 1;
                 }
               }
-              boolean bool;
-              if (j == 511)
-              {
-                bool = true;
-                a(new SmallEmojiSpan(arrayOfChar, paramInt3, true, bool), paramInt1, paramInt1 + 7, 33);
-                i = 2;
-                label375:
-                if (i >= 5) {
-                  break label451;
-                }
-                if (paramStringBuilder.charAt(paramInt1 + i) != '\n') {
-                  break label422;
-                }
-                paramStringBuilder.setCharAt(paramInt1 + i, 'ú');
-              }
-              for (;;)
-              {
-                i += 1;
-                break label375;
-                bool = false;
-                break;
-                if (paramStringBuilder.charAt(paramInt1 + i) == '\r') {
-                  paramStringBuilder.setCharAt(paramInt1 + i, 'þ');
-                }
-              }
-              paramInt1 += 7;
             }
-          }
-          else if (j == 250)
-          {
+            if (m != 250) {
+              break label701;
+            }
             if (QQText.IS_FXXKED_MTK) {
-              paramStringBuilder.replace(paramInt1 + 1, paramInt1 + 3, "##");
+              paramStringBuilder.replace(k, paramInt1 + 3, "##");
             }
-            a(new EmoticonSpan(10, paramInt3, 1), paramInt1, paramInt1 + 4, 33);
-            paramInt1 += 4;
+            localObject = new EmoticonSpan(10, paramInt3, 1);
+            j = paramInt1 + 4;
+            a(localObject, paramInt1, j, 33);
           }
+          paramInt1 = j;
         }
         else
         {
-          label422:
-          label451:
-          if (((i2 == 37) || (i2 == 38)) && (paramInt1 < k - 6))
+          j = 2;
+          if (((i3 == 37) || (i3 == 38)) && (paramInt1 < n - 6))
           {
-            j = paramStringBuilder.charAt(paramInt1 + 2);
-            int m = paramStringBuilder.charAt(paramInt1 + 3);
-            int n = paramStringBuilder.charAt(paramInt1 + 4);
-            int i1 = paramStringBuilder.charAt(paramInt1 + 5);
-            i = 3;
-            if (i2 == 38) {
-              i = 2;
+            k = paramStringBuilder.charAt(paramInt1 + 2);
+            m = paramStringBuilder.charAt(paramInt1 + 3);
+            i1 = paramStringBuilder.charAt(paramInt1 + 4);
+            int i2 = paramStringBuilder.charAt(paramInt1 + 5);
+            if (i3 != 38) {
+              j = 3;
             }
-            a(new ColorSpan(i, (i1 & 0xFF) + ((j << 24) + 0 + (m << 16 & 0xFF0000) + (n << 8 & 0xFF00))), paramInt1, paramInt1 + 7, 33);
-            paramInt1 += 7;
+            localObject = new ColorSpan(j, (k << 24) + 0 + (m << 16 & 0xFF0000) + (i1 << 8 & 0xFF00) + (i2 & 0xFF));
+            j = paramInt1 + 7;
+            a(localObject, paramInt1, j, 33);
+            paramInt1 = j;
             continue;
           }
         }
       }
-      label651:
+      label701:
       paramInt1 += 1;
     }
   }
@@ -236,16 +243,35 @@ public class ColorNickText
   
   private void a(String paramString, int paramInt1, int paramInt2)
   {
-    if (paramInt2 < paramInt1) {
-      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " has end before start");
+    if (paramInt2 >= paramInt1)
+    {
+      int i = length();
+      if ((paramInt1 <= i) && (paramInt2 <= i))
+      {
+        if ((paramInt1 >= 0) && (paramInt2 >= 0)) {
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(a(paramInt1, paramInt2));
+        localStringBuilder.append(" starts before 0");
+        throw new IndexOutOfBoundsException(localStringBuilder.toString());
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(a(paramInt1, paramInt2));
+      localStringBuilder.append(" ends beyond length ");
+      localStringBuilder.append(i);
+      throw new IndexOutOfBoundsException(localStringBuilder.toString());
     }
-    int i = length();
-    if ((paramInt1 > i) || (paramInt2 > i)) {
-      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " ends beyond length " + i);
-    }
-    if ((paramInt1 < 0) || (paramInt2 < 0)) {
-      throw new IndexOutOfBoundsException(paramString + " " + a(paramInt1, paramInt2) + " starts before 0");
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(a(paramInt1, paramInt2));
+    localStringBuilder.append(" has end before start");
+    throw new IndexOutOfBoundsException(localStringBuilder.toString());
   }
   
   private void b(Object paramObject, int paramInt1, int paramInt2)
@@ -274,10 +300,10 @@ public class ColorNickText
   
   public char charAt(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > length())) {
-      return '\000';
+    if ((paramInt >= 0) && (paramInt <= length())) {
+      return this.jdField_b_of_type_JavaLangString.charAt(paramInt);
     }
-    return this.jdField_b_of_type_JavaLangString.charAt(paramInt);
+    return '\000';
   }
   
   public void getChars(int paramInt1, int paramInt2, char[] paramArrayOfChar, int paramInt3)
@@ -297,8 +323,10 @@ public class ColorNickText
   public int getSpanEnd(Object paramObject)
   {
     int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {}
-    while (i < 0) {
+    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {
+      return -1;
+    }
+    if (i < 0) {
       return -1;
     }
     return ((ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.get(i)).b;
@@ -307,8 +335,10 @@ public class ColorNickText
   public int getSpanFlags(Object paramObject)
   {
     int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {}
-    while (i < 0) {
+    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {
+      return 0;
+    }
+    if (i < 0) {
       return 0;
     }
     return ((ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.get(i)).c;
@@ -317,8 +347,10 @@ public class ColorNickText
   public int getSpanStart(Object paramObject)
   {
     int i = this.jdField_a_of_type_JavaUtilArrayList.indexOf(paramObject);
-    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {}
-    while (i < 0) {
+    if (this.jdField_b_of_type_JavaUtilArrayList.size() < i) {
+      return -1;
+    }
+    if (i < 0) {
       return -1;
     }
     return ((ColorNickText.SpanInfo)this.jdField_b_of_type_JavaUtilArrayList.get(i)).jdField_a_of_type_Int;
@@ -326,8 +358,8 @@ public class ColorNickText
   
   public <T> T[] getSpans(int paramInt1, int paramInt2, Class<T> paramClass)
   {
-    int j = 0;
     ArrayList localArrayList = new ArrayList();
+    int j = 0;
     int i = 0;
     while (i < this.jdField_a_of_type_JavaUtilArrayList.size())
     {
@@ -413,15 +445,29 @@ public class ColorNickText
       if ((paramInt1 != 0) && (paramInt1 != length()))
       {
         c = charAt(paramInt1 - 1);
-        if (c != '\n') {
-          throw new RuntimeException("PARAGRAPH span must start at paragraph boundary (" + paramInt1 + " follows " + c + ")");
+        if (c != '\n')
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("PARAGRAPH span must start at paragraph boundary (");
+          paramObject.append(paramInt1);
+          paramObject.append(" follows ");
+          paramObject.append(c);
+          paramObject.append(")");
+          throw new RuntimeException(paramObject.toString());
         }
       }
       if ((paramInt2 != 0) && (paramInt2 != length()))
       {
         c = charAt(paramInt2 - 1);
-        if (c != '\n') {
-          throw new RuntimeException("PARAGRAPH span must end at paragraph boundary (" + paramInt2 + " follows " + c + ")");
+        if (c != '\n')
+        {
+          paramObject = new StringBuilder();
+          paramObject.append("PARAGRAPH span must end at paragraph boundary (");
+          paramObject.append(paramInt2);
+          paramObject.append(" follows ");
+          paramObject.append(c);
+          paramObject.append(")");
+          throw new RuntimeException(paramObject.toString());
         }
       }
     }
@@ -465,7 +511,7 @@ public class ColorNickText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.ColorNickText
  * JD-Core Version:    0.7.0.1
  */

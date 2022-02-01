@@ -24,74 +24,56 @@ class MicrosoftTranslator$2
   
   public void a(int paramInt, Header[] paramArrayOfHeader, String paramString)
   {
-    paramArrayOfHeader = null;
     try
     {
-      localObject = this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator.a.parse(new InputSource(new StringReader(paramString)));
-      paramArrayOfHeader = (Header[])localObject;
+      paramArrayOfHeader = this.jdField_a_of_type_ComRookeryTranslateMicrosoftMicrosoftTranslator.a.parse(new InputSource(new StringReader(paramString)));
     }
-    catch (SAXException localSAXException)
+    catch (IOException paramArrayOfHeader)
     {
-      for (;;)
-      {
-        Object localObject;
-        NodeList localNodeList;
-        a(new TranslateError(localSAXException), paramString);
-      }
+      a(new TranslateError(paramArrayOfHeader), paramString);
     }
-    catch (IOException localIOException)
+    catch (SAXException paramArrayOfHeader)
     {
-      for (;;)
-      {
-        a(new TranslateError(localIOException), paramString);
-        continue;
-        if (this.jdField_a_of_type_JavaUtilList.get(paramInt) != null)
-        {
-          paramString.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
-        }
-        else
-        {
-          paramString.add("");
-          continue;
-          localIOException.add(Language.AUTO_DETECT);
-        }
-      }
-      this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(localIOException, paramString, this.jdField_a_of_type_JavaLangLong);
+      a(new TranslateError(paramArrayOfHeader), paramString);
     }
+    paramArrayOfHeader = null;
     paramString = new ArrayList();
-    localObject = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     if (paramArrayOfHeader != null)
     {
-      localNodeList = paramArrayOfHeader.getElementsByTagName("TranslatedText");
+      NodeList localNodeList = paramArrayOfHeader.getElementsByTagName("TranslatedText");
       paramArrayOfHeader = paramArrayOfHeader.getElementsByTagName("From");
       paramInt = 0;
-      for (;;)
+      while (paramInt < localNodeList.getLength())
       {
-        if (paramInt >= localNodeList.getLength()) {
-          break label270;
-        }
         Node localNode = localNodeList.item(paramInt);
-        if (localNode.getFirstChild() == null) {
-          break;
+        if (localNode.getFirstChild() != null) {
+          paramString.add(localNode.getFirstChild().getNodeValue());
+        } else if (this.jdField_a_of_type_JavaUtilList.get(paramInt) != null) {
+          paramString.add(this.jdField_a_of_type_JavaUtilList.get(paramInt));
+        } else {
+          paramString.add("");
         }
-        paramString.add(localNode.getFirstChild().getNodeValue());
         localNode = paramArrayOfHeader.item(paramInt);
-        if (localNode.getFirstChild() == null) {
-          break label256;
+        if (localNode.getFirstChild() != null) {
+          localArrayList.add(Language.fromString(localNode.getFirstChild().getNodeValue()));
+        } else {
+          localArrayList.add(Language.AUTO_DETECT);
         }
-        ((List)localObject).add(Language.fromString(localNode.getFirstChild().getNodeValue()));
         paramInt += 1;
       }
     }
-    label256:
-    label270:
-    return;
+    this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(localArrayList, paramString, this.jdField_a_of_type_JavaLangLong);
   }
   
   public void a(Throwable paramThrowable, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("Translator", 2, "[Microsoft] onFailure:" + paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("[Microsoft] onFailure:");
+      paramString.append(paramThrowable);
+      QLog.e("Translator", 2, paramString.toString());
     }
     this.jdField_a_of_type_ComRookeryTranslateTypeTranslateWithTimeCallback.a(new TranslateError(paramThrowable), this.jdField_a_of_type_JavaLangLong);
   }

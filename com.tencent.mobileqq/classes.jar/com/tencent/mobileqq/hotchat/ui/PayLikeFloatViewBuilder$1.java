@@ -15,20 +15,23 @@ final class PayLikeFloatViewBuilder$1
     PayLikeFloatViewBuilder.a(false);
     if (paramDownloadTask.a == 0)
     {
-      paramDownloadTask = new File(this.a + ".tmp");
+      paramDownloadTask = new StringBuilder();
+      paramDownloadTask.append(this.a);
+      paramDownloadTask.append(".tmp");
+      paramDownloadTask = new File(paramDownloadTask.toString());
       if (paramDownloadTask.exists()) {
         paramDownloadTask.renameTo(new File(this.a));
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
     }
-    QLog.d("PayLikeFloatViewBuilder", 2, "getPayZanAnimBitmap download failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.PayLikeFloatViewBuilder.1
  * JD-Core Version:    0.7.0.1
  */

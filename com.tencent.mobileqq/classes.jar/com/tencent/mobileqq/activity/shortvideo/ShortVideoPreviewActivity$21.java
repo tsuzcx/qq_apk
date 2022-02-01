@@ -13,28 +13,29 @@ class ShortVideoPreviewActivity$21
   
   public void run()
   {
-    Message localMessage;
-    if ((this.this$0.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.b()) && (this.this$0.jdField_a_of_type_AndroidViewSurfaceView != null))
+    if ((this.this$0.mMediaPlayer.b()) && (this.this$0.mSurfaceView != null))
     {
-      localMessage = Message.obtain();
-      localMessage.arg1 = this.this$0.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.b();
-      if (QLog.isColorLevel()) {
-        QLog.d("ShortVideoPreviewActivity", 2, "此时时间为+" + localMessage.arg1);
+      Message localMessage = Message.obtain();
+      localMessage.arg1 = this.this$0.mMediaPlayer.b();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("此时时间为+");
+        localStringBuilder.append(localMessage.arg1);
+        QLog.d("ShortVideoPreviewActivity", 2, localStringBuilder.toString());
       }
-      this.this$0.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(localMessage.arg1);
-      if (this.this$0.jdField_a_of_type_MqqOsMqqHandler != null) {}
+      this.this$0.seekBarMp.setProgress(localMessage.arg1);
+      if (this.this$0.updateBarHandler == null) {
+        return;
+      }
+      this.this$0.updateBarHandler.sendMessage(localMessage);
+      this.this$0.updateBarHandler.post(this.this$0.updateSeekBarThread);
     }
-    else
-    {
-      return;
-    }
-    this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-    this.this$0.jdField_a_of_type_MqqOsMqqHandler.post(this.this$0.jdField_a_of_type_JavaLangRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.21
  * JD-Core Version:    0.7.0.1
  */

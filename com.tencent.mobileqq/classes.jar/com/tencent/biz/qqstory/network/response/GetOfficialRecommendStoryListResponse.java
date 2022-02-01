@@ -29,25 +29,25 @@ public class GetOfficialRecommendStoryListResponse
   {
     super(paramRspGetOfficialRecommends.result);
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    if (paramRspGetOfficialRecommends.is_end.get() == 1) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      this.b = paramRspGetOfficialRecommends.recom_count.get();
-      this.jdField_a_of_type_JavaLangString = paramRspGetOfficialRecommends.next_cookie.get().toStringUtf8();
-      paramRspGetOfficialRecommends = paramRspGetOfficialRecommends.recom_item_list.get().iterator();
-      while (paramRspGetOfficialRecommends.hasNext())
-      {
-        qqstory_struct.RecommendItem localRecommendItem = (qqstory_struct.RecommendItem)paramRspGetOfficialRecommends.next();
-        this.jdField_a_of_type_JavaUtilArrayList.add(new RecommendItem(localRecommendItem));
-      }
+    int i = paramRspGetOfficialRecommends.is_end.get();
+    paramBoolean = true;
+    if (i != 1) {
       paramBoolean = false;
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    this.b = paramRspGetOfficialRecommends.recom_count.get();
+    this.jdField_a_of_type_JavaLangString = paramRspGetOfficialRecommends.next_cookie.get().toStringUtf8();
+    paramRspGetOfficialRecommends = paramRspGetOfficialRecommends.recom_item_list.get().iterator();
+    while (paramRspGetOfficialRecommends.hasNext())
+    {
+      qqstory_struct.RecommendItem localRecommendItem = (qqstory_struct.RecommendItem)paramRspGetOfficialRecommends.next();
+      this.jdField_a_of_type_JavaUtilArrayList.add(new RecommendItem(localRecommendItem));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetOfficialRecommendStoryListResponse
  * JD-Core Version:    0.7.0.1
  */

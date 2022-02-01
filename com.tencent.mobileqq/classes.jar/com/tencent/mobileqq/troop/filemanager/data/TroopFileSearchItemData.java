@@ -64,8 +64,16 @@ public class TroopFileSearchItemData
         this.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
         this.d = paramQQAppInterface.remark;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopFileSearchItemData<QFile>", 2, "TroopFileSearchItemData matchUin:" + this.jdField_c_of_type_Long + ", name:" + this.jdField_c_of_type_JavaLangString + ", remark = " + this.d);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("TroopFileSearchItemData matchUin:");
+        paramQQAppInterface.append(this.jdField_c_of_type_Long);
+        paramQQAppInterface.append(", name:");
+        paramQQAppInterface.append(this.jdField_c_of_type_JavaLangString);
+        paramQQAppInterface.append(", remark = ");
+        paramQQAppInterface.append(this.d);
+        QLog.d("TroopFileSearchItemData<QFile>", 2, paramQQAppInterface.toString());
       }
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo = new TroopFileInfo((cmd0x383.ApplyGetFileListRspBody.FileInfo)paramItem.file_info.get());
@@ -73,39 +81,62 @@ public class TroopFileSearchItemData
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("groupCode = " + this.jdField_a_of_type_Long);
-    localStringBuilder.append(", groupName = " + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", uploaderUin = " + this.jdField_b_of_type_Long);
-    localStringBuilder.append(", uploaderNickName = " + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", matchUin = " + this.jdField_c_of_type_Long);
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("groupCode = ");
+    localStringBuilder2.append(this.jdField_a_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", groupName = ");
+    localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", uploaderUin = ");
+    localStringBuilder2.append(this.jdField_b_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", uploaderNickName = ");
+    localStringBuilder2.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", matchUin = ");
+    localStringBuilder2.append(this.jdField_c_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
     if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      localStringBuilder.append(", matchWord: = ");
+      localStringBuilder1.append(", matchWord: = ");
       int j = this.jdField_a_of_type_JavaUtilArrayList.size();
       int i = 0;
-      if (i < j)
+      while (i < j)
       {
-        if (i == j - 1) {
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i) + ", ");
-        }
-        for (;;)
+        if (i == j - 1)
         {
-          i += 1;
-          break;
-          localStringBuilder.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i)).append("、 ");
+          localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          localStringBuilder2.append(", ");
+          localStringBuilder1.append(localStringBuilder2.toString());
         }
+        else
+        {
+          localStringBuilder1.append((String)this.jdField_a_of_type_JavaUtilArrayList.get(i));
+          localStringBuilder1.append("、 ");
+        }
+        i += 1;
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo != null) {
-      localStringBuilder.append(", fileInfo = " + this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.toString());
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo != null)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(", fileInfo = ");
+      localStringBuilder2.append(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.toString());
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopFileSearchItemData
  * JD-Core Version:    0.7.0.1
  */

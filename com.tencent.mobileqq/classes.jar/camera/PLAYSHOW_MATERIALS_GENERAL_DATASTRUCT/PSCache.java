@@ -35,14 +35,15 @@ public final class PSCache
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.createTime, 0);
-    if (this.categories != null) {
-      paramJceOutputStream.write(this.categories, 1);
+    ArrayList localArrayList = this.categories;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.PLAYSHOW_MATERIALS_GENERAL_DATASTRUCT.PSCache
  * JD-Core Version:    0.7.0.1
  */

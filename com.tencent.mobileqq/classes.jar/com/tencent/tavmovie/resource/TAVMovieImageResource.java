@@ -33,17 +33,19 @@ public class TAVMovieImageResource
   public TAVMovieImageResource(@NonNull String paramString, CGSize paramCGSize, boolean paramBoolean)
   {
     this.filePath = paramString;
-    if (!paramBoolean) {
-      this.image = new CIImage(paramString, paramCGSize);
-    }
-    for (this.naturalSize = new CGSize(this.image.getSize().width, this.image.getSize().height);; this.naturalSize = new CGSize(paramCGSize.outWidth, paramCGSize.outHeight))
+    if (!paramBoolean)
     {
-      this.duration = new CMTime(1L, 30);
-      return;
+      this.image = new CIImage(paramString, paramCGSize);
+      this.naturalSize = new CGSize(this.image.getSize().width, this.image.getSize().height);
+    }
+    else
+    {
       paramCGSize = new BitmapFactory.Options();
       paramCGSize.inJustDecodeBounds = true;
       BitmapFactory.decodeFile(paramString, paramCGSize);
+      this.naturalSize = new CGSize(paramCGSize.outWidth, paramCGSize.outHeight);
     }
+    this.duration = new CMTime(1L, 30);
   }
   
   public TAVMovieImageResource clone()
@@ -56,14 +58,16 @@ public class TAVMovieImageResource
   
   public TAVResource convertToResource()
   {
-    if (this.image != null) {}
-    for (Object localObject = new TAVImageResource(this.image, this.duration);; localObject = new TAVImageTrackResource(this.filePath, this.duration))
-    {
-      if ((this.timeRange != null) && (this.timeRange.getDurationUs() > 0L)) {
-        ((TAVResource)localObject).setSourceTimeRange(this.timeRange);
-      }
-      return localObject;
+    Object localObject = this.image;
+    if (localObject != null) {
+      localObject = new TAVImageResource((CIImage)localObject, this.duration);
+    } else {
+      localObject = new TAVImageTrackResource(this.filePath, this.duration);
     }
+    if ((this.timeRange != null) && (this.timeRange.getDurationUs() > 0L)) {
+      ((TAVResource)localObject).setSourceTimeRange(this.timeRange);
+    }
+    return localObject;
   }
   
   public TAVMovieResource dataClone()
@@ -83,8 +87,9 @@ public class TAVMovieImageResource
   
   public void release()
   {
-    if (this.image != null) {
-      this.image.release();
+    CIImage localCIImage = this.image;
+    if (localCIImage != null) {
+      localCIImage.release();
     }
   }
   
@@ -95,7 +100,7 @@ public class TAVMovieImageResource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavmovie.resource.TAVMovieImageResource
  * JD-Core Version:    0.7.0.1
  */

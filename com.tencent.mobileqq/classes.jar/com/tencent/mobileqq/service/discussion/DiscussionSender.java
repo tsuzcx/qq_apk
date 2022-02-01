@@ -93,19 +93,26 @@ public class DiscussionSender
     localReqGetDiscussInfo.Signature = paramToServiceMsg.extraData.getString("signature");
     if (QLog.isColorLevel())
     {
-      paramToServiceMsg = new StringBuilder().append("createGetDiscussInfoBuffer reqUIn =").append(localReqGetDiscussInfo.DiscussUin).append(",inteRemarktime =").append(localReqGetDiscussInfo.InteRemarkTimeStamp).append(",uinList size ");
-      if (localReqGetDiscussInfo.UinList == null) {
-        break label213;
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("createGetDiscussInfoBuffer reqUIn =");
+      paramToServiceMsg.append(localReqGetDiscussInfo.DiscussUin);
+      paramToServiceMsg.append(",inteRemarktime =");
+      paramToServiceMsg.append(localReqGetDiscussInfo.InteRemarkTimeStamp);
+      paramToServiceMsg.append(",uinList size ");
+      int i;
+      if (localReqGetDiscussInfo.UinList != null) {
+        i = localReqGetDiscussInfo.UinList.size();
+      } else {
+        i = -1;
       }
+      paramToServiceMsg.append(i);
+      paramToServiceMsg.append(", signature=");
+      paramToServiceMsg.append(localReqGetDiscussInfo.Signature);
+      QLog.d("DiscussionSender", 2, paramToServiceMsg.toString());
     }
-    label213:
-    for (int i = localReqGetDiscussInfo.UinList.size();; i = -1)
-    {
-      QLog.d("DiscussionSender", 2, i + ", signature=" + localReqGetDiscussInfo.Signature);
-      paramUniPacket.put("ReqGetDiscussInfo", localReqGetDiscussInfo);
-      paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
-      return true;
-    }
+    paramUniPacket.put("ReqGetDiscussInfo", localReqGetDiscussInfo);
+    paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
+    return true;
   }
   
   private boolean f(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -115,8 +122,14 @@ public class DiscussionSender
     ReqGetDiscussInteRemark localReqGetDiscussInteRemark = new ReqGetDiscussInteRemark();
     localReqGetDiscussInteRemark.DiscussUin = paramToServiceMsg.extraData.getLong("discussUin");
     localReqGetDiscussInteRemark.UinList = ((ArrayList)paramToServiceMsg.getAttribute("inteRemarkUinList"));
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionSender", 2, "createGetDiscussInteRemarkBuffer reqUIn =" + localReqGetDiscussInteRemark.DiscussUin + " uinList size " + localReqGetDiscussInteRemark.UinList.size());
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("createGetDiscussInteRemarkBuffer reqUIn =");
+      paramToServiceMsg.append(localReqGetDiscussInteRemark.DiscussUin);
+      paramToServiceMsg.append(" uinList size ");
+      paramToServiceMsg.append(localReqGetDiscussInteRemark.UinList.size());
+      QLog.d("DiscussionSender", 2, paramToServiceMsg.toString());
     }
     paramUniPacket.put("ReqGetDiscussInteRemark", localReqGetDiscussInteRemark);
     paramUniPacket.put("DiscussReqHeader", this.jdField_a_of_type_QQServiceDiscussReqHeader);
@@ -210,8 +223,12 @@ public class DiscussionSender
   public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     String str = paramToServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionSender", 2, "~~~create wup buffer cmd: " + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("~~~create wup buffer cmd: ");
+      localStringBuilder.append(str);
+      QLog.d("DiscussionSender", 2, localStringBuilder.toString());
     }
     if ("QQServiceDiscussSvc.ReqAddDiscussMember".equalsIgnoreCase(str)) {
       return i(paramToServiceMsg, paramUniPacket);
@@ -222,10 +239,8 @@ public class DiscussionSender
     if ("QQServiceDiscussSvc.ReqCreateDiscuss".equalsIgnoreCase(str)) {
       return g(paramToServiceMsg, paramUniPacket);
     }
-    if ("OidbSvc.0x58a".equalsIgnoreCase(str)) {}
-    do
+    if (!"OidbSvc.0x58a".equalsIgnoreCase(str))
     {
-      return false;
       if ("QQServiceDiscussSvc.ReqGetDiscussInfo".equalsIgnoreCase(str)) {
         return e(paramToServiceMsg, paramUniPacket);
       }
@@ -241,13 +256,16 @@ public class DiscussionSender
       if ("QQServiceDiscussSvc.ReqGetDiscussInteRemark".equalsIgnoreCase(str)) {
         return f(paramToServiceMsg, paramUniPacket);
       }
-    } while (!"QQServiceDiscussSvc.ReqJoinDiscuss".equalsIgnoreCase(str));
-    return j(paramToServiceMsg, paramUniPacket);
+      if ("QQServiceDiscussSvc.ReqJoinDiscuss".equalsIgnoreCase(str)) {
+        return j(paramToServiceMsg, paramUniPacket);
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.discussion.DiscussionSender
  * JD-Core Version:    0.7.0.1
  */

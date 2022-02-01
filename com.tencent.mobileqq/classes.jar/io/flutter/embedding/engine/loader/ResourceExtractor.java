@@ -51,30 +51,27 @@ class ResourceExtractor
     {
       paramPackageManager = paramPackageManager.getPackageInfo(paramString, 0);
       if (paramPackageManager == null) {
-        paramFile = "res_timestamp-";
+        return "res_timestamp-";
       }
-      do
+      paramString = new StringBuilder();
+      paramString.append("res_timestamp-");
+      paramString.append(getVersionCode(paramPackageManager));
+      paramString.append("-");
+      paramString.append(paramPackageManager.lastUpdateTime);
+      paramPackageManager = paramString.toString();
+      paramFile = getExistingTimestamps(paramFile);
+      if (paramFile == null) {
+        return paramPackageManager;
+      }
+      int i = paramFile.length;
+      if (paramFile.length == 1)
       {
-        do
-        {
-          do
-          {
-            return paramFile;
-            paramString = new StringBuilder();
-            paramString.append("res_timestamp-");
-            paramString.append(getVersionCode(paramPackageManager));
-            paramString.append("-");
-            paramString.append(paramPackageManager.lastUpdateTime);
-            paramPackageManager = paramString.toString();
-            paramString = getExistingTimestamps(paramFile);
-            paramFile = paramPackageManager;
-          } while (paramString == null);
-          int i = paramString.length;
-          paramFile = paramPackageManager;
-        } while (paramString.length != 1);
-        paramFile = paramPackageManager;
-      } while (!paramPackageManager.equals(paramString[0]));
-      return null;
+        if (!paramPackageManager.equals(paramFile[0])) {
+          return paramPackageManager;
+        }
+        return null;
+      }
+      return paramPackageManager;
     }
     catch (PackageManager.NameNotFoundException paramFile) {}
     return "res_timestamp-";
@@ -105,17 +102,15 @@ class ResourceExtractor
       }
     }
     paramHashSet = getExistingTimestamps(paramString);
-    if (paramHashSet == null) {}
-    for (;;)
-    {
+    if (paramHashSet == null) {
       return;
-      int j = paramHashSet.length;
-      int i = 0;
-      while (i < j)
-      {
-        new File(paramString, paramHashSet[i]).delete();
-        i += 1;
-      }
+    }
+    int j = paramHashSet.length;
+    int i = 0;
+    while (i < j)
+    {
+      new File(paramString, paramHashSet[i]).delete();
+      i += 1;
     }
   }
   
@@ -163,33 +158,26 @@ class ResourceExtractor
   
   void waitForCompletion()
   {
-    if (this.mExtractTask == null) {
+    ResourceExtractor.ExtractTask localExtractTask = this.mExtractTask;
+    if (localExtractTask == null) {
       return;
     }
     try
     {
-      this.mExtractTask.get();
+      localExtractTask.get();
       return;
     }
-    catch (CancellationException localCancellationException)
+    catch (CancellationException|ExecutionException|InterruptedException localCancellationException)
     {
-      deleteFiles(this.mDataDirPath, this.mResources);
-      return;
+      label16:
+      break label16;
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      break label18;
-    }
-    catch (ExecutionException localExecutionException)
-    {
-      label18:
-      break label18;
-    }
+    deleteFiles(this.mDataDirPath, this.mResources);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.loader.ResourceExtractor
  * JD-Core Version:    0.7.0.1
  */

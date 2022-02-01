@@ -42,27 +42,30 @@ public abstract class C2CPlusPanelAppLoader
     localPluginData.e = paramPlusPanelAppInfo.actionType;
     localPluginData.d = paramPlusPanelAppInfo.action;
     localPluginData.jdField_a_of_type_JavaLangString = a(paramPlusPanelAppInfo);
-    localPluginData.jdField_b_of_type_JavaLangString = (localPluginData.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131708286));
+    paramBaseChatPie = new StringBuilder();
+    paramBaseChatPie.append(localPluginData.jdField_a_of_type_JavaLangString);
+    paramBaseChatPie.append(HardCodeUtil.a(2131708295));
+    localPluginData.jdField_b_of_type_JavaLangString = paramBaseChatPie.toString();
     return localPluginData;
   }
   
   private void a(BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.a();
-    if (localQQAppInterface == null) {
+    if (localQQAppInterface == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("PlusPanel", 2, "reloadFriend app is null");
       }
-    }
-    do
-    {
       return;
-      if (paramSessionInfo != null) {
-        break;
+    }
+    if (paramSessionInfo == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("PlusPanel", 2, "reloadFriend() sessionInfo is null");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("PlusPanel", 2, "reloadFriend() sessionInfo is null");
-    return;
+      return;
+    }
     b(paramBaseChatPie);
     ReportController.b(localQQAppInterface, "P_CliOper", "Vip_pay_mywallet", "", "wallet", "transferAIOshow", 0, 0, "", "", "", "");
   }
@@ -75,31 +78,35 @@ public abstract class C2CPlusPanelAppLoader
     localPluginData.e = paramPlusPanelAppInfo.actionType;
     localPluginData.d = paramPlusPanelAppInfo.action;
     localPluginData.jdField_a_of_type_JavaLangString = paramPlusPanelAppInfo.getTitle();
-    localPluginData.jdField_b_of_type_JavaLangString = (localPluginData.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131708286));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localPluginData.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(HardCodeUtil.a(2131708295));
+    localPluginData.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     if (paramPlusPanelAppInfo.getAppID() == 209)
     {
       localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a();
       localPluginData.jdField_a_of_type_JavaLangString = MiniAppConfProcessor.a().g();
-      if (paramPlusPanelAppInfo.getAppID() != 204) {
-        break label182;
-      }
+    }
+    else
+    {
+      localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(paramPlusPanelAppInfo.defaultDrawableID());
+    }
+    if (paramPlusPanelAppInfo.getAppID() == 204)
+    {
       if (!ShortVideoUtils.isHotPicConfiginitied) {
         ShortVideoUtils.isHotPicConfiginitied = true;
       }
     }
-    for (;;)
-    {
-      localPluginData.jdField_b_of_type_JavaLangString = (paramPlusPanelAppInfo.getTitle() + HardCodeUtil.a(2131708294));
-      return localPluginData;
-      localPluginData.jdField_a_of_type_AndroidGraphicsDrawableDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(paramPlusPanelAppInfo.defaultDrawableID());
-      break;
-      label182:
-      if (paramPlusPanelAppInfo.getAppID() == 209) {
-        localPluginData.jdField_a_of_type_Boolean = AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
-      } else {
-        localPluginData.jdField_a_of_type_Boolean = false;
-      }
+    else if (paramPlusPanelAppInfo.getAppID() == 209) {
+      localPluginData.jdField_a_of_type_Boolean = AioPanelMiniAppManager.a(paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b();
+    } else {
+      localPluginData.jdField_a_of_type_Boolean = false;
     }
+    paramBaseChatPie = new StringBuilder();
+    paramBaseChatPie.append(paramPlusPanelAppInfo.getTitle());
+    paramBaseChatPie.append(HardCodeUtil.a(2131708303));
+    localPluginData.jdField_b_of_type_JavaLangString = paramBaseChatPie.toString();
+    return localPluginData;
   }
   
   public PluginData a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo, int paramInt)
@@ -135,7 +142,7 @@ public abstract class C2CPlusPanelAppLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.c2c.C2CPlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

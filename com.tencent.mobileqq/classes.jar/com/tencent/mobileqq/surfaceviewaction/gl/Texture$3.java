@@ -13,12 +13,18 @@ class Texture$3
   {
     if (this.this$0.jdField_a_of_type_Int != 0)
     {
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = this.this$0.jdField_a_of_type_Int;
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      Object localObject = new int[1];
+      localObject[0] = this.this$0.jdField_a_of_type_Int;
+      GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
       GLES20.glFlush();
-      if (QLog.isColorLevel()) {
-        QLog.d("Texture", 2, "Texture->release real: textureId = " + this.this$0.jdField_a_of_type_Int + ", filePath = " + Texture.a(this.this$0));
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Texture->release real: textureId = ");
+        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(", filePath = ");
+        ((StringBuilder)localObject).append(Texture.a(this.this$0));
+        QLog.d("Texture", 2, ((StringBuilder)localObject).toString());
       }
       this.this$0.jdField_a_of_type_Int = 0;
     }
@@ -31,7 +37,7 @@ class Texture$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.gl.Texture.3
  * JD-Core Version:    0.7.0.1
  */

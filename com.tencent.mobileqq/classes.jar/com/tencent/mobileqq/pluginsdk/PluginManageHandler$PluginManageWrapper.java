@@ -31,36 +31,39 @@ public class PluginManageHandler$PluginManageWrapper
   
   public void installPlugin(String paramString, OnPluginInstallListener paramOnPluginInstallListener)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("plugin_tag", 4, "installPlugin " + PluginManageHandler.access$000(this.this$0));
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("installPlugin ");
+      localStringBuilder.append(PluginManageHandler.access$000(this.this$0));
+      QLog.i("plugin_tag", 4, localStringBuilder.toString());
     }
     if (PluginManageHandler.access$000(this.this$0) == null)
     {
       PluginManageHandler.access$300(this.this$0);
-      if (PluginManageHandler.access$000(this.this$0) == null) {
+      if (PluginManageHandler.access$000(this.this$0) == null)
+      {
         if (QLog.isColorLevel()) {
           QLog.i("plugin_tag", 2, "PluginManageWrapper inner null");
         }
+        return;
       }
     }
-    do
+    try
     {
-      for (;;)
+      PluginManageHandler.access$000(this.this$0).installPlugin(paramString, paramOnPluginInstallListener);
+      if (QLog.isDevelopLevel())
       {
+        QLog.i("plugin_tag", 4, "installPlugin done");
         return;
-        try
-        {
-          PluginManageHandler.access$000(this.this$0).installPlugin(paramString, paramOnPluginInstallListener);
-          if (QLog.isDevelopLevel())
-          {
-            QLog.i("plugin_tag", 4, "installPlugin done");
-            return;
-          }
-        }
-        catch (RemoteException paramString) {}
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("plugin_tag", 4, "installPlugin", paramString);
+    }
+    catch (RemoteException paramString)
+    {
+      if (QLog.isDevelopLevel()) {
+        QLog.i("plugin_tag", 4, "installPlugin", paramString);
+      }
+    }
   }
   
   public boolean isPlugininstalled(String paramString)
@@ -139,7 +142,7 @@ public class PluginManageHandler$PluginManageWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginManageHandler.PluginManageWrapper
  * JD-Core Version:    0.7.0.1
  */

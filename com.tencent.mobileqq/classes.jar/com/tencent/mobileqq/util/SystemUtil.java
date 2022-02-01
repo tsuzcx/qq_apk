@@ -9,14 +9,9 @@ import java.lang.reflect.Method;
 
 public class SystemUtil
 {
-  public static String a;
+  public static String a = "SystemUtil";
   static boolean a;
   static boolean b;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "SystemUtil";
-  }
   
   public static long a()
   {
@@ -27,7 +22,11 @@ public class SystemUtil
       l = localStatFs.getAvailableBlocks() * l / 1024L;
       return l;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label34:
+      break label34;
+    }
     return 0L;
   }
   
@@ -49,23 +48,20 @@ public class SystemUtil
   public static void a()
   {
     boolean bool2 = true;
-    jdField_a_of_type_Boolean = true;
+    a = true;
     boolean bool1 = bool2;
     if (TextUtils.isEmpty(a("ro.miui.ui.version.code")))
     {
       bool1 = bool2;
       if (TextUtils.isEmpty(a("ro.miui.ui.version.name"))) {
-        if (TextUtils.isEmpty(a("ro.miui.internal.storage"))) {
-          break label50;
+        if (!TextUtils.isEmpty(a("ro.miui.internal.storage"))) {
+          bool1 = bool2;
+        } else {
+          bool1 = false;
         }
       }
     }
-    label50:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      b = bool1;
-      return;
-    }
+    b = bool1;
   }
   
   public static boolean a()
@@ -92,13 +88,17 @@ public class SystemUtil
       l = localStatFs.getAvailableBlocks() * l / 1024L;
       return l;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label30:
+      break label30;
+    }
     return 0L;
   }
   
   public static boolean b()
   {
-    if (jdField_a_of_type_Boolean) {
+    if (a) {
       return b;
     }
     a();
@@ -107,7 +107,7 @@ public class SystemUtil
   
   public static boolean c()
   {
-    return jdField_a_of_type_Boolean;
+    return a;
   }
   
   public static boolean d()
@@ -132,7 +132,7 @@ public class SystemUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.SystemUtil
  * JD-Core Version:    0.7.0.1
  */

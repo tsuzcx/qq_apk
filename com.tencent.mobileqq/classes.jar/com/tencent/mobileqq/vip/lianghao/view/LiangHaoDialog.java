@@ -15,7 +15,7 @@ public class LiangHaoDialog
   
   public Dialog a(Context paramContext, LiangHaoUinData paramLiangHaoUinData, View.OnClickListener paramOnClickListener)
   {
-    this.a = DialogUtil.a(paramContext, 2131693653, this, paramLiangHaoUinData, 2131690800, 2131693651, new LiangHaoDialog.1(this), paramOnClickListener, false, false);
+    this.a = DialogUtil.a(paramContext, 2131693606, this, paramLiangHaoUinData, 2131690728, 2131693604, new LiangHaoDialog.1(this), paramOnClickListener, false, false);
     return this.a;
   }
   
@@ -28,7 +28,7 @@ public class LiangHaoDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.lianghao.view.LiangHaoDialog
  * JD-Core Version:    0.7.0.1
  */

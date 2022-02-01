@@ -16,10 +16,12 @@ public class NotificationModule
   
   public void addObserver(Long paramLong, IBusinessCallback paramIBusinessCallback)
   {
-    if (paramIBusinessCallback == null) {
-      throw new NullPointerException();
+    if (paramIBusinessCallback != null)
+    {
+      this.mObs.put(paramLong, paramIBusinessCallback);
+      return;
     }
-    this.mObs.put(paramLong, paramIBusinessCallback);
+    throw new NullPointerException();
   }
   
   public void clearObservers()
@@ -38,18 +40,19 @@ public class NotificationModule
     if (paramClass == null) {
       return null;
     }
-    if ((this.mDefaultBusinessCallback != null) && (this.mDefaultBusinessCallback.getClass() == paramClass)) {
+    Object localObject1 = this.mDefaultBusinessCallback;
+    if ((localObject1 != null) && (localObject1.getClass() == paramClass)) {
       return this.mDefaultBusinessCallback;
     }
-    Iterator localIterator = this.mObs.entrySet().iterator();
-    while (localIterator.hasNext())
+    localObject1 = this.mObs.entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      Object localObject = (Map.Entry)localIterator.next();
-      if (((Map.Entry)localObject).getValue() != null)
+      Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      if (((Map.Entry)localObject2).getValue() != null)
       {
-        localObject = (IBusinessCallback)((Map.Entry)localObject).getValue();
-        if (localObject.getClass() == paramClass) {
-          return localObject;
+        localObject2 = (IBusinessCallback)((Map.Entry)localObject2).getValue();
+        if (localObject2.getClass() == paramClass) {
+          return localObject2;
         }
       }
     }
@@ -124,7 +127,7 @@ public class NotificationModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.module.NotificationModule
  * JD-Core Version:    0.7.0.1
  */

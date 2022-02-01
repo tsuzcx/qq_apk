@@ -2,9 +2,13 @@ package com.tencent.mobileqq.flutter.vistaimage;
 
 import android.net.Uri;
 import android.text.TextUtils;
-import com.qflutter.tencent_vista_image.IVistaImage;
-import com.qflutter.tencent_vista_image.IVistaImage.LoadBitmapCallback;
+import com.qflutter.vistaimage.IVistaImage;
+import com.qflutter.vistaimage.IVistaImage.LoadBitmapCallback;
+import com.tencent.mobileqq.qcircle.api.IQCircleClassApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
+import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -13,19 +17,9 @@ public class VistaImageProxy
 {
   private Map<String, IVistaImage> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   
-  static
-  {
-    if (!VistaImageProxy.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      jdField_a_of_type_Boolean = bool;
-      return;
-    }
-  }
-  
   private VistaImageProxy()
   {
-    this.jdField_a_of_type_JavaUtilMap.put("qcircle", QCircleSchemeHandler.getInstance());
+    this.jdField_a_of_type_JavaUtilMap.put("qcircle", ((IQCircleClassApi)QRoute.api(IQCircleClassApi.class)).getQCircleVistaImageInstance());
   }
   
   private IVistaImage a(String paramString)
@@ -43,16 +37,32 @@ public class VistaImageProxy
     return VistaImageProxy.SingleHolder.a;
   }
   
+  public void clear()
+  {
+    Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+    while (localIterator.hasNext()) {
+      ((IVistaImage)localIterator.next()).clear();
+    }
+  }
+  
   public void loadBitmap(String paramString, int paramInt1, int paramInt2, int paramInt3, IVistaImage.LoadBitmapCallback paramLoadBitmapCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VistaImageImpl", 2, "[loadBitmap] uri=" + paramString + ", requiredWidth=" + paramInt1 + ", requiredHeight=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[loadBitmap] uri=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", requiredWidth=");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", requiredHeight=");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("VistaImageImpl", 2, ((StringBuilder)localObject).toString());
     }
-    IVistaImage localIVistaImage = a(paramString);
-    if ((!jdField_a_of_type_Boolean) && (localIVistaImage == null)) {
+    Object localObject = a(paramString);
+    if ((!jdField_a_of_type_Boolean) && (localObject == null)) {
       throw new AssertionError();
     }
-    localIVistaImage.loadBitmap(paramString, paramInt1, paramInt2, paramInt3, paramLoadBitmapCallback);
+    ((IVistaImage)localObject).loadBitmap(paramString, paramInt1, paramInt2, paramInt3, paramLoadBitmapCallback);
   }
   
   public void releaseBitmap(String paramString)
@@ -66,7 +76,7 @@ public class VistaImageProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.vistaimage.VistaImageProxy
  * JD-Core Version:    0.7.0.1
  */

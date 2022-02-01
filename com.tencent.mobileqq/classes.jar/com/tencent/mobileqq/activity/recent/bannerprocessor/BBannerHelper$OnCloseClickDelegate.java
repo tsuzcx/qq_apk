@@ -21,19 +21,23 @@ public class BBannerHelper$OnCloseClickDelegate
   
   public void onClick(View paramView)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner.jdField_a_of_type_JavaLangString + " on close");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(" on close");
+      QLog.d("Q.recent.banner", 2, ((StringBuilder)localObject).toString());
     }
-    Message localMessage = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1000);
-    localMessage.obj = this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner;
-    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    Object localObject = this.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(1000);
+    ((Message)localObject).obj = this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage((Message)localObject);
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$MessageToShowBanner.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorBBannerHelper$IBannerInteract.onClose();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.BBannerHelper.OnCloseClickDelegate
  * JD-Core Version:    0.7.0.1
  */

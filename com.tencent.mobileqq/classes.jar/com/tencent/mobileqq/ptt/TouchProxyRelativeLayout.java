@@ -28,9 +28,11 @@ public class TouchProxyRelativeLayout
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     TouchProxyRelativeLayout.ITouchProxy localITouchProxy = this.a;
-    boolean bool1 = false;
+    boolean bool1;
     if (localITouchProxy != null) {
       bool1 = localITouchProxy.a(paramMotionEvent);
+    } else {
+      bool1 = false;
     }
     boolean bool2 = bool1;
     if (!bool1) {
@@ -41,7 +43,7 @@ public class TouchProxyRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.TouchProxyRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

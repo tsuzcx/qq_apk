@@ -31,21 +31,27 @@ public abstract class CommonRequestManager
       QLog.i("CommonRequestManager", 1, " onSend request = null");
       return;
     }
-    byte[] arrayOfByte = localQzoneExternalRequest.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null)
+    Object localObject = localQzoneExternalRequest.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null)
     {
-      QLog.e("CommonRequestManager", 1, "onSend request encode result is null.cmd=" + localQzoneExternalRequest.uniKey());
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend request encode result is null.cmd=");
+      paramIntent.append(localQzoneExternalRequest.uniKey());
+      QLog.e("CommonRequestManager", 1, paramIntent.toString());
       paramIntent = new byte[4];
     }
     paramPacket.setTimeout(a());
-    paramPacket.setSSOCommand("SQQzoneSvc." + localQzoneExternalRequest.uniKey());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SQQzoneSvc.");
+    ((StringBuilder)localObject).append(localQzoneExternalRequest.uniKey());
+    paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
     paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.CommonRequestManager
  * JD-Core Version:    0.7.0.1
  */

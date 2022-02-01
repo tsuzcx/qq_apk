@@ -15,7 +15,7 @@ import kotlin.jvm.internal.Intrinsics;
 import kotlin.text.CharsKt;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/BaseRule;", "Lcom/tencent/xaction/api/ICreatRule;", "()V", "realtime", "", "getRealtime", "()Z", "setRealtime", "(Z)V", "ruleAnimParse", "anim", "Lcom/tencent/xaction/api/base/BaseAnim;", "key", "", "value", "setAnimValue", "", "floatArray", "", "setStyleValue", "viewData", "Lcom/tencent/xaction/api/data/ViewData;", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/base/BaseRule;", "Lcom/tencent/xaction/api/ICreatRule;", "()V", "realtime", "", "getRealtime", "()Z", "setRealtime", "(Z)V", "ruleAnimParse", "anim", "Lcom/tencent/xaction/api/base/BaseAnim;", "key", "", "value", "setAnimValue", "", "floatArray", "", "setStyleValue", "viewData", "Lcom/tencent/xaction/api/data/ViewData;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public abstract class BaseRule
   implements ICreatRule
 {
@@ -41,80 +41,111 @@ public abstract class BaseRule
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "floatArray");
     switch (paramString.hashCode())
     {
-    }
-    do
-    {
-      do
+    default: 
+    case 1384173150: 
+      if ((paramString.equals("rotateY")) && ((paramBaseAnim instanceof Rotate)) && (paramArrayOfFloat.length == 1))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                return;
-                              } while ((!paramString.equals("rotate")) || (!(paramBaseAnim instanceof Rotate)) || (paramArrayOfFloat.length != 2));
-                              ((Rotate)paramBaseAnim).setRx(paramArrayOfFloat[0]);
-                              ((Rotate)paramBaseAnim).setRy(paramArrayOfFloat[1]);
-                              return;
-                            } while ((!paramString.equals("h")) || (!(paramBaseAnim instanceof Layout)) || (paramArrayOfFloat.length != 1));
-                            ((Layout)paramBaseAnim).setH((int)ScreenUnit.a.a(paramArrayOfFloat[0]));
-                            return;
-                          } while ((!paramString.equals("scale")) || (!(paramBaseAnim instanceof Scale)) || (paramArrayOfFloat.length != 2));
-                          ((Scale)paramBaseAnim).setSx(paramArrayOfFloat[0]);
-                          ((Scale)paramBaseAnim).setSy(paramArrayOfFloat[1]);
-                          return;
-                        } while ((!paramString.equals("scaleX")) || (!(paramBaseAnim instanceof Scale)) || (paramArrayOfFloat.length != 1));
-                        ((Scale)paramBaseAnim).setSx(paramArrayOfFloat[0]);
-                        return;
-                      } while ((!paramString.equals("scaleY")) || (!(paramBaseAnim instanceof Scale)) || (paramArrayOfFloat.length != 1));
-                      ((Scale)paramBaseAnim).setSy(paramArrayOfFloat[0]);
-                      return;
-                    } while ((!paramString.equals("translationX")) || (!(paramBaseAnim instanceof Translation)) || (paramArrayOfFloat.length != 1));
-                    ((Translation)paramBaseAnim).setTx(paramArrayOfFloat[0]);
-                    return;
-                  } while ((!paramString.equals("w")) || (!(paramBaseAnim instanceof Layout)) || (paramArrayOfFloat.length != 1));
-                  ((Layout)paramBaseAnim).setW((int)ScreenUnit.a.a(paramArrayOfFloat[0]));
-                  return;
-                } while ((!paramString.equals("translation")) || (!(paramBaseAnim instanceof Translation)) || (paramArrayOfFloat.length != 2));
-                ((Translation)paramBaseAnim).setTx(paramArrayOfFloat[0]);
-                ((Translation)paramBaseAnim).setTy(paramArrayOfFloat[1]);
-                return;
-              } while ((!paramString.equals("x")) || (!(paramBaseAnim instanceof Layout)) || (paramArrayOfFloat.length != 1));
-              ((Layout)paramBaseAnim).setX((int)ScreenUnit.a.a(paramArrayOfFloat[0]));
-              return;
-            } while ((!paramString.equals("y")) || (!(paramBaseAnim instanceof Layout)) || (paramArrayOfFloat.length != 1));
-            ((Layout)paramBaseAnim).setY((int)ScreenUnit.a.a(paramArrayOfFloat[0]));
-            return;
-          } while ((!paramString.equals("translationY")) || (!(paramBaseAnim instanceof Translation)) || (paramArrayOfFloat.length != 1));
-          ((Translation)paramBaseAnim).setTy(paramArrayOfFloat[0]);
-          return;
-        } while ((!paramString.equals("opacity")) || (!(paramBaseAnim instanceof Opacity)) || (paramArrayOfFloat.length != 1));
+        ((Rotate)paramBaseAnim).setRy(paramArrayOfFloat[0]);
+        return;
+      }
+      break;
+    case 1384173149: 
+      if ((paramString.equals("rotateX")) && ((paramBaseAnim instanceof Rotate)) && (paramArrayOfFloat.length == 1))
+      {
+        ((Rotate)paramBaseAnim).setRx(paramArrayOfFloat[0]);
+        return;
+      }
+      break;
+    case 109250890: 
+      if ((paramString.equals("scale")) && ((paramBaseAnim instanceof Scale)) && (paramArrayOfFloat.length == 2))
+      {
+        paramBaseAnim = (Scale)paramBaseAnim;
+        paramBaseAnim.setSx(paramArrayOfFloat[0]);
+        paramBaseAnim.setSy(paramArrayOfFloat[1]);
+        return;
+      }
+      break;
+    case 121: 
+      if ((paramString.equals("y")) && ((paramBaseAnim instanceof Layout)) && (paramArrayOfFloat.length == 1))
+      {
+        ((Layout)paramBaseAnim).setY(ScreenUnit.a.b(paramArrayOfFloat[0]));
+        return;
+      }
+      break;
+    case 120: 
+      if ((paramString.equals("x")) && ((paramBaseAnim instanceof Layout)) && (paramArrayOfFloat.length == 1))
+      {
+        ((Layout)paramBaseAnim).setX(ScreenUnit.a.b(paramArrayOfFloat[0]));
+        return;
+      }
+      break;
+    case 119: 
+      if ((paramString.equals("w")) && ((paramBaseAnim instanceof Layout)) && (paramArrayOfFloat.length == 1))
+      {
+        ((Layout)paramBaseAnim).setW(ScreenUnit.a.b(paramArrayOfFloat[0]));
+        return;
+      }
+      break;
+    case 104: 
+      if ((paramString.equals("h")) && ((paramBaseAnim instanceof Layout)) && (paramArrayOfFloat.length == 1))
+      {
+        ((Layout)paramBaseAnim).setH(ScreenUnit.a.b(paramArrayOfFloat[0]));
+        return;
+      }
+      break;
+    case -908189617: 
+      if ((paramString.equals("scaleY")) && ((paramBaseAnim instanceof Scale)) && (paramArrayOfFloat.length == 1))
+      {
+        ((Scale)paramBaseAnim).setSy(paramArrayOfFloat[0]);
+        return;
+      }
+      break;
+    case -908189618: 
+      if ((paramString.equals("scaleX")) && ((paramBaseAnim instanceof Scale)) && (paramArrayOfFloat.length == 1))
+      {
+        ((Scale)paramBaseAnim).setSx(paramArrayOfFloat[0]);
+        return;
+      }
+      break;
+    case -925180581: 
+      if ((paramString.equals("rotate")) && ((paramBaseAnim instanceof Rotate)) && (paramArrayOfFloat.length == 2))
+      {
+        paramBaseAnim = (Rotate)paramBaseAnim;
+        paramBaseAnim.setRx(paramArrayOfFloat[0]);
+        paramBaseAnim.setRy(paramArrayOfFloat[1]);
+        return;
+      }
+      break;
+    case -1225497656: 
+      if ((paramString.equals("translationY")) && ((paramBaseAnim instanceof Translation)) && (paramArrayOfFloat.length == 1))
+      {
+        ((Translation)paramBaseAnim).setTy(paramArrayOfFloat[0]);
+        return;
+      }
+      break;
+    case -1225497657: 
+      if ((paramString.equals("translationX")) && ((paramBaseAnim instanceof Translation)) && (paramArrayOfFloat.length == 1))
+      {
+        ((Translation)paramBaseAnim).setTx(paramArrayOfFloat[0]);
+        return;
+      }
+      break;
+    case -1267206133: 
+      if ((paramString.equals("opacity")) && ((paramBaseAnim instanceof Opacity)) && (paramArrayOfFloat.length == 1))
+      {
         ((Opacity)paramBaseAnim).setOp(paramArrayOfFloat[0]);
         return;
-      } while ((!paramString.equals("rotateX")) || (!(paramBaseAnim instanceof Rotate)) || (paramArrayOfFloat.length != 1));
-      ((Rotate)paramBaseAnim).setRx(paramArrayOfFloat[0]);
-      return;
-    } while ((!paramString.equals("rotateY")) || (!(paramBaseAnim instanceof Rotate)) || (paramArrayOfFloat.length != 1));
-    ((Rotate)paramBaseAnim).setRy(paramArrayOfFloat[0]);
+      }
+      break;
+    case -1840647503: 
+      if ((paramString.equals("translation")) && ((paramBaseAnim instanceof Translation)) && (paramArrayOfFloat.length == 2))
+      {
+        paramBaseAnim = (Translation)paramBaseAnim;
+        paramBaseAnim.setTx(paramArrayOfFloat[0]);
+        paramBaseAnim.setTy(paramArrayOfFloat[1]);
+      }
+      break;
+    }
   }
   
   public final void setRealtime(boolean paramBoolean)
@@ -127,80 +158,98 @@ public abstract class BaseRule
     Intrinsics.checkParameterIsNotNull(paramViewData, "viewData");
     Intrinsics.checkParameterIsNotNull(paramString, "key");
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "floatArray");
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != 104)
     {
-    }
-    do
-    {
-      do
+      if (i != 3137)
       {
-        do
+        if (i != 3553)
         {
-          do
+          if (i != 3793)
           {
-            do
+            if (i != 3841)
             {
-              do
+              if (i != 3654)
               {
-                do
+                if (i != 3655)
                 {
-                  do
+                  if (i != 3685)
                   {
-                    do
-                    {
-                      do
+                    if (i != 3686) {
+                      switch (i)
                       {
-                        do
-                        {
-                          do
-                          {
-                            return;
-                          } while ((!paramString.equals("wh")) || (paramArrayOfFloat.length != 2));
-                          paramViewData.getSt().setW(ScreenUnit.a.a(paramArrayOfFloat[0]));
-                          paramViewData.getSt().setH(ScreenUnit.a.a(paramArrayOfFloat[1]));
-                          return;
-                        } while ((!paramString.equals("xy")) || (paramArrayOfFloat.length != 2));
-                        paramViewData.getSt().setX(ScreenUnit.a.a(paramArrayOfFloat[0]));
-                        paramViewData.getSt().setY(ScreenUnit.a.a(paramArrayOfFloat[1]));
+                      default: 
                         return;
-                      } while ((!paramString.equals("op")) || (paramArrayOfFloat.length != 1));
-                      paramViewData.getSt().setOp(paramArrayOfFloat[0]);
-                      return;
-                    } while ((!paramString.equals("bc")) || (paramArrayOfFloat.length != 1));
-                    paramViewData = paramViewData.getSt();
-                    paramString = new StringBuilder().append("#");
-                    paramArrayOfFloat = Integer.toString((int)paramArrayOfFloat[0], CharsKt.checkRadix(16));
-                    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfFloat, "java.lang.Integer.toStri…(this, checkRadix(radix))");
-                    paramViewData.setBc(paramArrayOfFloat);
-                    return;
-                  } while ((!paramString.equals("sx")) || (paramArrayOfFloat.length != 1));
-                  paramViewData.getSt().setSy(paramArrayOfFloat[0]);
-                  return;
-                } while ((!paramString.equals("sy")) || (paramArrayOfFloat.length != 1));
-                paramViewData.getSt().setSy(paramArrayOfFloat[0]);
-                return;
-              } while ((!paramString.equals("rx")) || (paramArrayOfFloat.length != 1));
-              paramViewData.getSt().setRx((int)paramArrayOfFloat[0]);
-              return;
-            } while ((!paramString.equals("w")) || (paramArrayOfFloat.length != 1));
-            paramViewData.getSt().setW(ScreenUnit.a.a(paramArrayOfFloat[0]));
-            return;
-          } while ((!paramString.equals("ry")) || (paramArrayOfFloat.length != 1));
-          paramViewData.getSt().setRy((int)paramArrayOfFloat[0]);
-          return;
-        } while ((!paramString.equals("h")) || (paramArrayOfFloat.length != 1));
-        paramViewData.getSt().setH(ScreenUnit.a.a(paramArrayOfFloat[0]));
-        return;
-      } while ((!paramString.equals("x")) || (paramArrayOfFloat.length != 1));
-      paramViewData.getSt().setX(ScreenUnit.a.a(paramArrayOfFloat[0]));
-      return;
-    } while ((!paramString.equals("y")) || (paramArrayOfFloat.length != 1));
-    paramViewData.getSt().setY(ScreenUnit.a.a(paramArrayOfFloat[0]));
+                      case 121: 
+                        if ((!paramString.equals("y")) || (paramArrayOfFloat.length != 1)) {
+                          break;
+                        }
+                        paramViewData.getSt().setY(ScreenUnit.a.b(paramArrayOfFloat[0]));
+                        return;
+                      case 120: 
+                        if ((!paramString.equals("x")) || (paramArrayOfFloat.length != 1)) {
+                          break;
+                        }
+                        paramViewData.getSt().setX(ScreenUnit.a.b(paramArrayOfFloat[0]));
+                        return;
+                      case 119: 
+                        if ((!paramString.equals("w")) || (paramArrayOfFloat.length != 1)) {
+                          break;
+                        }
+                        paramViewData.getSt().setW(ScreenUnit.a.b(paramArrayOfFloat[0]));
+                        return;
+                      }
+                    } else if ((paramString.equals("sy")) && (paramArrayOfFloat.length == 1)) {
+                      paramViewData.getSt().setSy(paramArrayOfFloat[0]);
+                    }
+                  }
+                  else if ((paramString.equals("sx")) && (paramArrayOfFloat.length == 1)) {
+                    paramViewData.getSt().setSy(paramArrayOfFloat[0]);
+                  }
+                }
+                else if ((paramString.equals("ry")) && (paramArrayOfFloat.length == 1)) {
+                  paramViewData.getSt().setRy((int)paramArrayOfFloat[0]);
+                }
+              }
+              else if ((paramString.equals("rx")) && (paramArrayOfFloat.length == 1)) {
+                paramViewData.getSt().setRx((int)paramArrayOfFloat[0]);
+              }
+            }
+            else if ((paramString.equals("xy")) && (paramArrayOfFloat.length == 2))
+            {
+              paramViewData.getSt().setX(ScreenUnit.a.b(paramArrayOfFloat[0]));
+              paramViewData.getSt().setY(ScreenUnit.a.b(paramArrayOfFloat[1]));
+            }
+          }
+          else if ((paramString.equals("wh")) && (paramArrayOfFloat.length == 2))
+          {
+            paramViewData.getSt().setW(ScreenUnit.a.b(paramArrayOfFloat[0]));
+            paramViewData.getSt().setH(ScreenUnit.a.b(paramArrayOfFloat[1]));
+          }
+        }
+        else if ((paramString.equals("op")) && (paramArrayOfFloat.length == 1)) {
+          paramViewData.getSt().setOp(paramArrayOfFloat[0]);
+        }
+      }
+      else if ((paramString.equals("bc")) && (paramArrayOfFloat.length == 1))
+      {
+        paramViewData = paramViewData.getSt();
+        paramString = new StringBuilder();
+        paramString.append("#");
+        paramArrayOfFloat = Integer.toString((int)paramArrayOfFloat[0], CharsKt.checkRadix(16));
+        Intrinsics.checkExpressionValueIsNotNull(paramArrayOfFloat, "java.lang.Integer.toStri…(this, checkRadix(radix))");
+        paramString.append(paramArrayOfFloat);
+        paramViewData.setBc(paramString.toString());
+      }
+    }
+    else if ((paramString.equals("h")) && (paramArrayOfFloat.length == 1)) {
+      paramViewData.getSt().setH(ScreenUnit.a.b(paramArrayOfFloat[0]));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.base.BaseRule
  * JD-Core Version:    0.7.0.1
  */

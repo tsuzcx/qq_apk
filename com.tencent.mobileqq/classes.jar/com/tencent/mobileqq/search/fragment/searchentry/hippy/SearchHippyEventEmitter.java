@@ -30,16 +30,16 @@ public class SearchHippyEventEmitter
   
   public static String mapToJsonStr(Map<String, Object> paramMap)
   {
-    String str = "";
-    if (paramMap != null) {}
-    try
-    {
-      str = new JSONObject(paramMap).toString();
-      return str;
-    }
-    catch (Exception paramMap)
-    {
-      paramMap.printStackTrace();
+    if (paramMap != null) {
+      try
+      {
+        paramMap = new JSONObject(paramMap).toString();
+        return paramMap;
+      }
+      catch (Exception paramMap)
+      {
+        paramMap.printStackTrace();
+      }
     }
     return "";
   }
@@ -48,7 +48,10 @@ public class SearchHippyEventEmitter
   {
     HippyMap localHippyMap = new HippyMap();
     localHippyMap.pushString("action", paramString);
-    localHippyMap.pushString("height", paramInt + "");
+    paramString = new StringBuilder();
+    paramString.append(paramInt);
+    paramString.append("");
+    localHippyMap.pushString("height", paramString.toString());
     this.engine.sendEvent("@search:keyboardEvent", localHippyMap);
   }
   
@@ -65,16 +68,17 @@ public class SearchHippyEventEmitter
   public void sendActiveEvent(boolean paramBoolean, String paramString, Map<String, Object> paramMap)
   {
     HashMap localHashMap = new HashMap();
-    if (paramBoolean) {}
-    for (String str = "create";; str = "other")
-    {
-      localHashMap.put("showType", str);
-      localHashMap.put("openFrom", paramString);
-      localHashMap.putAll(paramMap);
-      sendCommonEvent(SearchHippyEventEmitter.CommonEvent.HomepageShow, localHashMap);
-      sendCommonEvent(SearchHippyEventEmitter.CommonEvent.HomepageExpose, localHashMap);
-      return;
+    String str;
+    if (paramBoolean) {
+      str = "create";
+    } else {
+      str = "other";
     }
+    localHashMap.put("showType", str);
+    localHashMap.put("openFrom", paramString);
+    localHashMap.putAll(paramMap);
+    sendCommonEvent(SearchHippyEventEmitter.CommonEvent.HomepageShow, localHashMap);
+    sendCommonEvent(SearchHippyEventEmitter.CommonEvent.HomepageExpose, localHashMap);
   }
   
   public void sendCommonEvent(@NonNull SearchHippyEventEmitter.CommonEvent paramCommonEvent, @Nullable Map<String, Object> paramMap)
@@ -83,13 +87,10 @@ public class SearchHippyEventEmitter
     localHippyMap.pushString("cmd", paramCommonEvent.name());
     if (paramMap == null) {
       localHippyMap.pushString("data", "");
-    }
-    for (;;)
-    {
-      this.engine.sendEvent("@search:commonEvent", localHippyMap);
-      return;
+    } else {
       localHippyMap.pushString("data", mapToJsonStr(paramMap));
     }
+    this.engine.sendEvent("@search:commonEvent", localHippyMap);
   }
   
   public void sendSoftKeyboardHideEvent()
@@ -113,7 +114,7 @@ public class SearchHippyEventEmitter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchHippyEventEmitter
  * JD-Core Version:    0.7.0.1
  */

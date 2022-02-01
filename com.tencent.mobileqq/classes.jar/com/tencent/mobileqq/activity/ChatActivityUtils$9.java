@@ -13,22 +13,18 @@ final class ChatActivityUtils$9
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool = false;
     paramDialogInterface = ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_AndroidContentContext);
     if (paramInt == 1)
     {
       ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDialogInterface, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, false, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_AndroidOsBundle);
       return;
     }
-    if (!this.b) {
-      bool = true;
-    }
-    ChatActivityUtils.a(paramDialogInterface, bool, null);
+    ChatActivityUtils.a(paramDialogInterface, true ^ this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.9
  * JD-Core Version:    0.7.0.1
  */

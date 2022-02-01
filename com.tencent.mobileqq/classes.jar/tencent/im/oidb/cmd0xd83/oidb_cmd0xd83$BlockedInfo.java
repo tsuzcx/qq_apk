@@ -23,14 +23,15 @@ public final class oidb_cmd0xd83$BlockedInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "uint64_uin", "bytes_nick", "uint32_age", "uint32_sex", "bytes_source", "uint32_time", "uint32_has_read", "uint32_comm_frd" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, BlockedInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 56, 64 }, new String[] { "uint64_uin", "bytes_nick", "uint32_age", "uint32_sex", "bytes_source", "uint32_time", "uint32_has_read", "uint32_comm_frd" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localInteger, localInteger, localInteger }, BlockedInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd83.oidb_cmd0xd83.BlockedInfo
  * JD-Core Version:    0.7.0.1
  */

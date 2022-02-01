@@ -24,57 +24,71 @@ public class NormalBuddyDecoder
 {
   private void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()) || (!((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.has())) {}
-    do
+    if ((paramMsg.msg_body.has()) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()))
     {
-      return;
-      if (paramMsg.content_head.has()) {
-        break;
+      if (!((msg_comm.MsgHead)paramMsg.msg_head.get()).c2c_cmd.has()) {
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("NormalBuddyDecoder", 2, "<---decodeC2CMessagePackage: msg doesn't has the contentHead.");
-    return;
-    Object localObject = (msg_comm.ContentHead)paramMsg.content_head.get();
-    if ((((msg_comm.ContentHead)localObject).auto_reply.has()) && (((msg_comm.ContentHead)localObject).auto_reply.get() == 1)) {}
-    for (paramBoolean2 = true;; paramBoolean2 = false)
-    {
+      if (!paramMsg.content_head.has())
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("NormalBuddyDecoder", 2, "<---decodeC2CMessagePackage: msg doesn't has the contentHead.");
+        }
+        return;
+      }
+      Object localObject = (msg_comm.ContentHead)paramMsg.content_head.get();
+      paramBoolean3 = ((msg_comm.ContentHead)localObject).auto_reply.has();
+      paramBoolean2 = true;
+      if ((!paramBoolean3) || (((msg_comm.ContentHead)localObject).auto_reply.get() != 1)) {
+        paramBoolean2 = false;
+      }
       localObject = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder(128);
-        localStringBuilder.append("<---decodeC2CMsgPkg_Buddy:elems size:").append(((List)localObject).size()).append(" isAutoReply:").append(paramBoolean2);
+        localStringBuilder.append("<---decodeC2CMsgPkg_Buddy:elems size:");
+        localStringBuilder.append(((List)localObject).size());
+        localStringBuilder.append(" isAutoReply:");
+        localStringBuilder.append(paramBoolean2);
         QLog.d("NormalBuddyDecoder", 2, localStringBuilder.toString());
       }
-      if (!paramBoolean2) {
-        break label303;
+      if (paramBoolean2)
+      {
+        if (localObject != null)
+        {
+          if (((List)localObject).size() <= 0) {
+            return;
+          }
+          paramMessageHandler = BaseApplicationImpl.getApplication().getString(2131690244);
+          paramMsg = new MessagePBElemDecoder().a((List)localObject);
+          if (TextUtils.isEmpty(paramMsg)) {
+            return;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramMessageHandler);
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(paramMsg);
+          paramMessageHandler = ((StringBuilder)localObject).toString();
+          paramMsg = MessageRecordFactory.a(-10000);
+          paramMsg.msgtype = -10000;
+          paramMsg.msg = paramMessageHandler;
+          paramList.add(paramMsg);
+        }
       }
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break;
+      else {
+        MessageProtoCodec.a(paramMessageHandler, paramList, paramMsg, true, paramBoolean1, null);
       }
-      paramMessageHandler = BaseApplicationImpl.getApplication().getString(2131690323);
-      paramMsg = new MessagePBElemDecoder().a((List)localObject);
-      if (TextUtils.isEmpty(paramMsg)) {
-        break;
-      }
-      paramMessageHandler = paramMessageHandler + " " + paramMsg;
-      paramMsg = MessageRecordFactory.a(-10000);
-      paramMsg.msgtype = -10000;
-      paramMsg.msg = paramMessageHandler;
-      paramList.add(paramMsg);
-      return;
     }
-    label303:
-    MessageProtoCodec.a(paramMessageHandler, paramList, paramMsg, true, paramBoolean1, null);
   }
   
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    a(paramMessageHandler, paramList, paramMsg, paramDecodeProtoPkgContext.e, paramDecodeProtoPkgContext.b, paramDecodeProtoPkgContext.a, paramDecodeProtoPkgContext.d);
+    a(paramMessageHandler, paramList, paramMsg, paramDecodeProtoPkgContext.g, paramDecodeProtoPkgContext.b, paramDecodeProtoPkgContext.a, paramDecodeProtoPkgContext.d);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.buddyMessage.NormalBuddyDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class SharedPreferencesProxy
   implements SharedPreferences
 {
   private static final String LOG_TAG = "SharedPreferencesProxy";
-  private static String sPkgSpName = null;
+  private static String sPkgSpName;
   private WeakReference<Context> mContext = null;
   private SharedPreferencesProxy.EditorImpl mEditor = null;
   private String mFileName = null;
@@ -31,63 +31,58 @@ class SharedPreferencesProxy
   {
     this.mContext = paramWeakReference;
     boolean bool;
-    if (paramInt != 4)
-    {
+    if (paramInt != 4) {
       bool = true;
-      this.mRequestPrivate = bool;
-      if (sPkgSpName == null) {
-        sPkgSpName = ((Context)paramWeakReference.get()).getPackageName() + "_preferences";
-      }
-      int i = paramInt;
-      if (sPkgSpName.equals(paramString))
+    } else {
+      bool = false;
+    }
+    this.mRequestPrivate = bool;
+    if (sPkgSpName == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((Context)paramWeakReference.get()).getPackageName());
+      localStringBuilder.append("_preferences");
+      sPkgSpName = localStringBuilder.toString();
+    }
+    int i = paramInt;
+    if (sPkgSpName.equals(paramString))
+    {
+      i = paramInt;
+      if (paramInt != 4)
       {
         i = paramInt;
-        if (paramInt != 4)
-        {
-          i = paramInt;
-          if (paramBoolean) {
-            i = 4;
-          }
+        if (paramBoolean) {
+          i = 4;
         }
       }
-      if (((i & 0x4) != 4) || (Utils.sIsSameProcessAsCP)) {
-        break label188;
-      }
+    }
+    if (((i & 0x4) == 4) && (!Utils.sIsSameProcessAsCP))
+    {
       this.mProviderPref = new ContentProviderClient(paramWeakReference, paramString);
     }
-    for (;;)
+    else
     {
-      this.mFileName = paramString;
-      this.mEditor = new SharedPreferencesProxy.EditorImpl(this);
-      return;
-      bool = false;
-      break;
-      label188:
       this.mSystemPref = Utils.getSystemSp((Context)paramWeakReference.get(), paramString, 0);
       this.mSystemEditor = this.mSystemPref.edit();
     }
+    this.mFileName = paramString;
+    this.mEditor = new SharedPreferencesProxy.EditorImpl(this);
   }
   
   public boolean contains(String paramString)
   {
-    boolean bool = false;
-    if (this.mProviderPref != null)
-    {
-      bool = ((Boolean)this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_ANY, Boolean.valueOf(false))).booleanValue();
-      return bool;
+    Object localObject = this.mProviderPref;
+    if (localObject != null) {
+      return ((Boolean)((ContentProviderClient)localObject).read(paramString, CommonConstants.VALUE_TYPE_ANY, Boolean.valueOf(false))).booleanValue();
     }
-    if (paramString != null) {}
-    for (Object localObject = this.mEditor.mModifiedCaches.get(paramString);; localObject = null)
-    {
-      if (localObject == null) {
-        break label73;
-      }
-      if (localObject.equals(this.mEditor)) {
-        break;
-      }
-      return true;
+    if (paramString != null) {
+      localObject = this.mEditor.mModifiedCaches.get(paramString);
+    } else {
+      localObject = null;
     }
-    label73:
+    if (localObject != null) {
+      return localObject.equals(this.mEditor) ^ true;
+    }
     return this.mSystemPref.contains(paramString);
   }
   
@@ -98,34 +93,29 @@ class SharedPreferencesProxy
   
   public Map<String, ?> getAll()
   {
-    Object localObject2;
-    if (this.mProviderPref != null)
-    {
-      localObject2 = this.mProviderPref.readAll();
-      return localObject2;
+    Object localObject = this.mProviderPref;
+    if (localObject != null) {
+      return ((ContentProviderClient)localObject).readAll();
     }
-    Object localObject1 = this.mSystemPref.getAll();
-    if (localObject1 != null)
+    localObject = this.mSystemPref.getAll();
+    if (localObject != null)
     {
-      localObject1 = new HashMap((Map)localObject1);
-      ((Map)localObject1).putAll(this.mEditor.mModifiedCaches);
+      localObject = new HashMap((Map)localObject);
+      ((Map)localObject).putAll(this.mEditor.mModifiedCaches);
     }
-    for (;;)
+    else
     {
-      Iterator localIterator = this.mEditor.mModifiedCaches.entrySet().iterator();
-      for (;;)
-      {
-        localObject2 = localObject1;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localObject2 = (Map.Entry)localIterator.next();
-        if (this.mEditor.equals(((Map.Entry)localObject2).getValue())) {
-          ((Map)localObject1).remove(((Map.Entry)localObject2).getKey());
-        }
+      localObject = new HashMap(this.mEditor.mModifiedCaches);
+    }
+    Iterator localIterator = this.mEditor.mModifiedCaches.entrySet().iterator();
+    while (localIterator.hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (this.mEditor.equals(localEntry.getValue())) {
+        ((Map)localObject).remove(localEntry.getKey());
       }
-      localObject1 = new HashMap(this.mEditor.mModifiedCaches);
     }
+    return localObject;
   }
   
   public boolean getBoolean(String paramString, boolean paramBoolean)
@@ -134,34 +124,43 @@ class SharedPreferencesProxy
     {
       try
       {
-        if (this.mProviderPref != null) {
-          return ((Boolean)this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_BOOLEAN, Boolean.valueOf(paramBoolean))).booleanValue();
-        }
-        if (paramString == null) {
-          break label110;
-        }
-        localObject = this.mEditor.mModifiedCaches.get(paramString);
-        if (localObject != null)
+        boolean bool;
+        if (this.mProviderPref != null)
         {
-          if (!localObject.equals(this.mEditor)) {
-            return ((Boolean)localObject).booleanValue();
-          }
+          bool = ((Boolean)this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_BOOLEAN, Boolean.valueOf(paramBoolean))).booleanValue();
+          paramBoolean = bool;
         }
         else
         {
-          boolean bool = this.mSystemPref.getBoolean(paramString, paramBoolean);
-          return bool;
+          if (paramString == null) {
+            break label127;
+          }
+          localObject = this.mEditor.mModifiedCaches.get(paramString);
+          if (localObject != null)
+          {
+            if (localObject.equals(this.mEditor)) {
+              return paramBoolean;
+            }
+            bool = ((Boolean)localObject).booleanValue();
+            paramBoolean = bool;
+          }
+          else
+          {
+            bool = this.mSystemPref.getBoolean(paramString, paramBoolean);
+            paramBoolean = bool;
+          }
         }
+        return paramBoolean;
       }
       catch (ClassCastException paramString)
       {
         paramString.printStackTrace();
-        if (SharedPreferencesProxyManager.sIsDebugVersion) {
-          throw new RuntimeException(paramString);
+        if (!SharedPreferencesProxyManager.sIsDebugVersion) {
+          return paramBoolean;
         }
+        throw new RuntimeException(paramString);
       }
-      return paramBoolean;
-      label110:
+      label127:
       Object localObject = null;
     }
   }
@@ -172,34 +171,43 @@ class SharedPreferencesProxy
     {
       try
       {
-        if (this.mProviderPref != null) {
-          return ((Float)this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_FLOAT, Float.valueOf(paramFloat))).floatValue();
-        }
-        if (paramString == null) {
-          break label110;
-        }
-        localObject = this.mEditor.mModifiedCaches.get(paramString);
-        if (localObject != null)
+        float f;
+        if (this.mProviderPref != null)
         {
-          if (!localObject.equals(this.mEditor)) {
-            return ((Float)localObject).floatValue();
-          }
+          f = ((Float)this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_FLOAT, Float.valueOf(paramFloat))).floatValue();
+          paramFloat = f;
         }
         else
         {
-          float f = this.mSystemPref.getFloat(paramString, paramFloat);
-          return f;
+          if (paramString == null) {
+            break label127;
+          }
+          localObject = this.mEditor.mModifiedCaches.get(paramString);
+          if (localObject != null)
+          {
+            if (localObject.equals(this.mEditor)) {
+              return paramFloat;
+            }
+            f = ((Float)localObject).floatValue();
+            paramFloat = f;
+          }
+          else
+          {
+            f = this.mSystemPref.getFloat(paramString, paramFloat);
+            paramFloat = f;
+          }
         }
+        return paramFloat;
       }
       catch (ClassCastException paramString)
       {
         paramString.printStackTrace();
-        if (SharedPreferencesProxyManager.sIsDebugVersion) {
-          throw new RuntimeException(paramString);
+        if (!SharedPreferencesProxyManager.sIsDebugVersion) {
+          return paramFloat;
         }
+        throw new RuntimeException(paramString);
       }
-      return paramFloat;
-      label110:
+      label127:
       Object localObject = null;
     }
   }
@@ -210,34 +218,43 @@ class SharedPreferencesProxy
     {
       try
       {
-        if (this.mProviderPref != null) {
-          return ((Integer)this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_INT, Integer.valueOf(paramInt))).intValue();
-        }
-        if (paramString == null) {
-          break label110;
-        }
-        localObject = this.mEditor.mModifiedCaches.get(paramString);
-        if (localObject != null)
+        int i;
+        if (this.mProviderPref != null)
         {
-          if (!localObject.equals(this.mEditor)) {
-            return ((Integer)localObject).intValue();
-          }
+          i = ((Integer)this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_INT, Integer.valueOf(paramInt))).intValue();
+          paramInt = i;
         }
         else
         {
-          int i = this.mSystemPref.getInt(paramString, paramInt);
-          return i;
+          if (paramString == null) {
+            break label127;
+          }
+          localObject = this.mEditor.mModifiedCaches.get(paramString);
+          if (localObject != null)
+          {
+            if (localObject.equals(this.mEditor)) {
+              return paramInt;
+            }
+            i = ((Integer)localObject).intValue();
+            paramInt = i;
+          }
+          else
+          {
+            i = this.mSystemPref.getInt(paramString, paramInt);
+            paramInt = i;
+          }
         }
+        return paramInt;
       }
       catch (ClassCastException paramString)
       {
         paramString.printStackTrace();
-        if (SharedPreferencesProxyManager.sIsDebugVersion) {
-          throw new RuntimeException(paramString);
+        if (!SharedPreferencesProxyManager.sIsDebugVersion) {
+          return paramInt;
         }
+        throw new RuntimeException(paramString);
       }
-      return paramInt;
-      label110:
+      label127:
       Object localObject = null;
     }
   }
@@ -248,34 +265,43 @@ class SharedPreferencesProxy
     {
       try
       {
-        if (this.mProviderPref != null) {
-          return ((Long)this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_LONG, Long.valueOf(paramLong))).longValue();
-        }
-        if (paramString == null) {
-          break label112;
-        }
-        localObject = this.mEditor.mModifiedCaches.get(paramString);
-        if (localObject != null)
+        long l;
+        if (this.mProviderPref != null)
         {
-          if (!localObject.equals(this.mEditor)) {
-            return ((Long)localObject).longValue();
-          }
+          l = ((Long)this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_LONG, Long.valueOf(paramLong))).longValue();
+          paramLong = l;
         }
         else
         {
-          long l = this.mSystemPref.getLong(paramString, paramLong);
-          return l;
+          if (paramString == null) {
+            break label133;
+          }
+          localObject = this.mEditor.mModifiedCaches.get(paramString);
+          if (localObject != null)
+          {
+            if (localObject.equals(this.mEditor)) {
+              return paramLong;
+            }
+            l = ((Long)localObject).longValue();
+            paramLong = l;
+          }
+          else
+          {
+            l = this.mSystemPref.getLong(paramString, paramLong);
+            paramLong = l;
+          }
         }
+        return paramLong;
       }
       catch (ClassCastException paramString)
       {
         paramString.printStackTrace();
-        if (SharedPreferencesProxyManager.sIsDebugVersion) {
-          throw new RuntimeException(paramString);
+        if (!SharedPreferencesProxyManager.sIsDebugVersion) {
+          return paramLong;
         }
+        throw new RuntimeException(paramString);
       }
-      return paramLong;
-      label112:
+      label133:
       Object localObject = null;
     }
   }
@@ -286,11 +312,15 @@ class SharedPreferencesProxy
     {
       try
       {
-        if (this.mProviderPref != null) {
-          return (String)this.mProviderPref.read(paramString1, CommonConstants.VALUE_TYPE_STRING, paramString2);
-        }
-        if (paramString1 != null)
+        if (this.mProviderPref != null)
         {
+          paramString1 = (String)this.mProviderPref.read(paramString1, CommonConstants.VALUE_TYPE_STRING, paramString2);
+        }
+        else
+        {
+          if (paramString1 == null) {
+            break label116;
+          }
           localObject = this.mEditor.mModifiedCaches.get(paramString1);
           if (localObject != null)
           {
@@ -300,17 +330,22 @@ class SharedPreferencesProxy
             return (String)localObject;
           }
           paramString1 = this.mSystemPref.getString(paramString1, paramString2);
-          return paramString1;
         }
       }
       catch (ClassCastException paramString1)
       {
         paramString1.printStackTrace();
-        if (SharedPreferencesProxyManager.sIsDebugVersion) {
-          throw new RuntimeException(paramString1);
+        if (!SharedPreferencesProxyManager.sIsDebugVersion) {
+          return paramString2;
         }
-        return paramString2;
+        paramString1 = new RuntimeException(paramString1);
       }
+      for (;;)
+      {
+        throw paramString1;
+      }
+      return paramString1;
+      label116:
       Object localObject = null;
     }
   }
@@ -321,48 +356,54 @@ class SharedPreferencesProxy
     {
       try
       {
-        if (this.mProviderPref == null) {
-          continue;
+        if (this.mProviderPref != null)
+        {
+          localObject = this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_STRSET, null);
+          paramString = localObject;
+          if (localObject != null) {
+            break label139;
+          }
         }
-        paramString = this.mProviderPref.read(paramString, CommonConstants.VALUE_TYPE_STRSET, null);
-        if (paramString != null) {
-          continue;
+        else
+        {
+          if (paramString == null) {
+            break label144;
+          }
+          localObject = this.mEditor.mModifiedCaches.get(paramString);
+          if (localObject != null)
+          {
+            if (!localObject.equals(this.mEditor))
+            {
+              paramString = (Set)localObject;
+              paramSet = paramString;
+            }
+          }
+          else {
+            paramString = this.mSystemPref.getStringSet(paramString, paramSet);
+          }
         }
-        paramString = paramSet;
       }
       catch (ClassCastException paramString)
       {
         paramString.printStackTrace();
-        if (!SharedPreferencesProxyManager.sIsDebugVersion) {
-          continue;
+        if (SharedPreferencesProxyManager.sIsDebugVersion) {}
+      }
+      for (;;)
+      {
+        if ((paramSet != null) && ((paramSet instanceof Set))) {
+          return (Set)paramSet;
         }
-        throw new RuntimeException(paramString);
         return null;
-        paramString = paramSet;
-        continue;
-        continue;
-        Object localObject = null;
-        continue;
-      }
-      if ((paramString == null) || (!(paramString instanceof Set))) {
-        continue;
-      }
-      return (Set)paramString;
-      if (paramString == null) {
-        continue;
-      }
-      localObject = this.mEditor.mModifiedCaches.get(paramString);
-      if (localObject != null)
-      {
-        paramString = paramSet;
-        if (!localObject.equals(this.mEditor)) {
-          paramString = (Set)localObject;
+        paramString = new RuntimeException(paramString);
+        for (;;)
+        {
+          throw paramString;
         }
+        label139:
+        paramSet = paramString;
       }
-      else
-      {
-        paramString = this.mSystemPref.getStringSet(paramString, paramSet);
-      }
+      label144:
+      Object localObject = null;
     }
   }
   
@@ -397,7 +438,7 @@ class SharedPreferencesProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqq.shared_file_accessor.SharedPreferencesProxy
  * JD-Core Version:    0.7.0.1
  */

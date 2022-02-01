@@ -19,36 +19,61 @@ class FileSystem$1
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      paramFile.getParentFile().mkdirs();
+      label7:
+      break label7;
     }
+    paramFile.getParentFile().mkdirs();
     return Okio.appendingSink(paramFile);
   }
   
   public void delete(File paramFile)
   {
-    if ((!paramFile.delete()) && (paramFile.exists())) {
-      throw new IOException("failed to delete " + paramFile);
+    if (!paramFile.delete())
+    {
+      if (!paramFile.exists()) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed to delete ");
+      localStringBuilder.append(paramFile);
+      throw new IOException(localStringBuilder.toString());
     }
   }
   
   public void deleteContents(File paramFile)
   {
-    File[] arrayOfFile = paramFile.listFiles();
-    if (arrayOfFile == null) {
-      throw new IOException("not a readable directory: " + paramFile);
-    }
-    int j = arrayOfFile.length;
-    int i = 0;
-    while (i < j)
+    Object localObject = paramFile.listFiles();
+    if (localObject != null)
     {
-      paramFile = arrayOfFile[i];
-      if (paramFile.isDirectory()) {
-        deleteContents(paramFile);
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
+      {
+        paramFile = localObject[i];
+        if (paramFile.isDirectory()) {
+          deleteContents(paramFile);
+        }
+        if (paramFile.delete())
+        {
+          i += 1;
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("failed to delete ");
+          ((StringBuilder)localObject).append(paramFile);
+          throw new IOException(((StringBuilder)localObject).toString());
+        }
       }
-      if (!paramFile.delete()) {
-        throw new IOException("failed to delete " + paramFile);
-      }
-      i += 1;
+      return;
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("not a readable directory: ");
+    ((StringBuilder)localObject).append(paramFile);
+    paramFile = new IOException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramFile;
     }
   }
   
@@ -60,9 +85,15 @@ class FileSystem$1
   public void rename(File paramFile1, File paramFile2)
   {
     delete(paramFile2);
-    if (!paramFile1.renameTo(paramFile2)) {
-      throw new IOException("failed to rename " + paramFile1 + " to " + paramFile2);
+    if (paramFile1.renameTo(paramFile2)) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("failed to rename ");
+    localStringBuilder.append(paramFile1);
+    localStringBuilder.append(" to ");
+    localStringBuilder.append(paramFile2);
+    throw new IOException(localStringBuilder.toString());
   }
   
   public Sink sink(File paramFile)
@@ -74,8 +105,10 @@ class FileSystem$1
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      paramFile.getParentFile().mkdirs();
+      label7:
+      break label7;
     }
+    paramFile.getParentFile().mkdirs();
     return Okio.sink(paramFile);
   }
   
@@ -91,7 +124,7 @@ class FileSystem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.io.FileSystem.1
  * JD-Core Version:    0.7.0.1
  */

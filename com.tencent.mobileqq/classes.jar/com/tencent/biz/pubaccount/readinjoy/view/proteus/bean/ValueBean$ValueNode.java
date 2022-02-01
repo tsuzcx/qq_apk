@@ -30,21 +30,30 @@ class ValueBean$ValueNode
   
   private String getDynamicValue(String paramString)
   {
-    return "${" + paramString + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("${");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
   
   private boolean isDynamicInString(String paramString1, String paramString2)
   {
-    boolean bool = false;
-    if (paramString2.contains(getDynamicValue(paramString1))) {
-      bool = true;
-    }
-    return bool;
+    return paramString2.contains(getDynamicValue(paramString1));
   }
   
   private boolean isDynamicValue(String paramString1, String paramString2)
   {
-    return (paramString1.equals(paramString2)) || (("$" + paramString1).equals(paramString2));
+    if (!paramString1.equals(paramString2))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("$");
+      localStringBuilder.append(paramString1);
+      if (!localStringBuilder.toString().equals(paramString2)) {
+        return false;
+      }
+    }
+    return true;
   }
   
   private String replace$Value(String paramString1, String paramString2, Object paramObject)
@@ -54,19 +63,18 @@ class ValueBean$ValueNode
   
   private boolean setTrueValue(Object paramObject1, Object paramObject2, String paramString, Object paramObject3)
   {
+    boolean bool3 = paramObject1 instanceof JSONArray;
+    boolean bool1 = false;
+    boolean bool2 = false;
+    int i = 0;
     Object localObject1;
     Object localObject2;
-    int i;
-    boolean bool2;
     Object localObject3;
-    if ((paramObject1 instanceof JSONArray))
+    if (bool3)
     {
       localObject1 = (JSONArray)paramObject1;
       localObject2 = (JSONArray)paramObject2;
-      i = 0;
-      bool1 = false;
-      bool2 = bool1;
-      if (i < ((JSONArray)localObject1).length())
+      for (bool2 = false; i < ((JSONArray)localObject1).length(); bool2 = bool1)
       {
         try
         {
@@ -77,100 +85,83 @@ class ValueBean$ValueNode
             if (isDynamicValue(paramString, (String)localObject3))
             {
               ((JSONArray)localObject2).put(i, paramObject3);
-              bool2 = true;
+              break label484;
             }
-            else if (isDynamicInString(paramString, paramObject1))
+            if (isDynamicInString(paramString, paramObject1))
             {
               ((JSONArray)localObject2).put(i, replace$Value(paramObject1, paramString, paramObject3));
-              bool2 = true;
+              break label484;
             }
-            else
+            bool1 = bool2;
+            if (((JSONArray)localObject2).length() <= i)
             {
-              bool2 = bool1;
-              if (((JSONArray)localObject2).length() <= i)
-              {
-                ((JSONArray)localObject2).put(i, localObject3);
-                bool2 = bool1;
-              }
+              ((JSONArray)localObject2).put(i, localObject3);
+              bool1 = bool2;
             }
+          }
+          else
+          {
+            paramObject1 = null;
+            if (i < ((JSONArray)localObject2).length()) {
+              paramObject1 = ((JSONArray)localObject2).get(i);
+            }
+            paramObject2 = paramObject1;
+            if (paramObject1 == null) {
+              paramObject2 = createJsonType(localObject3);
+            }
+            ((JSONArray)localObject2).put(i, paramObject2);
+            bool1 = setTrueValue(localObject3, paramObject2, paramString, paramObject3);
+            bool1 = bool2 | bool1;
           }
         }
         catch (JSONException paramObject1)
         {
           LogUtil.QLog.e("ValueBean", 2, "setTrueValue: ", paramObject1);
-          break label494;
+          bool1 = bool2;
         }
-        paramObject1 = null;
-        if (i < ((JSONArray)localObject2).length()) {
-          paramObject1 = ((JSONArray)localObject2).get(i);
-        }
-        paramObject2 = paramObject1;
-        if (paramObject1 == null) {
-          paramObject2 = createJsonType(localObject3);
-        }
-        ((JSONArray)localObject2).put(i, paramObject2);
-        bool2 = setTrueValue(localObject3, paramObject2, paramString, paramObject3);
-        bool2 = bool1 | bool2;
-        break label490;
+        i += 1;
       }
+      return bool2;
     }
-    else
+    else if ((paramObject1 instanceof JSONObject))
     {
-      if (!(paramObject1 instanceof JSONObject)) {
-        break label488;
-      }
       localObject1 = (JSONObject)paramObject1;
       localObject2 = (JSONObject)paramObject2;
       localObject3 = ((JSONObject)localObject1).keys();
     }
-    label488:
-    label490:
-    label494:
-    label507:
-    for (boolean bool1 = false;; bool1 = bool2) {
+    for (;;)
+    {
+      bool2 = bool1;
       if (((Iterator)localObject3).hasNext())
       {
         String str = (String)((Iterator)localObject3).next();
-        Object localObject4;
         try
         {
-          localObject4 = ((JSONObject)localObject1).get(str);
+          Object localObject4 = ((JSONObject)localObject1).get(str);
           if ((localObject4 instanceof String))
           {
             paramObject1 = (String)localObject4;
             if (isDynamicValue(paramString, paramObject1))
             {
               ((JSONObject)localObject2).put(str, paramObject3);
-              bool2 = true;
+              break label490;
             }
-            else if (isDynamicInString(paramString, paramObject1))
+            if (isDynamicInString(paramString, paramObject1))
             {
               ((JSONObject)localObject2).put(str, replace$Value(paramObject1, paramString, paramObject3));
-              bool2 = true;
+              break label490;
             }
-            else
-            {
-              bool2 = bool1;
-              if (!((JSONObject)localObject2).has(str))
-              {
-                ((JSONObject)localObject2).put(str, localObject4);
-                bool2 = bool1;
-              }
+            if (((JSONObject)localObject2).has(str)) {
+              continue;
             }
+            ((JSONObject)localObject2).put(str, localObject4);
+            continue;
           }
-        }
-        catch (JSONException paramObject1)
-        {
-          LogUtil.QLog.e("ValueBean", 2, "setTrueValue: ", paramObject1);
-          break label507;
-        }
-        if ((localObject4 instanceof Integer))
-        {
-          ((JSONObject)localObject2).put(str, localObject4);
-          bool2 = bool1;
-        }
-        else
-        {
+          if ((localObject4 instanceof Integer))
+          {
+            ((JSONObject)localObject2).put(str, localObject4);
+            continue;
+          }
           paramObject2 = ((JSONObject)localObject2).opt(str);
           paramObject1 = paramObject2;
           if (paramObject2 == null)
@@ -179,57 +170,62 @@ class ValueBean$ValueNode
             ((JSONObject)localObject2).put(str, paramObject1);
           }
           bool2 = setTrueValue(localObject4, paramObject1, paramString, paramObject3);
-          bool2 = bool1 | bool2;
+          bool1 |= bool2;
+        }
+        catch (JSONException paramObject1)
+        {
+          LogUtil.QLog.e("ValueBean", 2, "setTrueValue: ", paramObject1);
         }
       }
       else
       {
-        bool2 = bool1;
         return bool2;
-        return false;
-        bool1 = bool2;
-        i += 1;
+        label484:
+        bool1 = true;
         break;
+        label490:
+        bool1 = true;
       }
     }
   }
   
   public void setTrueValue(Map<String, Object> paramMap, String paramString1, String paramString2, Object paramObject)
   {
+    Object localObject1 = this.styleDynamicValue;
     boolean bool;
-    if ((this.styleDynamicValue instanceof String))
+    if ((localObject1 instanceof String))
     {
-      if (!isDynamicValue(paramString2, (String)this.styleDynamicValue)) {
-        break label108;
+      if (isDynamicValue(paramString2, (String)localObject1))
+      {
+        bool = true;
       }
-      bool = true;
+      else
+      {
+        bool = false;
+        paramObject = null;
+      }
     }
-    for (;;)
+    else
     {
-      if ((bool) && (paramMap != null)) {
-        paramMap.put(paramString1, paramObject);
-      }
-      if (AssertUtil.isDebugVersion()) {
-        AssertUtil.assertInValidAttributesBinding(paramString1);
-      }
-      return;
       Object localObject2 = paramMap.get(paramString1);
-      Object localObject1 = localObject2;
+      localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = createJsonType(this.styleDynamicValue);
       }
       bool = setTrueValue(this.styleDynamicValue, localObject1, paramString2, paramObject);
       paramObject = localObject1;
-      continue;
-      label108:
-      paramObject = null;
-      bool = false;
+    }
+    if ((bool) && (paramMap != null)) {
+      paramMap.put(paramString1, paramObject);
+    }
+    if (AssertUtil.isDebugVersion()) {
+      AssertUtil.assertInValidAttributesBinding(paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.bean.ValueBean.ValueNode
  * JD-Core Version:    0.7.0.1
  */

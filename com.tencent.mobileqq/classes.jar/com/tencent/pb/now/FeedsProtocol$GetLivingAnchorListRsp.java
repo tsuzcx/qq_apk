@@ -20,13 +20,14 @@ public final class FeedsProtocol$GetLivingAnchorListRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "living_list", "result", "errmsg", "total" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, GetLivingAnchorListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32 }, new String[] { "living_list", "result", "errmsg", "total" }, new Object[] { null, localInteger, localByteStringMicro, localInteger }, GetLivingAnchorListRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.FeedsProtocol.GetLivingAnchorListRsp
  * JD-Core Version:    0.7.0.1
  */

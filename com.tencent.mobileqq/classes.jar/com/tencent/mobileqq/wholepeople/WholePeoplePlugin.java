@@ -39,188 +39,188 @@ public class WholePeoplePlugin
   
   private void a(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
-    Object localObject = this.mRuntime.a();
-    WebViewFragment localWebViewFragment = (WebViewFragment)this.mRuntime.a();
-    if (localWebViewFragment != null)
+    Object localObject1 = this.mRuntime.a();
+    Object localObject2 = (WebViewFragment)this.mRuntime.a();
+    if (localObject2 != null)
     {
-      ImageView localImageView = localWebViewFragment.mSwiftTitleUI.a;
+      ImageView localImageView = ((WebViewFragment)localObject2).getSwiftTitleUI().a;
       if (this.jdField_a_of_type_Int == 2147483647) {
         this.jdField_a_of_type_Int = localImageView.getPaddingRight();
       }
-      if ((!paramBoolean1) || (TextUtils.isEmpty(paramString)))
+      if ((paramBoolean1) && (!TextUtils.isEmpty(paramString)))
       {
-        localImageView.setVisibility(8);
-        localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.jdField_a_of_type_Int, localImageView.getPaddingBottom());
-        return;
-      }
-      localImageView.setImageResource(2130844971);
-      int i;
-      int k;
-      if (localWebViewFragment.mSwiftTitleUI.b != null)
-      {
-        i = localWebViewFragment.mSwiftTitleUI.b.getCurrentTextColor();
-        localImageView.setColorFilter(new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_IN));
-        if (QLog.isColorLevel()) {
-          QLog.i("WholePeoplePlugin", 2, "titleColor:" + i);
+        localImageView.setImageResource(2130844847);
+        if (((WebViewFragment)localObject2).getSwiftTitleUI().b != null)
+        {
+          i = ((WebViewFragment)localObject2).getSwiftTitleUI().b.getCurrentTextColor();
+          localImageView.setColorFilter(new PorterDuffColorFilter(i, PorterDuff.Mode.SRC_IN));
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("titleColor:");
+            ((StringBuilder)localObject2).append(i);
+            QLog.i("WholePeoplePlugin", 2, ((StringBuilder)localObject2).toString());
+          }
         }
+        else
+        {
+          localImageView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
+        }
+        int i = 0;
         localImageView.setVisibility(0);
-        if (!paramBoolean2) {
-          break label391;
+        if (paramBoolean2)
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch == null) {
+            this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch((Context)localObject1, localImageView).b(53).a();
+          }
+          localObject1 = CampusCircleIpcClient.a().b();
+          if (localObject1 != null)
+          {
+            int j = ((Bundle)localObject1).getInt("redPointCount", 0);
+            int k = ((Bundle)localObject1).getInt("redNumCount", 0);
+            if (k > 0) {
+              if (k > 99) {
+                i = 12;
+              } else {
+                i = 10;
+              }
+            }
+            localObject1 = WholePeopleConstant.a(k, j);
+            this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject1);
+            localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.jdField_a_of_type_Int + AIOUtils.b(i, this.jdField_a_of_type_ComTencentSmttSdkWebView.getResources()), localImageView.getPaddingBottom());
+          }
+          else
+          {
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+            if (localObject1 != null) {
+              ((RedTouch)localObject1).d();
+            }
+          }
         }
-        if (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch == null) {
-          this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch = new RedTouch((Context)localObject, localImageView).b(53).a();
+        else
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+          if (localObject1 != null) {
+            ((RedTouch)localObject1).d();
+          }
         }
-        localObject = CampusCircleIpcClient.a().b();
-        if (localObject == null) {
-          break label374;
-        }
-        int j = ((Bundle)localObject).getInt("redPointCount", 0);
-        k = ((Bundle)localObject).getInt("redNumCount", 0);
-        if (k > 0) {
-          break label353;
-        }
-        i = 0;
-        label258:
-        localObject = WholePeopleConstant.a(k, j);
-        this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.a((BusinessInfoCheckUpdate.AppInfo)localObject);
-        j = localImageView.getPaddingLeft();
-        k = localImageView.getPaddingTop();
-        int m = this.jdField_a_of_type_Int;
-        localImageView.setPadding(j, k, AIOUtils.a(i, this.jdField_a_of_type_ComTencentSmttSdkWebView.getResources()) + m, localImageView.getPaddingBottom());
-      }
-      label391:
-      for (;;)
-      {
         localImageView.setOnClickListener(new WholePeoplePlugin.1(this, paramString));
         return;
-        localImageView.setColorFilter(this.jdField_a_of_type_AndroidGraphicsColorFilter);
-        break;
-        label353:
-        if (k > 99)
-        {
-          i = 12;
-          break label258;
+      }
+      localImageView.setVisibility(8);
+      localImageView.setPadding(localImageView.getPaddingLeft(), localImageView.getPaddingTop(), this.jdField_a_of_type_Int, localImageView.getPaddingBottom());
+      return;
+    }
+    paramString = new StringBuilder();
+    paramString.append("setRightButton, not support ");
+    paramString.append(localObject1);
+    QLog.e("WholePeoplePlugin", 1, paramString.toString());
+  }
+  
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    bool2 = false;
+    if ((paramString2 != null) && (paramString2.equalsIgnoreCase("allpeoplevote")))
+    {
+      if (paramString3 == null) {
+        return false;
+      }
+      if (this.mRuntime != null)
+      {
+        if (this.mRuntime.a() == null) {
+          return false;
         }
-        i = 10;
-        break label258;
-        label374:
-        if (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.d();
-          continue;
-          if (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch != null) {
-            this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.d();
+        if ((paramString3.equalsIgnoreCase("setRightButton")) && (paramVarArgs.length == 1)) {
+          try
+          {
+            paramJsBridgeListener = this.mRuntime.a();
+            if (paramJsBridgeListener != null)
+            {
+              if (paramJsBridgeListener.isFinishing()) {
+                return true;
+              }
+              paramString2 = new JSONObject(paramVarArgs[0]);
+              paramJsBridgeListener = paramString2.optString("callback");
+            }
+          }
+          catch (JSONException paramJsBridgeListener)
+          {
+            label128:
+            label131:
+            label202:
+            if (!QLog.isColorLevel()) {}
           }
         }
       }
     }
-    QLog.e("WholePeoplePlugin", 1, "setRightButton, not support " + localObject);
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    bool2 = false;
-    boolean bool3 = true;
-    if ((paramString2 == null) || (!paramString2.equalsIgnoreCase("allpeoplevote")) || (paramString3 == null)) {
-      bool1 = false;
-    }
-    label230:
-    do
+    try
     {
-      do
+      paramString1 = paramString2.optString("show");
+      paramString2 = paramString2.optString("showRedNum");
+      i = Integer.parseInt(paramString1);
+    }
+    catch (Exception paramString1)
+    {
+      break label128;
+    }
+    try
+    {
+      j = Integer.parseInt(paramString2);
+    }
+    catch (Exception paramString1)
+    {
+      break label131;
+      if (i != 1) {
+        break label319;
+      }
+      bool1 = true;
+      break label322;
+      bool1 = false;
+      if (j != 1) {
+        break label202;
+      }
+      bool2 = true;
+      break label202;
+    }
+    i = 0;
+    j = 0;
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("setRightButton show=");
+      paramString1.append(i);
+      paramString1.append(" showRedNum=");
+      paramString1.append(j);
+      paramString1.append(" callback=");
+      paramString1.append(paramJsBridgeListener);
+      QLog.i("WholePeoplePlugin", 2, paramString1.toString());
+      break label307;
+      a(bool1, bool2, paramJsBridgeListener);
+      return true;
+      return true;
+      QLog.d("WholePeoplePlugin", 2, "setRightButton error", paramJsBridgeListener);
+      return true;
+      if (paramString3.equalsIgnoreCase("readRedPoint"))
       {
-        do
+        paramJsBridgeListener = this.mRuntime.a();
+        if (paramJsBridgeListener != null)
         {
-          do
-          {
-            do
-            {
-              return bool1;
-              if ((this.mRuntime == null) || (this.mRuntime.a() == null)) {
-                return false;
-              }
-              if ((paramString3.equalsIgnoreCase("setRightButton")) && (paramVarArgs.length == 1))
-              {
-                for (;;)
-                {
-                  try
-                  {
-                    paramJsBridgeListener = this.mRuntime.a();
-                    bool1 = bool3;
-                    if (paramJsBridgeListener == null) {
-                      break;
-                    }
-                    bool1 = bool3;
-                    if (paramJsBridgeListener.isFinishing()) {
-                      break;
-                    }
-                    paramString2 = new JSONObject(paramVarArgs[0]);
-                    paramJsBridgeListener = paramString2.optString("callback");
-                  }
-                  catch (JSONException paramJsBridgeListener)
-                  {
-                    bool1 = bool3;
-                  }
-                  try
-                  {
-                    paramString1 = paramString2.optString("show");
-                    paramString2 = paramString2.optString("showRedNum");
-                    i = Integer.parseInt(paramString1);
-                  }
-                  catch (Exception paramString1)
-                  {
-                    i = 0;
-                  }
-                  try
-                  {
-                    j = Integer.parseInt(paramString2);
-                    if (!QLog.isColorLevel()) {
-                      break label328;
-                    }
-                    QLog.i("WholePeoplePlugin", 2, "setRightButton show=" + i + " showRedNum=" + j + " callback=" + paramJsBridgeListener);
-                  }
-                  catch (Exception paramString1)
-                  {
-                    do
-                    {
-                      break label230;
-                    } while (i != 1);
-                    bool1 = true;
-                    if (j != 1) {
-                      continue;
-                    }
-                    bool2 = true;
-                    continue;
-                  }
-                  a(bool1, bool2, paramJsBridgeListener);
-                  return true;
-                  if (!QLog.isColorLevel()) {
-                    break;
-                  }
-                  QLog.d("WholePeoplePlugin", 2, "setRightButton error", paramJsBridgeListener);
-                  return true;
-                  j = 0;
-                }
-                bool1 = false;
-                break label337;
-              }
-              bool1 = bool3;
-            } while (!paramString3.equalsIgnoreCase("readRedPoint"));
-            paramJsBridgeListener = this.mRuntime.a();
-            bool1 = bool3;
-          } while (paramJsBridgeListener == null);
-          bool1 = bool3;
-        } while (paramJsBridgeListener.isFinishing());
-        CampusCircleIpcClient.a().b();
-        bool1 = bool3;
-      } while (this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch == null);
-      bool1 = bool3;
-    } while (!this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.c());
-    this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.d();
-    return true;
+          if (paramJsBridgeListener.isFinishing()) {
+            return true;
+          }
+          CampusCircleIpcClient.a().b();
+          paramJsBridgeListener = this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch;
+          if ((paramJsBridgeListener != null) && (paramJsBridgeListener.c())) {
+            this.jdField_a_of_type_ComTencentMobileqqTianshuUiRedTouch.d();
+          }
+        }
+      }
+      return true;
+      return false;
+    }
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
@@ -228,7 +228,7 @@ public class WholePeoplePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wholepeople.WholePeoplePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -11,8 +11,8 @@ class PressToSpeakPanel$12
   
   public void run()
   {
-    PressToSpeakPanel.a(this.this$0).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
-    ListenPanel localListenPanel = (ListenPanel)PressToSpeakPanel.a(this.this$0).findViewById(2131370497);
+    ((AudioPanelAioHelper)PressToSpeakPanel.a(this.this$0).a(128)).b(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
+    ListenPanel localListenPanel = (ListenPanel)PressToSpeakPanel.a(this.this$0).findViewById(2131370157);
     localListenPanel.setVisibility(0);
     localListenPanel.setAudioPath(this.jdField_a_of_type_JavaLangString, PressToSpeakPanel.a(this.this$0), this.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam);
     localListenPanel.setJumpSource(ListenPanel.a);
@@ -22,7 +22,7 @@ class PressToSpeakPanel$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.PressToSpeakPanel.12
  * JD-Core Version:    0.7.0.1
  */

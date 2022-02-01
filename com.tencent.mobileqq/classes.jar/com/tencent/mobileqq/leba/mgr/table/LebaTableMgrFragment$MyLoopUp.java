@@ -15,10 +15,17 @@ public class LebaTableMgrFragment$MyLoopUp
   
   public int getSpanSize(int paramInt)
   {
-    if (this.a == null) {
+    LebaTableMgrAdpter localLebaTableMgrAdpter = this.a;
+    if (localLebaTableMgrAdpter == null)
+    {
       QLog.i("LebaTableMgrFragment", 1, "MyLoopUp getSpanSize mAdapter == null");
+      return 1;
     }
-    while ((this.a.getItemViewType(paramInt) != 1) && (this.a.getItemViewType(paramInt) != 3)) {
+    if (localLebaTableMgrAdpter.getItemViewType(paramInt) != 1)
+    {
+      if (this.a.getItemViewType(paramInt) == 3) {
+        return 3;
+      }
       return 1;
     }
     return 3;
@@ -26,7 +33,7 @@ public class LebaTableMgrFragment$MyLoopUp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.mgr.table.LebaTableMgrFragment.MyLoopUp
  * JD-Core Version:    0.7.0.1
  */

@@ -34,14 +34,15 @@ public final class ExtraImageInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.isdynamic, 0);
-    if (this.images != null) {
-      paramJceOutputStream.write(this.images, 1);
+    ArrayList localArrayList = this.images;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.ExtraImageInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -23,8 +23,12 @@ class ForwardStructingMsgOption$1
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     super.onLoadFailed(paramView, paramURLDrawable, paramThrowable);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadFailed ,cause = " + paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("onLoadFailed ,cause = ");
+      paramView.append(paramThrowable);
+      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, paramView.toString());
     }
   }
   
@@ -38,24 +42,25 @@ class ForwardStructingMsgOption$1
   
   public void onLoadSuccessed(View paramView, URLDrawable paramURLDrawable)
   {
-    if (paramView == null) {}
-    do
-    {
+    if (paramView == null) {
       return;
-      paramView.setBackgroundDrawable(null);
-      if ((paramView instanceof ImageView))
-      {
-        ((ImageView)paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
-        ((ImageView)paramView).setImageDrawable(paramURLDrawable);
-        paramView.requestLayout();
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadSuccessed");
+    }
+    paramView.setBackgroundDrawable(null);
+    if ((paramView instanceof ImageView))
+    {
+      ImageView localImageView = (ImageView)paramView;
+      localImageView.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      localImageView.setImageDrawable(paramURLDrawable);
+      paramView.requestLayout();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ForwardOption.ForwardStructingMsgOption", 2, "onLoadSuccessed");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardStructingMsgOption.1
  * JD-Core Version:    0.7.0.1
  */

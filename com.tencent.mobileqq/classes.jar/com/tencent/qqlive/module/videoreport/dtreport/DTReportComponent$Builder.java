@@ -8,6 +8,8 @@ import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTParamProvider;
 import com.tencent.qqlive.module.videoreport.dtreport.api.IDTReport;
 import com.tencent.qqlive.module.videoreport.dtreport.constants.DTConfigConstants.ElementFormatMode;
+import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
+import com.tencent.qqlive.module.videoreport.utils.IDetectionInterceptor;
 
 public class DTReportComponent$Builder
 {
@@ -20,11 +22,13 @@ public class DTReportComponent$Builder
   
   DTReportComponent$Builder(IDTParamProvider paramIDTParamProvider)
   {
-    if (paramIDTParamProvider == null) {
-      throw new IllegalArgumentException("dtParamProvider不可为空");
+    if (paramIDTParamProvider != null)
+    {
+      this.mParamProvider = paramIDTParamProvider;
+      this.mConfigurationBuilder = new Configuration.Builder();
+      return;
     }
-    this.mParamProvider = paramIDTParamProvider;
-    this.mConfigurationBuilder = new Configuration.Builder();
+    throw new IllegalArgumentException("dtParamProvider不可为空");
   }
   
   public Builder appTimeReportHeartBeatInterval(int paramInt)
@@ -98,6 +102,12 @@ public class DTReportComponent$Builder
     return this;
   }
   
+  public Builder enableToast(boolean paramBoolean)
+  {
+    this.mConfigurationBuilder.enableToast(paramBoolean);
+    return this;
+  }
+  
   public Builder independentPageOut(boolean paramBoolean)
   {
     this.mConfigurationBuilder.independentPageOut(paramBoolean);
@@ -110,15 +120,33 @@ public class DTReportComponent$Builder
     return this;
   }
   
+  public Builder setDetectionInterceptor(IDetectionInterceptor paramIDetectionInterceptor)
+  {
+    VideoReportInner.getInstance().setDetectionInterceptor(paramIDetectionInterceptor);
+    return this;
+  }
+  
   public Builder setLogger(ILogger paramILogger)
   {
     this.mConfigurationBuilder.logger(paramILogger);
     return this;
   }
+  
+  public Builder setVideoPageSwitch(int paramInt)
+  {
+    this.mConfigurationBuilder.setVideoPageSwitch(paramInt);
+    return this;
+  }
+  
+  public Builder videoHeartBeatInterval(int paramInt)
+  {
+    this.mConfigurationBuilder.videoHeartBeatInterval(paramInt);
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.DTReportComponent.Builder
  * JD-Core Version:    0.7.0.1
  */

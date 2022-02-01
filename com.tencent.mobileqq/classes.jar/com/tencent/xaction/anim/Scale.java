@@ -7,7 +7,7 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Scale;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "startX", "", "getStartX", "()F", "setStartX", "(F)V", "startY", "getStartY", "setStartY", "sx", "getSx", "setSx", "sy", "getSy", "setSy", "doFrameUpdate", "", "animTime", "end", "preStart", "view", "Landroid/view/View;", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/anim/Scale;", "Lcom/tencent/xaction/api/base/BaseAnim;", "()V", "startX", "", "getStartX", "()F", "setStartX", "(F)V", "startY", "getStartY", "setStartY", "sx", "getSx", "setSx", "sy", "getSy", "setSy", "doFrameUpdate", "", "animTime", "end", "preStart", "view", "Landroid/view/View;", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class Scale
   extends BaseAnim
@@ -20,12 +20,17 @@ public final class Scale
   public void doFrameUpdate(float paramFloat)
   {
     View localView = getView();
-    if (localView != null) {
-      localView.setScaleX(this.startX + (this.sx - this.startX) * paramFloat);
+    float f;
+    if (localView != null)
+    {
+      f = this.startX;
+      localView.setScaleX(f + (this.sx - f) * paramFloat);
     }
     localView = getView();
-    if (localView != null) {
-      localView.setScaleY(this.startY + (this.sy - this.startY) * paramFloat);
+    if (localView != null)
+    {
+      f = this.startY;
+      localView.setScaleY(f + (this.sy - f) * paramFloat);
     }
   }
   
@@ -81,7 +86,7 @@ public final class Scale
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.anim.Scale
  * JD-Core Version:    0.7.0.1
  */

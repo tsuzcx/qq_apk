@@ -16,21 +16,19 @@ class KeyEventChannel$1
     if (KeyEventChannel.access$000(this.this$0) == null) {
       return;
     }
-    if (paramObject == null) {
-      try
-      {
-        KeyEventChannel.access$000(this.this$0).onKeyEventNotHandled(this.val$eventId);
-        return;
-      }
-      catch (JSONException paramObject)
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("Unable to unpack JSON message: ");
-        localStringBuilder.append(paramObject);
-        Log.e("KeyEventChannel", localStringBuilder.toString());
-        KeyEventChannel.access$000(this.this$0).onKeyEventNotHandled(this.val$eventId);
-        return;
-      }
+    if (paramObject == null) {}
+    try
+    {
+      KeyEventChannel.access$000(this.this$0).onKeyEventNotHandled(this.val$eventId);
+      return;
+    }
+    catch (JSONException paramObject)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to unpack JSON message: ");
+      localStringBuilder.append(paramObject);
+      Log.e("KeyEventChannel", localStringBuilder.toString());
+      KeyEventChannel.access$000(this.this$0).onKeyEventNotHandled(this.val$eventId);
     }
     if (((JSONObject)paramObject).getBoolean("handled"))
     {
@@ -38,11 +36,12 @@ class KeyEventChannel$1
       return;
     }
     KeyEventChannel.access$000(this.this$0).onKeyEventNotHandled(this.val$eventId);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.KeyEventChannel.1
  * JD-Core Version:    0.7.0.1
  */

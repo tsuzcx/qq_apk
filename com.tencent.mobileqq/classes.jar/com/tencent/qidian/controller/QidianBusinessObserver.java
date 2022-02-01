@@ -1,24 +1,13 @@
 package com.tencent.qidian.controller;
 
-import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.qidian.data.PubAccountNavigationMenu;
 import java.util.HashMap;
 
 public class QidianBusinessObserver
-  implements BusinessObserver
+  extends QidianBusinessObserverBase
 {
-  private static final String a;
-  public int a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = QidianBusinessObserver.class.getName();
-  }
-  
-  public QidianBusinessObserver()
-  {
-    this.jdField_a_of_type_Int = hashCode();
-  }
+  private static final String a = "com.tencent.qidian.controller.QidianBusinessObserver";
+  public int a = hashCode();
   
   protected void a(boolean paramBoolean) {}
   
@@ -50,52 +39,61 @@ public class QidianBusinessObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1018)
     {
-    default: 
-      return;
-    case 1001: 
-      d(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1002: 
-      f(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1003: 
-      g(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1004: 
-      i(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1005: 
-      c(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1006: 
-      if (paramObject != null)
+      if (paramInt != 1019)
       {
-        a(paramBoolean, (QidianHandler.NavigationMenuConfig)paramObject);
-        return;
+        if (paramInt != 2001)
+        {
+          if (paramInt != 3001)
+          {
+            switch (paramInt)
+            {
+            default: 
+              return;
+            case 1010: 
+              h(paramBoolean, (HashMap)paramObject);
+              return;
+            case 1009: 
+              b(paramBoolean, (HashMap)paramObject);
+              return;
+            case 1008: 
+              e(paramBoolean, (HashMap)paramObject);
+              return;
+            case 1007: 
+              j(paramBoolean, (HashMap)paramObject);
+              return;
+            case 1006: 
+              if (paramObject != null)
+              {
+                a(paramBoolean, (QidianHandler.NavigationMenuConfig)paramObject);
+                return;
+              }
+              a(paramBoolean, null);
+              return;
+            case 1005: 
+              c(paramBoolean, (HashMap)paramObject);
+              return;
+            case 1004: 
+              i(paramBoolean, (HashMap)paramObject);
+              return;
+            case 1003: 
+              g(paramBoolean, (HashMap)paramObject);
+              return;
+            case 1002: 
+              f(paramBoolean, (HashMap)paramObject);
+              return;
+            }
+            d(paramBoolean, (HashMap)paramObject);
+            return;
+          }
+          a(paramBoolean, (PubAccountNavigationMenu)paramObject);
+          return;
+        }
+        a(paramBoolean);
       }
-      a(paramBoolean, null);
-      return;
-    case 2001: 
-      a(paramBoolean);
-      return;
-    case 3001: 
-      a(paramBoolean, (PubAccountNavigationMenu)paramObject);
-      return;
-    case 1007: 
-      j(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1008: 
-      e(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1009: 
-      b(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1010: 
-      h(paramBoolean, (HashMap)paramObject);
-      return;
-    case 1018: 
+    }
+    else {
       a(paramBoolean, (HashMap)paramObject);
     }
     k(paramBoolean, (HashMap)paramObject);
@@ -103,7 +101,7 @@ public class QidianBusinessObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

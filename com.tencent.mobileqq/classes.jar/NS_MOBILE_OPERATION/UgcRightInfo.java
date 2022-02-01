@@ -34,14 +34,15 @@ public final class UgcRightInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ugc_right, 0);
-    if (this.allow_uins != null) {
-      paramJceOutputStream.write(this.allow_uins, 1);
+    ArrayList localArrayList = this.allow_uins;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.UgcRightInfo
  * JD-Core Version:    0.7.0.1
  */

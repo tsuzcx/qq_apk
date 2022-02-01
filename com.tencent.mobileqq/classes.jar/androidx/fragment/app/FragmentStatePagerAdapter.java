@@ -50,33 +50,35 @@ public abstract class FragmentStatePagerAdapter
       this.mSavedState.add(null);
     }
     ArrayList localArrayList = this.mSavedState;
-    if (paramObject.isAdded()) {}
-    for (paramViewGroup = this.mFragmentManager.saveFragmentInstanceState(paramObject);; paramViewGroup = null)
-    {
-      localArrayList.set(paramInt, paramViewGroup);
-      this.mFragments.set(paramInt, null);
-      this.mCurTransaction.remove(paramObject);
-      if (paramObject.equals(this.mCurrentPrimaryItem)) {
-        this.mCurrentPrimaryItem = null;
-      }
-      return;
+    if (paramObject.isAdded()) {
+      paramViewGroup = this.mFragmentManager.saveFragmentInstanceState(paramObject);
+    } else {
+      paramViewGroup = null;
+    }
+    localArrayList.set(paramInt, paramViewGroup);
+    this.mFragments.set(paramInt, null);
+    this.mCurTransaction.remove(paramObject);
+    if (paramObject.equals(this.mCurrentPrimaryItem)) {
+      this.mCurrentPrimaryItem = null;
     }
   }
   
   public void finishUpdate(@NonNull ViewGroup paramViewGroup)
   {
-    if ((this.mCurTransaction == null) || (!this.mExecutingFinishUpdate)) {}
-    try
+    paramViewGroup = this.mCurTransaction;
+    if (paramViewGroup != null)
     {
-      this.mExecutingFinishUpdate = true;
-      this.mCurTransaction.commitNowAllowingStateLoss();
-      this.mExecutingFinishUpdate = false;
-      this.mCurTransaction = null;
-      return;
-    }
-    finally
-    {
-      this.mExecutingFinishUpdate = false;
+      if (!this.mExecutingFinishUpdate) {}
+      try
+      {
+        this.mExecutingFinishUpdate = true;
+        paramViewGroup.commitNowAllowingStateLoss();
+        this.mExecutingFinishUpdate = false;
+      }
+      finally
+      {
+        this.mExecutingFinishUpdate = false;
+      }
     }
   }
   
@@ -150,18 +152,21 @@ public abstract class FragmentStatePagerAdapter
         if (str.startsWith("f"))
         {
           i = Integer.parseInt(str.substring(1));
-          Fragment localFragment = this.mFragmentManager.getFragment(paramParcelable, str);
-          if (localFragment != null)
+          Object localObject = this.mFragmentManager.getFragment(paramParcelable, str);
+          if (localObject != null)
           {
             while (this.mFragments.size() <= i) {
               this.mFragments.add(null);
             }
-            localFragment.setMenuVisibility(false);
-            this.mFragments.set(i, localFragment);
+            ((Fragment)localObject).setMenuVisibility(false);
+            this.mFragments.set(i, localObject);
           }
           else
           {
-            Log.w("FragmentStatePagerAdapt", "Bad fragment at key " + str);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("Bad fragment at key ");
+            ((StringBuilder)localObject).append(str);
+            Log.w("FragmentStatePagerAdapt", ((StringBuilder)localObject).toString());
           }
         }
       }
@@ -171,86 +176,98 @@ public abstract class FragmentStatePagerAdapter
   @Nullable
   public Parcelable saveState()
   {
-    Object localObject1 = null;
     Object localObject2;
+    Object localObject1;
     if (this.mSavedState.size() > 0)
     {
-      localObject1 = new Bundle();
-      localObject2 = new Fragment.SavedState[this.mSavedState.size()];
-      this.mSavedState.toArray((Object[])localObject2);
-      ((Bundle)localObject1).putParcelableArray("states", (Parcelable[])localObject2);
+      localObject2 = new Bundle();
+      localObject1 = new Fragment.SavedState[this.mSavedState.size()];
+      this.mSavedState.toArray((Object[])localObject1);
+      ((Bundle)localObject2).putParcelableArray("states", (Parcelable[])localObject1);
+    }
+    else
+    {
+      localObject2 = null;
     }
     int i = 0;
     while (i < this.mFragments.size())
     {
       Fragment localFragment = (Fragment)this.mFragments.get(i);
-      localObject2 = localObject1;
+      localObject1 = localObject2;
       if (localFragment != null)
       {
-        localObject2 = localObject1;
+        localObject1 = localObject2;
         if (localFragment.isAdded())
         {
-          localObject2 = localObject1;
-          if (localObject1 == null) {
-            localObject2 = new Bundle();
+          localObject1 = localObject2;
+          if (localObject2 == null) {
+            localObject1 = new Bundle();
           }
-          localObject1 = "f" + i;
-          this.mFragmentManager.putFragment((Bundle)localObject2, (String)localObject1, localFragment);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("f");
+          ((StringBuilder)localObject2).append(i);
+          localObject2 = ((StringBuilder)localObject2).toString();
+          this.mFragmentManager.putFragment((Bundle)localObject1, (String)localObject2, localFragment);
         }
       }
       i += 1;
-      localObject1 = localObject2;
+      localObject2 = localObject1;
     }
-    return localObject1;
+    return localObject2;
   }
   
   public void setPrimaryItem(@NonNull ViewGroup paramViewGroup, int paramInt, @NonNull Object paramObject)
   {
     paramViewGroup = (Fragment)paramObject;
-    if (paramViewGroup != this.mCurrentPrimaryItem)
+    paramObject = this.mCurrentPrimaryItem;
+    if (paramViewGroup != paramObject)
     {
-      if (this.mCurrentPrimaryItem != null)
+      if (paramObject != null)
       {
-        this.mCurrentPrimaryItem.setMenuVisibility(false);
-        if (this.mBehavior != 1) {
-          break label118;
+        paramObject.setMenuVisibility(false);
+        if (this.mBehavior == 1)
+        {
+          if (this.mCurTransaction == null) {
+            this.mCurTransaction = this.mFragmentManager.beginTransaction();
+          }
+          this.mCurTransaction.setMaxLifecycle(this.mCurrentPrimaryItem, Lifecycle.State.STARTED);
         }
+        else
+        {
+          this.mCurrentPrimaryItem.setUserVisibleHint(false);
+        }
+      }
+      paramViewGroup.setMenuVisibility(true);
+      if (this.mBehavior == 1)
+      {
         if (this.mCurTransaction == null) {
           this.mCurTransaction = this.mFragmentManager.beginTransaction();
         }
-        this.mCurTransaction.setMaxLifecycle(this.mCurrentPrimaryItem, Lifecycle.State.STARTED);
+        this.mCurTransaction.setMaxLifecycle(paramViewGroup, Lifecycle.State.RESUMED);
       }
-      paramViewGroup.setMenuVisibility(true);
-      if (this.mBehavior != 1) {
-        break label129;
+      else
+      {
+        paramViewGroup.setUserVisibleHint(true);
       }
-      if (this.mCurTransaction == null) {
-        this.mCurTransaction = this.mFragmentManager.beginTransaction();
-      }
-      this.mCurTransaction.setMaxLifecycle(paramViewGroup, Lifecycle.State.RESUMED);
-    }
-    for (;;)
-    {
       this.mCurrentPrimaryItem = paramViewGroup;
-      return;
-      label118:
-      this.mCurrentPrimaryItem.setUserVisibleHint(false);
-      break;
-      label129:
-      paramViewGroup.setUserVisibleHint(true);
     }
   }
   
   public void startUpdate(@NonNull ViewGroup paramViewGroup)
   {
-    if (paramViewGroup.getId() == -1) {
-      throw new IllegalStateException("ViewPager with adapter " + this + " requires a view id");
+    if (paramViewGroup.getId() != -1) {
+      return;
     }
+    paramViewGroup = new StringBuilder();
+    paramViewGroup.append("ViewPager with adapter ");
+    paramViewGroup.append(this);
+    paramViewGroup.append(" requires a view id");
+    throw new IllegalStateException(paramViewGroup.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentStatePagerAdapter
  * JD-Core Version:    0.7.0.1
  */

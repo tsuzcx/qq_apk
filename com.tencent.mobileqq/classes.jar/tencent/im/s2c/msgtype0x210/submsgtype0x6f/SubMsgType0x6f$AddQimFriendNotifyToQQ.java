@@ -25,16 +25,18 @@ public final class SubMsgType0x6f$AddQimFriendNotifyToQQ
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 74, 82 }, new String[] { "uint32_op_type", "uint64_uin", "uint32_gender", "bytes_smart_remark", "bytes_longnick", "uint64_storys_total_num", "uint64_cares_count", "uint64_fans_count", "bytes_wording", "bytes_src_wording" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro3, localByteStringMicro4 }, AddQimFriendNotifyToQQ.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 74, 82 }, new String[] { "uint32_op_type", "uint64_uin", "uint32_gender", "bytes_smart_remark", "bytes_longnick", "uint64_storys_total_num", "uint64_cares_count", "uint64_fans_count", "bytes_wording", "bytes_src_wording" }, new Object[] { localInteger, localLong, localInteger, localByteStringMicro1, localByteStringMicro2, localLong, localLong, localLong, localByteStringMicro3, localByteStringMicro4 }, AddQimFriendNotifyToQQ.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x6f.SubMsgType0x6f.AddQimFriendNotifyToQQ
  * JD-Core Version:    0.7.0.1
  */

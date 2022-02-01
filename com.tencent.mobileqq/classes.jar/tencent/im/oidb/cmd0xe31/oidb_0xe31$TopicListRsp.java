@@ -22,13 +22,14 @@ public final class oidb_0xe31$TopicListRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40 }, new String[] { "cookie", "is_end", "total", "topics", "create_limit" }, new Object[] { localByteStringMicro, Boolean.valueOf(false), Integer.valueOf(0), null, Integer.valueOf(0) }, TopicListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40 }, new String[] { "cookie", "is_end", "total", "topics", "create_limit" }, new Object[] { localByteStringMicro, Boolean.valueOf(false), localInteger, null, localInteger }, TopicListRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe31.oidb_0xe31.TopicListRsp
  * JD-Core Version:    0.7.0.1
  */

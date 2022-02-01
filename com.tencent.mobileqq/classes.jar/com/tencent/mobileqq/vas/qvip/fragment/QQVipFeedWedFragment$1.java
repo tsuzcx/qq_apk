@@ -27,14 +27,21 @@ class QQVipFeedWedFragment$1
     paramWebView = ObjectAnimator.ofFloat(QQVipFeedWedFragment.a(this.a), "alpha", new float[] { 0.0F, 1.0F });
     paramWebView.setDuration(300L);
     paramWebView.start();
-    QLog.d("QQVipFeedWedFragment", 1, "onPageFinished : " + (SystemClock.elapsedRealtime() - this.a.b));
+    paramWebView = new StringBuilder();
+    paramWebView.append("onPageFinished : ");
+    paramWebView.append(SystemClock.elapsedRealtime() - QQVipFeedWedFragment.a(this.a));
+    QLog.d("QQVipFeedWedFragment", 1, paramWebView.toString());
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
-    this.a.b = SystemClock.elapsedRealtime();
-    this.a.c = (this.a.b - this.a.a);
-    QLog.d("QQVipFeedWedFragment", 1, "loadUrlTime : " + this.a.c);
+    QQVipFeedWedFragment.a(this.a, SystemClock.elapsedRealtime());
+    Object localObject = this.a;
+    QQVipFeedWedFragment.b((QQVipFeedWedFragment)localObject, QQVipFeedWedFragment.a((QQVipFeedWedFragment)localObject) - QQVipFeedWedFragment.b(this.a));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mLoadUrlTime : ");
+    ((StringBuilder)localObject).append(QQVipFeedWedFragment.c(this.a));
+    QLog.d("QQVipFeedWedFragment", 1, ((StringBuilder)localObject).toString());
     QQVipFeedWedFragment.a(this.a).setVisibility(0);
     super.onPageStarted(paramWebView, paramString, paramBitmap);
   }
@@ -46,7 +53,7 @@ class QQVipFeedWedFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.fragment.QQVipFeedWedFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -3,15 +3,17 @@ package com.tencent.mobileqq.activity.bless;
 import android.app.Activity;
 import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.api.IQIMWebEffectUnit;
+import com.tencent.aelight.camera.download.api.IAEResUtil;
+import com.tencent.aelight.camera.util.api.ICaptureUtil;
 import com.tencent.biz.qqstory.storyHome.StoryTransitionActivity;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.richmedia.capture.util.CaptureUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.selectmember.api.ISelectMemberApi;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.shortvideo.util.PtvFilterSoLoad;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.QIMWebEffectCameraCaptureUnit;
-import dov.com.qq.im.ae.download.AEResUtil;
 
 public class BlessJsApiUtils
 {
@@ -19,52 +21,66 @@ public class BlessJsApiUtils
   
   public static void a(Activity paramActivity, String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString1.trim())))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString1.trim())))
     {
-      QQToast.a(paramActivity, 2131690734, 1).a();
+      Intent localIntent = new Intent();
+      localIntent.putExtra("param_type", 9003);
+      localIntent.putExtra("param_entrance", 15);
+      localIntent.putExtra("param_only_friends", true);
+      localIntent.putExtra("param_donot_need_contacts", true);
+      localIntent.putExtra("param_title", paramActivity.getString(2131690668));
+      localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131691064));
+      localIntent.putExtra("param_exit_animation", 1);
+      localIntent.putExtra("param_blesstype", 1);
+      localIntent.putExtra("param_blessword_content", paramString1);
+      localIntent.putExtra("param_web_callback", paramString2);
+      ((ISelectMemberApi)QRoute.api(ISelectMemberApi.class)).startBlessSelectMemberActivity(paramActivity, localIntent);
+      paramActivity.overridePendingTransition(2130772006, 2130772007);
       return;
     }
-    Intent localIntent = new Intent(paramActivity, BlessSelectMemberActivity.class);
-    localIntent.putExtra("param_type", 9003);
-    localIntent.putExtra("param_entrance", 15);
-    localIntent.putExtra("param_only_friends", true);
-    localIntent.putExtra("param_donot_need_contacts", true);
-    localIntent.putExtra("param_title", paramActivity.getString(2131690740));
-    localIntent.putExtra("param_done_button_wording", paramActivity.getString(2131691144));
-    localIntent.putExtra("param_exit_animation", 1);
-    localIntent.putExtra("param_blesstype", 1);
-    localIntent.putExtra("param_blessword_content", paramString1);
-    localIntent.putExtra("param_web_callback", paramString2);
-    paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130771994, 2130771995);
+    QQToast.a(paramActivity, 2131690662, 1).a();
   }
   
-  public static boolean a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, String paramString9)
+  public static boolean a(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(a, 2, "startBlessPtvActivity , supportVideo:" + paramString1 + ", supportPhoto:" + paramString2 + ", cameraMode:" + paramString3 + ", unfoldDDStr:" + paramString5 + ", dDCategoryName:" + paramString6 + ", dDItemID:" + paramString7 + ", callback:" + paramString9);
+    if (QLog.isColorLevel())
+    {
+      String str = a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startBlessPtvActivity , supportVideo:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", supportPhoto:");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(", cameraMode:");
+      localStringBuilder.append(paramString3);
+      localStringBuilder.append(", unfoldDDStr:");
+      localStringBuilder.append(paramString5);
+      localStringBuilder.append(", dDItemID:");
+      localStringBuilder.append(paramString6);
+      localStringBuilder.append(", callback:");
+      localStringBuilder.append(paramString8);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
     boolean bool1 = "1".equals(paramString1);
     boolean bool2 = "1".equals(paramString2);
-    if ("1".equals(paramString3)) {}
-    boolean bool3;
-    boolean bool4;
-    boolean bool5;
-    for (int i = 2;; i = 1)
+    int i;
+    if ("1".equals(paramString3)) {
+      i = 2;
+    } else {
+      i = 1;
+    }
+    boolean bool3 = "1".equals(paramString4);
+    boolean bool4 = "1".equals(paramString7);
+    boolean bool5 = "1".equals(paramString5);
+    if (!((ICaptureUtil)QRoute.api(ICaptureUtil.class)).supportCapture())
     {
-      bool3 = "1".equals(paramString4);
-      bool4 = "1".equals(paramString8);
-      bool5 = "1".equals(paramString5);
-      if (CaptureUtil.a()) {
-        break;
-      }
       if (QLog.isColorLevel()) {
         QLog.i(a, 2, "supportMediaCodec = false");
       }
-      QQToast.a(paramActivity, paramActivity.getString(2131690738), 0).a();
+      QQToast.a(paramActivity, paramActivity.getString(2131690666), 0).a();
       return false;
     }
-    paramString1 = QIMWebEffectCameraCaptureUnit.a(bool1, bool2, i, true, bool3, bool5, paramString6, paramString7, bool4, QIMWebEffectCameraCaptureUnit.b, "", "", null, "", 107);
+    paramString1 = ((IQIMWebEffectUnit)QRoute.api(IQIMWebEffectUnit.class)).generateArgs(bool1, bool2, i, true, bool3, bool5, paramString6, bool4, 107);
     paramString2 = new Intent(paramActivity, StoryTransitionActivity.class);
     paramString2.putExtras(paramString1);
     paramString2.putExtra("jump_action", 7);
@@ -92,32 +108,32 @@ public class BlessJsApiUtils
   
   public static boolean c(AppInterface paramAppInterface)
   {
-    if (paramAppInterface.getCurrentAccountUin() == null) {
+    if (paramAppInterface.getCurrentAccountUin() == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.i(a, 2, "isAccLoginSuccess false.");
       }
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!a(paramAppInterface));
-        if (!AEResUtil.c()) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d(a, 2, "PtvFilterSoLoad getFilterSoState is false");
       return false;
-    } while (!CaptureUtil.a());
+    }
+    if (!a(paramAppInterface)) {
+      return false;
+    }
+    if (((IAEResUtil)QRoute.api(IAEResUtil.class)).isLightCameraBaseResNotAllExist())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(a, 2, "PtvFilterSoLoad getFilterSoState is false");
+      }
+      return false;
+    }
+    if (!((ICaptureUtil)QRoute.api(ICaptureUtil.class)).supportCapture()) {
+      return false;
+    }
     return VideoEnvironment.checkAndLoadAVCodec();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessJsApiUtils
  * JD-Core Version:    0.7.0.1
  */

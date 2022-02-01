@@ -63,53 +63,53 @@ public class SubMsgPermissionListAdapter
   {
     INTERFACE.StSubscribeMessage localStSubscribeMessage = getItem(paramInt);
     Object localObject = paramView;
-    Switch localSwitch;
     if (localStSubscribeMessage != null)
     {
-      if (paramView == null) {
-        break label135;
+      if (paramView != null)
+      {
+        localObject = (SubMsgPermissionListAdapter.ViewHolder)paramView.getTag();
       }
-      localObject = (SubMsgPermissionListAdapter.ViewHolder)paramView.getTag();
+      else
+      {
+        localObject = new SubMsgPermissionListAdapter.ViewHolder(null);
+        paramView = this.mInflater.inflate(R.layout.mini_sdk_once_sub_item_switcher, null);
+        ((SubMsgPermissionListAdapter.ViewHolder)localObject).tvAuthTitle = ((TextView)paramView.findViewById(R.id.tv_auth_title));
+        ((SubMsgPermissionListAdapter.ViewHolder)localObject).ivAuthDetail = ((ImageView)paramView.findViewById(R.id.iv_auth_detail));
+        ((SubMsgPermissionListAdapter.ViewHolder)localObject).authSwitcher = ((Switch)paramView.findViewById(R.id.sw_auth));
+        paramView.setTag(localObject);
+      }
       ((SubMsgPermissionListAdapter.ViewHolder)localObject).tvAuthTitle.setText(localStSubscribeMessage.example.title.get());
       ((SubMsgPermissionListAdapter.ViewHolder)localObject).ivAuthDetail.setTag(localStSubscribeMessage);
       ((SubMsgPermissionListAdapter.ViewHolder)localObject).ivAuthDetail.setOnClickListener(this);
       ((SubMsgPermissionListAdapter.ViewHolder)localObject).authSwitcher.setTag(localStSubscribeMessage);
-      localSwitch = ((SubMsgPermissionListAdapter.ViewHolder)localObject).authSwitcher;
-      if (localStSubscribeMessage.authState.get() != 1) {
-        break label211;
+      Switch localSwitch = ((SubMsgPermissionListAdapter.ViewHolder)localObject).authSwitcher;
+      int i = localStSubscribeMessage.authState.get();
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
       }
-    }
-    label135:
-    label211:
-    for (boolean bool = true;; bool = false)
-    {
       localSwitch.setChecked(bool);
       ((SubMsgPermissionListAdapter.ViewHolder)localObject).authSwitcher.setOnCheckedChangeListener(this);
       localObject = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      localObject = new SubMsgPermissionListAdapter.ViewHolder(null);
-      paramView = this.mInflater.inflate(R.layout.mini_sdk_once_sub_item_switcher, null);
-      ((SubMsgPermissionListAdapter.ViewHolder)localObject).tvAuthTitle = ((TextView)paramView.findViewById(R.id.tv_auth_title));
-      ((SubMsgPermissionListAdapter.ViewHolder)localObject).ivAuthDetail = ((ImageView)paramView.findViewById(R.id.iv_auth_detail));
-      ((SubMsgPermissionListAdapter.ViewHolder)localObject).authSwitcher = ((Switch)paramView.findViewById(R.id.sw_auth));
-      paramView.setTag(localObject);
-      break;
     }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (this.innerCheckedChangeListener != null) {
-      this.innerCheckedChangeListener.onCheckedChanged(paramCompoundButton, paramBoolean);
+    CompoundButton.OnCheckedChangeListener localOnCheckedChangeListener = this.innerCheckedChangeListener;
+    if (localOnCheckedChangeListener != null) {
+      localOnCheckedChangeListener.onCheckedChanged(paramCompoundButton, paramBoolean);
     }
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
   
   public void onClick(View paramView)
   {
-    if (this.innerOnClickListener != null) {
-      this.innerOnClickListener.onClick(paramView);
+    View.OnClickListener localOnClickListener = this.innerOnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramView);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -140,19 +140,20 @@ public class SubMsgPermissionListAdapter
       INTERFACE.StSubscribeMessage localStSubscribeMessage = (INTERFACE.StSubscribeMessage)localIterator.next();
       if (localStSubscribeMessage.templateId.get().equals(paramStSubscribeMessage.templateId.get()))
       {
-        if (paramBoolean) {}
-        for (int i = 1;; i = 2)
-        {
-          localStSubscribeMessage.authState.set(i);
-          break;
+        int i;
+        if (paramBoolean) {
+          i = 1;
+        } else {
+          i = 2;
         }
+        localStSubscribeMessage.authState.set(i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubMsgPermissionListAdapter
  * JD-Core Version:    0.7.0.1
  */

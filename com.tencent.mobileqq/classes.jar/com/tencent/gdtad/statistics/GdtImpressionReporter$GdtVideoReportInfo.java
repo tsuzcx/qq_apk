@@ -30,12 +30,19 @@ public class GdtImpressionReporter$GdtVideoReportInfo
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 1101) || (paramInt1 == 1103) || ((int)(paramInt2 / 1000000.0D) == 14)) {}
-    for (paramInt1 = 2;; paramInt1 = 3)
+    if ((paramInt1 != 1101) && (paramInt1 != 1103))
     {
-      this.c = paramInt1;
-      return;
+      double d = paramInt2;
+      Double.isNaN(d);
+      if ((int)(d / 1000000.0D) != 14)
+      {
+        paramInt1 = 3;
+        break label43;
+      }
     }
+    paramInt1 = 2;
+    label43:
+    this.c = paramInt1;
   }
   
   public boolean a()
@@ -80,7 +87,7 @@ public class GdtImpressionReporter$GdtVideoReportInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtImpressionReporter.GdtVideoReportInfo
  * JD-Core Version:    0.7.0.1
  */

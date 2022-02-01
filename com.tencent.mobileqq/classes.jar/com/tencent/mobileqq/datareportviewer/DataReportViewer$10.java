@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.datareportviewer;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.view.animation.AlphaAnimation;
 import android.widget.TextView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class DataReportViewer$10
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   DataReportViewer$10(DataReportViewer paramDataReportViewer) {}
   
@@ -28,7 +28,7 @@ class DataReportViewer$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewer.10
  * JD-Core Version:    0.7.0.1
  */

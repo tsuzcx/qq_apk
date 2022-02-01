@@ -16,37 +16,44 @@ class NativePageJsPlugin$1
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramBoolean) {
-      try
+    if (paramBoolean) {}
+    try
+    {
+      localObject = new JSONObject();
+      int i = paramJSONObject.optInt("key_check_State");
+      ((JSONObject)localObject).put("bindingState", i);
+      if (i != 0)
       {
-        localObject = new JSONObject();
-        int i = paramJSONObject.optInt("key_check_State");
-        ((JSONObject)localObject).put("bindingState", i);
-        if (i != 0)
-        {
-          ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openNativePage(this.val$activity, this.val$appId, this.val$uin, this.val$cardType);
-          this.val$req.ok((JSONObject)localObject);
-          return;
-        }
-        this.val$req.fail(paramJSONObject, "fail no permission");
+        ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).openNativePage(this.val$activity, this.val$appId, this.val$uin, this.val$cardType);
+        this.val$req.ok((JSONObject)localObject);
         return;
       }
-      catch (Throwable paramJSONObject)
-      {
-        QMLog.e("NativePageJsPlugin", "handleCheckBindingState exception: ", paramJSONObject);
-        ApiUtil.wrapCallbackFail(this.val$req.event, null);
-        return;
-      }
+      this.val$req.fail(paramJSONObject, "fail no permission");
+      return;
     }
-    long l = paramJSONObject.optLong("retCode");
-    Object localObject = paramJSONObject.optString("errMsg");
-    QMLog.e("NativePageJsPlugin", "handleCheckBindingState fail, retCode: " + l + "; errMsg : " + (String)localObject);
+    catch (Throwable paramJSONObject)
+    {
+      Object localObject;
+      long l;
+      StringBuilder localStringBuilder;
+      QMLog.e("NativePageJsPlugin", "handleCheckBindingState exception: ", paramJSONObject);
+      ApiUtil.wrapCallbackFail(this.val$req.event, null);
+    }
+    l = paramJSONObject.optLong("retCode");
+    localObject = paramJSONObject.optString("errMsg");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleCheckBindingState fail, retCode: ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("; errMsg : ");
+    localStringBuilder.append((String)localObject);
+    QMLog.e("NativePageJsPlugin", localStringBuilder.toString());
     this.val$req.fail(paramJSONObject, "null");
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.NativePageJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

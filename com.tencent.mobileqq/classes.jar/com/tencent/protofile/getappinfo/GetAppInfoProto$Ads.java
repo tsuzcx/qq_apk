@@ -9,16 +9,22 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class GetAppInfoProto$Ads
   extends MessageMicro<Ads>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40 }, new String[] { "imgURL", "txt", "beginTime", "endTime", "serverTime" }, new Object[] { "", "", Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L) }, Ads.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt64Field beginTime = PBField.initInt64(0L);
   public final PBInt64Field endTime = PBField.initInt64(0L);
   public final PBStringField imgURL = PBField.initString("");
   public final PBInt64Field serverTime = PBField.initInt64(0L);
   public final PBStringField txt = PBField.initString("");
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40 }, new String[] { "imgURL", "txt", "beginTime", "endTime", "serverTime" }, new Object[] { "", "", localLong, localLong, localLong }, Ads.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protofile.getappinfo.GetAppInfoProto.Ads
  * JD-Core Version:    0.7.0.1
  */

@@ -27,8 +27,9 @@ public class BlessActivity$AnimationDrawable2
     if ((paramInt != 0) && (paramInt == getNumberOfFrames() - 1) && (!this.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_Boolean = true;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener.a();
+      BlessActivity.IAnimationFinishListener localIAnimationFinishListener = this.jdField_a_of_type_ComTencentMobileqqActivityBlessBlessActivity$IAnimationFinishListener;
+      if (localIAnimationFinishListener != null) {
+        localIAnimationFinishListener.a();
       }
     }
     return bool;
@@ -36,7 +37,7 @@ public class BlessActivity$AnimationDrawable2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessActivity.AnimationDrawable2
  * JD-Core Version:    0.7.0.1
  */

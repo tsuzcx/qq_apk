@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:orientation="vertical" android:background="@color/al3" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.readinjoy.view.widget.TabLayoutCompat android:layout_gravity="center" android:id="@id/b09" android:background="#fffbfafd" android:layout_width="fill_parent" android:layout_height="40.0dip" />
-    <com.tencent.biz.pubaccount.readinjoy.view.widget.ViewPagerCompat android:id="@id/b0_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/j_p" android:layout_below="@id/b09" />
+    <com.tencent.mobileqq.widget.TabLayoutCompat android:layout_gravity="center" android:id="@id/b09" android:background="#fffbfafd" android:layout_width="fill_parent" android:layout_height="40.0dip" />
+    <com.tencent.mobileqq.widget.ViewPagerCompat android:id="@id/b0_" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/j_p" android:layout_below="@id/b09" />
     <View android:id="@id/j_p" android:background="#ffd9d9d9" android:layout_width="fill_parent" android:layout_height="1.0dip" android:layout_above="@id/b04" />
     <LinearLayout android:orientation="horizontal" android:id="@id/b04" android:background="#fff0f0f3" android:layout_width="fill_parent" android:layout_height="40.0dip" android:weightSum="2.0" android:layout_alignParentBottom="true">
         <TextView android:textColor="@color/bp" android:gravity="center" android:id="@id/b05" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="Clear" android:layout_weight="1.0" />

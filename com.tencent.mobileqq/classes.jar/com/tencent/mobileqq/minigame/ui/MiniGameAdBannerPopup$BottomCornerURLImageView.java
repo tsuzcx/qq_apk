@@ -42,7 +42,7 @@ class MiniGameAdBannerPopup$BottomCornerURLImageView
     this.allRadius = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, f, f, f, f };
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     int i = paramCanvas.save();
     if (this.clippedPath != null)
@@ -58,7 +58,7 @@ class MiniGameAdBannerPopup$BottomCornerURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.MiniGameAdBannerPopup.BottomCornerURLImageView
  * JD-Core Version:    0.7.0.1
  */

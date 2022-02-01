@@ -8,9 +8,10 @@ import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -42,22 +43,27 @@ class NewerGuidePlugin$2
         localBundle.putBoolean("PhotoConst.SYNCQZONE", bool);
         localBundle.putString("PhotoConst.SOURCE_FROM", paramIntent);
         paramContext = DataFactory.a("ipc_newer_guide", null, NewerGuidePlugin.a(this.a).key, localBundle);
-        WebIPCOperator.a().a(paramContext);
+        ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).sendServiceIpcReq(paramContext);
         if (NewerGuidePlugin.a(this.a) == null)
         {
           paramContext = this.a.mRuntime.a();
-          int i = paramContext.getResources().getDimensionPixelSize(2131299166);
+          int i = paramContext.getResources().getDimensionPixelSize(2131299168);
           NewerGuidePlugin.a(this.a, new QQProgressDialog(paramContext, i));
-          NewerGuidePlugin.a(this.a).a(HardCodeUtil.a(2131707445));
+          NewerGuidePlugin.a(this.a).a(HardCodeUtil.a(2131707470));
         }
         NewerGuidePlugin.a(this.a).show();
       }
+    }
+    else if ("ACTION_NEWER_GUIDE_CMSHOW_AVATAR_RESULT".equals(paramContext))
+    {
+      paramContext = paramIntent.getStringExtra("path");
+      NewerGuidePlugin.a(this.a, true, paramContext);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewerGuidePlugin.2
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,10 @@ class GameCenterActivity$GameCenterFragment$1
   
   public void a(int paramInt, String paramString)
   {
-    QLog.i("GameCenterFragment", 1, "addShot res code=" + paramInt);
+    paramString = new StringBuilder();
+    paramString.append("addShot res code=");
+    paramString.append(paramInt);
+    QLog.i("GameCenterFragment", 1, paramString.toString());
     if (paramInt == 304) {
       ScreenshotManager.a().a(this.jdField_a_of_type_ComTencentSmttSdkWebView);
     }
@@ -20,7 +23,7 @@ class GameCenterActivity$GameCenterFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.activities.GameCenterActivity.GameCenterFragment.1
  * JD-Core Version:    0.7.0.1
  */

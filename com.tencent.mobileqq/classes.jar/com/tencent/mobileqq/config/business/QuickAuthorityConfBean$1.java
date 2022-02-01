@@ -14,10 +14,11 @@ final class QuickAuthorityConfBean$1
     try
     {
       util.save_pow_test(BaseApplication.getContext(), this.a);
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("QuickAuthorityConfProcessor", 2, new Object[] { "pow_test ", Boolean.valueOf(this.a) });
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -27,7 +28,7 @@ final class QuickAuthorityConfBean$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QuickAuthorityConfBean.1
  * JD-Core Version:    0.7.0.1
  */

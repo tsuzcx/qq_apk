@@ -25,50 +25,43 @@ class SensorJsPlugin$GyroscopeSensorJsPlugin
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (SensorJsPlugin.access$200(this.this$0)) {}
-    while (paramSensorEvent.sensor.getType() != 4) {
+    if (SensorJsPlugin.access$200(this.this$0)) {
       return;
     }
-    float f1;
-    Object localObject;
-    float f2;
-    float f3;
-    if (this.timestamp != 0.0F)
+    if (paramSensorEvent.sensor.getType() == 4)
     {
-      f1 = ((float)paramSensorEvent.timestamp - this.timestamp) * 1.0E-009F;
-      localObject = this.angle;
-      localObject[0] += paramSensorEvent.values[0] * f1;
-      localObject = this.angle;
-      localObject[1] += paramSensorEvent.values[1] * f1;
-      localObject = this.angle;
-      f2 = localObject[2];
-      localObject[2] = (f1 * paramSensorEvent.values[2] + f2);
-      f1 = (float)Math.toDegrees(this.angle[0]);
-      f2 = (float)Math.toDegrees(this.angle[1]);
-      f3 = (float)Math.toDegrees(this.angle[2]);
-    }
-    try
-    {
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("x", f1);
-      ((JSONObject)localObject).put("y", f2);
-      ((JSONObject)localObject).put("z", f3);
-      SensorJsPlugin.access$500(this.this$0, "onGyroscopeChange", ((JSONObject)localObject).toString(), 0, this.mJsService);
-      this.timestamp = ((float)paramSensorEvent.timestamp);
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      if (this.timestamp != 0.0F)
       {
-        localJSONException.printStackTrace();
+        float f1 = ((float)paramSensorEvent.timestamp - this.timestamp) * 1.0E-009F;
+        Object localObject = this.angle;
+        localObject[0] += paramSensorEvent.values[0] * f1;
+        localObject = this.angle;
+        localObject[1] += paramSensorEvent.values[1] * f1;
+        localObject = this.angle;
+        localObject[2] += paramSensorEvent.values[2] * f1;
+        f1 = (float)Math.toDegrees(this.angle[0]);
+        float f2 = (float)Math.toDegrees(this.angle[1]);
+        float f3 = (float)Math.toDegrees(this.angle[2]);
+        try
+        {
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("x", f1);
+          ((JSONObject)localObject).put("y", f2);
+          ((JSONObject)localObject).put("z", f3);
+          SensorJsPlugin.access$500(this.this$0, "onGyroscopeChange", ((JSONObject)localObject).toString(), 0, this.mJsService);
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
       }
+      this.timestamp = ((float)paramSensorEvent.timestamp);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SensorJsPlugin.GyroscopeSensorJsPlugin
  * JD-Core Version:    0.7.0.1
  */

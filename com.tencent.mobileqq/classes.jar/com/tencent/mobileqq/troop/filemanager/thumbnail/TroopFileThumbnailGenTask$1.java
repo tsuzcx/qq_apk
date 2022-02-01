@@ -13,7 +13,12 @@ class TroopFileThumbnailGenTask$1
   {
     if (this.this$0.jdField_a_of_type_Boolean)
     {
-      TroopFileTransferUtil.Log.b("TroopFileThumbnailGenTask", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveEnd. but had stop");
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] passiveEnd. but had stop");
+      TroopFileTransferUtil.Log.b("TroopFileThumbnailGenTask", i, ((StringBuilder)localObject).toString());
       return;
     }
     if (!this.jdField_a_of_type_Boolean)
@@ -21,22 +26,37 @@ class TroopFileThumbnailGenTask$1
       this.this$0.a(this.jdField_a_of_type_Int, true);
       return;
     }
-    this.this$0.e = this.this$0.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_Int);
+    Object localObject = this.this$0;
+    ((TroopFileThumbnailGenTask)localObject).e = ((TroopFileThumbnailGenTask)localObject).jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.getThumbnailFile(this.this$0.jdField_a_of_type_Long, this.this$0.jdField_a_of_type_Int);
     if (this.this$0.e.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))
     {
-      TroopFileTransferUtil.Log.b("TroopFileThumbnailGenTask", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc thumbpath is same.");
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("] passiveSuc thumbpath is same.");
+      TroopFileTransferUtil.Log.b("TroopFileThumbnailGenTask", i, ((StringBuilder)localObject).toString());
       this.this$0.a(true, true);
       return;
     }
-    TroopFileTransferUtil.Log.c("TroopFileThumbnailGenTask", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.this$0.jdField_a_of_type_JavaLangString + "] passiveSuc copy file.");
-    this.this$0.d = (this.this$0.e + ".ttmp");
-    FileUtils.d(this.jdField_a_of_type_JavaLangString, this.this$0.d);
+    int i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[");
+    ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("] passiveSuc copy file.");
+    TroopFileTransferUtil.Log.c("TroopFileThumbnailGenTask", i, ((StringBuilder)localObject).toString());
+    localObject = this.this$0;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.this$0.e);
+    localStringBuilder.append(".ttmp");
+    ((TroopFileThumbnailGenTask)localObject).d = localStringBuilder.toString();
+    FileUtils.copyFile(this.jdField_a_of_type_JavaLangString, this.this$0.d);
     this.this$0.a(false, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailGenTask.1
  * JD-Core Version:    0.7.0.1
  */

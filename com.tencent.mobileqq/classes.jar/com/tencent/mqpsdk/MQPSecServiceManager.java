@@ -2,7 +2,6 @@ package com.tencent.mqpsdk;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.mqpsdk.secsrv.MQPAPPScanService;
 import com.tencent.mqpsdk.secsrv.MQPIntChkService;
 import com.tencent.mqpsdk.secsrv.MQPSigCheckService;
 import java.util.LinkedHashMap;
@@ -25,10 +24,10 @@ public class MQPSecServiceManager
   
   public Object a(String paramString)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    if (TextUtils.isEmpty(paramString)) {
-      return localObject2;
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject = null;
+    if (bool) {
+      return null;
     }
     if (this.jdField_a_of_type_JavaUtilMap == null) {
       this.jdField_a_of_type_JavaUtilMap = new LinkedHashMap();
@@ -37,27 +36,19 @@ public class MQPSecServiceManager
       return this.jdField_a_of_type_JavaUtilMap.get(paramString);
     }
     if (TextUtils.equals(paramString, "intchk")) {
-      localObject1 = new MQPIntChkService(this);
+      localObject = new MQPIntChkService(this);
+    } else if (TextUtils.equals(paramString, "sig_check")) {
+      localObject = new MQPSigCheckService(this);
     }
-    for (;;)
-    {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        break;
-      }
-      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject1);
-      return localObject1;
-      if (TextUtils.equals(paramString, "app_scan")) {
-        localObject1 = new MQPAPPScanService(this);
-      } else if (TextUtils.equals(paramString, "sig_check")) {
-        localObject1 = new MQPSigCheckService(this);
-      }
+    if (localObject != null) {
+      this.jdField_a_of_type_JavaUtilMap.put(paramString, localObject);
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqpsdk.MQPSecServiceManager
  * JD-Core Version:    0.7.0.1
  */

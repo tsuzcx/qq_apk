@@ -8,20 +8,22 @@ import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.util.List;
 import mqq.app.MobileQQ;
 
 public class NativeMemoryUtils
 {
   private static String a;
+  public static List<String> a;
   public static String[] a;
   private static String b;
-  public static String[] b;
-  public static String[] c = { ".*/libssl.so$", "/system/lib/.*$", "^/vendor/lib/.*$", "^/system/.*$", ".*/libjavacore.so$" };
+  public static List<String> b;
   
   static
   {
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { ".*\\.so$" };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { ".*/libnatmem_monitor.so$", ".*/libc.so$", ".*/libandroid_runtime.so$", ".*/libsqlite_qq.so$", ".*/liblog.so$", ".*/libhitrace.so$" };
+    jdField_a_of_type_JavaUtilList = new NativeMemoryUtils.1();
+    jdField_b_of_type_JavaUtilList = new NativeMemoryUtils.2();
   }
   
   public static int a()
@@ -31,8 +33,12 @@ public class NativeMemoryUtils
   
   public static String a()
   {
-    if (jdField_b_of_type_JavaLangString == null) {
-      jdField_b_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/tencent/MobileQQ/nativemem/";
+    if (jdField_b_of_type_JavaLangString == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+      localStringBuilder.append("/tencent/MobileQQ/nativemem/");
+      jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     }
     jdField_b_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(jdField_b_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
@@ -51,6 +57,11 @@ public class NativeMemoryUtils
   public static void a(long paramLong)
   {
     PreferenceManager.getDefaultSharedPreferences(MobileQQ.getContext().getApplicationContext()).edit().putLong("NatMemUploadTime", paramLong);
+  }
+  
+  public static void a(String paramString)
+  {
+    PreferenceManager.getDefaultSharedPreferences(MobileQQ.getContext().getApplicationContext()).edit().putString("ignoreList", paramString).commit();
   }
   
   public static void a(String paramString1, String paramString2)
@@ -78,8 +89,12 @@ public class NativeMemoryUtils
   
   public static String b()
   {
-    if (jdField_a_of_type_JavaLangString == null) {
-      jdField_a_of_type_JavaLangString = Environment.getExternalStorageDirectory().getPath() + "/tencent/MobileQQ/nativemem/scanner/";
+    if (jdField_a_of_type_JavaLangString == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+      localStringBuilder.append("/tencent/MobileQQ/nativemem/scanner/");
+      jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     }
     jdField_a_of_type_JavaLangString = VFSAssistantUtils.getSDKPrivatePath(jdField_a_of_type_JavaLangString);
     if (QLog.isColorLevel()) {
@@ -111,7 +126,7 @@ public class NativeMemoryUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.natmem.NativeMemoryUtils
  * JD-Core Version:    0.7.0.1
  */

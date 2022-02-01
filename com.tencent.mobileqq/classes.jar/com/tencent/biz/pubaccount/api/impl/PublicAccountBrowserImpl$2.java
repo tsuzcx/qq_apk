@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class PublicAccountBrowserImpl$2
   implements View.OnClickListener
@@ -14,18 +13,17 @@ class PublicAccountBrowserImpl$2
   
   public void onClick(View paramView)
   {
-    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.a.getApplicationContext(), "/pubaccount/detail");
-    localActivityURIRequest.extra().putString("uin", this.a.publicUin);
-    localActivityURIRequest.extra().putString("uinname", this.a.publicUin);
-    localActivityURIRequest.extra().putString("uintype", this.a.publicUinName);
-    localActivityURIRequest.setFlags(67108864);
-    QRoute.startUri(localActivityURIRequest, null);
-    EventCollector.getInstance().onViewClicked(paramView);
+    paramView = new ActivityURIRequest(this.a.getApplicationContext(), "/pubaccount/detail");
+    paramView.extra().putString("uin", this.a.publicUin);
+    paramView.extra().putString("uinname", this.a.publicUin);
+    paramView.extra().putString("uintype", this.a.publicUinName);
+    paramView.setFlags(67108864);
+    QRoute.startUri(paramView, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -33,6 +33,7 @@ public class AdGameComponentInfo
   public String w;
   public String x;
   public String y;
+  public String z;
   
   public AdGameComponentInfo()
   {
@@ -41,95 +42,86 @@ public class AdGameComponentInfo
   
   public static AdGameComponentInfo a(String paramString, AdGameComponentInfo paramAdGameComponentInfo)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = null;
-      return paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
+    AdGameComponentInfo localAdGameComponentInfo = paramAdGameComponentInfo;
     if (paramAdGameComponentInfo == null) {
-      paramAdGameComponentInfo = new AdGameComponentInfo();
+      localAdGameComponentInfo = new AdGameComponentInfo();
     }
-    for (;;)
+    try
     {
-      try
+      paramString = new JSONObject(paramString);
+      localAdGameComponentInfo.l = paramString.optString("button_desc", "");
+      localAdGameComponentInfo.s = paramString.optString("word_content_no_wifi", "");
+      localAdGameComponentInfo.t = paramString.optString("word_content_wifi", "");
+      localAdGameComponentInfo.u = paramString.optString("word_highlight", "");
+      localAdGameComponentInfo.v = paramString.optString("word_highlight_color", "");
+      localAdGameComponentInfo.w = paramString.optString("word_title", "");
+      localAdGameComponentInfo.m = paramString.optString("detail_url", "");
+      localAdGameComponentInfo.n = paramString.optString("activity_url", "");
+      localAdGameComponentInfo.k = paramString.optString("game_icon", "");
+      localAdGameComponentInfo.x = paramString.optString("component_type", "");
+      localAdGameComponentInfo.y = paramString.optString("nfa_chainId", "");
+      localAdGameComponentInfo.z = paramString.optString("gads_txt", "");
+      paramString = paramString.optString("gift_info", "");
+      if (!TextUtils.isEmpty(paramString))
       {
-        paramString = new JSONObject(paramString);
-        paramAdGameComponentInfo.l = paramString.optString("button_desc", "");
-        paramAdGameComponentInfo.s = paramString.optString("word_content_no_wifi", "");
-        paramAdGameComponentInfo.t = paramString.optString("word_content_wifi", "");
-        paramAdGameComponentInfo.u = paramString.optString("word_highlight", "");
-        paramAdGameComponentInfo.v = paramString.optString("word_highlight_color", "");
-        paramAdGameComponentInfo.w = paramString.optString("word_title", "");
-        paramAdGameComponentInfo.m = paramString.optString("detail_url", "");
-        paramAdGameComponentInfo.n = paramString.optString("activity_url", "");
-        paramAdGameComponentInfo.k = paramString.optString("game_icon", "");
-        paramAdGameComponentInfo.x = paramString.optString("component_type", "");
-        paramAdGameComponentInfo.y = paramString.optString("nfa_chainId", "");
-        String str = paramString.optString("gift_info", "");
-        paramString = paramAdGameComponentInfo;
-        if (TextUtils.isEmpty(str)) {
-          break;
-        }
-        paramAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo = AdGiftInfo.a(str);
-        return paramAdGameComponentInfo;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return paramAdGameComponentInfo;
+        localAdGameComponentInfo.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdDataAdGiftInfo = AdGiftInfo.a(paramString);
+        return localAdGameComponentInfo;
       }
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localAdGameComponentInfo;
   }
   
   public static AdGameComponentInfo a(String paramString, AdGameComponentInfo paramAdGameComponentInfo, AdAppDownloadInfo paramAdAppDownloadInfo)
   {
-    if (TextUtils.isEmpty(paramString))
-    {
-      paramString = null;
-      return paramString;
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
+    AdGameComponentInfo localAdGameComponentInfo = paramAdGameComponentInfo;
     if (paramAdGameComponentInfo == null) {
-      paramAdGameComponentInfo = new AdGameComponentInfo();
+      localAdGameComponentInfo = new AdGameComponentInfo();
     }
-    for (;;)
+    try
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        paramAdGameComponentInfo.jdField_a_of_type_Int = paramString.optInt("id", 0);
-        paramAdGameComponentInfo.jdField_a_of_type_JavaLangString = paramString.optString("game_name", "");
-        paramAdGameComponentInfo.b = paramString.optString("package_name", "");
-        paramAdGameComponentInfo.c = paramString.optString("business_type", "");
-        paramAdGameComponentInfo.d = paramString.optString("plat_form", "");
-        paramAdGameComponentInfo.e = paramString.optString("appid", "");
-        paramAdGameComponentInfo.f = paramString.optString("oper_type", "");
-        paramAdGameComponentInfo.r = paramString.optString("game_stage", "");
-        paramAdGameComponentInfo.g = paramString.optString("game_status", "");
-        paramAdGameComponentInfo.h = paramString.optString("game_kind", "");
-        paramAdGameComponentInfo.i = paramString.optString("game_sub_kind", "");
-        paramAdGameComponentInfo.j = paramString.optString("play_nums", "");
-        paramAdGameComponentInfo.o = paramString.optString("game_tags", "");
-        paramAdGameComponentInfo.p = paramString.optString("game_download_url", "");
-        paramAdGameComponentInfo.q = paramString.optString("game_size", "");
-        if (!TextUtils.isEmpty(paramAdGameComponentInfo.b)) {
-          paramAdAppDownloadInfo.b = paramAdGameComponentInfo.b;
-        }
-        if (!TextUtils.isEmpty(paramAdGameComponentInfo.p)) {
-          paramAdAppDownloadInfo.e = paramAdGameComponentInfo.p;
-        }
-        paramString = paramAdGameComponentInfo;
-        if (TextUtils.isEmpty(paramAdGameComponentInfo.e)) {
-          break;
-        }
-        paramAdAppDownloadInfo.c = paramAdGameComponentInfo.e;
-        return paramAdGameComponentInfo;
+      paramString = new JSONObject(paramString);
+      localAdGameComponentInfo.jdField_a_of_type_Int = paramString.optInt("id", 0);
+      localAdGameComponentInfo.jdField_a_of_type_JavaLangString = paramString.optString("game_name", "");
+      localAdGameComponentInfo.b = paramString.optString("package_name", "");
+      localAdGameComponentInfo.c = paramString.optString("business_type", "");
+      localAdGameComponentInfo.d = paramString.optString("plat_form", "");
+      localAdGameComponentInfo.e = paramString.optString("appid", "");
+      localAdGameComponentInfo.f = paramString.optString("oper_type", "");
+      localAdGameComponentInfo.r = paramString.optString("game_stage", "");
+      localAdGameComponentInfo.g = paramString.optString("game_status", "");
+      localAdGameComponentInfo.h = paramString.optString("game_kind", "");
+      localAdGameComponentInfo.i = paramString.optString("game_sub_kind", "");
+      localAdGameComponentInfo.j = paramString.optString("play_nums", "");
+      localAdGameComponentInfo.o = paramString.optString("game_tags", "");
+      localAdGameComponentInfo.p = paramString.optString("game_download_url", "");
+      localAdGameComponentInfo.q = paramString.optString("game_size", "");
+      if (!TextUtils.isEmpty(localAdGameComponentInfo.b)) {
+        paramAdAppDownloadInfo.b = localAdGameComponentInfo.b;
       }
-      catch (JSONException paramString)
+      if (!TextUtils.isEmpty(localAdGameComponentInfo.p)) {
+        paramAdAppDownloadInfo.e = localAdGameComponentInfo.p;
+      }
+      if (!TextUtils.isEmpty(localAdGameComponentInfo.e))
       {
-        paramString.printStackTrace();
-        return paramAdGameComponentInfo;
+        paramAdAppDownloadInfo.c = localAdGameComponentInfo.e;
+        return localAdGameComponentInfo;
       }
     }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return localAdGameComponentInfo;
   }
   
   public void a(JSONObject paramJSONObject, AdGameComponentInfo paramAdGameComponentInfo, AdAppDownloadInfo paramAdAppDownloadInfo)
@@ -149,7 +141,7 @@ public class AdGameComponentInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdGameComponentInfo
  * JD-Core Version:    0.7.0.1
  */

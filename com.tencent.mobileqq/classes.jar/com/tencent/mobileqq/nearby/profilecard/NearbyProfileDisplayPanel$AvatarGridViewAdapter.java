@@ -3,8 +3,7 @@ package com.tencent.mobileqq.nearby.profilecard;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.picbrowser.PicInfo;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,14 +40,12 @@ public class NearbyProfileDisplayPanel$AvatarGridViewAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a(paramInt, (PicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return localView;
+    return this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayPanel.a(paramInt, (PicInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayPanel.AvatarGridViewAdapter
  * JD-Core Version:    0.7.0.1
  */

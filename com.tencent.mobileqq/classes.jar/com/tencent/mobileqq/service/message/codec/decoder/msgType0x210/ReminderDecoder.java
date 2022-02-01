@@ -35,19 +35,19 @@ public class ReminderDecoder
     if (!bool)
     {
       Object localObject = new submsgtype0x13a.MsgBody();
-      int i;
-      for (;;)
+      try
       {
-        try
+        ((submsgtype0x13a.MsgBody)localObject).mergeFrom(paramMsgType0x210.msg_content.get().toByteArray());
+        int i = ((submsgtype0x13a.MsgBody)localObject).uint32_push_type.get();
+        if (i == 1)
         {
-          ((submsgtype0x13a.MsgBody)localObject).mergeFrom(paramMsgType0x210.msg_content.get().toByteArray());
-          i = ((submsgtype0x13a.MsgBody)localObject).uint32_push_type.get();
-          if (i != 1) {
-            break;
-          }
           paramMsgType0x210 = new JSONObject(((submsgtype0x13a.MsgBody)localObject).bytes_push_data.get().toStringUtf8());
-          if (QLog.isColorLevel()) {
-            QLog.d("ReminderDecoder", 2, "[notify][push] multiple tskTriPushData: " + paramMsgType0x210);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("[notify][push] multiple tskTriPushData: ");
+            ((StringBuilder)localObject).append(paramMsgType0x210);
+            QLog.d("ReminderDecoder", 2, ((StringBuilder)localObject).toString());
           }
           localObject = new AcsMsg();
           ((AcsMsg)localObject).msg_id = paramMsgType0x210.optString("msg_id");
@@ -61,36 +61,43 @@ public class ReminderDecoder
           if (i == 0)
           {
             ((AcsMsg)localObject).jump_url = paramMsgType0x210.getString("jump_url");
-            ((AcsMsg)localObject).banner_type = paramMsgType0x210.getInt("banner_type");
-            ((AcsMsg)localObject).banner_url = paramMsgType0x210.getString("banner_url");
-            ((AcsMsg)localObject).banner_type = paramMsgType0x210.getInt("banner_type");
-            ((AcsMsg)localObject).mn_appid = paramMsgType0x210.optInt("mn_appid", 0);
-            ((AcsMsg)localObject).mn_reserved = paramMsgType0x210.optString("mn_reserve", "");
-            QQNotifyHelper.a(paramQQAppInterface, "remindmessage_push", null, ((AcsMsg)localObject).msg_id, null, ((AcsMsg)localObject).mn_reserved);
-            localIQQReminderDataService.doNotifyByPush((AcsMsg)localObject);
-            return;
           }
-          if (i != 4) {
-            break label388;
+          else if (i == 4)
+          {
+            ((AcsMsg)localObject).applet_jump_url = paramMsgType0x210.getString("jump_url");
           }
-          ((AcsMsg)localObject).applet_jump_url = paramMsgType0x210.getString("jump_url");
-          continue;
-          QLog.d("QQReminder", 2, "parse push got error.", paramQQAppInterface);
+          else
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("[notify][push] unknown jump type: ");
+            localStringBuilder.append(i);
+            QLog.e("ReminderDecoder", 1, localStringBuilder.toString());
+          }
+          ((AcsMsg)localObject).banner_type = paramMsgType0x210.getInt("banner_type");
+          ((AcsMsg)localObject).banner_url = paramMsgType0x210.getString("banner_url");
+          ((AcsMsg)localObject).banner_type = paramMsgType0x210.getInt("banner_type");
+          ((AcsMsg)localObject).mn_appid = paramMsgType0x210.optInt("mn_appid", 0);
+          ((AcsMsg)localObject).mn_reserved = paramMsgType0x210.optString("mn_reserve", "");
+          QQNotifyHelper.a(paramQQAppInterface, "remindmessage_push", null, ((AcsMsg)localObject).msg_id, null, ((AcsMsg)localObject).mn_reserved);
+          localIQQReminderDataService.doNotifyByPush((AcsMsg)localObject);
+          return;
         }
-        catch (Exception paramQQAppInterface)
-        {
-          if (!QLog.isColorLevel()) {
-            return;
-          }
-        }
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("[notify][push] unknown push type: ");
+        paramQQAppInterface.append(i);
+        QLog.e("ReminderDecoder", 1, paramQQAppInterface.toString());
         return;
-        label388:
-        QLog.e("ReminderDecoder", 1, "[notify][push] unknown jump type: " + i);
       }
-      QLog.e("ReminderDecoder", 1, "[notify][push] unknown push type: " + i);
-      return;
+      catch (Exception paramQQAppInterface)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+      QLog.d("QQReminder", 2, "parse push got error.", paramQQAppInterface);
     }
-    if (QLog.isColorLevel()) {
+    else if (QLog.isColorLevel())
+    {
       QLog.d("ReminderDecoder", 1, new Object[] { "receive same message, seq = ", Short.valueOf(paramShort) });
     }
   }
@@ -98,12 +105,12 @@ public class ReminderDecoder
   public void a(msg_comm.MsgType0x210 paramMsgType0x210, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext, MessageHandler paramMessageHandler)
   {
     a(paramMessageHandler.a, (short)paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_time.get(), paramMsgType0x210);
-    MessageProtoCodec.a(paramMessageHandler, paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get());
+    MessageProtoCodec.a(paramMsg.msg_head.from_uin.get(), paramMsg.msg_head.msg_seq.get(), paramMsg.msg_head.msg_uid.get(), paramMsg.msg_head.msg_type.get(), paramMessageHandler.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.msgType0x210.ReminderDecoder
  * JD-Core Version:    0.7.0.1
  */

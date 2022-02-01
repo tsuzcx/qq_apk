@@ -3,12 +3,12 @@ package com.tencent.biz.pubaccount.serviceAccountFolder.fragment;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
-import android.support.v4.view.PagerAdapter;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.QQBrowserDelegationActivity;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -36,21 +36,22 @@ class FolderRecommendTabFragment$BannerPagerAdapter
   {
     if (paramEntryBannerInfo != null)
     {
-      if ((!"1".equals(paramEntryBannerInfo.a)) || (TextUtils.isEmpty(paramEntryBannerInfo.b))) {
-        break label62;
+      Intent localIntent;
+      if (("1".equals(paramEntryBannerInfo.a)) && (!TextUtils.isEmpty(paramEntryBannerInfo.b)))
+      {
+        localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
+        localIntent.putExtra("url", paramEntryBannerInfo.b);
+        localIntent.putExtra("fromOneCLickCLose", true);
+        paramContext.startActivity(localIntent);
+        return;
       }
-      localIntent = new Intent(paramContext, QQBrowserDelegationActivity.class);
-      localIntent.putExtra("url", paramEntryBannerInfo.b);
-      localIntent.putExtra("fromOneCLickCLose", true);
-      paramContext.startActivity(localIntent);
+      if (("2".equals(paramEntryBannerInfo.a)) && (!TextUtils.isEmpty(paramEntryBannerInfo.b)))
+      {
+        localIntent = new Intent("android.intent.action.VIEW");
+        localIntent.setData(Uri.parse(paramEntryBannerInfo.b));
+        paramContext.startActivity(localIntent);
+      }
     }
-    label62:
-    while ((!"2".equals(paramEntryBannerInfo.a)) || (TextUtils.isEmpty(paramEntryBannerInfo.b))) {
-      return;
-    }
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.setData(Uri.parse(paramEntryBannerInfo.b));
-    paramContext.startActivity(localIntent);
   }
   
   public void a(List<TogetherControlManager.EntryBannerInfo> paramList)
@@ -76,8 +77,8 @@ class FolderRecommendTabFragment$BannerPagerAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559756, null);
-    ImageView localImageView = (ImageView)localView.findViewById(2131363468);
+    View localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559632, null);
+    ImageView localImageView = (ImageView)localView.findViewById(2131363395);
     localImageView.setImageDrawable(URLDrawable.getDrawable(((TogetherControlManager.EntryBannerInfo)this.a.get(paramInt)).c));
     localImageView.setOnClickListener(new FolderRecommendTabFragment.BannerPagerAdapter.1(this, paramInt));
     paramViewGroup.addView(localView);
@@ -91,7 +92,7 @@ class FolderRecommendTabFragment$BannerPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.fragment.FolderRecommendTabFragment.BannerPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

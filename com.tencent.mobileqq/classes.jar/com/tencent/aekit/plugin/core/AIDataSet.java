@@ -14,8 +14,9 @@ public class AIDataSet
   
   public void clear()
   {
-    if (this.aiDataMap != null) {
-      this.aiDataMap.clear();
+    Map localMap = this.aiDataMap;
+    if (localMap != null) {
+      localMap.clear();
     }
   }
   

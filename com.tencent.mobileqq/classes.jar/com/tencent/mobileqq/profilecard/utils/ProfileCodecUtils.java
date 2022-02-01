@@ -32,36 +32,28 @@ public class ProfileCodecUtils
   
   public static int encodeLocCode(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     int i = 0;
-    int k = 0;
-    int j = k;
-    if (!TextUtils.isEmpty(paramString))
+    if (!bool)
     {
       if (paramString.equals("0")) {
-        j = k;
+        return 0;
       }
-    }
-    else {
+      int k = paramString.length();
+      int j = 0;
+      while (i < k)
+      {
+        j += (paramString.charAt(i) << (k - 1 - i) * 8);
+        i += 1;
+      }
       return j;
     }
-    int m = paramString.length();
-    j = 0;
-    for (;;)
-    {
-      k = j;
-      j = i;
-      if (k >= m) {
-        break;
-      }
-      int n = paramString.charAt(k);
-      j = k + 1;
-      i = (n << (m - 1 - k) * 8) + i;
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.utils.ProfileCodecUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,7 @@ public class AIOBusinessRecordHelper
 {
   private void a()
   {
-    com.etrump.mixlayout.FontManager.c = false;
+    com.tencent.mobileqq.vas.font.api.FontManagerConstants.sHasChatFont = false;
     com.tencent.mobileqq.vas.AvatarPendantManager.b = false;
     com.tencent.mobileqq.bubble.BubbleManager.a = false;
     BubbleDiyFetcher.a().d();
@@ -24,14 +24,12 @@ public class AIOBusinessRecordHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 14, 21 };
+    return new int[] { 15, 6 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 6) && (paramInt != 15)) {
       return;
     }
     a();
@@ -39,7 +37,7 @@ public class AIOBusinessRecordHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.AIOBusinessRecordHelper
  * JD-Core Version:    0.7.0.1
  */

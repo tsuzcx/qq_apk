@@ -40,40 +40,54 @@ public class BaseItemTask
   
   private boolean checkFileMd5(String paramString)
   {
-    if ((this.mUpdateUrlInfo == null) || (TextUtils.isEmpty(this.mUpdateUrlInfo.mDstMd5)) || (TextUtils.isEmpty(paramString))) {}
-    while (!this.mUpdateUrlInfo.mDstMd5.equalsIgnoreCase(VasUpdateWrapper.getCommonManager().getFileMd5(paramString))) {
-      return false;
+    UpdateUrlInfoPtr localUpdateUrlInfoPtr = this.mUpdateUrlInfo;
+    if ((localUpdateUrlInfoPtr != null) && (!TextUtils.isEmpty(localUpdateUrlInfoPtr.mDstMd5)))
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      if (this.mUpdateUrlInfo.mDstMd5.equalsIgnoreCase(VasUpdateWrapper.getCommonManager().getFileMd5(paramString))) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   private boolean checkFileValid(@NonNull String paramString)
   {
     ItemLocalFileMd5 localItemLocalFileMd5 = ItemLocalFileMd5.parseJsonToItemLocalFileMd5(VasUpdateWrapper.getDbManager().selectItem(2, this.mParams.mItemId));
-    if ((localItemLocalFileMd5 == null) || (!paramString.equalsIgnoreCase(localItemLocalFileMd5.mOriginMd5))) {
-      return false;
-    }
-    VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "checkFileValid local : " + localItemLocalFileMd5.toString());
-    File localFile = new File(getSaveFilePath());
-    if ((localFile.lastModified() != 0L) && (localItemLocalFileMd5.mLastFileModified != 0L) && (localFile.lastModified() != localItemLocalFileMd5.mLastFileModified))
+    if (localItemLocalFileMd5 != null)
     {
-      VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileValid file has modified");
-      return false;
-    }
-    if (this.mItemInfo.mIsCanPatch)
-    {
-      if (!new File(getStorageFilePath()).exists())
-      {
-        VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileValid sge doesn't exist");
+      if (!paramString.equalsIgnoreCase(localItemLocalFileMd5.mOriginMd5)) {
         return false;
       }
-      if (!paramString.equalsIgnoreCase(VasUpdateWrapper.getCommonManager().getFileMd5(getStorageFilePath())))
+      Object localObject = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkFileValid local : ");
+      localStringBuilder.append(localItemLocalFileMd5.toString());
+      ((IVasLog)localObject).i("VasUpdate_BaseItemTask", localStringBuilder.toString());
+      localObject = new File(getSaveFilePath());
+      if ((((File)localObject).lastModified() != 0L) && (localItemLocalFileMd5.mLastFileModified != 0L) && (((File)localObject).lastModified() != localItemLocalFileMd5.mLastFileModified))
       {
-        VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileValid sge invalid");
+        VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileValid file has modified");
         return false;
       }
+      if (this.mItemInfo.mIsCanPatch)
+      {
+        if (!new File(getStorageFilePath()).exists())
+        {
+          VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileValid sge doesn't exist");
+          return false;
+        }
+        if (!paramString.equalsIgnoreCase(VasUpdateWrapper.getCommonManager().getFileMd5(getStorageFilePath())))
+        {
+          VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileValid sge invalid");
+          return false;
+        }
+      }
+      return true;
     }
-    return true;
+    return false;
   }
   
   private void checkItemUpdateDb(String paramString)
@@ -90,27 +104,47 @@ public class BaseItemTask
   
   private String getStorageFilePath()
   {
-    String str2 = getSaveFilePath();
-    String str1 = str2;
-    if (this.mItemInfo.mSaveInDir) {
-      str1 = str2 + File.separator + this.mParams.mItemId + ".sge";
+    String str = getSaveFilePath();
+    Object localObject = str;
+    if (this.mItemInfo.mSaveInDir)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(this.mParams.mItemId);
+      ((StringBuilder)localObject).append(".sge");
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return localObject;
   }
   
   private void handleGetUrlSuccess(@NonNull UpdateUrlInfoPtr paramUpdateUrlInfoPtr)
   {
     this.mUpdateUrlInfo = paramUpdateUrlInfoPtr;
-    IBusinessCallback localIBusinessCallback = VasUpdateSystem.getInstance().getObserver(paramUpdateUrlInfoPtr.mBid);
-    if (VasUpdateWrapper.getLog().isColorLevel()) {
-      VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "handleGetUrlSuccess  bid = " + paramUpdateUrlInfoPtr.mBid + " , scid = " + paramUpdateUrlInfoPtr.mScid + " savePath = " + getSaveFilePath());
+    Object localObject1 = VasUpdateSystem.getInstance().getObserver(paramUpdateUrlInfoPtr.mBid);
+    Object localObject2;
+    if (VasUpdateWrapper.getLog().isColorLevel())
+    {
+      localObject2 = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleGetUrlSuccess  bid = ");
+      localStringBuilder.append(paramUpdateUrlInfoPtr.mBid);
+      localStringBuilder.append(" , scid = ");
+      localStringBuilder.append(paramUpdateUrlInfoPtr.mScid);
+      localStringBuilder.append(" savePath = ");
+      localStringBuilder.append(getSaveFilePath());
+      ((IVasLog)localObject2).i("VasUpdate_BaseItemTask", localStringBuilder.toString());
     }
-    if (localIBusinessCallback == null) {
+    if (localObject1 == null) {
       return;
     }
-    if ((localIBusinessCallback.isFileExist(this.mParams, this.mItemInfo)) && (checkFileValid(paramUpdateUrlInfoPtr.mDstMd5)))
+    if ((((IBusinessCallback)localObject1).isFileExist(this.mParams, this.mItemInfo)) && (checkFileValid(paramUpdateUrlInfoPtr.mDstMd5)))
     {
-      VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "handleGetUrlSuccess  up-to-date , itemId = " + paramUpdateUrlInfoPtr.mItemId);
+      localObject1 = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("handleGetUrlSuccess  up-to-date , itemId = ");
+      ((StringBuilder)localObject2).append(paramUpdateUrlInfoPtr.mItemId);
+      ((IVasLog)localObject1).e("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
       checkItemUpdateDb(this.mParams.mItemId);
       selfNotifyCompleted(0, 0, "");
       return;
@@ -122,7 +156,10 @@ public class BaseItemTask
     }
     if (paramUpdateUrlInfoPtr.mCode != 0)
     {
-      selfNotifyCompleted(4, 0, "update response code error , code = " + paramUpdateUrlInfoPtr.mCode);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("update response code error , code = ");
+      ((StringBuilder)localObject1).append(paramUpdateUrlInfoPtr.mCode);
+      selfNotifyCompleted(4, 0, ((StringBuilder)localObject1).toString());
       return;
     }
     if (!TextUtils.isEmpty(paramUpdateUrlInfoPtr.mFileContent))
@@ -132,7 +169,10 @@ public class BaseItemTask
         notifyDownloadComplete(paramUpdateUrlInfoPtr.mItemId, 0, 0, "file content success");
         return;
       }
-      selfNotifyCompleted(12, 0, "temp file move error , file = " + paramUpdateUrlInfoPtr.mFileContent);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("temp file move error , file = ");
+      ((StringBuilder)localObject1).append(paramUpdateUrlInfoPtr.mFileContent);
+      selfNotifyCompleted(12, 0, ((StringBuilder)localObject1).toString());
       return;
     }
     VasUpdateSystem.getInstance().getDownloadModule().startDownload(this.mParams.mItemId, paramUpdateUrlInfoPtr.mUrl, this.mParams.mFrom, getTempFilePath(), this);
@@ -153,65 +193,88 @@ public class BaseItemTask
   
   private void selfNotifyCompleted(int paramInt1, int paramInt2, String paramString)
   {
-    boolean bool2 = false;
-    DLReportInfo localDLReportInfo;
-    label162:
-    label185:
-    ItemUpdateVerPtr localItemUpdateVerPtr;
     if (paramInt1 != 0)
     {
-      VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "selfNotifyCompleted fail itemId = " + this.mParams.mItemId + " nUpdateErrorCode = " + paramInt1 + " , nHttpCode = " + paramInt2 + " , message = " + paramString + " retryCount = " + this.mLocalUpdateVer.mRunCount);
-      localDLReportInfo = new DLReportInfo();
-      boolean bool1 = bool2;
-      if (this.mUpdateUrlInfo != null)
-      {
-        bool1 = bool2;
-        if (this.mUpdateUrlInfo.mDeltaMode == 1) {
-          bool1 = true;
-        }
-      }
-      localDLReportInfo.mIsIncrement = bool1;
-      localDLReportInfo.mRetryCount = this.mLocalUpdateVer.mRunCount;
-      if (this.mUpdateUrlInfo == null) {
-        break label432;
-      }
-      localObject = this.mUpdateUrlInfo.mSrcMd5;
-      localDLReportInfo.mSrcMd5 = ((String)localObject);
-      if (this.mUpdateUrlInfo == null) {
-        break label439;
-      }
-      localObject = this.mUpdateUrlInfo.mDstMd5;
-      localDLReportInfo.mDstMd5 = ((String)localObject);
-      if ((paramInt1 != 0) && (paramInt1 != 10))
-      {
-        this.mLocalUpdateVer.mLastRunTime = (System.currentTimeMillis() / 1000L);
-        localObject = this.mLocalUpdateVer;
-        ((ItemUpdateVerPtr)localObject).mRunCount += 1;
-        localItemUpdateVerPtr = this.mLocalUpdateVer;
-        if (this.mUpdateUrlInfo == null) {
-          break label446;
-        }
+      localObject1 = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("selfNotifyCompleted fail itemId = ");
+      ((StringBuilder)localObject2).append(this.mParams.mItemId);
+      ((StringBuilder)localObject2).append(" nUpdateErrorCode = ");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append(" , nHttpCode = ");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append(" , message = ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" retryCount = ");
+      ((StringBuilder)localObject2).append(this.mLocalUpdateVer.mRunCount);
+      ((IVasLog)localObject1).e("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
+    }
+    else
+    {
+      localObject1 = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("selfNotifyCompleted nUpdateErrorCode = ");
+      ((StringBuilder)localObject2).append(paramInt1);
+      ((StringBuilder)localObject2).append(" , nHttpCode = ");
+      ((StringBuilder)localObject2).append(paramInt2);
+      ((StringBuilder)localObject2).append(" , message = ");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(" retryCount = ");
+      ((StringBuilder)localObject2).append(this.mLocalUpdateVer.mRunCount);
+      ((IVasLog)localObject1).i("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
+    }
+    DLReportInfo localDLReportInfo = new DLReportInfo();
+    Object localObject1 = this.mUpdateUrlInfo;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject1 != null)
+    {
+      bool1 = bool2;
+      if (((UpdateUrlInfoPtr)localObject1).mDeltaMode == 1) {
+        bool1 = true;
       }
     }
-    label432:
-    label439:
-    label446:
-    for (Object localObject = this.mUpdateUrlInfo.mAppVersion;; localObject = this.mLocalUpdateVer.mAppVersion)
+    localDLReportInfo.mIsIncrement = bool1;
+    localDLReportInfo.mRetryCount = this.mLocalUpdateVer.mRunCount;
+    localObject1 = this.mUpdateUrlInfo;
+    Object localObject2 = "";
+    if (localObject1 != null) {
+      localObject1 = ((UpdateUrlInfoPtr)localObject1).mSrcMd5;
+    } else {
+      localObject1 = "";
+    }
+    localDLReportInfo.mSrcMd5 = ((String)localObject1);
+    UpdateUrlInfoPtr localUpdateUrlInfoPtr = this.mUpdateUrlInfo;
+    localObject1 = localObject2;
+    if (localUpdateUrlInfoPtr != null) {
+      localObject1 = localUpdateUrlInfoPtr.mDstMd5;
+    }
+    localDLReportInfo.mDstMd5 = ((String)localObject1);
+    if ((paramInt1 != 0) && (paramInt1 != 10))
     {
-      localItemUpdateVerPtr.mAppVersion = ((String)localObject);
-      VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "selfNotifyCompleted fail localData = " + this.mLocalUpdateVer.toString() + " mDLFrom = " + this.mDLFrom);
+      this.mLocalUpdateVer.mLastRunTime = (System.currentTimeMillis() / 1000L);
+      localObject1 = this.mLocalUpdateVer;
+      ((ItemUpdateVerPtr)localObject1).mRunCount += 1;
+      localObject2 = this.mLocalUpdateVer;
+      localObject1 = this.mUpdateUrlInfo;
+      if (localObject1 != null) {
+        localObject1 = ((UpdateUrlInfoPtr)localObject1).mAppVersion;
+      } else {
+        localObject1 = ((ItemUpdateVerPtr)localObject2).mAppVersion;
+      }
+      ((ItemUpdateVerPtr)localObject2).mAppVersion = ((String)localObject1);
+      localObject1 = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("selfNotifyCompleted fail localData = ");
+      ((StringBuilder)localObject2).append(this.mLocalUpdateVer.toString());
+      ((StringBuilder)localObject2).append(" mDLFrom = ");
+      ((StringBuilder)localObject2).append(this.mDLFrom);
+      ((IVasLog)localObject1).e("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
       if (this.mDLFrom != 3) {
         VasUpdateWrapper.getDbManager().updateItem(1, this.mLocalUpdateVer.mItemId, ItemUpdateVerPtr.convertItemUpdateVerPrtToJson(this.mLocalUpdateVer));
       }
-      VasUpdateSystem.getInstance().onTaskItemComplete(this.mParams, this.mDLFrom, paramInt1, paramInt2, paramString, localDLReportInfo);
-      return;
-      VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "selfNotifyCompleted nUpdateErrorCode = " + paramInt1 + " , nHttpCode = " + paramInt2 + " , message = " + paramString + " retryCount = " + this.mLocalUpdateVer.mRunCount);
-      break;
-      localObject = "";
-      break label162;
-      localObject = "";
-      break label185;
     }
+    VasUpdateSystem.getInstance().onTaskItemComplete(this.mParams, this.mDLFrom, paramInt1, paramInt2, paramString, localDLReportInfo);
   }
   
   public int checkFileMode(String paramString1, String paramString2)
@@ -219,118 +282,207 @@ public class BaseItemTask
     if (this.mUpdateUrlInfo == null) {
       return 999;
     }
-    if (VasUpdateWrapper.getLog().isColorLevel()) {
-      VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "start checkFileMode itemId = " + paramString1 + " ; tempFile = " + paramString2);
+    if (VasUpdateWrapper.getLog().isColorLevel())
+    {
+      localObject1 = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("start checkFileMode itemId = ");
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append(" ; tempFile = ");
+      ((StringBuilder)localObject2).append(paramString2);
+      ((IVasLog)localObject1).i("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
     }
-    String str1 = paramString2;
+    Object localObject1 = paramString2;
     if (this.mUpdateUrlInfo.mCompressMode != 0)
     {
-      VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "checkFileMode handle compressMode , mode = " + this.mUpdateUrlInfo.mCompressMode);
-      str1 = VasUpdateWrapper.getCommonManager().unCompressFile(this.mUpdateUrlInfo.mCompressMode, paramString2);
-      if (TextUtils.isEmpty(str1))
+      localObject1 = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkFileMode handle compressMode , mode = ");
+      ((StringBuilder)localObject2).append(this.mUpdateUrlInfo.mCompressMode);
+      ((IVasLog)localObject1).i("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
+      localObject1 = VasUpdateWrapper.getCommonManager().unCompressFile(this.mUpdateUrlInfo.mCompressMode, paramString2);
+      if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileMode compress error path = null , itemId = " + paramString1);
+        paramString2 = VasUpdateWrapper.getLog();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("checkFileMode compress error path = null , itemId = ");
+        ((StringBuilder)localObject1).append(paramString1);
+        paramString2.e("VasUpdate_BaseItemTask", ((StringBuilder)localObject1).toString());
         return 13;
       }
       FileUtil.deleteFile(paramString2);
-      VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "uncompress success id = " + paramString1);
+      paramString2 = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("uncompress success id = ");
+      ((StringBuilder)localObject2).append(paramString1);
+      paramString2.i("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
     }
-    VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "checkFileMode id = " + paramString1 + " mDeltaMode = " + this.mUpdateUrlInfo.mDeltaMode);
+    paramString2 = VasUpdateWrapper.getLog();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("checkFileMode id = ");
+    ((StringBuilder)localObject2).append(paramString1);
+    ((StringBuilder)localObject2).append(" mDeltaMode = ");
+    ((StringBuilder)localObject2).append(this.mUpdateUrlInfo.mDeltaMode);
+    paramString2.i("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
     if (this.mUpdateUrlInfo.mDeltaMode == 1)
     {
-      String str2 = getStorageFilePath();
-      paramString2 = str2;
-      if (!TextUtils.isEmpty(str2))
+      localObject2 = getStorageFilePath();
+      paramString2 = (String)localObject2;
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        paramString2 = str2;
-        if (str2.equalsIgnoreCase(getSaveFilePath()))
+        paramString2 = (String)localObject2;
+        if (((String)localObject2).equalsIgnoreCase(getSaveFilePath()))
         {
-          paramString2 = str2 + ".copy";
+          paramString2 = new StringBuilder();
+          paramString2.append((String)localObject2);
+          paramString2.append(".copy");
+          paramString2 = paramString2.toString();
           if (!VasUpdateWrapper.getCommonManager().copyFile(getSaveFilePath(), paramString2))
           {
-            VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileMode copyFile fail , id = " + paramString1);
+            paramString2 = VasUpdateWrapper.getLog();
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("checkFileMode copyFile fail , id = ");
+            ((StringBuilder)localObject1).append(paramString1);
+            paramString2.e("VasUpdate_BaseItemTask", ((StringBuilder)localObject1).toString());
             return 22;
           }
-          VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileMode copyFile success sgeFile = " + paramString2);
+          localObject2 = VasUpdateWrapper.getLog();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("checkFileMode copyFile success sgeFile = ");
+          localStringBuilder.append(paramString2);
+          ((IVasLog)localObject2).e("VasUpdate_BaseItemTask", localStringBuilder.toString());
         }
       }
-      if (!VasUpdateWrapper.getCommonManager().filePatch(paramString2, str1))
+      if (!VasUpdateWrapper.getCommonManager().filePatch(paramString2, (String)localObject1))
       {
-        VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileMode filePatch fail , id = " + paramString1);
+        paramString2 = VasUpdateWrapper.getLog();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("checkFileMode filePatch fail , id = ");
+        ((StringBuilder)localObject1).append(paramString1);
+        paramString2.e("VasUpdate_BaseItemTask", ((StringBuilder)localObject1).toString());
         return 15;
       }
-      VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "checkFileMode file patch success, id = " + paramString1 + " sgeFile = " + paramString2);
-      FileUtil.deleteFile(str1);
+      localObject2 = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkFileMode file patch success, id = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" sgeFile = ");
+      localStringBuilder.append(paramString2);
+      ((IVasLog)localObject2).i("VasUpdate_BaseItemTask", localStringBuilder.toString());
+      FileUtil.deleteFile((String)localObject1);
     }
-    while (!checkFileMd5(paramString2))
+    else
     {
-      VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileMode checkFileMd5 error , id = " + paramString1 + " returnFile = " + paramString2);
+      if (this.mUpdateUrlInfo.mDeltaMode != 0) {
+        break label1080;
+      }
+      if (!FileUtil.removeFile((String)localObject1, getStorageFilePath()))
+      {
+        paramString2 = VasUpdateWrapper.getLog();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("checkFileMode save storage file fail , id = ");
+        ((StringBuilder)localObject1).append(paramString1);
+        ((StringBuilder)localObject1).append(" , storagePath = ");
+        ((StringBuilder)localObject1).append(getStorageFilePath());
+        paramString2.e("VasUpdate_BaseItemTask", ((StringBuilder)localObject1).toString());
+        return 12;
+      }
+      paramString2 = getStorageFilePath();
+    }
+    if (!checkFileMd5(paramString2))
+    {
+      localObject1 = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkFileMode checkFileMd5 error , id = ");
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append(" returnFile = ");
+      ((StringBuilder)localObject2).append(paramString2);
+      ((IVasLog)localObject1).e("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
       FileUtil.deleteFile(paramString2);
       return 17;
-      if (this.mUpdateUrlInfo.mDeltaMode == 0)
-      {
-        if (!FileUtil.removeFile(str1, getStorageFilePath()))
-        {
-          VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileMode save storage file fail , id = " + paramString1 + " , storagePath = " + getStorageFilePath());
-          return 12;
-        }
-        paramString2 = getStorageFilePath();
-      }
-      else
-      {
-        VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileMode delta mode error , id = " + paramString1);
-        return 16;
-      }
     }
-    if (VasUpdateWrapper.getLog().isColorLevel()) {
-      VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "checkFileMode mSaveInDir = " + this.mItemInfo.mSaveInDir + " , storageMode = " + this.mUpdateUrlInfo.mStorageMode + " mIsCanPatch = " + this.mItemInfo.mIsCanPatch + " savePath = " + getSaveFilePath());
-    }
-    str1 = paramString2;
-    if (this.mItemInfo.mSaveInDir)
+    if (VasUpdateWrapper.getLog().isColorLevel())
     {
-      str1 = paramString2;
-      if (this.mUpdateUrlInfo.mStorageMode != 0)
+      localObject1 = VasUpdateWrapper.getLog();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkFileMode mSaveInDir = ");
+      ((StringBuilder)localObject2).append(this.mItemInfo.mSaveInDir);
+      ((StringBuilder)localObject2).append(" , storageMode = ");
+      ((StringBuilder)localObject2).append(this.mUpdateUrlInfo.mStorageMode);
+      ((StringBuilder)localObject2).append(" mIsCanPatch = ");
+      ((StringBuilder)localObject2).append(this.mItemInfo.mIsCanPatch);
+      ((StringBuilder)localObject2).append(" savePath = ");
+      ((StringBuilder)localObject2).append(getSaveFilePath());
+      ((IVasLog)localObject1).i("VasUpdate_BaseItemTask", ((StringBuilder)localObject2).toString());
+    }
+    if ((this.mItemInfo.mSaveInDir) && (this.mUpdateUrlInfo.mStorageMode != 0))
+    {
+      localObject2 = VasUpdateWrapper.getCommonManager().unCompressFile(this.mUpdateUrlInfo.mStorageMode, paramString2);
+      if (TextUtils.isEmpty((CharSequence)localObject2))
       {
-        str1 = VasUpdateWrapper.getCommonManager().unCompressFile(this.mUpdateUrlInfo.mStorageMode, paramString2);
-        if (TextUtils.isEmpty(str1))
-        {
-          VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileMode storage compress error path = null , itemId = " + paramString1);
-          return 13;
-        }
-        if (!this.mItemInfo.mIsCanPatch) {
-          FileUtil.deleteFile(paramString2);
-        }
+        paramString2 = VasUpdateWrapper.getLog();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("checkFileMode storage compress error path = null , itemId = ");
+        ((StringBuilder)localObject1).append(paramString1);
+        paramString2.e("VasUpdate_BaseItemTask", ((StringBuilder)localObject1).toString());
+        return 13;
+      }
+      localObject1 = localObject2;
+      if (!this.mItemInfo.mIsCanPatch)
+      {
+        FileUtil.deleteFile(paramString2);
+        localObject1 = localObject2;
       }
     }
-    if ((!this.mItemInfo.mSaveInDir) && (!TextUtils.isEmpty(str1)) && (!str1.equalsIgnoreCase(getSaveFilePath())) && (!FileUtil.removeFile(str1, getSaveFilePath())))
+    else
     {
-      VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "checkFileMode move file fail , id = " + paramString1);
+      localObject1 = paramString2;
+    }
+    if ((!this.mItemInfo.mSaveInDir) && (!TextUtils.isEmpty((CharSequence)localObject1)) && (!((String)localObject1).equalsIgnoreCase(getSaveFilePath())) && (!FileUtil.removeFile((String)localObject1, getSaveFilePath())))
+    {
+      paramString2 = VasUpdateWrapper.getLog();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("checkFileMode move file fail , id = ");
+      ((StringBuilder)localObject1).append(paramString1);
+      paramString2.e("VasUpdate_BaseItemTask", ((StringBuilder)localObject1).toString());
       return 12;
     }
     return 0;
+    label1080:
+    paramString2 = VasUpdateWrapper.getLog();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("checkFileMode delta mode error , id = ");
+    ((StringBuilder)localObject1).append(paramString1);
+    paramString2.e("VasUpdate_BaseItemTask", ((StringBuilder)localObject1).toString());
+    return 16;
   }
   
   public boolean checkSrcFileIsNeedReDownload(String paramString)
   {
     IBusinessCallback localIBusinessCallback = VasUpdateSystem.getInstance().getObserver(this.mParams.mBid);
     VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "checkSrcFileIsNeedReDownload");
-    if ((localIBusinessCallback == null) || (TextUtils.isEmpty(paramString))) {}
-    while (!localIBusinessCallback.isFileExist(this.mParams, this.mItemInfo)) {
-      return true;
-    }
-    if (checkFileValid(paramString)) {
-      return false;
-    }
-    try
+    if (localIBusinessCallback != null)
     {
-      new File(getSaveFilePath()).delete();
-      new File(getStorageFilePath()).delete();
-      localIBusinessCallback.deleteFile(this.mParams, this.mItemInfo);
-      return true;
-    }
-    catch (Throwable paramString)
-    {
-      paramString.printStackTrace();
+      if (TextUtils.isEmpty(paramString)) {
+        return true;
+      }
+      if (!localIBusinessCallback.isFileExist(this.mParams, this.mItemInfo)) {
+        return true;
+      }
+      if (checkFileValid(paramString)) {
+        return false;
+      }
+      try
+      {
+        new File(getSaveFilePath()).delete();
+        new File(getStorageFilePath()).delete();
+        localIBusinessCallback.deleteFile(this.mParams, this.mItemInfo);
+        return true;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
     return true;
   }
@@ -347,31 +499,41 @@ public class BaseItemTask
   
   protected String getSaveFilePathDir()
   {
-    String str2 = getSaveFilePath();
-    if (TextUtils.isEmpty(str2)) {
-      VasUpdateWrapper.getLog().e("VasUpdate_BaseItemTask", "getSaveFilePathDir path = null , itemId = " + this.mParams.mItemId);
+    String str = getSaveFilePath();
+    if (TextUtils.isEmpty(str))
+    {
+      localObject = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSaveFilePathDir path = null , itemId = ");
+      localStringBuilder.append(this.mParams.mItemId);
+      ((IVasLog)localObject).e("VasUpdate_BaseItemTask", localStringBuilder.toString());
     }
-    String str1 = str2;
+    Object localObject = str;
     if (!this.mItemInfo.mSaveInDir)
     {
-      str1 = str2;
-      if (!TextUtils.isEmpty(str2))
+      localObject = str;
+      if (!TextUtils.isEmpty(str))
       {
-        int i = str2.lastIndexOf(File.separator);
-        str1 = str2;
+        int i = str.lastIndexOf(File.separator);
+        localObject = str;
         if (i > 0) {
-          str1 = str2.substring(0, i);
+          localObject = str.substring(0, i);
         }
       }
     }
-    return str1;
+    return localObject;
   }
   
   protected String getTempFilePath()
   {
     this.mStrTempFilePath = getSaveFilePathDir();
     FileUtil.checkFilePathExist(this.mStrTempFilePath);
-    this.mStrTempFilePath = (this.mStrTempFilePath + File.separator + this.mParams.mItemId + ".tmp");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.mStrTempFilePath);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(this.mParams.mItemId);
+    localStringBuilder.append(".tmp");
+    this.mStrTempFilePath = localStringBuilder.toString();
     return this.mStrTempFilePath;
   }
   
@@ -387,20 +549,43 @@ public class BaseItemTask
   
   public void notifyDownloadComplete(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "complete itemId = " + paramString1 + " nUpdateErrorCode = " + paramInt1 + " nHttpCode = " + paramInt2 + " message = " + paramString2);
+    Object localObject = VasUpdateWrapper.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("complete itemId = ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" nUpdateErrorCode = ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" nHttpCode = ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" message = ");
+    localStringBuilder.append(paramString2);
+    ((IVasLog)localObject).i("VasUpdate_BaseItemTask", localStringBuilder.toString());
     if (paramInt1 != 0)
     {
-      String str = paramString2;
-      if (TextUtils.isEmpty(paramString2)) {
-        str = "itemId =  " + paramString1 + " download fail , error code = " + paramInt1 + " httpCode = " + paramInt2;
+      localObject = paramString2;
+      if (TextUtils.isEmpty(paramString2))
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("itemId =  ");
+        paramString2.append(paramString1);
+        paramString2.append(" download fail , error code = ");
+        paramString2.append(paramInt1);
+        paramString2.append(" httpCode = ");
+        paramString2.append(paramInt2);
+        localObject = paramString2.toString();
       }
-      selfNotifyCompleted(paramInt1, paramInt2, str);
+      selfNotifyCompleted(paramInt1, paramInt2, (String)localObject);
       return;
     }
     paramInt1 = checkFileMode(paramString1, getTempFilePath());
     if (paramInt1 != 0)
     {
-      selfNotifyCompleted(paramInt1, paramInt2, "checkFileMode error itemId = " + paramString1 + " fileModeRes = " + paramInt1);
+      paramString2 = new StringBuilder();
+      paramString2.append("checkFileMode error itemId = ");
+      paramString2.append(paramString1);
+      paramString2.append(" fileModeRes = ");
+      paramString2.append(paramInt1);
+      selfNotifyCompleted(paramInt1, paramInt2, paramString2.toString());
       return;
     }
     paramString2 = new ItemLocalVerPrt();
@@ -414,8 +599,19 @@ public class BaseItemTask
   
   public void notifyDownloadProgress(String paramString, long paramLong1, long paramLong2, int paramInt)
   {
-    if ((VasUpdateWrapper.getLog().isColorLevel()) && (paramInt == 100)) {
-      VasUpdateWrapper.getLog().i("VasUpdate_BaseItemTask", "progress itemId = " + paramString + " rate = " + paramInt + " current = " + paramLong1 + " max = " + paramLong2);
+    if ((VasUpdateWrapper.getLog().isColorLevel()) && (paramInt == 100))
+    {
+      IVasLog localIVasLog = VasUpdateWrapper.getLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("progress itemId = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" rate = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" current = ");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(" max = ");
+      localStringBuilder.append(paramLong2);
+      localIVasLog.i("VasUpdate_BaseItemTask", localStringBuilder.toString());
     }
     VasUpdateSystem.getInstance().onTaskItemProgress(this.mParams, paramLong1, paramLong2, paramInt);
   }
@@ -432,7 +628,7 @@ public class BaseItemTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.task.BaseItemTask
  * JD-Core Version:    0.7.0.1
  */

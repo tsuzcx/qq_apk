@@ -1,20 +1,22 @@
 package com.tencent.mobileqq.msgbackup.msgprocess;
 
-import com.tencent.mobileqq.data.MessageForMixedMsg;
 import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.MessageForRichText;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.mixedmsg.api.IMsgMixed;
 import com.tencent.mobileqq.msgbackup.controller.RichMediaProcessor;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupResEntity;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class MsgProcessMixed
-  extends MsgProcessRichMedia<MessageForMixedMsg>
+  extends MsgProcessRichMedia<MessageRecord>
 {
-  public MsgProcessMixed(MessageForMixedMsg paramMessageForMixedMsg)
+  public MsgProcessMixed(MessageRecord paramMessageRecord)
   {
-    super(paramMessageForMixedMsg);
+    super(paramMessageRecord);
   }
   
   protected int a()
@@ -25,7 +27,7 @@ public class MsgProcessMixed
   public List<MsgBackupResEntity> a()
   {
     ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    Iterator localIterator = ((IMsgMixed)QRoute.api(IMsgMixed.class)).getElementList(this.a).iterator();
     while (localIterator.hasNext())
     {
       Object localObject = (MessageRecord)localIterator.next();
@@ -41,7 +43,7 @@ public class MsgProcessMixed
   
   public void a()
   {
-    Iterator localIterator = ((MessageForMixedMsg)this.a).msgElemList.iterator();
+    Iterator localIterator = ((IMsgMixed)QRoute.api(IMsgMixed.class)).getElementList(this.a).iterator();
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
@@ -53,16 +55,16 @@ public class MsgProcessMixed
   
   public void b()
   {
-    if (((MessageForMixedMsg)this.a).isSendFromLocal())
+    if (this.a.isSendFromLocal())
     {
-      ((MessageForMixedMsg)this.a).issend = 2;
-      ((MessageForMixedMsg)this.a).prewrite();
+      this.a.issend = 2;
+      ((MessageForRichText)this.a).prewriteForMsgbackup();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessMixed
  * JD-Core Version:    0.7.0.1
  */

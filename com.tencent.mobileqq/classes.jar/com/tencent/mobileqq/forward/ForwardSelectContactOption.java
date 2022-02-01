@@ -31,7 +31,7 @@ public class ForwardSelectContactOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (((!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 10004) && ((localRecentUser.getType() != 0) || (!CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() == 0) && (a(jdField_b_of_type_JavaLangInteger))) || ((localRecentUser.getType() == 1) && (!a(localRecentUser.uin)) && (a(c))) || ((localRecentUser.getType() == 1006) && (a(ForwardAbility.ForwardAbilityType.h))) || ((localRecentUser.getType() == 3000) && (a(d))))) || (((localRecentUser.getType() == 1004) || (localRecentUser.getType() == 1000)) && (this.jdField_b_of_type_Boolean)))) {
+      if ((localRecentUser != null) && (((!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 10004) && ((localRecentUser.getType() != 0) || (!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() == 0) && (a(jdField_b_of_type_JavaLangInteger))) || ((localRecentUser.getType() == 1) && (!a(localRecentUser.uin)) && (a(c))) || ((localRecentUser.getType() == 1006) && (a(ForwardAbility.ForwardAbilityType.h))) || ((localRecentUser.getType() == 3000) && (a(d))))) || (((localRecentUser.getType() == 1004) || (localRecentUser.getType() == 1000)) && (this.jdField_b_of_type_Boolean)))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -45,7 +45,7 @@ public class ForwardSelectContactOption
     }
     if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("openAIOForPtt", 0) != 1)
     {
-      a(2131694694);
+      a(2131694668);
       long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("appid", -1L);
       localObject = this.jdField_a_of_type_AndroidAppActivity;
       QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -80,7 +80,7 @@ public class ForwardSelectContactOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSelectContactOption
  * JD-Core Version:    0.7.0.1
  */

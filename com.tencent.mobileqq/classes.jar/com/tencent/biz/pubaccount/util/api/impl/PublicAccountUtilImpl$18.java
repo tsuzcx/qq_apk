@@ -1,42 +1,49 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
-import android.text.TextUtils;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.AppConstants;
+import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.MessageForStructing;
-import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.statistics.ReportController;
+import mqq.app.AppRuntime;
 
-final class PublicAccountUtilImpl$18
+class PublicAccountUtilImpl$18
   implements Runnable
 {
-  PublicAccountUtilImpl$18(QQMessageFacade paramQQMessageFacade, String paramString1, String paramString2, String paramString3, QQAppInterface paramQQAppInterface) {}
+  PublicAccountUtilImpl$18(PublicAccountUtilImpl paramPublicAccountUtilImpl, AppInterface paramAppInterface, int paramInt) {}
   
   public void run()
   {
-    MessageRecord localMessageRecord = this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.b(AppConstants.NEW_KANDIAN_UIN, -3006);
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
-      localObject = this.b;
-      if ((localMessageRecord == null) || (!(localMessageRecord instanceof MessageForStructing))) {
-        break label108;
-      }
+    Object localObject1 = ServiceAccountFolderManager.a();
+    int i = ((ServiceAccountFolderManager)localObject1).b();
+    int j = ((ServiceAccountFolderManager)localObject1).a((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    String str;
+    if (j == 1) {
+      str = "0X80067E8";
+    } else if (j == 2) {
+      str = "0X80067E9";
+    } else {
+      str = "0X80067EA";
     }
-    label108:
-    for (Object localObject = PublicAccountUtilImpl.access$800((MessageForStructing)localMessageRecord, (String)localObject, null, null, this.c);; localObject = PublicAccountUtilImpl.access$900(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (String)localObject, null, null, this.c))
-    {
-      if (localObject != null) {
-        this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade.a((MessageRecord)localObject, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-      }
-      return;
-      localObject = this.jdField_a_of_type_JavaLangString + ": " + this.b;
-      break;
-    }
+    long l = ((ServiceAccountFolderManager)localObject1).a();
+    localObject1 = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(l);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(j);
+    localObject3 = ((StringBuilder)localObject3).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(i);
+    ReportController.b((AppRuntime)localObject1, "dc01160", "Pb_account_lifeservice", "", str, str, 0, 0, (String)localObject2, (String)localObject3, localStringBuilder.toString(), String.valueOf(this.jdField_a_of_type_Int + 1));
+    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppAppInterface, "dc00898", "", "", "auth_entry", "clk_msg", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountUtilImpl.18
  * JD-Core Version:    0.7.0.1
  */

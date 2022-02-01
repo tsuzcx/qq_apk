@@ -1,36 +1,37 @@
 package com.tencent.biz.pubaccount.util;
 
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ForeBackGround;
-import com.tencent.biz.pubaccount.readinjoy.engine.ReadinjoySPEventReport.ForeBackGroundCallback;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoySPEventReport;
+import com.tencent.mobileqq.kandian.repo.feeds.IForeBackGroundCallback;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.util.List;
 import tencent.im.oidb.cmd0x80a.oidb_cmd0x80a.IdlePushWakeParam;
 
 public class SneakyCallback
-  implements ReadinjoySPEventReport.ForeBackGroundCallback
+  implements IForeBackGroundCallback
 {
   private static SneakyCallback a = new SneakyCallback();
-  
-  public static void a()
-  {
-    ReadinjoySPEventReport.ForeBackGround.a(a);
-  }
   
   public static void a(int paramInt) {}
   
   public static void a(List<oidb_cmd0x80a.IdlePushWakeParam> paramList) {}
   
-  public static void b()
+  public static void c()
   {
-    ReadinjoySPEventReport.ForeBackGround.b(a);
+    ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).addForeBackGroundCallback(a);
   }
   
-  public void l() {}
+  public static void d()
+  {
+    ((IReadInJoySPEventReport)QRoute.api(IReadInJoySPEventReport.class)).removeForeBackGroundCallback(a);
+  }
   
-  public void m() {}
+  public void a() {}
+  
+  public void ax_() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.SneakyCallback
  * JD-Core Version:    0.7.0.1
  */

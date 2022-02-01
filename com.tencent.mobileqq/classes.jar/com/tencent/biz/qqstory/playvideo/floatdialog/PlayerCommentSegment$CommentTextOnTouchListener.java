@@ -14,11 +14,18 @@ public class PlayerCommentSegment$CommentTextOnTouchListener
 {
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    Object localObject = ((TextView)paramView).getText();
-    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
     paramView = (TextView)paramView;
+    Object localObject = paramView.getText();
+    localObject = Spannable.Factory.getInstance().newSpannable((CharSequence)localObject);
     int i = paramMotionEvent.getAction();
-    if ((i == 1) || (i == 0))
+    boolean bool2 = false;
+    boolean bool1;
+    if (i != 1)
+    {
+      bool1 = bool2;
+      if (i != 0) {}
+    }
+    else
     {
       int j = (int)paramMotionEvent.getX();
       int k = (int)paramMotionEvent.getY();
@@ -29,20 +36,21 @@ public class PlayerCommentSegment$CommentTextOnTouchListener
       paramMotionEvent = paramView.getLayout();
       j = paramMotionEvent.getOffsetForHorizontal(paramMotionEvent.getLineForVertical(k - n + i2), j - m + i1);
       paramMotionEvent = (ClickableSpan[])((Spannable)localObject).getSpans(j, j, ClickableSpan.class);
+      bool1 = bool2;
       if (paramMotionEvent.length != 0)
       {
         if (i == 1) {
           paramMotionEvent[0].onClick(paramView);
         }
-        return true;
+        bool1 = true;
       }
     }
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.PlayerCommentSegment.CommentTextOnTouchListener
  * JD-Core Version:    0.7.0.1
  */

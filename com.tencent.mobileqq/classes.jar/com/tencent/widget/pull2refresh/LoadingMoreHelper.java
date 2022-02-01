@@ -4,98 +4,103 @@ import android.content.Context;
 
 public class LoadingMoreHelper
 {
-  protected int a;
-  Context a;
-  protected ILoadMoreLayout a;
-  protected LoadingMoreHelper.OnLoadMoreListener a;
-  protected boolean a;
+  Context mContext;
+  protected boolean mLoadEnabled = false;
+  protected ILoadMoreLayout mLoadMoreLayout;
+  protected LoadingMoreHelper.OnLoadMoreListener mLoadMoreListener;
+  protected int mProLoaderCount = 5;
   
   public LoadingMoreHelper(ILoadMoreLayout paramILoadMoreLayout, Context paramContext)
   {
-    this.jdField_a_of_type_Int = 5;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout = paramILoadMoreLayout;
-    this.jdField_a_of_type_AndroidContentContext = paramContext;
+    this.mLoadMoreLayout = paramILoadMoreLayout;
+    this.mContext = paramContext;
   }
   
-  public int a()
+  public int getProLoaderCount()
   {
-    return this.jdField_a_of_type_Int;
+    return this.mProLoaderCount;
   }
   
-  public void a(int paramInt)
+  public void setLoadMore(boolean paramBoolean)
   {
-    this.jdField_a_of_type_Int = paramInt;
-  }
-  
-  public void a(LoadingMoreHelper.OnLoadMoreListener paramOnLoadMoreListener)
-  {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper$OnLoadMoreListener = paramOnLoadMoreListener;
-    if (paramOnLoadMoreListener != null)
-    {
-      a(true);
-      a(true, false);
-    }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.setOnClickListener(new LoadingMoreHelper.1(this));
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (this.jdField_a_of_type_Boolean == paramBoolean) {
+    if (!this.mLoadEnabled) {
       return;
     }
-    this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(3);
+    if (this.mLoadMoreLayout.getState() == 0) {
       return;
     }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(0);
+    if (!this.mLoadMoreLayout.checkState(2)) {
+      return;
+    }
+    boolean bool = true;
+    LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.mLoadMoreListener;
+    if (localOnLoadMoreListener != null) {
+      bool = localOnLoadMoreListener.onLoadMore(paramBoolean);
+    }
+    if (bool) {
+      this.mLoadMoreLayout.setState(2);
+    }
   }
   
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
+  public void setLoadMoreComplete(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    if (!this.mLoadEnabled) {
       return;
     }
     if (!paramBoolean1)
     {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(5);
+      this.mLoadMoreLayout.setState(5);
       return;
     }
-    if (paramBoolean2) {}
-    for (int i = 3;; i = 4)
-    {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(i);
-      if ((!this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.b(i)) || (this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper$OnLoadMoreListener == null)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper$OnLoadMoreListener.c();
+    int i;
+    if (paramBoolean2) {
+      i = 3;
+    } else {
+      i = 4;
+    }
+    this.mLoadMoreLayout.setState(i);
+    if (!this.mLoadMoreLayout.checkState(i)) {
       return;
+    }
+    LoadingMoreHelper.OnLoadMoreListener localOnLoadMoreListener = this.mLoadMoreListener;
+    if (localOnLoadMoreListener != null) {
+      localOnLoadMoreListener.onLoadMoreComplete();
     }
   }
   
-  public void b(boolean paramBoolean)
+  public void setLoadMoreEnabled(boolean paramBoolean)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    boolean bool;
-    do
+    if (this.mLoadEnabled == paramBoolean) {
+      return;
+    }
+    this.mLoadEnabled = paramBoolean;
+    if (paramBoolean)
     {
-      do
-      {
-        return;
-      } while ((this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a() == 0) || (!this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.b(2)));
-      bool = true;
-      if (this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper$OnLoadMoreListener != null) {
-        bool = this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper$OnLoadMoreListener.a(paramBoolean);
-      }
-    } while (!bool);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshILoadMoreLayout.a(2);
+      this.mLoadMoreLayout.setState(3);
+      return;
+    }
+    this.mLoadMoreLayout.setState(0);
+  }
+  
+  public void setOnLoadMoreListener(LoadingMoreHelper.OnLoadMoreListener paramOnLoadMoreListener)
+  {
+    this.mLoadMoreListener = paramOnLoadMoreListener;
+    if (paramOnLoadMoreListener != null)
+    {
+      setLoadMoreEnabled(true);
+      setLoadMoreComplete(true, false);
+    }
+    this.mLoadMoreLayout.setOnClickListener(new LoadingMoreHelper.1(this));
+  }
+  
+  public void setPreLoaderCount(int paramInt)
+  {
+    this.mProLoaderCount = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.LoadingMoreHelper
  * JD-Core Version:    0.7.0.1
  */

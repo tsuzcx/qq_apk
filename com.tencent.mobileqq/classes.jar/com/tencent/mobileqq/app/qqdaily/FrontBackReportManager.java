@@ -27,7 +27,7 @@ import tencent.im.oidb.cmd0xe27.oidb_cmd0xe27.InOutQQ;
 public class FrontBackReportManager
   implements Handler.Callback, Manager
 {
-  private static long jdField_a_of_type_Long = 0L;
+  private static long jdField_a_of_type_Long;
   private static boolean jdField_a_of_type_Boolean;
   private BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
@@ -53,18 +53,19 @@ public class FrontBackReportManager
   
   private static long a()
   {
-    long l = System.currentTimeMillis() / 1000L;
-    if ((jdField_a_of_type_Long != 0L) && (86400L + jdField_a_of_type_Long > l)) {
-      return jdField_a_of_type_Long;
+    long l1 = System.currentTimeMillis() / 1000L;
+    long l2 = jdField_a_of_type_Long;
+    if ((l2 != 0L) && (86400L + l2 > l1)) {
+      return l2;
     }
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.set(11, 0);
     localCalendar.set(12, 0);
     localCalendar.set(13, 0);
     localCalendar.set(14, 0);
-    l = localCalendar.getTimeInMillis() / 1000L;
-    jdField_a_of_type_Long = l;
-    return l;
+    l1 = localCalendar.getTimeInMillis() / 1000L;
+    jdField_a_of_type_Long = l1;
+    return l1;
   }
   
   private String a(List<oidb_cmd0xe27.InOutQQ> paramList)
@@ -74,7 +75,11 @@ public class FrontBackReportManager
     while (paramList.hasNext())
     {
       oidb_cmd0xe27.InOutQQ localInOutQQ = (oidb_cmd0xe27.InOutQQ)paramList.next();
-      localStringBuilder.append("data: ").append(localInOutQQ.enum_biz_id.get()).append(", timestamp: ").append(localInOutQQ.uint32_timestamp.get()).append("\n");
+      localStringBuilder.append("data: ");
+      localStringBuilder.append(localInOutQQ.enum_biz_id.get());
+      localStringBuilder.append(", timestamp: ");
+      localStringBuilder.append(localInOutQQ.uint32_timestamp.get());
+      localStringBuilder.append("\n");
     }
     return localStringBuilder.toString();
   }
@@ -118,41 +123,50 @@ public class FrontBackReportManager
   
   private void a(int paramInt1, int paramInt2)
   {
-    boolean bool = false;
-    int j = 1;
-    if ((!this.jdField_b_of_type_Boolean) && (paramInt1 != 2) && (paramInt1 != 1)) {
+    boolean bool = this.jdField_b_of_type_Boolean;
+    int k = 2;
+    if ((!bool) && (paramInt1 != 2) && (paramInt1 != 1)) {
       return;
     }
-    if ((paramInt1 == 1) && (!this.c) && ((this.d) || (paramInt2 == 2))) {
-      this.c = true;
-    }
-    for (int i = 1;; i = 0)
+    bool = false;
+    int i;
+    if ((paramInt1 == 1) && (!this.c) && ((this.d) || (paramInt2 == 2)))
     {
-      if ((paramInt1 == 2) && (this.c))
+      this.c = true;
+      i = 1;
+    }
+    else
+    {
+      i = 0;
+    }
+    int j = i;
+    if (paramInt1 == 2)
+    {
+      j = i;
+      if (this.c)
       {
         if (paramInt2 == 2) {
           bool = true;
         }
         this.c = bool;
+        j = 1;
       }
-      for (paramInt2 = 1; paramInt2 != 0; paramInt2 = i)
-      {
-        Message localMessage = Message.obtain();
-        localMessage.what = 3;
-        oidb_cmd0xe27.InOutQQ localInOutQQ = new oidb_cmd0xe27.InOutQQ();
-        PBEnumField localPBEnumField = localInOutQQ.enum_biz_id;
-        if (paramInt1 == 1) {}
-        for (paramInt1 = j;; paramInt1 = 2)
-        {
-          localPBEnumField.set(paramInt1);
-          localInOutQQ.uint32_timestamp.set((int)(System.currentTimeMillis() / 1000L));
-          localMessage.obj = localInOutQQ;
-          this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
-          return;
-        }
-      }
-      break;
     }
+    if (j == 0) {
+      return;
+    }
+    Message localMessage = Message.obtain();
+    localMessage.what = 3;
+    oidb_cmd0xe27.InOutQQ localInOutQQ = new oidb_cmd0xe27.InOutQQ();
+    PBEnumField localPBEnumField = localInOutQQ.enum_biz_id;
+    paramInt2 = k;
+    if (paramInt1 == 1) {
+      paramInt2 = 1;
+    }
+    localPBEnumField.set(paramInt2);
+    localInOutQQ.uint32_timestamp.set((int)(System.currentTimeMillis() / 1000L));
+    localMessage.obj = localInOutQQ;
+    this.jdField_a_of_type_MqqOsMqqHandler.sendMessage(localMessage);
   }
   
   private void a(Message paramMessage)
@@ -176,19 +190,21 @@ public class FrontBackReportManager
   
   private void a(List<oidb_cmd0xe27.InOutQQ> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    do
+    if (paramList != null)
     {
-      QQDailyHandler localQQDailyHandler;
-      do
-      {
+      if (paramList.size() == 0) {
         return;
-        localQQDailyHandler = (QQDailyHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQ_DAILY_HANDLER);
-      } while (localQQDailyHandler == null);
-      localQQDailyHandler.a(paramList);
-      localQQDailyHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyHandler$OnReceiveListener);
-    } while (!QLog.isColorLevel());
-    QLog.d("FrontBackReportManager", 2, new Object[] { "report ", Integer.valueOf(paramList.size()), " entities success.\n", a(paramList) });
+      }
+      QQDailyHandler localQQDailyHandler = (QQDailyHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQ_DAILY_HANDLER);
+      if (localQQDailyHandler != null)
+      {
+        localQQDailyHandler.a(paramList);
+        localQQDailyHandler.a(this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyHandler$OnReceiveListener);
+        if (QLog.isColorLevel()) {
+          QLog.d("FrontBackReportManager", 2, new Object[] { "report ", Integer.valueOf(paramList.size()), " entities success.\n", a(paramList) });
+        }
+      }
+    }
   }
   
   public static void a(boolean paramBoolean)
@@ -200,144 +216,147 @@ public class FrontBackReportManager
   private boolean a(List<FrontBackData> paramList)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: aload_0
-    //   4: monitorenter
-    //   5: iload 4
-    //   7: istore_3
-    //   8: aload_1
-    //   9: ifnull +30 -> 39
-    //   12: iload 4
-    //   14: istore_3
+    //   0: aload_0
+    //   1: monitorenter
+    //   2: aload_1
+    //   3: ifnull +232 -> 235
+    //   6: aload_1
+    //   7: invokeinterface 265 1 0
+    //   12: ifeq +223 -> 235
     //   15: aload_1
     //   16: invokeinterface 265 1 0
-    //   21: ifeq +18 -> 39
-    //   24: aload_1
-    //   25: invokeinterface 265 1 0
-    //   30: istore_2
-    //   31: iload_2
-    //   32: iconst_1
-    //   33: if_icmpge +10 -> 43
-    //   36: iload 4
-    //   38: istore_3
-    //   39: aload_0
-    //   40: monitorexit
-    //   41: iload_3
-    //   42: ireturn
-    //   43: aload_0
-    //   44: getfield 313	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   47: ifnonnull +30 -> 77
-    //   50: iload 4
-    //   52: istore_3
-    //   53: aload_0
-    //   54: getfield 38	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   57: invokevirtual 316	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
-    //   60: ifeq -21 -> 39
-    //   63: aload_0
-    //   64: aload_0
-    //   65: getfield 38	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   68: invokevirtual 320	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
-    //   71: invokevirtual 326	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   74: putfield 313	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   77: aload_0
-    //   78: getfield 313	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   81: invokevirtual 332	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   84: astore 5
-    //   86: aload 5
-    //   88: invokevirtual 337	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   91: aload_1
-    //   92: invokeinterface 102 1 0
-    //   97: astore 6
-    //   99: aload 6
-    //   101: invokeinterface 108 1 0
-    //   106: ifeq +110 -> 216
-    //   109: aload 6
-    //   111: invokeinterface 112 1 0
-    //   116: checkcast 153	com/tencent/mobileqq/app/qqdaily/FrontBackData
-    //   119: astore 7
-    //   121: aload_0
-    //   122: getfield 313	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   125: aload 7
-    //   127: invokevirtual 341	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
-    //   130: goto -31 -> 99
-    //   133: astore 6
-    //   135: invokestatic 287	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   138: ifeq +16 -> 154
-    //   141: ldc_w 289
-    //   144: iconst_2
-    //   145: aload 6
-    //   147: iconst_0
-    //   148: anewarray 4	java/lang/Object
-    //   151: invokestatic 345	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   154: aload 5
-    //   156: invokevirtual 348	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   159: invokestatic 287	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   162: ifeq +49 -> 211
-    //   165: ldc_w 289
-    //   168: iconst_2
-    //   169: new 95	java/lang/StringBuilder
-    //   172: dup
-    //   173: invokespecial 96	java/lang/StringBuilder:<init>	()V
-    //   176: ldc_w 350
-    //   179: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: aload_1
-    //   183: invokeinterface 265 1 0
-    //   188: invokevirtual 133	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   191: ldc_w 352
-    //   194: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: aload_0
-    //   198: aload_1
-    //   199: invokespecial 354	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:b	(Ljava/util/List;)Ljava/lang/String;
-    //   202: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   205: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   208: invokestatic 357	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   211: iconst_1
-    //   212: istore_3
-    //   213: goto -174 -> 39
-    //   216: aload 5
-    //   218: invokevirtual 360	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   221: aload 5
-    //   223: invokevirtual 348	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   226: goto -67 -> 159
-    //   229: astore_1
-    //   230: aload_0
-    //   231: monitorexit
-    //   232: aload_1
-    //   233: athrow
-    //   234: astore_1
-    //   235: aload 5
-    //   237: invokevirtual 348	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   240: aload_1
-    //   241: athrow
+    //   21: iconst_1
+    //   22: if_icmpge +6 -> 28
+    //   25: goto +210 -> 235
+    //   28: aload_0
+    //   29: getfield 313	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   32: ifnonnull +33 -> 65
+    //   35: aload_0
+    //   36: getfield 36	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   39: invokevirtual 316	com/tencent/mobileqq/app/QQAppInterface:isLogin	()Z
+    //   42: istore_2
+    //   43: iload_2
+    //   44: ifne +7 -> 51
+    //   47: aload_0
+    //   48: monitorexit
+    //   49: iconst_0
+    //   50: ireturn
+    //   51: aload_0
+    //   52: aload_0
+    //   53: getfield 36	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   56: invokevirtual 320	com/tencent/mobileqq/app/QQAppInterface:getEntityManagerFactory	()Lcom/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy;
+    //   59: invokevirtual 326	com/tencent/mobileqq/persistence/QQEntityManagerFactoryProxy:createEntityManager	()Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   62: putfield 313	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   65: aload_0
+    //   66: getfield 313	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   69: invokevirtual 332	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   72: astore_3
+    //   73: aload_3
+    //   74: invokevirtual 337	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   77: aload_1
+    //   78: invokeinterface 102 1 0
+    //   83: astore 4
+    //   85: aload 4
+    //   87: invokeinterface 108 1 0
+    //   92: ifeq +27 -> 119
+    //   95: aload 4
+    //   97: invokeinterface 112 1 0
+    //   102: checkcast 153	com/tencent/mobileqq/app/qqdaily/FrontBackData
+    //   105: astore 5
+    //   107: aload_0
+    //   108: getfield 313	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   111: aload 5
+    //   113: invokevirtual 341	com/tencent/mobileqq/persistence/EntityManager:persist	(Lcom/tencent/mobileqq/persistence/Entity;)V
+    //   116: goto -31 -> 85
+    //   119: aload_3
+    //   120: invokevirtual 344	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   123: aload_3
+    //   124: invokevirtual 347	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   127: goto +31 -> 158
+    //   130: astore_1
+    //   131: goto +93 -> 224
+    //   134: astore 4
+    //   136: invokestatic 287	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   139: ifeq -16 -> 123
+    //   142: ldc_w 289
+    //   145: iconst_2
+    //   146: aload 4
+    //   148: iconst_0
+    //   149: anewarray 4	java/lang/Object
+    //   152: invokestatic 351	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   155: goto -32 -> 123
+    //   158: invokestatic 287	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   161: ifeq +59 -> 220
+    //   164: new 95	java/lang/StringBuilder
+    //   167: dup
+    //   168: invokespecial 96	java/lang/StringBuilder:<init>	()V
+    //   171: astore_3
+    //   172: aload_3
+    //   173: ldc_w 353
+    //   176: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   179: pop
+    //   180: aload_3
+    //   181: aload_1
+    //   182: invokeinterface 265 1 0
+    //   187: invokevirtual 133	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   190: pop
+    //   191: aload_3
+    //   192: ldc_w 355
+    //   195: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   198: pop
+    //   199: aload_3
+    //   200: aload_0
+    //   201: aload_1
+    //   202: invokespecial 357	com/tencent/mobileqq/app/qqdaily/FrontBackReportManager:b	(Ljava/util/List;)Ljava/lang/String;
+    //   205: invokevirtual 120	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: pop
+    //   209: ldc_w 289
+    //   212: iconst_2
+    //   213: aload_3
+    //   214: invokevirtual 148	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   217: invokestatic 360	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   220: aload_0
+    //   221: monitorexit
+    //   222: iconst_1
+    //   223: ireturn
+    //   224: aload_3
+    //   225: invokevirtual 347	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   228: aload_1
+    //   229: athrow
+    //   230: astore_1
+    //   231: aload_0
+    //   232: monitorexit
+    //   233: aload_1
+    //   234: athrow
+    //   235: aload_0
+    //   236: monitorexit
+    //   237: iconst_0
+    //   238: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	242	0	this	FrontBackReportManager
-    //   0	242	1	paramList	List<FrontBackData>
-    //   30	4	2	i	int
-    //   7	206	3	bool1	boolean
-    //   1	50	4	bool2	boolean
-    //   84	152	5	localEntityTransaction	com.tencent.mobileqq.persistence.EntityTransaction
-    //   97	13	6	localIterator	Iterator
-    //   133	13	6	localException	Exception
-    //   119	7	7	localFrontBackData	FrontBackData
+    //   0	239	0	this	FrontBackReportManager
+    //   0	239	1	paramList	List<FrontBackData>
+    //   42	2	2	bool	boolean
+    //   72	153	3	localObject	Object
+    //   83	13	4	localIterator	Iterator
+    //   134	13	4	localException	Exception
+    //   105	7	5	localFrontBackData	FrontBackData
     // Exception table:
     //   from	to	target	type
-    //   86	99	133	java/lang/Exception
-    //   99	130	133	java/lang/Exception
-    //   216	221	133	java/lang/Exception
-    //   15	31	229	finally
-    //   43	50	229	finally
-    //   53	77	229	finally
-    //   77	86	229	finally
-    //   154	159	229	finally
-    //   159	211	229	finally
-    //   221	226	229	finally
-    //   235	242	229	finally
-    //   86	99	234	finally
-    //   99	130	234	finally
-    //   135	154	234	finally
-    //   216	221	234	finally
+    //   73	85	130	finally
+    //   85	116	130	finally
+    //   119	123	130	finally
+    //   136	155	130	finally
+    //   73	85	134	java/lang/Exception
+    //   85	116	134	java/lang/Exception
+    //   119	123	134	java/lang/Exception
+    //   6	25	230	finally
+    //   28	43	230	finally
+    //   51	65	230	finally
+    //   65	73	230	finally
+    //   123	127	230	finally
+    //   158	220	230	finally
+    //   224	230	230	finally
   }
   
   private String b(List<FrontBackData> paramList)
@@ -347,7 +366,11 @@ public class FrontBackReportManager
     while (paramList.hasNext())
     {
       FrontBackData localFrontBackData = (FrontBackData)paramList.next();
-      localStringBuilder.append("data: ").append(localFrontBackData.type).append(", timestamp: ").append(localFrontBackData.time).append("\n");
+      localStringBuilder.append("data: ");
+      localStringBuilder.append(localFrontBackData.type);
+      localStringBuilder.append(", timestamp: ");
+      localStringBuilder.append(localFrontBackData.time);
+      localStringBuilder.append("\n");
     }
     return localStringBuilder.toString();
   }
@@ -375,16 +398,15 @@ public class FrontBackReportManager
       if (i > 20) {
         this.jdField_a_of_type_JavaUtilList = this.jdField_a_of_type_JavaUtilList.subList(i - 20, i);
       }
-      if (jdField_a_of_type_Boolean) {
-        break label101;
+      if (!jdField_a_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FrontBackReportManager", 2, "[reportFrontBackgroundStatic] sIsAfterSyncMsg is false");
+        }
+        return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("FrontBackReportManager", 2, "[reportFrontBackgroundStatic] sIsAfterSyncMsg is false");
-      }
+      a(this.jdField_a_of_type_JavaUtilList);
     }
-    return;
-    label101:
-    a(this.jdField_a_of_type_JavaUtilList);
   }
   
   private void c()
@@ -394,65 +416,62 @@ public class FrontBackReportManager
   
   private void d()
   {
-    int i = 0;
-    Iterator localIterator;
     try
     {
       if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager == null) {
         this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
       }
-      localIterator = null;
+      Object localObject3 = null;
+      int i = 0;
+      Object localObject1;
       try
       {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(FrontBackData.class);
-        if (localObject != null)
-        {
-          int j = ((List)localObject).size();
-          if (j != 0) {}
-        }
-        else
-        {
-          return;
-        }
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(FrontBackData.class);
       }
       catch (Exception localException)
       {
-        for (;;)
+        localObject1 = localObject3;
+        if (QLog.isColorLevel())
         {
-          Object localObject = localIterator;
-          if (QLog.isColorLevel())
-          {
-            QLog.e("FrontBackReportManager", 2, localException, new Object[0]);
-            localObject = localIterator;
-          }
+          QLog.e("FrontBackReportManager", 2, localException, new Object[0]);
+          localObject1 = localObject3;
         }
       }
-      localIterator = localList.iterator();
+      if ((localObject1 != null) && (((List)localObject1).size() != 0))
+      {
+        localObject3 = ((List)localObject1).iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          FrontBackData localFrontBackData = (FrontBackData)((Iterator)localObject3).next();
+          if (localFrontBackData.time > a())
+          {
+            this.jdField_a_of_type_JavaUtilList.add(a(localFrontBackData));
+          }
+          else
+          {
+            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localFrontBackData);
+            i += 1;
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("query ");
+          ((StringBuilder)localObject3).append(((List)localObject1).size());
+          ((StringBuilder)localObject3).append(" items, delete ");
+          ((StringBuilder)localObject3).append(i);
+          ((StringBuilder)localObject3).append(" items.\n");
+          ((StringBuilder)localObject3).append(b((List)localObject1));
+          QLog.d("FrontBackReportManager", 2, ((StringBuilder)localObject3).toString());
+        }
+        return;
+      }
+      return;
     }
     finally {}
     for (;;)
     {
-      if (localIterator.hasNext())
-      {
-        FrontBackData localFrontBackData = (FrontBackData)localIterator.next();
-        if (localFrontBackData.time > a())
-        {
-          this.jdField_a_of_type_JavaUtilList.add(a(localFrontBackData));
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localFrontBackData);
-          i += 1;
-        }
-      }
-      else
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("FrontBackReportManager", 2, "query " + localList.size() + " items, delete " + i + " items.\n" + b(localList));
-        break;
-      }
+      throw localObject2;
     }
   }
   
@@ -469,42 +488,36 @@ public class FrontBackReportManager
   {
     if (paramMessage.what == 3) {
       b(paramMessage);
+    } else if (paramMessage.what == 4) {
+      a(paramMessage);
+    } else if (paramMessage.what == 5) {
+      d();
+    } else if (paramMessage.what == 6) {
+      this.jdField_b_of_type_Boolean = true;
     }
-    for (;;)
-    {
-      return false;
-      if (paramMessage.what == 4) {
-        a(paramMessage);
-      } else if (paramMessage.what == 5) {
-        d();
-      } else if (paramMessage.what == 6) {
-        this.jdField_b_of_type_Boolean = true;
-      }
-    }
+    return false;
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-      ((QQDailyHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQ_DAILY_HANDLER)).b(this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyHandler$OnReceiveListener);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    if (localEntityManager != null) {
+      try
+      {
+        localEntityManager.close();
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
     }
+    ((QQDailyHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.QQ_DAILY_HANDLER)).b(this.jdField_a_of_type_ComTencentMobileqqAppQqdailyQQDailyHandler$OnReceiveListener);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.FrontBackReportManager
  * JD-Core Version:    0.7.0.1
  */

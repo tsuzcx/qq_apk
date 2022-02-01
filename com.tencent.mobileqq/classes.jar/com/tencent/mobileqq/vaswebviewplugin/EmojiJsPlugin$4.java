@@ -22,22 +22,19 @@ class EmojiJsPlugin$4
       {
         paramDialogInterface.put("message", "press");
         this.this$0.onAppResponse(this.val$callbackid, paramDialogInterface.toString());
-        return true;
       }
       catch (JSONException paramDialogInterface)
       {
-        for (;;)
-        {
-          paramDialogInterface.printStackTrace();
-        }
+        paramDialogInterface.printStackTrace();
       }
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

@@ -3,7 +3,7 @@ package com.tencent.mobileqq.ocr;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class OCRPerformFragment$1
@@ -22,7 +22,7 @@ class OCRPerformFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRPerformFragment.1
  * JD-Core Version:    0.7.0.1
  */

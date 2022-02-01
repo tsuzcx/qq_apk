@@ -32,14 +32,15 @@ public final class WnsHeadProto$ForwardReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50, 56, 64, 74, 82, 88, 96, 106, 112, 130, 136 }, new String[] { "uid", "tinyid", "a2", "platform", "version", "busi_buf", "version_code", "stream_type", "original_id", "original_key", "original_id_type", "codec", "token", "target_env", "client_id", "orginal_key_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "", Integer.valueOf(0), "", localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0) }, ForwardReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50, 56, 64, 74, 82, 88, 96, 106, 112, 130, 136 }, new String[] { "uid", "tinyid", "a2", "platform", "version", "busi_buf", "version_code", "stream_type", "original_id", "original_key", "original_id_type", "codec", "token", "target_env", "client_id", "orginal_key_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "", localInteger, "", localByteStringMicro1, localInteger, localInteger, "", "", localInteger, localInteger, "", localInteger, localByteStringMicro2, localInteger }, ForwardReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.wnsilivehead.WnsHeadProto.ForwardReq
  * JD-Core Version:    0.7.0.1
  */

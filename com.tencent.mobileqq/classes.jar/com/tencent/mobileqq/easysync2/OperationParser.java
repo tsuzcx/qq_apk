@@ -11,9 +11,14 @@ public class OperationParser
   private int a()
   {
     int i = 0;
-    while (this.jdField_a_of_type_Int + i < this.jdField_a_of_type_ArrayOfChar.length)
+    for (;;)
     {
-      int j = this.jdField_a_of_type_ArrayOfChar[(this.jdField_a_of_type_Int + i)];
+      int j = this.jdField_a_of_type_Int;
+      char[] arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
+      if (j + i >= arrayOfChar.length) {
+        break;
+      }
+      j = arrayOfChar[(j + i)];
       if (((j < 48) || (j > 57)) && ((j < 97) || (j > 122))) {
         break;
       }
@@ -26,62 +31,88 @@ public class OperationParser
   {
     ArrayList localArrayList = new ArrayList();
     this.jdField_a_of_type_ArrayOfChar = paramString.toCharArray();
-    Operation localOperation = new Operation();
+    Object localObject = new Operation();
     StringBuilder localStringBuilder = new StringBuilder();
-    while (this.jdField_a_of_type_Int < this.jdField_a_of_type_ArrayOfChar.length)
+    for (;;)
     {
-      int i;
-      switch (this.jdField_a_of_type_ArrayOfChar[this.jdField_a_of_type_Int])
-      {
-      default: 
-        this.jdField_a_of_type_Int += 1;
-        localOperation.a();
+      int i = this.jdField_a_of_type_Int;
+      char[] arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
+      if (i >= arrayOfChar.length) {
         break;
-      case '*': 
-        this.jdField_a_of_type_Int += 1;
-        i = a();
-        if (i == 0) {
-          localOperation.a();
-        }
-        for (;;)
+      }
+      int j = arrayOfChar[i];
+      if (j != 42)
+      {
+        if ((j != 43) && (j != 45) && (j != 61))
         {
-          this.jdField_a_of_type_Int = (i + this.jdField_a_of_type_Int);
-          break;
-          localStringBuilder.append(paramString.substring(this.jdField_a_of_type_Int - 1, this.jdField_a_of_type_Int + i));
+          if (j != 63)
+          {
+            if (j != 124)
+            {
+              this.jdField_a_of_type_Int = (i + 1);
+              ((Operation)localObject).a();
+            }
+            else
+            {
+              this.jdField_a_of_type_Int = (i + 1);
+              i = a();
+              if (i == 0)
+              {
+                ((Operation)localObject).a();
+              }
+              else
+              {
+                j = this.jdField_a_of_type_Int;
+                ((Operation)localObject).b = Changeset.a(paramString.substring(j, j + i));
+              }
+              this.jdField_a_of_type_Int += i;
+            }
+          }
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("Hit error opcode in op stream: ");
+            ((StringBuilder)localObject).append(paramString);
+            throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+          }
         }
-      case '|': 
-        this.jdField_a_of_type_Int += 1;
-        i = a();
-        if (i == 0) {
-          localOperation.a();
-        }
-        for (;;)
+        else
         {
-          this.jdField_a_of_type_Int = (i + this.jdField_a_of_type_Int);
-          break;
-          localOperation.b = Changeset.a(paramString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + i));
+          arrayOfChar = this.jdField_a_of_type_ArrayOfChar;
+          i = this.jdField_a_of_type_Int;
+          ((Operation)localObject).jdField_a_of_type_Char = arrayOfChar[i];
+          this.jdField_a_of_type_Int = (i + 1);
+          i = a();
+          if (i == 0)
+          {
+            ((Operation)localObject).a();
+          }
+          else
+          {
+            j = this.jdField_a_of_type_Int;
+            ((Operation)localObject).jdField_a_of_type_Int = Changeset.a(paramString.substring(j, j + i));
+            ((Operation)localObject).jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+            localArrayList.add(localObject);
+            localStringBuilder.delete(0, localStringBuilder.length());
+            localObject = new Operation();
+          }
+          this.jdField_a_of_type_Int += i;
         }
-      case '+': 
-      case '-': 
-      case '=': 
-        localOperation.jdField_a_of_type_Char = this.jdField_a_of_type_ArrayOfChar[this.jdField_a_of_type_Int];
-        this.jdField_a_of_type_Int += 1;
+      }
+      else
+      {
+        this.jdField_a_of_type_Int = (i + 1);
         i = a();
-        if (i == 0) {
-          localOperation.a();
-        }
-        for (;;)
+        if (i == 0)
         {
-          this.jdField_a_of_type_Int = (i + this.jdField_a_of_type_Int);
-          break;
-          localOperation.jdField_a_of_type_Int = Changeset.a(paramString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + i));
-          localOperation.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
-          localArrayList.add(localOperation);
-          localStringBuilder.delete(0, localStringBuilder.length());
-          localOperation = new Operation();
+          ((Operation)localObject).a();
         }
-      case '?': 
-        throw new IllegalArgumentException("Hit error opcode in op stream: " + paramString);
+        else
+        {
+          j = this.jdField_a_of_type_Int;
+          localStringBuilder.append(paramString.substring(j - 1, j + i));
+        }
+        this.jdField_a_of_type_Int += i;
       }
     }
     return localArrayList;
@@ -89,7 +120,7 @@ public class OperationParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.OperationParser
  * JD-Core Version:    0.7.0.1
  */

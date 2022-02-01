@@ -99,18 +99,25 @@ public class TbsLogReport$TbsLogInfo
   
   public void setDownloadUrl(String paramString)
   {
-    if (this.c == null)
+    if (this.c != null)
     {
-      this.c = paramString;
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(";");
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
     }
-    this.c = (this.c + ";" + paramString);
+    this.c = paramString;
   }
   
   public void setErrorCode(int paramInt)
   {
-    if ((paramInt != 100) && (paramInt != 110) && (paramInt != 120) && (paramInt != 111) && (paramInt < 400)) {
-      TbsLog.i("TbsDownload", "error occured, errorCode:" + paramInt, true);
+    if ((paramInt != 100) && (paramInt != 110) && (paramInt != 120) && (paramInt != 111) && (paramInt < 400))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("error occured, errorCode:");
+      localStringBuilder.append(paramInt);
+      TbsLog.i("TbsDownload", localStringBuilder.toString(), true);
     }
     if (paramInt == 111) {
       TbsLog.i("TbsDownload", "you are not in wifi, downloading stoped", true);
@@ -187,7 +194,7 @@ public class TbsLogReport$TbsLogInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.TbsLogReport.TbsLogInfo
  * JD-Core Version:    0.7.0.1
  */

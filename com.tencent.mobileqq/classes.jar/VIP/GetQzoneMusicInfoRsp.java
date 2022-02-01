@@ -36,17 +36,19 @@ public final class GetQzoneMusicInfoRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.errInfo != null) {
-      paramJceOutputStream.write(this.errInfo, 0);
+    Object localObject = this.errInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.mMusicList != null) {
-      paramJceOutputStream.write(this.mMusicList, 1);
+    localObject = this.mMusicList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.GetQzoneMusicInfoRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -19,11 +18,12 @@ import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.ChatItemBuilder.BaseHolder;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtenderViewBasicAbility;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameLayoutProcessor;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BaseChatItemLayoutViewBasicAbility;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameChatItemLayoutProcessor;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.ChatLayoutHandler;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.IBaseBubbleClickProcessor;
 import com.tencent.mobileqq.activity.aio.coreui.msglist.chatlayouthandler.IChatLayoutListenerController;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.ChatMsgRedDotInfo;
@@ -50,10 +50,10 @@ public class QCircleHandler
   
   private ChatAdapter1 a()
   {
-    if (!(this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity)) {
+    if (!(this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
       return null;
     }
-    ChatFragment localChatFragment = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
+    ChatFragment localChatFragment = ((BaseActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment();
     if (localChatFragment == null) {
       return null;
     }
@@ -62,7 +62,6 @@ public class QCircleHandler
   
   private void a(Context paramContext, String paramString1, String paramString2)
   {
-    boolean bool1 = false;
     for (;;)
     {
       try
@@ -74,28 +73,37 @@ public class QCircleHandler
         String str4 = paramString1.getQueryParameter("actiontype");
         String str1 = paramString1.getQueryParameter("actionurl");
         String str5 = paramString1.getQueryParameter("goFirstFeed");
-        boolean bool3 = TextUtils.isEmpty(str1);
+        bool1 = TextUtils.isEmpty(str1);
         paramString1 = str1;
-        if (!bool3) {}
-        try
-        {
-          paramString1 = URLDecoder.decode(str1, "UTF-8");
-          bool3 = TextUtils.isEmpty(str4);
-          if (bool3) {
-            break label286;
+        if (!bool1) {
+          try
+          {
+            paramString1 = URLDecoder.decode(str1, "UTF-8");
+          }
+          catch (UnsupportedEncodingException paramString1)
+          {
+            QZLog.e("onGoHomePage", "decode actionurl", paramString1);
+            paramString1 = str1;
           }
         }
-        catch (UnsupportedEncodingException paramString1)
+        bool1 = TextUtils.isEmpty(str4);
+        if (!bool1)
         {
           try
           {
             i = Integer.parseInt(str4);
-            if (!TextUtils.isEmpty(str5)) {
-              bool1 = "1".equals(str5);
-            }
-            if ((35 != i) || (TextUtils.isEmpty(paramString1)) || (paramString1.length() <= 0)) {
-              break label272;
-            }
+          }
+          catch (NumberFormatException localNumberFormatException)
+          {
+            QZLog.e("onGoHomePage", "parse actiontype", localNumberFormatException);
+            break label289;
+          }
+          if (TextUtils.isEmpty(str5)) {
+            break label295;
+          }
+          bool1 = "1".equals(str5);
+          if ((35 == i) && (!TextUtils.isEmpty(paramString1)) && (paramString1.length() > 0))
+          {
             paramString2 = new Intent();
             QzonePluginProxyActivity.setActivityNameToIntent(paramString2, "com.qzone.homepage.ui.activity.QZoneFamousSpaceHomePageActivity");
             paramString2.putExtra("qqid", Long.parseLong(str2));
@@ -109,26 +117,20 @@ public class QCircleHandler
             QZoneApiProxy.isQzonePluginInstalledAndVersionRight(new QCircleHandler.1(this, paramContext, str2, paramString2));
             return;
           }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            QZLog.e("onGoHomePage", "parse actiontype", localNumberFormatException);
-          }
-          paramString1 = paramString1;
-          QZLog.e("onGoHomePage", "decode actionurl", paramString1);
-          paramString1 = str1;
-          continue;
+          a(paramContext, str2, str3, bool2, bool1, paramString2);
+          return;
         }
-        a(paramContext, str2, str3, bool2, bool1, paramString2);
       }
       catch (Exception paramContext)
       {
         QZLog.w(paramContext);
         return;
       }
-      label272:
-      return;
-      label286:
+      label289:
       int i = 0;
+      continue;
+      label295:
+      boolean bool1 = false;
     }
   }
   
@@ -153,58 +155,65 @@ public class QCircleHandler
   
   public void a(int paramInt1, int paramInt2, ChatMessage paramChatMessage, ViewGroup paramViewGroup, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, Bundle paramBundle)
   {
-    if (paramBaseChatItemLayout == null) {}
-    do
-    {
+    if (paramBaseChatItemLayout == null) {
       return;
-      paramViewGroup = paramBaseChatItemLayout.a(NickNameLayoutProcessor.b);
-    } while ((paramChatMessage == null) || (paramViewGroup == null) || (!paramViewGroup.checkViewNonNull()));
-    if ((paramChatMessage.fakeSenderType == 0) && (paramChatMessage.istroop == 1))
-    {
-      if ((!paramChatMessage.getChatMsgRedDotInfo().getQcircleRedDotFlag()) || (paramChatMessage.istroop != 1)) {
-        break label195;
-      }
-      paramViewGroup.setViewVisibility(0);
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramViewGroup.setData(new Object[] { paramChatMessage.getChatMsgRedDotInfo().getQcircleJumpIconUrl() });
     }
-    for (;;)
+    paramViewGroup = paramBaseChatItemLayout.a(NickNameChatItemLayoutProcessor.b);
+    if ((paramChatMessage != null) && (paramViewGroup != null))
     {
-      paramViewGroup = paramBaseChatItemLayout.a(NickNameLayoutProcessor.a);
-      if ((paramChatMessage == null) || (paramViewGroup == null) || (!paramViewGroup.checkViewNonNull()) || (paramChatMessage.fakeSenderType != 0) || (paramChatMessage.istroop != 1)) {
-        break;
+      if (!paramViewGroup.checkViewNonNull()) {
+        return;
       }
-      if ((!paramChatMessage.getChatMsgRedDotInfo().getQzoneRedDotFlag()) || (paramChatMessage.istroop != 1)) {
-        break label205;
+      if ((paramChatMessage.fakeSenderType == 0) && (paramChatMessage.istroop == 1)) {
+        if ((paramChatMessage.getChatMsgRedDotInfo().getQcircleRedDotFlag()) && (paramChatMessage.istroop == 1))
+        {
+          paramViewGroup.setViewVisibility(0);
+          paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+          paramViewGroup.setData(new Object[] { paramChatMessage.getChatMsgRedDotInfo().getQcircleJumpIconUrl() });
+        }
+        else
+        {
+          paramViewGroup.setViewVisibility(8);
+        }
       }
-      paramViewGroup.setViewVisibility(0);
-      paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-      paramViewGroup.setData(new Object[] { paramChatMessage.getChatMsgRedDotInfo().getQzoneJumpIconUrl() });
-      return;
-      label195:
-      paramViewGroup.setViewVisibility(8);
+      paramViewGroup = paramBaseChatItemLayout.a(NickNameChatItemLayoutProcessor.a);
+      if ((paramChatMessage != null) && (paramViewGroup != null))
+      {
+        if (!paramViewGroup.checkViewNonNull()) {
+          return;
+        }
+        if ((paramChatMessage.fakeSenderType == 0) && (paramChatMessage.istroop == 1))
+        {
+          if ((paramChatMessage.getChatMsgRedDotInfo().getQzoneRedDotFlag()) && (paramChatMessage.istroop == 1))
+          {
+            paramViewGroup.setViewVisibility(0);
+            paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+            paramViewGroup.setData(new Object[] { paramChatMessage.getChatMsgRedDotInfo().getQzoneJumpIconUrl() });
+            return;
+          }
+          paramViewGroup.setViewVisibility(8);
+        }
+      }
     }
-    label205:
-    paramViewGroup.setViewVisibility(8);
   }
   
   public void a(View paramView)
   {
-    if (paramView == null) {}
+    if (paramView == null) {
+      return;
+    }
     ChatMessage localChatMessage;
-    do
+    Object localObject1;
+    Object localObject2;
+    if (paramView.getId() == 2131364562)
     {
-      do
+      localChatMessage = ((ChatItemBuilder.BaseHolder)AIOUtils.a(paramView)).a;
+      localObject1 = a();
+      if (localObject1 != null)
       {
-        do
-        {
+        if (localChatMessage == null) {
           return;
-          if (paramView.getId() != 2131364675) {
-            break;
-          }
-          localChatMessage = ((ChatItemBuilder.BaseHolder)AIOUtils.a(paramView)).a;
-          localObject1 = a();
-        } while ((localObject1 == null) || (localChatMessage == null));
+        }
         localObject2 = localChatMessage.getChatMsgRedDotInfo().getQcircleRedDotJumpSchema();
         paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), (String)localObject2);
         if (paramView != null) {
@@ -215,32 +224,46 @@ public class QCircleHandler
         ((ChatAdapter1)localObject1).notifyDataSetChanged();
         ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(localChatMessage.senderuin, 61, 1, 2);
         return;
-      } while (paramView.getId() != 2131364676);
+      }
+      return;
+    }
+    if (paramView.getId() == 2131364563)
+    {
       localChatMessage = ((ChatItemBuilder.BaseHolder)AIOUtils.a(paramView)).a;
       localObject1 = a();
-    } while ((localObject1 == null) || (localChatMessage == null));
-    Object localObject2 = ((ChatAdapter1)localObject1).a();
-    AIOTroopQcircleRedDotManager.a().b((List)localObject2, localChatMessage.senderuin);
-    ((ChatAdapter1)localObject1).notifyDataSetChanged();
-    Object localObject1 = localChatMessage.getChatMsgRedDotInfo().getQzoneRedDotJumpSchema();
-    if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).startsWith("mqqzone://arouse/homepage"))) {
-      a(paramView.getContext(), (String)localObject1, localChatMessage.selfuin);
-    }
-    while (!AIOTroopQcircleRedDotManager.d())
-    {
-      LpReportInfo_pf00064.report(1200, 1, 2, localChatMessage.senderuin);
-      return;
-      paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), (String)localObject1);
-      if (paramView != null) {
-        paramView.a();
+      if (localObject1 != null)
+      {
+        if (localChatMessage == null) {
+          return;
+        }
+        localObject2 = ((ChatAdapter1)localObject1).a();
+        AIOTroopQcircleRedDotManager.a().b((List)localObject2, localChatMessage.senderuin);
+        ((ChatAdapter1)localObject1).notifyDataSetChanged();
+        localObject1 = localChatMessage.getChatMsgRedDotInfo().getQzoneRedDotJumpSchema();
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).startsWith("mqqzone://arouse/homepage")))
+        {
+          a(paramView.getContext(), (String)localObject1, localChatMessage.selfuin);
+        }
+        else
+        {
+          paramView = JumpParser.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView.getContext(), (String)localObject1);
+          if (paramView != null) {
+            paramView.a();
+          }
+        }
+        if (!AIOTroopQcircleRedDotManager.d())
+        {
+          LpReportInfo_pf00064.report(1200, 1, 2, localChatMessage.senderuin);
+          return;
+        }
+        LpReportInfo_pf00064.allReport(1200, 1, 2, localChatMessage.senderuin);
       }
     }
-    LpReportInfo_pf00064.allReport(1200, 1, 2, localChatMessage.senderuin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.QCircleHandler
  * JD-Core Version:    0.7.0.1
  */

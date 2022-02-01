@@ -9,12 +9,13 @@ class DatalineChatPie$2
   
   public void run()
   {
-    this.this$0.h(this.this$0.a().getIntent());
+    DatalineChatPie localDatalineChatPie = this.this$0;
+    localDatalineChatPie.h(localDatalineChatPie.a().getIntent());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.DatalineChatPie.2
  * JD-Core Version:    0.7.0.1
  */

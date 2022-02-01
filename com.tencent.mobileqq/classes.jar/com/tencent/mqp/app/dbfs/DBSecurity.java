@@ -47,31 +47,28 @@ public class DBSecurity
   
   private static int[] a(byte[] paramArrayOfByte, boolean paramBoolean)
   {
-    int i;
-    int[] arrayOfInt;
-    if ((paramArrayOfByte.length & 0x3) == 0)
-    {
+    if ((paramArrayOfByte.length & 0x3) == 0) {
       i = paramArrayOfByte.length >>> 2;
-      if (!paramBoolean) {
-        break label85;
-      }
+    } else {
+      i = (paramArrayOfByte.length >>> 2) + 1;
+    }
+    int[] arrayOfInt;
+    if (paramBoolean)
+    {
       arrayOfInt = new int[i + 1];
       arrayOfInt[i] = paramArrayOfByte.length;
     }
-    for (;;)
+    else
     {
-      int j = paramArrayOfByte.length;
-      i = 0;
-      while (i < j)
-      {
-        int k = i >>> 2;
-        arrayOfInt[k] |= (paramArrayOfByte[i] & 0xFF) << ((i & 0x3) << 3);
-        i += 1;
-      }
-      i = (paramArrayOfByte.length >>> 2) + 1;
-      break;
-      label85:
       arrayOfInt = new int[i];
+    }
+    int j = paramArrayOfByte.length;
+    int i = 0;
+    while (i < j)
+    {
+      int k = i >>> 2;
+      arrayOfInt[k] |= (paramArrayOfByte[i] & 0xFF) << ((i & 0x3) << 3);
+      i += 1;
     }
     return arrayOfInt;
   }
@@ -79,53 +76,49 @@ public class DBSecurity
   private static final int[] a(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
     int i1 = paramArrayOfInt1.length - 1;
-    if (i1 < 1) {}
-    for (;;)
-    {
+    if (i1 < 1) {
       return paramArrayOfInt1;
-      int[] arrayOfInt = paramArrayOfInt2;
-      if (paramArrayOfInt2.length < 4)
-      {
-        arrayOfInt = new int[4];
-        System.arraycopy(paramArrayOfInt2, 0, arrayOfInt, 0, paramArrayOfInt2.length);
-      }
-      int i = paramArrayOfInt1[i1];
-      int j = paramArrayOfInt1[0];
-      j = 52 / (i1 + 1);
-      int k = 0;
-      j += 6;
-      while (j > 0)
-      {
-        int m = k - 1640531527;
-        int i2 = m >>> 2 & 0x3;
-        int n = 0;
-        k = i;
-        i = n;
-        while (i < i1)
-        {
-          n = paramArrayOfInt1[(i + 1)];
-          i3 = paramArrayOfInt1[i];
-          k = ((k ^ arrayOfInt[(i & 0x3 ^ i2)]) + (n ^ m) ^ (k >>> 5 ^ n << 2) + (n >>> 3 ^ k << 4)) + i3;
-          paramArrayOfInt1[i] = k;
-          i += 1;
-        }
-        n = paramArrayOfInt1[0];
-        int i3 = paramArrayOfInt1[i1];
-        i = ((arrayOfInt[(i & 0x3 ^ i2)] ^ k) + (n ^ m) ^ (k >>> 5 ^ n << 2) + (n >>> 3 ^ k << 4)) + i3;
-        paramArrayOfInt1[i1] = i;
-        j -= 1;
-        k = m;
-      }
     }
+    int[] arrayOfInt = paramArrayOfInt2;
+    if (paramArrayOfInt2.length < 4)
+    {
+      arrayOfInt = new int[4];
+      System.arraycopy(paramArrayOfInt2, 0, arrayOfInt, 0, paramArrayOfInt2.length);
+    }
+    int i = paramArrayOfInt1[i1];
+    int j = paramArrayOfInt1[0];
+    j = 52 / (i1 + 1) + 6;
+    int m;
+    for (int k = 0; j > 0; k = m)
+    {
+      m = k - 1640531527;
+      int i2 = m >>> 2 & 0x3;
+      int n = 0;
+      k = i;
+      for (i = n; i < i1; i = n)
+      {
+        n = i + 1;
+        int i3 = paramArrayOfInt1[n];
+        int i4 = paramArrayOfInt1[i];
+        k = ((k >>> 5 ^ i3 << 2) + (i3 >>> 3 ^ k << 4) ^ (i3 ^ m) + (k ^ arrayOfInt[(i & 0x3 ^ i2)])) + i4;
+        paramArrayOfInt1[i] = k;
+      }
+      n = paramArrayOfInt1[0];
+      i = paramArrayOfInt1[i1] + ((k >>> 5 ^ n << 2) + (n >>> 3 ^ k << 4) ^ (n ^ m) + (arrayOfInt[(i2 ^ i & 0x3)] ^ k));
+      paramArrayOfInt1[i1] = i;
+      j -= 1;
+    }
+    return paramArrayOfInt1;
   }
   
   public byte[] a(byte[] paramArrayOfByte)
   {
     byte[] arrayOfByte1 = a();
-    if (this.a != null) {
+    byte[] arrayOfByte2 = this.a;
+    if (arrayOfByte2 != null) {
       try
       {
-        byte[] arrayOfByte2 = a(paramArrayOfByte, a(this.a, arrayOfByte1));
+        arrayOfByte2 = a(paramArrayOfByte, a(arrayOfByte2, arrayOfByte1));
         byte[] arrayOfByte4 = new byte[arrayOfByte2.length + 8];
         System.arraycopy(arrayOfByte2, 0, arrayOfByte4, 0, arrayOfByte2.length);
         System.arraycopy(arrayOfByte1, 0, arrayOfByte4, arrayOfByte2.length, 8);
@@ -144,7 +137,7 @@ public class DBSecurity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqp.app.dbfs.DBSecurity
  * JD-Core Version:    0.7.0.1
  */

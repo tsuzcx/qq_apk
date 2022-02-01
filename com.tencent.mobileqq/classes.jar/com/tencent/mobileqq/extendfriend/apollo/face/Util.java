@@ -12,7 +12,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceDrawable;
 import com.tencent.mobileqq.app.face.FaceDrawable.OnLoadingStateChangeListener;
 import com.tencent.mobileqq.app.face.FaceDrawableImpl;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.qphone.base.util.QLog;
 import org.jetbrains.annotations.NotNull;
@@ -24,15 +24,19 @@ public class Util
   @NotNull
   private static int a(int paramInt)
   {
-    switch (paramInt)
+    int i = 2130845112;
+    if (paramInt != 6)
     {
-    case 6: 
-    default: 
-      return 2130845222;
-    case 8: 
-      return 2130845217;
+      if (paramInt != 7)
+      {
+        if (paramInt != 8) {
+          return 2130845112;
+        }
+        return 2130845107;
+      }
+      i = 2130845111;
     }
-    return 2130845221;
+    return i;
   }
   
   public static int a(int paramInt1, int paramInt2)
@@ -43,9 +47,11 @@ public class Util
   @Nullable
   private static Bitmap a(String paramString, int paramInt)
   {
-    Bitmap localBitmap1 = null;
+    Bitmap localBitmap1;
     if (GlobalImageCache.a != null) {
       localBitmap1 = (Bitmap)GlobalImageCache.a.get(paramString);
+    } else {
+      localBitmap1 = null;
     }
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null) {
@@ -54,8 +60,12 @@ public class Util
     if ((localBitmap2 != null) && (GlobalImageCache.a != null)) {
       GlobalImageCache.a.put(paramString, localBitmap2);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("extend.apollo.Util", 2, "getBitmapWithCache, bitmap=" + localBitmap2);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("getBitmapWithCache, bitmap=");
+      paramString.append(localBitmap2);
+      QLog.d("extend.apollo.Util", 2, paramString.toString());
     }
     return localBitmap2;
   }
@@ -63,11 +73,15 @@ public class Util
   public static Drawable a(int paramInt)
   {
     int i = a(paramInt);
-    Bitmap localBitmap = a("static://Apollo_Face-" + paramInt + "-shape", i);
-    if (localBitmap == null) {
-      return URLDrawableHelper.TRANSPARENT;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("static://Apollo_Face-");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("-shape");
+    localObject = a(((StringBuilder)localObject).toString(), i);
+    if (localObject == null) {
+      return URLDrawableHelperConstants.a;
     }
-    return new BitmapDrawable(localBitmap);
+    return new BitmapDrawable((Bitmap)localObject);
   }
   
   public static FaceDrawable a(AppInterface paramAppInterface, String paramString)
@@ -77,28 +91,30 @@ public class Util
   
   public static FaceDrawable a(AppInterface paramAppInterface, String paramString, int paramInt1, int paramInt2, int paramInt3, FaceDrawable.OnLoadingStateChangeListener paramOnLoadingStateChangeListener)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramAppInterface == null))
+    if ((!TextUtils.isEmpty(paramString)) && (paramAppInterface != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("extend.apollo.Util", 2, "getFaceDrawable fail, uin=" + paramString + ", type=" + 116 + ",appIntf=" + paramAppInterface);
+      if (!(paramAppInterface instanceof QQAppInterface)) {
+        return null;
       }
-      return null;
+      int i = a(paramInt1, paramInt2);
+      if (paramInt3 == 0) {
+        paramInt3 = b(paramInt1, paramInt2);
+      }
+      Drawable localDrawable = a(paramInt3);
+      return new FaceDrawableImpl(paramAppInterface, 116, 200, paramString, (byte)1, paramInt3, i, false, localDrawable, localDrawable, paramOnLoadingStateChangeListener, false);
     }
-    if (!(paramAppInterface instanceof QQAppInterface)) {
-      return null;
-    }
-    int i = a(paramInt1, paramInt2);
-    if (paramInt3 == 0) {}
-    for (paramInt1 = b(paramInt1, paramInt2);; paramInt1 = paramInt3)
+    if (QLog.isColorLevel())
     {
-      Drawable localDrawable = a(paramInt1);
-      return new FaceDrawableImpl(paramAppInterface, 116, 200, paramString, (byte)1, paramInt1, i, false, localDrawable, localDrawable, paramOnLoadingStateChangeListener, false);
+      paramOnLoadingStateChangeListener = new StringBuilder();
+      paramOnLoadingStateChangeListener.append("getFaceDrawable fail, uin=");
+      paramOnLoadingStateChangeListener.append(paramString);
+      paramOnLoadingStateChangeListener.append(", type=");
+      paramOnLoadingStateChangeListener.append(116);
+      paramOnLoadingStateChangeListener.append(",appIntf=");
+      paramOnLoadingStateChangeListener.append(paramAppInterface);
+      QLog.i("extend.apollo.Util", 2, paramOnLoadingStateChangeListener.toString());
     }
-  }
-  
-  public static FaceDrawable a(AppInterface paramAppInterface, String paramString, FaceDrawable.OnLoadingStateChangeListener paramOnLoadingStateChangeListener)
-  {
-    return a(paramAppInterface, paramString, 1, 2, 8, paramOnLoadingStateChangeListener);
+    return null;
   }
   
   public static int[] a(int[] paramArrayOfInt1, int[] paramArrayOfInt2)
@@ -141,7 +157,7 @@ public class Util
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.apollo.face.Util
  * JD-Core Version:    0.7.0.1
  */

@@ -20,17 +20,13 @@ class PickerJsPlugin$2$1
     {
       JSONObject localJSONObject = new JSONObject();
       this.this$1.val$req.cancel(localJSONObject);
-      if (PickerJsPlugin.access$100(this.this$1.this$0) != null) {
-        PickerJsPlugin.access$102(this.this$1.this$0, null);
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QMLog.e("PickerJsPlugin", "showMultiPickerView error.", localException);
-      }
+      QMLog.e("PickerJsPlugin", "showMultiPickerView error.", localException);
+    }
+    if (PickerJsPlugin.access$100(this.this$1.this$0) != null) {
+      PickerJsPlugin.access$102(this.this$1.this$0, null);
     }
   }
   
@@ -58,10 +54,7 @@ class PickerJsPlugin$2$1
     }
     catch (JSONException paramArrayOfInt)
     {
-      for (;;)
-      {
-        QMLog.e("PickerJsPlugin", "showMultiPickerView error.", paramArrayOfInt);
-      }
+      QMLog.e("PickerJsPlugin", "showMultiPickerView error.", paramArrayOfInt);
     }
     if (PickerJsPlugin.access$100(this.this$1.this$0) != null) {
       PickerJsPlugin.access$102(this.this$1.this$0, null);
@@ -70,7 +63,7 @@ class PickerJsPlugin$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.PickerJsPlugin.2.1
  * JD-Core Version:    0.7.0.1
  */

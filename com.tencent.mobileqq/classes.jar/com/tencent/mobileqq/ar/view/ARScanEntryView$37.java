@@ -1,42 +1,26 @@
 package com.tencent.mobileqq.ar.view;
 
-import android.content.Context;
-import android.graphics.Point;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.tencentmap.mapsdk.maps.CameraUpdateFactory;
-import com.tencent.tencentmap.mapsdk.maps.MapView;
-import com.tencent.tencentmap.mapsdk.maps.Projection;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap;
-import com.tencent.tencentmap.mapsdk.maps.TencentMap.OnMapLoadedCallback;
-import com.tencent.tencentmap.mapsdk.maps.model.CameraPosition;
+import android.os.Handler;
+import com.tencent.mobileqq.ar.model.ScanEntryResourceDelegate;
+import com.tencent.mobileqq.olympic.activity.ARTipsManager.ButtonClickListener;
+import com.tencent.mobileqq.olympic.activity.PromotionRes;
 
 class ARScanEntryView$37
-  implements TencentMap.OnMapLoadedCallback
+  implements ARTipsManager.ButtonClickListener
 {
-  ARScanEntryView$37(ARScanEntryView paramARScanEntryView) {}
+  ARScanEntryView$37(ARScanEntryView paramARScanEntryView, ScanEntryResourceDelegate paramScanEntryResourceDelegate, PromotionRes paramPromotionRes) {}
   
-  public void onMapLoaded()
+  public void a()
   {
-    this.a.b = true;
-    if (ARScanEntryView.a(this.a) != null)
-    {
-      Projection localProjection = ARScanEntryView.a(this.a).getMap().getProjection();
-      TencentMap localTencentMap = ARScanEntryView.a(this.a).getMap();
-      if ((localProjection != null) && (localTencentMap != null))
-      {
-        Point localPoint = localProjection.toScreenLocation(localTencentMap.getCameraPosition().target);
-        if (localPoint != null)
-        {
-          localPoint.offset(0, AIOUtils.a(60.0F, this.a.a.getResources()) * -1);
-          localTencentMap.moveCamera(CameraUpdateFactory.newLatLng(localProjection.fromScreenLocation(localPoint)));
-        }
-      }
-    }
+    ARScanEntryView.f(this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView, false);
+    this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView.b("ClickTips");
+    ARScanEntryView.g(this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView, true);
+    ARScanEntryView.a(this.jdField_a_of_type_ComTencentMobileqqArViewARScanEntryView).postDelayed(new ARScanEntryView.37.1(this), 1000L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.37
  * JD-Core Version:    0.7.0.1
  */

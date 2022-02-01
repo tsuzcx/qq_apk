@@ -23,20 +23,21 @@ public class PressEffectImageView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!isClickable()) || (!isEnabled()) || (this.a)) {
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    switch (paramMotionEvent.getAction())
+    if ((isClickable()) && (isEnabled()) && (!this.a))
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
+      int i = paramMotionEvent.getAction();
+      if (i != 0)
+      {
+        if ((i == 1) || (i == 3)) {
+          PressEffectHelper.b(this);
+        }
+        return super.onTouchEvent(paramMotionEvent);
+      }
       PressEffectHelper.a(this);
       super.onTouchEvent(paramMotionEvent);
       return true;
-      PressEffectHelper.b(this);
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setDisableEffect(boolean paramBoolean)
@@ -46,7 +47,7 @@ public class PressEffectImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.presseffect.PressEffectImageView
  * JD-Core Version:    0.7.0.1
  */

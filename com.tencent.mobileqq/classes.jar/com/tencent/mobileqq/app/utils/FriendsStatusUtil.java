@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
@@ -25,8 +26,8 @@ import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.filemanager.fileassistant.top.FileAssistTopHandler;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -56,8 +57,14 @@ public class FriendsStatusUtil
   {
     int i = SettingCloneUtil.readValueForInt(paramContext, null, "no_disturb_mode", "qqsetting_nodisturb_mode_key", 2147483647);
     int j = (int)NetConnInfoCenter.getServerTime();
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendsStatusUtil", 4, "canDisturb curServerTime = [" + j + "] isNoDisturbMode=" + i);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("canDisturb curServerTime = [");
+      paramContext.append(j);
+      paramContext.append("] isNoDisturbMode=");
+      paramContext.append(i);
+      QLog.d("FriendsStatusUtil", 4, paramContext.toString());
     }
     if (j > i) {
       return 0;
@@ -67,13 +74,14 @@ public class FriendsStatusUtil
   
   public static void a(int paramInt, boolean paramBoolean1, List<FriendsStatusUtil.UpdateFriendStatusItem> paramList, List<oidb_0x5d6.SnsUpateResult> paramList1, QQAppInterface paramQQAppInterface, boolean paramBoolean2)
   {
-    if (paramInt == 18) {
+    if (paramInt == 18)
+    {
       a(paramBoolean1, paramList, paramList1, paramQQAppInterface);
-    }
-    while (paramInt != 19) {
       return;
     }
-    a(paramBoolean1, paramList, paramList1, paramQQAppInterface, paramBoolean2);
+    if (paramInt == 19) {
+      a(paramBoolean1, paramList, paramList1, paramQQAppInterface, paramBoolean2);
+    }
   }
   
   private static void a(QQAppInterface paramQQAppInterface)
@@ -90,7 +98,8 @@ public class FriendsStatusUtil
   
   public static void a(QQAppInterface paramQQAppInterface, FriendsStatusUtil.UpdateFriendStatusItem paramUpdateFriendStatusItem, @Nullable ExtensionInfo paramExtensionInfo)
   {
-    if (paramUpdateFriendStatusItem.jdField_a_of_type_Int == 18) {
+    if (paramUpdateFriendStatusItem.jdField_a_of_type_Int == 18)
+    {
       if (a(paramQQAppInterface, paramUpdateFriendStatusItem, paramExtensionInfo))
       {
         if (QLog.isColorLevel()) {
@@ -99,45 +108,41 @@ public class FriendsStatusUtil
         a(paramQQAppInterface, paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, 0, paramUpdateFriendStatusItem.a(), false, true, paramExtensionInfo);
       }
     }
-    do
+    else if (paramUpdateFriendStatusItem.jdField_a_of_type_Int == 19)
     {
-      do
+      if (b(paramQQAppInterface, paramUpdateFriendStatusItem, paramExtensionInfo))
       {
-        return;
-        if (paramUpdateFriendStatusItem.jdField_a_of_type_Int != 19) {
-          break;
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendsStatusUtil", 4, "handlePush differ from db");
         }
-      } while (!b(paramQQAppInterface, paramUpdateFriendStatusItem, paramExtensionInfo));
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendsStatusUtil", 4, "handlePush differ from db");
-      }
-      b(paramQQAppInterface, paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, 0, paramUpdateFriendStatusItem.a(), false, true, paramExtensionInfo);
-      return;
-    } while (paramUpdateFriendStatusItem.jdField_a_of_type_Int != 21);
-    if (paramUpdateFriendStatusItem.b == 13581) {
-      if (paramUpdateFriendStatusItem.a() == null) {
-        break label385;
+        b(paramQQAppInterface, paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, 0, paramUpdateFriendStatusItem.a(), false, true, paramExtensionInfo);
       }
     }
-    label385:
-    for (boolean bool = true;; bool = false) {
-      for (;;)
+    else if (paramUpdateFriendStatusItem.jdField_a_of_type_Int == 21)
+    {
+      if (paramUpdateFriendStatusItem.b == 13581)
       {
+        boolean bool;
+        if (paramUpdateFriendStatusItem.a() != null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
         if (a(paramQQAppInterface, bool, paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, paramExtensionInfo)) {
           a(paramQQAppInterface);
         }
-        if (paramUpdateFriendStatusItem.b == 13582)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendsStatusUtil", 2, new Object[] { "handleC2COnlinePush: invoked. NotificationSettings switch, inc update NotificationSettings ", " item.update_sns_type: ", Integer.valueOf(paramUpdateFriendStatusItem.b) });
-          }
-          a(paramQQAppInterface, paramUpdateFriendStatusItem.a(), paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, paramExtensionInfo);
+      }
+      if (paramUpdateFriendStatusItem.b == 13582)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("FriendsStatusUtil", 2, new Object[] { "handleC2COnlinePush: invoked. NotificationSettings switch, inc update NotificationSettings ", " item.update_sns_type: ", Integer.valueOf(paramUpdateFriendStatusItem.b) });
         }
-        try
+        a(paramQQAppInterface, paramUpdateFriendStatusItem.a(), paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, paramExtensionInfo);
+      }
+      try
+      {
+        if (paramUpdateFriendStatusItem.b == 13580)
         {
-          if (paramUpdateFriendStatusItem.b != 13580) {
-            break;
-          }
           FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
           int i = (int)paramUpdateFriendStatusItem.a();
           paramQQAppInterface = paramExtensionInfo;
@@ -154,24 +159,26 @@ public class FriendsStatusUtil
           }
           paramQQAppInterface.friendRingId = i;
           localFriendsManager.a(paramQQAppInterface);
-          if (!QLog.isColorLevel()) {
-            break;
+          if (QLog.isColorLevel())
+          {
+            paramUpdateFriendStatusItem = new StringBuilder();
+            paramUpdateFriendStatusItem.append(" extensionInfo: ");
+            paramUpdateFriendStatusItem.append(paramQQAppInterface.uin);
+            QLog.d("FriendsStatusUtil", 2, new Object[] { "handleC2COnlinePush: invoked. UPDATE_SNS_TYPE_RING_ID", " ringId: ", Integer.valueOf(i), paramUpdateFriendStatusItem.toString() });
+            return;
           }
-          QLog.d("FriendsStatusUtil", 2, new Object[] { "handleC2COnlinePush: invoked. UPDATE_SNS_TYPE_RING_ID", " ringId: ", Integer.valueOf(i), " extensionInfo: " + paramQQAppInterface.uin });
-          return;
         }
-        catch (Throwable paramQQAppInterface)
-        {
-          QLog.e("FriendsStatusUtil", 1, "handlePush: failed. ", paramQQAppInterface);
-          return;
-        }
+      }
+      catch (Throwable paramQQAppInterface)
+      {
+        QLog.e("FriendsStatusUtil", 1, "handlePush: failed. ", paramQQAppInterface);
       }
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Object localObject = HardCodeUtil.a(2131704964);
+    Object localObject = HardCodeUtil.a(2131705040);
     paramString = new UniteGrayTipParam(paramString, paramQQAppInterface.getCurrentAccountUin(), (String)localObject, 0, -5023, 655393, 0L);
     localObject = new Bundle();
     ((Bundle)localObject).putString("textColor", "#40A0FF");
@@ -179,7 +186,7 @@ public class FriendsStatusUtil
     paramString.a(0, 6, (Bundle)localObject);
     localObject = new MessageForUniteGrayTip();
     ((MessageForUniteGrayTip)localObject).initGrayTipMsg(paramQQAppInterface, paramString);
-    UniteGrayTipUtil.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
+    UniteGrayTipMsgUtil.a(paramQQAppInterface, (MessageForUniteGrayTip)localObject);
     ReportController.b(paramQQAppInterface, "dc00898", "", "", "0X800A012", "0X800A012", 0, 0, "", "", "", "");
   }
   
@@ -200,52 +207,50 @@ public class FriendsStatusUtil
   {
     Object localObject = HiddenChatManager.a(paramQQAppInterface);
     boolean bool;
-    RecentUser localRecentUser;
-    if (paramInt2 == 1)
-    {
+    if (paramInt2 == 1) {
       bool = true;
-      ((HiddenChatManager)localObject).a(paramString, paramInt1, bool);
-      localObject = paramQQAppInterface.getProxyManager().a();
-      localRecentUser = ((RecentUserProxy)localObject).b(paramString, paramInt1);
-      if (localRecentUser != null) {
-        break label205;
-      }
+    } else {
+      bool = false;
+    }
+    ((HiddenChatManager)localObject).a(paramString, paramInt1, bool);
+    localObject = paramQQAppInterface.getProxyManager().a();
+    RecentUser localRecentUser = ((RecentUserProxy)localObject).b(paramString, paramInt1);
+    if (localRecentUser == null)
+    {
       QLog.d("FriendsStatusUtil", 1, new Object[] { "recentuserHiddenFlag is null, uin:", MobileQQ.getShortUinStr(paramString), " type:", Integer.valueOf(paramInt1), " state=", Integer.valueOf(paramInt2) });
       if (paramInt2 == 1)
       {
         localRecentUser = new RecentUser(paramString, paramInt1);
         localRecentUser.isHiddenChat = paramInt2;
-        paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(paramString, paramInt1);
-        if (paramQQAppInterface == null) {
-          break label190;
+        paramQQAppInterface = paramQQAppInterface.getMessageFacade().getLastMessage(paramString, paramInt1);
+        if (paramQQAppInterface != null)
+        {
+          localRecentUser.lastmsgtime = paramQQAppInterface.time;
         }
-        localRecentUser.lastmsgtime = paramQQAppInterface.time;
+        else
+        {
+          localRecentUser.lastmsgtime = 0L;
+          localRecentUser.lastmsgdrafttime = 0L;
+        }
+        if (localRecentUser.lastmsgtime == 0L)
+        {
+          paramQQAppInterface = RecentDataListManager.a(localRecentUser.uin, localRecentUser.getType());
+          RecentDataListManager.a().a(paramQQAppInterface);
+        }
+        ((RecentUserProxy)localObject).b(localRecentUser);
       }
     }
-    for (;;)
+    else
     {
-      if (localRecentUser.lastmsgtime == 0L)
+      QLog.d("FriendsStatusUtil", 1, new Object[] { "recentuserHiddenFlag not null, uin:", MobileQQ.getShortUinStr(paramString), " type:", Integer.valueOf(paramInt1), " state=", Integer.valueOf(paramInt2) });
+      localRecentUser.isHiddenChat = paramInt2;
+      if (a(paramQQAppInterface, localRecentUser, paramInt2))
       {
-        paramQQAppInterface = RecentDataListManager.a(localRecentUser.uin, localRecentUser.getType());
-        RecentDataListManager.a().a(paramQQAppInterface);
+        ((RecentUserProxy)localObject).a(localRecentUser);
+        return;
       }
       ((RecentUserProxy)localObject).b(localRecentUser);
-      return;
-      bool = false;
-      break;
-      label190:
-      localRecentUser.lastmsgtime = 0L;
-      localRecentUser.lastmsgdrafttime = 0L;
     }
-    label205:
-    QLog.d("FriendsStatusUtil", 1, new Object[] { "recentuserHiddenFlag not null, uin:", MobileQQ.getShortUinStr(paramString), " type:", Integer.valueOf(paramInt1), " state=", Integer.valueOf(paramInt2) });
-    localRecentUser.isHiddenChat = paramInt2;
-    if (a(paramQQAppInterface, localRecentUser, paramInt2))
-    {
-      ((RecentUserProxy)localObject).a(localRecentUser);
-      return;
-    }
-    ((RecentUserProxy)localObject).b(localRecentUser);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong)
@@ -264,11 +269,13 @@ public class FriendsStatusUtil
         paramString.opTime = paramLong;
         paramQQAppInterface.b(paramString);
       }
-      return;
     }
-    localRecentUser.showUpTime = paramLong;
-    localRecentUser.opTime = Math.max(localRecentUser.opTime, localRecentUser.showUpTime);
-    paramQQAppInterface.b(localRecentUser);
+    else
+    {
+      localRecentUser.showUpTime = paramLong;
+      localRecentUser.opTime = Math.max(localRecentUser.opTime, localRecentUser.showUpTime);
+      paramQQAppInterface.b(localRecentUser);
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean1, boolean paramBoolean2)
@@ -278,13 +285,23 @@ public class FriendsStatusUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean1, boolean paramBoolean2, @Nullable ExtensionInfo paramExtensionInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendsStatusUtil", 4, "setTopPosition top: " + paramLong + " uin: " + paramString + " userType: " + paramInt + " needUpdateDataBase" + paramBoolean1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setTopPosition top: ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" uin: ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" userType: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" needUpdateDataBase");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      QLog.d("FriendsStatusUtil", 4, ((StringBuilder)localObject).toString());
     }
-    FriendsStatusUtil.UpdateFriendStatusItem localUpdateFriendStatusItem = new FriendsStatusUtil.UpdateFriendStatusItem(paramString, 13578, 18, 0L);
-    localUpdateFriendStatusItem.a(paramLong);
+    Object localObject = new FriendsStatusUtil.UpdateFriendStatusItem(paramString, 13578, 18, 0L);
+    ((FriendsStatusUtil.UpdateFriendStatusItem)localObject).a(paramLong);
     if (paramBoolean1) {
-      a(paramQQAppInterface, localUpdateFriendStatusItem, paramExtensionInfo);
+      a(paramQQAppInterface, (FriendsStatusUtil.UpdateFriendStatusItem)localObject, paramExtensionInfo);
     }
     if (paramBoolean2)
     {
@@ -295,84 +312,83 @@ public class FriendsStatusUtil
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong, boolean paramBoolean1, boolean paramBoolean2, @Nullable ExtensionInfo paramExtensionInfo, boolean paramBoolean3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendsStatusUtil", 4, "setTopPosition operateTime: " + paramLong + " uin: " + paramString + " userType: " + paramInt + " needSend" + paramBoolean1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setTopPosition operateTime: ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" uin: ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" userType: ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" needSend");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      QLog.d("FriendsStatusUtil", 4, ((StringBuilder)localObject).toString());
     }
-    FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (!localFriendsManager.b(paramString)) {
+    Object localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if (!((FriendsManager)localObject).b(paramString)) {
       return;
     }
-    long l = 0L;
-    Object localObject = paramExtensionInfo;
     if (paramExtensionInfo == null) {
-      localObject = localFriendsManager.a(paramString);
+      paramExtensionInfo = ((FriendsManager)localObject).a(paramString);
     }
-    if (localObject != null) {
-      l = ((ExtensionInfo)localObject).openDoNotDisturbTime;
+    long l;
+    if (paramExtensionInfo != null) {
+      l = paramExtensionInfo.openDoNotDisturbTime;
+    } else {
+      l = 0L;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendsStatusUtil", 4, "isOpenDoNotDisturb uin=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isOpenDoNotDisturb uin=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("FriendsStatusUtil", 4, ((StringBuilder)localObject).toString());
     }
-    paramExtensionInfo = new FriendsStatusUtil.UpdateFriendStatusItem(paramString, 13579, 19, l);
-    paramExtensionInfo.b(paramLong);
-    if ((!b(paramQQAppInterface, paramExtensionInfo, (ExtensionInfo)localObject)) && (QLog.isColorLevel())) {
+    localObject = new FriendsStatusUtil.UpdateFriendStatusItem(paramString, 13579, 19, l);
+    ((FriendsStatusUtil.UpdateFriendStatusItem)localObject).b(paramLong);
+    if ((!b(paramQQAppInterface, (FriendsStatusUtil.UpdateFriendStatusItem)localObject, paramExtensionInfo)) && (QLog.isColorLevel())) {
       QLog.d("FriendsStatusUtil", 2, "saveFriendDoNotDisturbToDataBase=false");
     }
-    boolean bool = paramBoolean3;
-    if (!paramBoolean1)
+    paramInt = 0;
+    if ((!paramBoolean1) && (paramBoolean3))
     {
-      bool = paramBoolean3;
-      if (paramBoolean3)
-      {
-        bool = false;
-        localObject = new Intent("action_donot_disturb_resp");
-        ((Intent)localObject).putExtra("key_uin", paramString);
-        if (paramLong == 0L) {
-          break label354;
-        }
+      paramExtensionInfo = new Intent("action_donot_disturb_resp");
+      paramExtensionInfo.putExtra("key_uin", paramString);
+      if (paramLong != 0L) {
         paramBoolean3 = true;
-        label250:
-        ((Intent)localObject).putExtra("key_swtich", paramBoolean3);
-        BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject);
+      } else {
+        paramBoolean3 = false;
       }
+      paramExtensionInfo.putExtra("key_swtich", paramBoolean3);
+      BaseApplicationImpl.getContext().sendBroadcast(paramExtensionInfo);
+      paramBoolean3 = false;
     }
     a(paramQQAppInterface);
     if (paramBoolean2)
     {
-      if (paramLong != 0L)
-      {
+      if (paramLong != 0L) {
         paramBoolean2 = true;
-        label287:
-        a(paramBoolean2, paramString, paramQQAppInterface);
+      } else {
+        paramBoolean2 = false;
       }
+      a(paramBoolean2, paramString, paramQQAppInterface);
     }
-    else {
-      if (paramLong == 0L) {
-        break label366;
-      }
+    if (paramLong != 0L) {
+      paramInt = 1;
     }
-    label354:
-    label366:
-    for (paramInt = 1;; paramInt = 0)
+    b(paramQQAppInterface, paramString, paramInt);
+    if (paramBoolean1)
     {
-      b(paramQQAppInterface, paramString, paramInt);
-      if (!paramBoolean1) {
-        break;
-      }
       paramString = new ArrayList(1);
-      paramString.add(paramExtensionInfo);
-      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).create0x5d6RequestPackage(paramExtensionInfo.jdField_a_of_type_Int, paramString, "OidbSvc.0x5d6_19", bool);
-      return;
-      paramBoolean3 = false;
-      break label250;
-      paramBoolean2 = false;
-      break label287;
+      paramString.add(localObject);
+      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).create0x5d6RequestPackage(((FriendsStatusUtil.UpdateFriendStatusItem)localObject).jdField_a_of_type_Int, paramString, "OidbSvc.0x5d6_19", paramBoolean3);
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, boolean paramBoolean)
   {
-    if (!NetworkUtil.g(null)) {
+    if (!NetworkUtil.isNetworkAvailable(null)) {
       return;
     }
     long l = 0L;
@@ -390,45 +406,43 @@ public class FriendsStatusUtil
   {
     paramMap = paramMap.entrySet().iterator();
     int i = 0;
-    if (paramMap.hasNext())
+    while (paramMap.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)paramMap.next();
-      if (!a(paramQQAppInterface, ((Boolean)localEntry.getValue()).booleanValue(), (String)localEntry.getKey(), null)) {
-        break label76;
+      if (a(paramQQAppInterface, ((Boolean)localEntry.getValue()).booleanValue(), (String)localEntry.getKey(), null)) {
+        i = 1;
       }
-      i = 1;
     }
-    label76:
-    for (;;)
-    {
-      break;
-      if (i != 0) {
-        a(paramQQAppInterface);
-      }
-      return;
+    if (i != 0) {
+      a(paramQQAppInterface);
     }
   }
   
   public static void a(boolean paramBoolean, String paramString, QQAppInterface paramQQAppInterface)
   {
-    if (paramBoolean) {}
-    for (Object localObject = HardCodeUtil.a(2131704962);; localObject = HardCodeUtil.a(2131704965))
-    {
-      localObject = new UniteGrayTipParam(paramString, paramQQAppInterface.getCurrentAccountUin(), (String)localObject, 0, -5023, 655385, 0L);
-      MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
-      localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject);
-      UniteGrayTipUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendsStatusUtil", 2, new Object[] { "isOpen=", Boolean.valueOf(paramBoolean), "friendUin=", paramString });
-      }
-      return;
+    if (paramBoolean) {
+      localObject = HardCodeUtil.a(2131705038);
+    } else {
+      localObject = HardCodeUtil.a(2131705041);
+    }
+    Object localObject = new UniteGrayTipParam(paramString, paramQQAppInterface.getCurrentAccountUin(), (String)localObject, 0, -5023, 655385, 0L);
+    MessageForUniteGrayTip localMessageForUniteGrayTip = new MessageForUniteGrayTip();
+    localMessageForUniteGrayTip.initGrayTipMsg(paramQQAppInterface, (UniteGrayTipParam)localObject);
+    UniteGrayTipMsgUtil.a(paramQQAppInterface, localMessageForUniteGrayTip);
+    if (QLog.isColorLevel()) {
+      QLog.d("FriendsStatusUtil", 2, new Object[] { "isOpen=", Boolean.valueOf(paramBoolean), "friendUin=", paramString });
     }
   }
   
   private static void a(boolean paramBoolean, List<FriendsStatusUtil.UpdateFriendStatusItem> paramList, List<oidb_0x5d6.SnsUpateResult> paramList1, QQAppInterface paramQQAppInterface)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendsStatusUtil", 2, "handleTopPosition successFromServer: " + paramBoolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleTopPosition successFromServer: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("FriendsStatusUtil", 2, ((StringBuilder)localObject).toString());
     }
     if (!paramBoolean)
     {
@@ -439,23 +453,34 @@ public class FriendsStatusUtil
       paramQQAppInterface.runOnUiThread(new FriendsStatusUtil.1());
       return;
     }
-    paramList1 = paramList1.iterator();
     int i = 0;
-    while (paramList1.hasNext())
+    paramList1 = paramList1.iterator();
+    if (paramList1.hasNext())
     {
-      oidb_0x5d6.SnsUpateResult localSnsUpateResult = (oidb_0x5d6.SnsUpateResult)paramList1.next();
+      localObject = (oidb_0x5d6.SnsUpateResult)paramList1.next();
       Iterator localIterator = paramList.iterator();
-      while (localIterator.hasNext())
+      int j = i;
+      for (;;)
       {
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
+        }
         FriendsStatusUtil.UpdateFriendStatusItem localUpdateFriendStatusItem = (FriendsStatusUtil.UpdateFriendStatusItem)localIterator.next();
-        if (localSnsUpateResult.uint64_uin.get() == Long.parseLong(localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString))
+        if (((oidb_0x5d6.SnsUpateResult)localObject).uint64_uin.get() == Long.parseLong(localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("FriendsStatusUtil", 2, "handleTopPosition uin: " + localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString + " result: " + localSnsUpateResult.uint32_result.get());
-          }
-          if (localSnsUpateResult.uint32_result.get() != 0)
+          if (QLog.isColorLevel())
           {
-            i = 1;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleTopPosition uin: ");
+            localStringBuilder.append(localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(" result: ");
+            localStringBuilder.append(((oidb_0x5d6.SnsUpateResult)localObject).uint32_result.get());
+            QLog.d("FriendsStatusUtil", 2, localStringBuilder.toString());
+          }
+          if (((oidb_0x5d6.SnsUpateResult)localObject).uint32_result.get() != 0)
+          {
+            j = 1;
           }
           else
           {
@@ -473,8 +498,13 @@ public class FriendsStatusUtil
   
   private static void a(boolean paramBoolean1, List<FriendsStatusUtil.UpdateFriendStatusItem> paramList, List<oidb_0x5d6.SnsUpateResult> paramList1, QQAppInterface paramQQAppInterface, boolean paramBoolean2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendsStatusUtil", 2, "handleDoNotDisturb successFromServer: " + paramBoolean1);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleDoNotDisturb successFromServer: ");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      QLog.d("FriendsStatusUtil", 2, ((StringBuilder)localObject).toString());
     }
     if (!paramBoolean1)
     {
@@ -486,50 +516,60 @@ public class FriendsStatusUtil
       }
       a(paramQQAppInterface);
       paramQQAppInterface.runOnUiThread(new FriendsStatusUtil.3());
-    }
-    int i;
-    do
-    {
       return;
-      paramList1 = paramList1.iterator();
-      i = 0;
-      while (paramList1.hasNext())
+    }
+    paramList1 = paramList1.iterator();
+    int i = 0;
+    if (paramList1.hasNext())
+    {
+      localObject = (oidb_0x5d6.SnsUpateResult)paramList1.next();
+      Iterator localIterator = paramList.iterator();
+      int j = i;
+      for (;;)
       {
-        oidb_0x5d6.SnsUpateResult localSnsUpateResult = (oidb_0x5d6.SnsUpateResult)paramList1.next();
-        Iterator localIterator = paramList.iterator();
-        while (localIterator.hasNext())
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        FriendsStatusUtil.UpdateFriendStatusItem localUpdateFriendStatusItem = (FriendsStatusUtil.UpdateFriendStatusItem)localIterator.next();
+        if (((oidb_0x5d6.SnsUpateResult)localObject).uint64_uin.get() == Long.parseLong(localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString))
         {
-          FriendsStatusUtil.UpdateFriendStatusItem localUpdateFriendStatusItem = (FriendsStatusUtil.UpdateFriendStatusItem)localIterator.next();
-          if (localSnsUpateResult.uint64_uin.get() == Long.parseLong(localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString))
+          if (QLog.isColorLevel())
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("FriendsStatusUtil", 2, "handleDoNotDisturb uin: " + localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString + " result: " + localSnsUpateResult.uint32_result.get());
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handleDoNotDisturb uin: ");
+            localStringBuilder.append(localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString);
+            localStringBuilder.append(" result: ");
+            localStringBuilder.append(((oidb_0x5d6.SnsUpateResult)localObject).uint32_result.get());
+            QLog.d("FriendsStatusUtil", 2, localStringBuilder.toString());
+          }
+          if (((oidb_0x5d6.SnsUpateResult)localObject).uint32_result.get() != 0)
+          {
+            if (localUpdateFriendStatusItem.a() > 0L) {
+              localUpdateFriendStatusItem.b(0L);
+            } else {
+              localUpdateFriendStatusItem.b(localUpdateFriendStatusItem.jdField_a_of_type_Long);
             }
-            if (localSnsUpateResult.uint32_result.get() != 0)
-            {
-              if (localUpdateFriendStatusItem.a() > 0L) {
-                localUpdateFriendStatusItem.b(0L);
-              }
-              for (;;)
-              {
-                a(paramQQAppInterface, localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, 0, localUpdateFriendStatusItem.a(), false, false, null, paramBoolean2);
-                i = 1;
-                break;
-                localUpdateFriendStatusItem.b(localUpdateFriendStatusItem.jdField_a_of_type_Long);
-              }
+            a(paramQQAppInterface, localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, 0, localUpdateFriendStatusItem.a(), false, false, null, paramBoolean2);
+            j = 1;
+          }
+          else
+          {
+            if (localUpdateFriendStatusItem.a() != 0L) {
+              paramBoolean1 = true;
+            } else {
+              paramBoolean1 = false;
             }
-            if (localUpdateFriendStatusItem.a() != 0L) {}
-            for (paramBoolean1 = true;; paramBoolean1 = false)
-            {
-              a(paramBoolean1, localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, paramQQAppInterface);
-              break;
-            }
+            a(paramBoolean1, localUpdateFriendStatusItem.jdField_a_of_type_JavaLangString, paramQQAppInterface);
           }
         }
       }
-    } while (i == 0);
-    a(paramQQAppInterface);
-    paramQQAppInterface.runOnUiThread(new FriendsStatusUtil.4());
+    }
+    if (i != 0)
+    {
+      a(paramQQAppInterface);
+      paramQQAppInterface.runOnUiThread(new FriendsStatusUtil.4());
+    }
   }
   
   public static boolean a(Context paramContext)
@@ -563,8 +603,16 @@ public class FriendsStatusUtil
       }
     }
     long l = paramUpdateFriendStatusItem.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("FriendsStatusUtil", 4, "saveTopPositionToDataBase DB TOP=" + localExtensionInfo.topPositionTime + " update top=" + l + " uin=" + paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramExtensionInfo = new StringBuilder();
+      paramExtensionInfo.append("saveTopPositionToDataBase DB TOP=");
+      paramExtensionInfo.append(localExtensionInfo.topPositionTime);
+      paramExtensionInfo.append(" update top=");
+      paramExtensionInfo.append(l);
+      paramExtensionInfo.append(" uin=");
+      paramExtensionInfo.append(paramUpdateFriendStatusItem.jdField_a_of_type_JavaLangString);
+      QLog.d("FriendsStatusUtil", 4, paramExtensionInfo.toString());
     }
     if (l == -1L) {
       return false;
@@ -581,166 +629,143 @@ public class FriendsStatusUtil
   
   public static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
   {
-    boolean bool = true;
-    FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if ((paramRecentUser.getType() == 0) && (localFriendsManager.b(paramRecentUser.uin)))
+    Object localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    if ((paramRecentUser.getType() == 0) && (((FriendsManager)localObject).b(paramRecentUser.uin)))
     {
-      paramQQAppInterface = localFriendsManager.a(String.valueOf(paramRecentUser.uin));
-      if ((paramQQAppInterface == null) || (paramQQAppInterface.topPositionTime == paramRecentUser.showUpTime) || (paramQQAppInterface.topPositionTime == -1L)) {
+      paramQQAppInterface = ((FriendsManager)localObject).a(String.valueOf(paramRecentUser.uin));
+      if ((paramQQAppInterface != null) && (paramQQAppInterface.topPositionTime != paramRecentUser.showUpTime) && (paramQQAppInterface.topPositionTime != -1L))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder("checkNeedTopPosition uin=");
+          ((StringBuilder)localObject).append(paramRecentUser.uin);
+          ((StringBuilder)localObject).append(" showupTime");
+          ((StringBuilder)localObject).append(paramRecentUser.showUpTime);
+          ((StringBuilder)localObject).append(" topPosition");
+          ((StringBuilder)localObject).append(paramQQAppInterface.topPositionTime);
+        }
+        if (paramQQAppInterface.topPositionTime != paramRecentUser.showUpTime) {
+          paramRecentUser.showUpTime = paramQQAppInterface.topPositionTime;
+        }
+      }
+      else
+      {
         return paramRecentUser.showUpTime > 0L;
       }
-      if (QLog.isColorLevel()) {
-        new StringBuilder("checkNeedTopPosition uin=").append(paramRecentUser.uin).append(" showupTime").append(paramRecentUser.showUpTime).append(" topPosition").append(paramQQAppInterface.topPositionTime);
-      }
-      if (paramQQAppInterface.topPositionTime != paramRecentUser.showUpTime) {
-        paramRecentUser.showUpTime = paramQQAppInterface.topPositionTime;
-      }
-      if (paramRecentUser.showUpTime <= 0L) {
-        break label207;
-      }
     }
-    for (;;)
+    else if ((AppConstants.FILE_ASSISTANT_UIN.equals(paramRecentUser.uin)) && (a(paramQQAppInterface)) && (paramRecentUser.showUpTime == 0L))
     {
-      return bool;
-      if ((!AppConstants.FILE_ASSISTANT_UIN.equals(paramRecentUser.uin)) || (!a(paramQQAppInterface)) || (paramRecentUser.showUpTime != 0L)) {
-        break;
-      }
       paramRecentUser.showUpTime = (System.currentTimeMillis() / 1000L);
-      break;
-      label207:
-      bool = false;
     }
+    return paramRecentUser.showUpTime > 0L;
   }
   
   private static boolean a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser, int paramInt)
   {
-    com.tencent.imcore.message.Message localMessage = paramQQAppInterface.getMessageFacade().a(paramRecentUser.uin, paramRecentUser.getType());
+    com.tencent.imcore.message.Message localMessage = paramQQAppInterface.getMessageFacade().getLastMessage(paramRecentUser.uin, paramRecentUser.getType());
     int i;
-    if ((localMessage == null) || (localMessage.msgtype == 0))
-    {
+    if ((localMessage != null) && (localMessage.msgtype != 0)) {
+      i = 0;
+    } else {
       i = 1;
-      if (paramInt != 1) {
-        break label58;
-      }
+    }
+    if (paramInt == 1)
+    {
       if (i != 0)
       {
         paramRecentUser.lastmsgdrafttime = 0L;
         paramRecentUser.lastmsgtime = 0L;
       }
+      return false;
     }
-    label58:
-    do
+    if (paramRecentUser.showUpTime > 0L) {
+      return false;
+    }
+    if (i != 0) {
+      return true;
+    }
+    if (paramRecentUser.getType() == 1)
     {
-      do
-      {
-        do
-        {
-          return false;
-          i = 0;
-          break;
-        } while (paramRecentUser.showUpTime > 0L);
-        if (i != 0) {
-          return true;
-        }
-      } while (paramRecentUser.getType() != 1);
       paramInt = paramQQAppInterface.getTroopMask(paramRecentUser.uin);
-    } while ((paramInt != 2) && (paramInt != 3));
-    return true;
+      if ((paramInt == 2) || (paramInt == 3)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
-    boolean bool = true;
     Object localObject = paramQQAppInterface.getProxyManager().a();
-    if ((paramString == null) || (paramString.length() == 0) || (localObject == null)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendsStatusUtil", 2, "isChatAtTop params error, return false.");
-      }
-    }
-    do
+    if ((paramString != null) && (paramString.length() != 0) && (localObject != null))
     {
-      return false;
       localObject = ((RecentUserProxy)localObject).b(paramString, paramInt);
       if (localObject != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendsStatusUtil", 2, "isChatAtTop result is: " + ((RecentUser)localObject).showUpTime);
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("isChatAtTop result is: ");
+          paramQQAppInterface.append(((RecentUser)localObject).showUpTime);
+          QLog.d("FriendsStatusUtil", 2, paramQQAppInterface.toString());
         }
-        if (((RecentUser)localObject).showUpTime > 0L) {}
-        for (bool = true;; bool = false) {
-          return bool;
-        }
+        return ((RecentUser)localObject).showUpTime > 0L;
       }
       paramQQAppInterface = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(String.valueOf(paramString));
-    } while (paramQQAppInterface == null);
+      if (paramQQAppInterface != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("isChatAtTop extensionInfo is: ");
+          paramString.append(paramQQAppInterface.topPositionTime);
+          QLog.d("FriendsStatusUtil", 2, paramString.toString());
+        }
+        return paramQQAppInterface.topPositionTime > 0L;
+      }
+      return false;
+    }
     if (QLog.isColorLevel()) {
-      QLog.d("FriendsStatusUtil", 2, "isChatAtTop extensionInfo is: " + paramQQAppInterface.topPositionTime);
+      QLog.d("FriendsStatusUtil", 2, "isChatAtTop params error, return false.");
     }
-    if (paramQQAppInterface.topPositionTime > 0L) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return false;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("FriendsStatusUtil", 2, "setChatAtTop params error, return false.");
+    if ((paramString != null) && (paramString.length() != 0))
+    {
+      if (!NetworkUtil.isNetworkAvailable(null)) {
+        return false;
       }
-    }
-    while (!NetworkUtil.g(null)) {
-      return false;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setChatAtTop top: ");
+        localStringBuilder.append(paramBoolean);
+        localStringBuilder.append(" uin: ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" userType: ");
+        localStringBuilder.append(paramInt);
+        QLog.d("FriendsStatusUtil", 2, localStringBuilder.toString());
+      }
+      a(paramQQAppInterface, paramString, paramBoolean);
+      return true;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("FriendsStatusUtil", 2, "setChatAtTop top: " + paramBoolean + " uin: " + paramString + " userType: " + paramInt);
+      QLog.d("FriendsStatusUtil", 2, "setChatAtTop params error, return false.");
     }
-    a(paramQQAppInterface, paramString, paramBoolean);
-    return true;
+    return false;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, boolean paramBoolean, String paramString, @Nullable ExtensionInfo paramExtensionInfo)
   {
-    FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    ExtensionInfo localExtensionInfo = paramExtensionInfo;
-    if (paramExtensionInfo == null)
-    {
-      paramExtensionInfo = localFriendsManager.a(String.valueOf(paramString));
-      ExtensionInfoLogUtils.a("FriendsStatusUtil", "saveHiddenFlagSwitchToExtensionInfo# fm.getExtensionInfo, uin:", paramExtensionInfo);
-      localExtensionInfo = paramExtensionInfo;
-      if (paramExtensionInfo == null)
-      {
-        paramExtensionInfo = new ExtensionInfo();
-        paramExtensionInfo.uin = String.valueOf(paramString);
-        localExtensionInfo = paramExtensionInfo;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("tag_hidden_chat", 4, "saveSwitchToExtensionInfo new create ");
-          localExtensionInfo = paramExtensionInfo;
-        }
-      }
-    }
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      QLog.i("FriendsStatusUtil", 1, "saveHiddenFlagSwitchToExtensionInfo(), uin:" + MobileQQ.getShortUinStr(paramString) + " value:" + i);
-      if (localExtensionInfo.hiddenChatSwitch == i) {
-        break;
-      }
-      localExtensionInfo.hiddenChatSwitch = i;
-      localFriendsManager.a(localExtensionInfo);
-      a(paramQQAppInterface, paramString, 0, i);
-      return true;
-    }
-    return false;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString, @Nullable ExtensionInfo paramExtensionInfo)
   {
     FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    paramQQAppInterface = paramExtensionInfo;
     if (paramExtensionInfo == null)
     {
       paramExtensionInfo = localFriendsManager.a(String.valueOf(paramString));
@@ -757,91 +782,74 @@ public class FriendsStatusUtil
         }
       }
     }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < 2)) {
-      return false;
-    }
-    byte b = paramArrayOfByte[1];
-    int j;
-    int k;
-    if ((b & 0x1) == 0)
+    else
     {
-      j = 1;
-      if ((b & 0x2) != 0) {
-        break label348;
+      paramQQAppInterface = paramExtensionInfo;
+    }
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length < 2) {
+        return false;
       }
-      k = 1;
-      label107:
-      if ((b & 0x4) != 0) {
-        break label354;
+      byte b = paramArrayOfByte[1];
+      int i;
+      if ((b & 0x1) == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      label117:
+      int j;
+      if ((b & 0x2) == 0) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      int k;
+      if ((b & 0x4) == 0) {
+        k = 1;
+      } else {
+        k = 0;
+      }
       if (QLog.isColorLevel()) {
         QLog.d("FriendsStatusUtil", 2, new Object[] { "saveNotificationFlagSwitchToExtensionInfo: invoked. ", " byte1: ", Byte.valueOf(b), " uin: ", paramString });
       }
-      if (j == 0) {
-        break label360;
-      }
-      j = 0;
-      label171:
-      if (k == 0) {
-        break label366;
-      }
-      k = 0;
-      label179:
-      if (i == 0) {
-        break label372;
-      }
-    }
-    label348:
-    label354:
-    label360:
-    label366:
-    label372:
-    for (int i = 0;; i = 1)
-    {
+      i ^= 0x1;
+      j ^= 0x1;
+      k ^= 0x1;
       if (QLog.isColorLevel()) {
-        QLog.d("FriendsStatusUtil", 2, new Object[] { "saveNotificationFlagSwitchToExtensionInfo: invoked. ", " messageEnablePreviewValue: ", Integer.valueOf(j), " messageEnableVibrateValue: ", Integer.valueOf(k), " messageEnableSoundValue: ", Integer.valueOf(i) });
+        QLog.d("FriendsStatusUtil", 2, new Object[] { "saveNotificationFlagSwitchToExtensionInfo: invoked. ", " messageEnablePreviewValue: ", Integer.valueOf(i), " messageEnableVibrateValue: ", Integer.valueOf(j), " messageEnableSoundValue: ", Integer.valueOf(k) });
       }
-      if ((paramQQAppInterface.messageEnablePreviewNew == j) && (paramQQAppInterface.messageEnableVibrateNew == k) && (paramQQAppInterface.messageEnableSoundNew == i)) {
-        break label378;
+      if ((paramQQAppInterface.messageEnablePreviewNew == i) && (paramQQAppInterface.messageEnableVibrateNew == j) && (paramQQAppInterface.messageEnableSoundNew == k)) {
+        return false;
       }
-      paramQQAppInterface.messageEnablePreviewNew = j;
-      paramQQAppInterface.messageEnableVibrateNew = k;
-      paramQQAppInterface.messageEnableSoundNew = i;
+      paramQQAppInterface.messageEnablePreviewNew = i;
+      paramQQAppInterface.messageEnableVibrateNew = j;
+      paramQQAppInterface.messageEnableSoundNew = k;
       localFriendsManager.a(paramQQAppInterface);
       if (QLog.isColorLevel()) {
-        QLog.d("FriendsStatusUtil", 2, new Object[] { "saveNotificationFlagSwitchToExtensionInfo: invoked. switch changed. ", " messageEnableSoundValue: ", Integer.valueOf(i) });
+        QLog.d("FriendsStatusUtil", 2, new Object[] { "saveNotificationFlagSwitchToExtensionInfo: invoked. switch changed. ", " messageEnableSoundValue: ", Integer.valueOf(k) });
       }
       return true;
-      j = 0;
-      break;
-      k = 0;
-      break label107;
-      i = 0;
-      break label117;
-      j = 1;
-      break label171;
-      k = 1;
-      break label179;
     }
-    label378:
     return false;
   }
   
-  public static boolean a(@NonNull String paramString, QQAppInterface paramQQAppInterface)
+  public static boolean a(@NonNull String paramString, AppInterface paramAppInterface)
   {
-    paramQQAppInterface = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (!paramQQAppInterface.b(paramString)) {}
-    do
-    {
+    paramAppInterface = (FriendsManager)paramAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    boolean bool2 = paramAppInterface.b(paramString);
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
-      paramString = paramQQAppInterface.a(paramString);
-    } while (paramString == null);
-    if (paramString.openDoNotDisturbTime > 0L) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
     }
+    paramString = paramAppInterface.a(paramString);
+    if (paramString == null) {
+      return false;
+    }
+    if (paramString.openDoNotDisturbTime > 0L) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static boolean a(SubMsgType0x27.SnsUpdateItem paramSnsUpdateItem, QQAppInterface paramQQAppInterface, String paramString)
@@ -851,26 +859,22 @@ public class FriendsStatusUtil
       paramString = new FriendsStatusUtil.UpdateFriendStatusItem(paramString, 13578, 18);
       if (!paramSnsUpdateItem.bytes_value.has()) {
         paramString.a(null);
-      }
-      for (;;)
-      {
-        a(paramQQAppInterface, paramString, null);
-        return true;
+      } else {
         paramString.a(paramSnsUpdateItem.bytes_value.get().toByteArray());
       }
+      a(paramQQAppInterface, paramString, null);
+      return true;
     }
     if (paramSnsUpdateItem.uint32_update_sns_type.get() == 13581)
     {
       paramString = new FriendsStatusUtil.UpdateFriendStatusItem(paramString, 13581, 21);
-      if ((!paramSnsUpdateItem.bytes_value.has()) || (paramSnsUpdateItem.bytes_value.get().toByteArray().length == 0)) {
+      if ((paramSnsUpdateItem.bytes_value.has()) && (paramSnsUpdateItem.bytes_value.get().toByteArray().length != 0)) {
+        paramString.a(paramSnsUpdateItem.bytes_value.get().toByteArray());
+      } else {
         paramString.a(null);
       }
-      for (;;)
-      {
-        a(paramQQAppInterface, paramString, null);
-        return true;
-        paramString.a(paramSnsUpdateItem.bytes_value.get().toByteArray());
-      }
+      a(paramQQAppInterface, paramString, null);
+      return true;
     }
     if (paramSnsUpdateItem.uint32_update_sns_type.get() == 13579)
     {
@@ -884,8 +888,12 @@ public class FriendsStatusUtil
     }
     if (paramSnsUpdateItem.uint32_update_sns_type.get() == 13582)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FriendsStatusUtil", 2, "handelFriendStatusPush: invoked. from online push  snsItem: " + paramSnsUpdateItem);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handelFriendStatusPush: invoked. from online push  snsItem: ");
+        localStringBuilder.append(paramSnsUpdateItem);
+        QLog.i("FriendsStatusUtil", 2, localStringBuilder.toString());
       }
       paramString = new FriendsStatusUtil.UpdateFriendStatusItem(paramString, 13582, 21);
       paramString.b(paramSnsUpdateItem.bytes_value.get().toByteArray());
@@ -984,7 +992,7 @@ public class FriendsStatusUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.utils.FriendsStatusUtil
  * JD-Core Version:    0.7.0.1
  */

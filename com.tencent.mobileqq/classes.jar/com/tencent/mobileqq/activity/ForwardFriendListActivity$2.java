@@ -16,18 +16,19 @@ class ForwardFriendListActivity$2
     paramDialogInterface = ForwardFriendListActivity.a(this.a).getInputValue();
     if (!TextUtils.isEmpty(paramDialogInterface))
     {
-      ForwardFriendListActivity.a(this.a, ForwardFriendListActivity.a(this.a).getEditText());
-      Intent localIntent = new Intent();
-      localIntent.putExtras(this.a.getIntent().getExtras());
-      localIntent.putExtra("extra_choose_friend_name", paramDialogInterface);
-      this.a.setResult(-1, localIntent);
+      Object localObject = this.a;
+      ForwardFriendListActivity.a((ForwardFriendListActivity)localObject, ForwardFriendListActivity.a((ForwardFriendListActivity)localObject).getEditText());
+      localObject = new Intent();
+      ((Intent)localObject).putExtras(this.a.getIntent().getExtras());
+      ((Intent)localObject).putExtra("extra_choose_friend_name", paramDialogInterface);
+      this.a.setResult(-1, (Intent)localObject);
       this.a.finish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardFriendListActivity.2
  * JD-Core Version:    0.7.0.1
  */

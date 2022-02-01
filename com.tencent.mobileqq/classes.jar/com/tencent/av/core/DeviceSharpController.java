@@ -3,28 +3,30 @@ package com.tencent.av.core;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.av.temp.IExternalUtilsApi;
 import com.tencent.avcore.netchannel.AbstractNetChannel;
+import com.tencent.common.app.business.BaseVideoAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class DeviceSharpController
 {
   static String jdField_a_of_type_JavaLangString = "smartdevice::sharp";
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface = null;
-  DeviceSharpController.BroadcastHandler jdField_a_of_type_ComTencentAvCoreDeviceSharpController$BroadcastHandler = null;
-  AbstractNetChannel jdField_a_of_type_ComTencentAvcoreNetchannelAbstractNetChannel = null;
+  DeviceSharpController.BroadcastHandler jdField_a_of_type_ComTencentAvCoreDeviceSharpController$BroadcastHandler;
+  AbstractNetChannel jdField_a_of_type_ComTencentAvcoreNetchannelAbstractNetChannel;
+  BaseVideoAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface;
   
-  public DeviceSharpController(AbstractNetChannel paramAbstractNetChannel, VideoAppInterface paramVideoAppInterface)
+  public DeviceSharpController(AbstractNetChannel paramAbstractNetChannel, BaseVideoAppInterface paramBaseVideoAppInterface)
   {
     this.jdField_a_of_type_ComTencentAvcoreNetchannelAbstractNetChannel = paramAbstractNetChannel;
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface = paramBaseVideoAppInterface;
     this.jdField_a_of_type_ComTencentAvCoreDeviceSharpController$BroadcastHandler = new DeviceSharpController.BroadcastHandler(this);
     paramAbstractNetChannel = new IntentFilter();
-    paramAbstractNetChannel.addAction("SmartDevice_ReceiveSharpMsg");
-    paramAbstractNetChannel.addAction("SmartDevice_ReceiveSharpAckMsg");
-    paramAbstractNetChannel.addAction("SmartDevice_DeviceUnBindRst");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_ComTencentAvCoreDeviceSharpController$BroadcastHandler, paramAbstractNetChannel, "com.tencent.smartdevice.permission.broadcast", null);
+    paramAbstractNetChannel.addAction(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getSmartDeviceReceiveSharpMsg());
+    paramAbstractNetChannel.addAction(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getSmartDeviceReceiveSharpAckMsg());
+    paramAbstractNetChannel.addAction(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getDeviceUnBindRst());
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getApp().registerReceiver(this.jdField_a_of_type_ComTencentAvCoreDeviceSharpController$BroadcastHandler, paramAbstractNetChannel, ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getBroadcastPermission(), null);
   }
   
   void a(byte[] paramArrayOfByte, long paramLong)
@@ -38,8 +40,8 @@ public class DeviceSharpController
     localBundle.putByteArray("value", paramArrayOfByte);
     paramArrayOfByte = new Intent();
     paramArrayOfByte.putExtra("msgData", localBundle);
-    paramArrayOfByte.setAction("SmartDevice_SendSharpMsg");
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp().sendBroadcast(paramArrayOfByte, "com.tencent.smartdevice.permission.broadcast");
+    paramArrayOfByte.setAction(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getSmartDeviceSendSharpMsg());
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getApp().sendBroadcast(paramArrayOfByte, ((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).getBroadcastPermission());
   }
   
   public void b(byte[] paramArrayOfByte, long paramLong)
@@ -49,7 +51,7 @@ public class DeviceSharpController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.core.DeviceSharpController
  * JD-Core Version:    0.7.0.1
  */

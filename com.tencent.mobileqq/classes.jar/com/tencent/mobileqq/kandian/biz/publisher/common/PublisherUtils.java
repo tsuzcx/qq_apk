@@ -4,11 +4,11 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Parcelable;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.BiuCommentInfo;
-import com.tencent.biz.pubaccount.readinjoy.struct.SocializeFeedsInfo.JumpInfo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.RIJUgcUtils;
-import com.tencent.biz.pubaccount.readinjoy.ugc.config.RIJVideoPublishConfig;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils;
+import com.tencent.mobileqq.kandian.repo.handler.BiuCommentInfo;
+import com.tencent.mobileqq.kandian.repo.handler.JumpInfo;
+import com.tencent.mobileqq.kandian.repo.ugc.RIJVideoPublishConfig;
 import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig;
 import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig.Companion;
 import com.tencent.tkd.topicsdk.bean.TopicInfo;
@@ -21,14 +21,27 @@ import java.util.Collection;
 import java.util.List;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
+import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/common/PublisherUtils;", "", "()V", "convertEditObjectsToBiuCommentInfoList", "", "Lcom/tencent/biz/pubaccount/readinjoy/struct/SocializeFeedsInfo$BiuCommentInfo;", "uin", "", "prependColon", "", "editObjects", "Lcom/tencent/tkd/weibo/bean/EditObject;", "getCreateTopicInnerBundle", "Landroid/os/Bundle;", "context", "Landroid/content/Context;", "extra", "Lorg/json/JSONObject;", "getEditTopicInnerBundle", "getManageColumnConfigs", "getPublishArticleConfigs", "getPublishArticleInnerBundle", "putAddToTopic", "", "putAuthorityConfig", "putBottomPanelConfig", "putPrivacyConfig", "putTopicSubmitConfig", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/common/PublisherUtils;", "", "()V", "convertEditObjectsToBiuCommentInfoList", "", "Lcom/tencent/mobileqq/kandian/repo/handler/BiuCommentInfo;", "uin", "", "prependColon", "", "editObjects", "Lcom/tencent/tkd/weibo/bean/EditObject;", "getCommentAfterObject", "position", "", "getCreateTopicInnerBundle", "Landroid/os/Bundle;", "context", "Landroid/content/Context;", "extra", "Lorg/json/JSONObject;", "getEditTopicInnerBundle", "getManageColumnConfigs", "getPublishArticleConfigs", "getPublishArticleInnerBundle", "putAtObjectIntoInfoList", "", "currentObject", "infoList", "Ljava/util/ArrayList;", "Lkotlin/collections/ArrayList;", "commentInfo", "putTopicObjectIntoInfoList", "putUrlObjectIntoInfoList", "putAddToTopic", "putAuthorityConfig", "putBottomPanelConfig", "putDeliverKDCommunityConfig", "putPrivacyConfig", "putTopicSubmitConfig", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class PublisherUtils
 {
   public static final PublisherUtils a = new PublisherUtils();
+  
+  private final String a(int paramInt, List<EditObject> paramList)
+  {
+    if (paramInt < paramList.size() - 1)
+    {
+      paramInt += 1;
+      if (((EditObject)paramList.get(paramInt)).getType() == EditObject.EditObjectType.TYPE_NORMAL) {
+        return ((EditObject)paramList.get(paramInt)).getWording();
+      }
+    }
+    return "";
+  }
   
   private final JSONObject a(Context paramContext)
   {
@@ -38,14 +51,41 @@ public final class PublisherUtils
     return localJSONObject;
   }
   
+  private final void a(EditObject paramEditObject, ArrayList<BiuCommentInfo> paramArrayList, String paramString)
+  {
+    Object localObject = StringsKt.toLongOrNull(paramEditObject.getId());
+    long l;
+    if (localObject != null) {
+      l = ((Long)localObject).longValue();
+    } else {
+      l = 0L;
+    }
+    localObject = new JumpInfo(l, paramEditObject.getWording(), "");
+    paramArrayList.add(new BiuCommentInfo(paramEditObject.getId(), Long.valueOf(paramEditObject.getAtType()), paramString, 1, (JumpInfo)localObject));
+  }
+  
+  private final void a(EditObject paramEditObject, ArrayList<BiuCommentInfo> paramArrayList, String paramString1, String paramString2)
+  {
+    Long localLong = StringsKt.toLongOrNull(paramEditObject.getId());
+    long l;
+    if (localLong != null) {
+      l = localLong.longValue();
+    } else {
+      l = 0L;
+    }
+    paramArrayList.add(new BiuCommentInfo(paramString1, Long.valueOf(0L), paramString2, 2, new JumpInfo(l, paramEditObject.getWording(), paramEditObject.getHref())));
+  }
+  
   private final void a(@NotNull JSONObject paramJSONObject)
   {
-    int i = 0;
-    if (RIJVideoPublishConfig.c()) {
+    int i;
+    if (RIJVideoPublishConfig.d()) {
       i = 8;
+    } else {
+      i = 0;
     }
     int j = i;
-    if (RIJVideoPublishConfig.b()) {
+    if (RIJVideoPublishConfig.c()) {
       j = i + 16;
     }
     paramJSONObject.put("inputPanelConfig", j);
@@ -54,101 +94,75 @@ public final class PublisherUtils
   private final void a(@NotNull JSONObject paramJSONObject, Context paramContext)
   {
     JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("titleCountLimit", RIJUgcUtils.d());
-    localJSONObject.put("titleHint", paramContext.getResources().getString(2114453581));
-    localJSONObject.put("briefCountLimit", RIJUgcUtils.e());
-    localJSONObject.put("briefHint", paramContext.getResources().getString(2114453580));
+    localJSONObject.put("titleCountLimit", RIJUgcUtils.c());
+    localJSONObject.put("titleHint", paramContext.getResources().getString(2097807459));
+    localJSONObject.put("briefCountLimit", RIJUgcUtils.d());
+    localJSONObject.put("briefHint", paramContext.getResources().getString(2097807458));
     paramJSONObject.put("topicPageConfig", localJSONObject);
     localJSONObject = new JSONObject();
-    if (RIJUgcUtils.a() != 0)
-    {
+    int i;
+    if (RIJUgcUtils.a() != 0) {
       i = 1;
-      if (i == 0) {
-        break label182;
-      }
-    }
-    label182:
-    for (int i = 1;; i = 0)
-    {
-      localJSONObject.put("showSubmit", i);
-      localJSONObject.put("allowSubmit", 0);
-      localJSONObject.put("allowSubmitTitle", RIJUgcUtils.a(1, paramContext));
-      localJSONObject.put("allowSubmitDesc", RIJUgcUtils.b(1, paramContext));
-      localJSONObject.put("forbidSubmitTitle", RIJUgcUtils.a(0, paramContext));
-      localJSONObject.put("forbidSubmitDesc", RIJUgcUtils.b(0, paramContext));
-      paramJSONObject.put("topicSubmitConfig", localJSONObject);
-      return;
+    } else {
       i = 0;
-      break;
     }
+    localJSONObject.put("showSubmit", i);
+    localJSONObject.put("allowSubmit", 0);
+    localJSONObject.put("allowSubmitTitle", RIJUgcUtils.a(1, paramContext));
+    localJSONObject.put("allowSubmitDesc", RIJUgcUtils.b(1, paramContext));
+    localJSONObject.put("forbidSubmitTitle", RIJUgcUtils.a(0, paramContext));
+    localJSONObject.put("forbidSubmitDesc", RIJUgcUtils.b(0, paramContext));
+    paramJSONObject.put("topicSubmitConfig", localJSONObject);
   }
   
   private final JSONObject b(Context paramContext)
   {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("publishScene", "rijugc");
-    localJSONObject.put("textCountLimit", RIJUgcUtils.f());
-    localJSONObject.put("showToolBarLBS", RIJVideoPublishConfig.d());
-    a.a(localJSONObject);
-    a.c(localJSONObject);
-    a.b(localJSONObject);
-    a.b(localJSONObject, paramContext);
-    return localJSONObject;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
+  }
+  
+  private final void b(EditObject paramEditObject, ArrayList<BiuCommentInfo> paramArrayList, String paramString1, String paramString2)
+  {
+    paramArrayList.add(new BiuCommentInfo(paramString1, Long.valueOf(0L), paramString2, 3, new JumpInfo(0L, HardCodeUtil.a(2131715777), paramEditObject.getId())));
   }
   
   private final void b(@NotNull JSONObject paramJSONObject)
   {
     JSONObject localJSONObject = new JSONObject();
-    if (RIJVideoPublishConfig.a() == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localJSONObject.put("showAuthority", bool);
-      localJSONObject.put("allowReprint", RIJVideoPublishConfig.a());
-      paramJSONObject.put("authorityConfig", localJSONObject);
-      return;
-    }
+    localJSONObject.put("showAuthority", RIJVideoPublishConfig.a());
+    localJSONObject.put("allowReprint", RIJVideoPublishConfig.b());
+    paramJSONObject.put("authorityConfig", localJSONObject);
   }
   
   private final void b(@NotNull JSONObject paramJSONObject, Context paramContext)
   {
     JSONObject localJSONObject = new JSONObject();
-    if (RIJUgcUtils.g() == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localJSONObject.put("showPrivacy", bool);
-      localJSONObject.put("defaultPrivacy", RIJUgcUtils.h());
-      localJSONObject.put("publicAndNotifyTitle", RIJUgcUtils.d(paramContext));
-      localJSONObject.put("publicAndNotifyDesc", RIJUgcUtils.e(paramContext));
-      localJSONObject.put("publicTitle", RIJUgcUtils.f(paramContext));
-      localJSONObject.put("publicDesc", RIJUgcUtils.g(paramContext));
-      localJSONObject.put("privateTitle", RIJUgcUtils.h(paramContext));
-      localJSONObject.put("privateDesc", RIJUgcUtils.i(paramContext));
-      paramJSONObject.put("privacyConfig", localJSONObject);
-      return;
+    boolean bool;
+    if (RIJUgcUtils.f() == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localJSONObject.put("showPrivacy", bool);
+    localJSONObject.put("defaultPrivacy", RIJUgcUtils.g());
+    localJSONObject.put("publicAndNotifyTitle", RIJUgcUtils.d(paramContext));
+    localJSONObject.put("publicAndNotifyDesc", RIJUgcUtils.e(paramContext));
+    localJSONObject.put("publicTitle", RIJUgcUtils.f(paramContext));
+    localJSONObject.put("publicDesc", RIJUgcUtils.g(paramContext));
+    localJSONObject.put("privateTitle", RIJUgcUtils.h(paramContext));
+    localJSONObject.put("privateDesc", RIJUgcUtils.i(paramContext));
+    paramJSONObject.put("privacyConfig", localJSONObject);
   }
   
   private final void c(@NotNull JSONObject paramJSONObject)
   {
-    int j = 1;
-    JSONObject localJSONObject = new JSONObject();
-    if (RIJUgcUtils.k())
-    {
-      i = 1;
-      localJSONObject.put("showAddToTopic", i);
-      if (!RIJUgcUtils.c()) {
-        break label60;
-      }
+    if (RIJVideoPublishConfig.a.f()) {
+      paramJSONObject.put("showKDCommunity", true);
     }
-    label60:
-    for (int i = j;; i = 0)
-    {
-      localJSONObject.put("default_column", i);
-      paramJSONObject.put("addToTopicConfig", localJSONObject);
-      return;
-      i = 0;
-      break;
-    }
+  }
+  
+  private final void d(@NotNull JSONObject paramJSONObject)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   @NotNull
@@ -165,56 +179,64 @@ public final class PublisherUtils
   }
   
   @NotNull
-  public final List<SocializeFeedsInfo.BiuCommentInfo> a(@NotNull String paramString, boolean paramBoolean, @NotNull List<EditObject> paramList)
+  public final List<BiuCommentInfo> a(@NotNull String paramString, boolean paramBoolean, @NotNull List<EditObject> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "uin");
     Intrinsics.checkParameterIsNotNull(paramList, "editObjects");
     ArrayList localArrayList = new ArrayList();
-    if (paramBoolean) {}
-    for (String str = "："; paramList.isEmpty(); str = "")
+    boolean bool = paramList.isEmpty();
+    String str1 = "";
+    Long localLong = Long.valueOf(0L);
+    if (bool)
     {
-      localArrayList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), ""));
+      localArrayList.add(new BiuCommentInfo(paramString, localLong, ""));
       return (List)localArrayList;
+    }
+    if (paramBoolean) {
+      str1 = "：";
     }
     int j = ((Collection)paramList).size();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      if (i == 0) {
-        if (((EditObject)paramList.get(0)).getType() == EditObject.EditObjectType.TYPE_NORMAL) {
-          localArrayList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), str + ((EditObject)paramList.get(0)).getWording(), 0));
+      Object localObject;
+      if (i == 0)
+      {
+        if (((EditObject)paramList.get(0)).getType() == EditObject.EditObjectType.TYPE_NORMAL)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str1);
+          ((StringBuilder)localObject).append(((EditObject)paramList.get(0)).getWording());
+          localArrayList.add(new BiuCommentInfo(paramString, localLong, ((StringBuilder)localObject).toString(), 0));
+        }
+        else
+        {
+          localArrayList.add(new BiuCommentInfo(paramString, localLong, str1, 0));
         }
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        localArrayList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), str, 0));
-        Object localObject2 = "";
-        Object localObject1 = localObject2;
-        if (i < paramList.size() - 1)
+        localObject = (EditObject)paramList.get(i);
+        String str2 = a(i, paramList);
+        EditObject.EditObjectType localEditObjectType = ((EditObject)localObject).getType();
+        int k = PublisherUtils.WhenMappings.a[localEditObjectType.ordinal()];
+        if (k != 1)
         {
-          localObject1 = localObject2;
-          if (((EditObject)paramList.get(i + 1)).getType() == EditObject.EditObjectType.TYPE_NORMAL) {
-            localObject1 = ((EditObject)paramList.get(i + 1)).getWording();
+          if (k != 2)
+          {
+            if (k == 3) {
+              b((EditObject)localObject, localArrayList, paramString, str2);
+            }
+          }
+          else {
+            a((EditObject)localObject, localArrayList, paramString, str2);
           }
         }
-        localObject2 = ((EditObject)paramList.get(i)).getType();
-        switch (PublisherUtils.WhenMappings.a[localObject2.ordinal()])
-        {
-        default: 
-          break;
-        case 1: 
-          localObject2 = new SocializeFeedsInfo.JumpInfo(Long.parseLong(((EditObject)paramList.get(i)).getId()), ((EditObject)paramList.get(i)).getWording(), "");
-          localArrayList.add(new SocializeFeedsInfo.BiuCommentInfo(((EditObject)paramList.get(i)).getId(), Long.valueOf(((EditObject)paramList.get(i)).getAtType()), (String)localObject1, 1, (SocializeFeedsInfo.JumpInfo)localObject2));
-          break;
-        case 2: 
-          localArrayList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), (String)localObject1, 2, new SocializeFeedsInfo.JumpInfo(Long.parseLong(((EditObject)paramList.get(i)).getId()), ((EditObject)paramList.get(i)).getWording(), ((EditObject)paramList.get(i)).getHref())));
-          break;
-        case 3: 
-          localArrayList.add(new SocializeFeedsInfo.BiuCommentInfo(paramString, Long.valueOf(0L), (String)localObject1, 3, new SocializeFeedsInfo.JumpInfo(0L, HardCodeUtil.a(2131715853), ((EditObject)paramList.get(i)).getId())));
+        else {
+          a((EditObject)localObject, localArrayList, str2);
         }
       }
+      i += 1;
     }
     return (List)localArrayList;
   }
@@ -248,7 +270,7 @@ public final class PublisherUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.common.PublisherUtils
  * JD-Core Version:    0.7.0.1
  */

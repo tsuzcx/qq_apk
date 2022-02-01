@@ -18,51 +18,61 @@ class SwiftBrowserCookieMonster$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_MqqAppAppRuntime == null)
-    {
+    Object localObject2 = this.jdField_a_of_type_MqqAppAppRuntime;
+    ??? = localObject2;
+    if (localObject2 == null) {
       ??? = MobileQQ.sMobileQQ.waitAppRuntime(null);
-      if (this.this$0.b.get() == 2)
+    }
+    if (this.this$0.b.get() == 2)
+    {
+      if (??? != null)
       {
-        if (??? != null)
+        long l = System.currentTimeMillis();
+        ((IWebviewApi)QRoute.api(IWebviewApi.class)).removeLastUinCookies(((AppRuntime)???).getAccount());
+        if (QLog.isColorLevel())
         {
-          long l = System.currentTimeMillis();
-          ((IWebviewApi)QRoute.api(IWebviewApi.class)).removeLastUinCookies(((AppRuntime)???).getAccount());
-          if (QLog.isColorLevel()) {
-            QLog.i("SwiftBrowserCookieMonster", 2, "SwiftBrowserCookieMonster: removeLastUinCookies,cost=" + (System.currentTimeMillis() - l));
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("SwiftBrowserCookieMonster: removeLastUinCookies,cost=");
+          ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+          QLog.i("SwiftBrowserCookieMonster", 2, ((StringBuilder)localObject2).toString());
+        }
+      }
+      this.this$0.c();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("start set all cookies ");
+        ((StringBuilder)localObject2).append(Util.b(this.this$0.l, new String[0]));
+        QLog.i("SwiftBrowserCookieMonster", 2, ((StringBuilder)localObject2).toString());
+      }
+      localObject2 = this.this$0;
+      ((SwiftBrowserCookieMonster)localObject2).a(((SwiftBrowserCookieMonster)localObject2).a(this.jdField_a_of_type_AndroidContentIntent, (AppRuntime)???), true);
+      if (this.this$0.b.compareAndSet(2, 3)) {
+        synchronized (this.this$0.b)
+        {
+          this.this$0.b.notifyAll();
+          if (this.this$0.a > 0L)
+          {
+            this.this$0.g();
+            ??? = new StringBuilder();
+            ((StringBuilder)???).append("set cookie error :");
+            ((StringBuilder)???).append(this.this$0.a);
+            QLog.e("SwiftBrowserCookieMonster", 1, ((StringBuilder)???).toString());
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.i("SwiftBrowserCookieMonster", 2, "set cookie success: now start post handle callback");
           }
         }
-        this.this$0.c();
-        if (QLog.isColorLevel()) {
-          QLog.i("SwiftBrowserCookieMonster", 2, "start set all cookies " + Util.b(this.this$0.l, new String[0]));
-        }
-        this.this$0.a(this.this$0.a(this.jdField_a_of_type_AndroidContentIntent, (AppRuntime)???), true);
-        if (!this.this$0.b.compareAndSet(2, 3)) {}
       }
-    }
-    for (;;)
-    {
-      synchronized (this.this$0.b)
-      {
-        this.this$0.b.notifyAll();
-        if (this.this$0.a > 0L)
-        {
-          this.this$0.g();
-          QLog.e("SwiftBrowserCookieMonster", 1, "set cookie error :" + this.this$0.a);
-          Util.b("Web_qqbrowser_check_and_set_cookies");
-          new Handler(Looper.getMainLooper()).post(new SwiftBrowserCookieMonster.1.1(this));
-          return;
-          ??? = this.jdField_a_of_type_MqqAppAppRuntime;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("SwiftBrowserCookieMonster", 2, "set cookie success: now start post handle callback");
-      }
+      Util.b("Web_qqbrowser_check_and_set_cookies");
+      new Handler(Looper.getMainLooper()).post(new SwiftBrowserCookieMonster.1.1(this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.1
  * JD-Core Version:    0.7.0.1
  */

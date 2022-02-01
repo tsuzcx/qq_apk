@@ -14,8 +14,9 @@ public enum AdDownloadTask
   
   private static AdDownloadTaskAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdDownloadTaskAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdDownloadTaskAdapter)localWeakReference.get();
     }
     return null;
   }

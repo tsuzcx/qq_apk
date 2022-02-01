@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.fragment;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.widget.ActionSheet;
@@ -16,7 +16,7 @@ class QQSettingChatOperationFragment$2
   {
     ReportController.b(QQSettingChatOperationFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingChatOperationFragment), "CliOper", "", "", "Setting_tab", "Clk_clean_msg", 0, 0, "0", "0", "", "");
     ReportController.b(QQSettingChatOperationFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingChatOperationFragment), "dc00898", "", "", "0X800A0C3", "0X800A0C3", 0, 0, "", "", "", "");
-    if (!this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingChatOperationFragment.getActivity().isFinishing())
+    if (!this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingChatOperationFragment.getBaseActivity().isFinishing())
     {
       this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
       QQSettingChatOperationFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentQQSettingChatOperationFragment, true);
@@ -26,7 +26,7 @@ class QQSettingChatOperationFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.QQSettingChatOperationFragment.2
  * JD-Core Version:    0.7.0.1
  */

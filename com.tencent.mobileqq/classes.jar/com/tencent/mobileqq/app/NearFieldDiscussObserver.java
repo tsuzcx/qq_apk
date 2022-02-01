@@ -17,12 +17,15 @@ public class NearFieldDiscussObserver
   {
     switch (paramInt)
     {
-    }
-    do
-    {
-      return;
-      a(paramBoolean, paramObject);
-      return;
+    default: 
+    case 1022: 
+      if (paramBoolean)
+      {
+        b(paramBoolean, paramObject);
+        return;
+      }
+      break;
+    case 1021: 
       if (paramBoolean)
       {
         paramObject = (Object[])paramObject;
@@ -31,13 +34,14 @@ public class NearFieldDiscussObserver
       }
       a(paramBoolean, null, -1, -1, null, -1, -1, -1L);
       return;
-    } while (!paramBoolean);
-    b(paramBoolean, paramObject);
+    case 1020: 
+      a(paramBoolean, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearFieldDiscussObserver
  * JD-Core Version:    0.7.0.1
  */

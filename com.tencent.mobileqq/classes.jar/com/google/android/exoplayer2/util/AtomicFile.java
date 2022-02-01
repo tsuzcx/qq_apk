@@ -17,7 +17,10 @@ public final class AtomicFile
   public AtomicFile(File paramFile)
   {
     this.baseName = paramFile;
-    this.backupName = new File(paramFile.getPath() + ".bak");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFile.getPath());
+    localStringBuilder.append(".bak");
+    this.backupName = new File(localStringBuilder.toString());
   }
   
   private void restoreBackup()
@@ -49,46 +52,55 @@ public final class AtomicFile
   
   public OutputStream startWrite()
   {
-    if (this.baseName.exists())
-    {
-      if (this.backupName.exists()) {
-        break label88;
+    Object localObject;
+    if (this.baseName.exists()) {
+      if (!this.backupName.exists())
+      {
+        if (!this.baseName.renameTo(this.backupName))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Couldn't rename file ");
+          ((StringBuilder)localObject).append(this.baseName);
+          ((StringBuilder)localObject).append(" to backup file ");
+          ((StringBuilder)localObject).append(this.backupName);
+          Log.w("AtomicFile", ((StringBuilder)localObject).toString());
+        }
       }
-      if (!this.baseName.renameTo(this.backupName)) {
-        Log.w("AtomicFile", "Couldn't rename file " + this.baseName + " to backup file " + this.backupName);
+      else {
+        this.baseName.delete();
       }
     }
-    for (;;)
+    try
     {
-      try
-      {
-        AtomicFile.AtomicFileOutputStream localAtomicFileOutputStream1 = new AtomicFile.AtomicFileOutputStream(this.baseName);
-        return localAtomicFileOutputStream1;
-      }
-      catch (FileNotFoundException localFileNotFoundException1)
-      {
-        label88:
-        if (this.baseName.getParentFile().mkdirs()) {
-          continue;
-        }
-        throw new IOException("Couldn't create directory " + this.baseName, localFileNotFoundException1);
+      localObject = new AtomicFile.AtomicFileOutputStream(this.baseName);
+      return localObject;
+    }
+    catch (FileNotFoundException localFileNotFoundException1)
+    {
+      if (this.baseName.getParentFile().mkdirs()) {
         try
         {
-          AtomicFile.AtomicFileOutputStream localAtomicFileOutputStream2 = new AtomicFile.AtomicFileOutputStream(this.baseName);
-          return localAtomicFileOutputStream2;
+          AtomicFile.AtomicFileOutputStream localAtomicFileOutputStream = new AtomicFile.AtomicFileOutputStream(this.baseName);
+          return localAtomicFileOutputStream;
         }
         catch (FileNotFoundException localFileNotFoundException2)
         {
-          throw new IOException("Couldn't create " + this.baseName, localFileNotFoundException2);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Couldn't create ");
+          localStringBuilder.append(this.baseName);
+          throw new IOException(localStringBuilder.toString(), localFileNotFoundException2);
         }
       }
-      this.baseName.delete();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Couldn't create directory ");
+      localStringBuilder.append(this.baseName);
+      throw new IOException(localStringBuilder.toString(), localFileNotFoundException2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.util.AtomicFile
  * JD-Core Version:    0.7.0.1
  */

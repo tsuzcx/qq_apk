@@ -15,12 +15,8 @@ import com.tencent.qqmini.sdk.monitor.common.ProcessStats;
 import com.tencent.qqmini.sdk.statistics.AverageStatistics;
 import com.tencent.qqmini.sdk.statistics.MaxStatistics;
 import com.tencent.qqmini.sdk.statistics.VarianceStatistics;
-import com.tencent.qqmini.sdk.utils.QUAUtil;
-import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class MiniGamePerformanceStatics
@@ -55,12 +51,6 @@ public class MiniGamePerformanceStatics
   
   private void doReport()
   {
-    float f2 = 0.0F;
-    MiniAppProxy localMiniAppProxy;
-    float f5;
-    float f6;
-    float f7;
-    float f3;
     if (this.miniAppInfo != null)
     {
       long l = SystemClock.uptimeMillis() - this.mStartTimeMillis;
@@ -69,124 +59,94 @@ public class MiniGamePerformanceStatics
         reset();
         return;
       }
-      localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-      f5 = (float)(ProcessStats.collectCpuUsage("-1") - this.mStartCpuTime) / ((float)l / 1000.0F);
-      f6 = this.mAverageMemory.calculate();
-      f7 = this.mMaxMemory.calculate() - this.mStartMemory;
-      if (!this.miniAppInfo.isReportTypeMiniGame()) {
-        break label377;
-      }
-      f3 = this.mAverageFps.calculate();
-      float f4 = this.mFpsVariance.calculate();
-      MiniReportManager.reportEventType(this.miniAppInfo, 629, toString(f5), "1");
-      MiniReportManager.reportEventType(this.miniAppInfo, 631, toString(f6), "1");
-      MiniReportManager.reportEventType(this.miniAppInfo, 643, toString(f7), "1");
-      MiniReportManager.reportEventType(this.miniAppInfo, 630, toString(f3), "1");
-      MiniReportManager.reportEventType(this.miniAppInfo, 642, toString(f4), "1");
-      MiniProgramLpReportDC04902.reportGameEnd(f3, f4, this.jsVersion, this.tritonVersion);
-      f1 = f3;
-      f2 = f4;
-      if (localMiniAppProxy.isDebugVersion())
+      Object localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      float f3 = (float)(ProcessStats.collectCpuUsage("-1") - this.mStartCpuTime) / ((float)l / 1000.0F);
+      float f4 = this.mAverageMemory.calculate();
+      float f5 = this.mMaxMemory.calculate() - this.mStartMemory;
+      float f1;
+      float f2;
+      if (this.miniAppInfo.isReportTypeMiniGame())
       {
-        QMLog.i("MiniGamePerformance", "cpu:" + f5 + " avgMemory:" + f6 + " memoryGrowth:" + f7 + " avgFps:" + f3 + " fpsVariance:" + f4 + " dalivkPss:" + this.mMemoryInfo.dalvikPss + " nativePss:" + this.mMemoryInfo.nativePss + " otherPss:" + this.mMemoryInfo.otherPss + " totalPss:" + this.mMemoryInfo.getTotalPss());
-        f2 = f4;
+        f1 = this.mAverageFps.calculate();
+        f2 = this.mFpsVariance.calculate();
+        MiniReportManager.reportEventType(this.miniAppInfo, 629, toString(f3), "1");
+        MiniReportManager.reportEventType(this.miniAppInfo, 631, toString(f4), "1");
+        MiniReportManager.reportEventType(this.miniAppInfo, 643, toString(f5), "1");
+        MiniReportManager.reportEventType(this.miniAppInfo, 630, toString(f1), "1");
+        MiniReportManager.reportEventType(this.miniAppInfo, 642, toString(f2), "1");
+        MiniProgramLpReportDC04902.reportGameEnd(f1, f2, this.jsVersion, this.tritonVersion);
+        if (((MiniAppProxy)localObject).isDebugVersion())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("cpu:");
+          ((StringBuilder)localObject).append(f3);
+          ((StringBuilder)localObject).append(" avgMemory:");
+          ((StringBuilder)localObject).append(f4);
+          ((StringBuilder)localObject).append(" memoryGrowth:");
+          ((StringBuilder)localObject).append(f5);
+          ((StringBuilder)localObject).append(" avgFps:");
+          ((StringBuilder)localObject).append(f1);
+          ((StringBuilder)localObject).append(" fpsVariance:");
+          ((StringBuilder)localObject).append(f2);
+          ((StringBuilder)localObject).append(" dalivkPss:");
+          ((StringBuilder)localObject).append(this.mMemoryInfo.dalvikPss);
+          ((StringBuilder)localObject).append(" nativePss:");
+          ((StringBuilder)localObject).append(this.mMemoryInfo.nativePss);
+          ((StringBuilder)localObject).append(" otherPss:");
+          ((StringBuilder)localObject).append(this.mMemoryInfo.otherPss);
+          ((StringBuilder)localObject).append(" totalPss:");
+          ((StringBuilder)localObject).append(this.mMemoryInfo.getTotalPss());
+          QMLog.i("MiniGamePerformance", ((StringBuilder)localObject).toString());
+        }
       }
-    }
-    for (float f1 = f3;; f1 = 0.0F)
-    {
-      MiniProgramLpReportDC05115.reportCPUMemoryFPS(this.miniAppInfo, f5, f6, f7, f1, f2);
+      else
+      {
+        MiniReportManager.reportEventType(this.miniAppInfo, 629, toString(f3), MiniReportManager.getAppType(this.miniAppInfo));
+        MiniReportManager.reportEventType(this.miniAppInfo, 631, toString(f4), MiniReportManager.getAppType(this.miniAppInfo));
+        MiniReportManager.reportEventType(this.miniAppInfo, 643, toString(f5), MiniReportManager.getAppType(this.miniAppInfo));
+        if (((MiniAppProxy)localObject).isDebugVersion())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("cpu:");
+          ((StringBuilder)localObject).append(f3);
+          ((StringBuilder)localObject).append(" avgMemory:");
+          ((StringBuilder)localObject).append(f4);
+          ((StringBuilder)localObject).append(" memoryGrowth:");
+          ((StringBuilder)localObject).append(f5);
+          ((StringBuilder)localObject).append(" dalivkPss:");
+          ((StringBuilder)localObject).append(this.mMemoryInfo.dalvikPss);
+          ((StringBuilder)localObject).append(" nativePss:");
+          ((StringBuilder)localObject).append(this.mMemoryInfo.nativePss);
+          ((StringBuilder)localObject).append(" otherPss:");
+          ((StringBuilder)localObject).append(this.mMemoryInfo.otherPss);
+          ((StringBuilder)localObject).append(" totalPss:");
+          ((StringBuilder)localObject).append(this.mMemoryInfo.getTotalPss());
+          QMLog.i("MiniGamePerformance", ((StringBuilder)localObject).toString());
+        }
+        f1 = 0.0F;
+        f2 = 0.0F;
+      }
+      MiniProgramLpReportDC05115.reportCPUMemoryFPS(this.miniAppInfo, f3, f4, f5, f1, f2);
       reportFileApiTimeCost();
-      reset();
-      return;
-      label377:
-      MiniReportManager.reportEventType(this.miniAppInfo, 629, toString(f5), MiniReportManager.getAppType(this.miniAppInfo));
-      MiniReportManager.reportEventType(this.miniAppInfo, 631, toString(f6), MiniReportManager.getAppType(this.miniAppInfo));
-      MiniReportManager.reportEventType(this.miniAppInfo, 643, toString(f7), MiniReportManager.getAppType(this.miniAppInfo));
-      if (localMiniAppProxy.isDebugVersion()) {
-        QMLog.i("MiniGamePerformance", "cpu:" + f5 + " avgMemory:" + f6 + " memoryGrowth:" + f7 + " dalivkPss:" + this.mMemoryInfo.dalvikPss + " nativePss:" + this.mMemoryInfo.nativePss + " otherPss:" + this.mMemoryInfo.otherPss + " totalPss:" + this.mMemoryInfo.getTotalPss());
-      }
     }
+    reset();
   }
   
   private void doReportFileApiTimeCost(boolean paramBoolean)
   {
-    if (this.miniAppInfo == null) {
-      return;
-    }
-    String str = this.miniAppInfo.appId;
-    ConcurrentHashMap localConcurrentHashMap;
-    label27:
-    label41:
-    Object localObject;
-    HashMap localHashMap;
-    int i;
-    label122:
-    int j;
-    int k;
-    Double localDouble;
-    if (paramBoolean)
-    {
-      localConcurrentHashMap = this.fileApiSuccessTimeCostMap;
-      Iterator localIterator = localConcurrentHashMap.keySet().iterator();
-      if (localIterator.hasNext())
-      {
-        localObject = (String)localIterator.next();
-        localHashMap = new HashMap();
-        localHashMap.put("appId", str);
-        localHashMap.put("qua", QUAUtil.getPlatformQUA());
-        localHashMap.put("apiName", localObject);
-        localHashMap.put("isSdk", String.valueOf(1));
-        if (!paramBoolean) {
-          break label239;
-        }
-        i = 1;
-        localHashMap.put("isSuccess", String.valueOf(i));
-        j = getFileApiCount((String)localObject, true);
-        k = getFileApiCount((String)localObject, false);
-        localDouble = (Double)localConcurrentHashMap.get(localObject);
-        if (localDouble != null) {
-          break label245;
-        }
-        d = 0.0D;
-        localHashMap.put("workingTime", String.valueOf(d));
-        localObject = (Double)this.fileApiWaitingTimeMap.get(localObject);
-        if (localObject != null) {
-          break label275;
-        }
-      }
-    }
-    label275:
-    for (double d = 0.0D;; d = ((Double)localObject).doubleValue() / (j + k))
-    {
-      localHashMap.put("waitingTime", String.valueOf(d));
-      report("mini_game_file_api_time_cost", localHashMap);
-      break label41;
-      break;
-      localConcurrentHashMap = this.fileApiFailTimeCostMap;
-      break label27;
-      label239:
-      i = 0;
-      break label122;
-      label245:
-      d = localDouble.doubleValue();
-      if (paramBoolean) {}
-      for (i = j;; i = k)
-      {
-        d /= i;
-        break;
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private int getFileApiCount(String paramString, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (ConcurrentHashMap localConcurrentHashMap = this.fileApiSuccessCountMap;; localConcurrentHashMap = this.fileApiFailCountMap)
-    {
-      paramString = (Integer)localConcurrentHashMap.get(paramString);
-      if (paramString != null) {
-        break;
-      }
+    ConcurrentHashMap localConcurrentHashMap;
+    if (paramBoolean) {
+      localConcurrentHashMap = this.fileApiSuccessCountMap;
+    } else {
+      localConcurrentHashMap = this.fileApiFailCountMap;
+    }
+    paramString = (Integer)localConcurrentHashMap.get(paramString);
+    if (paramString == null) {
       return 0;
     }
     return paramString.intValue();
@@ -194,15 +154,16 @@ public class MiniGamePerformanceStatics
   
   public static MiniGamePerformanceStatics getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new MiniGamePerformanceStatics();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new MiniGamePerformanceStatics();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private float getProcessPssMemory()
@@ -246,40 +207,48 @@ public class MiniGamePerformanceStatics
   
   private void updateWaitingTime(String paramString, long paramLong)
   {
-    Double localDouble = (Double)this.fileApiWaitingTimeMap.get(paramString);
-    if (localDouble == null)
+    Object localObject = (Double)this.fileApiWaitingTimeMap.get(paramString);
+    if (localObject == null)
     {
-      this.fileApiWaitingTimeMap.put(paramString, Double.valueOf(paramLong * 1.0D));
+      localObject = this.fileApiWaitingTimeMap;
+      d1 = paramLong;
+      Double.isNaN(d1);
+      ((ConcurrentHashMap)localObject).put(paramString, Double.valueOf(d1 * 1.0D));
       return;
     }
-    this.fileApiWaitingTimeMap.put(paramString, Double.valueOf(localDouble.doubleValue() + paramLong));
+    ConcurrentHashMap localConcurrentHashMap = this.fileApiWaitingTimeMap;
+    double d1 = ((Double)localObject).doubleValue();
+    double d2 = paramLong;
+    Double.isNaN(d2);
+    localConcurrentHashMap.put(paramString, Double.valueOf(d1 + d2));
   }
   
   private void updateWorkingTime(String paramString, boolean paramBoolean, long paramLong)
   {
-    Object localObject;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       localObject = this.fileApiSuccessCountMap;
-      if (!paramBoolean) {
-        break label84;
-      }
-    }
-    label84:
-    for (ConcurrentHashMap localConcurrentHashMap = this.fileApiSuccessTimeCostMap;; localConcurrentHashMap = this.fileApiFailTimeCostMap)
-    {
-      ((Map)localObject).put(paramString, Integer.valueOf(getFileApiCount(paramString, paramBoolean) + 1));
-      localObject = (Double)localConcurrentHashMap.get(paramString);
-      if (localObject != null) {
-        break label93;
-      }
-      localConcurrentHashMap.put(paramString, Double.valueOf(paramLong * 1.0D));
-      return;
+    } else {
       localObject = this.fileApiFailCountMap;
-      break;
     }
-    label93:
-    localConcurrentHashMap.put(paramString, Double.valueOf(((Double)localObject).doubleValue() + paramLong));
+    ConcurrentHashMap localConcurrentHashMap;
+    if (paramBoolean) {
+      localConcurrentHashMap = this.fileApiSuccessTimeCostMap;
+    } else {
+      localConcurrentHashMap = this.fileApiFailTimeCostMap;
+    }
+    ((Map)localObject).put(paramString, Integer.valueOf(getFileApiCount(paramString, paramBoolean) + 1));
+    Object localObject = (Double)localConcurrentHashMap.get(paramString);
+    if (localObject == null)
+    {
+      d1 = paramLong;
+      Double.isNaN(d1);
+      localConcurrentHashMap.put(paramString, Double.valueOf(d1 * 1.0D));
+      return;
+    }
+    double d1 = ((Double)localObject).doubleValue();
+    double d2 = paramLong;
+    Double.isNaN(d2);
+    localConcurrentHashMap.put(paramString, Double.valueOf(d1 + d2));
   }
   
   public void onGetFps(float paramFloat)
@@ -335,7 +304,7 @@ public class MiniGamePerformanceStatics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniGamePerformanceStatics
  * JD-Core Version:    0.7.0.1
  */

@@ -22,18 +22,18 @@ public class FileTypeUtils
     //   21: dup
     //   22: aload_0
     //   23: invokespecial 29	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   26: astore_2
-    //   27: aload_2
+    //   26: astore_0
+    //   27: aload_0
     //   28: invokevirtual 33	java/io/FileInputStream:getChannel	()Ljava/nio/channels/FileChannel;
-    //   31: astore_0
+    //   31: astore_2
     //   32: bipush 6
     //   34: newarray byte
     //   36: astore_3
-    //   37: aload_0
+    //   37: aload_2
     //   38: lconst_0
     //   39: invokevirtual 39	java/nio/channels/FileChannel:position	(J)Ljava/nio/channels/FileChannel;
     //   42: pop
-    //   43: aload_0
+    //   43: aload_2
     //   44: aload_3
     //   45: invokestatic 45	java/nio/ByteBuffer:wrap	([B)Ljava/nio/ByteBuffer;
     //   48: invokevirtual 49	java/nio/channels/FileChannel:read	(Ljava/nio/ByteBuffer;)I
@@ -42,72 +42,71 @@ public class FileTypeUtils
     //   53: iconst_0
     //   54: baload
     //   55: bipush 55
-    //   57: if_icmpne +45 -> 102
+    //   57: if_icmpne +54 -> 111
     //   60: aload_3
     //   61: iconst_1
     //   62: baload
     //   63: bipush 122
-    //   65: if_icmpne +37 -> 102
+    //   65: if_icmpne +46 -> 111
     //   68: aload_3
     //   69: iconst_2
     //   70: baload
     //   71: bipush 188
-    //   73: if_icmpne +29 -> 102
+    //   73: if_icmpne +38 -> 111
     //   76: aload_3
     //   77: iconst_3
     //   78: baload
     //   79: bipush 175
-    //   81: if_icmpne +21 -> 102
+    //   81: if_icmpne +30 -> 111
     //   84: aload_3
     //   85: iconst_4
     //   86: baload
     //   87: bipush 39
-    //   89: if_icmpne +13 -> 102
+    //   89: if_icmpne +22 -> 111
     //   92: aload_3
     //   93: iconst_5
     //   94: baload
     //   95: istore_1
     //   96: iload_1
     //   97: bipush 28
-    //   99: if_icmpeq +13 -> 112
-    //   102: aload_2
-    //   103: ifnull -87 -> 16
-    //   106: aload_2
-    //   107: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   110: iconst_0
-    //   111: ireturn
-    //   112: aload_2
-    //   113: ifnull +7 -> 120
-    //   116: aload_2
-    //   117: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   120: iconst_1
-    //   121: ireturn
-    //   122: astore_0
-    //   123: aconst_null
-    //   124: astore_2
-    //   125: aload_2
-    //   126: ifnull +7 -> 133
-    //   129: aload_2
-    //   130: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   133: aload_0
-    //   134: athrow
-    //   135: astore_0
-    //   136: goto -11 -> 125
+    //   99: if_icmpeq +6 -> 105
+    //   102: goto +9 -> 111
+    //   105: aload_0
+    //   106: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   109: iconst_1
+    //   110: ireturn
+    //   111: aload_0
+    //   112: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   115: iconst_0
+    //   116: ireturn
+    //   117: astore_2
+    //   118: goto +6 -> 124
+    //   121: astore_2
+    //   122: aconst_null
+    //   123: astore_0
+    //   124: aload_0
+    //   125: ifnull +7 -> 132
+    //   128: aload_0
+    //   129: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   132: aload_2
+    //   133: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	139	0	paramString	String
+    //   0	134	0	paramString	String
     //   95	5	1	i	int
-    //   26	104	2	localFileInputStream	java.io.FileInputStream
+    //   31	13	2	localFileChannel	java.nio.channels.FileChannel
+    //   117	1	2	localObject1	Object
+    //   121	12	2	localObject2	Object
     //   36	57	3	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   18	27	122	finally
-    //   27	52	135	finally
+    //   27	52	117	finally
+    //   18	27	121	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.FileTypeUtils
  * JD-Core Version:    0.7.0.1
  */

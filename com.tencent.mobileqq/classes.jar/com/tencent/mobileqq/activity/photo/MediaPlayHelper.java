@@ -11,10 +11,11 @@ import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.FileTransferManager.Callback;
+import com.tencent.mobileqq.activity.aio.Callback;
 import com.tencent.mobileqq.activity.aio.photo.IAIOImageProvider;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.MessageForShortVideo;
+import com.tencent.mobileqq.shortvideo.SVUtils;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.FileMsg;
@@ -49,7 +50,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MediaPlayHelper
-  implements FileTransferManager.Callback, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnSeekCompleteListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
+  implements Callback, TVK_IMediaPlayer.OnCompletionListener, TVK_IMediaPlayer.OnDownloadCallbackListener, TVK_IMediaPlayer.OnErrorListener, TVK_IMediaPlayer.OnInfoListener, TVK_IMediaPlayer.OnNetVideoInfoListener, TVK_IMediaPlayer.OnSeekCompleteListener, TVK_IMediaPlayer.OnVideoPreparedListener, TVK_IMediaPlayer.OnVideoPreparingListener, IVideoViewBase.IVideoViewCallBack
 {
   static String jdField_a_of_type_JavaLangString = SharedPreUtils.f(BaseApplication.getContext());
   static String[] jdField_a_of_type_ArrayOfJavaLangString;
@@ -108,139 +109,155 @@ public class MediaPlayHelper
   
   static
   {
-    if ((jdField_a_of_type_JavaLangString != null) && (jdField_a_of_type_JavaLangString.length() > 0)) {
+    String str = jdField_a_of_type_JavaLangString;
+    if ((str != null) && (str.length() > 0)) {
       jdField_a_of_type_ArrayOfJavaLangString = jdField_a_of_type_JavaLangString.split("\\|");
     }
   }
   
   private int a(String paramString)
   {
-    if (paramString == null) {}
-    int i1;
-    do
+    if (paramString != null)
     {
-      do
+      paramString = paramString.trim();
+      int i1 = paramString.indexOf(' ');
+      if (i1 >= 0)
       {
-        return -1;
-        paramString = paramString.trim();
-        i1 = paramString.indexOf(' ');
-      } while ((i1 < 0) || (i1 + 1 >= paramString.length()));
-      paramString = paramString.substring(i1 + 1);
-    } while (paramString == null);
-    paramString = paramString.trim();
-    paramString = paramString.substring(0, paramString.indexOf(' '));
-    try
-    {
-      i1 = Integer.parseInt(paramString);
-      return i1;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+        i1 += 1;
+        if (i1 < paramString.length())
+        {
+          paramString = paramString.substring(i1);
+          if (paramString != null)
+          {
+            paramString = paramString.trim();
+            paramString = paramString.substring(0, paramString.indexOf(' '));
+            try
+            {
+              i1 = Integer.parseInt(paramString);
+              return i1;
+            }
+            catch (Exception paramString)
+            {
+              paramString.printStackTrace();
+            }
+          }
+        }
+      }
     }
     return -1;
   }
   
   private String a(String paramString)
   {
-    if (paramString == null) {}
-    do
+    if (paramString != null)
     {
-      int i1;
-      do
+      int i1 = paramString.indexOf(':');
+      if (i1 >= 0)
       {
-        return null;
-        i1 = paramString.indexOf(':');
-      } while ((i1 < 0) || (i1 + 1 >= paramString.length()));
-      paramString = paramString.substring(i1 + 1);
-    } while (paramString == null);
-    return paramString.trim();
+        i1 += 1;
+        if (i1 < paramString.length())
+        {
+          paramString = paramString.substring(i1);
+          if (paramString != null) {
+            return paramString.trim();
+          }
+        }
+      }
+    }
+    return null;
   }
   
   private void a(String paramString)
   {
-    if (StringUtil.a(paramString)) {}
-    for (;;)
-    {
+    if (StringUtil.a(paramString)) {
       return;
-      paramString = paramString.split("\r\n");
-      if (paramString != null)
+    }
+    paramString = paramString.split("\r\n");
+    if (paramString == null) {
+      return;
+    }
+    int i2 = 0;
+    this.jdField_j_of_type_Int = a(paramString[0]);
+    int i3 = 1;
+    int i1 = 1;
+    Object localObject1;
+    while (i1 < paramString.length)
+    {
+      localObject1 = paramString[i1];
+      if (((String)localObject1).startsWith("User-ReturnCode")) {
+        this.jdField_d_of_type_JavaLangString = a((String)localObject1);
+      } else if (((String)localObject1).startsWith("X-RtFlag")) {
+        this.jdField_e_of_type_JavaLangString = a((String)localObject1);
+      } else if (((String)localObject1).startsWith("Content-Type")) {
+        this.jdField_f_of_type_JavaLangString = a((String)localObject1);
+      }
+      i1 += 1;
+    }
+    paramString = jdField_a_of_type_ArrayOfJavaLangString;
+    if ((paramString != null) && (paramString.length > 0))
+    {
+      paramString = this.jdField_f_of_type_JavaLangString;
+      if ((paramString != null) && (paramString.length() > 0))
       {
-        this.jdField_j_of_type_Int = a(paramString[0]);
-        int i1 = 1;
-        Object localObject1;
-        if (i1 < paramString.length)
+        paramString = jdField_a_of_type_ArrayOfJavaLangString;
+        if ((paramString.length == 1) && (paramString[0] != null) && (paramString[0].toLowerCase().equals("allin")))
         {
-          localObject1 = paramString[i1];
-          if (((String)localObject1).startsWith("User-ReturnCode")) {
-            this.jdField_d_of_type_JavaLangString = a((String)localObject1);
-          }
-          for (;;)
+          i1 = i3;
+          if (QLog.isColorLevel())
           {
-            i1 += 1;
-            break;
-            if (((String)localObject1).startsWith("X-RtFlag")) {
-              this.jdField_e_of_type_JavaLangString = a((String)localObject1);
-            } else if (((String)localObject1).startsWith("Content-Type")) {
-              this.jdField_f_of_type_JavaLangString = a((String)localObject1);
-            }
+            QLog.d(this.jdField_b_of_type_JavaLangString, 2, "check content all in");
+            i1 = i3;
           }
         }
-        if ((jdField_a_of_type_ArrayOfJavaLangString != null) && (jdField_a_of_type_ArrayOfJavaLangString.length > 0) && (this.jdField_f_of_type_JavaLangString != null) && (this.jdField_f_of_type_JavaLangString.length() > 0))
+        else
         {
-          if ((jdField_a_of_type_ArrayOfJavaLangString.length == 1) && (jdField_a_of_type_ArrayOfJavaLangString[0] != null) && (jdField_a_of_type_ArrayOfJavaLangString[0].toLowerCase().equals("allin")))
+          paramString = jdField_a_of_type_ArrayOfJavaLangString;
+          int i4 = paramString.length;
+          i1 = 0;
+          while (i1 < i4)
           {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_b_of_type_JavaLangString, 2, "check content all in");
-            }
-            i1 = 1;
-          }
-          while (i1 == 0)
-          {
-            paramString = new StringBuilder();
-            localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
-            int i2 = localObject1.length;
-            i1 = 0;
-            while (i1 < i2)
+            localObject1 = paramString[i1];
+            if ((localObject1 != null) && (this.jdField_f_of_type_JavaLangString.contains((CharSequence)localObject1)))
             {
-              localObject2 = localObject1[i1];
-              if (localObject2 != null)
-              {
-                paramString.append((String)localObject2);
-                paramString.append("|");
-              }
-              i1 += 1;
-              continue;
-              paramString = jdField_a_of_type_ArrayOfJavaLangString;
-              i2 = paramString.length;
-              i1 = 0;
-              for (;;)
-              {
-                if (i1 >= i2) {
-                  break label429;
-                }
-                localObject1 = paramString[i1];
-                if ((localObject1 != null) && (this.jdField_f_of_type_JavaLangString.contains((CharSequence)localObject1)))
-                {
-                  i1 = 1;
-                  break;
-                }
-                i1 += 1;
-              }
+              i1 = i3;
+              break label259;
             }
-            localObject1 = "not accept content type: real:" + this.jdField_f_of_type_JavaLangString + ". whiteList_type :" + paramString.toString();
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_b_of_type_JavaLangString, 2, (String)localObject1);
-            }
-            Object localObject2 = new HashMap();
-            ((HashMap)localObject2).put(BaseConstants.RDM_NoChangeFailCode, "");
-            ((HashMap)localObject2).put("Content-Type", this.jdField_f_of_type_JavaLangString);
-            ((HashMap)localObject2).put("White-List", paramString.toString());
-            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSDKDownloadHijacked", true, 0L, 0L, (HashMap)localObject2, "");
-            throw new IOException((String)localObject1);
-            label429:
-            i1 = 0;
+            i1 += 1;
           }
+          i1 = 0;
+        }
+        label259:
+        if (i1 == 0)
+        {
+          paramString = new StringBuilder();
+          localObject1 = jdField_a_of_type_ArrayOfJavaLangString;
+          i3 = localObject1.length;
+          i1 = i2;
+          while (i1 < i3)
+          {
+            localObject2 = localObject1[i1];
+            if (localObject2 != null)
+            {
+              paramString.append((String)localObject2);
+              paramString.append("|");
+            }
+            i1 += 1;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("not accept content type: real:");
+          ((StringBuilder)localObject1).append(this.jdField_f_of_type_JavaLangString);
+          ((StringBuilder)localObject1).append(". whiteList_type :");
+          ((StringBuilder)localObject1).append(paramString.toString());
+          localObject1 = ((StringBuilder)localObject1).toString();
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_b_of_type_JavaLangString, 2, (String)localObject1);
+          }
+          Object localObject2 = new HashMap();
+          ((HashMap)localObject2).put(BaseConstants.RDM_NoChangeFailCode, "");
+          ((HashMap)localObject2).put("Content-Type", this.jdField_f_of_type_JavaLangString);
+          ((HashMap)localObject2).put("White-List", paramString.toString());
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actSDKDownloadHijacked", true, 0L, 0L, (HashMap)localObject2, "");
+          throw new IOException((String)localObject1);
         }
       }
     }
@@ -252,232 +269,292 @@ public class MediaPlayHelper
     {
       TVK_SDKMgr.initSdk(this.jdField_b_of_type_AndroidContentContext.getApplicationContext(), "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
       this.jdField_b_of_type_Boolean = true;
-      if (!TVK_SDKMgr.isInstalled(this.jdField_b_of_type_AndroidContentContext.getApplicationContext())) {
-        break label59;
+      if (TVK_SDKMgr.isInstalled(this.jdField_b_of_type_AndroidContentContext.getApplicationContext()))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_b_of_type_JavaLangString, 2, "TVK_SDKMgr is Installed");
+        }
+        return true;
       }
       if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_b_of_type_JavaLangString, 2, "TVK_SDKMgr is Installed");
+        QLog.d(this.jdField_b_of_type_JavaLangString, 2, "start install TVK_SDKMgr ");
       }
+      ThreadManagerV2.excute(new MediaPlayHelper.2(this, this.jdField_b_of_type_AndroidContentContext.getApplicationContext()), 64, null, false);
+      return false;
     }
     return true;
-    label59:
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_b_of_type_JavaLangString, 2, "start install TVK_SDKMgr ");
-    }
-    ThreadManagerV2.excute(new MediaPlayHelper.2(this, this.jdField_b_of_type_AndroidContentContext.getApplicationContext()), 64, null, false);
-    return false;
   }
   
   private void g()
   {
-    MessageForShortVideo localMessageForShortVideo;
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo;
     int i2;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo != null)
+    if (localObject1 != null)
     {
-      localMessageForShortVideo = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+      localObject1 = ((VideoPlayMedioInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
       i2 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Int;
     }
-    for (;;)
+    else
     {
-      if ((localMessageForShortVideo == null) || (this.t == -1) || (localMessageForShortVideo.videoFileStatus == 2003))
-      {
-        break label48;
-        break label48;
+      localObject1 = null;
+      i2 = -1;
+    }
+    if ((localObject1 != null) && (this.t != -1))
+    {
+      if (((MessageForShortVideo)localObject1).videoFileStatus == 2003) {
+        return;
       }
-      label48:
-      while (!this.jdField_h_of_type_Boolean) {
+      if (!this.jdField_h_of_type_Boolean) {
         return;
       }
       this.jdField_h_of_type_Boolean = false;
-      if (this.jdField_b_of_type_Long == 0L) {}
-      for (int i1 = 0;; i1 = (int)(100L * this.jdField_a_of_type_Long / this.jdField_b_of_type_Long))
-      {
-        if (localMessageForShortVideo.videoFileProgress < 0) {
-          localMessageForShortVideo.videoFileProgress = 0;
-        }
-        int i3 = localMessageForShortVideo.videoFileProgress;
-        if (((localMessageForShortVideo.videoFileStatus == 1002) || (localMessageForShortVideo.videoFileStatus == 2002)) && (localMessageForShortVideo.videoFileStatus == this.t) && (i1 - i3 < 10)) {
-          break;
-        }
-        if ((i2 != 6) && (i2 != 17) && (i2 != 9))
-        {
-          i3 = i1;
-          if (i2 != 20) {}
-        }
-        else
-        {
-          if (this.t == 2002) {
-            localMessageForShortVideo.transferedSize = ((int)this.jdField_a_of_type_Long);
-          }
-          i3 = i1;
-          if (this.t == 2003)
-          {
-            localMessageForShortVideo.transferedSize = 0;
-            i3 = 100;
-          }
-        }
-        if (((localMessageForShortVideo.videoFileStatus == 2004) || (localMessageForShortVideo.videoFileStatus == 1004)) && ((this.t == 1002) || (this.t == 2002))) {
-          break;
-        }
-        localMessageForShortVideo.videoFileStatus = this.t;
-        localMessageForShortVideo.fileType = i2;
-        localMessageForShortVideo.videoFileProgress = i3;
-        String str = ShortVideoUtils.findVideoPathIfExists(localMessageForShortVideo);
-        if ((this.t == 2003) && (!StringUtil.a(str))) {
-          localMessageForShortVideo.lastModified = new File(str).lastModified();
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(localMessageForShortVideo);
+      long l1 = this.jdField_b_of_type_Long;
+      int i1;
+      if (l1 == 0L) {
+        i1 = 0;
+      } else {
+        i1 = (int)(this.jdField_a_of_type_Long * 100L / l1);
+      }
+      if (((MessageForShortVideo)localObject1).videoFileProgress < 0) {
+        ((MessageForShortVideo)localObject1).videoFileProgress = 0;
+      }
+      int i3 = ((MessageForShortVideo)localObject1).videoFileProgress;
+      if (((((MessageForShortVideo)localObject1).videoFileStatus == 1002) || (((MessageForShortVideo)localObject1).videoFileStatus == 2002)) && (((MessageForShortVideo)localObject1).videoFileStatus == this.t) && (i1 - i3 < 10)) {
         return;
       }
-      i2 = -1;
-      localMessageForShortVideo = null;
+      if ((i2 != 6) && (i2 != 17) && (i2 != 9))
+      {
+        i3 = i1;
+        if (i2 != 20) {}
+      }
+      else
+      {
+        if (this.t == 2002) {
+          ((MessageForShortVideo)localObject1).transferedSize = ((int)this.jdField_a_of_type_Long);
+        }
+        i3 = i1;
+        if (this.t == 2003)
+        {
+          ((MessageForShortVideo)localObject1).transferedSize = 0;
+          i3 = 100;
+        }
+      }
+      if ((((MessageForShortVideo)localObject1).videoFileStatus == 2004) || (((MessageForShortVideo)localObject1).videoFileStatus == 1004))
+      {
+        i1 = this.t;
+        if (i1 == 1002) {
+          return;
+        }
+        if (i1 == 2002) {
+          return;
+        }
+      }
+      ((MessageForShortVideo)localObject1).videoFileStatus = this.t;
+      ((MessageForShortVideo)localObject1).fileType = i2;
+      ((MessageForShortVideo)localObject1).videoFileProgress = i3;
+      Object localObject2 = ShortVideoUtils.findVideoPathIfExists((MessageForShortVideo)localObject1);
+      if ((this.t == 2003) && (!StringUtil.a((String)localObject2))) {
+        ((MessageForShortVideo)localObject1).lastModified = new File((String)localObject2).lastModified();
+      }
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider;
+      if (localObject2 != null) {
+        ((IAIOImageProvider)localObject2).a((MessageForShortVideo)localObject1);
+      }
     }
   }
   
   public void OnDownloadCallback(String paramString)
   {
+    try
+    {
+      paramString = new JSONObject(paramString);
+      i2 = paramString.getInt("callBackType");
+      i1 = paramString.getInt("fileSize");
+      long l1 = i1;
+      if (l1 != this.jdField_b_of_type_Long)
+      {
+        this.jdField_b_of_type_Long = l1;
+        str = this.jdField_b_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[MediaPlayer] OnDownloadCallback fileSize mismatched msg.file=");
+        localStringBuilder.append(this.jdField_b_of_type_Long);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      i3 = paramString.getInt("newFileSize");
+      l1 = paramString.getInt("offset");
+      if (!QLog.isColorLevel()) {
+        break label1074;
+      }
+      str = this.jdField_b_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDownloadCallback, offset = ");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(", seekFlagForCacheProgress = ");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(" mFileSize=");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      QLog.d(str, 2, localStringBuilder.toString());
+      if (l1 <= 0L) {
+        break label1077;
+      }
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_Long = l1;
+        this.jdField_a_of_type_Boolean = false;
+        break label1077;
+      }
+      if (l1 > this.jdField_a_of_type_Long) {
+        this.jdField_a_of_type_Long = l1;
+      }
+      label246:
+      i4 = paramString.getInt("httpDownloadSum");
+      this.jdField_c_of_type_Int = i4;
+      if (QLog.isColorLevel())
+      {
+        str = this.jdField_b_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("OnDownloadCallback, mTransferredSize = ");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        localStringBuilder.append("  httpDownloadSum=");
+        localStringBuilder.append(i4);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      if (i4 > 0) {
+        this.jdField_d_of_type_Int += 1;
+      }
+      i5 = paramString.getInt("dataFromCacheSize");
+      if (this.jdField_e_of_type_Int < i5) {
+        this.jdField_e_of_type_Int = i5;
+      }
+      this.s = paramString.getInt("speedKBS");
+      if ((i2 != 7) && (i2 != 3))
+      {
+        if ((i2 != 1) || (!paramString.has("httpHeader"))) {
+          break label1080;
+        }
+        str = paramString.getString("httpHeader");
+      }
+    }
+    catch (JSONException paramString)
+    {
+      int i2;
+      int i1;
+      String str;
+      int i3;
+      int i4;
+      int i5;
+      label426:
+      paramString.printStackTrace();
+    }
+    try
+    {
+      a(str);
+    }
+    catch (IOException localIOException)
+    {
+      break label426;
+    }
+    this.r = 9064;
+    this.t = 2005;
+    g();
+    if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (this.jdField_d_of_type_JavaLangString.equals("-5103059")))
+    {
+      this.t = 5002;
+      g();
+      break label1080;
+      if (i2 == 7)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean = false;
+        }
+        this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
+        this.t = 2003;
+        g();
+      }
+      if (this.jdField_h_of_type_Long != 0L)
+      {
+        this.jdField_g_of_type_Long = (System.currentTimeMillis() - this.jdField_h_of_type_Long);
+        this.jdField_h_of_type_Long = 0L;
+      }
+    }
+    label1074:
+    label1077:
+    label1080:
     for (;;)
     {
-      try
-      {
-        paramString = new JSONObject(paramString);
-        int i1 = paramString.getInt("callBackType");
-        int i2 = paramString.getInt("fileSize");
-        if (i2 != this.jdField_b_of_type_Long)
-        {
-          this.jdField_b_of_type_Long = i2;
-          QLog.d(this.jdField_b_of_type_JavaLangString, 2, "[MediaPlayer] OnDownloadCallback fileSize mismatched msg.file=" + this.jdField_b_of_type_Long);
-        }
-        int i3 = paramString.getInt("newFileSize");
-        long l1 = paramString.getInt("offset");
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_b_of_type_JavaLangString, 2, "OnDownloadCallback, offset = " + l1 + ", seekFlagForCacheProgress = " + this.jdField_a_of_type_Boolean + " mFileSize=" + this.jdField_b_of_type_Long);
-        }
-        if (l1 > 0L)
-        {
-          if (this.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Long = l1;
-            this.jdField_a_of_type_Boolean = false;
-          }
-        }
-        else
-        {
-          int i4 = paramString.getInt("httpDownloadSum");
-          this.jdField_c_of_type_Int = i4;
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_b_of_type_JavaLangString, 2, "OnDownloadCallback, mTransferredSize = " + this.jdField_a_of_type_Long + "  httpDownloadSum=" + i4);
-          }
-          if (i4 > 0) {
-            this.jdField_d_of_type_Int += 1;
-          }
-          int i5 = paramString.getInt("dataFromCacheSize");
-          if (this.jdField_e_of_type_Int < i5) {
-            this.jdField_e_of_type_Int = i5;
-          }
-          this.s = paramString.getInt("speedKBS");
-          if ((i1 != 7) && (i1 != 3)) {
-            break label856;
-          }
-          if (i1 == 7)
-          {
-            if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo != null) {
-              this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean = false;
-            }
-            this.jdField_a_of_type_Long = this.jdField_b_of_type_Long;
-            this.t = 2003;
-            g();
-          }
-          if (this.jdField_h_of_type_Long != 0L)
-          {
-            this.jdField_g_of_type_Long = (System.currentTimeMillis() - this.jdField_h_of_type_Long);
-            this.jdField_h_of_type_Long = 0L;
-          }
-          if (this.m == 0) {
-            this.m = paramString.getInt("httpRedirectNum");
-          }
-          if (this.n == 0) {
-            this.n = paramString.getInt("httpRedirectCostMs");
-          }
-          if ((paramString.has("httpDNSCostMs")) && (this.o == 0)) {
-            this.o = paramString.getInt("httpDNSCostMs");
-          }
-          if ((paramString.has("httpConnectCostMs")) && (this.p == 0)) {
-            this.p = paramString.getInt("httpConnectCostMs");
-          }
-          if ((paramString.has("httpFirstRecvCostMs")) && (this.q == 0)) {
-            this.q = paramString.getInt("httpFirstRecvCostMs");
-          }
-          if ((paramString.has("httpURL")) && (this.jdField_g_of_type_JavaLangString == null)) {
-            this.jdField_g_of_type_JavaLangString = paramString.getString("httpURL");
-          }
-          if (QLog.isColorLevel())
-          {
-            paramString = new StringBuilder("[MediaPlayer] OnDownloadCallback:");
-            paramString.append("callBackType=").append(i1).append("|");
-            paramString.append("fileSize=").append(i2).append("|");
-            paramString.append("newFileSize=").append(i3).append("|");
-            paramString.append("offset=").append(this.jdField_a_of_type_Long).append("|");
-            paramString.append("httpDownloadSum=").append(i4).append("|");
-            paramString.append("dataFromCacheSize=").append(i5).append("|");
-            paramString.append("speedKBS=").append(this.s).append("|");
-            paramString.append("HttpRedirectNum=").append(this.m).append("|");
-            paramString.append("HttpRedirectCostMs=").append(this.n).append("|");
-            paramString.append("HttpDNSCost=").append(this.o).append("|");
-            paramString.append("HttpConnectCost=").append(this.p).append("|");
-            paramString.append("HttpFirstRecvCost=").append(this.q).append("|");
-            paramString.append("mHttpUrl=").append(this.jdField_g_of_type_JavaLangString).append("|");
-            QLog.i(this.jdField_b_of_type_JavaLangString, 2, paramString.toString());
-          }
-          if (this.jdField_a_of_type_AndroidOsHandler == null) {
-            return;
-          }
-          paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-          paramString.what = 7;
-          paramString.arg1 = this.s;
-          this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
-          return;
-        }
-        if (l1 <= this.jdField_a_of_type_Long) {
-          continue;
-        }
-        this.jdField_a_of_type_Long = l1;
-        continue;
-        if (i1 != 1) {
-          continue;
-        }
+      if (this.m == 0) {
+        this.m = paramString.getInt("httpRedirectNum");
       }
-      catch (JSONException paramString)
+      if (this.n == 0) {
+        this.n = paramString.getInt("httpRedirectCostMs");
+      }
+      if ((paramString.has("httpDNSCostMs")) && (this.o == 0)) {
+        this.o = paramString.getInt("httpDNSCostMs");
+      }
+      if ((paramString.has("httpConnectCostMs")) && (this.p == 0)) {
+        this.p = paramString.getInt("httpConnectCostMs");
+      }
+      if ((paramString.has("httpFirstRecvCostMs")) && (this.q == 0)) {
+        this.q = paramString.getInt("httpFirstRecvCostMs");
+      }
+      if ((paramString.has("httpURL")) && (this.jdField_g_of_type_JavaLangString == null)) {
+        this.jdField_g_of_type_JavaLangString = paramString.getString("httpURL");
+      }
+      if (QLog.isColorLevel())
       {
-        paramString.printStackTrace();
+        paramString = new StringBuilder("[MediaPlayer] OnDownloadCallback:");
+        paramString.append("callBackType=");
+        paramString.append(i2);
+        paramString.append("|");
+        paramString.append("fileSize=");
+        paramString.append(i1);
+        paramString.append("|");
+        paramString.append("newFileSize=");
+        paramString.append(i3);
+        paramString.append("|");
+        paramString.append("offset=");
+        paramString.append(this.jdField_a_of_type_Long);
+        paramString.append("|");
+        paramString.append("httpDownloadSum=");
+        paramString.append(i4);
+        paramString.append("|");
+        paramString.append("dataFromCacheSize=");
+        paramString.append(i5);
+        paramString.append("|");
+        paramString.append("speedKBS=");
+        paramString.append(this.s);
+        paramString.append("|");
+        paramString.append("HttpRedirectNum=");
+        paramString.append(this.m);
+        paramString.append("|");
+        paramString.append("HttpRedirectCostMs=");
+        paramString.append(this.n);
+        paramString.append("|");
+        paramString.append("HttpDNSCost=");
+        paramString.append(this.o);
+        paramString.append("|");
+        paramString.append("HttpConnectCost=");
+        paramString.append(this.p);
+        paramString.append("|");
+        paramString.append("HttpFirstRecvCost=");
+        paramString.append(this.q);
+        paramString.append("|");
+        paramString.append("mHttpUrl=");
+        paramString.append(this.jdField_g_of_type_JavaLangString);
+        paramString.append("|");
+        QLog.i(this.jdField_b_of_type_JavaLangString, 2, paramString.toString());
+      }
+      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      {
+        paramString = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        paramString.what = 7;
+        paramString.arg1 = this.s;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramString);
         return;
       }
-      label856:
-      if (paramString.has("httpHeader"))
-      {
-        String str = paramString.getString("httpHeader");
-        try
-        {
-          a(str);
-          if ((!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) && (this.jdField_d_of_type_JavaLangString.equals("-5103059")))
-          {
-            this.t = 5002;
-            g();
-          }
-        }
-        catch (IOException localIOException)
-        {
-          for (;;)
-          {
-            this.r = 9064;
-            this.t = 2005;
-            g();
-          }
-        }
-      }
+      return;
+      break;
+      break label246;
     }
   }
   
@@ -488,22 +565,22 @@ public class MediaPlayHelper
   
   public View a(Context paramContext)
   {
-    View localView = null;
     this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory != null)
+    TVK_IProxyFactory localTVK_IProxyFactory = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory;
+    if (localTVK_IProxyFactory != null)
     {
-      localView = (View)this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createVideoView_Scroll(paramContext);
-      localView.setBackgroundColor(-16777216);
-      localView.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
-      localView.setVisibility(0);
-      ((IVideoViewBase)localView).addViewCallBack(this);
+      paramContext = (View)localTVK_IProxyFactory.createVideoView_Scroll(paramContext);
+      paramContext.setBackgroundColor(-16777216);
+      paramContext.setLayoutParams(new RelativeLayout.LayoutParams(-1, -1));
+      paramContext.setVisibility(0);
+      ((IVideoViewBase)paramContext).addViewCallBack(this);
+      return paramContext;
     }
-    return localView;
+    return null;
   }
   
   public View a(Context paramContext, Handler paramHandler, VideoPlayMedioInfo paramVideoPlayMedioInfo, IAIOImageProvider paramIAIOImageProvider)
   {
-    Object localObject = null;
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#onCreateVideoSdkView  ");
     }
@@ -512,21 +589,26 @@ public class MediaPlayHelper
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo = paramVideoPlayMedioInfo;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider = paramIAIOImageProvider;
     this.jdField_a_of_type_Long = paramVideoPlayMedioInfo.jdField_d_of_type_Long;
-    if ((this.jdField_a_of_type_AndroidOsPowerManager$WakeLock == null) && (this.jdField_b_of_type_AndroidContentContext != null))
+    if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock == null)
     {
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = ((PowerManager)this.jdField_b_of_type_AndroidContentContext.getSystemService("power")).newWakeLock(536870922, this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.setReferenceCounted(false);
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_b_of_type_JavaLangString, 2, "init mWakeLock");
+      paramHandler = this.jdField_b_of_type_AndroidContentContext;
+      if (paramHandler != null)
+      {
+        this.jdField_a_of_type_AndroidOsPowerManager$WakeLock = ((PowerManager)paramHandler.getSystemService("power")).newWakeLock(536870922, this.jdField_b_of_type_JavaLangString);
+        this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.setReferenceCounted(false);
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_b_of_type_JavaLangString, 2, "init mWakeLock");
+        }
       }
     }
-    paramHandler = localObject;
     try
     {
-      if (b()) {
-        paramHandler = a(paramContext);
+      if (b())
+      {
+        paramContext = a(paramContext);
+        return paramContext;
       }
-      return paramHandler;
+      return null;
     }
     catch (Exception paramContext)
     {
@@ -542,9 +624,10 @@ public class MediaPlayHelper
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, " releaseMediaPlayer");
     }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+      ((TVK_IMediaPlayer)localObject).stop();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.removeAllListener();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
@@ -558,23 +641,20 @@ public class MediaPlayHelper
     }
     this.jdField_b_of_type_AndroidContentContext = null;
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo = null;
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    localObject = this.jdField_a_of_type_AndroidOsHandler;
+    if (localObject != null) {
+      ((Handler)localObject).removeCallbacksAndMessages(null);
     }
     this.jdField_a_of_type_AndroidOsHandler = null;
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(paramInt);
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.seekTo(paramInt);
     }
     this.jdField_a_of_type_Int += 1;
-  }
-  
-  public void a(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
-  {
-    QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#handleMessage#, ");
   }
   
   public void a(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
@@ -587,18 +667,24 @@ public class MediaPlayHelper
   
   public void a(String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#play#, videoPath=" + paramString);
-    }
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-    localTVK_PlayerVideoInfo.setPlayType(4);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", "bus_type_preview_local_fs");
-    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_b_of_type_AndroidContentContext != null))
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_e_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_b_of_type_AndroidContentContext.getApplicationContext(), paramString, paramLong, 0L, localTVK_PlayerVideoInfo);
+      localObject1 = this.jdField_b_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("#play#, videoPath=");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    Object localObject1 = new TVK_PlayerVideoInfo();
+    ((TVK_PlayerVideoInfo)localObject1).setPlayType(4);
+    Object localObject2 = new HashMap();
+    ((Map)localObject2).put("shouq_bus_type", "bus_type_preview_local_fs");
+    ((TVK_PlayerVideoInfo)localObject1).setReportInfoMap((Map)localObject2);
+    localObject2 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if ((localObject2 != null) && (this.jdField_b_of_type_AndroidContentContext != null))
+    {
+      ((TVK_IMediaPlayer)localObject2).setOutputMute(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_e_of_type_Boolean);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(this.jdField_b_of_type_AndroidContentContext.getApplicationContext(), paramString, paramLong, 0L, (TVK_PlayerVideoInfo)localObject1);
     }
   }
   
@@ -608,29 +694,45 @@ public class MediaPlayHelper
     localTVK_PlayerVideoInfo.setConfigMap("file_dir", paramString1);
     localTVK_PlayerVideoInfo.setConfigMap("cache_servers_type", String.valueOf(20160518));
     localTVK_PlayerVideoInfo.setConfigMap("keep_last_frame", "true");
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("shouq_bus_type", "bus_type_aio_long_fs");
-    localTVK_PlayerVideoInfo.setReportInfoMap(localHashMap);
+    Object localObject = new HashMap();
+    ((Map)localObject).put("shouq_bus_type", "bus_type_aio_long_fs");
+    localTVK_PlayerVideoInfo.setReportInfoMap((Map)localObject);
     localTVK_PlayerVideoInfo.setConfigMap("duration", paramString2);
     localTVK_PlayerVideoInfo.setVid(paramString3);
     localTVK_PlayerVideoInfo.setPlayMode("cache_extend_video");
     if (QLog.isColorLevel())
     {
-      QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#play#, videoFileTime =" + paramString2);
-      QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#play#, setVid =" + paramString3 + " videoPath=" + paramString1);
-      QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#play#, url0 =" + paramArrayOfString[0]);
+      localObject = this.jdField_b_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("#play#, videoFileTime =");
+      localStringBuilder.append(paramString2);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+      paramString2 = this.jdField_b_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("#play#, setVid =");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(" videoPath=");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d(paramString2, 2, ((StringBuilder)localObject).toString());
+      paramString1 = this.jdField_b_of_type_JavaLangString;
+      paramString2 = new StringBuilder();
+      paramString2.append("#play#, url0 =");
+      paramString2.append(paramArrayOfString[0]);
+      QLog.d(paramString1, 2, paramString2.toString());
     }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    paramString1 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (paramString1 != null)
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_e_of_type_Boolean);
+      paramString1.setOutputMute(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_e_of_type_Boolean);
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(paramContext.getApplicationContext(), paramArrayOfString, paramLong, 0L, localTVK_PlayerVideoInfo, null);
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.isPlaying();
     }
     return false;
   }
@@ -658,20 +760,20 @@ public class MediaPlayHelper
   
   public long b()
   {
-    long l1;
-    long l2;
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null)
     {
-      l1 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
-      l2 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
-      if (l2 > 0L) {}
+      long l1 = localTVK_IMediaPlayer.getCurrentPostion();
+      long l2 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
+      if (l2 <= 0L) {
+        return 0L;
+      }
+      double d1 = 10000L * l1 / l2;
+      Double.isNaN(d1);
+      this.u = ((int)(d1 + 0.5D));
+      return l1;
     }
-    else
-    {
-      return 0L;
-    }
-    this.u = ((int)(10000L * l1 / l2 + 0.5D));
-    return l1;
+    return 0L;
   }
   
   public void b()
@@ -691,15 +793,17 @@ public class MediaPlayHelper
   
   public void b(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setDownloadNetworkChange(paramInt);
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setDownloadNetworkChange(paramInt);
     }
   }
   
   public long c()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.getDuration();
     }
     return 0L;
   }
@@ -731,271 +835,370 @@ public class MediaPlayHelper
   
   public void e()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pauseDownload();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.pauseDownload();
     }
   }
   
   public void f()
   {
-    if ((!this.jdField_f_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo == null) || (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null)) {}
-    Object localObject;
-    do
+    if (this.jdField_f_of_type_Boolean)
     {
-      return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
-    } while (localObject == null);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#doNewReport#, ");
-    }
-    HashMap localHashMap = new HashMap();
-    StringBuffer localStringBuffer1 = new StringBuffer();
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean)
-    {
-      i1 = 1;
-      if (this.jdField_b_of_type_Int == 0) {
-        i1 = 3;
-      }
-      localHashMap.put("player_state", String.valueOf(i1));
-      localStringBuffer1.append(" player_state " + i1);
-      localHashMap.put("Download", String.valueOf(this.jdField_c_of_type_Boolean));
-      localStringBuffer1.append(" Download" + this.jdField_c_of_type_Boolean);
-      localHashMap.put("FileSize", String.valueOf(this.jdField_b_of_type_Long));
-      localStringBuffer1.append(" FileSize" + this.jdField_b_of_type_Long);
-      localHashMap.put("HttpDownloadSum", String.valueOf(this.jdField_c_of_type_Int));
-      localStringBuffer1.append(" HttpDownloadSum" + this.jdField_c_of_type_Int);
-      if (this.jdField_c_of_type_Boolean) {
-        break label1277;
-      }
-      localHashMap.put("DataFromCacheSize", String.valueOf(this.jdField_b_of_type_Long));
-      localStringBuffer1.append(" DataFromCacheSize" + this.jdField_b_of_type_Long);
-      label318:
-      localHashMap.put("FileDuration", String.valueOf(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration()));
-      localStringBuffer1.append(" FileDuration" + this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration());
-      localHashMap.put("PlayTime", String.valueOf(this.jdField_c_of_type_Long));
-      localStringBuffer1.append(" PlayTime" + this.jdField_c_of_type_Long);
-      localHashMap.put("PlayStateCount", String.valueOf(this.jdField_f_of_type_Int));
-      localStringBuffer1.append(" PlayStateCount" + this.jdField_f_of_type_Int);
-      localHashMap.put("PlayProgress", String.valueOf(this.u / 100));
-      localStringBuffer1.append(" PlayProgress" + this.u / 100);
-      localHashMap.put("FirstPlayTime", String.valueOf(this.jdField_d_of_type_Long));
-      localStringBuffer1.append(" FirstPlayTime" + this.jdField_d_of_type_Long);
-      localHashMap.put("FirstBufferTime", String.valueOf(this.jdField_e_of_type_Long));
-      localStringBuffer1.append(" FirstBufferTime" + this.jdField_e_of_type_Long);
-      localHashMap.put("SeekTimes", String.valueOf(this.jdField_a_of_type_Int));
-      localStringBuffer1.append(" SeekTimes" + this.jdField_a_of_type_Int);
-      if (this.jdField_i_of_type_Int != 0) {
-        break label1325;
-      }
-      i1 = this.jdField_i_of_type_Int;
-      label661:
-      localHashMap.put("BufferTimes", String.valueOf(i1));
-      localStringBuffer1.append(" BufferTimes" + i1);
-      localHashMap.put("BufferCostTime", String.valueOf(this.jdField_f_of_type_Long));
-      localStringBuffer1.append(" BufferCostTime" + this.jdField_f_of_type_Long);
-      if (this.jdField_h_of_type_Long != 0L)
+      Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo;
+      if (localObject1 != null)
       {
-        this.jdField_g_of_type_Long = (System.currentTimeMillis() - this.jdField_h_of_type_Long);
-        this.jdField_h_of_type_Long = 0L;
-      }
-      i1 = 0;
-      if (this.jdField_d_of_type_Int != 0) {
-        i1 = this.jdField_c_of_type_Int / (this.jdField_d_of_type_Int * 1000);
-      }
-      localHashMap.put("SpeedKBS", String.valueOf(i1));
-      localStringBuffer1.append(" SpeedKBS" + i1);
-      if (this.jdField_h_of_type_Int <= 0) {
-        break label1335;
-      }
-      str1 = "1";
-      label845:
-      localHashMap.put("IsRePlay", str1);
-      localStringBuffer1.append(" IsRePlay" + this.jdField_h_of_type_Int);
-      localHashMap.put("SuspendTimes", String.valueOf(this.jdField_g_of_type_Int));
-      localStringBuffer1.append(" SuspendTimes" + this.jdField_g_of_type_Int);
-      if (this.r == 0) {
-        break label1343;
-      }
-      localHashMap.put("param_FailCode", String.valueOf(this.r));
-    }
-    StringBuffer localStringBuffer2;
-    int i3;
-    label1325:
-    label1335:
-    label1343:
-    for (boolean bool = false;; bool = true)
-    {
-      localHashMap.put("ErrorCode", String.valueOf(this.k));
-      localHashMap.put("ErrorDetailCode", String.valueOf(this.l));
-      localHashMap.put("HttpStatus", String.valueOf(this.jdField_j_of_type_Int));
-      localStringBuffer1.append(" HttpStatus" + this.jdField_j_of_type_Int);
-      localHashMap.put("User-ReturnCode", this.jdField_d_of_type_JavaLangString);
-      localStringBuffer1.append(" User-ReturnCode" + this.jdField_d_of_type_JavaLangString);
-      localHashMap.put("X-RtFlag", this.jdField_e_of_type_JavaLangString);
-      localStringBuffer1.append(" X-RtFlag" + this.jdField_e_of_type_JavaLangString);
-      int i2 = -1;
-      localStringBuffer2 = new StringBuffer("");
-      str1 = null;
-      if (!StringUtil.a(this.jdField_g_of_type_JavaLangString)) {
-        str1 = InnerDns.getHostFromUrl(this.jdField_g_of_type_JavaLangString);
-      }
-      i3 = i2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString == null) {
-        break label1349;
-      }
-      i3 = i2;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString.length <= 0) {
-        break label1349;
-      }
-      i1 = 0;
-      for (;;)
-      {
-        i3 = i2;
-        if (i1 >= this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString.length) {
-          break;
+        if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) {
+          return;
         }
-        String str2 = InnerDns.getHostFromUrl(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString[i1]);
-        localStringBuffer2.append(str2 + ",");
-        i3 = i2;
-        if (i2 == -1)
+        Object localObject2 = ((VideoPlayMedioInfo)localObject1).jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo;
+        if (localObject2 == null) {
+          return;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#doNewReport#, ");
+        }
+        HashMap localHashMap = new HashMap();
+        StringBuffer localStringBuffer1 = new StringBuffer();
+        if (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean) {
+          i1 = 1;
+        } else {
+          i1 = 2;
+        }
+        if (this.jdField_b_of_type_Int == 0) {
+          i1 = 3;
+        }
+        localHashMap.put("player_state", String.valueOf(i1));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" player_state ");
+        ((StringBuilder)localObject1).append(i1);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("Download", String.valueOf(this.jdField_c_of_type_Boolean));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" Download");
+        ((StringBuilder)localObject1).append(this.jdField_c_of_type_Boolean);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("FileSize", String.valueOf(this.jdField_b_of_type_Long));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" FileSize");
+        ((StringBuilder)localObject1).append(this.jdField_b_of_type_Long);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("HttpDownloadSum", String.valueOf(this.jdField_c_of_type_Int));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" HttpDownloadSum");
+        ((StringBuilder)localObject1).append(this.jdField_c_of_type_Int);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        if (!this.jdField_c_of_type_Boolean)
         {
-          i3 = i2;
-          if (!StringUtil.a(str1))
+          localHashMap.put("DataFromCacheSize", String.valueOf(this.jdField_b_of_type_Long));
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(" DataFromCacheSize");
+          ((StringBuilder)localObject1).append(this.jdField_b_of_type_Long);
+          localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        }
+        else
+        {
+          localHashMap.put("DataFromCacheSize", String.valueOf(this.jdField_e_of_type_Int));
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(" DataFromCacheSize");
+          ((StringBuilder)localObject1).append(this.jdField_e_of_type_Int);
+          localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        }
+        localHashMap.put("FileDuration", String.valueOf(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration()));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" FileDuration");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration());
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("PlayTime", String.valueOf(this.jdField_c_of_type_Long));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" PlayTime");
+        ((StringBuilder)localObject1).append(this.jdField_c_of_type_Long);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("PlayStateCount", String.valueOf(this.jdField_f_of_type_Int));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" PlayStateCount");
+        ((StringBuilder)localObject1).append(this.jdField_f_of_type_Int);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("PlayProgress", String.valueOf(this.u / 100));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" PlayProgress");
+        ((StringBuilder)localObject1).append(this.u / 100);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("FirstPlayTime", String.valueOf(this.jdField_d_of_type_Long));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" FirstPlayTime");
+        ((StringBuilder)localObject1).append(this.jdField_d_of_type_Long);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("FirstBufferTime", String.valueOf(this.jdField_e_of_type_Long));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" FirstBufferTime");
+        ((StringBuilder)localObject1).append(this.jdField_e_of_type_Long);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("SeekTimes", String.valueOf(this.jdField_a_of_type_Int));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" SeekTimes");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        int i1 = this.jdField_i_of_type_Int;
+        if (i1 != 0) {
+          i1 -= 1;
+        }
+        localHashMap.put("BufferTimes", String.valueOf(i1));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" BufferTimes");
+        ((StringBuilder)localObject1).append(i1);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("BufferCostTime", String.valueOf(this.jdField_f_of_type_Long));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" BufferCostTime");
+        ((StringBuilder)localObject1).append(this.jdField_f_of_type_Long);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        if (this.jdField_h_of_type_Long != 0L)
+        {
+          this.jdField_g_of_type_Long = (System.currentTimeMillis() - this.jdField_h_of_type_Long);
+          this.jdField_h_of_type_Long = 0L;
+        }
+        i1 = this.jdField_d_of_type_Int;
+        if (i1 != 0) {
+          i1 = this.jdField_c_of_type_Int / (i1 * 1000);
+        } else {
+          i1 = 0;
+        }
+        localHashMap.put("SpeedKBS", String.valueOf(i1));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" SpeedKBS");
+        ((StringBuilder)localObject1).append(i1);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        i1 = this.jdField_h_of_type_Int;
+        String str1 = "1";
+        if (i1 > 0) {
+          localObject1 = "1";
+        } else {
+          localObject1 = "0";
+        }
+        localHashMap.put("IsRePlay", localObject1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" IsRePlay");
+        ((StringBuilder)localObject1).append(this.jdField_h_of_type_Int);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("SuspendTimes", String.valueOf(this.jdField_g_of_type_Int));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" SuspendTimes");
+        ((StringBuilder)localObject1).append(this.jdField_g_of_type_Int);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        i1 = this.r;
+        boolean bool;
+        if (i1 != 0)
+        {
+          localHashMap.put("param_FailCode", String.valueOf(i1));
+          bool = false;
+        }
+        else
+        {
+          bool = true;
+        }
+        localHashMap.put("ErrorCode", String.valueOf(this.k));
+        localHashMap.put("ErrorDetailCode", String.valueOf(this.l));
+        localHashMap.put("HttpStatus", String.valueOf(this.jdField_j_of_type_Int));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" HttpStatus");
+        ((StringBuilder)localObject1).append(this.jdField_j_of_type_Int);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("User-ReturnCode", this.jdField_d_of_type_JavaLangString);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" User-ReturnCode");
+        ((StringBuilder)localObject1).append(this.jdField_d_of_type_JavaLangString);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("X-RtFlag", this.jdField_e_of_type_JavaLangString);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" X-RtFlag");
+        ((StringBuilder)localObject1).append(this.jdField_e_of_type_JavaLangString);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        StringBuffer localStringBuffer2 = new StringBuffer("");
+        localObject1 = null;
+        if (!StringUtil.a(this.jdField_g_of_type_JavaLangString)) {
+          localObject1 = InnerDns.getHostFromUrl(this.jdField_g_of_type_JavaLangString);
+        }
+        if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString.length > 0))
+        {
+          i1 = 0;
+          for (int i2 = -1;; i2 = i3)
           {
             i3 = i2;
-            if (str1.equals(str2)) {
-              i3 = i1;
+            if (i1 >= this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString.length) {
+              break;
             }
+            String str2 = InnerDns.getHostFromUrl(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString[i1]);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append(str2);
+            localStringBuilder.append(",");
+            localStringBuffer2.append(localStringBuilder.toString());
+            i3 = i2;
+            if (i2 == -1)
+            {
+              i3 = i2;
+              if (!StringUtil.a((String)localObject1))
+              {
+                i3 = i2;
+                if (((String)localObject1).equals(str2)) {
+                  i3 = i1;
+                }
+              }
+            }
+            i1 += 1;
           }
         }
-        i1 += 1;
-        i2 = i3;
+        int i3 = -1;
+        localHashMap.put("IpList", localStringBuffer2.toString());
+        i1 = i3 + 1;
+        localHashMap.put("SuccIpIndex", String.valueOf(i1));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" SuccIpIndex");
+        ((StringBuilder)localObject1).append(i1);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("HttpDomain", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_JavaLangString);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" HttpDomain");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_JavaLangString);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("HttpRedirectNum", String.valueOf(this.m));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" HttpRedirectNum");
+        ((StringBuilder)localObject1).append(this.m);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("HttpRedirectCostMs", String.valueOf(this.n));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" HttpRedirectCostMs");
+        ((StringBuilder)localObject1).append(this.n);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("HttpDnsCostMs", String.valueOf(this.o));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" HttpDnsCostMs");
+        ((StringBuilder)localObject1).append(this.o);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("HttpConnectCostMs", String.valueOf(this.p));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" HttpConnectCostMs");
+        ((StringBuilder)localObject1).append(this.p);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("HttpFirstRecvCostMs", String.valueOf(this.q));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" HttpFirstRecvCostMs");
+        ((StringBuilder)localObject1).append(this.q);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("RetrySuccessTimes", "0");
+        localHashMap.put("RetryFailedTimes", "0");
+        localHashMap.put("ApplyCostTime", String.valueOf(this.jdField_j_of_type_Long));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" ApplyCostTime");
+        ((StringBuilder)localObject1).append(this.jdField_j_of_type_Long);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("HttpCostTime", String.valueOf(this.jdField_g_of_type_Long));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" HttpCostTime");
+        ((StringBuilder)localObject1).append(this.jdField_g_of_type_Long);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        localHashMap.put("DownType", "1");
+        localHashMap.put("SceneType", "2");
+        localHashMap.put("BusiType", "0");
+        localHashMap.put("SubBusiType", String.valueOf(((MessageForShortVideo)localObject2).subBusiType));
+        SVUtils.a((MessageForShortVideo)localObject2);
+        localHashMap.put("FromUin", String.valueOf(SVUtils.a((MessageForShortVideo)localObject2)));
+        localHashMap.put("Uuid", String.valueOf(((MessageForShortVideo)localObject2).uuid));
+        localHashMap.put("MsgFileMd5", String.valueOf(((MessageForShortVideo)localObject2).md5));
+        localHashMap.put("DownFileMd5", String.valueOf(((MessageForShortVideo)localObject2).md5));
+        localObject1 = String.valueOf(NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication().getApplicationContext()));
+        localHashMap.put("NetworkInfo", localObject1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(" NetworkInfo");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localStringBuffer1.append(((StringBuilder)localObject2).toString());
+        localHashMap.put("ProductVersion", String.valueOf(AppSetting.a()));
+        localHashMap.put("EncryptKey", "0");
+        if (this.jdField_d_of_type_Boolean) {
+          localObject1 = "1";
+        } else {
+          localObject1 = "0";
+        }
+        localHashMap.put("IsUpdateSuit", localObject1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(" IsUpdateSuit");
+        if (this.jdField_d_of_type_Boolean) {
+          localObject1 = "1";
+        } else {
+          localObject1 = "0";
+        }
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localStringBuffer1.append(((StringBuilder)localObject2).toString());
+        localHashMap.put("UpdateSuitCostTime", String.valueOf(this.jdField_i_of_type_Long));
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(" UpdateSuitCostTime");
+        ((StringBuilder)localObject1).append(this.jdField_i_of_type_Long);
+        localStringBuffer1.append(((StringBuilder)localObject1).toString());
+        if (this.jdField_e_of_type_Boolean) {
+          localObject1 = "1";
+        } else {
+          localObject1 = "0";
+        }
+        localHashMap.put("UpdateSuitResult", localObject1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(" UpdateSuitResult");
+        if (this.jdField_e_of_type_Boolean) {
+          localObject1 = str1;
+        } else {
+          localObject1 = "0";
+        }
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localStringBuffer1.append(((StringBuilder)localObject2).toString());
+        if (QLog.isColorLevel()) {
+          QLog.w(this.jdField_b_of_type_JavaLangString, 2, localStringBuffer1.toString());
+        }
+        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actStreamingVideoPlay", bool, this.jdField_g_of_type_Long, this.jdField_b_of_type_Long, localHashMap, "");
+        this.jdField_f_of_type_Boolean = false;
+        this.jdField_f_of_type_Int = 0;
+        this.jdField_a_of_type_Int = 0;
+        this.jdField_i_of_type_Int = 0;
+        this.jdField_g_of_type_Int = 0;
+        this.jdField_f_of_type_Long = 0L;
+        this.jdField_g_of_type_Long = 0L;
+        this.jdField_c_of_type_Long = 0L;
+        this.p = 0;
+        this.o = 0;
+        this.jdField_d_of_type_Long = 0L;
+        this.jdField_e_of_type_Long = 0L;
+        this.jdField_j_of_type_Long = 0L;
+        this.q = 0;
+        this.n = 0;
+        this.jdField_i_of_type_Long = 0L;
+        this.k = 0;
+        this.l = 0;
       }
-      i1 = 2;
-      break;
-      label1277:
-      localHashMap.put("DataFromCacheSize", String.valueOf(this.jdField_e_of_type_Int));
-      localStringBuffer1.append(" DataFromCacheSize" + this.jdField_e_of_type_Int);
-      break label318;
-      i1 = this.jdField_i_of_type_Int - 1;
-      break label661;
-      str1 = "0";
-      break label845;
     }
-    label1349:
-    localHashMap.put("IpList", localStringBuffer2.toString());
-    int i1 = i3 + 1;
-    localHashMap.put("SuccIpIndex", String.valueOf(i1));
-    localStringBuffer1.append(" SuccIpIndex" + i1);
-    localHashMap.put("HttpDomain", this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_JavaLangString);
-    localStringBuffer1.append(" HttpDomain" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_JavaLangString);
-    localHashMap.put("HttpRedirectNum", String.valueOf(this.m));
-    localStringBuffer1.append(" HttpRedirectNum" + this.m);
-    localHashMap.put("HttpRedirectCostMs", String.valueOf(this.n));
-    localStringBuffer1.append(" HttpRedirectCostMs" + this.n);
-    localHashMap.put("HttpDnsCostMs", String.valueOf(this.o));
-    localStringBuffer1.append(" HttpDnsCostMs" + this.o);
-    localHashMap.put("HttpConnectCostMs", String.valueOf(this.p));
-    localStringBuffer1.append(" HttpConnectCostMs" + this.p);
-    localHashMap.put("HttpFirstRecvCostMs", String.valueOf(this.q));
-    localStringBuffer1.append(" HttpFirstRecvCostMs" + this.q);
-    localHashMap.put("RetrySuccessTimes", "0");
-    localHashMap.put("RetryFailedTimes", "0");
-    localHashMap.put("ApplyCostTime", String.valueOf(this.jdField_j_of_type_Long));
-    localStringBuffer1.append(" ApplyCostTime" + this.jdField_j_of_type_Long);
-    localHashMap.put("HttpCostTime", String.valueOf(this.jdField_g_of_type_Long));
-    localStringBuffer1.append(" HttpCostTime" + this.jdField_g_of_type_Long);
-    localHashMap.put("DownType", "1");
-    localHashMap.put("SceneType", "2");
-    localHashMap.put("BusiType", "0");
-    localHashMap.put("SubBusiType", String.valueOf(((MessageForShortVideo)localObject).subBusiType));
-    ShortVideoUtils.getFromUinForForward((MessageForShortVideo)localObject);
-    localHashMap.put("FromUin", String.valueOf(ShortVideoUtils.getFromUinForForward((MessageForShortVideo)localObject)));
-    localHashMap.put("Uuid", String.valueOf(((MessageForShortVideo)localObject).uuid));
-    localHashMap.put("MsgFileMd5", String.valueOf(((MessageForShortVideo)localObject).md5));
-    localHashMap.put("DownFileMd5", String.valueOf(((MessageForShortVideo)localObject).md5));
-    String str1 = String.valueOf(NetworkUtil.a(BaseApplicationImpl.getApplication().getApplicationContext()));
-    localHashMap.put("NetworkInfo", str1);
-    localStringBuffer1.append(" NetworkInfo" + str1);
-    localHashMap.put("ProductVersion", String.valueOf(AppSetting.a()));
-    localHashMap.put("EncryptKey", "0");
-    if (this.jdField_d_of_type_Boolean)
-    {
-      str1 = "1";
-      localHashMap.put("IsUpdateSuit", str1);
-      localObject = new StringBuilder().append(" IsUpdateSuit");
-      if (!this.jdField_d_of_type_Boolean) {
-        break label2321;
-      }
-      str1 = "1";
-      label2049:
-      localStringBuffer1.append(str1);
-      localHashMap.put("UpdateSuitCostTime", String.valueOf(this.jdField_i_of_type_Long));
-      localStringBuffer1.append(" UpdateSuitCostTime" + this.jdField_i_of_type_Long);
-      if (!this.jdField_e_of_type_Boolean) {
-        break label2329;
-      }
-      str1 = "1";
-      label2122:
-      localHashMap.put("UpdateSuitResult", str1);
-      localObject = new StringBuilder().append(" UpdateSuitResult");
-      if (!this.jdField_e_of_type_Boolean) {
-        break label2337;
-      }
-    }
-    label2321:
-    label2329:
-    label2337:
-    for (str1 = "1";; str1 = "0")
-    {
-      localStringBuffer1.append(str1);
-      if (QLog.isColorLevel()) {
-        QLog.w(this.jdField_b_of_type_JavaLangString, 2, localStringBuffer1.toString());
-      }
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actStreamingVideoPlay", bool, this.jdField_g_of_type_Long, this.jdField_b_of_type_Long, localHashMap, "");
-      this.jdField_f_of_type_Boolean = false;
-      this.jdField_f_of_type_Int = 0;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_i_of_type_Int = 0;
-      this.jdField_g_of_type_Int = 0;
-      this.jdField_f_of_type_Long = 0L;
-      this.jdField_g_of_type_Long = 0L;
-      this.jdField_c_of_type_Long = 0L;
-      this.p = 0;
-      this.o = 0;
-      this.jdField_d_of_type_Long = 0L;
-      this.jdField_e_of_type_Long = 0L;
-      this.jdField_j_of_type_Long = 0L;
-      this.q = 0;
-      this.n = 0;
-      this.jdField_i_of_type_Long = 0L;
-      this.k = 0;
-      this.l = 0;
-      return;
-      str1 = "0";
-      break;
-      str1 = "0";
-      break label2049;
-      str1 = "0";
-      break label2122;
-    }
+  }
+  
+  public void handleMessage(View paramView, FileMsg paramFileMsg, int paramInt1, int paramInt2)
+  {
+    QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#handleMessage#, ");
   }
   
   public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
     QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#onCompletion#, ");
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramTVK_IMediaPlayer != null) {
+      paramTVK_IMediaPlayer.sendEmptyMessage(2);
     }
-    if ((VersionUtils.b()) && (this.jdField_b_of_type_AndroidContentContext != null))
+    if (VersionUtils.b())
     {
       paramTVK_IMediaPlayer = this.jdField_b_of_type_AndroidContentContext;
-      Context localContext = this.jdField_b_of_type_AndroidContentContext;
-      ((AudioManager)paramTVK_IMediaPlayer.getSystemService("audio")).abandonAudioFocus(null);
+      if (paramTVK_IMediaPlayer != null) {
+        ((AudioManager)paramTVK_IMediaPlayer.getSystemService("audio")).abandonAudioFocus(null);
+      }
     }
-    if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null)
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsPowerManager$WakeLock;
+    if (paramTVK_IMediaPlayer != null)
     {
-      this.jdField_a_of_type_AndroidOsPowerManager$WakeLock.release();
+      paramTVK_IMediaPlayer.release();
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_b_of_type_JavaLangString, 2, " onCompletion, mWakeLock.release()");
       }
@@ -1005,14 +1208,22 @@ public class MediaPlayHelper
   
   public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_b_of_type_JavaLangString, 2, "[MediaPlayer] onError what=" + paramInt1 + ",extra=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      String str = this.jdField_b_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[MediaPlayer] onError what=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(",extra=");
+      localStringBuilder.append(paramInt2);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     this.jdField_b_of_type_Int = 0;
     a(paramTVK_IMediaPlayer, paramInt1, paramInt2, paramInt3, paramString, paramObject);
-    if (this.jdField_a_of_type_AndroidOsHandler != null)
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramTVK_IMediaPlayer != null)
     {
-      paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+      paramTVK_IMediaPlayer = paramTVK_IMediaPlayer.obtainMessage();
       paramTVK_IMediaPlayer.what = 100;
       paramTVK_IMediaPlayer.arg1 = paramInt1;
       paramTVK_IMediaPlayer.arg2 = paramInt2;
@@ -1030,28 +1241,17 @@ public class MediaPlayHelper
   
   public boolean onInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 21)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_b_of_type_JavaLangString, 2, "video start buffering !");
-      }
-      if (this.jdField_a_of_type_AndroidOsHandler != null)
+      if (paramInt == 22)
       {
-        paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-        paramTVK_IMediaPlayer.what = 200;
-        paramTVK_IMediaPlayer.arg1 = 929;
-        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramTVK_IMediaPlayer);
-        continue;
         if (QLog.isColorLevel()) {
           QLog.d(this.jdField_b_of_type_JavaLangString, 2, "video end buffering !");
         }
-        if (this.jdField_a_of_type_AndroidOsHandler != null)
+        paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler;
+        if (paramTVK_IMediaPlayer != null)
         {
-          paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+          paramTVK_IMediaPlayer = paramTVK_IMediaPlayer.obtainMessage();
           paramTVK_IMediaPlayer.what = 200;
           paramTVK_IMediaPlayer.arg1 = 92;
           paramTVK_IMediaPlayer.arg2 = paramInt;
@@ -1059,6 +1259,21 @@ public class MediaPlayHelper
         }
       }
     }
+    else
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_b_of_type_JavaLangString, 2, "video start buffering !");
+      }
+      paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler;
+      if (paramTVK_IMediaPlayer != null)
+      {
+        paramTVK_IMediaPlayer = paramTVK_IMediaPlayer.obtainMessage();
+        paramTVK_IMediaPlayer.what = 200;
+        paramTVK_IMediaPlayer.arg1 = 929;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessage(paramTVK_IMediaPlayer);
+      }
+    }
+    return false;
   }
   
   public void onNetVideoInfo(TVK_IMediaPlayer paramTVK_IMediaPlayer, TVK_NetVideoInfo paramTVK_NetVideoInfo)
@@ -1073,8 +1288,9 @@ public class MediaPlayHelper
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#onSeekComplete#, ");
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(4);
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramTVK_IMediaPlayer != null) {
+      paramTVK_IMediaPlayer.sendEmptyMessage(4);
     }
   }
   
@@ -1090,33 +1306,29 @@ public class MediaPlayHelper
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#onSurfaceCreated#, ");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo != null)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean) {
-        break label63;
+    paramSurfaceHolder = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo;
+    if (paramSurfaceHolder != null) {
+      if (!paramSurfaceHolder.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_JavaLangString != null) {
+          a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_e_of_type_Long);
+        }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_JavaLangString != null) {
-        a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_e_of_type_Long);
+      else if (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean)
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
+          paramSurfaceHolder = "0";
+        } else {
+          paramSurfaceHolder = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileTime);
+        }
+        String str;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null) {
+          str = "";
+        } else {
+          str = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5;
+        }
+        a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.a(), paramSurfaceHolder, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_e_of_type_Long, str, this.jdField_b_of_type_AndroidContentContext);
       }
-    }
-    label63:
-    while (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) {
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo == null)
-    {
-      paramSurfaceHolder = "0";
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null) {
-        break label149;
-      }
-    }
-    label149:
-    for (String str = "";; str = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.md5)
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.a(), paramSurfaceHolder, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_e_of_type_Long, str, this.jdField_b_of_type_AndroidContentContext);
-      return;
-      paramSurfaceHolder = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileTime);
-      break;
     }
   }
   
@@ -1125,14 +1337,16 @@ public class MediaPlayHelper
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#onSurfaceDestory#, ");
     }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+    paramSurfaceHolder = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (paramSurfaceHolder != null) {
+      paramSurfaceHolder.stop();
     }
-    if ((VersionUtils.b()) && (this.jdField_b_of_type_AndroidContentContext != null))
+    if (VersionUtils.b())
     {
       paramSurfaceHolder = this.jdField_b_of_type_AndroidContentContext;
-      Context localContext = this.jdField_b_of_type_AndroidContentContext;
-      ((AudioManager)paramSurfaceHolder.getSystemService("audio")).abandonAudioFocus(null);
+      if (paramSurfaceHolder != null) {
+        ((AudioManager)paramSurfaceHolder.getSystemService("audio")).abandonAudioFocus(null);
+      }
     }
     if (this.jdField_a_of_type_AndroidOsPowerManager$WakeLock != null)
     {
@@ -1148,8 +1362,9 @@ public class MediaPlayHelper
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#onVideoPrepared#, ");
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramTVK_IMediaPlayer != null) {
+      paramTVK_IMediaPlayer.sendEmptyMessage(1);
     }
   }
   
@@ -1158,14 +1373,15 @@ public class MediaPlayHelper
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_b_of_type_JavaLangString, 2, "#onVideoPreparing#, ");
     }
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    paramTVK_IMediaPlayer = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramTVK_IMediaPlayer != null) {
+      paramTVK_IMediaPlayer.sendEmptyMessage(0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.MediaPlayHelper
  * JD-Core Version:    0.7.0.1
  */

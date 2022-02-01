@@ -15,30 +15,33 @@ class MoveToGroupActivity$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = MoveToGroupActivity.a(this.a).getInputValue();
-    if (paramDialogInterface.equals("")) {
-      paramDialogInterface = this.a.getResources().getString(2131693100);
+    Object localObject = MoveToGroupActivity.a(this.a).getInputValue();
+    paramDialogInterface = (DialogInterface)localObject;
+    if (((String)localObject).equals("")) {
+      paramDialogInterface = this.a.getResources().getString(2131693060);
     }
-    for (;;)
+    paramInt = MoveToGroupActivity.a(this.a).size();
+    byte b = 1;
+    if (paramInt > 0) {
+      b = (byte)(((Groups)MoveToGroupActivity.a(this.a).get(MoveToGroupActivity.a(this.a).size() - 1)).seqid + 1);
+    }
+    localObject = this.a;
+    MoveToGroupActivity.b((MoveToGroupActivity)localObject, ((MoveToGroupActivity)localObject).a(b, paramDialogInterface));
+    if (QLog.isColorLevel())
     {
-      if (MoveToGroupActivity.a(this.a).size() > 0) {}
-      for (byte b = (byte)(((Groups)MoveToGroupActivity.a(this.a).get(MoveToGroupActivity.a(this.a).size() - 1)).seqid + 1);; b = 1)
-      {
-        MoveToGroupActivity.b(this.a, this.a.a(b, paramDialogInterface));
-        if (QLog.isColorLevel()) {
-          QLog.d("MoveToGroupActivity", 2, "AddFriendGroup needShowDialog = " + MoveToGroupActivity.a(this.a));
-        }
-        if (MoveToGroupActivity.a(this.a)) {
-          this.a.a(2131693134);
-        }
-        return;
-      }
+      paramDialogInterface = new StringBuilder();
+      paramDialogInterface.append("AddFriendGroup needShowDialog = ");
+      paramDialogInterface.append(MoveToGroupActivity.a(this.a));
+      QLog.d("MoveToGroupActivity", 2, paramDialogInterface.toString());
+    }
+    if (MoveToGroupActivity.a(this.a)) {
+      this.a.a(2131693094);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.MoveToGroupActivity.4
  * JD-Core Version:    0.7.0.1
  */

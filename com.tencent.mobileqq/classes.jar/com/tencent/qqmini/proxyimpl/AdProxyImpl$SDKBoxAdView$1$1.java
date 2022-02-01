@@ -1,6 +1,6 @@
 package com.tencent.qqmini.proxyimpl;
 
-import com.tencent.gdtad.api.adbox.GdtAdBoxListener;
+import com.tencent.gdtad.basics.adbox.GdtAdBoxListener;
 import com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy.IBoxADLisener;
 
 class AdProxyImpl$SDKBoxAdView$1$1
@@ -17,7 +17,7 @@ class AdProxyImpl$SDKBoxAdView$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBoxAdView.1.1
  * JD-Core Version:    0.7.0.1
  */

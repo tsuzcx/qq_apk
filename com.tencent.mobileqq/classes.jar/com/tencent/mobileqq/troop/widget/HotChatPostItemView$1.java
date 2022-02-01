@@ -19,9 +19,10 @@ final class HotChatPostItemView$1
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (this.d != 0)
+    int i = this.d;
+    if (i != 0)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(this.d);
+      this.jdField_a_of_type_AndroidWidgetImageView.setBackgroundResource(i);
       return;
     }
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(null);
@@ -43,7 +44,7 @@ final class HotChatPostItemView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.HotChatPostItemView.1
  * JD-Core Version:    0.7.0.1
  */

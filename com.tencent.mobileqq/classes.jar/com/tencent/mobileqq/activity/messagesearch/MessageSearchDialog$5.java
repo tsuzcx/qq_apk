@@ -21,23 +21,45 @@ class MessageSearchDialog$5
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog.jdField_a_of_type_ComTencentWidgetXListView.getAdapter() == this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchSearchHistoryAdapter) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, scrollState = " + paramInt + ", lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
-      }
-    } while ((this.b == 0) || (this.jdField_a_of_type_Int != this.b) || (paramInt != 0));
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onScrollStateChanged, reach bottom, lastItem = " + this.jdField_a_of_type_Int + ", totalItemCount = " + this.b);
     }
-    MessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      paramAbsListView = MessageSearchDialog.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onScrollStateChanged, scrollState = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", lastItem = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(", totalItemCount = ");
+      localStringBuilder.append(this.b);
+      QLog.i(paramAbsListView, 2, localStringBuilder.toString());
+    }
+    int i = this.b;
+    if (i == 0) {
+      return;
+    }
+    if ((this.jdField_a_of_type_Int == i) && (paramInt == 0))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramAbsListView = MessageSearchDialog.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onScrollStateChanged, reach bottom, lastItem = ");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(", totalItemCount = ");
+        localStringBuilder.append(this.b);
+        QLog.i(paramAbsListView, 2, localStringBuilder.toString());
+      }
+      MessageSearchDialog.a(this.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageSearchDialog);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog.5
  * JD-Core Version:    0.7.0.1
  */

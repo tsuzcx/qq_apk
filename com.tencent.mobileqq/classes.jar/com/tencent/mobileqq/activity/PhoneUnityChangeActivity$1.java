@@ -15,8 +15,10 @@ class PhoneUnityChangeActivity$1
   public void OnClick(View paramView, int paramInt)
   {
     this.a.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.a, 230, HardCodeUtil.a(2131708026), HardCodeUtil.a(2131708016), HardCodeUtil.a(2131708004), HardCodeUtil.a(2131708007), new PhoneUnityChangeActivity.1.1(this), new PhoneUnityChangeActivity.1.2(this));
+    if (this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
+    {
+      paramView = this.a;
+      paramView.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(paramView, 230, HardCodeUtil.a(2131708045), HardCodeUtil.a(2131708035), HardCodeUtil.a(2131708023), HardCodeUtil.a(2131708026), new PhoneUnityChangeActivity.1.1(this), new PhoneUnityChangeActivity.1.2(this));
     }
     if ((this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (!this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) && (!this.a.isFinishing())) {
       this.a.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -25,7 +27,7 @@ class PhoneUnityChangeActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityChangeActivity.1
  * JD-Core Version:    0.7.0.1
  */

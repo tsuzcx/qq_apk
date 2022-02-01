@@ -28,94 +28,114 @@ public final class pq
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    Object localObject2 = on.b(QStorageManager.getInstance(this.a).getConfigPath(this.c) + paramString);
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = on.b(QStorageManager.getInstance(this.a).getAssetsLoadPath(this.c) + paramString);
-    }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = on.b(QStorageManager.getInstance(this.a).getAssetsDynamicPath() + paramString);
-    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(QStorageManager.getInstance(this.a).getConfigPath(this.c));
+    ((StringBuilder)localObject1).append(paramString);
+    Object localObject2 = on.b(((StringBuilder)localObject1).toString());
     localObject1 = localObject2;
     if (localObject2 == null)
     {
-      if (gd.a == null) {
-        break label209;
-      }
-      localObject1 = gd.a(this.a, gd.a + paramString);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(QStorageManager.getInstance(this.a).getAssetsLoadPath(this.c));
+      ((StringBuilder)localObject1).append(paramString);
+      localObject1 = on.b(((StringBuilder)localObject1).toString());
     }
-    for (;;)
+    localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = gd.a(this.a, "tencentmap/mapsdk_vector/", paramString);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(QStorageManager.getInstance(this.a).getAssetsDynamicPath());
+      ((StringBuilder)localObject1).append(paramString);
+      localObject2 = on.b(((StringBuilder)localObject1).toString());
+    }
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      if (gd.a != null)
+      {
+        localObject1 = this.a;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(gd.a);
+        ((StringBuilder)localObject2).append(paramString);
+        localObject1 = gd.a((Context)localObject1, ((StringBuilder)localObject2).toString());
       }
-      localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = gd.a(this.a, paramString);
-      }
-      if (localObject1 == null) {
-        break;
-      }
-      paramString = BitmapFactory.decodeStream((InputStream)localObject1);
-      on.a((Closeable)localObject1);
-      return paramString;
-      label209:
-      localObject1 = localObject2;
-      if (gd.b != null) {
-        localObject1 = on.b(gd.b + paramString);
+      else
+      {
+        localObject1 = localObject2;
+        if (gd.b != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(gd.b);
+          ((StringBuilder)localObject1).append(paramString);
+          localObject1 = on.b(((StringBuilder)localObject1).toString());
+        }
       }
     }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = gd.a(this.a, "tencentmap/mapsdk_vector/", paramString);
+    }
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = gd.a(this.a, paramString);
+    }
+    if (localObject1 == null) {
+      return null;
+    }
+    paramString = BitmapFactory.decodeStream((InputStream)localObject1);
+    on.a((Closeable)localObject1);
+    return paramString;
   }
   
   public final void a(String paramString, IconImageInfo paramIconImageInfo)
   {
-    Bitmap localBitmap = oi.a(paramString);
-    if (localBitmap == null)
+    Object localObject = oi.a(paramString);
+    if (localObject == null)
     {
-      localBitmap = fy.b.a(paramString);
-      if (this.a != null) {
-        break label41;
-      }
+      localObject = fy.b.a(paramString);
     }
-    label41:
-    while (localBitmap != null)
+    else
     {
-      return;
-      paramIconImageInfo.bitmap = localBitmap;
+      paramIconImageInfo.bitmap = ((Bitmap)localObject);
       paramIconImageInfo.scale = this.b;
-      break;
     }
-    try
-    {
-      if ((paramString.startsWith("poi_icon")) || (paramString.startsWith("mapcfg_"))) {
-        localBitmap = a(nl.b(paramString) + "@2x.png");
-      }
-      if (localBitmap != null)
+    if (this.a == null) {
+      return;
+    }
+    if (localObject == null) {
+      try
       {
-        paramIconImageInfo.bitmap = localBitmap;
-        paramIconImageInfo.scale = 2.0F;
+        if ((paramString.startsWith("poi_icon")) || (paramString.startsWith("mapcfg_")))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(nl.b(paramString));
+          ((StringBuilder)localObject).append("@2x.png");
+          localObject = a(((StringBuilder)localObject).toString());
+        }
+        if (localObject != null)
+        {
+          paramIconImageInfo.bitmap = ((Bitmap)localObject);
+          paramIconImageInfo.scale = 2.0F;
+          return;
+        }
+        paramIconImageInfo.bitmap = a(paramString);
+        if (paramString.equals("compass.png"))
+        {
+          paramIconImageInfo.scale = this.b;
+          return;
+        }
+        paramIconImageInfo.scale = 1.0F;
         return;
       }
+      catch (OutOfMemoryError paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
-    catch (OutOfMemoryError paramString)
-    {
-      paramString.printStackTrace();
-      return;
-    }
-    paramIconImageInfo.bitmap = a(paramString);
-    if (paramString.equals("compass.png"))
-    {
-      paramIconImageInfo.scale = this.b;
-      return;
-    }
-    paramIconImageInfo.scale = 1.0F;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.pq
  * JD-Core Version:    0.7.0.1
  */

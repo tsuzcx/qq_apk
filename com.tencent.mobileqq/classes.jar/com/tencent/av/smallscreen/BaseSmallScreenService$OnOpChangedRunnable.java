@@ -5,9 +5,9 @@ import android.os.Handler;
 import com.tencent.av.VideoController;
 import com.tencent.av.business.manager.report.VideoNodeManager;
 import com.tencent.av.ui.ScreenRecordHelper;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class BaseSmallScreenService$OnOpChangedRunnable
@@ -17,21 +17,22 @@ class BaseSmallScreenService$OnOpChangedRunnable
   
   public void run()
   {
-    boolean bool2 = false;
-    int i;
-    int j;
     if (!this.this$0.d)
     {
-      WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = VideoController.a().b();
-      if ((localWatchTogetherMediaPlayCtrl == null) || (!localWatchTogetherMediaPlayCtrl.h())) {
-        break label303;
+      Object localObject = VideoController.a().b();
+      boolean bool2 = false;
+      int i;
+      if ((localObject != null) && (((WatchTogetherMediaPlayCtrl)localObject).h())) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      if ((Build.VERSION.SDK_INT < 21) || (!VideoController.a().a().c())) {
-        break label308;
+      int j;
+      if ((Build.VERSION.SDK_INT >= 21) && (VideoController.a().a().c())) {
+        j = 1;
+      } else {
+        j = 0;
       }
-      j = 1;
-      label58:
       boolean bool1 = bool2;
       if (SmallScreenUtils.c(((AppInterface)BaseSmallScreenService.a(this.this$0)).getApp()))
       {
@@ -46,53 +47,53 @@ class BaseSmallScreenService$OnOpChangedRunnable
       }
       if (bool1 != this.this$0.e)
       {
-        this.this$0.e = bool1;
-        this.this$0.c();
+        localObject = this.this$0;
+        ((BaseSmallScreenService)localObject).e = bool1;
+        ((BaseSmallScreenService)localObject).c();
       }
       bool1 = SmallScreenUtils.i();
       if (bool1 != this.this$0.b)
       {
-        this.this$0.b = bool1;
-        this.this$0.b();
+        localObject = this.this$0;
+        ((BaseSmallScreenService)localObject).b = bool1;
+        ((BaseSmallScreenService)localObject).b();
       }
       bool1 = SmallScreenUtils.b(((AppInterface)BaseSmallScreenService.b(this.this$0)).getApp());
       if (bool1 != this.this$0.c)
       {
-        this.this$0.c = bool1;
-        this.this$0.a();
+        localObject = this.this$0;
+        ((BaseSmallScreenService)localObject).c = bool1;
+        ((BaseSmallScreenService)localObject).a();
       }
       bool1 = this.this$0.a();
       if (bool1 != this.this$0.f)
       {
-        l = AudioHelper.b();
-        if (QLog.isDevelopLevel()) {
-          QLog.w("BaseSmallScreenService", 1, "OnOpChangedRunnable, AppOnForegroundChanged, seq[" + l + "]");
+        long l = AudioHelper.b();
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("OnOpChangedRunnable, AppOnForegroundChanged, seq[");
+          ((StringBuilder)localObject).append(l);
+          ((StringBuilder)localObject).append("]");
+          QLog.w("BaseSmallScreenService", 1, ((StringBuilder)localObject).toString());
         }
-        this.this$0.f = bool1;
-        this.this$0.a(l);
-        if (!bool1) {
-          break label313;
+        localObject = this.this$0;
+        ((BaseSmallScreenService)localObject).f = bool1;
+        ((BaseSmallScreenService)localObject).a(l);
+        if (bool1) {
+          l = 1L;
+        } else {
+          l = 2L;
         }
+        VideoNodeManager.a(20, l);
       }
-    }
-    label303:
-    label308:
-    label313:
-    for (long l = 1L;; l = 2L)
-    {
-      VideoNodeManager.a(20, l);
       this.this$0.a().postDelayed(this, 1000L);
-      return;
-      i = 0;
-      break;
-      j = 0;
-      break label58;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.BaseSmallScreenService.OnOpChangedRunnable
  * JD-Core Version:    0.7.0.1
  */

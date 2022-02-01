@@ -20,7 +20,7 @@ class TroopAlbumPlugin$2$1$2
     paramDialogInterface.dismiss();
     paramDialogInterface = BaseApplicationImpl.sApplication.getRuntime().getAccount();
     Intent localIntent = new Intent();
-    String str = TroopAlbumPlugin.f(this.a.a.a).getAttachedActivity().getResources().getString(2131717528);
+    String str = TroopAlbumPlugin.f(this.a.a.a).getAttachedActivity().getResources().getString(2131717187);
     QzonePluginProxyActivity.setActivityNameToIntent(localIntent, "com.qzone.module.vipcomponent.ui.DiamondYellowOpenActivity");
     localIntent.putExtra("aid", "jhan_plxz");
     localIntent.putExtra("success_tips", str);
@@ -30,7 +30,7 @@ class TroopAlbumPlugin$2$1$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TroopAlbumPlugin.2.1.2
  * JD-Core Version:    0.7.0.1
  */

@@ -20,11 +20,6 @@ public abstract class R2LDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
     this.jdField_a_of_type_ArrayOfFloat = null;
   }
   
-  public float a()
-  {
-    return -this.f;
-  }
-  
   protected float a(long paramLong)
   {
     long l = this.jdField_a_of_type_Long;
@@ -35,7 +30,12 @@ public abstract class R2LDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   {
     if (!a(paramLong1))
     {
-      Logger.c("BaseDanmaku", "onLayout, Y = " + paramFloat2 + ", danmaku = " + toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLayout, Y = ");
+      localStringBuilder.append(paramFloat2);
+      localStringBuilder.append(", danmaku = ");
+      localStringBuilder.append(toString());
+      Logger.c("BaseDanmaku", localStringBuilder.toString());
       this.d = a(paramLong2);
       if (!c())
       {
@@ -62,15 +62,11 @@ public abstract class R2LDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
       this.jdField_a_of_type_ArrayOfFloat = new float[4];
     }
     this.jdField_a_of_type_ArrayOfFloat[0] = (f1 - DanmakuContext.a().b());
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
-    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float + this.c);
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    arrayOfFloat[1] = this.e;
+    arrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float + this.c);
     this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
     return this.jdField_a_of_type_ArrayOfFloat;
-  }
-  
-  public float b()
-  {
-    return this.d;
   }
   
   public float[] b(long paramLong)
@@ -82,24 +78,35 @@ public abstract class R2LDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
     if (this.jdField_a_of_type_ArrayOfFloat == null) {
       this.jdField_a_of_type_ArrayOfFloat = new float[4];
     }
-    this.jdField_a_of_type_ArrayOfFloat[0] = f1;
-    this.jdField_a_of_type_ArrayOfFloat[1] = this.e;
-    this.jdField_a_of_type_ArrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float);
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    arrayOfFloat[0] = f1;
+    arrayOfFloat[1] = this.e;
+    arrayOfFloat[2] = (f1 + this.jdField_a_of_type_Float);
     this.jdField_a_of_type_ArrayOfFloat[3] = (this.e + this.b);
     return this.jdField_a_of_type_ArrayOfFloat;
   }
   
   public float c()
   {
-    return this.e;
+    return -this.f;
   }
   
   public float d()
   {
-    return this.d + this.jdField_a_of_type_Float;
+    return this.d;
   }
   
   public float e()
+  {
+    return this.e;
+  }
+  
+  public float f()
+  {
+    return this.d + this.jdField_a_of_type_Float;
+  }
+  
+  public float g()
   {
     return this.e + this.b;
   }
@@ -112,17 +119,22 @@ public abstract class R2LDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   
   public void g(float paramFloat)
   {
-    this.d = paramFloat;
+    this.f = paramFloat;
   }
   
   public void h(float paramFloat)
+  {
+    this.d = paramFloat;
+  }
+  
+  public void i(float paramFloat)
   {
     this.e = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.data.R2LDanmaku
  * JD-Core Version:    0.7.0.1
  */

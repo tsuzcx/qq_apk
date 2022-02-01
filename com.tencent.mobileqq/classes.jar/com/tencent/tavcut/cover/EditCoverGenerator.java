@@ -37,70 +37,82 @@ public class EditCoverGenerator
   
   private CGSize calculateRenderSize()
   {
-    CGSize localCGSize3 = new CGSize(this.mCoverWidth * 1.0F, this.mCoverHeight * 1.0F);
-    if ((this.mTavSource == null) || (this.mTavSource.getVideoComposition() == null) || (FloatUtils.isEquals(this.mCoverWidth, 0.0F)) || (FloatUtils.isEquals(this.mCoverHeight, 0.0F))) {
-      return localCGSize3;
-    }
-    CGSize localCGSize2 = this.mTavSource.getVideoComposition().getRenderSize().clone();
-    CGSize localCGSize1;
-    if ((localCGSize2 != null) && (!FloatUtils.isEquals(localCGSize2.width, 0.0F)))
+    CGSize localCGSize2 = new CGSize(this.mCoverWidth * 1.0F, this.mCoverHeight * 1.0F);
+    Object localObject = this.mTavSource;
+    if ((localObject != null) && (((TAVSource)localObject).getVideoComposition() != null) && (!FloatUtils.isEquals(this.mCoverWidth, 0.0F)))
     {
-      localCGSize1 = localCGSize2;
-      if (!FloatUtils.isEquals(localCGSize2.height, 0.0F)) {}
-    }
-    else
-    {
-      if ((this.mTavSource.getAsset() == null) || (this.mTavSource.getAsset().getNaturalSize() == null)) {
-        return localCGSize3;
+      if (FloatUtils.isEquals(this.mCoverHeight, 0.0F)) {
+        return localCGSize2;
       }
-      localCGSize1 = this.mTavSource.getAsset().getNaturalSize().clone();
+      CGSize localCGSize1 = this.mTavSource.getVideoComposition().getRenderSize().clone();
+      if ((localCGSize1 != null) && (!FloatUtils.isEquals(localCGSize1.width, 0.0F)))
+      {
+        localObject = localCGSize1;
+        if (!FloatUtils.isEquals(localCGSize1.height, 0.0F)) {}
+      }
+      else
+      {
+        if (this.mTavSource.getAsset() == null) {
+          break label204;
+        }
+        if (this.mTavSource.getAsset().getNaturalSize() == null) {
+          return localCGSize2;
+        }
+        localObject = this.mTavSource.getAsset().getNaturalSize().clone();
+      }
+      float f = ((CGSize)localObject).width / ((CGSize)localObject).height;
+      if (f > 1.0F)
+      {
+        ((CGSize)localObject).height = (this.mCoverHeight * 1.0F);
+        ((CGSize)localObject).width = (((CGSize)localObject).height * f);
+        return localObject;
+      }
+      ((CGSize)localObject).width = (this.mCoverWidth * 1.0F);
+      ((CGSize)localObject).height = (((CGSize)localObject).width / f);
+      return localObject;
     }
-    float f = localCGSize1.width / localCGSize1.height;
-    if (f > 1.0F)
-    {
-      localCGSize1.height = (this.mCoverHeight * 1.0F);
-      localCGSize1.width = (f * localCGSize1.height);
-      return localCGSize1;
-    }
-    localCGSize1.width = (this.mCoverWidth * 1.0F);
-    localCGSize1.height = (localCGSize1.width / f);
-    return localCGSize1;
+    label204:
+    return localCGSize2;
   }
   
   private void initParams()
   {
-    int i = 0;
-    if ((this.mGenerateTimeList == null) || (this.mGenerateTimeList.isEmpty())) {
-      return;
-    }
-    this.mPaused = false;
-    Logger.d("EditCoverGenerator", "initParams: generateTimeList is  " + this.mGenerateTimeList);
-    this.mImageGenerator = new TAVSourceImageGenerator(this.mTavSource, calculateRenderSize());
-    this.mImageGenerator.getAssetImageGenerator().setApertureMode(AssetImageGenerator.ApertureMode.aspectFit);
-    this.mCoverTaskMap = new ConcurrentHashMap(16);
-    this.mCoverTaskQueue = new PriorityBlockingQueue();
-    if (i < this.mGenerateTimeList.size())
+    Object localObject = this.mGenerateTimeList;
+    if (localObject != null)
     {
-      Object localObject = (CMTime)this.mGenerateTimeList.get(i);
-      if (localObject == null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        long l = System.currentTimeMillis();
-        localObject = new EditCoverGenerator.CoverTask(this, i + l, (CMTime)localObject, i);
-        try
-        {
-          this.mCoverTaskQueue.put(localObject);
-        }
-        catch (InterruptedException localInterruptedException)
-        {
-          localInterruptedException.printStackTrace();
-        }
+      if (((List)localObject).isEmpty()) {
+        return;
       }
+      int i = 0;
+      this.mPaused = false;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("initParams: generateTimeList is  ");
+      ((StringBuilder)localObject).append(this.mGenerateTimeList);
+      Logger.d("EditCoverGenerator", ((StringBuilder)localObject).toString());
+      this.mImageGenerator = new TAVSourceImageGenerator(this.mTavSource, calculateRenderSize());
+      this.mImageGenerator.getAssetImageGenerator().setApertureMode(AssetImageGenerator.ApertureMode.aspectFit);
+      this.mCoverTaskMap = new ConcurrentHashMap(16);
+      this.mCoverTaskQueue = new PriorityBlockingQueue();
+      while (i < this.mGenerateTimeList.size())
+      {
+        localObject = (CMTime)this.mGenerateTimeList.get(i);
+        if (localObject != null)
+        {
+          localObject = new EditCoverGenerator.CoverTask(this, System.currentTimeMillis() + i, (CMTime)localObject, i);
+          try
+          {
+            this.mCoverTaskQueue.put(localObject);
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            localInterruptedException.printStackTrace();
+          }
+        }
+        i += 1;
+      }
+      this.mExecutors = Executors.newSingleThreadExecutor();
+      this.mExecutors.submit(new EditCoverGenerator.CoverRunnable(this, null));
     }
-    this.mExecutors = Executors.newSingleThreadExecutor();
-    this.mExecutors.submit(new EditCoverGenerator.CoverRunnable(this, null));
   }
   
   private void realRelease()
@@ -115,9 +127,10 @@ public class EditCoverGenerator
   private void releaseCache()
   {
     Logger.d("EditCoverGenerator", "releaseCache: ");
-    if (this.mCoverCache != null)
+    CoverCache localCoverCache = this.mCoverCache;
+    if (localCoverCache != null)
     {
-      this.mCoverCache.release();
+      localCoverCache.release();
       this.mCoverCache = null;
     }
   }
@@ -125,9 +138,10 @@ public class EditCoverGenerator
   private void releaseExecutors()
   {
     Logger.d("EditCoverGenerator", "releaseExecutors: ");
-    if (this.mExecutors != null)
+    ExecutorService localExecutorService = this.mExecutors;
+    if (localExecutorService != null)
     {
-      this.mExecutors.shutdownNow();
+      localExecutorService.shutdownNow();
       this.mExecutors = null;
     }
   }
@@ -135,9 +149,10 @@ public class EditCoverGenerator
   private void releaseImageGenerator()
   {
     Logger.d("EditCoverGenerator", "releaseImageGenerator: ");
-    if (this.mImageGenerator != null)
+    TAVSourceImageGenerator localTAVSourceImageGenerator = this.mImageGenerator;
+    if (localTAVSourceImageGenerator != null)
     {
-      if (this.mImageGenerator.getAssetImageGenerator() != null) {
+      if (localTAVSourceImageGenerator.getAssetImageGenerator() != null) {
         this.mImageGenerator.getAssetImageGenerator().release();
       }
       this.mImageGenerator = null;
@@ -147,24 +162,27 @@ public class EditCoverGenerator
   private void releaseQueue()
   {
     Logger.d("EditCoverGenerator", "releaseQueue: ");
-    if (this.mCoverTaskMap != null)
+    Object localObject = this.mCoverTaskMap;
+    if (localObject != null)
     {
-      this.mCoverTaskMap.clear();
+      ((ConcurrentHashMap)localObject).clear();
       this.mCoverTaskMap = null;
     }
-    if (this.mCoverTaskQueue != null)
+    localObject = this.mCoverTaskQueue;
+    if (localObject != null)
     {
-      this.mCoverTaskQueue.clear();
+      ((BlockingQueue)localObject).clear();
       this.mCoverTaskQueue = null;
     }
   }
   
   public void generateCoverByIndex(int paramInt, CMTime paramCMTime)
   {
-    if (this.mCoverTaskMap == null) {
+    ConcurrentHashMap localConcurrentHashMap = this.mCoverTaskMap;
+    if (localConcurrentHashMap == null) {
       return;
     }
-    if ((this.mCoverTaskMap.containsKey(Integer.valueOf(paramInt))) && (!EditCoverGenerator.CoverTask.access$100((EditCoverGenerator.CoverTask)this.mCoverTaskMap.get(Integer.valueOf(paramInt)))))
+    if ((localConcurrentHashMap.containsKey(Integer.valueOf(paramInt))) && (!EditCoverGenerator.CoverTask.access$100((EditCoverGenerator.CoverTask)this.mCoverTaskMap.get(Integer.valueOf(paramInt)))))
     {
       EditCoverGenerator.CoverTask.access$202((EditCoverGenerator.CoverTask)this.mCoverTaskMap.get(Integer.valueOf(paramInt)), paramCMTime);
       return;
@@ -199,21 +217,27 @@ public class EditCoverGenerator
   
   public void pause()
   {
-    if ((this.mCoverTaskMap == null) || (this.mCoverTaskMap.isEmpty())) {}
-    do
+    Object localObject = this.mCoverTaskMap;
+    if (localObject != null)
     {
-      return;
+      if (((ConcurrentHashMap)localObject).isEmpty()) {
+        return;
+      }
       Logger.d("EditCoverGenerator", "pause: ");
       this.mPaused = true;
-    } while ((this.mExecutors == null) || (this.mExecutors.isShutdown()));
-    this.mExecutors.submit(new EditCoverGenerator.CoverRunnable(this, null));
+      localObject = this.mExecutors;
+      if ((localObject != null) && (!((ExecutorService)localObject).isShutdown())) {
+        this.mExecutors.submit(new EditCoverGenerator.CoverRunnable(this, null));
+      }
+    }
   }
   
   public void release()
   {
     Logger.d("EditCoverGenerator", "release: ");
     this.mReleased = true;
-    if ((this.mExecutors != null) && (!this.mExecutors.isShutdown()))
+    ExecutorService localExecutorService = this.mExecutors;
+    if ((localExecutorService != null) && (!localExecutorService.isShutdown()))
     {
       this.mExecutors.submit(new EditCoverGenerator.CoverRunnable(this, null));
       return;
@@ -224,20 +248,24 @@ public class EditCoverGenerator
   
   public void resume()
   {
-    if ((this.mCoverTaskMap == null) || (this.mCoverTaskMap.isEmpty())) {
-      return;
-    }
-    this.mPaused = false;
-    Logger.d("EditCoverGenerator", "resume: ");
-    if (this.mImageGenerator == null)
+    ConcurrentHashMap localConcurrentHashMap = this.mCoverTaskMap;
+    if (localConcurrentHashMap != null)
     {
-      this.mImageGenerator = new TAVSourceImageGenerator(this.mTavSource, calculateRenderSize());
-      this.mImageGenerator.getAssetImageGenerator().setApertureMode(AssetImageGenerator.ApertureMode.scaleToFit);
+      if (localConcurrentHashMap.isEmpty()) {
+        return;
+      }
+      this.mPaused = false;
+      Logger.d("EditCoverGenerator", "resume: ");
+      if (this.mImageGenerator == null)
+      {
+        this.mImageGenerator = new TAVSourceImageGenerator(this.mTavSource, calculateRenderSize());
+        this.mImageGenerator.getAssetImageGenerator().setApertureMode(AssetImageGenerator.ApertureMode.scaleToFit);
+      }
+      if (this.mExecutors == null) {
+        this.mExecutors = Executors.newSingleThreadExecutor();
+      }
+      this.mExecutors.submit(new EditCoverGenerator.CoverRunnable(this, null));
     }
-    if (this.mExecutors == null) {
-      this.mExecutors = Executors.newSingleThreadExecutor();
-    }
-    this.mExecutors.submit(new EditCoverGenerator.CoverRunnable(this, null));
   }
   
   public void setCoverCache(CoverCache paramCoverCache)
@@ -249,7 +277,7 @@ public class EditCoverGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.cover.EditCoverGenerator
  * JD-Core Version:    0.7.0.1
  */

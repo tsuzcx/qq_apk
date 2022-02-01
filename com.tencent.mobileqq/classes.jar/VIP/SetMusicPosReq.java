@@ -34,18 +34,20 @@ public final class SetMusicPosReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iUin, 0);
-    if (this.sSongId != null) {
-      paramJceOutputStream.write(this.sSongId, 1);
+    Object localObject = this.sSongId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.iPos, 2);
-    if (this.stSource != null) {
-      paramJceOutputStream.write(this.stSource, 3);
+    localObject = this.stSource;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.SetMusicPosReq
  * JD-Core Version:    0.7.0.1
  */

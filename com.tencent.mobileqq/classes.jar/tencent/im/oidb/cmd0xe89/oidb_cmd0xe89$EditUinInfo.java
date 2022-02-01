@@ -24,7 +24,7 @@ public final class oidb_cmd0xe89$EditUinInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe89.oidb_cmd0xe89.EditUinInfo
  * JD-Core Version:    0.7.0.1
  */

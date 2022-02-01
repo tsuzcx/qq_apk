@@ -19,55 +19,49 @@ public class StructMsgItemLongMsgHolder
   {
     paramOnLongClickAndTouchListener = paramContext.getResources();
     int i;
-    label37:
-    Object localObject;
-    if (paramBundle.getInt("longMsgHolderType", -1) == 1)
-    {
+    if (paramBundle.getInt("longMsgHolderType", -1) == 1) {
       i = 1;
-      if ((paramView == null) || (!(paramView instanceof RelativeLayout))) {
-        break label237;
-      }
-      ((RelativeLayout)paramView).removeAllViews();
-      paramView = (RelativeLayout)paramView;
-      paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, AIOUtils.a(75.0F, paramOnLongClickAndTouchListener)));
-      paramBundle = new RelativeLayout(paramContext);
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
-      localObject = new ImageView(paramContext);
-      paramContext = new TextView(paramContext);
-      if (i == 0) {
-        break label249;
-      }
-      ((ImageView)localObject).setImageResource(2130841857);
-      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131696410));
-    }
-    for (;;)
-    {
-      ((ImageView)localObject).setId(2131378569);
-      ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(AIOUtils.a(23.5F, paramOnLongClickAndTouchListener), AIOUtils.a(22.5F, paramOnLongClickAndTouchListener)));
-      paramBundle.addView((View)localObject);
-      paramContext.setTextSize(2, 14.0F);
-      paramContext.setTextColor(Color.parseColor("#777777"));
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131378569);
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.a(7.5F, paramOnLongClickAndTouchListener);
-      paramBundle.addView(paramContext, (ViewGroup.LayoutParams)localObject);
-      return paramView;
+    } else {
       i = 0;
-      break;
-      label237:
-      paramView = new RelativeLayout(paramContext);
-      break label37;
-      label249:
-      ((ImageView)localObject).setImageResource(2130841856);
-      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131696409));
     }
+    if ((paramView != null) && ((paramView instanceof RelativeLayout))) {
+      ((RelativeLayout)paramView).removeAllViews();
+    } else {
+      paramView = new RelativeLayout(paramContext);
+    }
+    paramView = (RelativeLayout)paramView;
+    paramView.setLayoutParams(new RelativeLayout.LayoutParams(-1, AIOUtils.b(75.0F, paramOnLongClickAndTouchListener)));
+    paramBundle = new RelativeLayout(paramContext);
+    Object localObject = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject).addRule(13);
+    paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject);
+    localObject = new ImageView(paramContext);
+    paramContext = new TextView(paramContext);
+    if (i != 0)
+    {
+      ((ImageView)localObject).setImageResource(2130841746);
+      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131696429));
+    }
+    else
+    {
+      ((ImageView)localObject).setImageResource(2130841745);
+      paramContext.setText(paramOnLongClickAndTouchListener.getString(2131696428));
+    }
+    ((ImageView)localObject).setId(2131377980);
+    ((ImageView)localObject).setLayoutParams(new RelativeLayout.LayoutParams(AIOUtils.b(23.5F, paramOnLongClickAndTouchListener), AIOUtils.b(22.5F, paramOnLongClickAndTouchListener)));
+    paramBundle.addView((View)localObject);
+    paramContext.setTextSize(2, 14.0F);
+    paramContext.setTextColor(Color.parseColor("#777777"));
+    localObject = new RelativeLayout.LayoutParams(-2, -2);
+    ((RelativeLayout.LayoutParams)localObject).addRule(1, 2131377980);
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.b(7.5F, paramOnLongClickAndTouchListener);
+    paramBundle.addView(paramContext, (ViewGroup.LayoutParams)localObject);
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLongMsgHolder
  * JD-Core Version:    0.7.0.1
  */

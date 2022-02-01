@@ -12,22 +12,43 @@ public class DiscussHiddenFilter
 {
   public String a(RecentUser paramRecentUser, int paramInt)
   {
-    return "hidden_RecentUser " + paramInt + "," + paramRecentUser.uin + ";";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("hidden_RecentUser ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramRecentUser.uin);
+    localStringBuilder.append(";");
+    return localStringBuilder.toString();
   }
   
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, RecentUser paramRecentUser)
   {
-    if ((paramRecentUser.getType() == 3000) && (paramBaseQQAppInterface != null))
+    int i = paramRecentUser.getType();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i == 3000)
     {
-      paramBaseQQAppInterface = ((DiscussionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramRecentUser.uin);
-      return (paramBaseQQAppInterface == null) || (paramBaseQQAppInterface.isUIControlFlag_Hidden_RecentUser()) || (paramBaseQQAppInterface.isHidden());
+      bool1 = bool2;
+      if (paramBaseQQAppInterface != null)
+      {
+        paramBaseQQAppInterface = ((DiscussionManager)paramBaseQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER)).a(paramRecentUser.uin);
+        if ((paramBaseQQAppInterface != null) && (!paramBaseQQAppInterface.isUIControlFlag_Hidden_RecentUser()))
+        {
+          bool1 = bool2;
+          if (!paramBaseQQAppInterface.isHidden()) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
     }
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.DiscussHiddenFilter
  * JD-Core Version:    0.7.0.1
  */

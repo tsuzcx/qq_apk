@@ -9,9 +9,9 @@ import android.content.pm.PackageManager;
 import android.os.Build.VERSION;
 import android.preference.PreferenceManager;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
-import com.tencent.mobileqq.troop.aioapp.GroupUtil;
+import com.tencent.mobileqq.troop.troopapps.GroupUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.util.Random;
 import java.util.concurrent.TimeUnit;
 
@@ -26,12 +26,13 @@ public class BackgroundProbeManager
   
   private BackgroundProbeManager()
   {
-    if (new Random(System.currentTimeMillis()).nextInt(100000) == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      c = bool;
-      return;
+    boolean bool;
+    if (new Random(System.currentTimeMillis()).nextInt(100000) == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    c = bool;
   }
   
   private static int a()
@@ -46,7 +47,11 @@ public class BackgroundProbeManager
         return i;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label28:
+      break label28;
+    }
     return 0;
   }
   
@@ -57,12 +62,16 @@ public class BackgroundProbeManager
   
   public static void a()
   {
-    BackgroundProbeManager localBackgroundProbeManager = a();
-    BackgroundProbeManager.1 local1 = new BackgroundProbeManager.1(localBackgroundProbeManager);
-    BackgroundProbeManager.2 local2 = new BackgroundProbeManager.2(localBackgroundProbeManager);
-    boolean bool = localBackgroundProbeManager.a();
-    if (QLog.isColorLevel()) {
-      QLog.i("BackgroundProbeManager", 2, "onRunningBackground: invoked.  probeEnabled: " + bool);
+    Object localObject = a();
+    BackgroundProbeManager.1 local1 = new BackgroundProbeManager.1((BackgroundProbeManager)localObject);
+    BackgroundProbeManager.2 local2 = new BackgroundProbeManager.2((BackgroundProbeManager)localObject);
+    boolean bool = ((BackgroundProbeManager)localObject).a();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onRunningBackground: invoked.  probeEnabled: ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.i("BackgroundProbeManager", 2, ((StringBuilder)localObject).toString());
     }
     if (bool) {
       GroupUtil.a(local1, 180000L);
@@ -72,73 +81,79 @@ public class BackgroundProbeManager
   
   public static void a(Intent paramIntent)
   {
-    if (new Random(System.currentTimeMillis()).nextInt(400) == 0) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if (new Random(System.currentTimeMillis()).nextInt(400) == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((c) && (b()) && (!jdField_b_of_type_Boolean) && (i != 0) && (paramIntent.getComponent() == null))
     {
-      if ((c) && (b()) && (!jdField_b_of_type_Boolean) && (i != 0) && (paramIntent.getComponent() == null))
+      BackgroundException localBackgroundException = new BackgroundException("Implicit Broadcast");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("intent: ");
+      localStringBuilder.append(paramIntent.toString());
+      CaughtExceptionReport.a(localBackgroundException, localStringBuilder.toString());
+      jdField_b_of_type_Boolean = true;
+      if (QLog.isColorLevel())
       {
-        BackgroundException localBackgroundException = new BackgroundException("Implicit Broadcast");
-        CaughtExceptionReport.a(localBackgroundException, "intent: " + paramIntent.toString());
-        jdField_b_of_type_Boolean = true;
-        if (QLog.isColorLevel()) {
-          QLog.i("BackgroundProbeManager", 2, "reportImplicitBroadcast: invoked.  exception: " + localBackgroundException);
-        }
+        paramIntent = new StringBuilder();
+        paramIntent.append("reportImplicitBroadcast: invoked.  exception: ");
+        paramIntent.append(localBackgroundException);
+        QLog.i("BackgroundProbeManager", 2, paramIntent.toString());
       }
-      return;
     }
   }
   
   private boolean a()
   {
-    if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long) {}
-    for (int i = 1; (b()) && (i != 0); i = 0) {
-      return true;
+    int i;
+    if (System.currentTimeMillis() - this.jdField_b_of_type_Long > jdField_a_of_type_Long) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    return (b()) && (i != 0);
   }
   
   private void b()
   {
     try
     {
-      if (!jdField_a_of_type_Boolean)
-      {
-        Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
-        this.jdField_a_of_type_AndroidContentContext.startService(localIntent);
-        this.jdField_b_of_type_Long = System.currentTimeMillis();
-        jdField_a_of_type_Boolean = true;
-        PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit().putLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", this.jdField_b_of_type_Long).apply();
+      if (jdField_a_of_type_Boolean) {
+        break label81;
       }
+      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
+      this.jdField_a_of_type_AndroidContentContext.startService(localIntent);
+      this.jdField_b_of_type_Long = System.currentTimeMillis();
+      jdField_a_of_type_Boolean = true;
+      PreferenceManager.getDefaultSharedPreferences(this.jdField_a_of_type_AndroidContentContext).edit().putLong("KEY_LAST_PROBE_SERVICE_START_TIME_MS", this.jdField_b_of_type_Long).apply();
       return;
     }
     catch (Throwable localThrowable)
     {
-      CaughtExceptionReport.a(new BackgroundException("startProbeService failed"));
+      label69:
+      label81:
+      break label69;
     }
+    CaughtExceptionReport.a(new BackgroundException("startProbeService failed"));
   }
   
   private static boolean b()
   {
     int i;
-    if (a() >= 26)
-    {
+    if (a() >= 26) {
       i = 1;
-      if (Build.VERSION.SDK_INT < 24) {
-        break label35;
-      }
-    }
-    label35:
-    for (int j = 1;; j = 0)
-    {
-      if ((i == 0) || (j == 0)) {
-        break label40;
-      }
-      return true;
+    } else {
       i = 0;
-      break;
     }
-    label40:
-    return false;
+    int j;
+    if (Build.VERSION.SDK_INT >= 24) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    return (i != 0) && (j != 0);
   }
   
   private void c()
@@ -149,19 +164,20 @@ public class BackgroundProbeManager
       {
         Intent localIntent = new Intent(this.jdField_a_of_type_AndroidContentContext, BackgroundService.class);
         this.jdField_a_of_type_AndroidContentContext.stopService(localIntent);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("BackgroundProbeManager", 2, "stopProbeService: failed. ", localThrowable);
+      if (QLog.isColorLevel()) {
+        QLog.e("BackgroundProbeManager", 2, "stopProbeService: failed. ", localThrowable);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bgprobe.BackgroundProbeManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,18 +14,20 @@ public class BannerListenerServiceImpl
   
   public void addBannerListener(BannerListener paramBannerListener)
   {
-    if (paramBannerListener == null) {}
-    for (;;)
-    {
+    if (paramBannerListener == null) {
       return;
-      try
-      {
-        if (this.bannerListenerList.contains(paramBannerListener)) {
-          continue;
-        }
+    }
+    try
+    {
+      if (!this.bannerListenerList.contains(paramBannerListener)) {
         this.bannerListenerList.add(paramBannerListener);
       }
-      finally {}
+      return;
+    }
+    finally
+    {
+      paramBannerListener = finally;
+      throw paramBannerListener;
     }
   }
   
@@ -37,8 +39,13 @@ public class BannerListenerServiceImpl
       while (localIterator.hasNext()) {
         ((BannerListener)localIterator.next()).b(paramInt);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void notifyBannerShow(int paramInt)
@@ -49,8 +56,13 @@ public class BannerListenerServiceImpl
       while (localIterator.hasNext()) {
         ((BannerListener)localIterator.next()).a(paramInt);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
@@ -79,7 +91,7 @@ public class BannerListenerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.banner.impl.BannerListenerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

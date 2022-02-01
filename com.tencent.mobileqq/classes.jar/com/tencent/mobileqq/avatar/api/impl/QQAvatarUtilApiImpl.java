@@ -31,48 +31,50 @@ public class QQAvatarUtilApiImpl
   public String get1080QQHeadDownLoadUrl(String paramString, byte paramByte)
   {
     String str = BaseInnerDns.getInstance().reqDns("q.qlogo.cn", 1003);
-    if (QLog.isColorLevel()) {
-      QLog.i("InnerDns", 2, "get1080QQHeadDownLoadUrl.choosedIp=" + str);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get1080QQHeadDownLoadUrl.choosedIp=");
+      localStringBuilder.append(str);
+      QLog.i("InnerDns", 2, localStringBuilder.toString());
     }
     StringBuilder localStringBuilder = new StringBuilder("https://");
-    if (!TextUtils.isEmpty(str))
-    {
+    if (!TextUtils.isEmpty(str)) {
       localStringBuilder.append(str);
-      int i = paramString.indexOf("/", 8);
-      str = paramString;
-      if (i > 8)
-      {
-        localStringBuilder.append(paramString.substring(i));
-        str = localStringBuilder.toString();
-      }
-      if ((paramByte & 0x20) == 0) {
-        break label148;
-      }
-      paramByte = 0;
-    }
-    for (;;)
-    {
-      return str + paramByte;
+    } else {
       localStringBuilder.append("q.qlogo.cn");
-      break;
-      label148:
-      if ((paramByte & 0x10) != 0) {
-        paramByte = 640;
-      } else if ((paramByte & 0x8) != 0) {
-        paramByte = 140;
-      } else if ((paramByte & 0x4) != 0) {
-        paramByte = 100;
-      } else {
-        paramByte = 40;
-      }
     }
+    int i = paramString.indexOf("/", 8);
+    str = paramString;
+    if (i > 8)
+    {
+      localStringBuilder.append(paramString.substring(i));
+      str = localStringBuilder.toString();
+    }
+    if ((paramByte & 0x20) != 0) {
+      paramByte = 0;
+    } else if ((paramByte & 0x10) != 0) {
+      paramByte = 640;
+    } else if ((paramByte & 0x8) != 0) {
+      paramByte = 140;
+    } else if ((paramByte & 0x4) != 0) {
+      paramByte = 100;
+    } else {
+      paramByte = 40;
+    }
+    paramString = new StringBuilder();
+    paramString.append(str);
+    paramString.append(paramByte);
+    return paramString.toString();
   }
   
   public Bitmap getBitmapWithCache(String paramString, int paramInt)
   {
-    Bitmap localBitmap1 = null;
+    Bitmap localBitmap1;
     if (GlobalImageCache.a != null) {
       localBitmap1 = (Bitmap)GlobalImageCache.a.get(paramString);
+    } else {
+      localBitmap1 = null;
     }
     Bitmap localBitmap2 = localBitmap1;
     if (localBitmap1 == null) {
@@ -81,15 +83,19 @@ public class QQAvatarUtilApiImpl
     if ((localBitmap2 != null) && (GlobalImageCache.a != null)) {
       GlobalImageCache.a.put(paramString, localBitmap2);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQAvatarUtilApiImpl", 2, "getBitmapWithCache, bitmap=" + localBitmap2);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("getBitmapWithCache, bitmap=");
+      paramString.append(localBitmap2);
+      QLog.d("QQAvatarUtilApiImpl", 2, paramString.toString());
     }
     return localBitmap2;
   }
   
   public Drawable getDefaultDiscusionFaceDrawable()
   {
-    return BaseImageUtil.b();
+    return BaseImageUtil.d();
   }
   
   public Drawable getDefaultFaceDrawable(boolean paramBoolean)
@@ -99,7 +105,7 @@ public class QQAvatarUtilApiImpl
   
   public Drawable getDefaultTroopFaceDrawable()
   {
-    return BaseImageUtil.a();
+    return BaseImageUtil.c();
   }
   
   public Bitmap getDrawableBitmap(Drawable paramDrawable)
@@ -109,61 +115,54 @@ public class QQAvatarUtilApiImpl
   
   public String getIp(String paramString, boolean paramBoolean)
   {
-    int i = 28;
     boolean bool = HeadDpcCfg.a().a();
     int j = NetConnInfoCenter.getActiveNetIpFamily(true);
+    int i = 28;
     Object localObject;
     if (j == 3)
     {
       localObject = BaseInnerDns.getInstance();
-      if (bool)
-      {
+      if (bool) {
         j = 28;
-        localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1003, true, j);
-        if ((localObject != null) && (((ArrayList)localObject).size() != 0) && (!paramBoolean)) {
-          break label211;
-        }
+      } else {
+        j = 1;
+      }
+      localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1003, true, j);
+      if ((localObject == null) || (((ArrayList)localObject).size() == 0) || (paramBoolean))
+      {
         localObject = BaseInnerDns.getInstance();
         if (bool) {
           i = 1;
         }
-        paramString = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1003, true, i);
+        localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1003, true, i);
       }
     }
-    for (;;)
+    else
     {
-      if ((paramString != null) && (paramString.size() > 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("InnerDns", 2, "getQQHeandDownLoadUrl.choosedIp = " + (String)paramString.get(0));
-        }
-        return (String)paramString.get(0);
+      if (j == 2) {
         j = 1;
-        break;
-        if (j == 2)
-        {
-          j = 1;
-          label165:
-          localObject = BaseInnerDns.getInstance();
-          if (j == 0) {
-            break label196;
-          }
-        }
-        for (;;)
-        {
-          paramString = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1003, true, i);
-          break;
-          j = 0;
-          break label165;
-          label196:
-          i = 1;
-        }
+      } else {
+        j = 0;
       }
-      QLog.d("InnerDns", 1, "getQQHeandDownLoadUrl() ipList is null");
-      return null;
-      label211:
-      paramString = (String)localObject;
+      localObject = BaseInnerDns.getInstance();
+      if (j == 0) {
+        i = 1;
+      }
+      localObject = ((BaseInnerDns)localObject).reqDnsForIpList(paramString, 1003, true, i);
     }
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("getQQHeandDownLoadUrl.choosedIp = ");
+        paramString.append((String)((ArrayList)localObject).get(0));
+        QLog.i("InnerDns", 2, paramString.toString());
+      }
+      return (String)((ArrayList)localObject).get(0);
+    }
+    QLog.d("InnerDns", 1, "getQQHeandDownLoadUrl() ipList is null");
+    return null;
   }
   
   public Bitmap getRoundFaceBitmap(Bitmap paramBitmap)
@@ -173,29 +172,35 @@ public class QQAvatarUtilApiImpl
   
   public Bitmap getShapeRoundFaceBitmap(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3)
   {
-    float f = BaseApplication.getContext().getResources().getDisplayMetrics().density;
+    float f2 = BaseApplication.getContext().getResources().getDisplayMetrics().density;
     int i = paramBitmap.getWidth();
-    if ((i > 0) && (i < paramInt2 * f)) {
-      f = i / paramInt2;
-    }
-    for (;;)
+    float f1 = f2;
+    if (i > 0)
     {
-      paramInt2 = (int)(paramInt2 * f);
-      paramInt3 = (int)(f * paramInt3);
-      if (paramInt1 > 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        if (!bool) {
-          paramInt1 = paramInt2;
-        }
-        return BaseImageUtil.a(paramBitmap, paramInt1, bool, paramInt2, paramInt3);
+      float f3 = i;
+      float f4 = paramInt2;
+      f1 = f2;
+      if (f3 < f2 * f4) {
+        f1 = f3 / f4;
       }
     }
+    paramInt2 = (int)(paramInt2 * f1);
+    paramInt3 = (int)(paramInt3 * f1);
+    boolean bool;
+    if (paramInt1 > 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if (!bool) {
+      paramInt1 = paramInt2;
+    }
+    return BaseImageUtil.a(paramBitmap, paramInt1, bool, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQAvatarUtilApiImpl
  * JD-Core Version:    0.7.0.1
  */

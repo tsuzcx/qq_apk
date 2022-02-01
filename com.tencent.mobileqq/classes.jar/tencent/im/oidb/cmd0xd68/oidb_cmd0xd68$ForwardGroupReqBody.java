@@ -27,16 +27,18 @@ public final class oidb_cmd0xd68$ForwardGroupReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56, 66, 74, 82, 90 }, new String[] { "uint64_group_code", "uint32_app_id", "uint32_src_bus_id", "bytes_src_parent_folder", "bytes_src_uuid", "bytes_dst_folder_id", "uint64_file_size", "str_local_path", "str_file_name", "bytes_md5", "cid" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Long.valueOf(0L), "", "", localByteStringMicro4, "" }, ForwardGroupReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56, 66, 74, 82, 90 }, new String[] { "uint64_group_code", "uint32_app_id", "uint32_src_bus_id", "bytes_src_parent_folder", "bytes_src_uuid", "bytes_dst_folder_id", "uint64_file_size", "str_local_path", "str_file_name", "bytes_md5", "cid" }, new Object[] { localLong, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localLong, "", "", localByteStringMicro4, "" }, ForwardGroupReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd68.oidb_cmd0xd68.ForwardGroupReqBody
  * JD-Core Version:    0.7.0.1
  */

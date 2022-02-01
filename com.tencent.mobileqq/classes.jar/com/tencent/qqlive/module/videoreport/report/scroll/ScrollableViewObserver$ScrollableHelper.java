@@ -10,15 +10,19 @@ class ScrollableViewObserver$ScrollableHelper
 {
   protected void onIdle(View paramView)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ScrollableViewObserver", "onIdle: source=" + paramView);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onIdle: source=");
+      localStringBuilder.append(paramView);
+      Log.d("ScrollableViewObserver", localStringBuilder.toString());
     }
     PageSwitchObserver.getInstance().onPageViewVisible(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.scroll.ScrollableViewObserver.ScrollableHelper
  * JD-Core Version:    0.7.0.1
  */

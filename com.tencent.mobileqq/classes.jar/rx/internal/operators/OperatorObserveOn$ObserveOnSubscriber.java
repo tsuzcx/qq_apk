@@ -44,58 +44,49 @@ final class OperatorObserveOn$ObserveOnSubscriber<T>
   
   public void call()
   {
-    long l2 = 0L;
-    long l1 = 1L;
     Queue localQueue = this.queue;
     Subscriber localSubscriber = this.child;
     NotificationLite localNotificationLite = this.on;
-    long l5 = this.requested.get();
-    long l4 = 0L;
-    long l3 = l2;
+    long l1 = 0L;
+    long l2 = 1L;
     for (;;)
     {
-      Object localObject;
-      boolean bool1;
-      if (l5 != l4)
+      long l4 = this.requested.get();
+      long l3 = 0L;
+      while (l4 != l3)
       {
         boolean bool2 = this.finished;
-        localObject = localQueue.poll();
-        if (localObject == null)
-        {
+        Object localObject = localQueue.poll();
+        boolean bool1;
+        if (localObject == null) {
           bool1 = true;
-          if (!checkTerminated(bool2, bool1, localSubscriber, localQueue)) {
-            break label90;
-          }
-        }
-      }
-      label90:
-      do
-      {
-        do
-        {
-          return;
+        } else {
           bool1 = false;
-          break;
-          if (!bool1) {
-            break label180;
-          }
-        } while ((l5 == l4) && (checkTerminated(this.finished, localQueue.isEmpty(), localSubscriber, localQueue)));
-        if (l4 != 0L) {
-          BackpressureUtils.produced(this.requested, l4);
         }
-        l4 = this.counter.addAndGet(-l1);
-        l1 = l4;
-        l2 = l3;
-        if (l4 != 0L) {
+        if (checkTerminated(bool2, bool1, localSubscriber, localQueue)) {
+          return;
+        }
+        if (bool1) {
           break;
         }
-      } while (l3 == 0L);
-      request(l3);
-      return;
-      label180:
-      localSubscriber.onNext(localNotificationLite.getValue(localObject));
-      l3 += 1L;
-      l4 = 1L + l4;
+        localSubscriber.onNext(localNotificationLite.getValue(localObject));
+        l3 += 1L;
+        l1 += 1L;
+      }
+      if ((l4 == l3) && (checkTerminated(this.finished, localQueue.isEmpty(), localSubscriber, localQueue))) {
+        return;
+      }
+      if (l3 != 0L) {
+        BackpressureUtils.produced(this.requested, l3);
+      }
+      l2 = this.counter.addAndGet(-l2);
+      if (l2 == 0L)
+      {
+        if (l1 != 0L) {
+          request(l1);
+        }
+        return;
+      }
     }
   }
   
@@ -106,60 +97,56 @@ final class OperatorObserveOn$ObserveOnSubscriber<T>
       paramQueue.clear();
       return true;
     }
-    if (paramBoolean1)
-    {
-      if (!this.delayError) {
-        break label74;
-      }
-      if (paramBoolean2)
+    if (paramBoolean1) {
+      if (this.delayError)
       {
-        paramQueue = this.error;
-        if (paramQueue == null) {
-          break label57;
+        if (paramBoolean2)
+        {
+          paramQueue = this.error;
+          if (paramQueue != null) {}
+          try
+          {
+            paramSubscriber.onError(paramQueue);
+            break label55;
+            paramSubscriber.onCompleted();
+          }
+          finally
+          {
+            label55:
+            this.recursiveScheduler.unsubscribe();
+          }
+        }
+      }
+      else
+      {
+        Throwable localThrowable = this.error;
+        if (localThrowable != null)
+        {
+          paramQueue.clear();
+          try
+          {
+            paramSubscriber.onError(localThrowable);
+            return true;
+          }
+          finally
+          {
+            this.recursiveScheduler.unsubscribe();
+          }
+        }
+        if (paramBoolean2) {
+          try
+          {
+            paramSubscriber.onCompleted();
+            return true;
+          }
+          finally
+          {
+            this.recursiveScheduler.unsubscribe();
+          }
         }
       }
     }
-    label57:
-    label74:
-    do
-    {
-      for (;;)
-      {
-        try
-        {
-          paramSubscriber.onError(paramQueue);
-          return false;
-        }
-        finally
-        {
-          this.recursiveScheduler.unsubscribe();
-        }
-        paramSubscriber.onCompleted();
-      }
-      Throwable localThrowable = this.error;
-      if (localThrowable != null)
-      {
-        paramQueue.clear();
-        try
-        {
-          paramSubscriber.onError(localThrowable);
-          return true;
-        }
-        finally
-        {
-          this.recursiveScheduler.unsubscribe();
-        }
-      }
-    } while (!paramBoolean2);
-    try
-    {
-      paramSubscriber.onCompleted();
-      return true;
-    }
-    finally
-    {
-      this.recursiveScheduler.unsubscribe();
-    }
+    return false;
   }
   
   void init()
@@ -172,36 +159,42 @@ final class OperatorObserveOn$ObserveOnSubscriber<T>
   
   public void onCompleted()
   {
-    if ((isUnsubscribed()) || (this.finished)) {
-      return;
+    if (!isUnsubscribed())
+    {
+      if (this.finished) {
+        return;
+      }
+      this.finished = true;
+      schedule();
     }
-    this.finished = true;
-    schedule();
   }
   
   public void onError(Throwable paramThrowable)
   {
-    if ((isUnsubscribed()) || (this.finished))
+    if ((!isUnsubscribed()) && (!this.finished))
     {
-      RxJavaPlugins.getInstance().getErrorHandler().handleError(paramThrowable);
+      this.error = paramThrowable;
+      this.finished = true;
+      schedule();
       return;
     }
-    this.error = paramThrowable;
-    this.finished = true;
-    schedule();
+    RxJavaPlugins.getInstance().getErrorHandler().handleError(paramThrowable);
   }
   
   public void onNext(T paramT)
   {
-    if ((isUnsubscribed()) || (this.finished)) {
-      return;
-    }
-    if (!this.queue.offer(this.on.next(paramT)))
+    if (!isUnsubscribed())
     {
-      onError(new MissingBackpressureException());
-      return;
+      if (this.finished) {
+        return;
+      }
+      if (!this.queue.offer(this.on.next(paramT)))
+      {
+        onError(new MissingBackpressureException());
+        return;
+      }
+      schedule();
     }
-    schedule();
   }
   
   public void onStart()
@@ -218,7 +211,7 @@ final class OperatorObserveOn$ObserveOnSubscriber<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorObserveOn.ObserveOnSubscriber
  * JD-Core Version:    0.7.0.1
  */

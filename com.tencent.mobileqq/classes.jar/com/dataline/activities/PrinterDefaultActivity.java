@@ -14,10 +14,10 @@ public class PrinterDefaultActivity
 {
   private void a()
   {
-    ((TextView)findViewById(2131369487)).setVisibility(8);
-    TextView localTextView = (TextView)findViewById(2131369518);
+    ((TextView)findViewById(2131369202)).setVisibility(8);
+    TextView localTextView = (TextView)findViewById(2131369233);
     localTextView.setVisibility(0);
-    localTextView.setText(HardCodeUtil.a(2131708408));
+    localTextView.setText(HardCodeUtil.a(2131708414));
     localTextView.setOnClickListener(new PrinterDefaultActivity.1(this));
   }
   
@@ -30,12 +30,12 @@ public class PrinterDefaultActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131165443);
-    setContentView(2131559126);
-    setTitle(2131691429);
+    super.getWindow().setBackgroundDrawableResource(2131165419);
+    setContentView(2131559020);
+    setTitle(2131691351);
     super.getWindow().setBackgroundDrawable(null);
     a();
     return true;
@@ -50,7 +50,7 @@ public class PrinterDefaultActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.PrinterDefaultActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -29,7 +29,7 @@ class QGJavaScriptView$ComponentSizeChooser
   private int findConfigAttrib(EGL10 paramEGL10, EGLDisplay paramEGLDisplay, EGLConfig paramEGLConfig, int paramInt1, int paramInt2)
   {
     if (paramEGL10.eglGetConfigAttrib(paramEGLDisplay, paramEGLConfig, paramInt1, this.mValue)) {
-      paramInt2 = this.mValue[0];
+      return this.mValue[0];
     }
     return paramInt2;
   }
@@ -60,7 +60,7 @@ class QGJavaScriptView$ComponentSizeChooser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.QGJavaScriptView.ComponentSizeChooser
  * JD-Core Version:    0.7.0.1
  */

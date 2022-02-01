@@ -18,6 +18,7 @@ public class MessageData
   public int mEBuyType;
   public MessageData.GiftInfo mGiftInfo = new MessageData.GiftInfo(this);
   public int mMainRoomId;
+  public String mMessageId;
   public int mMessageType;
   public MsgExtInfo mMsgExtInfo;
   public String mRawTipStr;
@@ -27,7 +28,7 @@ public class MessageData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.messageservice_interface.model.MessageData
  * JD-Core Version:    0.7.0.1
  */

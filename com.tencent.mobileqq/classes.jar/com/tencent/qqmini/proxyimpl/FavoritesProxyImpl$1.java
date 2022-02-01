@@ -14,13 +14,21 @@ class FavoritesProxyImpl$1
   
   public void run()
   {
-    boolean bool = QfavBuilder.a(8, this.jdField_a_of_type_JavaLangString, this.b, this.c, this.d, this.e, this.e, null, true, 0L).b("sBizDataList", this.jdField_a_of_type_JavaUtilArrayList).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).a(this.jdField_a_of_type_AndroidContentContext);
-    QLog.d("FavoritesProxyImpl", 2, "addToQQFavorites done, res = " + bool);
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    String str1 = this.b;
+    String str2 = this.c;
+    String str3 = this.d;
+    String str4 = this.e;
+    boolean bool = QfavBuilder.a(8, (String)localObject, str1, str2, str3, str4, str4, null, true, 0L).b("sBizDataList", this.jdField_a_of_type_JavaUtilArrayList).b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).a(this.jdField_a_of_type_AndroidContentContext);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("addToQQFavorites done, res = ");
+    ((StringBuilder)localObject).append(bool);
+    QLog.d("FavoritesProxyImpl", 2, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.FavoritesProxyImpl.1
  * JD-Core Version:    0.7.0.1
  */

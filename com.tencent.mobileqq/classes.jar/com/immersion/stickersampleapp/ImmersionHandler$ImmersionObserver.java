@@ -18,14 +18,18 @@ public class ImmersionHandler$ImmersionObserver
     this.a = paramImmerIConnectionProxy;
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     paramBundle = new oidb_0xa4d.RspBody();
     if (paramInt == 0) {
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("ImmersionHandler", 2, "HapticMediaPlayer request success.errorcode = " + paramInt);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("HapticMediaPlayer request success.errorcode = ");
+          localStringBuilder.append(paramInt);
+          QLog.i("ImmersionHandler", 2, localStringBuilder.toString());
         }
         paramBundle.mergeFrom(paramArrayOfByte);
         paramArrayOfByte = (oidb_0xa4d.IMMRRsp)paramBundle.msg_immr_rsp.get();
@@ -38,15 +42,19 @@ public class ImmersionHandler$ImmersionObserver
         return;
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.e("ImmersionHandler", 2, "HapticMediaPlayer request failerrorcode = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("HapticMediaPlayer request failerrorcode = ");
+      paramArrayOfByte.append(paramInt);
+      QLog.e("ImmersionHandler", 2, paramArrayOfByte.toString());
     }
     this.a.setConnection(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.immersion.stickersampleapp.ImmersionHandler.ImmersionObserver
  * JD-Core Version:    0.7.0.1
  */

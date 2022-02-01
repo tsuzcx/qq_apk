@@ -38,24 +38,21 @@ public final class BlockingOperatorToIterator$SubscriberIterator<T>
   
   public boolean hasNext()
   {
-    boolean bool = false;
     if (this.buf == null)
     {
       this.buf = take();
       this.received += 1;
-      if (this.received >= LIMIT)
+      int i = this.received;
+      if (i >= LIMIT)
       {
-        request(this.received);
+        request(i);
         this.received = 0;
       }
     }
-    if (this.buf.isOnError()) {
-      throw Exceptions.propagate(this.buf.getThrowable());
+    if (!this.buf.isOnError()) {
+      return this.buf.isOnCompleted() ^ true;
     }
-    if (!this.buf.isOnCompleted()) {
-      bool = true;
-    }
-    return bool;
+    throw Exceptions.propagate(this.buf.getThrowable());
   }
   
   public T next()
@@ -93,7 +90,7 @@ public final class BlockingOperatorToIterator$SubscriberIterator<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.BlockingOperatorToIterator.SubscriberIterator
  * JD-Core Version:    0.7.0.1
  */

@@ -17,16 +17,17 @@ class TroopKeywordManager$MyBusinessObserver
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
     TroopKeywordManager localTroopKeywordManager = (TroopKeywordManager)this.a.get();
-    if (localTroopKeywordManager == null) {}
-    while (!(paramObject instanceof UniLoginCheckRsp)) {
+    if (localTroopKeywordManager == null) {
       return;
     }
-    localTroopKeywordManager.a(((UniLoginCheckRsp)paramObject).stKeyWord);
+    if ((paramObject instanceof UniLoginCheckRsp)) {
+      localTroopKeywordManager.a(((UniLoginCheckRsp)paramObject).stKeyWord);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopkeyword.TroopKeywordManager.MyBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

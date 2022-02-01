@@ -46,14 +46,16 @@ public class MsgNodeViewHolder
   protected void b(String paramString)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a().getResources().getDrawable(2130846965);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a().getResources().getDrawable(2130846843);
     }
-    UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int, "msg_tab_thumb");
+    RoundBorderImageView localRoundBorderImageView = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    UIUtils.a(localRoundBorderImageView, paramString, localDrawable, localDrawable, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.b, this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_Int, "msg_tab_thumb");
   }
   
   protected void c(String paramString)
   {
-    Drawable localDrawable = a().getResources().getDrawable(2130846965);
+    Drawable localDrawable = a().getResources().getDrawable(2130846843);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     localURLDrawableOptions.mMemoryCacheKeySuffix = "msg_tab_thumb";
     localURLDrawableOptions.mPlayGifImage = true;
@@ -64,22 +66,19 @@ public class MsgNodeViewHolder
     localURLDrawableOptions.mFailedDrawable = localDrawable;
     paramString = URLDrawable.getDrawable(paramString, localURLDrawableOptions);
     paramString.setURLDrawableListener(new MsgNodeViewHolder.1(this));
-    if ((paramString.getStatus() == 1) && (paramString.getCurrDrawable() != null)) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable(paramString);
-      return;
-      if ((paramString.getStatus() == 3) || (paramString.getStatus() == 2)) {
-        paramString.restartDownload();
-      } else {
+    if ((paramString.getStatus() != 1) || (paramString.getCurrDrawable() == null)) {
+      if ((paramString.getStatus() != 3) && (paramString.getStatus() != 2)) {
         paramString.startDownload();
+      } else {
+        paramString.restartDownload();
       }
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018WidgetsStoryMsgNodeFrameLayout.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.MsgNodeViewHolder
  * JD-Core Version:    0.7.0.1
  */

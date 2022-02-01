@@ -21,30 +21,35 @@ abstract class LinkedHashTreeMap$LinkedTreeMapIterator<T>
   final LinkedHashTreeMap.Node<K, V> nextNode()
   {
     LinkedHashTreeMap.Node localNode = this.next;
-    if (localNode == this.this$0.header) {
-      throw new NoSuchElementException();
-    }
-    if (this.this$0.modCount != this.expectedModCount) {
+    if (localNode != this.this$0.header)
+    {
+      if (this.this$0.modCount == this.expectedModCount)
+      {
+        this.next = localNode.next;
+        this.lastReturned = localNode;
+        return localNode;
+      }
       throw new ConcurrentModificationException();
     }
-    this.next = localNode.next;
-    this.lastReturned = localNode;
-    return localNode;
+    throw new NoSuchElementException();
   }
   
   public final void remove()
   {
-    if (this.lastReturned == null) {
-      throw new IllegalStateException();
+    LinkedHashTreeMap.Node localNode = this.lastReturned;
+    if (localNode != null)
+    {
+      this.this$0.removeInternal(localNode, true);
+      this.lastReturned = null;
+      this.expectedModCount = this.this$0.modCount;
+      return;
     }
-    this.this$0.removeInternal(this.lastReturned, true);
-    this.lastReturned = null;
-    this.expectedModCount = this.this$0.modCount;
+    throw new IllegalStateException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.LinkedHashTreeMap.LinkedTreeMapIterator
  * JD-Core Version:    0.7.0.1
  */

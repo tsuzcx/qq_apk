@@ -26,8 +26,12 @@ public class ViolaBrightnessController
   {
     if (!this.hasRegisterBrightnessObserver)
     {
-      this.hasRegisterBrightnessObserver = true;
-      this.mActivity.getContentResolver().registerContentObserver(Settings.System.getUriFor("screen_brightness"), true, this.brightnessObserver);
+      Activity localActivity = this.mActivity;
+      if ((localActivity != null) && (localActivity.getContentResolver() != null))
+      {
+        this.hasRegisterBrightnessObserver = true;
+        this.mActivity.getContentResolver().registerContentObserver(Settings.System.getUriFor("screen_brightness"), true, this.brightnessObserver);
+      }
     }
   }
   
@@ -35,8 +39,12 @@ public class ViolaBrightnessController
   {
     if (this.hasRegisterBrightnessObserver)
     {
-      this.hasRegisterBrightnessObserver = false;
-      this.mActivity.getContentResolver().unregisterContentObserver(this.brightnessObserver);
+      Activity localActivity = this.mActivity;
+      if ((localActivity != null) && (localActivity.getContentResolver() != null))
+      {
+        this.hasRegisterBrightnessObserver = false;
+        this.mActivity.getContentResolver().unregisterContentObserver(this.brightnessObserver);
+      }
     }
   }
   
@@ -53,18 +61,18 @@ public class ViolaBrightnessController
   
   public float getScreenBrightness()
   {
-    int i = 0;
     ContentResolver localContentResolver = this.mActivity.getContentResolver();
     try
     {
-      int j = Settings.System.getInt(localContentResolver, "screen_brightness");
-      i = j;
+      i = Settings.System.getInt(localContentResolver, "screen_brightness");
     }
     catch (Settings.SettingNotFoundException localSettingNotFoundException)
     {
-      label19:
-      break label19;
+      int i;
+      label18:
+      break label18;
     }
+    i = 0;
     return i / 255.0F;
   }
   
@@ -74,7 +82,9 @@ public class ViolaBrightnessController
     try
     {
       int i = Settings.System.getInt(localContentResolver, "screen_brightness_mode");
-      return i == 1;
+      if (i == 1) {
+        return true;
+      }
     }
     catch (Settings.SettingNotFoundException localSettingNotFoundException)
     {
@@ -110,7 +120,7 @@ public class ViolaBrightnessController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.utils.ViolaBrightnessController
  * JD-Core Version:    0.7.0.1
  */

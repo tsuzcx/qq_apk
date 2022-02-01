@@ -13,74 +13,91 @@ public class PanoramaAccessManager
 {
   public static boolean a()
   {
-    boolean bool3 = true;
     SdkContext.getInstance().getResources().getPtuFilterResource().getSoPathDir();
     SdkContext.getInstance().getResources().getPtuFilterResource().getPortraitPathDir();
-    if (!PtvFilterSoLoad.e())
+    boolean bool1 = PtvFilterSoLoad.e() ^ true;
+    boolean bool2 = PanoramaSensorManager.a().a();
+    boolean bool4 = PanoramaEffectDPC.a();
+    Object localObject;
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkPanoramaAccessEnable portraitSo = ");
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append("| sensorEnable = ");
+      ((StringBuilder)localObject).append(bool2);
+      ((StringBuilder)localObject).append(" |DPCEntry = ");
+      ((StringBuilder)localObject).append(bool4);
+      QLog.d("PanoramaAccessManager", 2, ((StringBuilder)localObject).toString());
+    }
+    boolean bool3 = false;
+    boolean bool5 = false;
+    if ((bool1) && (bool2) && (bool4)) {
       bool1 = true;
-      bool2 = PanoramaSensorManager.a().a();
-      boolean bool4 = PanoramaEffectDPC.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable portraitSo = " + bool1 + "| sensorEnable = " + bool2 + " |DPCEntry = " + bool4);
-      }
-      if ((!bool1) || (!bool2) || (!bool4)) {
-        break label265;
-      }
-      bool2 = true;
-      label118:
-      if (!bool2) {
-        return bool2;
-      }
-      Object localObject = PanoramaEffectDPC.a();
-      if (localObject == null) {
-        break label323;
-      }
-      long l = PanoramaEffectDPC.a();
-      localObject = ((List)localObject).iterator();
+    } else {
       bool1 = false;
-      label149:
-      PanoramaEffectDPC.DeviceCPUinfo localDeviceCPUinfo;
-      do
+    }
+    if (bool1)
+    {
+      localObject = PanoramaEffectDPC.a();
+      if (localObject != null)
       {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
+        long l = PanoramaEffectDPC.a();
+        localObject = ((List)localObject).iterator();
+        bool4 = false;
+        for (;;)
+        {
+          if (!((Iterator)localObject).hasNext()) {
+            break label307;
+          }
+          PanoramaEffectDPC.DeviceCPUinfo localDeviceCPUinfo = (PanoramaEffectDPC.DeviceCPUinfo)((Iterator)localObject).next();
+          if (localDeviceCPUinfo != null)
+          {
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("checkPanoramaAccessEnable CPUinfo = ");
+              localStringBuilder.append(localDeviceCPUinfo.b);
+              localStringBuilder.append("|");
+              localStringBuilder.append(localDeviceCPUinfo.a);
+              QLog.d("PanoramaAccessManager", 2, localStringBuilder.toString());
+            }
+            if ((!bool4) && (!EffectsRenderController.a(localDeviceCPUinfo.b, localDeviceCPUinfo.a * 10000, l * 100000000L))) {
+              break;
+            }
+            bool4 = true;
+          }
         }
-        localDeviceCPUinfo = (PanoramaEffectDPC.DeviceCPUinfo)((Iterator)localObject).next();
-      } while (localDeviceCPUinfo == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable CPUinfo = " + localDeviceCPUinfo.b + "|" + localDeviceCPUinfo.a);
-      }
-      if ((!bool1) && (!EffectsRenderController.a(localDeviceCPUinfo.b, localDeviceCPUinfo.a * 10000, l * 100000000L))) {
-        break label270;
+        label307:
+        bool2 = bool5;
+        if (bool1)
+        {
+          bool2 = bool5;
+          if (bool4) {
+            bool2 = true;
+          }
+        }
+        bool3 = bool2;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("checkPanoramaAccessEnable isDeviceSupport = ");
+          ((StringBuilder)localObject).append(bool4);
+          QLog.d("PanoramaAccessManager", 2, ((StringBuilder)localObject).toString());
+          return bool2;
+        }
       }
     }
-    label265:
-    label270:
-    for (boolean bool1 = true;; bool1 = false)
+    else
     {
-      break label149;
-      bool1 = false;
-      break;
-      bool2 = false;
-      break label118;
+      bool3 = bool1;
     }
-    if ((bool2) && (bool1)) {}
-    for (boolean bool2 = bool3;; bool2 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("PanoramaAccessManager", 2, "checkPanoramaAccessEnable isDeviceSupport = " + bool1);
-      }
-      return bool2;
-    }
-    label323:
-    return false;
-    return bool2;
+    return bool3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.panorama.PanoramaAccessManager
  * JD-Core Version:    0.7.0.1
  */

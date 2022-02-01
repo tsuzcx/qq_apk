@@ -19,14 +19,18 @@ import java.util.Map;
 
 public class SpringHbUrlInterceptor
 {
-  private static InputStream jdField_a_of_type_JavaIoInputStream = null;
+  private static InputStream jdField_a_of_type_JavaIoInputStream;
   private static String jdField_a_of_type_JavaLangString;
   
   public static WebResourceResponse a(String paramString)
   {
     paramString = PreloadStaticApi.a(a(paramString));
-    if (QLog.isColorLevel()) {
-      QLog.d("springHb_SpringHbUrlInterceptor", 2, "getWebResponse resPath: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getWebResponse resPath: ");
+      localStringBuilder.append(paramString);
+      QLog.d("springHb_SpringHbUrlInterceptor", 2, localStringBuilder.toString());
     }
     if (StringUtil.a(paramString)) {
       return null;
@@ -47,137 +51,138 @@ public class SpringHbUrlInterceptor
   
   private static String a(String paramString)
   {
-    String str;
     if (StringUtil.a(paramString)) {
-      str = "";
+      return "";
     }
-    do
-    {
-      return str;
-      str = paramString;
-    } while (paramString.lastIndexOf("?") == -1);
-    return paramString.split("\\?")[0];
+    String str = paramString;
+    if (paramString.lastIndexOf("?") != -1) {
+      str = paramString.split("\\?")[0];
+    }
+    return str;
   }
   
   private static Map<String, String> a(String paramString)
   {
-    int i = 0;
     Object localObject = paramString.substring(paramString.indexOf("?") + 1);
     paramString = new HashMap();
-    for (;;)
+    try
     {
-      try
+      localObject = ((String)localObject).split("&");
+      int j = localObject.length;
+      int i = 0;
+      while (i < j)
       {
-        localObject = ((String)localObject).split("&");
-        int j = localObject.length;
-        if (i < j)
-        {
-          String[] arrayOfString = localObject[i].split("=");
-          if ((arrayOfString == null) || (arrayOfString.length != 2)) {
-            break label85;
-          }
+        String[] arrayOfString = localObject[i].split("=");
+        if ((arrayOfString != null) && (arrayOfString.length == 2)) {
           paramString.put(arrayOfString[0], URLDecoder.decode(arrayOfString[1]));
         }
+        i += 1;
       }
-      catch (Exception localException) {}
       return paramString;
-      label85:
-      i += 1;
     }
+    catch (Exception localException) {}
+    return paramString;
   }
   
   public static void a()
   {
-    if (jdField_a_of_type_JavaIoInputStream != null) {}
-    try
-    {
-      jdField_a_of_type_JavaIoInputStream.close();
-      jdField_a_of_type_JavaIoInputStream = null;
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
+    InputStream localInputStream = jdField_a_of_type_JavaIoInputStream;
+    if (localInputStream != null) {
+      try
+      {
+        localInputStream.close();
+        jdField_a_of_type_JavaIoInputStream = null;
+        return;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+      }
     }
   }
   
   public static boolean a(String paramString)
   {
-    if (StringUtil.a(paramString)) {}
-    for (;;)
-    {
+    if (StringUtil.a(paramString)) {
       return false;
-      Object localObject = a(paramString);
-      if ((localObject == null) || (((Map)localObject).isEmpty())) {
-        continue;
+    }
+    Object localObject = a(paramString);
+    if (localObject != null) {
+      if (((Map)localObject).isEmpty()) {
+        return false;
+      }
+    }
+    try
+    {
+      i = Integer.parseInt((String)((Map)localObject).get("o"));
+    }
+    catch (Exception localException)
+    {
+      int i;
+      label51:
+      break label51;
+    }
+    i = 0;
+    localObject = a(paramString);
+    if (i == 1)
+    {
+      if ((!((String)localObject).endsWith(".mp4")) && (!((String)localObject).endsWith(".MP4"))) {
+        return false;
       }
       try
       {
-        i = Integer.parseInt((String)((Map)localObject).get("o"));
-        localObject = a(paramString);
-        if ((i != 1) || ((!((String)localObject).endsWith(".mp4")) && (!((String)localObject).endsWith(".MP4")))) {
-          continue;
-        }
-        label260:
-        for (;;)
+        paramString = Uri.parse(paramString).getHost();
+        if (QLog.isColorLevel())
         {
-          try
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("do intercept url's domain: ");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.d("springHb_SpringHbUrlInterceptor", 2, ((StringBuilder)localObject).toString());
+        }
+        if (StringUtil.a(jdField_a_of_type_JavaLangString))
+        {
+          localObject = QIPCClientHelper.getInstance().getClient().callServer("SpringHbIPCModule", "GetDomain", new Bundle());
+          if ((localObject != null) && (((EIPCResult)localObject).data != null)) {
+            jdField_a_of_type_JavaLangString = ((EIPCResult)localObject).data.getString("res_domain");
+          } else {
+            jdField_a_of_type_JavaLangString = "down.qq.com";
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("get domain from IPC: ");
+          ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+          QLog.d("springHb_SpringHbUrlInterceptor", 2, ((StringBuilder)localObject).toString());
+        }
+        if (!StringUtil.a(jdField_a_of_type_JavaLangString))
+        {
+          localObject = jdField_a_of_type_JavaLangString.split("\\|");
+          int j = localObject.length;
+          i = 0;
+          while (i < j)
           {
-            paramString = Uri.parse(paramString).getHost();
-            if (QLog.isColorLevel()) {
-              QLog.d("springHb_SpringHbUrlInterceptor", 2, "do intercept url's domain: " + paramString);
-            }
-            if (StringUtil.a(jdField_a_of_type_JavaLangString))
-            {
-              localObject = QIPCClientHelper.getInstance().getClient().callServer("SpringHbIPCModule", "GetDomain", new Bundle());
-              if ((localObject == null) || (((EIPCResult)localObject).data == null)) {
-                jdField_a_of_type_JavaLangString = "down.qq.com";
-              }
-            }
-            else
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("springHb_SpringHbUrlInterceptor", 2, "get domain from IPC: " + jdField_a_of_type_JavaLangString);
-              }
-              if (StringUtil.a(jdField_a_of_type_JavaLangString)) {
-                break;
-              }
-              localObject = jdField_a_of_type_JavaLangString.split("\\|");
-              int j = localObject.length;
-              i = 0;
-              if (i >= j) {
-                break;
-              }
-              if (!localObject[i].equals(paramString)) {
-                break label260;
-              }
+            boolean bool = localObject[i].equals(paramString);
+            if (bool) {
               return true;
             }
-            jdField_a_of_type_JavaLangString = ((EIPCResult)localObject).data.getString("res_domain");
-            continue;
             i += 1;
           }
-          catch (Exception paramString)
-          {
-            paramString.printStackTrace();
-            QLog.e("springHb_SpringHbUrlInterceptor", 2, paramString.getLocalizedMessage());
-            return false;
-          }
         }
+        return false;
       }
-      catch (Exception localException)
+      catch (Exception paramString)
       {
-        for (;;)
-        {
-          int i = 0;
-        }
+        paramString.printStackTrace();
+        QLog.e("springHb_SpringHbUrlInterceptor", 2, paramString.getLocalizedMessage());
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.js.SpringHbUrlInterceptor
  * JD-Core Version:    0.7.0.1
  */

@@ -49,7 +49,7 @@ class GuideViewBuilder$GuideView
     return paramGuideLayoutParams;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     try
@@ -70,13 +70,15 @@ class GuideViewBuilder$GuideView
     }
     catch (NullPointerException localNullPointerException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("GuideView", 2, "getLocationOnScreen Null Pointer");
-      }
+      label76:
+      break label76;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("GuideView", 2, "getLocationOnScreen Null Pointer");
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     int i = 0;
     while (i < GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).size())
@@ -84,7 +86,9 @@ class GuideViewBuilder$GuideView
       GuideViewBuilder.GuideTarget localGuideTarget = (GuideViewBuilder.GuideTarget)GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).valueAt(i);
       int j = paramCanvas.save();
       this.jdField_a_of_type_AndroidGraphicsRectF.set(localGuideTarget.jdField_a_of_type_ArrayOfInt[0], localGuideTarget.jdField_a_of_type_ArrayOfInt[1], localGuideTarget.jdField_a_of_type_ArrayOfInt[0] + localGuideTarget.jdField_a_of_type_AndroidViewView.getMeasuredWidth(), localGuideTarget.jdField_a_of_type_ArrayOfInt[1] + localGuideTarget.jdField_a_of_type_AndroidViewView.getMeasuredHeight());
-      this.jdField_a_of_type_AndroidGraphicsRectF.offset(-this.jdField_a_of_type_ArrayOfInt[0], -this.jdField_a_of_type_ArrayOfInt[1]);
+      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+      localRectF.offset(-arrayOfInt[0], -arrayOfInt[1]);
       paramCanvas.clipRect(this.jdField_a_of_type_AndroidGraphicsRectF);
       localGuideTarget.jdField_a_of_type_AndroidViewView.getRootView().draw(paramCanvas);
       paramCanvas.restoreToCount(j);
@@ -92,7 +96,7 @@ class GuideViewBuilder$GuideView
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = 0;
@@ -120,12 +124,8 @@ class GuideViewBuilder$GuideView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramMotionEvent.getAction() == 0)
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
       int i = 0;
       while (i < GuideViewBuilder.a(this.jdField_a_of_type_ComTencentMobileqqWidgetGuideViewBuilder).size())
       {
@@ -139,11 +139,12 @@ class GuideViewBuilder$GuideView
         i += 1;
       }
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.GuideViewBuilder.GuideView
  * JD-Core Version:    0.7.0.1
  */

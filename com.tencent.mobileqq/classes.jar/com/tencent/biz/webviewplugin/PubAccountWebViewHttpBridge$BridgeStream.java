@@ -19,14 +19,11 @@ class PubAccountWebViewHttpBridge$BridgeStream
   {
     this.jdField_a_of_type_JavaIoBufferedInputStream = paramBufferedInputStream1;
     this.b = paramBufferedInputStream2;
-    if (paramByteArrayOutputStream != null) {}
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaIoByteArrayOutputStream = paramByteArrayOutputStream;
-      this.jdField_a_of_type_JavaNetHttpURLConnection = paramHttpURLConnection;
-      return;
+    if (paramByteArrayOutputStream == null) {
       paramByteArrayOutputStream = new ByteArrayOutputStream();
     }
+    this.jdField_a_of_type_JavaIoByteArrayOutputStream = paramByteArrayOutputStream;
+    this.jdField_a_of_type_JavaNetHttpURLConnection = paramHttpURLConnection;
   }
   
   public void close()
@@ -60,61 +57,72 @@ class PubAccountWebViewHttpBridge$BridgeStream
   
   public int read()
   {
-    int j;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
-    {
-      j = -1;
-      return j;
+    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
+      return -1;
     }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null) {}
-    for (int i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();; i = -1)
-    {
-      j = i;
-      if (i != -1) {
-        break;
-      }
-      j = i;
-      if (this.b == null) {
-        break;
-      }
-      return this.b.read();
+    BufferedInputStream localBufferedInputStream = this.jdField_a_of_type_JavaIoBufferedInputStream;
+    int i;
+    if (localBufferedInputStream != null) {
+      i = localBufferedInputStream.read();
+    } else {
+      i = -1;
     }
+    int j = i;
+    if (i == -1)
+    {
+      localBufferedInputStream = this.b;
+      j = i;
+      if (localBufferedInputStream != null) {
+        j = localBufferedInputStream.read();
+      }
+    }
+    return j;
   }
   
   public int read(byte[] paramArrayOfByte)
   {
+    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null)) {
+      return -1;
+    }
+    Object localObject = this.jdField_a_of_type_JavaIoBufferedInputStream;
     int i;
-    if ((this.jdField_a_of_type_JavaIoBufferedInputStream == null) && (this.b == null))
+    if (localObject != null)
+    {
+      j = ((BufferedInputStream)localObject).read(paramArrayOfByte);
+      i = j;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("now read data from memory buffer second: ");
+        ((StringBuilder)localObject).append(j);
+        QLog.i("PubAccountWebViewHttpBridge", 2, ((StringBuilder)localObject).toString());
+        i = j;
+      }
+    }
+    else
     {
       i = -1;
-      return i;
     }
-    if (this.jdField_a_of_type_JavaIoBufferedInputStream != null)
+    int j = i;
+    if (i == -1)
     {
-      i = this.jdField_a_of_type_JavaIoBufferedInputStream.read(paramArrayOfByte);
+      localObject = this.b;
       j = i;
-      if (QLog.isColorLevel()) {
-        QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from memory buffer second: " + i);
+      if (localObject != null)
+      {
+        i = ((BufferedInputStream)localObject).read(paramArrayOfByte);
+        j = i;
+        if (QLog.isColorLevel())
+        {
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("now read data from socket stream second: ");
+          paramArrayOfByte.append(i);
+          QLog.i("PubAccountWebViewHttpBridge", 2, paramArrayOfByte.toString());
+          j = i;
+        }
       }
     }
-    for (int j = i;; j = -1)
-    {
-      i = j;
-      if (j != -1) {
-        break;
-      }
-      i = j;
-      if (this.b == null) {
-        break;
-      }
-      j = this.b.read(paramArrayOfByte);
-      i = j;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("PubAccountWebViewHttpBridge", 2, "now read data from socket stream second: " + j);
-      return j;
-    }
+    return j;
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -123,60 +131,62 @@ class PubAccountWebViewHttpBridge$BridgeStream
       return -1;
     }
     int i = paramArrayOfByte.length;
-    if (((paramInt1 | paramInt2) < 0) || (paramInt1 > i) || (i - paramInt1 < paramInt2))
+    if (((paramInt1 | paramInt2) >= 0) && (paramInt1 <= i) && (i - paramInt1 >= paramInt2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PubAccountWebViewHttpBridge", 2, "buffer three, error");
-      }
-      throw new ArrayIndexOutOfBoundsException();
+      i = 0;
+      if (i >= paramInt2) {}
     }
-    int j = 0;
-    label65:
-    if (j < paramInt2) {}
     for (;;)
     {
-      int k;
       try
       {
         if (this.jdField_a_of_type_JavaIoBufferedInputStream == null) {
-          break label162;
+          break label180;
         }
-        i = this.jdField_a_of_type_JavaIoBufferedInputStream.read();
-        k = i;
-        if (i == -1)
+        j = this.jdField_a_of_type_JavaIoBufferedInputStream.read();
+        int k = j;
+        if (j == -1)
         {
-          k = i;
+          k = j;
           if (this.b != null) {
             k = this.b.read();
           }
         }
         if (k == -1)
         {
-          if (j == 0) {
-            break;
+          paramInt1 = i;
+          if (i == 0) {
+            paramInt1 = -1;
           }
-          return j;
+          return paramInt1;
         }
+        paramArrayOfByte[(paramInt1 + i)] = ((byte)k);
+        i += 1;
       }
       catch (IOException paramArrayOfByte)
       {
-        if (j != 0) {
-          return j;
+        if (i != 0) {
+          return i;
         }
         throw paramArrayOfByte;
       }
-      paramArrayOfByte[(paramInt1 + j)] = ((byte)k);
-      j += 1;
-      break label65;
       return paramInt2;
-      label162:
-      i = -1;
+      if (QLog.isColorLevel()) {
+        QLog.d("PubAccountWebViewHttpBridge", 2, "buffer three, error");
+      }
+      paramArrayOfByte = new ArrayIndexOutOfBoundsException();
+      for (;;)
+      {
+        throw paramArrayOfByte;
+      }
+      label180:
+      int j = -1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.PubAccountWebViewHttpBridge.BridgeStream
  * JD-Core Version:    0.7.0.1
  */

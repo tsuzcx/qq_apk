@@ -9,22 +9,23 @@ class SubscriptFeedsActivity$9$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Int <= 0)
+    int i = this.jdField_a_of_type_Int;
+    if (i <= 0)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(2131719718);
+      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(2131719442);
       return;
     }
-    if (this.jdField_a_of_type_Int > 99)
+    if (i > 99)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.getString(2131719718), Integer.valueOf(99) }));
+      this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(String.format("%s(%d+)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.getString(2131719442), Integer.valueOf(99) }));
       return;
     }
-    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.getString(2131719718), Integer.valueOf(this.jdField_a_of_type_Int) }));
+    this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.leftView.setText(String.format("%s(%d)", new Object[] { this.jdField_a_of_type_ComTencentBizPubaccountSubscriptSubscriptFeedsActivity$9.this$0.getString(2131719442), Integer.valueOf(this.jdField_a_of_type_Int) }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.subscript.SubscriptFeedsActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

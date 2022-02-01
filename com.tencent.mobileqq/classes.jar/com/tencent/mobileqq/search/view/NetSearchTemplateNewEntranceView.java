@@ -14,11 +14,12 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.search.model.NetSearchTemplateNewEntranceItem;
-import com.tencent.mobileqq.search.model.RelativeWord;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateNewEntranceItem;
+import com.tencent.mobileqq.search.business.net.model.RelativeWord;
+import com.tencent.mobileqq.search.business.net.view.NetSearchTemplateBaseView;
 import com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.widget.ThemeURLImageView;
 import java.util.ArrayList;
 import java.util.List;
@@ -27,15 +28,15 @@ public class NetSearchTemplateNewEntranceView
   extends NetSearchTemplateBaseView
 {
   public View a;
-  public ImageView a;
   public LinearLayout a;
   public TextView a;
   public URLImageView a;
   public ArrayList<NetSearchTemplateNewEntranceView.NetSearchSubView> a;
   public LinearLayout b;
   public TextView b;
+  public ImageView c;
   public TextView c;
-  public TextView d;
+  public TextView h;
   
   public NetSearchTemplateNewEntranceView(ViewGroup paramViewGroup, int paramInt)
   {
@@ -45,19 +46,20 @@ public class NetSearchTemplateNewEntranceView
   
   protected void a()
   {
-    View localView = a(this.jdField_c_of_type_Int);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366394));
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368729));
-    if ((this.jdField_a_of_type_ComTencentImageURLImageView instanceof ThemeURLImageView)) {
-      ((ThemeURLImageView)this.jdField_a_of_type_ComTencentImageURLImageView).setSupportMaskView(false);
+    View localView = a(this.jdField_a_of_type_Int);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131366276));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131368461));
+    URLImageView localURLImageView = this.jdField_a_of_type_ComTencentImageURLImageView;
+    if ((localURLImageView instanceof ThemeURLImageView)) {
+      ((ThemeURLImageView)localURLImageView).setSupportMaskView(false);
     }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379432));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378646));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378646));
-    this.d = ((TextView)localView.findViewById(2131365699));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131377091));
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131369130);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131378637));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378784));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378039));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131378039));
+    this.h = ((TextView)localView.findViewById(2131365536));
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131376568));
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131368863);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)localView.findViewById(2131378029));
   }
   
   public void a(NetSearchTemplateNewEntranceItem paramNetSearchTemplateNewEntranceItem)
@@ -67,72 +69,66 @@ public class NetSearchTemplateNewEntranceView
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
       this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(Color.parseColor("#004080"));
     }
-    if ((paramNetSearchTemplateNewEntranceItem.a == null) || (paramNetSearchTemplateNewEntranceItem.a.size() == 0))
+    if ((paramNetSearchTemplateNewEntranceItem.a != null) && (paramNetSearchTemplateNewEntranceItem.a.size() != 0))
     {
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      Context localContext = this.jdField_b_of_type_AndroidWidgetLinearLayout.getContext();
+      ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
+      int i = 0;
+      while ((i < paramNetSearchTemplateNewEntranceItem.a.size()) && (i < 6))
+      {
+        RelativeWord localRelativeWord = (RelativeWord)paramNetSearchTemplateNewEntranceItem.a.get(i);
+        NetSearchTemplateNewEntranceView.NetSearchSubView localNetSearchSubView = new NetSearchTemplateNewEntranceView.NetSearchSubView(this, localContext);
+        if (!TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.m))
+        {
+          Object localObject = URLDrawable.URLDrawableOptions.obtain();
+          ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
+          ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
+          ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.a(localContext, 16.0F);
+          ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.a(localContext, 16.0F);
+          ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "subItemLeftIconUrl";
+          localObject = URLDrawable.getDrawable(paramNetSearchTemplateNewEntranceItem.m, (URLDrawable.URLDrawableOptions)localObject);
+          ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.a);
+          localNetSearchSubView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
+          if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
+            ((URLDrawable)localObject).restartDownload();
+          }
+          localNetSearchSubView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
+        }
+        else
+        {
+          localNetSearchSubView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
+        }
+        localNetSearchSubView.jdField_a_of_type_AndroidViewView.setTag(2131380884, paramNetSearchTemplateNewEntranceItem);
+        if (!TextUtils.isEmpty(localRelativeWord.a))
+        {
+          localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setText(localRelativeWord.a);
+          localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+          localNetSearchSubView.jdField_a_of_type_AndroidViewView.setTag(2131378315, localRelativeWord.a);
+        }
+        else
+        {
+          localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        }
+        if (!TextUtils.isEmpty(localRelativeWord.b))
+        {
+          localNetSearchSubView.jdField_a_of_type_AndroidViewView.setTag(2131378314, localRelativeWord.b);
+          localNetSearchSubView.jdField_a_of_type_AndroidViewView.setTag(2131378285, Integer.valueOf(paramNetSearchTemplateNewEntranceItem.c));
+        }
+        this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localNetSearchSubView.jdField_a_of_type_AndroidViewView);
+        this.jdField_a_of_type_JavaUtilArrayList.add(localNetSearchSubView);
+        i += 1;
+      }
       return;
     }
-    this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    Context localContext = this.jdField_b_of_type_AndroidWidgetLinearLayout.getContext();
-    ColorDrawable localColorDrawable = new ColorDrawable(Color.parseColor("#e7e7e7"));
-    int i = 0;
-    label116:
-    RelativeWord localRelativeWord;
-    NetSearchTemplateNewEntranceView.NetSearchSubView localNetSearchSubView;
-    if ((i < paramNetSearchTemplateNewEntranceItem.a.size()) && (i < 6))
-    {
-      localRelativeWord = (RelativeWord)paramNetSearchTemplateNewEntranceItem.a.get(i);
-      localNetSearchSubView = new NetSearchTemplateNewEntranceView.NetSearchSubView(this, localContext);
-      if (TextUtils.isEmpty(paramNetSearchTemplateNewEntranceItem.m)) {
-        break label410;
-      }
-      Object localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = localColorDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = localColorDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = DisplayUtil.a(localContext, 16.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = DisplayUtil.a(localContext, 16.0F);
-      ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "subItemLeftIconUrl";
-      localObject = URLDrawable.getDrawable(paramNetSearchTemplateNewEntranceItem.m, (URLDrawable.URLDrawableOptions)localObject);
-      ((URLDrawable)localObject).setDecodeHandler(URLDrawableDecodeHandler.a);
-      localNetSearchSubView.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable((Drawable)localObject);
-      if ((((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 0)) {
-        ((URLDrawable)localObject).restartDownload();
-      }
-      localNetSearchSubView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(0);
-      label279:
-      localNetSearchSubView.jdField_a_of_type_AndroidViewView.setTag(2131381651, paramNetSearchTemplateNewEntranceItem);
-      if (TextUtils.isEmpty(localRelativeWord.a)) {
-        break label423;
-      }
-      localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setText(localRelativeWord.a);
-      localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localNetSearchSubView.jdField_a_of_type_AndroidViewView.setTag(2131378927, localRelativeWord.a);
-    }
-    for (;;)
-    {
-      if (!TextUtils.isEmpty(localRelativeWord.b))
-      {
-        localNetSearchSubView.jdField_a_of_type_AndroidViewView.setTag(2131378926, localRelativeWord.b);
-        localNetSearchSubView.jdField_a_of_type_AndroidViewView.setTag(2131378896, Integer.valueOf(paramNetSearchTemplateNewEntranceItem.jdField_c_of_type_Int));
-      }
-      this.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localNetSearchSubView.jdField_a_of_type_AndroidViewView);
-      this.jdField_a_of_type_JavaUtilArrayList.add(localNetSearchSubView);
-      i += 1;
-      break label116;
-      break;
-      label410:
-      localNetSearchSubView.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
-      break label279;
-      label423:
-      localNetSearchSubView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-    }
+    this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetLinearLayout.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.view.NetSearchTemplateNewEntranceView
  * JD-Core Version:    0.7.0.1
  */

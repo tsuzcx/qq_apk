@@ -15,17 +15,15 @@ public final class Flutter
   {
     FlutterMain.startInitialization(paramActivity.getApplicationContext());
     FlutterMain.ensureInitializationComplete(paramActivity.getApplicationContext(), null);
-    if (paramFlutterNativeView != null) {}
-    for (;;)
-    {
-      paramActivity = new Flutter.1(paramActivity, null, paramFlutterNativeView);
-      if (paramString != null) {
-        paramActivity.setInitialRoute(paramString);
-      }
-      paramActivity.setAlpha(0.0F);
-      return paramActivity;
+    if (paramFlutterNativeView == null) {
       paramFlutterNativeView = new FlutterNativeView(paramActivity);
     }
+    paramActivity = new Flutter.1(paramActivity, null, paramFlutterNativeView);
+    if (paramString != null) {
+      paramActivity.setInitialRoute(paramString);
+    }
+    paramActivity.setAlpha(0.0F);
+    return paramActivity;
   }
   
   public static void startInitialization(Context paramContext)
@@ -35,7 +33,7 @@ public final class Flutter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.flutter.core.page.tissue.Flutter
  * JD-Core Version:    0.7.0.1
  */

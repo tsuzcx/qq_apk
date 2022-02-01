@@ -5,8 +5,8 @@ import android.support.annotation.Nullable;
 
 public class LocationRoom$RoomKey
 {
-  private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
+  private final int jdField_a_of_type_Int;
+  private final String jdField_a_of_type_JavaLangString;
   
   public LocationRoom$RoomKey(int paramInt, String paramString)
   {
@@ -31,13 +31,21 @@ public class LocationRoom$RoomKey
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (!(paramObject instanceof RoomKey)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof RoomKey;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (RoomKey)paramObject;
-    } while ((this.jdField_a_of_type_Int != paramObject.a()) || (!this.jdField_a_of_type_JavaLangString.equals(paramObject.a())));
-    return true;
+    }
+    paramObject = (RoomKey)paramObject;
+    bool1 = bool2;
+    if (this.jdField_a_of_type_Int == paramObject.a())
+    {
+      bool1 = bool2;
+      if (this.jdField_a_of_type_JavaLangString.equals(paramObject.a())) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -48,12 +56,20 @@ public class LocationRoom$RoomKey
   @NonNull
   public String toString()
   {
-    return "RoomKey{mHashCode='" + hashCode() + ", mSessionType=" + this.jdField_a_of_type_Int + ", mSessionUin=" + this.jdField_a_of_type_JavaLangString + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RoomKey{mHashCode='");
+    localStringBuilder.append(hashCode());
+    localStringBuilder.append(", mSessionType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mSessionUin=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.data.LocationRoom.RoomKey
  * JD-Core Version:    0.7.0.1
  */

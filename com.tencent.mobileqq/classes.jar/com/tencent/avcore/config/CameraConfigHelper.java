@@ -10,7 +10,7 @@ public class CameraConfigHelper
   private static final String SP_DEFAULT_VALUE = "preview-size-values=320x240,640x480;";
   private static final String SP_KEY = "CP";
   private static final String SP_NAME = "AV_CameraParameters";
-  private static CameraConfigHelper sInstance = null;
+  private static CameraConfigHelper sInstance;
   private String mCameraParameters = null;
   private WeakReference<Context> mRef;
   
@@ -24,25 +24,29 @@ public class CameraConfigHelper
   
   public static CameraConfigHelper getInstance(Context paramContext)
   {
-    if (sInstance == null) {}
-    for (;;)
-    {
+    CameraConfigHelper localCameraConfigHelper = sInstance;
+    if (localCameraConfigHelper == null) {
       try
       {
         if (sInstance == null) {
           sInstance = new CameraConfigHelper(paramContext);
         }
-        return sInstance;
       }
       finally {}
-      sInstance.updateContext(paramContext);
+    } else {
+      localCameraConfigHelper.updateContext(paramContext);
     }
+    return sInstance;
   }
   
   private void updateContext(Context paramContext)
   {
-    if ((paramContext != null) && ((this.mRef == null) || (this.mRef.get() == null))) {
-      this.mRef = new WeakReference(paramContext);
+    if (paramContext != null)
+    {
+      WeakReference localWeakReference = this.mRef;
+      if ((localWeakReference == null) || (localWeakReference.get() == null)) {
+        this.mRef = new WeakReference(paramContext);
+      }
     }
   }
   
@@ -67,22 +71,23 @@ public class CameraConfigHelper
   public void setCameraParameters(String paramString)
   {
     this.mCameraParameters = paramString;
-    if (this.mRef == null) {}
-    for (Object localObject = null;; localObject = (Context)this.mRef.get())
+    Object localObject = this.mRef;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = (Context)((WeakReference)localObject).get();
+    }
+    if (localObject != null)
     {
-      if (localObject != null)
-      {
-        localObject = ((Context)localObject).getSharedPreferences("AV_CameraParameters", 0).edit();
-        ((SharedPreferences.Editor)localObject).putString("CP", paramString);
-        ((SharedPreferences.Editor)localObject).apply();
-      }
-      return;
+      localObject = ((Context)localObject).getSharedPreferences("AV_CameraParameters", 0).edit();
+      ((SharedPreferences.Editor)localObject).putString("CP", paramString);
+      ((SharedPreferences.Editor)localObject).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.config.CameraConfigHelper
  * JD-Core Version:    0.7.0.1
  */

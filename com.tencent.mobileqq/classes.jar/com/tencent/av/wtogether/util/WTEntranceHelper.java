@@ -28,13 +28,8 @@ import com.tencent.util.URLUtil;
 public class WTEntranceHelper
   implements ILifeCycleHelper, OnActivityResultCallback
 {
-  public static final String a;
+  public static final String a = "WTEntranceHelper";
   private BaseChatPie a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = WTEntranceHelper.class.getSimpleName();
-  }
   
   public WTEntranceHelper(BaseChatPie paramBaseChatPie)
   {
@@ -43,33 +38,37 @@ public class WTEntranceHelper
   
   public static String a(String paramString1, String paramString2, int paramInt)
   {
-    int i = 1;
     paramString1 = URLUtil.a(paramString1, "inviteeUin", paramString2);
     paramString2 = new StringBuilder();
-    if (paramInt == 1) {}
-    for (paramInt = i;; paramInt = 2) {
-      return URLUtil.a(paramString1, "fromid", paramInt + "");
+    int i = 1;
+    if (paramInt == 1) {
+      paramInt = i;
+    } else {
+      paramInt = 2;
     }
+    paramString2.append(paramInt);
+    paramString2.append("");
+    return URLUtil.a(paramString1, "fromid", paramString2.toString());
   }
   
   private void a()
   {
-    ChooseFileInfo localChooseFileInfo;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a() != null))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if ((localObject != null) && (((BaseChatPie)localObject).a() != null))
     {
-      localChooseFileInfo = ChooseFileAssistant.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_JavaLangString);
-      if (localChooseFileInfo != null) {
-        break label58;
-      }
-      QLog.i(jdField_a_of_type_JavaLangString, 1, "chooseFileInfo is null, return.");
-    }
-    for (;;)
-    {
-      return;
-      label58:
-      if (localChooseFileInfo.jdField_a_of_type_Int != 4)
+      localObject = ChooseFileAssistant.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_JavaLangString);
+      if (localObject == null)
       {
-        QLog.i(jdField_a_of_type_JavaLangString, 1, "chooseFileInfo is not from micro app, return. entrance=" + localChooseFileInfo.jdField_a_of_type_Int);
+        QLog.i(jdField_a_of_type_JavaLangString, 1, "chooseFileInfo is null, return.");
+        return;
+      }
+      if (((ChooseFileInfo)localObject).jdField_a_of_type_Int != 4)
+      {
+        String str = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("chooseFileInfo is not from micro app, return. entrance=");
+        localStringBuilder.append(((ChooseFileInfo)localObject).jdField_a_of_type_Int);
+        QLog.i(str, 1, localStringBuilder.toString());
         return;
       }
       try
@@ -95,7 +94,6 @@ public class WTEntranceHelper
     localIntent.putExtra("watch_together_uinType", paramInt2);
     localIntent.putExtra("watch_together_uin", paramString);
     localIntent.putExtra("url", a("https://ti.qq.com/sportslive/index?_wwv=128&_wv=2", paramString, paramInt1));
-    if (paramInt1 == 1) {}
     paramActivity.startActivityForResult(localIntent, 2020);
   }
   
@@ -116,46 +114,54 @@ public class WTEntranceHelper
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramQQAppInterface == null) || (paramContext == null))
+    if ((paramIntent != null) && (paramQQAppInterface != null) && (paramContext != null))
     {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "params error, do nothing");
-      return;
-    }
-    Intent localIntent = new Intent(BaseApplicationImpl.getContext(), ChatActivity.class);
-    ChooseFileInfo localChooseFileInfo = (ChooseFileInfo)paramIntent.getParcelableExtra("ChooseFileInfo");
-    if (localChooseFileInfo == null)
-    {
-      QLog.w(jdField_a_of_type_JavaLangString, 1, "fileInfo is null, do nothing");
-      return;
-    }
-    int i = paramIntent.getIntExtra("key_from_type", 0);
-    int j = paramIntent.getIntExtra("watch_together_uinType", 0);
-    int k = paramIntent.getIntExtra("MicroAppType", 0);
-    Object localObject = "";
-    long l;
-    if (k == 2)
-    {
-      l = paramQQAppInterface.getPreferences().getLong("love_uin_for_current_user", 0L);
-      paramIntent = (Intent)localObject;
-      if (l <= 0L) {}
-    }
-    for (paramIntent = l + ""; TextUtils.isEmpty(paramIntent); paramIntent = paramIntent.getStringExtra("watch_together_uin"))
-    {
-      QLog.e(jdField_a_of_type_JavaLangString, 1, "uin is empty, return.fromType = " + i);
-      return;
-    }
-    localIntent.putExtra("uinname", paramIntent);
-    localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localObject != null) {
-      if (!((FriendsManager)localObject).b(paramIntent)) {
-        break label350;
+      Intent localIntent = new Intent(BaseApplicationImpl.getContext(), ChatActivity.class);
+      ChooseFileInfo localChooseFileInfo = (ChooseFileInfo)paramIntent.getParcelableExtra("ChooseFileInfo");
+      if (localChooseFileInfo == null)
+      {
+        QLog.w(jdField_a_of_type_JavaLangString, 1, "fileInfo is null, do nothing");
+        return;
       }
-    }
-    label350:
-    for (paramQQAppInterface = ContactUtils.a(paramQQAppInterface, paramIntent);; paramQQAppInterface = paramIntent)
-    {
-      if (!TextUtils.isEmpty(paramQQAppInterface)) {
-        localIntent.putExtra("uinname", paramQQAppInterface);
+      int i = paramIntent.getIntExtra("key_from_type", 0);
+      int j = paramIntent.getIntExtra("watch_together_uinType", 0);
+      if (paramIntent.getIntExtra("MicroAppType", 0) == 2)
+      {
+        long l = paramQQAppInterface.getPreferences().getLong("love_uin_for_current_user", 0L);
+        paramIntent = "";
+        if (l > 0L)
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append(l);
+          paramIntent.append("");
+          paramIntent = paramIntent.toString();
+        }
+      }
+      else
+      {
+        paramIntent = paramIntent.getStringExtra("watch_together_uin");
+      }
+      if (TextUtils.isEmpty(paramIntent))
+      {
+        paramQQAppInterface = jdField_a_of_type_JavaLangString;
+        paramContext = new StringBuilder();
+        paramContext.append("uin is empty, return.fromType = ");
+        paramContext.append(i);
+        QLog.e(paramQQAppInterface, 1, paramContext.toString());
+        return;
+      }
+      localIntent.putExtra("uinname", paramIntent);
+      FriendsManager localFriendsManager = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (localFriendsManager != null)
+      {
+        if (localFriendsManager.b(paramIntent)) {
+          paramQQAppInterface = ContactUtils.a(paramQQAppInterface, paramIntent);
+        } else {
+          paramQQAppInterface = paramIntent;
+        }
+        if (!TextUtils.isEmpty(paramQQAppInterface)) {
+          localIntent.putExtra("uinname", paramQQAppInterface);
+        }
       }
       paramQQAppInterface = new SessionInfo();
       paramQQAppInterface.jdField_a_of_type_Int = j;
@@ -171,32 +177,7 @@ public class WTEntranceHelper
       paramContext.startActivity(localIntent);
       return;
     }
-  }
-  
-  public void a(int paramInt1, int paramInt2, Intent paramIntent)
-  {
-    String str;
-    if ((paramInt2 == 4660) && (paramInt1 == 2020) && (paramIntent != null))
-    {
-      paramInt1 = paramIntent.getIntExtra("key_from_type", 0);
-      paramInt2 = paramIntent.getIntExtra("watch_together_uinType", -1);
-      str = paramIntent.getStringExtra("watch_together_uin");
-      paramIntent = (ChooseFileInfo)paramIntent.getParcelableExtra("ChooseFileInfo");
-      if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), true, new WTEntranceHelper.2(this, paramInt1, paramIntent, paramInt2, str)))
-      {
-        if (paramInt1 != 3) {
-          break label140;
-        }
-        ChooseFileAssistant.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_JavaLangString, paramIntent);
-      }
-    }
-    for (;;)
-    {
-      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), true, "AIOQAVWatchTogether", null);
-      return;
-      label140:
-      ChooseFileAssistant.a().a(paramInt2, str, paramIntent);
-    }
+    QLog.w(jdField_a_of_type_JavaLangString, 1, "params error, do nothing");
   }
   
   @NonNull
@@ -207,25 +188,45 @@ public class WTEntranceHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 14 };
+    return new int[] { 4, 15 };
+  }
+  
+  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  {
+    if ((paramInt2 == 4660) && (paramInt1 == 2020) && (paramIntent != null))
+    {
+      paramInt1 = paramIntent.getIntExtra("key_from_type", 0);
+      paramInt2 = paramIntent.getIntExtra("watch_together_uinType", -1);
+      String str = paramIntent.getStringExtra("watch_together_uin");
+      paramIntent = (ChooseFileInfo)paramIntent.getParcelableExtra("ChooseFileInfo");
+      if (ChatActivityUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), true, new WTEntranceHelper.2(this, paramInt1, paramIntent, paramInt2, str)))
+      {
+        if (paramInt1 == 3) {
+          ChooseFileAssistant.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_JavaLangString, paramIntent);
+        } else {
+          ChooseFileAssistant.a().a(paramInt2, str, paramIntent);
+        }
+        PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), true, "AIOQAVWatchTogether", null);
+      }
+    }
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    default: 
-      return;
-    case 4: 
-      a();
+      if (paramInt != 15) {
+        return;
+      }
+      ChooseFileAssistant.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_JavaLangString);
       return;
     }
-    ChooseFileAssistant.a().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().jdField_a_of_type_JavaLangString);
+    a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.util.WTEntranceHelper
  * JD-Core Version:    0.7.0.1
  */

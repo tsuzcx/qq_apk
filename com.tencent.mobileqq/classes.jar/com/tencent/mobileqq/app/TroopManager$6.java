@@ -3,16 +3,16 @@ package com.tencent.mobileqq.app;
 class TroopManager$6
   implements Runnable
 {
-  TroopManager$6(TroopManager paramTroopManager, String paramString1, String paramString2, String paramString3, int paramInt, String paramString4, String paramString5) {}
+  TroopManager$6(TroopManager paramTroopManager, String paramString) {}
   
   public void run()
   {
-    this.this$0.a(this.jdField_a_of_type_JavaLangString, this.b, this.c, this.jdField_a_of_type_Int, this.d, this.e);
+    this.this$0.b(this.a, -1L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopManager.6
  * JD-Core Version:    0.7.0.1
  */

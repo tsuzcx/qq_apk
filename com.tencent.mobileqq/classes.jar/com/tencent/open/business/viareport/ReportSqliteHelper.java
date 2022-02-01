@@ -36,11 +36,20 @@ public class ReportSqliteHelper
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
   {
-    LogUtility.b("opensdk", "sql1:" + this.jdField_a_of_type_JavaLangString);
-    LogUtility.b("opensdk", "sql2:" + this.b);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sql1:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    LogUtility.b("opensdk", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sql2:");
+    localStringBuilder.append(this.b);
+    LogUtility.b("opensdk", localStringBuilder.toString());
     paramSQLiteDatabase.execSQL(this.jdField_a_of_type_JavaLangString);
     paramSQLiteDatabase.execSQL(this.b);
-    Log.i("ReportSqliteHelper", "circleTest create table:" + this.c);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("circleTest create table:");
+    localStringBuilder.append(this.c);
+    Log.i("ReportSqliteHelper", localStringBuilder.toString());
     paramSQLiteDatabase.execSQL(this.c);
   }
   
@@ -62,7 +71,7 @@ public class ReportSqliteHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.business.viareport.ReportSqliteHelper
  * JD-Core Version:    0.7.0.1
  */

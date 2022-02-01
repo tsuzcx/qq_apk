@@ -12,14 +12,17 @@ class VideoImageExtractor$1
   
   public void onCover(int paramInt, Bitmap paramBitmap)
   {
-    Logger.i("Cover", "generated Bitmap = " + paramBitmap.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("generated Bitmap = ");
+    localStringBuilder.append(paramBitmap.toString());
+    Logger.i("Cover", localStringBuilder.toString());
     VideoImageExtractor.access$000(this.this$0).add(paramBitmap);
     VideoImageExtractor.access$100(this.this$0).countDown();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.cover.VideoImageExtractor.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,14 +25,15 @@ public class QidianCorpInfo
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-    } while (paramObject.getClass() != getClass());
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    if (paramObject.getClass() != getClass()) {
+      return false;
+    }
     paramObject = (QidianCorpInfo)paramObject;
     return Arrays.equals(this.infoByte, paramObject.infoByte);
   }
@@ -123,7 +124,7 @@ public class QidianCorpInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.data.QidianCorpInfo
  * JD-Core Version:    0.7.0.1
  */

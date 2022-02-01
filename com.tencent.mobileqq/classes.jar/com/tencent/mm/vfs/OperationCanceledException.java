@@ -8,11 +8,14 @@ public class OperationCanceledException
     this(null);
   }
   
-  public OperationCanceledException(String paramString) {}
+  public OperationCanceledException(String paramString)
+  {
+    super(paramString);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.OperationCanceledException
  * JD-Core Version:    0.7.0.1
  */

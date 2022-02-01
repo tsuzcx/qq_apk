@@ -22,19 +22,28 @@ public class Interactive3DResourceInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("GeneralAR_3D_ResourceInfo{");
-    localStringBuilder.append("key=").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuilder.append(", arType=").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", trackMode=").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mLuaScriptPath=").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mResourceDirPath='").append(this.c).append('\'');
-    localStringBuilder.append(", mMusicPath='").append(this.d).append('\'');
+    localStringBuilder.append("key=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", arType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", trackMode=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mLuaScriptPath=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", mResourceDirPath='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mMusicPath='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DResourceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -26,13 +26,15 @@ class ConfigHandler$5
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      this.this$0.notifyUI(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
+      label64:
+      break label64;
     }
+    this.this$0.notifyUI(1, false, this.jdField_a_of_type_ProtocolKQQConfigGetResourceRespInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ConfigHandler.5
  * JD-Core Version:    0.7.0.1
  */

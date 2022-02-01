@@ -7,23 +7,34 @@ import android.content.pm.PackageManager;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.view.LayoutInflater;
+import android.view.LayoutInflater.Factory2;
 import com.tencent.biz.common.util.ZipUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.LocaleManager;
+import com.tencent.mobileqq.qroute.annotation.ConfigInject;
 import com.tencent.mobileqq.utils.FileUtils;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;
+import java.util.ArrayList;
 
 public class MultiLanguageEngine
 {
   private static String jdField_a_of_type_JavaLangString = "en.lang";
+  @ConfigInject(configPath="Foundation/QQCommon/src/main/resources/Inject_MultiLanguageFactory.yml", version=1)
+  public static ArrayList<Class<? extends LayoutInflater.Factory2>> a;
   private static String b = "en-release.zip";
   private DelegateResources jdField_a_of_type_ComTencentMobileqqAppMultilanguageDelegateResources;
   private QQResourcesImpl jdField_a_of_type_ComTencentMobileqqAppMultilanguageQQResourcesImpl;
+  
+  static
+  {
+    jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    jdField_a_of_type_JavaUtilArrayList.add(MultiLanguageFactory.class);
+  }
   
   public static MultiLanguageEngine a()
   {
@@ -32,36 +43,45 @@ public class MultiLanguageEngine
   
   private static String a()
   {
-    File localFile = new File(BaseApplicationImpl.getApplication().getFilesDir(), "/multi_language");
+    File localFile = new File(BaseApplication.getContext().getFilesDir(), "/multi_language");
     if (!localFile.exists()) {
       localFile.mkdirs();
     }
-    return localFile.getAbsolutePath() + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile.getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   private void a(Context paramContext, String paramString)
   {
-    long l;
-    String str;
     if (!new File(paramString).exists())
     {
       QLog.d("MultiLanguageEngine", 1, new Object[] { "loadLanguage need unzip:", b });
-      l = System.currentTimeMillis();
-      paramString = "language" + File.separator + b;
-      str = a() + b;
-      FileUtils.a(paramContext, paramString, str);
-    }
-    try
-    {
-      ZipUtils.unZipFile(new File(str), a());
-      if (QLog.isColorLevel()) {
-        QLog.e("MultiLanguageEngine", 2, new Object[] { "copy and unzip success! cost:", Long.valueOf(System.currentTimeMillis() - Long.valueOf(l).longValue()) });
+      long l = System.currentTimeMillis();
+      paramString = new StringBuilder();
+      paramString.append("language");
+      paramString.append(File.separator);
+      paramString.append(b);
+      paramString = paramString.toString();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(b);
+      localObject = ((StringBuilder)localObject).toString();
+      FileUtils.copyAssetToFile(paramContext, paramString, (String)localObject);
+      try
+      {
+        ZipUtils.unZipFile(new File((String)localObject), a());
+        if (QLog.isColorLevel())
+        {
+          QLog.e("MultiLanguageEngine", 2, new Object[] { "copy and unzip success! cost:", Long.valueOf(System.currentTimeMillis() - Long.valueOf(l).longValue()) });
+          return;
+        }
       }
-      return;
-    }
-    catch (IOException paramContext)
-    {
-      paramContext.printStackTrace();
+      catch (IOException paramContext)
+      {
+        paramContext.printStackTrace();
+      }
     }
   }
   
@@ -78,20 +98,24 @@ public class MultiLanguageEngine
       Resources localResources = new Resources(localAssetManager, this.jdField_a_of_type_ComTencentMobileqqAppMultilanguageQQResourcesImpl.b().getDisplayMetrics(), this.jdField_a_of_type_ComTencentMobileqqAppMultilanguageQQResourcesImpl.b().getConfiguration());
       localObject = paramContext.getPackageName();
       paramContext = paramContext.getPackageManager().getPackageArchiveInfo(paramString, 1);
-      if (paramContext != null) {}
-      for (paramContext = paramContext.packageName;; paramContext = (Context)localObject)
+      if (paramContext != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqAppMultilanguageQQResourcesImpl.a(localResources, paramContext);
-        QLog.d("MultiLanguageEngine", 1, new Object[] { "loadLangPkg:", localAssetManager.toString(), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
-        return true;
-        QLog.d("MultiLanguageEngine", 1, "pkgInfo is null");
+        paramContext = paramContext.packageName;
       }
-      return false;
+      else
+      {
+        QLog.d("MultiLanguageEngine", 1, "pkgInfo is null");
+        paramContext = (Context)localObject;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqAppMultilanguageQQResourcesImpl.a(localResources, paramContext);
+      QLog.d("MultiLanguageEngine", 1, new Object[] { "loadLangPkg:", localAssetManager.toString(), " ,cost:", Long.valueOf(System.currentTimeMillis() - l) });
+      return true;
     }
     catch (Exception paramContext)
     {
       QLog.d("MultiLanguageEngine", 1, paramContext, new Object[0]);
     }
+    return false;
   }
   
   private void e(Context paramContext)
@@ -123,26 +147,33 @@ public class MultiLanguageEngine
   
   public void a(Activity paramActivity)
   {
-    if (LocaleManager.a()) {}
-    long l;
-    do
-    {
+    if (LocaleManager.a()) {
       return;
-      l = System.currentTimeMillis();
-      LayoutInflater.from(paramActivity).setFactory2(new MultiLanguageFactory(paramActivity));
-    } while (!QLog.isColorLevel());
-    QLog.d("MultiLanguageEngine", 2, new Object[] { "register cost:", Long.valueOf(System.currentTimeMillis() - l) });
+    }
+    long l = System.currentTimeMillis();
+    LayoutInflater localLayoutInflater = LayoutInflater.from(paramActivity);
+    try
+    {
+      localLayoutInflater.setFactory2((LayoutInflater.Factory2)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).getConstructor(new Class[] { Activity.class }).newInstance(new Object[] { paramActivity }));
+      if (QLog.isColorLevel())
+      {
+        QLog.d("MultiLanguageEngine", 2, new Object[] { "register cost:", Long.valueOf(System.currentTimeMillis() - l) });
+        return;
+      }
+    }
+    catch (Exception paramActivity)
+    {
+      QLog.d("MultiLanguageEngine", 1, "register error:", paramActivity);
+    }
   }
   
   public void a(Context paramContext)
   {
-    boolean bool = false;
-    if (!LocaleManager.a()) {
-      bool = true;
+    QLog.d("MultiLanguageEngine", 1, new Object[] { "initAndDelegate:", Boolean.valueOf(LocaleManager.a() ^ true), ", context:", paramContext });
+    if (paramContext == null) {
+      return;
     }
-    QLog.d("MultiLanguageEngine", 1, new Object[] { "initAndDelegate:", Boolean.valueOf(bool), ", context:", paramContext });
-    if (paramContext == null) {}
-    while (LocaleManager.a()) {
+    if (LocaleManager.a()) {
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppMultilanguageQQResourcesImpl = new QQResourcesImpl(paramContext);
@@ -152,31 +183,39 @@ public class MultiLanguageEngine
   
   public void b(Context paramContext)
   {
-    if (LocaleManager.b()) {
-      a(paramContext, a() + jdField_a_of_type_JavaLangString);
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqAppMultilanguageQQResourcesImpl == null) {
+    if (LocaleManager.b())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a());
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      a(paramContext, localStringBuilder.toString());
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppMultilanguageQQResourcesImpl.a(null, null);
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqAppMultilanguageQQResourcesImpl;
+    if (paramContext != null) {
+      paramContext.a(null, null);
+    }
   }
   
   public void c(Context paramContext)
   {
     long l = System.currentTimeMillis();
-    FileUtils.a(a());
+    FileUtils.deleteDirectory(a());
     b(paramContext);
     QLog.d("MultiLanguageEngine", 1, new Object[] { "update lang pkg! cost:", Long.valueOf(System.currentTimeMillis() - l) });
   }
   
   public void d(Context paramContext)
   {
-    a(paramContext, a() + jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    a(paramContext, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.multilanguage.MultiLanguageEngine
  * JD-Core Version:    0.7.0.1
  */

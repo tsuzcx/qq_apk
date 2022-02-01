@@ -17,22 +17,18 @@ class Login$6
   public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
   {
     if (paramCharSequence.length() == 0) {
-      this.a.a.setVisibility(4);
+      this.a.mDelBtn.setVisibility(4);
+    } else if (paramInt3 < 2) {
+      this.a.mDelBtn.setVisibility(0);
     }
-    for (;;)
-    {
-      this.a.jdField_b_of_type_Boolean = false;
-      this.a.jdField_b_of_type_AndroidWidgetEditText.setText("");
-      return;
-      if (paramInt3 < 2) {
-        this.a.a.setVisibility(0);
-      }
-    }
+    paramCharSequence = this.a;
+    paramCharSequence.autoFillInPasswd = false;
+    paramCharSequence.pswd.setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqconnect.wtlogin.Login.6
  * JD-Core Version:    0.7.0.1
  */

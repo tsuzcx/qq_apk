@@ -31,14 +31,15 @@ public final class mobile_sub_setuncare_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.action, 0);
-    if (this.uncare != null) {
-      paramJceOutputStream.write(this.uncare, 1);
+    s_uncare locals_uncare = this.uncare;
+    if (locals_uncare != null) {
+      paramJceOutputStream.write(locals_uncare, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_setuncare_req
  * JD-Core Version:    0.7.0.1
  */

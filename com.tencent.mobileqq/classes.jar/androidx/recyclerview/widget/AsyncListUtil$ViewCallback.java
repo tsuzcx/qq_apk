@@ -15,25 +15,17 @@ public abstract class AsyncListUtil$ViewCallback
     int i = paramArrayOfInt1[1] - paramArrayOfInt1[0] + 1;
     int j = i / 2;
     int m = paramArrayOfInt1[0];
-    int k;
-    if (paramInt == 1)
-    {
+    if (paramInt == 1) {
       k = i;
-      paramArrayOfInt2[0] = (m - k);
-      k = paramArrayOfInt1[1];
-      if (paramInt != 2) {
-        break label65;
-      }
-    }
-    for (;;)
-    {
-      paramArrayOfInt2[1] = (k + i);
-      return;
+    } else {
       k = j;
-      break;
-      label65:
+    }
+    paramArrayOfInt2[0] = (m - k);
+    int k = paramArrayOfInt1[1];
+    if (paramInt != 2) {
       i = j;
     }
+    paramArrayOfInt2[1] = (k + i);
   }
   
   @UiThread
@@ -47,7 +39,7 @@ public abstract class AsyncListUtil$ViewCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.AsyncListUtil.ViewCallback
  * JD-Core Version:    0.7.0.1
  */

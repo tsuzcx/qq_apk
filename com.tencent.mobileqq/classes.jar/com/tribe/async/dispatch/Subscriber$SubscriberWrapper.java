@@ -24,18 +24,13 @@ public class Subscriber$SubscriberWrapper
   
   public boolean equals(Object paramObject)
   {
-    boolean bool = true;
-    if ((paramObject instanceof SubscriberWrapper)) {
-      return (((SubscriberWrapper)paramObject).mSubscriber.equals(this.mSubscriber)) && (((SubscriberWrapper)paramObject).getLooper().equals(getLooper()));
-    }
-    if ((paramObject instanceof Subscriber.LooperSubscriber))
+    if ((paramObject instanceof SubscriberWrapper))
     {
-      if ((paramObject.equals(this.mSubscriber)) && (((Subscriber.LooperSubscriber)paramObject).getLooper().equals(getLooper()))) {}
-      for (;;)
-      {
-        return bool;
-        bool = false;
-      }
+      paramObject = (SubscriberWrapper)paramObject;
+      return (paramObject.mSubscriber.equals(this.mSubscriber)) && (paramObject.getLooper().equals(getLooper()));
+    }
+    if ((paramObject instanceof Subscriber.LooperSubscriber)) {
+      return (paramObject.equals(this.mSubscriber)) && (((Subscriber.LooperSubscriber)paramObject).getLooper().equals(getLooper()));
     }
     if ((paramObject instanceof Subscriber)) {
       return paramObject.equals(this.mSubscriber);
@@ -55,7 +50,7 @@ public class Subscriber$SubscriberWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.dispatch.Subscriber.SubscriberWrapper
  * JD-Core Version:    0.7.0.1
  */

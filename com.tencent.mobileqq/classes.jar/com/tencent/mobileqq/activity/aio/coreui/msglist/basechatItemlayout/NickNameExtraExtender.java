@@ -27,65 +27,61 @@ public class NickNameExtraExtender
   
   private SpannableStringBuilder a(CharSequence paramCharSequence1, TextView paramTextView, int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, CharSequence paramCharSequence2, ColorStateList paramColorStateList, boolean paramBoolean4)
   {
-    if ((paramCharSequence1 == null) || ((!paramBoolean1) && (!paramBoolean2) && (!paramBoolean3)))
+    if ((paramCharSequence1 != null) && ((paramBoolean1) || (paramBoolean2) || (paramBoolean3)))
     {
-      paramTextView = null;
-      return paramTextView;
-    }
-    paramColorStateList = paramTextView.getEllipsize();
-    if (paramColorStateList != null)
-    {
-      if (!paramBoolean1) {
-        break label280;
+      paramColorStateList = paramTextView.getEllipsize();
+      if (paramColorStateList != null)
+      {
+        int i = paramInt;
+        double d1;
+        double d2;
+        if (paramBoolean1)
+        {
+          d1 = paramInt;
+          d2 = Math.ceil(BaseChatItemLayout.d * 13.0F);
+          Double.isNaN(d1);
+          i = (int)(d1 - d2);
+        }
+        paramInt = i;
+        if (paramBoolean2)
+        {
+          d1 = i;
+          d2 = Math.ceil(BaseChatItemLayout.d * 15.0F);
+          Double.isNaN(d1);
+          paramInt = (int)(d1 - d2);
+        }
+        if (paramBoolean3) {
+          paramInt = AIOUtils.b(136.0F, this.mContext.getResources());
+        }
+        i = paramInt;
+        if (paramInt < 0) {
+          i = 0;
+        }
+        paramCharSequence1 = new SpannableStringBuilder(TextUtils.ellipsize(paramCharSequence1, paramTextView.getPaint(), i, paramColorStateList));
       }
-      paramInt = (int)(paramInt - Math.ceil(13.0F * BaseChatItemLayout.d));
-    }
-    label270:
-    label280:
-    for (;;)
-    {
-      int i = paramInt;
-      if (paramBoolean2) {
-        i = (int)(paramInt - Math.ceil(15.0F * BaseChatItemLayout.d));
+      else
+      {
+        paramCharSequence1 = new SpannableStringBuilder(paramCharSequence1);
       }
-      if (paramBoolean3) {
-        i = AIOUtils.a(136.0F, this.mContext.getResources());
-      }
-      paramInt = i;
-      if (i < 0) {
-        paramInt = 0;
-      }
-      paramCharSequence1 = new SpannableStringBuilder(TextUtils.ellipsize(paramCharSequence1, paramTextView.getPaint(), paramInt, paramColorStateList));
-      label127:
       if (paramBoolean1)
       {
-        paramTextView = this.mContext.getResources().getDrawable(2130847785);
-        paramTextView.setBounds(0, 0, (int)(13.0F * BaseChatItemLayout.d), (int)(13.0F * BaseChatItemLayout.d));
+        paramTextView = this.mContext.getResources().getDrawable(2130847652);
+        paramTextView.setBounds(0, 0, (int)(BaseChatItemLayout.d * 13.0F), (int)(BaseChatItemLayout.d * 13.0F));
         paramTextView = new ImageSpan(paramTextView, 0);
         paramColorStateList = new SpannableString(" ");
         paramColorStateList.setSpan(paramTextView, 0, 1, 33);
-        if ((paramCharSequence1.length() <= 1) || (paramCharSequence1.charAt(paramCharSequence1.length() - 1) != ':')) {
-          break label270;
+        if ((paramCharSequence1.length() > 1) && (paramCharSequence1.charAt(paramCharSequence1.length() - 1) == ':')) {
+          paramCharSequence1.insert(paramCharSequence1.length() - 1, paramColorStateList);
+        } else {
+          paramCharSequence1.append(paramColorStateList);
         }
-        paramCharSequence1.insert(paramCharSequence1.length() - 1, paramColorStateList);
       }
-      for (;;)
-      {
-        paramTextView = paramCharSequence1;
-        if (!paramBoolean3) {
-          break;
-        }
-        paramTextView = paramCharSequence1;
-        if (TextUtils.isEmpty(paramCharSequence2)) {
-          break;
-        }
+      if ((paramBoolean3) && (!TextUtils.isEmpty(paramCharSequence2))) {
         paramCharSequence1.append(paramCharSequence2);
-        return paramCharSequence1;
-        paramCharSequence1 = new SpannableStringBuilder(paramCharSequence1);
-        break label127;
-        paramCharSequence1.append(paramColorStateList);
       }
+      return paramCharSequence1;
     }
+    return null;
   }
   
   private void a()
@@ -93,7 +89,7 @@ public class NickNameExtraExtender
     if (this.a == null)
     {
       this.a = new TextView(this.mContext);
-      this.a.setId(2131364625);
+      this.a.setId(2131364512);
       this.a.setGravity(48);
       this.a.setTextSize(2, 12.0F);
       this.a.setIncludeFontPadding(false);
@@ -103,10 +99,10 @@ public class NickNameExtraExtender
     }
   }
   
-  public NickNameExtenderViewBasicAbility getBasicAbility()
+  public BaseChatItemLayoutViewBasicAbility getBasicAbility()
   {
     if (this.ability == null) {
-      this.ability = new NickNameExtenderViewBasicAbilityImpl(this.a);
+      this.ability = new BaseChatItemLayoutViewBasicAbilityImpl(this.a);
     }
     return this.ability;
   }
@@ -117,7 +113,7 @@ public class NickNameExtraExtender
     return this.a;
   }
   
-  public void updateView(NickNameLayoutProcessor.NickNameLayoutData paramNickNameLayoutData)
+  public void updateView(NickNameChatItemLayoutProcessor.NickNameLayoutData paramNickNameLayoutData)
   {
     paramNickNameLayoutData = a("", this.a, BaseChatItemLayout.f, paramNickNameLayoutData.jdField_b_of_type_Boolean, paramNickNameLayoutData.c, paramNickNameLayoutData.d, paramNickNameLayoutData.jdField_b_of_type_JavaLangCharSequence, paramNickNameLayoutData.jdField_b_of_type_AndroidContentResColorStateList, paramNickNameLayoutData.a);
     if (paramNickNameLayoutData != null)
@@ -131,7 +127,7 @@ public class NickNameExtraExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtraExtender
  * JD-Core Version:    0.7.0.1
  */

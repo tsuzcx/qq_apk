@@ -21,7 +21,7 @@ import android.widget.FrameLayout.LayoutParams;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class RelatedEmoSlideBottomPanel
@@ -72,9 +72,11 @@ public class RelatedEmoSlideBottomPanel
   
   private void animateToTargetHeight(int paramInt)
   {
-    if (this.mContentView.getY() != paramInt)
+    float f1 = this.mContentView.getY();
+    float f2 = paramInt;
+    if (f1 != f2)
     {
-      animTranslationY(new float[] { this.mContentView.getY(), paramInt });
+      animTranslationY(new float[] { this.mContentView.getY(), f2 });
       this.mConsumeTouchEvent = false;
       doInterceptTouchEvent(false);
     }
@@ -105,32 +107,34 @@ public class RelatedEmoSlideBottomPanel
     boolean bool2 = ThemeUtil.isNowThemeIsNight(null, false, null);
     if (bool1)
     {
-      this.mContentView.setBackgroundResource(2130850074);
-      this.mContentView.setOrientation(1);
-      addView(this.mContentView);
-      i = dp2px(38);
-      this.mDragArea = new FrameLayout(getContext());
-      localObject = new LinearLayout.LayoutParams(-1, i);
-      this.mDragArea.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.mContentView.addView(this.mDragArea);
-      this.mIvDragIcon = new ImageView(getContext());
-      localObject = new FrameLayout.LayoutParams(i, i);
-      ((FrameLayout.LayoutParams)localObject).gravity = 17;
-      this.mIvDragIcon.setImageResource(2130850076);
-      this.mIvDragIcon.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.mDragArea.addView(this.mIvDragIcon);
-      setOnClickListener(new RelatedEmoSlideBottomPanel.1(this));
-      this.mDragArea.setOnClickListener(new RelatedEmoSlideBottomPanel.2(this));
-      setVisibility(4);
-      return;
+      this.mContentView.setBackgroundResource(2130850000);
     }
-    localObject = this.mContentView;
-    if (bool2) {}
-    for (int i = 2130850073;; i = 2130850072)
+    else
     {
+      localObject = this.mContentView;
+      if (bool2) {
+        i = 2130849999;
+      } else {
+        i = 2130849998;
+      }
       ((LinearLayout)localObject).setBackgroundResource(i);
-      break;
     }
+    this.mContentView.setOrientation(1);
+    addView(this.mContentView);
+    int i = dp2px(38);
+    this.mDragArea = new FrameLayout(getContext());
+    localObject = new LinearLayout.LayoutParams(-1, i);
+    this.mDragArea.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.mContentView.addView(this.mDragArea);
+    this.mIvDragIcon = new ImageView(getContext());
+    localObject = new FrameLayout.LayoutParams(i, i);
+    ((FrameLayout.LayoutParams)localObject).gravity = 17;
+    this.mIvDragIcon.setImageResource(2130850002);
+    this.mIvDragIcon.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.mDragArea.addView(this.mIvDragIcon);
+    setOnClickListener(new RelatedEmoSlideBottomPanel.1(this));
+    this.mDragArea.setOnClickListener(new RelatedEmoSlideBottomPanel.2(this));
+    setVisibility(4);
   }
   
   private void onActionMove(MotionEvent paramMotionEvent)
@@ -148,66 +152,71 @@ public class RelatedEmoSlideBottomPanel
     if (this.mPanelDraging)
     {
       this.mPanelDraging = false;
-      if (this.mCallback != null) {
-        this.mCallback.onPanelEndDrag();
+      RelatedEmoSlideBottomPanel.Callback localCallback = this.mCallback;
+      if (localCallback != null) {
+        localCallback.onPanelEndDrag();
       }
     }
-    if (this.mContentHeight == 0) {
-      throw new IllegalArgumentException("content height is 0 !!!");
-    }
-    float f = (this.mContentView.getY() - maxTopY()) * 1.0F / this.mContentHeight;
-    if ((this.mSlideStartDir == 1) && (f > 0.2F))
+    if (this.mContentHeight != 0)
     {
-      animateToTargetHeight(getMeasuredHeight());
+      float f = (this.mContentView.getY() - maxTopY()) * 1.0F / this.mContentHeight;
+      if ((this.mSlideStartDir == 1) && (f > 0.2F))
+      {
+        animateToTargetHeight(getMeasuredHeight());
+        return;
+      }
+      animateToTargetHeight(maxTopY());
       return;
     }
-    animateToTargetHeight(maxTopY());
+    throw new IllegalArgumentException("content height is 0 !!!");
   }
   
   private void swipeDirectionJudge(float paramFloat)
   {
-    if (paramFloat > 0.0F) {
+    if (paramFloat > 0.0F)
+    {
       this.mSlideStartDir = 1;
-    }
-    while (paramFloat >= 0.0F) {
       return;
     }
-    this.mSlideStartDir = 2;
+    if (paramFloat < 0.0F) {
+      this.mSlideStartDir = 2;
+    }
   }
   
   private float updateTranslationY(int paramInt)
   {
-    float f3 = this.mContentView.getY() - paramInt;
-    float f4 = paramInt;
-    float f1;
+    float f1 = this.mContentView.getY();
+    float f3 = paramInt;
+    float f4 = f1 - f3;
+    if (f4 > getMeasuredHeight()) {
+      f1 = f3 - (f4 - getMeasuredHeight());
+    }
     float f2;
-    if (f3 > getMeasuredHeight())
+    for (paramInt = getMeasuredHeight();; paramInt = maxTopY())
     {
-      f1 = f4 - (f3 - getMeasuredHeight());
-      f2 = getMeasuredHeight();
+      f2 = paramInt;
+      break;
+      f2 = f4;
+      f1 = f3;
+      if (f4 >= maxTopY()) {
+        break;
+      }
+      f1 = f3 - (maxTopY() - f4);
     }
-    for (;;)
+    if (!this.mPanelDraging)
     {
-      if (!this.mPanelDraging)
-      {
-        this.mPanelDraging = true;
-        if (this.mCallback != null) {
-          this.mCallback.onPanelStartDrag();
-        }
-      }
-      if (this.mCallback != null) {
-        this.mCallback.updatePanelDistance(f2 - maxTopY());
-      }
-      this.mContentView.setY(f2);
-      return f1;
-      f1 = f4;
-      f2 = f3;
-      if (f3 < maxTopY())
-      {
-        f1 = f4 - (maxTopY() - f3);
-        f2 = maxTopY();
+      this.mPanelDraging = true;
+      localCallback = this.mCallback;
+      if (localCallback != null) {
+        localCallback.onPanelStartDrag();
       }
     }
+    RelatedEmoSlideBottomPanel.Callback localCallback = this.mCallback;
+    if (localCallback != null) {
+      localCallback.updatePanelDistance(f2 - maxTopY());
+    }
+    this.mContentView.setY(f2);
+    return f1;
   }
   
   public void animTranslationY(boolean paramBoolean, float... paramVarArgs)
@@ -224,13 +233,46 @@ public class RelatedEmoSlideBottomPanel
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    int i = paramMotionEvent.getAction();
     boolean bool2 = false;
-    switch (paramMotionEvent.getAction())
+    if (i != 0)
     {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i == 3)
+          {
+            this.mIsTouch = false;
+            this.mMoved = false;
+          }
+        }
+        else if (this.mConsumeTouchEvent)
+        {
+          this.mMoved = true;
+          onActionMove(paramMotionEvent);
+          return true;
+        }
+      }
+      else
+      {
+        this.mIsTouch = false;
+        if (this.mConsumeTouchEvent) {
+          if (((this.mMoveDistance == 0) && (!this.mMoved)) || ((this.mMoved) && (this.mMoveDistance < this.mScaledTouchSlop)))
+          {
+            this.mDragArea.performClick();
+          }
+          else
+          {
+            this.mDismissType = 3;
+            onActionUp();
+          }
+        }
+        this.mMoved = false;
+      }
     }
-    while (this.mConsumeTouchEvent)
+    else
     {
-      return true;
       this.mLastY = paramMotionEvent.getRawY();
       this.mIsTouch = true;
       this.mMoved = false;
@@ -253,33 +295,14 @@ public class RelatedEmoSlideBottomPanel
       }
       if (QLog.isColorLevel())
       {
-        QLog.d("RelatedSlideBottomPanel", 2, "mConsumeTouchEvent : " + this.mConsumeTouchEvent);
-        continue;
-        if (this.mConsumeTouchEvent)
-        {
-          this.mMoved = true;
-          onActionMove(paramMotionEvent);
-          return true;
-          this.mIsTouch = false;
-          if (this.mConsumeTouchEvent)
-          {
-            if (((this.mMoveDistance != 0) || (this.mMoved)) && ((!this.mMoved) || (this.mMoveDistance >= this.mScaledTouchSlop))) {
-              break label294;
-            }
-            this.mDragArea.performClick();
-          }
-          for (;;)
-          {
-            this.mMoved = false;
-            break;
-            label294:
-            this.mDismissType = 3;
-            onActionUp();
-          }
-          this.mIsTouch = false;
-          this.mMoved = false;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("mConsumeTouchEvent : ");
+        ((StringBuilder)localObject).append(this.mConsumeTouchEvent);
+        QLog.d("RelatedSlideBottomPanel", 2, ((StringBuilder)localObject).toString());
       }
+    }
+    if (this.mConsumeTouchEvent) {
+      return true;
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -320,53 +343,51 @@ public class RelatedEmoSlideBottomPanel
   
   public void onNestedPreScroll(View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
   {
+    float f1 = this.mContentView.getY();
+    float f2 = maxTopY();
     int i = 0;
-    if (this.mContentView.getY() == maxTopY()) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
+    if (f1 == f2) {
+      paramInt1 = 1;
+    } else {
+      paramInt1 = 0;
+    }
+    if (this.mContentView.getY() > maxTopY()) {
+      i = 1;
+    }
+    if (((paramInt1 != 0) && (!ViewCompat.canScrollVertically(paramView, paramInt2))) || (i != 0))
     {
-      if (this.mContentView.getY() > maxTopY()) {
-        i = 1;
-      }
-      if (((paramInt1 != 0) && (!ViewCompat.canScrollVertically(paramView, paramInt2))) || (i != 0))
-      {
-        swipeDirectionJudge(-paramInt2);
-        paramArrayOfInt[1] = ((int)updateTranslationY(paramInt2));
-      }
-      return;
+      swipeDirectionJudge(-paramInt2);
+      paramArrayOfInt[1] = ((int)updateTranslationY(paramInt2));
     }
   }
   
   public void onNestedScroll(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    float f2;
-    float f1;
-    if (this.mContentView.getY() >= maxTopY())
-    {
+    if (this.mContentView.getY() >= maxTopY()) {
       paramInt1 = 1;
-      if (paramInt1 != 0)
-      {
-        f2 = this.mContentView.getY() - paramInt4;
-        if (f2 <= getMeasuredHeight()) {
-          break label100;
-        }
-        f1 = getMeasuredHeight();
-      }
+    } else {
+      paramInt1 = 0;
     }
-    for (;;)
+    if (paramInt1 != 0)
     {
+      float f2 = this.mContentView.getY() - paramInt4;
+      if (f2 > getMeasuredHeight()) {}
+      float f1;
+      for (paramInt1 = getMeasuredHeight();; paramInt1 = maxTopY())
+      {
+        f1 = paramInt1;
+        break;
+        f1 = f2;
+        if (f2 >= maxTopY()) {
+          break;
+        }
+      }
       swipeDirectionJudge(-paramInt4);
-      if (this.mCallback != null) {
-        this.mCallback.updatePanelDistance(f1 - maxTopY());
+      paramView = this.mCallback;
+      if (paramView != null) {
+        paramView.updatePanelDistance(f1 - maxTopY());
       }
       this.mContentView.setY(f1);
-      return;
-      paramInt1 = 0;
-      break;
-      label100:
-      f1 = f2;
-      if (f2 < maxTopY()) {
-        f1 = maxTopY();
-      }
     }
   }
   
@@ -408,7 +429,7 @@ public class RelatedEmoSlideBottomPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.relateemo.RelatedEmoSlideBottomPanel
  * JD-Core Version:    0.7.0.1
  */

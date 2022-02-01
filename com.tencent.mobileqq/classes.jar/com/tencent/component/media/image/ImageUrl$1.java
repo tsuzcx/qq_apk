@@ -8,37 +8,31 @@ final class ImageUrl$1
 {
   public ImageUrl createFromParcel(Parcel paramParcel)
   {
-    boolean bool2 = true;
     ImageUrl localImageUrl = new ImageUrl();
     localImageUrl.url = paramParcel.readString();
     localImageUrl.urlKey = paramParcel.readString();
-    if (paramParcel.readInt() == 1)
-    {
+    int i = paramParcel.readInt();
+    boolean bool2 = false;
+    if (i == 1) {
       bool1 = true;
-      localImageUrl.isSuperResolutionUrl = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label106;
-      }
+    } else {
+      bool1 = false;
+    }
+    localImageUrl.isSuperResolutionUrl = bool1;
+    if (paramParcel.readInt() == 1) {
       bool1 = true;
-      label55:
-      localImageUrl.isHighScaleUrl = bool1;
-      if (paramParcel.readInt() != 1) {
-        break label111;
-      }
-    }
-    label106:
-    label111:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localImageUrl.isNetWorkUrl = bool1;
-      localImageUrl.urlKeyHashCode = Integer.valueOf(paramParcel.readInt());
-      localImageUrl.bigUrl = paramParcel.readString();
-      return localImageUrl;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label55;
     }
+    localImageUrl.isHighScaleUrl = bool1;
+    boolean bool1 = bool2;
+    if (paramParcel.readInt() == 1) {
+      bool1 = true;
+    }
+    localImageUrl.isNetWorkUrl = bool1;
+    localImageUrl.urlKeyHashCode = Integer.valueOf(paramParcel.readInt());
+    localImageUrl.bigUrl = paramParcel.readString();
+    return localImageUrl;
   }
   
   public ImageUrl[] newArray(int paramInt)
@@ -48,7 +42,7 @@ final class ImageUrl$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.ImageUrl.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,7 +7,7 @@ import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.image.DownloadParams.DecodeHandler;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.vip.jsoninflate.model.ViewModel;
 import org.json.JSONObject;
@@ -25,7 +25,7 @@ public class ProfileTemplateLikeViewModule
     ((TemplateLikeView)paramView).a(1);
   }
   
-  public ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
+  protected ViewGroup.LayoutParams a(ViewGroup.LayoutParams paramLayoutParams, JSONObject paramJSONObject)
   {
     this.jdField_a_of_type_Int = -2;
     this.b = a(paramJSONObject.optString("height"));
@@ -42,55 +42,57 @@ public class ProfileTemplateLikeViewModule
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    String str = paramString;
+    Object localObject = paramString;
     if (!paramString.startsWith("http"))
     {
-      str = paramString;
+      localObject = paramString;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        if (!this.jdField_a_of_type_JavaLangString.startsWith("http")) {
-          break label114;
+        if (this.jdField_a_of_type_JavaLangString.startsWith("http"))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append(paramString);
+          localObject = ((StringBuilder)localObject).toString();
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("it have the illegal url prefix=");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+          QLog.e("JsonInflateViewModel", 1, ((StringBuilder)localObject).toString());
+          localObject = paramString;
         }
       }
     }
-    for (str = this.jdField_a_of_type_JavaLangString + paramString;; str = paramString)
-    {
-      paramString = URLDrawable.URLDrawableOptions.obtain();
-      paramString.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      paramString.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-      paramString.mPlayGifImage = false;
-      if (paramDecodeHandler != null) {
-        paramString.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
-      }
-      paramString = URLDrawable.getDrawable(str, paramString);
-      paramString.setDecodeHandler(paramDecodeHandler);
-      return paramString;
-      label114:
-      QLog.e("JsonInflateViewModel", 1, "it have the illegal url prefix=" + this.jdField_a_of_type_JavaLangString);
+    paramString = URLDrawable.URLDrawableOptions.obtain();
+    paramString.mLoadingDrawable = URLDrawableHelperConstants.a;
+    paramString.mFailedDrawable = URLDrawableHelperConstants.a;
+    paramString.mPlayGifImage = false;
+    if (paramDecodeHandler != null) {
+      paramString.mMemoryCacheKeySuffix = paramDecodeHandler.toString();
     }
+    paramString = URLDrawable.getDrawable((String)localObject, paramString);
+    paramString.setDecodeHandler(paramDecodeHandler);
+    return paramString;
   }
   
-  public void a(String paramString1, String paramString2)
+  protected void a(String paramString1, String paramString2)
   {
-    if ("bg".equals(paramString1)) {
+    if ("bg".equals(paramString1))
+    {
       if ((this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView)) {
         ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).setVoteContainerBackground(a(paramString2, null));
       }
     }
-    do
+    else if ("style".equals(paramString1))
     {
-      return;
-      if (!"style".equals(paramString1)) {
-        break;
+      if ((this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView)) {
+        ((TemplateLikeView)this.jdField_a_of_type_AndroidViewView).a("1".equals(paramString2) ^ true);
       }
-    } while (!(this.jdField_a_of_type_AndroidViewView instanceof TemplateLikeView));
-    paramString1 = (TemplateLikeView)this.jdField_a_of_type_AndroidViewView;
-    if ("1".equals(paramString2)) {}
-    for (int i = 0;; i = 1)
-    {
-      paramString1.a(i);
-      return;
     }
-    super.a(paramString1, paramString2);
+    else {
+      super.a(paramString1, paramString2);
+    }
   }
   
   public void c()
@@ -100,7 +102,7 @@ public class ProfileTemplateLikeViewModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.ProfileTemplateLikeViewModule
  * JD-Core Version:    0.7.0.1
  */

@@ -125,24 +125,16 @@ public class DownloadTask
     this.jdField_f_of_type_JavaLangString = "Vip";
     this.jdField_a_of_type_Byte = 0;
     this.jdField_a_of_type_ComTencentMobileqqVipDownloadTask$ReportInfo = new DownloadTask.ReportInfo();
-    if (paramList != null)
-    {
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      if (paramMap == null) {
-        break label269;
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilMap = paramMap;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_d_of_type_Int = 2;
-      return;
+    if (paramList == null) {
       paramList = new ArrayList();
-      break;
-      label269:
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    if (paramMap == null) {
       paramMap = new HashMap();
     }
+    this.jdField_a_of_type_JavaUtilMap = paramMap;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_d_of_type_Int = 2;
   }
   
   public int a()
@@ -181,18 +173,19 @@ public class DownloadTask
   
   public void a(long paramLong1, long paramLong2, int paramInt)
   {
-    float f1 = 100.0F;
     this.jdField_a_of_type_Long = paramLong1;
     this.jdField_b_of_type_Long = paramLong2;
     this.jdField_c_of_type_Int = paramInt;
-    if (this.jdField_b_of_type_Long <= 0L) {
+    paramLong1 = this.jdField_b_of_type_Long;
+    float f1 = 100.0F;
+    if (paramLong1 <= 0L)
+    {
       f1 = 30.0F;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Float = ((f1 + paramInt * 100) / this.jdField_a_of_type_JavaUtilList.size());
-      return;
-      if (this.jdField_b_of_type_Long >= this.jdField_a_of_type_Long)
+      paramLong2 = this.jdField_a_of_type_Long;
+      if (paramLong1 >= paramLong2)
       {
         if (paramInt + 1 == this.jdField_a_of_type_JavaUtilList.size())
         {
@@ -201,9 +194,10 @@ public class DownloadTask
         }
       }
       else {
-        f1 = 100.0F * (float)this.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Long;
+        f1 = (float)paramLong1 * 100.0F / (float)paramLong2;
       }
     }
+    this.jdField_a_of_type_Float = ((paramInt * 100 + f1) / this.jdField_a_of_type_JavaUtilList.size());
   }
   
   public void a(Bundle paramBundle)
@@ -218,36 +212,43 @@ public class DownloadTask
   
   public void a(DownloadTask paramDownloadTask)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask,task.key=" + paramDownloadTask.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("DownloadTask.addDuplicateListenerTask,task.key=");
+      ((StringBuilder)???).append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      QLog.d("DownloadTask", 2, ((StringBuilder)???).toString());
     }
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_JavaUtilArrayList == null) {
         this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
       }
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() < 5) {
+      if (this.jdField_a_of_type_JavaUtilArrayList.size() < 5)
+      {
         this.jdField_a_of_type_JavaUtilArrayList.add(paramDownloadTask);
       }
-      while (!QLog.isColorLevel()) {
-        return;
+      else if (QLog.isColorLevel())
+      {
+        paramDownloadTask = new StringBuilder();
+        paramDownloadTask.append("DownloadTask.addDuplicateListenerTask, taskList.size() >= DUPLICATE_LIMIT,size=");
+        paramDownloadTask.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        QLog.d("DownloadTask", 2, paramDownloadTask.toString());
       }
-      QLog.d("DownloadTask", 2, "DownloadTask.addDuplicateListenerTask, taskList.size() >= DUPLICATE_LIMIT,size=" + this.jdField_a_of_type_JavaUtilArrayList.size());
+      return;
     }
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {}
-    for (;;)
-    {
-      return;
+    if ((paramString1 != null) && (paramString2 != null)) {
       try
       {
         if (this.jdField_b_of_type_JavaUtilMap == null) {
           this.jdField_b_of_type_JavaUtilMap = new HashMap();
         }
         this.jdField_b_of_type_JavaUtilMap.put(paramString1, paramString2);
+        return;
       }
       finally {}
     }
@@ -265,16 +266,21 @@ public class DownloadTask
   
   public boolean a(byte paramByte)
   {
-    return ((byte)(this.jdField_a_of_type_Byte | 0x0) & paramByte) == paramByte;
+    int i1 = this.jdField_a_of_type_Byte;
+    boolean bool = false;
+    if (((byte)(i1 | 0x0) & paramByte) == paramByte) {
+      bool = true;
+    }
+    return bool;
   }
   
   public int b()
   {
-    int i1 = 0;
-    if (this.jdField_a_of_type_AndroidOsBundle != null) {
-      i1 = this.jdField_a_of_type_AndroidOsBundle.getInt("id");
+    Bundle localBundle = this.jdField_a_of_type_AndroidOsBundle;
+    if (localBundle != null) {
+      return localBundle.getInt("id");
     }
-    return i1;
+    return 0;
   }
   
   public void b()
@@ -282,32 +288,29 @@ public class DownloadTask
     if (a() != null) {
       a().onProgress(this);
     }
-    for (;;)
+    int i1;
+    label141:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
         {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
-              break label135;
-            }
-            localDownloadTask.a(a());
-            localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localDownloadTask.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
-            localDownloadTask.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
-            localDownloadTask.a().onProgress(localDownloadTask);
+          DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
+            break label141;
           }
+          localDownloadTask.a(a());
+          localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+          localDownloadTask.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+          localDownloadTask.jdField_b_of_type_Long = this.jdField_b_of_type_Long;
+          localDownloadTask.a().onProgress(localDownloadTask);
+          break label141;
         }
       }
       return;
-      label135:
-      i1 -= 1;
     }
   }
   
@@ -326,30 +329,27 @@ public class DownloadTask
     if (a() != null) {
       a().onCancel(this);
     }
-    for (;;)
+    int i1;
+    label125:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
         {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
-              break label119;
-            }
-            localDownloadTask.a(a());
-            localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localDownloadTask.a().onCancel(localDownloadTask);
+          DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
+            break label125;
           }
+          localDownloadTask.a(a());
+          localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+          localDownloadTask.a().onCancel(localDownloadTask);
+          break label125;
         }
       }
       return;
-      label119:
-      i1 -= 1;
     }
   }
   
@@ -358,33 +358,30 @@ public class DownloadTask
     boolean bool;
     if (a() != null) {
       bool = a().onStart(this);
+    } else {
+      bool = true;
     }
-    for (;;)
+    int i1;
+    label143:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
         {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
-              break label137;
-            }
-            localDownloadTask.a(a());
-            localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localDownloadTask.a().onStart(localDownloadTask);
+          DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
+            break label143;
           }
+          localDownloadTask.a(a());
+          localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+          localDownloadTask.a().onStart(localDownloadTask);
+          break label143;
         }
       }
       return bool;
-      bool = true;
-      continue;
-      label137:
-      i1 -= 1;
     }
   }
   
@@ -393,30 +390,27 @@ public class DownloadTask
     if (a() != null) {
       a().onPause(this);
     }
-    for (;;)
+    int i1;
+    label125:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
         {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
-              break label119;
-            }
-            localDownloadTask.a(a());
-            localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localDownloadTask.a().onPause(localDownloadTask);
+          DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
+            break label125;
           }
+          localDownloadTask.a(a());
+          localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+          localDownloadTask.a().onPause(localDownloadTask);
+          break label125;
         }
       }
       return;
-      label119:
-      i1 -= 1;
     }
   }
   
@@ -425,30 +419,27 @@ public class DownloadTask
     if (a() != null) {
       a().onDoneFile(this);
     }
-    for (;;)
+    int i1;
+    label125:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
         {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
-              break label119;
-            }
-            localDownloadTask.a(a());
-            localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localDownloadTask.a().onDoneFile(localDownloadTask);
+          DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
+            break label125;
           }
+          localDownloadTask.a(a());
+          localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+          localDownloadTask.a().onDoneFile(localDownloadTask);
+          break label125;
         }
       }
       return;
-      label119:
-      i1 -= 1;
     }
   }
   
@@ -462,30 +453,27 @@ public class DownloadTask
     if (a() != null) {
       a().onDone(this);
     }
-    for (;;)
+    int i1;
+    label125:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
         {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
-              break label119;
-            }
-            localDownloadTask.a(a());
-            localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localDownloadTask.a().onDone(localDownloadTask);
+          DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
+            break label125;
           }
+          localDownloadTask.a(a());
+          localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+          localDownloadTask.a().onDone(localDownloadTask);
+          break label125;
         }
       }
       return;
-      label119:
-      i1 -= 1;
     }
   }
   
@@ -494,30 +482,27 @@ public class DownloadTask
     if (a() != null) {
       a().onNetWifi2Mobile();
     }
-    for (;;)
+    int i1;
+    label123:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
         {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
-              break label117;
-            }
-            localDownloadTask.a(a());
-            localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localDownloadTask.a().onNetWifi2Mobile();
+          DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
+            break label123;
           }
+          localDownloadTask.a(a());
+          localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+          localDownloadTask.a().onNetWifi2Mobile();
+          break label123;
         }
       }
       return;
-      label117:
-      i1 -= 1;
     }
   }
   
@@ -526,30 +511,27 @@ public class DownloadTask
     if (a() != null) {
       a().onNetWifi2None();
     }
-    for (;;)
+    int i1;
+    label123:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
         {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
-              break label117;
-            }
-            localDownloadTask.a(a());
-            localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localDownloadTask.a().onNetWifi2None();
+          DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
+            break label123;
           }
+          localDownloadTask.a(a());
+          localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+          localDownloadTask.a().onNetWifi2None();
+          break label123;
         }
       }
       return;
-      label117:
-      i1 -= 1;
     }
   }
   
@@ -558,70 +540,83 @@ public class DownloadTask
     if (a() != null) {
       a().onNetMobile2None();
     }
-    for (;;)
+    int i1;
+    label123:
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
       {
-        if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.s))
+        i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
+        if (i1 >= 0)
         {
-          i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
-          if (i1 >= 0)
-          {
-            DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-            if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
-              break label117;
-            }
-            localDownloadTask.a(a());
-            localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-            localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
-            localDownloadTask.a().onNetMobile2None();
+          DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
+          if ((localDownloadTask == null) || (localDownloadTask.a() == null)) {
+            break label123;
           }
+          localDownloadTask.a(a());
+          localDownloadTask.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+          localDownloadTask.jdField_a_of_type_Float = this.jdField_a_of_type_Float;
+          localDownloadTask.a().onNetMobile2None();
+          break label123;
         }
       }
       return;
-      label117:
-      i1 -= 1;
     }
   }
   
   public void j()
   {
-    for (;;)
+    int i1;
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      int i1;
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      if (this.jdField_a_of_type_JavaUtilArrayList != null)
       {
-        if (this.jdField_a_of_type_JavaUtilArrayList == null) {
-          break label72;
-        }
         i1 = this.jdField_a_of_type_JavaUtilArrayList.size() - 1;
         if (i1 >= 0)
         {
           DownloadTask localDownloadTask = (DownloadTask)this.jdField_a_of_type_JavaUtilArrayList.get(i1);
-          if (localDownloadTask == null) {
-            break label75;
+          if (localDownloadTask != null) {
+            localDownloadTask.a(null);
           }
-          localDownloadTask.a(null);
+        }
+        else
+        {
+          this.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.jdField_a_of_type_JavaUtilArrayList = null;
         }
       }
-      this.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.jdField_a_of_type_JavaUtilArrayList = null;
-      label72:
-      return;
-      label75:
-      i1 -= 1;
+      else
+      {
+        return;
+      }
     }
   }
   
   public String toString()
   {
-    return " key=" + this.jdField_a_of_type_JavaLangString + ",urlList size=" + this.jdField_a_of_type_JavaUtilList.size() + "|currentUrlIndex=" + this.jdField_c_of_type_Int + "|errCode=" + this.jdField_a_of_type_Int + "|status=" + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger + "|readSize=" + this.jdField_b_of_type_Long + "|maxSize=" + this.jdField_a_of_type_Long + "|percent=" + this.jdField_a_of_type_Float;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" key=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",urlList size=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append("|currentUrlIndex=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("|errCode=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|status=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger);
+    localStringBuilder.append("|readSize=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("|maxSize=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("|percent=");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.DownloadTask
  * JD-Core Version:    0.7.0.1
  */

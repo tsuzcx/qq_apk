@@ -14,8 +14,9 @@ class QQMapView$2
   {
     if ((this.this$0.mObserver != null) && (!this.this$0.mIsScrolling))
     {
-      this.this$0.mIsScrolling = true;
-      this.this$0.mObserver.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
+      QQMapView localQQMapView = this.this$0;
+      localQQMapView.mIsScrolling = true;
+      localQQMapView.mObserver.onMapScrollStart(new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D)));
     }
   }
   
@@ -28,7 +29,7 @@ class QQMapView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.map.QQMapView.2
  * JD-Core Version:    0.7.0.1
  */

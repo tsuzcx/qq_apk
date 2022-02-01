@@ -5,14 +5,12 @@ import android.os.SystemClock;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
-import com.tencent.mobileqq.service.troop.TroopNotificationConstants;
+import com.tencent.mobileqq.troop.api.handler.ITroopListHandler;
 import com.tencent.mobileqq.troop.api.observer.TroopObserver;
-import com.tencent.mobileqq.troop.handler.TroopListHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.concurrent.ConcurrentHashMap;
 
@@ -23,70 +21,74 @@ public class UpdateTroop
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver == null)
+    if (this.a == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new UpdateTroop.MyFriendListObserver(this, null);
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+      this.a = new UpdateTroop.MyFriendListObserver(this, null);
+      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.a);
     }
-    ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).b();
+    ((ITroopListHandler)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).a();
   }
   
-  public int a()
+  protected int doStep()
   {
     long l1 = SystemClock.uptimeMillis();
-    if (this.b == 4)
+    if (this.mStepId == 4)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isTrooplistok", false);
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory();
+      this.mAutomator.jdField_a_of_type_Boolean = this.mAutomator.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("isTrooplistok", false);
+      Object localObject = this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory();
       if (((localObject instanceof QQEntityManagerFactoryProxy)) && (((QQEntityManagerFactoryProxy)localObject).a())) {
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean = false;
+        this.mAutomator.jdField_a_of_type_Boolean = false;
       }
-      localObject = (TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_Boolean)
+      localObject = (TroopManager)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+      if (this.mAutomator.jdField_a_of_type_Boolean)
       {
         if (QLog.isColorLevel()) {
           QLog.d("QQInitHandler", 2, "onCheckTroopList:Done");
         }
         long l2 = SystemClock.uptimeMillis();
-        TroopListHandler localTroopListHandler = (TroopListHandler)this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER);
+        ITroopListHandler localITroopListHandler = (ITroopListHandler)this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER);
         l2 = SystemClock.uptimeMillis() - l2;
         ((TroopManager)localObject).a();
-        localTroopListHandler.notifyUI(TroopNotificationConstants.b, true, null);
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.notifyUI(3, true, Integer.valueOf(2));
+        localITroopListHandler.a(TroopObserver.TYPE_GET_TROOP_LIST, true, null);
+        this.mAutomator.notifyUI(3, true, Integer.valueOf(2));
         l1 = SystemClock.uptimeMillis() - l1 - l2;
-        this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("UpdateTroop_withoutHandlerCost", Long.valueOf(l1));
-        if (QLog.isColorLevel()) {
-          QLog.d("QQInitHandler", 2, "troopHandler creation cost: " + l2 + ", total cost without troopHandler: " + l1);
+        this.mAutomator.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put("UpdateTroop_withoutHandlerCost", Long.valueOf(l1));
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("troopHandler creation cost: ");
+          ((StringBuilder)localObject).append(l2);
+          ((StringBuilder)localObject).append(", total cost without troopHandler: ");
+          ((StringBuilder)localObject).append(l1);
+          QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
         }
         return 7;
       }
       ((TroopManager)localObject).a();
       a();
-    }
-    for (;;)
-    {
       return 2;
-      a();
     }
+    a();
+    return 2;
   }
   
-  public void b()
+  public void onCreate()
   {
-    this.c = 2;
+    this.mCountRetry = 2;
   }
   
-  public void c()
+  public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver != null)
+    if (this.a != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppAutomatorAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
-      this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = null;
+      this.mAutomator.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.a);
+      this.a = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.UpdateTroop
  * JD-Core Version:    0.7.0.1
  */

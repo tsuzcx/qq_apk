@@ -29,19 +29,20 @@ final class MiniGameBeaconReport$getTaskName$name$1
     if (StringsKt.endsWith$default(paramTaskExecutionStatics, ".js", false, 2, null))
     {
       int i = StringsKt.lastIndexOf$default((CharSequence)paramTaskExecutionStatics, '/', 0, false, 6, null);
-      if (paramTaskExecutionStatics == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
+      if (paramTaskExecutionStatics != null)
+      {
+        paramTaskExecutionStatics = paramTaskExecutionStatics.substring(i + 1);
+        Intrinsics.checkExpressionValueIsNotNull(paramTaskExecutionStatics, "(this as java.lang.String).substring(startIndex)");
+        return (CharSequence)StringsKt.replace$default(paramTaskExecutionStatics, ".js", "_js", false, 4, null);
       }
-      paramTaskExecutionStatics = paramTaskExecutionStatics.substring(i + 1);
-      Intrinsics.checkExpressionValueIsNotNull(paramTaskExecutionStatics, "(this as java.lang.String).substring(startIndex)");
-      return (CharSequence)StringsKt.replace$default(paramTaskExecutionStatics, ".js", "_js", false, 4, null);
+      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
     }
     return (CharSequence)StringsKt.replace$default(paramTaskExecutionStatics, ".", "_", false, 4, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.report.MiniGameBeaconReport.getTaskName.name.1
  * JD-Core Version:    0.7.0.1
  */

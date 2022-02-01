@@ -53,18 +53,18 @@ public final class ScriptFile$Path
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof Path))
       {
         paramObject = (Path)paramObject;
-        if ((!Intrinsics.areEqual(this.name, paramObject.name)) || (!Intrinsics.areEqual(this.path, paramObject.path)) || (!Intrinsics.areEqual(this.codeCache, paramObject.codeCache))) {}
+        if ((Intrinsics.areEqual(this.name, paramObject.name)) && (Intrinsics.areEqual(this.path, paramObject.path)) && (Intrinsics.areEqual(this.codeCache, paramObject.codeCache))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @Nullable
@@ -92,39 +92,45 @@ public final class ScriptFile$Path
   
   public int hashCode()
   {
-    int k = 0;
     Object localObject = this.name;
+    int k = 0;
     int i;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      localObject = this.path;
-      if (localObject == null) {
-        break label70;
-      }
-    }
-    label70:
-    for (int j = localObject.hashCode();; j = 0)
-    {
-      localObject = this.codeCache;
-      if (localObject != null) {
-        k = localObject.hashCode();
-      }
-      return (j + i * 31) * 31 + k;
+    } else {
       i = 0;
-      break;
     }
+    localObject = this.path;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.codeCache;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    }
+    return (i * 31 + j) * 31 + k;
   }
   
   @NotNull
   public String toString()
   {
-    return "Path(name=" + this.name + ", path=" + this.path + ", codeCache=" + this.codeCache + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Path(name=");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", path=");
+    localStringBuilder.append(this.path);
+    localStringBuilder.append(", codeCache=");
+    localStringBuilder.append(this.codeCache);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.script.ScriptFile.Path
  * JD-Core Version:    0.7.0.1
  */

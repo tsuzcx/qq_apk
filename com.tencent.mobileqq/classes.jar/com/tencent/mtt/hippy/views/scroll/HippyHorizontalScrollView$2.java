@@ -12,47 +12,49 @@ class HippyHorizontalScrollView$2
   
   public void run()
   {
-    int i = 0;
-    if (HippyHorizontalScrollView.access$000(this.this$0))
+    boolean bool = HippyHorizontalScrollView.access$000(this.this$0);
+    int j = 1;
+    if (bool)
     {
-      if ((!HippyHorizontalScrollView.access$100(this.this$0)) || (this.mSnappingToPage)) {
-        break label145;
+      int i = j;
+      if (HippyHorizontalScrollView.access$100(this.this$0))
+      {
+        i = j;
+        if (!this.mSnappingToPage)
+        {
+          this.mSnappingToPage = true;
+          HippyHorizontalScrollView.access$200(this.this$0, 0);
+          i = 0;
+        }
       }
-      this.mSnappingToPage = true;
-      HippyHorizontalScrollView.access$200(this.this$0, 0);
-    }
-    for (;;)
-    {
       if (i != 0)
       {
-        if (HippyHorizontalScrollView.access$300(this.this$0)) {
-          HippyScrollViewEventHelper.emitScrollMomentumEndEvent(this.this$0);
+        if (!HippyHorizontalScrollView.access$300(this.this$0)) {
+          return;
         }
+        HippyScrollViewEventHelper.emitScrollMomentumEndEvent(this.this$0);
         return;
       }
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.this$0.postOnAnimationDelayed(this, 20L);
-        return;
+      if (Build.VERSION.SDK_INT < 16) {
+        break label112;
       }
-      this.this$0.getHandler().postDelayed(this, 36L);
-      return;
-      HippyHorizontalScrollView.access$002(this.this$0, true);
-      if (Build.VERSION.SDK_INT >= 16)
-      {
-        this.this$0.postOnAnimationDelayed(this, 20L);
-        return;
-      }
-      this.this$0.getHandler().postDelayed(this, 36L);
-      return;
-      label145:
-      i = 1;
     }
+    else
+    {
+      HippyHorizontalScrollView.access$002(this.this$0, true);
+      if (Build.VERSION.SDK_INT < 16) {
+        break label112;
+      }
+    }
+    this.this$0.postOnAnimationDelayed(this, 20L);
+    return;
+    label112:
+    this.this$0.getHandler().postDelayed(this, 36L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.scroll.HippyHorizontalScrollView.2
  * JD-Core Version:    0.7.0.1
  */

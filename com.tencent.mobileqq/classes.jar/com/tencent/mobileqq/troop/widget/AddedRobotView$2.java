@@ -12,20 +12,25 @@ class AddedRobotView$2
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    QLog.i("AddedRobotView", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
+    paramRecyclerView = new StringBuilder();
+    paramRecyclerView.append("onScrollStateChanged state: ");
+    paramRecyclerView.append(paramInt);
+    QLog.i("AddedRobotView", 1, paramRecyclerView.toString());
+    if (paramInt != 0)
+    {
       AddedRobotView.a(this.a).pause();
-    }
-    while (!AddedRobotView.a(this.a).isPausing()) {
       return;
     }
-    AddedRobotView.a(this.a).resume();
-    AddedRobotView.a(this.a).notifyDataSetChanged();
+    if (AddedRobotView.a(this.a).isPausing())
+    {
+      AddedRobotView.a(this.a).resume();
+      AddedRobotView.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.AddedRobotView.2
  * JD-Core Version:    0.7.0.1
  */

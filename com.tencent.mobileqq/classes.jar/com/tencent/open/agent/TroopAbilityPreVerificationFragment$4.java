@@ -21,73 +21,90 @@ class TroopAbilityPreVerificationFragment$4
 {
   TroopAbilityPreVerificationFragment$4(TroopAbilityPreVerificationFragment paramTroopAbilityPreVerificationFragment) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    QLog.i("TroopAbility.PreVerification", 1, "onResult type=" + this.a.a + ", appid=" + this.a.c + ", code=" + paramInt);
-    if ((paramInt != 0) || (paramArrayOfByte == null)) {
-      if ((QLog.isColorLevel()) && (paramArrayOfByte == null)) {
-        break label441;
-      }
-    }
-    for (;;)
+    paramBundle = new StringBuilder();
+    paramBundle.append("onResult type=");
+    paramBundle.append(this.a.a);
+    paramBundle.append(", appid=");
+    paramBundle.append(this.a.c);
+    paramBundle.append(", code=");
+    paramBundle.append(paramInt);
+    QLog.i("TroopAbility.PreVerification", 1, paramBundle.toString());
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
-      try
-      {
-        paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
-        localObject = new StringBuilder().append("req error code=").append(paramInt);
-        if (paramArrayOfByte == null)
-        {
-          paramArrayOfByte = ", data=null";
-          QLog.i("TroopAbility.PreVerification", 1, paramArrayOfByte);
-          this.a.c(HardCodeUtil.a(2131714993));
-          return;
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramBundle)
-      {
-        paramBundle = "";
-        continue;
-        paramArrayOfByte = ", msg=" + paramBundle;
-        continue;
-      }
       paramBundle = new oidb_0xb60.RspBody();
       try
       {
         paramBundle.mergeFrom(paramArrayOfByte);
-        if ((!paramBundle.get_privilege_rsp.api_groups.has()) || (!paramBundle.get_privilege_rsp.next_req_duration.has()))
+        if ((paramBundle.get_privilege_rsp.api_groups.has()) && (paramBundle.get_privilege_rsp.next_req_duration.has()))
         {
-          QLog.i("TroopAbility.PreVerification", 1, "rsp invalid");
-          this.a.c(HardCodeUtil.a(2131714985));
+          TroopAbilityPreVerificationFragment.a(paramBundle);
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("receive api_groups:");
+          paramArrayOfByte.append(paramBundle.get_privilege_rsp.api_groups.get());
+          paramArrayOfByte.append(", api_names:");
+          paramArrayOfByte.append(paramBundle.get_privilege_rsp.api_names.get());
+          QLog.d("TroopAbility.PreVerification", 1, paramArrayOfByte.toString());
+          paramArrayOfByte = new HashSet();
+          localObject = paramBundle.get_privilege_rsp.api_groups.get().iterator();
+          while (((Iterator)localObject).hasNext()) {
+            paramArrayOfByte.add((Integer)((Iterator)localObject).next());
+          }
+          boolean bool = this.a.a(paramArrayOfByte);
+          paramArrayOfByte = new StringBuilder();
+          paramArrayOfByte.append("check permission result:");
+          paramArrayOfByte.append(bool);
+          QLog.i("TroopAbility.PreVerification", 1, paramArrayOfByte.toString());
+          this.a.a(bool);
+          TroopAbilityPreVerificationFragment.a(paramBundle.get_privilege_rsp.next_req_duration.get());
+          TroopAbilityPreVerificationFragment.b(NetConnInfoCenter.getServerTime());
           return;
         }
+        QLog.i("TroopAbility.PreVerification", 1, "rsp invalid");
+        this.a.c(HardCodeUtil.a(2131714908));
+        return;
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
         QLog.i("TroopAbility.PreVerification", 1, "parse rsp error", paramArrayOfByte);
-        this.a.c(HardCodeUtil.a(2131714990));
+        this.a.c(HardCodeUtil.a(2131714913));
         return;
       }
-      TroopAbilityPreVerificationFragment.a(paramBundle);
-      QLog.d("TroopAbility.PreVerification", 1, "receive api_groups:" + paramBundle.get_privilege_rsp.api_groups.get() + ", api_names:" + paramBundle.get_privilege_rsp.api_names.get());
-      paramArrayOfByte = new HashSet();
-      Object localObject = paramBundle.get_privilege_rsp.api_groups.get().iterator();
-      while (((Iterator)localObject).hasNext()) {
-        paramArrayOfByte.add((Integer)((Iterator)localObject).next());
-      }
-      boolean bool = this.a.a(paramArrayOfByte);
-      QLog.i("TroopAbility.PreVerification", 1, "check permission result:" + bool);
-      this.a.a(bool);
-      TroopAbilityPreVerificationFragment.a(paramBundle.get_privilege_rsp.next_req_duration.get());
-      TroopAbilityPreVerificationFragment.b(NetConnInfoCenter.getServerTime());
-      return;
-      label441:
-      paramBundle = "";
     }
+    if ((!QLog.isColorLevel()) || (paramArrayOfByte != null)) {}
+    try
+    {
+      paramBundle = ((oidb_0xb60.RspBody)new oidb_0xb60.RspBody().mergeFrom(paramArrayOfByte)).wording.get();
+    }
+    catch (InvalidProtocolBufferMicroException paramBundle)
+    {
+      label397:
+      break label397;
+    }
+    paramBundle = "";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("req error code=");
+    ((StringBuilder)localObject).append(paramInt);
+    if (paramArrayOfByte == null)
+    {
+      paramArrayOfByte = ", data=null";
+    }
+    else
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append(", msg=");
+      paramArrayOfByte.append(paramBundle);
+      paramArrayOfByte = paramArrayOfByte.toString();
+    }
+    ((StringBuilder)localObject).append(paramArrayOfByte);
+    QLog.i("TroopAbility.PreVerification", 1, ((StringBuilder)localObject).toString());
+    this.a.c(HardCodeUtil.a(2131714916));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityPreVerificationFragment.4
  * JD-Core Version:    0.7.0.1
  */

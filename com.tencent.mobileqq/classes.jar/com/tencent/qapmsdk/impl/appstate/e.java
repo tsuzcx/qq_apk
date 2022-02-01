@@ -16,22 +16,29 @@ public class e
   
   public j a()
   {
-    if (this.a == null) {
+    f localf = this.a;
+    if (localf == null) {
       return null;
     }
-    return this.a.b();
+    return localf.b();
   }
   
   public void a(g paramg)
   {
-    if ((com.tencent.qapmsdk.impl.g.b.g) && (this.a != null)) {
-      this.a.a(paramg);
+    if (com.tencent.qapmsdk.impl.g.b.g)
+    {
+      f localf = this.a;
+      if (localf != null) {
+        localf.a(paramg);
+      }
     }
   }
   
   public void a(String paramString)
   {
-    if ((com.tencent.qapmsdk.impl.g.b.g) && (this.a != null)) {}
+    if (com.tencent.qapmsdk.impl.g.b.g) {
+      paramString = this.a;
+    }
   }
   
   public QAPMMonitorThreadLocal b()
@@ -41,19 +48,23 @@ public class e
   
   public void b(g paramg)
   {
-    if (this.a != null) {}
+    paramg = this.a;
   }
   
   public void c()
   {
-    if ((com.tencent.qapmsdk.impl.g.b.g) && (this.a != null)) {
-      this.a.a(true);
+    if (com.tencent.qapmsdk.impl.g.b.g)
+    {
+      f localf = this.a;
+      if (localf != null) {
+        localf.a(true);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.appstate.e
  * JD-Core Version:    0.7.0.1
  */

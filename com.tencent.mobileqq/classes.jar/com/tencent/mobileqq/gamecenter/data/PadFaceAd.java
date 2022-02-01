@@ -66,7 +66,17 @@ public class PadFaceAd
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("PadFaceAd {");
-    localStringBuilder.append("padFaceId=").append(this.padFaceId).append(",redPointId=").append(this.redPointId).append(",appName=").append(this.appName).append(",appView=").append(this.appView).append(",appVersion=").append(this.appVersion).append("}");
+    localStringBuilder.append("padFaceId=");
+    localStringBuilder.append(this.padFaceId);
+    localStringBuilder.append(",redPointId=");
+    localStringBuilder.append(this.redPointId);
+    localStringBuilder.append(",appName=");
+    localStringBuilder.append(this.appName);
+    localStringBuilder.append(",appView=");
+    localStringBuilder.append(this.appView);
+    localStringBuilder.append(",appVersion=");
+    localStringBuilder.append(this.appVersion);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
@@ -84,7 +94,7 @@ public class PadFaceAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.data.PadFaceAd
  * JD-Core Version:    0.7.0.1
  */

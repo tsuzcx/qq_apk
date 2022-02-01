@@ -16,30 +16,32 @@ class UniformDownloadActivity$1
   
   public void onClick(View paramView)
   {
-    if (NetworkUtil.d(this.a.getActivity()))
+    if (NetworkUtil.isNetSupport(this.a.getActivity()))
     {
       UniformDownloadActivity.a(this.a).setVisibility(8);
-      if (FileManagerUtil.a()) {
-        FMDialogUtil.a(this.a.getActivity(), 2131692609, 2131720338, new UniformDownloadActivity.1.1(this));
+      if (FileManagerUtil.a())
+      {
+        FMDialogUtil.a(this.a.getActivity(), 2131692561, 2131720077, new UniformDownloadActivity.1.1(this));
+      }
+      else
+      {
+        UniformDownloadActivity.a(this.a);
+        this.a.finish();
+        this.a.overridePendingTransition(0, 0);
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      UniformDownloadActivity.a(this.a);
-      this.a.finish();
-      this.a.overridePendingTransition(0, 0);
-      continue;
-      FMToastUtil.a(2131692602);
+      FMToastUtil.a(2131692554);
       this.a.finish();
       this.a.overridePendingTransition(0, 0);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.1
  * JD-Core Version:    0.7.0.1
  */

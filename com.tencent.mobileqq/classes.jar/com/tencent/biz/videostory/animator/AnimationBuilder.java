@@ -30,7 +30,7 @@ public class AnimationBuilder
   
   protected float a(float paramFloat)
   {
-    return this.jdField_a_of_type_ArrayOfAndroidViewView[0].getContext().getResources().getDisplayMetrics().density * paramFloat;
+    return paramFloat * this.jdField_a_of_type_ArrayOfAndroidViewView[0].getContext().getResources().getDisplayMetrics().density;
   }
   
   public View a()
@@ -161,7 +161,7 @@ public class AnimationBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.animator.AnimationBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -8,27 +8,28 @@ public class LocationReportUtil
 {
   public static int a(LocationRoom.RoomKey paramRoomKey)
   {
-    if (paramRoomKey == null) {}
-    do
-    {
-      do
-      {
-        return 0;
-        paramRoomKey = LocationHandler.a().a(paramRoomKey);
-      } while (paramRoomKey == null);
-      if (paramRoomKey.a() == null) {
-        return 1;
-      }
-      if (paramRoomKey.a() == -1) {
-        return 2;
-      }
-    } while (paramRoomKey.a() == -1);
-    return 3;
+    if (paramRoomKey == null) {
+      return 0;
+    }
+    paramRoomKey = LocationHandler.a().a(paramRoomKey);
+    if (paramRoomKey == null) {
+      return 0;
+    }
+    if (paramRoomKey.a() == null) {
+      return 1;
+    }
+    if (paramRoomKey.a() == -1) {
+      return 2;
+    }
+    if (paramRoomKey.a() != -1) {
+      return 3;
+    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.util.LocationReportUtil
  * JD-Core Version:    0.7.0.1
  */

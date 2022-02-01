@@ -16,21 +16,24 @@ class DevlockQuickLoginActivity$DevlockClosePCVerifyProxy
   
   public DevlockQuickLoginActivity$DevlockClosePCVerifyProxy(WeakReference<BaseActivity> paramWeakReference, WeakReference<TextView> paramWeakReference1)
   {
-    if ((paramWeakReference == null) || (paramWeakReference1 == null)) {
-      return;
+    if (paramWeakReference != null)
+    {
+      if (paramWeakReference1 == null) {
+        return;
+      }
+      this.a = paramWeakReference;
+      this.b = paramWeakReference1;
     }
-    this.a = paramWeakReference;
-    this.b = paramWeakReference1;
   }
   
   private boolean a()
   {
-    if ((this.a == null) || (this.b == null) || (this.a.get() == null) || (this.b.get() == null))
-    {
-      QLog.e("DevlockQuickLoginActivity", 1, "sanityCheckPCVerifyWrong(): params empty");
-      return true;
+    WeakReference localWeakReference = this.a;
+    if ((localWeakReference != null) && (this.b != null) && (localWeakReference.get() != null) && (this.b.get() != null)) {
+      return false;
     }
-    return false;
+    QLog.e("DevlockQuickLoginActivity", 1, "sanityCheckPCVerifyWrong(): params empty");
+    return true;
   }
   
   public void a(boolean paramBoolean)
@@ -40,7 +43,7 @@ class DevlockQuickLoginActivity$DevlockClosePCVerifyProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockQuickLoginActivity.DevlockClosePCVerifyProxy
  * JD-Core Version:    0.7.0.1
  */

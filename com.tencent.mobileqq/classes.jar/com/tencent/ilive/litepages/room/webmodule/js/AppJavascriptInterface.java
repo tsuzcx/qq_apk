@@ -97,28 +97,19 @@ public class AppJavascriptInterface
   @NewJavascriptInterface
   public void changeVideoRate(Map<String, String> paramMap)
   {
-    if ((this.roomService == null) || (this.avPlayerService == null)) {
-      return;
-    }
-    int i = Integer.parseInt((String)paramMap.get("rate"));
-    String str = (String)paramMap.get("callback");
-    this.avPlayerService.stopPlay();
-    this.avPlayerService.resetPlayer();
-    PlayerParams localPlayerParams = new PlayerParams();
-    if (i == 0) {
-      paramMap = this.roomService.getLiveInfo().watchMediaInfo.mUrl;
-    }
-    for (;;)
+    if (this.roomService != null)
     {
-      Log.d("AppJavascriptInterface", "changeVideoRate rate = " + i + " url = " + paramMap);
-      localPlayerParams.url = paramMap;
-      this.avPlayerService.setParams(localPlayerParams);
-      this.avPlayerService.setPlayerSurface();
-      this.avPlayerService.preparePlay();
-      this.avPlayerService.startPlay();
-      callJsFunctionByNative(str, null);
-      return;
-      if (i == 1) {
+      if (this.avPlayerService == null) {
+        return;
+      }
+      int i = Integer.parseInt((String)paramMap.get("rate"));
+      String str = (String)paramMap.get("callback");
+      this.avPlayerService.stopPlay();
+      this.avPlayerService.resetPlayer();
+      PlayerParams localPlayerParams = new PlayerParams();
+      if (i == 0) {
+        paramMap = this.roomService.getLiveInfo().watchMediaInfo.mUrl;
+      } else if (i == 1) {
         paramMap = this.roomService.getLiveInfo().watchMediaInfo.mUrlHigh;
       } else if (i == 2) {
         paramMap = this.roomService.getLiveInfo().watchMediaInfo.mUrlLow;
@@ -127,6 +118,18 @@ public class AppJavascriptInterface
       } else {
         paramMap = this.roomService.getLiveInfo().watchMediaInfo.mUrl;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("changeVideoRate rate = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" url = ");
+      localStringBuilder.append(paramMap);
+      Log.d("AppJavascriptInterface", localStringBuilder.toString());
+      localPlayerParams.url = paramMap;
+      this.avPlayerService.setParams(localPlayerParams);
+      this.avPlayerService.setPlayerSurface();
+      this.avPlayerService.preparePlay();
+      this.avPlayerService.startPlay();
+      callJsFunctionByNative(str, null);
     }
   }
   
@@ -139,7 +142,11 @@ public class AppJavascriptInterface
     if (paramMap == null) {
       return;
     }
-    getJsBizAdapter().getLogger().i("AppJavascriptInterface", "LiteLuxuryGift clearDynamicEffectQueue =\n  " + paramMap.toString(), new Object[0]);
+    LogInterface localLogInterface = getJsBizAdapter().getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LiteLuxuryGift clearDynamicEffectQueue =\n  ");
+    localStringBuilder.append(paramMap.toString());
+    localLogInterface.i("AppJavascriptInterface", localStringBuilder.toString(), new Object[0]);
     getJsBizAdapter().getModuleEvent().post(new ClearLuxuryQueueEvent());
   }
   
@@ -183,7 +190,18 @@ public class AppJavascriptInterface
       String str1 = (String)paramMap.get("ilive_type");
       String str2 = (String)paramMap.get("followed");
       String str3 = (String)paramMap.get("anchor_uid");
-      logI("AppJavascriptInterface", "AppJavascriptInterface contentLoaded programId = " + (String)localObject1 + ", state = " + (String)localObject2 + ", ilive_type = " + str1 + ", followed = " + str2 + ", anchor_uid = " + str3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AppJavascriptInterface contentLoaded programId = ");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(", state = ");
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append(", ilive_type = ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(", followed = ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(", anchor_uid = ");
+      localStringBuilder.append(str3);
+      logI("AppJavascriptInterface", localStringBuilder.toString());
       localObject1 = new RoomExtInfo((String)localObject1, (String)localObject2, str1, str2, str3);
       if (getJsBizAdapter() != null) {
         getJsBizAdapter().onGetRoomInfo((RoomExtInfo)localObject1);
@@ -226,35 +244,43 @@ public class AppJavascriptInterface
   public void getClientScreenMode(Map<String, String> paramMap)
   {
     Log.d("AppJavascriptInterface", "AppJavascriptInterface getClientScreenMode js fun");
-    if (this.avPlayerService == null) {
+    paramMap = this.avPlayerService;
+    if (paramMap == null) {
       return;
     }
-    int i = this.avPlayerService.getVideoHeight();
+    int i = paramMap.getVideoHeight();
     int j = this.avPlayerService.getVideoWidth();
-    if ((i > 0) && (j > 0) && (i < j)) {}
-    for (i = 1;; i = 0)
+    if ((i > 0) && (j > 0) && (i < j)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    paramMap = new Rect();
+    this.rootView.getGlobalVisibleRect(paramMap);
+    Rect localRect = this.avPlayerService.getDisplayViewRect();
+    j = localRect.height();
+    int k = localRect.top;
+    int m = paramMap.top;
+    j = (int)UIUtil.px2dp(this.mContext, k - m + j);
+    paramMap = new StringBuilder();
+    paramMap.append("getClientScreenMode screenmode = ");
+    paramMap.append(i);
+    paramMap.append(" topMarginDp = ");
+    paramMap.append(j);
+    paramMap.append(" this = ");
+    paramMap.append(this);
+    logI("AppJavascriptInterface", paramMap.toString());
+    try
     {
-      paramMap = new Rect();
-      this.rootView.getGlobalVisibleRect(paramMap);
-      Rect localRect = this.avPlayerService.getDisplayViewRect();
-      j = localRect.height();
-      int k = localRect.top;
-      int m = paramMap.top;
-      j = (int)UIUtil.px2dp(this.mContext, k - m + j);
-      logI("AppJavascriptInterface", "getClientScreenMode screenmode = " + i + " topMarginDp = " + j + " this = " + this);
-      try
-      {
-        paramMap = new JSONObject();
-        paramMap.put("screenmode", i);
-        paramMap.put("bottom", j);
-        callJsFunctionByNative("__WEBVIEW_CLIENTSCREENMODE", paramMap);
-        return;
-      }
-      catch (JSONException paramMap)
-      {
-        paramMap.printStackTrace();
-        return;
-      }
+      paramMap = new JSONObject();
+      paramMap.put("screenmode", i);
+      paramMap.put("bottom", j);
+      callJsFunctionByNative("__WEBVIEW_CLIENTSCREENMODE", paramMap);
+      return;
+    }
+    catch (JSONException paramMap)
+    {
+      paramMap.printStackTrace();
     }
   }
   
@@ -262,12 +288,15 @@ public class AppJavascriptInterface
   public void getLittleWindowStatus(Map<String, String> paramMap)
   {
     paramMap = SPUtil.get(this.mContext, "nowlive_config").getString("status", "1");
-    logI("AppJavascriptInterface", "getLittleWindowStatus status = " + paramMap);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getLittleWindowStatus status = ");
+    ((StringBuilder)localObject).append(paramMap);
+    logI("AppJavascriptInterface", ((StringBuilder)localObject).toString());
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("status", paramMap);
-      callJsFunctionByNative("__WEBVIEW_LITTLE_WINDOW_STATUS", localJSONObject);
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("status", paramMap);
+      callJsFunctionByNative("__WEBVIEW_LITTLE_WINDOW_STATUS", (JSONObject)localObject);
       return;
     }
     catch (JSONException paramMap)
@@ -334,34 +363,33 @@ public class AppJavascriptInterface
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        continue;
-        paramMap = "";
-        int i = 0;
-      }
+      localException.printStackTrace();
     }
+    int i;
     if (paramMap != null)
     {
       i = 1;
       paramMap = paramMap.versionName;
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("installed", i);
-        ((JSONObject)localObject).put("version", paramMap);
-        paramMap = new JSONObject();
-        paramMap.put("code", 0);
-        paramMap.put("result", localObject);
-        callJsFunctionByNative(str, paramMap);
-        return;
-      }
-      catch (JSONException paramMap)
-      {
-        paramMap.printStackTrace();
-        return;
-      }
+    }
+    else
+    {
+      paramMap = "";
+      i = 0;
+    }
+    try
+    {
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("installed", i);
+      localJSONObject.put("version", paramMap);
+      paramMap = new JSONObject();
+      paramMap.put("code", 0);
+      paramMap.put("result", localJSONObject);
+      callJsFunctionByNative(str, paramMap);
+      return;
+    }
+    catch (JSONException paramMap)
+    {
+      paramMap.printStackTrace();
     }
   }
   
@@ -403,8 +431,9 @@ public class AppJavascriptInterface
   
   public void onJsDestroy()
   {
-    if (this.halfSizeWebviewDialog != null) {
-      this.halfSizeWebviewDialog.dismiss();
+    HalfSizeWebviewDialog localHalfSizeWebviewDialog = this.halfSizeWebviewDialog;
+    if (localHalfSizeWebviewDialog != null) {
+      localHalfSizeWebviewDialog.dismiss();
     }
   }
   
@@ -416,10 +445,12 @@ public class AppJavascriptInterface
       return;
     }
     paramMap = new JSONObject();
-    if ((!NetworkUtil.isNetworkAvailable(this.mContext)) || (this.avPlayerService.isPaused())) {
+    if ((NetworkUtil.isNetworkAvailable(this.mContext)) && (!this.avPlayerService.isPaused()))
+    {
+      this.avPlayerService.startPlay();
       try
       {
-        paramMap.put("state", String.valueOf(4));
+        paramMap.put("state", String.valueOf(9));
         callJsFunctionByNative("__WEBVIEW_CLIENTAVSTATE", paramMap);
         return;
       }
@@ -429,10 +460,9 @@ public class AppJavascriptInterface
         return;
       }
     }
-    this.avPlayerService.startPlay();
     try
     {
-      paramMap.put("state", String.valueOf(9));
+      paramMap.put("state", String.valueOf(4));
       callJsFunctionByNative("__WEBVIEW_CLIENTAVSTATE", paramMap);
       return;
     }
@@ -449,7 +479,10 @@ public class AppJavascriptInterface
       return;
     }
     paramMap = (String)paramMap.get("state");
-    logI("AppJavascriptInterface", "onSubscribeChanged state = " + paramMap);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSubscribeChanged state = ");
+    localStringBuilder.append(paramMap);
+    logI("AppJavascriptInterface", localStringBuilder.toString());
     if ("1".equals(paramMap))
     {
       getJsBizAdapter().onSubscribeStateChanged(true);
@@ -485,34 +518,41 @@ public class AppJavascriptInterface
   @NewJavascriptInterface
   public void preloadDynamicEffectResource(Map<String, String> paramMap)
   {
-    if (paramMap == null) {}
-    do
-    {
+    if (paramMap == null) {
       return;
-      getJsBizAdapter().getLogger().i("AppJavascriptInterface", "preloadDynamicEffectResource =\n  " + paramMap.toString(), new Object[0]);
-      paramMap = (String)paramMap.get("gift_list");
-    } while (TextUtils.isEmpty(paramMap));
+    }
+    Object localObject1 = getJsBizAdapter().getLogger();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("preloadDynamicEffectResource =\n  ");
+    ((StringBuilder)localObject2).append(paramMap.toString());
+    ((LogInterface)localObject1).i("AppJavascriptInterface", ((StringBuilder)localObject2).toString(), new Object[0]);
+    paramMap = (String)paramMap.get("gift_list");
+    if (TextUtils.isEmpty(paramMap)) {
+      return;
+    }
     for (;;)
     {
-      ArrayList localArrayList;
       int i;
       try
       {
         paramMap = new JSONArray(paramMap);
-        localArrayList = new ArrayList();
+        localObject1 = new ArrayList();
         i = 0;
         if (i < paramMap.length())
         {
-          String str = paramMap.optString(i);
-          if (TextUtils.isEmpty(str)) {
-            break label178;
+          localObject2 = paramMap.optString(i);
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            ((ArrayList)localObject1).add(localObject2);
           }
-          localArrayList.add(str);
-          break label178;
         }
-        if (localArrayList.size() == 0)
+        else
         {
-          getJsBizAdapter().getLogger().i("AppJavascriptInterface", "LiteLuxuryGift preloadDynamicEffectResource parse effectId null", new Object[0]);
+          if (((ArrayList)localObject1).size() == 0)
+          {
+            getJsBizAdapter().getLogger().i("AppJavascriptInterface", "LiteLuxuryGift preloadDynamicEffectResource parse effectId null", new Object[0]);
+            return;
+          }
+          getJsBizAdapter().getModuleEvent().post(new PreloadLuxuryAnimationEvent((ArrayList)localObject1));
           return;
         }
       }
@@ -521,9 +561,6 @@ public class AppJavascriptInterface
         paramMap.printStackTrace();
         return;
       }
-      getJsBizAdapter().getModuleEvent().post(new PreloadLuxuryAnimationEvent(localArrayList));
-      return;
-      label178:
       i += 1;
     }
   }
@@ -532,15 +569,12 @@ public class AppJavascriptInterface
   public void setLittleWindowStatus(Map<String, String> paramMap)
   {
     paramMap = (String)paramMap.get("status");
-    logI("AppJavascriptInterface", "setLittleWindowStatus status = " + paramMap);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setLittleWindowStatus status = ");
+    localStringBuilder.append(paramMap);
+    logI("AppJavascriptInterface", localStringBuilder.toString());
     SPUtil.get(this.mContext, "nowlive_config").putString("status", paramMap);
-    FloatWindowConfigServiceInterface localFloatWindowConfigServiceInterface = (FloatWindowConfigServiceInterface)BizEngineMgr.getInstance().getLiveEngine().getService(FloatWindowConfigServiceInterface.class);
-    if (paramMap.equals("1")) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localFloatWindowConfigServiceInterface.setFloatWindowEnabledOnce(bool);
-      return;
-    }
+    ((FloatWindowConfigServiceInterface)BizEngineMgr.getInstance().getLiveEngine().getService(FloatWindowConfigServiceInterface.class)).setFloatWindowEnabledOnce(paramMap.equals("1"));
   }
   
   @NewJavascriptInterface
@@ -550,25 +584,21 @@ public class AppJavascriptInterface
       return;
     }
     paramMap = (String)paramMap.get("mode");
+    boolean bool2 = TextUtils.isEmpty(paramMap);
+    boolean bool1 = true;
     int i;
-    if (TextUtils.isEmpty(paramMap))
-    {
+    if (bool2) {
       i = 1;
-      if (i != 1) {
-        break label85;
-      }
-    }
-    label85:
-    for (boolean bool = true;; bool = false)
-    {
-      if (getJsBizAdapter().getRoomPageAction() != null) {
-        getJsBizAdapter().getRoomPageAction().setRequestedOrientation(bool);
-      }
-      postEvent(new ScreenModeEvent(bool));
-      return;
+    } else {
       i = Integer.parseInt(paramMap);
-      break;
     }
+    if (i != 1) {
+      bool1 = false;
+    }
+    if (getJsBizAdapter().getRoomPageAction() != null) {
+      getJsBizAdapter().getRoomPageAction().setRequestedOrientation(bool1);
+    }
+    postEvent(new ScreenModeEvent(bool1));
   }
   
   @NewJavascriptInterface
@@ -577,26 +607,30 @@ public class AppJavascriptInterface
     if (paramMap == null) {
       return;
     }
-    String str1 = (String)paramMap.get("native_username");
-    String str2 = (String)paramMap.get("effectid");
-    String str3 = (String)paramMap.get("native_anchorname");
-    str3 = (String)paramMap.get("native_is_anchor");
-    str3 = (String)paramMap.get("native_combo_count");
-    str3 = (String)paramMap.get("serial_id");
-    str3 = (String)paramMap.get("isCar");
-    str3 = (String)paramMap.get("native_userid");
-    str3 = (String)paramMap.get("native_gift_id");
-    String str4 = (String)paramMap.get("native_comment");
-    str4 = (String)paramMap.get("native_anchorid");
-    str4 = (String)paramMap.get("native_url");
-    LiteShowLuxuryAnimationEvent localLiteShowLuxuryAnimationEvent = new LiteShowLuxuryAnimationEvent();
-    localLiteShowLuxuryAnimationEvent.giftType = 104;
-    localLiteShowLuxuryAnimationEvent.giftid = Long.parseLong(str3);
-    localLiteShowLuxuryAnimationEvent.effectId = str2;
-    localLiteShowLuxuryAnimationEvent.uName = str1;
-    localLiteShowLuxuryAnimationEvent.headUrl = str4;
-    getJsBizAdapter().getLogger().i("AppJavascriptInterface", "LiteLuxuryGift showDynamicEffect params =\n  " + paramMap.toString(), new Object[0]);
-    getJsBizAdapter().getModuleEvent().post(localLiteShowLuxuryAnimationEvent);
+    Object localObject1 = (String)paramMap.get("native_username");
+    Object localObject2 = (String)paramMap.get("effectid");
+    String str1 = (String)paramMap.get("native_anchorname");
+    str1 = (String)paramMap.get("native_is_anchor");
+    str1 = (String)paramMap.get("native_combo_count");
+    str1 = (String)paramMap.get("serial_id");
+    str1 = (String)paramMap.get("isCar");
+    str1 = (String)paramMap.get("native_userid");
+    str1 = (String)paramMap.get("native_gift_id");
+    Object localObject3 = (String)paramMap.get("native_comment");
+    localObject3 = (String)paramMap.get("native_anchorid");
+    String str2 = (String)paramMap.get("native_url");
+    localObject3 = new LiteShowLuxuryAnimationEvent();
+    ((LiteShowLuxuryAnimationEvent)localObject3).giftType = 104;
+    ((LiteShowLuxuryAnimationEvent)localObject3).giftid = Long.parseLong(str1);
+    ((LiteShowLuxuryAnimationEvent)localObject3).effectId = ((String)localObject2);
+    ((LiteShowLuxuryAnimationEvent)localObject3).uName = ((String)localObject1);
+    ((LiteShowLuxuryAnimationEvent)localObject3).headUrl = str2;
+    localObject1 = getJsBizAdapter().getLogger();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("LiteLuxuryGift showDynamicEffect params =\n  ");
+    ((StringBuilder)localObject2).append(paramMap.toString());
+    ((LogInterface)localObject1).i("AppJavascriptInterface", ((StringBuilder)localObject2).toString(), new Object[0]);
+    getJsBizAdapter().getModuleEvent().post((ModuleEventInterface)localObject3);
   }
   
   @NewJavascriptInterface
@@ -612,7 +646,11 @@ public class AppJavascriptInterface
     if (paramMap == null) {
       return;
     }
-    getJsBizAdapter().getLogger().i("AppJavascriptInterface", "LiteLuxuryGift stopDynamicEffect =\n  " + paramMap.toString(), new Object[0]);
+    LogInterface localLogInterface = getJsBizAdapter().getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LiteLuxuryGift stopDynamicEffect =\n  ");
+    localStringBuilder.append(paramMap.toString());
+    localLogInterface.i("AppJavascriptInterface", localStringBuilder.toString(), new Object[0]);
     getJsBizAdapter().getModuleEvent().post(new StopLuxuryAnimationPlayEvent());
   }
   
@@ -626,7 +664,7 @@ public class AppJavascriptInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.js.AppJavascriptInterface
  * JD-Core Version:    0.7.0.1
  */

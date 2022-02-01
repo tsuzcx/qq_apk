@@ -21,55 +21,57 @@ public class AvatarObserver
     switch (paramInt)
     {
     default: 
-    case 2: 
-    case 0: 
-    case 6: 
-    case 7: 
+    case 9: 
+      paramObject = (Object[])paramObject;
+      onStrangerHeadReady(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
+      return;
     case 8: 
-      do
+      if ((paramObject instanceof Object[]))
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return;
-              onUpdateMobileQQHead(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
-              return;
-              onGetHeadInfo(paramBoolean, (Setting)paramObject);
-              return;
-            } while (!(paramObject instanceof Object[]));
-            paramObject = (Object[])paramObject;
-          } while (paramObject.length <= 1);
-          onGetHeadInfoEmpty(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
-          return;
-        } while (!(paramObject instanceof Object[]));
+        paramObject = (Object[])paramObject;
+        onUpdateApolloHead(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
+        return;
+      }
+      break;
+    case 7: 
+      if ((paramObject instanceof Object[]))
+      {
         paramObject = (Object[])paramObject;
         onGetApolloHeadInfo(paramBoolean, (String)paramObject[0], ((Byte)paramObject[1]).byteValue());
         return;
-      } while (!(paramObject instanceof Object[]));
-      Object[] arrayOfObject = (Object[])paramObject;
+      }
+      break;
+    case 6: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length > 1)
+        {
+          onGetHeadInfoEmpty(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
+          return;
+        }
+      }
+      break;
+    case 5: 
       paramObject = (Object[])paramObject;
-      onUpdateApolloHead(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue());
-      return;
-    case 1: 
-      onUpdateCustomHead(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
+      onUpdateQCallHead(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue());
       return;
     case 4: 
       paramObject = (Object[])paramObject;
       onUpdateStrangerHead(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue());
       return;
-    case 5: 
-      paramObject = (Object[])paramObject;
-      onUpdateQCallHead(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Boolean)paramObject[2]).booleanValue());
-      return;
     case 3: 
       onUpdateTroopHead(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
       return;
+    case 2: 
+      onUpdateMobileQQHead(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
+      return;
+    case 1: 
+      onUpdateCustomHead(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
+      return;
+    case 0: 
+      onGetHeadInfo(paramBoolean, (Setting)paramObject);
     }
-    paramObject = (Object[])paramObject;
-    onStrangerHeadReady(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), (String)paramObject[2]);
   }
   
   protected void onUpdateApolloHead(boolean paramBoolean, String paramString, int paramInt) {}
@@ -86,7 +88,7 @@ public class AvatarObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.observer.AvatarObserver
  * JD-Core Version:    0.7.0.1
  */

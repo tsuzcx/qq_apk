@@ -13,36 +13,43 @@ class OpenDataCommonJsPlugin$3
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.i("OpenDataCommonJsPlugin", "getGroupCloudStorage callback appid:" + OpenDataCommonJsPlugin.access$200(this.this$0).appId + ", isSuc" + paramBoolean + ", ret:" + String.valueOf(paramJSONObject));
-    JSONObject localJSONObject = new JSONObject();
-    if (paramBoolean) {
-      try
-      {
-        localJSONObject.put("state", "success");
-        if ((paramJSONObject != null) && (paramJSONObject.get("data") != null)) {
-          localJSONObject.put("data", paramJSONObject.get("data"));
-        }
-        for (;;)
-        {
-          this.val$req.ok(localJSONObject);
-          return;
-          localJSONObject.put("data", paramJSONObject);
-        }
-        localJSONObject.put("state", "fail");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getGroupCloudStorage callback appid:");
+    ((StringBuilder)localObject).append(OpenDataCommonJsPlugin.access$200(this.this$0).appId);
+    ((StringBuilder)localObject).append(", isSuc");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(", ret:");
+    ((StringBuilder)localObject).append(String.valueOf(paramJSONObject));
+    QMLog.i("OpenDataCommonJsPlugin", ((StringBuilder)localObject).toString());
+    localObject = new JSONObject();
+    if (paramBoolean) {}
+    try
+    {
+      ((JSONObject)localObject).put("state", "success");
+      if ((paramJSONObject != null) && (paramJSONObject.get("data") != null)) {
+        ((JSONObject)localObject).put("data", paramJSONObject.get("data"));
+      } else {
+        ((JSONObject)localObject).put("data", paramJSONObject);
       }
-      catch (Throwable paramJSONObject)
-      {
-        QMLog.e("OpenDataCommonJsPlugin", "getGroupCloudStorage error " + paramJSONObject.getMessage());
-        this.val$req.fail();
-        return;
-      }
+      this.val$req.ok((JSONObject)localObject);
+      return;
     }
-    this.val$req.fail(localJSONObject, null);
+    catch (Throwable paramJSONObject)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getGroupCloudStorage error ");
+      ((StringBuilder)localObject).append(paramJSONObject.getMessage());
+      QMLog.e("OpenDataCommonJsPlugin", ((StringBuilder)localObject).toString());
+      this.val$req.fail();
+    }
+    ((JSONObject)localObject).put("state", "fail");
+    this.val$req.fail((JSONObject)localObject, null);
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

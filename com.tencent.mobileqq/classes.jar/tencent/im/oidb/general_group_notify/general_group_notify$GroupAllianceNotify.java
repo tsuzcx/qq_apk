@@ -23,14 +23,16 @@ public final class general_group_notify$GroupAllianceNotify
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 58, 64 }, new String[] { "uint32_alliance_notify_type", "uint64_alliance_id", "bytes_alliance_name", "uint64_alliance_owner", "bytes_alliance_owner_name", "uint64_leader_group_code", "st_apply_alliance", "uint32_result" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, Long.valueOf(0L), localByteStringMicro2, Long.valueOf(0L), null, Integer.valueOf(0) }, GroupAllianceNotify.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 48, 58, 64 }, new String[] { "uint32_alliance_notify_type", "uint64_alliance_id", "bytes_alliance_name", "uint64_alliance_owner", "bytes_alliance_owner_name", "uint64_leader_group_code", "st_apply_alliance", "uint32_result" }, new Object[] { localInteger, localLong, localByteStringMicro1, localLong, localByteStringMicro2, localLong, null, localInteger }, GroupAllianceNotify.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.general_group_notify.general_group_notify.GroupAllianceNotify
  * JD-Core Version:    0.7.0.1
  */

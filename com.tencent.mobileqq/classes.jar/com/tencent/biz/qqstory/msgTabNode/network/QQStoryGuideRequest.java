@@ -28,15 +28,12 @@ public class QQStoryGuideRequest
     try
     {
       localRspQQStoryGuide.mergeFrom(paramArrayOfByte);
-      return new QQStoryGuideRequest.QQStoryGuideResponse(localRspQQStoryGuide);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new QQStoryGuideRequest.QQStoryGuideResponse(localRspQQStoryGuide);
   }
   
   public String a()
@@ -44,32 +41,39 @@ public class QQStoryGuideRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqQQStoryGuide localReqQQStoryGuide = new qqstory_service.ReqQQStoryGuide();
     try
     {
       localReqQQStoryGuide.to_uid.set(Long.valueOf(this.b).longValue());
-      localReqQQStoryGuide.version.set(this.c);
-      return localReqQQStoryGuide.toByteArray();
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        localReqQQStoryGuide.to_uid.set(0L);
-      }
+      label28:
+      break label28;
     }
+    localReqQQStoryGuide.to_uid.set(0L);
+    localReqQQStoryGuide.version.set(this.c);
+    return localReqQQStoryGuide.toByteArray();
   }
   
   public String toString()
   {
-    return "QQStoryGuideRequest{toUid='" + this.b + '\'' + "version='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QQStoryGuideRequest{toUid='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append("version='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.QQStoryGuideRequest
  * JD-Core Version:    0.7.0.1
  */

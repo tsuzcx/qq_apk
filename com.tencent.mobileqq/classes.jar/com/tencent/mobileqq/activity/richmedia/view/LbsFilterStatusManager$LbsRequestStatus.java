@@ -10,30 +10,25 @@ class LbsFilterStatusManager$LbsRequestStatus
   ArrayList<String> jdField_a_of_type_JavaUtilArrayList = new ArrayList(1);
   boolean jdField_a_of_type_Boolean = false;
   
-  static LbsRequestStatus a()
-  {
-    LbsRequestStatus localLbsRequestStatus = new LbsRequestStatus();
-    localLbsRequestStatus.a();
-    return localLbsRequestStatus;
-  }
-  
   String a()
   {
-    switch (this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (i != 1)
     {
-    default: 
-      return "LBS_REQ_OK";
-    case 1: 
-      return "LBS_REQ_PENDING";
+      if (i != 2) {
+        return "LBS_REQ_OK";
+      }
+      return "LBS_REQ_PERM_OK";
     }
-    return "LBS_REQ_PERM_OK";
+    return "LBS_REQ_PENDING";
   }
   
   void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus = new LbsRequestStatus();
-    }
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilArrayList.clear();
+    this.jdField_a_of_type_Long = 0L;
+    this.jdField_a_of_type_Int = 3;
   }
   
   boolean a(String paramString)
@@ -44,24 +39,18 @@ class LbsFilterStatusManager$LbsRequestStatus
   
   void b()
   {
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_a_of_type_Long = 0L;
-    this.jdField_a_of_type_Int = 3;
-  }
-  
-  void c()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus.jdField_a_of_type_JavaUtilArrayList.clear();
+    LbsRequestStatus localLbsRequestStatus = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus;
+    localLbsRequestStatus.jdField_a_of_type_Boolean = this.jdField_a_of_type_Boolean;
+    localLbsRequestStatus.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus.jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
+    localLbsRequestStatus = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus;
+    localLbsRequestStatus.jdField_a_of_type_Int = this.jdField_a_of_type_Int;
+    localLbsRequestStatus.jdField_a_of_type_Long = this.jdField_a_of_type_Long;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager.LbsRequestStatus
  * JD-Core Version:    0.7.0.1
  */

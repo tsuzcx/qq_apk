@@ -28,30 +28,39 @@ public final class dv
     try
     {
       ConnectivityManager localConnectivityManager = (ConnectivityManager)paramContext.getSystemService("connectivity");
-      if (localConnectivityManager == null) {}
-      for (paramContext = null; (paramContext == null) || (!paramContext.isConnected()); paramContext = localConnectivityManager.getActiveNetworkInfo()) {
-        return dv.a.a;
+      if (localConnectivityManager == null) {
+        paramContext = null;
+      } else {
+        paramContext = localConnectivityManager.getActiveNetworkInfo();
       }
-      if (Build.VERSION.SDK_INT >= 16)
+      if ((paramContext != null) && (paramContext.isConnected()))
       {
-        if (localConnectivityManager.isActiveNetworkMetered()) {
-          return dv.a.b;
+        if (Build.VERSION.SDK_INT >= 16)
+        {
+          if (localConnectivityManager.isActiveNetworkMetered()) {
+            return dv.a.b;
+          }
+          return dv.a.c;
         }
-        return dv.a.c;
+        if (1 == paramContext.getType()) {
+          return dv.a.c;
+        }
+        return dv.a.b;
       }
-      if (1 == paramContext.getType()) {
-        return dv.a.c;
-      }
-      paramContext = dv.a.b;
+      paramContext = dv.a.a;
       return paramContext;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label83:
+      break label83;
+    }
     return dv.a.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dv
  * JD-Core Version:    0.7.0.1
  */

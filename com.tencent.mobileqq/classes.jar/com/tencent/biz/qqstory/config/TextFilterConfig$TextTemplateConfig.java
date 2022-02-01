@@ -14,7 +14,6 @@ public class TextFilterConfig$TextTemplateConfig
   public boolean b;
   public int c;
   public String c;
-  public boolean c;
   public int d;
   public String d;
   public String e;
@@ -24,7 +23,7 @@ public class TextFilterConfig$TextTemplateConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.config.TextFilterConfig.TextTemplateConfig
  * JD-Core Version:    0.7.0.1
  */

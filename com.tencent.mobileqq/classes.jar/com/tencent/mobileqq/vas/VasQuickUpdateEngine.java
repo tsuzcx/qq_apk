@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.vas;
 
 import androidx.annotation.Keep;
-import com.tencent.mobileqq.vas.quickupdate.BaseUpdateCallback;
 import com.tencent.mobileqq.vas.quickupdate.UpdateCallbackSelector;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasApolloExtensionHandler;
 import com.tencent.mobileqq.vas.updatesystem.api.IVasEngine;
@@ -31,7 +30,11 @@ public class VasQuickUpdateEngine
       byte[] arrayOfByte = new byte[paramInt];
       return arrayOfByte;
     }
-    catch (OutOfMemoryError localOutOfMemoryError) {}
+    catch (OutOfMemoryError localOutOfMemoryError)
+    {
+      label6:
+      break label6;
+    }
     return null;
   }
   
@@ -51,39 +54,42 @@ public class VasQuickUpdateEngine
   @Keep
   public static void quickUpdateLog(int paramInt, byte[] paramArrayOfByte)
   {
-    do
+    try
     {
-      do
+      paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
+      if ((paramInt != 0) && (paramInt != 1))
       {
-        do
+        if (paramInt != 2)
         {
-          try
+          if (paramInt != 3)
           {
-            paramArrayOfByte = new String(paramArrayOfByte, "UTF-8");
-            switch (paramInt)
+            if (paramInt != 4)
             {
-            default: 
               if (QLog.isColorLevel()) {
                 QLog.d("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
               }
-              return;
+            }
+            else if (QLog.isColorLevel()) {
+              QLog.d("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
             }
           }
-          catch (Throwable paramArrayOfByte)
-          {
-            QLog.e("VasQuickUpdateEngine_Native", 1, "Couldn't convert the jbyteArray to jstring", paramArrayOfByte);
-            return;
+          else if (QLog.isColorLevel()) {
+            QLog.i("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
           }
-          QLog.e("VasQuickUpdateEngine_Native", 1, paramArrayOfByte);
-          return;
-        } while (!QLog.isColorLevel());
-        QLog.w("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
+        }
+        else if (QLog.isColorLevel()) {
+          QLog.w("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
+        }
+      }
+      else {
+        QLog.e("VasQuickUpdateEngine_Native", 1, paramArrayOfByte);
+      }
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("VasQuickUpdateEngine_Native", 2, paramArrayOfByte);
+    }
+    catch (Throwable paramArrayOfByte)
+    {
+      QLog.e("VasQuickUpdateEngine_Native", 1, "Couldn't convert the jbyteArray to jstring", paramArrayOfByte);
+    }
   }
   
   public void cancelDwonloadItem(long paramLong, String paramString) {}
@@ -95,17 +101,33 @@ public class VasQuickUpdateEngine
   
   public boolean deleteFiles(long paramLong, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "deleteFiles bid = " + paramLong + " scid = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("deleteFiles bid = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" scid = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("VasQuickUpdateEngine", 2, ((StringBuilder)localObject).toString());
     }
-    BaseUpdateCallback localBaseUpdateCallback = UpdateCallbackSelector.getCallback(paramLong);
-    return (localBaseUpdateCallback != null) && (localBaseUpdateCallback.deleteFiles(paramLong, paramString));
+    Object localObject = UpdateCallbackSelector.getCallback(paramLong);
+    return (localObject != null) && (((QuickUpdateBusinessCallback)localObject).deleteFiles(paramLong, paramString));
   }
   
   public void downloadGatherItem(long paramLong, String paramString1, String[] paramArrayOfString, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "downloadItem bid = " + paramLong + " scid = " + paramString1 + " scidList = " + paramArrayOfString + " from = " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadItem bid = ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" scid = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" scidList = ");
+      localStringBuilder.append(paramArrayOfString);
+      localStringBuilder.append(" from = ");
+      localStringBuilder.append(paramString2);
+      QLog.d("VasQuickUpdateEngine", 2, localStringBuilder.toString());
     }
   }
   
@@ -123,10 +145,23 @@ public class VasQuickUpdateEngine
   
   public void onCompleted(long paramLong, String paramString1, String paramString2, String paramString3, int paramInt1, int paramInt2, int paramInt3)
   {
-    QLog.d("VasQuickUpdateEngine", 1, "onCompleted bid = " + paramLong + " scid = " + paramString1 + " from = " + paramString3 + " dlFrom = " + paramInt1 + " errorCode = " + paramInt2 + " httpCode = " + paramInt3);
-    BaseUpdateCallback localBaseUpdateCallback = UpdateCallbackSelector.getCallback(paramLong);
-    if (localBaseUpdateCallback != null) {
-      localBaseUpdateCallback.onCompleted(paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onCompleted bid = ");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" scid = ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" from = ");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append(" dlFrom = ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" errorCode = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(" httpCode = ");
+    ((StringBuilder)localObject).append(paramInt3);
+    QLog.d("VasQuickUpdateEngine", 1, ((StringBuilder)localObject).toString());
+    localObject = UpdateCallbackSelector.getCallback(paramLong);
+    if (localObject != null) {
+      ((QuickUpdateListener)localObject).onCompleted(paramLong, paramString1, paramString2, paramString3, paramInt2, paramInt3);
     }
   }
   
@@ -138,12 +173,24 @@ public class VasQuickUpdateEngine
   
   public void onProgress(long paramLong1, String paramString1, String paramString2, long paramLong2, long paramLong3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasQuickUpdateEngine", 2, "onProgress bid = " + paramLong1 + " scid = " + paramString1 + " cfgScid = " + paramString2 + "dwProgress = " + paramLong2 + " dwProgressMax = " + paramLong3);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onProgress bid = ");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(" scid = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" cfgScid = ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("dwProgress = ");
+      ((StringBuilder)localObject).append(paramLong2);
+      ((StringBuilder)localObject).append(" dwProgressMax = ");
+      ((StringBuilder)localObject).append(paramLong3);
+      QLog.d("VasQuickUpdateEngine", 2, ((StringBuilder)localObject).toString());
     }
-    BaseUpdateCallback localBaseUpdateCallback = UpdateCallbackSelector.getCallback(paramLong1);
-    if (localBaseUpdateCallback != null) {
-      localBaseUpdateCallback.onProgress(paramLong1, paramString1, paramString2, paramLong2, paramLong3);
+    Object localObject = UpdateCallbackSelector.getCallback(paramLong1);
+    if (localObject != null) {
+      ((QuickUpdateListener)localObject).onProgress(paramLong1, paramString1, paramString2, paramLong2, paramLong3);
     }
   }
   
@@ -151,25 +198,21 @@ public class VasQuickUpdateEngine
   
   void removePendingTask(VasQuickUpdateEngine.PendingTask paramPendingTask)
   {
-    for (;;)
+    int i;
+    synchronized (this.pendingTasks)
     {
-      int i;
-      synchronized (this.pendingTasks)
+      i = this.pendingTasks.size() - 1;
+      if (i >= 0)
       {
-        i = this.pendingTasks.size() - 1;
-        if (i >= 0)
-        {
-          VasQuickUpdateEngine.PendingTask localPendingTask = (VasQuickUpdateEngine.PendingTask)this.pendingTasks.get(i);
-          if ((localPendingTask.getClass() == paramPendingTask.getClass()) && (localPendingTask.equals(paramPendingTask))) {
-            this.pendingTasks.remove(i);
-          }
-        }
-        else
-        {
-          return;
+        VasQuickUpdateEngine.PendingTask localPendingTask = (VasQuickUpdateEngine.PendingTask)this.pendingTasks.get(i);
+        if ((localPendingTask.getClass() == paramPendingTask.getClass()) && (localPendingTask.equals(paramPendingTask))) {
+          this.pendingTasks.remove(i);
         }
       }
-      i -= 1;
+      else
+      {
+        return;
+      }
     }
   }
   
@@ -182,7 +225,7 @@ public class VasQuickUpdateEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasQuickUpdateEngine
  * JD-Core Version:    0.7.0.1
  */

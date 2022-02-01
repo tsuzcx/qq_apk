@@ -38,15 +38,16 @@ public class hf
   
   public static hf a(@NonNull IThreadPool paramIThreadPool, @NonNull b paramb, @NonNull e parame1, @NonNull e parame2)
   {
-    if (sT == null) {}
-    try
-    {
-      if (sT == null) {
-        sT = new hf(paramIThreadPool, paramb, parame1, parame2);
+    if (sT == null) {
+      try
+      {
+        if (sT == null) {
+          sT = new hf(paramIThreadPool, paramb, parame1, parame2);
+        }
       }
-      return sT;
+      finally {}
     }
-    finally {}
+    return sT;
   }
   
   private void a(int paramInt1, int paramInt2, ArrayList<Integer> paramArrayList, ArrayList<String> paramArrayList1, int paramInt3)
@@ -97,7 +98,7 @@ public class hf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.hf
  * JD-Core Version:    0.7.0.1
  */

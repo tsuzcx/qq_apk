@@ -19,47 +19,48 @@ class RecyclerViewBase$RecyclerViewDataObserver
     {
       int k = this.this$0.mLayout.getPendingPosition();
       int m = this.this$0.mLayout.getPendingOffset();
-      int i = m;
       int j = k;
+      int i = m;
       if (k == -2147483648)
       {
         k = this.this$0.mLayout.getPosition(localView);
-        i = m;
         j = k;
+        i = m;
         if (m == -2147483648)
         {
-          i = this.this$0.mLayout.getDecoratedStart(localView);
-          if (!this.this$0.mLayout.canScrollHorizontally()) {
-            break label172;
+          j = this.this$0.mLayout.getDecoratedStart(localView);
+          if (this.this$0.mLayout.canScrollHorizontally()) {
+            i = this.this$0.mState.mCustomHeaderWidth;
+          } else {
+            i = this.this$0.mState.mCustomHeaderHeight;
           }
-          i += this.this$0.mState.mCustomHeaderWidth;
+          i = j + i;
+          j = k;
         }
       }
-      for (j = k;; j = k)
-      {
-        j = this.this$0.validateAnchorItemPosition(j);
-        this.this$0.scrollToPositionWithOffset(j, i);
-        return;
-        label172:
-        i += this.this$0.mState.mCustomHeaderHeight;
-      }
+      j = this.this$0.validateAnchorItemPosition(j);
+      this.this$0.scrollToPositionWithOffset(j, i);
+      return;
     }
     this.this$0.requestLayout();
   }
   
   public void onItemRangeChanged(int paramInt1, int paramInt2)
   {
-    this.this$0.postAdapterUpdate(this.this$0.obtainUpdateOp(2, paramInt1, paramInt2));
+    RecyclerViewBase localRecyclerViewBase = this.this$0;
+    localRecyclerViewBase.postAdapterUpdate(localRecyclerViewBase.obtainUpdateOp(2, paramInt1, paramInt2));
   }
   
   public void onItemRangeInserted(int paramInt1, int paramInt2)
   {
-    this.this$0.postAdapterUpdate(this.this$0.obtainUpdateOp(0, paramInt1, paramInt2));
+    RecyclerViewBase localRecyclerViewBase = this.this$0;
+    localRecyclerViewBase.postAdapterUpdate(localRecyclerViewBase.obtainUpdateOp(0, paramInt1, paramInt2));
   }
   
   public void onItemRangeRemoved(int paramInt1, int paramInt2)
   {
-    this.this$0.postAdapterUpdate(this.this$0.obtainUpdateOp(1, paramInt1, paramInt2));
+    RecyclerViewBase localRecyclerViewBase = this.this$0;
+    localRecyclerViewBase.postAdapterUpdate(localRecyclerViewBase.obtainUpdateOp(1, paramInt1, paramInt2));
   }
   
   public void onItemsRemoved(ArrayList<Integer> paramArrayList)
@@ -71,7 +72,7 @@ class RecyclerViewBase$RecyclerViewDataObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.RecyclerViewDataObserver
  * JD-Core Version:    0.7.0.1
  */

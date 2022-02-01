@@ -25,10 +25,11 @@ public abstract class AbstractDataBuffer<T>
   
   public int getCount()
   {
-    if (this.mDataHolder == null) {
+    DataHolder localDataHolder = this.mDataHolder;
+    if (localDataHolder == null) {
       return 0;
     }
-    return this.mDataHolder.getCount();
+    return localDataHolder.getCount();
   }
   
   public Bundle getMetadata()
@@ -39,10 +40,11 @@ public abstract class AbstractDataBuffer<T>
   @Deprecated
   public boolean isClosed()
   {
-    if (this.mDataHolder == null) {
+    DataHolder localDataHolder = this.mDataHolder;
+    if (localDataHolder == null) {
       return true;
     }
-    return this.mDataHolder.isClosed();
+    return localDataHolder.isClosed();
   }
   
   public Iterator<T> iterator()
@@ -52,8 +54,9 @@ public abstract class AbstractDataBuffer<T>
   
   public void release()
   {
-    if (this.mDataHolder != null) {
-      this.mDataHolder.close();
+    DataHolder localDataHolder = this.mDataHolder;
+    if (localDataHolder != null) {
+      localDataHolder.close();
     }
   }
   
@@ -64,7 +67,7 @@ public abstract class AbstractDataBuffer<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.data.AbstractDataBuffer
  * JD-Core Version:    0.7.0.1
  */

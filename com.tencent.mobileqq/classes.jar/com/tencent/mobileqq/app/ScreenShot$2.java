@@ -28,25 +28,22 @@ class ScreenShot$2
       try
       {
         this.this$0.d = Bitmap.createBitmap(localBitmap, 0, i, j, k - i);
-        localView.destroyDrawingCache();
-        this.this$0.jdField_a_of_type_JavaLangObject.notifyAll();
-        return;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ScreenShot", 2, localOutOfMemoryError, new Object[0]);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.d("ScreenShot", 2, localOutOfMemoryError, new Object[0]);
         }
       }
+      localView.destroyDrawingCache();
+      this.this$0.jdField_a_of_type_JavaLangObject.notifyAll();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ScreenShot.2
  * JD-Core Version:    0.7.0.1
  */

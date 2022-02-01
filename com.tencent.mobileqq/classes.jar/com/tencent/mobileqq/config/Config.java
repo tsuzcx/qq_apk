@@ -12,21 +12,15 @@ import mqq.app.AppRuntime;
 
 public class Config
 {
-  public static byte a;
+  public static byte a = 3;
   private static ConfigManager jdField_a_of_type_ComTencentMobileqqConfigConfigManager;
   public static PicAndAdConf a;
   private static HttpCommunicator jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator;
   private static ArrayList<ConfigListener> jdField_a_of_type_JavaUtilArrayList;
   static BaseConf[] jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf;
-  public static byte b;
+  public static byte b = 1;
   static PicAndAdConf b;
   private boolean jdField_a_of_type_Boolean = true;
-  
-  static
-  {
-    jdField_a_of_type_Byte = 3;
-    jdField_b_of_type_Byte = 1;
-  }
   
   public Config(QQAppInterface paramQQAppInterface, String paramString)
   {
@@ -34,8 +28,8 @@ public class Config
     jdField_a_of_type_ComTencentMobileqqConfigConfigManager = new ConfigManager(paramQQAppInterface.getApp(), paramString);
     jdField_a_of_type_JavaUtilArrayList = new ArrayList();
     jdField_a_of_type_ComTencentMobileqqConfigStructPicAndAdConf = new PicAndAdConf((short)24, (byte)0);
-    jdField_b_of_type_ComTencentMobileqqConfigStructPicAndAdConf = new PicAndAdConf((short)12, (byte)1);
-    jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf = new BaseConf[] { jdField_a_of_type_ComTencentMobileqqConfigStructPicAndAdConf, jdField_b_of_type_ComTencentMobileqqConfigStructPicAndAdConf };
+    b = new PicAndAdConf((short)12, (byte)1);
+    jdField_a_of_type_ArrayOfComTencentMobileqqConfigStructBaseConf = new BaseConf[] { jdField_a_of_type_ComTencentMobileqqConfigStructPicAndAdConf, b };
     jdField_a_of_type_ComTencentMobileqqConfigConfigManager.a();
   }
   
@@ -83,8 +77,9 @@ public class Config
   public static void a()
   {
     jdField_a_of_type_ComTencentMobileqqConfigConfigManager = null;
-    if (jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator != null) {
-      jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator.close();
+    HttpCommunicator localHttpCommunicator = jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator;
+    if (localHttpCommunicator != null) {
+      localHttpCommunicator.close();
     }
     jdField_a_of_type_ComTencentMobileqqTransfileHttpCommunicator = null;
   }
@@ -126,7 +121,7 @@ public class Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.Config
  * JD-Core Version:    0.7.0.1
  */

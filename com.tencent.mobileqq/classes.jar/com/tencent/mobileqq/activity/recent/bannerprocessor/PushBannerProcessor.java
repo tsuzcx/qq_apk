@@ -30,6 +30,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.banner.Banner;
 import com.tencent.mobileqq.banner.BannerManager;
+import com.tencent.mobileqq.banner.BannerTypeCollections;
 import com.tencent.mobileqq.banner.processor.BaseBannerProcessor;
 import com.tencent.mobileqq.banner.processor.IBannerLifecycle;
 import com.tencent.mobileqq.banner.processor.IBannerOnAddToView;
@@ -55,16 +56,23 @@ public class PushBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle, IBannerOnAddToView
 {
+  public static final int a;
   public float a;
-  public int a;
   public boolean a;
-  private boolean b = false;
+  public int b;
+  private boolean b;
+  
+  static
+  {
+    jdField_a_of_type_Int = BannerTypeCollections.x;
+  }
   
   public PushBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_Float = 0.0F;
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_MqqOsMqqHandler = new CustomHandler(Looper.getMainLooper(), this);
   }
   
@@ -72,14 +80,20 @@ public class PushBannerProcessor
   {
     if (a())
     {
-      BannerManager.a().a(24, 2, paramMessage);
-      paramMessage = (Conversation)FrameHelperActivity.a((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity).a(Conversation.class);
-      if (paramMessage != null) {
-        paramMessage.z();
+      BannerManager.a().a(jdField_a_of_type_Int, 2, paramMessage);
+      paramMessage = FrameHelperActivity.a((BaseActivity)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
+      if (paramMessage == null) {
+        return;
       }
-      return;
+      paramMessage = (Conversation)paramMessage.a(Conversation.class);
+      if (paramMessage != null) {
+        paramMessage.y();
+      }
     }
-    BannerManager.a().a(24, 0, null);
+    else
+    {
+      BannerManager.a().a(jdField_a_of_type_Int, 0, null);
+    }
   }
   
   private boolean a(View paramView)
@@ -96,7 +110,7 @@ public class PushBannerProcessor
     int m = localConfig.a(0);
     if (m > 0)
     {
-      ((ADView)paramView.findViewById(2131362258)).h();
+      ((ADView)paramView.findViewById(2131362283)).h();
       int i = 0;
       int k;
       for (int j = 0; i < m; j = k)
@@ -107,8 +121,12 @@ public class PushBannerProcessor
         }
         i += 1;
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.recent.banner", 4, "loadPushBanner, addnum = " + j);
+      if (QLog.isDevelopLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("loadPushBanner, addnum = ");
+        paramView.append(j);
+        QLog.i("Q.recent.banner", 4, paramView.toString());
       }
       if (j > 0)
       {
@@ -131,33 +149,43 @@ public class PushBannerProcessor
     if ((bool) && (!"".equals(localPushBanner.j)))
     {
       localPushBanner.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction = JumpParser.a((QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, localPushBanner.j);
-      if (localPushBanner.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction == null) {}
-      for (int i = 0; i != 0; i = 1)
+      int i;
+      if (localPushBanner.jdField_a_of_type_ComTencentMobileqqUtilsJumpAction == null) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if (i != 0)
       {
-        Object localObject = paramConfig.a(0, paramInt);
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PUSH BANNER", 4, "addPushBanner, bannerPic = " + localObject);
+        paramConfig = paramConfig.a(0, paramInt);
+        Object localObject;
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("addPushBanner, bannerPic = ");
+          ((StringBuilder)localObject).append(paramConfig);
+          QLog.i("PUSH BANNER", 4, ((StringBuilder)localObject).toString());
         }
-        if (localObject == null) {
-          break;
+        if (paramConfig != null)
+        {
+          localObject = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getLayoutInflater().inflate(2131559644, null);
+          ImageView localImageView = (ImageView)((FrameLayout)localObject).findViewById(2131362037);
+          localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+          localImageView.setImageBitmap(paramConfig);
+          DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDisplayMetrics();
+          FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localImageView.getLayoutParams();
+          i = paramConfig.getHeight() * Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) / paramConfig.getWidth();
+          localLayoutParams.height = Math.max((int)(localDisplayMetrics.density * 30.0F), Math.min(Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) * 68 / 320, i));
+          localImageView.setLayoutParams(localLayoutParams);
+          paramConfig = (ImageView)((FrameLayout)localObject).findViewById(2131373297);
+          paramConfig.setTag(localPushBanner);
+          paramConfig.setContentDescription(HardCodeUtil.a(2131701148));
+          paramConfig.setOnClickListener(new PushBannerProcessor.3(this));
+          ((FrameLayout)localObject).setTag(localPushBanner);
+          ((ADView)paramView.findViewById(2131362283)).a((View)localObject, paramInt);
+          paramView.setTag(2131362283, localPushBanner.jdField_a_of_type_JavaLangString);
+          return true;
         }
-        paramConfig = (FrameLayout)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getLayoutInflater().inflate(2131559767, null);
-        ImageView localImageView = (ImageView)paramConfig.findViewById(2131362022);
-        localImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-        localImageView.setImageBitmap((Bitmap)localObject);
-        DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDisplayMetrics();
-        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)localImageView.getLayoutParams();
-        i = ((Bitmap)localObject).getHeight() * Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) / ((Bitmap)localObject).getWidth();
-        localLayoutParams.height = Math.max((int)(30.0F * localDisplayMetrics.density), Math.min(Math.min(localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels) * 68 / 320, i));
-        localImageView.setLayoutParams(localLayoutParams);
-        localObject = (ImageView)paramConfig.findViewById(2131373725);
-        ((ImageView)localObject).setTag(localPushBanner);
-        ((ImageView)localObject).setContentDescription(HardCodeUtil.a(2131701005));
-        ((ImageView)localObject).setOnClickListener(new PushBannerProcessor.3(this));
-        paramConfig.setTag(localPushBanner);
-        ((ADView)paramView.findViewById(2131362258)).a(paramConfig, paramInt);
-        paramView.setTag(2131362258, localPushBanner.jdField_a_of_type_JavaLangString);
-        return true;
       }
     }
     return false;
@@ -170,12 +198,20 @@ public class PushBannerProcessor
   
   private boolean c()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSharedPreferences("mobileQQ", 0).getBoolean("reveive_newpb" + this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount(), false);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSharedPreferences("mobileQQ", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reveive_newpb");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount());
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
   
   private boolean d()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSharedPreferences("mobileQQ", 0).getBoolean("push_banner_display" + this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount(), true);
+    SharedPreferences localSharedPreferences = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSharedPreferences("mobileQQ", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("push_banner_display");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount());
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), true);
   }
   
   private void e()
@@ -190,42 +226,34 @@ public class PushBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getLayoutInflater().inflate(2131559766, null);
+    paramBanner = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getLayoutInflater().inflate(2131559643, null);
     paramBanner.setLayoutParams(new AbsListView.LayoutParams(-1, -2));
-    paramBanner.findViewById(2131373714).setVisibility(8);
-    ((LinearLayout)paramBanner.findViewById(2131364815)).setOnClickListener(new PushBannerProcessor.1(this));
+    paramBanner.findViewById(2131373286).setVisibility(8);
+    ((LinearLayout)paramBanner.findViewById(2131364703)).setOnClickListener(new PushBannerProcessor.1(this));
     return paramBanner;
   }
   
   public Object a(int paramInt)
   {
-    Object localObject2 = null;
-    Banner localBanner = BannerManager.a().a(24);
-    Object localObject1 = localObject2;
-    if (localBanner != null)
+    Banner localBanner = BannerManager.a().a(jdField_a_of_type_Int);
+    if ((localBanner != null) && (localBanner.jdField_a_of_type_AndroidViewView != null))
     {
-      localObject1 = localObject2;
-      if (localBanner.jdField_a_of_type_AndroidViewView != null)
-      {
-        if (paramInt != 0) {
-          break label44;
-        }
-        localObject1 = localBanner.jdField_a_of_type_AndroidViewView.getTag();
+      if (paramInt == 0) {
+        return localBanner.jdField_a_of_type_AndroidViewView.getTag();
       }
+      return localBanner.jdField_a_of_type_AndroidViewView.getTag(paramInt);
     }
-    return localObject1;
-    label44:
-    return localBanner.jdField_a_of_type_AndroidViewView.getTag(paramInt);
+    return null;
   }
   
   public void a()
   {
     this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1000);
-    Object localObject = BannerManager.a().a(24);
+    Object localObject = BannerManager.a().a(jdField_a_of_type_Int);
     if ((localObject != null) && (((Banner)localObject).jdField_a_of_type_AndroidViewView != null))
     {
-      RelativeLayout localRelativeLayout = (RelativeLayout)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131362259);
-      localObject = (ADView)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131362258);
+      RelativeLayout localRelativeLayout = (RelativeLayout)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131362284);
+      localObject = (ADView)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131362283);
       if (localObject != null)
       {
         ((ADView)localObject).j();
@@ -235,27 +263,30 @@ public class PushBannerProcessor
         localRelativeLayout.setPadding(0, -1, 0, 0);
       }
     }
-    this.b = false;
+    this.jdField_b_of_type_Boolean = false;
   }
   
   public void a(float paramFloat)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.recent.banner", 2, "fight.setPushBannerHeight:" + paramFloat + ",mIsStoryShow:" + this.jdField_a_of_type_Boolean);
-    }
-    Object localObject1 = BannerManager.a().a(24);
-    if ((localObject1 == null) || (((Banner)localObject1).jdField_a_of_type_AndroidViewView == null))
+    if (QLog.isColorLevel())
     {
-      break label68;
-      break label68;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("fight.setPushBannerHeight:");
+      ((StringBuilder)localObject1).append(paramFloat);
+      ((StringBuilder)localObject1).append(",mIsStoryShow:");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Boolean);
+      QLog.d("Q.recent.banner", 2, ((StringBuilder)localObject1).toString());
     }
-    for (;;)
+    Object localObject1 = BannerManager.a().a(jdField_a_of_type_Int);
+    if (localObject1 != null)
     {
-      label68:
-      return;
-      if (!((Banner)localObject1).jdField_a_of_type_Boolean) {
-        continue;
+      if (((Banner)localObject1).jdField_a_of_type_AndroidViewView == null) {
+        return;
       }
+      if (!((Banner)localObject1).jdField_a_of_type_Boolean) {
+        return;
+      }
+      float f1 = 0.0F;
       if (paramFloat > 0.0F)
       {
         a(true);
@@ -263,184 +294,198 @@ public class PushBannerProcessor
       }
       localObject1 = ((Banner)localObject1).jdField_a_of_type_AndroidViewView;
       if (localObject1 == null) {
-        break;
+        return;
       }
-      int i = (int)Math.abs(paramFloat);
-      localObject1 = ((View)localObject1).findViewById(2131373714);
+      int j = (int)Math.abs(paramFloat);
+      localObject1 = ((View)localObject1).findViewById(2131373286);
       ViewGroup.LayoutParams localLayoutParams = ((View)localObject1).getLayoutParams();
-      int j = this.jdField_a_of_type_Int;
-      label160:
-      Object localObject2;
-      int k;
+      int k = this.jdField_b_of_type_Int;
+      float f2;
+      float f3;
       if (this.jdField_a_of_type_Boolean)
       {
-        if (localLayoutParams.height == this.jdField_a_of_type_Int) {
-          break;
+        int m = localLayoutParams.height;
+        i = this.jdField_b_of_type_Int;
+        if (m == i) {
+          return;
         }
-        if (paramFloat < -j)
+        if (paramFloat >= -k)
         {
-          paramFloat = 0.0F;
-          i = 0;
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.recent.banner", 2, "fight.setPushBannerHeight.lp.height = " + localLayoutParams.height + "height:" + i + ",alpha:" + paramFloat);
+          if (paramFloat >= -3.0F) {
+            break label304;
           }
-          if (localLayoutParams.height == i) {
-            break;
-          }
-          if (i == 0)
-          {
-            localObject2 = a(2131362258);
-            k = 0;
-            j = k;
-            if (localObject2 != null)
-            {
-              j = k;
-              if (!(localObject2 instanceof String)) {}
-            }
-          }
+          j = k - j;
+          paramFloat = j / i;
+          i = j;
+          break label295;
         }
       }
-      try
+      else
       {
-        j = Integer.parseInt((String)localObject2);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X80094CD", "0X80094CD", j, 0, "", "", "", "");
+        if (localLayoutParams.height == 0) {
+          return;
+        }
+        ((View)localObject1).findViewById(2131364703).setVisibility(4);
+        f2 = this.jdField_a_of_type_Float;
+        f3 = k;
+        if (paramFloat >= f2 - f3) {
+          break label273;
+        }
+      }
+      int i = 0;
+      paramFloat = f1;
+      break label306;
+      label273:
+      if (paramFloat < f2)
+      {
+        i = (int)(paramFloat + f3 - f2);
+        paramFloat = i / f3;
+      }
+      else
+      {
+        label295:
+        i = this.jdField_b_of_type_Int;
+        label304:
+        paramFloat = 1.0F;
+      }
+      label306:
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("fight.setPushBannerHeight.lp.height = ");
+        ((StringBuilder)localObject2).append(localLayoutParams.height);
+        ((StringBuilder)localObject2).append("height:");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append(",alpha:");
+        ((StringBuilder)localObject2).append(paramFloat);
+        QLog.d("Q.recent.banner", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (localLayoutParams.height != i)
+      {
+        if (i == 0)
+        {
+          localObject2 = a(2131362283);
+          if ((localObject2 != null) && ((localObject2 instanceof String))) {
+            try
+            {
+              j = Integer.parseInt((String)localObject2);
+            }
+            catch (Throwable localThrowable)
+            {
+              localThrowable.printStackTrace();
+            }
+          } else {
+            j = 0;
+          }
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X80094CD", "0X80094CD", j, 0, "", "", "", "");
+        }
         localLayoutParams.height = i;
         ((View)localObject1).setAlpha(paramFloat);
         ((View)localObject1).requestLayout();
-        return;
-        if (paramFloat >= -3.0F)
-        {
-          i = this.jdField_a_of_type_Int;
-          paramFloat = 1.0F;
-          break label160;
-        }
-        paramFloat = (j - i) / this.jdField_a_of_type_Int;
-        i = j - i;
-        break label160;
-        if (localLayoutParams.height == 0) {
-          continue;
-        }
-        ((View)localObject1).findViewById(2131364815).setVisibility(4);
-        if (paramFloat < this.jdField_a_of_type_Float - j)
-        {
-          paramFloat = 0.0F;
-          i = 0;
-          break label160;
-        }
-        if (paramFloat < this.jdField_a_of_type_Float)
-        {
-          i = (int)(j + paramFloat - this.jdField_a_of_type_Float);
-          paramFloat = i / j;
-          break label160;
-        }
-        i = this.jdField_a_of_type_Int;
-        paramFloat = 1.0F;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          localThrowable.printStackTrace();
-          j = k;
-        }
       }
     }
   }
   
   public void a(Banner paramBanner)
   {
-    if ((paramBanner.jdField_a_of_type_Int == 24) && (this.jdField_a_of_type_Boolean)) {
-      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131373714).getLayoutParams().height = 0;
+    if ((paramBanner.jdField_a_of_type_Int == jdField_a_of_type_Int) && (this.jdField_a_of_type_Boolean)) {
+      paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131373286).getLayoutParams().height = 0;
     }
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131373714).setVisibility(0);
-    paramMessage = (RelativeLayout)paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131362259);
-    paramBanner = (ADView)paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131362258);
+    paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131373286).setVisibility(0);
+    paramMessage = (RelativeLayout)paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131362284);
+    paramBanner = (ADView)paramBanner.jdField_a_of_type_AndroidViewView.findViewById(2131362283);
     if (b())
     {
       paramMessage.setPadding(0, 0, 0, 0);
       paramBanner.i();
     }
-    for (;;)
+    else
     {
-      ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 12, 0, "", "", "", "");
-      return;
       paramMessage.setPadding(0, -1, 0, 0);
     }
+    ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X8009EDE", "0X8009EDE", 12, 0, "", "", "", "");
+  }
+  
+  public void a(AppRuntime paramAppRuntime)
+  {
+    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
   }
   
   public void a(boolean paramBoolean)
   {
-    Object localObject1 = BannerManager.a().a(24);
-    if ((localObject1 == null) || (((Banner)localObject1).jdField_a_of_type_AndroidViewView == null)) {}
-    label20:
-    ViewGroup.LayoutParams localLayoutParams;
-    int i;
-    do
+    Object localObject1 = BannerManager.a().a(jdField_a_of_type_Int);
+    if (localObject1 != null)
     {
-      do
-      {
-        do
-        {
-          break label20;
-          do
-          {
-            return;
-          } while (!((Banner)localObject1).jdField_a_of_type_Boolean);
-          localObject1 = ((Banner)localObject1).jdField_a_of_type_AndroidViewView;
-        } while (localObject1 == null);
-        localObject1 = ((View)localObject1).findViewById(2131373714);
-        localLayoutParams = ((View)localObject1).getLayoutParams();
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.recent.banner", 2, "fight.setPushBannerHeight.lp.height1 = " + localLayoutParams.height);
-        }
-        if (!paramBoolean) {
-          break;
-        }
-      } while ((localLayoutParams.height == this.jdField_a_of_type_Int) && (((View)localObject1).findViewById(2131364815).getVisibility() == 0) && (((View)localObject1).getAlpha() == 1.0F));
-      ((View)localObject1).findViewById(2131364815).setVisibility(0);
-      ((View)localObject1).setAlpha(1.0F);
-      localLayoutParams.height = this.jdField_a_of_type_Int;
-      ((View)localObject1).requestLayout();
-      localObject1 = a(2131362258);
-      if ((localObject1 != null) && ((localObject1 instanceof String))) {}
-      for (;;)
-      {
-        try
-        {
-          i = Integer.parseInt((String)localObject1);
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "3", "", "", "");
-          return;
-        }
-        catch (Throwable localThrowable1)
-        {
-          localThrowable1.printStackTrace();
-        }
-        i = 0;
-      }
-    } while (localLayoutParams.height == 0);
-    localThrowable1.findViewById(2131364815).setVisibility(4);
-    localThrowable1.setAlpha(0.0F);
-    localLayoutParams.height = 0;
-    localThrowable1.requestLayout();
-    Object localObject2 = a(2131362258);
-    if ((localObject2 != null) && ((localObject2 instanceof String))) {}
-    for (;;)
-    {
-      try
-      {
-        i = Integer.parseInt((String)localObject2);
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X80094CD", "0X80094CD", i, 0, "", "", "", "");
+      if (((Banner)localObject1).jdField_a_of_type_AndroidViewView == null) {
         return;
       }
-      catch (Throwable localThrowable2)
-      {
-        localThrowable2.printStackTrace();
+      if (!((Banner)localObject1).jdField_a_of_type_Boolean) {
+        return;
       }
-      i = 0;
+      localObject1 = ((Banner)localObject1).jdField_a_of_type_AndroidViewView;
+      if (localObject1 == null) {
+        return;
+      }
+      localObject1 = ((View)localObject1).findViewById(2131373286);
+      ViewGroup.LayoutParams localLayoutParams = ((View)localObject1).getLayoutParams();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("fight.setPushBannerHeight.lp.height1 = ");
+        localStringBuilder.append(localLayoutParams.height);
+        QLog.d("Q.recent.banner", 2, localStringBuilder.toString());
+      }
+      int i;
+      if (paramBoolean)
+      {
+        if ((localLayoutParams.height != this.jdField_b_of_type_Int) || (((View)localObject1).findViewById(2131364703).getVisibility() != 0) || (((View)localObject1).getAlpha() != 1.0F))
+        {
+          ((View)localObject1).findViewById(2131364703).setVisibility(0);
+          ((View)localObject1).setAlpha(1.0F);
+          localLayoutParams.height = this.jdField_b_of_type_Int;
+          ((View)localObject1).requestLayout();
+          localObject1 = a(2131362283);
+          if ((localObject1 != null) && ((localObject1 instanceof String))) {
+            try
+            {
+              i = Integer.parseInt((String)localObject1);
+            }
+            catch (Throwable localThrowable1)
+            {
+              localThrowable1.printStackTrace();
+            }
+          } else {
+            i = 0;
+          }
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X80087C2", "0X80087C2", i, 0, "3", "", "", "");
+        }
+      }
+      else if (localLayoutParams.height != 0)
+      {
+        localThrowable1.findViewById(2131364703).setVisibility(4);
+        localThrowable1.setAlpha(0.0F);
+        localLayoutParams.height = 0;
+        localThrowable1.requestLayout();
+        Object localObject2 = a(2131362283);
+        if ((localObject2 != null) && ((localObject2 instanceof String))) {
+          try
+          {
+            i = Integer.parseInt((String)localObject2);
+          }
+          catch (Throwable localThrowable2)
+          {
+            localThrowable2.printStackTrace();
+          }
+        } else {
+          i = 0;
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime(), "dc00898", "", "", "0X80094CD", "0X80094CD", i, 0, "", "", "", "");
+      }
     }
   }
   
@@ -452,103 +497,109 @@ public class PushBannerProcessor
   
   public boolean a()
   {
-    boolean bool1 = true;
-    boolean bool2 = c();
-    if ((this.b) && (!bool2)) {}
-    for (;;)
+    boolean bool1 = c();
+    boolean bool2;
+    Object localObject1;
+    if ((this.jdField_b_of_type_Boolean) && (!bool1))
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("Q.recent.banner", 4, "isNeedShowPushBanner, isNeedShow = " + bool1);
-      }
-      return bool1;
-      if (d())
-      {
-        Object localObject = BannerManager.a().a(24);
-        if (localObject != null) {}
-        for (localObject = a((Banner)localObject);; localObject = null)
-        {
-          if (localObject != null) {}
-          for (bool1 = a((View)localObject);; bool1 = false)
-          {
-            if (bool1)
-            {
-              ((View)localObject).findViewById(2131373714).setVisibility(0);
-              this.b = true;
-              this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSharedPreferences("mobileQQ", 0).edit().putBoolean("reveive_newpb" + this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount(), false).commit();
-            }
-            break;
-          }
-        }
-      }
-      bool1 = false;
+      bool2 = true;
     }
+    else if (d())
+    {
+      Object localObject2 = BannerManager.a().a(jdField_a_of_type_Int);
+      localObject1 = null;
+      if (localObject2 != null) {
+        localObject1 = a((Banner)localObject2);
+      }
+      if (localObject1 != null) {
+        bool1 = a((View)localObject1);
+      } else {
+        bool1 = false;
+      }
+      bool2 = bool1;
+      if (bool1)
+      {
+        ((View)localObject1).findViewById(2131373286).setVisibility(0);
+        this.jdField_b_of_type_Boolean = true;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSharedPreferences("mobileQQ", 0).edit();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("reveive_newpb");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount());
+        ((SharedPreferences.Editor)localObject1).putBoolean(((StringBuilder)localObject2).toString(), false).commit();
+        bool2 = bool1;
+      }
+    }
+    else
+    {
+      bool2 = false;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("isNeedShowPushBanner, isNeedShow = ");
+      ((StringBuilder)localObject1).append(bool2);
+      QLog.i("Q.recent.banner", 4, ((StringBuilder)localObject1).toString());
+    }
+    return bool2;
+  }
+  
+  public int b()
+  {
+    return jdField_a_of_type_Int;
   }
   
   public void b() {}
   
-  public void b(AppRuntime paramAppRuntime)
-  {
-    this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
-  }
-  
   public void c()
   {
-    Object localObject = BannerManager.a().a(24);
-    ViewGroup localViewGroup;
-    int j;
-    int i;
-    if ((localObject != null) && (((Banner)localObject).jdField_a_of_type_AndroidViewView != null))
+    Object localObject1 = BannerManager.a().a(jdField_a_of_type_Int);
+    if ((localObject1 != null) && (((Banner)localObject1).jdField_a_of_type_AndroidViewView != null))
     {
-      localObject = (ADView)((Banner)localObject).jdField_a_of_type_AndroidViewView.findViewById(2131362258);
-      localViewGroup = ((ADView)localObject).a(0);
-      if (localViewGroup != null)
+      localObject1 = (ADView)((Banner)localObject1).jdField_a_of_type_AndroidViewView.findViewById(2131362283);
+      Object localObject2 = ((ADView)localObject1).a(0);
+      if (localObject2 != null)
       {
-        j = localViewGroup.getChildCount();
-        i = 0;
-        j -= 1;
-        if (j >= 0)
+        int i = ((ViewGroup)localObject2).getChildCount() - 1;
+        int j = 0;
+        Object localObject3;
+        while (i >= 0)
         {
-          View localView = localViewGroup.getChildAt(j);
-          PushBanner localPushBanner = (PushBanner)localView.getTag();
+          localObject3 = ((ViewGroup)localObject2).getChildAt(i);
+          PushBanner localPushBanner = (PushBanner)((View)localObject3).getTag();
           String str = localPushBanner.c;
           int k = str.indexOf("|");
-          if (CommonUtil.a(Long.parseLong(str.substring(0, k)), Long.parseLong(str.substring(k + 1)))) {
-            break label292;
-          }
-          ((ADView)localObject).a(0, j, localView);
-          Config.a.a(localPushBanner.l);
-          i = 1;
-        }
-      }
-    }
-    label292:
-    for (;;)
-    {
-      j -= 1;
-      break;
-      if (i != 0)
-      {
-        if (localViewGroup.getChildCount() == 0)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount(), false).commit();
-          ((ADView)localObject).h();
-          BannerManager.a().a(24, 0, null);
-          this.b = false;
-        }
-        for (;;)
-        {
-          localObject = new ConfigManager(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getApplicationContext(), ConfigServlet.jdField_a_of_type_JavaLangString);
-          if (localObject != null)
+          if (!CommonUtil.a(Long.parseLong(str.substring(0, k)), Long.parseLong(str.substring(k + 1))))
           {
-            ((ConfigManager)localObject).b();
-            ((ConfigManager)localObject).c();
+            ((ADView)localObject1).a(0, i, (View)localObject3);
+            Config.a.a(localPushBanner.l);
+            j = 1;
           }
-          return;
-          d();
+          i -= 1;
         }
+        if (j != 0)
+        {
+          if (((ViewGroup)localObject2).getChildCount() == 0)
+          {
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getSharedPreferences("mobileQQ", 0).edit();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("push_banner_display");
+            ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime().getAccount());
+            ((SharedPreferences.Editor)localObject2).putBoolean(((StringBuilder)localObject3).toString(), false).commit();
+            ((ADView)localObject1).h();
+            BannerManager.a().a(jdField_a_of_type_Int, 0, null);
+            this.jdField_b_of_type_Boolean = false;
+          }
+          else
+          {
+            d();
+          }
+          localObject1 = new ConfigManager(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getApplicationContext(), ConfigServlet.jdField_a_of_type_JavaLangString);
+          ((ConfigManager)localObject1).b();
+          ((ConfigManager)localObject1).c();
+          return;
+        }
+        d();
       }
-      d();
-      return;
     }
   }
   
@@ -556,27 +607,60 @@ public class PushBannerProcessor
   {
     this.jdField_a_of_type_MqqOsMqqHandler.removeMessages(1000);
     long l = System.currentTimeMillis();
-    Calendar localCalendar = Calendar.getInstance();
-    localCalendar.add(5, 1);
-    localCalendar.set(11, 0);
-    localCalendar.clear(12);
-    localCalendar.clear(13);
-    localCalendar.clear(14);
-    l = localCalendar.getTimeInMillis() - (l - 10L) + 300000L;
-    if (QLog.isColorLevel()) {
-      QLog.d("PushBanner", 2, "Check banner delay: " + l);
+    Object localObject = Calendar.getInstance();
+    ((Calendar)localObject).add(5, 1);
+    ((Calendar)localObject).set(11, 0);
+    ((Calendar)localObject).clear(12);
+    ((Calendar)localObject).clear(13);
+    ((Calendar)localObject).clear(14);
+    l = ((Calendar)localObject).getTimeInMillis() - (l - 10L) + 300000L;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Check banner delay: ");
+      ((StringBuilder)localObject).append(l);
+      QLog.d("PushBanner", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1000, l);
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1000)
     {
+      if (i != 4000) {
+        switch (i)
+        {
+        default: 
+          break;
+        case 2005: 
+          if (this.jdField_b_of_type_Int != 0) {
+            break;
+          }
+          this.jdField_b_of_type_Int = AIOUtils.b(50.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources());
+          break;
+        case 2004: 
+          a(paramMessage.arg1);
+          break;
+        case 2003: 
+          a(paramMessage.getData().getBoolean("isStoryShow"), paramMessage.getData().getFloat("nodeOffset"));
+          break;
+        case 2002: 
+          a(paramMessage.getData().getBoolean("visible"));
+          break;
+        case 2001: 
+          a(paramMessage.getData().getFloat("height"));
+          break;
+        case 2000: 
+          a(paramMessage);
+          break;
+        }
+      } else {
+        a(paramMessage.arg1);
+      }
     }
-    for (;;)
-    {
-      return true;
+    else {
       try
       {
         if (QLog.isColorLevel()) {
@@ -584,34 +668,19 @@ public class PushBannerProcessor
         }
         c();
       }
-      catch (Exception paramMessage) {}
-      if (QLog.isColorLevel())
+      catch (Exception paramMessage)
       {
-        QLog.d("PushBanner", 2, "checkAndClosePushBanner Exception:", paramMessage);
-        continue;
-        a(paramMessage);
-        continue;
-        a(paramMessage.getData().getFloat("height"));
-        continue;
-        a(paramMessage.getData().getBoolean("visible"));
-        continue;
-        a(paramMessage.getData().getBoolean("isStoryShow"), paramMessage.getData().getFloat("nodeOffset"));
-        continue;
-        a(paramMessage.arg1);
-        continue;
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          this.jdField_a_of_type_Int = AIOUtils.a(50.0F, this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources());
-          continue;
-          a(paramMessage.arg1);
+        if (QLog.isColorLevel()) {
+          QLog.d("PushBanner", 2, "checkAndClosePushBanner Exception:", paramMessage);
         }
       }
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PushBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

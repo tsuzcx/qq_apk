@@ -3,7 +3,6 @@ package com.tencent.mobileqq.flutter.channel.sso;
 import com.tencent.mobileqq.flutter.channel.model.ResponsePacket;
 import com.tencent.qphone.base.util.QLog;
 import io.flutter.plugin.common.MethodChannel.Result;
-import java.util.Map;
 
 class SSOChannel$2
   implements Runnable
@@ -12,20 +11,22 @@ class SSOChannel$2
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      if (this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelResponsePacket == null) {
-        break label79;
-      }
-    }
-    label79:
-    for (boolean bool = this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelResponsePacket.isSuc.booleanValue();; bool = false)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      QLog.d("QFlutter.SSOChannel", 2, String.format("notifyResult, cmd: %s, isSuc: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool) }));
-      if (this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result == null) {
-        break;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelResponsePacket;
+      boolean bool;
+      if (localObject != null) {
+        bool = ((ResponsePacket)localObject).isSuc.booleanValue();
+      } else {
+        bool = false;
       }
-      Map localMap = ResponsePacket.toMap(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelResponsePacket);
-      this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(localMap);
+      QLog.d("QFlutter.SSOChannel", 2, String.format("notifyResult, cmd: %s, isSuc: %s", new Object[] { this.jdField_a_of_type_JavaLangString, Boolean.valueOf(bool) }));
+    }
+    if (this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result != null)
+    {
+      localObject = ResponsePacket.toMap(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelModelResponsePacket);
+      this.jdField_a_of_type_IoFlutterPluginCommonMethodChannel$Result.success(localObject);
       return;
     }
     QLog.d("QFlutter.SSOChannel", 1, String.format("notifyResult, cmd: %s result method is null", new Object[] { this.jdField_a_of_type_JavaLangString }));
@@ -33,7 +34,7 @@ class SSOChannel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.sso.SSOChannel.2
  * JD-Core Version:    0.7.0.1
  */

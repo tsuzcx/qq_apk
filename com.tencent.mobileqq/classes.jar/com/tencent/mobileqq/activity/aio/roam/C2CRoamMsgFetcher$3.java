@@ -14,42 +14,34 @@ class C2CRoamMsgFetcher$3
     int i;
     if (QLog.isColorLevel())
     {
-      paramString1 = new StringBuilder().append("onRefrshDA2 result: ").append(paramBoolean).append(", da2 length: ");
-      if (paramString2 == null)
-      {
+      paramString1 = new StringBuilder();
+      paramString1.append("onRefrshDA2 result: ");
+      paramString1.append(paramBoolean);
+      paramString1.append(", da2 length: ");
+      if (paramString2 == null) {
         i = 0;
-        QLog.d("C2CMsgRoamProxy", 2, i);
+      } else {
+        i = paramString2.length();
       }
+      paramString1.append(i);
+      QLog.d("C2CMsgRoamProxy", 2, paramString1.toString());
     }
-    else
-    {
-      if ((!paramBoolean) || (TextUtils.isEmpty(paramString2))) {
-        break label98;
-      }
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString2))) {
       i = 1;
-      label64:
-      if (i == 0) {
-        break label104;
-      }
-      C2CRoamMsgFetcher.a(this.a, true);
-    }
-    for (;;)
-    {
-      C2CRoamMsgFetcher.c(this.a).b();
-      return;
-      i = paramString2.length();
-      break;
-      label98:
+    } else {
       i = 0;
-      break label64;
-      label104:
+    }
+    if (i != 0) {
+      C2CRoamMsgFetcher.a(this.a, true);
+    } else {
       C2CRoamMsgFetcher.a(this.a, false);
     }
+    C2CRoamMsgFetcher.c(this.a).b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.roam.C2CRoamMsgFetcher.3
  * JD-Core Version:    0.7.0.1
  */

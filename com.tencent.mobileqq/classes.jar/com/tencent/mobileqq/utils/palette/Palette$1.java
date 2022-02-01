@@ -15,7 +15,20 @@ final class Palette$1
   
   private boolean c(float[] paramArrayOfFloat)
   {
-    return (paramArrayOfFloat[0] >= 10.0F) && (paramArrayOfFloat[0] <= 37.0F) && (paramArrayOfFloat[1] <= 0.82F);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramArrayOfFloat[0] >= 10.0F)
+    {
+      bool1 = bool2;
+      if (paramArrayOfFloat[0] <= 37.0F)
+      {
+        bool1 = bool2;
+        if (paramArrayOfFloat[1] <= 0.82F) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public boolean a(int paramInt, float[] paramArrayOfFloat)
@@ -25,7 +38,7 @@ final class Palette$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Palette.1
  * JD-Core Version:    0.7.0.1
  */

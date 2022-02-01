@@ -44,42 +44,44 @@ public class TroopUidToVidListHandler
     localGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
     localGetTroopVidListEvent.jdField_a_of_type_JavaLangString = paramGetGroupVidListRequest.b;
     localGetTroopVidListEvent.jdField_a_of_type_Int = paramGetGroupVidListRequest.c;
-    if ((paramGetGroupVidListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetGroupVidListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      c();
-      StoryDispatcher.a().dispatch(localGetTroopVidListEvent);
-      return;
-    }
-    b();
-    paramGetGroupVidListRequest = (StoryManager)SuperManager.a(5);
-    switch (this.b)
-    {
-    }
-    for (;;)
-    {
+      b();
+      paramGetGroupVidListRequest = (StoryManager)SuperManager.a(5);
+      if (this.b == 3)
+      {
+        paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, 1, paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaUtilList, true);
+        paramErrorMessage = paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, 1);
+        if (paramErrorMessage != null)
+        {
+          int i = paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaUtilList.size();
+          SLog.a("Q.qqstory.net:TroopUidToVidListHandler", "update %s unread count , old : %d , new : %d", paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, Integer.valueOf(paramErrorMessage.unReadCount), Integer.valueOf(i));
+          paramErrorMessage.unReadCount = i;
+          paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, 1, paramErrorMessage);
+        }
+      }
       localGetTroopVidListEvent.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList = paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList;
       StoryDispatcher.a().dispatch(localGetTroopVidListEvent);
       return;
-      paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, 1, paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaUtilList, true);
-      paramErrorMessage = paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, 1);
-      if (paramErrorMessage != null)
-      {
-        int i = paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaUtilList.size();
-        SLog.a("Q.qqstory.net:TroopUidToVidListHandler", "update %s unread count , old : %d , new : %d", paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, Integer.valueOf(paramErrorMessage.unReadCount), Integer.valueOf(i));
-        paramErrorMessage.unReadCount = i;
-        paramGetGroupVidListRequest.a(paramGetGroupVidListResponse.jdField_a_of_type_ComTencentBizQqstoryNetworkResponseGetGroupVidListResponse$UserVidList.jdField_a_of_type_JavaLangString, 1, paramErrorMessage);
-      }
     }
+    c();
+    StoryDispatcher.a().dispatch(localGetTroopVidListEvent);
   }
   
   public String toString()
   {
-    return "TroopUnionIdToVidHandler{mUin=" + this.jdField_a_of_type_JavaLangString + ", mPullType=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TroopUnionIdToVidHandler{mUin=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", mPullType=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.TroopUidToVidListHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -18,6 +18,7 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.Dispatcher;
+import com.tribe.async.dispatch.Dispatcher.Dispatchable;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -43,30 +44,31 @@ public class GetHotSortVideoHandler$GetHotSortVideoResponse
   public void a()
   {
     Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.is_end.get() == 1) {}
-    GetHotSortVideoHandler.GetVideoByHotSortEvent localGetVideoByHotSortEvent;
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.is_end.get() == 1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((GetHotSortVideoHandler)localObject).jdField_a_of_type_Boolean = bool;
+    GetHotSortVideoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.next_cookie.get().toStringUtf8());
+    GetHotSortVideoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.seq.get());
+    localObject = new ArrayList();
+    GetHotSortVideoHandler.GetVideoByHotSortEvent localGetVideoByHotSortEvent = new GetHotSortVideoHandler.GetVideoByHotSortEvent();
+    localGetVideoByHotSortEvent.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler.jdField_a_of_type_Boolean;
+    localGetVideoByHotSortEvent.b = this.jdField_a_of_type_Boolean;
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.has()) && (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.size() > 0))
     {
-      ((GetHotSortVideoHandler)localObject).jdField_a_of_type_Boolean = bool;
-      GetHotSortVideoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.next_cookie.get().toStringUtf8());
-      GetHotSortVideoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler, this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.seq.get());
-      localObject = new ArrayList();
-      localGetVideoByHotSortEvent = new GetHotSortVideoHandler.GetVideoByHotSortEvent();
-      localGetVideoByHotSortEvent.jdField_a_of_type_Boolean = this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler.jdField_a_of_type_Boolean;
-      localGetVideoByHotSortEvent.b = this.jdField_a_of_type_Boolean;
-      if ((!this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.has()) || (this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.size() <= 0)) {
-        break label203;
-      }
       Iterator localIterator = this.jdField_a_of_type_ComTencentBizQqstoryNetworkPbQqstory_group$RspGetGroupHotRankVideo.video_card_list.get().iterator();
       while (localIterator.hasNext()) {
         ((ArrayList)localObject).add(HotSortVideoEntry.convertFrom((qqstory_group.HotVideoCard)localIterator.next()));
       }
+      if (!this.jdField_a_of_type_Boolean) {
+        ThreadManager.post(new GetHotSortVideoHandler.GetHotSortVideoResponse.1(this, (ArrayList)localObject, localGetVideoByHotSortEvent), 5, null, true);
+      }
     }
-    if (!this.jdField_a_of_type_Boolean)
+    else
     {
-      ThreadManager.post(new GetHotSortVideoHandler.GetHotSortVideoResponse.1(this, (ArrayList)localObject, localGetVideoByHotSortEvent), 5, null, true);
-      return;
-      label203:
       SLog.e("GetHotSortVideoHandler", "GetHotSortVideoResponse Success but video_card_list is empty。");
     }
     localGetVideoByHotSortEvent.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
@@ -78,26 +80,36 @@ public class GetHotSortVideoHandler$GetHotSortVideoResponse
     paramBundle = new GetHotSortVideoHandler.GetVideoByHotSortEvent();
     paramBundle.c = true;
     StoryDispatcher.a().dispatch(paramBundle);
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131705279), 0).a();
-    if (QLog.isColorLevel()) {
-      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
+    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131705353), 0).a();
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("GetUserIconListResponse onNetError errorCode ");
+      paramBundle.append(paramInt);
+      QLog.e("GetHotSortVideoHandler", 2, paramBundle.toString());
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    GetHotSortVideoHandler.GetVideoByHotSortEvent localGetVideoByHotSortEvent = new GetHotSortVideoHandler.GetVideoByHotSortEvent();
-    localGetVideoByHotSortEvent.c = true;
-    StoryDispatcher.a().dispatch(localGetVideoByHotSortEvent);
-    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131705278), 0).a();
-    if (QLog.isColorLevel()) {
-      QLog.e("GetHotSortVideoHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    Object localObject = new GetHotSortVideoHandler.GetVideoByHotSortEvent();
+    ((GetHotSortVideoHandler.GetVideoByHotSortEvent)localObject).c = true;
+    StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
+    QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131705352), 0).a();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GetUserIconListResponse errorCode:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" errorMsg:");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.e("GetHotSortVideoHandler", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoResponse
  * JD-Core Version:    0.7.0.1
  */

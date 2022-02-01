@@ -46,8 +46,8 @@ class ReminderCardItemPage$1
         float f = i * 1.0F / paramURLDrawable.getIntrinsicWidth();
         localMatrix.setScale(f, f);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageMatrix(localMatrix);
+        return;
       }
-      return;
     }
     catch (Throwable paramURLDrawable)
     {
@@ -57,7 +57,7 @@ class ReminderCardItemPage$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderCardItemPage.1
  * JD-Core Version:    0.7.0.1
  */

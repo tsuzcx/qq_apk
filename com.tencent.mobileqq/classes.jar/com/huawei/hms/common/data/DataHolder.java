@@ -3,12 +3,14 @@ package com.huawei.hms.common.data;
 import android.database.CharArrayBuffer;
 import android.database.Cursor;
 import android.database.CursorWindow;
+import android.database.CursorWrapper;
 import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable.Creator;
 import com.huawei.hms.common.internal.Preconditions;
 import com.huawei.hms.common.internal.safeparcel.AbstractSafeParcelable;
 import com.huawei.hms.common.internal.safeparcel.SafeParcelWriter;
+import com.huawei.hms.common.sqlite.HMSCursorWrapper;
 import com.huawei.hms.support.log.HMSLog;
 import java.io.Closeable;
 import java.util.ArrayList;
@@ -30,7 +32,7 @@ public final class DataHolder
   public static final String TYPE_INT = "type_int";
   public static final String TYPE_LONG = "type_long";
   public static final String TYPE_STRING = "type_string";
-  private static final DataHolder.Builder builder = new a(new String[0], null);
+  private static final DataHolder.Builder builder = new DataHolderBuilderCreator(new String[0], null);
   private String[] columns;
   private Bundle columnsBundle;
   private CursorWindow[] cursorWindows;
@@ -56,22 +58,22 @@ public final class DataHolder
   
   public DataHolder(Cursor paramCursor, int paramInt, Bundle paramBundle)
   {
-    this(new com.huawei.hms.common.a.a(paramCursor), paramInt, paramBundle);
-  }
-  
-  private DataHolder(com.huawei.hms.common.a.a parama, int paramInt, Bundle paramBundle)
-  {
-    this(parama.getColumnNames(), getCursorWindows(parama), paramInt, paramBundle);
+    this(new HMSCursorWrapper(paramCursor), paramInt, paramBundle);
   }
   
   private DataHolder(DataHolder.Builder paramBuilder, int paramInt, Bundle paramBundle)
   {
-    this(DataHolder.Builder.a(paramBuilder), getCursorWindows(paramBuilder, -1), paramInt, null);
+    this(DataHolder.Builder.access$200(paramBuilder), getCursorWindows(paramBuilder, -1), paramInt, null);
   }
   
   private DataHolder(DataHolder.Builder paramBuilder, int paramInt1, Bundle paramBundle, int paramInt2)
   {
-    this(DataHolder.Builder.a(paramBuilder), getCursorWindows(paramBuilder, -1), paramInt1, paramBundle);
+    this(DataHolder.Builder.access$200(paramBuilder), getCursorWindows(paramBuilder, -1), paramInt1, paramBundle);
+  }
+  
+  private DataHolder(HMSCursorWrapper paramHMSCursorWrapper, int paramInt, Bundle paramBundle)
+  {
+    this(paramHMSCursorWrapper.getColumnNames(), getCursorWindows(paramHMSCursorWrapper), paramInt, paramBundle);
   }
   
   public DataHolder(String[] paramArrayOfString, CursorWindow[] paramArrayOfCursorWindow, int paramInt, Bundle paramBundle)
@@ -95,28 +97,33 @@ public final class DataHolder
   
   private void checkAvailable(String paramString, int paramInt)
   {
-    String str = "";
-    if ((this.columnsBundle == null) || (!this.columnsBundle.containsKey(paramString))) {
-      paramString = "cannot find column: " + paramString;
-    }
-    for (;;)
+    Object localObject = this.columnsBundle;
+    if ((localObject != null) && (((Bundle)localObject).containsKey(paramString)))
     {
-      Preconditions.checkArgument(paramString.isEmpty(), paramString);
-      return;
       if (isClosed())
       {
         paramString = "buffer has been closed";
       }
-      else if (paramInt >= 0)
+      else if ((paramInt >= 0) && (paramInt < this.dataCount))
       {
-        paramString = str;
-        if (paramInt < this.dataCount) {}
+        paramString = "";
       }
       else
       {
-        paramString = "row is out of index:" + paramInt;
+        paramString = new StringBuilder();
+        paramString.append("row is out of index:");
+        paramString.append(paramInt);
+        paramString = paramString.toString();
       }
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cannot find column: ");
+      ((StringBuilder)localObject).append(paramString);
+      paramString = ((StringBuilder)localObject).toString();
+    }
+    Preconditions.checkArgument(paramString.isEmpty(), paramString);
   }
   
   public static DataHolder empty(int paramInt)
@@ -124,111 +131,115 @@ public final class DataHolder
     return new DataHolder(builder, paramInt, null);
   }
   
-  private static CursorWindow[] getCursorWindows(com.huawei.hms.common.a.a parama)
-  {
-    int j = 0;
-    Object localObject1 = new ArrayList();
-    try
-    {
-      int k = parama.getCount();
-      CursorWindow localCursorWindow = parama.getWindow();
-      int i = j;
-      if (localCursorWindow != null)
-      {
-        i = j;
-        if (localCursorWindow.getStartPosition() == 0)
-        {
-          localCursorWindow.acquireReference();
-          parama.a(null);
-          ((ArrayList)localObject1).add(localCursorWindow);
-          i = localCursorWindow.getNumRows();
-        }
-      }
-      ((ArrayList)localObject1).addAll(iterCursorWrapper(parama, i, k));
-      localObject1 = (CursorWindow[])((ArrayList)localObject1).toArray(new CursorWindow[((ArrayList)localObject1).size()]);
-      return localObject1;
-    }
-    catch (Throwable localThrowable)
-    {
-      HMSLog.e("DataHolder", "fail to getCursorWindows: " + localThrowable.getMessage());
-      return new CursorWindow[0];
-    }
-    finally
-    {
-      parama.close();
-    }
-  }
-  
   private static CursorWindow[] getCursorWindows(DataHolder.Builder paramBuilder, int paramInt)
   {
-    if (DataHolder.Builder.a(paramBuilder).length == 0) {
+    if (DataHolder.Builder.access$200(paramBuilder).length == 0) {
       return new CursorWindow[0];
     }
     int i;
     if (paramInt >= 0)
     {
       i = paramInt;
-      if (paramInt < DataHolder.Builder.b(paramBuilder).size()) {}
+      if (paramInt < DataHolder.Builder.access$300(paramBuilder).size()) {}
     }
     else
     {
-      i = DataHolder.Builder.b(paramBuilder).size();
+      i = DataHolder.Builder.access$300(paramBuilder).size();
     }
-    paramBuilder = iterCursorWindow(paramBuilder, i, DataHolder.Builder.b(paramBuilder).subList(0, i));
+    paramBuilder = iterCursorWindow(paramBuilder, i, DataHolder.Builder.access$300(paramBuilder).subList(0, i));
     return (CursorWindow[])paramBuilder.toArray(new CursorWindow[paramBuilder.size()]);
+  }
+  
+  private static CursorWindow[] getCursorWindows(HMSCursorWrapper paramHMSCursorWrapper)
+  {
+    Object localObject1 = new ArrayList();
+    try
+    {
+      j = paramHMSCursorWrapper.getCount();
+      localObject4 = paramHMSCursorWrapper.getWindow();
+      if ((localObject4 == null) || (((CursorWindow)localObject4).getStartPosition() != 0)) {
+        break label144;
+      }
+      ((CursorWindow)localObject4).acquireReference();
+      paramHMSCursorWrapper.setWindow(null);
+      ((ArrayList)localObject1).add(localObject4);
+      i = ((CursorWindow)localObject4).getNumRows();
+    }
+    finally
+    {
+      for (;;)
+      {
+        try
+        {
+          int j;
+          Object localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("fail to getCursorWindows: ");
+          ((StringBuilder)localObject4).append(localObject2.getMessage());
+          HMSLog.e("DataHolder", ((StringBuilder)localObject4).toString());
+          return new CursorWindow[0];
+        }
+        finally
+        {
+          paramHMSCursorWrapper.close();
+        }
+        int i = 0;
+      }
+    }
+    ((ArrayList)localObject1).addAll(iterCursorWrapper(paramHMSCursorWrapper, i, j));
+    localObject1 = (CursorWindow[])((ArrayList)localObject1).toArray(new CursorWindow[((ArrayList)localObject1).size()]);
+    paramHMSCursorWrapper.close();
+    return localObject1;
   }
   
   private static ArrayList<CursorWindow> iterCursorWindow(DataHolder.Builder paramBuilder, int paramInt, List paramList)
   {
     ArrayList localArrayList = new ArrayList();
     CursorWindow localCursorWindow = new CursorWindow(null);
-    localCursorWindow.setNumColumns(DataHolder.Builder.a(paramBuilder).length);
+    localCursorWindow.setNumColumns(DataHolder.Builder.access$200(paramBuilder).length);
     localArrayList.add(localCursorWindow);
     int i = 0;
     if (i < paramInt) {}
-    label290:
-    label293:
     for (;;)
     {
+      int j;
       try
       {
-        if (localCursorWindow.allocRow()) {
-          break label293;
-        }
-        HMSLog.d("DataHolder", "Failed to allocate a row");
-        localCursorWindow = new CursorWindow(null);
-        localCursorWindow.setStartPosition(i);
-        localCursorWindow.setNumColumns(DataHolder.Builder.a(paramBuilder).length);
-        if (!localCursorWindow.allocRow())
-        {
-          HMSLog.e("DataHolder", "Failed to retry to allocate a row");
-          return localArrayList;
-        }
-        localArrayList.add(localCursorWindow);
-        HashMap localHashMap = (HashMap)paramList.get(i);
-        boolean bool = true;
-        int j = 0;
-        if (j >= DataHolder.Builder.a(paramBuilder).length) {
-          break label290;
-        }
-        bool = putValue(localCursorWindow, localHashMap.get(DataHolder.Builder.a(paramBuilder)[j]), i, j);
+        boolean bool = localCursorWindow.allocRow();
         if (!bool)
         {
-          if (!bool)
+          HMSLog.d("DataHolder", "Failed to allocate a row");
+          localCursorWindow = new CursorWindow(null);
+          localCursorWindow.setStartPosition(i);
+          localCursorWindow.setNumColumns(DataHolder.Builder.access$200(paramBuilder).length);
+          if (!localCursorWindow.allocRow())
           {
-            HMSLog.d("DataHolder", "fail to put data for row " + i);
-            localCursorWindow.freeLastRow();
-            paramList = new CursorWindow(null);
-            paramList.setStartPosition(i);
-            paramList.setNumColumns(DataHolder.Builder.a(paramBuilder).length);
-            localArrayList.add(paramList);
+            HMSLog.e("DataHolder", "Failed to retry to allocate a row");
             return localArrayList;
           }
+          localArrayList.add(localCursorWindow);
         }
-        else
+        HashMap localHashMap = (HashMap)paramList.get(i);
+        j = 0;
+        bool = true;
+        if (j < DataHolder.Builder.access$200(paramBuilder).length)
         {
-          j += 1;
-          continue;
+          bool = putValue(localCursorWindow, localHashMap.get(DataHolder.Builder.access$200(paramBuilder)[j]), i, j);
+          if (bool) {
+            break label297;
+          }
+        }
+        if (!bool)
+        {
+          paramList = new StringBuilder();
+          paramList.append("fail to put data for row ");
+          paramList.append(i);
+          HMSLog.d("DataHolder", paramList.toString());
+          localCursorWindow.freeLastRow();
+          paramList = new CursorWindow(null);
+          paramList.setStartPosition(i);
+          paramList.setNumColumns(DataHolder.Builder.access$200(paramBuilder).length);
+          localArrayList.add(paramList);
+          return localArrayList;
         }
         i += 1;
       }
@@ -242,36 +253,36 @@ public final class DataHolder
         }
         throw paramBuilder;
       }
-      break;
+      return localArrayList;
+      label297:
+      j += 1;
     }
   }
   
-  private static ArrayList<CursorWindow> iterCursorWrapper(com.huawei.hms.common.a.a parama, int paramInt1, int paramInt2)
+  private static ArrayList<CursorWindow> iterCursorWrapper(HMSCursorWrapper paramHMSCursorWrapper, int paramInt1, int paramInt2)
   {
     ArrayList localArrayList = new ArrayList();
-    for (;;)
+    while ((paramInt1 < paramInt2) && (paramHMSCursorWrapper.moveToPosition(paramInt1)))
     {
-      CursorWindow localCursorWindow;
-      if ((paramInt1 < paramInt2) && (parama.moveToPosition(paramInt1)))
+      CursorWindow localCursorWindow = paramHMSCursorWrapper.getWindow();
+      if (localCursorWindow == null)
       {
-        localCursorWindow = parama.getWindow();
-        if (localCursorWindow != null) {
-          break label61;
-        }
         localCursorWindow = new CursorWindow(null);
         localCursorWindow.setStartPosition(paramInt1);
-        parama.fillWindow(paramInt1, localCursorWindow);
+        paramHMSCursorWrapper.fillWindow(paramInt1, localCursorWindow);
       }
-      while (localCursorWindow.getNumRows() == 0)
+      else
       {
-        return localArrayList;
-        label61:
         localCursorWindow.acquireReference();
-        parama.a(null);
+        paramHMSCursorWrapper.setWindow(null);
+      }
+      if (localCursorWindow.getNumRows() == 0) {
+        return localArrayList;
       }
       localArrayList.add(localCursorWindow);
       paramInt1 = localCursorWindow.getNumRows() + localCursorWindow.getStartPosition();
     }
+    return localArrayList;
   }
   
   private static boolean putValue(CursorWindow paramCursorWindow, Object paramObject, int paramInt1, int paramInt2)
@@ -281,10 +292,13 @@ public final class DataHolder
     }
     if ((paramObject instanceof Boolean))
     {
-      if (((Boolean)paramObject).booleanValue()) {}
-      for (long l = 1L;; l = 0L) {
-        return paramCursorWindow.putLong(l, paramInt1, paramInt2);
+      long l;
+      if (((Boolean)paramObject).booleanValue()) {
+        l = 1L;
+      } else {
+        l = 0L;
       }
+      return paramCursorWindow.putLong(l, paramInt1, paramInt2);
     }
     if ((paramObject instanceof Integer)) {
       return paramCursorWindow.putLong(((Integer)paramObject).intValue(), paramInt1, paramInt2);
@@ -304,7 +318,10 @@ public final class DataHolder
     if ((paramObject instanceof byte[])) {
       return paramCursorWindow.putBlob((byte[])paramObject, paramInt1, paramInt2);
     }
-    throw new IllegalArgumentException("unsupported type for column: " + paramObject);
+    paramCursorWindow = new StringBuilder();
+    paramCursorWindow.append("unsupported type for column: ");
+    paramCursorWindow.append(paramObject);
+    throw new IllegalArgumentException(paramCursorWindow.toString());
   }
   
   public final void close()
@@ -326,26 +343,38 @@ public final class DataHolder
       return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public final void collectColumsAndCount()
   {
-    int j = 0;
     this.columnsBundle = new Bundle();
+    int k = 0;
     int i = 0;
-    while (i < this.columns.length)
+    Object localObject;
+    for (;;)
     {
-      this.columnsBundle.putInt(this.columns[i], i);
+      localObject = this.columns;
+      if (i >= localObject.length) {
+        break;
+      }
+      this.columnsBundle.putInt(localObject[i], i);
       i += 1;
     }
     this.perCursorCounts = new int[this.cursorWindows.length];
-    int k = 0;
-    i = j;
-    j = k;
-    while (i < this.cursorWindows.length)
+    int j = 0;
+    i = k;
+    for (;;)
     {
+      localObject = this.cursorWindows;
+      if (i >= localObject.length) {
+        break;
+      }
       this.perCursorCounts[i] = j;
-      j = this.cursorWindows[i].getStartPosition() + this.cursorWindows[i].getNumRows();
+      j = localObject[i].getStartPosition() + this.cursorWindows[i].getNumRows();
       i += 1;
     }
     this.dataCount = j;
@@ -382,104 +411,112 @@ public final class DataHolder
   
   public final Object getValue(String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
+    int i = paramString2.hashCode();
     boolean bool = true;
-    int i = -1;
-    switch (paramString2.hashCode())
+    switch (i)
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return null;
-        if (paramString2.equals("type_int"))
-        {
-          i = 0;
-          continue;
-          if (paramString2.equals("type_long"))
-          {
-            i = 1;
-            continue;
-            if (paramString2.equals("type_string"))
-            {
-              i = 2;
-              continue;
-              if (paramString2.equals("type_boolean"))
-              {
-                i = 3;
-                continue;
-                if (paramString2.equals("type_float"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString2.equals("type_double"))
-                  {
-                    i = 5;
-                    continue;
-                    if (paramString2.equals("type_byte_array")) {
-                      i = 6;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1300508295: 
+      if (paramString2.equals("type_byte_array")) {
+        i = 6;
       }
+      break;
+    case 878975158: 
+      if (paramString2.equals("type_string")) {
+        i = 2;
+      }
+      break;
+    case 519136353: 
+      if (paramString2.equals("type_long")) {
+        i = 1;
+      }
+      break;
+    case 445002870: 
+      if (paramString2.equals("type_double")) {
+        i = 5;
+      }
+      break;
+    case -675993238: 
+      if (paramString2.equals("type_int")) {
+        i = 0;
+      }
+      break;
+    case -870070237: 
+      if (paramString2.equals("type_boolean")) {
+        i = 3;
+      }
+      break;
+    case -1092271849: 
+      if (paramString2.equals("type_float")) {
+        i = 4;
+      }
+      break;
+    }
+    i = -1;
+    switch (i)
+    {
+    default: 
+      return null;
+    case 6: 
+      checkAvailable(paramString1, paramInt1);
+      return this.cursorWindows[paramInt2].getBlob(paramInt1, this.columnsBundle.getInt(paramString1));
+    case 5: 
+      checkAvailable(paramString1, paramInt1);
+      return Double.valueOf(this.cursorWindows[paramInt2].getDouble(paramInt1, this.columnsBundle.getInt(paramString1)));
+    case 4: 
+      checkAvailable(paramString1, paramInt1);
+      return Float.valueOf(this.cursorWindows[paramInt2].getFloat(paramInt1, this.columnsBundle.getInt(paramString1)));
+    case 3: 
+      checkAvailable(paramString1, paramInt1);
+      if (this.cursorWindows[paramInt2].getLong(paramInt1, this.columnsBundle.getInt(paramString1)) != 1L) {
+        bool = false;
+      }
+      return Boolean.valueOf(bool);
+    case 2: 
+      checkAvailable(paramString1, paramInt1);
+      return this.cursorWindows[paramInt2].getString(paramInt1, this.columnsBundle.getInt(paramString1));
+    case 1: 
+      checkAvailable(paramString1, paramInt1);
+      return Long.valueOf(this.cursorWindows[paramInt2].getLong(paramInt1, this.columnsBundle.getInt(paramString1)));
     }
     checkAvailable(paramString1, paramInt1);
     return Integer.valueOf(this.cursorWindows[paramInt2].getInt(paramInt1, this.columnsBundle.getInt(paramString1)));
-    checkAvailable(paramString1, paramInt1);
-    return Long.valueOf(this.cursorWindows[paramInt2].getLong(paramInt1, this.columnsBundle.getInt(paramString1)));
-    checkAvailable(paramString1, paramInt1);
-    return this.cursorWindows[paramInt2].getString(paramInt1, this.columnsBundle.getInt(paramString1));
-    checkAvailable(paramString1, paramInt1);
-    if (this.cursorWindows[paramInt2].getLong(paramInt1, this.columnsBundle.getInt(paramString1)) == 1L) {}
-    for (;;)
-    {
-      return Boolean.valueOf(bool);
-      bool = false;
-    }
-    checkAvailable(paramString1, paramInt1);
-    return Float.valueOf(this.cursorWindows[paramInt2].getFloat(paramInt1, this.columnsBundle.getInt(paramString1)));
-    checkAvailable(paramString1, paramInt1);
-    return Double.valueOf(this.cursorWindows[paramInt2].getDouble(paramInt1, this.columnsBundle.getInt(paramString1)));
-    checkAvailable(paramString1, paramInt1);
-    return this.cursorWindows[paramInt2].getBlob(paramInt1, this.columnsBundle.getInt(paramString1));
   }
   
   public final int getWindowIndex(int paramInt)
   {
     int j = 0;
     boolean bool;
-    if ((paramInt >= 0) || (paramInt < this.dataCount))
-    {
+    if ((paramInt < 0) && (paramInt >= this.dataCount)) {
+      bool = false;
+    } else {
       bool = true;
-      Preconditions.checkArgument(bool, "rowIndex is out of index:" + paramInt);
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("rowIndex is out of index:");
+    ((StringBuilder)localObject).append(paramInt);
+    Preconditions.checkArgument(bool, ((StringBuilder)localObject).toString());
+    int i;
     for (;;)
     {
-      int i = j;
-      if (j < this.perCursorCounts.length)
-      {
-        if (paramInt < this.perCursorCounts[j]) {
-          i = j - 1;
-        }
+      localObject = this.perCursorCounts;
+      i = j;
+      if (j >= localObject.length) {
+        break;
       }
-      else
+      if (paramInt < localObject[j])
       {
-        paramInt = i;
-        if (i == this.perCursorCounts.length) {
-          paramInt = i - 1;
-        }
-        return paramInt;
-        bool = false;
+        i = j - 1;
         break;
       }
       j += 1;
     }
+    paramInt = i;
+    if (i == this.perCursorCounts.length) {
+      paramInt = i - 1;
+    }
+    return paramInt;
   }
   
   public final boolean hasColumn(String paramString)
@@ -523,7 +560,7 @@ public final class DataHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.data.DataHolder
  * JD-Core Version:    0.7.0.1
  */

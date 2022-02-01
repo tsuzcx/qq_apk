@@ -4,6 +4,7 @@ import android.graphics.Bitmap;
 import android.support.v4.util.LruCache;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.qphone.base.util.QLog;
+import java.util.Collection;
 import java.util.Vector;
 
 class ChatBackgroundManager$BgColorExtractJob
@@ -24,52 +25,51 @@ class ChatBackgroundManager$BgColorExtractJob
   
   public void run()
   {
-    Vector localVector;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localObject != null)
     {
-      localVector = this.this$0.a(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      localObject = this.this$0.a((Bitmap)localObject);
       if (this.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
       }
-      if ((localVector != null) && (!localVector.isEmpty())) {
-        if (this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString) != null)
-        {
-          ((Vector)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString)).addAll(localVector);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable success.");
-          }
-          label97:
-          if (this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener != null)
-          {
-            localVector = (Vector)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString);
-            if ((localVector == null) || (localVector.isEmpty())) {
-              break label225;
-            }
-          }
+      if ((localObject != null) && (!((Vector)localObject).isEmpty()))
+      {
+        if (this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString) != null) {
+          ((Vector)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString)).addAll((Collection)localObject);
+        } else {
+          this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.jdField_a_of_type_JavaLangString, localObject);
         }
       }
-    }
-    label225:
-    for (boolean bool = true;; bool = false)
-    {
-      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ChatBackgroundManager.BgColorExtractJob.1(this, bool, localVector));
-      return;
-      this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.put(this.jdField_a_of_type_JavaLangString, localVector);
-      break;
-      this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
-      break;
-      this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
-      if (!QLog.isDevelopLevel()) {
-        break label97;
+      else {
+        this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
       }
-      QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable failed.");
-      break label97;
+      if (QLog.isDevelopLevel()) {
+        QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable success.");
+      }
+    }
+    else
+    {
+      this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.remove(this.jdField_a_of_type_JavaLangString);
+      if (QLog.isDevelopLevel()) {
+        QLog.d("ChatBackgroundManager", 4, "get Bitmap from Drawable failed.");
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqModelChatBackgroundManager$BgThemeColorExtractListener != null)
+    {
+      localObject = (Vector)this.this$0.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(this.jdField_a_of_type_JavaLangString);
+      boolean bool;
+      if ((localObject != null) && (!((Vector)localObject).isEmpty())) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new ChatBackgroundManager.BgColorExtractJob.1(this, bool, (Vector)localObject));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.model.ChatBackgroundManager.BgColorExtractJob
  * JD-Core Version:    0.7.0.1
  */

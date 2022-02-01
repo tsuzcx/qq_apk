@@ -12,12 +12,13 @@ class AIOAnimationControlManager$9
   
   public Unit a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.a = 1;
-    List localList = (List)this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager.b.get(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager$IAnimationMessage.getFriendUin());
-    if (localList != null) {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager;
+    ((AIOAnimationControlManager)localObject1).a = 1;
+    localObject1 = (List)((AIOAnimationControlManager)localObject1).b.get(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager$IAnimationMessage.getFriendUin());
+    if (localObject1 != null) {
       try
       {
-        localList.remove(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager$IAnimationMessage);
+        ((List)localObject1).remove(this.jdField_a_of_type_ComTencentMobileqqTroopUtilsAIOAnimationControlManager$IAnimationMessage);
       }
       finally {}
     }
@@ -26,7 +27,7 @@ class AIOAnimationControlManager$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.AIOAnimationControlManager.9
  * JD-Core Version:    0.7.0.1
  */

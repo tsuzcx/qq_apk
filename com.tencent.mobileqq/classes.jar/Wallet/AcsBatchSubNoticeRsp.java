@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class AcsBatchSubNoticeRsp
   extends JceStruct
@@ -47,21 +48,24 @@ public final class AcsBatchSubNoticeRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret_code, 0);
-    if (this.err_str != null) {
-      paramJceOutputStream.write(this.err_str, 1);
+    Object localObject = this.err_str;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.succeed_count, 2);
-    if (this.msgs != null) {
-      paramJceOutputStream.write(this.msgs, 3);
+    localObject = this.msgs;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.retry_msgs != null) {
-      paramJceOutputStream.write(this.retry_msgs, 4);
+    localObject = this.retry_msgs;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.AcsBatchSubNoticeRsp
  * JD-Core Version:    0.7.0.1
  */

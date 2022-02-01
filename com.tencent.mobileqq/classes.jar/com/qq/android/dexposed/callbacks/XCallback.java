@@ -22,27 +22,29 @@ public abstract class XCallback
   
   public static final void callAll(XCallback.Param paramParam)
   {
-    if (paramParam.callbacks == null) {
-      throw new IllegalStateException("This object was not created for use with callAll");
-    }
-    int i = 0;
-    for (;;)
+    if (paramParam.callbacks != null)
     {
-      if (i >= paramParam.callbacks.length) {
-        return;
-      }
-      try
+      int i = 0;
+      for (;;)
       {
-        ((XCallback)paramParam.callbacks[i]).call(paramParam);
-        i += 1;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
+        if (i >= paramParam.callbacks.length) {
+          return;
+        }
+        try
+        {
+          ((XCallback)paramParam.callbacks[i]).call(paramParam);
+        }
+        catch (Throwable localThrowable)
         {
           DexposedBridge.log(localThrowable);
         }
+        i += 1;
       }
+    }
+    paramParam = new IllegalStateException("This object was not created for use with callAll");
+    for (;;)
+    {
+      throw paramParam;
     }
   }
   
@@ -53,8 +55,10 @@ public abstract class XCallback
     if (this == paramXCallback) {
       return 0;
     }
-    if (paramXCallback.priority != this.priority) {
-      return paramXCallback.priority - this.priority;
+    int i = paramXCallback.priority;
+    int j = this.priority;
+    if (i != j) {
+      return i - j;
     }
     if (System.identityHashCode(this) < System.identityHashCode(paramXCallback)) {
       return -1;

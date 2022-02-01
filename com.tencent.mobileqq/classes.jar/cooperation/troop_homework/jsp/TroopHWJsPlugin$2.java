@@ -12,22 +12,21 @@ class TroopHWJsPlugin$2
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt == 1) {
+        this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
+      }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-      return;
+    else {
       TroopHWJsPlugin.a(this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin, (WebViewUtil.a("homework") << 8) + 2);
-      continue;
-      this.jdField_a_of_type_CooperationTroop_homeworkJspTroopHWJsPlugin.a(this.jdField_a_of_type_Int);
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

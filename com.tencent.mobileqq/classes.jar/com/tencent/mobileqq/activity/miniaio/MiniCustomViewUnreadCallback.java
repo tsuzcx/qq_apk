@@ -29,7 +29,11 @@ public class MiniCustomViewUnreadCallback
   
   public void hideUnread()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView == null) {
+      return;
+    }
+    localTextView.setVisibility(8);
   }
   
   public boolean show(int paramInt)
@@ -44,6 +48,9 @@ public class MiniCustomViewUnreadCallback
   public void updateUnreadCount(int paramInt, boolean paramBoolean)
   {
     TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView == null) {
+      return;
+    }
     String str = String.valueOf(paramInt);
     if (paramInt > 99) {
       str = "99+";
@@ -51,19 +58,18 @@ public class MiniCustomViewUnreadCallback
     localTextView.setText(str);
     if (!paramBoolean)
     {
-      if (paramInt <= 0) {
+      if (paramInt <= 0)
+      {
         localTextView.setVisibility(8);
+        return;
       }
+      localTextView.setVisibility(0);
     }
-    else {
-      return;
-    }
-    localTextView.setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniCustomViewUnreadCallback
  * JD-Core Version:    0.7.0.1
  */

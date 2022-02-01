@@ -45,7 +45,8 @@ public class TAVVideoConfiguration
   
   public boolean frameEnable()
   {
-    return (this.frame != null) && (this.frame != FIX_RENDER_SIZE) && (this.frame != SOURCE_SIZE) && (Utils.isRectValid(this.frame));
+    CGRect localCGRect = this.frame;
+    return (localCGRect != null) && (localCGRect != FIX_RENDER_SIZE) && (localCGRect != SOURCE_SIZE) && (Utils.isRectValid(localCGRect));
   }
   
   public TAVVideoConfiguration.TAVVideoConfigurationContentMode getContentMode()
@@ -101,29 +102,36 @@ public class TAVVideoConfiguration
   
   public String toString()
   {
-    return "TAVVideoConfiguration{contentMode=" + this.contentMode + ", frame=" + this.frame + ", transform=" + this.transform + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVVideoConfiguration{contentMode=");
+    localStringBuilder.append(this.contentMode);
+    localStringBuilder.append(", frame=");
+    localStringBuilder.append(this.frame);
+    localStringBuilder.append(", transform=");
+    localStringBuilder.append(this.transform);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void updateTimeRange(CMTimeRange paramCMTimeRange)
   {
-    if (this.effects == null) {}
-    for (;;)
-    {
+    Object localObject = this.effects;
+    if (localObject == null) {
       return;
-      Iterator localIterator = this.effects.iterator();
-      while (localIterator.hasNext())
-      {
-        TAVVideoEffect localTAVVideoEffect = (TAVVideoEffect)localIterator.next();
-        if ((localTAVVideoEffect instanceof TAVAttachTimeRangeSourceEffect)) {
-          ((TAVAttachTimeRangeSourceEffect)localTAVVideoEffect).attachTimeRange(paramCMTimeRange);
-        }
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      TAVVideoEffect localTAVVideoEffect = (TAVVideoEffect)((Iterator)localObject).next();
+      if ((localTAVVideoEffect instanceof TAVAttachTimeRangeSourceEffect)) {
+        ((TAVAttachTimeRangeSourceEffect)localTAVVideoEffect).attachTimeRange(paramCMTimeRange);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.model.TAVVideoConfiguration
  * JD-Core Version:    0.7.0.1
  */

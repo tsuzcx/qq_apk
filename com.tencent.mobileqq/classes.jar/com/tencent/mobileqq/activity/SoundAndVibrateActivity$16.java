@@ -20,12 +20,12 @@ class SoundAndVibrateActivity$16
   public void updateDrawState(TextPaint paramTextPaint)
   {
     paramTextPaint.setUnderlineText(false);
-    paramTextPaint.setColor(this.a.getResources().getColor(2131167041));
+    paramTextPaint.setColor(this.a.getResources().getColor(2131167064));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SoundAndVibrateActivity.16
  * JD-Core Version:    0.7.0.1
  */

@@ -4,9 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.Context;
 import android.content.Intent;
-import android.content.res.Resources;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -22,11 +20,9 @@ import com.tencent.mobileqq.data.MessageForShortVideo;
 import com.tencent.mobileqq.data.MessageForStructing;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
-import com.tencent.mobileqq.filemanager.fileassistant.util.QFileAssistantUtils;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
+import com.tencent.mobileqq.shortvideo.SVUtils;
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.troop.utils.TroopBusinessUtil;
 import com.tencent.mobileqq.troop.utils.TroopBusinessUtil.TroopBusinessMessage;
@@ -86,84 +82,82 @@ public class QfavBuilder
       str1 = QfavUtil.a(paramArrayOfByte[5], paramString6);
     }
     paramString1 = new QfavBuilder(6).a("nLinkType", paramInt).b("sTitle", str6).b("sUrl", str5).a("bAppShare", paramBoolean).a("lAppId", paramLong).b("sPublisher", str4).b("sBrief", str3).b("sPath", str2).b("sResUrl", str1);
-    if (paramBoolean) {}
-    for (paramLong = 4L;; paramLong = 1L) {
-      return paramString1.a("lCategory", paramLong);
+    if (paramBoolean) {
+      paramLong = 4L;
+    } else {
+      paramLong = 1L;
     }
+    return paramString1.a("lCategory", paramLong);
   }
   
   public static QfavBuilder a(Intent paramIntent)
   {
-    int i = 1;
     if (paramIntent == null) {
       return null;
     }
     ContentValues localContentValues = new ContentValues();
     int j = paramIntent.getIntExtra("from_busi_type", 1);
-    Object localObject;
-    long l;
-    if (j == 0)
-    {
-      localContentValues.put("shortVideoBusiType", Integer.valueOf(i));
-      localContentValues.put("shortVideoDuration", Integer.valueOf(paramIntent.getIntExtra("file_send_duration", 0)));
-      localContentValues.put("shortVideoFormat", Integer.valueOf(paramIntent.getIntExtra("file_format", 0)));
-      localObject = paramIntent.getStringExtra("file_send_path");
-      localContentValues.put("shortVideoLocalPath", (String)localObject);
-      localContentValues.put("shortVideoMd5", paramIntent.getStringExtra("file_shortvideo_md5"));
-      if (!new File((String)localObject).exists()) {
-        break label343;
-      }
-      l = new File((String)localObject).length();
-      label132:
-      localContentValues.put("shortVideoSize", Long.valueOf(l));
-      String str = paramIntent.getStringExtra("file_name");
-      localContentValues.put("shortVideoFileName", str.substring(str.lastIndexOf('/') + 1));
-      localContentValues.put("shortVideoThumbHeight", Integer.valueOf(paramIntent.getIntExtra("thumbfile_send_height", 0)));
-      localContentValues.put("shortVideoThumbMd5", paramIntent.getStringExtra("thumbfile_md5"));
-      if (!new File((String)localObject).exists()) {
-        break label348;
-      }
-    }
-    label343:
-    label348:
-    for (i = (int)new File((String)localObject).length();; i = paramIntent.getIntExtra("file_thumb_Size", 0))
-    {
-      localContentValues.put("shortVideoThumbSize", Integer.valueOf(i));
-      localContentValues.put("shortVideoThumbWidth", Integer.valueOf(paramIntent.getIntExtra("thumbfile_send_width", 0)));
-      localContentValues.put("shortVideoThumbLocalPath", paramIntent.getStringExtra("thumbfile_send_path"));
-      localContentValues.put("shortVideoUuid", paramIntent.getStringExtra("file_uuid"));
-      localObject = new QfavBuilder(5);
-      ((QfavBuilder)localObject).a.putExtra("shortVideoContents", localContentValues);
-      if (j == 0) {
-        ((QfavBuilder)localObject).a.putExtra("sBizDataList", QfavHelper.a());
-      }
-      return ((QfavBuilder)localObject).c(paramIntent.getStringExtra("from_uin"));
+    int i;
+    if (j == 0) {
+      i = 1;
+    } else {
       i = j;
-      break;
-      l = 0L;
-      break label132;
     }
+    localContentValues.put("shortVideoBusiType", Integer.valueOf(i));
+    localContentValues.put("shortVideoDuration", Integer.valueOf(paramIntent.getIntExtra("file_send_duration", 0)));
+    localContentValues.put("shortVideoFormat", Integer.valueOf(paramIntent.getIntExtra("file_format", 0)));
+    Object localObject = paramIntent.getStringExtra("file_send_path");
+    localContentValues.put("shortVideoLocalPath", (String)localObject);
+    localContentValues.put("shortVideoMd5", paramIntent.getStringExtra("file_shortvideo_md5"));
+    long l;
+    if (new File((String)localObject).exists()) {
+      l = new File((String)localObject).length();
+    } else {
+      l = 0L;
+    }
+    localContentValues.put("shortVideoSize", Long.valueOf(l));
+    String str = paramIntent.getStringExtra("file_name");
+    localContentValues.put("shortVideoFileName", str.substring(str.lastIndexOf('/') + 1));
+    localContentValues.put("shortVideoThumbHeight", Integer.valueOf(paramIntent.getIntExtra("thumbfile_send_height", 0)));
+    localContentValues.put("shortVideoThumbMd5", paramIntent.getStringExtra("thumbfile_md5"));
+    if (new File((String)localObject).exists()) {
+      i = (int)new File((String)localObject).length();
+    } else {
+      i = paramIntent.getIntExtra("file_thumb_Size", 0);
+    }
+    localContentValues.put("shortVideoThumbSize", Integer.valueOf(i));
+    localContentValues.put("shortVideoThumbWidth", Integer.valueOf(paramIntent.getIntExtra("thumbfile_send_width", 0)));
+    localContentValues.put("shortVideoThumbLocalPath", paramIntent.getStringExtra("thumbfile_send_path"));
+    localContentValues.put("shortVideoUuid", paramIntent.getStringExtra("file_uuid"));
+    localObject = new QfavBuilder(5);
+    ((QfavBuilder)localObject).a.putExtra("shortVideoContents", localContentValues);
+    if (j == 0) {
+      ((QfavBuilder)localObject).a.putExtra("sBizDataList", QfavHelper.a());
+    }
+    return ((QfavBuilder)localObject).c(paramIntent.getStringExtra("from_uin"));
   }
   
   public static QfavBuilder a(QQAppInterface paramQQAppInterface, MessageForStructing paramMessageForStructing, List<ChatMessage> paramList, Map<String, String> paramMap)
   {
-    if ((paramMessageForStructing == null) || (paramMessageForStructing.structingMsg == null)) {
-      return null;
-    }
-    QfavBuilder localQfavBuilder = new QfavBuilder(8).c(paramMessageForStructing);
-    if (!QfavUtil.a(paramMessageForStructing))
+    if ((paramMessageForStructing != null) && (paramMessageForStructing.structingMsg != null))
     {
-      localQfavBuilder.c(paramMessageForStructing);
-      return localQfavBuilder;
-    }
-    ArrayList localArrayList = new ArrayList();
-    byte[] arrayOfByte = QfavUtil.a(paramMessageForStructing.uniseq, paramMessageForStructing.structingMsg);
-    if (arrayOfByte != null) {
-      localArrayList.add(arrayOfByte);
-    }
-    if ((paramList == null) || (paramList.size() == 0)) {}
-    for (long l = 1L;; l = paramList.size())
-    {
+      QfavBuilder localQfavBuilder = new QfavBuilder(8).c(paramMessageForStructing);
+      if (!QfavUtil.a(paramMessageForStructing))
+      {
+        localQfavBuilder.c(paramMessageForStructing);
+        return localQfavBuilder;
+      }
+      ArrayList localArrayList = new ArrayList();
+      byte[] arrayOfByte = QfavUtil.a(paramMessageForStructing.uniseq, paramMessageForStructing.structingMsg);
+      if (arrayOfByte != null) {
+        localArrayList.add(arrayOfByte);
+      }
+      long l;
+      if ((paramList != null) && (paramList.size() != 0)) {
+        l = paramList.size();
+      } else {
+        l = 1L;
+      }
       arrayOfByte = QfavUtil.a(paramMessageForStructing.uniseq, l);
       if (arrayOfByte != null) {
         localArrayList.add(arrayOfByte);
@@ -173,11 +167,10 @@ public class QfavBuilder
         localArrayList.add(arrayOfByte);
       }
       QfavUtil.a(paramQQAppInterface, paramMessageForStructing, paramList, paramMap, localArrayList);
-      if (localArrayList != null) {
-        localQfavBuilder.b("sBizDataList", localArrayList);
-      }
+      localQfavBuilder.b("sBizDataList", localArrayList);
       return localQfavBuilder;
     }
+    return null;
   }
   
   public static QfavBuilder a(MessageForShortVideo paramMessageForShortVideo)
@@ -188,54 +181,47 @@ public class QfavBuilder
     localContentValues.put("shortVideoFormat", Integer.valueOf(paramMessageForShortVideo.videoFileFormat));
     localContentValues.put("shortVideoMd5", paramMessageForShortVideo.md5);
     int i;
-    Object localObject;
-    if (paramMessageForShortVideo.busiType == 0)
-    {
+    if (paramMessageForShortVideo.busiType == 0) {
       i = 1;
-      localContentValues.put("shortVideoBusiType", Integer.valueOf(i));
-      localObject = ShortVideoUtils.findVideoPathIfExists(paramMessageForShortVideo);
-      localContentValues.put("shortVideoLocalPath", (String)localObject);
-      long l2 = paramMessageForShortVideo.videoFileSize;
-      l1 = l2;
-      if (localObject != null)
-      {
-        l1 = l2;
-        if (new File((String)localObject).exists()) {
-          l1 = new File((String)localObject).length();
-        }
-      }
-      localContentValues.put("shortVideoSize", Long.valueOf(l1));
-      if (localObject != null) {
-        break label351;
-      }
-      localObject = "";
-      label165:
-      localContentValues.put("shortVideoFileName", ((String)localObject).substring(((String)localObject).lastIndexOf('/') + 1));
-      localContentValues.put("shortVideoThumbHeight", Integer.valueOf(paramMessageForShortVideo.thumbHeight));
-      localContentValues.put("shortVideoThumbMd5", paramMessageForShortVideo.thumbMD5);
-      localContentValues.put("shortVideoThumbWidth", Integer.valueOf(paramMessageForShortVideo.thumbWidth));
-      localObject = ShortVideoUtils.getShortVideoThumbPicPath(paramMessageForShortVideo.thumbMD5, "jpg");
-      if (!new File((String)localObject).exists()) {
-        break label354;
-      }
-    }
-    label351:
-    label354:
-    for (long l1 = new File((String)localObject).length();; l1 = paramMessageForShortVideo.thumbFileSize)
-    {
-      localContentValues.put("shortVideoThumbSize", Long.valueOf(l1));
-      localContentValues.put("shortVideoThumbLocalPath", (String)localObject);
-      localContentValues.put("shortVideoUuid", paramMessageForShortVideo.uuid);
-      localObject = new QfavBuilder(5);
-      ((QfavBuilder)localObject).a.putExtra("shortVideoContents", localContentValues);
-      if (paramMessageForShortVideo.busiType == 0) {
-        ((QfavBuilder)localObject).a.putExtra("sBizDataList", QfavHelper.a());
-      }
-      return localObject;
+    } else {
       i = paramMessageForShortVideo.busiType;
-      break;
-      break label165;
     }
+    localContentValues.put("shortVideoBusiType", Integer.valueOf(i));
+    String str = ShortVideoUtils.findVideoPathIfExists(paramMessageForShortVideo);
+    localContentValues.put("shortVideoLocalPath", str);
+    long l2 = paramMessageForShortVideo.videoFileSize;
+    long l1 = l2;
+    if (str != null)
+    {
+      l1 = l2;
+      if (new File(str).exists()) {
+        l1 = new File(str).length();
+      }
+    }
+    localContentValues.put("shortVideoSize", Long.valueOf(l1));
+    Object localObject = str;
+    if (str == null) {
+      localObject = "";
+    }
+    localContentValues.put("shortVideoFileName", ((String)localObject).substring(((String)localObject).lastIndexOf('/') + 1));
+    localContentValues.put("shortVideoThumbHeight", Integer.valueOf(paramMessageForShortVideo.thumbHeight));
+    localContentValues.put("shortVideoThumbMd5", paramMessageForShortVideo.thumbMD5);
+    localContentValues.put("shortVideoThumbWidth", Integer.valueOf(paramMessageForShortVideo.thumbWidth));
+    localObject = SVUtils.a(paramMessageForShortVideo.thumbMD5, "jpg");
+    if (new File((String)localObject).exists()) {
+      l1 = new File((String)localObject).length();
+    } else {
+      l1 = paramMessageForShortVideo.thumbFileSize;
+    }
+    localContentValues.put("shortVideoThumbSize", Long.valueOf(l1));
+    localContentValues.put("shortVideoThumbLocalPath", (String)localObject);
+    localContentValues.put("shortVideoUuid", paramMessageForShortVideo.uuid);
+    localObject = new QfavBuilder(5);
+    ((QfavBuilder)localObject).a.putExtra("shortVideoContents", localContentValues);
+    if (paramMessageForShortVideo.busiType == 0) {
+      ((QfavBuilder)localObject).a.putExtra("sBizDataList", QfavHelper.a());
+    }
+    return localObject;
   }
   
   public static QfavBuilder a(Entity paramEntity)
@@ -256,16 +242,14 @@ public class QfavBuilder
   public static QfavBuilder a(String paramString1, int paramInt, String paramString2, long paramLong1, String paramString3, long paramLong2)
   {
     paramInt = QfavUtil.b(paramInt);
+    String str = paramString2;
     if (paramString2 == null) {
-      paramString2 = "";
+      str = "";
     }
-    for (;;)
-    {
-      if ((4 == paramInt) || (5 == paramInt)) {
-        paramString2 = String.valueOf(paramLong1);
-      }
-      return new QfavBuilder(2).b("sMD5", paramString1).b("sPath", paramString3).a("nPicType", paramInt).b("sPicId", paramString2).a("lSize", paramLong2);
+    if ((4 == paramInt) || (5 == paramInt)) {
+      str = String.valueOf(paramLong1);
     }
+    return new QfavBuilder(2).b("sMD5", paramString1).b("sPath", paramString3).a("nPicType", paramInt).b("sPicId", str).a("lSize", paramLong2);
   }
   
   public static QfavBuilder a(String paramString1, String paramString2)
@@ -276,164 +260,177 @@ public class QfavBuilder
   public static QfavBuilder a(ArrayList<String> paramArrayList, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2, long paramLong, String paramString3)
   {
     paramArrayList = new QfavBuilder(8).a("sPathList", paramArrayList).b("sTitle", paramString1).a("bOnlyPic", paramBoolean1).b("sText", paramString2).a("bAppShare", paramBoolean2).a("lAppId", paramLong).b("sAppName", paramString3);
-    if (paramBoolean2) {}
-    for (paramLong = 4L;; paramLong = 1L) {
-      return paramArrayList.a("lCategory", paramLong);
+    if (paramBoolean2) {
+      paramLong = 4L;
+    } else {
+      paramLong = 1L;
     }
+    return paramArrayList.a("lCategory", paramLong);
   }
   
   public static void a(Activity paramActivity, Intent paramIntent)
   {
-    String str;
-    if (paramIntent != null)
-    {
-      str = paramIntent.getStringExtra("lUin");
-      if (paramIntent.getBooleanExtra("bFailed", false)) {
-        break label34;
-      }
-    }
-    label34:
-    for (boolean bool = true;; bool = false)
-    {
-      QfavHelper.a(paramActivity, str, bool, null, false);
-      return;
+    if (paramIntent != null) {
+      QfavHelper.a(paramActivity, paramIntent.getStringExtra("lUin"), paramIntent.getBooleanExtra("bFailed", false) ^ true, null, false);
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Context paramContext, ChatMessage paramChatMessage)
   {
     Object localObject1 = (MessageForArkApp)paramChatMessage;
-    if ((localObject1 == null) || (((MessageForArkApp)localObject1).ark_app_message == null)) {
-      return;
-    }
-    Object localObject2 = (MessageForArkApp)ArkAppCenterCheckEvent.a(1, ((MessageForArkApp)localObject1).ark_app_message.appName, localObject1, localObject1);
-    label50:
     Object localObject3;
-    Object localObject4;
-    String str1;
-    String str2;
-    String str3;
-    String str4;
-    if (localObject2 == null)
+    Object localObject2;
+    if (localObject1 != null)
     {
-      localObject2 = localObject1;
-      if ((localObject2 == null) || (((MessageForArkApp)localObject2).ark_app_message == null)) {
-        break label987;
+      if (((MessageForArkApp)localObject1).ark_app_message == null) {
+        return;
       }
-      try
-      {
-        localObject3 = new JSONObject(((MessageForArkApp)localObject2).ark_app_message.metaList);
-        if (QQMapConstants.c.equals(((MessageForArkApp)localObject1).ark_app_message.appName))
-        {
-          localObject4 = ((JSONObject)localObject3).getJSONObject("Location.Search");
-          localObject1 = ((JSONObject)localObject4).getString("name");
-          localObject2 = ((JSONObject)localObject4).getString("address");
-          localObject3 = ((JSONObject)localObject4).getString("lat");
-          localObject4 = ((JSONObject)localObject4).getString("lng");
-          a(Float.parseFloat((String)localObject3), Float.parseFloat((String)localObject4), (String)localObject1, (String)localObject2, "").b(paramQQAppInterface, paramChatMessage).a((Activity)paramContext, paramChatMessage.senderuin);
-          QfavReport.a(paramQQAppInterface, 11, 0, paramChatMessage.istroop);
+      localObject3 = (MessageForArkApp)ArkAppCenterCheckEvent.a(1, ((MessageForArkApp)localObject1).ark_app_message.appName, localObject1, localObject1);
+      localObject2 = localObject3;
+      if (localObject3 == null) {
+        localObject2 = localObject1;
+      }
+      if (localObject2 != null) {
+        if (((MessageForArkApp)localObject2).ark_app_message == null) {
           return;
         }
       }
-      catch (Exception paramQQAppInterface)
-      {
-        QLog.e("qqfav", 1, paramQQAppInterface, new Object[0]);
-        return;
-      }
-      if ("com.tencent.structmsg".equals(((MessageForArkApp)localObject1).ark_app_message.appName))
-      {
-        localObject1 = null;
-        i = 0;
-        if (((JSONObject)localObject3).has("music"))
-        {
-          localObject1 = ((JSONObject)localObject3).getJSONObject("music");
-          i = 1;
-        }
-        if (((JSONObject)localObject3).has("news")) {
-          localObject1 = ((JSONObject)localObject3).getJSONObject("news");
-        }
-        if (localObject1 != null)
-        {
-          localObject3 = paramContext.getString(2131718882);
-          localObject4 = ((JSONObject)localObject1).getString("title") + "-" + ((JSONObject)localObject1).optString("desc");
-          str1 = ((JSONObject)localObject1).optString("tag");
-          str2 = ((JSONObject)localObject1).getString("preview");
-          str3 = ((JSONObject)localObject1).getString("jumpUrl");
-          str4 = ((JSONObject)localObject1).optString("musicUrl", "");
-          localObject1 = Long.valueOf(((JSONObject)localObject1).getLong("appid"));
-          if ((((Long)localObject1).longValue() == 100243533L) || (((Long)localObject1).longValue() == 100497308L) || (((Long)localObject1).longValue() == 100495085L) || (((Long)localObject1).longValue() == 205141L) || (((Long)localObject1).longValue() == 100895899L)) {
-            break label989;
-          }
-          label449:
-          if (!str3.startsWith("http")) {
-            break label992;
-          }
-          localObject1 = ((MessageForArkApp)localObject2).ark_app_message.toAppXml().getBytes();
-          localObject2 = new ArrayList();
-          ((ArrayList)localObject2).add(localObject1);
-          if (i == 0) {
-            break label994;
-          }
-        }
-      }
     }
-    label987:
-    label989:
-    label992:
-    label994:
-    for (int i = 4;; i = 5)
+    label1038:
+    label1039:
+    label1048:
+    label1053:
+    do
     {
-      a(i, (String)localObject3, str3, str1, (String)localObject4, str2, str4, null, false, 0L).b("sBizDataList", (ArrayList)localObject2).b(paramQQAppInterface, paramChatMessage).a((Activity)paramContext, paramChatMessage.senderuin);
-      QfavReport.a(paramQQAppInterface, 9, 0, paramChatMessage.istroop);
-      return;
-      QfavReport.a(paramQQAppInterface, 8, 0, paramChatMessage.istroop);
-      return;
-      if (!"com.tencent.miniapp_01".equals(((MessageForArkApp)localObject1).ark_app_message.appName)) {
-        break;
-      }
-      localObject1 = null;
-      if (((JSONObject)localObject3).has("detail_1")) {
-        localObject1 = ((JSONObject)localObject3).getJSONObject("detail_1");
-      }
-      if (localObject1 == null) {
-        break;
-      }
-      localObject4 = ((JSONObject)localObject1).getString("title");
-      str1 = ((JSONObject)localObject1).optString("desc");
-      localObject3 = ((JSONObject)localObject1).getString("preview");
-      str2 = ((JSONObject)localObject1).getString("url");
-      str3 = ((JSONObject)localObject1).getString("icon");
-      long l = ((JSONObject)localObject1).getLong("appid");
-      str4 = ((MessageForArkApp)localObject2).ark_app_message.promptText;
-      ArrayList localArrayList = new ArrayList();
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("appName", ((MessageForArkApp)localObject2).ark_app_message.appName);
-      ((JSONObject)localObject1).put("appView", ((MessageForArkApp)localObject2).ark_app_message.appView);
-      ((JSONObject)localObject1).put("metaData", ((MessageForArkApp)localObject2).ark_app_message.metaList);
-      ((JSONObject)localObject1).put("appMinVersion", ((MessageForArkApp)localObject2).ark_app_message.appMinVersion);
-      ((JSONObject)localObject1).put("appConfig", ((MessageForArkApp)localObject2).ark_app_message.config);
-      ((JSONObject)localObject1).put("compatibleText", ((MessageForArkApp)localObject2).ark_app_message.compatibleText);
-      ((JSONObject)localObject1).put("promptText", ((MessageForArkApp)localObject2).ark_app_message.promptText);
-      ((JSONObject)localObject1).put("appDesc", str1);
-      localObject2 = new JSONObject();
-      ((JSONObject)localObject2).put("arkAppInfo", localObject1);
-      localArrayList.add(((JSONObject)localObject2).toString().getBytes());
-      localObject1 = localObject3;
-      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      for (;;)
       {
-        localObject1 = localObject3;
-        if (!((String)localObject3).startsWith("http")) {
-          localObject1 = "https://" + (String)localObject3;
+        try
+        {
+          localObject5 = new JSONObject(((MessageForArkApp)localObject2).ark_app_message.metaList);
+          boolean bool = QQMapConstants.c.equals(((MessageForArkApp)localObject1).ark_app_message.appName);
+          if (bool)
+          {
+            localObject4 = ((JSONObject)localObject5).getJSONObject("Location.Search");
+            localObject1 = ((JSONObject)localObject4).getString("name");
+            localObject2 = ((JSONObject)localObject4).getString("address");
+            localObject3 = ((JSONObject)localObject4).getString("lat");
+            localObject4 = ((JSONObject)localObject4).getString("lng");
+            a(Float.parseFloat((String)localObject3), Float.parseFloat((String)localObject4), (String)localObject1, (String)localObject2, "").b(paramQQAppInterface, paramChatMessage).a((Activity)paramContext, paramChatMessage.senderuin);
+            QfavReport.a(paramQQAppInterface, 11, 0, paramChatMessage.istroop);
+            return;
+          }
+          bool = "com.tencent.structmsg".equals(((MessageForArkApp)localObject1).ark_app_message.appName);
+          localObject4 = null;
+          localObject3 = null;
+          if (bool)
+          {
+            if (!((JSONObject)localObject5).has("music")) {
+              break label1039;
+            }
+            localObject1 = ((JSONObject)localObject5).getJSONObject("music");
+            i = 1;
+            if (((JSONObject)localObject5).has("news")) {
+              localObject1 = ((JSONObject)localObject5).getJSONObject("news");
+            }
+            if (localObject1 != null)
+            {
+              localObject3 = paramContext.getString(2131718597);
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append(((JSONObject)localObject1).getString("title"));
+              ((StringBuilder)localObject4).append("-");
+              ((StringBuilder)localObject4).append(((JSONObject)localObject1).optString("desc"));
+              localObject4 = ((StringBuilder)localObject4).toString();
+              localObject5 = ((JSONObject)localObject1).optString("tag");
+              str1 = ((JSONObject)localObject1).getString("preview");
+              str2 = ((JSONObject)localObject1).getString("jumpUrl");
+              str3 = ((JSONObject)localObject1).optString("musicUrl", "");
+              localObject1 = Long.valueOf(((JSONObject)localObject1).getLong("appid"));
+              if ((((Long)localObject1).longValue() == 100243533L) || (((Long)localObject1).longValue() == 100497308L) || (((Long)localObject1).longValue() == 100495085L) || (((Long)localObject1).longValue() == 205141L) || (((Long)localObject1).longValue() == 100895899L)) {
+                break label1048;
+              }
+              if (!str2.startsWith("http")) {
+                return;
+              }
+              localObject1 = ((MessageForArkApp)localObject2).ark_app_message.toAppXml().getBytes();
+              localObject2 = new ArrayList();
+              ((ArrayList)localObject2).add(localObject1);
+              if (i == 0) {
+                break label1053;
+              }
+              i = 4;
+              a(i, (String)localObject3, str2, (String)localObject5, (String)localObject4, str1, str3, null, false, 0L).b("sBizDataList", (ArrayList)localObject2).b(paramQQAppInterface, paramChatMessage).a((Activity)paramContext, paramChatMessage.senderuin);
+              QfavReport.a(paramQQAppInterface, 9, 0, paramChatMessage.istroop);
+              return;
+            }
+            QfavReport.a(paramQQAppInterface, 8, 0, paramChatMessage.istroop);
+            return;
+          }
+          if (!"com.tencent.miniapp_01".equals(((MessageForArkApp)localObject1).ark_app_message.appName)) {
+            break label1038;
+          }
+          localObject1 = localObject4;
+          if (!((JSONObject)localObject5).has("detail_1")) {
+            break;
+          }
+          localObject1 = ((JSONObject)localObject5).getJSONObject("detail_1");
         }
+        catch (Exception paramQQAppInterface)
+        {
+          Object localObject5;
+          Object localObject4;
+          String str1;
+          String str2;
+          String str3;
+          long l;
+          ArrayList localArrayList;
+          QLog.e("qqfav", 1, paramQQAppInterface, new Object[0]);
+        }
+        localObject4 = ((JSONObject)localObject1).getString("title");
+        localObject5 = ((JSONObject)localObject1).optString("desc");
+        localObject3 = ((JSONObject)localObject1).getString("preview");
+        str1 = ((JSONObject)localObject1).getString("url");
+        str2 = ((JSONObject)localObject1).getString("icon");
+        l = ((JSONObject)localObject1).getLong("appid");
+        str3 = ((MessageForArkApp)localObject2).ark_app_message.promptText;
+        localArrayList = new ArrayList();
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("appName", ((MessageForArkApp)localObject2).ark_app_message.appName);
+        ((JSONObject)localObject1).put("appView", ((MessageForArkApp)localObject2).ark_app_message.appView);
+        ((JSONObject)localObject1).put("metaData", ((MessageForArkApp)localObject2).ark_app_message.metaList);
+        ((JSONObject)localObject1).put("appMinVersion", ((MessageForArkApp)localObject2).ark_app_message.appMinVersion);
+        ((JSONObject)localObject1).put("appConfig", ((MessageForArkApp)localObject2).ark_app_message.config);
+        ((JSONObject)localObject1).put("compatibleText", ((MessageForArkApp)localObject2).ark_app_message.compatibleText);
+        ((JSONObject)localObject1).put("promptText", ((MessageForArkApp)localObject2).ark_app_message.promptText);
+        ((JSONObject)localObject1).put("appDesc", localObject5);
+        localObject2 = new JSONObject();
+        ((JSONObject)localObject2).put("arkAppInfo", localObject1);
+        localArrayList.add(((JSONObject)localObject2).toString().getBytes());
+        localObject1 = localObject3;
+        if (!TextUtils.isEmpty((CharSequence)localObject3))
+        {
+          localObject1 = localObject3;
+          if (!((String)localObject3).startsWith("http"))
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("https://");
+            ((StringBuilder)localObject1).append((String)localObject3);
+            localObject1 = ((StringBuilder)localObject1).toString();
+          }
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramContext.getString(2131692218));
+        ((StringBuilder)localObject2).append((String)localObject4);
+        a(8, ((StringBuilder)localObject2).toString(), str1, str3, (String)localObject5, (String)localObject1, str2, null, false, Long.valueOf(l).longValue()).b("sBizDataList", localArrayList).b(paramQQAppInterface, paramChatMessage).a((Activity)paramContext, paramChatMessage.senderuin);
+        return;
+        return;
+        int i = 0;
+        localObject1 = localObject3;
+        continue;
+        i = 1;
+        continue;
+        i = 5;
       }
-      a(8, paramContext.getString(2131692292) + (String)localObject4, str2, str4, str1, (String)localObject1, str3, null, false, Long.valueOf(l).longValue()).b("sBizDataList", localArrayList).b(paramQQAppInterface, paramChatMessage).a((Activity)paramContext, paramChatMessage.senderuin);
-      return;
-      break label50;
-      break;
-      i = 1;
-      break label449;
-      break;
-    }
+    } while (localObject1 != null);
   }
   
   public static QfavBuilder b(Entity paramEntity)
@@ -478,304 +475,270 @@ public class QfavBuilder
   
   public QfavBuilder a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord == null) || (paramQQAppInterface == null)) {
-      return this;
+    if (paramMessageRecord != null)
+    {
+      if (paramQQAppInterface == null) {
+        return this;
+      }
+      return a(paramQQAppInterface, paramMessageRecord, paramMessageRecord.senderuin, paramMessageRecord.frienduin, paramMessageRecord.issend, paramMessageRecord.istroop);
     }
-    return a(paramQQAppInterface, paramMessageRecord, paramMessageRecord.senderuin, paramMessageRecord.frienduin, paramMessageRecord.issend, paramMessageRecord.istroop);
+    return this;
   }
   
   public QfavBuilder a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
+    Object localObject2 = paramString2;
+    String str1 = "";
     if (paramQQAppInterface == null) {
       return this;
     }
     int i = QfavUtil.a(paramInt2);
-    String str2 = "";
-    long l6 = 0L;
-    Object localObject4 = "";
-    long l5 = 0L;
-    String str1;
-    long l4;
-    Object localObject2;
-    long l3;
-    Object localObject1;
     Object localObject3;
-    long l2;
     if (TextUtils.isEmpty(paramString1))
     {
-      i = 1;
+      localObject3 = localObject2;
       paramInt2 = 0;
-      str1 = paramString2;
-      l4 = l5;
-      localObject2 = localObject4;
-      paramString1 = str2;
-      l3 = l6;
-      for (;;)
-      {
-        try
-        {
-          if (!MessageRecordInfo.a(paramInt1)) {
-            continue;
-          }
-          l4 = l5;
-          localObject2 = localObject4;
-          paramString1 = str2;
-          l3 = l6;
-          localObject1 = paramQQAppInterface.getCurrentNickname();
-          l4 = l5;
-          localObject2 = localObject4;
-          paramString1 = (String)localObject1;
-          l3 = l6;
-          l1 = Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue();
-          localObject3 = localObject4;
-          l2 = l5;
-          label125:
-          localObject4 = localObject1;
-          if (paramMessageRecord != null)
-          {
-            localObject4 = localObject1;
-            l4 = l2;
-            localObject2 = localObject3;
-            paramString1 = (String)localObject1;
-            l3 = l1;
-            if (AnonymousChatHelper.a(paramMessageRecord))
-            {
-              l4 = l2;
-              localObject2 = localObject3;
-              paramString1 = (String)localObject1;
-              l3 = l1;
-              if (paramMessageRecord.selfuin != null)
-              {
-                localObject4 = localObject1;
-                l4 = l2;
-                localObject2 = localObject3;
-                paramString1 = (String)localObject1;
-                l3 = l1;
-                if (paramMessageRecord.selfuin.equals(paramMessageRecord.senderuin)) {}
-              }
-              else
-              {
-                l4 = l2;
-                localObject2 = localObject3;
-                paramString1 = (String)localObject1;
-                l3 = l1;
-                localObject4 = BaseApplicationImpl.getContext().getString(2131690094);
-              }
-            }
-          }
-          l4 = l2;
-          localObject2 = localObject3;
-          paramString1 = (String)localObject4;
-          l3 = l1;
-          localObject1 = TroopBusinessUtil.a(paramMessageRecord);
-          paramMessageRecord = (MessageRecord)localObject4;
-          if (localObject1 == null) {
-            break label958;
-          }
-          l4 = l2;
-          localObject2 = localObject3;
-          paramString1 = (String)localObject4;
-          l3 = l1;
-          paramMessageRecord = ((TroopBusinessUtil.TroopBusinessMessage)localObject1).c;
-        }
-        catch (Exception paramString2)
-        {
-          label293:
-          label461:
-          l2 = l3;
-          label405:
-          label549:
-          paramQQAppInterface = localObject2;
-          paramMessageRecord = paramString1;
-          long l1 = l4;
-          paramString1 = paramString2;
-          paramString1.printStackTrace();
-          l3 = l1;
-          continue;
-          localObject1 = str1;
-          continue;
-          localObject1 = paramString2;
-          continue;
-        }
-        if (1000 != paramInt2) {
-          continue;
-        }
-        l4 = l2;
-        localObject2 = localObject3;
-        paramString1 = paramMessageRecord;
-        l3 = l1;
-        localObject1 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-        if (localObject1 == null) {
-          continue;
-        }
-        l4 = l2;
-        localObject2 = localObject3;
-        paramString1 = paramMessageRecord;
-        l3 = l1;
-        localObject1 = ((TroopManager)localObject1).b(str1);
-        l4 = l2;
-        localObject2 = localObject3;
-        paramString1 = paramMessageRecord;
-        l3 = l1;
-        localObject3 = ContactUtils.a(paramQQAppInterface, (String)localObject1, true);
-        l4 = l2;
-        localObject2 = localObject3;
-        paramString1 = paramMessageRecord;
-        l3 = l1;
-        l2 = Long.valueOf((String)localObject1).longValue();
-        paramString1 = (String)localObject3;
-        if (paramInt2 != 1004)
-        {
-          localObject1 = paramString1;
-          l3 = l2;
-          if (paramInt2 != 3000) {}
-        }
-        else if (paramInt2 == 1004)
-        {
-          paramString2 = str1;
-        }
-        try
-        {
-          localObject1 = ContactUtils.c(paramQQAppInterface, paramString2);
-          paramString1 = (String)localObject1;
-          l3 = Long.valueOf(paramString2).longValue();
-          paramQQAppInterface = (QQAppInterface)localObject1;
-          l2 = l1;
-          return a(i, l2, paramMessageRecord, l3, paramQQAppInterface);
-        }
-        catch (Exception paramString2)
-        {
-          paramQQAppInterface = paramString1;
-          l3 = l2;
-          paramString1 = paramString2;
-          l2 = l1;
-          l1 = l3;
-          continue;
-        }
-        if (paramInt2 != 1006) {
-          break label987;
-        }
-        l2 = l5;
-        localObject3 = localObject4;
-        localObject1 = str2;
-        l1 = l6;
-        if (str1 != null)
-        {
-          l4 = l5;
-          localObject2 = localObject4;
-          paramString1 = str2;
-          l3 = l6;
-          localObject1 = ContactUtils.b(paramQQAppInterface, str1, paramInt2);
-          l1 = 0L;
-          l2 = l5;
-          localObject3 = localObject4;
-          continue;
-          l4 = l5;
-          localObject2 = localObject4;
-          paramString1 = str2;
-          l3 = l6;
-          localObject1 = ContactUtils.b(paramQQAppInterface, paramString2, paramInt2);
-          l4 = l5;
-          localObject2 = localObject4;
-          paramString1 = (String)localObject1;
-          l3 = l6;
-          l1 = Long.valueOf(paramString2).longValue();
-          l2 = l5;
-          localObject3 = localObject4;
-        }
-      }
+      i = 1;
     }
+    else
+    {
+      localObject3 = paramString1;
+    }
+    long l2 = 0L;
+    label655:
+    label784:
+    label791:
     for (;;)
     {
-      label610:
-      l4 = l5;
-      localObject2 = localObject4;
-      paramString1 = str2;
-      l3 = l6;
-      localObject3 = ContactUtils.b(paramQQAppInterface, str1, 0);
-      localObject1 = localObject3;
-      l4 = l5;
-      localObject2 = localObject4;
-      paramString1 = (String)localObject3;
-      l3 = l6;
-      if (((String)localObject3).equals(str1))
+      long l1;
+      try
       {
-        localObject1 = localObject3;
-        if (paramInt2 == 3000)
+        if (MessageRecordInfo.a(paramInt1))
         {
-          l4 = l5;
-          localObject2 = localObject4;
-          paramString1 = (String)localObject3;
-          l3 = l6;
-          localObject1 = ContactUtils.a(paramQQAppInterface, paramString2, str1);
+          localObject1 = paramQQAppInterface.getCurrentNickname();
+          paramString1 = (String)localObject1;
+          try
+          {
+            l1 = Long.valueOf(paramQQAppInterface.getCurrentAccountUin()).longValue();
+            paramString1 = str1;
+            paramString2 = (String)localObject1;
+            l3 = l2;
+            l2 = l1;
+            l1 = l3;
+          }
+          catch (Exception paramString2)
+          {
+            l1 = 0L;
+            paramMessageRecord = "";
+            paramQQAppInterface = paramString1;
+            paramString1 = paramString2;
+            break label655;
+          }
         }
+        else
+        {
+          if (paramInt2 != 1006) {
+            break label702;
+          }
+          if (localObject3 == null) {
+            break label688;
+          }
+          paramString2 = ContactUtils.a(paramQQAppInterface, (String)localObject3, paramInt2);
+          l1 = 0L;
+          paramString1 = "";
+          continue;
+          localObject1 = ContactUtils.a(paramQQAppInterface, (String)localObject3, paramInt2);
+          paramString1 = (String)localObject1;
+          l1 = Long.valueOf((String)localObject3).longValue();
+          paramString1 = str1;
+          continue;
+          label178:
+          str2 = ContactUtils.a(paramQQAppInterface, (String)localObject3, 0);
+          paramString1 = str2;
+          localObject1 = str2;
+          if (str2.equals(localObject3))
+          {
+            localObject1 = str2;
+            if (paramInt2 == 3000)
+            {
+              paramString1 = str2;
+              localObject1 = ContactUtils.a(paramQQAppInterface, (String)localObject2, (String)localObject3);
+            }
+          }
+          paramString1 = (String)localObject1;
+          l1 = Long.valueOf((String)localObject3).longValue();
+          if (1 == paramInt2) {}
+          try
+          {
+            paramString1 = ContactUtils.a(paramQQAppInterface, (String)localObject2, true);
+            continue;
+            paramString1 = ContactUtils.b(paramQQAppInterface, (String)localObject2);
+            str1 = paramString1;
+            l2 = Long.valueOf(paramString2).longValue();
+          }
+          catch (Exception paramString1)
+          {
+            paramMessageRecord = str1;
+            paramQQAppInterface = (QQAppInterface)localObject1;
+            l3 = 0L;
+            l2 = l1;
+            l1 = l3;
+            break label655;
+          }
+          label303:
+          localObject1 = ContactUtils.a(paramQQAppInterface, (String)localObject2, paramInt2);
+          paramString1 = (String)localObject1;
+          l1 = Long.valueOf(paramString2).longValue();
+          paramString1 = str1;
+          continue;
+        }
+        label332:
+        str1 = paramString2;
+        if (paramMessageRecord != null)
+        {
+          str1 = paramString2;
+          localObject1 = paramString2;
+          str2 = paramString1;
+        }
+        try
+        {
+          if (AnonymousChatHelper.a(paramMessageRecord))
+          {
+            localObject1 = paramString2;
+            str2 = paramString1;
+            if (paramMessageRecord.selfuin != null)
+            {
+              str1 = paramString2;
+              localObject1 = paramString2;
+              str2 = paramString1;
+              if (paramMessageRecord.selfuin.equals(paramMessageRecord.senderuin)) {}
+            }
+            else
+            {
+              localObject1 = paramString2;
+              str2 = paramString1;
+              str1 = BaseApplicationImpl.getContext().getString(2131690010);
+            }
+          }
+          localObject1 = str1;
+          str2 = paramString1;
+          paramString2 = TroopBusinessUtil.a(paramMessageRecord);
+          paramMessageRecord = str1;
+          if (paramString2 == null) {
+            break label738;
+          }
+          localObject1 = str1;
+          str2 = paramString1;
+          paramMessageRecord = paramString2.c;
+        }
+        catch (Exception paramString1)
+        {
+          paramQQAppInterface = (QQAppInterface)localObject1;
+          paramMessageRecord = str2;
+          break label655;
+        }
+        if (1000 != paramInt2) {
+          break label791;
+        }
+        localObject1 = paramMessageRecord;
+        str2 = paramString1;
+        paramString2 = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
+        if (paramString2 == null) {
+          break label784;
+        }
+        localObject1 = paramMessageRecord;
+        str2 = paramString1;
+        paramString2 = paramString2.b((String)localObject3);
+        localObject1 = paramMessageRecord;
+        str2 = paramString1;
+        paramString1 = ContactUtils.a(paramQQAppInterface, paramString2, true);
+        localObject1 = paramMessageRecord;
+        str2 = paramString1;
+        l3 = Long.valueOf(paramString2).longValue();
+        l1 = l3;
+        if ((paramInt2 != 1004) && (paramInt2 != 3000))
+        {
+          localObject1 = paramMessageRecord;
+          paramString2 = paramString1;
+          l4 = l2;
+          l3 = l1;
+          break label673;
+        }
+        if (paramInt2 == 1004) {
+          localObject2 = localObject3;
+        }
+        try
+        {
+          paramQQAppInterface = ContactUtils.b(paramQQAppInterface, (String)localObject2);
+          try
+          {
+            l3 = Long.valueOf((String)localObject2).longValue();
+            localObject1 = paramMessageRecord;
+            paramString2 = paramQQAppInterface;
+            l4 = l2;
+          }
+          catch (Exception paramString1)
+          {
+            paramString2 = paramQQAppInterface;
+          }
+          paramQQAppInterface = paramMessageRecord;
+        }
+        catch (Exception paramQQAppInterface)
+        {
+          paramString2 = paramString1;
+          paramString1 = paramQQAppInterface;
+        }
+        paramMessageRecord = paramString2;
       }
-      l4 = l5;
-      localObject2 = localObject4;
-      paramString1 = (String)localObject1;
-      l3 = l6;
-      l1 = Long.valueOf(str1).longValue();
-      if (1 == paramInt2)
+      catch (Exception paramString1)
       {
-        l4 = l5;
-        localObject2 = localObject4;
-        paramString1 = (String)localObject1;
-        l3 = l1;
+        String str2;
+        paramMessageRecord = "";
+        l1 = 0L;
+        paramQQAppInterface = str1;
       }
-      for (localObject3 = ContactUtils.a(paramQQAppInterface, paramString2, true);; localObject3 = ContactUtils.c(paramQQAppInterface, paramString2))
-      {
-        l4 = l5;
-        localObject2 = localObject3;
-        paramString1 = (String)localObject1;
-        l3 = l1;
-        l2 = Long.valueOf(paramString2).longValue();
-        break;
-        l4 = l5;
-        localObject2 = localObject4;
-        paramString1 = (String)localObject1;
-        l3 = l1;
-      }
-      label958:
-      label987:
+      paramString1.printStackTrace();
+      long l3 = l1;
+      long l4 = l2;
+      paramString2 = paramMessageRecord;
+      Object localObject1 = paramQQAppInterface;
+      label673:
+      label688:
+      label702:
+      label738:
       do
       {
-        l4 = l5;
-        localObject2 = localObject4;
-        paramString1 = str2;
-        l3 = l6;
-        localObject1 = ContactUtils.b(paramQQAppInterface, str1, paramInt2);
-        l4 = l5;
-        localObject2 = localObject4;
-        paramString1 = (String)localObject1;
-        l3 = l6;
-        l1 = Long.valueOf(str1).longValue();
-        l2 = l5;
-        localObject3 = localObject4;
-        break label125;
-        do
-        {
-          paramString1 = (String)localObject3;
-          break label405;
-          do
-          {
-            localObject1 = localObject3;
-            l3 = l2;
-            break label461;
-            str1 = paramString1;
-            break;
-          } while ((2 != i) && (3 != i));
-          if (1 == paramInt2) {
-            break label293;
-          }
-        } while (1000 != paramInt2);
-        break label293;
+        return a(i, l4, (String)localObject1, l3, paramString2);
+        paramString1 = "";
+        l1 = 0L;
+        paramString2 = str1;
+        break label332;
         if ((paramInt2 == 1004) || (paramInt2 == 1000)) {
-          break label549;
+          break label303;
         }
         if (paramInt2 == 1) {
-          break label610;
+          break label178;
         }
-      } while (paramInt2 != 3000);
+        if (paramInt2 != 3000) {
+          break;
+        }
+        break label178;
+        if (2 == i) {
+          break label764;
+        }
+        localObject1 = paramMessageRecord;
+        paramString2 = paramString1;
+        l4 = l2;
+        l3 = l1;
+      } while (3 != i);
+      label764:
+      if ((1 != paramInt2) && (1000 != paramInt2))
+      {
+        continue;
+        paramString2 = (String)localObject3;
+        continue;
+        paramString2 = (String)localObject2;
+      }
     }
   }
   
@@ -811,7 +774,7 @@ public class QfavBuilder
   
   public boolean a(Activity paramActivity, String paramString)
   {
-    return a(paramActivity, paramString, 2131692259, null);
+    return a(paramActivity, paramString, 2131692185, null);
   }
   
   public boolean a(Activity paramActivity, String paramString, int paramInt, Intent paramIntent)
@@ -823,12 +786,10 @@ public class QfavBuilder
     this.a.putExtra("lCollectTime", System.currentTimeMillis());
     if (paramIntent != null) {
       paramIntent.putExtras(this.a);
-    }
-    for (;;)
-    {
-      return QfavPluginProxyActivity.a(paramActivity, paramString, paramIntent, paramInt);
+    } else {
       paramIntent = this.a;
     }
+    return QfavPluginProxyActivity.a(paramActivity, paramString, paramIntent, paramInt);
   }
   
   public boolean a(Activity paramActivity, String paramString, int paramInt, Intent paramIntent, boolean paramBoolean)
@@ -839,27 +800,30 @@ public class QfavBuilder
     }
     this.a.putExtra("nOperation", 0);
     this.a.putExtra("lCollectTime", System.currentTimeMillis());
-    if (paramIntent != null)
-    {
+    if (paramIntent != null) {
       paramIntent.putExtras(this.a);
-      switch (paramIntent.getIntExtra("nType", 0))
+    } else {
+      paramIntent = this.a;
+    }
+    if (paramIntent.getIntExtra("nType", 0) == 2)
+    {
+      String str = paramIntent.getStringExtra("sPath");
+      if ((paramIntent.getIntExtra("nPicType", 1) == 1) && (QfavUtil.a(str, paramIntent.getLongExtra("lSize", -1L))))
       {
+        paramIntent.putExtra("nReasonInt", 2131694914);
+        if (QLog.isColorLevel())
+        {
+          paramActivity = new StringBuilder();
+          paramActivity.append("QfavBuilder.add: picture too big [");
+          paramActivity.append(str);
+          paramActivity.append("]");
+          QLog.i("qqfav", 1, paramActivity.toString());
+        }
+        QfavReport.a(null, "Net_AddFav", 3, 3, -3);
+        return false;
       }
     }
-    String str;
-    do
-    {
-      return QfavPluginProxyActivity.a(paramActivity, paramString, paramIntent, paramInt, paramBoolean);
-      paramIntent = this.a;
-      break;
-      str = paramIntent.getStringExtra("sPath");
-    } while ((paramIntent.getIntExtra("nPicType", 1) != 1) || (!QfavUtil.a(str, paramIntent.getLongExtra("lSize", -1L))));
-    paramIntent.putExtra("nReasonInt", 2131694924);
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 1, "QfavBuilder.add: picture too big [" + str + "]");
-    }
-    QfavReport.a(null, "Net_AddFav", 3, 3, -3);
-    return false;
+    return QfavPluginProxyActivity.a(paramActivity, paramString, paramIntent, paramInt, paramBoolean);
   }
   
   public boolean a(Activity paramActivity, String paramString, int paramInt, QfavBuilder.OnAddFav paramOnAddFav)
@@ -869,9 +833,10 @@ public class QfavBuilder
     Object localObject1 = localObject2;
     if (!bool)
     {
+      Intent localIntent = this.a;
       localObject1 = localObject2;
-      if (this.a != null) {
-        localObject1 = paramActivity.getString(this.a.getIntExtra("nReasonInt", 2131692260));
+      if (localIntent != null) {
+        localObject1 = paramActivity.getString(localIntent.getIntExtra("nReasonInt", 2131692186));
       }
     }
     QfavHelper.a(paramActivity, paramString, bool, (String)localObject1, false, paramInt);
@@ -895,9 +860,9 @@ public class QfavBuilder
     boolean bool = QfavPluginProxyService.a().a("com.tencent.qqfav", 4, (Bundle)localObject);
     localObject = null;
     if (!bool) {
-      localObject = paramContext.getString(this.a.getIntExtra("nReasonInt", 2131692260));
+      localObject = paramContext.getString(this.a.getIntExtra("nReasonInt", 2131692186));
     }
-    QfavHelper.a(paramContext, "", bool, (String)localObject, false, 2131692259);
+    QfavHelper.a(paramContext, "", bool, (String)localObject, false, 2131692185);
     return bool;
   }
   
@@ -909,27 +874,30 @@ public class QfavBuilder
     }
     this.a.putExtra("nOperation", 0);
     this.a.putExtra("lCollectTime", System.currentTimeMillis());
-    if (paramIntent != null)
-    {
+    if (paramIntent != null) {
       paramIntent.putExtras(this.a);
-      switch (paramIntent.getIntExtra("nType", 0))
+    } else {
+      paramIntent = this.a;
+    }
+    if (paramIntent.getIntExtra("nType", 0) == 2)
+    {
+      String str = paramIntent.getStringExtra("sPath");
+      if ((paramIntent.getIntExtra("nPicType", 1) == 1) && (QfavUtil.a(str, paramIntent.getLongExtra("lSize", -1L))))
       {
+        paramIntent.putExtra("nReasonInt", 2131694914);
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("QfavBuilder.add: picture too big [");
+          paramContext.append(str);
+          paramContext.append("]");
+          QLog.i("qqfav", 1, paramContext.toString());
+        }
+        QfavReport.a(null, "Net_AddFav", 3, 3, -3);
+        return false;
       }
     }
-    String str;
-    do
-    {
-      return QfavPluginProxyActivity.a(paramContext, paramString, paramIntent, paramInt);
-      paramIntent = this.a;
-      break;
-      str = paramIntent.getStringExtra("sPath");
-    } while ((paramIntent.getIntExtra("nPicType", 1) != 1) || (!QfavUtil.a(str, paramIntent.getLongExtra("lSize", -1L))));
-    paramIntent.putExtra("nReasonInt", 2131694924);
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfav", 1, "QfavBuilder.add: picture too big [" + str + "]");
-    }
-    QfavReport.a(null, "Net_AddFav", 3, 3, -3);
-    return false;
+    return QfavPluginProxyActivity.a(paramContext, paramString, paramIntent, paramInt);
   }
   
   public boolean a(QQAppInterface paramQQAppInterface, Context paramContext, FileManagerEntity paramFileManagerEntity, ChatMessage paramChatMessage, boolean paramBoolean)
@@ -939,239 +907,7 @@ public class QfavBuilder
   
   public boolean a(QQAppInterface paramQQAppInterface, Context paramContext, FileManagerEntity paramFileManagerEntity, ChatMessage paramChatMessage, boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    if ((paramFileManagerEntity == null) && (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    if ((!paramBoolean2) && (paramFileManagerEntity == null)) {
-      return false;
-    }
-    QfavRequestQueue.a().a = true;
-    int m;
-    String str1;
-    if (paramBoolean2)
-    {
-      m = 3;
-      if (m != 5) {
-        break label1260;
-      }
-      str1 = paramFileManagerEntity.strFilePath;
-      paramBoolean2 = true;
-    }
-    for (;;)
-    {
-      if ((paramBoolean2) && (!TextUtils.isEmpty(str1))) {}
-      for (Object localObject = new File(str1);; localObject = null)
-      {
-        label89:
-        String str2;
-        int n;
-        int j;
-        int i;
-        if (paramFileManagerEntity != null)
-        {
-          paramString = paramFileManagerEntity.fileName;
-          str2 = FileUtil.a(paramString);
-          n = 6;
-          if (paramChatMessage == null) {
-            n = 7;
-          }
-          j = -1;
-          i = j;
-          if (paramFileManagerEntity != null) {
-            i = j;
-          }
-          switch (paramFileManagerEntity.getCloudType())
-          {
-          default: 
-            i = j;
-          case 3: 
-            label164:
-            paramString = null;
-            if (paramFileManagerEntity != null) {
-              paramString = paramFileManagerEntity.fileName.getBytes();
-            }
-            break;
-          }
-        }
-        for (;;)
-        {
-          if (paramString.length < 256) {
-            break label335;
-          }
-          if (!paramBoolean1) {
-            QfavUtil.a(paramContext, 2131692262, 1);
-          }
-          QfavReport.a(paramQQAppInterface, "User_AddFav", 6, -80010, n, i, str2, null);
-          paramQQAppInterface = new ContentValues();
-          paramQQAppInterface.put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692276));
-          this.a.putExtra("fileContents", paramQQAppInterface);
-          return false;
-          m = FileManagerUtil.a(paramFileManagerEntity);
-          break;
-          paramString = str1;
-          break label89;
-          if (3000 == paramFileManagerEntity.peerType)
-          {
-            i = 106;
-            break label164;
-          }
-          i = 3;
-          break label164;
-          i = paramFileManagerEntity.busId;
-          break label164;
-          i = 25;
-          break label164;
-          if (localObject != null) {
-            paramString = ((File)localObject).getName().getBytes();
-          }
-        }
-        switch (m)
-        {
-        default: 
-          if (!paramBoolean1) {
-            QfavUtil.a(paramContext, 2131692263, 0);
-          }
-          QfavReport.a(paramQQAppInterface, "User_AddFav", 6, -80003, n, i, str2, null);
-          paramQQAppInterface = new ContentValues();
-          paramQQAppInterface.put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692278));
-          this.a.putExtra("fileContents", paramQQAppInterface);
-          return false;
-        case 1: 
-          if ((paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
-          {
-            if (!paramBoolean1) {
-              QfavUtil.a(paramContext, 2131692261, 1);
-            }
-            QfavReport.a(paramQQAppInterface, "User_AddFav", 6, -80011, n, i, str2, null);
-            paramQQAppInterface = new ContentValues();
-            paramQQAppInterface.put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692275));
-            this.a.putExtra("fileContents", paramQQAppInterface);
-            return false;
-          }
-          break;
-        case 4: 
-          label335:
-          if ((104 == paramFileManagerEntity.busId) && (paramFileManagerEntity.lastTime > 0L) && (paramFileManagerEntity.lastTime <= System.currentTimeMillis() / 1000L))
-          {
-            if (!paramBoolean1) {
-              QfavUtil.a(paramContext, 2131692261, 1);
-            }
-            QfavReport.a(paramQQAppInterface, "User_AddFav", 6, -80011, n, i, str2, null);
-            paramQQAppInterface = new ContentValues();
-            paramQQAppInterface.put("errorMsg", BaseApplicationImpl.getContext().getResources().getString(2131692275));
-            this.a.putExtra("fileContents", paramQQAppInterface);
-            return false;
-          }
-          break;
-        }
-        if (paramChatMessage != null) {
-          a(paramQQAppInterface, paramChatMessage);
-        }
-        label748:
-        label877:
-        while (paramFileManagerEntity == null)
-        {
-          if ((QFileAssistantUtils.a(paramQQAppInterface)) && (paramChatMessage != null) && (TextUtils.equals(paramChatMessage.frienduin, QFileAssistantUtils.a(paramQQAppInterface)))) {
-            this.a.putExtra("lUin", paramQQAppInterface.getCurrentUin());
-          }
-          localObject = "";
-          paramString = (String)localObject;
-          switch (m)
-          {
-          default: 
-            paramString = (String)localObject;
-          case 3: 
-            localObject = new ContentValues();
-            ((ContentValues)localObject).put("fileCloudType", Integer.valueOf(m));
-            if (paramFileManagerEntity == null) {
-              break label1222;
-            }
-            ((ContentValues)localObject).put("fileUuId", paramString);
-            ((ContentValues)localObject).put("fileSize", Long.valueOf(paramFileManagerEntity.fileSize));
-            ((ContentValues)localObject).put("fileName", paramFileManagerEntity.fileName);
-            ((ContentValues)localObject).put("fileMd5", paramFileManagerEntity.strFileMd5);
-            ((ContentValues)localObject).put("filePath", paramFileManagerEntity.getFilePath());
-            ((ContentValues)localObject).put("fileThumbPath", paramFileManagerEntity.strThumbPath);
-            ((ContentValues)localObject).put("filePeerType", Integer.valueOf(paramFileManagerEntity.peerType));
-            ((ContentValues)localObject).put("fileBid", Integer.valueOf(paramFileManagerEntity.busId));
-            this.a.putExtra("fileContents", (Parcelable)localObject);
-            if (paramBoolean1) {
-              break label1235;
-            }
-            paramBoolean1 = a(paramContext, paramQQAppInterface.getAccount(), -1, null);
-            paramString = null;
-            if (!paramBoolean1) {
-              paramString = paramContext.getString(this.a.getIntExtra("nReasonInt", 2131692260));
-            }
-            paramQQAppInterface.runOnUiThread(new QfavBuilder.1(this, paramContext, paramQQAppInterface, paramBoolean1, paramString));
-            if ((paramChatMessage != null) && (paramFileManagerEntity != null)) {
-              QfavReport.a(paramQQAppInterface, 5, paramFileManagerEntity.nFileType, paramChatMessage.istroop);
-            }
-            QfavReport.a(paramQQAppInterface, "User_AddFav", 6, 0, n, i, str2, null);
-            return paramBoolean1;
-          }
-        }
-        label953:
-        paramString = paramFileManagerEntity.selfUin;
-        localObject = paramFileManagerEntity.peerUin;
-        int k;
-        if (paramFileManagerEntity.bSend)
-        {
-          k = 1;
-          label1022:
-          int i1 = 0;
-          switch (paramFileManagerEntity.peerType)
-          {
-          default: 
-            j = i1;
-            if (!paramFileManagerEntity.bSend)
-            {
-              paramString = paramFileManagerEntity.peerUin;
-              j = i1;
-            }
-            label1093:
-            if (TextUtils.isEmpty(paramString))
-            {
-              paramString = paramQQAppInterface.getCurrentAccountUin();
-              k = 1;
-            }
-            break;
-          }
-        }
-        for (;;)
-        {
-          a(paramQQAppInterface, null, paramString, (String)localObject, k, j);
-          break;
-          k = 0;
-          break label1022;
-          j = 1;
-          break label1093;
-          j = 3000;
-          break label1093;
-          j = 1004;
-          break label1093;
-          paramString = paramFileManagerEntity.Uuid;
-          break label748;
-          paramString = paramFileManagerEntity.strTroopFilePath;
-          break label748;
-          if (TextUtils.isEmpty(paramFileManagerEntity.WeiYunDirKey))
-          {
-            paramString = paramFileManagerEntity.WeiYunFileId;
-            break label748;
-          }
-          paramString = paramFileManagerEntity.WeiYunDirKey + paramFileManagerEntity.WeiYunFileId;
-          break label748;
-          label1222:
-          ((ContentValues)localObject).put("filePath", str1);
-          break label877;
-          label1235:
-          paramBoolean1 = a(paramContext, paramQQAppInterface.getAccount(), -1, null);
-          break label953;
-        }
-      }
-      label1260:
-      str1 = paramString;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
@@ -1182,10 +918,13 @@ public class QfavBuilder
   public QfavBuilder b(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
     paramQQAppInterface = a(paramQQAppInterface, paramMessageRecord);
-    if (paramMessageRecord == null) {}
-    for (long l = new Date().getTime();; l = paramMessageRecord.time * 1000L) {
-      return paramQQAppInterface.a("lCreateTime", l);
+    long l;
+    if (paramMessageRecord == null) {
+      l = new Date().getTime();
+    } else {
+      l = paramMessageRecord.time * 1000L;
     }
+    return paramQQAppInterface.a("lCreateTime", l);
   }
   
   public QfavBuilder b(String paramString1, String paramString2)
@@ -1227,13 +966,13 @@ public class QfavBuilder
   public boolean c(Activity paramActivity, String paramString, int paramInt, Intent paramIntent)
   {
     boolean bool = b(paramActivity, paramString, paramInt, paramIntent);
-    QfavHelper.a(paramActivity, paramString, bool, "", false, 2131692259);
+    QfavHelper.a(paramActivity, paramString, bool, "", false, 2131692185);
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavBuilder
  * JD-Core Version:    0.7.0.1
  */

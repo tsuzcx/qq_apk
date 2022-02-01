@@ -3,7 +3,6 @@ package com.huawei.agconnect;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.util.Log;
-import com.huawei.agconnect.core.a.a;
 
 public abstract class AGConnectInstance
 {
@@ -23,11 +22,12 @@ public abstract class AGConnectInstance
       try
       {
         Log.i("AGConnectInstance", "AGConnectInstance#initialize");
+        com.huawei.agconnect.config.a.a.initialize(paramContext);
         localContext = paramContext.getApplicationContext();
         if (localContext == null)
         {
           if (INSTANCE == null) {
-            INSTANCE = new a(paramContext);
+            INSTANCE = new com.huawei.agconnect.core.a.a(paramContext);
           }
           return;
         }

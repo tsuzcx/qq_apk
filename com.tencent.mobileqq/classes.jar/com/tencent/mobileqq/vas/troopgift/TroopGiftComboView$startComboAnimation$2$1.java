@@ -18,14 +18,16 @@ final class TroopGiftComboView$startComboAnimation$2$1
   {
     Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
-    }
-    int i = (int)(((Float)paramValueAnimator).floatValue() * this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftComboView$startComboAnimation$2.$comboTimes);
-    paramValueAnimator = this.jdField_a_of_type_OrgLibpagPAGView.getFile();
-    if (paramValueAnimator != null) {}
-    for (paramValueAnimator = paramValueAnimator.getTextData(0);; paramValueAnimator = null)
+    if (paramValueAnimator != null)
     {
+      float f = ((Float)paramValueAnimator).floatValue();
+      int i = (int)(this.jdField_a_of_type_ComTencentMobileqqVasTroopgiftTroopGiftComboView$startComboAnimation$2.$comboTimes * f);
+      paramValueAnimator = this.jdField_a_of_type_OrgLibpagPAGView.getFile();
+      if (paramValueAnimator != null) {
+        paramValueAnimator = paramValueAnimator.getTextData(0);
+      } else {
+        paramValueAnimator = null;
+      }
       if (paramValueAnimator != null) {
         paramValueAnimator.text = String.valueOf(i);
       }
@@ -33,11 +35,12 @@ final class TroopGiftComboView$startComboAnimation$2$1
       this.jdField_a_of_type_OrgLibpagPAGView.flush();
       return;
     }
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopgift.TroopGiftComboView.startComboAnimation.2.1
  * JD-Core Version:    0.7.0.1
  */

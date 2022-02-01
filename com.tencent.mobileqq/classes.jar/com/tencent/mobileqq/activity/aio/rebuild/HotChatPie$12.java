@@ -1,40 +1,29 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.mobileqq.app.HotchatSCHelper;
-import com.tencent.mobileqq.app.HotchatSCHelper.OnShowNoteListener;
-import com.tencent.mobileqq.app.HotchatSCMng.HotchatNote;
-import com.tencent.mobileqq.nearby.NearbyUtils;
-import com.tencent.mobileqq.troop.logic.TroopFeedsCenterLogic;
-import com.tencent.qphone.base.util.QLog;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.mobileqq.app.HotChatManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.hotchat.api.IHotChatShare;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class HotChatPie$12
-  implements HotchatSCHelper.OnShowNoteListener
+  implements View.OnClickListener
 {
-  HotChatPie$12(HotChatPie paramHotChatPie) {}
+  HotChatPie$12(HotChatPie paramHotChatPie, String paramString) {}
   
-  public boolean a(HotchatSCMng.HotchatNote paramHotchatNote)
+  public void onClick(View paramView)
   {
-    if (QLog.isDevelopLevel()) {
-      NearbyUtils.a(this.a.b, "onShowHotchatNote", new Object[] { paramHotchatNote });
-    }
-    if (paramHotchatNote == null)
-    {
-      if ((this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b) && (HotChatPie.a(this.a) != null)) {
-        HotChatPie.b(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, null, null);
-      }
-      return false;
-    }
-    if (HotChatPie.c(this.a) == null) {
-      HotChatPie.a(this.a, new TroopFeedsCenterLogic(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, HotChatPie.a(this.a), HotChatPie.a(this.a), this.a.jdField_a_of_type_ComTencentMobileqqTroopDataTroopAioTips, HotChatPie.a(this.a), null));
-    }
-    HotChatPie.d(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, paramHotchatNote.a, paramHotchatNote.b);
-    this.a.jdField_a_of_type_ComTencentMobileqqAppHotchatSCHelper.b = true;
-    return true;
+    HotChatInfo localHotChatInfo = ((HotChatManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).a(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildHotChatPie.jdField_a_of_type_ComTencentMobileqqHotchatApiIHotChatShare.handleShare(localHotChatInfo);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.12
  * JD-Core Version:    0.7.0.1
  */

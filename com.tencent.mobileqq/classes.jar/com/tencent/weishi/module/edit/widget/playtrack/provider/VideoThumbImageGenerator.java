@@ -16,8 +16,9 @@ class VideoThumbImageGenerator
   private void releaseQueue()
   {
     Logger.i("VideoThumbImageGenerator", "releaseQueue:");
-    if (this.mVideoThumbTaskQueue != null) {
-      this.mVideoThumbTaskQueue.clear();
+    BlockingQueue localBlockingQueue = this.mVideoThumbTaskQueue;
+    if (localBlockingQueue != null) {
+      localBlockingQueue.clear();
     }
   }
   
@@ -34,21 +35,20 @@ class VideoThumbImageGenerator
   
   public void generateCoverByTime(CMTime paramCMTime)
   {
-    Logger.i("VideoThumbImageGenerator", "generateCoverByTime:" + paramCMTime.getTimeUs());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("generateCoverByTime:");
+    localStringBuilder.append(paramCMTime.getTimeUs());
+    Logger.i("VideoThumbImageGenerator", localStringBuilder.toString());
     paramCMTime = new VideoThumbImageGenerator.ImageThumbTask(System.currentTimeMillis(), paramCMTime);
     try
     {
       this.mVideoThumbTaskQueue.put(paramCMTime);
-      startGenerate();
-      return;
     }
     catch (InterruptedException paramCMTime)
     {
-      for (;;)
-      {
-        paramCMTime.printStackTrace();
-      }
+      paramCMTime.printStackTrace();
     }
+    startGenerate();
   }
   
   public void pause()
@@ -86,7 +86,7 @@ class VideoThumbImageGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weishi.module.edit.widget.playtrack.provider.VideoThumbImageGenerator
  * JD-Core Version:    0.7.0.1
  */

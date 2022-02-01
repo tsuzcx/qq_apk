@@ -17,12 +17,18 @@ public class ExtendInputMethodRelativeLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
+    ExtendInputMethodRelativeLayout.OnDownListener localOnDownListener;
     if (paramMotionEvent.getAction() == 0)
     {
-      if ((this.a == null) || (!this.a.a(paramMotionEvent))) {}
+      localOnDownListener = this.a;
+      if ((localOnDownListener != null) && (localOnDownListener.a(paramMotionEvent))) {
+        return true;
+      }
     }
-    else {
-      while ((this.a != null) && (this.a.b(paramMotionEvent))) {
+    else
+    {
+      localOnDownListener = this.a;
+      if ((localOnDownListener != null) && (localOnDownListener.b(paramMotionEvent))) {
         return true;
       }
     }
@@ -42,7 +48,7 @@ public class ExtendInputMethodRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ExtendInputMethodRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

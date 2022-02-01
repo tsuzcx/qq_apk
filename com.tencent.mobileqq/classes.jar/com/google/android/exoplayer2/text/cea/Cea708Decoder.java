@@ -148,38 +148,48 @@ public final class Cea708Decoder
   
   private void handleC0Command(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      if ((paramInt >= 17) && (paramInt <= 23))
-      {
-        Log.w("Cea708Decoder", "Currently unsupported COMMAND_EXT1 Command: " + paramInt);
-        this.serviceBlockPacket.skipBits(8);
+      if (paramInt != 3) {
+        if (paramInt == 8) {}
       }
-      break;
-    case 0: 
-    case 14: 
-      return;
-    case 3: 
-      this.cues = getDisplayCues();
-      return;
-    case 8: 
-      this.currentCueBuilder.backspace();
-      return;
-    case 12: 
-      resetCueBuilders();
-      return;
-    case 13: 
-      this.currentCueBuilder.append('\n');
-      return;
+      switch (paramInt)
+      {
+      default: 
+        if ((paramInt >= 17) && (paramInt <= 23))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Currently unsupported COMMAND_EXT1 Command: ");
+          localStringBuilder.append(paramInt);
+          Log.w("Cea708Decoder", localStringBuilder.toString());
+          this.serviceBlockPacket.skipBits(8);
+          return;
+        }
+        if ((paramInt >= 24) && (paramInt <= 31))
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Currently unsupported COMMAND_P16 Command: ");
+          localStringBuilder.append(paramInt);
+          Log.w("Cea708Decoder", localStringBuilder.toString());
+          this.serviceBlockPacket.skipBits(16);
+          return;
+        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Invalid C0 command: ");
+        localStringBuilder.append(paramInt);
+        Log.w("Cea708Decoder", localStringBuilder.toString());
+        return;
+      case 13: 
+        this.currentCueBuilder.append('\n');
+        return;
+      case 12: 
+        resetCueBuilders();
+        return;
+        this.currentCueBuilder.backspace();
+        return;
+        this.cues = getDisplayCues();
+      }
     }
-    if ((paramInt >= 24) && (paramInt <= 31))
-    {
-      Log.w("Cea708Decoder", "Currently unsupported COMMAND_P16 Command: " + paramInt);
-      this.serviceBlockPacket.skipBits(16);
-      return;
-    }
-    Log.w("Cea708Decoder", "Invalid C0 command: " + paramInt);
   }
   
   private void handleC1Command(int paramInt)
@@ -187,6 +197,7 @@ public final class Cea708Decoder
     int j = 1;
     int k = 1;
     int i = 1;
+    Object localObject;
     switch (paramInt)
     {
     case 147: 
@@ -194,98 +205,29 @@ public final class Cea708Decoder
     case 149: 
     case 150: 
     default: 
-      Log.w("Cea708Decoder", "Invalid C1 command: " + paramInt);
-    }
-    label320:
-    label372:
-    do
-    {
-      for (;;)
-      {
-        return;
-        paramInt -= 128;
-        if (this.currentWindow != paramInt)
-        {
-          this.currentWindow = paramInt;
-          this.currentCueBuilder = this.cueBuilders[paramInt];
-          return;
-          while (i <= 8)
-          {
-            if (this.serviceBlockPacket.readBit()) {
-              this.cueBuilders[(8 - i)].clear();
-            }
-            i += 1;
-          }
-          continue;
-          paramInt = 1;
-          while (paramInt <= 8)
-          {
-            if (this.serviceBlockPacket.readBit()) {
-              this.cueBuilders[(8 - paramInt)].setVisibility(true);
-            }
-            paramInt += 1;
-          }
-          continue;
-          while (j <= 8)
-          {
-            if (this.serviceBlockPacket.readBit()) {
-              this.cueBuilders[(8 - j)].setVisibility(false);
-            }
-            j += 1;
-          }
-          continue;
-          paramInt = 1;
-          Cea708Decoder.CueBuilder localCueBuilder;
-          if (paramInt <= 8) {
-            if (this.serviceBlockPacket.readBit())
-            {
-              localCueBuilder = this.cueBuilders[(8 - paramInt)];
-              if (localCueBuilder.isVisible()) {
-                break label372;
-              }
-            }
-          }
-          for (boolean bool = true;; bool = false)
-          {
-            localCueBuilder.setVisibility(bool);
-            paramInt += 1;
-            break label320;
-            break;
-          }
-          while (k <= 8)
-          {
-            if (this.serviceBlockPacket.readBit()) {
-              this.cueBuilders[(8 - k)].reset();
-            }
-            k += 1;
-          }
-        }
-      }
-      this.serviceBlockPacket.skipBits(8);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Invalid C1 command: ");
+      ((StringBuilder)localObject).append(paramInt);
+      Log.w("Cea708Decoder", ((StringBuilder)localObject).toString());
       return;
-      resetCueBuilders();
-      return;
-      if (!this.currentCueBuilder.isDefined())
+    case 152: 
+    case 153: 
+    case 154: 
+    case 155: 
+    case 156: 
+    case 157: 
+    case 158: 
+    case 159: 
+      paramInt -= 152;
+      handleDefineWindow(paramInt);
+      if (this.currentWindow != paramInt)
       {
-        this.serviceBlockPacket.skipBits(16);
+        this.currentWindow = paramInt;
+        this.currentCueBuilder = this.cueBuilders[paramInt];
         return;
       }
-      handleSetPenAttributes();
-      return;
-      if (!this.currentCueBuilder.isDefined())
-      {
-        this.serviceBlockPacket.skipBits(24);
-        return;
-      }
-      handleSetPenColor();
-      return;
-      if (!this.currentCueBuilder.isDefined())
-      {
-        this.serviceBlockPacket.skipBits(16);
-        return;
-      }
-      handleSetPenLocation();
-      return;
+      break;
+    case 151: 
       if (!this.currentCueBuilder.isDefined())
       {
         this.serviceBlockPacket.skipBits(32);
@@ -293,50 +235,140 @@ public final class Cea708Decoder
       }
       handleSetWindowAttributes();
       return;
-      paramInt -= 152;
-      handleDefineWindow(paramInt);
-    } while (this.currentWindow == paramInt);
-    this.currentWindow = paramInt;
-    this.currentCueBuilder = this.cueBuilders[paramInt];
-  }
-  
-  private void handleC2Command(int paramInt)
-  {
-    if (paramInt <= 7) {}
-    do
-    {
-      return;
-      if (paramInt <= 15)
-      {
-        this.serviceBlockPacket.skipBits(8);
-        return;
-      }
-      if (paramInt <= 23)
+    case 146: 
+      if (!this.currentCueBuilder.isDefined())
       {
         this.serviceBlockPacket.skipBits(16);
         return;
       }
-    } while (paramInt > 31);
-    this.serviceBlockPacket.skipBits(24);
+      handleSetPenLocation();
+      return;
+    case 145: 
+      if (!this.currentCueBuilder.isDefined())
+      {
+        this.serviceBlockPacket.skipBits(24);
+        return;
+      }
+      handleSetPenColor();
+      return;
+    case 144: 
+      if (!this.currentCueBuilder.isDefined())
+      {
+        this.serviceBlockPacket.skipBits(16);
+        return;
+      }
+      handleSetPenAttributes();
+      return;
+    case 143: 
+      resetCueBuilders();
+      return;
+    case 141: 
+      this.serviceBlockPacket.skipBits(8);
+      return;
+    case 140: 
+    case 139: 
+    case 138: 
+    case 137: 
+    case 136: 
+    case 128: 
+    case 129: 
+    case 130: 
+    case 131: 
+    case 132: 
+    case 133: 
+    case 134: 
+    case 135: 
+      while (i <= 8)
+      {
+        if (this.serviceBlockPacket.readBit()) {
+          this.cueBuilders[(8 - i)].reset();
+        }
+        i += 1;
+        continue;
+        paramInt = 1;
+        while (paramInt <= 8)
+        {
+          if (this.serviceBlockPacket.readBit())
+          {
+            localObject = this.cueBuilders[(8 - paramInt)];
+            ((Cea708Decoder.CueBuilder)localObject).setVisibility(((Cea708Decoder.CueBuilder)localObject).isVisible() ^ true);
+          }
+          paramInt += 1;
+          continue;
+          while (j <= 8)
+          {
+            if (this.serviceBlockPacket.readBit()) {
+              this.cueBuilders[(8 - j)].setVisibility(false);
+            }
+            j += 1;
+            continue;
+            paramInt = 1;
+            while (paramInt <= 8)
+            {
+              if (this.serviceBlockPacket.readBit()) {
+                this.cueBuilders[(8 - paramInt)].setVisibility(true);
+              }
+              paramInt += 1;
+              continue;
+              while (k <= 8)
+              {
+                if (this.serviceBlockPacket.readBit()) {
+                  this.cueBuilders[(8 - k)].clear();
+                }
+                k += 1;
+                continue;
+                paramInt -= 128;
+                if (this.currentWindow != paramInt)
+                {
+                  this.currentWindow = paramInt;
+                  this.currentCueBuilder = this.cueBuilders[paramInt];
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+  
+  private void handleC2Command(int paramInt)
+  {
+    if (paramInt <= 7) {
+      return;
+    }
+    if (paramInt <= 15)
+    {
+      this.serviceBlockPacket.skipBits(8);
+      return;
+    }
+    if (paramInt <= 23)
+    {
+      this.serviceBlockPacket.skipBits(16);
+      return;
+    }
+    if (paramInt <= 31) {
+      this.serviceBlockPacket.skipBits(24);
+    }
   }
   
   private void handleC3Command(int paramInt)
   {
-    if (paramInt <= 135) {
-      this.serviceBlockPacket.skipBits(32);
-    }
-    do
+    if (paramInt <= 135)
     {
+      this.serviceBlockPacket.skipBits(32);
       return;
-      if (paramInt <= 143)
-      {
-        this.serviceBlockPacket.skipBits(40);
-        return;
-      }
-    } while (paramInt > 159);
-    this.serviceBlockPacket.skipBits(2);
-    paramInt = this.serviceBlockPacket.readBits(6);
-    this.serviceBlockPacket.skipBits(paramInt * 8);
+    }
+    if (paramInt <= 143)
+    {
+      this.serviceBlockPacket.skipBits(40);
+      return;
+    }
+    if (paramInt <= 159)
+    {
+      this.serviceBlockPacket.skipBits(2);
+      paramInt = this.serviceBlockPacket.readBits(6);
+      this.serviceBlockPacket.skipBits(paramInt * 8);
+    }
   }
   
   private void handleDefineWindow(int paramInt)
@@ -375,88 +407,114 @@ public final class Cea708Decoder
   
   private void handleG2Character(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 32)
     {
-    default: 
-      Log.w("Cea708Decoder", "Invalid G2 character: " + paramInt);
-      return;
-    case 32: 
-      this.currentCueBuilder.append(' ');
-      return;
-    case 33: 
+      if (paramInt != 33)
+      {
+        if (paramInt != 37)
+        {
+          if (paramInt != 42)
+          {
+            if (paramInt != 44)
+            {
+              if (paramInt != 63)
+              {
+                if (paramInt != 57)
+                {
+                  if (paramInt != 58)
+                  {
+                    if (paramInt != 60)
+                    {
+                      if (paramInt != 61)
+                      {
+                        switch (paramInt)
+                        {
+                        default: 
+                          switch (paramInt)
+                          {
+                          default: 
+                            StringBuilder localStringBuilder = new StringBuilder();
+                            localStringBuilder.append("Invalid G2 character: ");
+                            localStringBuilder.append(paramInt);
+                            Log.w("Cea708Decoder", localStringBuilder.toString());
+                            return;
+                          case 127: 
+                            this.currentCueBuilder.append('┌');
+                            return;
+                          case 126: 
+                            this.currentCueBuilder.append('┘');
+                            return;
+                          case 125: 
+                            this.currentCueBuilder.append('─');
+                            return;
+                          case 124: 
+                            this.currentCueBuilder.append('└');
+                            return;
+                          case 123: 
+                            this.currentCueBuilder.append('┐');
+                            return;
+                          case 122: 
+                            this.currentCueBuilder.append('│');
+                            return;
+                          case 121: 
+                            this.currentCueBuilder.append('⅞');
+                            return;
+                          case 120: 
+                            this.currentCueBuilder.append('⅝');
+                            return;
+                          case 119: 
+                            this.currentCueBuilder.append('⅜');
+                            return;
+                          }
+                          this.currentCueBuilder.append('⅛');
+                          return;
+                        case 53: 
+                          this.currentCueBuilder.append('•');
+                          return;
+                        case 52: 
+                          this.currentCueBuilder.append('”');
+                          return;
+                        case 51: 
+                          this.currentCueBuilder.append('“');
+                          return;
+                        case 50: 
+                          this.currentCueBuilder.append('’');
+                          return;
+                        case 49: 
+                          this.currentCueBuilder.append('‘');
+                          return;
+                        }
+                        this.currentCueBuilder.append('█');
+                        return;
+                      }
+                      this.currentCueBuilder.append('℠');
+                      return;
+                    }
+                    this.currentCueBuilder.append('œ');
+                    return;
+                  }
+                  this.currentCueBuilder.append('š');
+                  return;
+                }
+                this.currentCueBuilder.append('™');
+                return;
+              }
+              this.currentCueBuilder.append('Ÿ');
+              return;
+            }
+            this.currentCueBuilder.append('Œ');
+            return;
+          }
+          this.currentCueBuilder.append('Š');
+          return;
+        }
+        this.currentCueBuilder.append('…');
+        return;
+      }
       this.currentCueBuilder.append(' ');
       return;
-    case 37: 
-      this.currentCueBuilder.append('…');
-      return;
-    case 42: 
-      this.currentCueBuilder.append('Š');
-      return;
-    case 44: 
-      this.currentCueBuilder.append('Œ');
-      return;
-    case 48: 
-      this.currentCueBuilder.append('█');
-      return;
-    case 49: 
-      this.currentCueBuilder.append('‘');
-      return;
-    case 50: 
-      this.currentCueBuilder.append('’');
-      return;
-    case 51: 
-      this.currentCueBuilder.append('“');
-      return;
-    case 52: 
-      this.currentCueBuilder.append('”');
-      return;
-    case 53: 
-      this.currentCueBuilder.append('•');
-      return;
-    case 57: 
-      this.currentCueBuilder.append('™');
-      return;
-    case 58: 
-      this.currentCueBuilder.append('š');
-      return;
-    case 60: 
-      this.currentCueBuilder.append('œ');
-      return;
-    case 61: 
-      this.currentCueBuilder.append('℠');
-      return;
-    case 63: 
-      this.currentCueBuilder.append('Ÿ');
-      return;
-    case 118: 
-      this.currentCueBuilder.append('⅛');
-      return;
-    case 119: 
-      this.currentCueBuilder.append('⅜');
-      return;
-    case 120: 
-      this.currentCueBuilder.append('⅝');
-      return;
-    case 121: 
-      this.currentCueBuilder.append('⅞');
-      return;
-    case 122: 
-      this.currentCueBuilder.append('│');
-      return;
-    case 123: 
-      this.currentCueBuilder.append('┐');
-      return;
-    case 124: 
-      this.currentCueBuilder.append('└');
-      return;
-    case 125: 
-      this.currentCueBuilder.append('─');
-      return;
-    case 126: 
-      this.currentCueBuilder.append('┘');
-      return;
     }
-    this.currentCueBuilder.append('┌');
+    this.currentCueBuilder.append(' ');
   }
   
   private void handleG3Character(int paramInt)
@@ -466,7 +524,10 @@ public final class Cea708Decoder
       this.currentCueBuilder.append('㏄');
       return;
     }
-    Log.w("Cea708Decoder", "Invalid G3 character: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Invalid G3 character: ");
+    localStringBuilder.append(paramInt);
+    Log.w("Cea708Decoder", localStringBuilder.toString());
     this.currentCueBuilder.append('_');
   }
   
@@ -522,93 +583,112 @@ public final class Cea708Decoder
   
   private void processCurrentPacket()
   {
-    if (this.currentDtvCcPacket.currentIndex != this.currentDtvCcPacket.packetSize * 2 - 1) {
-      Log.w("Cea708Decoder", "DtvCcPacket ended prematurely; size is " + (this.currentDtvCcPacket.packetSize * 2 - 1) + ", but current index is " + this.currentDtvCcPacket.currentIndex + " (sequence number " + this.currentDtvCcPacket.sequenceNumber + "); ignoring packet");
-    }
-    int i;
-    do
+    StringBuilder localStringBuilder;
+    if (this.currentDtvCcPacket.currentIndex != this.currentDtvCcPacket.packetSize * 2 - 1)
     {
-      int j;
-      do
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DtvCcPacket ended prematurely; size is ");
+      localStringBuilder.append(this.currentDtvCcPacket.packetSize * 2 - 1);
+      localStringBuilder.append(", but current index is ");
+      localStringBuilder.append(this.currentDtvCcPacket.currentIndex);
+      localStringBuilder.append(" (sequence number ");
+      localStringBuilder.append(this.currentDtvCcPacket.sequenceNumber);
+      localStringBuilder.append("); ignoring packet");
+      Log.w("Cea708Decoder", localStringBuilder.toString());
+      return;
+    }
+    this.serviceBlockPacket.reset(this.currentDtvCcPacket.packetData, this.currentDtvCcPacket.currentIndex);
+    int j = this.serviceBlockPacket.readBits(3);
+    int k = this.serviceBlockPacket.readBits(5);
+    int i = j;
+    if (j == 7)
+    {
+      this.serviceBlockPacket.skipBits(2);
+      i = j + this.serviceBlockPacket.readBits(6);
+    }
+    if (k == 0)
+    {
+      if (i != 0)
       {
-        do
-        {
-          return;
-          this.serviceBlockPacket.reset(this.currentDtvCcPacket.packetData, this.currentDtvCcPacket.currentIndex);
-          j = this.serviceBlockPacket.readBits(3);
-          int k = this.serviceBlockPacket.readBits(5);
-          i = j;
-          if (j == 7)
-          {
-            this.serviceBlockPacket.skipBits(2);
-            i = j + this.serviceBlockPacket.readBits(6);
-          }
-          if (k != 0) {
-            break;
-          }
-        } while (i == 0);
-        Log.w("Cea708Decoder", "serviceNumber is non-zero (" + i + ") when blockSize is 0");
-        return;
-      } while (i != this.selectedServiceNumber);
-      i = 0;
-      while (this.serviceBlockPacket.bitsLeft() > 0)
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("serviceNumber is non-zero (");
+        localStringBuilder.append(i);
+        localStringBuilder.append(") when blockSize is 0");
+        Log.w("Cea708Decoder", localStringBuilder.toString());
+      }
+      return;
+    }
+    if (i != this.selectedServiceNumber) {
+      return;
+    }
+    i = 0;
+    while (this.serviceBlockPacket.bitsLeft() > 0)
+    {
+      j = this.serviceBlockPacket.readBits(8);
+      if (j != 16)
       {
-        j = this.serviceBlockPacket.readBits(8);
-        if (j != 16)
+        if (j <= 31)
         {
-          if (j <= 31)
-          {
-            handleC0Command(j);
-          }
-          else if (j <= 127)
-          {
-            handleG0Character(j);
-            i = 1;
-          }
-          else if (j <= 159)
-          {
-            handleC1Command(j);
-            i = 1;
-          }
-          else if (j <= 255)
-          {
-            handleG1Character(j);
-            i = 1;
-          }
-          else
-          {
-            Log.w("Cea708Decoder", "Invalid base command: " + j);
-          }
+          handleC0Command(j);
+          continue;
+        }
+        if (j <= 127)
+        {
+          handleG0Character(j);
+        }
+        else if (j <= 159)
+        {
+          handleC1Command(j);
+        }
+        else if (j <= 255)
+        {
+          handleG1Character(j);
         }
         else
         {
-          j = this.serviceBlockPacket.readBits(8);
-          if (j <= 31)
-          {
-            handleC2Command(j);
-          }
-          else if (j <= 127)
-          {
-            handleG2Character(j);
-            i = 1;
-          }
-          else if (j <= 159)
-          {
-            handleC3Command(j);
-          }
-          else if (j <= 255)
-          {
-            handleG3Character(j);
-            i = 1;
-          }
-          else
-          {
-            Log.w("Cea708Decoder", "Invalid extended command: " + j);
-          }
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Invalid base command: ");
+          localStringBuilder.append(j);
+          Log.w("Cea708Decoder", localStringBuilder.toString());
         }
       }
-    } while (i == 0);
-    this.cues = getDisplayCues();
+      else
+      {
+        j = this.serviceBlockPacket.readBits(8);
+        if (j <= 31)
+        {
+          handleC2Command(j);
+          continue;
+        }
+        if (j > 127) {
+          break label416;
+        }
+        handleG2Character(j);
+      }
+      for (;;)
+      {
+        i = 1;
+        break;
+        label416:
+        if (j <= 159)
+        {
+          handleC3Command(j);
+          break;
+        }
+        if (j > 255) {
+          break label446;
+        }
+        handleG3Character(j);
+      }
+      label446:
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Invalid extended command: ");
+      localStringBuilder.append(j);
+      Log.w("Cea708Decoder", localStringBuilder.toString());
+    }
+    if (i != 0) {
+      this.cues = getDisplayCues();
+    }
   }
   
   private void resetCueBuilders()
@@ -623,77 +703,70 @@ public final class Cea708Decoder
   
   protected Subtitle createSubtitle()
   {
-    this.lastCues = this.cues;
-    return new CeaSubtitle(this.cues);
+    List localList = this.cues;
+    this.lastCues = localList;
+    return new CeaSubtitle(localList);
   }
   
   protected void decode(SubtitleInputBuffer paramSubtitleInputBuffer)
   {
     this.ccData.reset(paramSubtitleInputBuffer.data.array(), paramSubtitleInputBuffer.data.limit());
-    label61:
-    label325:
     while (this.ccData.bytesLeft() >= 3)
     {
       int k = this.ccData.readUnsignedByte() & 0x7;
       int m = k & 0x3;
-      int i;
-      int j;
-      Cea708Decoder.DtvCcPacket localDtvCcPacket;
-      if ((k & 0x4) == 4)
-      {
+      boolean bool = false;
+      if ((k & 0x4) == 4) {
         k = 1;
-        i = (byte)this.ccData.readUnsignedByte();
-        j = (byte)this.ccData.readUnsignedByte();
-        if (((m != 2) && (m != 3)) || (k == 0)) {
-          continue;
-        }
-        if (m != 3) {
-          break label215;
-        }
-        finalizeCurrentPacket();
-        m = i & 0x3F;
-        k = m;
-        if (m == 0) {
-          k = 64;
-        }
-        this.currentDtvCcPacket = new Cea708Decoder.DtvCcPacket((i & 0xC0) >> 6, k);
-        paramSubtitleInputBuffer = this.currentDtvCcPacket.packetData;
-        localDtvCcPacket = this.currentDtvCcPacket;
-        k = localDtvCcPacket.currentIndex;
-        localDtvCcPacket.currentIndex = (k + 1);
-        paramSubtitleInputBuffer[k] = j;
-      }
-      for (;;)
-      {
-        if (this.currentDtvCcPacket.currentIndex != this.currentDtvCcPacket.packetSize * 2 - 1) {
-          break label325;
-        }
-        finalizeCurrentPacket();
-        break;
+      } else {
         k = 0;
-        break label61;
-        label215:
-        if (m == 2) {}
-        for (boolean bool = true;; bool = false)
+      }
+      int i = (byte)this.ccData.readUnsignedByte();
+      int j = (byte)this.ccData.readUnsignedByte();
+      if (((m == 2) || (m == 3)) && (k != 0))
+      {
+        Cea708Decoder.DtvCcPacket localDtvCcPacket;
+        if (m == 3)
         {
-          Assertions.checkArgument(bool);
-          if (this.currentDtvCcPacket != null) {
-            break label254;
+          finalizeCurrentPacket();
+          m = i & 0x3F;
+          k = m;
+          if (m == 0) {
+            k = 64;
           }
-          Log.e("Cea708Decoder", "Encountered DTVCC_PACKET_DATA before DTVCC_PACKET_START");
-          break;
+          this.currentDtvCcPacket = new Cea708Decoder.DtvCcPacket((i & 0xC0) >> 6, k);
+          paramSubtitleInputBuffer = this.currentDtvCcPacket.packetData;
+          localDtvCcPacket = this.currentDtvCcPacket;
+          k = localDtvCcPacket.currentIndex;
+          localDtvCcPacket.currentIndex = (k + 1);
+          paramSubtitleInputBuffer[k] = j;
         }
-        label254:
-        paramSubtitleInputBuffer = this.currentDtvCcPacket.packetData;
-        localDtvCcPacket = this.currentDtvCcPacket;
-        k = localDtvCcPacket.currentIndex;
-        localDtvCcPacket.currentIndex = (k + 1);
-        paramSubtitleInputBuffer[k] = i;
-        paramSubtitleInputBuffer = this.currentDtvCcPacket.packetData;
-        localDtvCcPacket = this.currentDtvCcPacket;
-        k = localDtvCcPacket.currentIndex;
-        localDtvCcPacket.currentIndex = (k + 1);
-        paramSubtitleInputBuffer[k] = j;
+        else
+        {
+          if (m == 2) {
+            bool = true;
+          }
+          Assertions.checkArgument(bool);
+          paramSubtitleInputBuffer = this.currentDtvCcPacket;
+          if (paramSubtitleInputBuffer == null)
+          {
+            Log.e("Cea708Decoder", "Encountered DTVCC_PACKET_DATA before DTVCC_PACKET_START");
+            continue;
+          }
+          paramSubtitleInputBuffer = paramSubtitleInputBuffer.packetData;
+          localDtvCcPacket = this.currentDtvCcPacket;
+          k = localDtvCcPacket.currentIndex;
+          localDtvCcPacket.currentIndex = (k + 1);
+          paramSubtitleInputBuffer[k] = i;
+          paramSubtitleInputBuffer = this.currentDtvCcPacket.packetData;
+          localDtvCcPacket = this.currentDtvCcPacket;
+          k = localDtvCcPacket.currentIndex;
+          localDtvCcPacket.currentIndex = (k + 1);
+          paramSubtitleInputBuffer[k] = j;
+        }
+        if (this.currentDtvCcPacket.currentIndex == this.currentDtvCcPacket.packetSize * 2 - 1) {
+          finalizeCurrentPacket();
+        }
       }
     }
   }
@@ -721,7 +794,7 @@ public final class Cea708Decoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.cea.Cea708Decoder
  * JD-Core Version:    0.7.0.1
  */

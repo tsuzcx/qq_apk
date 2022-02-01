@@ -22,40 +22,49 @@ public class PersonalizeJsPlugin
   {
     try
     {
-      Object localObject1 = new JSONObject(paramRequestEvent.jsonParams);
-      if (((JSONObject)localObject1).has("api_name"))
+      localObject1 = new JSONObject(paramRequestEvent.jsonParams);
+      boolean bool = ((JSONObject)localObject1).has("api_name");
+      if (bool)
       {
-        Object localObject2 = ((JSONObject)localObject1).optJSONObject("data");
-        if (localObject2 == null) {
+        localObject3 = ((JSONObject)localObject1).optJSONObject("data");
+        if (localObject3 == null) {
           paramRequestEvent.fail("params error.");
-        }
-        try
-        {
-          localObject1 = ((JSONObject)localObject2).optString("uin");
-          int i = ((JSONObject)localObject2).optInt("set_type");
-          String str = ((JSONObject)localObject2).optString("item_id");
-          localObject2 = ((JSONObject)localObject2).optString("busi_info");
-          this.mChannelProxy.setPersonalizeInfo(this.mApkgInfo.appId, (String)localObject1, i, str, (String)localObject2, new PersonalizeJsPlugin.1(this, paramRequestEvent));
-          return;
-        }
-        catch (Exception localException1)
-        {
-          paramRequestEvent.fail("params error.");
-          return;
         }
       }
-      paramRequestEvent.fail("params error.");
+    }
+    catch (Exception localException1)
+    {
+      Object localObject1;
+      Object localObject3;
+      int i;
+      label114:
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramRequestEvent.event);
+      ((StringBuilder)localObject2).append(" error.");
+      QMLog.e("PersonalizeJsPlugin", ((StringBuilder)localObject2).toString(), localException1);
+      return;
+    }
+    try
+    {
+      localObject1 = ((JSONObject)localObject3).optString("uin");
+      i = ((JSONObject)localObject3).optInt("set_type");
+      localObject2 = ((JSONObject)localObject3).optString("item_id");
+      localObject3 = ((JSONObject)localObject3).optString("busi_info");
+      this.mChannelProxy.setPersonalizeInfo(this.mApkgInfo.appId, (String)localObject1, i, (String)localObject2, (String)localObject3, new PersonalizeJsPlugin.1(this, paramRequestEvent));
+      return;
     }
     catch (Exception localException2)
     {
-      QMLog.e("PersonalizeJsPlugin", paramRequestEvent.event + " error.", localException2);
-      return;
+      break label114;
     }
+    paramRequestEvent.fail("params error.");
+    return;
+    paramRequestEvent.fail("params error.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PersonalizeJsPlugin
  * JD-Core Version:    0.7.0.1
  */

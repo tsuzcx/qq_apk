@@ -86,48 +86,66 @@ public final class a
       this.d.removeCallbacks(this.c);
       a(bool);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.DeepSleepDetector", 2, "onScreenOn hasInDeepSleep " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onScreenOn hasInDeepSleep ");
+      localStringBuilder.append(bool);
+      QLog.d("MSF.C.DeepSleepDetector", 2, localStringBuilder.toString());
     }
   }
   
   public void a(boolean paramBoolean, long paramLong, String paramString)
   {
     boolean bool2 = this.e;
-    Hashtable localHashtable = this.f;
+    Object localObject = this.f;
     if (paramBoolean) {}
     for (;;)
     {
       try
       {
         this.f.put(paramString, Long.valueOf(paramLong));
-        if (this.f.isEmpty()) {
-          break label192;
-        }
-        bool1 = true;
-        this.e = bool1;
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.DeepSleepDetector", 2, "onProcessViewableChanged process: " + paramString + ", state: " + paramBoolean + ", at: " + paramLong);
-        }
-        if ((this.e ^ bool2))
+        continue;
+        this.f.remove(paramString);
+        if (!this.f.isEmpty())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.DeepSleepDetector", 2, "lead to app state changed from: " + bool2 + ", to: " + this.e);
+          bool1 = true;
+          this.e = bool1;
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onProcessViewableChanged process: ");
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append(", state: ");
+            ((StringBuilder)localObject).append(paramBoolean);
+            ((StringBuilder)localObject).append(", at: ");
+            ((StringBuilder)localObject).append(paramLong);
+            QLog.d("MSF.C.DeepSleepDetector", 2, ((StringBuilder)localObject).toString());
           }
-          if (!this.e) {
-            break;
+          if ((this.e ^ bool2))
+          {
+            if (QLog.isColorLevel())
+            {
+              paramString = new StringBuilder();
+              paramString.append("lead to app state changed from: ");
+              paramString.append(bool2);
+              paramString.append(", to: ");
+              paramString.append(this.e);
+              QLog.d("MSF.C.DeepSleepDetector", 2, paramString.toString());
+            }
+            if (this.e)
+            {
+              c();
+              return;
+            }
+            d();
           }
-          c();
+          return;
         }
-        return;
       }
       finally {}
-      this.f.remove(paramString);
-      continue;
-      label192:
       boolean bool1 = false;
     }
-    d();
   }
   
   public boolean b()
@@ -137,7 +155,7 @@ public final class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.c.a
  * JD-Core Version:    0.7.0.1
  */

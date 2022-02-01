@@ -20,7 +20,9 @@ public class DisplayHelper
   
   public static int dp2px(Context paramContext, int paramInt)
   {
-    return (int)(getDensity(paramContext) * paramInt + 0.5D);
+    double d = getDensity(paramContext) * paramInt;
+    Double.isNaN(d);
+    return (int)(d + 0.5D);
   }
   
   public static int dpToPx(int paramInt)
@@ -77,14 +79,10 @@ public class DisplayHelper
   
   public static boolean isPackageExist(Context paramContext, String paramString)
   {
-    boolean bool = false;
     try
     {
       paramContext = paramContext.getPackageManager().getPackageInfo(paramString, 0);
-      if (paramContext != null) {
-        bool = true;
-      }
-      return bool;
+      return paramContext != null;
     }
     catch (PackageManager.NameNotFoundException paramContext) {}
     return false;
@@ -92,7 +90,9 @@ public class DisplayHelper
   
   public static int px2dp(Context paramContext, int paramInt)
   {
-    return (int)(paramInt / getDensity(paramContext) + 0.5D);
+    double d = paramInt / getDensity(paramContext);
+    Double.isNaN(d);
+    return (int)(d + 0.5D);
   }
   
   public static void setFullScreen(Context paramContext)
@@ -109,7 +109,7 @@ public class DisplayHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.dialog.DisplayHelper
  * JD-Core Version:    0.7.0.1
  */

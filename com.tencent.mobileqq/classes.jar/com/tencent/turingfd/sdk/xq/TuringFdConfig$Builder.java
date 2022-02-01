@@ -3,37 +3,40 @@ package com.tencent.turingfd.sdk.xq;
 import android.app.Activity;
 import android.content.Context;
 import java.lang.ref.WeakReference;
+import java.util.Map;
 
 public final class TuringFdConfig$Builder
 {
-  public int Ad;
+  public String Ad;
+  public int Ai;
   public int Bd;
-  public int Gh;
-  public int Hh;
-  public int Ih;
-  public int Jh;
-  public WeakReference<Activity> Kh;
-  public int Lh;
+  public int Bi;
+  public String Cd;
+  public int Ci;
+  public String Da;
+  public Map<Integer, String> Dd;
+  public int Di;
+  public WeakReference<Activity> Ei;
+  public Context F;
+  public int Fi;
+  public boolean Gd;
+  public ITuringPrivacyLite Gi;
+  public int Id;
+  public int Jd;
   public String metaData;
-  public String pd;
-  public String sd;
-  public int ta;
-  public String td;
-  public int ud;
-  public Context v;
   public String vd;
-  public String ya;
-  public boolean yd;
+  public int ya;
+  public String zd;
   
   public final Builder alwaysSyncReq(boolean paramBoolean)
   {
-    this.yd = paramBoolean;
+    this.Gd = paramBoolean;
     return this;
   }
   
   public final Builder appid(String paramString)
   {
-    this.ya = paramString;
+    this.Da = paramString;
     return this;
   }
   
@@ -44,37 +47,43 @@ public final class TuringFdConfig$Builder
   
   public final Builder channel(int paramInt)
   {
-    this.ta = paramInt;
+    this.ya = paramInt;
     return this;
   }
   
   public final Builder clientAppid(int paramInt)
   {
-    this.Lh = paramInt;
+    this.Fi = paramInt;
     return this;
   }
   
   public final Builder clientBuildNo(int paramInt)
   {
-    this.ud = paramInt;
+    this.Bd = paramInt;
     return this;
   }
   
   public final Builder clientChannel(String paramString)
   {
-    this.sd = paramString;
+    this.zd = paramString;
     return this;
   }
   
   public final Builder clientLc(String paramString)
   {
-    this.vd = paramString;
+    this.Cd = paramString;
+    return this;
+  }
+  
+  public final Builder clientMetaDataMap(Map<Integer, String> paramMap)
+  {
+    this.Dd = paramMap;
     return this;
   }
   
   public final Builder clientVersion(String paramString)
   {
-    this.td = paramString;
+    this.Ad = paramString;
     return this;
   }
   
@@ -86,47 +95,41 @@ public final class TuringFdConfig$Builder
   
   public final Builder retryTime(int paramInt)
   {
-    int i = 10;
-    int j = 1;
+    int i = paramInt;
     if (paramInt < 1) {
-      paramInt = j;
+      i = 1;
     }
-    for (;;)
-    {
-      if (paramInt > 10) {
-        paramInt = i;
-      }
-      for (;;)
-      {
-        this.Bd = paramInt;
-        return this;
-      }
+    paramInt = i;
+    if (i > 10) {
+      paramInt = 10;
     }
+    this.Jd = paramInt;
+    return this;
   }
   
   public final Builder timeout(int paramInt)
   {
-    int i = 10000;
-    int j = 500;
+    int i = paramInt;
     if (paramInt < 500) {
-      paramInt = j;
+      i = 500;
     }
-    for (;;)
-    {
-      if (paramInt > 10000) {
-        paramInt = i;
-      }
-      for (;;)
-      {
-        this.Ad = paramInt;
-        return this;
-      }
+    paramInt = i;
+    if (i > 10000) {
+      paramInt = 10000;
     }
+    this.Id = paramInt;
+    return this;
+  }
+  
+  public final Builder turingPrivacyLite(ITuringPrivacyLite paramITuringPrivacyLite)
+  {
+    this.Gi = paramITuringPrivacyLite;
+    return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.TuringFdConfig.Builder
  * JD-Core Version:    0.7.0.1
  */

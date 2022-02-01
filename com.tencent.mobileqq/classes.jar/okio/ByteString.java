@@ -34,8 +34,8 @@ public class ByteString
   
   static int codePointIndexToCharIndex(String paramString, int paramInt)
   {
-    int i = 0;
     int k = paramString.length();
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -55,32 +55,43 @@ public class ByteString
   @Nullable
   public static ByteString decodeBase64(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("base64 == null");
+    if (paramString != null)
+    {
+      paramString = Base64.decode(paramString);
+      if (paramString != null) {
+        return new ByteString(paramString);
+      }
+      return null;
     }
-    paramString = Base64.decode(paramString);
-    if (paramString != null) {
-      return new ByteString(paramString);
-    }
-    return null;
+    throw new IllegalArgumentException("base64 == null");
   }
   
   public static ByteString decodeHex(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("hex == null");
-    }
-    if (paramString.length() % 2 != 0) {
-      throw new IllegalArgumentException("Unexpected hex string: " + paramString);
-    }
-    byte[] arrayOfByte = new byte[paramString.length() / 2];
-    int i = 0;
-    while (i < arrayOfByte.length)
+    if (paramString != null)
     {
-      arrayOfByte[i] = ((byte)((decodeHexDigit(paramString.charAt(i * 2)) << 4) + decodeHexDigit(paramString.charAt(i * 2 + 1))));
-      i += 1;
+      if (paramString.length() % 2 == 0)
+      {
+        localObject = new byte[paramString.length() / 2];
+        int i = 0;
+        while (i < localObject.length)
+        {
+          int j = i * 2;
+          localObject[i] = ((byte)((decodeHexDigit(paramString.charAt(j)) << 4) + decodeHexDigit(paramString.charAt(j + 1))));
+          i += 1;
+        }
+        return of((byte[])localObject);
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Unexpected hex string: ");
+      ((StringBuilder)localObject).append(paramString);
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    return of(arrayOfByte);
+    paramString = new IllegalArgumentException("hex == null");
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   private static int decodeHexDigit(char paramChar)
@@ -88,13 +99,21 @@ public class ByteString
     if ((paramChar >= '0') && (paramChar <= '9')) {
       return paramChar - '0';
     }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return paramChar - 'a' + 10;
+    char c = 'a';
+    if ((paramChar >= 'a') && (paramChar <= 'f')) {}
+    do
+    {
+      return paramChar - c + 10;
+      c = 'A';
+    } while ((paramChar >= 'A') && (paramChar <= 'F'));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Unexpected hex digit: ");
+    ((StringBuilder)localObject).append(paramChar);
+    localObject = new IllegalArgumentException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return paramChar - 'A' + 10;
-    }
-    throw new IllegalArgumentException("Unexpected hex digit: " + paramChar);
   }
   
   private ByteString digest(String paramString)
@@ -112,23 +131,25 @@ public class ByteString
   
   public static ByteString encodeString(String paramString, Charset paramCharset)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("s == null");
-    }
-    if (paramCharset == null) {
+    if (paramString != null)
+    {
+      if (paramCharset != null) {
+        return new ByteString(paramString.getBytes(paramCharset));
+      }
       throw new IllegalArgumentException("charset == null");
     }
-    return new ByteString(paramString.getBytes(paramCharset));
+    throw new IllegalArgumentException("s == null");
   }
   
   public static ByteString encodeUtf8(String paramString)
   {
-    if (paramString == null) {
-      throw new IllegalArgumentException("s == null");
+    if (paramString != null)
+    {
+      ByteString localByteString = new ByteString(paramString.getBytes(Util.UTF_8));
+      localByteString.utf8 = paramString;
+      return localByteString;
     }
-    ByteString localByteString = new ByteString(paramString.getBytes(Util.UTF_8));
-    localByteString.utf8 = paramString;
-    return localByteString;
+    throw new IllegalArgumentException("s == null");
   }
   
   private ByteString hmac(String paramString, ByteString paramByteString)
@@ -140,64 +161,76 @@ public class ByteString
       paramString = of(localMac.doFinal(this.data));
       return paramString;
     }
-    catch (NoSuchAlgorithmException paramString)
-    {
-      throw new AssertionError(paramString);
-    }
     catch (InvalidKeyException paramString)
     {
       throw new IllegalArgumentException(paramString);
+    }
+    catch (NoSuchAlgorithmException paramString)
+    {
+      throw new AssertionError(paramString);
     }
   }
   
   public static ByteString of(ByteBuffer paramByteBuffer)
   {
-    if (paramByteBuffer == null) {
-      throw new IllegalArgumentException("data == null");
+    if (paramByteBuffer != null)
+    {
+      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
+      paramByteBuffer.get(arrayOfByte);
+      return new ByteString(arrayOfByte);
     }
-    byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
-    paramByteBuffer.get(arrayOfByte);
-    return new ByteString(arrayOfByte);
+    throw new IllegalArgumentException("data == null");
   }
   
   public static ByteString of(byte... paramVarArgs)
   {
-    if (paramVarArgs == null) {
-      throw new IllegalArgumentException("data == null");
+    if (paramVarArgs != null) {
+      return new ByteString((byte[])paramVarArgs.clone());
     }
-    return new ByteString((byte[])paramVarArgs.clone());
+    throw new IllegalArgumentException("data == null");
   }
   
   public static ByteString of(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (paramArrayOfByte == null) {
-      throw new IllegalArgumentException("data == null");
+    if (paramArrayOfByte != null)
+    {
+      Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
+      byte[] arrayOfByte = new byte[paramInt2];
+      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, paramInt2);
+      return new ByteString(arrayOfByte);
     }
-    Util.checkOffsetAndCount(paramArrayOfByte.length, paramInt1, paramInt2);
-    byte[] arrayOfByte = new byte[paramInt2];
-    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, paramInt2);
-    return new ByteString(arrayOfByte);
+    throw new IllegalArgumentException("data == null");
   }
   
   public static ByteString read(InputStream paramInputStream, int paramInt)
   {
-    if (paramInputStream == null) {
-      throw new IllegalArgumentException("in == null");
-    }
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("byteCount < 0: " + paramInt);
-    }
-    byte[] arrayOfByte = new byte[paramInt];
-    int i = 0;
-    while (i < paramInt)
+    if (paramInputStream != null)
     {
-      int j = paramInputStream.read(arrayOfByte, i, paramInt - i);
-      if (j == -1) {
-        throw new EOFException();
+      if (paramInt >= 0)
+      {
+        byte[] arrayOfByte = new byte[paramInt];
+        int i = 0;
+        while (i < paramInt)
+        {
+          int j = paramInputStream.read(arrayOfByte, i, paramInt - i);
+          if (j != -1) {
+            i += j;
+          } else {
+            throw new EOFException();
+          }
+        }
+        return new ByteString(arrayOfByte);
       }
-      i += j;
+      paramInputStream = new StringBuilder();
+      paramInputStream.append("byteCount < 0: ");
+      paramInputStream.append(paramInt);
+      throw new IllegalArgumentException(paramInputStream.toString());
     }
-    return new ByteString(arrayOfByte);
+    paramInputStream = new IllegalArgumentException("in == null");
+    for (;;)
+    {
+      throw paramInputStream;
+    }
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
@@ -212,12 +245,16 @@ public class ByteString
     }
     catch (NoSuchFieldException paramObjectInputStream)
     {
-      throw new AssertionError();
+      break label40;
     }
     catch (IllegalAccessException paramObjectInputStream)
     {
-      throw new AssertionError();
+      label32:
+      label40:
+      break label32;
     }
+    throw new AssertionError();
+    throw new AssertionError();
   }
   
   private void writeObject(ObjectOutputStream paramObjectOutputStream)
@@ -247,29 +284,28 @@ public class ByteString
     int k = paramByteString.size();
     int m = Math.min(j, k);
     int i = 0;
-    for (;;)
+    while (i < m)
     {
-      if (i < m)
+      int n = getByte(i) & 0xFF;
+      int i1 = paramByteString.getByte(i) & 0xFF;
+      if (n == i1)
       {
-        int n = getByte(i) & 0xFF;
-        int i1 = paramByteString.getByte(i) & 0xFF;
-        if (n == i1) {
-          i += 1;
-        } else {
-          if (n >= i1) {
-            break;
-          }
+        i += 1;
+      }
+      else
+      {
+        if (n < i1) {
+          return -1;
         }
+        return 1;
       }
     }
-    do
-    {
+    if (j == k) {
+      return 0;
+    }
+    if (j < k) {
       return -1;
-      return 1;
-      if (j == k) {
-        return 0;
-      }
-    } while (j < k);
+    }
     return 1;
   }
   
@@ -288,10 +324,16 @@ public class ByteString
     if (paramObject == this) {
       return true;
     }
-    if (((paramObject instanceof ByteString)) && (((ByteString)paramObject).size() == this.data.length) && (((ByteString)paramObject).rangeEquals(0, this.data, 0, this.data.length))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if ((paramObject instanceof ByteString))
+    {
+      paramObject = (ByteString)paramObject;
+      int i = paramObject.size();
+      byte[] arrayOfByte = this.data;
+      if ((i == arrayOfByte.length) && (paramObject.rangeEquals(0, arrayOfByte, 0, arrayOfByte.length))) {
+        return true;
+      }
     }
+    return false;
   }
   
   public byte getByte(int paramInt)
@@ -312,21 +354,22 @@ public class ByteString
   
   public String hex()
   {
-    int i = 0;
-    char[] arrayOfChar = new char[this.data.length * 2];
     byte[] arrayOfByte = this.data;
+    char[] arrayOfChar1 = new char[arrayOfByte.length * 2];
     int k = arrayOfByte.length;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
       int m = arrayOfByte[i];
       int n = j + 1;
-      arrayOfChar[j] = HEX_DIGITS[(m >> 4 & 0xF)];
+      char[] arrayOfChar2 = HEX_DIGITS;
+      arrayOfChar1[j] = arrayOfChar2[(m >> 4 & 0xF)];
       j = n + 1;
-      arrayOfChar[n] = HEX_DIGITS[(m & 0xF)];
+      arrayOfChar1[n] = arrayOfChar2[(m & 0xF)];
       i += 1;
     }
-    return new String(arrayOfChar);
+    return new String(arrayOfChar1);
   }
   
   public ByteString hmacSha1(ByteString paramByteString)
@@ -419,7 +462,14 @@ public class ByteString
   
   public boolean rangeEquals(int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
-    return (paramInt1 >= 0) && (paramInt1 <= this.data.length - paramInt3) && (paramInt2 >= 0) && (paramInt2 <= paramArrayOfByte.length - paramInt3) && (Util.arrayRangeEquals(this.data, paramInt1, paramArrayOfByte, paramInt2, paramInt3));
+    if (paramInt1 >= 0)
+    {
+      byte[] arrayOfByte = this.data;
+      if ((paramInt1 <= arrayOfByte.length - paramInt3) && (paramInt2 >= 0) && (paramInt2 <= paramArrayOfByte.length - paramInt3) && (Util.arrayRangeEquals(arrayOfByte, paramInt1, paramArrayOfByte, paramInt2, paramInt3))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public ByteString sha1()
@@ -454,10 +504,10 @@ public class ByteString
   
   public String string(Charset paramCharset)
   {
-    if (paramCharset == null) {
-      throw new IllegalArgumentException("charset == null");
+    if (paramCharset != null) {
+      return new String(this.data, paramCharset);
     }
-    return new String(this.data, paramCharset);
+    throw new IllegalArgumentException("charset == null");
   }
   
   public ByteString substring(int paramInt)
@@ -467,90 +517,92 @@ public class ByteString
   
   public ByteString substring(int paramInt1, int paramInt2)
   {
-    if (paramInt1 < 0) {
-      throw new IllegalArgumentException("beginIndex < 0");
+    if (paramInt1 >= 0)
+    {
+      Object localObject = this.data;
+      if (paramInt2 <= localObject.length)
+      {
+        int i = paramInt2 - paramInt1;
+        if (i >= 0)
+        {
+          if ((paramInt1 == 0) && (paramInt2 == localObject.length)) {
+            return this;
+          }
+          localObject = new byte[i];
+          System.arraycopy(this.data, paramInt1, localObject, 0, i);
+          return new ByteString((byte[])localObject);
+        }
+        throw new IllegalArgumentException("endIndex < beginIndex");
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("endIndex > length(");
+      ((StringBuilder)localObject).append(this.data.length);
+      ((StringBuilder)localObject).append(")");
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    if (paramInt2 > this.data.length) {
-      throw new IllegalArgumentException("endIndex > length(" + this.data.length + ")");
-    }
-    int i = paramInt2 - paramInt1;
-    if (i < 0) {
-      throw new IllegalArgumentException("endIndex < beginIndex");
-    }
-    if ((paramInt1 == 0) && (paramInt2 == this.data.length)) {
-      return this;
-    }
-    byte[] arrayOfByte = new byte[i];
-    System.arraycopy(this.data, paramInt1, arrayOfByte, 0, i);
-    return new ByteString(arrayOfByte);
+    throw new IllegalArgumentException("beginIndex < 0");
   }
   
   public ByteString toAsciiLowercase()
   {
     int i = 0;
-    int j;
     for (;;)
     {
-      localObject = this;
-      if (i >= this.data.length) {
-        return localObject;
-      }
-      j = this.data[i];
-      if ((j >= 65) && (j <= 90)) {
+      byte[] arrayOfByte = this.data;
+      if (i >= arrayOfByte.length) {
         break;
+      }
+      int k = arrayOfByte[i];
+      if ((k >= 65) && (k <= 90))
+      {
+        arrayOfByte = (byte[])arrayOfByte.clone();
+        int j = i + 1;
+        arrayOfByte[i] = ((byte)(k + 32));
+        i = j;
+        while (i < arrayOfByte.length)
+        {
+          j = arrayOfByte[i];
+          if ((j >= 65) && (j <= 90)) {
+            arrayOfByte[i] = ((byte)(j + 32));
+          }
+          i += 1;
+        }
+        return new ByteString(arrayOfByte);
       }
       i += 1;
     }
-    Object localObject = (byte[])this.data.clone();
-    localObject[i] = ((byte)(j + 32));
-    i += 1;
-    if (i < localObject.length)
-    {
-      j = localObject[i];
-      if ((j < 65) || (j > 90)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject[i] = ((byte)(j + 32));
-      }
-    }
-    localObject = new ByteString((byte[])localObject);
-    return localObject;
+    return this;
   }
   
   public ByteString toAsciiUppercase()
   {
     int i = 0;
-    int j;
     for (;;)
     {
-      localObject = this;
-      if (i >= this.data.length) {
-        return localObject;
-      }
-      j = this.data[i];
-      if ((j >= 97) && (j <= 122)) {
+      byte[] arrayOfByte = this.data;
+      if (i >= arrayOfByte.length) {
         break;
+      }
+      int k = arrayOfByte[i];
+      if ((k >= 97) && (k <= 122))
+      {
+        arrayOfByte = (byte[])arrayOfByte.clone();
+        int j = i + 1;
+        arrayOfByte[i] = ((byte)(k - 32));
+        i = j;
+        while (i < arrayOfByte.length)
+        {
+          j = arrayOfByte[i];
+          if ((j >= 97) && (j <= 122)) {
+            arrayOfByte[i] = ((byte)(j - 32));
+          }
+          i += 1;
+        }
+        return new ByteString(arrayOfByte);
       }
       i += 1;
     }
-    Object localObject = (byte[])this.data.clone();
-    localObject[i] = ((byte)(j - 32));
-    i += 1;
-    if (i < localObject.length)
-    {
-      j = localObject[i];
-      if ((j < 97) || (j > 122)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        localObject[i] = ((byte)(j - 32));
-      }
-    }
-    localObject = new ByteString((byte[])localObject);
-    return localObject;
+    return this;
   }
   
   public byte[] toByteArray()
@@ -563,20 +615,42 @@ public class ByteString
     if (this.data.length == 0) {
       return "[size=0]";
     }
-    String str1 = utf8();
-    int i = codePointIndexToCharIndex(str1, 64);
+    Object localObject2 = utf8();
+    int i = codePointIndexToCharIndex((String)localObject2, 64);
     if (i == -1)
     {
-      if (this.data.length <= 64) {
-        return "[hex=" + hex() + "]";
+      if (this.data.length <= 64)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[hex=");
+        ((StringBuilder)localObject1).append(hex());
+        ((StringBuilder)localObject1).append("]");
+        return ((StringBuilder)localObject1).toString();
       }
-      return "[size=" + this.data.length + " hex=" + substring(0, 64).hex() + "…]";
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[size=");
+      ((StringBuilder)localObject1).append(this.data.length);
+      ((StringBuilder)localObject1).append(" hex=");
+      ((StringBuilder)localObject1).append(substring(0, 64).hex());
+      ((StringBuilder)localObject1).append("…]");
+      return ((StringBuilder)localObject1).toString();
     }
-    String str2 = str1.substring(0, i).replace("\\", "\\\\").replace("\n", "\\n").replace("\r", "\\r");
-    if (i < str1.length()) {
-      return "[size=" + this.data.length + " text=" + str2 + "…]";
+    Object localObject1 = ((String)localObject2).substring(0, i).replace("\\", "\\\\").replace("\n", "\\n").replace("\r", "\\r");
+    if (i < ((String)localObject2).length())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[size=");
+      ((StringBuilder)localObject2).append(this.data.length);
+      ((StringBuilder)localObject2).append(" text=");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("…]");
+      return ((StringBuilder)localObject2).toString();
     }
-    return "[text=" + str2 + "]";
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("[text=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("]");
+    return ((StringBuilder)localObject2).toString();
   }
   
   public String utf8()
@@ -592,20 +666,23 @@ public class ByteString
   
   public void write(OutputStream paramOutputStream)
   {
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("out == null");
+    if (paramOutputStream != null)
+    {
+      paramOutputStream.write(this.data);
+      return;
     }
-    paramOutputStream.write(this.data);
+    throw new IllegalArgumentException("out == null");
   }
   
   void write(Buffer paramBuffer)
   {
-    paramBuffer.write(this.data, 0, this.data.length);
+    byte[] arrayOfByte = this.data;
+    paramBuffer.write(arrayOfByte, 0, arrayOfByte.length);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.ByteString
  * JD-Core Version:    0.7.0.1
  */

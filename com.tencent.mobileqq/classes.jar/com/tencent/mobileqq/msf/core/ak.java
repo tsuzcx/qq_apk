@@ -62,12 +62,20 @@ public class ak
   {
     if ((paramInt1 == 0) && (paramInt2 > 0))
     {
-      localStringBuffer = new StringBuffer(128);
-      localStringBuffer.append(Thread.currentThread().getName()).append(" WeaknetChanged ").append(b(paramInt3)).append(", Normal to Weaknet, reason:(").append(Integer.toHexString(paramInt1)).append(", ").append(Integer.toHexString(paramInt2)).append(")");
-      QLog.i("WeaknetNew", 1, localStringBuffer.toString());
+      localObject = new StringBuffer(128);
+      ((StringBuffer)localObject).append(Thread.currentThread().getName());
+      ((StringBuffer)localObject).append(" WeaknetChanged ");
+      ((StringBuffer)localObject).append(b(paramInt3));
+      ((StringBuffer)localObject).append(", Normal to Weaknet, reason:(");
+      ((StringBuffer)localObject).append(Integer.toHexString(paramInt1));
+      ((StringBuffer)localObject).append(", ");
+      ((StringBuffer)localObject).append(Integer.toHexString(paramInt2));
+      ((StringBuffer)localObject).append(")");
+      QLog.i("WeaknetNew", 1, ((StringBuffer)localObject).toString());
       b(paramInt1, paramInt2, paramInt3);
-      if (this.B != null) {
-        this.B.a(paramInt2);
+      localObject = this.B;
+      if (localObject != null) {
+        ((ak.f)localObject).a(paramInt2);
       }
       i();
       this.r = true;
@@ -79,12 +87,20 @@ public class ak
     }
     if ((paramInt1 > 0) && (paramInt2 == 0))
     {
-      localStringBuffer = new StringBuffer(128);
-      localStringBuffer.append(Thread.currentThread().getName()).append(" WeaknetChanged ").append(b(paramInt3)).append(", Weaknet to Normal, reason:(").append(Integer.toHexString(paramInt1)).append(", ").append(Integer.toHexString(paramInt2)).append(")");
-      QLog.i("WeaknetNew", 1, localStringBuffer.toString());
+      localObject = new StringBuffer(128);
+      ((StringBuffer)localObject).append(Thread.currentThread().getName());
+      ((StringBuffer)localObject).append(" WeaknetChanged ");
+      ((StringBuffer)localObject).append(b(paramInt3));
+      ((StringBuffer)localObject).append(", Weaknet to Normal, reason:(");
+      ((StringBuffer)localObject).append(Integer.toHexString(paramInt1));
+      ((StringBuffer)localObject).append(", ");
+      ((StringBuffer)localObject).append(Integer.toHexString(paramInt2));
+      ((StringBuffer)localObject).append(")");
+      QLog.i("WeaknetNew", 1, ((StringBuffer)localObject).toString());
       b(paramInt1, paramInt2, paramInt3);
-      if (this.B != null) {
-        this.B.b(paramInt1);
+      localObject = this.B;
+      if (localObject != null) {
+        ((ak.f)localObject).b(paramInt1);
       }
       this.r = false;
       this.i.u = SystemClock.elapsedRealtime();
@@ -94,15 +110,29 @@ public class ak
     }
     if ((paramInt1 > 0) && (paramInt2 > 0) && (paramInt1 != paramInt2))
     {
-      localStringBuffer = new StringBuffer(128);
-      localStringBuffer.append(Thread.currentThread().getName()).append(" WeaknetChanged ").append(b(paramInt3)).append(", Weaknet to Weaknet, reason:(").append(Integer.toHexString(paramInt1)).append(", ").append(Integer.toHexString(paramInt2)).append(")");
-      QLog.i("WeaknetNew", 1, localStringBuffer.toString());
+      localObject = new StringBuffer(128);
+      ((StringBuffer)localObject).append(Thread.currentThread().getName());
+      ((StringBuffer)localObject).append(" WeaknetChanged ");
+      ((StringBuffer)localObject).append(b(paramInt3));
+      ((StringBuffer)localObject).append(", Weaknet to Weaknet, reason:(");
+      ((StringBuffer)localObject).append(Integer.toHexString(paramInt1));
+      ((StringBuffer)localObject).append(", ");
+      ((StringBuffer)localObject).append(Integer.toHexString(paramInt2));
+      ((StringBuffer)localObject).append(")");
+      QLog.i("WeaknetNew", 1, ((StringBuffer)localObject).toString());
       q();
       return;
     }
-    StringBuffer localStringBuffer = new StringBuffer(128);
-    localStringBuffer.append(Thread.currentThread().getName()).append("WeaknetChanged ").append(b(paramInt3)).append(", unknow to unknow, reason:(").append(Integer.toHexString(paramInt1)).append(", ").append(Integer.toHexString(paramInt2)).append(")");
-    QLog.i("WeaknetNew", 1, localStringBuffer.toString());
+    Object localObject = new StringBuffer(128);
+    ((StringBuffer)localObject).append(Thread.currentThread().getName());
+    ((StringBuffer)localObject).append("WeaknetChanged ");
+    ((StringBuffer)localObject).append(b(paramInt3));
+    ((StringBuffer)localObject).append(", unknow to unknow, reason:(");
+    ((StringBuffer)localObject).append(Integer.toHexString(paramInt1));
+    ((StringBuffer)localObject).append(", ");
+    ((StringBuffer)localObject).append(Integer.toHexString(paramInt2));
+    ((StringBuffer)localObject).append(")");
+    QLog.i("WeaknetNew", 1, ((StringBuffer)localObject).toString());
     b(paramInt1, paramInt2, paramInt3);
     q();
   }
@@ -128,104 +158,91 @@ public class ak
   
   private void c(int paramInt)
   {
-    int n = 0;
     for (;;)
     {
-      int i1;
+      int n;
       try
       {
-        i1 = this.t;
+        n = this.t;
         if (1 == paramInt)
         {
-          if ((this.i.e > 0L) && (this.i.e > z.c))
-          {
-            n = i1 | 0x1;
-            if (n != this.t) {
-              a(this.t, n, paramInt);
-            }
-            this.t = n;
-            return;
+          if ((this.i.e <= 0L) || (this.i.e <= z.c)) {
+            break label302;
           }
-          n = i1 & 0xFFFFFFFE;
-          continue;
+          n |= 0x1;
         }
-        if (2 == paramInt)
+        else if (2 == paramInt)
         {
-          if (this.i.h - this.i.g > z.d) {
-            n = i1 | 0x2;
+          if (this.i.h - this.i.g <= z.d) {
+            break label310;
           }
+          n |= 0x2;
+        }
+        else if (4 == paramInt)
+        {
+          if ((this.i.j < z.e) || (this.i.k < z.f)) {
+            break label318;
+          }
+          n |= 0x4;
+        }
+        else if (8 == paramInt)
+        {
+          if (this.i.m <= 0L) {
+            break label326;
+          }
+          if (this.i.m >= this.i.o) {
+            n |= 0x8;
+          } else if (this.i.m <= this.i.n) {
+            break label356;
+          }
+        }
+        else if (16 == paramInt)
+        {
+          if ((this.i.p == 0) || (Math.abs(this.i.p) >= z.h)) {
+            break label334;
+          }
+          n |= 0x10;
         }
         else
         {
-          if (4 == paramInt)
-          {
-            if ((this.i.j < z.e) || (this.i.k < z.f)) {
-              break label342;
-            }
-            n = i1 | 0x4;
-            continue;
-          }
-          if (8 == paramInt)
-          {
-            if (this.i.m <= 0L) {
-              break label355;
-            }
-            if (this.i.m >= this.i.o)
-            {
-              n = i1 | 0x8;
-              continue;
-            }
-            if (this.i.m <= this.i.n) {
-              continue;
-            }
+          if (32 != paramInt) {
             break label350;
           }
-          if (16 == paramInt)
-          {
-            if (this.i.p == 0) {
-              break label371;
-            }
-            if (Math.abs(this.i.p) >= z.h) {
-              break label363;
-            }
-            n = i1 | 0x10;
-            continue;
+          if (this.i.r <= z.i) {
+            break label342;
           }
-          if (32 == paramInt)
-          {
-            long l1 = this.i.r;
-            n = z.i;
-            if (l1 > n)
-            {
-              n = i1 | 0x20;
-              continue;
-            }
-            n = i1 & 0xFFFFFFDF;
-            continue;
-          }
-          if (64 != paramInt) {
-            break label350;
-          }
-          continue;
+          n |= 0x20;
         }
-        n = i1 & 0xFFFFFFFD;
+        if (n != this.t) {
+          a(this.t, n, paramInt);
+        }
+        this.t = n;
+        return;
       }
       finally {}
+      label302:
+      n &= 0xFFFFFFFE;
+      continue;
+      label310:
+      n &= 0xFFFFFFFD;
+      continue;
+      label318:
+      n &= 0xFFFFFFFB;
+      continue;
+      label326:
+      n &= 0xFFFFFFF7;
+      continue;
+      label334:
+      n &= 0xFFFFFFEF;
       continue;
       label342:
-      n = i1 & 0xFFFFFFFB;
+      n &= 0xFFFFFFDF;
       continue;
       label350:
-      n = i1;
-      continue;
-      label355:
-      n = i1 & 0xFFFFFFF7;
-      continue;
-      label363:
-      n = i1 & 0xFFFFFFEF;
-      continue;
-      label371:
-      n = i1 & 0xFFFFFFEF;
+      if (64 == paramInt) {
+        label356:
+        n = 0;
+      }
     }
   }
   
@@ -240,13 +257,11 @@ public class ak
   private void j()
   {
     h();
-    long l3;
-    String str;
     if (c())
     {
       long l1 = this.k.b;
       long l2 = this.m.b;
-      l3 = this.i.u - this.i.t;
+      long l3 = this.i.u - this.i.t;
       a("weaknetReason", String.valueOf(Integer.toHexString(this.t)));
       a("weaknetCost", String.valueOf(l3));
       a("sendTotal", String.valueOf(this.j.a));
@@ -261,147 +276,221 @@ public class ak
       a("Trtt", String.valueOf(this.i.l));
       a("RTTm", String.valueOf(this.i.m));
       a("wifiSignal", String.valueOf(this.i.p));
-      if (this.i.q != null) {
-        break label616;
+      Object localObject = this.i.q;
+      String str = "null";
+      if (localObject == null) {
+        localObject = "null";
+      } else {
+        localObject = this.i.q;
       }
-      str = "null";
-      a("ssid", str);
-      if (this.i.v != null) {
-        break label628;
+      a("ssid", (String)localObject);
+      if (this.i.v == null) {
+        localObject = str;
+      } else {
+        localObject = this.i.v;
       }
-      str = "null";
-      label309:
-      a("networks", str);
+      a("networks", (String)localObject);
       a("type", String.valueOf(z.a));
       a("isCrossOper", String.valueOf(com.tencent.mobileqq.a.a.a.b));
-      if (this.t <= 0) {
-        break label640;
+      boolean bool;
+      if (this.t > 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label640:
-    for (boolean bool = true;; bool = false)
-    {
       a("dim.msf.EvtWeakNetworkNetConnQuality", bool, l3, 0L);
-      if (QLog.isColorLevel()) {
-        QLog.d("WeaknetNew", 2, "report EventCode=dim.msf.EvtWeakNetworkNetConnQuality reason=" + Integer.toHexString(this.t) + " weaknetCost=" + (this.i.u - this.i.t) + " screen=" + this.y + " connCost=" + this.i.e + " pingCost=" + (this.i.h - this.i.g) + " wifiSig=" + this.i.p + " ssoTotal=" + this.j.a + " ssoSucc=" + this.k.a + "/" + this.j.a + " msgSucc=" + this.m.a + "/" + this.l.a + " ssoAvgCost=" + this.k.b + " msgAvgCost=" + this.m.b);
+      if (this.t > 0) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      i();
-      return;
-      label616:
-      str = this.i.q;
-      break;
-      label628:
-      str = this.i.v;
-      break label309;
+      a("EvtWeakNetwork", bool, l3, 0L);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("report EventCode=dim.msf.EvtWeakNetworkNetConnQuality reason=");
+        ((StringBuilder)localObject).append(Integer.toHexString(this.t));
+        ((StringBuilder)localObject).append(" weaknetCost=");
+        ((StringBuilder)localObject).append(this.i.u - this.i.t);
+        ((StringBuilder)localObject).append(" screen=");
+        ((StringBuilder)localObject).append(this.y);
+        ((StringBuilder)localObject).append(" connCost=");
+        ((StringBuilder)localObject).append(this.i.e);
+        ((StringBuilder)localObject).append(" pingCost=");
+        ((StringBuilder)localObject).append(this.i.h - this.i.g);
+        ((StringBuilder)localObject).append(" wifiSig=");
+        ((StringBuilder)localObject).append(this.i.p);
+        ((StringBuilder)localObject).append(" ssoTotal=");
+        ((StringBuilder)localObject).append(this.j.a);
+        ((StringBuilder)localObject).append(" ssoSucc=");
+        ((StringBuilder)localObject).append(this.k.a);
+        ((StringBuilder)localObject).append("/");
+        ((StringBuilder)localObject).append(this.j.a);
+        ((StringBuilder)localObject).append(" msgSucc=");
+        ((StringBuilder)localObject).append(this.m.a);
+        ((StringBuilder)localObject).append("/");
+        ((StringBuilder)localObject).append(this.l.a);
+        ((StringBuilder)localObject).append(" ssoAvgCost=");
+        ((StringBuilder)localObject).append(this.k.b);
+        ((StringBuilder)localObject).append(" msgAvgCost=");
+        ((StringBuilder)localObject).append(this.m.b);
+        QLog.d("WeaknetNew", 2, ((StringBuilder)localObject).toString());
+      }
     }
+    i();
   }
   
   private void k()
   {
-    if (this.i.a) {
-      if ((this.w != null) && (this.w.get() != null)) {}
-    }
-    try
+    if (this.i.a)
     {
-      if ((this.w == null) || (this.w.get() == null)) {
-        this.w = new WeakReference(new ak.h(this, null));
-      }
-      if (this.w.get() != null)
+      Object localObject1 = this.w;
+      if ((localObject1 == null) || (((WeakReference)localObject1).get() == null)) {}
+      try
       {
-        l();
-        ((ak.h)this.w.get()).d = false;
-        this.q.postDelayed((Runnable)this.w.get(), z.g);
+        if ((this.w == null) || (this.w.get() == null)) {
+          this.w = new WeakReference(new ak.h(this, null));
+        }
+        if (this.w.get() != null)
+        {
+          l();
+          ((ak.h)this.w.get()).d = false;
+          this.q.postDelayed((Runnable)this.w.get(), z.g);
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+          ((StringBuilder)localObject1).append(" startWeakNetworkSsoCheck wifiConned=");
+          ((StringBuilder)localObject1).append(this.i.a);
+          QLog.d("WeaknetNew", 2, ((StringBuilder)localObject1).toString());
+          return;
+        }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("WeaknetNew", 2, Thread.currentThread().getName() + " startWeakNetworkSsoCheck wifiConned=" + this.i.a);
-      }
-      return;
+      finally {}
     }
-    finally {}
   }
   
   private void l()
   {
-    if ((this.w == null) || (this.w.get() == null)) {}
-    do
+    Object localObject = this.w;
+    if (localObject != null)
     {
-      return;
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
       ((ak.h)this.w.get()).d = true;
       this.q.removeCallbacks((Runnable)this.w.get());
-    } while (!QLog.isColorLevel());
-    QLog.d("WeaknetNew", 2, Thread.currentThread().getName() + " stopWeakNetworkSsoCheck");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(Thread.currentThread().getName());
+        ((StringBuilder)localObject).append(" stopWeakNetworkSsoCheck");
+        QLog.d("WeaknetNew", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   private void m()
   {
-    if (!a(32)) {
-      if ((this.x != null) && (this.x.get() != null)) {}
-    }
-    try
+    if (!a(32))
     {
-      if ((this.x == null) || (this.x.get() == null)) {
-        this.x = new WeakReference(new ak.g(this, null));
-      }
-      if (((ak.g)this.x.get()).a.compareAndSet(false, true))
+      Object localObject1 = this.x;
+      if ((localObject1 == null) || (((WeakReference)localObject1).get() == null)) {}
+      try
       {
-        n();
-        ((ak.g)this.x.get()).b = false;
-        this.q.postDelayed((Runnable)this.x.get(), z.i);
-        if (QLog.isColorLevel()) {
-          QLog.d("WeaknetNew", 2, Thread.currentThread().getName() + " startQuickSendCheck wifiConned=" + this.i.a);
+        if ((this.x == null) || (this.x.get() == null)) {
+          this.x = new WeakReference(new ak.g(this, null));
+        }
+        if (((ak.g)this.x.get()).a.compareAndSet(false, true))
+        {
+          n();
+          ((ak.g)this.x.get()).b = false;
+          this.q.postDelayed((Runnable)this.x.get(), z.i);
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+            ((StringBuilder)localObject1).append(" startQuickSendCheck wifiConned=");
+            ((StringBuilder)localObject1).append(this.i.a);
+            QLog.d("WeaknetNew", 2, ((StringBuilder)localObject1).toString());
+            return;
+          }
         }
       }
-      return;
+      finally {}
     }
-    finally {}
   }
   
   private void n()
   {
-    if ((this.x == null) || (this.x.get() == null)) {}
-    do
+    Object localObject = this.x;
+    if (localObject != null)
     {
-      return;
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
       this.q.removeCallbacks((Runnable)this.x.get());
       ((ak.g)this.x.get()).b = true;
       ((ak.g)this.x.get()).a.set(false);
-    } while (!QLog.isColorLevel());
-    QLog.d("WeaknetNew", 2, Thread.currentThread().getName() + " stopQuickSendCheck");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(Thread.currentThread().getName());
+        ((StringBuilder)localObject).append(" stopQuickSendCheck");
+        QLog.d("WeaknetNew", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   private void o()
   {
-    if (!a(1)) {
-      if ((this.u != null) && (this.u.get() != null)) {}
-    }
-    try
+    if (!a(1))
     {
-      if ((this.u == null) || (this.u.get() == null)) {
-        this.u = new WeakReference(new ak.c(this));
-      }
-      if (((ak.c)this.u.get()).a.compareAndSet(false, true))
+      Object localObject1 = this.u;
+      if ((localObject1 == null) || (((WeakReference)localObject1).get() == null)) {}
+      try
       {
-        this.q.removeCallbacks((Runnable)this.u.get());
-        this.q.postDelayed((Runnable)this.u.get(), z.c);
-        if (QLog.isColorLevel()) {
-          QLog.d("WeaknetNew", 2, Thread.currentThread().getName() + " startConnCheck oldReason=" + Integer.toHexString(this.t));
+        if ((this.u == null) || (this.u.get() == null)) {
+          this.u = new WeakReference(new ak.c(this));
+        }
+        if (((ak.c)this.u.get()).a.compareAndSet(false, true))
+        {
+          this.q.removeCallbacks((Runnable)this.u.get());
+          this.q.postDelayed((Runnable)this.u.get(), z.c);
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(Thread.currentThread().getName());
+            ((StringBuilder)localObject1).append(" startConnCheck oldReason=");
+            ((StringBuilder)localObject1).append(Integer.toHexString(this.t));
+            QLog.d("WeaknetNew", 2, ((StringBuilder)localObject1).toString());
+            return;
+          }
         }
       }
-      return;
+      finally {}
     }
-    finally {}
   }
   
   private void p()
   {
-    if ((this.u == null) || (this.u.get() == null)) {}
-    do
+    Object localObject = this.u;
+    if (localObject != null)
     {
-      return;
+      if (((WeakReference)localObject).get() == null) {
+        return;
+      }
       this.q.removeCallbacks((Runnable)this.u.get());
       ((ak.c)this.u.get()).a.set(false);
-    } while (!QLog.isColorLevel());
-    QLog.d("WeaknetNew", 2, Thread.currentThread().getName() + " stopConnCheck");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(Thread.currentThread().getName());
+        ((StringBuilder)localObject).append(" stopConnCheck");
+        QLog.d("WeaknetNew", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   private void q()
@@ -409,7 +498,8 @@ public class ak
     p();
     n();
     l();
-    if ((this.v != null) && (this.v.get() != null)) {
+    WeakReference localWeakReference = this.v;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       this.q.removeCallbacks((Runnable)this.v.get());
     }
   }
@@ -419,39 +509,43 @@ public class ak
     NetworkInfo[] arrayOfNetworkInfo = j.a();
     if ((arrayOfNetworkInfo != null) && (arrayOfNetworkInfo.length > 0))
     {
-      StringBuilder localStringBuilder1 = new StringBuilder(128);
-      localStringBuilder1.append(arrayOfNetworkInfo.length).append("#");
+      StringBuilder localStringBuilder = new StringBuilder(128);
+      localStringBuilder.append(arrayOfNetworkInfo.length);
+      localStringBuilder.append("#");
       int i1 = arrayOfNetworkInfo.length;
       int n = 0;
-      if (n < i1)
+      while (n < i1)
       {
         NetworkInfo localNetworkInfo = arrayOfNetworkInfo[n];
-        StringBuilder localStringBuilder2;
         if (localNetworkInfo.getDetailedState() == NetworkInfo.DetailedState.CONNECTED)
         {
-          localStringBuilder2 = localStringBuilder1.append(localNetworkInfo.getTypeName()).append(",").append(localNetworkInfo.getDetailedState()).append(",").append(j.a(localNetworkInfo)).append(",");
-          if (!localNetworkInfo.isAvailable()) {
-            break label175;
+          localStringBuilder.append(localNetworkInfo.getTypeName());
+          localStringBuilder.append(",");
+          localStringBuilder.append(localNetworkInfo.getDetailedState());
+          localStringBuilder.append(",");
+          localStringBuilder.append(j.a(localNetworkInfo));
+          localStringBuilder.append(",");
+          boolean bool = localNetworkInfo.isAvailable();
+          String str2 = "1";
+          String str1;
+          if (bool) {
+            str1 = "1";
+          } else {
+            str1 = "0";
           }
-          str = "1";
-          label129:
-          localStringBuilder2 = localStringBuilder2.append(str).append(",");
-          if (!localNetworkInfo.isFailover()) {
-            break label181;
+          localStringBuilder.append(str1);
+          localStringBuilder.append(",");
+          if (localNetworkInfo.isFailover()) {
+            str1 = str2;
+          } else {
+            str1 = "0";
           }
+          localStringBuilder.append(str1);
+          localStringBuilder.append("|");
         }
-        label175:
-        label181:
-        for (String str = "1";; str = "0")
-        {
-          localStringBuilder2.append(str).append("|");
-          n += 1;
-          break;
-          str = "0";
-          break label129;
-        }
+        n += 1;
       }
-      return localStringBuilder1.toString();
+      return localStringBuilder.toString();
     }
     return "";
   }
@@ -459,17 +553,36 @@ public class ak
   public void a(int paramInt1, int paramInt2)
   {
     this.i.p = ((short)paramInt2);
-    if (QLog.isColorLevel()) {
-      QLog.d("WeaknetNew", 2, "onWifiSignalChanged old=" + paramInt1 + " current=" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onWifiSignalChanged old=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" current=");
+      localStringBuilder.append(paramInt2);
+      QLog.d("WeaknetNew", 2, localStringBuilder.toString());
     }
   }
   
   public void a(int paramInt, long paramLong, x paramx)
   {
     this.i.d = System.currentTimeMillis();
-    this.i.e = (this.i.d - this.i.c);
-    if (QLog.isColorLevel()) {
-      QLog.d("WeaknetNew", 2, "onConnFailed type=" + NetConnInfoCenter.getSystemNetStateString() + " connTotalCost=" + this.i.e + " connErrCost=" + paramLong + " connError=" + paramx + " oldReason=" + String.valueOf(Integer.toHexString(this.t)));
+    Object localObject = this.i;
+    ((ak.e)localObject).e = (((ak.e)localObject).d - this.i.c);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onConnFailed type=");
+      ((StringBuilder)localObject).append(NetConnInfoCenter.getSystemNetStateString());
+      ((StringBuilder)localObject).append(" connTotalCost=");
+      ((StringBuilder)localObject).append(this.i.e);
+      ((StringBuilder)localObject).append(" connErrCost=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" connError=");
+      ((StringBuilder)localObject).append(paramx);
+      ((StringBuilder)localObject).append(" oldReason=");
+      ((StringBuilder)localObject).append(String.valueOf(Integer.toHexString(this.t)));
+      QLog.d("WeaknetNew", 2, ((StringBuilder)localObject).toString());
     }
     c(1);
   }
@@ -481,17 +594,35 @@ public class ak
       if (this.i.f == paramLong1)
       {
         this.i.h = System.currentTimeMillis();
-        QLog.d("WeaknetNew", 1, "[" + Thread.currentThread().getName() + "] onPingRecved ssoSeq=" + paramLong1 + " pingSend=" + this.i.g + " pingRecv=" + this.i.h + " cost=" + (this.i.h - this.i.g));
-        if ((this.v != null) && (this.v.get() != null)) {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[");
+        ((StringBuilder)localObject).append(Thread.currentThread().getName());
+        ((StringBuilder)localObject).append("] onPingRecved ssoSeq=");
+        ((StringBuilder)localObject).append(paramLong1);
+        ((StringBuilder)localObject).append(" pingSend=");
+        ((StringBuilder)localObject).append(this.i.g);
+        ((StringBuilder)localObject).append(" pingRecv=");
+        ((StringBuilder)localObject).append(this.i.h);
+        ((StringBuilder)localObject).append(" cost=");
+        ((StringBuilder)localObject).append(this.i.h - this.i.g);
+        QLog.d("WeaknetNew", 1, ((StringBuilder)localObject).toString());
+        localObject = this.v;
+        if ((localObject != null) && (((WeakReference)localObject).get() != null)) {
           this.q.removeCallbacks((Runnable)this.v.get());
         }
         c(2);
+        return;
       }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("WARN: [");
+      ((StringBuilder)localObject).append(Thread.currentThread().getName());
+      ((StringBuilder)localObject).append("] onPingRecved sendSsoSeq=");
+      ((StringBuilder)localObject).append(this.i.f);
+      ((StringBuilder)localObject).append(" recvSsoSeq=");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(" out of order");
+      QLog.w("WeaknetNew", 1, ((StringBuilder)localObject).toString());
     }
-    else {
-      return;
-    }
-    QLog.w("WeaknetNew", 1, "WARN: [" + Thread.currentThread().getName() + "] onPingRecved sendSsoSeq=" + this.i.f + " recvSsoSeq=" + paramLong1 + " out of order");
   }
   
   public void a(ak.f paramf)
@@ -501,66 +632,69 @@ public class ak
   
   public void a(com.tencent.qphone.base.a parama)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onConnClose reason=").append(parama).append(" conn=");
-      if (!this.i.a) {
-        break label59;
-      }
-      parama = "wifi";
-    }
-    for (;;)
-    {
-      QLog.d("WeaknetNew", 2, parama);
-      return;
-      label59:
-      if (this.i.b) {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onConnClose reason=");
+      localStringBuilder.append(parama);
+      localStringBuilder.append(" conn=");
+      if (this.i.a) {
+        parama = "wifi";
+      } else if (this.i.b) {
         parama = "mobile";
       } else {
         parama = "unknown";
       }
+      localStringBuilder.append(parama);
+      QLog.d("WeaknetNew", 2, localStringBuilder.toString());
     }
   }
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    if (this.i.a) {
-      if ((this.v != null) && (this.v.get() != null)) {}
-    }
-    try
+    if (this.i.a)
     {
-      if ((this.v == null) || (this.v.get() == null)) {
-        this.v = new WeakReference(new ak.b(this));
-      }
-      Object localObject = (ak.b)this.v.get();
-      ak.e locale = this.i;
-      long l1 = paramToServiceMsg.getRequestSsoSeq();
-      locale.f = l1;
-      ((ak.b)localObject).b = l1;
-      paramToServiceMsg = (ak.b)this.v.get();
-      localObject = this.i;
-      l1 = System.currentTimeMillis();
-      ((ak.e)localObject).g = l1;
-      paramToServiceMsg.a = l1;
-      QLog.d("WeaknetNew", 1, "onPingSent ssoSeq=" + this.i.f + " pingSend=" + this.i.g);
-      if ((this.v != null) && (this.v.get() != null))
+      Object localObject = this.v;
+      if ((localObject == null) || (((WeakReference)localObject).get() == null)) {}
+      try
       {
-        this.q.removeCallbacks((Runnable)this.v.get());
-        this.q.postDelayed((Runnable)this.v.get(), 3001L);
+        if ((this.v == null) || (this.v.get() == null)) {
+          this.v = new WeakReference(new ak.b(this));
+        }
+        localObject = (ak.b)this.v.get();
+        ak.e locale = this.i;
+        long l1 = paramToServiceMsg.getRequestSsoSeq();
+        locale.f = l1;
+        ((ak.b)localObject).b = l1;
+        paramToServiceMsg = (ak.b)this.v.get();
+        localObject = this.i;
+        l1 = System.currentTimeMillis();
+        ((ak.e)localObject).g = l1;
+        paramToServiceMsg.a = l1;
+        paramToServiceMsg = new StringBuilder();
+        paramToServiceMsg.append("onPingSent ssoSeq=");
+        paramToServiceMsg.append(this.i.f);
+        paramToServiceMsg.append(" pingSend=");
+        paramToServiceMsg.append(this.i.g);
+        QLog.d("WeaknetNew", 1, paramToServiceMsg.toString());
+        paramToServiceMsg = this.v;
+        if ((paramToServiceMsg != null) && (paramToServiceMsg.get() != null))
+        {
+          this.q.removeCallbacks((Runnable)this.v.get());
+          this.q.postDelayed((Runnable)this.v.get(), 3001L);
+          return;
+        }
       }
-      return;
+      finally {}
     }
-    finally {}
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject;
-    long l1;
-    long l2;
     if (this.i.a)
     {
+      Object localObject;
+      long l1;
       if ((this.r) && (paramToServiceMsg != null) && (paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
       {
         localObject = paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet");
@@ -570,9 +704,7 @@ public class ak
           if (l1 > 0L)
           {
             localObject = this.k;
-            l2 = this.k.b / (this.k.a + 1);
-            long l3 = this.k.a;
-            ((ak.a)localObject).b = (l1 / (this.k.a + 1) + l2 * l3);
+            ((ak.a)localObject).b = (((ak.a)localObject).b / (this.k.a + 1) * this.k.a + l1 / (this.k.a + 1));
             localObject = this.k;
             ((ak.a)localObject).a += 1;
           }
@@ -585,106 +717,154 @@ public class ak
           paramToServiceMsg.getAttributes().put("attr_weaknet_sent_flag", Boolean.valueOf(true));
           paramFromServiceMsg.getAttributes().put("attr_weaknet_sent_flag", Boolean.valueOf(true));
         }
-        if (((this.i.s <= 0) || (paramFromServiceMsg.getRequestSsoSeq() != this.i.s)) && (this.i.i != 0L)) {
-          break label691;
-        }
-        l1 = ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet", Long.valueOf(this.i.d))).longValue();
-        this.i.i = (System.currentTimeMillis() - l1);
-        if (this.i.i > 0L)
+        double d1;
+        double d2;
+        if (((this.i.s > 0) && (paramFromServiceMsg.getRequestSsoSeq() == this.i.s)) || (this.i.i == 0L))
         {
-          this.i.l = ((0.3D * this.i.e + 0.7D * this.i.i));
-          this.i.m = this.i.i;
-          this.i.n = Math.max(2L * this.i.l, z.k);
-          this.i.o = Math.max(3L * this.i.l, z.j);
-          if ((this.i.n > z.j) || (this.i.o < z.k))
+          l1 = ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet", Long.valueOf(this.i.d))).longValue();
+          this.i.i = (System.currentTimeMillis() - l1);
+          if (this.i.i > 0L)
           {
-            this.i.n = z.k;
-            this.i.o = z.j;
+            localObject = this.i;
+            d1 = ((ak.e)localObject).e;
+            Double.isNaN(d1);
+            d2 = this.i.i;
+            Double.isNaN(d2);
+            ((ak.e)localObject).l = ((d1 * 0.3D + d2 * 0.7D));
+            localObject = this.i;
+            ((ak.e)localObject).m = ((ak.e)localObject).i;
+            localObject = this.i;
+            ((ak.e)localObject).n = Math.max(((ak.e)localObject).l * 2L, z.k);
+            localObject = this.i;
+            ((ak.e)localObject).o = Math.max(((ak.e)localObject).l * 3L, z.j);
+            if ((this.i.n > z.j) || (this.i.o < z.k))
+            {
+              this.i.n = z.k;
+              this.i.o = z.j;
+            }
+          }
+          if (paramFromServiceMsg.getRequestSsoSeq() != this.i.s)
+          {
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("WARN: firstSendSsoseq=");
+            paramFromServiceMsg.append(this.i.s);
+            paramFromServiceMsg.append(" firstRecvSsoSeq=");
+            paramFromServiceMsg.append(paramToServiceMsg.getRequestSsoSeq());
+            paramFromServiceMsg.append(" out of order");
+            QLog.w("WeaknetNew", 1, paramFromServiceMsg.toString());
+            this.i.s = paramToServiceMsg.getRequestSsoSeq();
+          }
+          paramToServiceMsg = new StringBuilder(128);
+          paramToServiceMsg.append("onRecvFirst ssoSeq=");
+          paramToServiceMsg.append(this.i.s);
+          paramToServiceMsg.append(" TC=");
+          paramToServiceMsg.append(this.i.e);
+          paramToServiceMsg.append(" pingCost=");
+          paramToServiceMsg.append(this.i.h - this.i.g);
+          paramToServiceMsg.append(" TP=");
+          paramToServiceMsg.append(this.i.i);
+          paramToServiceMsg.append(" Trtt=");
+          paramToServiceMsg.append(this.i.l);
+          paramToServiceMsg.append(" Rttm=");
+          paramToServiceMsg.append(this.i.m);
+          paramToServiceMsg.append(" windows=(");
+          paramToServiceMsg.append(this.i.n);
+          paramToServiceMsg.append(",");
+          paramToServiceMsg.append(this.i.o);
+          paramToServiceMsg.append(")");
+          QLog.d("WeaknetNew", 1, paramToServiceMsg.toString());
+          return;
+        }
+        if ((this.i.i > 0L) && (paramFromServiceMsg.isSuccess()))
+        {
+          localObject = paramFromServiceMsg.getAttribute("__timestamp_net2msf");
+          paramToServiceMsg = paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet");
+          if ((localObject != null) && (paramToServiceMsg != null))
+          {
+            l1 = ((Long)localObject).longValue() - ((Long)paramToServiceMsg).longValue();
+            d1 = this.i.m;
+            Double.isNaN(d1);
+            d2 = l1;
+            Double.isNaN(d2);
+            long l2 = (d1 * 0.6D + d2 * 0.4D);
+            if ((l1 > 0L) && (l2 > 0L))
+            {
+              this.i.m = l2;
+              int n = this.t;
+              c(8);
+              if (n != this.t)
+              {
+                if (!c())
+                {
+                  paramToServiceMsg = new StringBuilder();
+                  paramToServiceMsg.append(Thread.currentThread().getName());
+                  paramToServiceMsg.append(" Restore Normal ssoSeq=");
+                  paramToServiceMsg.append(paramFromServiceMsg.getRequestSsoSeq());
+                  paramToServiceMsg.append(" serviceCmd=");
+                  paramToServiceMsg.append(paramFromServiceMsg.getServiceCmd());
+                  paramToServiceMsg.append(" RTTm=");
+                  paramToServiceMsg.append(this.i.m);
+                  QLog.d("WeaknetNew", 1, paramToServiceMsg.toString());
+                  return;
+                }
+                if (a(8))
+                {
+                  paramToServiceMsg = new StringBuilder();
+                  paramToServiceMsg.append(Thread.currentThread().getName());
+                  paramToServiceMsg.append(" Enter weaknet ssoSeq=");
+                  paramToServiceMsg.append(paramFromServiceMsg.getRequestSsoSeq());
+                  paramToServiceMsg.append(" serviceCmd=");
+                  paramToServiceMsg.append(paramFromServiceMsg.getServiceCmd());
+                  paramToServiceMsg.append(" RTTm=");
+                  paramToServiceMsg.append(this.i.m);
+                  QLog.d("WeaknetNew", 1, paramToServiceMsg.toString());
+                }
+              }
+            }
           }
         }
-        if (paramFromServiceMsg.getRequestSsoSeq() != this.i.s)
-        {
-          QLog.w("WeaknetNew", 1, "WARN: firstSendSsoseq=" + this.i.s + " firstRecvSsoSeq=" + paramToServiceMsg.getRequestSsoSeq() + " out of order");
-          this.i.s = paramToServiceMsg.getRequestSsoSeq();
-        }
-        paramToServiceMsg = new StringBuilder(128);
-        paramToServiceMsg.append("onRecvFirst ssoSeq=").append(this.i.s).append(" TC=").append(this.i.e).append(" pingCost=").append(this.i.h - this.i.g).append(" TP=").append(this.i.i).append(" Trtt=").append(this.i.l).append(" Rttm=").append(this.i.m).append(" windows=(").append(this.i.n).append(",").append(this.i.o).append(")");
-        QLog.d("WeaknetNew", 1, paramToServiceMsg.toString());
       }
     }
-    label690:
-    label691:
-    do
-    {
-      int n;
-      do
-      {
-        do
-        {
-          do
-          {
-            break label690;
-            break label690;
-            do
-            {
-              return;
-            } while ((this.i.i <= 0L) || (!paramFromServiceMsg.isSuccess()));
-            localObject = paramFromServiceMsg.getAttribute("__timestamp_net2msf");
-            paramToServiceMsg = paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet");
-          } while ((localObject == null) || (paramToServiceMsg == null));
-          l1 = ((Long)localObject).longValue() - ((Long)paramToServiceMsg).longValue();
-          l2 = (0.6D * this.i.m + 0.4D * l1);
-        } while ((l1 <= 0L) || (l2 <= 0L));
-        this.i.m = l2;
-        n = this.t;
-        c(8);
-      } while (n == this.t);
-      if (!c())
-      {
-        QLog.d("WeaknetNew", 1, Thread.currentThread().getName() + " Restore Normal ssoSeq=" + paramFromServiceMsg.getRequestSsoSeq() + " serviceCmd=" + paramFromServiceMsg.getServiceCmd() + " RTTm=" + this.i.m);
-        return;
-      }
-    } while (!a(8));
-    QLog.d("WeaknetNew", 1, Thread.currentThread().getName() + " Enter weaknet ssoSeq=" + paramFromServiceMsg.getRequestSsoSeq() + " serviceCmd=" + paramFromServiceMsg.getServiceCmd() + " RTTm=" + this.i.m);
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, f paramf) {}
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, boolean paramBoolean, int paramInt)
   {
-    if ((paramToServiceMsg == null) || (paramFromServiceMsg == null) || (TextUtils.isEmpty(paramFromServiceMsg.getUin())) || ("0".equals(paramFromServiceMsg.getUin())) || (!"MessageSvc.PbSendMsg".equals(paramFromServiceMsg.getServiceCmd()))) {}
-    long l1;
-    do
+    if ((paramToServiceMsg != null) && (paramFromServiceMsg != null) && (!TextUtils.isEmpty(paramFromServiceMsg.getUin())) && (!"0".equals(paramFromServiceMsg.getUin())))
     {
-      do
-      {
+      if (!"MessageSvc.PbSendMsg".equals(paramFromServiceMsg.getServiceCmd())) {
         return;
-        if ((this.r) && (paramFromServiceMsg.isSuccess()))
+      }
+      long l1;
+      if ((this.r) && (paramFromServiceMsg.isSuccess()))
+      {
+        if (c())
         {
-          if (c())
-          {
-            paramToServiceMsg.getAttributes().put("attr_weaknet_sent_flag", Boolean.valueOf(true));
-            paramFromServiceMsg.getAttributes().put("attr_weaknet_sent_flag", Boolean.valueOf(true));
-          }
-          l1 = ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet", Long.valueOf(0L))).longValue();
+          paramToServiceMsg.getAttributes().put("attr_weaknet_sent_flag", Boolean.valueOf(true));
+          paramFromServiceMsg.getAttributes().put("attr_weaknet_sent_flag", Boolean.valueOf(true));
+        }
+        l1 = ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet", Long.valueOf(0L))).longValue();
+        if (l1 > 0L)
+        {
+          l1 = System.currentTimeMillis() - l1;
           if (l1 > 0L)
           {
-            l1 = System.currentTimeMillis() - l1;
-            if (l1 > 0L)
-            {
-              ak.a locala = this.m;
-              long l2 = this.m.b / (this.m.a + 1);
-              long l3 = this.m.a;
-              locala.b = (l1 / (this.m.a + 1) + l2 * l3);
-              locala = this.m;
-              locala.a += 1;
-            }
+            ak.a locala = this.m;
+            locala.b = (locala.b / (this.m.a + 1) * this.m.a + l1 / (this.m.a + 1));
+            locala = this.m;
+            locala.a += 1;
           }
         }
-      } while ((!paramToServiceMsg.getAttributes().containsKey("attr_weaknet_sent_flag")) && (!paramFromServiceMsg.getAttributes().containsKey("attr_weaknet_sent_flag")));
-      l1 = ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet", Long.valueOf(0L))).longValue();
-    } while (l1 <= 0L);
-    a(paramFromServiceMsg, paramBoolean, System.currentTimeMillis() - l1);
+      }
+      if ((paramToServiceMsg.getAttributes().containsKey("attr_weaknet_sent_flag")) || (paramFromServiceMsg.getAttributes().containsKey("attr_weaknet_sent_flag")))
+      {
+        l1 = ((Long)paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet", Long.valueOf(0L))).longValue();
+        if (l1 > 0L) {
+          a(paramFromServiceMsg, paramBoolean, System.currentTimeMillis() - l1);
+        }
+      }
+    }
   }
   
   public void a(ToServiceMsg paramToServiceMsg, boolean paramBoolean)
@@ -708,8 +888,14 @@ public class ak
       if ((this.i.s == 0) && (paramToServiceMsg.isNeedCallback()) && (paramToServiceMsg.getAttribute("__timestamp_msf2net_for_weaknet") != null))
       {
         this.i.s = paramToServiceMsg.getRequestSsoSeq();
-        if (QLog.isColorLevel()) {
-          QLog.d("WeaknetNew", 2, "onSendFirst ssoSeq=" + this.i.s + " msf2net=" + System.currentTimeMillis());
+        if (QLog.isColorLevel())
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("onSendFirst ssoSeq=");
+          paramToServiceMsg.append(this.i.s);
+          paramToServiceMsg.append(" msf2net=");
+          paramToServiceMsg.append(System.currentTimeMillis());
+          QLog.d("WeaknetNew", 2, paramToServiceMsg.toString());
         }
       }
     }
@@ -717,31 +903,46 @@ public class ak
   
   public void a(Socket paramSocket, int paramInt)
   {
-    this.i.a = true;
-    this.i.b = false;
-    this.i.q = NetConnInfoCenter.getLastWifiSSID();
+    Object localObject = this.i;
+    ((ak.e)localObject).a = true;
+    ((ak.e)localObject).b = false;
+    ((ak.e)localObject).q = NetConnInfoCenter.getLastWifiSSID();
     this.i.d = System.currentTimeMillis();
-    this.i.e = Math.min(this.i.d - this.i.c, paramInt);
-    this.i.c = 0L;
-    this.i.s = 0;
-    this.i.i = 0L;
+    localObject = this.i;
+    ((ak.e)localObject).e = Math.min(((ak.e)localObject).d - this.i.c, paramInt);
+    localObject = this.i;
+    ((ak.e)localObject).c = 0L;
+    ((ak.e)localObject).s = 0;
+    ((ak.e)localObject).i = 0L;
     p();
     c(1);
     k();
-    if (QLog.isColorLevel()) {
-      QLog.d("WeaknetNew", 2, "onWifiConnected socket=" + paramSocket + " connCost=" + this.i.e + " oldReason=" + String.valueOf(Integer.toHexString(this.t)));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onWifiConnected socket=");
+      ((StringBuilder)localObject).append(paramSocket);
+      ((StringBuilder)localObject).append(" connCost=");
+      ((StringBuilder)localObject).append(this.i.e);
+      ((StringBuilder)localObject).append(" oldReason=");
+      ((StringBuilder)localObject).append(String.valueOf(Integer.toHexString(this.t)));
+      QLog.d("WeaknetNew", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (this.y = 1;; this.y = 0)
+    if (paramBoolean) {
+      this.y = 1;
+    } else {
+      this.y = 0;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WeaknetNew", 2, "onScreenOn mIsScreenOn=" + paramBoolean);
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onScreenOn mIsScreenOn=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("WeaknetNew", 2, localStringBuilder.toString());
     }
   }
   
@@ -760,14 +961,15 @@ public class ak
     StringBuilder localStringBuilder = new StringBuilder(32);
     if (paramInt > 0)
     {
-      localStringBuilder.append("(").append(Integer.toHexString(paramInt));
+      localStringBuilder.append("(");
+      localStringBuilder.append(Integer.toHexString(paramInt));
       localStringBuilder.append(")");
     }
-    for (;;)
+    else
     {
-      return localStringBuilder.toString();
       localStringBuilder.append("unknow");
     }
+    return localStringBuilder.toString();
   }
   
   public void b(ToServiceMsg paramToServiceMsg)
@@ -783,28 +985,37 @@ public class ak
   public void b(Socket paramSocket, int paramInt)
   {
     this.i.a();
-    this.i.b = true;
-    this.i.a = false;
+    Object localObject = this.i;
+    ((ak.e)localObject).b = true;
+    ((ak.e)localObject).a = false;
     this.r = false;
     l();
     n();
     p();
     c(64);
-    if (QLog.isColorLevel()) {
-      QLog.d("WeaknetNew", 2, "onMobileConnected socket=" + paramSocket + " connCost=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onMobileConnected socket=");
+      ((StringBuilder)localObject).append(paramSocket);
+      ((StringBuilder)localObject).append(" connCost=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("WeaknetNew", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   public void c(ToServiceMsg paramToServiceMsg)
   {
-    if (!this.i.a) {}
-    while (paramToServiceMsg == null) {
+    if (!this.i.a) {
       return;
     }
-    if (paramToServiceMsg.getAttribute("attr_quick_send_time") == null) {
-      paramToServiceMsg.getAttributes().put("attr_quick_send_time", Long.valueOf(SystemClock.elapsedRealtime()));
+    if (paramToServiceMsg != null)
+    {
+      if (paramToServiceMsg.getAttribute("attr_quick_send_time") == null) {
+        paramToServiceMsg.getAttributes().put("attr_quick_send_time", Long.valueOf(SystemClock.elapsedRealtime()));
+      }
+      m();
     }
-    m();
   }
   
   public boolean c()
@@ -817,8 +1028,14 @@ public class ak
     if (this.i.c == 0L)
     {
       this.i.c = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d("WeaknetNew", 2, "onConnPrepare type=" + NetConnInfoCenter.getSystemNetStateString() + " connStart=" + this.i.c);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onConnPrepare type=");
+        localStringBuilder.append(NetConnInfoCenter.getSystemNetStateString());
+        localStringBuilder.append(" connStart=");
+        localStringBuilder.append(this.i.c);
+        QLog.d("WeaknetNew", 2, localStringBuilder.toString());
       }
       o();
     }
@@ -843,7 +1060,7 @@ public class ak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.ak
  * JD-Core Version:    0.7.0.1
  */

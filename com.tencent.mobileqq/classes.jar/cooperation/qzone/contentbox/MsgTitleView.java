@@ -24,8 +24,8 @@ public class MsgTitleView
   
   private void init(Context paramContext)
   {
-    LayoutInflater.from(paramContext).inflate(2131562563, this);
-    this.mText = ((TextView)findViewById(2131379091));
+    LayoutInflater.from(paramContext).inflate(2080636939, this);
+    this.mText = ((TextView)findViewById(2080571516));
     setOnClickListener(new MsgTitleView.1(this));
   }
   
@@ -36,15 +36,13 @@ public class MsgTitleView
     {
       this.mText.setText(paramMQMsg.title);
       paramMQMsg = this.mText;
-      if (!paramBoolean) {
-        break label44;
+      int i;
+      if (paramBoolean) {
+        i = -198683;
+      } else {
+        i = -16578534;
       }
-    }
-    label44:
-    for (int i = -198683;; i = -16578534)
-    {
       paramMQMsg.setTextColor(i);
-      return;
     }
   }
   
@@ -55,7 +53,7 @@ public class MsgTitleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgTitleView
  * JD-Core Version:    0.7.0.1
  */

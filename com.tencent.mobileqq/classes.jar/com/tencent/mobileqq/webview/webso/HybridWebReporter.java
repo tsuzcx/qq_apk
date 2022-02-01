@@ -18,14 +18,15 @@ public class HybridWebReporter
   
   public static HybridWebReporter a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter == null) {
-        jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter = new HybridWebReporter();
+    if (jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter == null) {
+          jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter = new HybridWebReporter();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter;
     }
+    return jdField_a_of_type_ComTencentMobileqqWebviewWebsoHybridWebReporter;
   }
   
   public static void a()
@@ -45,62 +46,64 @@ public class HybridWebReporter
   
   private boolean a(int paramInt)
   {
-    if (paramInt <= 0) {}
-    do
-    {
+    boolean bool = false;
+    if (paramInt <= 0) {
       return false;
-      if (this.jdField_a_of_type_JavaUtilRandom == null) {
-        this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
-      }
-    } while (this.jdField_a_of_type_JavaUtilRandom.nextInt() % paramInt != 0);
-    return true;
+    }
+    if (this.jdField_a_of_type_JavaUtilRandom == null) {
+      this.jdField_a_of_type_JavaUtilRandom = new Random(System.currentTimeMillis());
+    }
+    if (this.jdField_a_of_type_JavaUtilRandom.nextInt() % paramInt == 0) {
+      bool = true;
+    }
+    return bool;
+  }
+  
+  private boolean a(HybridWebReporter.HybridWebReportInfo paramHybridWebReportInfo)
+  {
+    try
+    {
+      i = Integer.valueOf(paramHybridWebReportInfo.jdField_d_of_type_JavaLangString).intValue();
+    }
+    catch (Exception localException)
+    {
+      int i;
+      label14:
+      break label14;
+    }
+    i = 200;
+    return (QLog.isColorLevel()) || ((paramHybridWebReportInfo.b != 1000) && (paramHybridWebReportInfo.b != 0)) || (i < 100) || (i > 400);
+  }
+  
+  private boolean b(HybridWebReporter.HybridWebReportInfo paramHybridWebReportInfo)
+  {
+    return (paramHybridWebReportInfo == null) || (paramHybridWebReportInfo.f == 0) || (paramHybridWebReportInfo.jdField_d_of_type_Boolean);
   }
   
   public void a(HybridWebReporter.HybridWebReportInfo paramHybridWebReportInfo)
   {
-    if (paramHybridWebReportInfo == null) {}
-    for (;;)
-    {
+    if (b(paramHybridWebReportInfo)) {
       return;
-      long l1 = SystemClock.uptimeMillis();
-      long l2 = jdField_a_of_type_Long;
-      int j = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchInterval", 600);
-      int k = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchCount", 10);
-      if (QLog.isColorLevel()) {
-        QLog.d("HybridWebReporter", 2, "add report, isreported(" + paramHybridWebReportInfo.jdField_d_of_type_Boolean + "), url: " + paramHybridWebReportInfo.a);
-      }
-      if ((paramHybridWebReportInfo.f == 0) || (paramHybridWebReportInfo.jdField_d_of_type_Boolean)) {
-        continue;
-      }
-      paramHybridWebReportInfo.jdField_d_of_type_Boolean = true;
-      if (paramHybridWebReportInfo.f < 0) {
-        paramHybridWebReportInfo.f = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
-      }
-      try
+    }
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = jdField_a_of_type_Long;
+    int i = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchInterval", 600);
+    int j = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatUploadBatchCount", 10);
+    paramHybridWebReportInfo.jdField_d_of_type_Boolean = true;
+    if (paramHybridWebReportInfo.f < 0) {
+      paramHybridWebReportInfo.f = QzoneConfig.getInstance().getConfig("QzUrlCache", "QzhwStatDefaultSampling", 20);
+    }
+    if (a(paramHybridWebReportInfo)) {
+      paramHybridWebReportInfo.f = 1;
+    }
+    if (a(paramHybridWebReportInfo.f)) {
+      synchronized (jdField_a_of_type_JavaUtilArrayList)
       {
-        i = Integer.valueOf(paramHybridWebReportInfo.jdField_d_of_type_JavaLangString).intValue();
-        if (((paramHybridWebReportInfo.b != 1000) && (paramHybridWebReportInfo.b != 0)) || (i < 100) || (i > 400)) {
-          paramHybridWebReportInfo.f = 1;
-        }
-        if (QLog.isColorLevel()) {
-          paramHybridWebReportInfo.f = 1;
-        }
-        if (!a(paramHybridWebReportInfo.f)) {
-          continue;
-        }
-      }
-      catch (Exception localException)
-      {
-        synchronized (jdField_a_of_type_JavaUtilArrayList)
+        jdField_a_of_type_JavaUtilArrayList.add(paramHybridWebReportInfo);
+        if ((jdField_a_of_type_JavaUtilArrayList.size() >= j) || ((l1 - l2 >= i * 1000) && (jdField_a_of_type_JavaUtilArrayList.size() > 0)))
         {
-          jdField_a_of_type_JavaUtilArrayList.add(paramHybridWebReportInfo);
-          if ((jdField_a_of_type_JavaUtilArrayList.size() < k) && ((l1 - l2 < j * 1000) || (jdField_a_of_type_JavaUtilArrayList.size() <= 0))) {
-            continue;
-          }
           a();
           return;
-          localException = localException;
-          int i = 200;
         }
       }
     }
@@ -108,7 +111,7 @@ public class HybridWebReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.webso.HybridWebReporter
  * JD-Core Version:    0.7.0.1
  */

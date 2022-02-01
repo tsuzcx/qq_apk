@@ -42,24 +42,34 @@ public final class ScreenShootMonitor
   
   private final void createScreenShot(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt1 < 0) || (paramInt2 < 0) || (paramInt3 < 0) || (paramInt4 < 0) || (paramInt1 >= paramInt3) || (paramInt2 >= paramInt4)) {}
+    if ((paramInt1 >= 0) && (paramInt2 >= 0) && (paramInt3 >= 0) && (paramInt4 >= 0) && (paramInt1 < paramInt3) && (paramInt2 < paramInt4)) {}
     try
     {
-      Logger.e$default("ScreenShootMonitor", "createScreenShot params error x=" + paramInt1 + " y=" + paramInt2 + " w=" + paramInt3 + " h=" + paramInt4, null, 4, null);
+      localObject1 = new int[paramInt3 * paramInt4];
+      localObject2 = IntBuffer.wrap((int[])localObject1);
+      ((IntBuffer)localObject2).position(0);
+      GLES30.glReadPixels(paramInt1, paramInt2, paramInt3, paramInt4, 6408, 5121, (Buffer)localObject2);
+      this.worker.execute((Runnable)new ScreenShootMonitor.createScreenShot.1(this, paramInt3, paramInt4, (int[])localObject1));
       return;
     }
     catch (Exception localException)
     {
-      int[] arrayOfInt;
-      Logger.e("ScreenShootMonitor", "createScreenShot exception ", (Throwable)localException);
-      Object localObject = Result.Companion;
-      onGetScreenShot(Result.constructor-impl(ResultKt.createFailure((Throwable)localException)));
+      Object localObject1;
+      Throwable localThrowable = (Throwable)localException;
+      Logger.e("ScreenShootMonitor", "createScreenShot exception ", localThrowable);
+      Object localObject2 = Result.Companion;
+      onGetScreenShot(Result.constructor-impl(ResultKt.createFailure(localThrowable)));
     }
-    arrayOfInt = new int[paramInt3 * paramInt4];
-    localObject = IntBuffer.wrap(arrayOfInt);
-    ((IntBuffer)localObject).position(0);
-    GLES30.glReadPixels(paramInt1, paramInt2, paramInt3, paramInt4, 6408, 5121, (Buffer)localObject);
-    this.worker.execute((Runnable)new ScreenShootMonitor.createScreenShot.1(this, paramInt3, paramInt4, arrayOfInt));
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("createScreenShot params error x=");
+    ((StringBuilder)localObject1).append(paramInt1);
+    ((StringBuilder)localObject1).append(" y=");
+    ((StringBuilder)localObject1).append(paramInt2);
+    ((StringBuilder)localObject1).append(" w=");
+    ((StringBuilder)localObject1).append(paramInt3);
+    ((StringBuilder)localObject1).append(" h=");
+    ((StringBuilder)localObject1).append(paramInt4);
+    Logger.e$default("ScreenShootMonitor", ((StringBuilder)localObject1).toString(), null, 4, null);
     return;
   }
   
@@ -79,7 +89,7 @@ public final class ScreenShootMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.render.monitor.ScreenShootMonitor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,5 @@
 package com.tencent.component.media.image;
 
-import android.graphics.Bitmap.Config;
 import android.net.Uri;
 import android.text.TextUtils;
 import com.tencent.component.media.ImageManagerEnv;
@@ -59,6 +58,10 @@ public class ImageKey
       }
       return;
     }
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public static ImageKey copy(ImageKey paramImageKey)
@@ -99,13 +102,20 @@ public class ImageKey
   {
     String str = isNeedToSplitCache(paramString);
     paramString = getUrlKey4NoneHighScale(paramString, paramBoolean1);
-    str = paramString + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
     paramString = str;
     if (paramBoolean2)
     {
       paramString = str;
-      if (!str.contains("srhs=1")) {
-        paramString = str + "srhs=1";
+      if (!str.contains("srhs=1"))
+      {
+        paramString = new StringBuilder();
+        paramString.append(str);
+        paramString.append("srhs=1");
+        paramString = paramString.toString();
       }
     }
     return paramString;
@@ -117,13 +127,12 @@ public class ImageKey
     if (!paramBoolean) {
       bool = ImageManager.isNetworkUrl(paramString);
     }
-    int k;
-    int i;
+    String str = paramString;
     if (bool)
     {
-      k = paramString.indexOf('/', 8);
+      int k = paramString.indexOf('/', 8);
       int j = paramString.indexOf("ek=1");
-      i = j;
+      int i = j;
       if (j == -1)
       {
         j = paramString.indexOf('#');
@@ -132,13 +141,21 @@ public class ImageKey
           i = paramString.length();
         }
       }
-      if ((k + 1 >= 0) && (k + 1 <= i) && (i <= paramString.length())) {}
+      j = k + 1;
+      str = paramString;
+      if (j >= 0)
+      {
+        str = paramString;
+        if (j <= i)
+        {
+          if (i > paramString.length()) {
+            return paramString;
+          }
+          str = paramString.substring(j, i);
+        }
+      }
     }
-    else
-    {
-      return paramString;
-    }
-    return paramString.substring(k + 1, i);
+    return str;
   }
   
   public static String isNeedToSplitCache(String paramString)
@@ -148,11 +165,19 @@ public class ImageKey
       paramString = Uri.parse(paramString).getQueryParameter("t");
       if (!TextUtils.isEmpty(paramString))
       {
-        if ((paramString.equals("6")) || (paramString.equals("7"))) {
-          return "t=" + paramString;
+        if (!paramString.equals("6")) {
+          if (!paramString.equals("7")) {
+            break label73;
+          }
         }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("t=");
+        localStringBuilder.append(paramString);
+        paramString = localStringBuilder.toString();
+        return paramString;
       }
-      else {
+      else
+      {
         return "";
       }
     }
@@ -160,6 +185,7 @@ public class ImageKey
     {
       return "";
     }
+    label73:
     return "";
   }
   
@@ -183,241 +209,64 @@ public class ImageKey
   public boolean equals(Object paramObject)
   {
     boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    label268:
-    label403:
-    label408:
-    label413:
-    do
+    if (paramObject != null)
     {
-      do
+      if (!(paramObject instanceof ImageKey)) {
+        return false;
+      }
+      paramObject = (ImageKey)paramObject;
+      int i;
+      if ((equalsObject(this.urlKey, paramObject.urlKey)) && (equalsObject(this.url, paramObject.url)) && (equalsObject(this.listener, paramObject.listener))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i == 0) {
+        return false;
+      }
+      ImageLoader.Options localOptions = this.options;
+      if ((localOptions != null) && (paramObject.options != null))
       {
-        int i;
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                return bool1;
-                bool1 = bool3;
-              } while (paramObject == null);
-              bool1 = bool3;
-            } while (!(paramObject instanceof ImageKey));
-            paramObject = (ImageKey)paramObject;
-            if ((!equalsObject(this.urlKey, paramObject.urlKey)) || (!equalsObject(this.url, paramObject.url)) || (!equalsObject(this.listener, paramObject.listener))) {
-              break;
-            }
-            i = 1;
-            bool1 = bool3;
-          } while (i == 0);
-          if ((this.options == null) || (paramObject.options == null)) {
-            break label413;
-          }
-          if ((!equalsObject(Integer.valueOf(this.options.clipHeight), Integer.valueOf(paramObject.options.clipHeight))) || (!equalsObject(Integer.valueOf(this.options.clipWidth), Integer.valueOf(paramObject.options.clipWidth))) || (!equalsObject(Boolean.valueOf(this.options.needShowGifAnimation), Boolean.valueOf(paramObject.options.needShowGifAnimation))) || (!equalsObject(this.options.extraProcessor, paramObject.options.extraProcessor)) || (!equalsObject(this.options.imageConfig, paramObject.options.imageConfig)) || (!equalsObject(this.options.fileRootPath, this.options.fileRootPath)) || (!equalsObject(Boolean.valueOf(this.options.needShowPhotoGifAnimation), Boolean.valueOf(paramObject.options.needShowPhotoGifAnimation)))) {
-            break label403;
-          }
+        if ((equalsObject(Integer.valueOf(localOptions.clipHeight), Integer.valueOf(paramObject.options.clipHeight))) && (equalsObject(Integer.valueOf(this.options.clipWidth), Integer.valueOf(paramObject.options.clipWidth))) && (equalsObject(Boolean.valueOf(this.options.needShowGifAnimation), Boolean.valueOf(paramObject.options.needShowGifAnimation))) && (equalsObject(this.options.extraProcessor, paramObject.options.extraProcessor)) && (equalsObject(this.options.imageConfig, paramObject.options.imageConfig)) && (equalsObject(this.options.fileRootPath, this.options.fileRootPath)) && (equalsObject(Boolean.valueOf(this.options.needShowPhotoGifAnimation), Boolean.valueOf(paramObject.options.needShowPhotoGifAnimation)))) {
           i = 1;
-          bool1 = bool3;
-        } while (i == 0);
-        bool1 = bool2;
+        } else {
+          i = 0;
+        }
+        if (i == 0) {
+          return false;
+        }
+        boolean bool1 = bool2;
         if (this.listener != null)
         {
           bool1 = bool2;
-          if (paramObject.listener != null) {
-            if ((!equalsObject(Boolean.valueOf(this.options.useMainThread), Boolean.valueOf(paramObject.options.useMainThread))) || (!equalsObject(this.options.obj, paramObject.options.obj)) || (!equalsObject(Integer.valueOf(this.options.arg1), Integer.valueOf(paramObject.options.arg1))) || (!equalsObject(Integer.valueOf(this.options.arg2), Integer.valueOf(paramObject.options.arg2)))) {
-              break label408;
+          if (paramObject.listener != null)
+          {
+            if ((equalsObject(Boolean.valueOf(this.options.useMainThread), Boolean.valueOf(paramObject.options.useMainThread))) && (equalsObject(this.options.obj, paramObject.options.obj)) && (equalsObject(Integer.valueOf(this.options.arg1), Integer.valueOf(paramObject.options.arg1))) && (equalsObject(Integer.valueOf(this.options.arg2), Integer.valueOf(paramObject.options.arg2)))) {
+              return true;
             }
+            bool1 = false;
           }
         }
-        for (bool1 = bool2;; bool1 = false)
-        {
-          return bool1;
-          i = 0;
-          break;
-          i = 0;
-          break label268;
-        }
-        bool1 = bool3;
-      } while (this.options != null);
-      bool1 = bool3;
-    } while (paramObject.options != null);
-    return true;
+        return bool1;
+      }
+      if ((this.options == null) && (paramObject.options == null)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public int hashCode()
   {
-    int i2 = 1;
-    int i1 = 0;
-    int i;
-    label42:
-    label92:
-    label104:
-    int k;
-    label116:
-    int m;
-    label129:
-    int n;
-    if ((this.urlKeyHashCode == null) || (this.urlKeyHashCode.intValue() == -1)) {
-      if (this.url == null)
-      {
-        i = 0;
-        if (this.listener != null) {
-          break label277;
-        }
-        j = 0;
-        int i3 = j + (i + 0) * 31;
-        i = i3;
-        if (this.options != null)
-        {
-          int i4 = this.options.clipHeight;
-          int i5 = this.options.clipWidth;
-          if (!this.options.needShowGifAnimation) {
-            break label288;
-          }
-          i = 1;
-          if (this.options.extraProcessor != null) {
-            break label293;
-          }
-          j = 0;
-          if (this.options.imageConfig != null) {
-            break label307;
-          }
-          k = 0;
-          if (this.options.fileRootPath != null) {
-            break label321;
-          }
-          m = 0;
-          if (!this.options.needShowPhotoGifAnimation) {
-            break label336;
-          }
-          n = 1;
-          label142:
-          k = n + (m + (k + (j + (i + ((i3 * 31 + i4) * 31 + i5) * 31) * 31) * 31) * 31) * 31;
-          i = k;
-          if (this.listener != null)
-          {
-            if (!this.options.useMainThread) {
-              break label342;
-            }
-            i = i2;
-            label206:
-            if (this.options.obj != null) {
-              break label347;
-            }
-          }
-        }
-      }
-    }
-    label277:
-    label288:
-    label293:
-    label307:
-    label321:
-    label336:
-    label342:
-    label347:
-    for (int j = i1;; j = this.options.obj.hashCode())
-    {
-      i = (((k * 31 + i) * 31 + j) * 31 + this.options.arg1) * 31 + this.options.arg2;
-      return i;
-      i = this.url.hashCode();
-      break;
-      i = this.urlKeyHashCode.intValue();
-      break;
-      j = this.listener.hashCode();
-      break label42;
-      i = 0;
-      break label92;
-      j = this.options.extraProcessor.getType();
-      break label104;
-      k = this.options.imageConfig.hashCode();
-      break label116;
-      m = this.options.fileRootPath.hashCode();
-      break label129;
-      n = 0;
-      break label142;
-      i = 0;
-      break label206;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:632)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public int hashCodeEx()
   {
-    int n = 1;
-    int i;
-    int i1;
-    int i2;
-    int i3;
-    label64:
-    int j;
-    label76:
-    int k;
-    label88:
-    int m;
-    if (this.hashCodeEx == 0)
-    {
-      if (this.urlKey != null) {
-        break label163;
-      }
-      i = 0;
-      i1 = i + 0;
-      i = i1;
-      if (this.options != null)
-      {
-        i2 = this.options.clipHeight;
-        i3 = this.options.clipWidth;
-        if (!this.options.needShowGifAnimation) {
-          break label174;
-        }
-        i = 1;
-        if (this.options.extraProcessor != null) {
-          break label179;
-        }
-        j = 0;
-        if (this.options.imageConfig != null) {
-          break label193;
-        }
-        k = 0;
-        if (this.options.fileRootPath != null) {
-          break label207;
-        }
-        m = 0;
-        label101:
-        if (!this.options.needShowPhotoGifAnimation) {
-          break label222;
-        }
-      }
-    }
-    for (;;)
-    {
-      i = (m + (k + (j + (i + ((i1 * 31 + i2) * 31 + i3) * 31) * 31) * 31) * 31) * 31 + n;
-      this.hashCodeEx = i;
-      return this.hashCodeEx;
-      label163:
-      i = this.urlKey.hashCode();
-      break;
-      label174:
-      i = 0;
-      break label64;
-      label179:
-      j = this.options.extraProcessor.getType();
-      break label76;
-      label193:
-      k = this.options.imageConfig.hashCode();
-      break label88;
-      label207:
-      m = this.options.fileRootPath.hashCode();
-      break label101;
-      label222:
-      n = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e2expr(TypeTransformer.java:632)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:716)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s2stmt(TypeTransformer.java:820)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:843)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean isAvatarUrl()
@@ -430,16 +279,28 @@ public class ImageKey
   
   public boolean isSame(ImageKey paramImageKey)
   {
-    if (paramImageKey == null) {}
-    while (paramImageKey.keySeq != this.keySeq) {
+    boolean bool = false;
+    if (paramImageKey == null) {
       return false;
     }
-    return true;
+    if (paramImageKey.keySeq == this.keySeq) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean needDecode()
   {
-    return (this.flag == 1) || (this.flag == 2);
+    int i = this.flag;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (i == 2) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public void recycle()
@@ -484,13 +345,15 @@ public class ImageKey
     this.url = paramString;
     this.isNetworkUrl = ImageManager.isNetworkUrl(paramString);
     this.isSuperResolutionUrl = ImageManagerEnv.g().isSuperResolutionUrl(paramString);
-    if ((this.isSuperResolutionUrl) && (ImageManagerEnv.g().isHighScaleUrl(paramString))) {}
-    for (boolean bool = true;; bool = false)
+    boolean bool;
+    if ((this.isSuperResolutionUrl) && (ImageManagerEnv.g().isHighScaleUrl(paramString))) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.isHighScaleUrl = bool;
+    if (this.isNetworkUrl)
     {
-      this.isHighScaleUrl = bool;
-      if (!this.isNetworkUrl) {
-        break;
-      }
       this.urlKey = getUrlKey(paramString, true, this.isHighScaleUrl);
       return;
     }
@@ -499,7 +362,7 @@ public class ImageKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.ImageKey
  * JD-Core Version:    0.7.0.1
  */

@@ -5,25 +5,25 @@ import android.content.IntentFilter;
 
 final class LocalBroadcastManager$ReceiverRecord
 {
-  final BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver;
-  final IntentFilter jdField_a_of_type_AndroidContentIntentFilter;
-  boolean jdField_a_of_type_Boolean;
-  boolean b;
+  boolean broadcasting;
+  boolean dead;
+  final IntentFilter filter;
+  final BroadcastReceiver receiver;
   
   LocalBroadcastManager$ReceiverRecord(IntentFilter paramIntentFilter, BroadcastReceiver paramBroadcastReceiver)
   {
-    this.jdField_a_of_type_AndroidContentIntentFilter = paramIntentFilter;
-    this.jdField_a_of_type_AndroidContentBroadcastReceiver = paramBroadcastReceiver;
+    this.filter = paramIntentFilter;
+    this.receiver = paramBroadcastReceiver;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(128);
     localStringBuilder.append("Receiver{");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
+    localStringBuilder.append(this.receiver);
     localStringBuilder.append(" filter=");
-    localStringBuilder.append(this.jdField_a_of_type_AndroidContentIntentFilter);
-    if (this.b) {
+    localStringBuilder.append(this.filter);
+    if (this.dead) {
       localStringBuilder.append(" DEAD");
     }
     localStringBuilder.append("}");
@@ -32,7 +32,7 @@ final class LocalBroadcastManager$ReceiverRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.localbroadcastmanager.content.LocalBroadcastManager.ReceiverRecord
  * JD-Core Version:    0.7.0.1
  */

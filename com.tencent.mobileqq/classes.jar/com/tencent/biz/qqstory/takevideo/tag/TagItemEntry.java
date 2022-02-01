@@ -18,18 +18,19 @@ public class TagItemEntry
   {
     if ((paramObject instanceof TagItemEntry))
     {
-      this.id = ((TagItemEntry)paramObject).id;
-      this.name = ((TagItemEntry)paramObject).name;
-      this.desc = ((TagItemEntry)paramObject).desc;
-      this.type = ((TagItemEntry)paramObject).type;
-      this.joinCount = ((TagItemEntry)paramObject).joinCount;
-      this.wording = ((TagItemEntry)paramObject).wording;
+      paramObject = (TagItemEntry)paramObject;
+      this.id = paramObject.id;
+      this.name = paramObject.name;
+      this.desc = paramObject.desc;
+      this.type = paramObject.type;
+      this.joinCount = paramObject.joinCount;
+      this.wording = paramObject.wording;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.tag.TagItemEntry
  * JD-Core Version:    0.7.0.1
  */

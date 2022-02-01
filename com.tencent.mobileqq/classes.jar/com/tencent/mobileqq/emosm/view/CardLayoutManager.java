@@ -32,81 +32,83 @@ public class CardLayoutManager
   {
     detachAndScrapAttachedViews(paramRecycler);
     int i = getItemCount();
+    int k;
     int m;
     int j;
-    int k;
+    float f;
+    View.OnClickListener localOnClickListener;
     if (i > 3)
     {
       i = 3;
-      if (i >= 0)
+      while (i >= 0)
       {
         paramState = paramRecycler.getViewForPosition(i);
         addView(paramState);
         measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
+        k = getWidth();
+        m = getDecoratedMeasuredWidth(paramState);
         j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
+        k = (k - m) / 2;
+        a(paramState, k, j, k + getDecoratedMeasuredWidth(paramState), getDecoratedMeasuredHeight(paramState) + j);
         if (i == 3)
         {
-          paramState.setScaleX(1.0F - (i - 1) * 0.1F);
-          paramState.setScaleY(1.0F - (i - 1) * 0.1F);
-          paramState.setTranslationY((i - 1) * paramState.getMeasuredHeight() / -10);
+          j = i - 1;
+          f = 1.0F - j * 0.1F;
+          paramState.setScaleX(f);
+          paramState.setScaleY(f);
+          paramState.setTranslationY(j * paramState.getMeasuredHeight() / -10);
           paramState.setAlpha(0.8F);
         }
-        for (;;)
+        else if (i > 0)
         {
-          i -= 1;
-          break;
-          if (i > 0)
-          {
-            paramState.setScaleX(1.0F - i * 0.1F);
-            paramState.setScaleY(1.0F - i * 0.1F);
-            paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-            paramState.setAlpha(0.6F);
-          }
-          else if (this.a != null)
-          {
-            paramState.setOnClickListener(this.a);
+          f = 1.0F - i * 0.1F;
+          paramState.setScaleX(f);
+          paramState.setScaleY(f);
+          paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
+          paramState.setAlpha(0.6F);
+        }
+        else
+        {
+          localOnClickListener = this.a;
+          if (localOnClickListener != null) {
+            paramState.setOnClickListener(localOnClickListener);
           }
         }
+        i -= 1;
       }
     }
-    else
+    i -= 1;
+    while (i >= 0)
     {
-      i -= 1;
-      if (i >= 0)
+      paramState = paramRecycler.getViewForPosition(i);
+      addView(paramState);
+      measureChildWithMargins(paramState, 0, 0);
+      k = getWidth();
+      m = getDecoratedMeasuredWidth(paramState);
+      j = getHeight() - getDecoratedMeasuredHeight(paramState);
+      k = (k - m) / 2;
+      a(paramState, k, j, k + getDecoratedMeasuredWidth(paramState), getDecoratedMeasuredHeight(paramState) + j);
+      if (i > 0)
       {
-        paramState = paramRecycler.getViewForPosition(i);
-        addView(paramState);
-        measureChildWithMargins(paramState, 0, 0);
-        m = getWidth() - getDecoratedMeasuredWidth(paramState);
-        j = getHeight() - getDecoratedMeasuredHeight(paramState);
-        k = m / 2;
-        m /= 2;
-        a(paramState, k, j, getDecoratedMeasuredWidth(paramState) + m, getDecoratedMeasuredHeight(paramState) + j);
-        if (i > 0)
-        {
-          paramState.setScaleX(1.0F - i * 0.1F);
-          paramState.setScaleY(1.0F - i * 0.1F);
-          paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
-        }
-        for (;;)
-        {
-          i -= 1;
-          break;
-          if (this.a != null) {
-            paramState.setOnClickListener(this.a);
-          }
+        f = 1.0F - i * 0.1F;
+        paramState.setScaleX(f);
+        paramState.setScaleY(f);
+        paramState.setTranslationY(paramState.getMeasuredHeight() * i / -10);
+      }
+      else
+      {
+        localOnClickListener = this.a;
+        if (localOnClickListener != null) {
+          paramState.setOnClickListener(localOnClickListener);
         }
       }
+      i -= 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.view.CardLayoutManager
  * JD-Core Version:    0.7.0.1
  */

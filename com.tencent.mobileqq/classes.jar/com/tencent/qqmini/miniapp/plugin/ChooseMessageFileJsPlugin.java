@@ -75,19 +75,27 @@ public class ChooseMessageFileJsPlugin
           {
             JSONObject localJSONObject2 = (JSONObject)paramIntent.get(paramInt);
             if (!localJSONObject2.has("path")) {
-              break label251;
+              break label273;
             }
             String str1 = localJSONObject2.getString("path");
             String str2 = localMiniAppFileManager.getWxFilePathByExistLocalPath(str1);
-            QMLog.i("ChooseMessageFileJsPlugin", "path : " + str1 + "; wxPath : " + str2);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("path : ");
+            localStringBuilder.append(str1);
+            localStringBuilder.append("; wxPath : ");
+            localStringBuilder.append(str2);
+            QMLog.i("ChooseMessageFileJsPlugin", localStringBuilder.toString());
             localJSONObject2.put("path", str2);
             localJSONObject2.put("name", getRetName(str1));
-            break label251;
+            break label273;
           }
           localJSONObject1.put("tempFiles", paramIntent);
           paramRequestEvent.ok(localJSONObject1);
           return;
         }
+        paramRequestEvent.fail("tempFilesArray length error.");
+        QMLog.e("ChooseMessageFileJsPlugin", "hanldeActivityResult tempFilesArray length error");
+        return;
       }
       catch (Throwable paramIntent)
       {
@@ -95,37 +103,39 @@ public class ChooseMessageFileJsPlugin
         paramRequestEvent.fail("result ok exception");
         return;
       }
-      paramRequestEvent.fail("tempFilesArray length error.");
-      QMLog.e("ChooseMessageFileJsPlugin", "hanldeActivityResult tempFilesArray length error");
-      return;
-      QMLog.e("ChooseMessageFileJsPlugin", "hanldeActivityResult cancel, resultCode is " + paramInt);
+      paramIntent = new StringBuilder();
+      paramIntent.append("hanldeActivityResult cancel, resultCode is ");
+      paramIntent.append(paramInt);
+      QMLog.e("ChooseMessageFileJsPlugin", paramIntent.toString());
       paramRequestEvent.fail("cancel");
       return;
-      label251:
+      label273:
       paramInt += 1;
     }
   }
   
   private boolean validateChooseMessageFileParams(int paramInt, String paramString)
   {
-    if ((paramInt <= 0) || (paramInt > 100) || (TextUtils.isEmpty(paramString)) || (!this.validType.contains(paramString)))
-    {
-      QMLog.e("ChooseMessageFileJsPlugin", "validateChooseMessageFileParams count : " + paramInt + "; type : " + paramString);
-      return false;
+    if ((paramInt > 0) && (paramInt <= 100) && (!TextUtils.isEmpty(paramString)) && (this.validType.contains(paramString))) {
+      return true;
     }
-    return true;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("validateChooseMessageFileParams count : ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("; type : ");
+    localStringBuilder.append(paramString);
+    QMLog.e("ChooseMessageFileJsPlugin", localStringBuilder.toString());
+    return false;
   }
   
   @JsEvent({"chooseMessageFile"})
   public String chooseMessageFile(RequestEvent paramRequestEvent)
   {
-    for (;;)
+    try
     {
-      try
+      boolean bool = TextUtils.isEmpty(paramRequestEvent.jsonParams);
+      if (!bool)
       {
-        if (TextUtils.isEmpty(paramRequestEvent.jsonParams)) {
-          continue;
-        }
         Object localObject = new JSONObject(paramRequestEvent.jsonParams);
         int i = ((JSONObject)localObject).optInt("count", -1);
         localObject = ((JSONObject)localObject).optString("type", "");
@@ -141,23 +151,27 @@ public class ChooseMessageFileJsPlugin
           QMLog.e("ChooseMessageFileJsPlugin", "chooseMessageFile not support");
           paramRequestEvent.fail("not support");
           ActivityResultManager.g().removeActivityResultListener(localIActivityResultListener);
+          return "";
         }
       }
-      catch (Throwable localThrowable)
+      else
       {
-        paramRequestEvent.fail("exception");
-        QMLog.e("ChooseMessageFileJsPlugin", "chooseMessageFile exception.", localThrowable);
-        continue;
+        QMLog.e("ChooseMessageFileJsPlugin", "chooseMessageFile jsonParams is null.");
+        paramRequestEvent.fail("parameter error");
+        return "";
       }
-      return "";
-      QMLog.e("ChooseMessageFileJsPlugin", "chooseMessageFile jsonParams is null.");
-      paramRequestEvent.fail("parameter error");
     }
+    catch (Throwable localThrowable)
+    {
+      paramRequestEvent.fail("exception");
+      QMLog.e("ChooseMessageFileJsPlugin", "chooseMessageFile exception.", localThrowable);
+    }
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.ChooseMessageFileJsPlugin
  * JD-Core Version:    0.7.0.1
  */

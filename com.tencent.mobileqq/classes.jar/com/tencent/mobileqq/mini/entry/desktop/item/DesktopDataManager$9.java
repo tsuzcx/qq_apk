@@ -15,17 +15,13 @@ class DesktopDataManager$9
   public void run()
   {
     QLog.d("DesktopDataManager", 1, "updateCardModuleInfo");
-    if ((this.val$moduleInfos == null) || (this.val$moduleInfos.size() <= 0)) {
-      QLog.e("DesktopDataManager", 1, "updateCardModuleInfo, moduleInfos is null.");
-    }
-    label381:
-    do
+    Object localObject1 = this.val$moduleInfos;
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      do
-      {
+      if (DesktopDataManager.access$1600(this.this$0).size() <= 0) {
         return;
-      } while (DesktopDataManager.access$1600(this.this$0).size() <= 0);
-      Object localObject1 = new ArrayList();
+      }
+      localObject1 = new ArrayList();
       Object localObject2 = this.val$moduleInfos.iterator();
       Object localObject3;
       Object localObject4;
@@ -52,6 +48,8 @@ class DesktopDataManager$9
         }
       }
       localObject1 = ((List)localObject1).iterator();
+      label388:
+      label471:
       while (((Iterator)localObject1).hasNext())
       {
         localObject2 = (DesktopItemInfo)((Iterator)localObject1).next();
@@ -63,14 +61,17 @@ class DesktopDataManager$9
           for (;;)
           {
             if (i < 0) {
-              break label381;
+              break label388;
             }
             localObject4 = (DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).get(i);
             if ((((DesktopItemInfo)localObject4).getModuleType() == 7) && (((DesktopDittoInfo)localObject4).subType == ((DesktopDittoInfo)localObject3).subType))
             {
               DesktopDataManager.access$1600(this.this$0).remove(i);
               DesktopDataManager.access$1600(this.this$0).add(i, localObject3);
-              QLog.d("DesktopDataManager", 1, "updateCardModuleInfo, update ditto " + localObject2.toString());
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("updateCardModuleInfo, update ditto ");
+              ((StringBuilder)localObject3).append(localObject2.toString());
+              QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject3).toString());
               break;
             }
             i -= 1;
@@ -82,7 +83,7 @@ class DesktopDataManager$9
           for (;;)
           {
             if (i < 0) {
-              break label464;
+              break label471;
             }
             if (((DesktopItemInfo)DesktopDataManager.access$1600(this.this$0).get(i)).getModuleType() == ((DesktopItemInfo)localObject2).getModuleType())
             {
@@ -94,14 +95,17 @@ class DesktopDataManager$9
           }
         }
       }
-    } while (DesktopDataManager.access$1500(this.this$0) == null);
-    label464:
-    DesktopDataManager.access$1500(this.this$0).onDataChanged();
+      if (DesktopDataManager.access$1500(this.this$0) != null) {
+        DesktopDataManager.access$1500(this.this$0).onDataChanged();
+      }
+      return;
+    }
+    QLog.e("DesktopDataManager", 1, "updateCardModuleInfo, moduleInfos is null.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.9
  * JD-Core Version:    0.7.0.1
  */

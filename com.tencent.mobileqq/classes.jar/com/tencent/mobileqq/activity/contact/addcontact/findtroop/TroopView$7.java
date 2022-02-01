@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.contact.addcontact.findtroop;
 
-import android.support.v4.view.ViewPager.SimpleOnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.SimpleOnPageChangeListener;
 import com.tencent.mobileqq.activity.contacts.base.tabs.ContactsViewPager;
 import com.tencent.mobileqq.studymode.StudyModeManager;
 
@@ -11,11 +11,14 @@ class TroopView$7
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (StudyModeManager.a()) {}
-    while (paramInt != 1) {
+    if (StudyModeManager.a()) {
       return;
     }
-    TroopView.a(this.a, TroopView.a(this.a).getCurrentItem());
+    if (paramInt == 1)
+    {
+      TroopView localTroopView = this.a;
+      TroopView.a(localTroopView, TroopView.a(localTroopView).getCurrentItem());
+    }
   }
   
   public void onPageSelected(int paramInt)
@@ -28,7 +31,7 @@ class TroopView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.7
  * JD-Core Version:    0.7.0.1
  */

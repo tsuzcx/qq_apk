@@ -70,6 +70,10 @@ public class MiniProgramLpReportDC04239
   public static final String DROP_DOWN_SUB_ACTION_NOTIFICATION = "notification";
   public static final String DROP_DOWN_SUB_ACTION_PULLDOWN = "pulldown";
   public static final String DROP_DOWN_SUB_ACTION_REFRESH = "refresh";
+  public static final String DROP_GUIDE_DIALOG_ACTION_TYPE = "xiala_popup";
+  public static final String DROP_GUIDE_DIALOG_RESERVES_CLICK = "click";
+  public static final String DROP_GUIDE_DIALOG_RESERVES_EXPOSE = "expo";
+  public static final String DROP_GUIDE_DIALOG_SUB_ACTION_TYPE = "popup";
   public static final String GAME_INNER_ACTION = "game_inner";
   public static final String INNER_SUB_ACTION_LOGIN = "login";
   public static final String INNER_SUB_ACTION_REGISTER = "regist";
@@ -111,6 +115,10 @@ public class MiniProgramLpReportDC04239
   public static final String MORE_BUTTON_RESERVERS_SHARE_QZ = "share_QZ";
   public static final String MORE_BUTTON_RESERVERS_SHARE_WX = "share_WX";
   public static final String MORE_BUTTON_RESERVERS_SHORTCUT = "add_desktop";
+  public static final String NORMAL_URL_ACTION_TYPE = "urlapp";
+  public static final String NORMAL_URL_DIALOG_CANCEL = "cancel";
+  public static final String NORMAL_URL_DIALOG_CONFIRM = "confirm";
+  public static final String NORMAL_URL_DIALOG_SUB_ACTION_TYPE = "bottom";
   public static final String PAGE_VIEW_ACTION = "page_view";
   public static final String PAGE_VIEW_SUB_ACTION_CLICK = "click";
   public static final String PAGE_VIEW_SUB_ACTION_CLOSE = "close";
@@ -172,18 +180,18 @@ public class MiniProgramLpReportDC04239
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
     String str = AppBrandUtil.getUrlWithoutParams(paramString2);
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {}
-    for (paramString2 = String.valueOf(paramMiniAppConfig.launchParam.scene);; paramString2 = null)
-    {
-      localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str, paramString2, paramString3, paramString4, paramString5, paramString6, null, null, null, null, paramString1, ""));
-      localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
-      if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.reportData))) {
-        localArrayList.addAll(MiniProgramReportHelper.newReportEntries(paramMiniAppConfig.config.reportData));
-      }
-      paramMiniAppConfig = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
-      MiniProgramReporter.getInstance().addData(paramMiniAppConfig);
-      return;
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {
+      paramString2 = String.valueOf(paramMiniAppConfig.launchParam.scene);
+    } else {
+      paramString2 = null;
     }
+    localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str, paramString2, paramString3, paramString4, paramString5, paramString6, null, null, null, null, paramString1, ""));
+    localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.reportData))) {
+      localArrayList.addAll(MiniProgramReportHelper.newReportEntries(paramMiniAppConfig.config.reportData));
+    }
+    paramMiniAppConfig = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramMiniAppConfig);
   }
   
   private static void exposureReport(String paramString1, String paramString2, String paramString3)
@@ -199,10 +207,13 @@ public class MiniProgramLpReportDC04239
   
   public static void exposureReport(List<MiniAppExposureManager.BaseExposureReport> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.14(paramList));
     }
-    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.14(paramList));
   }
   
   public static void gameInnerReport(MiniAppConfig paramMiniAppConfig, JSONObject paramJSONObject)
@@ -212,14 +223,16 @@ public class MiniProgramLpReportDC04239
   
   public static String getAppType(MiniAppConfig paramMiniAppConfig)
   {
+    String str2 = "0";
+    String str1 = str2;
     if (paramMiniAppConfig != null)
     {
+      str1 = str2;
       if (paramMiniAppConfig.isReportTypeMiniGame()) {
-        return "1";
+        str1 = "1";
       }
-      return "0";
     }
-    return "0";
+    return str1;
   }
   
   public static boolean isLifeCycle(String paramString)
@@ -231,25 +244,23 @@ public class MiniProgramLpReportDC04239
   {
     ArrayList localArrayList = new ArrayList();
     localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
-    String str2 = "0";
-    String str1 = str2;
-    if (paramMiniAppConfig != null)
-    {
-      str1 = str2;
-      if (paramMiniAppConfig.config != null) {
-        str1 = getAppType(paramMiniAppConfig);
-      }
+    String str1;
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null)) {
+      str1 = getAppType(paramMiniAppConfig);
+    } else {
+      str1 = "0";
     }
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {}
-    for (str2 = String.valueOf(paramMiniAppConfig.launchParam.scene);; str2 = null)
-    {
-      localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, null, str2, paramString1, paramString2, paramString3, paramString4, null, null, null, null, str1, ""));
-      localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
-      paramMiniAppConfig = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
-      MiniProgramReporter.getInstance().addData(paramMiniAppConfig);
-      MiniProgramReporter.getInstance().flush();
-      return;
+    String str2;
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {
+      str2 = String.valueOf(paramMiniAppConfig.launchParam.scene);
+    } else {
+      str2 = null;
     }
+    localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, null, str2, paramString1, paramString2, paramString3, paramString4, null, null, null, null, str1, ""));
+    localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
+    paramMiniAppConfig = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramMiniAppConfig);
+    MiniProgramReporter.getInstance().flush();
   }
   
   private static void report(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -262,33 +273,34 @@ public class MiniProgramLpReportDC04239
     if (isLifeCycle(paramString4))
     {
       MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.11(paramMiniAppConfig, paramString3, paramString4, paramString2, paramString5, paramString6, paramString1));
-      if (("unload".equals(paramString4)) || ("close".equals(paramString4)) || ("hide".equals(paramString4)) || ("finishshow".equals(paramString4)) || ("sys_alert".equals(paramString3))) {
-        MiniProgramReporter.getInstance().flush();
-      }
-      if (!"show".equals(paramString4)) {
-        break label227;
-      }
-      showMiniAppConfig = paramMiniAppConfig;
-      sendRecordDurationMsg();
     }
-    label227:
-    while ((!"unload".equals(paramString4)) && (!"hide".equals(paramString4)) && (!"close".equals(paramString4)))
+    else
     {
-      return;
       ArrayList localArrayList = new ArrayList();
       localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
       String str = AppBrandUtil.getUrlWithoutParams(paramString2);
-      if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {}
-      for (paramString2 = String.valueOf(paramMiniAppConfig.launchParam.scene);; paramString2 = null)
-      {
-        localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString1, null));
-        localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
-        paramString1 = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
-        MiniProgramReporter.getInstance().addData(paramString1);
-        break;
+      if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {
+        paramString2 = String.valueOf(paramMiniAppConfig.launchParam.scene);
+      } else {
+        paramString2 = null;
       }
+      localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, str, paramString2, paramString3, paramString4, paramString5, paramString6, paramString7, paramString8, paramString9, paramString10, paramString1, null));
+      localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
+      paramString1 = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
+      MiniProgramReporter.getInstance().addData(paramString1);
     }
-    deleteRecordDurationMsg();
+    if (("unload".equals(paramString4)) || ("close".equals(paramString4)) || ("hide".equals(paramString4)) || ("finishshow".equals(paramString4)) || ("sys_alert".equals(paramString3))) {
+      MiniProgramReporter.getInstance().flush();
+    }
+    if ("show".equals(paramString4))
+    {
+      showMiniAppConfig = paramMiniAppConfig;
+      sendRecordDurationMsg();
+      return;
+    }
+    if (("unload".equals(paramString4)) || ("hide".equals(paramString4)) || ("close".equals(paramString4))) {
+      deleteRecordDurationMsg();
+    }
   }
   
   private static void report(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -338,6 +350,28 @@ public class MiniProgramLpReportDC04239
   public static void reportAsync(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.6(paramString1, paramString2, paramString3, paramString4, paramString5, paramString6));
+  }
+  
+  public static void reportByDropGuideDialog(MiniAppConfig paramMiniAppConfig, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
+  {
+    ArrayList localArrayList = new ArrayList();
+    localArrayList.addAll(MiniProgramReportHelper.newUserInfoEntries());
+    localArrayList.addAll(MiniProgramReportHelper.newModeAndLocation(paramString4, paramString5));
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null)) {
+      paramString4 = getAppType(paramMiniAppConfig);
+    } else {
+      paramString4 = "0";
+    }
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null)) {
+      paramString5 = String.valueOf(paramMiniAppConfig.launchParam.scene);
+    } else {
+      paramString5 = null;
+    }
+    localArrayList.addAll(MiniProgramReportHelper.newBusinessEntries(paramMiniAppConfig, null, paramString5, paramString1, paramString2, paramString3, null, null, null, null, null, paramString4, ""));
+    localArrayList.addAll(MiniProgramReportHelper.newGenericEntries());
+    paramMiniAppConfig = MiniProgramReportHelper.newSingleReportData(2, localArrayList, null);
+    MiniProgramReporter.getInstance().addData(paramMiniAppConfig);
+    MiniProgramReporter.getInstance().flush();
   }
   
   public static void reportByQQ(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7)
@@ -417,10 +451,13 @@ public class MiniProgramLpReportDC04239
   
   private static void reportPageView(List<MiniAppExposureManager.MiniAppExposureData> paramList, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.size() <= 0)) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.size() <= 0) {
+        return;
+      }
+      MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.13(paramList, paramBoolean, paramString1, paramString2));
     }
-    MiniProgramReporter.getInstance().getReportHandler().post(new MiniProgramLpReportDC04239.13(paramList, paramBoolean, paramString1, paramString2));
   }
   
   public static void reportPageView(List<MiniAppExposureManager.MiniAppExposureData> paramList, String paramString, boolean paramBoolean)
@@ -449,7 +486,7 @@ public class MiniProgramLpReportDC04239
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniProgramLpReportDC04239
  * JD-Core Version:    0.7.0.1
  */

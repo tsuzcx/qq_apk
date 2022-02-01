@@ -17,12 +17,13 @@ class NewProgressControler$1
     if (this.a.a) {
       return;
     }
-    NewProgressControler.a(this.a, this.a.c);
+    paramMessage = this.a;
+    NewProgressControler.a(paramMessage, paramMessage.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.NewProgressControler.1
  * JD-Core Version:    0.7.0.1
  */

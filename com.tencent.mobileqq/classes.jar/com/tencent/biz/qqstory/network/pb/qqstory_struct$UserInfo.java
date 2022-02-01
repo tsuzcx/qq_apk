@@ -45,6 +45,8 @@ public final class qqstory_struct$UserInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -56,12 +58,12 @@ public final class qqstory_struct$UserInfo
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 66, 74, 80, 88, 96, 104, 114, 122, 128, 136, 146, 152, 162, 170, 178, 184, 192, 202, 208, 216, 224 }, new String[] { "uid", "nick", "head_url", "remark", "ext", "is_vip", "union_id", "symbol", "watcher", "is_subscribe", "friend_type", "fans_count", "subscribe_count", "signature", "background_url", "fans_incr_count", "gid_in_group", "usr_icon_list", "vip_id", "phone", "nick_postfix", "ws_schema", "gender", "age", "desc", "medal_level", "grade_speed", "video_source_tag_type" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, Integer.valueOf(0), localByteStringMicro4, localByteStringMicro5, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro6, localByteStringMicro7, Integer.valueOf(0), Long.valueOf(0L), null, Long.valueOf(0L), localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro11, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, UserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 66, 74, 80, 88, 96, 104, 114, 122, 128, 136, 146, 152, 162, 170, 178, 184, 192, 202, 208, 216, 224 }, new String[] { "uid", "nick", "head_url", "remark", "ext", "is_vip", "union_id", "symbol", "watcher", "is_subscribe", "friend_type", "fans_count", "subscribe_count", "signature", "background_url", "fans_incr_count", "gid_in_group", "usr_icon_list", "vip_id", "phone", "nick_postfix", "ws_schema", "gender", "age", "desc", "medal_level", "grade_speed", "video_source_tag_type" }, new Object[] { localLong, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, null, localInteger, localByteStringMicro4, localByteStringMicro5, null, localInteger, localInteger, localInteger, localInteger, localByteStringMicro6, localByteStringMicro7, localInteger, localLong, null, localLong, localByteStringMicro8, localByteStringMicro9, localByteStringMicro10, localInteger, localInteger, localByteStringMicro11, localInteger, localInteger, localInteger }, UserInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.UserInfo
  * JD-Core Version:    0.7.0.1
  */

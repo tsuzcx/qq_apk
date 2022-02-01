@@ -27,12 +27,12 @@ class AudioJsPlugin$BgMusicManager
   {
     int i = 2;
     if (paramInt == 2) {
-      i = 1;
+      return 1;
     }
-    while (paramInt != 3) {
-      return i;
+    if (paramInt == 3) {
+      i = 0;
     }
-    return 0;
+    return i;
   }
   
   private void getMusicPlayerState(RequestEvent paramRequestEvent)
@@ -54,8 +54,10 @@ class AudioJsPlugin$BgMusicManager
     }
     catch (Exception localException)
     {
-      paramRequestEvent.fail();
+      label108:
+      break label108;
     }
+    paramRequestEvent.fail();
   }
   
   private void pauseQQMusic(RequestEvent paramRequestEvent)
@@ -69,8 +71,10 @@ class AudioJsPlugin$BgMusicManager
     }
     catch (Exception localException)
     {
-      paramRequestEvent.fail();
+      label25:
+      break label25;
     }
+    paramRequestEvent.fail();
   }
   
   private void playNew(JSONObject paramJSONObject)
@@ -94,59 +98,61 @@ class AudioJsPlugin$BgMusicManager
   private void playQQMusic(JSONObject paramJSONObject, RequestEvent paramRequestEvent)
   {
     MusicPlayerProxy localMusicPlayerProxy = (MusicPlayerProxy)ProxyManager.get(MusicPlayerProxy.class);
-    if ((!localMusicPlayerProxy.isInit()) || (paramJSONObject == null)) {
-      paramRequestEvent.fail();
-    }
-    do
-    {
-      return;
+    if ((localMusicPlayerProxy.isInit()) && (paramJSONObject != null)) {
       AudioJsPlugin.access$4602(this.this$0, paramRequestEvent);
-      try
+    }
+    try
+    {
+      SongInfo localSongInfo = localMusicPlayerProxy.getCurrentSong();
+      String str = paramJSONObject.optString("dataUrl", paramJSONObject.optString("src"));
+      if ((localSongInfo != null) && (str.equals(localSongInfo.url)))
       {
-        SongInfo localSongInfo = localMusicPlayerProxy.getCurrentSong();
-        String str = paramJSONObject.optString("dataUrl", paramJSONObject.optString("src"));
-        if ((localSongInfo == null) || (!str.equals(localSongInfo.url))) {
-          break;
-        }
-        if ((AudioJsPlugin.access$000(this.this$0) == 3) || (AudioJsPlugin.access$000(this.this$0) == 1))
+        if ((AudioJsPlugin.access$000(this.this$0) != 3) && (AudioJsPlugin.access$000(this.this$0) != 1))
         {
-          localMusicPlayerProxy.resume();
+          if ((AudioJsPlugin.access$000(this.this$0) != 4) && (AudioJsPlugin.access$000(this.this$0) != 0) && (AudioJsPlugin.access$000(this.this$0) != 8)) {
+            break label156;
+          }
+          playNew(paramJSONObject);
           return;
         }
-      }
-      catch (Exception paramJSONObject)
-      {
-        paramRequestEvent.fail();
+        localMusicPlayerProxy.resume();
         return;
       }
-    } while ((AudioJsPlugin.access$000(this.this$0) != 4) && (AudioJsPlugin.access$000(this.this$0) != 0) && (AudioJsPlugin.access$000(this.this$0) != 8));
-    playNew(paramJSONObject);
+      playNew(paramJSONObject);
+      return;
+    }
+    catch (Exception paramJSONObject)
+    {
+      label151:
+      break label151;
+    }
+    paramRequestEvent.fail();
+    label156:
     return;
-    playNew(paramJSONObject);
+    paramRequestEvent.fail();
   }
   
   private void seekMusic(JSONObject paramJSONObject, RequestEvent paramRequestEvent)
   {
-    float f2 = 0.0F;
     if ((this.musicPlayerProxy != null) && (paramJSONObject != null)) {
       try
       {
-        String str = paramJSONObject.optString("position");
+        localObject = paramJSONObject.optString("position");
         paramJSONObject = paramJSONObject.optString("currentTime");
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+        float f2 = 0.0F;
         float f1;
-        if (TextUtils.isEmpty(str))
-        {
+        if (bool) {
           f1 = 0.0F;
-          if (!TextUtils.isEmpty(paramJSONObject)) {
-            break label130;
-          }
+        } else {
+          f1 = Float.valueOf((String)localObject).floatValue();
         }
-        for (;;)
+        if (!TextUtils.isEmpty(paramJSONObject)) {
+          f2 = Float.valueOf(paramJSONObject).floatValue();
+        }
+        int i = (int)(Math.max(f1, f2) * 1000.0F);
+        if (i >= 0)
         {
-          int i = (int)(Math.max(f1, f2) * 1000.0F);
-          if (i < 0) {
-            break label142;
-          }
           AudioJsPlugin.access$800(this.this$0, "waiting");
           AudioJsPlugin.access$800(this.this$0, "seeking");
           this.musicPlayerProxy.seekTo(i);
@@ -154,19 +160,17 @@ class AudioJsPlugin$BgMusicManager
           AudioJsPlugin.access$800(this.this$0, "seeked");
           AudioJsPlugin.access$800(this.this$0, "play");
           return;
-          f1 = Float.valueOf(str).floatValue();
-          break;
-          label130:
-          f2 = Float.valueOf(paramJSONObject).floatValue();
         }
-        label142:
         paramRequestEvent.fail();
         return;
       }
       catch (Exception paramJSONObject)
       {
         paramJSONObject.printStackTrace();
-        QMLog.e("AudioJsPlugin", "seekMusic error. " + paramJSONObject);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("seekMusic error. ");
+        ((StringBuilder)localObject).append(paramJSONObject);
+        QMLog.e("AudioJsPlugin", ((StringBuilder)localObject).toString());
         paramRequestEvent.fail();
       }
     }
@@ -183,8 +187,10 @@ class AudioJsPlugin$BgMusicManager
     }
     catch (Exception localException)
     {
-      paramRequestEvent.fail();
+      label25:
+      break label25;
     }
+    paramRequestEvent.fail();
   }
   
   public void handleMessage(int paramInt, RequestEvent paramRequestEvent)
@@ -194,32 +200,38 @@ class AudioJsPlugin$BgMusicManager
   
   public void handleMessage(int paramInt, RequestEvent paramRequestEvent, JSONObject paramJSONObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      playQQMusic(paramJSONObject, paramRequestEvent);
-      AudioJsPlugin.access$4002(this.this$0, new AudioJsPlugin.BgMusicData(paramJSONObject, paramRequestEvent, null));
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            getMusicPlayerState(paramRequestEvent);
+            return;
+          }
+          seekMusic(paramJSONObject, paramRequestEvent);
+          return;
+        }
+        stopQQmMusic(paramRequestEvent);
+        AudioJsPlugin.access$4002(this.this$0, null);
+        return;
+      }
       pauseQQMusic(paramRequestEvent);
       AudioJsPlugin.access$4002(this.this$0, null);
       return;
-    case 3: 
-      stopQQmMusic(paramRequestEvent);
-      AudioJsPlugin.access$4002(this.this$0, null);
-      return;
-    case 4: 
-      seekMusic(paramJSONObject, paramRequestEvent);
-      return;
     }
-    getMusicPlayerState(paramRequestEvent);
+    playQQMusic(paramJSONObject, paramRequestEvent);
+    AudioJsPlugin.access$4002(this.this$0, new AudioJsPlugin.BgMusicData(paramJSONObject, paramRequestEvent, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.AudioJsPlugin.BgMusicManager
  * JD-Core Version:    0.7.0.1
  */

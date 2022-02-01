@@ -25,13 +25,16 @@ public class HighFrequencyDetector
     if ((paramList != null) && (paramList.size() > 0))
     {
       SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("HH点mm分ss");
-      int i = paramList.size();
-      localStringBuilder.ensureCapacity((((HighFrequencyDetector.Action)paramList.get(0)).userData.toString().length() + 20) * i);
+      localStringBuilder.ensureCapacity(paramList.size() * (((HighFrequencyDetector.Action)paramList.get(0)).userData.toString().length() + 20));
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
         HighFrequencyDetector.Action localAction = (HighFrequencyDetector.Action)paramList.next();
-        localStringBuilder.append("[").append(localSimpleDateFormat.format(new Date(localAction.timestamp))).append(":").append(localAction.userData.toString()).append("]");
+        localStringBuilder.append("[");
+        localStringBuilder.append(localSimpleDateFormat.format(new Date(localAction.timestamp)));
+        localStringBuilder.append(":");
+        localStringBuilder.append(localAction.userData.toString());
+        localStringBuilder.append("]");
       }
     }
     return localStringBuilder.toString();
@@ -54,9 +57,9 @@ public class HighFrequencyDetector
         localObject1 = new ArrayList(this.actionList);
         return localObject1;
       }
+      this.actionList.removeFirst();
+      return null;
     }
-    this.actionList.removeFirst();
-    return null;
   }
   
   public void trimCache()
@@ -70,7 +73,7 @@ public class HighFrequencyDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.HighFrequencyDetector
  * JD-Core Version:    0.7.0.1
  */

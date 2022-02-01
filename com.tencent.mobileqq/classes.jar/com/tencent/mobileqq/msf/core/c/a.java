@@ -21,7 +21,7 @@ public class a
   {
     int i = c.b();
     long l = c.c() / 1024L / 1024L;
-    long[] arrayOfLong = c.d();
+    Object localObject3 = c.d();
     Object localObject2 = ((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getNetworkOperator();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
@@ -29,10 +29,29 @@ public class a
     }
     String str = String.format("%.2f", new Object[] { Double.valueOf(c.f()) });
     localObject2 = new StringBuilder();
-    ((StringBuilder)localObject2).append(i).append(";").append(l).append(";").append(arrayOfLong[0]).append(";").append(arrayOfLong[1]).append(";").append(((String)localObject1).replaceAll(";", "")).append(";").append(str).append(";").append(c.b).append(";").append(c.c).append(";");
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(";");
+    ((StringBuilder)localObject2).append(l);
+    ((StringBuilder)localObject2).append(";");
+    ((StringBuilder)localObject2).append(localObject3[0]);
+    ((StringBuilder)localObject2).append(";");
+    ((StringBuilder)localObject2).append(localObject3[1]);
+    ((StringBuilder)localObject2).append(";");
+    ((StringBuilder)localObject2).append(((String)localObject1).replaceAll(";", ""));
+    ((StringBuilder)localObject2).append(";");
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append(";");
+    ((StringBuilder)localObject2).append(c.b);
+    ((StringBuilder)localObject2).append(";");
+    ((StringBuilder)localObject2).append(c.c);
+    ((StringBuilder)localObject2).append(";");
     localObject1 = ((StringBuilder)localObject2).toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("BigTReportUtil", 2, "getExtraDeviceInfo=" + (String)localObject1);
+    if (QLog.isColorLevel())
+    {
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("getExtraDeviceInfo=");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      QLog.d("BigTReportUtil", 2, ((StringBuilder)localObject3).toString());
     }
     return ((StringBuilder)localObject2).toString();
   }
@@ -41,10 +60,62 @@ public class a
   {
     String str = NetConnInfoCenter.getSystemNetStateString();
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(NetConnInfoCenter.getServerTime()).append("|").append(BaseApplication.getContext().getAppId()).append("|").append("android").append("|").append(paramString1).append("|").append(paramString2).append("|").append(paramString3).append("|").append(paramString4).append("|").append(paramString5).append("|").append(paramInt).append("|").append(paramString6).append("|").append(c.a()).append("|").append("|").append(Build.MANUFACTURER).append("|").append(Build.MODEL).append("|").append(str).append("|").append(Build.VERSION.RELEASE).append("|").append(ROMUtil.getRomDetailInfo()).append("|").append(paramString7).append("|").append(paramString8).append("|").append(paramString9).append("|").append(paramString10).append("|").append(paramString11).append("|").append(paramString12).append("|").append(paramString13).append("|").append(paramString14).append("|");
+    localStringBuilder.append(NetConnInfoCenter.getServerTime());
+    localStringBuilder.append("|");
+    localStringBuilder.append(BaseApplication.getContext().getAppId());
+    localStringBuilder.append("|");
+    localStringBuilder.append("android");
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString4);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString5);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString6);
+    localStringBuilder.append("|");
+    localStringBuilder.append(c.a());
+    localStringBuilder.append("|");
+    localStringBuilder.append("|");
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append("|");
+    localStringBuilder.append(Build.MODEL);
+    localStringBuilder.append("|");
+    localStringBuilder.append(str);
+    localStringBuilder.append("|");
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    localStringBuilder.append("|");
+    localStringBuilder.append(ROMUtil.getRomDetailInfo());
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString7);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString8);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString9);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString10);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString11);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString12);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString13);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramString14);
+    localStringBuilder.append("|");
     paramString1 = localStringBuilder.toString();
-    if (QLog.isColorLevel()) {
-      QLog.d("BigTReportUtil", 2, "getDC04272ReportDetail=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("getDC04272ReportDetail=");
+      paramString2.append(paramString1);
+      QLog.d("BigTReportUtil", 2, paramString2.toString());
     }
     return paramString1;
   }
@@ -80,7 +151,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.c.a
  * JD-Core Version:    0.7.0.1
  */

@@ -31,7 +31,7 @@ public class TaskThreadPool
   
   private boolean hasMoreAcquire()
   {
-    return !this.mTaskQueue.isEmpty();
+    return this.mTaskQueue.isEmpty() ^ true;
   }
   
   public void addExecuteTask(Runnable paramRunnable)
@@ -61,7 +61,7 @@ public class TaskThreadPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskThreadPool
  * JD-Core Version:    0.7.0.1
  */

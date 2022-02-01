@@ -41,12 +41,13 @@ public class PermissionListAdapter
       AuthStateItem localAuthStateItem = (AuthStateItem)localIterator.next();
       if (paramString.equals(localAuthStateItem.scopeName))
       {
-        if (paramBoolean) {}
-        for (int i = 2;; i = 4)
-        {
-          localAuthStateItem.authFlag = i;
-          break;
+        int i;
+        if (paramBoolean) {
+          i = 2;
+        } else {
+          i = 4;
         }
+        localAuthStateItem.authFlag = i;
       }
     }
   }
@@ -72,45 +73,40 @@ public class PermissionListAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     FormSwitchItem localFormSwitchItem;
-    boolean bool;
-    label71:
-    PermissionInfo localPermissionInfo;
     if (paramView != null)
     {
       localFormSwitchItem = (FormSwitchItem)paramView;
-      localObject = getItem(paramInt);
-      if (localObject != null)
-      {
-        if ((!QUAUtil.isQQApp()) && (!QUAUtil.isDemoApp()) && ("scope.appMsgSubscribed".equals(((AuthStateItem)localObject).scopeName)))
-        {
-          localFormSwitchItem.setEnabled(false);
-          localFormSwitchItem.setChecked(false);
-        }
-        if (((AuthStateItem)localObject).authFlag != 2) {
-          break label165;
-        }
-        bool = true;
-        localFormSwitchItem.setChecked(bool);
-        localFormSwitchItem.getSwitch().setTag(((AuthStateItem)localObject).scopeName);
-        localPermissionInfo = PermissionManager.g().getScopePermission(((AuthStateItem)localObject).scopeName);
-        if (localPermissionInfo == null) {
-          break label171;
-        }
-      }
     }
-    label165:
-    label171:
-    for (Object localObject = localPermissionInfo.name;; localObject = ((AuthStateItem)localObject).scopeName)
+    else
     {
-      localFormSwitchItem.setText((CharSequence)localObject);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localFormSwitchItem;
       localFormSwitchItem = new FormSwitchItem(this.context);
       localFormSwitchItem.setOnCheckedChangeListener(this.checkedChangeListener);
-      break;
-      bool = false;
-      break label71;
     }
+    Object localObject = getItem(paramInt);
+    if (localObject != null)
+    {
+      boolean bool2 = QUAUtil.isQQApp();
+      boolean bool1 = false;
+      if ((!bool2) && (!QUAUtil.isDemoApp()) && ("scope.appMsgSubscribed".equals(((AuthStateItem)localObject).scopeName)))
+      {
+        localFormSwitchItem.setEnabled(false);
+        localFormSwitchItem.setChecked(false);
+      }
+      if (((AuthStateItem)localObject).authFlag == 2) {
+        bool1 = true;
+      }
+      localFormSwitchItem.setChecked(bool1);
+      localFormSwitchItem.getSwitch().setTag(((AuthStateItem)localObject).scopeName);
+      PermissionInfo localPermissionInfo = PermissionManager.g().getScopePermission(((AuthStateItem)localObject).scopeName);
+      if (localPermissionInfo != null) {
+        localObject = localPermissionInfo.name;
+      } else {
+        localObject = ((AuthStateItem)localObject).scopeName;
+      }
+      localFormSwitchItem.setText((CharSequence)localObject);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localFormSwitchItem;
   }
   
   public void setScopeList(List<AuthStateItem> paramList)
@@ -123,7 +119,7 @@ public class PermissionListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.PermissionListAdapter
  * JD-Core Version:    0.7.0.1
  */

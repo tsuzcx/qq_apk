@@ -13,13 +13,14 @@ import android.os.Process;
 import android.os.RemoteException;
 import android.text.TextUtils;
 import android.util.SparseArray;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.biz.apiproxy.QQMusicClient;
 import com.tencent.biz.apiproxy.WebPushClient;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.photo.AIOImageData;
 import com.tencent.mobileqq.app.BizTroopObserver;
 import com.tencent.mobileqq.app.BusinessObserver;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 import com.tencent.mobileqq.webview.WebSecurityPluginV2.URLCheckParams;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -34,7 +35,7 @@ import org.json.JSONObject;
 
 public class TroopMemberApiClient
 {
-  static int jdField_a_of_type_Int = 0;
+  static int jdField_a_of_type_Int;
   protected static TroopMemberApiClient a;
   private static String jdField_a_of_type_JavaLangString;
   protected ServiceConnection a;
@@ -42,21 +43,16 @@ public class TroopMemberApiClient
   SparseArray<BusinessObserver> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   QQMusicClient jdField_a_of_type_ComTencentBizApiproxyQQMusicClient;
   WebPushClient jdField_a_of_type_ComTencentBizApiproxyWebPushClient;
-  private TroopMemberApiClient.Callback jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient$Callback;
   BizTroopObserver jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver;
+  private ITroopMemberApiClientApi.Callback jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback;
   private HashMap<String, Integer> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   List<BusinessObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
-  Map<Integer, TroopMemberApiClient.Callback> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
+  Map<Integer, ITroopMemberApiClientApi.Callback> jdField_a_of_type_JavaUtilMap = new ConcurrentHashMap();
   AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
   Messenger jdField_b_of_type_AndroidOsMessenger = null;
   private HashMap<String, Integer> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   List<Message> jdField_b_of_type_JavaUtilList = new ArrayList();
   AtomicInteger jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-  
-  static
-  {
-    jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = null;
-  }
   
   private TroopMemberApiClient()
   {
@@ -65,42 +61,47 @@ public class TroopMemberApiClient
   
   public static TroopMemberApiClient a()
   {
-    if (jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null) {
-        jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = new TroopMemberApiClient();
+    if (jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient == null) {
+          jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient = new TroopMemberApiClient();
+        }
       }
-      return jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient;
   }
   
   public static String a()
   {
-    if (jdField_a_of_type_JavaLangString != null) {
-      return jdField_a_of_type_JavaLangString;
+    Object localObject = jdField_a_of_type_JavaLangString;
+    if (localObject != null) {
+      return localObject;
     }
     int i = Process.myPid();
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0)) {
-      return null;
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
+    if (localObject != null)
     {
-      ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-      if (localRunningAppProcessInfo.pid == i)
+      if (((List)localObject).size() <= 0) {
+        return null;
+      }
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localObject = localRunningAppProcessInfo.processName;
-        jdField_a_of_type_JavaLangString = (String)localObject;
-        return localObject;
+        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
+        if (localRunningAppProcessInfo.pid == i)
+        {
+          localObject = localRunningAppProcessInfo.processName;
+          jdField_a_of_type_JavaLangString = (String)localObject;
+          return localObject;
+        }
       }
     }
     return null;
   }
   
-  public int a(int paramInt, Bundle paramBundle, TroopMemberApiClient.Callback paramCallback)
+  public int a(int paramInt, Bundle paramBundle, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = paramBundle;
     if (paramBundle == null) {
@@ -113,14 +114,14 @@ public class TroopMemberApiClient
     return i;
   }
   
-  public int a(TroopMemberApiClient.Callback paramCallback)
+  public int a(ITroopMemberApiClientApi.Callback paramCallback)
   {
     int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCallback);
     return i;
   }
   
-  public int a(WebSecurityPluginV2.URLCheckParams paramURLCheckParams, TroopMemberApiClient.Callback paramCallback)
+  public int a(WebSecurityPluginV2.URLCheckParams paramURLCheckParams, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("url", paramURLCheckParams.jdField_a_of_type_JavaLangString);
@@ -152,9 +153,9 @@ public class TroopMemberApiClient
     return this.jdField_a_of_type_ComTencentBizApiproxyWebPushClient;
   }
   
-  public TroopMemberApiClient.Callback a(int paramInt)
+  public ITroopMemberApiClientApi.Callback a(int paramInt)
   {
-    return (TroopMemberApiClient.Callback)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
+    return (ITroopMemberApiClientApi.Callback)this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramInt));
   }
   
   public void a()
@@ -200,7 +201,8 @@ public class TroopMemberApiClient
     Message localMessage = Message.obtain(null, paramInt);
     localMessage.replyTo = this.jdField_a_of_type_AndroidOsMessenger;
     localMessage.setData(paramBundle);
-    if (this.jdField_b_of_type_AndroidOsMessenger == null) {
+    paramBundle = this.jdField_b_of_type_AndroidOsMessenger;
+    if (paramBundle == null) {
       try
       {
         this.jdField_b_of_type_JavaUtilList.add(localMessage);
@@ -210,7 +212,7 @@ public class TroopMemberApiClient
     }
     try
     {
-      this.jdField_b_of_type_AndroidOsMessenger.send(localMessage);
+      paramBundle.send(localMessage);
       return;
     }
     catch (RemoteException paramBundle)
@@ -230,7 +232,7 @@ public class TroopMemberApiClient
     a(paramInt, paramBundle);
   }
   
-  public void a(int paramInt, TroopMemberApiClient.Callback paramCallback)
+  public void a(int paramInt, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("appId", paramInt);
@@ -250,7 +252,7 @@ public class TroopMemberApiClient
     a(142, localBundle);
   }
   
-  public void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, TroopMemberApiClient.Callback paramCallback)
+  public void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("callback", paramString4);
@@ -277,7 +279,7 @@ public class TroopMemberApiClient
     a(119, localBundle);
   }
   
-  public void a(long paramLong1, String paramString1, String paramString2, long paramLong2, int paramInt, TroopMemberApiClient.Callback paramCallback)
+  public void a(long paramLong1, String paramString1, String paramString2, long paramLong2, int paramInt, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putLong("troopCode", paramLong1);
@@ -302,7 +304,24 @@ public class TroopMemberApiClient
     a(92, paramBundle);
   }
   
-  public void a(TroopMemberApiClient.Callback paramCallback)
+  public void a(BusinessObserver paramBusinessObserver)
+  {
+    if (paramBusinessObserver == null) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RegisterObserver key:");
+      localStringBuilder.append(paramBusinessObserver.hashCode());
+      QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, localStringBuilder.toString());
+    }
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramBusinessObserver);
+    }
+  }
+  
+  public void a(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -310,20 +329,7 @@ public class TroopMemberApiClient
     a(81, localBundle);
   }
   
-  public void a(BusinessObserver paramBusinessObserver)
-  {
-    if (paramBusinessObserver == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "RegisterObserver key:" + paramBusinessObserver.hashCode());
-      }
-    } while (this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver));
-    this.jdField_a_of_type_JavaUtilList.add(paramBusinessObserver);
-  }
-  
-  public void a(Integer paramInteger1, Integer paramInteger2, Integer paramInteger3, TroopMemberApiClient.Callback paramCallback)
+  public void a(Integer paramInteger1, Integer paramInteger2, Integer paramInteger3, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -351,7 +357,7 @@ public class TroopMemberApiClient
     a(131, localBundle);
   }
   
-  public void a(Integer paramInteger, String paramString1, String paramString2, TroopMemberApiClient.Callback paramCallback)
+  public void a(Integer paramInteger, String paramString1, String paramString2, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -412,7 +418,7 @@ public class TroopMemberApiClient
     a(94, localBundle);
   }
   
-  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, TroopMemberApiClient.Callback paramCallback1, TroopMemberApiClient.Callback paramCallback2)
+  public void a(String paramString1, int paramInt, String paramString2, boolean paramBoolean, ITroopMemberApiClientApi.Callback paramCallback1, ITroopMemberApiClientApi.Callback paramCallback2)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("pic_local_path", paramString1);
@@ -424,7 +430,7 @@ public class TroopMemberApiClient
     a(21, localBundle);
   }
   
-  public void a(String paramString1, long paramLong, int paramInt1, String paramString2, int paramInt2, String paramString3, TroopMemberApiClient.Callback paramCallback)
+  public void a(String paramString1, long paramLong, int paramInt1, String paramString2, int paramInt2, String paramString3, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("troopUin", paramString1);
@@ -437,7 +443,7 @@ public class TroopMemberApiClient
     a(13, localBundle);
   }
   
-  public void a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, long paramLong3, int paramInt, TroopMemberApiClient.Callback paramCallback)
+  public void a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, long paramLong3, int paramInt, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("skinId", paramString1);
@@ -448,13 +454,17 @@ public class TroopMemberApiClient
     localBundle.putLong("endTime", paramLong3);
     localBundle.putInt("volumeIsOn", paramInt);
     localBundle.putInt("seq", a(paramCallback));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient setReadinjoySkin skinId = " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("TroopMemberApiClient setReadinjoySkin skinId = ");
+      paramString2.append(paramString1);
+      QLog.d("Readinjoy", 2, paramString2.toString());
     }
     a(109, localBundle);
   }
   
-  public void a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, long paramLong3, TroopMemberApiClient.Callback paramCallback)
+  public void a(String paramString1, long paramLong1, String paramString2, String paramString3, long paramLong2, long paramLong3, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("skinId", paramString1);
@@ -464,22 +474,17 @@ public class TroopMemberApiClient
     localBundle.putLong("startTime", paramLong2);
     localBundle.putLong("endTime", paramLong3);
     localBundle.putInt("seq", a(paramCallback));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient startLoadReadinjoySkin skinId = " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("TroopMemberApiClient startLoadReadinjoySkin skinId = ");
+      paramString2.append(paramString1);
+      QLog.d("Readinjoy", 2, paramString2.toString());
     }
     a(107, localBundle);
   }
   
-  public void a(String paramString, TroopMemberApiClient.Callback paramCallback)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("seq", a(paramCallback));
-    localBundle.putString("troopUin", paramString);
-    localBundle.putString("processName", a());
-    a(59, localBundle);
-  }
-  
-  public void a(String paramString, AIOImageData paramAIOImageData, int paramInt, TroopMemberApiClient.Callback paramCallback)
+  public void a(String paramString, AIOImageData paramAIOImageData, int paramInt, ITroopMemberApiClientApi.Callback paramCallback)
   {
     if (paramString == null) {
       return;
@@ -492,9 +497,22 @@ public class TroopMemberApiClient
     localBundle.putInt("size", paramInt);
     int i = a(paramCallback);
     localBundle.putInt("seq", i);
-    paramString = paramAIOImageData.h + "/" + paramInt;
+    paramString = new StringBuilder();
+    paramString.append(paramAIOImageData.h);
+    paramString.append("/");
+    paramString.append(paramInt);
+    paramString = paramString.toString();
     this.jdField_b_of_type_JavaUtilHashMap.put(paramString, Integer.valueOf(i));
     a(58, localBundle);
+  }
+  
+  public void a(String paramString, ITroopMemberApiClientApi.Callback paramCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", a(paramCallback));
+    localBundle.putString("troopUin", paramString);
+    localBundle.putString("processName", a());
+    a(59, localBundle);
   }
   
   public void a(String paramString1, String paramString2)
@@ -514,7 +532,7 @@ public class TroopMemberApiClient
     a(29, localBundle);
   }
   
-  public void a(String paramString1, String paramString2, int paramInt, TroopMemberApiClient.Callback paramCallback)
+  public void a(String paramString1, String paramString2, int paramInt, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("path", paramString1);
@@ -524,7 +542,7 @@ public class TroopMemberApiClient
     a(87, localBundle);
   }
   
-  public void a(String paramString1, String paramString2, int paramInt, String paramString3, TroopMemberApiClient.Callback paramCallback)
+  public void a(String paramString1, String paramString2, int paramInt, String paramString3, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("callback", paramString3);
@@ -535,7 +553,7 @@ public class TroopMemberApiClient
     a(19, localBundle);
   }
   
-  public void a(String paramString1, String paramString2, TroopMemberApiClient.Callback paramCallback)
+  public void a(String paramString1, String paramString2, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("groupCode", paramString1);
@@ -553,7 +571,7 @@ public class TroopMemberApiClient
     a(96, localBundle);
   }
   
-  public void a(String paramString1, String paramString2, String paramString3, TroopMemberApiClient.Callback paramCallback)
+  public void a(String paramString1, String paramString2, String paramString3, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("troopUin", paramString1);
@@ -620,7 +638,7 @@ public class TroopMemberApiClient
     a(85, localBundle);
   }
   
-  public void a(ArrayList<String> paramArrayList, TroopMemberApiClient.Callback paramCallback)
+  public void a(ArrayList<String> paramArrayList, ITroopMemberApiClientApi.Callback paramCallback)
   {
     int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
     Bundle localBundle = new Bundle();
@@ -630,7 +648,7 @@ public class TroopMemberApiClient
     a(102, localBundle);
   }
   
-  public void a(JSONObject paramJSONObject, Parcelable paramParcelable, TroopMemberApiClient.Callback paramCallback)
+  public void a(JSONObject paramJSONObject, Parcelable paramParcelable, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -639,7 +657,7 @@ public class TroopMemberApiClient
     a(154, localBundle);
   }
   
-  public void a(JSONObject paramJSONObject, TroopMemberApiClient.Callback paramCallback)
+  public void a(JSONObject paramJSONObject, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -647,7 +665,7 @@ public class TroopMemberApiClient
     a(155, localBundle);
   }
   
-  public void a(short paramShort, TroopMemberApiClient.Callback paramCallback)
+  public void a(short paramShort, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -655,7 +673,7 @@ public class TroopMemberApiClient
     a(151, localBundle);
   }
   
-  public void a(short paramShort, boolean paramBoolean, TroopMemberApiClient.Callback paramCallback)
+  public void a(short paramShort, boolean paramBoolean, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -689,7 +707,7 @@ public class TroopMemberApiClient
     a(73, localBundle);
   }
   
-  public int b(TroopMemberApiClient.Callback paramCallback)
+  public int b(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     int i = a(paramCallback);
@@ -700,61 +718,49 @@ public class TroopMemberApiClient
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0) {
-      QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
-    }
-    for (;;)
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() == 0)
     {
+      QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
       return;
-      BaseApplication localBaseApplication;
-      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(-1) == 0)
-      {
-        localBaseApplication = BaseApplicationImpl.getContext();
-        if (this.jdField_b_of_type_AndroidOsMessenger == null) {}
-      }
+    }
+    BaseApplication localBaseApplication;
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(-1) == 0)
+    {
+      localBaseApplication = BaseApplicationImpl.getContext();
+      if (this.jdField_b_of_type_AndroidOsMessenger == null) {}
+    }
+    try
+    {
+      Message localMessage = Message.obtain(null, 2);
+      localMessage.replyTo = this.jdField_a_of_type_AndroidOsMessenger;
+      Bundle localBundle = new Bundle();
+      localBundle.putString("processName", a());
+      localMessage.obj = localBundle;
+      this.jdField_b_of_type_AndroidOsMessenger.send(localMessage);
+      label94:
+      localBaseApplication.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
+      this.jdField_b_of_type_AndroidOsMessenger = null;
       try
       {
-        Message localMessage = Message.obtain(null, 2);
-        localMessage.replyTo = this.jdField_a_of_type_AndroidOsMessenger;
-        Bundle localBundle = new Bundle();
-        localBundle.putString("processName", a());
-        localMessage.obj = localBundle;
-        this.jdField_b_of_type_AndroidOsMessenger.send(localMessage);
-        label94:
-        localBaseApplication.unbindService(this.jdField_a_of_type_AndroidContentServiceConnection);
-        this.jdField_b_of_type_AndroidOsMessenger = null;
-        try
-        {
-          this.jdField_b_of_type_JavaUtilList.clear();
-          this.jdField_a_of_type_JavaUtilMap.clear();
-          a().a();
-          if (QLog.isColorLevel()) {
-            QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "Unbinding...");
-          }
-          if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() >= 0) {
-            continue;
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-          QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
-          return;
+        this.jdField_b_of_type_JavaUtilList.clear();
+        this.jdField_a_of_type_JavaUtilMap.clear();
+        a().a();
+        if (QLog.isColorLevel()) {
+          QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "Unbinding...");
         }
-        finally {}
       }
-      catch (RemoteException localRemoteException)
+      finally {}
+      if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() < 0)
       {
-        break label94;
+        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+        QLog.e("com.tencent.biz.troop.TroopMemberApiClient", 1, "call unbind but didn't bind", new Throwable());
       }
+      return;
     }
-  }
-  
-  public void b(int paramInt)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("reqUserSetEnableAlbumScan", paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("UserEnableAlbumScan", 2, "TroopMemberApiClient setUserEnableAlbumScan value = " + paramInt);
+    catch (RemoteException localRemoteException)
+    {
+      break label94;
     }
-    a(125, localBundle);
   }
   
   public void b(Bundle paramBundle)
@@ -762,24 +768,28 @@ public class TroopMemberApiClient
     a(114, paramBundle);
   }
   
-  public void b(TroopMemberApiClient.Callback paramCallback)
+  public void b(BusinessObserver paramBusinessObserver)
+  {
+    if (paramBusinessObserver == null) {
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("unRegisterObserver key:");
+      localStringBuilder.append(paramBusinessObserver.hashCode());
+      QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, localStringBuilder.toString());
+    }
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
+    }
+  }
+  
+  public void b(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
     a(84, localBundle);
-  }
-  
-  public void b(BusinessObserver paramBusinessObserver)
-  {
-    if (paramBusinessObserver == null) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("com.tencent.biz.troop.TroopMemberApiClient", 2, "unRegisterObserver key:" + paramBusinessObserver.hashCode());
-      }
-    } while (!this.jdField_a_of_type_JavaUtilList.contains(paramBusinessObserver));
-    this.jdField_a_of_type_JavaUtilList.remove(paramBusinessObserver);
   }
   
   public void b(String paramString)
@@ -806,7 +816,7 @@ public class TroopMemberApiClient
     a(69, localBundle);
   }
   
-  public void b(String paramString1, int paramInt, String paramString2, boolean paramBoolean, TroopMemberApiClient.Callback paramCallback1, TroopMemberApiClient.Callback paramCallback2)
+  public void b(String paramString1, int paramInt, String paramString2, boolean paramBoolean, ITroopMemberApiClientApi.Callback paramCallback1, ITroopMemberApiClientApi.Callback paramCallback2)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("pic_server_id", paramString1);
@@ -818,7 +828,7 @@ public class TroopMemberApiClient
     a(22, localBundle);
   }
   
-  public void b(String paramString, TroopMemberApiClient.Callback paramCallback)
+  public void b(String paramString, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -831,13 +841,16 @@ public class TroopMemberApiClient
   
   public void b(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1))) {
-      return;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return;
+      }
+      Bundle localBundle = new Bundle();
+      localBundle.putString("gcode", paramString1);
+      localBundle.putString("anId", paramString2);
+      a(7, localBundle);
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("gcode", paramString1);
-    localBundle.putString("anId", paramString2);
-    a(7, localBundle);
   }
   
   public void b(String paramString1, String paramString2, int paramInt)
@@ -849,7 +862,7 @@ public class TroopMemberApiClient
     a(70, localBundle);
   }
   
-  public void b(String paramString1, String paramString2, TroopMemberApiClient.Callback paramCallback)
+  public void b(String paramString1, String paramString2, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("troopUin", paramString1);
@@ -867,7 +880,7 @@ public class TroopMemberApiClient
     a(99, localBundle);
   }
   
-  public void b(String paramString1, String paramString2, String paramString3, TroopMemberApiClient.Callback paramCallback)
+  public void b(String paramString1, String paramString2, String paramString3, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("appid", paramString1);
@@ -910,7 +923,7 @@ public class TroopMemberApiClient
     a(117, localBundle);
   }
   
-  public void c(TroopMemberApiClient.Callback paramCallback)
+  public void c(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -932,7 +945,7 @@ public class TroopMemberApiClient
     a(74, localBundle);
   }
   
-  public void c(String paramString, TroopMemberApiClient.Callback paramCallback)
+  public void c(String paramString, ITroopMemberApiClientApi.Callback paramCallback)
   {
     if (paramCallback == null) {
       return;
@@ -953,13 +966,15 @@ public class TroopMemberApiClient
     a(71, localBundle);
   }
   
-  public void c(String paramString1, String paramString2, TroopMemberApiClient.Callback paramCallback)
+  public void c(String paramString1, String paramString2, ITroopMemberApiClientApi.Callback paramCallback)
   {
+    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
     Bundle localBundle = new Bundle();
-    localBundle.putString("path", paramString1);
-    localBundle.putString("photoPath", paramString2);
-    localBundle.putInt("seq", a(paramCallback));
-    a(75, localBundle);
+    localBundle.putString("troopCode", paramString1);
+    localBundle.putString("rid", paramString2);
+    localBundle.putInt("seq", i);
+    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCallback);
+    a(101, localBundle);
   }
   
   public void c(String paramString, boolean paramBoolean)
@@ -980,7 +995,7 @@ public class TroopMemberApiClient
     a(148, paramBundle);
   }
   
-  public void d(TroopMemberApiClient.Callback paramCallback)
+  public void d(ITroopMemberApiClientApi.Callback paramCallback)
   {
     if (QLog.isColorLevel()) {
       QLog.d("getReadinjoyShareToWxConfig", 2, "get config");
@@ -995,7 +1010,7 @@ public class TroopMemberApiClient
     a(98, localBundle);
   }
   
-  public void d(String paramString, TroopMemberApiClient.Callback paramCallback)
+  public void d(String paramString, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -1014,15 +1029,20 @@ public class TroopMemberApiClient
     a(41, localBundle);
   }
   
-  public void d(String paramString1, String paramString2, TroopMemberApiClient.Callback paramCallback)
+  public void d(String paramString1, String paramString2, ITroopMemberApiClientApi.Callback paramCallback)
   {
-    int i = this.jdField_b_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
     Bundle localBundle = new Bundle();
-    localBundle.putString("troopCode", paramString1);
-    localBundle.putString("rid", paramString2);
-    localBundle.putInt("seq", i);
-    this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(i), paramCallback);
-    a(101, localBundle);
+    localBundle.putString("skinId", paramString1);
+    localBundle.putString("skinUrl", paramString2);
+    localBundle.putInt("seq", a(paramCallback));
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("TroopMemberApiClient cancelLoadReadinjoySkin skinId = ");
+      paramString2.append(paramString1);
+      QLog.d("Readinjoy", 2, paramString2.toString());
+    }
+    a(108, localBundle);
   }
   
   public void d(String paramString, boolean paramBoolean)
@@ -1038,7 +1058,7 @@ public class TroopMemberApiClient
     a(77, new Bundle());
   }
   
-  public void e(TroopMemberApiClient.Callback paramCallback)
+  public void e(ITroopMemberApiClientApi.Callback paramCallback)
   {
     a(128, new Bundle(), paramCallback);
   }
@@ -1050,7 +1070,7 @@ public class TroopMemberApiClient
     a(149, localBundle);
   }
   
-  public void e(String paramString, TroopMemberApiClient.Callback paramCallback)
+  public void e(String paramString, ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putString("localPath", paramString);
@@ -1063,18 +1083,6 @@ public class TroopMemberApiClient
     localBundle.putString("localFilePath", paramString1);
     localBundle.putString("fileDisPlayName", paramString2);
     a(47, localBundle);
-  }
-  
-  public void e(String paramString1, String paramString2, TroopMemberApiClient.Callback paramCallback)
-  {
-    Bundle localBundle = new Bundle();
-    localBundle.putString("skinId", paramString1);
-    localBundle.putString("skinUrl", paramString2);
-    localBundle.putInt("seq", a(paramCallback));
-    if (QLog.isColorLevel()) {
-      QLog.d("Readinjoy", 2, "TroopMemberApiClient cancelLoadReadinjoySkin skinId = " + paramString1);
-    }
-    a(108, localBundle);
   }
   
   public void e(String paramString, boolean paramBoolean)
@@ -1090,7 +1098,7 @@ public class TroopMemberApiClient
     a(27, new Bundle());
   }
   
-  public void f(TroopMemberApiClient.Callback paramCallback)
+  public void f(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -1114,12 +1122,12 @@ public class TroopMemberApiClient
   
   public void g()
   {
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient$Callback = null;
+    this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback = null;
   }
   
-  public void g(TroopMemberApiClient.Callback paramCallback)
+  public void g(ITroopMemberApiClientApi.Callback paramCallback)
   {
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient$Callback = paramCallback;
+    this.jdField_a_of_type_ComTencentMobileqqTroopApiITroopMemberApiClientApi$Callback = paramCallback;
   }
   
   public void g(String paramString)
@@ -1142,7 +1150,7 @@ public class TroopMemberApiClient
     a(89, null);
   }
   
-  public void h(TroopMemberApiClient.Callback paramCallback)
+  public void h(ITroopMemberApiClientApi.Callback paramCallback)
   {
     Bundle localBundle = new Bundle();
     localBundle.putInt("seq", a(paramCallback));
@@ -1165,10 +1173,10 @@ public class TroopMemberApiClient
     a(104, new Bundle());
   }
   
-  public void i(TroopMemberApiClient.Callback paramCallback)
+  public void i(ITroopMemberApiClientApi.Callback paramCallback)
   {
     a(141, new Bundle(), paramCallback);
-    AdReporterForAnalysis.reportForAPIInvoked(BaseApplicationImpl.getApplication(), true, "com.tencent.biz.troop.TroopMemberApiClient#gdtGetCurrentUserInfo(Callback)", "");
+    AdAnalysisHelperForUtil.reportForAPIInvoked(BaseApplicationImpl.getApplication(), true, "com.tencent.biz.troop.TroopMemberApiClient#gdtGetCurrentUserInfo(Callback)", "");
   }
   
   public void i(String paramString1, String paramString2)
@@ -1184,6 +1192,13 @@ public class TroopMemberApiClient
     a(116, new Bundle());
   }
   
+  public void j(ITroopMemberApiClientApi.Callback paramCallback)
+  {
+    Bundle localBundle = new Bundle();
+    localBundle.putInt("seq", a(paramCallback));
+    a(163, localBundle);
+  }
+  
   public void k()
   {
     a(124, new Bundle());
@@ -1191,7 +1206,7 @@ public class TroopMemberApiClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiClient
  * JD-Core Version:    0.7.0.1
  */

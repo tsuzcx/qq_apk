@@ -5,7 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.utils.H5HbUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.hb.IH5HbUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.core.model.RequestEvent;
 import mqq.util.WeakReference;
@@ -28,21 +29,35 @@ public class TenpayPlugin$QWalletPayJsPluginResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("TenpayPlugin", 2, "resultCode = " + paramInt + " resultData = " + paramBundle);
-    }
-    if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent == null) || (paramBundle == null) || (this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {}
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      return;
-      paramBundle = H5HbUtil.a(paramInt, paramBundle, (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get());
-    } while (paramBundle == null);
-    this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramBundle);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("resultCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" resultData = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.i("TenpayPlugin", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent != null) && (paramBundle != null))
+    {
+      localObject = this.jdField_a_of_type_MqqUtilWeakReference;
+      if (localObject != null)
+      {
+        if (((WeakReference)localObject).get() == null) {
+          return;
+        }
+        paramBundle = ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getGrapHbResult(paramInt, paramBundle, (Activity)this.jdField_a_of_type_MqqUtilWeakReference.get());
+        if (paramBundle != null) {
+          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreModelRequestEvent.ok(paramBundle);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.TenpayPlugin.QWalletPayJsPluginResultReceiver
  * JD-Core Version:    0.7.0.1
  */

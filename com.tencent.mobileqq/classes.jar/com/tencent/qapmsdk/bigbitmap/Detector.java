@@ -29,8 +29,10 @@ class Detector
     if ((paramDrawableInfo != null) && (this.bitmapSizeChecker.check(paramDrawableInfo.width, paramDrawableInfo.height, paramView.getWidth(), paramView.getHeight()).booleanValue()))
     {
       paramString1 = new ExceedBitmapInfo(paramString1, ClassUtil.getClassName(paramView, null), paramString2, paramView.getWidth(), paramView.getHeight(), paramDrawableInfo.width, paramDrawableInfo.height, paramDrawableInfo.type, paramDrawableInfo.allocatedByteSize, paramDrawableInfo.url, System.currentTimeMillis());
-      if (!paramList.contains(paramString1)) {
+      if (!paramList.contains(paramString1))
+      {
         paramList.add(paramString1);
+        return;
       }
     }
   }
@@ -45,17 +47,18 @@ class Detector
   void detect(List<ExceedBitmapInfo> paramList, String paramString1, String paramString2, View paramView)
   {
     Drawable localDrawable2 = paramView.getBackground();
-    if ((paramView instanceof ImageView)) {}
-    for (Drawable localDrawable1 = ((ImageView)paramView).getDrawable();; localDrawable1 = null)
+    Drawable localDrawable1;
+    if ((paramView instanceof ImageView)) {
+      localDrawable1 = ((ImageView)paramView).getDrawable();
+    } else {
+      localDrawable1 = null;
+    }
+    Iterator localIterator = this.viewSizeCheckers.values().iterator();
+    while (localIterator.hasNext())
     {
-      Iterator localIterator = this.viewSizeCheckers.values().iterator();
-      while (localIterator.hasNext())
-      {
-        AbstractDrawableSizeProvider localAbstractDrawableSizeProvider = (AbstractDrawableSizeProvider)localIterator.next();
-        addToExceedBitmapList(paramList, paramString1, paramString2, paramView, localAbstractDrawableSizeProvider.checkBackground(localDrawable2));
-        addToExceedBitmapList(paramList, paramString1, paramString2, paramView, localAbstractDrawableSizeProvider.checkSrc(localDrawable1));
-      }
-      return;
+      AbstractDrawableSizeProvider localAbstractDrawableSizeProvider = (AbstractDrawableSizeProvider)localIterator.next();
+      addToExceedBitmapList(paramList, paramString1, paramString2, paramView, localAbstractDrawableSizeProvider.checkBackground(localDrawable2));
+      addToExceedBitmapList(paramList, paramString1, paramString2, paramView, localAbstractDrawableSizeProvider.checkSrc(localDrawable1));
     }
   }
   
@@ -66,7 +69,7 @@ class Detector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.bigbitmap.Detector
  * JD-Core Version:    0.7.0.1
  */

@@ -31,8 +31,14 @@ class LongArkMsgManager$1
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp, null, false);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("StructLongTextMsg", 2, "upload multi msg pack failed, result.errStr=" + paramSendResult.b + ",result.errStr=" + paramSendResult.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("upload multi msg pack failed, result.errStr=");
+        localStringBuilder.append(paramSendResult.b);
+        localStringBuilder.append(",result.errStr=");
+        localStringBuilder.append(paramSendResult.jdField_a_of_type_JavaLangString);
+        QLog.d("StructLongTextMsg", 2, localStringBuilder.toString());
       }
       LongTextMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageForArkApp);
       return;
@@ -48,7 +54,7 @@ class LongArkMsgManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.LongArkMsgManager.1
  * JD-Core Version:    0.7.0.1
  */

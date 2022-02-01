@@ -18,19 +18,25 @@ public class LoadParam$LoadItem
   public LoadParam$LoadItem(String paramString, LoadOptions paramLoadOptions)
   {
     this.name = paramString;
-    this.soFileName = ("lib" + paramString + ".so");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lib");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".so");
+    this.soFileName = localStringBuilder.toString();
     if (paramLoadOptions != null)
     {
       this.lops = paramLoadOptions;
       return;
     }
-    this.lops = new LoadOptions.LoadOptionsBuilder().a();
+    this.lops = new LoadOptions.LoadOptionsBuilder().build();
   }
   
   public boolean isSame(LoadItem paramLoadItem)
   {
-    if (paramLoadItem == null) {}
-    while (!SoDataUtil.a(paramLoadItem.name, this.name)) {
+    if (paramLoadItem == null) {
+      return false;
+    }
+    if (!SoDataUtil.a(paramLoadItem.name, this.name)) {
       return false;
     }
     return this.lops.isSame(paramLoadItem.lops);
@@ -38,12 +44,19 @@ public class LoadParam$LoadItem
   
   public String toString()
   {
-    return "LoadItem{name='" + this.name + '\'' + ", lops=" + this.lops + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LoadItem{name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", lops=");
+    localStringBuilder.append(this.lops);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.biz.entity.LoadParam.LoadItem
  * JD-Core Version:    0.7.0.1
  */

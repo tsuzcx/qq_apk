@@ -58,7 +58,19 @@ public class PromotionUtils$ARCardPromotionInfo
           this.jdField_a_of_type_Int = 2;
         }
       }
-      QLog.w("ScanTorchActivity", 1, "ARRelationShipPromotion, mPromotionId[" + this.jdField_a_of_type_JavaLangString + "], mPromotionWords[" + this.b + "], mPromotionIconUrl[" + this.c + "], mRecoglizeMask[" + this.jdField_a_of_type_Long + "], isMasterState[" + this.jdField_e_of_type_Boolean + "]");
+      paramAppInterface = new StringBuilder();
+      paramAppInterface.append("ARRelationShipPromotion, mPromotionId[");
+      paramAppInterface.append(this.jdField_a_of_type_JavaLangString);
+      paramAppInterface.append("], mPromotionWords[");
+      paramAppInterface.append(this.b);
+      paramAppInterface.append("], mPromotionIconUrl[");
+      paramAppInterface.append(this.c);
+      paramAppInterface.append("], mRecoglizeMask[");
+      paramAppInterface.append(this.jdField_a_of_type_Long);
+      paramAppInterface.append("], isMasterState[");
+      paramAppInterface.append(this.jdField_e_of_type_Boolean);
+      paramAppInterface.append("]");
+      QLog.w("ScanTorchActivity", 1, paramAppInterface.toString());
       return;
     }
     catch (Exception paramBundle)
@@ -69,7 +81,7 @@ public class PromotionUtils$ARCardPromotionInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.utils.PromotionUtils.ARCardPromotionInfo
  * JD-Core Version:    0.7.0.1
  */

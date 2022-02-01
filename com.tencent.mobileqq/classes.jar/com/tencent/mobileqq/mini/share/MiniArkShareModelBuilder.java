@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
+import NS_COMM.COMM.StCommonExt;
 import com.tencent.mobileqq.mini.sdk.EntryModel;
 import com.tencent.mobileqq.mini.sdk.ShareChatModel;
 
@@ -9,8 +10,10 @@ public class MiniArkShareModelBuilder
   private String appidRich;
   private String description;
   private EntryModel entryModel;
+  private COMM.StCommonExt extInfo;
   private String iconUrl;
   private String jumpUrl;
+  private int miniAppShareFrom;
   private String picUrl;
   private String rcvOpenId;
   private int shareBusinessType;
@@ -25,10 +28,11 @@ public class MiniArkShareModelBuilder
   private int versionType;
   private String vidUrl;
   private String webURL;
+  private boolean withShareTicket;
   
   public MiniArkShareModel createMiniArkShareModel()
   {
-    return new MiniArkShareModel(this.appId, this.title, this.description, this.shareScene, this.shareTemplateType, this.shareBusinessType, this.picUrl, this.vidUrl, this.jumpUrl, this.iconUrl, this.versionType, this.versionId, this.webURL, this.appidRich, this.templateId, this.templateData, this.entryModel, this.shareChatModel, this.shareTarget, this.rcvOpenId);
+    return new MiniArkShareModel(this.appId, this.title, this.description, this.shareScene, this.shareTemplateType, this.shareBusinessType, this.picUrl, this.vidUrl, this.jumpUrl, this.iconUrl, this.versionType, this.versionId, this.webURL, this.appidRich, this.templateId, this.templateData, this.entryModel, this.shareChatModel, this.shareTarget, this.rcvOpenId, this.withShareTicket, this.miniAppShareFrom, this.extInfo);
   }
   
   public MiniArkShareModelBuilder setAppId(String paramString)
@@ -55,6 +59,12 @@ public class MiniArkShareModelBuilder
     return this;
   }
   
+  public MiniArkShareModelBuilder setExtInfo(COMM.StCommonExt paramStCommonExt)
+  {
+    this.extInfo = paramStCommonExt;
+    return this;
+  }
+  
   public MiniArkShareModelBuilder setIconUrl(String paramString)
   {
     this.iconUrl = paramString;
@@ -64,6 +74,12 @@ public class MiniArkShareModelBuilder
   public MiniArkShareModelBuilder setJumpUrl(String paramString)
   {
     this.jumpUrl = paramString;
+    return this;
+  }
+  
+  public MiniArkShareModelBuilder setMiniAppShareFrom(int paramInt)
+  {
+    this.miniAppShareFrom = paramInt;
     return this;
   }
   
@@ -150,10 +166,16 @@ public class MiniArkShareModelBuilder
     this.webURL = paramString;
     return this;
   }
+  
+  public MiniArkShareModelBuilder setWithShareTicket(boolean paramBoolean)
+  {
+    this.withShareTicket = paramBoolean;
+    return this;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniArkShareModelBuilder
  * JD-Core Version:    0.7.0.1
  */

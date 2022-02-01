@@ -57,138 +57,166 @@ public class AuthDevUgActivity
   
   private void initUI()
   {
-    if ((this.mDevlockInfo != null) && (!TextUtils.isEmpty(this.mDevlockInfo.OtherDevLockVerifyUrl))) {
+    Object localObject = this.mDevlockInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((DevlockInfo)localObject).OtherDevLockVerifyUrl))) {
       this.mOtherVerifyTv.setVisibility(0);
     }
-    String str;
-    if (this.mIsFromLogin) {
-      if ((this.mDevlockInfo != null) && (!TextUtils.isEmpty(this.mDevlockInfo.VerifyReason)))
-      {
+    if (this.mIsFromLogin)
+    {
+      localObject = this.mDevlockInfo;
+      if ((localObject != null) && (!TextUtils.isEmpty(((DevlockInfo)localObject).VerifyReason))) {
         this.mMainTv.setText(this.mDevlockInfo.VerifyReason);
-        if (this.mDevlockInfo != null)
-        {
-          str = getString(2131692104) + ":" + this.mDevlockInfo.Mobile;
-          this.mSecretPhoneTv.setText(str);
-        }
-        this.mBottomBtn.setText(getString(2131692134));
-        this.mSetPhoneTv.setVisibility(8);
-        if ((this.mDevlockInfo != null) && (!TextUtils.isEmpty(this.mDevlockInfo.Mobile))) {
-          break label258;
-        }
+      } else {
+        this.mMainTv.setText(getString(2131692052));
+      }
+      if (this.mDevlockInfo != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(getString(2131692023));
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(this.mDevlockInfo.Mobile);
+        localObject = ((StringBuilder)localObject).toString();
+        this.mSecretPhoneTv.setText((CharSequence)localObject);
+      }
+      this.mBottomBtn.setText(getString(2131692053));
+      this.mSetPhoneTv.setVisibility(8);
+      localObject = this.mDevlockInfo;
+      if ((localObject != null) && (!TextUtils.isEmpty(((DevlockInfo)localObject).Mobile)))
+      {
+        this.mSecretPhoneTv.setVisibility(0);
+        this.mChangePhoneBtn.setVisibility(0);
+      }
+      else
+      {
         this.mSecretPhoneTv.setVisibility(8);
         this.mChangePhoneBtn.setVisibility(8);
-        if (this.mOtherVerifyTv != null) {
-          this.mOtherVerifyTv.setVisibility(4);
+        localObject = this.mOtherVerifyTv;
+        if (localObject != null) {
+          ((TextView)localObject).setVisibility(4);
         }
-        label194:
-        this.leftView.setVisibility(4);
-        setRightButton(2131690800, this);
-        if (AppSetting.d)
-        {
-          this.mChangePhoneBtn.setContentDescription(getString(2131692132));
-          this.mBottomBtn.setContentDescription(getString(2131692134));
-        }
+      }
+      this.leftView.setVisibility(4);
+      setRightButton(2131690728, this);
+      if (AppSetting.d)
+      {
+        this.mChangePhoneBtn.setContentDescription(getString(2131692051));
+        this.mBottomBtn.setContentDescription(getString(2131692053));
       }
     }
-    label258:
-    label459:
-    do
+    else
     {
-      return;
-      this.mMainTv.setText(getString(2131692133));
-      break;
-      this.mSecretPhoneTv.setVisibility(0);
-      this.mChangePhoneBtn.setVisibility(0);
-      break label194;
-      if ((this.mDevlockInfo != null) && (!TextUtils.isEmpty(this.mDevlockInfo.ProtectIntro))) {
+      localObject = this.mDevlockInfo;
+      if ((localObject != null) && (!TextUtils.isEmpty(((DevlockInfo)localObject).ProtectIntro))) {
         this.mMainTv.setText(this.mDevlockInfo.ProtectIntro);
+      } else {
+        this.mMainTv.setText(getString(2131692052));
       }
-      for (;;)
+      localObject = this.mDevlockInfo;
+      if ((localObject != null) && (((DevlockInfo)localObject).MbGuideType == 2))
       {
-        if ((this.mDevlockInfo == null) || (this.mDevlockInfo.MbGuideType != 2)) {
-          break label459;
-        }
-        str = getString(2131692104) + ":" + this.mDevlockInfo.Mobile;
-        this.mSecretPhoneTv.setText(str);
-        this.mBottomBtn.setText(getString(2131692065));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(getString(2131692023));
+        ((StringBuilder)localObject).append(":");
+        ((StringBuilder)localObject).append(this.mDevlockInfo.Mobile);
+        localObject = ((StringBuilder)localObject).toString();
+        this.mSecretPhoneTv.setText((CharSequence)localObject);
+        this.mBottomBtn.setText(getString(2131691984));
         this.mSetPhoneTv.setVisibility(8);
         this.mSecretPhoneTv.setVisibility(0);
         this.mChangePhoneBtn.setVisibility(0);
-        if (!AppSetting.d) {
-          break;
+        if (AppSetting.d)
+        {
+          this.mChangePhoneBtn.setContentDescription(getString(2131692051));
+          this.mBottomBtn.setContentDescription(getString(2131691984));
         }
-        this.mChangePhoneBtn.setContentDescription(getString(2131692132));
-        this.mBottomBtn.setContentDescription(getString(2131692065));
-        return;
-        this.mMainTv.setText(getString(2131692133));
       }
-      if ((this.mDevlockInfo != null) && (!TextUtils.isEmpty(this.mDevlockInfo.MbGuideMsg))) {
-        this.mSetPhoneTv.setText(this.mDevlockInfo.MbGuideMsg);
+      else
+      {
+        localObject = this.mDevlockInfo;
+        if ((localObject != null) && (!TextUtils.isEmpty(((DevlockInfo)localObject).MbGuideMsg))) {
+          this.mSetPhoneTv.setText(this.mDevlockInfo.MbGuideMsg);
+        }
+        this.mBottomBtn.setText(getString(2131691984));
+        if (AppSetting.d)
+        {
+          this.mChangePhoneBtn.setContentDescription(getString(2131692051));
+          this.mBottomBtn.setContentDescription(getString(2131691984));
+        }
       }
-      this.mBottomBtn.setText(getString(2131692065));
-    } while (!AppSetting.d);
-    this.mChangePhoneBtn.setContentDescription(getString(2131692132));
-    this.mBottomBtn.setContentDescription(getString(2131692065));
+    }
   }
   
   private void jumpToOtherVerify()
   {
-    boolean bool = true;
-    if ((this.mDevlockInfo == null) || (TextUtils.isEmpty(this.mDevlockInfo.OtherDevLockVerifyUrl)))
+    Object localObject1 = this.mDevlockInfo;
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((DevlockInfo)localObject1).OtherDevLockVerifyUrl)))
     {
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("portraitOnly", true);
+      ((Intent)localObject1).putExtra("url", this.mDevlockInfo.OtherDevLockVerifyUrl);
+      ((Intent)localObject1).putExtra("subAccountUin", this.mUin);
+      ((Intent)localObject1).putExtra("hide_operation_bar", true);
+      ((Intent)localObject1).putExtra("hide_more_button", true);
+      boolean bool2 = false;
+      Object localObject2 = this.mMainAccount;
+      boolean bool1 = bool2;
+      if (localObject2 != null)
+      {
+        bool1 = bool2;
+        if (!((String)localObject2).equals(this.mUin)) {
+          bool1 = true;
+        }
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("other_verify,  mMainAccount =");
+        ((StringBuilder)localObject2).append(this.mMainAccount);
+        ((StringBuilder)localObject2).append(" mUin =");
+        ((StringBuilder)localObject2).append(this.mUin);
+        ((StringBuilder)localObject2).append(" isSubaccount=");
+        ((StringBuilder)localObject2).append(bool1);
+        QLog.d("Q.devlock.AuthDevUgActivity", 2, ((StringBuilder)localObject2).toString());
+      }
+      ((Intent)localObject1).putExtra("isSubaccount", bool1);
+      ((Intent)localObject1).putExtra("avoidLoginWeb", bool1);
+      beforeOpenBrowser();
+    }
+    try
+    {
+      this.mEquipLockApi.a(this, "", 16384L, (Intent)localObject1, false, -1);
+      label225:
+      afterOpenBrowser();
+      ReportController.a(this.mRuntime, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
+      return;
       QLog.e("Q.devlock.AuthDevUgActivity", 1, "jumpToOtherVerify, mDevlockInfo or OtherDevLockVerifyUrl is null");
       return;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("portraitOnly", true);
-    localIntent.putExtra("url", this.mDevlockInfo.OtherDevLockVerifyUrl);
-    localIntent.putExtra("subAccountUin", this.mUin);
-    localIntent.putExtra("hide_operation_bar", true);
-    localIntent.putExtra("hide_more_button", true);
-    if ((this.mMainAccount != null) && (!this.mMainAccount.equals(this.mUin))) {}
-    for (;;)
+    catch (SecurityException localSecurityException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.devlock.AuthDevUgActivity", 2, "other_verify,  mMainAccount =" + this.mMainAccount + " mUin =" + this.mUin + " isSubaccount=" + bool);
-      }
-      localIntent.putExtra("isSubaccount", bool);
-      localIntent.putExtra("avoidLoginWeb", bool);
-      beforeOpenBrowser();
-      try
-      {
-        this.mEquipLockApi.a(this, "", 16384L, localIntent, false, -1);
-        label202:
-        afterOpenBrowser();
-        ReportController.a(this.mRuntime, "dc00898", "", "", "0X800A413", "0X800A413", 0, 0, "", "", "", "");
-        return;
-      }
-      catch (SecurityException localSecurityException)
-      {
-        break label202;
-      }
-      bool = false;
+      break label225;
     }
   }
   
   private void jumpToSMSVerify()
   {
-    if ("com.tencent.mobileqq:openSdk".equals(this.mApp.getApplication().getQQProcessName())) {}
-    for (Object localObject = "/base/login/authDevVerifyCodeOpenSdk";; localObject = "/base/login/authDevVerifyCode")
-    {
-      localObject = new ActivityURIRequest(this, (String)localObject);
-      if (this.mDevlockInfo != null)
-      {
-        ((ActivityURIRequest)localObject).extra().putString("phone_num", this.mDevlockInfo.Mobile);
-        ((ActivityURIRequest)localObject).extra().putString("country_code", this.mDevlockInfo.CountryCode);
-        ((ActivityURIRequest)localObject).extra().putInt("mobile_type", 0);
-      }
-      ((ActivityURIRequest)localObject).extra().putBoolean("from_login", this.mIsFromLogin);
-      ((ActivityURIRequest)localObject).extra().putString("uin", this.mUin);
-      ((ActivityURIRequest)localObject).extra().putInt("seq", this.mVerifySeq);
-      ((ActivityURIRequest)localObject).setRequestCode(1002);
-      QRoute.startUri((URIRequest)localObject, null);
-      return;
+    if ("com.tencent.mobileqq:openSdk".equals(this.mApp.getApplication().getQQProcessName())) {
+      localObject = "/base/login/authDevVerifyCodeOpenSdk";
+    } else {
+      localObject = "/base/login/authDevVerifyCode";
     }
+    Object localObject = new ActivityURIRequest(this, (String)localObject);
+    if (this.mDevlockInfo != null)
+    {
+      ((ActivityURIRequest)localObject).extra().putString("phone_num", this.mDevlockInfo.Mobile);
+      ((ActivityURIRequest)localObject).extra().putString("country_code", this.mDevlockInfo.CountryCode);
+      ((ActivityURIRequest)localObject).extra().putInt("mobile_type", 0);
+    }
+    ((ActivityURIRequest)localObject).extra().putBoolean("from_login", this.mIsFromLogin);
+    ((ActivityURIRequest)localObject).extra().putString("uin", this.mUin);
+    ((ActivityURIRequest)localObject).extra().putInt("seq", this.mVerifySeq);
+    ((ActivityURIRequest)localObject).setRequestCode(1002);
+    QRoute.startUri((URIRequest)localObject, null);
   }
   
   protected void afterOpenBrowser()
@@ -211,7 +239,7 @@ public class AuthDevUgActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     paramBundle = getIntent();
@@ -226,101 +254,140 @@ public class AuthDevUgActivity
       finish();
       return true;
     }
-    for (;;)
+    try
     {
-      try
+      this.mIsFromLogin = paramBundle.getBoolean("from_login");
+      this.mVerifySeq = paramBundle.getInt("seq");
+      Object localObject = paramBundle.get("DevlockInfo");
+      if ((localObject instanceof DevlockInfo)) {
+        this.mDevlockInfo = ((DevlockInfo)localObject);
+      }
+      this.mUin = paramBundle.getString("uin");
+      this.mFromWhere = paramBundle.getString("from_where");
+      this.mMainAccount = paramBundle.getString("mainaccount");
+      if (QLog.isColorLevel())
       {
-        this.mIsFromLogin = paramBundle.getBoolean("from_login");
-        this.mVerifySeq = paramBundle.getInt("seq");
-        Object localObject = paramBundle.get("DevlockInfo");
-        if ((localObject instanceof DevlockInfo)) {
-          this.mDevlockInfo = ((DevlockInfo)localObject);
-        }
-        this.mUin = paramBundle.getString("uin");
-        this.mFromWhere = paramBundle.getString("from_where");
-        this.mMainAccount = paramBundle.getString("mainaccount");
-        if (QLog.isColorLevel())
+        paramBundle = new StringBuilder();
+        paramBundle.append("onCreate mIsFromLogin = ");
+        paramBundle.append(this.mIsFromLogin);
+        paramBundle.append(" mVerifySeq=");
+        paramBundle.append(this.mVerifySeq);
+        paramBundle.append(" mUin=");
+        paramBundle.append(this.mUin);
+        paramBundle.append(" mFromWhere=");
+        paramBundle.append(this.mFromWhere);
+        paramBundle.append(" mMainAccount=");
+        paramBundle.append(this.mMainAccount);
+        QLog.d("Q.devlock.AuthDevUgActivity", 2, paramBundle.toString());
+        if (this.mDevlockInfo != null)
         {
-          QLog.d("Q.devlock.AuthDevUgActivity", 2, "onCreate mIsFromLogin = " + this.mIsFromLogin + " mVerifySeq=" + this.mVerifySeq + " mUin=" + this.mUin + " mFromWhere=" + this.mFromWhere + " mMainAccount=" + this.mMainAccount);
-          if (this.mDevlockInfo != null)
-          {
-            QLog.d("Q.devlock.AuthDevUgActivity", 2, "onCreate DevlockInfo devSetup:" + this.mDevlockInfo.DevSetup + " countryCode:" + this.mDevlockInfo.CountryCode + " mobile:" + this.mDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + this.mDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + this.mDevlockInfo.TimeLimit + " AvailableMsgCount:" + this.mDevlockInfo.AvailableMsgCount + " AllowSet:" + this.mDevlockInfo.AllowSet);
-            QLog.d("Q.devlock.AuthDevUgActivity", 2, "DevlockInfo.ProtectIntro:" + this.mDevlockInfo.ProtectIntro + "  info.MbGuideType:" + this.mDevlockInfo.MbGuideType);
-            QLog.d("Q.devlock.AuthDevUgActivity", 2, "DevlockInfo.MbGuideMsg:" + this.mDevlockInfo.MbGuideMsg);
-            QLog.d("Q.devlock.AuthDevUgActivity", 2, "DevlockInfo.MbGuideInfoType:" + this.mDevlockInfo.MbGuideInfoType);
-            QLog.d("Q.devlock.AuthDevUgActivity", 2, "DevlockInfo.MbGuideInfo:" + this.mDevlockInfo.MbGuideInfo);
-            QLog.d("Q.devlock.AuthDevUgActivity", 2, "DevlockInfo.OtherDevLockVerifyUrl" + this.mDevlockInfo.OtherDevLockVerifyUrl);
-          }
-        }
-        super.getWindow().setFormat(-3);
-        if (this.mIsFromLogin) {
-          setTheme(2131755586);
-        }
-        super.setContentView(2131561192);
-        if (this.mIsFromLogin)
-        {
-          super.setTitle(2131692100);
-          this.mApp = this.mRuntime;
-          if (this.mApp == null) {
-            this.mApp = getAppRuntime();
-          }
-          if (this.mApp != null) {
-            break;
-          }
-          finish();
-          return true;
+          paramBundle = new StringBuilder();
+          paramBundle.append("onCreate DevlockInfo devSetup:");
+          paramBundle.append(this.mDevlockInfo.DevSetup);
+          paramBundle.append(" countryCode:");
+          paramBundle.append(this.mDevlockInfo.CountryCode);
+          paramBundle.append(" mobile:");
+          paramBundle.append(this.mDevlockInfo.Mobile);
+          paramBundle.append(" MbItemSmsCodeStatus:");
+          paramBundle.append(this.mDevlockInfo.MbItemSmsCodeStatus);
+          paramBundle.append(" TimeLimit:");
+          paramBundle.append(this.mDevlockInfo.TimeLimit);
+          paramBundle.append(" AvailableMsgCount:");
+          paramBundle.append(this.mDevlockInfo.AvailableMsgCount);
+          paramBundle.append(" AllowSet:");
+          paramBundle.append(this.mDevlockInfo.AllowSet);
+          QLog.d("Q.devlock.AuthDevUgActivity", 2, paramBundle.toString());
+          paramBundle = new StringBuilder();
+          paramBundle.append("DevlockInfo.ProtectIntro:");
+          paramBundle.append(this.mDevlockInfo.ProtectIntro);
+          paramBundle.append("  info.MbGuideType:");
+          paramBundle.append(this.mDevlockInfo.MbGuideType);
+          QLog.d("Q.devlock.AuthDevUgActivity", 2, paramBundle.toString());
+          paramBundle = new StringBuilder();
+          paramBundle.append("DevlockInfo.MbGuideMsg:");
+          paramBundle.append(this.mDevlockInfo.MbGuideMsg);
+          QLog.d("Q.devlock.AuthDevUgActivity", 2, paramBundle.toString());
+          paramBundle = new StringBuilder();
+          paramBundle.append("DevlockInfo.MbGuideInfoType:");
+          paramBundle.append(this.mDevlockInfo.MbGuideInfoType);
+          QLog.d("Q.devlock.AuthDevUgActivity", 2, paramBundle.toString());
+          paramBundle = new StringBuilder();
+          paramBundle.append("DevlockInfo.MbGuideInfo:");
+          paramBundle.append(this.mDevlockInfo.MbGuideInfo);
+          QLog.d("Q.devlock.AuthDevUgActivity", 2, paramBundle.toString());
+          paramBundle = new StringBuilder();
+          paramBundle.append("DevlockInfo.OtherDevLockVerifyUrl");
+          paramBundle.append(this.mDevlockInfo.OtherDevLockVerifyUrl);
+          QLog.d("Q.devlock.AuthDevUgActivity", 2, paramBundle.toString());
         }
       }
-      catch (Exception paramBundle)
+      super.getWindow().setFormat(-3);
+      if (this.mIsFromLogin) {
+        setTheme(2131755933);
+      }
+      super.setContentView(2131561055);
+      if (this.mIsFromLogin) {
+        super.setTitle(2131692019);
+      } else {
+        super.setTitle(2131692018);
+      }
+      this.mApp = this.mRuntime;
+      if (this.mApp == null) {
+        this.mApp = getAppRuntime();
+      }
+      if (this.mApp == null)
       {
-        paramBundle.printStackTrace();
         finish();
         return true;
       }
-      super.setTitle(2131692099);
-    }
-    this.mEquipLockApi = new EquipLockProxy();
-    if (this.mIsFromLogin)
-    {
-      LoginUtils.b(this.mApp);
-      if ((this.mDevlockInfo == null) || (TextUtils.isEmpty(this.mDevlockInfo.MbGuideInfo))) {
-        break label873;
+      this.mEquipLockApi = new EquipLockProxy();
+      if (this.mIsFromLogin)
+      {
+        LoginUtils.b(this.mApp);
+        paramBundle = this.mDevlockInfo;
+        if ((paramBundle != null) && (!TextUtils.isEmpty(paramBundle.MbGuideInfo)))
+        {
+          this.mEquipLockApi.a(this.mDevlockInfo.MbGuideInfo);
+        }
+        else
+        {
+          finish();
+          overridePendingTransition(0, 0);
+          QQToast.a(this, 1, getString(2131693843), 0).a();
+        }
       }
-      this.mEquipLockApi.a(this.mDevlockInfo.MbGuideInfo);
-    }
-    for (;;)
-    {
-      this.mMainTv = ((TextView)super.findViewById(2131371013));
-      this.mSetPhoneTv = ((TextView)super.findViewById(2131377883));
-      this.mSecretPhoneTv = ((TextView)super.findViewById(2131372947));
-      this.mChangePhoneBtn = ((Button)super.findViewById(2131364548));
-      this.mBottomBtn = ((Button)super.findViewById(2131380845));
+      this.mMainTv = ((TextView)super.findViewById(2131370647));
+      this.mSetPhoneTv = ((TextView)super.findViewById(2131377309));
+      this.mSecretPhoneTv = ((TextView)super.findViewById(2131372534));
+      this.mChangePhoneBtn = ((Button)super.findViewById(2131364435));
+      this.mBottomBtn = ((Button)super.findViewById(2131380109));
       this.mChangePhoneBtn.setOnClickListener(this);
       this.mBottomBtn.setOnClickListener(this);
-      this.mOtherVerifyTv = ((TextView)super.findViewById(2131372640));
+      this.mOtherVerifyTv = ((TextView)super.findViewById(2131372221));
       this.mOtherVerifyTv.setOnClickListener(this);
       initUI();
       this.mVerifyObserver.setSeq(this.mVerifySeq);
       ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AA33", "0X800AA33", LoginStaticField.a, 0, "", "", "", "");
-      if (LoginStaticField.a != 1) {
-        break;
+      if (LoginStaticField.a == 1) {
+        ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AC0B", "0X800AC0B", LoginStaticField.a, 0, "", "", "", "");
       }
-      ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AC0B", "0X800AC0B", LoginStaticField.a, 0, "", "", "", "");
       return true;
-      label873:
-      finish();
-      overridePendingTransition(0, 0);
-      QQToast.a(this, 1, getString(2131693889), 0).a();
     }
+    catch (Exception paramBundle)
+    {
+      paramBundle.printStackTrace();
+      finish();
+    }
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     this.mApp = null;
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
   }
@@ -343,22 +410,24 @@ public class AuthDevUgActivity
     finish();
   }
   
-  public boolean isWrapContent()
+  protected boolean isWrapContent()
   {
     return !this.mIsFromLogin;
   }
   
-  public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.onActivityResult(paramInt1, paramInt2, paramIntent);
     Object localObject;
-    if (paramInt1 == 1001) {
+    if (paramInt1 == 1001)
+    {
       if (paramInt2 == -1)
       {
         paramIntent = new Intent();
-        if (this.mDevlockInfo != null)
+        localObject = this.mDevlockInfo;
+        if (localObject != null)
         {
-          paramIntent.putExtra("phone_num", this.mDevlockInfo.Mobile);
+          paramIntent.putExtra("phone_num", ((DevlockInfo)localObject).Mobile);
           paramIntent.putExtra("country_code", this.mDevlockInfo.CountryCode);
         }
         paramIntent.putExtra("auth_dev_open", true);
@@ -369,158 +438,188 @@ public class AuthDevUgActivity
         paramIntent = new Intent();
         paramIntent.putExtra("auth_dev_open", true);
         paramIntent.putExtra("allow_set", true);
-        if (this.mDevlockInfo != null) {
-          paramIntent.putExtra("phone_num", this.mDevlockInfo.Mobile);
+        localObject = this.mDevlockInfo;
+        if (localObject != null) {
+          paramIntent.putExtra("phone_num", ((DevlockInfo)localObject).Mobile);
         }
         finishSelf(-1, paramIntent);
       }
     }
-    do
+    else if (paramInt1 == 1002)
     {
-      do
+      if (paramInt2 == -1)
       {
-        do
+        setResult(paramInt2, paramIntent);
+        finish();
+      }
+    }
+    else if (paramInt1 == 1003)
+    {
+      AppRuntime localAppRuntime;
+      if (paramInt2 == -1)
+      {
+        if ((paramIntent != null) && (paramIntent.getExtras() != null))
         {
-          do
+          paramInt1 = paramIntent.getExtras().getInt("resultState", 1);
+          if (QLog.isColorLevel())
           {
-            boolean bool;
-            do
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onActivityResult.resultCode= RESULT_OK  resultState =");
+            ((StringBuilder)localObject).append(paramInt1);
+            QLog.d("Q.devlock.AuthDevUgActivity", 2, ((StringBuilder)localObject).toString());
+          }
+          if (paramInt1 == 2)
+          {
+            localObject = paramIntent.getExtras().getString("resultMobileMask");
+            boolean bool = paramIntent.getExtras().getBoolean("resultSetMobile");
+            if (QLog.isColorLevel())
             {
-              do
+              paramIntent = new StringBuilder();
+              paramIntent.append("onActivityResult.resultCode= RESULT_OK  resultMobileMask =");
+              paramIntent.append((String)localObject);
+              paramIntent.append(" openSuccess=");
+              paramIntent.append(bool);
+              QLog.d("Q.devlock.AuthDevUgActivity", 2, paramIntent.toString());
+            }
+            paramIntent = this.mDevlockInfo;
+            if (paramIntent != null)
+            {
+              paramIntent.Mobile = ((String)localObject);
+              if (!TextUtils.isEmpty(paramIntent.Mobile))
               {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      return;
-                      if (paramInt1 != 1002) {
-                        break;
-                      }
-                    } while (paramInt2 != -1);
-                    setResult(paramInt2, paramIntent);
-                    finish();
-                    return;
-                  } while (paramInt1 != 1003);
-                  if (paramInt2 != -1) {
-                    break;
-                  }
-                } while ((paramIntent == null) || (paramIntent.getExtras() == null));
-                paramInt1 = paramIntent.getExtras().getInt("resultState", 1);
-                if (QLog.isColorLevel()) {
-                  QLog.d("Q.devlock.AuthDevUgActivity", 2, "onActivityResult.resultCode= RESULT_OK  resultState =" + paramInt1);
-                }
-              } while (paramInt1 != 2);
-              localObject = paramIntent.getExtras().getString("resultMobileMask");
-              bool = paramIntent.getExtras().getBoolean("resultSetMobile");
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.devlock.AuthDevUgActivity", 2, "onActivityResult.resultCode= RESULT_OK  resultMobileMask =" + (String)localObject + " openSuccess=" + bool);
+                paramIntent = new StringBuilder();
+                paramIntent.append(getString(2131692023));
+                paramIntent.append(":");
+                paramIntent.append(this.mDevlockInfo.Mobile);
+                paramIntent = paramIntent.toString();
+                this.mSecretPhoneTv.setText(paramIntent);
+                this.mBottomBtn.setText(getString(2131691984));
+                this.mSetPhoneTv.setVisibility(8);
+                this.mSecretPhoneTv.setVisibility(0);
+                this.mChangePhoneBtn.setVisibility(0);
               }
-              if (this.mDevlockInfo != null)
-              {
-                this.mDevlockInfo.Mobile = ((String)localObject);
-                if (!TextUtils.isEmpty(this.mDevlockInfo.Mobile))
-                {
-                  paramIntent = getString(2131692104) + ":" + this.mDevlockInfo.Mobile;
-                  this.mSecretPhoneTv.setText(paramIntent);
-                  this.mBottomBtn.setText(getString(2131692065));
-                  this.mSetPhoneTv.setVisibility(8);
-                  this.mSecretPhoneTv.setVisibility(0);
-                  this.mChangePhoneBtn.setVisibility(0);
-                }
-              }
-            } while (!bool);
-            this.mEquipLockApi.a(this.mApp, this, this.mApp.getCurrentAccountUin(), true);
+            }
+            if (!bool) {
+              return;
+            }
+            paramIntent = this.mEquipLockApi;
+            localAppRuntime = this.mApp;
+            paramIntent.a(localAppRuntime, this, localAppRuntime.getCurrentAccountUin(), true);
             paramIntent = new Intent();
             paramIntent.putExtra("phone_num", (String)localObject);
-            if (this.mDevlockInfo != null) {
-              paramIntent.putExtra("country_code", this.mDevlockInfo.CountryCode);
+            localObject = this.mDevlockInfo;
+            if (localObject != null) {
+              paramIntent.putExtra("country_code", ((DevlockInfo)localObject).CountryCode);
             }
             paramIntent.putExtra("auth_dev_open", true);
             LoginUtils.a(this, paramIntent, "/base/safe/authDevActivity");
-            QQToast.a(getApplicationContext(), 2, getString(2131692061), 0).b(getTitleBarHeight());
+            QQToast.a(getApplicationContext(), 2, getString(2131691980), 0).b(getTitleBarHeight());
             paramIntent = new Intent();
             paramIntent.putExtra("auth_dev_open", true);
             paramIntent.putExtra("allow_set", true);
-            if (this.mDevlockInfo != null) {
-              paramIntent.putExtra("phone_num", this.mDevlockInfo.Mobile);
+            localObject = this.mDevlockInfo;
+            if (localObject != null) {
+              paramIntent.putExtra("phone_num", ((DevlockInfo)localObject).Mobile);
             }
             finishSelf(-1, paramIntent);
-            return;
-          } while ((paramInt2 != 0) || (paramIntent == null) || (paramIntent.getExtras() == null));
-          paramInt1 = paramIntent.getExtras().getInt("resultState", 1);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.devlock.AuthDevUgActivity", 2, "onActivityResult.resultCode= RESULT_CANCELED resultState =" + paramInt1);
           }
-        } while (paramInt1 != 2);
-        paramIntent = paramIntent.getExtras().getString("resultMobileMask");
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.devlock.AuthDevUgActivity", 2, "onActivityResult.resultCode= RESULT_CANCELED resultMobileMask =" + paramIntent);
         }
-        if (!TextUtils.isEmpty(paramIntent)) {
-          this.mEquipLockApi.a(this.mApp, this.mApp.getCurrentAccountUin(), null);
+      }
+      else if ((paramInt2 == 0) && (paramIntent != null) && (paramIntent.getExtras() != null))
+      {
+        paramInt1 = paramIntent.getExtras().getInt("resultState", 1);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onActivityResult.resultCode= RESULT_CANCELED resultState =");
+          ((StringBuilder)localObject).append(paramInt1);
+          QLog.d("Q.devlock.AuthDevUgActivity", 2, ((StringBuilder)localObject).toString());
         }
-      } while (this.mDevlockInfo == null);
-      this.mDevlockInfo.Mobile = paramIntent;
-    } while (TextUtils.isEmpty(this.mDevlockInfo.Mobile));
-    paramIntent = getString(2131692104) + ":" + this.mDevlockInfo.Mobile;
-    this.mSecretPhoneTv.setText(paramIntent);
-    this.mBottomBtn.setText(getString(2131692065));
-    this.mSetPhoneTv.setVisibility(8);
-    this.mSecretPhoneTv.setVisibility(0);
-    this.mChangePhoneBtn.setVisibility(0);
+        if (paramInt1 == 2)
+        {
+          paramIntent = paramIntent.getExtras().getString("resultMobileMask");
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onActivityResult.resultCode= RESULT_CANCELED resultMobileMask =");
+            ((StringBuilder)localObject).append(paramIntent);
+            QLog.d("Q.devlock.AuthDevUgActivity", 2, ((StringBuilder)localObject).toString());
+          }
+          if (!TextUtils.isEmpty(paramIntent))
+          {
+            localObject = this.mEquipLockApi;
+            localAppRuntime = this.mApp;
+            ((IEquipLockApi)localObject).a(localAppRuntime, localAppRuntime.getCurrentAccountUin(), null);
+          }
+          localObject = this.mDevlockInfo;
+          if (localObject != null)
+          {
+            ((DevlockInfo)localObject).Mobile = paramIntent;
+            if (!TextUtils.isEmpty(((DevlockInfo)localObject).Mobile))
+            {
+              paramIntent = new StringBuilder();
+              paramIntent.append(getString(2131692023));
+              paramIntent.append(":");
+              paramIntent.append(this.mDevlockInfo.Mobile);
+              paramIntent = paramIntent.toString();
+              this.mSecretPhoneTv.setText(paramIntent);
+              this.mBottomBtn.setText(getString(2131691984));
+              this.mSetPhoneTv.setVisibility(8);
+              this.mSecretPhoneTv.setVisibility(0);
+              this.mChangePhoneBtn.setVisibility(0);
+            }
+          }
+        }
+      }
+    }
   }
   
-  public boolean onBackEvent()
+  protected boolean onBackEvent()
   {
     if (this.mIsFromLogin)
     {
       if (QLog.isColorLevel())
       {
-        localObject = new StringBuilder().append("onBackEvent.cancelVerifyCode mVerifyObserver.seq=");
-        if (this.mVerifyObserver == null) {
-          break label98;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onBackEvent.cancelVerifyCode mVerifyObserver.seq=");
+        localObject2 = this.mVerifyObserver;
+        int i;
+        if (localObject2 != null) {
+          i = ((VerifyDevLockManager.VerifyDevLockObserver)localObject2).getSeq();
+        } else {
+          i = 0;
         }
+        ((StringBuilder)localObject1).append(i);
+        QLog.d("Q.devlock.AuthDevUgActivity", 2, ((StringBuilder)localObject1).toString());
       }
-      label98:
-      for (int i = this.mVerifyObserver.getSeq();; i = 0)
-      {
-        QLog.d("Q.devlock.AuthDevUgActivity", 2, i);
-        setResult(0);
-        this.mEquipLockApi.a(this.mApp, this.mVerifyObserver);
-        this.mVerifyObserver = null;
-        finish();
-        overridePendingTransition(0, 2130772003);
-        return false;
-      }
+      setResult(0);
+      this.mEquipLockApi.a(this.mApp, this.mVerifyObserver);
+      this.mVerifyObserver = null;
+      finish();
+      overridePendingTransition(0, 2130772015);
+      return false;
     }
-    Intent localIntent = new Intent();
-    localIntent.putExtra("auth_dev_open", false);
-    String str = "";
-    Object localObject = str;
-    if (this.mDevlockInfo != null)
-    {
-      localObject = str;
-      if (this.mDevlockInfo.Mobile != null) {
-        localObject = this.mDevlockInfo.Mobile;
-      }
+    Object localObject2 = new Intent();
+    ((Intent)localObject2).putExtra("auth_dev_open", false);
+    Object localObject1 = this.mDevlockInfo;
+    if ((localObject1 != null) && (((DevlockInfo)localObject1).Mobile != null)) {
+      localObject1 = this.mDevlockInfo.Mobile;
+    } else {
+      localObject1 = "";
     }
-    localIntent.putExtra("phone_num", (String)localObject);
-    finishSelf(0, localIntent);
+    ((Intent)localObject2).putExtra("phone_num", (String)localObject1);
+    finishSelf(0, (Intent)localObject2);
     return false;
   }
   
   public void onClick(View paramView)
   {
-    if ((this.mLastClickTimeMillis > 0L) && (System.currentTimeMillis() - this.mLastClickTimeMillis > 0L) && (System.currentTimeMillis() - this.mLastClickTimeMillis < 500L)) {}
-    for (;;)
+    if ((this.mLastClickTimeMillis <= 0L) || (System.currentTimeMillis() - this.mLastClickTimeMillis <= 0L) || (System.currentTimeMillis() - this.mLastClickTimeMillis >= 500L))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.mLastClickTimeMillis = System.currentTimeMillis();
       int i = paramView.getId();
-      if (i == 2131364548)
+      Object localObject;
+      if (i == 2131364435)
       {
         ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AA34", "0X800AA34", LoginStaticField.a, 0, "", "", "", "");
         this.mApp.sendWirelessMeibaoReq(1);
@@ -528,8 +627,14 @@ public class AuthDevUgActivity
         {
           if ((!TextUtils.isEmpty(this.mFromWhere)) && (this.mFromWhere.equals("subaccount")))
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.devlock.AuthDevUgActivity", 2, "subaccount enter webview mUin=" + this.mUin + " mMainAccount=" + this.mMainAccount);
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("subaccount enter webview mUin=");
+              ((StringBuilder)localObject).append(this.mUin);
+              ((StringBuilder)localObject).append(" mMainAccount=");
+              ((StringBuilder)localObject).append(this.mMainAccount);
+              QLog.d("Q.devlock.AuthDevUgActivity", 2, ((StringBuilder)localObject).toString());
             }
             if ((TextUtils.isEmpty(this.mUin)) && (QLog.isColorLevel())) {
               QLog.d("Q.devlock.AuthDevUgActivity", 2, "mUin is empty.");
@@ -538,8 +643,12 @@ public class AuthDevUgActivity
           }
           else
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.devlock.AuthDevUgActivity", 2, "mainaccount enter webview mUin=" + this.mUin);
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("mainaccount enter webview mUin=");
+              ((StringBuilder)localObject).append(this.mUin);
+              QLog.d("Q.devlock.AuthDevUgActivity", 2, ((StringBuilder)localObject).toString());
             }
             if ((TextUtils.isEmpty(this.mUin)) && (QLog.isColorLevel())) {
               QLog.d("Q.devlock.AuthDevUgActivity", 2, "mUin is empty.");
@@ -551,21 +660,21 @@ public class AuthDevUgActivity
           this.mEquipLockApi.a(this, this.mApp, 1);
         }
       }
-      else
+      else if (i == 2131380109)
       {
-        Object localObject;
-        if (i == 2131380845)
+        if (this.mIsFromLogin)
         {
-          if (this.mIsFromLogin)
-          {
-            ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AA35", "0X800AA35", LoginStaticField.a, 0, "", "", "", "");
-            if (TextUtils.isEmpty(this.mDevlockInfo.Mobile)) {
-              jumpToOtherVerify();
-            } else {
-              jumpToSMSVerify();
-            }
+          ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AA35", "0X800AA35", LoginStaticField.a, 0, "", "", "", "");
+          if (TextUtils.isEmpty(this.mDevlockInfo.Mobile)) {
+            jumpToOtherVerify();
+          } else {
+            jumpToSMSVerify();
           }
-          else if ((this.mDevlockInfo != null) && (!TextUtils.isEmpty(this.mDevlockInfo.Mobile)))
+        }
+        else
+        {
+          localObject = this.mDevlockInfo;
+          if ((localObject != null) && (!TextUtils.isEmpty(((DevlockInfo)localObject).Mobile)))
           {
             ReportController.b(null, "CliOper", "", "", "My_eq_lock", "My_eq_lock_open", 0, 0, "1", "", "", "");
             localObject = new Intent(this, AuthDevVerifyCodeActivity.class);
@@ -578,38 +687,36 @@ public class AuthDevUgActivity
             this.mEquipLockApi.a(this, this.mApp, 1, 1003, null);
           }
         }
-        else
+      }
+      else if (i == 2131369233)
+      {
+        if (QLog.isColorLevel())
         {
-          if (i == 2131369518)
-          {
-            if (QLog.isColorLevel())
-            {
-              localObject = new StringBuilder().append("onClick.cancelVerifyCode mVerifyObserver.seq=");
-              if (this.mVerifyObserver == null) {
-                break label656;
-              }
-            }
-            label656:
-            for (i = this.mVerifyObserver.getSeq();; i = 0)
-            {
-              QLog.d("Q.devlock.AuthDevUgActivity", 2, i);
-              ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AA37", "0X800AA37", LoginStaticField.a, 0, "", "", "", "");
-              this.mEquipLockApi.a(this.mApp, this.mVerifyObserver);
-              this.mVerifyObserver = null;
-              finish();
-              overridePendingTransition(0, 2130772003);
-              break;
-            }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onClick.cancelVerifyCode mVerifyObserver.seq=");
+          VerifyDevLockManager.VerifyDevLockObserver localVerifyDevLockObserver = this.mVerifyObserver;
+          if (localVerifyDevLockObserver != null) {
+            i = localVerifyDevLockObserver.getSeq();
+          } else {
+            i = 0;
           }
-          if ((i == 2131372640) && ((this.mLastClickTimeMillisForJumpOther <= 0L) || (System.currentTimeMillis() - this.mLastClickTimeMillisForJumpOther <= 0L) || (System.currentTimeMillis() - this.mLastClickTimeMillisForJumpOther >= 3000L)))
-          {
-            this.mLastClickTimeMillisForJumpOther = System.currentTimeMillis();
-            ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AA36", "0X800AA36", LoginStaticField.a, 0, "", "", "", "");
-            jumpToOtherVerify();
-          }
+          ((StringBuilder)localObject).append(i);
+          QLog.d("Q.devlock.AuthDevUgActivity", 2, ((StringBuilder)localObject).toString());
         }
+        ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AA37", "0X800AA37", LoginStaticField.a, 0, "", "", "", "");
+        this.mEquipLockApi.a(this.mApp, this.mVerifyObserver);
+        this.mVerifyObserver = null;
+        finish();
+        overridePendingTransition(0, 2130772015);
+      }
+      else if ((i == 2131372221) && ((this.mLastClickTimeMillisForJumpOther <= 0L) || (System.currentTimeMillis() - this.mLastClickTimeMillisForJumpOther <= 0L) || (System.currentTimeMillis() - this.mLastClickTimeMillisForJumpOther >= 3000L)))
+      {
+        this.mLastClickTimeMillisForJumpOther = System.currentTimeMillis();
+        ReportController.a(this.mRuntime, "dc00898", "", this.mUin, "0X800AA36", "0X800AA36", LoginStaticField.a, 0, "", "", "", "");
+        jumpToOtherVerify();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -621,7 +728,7 @@ public class AuthDevUgActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevUgActivity
  * JD-Core Version:    0.7.0.1
  */

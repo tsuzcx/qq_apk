@@ -56,24 +56,60 @@ public class ShortVideoForwardInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nShortVideoForwardInfo");
-    localStringBuilder.append("\n |-").append("fromChatType:").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append("\n |-").append("toChatType:").append(this.d);
-    localStringBuilder.append("\n |-").append("fromBusiType:").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-").append("toBusiType:").append(this.f);
-    localStringBuilder.append("\n |-").append("localPath:").append(this.jdField_h_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbPath:").append(this.jdField_i_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("thumbWidth:").append(this.g);
-    localStringBuilder.append("\n |-").append("thumbHeight:").append(this.jdField_h_of_type_Int);
-    localStringBuilder.append("\n |-").append("sendSizeSpec:").append(this.jdField_i_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileTime:").append(this.jdField_j_of_type_Int);
-    localStringBuilder.append("\n |-").append("fileSource:").append(this.jdField_j_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uuid:").append(this.a);
-    localStringBuilder.append("\n |-").append("fromUin:").append(this.l);
-    localStringBuilder.append("\n |-").append("fromSessionUin:").append(this.m);
-    localStringBuilder.append("\n |-").append("supportProgressive:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("\n |-").append("templateId:").append(this.jdField_s_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("templateName:").append(this.t);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fromChatType:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("toChatType:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fromBusiType:");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("toBusiType:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("localPath:");
+    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("md5:");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbPath:");
+    localStringBuilder.append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbWidth:");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("thumbHeight:");
+    localStringBuilder.append(this.jdField_h_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("sendSizeSpec:");
+    localStringBuilder.append(this.jdField_i_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileTime:");
+    localStringBuilder.append(this.jdField_j_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileSource:");
+    localStringBuilder.append(this.jdField_j_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("uuid:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fromUin:");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fromSessionUin:");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("supportProgressive:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("templateId:");
+    localStringBuilder.append(this.jdField_s_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("templateName:");
+    localStringBuilder.append(this.t);
     return localStringBuilder.toString();
   }
   
@@ -87,7 +123,7 @@ public class ShortVideoForwardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoForwardInfo
  * JD-Core Version:    0.7.0.1
  */

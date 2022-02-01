@@ -25,7 +25,7 @@ public class ZanDoubleDialog
   
   public ZanDoubleDialog(Context paramContext)
   {
-    super(paramContext, 2131755176);
+    super(paramContext, 2131755340);
   }
   
   public void a(ZanDoubleDialog.BtnClickListener paramBtnClickListener)
@@ -36,17 +36,17 @@ public class ZanDoubleDialog
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131562202);
-    findViewById(2131375427).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131375428).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    findViewById(2131375429).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131375430));
+    setContentView(2131562039);
+    findViewById(2131374945).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    findViewById(2131374946).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    findViewById(2131374947).setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131374948));
     paramBundle = new ColorDrawable(15856629);
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
     Resources localResources = BaseApplicationImpl.sApplication.getResources();
     float f = localResources.getDisplayMetrics().density;
     localURLDrawableOptions.mRequestWidth = ((int)(localResources.getDisplayMetrics().widthPixels - b * f));
-    localURLDrawableOptions.mRequestHeight = ((int)(jdField_a_of_type_Int * f));
+    localURLDrawableOptions.mRequestHeight = ((int)(f * jdField_a_of_type_Int));
     localURLDrawableOptions.mFailedDrawable = paramBundle;
     localURLDrawableOptions.mLoadingDrawable = paramBundle;
     paramBundle = URLDrawable.getDrawable("https://gxh.vip.qq.com/xydata/like/app/zanDoubleConfig/single.png", localURLDrawableOptions);
@@ -55,7 +55,7 @@ public class ZanDoubleDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ZanDoubleDialog
  * JD-Core Version:    0.7.0.1
  */

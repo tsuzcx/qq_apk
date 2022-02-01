@@ -22,7 +22,7 @@ public class ComicEffectFilter
 {
   public static final String ANIMATION_FRAGMENT1_SHADER = "varying highp vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nuniform lowp float width;\nuniform lowp float height;\nuniform lowp float threshold;\nuniform lowp float edgeStrength;\nhighp vec3 brightness = vec3(0.2125, 0.7154, 0.0721);\nhighp float rgb2gray(highp vec4 color) {\n    return dot(color.rgb,brightness);\n}\nhighp float pixel_operator(highp float dx, highp float dy) {\n    return rgb2gray(texture2D(inputImageTexture, textureCoordinate+vec2(dx,dy)));\n}\nhighp float sobel_filter()\n{\n    highp float dx = 1.0 / width; \n    highp float dy = 1.0 / height; \n    highp float s00 = pixel_operator(-dx, dy);\n    highp float s10 = pixel_operator(-dx, 0.0);\n    highp float s20 = pixel_operator(-dx, -dy);\n    highp float s01 = pixel_operator(0.0, dy);\n    highp float s21 = pixel_operator(0.0, -dy);\n    highp float s02 = pixel_operator(dx, dy);\n    highp float s12 = pixel_operator(dx, 0.0);\n    highp float s22 = pixel_operator(dx, -dy);\n    highp float s11 = pixel_operator(0.0, 0.0);\n    highp float sx = s00 + 2.0 * s10 + s20 - (s02 + 2.0 * s12 + s22);\n    highp float sy = s00 + 2.0 * s01 + s02 - (s20 + 2.0 * s21 + s22);\n    highp float dist = length(vec2(sx, sy) * edgeStrength);\n    return dist;\n}\nlowp vec3 rgb2hsv(lowp vec3 c) {\n  lowp vec4 K = vec4(0.0, -1.0 / 3.0, 2.0 / 3.0, -1.0);\n  highp vec4 p = mix(vec4(c.bg, K.wz), vec4(c.gb, K.xy), step(c.b, c.g));\n  highp vec4 q = mix(vec4(p.xyw, c.r), vec4(c.r, p.yzx), step(p.x, c.r));\n  highp float d = q.x - min(q.w, q.y);\n  highp float e = 1.0e-10;\n  lowp vec3 hsv = vec3(abs(q.z + (q.w - q.y) / (6.0 * d + e)), d / (q.x + e), q.x);\n  return hsv;\n}\nvoid main() {\nhighp vec4 outputColor = texture2D(inputImageTexture, textureCoordinate);\nhighp float graylevel = sobel_filter();\nhighp float mag = 1.0 - graylevel;\n  lowp vec3 hsv = rgb2hsv(outputColor.rgb);\n  mediump float p2_left = (0.18 - clamp(hsv.x, 0.16, 0.18)) / 0.02;\n  mediump float p2_right = 1.0 - (0.91 - clamp(hsv.x, 0.89, 0.91)) / 0.02;\n  mediump float p2_value = 1.0 - (0.3 - clamp(hsv.z, 0.2, 0.3)) / 0.1;\n  mediump float p2 = min(max(p2_left, p2_right), p2_value);\nhighp float autoThreshold = step(0.99,p2);\nmag = step(threshold*(1.0 - autoThreshold), mag);\nhighp vec4 textureColor = vec4(vec3(mag), 1.0);\nhighp vec4 tempColor1;\nhighp float alpha;\n     if(1.0-textureColor.r > 0.6)\n       alpha = 0.6;\n     else\n       alpha = 1.0-textureColor.r;\n  tempColor1 = mix(outputColor, textureColor ,1.0-textureColor.r);\ngl_FragColor = vec4(tempColor1.rgb,outputColor.a);\n}\n";
   public static final String LOOKUP_TABLE_FILE_NAME = "filterEffect.lut";
-  private static final String TAG = ComicEffectFilter.class.getSimpleName();
+  private static final String TAG = "ComicEffectFilter";
   private Frame mAcgColorFrame = new Frame();
   private boolean mAlreadyRenderInSingleFrame = false;
   private AvgColorFilter mAvgColorFilter = new AvgColorFilter();
@@ -41,27 +41,39 @@ public class ComicEffectFilter
     this.mItem = paramStickerItem;
     this.mDataPath = paramString;
     this.mComicLutFilter = this.mItem.comicLutFilter;
-    paramStickerItem = this.mDataPath + File.separator + this.mComicLutFilter;
-    if ((this.mComicLutFilter == null) || (!FileUtils.exists(paramStickerItem))) {}
-    for (paramStickerItem = getBitmap(this.mDataPath + File.separator + "filterEffect.lut");; paramStickerItem = getBitmap(paramStickerItem))
+    paramStickerItem = new StringBuilder();
+    paramStickerItem.append(this.mDataPath);
+    paramStickerItem.append(File.separator);
+    paramStickerItem.append(this.mComicLutFilter);
+    paramStickerItem = paramStickerItem.toString();
+    if ((this.mComicLutFilter != null) && (FileUtils.exists(paramStickerItem)))
     {
-      this.mGpuImageLookupFilter.addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", paramStickerItem, 33986, true));
-      initParams();
-      return;
+      paramStickerItem = getBitmap(paramStickerItem);
     }
+    else
+    {
+      paramStickerItem = new StringBuilder();
+      paramStickerItem.append(this.mDataPath);
+      paramStickerItem.append(File.separator);
+      paramStickerItem.append("filterEffect.lut");
+      paramStickerItem = getBitmap(paramStickerItem.toString());
+    }
+    this.mGpuImageLookupFilter.addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", paramStickerItem, 33986, true));
+    initParams();
   }
   
   public static Bitmap getBitmap(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("assets://"))) {}
-    for (paramString = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), 2147483647, 2147483647);; paramString = BitmapUtils.decodeSampledBitmapFromFile(paramString, 2147483647, 2147483647))
-    {
-      String str = paramString;
-      if (!BitmapUtils.isLegal(paramString)) {
-        str = null;
-      }
-      return str;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("assets://"))) {
+      paramString = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), 2147483647, 2147483647);
+    } else {
+      paramString = BitmapUtils.decodeSampledBitmapFromFile(paramString, 2147483647, 2147483647);
     }
+    String str = paramString;
+    if (!BitmapUtils.isLegal(paramString)) {
+      str = null;
+    }
+    return str;
   }
   
   public Frame RenderProcess(Frame paramFrame)
@@ -106,8 +118,9 @@ public class ComicEffectFilter
   
   public int getOrderMode()
   {
-    if (this.mItem != null) {
-      return this.mItem.comicOrderMode;
+    StickerItem localStickerItem = this.mItem;
+    if (localStickerItem != null) {
+      return localStickerItem.comicOrderMode;
     }
     return 0;
   }
@@ -157,7 +170,7 @@ public class ComicEffectFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ComicEffectFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.activity;
 
+import android.view.MotionEvent;
 import android.view.View;
-import android.view.View.OnClickListener;
-import android.widget.EditText;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 
 class PublicAccountListActivity$9
-  implements View.OnClickListener
+  implements View.OnTouchListener
 {
-  PublicAccountListActivity$9(PublicAccountListActivity paramPublicAccountListActivity) {}
+  PublicAccountListActivity$9(PublicAccountListActivity paramPublicAccountListActivity, InputMethodManager paramInputMethodManager) {}
   
-  public void onClick(View paramView)
+  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    this.a.a.setText("");
-    EventCollector.getInstance().onViewClicked(paramView);
+    this.jdField_a_of_type_AndroidViewInputmethodInputMethodManager.hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicAccountListActivity.9
  * JD-Core Version:    0.7.0.1
  */

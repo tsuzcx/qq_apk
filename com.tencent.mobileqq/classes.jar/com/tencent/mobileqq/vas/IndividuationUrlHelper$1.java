@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.vas;
 
+import android.content.res.Resources;
 import android.text.TextUtils;
 import android.widget.ImageView;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.vas.api.IVasCommonAdapter;
 import java.lang.ref.SoftReference;
 import java.util.List;
 import java.util.Map;
@@ -9,36 +12,36 @@ import java.util.Map;
 final class IndividuationUrlHelper$1
   implements IndividuationUrlHelper.UrlCallback
 {
-  public void a()
+  private void a(Resources paramResources, IndividuationUrlHelper.IconExtendData paramIconExtendData, String paramString)
+  {
+    ((IVasCommonAdapter)QRoute.api(IVasCommonAdapter.class)).setVipCardDrawable(paramResources, paramIconExtendData.jdField_a_of_type_AndroidWidgetImageView, paramString);
+  }
+  
+  public void update()
   {
     int i = 0;
-    if (i < IndividuationUrlHelper.a().size())
+    while (i < IndividuationUrlHelper.a().size())
     {
       Object localObject = (SoftReference)IndividuationUrlHelper.a().get(i);
       if (localObject != null)
       {
         localObject = (IndividuationUrlHelper.IconExtendData)((SoftReference)localObject).get();
-        if (localObject != null) {
-          break label50;
+        if (localObject != null)
+        {
+          String str = (String)IndividuationUrlHelper.a.get(((IndividuationUrlHelper.IconExtendData)localObject).jdField_a_of_type_JavaLangString);
+          if ((((IndividuationUrlHelper.IconExtendData)localObject).jdField_a_of_type_AndroidWidgetImageView != null) && (!TextUtils.isEmpty(str))) {
+            ((IndividuationUrlHelper.IconExtendData)localObject).jdField_a_of_type_AndroidWidgetImageView.post(new IndividuationUrlHelper.1.1(this, (IndividuationUrlHelper.IconExtendData)localObject, str));
+          }
         }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label50:
-        String str = (String)IndividuationUrlHelper.b().get(((IndividuationUrlHelper.IconExtendData)localObject).jdField_a_of_type_JavaLangString);
-        if ((((IndividuationUrlHelper.IconExtendData)localObject).jdField_a_of_type_AndroidWidgetImageView != null) && (!TextUtils.isEmpty(str))) {
-          ((IndividuationUrlHelper.IconExtendData)localObject).jdField_a_of_type_AndroidWidgetImageView.post(new IndividuationUrlHelper.1.1(this, (IndividuationUrlHelper.IconExtendData)localObject, str));
-        }
-      }
+      i += 1;
     }
     IndividuationUrlHelper.a().clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.IndividuationUrlHelper.1
  * JD-Core Version:    0.7.0.1
  */

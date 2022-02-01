@@ -2,10 +2,11 @@ package com.tencent.biz.pubaccount;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.data.AdvertisementSoftInfo;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdUtilService;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.video.playfeeds.entity.VideoInfo;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.util.SharePreferenceUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qapmsdk.common.util.Objects;
@@ -40,52 +41,51 @@ public class SoftAdExpoStatManager
   private SoftAdExpoStatManager(String paramString)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
-    this.jdField_a_of_type_AndroidContentContext = ReadInJoyUtils.a().getApplication();
+    this.jdField_a_of_type_AndroidContentContext = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getApplication();
     a();
   }
   
   public static SoftAdExpoStatManager a()
   {
-    String str = ReadInJoyUtils.a().getAccount();
-    if (jdField_a_of_type_JavaUtilMap.get(str) == null) {}
-    try
-    {
-      if (jdField_a_of_type_JavaUtilMap.get(str) == null) {
-        jdField_a_of_type_JavaUtilMap.put(str, new SoftAdExpoStatManager(str));
+    String str = ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime().getAccount();
+    if (jdField_a_of_type_JavaUtilMap.get(str) == null) {
+      try
+      {
+        if (jdField_a_of_type_JavaUtilMap.get(str) == null) {
+          jdField_a_of_type_JavaUtilMap.put(str, new SoftAdExpoStatManager(str));
+        }
       }
-      return (SoftAdExpoStatManager)jdField_a_of_type_JavaUtilMap.get(str);
+      finally {}
     }
-    finally {}
+    return (SoftAdExpoStatManager)jdField_a_of_type_JavaUtilMap.get(localObject);
   }
   
   private Vector<Long> a(String paramString, long paramLong)
   {
+    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("expo_stat_key_");
+    localStringBuilder.append(paramString);
+    paramString = SharePreferenceUtils.a((Context)localObject, localStringBuilder.toString());
+    boolean bool = StringUtil.a(paramString);
     int i = 0;
-    paramString = SharePreferenceUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + "expo_stat_key_" + paramString);
-    if (StringUtil.a(paramString)) {
-      paramString = new Vector(0);
+    if (bool) {
+      return new Vector(0);
     }
-    String[] arrayOfString;
-    Vector localVector;
-    long l;
-    int j;
-    do
+    paramString = paramString.split(",,");
+    localObject = new Vector(paramString.length);
+    long l = System.currentTimeMillis();
+    int j = paramString.length;
+    while (i < j)
     {
-      return paramString;
-      arrayOfString = paramString.split(",,");
-      localVector = new Vector(arrayOfString.length);
-      l = System.currentTimeMillis();
-      j = arrayOfString.length;
-      paramString = localVector;
-    } while (i >= j);
-    paramString = arrayOfString[i];
-    if (l - Long.parseLong(paramString) > 1000L * paramLong) {}
-    for (;;)
-    {
+      localStringBuilder = paramString[i];
+      if (l - Long.parseLong(localStringBuilder) <= 1000L * paramLong) {
+        ((Vector)localObject).add(Long.valueOf(Long.parseLong(localStringBuilder)));
+      }
       i += 1;
-      break;
-      localVector.add(Long.valueOf(Long.parseLong(paramString)));
     }
+    return localObject;
   }
   
   private void a()
@@ -120,37 +120,34 @@ public class SoftAdExpoStatManager
   
   private Map<String, Long> b()
   {
-    Object localObject = SharePreferenceUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + "expo_stat_key_timewindow");
-    if (StringUtil.a((String)localObject)) {
-      localObject = new ConcurrentHashMap(0);
+    Object localObject1 = this.jdField_a_of_type_AndroidContentContext;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append("expo_stat_key_timewindow");
+    localObject1 = SharePreferenceUtils.a((Context)localObject1, ((StringBuilder)localObject2).toString());
+    if (StringUtil.a((String)localObject1)) {
+      return new ConcurrentHashMap(0);
     }
-    String[] arrayOfString;
-    ConcurrentHashMap localConcurrentHashMap;
-    int j;
-    int i;
-    do
+    localObject1 = ((String)localObject1).split(",,");
+    if (localObject1.length == 0) {
+      return new ConcurrentHashMap(0);
+    }
+    localObject2 = new ConcurrentHashMap(localObject1.length);
+    int j = localObject1.length;
+    int i = 0;
+    while (i < j)
     {
-      return localObject;
-      arrayOfString = ((String)localObject).split(",,");
-      if (arrayOfString.length == 0) {
-        return new ConcurrentHashMap(0);
+      Object localObject3 = localObject1[i];
+      if (!StringUtil.a((String)localObject3))
+      {
+        localObject3 = ((String)localObject3).split("&&");
+        if (localObject3.length == 2) {
+          ((Map)localObject2).put(localObject3[0], Long.valueOf(Long.parseLong(localObject3[1])));
+        }
       }
-      localConcurrentHashMap = new ConcurrentHashMap(arrayOfString.length);
-      j = arrayOfString.length;
-      i = 0;
-      localObject = localConcurrentHashMap;
-    } while (i >= j);
-    localObject = arrayOfString[i];
-    if (StringUtil.a((String)localObject)) {}
-    for (;;)
-    {
       i += 1;
-      break;
-      localObject = ((String)localObject).split("&&");
-      if (localObject.length == 2) {
-        localConcurrentHashMap.put(localObject[0], Long.valueOf(Long.parseLong(localObject[1])));
-      }
     }
+    return localObject2;
   }
   
   private void b()
@@ -164,10 +161,13 @@ public class SoftAdExpoStatManager
   private void b(String paramString)
   {
     Vector localVector = (Vector)this.jdField_b_of_type_JavaUtilMap.get(paramString);
-    if ((localVector == null) || (localVector.size() == 0)) {
-      return;
+    if (localVector != null)
+    {
+      if (localVector.size() == 0) {
+        return;
+      }
+      a(new SoftAdExpoStatManager.2(this, new Vector(localVector), paramString));
     }
-    a(new SoftAdExpoStatManager.2(this, new Vector(localVector), paramString));
   }
   
   private void c()
@@ -177,7 +177,11 @@ public class SoftAdExpoStatManager
     {
       this.jdField_b_of_type_JavaLangString = str;
       this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-      SharePreferenceUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + "expo_stat_soft_fstreq", str);
+      Context localContext = this.jdField_a_of_type_AndroidContentContext;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("expo_stat_soft_fstreq");
+      SharePreferenceUtils.a(localContext, localStringBuilder.toString(), str);
     }
   }
   
@@ -218,38 +222,31 @@ public class SoftAdExpoStatManager
     }
   }
   
-  public Map<Integer, String> a(int paramInt, ArrayList<VideoInfo> paramArrayList)
+  public Map<Integer, String> a(int paramInt, ArrayList paramArrayList)
   {
-    if ((paramInt <= 0) || (paramArrayList == null) || (paramArrayList.size() == 0) || (paramInt >= paramArrayList.size() - 1)) {
-      return null;
-    }
-    int i = paramArrayList.size();
-    HashMap localHashMap = new HashMap();
-    for (;;)
+    if ((paramInt > 0) && (paramArrayList != null) && (paramArrayList.size() != 0) && (paramInt < paramArrayList.size() - 1))
     {
-      if (paramInt < i - 1)
+      int i = paramArrayList.size();
+      HashMap localHashMap = new HashMap();
+      for (;;)
       {
-        paramInt += 1;
-        try
+        if (paramInt < i - 1)
         {
-          VideoInfo localVideoInfo = (VideoInfo)paramArrayList.get(paramInt);
-          if ((localVideoInfo == null) || (localVideoInfo.a == null) || (localVideoInfo.a.mAdvertisementSoftInfo == null)) {
-            break label139;
+          paramInt += 1;
+          try
+          {
+            VideoInfo localVideoInfo = (VideoInfo)paramArrayList.get(paramInt);
+            localHashMap.put(Integer.valueOf(paramInt), ((IRIJAdUtilService)QRoute.api(IRIJAdUtilService.class)).getVideoInfoSoftAdExpoStatKey(localVideoInfo));
           }
-          localHashMap.put(Integer.valueOf(paramInt), localVideoInfo.a.mAdvertisementSoftInfo.S);
-        }
-        catch (Throwable paramArrayList)
-        {
-          QLog.d("SoftAdExpoStatManager", 4, new Object[] { "getUnexposedAds", paramArrayList.getMessage() });
+          catch (Throwable paramArrayList)
+          {
+            QLog.d("SoftAdExpoStatManager", 4, new Object[] { "getUnexposedAds", paramArrayList.getMessage() });
+          }
         }
       }
-      else
-      {
-        return localHashMap;
-        label139:
-        localHashMap.put(Integer.valueOf(paramInt), "");
-      }
+      return localHashMap;
     }
+    return null;
   }
   
   public void a(int paramInt)
@@ -259,38 +256,16 @@ public class SoftAdExpoStatManager
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
-      return;
-      try
-      {
-        if (this.jdField_b_of_type_JavaUtilMap.containsKey(paramString))
-        {
-          ((Vector)this.jdField_b_of_type_JavaUtilMap.get(paramString)).add(Long.valueOf(System.currentTimeMillis()));
-          b(paramString);
-          return;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
-    }
-  }
-  
-  public void a(String paramString, long paramLong)
-  {
-    if ((TextUtils.isEmpty(paramString)) || (paramLong <= 0L)) {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
     try
     {
-      if (!this.c.containsKey(paramString)) {
-        this.jdField_b_of_type_JavaUtilMap.put(paramString, new Vector(0));
+      if (!this.jdField_b_of_type_JavaUtilMap.containsKey(paramString)) {
+        return;
       }
-      this.c.put(paramString, Long.valueOf(paramLong));
-      b();
+      ((Vector)this.jdField_b_of_type_JavaUtilMap.get(paramString)).add(Long.valueOf(System.currentTimeMillis()));
+      b(paramString);
       return;
     }
     catch (Throwable paramString)
@@ -299,36 +274,63 @@ public class SoftAdExpoStatManager
     }
   }
   
+  public void a(String paramString, long paramLong)
+  {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (paramLong <= 0L) {
+        return;
+      }
+      try
+      {
+        if (!this.c.containsKey(paramString)) {
+          this.jdField_b_of_type_JavaUtilMap.put(paramString, new Vector(0));
+        }
+        this.c.put(paramString, Long.valueOf(paramLong));
+        b();
+        return;
+      }
+      catch (Throwable paramString)
+      {
+        paramString.printStackTrace();
+      }
+    }
+  }
+  
   public boolean a()
   {
-    if (this.jdField_b_of_type_JavaLangString == null) {
-      this.jdField_b_of_type_JavaLangString = SharePreferenceUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + "expo_stat_soft_fstreq");
-    }
-    String str = this.jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date());
-    if (!Objects.equals(this.jdField_b_of_type_JavaLangString, str)) {}
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_b_of_type_JavaLangString == null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-      if ((bool) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 1)) {
-        c();
-      }
-      return bool;
+      localObject = this.jdField_a_of_type_AndroidContentContext;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("expo_stat_soft_fstreq");
+      this.jdField_b_of_type_JavaLangString = SharePreferenceUtils.a((Context)localObject, localStringBuilder.toString());
     }
+    Object localObject = this.jdField_a_of_type_JavaTextSimpleDateFormat.format(new Date());
+    boolean bool = Objects.equals(this.jdField_b_of_type_JavaLangString, localObject) ^ true;
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
+    if ((bool) && (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() > 1)) {
+      c();
+    }
+    return bool;
   }
   
   public int b()
   {
-    int i = -1;
-    if (this.jdField_a_of_type_Int != -1) {
-      i = this.jdField_a_of_type_Int;
-    }
-    String str;
-    do
-    {
+    int i = this.jdField_a_of_type_Int;
+    if (i != -1) {
       return i;
-      str = SharePreferenceUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + "expo_stat_last_req_vd_cnt");
-    } while (TextUtils.isEmpty(str));
-    i = Integer.parseInt(str);
+    }
+    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("expo_stat_last_req_vd_cnt");
+    localObject = SharePreferenceUtils.a((Context)localObject, localStringBuilder.toString());
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return -1;
+    }
+    i = Integer.parseInt((String)localObject);
     this.jdField_a_of_type_Int = i;
     return i;
   }
@@ -338,12 +340,16 @@ public class SoftAdExpoStatManager
     if (this.jdField_a_of_type_Int == paramInt) {
       return;
     }
-    SharePreferenceUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString + "expo_stat_last_req_vd_cnt", String.valueOf(paramInt));
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("expo_stat_last_req_vd_cnt");
+    SharePreferenceUtils.a(localContext, localStringBuilder.toString(), String.valueOf(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SoftAdExpoStatManager
  * JD-Core Version:    0.7.0.1
  */

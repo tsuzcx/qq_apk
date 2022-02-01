@@ -42,30 +42,27 @@ abstract class BaseFilter
   static boolean a(CMTime paramCMTime, List<TAVSticker> paramList)
   {
     paramList = paramList.iterator();
-    label78:
-    label81:
-    while (paramList.hasNext())
+    int j;
+    int i;
+    do
     {
-      TAVSticker localTAVSticker = (TAVSticker)paramList.next();
-      CMTimeRange localCMTimeRange = localTAVSticker.getTimeRange();
-      int i;
-      if ((localCMTimeRange == null) || (localCMTimeRange.containsTime(paramCMTime)))
-      {
-        i = 1;
-        if (localTAVSticker.getMode() != TAVStickerMode.INACTIVE) {
-          break label78;
-        }
-      }
-      for (int j = 1;; j = 0)
-      {
-        if ((i == 0) || (j == 0)) {
-          break label81;
-        }
-        return true;
-        i = 0;
+      boolean bool = paramList.hasNext();
+      j = 0;
+      if (!bool) {
         break;
       }
-    }
+      TAVSticker localTAVSticker = (TAVSticker)paramList.next();
+      CMTimeRange localCMTimeRange = localTAVSticker.getTimeRange();
+      if ((localCMTimeRange != null) && (!localCMTimeRange.containsTime(paramCMTime))) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if (localTAVSticker.getMode() == TAVStickerMode.INACTIVE) {
+        j = 1;
+      }
+    } while ((i == 0) || (j == 0));
+    return true;
     return false;
   }
   
@@ -98,7 +95,13 @@ abstract class BaseFilter
   
   String a(CIImage paramCIImage, int paramInt)
   {
-    return "index-" + paramInt + paramCIImage.getSize().width + "_" + paramCIImage.getSize().height;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("index-");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(paramCIImage.getSize().width);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramCIImage.getSize().height);
+    return localStringBuilder.toString();
   }
   
   public void a()
@@ -113,10 +116,11 @@ abstract class BaseFilter
   
   public void a(@NotNull ImageParams paramImageParams, @NotNull RenderInfo paramRenderInfo)
   {
-    if ((!a(paramRenderInfo.getTime(), this.jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext.getStickers())) || (paramImageParams.a.isEmpty())) {}
-    for (;;)
+    if (a(paramRenderInfo.getTime(), this.jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext.getStickers()))
     {
-      return;
+      if (paramImageParams.a.isEmpty()) {
+        return;
+      }
       this.jdField_a_of_type_ComTencentTavstickerCoreTAVStickerRenderContext.setRenderSize(paramRenderInfo.getRenderSize());
       paramImageParams = paramImageParams.a;
       int i = 0;
@@ -132,7 +136,7 @@ abstract class BaseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.BaseFilter
  * JD-Core Version:    0.7.0.1
  */

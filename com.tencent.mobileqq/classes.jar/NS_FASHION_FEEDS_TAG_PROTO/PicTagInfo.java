@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class PicTagInfo
   extends JceStruct
@@ -40,21 +41,24 @@ public final class PicTagInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vecTagInfo != null) {
-      paramJceOutputStream.write(this.vecTagInfo, 0);
+    Object localObject = this.vecTagInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.strPicId != null) {
-      paramJceOutputStream.write(this.strPicId, 1);
+    localObject = this.strPicId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.iCode, 2);
-    if (this.strPicTagId != null) {
-      paramJceOutputStream.write(this.strPicTagId, 3);
+    localObject = this.strPicTagId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_FASHION_FEEDS_TAG_PROTO.PicTagInfo
  * JD-Core Version:    0.7.0.1
  */

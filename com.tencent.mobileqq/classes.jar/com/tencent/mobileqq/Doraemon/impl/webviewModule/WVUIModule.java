@@ -19,14 +19,15 @@ public class WVUIModule
 {
   private boolean a(APICallback paramAPICallback)
   {
-    Object localObject = null;
     if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a() instanceof WebUiUtils.WebShareInterface)) {
       localObject = (WebUiUtils.WebShareInterface)this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    } else {
+      localObject = null;
     }
     if (localObject == null) {
       return false;
     }
-    localObject = (Share)((WebUiUtils.WebShareInterface)localObject).getShare();
+    Object localObject = (Share)((WebUiUtils.WebShareInterface)localObject).getShare();
     if (localObject == null) {
       return false;
     }
@@ -36,9 +37,11 @@ public class WVUIModule
   
   private boolean a(JSONObject paramJSONObject)
   {
-    WebUiUtils.WebShareInterface localWebShareInterface = null;
+    WebUiUtils.WebShareInterface localWebShareInterface;
     if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a() instanceof WebUiUtils.WebShareInterface)) {
       localWebShareInterface = (WebUiUtils.WebShareInterface)this.jdField_a_of_type_ComTencentMobileqqDoraemonImplWebviewModuleAbsWVModule$WebViewRuntimeCompat.a();
+    } else {
+      localWebShareInterface = null;
     }
     if (localWebShareInterface == null) {
       return false;
@@ -60,43 +63,48 @@ public class WVUIModule
   
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-      return false;
-    case 25: 
-      if (a(paramJSONObject)) {
-        DoraemonUtil.a(paramAPICallback, APIParam.a);
-      }
-      break;
-    }
-    for (;;)
-    {
-      return true;
-      DoraemonUtil.a(paramAPICallback, -1, "");
-      continue;
-      DoraemonUtil.a(paramAPICallback, APIParam.a);
-      paramString = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
-      if ((paramString == null) || (paramString.isFinishing()))
+      if (paramInt != 22)
       {
-        QLog.e("WVUIModule", 1, "execute activity is null or finish");
-        return false;
-      }
-      paramString.finish();
-      continue;
-      DoraemonUtil.a(paramAPICallback, APIParam.a);
-      continue;
-      if (a(paramAPICallback)) {
-        DoraemonUtil.a(paramAPICallback, APIParam.a);
-      } else {
+        if (paramInt != 25)
+        {
+          if (paramInt != 26) {
+            return false;
+          }
+          if (a(paramAPICallback))
+          {
+            DoraemonUtil.a(paramAPICallback, APIParam.a);
+            return true;
+          }
+          DoraemonUtil.a(paramAPICallback, -1, "");
+          return true;
+        }
+        if (a(paramJSONObject))
+        {
+          DoraemonUtil.a(paramAPICallback, APIParam.a);
+          return true;
+        }
         DoraemonUtil.a(paramAPICallback, -1, "");
+        return true;
       }
+      DoraemonUtil.a(paramAPICallback, APIParam.a);
+      return true;
     }
+    DoraemonUtil.a(paramAPICallback, APIParam.a);
+    paramString = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
+    if ((paramString != null) && (!paramString.isFinishing()))
+    {
+      paramString.finish();
+      return true;
+    }
+    QLog.e("WVUIModule", 1, "execute activity is null or finish");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webviewModule.WVUIModule
  * JD-Core Version:    0.7.0.1
  */

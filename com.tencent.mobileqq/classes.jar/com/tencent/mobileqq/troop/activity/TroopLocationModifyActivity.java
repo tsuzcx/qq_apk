@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MotionEvent;
+import com.tencent.mobileqq.troop.troopcreate.ui.TroopCreateLogicActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -40,7 +41,7 @@ public class TroopLocationModifyActivity
     if (this.jdField_a_of_type_Long == 0L) {
       return;
     }
-    a(getString(2131720324));
+    a(getString(2131720064));
     Intent localIntent = new Intent(this, TroopCreateLogicActivity.class);
     localIntent.putExtra("type", 5);
     localIntent.putExtra("troop_location", paramString);
@@ -57,57 +58,51 @@ public class TroopLocationModifyActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    switch (paramInt1)
+    if (paramInt1 == 41)
     {
-    default: 
-      super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-      return;
-    }
-    if ((paramIntent == null) || (paramInt2 != -1))
-    {
-      super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
-      return;
-    }
-    int i = paramIntent.getIntExtra("errCode", -1);
-    boolean bool = paramIntent.getBooleanExtra("isClear", false);
-    String str = paramIntent.getStringExtra("location");
-    int j = paramIntent.getIntExtra("lat", 0);
-    int k = paramIntent.getIntExtra("lon", 0);
-    if (i == 0)
-    {
-      if (bool) {
-        QQToast.a(this, 2131720316, 0).b(getTitleBarHeight());
+      if ((paramIntent == null) || (paramInt2 != -1)) {
+        break label227;
       }
-      for (;;)
+      int i = paramIntent.getIntExtra("errCode", -1);
+      boolean bool = paramIntent.getBooleanExtra("isClear", false);
+      String str = paramIntent.getStringExtra("location");
+      int j = paramIntent.getIntExtra("lat", 0);
+      int k = paramIntent.getIntExtra("lon", 0);
+      if (i == 0)
       {
+        if (bool) {
+          QQToast.a(this, 2131720056, 0).b(getTitleBarHeight());
+        } else {
+          QQToast.a(this, 2131720061, 0).b(getTitleBarHeight());
+        }
         Intent localIntent = new Intent();
         localIntent.putExtra("location", str);
         localIntent.putExtra("lat", j);
         localIntent.putExtra("lon", k);
         setResult(-1, localIntent);
         finish();
-        break;
-        QQToast.a(this, 2131720321, 0).b(getTitleBarHeight());
+      }
+      else
+      {
+        if (i == 1002) {
+          str = getString(2131720068);
+        } else if (bool) {
+          str = getString(2131720055);
+        } else {
+          str = getString(2131720060);
+        }
+        QQToast.a(this, str, 0).b(getTitleBarHeight());
       }
     }
-    if (i == 1002) {
-      str = getString(2131720328);
-    }
-    for (;;)
-    {
-      QQToast.a(this, str, 0).b(getTitleBarHeight());
-      break;
-      if (bool) {
-        str = getString(2131720315);
-      } else {
-        str = getString(2131720320);
-      }
-    }
+    super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+    return;
+    label227:
+    super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     paramBundle = getIntent().getExtras();
@@ -117,16 +112,17 @@ public class TroopLocationModifyActivity
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
   }
   
   protected void e()
   {
-    if (this.b != null)
+    Dialog localDialog = this.b;
+    if (localDialog != null)
     {
-      if (this.b.isShowing()) {
+      if (localDialog.isShowing()) {
         this.b.dismiss();
       }
       this.b = null;
@@ -142,7 +138,7 @@ public class TroopLocationModifyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopLocationModifyActivity
  * JD-Core Version:    0.7.0.1
  */

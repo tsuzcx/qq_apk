@@ -9,11 +9,6 @@ public abstract class ISearchResultPositionModel
   public int u;
   public int v = 0;
   
-  public int a()
-  {
-    return this.a;
-  }
-  
   public Object a(String paramString)
   {
     return null;
@@ -27,17 +22,22 @@ public abstract class ISearchResultPositionModel
   
   public int b()
   {
-    return this.b;
+    return this.a;
   }
   
-  public void b(int paramInt)
+  public void c(int paramInt)
   {
     this.v = paramInt;
+  }
+  
+  public int f_()
+  {
+    return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.model.ISearchResultPositionModel
  * JD-Core Version:    0.7.0.1
  */

@@ -47,8 +47,9 @@ public enum AdLog
   
   private static AdLogAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdLogAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdLogAdapter)localWeakReference.get();
     }
     return null;
   }

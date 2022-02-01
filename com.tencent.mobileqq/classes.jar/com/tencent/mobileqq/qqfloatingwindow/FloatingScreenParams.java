@@ -66,12 +66,15 @@ public class FloatingScreenParams
   
   private void initMaxWidth(int paramInt)
   {
-    this.mHorizontalWidthMax = ((int)(paramInt * 0.92F));
-    this.mHorizontalWidthMin = ((int)(paramInt * 0.5F));
-    this.mVerticalWidthMax = ((int)(paramInt * 0.6F));
-    this.mVerticalWidthMin = ((int)(paramInt * 0.24F));
-    this.mSquareWidthMax = ((int)(paramInt * 0.6F));
-    this.mSquareWidthMin = ((int)(paramInt * 0.24F));
+    float f = paramInt;
+    this.mHorizontalWidthMax = ((int)(0.92F * f));
+    this.mHorizontalWidthMin = ((int)(0.5F * f));
+    paramInt = (int)(0.6F * f);
+    this.mVerticalWidthMax = paramInt;
+    int i = (int)(f * 0.24F);
+    this.mVerticalWidthMin = i;
+    this.mSquareWidthMax = paramInt;
+    this.mSquareWidthMin = i;
   }
   
   private void setCanMove(boolean paramBoolean)
@@ -130,7 +133,11 @@ public class FloatingScreenParams
       double d = Math.ceil(getHeight() / getZoomRatio());
       return (int)d;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label18:
+      break label18;
+    }
     return getHeight();
   }
   
@@ -141,7 +148,11 @@ public class FloatingScreenParams
       double d = Math.ceil(getWidth() / getZoomRatio());
       return (int)d;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label18:
+      break label18;
+    }
     return getWidth();
   }
   
@@ -177,14 +188,15 @@ public class FloatingScreenParams
   public int getReboundSize()
   {
     int i = getWidth();
-    switch (getShapeType())
+    int j = getShapeType();
+    if (j != 2)
     {
-    default: 
-      return getFixedWith(i, this.mHorizontalWidthMax, this.mHorizontalWidthMin);
-    case 2: 
-      return getFixedWith(i, this.mVerticalWidthMax, this.mVerticalWidthMin);
+      if (j != 3) {
+        return getFixedWith(i, this.mHorizontalWidthMax, this.mHorizontalWidthMin);
+      }
+      return getFixedWith(i, this.mSquareWidthMax, this.mSquareWidthMin);
     }
-    return getFixedWith(i, this.mSquareWidthMax, this.mSquareWidthMin);
+    return getFixedWith(i, this.mVerticalWidthMax, this.mVerticalWidthMin);
   }
   
   int getRoundCorner()
@@ -212,10 +224,10 @@ public class FloatingScreenParams
     Object localObject = MobileQQ.getContext().getResources();
     if (localObject != null)
     {
-      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298577);
-      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298579);
-      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298578);
-      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298580);
+      this.mScreenLonger = ((Resources)localObject).getDimensionPixelSize(2131298572);
+      this.mSquareLength = ((Resources)localObject).getDimensionPixelSize(2131298574);
+      this.mRoundCorner = ((Resources)localObject).getDimensionPixelSize(2131298573);
+      this.mOuterPadding = ((Resources)localObject).getDimensionPixelSize(2131298575);
     }
     this.mWidth = this.mScreenLonger;
     this.mHeight = ((int)(this.mWidth * this.mScreenRatio));
@@ -223,21 +235,19 @@ public class FloatingScreenParams
       QLog.d("FSParams", 2, new Object[] { "param corner:", Integer.valueOf(this.mRoundCorner), ", pad:", Integer.valueOf(this.mOuterPadding), ", width:", Integer.valueOf(this.mWidth), ", height:", Integer.valueOf(this.mHeight) });
     }
     localObject = (WindowManager)MobileQQ.getContext().getSystemService("window");
-    int j;
     if (localObject != null)
     {
-      i = ((WindowManager)localObject).getDefaultDisplay().getHeight();
-      j = ((WindowManager)localObject).getDefaultDisplay().getWidth();
-      if (i / 2 - 214 - this.mHeight / 2 <= 0) {
-        break label232;
+      int i = ((WindowManager)localObject).getDefaultDisplay().getHeight();
+      int j = ((WindowManager)localObject).getDefaultDisplay().getWidth();
+      i = i / 2 - 214;
+      int k = this.mHeight;
+      if (i - k / 2 > 0) {
+        i -= k / 2;
+      } else {
+        i = 200;
       }
-    }
-    label232:
-    for (int i = i / 2 - 214 - this.mHeight / 2;; i = 200)
-    {
       this.mFloatingCenterY = i;
       initMaxWidth(j);
-      return;
     }
   }
   
@@ -284,25 +294,29 @@ public class FloatingScreenParams
       i = 1;
     }
     this.mShapeType = i;
-    switch (i)
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      setWidth(this.mScreenLonger);
-      setHeight((int)(this.mScreenLonger * this.mScreenRatio));
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4) {
+            return;
+          }
+          setWidth(this.mCustomWidth);
+          setHeight(this.mCustomHeight);
+          return;
+        }
+        setWidth(this.mSquareLength);
+        setHeight(this.mSquareLength);
+        return;
+      }
       setWidth((int)(this.mScreenLonger * this.mScreenRatio));
       setHeight(this.mScreenLonger);
       return;
-    case 3: 
-      setWidth(this.mSquareLength);
-      setHeight(this.mSquareLength);
-      return;
     }
-    setWidth(this.mCustomWidth);
-    setHeight(this.mCustomHeight);
+    setWidth(this.mScreenLonger);
+    setHeight((int)(this.mScreenLonger * this.mScreenRatio));
   }
   
   public void setShowPadding(boolean paramBoolean)
@@ -328,24 +342,28 @@ public class FloatingScreenParams
     int j = (int)(this.mInitialHeight * paramFloat);
     setWidth(i);
     setHeight(j);
-    switch (getShapeType())
+    int k = getShapeType();
+    if (k != 1)
     {
+      if (k != 2)
+      {
+        if (k == 3) {
+          this.mSquareLength = i;
+        }
+      }
+      else {
+        this.mScreenLonger = j;
+      }
     }
-    for (;;)
-    {
-      this.mZoomRatio = paramFloat;
-      return;
+    else {
       this.mScreenLonger = i;
-      continue;
-      this.mScreenLonger = j;
-      continue;
-      this.mSquareLength = i;
     }
+    this.mZoomRatio = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams
  * JD-Core Version:    0.7.0.1
  */

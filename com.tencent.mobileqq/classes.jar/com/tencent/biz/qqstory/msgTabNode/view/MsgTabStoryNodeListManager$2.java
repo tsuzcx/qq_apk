@@ -9,7 +9,7 @@ class MsgTabStoryNodeListManager$2
 {
   MsgTabStoryNodeListManager$2(MsgTabStoryNodeListManager paramMsgTabStoryNodeListManager) {}
   
-  public void a(Object paramObject)
+  protected void a(Object paramObject)
   {
     ThreadManager.post(new MsgTabStoryNodeListManager.2.1(this, paramObject), 5, null, true);
     SLog.b(MsgTabStoryNodeListManager.b(), "freshRedPoint, showStoryNode");
@@ -17,7 +17,7 @@ class MsgTabStoryNodeListManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.2
  * JD-Core Version:    0.7.0.1
  */

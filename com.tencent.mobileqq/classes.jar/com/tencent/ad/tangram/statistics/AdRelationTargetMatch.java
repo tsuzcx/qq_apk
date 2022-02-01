@@ -22,19 +22,19 @@ public final class AdRelationTargetMatch
   public static void handle(WeakReference<Context> paramWeakReference, Ad paramAd)
   {
     AdLog.i("AdRelationTargetMatch", "handle begin");
-    if ((paramAd == null) || (!paramAd.isValid())) {
-      AdLog.e("AdRelationTargetMatch", "handle error. Ad invalid");
-    }
-    do
+    if ((paramAd != null) && (paramAd.isValid()))
     {
-      return;
       if (paramAd.isAppProductType())
       {
         handleApp(paramWeakReference, paramAd);
         return;
       }
-    } while (!paramAd.isJDProductType());
-    handleJD(paramWeakReference, paramAd);
+      if (paramAd.isJDProductType()) {
+        handleJD(paramWeakReference, paramAd);
+      }
+      return;
+    }
+    AdLog.e("AdRelationTargetMatch", "handle error. Ad invalid");
   }
   
   private static void handleApp(WeakReference<Context> paramWeakReference, Ad paramAd)
@@ -42,23 +42,23 @@ public final class AdRelationTargetMatch
     AdLog.i("AdRelationTargetMatch", "handleApp begin");
     String str = paramAd.getAppPackageName();
     int i = paramAd.getRelationTarget();
-    if ((TextUtils.isEmpty(str)) || (i <= 0)) {
-      AdLog.i("AdRelationTargetMatch", "App packageName empty or relation target unlimited");
-    }
-    boolean bool;
-    do
+    if ((!TextUtils.isEmpty(str)) && (i > 0))
     {
-      return;
-      bool = AdAppUtil.isInstalled((Context)paramWeakReference.get(), str);
+      boolean bool = AdAppUtil.isInstalled((Context)paramWeakReference.get(), str);
       if ((bool) && (i == 1))
       {
         AdLog.i("AdRelationTargetMatch", "handleApp 已安装 && 定向未安装");
         report(paramWeakReference, paramAd, "1");
         return;
       }
-    } while ((bool) || (i != 2));
-    AdLog.i("AdRelationTargetMatch", "handleApp 未安装 && 定向已安装");
-    report(paramWeakReference, paramAd, "0");
+      if ((!bool) && (i == 2))
+      {
+        AdLog.i("AdRelationTargetMatch", "handleApp 未安装 && 定向已安装");
+        report(paramWeakReference, paramAd, "0");
+      }
+      return;
+    }
+    AdLog.i("AdRelationTargetMatch", "App packageName empty or relation target unlimited");
   }
   
   private static void handleJD(WeakReference<Context> paramWeakReference, Ad paramAd)
@@ -70,13 +70,16 @@ public final class AdRelationTargetMatch
       AdLog.i("AdRelationTargetMatch", "JD packageName empty");
       return;
     }
-    if (AdAppUtil.isInstalled((Context)paramWeakReference.get(), str)) {}
-    for (str = "1";; str = "0")
-    {
-      AdLog.i("AdRelationTargetMatch", "handleJD installStatus: " + str);
-      report(paramWeakReference, paramAd, str);
-      return;
+    if (AdAppUtil.isInstalled((Context)paramWeakReference.get(), str)) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleJD installStatus: ");
+    localStringBuilder.append(str);
+    AdLog.i("AdRelationTargetMatch", localStringBuilder.toString());
+    report(paramWeakReference, paramAd, str);
   }
   
   private static void report(WeakReference<Context> paramWeakReference, Ad paramAd, String paramString)

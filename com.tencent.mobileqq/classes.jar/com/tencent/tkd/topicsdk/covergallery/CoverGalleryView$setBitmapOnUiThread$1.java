@@ -1,8 +1,8 @@
 package com.tencent.tkd.topicsdk.covergallery;
 
 import android.graphics.Bitmap;
-import com.tencent.tkd.topicsdk.widget.ucrop.GestureCropImageView;
-import com.tencent.tkd.topicsdk.widget.ucrop.UCropView;
+import com.tencent.tkd.topicsdk.ucrop.view.GestureCropImageView;
+import com.tencent.tkd.topicsdk.ucrop.view.UCropView;
 import kotlin.Metadata;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
@@ -25,7 +25,7 @@ final class CoverGalleryView$setBitmapOnUiThread$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.covergallery.CoverGalleryView.setBitmapOnUiThread.1
  * JD-Core Version:    0.7.0.1
  */

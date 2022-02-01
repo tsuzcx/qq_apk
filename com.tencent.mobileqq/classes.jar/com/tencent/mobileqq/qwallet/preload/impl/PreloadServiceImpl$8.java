@@ -29,32 +29,34 @@ class PreloadServiceImpl$8
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadServiceImpl.mIsOnDestroy) {}
-    do
-    {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
-        return;
-      case 1: 
-        this.jdField_a_of_type_JavaUtilLinkedList.addLast((IPreloadService.FlowControlObj)paramMessage.obj);
-      }
-    } while (this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = true;
-    sendEmptyMessage(2);
-    return;
-    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
-    {
-      a();
+    if (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadServiceImpl.mIsOnDestroy) {
       return;
     }
-    this.jdField_a_of_type_Boolean = false;
+    int i = paramMessage.what;
+    if (i != 1)
+    {
+      if (i != 2) {
+        return;
+      }
+      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+      {
+        a();
+        return;
+      }
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.addLast((IPreloadService.FlowControlObj)paramMessage.obj);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_Boolean = true;
+      sendEmptyMessage(2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceImpl.8
  * JD-Core Version:    0.7.0.1
  */

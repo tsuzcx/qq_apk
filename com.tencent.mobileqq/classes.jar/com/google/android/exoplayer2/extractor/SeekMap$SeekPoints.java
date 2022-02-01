@@ -20,15 +20,17 @@ public final class SeekMap$SeekPoints
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (SeekPoints)paramObject;
-    } while ((this.first.equals(paramObject.first)) && (this.second.equals(paramObject.second)));
+      return (this.first.equals(paramObject.first)) && (this.second.equals(paramObject.second));
+    }
     return false;
   }
   
@@ -39,16 +41,29 @@ public final class SeekMap$SeekPoints
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("[").append(this.first);
-    if (this.first.equals(this.second)) {}
-    for (String str = "";; str = ", " + this.second) {
-      return str + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.first);
+    Object localObject;
+    if (this.first.equals(this.second))
+    {
+      localObject = "";
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(this.second);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.SeekMap.SeekPoints
  * JD-Core Version:    0.7.0.1
  */

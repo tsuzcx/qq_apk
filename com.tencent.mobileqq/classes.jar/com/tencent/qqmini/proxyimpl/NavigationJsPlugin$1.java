@@ -17,21 +17,24 @@ class NavigationJsPlugin$1
         this.a.finish();
         return;
       }
-      if (!this.a.moveTaskToBack(false))
-      {
-        this.a.finish();
-        return;
+      if (this.a.moveTaskToBack(false)) {
+        break label45;
       }
+      this.a.finish();
+      return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("NavigationJsPlugin", 1, "Failed to moveTaskBack");
+      label37:
+      label45:
+      break label37;
     }
+    QLog.e("NavigationJsPlugin", 1, "Failed to moveTaskBack");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

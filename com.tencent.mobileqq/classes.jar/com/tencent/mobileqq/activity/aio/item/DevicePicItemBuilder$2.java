@@ -18,19 +18,16 @@ class DevicePicItemBuilder$2
   {
     if ("device_groupchat".equals(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile.extStr)) {
       ((DeviceMsgHandle)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER)).a().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.b();
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
+    } else {
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDeviceFile);
     }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemDevicePicItemBuilder.b();
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.DevicePicItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

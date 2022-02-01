@@ -38,7 +38,7 @@ class SettingsJsPlugin$3
           }
         }
       }
-      if ((paramList != null) && (paramList.size() > 0)) {
+      if (paramList.size() > 0) {
         this.val$authorizeCenter.updateIsSysSubMsgMaintain(true);
       }
       SettingsJsPlugin.access$400(this.this$0, this.val$authorizeCenter, this.val$req, this.val$withSubscriptions, paramList);
@@ -50,7 +50,7 @@ class SettingsJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SettingsJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

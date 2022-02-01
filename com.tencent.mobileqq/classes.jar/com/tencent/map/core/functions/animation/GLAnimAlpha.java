@@ -19,14 +19,13 @@ public class GLAnimAlpha
   {
     float f1 = this.b;
     float f2 = this.a;
-    float f3 = this.a;
-    f1 = (f1 - f2) * (float)paramLong / (float)this.duration + f3;
+    f1 = f2 + (f1 - f2) * (float)paramLong / (float)this.duration;
     paramGL10.glColor4f(f1, f1, f1, f1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GLAnimAlpha
  * JD-Core Version:    0.7.0.1
  */

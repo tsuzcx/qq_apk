@@ -36,7 +36,7 @@ public class MsgTabStoryNodeAdapter
     while (i < localList.size())
     {
       if (TextUtils.equals(((MsgTabNodeInfo)localList.get(i)).jdField_a_of_type_JavaLangString, paramString)) {
-        return b() + i;
+        return i + b();
       }
       i += 1;
     }
@@ -61,7 +61,7 @@ public class MsgTabStoryNodeAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeAdapter
  * JD-Core Version:    0.7.0.1
  */

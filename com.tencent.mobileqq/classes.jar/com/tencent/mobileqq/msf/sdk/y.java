@@ -48,27 +48,33 @@ public class y
   
   private static ServiceState a()
   {
-    TelephonyManager localTelephonyManager = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
-    if ((Build.VERSION.SDK_INT >= 26) && (localTelephonyManager != null) && (b())) {
+    Object localObject1 = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
+    if ((Build.VERSION.SDK_INT >= 26) && (localObject1 != null) && (b())) {
       try
       {
-        int n = g.a(g.a(localTelephonyManager));
+        int n = g.a(g.a((TelephonyManager)localObject1));
         if (n < 0) {
-          return localTelephonyManager.getServiceState();
+          return ((TelephonyManager)localObject1).getServiceState();
         }
-        Object localObject = TelephonyManager.class.getDeclaredMethod("getServiceStateForSubscriber", new Class[] { Integer.TYPE });
-        ((Method)localObject).setAccessible(true);
-        localObject = (ServiceState)((Method)localObject).invoke(localTelephonyManager, new Object[] { Integer.valueOf(n) });
-        return localObject;
+        Object localObject2 = TelephonyManager.class.getDeclaredMethod("getServiceStateForSubscriber", new Class[] { Integer.TYPE });
+        ((Method)localObject2).setAccessible(true);
+        localObject2 = (ServiceState)((Method)localObject2).invoke(localObject1, new Object[] { Integer.valueOf(n) });
+        return localObject2;
       }
       catch (Exception localException)
       {
         QLog.e("MSF.C.NetworkType5GWrapper", 1, "getServiceState throw e", localException);
-        return localTelephonyManager.getServiceState();
+        return ((TelephonyManager)localObject1).getServiceState();
       }
     }
-    if ((Build.VERSION.SDK_INT >= 23) && (QLog.isColorLevel())) {
-      QLog.d("MSF.C.NetworkType5GWrapper", 2, "sdkVersion = " + Build.VERSION.SDK_INT + ", per = " + b());
+    if ((Build.VERSION.SDK_INT >= 23) && (QLog.isColorLevel()))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("sdkVersion = ");
+      ((StringBuilder)localObject1).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject1).append(", per = ");
+      ((StringBuilder)localObject1).append(b());
+      QLog.d("MSF.C.NetworkType5GWrapper", 2, ((StringBuilder)localObject1).toString());
     }
     return null;
   }
@@ -85,13 +91,13 @@ public class y
     HashMap localHashMap = new HashMap();
     localHashMap.put("user_uin", paramString);
     localHashMap.put("has_read_phone_per", String.valueOf(bool));
-    if (paramInt == 20) {}
-    for (bool = true;; bool = false)
-    {
-      localHashMap.put("is_five_g", String.valueOf(bool));
-      paramj.a("evt_read_phone_state_per", true, 0L, 0L, localHashMap, false, false);
-      return;
+    if (paramInt == 20) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localHashMap.put("is_five_g", String.valueOf(bool));
+    paramj.a("evt_read_phone_state_per", true, 0L, 0L, localHashMap, false, false);
   }
   
   private static void a(String paramString, long paramLong)
@@ -101,47 +107,28 @@ public class y
   
   private static boolean a(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (!TextUtils.isEmpty(paramString)) {
-      if (!paramString.contains("nrState=NOT_RESTRICTED"))
-      {
-        bool1 = bool2;
-        if (!paramString.contains("nrState=CONNECTED")) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (!TextUtils.isEmpty(paramString)) && ((paramString.contains("nrState=NOT_RESTRICTED")) || (paramString.contains("nrState=CONNECTED")));
   }
   
   private static int b(int paramInt)
   {
     int n;
-    if (Build.VERSION.SDK_INT < 29) {
+    if (Build.VERSION.SDK_INT < 29)
+    {
       n = paramInt;
     }
-    for (;;)
+    else
     {
-      try
-      {
-        d(n);
-        return n;
-      }
-      catch (Throwable localThrowable)
-      {
-        ServiceState localServiceState;
-        QLog.e("MSF.C.NetworkType5GWrapper", 1, "reportIfNeed throw t, per = " + b(), localThrowable);
-        return n;
-      }
+      Object localObject;
       if (paramInt == 20)
       {
         n = paramInt;
         if (QLog.isColorLevel())
         {
-          QLog.d("MSF.C.NetworkType5GWrapper", 2, "network type is correct, val = " + paramInt);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("network type is correct, val = ");
+          ((StringBuilder)localObject).append(paramInt);
+          QLog.d("MSF.C.NetworkType5GWrapper", 2, ((StringBuilder)localObject).toString());
           n = paramInt;
         }
       }
@@ -160,34 +147,47 @@ public class y
         n = paramInt;
         if (QLog.isColorLevel())
         {
-          QLog.d("MSF.C.NetworkType5GWrapper", 2, "getHwNetworkType = " + paramInt);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getHwNetworkType = ");
+          ((StringBuilder)localObject).append(paramInt);
+          QLog.d("MSF.C.NetworkType5GWrapper", 2, ((StringBuilder)localObject).toString());
           n = paramInt;
         }
       }
       else
       {
-        localServiceState = a();
-        if ((localServiceState != null) && (a(localServiceState.toString())))
+        localObject = a();
+        if ((localObject != null) && (a(((ServiceState)localObject).toString())))
         {
-          if (QLog.isColorLevel())
-          {
+          if (QLog.isColorLevel()) {
             QLog.d("MSF.C.NetworkType5GWrapper", 2, "getNetworkTypeWhenSDKVerAboveQ, res is nr last");
-            n = 20;
           }
+          n = 20;
         }
         else
         {
           n = paramInt;
-          if (!QLog.isColorLevel()) {
-            continue;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("MSF.C.NetworkType5GWrapper", 2, "go end");
+            n = paramInt;
           }
-          QLog.d("MSF.C.NetworkType5GWrapper", 2, "go end");
-          n = paramInt;
-          continue;
         }
-        n = 20;
       }
     }
+    try
+    {
+      d(n);
+      return n;
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportIfNeed throw t, per = ");
+      localStringBuilder.append(b());
+      QLog.e("MSF.C.NetworkType5GWrapper", 1, localStringBuilder.toString(), localThrowable);
+    }
+    return n;
   }
   
   private static long b(String paramString)
@@ -198,60 +198,75 @@ public class y
   private static void b(j paramj, int paramInt, String paramString)
   {
     long l1 = System.currentTimeMillis();
-    if ((paramInt != 20) || (l1 - l <= 86400000L)) {
-      return;
+    if (paramInt == 20)
+    {
+      if (l1 - l <= 86400000L) {
+        return;
+      }
+      l = l1;
+      a("last_report_5g_network_type", l1);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("user_uin", paramString);
+      paramj.a("evt_five_g_network_type", true, 0L, 0L, localHashMap, false, false);
     }
-    l = l1;
-    a("last_report_5g_network_type", l1);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("user_uin", paramString);
-    paramj.a("evt_five_g_network_type", true, 0L, 0L, localHashMap, false, false);
   }
   
   private static boolean b()
   {
-    return (Build.VERSION.SDK_INT < 23) || (BaseApplication.getContext().checkSelfPermission("android.permission.READ_PHONE_STATE") == 0);
+    int n = Build.VERSION.SDK_INT;
+    boolean bool = true;
+    if (n >= 23)
+    {
+      if (BaseApplication.getContext().checkSelfPermission("android.permission.READ_PHONE_STATE") == 0) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   private static int c(int paramInt)
   {
-    boolean bool = false;
     Object localObject1 = a();
-    if ((Build.VERSION.SDK_INT >= 26) && (localObject1 != null) && (b())) {}
-    do
+    int n = Build.VERSION.SDK_INT;
+    boolean bool = true;
+    Object localObject2;
+    if ((n >= 26) && (localObject1 != null) && (b()))
     {
-      do
+      try
       {
-        try
-        {
-          localObject2 = ServiceState.class.getMethod("getHwNetworkType", new Class[0]);
-          ((Method)localObject2).setAccessible(true);
-          localObject1 = (Integer)((Method)localObject2).invoke(localObject1, new Object[0]);
-          n = paramInt;
-          if (localObject1 != null)
-          {
-            int i1 = ((Integer)localObject1).intValue();
-            n = paramInt;
-            if (i1 == 20) {
-              n = 20;
-            }
-          }
-          return n;
-        }
-        catch (Exception localException)
-        {
-          QLog.e("MSF.C.NetworkType5GWrapper", 1, "getHwNetworkType throw ex", localException);
+        localObject2 = ServiceState.class.getMethod("getHwNetworkType", new Class[0]);
+        ((Method)localObject2).setAccessible(true);
+        localObject1 = (Integer)((Method)localObject2).invoke(localObject1, new Object[0]);
+        if (localObject1 == null) {
           return paramInt;
         }
-        n = paramInt;
-      } while (Build.VERSION.SDK_INT < 23);
-      int n = paramInt;
-    } while (!QLog.isColorLevel());
-    Object localObject2 = new StringBuilder().append("sdkVersion = ").append(Build.VERSION.SDK_INT).append(", ss != null = ");
-    if (localException != null) {
-      bool = true;
+        n = ((Integer)localObject1).intValue();
+        if (n != 20) {
+          return paramInt;
+        }
+        return 20;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("MSF.C.NetworkType5GWrapper", 1, "getHwNetworkType throw ex", localException);
+        return paramInt;
+      }
     }
-    QLog.d("MSF.C.NetworkType5GWrapper", 2, bool + ", per = " + b());
+    else if ((Build.VERSION.SDK_INT >= 23) && (QLog.isColorLevel()))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("sdkVersion = ");
+      ((StringBuilder)localObject2).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject2).append(", ss != null = ");
+      if (localException == null) {
+        bool = false;
+      }
+      ((StringBuilder)localObject2).append(bool);
+      ((StringBuilder)localObject2).append(", per = ");
+      ((StringBuilder)localObject2).append(b());
+      QLog.d("MSF.C.NetworkType5GWrapper", 2, ((StringBuilder)localObject2).toString());
+    }
     return paramInt;
   }
   
@@ -260,20 +275,23 @@ public class y
     if (Build.VERSION.SDK_INT < 29) {
       return;
     }
-    if ((MsfCore.sCore == null) || (MsfCore.sCore.statReporter == null) || (MsfCore.sCore.getAccountCenter() == null))
+    if ((MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null) && (MsfCore.sCore.getAccountCenter() != null))
     {
-      QLog.d("MSF.C.NetworkType5GWrapper", 1, "some param are still null, per = " + b());
+      localObject = MsfCore.sCore.statReporter;
+      String str = MsfCore.sCore.getAccountCenter().i();
+      a((j)localObject, paramInt, str);
+      b((j)localObject, paramInt, str);
       return;
     }
-    j localj = MsfCore.sCore.statReporter;
-    String str = MsfCore.sCore.getAccountCenter().i();
-    a(localj, paramInt, str);
-    b(localj, paramInt, str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("some param are still null, per = ");
+    ((StringBuilder)localObject).append(b());
+    QLog.d("MSF.C.NetworkType5GWrapper", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.y
  * JD-Core Version:    0.7.0.1
  */

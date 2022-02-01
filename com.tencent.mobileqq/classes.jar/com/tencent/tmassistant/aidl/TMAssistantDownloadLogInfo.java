@@ -32,42 +32,37 @@ public class TMAssistantDownloadLogInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.logLevel != null)
-    {
-      paramParcel.writeString(this.logLevel);
-      paramParcel.writeLong(this.logTime);
-      if (this.logTag == null) {
-        break label78;
-      }
-      paramParcel.writeString(this.logTag);
-      label38:
-      if (this.logMsg == null) {
-        break label87;
-      }
-      paramParcel.writeString(this.logMsg);
+    String str = this.logLevel;
+    if (str != null) {
+      paramParcel.writeString(str);
+    } else {
+      paramParcel.writeString("");
     }
-    for (;;)
+    paramParcel.writeLong(this.logTime);
+    str = this.logTag;
+    if (str != null) {
+      paramParcel.writeString(str);
+    } else {
+      paramParcel.writeString("");
+    }
+    str = this.logMsg;
+    if (str != null) {
+      paramParcel.writeString(str);
+    } else {
+      paramParcel.writeString("");
+    }
+    str = this.logThrowableMsg;
+    if (str != null)
     {
-      if (this.logThrowableMsg == null) {
-        break label96;
-      }
-      paramParcel.writeString(this.logThrowableMsg);
+      paramParcel.writeString(str);
       return;
-      paramParcel.writeString("");
-      break;
-      label78:
-      paramParcel.writeString("");
-      break label38;
-      label87:
-      paramParcel.writeString("");
     }
-    label96:
     paramParcel.writeString("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.aidl.TMAssistantDownloadLogInfo
  * JD-Core Version:    0.7.0.1
  */

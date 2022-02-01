@@ -49,28 +49,30 @@ public class NowBizConfigManager
     if (!TextUtils.isEmpty((CharSequence)localObject1))
     {
       localObject1 = Uri.parse((String)localObject1);
-      if (localObject1 == null) {}
+      if (localObject1 != null)
+      {
+        localObject1 = ((Uri)localObject1).getQueryParameter(paramString);
+        break label51;
+      }
     }
-    for (localObject1 = ((Uri)localObject1).getQueryParameter(paramString);; localObject1 = "")
+    localObject1 = "";
+    label51:
+    localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = paramBundle.getString(paramString);
+    }
+    if (QLog.isColorLevel())
     {
-      localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = paramBundle.getString(paramString);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("NowBizConfigManager", 1, "getValueFromBundle: bundle=" + paramBundle.toString() + " name=" + paramString + " value=" + (String)localObject2);
-      }
-      return localObject2;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getValueFromBundle: bundle=");
+      ((StringBuilder)localObject1).append(paramBundle.toString());
+      ((StringBuilder)localObject1).append(" name=");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(" value=");
+      ((StringBuilder)localObject1).append((String)localObject2);
+      QLog.i("NowBizConfigManager", 1, ((StringBuilder)localObject1).toString());
     }
-  }
-  
-  private String a(String paramString)
-  {
-    String str = paramString;
-    if (paramString.contains("share_msg_")) {
-      str = paramString.substring("share_msg_".length());
-    }
-    return str;
+    return localObject2;
   }
   
   private void a()
@@ -107,17 +109,6 @@ public class NowBizConfigManager
     return "live";
   }
   
-  private boolean b(Bundle paramBundle)
-  {
-    if ((this.jdField_a_of_type_AndroidOsBundle != null) && ("0".equals(a(paramBundle, "fromid"))))
-    {
-      paramBundle.putString("fromid", a(this.jdField_a_of_type_AndroidOsBundle, "fromid"));
-      paramBundle.putString("mqqScheme", a(this.jdField_a_of_type_AndroidOsBundle, "mqqScheme"));
-      return true;
-    }
-    return false;
-  }
-  
   public static boolean b(String paramString)
   {
     if (jdField_a_of_type_JavaUtilList.contains(paramString)) {
@@ -149,17 +140,7 @@ public class NowBizConfigManager
   
   public boolean a(Bundle paramBundle)
   {
-    String str1 = a(paramBundle, "fromid");
-    if (b(paramBundle)) {
-      str1 = a(paramBundle, "fromid");
-    }
-    paramBundle = a(paramBundle, "groupUin");
-    str1 = str1.toLowerCase();
-    String str2 = a(str1);
-    if ((this.jdField_b_of_type_JavaUtilList.contains(str2)) || (this.c.contains(str2)) || (jdField_a_of_type_JavaUtilList.contains(str2))) {
-      return true;
-    }
-    return (str1.contains("share_msg_")) && (TextUtils.isEmpty(paramBundle));
+    return true;
   }
   
   public boolean a(String paramString)
@@ -169,7 +150,7 @@ public class NowBizConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.config.NowBizConfigManager
  * JD-Core Version:    0.7.0.1
  */

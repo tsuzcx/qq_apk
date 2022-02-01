@@ -9,12 +9,12 @@ public class d
     if (paramBoolean) {
       return new k(paramHippyGlobalConfigs, paramString1, paramString2);
     }
-    return new l();
+    return new l(paramHippyGlobalConfigs, paramString1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.a.d
  * JD-Core Version:    0.7.0.1
  */

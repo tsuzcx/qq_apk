@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:id="@id/olg" android:layout_width="fill_parent" android:layout_height="110.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:id="@id/fac" android:visibility="visible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ni" android:layout_marginTop="63.0dip" android:layout_marginRight="@dimen/ni" android:layout_marginBottom="23.0dip">
+        <ImageView android:id="@id/fff" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="@dimen/na" android:src="@drawable/f9o" />
+        <TextView android:textSize="12.0sp" android:textColor="#99ffffff" android:gravity="center" android:id="@id/g1m" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:layout_toRightOf="@id/fff" android:layout_centerVertical="true" android:textAlignment="center" android:layout_toEndOf="@id/fff" />
+        <SeekBar android:id="@id/ilh" android:paddingLeft="@dimen/ms" android:paddingRight="@dimen/ms" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxHeight="3.0dip" android:progressDrawable="@drawable/aik" android:minHeight="3.0dip" android:thumb="@drawable/gnh" android:layout_toLeftOf="@id/jut" android:layout_toRightOf="@id/g1m" android:layout_centerVertical="true" android:layout_toStartOf="@id/jut" android:layout_toEndOf="@id/g1m" />
+        <TextView android:textSize="12.0sp" android:textColor="#99ffffff" android:gravity="center" android:id="@id/jut" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="00:00" android:layout_alignParentRight="true" android:layout_centerVertical="true" android:textAlignment="center" android:layout_alignParentEnd="true" />
+    </RelativeLayout>
+</RelativeLayout>

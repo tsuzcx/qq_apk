@@ -24,14 +24,15 @@ public final class GiftEffect
   
   public static GiftEffect[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new GiftEffect[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new GiftEffect[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static GiftEffect parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -55,20 +56,22 @@ public final class GiftEffect
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize() + CodedOutputByteBufferNano.computeUInt32Size(1, this.minNum) + CodedOutputByteBufferNano.computeUInt32Size(2, this.maxNum);
     int i = j;
     if (!Arrays.equals(this.gifEffect, WireFormatNano.EMPTY_BYTES)) {
       i = j + CodedOutputByteBufferNano.computeBytesSize(3, this.gifEffect);
     }
+    FlashEffect localFlashEffect = this.flashEffect;
     j = i;
-    if (this.flashEffect != null) {
-      j = i + CodedOutputByteBufferNano.computeMessageSize(4, this.flashEffect);
+    if (localFlashEffect != null) {
+      j = i + CodedOutputByteBufferNano.computeMessageSize(4, localFlashEffect);
     }
+    localFlashEffect = this.fullscreenEffect;
     i = j;
-    if (this.fullscreenEffect != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(5, this.fullscreenEffect);
+    if (localFlashEffect != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(5, localFlashEffect);
     }
     return i;
   }
@@ -78,35 +81,52 @@ public final class GiftEffect
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 8)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (i != 42)
+              {
+                if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                  return this;
+                }
+              }
+              else
+              {
+                if (this.fullscreenEffect == null) {
+                  this.fullscreenEffect = new FlashEffect();
+                }
+                paramCodedInputByteBufferNano.readMessage(this.fullscreenEffect);
+              }
+            }
+            else
+            {
+              if (this.flashEffect == null) {
+                this.flashEffect = new FlashEffect();
+              }
+              paramCodedInputByteBufferNano.readMessage(this.flashEffect);
+            }
+          }
+          else {
+            this.gifEffect = paramCodedInputByteBufferNano.readBytes();
+          }
         }
-      case 0: 
-        return this;
-      case 8: 
+        else {
+          this.maxNum = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
         this.minNum = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 16: 
-        this.maxNum = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 26: 
-        this.gifEffect = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 34: 
-        if (this.flashEffect == null) {
-          this.flashEffect = new FlashEffect();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.flashEffect);
-        break;
       }
-      if (this.fullscreenEffect == null) {
-        this.fullscreenEffect = new FlashEffect();
-      }
-      paramCodedInputByteBufferNano.readMessage(this.fullscreenEffect);
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -116,18 +136,20 @@ public final class GiftEffect
     if (!Arrays.equals(this.gifEffect, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(3, this.gifEffect);
     }
-    if (this.flashEffect != null) {
-      paramCodedOutputByteBufferNano.writeMessage(4, this.flashEffect);
+    FlashEffect localFlashEffect = this.flashEffect;
+    if (localFlashEffect != null) {
+      paramCodedOutputByteBufferNano.writeMessage(4, localFlashEffect);
     }
-    if (this.fullscreenEffect != null) {
-      paramCodedOutputByteBufferNano.writeMessage(5, this.fullscreenEffect);
+    localFlashEffect = this.fullscreenEffect;
+    if (localFlashEffect != null) {
+      paramCodedOutputByteBufferNano.writeMessage(5, localFlashEffect);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveGiftInfoNew.nano.GiftEffect
  * JD-Core Version:    0.7.0.1
  */

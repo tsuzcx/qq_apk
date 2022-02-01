@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<animated-selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="4.0dip" />
-    <gradient android:startColor="#ffff00c1" android:endColor="#ffffc235" android:angle="0.0" android:centerColor="#ffff4598" />
-</shape>
+    <item android:state_checked="true" android:id="@id/nq1" android:drawable="@drawable/blj" />
+    <item android:id="@id/nq0" android:drawable="@drawable/blh" />
+    <transition android:drawable="@drawable/blk" android:toId="@id/nq0" android:fromId="@id/nq1" />
+    <transition android:drawable="@drawable/bli" android:toId="@id/nq1" android:fromId="@id/nq0" />
+</animated-selector>

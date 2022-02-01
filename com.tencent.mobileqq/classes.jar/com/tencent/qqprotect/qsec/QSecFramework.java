@@ -11,7 +11,7 @@ public final class QSecFramework
 {
   private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getFileThreadLooper());
   private static volatile QSecFramework jdField_a_of_type_ComTencentQqprotectQsecQSecFramework = null;
-  private static ConcurrentHashMap<Long, QSecFramework.IGoingUpHandler> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+  private static ConcurrentHashMap<Long, QSecFramework.IGoingUpHandler> jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   private static boolean jdField_a_of_type_Boolean = false;
   private int jdField_a_of_type_Int = -1;
   private QSecCbMgr jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr = null;
@@ -24,7 +24,6 @@ public final class QSecFramework
   
   static
   {
-    jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     jdField_a_of_type_AndroidOsHandler = null;
     new CrashProtector("QSec", 86400000L).a(new QSecFramework.1());
   }
@@ -66,15 +65,16 @@ public final class QSecFramework
   
   public static QSecFramework a()
   {
-    if (jdField_a_of_type_ComTencentQqprotectQsecQSecFramework == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentQqprotectQsecQSecFramework == null) {
-        jdField_a_of_type_ComTencentQqprotectQsecQSecFramework = new QSecFramework();
+    if (jdField_a_of_type_ComTencentQqprotectQsecQSecFramework == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentQqprotectQsecQSecFramework == null) {
+          jdField_a_of_type_ComTencentQqprotectQsecQSecFramework = new QSecFramework();
+        }
       }
-      return jdField_a_of_type_ComTencentQqprotectQsecQSecFramework;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentQqprotectQsecQSecFramework;
   }
   
   public static void a(long paramLong, QSecFramework.IGoingUpHandler paramIGoingUpHandler)
@@ -89,12 +89,16 @@ public final class QSecFramework
     if (jdField_a_of_type_Boolean) {
       return true;
     }
-    String str = QPDirUtils.b() + File.separator + "libQSec.so";
-    File localFile = new File(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(QPDirUtils.b());
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append("libQSec.so");
+    localObject = ((StringBuilder)localObject).toString();
+    File localFile = new File((String)localObject);
     if ((localFile.exists()) && (VerifyFileUtil.a(localFile, null))) {
       try
       {
-        System.load(str);
+        System.load((String)localObject);
         return true;
       }
       catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
@@ -129,13 +133,16 @@ public final class QSecFramework
   public Boolean a(int paramInt)
   {
     Byte localByte = Byte.valueOf();
-    if (this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr != null) {
-      localByte = Byte.valueOf(this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr.a(paramInt));
+    QSecCbMgr localQSecCbMgr = this.jdField_a_of_type_ComTencentQqprotectQsecQSecCbMgr;
+    if (localQSecCbMgr != null) {
+      localByte = Byte.valueOf(localQSecCbMgr.a(paramInt));
     }
-    if (1 == localByte.byteValue()) {}
-    for (boolean bool = true;; bool = false) {
-      return Boolean.valueOf(bool);
+    paramInt = localByte.byteValue();
+    boolean bool = true;
+    if (1 != paramInt) {
+      bool = false;
     }
+    return Boolean.valueOf(bool);
   }
   
   public void a()
@@ -161,7 +168,7 @@ public final class QSecFramework
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.QSecFramework
  * JD-Core Version:    0.7.0.1
  */

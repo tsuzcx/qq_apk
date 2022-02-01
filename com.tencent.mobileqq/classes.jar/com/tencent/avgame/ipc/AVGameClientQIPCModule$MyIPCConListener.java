@@ -28,34 +28,46 @@ class AVGameClientQIPCModule$MyIPCConListener
   public void connectSuccess(EIPCConnection paramEIPCConnection)
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
-    QLog.i("AVGameClientQIPCModule", 1, "connectSuccess, server[" + paramEIPCConnection.procName + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("connectSuccess, server[");
+    localStringBuilder.append(paramEIPCConnection.procName);
+    localStringBuilder.append("]");
+    QLog.i("AVGameClientQIPCModule", 1, localStringBuilder.toString());
   }
   
   public void onConnectBind(EIPCConnection paramEIPCConnection)
   {
-    if (paramEIPCConnection == null) {}
-    do
-    {
+    if (paramEIPCConnection == null) {
       return;
-      QLog.i("AVGameClientQIPCModule", 1, "onConnectBind, [" + paramEIPCConnection.procName + "]");
-    } while (!TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName));
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onConnectBind, [");
+    localStringBuilder.append(paramEIPCConnection.procName);
+    localStringBuilder.append("]");
+    QLog.i("AVGameClientQIPCModule", 1, localStringBuilder.toString());
+    if (TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName)) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(2);
+    }
   }
   
   public void onConnectUnbind(EIPCConnection paramEIPCConnection)
   {
-    if (paramEIPCConnection == null) {}
-    do
-    {
+    if (paramEIPCConnection == null) {
       return;
-      QLog.i("AVGameClientQIPCModule", 1, "onConnectUnbind, [" + paramEIPCConnection.procName + "]");
-    } while (!TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName));
-    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(4);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onConnectUnbind, [");
+    localStringBuilder.append(paramEIPCConnection.procName);
+    localStringBuilder.append("]");
+    QLog.i("AVGameClientQIPCModule", 1, localStringBuilder.toString());
+    if (TextUtils.equals("com.tencent.mobileqq", paramEIPCConnection.procName)) {
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(4);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ipc.AVGameClientQIPCModule.MyIPCConListener
  * JD-Core Version:    0.7.0.1
  */

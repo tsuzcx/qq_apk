@@ -4,7 +4,7 @@ import android.util.Log;
 
 public class AVRLogUtils
 {
-  private static volatile AVRLogUtils.LogProxy logProxy = null;
+  private static volatile AVRLogUtils.LogProxy logProxy;
   
   public static void d(String paramString1, String paramString2)
   {
@@ -83,7 +83,7 @@ public class AVRLogUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.camerasdk.avreport.AVRLogUtils
  * JD-Core Version:    0.7.0.1
  */

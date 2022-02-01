@@ -45,15 +45,16 @@ public class ReportDataConfig
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportDataConfigGroup == null) {
+    ReportDataConfigGroup localReportDataConfigGroup = this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportDataConfigGroup;
+    if (localReportDataConfigGroup == null) {
       return this.jdField_a_of_type_Boolean;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqDatareportviewerReportDataConfigGroup.jdField_a_of_type_Boolean;
+    return localReportDataConfigGroup.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.ReportDataConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -12,14 +12,14 @@ class EmoticonPanelMallHelper$2
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelMallHelper", 2, "func updateLastEmoticonPanel begins.");
     }
-    if (this.this$0.mPanelController.pageAdapter != null) {
-      this.this$0.mPanelController.pageAdapter.notifyDataSetChanged();
+    if (((EmoticonPanelController)this.this$0.mPanelController).getPageAdapter() != null) {
+      ((EmoticonPanelController)this.this$0.mPanelController).getPageAdapter().notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelMallHelper.2
  * JD-Core Version:    0.7.0.1
  */

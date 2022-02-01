@@ -16,16 +16,6 @@ public class PermissionMonitor
   private Method[] mMethods;
   private String[] mSigs;
   
-  static
-  {
-    if (!PermissionMonitor.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   private void dispatchMethodEntry(List<PermissionMonitor.Listener> paramList, String paramString1, String paramString2, String paramString3, Object[] paramArrayOfObject)
   {
     paramList = paramList.iterator();
@@ -38,10 +28,21 @@ public class PermissionMonitor
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.mMethodNames.length)
+    for (;;)
     {
-      if ((paramString2.equals(this.mMethodNames[i])) && (this.mSigs[i].equals(paramString3)) && (("L" + this.mClassNames[i] + ";").equals(paramString1))) {
-        localArrayList.add(this.mListeners[i]);
+      Object localObject = this.mMethodNames;
+      if (i >= localObject.length) {
+        break;
+      }
+      if ((paramString2.equals(localObject[i])) && (this.mSigs[i].equals(paramString3)))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("L");
+        ((StringBuilder)localObject).append(this.mClassNames[i]);
+        ((StringBuilder)localObject).append(";");
+        if (((StringBuilder)localObject).toString().equals(paramString1)) {
+          localArrayList.add(this.mListeners[i]);
+        }
       }
       i += 1;
     }
@@ -50,158 +51,160 @@ public class PermissionMonitor
   
   private Class[] getClasses(String paramString)
   {
-    int n = 0;
     ArrayList localArrayList = new ArrayList();
-    int k = 0;
-    int m = 0;
-    if (k < paramString.length())
+    int n = 0;
+    int j = 0;
+    int k;
+    for (int m = 0; j < paramString.length(); m = k)
     {
-      int j = k;
-      i = m;
-      switch (paramString.charAt(k))
-      {
-      default: 
-        i = m;
-        j = k;
-      }
-      for (;;)
-      {
-        k = j + 1;
-        m = i;
-        break;
-        if (m != 0)
+      int i1 = paramString.charAt(j);
+      i = j;
+      k = m;
+      if (i1 != 40) {
+        if (i1 != 41)
         {
-          localArrayList.add([B.class);
-          i = 0;
-          j = k;
-        }
-        else
-        {
-          localArrayList.add(Byte.TYPE);
-          j = k;
-          i = m;
-          continue;
-          if (m != 0)
-          {
-            localArrayList.add([C.class);
-            i = 0;
-            j = k;
+          if (i1 != 70) {
+            if (i1 != 76) {
+              if (i1 != 83) {
+                if (i1 != 73) {
+                  if (i1 != 74) {
+                    if (i1 != 90) {
+                      if (i1 != 91) {
+                        switch (i1)
+                        {
+                        default: 
+                          i = j;
+                          k = m;
+                          break;
+                        case 68: 
+                          if (m != 0)
+                          {
+                            localArrayList.add([D.class);
+                          }
+                          else
+                          {
+                            localArrayList.add(Double.TYPE);
+                            i = j;
+                            k = m;
+                          }
+                          break;
+                        case 67: 
+                          if (m != 0)
+                          {
+                            localArrayList.add([C.class);
+                          }
+                          else
+                          {
+                            localArrayList.add(Character.TYPE);
+                            i = j;
+                            k = m;
+                          }
+                          break;
+                        case 66: 
+                          if (m != 0) {
+                            localArrayList.add([B.class);
+                          }
+                          break;
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
-          else
+          for (;;)
           {
-            localArrayList.add(Character.TYPE);
-            j = k;
-            i = m;
-            continue;
+            k = 0;
+            i = j;
+            break label548;
+            localArrayList.add(Byte.TYPE);
+            i = j;
+            k = m;
+            break label548;
+            k = 1;
+            i = j;
+            break label548;
             if (m != 0)
             {
               localArrayList.add([Z.class);
-              i = 0;
-              j = k;
             }
             else
             {
               localArrayList.add(Boolean.TYPE);
-              j = k;
-              i = m;
-              continue;
+              i = j;
+              k = m;
+              break label548;
               if (m != 0)
               {
-                localArrayList.add([S.class);
-                i = 0;
-                j = k;
+                localArrayList.add([J.class);
               }
               else
               {
-                localArrayList.add(Short.TYPE);
-                j = k;
-                i = m;
-                continue;
+                localArrayList.add(Long.TYPE);
+                i = j;
+                k = m;
+                break label548;
                 if (m != 0)
                 {
                   localArrayList.add([I.class);
-                  i = 0;
-                  j = k;
                 }
                 else
                 {
                   localArrayList.add(Integer.TYPE);
-                  j = k;
-                  i = m;
-                  continue;
+                  i = j;
+                  k = m;
+                  break label548;
                   if (m != 0)
                   {
-                    localArrayList.add([J.class);
-                    i = 0;
-                    j = k;
+                    localArrayList.add([S.class);
                   }
                   else
                   {
-                    localArrayList.add(Long.TYPE);
-                    j = k;
-                    i = m;
-                    continue;
+                    localArrayList.add(Short.TYPE);
+                    i = j;
+                    k = m;
+                    break label548;
                     if (m != 0)
                     {
-                      localArrayList.add([F.class);
-                      i = 0;
-                      j = k;
+                      i = paramString.indexOf(';', j);
+                      localArrayList.add([Ljava.lang.Object.class);
+                      k = m;
+                      break label548;
                     }
-                    else
+                    i = paramString.indexOf(';', j);
+                    String str = paramString.substring(j + 1, i);
+                    try
                     {
-                      localArrayList.add(Float.TYPE);
-                      j = k;
-                      i = m;
-                      continue;
-                      if (m != 0)
-                      {
-                        localArrayList.add([D.class);
-                        i = 0;
-                        j = k;
-                      }
-                      else
-                      {
-                        localArrayList.add(Double.TYPE);
-                        j = k;
-                        i = m;
-                        continue;
-                        if (m != 0)
-                        {
-                          j = paramString.indexOf(';', k);
-                          localArrayList.add([Ljava.lang.Object.class);
-                          i = m;
-                        }
-                        else
-                        {
-                          j = paramString.indexOf(';', k);
-                          String str = paramString.substring(k + 1, j);
-                          try
-                          {
-                            localArrayList.add(Class.forName(str.replace('/', '.')));
-                            i = m;
-                          }
-                          catch (ClassNotFoundException localClassNotFoundException)
-                          {
-                            for (;;)
-                            {
-                              localClassNotFoundException.printStackTrace();
-                            }
-                          }
-                          i = 1;
-                          j = k;
-                          continue;
-                          j = paramString.length();
-                          i = m;
-                        }
-                      }
+                      localArrayList.add(Class.forName(str.replace('/', '.')));
                     }
+                    catch (ClassNotFoundException localClassNotFoundException)
+                    {
+                      localClassNotFoundException.printStackTrace();
+                    }
+                    k = m;
+                    break label548;
+                    if (m == 0) {
+                      break;
+                    }
+                    localArrayList.add([F.class);
                   }
                 }
               }
             }
           }
+          localArrayList.add(Float.TYPE);
+          i = j;
+          k = m;
+        }
+        else
+        {
+          i = paramString.length();
+          k = m;
         }
       }
+      label548:
+      j = i + 1;
     }
     paramString = new Class[localArrayList.size()];
     int i = n;
@@ -260,18 +263,17 @@ public class PermissionMonitor
   {
     try
     {
-      if ((!$assertionsDisabled) && (paramArrayOfListener.length != paramArrayOfString1.length)) {
-        throw new AssertionError();
-      }
+      this.mListeners = paramArrayOfListener;
+      this.mClassNames = paramArrayOfString1;
+      this.mMethodNames = paramArrayOfString2;
+      this.mSigs = paramArrayOfString3;
+      return this;
     }
-    finally {}
-    assert (paramArrayOfString1.length == paramArrayOfString2.length);
-    assert (paramArrayOfString2.length == paramArrayOfString3.length);
-    this.mListeners = paramArrayOfListener;
-    this.mClassNames = paramArrayOfString1;
-    this.mMethodNames = paramArrayOfString2;
-    this.mSigs = paramArrayOfString3;
-    return this;
+    finally
+    {
+      paramArrayOfListener = finally;
+      throw paramArrayOfListener;
+    }
   }
   
   public void start()
@@ -282,30 +284,32 @@ public class PermissionMonitor
       try
       {
         Debug.attachJvmtiAgent("libpermission-monitor.so", "", getClass().getClassLoader());
-        this.mMethods = new Method[this.mMethodNames.length];
-        int i = 0;
-        while (i < this.mMethods.length)
-        {
-          Method localMethod = getMethod(this.mClassNames[i], this.mMethodNames[i], this.mSigs[i]);
-          this.mMethods[i] = localMethod;
-          i += 1;
-        }
       }
       catch (IOException localIOException)
       {
-        for (;;)
-        {
-          localIOException.printStackTrace();
-        }
+        localIOException.printStackTrace();
+      }
+      this.mMethods = new Method[this.mMethodNames.length];
+      int i = 0;
+      while (i < this.mMethods.length)
+      {
+        Method localMethod = getMethod(this.mClassNames[i], this.mMethodNames[i], this.mSigs[i]);
+        this.mMethods[i] = localMethod;
+        i += 1;
       }
       nStart(this.mClassNames, this.mMethodNames, this.mSigs, this.mMethods);
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qq.permissionmonitorcore.PermissionMonitor
  * JD-Core Version:    0.7.0.1
  */

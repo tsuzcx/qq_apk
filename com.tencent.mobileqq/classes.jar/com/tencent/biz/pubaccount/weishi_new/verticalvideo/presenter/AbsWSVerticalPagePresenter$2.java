@@ -9,12 +9,12 @@ class AbsWSVerticalPagePresenter$2
   
   public void run()
   {
-    AbsWSVerticalPagePresenter.a(this.this$0, this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangObject);
+    this.this$0.b(this.jdField_a_of_type_JavaUtilList, this.jdField_a_of_type_Boolean, this.b, this.jdField_a_of_type_JavaLangObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.AbsWSVerticalPagePresenter.2
  * JD-Core Version:    0.7.0.1
  */

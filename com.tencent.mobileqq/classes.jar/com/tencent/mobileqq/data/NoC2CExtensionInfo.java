@@ -23,12 +23,16 @@ public class NoC2CExtensionInfo
   
   public static String getNoC2Ckey(int paramInt, String paramString)
   {
-    return paramInt + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.NoC2CExtensionInfo
  * JD-Core Version:    0.7.0.1
  */

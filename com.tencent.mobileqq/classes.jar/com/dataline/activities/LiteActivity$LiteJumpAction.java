@@ -5,7 +5,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.TextUtils;
-import com.tencent.mm.vfs.VFSFile;
 import com.tencent.mobileqq.utils.kapalaiadapter.FileProvider7Helper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -29,18 +28,28 @@ public class LiteActivity$LiteJumpAction
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList == null) {}
-    while (this.jdField_a_of_type_Int == -1) {
+    if (this.jdField_a_of_type_JavaUtilArrayList == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_Int == -1) {
       return;
     }
     if (QLog.isColorLevel())
     {
-      QLog.i(LiteActivity.a, 1, "sendMultipleFileWithFileProvider. [fileType] = " + this.jdField_a_of_type_Int);
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      Object localObject1 = LiteActivity.a;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("sendMultipleFileWithFileProvider. [fileType] = ");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      QLog.i((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        String str = (String)localIterator.next();
-        QLog.i(LiteActivity.a, 1, "[filePath] = " + str);
+        localObject2 = (String)((Iterator)localObject1).next();
+        String str = LiteActivity.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[filePath] = ");
+        localStringBuilder.append((String)localObject2);
+        QLog.i(str, 1, localStringBuilder.toString());
       }
     }
     this.b.a(this.jdField_a_of_type_JavaUtilArrayList, this.jdField_a_of_type_Int);
@@ -50,137 +59,102 @@ public class LiteActivity$LiteJumpAction
   
   public void a(Intent paramIntent)
   {
-    Bundle localBundle;
-    Object localObject;
     try
     {
-      localBundle = paramIntent.getExtras();
+      Object localObject2 = paramIntent.getExtras();
       if (paramIntent.getBooleanExtra("dataline_share_finish", false)) {
         return;
       }
       paramIntent.putExtra("dataline_share_finish", true);
-      localObject = paramIntent.getType();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
+      Object localObject1 = paramIntent.getType();
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
         return;
       }
-      if (localBundle == null)
+      if (localObject2 == null)
       {
-        QLog.e(LiteActivity.a, 1, "LiteJumpAction:doShare type is [" + (String)localObject + "], action is [" + paramIntent.getAction() + "]");
+        localObject2 = LiteActivity.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("LiteJumpAction:doShare type is [");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append("], action is [");
+        localStringBuilder.append(paramIntent.getAction());
+        localStringBuilder.append("]");
+        QLog.e((String)localObject2, 1, localStringBuilder.toString());
         return;
       }
-    }
-    catch (Exception paramIntent)
-    {
-      paramIntent.printStackTrace();
-      return;
-    }
-    if ((((String)localObject).startsWith("text")) && (!localBundle.containsKey("android.intent.extra.STREAM")))
-    {
-      paramIntent = localBundle.getString("android.intent.extra.TEXT");
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramIntent);
-      return;
-    }
-    if (((String)localObject).startsWith("message"))
-    {
-      paramIntent = (SpannableString)localBundle.get("android.intent.extra.TEXT");
-      this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramIntent.toString());
-      return;
-    }
-    if (((String)localObject).startsWith("image"))
-    {
+      boolean bool = ((String)localObject1).startsWith("text");
+      if ((bool) && (!((Bundle)localObject2).containsKey("android.intent.extra.STREAM")))
+      {
+        paramIntent = ((Bundle)localObject2).getString("android.intent.extra.TEXT");
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramIntent);
+        return;
+      }
+      if (((String)localObject1).startsWith("message"))
+      {
+        paramIntent = (SpannableString)((Bundle)localObject2).get("android.intent.extra.TEXT");
+        this.jdField_a_of_type_ComDatalineActivitiesLiteActivity.a(paramIntent.toString());
+        return;
+      }
+      bool = ((String)localObject1).startsWith("image");
+      if (bool)
+      {
+        if (paramIntent.getAction().equals("android.intent.action.SEND"))
+        {
+          paramIntent = (Uri)((Bundle)localObject2).get("android.intent.extra.STREAM");
+          if (paramIntent == null)
+          {
+            LiteActivity.a(this.b);
+            return;
+          }
+          localObject1 = new ArrayList();
+          ((ArrayList)localObject1).add(paramIntent);
+          a((ArrayList)localObject1, true);
+          return;
+        }
+        paramIntent = (ArrayList)((Bundle)localObject2).get("android.intent.extra.STREAM");
+        if (paramIntent.size() > 50)
+        {
+          LiteActivity.b(this.b);
+          return;
+        }
+        a(paramIntent, true);
+        return;
+      }
       if (paramIntent.getAction().equals("android.intent.action.SEND"))
       {
-        paramIntent = (Uri)localBundle.get("android.intent.extra.STREAM");
+        paramIntent = (Uri)((Bundle)localObject2).get("android.intent.extra.STREAM");
         if (paramIntent == null)
         {
           LiteActivity.a(this.b);
           return;
         }
-        localObject = new ArrayList();
-        ((ArrayList)localObject).add(paramIntent);
-        a((ArrayList)localObject, true);
+        if (((paramIntent instanceof Uri)) && ("text/x-vcard".equals(localObject1)) && ("content".equals(paramIntent.getScheme())))
+        {
+          new LiteActivity.ShareTask(this.b).execute(new Object[] { this.b.getApplicationContext(), paramIntent });
+          return;
+        }
+        localObject1 = new ArrayList();
+        ((ArrayList)localObject1).add(paramIntent);
+        a((ArrayList)localObject1, false);
         return;
       }
-      paramIntent = (ArrayList)localBundle.get("android.intent.extra.STREAM");
-      if (paramIntent.size() > 50)
-      {
-        LiteActivity.b(this.b);
-        return;
-      }
-      a(paramIntent, true);
+      a((ArrayList)((Bundle)localObject2).get("android.intent.extra.STREAM"), false);
       return;
     }
-    if (paramIntent.getAction().equals("android.intent.action.SEND"))
+    catch (Exception paramIntent)
     {
-      paramIntent = (Uri)localBundle.get("android.intent.extra.STREAM");
-      if (paramIntent == null)
-      {
-        LiteActivity.a(this.b);
-        return;
-      }
-      if (((paramIntent instanceof Uri)) && ("text/x-vcard".equals(localObject)) && ("content".equals(paramIntent.getScheme())))
-      {
-        new LiteActivity.ShareTask(this.b).execute(new Object[] { this.b.getApplicationContext(), paramIntent });
-        return;
-      }
-      localObject = new ArrayList();
-      ((ArrayList)localObject).add(paramIntent);
-      a((ArrayList)localObject, false);
-      return;
+      paramIntent.printStackTrace();
     }
-    a((ArrayList)localBundle.get("android.intent.extra.STREAM"), false);
   }
   
   void a(ArrayList<Uri> paramArrayList, boolean paramBoolean)
   {
-    int i = 1;
-    if (paramArrayList == null)
-    {
-      LiteActivity.a(this.b);
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    String str;
-    if (paramArrayList.size() == 1)
-    {
-      str = a((Uri)paramArrayList.get(0));
-      if ((TextUtils.isEmpty(str)) || (!new VFSFile(str).canRead()))
-      {
-        localArrayList.add(LiteActivity.a(this.b, (Uri)paramArrayList.get(0)));
-        this.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-        if (paramBoolean) {}
-        for (i = 1;; i = 0)
-        {
-          this.jdField_a_of_type_Int = i;
-          return;
-        }
-      }
-      localArrayList.add(str);
-      if (!paramBoolean) {
-        break label183;
-      }
-    }
-    for (;;)
-    {
-      this.b.a(localArrayList, i);
-      return;
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        str = a((Uri)paramArrayList.next());
-        if (!TextUtils.isEmpty(str)) {
-          localArrayList.add(str);
-        }
-      }
-      break;
-      label183:
-      i = 0;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteActivity.LiteJumpAction
  * JD-Core Version:    0.7.0.1
  */

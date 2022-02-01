@@ -29,53 +29,64 @@ public class QuestionOptionsAdapter
   
   private View a(int paramInt, View paramView)
   {
+    Object localObject1;
     if (paramInt < 0)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QuestionOptionsAdapter", 4, "getMemberView invalide position " + paramInt);
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getMemberView invalide position ");
+        ((StringBuilder)localObject1).append(paramInt);
+        QLog.d("QuestionOptionsAdapter", 4, ((StringBuilder)localObject1).toString());
       }
       return paramView;
     }
     QuestionOptionInfo localQuestionOptionInfo = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource.a(paramInt);
-    View localView;
-    Object localObject;
+    Object localObject2;
     if (!(paramView instanceof QuestionOptionItemView))
     {
-      paramView = (QuestionOptionItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558759, null);
+      paramView = (QuestionOptionItemView)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558658, null);
       paramView.a();
-      localView = paramView;
-      localObject = paramView;
+      localObject1 = paramView;
+      localObject2 = paramView;
     }
-    for (;;)
+    else
     {
-      ((QuestionOptionItemView)localObject).a(localQuestionOptionInfo);
-      return localView;
-      localObject = (QuestionOptionItemView)paramView;
-      localView = paramView;
+      localObject2 = (QuestionOptionItemView)paramView;
+      localObject1 = paramView;
     }
+    ((QuestionOptionItemView)localObject2).a(localQuestionOptionInfo);
+    return localObject1;
   }
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource == null) || (paramInt < 0) || (this.jdField_a_of_type_AndroidViewViewGroup == null)) {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QuestionOptionsAdapter", 4, "invalid params updateItemView at " + paramInt);
+    Object localObject;
+    if ((this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource != null) && (paramInt >= 0))
+    {
+      localObject = this.jdField_a_of_type_AndroidViewViewGroup;
+      if (localObject != null)
+      {
+        localObject = (QuestionOptionItemView)((ViewGroup)localObject).getChildAt(paramInt);
+        QuestionOptionInfo localQuestionOptionInfo = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource.a(paramInt);
+        if (localObject == null)
+        {
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QuestionOptionsAdapter", 4, "updateItemView itemView is null or member is null");
+          }
+          return;
+        }
+        ((QuestionOptionItemView)localObject).a(localQuestionOptionInfo);
+        return;
       }
     }
-    QuestionOptionItemView localQuestionOptionItemView;
-    QuestionOptionInfo localQuestionOptionInfo;
-    do
+    if (QLog.isDevelopLevel())
     {
-      return;
-      localQuestionOptionItemView = (QuestionOptionItemView)this.jdField_a_of_type_AndroidViewViewGroup.getChildAt(paramInt);
-      localQuestionOptionInfo = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource.a(paramInt);
-      if (localQuestionOptionItemView != null) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d("QuestionOptionsAdapter", 4, "updateItemView itemView is null or member is null");
-    return;
-    localQuestionOptionItemView.a(localQuestionOptionInfo);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("invalid params updateItemView at ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("QuestionOptionsAdapter", 4, ((StringBuilder)localObject).toString());
+    }
   }
   
   public int getCount()
@@ -85,18 +96,16 @@ public class QuestionOptionsAdapter
   
   public Object getItem(int paramInt)
   {
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource == null) {
-      localObject = new QuestionOptionInfo();
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource;
+    if (localObject == null) {
+      return new QuestionOptionInfo();
     }
-    QuestionOptionInfo localQuestionOptionInfo;
-    do
-    {
-      return localObject;
-      localQuestionOptionInfo = this.jdField_a_of_type_ComTencentAvgameGameroomFestivalstageQuestionoptionQuestionOptionsDataSource.a(paramInt);
-      localObject = localQuestionOptionInfo;
-    } while (localQuestionOptionInfo != null);
-    return new Object();
+    QuestionOptionInfo localQuestionOptionInfo = ((QuestionOptionsDataSource)localObject).a(paramInt);
+    localObject = localQuestionOptionInfo;
+    if (localQuestionOptionInfo == null) {
+      localObject = new Object();
+    }
+    return localObject;
   }
   
   public long getItemId(int paramInt)
@@ -129,7 +138,7 @@ public class QuestionOptionsAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.festivalstage.questionoption.QuestionOptionsAdapter
  * JD-Core Version:    0.7.0.1
  */

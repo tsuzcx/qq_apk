@@ -46,16 +46,20 @@ public class TroopFeedItem
   
   public boolean isVaild()
   {
-    if ((StringUtil.a(this.tag)) || (StringUtil.a(this.title))) {}
-    while (((this.type == 0) || (this.type == 131)) && (StringUtil.a(this.content))) {
-      return false;
+    if (!StringUtil.a(this.tag))
+    {
+      if (StringUtil.a(this.title)) {
+        return false;
+      }
+      int i = this.type;
+      return ((i != 0) && (i != 131)) || (!StringUtil.a(this.content));
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.TroopFeedItem
  * JD-Core Version:    0.7.0.1
  */

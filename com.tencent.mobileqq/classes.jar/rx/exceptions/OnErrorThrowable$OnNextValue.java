@@ -12,7 +12,7 @@ public class OnErrorThrowable$OnNextValue
   
   public OnErrorThrowable$OnNextValue(Object paramObject)
   {
-    super("OnError while emitting onNext value: " + renderValue(paramObject));
+    super(localStringBuilder.toString());
     this.value = paramObject;
   }
   
@@ -30,11 +30,14 @@ public class OnErrorThrowable$OnNextValue
     if ((paramObject instanceof Enum)) {
       return ((Enum)paramObject).name();
     }
-    String str = RxJavaPlugins.getInstance().getErrorHandler().handleOnNextValueRendering(paramObject);
-    if (str != null) {
-      return str;
+    Object localObject = RxJavaPlugins.getInstance().getErrorHandler().handleOnNextValueRendering(paramObject);
+    if (localObject != null) {
+      return localObject;
     }
-    return paramObject.getClass().getName() + ".class";
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramObject.getClass().getName());
+    ((StringBuilder)localObject).append(".class");
+    return ((StringBuilder)localObject).toString();
   }
   
   public Object getValue()
@@ -44,7 +47,7 @@ public class OnErrorThrowable$OnNextValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.exceptions.OnErrorThrowable.OnNextValue
  * JD-Core Version:    0.7.0.1
  */

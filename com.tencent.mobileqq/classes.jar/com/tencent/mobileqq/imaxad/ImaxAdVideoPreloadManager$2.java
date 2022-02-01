@@ -11,7 +11,10 @@ class ImaxAdVideoPreloadManager$2
   
   public void onInstalledFailed(int paramInt)
   {
-    ImaxAdUtil.b("installSDK onInstalledFailed arg0=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("installSDK onInstalledFailed arg0=");
+    localStringBuilder.append(paramInt);
+    ImaxAdUtil.b(localStringBuilder.toString());
   }
   
   public void onInstalledSuccessed()
@@ -22,7 +25,7 @@ class ImaxAdVideoPreloadManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager.2
  * JD-Core Version:    0.7.0.1
  */

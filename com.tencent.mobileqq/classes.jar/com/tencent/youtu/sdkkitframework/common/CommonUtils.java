@@ -30,7 +30,13 @@ public class CommonUtils
     }
     CommonUtils.BenchMarkTime localBenchMarkTime = (CommonUtils.BenchMarkTime)benchMarkMaps.get(paramString);
     localBenchMarkTime.end();
-    YtLogger.d("CommonUtils", "benchMarkEnd -- " + paramString + " : " + localBenchMarkTime.cur + "ms");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("benchMarkEnd -- ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" : ");
+    localStringBuilder.append(localBenchMarkTime.cur);
+    localStringBuilder.append("ms");
+    YtLogger.d("CommonUtils", localStringBuilder.toString());
     return localBenchMarkTime.cur;
   }
   
@@ -39,7 +45,12 @@ public class CommonUtils
     if (!benchMarkMaps.containsKey(paramString)) {
       return "";
     }
-    return "[" + paramString + "]" + ((CommonUtils.BenchMarkTime)benchMarkMaps.get(paramString)).getTime();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    localStringBuilder.append(((CommonUtils.BenchMarkTime)benchMarkMaps.get(paramString)).getTime());
+    return localStringBuilder.toString();
   }
   
   private static byte[] getSignature(String paramString1, String paramString2)
@@ -53,7 +64,21 @@ public class CommonUtils
   {
     long l = System.currentTimeMillis() / 1000L;
     int i = Math.abs(new Random().nextInt());
-    paramString1 = "a=" + paramString1 + "&k=" + paramString2 + "&e=" + (2592000L + l) + "&t=" + l + "&r=" + i + "&u=" + paramString4 + "&f=";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("a=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("&k=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("&e=");
+    localStringBuilder.append(2592000L + l);
+    localStringBuilder.append("&t=");
+    localStringBuilder.append(l);
+    localStringBuilder.append("&r=");
+    localStringBuilder.append(i);
+    localStringBuilder.append("&u=");
+    localStringBuilder.append(paramString4);
+    localStringBuilder.append("&f=");
+    paramString1 = localStringBuilder.toString();
     paramString2 = getSignature(paramString1, paramString3);
     paramString3 = new byte[paramString2.length + paramString1.getBytes().length];
     System.arraycopy(paramString2, 0, paramString3, 0, paramString2.length);
@@ -68,19 +93,37 @@ public class CommonUtils
       new JSONObject(paramString2);
       return paramString2;
     }
-    catch (Exception localException) {}
-    return "{ \"errorcode\":" + paramInt + ",\"errormsg\": \"" + paramString1 + "\",\"extrainfo\":\"" + paramString2 + "\"}";
+    catch (Exception localException)
+    {
+      label11:
+      StringBuilder localStringBuilder;
+      break label11;
+    }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{ \"errorcode\":");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",\"errormsg\": \"");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\",\"extrainfo\":\"");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("\"}");
+    return localStringBuilder.toString();
   }
   
   public static void reportException(String paramString, Exception paramException)
   {
-    YtSDKStats.getInstance().reportInfo(paramString + " cause exception: " + paramException.getLocalizedMessage());
+    YtSDKStats localYtSDKStats = YtSDKStats.getInstance();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" cause exception: ");
+    localStringBuilder.append(paramException.getLocalizedMessage());
+    localYtSDKStats.reportInfo(localStringBuilder.toString());
     YtFSM.getInstance().sendFSMEvent(new CommonUtils.1(paramException));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.CommonUtils
  * JD-Core Version:    0.7.0.1
  */

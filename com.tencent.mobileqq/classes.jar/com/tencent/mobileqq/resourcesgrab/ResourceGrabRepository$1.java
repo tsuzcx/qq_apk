@@ -11,15 +11,19 @@ class ResourceGrabRepository$1
   
   public void a(ResourceGrabSkinData paramResourceGrabSkinData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ResourceGrabModel", 2, "ResourceNameOnClickListener subscribe call :" + paramResourceGrabSkinData);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ResourceNameOnClickListener subscribe call :");
+      localStringBuilder.append(paramResourceGrabSkinData);
+      QLog.d("ResourceGrabModel", 2, localStringBuilder.toString());
     }
     ResourceGrabRepository.a(this.jdField_a_of_type_ComTencentMobileqqResourcesgrabResourceGrabRepository, paramResourceGrabSkinData, this.jdField_a_of_type_JavaUtilHashSet);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.resourcesgrab.ResourceGrabRepository.1
  * JD-Core Version:    0.7.0.1
  */

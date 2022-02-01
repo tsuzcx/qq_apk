@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.view.View;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.RelativeLayout.LayoutParams;
@@ -34,7 +33,7 @@ public class StructMsgItemTagList
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     paramContext.setOrientation(0);
     paramContext.setLayoutParams(localLayoutParams);
-    paramContext.setId(2131362462);
+    paramContext.setId(2131362418);
     if (AppSetting.d) {
       paramContext.setContentDescription(this.ac);
     }
@@ -43,24 +42,23 @@ public class StructMsgItemTagList
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Object localObject1 = paramContext.getResources();
-    Object localObject2;
-    int i;
+    Object localObject = paramContext.getResources();
+    int i = 0;
+    Bundle localBundle;
     if (paramView != null)
     {
       paramBundle = paramView;
       if ((paramView instanceof LinearLayout))
       {
-        localObject1 = (LinearLayout)paramView;
-        localObject2 = new Bundle();
-        i = 0;
+        localObject = (LinearLayout)paramView;
+        localBundle = new Bundle();
         for (;;)
         {
           paramBundle = paramView;
           if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
             break;
           }
-          ((AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, ((LinearLayout)localObject1).getChildAt(i), (Bundle)localObject2);
+          ((AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, ((LinearLayout)localObject).getChildAt(i), localBundle);
           i += 1;
         }
       }
@@ -68,26 +66,29 @@ public class StructMsgItemTagList
     else
     {
       paramView = a(paramContext);
-      paramView.setPadding(AIOUtils.a(12.0F, (Resources)localObject1), 0, AIOUtils.a(12.0F, (Resources)localObject1), 0);
+      paramView.setPadding(AIOUtils.b(12.0F, (Resources)localObject), 0, AIOUtils.b(12.0F, (Resources)localObject), 0);
+      localBundle = new Bundle();
       i = 0;
       int j = 1;
-      paramBundle = paramView;
-      if (i < this.jdField_a_of_type_JavaUtilArrayList.size())
+      for (;;)
       {
-        paramBundle = ((AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, null, null);
+        paramBundle = paramView;
+        if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          break;
+        }
+        paramBundle = ((AbsStructMsgElement)this.jdField_a_of_type_JavaUtilArrayList.get(i)).a(paramContext, null, localBundle);
         if (j == 0)
         {
-          localObject2 = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
-          ((LinearLayout.LayoutParams)localObject2).setMargins(AIOUtils.a(2.0F, (Resources)localObject1), 0, 0, 0);
-          paramView.addView(paramBundle, (ViewGroup.LayoutParams)localObject2);
+          LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)paramBundle.getLayoutParams();
+          localLayoutParams.setMargins(AIOUtils.b(2.0F, (Resources)localObject), 0, 0, 0);
+          paramView.addView(paramBundle, localLayoutParams);
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
           paramView.addView(paramBundle);
           j = 0;
         }
+        i += 1;
       }
     }
     return paramBundle;
@@ -150,40 +151,35 @@ public class StructMsgItemTagList
     }
     int j = paramStructMsgNode.a();
     int i = 0;
-    label13:
-    StructMsgNode localStructMsgNode;
-    if (i < j)
+    while (i < j)
     {
-      localStructMsgNode = paramStructMsgNode.a(i);
-      if (localStructMsgNode != null) {
-        break label37;
+      StructMsgNode localStructMsgNode = paramStructMsgNode.a(i);
+      if (localStructMsgNode != null)
+      {
+        AbsStructMsgElement localAbsStructMsgElement = null;
+        if ("tag".equals(localStructMsgNode.b)) {
+          localAbsStructMsgElement = StructMsgElementFactory.a(localStructMsgNode.b);
+        }
+        if (localAbsStructMsgElement == null) {
+          return false;
+        }
+        if (localAbsStructMsgElement.a(localStructMsgNode)) {
+          a(localAbsStructMsgElement);
+        }
       }
+      else
+      {
+        i += 1;
+        continue;
+      }
+      return false;
     }
-    for (;;)
-    {
-      i += 1;
-      break label13;
-      break;
-      label37:
-      AbsStructMsgElement localAbsStructMsgElement = null;
-      if ("tag".equals(localStructMsgNode.b)) {
-        localAbsStructMsgElement = StructMsgElementFactory.a(localStructMsgNode.b);
-      }
-      if (localAbsStructMsgElement == null) {
-        return false;
-      }
-      if (!localAbsStructMsgElement.a(localStructMsgNode)) {
-        break label89;
-      }
-      a(localAbsStructMsgElement);
-    }
-    label89:
-    return false;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgItemTagList
  * JD-Core Version:    0.7.0.1
  */

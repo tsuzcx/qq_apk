@@ -11,22 +11,36 @@ class AVActivity$3$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.isDestroyed()) {}
-    View localView;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.isDestroyed()) {
       return;
-      QLog.w(this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.b, 1, "qav_UserGuide_for_more, 开始显示, seq[" + this.jdField_a_of_type_Long + "]");
-      localView = this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.findViewById(2131373952);
-    } while ((localView == null) || (this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.a == null) || (!this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.a.i()) || (((RelativeLayout)this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.findViewById(2131373870)).getVisibility() == 0));
-    this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.a.D(this.jdField_a_of_type_Long);
-    localView.setVisibility(0);
-    localView.setAlpha(1.0F);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qav_UserGuide_for_more, 开始显示, seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
+    localObject = this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.findViewById(2131373524);
+    if (localObject == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.a == null) {
+      return;
+    }
+    if (!this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.a.i()) {
+      return;
+    }
+    if (((RelativeLayout)this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.findViewById(2131373442)).getVisibility() == 0) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentAvUiAVActivity$3.this$0.a.C(this.jdField_a_of_type_Long);
+    ((View)localObject).setVisibility(0);
+    ((View)localObject).setAlpha(1.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,8 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.UnifySearchObserver;
 import com.tencent.mobileqq.search.SearchUtil;
+import com.tencent.mobileqq.search.business.net.model.NetSearchTemplateBaseItem;
+import com.tencent.mobileqq.search.business.net.model.RichSearchModelNode;
 import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment;
 import com.tencent.mobileqq.search.fragment.AssociateSearchWordsFragment.AssociateItem;
 import com.tencent.mobileqq.search.fragment.GroupSearchFragment;
@@ -15,15 +17,13 @@ import com.tencent.mobileqq.search.model.GroupTabModel;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
 import com.tencent.mobileqq.search.model.ISearchResultPositionModel;
-import com.tencent.mobileqq.search.model.NetSearchTemplateBaseItem;
-import com.tencent.mobileqq.search.model.RichSearchModelNode;
 import com.tencent.mobileqq.search.model.SearchEntryDataModel;
 import com.tencent.mobileqq.search.report.ReportModelDC02528;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.rich.RichMetaData;
 import com.tencent.mobileqq.search.rich.RichNodeFactory;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -40,33 +40,48 @@ class UniteSearchActivity$2
     if (paramRichSearchModelNode == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "patchRichExtraData, source:" + this.a.jdField_a_of_type_Int + " from:" + this.a.jdField_c_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("patchRichExtraData, source:");
+      ((StringBuilder)localObject).append(this.a.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(" from:");
+      ((StringBuilder)localObject).append(this.a.jdField_c_of_type_Int);
+      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, ((StringBuilder)localObject).toString());
     }
     int j = this.a.jdField_a_of_type_Int;
     int i = j;
-    if (this.a.jdField_a_of_type_Int == 0) {
-      switch (this.a.jdField_c_of_type_Int)
-      {
-      default: 
-        i = j;
-      }
-    }
-    for (;;)
+    if (this.a.jdField_a_of_type_Int == 0)
     {
-      boolean bool = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
-      String str = RichMetaData.a(i, paramRichSearchModelNode.c(), paramRichSearchModelNode.g, bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "patchRichExtraData, extraData:" + str);
+      i = this.a.jdField_c_of_type_Int;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 21) {
+            i = j;
+          } else {
+            i = 3;
+          }
+        }
+        else {
+          i = 2;
+        }
       }
-      paramRichSearchModelNode.b(str);
-      return;
-      i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
+      else {
+        i = 1;
+      }
     }
+    boolean bool = ThemeUtil.isNowThemeIsNight(this.a.app, false, null);
+    Object localObject = RichMetaData.a(i, paramRichSearchModelNode.c(), paramRichSearchModelNode.g, bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("patchRichExtraData, extraData:");
+      localStringBuilder.append((String)localObject);
+      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, localStringBuilder.toString());
+    }
+    paramRichSearchModelNode.b((String)localObject);
   }
   
   private void a(List<ISearchResultGroupModel> paramList)
@@ -83,26 +98,20 @@ class UniteSearchActivity$2
           if (paramList != null)
           {
             Iterator localIterator2 = paramList.iterator();
-            label76:
-            QQAppInterface localQQAppInterface;
             while (localIterator2.hasNext())
             {
               paramList = (ISearchResultModel)localIterator2.next();
               if ((paramList != null) && ((paramList instanceof NetSearchTemplateBaseItem)))
               {
                 paramList = (NetSearchTemplateBaseItem)paramList;
-                localQQAppInterface = this.a.app;
-                if (paramList.b() == null) {
-                  break label159;
+                QQAppInterface localQQAppInterface = this.a.app;
+                if (paramList.a() != null) {
+                  paramList = paramList.a();
+                } else {
+                  paramList = "";
                 }
+                ReportController.b(localQQAppInterface, "dc00898", "", paramList, "auth_search", "exp", 0, 0, "", "", "", "");
               }
-            }
-            label159:
-            for (paramList = paramList.b();; paramList = "")
-            {
-              ReportController.b(localQQAppInterface, "dc00898", "", paramList, "auth_search", "exp", 0, 0, "", "", "", "");
-              break label76;
-              break;
             }
           }
         }
@@ -127,47 +136,48 @@ class UniteSearchActivity$2
   private void b(List<ISearchResultGroupModel> paramList)
   {
     if (paramList == null) {
-      label4:
       return;
-    } else {
-      paramList = paramList.iterator();
     }
-    for (;;)
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      if (!paramList.hasNext()) {
-        break label4;
-      }
       Object localObject1 = (ISearchResultGroupModel)paramList.next();
-      if ((((ISearchResultGroupModel)localObject1).a() == null) || (((ISearchResultGroupModel)localObject1).a().size() == 0)) {
-        break;
-      }
-      Object localObject2 = ((ISearchResultGroupModel)localObject1).a().iterator();
-      while (((Iterator)localObject2).hasNext())
+      if ((((ISearchResultGroupModel)localObject1).a() != null) && (((ISearchResultGroupModel)localObject1).a().size() != 0))
       {
-        ISearchResultModel localISearchResultModel = (ISearchResultModel)((Iterator)localObject2).next();
-        if ((localISearchResultModel instanceof ISearchResultPositionModel)) {
-          ((ISearchResultPositionModel)localISearchResultModel).b(this.a.jdField_a_of_type_Int);
-        }
-      }
-      if (!(localObject1 instanceof GroupSearchModelRichNode)) {
-        break;
-      }
-      localObject1 = ((ISearchResultGroupModel)localObject1).a().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        localObject2 = (ISearchResultModel)((Iterator)localObject1).next();
-        if ((localObject2 instanceof RichSearchModelNode))
+        Object localObject2 = ((ISearchResultGroupModel)localObject1).a().iterator();
+        Object localObject3;
+        while (((Iterator)localObject2).hasNext())
         {
-          int i = ((RichSearchModelNode)localObject2).f();
-          if (!RichNodeFactory.a().a(i))
+          localObject3 = (ISearchResultModel)((Iterator)localObject2).next();
+          if ((localObject3 instanceof ISearchResultPositionModel)) {
+            ((ISearchResultPositionModel)localObject3).c(this.a.jdField_a_of_type_Int);
+          }
+        }
+        if ((localObject1 instanceof GroupSearchModelRichNode))
+        {
+          localObject1 = ((ISearchResultGroupModel)localObject1).a().iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            ((Iterator)localObject1).remove();
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "handleUniteSearchResult, remove rich node:" + i);
+            localObject2 = (ISearchResultModel)((Iterator)localObject1).next();
+            if ((localObject2 instanceof RichSearchModelNode))
+            {
+              localObject2 = (RichSearchModelNode)localObject2;
+              int i = ((RichSearchModelNode)localObject2).f();
+              if (!RichNodeFactory.a().a(i))
+              {
+                ((Iterator)localObject1).remove();
+                if (QLog.isColorLevel())
+                {
+                  localObject3 = new StringBuilder();
+                  ((StringBuilder)localObject3).append("handleUniteSearchResult, remove rich node:");
+                  ((StringBuilder)localObject3).append(i);
+                  QLog.d("Q.uniteSearch.UniteSearchActivity", 2, ((StringBuilder)localObject3).toString());
+                }
+              }
+              a((RichSearchModelNode)localObject2);
+              b((RichSearchModelNode)localObject2);
             }
           }
-          a((RichSearchModelNode)localObject2);
-          b((RichSearchModelNode)localObject2);
         }
       }
     }
@@ -188,24 +198,24 @@ class UniteSearchActivity$2
       StringBuilder localStringBuilder = new StringBuilder("");
       if ((paramList != null) && (paramList.size() > 0))
       {
-        paramInt = 0;
-        if (paramInt < paramList.size())
+        int i;
+        for (paramInt = 0; paramInt < paramList.size(); paramInt = i)
         {
           String str = ((AssociateSearchWordsFragment.AssociateItem)paramList.get(paramInt)).jdField_a_of_type_JavaLangString;
           AssociateSearchWordsFragment.AssociateItem localAssociateItem = new AssociateSearchWordsFragment.AssociateItem();
           localAssociateItem.jdField_a_of_type_JavaLangString = str;
           localAssociateItem.jdField_a_of_type_Int = 3;
-          localAssociateItem.d = (paramInt + 1);
+          i = paramInt + 1;
+          localAssociateItem.d = i;
           paramList1.add(localAssociateItem);
           if (paramInt != paramList.size() - 1)
           {
             paramList1.add(paramSuggestUrlItem);
-            localStringBuilder.append(str).append("::");
+            localStringBuilder.append(str);
+            localStringBuilder.append("::");
           }
-          for (;;)
+          else
           {
-            paramInt += 1;
-            break;
             localStringBuilder.append(str);
           }
         }
@@ -213,45 +223,82 @@ class UniteSearchActivity$2
       this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(true);
       this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramString);
       this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentAssociateSearchWordsFragment.a(paramList1);
-      UniteSearchReportController.a(null, new ReportModelDC02528().module("all_result").action("exp_thinkword_list").ver1(this.a.a()).ver2(UniteSearchReportController.a(this.a.jdField_c_of_type_Int)).ver4(localStringBuilder.toString()).ver7("{experiment_id:" + UniteSearchReportController.b + "}"));
+      paramString = new ReportModelDC02528().module("all_result").action("exp_thinkword_list").ver1(this.a.a()).ver2(UniteSearchReportController.a(this.a.jdField_c_of_type_Int)).ver4(localStringBuilder.toString());
+      paramList = new StringBuilder();
+      paramList.append("{experiment_id:");
+      paramList.append(UniteSearchReportController.b);
+      paramList.append("}");
+      UniteSearchReportController.a(null, paramString.ver7(paramList.toString()));
     }
   }
   
   public void a(String paramString1, Integer paramInteger, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "handleAssociateResultError keyword=" + paramString1 + "  resultCode=" + paramInteger + "  errorMsg=" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleAssociateResultError keyword=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("  resultCode=");
+      localStringBuilder.append(paramInteger);
+      localStringBuilder.append("  errorMsg=");
+      localStringBuilder.append(paramString2);
+      QLog.d("Q.uniteSearch.UniteSearchActivity", 2, localStringBuilder.toString());
     }
   }
   
   public void a(String paramString1, boolean paramBoolean, String paramString2, int paramInt, String paramString3)
   {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2)) {}
-    while (!this.a.f.equals(paramString1)) {
+    if (!this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2)) {
+      return;
+    }
+    if (!this.a.f.equals(paramString1)) {
       return;
     }
     this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramInt, paramString3);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.uniteSearch.UniteSearchActivity", 2, "handleUniteSearchError resultCode=" + paramInt + " key=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("handleUniteSearchError resultCode=");
+      paramString2.append(paramInt);
+      paramString2.append(" key=");
+      paramString2.append(paramString1);
+      QLog.i("Q.uniteSearch.UniteSearchActivity", 2, paramString2.toString());
     }
     this.a.jdField_c_of_type_AndroidViewView.setVisibility(0);
   }
   
   public void a(String paramString1, boolean paramBoolean1, String paramString2, byte[] paramArrayOfByte, boolean paramBoolean2, List<GroupTabModel> paramList, List<ISearchResultGroupModel> paramList1, int paramInt)
   {
-    for (;;)
+    try
     {
-      try
+      boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2);
+      if (!bool) {
+        return;
+      }
+      if ((this.a.f != null) && (this.a.f.equals(paramString1)))
       {
-        boolean bool = this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.b.equals(paramString2);
-        if (!bool) {
-          return;
-        }
-        if ((this.a.f == null) || (!this.a.f.equals(paramString1))) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.uniteSearch.UniteSearchActivity", 2, "handleUniteSearchResult, keyword = " + paramString1 + ", isFirstReq = " + paramBoolean1 + ", reqTime = " + paramString2 + ", cookie = " + paramArrayOfByte + ", isEnd = " + paramBoolean2 + ", tabList = " + paramList + ", result = " + paramList1 + " subId =" + paramInt);
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleUniteSearchResult, keyword = ");
+          localStringBuilder.append(paramString1);
+          localStringBuilder.append(", isFirstReq = ");
+          localStringBuilder.append(paramBoolean1);
+          localStringBuilder.append(", reqTime = ");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append(", cookie = ");
+          localStringBuilder.append(paramArrayOfByte);
+          localStringBuilder.append(", isEnd = ");
+          localStringBuilder.append(paramBoolean2);
+          localStringBuilder.append(", tabList = ");
+          localStringBuilder.append(paramList);
+          localStringBuilder.append(", result = ");
+          localStringBuilder.append(paramList1);
+          localStringBuilder.append(" subId =");
+          localStringBuilder.append(paramInt);
+          QLog.d("Q.uniteSearch.UniteSearchActivity", 2, localStringBuilder.toString());
         }
         b(paramList1);
         if (!paramBoolean1)
@@ -260,22 +307,23 @@ class UniteSearchActivity$2
           this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramArrayOfByte);
           paramString2 = SearchUtil.a(paramList1, paramBoolean1);
           this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2, paramInt);
-          continue;
+          return;
         }
-        if (!QLog.isColorLevel()) {
-          break label265;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("handleUniteSearchResult isEnd=");
+          localStringBuilder.append(paramBoolean2);
+          localStringBuilder.append(" key=");
+          localStringBuilder.append(paramString1);
+          QLog.i("Q.uniteSearch.UniteSearchActivity", 2, localStringBuilder.toString());
         }
-      }
-      finally {}
-      QLog.i("Q.uniteSearch.UniteSearchActivity", 2, "handleUniteSearchResult isEnd=" + paramBoolean2 + " key=" + paramString1);
-      label265:
-      if (paramList == null)
-      {
-        a(paramString1, paramBoolean1, paramString2, -1, "tabList == null");
-      }
-      else
-      {
-        if ((paramList.size() > 0) && ((((GroupTabModel)paramList.get(0)).jdField_a_of_type_JavaLangString.equals(HardCodeUtil.a(2131715745))) || ((((GroupTabModel)paramList.get(0)).jdField_a_of_type_JavaUtilList != null) && (((GroupTabModel)paramList.get(0)).jdField_a_of_type_JavaUtilList.size() == 0)))) {
+        if (paramList == null)
+        {
+          a(paramString1, paramBoolean1, paramString2, -1, "tabList == null");
+          return;
+        }
+        if ((paramList.size() > 0) && ((((GroupTabModel)paramList.get(0)).jdField_a_of_type_JavaLangString.equals(HardCodeUtil.a(2131715669))) || ((((GroupTabModel)paramList.get(0)).jdField_a_of_type_JavaUtilList != null) && (((GroupTabModel)paramList.get(0)).jdField_a_of_type_JavaUtilList.size() == 0)))) {
           paramList.remove(0);
         }
         this.a.jdField_c_of_type_AndroidViewView.setVisibility(0);
@@ -285,22 +333,26 @@ class UniteSearchActivity$2
         a(paramList1);
         this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentGroupSearchFragment.a(paramString1, paramBoolean1, paramArrayOfByte, paramBoolean2, paramString2, paramInt);
         UniteSearchActivity.d = true;
+        return;
       }
+      return;
     }
+    finally {}
   }
   
   public void a(List<SearchEntryDataModel> paramList, int paramInt)
   {
-    if (paramInt != this.a.c()) {}
-    while (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchentryISearchEntryFragment == null) {
+    if (paramInt != this.a.c()) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchentryISearchEntryFragment.refreshDataModels(paramList, true);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchentryISearchEntryFragment != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqSearchFragmentSearchentryISearchEntryFragment.refreshDataModels(paramList, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.UniteSearchActivity.2
  * JD-Core Version:    0.7.0.1
  */

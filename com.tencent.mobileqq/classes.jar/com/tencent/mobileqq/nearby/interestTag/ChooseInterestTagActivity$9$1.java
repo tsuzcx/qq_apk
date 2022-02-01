@@ -14,35 +14,37 @@ class ChooseInterestTagActivity$9$1
   {
     if (this.jdField_a_of_type_Int >= 0)
     {
-      ((RelativeLayout.LayoutParams)ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).getLayoutParams()).leftMargin = ((int)(this.jdField_a_of_type_Int + ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a) * 7.0F));
-      ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).requestLayout();
+      ((RelativeLayout.LayoutParams)ChooseInterestTagActivity.access$3000(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).getLayoutParams()).leftMargin = ((int)(this.jdField_a_of_type_Int + ChooseInterestTagActivity.access$3100(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a) * 7.0F));
+      ChooseInterestTagActivity.access$3000(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).requestLayout();
     }
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).getChildCount() <= 0)
+    if (ChooseInterestTagActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).getChildCount() <= 0)
     {
-      ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).setVisibility(8);
-      if (ChooseInterestTagActivity.b(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a))
+      ChooseInterestTagActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).setVisibility(8);
+      if (ChooseInterestTagActivity.access$3200(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a))
       {
-        localLayoutParams = (RelativeLayout.LayoutParams)ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).getLayoutParams();
+        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)ChooseInterestTagActivity.access$3000(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).getLayoutParams();
         localLayoutParams.height = 1;
-        if (!ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a)) {
-          break label183;
+        int i;
+        if (ChooseInterestTagActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a))
+        {
+          double d = ChooseInterestTagActivity.access$3100(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a) * 7.0F;
+          Double.isNaN(d);
+          i = (int)(d + 0.5D);
         }
+        else
+        {
+          i = 0;
+        }
+        localLayoutParams.topMargin = i;
+        localLayoutParams.bottomMargin = i;
+        ChooseInterestTagActivity.access$3000(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).setLayoutParams(localLayoutParams);
       }
-    }
-    label183:
-    for (int i = (int)(ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a) * 7.0F + 0.5D);; i = 0)
-    {
-      localLayoutParams.topMargin = i;
-      localLayoutParams.bottomMargin = i;
-      ChooseInterestTagActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyInterestTagChooseInterestTagActivity$9.a).setLayoutParams(localLayoutParams);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.9.1
  * JD-Core Version:    0.7.0.1
  */

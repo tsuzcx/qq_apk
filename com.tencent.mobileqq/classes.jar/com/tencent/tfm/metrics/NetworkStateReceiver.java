@@ -22,23 +22,21 @@ public final class NetworkStateReceiver
   
   public static void registerListener(Context paramContext, NetworkStateReceiver.StateChangeListener paramStateChangeListener)
   {
-    if (paramContext == null) {
-      ELog.error("[net] context == null!", new Object[0]);
-    }
-    for (;;)
+    if (paramContext == null)
     {
+      ELog.error("[net] context == null!", new Object[0]);
       return;
-      synchronized (LISTENERS)
+    }
+    synchronized (LISTENERS)
+    {
+      LISTENERS.add(paramStateChangeListener);
+      if (!isStartReceive)
       {
-        LISTENERS.add(paramStateChangeListener);
-        if (isStartReceive) {
-          continue;
-        }
         paramStateChangeListener = new IntentFilter("android.net.conn.CONNECTIVITY_CHANGE");
         paramContext.registerReceiver(new NetworkStateReceiver(), paramStateChangeListener);
         isStartReceive = true;
-        return;
       }
+      return;
     }
   }
   
@@ -53,9 +51,10 @@ public final class NetworkStateReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (this.handler != null)
+    paramIntent = this.handler;
+    if (paramIntent != null)
     {
-      paramIntent = this.handler.obtainMessage();
+      paramIntent = paramIntent.obtainMessage();
       paramIntent.obj = paramContext;
       this.handler.sendMessage(paramIntent);
     }
@@ -63,7 +62,7 @@ public final class NetworkStateReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.NetworkStateReceiver
  * JD-Core Version:    0.7.0.1
  */

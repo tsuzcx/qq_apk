@@ -43,11 +43,16 @@ public abstract class QFileBubbleModel
   
   private ChatMessage a(ChatMessage paramChatMessage)
   {
-    int i = -2005;
     Object localObject = paramChatMessage.getExtInfoFromExtStr("_m_ForwardFileType");
-    if ((paramChatMessage.isMultiMsg) && (!TextUtils.isEmpty((CharSequence)localObject)))
+    boolean bool = paramChatMessage.isMultiMsg;
+    int i = -2005;
+    if ((bool) && (!TextUtils.isEmpty((CharSequence)localObject)))
     {
-      QLog.i("QFileBubbleModel", 1, "getRealChatMessage log, fileType[" + (String)localObject + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getRealChatMessage log, fileType[");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("]");
+      QLog.i("QFileBubbleModel", 1, localStringBuilder.toString());
       int j = Integer.parseInt((String)localObject);
       if (j == 3)
       {
@@ -61,34 +66,47 @@ public abstract class QFileBubbleModel
         ((ChatMessage)localObject).senderuin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardSenderUin");
         FileManagerUtil.a(paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqDataMessageForTroopFile);
         ((ChatMessage)localObject).istroop = 1;
-        if ((j == 1) || (j == 2)) {
-          FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ChatMessage)localObject).uniseq, ((ChatMessage)localObject).frienduin, ((ChatMessage)localObject).istroop, paramChatMessage);
-        }
-        return localObject;
       }
-      if ((j == 1) || (j == 2))
+      for (;;)
       {
-        if (j == 1) {}
-        for (;;)
+        break;
+        if ((j != 1) && (j != 2))
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile == null) {
-            this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile = ((MessageForFile)MessageRecordFactory.a(i));
-          }
-          FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-          localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile;
-          ((ChatMessage)localObject).isMultiMsg = paramChatMessage.isMultiMsg;
-          ((ChatMessage)localObject).frienduin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardReceiverUin");
-          ((ChatMessage)localObject).senderuin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardSenderUin");
-          QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject, paramChatMessage);
-          FileManagerUtil.a(paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
-          break;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getRealChatMessage error, not support fileType. fileType[");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("] extInfo[");
+          localStringBuilder.append(paramChatMessage.extStr);
+          localStringBuilder.append("]");
+          QLog.e("QFileBubbleModel", 1, localStringBuilder.toString());
+          return (ChatMessage)MessageRecordFactory.a(-2005);
+        }
+        if (j != 1) {
           i = -2014;
         }
+        if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile == null) {
+          this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile = ((MessageForFile)MessageRecordFactory.a(i));
+        }
+        FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile;
+        ((ChatMessage)localObject).isMultiMsg = paramChatMessage.isMultiMsg;
+        ((ChatMessage)localObject).frienduin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardReceiverUin");
+        ((ChatMessage)localObject).senderuin = paramChatMessage.getExtInfoFromExtStr("_m_ForwardSenderUin");
+        QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject, paramChatMessage);
+        FileManagerUtil.a(paramChatMessage, this.jdField_a_of_type_ComTencentMobileqqDataMessageForFile);
       }
-      QLog.e("QFileBubbleModel", 1, "getRealChatMessage error, not support fileType. fileType[" + (String)localObject + "] extInfo[" + paramChatMessage.extStr + "]");
-      return (ChatMessage)MessageRecordFactory.a(-2005);
+      if ((j == 1) || (j == 2)) {
+        FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((ChatMessage)localObject).uniseq, ((ChatMessage)localObject).frienduin, ((ChatMessage)localObject).istroop, paramChatMessage);
+      }
+      return localObject;
     }
-    QLog.e("QFileBubbleModel", 1, "getRealChatMessage error, not exist fileType. isMultiMsg[" + paramChatMessage.isMultiMsg + "] extInfo[" + paramChatMessage.extStr + "]");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getRealChatMessage error, not exist fileType. isMultiMsg[");
+    ((StringBuilder)localObject).append(paramChatMessage.isMultiMsg);
+    ((StringBuilder)localObject).append("] extInfo[");
+    ((StringBuilder)localObject).append(paramChatMessage.extStr);
+    ((StringBuilder)localObject).append("]");
+    QLog.e("QFileBubbleModel", 1, ((StringBuilder)localObject).toString());
     return (ChatMessage)MessageRecordFactory.a(-2005);
   }
   
@@ -137,12 +155,12 @@ public abstract class QFileBubbleModel
   public void b(ChatMessage paramChatMessage)
   {
     this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isMultiMsg) {}
-    for (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = a(paramChatMessage);; this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage)
-    {
-      a(this.jdField_b_of_type_ComTencentMobileqqDataChatMessage);
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isMultiMsg) {
+      this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = a(paramChatMessage);
+    } else {
+      this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
     }
+    a(this.jdField_b_of_type_ComTencentMobileqqDataChatMessage);
   }
   
   public boolean b()
@@ -198,7 +216,7 @@ public abstract class QFileBubbleModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.QFileBubbleModel
  * JD-Core Version:    0.7.0.1
  */

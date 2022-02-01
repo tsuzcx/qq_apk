@@ -13,19 +13,21 @@ import java.util.List;
 public class GetJoinedHotChatListMessageStep
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    if (HotChatManager.a(this.a.a))
+    if (HotChatManager.a(this.mAutomator.a))
     {
-      HotChatManager localHotChatManager = (HotChatManager)this.a.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
+      HotChatManager localHotChatManager = (HotChatManager)this.mAutomator.a.getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       Object localObject = localHotChatManager.b();
       if (QLog.isColorLevel())
       {
         StringBuilder localStringBuilder = new StringBuilder(50);
         localStringBuilder.append("troopUin: ");
         Iterator localIterator = ((List)localObject).iterator();
-        while (localIterator.hasNext()) {
-          localStringBuilder.append(((HotChatInfo)localIterator.next()).troopUin).append("  ");
+        while (localIterator.hasNext())
+        {
+          localStringBuilder.append(((HotChatInfo)localIterator.next()).troopUin);
+          localStringBuilder.append("  ");
         }
         QLog.d("GetJoinedHotChatListMessage", 2, localStringBuilder.toString());
       }
@@ -37,13 +39,13 @@ public class GetJoinedHotChatListMessageStep
     return 7;
   }
   
-  public void b() {}
+  public void onCreate() {}
   
-  public void c() {}
+  public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetJoinedHotChatListMessageStep
  * JD-Core Version:    0.7.0.1
  */

@@ -64,7 +64,7 @@ public final class AdtsReader
   {
     int i = Math.min(paramParsableByteArray.bytesLeft(), paramInt - this.bytesRead);
     paramParsableByteArray.readBytes(paramArrayOfByte, this.bytesRead, i);
-    this.bytesRead = (i + this.bytesRead);
+    this.bytesRead += i;
     return this.bytesRead == paramInt;
   }
   
@@ -73,76 +73,81 @@ public final class AdtsReader
     byte[] arrayOfByte = paramParsableByteArray.data;
     int i = paramParsableByteArray.getPosition();
     int k = paramParsableByteArray.limit();
-    for (;;)
+    while (i < k)
     {
-      int j;
-      if (i < k)
+      int j = i + 1;
+      i = arrayOfByte[i] & 0xFF;
+      if ((this.matchState == 512) && (i >= 240) && (i != 255))
       {
-        j = i + 1;
-        i = arrayOfByte[i] & 0xFF;
-        if ((this.matchState == 512) && (i >= 240) && (i != 255))
+        boolean bool = true;
+        if ((i & 0x1) != 0) {
+          bool = false;
+        }
+        this.hasCrc = bool;
+        setReadingAdtsHeaderState();
+        paramParsableByteArray.setPosition(j);
+        return;
+      }
+      int m = this.matchState;
+      i |= m;
+      if (i != 329)
+      {
+        if (i != 511)
         {
-          if ((i & 0x1) == 0) {}
-          for (boolean bool = true;; bool = false)
+          if (i != 836)
           {
-            this.hasCrc = bool;
-            setReadingAdtsHeaderState();
-            paramParsableByteArray.setPosition(j);
-            return;
+            if (i != 1075)
+            {
+              i = j;
+              if (m != 256)
+              {
+                this.matchState = 256;
+                i = j - 1;
+              }
+            }
+            else
+            {
+              setReadingId3HeaderState();
+              paramParsableByteArray.setPosition(j);
+            }
+          }
+          else
+          {
+            this.matchState = 1024;
+            i = j;
           }
         }
-        switch (i | this.matchState)
+        else
         {
-        default: 
-          if (this.matchState == 256) {
-            break label216;
-          }
-          this.matchState = 256;
-          i = j - 1;
-          break;
-        case 511: 
           this.matchState = 512;
           i = j;
-          break;
-        case 329: 
-          this.matchState = 768;
-          i = j;
-          break;
-        case 836: 
-          this.matchState = 1024;
-          i = j;
-          break;
-        case 1075: 
-          setReadingId3HeaderState();
-          paramParsableByteArray.setPosition(j);
-          return;
         }
       }
       else
       {
-        paramParsableByteArray.setPosition(i);
-        return;
-        label216:
+        this.matchState = 768;
         i = j;
       }
     }
+    paramParsableByteArray.setPosition(i);
   }
   
   private void parseAdtsHeader()
   {
-    int i = 2;
     this.adtsScratch.setPosition(0);
-    int j;
     if (!this.hasOutputFormat)
     {
       j = this.adtsScratch.readBits(2) + 1;
-      if (j == 2) {
-        break label235;
+      i = j;
+      if (j != 2)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Detected audio object type: ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(", but assuming AAC LC.");
+        Log.w("AdtsReader", ((StringBuilder)localObject).toString());
+        i = 2;
       }
-      Log.w("AdtsReader", "Detected audio object type: " + j + ", but assuming AAC LC.");
-    }
-    for (;;)
-    {
       j = this.adtsScratch.readBits(4);
       this.adtsScratch.skipBits(1);
       Object localObject = CodecSpecificDataUtil.buildAacAudioSpecificConfig(i, j, this.adtsScratch.readBits(3));
@@ -151,21 +156,18 @@ public final class AdtsReader
       this.sampleDurationUs = (1024000000L / ((Format)localObject).sampleRate);
       this.output.format((Format)localObject);
       this.hasOutputFormat = true;
-      for (;;)
-      {
-        this.adtsScratch.skipBits(4);
-        j = this.adtsScratch.readBits(13) - 2 - 5;
-        i = j;
-        if (this.hasCrc) {
-          i = j - 2;
-        }
-        setReadingSampleState(this.output, this.sampleDurationUs, 0, i);
-        return;
-        this.adtsScratch.skipBits(10);
-      }
-      label235:
-      i = j;
     }
+    else
+    {
+      this.adtsScratch.skipBits(10);
+    }
+    this.adtsScratch.skipBits(4);
+    int j = this.adtsScratch.readBits(13) - 2 - 5;
+    int i = j;
+    if (this.hasCrc) {
+      i = j - 2;
+    }
+    setReadingSampleState(this.output, this.sampleDurationUs, 0, i);
   }
   
   private void parseId3Header()
@@ -179,10 +181,12 @@ public final class AdtsReader
   {
     int i = Math.min(paramParsableByteArray.bytesLeft(), this.sampleSize - this.bytesRead);
     this.currentOutput.sampleData(paramParsableByteArray, i);
-    this.bytesRead = (i + this.bytesRead);
-    if (this.bytesRead == this.sampleSize)
+    this.bytesRead += i;
+    i = this.bytesRead;
+    int j = this.sampleSize;
+    if (i == j)
     {
-      this.currentOutput.sampleMetadata(this.timeUs, 1, this.sampleSize, 0, null);
+      this.currentOutput.sampleMetadata(this.timeUs, 1, j, 0, null);
       this.timeUs += this.currentSampleDuration;
       setFindingSampleState();
     }
@@ -222,28 +226,36 @@ public final class AdtsReader
   {
     while (paramParsableByteArray.bytesLeft() > 0)
     {
-      switch (this.state)
+      int i = this.state;
+      if (i != 0)
       {
-      default: 
-        break;
-      case 0: 
-        findNextSample(paramParsableByteArray);
-        break;
-      case 1: 
-        if (!continueRead(paramParsableByteArray, this.id3HeaderBuffer.data, 10)) {
-          continue;
-        }
-        parseId3Header();
-        break;
-      case 2: 
-        if (this.hasCrc) {}
-        for (int i = 7; continueRead(paramParsableByteArray, this.adtsScratch.data, i); i = 5)
+        if (i != 1)
         {
-          parseAdtsHeader();
-          break;
+          if (i != 2)
+          {
+            if (i == 3) {
+              readSample(paramParsableByteArray);
+            }
+          }
+          else
+          {
+            if (this.hasCrc) {
+              i = 7;
+            } else {
+              i = 5;
+            }
+            if (continueRead(paramParsableByteArray, this.adtsScratch.data, i)) {
+              parseAdtsHeader();
+            }
+          }
+        }
+        else if (continueRead(paramParsableByteArray, this.id3HeaderBuffer.data, 10)) {
+          parseId3Header();
         }
       }
-      readSample(paramParsableByteArray);
+      else {
+        findNextSample(paramParsableByteArray);
+      }
     }
   }
   
@@ -276,7 +288,7 @@ public final class AdtsReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.AdtsReader
  * JD-Core Version:    0.7.0.1
  */

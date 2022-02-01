@@ -19,7 +19,7 @@ public class QCircleHttpEngineDW
     localHttpNetReq.mReqUrl = paramOption.getUrl();
     localHttpNetReq.mHttpMethod = 0;
     localHttpNetReq.mOutPath = paramOption.getLocalPath();
-    localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
+    localHttpNetReq.mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     ((IHttpEngineService)QCircleServiceImpl.getAppRunTime().getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
   }
   
@@ -30,7 +30,7 @@ public class QCircleHttpEngineDW
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.QCircleHttpEngineDW
  * JD-Core Version:    0.7.0.1
  */

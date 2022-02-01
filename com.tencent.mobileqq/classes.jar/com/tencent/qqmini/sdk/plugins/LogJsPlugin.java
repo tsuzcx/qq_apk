@@ -37,27 +37,28 @@ public class LogJsPlugin
     try
     {
       boolean bool = new JSONObject(paramRequestEvent.jsonParams).optBoolean("enableDebug");
-      if (bool != Boolean.valueOf(StorageUtil.getPreference().getBoolean(this.mMiniAppContext.getMiniAppInfo().appId + "_debug", false)).booleanValue()) {
+      SharedPreferences localSharedPreferences = StorageUtil.getPreference();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mMiniAppContext.getMiniAppInfo().appId);
+      localStringBuilder.append("_debug");
+      if (bool != Boolean.valueOf(localSharedPreferences.getBoolean(localStringBuilder.toString(), false)).booleanValue()) {
         this.mMiniAppContext.getAttachedActivity().runOnUiThread(new LogJsPlugin.1(this, bool));
-      }
-      for (;;)
-      {
-        return "";
+      } else {
         paramRequestEvent.ok();
       }
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        paramRequestEvent.fail();
-      }
+      label110:
+      break label110;
     }
+    paramRequestEvent.fail();
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.LogJsPlugin
  * JD-Core Version:    0.7.0.1
  */

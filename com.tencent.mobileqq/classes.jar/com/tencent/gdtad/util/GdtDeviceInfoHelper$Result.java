@@ -7,12 +7,12 @@ import tencent.gdt.qq_ad_get.QQAdGet.DeviceInfo;
 
 public final class GdtDeviceInfoHelper$Result
 {
-  List<AdAnalysisEvent> a = new ArrayList();
+  public List<AdAnalysisEvent> a = new ArrayList();
   public qq_ad_get.QQAdGet.DeviceInfo a;
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtDeviceInfoHelper.Result
  * JD-Core Version:    0.7.0.1
  */

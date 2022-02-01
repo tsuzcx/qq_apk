@@ -2,6 +2,7 @@ package com.tencent.mobileqq.widget;
 
 import android.os.SystemClock;
 import android.support.v4.view.ViewCompat;
+import android.view.View;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -20,18 +21,21 @@ class QuickSendProgressView$RefreshProgressRunnable
   
   public void a(QuickSendProgressView paramQuickSendProgressView)
   {
-    if ((a()) || (paramQuickSendProgressView == null)) {
-      return;
+    if (!a())
+    {
+      if (paramQuickSendProgressView == null) {
+        return;
+      }
+      this.jdField_a_of_type_Long = -1L;
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQuickSendProgressView);
+      ViewCompat.postOnAnimation(paramQuickSendProgressView, this);
     }
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQuickSendProgressView);
-    ViewCompat.postOnAnimation(paramQuickSendProgressView, this);
   }
   
   public boolean a()
   {
-    return !this.jdField_a_of_type_Boolean;
+    return this.jdField_a_of_type_Boolean ^ true;
   }
   
   public void run()
@@ -42,46 +46,44 @@ class QuickSendProgressView$RefreshProgressRunnable
         QLog.e("QuickSendProgressView", 2, " stopAnim in isStopped");
       }
       this.jdField_a_of_type_JavaLangRefWeakReference = null;
-    }
-    for (;;)
-    {
       return;
-      QuickSendProgressView localQuickSendProgressView;
-      if (this.jdField_a_of_type_JavaLangRefWeakReference != null)
+    }
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject != null)
+    {
+      localObject = (QuickSendProgressView)((WeakReference)localObject).get();
+      if (localObject != null)
       {
-        localQuickSendProgressView = (QuickSendProgressView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localQuickSendProgressView != null) {}
-      }
-      else
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("QuickSendProgressView", 2, "mView is null, stopAnim in isStopped");
+        if (this.jdField_a_of_type_Long == -1L) {
+          this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
         }
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_JavaLangRefWeakReference = null;
+        long l1 = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
+        long l2 = this.b;
+        if (l1 >= l2)
+        {
+          QuickSendProgressView.a((QuickSendProgressView)localObject, 1.0F);
+          this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
+        }
+        else
+        {
+          QuickSendProgressView.a((QuickSendProgressView)localObject, (float)l1 * 1.0F / (float)l2);
+        }
+        if (!this.jdField_a_of_type_Boolean) {
+          ViewCompat.postOnAnimation((View)localObject, this);
+        }
         return;
-      }
-      if (this.jdField_a_of_type_Long == -1L) {
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-      long l = SystemClock.uptimeMillis() - this.jdField_a_of_type_Long;
-      if (l >= this.b)
-      {
-        QuickSendProgressView.a(localQuickSendProgressView, 1.0F);
-        this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-      }
-      while (!this.jdField_a_of_type_Boolean)
-      {
-        ViewCompat.postOnAnimation(localQuickSendProgressView, this);
-        return;
-        QuickSendProgressView.a(localQuickSendProgressView, (float)l * 1.0F / (float)this.b);
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.e("QuickSendProgressView", 2, "mView is null, stopAnim in isStopped");
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_JavaLangRefWeakReference = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QuickSendProgressView.RefreshProgressRunnable
  * JD-Core Version:    0.7.0.1
  */

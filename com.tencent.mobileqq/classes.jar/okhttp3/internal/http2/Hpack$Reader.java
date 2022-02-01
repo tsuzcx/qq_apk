@@ -34,16 +34,17 @@ final class Hpack$Reader
   
   private void adjustDynamicTableByteCount()
   {
-    if (this.maxDynamicTableByteCount < this.dynamicTableByteCount)
+    int i = this.maxDynamicTableByteCount;
+    int j = this.dynamicTableByteCount;
+    if (i < j)
     {
-      if (this.maxDynamicTableByteCount == 0) {
+      if (i == 0)
+      {
         clearDynamicTable();
+        return;
       }
+      evictToRecoverBytes(j - i);
     }
-    else {
-      return;
-    }
-    evictToRecoverBytes(this.dynamicTableByteCount - this.maxDynamicTableByteCount);
   }
   
   private void clearDynamicTable()
@@ -76,7 +77,9 @@ final class Hpack$Reader
         paramInt += 1;
         i -= 1;
       }
-      System.arraycopy(this.dynamicTable, this.nextHeaderIndex + 1, this.dynamicTable, this.nextHeaderIndex + 1 + paramInt, this.headerCount);
+      Header[] arrayOfHeader = this.dynamicTable;
+      i = this.nextHeaderIndex;
+      System.arraycopy(arrayOfHeader, i + 1, arrayOfHeader, i + 1 + paramInt, this.headerCount);
       this.nextHeaderIndex += paramInt;
       i = paramInt;
     }
@@ -89,10 +92,17 @@ final class Hpack$Reader
       return Hpack.STATIC_HEADER_TABLE[paramInt].name;
     }
     int i = dynamicTableIndex(paramInt - Hpack.STATIC_HEADER_TABLE.length);
-    if ((i < 0) || (i >= this.dynamicTable.length)) {
-      throw new IOException("Header index too large " + (paramInt + 1));
+    if (i >= 0)
+    {
+      localObject = this.dynamicTable;
+      if (i < localObject.length) {
+        return localObject[i].name;
+      }
     }
-    return this.dynamicTable[i].name;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Header index too large ");
+    ((StringBuilder)localObject).append(paramInt + 1);
+    throw new IOException(((StringBuilder)localObject).toString());
   }
   
   private void insertIntoDynamicTable(int paramInt, Header paramHeader)
@@ -103,33 +113,35 @@ final class Hpack$Reader
     if (paramInt != -1) {
       i = j - this.dynamicTable[dynamicTableIndex(paramInt)].hpackSize;
     }
-    if (i > this.maxDynamicTableByteCount)
+    j = this.maxDynamicTableByteCount;
+    if (i > j)
     {
       clearDynamicTable();
       return;
     }
-    j = evictToRecoverBytes(this.dynamicTableByteCount + i - this.maxDynamicTableByteCount);
+    j = evictToRecoverBytes(this.dynamicTableByteCount + i - j);
     if (paramInt == -1)
     {
-      if (this.headerCount + 1 > this.dynamicTable.length)
+      paramInt = this.headerCount;
+      Header[] arrayOfHeader1 = this.dynamicTable;
+      if (paramInt + 1 > arrayOfHeader1.length)
       {
-        Header[] arrayOfHeader = new Header[this.dynamicTable.length * 2];
-        System.arraycopy(this.dynamicTable, 0, arrayOfHeader, this.dynamicTable.length, this.dynamicTable.length);
+        Header[] arrayOfHeader2 = new Header[arrayOfHeader1.length * 2];
+        System.arraycopy(arrayOfHeader1, 0, arrayOfHeader2, arrayOfHeader1.length, arrayOfHeader1.length);
         this.nextHeaderIndex = (this.dynamicTable.length - 1);
-        this.dynamicTable = arrayOfHeader;
+        this.dynamicTable = arrayOfHeader2;
       }
       paramInt = this.nextHeaderIndex;
       this.nextHeaderIndex = (paramInt - 1);
       this.dynamicTable[paramInt] = paramHeader;
       this.headerCount += 1;
     }
-    for (;;)
+    else
     {
-      this.dynamicTableByteCount = (i + this.dynamicTableByteCount);
-      return;
       int k = dynamicTableIndex(paramInt);
-      this.dynamicTable[(j + k + paramInt)] = paramHeader;
+      this.dynamicTable[(paramInt + (k + j))] = paramHeader;
     }
+    this.dynamicTableByteCount += i;
   }
   
   private boolean isStaticHeader(int paramInt)
@@ -146,15 +158,24 @@ final class Hpack$Reader
   {
     if (isStaticHeader(paramInt))
     {
-      Header localHeader = Hpack.STATIC_HEADER_TABLE[paramInt];
-      this.headerList.add(localHeader);
+      localObject = Hpack.STATIC_HEADER_TABLE[paramInt];
+      this.headerList.add(localObject);
       return;
     }
     int i = dynamicTableIndex(paramInt - Hpack.STATIC_HEADER_TABLE.length);
-    if ((i < 0) || (i >= this.dynamicTable.length)) {
-      throw new IOException("Header index too large " + (paramInt + 1));
+    if (i >= 0)
+    {
+      localObject = this.dynamicTable;
+      if (i < localObject.length)
+      {
+        this.headerList.add(localObject[i]);
+        return;
+      }
     }
-    this.headerList.add(this.dynamicTable[i]);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Header index too large ");
+    ((StringBuilder)localObject).append(paramInt + 1);
+    throw new IOException(((StringBuilder)localObject).toString());
   }
   
   private void readLiteralHeaderWithIncrementalIndexingIndexedName(int paramInt)
@@ -196,13 +217,14 @@ final class Hpack$Reader
   ByteString readByteString()
   {
     int j = readByte();
-    if ((j & 0x80) == 128) {}
-    for (int i = 1;; i = 0)
-    {
-      j = readInt(j, 127);
-      if (i == 0) {
-        break;
-      }
+    int i;
+    if ((j & 0x80) == 128) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    j = readInt(j, 127);
+    if (i != 0) {
       return ByteString.of(Huffman.get().decode(this.source.readByteArray(j)));
     }
     return this.source.readByteString(j);
@@ -213,36 +235,47 @@ final class Hpack$Reader
     while (!this.source.exhausted())
     {
       int i = this.source.readByte() & 0xFF;
-      if (i == 128) {
-        throw new IOException("index == 0");
-      }
-      if ((i & 0x80) == 128)
+      if (i != 128)
       {
-        readIndexedHeader(readInt(i, 127) - 1);
-      }
-      else if (i == 64)
-      {
-        readLiteralHeaderWithIncrementalIndexingNewName();
-      }
-      else if ((i & 0x40) == 64)
-      {
-        readLiteralHeaderWithIncrementalIndexingIndexedName(readInt(i, 63) - 1);
-      }
-      else if ((i & 0x20) == 32)
-      {
-        this.maxDynamicTableByteCount = readInt(i, 31);
-        if ((this.maxDynamicTableByteCount < 0) || (this.maxDynamicTableByteCount > this.headerTableSizeSetting)) {
-          throw new IOException("Invalid dynamic table size update " + this.maxDynamicTableByteCount);
+        if ((i & 0x80) == 128)
+        {
+          readIndexedHeader(readInt(i, 127) - 1);
         }
-        adjustDynamicTableByteCount();
+        else if (i == 64)
+        {
+          readLiteralHeaderWithIncrementalIndexingNewName();
+        }
+        else if ((i & 0x40) == 64)
+        {
+          readLiteralHeaderWithIncrementalIndexingIndexedName(readInt(i, 63) - 1);
+        }
+        else if ((i & 0x20) == 32)
+        {
+          this.maxDynamicTableByteCount = readInt(i, 31);
+          i = this.maxDynamicTableByteCount;
+          if ((i >= 0) && (i <= this.headerTableSizeSetting))
+          {
+            adjustDynamicTableByteCount();
+          }
+          else
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("Invalid dynamic table size update ");
+            localStringBuilder.append(this.maxDynamicTableByteCount);
+            throw new IOException(localStringBuilder.toString());
+          }
+        }
+        else if ((i != 16) && (i != 0))
+        {
+          readLiteralHeaderWithoutIndexingIndexedName(readInt(i, 15) - 1);
+        }
+        else
+        {
+          readLiteralHeaderWithoutIndexingNewName();
+        }
       }
-      else if ((i == 16) || (i == 0))
-      {
-        readLiteralHeaderWithoutIndexingNewName();
-      }
-      else
-      {
-        readLiteralHeaderWithoutIndexingIndexedName(readInt(i, 15) - 1);
+      else {
+        throw new IOException("index == 0");
       }
     }
   }
@@ -264,12 +297,12 @@ final class Hpack$Reader
       paramInt2 += ((i & 0x7F) << paramInt1);
       paramInt1 += 7;
     }
-    return (i << paramInt1) + paramInt2;
+    return paramInt2 + (i << paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http2.Hpack.Reader
  * JD-Core Version:    0.7.0.1
  */

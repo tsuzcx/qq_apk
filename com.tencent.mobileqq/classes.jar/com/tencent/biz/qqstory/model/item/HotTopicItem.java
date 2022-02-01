@@ -57,13 +57,12 @@ public class HotTopicItem
     this.topicLogo = paramHotTopicPack.topic_logo.get().toStringUtf8();
     this.topicColor = paramHotTopicPack.topic_color.get();
     this.topicDesc = paramHotTopicPack.topic_desc.get().toStringUtf8();
-    if (paramHotTopicPack.is_join.get() == 1) {}
-    for (;;)
-    {
-      this.topicCanJoin = bool;
-      return;
+    int i = paramHotTopicPack.is_join.get();
+    boolean bool = true;
+    if (i != 1) {
       bool = false;
     }
+    this.topicCanJoin = bool;
   }
   
   public void copy(Object paramObject) {}
@@ -83,12 +82,21 @@ public class HotTopicItem
   
   public String toString()
   {
-    return "HotTopicItem{topicId=" + this.topicId + ", topicName='" + this.topicName + '\'' + ", topicCanJoin=" + this.topicCanJoin + "} ";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HotTopicItem{topicId=");
+    localStringBuilder.append(this.topicId);
+    localStringBuilder.append(", topicName='");
+    localStringBuilder.append(this.topicName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", topicCanJoin=");
+    localStringBuilder.append(this.topicCanJoin);
+    localStringBuilder.append("} ");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.HotTopicItem
  * JD-Core Version:    0.7.0.1
  */

@@ -24,24 +24,20 @@ public class HttpUtil
   
   private static int a()
   {
-    int i = -1;
     if (DatalinePlatformUtil.a() < 11) {
-      i = Proxy.getDefaultPort();
+      return Proxy.getDefaultPort();
     }
-    String str;
-    do
-    {
-      return i;
-      str = System.getProperty("http.proxyPort");
-    } while (TextUtils.isEmpty(str));
-    try
-    {
-      i = Integer.parseInt(str);
-      return i;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      localNumberFormatException.printStackTrace();
+    String str = System.getProperty("http.proxyPort");
+    if (!TextUtils.isEmpty(str)) {
+      try
+      {
+        int i = Integer.parseInt(str);
+        return i;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        localNumberFormatException.printStackTrace();
+      }
     }
     return -1;
   }
@@ -81,15 +77,16 @@ public class HttpUtil
   
   public static String a()
   {
-    if (AppNetConnInfo.getRecentNetworkInfo() == null) {}
-    do
-    {
+    if (AppNetConnInfo.getRecentNetworkInfo() == null) {
       return null;
-      if (AppNetConnInfo.isWifiConn()) {
-        return "wifi";
-      }
-    } while ((!AppNetConnInfo.isMobileConn()) || (AppNetConnInfo.getCurrentAPN() == null));
-    return AppNetConnInfo.getCurrentAPN().toLowerCase();
+    }
+    if (AppNetConnInfo.isWifiConn()) {
+      return "wifi";
+    }
+    if ((AppNetConnInfo.isMobileConn()) && (AppNetConnInfo.getCurrentAPN() != null)) {
+      return AppNetConnInfo.getCurrentAPN().toLowerCase();
+    }
+    return null;
   }
   
   public static HttpClient a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3)
@@ -99,13 +96,14 @@ public class HttpUtil
     HttpConnectionParams.setSoTimeout((HttpParams)localObject2, paramInt3);
     Object localObject1 = new SchemeRegistry();
     ((SchemeRegistry)localObject1).register(new Scheme("http", PlainSocketFactory.getSocketFactory(), paramInt1));
-    if (paramBoolean) {}
-    for (localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);; localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1))
-    {
-      localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
-      ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
-      return localObject2;
+    if (paramBoolean) {
+      localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
+    } else {
+      localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
     }
+    localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
+    ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
+    return localObject2;
   }
   
   public static HttpClient a(boolean paramBoolean1, boolean paramBoolean2, int paramInt1, int paramInt2)
@@ -121,23 +119,19 @@ public class HttpUtil
     try
     {
       ((SchemeRegistry)localObject1).register(new Scheme("https", SSLSocketFactory.getSocketFactory(), 443));
-      if (paramBoolean1)
-      {
-        localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
-        localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
-        ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
-        return localObject2;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-        continue;
-        localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
-      }
+      localException.printStackTrace();
     }
+    if (paramBoolean1) {
+      localObject1 = new ThreadSafeClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
+    } else {
+      localObject1 = new SingleClientConnManager((HttpParams)localObject2, (SchemeRegistry)localObject1);
+    }
+    localObject2 = new DefaultHttpClient((ClientConnectionManager)localObject1, (HttpParams)localObject2);
+    ((DefaultHttpClient)localObject2).setRoutePlanner(new DefaultHttpRoutePlanner(((ClientConnectionManager)localObject1).getSchemeRegistry()));
+    return localObject2;
   }
   
   public static boolean a()
@@ -155,7 +149,7 @@ public class HttpUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.HttpUtil
  * JD-Core Version:    0.7.0.1
  */

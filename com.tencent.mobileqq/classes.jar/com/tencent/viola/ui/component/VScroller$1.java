@@ -16,8 +16,10 @@ class VScroller$1
   
   public void onLoadMore(VScrollView paramVScrollView, int paramInt1, int paramInt2)
   {
-    if (this.this$0.mAppendEvents.contains("loadMore")) {
-      VScroller.access$100(this.this$0, "loadMore", this.this$0.getDomObject());
+    if (this.this$0.mAppendEvents.contains("loadMore"))
+    {
+      paramVScrollView = this.this$0;
+      VScroller.access$100(paramVScrollView, "loadMore", paramVScrollView.getDomObject());
     }
   }
   
@@ -28,47 +30,67 @@ class VScroller$1
     if (!this.this$0.mAppendEvents.contains("loadMore")) {
       return;
     }
-    JSONObject localJSONObject1 = new JSONObject();
-    Object localObject = new JSONObject();
-    JSONObject localJSONObject2 = new JSONObject();
-    JSONObject localJSONObject3 = new JSONObject();
+    JSONObject localJSONObject = new JSONObject();
+    Object localObject3 = new JSONObject();
+    Object localObject2 = new JSONObject();
+    Object localObject1 = new JSONObject();
     try
     {
-      ((JSONObject)localObject).put("width", FlexConvertUtils.px2dip(this.this$0.getContentWidth()) + "dp");
-      ((JSONObject)localObject).put("height", FlexConvertUtils.px2dip(this.this$0.getContentHeight()) + "dp");
-      localJSONObject1.put("contentSize", localObject);
-      localJSONObject2.put("x", FlexConvertUtils.px2dip(paramFloat3) + "dp");
-      localJSONObject2.put("y", FlexConvertUtils.px2dip(paramFloat4) + "dp");
-      localJSONObject1.put("contentOffset", localJSONObject2);
-      localJSONObject3.put("x", FlexConvertUtils.px2dip(paramFloat1) + "dp");
-      localJSONObject3.put("y", FlexConvertUtils.px2dip(paramFloat2) + "dp");
-      localJSONObject3.put("width", FlexConvertUtils.px2dip(paramVScrollView.getWidth()) + "dp");
-      localJSONObject3.put("height", FlexConvertUtils.px2dip(paramVScrollView.getHeight()) + "dp");
-      localJSONObject1.put("frame", localJSONObject3);
-      paramVScrollView = new JSONArray();
-      if (this.this$0.getDomObject() != null)
-      {
-        localObject = this.this$0.getDomObject().getRef();
-        if (localObject != null) {
-          paramVScrollView.put(localObject);
-        }
-      }
-      paramVScrollView.put("scrollEnd");
-      VScroller.access$000(this.this$0, "scrollEnd", paramVScrollView, localJSONObject1);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(this.this$0.getContentWidth()));
+      localStringBuilder.append("dp");
+      ((JSONObject)localObject3).put("width", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(this.this$0.getContentHeight()));
+      localStringBuilder.append("dp");
+      ((JSONObject)localObject3).put("height", localStringBuilder.toString());
+      localJSONObject.put("contentSize", localObject3);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(FlexConvertUtils.px2dip(paramFloat3));
+      ((StringBuilder)localObject3).append("dp");
+      ((JSONObject)localObject2).put("x", ((StringBuilder)localObject3).toString());
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(FlexConvertUtils.px2dip(paramFloat4));
+      ((StringBuilder)localObject3).append("dp");
+      ((JSONObject)localObject2).put("y", ((StringBuilder)localObject3).toString());
+      localJSONObject.put("contentOffset", localObject2);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(FlexConvertUtils.px2dip(paramFloat1));
+      ((StringBuilder)localObject2).append("dp");
+      ((JSONObject)localObject1).put("x", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(FlexConvertUtils.px2dip(paramFloat2));
+      ((StringBuilder)localObject2).append("dp");
+      ((JSONObject)localObject1).put("y", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(FlexConvertUtils.px2dip(paramVScrollView.getWidth()));
+      ((StringBuilder)localObject2).append("dp");
+      ((JSONObject)localObject1).put("width", ((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(FlexConvertUtils.px2dip(paramVScrollView.getHeight()));
+      ((StringBuilder)localObject2).append("dp");
+      ((JSONObject)localObject1).put("height", ((StringBuilder)localObject2).toString());
+      localJSONObject.put("frame", localObject1);
     }
     catch (JSONException paramVScrollView)
     {
-      for (;;)
-      {
-        paramVScrollView.printStackTrace();
+      paramVScrollView.printStackTrace();
+    }
+    paramVScrollView = new JSONArray();
+    if (this.this$0.getDomObject() != null)
+    {
+      localObject1 = this.this$0.getDomObject().getRef();
+      if (localObject1 != null) {
+        paramVScrollView.put(localObject1);
       }
     }
+    paramVScrollView.put("scrollEnd");
+    VScroller.access$000(this.this$0, "scrollEnd", paramVScrollView, localJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VScroller.1
  * JD-Core Version:    0.7.0.1
  */

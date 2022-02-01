@@ -23,34 +23,29 @@ class SpringFestivalTaskCallback$2
   
   public void onDesktopClosed()
   {
-    boolean bool = true;
     if (QLog.isColorLevel()) {
       QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "onDesktopClosed");
     }
     SpringFestivalTaskCallback.b(this.a, false);
     if (SpringFestivalTaskCallback.a(this.a))
     {
-      if ((SpringFestivalTaskCallback.a(this.a) == null) || (SpringFestivalTaskCallback.a(this.a).breathLightData == null)) {
-        break label136;
-      }
-      if (SpringFestivalTaskCallback.a(this.a).breathLightData.type != 1) {
-        break label131;
-      }
-    }
-    for (;;)
-    {
-      SpringFestivalTaskCallback.a(this.a).jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a(bool);
-      if (SpringFestivalTaskCallback.b(this.a))
+      boolean bool;
+      if ((SpringFestivalTaskCallback.a(this.a) != null) && (SpringFestivalTaskCallback.a(this.a).breathLightData != null))
       {
-        ((SpringFestivalEntryManager)SpringFestivalTaskCallback.a(this.a).jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).c();
-        SpringFestivalTaskCallback.c(this.a, false);
+        int i = SpringFestivalTaskCallback.a(this.a).breathLightData.type;
+        bool = true;
+        if (i == 1) {}
       }
-      return;
-      label131:
-      bool = false;
-      continue;
-      label136:
-      bool = false;
+      else
+      {
+        bool = false;
+      }
+      SpringFestivalTaskCallback.a(this.a).jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a(bool);
+    }
+    if (SpringFestivalTaskCallback.b(this.a))
+    {
+      ((SpringFestivalEntryManager)SpringFestivalTaskCallback.a(this.a).jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER)).c();
+      SpringFestivalTaskCallback.c(this.a, false);
     }
   }
   
@@ -69,11 +64,16 @@ class SpringFestivalTaskCallback$2
     if ((SpringFestivalTaskCallback.a(this.a) != null) && ((SpringFestivalTaskCallback.a(this.a).type == 1) || (SpringFestivalTaskCallback.a(this.a).type == 3)) && (SpringFestivalTaskCallback.a(this.a).jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.e()))
     {
       SpringFestivalTaskCallback.a(this.a).jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.w();
-      SpringFestivalEntryManager localSpringFestivalEntryManager = (SpringFestivalEntryManager)SpringFestivalTaskCallback.a(this.a).jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
-      localSpringFestivalEntryManager.a().hasShowedMiniApp = true;
-      localSpringFestivalEntryManager.a();
-      if (QLog.isColorLevel()) {
-        QLog.d("2021_UI_SpringFestivalTaskCallback", 2, "[onDesktopOpened]从 " + SpringFestivalTaskCallback.a(this.a).type + " 进入小程序 动态吊坠修改为静态");
+      Object localObject = (SpringFestivalEntryManager)SpringFestivalTaskCallback.a(this.a).jdField_a_of_type_MqqAppAppRuntime.getManager(QQManagerFactory.SPRING_FESTIVAL_ENTRY_MANAGER);
+      ((ITaskManager)localObject).a().hasShowedMiniApp = true;
+      ((ITaskManager)localObject).a();
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[onDesktopOpened]从 ");
+        ((StringBuilder)localObject).append(SpringFestivalTaskCallback.a(this.a).type);
+        ((StringBuilder)localObject).append(" 进入小程序 动态吊坠修改为静态");
+        QLog.d("2021_UI_SpringFestivalTaskCallback", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -95,7 +95,7 @@ class SpringFestivalTaskCallback$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.SpringFestivalTaskCallback.2
  * JD-Core Version:    0.7.0.1
  */

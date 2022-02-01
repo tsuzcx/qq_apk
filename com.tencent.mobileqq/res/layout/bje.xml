@@ -9,5 +9,5 @@
         </LinearLayout>
         <ImageView android:layout_gravity="center|right" android:id="@id/imo" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gdv" />
     </LinearLayout>
-    <View android:id="@id/ncl" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="16.0dip" />
+    <View android:id="@id/nez" android:background="#ffebedf5" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_marginLeft="16.0dip" />
 </LinearLayout>

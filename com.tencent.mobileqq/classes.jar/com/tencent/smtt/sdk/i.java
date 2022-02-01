@@ -25,7 +25,7 @@ import com.tencent.smtt.utils.n;
 class i
   extends X5ProxyWebViewClient
 {
-  private static String c = null;
+  private static String c;
   private WebViewClient a;
   private WebView b;
   
@@ -48,10 +48,11 @@ class i
     paramString.addFlags(268435456);
     try
     {
-      if (this.b.getContext() != null) {
+      if (this.b.getContext() != null)
+      {
         this.b.getContext().startActivity(paramString);
+        return;
       }
-      return;
     }
     catch (Exception paramString)
     {
@@ -162,17 +163,15 @@ class i
   public void onReceivedError(IX5WebViewBase paramIX5WebViewBase, int paramInt, String paramString1, String paramString2)
   {
     int i = paramInt;
-    if (paramInt < -15)
-    {
+    if (paramInt < -15) {
       if (paramInt == -17) {
         i = -1;
+      } else {
+        return;
       }
     }
-    else
-    {
-      this.b.a(paramIX5WebViewBase);
-      this.a.onReceivedError(this.b, i, paramString1, paramString2);
-    }
+    this.b.a(paramIX5WebViewBase);
+    this.a.onReceivedError(this.b, i, paramString1, paramString2);
   }
   
   public void onReceivedError(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
@@ -249,10 +248,15 @@ class i
   
   public boolean shouldOverrideUrlLoading(IX5WebViewBase paramIX5WebViewBase, WebResourceRequest paramWebResourceRequest)
   {
-    if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null)) {}
-    for (String str = paramWebResourceRequest.getUrl().toString();; str = null)
+    String str;
+    if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null)) {
+      str = paramWebResourceRequest.getUrl().toString();
+    } else {
+      str = null;
+    }
+    if (str != null)
     {
-      if ((str == null) || (this.b.showDebugView(str))) {
+      if (this.b.showDebugView(str)) {
         return true;
       }
       this.b.a(paramIX5WebViewBase);
@@ -261,7 +265,10 @@ class i
       {
         if (str.startsWith("wtai://wp/mc;"))
         {
-          paramIX5WebViewBase = new Intent("android.intent.action.VIEW", Uri.parse("tel:" + str.substring("wtai://wp/mc;".length())));
+          paramIX5WebViewBase = new StringBuilder();
+          paramIX5WebViewBase.append("tel:");
+          paramIX5WebViewBase.append(str.substring(13));
+          paramIX5WebViewBase = new Intent("android.intent.action.VIEW", Uri.parse(paramIX5WebViewBase.toString()));
           this.b.getContext().startActivity(paramIX5WebViewBase);
           return true;
         }
@@ -273,35 +280,43 @@ class i
       }
       return bool;
     }
+    return true;
   }
   
   public boolean shouldOverrideUrlLoading(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
-    if ((paramString == null) || (this.b.showDebugView(paramString))) {
-      return true;
-    }
-    this.b.a(paramIX5WebViewBase);
-    boolean bool = this.a.shouldOverrideUrlLoading(this.b, paramString);
-    if (!bool)
+    if (paramString != null)
     {
-      if (paramString.startsWith("wtai://wp/mc;"))
-      {
-        paramIX5WebViewBase = new Intent("android.intent.action.VIEW", Uri.parse("tel:" + paramString.substring("wtai://wp/mc;".length())));
-        this.b.getContext().startActivity(paramIX5WebViewBase);
+      if (this.b.showDebugView(paramString)) {
         return true;
       }
-      if (paramString.startsWith("tel:"))
+      this.b.a(paramIX5WebViewBase);
+      boolean bool = this.a.shouldOverrideUrlLoading(this.b, paramString);
+      if (!bool)
       {
-        a(paramString);
-        return true;
+        if (paramString.startsWith("wtai://wp/mc;"))
+        {
+          paramIX5WebViewBase = new StringBuilder();
+          paramIX5WebViewBase.append("tel:");
+          paramIX5WebViewBase.append(paramString.substring(13));
+          paramIX5WebViewBase = new Intent("android.intent.action.VIEW", Uri.parse(paramIX5WebViewBase.toString()));
+          this.b.getContext().startActivity(paramIX5WebViewBase);
+          return true;
+        }
+        if (paramString.startsWith("tel:"))
+        {
+          a(paramString);
+          return true;
+        }
       }
+      return bool;
     }
-    return bool;
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.i
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,12 @@ class SwiftBrowserDebugHelper$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     ((ClipboardManager)this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserDebugHelper.a.a().getSystemService("clipboard")).setText(this.jdField_a_of_type_JavaLangString);
-    Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserDebugHelper.a.a().getApplicationContext(), 2131714571, 0).show();
+    Toast.makeText(this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserDebugHelper.a.a().getApplicationContext(), 2131714488, 0).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserDebugHelper.2
  * JD-Core Version:    0.7.0.1
  */

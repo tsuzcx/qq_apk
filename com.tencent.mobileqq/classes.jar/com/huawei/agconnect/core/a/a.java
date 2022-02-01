@@ -2,17 +2,31 @@ package com.huawei.agconnect.core.a;
 
 import android.content.Context;
 import com.huawei.agconnect.AGConnectInstance;
+import com.huawei.agconnect.CustomAuthProvider;
+import com.huawei.agconnect.CustomCredentialsProvider;
 
 public class a
   extends AGConnectInstance
 {
   private final Context a;
-  private final c b;
+  private final g b;
+  private d c;
   
   public a(Context paramContext)
   {
     this.a = paramContext;
-    this.b = new c(new b(paramContext).a());
+    this.b = new g(new f(paramContext).a());
+    this.c = new d();
+  }
+  
+  public void a(CustomAuthProvider paramCustomAuthProvider)
+  {
+    this.c.a(paramCustomAuthProvider);
+  }
+  
+  public void a(CustomCredentialsProvider paramCustomCredentialsProvider)
+  {
+    this.c.a(paramCustomCredentialsProvider);
   }
   
   public Context getContext()
@@ -22,6 +36,9 @@ public class a
   
   public <T> T getService(Class<? super T> paramClass)
   {
+    if (this.c.a(paramClass)) {
+      return this.c.b(paramClass);
+    }
     return this.b.a(this, paramClass);
   }
 }

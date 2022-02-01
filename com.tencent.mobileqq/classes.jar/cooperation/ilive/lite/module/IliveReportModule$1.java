@@ -12,13 +12,19 @@ class IliveReportModule$1
   
   public void a(@Nullable RoomCloseEvent paramRoomCloseEvent)
   {
-    QLog.e("IliveReportModule", 1, "onExitRoom roomCloseEvent = " + paramRoomCloseEvent.sceneId + " roomId = " + IliveReportModule.a(this.a));
-    IliveReportModule.a(this.a, IliveReportModule.a(this.a), paramRoomCloseEvent.sceneId);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onExitRoom roomCloseEvent = ");
+    ((StringBuilder)localObject).append(paramRoomCloseEvent.sceneId);
+    ((StringBuilder)localObject).append(" roomId = ");
+    ((StringBuilder)localObject).append(IliveReportModule.a(this.a));
+    QLog.e("IliveReportModule", 1, ((StringBuilder)localObject).toString());
+    localObject = this.a;
+    IliveReportModule.a((IliveReportModule)localObject, IliveReportModule.a((IliveReportModule)localObject), paramRoomCloseEvent.sceneId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveReportModule.1
  * JD-Core Version:    0.7.0.1
  */

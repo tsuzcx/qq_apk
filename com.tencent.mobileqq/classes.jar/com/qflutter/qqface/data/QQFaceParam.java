@@ -9,10 +9,13 @@ public class QQFaceParam
   private static final String PARAM_FACE_SHAPE = "face_shape";
   private static final String PARAM_FACE_SIZE = "face_size";
   private static final String PARAM_FACE_TYPE = "face_type";
+  private static final String PARAM_FORCE_SHAPE = "force_shape";
   public String account;
-  public String faceId;
   public int faceShape = -1;
   public int faceType = -1;
+  public int forceShape = 0;
+  
+  public QQFaceParam() {}
   
   public QQFaceParam(MethodCall paramMethodCall)
   {
@@ -23,10 +26,9 @@ public class QQFaceParam
     if (paramMethodCall.argument("face_shape") != null) {
       this.faceShape = ((Integer)paramMethodCall.argument("face_shape")).intValue();
     }
-    this.faceId = getFaceId();
   }
   
-  private String getFaceId()
+  public String getFaceId()
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(this.account);
@@ -34,6 +36,8 @@ public class QQFaceParam
     localStringBuilder.append(this.faceType);
     localStringBuilder.append("_");
     localStringBuilder.append(this.faceShape);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.forceShape);
     return localStringBuilder.toString();
   }
   
@@ -53,7 +57,7 @@ public class QQFaceParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqface.data.QQFaceParam
  * JD-Core Version:    0.7.0.1
  */

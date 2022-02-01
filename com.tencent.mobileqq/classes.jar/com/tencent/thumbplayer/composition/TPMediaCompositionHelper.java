@@ -26,6 +26,7 @@ class TPMediaCompositionHelper
   static final String XML_TAG_DRM_SAVE_PATH = "clip_drmSavePath";
   static final String XML_TAG_DRM_TYPE = "clip_drmType";
   static final String XML_TAG_DRM_USEL1 = "clip_drmUseL1";
+  static final String XML_TAG_RTC_SERVER_URL = "clip_rtcServerUrl";
   static final String XML_TAG_TRACK_CLIP = "track_clip";
   static final String XML_TAG_TRACK_ID = "track_id";
   static final String XML_TAG_UTF8 = "UTF-8";
@@ -34,7 +35,7 @@ class TPMediaCompositionHelper
   private static int audioClidId = 0;
   private static int avClidId = 0;
   public static String composition_duration_strategy = "base_video";
-  private static int videoClidId = 0;
+  private static int videoClidId;
   
   static int generateTrackClipId(int paramInt)
   {
@@ -61,7 +62,7 @@ class TPMediaCompositionHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.composition.TPMediaCompositionHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -20,12 +20,12 @@ class CmShowAESurfaceView$6
     CmShowAESurfaceView.a(this.this$0).clearGLSL();
     CmShowAESurfaceView.a(this.this$0).clear();
     CmShowAESurfaceView.b(this.this$0).clear();
-    QLog.i("CmShowAESurfaceView", 1, "Clear in GLThread.");
+    QLog.i("[cmshow]CmShowAESurfaceView", 1, "Clear in GLThread.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.CmShowAESurfaceView.6
  * JD-Core Version:    0.7.0.1
  */

@@ -30,16 +30,20 @@ public class GetUserGroupInfoRequest
   
   public static INTERFACE.StGetUserGroupInfoRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetUserGroupInfoRsp localStGetUserGroupInfoRsp = new INTERFACE.StGetUserGroupInfoRsp();
+    Object localObject = new INTERFACE.StGetUserGroupInfoRsp();
     try
     {
-      localStGetUserGroupInfoRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetUserGroupInfoRsp;
+      ((INTERFACE.StGetUserGroupInfoRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetUserGroupInfoRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetUserGroupInfoRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -52,7 +56,7 @@ public class GetUserGroupInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetUserGroupInfoRequest
  * JD-Core Version:    0.7.0.1
  */

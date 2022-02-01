@@ -23,8 +23,12 @@ class QQStoryShareGroupProfileActivity$GetGroupInfoEventReceiver
     }
     if ((paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, "update sharegroup info: " + paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("update sharegroup info: ");
+        localStringBuilder.append(paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.toString());
+        QLog.i("Q.qqstory.shareGroup.QQStoryShareGroupProfileActivity", 2, localStringBuilder.toString());
       }
       QQStoryShareGroupProfileActivity.a(paramQQStoryShareGroupProfileActivity, paramGetShareGroupInfoEvent.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem);
       return;
@@ -39,7 +43,7 @@ class QQStoryShareGroupProfileActivity$GetGroupInfoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.QQStoryShareGroupProfileActivity.GetGroupInfoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

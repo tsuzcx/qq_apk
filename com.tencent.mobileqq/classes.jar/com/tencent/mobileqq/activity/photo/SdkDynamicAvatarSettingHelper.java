@@ -14,9 +14,10 @@ import android.widget.TextView;
 import com.tencent.biz.widgets.ShareAioResultDialog;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
-import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI;
+import com.tencent.mobileqq.Doraemon.IDoraemonService;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.HexUtil;
@@ -42,9 +43,12 @@ public final class SdkDynamicAvatarSettingHelper
     if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str3)))
     {
       localObject = new ShareAioResultDialog(paramActivity);
-      ((TextView)((ShareAioResultDialog)localObject).findViewById(2131379441)).setText(HardCodeUtil.a(2131713552));
+      ((TextView)((ShareAioResultDialog)localObject).findViewById(2131378793)).setText(HardCodeUtil.a(2131713519));
       QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      str2 = localQQAppInterface.getApplication().getString(2131719148) + str2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localQQAppInterface.getApplication().getString(2131718866));
+      localStringBuilder.append(str2);
+      str2 = localStringBuilder.toString();
       paramActivity = new SdkDynamicAvatarSettingHelper.5(paramActivity, str1, str3, localQQAppInterface);
       ((ShareAioResultDialog)localObject).a(str2, paramActivity);
       ((ShareAioResultDialog)localObject).a(paramActivity);
@@ -57,52 +61,61 @@ public final class SdkDynamicAvatarSettingHelper
   
   public static void a(Activity paramActivity, String paramString)
   {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString)))
+    if ((paramActivity != null) && (!TextUtils.isEmpty(paramString)))
     {
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "check, param null");
-      return;
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    Intent localIntent = paramActivity.getIntent();
-    String str2 = localIntent.getStringExtra("share_id");
-    Object localObject1 = localIntent.getStringExtra("app_name");
-    String str3 = localQQAppInterface.getApplication().getString(2131719148) + (String)localObject1;
-    String str4 = localIntent.getStringExtra("sdk_version");
-    String str5 = localIntent.getStringExtra("pkg_name");
-    if (!TextUtils.isEmpty(str5)) {}
-    String str1;
-    for (;;)
-    {
-      try
-      {
-        localObject1 = paramActivity.getPackageManager().getPackageInfo(str5, 64);
-        if (localObject1 == null) {
-          break label328;
+      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      Intent localIntent = paramActivity.getIntent();
+      String str1 = localIntent.getStringExtra("share_id");
+      Object localObject1 = localIntent.getStringExtra("app_name");
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(localQQAppInterface.getApplication().getString(2131718866));
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      String str2 = localIntent.getStringExtra("sdk_version");
+      String str3 = localIntent.getStringExtra("pkg_name");
+      Object localObject3;
+      if (!TextUtils.isEmpty(str3)) {
+        try
+        {
+          localObject1 = paramActivity.getPackageManager().getPackageInfo(str3, 64);
+          if (localObject1 == null) {
+            break label192;
+          }
+          localObject1 = ((PackageInfo)localObject1).signatures;
+          if ((localObject1 == null) || (localObject1.length <= 0)) {
+            break label192;
+          }
+          localObject3 = MessageDigest.getInstance("MD5");
+          ((MessageDigest)localObject3).update(localObject1[0].toByteArray());
+          localObject1 = HexUtil.bytes2HexStr(((MessageDigest)localObject3).digest());
         }
-        localObject1 = ((PackageInfo)localObject1).signatures;
-        if ((localObject1 == null) || (localObject1.length <= 0)) {
-          break label328;
+        catch (Exception localException)
+        {
+          QLog.e("SdkDynamicAvatarSettingHelper", 1, "check, get signature exception=", localException);
+          break label192;
         }
-        localObject2 = MessageDigest.getInstance("MD5");
-        ((MessageDigest)localObject2).update(localObject1[0].toByteArray());
-        localObject1 = HexUtil.bytes2HexStr(((MessageDigest)localObject2).digest());
+      } else {
+        QLog.e("SdkDynamicAvatarSettingHelper", 1, "check, pkgName null");
       }
-      catch (Exception localException)
+      label192:
+      CharSequence localCharSequence = null;
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(localCharSequence)))
       {
-        QLog.e("SdkDynamicAvatarSettingHelper", 1, "check, get signature exception=", localException);
-        str1 = null;
-        continue;
+        ((IDoraemonService)QRoute.api(IDoraemonService.class)).prepare();
+        localObject3 = new Bundle();
+        ((Bundle)localObject3).putString("sdkVersion", str2);
+        ((Bundle)localObject3).putString("pkgName", str3);
+        ((Bundle)localObject3).putString("signature", localCharSequence);
+        ((IDoraemonService)QRoute.api(IDoraemonService.class)).createAPIManager(paramActivity, 1, str1, (Bundle)localObject3).a("sdk_dynamic_avatar_edit", null, new SdkDynamicAvatarSettingHelper.2(localQQAppInterface, str1, paramActivity, (String)localObject2, str3, paramString, localIntent));
+        return;
       }
-      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str5)) && (!TextUtils.isEmpty((CharSequence)localObject1))) {
-        break;
-      }
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, new Object[] { "check, invalid param, shareAppId=", str2, ", pkgName=", str5, ", signature=", localObject1 });
-      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, str2, "1", "", "");
+      QLog.e("SdkDynamicAvatarSettingHelper", 1, new Object[] { "check, invalid param, shareAppId=", str1, ", pkgName=", str3, ", signature=", localCharSequence });
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, str1, "1", "", "");
       try
       {
         paramString = DialogUtil.a(paramActivity, 230);
-        paramString.setMessage(HardCodeUtil.a(2131713551));
-        paramString.setNegativeButton(2131690800, new SdkDynamicAvatarSettingHelper.1(paramActivity));
+        paramString.setMessage(HardCodeUtil.a(2131713518));
+        paramString.setNegativeButton(2131690728, new SdkDynamicAvatarSettingHelper.1(paramActivity));
         paramString.setCancelable(false);
         paramString.show();
         return;
@@ -112,150 +125,144 @@ public final class SdkDynamicAvatarSettingHelper
         QLog.e("SdkDynamicAvatarSettingHelper", 1, "show invalid param dialog, exception=", paramActivity);
         return;
       }
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "check, pkgName null");
-      label328:
-      str1 = null;
     }
-    DoraemonOpenAPI.a();
-    Object localObject2 = new Bundle();
-    ((Bundle)localObject2).putString("sdkVersion", str4);
-    ((Bundle)localObject2).putString("pkgName", str5);
-    ((Bundle)localObject2).putString("signature", str1);
-    DoraemonOpenAPI.a(paramActivity, 1, str2, (Bundle)localObject2).a("sdk_dynamic_avatar_edit", null, new SdkDynamicAvatarSettingHelper.2(localQQAppInterface, str2, paramActivity, str3, str5, paramString, localIntent));
+    QLog.e("SdkDynamicAvatarSettingHelper", 1, "check, param null");
   }
   
   public static boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    boolean bool1 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
-      MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
-      localMediaMetadataRetriever.setDataSource(paramString);
-      paramString = localMediaMetadataRetriever.extractMetadata(9);
-      String str1 = localMediaMetadataRetriever.extractMetadata(18);
-      String str2 = localMediaMetadataRetriever.extractMetadata(19);
-      localMediaMetadataRetriever.release();
-      if (QLog.isColorLevel()) {
-        QLog.d("SdkDynamicAvatarSettingHelper", 1, new Object[] { "[isVideoValid] width=", str1, ", height=", str2, ", duration=", paramString });
+    }
+    MediaMetadataRetriever localMediaMetadataRetriever = new MediaMetadataRetriever();
+    localMediaMetadataRetriever.setDataSource(paramString);
+    paramString = localMediaMetadataRetriever.extractMetadata(9);
+    String str1 = localMediaMetadataRetriever.extractMetadata(18);
+    String str2 = localMediaMetadataRetriever.extractMetadata(19);
+    localMediaMetadataRetriever.release();
+    if (QLog.isColorLevel()) {
+      QLog.d("SdkDynamicAvatarSettingHelper", 1, new Object[] { "[isVideoValid] width=", str1, ", height=", str2, ", duration=", paramString });
+    }
+    long l3 = 0L;
+    long l1 = l3;
+    long l2 = l3;
+    try
+    {
+      if (!TextUtils.isEmpty(paramString))
+      {
+        l2 = l3;
+        l1 = Long.parseLong(paramString);
       }
-      long l3 = 0L;
-      long l1 = l3;
-      long l2 = l3;
+      l2 = l1;
+      if (!TextUtils.isEmpty(str1))
+      {
+        l2 = l1;
+        i = Integer.parseInt(str1);
+      }
+      else
+      {
+        i = 0;
+      }
+      l2 = l1;
+      j = i;
       try
       {
-        if (!TextUtils.isEmpty(paramString))
-        {
-          l2 = l3;
-          l1 = Long.parseLong(paramString);
+        if (TextUtils.isEmpty(str2)) {
+          break label216;
         }
-        l2 = l1;
-        if (!TextUtils.isEmpty(str1))
-        {
-          l2 = l1;
-          i = Integer.parseInt(str1);
-          j = i;
-          l2 = l1;
-        }
+        j = Integer.parseInt(str2);
       }
-      catch (Exception paramString)
+      catch (Exception paramString) {}
+      QLog.e("SdkDynamicAvatarSettingHelper", 1, "[isVideoValid] parse exception=", paramString);
+    }
+    catch (Exception paramString)
+    {
+      i = 0;
+      l1 = l2;
+    }
+    int j = i;
+    l2 = l1;
+    label216:
+    int k = 0;
+    int i = j;
+    l1 = l2;
+    j = k;
+    bool1 = bool2;
+    if (l1 > 500L)
+    {
+      bool1 = bool2;
+      if (l1 <= 8000L)
       {
-        for (;;)
+        bool1 = bool2;
+        if (i == j)
         {
-          try
-          {
-            if (TextUtils.isEmpty(str2)) {
-              continue;
-            }
-            j = Integer.parseInt(str2);
-            k = i;
-            i = j;
-            if ((l1 <= 500L) || (l1 > 8000L) || (k != i) || (k != 480)) {
-              break;
-            }
-            return true;
+          bool1 = bool2;
+          if (i == 480) {
+            bool1 = true;
           }
-          catch (Exception paramString)
-          {
-            int j;
-            int k;
-            continue;
-          }
-          paramString = paramString;
-          int i = 0;
-          l1 = l2;
-          QLog.e("SdkDynamicAvatarSettingHelper", 1, "[isVideoValid] parse exception=", paramString);
-          l2 = l1;
-          j = i;
-          i = 0;
-          k = j;
-          l1 = l2;
-          continue;
-          i = 0;
         }
       }
     }
+    return bool1;
   }
   
   private static void b(Activity paramActivity, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString4)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    try
+    if ((paramActivity != null) && (!TextUtils.isEmpty(paramString4)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString1)))
     {
-      ShareAioResultDialog localShareAioResultDialog = new ShareAioResultDialog(paramActivity);
-      ((TextView)localShareAioResultDialog.findViewById(2131379441)).setText(paramString1);
-      paramString1 = localShareAioResultDialog.findViewById(2131365802);
-      View localView = localShareAioResultDialog.findViewById(2131363984);
-      paramString1.setVisibility(8);
-      localView.setVisibility(8);
-      localShareAioResultDialog.findViewById(2131379442).setVisibility(8);
-      localShareAioResultDialog.a(paramString2, new SdkDynamicAvatarSettingHelper.3(paramActivity, paramString3, paramString4));
-      localShareAioResultDialog.setCancelable(false);
-      localShareAioResultDialog.show();
-      return;
-    }
-    catch (Exception paramActivity)
-    {
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "[showErrorDialog] exception=", paramActivity);
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      try
+      {
+        ShareAioResultDialog localShareAioResultDialog = new ShareAioResultDialog(paramActivity);
+        ((TextView)localShareAioResultDialog.findViewById(2131378793)).setText(paramString1);
+        paramString1 = localShareAioResultDialog.findViewById(2131365639);
+        View localView = localShareAioResultDialog.findViewById(2131363911);
+        paramString1.setVisibility(8);
+        localView.setVisibility(8);
+        localShareAioResultDialog.findViewById(2131378794).setVisibility(8);
+        localShareAioResultDialog.a(paramString2, new SdkDynamicAvatarSettingHelper.3(paramActivity, paramString3, paramString4));
+        localShareAioResultDialog.setCancelable(false);
+        localShareAioResultDialog.show();
+        return;
+      }
+      catch (Exception paramActivity)
+      {
+        QLog.e("SdkDynamicAvatarSettingHelper", 1, "[showErrorDialog] exception=", paramActivity);
+      }
     }
   }
   
   private static void b(Activity paramActivity, boolean paramBoolean1, String paramString1, String paramString2, boolean paramBoolean2)
   {
-    if ((paramActivity == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
-    {
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "[startSdkCallback] param null");
-      return;
-    }
-    for (;;)
-    {
-      Intent localIntent;
-      long l;
+    if ((paramActivity != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
       try
       {
-        localIntent = new Intent();
+        Intent localIntent = new Intent();
         localIntent.addFlags(268435456);
         if (paramBoolean2) {
           localIntent.putExtra("stay_back_stack", true);
         }
-        l = Long.parseLong(paramString2);
-        if (paramBoolean1)
-        {
+        long l = Long.parseLong(paramString2);
+        if (paramBoolean1) {
           localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=complete&response={\"ret\":0}", new Object[] { Long.valueOf(l), "sdkSetDynamicAvatar" })));
-          localIntent.setPackage(paramString1);
-          paramActivity.startActivity(localIntent);
-          return;
+        } else {
+          localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(l), "sdkSetDynamicAvatar" })));
         }
+        localIntent.setPackage(paramString1);
+        paramActivity.startActivity(localIntent);
+        return;
       }
       catch (Exception paramActivity)
       {
         QLog.e("SdkDynamicAvatarSettingHelper", 1, "[startSdkCallback] startActivity failed, exception=", paramActivity);
         return;
       }
-      localIntent.setData(Uri.parse(String.format("tencent%1$d://tauth.qq.com/?#action=%2$s&result=error", new Object[] { Long.valueOf(l), "sdkSetDynamicAvatar" })));
     }
+    QLog.e("SdkDynamicAvatarSettingHelper", 1, "[startSdkCallback] param null");
   }
   
   private static void c(Activity paramActivity)
@@ -269,11 +276,11 @@ public final class SdkDynamicAvatarSettingHelper
       String str1 = ((Intent)localObject).getStringExtra("pkg_name");
       String str2 = ((Intent)localObject).getStringExtra("share_id");
       localObject = DialogUtil.a(paramActivity, 230);
-      ((QQCustomDialog)localObject).setMessage(HardCodeUtil.a(2131713553));
-      ((QQCustomDialog)localObject).setTitle(2131692187);
+      ((QQCustomDialog)localObject).setMessage(HardCodeUtil.a(2131713520));
+      ((QQCustomDialog)localObject).setTitle(2131692113);
       paramActivity = new SdkDynamicAvatarSettingHelper.4(paramActivity, str1, str2);
-      ((QQCustomDialog)localObject).setNegativeButton(2131690800, paramActivity);
-      ((QQCustomDialog)localObject).setPositiveButton(2131719158, paramActivity);
+      ((QQCustomDialog)localObject).setNegativeButton(2131690728, paramActivity);
+      ((QQCustomDialog)localObject).setPositiveButton(2131718876, paramActivity);
       ((QQCustomDialog)localObject).setCancelable(false);
       ((QQCustomDialog)localObject).show();
       return;
@@ -286,7 +293,7 @@ public final class SdkDynamicAvatarSettingHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SdkDynamicAvatarSettingHelper
  * JD-Core Version:    0.7.0.1
  */

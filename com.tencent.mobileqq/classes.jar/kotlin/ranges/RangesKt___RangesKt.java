@@ -14,7 +14,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"coerceAtLeast", "T", "", "minimumValue", "(Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;", "", "", "", "", "", "", "coerceAtMost", "maximumValue", "coerceIn", "(Ljava/lang/Comparable;Ljava/lang/Comparable;Ljava/lang/Comparable;)Ljava/lang/Comparable;", "range", "Lkotlin/ranges/ClosedFloatingPointRange;", "(Ljava/lang/Comparable;Lkotlin/ranges/ClosedFloatingPointRange;)Ljava/lang/Comparable;", "Lkotlin/ranges/ClosedRange;", "(Ljava/lang/Comparable;Lkotlin/ranges/ClosedRange;)Ljava/lang/Comparable;", "contains", "", "Lkotlin/ranges/CharRange;", "element", "", "(Lkotlin/ranges/CharRange;Ljava/lang/Character;)Z", "value", "byteRangeContains", "doubleRangeContains", "floatRangeContains", "intRangeContains", "longRangeContains", "shortRangeContains", "Lkotlin/ranges/IntRange;", "(Lkotlin/ranges/IntRange;Ljava/lang/Integer;)Z", "Lkotlin/ranges/LongRange;", "(Lkotlin/ranges/LongRange;Ljava/lang/Long;)Z", "downTo", "Lkotlin/ranges/IntProgression;", "to", "Lkotlin/ranges/LongProgression;", "Lkotlin/ranges/CharProgression;", "random", "Lkotlin/random/Random;", "randomOrNull", "(Lkotlin/ranges/CharRange;)Ljava/lang/Character;", "(Lkotlin/ranges/CharRange;Lkotlin/random/Random;)Ljava/lang/Character;", "(Lkotlin/ranges/IntRange;)Ljava/lang/Integer;", "(Lkotlin/ranges/IntRange;Lkotlin/random/Random;)Ljava/lang/Integer;", "(Lkotlin/ranges/LongRange;)Ljava/lang/Long;", "(Lkotlin/ranges/LongRange;Lkotlin/random/Random;)Ljava/lang/Long;", "reversed", "step", "toByteExactOrNull", "(D)Ljava/lang/Byte;", "(F)Ljava/lang/Byte;", "(I)Ljava/lang/Byte;", "(J)Ljava/lang/Byte;", "(S)Ljava/lang/Byte;", "toIntExactOrNull", "(D)Ljava/lang/Integer;", "(F)Ljava/lang/Integer;", "(J)Ljava/lang/Integer;", "toLongExactOrNull", "(D)Ljava/lang/Long;", "(F)Ljava/lang/Long;", "toShortExactOrNull", "(D)Ljava/lang/Short;", "(F)Ljava/lang/Short;", "(I)Ljava/lang/Short;", "(J)Ljava/lang/Short;", "until", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/ranges/RangesKt")
-public class RangesKt___RangesKt
+class RangesKt___RangesKt
   extends RangesKt__RangesKt
 {
   @Deprecated(message="This `contains` operation mixing integer and floating point arguments has ambiguous semantics and is going to be removed.")
@@ -76,42 +76,47 @@ public class RangesKt___RangesKt
   
   public static final byte coerceAtLeast(byte paramByte1, byte paramByte2)
   {
+    byte b = paramByte1;
     if (paramByte1 < paramByte2) {
-      return paramByte2;
+      b = paramByte2;
     }
-    return paramByte1;
+    return b;
   }
   
   public static final double coerceAtLeast(double paramDouble1, double paramDouble2)
   {
+    double d = paramDouble1;
     if (paramDouble1 < paramDouble2) {
-      return paramDouble2;
+      d = paramDouble2;
     }
-    return paramDouble1;
+    return d;
   }
   
   public static final float coerceAtLeast(float paramFloat1, float paramFloat2)
   {
+    float f = paramFloat1;
     if (paramFloat1 < paramFloat2) {
-      return paramFloat2;
+      f = paramFloat2;
     }
-    return paramFloat1;
+    return f;
   }
   
   public static final int coerceAtLeast(int paramInt1, int paramInt2)
   {
+    int i = paramInt1;
     if (paramInt1 < paramInt2) {
-      return paramInt2;
+      i = paramInt2;
     }
-    return paramInt1;
+    return i;
   }
   
   public static final long coerceAtLeast(long paramLong1, long paramLong2)
   {
+    long l = paramLong1;
     if (paramLong1 < paramLong2) {
-      return paramLong2;
+      l = paramLong2;
     }
-    return paramLong1;
+    return l;
   }
   
   @NotNull
@@ -119,58 +124,65 @@ public class RangesKt___RangesKt
   {
     Intrinsics.checkParameterIsNotNull(paramT1, "$this$coerceAtLeast");
     Intrinsics.checkParameterIsNotNull(paramT2, "minimumValue");
+    T ? = paramT1;
     if (paramT1.compareTo(paramT2) < 0) {
-      return paramT2;
+      ? = paramT2;
     }
-    return paramT1;
+    return ?;
   }
   
   public static final short coerceAtLeast(short paramShort1, short paramShort2)
   {
+    short s = paramShort1;
     if (paramShort1 < paramShort2) {
-      return paramShort2;
+      s = paramShort2;
     }
-    return paramShort1;
+    return s;
   }
   
   public static final byte coerceAtMost(byte paramByte1, byte paramByte2)
   {
+    byte b = paramByte1;
     if (paramByte1 > paramByte2) {
-      return paramByte2;
+      b = paramByte2;
     }
-    return paramByte1;
+    return b;
   }
   
   public static final double coerceAtMost(double paramDouble1, double paramDouble2)
   {
+    double d = paramDouble1;
     if (paramDouble1 > paramDouble2) {
-      return paramDouble2;
+      d = paramDouble2;
     }
-    return paramDouble1;
+    return d;
   }
   
   public static final float coerceAtMost(float paramFloat1, float paramFloat2)
   {
+    float f = paramFloat1;
     if (paramFloat1 > paramFloat2) {
-      return paramFloat2;
+      f = paramFloat2;
     }
-    return paramFloat1;
+    return f;
   }
   
   public static final int coerceAtMost(int paramInt1, int paramInt2)
   {
+    int i = paramInt1;
     if (paramInt1 > paramInt2) {
-      return paramInt2;
+      i = paramInt2;
     }
-    return paramInt1;
+    return i;
   }
   
   public static final long coerceAtMost(long paramLong1, long paramLong2)
   {
+    long l = paramLong1;
     if (paramLong1 > paramLong2) {
-      return paramLong2;
+      l = paramLong2;
     }
-    return paramLong1;
+    return l;
   }
   
   @NotNull
@@ -178,130 +190,173 @@ public class RangesKt___RangesKt
   {
     Intrinsics.checkParameterIsNotNull(paramT1, "$this$coerceAtMost");
     Intrinsics.checkParameterIsNotNull(paramT2, "maximumValue");
+    T ? = paramT1;
     if (paramT1.compareTo(paramT2) > 0) {
-      return paramT2;
+      ? = paramT2;
     }
-    return paramT1;
+    return ?;
   }
   
   public static final short coerceAtMost(short paramShort1, short paramShort2)
   {
+    short s = paramShort1;
     if (paramShort1 > paramShort2) {
-      return paramShort2;
+      s = paramShort2;
     }
-    return paramShort1;
+    return s;
   }
   
   public static final byte coerceIn(byte paramByte1, byte paramByte2, byte paramByte3)
   {
-    if (paramByte2 > paramByte3) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + paramByte3 + " is less than minimum " + paramByte2 + '.'));
+    if (paramByte2 <= paramByte3)
+    {
+      if (paramByte1 < paramByte2) {
+        return paramByte2;
+      }
+      if (paramByte1 > paramByte3) {
+        return paramByte3;
+      }
+      return paramByte1;
     }
-    if (paramByte1 < paramByte2) {
-      return paramByte2;
-    }
-    if (paramByte1 > paramByte3) {
-      return paramByte3;
-    }
-    return paramByte1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(paramByte3);
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(paramByte2);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   public static final double coerceIn(double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    if (paramDouble2 > paramDouble3) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + paramDouble3 + " is less than minimum " + paramDouble2 + '.'));
+    if (paramDouble2 <= paramDouble3)
+    {
+      if (paramDouble1 < paramDouble2) {
+        return paramDouble2;
+      }
+      if (paramDouble1 > paramDouble3) {
+        return paramDouble3;
+      }
+      return paramDouble1;
     }
-    if (paramDouble1 < paramDouble2) {
-      return paramDouble2;
-    }
-    if (paramDouble1 > paramDouble3) {
-      return paramDouble3;
-    }
-    return paramDouble1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(paramDouble3);
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(paramDouble2);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   public static final float coerceIn(float paramFloat1, float paramFloat2, float paramFloat3)
   {
-    if (paramFloat2 > paramFloat3) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + paramFloat3 + " is less than minimum " + paramFloat2 + '.'));
+    if (paramFloat2 <= paramFloat3)
+    {
+      if (paramFloat1 < paramFloat2) {
+        return paramFloat2;
+      }
+      if (paramFloat1 > paramFloat3) {
+        return paramFloat3;
+      }
+      return paramFloat1;
     }
-    if (paramFloat1 < paramFloat2) {
-      return paramFloat2;
-    }
-    if (paramFloat1 > paramFloat3) {
-      return paramFloat3;
-    }
-    return paramFloat1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(paramFloat3);
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(paramFloat2);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   public static final int coerceIn(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt2 > paramInt3) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + paramInt3 + " is less than minimum " + paramInt2 + '.'));
+    if (paramInt2 <= paramInt3)
+    {
+      if (paramInt1 < paramInt2) {
+        return paramInt2;
+      }
+      if (paramInt1 > paramInt3) {
+        return paramInt3;
+      }
+      return paramInt1;
     }
-    if (paramInt1 < paramInt2) {
-      return paramInt2;
-    }
-    if (paramInt1 > paramInt3) {
-      return paramInt3;
-    }
-    return paramInt1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   public static final int coerceIn(int paramInt, @NotNull ClosedRange<Integer> paramClosedRange)
   {
     Intrinsics.checkParameterIsNotNull(paramClosedRange, "range");
-    int i;
     if ((paramClosedRange instanceof ClosedFloatingPointRange)) {
-      i = ((Number)RangesKt.coerceIn((Comparable)Integer.valueOf(paramInt), (ClosedFloatingPointRange)paramClosedRange)).intValue();
+      return ((Number)RangesKt.coerceIn((Comparable)Integer.valueOf(paramInt), (ClosedFloatingPointRange)paramClosedRange)).intValue();
     }
-    do
+    if (!paramClosedRange.isEmpty())
     {
-      return i;
-      if (paramClosedRange.isEmpty()) {
-        throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: " + paramClosedRange + '.'));
-      }
       if (paramInt < ((Number)paramClosedRange.getStart()).intValue()) {
         return ((Number)paramClosedRange.getStart()).intValue();
       }
-      i = paramInt;
-    } while (paramInt <= ((Number)paramClosedRange.getEndInclusive()).intValue());
-    return ((Number)paramClosedRange.getEndInclusive()).intValue();
+      int i = paramInt;
+      if (paramInt > ((Number)paramClosedRange.getEndInclusive()).intValue()) {
+        i = ((Number)paramClosedRange.getEndInclusive()).intValue();
+      }
+      return i;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: ");
+    localStringBuilder.append(paramClosedRange);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   public static final long coerceIn(long paramLong1, long paramLong2, long paramLong3)
   {
-    if (paramLong2 > paramLong3) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + paramLong3 + " is less than minimum " + paramLong2 + '.'));
+    if (paramLong2 <= paramLong3)
+    {
+      if (paramLong1 < paramLong2) {
+        return paramLong2;
+      }
+      if (paramLong1 > paramLong3) {
+        return paramLong3;
+      }
+      return paramLong1;
     }
-    if (paramLong1 < paramLong2) {
-      return paramLong2;
-    }
-    if (paramLong1 > paramLong3) {
-      return paramLong3;
-    }
-    return paramLong1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(paramLong3);
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(paramLong2);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   public static final long coerceIn(long paramLong, @NotNull ClosedRange<Long> paramClosedRange)
   {
     Intrinsics.checkParameterIsNotNull(paramClosedRange, "range");
-    long l;
     if ((paramClosedRange instanceof ClosedFloatingPointRange)) {
-      l = ((Number)RangesKt.coerceIn((Comparable)Long.valueOf(paramLong), (ClosedFloatingPointRange)paramClosedRange)).longValue();
+      return ((Number)RangesKt.coerceIn((Comparable)Long.valueOf(paramLong), (ClosedFloatingPointRange)paramClosedRange)).longValue();
     }
-    do
+    if (!paramClosedRange.isEmpty())
     {
-      return l;
-      if (paramClosedRange.isEmpty()) {
-        throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: " + paramClosedRange + '.'));
-      }
       if (paramLong < ((Number)paramClosedRange.getStart()).longValue()) {
         return ((Number)paramClosedRange.getStart()).longValue();
       }
-      l = paramLong;
-    } while (paramLong <= ((Number)paramClosedRange.getEndInclusive()).longValue());
-    return ((Number)paramClosedRange.getEndInclusive()).longValue();
+      long l = paramLong;
+      if (paramLong > ((Number)paramClosedRange.getEndInclusive()).longValue()) {
+        l = ((Number)paramClosedRange.getEndInclusive()).longValue();
+      }
+      return l;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: ");
+    localStringBuilder.append(paramClosedRange);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @NotNull
@@ -310,21 +365,34 @@ public class RangesKt___RangesKt
     Intrinsics.checkParameterIsNotNull(paramT1, "$this$coerceIn");
     if ((paramT2 != null) && (paramT3 != null))
     {
-      if (paramT2.compareTo(paramT3) > 0) {
-        throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + paramT3 + " is less than minimum " + paramT2 + '.'));
+      if (paramT2.compareTo(paramT3) <= 0)
+      {
+        if (paramT1.compareTo(paramT2) < 0) {
+          return paramT2;
+        }
+        if (paramT1.compareTo(paramT3) > 0) {
+          return paramT3;
+        }
       }
-      if (paramT1.compareTo(paramT2) >= 0) {}
+      else
+      {
+        paramT1 = new StringBuilder();
+        paramT1.append("Cannot coerce value to an empty range: maximum ");
+        paramT1.append(paramT3);
+        paramT1.append(" is less than minimum ");
+        paramT1.append(paramT2);
+        paramT1.append('.');
+        throw ((Throwable)new IllegalArgumentException(paramT1.toString()));
+      }
     }
-    while ((paramT2 != null) && (paramT1.compareTo(paramT2) < 0))
+    else
     {
-      return paramT2;
-      if (paramT1.compareTo(paramT3) <= 0) {
-        break;
+      if ((paramT2 != null) && (paramT1.compareTo(paramT2) < 0)) {
+        return paramT2;
       }
-      return paramT3;
-    }
-    if ((paramT3 != null) && (paramT1.compareTo(paramT3) > 0)) {
-      return paramT3;
+      if ((paramT3 != null) && (paramT1.compareTo(paramT3) > 0)) {
+        return paramT3;
+      }
     }
     return paramT1;
   }
@@ -335,23 +403,26 @@ public class RangesKt___RangesKt
   {
     Intrinsics.checkParameterIsNotNull(paramT, "$this$coerceIn");
     Intrinsics.checkParameterIsNotNull(paramClosedFloatingPointRange, "range");
-    if (paramClosedFloatingPointRange.isEmpty()) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: " + paramClosedFloatingPointRange + '.'));
-    }
-    Object localObject;
-    if ((paramClosedFloatingPointRange.lessThanOrEquals(paramT, paramClosedFloatingPointRange.getStart())) && (!paramClosedFloatingPointRange.lessThanOrEquals(paramClosedFloatingPointRange.getStart(), paramT))) {
-      localObject = paramClosedFloatingPointRange.getStart();
-    }
-    do
+    if (!paramClosedFloatingPointRange.isEmpty())
     {
-      do
+      if ((paramClosedFloatingPointRange.lessThanOrEquals(paramT, paramClosedFloatingPointRange.getStart())) && (!paramClosedFloatingPointRange.lessThanOrEquals(paramClosedFloatingPointRange.getStart(), paramT))) {
+        return paramClosedFloatingPointRange.getStart();
+      }
+      Object localObject = paramT;
+      if (paramClosedFloatingPointRange.lessThanOrEquals(paramClosedFloatingPointRange.getEndInclusive(), paramT))
       {
-        return localObject;
         localObject = paramT;
-      } while (!paramClosedFloatingPointRange.lessThanOrEquals(paramClosedFloatingPointRange.getEndInclusive(), paramT));
-      localObject = paramT;
-    } while (paramClosedFloatingPointRange.lessThanOrEquals(paramT, paramClosedFloatingPointRange.getEndInclusive()));
-    return paramClosedFloatingPointRange.getEndInclusive();
+        if (!paramClosedFloatingPointRange.lessThanOrEquals(paramT, paramClosedFloatingPointRange.getEndInclusive())) {
+          localObject = paramClosedFloatingPointRange.getEndInclusive();
+        }
+      }
+      return localObject;
+    }
+    paramT = new StringBuilder();
+    paramT.append("Cannot coerce value to an empty range: ");
+    paramT.append(paramClosedFloatingPointRange);
+    paramT.append('.');
+    throw ((Throwable)new IllegalArgumentException(paramT.toString()));
   }
   
   @NotNull
@@ -359,36 +430,46 @@ public class RangesKt___RangesKt
   {
     Intrinsics.checkParameterIsNotNull(paramT, "$this$coerceIn");
     Intrinsics.checkParameterIsNotNull(paramClosedRange, "range");
-    Object localObject;
     if ((paramClosedRange instanceof ClosedFloatingPointRange)) {
-      localObject = RangesKt.coerceIn(paramT, (ClosedFloatingPointRange)paramClosedRange);
+      return RangesKt.coerceIn(paramT, (ClosedFloatingPointRange)paramClosedRange);
     }
-    do
+    if (!paramClosedRange.isEmpty())
     {
-      return localObject;
-      if (paramClosedRange.isEmpty()) {
-        throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: " + paramClosedRange + '.'));
-      }
       if (paramT.compareTo(paramClosedRange.getStart()) < 0) {
         return paramClosedRange.getStart();
       }
-      localObject = paramT;
-    } while (paramT.compareTo(paramClosedRange.getEndInclusive()) <= 0);
-    return paramClosedRange.getEndInclusive();
+      Object localObject = paramT;
+      if (paramT.compareTo(paramClosedRange.getEndInclusive()) > 0) {
+        localObject = paramClosedRange.getEndInclusive();
+      }
+      return localObject;
+    }
+    paramT = new StringBuilder();
+    paramT.append("Cannot coerce value to an empty range: ");
+    paramT.append(paramClosedRange);
+    paramT.append('.');
+    throw ((Throwable)new IllegalArgumentException(paramT.toString()));
   }
   
   public static final short coerceIn(short paramShort1, short paramShort2, short paramShort3)
   {
-    if (paramShort2 > paramShort3) {
-      throw ((Throwable)new IllegalArgumentException("Cannot coerce value to an empty range: maximum " + paramShort3 + " is less than minimum " + paramShort2 + '.'));
+    if (paramShort2 <= paramShort3)
+    {
+      if (paramShort1 < paramShort2) {
+        return paramShort2;
+      }
+      if (paramShort1 > paramShort3) {
+        return paramShort3;
+      }
+      return paramShort1;
     }
-    if (paramShort1 < paramShort2) {
-      return paramShort2;
-    }
-    if (paramShort1 > paramShort3) {
-      return paramShort3;
-    }
-    return paramShort1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Cannot coerce value to an empty range: maximum ");
+    localStringBuilder.append(paramShort3);
+    localStringBuilder.append(" is less than minimum ");
+    localStringBuilder.append(paramShort2);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString()));
   }
   
   @SinceKotlin(version="1.3")
@@ -900,28 +981,19 @@ public class RangesKt___RangesKt
   {
     Intrinsics.checkParameterIsNotNull(paramCharProgression, "$this$step");
     boolean bool;
-    CharProgression.Companion localCompanion;
-    char c1;
-    char c2;
-    if (paramInt > 0)
-    {
+    if (paramInt > 0) {
       bool = true;
-      RangesKt.checkStepIsPositive(bool, (Number)Integer.valueOf(paramInt));
-      localCompanion = CharProgression.Companion;
-      c1 = paramCharProgression.getFirst();
-      c2 = paramCharProgression.getLast();
-      if (paramCharProgression.getStep() <= 0) {
-        break label63;
-      }
-    }
-    for (;;)
-    {
-      return localCompanion.fromClosedRange(c1, c2, paramInt);
+    } else {
       bool = false;
-      break;
-      label63:
+    }
+    RangesKt.checkStepIsPositive(bool, (Number)Integer.valueOf(paramInt));
+    CharProgression.Companion localCompanion = CharProgression.Companion;
+    char c1 = paramCharProgression.getFirst();
+    char c2 = paramCharProgression.getLast();
+    if (paramCharProgression.getStep() <= 0) {
       paramInt = -paramInt;
     }
+    return localCompanion.fromClosedRange(c1, c2, paramInt);
   }
   
   @NotNull
@@ -929,28 +1001,19 @@ public class RangesKt___RangesKt
   {
     Intrinsics.checkParameterIsNotNull(paramIntProgression, "$this$step");
     boolean bool;
-    IntProgression.Companion localCompanion;
-    int i;
-    int j;
-    if (paramInt > 0)
-    {
+    if (paramInt > 0) {
       bool = true;
-      RangesKt.checkStepIsPositive(bool, (Number)Integer.valueOf(paramInt));
-      localCompanion = IntProgression.Companion;
-      i = paramIntProgression.getFirst();
-      j = paramIntProgression.getLast();
-      if (paramIntProgression.getStep() <= 0) {
-        break label63;
-      }
-    }
-    for (;;)
-    {
-      return localCompanion.fromClosedRange(i, j, paramInt);
+    } else {
       bool = false;
-      break;
-      label63:
+    }
+    RangesKt.checkStepIsPositive(bool, (Number)Integer.valueOf(paramInt));
+    IntProgression.Companion localCompanion = IntProgression.Companion;
+    int i = paramIntProgression.getFirst();
+    int j = paramIntProgression.getLast();
+    if (paramIntProgression.getStep() <= 0) {
       paramInt = -paramInt;
     }
+    return localCompanion.fromClosedRange(i, j, paramInt);
   }
   
   @NotNull
@@ -958,28 +1021,19 @@ public class RangesKt___RangesKt
   {
     Intrinsics.checkParameterIsNotNull(paramLongProgression, "$this$step");
     boolean bool;
-    LongProgression.Companion localCompanion;
-    long l1;
-    long l2;
-    if (paramLong > 0L)
-    {
+    if (paramLong > 0L) {
       bool = true;
-      RangesKt.checkStepIsPositive(bool, (Number)Long.valueOf(paramLong));
-      localCompanion = LongProgression.Companion;
-      l1 = paramLongProgression.getFirst();
-      l2 = paramLongProgression.getLast();
-      if (paramLongProgression.getStep() <= 0L) {
-        break label69;
-      }
-    }
-    for (;;)
-    {
-      return localCompanion.fromClosedRange(l1, l2, paramLong);
+    } else {
       bool = false;
-      break;
-      label69:
+    }
+    RangesKt.checkStepIsPositive(bool, (Number)Long.valueOf(paramLong));
+    LongProgression.Companion localCompanion = LongProgression.Companion;
+    long l1 = paramLongProgression.getFirst();
+    long l2 = paramLongProgression.getLast();
+    if (paramLongProgression.getStep() <= 0L) {
       paramLong = -paramLong;
     }
+    return localCompanion.fromClosedRange(l1, l2, paramLong);
   }
   
   @Nullable
@@ -1007,11 +1061,10 @@ public class RangesKt___RangesKt
   @Nullable
   public static final Byte toByteExactOrNull(int paramInt)
   {
-    if (-128 > paramInt) {}
-    while (127 < paramInt) {
-      return null;
+    if ((-128 <= paramInt) && (127 >= paramInt)) {
+      return Byte.valueOf((byte)paramInt);
     }
-    return Byte.valueOf((byte)paramInt);
+    return null;
   }
   
   @Nullable
@@ -1019,11 +1072,10 @@ public class RangesKt___RangesKt
   {
     long l1 = -128;
     long l2 = 127;
-    if (l1 > paramLong) {}
-    while (l2 < paramLong) {
-      return null;
+    if ((l1 <= paramLong) && (l2 >= paramLong)) {
+      return Byte.valueOf((byte)(int)paramLong);
     }
-    return Byte.valueOf((byte)(int)paramLong);
+    return null;
   }
   
   @Nullable
@@ -1031,11 +1083,10 @@ public class RangesKt___RangesKt
   {
     short s1 = (short)-128;
     short s2 = (short)127;
-    if (s1 > paramShort) {}
-    while (s2 < paramShort) {
-      return null;
+    if ((s1 <= paramShort) && (s2 >= paramShort)) {
+      return Byte.valueOf((byte)paramShort);
     }
-    return Byte.valueOf((byte)paramShort);
+    return null;
   }
   
   @Nullable
@@ -1065,11 +1116,10 @@ public class RangesKt___RangesKt
   {
     long l1 = -2147483648;
     long l2 = 2147483647;
-    if (l1 > paramLong) {}
-    while (l2 < paramLong) {
-      return null;
+    if ((l1 <= paramLong) && (l2 >= paramLong)) {
+      return Integer.valueOf((int)paramLong);
     }
-    return Integer.valueOf((int)paramLong);
+    return null;
   }
   
   @Nullable
@@ -1119,11 +1169,10 @@ public class RangesKt___RangesKt
   @Nullable
   public static final Short toShortExactOrNull(int paramInt)
   {
-    if (-32768 > paramInt) {}
-    while (32767 < paramInt) {
-      return null;
+    if ((-32768 <= paramInt) && (32767 >= paramInt)) {
+      return Short.valueOf((short)paramInt);
     }
-    return Short.valueOf((short)paramInt);
+    return null;
   }
   
   @Nullable
@@ -1131,11 +1180,10 @@ public class RangesKt___RangesKt
   {
     long l1 = -32768;
     long l2 = 32767;
-    if (l1 > paramLong) {}
-    while (l2 < paramLong) {
-      return null;
+    if ((l1 <= paramLong) && (l2 >= paramLong)) {
+      return Short.valueOf((short)(int)paramLong);
     }
-    return Short.valueOf((short)(int)paramLong);
+    return null;
   }
   
   @NotNull
@@ -1266,7 +1314,7 @@ public class RangesKt___RangesKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ranges.RangesKt___RangesKt
  * JD-Core Version:    0.7.0.1
  */

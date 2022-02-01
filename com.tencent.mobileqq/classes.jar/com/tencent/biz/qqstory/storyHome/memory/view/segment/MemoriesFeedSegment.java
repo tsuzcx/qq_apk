@@ -24,6 +24,7 @@ import com.tencent.biz.qqstory.storyHome.model.VideoListHomeFeed;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.BaseViewHolder;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.IMyStoryListView;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.view.segment.FeedSegment;
+import com.tencent.biz.qqstory.utils.DateUtils;
 import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import java.util.Calendar;
@@ -41,6 +42,31 @@ public class MemoriesFeedSegment
   
   private String a(String paramString)
   {
+    Object localObject = Calendar.getInstance();
+    Calendar localCalendar = Calendar.getInstance();
+    localCalendar.set(1, ((Calendar)localObject).get(1));
+    localCalendar.set(2, ((Calendar)localObject).get(2));
+    localCalendar.set(5, ((Calendar)localObject).get(5) - 1);
+    localCalendar.set(11, 0);
+    localCalendar.set(12, 0);
+    localCalendar.set(13, 0);
+    paramString = DateUtils.a(paramString);
+    if ((((Calendar)localObject).get(1) + 0 == paramString[0]) && (((Calendar)localObject).get(2) + 1 == paramString[1]) && (((Calendar)localObject).get(5) + 0 == paramString[2])) {
+      return HardCodeUtil.a(2131706566);
+    }
+    if ((localCalendar.get(1) + 0 == paramString[0]) && (localCalendar.get(2) + 1 == paramString[1]) && (localCalendar.get(5) + 0 == paramString[2])) {
+      return HardCodeUtil.a(2131706568);
+    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString[1]);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131706571));
+    ((StringBuilder)localObject).append(paramString[2]);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131706569));
+    return ((StringBuilder)localObject).toString();
+  }
+  
+  private String a(String paramString1, String paramString2)
+  {
     Calendar localCalendar1 = Calendar.getInstance();
     Calendar localCalendar2 = Calendar.getInstance();
     localCalendar2.set(1, localCalendar1.get(1));
@@ -49,38 +75,15 @@ public class MemoriesFeedSegment
     localCalendar2.set(11, 0);
     localCalendar2.set(12, 0);
     localCalendar2.set(13, 0);
-    paramString = UIUtils.a(paramString);
-    if ((localCalendar1.get(1) + 0 == paramString[0]) && (localCalendar1.get(2) + 1 == paramString[1]) && (localCalendar1.get(5) + 0 == paramString[2])) {
-      return HardCodeUtil.a(2131706540);
-    }
-    if ((localCalendar2.get(1) + 0 == paramString[0]) && (localCalendar2.get(2) + 1 == paramString[1]) && (localCalendar2.get(5) + 0 == paramString[2])) {
-      return HardCodeUtil.a(2131706542);
-    }
-    return paramString[1] + HardCodeUtil.a(2131706545) + paramString[2] + HardCodeUtil.a(2131706543);
-  }
-  
-  private String a(String paramString1, String paramString2)
-  {
-    Calendar localCalendar = Calendar.getInstance();
-    Object localObject = Calendar.getInstance();
-    ((Calendar)localObject).set(1, localCalendar.get(1));
-    ((Calendar)localObject).set(2, localCalendar.get(2));
-    ((Calendar)localObject).set(5, localCalendar.get(5) - 1);
-    ((Calendar)localObject).set(11, 0);
-    ((Calendar)localObject).set(12, 0);
-    ((Calendar)localObject).set(13, 0);
-    localCalendar = null;
     if (TextUtils.isEmpty(paramString2)) {
-      paramString1 = String.valueOf(UIUtils.a(paramString1)[0]);
+      return String.valueOf(DateUtils.a(paramString1)[0]);
     }
-    do
-    {
-      return paramString1;
-      paramString2 = UIUtils.a(paramString2);
-      localObject = UIUtils.a(paramString1);
-      paramString1 = localCalendar;
-    } while (paramString2[0] == localObject[0]);
-    return String.valueOf(localObject[0]);
+    paramString2 = DateUtils.a(paramString2);
+    paramString1 = DateUtils.a(paramString1);
+    if (paramString2[0] != paramString1[0]) {
+      return String.valueOf(paramString1[0]);
+    }
+    return null;
   }
   
   private void n()
@@ -88,9 +91,9 @@ public class MemoriesFeedSegment
     this.jdField_a_of_type_Boolean = true;
   }
   
-  public void R_()
+  public void P_()
   {
-    super.R_();
+    super.P_();
     n();
   }
   
@@ -108,7 +111,7 @@ public class MemoriesFeedSegment
     return 0;
   }
   
-  public int a(int paramInt)
+  protected int a(int paramInt)
   {
     if (((ProfileFeedPresenter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).jdField_a_of_type_Boolean) {
       return super.a(paramInt);
@@ -125,7 +128,7 @@ public class MemoriesFeedSegment
   }
   
   @NonNull
-  public HomeFeedPresenter a(boolean paramBoolean)
+  protected HomeFeedPresenter a(boolean paramBoolean)
   {
     return new ProfileFeedPresenter(this.jdField_a_of_type_Int, this, this, paramBoolean);
   }
@@ -133,18 +136,18 @@ public class MemoriesFeedSegment
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
     if (a(paramInt) == 4) {
-      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561852, paramViewGroup, false));
+      return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561703, paramViewGroup, false));
     }
     return super.a(paramInt, paramViewGroup);
   }
   
-  public void a(int paramInt, BaseViewHolder paramBaseViewHolder, VideoListHomeFeed paramVideoListHomeFeed, QQUserUIItem paramQQUserUIItem)
+  protected void a(int paramInt, BaseViewHolder paramBaseViewHolder, VideoListHomeFeed paramVideoListHomeFeed, QQUserUIItem paramQQUserUIItem)
   {
-    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131374973);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131374969);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131374968);
-    paramQQUserUIItem = (TextView)paramBaseViewHolder.a(2131374959);
-    paramBaseViewHolder = (Button)paramBaseViewHolder.a(2131362158);
+    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131374505);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131374501);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131374500);
+    paramQQUserUIItem = (TextView)paramBaseViewHolder.a(2131374491);
+    paramBaseViewHolder = (Button)paramBaseViewHolder.a(2131362184);
     ((RelativeLayout)localObject).setVisibility(0);
     localRelativeLayout.setVisibility(0);
     localTextView.setText(a(((StoryHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a().get(paramInt)).a().date));
@@ -153,71 +156,74 @@ public class MemoriesFeedSegment
     {
       paramQQUserUIItem.setVisibility(0);
       paramQQUserUIItem.setText((CharSequence)localObject);
-      if (paramVideoListHomeFeed.a().type != 3) {
-        break label258;
+    }
+    else
+    {
+      paramQQUserUIItem.setVisibility(8);
+    }
+    if (paramVideoListHomeFeed.a().type == 3)
+    {
+      if (paramVideoListHomeFeed.a().getOwner().isSubscribe())
+      {
+        paramBaseViewHolder.setVisibility(8);
       }
-      if (!paramVideoListHomeFeed.a().getOwner().isSubscribe()) {
-        break label188;
+      else
+      {
+        paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 13.0F);
+        int i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
+        paramBaseViewHolder.setText(HardCodeUtil.a(2131706574));
+        paramBaseViewHolder.setVisibility(0);
+        paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167056));
+        paramBaseViewHolder.setBackgroundResource(2130846771);
+        paramBaseViewHolder.setPadding(paramInt, i, paramInt, i);
       }
+      paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
+      UIUtils.a(paramBaseViewHolder, paramInt, paramInt, paramInt, paramInt);
+      return;
+    }
+    if (paramVideoListHomeFeed.a().type == 1)
+    {
       paramBaseViewHolder.setVisibility(8);
+      paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166512));
+      paramBaseViewHolder.setBackgroundDrawable(null);
       paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
       UIUtils.a(paramBaseViewHolder, paramInt, paramInt, paramInt, paramInt);
     }
-    label188:
-    while (paramVideoListHomeFeed.a().type != 1) {
-      for (;;)
-      {
-        return;
-        paramQQUserUIItem.setVisibility(8);
-        break;
-        paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 13.0F);
-        int i = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
-        paramBaseViewHolder.setText(HardCodeUtil.a(2131706548));
-        paramBaseViewHolder.setVisibility(0);
-        paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167033));
-        paramBaseViewHolder.setBackgroundResource(2130846892);
-        paramBaseViewHolder.setPadding(paramInt, i, paramInt, i);
-      }
-    }
-    label258:
-    paramBaseViewHolder.setVisibility(8);
-    paramBaseViewHolder.setTextColor(this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166498));
-    paramBaseViewHolder.setBackgroundDrawable(null);
-    paramInt = UIUtils.a(this.jdField_a_of_type_AndroidContentContext, 20.0F);
-    UIUtils.a(paramBaseViewHolder, paramInt, paramInt, paramInt, paramInt);
   }
   
-  public void a(int paramInt, BaseViewHolder paramBaseViewHolder, boolean paramBoolean)
+  protected void a(int paramInt, BaseViewHolder paramBaseViewHolder, boolean paramBoolean)
   {
-    Object localObject1 = (RelativeLayout)paramBaseViewHolder.a(2131374965);
-    Object localObject2 = (TextView)paramBaseViewHolder.a(2131374983);
-    TextView localTextView = (TextView)paramBaseViewHolder.a(2131374980);
+    Object localObject1 = (RelativeLayout)paramBaseViewHolder.a(2131374497);
+    Object localObject2 = (TextView)paramBaseViewHolder.a(2131374515);
+    TextView localTextView = (TextView)paramBaseViewHolder.a(2131374512);
     localTextView.setVisibility(8);
-    List localList = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a();
-    String str = ((StoryHomeFeed)localList.get(paramInt)).a().date;
-    paramBaseViewHolder = null;
+    paramBaseViewHolder = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter.a();
+    String str = ((StoryHomeFeed)paramBaseViewHolder.get(paramInt)).a().date;
     if (paramInt > 0) {
-      paramBaseViewHolder = ((StoryHomeFeed)localList.get(paramInt - 1)).a().date;
+      paramBaseViewHolder = ((StoryHomeFeed)paramBaseViewHolder.get(paramInt - 1)).a().date;
+    } else {
+      paramBaseViewHolder = null;
     }
     paramBaseViewHolder = a(str, paramBaseViewHolder);
-    if (TextUtils.isEmpty(paramBaseViewHolder)) {
-      ((RelativeLayout)localObject1).setVisibility(8);
-    }
-    do
+    if (TextUtils.isEmpty(paramBaseViewHolder))
     {
+      ((RelativeLayout)localObject1).setVisibility(8);
       return;
-      while (!((Iterator)localObject1).hasNext())
-      {
-        ((RelativeLayout)localObject1).setVisibility(0);
-        ((TextView)localObject2).setVisibility(0);
-        ((TextView)localObject2).setText(paramBaseViewHolder);
-        paramBaseViewHolder = UIUtils.a(str);
-        localObject1 = ((ProfileFeedPresenter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).jdField_a_of_type_JavaUtilList.iterator();
-      }
+    }
+    ((RelativeLayout)localObject1).setVisibility(0);
+    ((TextView)localObject2).setVisibility(0);
+    ((TextView)localObject2).setText(paramBaseViewHolder);
+    paramBaseViewHolder = DateUtils.a(str);
+    localObject1 = ((ProfileFeedPresenter)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelHomeFeedPresenter).jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
       localObject2 = (MomeriesYearNode)((Iterator)localObject1).next();
-    } while (((MomeriesYearNode)localObject2).year != paramBaseViewHolder[0]);
-    localTextView.setVisibility(0);
-    localTextView.setText(String.format(HardCodeUtil.a(2131706550), new Object[] { Integer.valueOf(((MomeriesYearNode)localObject2).videoCount) }));
+      if (((MomeriesYearNode)localObject2).year == paramBaseViewHolder[0])
+      {
+        localTextView.setVisibility(0);
+        localTextView.setText(String.format(HardCodeUtil.a(2131706576), new Object[] { Integer.valueOf(((MomeriesYearNode)localObject2).videoCount) }));
+      }
+    }
   }
   
   public void a(boolean paramBoolean)
@@ -233,36 +239,36 @@ public class MemoriesFeedSegment
     return true;
   }
   
-  public BaseViewHolder b(int paramInt, ViewGroup paramViewGroup)
+  public void a_(boolean paramBoolean)
   {
-    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561806, paramViewGroup, false));
-    paramViewGroup.a(2131362158).setOnClickListener(paramViewGroup);
+    super.a_(paramBoolean);
+    if (paramBoolean) {
+      h();
+    }
+  }
+  
+  protected BaseViewHolder b(int paramInt, ViewGroup paramViewGroup)
+  {
+    paramViewGroup = new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561662, paramViewGroup, false));
+    paramViewGroup.a(2131362184).setOnClickListener(paramViewGroup);
     a(paramViewGroup);
     return paramViewGroup;
   }
   
-  public void b()
+  protected void b()
   {
     super.b();
     h();
   }
   
-  public int d_()
+  protected int d_()
   {
     return super.d_() + 1;
-  }
-  
-  public void e_(boolean paramBoolean)
-  {
-    super.e_(paramBoolean);
-    if (paramBoolean) {
-      h();
-    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.view.segment.MemoriesFeedSegment
  * JD-Core Version:    0.7.0.1
  */

@@ -34,15 +34,12 @@ public class SubscribeGlobalInfo
           VSNetworkHelper.getInstance().sendRequest(new SubscribePersonalDetailRequest(BaseApplicationImpl.getApplication().getRuntime().getAccount(), localStCommonExt), new SubscribeGlobalInfo.1());
         }
       }
-      return jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    return jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser;
   }
   
   public static CertifiedAccountRead.StGetMainPageRsp a()
@@ -59,28 +56,29 @@ public class SubscribeGlobalInfo
       jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser = new CertifiedAccountMeta.StUser();
     }
     CertifiedAccountMeta.StUser localStUser = paramStGetMainPageRsp.user;
-    if (localStUser == null) {}
-    do
-    {
+    if (localStUser == null) {
       return;
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.feedCount.set(paramStGetMainPageRsp.feedCount.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.followCount.set(paramStGetMainPageRsp.followCount.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.fansCount.set(paramStGetMainPageRsp.fansCount.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.set(paramStGetMainPageRsp.user.get());
-      jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.share.set(paramStGetMainPageRsp.share);
-    } while (!SubscribeUtils.a(localStUser.attr.get()));
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.set(localStUser.id.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.set(localStUser.nick.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.icon.set(localStUser.icon.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.followState.set(localStUser.followState.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.attr.set(localStUser.attr.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.set(localStUser.youZhan.get());
-    jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.type.set(localStUser.type.get());
+    }
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.feedCount.set(paramStGetMainPageRsp.feedCount.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.followCount.set(paramStGetMainPageRsp.followCount.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.fansCount.set(paramStGetMainPageRsp.fansCount.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.user.set(paramStGetMainPageRsp.user.get());
+    jdField_a_of_type_NS_CERTIFIED_ACCOUNT_READCertifiedAccountRead$StGetMainPageRsp.share.set(paramStGetMainPageRsp.share);
+    if (SubscribeUtils.a(localStUser.attr.get()))
+    {
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.id.set(localStUser.id.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.nick.set(localStUser.nick.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.icon.set(localStUser.icon.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.followState.set(localStUser.followState.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.attr.set(localStUser.attr.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.youZhan.set(localStUser.youZhan.get());
+      jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StUser.type.set(localStUser.type.get());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeGlobalInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,8 @@ package com.tencent.mobileqq.vas.updatesystem.db;
 import android.database.Cursor;
 import com.tencent.mobileqq.app.SQLiteOpenHelper;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
-import com.tencent.mobileqq.persistence.EntityManagerFactory.SQLiteOpenHelperImpl;
 import com.tencent.mobileqq.persistence.OGEntityManager;
+import com.tencent.mobileqq.persistence.SQLiteOpenHelperFacade;
 import com.tencent.mobileqq.persistence.TableBuilder;
 import com.tencent.mobileqq.utils.SecurityUtile;
 import com.tencent.mobileqq.vas.updatesystem.db.entity.LocalFileMd5Entity;
@@ -33,86 +33,104 @@ public class VasUpdateEntityManagerFactory
       {
         String str = SecurityUtile.decode(localCursor1.getString(0));
         Cursor localCursor2 = paramSQLiteDatabase.rawQuery("select sql from sqlite_master where type=? and name=?", new String[] { "table", str });
-        if (localCursor2 != null) {
-          for (;;)
+        if (localCursor2 != null) {}
+        try
+        {
+          Object localObject;
+          if (str.equals(LocalUpdateEntity.TABLE_NAME))
           {
-            try
-            {
-              if (!str.equals(LocalUpdateEntity.TABLE_NAME)) {
-                continue;
-              }
-              localObject = LocalUpdateEntity.class;
-              OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, (Class)localObject);
-            }
-            catch (ClassNotFoundException localClassNotFoundException)
-            {
-              Object localObject;
-              continue;
-            }
-            localCursor2.close();
-            break;
-            if (str.equals(ShouldUpdateEntity.TABLE_NAME)) {
-              localObject = ShouldUpdateEntity.class;
-            } else if (str.equals(LocalFileMd5Entity.TABLE_NAME)) {
-              localObject = LocalFileMd5Entity.class;
-            } else {
-              localObject = Class.forName(paramString + "." + str);
-            }
+            localObject = LocalUpdateEntity.class;
           }
+          else if (str.equals(ShouldUpdateEntity.TABLE_NAME))
+          {
+            localObject = ShouldUpdateEntity.class;
+          }
+          else if (str.equals(LocalFileMd5Entity.TABLE_NAME))
+          {
+            localObject = LocalFileMd5Entity.class;
+          }
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString);
+            ((StringBuilder)localObject).append(".");
+            ((StringBuilder)localObject).append(str);
+            localObject = Class.forName(((StringBuilder)localObject).toString());
+          }
+          OGEntityManager.extractedStatementByReflect(localArrayList, str, localCursor2, (Class)localObject);
         }
+        catch (ClassNotFoundException localClassNotFoundException)
+        {
+          label166:
+          break label166;
+        }
+        localCursor2.close();
       }
       localCursor1.close();
     }
-    com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
-    paramSQLiteDatabase.beginTransaction();
-    try
+    else
     {
-      paramString = localArrayList.iterator();
-      while (paramString.hasNext()) {
-        paramSQLiteDatabase.execSQL((String)paramString.next());
+      com.tencent.mobileqq.app.SQLiteDatabase.beginTransactionLog();
+      paramSQLiteDatabase.beginTransaction();
+      try
+      {
+        paramString = localArrayList.iterator();
+        while (paramString.hasNext()) {
+          paramSQLiteDatabase.execSQL((String)paramString.next());
+        }
+        paramSQLiteDatabase.setTransactionSuccessful();
+        paramSQLiteDatabase.endTransaction();
+        com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+        return;
       }
-      paramSQLiteDatabase.setTransactionSuccessful();
+      finally
+      {
+        paramSQLiteDatabase.endTransaction();
+        com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
+        for (;;)
+        {
+          throw paramString;
+        }
+      }
     }
-    finally
-    {
-      paramSQLiteDatabase.endTransaction();
-      com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
-    }
-    paramSQLiteDatabase.endTransaction();
-    com.tencent.mobileqq.app.SQLiteDatabase.endTransactionLog();
   }
   
   public SQLiteOpenHelper build(String paramString)
   {
     if (this.dbHelper == null)
     {
-      this.mInnerDbHelper = new EntityManagerFactory.SQLiteOpenHelperImpl(this, "vas_update_system_database.db", null, 1);
+      this.mInnerDbHelper = SQLiteOpenHelperFacade.a(this, "vas_update_system_database.db", 1);
       this.dbHelper = new SQLiteOpenHelper(this.mInnerDbHelper);
     }
     return this.dbHelper;
   }
   
-  public void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
+  protected void createDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase)
   {
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new ShouldUpdateEntity()));
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new LocalUpdateEntity()));
     paramSQLiteDatabase.execSQL(TableBuilder.createSQLStatement(new LocalFileMd5Entity()));
   }
   
-  public String getPackageName()
+  protected String getPackageName()
   {
     return "com.tencent.mobileqq.vas.updatesystem.db";
   }
   
-  public void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
+  protected void upgradeDatabase(android.database.sqlite.SQLiteDatabase paramSQLiteDatabase, int paramInt1, int paramInt2)
   {
-    QLog.i("VasUpdateEntityManagerF", 1, "[DB]|upgrade. oldVer=" + paramInt1 + ", newVer=" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[DB]|upgrade. oldVer=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", newVer=");
+    localStringBuilder.append(paramInt2);
+    QLog.i("VasUpdateEntityManagerF", 1, localStringBuilder.toString());
     a(getPackageName(), paramSQLiteDatabase);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.db.VasUpdateEntityManagerFactory
  * JD-Core Version:    0.7.0.1
  */

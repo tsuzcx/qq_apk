@@ -17,30 +17,43 @@ class GestureDetectorCompat$GestureDetectorCompatImplBase$GestureHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      throw new RuntimeException("Unknown message " + paramMessage);
-    case 1: 
+      if (i != 2)
+      {
+        if (i == 3)
+        {
+          if (this.this$0.mDoubleTapListener != null)
+          {
+            if (!this.this$0.mStillDown)
+            {
+              this.this$0.mDoubleTapListener.onSingleTapConfirmed(this.this$0.mCurrentDownEvent);
+              return;
+            }
+            this.this$0.mDeferConfirmSingleTap = true;
+          }
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Unknown message ");
+          localStringBuilder.append(paramMessage);
+          throw new RuntimeException(localStringBuilder.toString());
+        }
+      }
+      else {
+        this.this$0.dispatchLongPress();
+      }
+    }
+    else {
       this.this$0.mListener.onShowPress(this.this$0.mCurrentDownEvent);
     }
-    do
-    {
-      return;
-      this.this$0.dispatchLongPress();
-      return;
-    } while (this.this$0.mDoubleTapListener == null);
-    if (!this.this$0.mStillDown)
-    {
-      this.this$0.mDoubleTapListener.onSingleTapConfirmed(this.this$0.mCurrentDownEvent);
-      return;
-    }
-    this.this$0.mDeferConfirmSingleTap = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.GestureDetectorCompat.GestureDetectorCompatImplBase.GestureHandler
  * JD-Core Version:    0.7.0.1
  */

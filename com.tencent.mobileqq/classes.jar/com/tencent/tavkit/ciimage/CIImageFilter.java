@@ -7,7 +7,7 @@ import com.tencent.tav.coremedia.TextureInfo;
 class CIImageFilter
   extends TextureFilter
 {
-  private final String TAG = "CIImageFilter@" + Integer.toHexString(hashCode());
+  private final String TAG;
   private int clearColor;
   private TextureInfo destTextureInfo;
   private TextureFilter oesFilter;
@@ -15,6 +15,10 @@ class CIImageFilter
   
   CIImageFilter()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CIImageFilter@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.TAG = localStringBuilder.toString();
     if (this.rgbFilter == null) {
       this.rgbFilter = new TextureFilter();
     }
@@ -48,43 +52,57 @@ class CIImageFilter
   public void clearBufferBuffer(int paramInt)
   {
     this.clearColor = paramInt;
-    if (this.oesFilter != null) {
-      this.oesFilter.clearBufferBuffer(paramInt);
+    TextureFilter localTextureFilter = this.oesFilter;
+    if (localTextureFilter != null) {
+      localTextureFilter.clearBufferBuffer(paramInt);
     }
-    if (this.rgbFilter != null) {
-      this.rgbFilter.clearBufferBuffer(paramInt);
+    localTextureFilter = this.rgbFilter;
+    if (localTextureFilter != null) {
+      localTextureFilter.clearBufferBuffer(paramInt);
     }
   }
   
   public void release()
   {
-    if (this.oesFilter != null) {
-      this.oesFilter.release();
+    TextureFilter localTextureFilter = this.oesFilter;
+    if (localTextureFilter != null) {
+      localTextureFilter.release();
     }
-    if (this.rgbFilter != null) {
-      this.rgbFilter.release();
+    localTextureFilter = this.rgbFilter;
+    if (localTextureFilter != null) {
+      localTextureFilter.release();
     }
   }
   
   public void setOutputTextureInfo(TextureInfo paramTextureInfo)
   {
     this.destTextureInfo = paramTextureInfo;
-    if (this.oesFilter != null) {
-      this.oesFilter.setOutputTextureInfo(paramTextureInfo);
+    TextureFilter localTextureFilter = this.oesFilter;
+    if (localTextureFilter != null) {
+      localTextureFilter.setOutputTextureInfo(paramTextureInfo);
     }
-    if (this.rgbFilter != null) {
-      this.rgbFilter.setOutputTextureInfo(paramTextureInfo);
+    localTextureFilter = this.rgbFilter;
+    if (localTextureFilter != null) {
+      localTextureFilter.setOutputTextureInfo(paramTextureInfo);
     }
   }
   
   public String toString()
   {
-    return "CIImageFilter{program=" + this.program + ", clearColor=" + this.clearColor + ", destTextureInfo=" + this.destTextureInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CIImageFilter{program=");
+    localStringBuilder.append(this.program);
+    localStringBuilder.append(", clearColor=");
+    localStringBuilder.append(this.clearColor);
+    localStringBuilder.append(", destTextureInfo=");
+    localStringBuilder.append(this.destTextureInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.ciimage.CIImageFilter
  * JD-Core Version:    0.7.0.1
  */

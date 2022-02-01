@@ -1,104 +1,72 @@
 package com.huawei.agconnect.config.a;
 
-import android.content.Context;
-import android.util.Log;
-import java.io.UnsupportedEncodingException;
-import java.security.GeneralSecurityException;
-import java.security.NoSuchAlgorithmException;
-import java.security.spec.InvalidKeySpecException;
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import javax.crypto.Cipher;
 import javax.crypto.SecretKey;
-import javax.crypto.spec.IvParameterSpec;
+import javax.crypto.SecretKeyFactory;
+import javax.crypto.spec.PBEKeySpec;
+import javax.crypto.spec.SecretKeySpec;
 
-class g
-  extends f
+public class g
 {
-  private final Map<String, String> a = new HashMap();
-  private final Object b = new Object();
-  private SecretKey c;
-  
-  g(Context paramContext, String paramString)
+  public static SecretKey a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
   {
-    super(paramContext, paramString);
-    try
+    if ((paramArrayOfByte1.length == 16) && (paramArrayOfByte2.length == 16) && (paramArrayOfByte3.length == 16))
     {
-      paramContext = a("/AD91D45E3E72DB6989DDCB13287E75061FABCB933D886E6C6ABEF0939B577138");
-      paramString = a("/B314B3BF013DF5AC4134E880AF3D2B7C9FFBE8F0305EAC1C898145E2BCF1F21C");
-      String str1 = a("/C767BD8FDF53E53D059BE95B09E2A71056F5F180AECC62836B287ACA5793421B");
-      String str2 = a("/DCB3E6D4C2CF80F30D89CDBC412C964DA8381BB84668769391FBCC3E329AD0FD");
-      if ((paramContext != null) && (paramString != null) && (str1 != null) && (str2 != null)) {
-        this.c = e.a(c.a(paramContext), c.a(paramString), c.a(str1), c.a(str2));
+      paramArrayOfByte1 = e.a(a(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3));
+      return new SecretKeySpec(SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1").generateSecret(new PBEKeySpec(paramArrayOfByte1.toCharArray(), paramArrayOfByte4, 5000, 128)).getEncoded(), "AES");
+    }
+    throw new IllegalArgumentException("invalid data for generating the key.");
+  }
+  
+  private static byte[] a(byte[] paramArrayOfByte, int paramInt)
+  {
+    if (paramArrayOfByte != null)
+    {
+      int i = 0;
+      while (i < paramArrayOfByte.length)
+      {
+        if (paramInt < 0) {
+          paramArrayOfByte[i] = ((byte)(paramArrayOfByte[i] << -paramInt));
+        } else {
+          paramArrayOfByte[i] = ((byte)(paramArrayOfByte[i] >> paramInt));
+        }
+        i += 1;
       }
-      return;
+      return paramArrayOfByte;
     }
-    catch (NoSuchAlgorithmException paramContext)
+    paramArrayOfByte = new NullPointerException("bytes must not be null.");
+    for (;;)
     {
-      Log.e("SecurityResourcesReader", "Exception when reading the 'K&I' for 'Config'.");
-      this.c = null;
-      return;
-    }
-    catch (InvalidKeySpecException paramContext)
-    {
-      label100:
-      break label100;
+      throw paramArrayOfByte;
     }
   }
   
-  private String a(String paramString)
+  private static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    return super.a(paramString, null);
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null))
+    {
+      if (paramArrayOfByte1.length == paramArrayOfByte2.length)
+      {
+        byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
+        int i = 0;
+        while (i < paramArrayOfByte1.length)
+        {
+          arrayOfByte[i] = ((byte)(paramArrayOfByte1[i] ^ paramArrayOfByte2[i]));
+          i += 1;
+        }
+        return arrayOfByte;
+      }
+      throw new IllegalArgumentException("left and right must be the same length.");
+    }
+    paramArrayOfByte1 = new NullPointerException("left or right must not be null.");
+    for (;;)
+    {
+      throw paramArrayOfByte1;
+    }
   }
   
-  private static byte[] a(SecretKey paramSecretKey, byte[] paramArrayOfByte)
+  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    if ((paramSecretKey == null) || (paramArrayOfByte == null)) {
-      throw new NullPointerException("key or cipherText must not be null.");
-    }
-    byte[] arrayOfByte = Arrays.copyOfRange(paramArrayOfByte, 1, 17);
-    Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-    localCipher.init(2, paramSecretKey, new IvParameterSpec(arrayOfByte));
-    return localCipher.doFinal(paramArrayOfByte, arrayOfByte.length + 1, paramArrayOfByte.length - arrayOfByte.length - 1);
-  }
-  
-  public String a(String paramString1, String paramString2)
-  {
-    if (this.c == null)
-    {
-      Log.e("SecurityResourcesReader", "KEY is null return def directly");
-      return paramString2;
-    }
-    String str;
-    synchronized (this.b)
-    {
-      str = (String)this.a.get(paramString1);
-      if (str != null) {
-        return str;
-      }
-      str = a(paramString1);
-      if (str == null) {
-        return paramString2;
-      }
-    }
-    try
-    {
-      str = new String(a(this.c, c.a(str)), "UTF-8");
-      this.a.put(paramString1, str);
-      return str;
-    }
-    catch (GeneralSecurityException paramString1)
-    {
-      break label111;
-    }
-    catch (UnsupportedEncodingException paramString1)
-    {
-      label111:
-      break label111;
-    }
-    Log.e("SecurityResourcesReader", "Exception when reading the 'V' for 'Config'.");
-    return paramString2;
+    return a(a(a(a(paramArrayOfByte1, -4), paramArrayOfByte2), 6), paramArrayOfByte3);
   }
 }
 

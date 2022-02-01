@@ -27,6 +27,7 @@ public class SuperPlayerMsg
   public static final int PLAYER_INFO_OBJECT_MEDIA_CODEC_INFO = 208;
   public static final int PLAYER_INFO_OBJECT_PLAY_CDN_INFO_UPDATE = 204;
   public static final int PLAYER_INFO_OBJECT_PLAY_CDN_URL_CHANGED = 203;
+  public static final int PLAYER_INFO_OBJECT_VIDEO_SEI = 126;
   public static final int PLAYER_INFO_PACKET_READ = 101;
   public static final int PLAYER_INFO_PLAYER_TYPE = 124;
   public static final int PLAYER_INFO_PRIVATE_HLS_TAG = 123;
@@ -74,6 +75,7 @@ public class SuperPlayerMsg
     sTPPlayerMsgMap.put(502, 208);
     sTPPlayerMsgMap.put(6, 125);
     sTPPlayerMsgMap.put(2100, 250);
+    sTPPlayerMsgMap.put(503, 126);
   }
   
   public static int convert(int paramInt)
@@ -83,7 +85,7 @@ public class SuperPlayerMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.api.SuperPlayerMsg
  * JD-Core Version:    0.7.0.1
  */

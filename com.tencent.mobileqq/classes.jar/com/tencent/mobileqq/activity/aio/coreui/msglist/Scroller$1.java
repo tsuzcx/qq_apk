@@ -9,12 +9,12 @@ class Scroller$1
   
   public void run()
   {
-    Scroller.a(this.this$0).showOverScrollHeader();
+    this.this$0.a.showOverScrollHeader();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.Scroller.1
  * JD-Core Version:    0.7.0.1
  */

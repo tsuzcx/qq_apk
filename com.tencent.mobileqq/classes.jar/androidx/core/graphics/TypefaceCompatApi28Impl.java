@@ -25,15 +25,8 @@ public class TypefaceCompatApi28Impl
       paramObject = (Typeface)this.mCreateFromFamiliesWithDefault.invoke(null, new Object[] { localObject, "sans-serif", Integer.valueOf(-1), Integer.valueOf(-1) });
       return paramObject;
     }
-    catch (IllegalAccessException paramObject)
-    {
-      throw new RuntimeException(paramObject);
-    }
-    catch (InvocationTargetException paramObject)
-    {
-      label57:
-      break label57;
-    }
+    catch (InvocationTargetException paramObject) {}catch (IllegalAccessException paramObject) {}
+    throw new RuntimeException(paramObject);
   }
   
   protected Method obtainCreateFromFamiliesWithDefaultMethod(Class<?> paramClass)
@@ -45,7 +38,7 @@ public class TypefaceCompatApi28Impl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.TypefaceCompatApi28Impl
  * JD-Core Version:    0.7.0.1
  */

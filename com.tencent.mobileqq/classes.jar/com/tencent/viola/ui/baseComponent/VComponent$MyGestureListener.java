@@ -20,18 +20,12 @@ class VComponent$MyGestureListener
   
   public boolean onDoubleTapEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if ((paramMotionEvent.getAction() == 1) && (this.this$0.mAppendEvents.contains("doubleClick")))
     {
+      VComponent.access$502(this.this$0, SystemClock.uptimeMillis());
+      this.this$0.fireClickAction("doubleClick", paramMotionEvent);
     }
-    for (;;)
-    {
-      return false;
-      if (this.this$0.mAppendEvents.contains("doubleClick"))
-      {
-        VComponent.access$502(this.this$0, SystemClock.uptimeMillis());
-        this.this$0.fireClickAction("doubleClick", paramMotionEvent);
-      }
-    }
+    return false;
   }
   
   public void onLongPress(MotionEvent paramMotionEvent)
@@ -57,7 +51,7 @@ class VComponent$MyGestureListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.baseComponent.VComponent.MyGestureListener
  * JD-Core Version:    0.7.0.1
  */

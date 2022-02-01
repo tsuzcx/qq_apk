@@ -11,23 +11,27 @@ class EmotionPanelViewPagerAdapter$2
   
   public void run()
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("instantiateItem get data callback, panelType = ");
+    ((StringBuilder)localObject).append(this.val$panelType);
+    ((StringBuilder)localObject).append(", panelInfo = ");
+    ((StringBuilder)localObject).append(this.val$panelInfo);
+    localObject = ((StringBuilder)localObject).toString();
     int i = 1;
-    QLog.d("EmotionPanelViewPagerAdapter", 1, "instantiateItem get data callback, panelType = " + this.val$panelType + ", panelInfo = " + this.val$panelInfo);
+    QLog.d("EmotionPanelViewPagerAdapter", 1, (String)localObject);
     this.val$listView.setOnScrollListener(new EmotionPanelViewPagerAdapter.2.1(this));
-    if (this.val$panelType == 5) {}
-    for (;;)
-    {
-      if ((this.val$data != null) && (this.val$data.size() > i)) {
-        this.val$adapter.setData(this.val$data);
-      }
-      return;
+    if (this.val$panelType != 5) {
       i = 0;
+    }
+    localObject = this.val$data;
+    if ((localObject != null) && (((List)localObject).size() > i)) {
+      this.val$adapter.setData(this.val$data);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionPanelViewPagerAdapter.2
  * JD-Core Version:    0.7.0.1
  */

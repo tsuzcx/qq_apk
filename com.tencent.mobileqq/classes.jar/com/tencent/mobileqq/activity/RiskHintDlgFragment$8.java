@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.equipmentlock.DevlockPhoneStatus;
 import com.tencent.qphone.base.util.QLog;
 import mqq.observer.WtloginObserver;
@@ -15,41 +15,78 @@ class RiskHintDlgFragment$8
   
   public void onCheckDevLockStatus(WUserSigInfo paramWUserSigInfo, DevlockInfo paramDevlockInfo, int paramInt, ErrMsg paramErrMsg)
   {
-    if ((this.a.getActivity() != null) && (!this.a.getActivity().isFinishing()))
+    if ((this.a.getQBaseActivity() != null) && (!this.a.getQBaseActivity().isFinishing()))
     {
-      if ((paramInt != 0) || (paramDevlockInfo == null)) {
-        break label305;
+      if ((paramInt == 0) && (paramDevlockInfo != null))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramWUserSigInfo = new StringBuilder();
+          paramWUserSigInfo.append("OnCheckDevLockStatus ret = ");
+          paramWUserSigInfo.append(paramInt);
+          QLog.d("RiskHintDlgFragment", 2, paramWUserSigInfo.toString());
+          paramWUserSigInfo = new StringBuilder();
+          paramWUserSigInfo.append("DevlockInfo devSetup:");
+          paramWUserSigInfo.append(paramDevlockInfo.DevSetup);
+          paramWUserSigInfo.append(" countryCode:");
+          paramWUserSigInfo.append(paramDevlockInfo.CountryCode);
+          paramWUserSigInfo.append(" mobile:");
+          paramWUserSigInfo.append(paramDevlockInfo.Mobile);
+          paramWUserSigInfo.append(" MbItemSmsCodeStatus:");
+          paramWUserSigInfo.append(paramDevlockInfo.MbItemSmsCodeStatus);
+          paramWUserSigInfo.append(" TimeLimit:");
+          paramWUserSigInfo.append(paramDevlockInfo.TimeLimit);
+          paramWUserSigInfo.append(" AvailableMsgCount:");
+          paramWUserSigInfo.append(paramDevlockInfo.AvailableMsgCount);
+          paramWUserSigInfo.append(" AllowSet:");
+          paramWUserSigInfo.append(paramDevlockInfo.AllowSet);
+          QLog.d("RiskHintDlgFragment", 2, paramWUserSigInfo.toString());
+          paramWUserSigInfo = new StringBuilder();
+          paramWUserSigInfo.append("DevlockInfo.ProtectIntro:");
+          paramWUserSigInfo.append(paramDevlockInfo.ProtectIntro);
+          paramWUserSigInfo.append("  info.MbGuideType:");
+          paramWUserSigInfo.append(paramDevlockInfo.MbGuideType);
+          QLog.d("RiskHintDlgFragment", 2, paramWUserSigInfo.toString());
+          paramWUserSigInfo = new StringBuilder();
+          paramWUserSigInfo.append("DevlockInfo.MbGuideMsg:");
+          paramWUserSigInfo.append(paramDevlockInfo.MbGuideMsg);
+          QLog.d("RiskHintDlgFragment", 2, paramWUserSigInfo.toString());
+          paramWUserSigInfo = new StringBuilder();
+          paramWUserSigInfo.append("DevlockInfo.MbGuideInfoType:");
+          paramWUserSigInfo.append(paramDevlockInfo.MbGuideInfoType);
+          QLog.d("RiskHintDlgFragment", 2, paramWUserSigInfo.toString());
+          paramWUserSigInfo = new StringBuilder();
+          paramWUserSigInfo.append("DevlockInfo.MbGuideInfo:");
+          paramWUserSigInfo.append(paramDevlockInfo.MbGuideInfo);
+          QLog.d("RiskHintDlgFragment", 2, paramWUserSigInfo.toString());
+        }
+        DevlockPhoneStatus.a().a(paramDevlockInfo.TransferInfo);
+        this.a.a = paramDevlockInfo;
+        return;
       }
       if (QLog.isColorLevel())
       {
-        QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus ret = " + paramInt);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo devSetup:" + paramDevlockInfo.DevSetup + " countryCode:" + paramDevlockInfo.CountryCode + " mobile:" + paramDevlockInfo.Mobile + " MbItemSmsCodeStatus:" + paramDevlockInfo.MbItemSmsCodeStatus + " TimeLimit:" + paramDevlockInfo.TimeLimit + " AvailableMsgCount:" + paramDevlockInfo.AvailableMsgCount + " AllowSet:" + paramDevlockInfo.AllowSet);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.ProtectIntro:" + paramDevlockInfo.ProtectIntro + "  info.MbGuideType:" + paramDevlockInfo.MbGuideType);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideMsg:" + paramDevlockInfo.MbGuideMsg);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideInfoType:" + paramDevlockInfo.MbGuideInfoType);
-        QLog.d("RiskHintDlgFragment", 2, "DevlockInfo.MbGuideInfo:" + paramDevlockInfo.MbGuideInfo);
+        paramWUserSigInfo = new StringBuilder();
+        paramWUserSigInfo.append("OnCheckDevLockStatus ret = ");
+        paramWUserSigInfo.append(paramInt);
+        QLog.d("RiskHintDlgFragment", 2, paramWUserSigInfo.toString());
+        if (paramErrMsg != null)
+        {
+          paramWUserSigInfo = new StringBuilder();
+          paramWUserSigInfo.append("OnCheckDevLockStatus errMsg:");
+          paramWUserSigInfo.append(paramErrMsg.getMessage());
+          QLog.d("RiskHintDlgFragment", 2, paramWUserSigInfo.toString());
+        }
+        if (paramDevlockInfo == null) {
+          QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus DevlockInfo is null");
+        }
       }
-      DevlockPhoneStatus.a().a(paramDevlockInfo.TransferInfo);
-      this.a.a = paramDevlockInfo;
     }
-    label305:
-    do
-    {
-      do
-      {
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus ret = " + paramInt);
-      if (paramErrMsg != null) {
-        QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus errMsg:" + paramErrMsg.getMessage());
-      }
-    } while (paramDevlockInfo != null);
-    QLog.d("RiskHintDlgFragment", 2, "OnCheckDevLockStatus DevlockInfo is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskHintDlgFragment.8
  * JD-Core Version:    0.7.0.1
  */

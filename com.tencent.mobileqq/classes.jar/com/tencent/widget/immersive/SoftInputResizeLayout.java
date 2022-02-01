@@ -37,28 +37,23 @@ public class SoftInputResizeLayout
   private void possiblyResizeChildOfContent()
   {
     int i = computeUsableHeight();
-    int j;
-    int k;
     if (i != this.usableHeightPrevious)
     {
-      j = this.mChildOfContent.getRootView().getHeight();
-      k = j - i;
-      if (k <= j / 4) {
-        break label66;
+      int j = this.mChildOfContent.getRootView().getHeight();
+      int k = j - i;
+      if (k > j / 4) {
+        this.frameLayoutParams.height = (j - k + ImmersiveUtils.getStatusBarHeight(this.mAactivity));
+      } else {
+        this.frameLayoutParams.height = j;
       }
-    }
-    label66:
-    for (this.frameLayoutParams.height = (j - k + ImmersiveUtils.getStatusBarHeight(this.mAactivity));; this.frameLayoutParams.height = j)
-    {
       this.mChildOfContent.requestLayout();
       this.usableHeightPrevious = i;
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.immersive.SoftInputResizeLayout
  * JD-Core Version:    0.7.0.1
  */

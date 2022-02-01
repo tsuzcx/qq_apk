@@ -7,19 +7,19 @@ public class QuickSendStrategy
   
   public static a getStragegyArgs(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return null;
-    case 0: 
-      return new a(5000L, 0L, 0, true);
+      if (paramInt != 1) {
+        return null;
+      }
+      return new a(5000L, 60000L, 12, true);
     }
-    return new a(5000L, 60000L, 12, true);
+    return new a(5000L, 0L, 0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.quicksend.QuickSendStrategy
  * JD-Core Version:    0.7.0.1
  */

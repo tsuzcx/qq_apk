@@ -13,7 +13,7 @@ final class TroopAbilityUtils$1
   {
     ShareAioResultDialog localShareAioResultDialog = new ShareAioResultDialog(this.jdField_a_of_type_AndroidAppActivity);
     TroopAbilityUtils.1.1 local1 = new TroopAbilityUtils.1.1(this);
-    String str = HardCodeUtil.a(2131714987);
+    String str = HardCodeUtil.a(2131714910);
     localShareAioResultDialog.a(this.d);
     localShareAioResultDialog.a(str, local1);
     localShareAioResultDialog.a(local1);
@@ -22,7 +22,7 @@ final class TroopAbilityUtils$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.TroopAbilityUtils.1
  * JD-Core Version:    0.7.0.1
  */

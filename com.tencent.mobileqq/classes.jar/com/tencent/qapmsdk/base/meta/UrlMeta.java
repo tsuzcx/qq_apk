@@ -109,18 +109,18 @@ public final class UrlMeta
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof UrlMeta))
       {
         paramObject = (UrlMeta)paramObject;
-        if ((!Intrinsics.areEqual(this.qapmDomain, paramObject.qapmDomain)) || (!Intrinsics.areEqual(this.athenaDomain, paramObject.athenaDomain)) || (!Intrinsics.areEqual(this.authorizationUrl, paramObject.authorizationUrl)) || (!Intrinsics.areEqual(this.jsonUploadUrl, paramObject.jsonUploadUrl)) || (!Intrinsics.areEqual(this.fileUploadUrl, paramObject.fileUploadUrl)) || (!Intrinsics.areEqual(this.athenaJsonUploadUrl, paramObject.athenaJsonUploadUrl)) || (!Intrinsics.areEqual(this.athenaFileUploadUrl, paramObject.athenaFileUploadUrl)) || (!Intrinsics.areEqual(this.configUrl, paramObject.configUrl))) {}
+        if ((Intrinsics.areEqual(this.qapmDomain, paramObject.qapmDomain)) && (Intrinsics.areEqual(this.athenaDomain, paramObject.athenaDomain)) && (Intrinsics.areEqual(this.authorizationUrl, paramObject.authorizationUrl)) && (Intrinsics.areEqual(this.jsonUploadUrl, paramObject.jsonUploadUrl)) && (Intrinsics.areEqual(this.fileUploadUrl, paramObject.fileUploadUrl)) && (Intrinsics.areEqual(this.athenaJsonUploadUrl, paramObject.athenaJsonUploadUrl)) && (Intrinsics.areEqual(this.athenaFileUploadUrl, paramObject.athenaFileUploadUrl)) && (Intrinsics.areEqual(this.configUrl, paramObject.configUrl))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -161,78 +161,61 @@ public final class UrlMeta
   
   public int hashCode()
   {
-    int i3 = 0;
     String str = this.qapmDomain;
+    int i3 = 0;
     int i;
-    int j;
-    label37:
-    int k;
-    label54:
-    int m;
-    label72:
-    int n;
-    label90:
-    int i1;
-    if (str != null)
-    {
+    if (str != null) {
       i = str.hashCode();
-      str = this.athenaDomain;
-      if (str == null) {
-        break label191;
-      }
-      j = str.hashCode();
-      str = this.authorizationUrl;
-      if (str == null) {
-        break label196;
-      }
-      k = str.hashCode();
-      str = this.jsonUploadUrl;
-      if (str == null) {
-        break label201;
-      }
-      m = str.hashCode();
-      str = this.fileUploadUrl;
-      if (str == null) {
-        break label207;
-      }
-      n = str.hashCode();
-      str = this.athenaJsonUploadUrl;
-      if (str == null) {
-        break label213;
-      }
-      i1 = str.hashCode();
-      label108:
-      str = this.athenaFileUploadUrl;
-      if (str == null) {
-        break label219;
-      }
-    }
-    label191:
-    label196:
-    label201:
-    label207:
-    label213:
-    label219:
-    for (int i2 = str.hashCode();; i2 = 0)
-    {
-      str = this.configUrl;
-      if (str != null) {
-        i3 = str.hashCode();
-      }
-      return (i2 + (i1 + (n + (m + (k + (j + i * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i3;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label37;
-      k = 0;
-      break label54;
-      m = 0;
-      break label72;
-      n = 0;
-      break label90;
-      i1 = 0;
-      break label108;
     }
+    str = this.athenaDomain;
+    int j;
+    if (str != null) {
+      j = str.hashCode();
+    } else {
+      j = 0;
+    }
+    str = this.authorizationUrl;
+    int k;
+    if (str != null) {
+      k = str.hashCode();
+    } else {
+      k = 0;
+    }
+    str = this.jsonUploadUrl;
+    int m;
+    if (str != null) {
+      m = str.hashCode();
+    } else {
+      m = 0;
+    }
+    str = this.fileUploadUrl;
+    int n;
+    if (str != null) {
+      n = str.hashCode();
+    } else {
+      n = 0;
+    }
+    str = this.athenaJsonUploadUrl;
+    int i1;
+    if (str != null) {
+      i1 = str.hashCode();
+    } else {
+      i1 = 0;
+    }
+    str = this.athenaFileUploadUrl;
+    int i2;
+    if (str != null) {
+      i2 = str.hashCode();
+    } else {
+      i2 = 0;
+    }
+    str = this.configUrl;
+    if (str != null) {
+      i3 = str.hashCode();
+    }
+    return ((((((i * 31 + j) * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3;
   }
   
   public final void setAthenaFileUploadUrl(@NotNull String paramString)
@@ -274,12 +257,30 @@ public final class UrlMeta
   @NotNull
   public String toString()
   {
-    return "UrlMeta(qapmDomain=" + this.qapmDomain + ", athenaDomain=" + this.athenaDomain + ", authorizationUrl=" + this.authorizationUrl + ", jsonUploadUrl=" + this.jsonUploadUrl + ", fileUploadUrl=" + this.fileUploadUrl + ", athenaJsonUploadUrl=" + this.athenaJsonUploadUrl + ", athenaFileUploadUrl=" + this.athenaFileUploadUrl + ", configUrl=" + this.configUrl + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UrlMeta(qapmDomain=");
+    localStringBuilder.append(this.qapmDomain);
+    localStringBuilder.append(", athenaDomain=");
+    localStringBuilder.append(this.athenaDomain);
+    localStringBuilder.append(", authorizationUrl=");
+    localStringBuilder.append(this.authorizationUrl);
+    localStringBuilder.append(", jsonUploadUrl=");
+    localStringBuilder.append(this.jsonUploadUrl);
+    localStringBuilder.append(", fileUploadUrl=");
+    localStringBuilder.append(this.fileUploadUrl);
+    localStringBuilder.append(", athenaJsonUploadUrl=");
+    localStringBuilder.append(this.athenaJsonUploadUrl);
+    localStringBuilder.append(", athenaFileUploadUrl=");
+    localStringBuilder.append(this.athenaFileUploadUrl);
+    localStringBuilder.append(", configUrl=");
+    localStringBuilder.append(this.configUrl);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.UrlMeta
  * JD-Core Version:    0.7.0.1
  */

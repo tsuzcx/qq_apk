@@ -4,7 +4,6 @@ import android.content.Context;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import androidx.lifecycle.LifecycleOwner;
-import com.tencent.ilive.commonpages.room.VerticalViewPager;
 import com.tencent.ilive.interfaces.IAudienceRoomPager;
 import com.tencent.ilive.pages.room.RoomBizContext;
 import com.tencent.ilive.pages.room.bizmodule.RoomBizModule;
@@ -35,22 +34,25 @@ public class IliveMiniAIOBtnModule
   
   private void a()
   {
-    RelativeLayout localRelativeLayout = (RelativeLayout)getRootView().findViewById(2131371425);
+    RelativeLayout localRelativeLayout = (RelativeLayout)getRootView().findViewById(2131371045);
     this.a = new IliveMiniAIOEntryView(this.context, a(), localRelativeLayout, getEvent());
   }
   
   private boolean a()
   {
-    boolean bool = false;
     int j = a();
-    if (getAudienceRoomPager().getViewPager() != null) {}
-    for (int i = getAudienceRoomPager().getViewPager().getCurrentItem();; i = 0)
-    {
-      if (j == i) {
-        bool = true;
-      }
-      return bool;
+    IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
+    boolean bool = false;
+    int i;
+    if (localIAudienceRoomPager != null) {
+      i = getAudienceRoomPager().getCurrentIndex();
+    } else {
+      i = 0;
     }
+    if (j == i) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void onActivityResume(LifecycleOwner paramLifecycleOwner)
@@ -94,7 +96,7 @@ public class IliveMiniAIOBtnModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveMiniAIOBtnModule
  * JD-Core Version:    0.7.0.1
  */

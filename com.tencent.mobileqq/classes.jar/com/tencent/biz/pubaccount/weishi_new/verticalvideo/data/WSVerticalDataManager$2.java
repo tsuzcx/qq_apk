@@ -21,50 +21,39 @@ final class WSVerticalDataManager$2
     localObject1 = GdtDeviceInfoHelper.a(BaseApplicationImpl.getContext(), (GdtDeviceInfoHelper.Params)localObject1);
     if (localObject1 != null)
     {
-      localObject1 = ((GdtDeviceInfoHelper.Result)localObject1).a;
-      JSONObject localJSONObject = null;
-      if (localObject1 == null) {
-        localObject1 = localJSONObject;
-      }
-      for (;;)
+      Object localObject2 = ((GdtDeviceInfoHelper.Result)localObject1).a;
+      localObject1 = null;
+      if (localObject2 != null) {}
+      try
       {
-        try
+        localObject2 = GdtJsonPbUtil.a((PBField)localObject2);
+        if ((localObject2 != null) && ((localObject2 instanceof JSONObject)))
         {
-          localJSONObject = new JSONObject(WSVerticalDataManager.b());
-          if ((localObject1 == null) || (localObject1 == JSONObject.NULL)) {
-            break label146;
-          }
-          WSVerticalDataManager.a((JSONObject)localObject1, localJSONObject);
-          GdtLog.d("WSVerticalDataManagerLog", "setGdtArgs success args =" + WSVerticalDataManager.b());
-          return;
+          localObject1 = (JSONObject)JSONObject.class.cast(localObject2);
+          LocalMultiProcConfig.putString("cache_key_gdt_args", ((JSONObject)localObject1).toString());
         }
-        catch (JSONException localJSONException)
-        {
-          Object localObject2;
-          GdtLog.a("WSVerticalDataManagerLog", localJSONException.getMessage());
-          return;
+        localObject2 = new JSONObject(WSVerticalDataManager.b());
+        if ((localObject1 != null) && (localObject1 != JSONObject.NULL)) {
+          WSVerticalDataManager.a((JSONObject)localObject1, (JSONObject)localObject2);
+        } else {
+          GdtLog.d("WSVerticalDataManagerLog", "onResult error");
         }
-        localObject2 = GdtJsonPbUtil.a((PBField)localObject1);
-        localObject1 = localJSONObject;
-        if (localObject2 != null)
-        {
-          localObject1 = localJSONObject;
-          if ((localObject2 instanceof JSONObject))
-          {
-            localObject1 = (JSONObject)JSONObject.class.cast(localObject2);
-            LocalMultiProcConfig.putString("cache_key_gdt_args", ((JSONObject)localObject1).toString());
-            continue;
-            label146:
-            GdtLog.d("WSVerticalDataManagerLog", "onResult error");
-          }
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("setGdtArgs success args =");
+        ((StringBuilder)localObject1).append(WSVerticalDataManager.b());
+        GdtLog.a("WSVerticalDataManagerLog", ((StringBuilder)localObject1).toString());
+        return;
+      }
+      catch (JSONException localJSONException)
+      {
+        GdtLog.a("WSVerticalDataManagerLog", localJSONException.getMessage());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalDataManager.2
  * JD-Core Version:    0.7.0.1
  */

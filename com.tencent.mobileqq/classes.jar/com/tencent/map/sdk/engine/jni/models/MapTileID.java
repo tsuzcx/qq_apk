@@ -49,12 +49,28 @@ public class MapTileID
   
   public String toString()
   {
-    return "MapTileID{x=" + this.x + ", y=" + this.y + ", z=" + this.z + ", url='" + this.url + '\'' + ", priority=" + this.priority + ", dataSource=" + this.dataSource + ", tileTag=" + this.tileTag + '}';
+    StringBuilder localStringBuilder = new StringBuilder("MapTileID{x=");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", y=");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(", z=");
+    localStringBuilder.append(this.z);
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", priority=");
+    localStringBuilder.append(this.priority);
+    localStringBuilder.append(", dataSource=");
+    localStringBuilder.append(this.dataSource);
+    localStringBuilder.append(", tileTag=");
+    localStringBuilder.append(this.tileTag);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.engine.jni.models.MapTileID
  * JD-Core Version:    0.7.0.1
  */

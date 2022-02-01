@@ -11,17 +11,17 @@ import kotlin.Metadata;
 final class TroopAskAnonymouslyHelper$handleAnonymousSwitch$1$$special$$inlined$let$lambda$3
   implements Runnable
 {
-  TroopAskAnonymouslyHelper$handleAnonymousSwitch$1$$special$$inlined$let$lambda$3(MessageRecord paramMessageRecord, TroopAskAnonymouslyHelper.handleAnonymousSwitch.1 param1) {}
+  TroopAskAnonymouslyHelper$handleAnonymousSwitch$1$$special$$inlined$let$lambda$3(MessageRecord paramMessageRecord, ReplyHelper paramReplyHelper, TroopAskAnonymouslyHelper.handleAnonymousSwitch.1 param1) {}
   
   public final void run()
   {
-    this.this$0.this$0.a().aQ();
-    QQToast.a((Context)BaseApplication.getContext(), 1, 2131698582, 0).a();
+    this.this$0.this$0.a().ak();
+    QQToast.a((Context)BaseApplication.getContext(), 1, 2131698648, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAskAnonymouslyHelper.handleAnonymousSwitch.1..special..inlined.let.lambda.3
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public final class im_msg_head$SConnHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.im_msg_head.SConnHead
  * JD-Core Version:    0.7.0.1
  */

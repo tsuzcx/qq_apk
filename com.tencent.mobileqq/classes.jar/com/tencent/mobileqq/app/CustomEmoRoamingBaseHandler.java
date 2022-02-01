@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.app;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.data.CustomEmotionBase;
 
 public abstract class CustomEmoRoamingBaseHandler<T extends CustomEmotionBase>
   extends BusinessHandler
 {
-  public QQAppInterface a;
+  public AppInterface a;
   
-  protected CustomEmoRoamingBaseHandler(QQAppInterface paramQQAppInterface)
+  protected CustomEmoRoamingBaseHandler(AppInterface paramAppInterface)
   {
-    super(paramQQAppInterface);
-    this.a = paramQQAppInterface;
+    super(paramAppInterface);
+    this.a = paramAppInterface;
   }
   
   public abstract void a();
@@ -19,7 +20,7 @@ public abstract class CustomEmoRoamingBaseHandler<T extends CustomEmotionBase>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.CustomEmoRoamingBaseHandler
  * JD-Core Version:    0.7.0.1
  */

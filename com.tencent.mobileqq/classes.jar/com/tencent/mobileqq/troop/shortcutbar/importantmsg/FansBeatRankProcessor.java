@@ -2,16 +2,16 @@ package com.tencent.mobileqq.troop.shortcutbar.importantmsg;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.rebuild.input.shortcutbar.AIOShortcutBarContext;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.studymode.StudyModeManager;
 import com.tencent.mobileqq.troop.api.observer.TroopObserver;
+import com.tencent.mobileqq.troop.api.observer.TroopPushObserver;
 import com.tencent.mobileqq.troop.shortcutbar.IShortcutBarDataProvider;
 import com.tencent.mobileqq.troop.shortcutbar.IShortcutBarProcessor;
 import com.tencent.mobileqq.troop.shortcutbar.ShortcutBarInfo;
@@ -23,38 +23,35 @@ import java.util.ArrayList;
 public class FansBeatRankProcessor
   extends IShortcutBarProcessor
 {
-  private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+  private AIOShortcutBarContext jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  TroopBusinessObserver jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver;
   TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver;
+  TroopPushObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver;
   private IShortcutBarDataProvider jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
   private String jdField_a_of_type_JavaLangString;
   
-  public FansBeatRankProcessor(BaseChatPie paramBaseChatPie, IShortcutBarDataProvider paramIShortcutBarDataProvider)
+  public FansBeatRankProcessor(AIOShortcutBarContext paramAIOShortcutBarContext, IShortcutBarDataProvider paramIShortcutBarDataProvider)
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext = paramAIOShortcutBarContext;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)paramAIOShortcutBarContext.a());
     this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider = paramIShortcutBarDataProvider;
     try
     {
-      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver = new FansBeatRankProcessor.1(this);
-      this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new FansBeatRankProcessor.2(this);
-      return;
+      this.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a().jdField_a_of_type_JavaLangString;
     }
-    catch (Exception paramBaseChatPie)
+    catch (Exception paramAIOShortcutBarContext)
     {
-      for (;;)
-      {
-        QLog.e("FansBeatRankProcessor", 2, "mTroopUin init error: ", paramBaseChatPie);
-      }
+      QLog.e("FansBeatRankProcessor", 2, "mTroopUin init error: ", paramAIOShortcutBarContext);
     }
+    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver = new FansBeatRankProcessor.1(this);
+    this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new FansBeatRankProcessor.2(this);
   }
   
   private void a(ArrayList<ShortcutBarInfo> paramArrayList)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider != null) {
-      this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider.a(4, paramArrayList);
+    IShortcutBarDataProvider localIShortcutBarDataProvider = this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarIShortcutBarDataProvider;
+    if (localIShortcutBarDataProvider != null) {
+      localIShortcutBarDataProvider.a(4, paramArrayList);
     }
   }
   
@@ -79,21 +76,21 @@ public class FansBeatRankProcessor
   private void e()
   {
     TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.jdField_a_of_type_JavaLangString);
+    boolean bool = false;
     if ((localTroopInfo != null) && (localTroopInfo.isFansTroop()))
     {
-      if (localTroopInfo.getFansTroopStarId() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        a(bool);
-        return;
+      if (localTroopInfo.getFansTroopStarId() != 0) {
+        bool = true;
       }
+      a(bool);
+      return;
     }
     a(false);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
   }
   
@@ -104,29 +101,27 @@ public class FansBeatRankProcessor
       if (QLog.isColorLevel()) {
         QLog.i("FansBeatRankProcessor", 2, "onClick");
       }
-      if (!StudyModeManager.a()) {
-        break label44;
+      if (StudyModeManager.a())
+      {
+        QQToast.a(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131699559), 0).a();
+        return;
       }
-      QQToast.a(BaseApplicationImpl.sApplication, HardCodeUtil.a(2131699454), 0).a();
-    }
-    label44:
-    do
-    {
-      return;
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B585", "0X800B585", 0, 0, "", "", "", "");
       paramObject = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).c(this.jdField_a_of_type_JavaLangString);
       if (paramObject != null)
       {
-        FansTroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramObject.getFansTroopStarId());
+        FansTroopUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildInputShortcutbarAIOShortcutBarContext.a(), this.jdField_a_of_type_JavaLangString, paramObject.getFansTroopStarId());
         return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("FansBeatRankProcessor", 2, "onClick: TroopInfo null");
+      if (QLog.isColorLevel()) {
+        QLog.i("FansBeatRankProcessor", 2, "onClick: TroopInfo null");
+      }
+    }
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppTroopBusinessObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
   }
   
@@ -141,7 +136,7 @@ public class FansBeatRankProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.FansBeatRankProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,18 @@ final class AvatarPendantUtil$2
   
   public void onResult(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.a != null)) {
-      this.a.a();
+    if (paramBoolean)
+    {
+      PreloadProcHitSession localPreloadProcHitSession = this.a;
+      if (localPreloadProcHitSession != null) {
+        localPreloadProcHitSession.a();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.AvatarPendantUtil.2
  * JD-Core Version:    0.7.0.1
  */

@@ -9,25 +9,20 @@ public class GdtToastAdapter
 {
   public void show(Context paramContext, int paramInt1, CharSequence paramCharSequence, int paramInt2)
   {
-    int i = 1;
+    int i = 2;
     if (paramInt1 == 1) {
+      paramInt1 = 1;
+    } else if (paramInt1 == 2) {
       paramInt1 = i;
+    } else {
+      paramInt1 = 0;
     }
-    for (;;)
-    {
-      QQToast.a(paramContext, paramInt1, paramCharSequence, paramInt2).a();
-      return;
-      if (paramInt1 == 2) {
-        paramInt1 = 2;
-      } else {
-        paramInt1 = 0;
-      }
-    }
+    QQToast.a(paramContext, paramInt1, paramCharSequence, paramInt2).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.adapter.GdtToastAdapter
  * JD-Core Version:    0.7.0.1
  */

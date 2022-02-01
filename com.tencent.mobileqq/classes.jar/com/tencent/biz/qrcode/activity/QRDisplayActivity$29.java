@@ -15,49 +15,71 @@ class QRDisplayActivity$29
   public void onItemClick(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem, ShareActionSheet paramShareActionSheet)
   {
     paramShareActionSheet.dismiss();
-    QLog.d("QRDisplayActivity", 2, " showMyQrCodeActionSheet() click item = " + paramActionSheetItem.action);
-    switch (paramActionSheetItem.action)
+    paramShareActionSheet = new StringBuilder();
+    paramShareActionSheet.append(" showMyQrCodeActionSheet() click item = ");
+    paramShareActionSheet.append(paramActionSheetItem.action);
+    QLog.d("QRDisplayActivity", 2, paramShareActionSheet.toString());
+    int i = paramActionSheetItem.action;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 26: 
-      if (QFileAssistantUtils.a())
+      if (i != 2)
       {
-        QRDisplayActivity.a(this.a, 0, QFileAssistantUtils.a(this.a.app));
+        if (i != 3)
+        {
+          if (i != 9)
+          {
+            if (i != 10)
+            {
+              if (i != 26)
+              {
+                if (i != 39)
+                {
+                  if (i != 72) {
+                    return;
+                  }
+                  QRDisplayActivity.a(this.a, paramActionSheetItem.uinType, paramActionSheetItem.uin);
+                  return;
+                }
+                this.a.e();
+                return;
+              }
+              if (QFileAssistantUtils.a())
+              {
+                paramActionSheetItem = this.a;
+                QRDisplayActivity.a(paramActionSheetItem, 0, QFileAssistantUtils.a(paramActionSheetItem.app));
+                return;
+              }
+              QRDisplayActivity.a(this.a, 6000, AppConstants.DATALINE_PC_UIN);
+              return;
+            }
+            paramActionSheetItem = this.a;
+            paramActionSheetItem.i = 3;
+            QRDisplayActivity.a(paramActionSheetItem);
+            return;
+          }
+          paramActionSheetItem = this.a;
+          paramActionSheetItem.i = 2;
+          QRDisplayActivity.a(paramActionSheetItem);
+          return;
+        }
+        paramActionSheetItem = this.a;
+        paramActionSheetItem.i = 1;
+        QRDisplayActivity.a(paramActionSheetItem);
         return;
       }
-      QRDisplayActivity.a(this.a, 6000, AppConstants.DATALINE_PC_UIN);
-      return;
-    case 72: 
-      QRDisplayActivity.a(this.a, paramActionSheetItem.uinType, paramActionSheetItem.uin);
-      return;
-    case 2: 
-      this.a.i = 0;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 3: 
-      this.a.i = 1;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 9: 
-      this.a.i = 2;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 10: 
-      this.a.i = 3;
-      QRDisplayActivity.a(this.a);
-      return;
-    case 39: 
-      this.a.e();
+      paramActionSheetItem = this.a;
+      paramActionSheetItem.i = 0;
+      QRDisplayActivity.a(paramActionSheetItem);
       return;
     }
-    this.a.i = 4;
-    QRDisplayActivity.d(this.a);
+    paramActionSheetItem = this.a;
+    paramActionSheetItem.i = 4;
+    QRDisplayActivity.d(paramActionSheetItem);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.29
  * JD-Core Version:    0.7.0.1
  */

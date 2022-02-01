@@ -22,30 +22,46 @@ class i
     if (l2 <= 0L) {
       l1 = 21600000L;
     }
-    l1 = d.a(this.b) + l1;
-    Object localObject = new StringBuilder().append("changeWebkeyByAccount for ").append(MsfSdkUtils.getShortUin(this.a)).append(" now: ").append(l3).append(" lastCheckWebviewKeyTime: ").append(l4).append(" interval: ").append(l3 - l4).append(" needChangeToken: ");
-    if (l3 - l4 > l1) {}
-    for (boolean bool = true;; bool = false)
+    l1 += d.a(this.b);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("changeWebkeyByAccount for ");
+    ((StringBuilder)localObject).append(MsfSdkUtils.getShortUin(this.a));
+    ((StringBuilder)localObject).append(" now: ");
+    ((StringBuilder)localObject).append(l3);
+    ((StringBuilder)localObject).append(" lastCheckWebviewKeyTime: ");
+    ((StringBuilder)localObject).append(l4);
+    ((StringBuilder)localObject).append(" interval: ");
+    l2 = l3 - l4;
+    ((StringBuilder)localObject).append(l2);
+    ((StringBuilder)localObject).append(" needChangeToken: ");
+    boolean bool;
+    if (l2 > l1) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StringBuilder)localObject).append(bool);
+    QLog.d("MSF.C.TokenChecker", 1, ((StringBuilder)localObject).toString());
+    if ((l2 > l1) || (this.b.e.a.getWtLoginCenter().b(this.a)))
     {
-      QLog.d("MSF.C.TokenChecker", 1, bool);
-      if ((l3 - l4 > l1) || (this.b.e.a.getWtLoginCenter().b(this.a)))
-      {
-        localObject = new ToServiceMsg("", this.a, "login.chgTok_WEBVIEW_KEY");
-        ((ToServiceMsg)localObject).setMsfCommand(MsfCommand._msf_refreToken);
-        ((ToServiceMsg)localObject).setRequestSsoSeq(MsfCore.getNextSeq());
-        ((ToServiceMsg)localObject).setAppId(this.b.e.a.getMsfAppid());
-        ((ToServiceMsg)localObject).setTimeout(30000L);
-        ((ToServiceMsg)localObject).getAttributes().put("refresh_token_src", "AccountTokenChecker");
-        this.b.e.a.changeTokenAfterLogin((ToServiceMsg)localObject, true);
-        QLog.d("MSF.C.TokenChecker", 1, "changeWebkeyByAccount for " + MsfSdkUtils.getShortUin(this.a) + " renew webKey");
-      }
-      return;
+      localObject = new ToServiceMsg("", this.a, "login.chgTok_WEBVIEW_KEY");
+      ((ToServiceMsg)localObject).setMsfCommand(MsfCommand._msf_refreToken);
+      ((ToServiceMsg)localObject).setRequestSsoSeq(MsfCore.getNextSeq());
+      ((ToServiceMsg)localObject).setAppId(this.b.e.a.getMsfAppid());
+      ((ToServiceMsg)localObject).setTimeout(30000L);
+      ((ToServiceMsg)localObject).getAttributes().put("refresh_token_src", "AccountTokenChecker");
+      this.b.e.a.changeTokenAfterLogin((ToServiceMsg)localObject, true);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("changeWebkeyByAccount for ");
+      ((StringBuilder)localObject).append(MsfSdkUtils.getShortUin(this.a));
+      ((StringBuilder)localObject).append(" renew webKey");
+      QLog.d("MSF.C.TokenChecker", 1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.auth.i
  * JD-Core Version:    0.7.0.1
  */

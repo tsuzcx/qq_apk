@@ -46,46 +46,46 @@ class WidgetModule$DialogCallback
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    boolean bool2 = true;
     paramDialogInterface = new JSONObject();
+    boolean bool2 = false;
     boolean bool1;
     if (paramInt == 1) {
       bool1 = true;
     }
-    try
+    for (;;)
     {
-      paramDialogInterface.put("confirm", bool1);
-      if (paramInt != 1) {}
-      for (bool1 = bool2;; bool1 = false)
+      try
       {
+        paramDialogInterface.put("confirm", bool1);
+        bool1 = bool2;
+        if (paramInt != 1) {
+          bool1 = true;
+        }
         paramDialogInterface.put("cancel", bool1);
         DoraemonUtil.a(this.a, paramDialogInterface);
         return;
-        bool1 = false;
-        break;
       }
-      String str;
-      APICallback localAPICallback;
-      return;
-    }
-    catch (JSONException paramDialogInterface)
-    {
-      str = paramDialogInterface.getMessage();
-      if (QLog.isColorLevel()) {
-        QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+      catch (JSONException paramDialogInterface)
+      {
+        String str = paramDialogInterface.getMessage();
+        if (QLog.isColorLevel()) {
+          QLog.w("DoraemonOpenAPI.widget", 2, str, paramDialogInterface);
+        }
+        APICallback localAPICallback = this.a;
+        paramDialogInterface = str;
+        if (str == null) {
+          paramDialogInterface = "";
+        }
+        DoraemonUtil.a(localAPICallback, -1, paramDialogInterface);
+        return;
       }
-      localAPICallback = this.a;
-      paramDialogInterface = str;
-      if (str == null) {
-        paramDialogInterface = "";
-      }
-      DoraemonUtil.a(localAPICallback, -1, paramDialogInterface);
+      bool1 = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.WidgetModule.DialogCallback
  * JD-Core Version:    0.7.0.1
  */

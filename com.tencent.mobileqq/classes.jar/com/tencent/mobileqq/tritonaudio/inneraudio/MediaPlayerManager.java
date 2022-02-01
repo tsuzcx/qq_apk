@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.tritonaudio.inneraudio;
 
 import android.media.MediaPlayer;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import java.util.concurrent.ConcurrentLinkedQueue;
 
 public class MediaPlayerManager
@@ -11,29 +12,30 @@ public class MediaPlayerManager
   
   public static MediaPlayerManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new MediaPlayerManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new MediaPlayerManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public MediaPlayer dequeuePlayer()
   {
-    MediaPlayer localMediaPlayer2 = (MediaPlayer)this.mRealPlayers.poll();
-    MediaPlayer localMediaPlayer1 = localMediaPlayer2;
-    if (localMediaPlayer2 == null) {}
+    MediaPlayer localMediaPlayer = (MediaPlayer)this.mRealPlayers.poll();
+    Object localObject = localMediaPlayer;
+    if (localMediaPlayer == null) {}
     try
     {
-      localMediaPlayer1 = new MediaPlayer();
-      return localMediaPlayer1;
+      localObject = new ReportMediaPlayer();
+      return localObject;
     }
     catch (Throwable localThrowable) {}
-    return localMediaPlayer2;
+    return localMediaPlayer;
   }
   
   public void enqueuePlayer(MediaPlayer paramMediaPlayer)
@@ -45,7 +47,7 @@ public class MediaPlayerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.inneraudio.MediaPlayerManager
  * JD-Core Version:    0.7.0.1
  */

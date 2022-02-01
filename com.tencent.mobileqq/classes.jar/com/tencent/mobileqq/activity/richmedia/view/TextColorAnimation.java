@@ -30,40 +30,36 @@ public class TextColorAnimation
   public void applyTransformation(float paramFloat, Transformation paramTransformation)
   {
     super.applyTransformation(paramFloat, paramTransformation);
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.size() < 2)) {
-      return;
-    }
-    float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-    int i = (int)(paramFloat / f);
-    f = (paramFloat - i * f) / f;
-    if (i == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-      i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
-    }
-    for (;;)
+    paramTransformation = this.jdField_a_of_type_JavaUtilArrayList;
+    if (paramTransformation != null)
     {
+      if (paramTransformation.size() < 2) {
+        return;
+      }
+      float f = 1.0F / (this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+      int j = (int)(paramFloat / f);
+      f = (paramFloat - j * f) / f;
+      int i = j;
+      if (j == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+        i = this.jdField_a_of_type_JavaUtilArrayList.size() - 2;
+      }
       int k = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).intValue();
-      int j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
+      j = ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i + 1)).intValue();
       i = j;
-      if (paramFloat < 1.0F)
-      {
-        i = (int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f);
-        int m = (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f);
-        int n = (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f);
-        paramFloat = Color.blue(k);
-        i = Color.argb(i, m, n, (int)((Color.blue(j) - Color.blue(k)) * f + paramFloat));
+      if (paramFloat < 1.0F) {
+        i = Color.argb((int)(Color.alpha(k) + (Color.alpha(j) - Color.alpha(k)) * f), (int)(Color.red(k) + (Color.red(j) - Color.red(k)) * f), (int)(Color.green(k) + (Color.green(j) - Color.green(k)) * f), (int)(Color.blue(k) + f * (Color.blue(j) - Color.blue(k))));
       }
       this.jdField_a_of_type_Int = i;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation$OnUpdateColorListener == null) {
-        break;
+      paramTransformation = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation$OnUpdateColorListener;
+      if (paramTransformation != null) {
+        paramTransformation.a(i);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewTextColorAnimation$OnUpdateColorListener.a(i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.TextColorAnimation
  * JD-Core Version:    0.7.0.1
  */

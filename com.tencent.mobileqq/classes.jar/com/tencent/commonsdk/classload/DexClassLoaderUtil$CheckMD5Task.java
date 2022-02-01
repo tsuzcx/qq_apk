@@ -24,21 +24,24 @@ class DexClassLoaderUtil$CheckMD5Task
   
   public void run()
   {
-    String str = MD5Coding.encodeFile2HexStr(this.file.getAbsolutePath());
-    if (this.oldMD5 == null) {
-      DexClassLoaderUtil.access$000(this.infoFile, this.tempInfoFile, this.info, str);
-    }
-    while (this.oldMD5.equalsIgnoreCase(str)) {
+    String str1 = MD5Coding.encodeFile2HexStr(this.file.getAbsolutePath());
+    String str2 = this.oldMD5;
+    if (str2 == null)
+    {
+      DexClassLoaderUtil.access$000(this.infoFile, this.tempInfoFile, this.info, str1);
       return;
     }
-    this.file.delete();
-    this.infoFile.delete();
-    Process.killProcess(Process.myPid());
+    if (!str2.equalsIgnoreCase(str1))
+    {
+      this.file.delete();
+      this.infoFile.delete();
+      Process.killProcess(Process.myPid());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.commonsdk.classload.DexClassLoaderUtil.CheckMD5Task
  * JD-Core Version:    0.7.0.1
  */

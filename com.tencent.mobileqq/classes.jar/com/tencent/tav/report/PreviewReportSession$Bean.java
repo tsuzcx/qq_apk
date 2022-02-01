@@ -22,12 +22,22 @@ final class PreviewReportSession$Bean
   
   public String toString()
   {
-    return "Bean{avg_read_sample_time_us=" + this.avg_read_sample_time_us + ", read_sample_count=" + this.read_sample_count + ", avg_render_time_us=" + this.avg_render_time_us + ", render_count=" + this.render_count + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Bean{avg_read_sample_time_us=");
+    localStringBuilder.append(this.avg_read_sample_time_us);
+    localStringBuilder.append(", read_sample_count=");
+    localStringBuilder.append(this.read_sample_count);
+    localStringBuilder.append(", avg_render_time_us=");
+    localStringBuilder.append(this.avg_render_time_us);
+    localStringBuilder.append(", render_count=");
+    localStringBuilder.append(this.render_count);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.report.PreviewReportSession.Bean
  * JD-Core Version:    0.7.0.1
  */

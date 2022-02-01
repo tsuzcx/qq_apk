@@ -16,16 +16,6 @@ public final class RespGetDiscuss
   public ArrayList<DiscussInfo> DiscussList = null;
   public ArrayList<DiscussInfo> FavoriteDiscussList = null;
   
-  static
-  {
-    if (!RespGetDiscuss.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public RespGetDiscuss() {}
   
   public RespGetDiscuss(ArrayList<DiscussInfo> paramArrayList1, ArrayList<DiscussInfo> paramArrayList2)
@@ -41,18 +31,17 @@ public final class RespGetDiscuss
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -71,13 +60,20 @@ public final class RespGetDiscuss
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (RespGetDiscuss)paramObject;
-    } while ((!JceUtil.equals(this.DiscussList, paramObject.DiscussList)) || (!JceUtil.equals(this.FavoriteDiscussList, paramObject.FavoriteDiscussList)));
-    return true;
+    }
+    paramObject = (RespGetDiscuss)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.DiscussList, paramObject.DiscussList))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.FavoriteDiscussList, paramObject.FavoriteDiscussList)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -125,14 +121,15 @@ public final class RespGetDiscuss
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.DiscussList, 0);
-    if (this.FavoriteDiscussList != null) {
-      paramJceOutputStream.write(this.FavoriteDiscussList, 1);
+    ArrayList localArrayList = this.FavoriteDiscussList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.RespGetDiscuss
  * JD-Core Version:    0.7.0.1
  */

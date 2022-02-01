@@ -14,8 +14,12 @@ final class WTogetherUtil$2
     try
     {
       String str = NewReportPlugin.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_JavaLangString, null, null, this.b, this.c, this.d, this.jdField_a_of_type_Int, NewReportPlugin.a(this.jdField_a_of_type_Int), "avreport", "", "", "", "", "", "", "", null);
-      if (QLog.isColorLevel()) {
-        QLog.d("WTogether", 1, "safetyNewReport postData=" + str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("safetyNewReport postData=");
+        localStringBuilder.append(str);
+        QLog.d("WTogether", 1, localStringBuilder.toString());
       }
       this.jdField_a_of_type_AndroidAppActivity.runOnUiThread(new WTogetherUtil.2.1(this, str));
       return;
@@ -28,7 +32,7 @@ final class WTogetherUtil$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.util.WTogetherUtil.2
  * JD-Core Version:    0.7.0.1
  */

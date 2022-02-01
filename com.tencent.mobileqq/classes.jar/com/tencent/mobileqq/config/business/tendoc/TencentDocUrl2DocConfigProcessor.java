@@ -25,7 +25,10 @@ public final class TencentDocUrl2DocConfigProcessor
   @NonNull
   public TencentDocUrl2DocConfigBean a(int paramInt)
   {
-    QLog.w("TencentDocUrl2DocConfigProcessor", 1, "migrateOldOrDefaultContent type:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent type:");
+    localStringBuilder.append(paramInt);
+    QLog.w("TencentDocUrl2DocConfigProcessor", 1, localStringBuilder.toString());
     return new TencentDocUrl2DocConfigBean();
   }
   
@@ -67,7 +70,10 @@ public final class TencentDocUrl2DocConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.e("TencentDocUrl2DocConfigProcessor", 1, "onReqFailed: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: ");
+    localStringBuilder.append(paramInt);
+    QLog.e("TencentDocUrl2DocConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -77,7 +83,7 @@ public final class TencentDocUrl2DocConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocUrl2DocConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

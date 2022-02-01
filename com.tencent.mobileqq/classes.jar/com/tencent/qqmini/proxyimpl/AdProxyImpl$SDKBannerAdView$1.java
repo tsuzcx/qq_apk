@@ -23,21 +23,22 @@ class AdProxyImpl$SDKBannerAdView$1
   public void a(GdtAd paramGdtAd, GdtAdError paramGdtAdError)
   {
     int i;
-    if (paramGdtAdError != null)
-    {
+    if (paramGdtAdError != null) {
       i = paramGdtAdError.a();
-      if (paramGdtAdError == null) {
-        break label58;
-      }
-    }
-    label58:
-    for (paramGdtAd = paramGdtAdError.a();; paramGdtAd = "")
-    {
-      QLog.i("AdProxyImpl", 1, "bannerad onAdFailedToLoad code=" + i + ", msg=" + paramGdtAd);
-      return;
+    } else {
       i = -1;
-      break;
     }
+    if (paramGdtAdError != null) {
+      paramGdtAd = paramGdtAdError.a();
+    } else {
+      paramGdtAd = "";
+    }
+    paramGdtAdError = new StringBuilder();
+    paramGdtAdError.append("bannerad onAdFailedToLoad code=");
+    paramGdtAdError.append(i);
+    paramGdtAdError.append(", msg=");
+    paramGdtAdError.append(paramGdtAd);
+    QLog.i("AdProxyImpl", 1, paramGdtAdError.toString());
   }
   
   public void b(GdtAd paramGdtAd)
@@ -50,14 +51,11 @@ class AdProxyImpl$SDKBannerAdView$1
     QLog.i("AdProxyImpl", 1, "bannerad onAdClicked");
     if ((paramGdtAd != null) && (paramGdtAd.getAd() != null) && (AdUtils.isHitReport50ViewAndOneSecond(paramGdtAd.getAd()))) {
       AdExposureChecker.onClick(this.jdField_a_of_type_AndroidAppActivity, paramGdtAd.getAd(), new WeakReference(this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBannerAdView.jdField_a_of_type_ComTencentAdTangramUtilAdExposureChecker$ExposureCallback));
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBannerAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener != null) {
-        this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBannerAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener.onADClicked();
-      }
-      return;
+    } else {
       QLog.i("AdProxyImpl", 1, "ad null");
+    }
+    if (this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBannerAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener != null) {
+      this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBannerAdView.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IBannerAdListener.onADClicked();
     }
   }
   
@@ -71,7 +69,7 @@ class AdProxyImpl$SDKBannerAdView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBannerAdView.1
  * JD-Core Version:    0.7.0.1
  */

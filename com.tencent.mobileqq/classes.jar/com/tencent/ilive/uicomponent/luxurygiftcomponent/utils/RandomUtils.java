@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class RandomUtils
 {
-  private static Random _random = null;
+  private static Random _random;
   
   private static Random getRandom()
   {
@@ -36,7 +36,7 @@ public class RandomUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent.utils.RandomUtils
  * JD-Core Version:    0.7.0.1
  */

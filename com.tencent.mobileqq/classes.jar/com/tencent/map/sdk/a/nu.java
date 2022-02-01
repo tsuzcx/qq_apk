@@ -32,13 +32,13 @@ public final class nu
   
   public final nm a()
   {
-    int i2 = 0;
     nu localnu = (nu)super.a();
+    Object localObject = this.q;
+    int i2 = 0;
     int i3;
     int i1;
-    if (this.q != null)
+    if (localObject != null)
     {
-      localObject = this.q;
       localnu.q = new ArrayList();
       i3 = ((ArrayList)localObject).size();
       i1 = 0;
@@ -53,7 +53,7 @@ public final class nu
     localnu.n = 0;
     localnu.c = 0;
     localnu.o = false;
-    Object localObject = this.d;
+    localObject = this.d;
     if (localObject != null)
     {
       i3 = localObject.length;
@@ -73,27 +73,33 @@ public final class nu
   
   public final String toString()
   {
-    String str1 = "ValueAnimator@" + Integer.toHexString(hashCode());
-    String str2 = str1;
+    Object localObject1 = new StringBuilder("ValueAnimator@");
+    ((StringBuilder)localObject1).append(Integer.toHexString(hashCode()));
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = localObject1;
     if (this.d != null)
     {
       int i1 = 0;
       for (;;)
       {
-        str2 = str1;
+        localObject2 = localObject1;
         if (i1 >= this.d.length) {
           break;
         }
-        str1 = str1 + "\n    " + this.d[i1].toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("\n    ");
+        ((StringBuilder)localObject2).append(this.d[i1].toString());
+        localObject1 = ((StringBuilder)localObject2).toString();
         i1 += 1;
       }
     }
-    return str2;
+    return localObject2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.nu
  * JD-Core Version:    0.7.0.1
  */

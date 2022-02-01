@@ -20,36 +20,39 @@ final class ForwardUtils$4
   public void a()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    String str1;
-    String str2;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Uri localUri = (Uri)localIterator.next();
-      str1 = "";
+      String str1;
       if (localUri != null) {
         str1 = new UriParserPathHelper(this.jdField_a_of_type_AndroidAppActivity, false, null).a(localUri);
+      } else {
+        str1 = "";
       }
       if (TextUtils.isEmpty(str1))
       {
-        str2 = "localPath = null. model:" + Build.MANUFACTURER + "-" + Build.MODEL;
-        if (localUri == null) {
-          break label201;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("localPath = null. model:");
+        ((StringBuilder)localObject).append(Build.MANUFACTURER);
+        ((StringBuilder)localObject).append("-");
+        ((StringBuilder)localObject).append(Build.MODEL);
+        String str2 = ((StringBuilder)localObject).toString();
+        localObject = str2;
+        if (localUri != null)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str2);
+          ((StringBuilder)localObject).append(" uri:");
+          ((StringBuilder)localObject).append(localUri.toString());
+          localObject = ((StringBuilder)localObject).toString();
         }
-        str2 = str2 + " uri:" + localUri.toString();
+        QLog.e("ForwardUtils<FileAssistant>", 1, (String)localObject);
       }
-    }
-    label201:
-    for (;;)
-    {
-      QLog.e("ForwardUtils<FileAssistant>", 1, str2);
-      if (this.jdField_a_of_type_Int == 1)
-      {
+      if (this.jdField_a_of_type_Int == 1) {
         this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(str1, this.jdField_a_of_type_JavaLangString, 0L, this.jdField_b_of_type_Int);
-        break;
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(str1, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, 0L, this.jdField_b_of_type_Int);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(str1, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, true, 0L, this.jdField_b_of_type_Int);
-      break;
-      return;
     }
   }
   
@@ -57,7 +60,7 @@ final class ForwardUtils$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ForwardUtils.4
  * JD-Core Version:    0.7.0.1
  */

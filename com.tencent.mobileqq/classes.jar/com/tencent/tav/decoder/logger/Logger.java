@@ -6,36 +6,57 @@ public class Logger
   private static int level = 3;
   private static ILog logProxy = new Logger.DefaultLogProxy(null);
   
+  static
+  {
+    com.tencent.tav.coremedia.Logger.a(new Logger.1());
+  }
+  
   public static void d(String paramString1, String paramString2)
   {
-    if ((logProxy == null) || (level > 3)) {
-      return;
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 3) {
+        return;
+      }
+      localILog.d(paramString1, paramString2);
     }
-    logProxy.d(paramString1, paramString2);
   }
   
   public static void e(String paramString1, String paramString2)
   {
-    if ((logProxy == null) || (level > 6)) {
-      return;
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 6) {
+        return;
+      }
+      localILog.e(paramString1, paramString2);
     }
-    logProxy.e(paramString1, paramString2);
   }
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    if ((logProxy == null) || (level > 6)) {
-      return;
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 6) {
+        return;
+      }
+      localILog.e(paramString1, paramString2, paramThrowable);
     }
-    logProxy.e(paramString1, paramString2, paramThrowable);
   }
   
   public static void i(String paramString1, String paramString2)
   {
-    if ((logProxy == null) || (level > 4)) {
-      return;
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 4) {
+        return;
+      }
+      localILog.i(paramString1, paramString2);
     }
-    logProxy.i(paramString1, paramString2);
   }
   
   public static void setLevel(int paramInt)
@@ -50,23 +71,31 @@ public class Logger
   
   public static void v(String paramString1, String paramString2)
   {
-    if ((logProxy == null) || (level > 2)) {
-      return;
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 2) {
+        return;
+      }
+      localILog.v(paramString1, paramString2);
     }
-    logProxy.v(paramString1, paramString2);
   }
   
   public static void w(String paramString1, String paramString2)
   {
-    if ((logProxy == null) || (level > 5)) {
-      return;
+    ILog localILog = logProxy;
+    if (localILog != null)
+    {
+      if (level > 5) {
+        return;
+      }
+      localILog.w(paramString1, paramString2);
     }
-    logProxy.w(paramString1, paramString2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.logger.Logger
  * JD-Core Version:    0.7.0.1
  */

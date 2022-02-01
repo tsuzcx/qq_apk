@@ -1,482 +1,319 @@
 package com.huawei.hms.push;
 
+import android.annotation.SuppressLint;
+import android.app.AlarmManager;
+import android.app.Notification;
+import android.app.Notification.Builder;
+import android.app.NotificationChannel;
+import android.app.NotificationManager;
+import android.app.PendingIntent;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.ApplicationInfo;
+import android.content.res.Resources;
+import android.os.Build.VERSION;
+import android.os.Bundle;
 import android.text.TextUtils;
+import com.huawei.hms.android.HwBuildEx.VERSION;
 import com.huawei.hms.support.log.HMSLog;
-import org.json.JSONException;
-import org.json.JSONObject;
+import com.huawei.hms.utils.ResourceLoaderUtil;
 
 public class o
 {
-  private String A = "";
-  private int B;
-  private String C = "";
-  private String D;
-  private String E = "";
-  private String a = "";
-  private int b;
-  private String c;
-  private String d;
-  private String e = "";
-  private String f = "";
-  private String g = "";
-  private String h = "";
-  private String i = "";
-  private String j = "";
-  private String k = "";
-  private String l;
-  private String m;
-  private String n;
-  private String o;
-  private String p;
-  private String q = "";
-  private String r;
-  private String s;
-  private int t = r.a.ordinal();
-  private String u = "";
-  private String v = "";
-  private String w = "";
-  private int x = 0;
-  private int y = 0;
-  private String z;
+  public static int a;
   
-  public o(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  public static Notification a(Context paramContext, k paramk, int[] paramArrayOfInt)
   {
-    this.r = new String(paramArrayOfByte1, ab.a);
-    this.s = new String(paramArrayOfByte2, ab.a);
+    Notification.Builder localBuilder = new Notification.Builder(paramContext);
+    if (m.a(paramk) == n.b) {
+      m.a(localBuilder, paramk.g(), paramk);
+    }
+    l.a(paramContext, localBuilder, paramk);
+    b(paramk, localBuilder);
+    b(paramContext, paramk, localBuilder);
+    a(paramContext, paramk, localBuilder);
+    a(localBuilder);
+    a(paramk, localBuilder);
+    c(paramk, localBuilder);
+    localBuilder.setContentIntent(c(paramContext, paramk, paramArrayOfInt));
+    localBuilder.setDeleteIntent(b(paramContext, paramk, paramArrayOfInt));
+    if (Build.VERSION.SDK_INT >= 26) {
+      localBuilder.setChannelId("HwPushChannelID");
+    }
+    b(paramContext, localBuilder, paramk);
+    a(paramContext, localBuilder, paramk);
+    return localBuilder.build();
   }
   
-  private JSONObject a(JSONObject paramJSONObject1, JSONObject paramJSONObject2)
+  public static Intent a(Context paramContext, k paramk, int[] paramArrayOfInt, String paramString, int paramInt)
   {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("dispPkgName", this.f);
-    localJSONObject.put("msgId", this.e);
-    localJSONObject.put("ap", this.d);
-    localJSONObject.put("notifyId", this.B);
-    localJSONObject.put("psContent", paramJSONObject1);
-    localJSONObject.put("notifyDetail", paramJSONObject2);
-    localJSONObject.put("ticker", this.D);
-    localJSONObject.put("data", this.C);
-    return localJSONObject;
+    Intent localIntent = new Intent("com.huawei.intent.action.PUSH_DELAY_NOTIFY");
+    localIntent.putExtra("selfshow_info", paramk.o()).putExtra("selfshow_token", paramk.y()).putExtra("selfshow_event_id", paramString).putExtra("selfshow_notify_id", paramArrayOfInt[0]).putExtra("selfshow_auto_clear_id", paramArrayOfInt[3]).setPackage(paramContext.getPackageName()).setFlags(paramInt);
+    return localIntent;
   }
   
-  private void a(JSONObject paramJSONObject)
+  public static void a(Notification.Builder paramBuilder)
   {
-    this.a = paramJSONObject.optString("group");
-    HMSLog.d("PushSelfShowLog", "NOTIFY_GROUP:" + this.a);
-    this.x = paramJSONObject.optInt("autoCancel", 1);
-    HMSLog.d("PushSelfShowLog", "autoCancel: " + this.x);
-    this.y = paramJSONObject.optInt("visibility", 0);
-    this.z = paramJSONObject.optString("when");
-    this.A = paramJSONObject.optString("tag");
+    paramBuilder.setShowWhen(true);
+    paramBuilder.setWhen(System.currentTimeMillis());
   }
   
-  private boolean b(JSONObject paramJSONObject)
+  @SuppressLint({"NewApi"})
+  public static void a(Context paramContext, Notification.Builder paramBuilder, k paramk)
   {
-    if (paramJSONObject.has("msgId"))
+    if ((HwBuildEx.VERSION.EMUI_SDK_INT >= 11) && (q.a(paramContext)))
     {
-      paramJSONObject = paramJSONObject.get("msgId");
-      if ((paramJSONObject instanceof String)) {
-        this.e = ((String)paramJSONObject);
-      }
-      for (;;)
+      Bundle localBundle = new Bundle();
+      paramk = paramk.k();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("the package name of notification is:");
+      localStringBuilder.append(paramk);
+      HMSLog.i("PushSelfShowLog", localStringBuilder.toString());
+      if (!TextUtils.isEmpty(paramk))
       {
-        return true;
-        if ((paramJSONObject instanceof Integer)) {
-          this.e = String.valueOf(((Integer)paramJSONObject).intValue());
+        paramContext = q.a(paramContext, paramk);
+        paramk = new StringBuilder();
+        paramk.append("the app name is:");
+        paramk.append(paramContext);
+        HMSLog.i("PushSelfShowLog", paramk.toString());
+        if (paramContext != null) {
+          localBundle.putCharSequence("android.extraAppName", paramContext);
         }
+      }
+      paramBuilder.setExtras(localBundle);
+    }
+  }
+  
+  public static void a(Context paramContext, Intent paramIntent, long paramLong, int paramInt)
+  {
+    try
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enter setDelayAlarm(intent:");
+      ((StringBuilder)localObject).append(paramIntent.toURI());
+      ((StringBuilder)localObject).append(" interval:");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("ms, context:");
+      ((StringBuilder)localObject).append(paramContext);
+      HMSLog.d("PushSelfShowLog", ((StringBuilder)localObject).toString());
+      localObject = (AlarmManager)paramContext.getSystemService("alarm");
+      if (localObject != null)
+      {
+        paramContext = PendingIntent.getBroadcast(paramContext, paramInt, paramIntent, 134217728);
+        ((AlarmManager)localObject).set(0, System.currentTimeMillis() + paramLong, paramContext);
+        return;
       }
     }
-    HMSLog.i("PushSelfShowLog", "msgId == null");
-    return false;
+    catch (Exception paramContext)
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("set DelayAlarm error.");
+      paramIntent.append(paramContext.toString());
+      HMSLog.w("PushSelfShowLog", paramIntent.toString());
+    }
   }
   
-  private void c(JSONObject paramJSONObject)
+  public static void a(Context paramContext, k paramk)
   {
-    int i1 = 0;
-    if (paramJSONObject.has("ap"))
+    if ((paramContext != null) && (paramk != null)) {}
+    for (;;)
     {
-      paramJSONObject = paramJSONObject.getString("ap");
-      StringBuilder localStringBuilder = new StringBuilder();
-      if ((!TextUtils.isEmpty(paramJSONObject)) && (paramJSONObject.length() < 48))
+      try
       {
-        int i2 = paramJSONObject.length();
-        while (i1 < 48 - i2)
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("showNotification, the msg id = ");
+        ((StringBuilder)localObject).append(paramk.p());
+        HMSLog.d("PushSelfShowLog", ((StringBuilder)localObject).toString());
+        if (a == 0)
         {
-          localStringBuilder.append("0");
-          i1 += 1;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramContext.getPackageName());
+          ((StringBuilder)localObject).append(System.currentTimeMillis());
+          a = ((StringBuilder)localObject).toString().hashCode();
         }
-        localStringBuilder.append(paramJSONObject);
-        this.d = localStringBuilder.toString();
+        int j;
+        int k;
+        int m;
+        if (TextUtils.isEmpty(paramk.l()))
+        {
+          localObject = paramk.q();
+          if (!TextUtils.isEmpty((CharSequence)localObject))
+          {
+            i = ((String)localObject).hashCode();
+            paramk.a(i);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("notification msgTag = ");
+            ((StringBuilder)localObject).append(i);
+            HMSLog.d("PushSelfShowLog", ((StringBuilder)localObject).toString());
+          }
+          if (paramk.s() != -1)
+          {
+            j = paramk.s();
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramk.k());
+            ((StringBuilder)localObject).append(System.currentTimeMillis());
+            k = ((StringBuilder)localObject).toString().hashCode();
+            m = k + 1;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramk.s());
+            ((StringBuilder)localObject).append(paramk.k());
+            ((StringBuilder)localObject).append(paramContext.getPackageName());
+            i = ((StringBuilder)localObject).toString().hashCode();
+          }
+          else
+          {
+            j = a + 1;
+            a = j;
+            k = a + 1;
+            a = k;
+            m = a + 1;
+            a = m;
+            i = a + 1;
+            a = i;
+          }
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramk.l());
+          ((StringBuilder)localObject).append(paramk.k());
+          j = ((StringBuilder)localObject).toString().hashCode();
+          k = a + 1;
+          a = k;
+          m = a + 1;
+          a = m;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramk.l());
+          ((StringBuilder)localObject).append(paramk.k());
+          ((StringBuilder)localObject).append(paramContext.getPackageName());
+          i = ((StringBuilder)localObject).toString().hashCode();
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("notifyId:");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(",openNotifyId:");
+        ((StringBuilder)localObject).append(k);
+        ((StringBuilder)localObject).append(",delNotifyId:");
+        ((StringBuilder)localObject).append(m);
+        ((StringBuilder)localObject).append(",alarmNotifyId:");
+        ((StringBuilder)localObject).append(i);
+        HMSLog.d("PushSelfShowLog", ((StringBuilder)localObject).toString());
+        int[] arrayOfInt = new int[4];
+        arrayOfInt[0] = j;
+        arrayOfInt[1] = k;
+        arrayOfInt[2] = m;
+        if (paramk.f() <= 0) {
+          break label671;
+        }
+        arrayOfInt[3] = i;
+        localObject = null;
+        if (q.a()) {
+          localObject = a(paramContext, paramk, arrayOfInt);
+        }
+        NotificationManager localNotificationManager = (NotificationManager)paramContext.getSystemService("notification");
+        if ((localNotificationManager != null) && (localObject != null))
+        {
+          if (Build.VERSION.SDK_INT >= 26) {
+            localNotificationManager.createNotificationChannel(new NotificationChannel("HwPushChannelID", paramContext.getString(ResourceLoaderUtil.getStringId("hms_push_channel")), 3));
+          }
+          localNotificationManager.notify(j, (Notification)localObject);
+          d(paramContext, paramk, arrayOfInt);
+          e.a(paramContext, paramk.p(), paramk.b(), "100");
+        }
+        return;
       }
+      finally {}
+      return;
+      label671:
+      int i = 0;
+    }
+  }
+  
+  public static void a(Context paramContext, k paramk, Notification.Builder paramBuilder)
+  {
+    paramContext = l.a(paramContext, paramk);
+    if (paramContext != null) {
+      paramBuilder.setLargeIcon(paramContext);
+    }
+  }
+  
+  public static void a(k paramk, Notification.Builder paramBuilder)
+  {
+    int i = paramk.e();
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
+    }
+    paramBuilder.setAutoCancel(bool);
+    paramBuilder.setOngoing(false);
+  }
+  
+  public static PendingIntent b(Context paramContext, k paramk, int[] paramArrayOfInt)
+  {
+    paramk = a(paramContext, paramk, paramArrayOfInt, "2", 268435456);
+    return PendingIntent.getBroadcast(paramContext, paramArrayOfInt[2], paramk, 134217728);
+  }
+  
+  @SuppressLint({"NewApi"})
+  public static void b(Context paramContext, Notification.Builder paramBuilder, k paramk)
+  {
+    if ("com.huawei.android.pushagent".equals(paramContext.getPackageName()))
+    {
+      paramContext = new Bundle();
+      paramk = paramk.k();
+      if (!TextUtils.isEmpty(paramk))
+      {
+        paramContext.putString("hw_origin_sender_package_name", paramk);
+        paramBuilder.setExtras(paramContext);
+      }
+    }
+  }
+  
+  public static void b(Context paramContext, k paramk, Notification.Builder paramBuilder)
+  {
+    if (TextUtils.isEmpty(paramk.u()))
+    {
+      int i = paramContext.getApplicationInfo().labelRes;
+      paramContext = paramContext.getResources().getString(i);
     }
     else
     {
+      paramContext = paramk.u();
+    }
+    paramk = paramk.j();
+    paramBuilder.setContentTitle(paramContext);
+    paramBuilder.setContentText(paramk);
+  }
+  
+  public static void b(k paramk, Notification.Builder paramBuilder)
+  {
+    paramk = paramk.t();
+    if (!TextUtils.isEmpty(paramk)) {
+      paramBuilder.setSubText(paramk);
+    }
+  }
+  
+  public static PendingIntent c(Context paramContext, k paramk, int[] paramArrayOfInt)
+  {
+    paramk = a(paramContext, paramk, paramArrayOfInt, "1", 268435456);
+    return PendingIntent.getBroadcast(paramContext, paramArrayOfInt[1], paramk, 134217728);
+  }
+  
+  public static void c(k paramk, Notification.Builder paramBuilder)
+  {
+    paramBuilder.setTicker(paramk.x());
+  }
+  
+  public static void d(Context paramContext, k paramk, int[] paramArrayOfInt)
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAutoClear time is: ");
+    localStringBuilder.append(paramk.f());
+    HMSLog.i("PushSelfShowLog", localStringBuilder.toString());
+    if (paramk.f() <= 0) {
       return;
     }
-    this.d = paramJSONObject.substring(0, 48);
-  }
-  
-  private boolean d(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject.has("psContent"))
-    {
-      paramJSONObject = paramJSONObject.getJSONObject("psContent");
-      if (paramJSONObject != null) {
-        break label22;
-      }
-    }
-    label22:
-    do
-    {
-      return false;
-      this.g = paramJSONObject.getString("cmd");
-      this.h = paramJSONObject.optString("content");
-      this.i = paramJSONObject.optString("notifyIcon");
-      this.j = paramJSONObject.optString("notifyTitle");
-      this.k = paramJSONObject.optString("notifySummary");
-      this.D = paramJSONObject.optString("ticker");
-    } while (((paramJSONObject.has("notifyDetail")) && (!k(paramJSONObject))) || (!paramJSONObject.has("param")));
-    return e(paramJSONObject);
-  }
-  
-  private boolean e(JSONObject paramJSONObject)
-  {
-    try
-    {
-      paramJSONObject = paramJSONObject.getJSONObject("param");
-      if (paramJSONObject.has("autoClear")) {}
-      for (this.b = paramJSONObject.getInt("autoClear"); ("app".equals(this.g)) || ("cosa".equals(this.g)); this.b = 0)
-      {
-        f(paramJSONObject);
-        break label121;
-      }
-      if (!"url".equals(this.g)) {
-        break label102;
-      }
-    }
-    catch (Exception paramJSONObject)
-    {
-      HMSLog.e("PushSelfShowLog", "ParseParam error ", paramJSONObject);
-      return false;
-    }
-    g(paramJSONObject);
-    break label121;
-    label102:
-    if ("rp".equals(this.g)) {
-      h(paramJSONObject);
-    }
-    label121:
-    return true;
-  }
-  
-  private boolean f(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return false;
-    }
-    if (paramJSONObject.has("acn")) {
-      this.m = paramJSONObject.getString("acn");
-    }
-    if (paramJSONObject.has("intentUri")) {
-      this.c = paramJSONObject.getString("intentUri");
-    }
-    if (paramJSONObject.has("appPackageName"))
-    {
-      this.l = paramJSONObject.getString("appPackageName");
-      return true;
-    }
-    HMSLog.d("PushSelfShowLog", "appPackageName is null");
-    return false;
-  }
-  
-  private boolean g(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return false;
-    }
-    if (paramJSONObject.has("url"))
-    {
-      this.n = paramJSONObject.getString("url");
-      if (paramJSONObject.has("appPackageName")) {
-        this.l = paramJSONObject.getString("appPackageName");
-      }
-      if ((paramJSONObject.has("rpt")) && (paramJSONObject.has("rpl")))
-      {
-        this.o = paramJSONObject.getString("rpl");
-        this.p = paramJSONObject.getString("rpt");
-        if (paramJSONObject.has("rpct")) {
-          this.q = paramJSONObject.getString("rpct");
-        }
-      }
-      return true;
-    }
-    HMSLog.d("PushSelfShowLog", "url is null");
-    return false;
-  }
-  
-  private boolean h(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject == null) {
-      return false;
-    }
-    if (paramJSONObject.has("appPackageName")) {
-      this.l = paramJSONObject.getString("appPackageName");
-    }
-    if ((paramJSONObject.has("rpt")) && (paramJSONObject.has("rpl")))
-    {
-      this.o = paramJSONObject.getString("rpl");
-      this.p = paramJSONObject.getString("rpt");
-      if (paramJSONObject.has("rpct")) {
-        this.q = paramJSONObject.getString("rpct");
-      }
-      return true;
-    }
-    HMSLog.d("PushSelfShowLog", "rpl or rpt is null");
-    return false;
-  }
-  
-  private JSONObject i(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("msgContent", paramJSONObject);
-    localJSONObject.put("group", this.a);
-    localJSONObject.put("tag", this.A);
-    localJSONObject.put("autoCancel", this.x);
-    localJSONObject.put("visibility", this.y);
-    localJSONObject.put("when", this.z);
-    return localJSONObject;
-  }
-  
-  private JSONObject j(JSONObject paramJSONObject)
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("cmd", this.g);
-    localJSONObject.put("content", this.h);
-    localJSONObject.put("notifyIcon", this.i);
-    localJSONObject.put("notifyTitle", this.j);
-    localJSONObject.put("notifySummary", this.k);
-    localJSONObject.put("param", paramJSONObject);
-    return localJSONObject;
-  }
-  
-  private boolean k(JSONObject paramJSONObject)
-  {
-    HMSLog.d("PushSelfShowLog", "enter parseNotifyParam");
-    try
-    {
-      paramJSONObject = paramJSONObject.getJSONObject("notifyDetail");
-      if (paramJSONObject == null) {
-        return false;
-      }
-      if (paramJSONObject.has("style")) {
-        this.t = paramJSONObject.getInt("style");
-      }
-      this.u = paramJSONObject.optString("bigTitle");
-      this.v = paramJSONObject.optString("bigContent");
-      this.E = paramJSONObject.optString("icon");
-      return true;
-    }
-    catch (JSONException paramJSONObject)
-    {
-      HMSLog.i("PushSelfShowLog", paramJSONObject.toString());
-    }
-    return false;
-  }
-  
-  private JSONObject y()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("style", this.t);
-    localJSONObject.put("bigTitle", this.u);
-    localJSONObject.put("bigContent", this.v);
-    localJSONObject.put("bigPic", this.w);
-    return localJSONObject;
-  }
-  
-  private JSONObject z()
-  {
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("autoClear", this.b);
-    localJSONObject.put("url", this.n);
-    localJSONObject.put("rpl", this.o);
-    localJSONObject.put("rpt", this.p);
-    localJSONObject.put("rpct", this.q);
-    localJSONObject.put("appPackageName", this.l);
-    localJSONObject.put("acn", this.m);
-    localJSONObject.put("intentUri", this.c);
-    return localJSONObject;
-  }
-  
-  public String a()
-  {
-    HMSLog.d("PushSelfShowLog", "msgId =" + this.e);
-    return this.e;
-  }
-  
-  public void a(int paramInt)
-  {
-    this.B = paramInt;
-  }
-  
-  public boolean b()
-  {
-    try
-    {
-      if (TextUtils.isEmpty(this.r))
-      {
-        HMSLog.d("PushSelfShowLog", "msg is null");
-        return false;
-      }
-      JSONObject localJSONObject = new JSONObject(this.r);
-      a(localJSONObject);
-      localJSONObject = localJSONObject.getJSONObject("msgContent");
-      if (localJSONObject == null)
-      {
-        HMSLog.i("PushSelfShowLog", "msgObj == null");
-        return false;
-      }
-    }
-    catch (JSONException localJSONException)
-    {
-      HMSLog.d("PushSelfShowLog", "parse message exception.");
-      return false;
-      if (b(localJSONException))
-      {
-        this.f = localJSONException.optString("dispPkgName");
-        c(localJSONException);
-        this.B = localJSONException.optInt("notifyId", -1);
-        this.C = localJSONException.optString("data");
-        boolean bool = d(localJSONException);
-        return bool;
-      }
-    }
-    catch (Exception localException)
-    {
-      HMSLog.d("PushSelfShowLog", localException.toString());
-    }
-    return false;
-  }
-  
-  public byte[] c()
-  {
-    try
-    {
-      byte[] arrayOfByte = i(a(j(z()), y())).toString().getBytes(ab.a);
-      return arrayOfByte;
-    }
-    catch (JSONException localJSONException)
-    {
-      HMSLog.e("PushSelfShowLog", "getMsgData failed JSONException:", localJSONException);
-    }
-    return new byte[0];
-  }
-  
-  public byte[] d()
-  {
-    return this.s.getBytes(ab.a);
-  }
-  
-  public String e()
-  {
-    return this.a;
-  }
-  
-  public int f()
-  {
-    return this.b;
-  }
-  
-  public String g()
-  {
-    return this.c;
-  }
-  
-  public String h()
-  {
-    return this.d;
-  }
-  
-  public String i()
-  {
-    return this.f;
-  }
-  
-  public String j()
-  {
-    return this.g;
-  }
-  
-  public String k()
-  {
-    return this.h;
-  }
-  
-  public String l()
-  {
-    return this.j;
-  }
-  
-  public String m()
-  {
-    return this.l;
-  }
-  
-  public String n()
-  {
-    return this.m;
-  }
-  
-  public int o()
-  {
-    return this.t;
-  }
-  
-  public String p()
-  {
-    return this.k;
-  }
-  
-  public String q()
-  {
-    return this.u;
-  }
-  
-  public String r()
-  {
-    return this.v;
-  }
-  
-  public int s()
-  {
-    return this.x;
-  }
-  
-  public String t()
-  {
-    return this.A;
-  }
-  
-  public int u()
-  {
-    return this.B;
-  }
-  
-  public String v()
-  {
-    return this.D;
-  }
-  
-  public String w()
-  {
-    if (this.x == 1) {
-      return a();
-    }
-    return String.valueOf(System.currentTimeMillis());
-  }
-  
-  public String x()
-  {
-    return this.E;
+    a(paramContext, a(paramContext, paramk, paramArrayOfInt, "-1", 32), paramk.f(), paramArrayOfInt[3]);
   }
 }
 

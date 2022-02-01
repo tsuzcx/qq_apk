@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.text.TextUtils;
 import android.view.MotionEvent;
 import com.qq.jce.wup.BasicClassTypeUtil;
+import com.tencent.aelight.camera.download.api.IAEResUtil;
 import com.tencent.av.gaudio.AVNotifyCenter;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
@@ -24,7 +25,6 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.plugin.IPluginManager;
 import cooperation.plugin.IPluginManager.PluginParams;
 import cooperation.plugin.PluginInfo;
-import dov.com.qq.im.ae.download.AEResUtil;
 import java.lang.reflect.Constructor;
 import mqq.app.AppRuntime;
 import tencent.im.oidb.cmd0x8dd.oidb_0x8dd.SelfInfo;
@@ -34,68 +34,77 @@ public class NearbyVideoChatProxyActivity
 {
   public static AppRuntime a(BaseApplicationImpl paramBaseApplicationImpl, String paramString)
   {
-    if ((paramBaseApplicationImpl == null) || (paramString == null)) {
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyVideoAppInterface", 2, "createAppInterface");
+    if (paramBaseApplicationImpl != null)
+    {
+      if (paramString == null) {
+        return null;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyVideoAppInterface", 2, "createAppInterface");
+      }
     }
     try
     {
-      paramString = Class.forName("com.tencent.mobileqq.nearbyvideochat.com.tencent.av.app.NearbyVideoAppInterface");
-      paramBaseApplicationImpl = paramString;
+      try
+      {
+        paramString = Class.forName("com.tencent.mobileqq.nearbyvideochat.com.tencent.av.app.NearbyVideoAppInterface");
+        paramBaseApplicationImpl = paramString;
+      }
+      catch (Exception paramBaseApplicationImpl)
+      {
+        break label112;
+      }
     }
     catch (ClassNotFoundException paramString)
     {
-      for (;;)
-      {
-        paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "nearby_video_chat_plugin.apk");
-        paramBaseApplicationImpl = paramString.loadClass("com.tencent.mobileqq.nearbyvideochat.com.tencent.av.app.NearbyVideoAppInterface");
-        BasicClassTypeUtil.setClassLoader(true, paramString);
-      }
+      label39:
+      break label39;
     }
-    catch (Exception paramBaseApplicationImpl)
-    {
-      if (!QLog.isColorLevel()) {
-        break label92;
-      }
-      QLog.d("NearbyVideoAppInterface", 2, "createAppInterface exp:", paramBaseApplicationImpl);
-      label92:
-      if (!QLog.isColorLevel()) {
-        break label106;
-      }
-      QLog.d("NearbyVideoAppInterface", 2, "createAppInterface return null");
-      label106:
-      return null;
-    }
+    paramString = PluginStatic.getOrCreateClassLoader(paramBaseApplicationImpl, "nearby_video_chat_plugin.apk");
+    paramBaseApplicationImpl = paramString.loadClass("com.tencent.mobileqq.nearbyvideochat.com.tencent.av.app.NearbyVideoAppInterface");
+    BasicClassTypeUtil.setClassLoader(true, paramString);
     if (paramBaseApplicationImpl == null)
     {
-      if (QLog.isColorLevel()) {
+      if (QLog.isColorLevel())
+      {
         QLog.d("NearbyVideoAppInterface", 2, "createNearbyVideoAppInterface load class fail, return null");
+        return null;
       }
     }
     else
     {
-      do
+      paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
+      if ((paramBaseApplicationImpl != null) && ((paramBaseApplicationImpl instanceof AppInterface)))
       {
-        paramBaseApplicationImpl = paramBaseApplicationImpl.getDeclaredConstructor(new Class[0]).newInstance(new Object[0]);
-      } while ((paramBaseApplicationImpl == null) || (!(paramBaseApplicationImpl instanceof AppInterface)));
-      paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
-      return paramBaseApplicationImpl;
+        paramBaseApplicationImpl = (AppInterface)paramBaseApplicationImpl;
+        return paramBaseApplicationImpl;
+        label112:
+        if (QLog.isColorLevel()) {
+          QLog.d("NearbyVideoAppInterface", 2, "createAppInterface exp:", paramBaseApplicationImpl);
+        }
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("NearbyVideoAppInterface", 2, "createAppInterface return null");
+      }
+      return null;
     }
     return null;
   }
   
   protected static void a(Activity paramActivity, Intent paramIntent, Dialog paramDialog, String paramString1, AppInterface paramAppInterface, String paramString2, oidb_0x8dd.SelfInfo paramSelfInfo, int paramInt)
   {
-    AEResUtil.e();
+    ((IAEResUtil)QRoute.api(IAEResUtil.class)).loadAEBaseSo();
     Object localObject = ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).getSosoInfo();
-    long l2 = 0L;
     long l1 = 0L;
+    long l2;
     if (localObject != null)
     {
-      l2 = Double.valueOf(((SosoLbsInfo)localObject).mLocation.mLon02 * 1000000.0D).longValue();
-      l1 = Double.valueOf(((SosoLbsInfo)localObject).mLocation.mLat02 * 1000000.0D).longValue();
+      l1 = Double.valueOf(((SosoLbsInfo)localObject).mLocation.mLon02 * 1000000.0D).longValue();
+      l2 = Double.valueOf(((SosoLbsInfo)localObject).mLocation.mLat02 * 1000000.0D).longValue();
+    }
+    else
+    {
+      l2 = 0L;
     }
     localObject = new IPluginManager.PluginParams(1);
     ((IPluginManager.PluginParams)localObject).b = "nearby_video_chat_plugin.apk";
@@ -103,19 +112,20 @@ public class NearbyVideoChatProxyActivity
     ((IPluginManager.PluginParams)localObject).jdField_a_of_type_JavaLangString = paramAppInterface.getCurrentAccountUin();
     ((IPluginManager.PluginParams)localObject).f = paramString1;
     ((IPluginManager.PluginParams)localObject).jdField_a_of_type_JavaLangClass = NearbyVideoChatProxyActivity.class;
-    paramString1 = paramIntent;
     if (paramIntent == null) {
-      paramString1 = new Intent();
+      paramIntent = new Intent();
     }
-    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent = paramString1;
+    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent = paramIntent;
     ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidAppDialog = paramDialog;
     ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("userQqResources", 2);
     ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("param_plugin_gesturelock", true);
     ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("sessionType", 2);
     ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("uinType", 10003);
-    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("MultiAVType", 0);
-    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("lon", l2);
-    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("lat", l1);
+    paramIntent = ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent;
+    int k = 0;
+    paramIntent.putExtra("MultiAVType", 0);
+    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("lon", l1);
+    ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("lat", l2);
     if (!TextUtils.isEmpty(paramString2)) {
       ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("nearbyVideoConfig", paramString2);
     }
@@ -130,43 +140,48 @@ public class NearbyVideoChatProxyActivity
     }
     paramIntent = ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent;
     boolean bool;
-    int i;
+    if (paramSelfInfo != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramIntent.putExtra("hasSelfInfo", bool);
     int j;
-    int k;
+    int i;
     if (paramSelfInfo != null)
     {
-      bool = true;
-      paramIntent.putExtra("hasSelfInfo", bool);
-      if (paramSelfInfo == null) {
-        break label569;
-      }
       ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("selfInfoLevel", paramSelfInfo.uint32_charm_level.get());
       ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("selfInfoAge", paramSelfInfo.uint32_age.get());
       ((IPluginManager.PluginParams)localObject).jdField_a_of_type_AndroidContentIntent.putExtra("selfInfoGender", paramSelfInfo.uint32_gender.get() + 1);
-      i = paramSelfInfo.uint32_charm_level.get();
-      j = paramSelfInfo.uint32_gender.get();
+      j = paramSelfInfo.uint32_charm_level.get();
+      i = paramSelfInfo.uint32_gender.get() + 1;
       k = paramSelfInfo.uint32_age.get();
-      j += 1;
     }
-    for (;;)
+    else
     {
-      ((IPluginManager.PluginParams)localObject).c = paramInt;
-      ((IPluginManager.PluginParams)localObject).d = 10000;
-      ((IPluginManager.PluginParams)localObject).g = null;
-      paramIntent = null;
-      if (paramInt == 123987) {
-        paramIntent = new NearbyVideoChatProxyActivity.1(paramActivity);
-      }
-      IPluginManager.a(paramActivity, (IPluginManager.PluginParams)localObject, paramIntent);
-      ReportController.b(null, "dc00899", "grp_lbs", "", "video_chat", "num_entry", 0, 0, i + "", j + "", k + "", "");
-      return;
-      bool = false;
-      break;
-      label569:
       i = 0;
       j = 0;
-      k = 0;
     }
+    ((IPluginManager.PluginParams)localObject).c = paramInt;
+    ((IPluginManager.PluginParams)localObject).d = 10000;
+    paramIntent = null;
+    ((IPluginManager.PluginParams)localObject).g = null;
+    if (paramInt == 123987) {
+      paramIntent = new NearbyVideoChatProxyActivity.1(paramActivity);
+    }
+    IPluginManager.a(paramActivity, (IPluginManager.PluginParams)localObject, paramIntent);
+    paramActivity = new StringBuilder();
+    paramActivity.append(j);
+    paramActivity.append("");
+    paramActivity = paramActivity.toString();
+    paramIntent = new StringBuilder();
+    paramIntent.append(i);
+    paramIntent.append("");
+    paramIntent = paramIntent.toString();
+    paramDialog = new StringBuilder();
+    paramDialog.append(k);
+    paramDialog.append("");
+    ReportController.b(null, "dc00899", "grp_lbs", "", "video_chat", "num_entry", 0, 0, paramActivity, paramIntent, paramDialog.toString(), "");
   }
   
   public static void a(AppInterface paramAppInterface, Activity paramActivity, Intent paramIntent, String paramString, oidb_0x8dd.SelfInfo paramSelfInfo, int paramInt)
@@ -202,7 +217,7 @@ public class NearbyVideoChatProxyActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop.NearbyVideoChatProxyActivity
  * JD-Core Version:    0.7.0.1
  */

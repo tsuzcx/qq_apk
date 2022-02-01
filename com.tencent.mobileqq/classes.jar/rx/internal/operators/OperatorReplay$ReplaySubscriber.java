@@ -36,23 +36,28 @@ final class OperatorReplay$ReplaySubscriber<T>
   
   boolean add(OperatorReplay.InnerProducer<T> paramInnerProducer)
   {
-    if (paramInnerProducer == null) {
-      throw new NullPointerException();
-    }
-    OperatorReplay.InnerProducer[] arrayOfInnerProducer1;
-    OperatorReplay.InnerProducer[] arrayOfInnerProducer2;
-    do
+    if (paramInnerProducer != null)
     {
-      arrayOfInnerProducer1 = (OperatorReplay.InnerProducer[])this.producers.get();
-      if (arrayOfInnerProducer1 == TERMINATED) {
-        return false;
-      }
-      int i = arrayOfInnerProducer1.length;
-      arrayOfInnerProducer2 = new OperatorReplay.InnerProducer[i + 1];
-      System.arraycopy(arrayOfInnerProducer1, 0, arrayOfInnerProducer2, 0, i);
-      arrayOfInnerProducer2[i] = paramInnerProducer;
-    } while (!this.producers.compareAndSet(arrayOfInnerProducer1, arrayOfInnerProducer2));
-    return true;
+      OperatorReplay.InnerProducer[] arrayOfInnerProducer1;
+      OperatorReplay.InnerProducer[] arrayOfInnerProducer2;
+      do
+      {
+        arrayOfInnerProducer1 = (OperatorReplay.InnerProducer[])this.producers.get();
+        if (arrayOfInnerProducer1 == TERMINATED) {
+          return false;
+        }
+        int i = arrayOfInnerProducer1.length;
+        arrayOfInnerProducer2 = new OperatorReplay.InnerProducer[i + 1];
+        System.arraycopy(arrayOfInnerProducer1, 0, arrayOfInnerProducer2, 0, i);
+        arrayOfInnerProducer2[i] = paramInnerProducer;
+      } while (!this.producers.compareAndSet(arrayOfInnerProducer1, arrayOfInnerProducer2));
+      return true;
+    }
+    paramInnerProducer = new NullPointerException();
+    for (;;)
+    {
+      throw paramInnerProducer;
+    }
   }
   
   void init()
@@ -62,108 +67,115 @@ final class OperatorReplay$ReplaySubscriber<T>
   
   void manageRequests()
   {
-    if (isUnsubscribed()) {}
-    for (;;)
-    {
+    if (isUnsubscribed()) {
       return;
-      try
+    }
+    try
+    {
+      if (this.emitting)
       {
-        if (this.emitting)
-        {
-          this.missed = true;
+        this.missed = true;
+        return;
+      }
+      this.emitting = true;
+      for (;;)
+      {
+        if (isUnsubscribed()) {
           return;
         }
-      }
-      finally {}
-      this.emitting = true;
-      while (!isUnsubscribed())
-      {
-        Object localObject2 = (OperatorReplay.InnerProducer[])this.producers.get();
+        Object localObject1 = (OperatorReplay.InnerProducer[])this.producers.get();
         long l2 = this.maxChildRequested;
-        int j = localObject2.length;
-        int i = 0;
+        int j = localObject1.length;
         long l1 = l2;
+        int i = 0;
         while (i < j)
         {
-          l1 = Math.max(l1, localObject2[i].totalRequested.get());
+          l1 = Math.max(l1, localObject1[i].totalRequested.get());
           i += 1;
         }
         long l3 = this.maxUpstreamRequested;
-        localObject2 = this.producer;
+        localObject1 = this.producer;
         l2 = l1 - l2;
         if (l2 != 0L)
         {
           this.maxChildRequested = l1;
-          if (localObject2 != null) {
+          if (localObject1 != null)
+          {
             if (l3 != 0L)
             {
               this.maxUpstreamRequested = 0L;
-              ((Producer)localObject2).request(l3 + l2);
+              ((Producer)localObject1).request(l3 + l2);
+            }
+            else
+            {
+              ((Producer)localObject1).request(l2);
             }
           }
-        }
-        for (;;)
-        {
-          try
+          else
           {
-            if (this.missed) {
-              break;
+            l2 = l3 + l2;
+            l1 = l2;
+            if (l2 < 0L) {
+              l1 = 9223372036854775807L;
             }
+            this.maxUpstreamRequested = l1;
+          }
+        }
+        else if ((l3 != 0L) && (localObject1 != null))
+        {
+          this.maxUpstreamRequested = 0L;
+          ((Producer)localObject1).request(l3);
+        }
+        try
+        {
+          if (!this.missed)
+          {
             this.emitting = false;
             return;
           }
-          finally {}
-          localObject3.request(l2);
-          continue;
-          l2 = l3 + l2;
-          l1 = l2;
-          if (l2 < 0L) {
-            l1 = 9223372036854775807L;
-          }
-          this.maxUpstreamRequested = l1;
-          continue;
-          if ((l3 != 0L) && (localObject3 != null))
-          {
-            this.maxUpstreamRequested = 0L;
-            localObject3.request(l3);
-          }
+          this.missed = false;
         }
-        this.missed = false;
+        finally {}
       }
+      throw localObject3;
     }
+    finally {}
+    for (;;) {}
   }
   
   public void onCompleted()
   {
-    if (!this.done) {
+    if (!this.done)
+    {
       this.done = true;
-    }
-    try
-    {
-      this.buffer.complete();
-      replay();
-      return;
-    }
-    finally
-    {
-      unsubscribe();
+      try
+      {
+        this.buffer.complete();
+        replay();
+        return;
+      }
+      finally
+      {
+        unsubscribe();
+      }
     }
   }
   
   public void onError(Throwable paramThrowable)
   {
-    if (!this.done) {
+    if (!this.done)
+    {
       this.done = true;
-    }
-    try
-    {
-      this.buffer.error(paramThrowable);
-      replay();
-      return;
-    }
-    finally
-    {
-      unsubscribe();
+      try
+      {
+        this.buffer.error(paramThrowable);
+        replay();
+        return;
+      }
+      finally
+      {
+        unsubscribe();
+      }
     }
   }
   
@@ -178,40 +190,48 @@ final class OperatorReplay$ReplaySubscriber<T>
   
   void remove(OperatorReplay.InnerProducer<T> paramInnerProducer)
   {
-    OperatorReplay.InnerProducer[] arrayOfInnerProducer2 = (OperatorReplay.InnerProducer[])this.producers.get();
-    if ((arrayOfInnerProducer2 == EMPTY) || (arrayOfInnerProducer2 == TERMINATED)) {}
-    int m;
-    int i;
-    label39:
-    int j;
+    OperatorReplay.InnerProducer[] arrayOfInnerProducer2;
+    OperatorReplay.InnerProducer[] arrayOfInnerProducer1;
     do
     {
-      return;
+      arrayOfInnerProducer2 = (OperatorReplay.InnerProducer[])this.producers.get();
+      if (arrayOfInnerProducer2 == EMPTY) {
+        break;
+      }
+      if (arrayOfInnerProducer2 == TERMINATED) {
+        return;
+      }
       int k = -1;
-      m = arrayOfInnerProducer2.length;
-      i = 0;
-      j = k;
-      if (i < m)
+      int m = arrayOfInnerProducer2.length;
+      int i = 0;
+      int j;
+      for (;;)
       {
-        if (!arrayOfInnerProducer2[i].equals(paramInnerProducer)) {
+        j = k;
+        if (i >= m) {
           break;
         }
-        j = i;
+        if (arrayOfInnerProducer2[i].equals(paramInnerProducer))
+        {
+          j = i;
+          break;
+        }
+        i += 1;
       }
-    } while (j < 0);
-    OperatorReplay.InnerProducer[] arrayOfInnerProducer1;
-    if (m == 1) {
-      arrayOfInnerProducer1 = EMPTY;
-    }
-    while (this.producers.compareAndSet(arrayOfInnerProducer2, arrayOfInnerProducer1))
-    {
-      return;
-      i += 1;
-      break label39;
-      arrayOfInnerProducer1 = new OperatorReplay.InnerProducer[m - 1];
-      System.arraycopy(arrayOfInnerProducer2, 0, arrayOfInnerProducer1, 0, j);
-      System.arraycopy(arrayOfInnerProducer2, j + 1, arrayOfInnerProducer1, j, m - j - 1);
-    }
+      if (j < 0) {
+        return;
+      }
+      if (m == 1)
+      {
+        arrayOfInnerProducer1 = EMPTY;
+      }
+      else
+      {
+        arrayOfInnerProducer1 = new OperatorReplay.InnerProducer[m - 1];
+        System.arraycopy(arrayOfInnerProducer2, 0, arrayOfInnerProducer1, 0, j);
+        System.arraycopy(arrayOfInnerProducer2, j + 1, arrayOfInnerProducer1, j, m - j - 1);
+      }
+    } while (!this.producers.compareAndSet(arrayOfInnerProducer2, arrayOfInnerProducer1));
   }
   
   void replay()
@@ -229,17 +249,19 @@ final class OperatorReplay$ReplaySubscriber<T>
   
   public void setProducer(Producer paramProducer)
   {
-    if (this.producer != null) {
-      throw new IllegalStateException("Only a single producer can be set on a Subscriber.");
+    if (this.producer == null)
+    {
+      this.producer = paramProducer;
+      manageRequests();
+      replay();
+      return;
     }
-    this.producer = paramProducer;
-    manageRequests();
-    replay();
+    throw new IllegalStateException("Only a single producer can be set on a Subscriber.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorReplay.ReplaySubscriber
  * JD-Core Version:    0.7.0.1
  */

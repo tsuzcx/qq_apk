@@ -80,14 +80,15 @@ public final class GetResourceRespInfo
     paramJceOutputStream.write(this.strResDesc, 9);
     paramJceOutputStream.write(this.strResURL_big, 10);
     paramJceOutputStream.write(this.strResURL_small, 11);
-    if (this.strResConf != null) {
-      paramJceOutputStream.write(this.strResConf, 12);
+    String str = this.strResConf;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     protocol.KQQConfig.GetResourceRespInfo
  * JD-Core Version:    0.7.0.1
  */

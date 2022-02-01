@@ -32,76 +32,79 @@ public class ForwardPluginShareWebViewHelper
   {
     int i = paramSessionInfo.jdField_a_of_type_Int;
     long l = Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString);
-    String str2 = paramBundle.getString("title");
-    paramSessionInfo = paramBundle.getString("desc");
-    Object localObject1 = paramBundle.getString("detail_url");
-    String str1 = paramBundle.getString("image_url_remote");
-    QLog.d("ForwardPluginShareWebViewHelper", 1, "buildcmd0xb77ReqBody picture_url =" + str1 + "\n, appId=" + 100446242L + ", uinType = " + i + "\n, title = " + str2 + ", summary = " + paramSessionInfo + ", url = " + (String)localObject1);
-    if (i == 0) {
-      i = 0;
-    }
-    for (;;)
+    paramSessionInfo = paramBundle.getString("title");
+    Object localObject1 = paramBundle.getString("desc");
+    String str1 = paramBundle.getString("detail_url");
+    String str2 = paramBundle.getString("image_url_remote");
+    paramBundle = new StringBuilder();
+    paramBundle.append("buildcmd0xb77ReqBody picture_url =");
+    paramBundle.append(str2);
+    paramBundle.append("\n, appId=");
+    paramBundle.append(100446242L);
+    paramBundle.append(", uinType = ");
+    paramBundle.append(i);
+    paramBundle.append("\n, title = ");
+    paramBundle.append(paramSessionInfo);
+    paramBundle.append(", summary = ");
+    paramBundle.append((String)localObject1);
+    paramBundle.append(", url = ");
+    paramBundle.append(str1);
+    QLog.d("ForwardPluginShareWebViewHelper", 1, paramBundle.toString());
+    if (i == 0) {}
+    do
     {
-      paramBundle = new oidb_cmd0xdc2.ReqBody();
-      oidb_cmd0xb77.ReqBody localReqBody = new oidb_cmd0xb77.ReqBody();
-      localReqBody.appid.set(100446242L);
-      localReqBody.app_type.set(1);
-      localReqBody.msg_style.set(0);
-      localReqBody.recv_uin.set(l);
-      Object localObject2 = new oidb_cmd0xb77.ClientInfo();
-      ((oidb_cmd0xb77.ClientInfo)localObject2).platform.set(1);
-      localReqBody.client_info.set((MessageMicro)localObject2);
-      localObject2 = new oidb_cmd0xb77.RichMsgBody();
-      ((oidb_cmd0xb77.RichMsgBody)localObject2).using_ark.set(true);
-      if (!TextUtils.isEmpty(str2)) {
-        ((oidb_cmd0xb77.RichMsgBody)localObject2).title.set(str2);
-      }
-      if (!TextUtils.isEmpty(paramSessionInfo))
+      i = 0;
+      break;
+      if (i == 1)
       {
-        if (!paramSessionInfo.contains(HardCodeUtil.a(2131704834))) {
-          break label415;
-        }
-        paramSessionInfo = paramSessionInfo.replace(HardCodeUtil.a(2131704861), "");
-      }
-      label415:
-      for (;;)
-      {
-        ((oidb_cmd0xb77.RichMsgBody)localObject2).summary.set(paramSessionInfo);
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          ((oidb_cmd0xb77.RichMsgBody)localObject2).url.set((String)localObject1);
-        }
-        if (!TextUtils.isEmpty(str1)) {
-          ((oidb_cmd0xb77.RichMsgBody)localObject2).picture_url.set(str1);
-        }
-        localReqBody.rich_msg_body.set((MessageMicro)localObject2);
-        paramBundle.msg_body.set(localReqBody);
-        paramSessionInfo = new ArrayList();
-        localObject1 = new oidb_cmd0xdc2.BatchSendReq();
-        ((oidb_cmd0xdc2.BatchSendReq)localObject1).recv_uin.set(l);
-        ((oidb_cmd0xdc2.BatchSendReq)localObject1).send_type.set(i);
-        paramSessionInfo.add(localObject1);
-        paramBundle.batch_send_req.set(paramSessionInfo);
-        return paramBundle;
-        if (i == 1)
-        {
-          i = 1;
-          break;
-        }
-        if (i != 3000) {
-          break label418;
-        }
-        i = 2;
+        i = 1;
         break;
       }
-      label418:
-      i = 0;
+    } while (i != 3000);
+    i = 2;
+    paramBundle = new oidb_cmd0xdc2.ReqBody();
+    oidb_cmd0xb77.ReqBody localReqBody = new oidb_cmd0xb77.ReqBody();
+    localReqBody.appid.set(100446242L);
+    localReqBody.app_type.set(1);
+    localReqBody.msg_style.set(0);
+    localReqBody.recv_uin.set(l);
+    Object localObject2 = new oidb_cmd0xb77.ClientInfo();
+    ((oidb_cmd0xb77.ClientInfo)localObject2).platform.set(1);
+    localReqBody.client_info.set((MessageMicro)localObject2);
+    localObject2 = new oidb_cmd0xb77.RichMsgBody();
+    ((oidb_cmd0xb77.RichMsgBody)localObject2).using_ark.set(true);
+    if (!TextUtils.isEmpty(paramSessionInfo)) {
+      ((oidb_cmd0xb77.RichMsgBody)localObject2).title.set(paramSessionInfo);
     }
+    if (!TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      paramSessionInfo = (SessionInfo)localObject1;
+      if (((String)localObject1).contains(HardCodeUtil.a(2131704910))) {
+        paramSessionInfo = ((String)localObject1).replace(HardCodeUtil.a(2131704937), "");
+      }
+      ((oidb_cmd0xb77.RichMsgBody)localObject2).summary.set(paramSessionInfo);
+    }
+    if (!TextUtils.isEmpty(str1)) {
+      ((oidb_cmd0xb77.RichMsgBody)localObject2).url.set(str1);
+    }
+    if (!TextUtils.isEmpty(str2)) {
+      ((oidb_cmd0xb77.RichMsgBody)localObject2).picture_url.set(str2);
+    }
+    localReqBody.rich_msg_body.set((MessageMicro)localObject2);
+    paramBundle.msg_body.set(localReqBody);
+    paramSessionInfo = new ArrayList();
+    localObject1 = new oidb_cmd0xdc2.BatchSendReq();
+    ((oidb_cmd0xdc2.BatchSendReq)localObject1).recv_uin.set(l);
+    ((oidb_cmd0xdc2.BatchSendReq)localObject1).send_type.set(i);
+    paramSessionInfo.add(localObject1);
+    paramBundle.batch_send_req.set(paramSessionInfo);
+    return paramBundle;
   }
   
   public static void a(@NonNull QQAppInterface paramQQAppInterface, @NonNull Activity paramActivity, @NonNull SessionInfo paramSessionInfo, @NonNull Intent paramIntent)
   {
-    QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299166));
-    localQQProgressDialog.c(2131694694);
+    QQProgressDialog localQQProgressDialog = new QQProgressDialog(paramActivity, paramActivity.getResources().getDimensionPixelSize(2131299168));
+    localQQProgressDialog.c(2131694668);
     localQQProgressDialog.show();
     String str = paramIntent.getStringExtra("share_comment_message");
     paramIntent = paramIntent.getExtras();
@@ -116,7 +119,7 @@ public class ForwardPluginShareWebViewHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPluginShareWebViewHelper
  * JD-Core Version:    0.7.0.1
  */

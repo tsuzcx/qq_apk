@@ -40,7 +40,7 @@ public class ImageProgressMask
   private void a()
   {
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165504));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131165480));
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, 0.0F, 0.0F);
@@ -49,7 +49,7 @@ public class ImageProgressMask
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     try
     {
@@ -68,11 +68,13 @@ public class ImageProgressMask
     }
     catch (Exception localException)
     {
-      super.onDraw(paramCanvas);
+      label98:
+      break label98;
     }
+    super.onDraw(paramCanvas);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != 0) && (paramInt2 != 0) && ((paramInt1 != paramInt3) || (paramInt2 != paramInt4))) {
@@ -85,13 +87,14 @@ public class ImageProgressMask
     this.jdField_a_of_type_Float = paramFloat;
     this.jdField_a_of_type_Int = getWidth();
     this.b = getHeight();
-    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, this.b * this.jdField_a_of_type_Float, this.jdField_a_of_type_Int, this.b);
+    int i = this.b;
+    this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, i * this.jdField_a_of_type_Float, this.jdField_a_of_type_Int, i);
     postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.view.ImageProgressMask
  * JD-Core Version:    0.7.0.1
  */

@@ -10,41 +10,55 @@ class LightNode$2
   
   public void tipsNeedHide(String paramString1, String paramString2, int paramInt)
   {
-    Log.d("LightNode", "tipsNeedHide: tips=" + paramString1 + ", icon=" + paramString2 + ", type=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tipsNeedHide: tips=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", icon=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(paramInt);
+    Log.d("LightNode", localStringBuilder.toString());
     if (LightNode.access$100(this.this$0) != null)
     {
-      if (paramInt != 0) {
-        break label70;
+      if (paramInt == 0)
+      {
+        LightNode.access$100(this.this$0).onHideNormalTip();
+        return;
       }
-      LightNode.access$100(this.this$0).onHideNormalTip();
+      if (paramInt == 1) {
+        LightNode.access$100(this.this$0).onHidePagTip();
+      }
     }
-    label70:
-    while (paramInt != 1) {
-      return;
-    }
-    LightNode.access$100(this.this$0).onHidePagTip();
   }
   
   public void tipsNeedShow(String paramString1, String paramString2, int paramInt1, int paramInt2)
   {
-    Log.d("LightNode", "tipsNeedShow: tips=" + paramString1 + ", icon=" + paramString2 + ", type=" + paramInt1 + ", duration=" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tipsNeedShow: tips=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", icon=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", duration=");
+    localStringBuilder.append(paramInt2);
+    Log.d("LightNode", localStringBuilder.toString());
     if (LightNode.access$100(this.this$0) != null)
     {
-      if (paramInt1 != 0) {
-        break label84;
+      if (paramInt1 == 0)
+      {
+        LightNode.access$100(this.this$0).onShowNormalTip(paramString1, paramString2, paramInt2);
+        return;
       }
-      LightNode.access$100(this.this$0).onShowNormalTip(paramString1, paramString2, paramInt2);
+      if (paramInt1 == 1) {
+        LightNode.access$100(this.this$0).onShowPagTip(paramString2, paramInt2);
+      }
     }
-    label84:
-    while (paramInt1 != 1) {
-      return;
-    }
-    LightNode.access$100(this.this$0).onShowPagTip(paramString2, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.LightNode.2
  * JD-Core Version:    0.7.0.1
  */

@@ -83,11 +83,13 @@ public final class qun_get_photo_list_ex_req
     paramJceOutputStream.write(this.sort, 7);
     paramJceOutputStream.write(this.get_comment, 8);
     paramJceOutputStream.write(this.type, 9);
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 10);
+    Object localObject = this.url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 11);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
     paramJceOutputStream.write(this.batch_id, 12);
     paramJceOutputStream.write(this.get_poi, 13);
@@ -96,7 +98,7 @@ public final class qun_get_photo_list_ex_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_get_photo_list_ex_req
  * JD-Core Version:    0.7.0.1
  */

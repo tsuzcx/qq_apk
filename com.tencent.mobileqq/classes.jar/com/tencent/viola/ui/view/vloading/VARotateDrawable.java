@@ -42,7 +42,7 @@ public class VARotateDrawable
     float f1 = i - j;
     float f2 = k - m;
     i = paramCanvas.save();
-    paramCanvas.rotate(this.mCurrentDeg, f1 * 0.5F + localRect.left, localRect.top + f2 * 0.5F);
+    paramCanvas.rotate(this.mCurrentDeg, f1 * 0.5F + localRect.left, f2 * 0.5F + localRect.top);
     localDrawable.draw(paramCanvas);
     paramCanvas.restoreToCount(i);
   }
@@ -78,12 +78,15 @@ public class VARotateDrawable
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
     if (paramBoolean1)
     {
-      if ((bool) || (paramBoolean2)) {
+      if ((bool) || (paramBoolean2))
+      {
         nextFrame();
+        return bool;
       }
-      return bool;
     }
-    unscheduleSelf(this.mNextFrame);
+    else {
+      unscheduleSelf(this.mNextFrame);
+    }
     return bool;
   }
   
@@ -104,7 +107,7 @@ public class VARotateDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.vloading.VARotateDrawable
  * JD-Core Version:    0.7.0.1
  */

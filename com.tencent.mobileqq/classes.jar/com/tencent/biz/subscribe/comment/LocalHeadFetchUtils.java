@@ -7,7 +7,7 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.face.FaceConstant.HeadConfig;
 import com.tencent.mobileqq.data.Setting;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.nearby.NearbyAppInterfaceUtils;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
 import com.tencent.mobileqq.util.BitmapManager;
@@ -21,28 +21,19 @@ public class LocalHeadFetchUtils
   {
     String str = QQAppInterface.getFaceSettingKey(paramInt1, paramString, paramInt2);
     paramString = QQEntityManagerFactoryProxy.a(paramString).createEntityManager();
-    if ((0 == 0) && (!TextUtils.isEmpty(str)) && (paramString != null)) {}
-    for (paramString = (Setting)paramString.find(Setting.class, str);; paramString = null)
-    {
-      if (paramString == null) {
-        return new Pair(Boolean.valueOf(true), paramString);
-      }
-      boolean bool;
-      switch (paramInt1)
-      {
-      default: 
-        bool = false;
-      }
-      for (;;)
-      {
-        return new Pair(Boolean.valueOf(bool), paramString);
-        if ((paramString == null) || (System.currentTimeMillis() - paramString.updateTimestamp > 86400000L)) {
-          bool = true;
-        } else {
-          bool = false;
-        }
-      }
+    if ((!TextUtils.isEmpty(str)) && (paramString != null)) {
+      paramString = (Setting)paramString.find(Setting.class, str);
+    } else {
+      paramString = null;
     }
+    if (paramString == null) {
+      return new Pair(Boolean.valueOf(true), paramString);
+    }
+    boolean bool = false;
+    if (((paramInt1 == 1) || (paramInt1 == 4) || (paramInt1 == 11) || (paramInt1 == 16) || (paramInt1 == 32)) && ((paramString == null) || (System.currentTimeMillis() - paramString.updateTimestamp > 86400000L))) {
+      bool = true;
+    }
+    return new Pair(Boolean.valueOf(bool), paramString);
   }
   
   public static BitmapManager.BitmapDecodeResult a(String paramString)
@@ -55,7 +46,7 @@ public class LocalHeadFetchUtils
     {
       BitmapManager.a(paramString, localOptions, localBitmapDecodeResult);
       if (localBitmapDecodeResult.a == 1) {
-        NearbyAppInterface.b();
+        NearbyAppInterfaceUtils.a();
       }
       i += 1;
     } while ((i < 2) && (localBitmapDecodeResult.a == 1));
@@ -81,52 +72,97 @@ public class LocalHeadFetchUtils
       }
     }
     paramSetting = new StringBuilder(256);
-    if (paramInt1 == 32) {
-      if (SystemUtil.a())
-      {
+    if (paramInt1 == 32)
+    {
+      if (SystemUtil.a()) {
         paramSetting.append(AppConstants.PATH_HEAD_STRANGER);
-        localObject = a((Setting)localObject, paramString, paramInt1);
-        switch (((Integer)localObject[0]).intValue())
+      } else {
+        paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_stranger/");
+      }
+    }
+    else if (SystemUtil.a()) {
+      paramSetting.append(AppConstants.PATH_HEAD_HD);
+    } else {
+      paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
+    }
+    localObject = a((Setting)localObject, paramString, paramInt1);
+    paramInt1 = ((Integer)localObject[0]).intValue();
+    if (paramInt1 != -56)
+    {
+      if (paramInt1 != -55)
+      {
+        if (paramInt1 != 4)
         {
+          if (paramInt1 != 16)
+          {
+            if (paramInt1 != 32)
+            {
+              if (paramInt1 != 101)
+              {
+                if (paramInt1 != 113)
+                {
+                  if (paramInt1 == 1001)
+                  {
+                    paramSetting.append("dis_pstn_g_");
+                    localObject = new StringBuilder();
+                    ((StringBuilder)localObject).append(paramString);
+                    ((StringBuilder)localObject).append(paramString);
+                    paramString = ((StringBuilder)localObject).toString();
+                  }
+                }
+                else {
+                  paramSetting.append("new_troop_b_");
+                }
+              }
+              else
+              {
+                paramSetting.append("dis_g_");
+                localObject = new StringBuilder();
+                ((StringBuilder)localObject).append(paramString);
+                ((StringBuilder)localObject).append(paramString);
+                paramString = ((StringBuilder)localObject).toString();
+              }
+            }
+            else
+            {
+              paramSetting.append("stranger_");
+              paramSetting.append(Integer.toString(paramInt2));
+              paramSetting.append("_");
+            }
+          }
+          else
+          {
+            paramSetting.append("qcall_");
+            paramSetting.append(Integer.toString(paramInt2));
+            paramSetting.append("_");
+          }
+        }
+        else {
+          paramSetting.append("troop_");
         }
       }
-    }
-    for (;;)
-    {
-      localObject = MD5.toMD5(paramString);
-      localObject = MD5.toMD5((String)localObject + paramString);
-      paramSetting.append(MD5.toMD5((String)localObject + paramString));
-      paramSetting.append(".jpg_");
-      return paramSetting.toString();
-      paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_stranger/");
-      break;
-      if (SystemUtil.a())
+      else
       {
-        paramSetting.append(AppConstants.PATH_HEAD_HD);
-        break;
+        paramSetting.append("sys_");
+        paramString = (String)localObject[1];
       }
-      paramSetting.append("/data/data/com.tencent.mobileqq/files/head/_hd/");
-      break;
+    }
+    else
+    {
       paramSetting.append("troop_sys_b_");
       paramString = (String)localObject[1];
-      continue;
-      paramSetting.append("sys_");
-      paramString = (String)localObject[1];
-      continue;
-      paramSetting.append("dis_g_");
-      paramString = paramString + paramString;
-      continue;
-      paramSetting.append("dis_pstn_g_");
-      paramString = paramString + paramString;
-      continue;
-      paramSetting.append("troop_");
-      continue;
-      paramSetting.append("new_troop_b_");
-      continue;
-      paramSetting.append("stranger_").append(Integer.toString(paramInt2)).append("_");
-      continue;
-      paramSetting.append("qcall_").append(Integer.toString(paramInt2)).append("_");
     }
+    localObject = MD5.toMD5(paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramString);
+    localObject = MD5.toMD5(localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramString);
+    paramSetting.append(MD5.toMD5(localStringBuilder.toString()));
+    paramSetting.append(".jpg_");
+    return paramSetting.toString();
   }
   
   private static Object[] a(Setting paramSetting, String paramString, int paramInt)
@@ -152,32 +188,26 @@ public class LocalHeadFetchUtils
             if (paramSetting.bHeadType == 0)
             {
               str = String.valueOf(paramSetting.systemHeadID);
-              if (paramInt != 4) {
-                break label87;
+              if (paramInt == 4) {
+                i = -56;
+              } else if (paramInt == 16) {
+                i = 16;
+              } else if (paramInt == 116) {
+                i = 116;
+              } else {
+                i = -55;
               }
-              i = -56;
             }
           }
         }
       }
     }
-    for (;;)
-    {
-      return new Object[] { Integer.valueOf(i), str };
-      label87:
-      if (paramInt == 16) {
-        i = 16;
-      } else if (paramInt == 116) {
-        i = 116;
-      } else {
-        i = -55;
-      }
-    }
+    return new Object[] { Integer.valueOf(i), str };
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.LocalHeadFetchUtils
  * JD-Core Version:    0.7.0.1
  */

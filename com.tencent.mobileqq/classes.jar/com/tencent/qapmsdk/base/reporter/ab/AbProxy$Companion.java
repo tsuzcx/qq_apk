@@ -30,7 +30,13 @@ public final class AbProxy$Companion
     Intrinsics.checkParameterIsNotNull(paramString1, "valueDescription");
     Intrinsics.checkParameterIsNotNull(paramString2, "value");
     Intrinsics.checkParameterIsNotNull(paramClass, "abTypeClazz");
-    Logger.INSTANCE.i(new String[] { "QAPM_base_AbProxy", "setABFactor:" + paramClass + " val " + paramString2 });
+    paramString1 = Logger.INSTANCE;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setABFactor:");
+    localStringBuilder.append(paramClass);
+    localStringBuilder.append(" val ");
+    localStringBuilder.append(paramString2);
+    paramString1.i(new String[] { "QAPM_base_AbProxy", localStringBuilder.toString() });
     paramString1 = AbProviderSingleton.INSTANCE.getAbType(paramClass);
     if (paramString1 != null)
     {
@@ -52,7 +58,11 @@ public final class AbProxy$Companion
   public final void unSetAbFactor(@NotNull Class<? extends AbType> paramClass)
   {
     Intrinsics.checkParameterIsNotNull(paramClass, "abTypeClazz");
-    Logger.INSTANCE.i(new String[] { "QAPM_base_AbProxy", "unSetABFactor:" + paramClass });
+    Logger localLogger = Logger.INSTANCE;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unSetABFactor:");
+    localStringBuilder.append(paramClass);
+    localLogger.i(new String[] { "QAPM_base_AbProxy", localStringBuilder.toString() });
     paramClass = AbProviderSingleton.INSTANCE.getAbType(paramClass);
     if (paramClass != null)
     {
@@ -64,7 +74,7 @@ public final class AbProxy$Companion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.ab.AbProxy.Companion
  * JD-Core Version:    0.7.0.1
  */

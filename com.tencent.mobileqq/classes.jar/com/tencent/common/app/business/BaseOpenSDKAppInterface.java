@@ -21,7 +21,7 @@ public abstract class BaseOpenSDKAppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.business.BaseOpenSDKAppInterface
  * JD-Core Version:    0.7.0.1
  */

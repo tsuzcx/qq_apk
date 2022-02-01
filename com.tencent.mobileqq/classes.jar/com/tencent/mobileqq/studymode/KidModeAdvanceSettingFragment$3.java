@@ -18,20 +18,25 @@ class KidModeAdvanceSettingFragment$3
     if ((paramBoolean) && (paramLong == 0L))
     {
       paramBaseRequest = paramGetCircleSwitchRsp.sw.value.get();
-      QLog.d("IphoneTitleBarFragment", 1, "requestEntertainCount GetCircleSwitch success" + paramBaseRequest);
+      paramString = new StringBuilder();
+      paramString.append("requestEntertainCount GetCircleSwitch success");
+      paramString.append(paramBaseRequest);
+      QLog.d("IphoneTitleBarFragment", 1, paramString.toString());
       QzoneConfig.getInstance().updateOneConfig("qqcircle", "qqcircle_entrance_enable", paramBaseRequest);
     }
-    for (;;)
+    else
     {
-      KidModeAdvanceSettingFragment.b(this.a);
-      return;
-      QLog.d("IphoneTitleBarFragment", 1, "requestEntertainCount GetCircleSwitch error retcode= " + paramLong);
+      paramBaseRequest = new StringBuilder();
+      paramBaseRequest.append("requestEntertainCount GetCircleSwitch error retcode= ");
+      paramBaseRequest.append(paramLong);
+      QLog.d("IphoneTitleBarFragment", 1, paramBaseRequest.toString());
     }
+    KidModeAdvanceSettingFragment.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.KidModeAdvanceSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,51 +14,71 @@ final class RecentDanceConfigMgr$2
   
   public void onResp(NetResp paramNetResp)
   {
+    Object localObject;
     if (paramNetResp.mResult == 0)
     {
       paramNetResp = paramNetResp.mReq;
       if (new File(paramNetResp.mOutPath).exists())
       {
-        str = RecentDanceConfigMgr.a(paramNetResp.mOutPath);
-        if ((str == null) || ("".equals(str)) || (!str.equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5)))
+        localObject = RecentDanceConfigMgr.a(paramNetResp.mOutPath);
+        if ((localObject != null) && (!"".equals(localObject)) && (((String)localObject).equalsIgnoreCase(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5)))
         {
-          FileUtils.e(paramNetResp.mOutPath);
-          FileUtils.e(this.jdField_a_of_type_JavaLangString);
           if (QLog.isColorLevel()) {
-            QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: item.icon_md5" + this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5 + " md5=" + str);
+            QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: check success");
           }
+          FileUtils.rename(paramNetResp.mOutPath, this.jdField_a_of_type_JavaLangString);
+          RecentDanceConfigMgr.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo, this.jdField_a_of_type_JavaLangString);
+          return;
+        }
+        FileUtils.deleteFile(paramNetResp.mOutPath);
+        FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
+        if (QLog.isColorLevel())
+        {
+          paramNetResp = new StringBuilder();
+          paramNetResp.append("processNetWork onResp: item.icon_md5");
+          paramNetResp.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo.icon_md5);
+          paramNetResp.append(" md5=");
+          paramNetResp.append((String)localObject);
+          QLog.i("RecentDanceConfigMgr", 2, paramNetResp.toString());
         }
       }
-      while (!QLog.isColorLevel())
+      else if (QLog.isColorLevel())
       {
-        String str;
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: check success");
-        }
-        FileUtils.c(paramNetResp.mOutPath, this.jdField_a_of_type_JavaLangString);
-        RecentDanceConfigMgr.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoUtilRecentDanceConfigMgr$DItemInfo, this.jdField_a_of_type_JavaLangString);
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("processNetWork onResp[not exists]: mOutPath");
+        ((StringBuilder)localObject).append(paramNetResp.mOutPath);
+        QLog.i("RecentDanceConfigMgr", 2, ((StringBuilder)localObject).toString());
       }
-      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp[not exists]: mOutPath" + paramNetResp.mOutPath);
-      return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onResp: resp.mResult=" + paramNetResp.mResult);
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("processNetWork onResp: resp.mResult=");
+        ((StringBuilder)localObject).append(paramNetResp.mResult);
+        QLog.i("RecentDanceConfigMgr", 2, ((StringBuilder)localObject).toString());
+      }
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
     }
-    FileUtils.e(paramNetResp.mReq.mOutPath);
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("RecentDanceConfigMgr", 2, "processNetWork onUpdateProgeress: totalLen=" + paramLong2 + " curOffset=" + paramLong1);
+    if (QLog.isColorLevel())
+    {
+      paramNetReq = new StringBuilder();
+      paramNetReq.append("processNetWork onUpdateProgeress: totalLen=");
+      paramNetReq.append(paramLong2);
+      paramNetReq.append(" curOffset=");
+      paramNetReq.append(paramLong1);
+      QLog.i("RecentDanceConfigMgr", 2, paramNetReq.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.util.RecentDanceConfigMgr.2
  * JD-Core Version:    0.7.0.1
  */

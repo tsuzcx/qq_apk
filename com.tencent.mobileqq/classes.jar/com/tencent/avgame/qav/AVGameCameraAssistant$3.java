@@ -1,9 +1,9 @@
 package com.tencent.avgame.qav;
 
-import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.camera.api.ICameraManagerApi;
 import com.tencent.avgame.app.AVGameAppInterface;
 import com.tencent.avgame.business.observer.ObserverCenter;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 import mqq.util.WeakReference;
@@ -15,46 +15,47 @@ class AVGameCameraAssistant$3
   
   public void run()
   {
-    AVGameAppInterface localAVGameAppInterface = (AVGameAppInterface)AVGameCameraAssistant.a(this.this$0).get();
-    if (localAVGameAppInterface != null)
+    Object localObject = (AVGameAppInterface)AVGameCameraAssistant.a(this.this$0).get();
+    if (localObject != null)
     {
-      l = AudioHelper.b();
+      long l = QQAudioHelper.b();
       AVGameCameraAssistant.a(this.this$0);
-      if ((AVGameCameraAssistant.a(this.this$0) != null) && (AVGameCameraAssistant.a(this.this$0).a(localAVGameAppInterface)))
-      {
+      boolean bool;
+      if ((AVGameCameraAssistant.a(this.this$0) != null) && (AVGameCameraAssistant.a(this.this$0).a((AVGameAppInterface)localObject))) {
         bool = true;
-        if ((!bool) && ((AVGameCameraAssistant.a(this.this$0).b(l)) || (AVGameCameraAssistant.a(this.this$0).a(l))) && (AVGameCameraAssistant.b(this.this$0) < 5) && (AVGameCameraAssistant.b(this.this$0) > 0)) {
-          AVGameCameraAssistant.a(this.this$0).sendEmptyMessageDelayed(1, 10000L);
-        }
-        if ((bool) || (AVGameCameraAssistant.a(this.this$0) != null)) {
-          break label213;
-        }
+      } else {
+        bool = false;
+      }
+      if ((!bool) && ((AVGameCameraAssistant.a(this.this$0).isCameraOpened(l)) || (AVGameCameraAssistant.a(this.this$0).isCameraOpening(l))) && (AVGameCameraAssistant.b(this.this$0) < 5) && (AVGameCameraAssistant.b(this.this$0) > 0)) {
+        AVGameCameraAssistant.a(this.this$0).sendEmptyMessageDelayed(1, 10000L);
+      }
+      if ((!bool) && (AVGameCameraAssistant.a(this.this$0) == null))
+      {
         AVGameCameraAssistant.a(this.this$0, new AVGameCameraAssistant.3.1(this));
         ObserverCenter.a().a(AVGameCameraAssistant.a(this.this$0), true);
-        if (QLog.isColorLevel()) {
-          QLog.i("AVGameCameraAssistant", 2, "check ptv so ret[" + bool + "]");
-        }
       }
-    }
-    label213:
-    while (!QLog.isColorLevel()) {
-      for (;;)
+      else if ((bool) && (AVGameCameraAssistant.a(this.this$0) != null))
       {
-        long l;
-        return;
-        boolean bool = false;
-        continue;
-        if ((bool) && (AVGameCameraAssistant.a(this.this$0) != null)) {
-          AVGameCameraAssistant.a(this.this$0);
-        }
+        AVGameCameraAssistant.a(this.this$0);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("check ptv so ret[");
+        ((StringBuilder)localObject).append(bool);
+        ((StringBuilder)localObject).append("]");
+        QLog.i("AVGameCameraAssistant", 2, ((StringBuilder)localObject).toString());
       }
     }
-    QLog.i("AVGameCameraAssistant", 2, "app is null.");
+    else if (QLog.isColorLevel())
+    {
+      QLog.i("AVGameCameraAssistant", 2, "app is null.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.qav.AVGameCameraAssistant.3
  * JD-Core Version:    0.7.0.1
  */

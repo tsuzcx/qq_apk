@@ -26,7 +26,7 @@ import org.libpag.PAGSurface;
 
 public class TAVStickerRenderContext
 {
-  private static final String TAG = TAVStickerRenderContext.class.getSimpleName();
+  private static final String TAG = "TAVStickerRenderContext";
   protected List<TAVSourceImage> cacheImagesForRelease = null;
   protected List<TAVStickerRenderContext> childContexts = new ArrayList();
   protected volatile PAGSurface pagSurface = null;
@@ -75,8 +75,9 @@ public class TAVStickerRenderContext
   {
     TAVStickerRenderContext localTAVStickerRenderContext = new TAVStickerRenderContext();
     localTAVStickerRenderContext.checkStickerList();
-    if (this.stickers != null) {
-      localTAVStickerRenderContext.stickers = this.stickers;
+    List localList = this.stickers;
+    if (localList != null) {
+      localTAVStickerRenderContext.stickers = localList;
     }
     localTAVStickerRenderContext.setRenderSize(this.renderSize);
     localTAVStickerRenderContext.stickerLayerIndex = this.stickerLayerIndex;
@@ -91,8 +92,9 @@ public class TAVStickerRenderContext
   {
     TAVStickerRenderContext localTAVStickerRenderContext = new TAVStickerRenderContext();
     localTAVStickerRenderContext.checkStickerList();
-    if (this.stickers != null) {
-      localTAVStickerRenderContext.stickers = this.stickers;
+    List localList = this.stickers;
+    if (localList != null) {
+      localTAVStickerRenderContext.stickers = localList;
     }
     localTAVStickerRenderContext.setRenderSize(this.renderSize);
     localTAVStickerRenderContext.stickerLayerIndex = this.stickerLayerIndex;
@@ -144,16 +146,13 @@ public class TAVStickerRenderContext
   {
     checkStickerList();
     int i = this.stickers.size() - 1;
-    if (i >= 0)
+    while (i >= 0)
     {
       TAVSticker localTAVSticker = (TAVSticker)this.stickers.get(i);
-      if (localTAVSticker == null) {}
-      while ((!TAVStickerUtil.isPresentationTimeInStickerTimeRange(this.presentationTimeMs, localTAVSticker)) || (!localTAVSticker.isEditable()) || (!isTouchOnTavSticker(localTAVSticker, paramFloat1, paramFloat2)))
-      {
-        i -= 1;
-        break;
+      if ((localTAVSticker != null) && (TAVStickerUtil.isPresentationTimeInStickerTimeRange(this.presentationTimeMs, localTAVSticker)) && (localTAVSticker.isEditable()) && (isTouchOnTavSticker(localTAVSticker, paramFloat1, paramFloat2))) {
+        return localTAVSticker;
       }
-      return localTAVSticker;
+      i -= 1;
     }
     return null;
   }
@@ -193,14 +192,28 @@ public class TAVStickerRenderContext
       TLog.e(TAG, "isTouchOnTavSticker -> renderSize invalid!");
       return false;
     }
-    PointF[] arrayOfPointF = TAVStickerUtil.computeRectanglePoints(TAVStickerUtil.getMatrix(paramTAVSticker, (int)this.renderSize.width, (int)this.renderSize.height), paramTAVSticker.getWidth(), paramTAVSticker.getHeight());
-    TLog.d(TAG, "isTouchOnTavSticker -> x : " + paramFloat1 + ", y : " + paramFloat2);
-    if (TAVStickerUtil.inQuadrangle(arrayOfPointF[0], arrayOfPointF[1], arrayOfPointF[2], arrayOfPointF[3], new PointF(paramFloat1, paramFloat2)))
+    Object localObject1 = TAVStickerUtil.computeRectanglePoints(TAVStickerUtil.getMatrix(paramTAVSticker, (int)this.renderSize.width, (int)this.renderSize.height), paramTAVSticker.getWidth(), paramTAVSticker.getHeight());
+    Object localObject2 = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isTouchOnTavSticker -> x : ");
+    localStringBuilder.append(paramFloat1);
+    localStringBuilder.append(", y : ");
+    localStringBuilder.append(paramFloat2);
+    TLog.d((String)localObject2, localStringBuilder.toString());
+    if (TAVStickerUtil.inQuadrangle(localObject1[0], localObject1[1], localObject1[2], localObject1[3], new PointF(paramFloat1, paramFloat2)))
     {
-      TLog.d(TAG, "isTouchOnTavSticker -> 点中了贴纸, " + paramTAVSticker.getFilePath());
+      localObject1 = TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("isTouchOnTavSticker -> 点中了贴纸, ");
+      ((StringBuilder)localObject2).append(paramTAVSticker.getFilePath());
+      TLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
       return true;
     }
-    TLog.d(TAG, "isTouchOnTavSticker -> 没有点中贴纸, " + paramTAVSticker.getFilePath());
+    localObject1 = TAG;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("isTouchOnTavSticker -> 没有点中贴纸, ");
+    ((StringBuilder)localObject2).append(paramTAVSticker.getFilePath());
+    TLog.d((String)localObject1, ((StringBuilder)localObject2).toString());
     return false;
   }
   
@@ -236,114 +249,129 @@ public class TAVStickerRenderContext
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 58	com/tencent/tavsticker/core/TAVStickerRenderContext:providers	Ljava/util/List;
-    //   6: invokeinterface 192 1 0
+    //   3: getfield 52	com/tencent/tavsticker/core/TAVStickerRenderContext:providers	Ljava/util/List;
+    //   6: invokeinterface 186 1 0
     //   11: astore_1
     //   12: aload_1
-    //   13: invokeinterface 197 1 0
-    //   18: ifeq +32 -> 50
+    //   13: invokeinterface 191 1 0
+    //   18: ifeq +24 -> 42
     //   21: aload_1
-    //   22: invokeinterface 201 1 0
-    //   27: checkcast 203	com/tencent/tavsticker/model/TAVStickerProvider
+    //   22: invokeinterface 195 1 0
+    //   27: checkcast 197	com/tencent/tavsticker/model/TAVStickerProvider
     //   30: astore_2
     //   31: aload_2
     //   32: ifnull -20 -> 12
     //   35: aload_2
-    //   36: invokevirtual 315	com/tencent/tavsticker/model/TAVStickerProvider:release	()V
+    //   36: invokevirtual 312	com/tencent/tavsticker/model/TAVStickerProvider:release	()V
     //   39: goto -27 -> 12
-    //   42: astore_1
-    //   43: aload_1
-    //   44: invokevirtual 318	java/lang/Exception:printStackTrace	()V
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: return
-    //   50: aload_0
-    //   51: getfield 58	com/tencent/tavsticker/core/TAVStickerRenderContext:providers	Ljava/util/List;
-    //   54: invokeinterface 321 1 0
-    //   59: aload_0
-    //   60: iconst_0
-    //   61: putfield 60	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerLayerIndex	I
-    //   64: aload_0
-    //   65: aconst_null
-    //   66: putfield 64	com/tencent/tavsticker/core/TAVStickerRenderContext:renderContextDataSource	Lcom/tencent/tavsticker/core/ITAVRenderContextDataSource;
-    //   69: aload_0
-    //   70: getfield 75	com/tencent/tavsticker/core/TAVStickerRenderContext:pagSurface	Lorg/libpag/PAGSurface;
-    //   73: ifnull +22 -> 95
-    //   76: aload_0
-    //   77: getfield 75	com/tencent/tavsticker/core/TAVStickerRenderContext:pagSurface	Lorg/libpag/PAGSurface;
-    //   80: invokevirtual 326	org/libpag/PAGSurface:freeCache	()V
-    //   83: aload_0
-    //   84: getfield 75	com/tencent/tavsticker/core/TAVStickerRenderContext:pagSurface	Lorg/libpag/PAGSurface;
-    //   87: invokevirtual 327	org/libpag/PAGSurface:release	()V
-    //   90: aload_0
-    //   91: aconst_null
-    //   92: putfield 75	com/tencent/tavsticker/core/TAVStickerRenderContext:pagSurface	Lorg/libpag/PAGSurface;
-    //   95: aload_0
-    //   96: getfield 77	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerTexture	Lcom/tencent/tavsticker/model/TAVStickerTexture;
-    //   99: ifnull +15 -> 114
-    //   102: aload_0
-    //   103: getfield 77	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerTexture	Lcom/tencent/tavsticker/model/TAVStickerTexture;
-    //   106: invokevirtual 134	com/tencent/tavsticker/model/TAVStickerTexture:release	()V
-    //   109: aload_0
-    //   110: aconst_null
-    //   111: putfield 77	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerTexture	Lcom/tencent/tavsticker/model/TAVStickerTexture;
-    //   114: aload_0
-    //   115: getfield 79	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerSurface	Landroid/view/Surface;
-    //   118: ifnull +15 -> 133
-    //   121: aload_0
-    //   122: getfield 79	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerSurface	Landroid/view/Surface;
-    //   125: invokevirtual 145	android/view/Surface:release	()V
-    //   128: aload_0
-    //   129: aconst_null
-    //   130: putfield 79	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerSurface	Landroid/view/Surface;
-    //   133: getstatic 41	com/tencent/tavsticker/core/TAVStickerRenderContext:TAG	Ljava/lang/String;
-    //   136: new 242	java/lang/StringBuilder
-    //   139: dup
-    //   140: invokespecial 243	java/lang/StringBuilder:<init>	()V
-    //   143: ldc_w 329
-    //   146: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: invokestatic 335	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   152: invokevirtual 338	java/lang/Thread:getName	()Ljava/lang/String;
-    //   155: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   158: ldc_w 340
-    //   161: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   164: new 342	java/lang/RuntimeException
-    //   167: dup
-    //   168: invokespecial 343	java/lang/RuntimeException:<init>	()V
-    //   171: invokestatic 349	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   174: invokevirtual 249	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: invokevirtual 257	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   180: invokestatic 224	com/tencent/tavsticker/log/TLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   183: goto -136 -> 47
-    //   186: astore_1
-    //   187: aload_0
-    //   188: monitorexit
-    //   189: aload_1
-    //   190: athrow
+    //   42: aload_0
+    //   43: getfield 52	com/tencent/tavsticker/core/TAVStickerRenderContext:providers	Ljava/util/List;
+    //   46: invokeinterface 315 1 0
+    //   51: aload_0
+    //   52: iconst_0
+    //   53: putfield 54	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerLayerIndex	I
+    //   56: aload_0
+    //   57: aconst_null
+    //   58: putfield 58	com/tencent/tavsticker/core/TAVStickerRenderContext:renderContextDataSource	Lcom/tencent/tavsticker/core/ITAVRenderContextDataSource;
+    //   61: aload_0
+    //   62: getfield 69	com/tencent/tavsticker/core/TAVStickerRenderContext:pagSurface	Lorg/libpag/PAGSurface;
+    //   65: ifnull +22 -> 87
+    //   68: aload_0
+    //   69: getfield 69	com/tencent/tavsticker/core/TAVStickerRenderContext:pagSurface	Lorg/libpag/PAGSurface;
+    //   72: invokevirtual 320	org/libpag/PAGSurface:freeCache	()V
+    //   75: aload_0
+    //   76: getfield 69	com/tencent/tavsticker/core/TAVStickerRenderContext:pagSurface	Lorg/libpag/PAGSurface;
+    //   79: invokevirtual 321	org/libpag/PAGSurface:release	()V
+    //   82: aload_0
+    //   83: aconst_null
+    //   84: putfield 69	com/tencent/tavsticker/core/TAVStickerRenderContext:pagSurface	Lorg/libpag/PAGSurface;
+    //   87: aload_0
+    //   88: getfield 71	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerTexture	Lcom/tencent/tavsticker/model/TAVStickerTexture;
+    //   91: ifnull +15 -> 106
+    //   94: aload_0
+    //   95: getfield 71	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerTexture	Lcom/tencent/tavsticker/model/TAVStickerTexture;
+    //   98: invokevirtual 128	com/tencent/tavsticker/model/TAVStickerTexture:release	()V
+    //   101: aload_0
+    //   102: aconst_null
+    //   103: putfield 71	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerTexture	Lcom/tencent/tavsticker/model/TAVStickerTexture;
+    //   106: aload_0
+    //   107: getfield 73	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerSurface	Landroid/view/Surface;
+    //   110: ifnull +15 -> 125
+    //   113: aload_0
+    //   114: getfield 73	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerSurface	Landroid/view/Surface;
+    //   117: invokevirtual 139	android/view/Surface:release	()V
+    //   120: aload_0
+    //   121: aconst_null
+    //   122: putfield 73	com/tencent/tavsticker/core/TAVStickerRenderContext:stickerSurface	Landroid/view/Surface;
+    //   125: getstatic 212	com/tencent/tavsticker/core/TAVStickerRenderContext:TAG	Ljava/lang/String;
+    //   128: astore_1
+    //   129: new 238	java/lang/StringBuilder
+    //   132: dup
+    //   133: invokespecial 239	java/lang/StringBuilder:<init>	()V
+    //   136: astore_2
+    //   137: aload_2
+    //   138: ldc_w 323
+    //   141: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   144: pop
+    //   145: aload_2
+    //   146: invokestatic 329	java/lang/Thread:currentThread	()Ljava/lang/Thread;
+    //   149: invokevirtual 332	java/lang/Thread:getName	()Ljava/lang/String;
+    //   152: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: pop
+    //   156: aload_2
+    //   157: ldc_w 334
+    //   160: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   163: pop
+    //   164: aload_2
+    //   165: new 336	java/lang/RuntimeException
+    //   168: dup
+    //   169: invokespecial 337	java/lang/RuntimeException:<init>	()V
+    //   172: invokestatic 343	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   175: invokevirtual 245	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: pop
+    //   179: aload_1
+    //   180: aload_2
+    //   181: invokevirtual 254	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   184: invokestatic 220	com/tencent/tavsticker/log/TLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   187: goto +12 -> 199
+    //   190: astore_1
+    //   191: goto +11 -> 202
+    //   194: astore_1
+    //   195: aload_1
+    //   196: invokevirtual 346	java/lang/Exception:printStackTrace	()V
+    //   199: aload_0
+    //   200: monitorexit
+    //   201: return
+    //   202: aload_0
+    //   203: monitorexit
+    //   204: goto +5 -> 209
+    //   207: aload_1
+    //   208: athrow
+    //   209: goto -2 -> 207
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	191	0	this	TAVStickerRenderContext
-    //   11	11	1	localIterator	Iterator
-    //   42	2	1	localException	java.lang.Exception
-    //   186	4	1	localObject	Object
-    //   30	6	2	localTAVStickerProvider	TAVStickerProvider
+    //   0	212	0	this	TAVStickerRenderContext
+    //   11	169	1	localObject1	Object
+    //   190	1	1	localObject2	Object
+    //   194	14	1	localException	java.lang.Exception
+    //   30	151	2	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   2	12	42	java/lang/Exception
-    //   12	31	42	java/lang/Exception
-    //   35	39	42	java/lang/Exception
-    //   50	95	42	java/lang/Exception
-    //   95	114	42	java/lang/Exception
-    //   114	133	42	java/lang/Exception
-    //   133	183	42	java/lang/Exception
-    //   2	12	186	finally
-    //   12	31	186	finally
-    //   35	39	186	finally
-    //   43	47	186	finally
-    //   50	95	186	finally
-    //   95	114	186	finally
-    //   114	133	186	finally
-    //   133	183	186	finally
+    //   2	12	190	finally
+    //   12	31	190	finally
+    //   35	39	190	finally
+    //   42	87	190	finally
+    //   87	106	190	finally
+    //   106	125	190	finally
+    //   125	187	190	finally
+    //   195	199	190	finally
+    //   2	12	194	java/lang/Exception
+    //   12	31	194	java/lang/Exception
+    //   35	39	194	java/lang/Exception
+    //   42	87	194	java/lang/Exception
+    //   87	106	194	java/lang/Exception
+    //   106	125	194	java/lang/Exception
+    //   125	187	194	java/lang/Exception
   }
   
   protected void releaseCacheImages(@NonNull List<TAVSourceImage> paramList)
@@ -391,14 +419,15 @@ public class TAVStickerRenderContext
       if (localObject2 != null)
       {
         localObject2 = new TAVStickerProvider((TAVSticker)localObject2);
-        if (TAVStickerQuality.TAVStickerQualityHigh == this.quality) {}
-        for (boolean bool = true;; bool = false)
-        {
-          ((TAVStickerProvider)localObject2).setHighQuality(bool);
-          ((TAVStickerProvider)localObject2).setRenderSize(this.renderSize);
-          this.providers.add(localObject2);
-          break;
+        boolean bool;
+        if (TAVStickerQuality.TAVStickerQualityHigh == this.quality) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        ((TAVStickerProvider)localObject2).setHighQuality(bool);
+        ((TAVStickerProvider)localObject2).setRenderSize(this.renderSize);
+        this.providers.add(localObject2);
       }
     }
   }
@@ -455,7 +484,8 @@ public class TAVStickerRenderContext
       return null;
     }
     createSurface();
-    if (this.stickerSurface == null)
+    Surface localSurface = this.stickerSurface;
+    if (localSurface == null)
     {
       TLog.e(TAG, "renderSticker -> stickerSurface is null!");
       return null;
@@ -465,7 +495,7 @@ public class TAVStickerRenderContext
       TLog.e(TAG, "renderSticker -> stickerTexture is null!");
       return null;
     }
-    boolean bool = renderSticker(this.stickerSurface, paramLong, paramList, paramEGLContext);
+    boolean bool = renderSticker(localSurface, paramLong, paramList, paramEGLContext);
     return new CMSampleBuffer(new CMTime(TAVStickerUtil.millisecond2Seconds(paramLong)), this.stickerTexture.getTextureInfo(), bool);
   }
   
@@ -475,16 +505,18 @@ public class TAVStickerRenderContext
     checkStickerList();
     checkStickerProviderList();
     if ((this.pagSurface == null) && (paramSurface != null)) {
-      if (paramEGLContext == null) {
-        break label48;
+      if (paramEGLContext != null) {
+        this.pagSurface = PAGSurface.FromSurface(paramSurface, paramEGLContext);
+      } else {
+        this.pagSurface = PAGSurface.FromSurface(paramSurface);
       }
     }
-    label48:
-    for (this.pagSurface = PAGSurface.FromSurface(paramSurface, paramEGLContext); this.pagSurface == null; this.pagSurface = PAGSurface.FromSurface(paramSurface)) {
+    if (this.pagSurface == null) {
       return false;
     }
-    if (this.cacheImagesForRelease != null) {
-      releaseCacheImages(this.cacheImagesForRelease);
+    paramSurface = this.cacheImagesForRelease;
+    if (paramSurface != null) {
+      releaseCacheImages(paramSurface);
     }
     if (this.stickers.size() != this.providers.size())
     {
@@ -495,12 +527,15 @@ public class TAVStickerRenderContext
     while (paramSurface.hasNext())
     {
       paramEGLContext = (TAVStickerProvider)paramSurface.next();
-      if ((paramEGLContext != null) && (shouldRenderSticker(paramEGLContext.getSticker(), paramLong)))
+      if (paramEGLContext != null)
       {
         paramEGLContext.setRenderSize(this.renderSize);
         paramEGLContext.setPagSurface(this.pagSurface);
-        paramEGLContext.replaceSourceImages(paramList);
-        paramEGLContext.updateRender(paramLong);
+        if (shouldRenderSticker(paramEGLContext.getSticker(), paramLong))
+        {
+          paramEGLContext.replaceSourceImages(paramList);
+          paramEGLContext.updateRender(paramLong);
+        }
       }
     }
     if (!CollectionUtil.isEmptyList(paramList)) {
@@ -511,12 +546,13 @@ public class TAVStickerRenderContext
   
   public void setCacheEnabled(boolean paramBoolean)
   {
-    if (this.providers != null)
+    Object localObject = this.providers;
+    if (localObject != null)
     {
-      Iterator localIterator = this.providers.iterator();
-      while (localIterator.hasNext())
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        TAVStickerProvider localTAVStickerProvider = (TAVStickerProvider)localIterator.next();
+        TAVStickerProvider localTAVStickerProvider = (TAVStickerProvider)((Iterator)localObject).next();
         if (localTAVStickerProvider != null) {
           localTAVStickerProvider.setCacheEnabled(paramBoolean);
         }
@@ -528,15 +564,30 @@ public class TAVStickerRenderContext
   {
     if ((TAVStickerUtil.isValidCGSize(paramCGSize)) && (!paramCGSize.equals(this.renderSize)))
     {
-      TLog.d(TAG, "setRenderSize -> render size changed, oldRenderSize : " + this.renderSize + ", newRenderSize : " + paramCGSize);
+      Object localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setRenderSize -> render size changed, oldRenderSize : ");
+      localStringBuilder.append(this.renderSize);
+      localStringBuilder.append(", newRenderSize : ");
+      localStringBuilder.append(paramCGSize);
+      TLog.d((String)localObject, localStringBuilder.toString());
       this.renderSize = paramCGSize;
-      if (this.stickerTexture != null) {
-        this.stickerTexture.updateStickerTextureSize((int)this.renderSize.width, (int)this.renderSize.height);
+      paramCGSize = this.stickerTexture;
+      if (paramCGSize != null) {
+        paramCGSize.updateStickerTextureSize((int)this.renderSize.width, (int)this.renderSize.height);
       }
       if (this.pagSurface != null)
       {
         this.pagSurface.updateSize();
-        TLog.d(TAG, "setRenderSize  renderSize = " + this.renderSize.toString() + "   pagSurface width = " + this.pagSurface.width() + "   pagSurface height = " + this.pagSurface.height());
+        paramCGSize = TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setRenderSize  renderSize = ");
+        ((StringBuilder)localObject).append(this.renderSize.toString());
+        ((StringBuilder)localObject).append("   pagSurface width = ");
+        ((StringBuilder)localObject).append(this.pagSurface.width());
+        ((StringBuilder)localObject).append("   pagSurface height = ");
+        ((StringBuilder)localObject).append(this.pagSurface.height());
+        TLog.d(paramCGSize, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -555,19 +606,21 @@ public class TAVStickerRenderContext
   
   protected boolean shouldRenderSticker(TAVSticker paramTAVSticker, long paramLong)
   {
-    if (paramTAVSticker == null) {}
-    for (;;)
-    {
+    if (paramTAVSticker == null) {
       return false;
-      if (this.renderContextDataSource != null) {
-        return this.renderContextDataSource.shouldRenderSticker(paramTAVSticker, paramLong);
-      }
-      CMTimeRange localCMTimeRange = paramTAVSticker.getTimeRange();
-      if (localCMTimeRange == null) {}
-      for (boolean bool = true; (bool) && (TAVStickerMode.INACTIVE == paramTAVSticker.getMode()); bool = localCMTimeRange.containsTime(new CMTime(paramLong, 1000))) {
-        return true;
-      }
     }
+    Object localObject = this.renderContextDataSource;
+    if (localObject != null) {
+      return ((ITAVRenderContextDataSource)localObject).shouldRenderSticker(paramTAVSticker, paramLong);
+    }
+    localObject = paramTAVSticker.getTimeRange();
+    boolean bool;
+    if (localObject == null) {
+      bool = true;
+    } else {
+      bool = ((CMTimeRange)localObject).containsTime(new CMTime(paramLong, 1000));
+    }
+    return (bool) && (TAVStickerMode.INACTIVE == paramTAVSticker.getMode());
   }
   
   protected void sortedAllProviders()
@@ -594,8 +647,9 @@ public class TAVStickerRenderContext
         localTAVStickerRenderContext.checkStickerList();
         localTAVStickerRenderContext.checkStickerProviderList();
         localTAVStickerRenderContext.providers.clear();
-        if (this.stickers != null) {
-          localTAVStickerRenderContext.stickers = this.stickers;
+        List localList = this.stickers;
+        if (localList != null) {
+          localTAVStickerRenderContext.stickers = localList;
         }
         localTAVStickerRenderContext.setRenderSize(this.renderSize);
         localTAVStickerRenderContext.stickerLayerIndex = this.stickerLayerIndex;
@@ -607,7 +661,7 @@ public class TAVStickerRenderContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerRenderContext
  * JD-Core Version:    0.7.0.1
  */

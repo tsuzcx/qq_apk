@@ -13,22 +13,31 @@ class JoinDiscussionActivity$3
   
   public void run()
   {
-    String str1 = StringUtil.a(this.this$0.c, 0, 32);
-    String str2 = StringUtil.a(this.this$0.e, 0, 32);
-    if (this.this$0.jdField_a_of_type_JavaUtilList != null) {
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(str1 + String.format("(%d人)", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size()) }));
-    }
-    for (;;)
+    Object localObject1 = StringUtil.a(this.this$0.c, 0, 32);
+    String str = StringUtil.a(this.this$0.e, 0, 32);
+    if (this.this$0.jdField_a_of_type_JavaUtilList != null)
     {
-      this.this$0.jdField_b_of_type_AndroidWidgetTextView.setText(str2 + HardCodeUtil.a(2131705901) + DateFormat.format("yy-M-d", this.this$0.jdField_b_of_type_Long));
-      return;
-      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText(str1);
+      localObject2 = this.this$0.jdField_a_of_type_AndroidWidgetTextView;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(String.format("(%d人)", new Object[] { Integer.valueOf(this.this$0.jdField_a_of_type_JavaUtilList.size()) }));
+      ((TextView)localObject2).setText(localStringBuilder.toString());
     }
+    else
+    {
+      this.this$0.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+    }
+    localObject1 = this.this$0.jdField_b_of_type_AndroidWidgetTextView;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append(HardCodeUtil.a(2131705953));
+    ((StringBuilder)localObject2).append(DateFormat.format("yy-M-d", this.this$0.jdField_b_of_type_Long));
+    ((TextView)localObject1).setText(((StringBuilder)localObject2).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.3
  * JD-Core Version:    0.7.0.1
  */

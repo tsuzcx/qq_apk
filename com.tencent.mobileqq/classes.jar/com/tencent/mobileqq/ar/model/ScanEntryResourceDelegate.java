@@ -3,8 +3,6 @@ package com.tencent.mobileqq.ar.model;
 import android.app.Activity;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.ar.ARDeviceController;
-import com.tencent.mobileqq.ar.FaceScanModelsLoader;
-import com.tencent.mobileqq.ar.FaceScanNativeSoLoader;
 import com.tencent.mobileqq.ar.IArConfigListener;
 import com.tencent.mobileqq.ar.IArFaceResourceListener;
 import com.tencent.mobileqq.ar.IArSoListener;
@@ -15,7 +13,6 @@ import com.tencent.mobileqq.ar.aidl.ArEffectConfig;
 import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.mobileqq.videoplatform.SDKInitListener;
 import com.tencent.qphone.base.util.QLog;
-import java.util.HashMap;
 
 public final class ScanEntryResourceDelegate
   implements IArConfigListener, IArFaceResourceListener, IArSoListener, SDKInitListener
@@ -34,8 +31,8 @@ public final class ScanEntryResourceDelegate
   private boolean jdField_c_of_type_Boolean = false;
   private int jdField_d_of_type_Int = 0;
   private boolean jdField_d_of_type_Boolean = false;
-  private boolean e = false;
-  private boolean f = false;
+  private boolean e = true;
+  private boolean f = true;
   private boolean g = false;
   private boolean h = false;
   private boolean i = false;
@@ -48,13 +45,14 @@ public final class ScanEntryResourceDelegate
   
   private void a(long paramLong)
   {
-    if (((paramLong & 0x2) != 0L) && (!this.jdField_b_of_type_Boolean)) {
+    long l = 0x2 & paramLong;
+    if ((l != 0L) && (!this.jdField_b_of_type_Boolean)) {
       g();
     }
-    if (((0x8 & paramLong) != 0L) && (!this.jdField_d_of_type_Boolean)) {
+    if (((paramLong & 0x8) != 0L) && (!this.jdField_d_of_type_Boolean)) {
       h();
     }
-    if (((paramLong & 0x2) != 0L) && ((!this.g) || (!this.jdField_d_of_type_Boolean))) {
+    if ((l != 0L) && ((!this.g) || (!this.jdField_d_of_type_Boolean))) {
       i();
     }
   }
@@ -66,30 +64,40 @@ public final class ScanEntryResourceDelegate
   
   private void j()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack.a();
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+    {
+      ScanEntryResourceDelegate.ARBaseResDownLoadCallBack localARBaseResDownLoadCallBack = this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack;
+      if (localARBaseResDownLoadCallBack != null) {
+        localARBaseResDownLoadCallBack.a();
       }
     }
-    while ((this.jdField_b_of_type_Boolean) || (this.jdField_d_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack == null)) {
-      return;
+    else if (!this.jdField_b_of_type_Boolean)
+    {
+      if (this.jdField_d_of_type_Boolean) {
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack != null)
+      {
+        QLog.d("ScanEntryResourceDelegate", 1, "ARBaseSo res download fail");
+        this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack.b();
+      }
     }
-    QLog.d("ScanEntryResourceDelegate", 1, "ARBaseSo res download fail");
-    this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack.b();
   }
   
   private void k()
   {
+    boolean bool = a(2L);
     int j = 0;
-    if (a(2L)) {
+    if (bool) {
       j = 0 + this.jdField_a_of_type_Int;
     }
     int k = j;
     if (a(8L)) {
       k = j + this.jdField_b_of_type_Int;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack.a(k / 2);
+    ScanEntryResourceDelegate.ARBaseResDownLoadCallBack localARBaseResDownLoadCallBack = this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack;
+    if (localARBaseResDownLoadCallBack != null) {
+      localARBaseResDownLoadCallBack.a(k / 2);
     }
   }
   
@@ -99,18 +107,18 @@ public final class ScanEntryResourceDelegate
   
   public void a(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack != null) {
-        this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack.a((this.jdField_c_of_type_Int + this.jdField_d_of_type_Int) / 2);
+      if (paramInt1 == 1) {
+        this.jdField_d_of_type_Int = paramInt2;
       }
-      return;
+    }
+    else {
       this.jdField_c_of_type_Int = paramInt2;
-      continue;
-      this.jdField_d_of_type_Int = paramInt2;
+    }
+    ScanEntryResourceDelegate.AsyncFaceResDownloadCallBack localAsyncFaceResDownloadCallBack = this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack;
+    if (localAsyncFaceResDownloadCallBack != null) {
+      localAsyncFaceResDownloadCallBack.a((this.jdField_c_of_type_Int + this.jdField_d_of_type_Int) / 2);
     }
   }
   
@@ -132,8 +140,9 @@ public final class ScanEntryResourceDelegate
     if (this.i) {
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$OnAREntryResourcePreapreListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$OnAREntryResourcePreapreListener.a(paramARCommonConfigInfo);
+    ScanEntryResourceDelegate.OnAREntryResourcePreapreListener localOnAREntryResourcePreapreListener = this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$OnAREntryResourcePreapreListener;
+    if (localOnAREntryResourcePreapreListener != null) {
+      localOnAREntryResourcePreapreListener.a(paramARCommonConfigInfo);
     }
     this.i = true;
   }
@@ -152,123 +161,124 @@ public final class ScanEntryResourceDelegate
   
   public boolean a()
   {
-    boolean bool1;
-    if (a(2L)) {
-      if (a(2)) {
+    if ((a(2L)) && (!a(2))) {
+      bool2 = false;
+    } else {
+      bool2 = true;
+    }
+    boolean bool1 = bool2;
+    if (a(8L)) {
+      if ((bool2) && (a(8))) {
         bool1 = true;
+      } else {
+        bool1 = false;
       }
     }
-    for (;;)
+    boolean bool2 = bool1;
+    if (a(4L))
     {
-      boolean bool2 = bool1;
-      if (a(8L))
-      {
-        if ((!bool1) || (!a(8))) {
-          break label76;
-        }
-        bool2 = true;
+      if ((bool1) && (a(4))) {
+        return true;
       }
-      for (;;)
-      {
-        if (a(4L))
-        {
-          if ((bool2) && (a(4)))
-          {
-            return true;
-            bool1 = false;
-            break;
-            label76:
-            bool2 = false;
-            continue;
-          }
-          return false;
-        }
-      }
-      return bool2;
-      bool1 = true;
+      bool2 = false;
     }
+    return bool2;
   }
   
   public boolean a(int paramInt)
   {
-    switch (paramInt)
+    boolean bool2 = false;
+    boolean bool1;
+    if (paramInt != 2)
     {
-    default: 
-    case 2: 
-    case 4: 
-      do
+      if (paramInt != 4)
       {
-        return false;
-        return this.jdField_a_of_type_Boolean;
-      } while ((!this.e) || (!this.f));
-      return true;
+        if (paramInt != 8) {
+          return false;
+        }
+        return this.jdField_c_of_type_Boolean;
+      }
+      bool1 = bool2;
+      if (this.e)
+      {
+        bool1 = bool2;
+        if (this.f) {
+          return true;
+        }
+      }
     }
-    return this.jdField_c_of_type_Boolean;
+    else
+    {
+      bool1 = this.jdField_a_of_type_Boolean;
+    }
+    return bool1;
   }
   
   public void b() {}
   
   public void b(int paramInt)
   {
-    QLog.d("ScanEntryResourceDelegate", 1, "onArSoDownloadProcess process." + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onArSoDownloadProcess process.");
+    localStringBuilder.append(paramInt);
+    QLog.d("ScanEntryResourceDelegate", 1, localStringBuilder.toString());
     this.jdField_a_of_type_Int = paramInt;
     k();
   }
   
   public void b(int paramInt1, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 0)
     {
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack != null)
+      if (paramInt1 == 1)
       {
-        QLog.d("ScanEntryResourceDelegate", 1, "face so download not ready download fail");
-        this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack.b();
+        this.f = false;
+        this.h = false;
       }
-      return;
+    }
+    else
+    {
       this.e = false;
       this.g = false;
-      continue;
-      this.f = false;
-      this.h = false;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack != null)
+    {
+      QLog.d("ScanEntryResourceDelegate", 1, "face so download not ready download fail");
+      this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack.b();
     }
   }
   
   public boolean b()
   {
+    boolean bool1 = a(2L);
     boolean bool3 = false;
-    if (a(2L)) {}
-    for (boolean bool1 = this.jdField_b_of_type_Boolean;; bool1 = false)
-    {
-      if (a(8L)) {}
-      for (boolean bool2 = this.jdField_d_of_type_Boolean;; bool2 = false)
-      {
-        int j;
-        if (a(4L)) {
-          if ((this.g) || (this.h)) {
-            j = 1;
-          }
-        }
-        for (;;)
-        {
-          if ((!bool1) && (!bool2))
-          {
-            bool1 = bool3;
-            if (j == 0) {}
-          }
-          else
-          {
-            bool1 = true;
-          }
-          return bool1;
-          j = 0;
-          continue;
-          j = 0;
-        }
-      }
+    if (bool1) {
+      bool1 = this.jdField_b_of_type_Boolean;
+    } else {
+      bool1 = false;
     }
+    boolean bool2;
+    if (a(8L)) {
+      bool2 = this.jdField_d_of_type_Boolean;
+    } else {
+      bool2 = false;
+    }
+    int j;
+    if ((a(4L)) && ((this.g) || (this.h))) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if ((!bool1) && (!bool2))
+    {
+      bool1 = bool3;
+      if (j == 0) {}
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public void c()
@@ -282,15 +292,17 @@ public final class ScanEntryResourceDelegate
   public void c(int paramInt)
   {
     QLog.d("ScanEntryResourceDelegate", 2, new Object[] { "notifyVoiceScanStatusChange state.", Integer.valueOf(paramInt) });
-    if (this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.b(paramInt);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("ScanEntryResourceDelegate", 1, "notifyVoiceScanStatusChange fail.", localException);
+    RemoteArConfigManager localRemoteArConfigManager = this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager;
+    if (localRemoteArConfigManager != null) {
+      try
+      {
+        localRemoteArConfigManager.b(paramInt);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.d("ScanEntryResourceDelegate", 1, "notifyVoiceScanStatusChange fail.", localException);
+      }
     }
   }
   
@@ -313,10 +325,11 @@ public final class ScanEntryResourceDelegate
   
   public void e()
   {
-    if (this.jdField_a_of_type_Long == 0L) {
+    long l = this.jdField_a_of_type_Long;
+    if (l == 0L) {
       return;
     }
-    a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack, this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack);
+    a(l, this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$ARBaseResDownLoadCallBack, this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack);
   }
   
   public void f()
@@ -336,19 +349,20 @@ public final class ScanEntryResourceDelegate
         this.jdField_b_of_type_Boolean = true;
         this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.c();
       }
-      for (;;)
+      else
       {
-        QLog.d("ScanEntryResourceDelegate", 1, String.format("downloadARResource mIsArSoReady=%s mArSoDownloading=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
-        return;
         this.jdField_b_of_type_Boolean = false;
         this.jdField_a_of_type_Int = 100;
       }
+      QLog.d("ScanEntryResourceDelegate", 1, String.format("downloadARResource mIsArSoReady=%s mArSoDownloading=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean), Boolean.valueOf(this.jdField_b_of_type_Boolean) }));
       return;
     }
     catch (Exception localException)
     {
-      QLog.d("ScanEntryResourceDelegate", 1, "downloadARResource fail");
+      label80:
+      break label80;
     }
+    QLog.d("ScanEntryResourceDelegate", 1, "downloadARResource fail");
   }
   
   public void h()
@@ -361,68 +375,56 @@ public final class ScanEntryResourceDelegate
         QQVideoPlaySDKManager.a(BaseApplicationImpl.getContext(), this);
       }
     }
-    for (;;)
+    else
     {
-      QLog.d("ScanEntryResourceDelegate", 1, String.format("installVideoPlugin mIsVideoPluginReady=%s mVideoPluginDownloading=%s", new Object[] { Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.jdField_d_of_type_Boolean) }));
-      return;
       this.jdField_d_of_type_Boolean = false;
       this.jdField_b_of_type_Int = 100;
+    }
+    QLog.d("ScanEntryResourceDelegate", 1, String.format("installVideoPlugin mIsVideoPluginReady=%s mVideoPluginDownloading=%s", new Object[] { Boolean.valueOf(this.jdField_c_of_type_Boolean), Boolean.valueOf(this.jdField_d_of_type_Boolean) }));
+  }
+  
+  public void h_(int paramInt)
+  {
+    if (paramInt != 0)
+    {
+      if (paramInt == 1)
+      {
+        this.f = true;
+        this.h = false;
+        this.jdField_d_of_type_Int = 100;
+      }
+    }
+    else
+    {
+      this.e = true;
+      this.g = false;
+      this.jdField_c_of_type_Int = 100;
+    }
+    if ((this.e) && (this.f))
+    {
+      ScanEntryResourceDelegate.AsyncFaceResDownloadCallBack localAsyncFaceResDownloadCallBack = this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack;
+      if (localAsyncFaceResDownloadCallBack != null) {
+        localAsyncFaceResDownloadCallBack.a();
+      }
     }
   }
   
   public void i()
   {
-    this.f = FaceScanNativeSoLoader.a();
-    if (!this.f)
-    {
-      this.h = true;
-      this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a(1);
-      this.e = FaceScanModelsLoader.a();
-      if (this.e) {
-        break label154;
-      }
-      this.g = true;
-      this.jdField_a_of_type_ComTencentMobileqqArRemoteArConfigManager.a(0);
-      new HashMap().put("res_type", "model");
-    }
-    for (;;)
-    {
-      QLog.d("ScanEntryResourceDelegate", 1, String.format("downloadARFaceResources mIsFaceSoReady=%s mFaceSoDownloading=%s", new Object[] { Boolean.valueOf(this.f), Boolean.valueOf(this.h) }));
-      QLog.d("ScanEntryResourceDelegate", 1, String.format("downloadARFaceResources mIsFaceModelReady=%s mFaceModelDownloading=%s", new Object[] { Boolean.valueOf(this.e), Boolean.valueOf(this.g) }));
-      return;
-      this.h = false;
-      this.jdField_d_of_type_Int = 100;
-      break;
-      label154:
-      this.g = false;
-      this.jdField_c_of_type_Int = 100;
-    }
-  }
-  
-  public void l_(int paramInt)
-  {
-    switch (paramInt)
-    {
-    }
-    for (;;)
-    {
-      if ((this.e) && (this.f) && (this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqArModelScanEntryResourceDelegate$AsyncFaceResDownloadCallBack.a();
-      }
-      return;
-      this.e = true;
-      this.g = false;
-      this.jdField_c_of_type_Int = 100;
-      continue;
-      this.f = true;
-      this.h = false;
-      this.jdField_d_of_type_Int = 100;
-    }
+    this.f = true;
+    this.e = true;
+    this.g = false;
+    this.jdField_c_of_type_Int = 100;
+    QLog.d("ScanEntryResourceDelegate", 1, String.format("downloadARFaceResources mIsFaceSoReady=%s mFaceSoDownloading=%s", new Object[] { Boolean.valueOf(this.f), Boolean.valueOf(this.h) }));
+    QLog.d("ScanEntryResourceDelegate", 1, String.format("downloadARFaceResources mIsFaceModelReady=%s mFaceModelDownloading=%s", new Object[] { Boolean.valueOf(this.e), Boolean.valueOf(this.g) }));
   }
   
   public void onSDKInited(boolean paramBoolean)
   {
-    QLog.d("ScanEntryResourceDelegate", 1, "onSDKInited result." + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSDKInited result.");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("ScanEntryResourceDelegate", 1, localStringBuilder.toString());
     if (paramBoolean)
     {
       this.jdField_c_of_type_Boolean = true;
@@ -438,7 +440,7 @@ public final class ScanEntryResourceDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.ScanEntryResourceDelegate
  * JD-Core Version:    0.7.0.1
  */

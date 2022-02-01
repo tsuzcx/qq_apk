@@ -41,16 +41,49 @@ public class BaseListenTogetherPanel$UiData
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("UiData{mCurType=").append(this.jdField_a_of_type_Int).append(", mCurUin='").append(this.jdField_a_of_type_JavaLangString).append(", status=").append(this.jdField_b_of_type_Int).append(", userState=").append(this.jdField_c_of_type_Int).append(", changeMusic=").append(this.jdField_d_of_type_Boolean).append(", isAdmin=").append(this.jdField_a_of_type_Boolean).append(", canOper=").append(this.jdField_b_of_type_Boolean).append(", playMode=").append(this.e).append(", mutualLevel=").append(this.f).append(", creatorUin=").append(this.jdField_c_of_type_JavaLangString).append(", creatorNick=");
-    if (this.jdField_d_of_type_JavaLangString == null) {}
-    for (String str = "null";; str = this.jdField_d_of_type_JavaLangString) {
-      return str + ", isShowPanel=" + this.jdField_c_of_type_Boolean + ", progres=" + this.jdField_d_of_type_Int + ", titleMsg=" + this.jdField_b_of_type_JavaLangString + ", session=\n" + this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UiData{mCurType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mCurUin='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", userState=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", changeMusic=");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(", isAdmin=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", canOper=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", playMode=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", mutualLevel=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", creatorUin=");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(", creatorNick=");
+    String str2 = this.jdField_d_of_type_JavaLangString;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "null";
     }
+    localStringBuilder.append(str1);
+    localStringBuilder.append(", isShowPanel=");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(", progres=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(", titleMsg=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", session=\n");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqListentogetherListenTogetherSession);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ui.BaseListenTogetherPanel.UiData
  * JD-Core Version:    0.7.0.1
  */

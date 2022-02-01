@@ -9,9 +9,20 @@ class MultiIncomingCallsActivity$13
 {
   MultiIncomingCallsActivity$13(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void a(long paramLong, int paramInt, String paramString)
+  protected void a(long paramLong, int paramInt, String paramString)
   {
-    QLog.w(this.a.b, 1, "VideoObserver_onClose, reason[" + paramInt + "], peerUin[" + paramString + "], mPeerUin[" + this.a.c + "], seq[" + paramLong + "]");
+    String str = this.a.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoObserver_onClose, reason[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], peerUin[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], mPeerUin[");
+    localStringBuilder.append(this.a.c);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
     if (TextUtils.equals(this.a.c, paramString))
     {
       this.a.b("VideoObserver_onClose");
@@ -19,9 +30,18 @@ class MultiIncomingCallsActivity$13
     }
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  protected void a(String paramString, boolean paramBoolean)
   {
-    QLog.w(this.a.b, 1, "VideoObserver_onDestroyUI, peerUin[" + paramString + "], isQuit[" + paramBoolean + "], mPeerUin[" + this.a.c + "]");
+    String str = this.a.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoObserver_onDestroyUI, peerUin[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], isQuit[");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("], mPeerUin[");
+    localStringBuilder.append(this.a.c);
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
     if (TextUtils.equals(this.a.c, paramString)) {
       this.a.b("VideoObserver_onDestroyUI");
     }
@@ -29,7 +49,7 @@ class MultiIncomingCallsActivity$13
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallsActivity.13
  * JD-Core Version:    0.7.0.1
  */

@@ -12,21 +12,19 @@ class a$2
   public void onClick(View paramView)
   {
     Object localObject = paramView.getParent();
-    if (!(localObject instanceof View)) {}
-    for (;;)
+    if ((localObject instanceof View))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       localObject = (View)localObject;
       if (((View)localObject).getTag() == a.a(this.a)) {
         this.a.onClick((View)localObject);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.a.2
  * JD-Core Version:    0.7.0.1
  */

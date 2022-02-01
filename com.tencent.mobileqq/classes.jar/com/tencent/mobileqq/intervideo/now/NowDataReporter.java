@@ -46,12 +46,6 @@ public class NowDataReporter
   protected String o;
   String p;
   
-  static
-  {
-    jdField_a_of_type_Long = 0L;
-    jdField_b_of_type_Long = 0L;
-  }
-  
   public NowDataReporter(QQAppInterface paramQQAppInterface)
   {
     this.jdField_d_of_type_JavaLangString = "";
@@ -77,13 +71,14 @@ public class NowDataReporter
       localJSONObject = new JSONObject();
       this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localJSONObject);
     }
-    for (;;)
+    else
     {
-      try
+      localJSONObject = (JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
+    }
+    try
+    {
+      if (!localJSONObject.optBoolean("noneedadd"))
       {
-        if (localJSONObject.optBoolean("noneedadd")) {
-          break label223;
-        }
         localJSONObject.put("opname", paramString4);
         localJSONObject.put("roomid", paramString2);
         localJSONObject.put("roomtype", paramString3);
@@ -96,22 +91,21 @@ public class NowDataReporter
         localJSONObject.put("op_result", paramInt2);
         localJSONObject.put("noneedadd", paramBoolean1);
         localJSONObject.put("timelong", paramString9);
-        this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localJSONObject);
-        if (!paramBoolean2) {
-          break;
-        }
+      }
+      else
+      {
+        QLog.i("NowDataReporter", 1, "本次opname不影响上报");
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), localJSONObject);
+      if (paramBoolean2)
+      {
         a(paramLong);
         return;
       }
-      catch (Exception paramString1)
-      {
-        paramString1.printStackTrace();
-        return;
-      }
-      localJSONObject = (JSONObject)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
-      continue;
-      label223:
-      QLog.i("NowDataReporter", 1, "本次opname不影响上报");
+    }
+    catch (Exception paramString1)
+    {
+      paramString1.printStackTrace();
     }
   }
   
@@ -138,30 +132,32 @@ public class NowDataReporter
   
   public void a()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        NowDataReporter localNowDataReporter = b("show_loading");
-        if (!this.jdField_a_of_type_Boolean) {
-          continue;
-        }
-        str = "1";
-        localNowDataReporter.c(str).b();
+      localNowDataReporter = b("show_loading");
+      if (!this.jdField_a_of_type_Boolean) {
+        break label99;
       }
-      catch (Exception localException)
-      {
-        String str;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("NowDataReporter", 2, "reportJumpPlugin Exception");
-        continue;
-      }
-      a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "show_loading", false, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, "", false);
-      return;
-      str = "0";
+      str1 = "1";
     }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        NowDataReporter localNowDataReporter;
+        String str1;
+        label45:
+        continue;
+        label99:
+        String str2 = "0";
+      }
+    }
+    localNowDataReporter.c(str1).b();
+    break label45;
+    if (QLog.isColorLevel()) {
+      QLog.d("NowDataReporter", 2, "reportJumpPlugin Exception");
+    }
+    a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, "show_loading", false, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, "", false);
   }
   
   public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
@@ -173,7 +169,10 @@ public class NowDataReporter
     }
     catch (Exception paramString)
     {
-      while (!QLog.isColorLevel()) {}
+      label36:
+      break label36;
+    }
+    if (QLog.isColorLevel()) {
       QLog.d("NowDataReporter", 2, "reportRecordCgi Exception");
     }
   }
@@ -193,132 +192,136 @@ public class NowDataReporter
     if (paramBundle == null) {
       return;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        this.jdField_f_of_type_JavaLangString = paramBundle.getString("op_name");
-        if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
-          break;
-        }
-        bool2 = false;
-        int i2 = 1;
-        bool4 = false;
-        this.jdField_f_of_type_Int = paramBundle.getInt("op_in");
-        this.jdField_d_of_type_Int = paramBundle.getInt("op_result");
-        this.l = paramBundle.getString("timeconsume");
-        String str = paramBundle.getString("sdkversion");
-        if ((!TextUtils.isEmpty(str)) && (!str.equals("0"))) {
-          this.p = paramBundle.getString("sdkversion");
-        }
-        this.h = paramBundle.getString("d1");
-        this.i = paramBundle.getString("d2");
-        this.j = paramBundle.getString("d3");
-        this.k = paramBundle.getString("d4");
-        if (this.jdField_f_of_type_JavaLangString.equals("enter_shadow"))
-        {
-          this.jdField_b_of_type_Int = Integer.parseInt(paramBundle.getString("status1", "0"));
-          this.jdField_a_of_type_Int = paramBundle.getInt("frameVersion");
-        }
-        b();
-        if ((this.jdField_f_of_type_JavaLangString.equals("check_version_complete")) && (this.j.equals("1")))
-        {
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_b_of_type_Int = 0;
-        }
-        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(jdField_a_of_type_Long))) {
-          break;
-        }
-        if ((this.jdField_f_of_type_JavaLangString.equals("cancel_run")) || (this.jdField_f_of_type_JavaLangString.equals("cancel_in_plugin")) || (this.jdField_f_of_type_JavaLangString.equals("download_fail")) || (this.jdField_f_of_type_JavaLangString.equals("boot_fail")) || (this.jdField_f_of_type_JavaLangString.equals("login_fail")) || (this.jdField_f_of_type_JavaLangString.equals("enter_fail")) || (this.jdField_f_of_type_JavaLangString.equals("user_cancel_in_plugin")) || (this.jdField_f_of_type_JavaLangString.equals("enter_room")) || (this.jdField_f_of_type_JavaLangString.equals("jump_h5")) || (this.jdField_f_of_type_JavaLangString.equals("jump_app"))) {
-          break label717;
-        }
-        boolean bool3 = bool2;
-        boolean bool1 = bool4;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_biz_plugin"))
-        {
-          bool3 = bool2;
-          bool1 = bool4;
-          if (this.h.equals("fail"))
-          {
-            bool3 = true;
-            bool1 = true;
-          }
-        }
-        bool4 = bool3;
-        bool2 = bool1;
-        if (this.jdField_f_of_type_JavaLangString.equals("unzip_biz_plugin"))
-        {
-          bool4 = bool3;
-          bool2 = bool1;
-          if (this.h.equals("fail"))
-          {
-            bool4 = true;
-            bool2 = true;
-          }
-        }
-        int i1 = i2;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_start"))
-        {
-          i1 = i2;
-          if (this.h.equals("2")) {
-            i1 = 0;
-          }
-        }
-        i2 = i1;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_complete"))
-        {
-          i2 = i1;
-          if (this.h.equals("2")) {
-            i2 = 0;
-          }
-        }
-        i1 = i2;
-        if (this.jdField_f_of_type_JavaLangString.equals("download_fail"))
-        {
-          i1 = i2;
-          if (this.h.equals("2")) {
-            i1 = 0;
-          }
-        }
-        i2 = i1;
-        if (this.jdField_f_of_type_JavaLangString.equals("install_start"))
-        {
-          i2 = i1;
-          if (this.jdField_f_of_type_Int != 1) {
-            i2 = 0;
-          }
-        }
-        i1 = i2;
-        if (this.jdField_f_of_type_JavaLangString.equals("install_complete"))
-        {
-          i1 = i2;
-          if (this.jdField_f_of_type_Int != 1) {
-            i1 = 0;
-          }
-        }
-        i2 = i1;
-        if (this.jdField_f_of_type_JavaLangString.equals("install_fail"))
-        {
-          i2 = i1;
-          if (this.jdField_f_of_type_Int != 1) {
-            i2 = 0;
-          }
-        }
-        if (i2 == 0) {
-          break;
-        }
-        a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, bool4, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, this.l, bool2);
+      this.jdField_f_of_type_JavaLangString = paramBundle.getString("op_name");
+      if (TextUtils.isEmpty(this.jdField_f_of_type_JavaLangString)) {
         return;
       }
-      catch (Exception paramBundle) {}
-      if (!QLog.isColorLevel()) {
-        break;
+      this.jdField_f_of_type_Int = paramBundle.getInt("op_in");
+      this.jdField_d_of_type_Int = paramBundle.getInt("op_result");
+      this.l = paramBundle.getString("timeconsume");
+      String str = paramBundle.getString("sdkversion");
+      bool1 = TextUtils.isEmpty(str);
+      if ((!bool1) && (!str.equals("0"))) {
+        this.p = paramBundle.getString("sdkversion");
       }
-      QLog.d("NowDataReporter", 2, "onReportFromXProxy Exception");
-      return;
-      label717:
-      boolean bool2 = true;
-      boolean bool4 = true;
+      this.h = paramBundle.getString("d1");
+      this.i = paramBundle.getString("d2");
+      this.j = paramBundle.getString("d3");
+      this.k = paramBundle.getString("d4");
+      if (this.jdField_f_of_type_JavaLangString.equals("enter_shadow"))
+      {
+        this.jdField_b_of_type_Int = Integer.parseInt(paramBundle.getString("status1", "0"));
+        this.jdField_a_of_type_Int = paramBundle.getInt("frameVersion");
+      }
+      b();
+      if ((this.jdField_f_of_type_JavaLangString.equals("check_version_complete")) && (this.j.equals("1")))
+      {
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_b_of_type_Int = 0;
+      }
+      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(jdField_a_of_type_Long))) {
+        return;
+      }
+      bool1 = this.jdField_f_of_type_JavaLangString.equals("cancel_run");
+      if ((bool1) || (this.jdField_f_of_type_JavaLangString.equals("cancel_in_plugin")) || (this.jdField_f_of_type_JavaLangString.equals("download_fail")) || (this.jdField_f_of_type_JavaLangString.equals("boot_fail")) || (this.jdField_f_of_type_JavaLangString.equals("login_fail")) || (this.jdField_f_of_type_JavaLangString.equals("enter_fail")) || (this.jdField_f_of_type_JavaLangString.equals("user_cancel_in_plugin")) || (this.jdField_f_of_type_JavaLangString.equals("enter_room")) || (this.jdField_f_of_type_JavaLangString.equals("jump_h5"))) {
+        break label725;
+      }
+      if (!this.jdField_f_of_type_JavaLangString.equals("jump_app")) {
+        break label716;
+      }
+    }
+    catch (Exception paramBundle)
+    {
+      for (;;)
+      {
+        boolean bool5;
+        boolean bool4;
+        boolean bool2;
+        int i1;
+        continue;
+        boolean bool1 = false;
+        boolean bool3 = false;
+        continue;
+        bool1 = true;
+        bool3 = true;
+        continue;
+        bool1 = bool4;
+        continue;
+        int i2 = 1;
+      }
+    }
+    bool5 = this.jdField_f_of_type_JavaLangString.equals("download_biz_plugin");
+    bool4 = bool1;
+    bool2 = bool3;
+    if (bool5)
+    {
+      bool4 = bool1;
+      bool2 = bool3;
+      if (this.h.equals("fail"))
+      {
+        bool4 = true;
+        bool2 = true;
+      }
+    }
+    if ((this.jdField_f_of_type_JavaLangString.equals("unzip_biz_plugin")) && (this.h.equals("fail")))
+    {
+      bool1 = true;
+      bool2 = true;
+      bool3 = this.jdField_f_of_type_JavaLangString.equals("download_start");
+      if ((!bool3) || (!this.h.equals("2"))) {
+        break label741;
+      }
+      i2 = 0;
+      i1 = i2;
+      if (this.jdField_f_of_type_JavaLangString.equals("download_complete"))
+      {
+        i1 = i2;
+        if (this.h.equals("2")) {
+          i1 = 0;
+        }
+      }
+      i2 = i1;
+      if (this.jdField_f_of_type_JavaLangString.equals("download_fail"))
+      {
+        i2 = i1;
+        if (this.h.equals("2")) {
+          i2 = 0;
+        }
+      }
+      i1 = i2;
+      if (this.jdField_f_of_type_JavaLangString.equals("install_start"))
+      {
+        i1 = i2;
+        if (this.jdField_f_of_type_Int != 1) {
+          i1 = 0;
+        }
+      }
+      i2 = i1;
+      if (this.jdField_f_of_type_JavaLangString.equals("install_complete"))
+      {
+        i2 = i1;
+        if (this.jdField_f_of_type_Int != 1) {
+          i2 = 0;
+        }
+      }
+      i1 = i2;
+      if (this.jdField_f_of_type_JavaLangString.equals("install_fail"))
+      {
+        i1 = i2;
+        if (this.jdField_f_of_type_Int != 1) {
+          i1 = 0;
+        }
+      }
+      if (i1 != 0)
+      {
+        a(jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, bool1, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, this.l, bool2);
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.d("NowDataReporter", 2, "onReportFromXProxy Exception");
+        }
+      }
     }
   }
   
@@ -326,19 +329,27 @@ public class NowDataReporter
   {
     try
     {
-      h(paramString1).f(paramString2).b("jump_h5").c(paramString3).d(paramString4).b();
-      a(jdField_a_of_type_Long, paramString1, paramString2, this.jdField_c_of_type_JavaLangString, "jump_h5", true, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, "", true);
-      return;
+      localNowDataReporter = h(paramString1);
     }
     catch (Exception paramString3)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("NowDataReporter", 2, "reportJumpH5 Exception");
-        }
-      }
+      NowDataReporter localNowDataReporter;
+      label34:
+      label37:
+      break label37;
     }
+    try
+    {
+      localNowDataReporter.f(paramString2).b("jump_h5").c(paramString3).d(paramString4).b();
+    }
+    catch (Exception paramString3)
+    {
+      break label34;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("NowDataReporter", 2, "reportJumpH5 Exception");
+    }
+    a(jdField_a_of_type_Long, paramString1, paramString2, this.jdField_c_of_type_JavaLangString, "jump_h5", true, this.jdField_f_of_type_Int, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k, "", true);
   }
   
   public void a(String paramString, JSONObject paramJSONObject)
@@ -355,9 +366,85 @@ public class NowDataReporter
     paramJSONObject = paramJSONObject.optString("roomtype");
     String str8 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
     String str9 = String.valueOf(ApkUtils.a(BaseApplicationImpl.getContext()));
-    this.jdField_d_of_type_JavaLangString = (HttpUtil.getNetWorkType() + "");
-    QLog.i("NowDataReporter", 2, "nowDatareportlastop: source = " + str6 + " roomid = " + str7 + " roomType = " + paramJSONObject + " op_name = " + paramString + " op_in = " + i1 + " d1= " + str2 + " d2=" + str3 + " d3=" + str4 + " d4=" + str5 + " timelong=" + this.l + " op_result = " + i2 + " qq_version = " + str9 + "  optime = " + str8 + " lastOpName = " + str1 + " pluginstatus =" + this.jdField_b_of_type_Int + " preloadStatus =" + this.jdField_c_of_type_Int + " sdkversion = " + this.p + " useShadow =" + this.jdField_b_of_type_Boolean);
-    ReportController.b(null, "dc02882", "grp_lbs", this.g, this.jdField_e_of_type_JavaLangString, paramString, i1, 1, i2, str2, str3, str4, str5 + "|" + this.l + "|" + str7 + "|" + paramJSONObject + "|" + str6 + "|" + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_e_of_type_Int + "|" + this.n + "|" + this.m + "|" + this.jdField_a_of_type_Int + "|" + this.p + "|" + str9 + "|" + str8 + "|" + str1 + "|" + this.jdField_b_of_type_Int + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_b_of_type_Boolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HttpUtil.getNetWorkType());
+    ((StringBuilder)localObject).append("");
+    this.jdField_d_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("nowDatareportlastop: source = ");
+    ((StringBuilder)localObject).append(str6);
+    ((StringBuilder)localObject).append(" roomid = ");
+    ((StringBuilder)localObject).append(str7);
+    ((StringBuilder)localObject).append(" roomType = ");
+    ((StringBuilder)localObject).append(paramJSONObject);
+    ((StringBuilder)localObject).append(" op_name = ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" op_in = ");
+    ((StringBuilder)localObject).append(i1);
+    ((StringBuilder)localObject).append(" d1= ");
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append(" d2=");
+    ((StringBuilder)localObject).append(str3);
+    ((StringBuilder)localObject).append(" d3=");
+    ((StringBuilder)localObject).append(str4);
+    ((StringBuilder)localObject).append(" d4=");
+    ((StringBuilder)localObject).append(str5);
+    ((StringBuilder)localObject).append(" timelong=");
+    ((StringBuilder)localObject).append(this.l);
+    ((StringBuilder)localObject).append(" op_result = ");
+    ((StringBuilder)localObject).append(i2);
+    ((StringBuilder)localObject).append(" qq_version = ");
+    ((StringBuilder)localObject).append(str9);
+    ((StringBuilder)localObject).append("  optime = ");
+    ((StringBuilder)localObject).append(str8);
+    ((StringBuilder)localObject).append(" lastOpName = ");
+    ((StringBuilder)localObject).append(str1);
+    ((StringBuilder)localObject).append(" pluginstatus =");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(" preloadStatus =");
+    ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+    ((StringBuilder)localObject).append(" sdkversion = ");
+    ((StringBuilder)localObject).append(this.p);
+    ((StringBuilder)localObject).append(" useShadow =");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+    QLog.i("NowDataReporter", 2, ((StringBuilder)localObject).toString());
+    localObject = this.g;
+    String str10 = this.jdField_e_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str5);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("|");
+    localStringBuilder.append(str7);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramJSONObject);
+    localStringBuilder.append("|");
+    localStringBuilder.append(str6);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append("|");
+    localStringBuilder.append(str9);
+    localStringBuilder.append("|");
+    localStringBuilder.append(str8);
+    localStringBuilder.append("|");
+    localStringBuilder.append(str1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    ReportController.b(null, "dc02882", "grp_lbs", (String)localObject, str10, paramString, i1, 1, i2, str2, str3, str4, localStringBuilder.toString());
   }
   
   public void a(boolean paramBoolean1, String paramString1, String paramString2, String paramString3, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
@@ -370,44 +457,65 @@ public class NowDataReporter
       this.jdField_a_of_type_Int = 11;
     }
     this.jdField_a_of_type_Boolean = paramBoolean1;
+    label129:
+    label142:
+    label145:
+    label160:
     try
     {
-      localNowDataReporter = h(paramString1).f(paramString2).g(paramString3).b("nowentry");
-      if (!paramBoolean1) {
-        break label175;
+      localObject = h(paramString1);
+    }
+    catch (Exception localException1)
+    {
+      Object localObject;
+      NowDataReporter localNowDataReporter;
+      String str2;
+      label108:
+      break label145;
+    }
+    try
+    {
+      localObject = ((NowDataReporter)localObject).f(paramString2);
+    }
+    catch (Exception localException2)
+    {
+      break label145;
+    }
+    try
+    {
+      localNowDataReporter = ((NowDataReporter)localObject).g(paramString3).b("nowentry");
+      str2 = "1";
+      if (paramBoolean1) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
-      str1 = "1";
-      localNowDataReporter = localNowDataReporter.c(str1);
+      localNowDataReporter = localNowDataReporter.c((String)localObject);
       if (!paramBoolean2) {
-        break label209;
+        break label236;
       }
-      str1 = "1";
+      localObject = "1";
     }
-    catch (Exception localException)
+    catch (Exception localException3)
     {
-      for (;;)
-      {
-        NowDataReporter localNowDataReporter;
-        String str1;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("NowDataReporter", 2, "reportNowEntry Exception");
-          continue;
-          String str2 = "0";
-        }
+      break label142;
+      String str1 = "0";
+      break label108;
+      str1 = "0";
+      break label129;
+    }
+    localNowDataReporter = localNowDataReporter.d((String)localObject);
+    if (paramBoolean3)
+    {
+      localObject = str2;
+      localNowDataReporter.e((String)localObject).b();
+      break label160;
+      if (QLog.isColorLevel()) {
+        QLog.d("NowDataReporter", 2, "reportNowEntry Exception");
       }
-    }
-    localNowDataReporter = localNowDataReporter.d(str1);
-    if (paramBoolean3) {}
-    for (str1 = "1";; str1 = "0")
-    {
-      localNowDataReporter.e(str1).b();
       a(jdField_a_of_type_Long, paramString1, paramString2, paramString3, "now_entry", false, 0, 0, this.h, this.i, this.j, this.k, "", false);
       new Handler().postDelayed(new NowDataReporter.1(this, l1), 90000L);
       return;
-      label175:
-      str1 = "0";
-      break;
     }
   }
   
@@ -421,9 +529,91 @@ public class NowDataReporter
   {
     String str1 = new SimpleDateFormat("yyyyMMddHHmmss").format(new Date(System.currentTimeMillis()));
     String str2 = String.valueOf(ApkUtils.a(BaseApplicationImpl.getContext()));
-    this.jdField_d_of_type_JavaLangString = (HttpUtil.getNetWorkType() + "");
-    QLog.i("NowDataReporter", 1, "nowDatareport: source = " + this.jdField_a_of_type_JavaLangString + " roomid = " + this.jdField_b_of_type_JavaLangString + " roomType = " + this.jdField_c_of_type_JavaLangString + " op_name = " + this.jdField_f_of_type_JavaLangString + " op_in = " + this.jdField_f_of_type_Int + " d1= " + this.h + " d2=" + this.i + " d3=" + this.j + " d4=" + this.k + " timelong=" + this.l + " op_result = " + this.jdField_d_of_type_Int + " qq_version = " + str2 + "  optime = " + str1 + " lastOpName = " + this.o + " pluginstatus =" + this.jdField_b_of_type_Int + " preloadStatus =" + this.jdField_c_of_type_Int + " sdkversion = " + this.p + "useShadow =" + this.jdField_b_of_type_Boolean);
-    ReportController.b(null, "dc02882", "grp_lbs", this.g, this.jdField_e_of_type_JavaLangString, this.jdField_f_of_type_JavaLangString, this.jdField_f_of_type_Int, 1, this.jdField_d_of_type_Int, this.h, this.i, this.j, this.k + "|" + this.l + "|" + this.jdField_b_of_type_JavaLangString + "|" + this.jdField_c_of_type_JavaLangString + "|" + this.jdField_a_of_type_JavaLangString + "|" + this.jdField_d_of_type_JavaLangString + "|" + this.jdField_e_of_type_Int + "|" + this.n + "|" + this.m + "|" + this.jdField_a_of_type_Int + "|" + this.p + "|" + str2 + "|" + str1 + "|" + this.o + "|" + this.jdField_b_of_type_Int + "|" + this.jdField_c_of_type_Int + "|" + this.jdField_b_of_type_Boolean);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HttpUtil.getNetWorkType());
+    ((StringBuilder)localObject).append("");
+    this.jdField_d_of_type_JavaLangString = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("nowDatareport: source = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(" roomid = ");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(" roomType = ");
+    ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(" op_name = ");
+    ((StringBuilder)localObject).append(this.jdField_f_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(" op_in = ");
+    ((StringBuilder)localObject).append(this.jdField_f_of_type_Int);
+    ((StringBuilder)localObject).append(" d1= ");
+    ((StringBuilder)localObject).append(this.h);
+    ((StringBuilder)localObject).append(" d2=");
+    ((StringBuilder)localObject).append(this.i);
+    ((StringBuilder)localObject).append(" d3=");
+    ((StringBuilder)localObject).append(this.j);
+    ((StringBuilder)localObject).append(" d4=");
+    ((StringBuilder)localObject).append(this.k);
+    ((StringBuilder)localObject).append(" timelong=");
+    ((StringBuilder)localObject).append(this.l);
+    ((StringBuilder)localObject).append(" op_result = ");
+    ((StringBuilder)localObject).append(this.jdField_d_of_type_Int);
+    ((StringBuilder)localObject).append(" qq_version = ");
+    ((StringBuilder)localObject).append(str2);
+    ((StringBuilder)localObject).append("  optime = ");
+    ((StringBuilder)localObject).append(str1);
+    ((StringBuilder)localObject).append(" lastOpName = ");
+    ((StringBuilder)localObject).append(this.o);
+    ((StringBuilder)localObject).append(" pluginstatus =");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    ((StringBuilder)localObject).append(" preloadStatus =");
+    ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+    ((StringBuilder)localObject).append(" sdkversion = ");
+    ((StringBuilder)localObject).append(this.p);
+    ((StringBuilder)localObject).append("useShadow =");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+    QLog.i("NowDataReporter", 1, ((StringBuilder)localObject).toString());
+    localObject = this.g;
+    String str3 = this.jdField_e_of_type_JavaLangString;
+    String str4 = this.jdField_f_of_type_JavaLangString;
+    int i1 = this.jdField_f_of_type_Int;
+    int i2 = this.jdField_d_of_type_Int;
+    String str5 = this.h;
+    String str6 = this.i;
+    String str7 = this.j;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.k);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.p);
+    localStringBuilder.append("|");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("|");
+    localStringBuilder.append(str1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    ReportController.b(null, "dc02882", "grp_lbs", (String)localObject, str3, str4, i1, 1, i2, str5, str6, str7, localStringBuilder.toString());
   }
   
   public NowDataReporter c(String paramString)
@@ -470,7 +660,7 @@ public class NowDataReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowDataReporter
  * JD-Core Version:    0.7.0.1
  */

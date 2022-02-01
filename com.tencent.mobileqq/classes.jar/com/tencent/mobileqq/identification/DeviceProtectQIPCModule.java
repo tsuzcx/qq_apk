@@ -1,16 +1,17 @@
 package com.tencent.mobileqq.identification;
 
+import android.content.Context;
 import android.os.Build;
 import android.os.Bundle;
 import com.tencent.beacon.event.UserAction;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.highway.utils.HwNetworkUtil;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
+import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.app.WtloginManagerImpl;
 import mqq.manager.WtloginManager;
 import oicq.wlogin_sdk.tools.util;
@@ -27,20 +28,21 @@ public class DeviceProtectQIPCModule
   
   public static DeviceProtectQIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new DeviceProtectQIPCModule("DeviceProtectQIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new DeviceProtectQIPCModule("DeviceProtectQIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
-  private EIPCResult a(QQAppInterface paramQQAppInterface)
+  private EIPCResult a(AppRuntime paramAppRuntime)
   {
-    if (paramQQAppInterface == null)
+    if (paramAppRuntime == null)
     {
       QLog.e("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo error: QQAppInterface is null");
       return EIPCResult.createResult(-102, null);
@@ -48,66 +50,84 @@ public class DeviceProtectQIPCModule
     Bundle localBundle = new Bundle();
     for (;;)
     {
-      int i;
+      Object localObject6;
       try
       {
-        Object localObject = (WtloginManagerImpl)paramQQAppInterface.getManager(1);
-        String str4;
-        String str3;
-        String str1;
-        if (localObject != null)
+        paramAppRuntime = (WtloginManagerImpl)paramAppRuntime.getManager(1);
+        localObject4 = "";
+        Object localObject7;
+        String str;
+        Object localObject2;
+        Object localObject3;
+        Object localObject5;
+        if (paramAppRuntime != null)
         {
-          paramQQAppInterface = BaseApplication.getContext();
-          str4 = util.buf_to_string(((WtloginManagerImpl)localObject).getGUID());
-          str3 = UserAction.getQIMEI();
-          i = AppSetting.a();
-          str1 = Build.BRAND;
-          localObject = Build.MODEL;
-          if (HwNetworkUtil.getSystemNetwork(paramQQAppInterface) == 1)
-          {
-            paramQQAppInterface = HwNetworkUtil.getCurrentWifiBSSID(paramQQAppInterface);
-            break label338;
-            StringBuilder localStringBuilder = new StringBuilder();
-            localStringBuilder.append("guid:").append(str4).append("qimei:").append(str3).append("subappid:").append(str5).append("platform:").append(str2).append("brand:").append(str1).append("model:").append((String)localObject).append("bssid:").append(paramQQAppInterface);
-            QLog.d("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo info: " + localStringBuilder);
-            localBundle.putString("guid", str4);
-            localBundle.putString("qimei", str3);
-            localBundle.putString("subappid", str5);
-            localBundle.putString("platform", str2);
-            localBundle.putString("brand", str1);
-            localBundle.putString("model", (String)localObject);
-            localBundle.putString("bssid", paramQQAppInterface);
-            return EIPCResult.createResult(0, localBundle);
+          localObject7 = BaseApplication.getContext();
+          str = util.buf_to_string(paramAppRuntime.getGUID());
+          localObject6 = UserAction.getQIMEI();
+          localObject1 = String.valueOf(AppSetting.a());
+          localObject2 = "Android";
+          localObject3 = Build.BRAND;
+          localObject5 = Build.MODEL;
+          paramAppRuntime = (AppRuntime)localObject4;
+          if (HwNetworkUtil.getSystemNetwork((Context)localObject7) == 1) {
+            paramAppRuntime = HwNetworkUtil.getCurrentWifiBSSID((Context)localObject7);
           }
         }
         else
         {
           QLog.e("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo error: wtLoginManager is null");
-          paramQQAppInterface = "";
-          localObject = "";
-          str1 = "";
-          str2 = "";
-          str5 = "";
-          str3 = "";
-          str4 = "";
-          continue;
+          str = "";
+          paramAppRuntime = str;
+          localObject1 = paramAppRuntime;
+          localObject2 = localObject1;
+          localObject3 = localObject2;
+          localObject5 = localObject3;
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append("guid:");
+          ((StringBuilder)localObject6).append(str);
+          ((StringBuilder)localObject6).append("qimei:");
+          ((StringBuilder)localObject6).append((String)localObject4);
+          ((StringBuilder)localObject6).append("subappid:");
+          ((StringBuilder)localObject6).append((String)localObject1);
+          ((StringBuilder)localObject6).append("platform:");
+          ((StringBuilder)localObject6).append((String)localObject2);
+          ((StringBuilder)localObject6).append("brand:");
+          ((StringBuilder)localObject6).append((String)localObject3);
+          ((StringBuilder)localObject6).append("model:");
+          ((StringBuilder)localObject6).append((String)localObject5);
+          ((StringBuilder)localObject6).append("bssid:");
+          ((StringBuilder)localObject6).append(paramAppRuntime);
+          localObject7 = new StringBuilder();
+          ((StringBuilder)localObject7).append("handleGetDeviceInfo info: ");
+          ((StringBuilder)localObject7).append(localObject6);
+          QLog.d("DeviceProtectQIPCModule", 1, ((StringBuilder)localObject7).toString());
+          localBundle.putString("guid", str);
+          localBundle.putString("qimei", (String)localObject4);
+          localBundle.putString("subappid", (String)localObject1);
+          localBundle.putString("platform", (String)localObject2);
+          localBundle.putString("brand", (String)localObject3);
+          localBundle.putString("model", (String)localObject5);
+          localBundle.putString("bssid", paramAppRuntime);
+          paramAppRuntime = EIPCResult.createResult(0, localBundle);
+          return paramAppRuntime;
         }
-        paramQQAppInterface = "";
       }
-      catch (Exception paramQQAppInterface)
+      catch (Exception paramAppRuntime)
       {
-        QLog.e("DeviceProtectQIPCModule", 1, "handleGetDeviceInfo error: " + paramQQAppInterface.getMessage());
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handleGetDeviceInfo error: ");
+        ((StringBuilder)localObject1).append(paramAppRuntime.getMessage());
+        QLog.e("DeviceProtectQIPCModule", 1, ((StringBuilder)localObject1).toString());
         return EIPCResult.createResult(-102, null);
       }
-      label338:
-      String str2 = "Android";
-      String str5 = String.valueOf(i);
+      Object localObject4 = localObject6;
     }
   }
   
-  private void a(QQAppInterface paramQQAppInterface, int paramInt)
+  private void a(AppRuntime paramAppRuntime, int paramInt)
   {
-    if (paramQQAppInterface == null)
+    if (paramAppRuntime == null)
     {
       QLog.e("DeviceProtectQIPCModule", 1, "handleGetGuidInfo error: QQAppInterface is null");
       callbackResult(paramInt, EIPCResult.createResult(-102, null));
@@ -115,26 +135,25 @@ public class DeviceProtectQIPCModule
     }
     try
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("guid", util.buf_to_string(((WtloginManager)paramQQAppInterface.getManager(1)).getGUID()));
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("guid", util.buf_to_string(((WtloginManager)paramAppRuntime.getManager(1)).getGUID()));
       QLog.d("DeviceProtectQIPCModule", 1, "handleGetGuidInfo success");
-      callbackResult(paramInt, EIPCResult.createResult(0, localBundle));
+      callbackResult(paramInt, EIPCResult.createResult(0, (Bundle)localObject));
       return;
     }
-    catch (Exception paramQQAppInterface)
+    catch (Exception paramAppRuntime)
     {
-      QLog.e("DeviceProtectQIPCModule", 1, "handleGetGuidInfo error: " + paramQQAppInterface.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleGetGuidInfo error: ");
+      ((StringBuilder)localObject).append(paramAppRuntime.getMessage());
+      QLog.e("DeviceProtectQIPCModule", 1, ((StringBuilder)localObject).toString());
       callbackResult(paramInt, EIPCResult.createResult(-102, null));
     }
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(paramBundle instanceof QQAppInterface)) {
-      return null;
-    }
-    paramBundle = (QQAppInterface)paramBundle;
+    paramBundle = MobileQQ.sMobileQQ.waitAppRuntime(null);
     if ("ACTION_GET_DEVICE_INFO".equals(paramString)) {
       return a(paramBundle);
     }
@@ -146,7 +165,7 @@ public class DeviceProtectQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.identification.DeviceProtectQIPCModule
  * JD-Core Version:    0.7.0.1
  */

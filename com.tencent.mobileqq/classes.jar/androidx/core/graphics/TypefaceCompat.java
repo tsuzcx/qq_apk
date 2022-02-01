@@ -21,46 +21,41 @@ import androidx.core.provider.FontsContractCompat.FontInfo;
 @SuppressLint({"NewApi"})
 public class TypefaceCompat
 {
-  private static final LruCache<String, Typeface> sTypefaceCache;
+  private static final LruCache<String, Typeface> sTypefaceCache = new LruCache(16);
   private static final TypefaceCompatBaseImpl sTypefaceCompatImpl;
   
   static
   {
     if (Build.VERSION.SDK_INT >= 29) {
       sTypefaceCompatImpl = new TypefaceCompatApi29Impl();
-    }
-    for (;;)
-    {
-      sTypefaceCache = new LruCache(16);
-      return;
-      if (Build.VERSION.SDK_INT >= 28) {
-        sTypefaceCompatImpl = new TypefaceCompatApi28Impl();
-      } else if (Build.VERSION.SDK_INT >= 26) {
-        sTypefaceCompatImpl = new TypefaceCompatApi26Impl();
-      } else if ((Build.VERSION.SDK_INT >= 24) && (TypefaceCompatApi24Impl.isUsable())) {
-        sTypefaceCompatImpl = new TypefaceCompatApi24Impl();
-      } else if (Build.VERSION.SDK_INT >= 21) {
-        sTypefaceCompatImpl = new TypefaceCompatApi21Impl();
-      } else {
-        sTypefaceCompatImpl = new TypefaceCompatBaseImpl();
-      }
+    } else if (Build.VERSION.SDK_INT >= 28) {
+      sTypefaceCompatImpl = new TypefaceCompatApi28Impl();
+    } else if (Build.VERSION.SDK_INT >= 26) {
+      sTypefaceCompatImpl = new TypefaceCompatApi26Impl();
+    } else if ((Build.VERSION.SDK_INT >= 24) && (TypefaceCompatApi24Impl.isUsable())) {
+      sTypefaceCompatImpl = new TypefaceCompatApi24Impl();
+    } else if (Build.VERSION.SDK_INT >= 21) {
+      sTypefaceCompatImpl = new TypefaceCompatApi21Impl();
+    } else {
+      sTypefaceCompatImpl = new TypefaceCompatBaseImpl();
     }
   }
   
   @NonNull
   public static Typeface create(@NonNull Context paramContext, @Nullable Typeface paramTypeface, int paramInt)
   {
-    if (paramContext == null) {
-      throw new IllegalArgumentException("Context cannot be null");
-    }
-    if (Build.VERSION.SDK_INT < 21)
+    if (paramContext != null)
     {
-      paramContext = getBestFontFromFamily(paramContext, paramTypeface, paramInt);
-      if (paramContext != null) {
-        return paramContext;
+      if (Build.VERSION.SDK_INT < 21)
+      {
+        paramContext = getBestFontFromFamily(paramContext, paramTypeface, paramInt);
+        if (paramContext != null) {
+          return paramContext;
+        }
       }
+      return Typeface.create(paramTypeface, paramInt);
     }
-    return Typeface.create(paramTypeface, paramInt);
+    throw new IllegalArgumentException("Context cannot be null");
   }
   
   @Nullable
@@ -74,39 +69,23 @@ public class TypefaceCompat
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public static Typeface createFromResourcesFamilyXml(@NonNull Context paramContext, @NonNull FontResourcesParserCompat.FamilyResourceEntry paramFamilyResourceEntry, @NonNull Resources paramResources, int paramInt1, int paramInt2, @Nullable ResourcesCompat.FontCallback paramFontCallback, @Nullable Handler paramHandler, boolean paramBoolean)
   {
-    boolean bool = true;
-    int i;
     if ((paramFamilyResourceEntry instanceof FontResourcesParserCompat.ProviderResourceEntry))
     {
       paramFamilyResourceEntry = (FontResourcesParserCompat.ProviderResourceEntry)paramFamilyResourceEntry;
+      boolean bool = false;
+      if (paramBoolean ? paramFamilyResourceEntry.getFetchStrategy() == 0 : paramFontCallback == null) {
+        bool = true;
+      }
+      int i;
       if (paramBoolean) {
-        if (paramFamilyResourceEntry.getFetchStrategy() == 0)
-        {
-          if (!paramBoolean) {
-            break label95;
-          }
-          i = paramFamilyResourceEntry.getTimeout();
-          label38:
-          paramContext = FontsContractCompat.getFontSync(paramContext, paramFamilyResourceEntry.getRequest(), paramFontCallback, paramHandler, bool, i, paramInt2);
-        }
+        i = paramFamilyResourceEntry.getTimeout();
+      } else {
+        i = -1;
       }
+      paramContext = FontsContractCompat.getFontSync(paramContext, paramFamilyResourceEntry.getRequest(), paramFontCallback, paramHandler, bool, i, paramInt2);
     }
-    for (;;)
+    else
     {
-      if (paramContext != null) {
-        sTypefaceCache.put(createResourceUid(paramResources, paramInt1, paramInt2), paramContext);
-      }
-      return paramContext;
-      bool = false;
-      break;
-      if (paramFontCallback == null) {
-        break;
-      }
-      bool = false;
-      break;
-      label95:
-      i = -1;
-      break label38;
       paramFamilyResourceEntry = sTypefaceCompatImpl.createFromFontFamilyFilesResourceEntry(paramContext, (FontResourcesParserCompat.FontFamilyFilesResourceEntry)paramFamilyResourceEntry, paramResources, paramInt2);
       paramContext = paramFamilyResourceEntry;
       if (paramFontCallback != null) {
@@ -122,6 +101,10 @@ public class TypefaceCompat
         }
       }
     }
+    if (paramContext != null) {
+      sTypefaceCache.put(createResourceUid(paramResources, paramInt1, paramInt2), paramContext);
+    }
+    return paramContext;
   }
   
   @Nullable
@@ -139,7 +122,13 @@ public class TypefaceCompat
   
   private static String createResourceUid(Resources paramResources, int paramInt1, int paramInt2)
   {
-    return paramResources.getResourcePackageName(paramInt1) + "-" + paramInt1 + "-" + paramInt2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramResources.getResourcePackageName(paramInt1));
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt2);
+    return localStringBuilder.toString();
   }
   
   @Nullable
@@ -161,7 +150,7 @@ public class TypefaceCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.TypefaceCompat
  * JD-Core Version:    0.7.0.1
  */

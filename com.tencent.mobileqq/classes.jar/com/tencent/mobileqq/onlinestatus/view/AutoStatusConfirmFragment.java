@@ -5,7 +5,6 @@ import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -14,28 +13,29 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.AppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.fragment.PublicBaseFragment;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.fragment.QPublicBaseFragment;
 import com.tencent.mobileqq.onlinestatus.OnLineStatusHelper;
 import com.tencent.mobileqq.onlinestatus.OnlineStatusItem;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusManager;
 import com.tencent.mobileqq.onlinestatus.ReportHelperKt;
-import com.tencent.mobileqq.onlinestatus.auto.AutoStatusManager;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusManagerService;
 import com.tencent.mobileqq.onlinestatus.auto.Constant;
+import com.tencent.mobileqq.onlinestatus.manager.AutoStatusManager;
+import com.tencent.mobileqq.onlinestatus.manager.IAutoStatusManager;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import mqq.app.AppRuntime;
 import mqq.app.AppRuntime.Status;
+import mqq.app.MobileQQ;
 
 public class AutoStatusConfirmFragment
-  extends PublicBaseFragment
+  extends QPublicBaseFragment
   implements View.OnClickListener
 {
   private int jdField_a_of_type_Int;
@@ -48,7 +48,7 @@ public class AutoStatusConfirmFragment
   {
     super.initWindowStyleAndAnimation(paramActivity);
     paramActivity.getWindow().setSoftInputMode(3);
-    paramActivity.overridePendingTransition(2130771981, 2130771979);
+    paramActivity.overridePendingTransition(2130771993, 2130771991);
   }
   
   public boolean isWrapContent()
@@ -68,107 +68,102 @@ public class AutoStatusConfirmFragment
   
   public void onClick(View paramView)
   {
-    int i;
-    if (this.jdField_a_of_type_Int == 1) {
+    int j = this.jdField_a_of_type_Int;
+    int i = 1;
+    if (j == 1) {
       i = 2;
-    }
-    for (;;)
-    {
-      if (paramView.getId() == 2131377376) {
-        getActivity().finish();
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-        if (this.jdField_a_of_type_Int != 0) {
-          break label220;
-        }
-        i = 1;
-        break;
-        if (paramView.getId() == 2131364365)
-        {
-          getActivity().finish();
-          if (i != 0) {
-            ReportHelperKt.a("0X800AFA5", i);
-          }
-        }
-        else if (paramView.getId() == 2131373388)
-        {
-          AutoStatusManager localAutoStatusManager = ((OnlineStatusManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.ONLINE_STATUS_MANAGER)).a();
-          getActivity().finish();
-          if (i != 0) {
-            ReportHelperKt.a("0X800AFA4", i);
-          }
-          i = localAutoStatusManager.a();
-          if (this.jdField_a_of_type_Long != i)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.e("AutoStatusConfirmFragment", 2, "[status][autoMgr] submitStatus ignore submitStatus: " + Constant.a((int)this.jdField_a_of_type_Long) + " curStatus: " + Constant.a(i));
-            }
-            QQToast.a(BaseApplicationImpl.getApplication(), "当前状态已改变，无法切换", 0).a();
-          }
-          else
-          {
-            AutoStatusManager.a(BaseActivity.sTopActivity.app, this.jdField_a_of_type_Long, false, "dialog_switch");
-          }
-        }
-      }
-      label220:
+    } else if (j != 0) {
       i = 0;
     }
+    if (paramView.getId() == 2131376828)
+    {
+      getQBaseActivity().finish();
+    }
+    else if (paramView.getId() == 2131364266)
+    {
+      getQBaseActivity().finish();
+      if (i != 0) {
+        ReportHelperKt.a("0X800AFA5", i);
+      }
+    }
+    else if (paramView.getId() == 2131372968)
+    {
+      Object localObject = MobileQQ.sMobileQQ.peekAppRuntime();
+      AutoStatusManager localAutoStatusManager = (AutoStatusManager)((IOnlineStatusManagerService)((AppRuntime)localObject).getRuntimeService(IOnlineStatusManagerService.class, "")).getManager(IAutoStatusManager.class);
+      getQBaseActivity().finish();
+      if (i != 0) {
+        ReportHelperKt.a("0X800AFA4", i);
+      }
+      i = localAutoStatusManager.a();
+      long l = this.jdField_a_of_type_Long;
+      if (l != i)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[status][autoMgr] submitStatus ignore submitStatus: ");
+          ((StringBuilder)localObject).append(Constant.a((int)this.jdField_a_of_type_Long));
+          ((StringBuilder)localObject).append(" curStatus: ");
+          ((StringBuilder)localObject).append(Constant.a(i));
+          QLog.e("AutoStatusConfirmFragment", 2, ((StringBuilder)localObject).toString());
+        }
+        QQToast.a(MobileQQ.sMobileQQ, "当前状态已改变，无法切换", 0).a();
+      }
+      else
+      {
+        AutoStatusManager.a((AppInterface)localObject, l, false, "dialog_switch");
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    paramViewGroup = paramLayoutInflater.inflate(2131558418, null);
+    paramViewGroup = paramLayoutInflater.inflate(2131558446, null);
     paramViewGroup.setOnClickListener(this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372524));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131364365));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372109));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131364266));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
-    this.b = ((Button)paramViewGroup.findViewById(2131373388));
+    this.b = ((Button)paramViewGroup.findViewById(2131372968));
     this.b.setOnClickListener(this);
-    this.jdField_a_of_type_Long = getActivity().getIntent().getLongExtra("ext_status", 0L);
-    this.jdField_a_of_type_Int = getActivity().getIntent().getIntExtra("is_background", -1);
+    this.jdField_a_of_type_Long = getQBaseActivity().getIntent().getLongExtra("ext_status", 0L);
+    this.jdField_a_of_type_Int = getQBaseActivity().getIntent().getIntExtra("is_background", -1);
     paramLayoutInflater = OnLineStatusHelper.a().a(AppRuntime.Status.online, this.jdField_a_of_type_Long);
-    paramBundle = getResources().getString(2131698440, new Object[] { paramLayoutInflater.b });
+    paramBundle = getResources();
+    int i = 1;
+    paramBundle = paramBundle.getString(2131698506, new Object[] { paramLayoutInflater.b });
     this.jdField_a_of_type_AndroidWidgetTextView.setText(paramBundle);
-    int i = AIOUtils.a(24.0F, getResources());
+    int j = Utils.a(24.0F, getResources());
     paramBundle = URLDrawable.URLDrawableOptions.obtain();
-    paramBundle.mRequestWidth = i;
-    paramBundle.mRequestHeight = i;
+    paramBundle.mRequestWidth = j;
+    paramBundle.mRequestHeight = j;
     if (!TextUtils.isEmpty(paramLayoutInflater.c))
     {
       paramLayoutInflater = URLDrawable.getDrawable(paramLayoutInflater.c, paramBundle);
-      paramLayoutInflater.setBounds(0, 0, i, i);
+      paramLayoutInflater.setBounds(0, 0, j, j);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramLayoutInflater, null, null, null);
-      if (this.jdField_a_of_type_Int == 1) {
-        i = 2;
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          ReportHelperKt.a("0X800AFA3", i);
-        }
-        V4FragmentCollector.onV4FragmentViewCreated(this, paramViewGroup);
-        return paramViewGroup;
-        if (this.jdField_a_of_type_Int == 0) {
-          i = 1;
-        } else {
-          i = 0;
-        }
-      }
       paramLayoutInflater = null;
     }
+    this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawables(paramLayoutInflater, null, null, null);
+    j = this.jdField_a_of_type_Int;
+    if (j == 1) {
+      i = 2;
+    } else if (j != 0) {
+      i = 0;
+    }
+    if (i != 0) {
+      ReportHelperKt.a("0X800AFA3", i);
+    }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramViewGroup);
+    return paramViewGroup;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.AutoStatusConfirmFragment
  * JD-Core Version:    0.7.0.1
  */

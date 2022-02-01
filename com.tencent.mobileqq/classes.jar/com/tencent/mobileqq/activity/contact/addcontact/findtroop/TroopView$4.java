@@ -16,8 +16,14 @@ class TroopView$4
   public int a(int paramInt, boolean paramBoolean)
   {
     int i = TroopView.a(this.a).getCurrentItem();
-    if (QLog.isColorLevel()) {
-      QLog.i("addContacts.TroopView", 2, "onTabChanged. position:" + paramInt + " currentClassifyPos:" + i);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onTabChanged. position:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" currentClassifyPos:");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("addContacts.TroopView", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = TroopView.a(this.a).a(i, false);
     if (localObject != null)
@@ -37,7 +43,7 @@ class TroopView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.TroopView.4
  * JD-Core Version:    0.7.0.1
  */

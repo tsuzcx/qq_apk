@@ -2,14 +2,14 @@ package com.tencent.biz.subscribe.widget.textview;
 
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed;
 import NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StUser;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver.OnCallback;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.biz.subscribe.event.FollowUpdateEvent;
-import com.tencent.mobileqq.app.PublicAccountObserver;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.widget.QQToast;
 
 class FollowTextView$1
-  extends PublicAccountObserver
+  extends IPublicAccountObserver.OnCallback
 {
   FollowTextView$1(FollowTextView paramFollowTextView) {}
   
@@ -19,8 +19,10 @@ class FollowTextView$1
     FollowTextView.a(this.a, true);
     if (paramBoolean)
     {
-      if (!FollowTextView.a(this.a)) {
-        FollowTextView.a(this.a, true, FollowTextView.a(this.a));
+      if (!FollowTextView.a(this.a))
+      {
+        paramString = this.a;
+        FollowTextView.a(paramString, true, FollowTextView.a(paramString));
       }
       this.a.a(1);
       if (FollowTextView.a(this.a) != null)
@@ -30,14 +32,16 @@ class FollowTextView$1
         }
         SimpleEventBus.getInstance().dispatchEvent(new FollowUpdateEvent(1, FollowTextView.a(this.a).poster.id.get()));
       }
-      return;
     }
-    QQToast.a(this.a.getContext(), 2131690841, 0).a();
+    else
+    {
+      QQToast.a(this.a.getContext(), 2131690769, 0).a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.FollowTextView.1
  * JD-Core Version:    0.7.0.1
  */

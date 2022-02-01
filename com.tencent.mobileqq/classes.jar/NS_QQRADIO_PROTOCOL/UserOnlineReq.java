@@ -35,22 +35,25 @@ public final class UserOnlineReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.uid != null) {
-      paramJceOutputStream.write(this.uid, 0);
+    String str = this.uid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.roomId != null) {
-      paramJceOutputStream.write(this.roomId, 1);
+    str = this.roomId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.type, 2);
     paramJceOutputStream.write(this.relativeTime, 3);
-    if (this.anchorId != null) {
-      paramJceOutputStream.write(this.anchorId, 4);
+    str = this.anchorId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_PROTOCOL.UserOnlineReq
  * JD-Core Version:    0.7.0.1
  */

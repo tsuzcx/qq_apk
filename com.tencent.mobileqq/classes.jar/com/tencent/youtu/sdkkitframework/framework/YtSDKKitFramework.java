@@ -14,7 +14,7 @@ import org.json.JSONObject;
 
 public class YtSDKKitFramework
 {
-  private static final String TAG = YtSDKKitFramework.class.getSimpleName();
+  private static final String TAG = "YtSDKKitFramework";
   private static YtSDKKitFramework instance;
   private static final String version = "1.1.18.11";
   private long defaultUpdateTimeoutMS = 8000L;
@@ -54,28 +54,30 @@ public class YtSDKKitFramework
   {
     try
     {
-      YtFSMBaseState localYtFSMBaseState = (YtFSMBaseState)Class.forName(paramString).getConstructor(new Class[0]).newInstance(new Object[0]);
+      Object localObject = (YtFSMBaseState)Class.forName(paramString).getConstructor(new Class[0]).newInstance(new Object[0]);
+      try
+      {
+        ((YtFSMBaseState)localObject).loadStateWith(paramString, paramJSONObject);
+        return localObject;
+      }
+      catch (Throwable localThrowable2)
+      {
+        paramJSONObject = (JSONObject)localObject;
+        localObject = localThrowable2;
+      }
       localThrowable1.printStackTrace();
     }
     catch (Throwable localThrowable1)
     {
-      try
-      {
-        localYtFSMBaseState.loadStateWith(paramString, paramJSONObject);
-        return localYtFSMBaseState;
-      }
-      catch (Throwable localThrowable2)
-      {
-        for (;;)
-        {
-          paramJSONObject = localThrowable1;
-          Object localObject = localThrowable2;
-        }
-      }
-      localThrowable1 = localThrowable1;
       paramJSONObject = null;
     }
-    YtLogger.e(TAG, "Parse state " + paramString + "failed:" + localThrowable1.getMessage());
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Parse state ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("failed:");
+    localStringBuilder.append(localThrowable1.getMessage());
+    YtLogger.e(str, localStringBuilder.toString());
     return paramJSONObject;
   }
   
@@ -152,24 +154,26 @@ public class YtSDKKitFramework
       paramIYtSDKKitFrameworkEventListener = parseStateFrom((String)paramYtSDKPlatformContext.next(), paramJSONObject);
       YtFSM.getInstance().registerState(paramIYtSDKKitFrameworkEventListener);
     }
-    int j = -8;
-    int i = j;
-    if (paramJSONObject.has("thread_priority")) {}
-    try
-    {
-      i = paramJSONObject.getInt("thread_priority");
-      long l = paramJSONObject.optLong("frame_update_timeout_ms", this.defaultUpdateTimeoutMS);
-      YtFSM.getInstance().start((String)paramArrayList.get(0), paramYtSDKKitFrameworkWorkMode, i, l);
-      return 0;
-    }
-    catch (JSONException paramYtSDKPlatformContext)
-    {
-      for (;;)
+    int i;
+    if (paramJSONObject.has("thread_priority")) {
+      try
       {
-        YtLogger.e(TAG, "failed to get priority " + paramYtSDKPlatformContext.getLocalizedMessage());
-        i = j;
+        i = paramJSONObject.getInt("thread_priority");
       }
+      catch (JSONException paramYtSDKPlatformContext)
+      {
+        paramIYtSDKKitFrameworkEventListener = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("failed to get priority ");
+        localStringBuilder.append(paramYtSDKPlatformContext.getLocalizedMessage());
+        YtLogger.e(paramIYtSDKKitFrameworkEventListener, localStringBuilder.toString());
+      }
+    } else {
+      i = -8;
     }
+    long l = paramJSONObject.optLong("frame_update_timeout_ms", this.defaultUpdateTimeoutMS);
+    YtFSM.getInstance().start((String)paramArrayList.get(0), paramYtSDKKitFrameworkWorkMode, i, l);
+    return 0;
   }
   
   public void reset()
@@ -218,7 +222,7 @@ public class YtSDKKitFramework
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.framework.YtSDKKitFramework
  * JD-Core Version:    0.7.0.1
  */

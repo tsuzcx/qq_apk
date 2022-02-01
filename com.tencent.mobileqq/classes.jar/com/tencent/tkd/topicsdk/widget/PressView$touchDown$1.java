@@ -21,28 +21,31 @@ final class PressView$touchDown$1
   {
     Intrinsics.checkExpressionValueIsNotNull(paramValueAnimator, "it");
     paramValueAnimator = paramValueAnimator.getAnimatedValue();
-    if (paramValueAnimator == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
-    }
-    float f = ((Float)paramValueAnimator).floatValue();
-    Drawable localDrawable = this.a.getBackground();
-    paramValueAnimator = localDrawable;
-    if (localDrawable == null)
+    if (paramValueAnimator != null)
     {
+      float f = ((Float)paramValueAnimator).floatValue();
+      Drawable localDrawable = this.a.getBackground();
       paramValueAnimator = localDrawable;
-      if ((this.a instanceof ImageView)) {
-        paramValueAnimator = ((ImageView)this.a).getDrawable();
+      if (localDrawable == null)
+      {
+        View localView = this.a;
+        paramValueAnimator = localDrawable;
+        if ((localView instanceof ImageView)) {
+          paramValueAnimator = ((ImageView)localView).getDrawable();
+        }
       }
+      int i = (int)(f * 'ÿ');
+      if (paramValueAnimator != null) {
+        paramValueAnimator.setColorFilter(Color.argb(255, i, i, i), PorterDuff.Mode.MULTIPLY);
+      }
+      return;
     }
-    int i = (int)(f * 'ÿ');
-    if (paramValueAnimator != null) {
-      paramValueAnimator.setColorFilter(Color.argb(255, i, i, i), PorterDuff.Mode.MULTIPLY);
-    }
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Float");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.PressView.touchDown.1
  * JD-Core Version:    0.7.0.1
  */

@@ -31,18 +31,17 @@ public class MedalWallMng$NeedGuideMedal
   
   public boolean a()
   {
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       try
       {
-        localJSONArray = new JSONArray(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strResJson);
-        localJSONObject = null;
+        JSONArray localJSONArray = new JSONArray(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.strResJson);
+        JSONObject localJSONObject = null;
         i = localJSONArray.length();
-        if ((this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevelCount <= 1) || (i <= this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)) {
-          continue;
+        if ((this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevelCount > 1) && (i > this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel)) {
+          localJSONObject = localJSONArray.getJSONObject(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel);
+        } else if (i > 1) {
+          localJSONObject = localJSONArray.getJSONObject(1);
         }
-        localJSONObject = localJSONArray.getJSONObject(this.jdField_a_of_type_ComTencentMobileqqDataMedalInfo.iLevel);
         if ((localJSONObject != null) && (localJSONObject.has("owned3d"))) {
           this.jdField_a_of_type_JavaLangString = MedalWallMng.a(localJSONObject.getString("owned3d"));
         }
@@ -52,43 +51,33 @@ public class MedalWallMng$NeedGuideMedal
       }
       catch (Exception localException)
       {
-        JSONArray localJSONArray;
-        JSONObject localJSONObject;
-        int i;
         localException.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel()) {
+          QLog.i("MedalWallMng", 2, "parse res json fail", localException);
         }
-        QLog.i("MedalWallMng", 2, "parse res json fail", localException);
-        continue;
-        if (this.jdField_a_of_type_Int != 1) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-        if (!FileUtils.b(this.jdField_b_of_type_JavaLangString)) {
-          continue;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        continue;
-      }
-      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {
-        this.jdField_b_of_type_JavaLangString = (MedalWallMng.jdField_b_of_type_JavaLangString + MD5Utils.toMD5(this.jdField_a_of_type_JavaLangString));
-      }
-      if (this.jdField_a_of_type_Int != 2) {
-        continue;
-      }
-      this.jdField_a_of_type_Boolean = true;
-      return this.jdField_a_of_type_Boolean;
-      if (i > 1) {
-        localJSONObject = localJSONArray.getJSONObject(1);
       }
     }
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(MedalWallMng.jdField_b_of_type_JavaLangString);
+      localStringBuilder.append(MD5Utils.toMD5(this.jdField_a_of_type_JavaLangString));
+      this.jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    }
+    int i = this.jdField_a_of_type_Int;
+    if (i == 2) {
+      this.jdField_a_of_type_Boolean = true;
+    } else if (i == 1) {
+      this.jdField_a_of_type_Boolean = true;
+    } else if (FileUtils.fileExistsAndNotEmpty(this.jdField_b_of_type_JavaLangString)) {
+      this.jdField_a_of_type_Boolean = true;
+    }
+    return this.jdField_a_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.MedalWallMng.NeedGuideMedal
  * JD-Core Version:    0.7.0.1
  */

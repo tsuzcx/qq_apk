@@ -19,20 +19,24 @@ class TextInputPlugin$1
   
   public void finishAutofillContext(boolean paramBoolean)
   {
-    if ((Build.VERSION.SDK_INT < 26) || (TextInputPlugin.access$400(this.this$0) == null)) {
-      return;
-    }
-    if (paramBoolean)
+    if (Build.VERSION.SDK_INT >= 26)
     {
-      TextInputPlugin.access$400(this.this$0).commit();
-      return;
+      if (TextInputPlugin.access$400(this.this$0) == null) {
+        return;
+      }
+      if (paramBoolean)
+      {
+        TextInputPlugin.access$400(this.this$0).commit();
+        return;
+      }
+      TextInputPlugin.access$400(this.this$0).cancel();
     }
-    TextInputPlugin.access$400(this.this$0).cancel();
   }
   
   public void hide()
   {
-    TextInputPlugin.access$200(this.this$0, TextInputPlugin.access$000(this.this$0));
+    TextInputPlugin localTextInputPlugin = this.this$0;
+    TextInputPlugin.access$200(localTextInputPlugin, TextInputPlugin.access$000(localTextInputPlugin));
   }
   
   public void requestAutofill()
@@ -57,7 +61,8 @@ class TextInputPlugin$1
   
   public void setEditingState(TextInputChannel.TextEditState paramTextEditState)
   {
-    this.this$0.setTextInputEditingState(TextInputPlugin.access$000(this.this$0), paramTextEditState);
+    TextInputPlugin localTextInputPlugin = this.this$0;
+    localTextInputPlugin.setTextInputEditingState(TextInputPlugin.access$000(localTextInputPlugin), paramTextEditState);
   }
   
   public void setPlatformViewClient(int paramInt)
@@ -67,12 +72,13 @@ class TextInputPlugin$1
   
   public void show()
   {
-    TextInputPlugin.access$100(this.this$0, TextInputPlugin.access$000(this.this$0));
+    TextInputPlugin localTextInputPlugin = this.this$0;
+    TextInputPlugin.access$100(localTextInputPlugin, TextInputPlugin.access$000(localTextInputPlugin));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.editing.TextInputPlugin.1
  * JD-Core Version:    0.7.0.1
  */

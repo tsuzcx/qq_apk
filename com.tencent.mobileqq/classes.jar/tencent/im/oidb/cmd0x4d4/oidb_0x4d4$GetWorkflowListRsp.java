@@ -22,12 +22,13 @@ public final class oidb_0x4d4$GetWorkflowListRsp
   static
   {
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "uint32_result", "bytes_error_msg", "uint64_start_time", "uint64_end_time", "rpt_msg_result_list" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L), Long.valueOf(0L), null }, GetWorkflowListRsp.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "uint32_result", "bytes_error_msg", "uint64_start_time", "uint64_end_time", "rpt_msg_result_list" }, new Object[] { Integer.valueOf(0), localByteStringMicro, localLong, localLong, null }, GetWorkflowListRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x4d4.oidb_0x4d4.GetWorkflowListRsp
  * JD-Core Version:    0.7.0.1
  */

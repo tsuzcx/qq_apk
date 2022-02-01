@@ -14,9 +14,8 @@ public final class TextUtilsCompat
   
   private static int getLayoutDirectionFromFirstChar(@NonNull Locale paramLocale)
   {
-    switch (Character.getDirectionality(paramLocale.getDisplayName(paramLocale).charAt(0)))
-    {
-    default: 
+    int i = Character.getDirectionality(paramLocale.getDisplayName(paramLocale).charAt(0));
+    if ((i != 1) && (i != 2)) {
       return 0;
     }
     return 1;
@@ -48,35 +47,46 @@ public final class TextUtilsCompat
     }
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
       char c = paramString.charAt(i);
-      switch (c)
+      if (c != '"')
       {
-      default: 
-        localStringBuilder.append(c);
+        if (c != '<')
+        {
+          if (c != '>')
+          {
+            if (c != '&')
+            {
+              if (c != '\'') {
+                localStringBuilder.append(c);
+              } else {
+                localStringBuilder.append("&#39;");
+              }
+            }
+            else {
+              localStringBuilder.append("&amp;");
+            }
+          }
+          else {
+            localStringBuilder.append("&gt;");
+          }
+        }
+        else {
+          localStringBuilder.append("&lt;");
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        localStringBuilder.append("&lt;");
-        continue;
-        localStringBuilder.append("&gt;");
-        continue;
-        localStringBuilder.append("&amp;");
-        continue;
-        localStringBuilder.append("&#39;");
-        continue;
+      else {
         localStringBuilder.append("&quot;");
       }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.TextUtilsCompat
  * JD-Core Version:    0.7.0.1
  */

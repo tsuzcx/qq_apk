@@ -1,141 +1,167 @@
 package com.tencent.richmediabrowser.core;
 
-import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
-import android.view.ViewGroup;
+import com.tencent.richmediabrowser.api.BrowserParamsBuilder;
+import com.tencent.richmediabrowser.api.decorator.IDecoratorModel;
+import com.tencent.richmediabrowser.api.decorator.IDecoratorPresenter;
+import com.tencent.richmediabrowser.api.decorator.IDecoratorView;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
-import com.tencent.richmediabrowser.model.BrowserBaseModel;
-import com.tencent.richmediabrowser.presenter.BasePresenter;
-import com.tencent.richmediabrowser.view.BrowserBaseView;
+import com.tencent.richmediabrowser.presenter.MainBrowserPresenter;
+import java.util.HashMap;
 
 public class BrowserBuilder
   implements IBrowserBuilder
 {
   private static final String TAG = "BrowserBuilder";
-  private Activity mActivity;
+  private IDecoratorModel decoratorModel;
+  private IDecoratorPresenter decoratorPresenter;
+  private IDecoratorView decoratorView;
+  private Context mContext;
   private int mType;
-  private BrowserBaseModel model;
-  private BasePresenter presenter;
-  private BasePresenter relyPresenter;
-  private BrowserBaseView view;
+  private IBaseModelBuilder model;
+  private IBasePresenterBuilder presenter;
+  private MainBrowserPresenter relyPresenter;
+  private IBaseViewBuilder view;
   
-  public BrowserBuilder(Activity paramActivity, int paramInt)
+  public BrowserBuilder(Context paramContext, int paramInt)
   {
-    this.mActivity = paramActivity;
+    this.mContext = paramContext;
     this.mType = paramInt;
+  }
+  
+  private void buildPresenter(int paramInt)
+  {
+    MVPFactory localMVPFactory = new MVPFactory(this.relyPresenter);
+    this.presenter = localMVPFactory.createPresenter(paramInt);
+    IBasePresenterBuilder localIBasePresenterBuilder = this.presenter;
+    if (localIBasePresenterBuilder == null)
+    {
+      BrowserLogHelper.getInstance().getGalleryLog().d("BrowserBuilder", 4, "buildPresenter presenter is null!");
+      return;
+    }
+    localIBasePresenterBuilder.setRelyPresenter(this.relyPresenter);
+    this.view = localMVPFactory.createView(this.mContext, paramInt, this.presenter);
+    this.presenter.setBrowserView(this.view);
+    this.model = localMVPFactory.createModel(paramInt, this.presenter);
+    this.presenter.setBrowserModel(this.model);
+    this.presenter.buildPresenter();
   }
   
   public void buildComplete()
   {
-    if (this.presenter != null) {
-      this.presenter.buildComplete();
+    Object localObject = this.presenter;
+    if (localObject != null) {
+      ((IBasePresenterBuilder)localObject).buildComplete();
     }
-    if (this.view != null) {
-      this.view.buildComplete();
+    localObject = this.view;
+    if (localObject != null) {
+      ((IBaseViewBuilder)localObject).buildComplete();
     }
-    if (this.model != null) {
-      this.model.buildComplete();
+    localObject = this.model;
+    if (localObject != null) {
+      ((IBaseModelBuilder)localObject).buildComplete();
     }
   }
   
   public void buildModel()
   {
-    if (this.model != null) {
-      this.model.buildModel();
+    IBaseModelBuilder localIBaseModelBuilder = this.model;
+    if (localIBaseModelBuilder != null) {
+      localIBaseModelBuilder.buildModel();
     }
   }
   
   public void buildParams(Intent paramIntent)
   {
-    if (this.presenter != null) {
-      this.presenter.buildParams(paramIntent);
+    Object localObject = this.presenter;
+    if (localObject != null) {
+      ((IBasePresenterBuilder)localObject).buildParams(paramIntent);
     }
-    if (this.view != null) {
-      this.view.buildParams(paramIntent);
+    localObject = this.view;
+    if (localObject != null) {
+      ((IBaseViewBuilder)localObject).buildParams(paramIntent);
     }
-    if (this.model != null) {
-      this.model.buildParams(paramIntent);
+    localObject = this.model;
+    if (localObject != null) {
+      ((IBaseModelBuilder)localObject).buildParams(paramIntent);
     }
   }
   
   public void buildPresenter()
   {
-    MVPFactory localMVPFactory = new MVPFactory();
-    this.presenter = localMVPFactory.createPresenter(this.mType);
-    if (this.presenter == null)
+    if ((this.relyPresenter.getParamsBuilder() != null) && (this.relyPresenter.getParamsBuilder().jdField_a_of_type_JavaUtilHashMap != null) && (this.relyPresenter.getParamsBuilder().jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.mType)) != null))
     {
-      BrowserLogHelper.getInstance().getGalleryLog().d("BrowserBuilder", 4, "buildPresenter presenter is null!");
+      int i = ((Integer)this.relyPresenter.getParamsBuilder().jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(this.mType))).intValue();
+      if (i > 0)
+      {
+        localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("buildPresenter businessType = ");
+        localStringBuilder.append(this.mType);
+        localStringBuilder.append(", decoratorType = ");
+        localStringBuilder.append(i);
+        localIBrowserLog.d("BrowserBuilder", 4, localStringBuilder.toString());
+        buildPresenter(i);
+        if (this.relyPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory != null)
+        {
+          this.decoratorPresenter = this.relyPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory.a(this.mType);
+          this.decoratorPresenter.b(this.relyPresenter);
+          this.decoratorView = this.relyPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory.a(this.mContext, this.mType, this.decoratorPresenter);
+          this.decoratorModel = this.relyPresenter.getParamsBuilder().jdField_a_of_type_ComTencentRichmediabrowserCoreIDecoratorMvpFactory.a(this.mType, this.decoratorPresenter);
+          this.decoratorModel.a(this.model);
+          this.decoratorView.a(this.view);
+          this.decoratorPresenter.a(this.presenter);
+          this.decoratorPresenter.a(this.decoratorModel);
+          this.decoratorPresenter.a(this.decoratorView);
+          return;
+        }
+        BrowserLogHelper.getInstance().getGalleryLog().d("BrowserBuilder", 4, "buildPresenter decoratorMvpFactory is null");
+        return;
+      }
+      IBrowserLog localIBrowserLog = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("buildPresenter mType = ");
+      localStringBuilder.append(this.mType);
+      localIBrowserLog.d("BrowserBuilder", 4, localStringBuilder.toString());
+      buildPresenter(this.mType);
       return;
     }
-    this.presenter.setRelyPresenter(this.relyPresenter);
-    this.view = localMVPFactory.createView(this.mActivity, this.mType, this.presenter);
-    this.presenter.setGalleryView(this.view);
-    this.model = localMVPFactory.createModel(this.mType, this.presenter);
-    this.presenter.setGalleryModel(this.model);
-    this.presenter.buildPresenter();
+    buildPresenter(this.mType);
   }
   
-  public void buildView(ViewGroup paramViewGroup)
+  public void buildView()
   {
-    if (this.view != null) {
-      this.view.buildView(paramViewGroup);
+    IBaseViewBuilder localIBaseViewBuilder = this.view;
+    if (localIBaseViewBuilder != null) {
+      localIBaseViewBuilder.buildView();
     }
   }
   
-  public BasePresenter getPresenter()
+  public IDecoratorPresenter getDecoratorPresenter()
+  {
+    return this.decoratorPresenter;
+  }
+  
+  public IBasePresenterBuilder getPresenter()
   {
     return this.presenter;
   }
   
-  public BrowserBaseView getView()
+  public IBaseViewBuilder getView()
   {
     return this.view;
   }
   
-  public void onDestroy()
+  public void setRelyPresenter(MainBrowserPresenter paramMainBrowserPresenter)
   {
-    if (this.presenter != null) {
-      this.presenter.onDestroy();
-    }
-  }
-  
-  public void onPause()
-  {
-    if (this.presenter != null) {
-      this.presenter.onPause();
-    }
-  }
-  
-  public void onResume()
-  {
-    if (this.presenter != null) {
-      this.presenter.onResume();
-    }
-  }
-  
-  public void onStart()
-  {
-    if (this.presenter != null) {
-      this.presenter.onStart();
-    }
-  }
-  
-  public void onStop()
-  {
-    if (this.presenter != null) {
-      this.presenter.onStop();
-    }
-  }
-  
-  public void setRelyPresenter(BasePresenter paramBasePresenter)
-  {
-    this.relyPresenter = paramBasePresenter;
+    this.relyPresenter = paramMainBrowserPresenter;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.core.BrowserBuilder
  * JD-Core Version:    0.7.0.1
  */

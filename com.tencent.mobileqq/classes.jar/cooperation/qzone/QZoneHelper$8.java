@@ -1,43 +1,49 @@
 package cooperation.qzone;
 
-import android.app.ActivityManager;
-import android.app.ActivityManager.RunningAppProcessInfo;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.hitrate.PreloadProcHitPluginSession;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.qphone.base.util.QLog;
-import java.util.Iterator;
-import java.util.List;
+import common.config.service.QzoneConfig;
+import mqq.app.AppRuntime;
 
 final class QZoneHelper$8
   implements Runnable
 {
-  QZoneHelper$8(QZoneHelper.StartActivity paramStartActivity) {}
+  QZoneHelper$8(AppRuntime paramAppRuntime, PreloadProcHitPluginSession paramPreloadProcHitPluginSession) {}
   
   public void run()
   {
-    Object localObject = ((ActivityManager)BaseApplicationImpl.getContext().getSystemService("activity")).getRunningAppProcesses();
-    if ((localObject == null) || (((List)localObject).size() <= 0))
+    int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessEnable", 1);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
     {
-      this.val$startActivity.onStart(true, false);
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("preloadInFriendProfileCard enable:");
+      localStringBuilder.append(i);
+      QLog.d("QZoneHelper", 2, localStringBuilder.toString());
     }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext()) {
-      if ("com.tencent.mobileqq:qzone".equals(((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName))
+    if (i == 1)
+    {
+      long l = DeviceInfoUtil.a() / 1048576L;
+      i = QzoneConfig.getInstance().getConfig("QZoneSetting", "PreloadQzoneProcessRamThreshold", 1024);
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QZoneHelper", 2, "QzoneProcess is exist");
-        }
-        this.val$startActivity.onStart(true, true);
-        return;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("preloadInFriendProfileCard totalMemSize:");
+        localStringBuilder.append(l);
+        localStringBuilder.append(",threshold:");
+        localStringBuilder.append(i);
+        QLog.d("QZoneHelper", 2, localStringBuilder.toString());
+      }
+      if (l >= i) {
+        QZoneHelper.preloadQzone(this.val$app, "FriendProfileCardActivity", this.val$session, false);
       }
     }
-    this.val$startActivity.onStart(true, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneHelper.8
  * JD-Core Version:    0.7.0.1
  */

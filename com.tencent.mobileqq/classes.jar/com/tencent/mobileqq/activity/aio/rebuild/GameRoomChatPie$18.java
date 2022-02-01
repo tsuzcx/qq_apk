@@ -16,38 +16,53 @@ class GameRoomChatPie$18
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onDownLoadedPluginResult result = " + paramInt);
-    }
-    if (paramInt == 0) {
-      this.a.bq();
-    }
-    do
+    if (QLog.isColorLevel())
     {
+      String str = this.a.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownLoadedPluginResult result = ");
+      localStringBuilder.append(paramInt);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    if (paramInt == 0)
+    {
+      this.a.aw();
       return;
-      QQToast.a(this.a.a(), HardCodeUtil.a(2131705128), 0).a();
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView == null);
-    this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+    }
+    QQToast.a(this.a.a(), HardCodeUtil.a(2131705205), 0).a();
+    if (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWereWolvesLoadingView.setProgress(0);
+    }
   }
   
   public void a(long paramLong1, long paramLong2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onNotifyGameRoomSpeakerStatus uin = " + paramLong2 + " isSeaking = " + paramBoolean);
-    }
-    if ((!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramLong1))) || (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager == null)) {}
-    WerewolvesPluginInterface localWerewolvesPluginInterface;
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      return;
-      localWerewolvesPluginInterface = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
-    } while (localWerewolvesPluginInterface == null);
-    localWerewolvesPluginInterface.a(String.valueOf(paramLong2), paramBoolean);
+      localObject = this.a.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onNotifyGameRoomSpeakerStatus uin = ");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(" isSeaking = ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
+    }
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(String.valueOf(paramLong1)))
+    {
+      if (this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager == null) {
+        return;
+      }
+      localObject = this.a.jdField_a_of_type_ComTencentMobileqqWerewolvesWerewolvesPluginManager.a();
+      if (localObject != null) {
+        ((WerewolvesPluginInterface)localObject).a(String.valueOf(paramLong2), paramBoolean);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.18
  * JD-Core Version:    0.7.0.1
  */

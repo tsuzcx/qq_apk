@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<dov.com.qq.im.ae.view.AETouchNotifyRelativeLayout android:id="@id/cg_" android:background="@color/dg" android:clipChildren="false" android:layout_width="fill_parent" android:layout_height="fill_parent"
+<FrameLayout android:orientation="vertical" android:background="#fff9f9fb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.qq.im.ae.view.NoScrollViewPager android:id="@id/viewPager" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <dov.com.qq.im.ae.view.TabLayout android:id="@id/o84" android:layout_width="fill_parent" android:layout_height="@dimen/b_g" android:layout_marginLeft="@dimen/b_l" android:layout_marginTop="@dimen/b_i" android:layout_marginRight="@dimen/b_l" android:layout_marginBottom="@dimen/b_h" android:layout_alignParentBottom="true" />
-</dov.com.qq.im.ae.view.AETouchNotifyRelativeLayout>
+    <FrameLayout android:id="@id/myu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <RelativeLayout android:id="@id/n6t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+</FrameLayout>

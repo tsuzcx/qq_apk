@@ -27,38 +27,35 @@ class DLFilesViewerActivity$1
   
   public void onClick(View paramView)
   {
-    Object localObject2 = null;
     Object localObject1 = DLFilesViewerActivity.a(this.a).values().iterator();
+    Object localObject2;
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = DatalineFilesAdapter.a((DataLineMsgRecord)((Iterator)localObject1).next());
+      if ((((DLFileInfo)localObject2).a == 0) || (((DLFileInfo)localObject2).a == 3))
+      {
+        i = 1;
+        break label61;
+      }
+    }
+    int i = 0;
+    label61:
+    DataLineHandler localDataLineHandler = (DataLineHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
     Object localObject3;
-    do
+    if (i != 0)
     {
-      if (!((Iterator)localObject1).hasNext()) {
-        break;
-      }
-      localObject3 = DatalineFilesAdapter.a((DataLineMsgRecord)((Iterator)localObject1).next());
-    } while ((((DLFileInfo)localObject3).a != 0) && (((DLFileInfo)localObject3).a != 3));
-    for (int i = 1;; i = 0)
-    {
-      DataLineHandler localDataLineHandler = (DataLineHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-      if (i != 0)
+      if ((!DLFilesViewerActivity.a(this.a).isReportPause) && (DLFilesViewerActivity.a(this.a).getGroupType() == -2335))
       {
-        if ((!DLFilesViewerActivity.a(this.a).isReportPause) && (DLFilesViewerActivity.a(this.a).getGroupType() == -2335))
-        {
-          DLFilesViewerActivity.a(this.a).isReportPause = true;
-          DataLineReportUtil.m(this.a.app);
-        }
-        DLFilesViewerActivity.a(this.a).setPaused(true);
-        if ((!DLFilesViewerActivity.a(this.a).isSingle()) && (DLFilesViewerActivity.a(this.a).getGroupType() != -2335))
-        {
-          localDataLineHandler.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
-          DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
-        }
+        DLFilesViewerActivity.a(this.a).isReportPause = true;
+        DataLineReportUtil.m(this.a.app);
       }
-      for (;;)
+      DLFilesViewerActivity.a(this.a).setPaused(true);
+      if ((!DLFilesViewerActivity.a(this.a).isSingle()) && (DLFilesViewerActivity.a(this.a).getGroupType() != -2335))
       {
-        DLFilesViewerActivity.a(this.a);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
+        localDataLineHandler.a(DLFilesViewerActivity.a(this.a).getGroupId(), 0L, false);
+      }
+      else
+      {
         localObject1 = DLFilesViewerActivity.a(this.a).values().iterator();
         while (((Iterator)localObject1).hasNext())
         {
@@ -68,80 +65,75 @@ class DLFilesViewerActivity$1
             localDataLineHandler.a(((DataLineMsgRecord)localObject2).groupId, ((DataLineMsgRecord)localObject2).sessionid, false);
           }
         }
-        break;
-        if (NetworkUtil.d(this.a))
+      }
+      DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+    }
+    else if (NetworkUtil.isNetSupport(this.a))
+    {
+      if ((FileManagerUtil.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
+      {
+        localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
+        FileManagerUtil.a(((DataLineMsgRecord)localObject1).isSendFromLocal(), this.a, new DLFilesViewerActivity.1.1(this, (DataLineMsgRecord)localObject1, localDataLineHandler));
+      }
+      else
+      {
+        localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
+        if ((localObject1 != null) && (!((DataLineMsgRecord)localObject1).isSendFromLocal()) && (((DataLineMsgRecord)localObject1).strMoloKey != null)) {
+          localDataLineHandler.b(112);
+        }
+        DLFilesViewerActivity.a(this.a).setPaused(false);
+        Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
+        localObject2 = null;
+        localObject1 = null;
+        while (localIterator.hasNext())
         {
-          if ((FileManagerUtil.a()) && (DLFilesViewerActivity.a(this.a).getFileTotalSize() > 3145728L))
+          DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
+          localObject3 = DatalineFilesAdapter.a(localDataLineMsgRecord);
+          if (((DLFileInfo)localObject3).a == 1)
           {
-            localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
-            FileManagerUtil.a(((DataLineMsgRecord)localObject1).isSendFromLocal(), this.a, new DLFilesViewerActivity.1.1(this, (DataLineMsgRecord)localObject1, localDataLineHandler));
+            localObject3 = localObject2;
+            if (localObject2 == null) {
+              localObject3 = new ArrayList();
+            }
+            ((ArrayList)localObject3).add(localDataLineMsgRecord);
+            localObject2 = localObject3;
           }
-          else
+          else if ((((DLFileInfo)localObject3).a == 4) || (((DLFileInfo)localObject3).a == 2))
           {
-            localObject1 = DLFilesViewerActivity.a(this.a).getFirstItem();
-            if ((localObject1 != null) && (!((DataLineMsgRecord)localObject1).isSendFromLocal()) && (((DataLineMsgRecord)localObject1).strMoloKey != null)) {
-              localDataLineHandler.b(112);
+            if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
+              DataLineReportUtil.e(this.a.app);
             }
-            DLFilesViewerActivity.a(this.a).setPaused(false);
-            Iterator localIterator = DLFilesViewerActivity.a(this.a).values().iterator();
-            localObject1 = null;
-            if (localIterator.hasNext())
-            {
-              DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-              DLFileInfo localDLFileInfo = DatalineFilesAdapter.a(localDataLineMsgRecord);
-              if (localDLFileInfo.a == 1)
-              {
-                localObject3 = localObject2;
-                if (localObject2 == null) {
-                  localObject3 = new ArrayList();
-                }
-                ((ArrayList)localObject3).add(localDataLineMsgRecord);
-                localObject2 = localObject3;
-              }
-              for (;;)
-              {
-                break;
-                if (localDLFileInfo.a != 4)
-                {
-                  localObject3 = localObject1;
-                  if (localDLFileInfo.a != 2) {}
-                }
-                else
-                {
-                  if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
-                    DataLineReportUtil.e(this.a.app);
-                  }
-                  localObject3 = localObject1;
-                  if (localObject1 == null) {
-                    localObject3 = new ArrayList();
-                  }
-                  ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
-                  localDataLineMsgRecord.fileMsgStatus = 0L;
-                  i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
-                  this.a.app.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
-                }
-                localObject1 = localObject3;
-              }
+            localObject3 = localObject1;
+            if (localObject1 == null) {
+              localObject3 = new ArrayList();
             }
-            if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0)) {
-              localDataLineHandler.a((ArrayList)localObject2, true);
-            }
-            if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
-              localDataLineHandler.a((List)localObject1);
-            }
-            DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
+            ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
+            localDataLineMsgRecord.fileMsgStatus = 0L;
+            i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
+            this.a.app.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
+            localObject1 = localObject3;
           }
         }
-        else {
-          FMToastUtil.a(2131694510);
+        if ((localObject2 != null) && (((ArrayList)localObject2).size() > 0)) {
+          localDataLineHandler.a((ArrayList)localObject2, true);
         }
+        if ((localObject1 != null) && (((List)localObject1).size() > 0)) {
+          localDataLineHandler.a((List)localObject1);
+        }
+        DLFilesViewerActivity.a(this.a).notifyDataSetChanged();
       }
     }
+    else
+    {
+      FMToastUtil.a(2131694475);
+    }
+    DLFilesViewerActivity.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.DLFilesViewerActivity.1
  * JD-Core Version:    0.7.0.1
  */

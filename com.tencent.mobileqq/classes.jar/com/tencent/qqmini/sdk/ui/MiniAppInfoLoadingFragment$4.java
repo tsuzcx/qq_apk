@@ -19,13 +19,18 @@ class MiniAppInfoLoadingFragment$4
     }
     long l = paramJSONObject.optLong("retCode");
     String str = paramJSONObject.optString("errMsg");
-    QMLog.i("MiniAppInfoLoadingFragment", "getAppInfoById, retCode = " + l + ",errMsg = " + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getAppInfoById, retCode = ");
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(",errMsg = ");
+    ((StringBuilder)localObject).append(str);
+    QMLog.i("MiniAppInfoLoadingFragment", ((StringBuilder)localObject).toString());
     if (paramBoolean)
     {
-      MiniAppInfo localMiniAppInfo = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
+      localObject = (MiniAppInfo)paramJSONObject.opt("mini_app_info_data");
       JSONObject localJSONObject = paramJSONObject.optJSONObject("mini_app_info_data_json");
       paramJSONObject = (byte[])paramJSONObject.opt("mini_app_info_data_pb");
-      this.val$listener.onGetMiniAppInfo(localJSONObject, paramJSONObject, localMiniAppInfo, null, l, str);
+      this.val$listener.onGetMiniAppInfo(localJSONObject, paramJSONObject, (MiniAppInfo)localObject, null, l, str);
       return;
     }
     this.val$listener.onGetMiniAppInfo(null, null, null, null, l, str);
@@ -34,7 +39,7 @@ class MiniAppInfoLoadingFragment$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MiniAppInfoLoadingFragment.4
  * JD-Core Version:    0.7.0.1
  */

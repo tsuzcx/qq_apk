@@ -26,7 +26,10 @@ public abstract class BaseEngine
       paramServiceEnginScope = (List)ServiceFactory.getScopeServiceListMap().get(paramServiceEnginScope);
       if ((paramServiceEnginScope != null) && (paramServiceEnginScope.size() > 0))
       {
-        Log.i("LiveEngine", "custom new service:" + paramServiceEnginScope);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("custom new service:");
+        localStringBuilder.append(paramServiceEnginScope);
+        Log.i("LiveEngine", localStringBuilder.toString());
         this.scopeServices.addAll(paramServiceEnginScope);
       }
     }
@@ -34,7 +37,7 @@ public abstract class BaseEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.servicefactory.BaseEngine
  * JD-Core Version:    0.7.0.1
  */

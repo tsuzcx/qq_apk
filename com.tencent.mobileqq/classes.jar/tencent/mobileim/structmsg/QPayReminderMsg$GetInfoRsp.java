@@ -15,17 +15,23 @@ public final class QPayReminderMsg$GetInfoRsp
   public static final int RESULT_INFO_FIELD_NUMBER = 2;
   public static final int TEMPLATE_NO_FIELD_NUMBER = 4;
   public static final int URGENCY_FIELD_NUMBER = 3;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50 }, new String[] { "result_code", "result_info", "urgency", "template_no", "content", "info_date" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), "", "" }, GetInfoRsp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField content = PBField.initString("");
   public final PBStringField info_date = PBField.initString("");
   public final PBUInt32Field result_code = PBField.initUInt32(0);
   public final PBStringField result_info = PBField.initString("");
   public final PBUInt32Field template_no = PBField.initUInt32(0);
   public final PBUInt32Field urgency = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 50 }, new String[] { "result_code", "result_info", "urgency", "template_no", "content", "info_date" }, new Object[] { localInteger, "", localInteger, localInteger, "", "" }, GetInfoRsp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.mobileim.structmsg.QPayReminderMsg.GetInfoRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -15,12 +15,16 @@ class IceBreakingMng$3
 {
   IceBreakingMng$3(IceBreakingMng paramIceBreakingMng) {}
   
-  public void onGetTroopMemberCard(boolean paramBoolean, Object paramObject)
+  protected void onGetTroopMemberCard(boolean paramBoolean, Object paramObject)
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard: isSuccess " + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onGetTroopMemberCard: isSuccess ");
+        localStringBuilder.append(paramBoolean);
+        QLog.i("IceBreak.HotPic", 2, localStringBuilder.toString());
       }
       if (paramBoolean)
       {
@@ -29,7 +33,12 @@ class IceBreakingMng$3
         paramObject = (TroopMemberCard)paramObject[2];
         if (String.valueOf(l).equals(IceBreakingMng.a(this.a)))
         {
-          QLog.i("IceBreak.HotPic", 1, " onGetTroopMemberCard last_active_time: " + paramObject.lastSpeak + " join_time: " + paramObject.joinTime);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" onGetTroopMemberCard last_active_time: ");
+          localStringBuilder.append(paramObject.lastSpeak);
+          localStringBuilder.append(" join_time: ");
+          localStringBuilder.append(paramObject.joinTime);
+          QLog.i("IceBreak.HotPic", 1, localStringBuilder.toString());
           if (paramObject.lastSpeak > paramObject.joinTime) {
             return;
           }
@@ -40,62 +49,79 @@ class IceBreakingMng$3
     }
     catch (Exception paramObject)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("IceBreak.HotPic", 2, "onGetTroopMemberCard:" + paramObject.toString());
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onGetTroopMemberCard:");
+        localStringBuilder.append(paramObject.toString());
+        QLog.i("IceBreak.HotPic", 2, localStringBuilder.toString());
       }
     }
   }
   
-  public void onGetTroopMemberListBy0x787(String paramString, List<Pair<String, String>> paramList)
+  protected void onGetTroopMemberListBy0x787(String paramString, List<Pair<String, String>> paramList)
   {
-    Object localObject = new StringBuilder().append("onGetTroopMemberListBy0x787 uin: ").append(paramString).append(" memberList size: ");
-    if (paramList == null)
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onGetTroopMemberListBy0x787 uin: ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" memberList size: ");
+    int k = 0;
+    int i;
+    if (paramList == null) {
       i = 0;
-      QLog.i("IceBreak.HotPic", 2, i);
-      if ((paramString != null) && (paramList != null) && (paramList.size() > 1)) {
-        break label76;
-      }
-    }
-    label76:
-    while (!paramString.equals(IceBreakingMng.a(this.a)))
-    {
-      return;
+    } else {
       i = paramList.size();
-      break;
     }
-    localObject = (FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    String str1 = this.a.a.getCurrentAccountUin();
-    int k = paramList.size();
-    int j = 0;
-    int i = 0;
-    label134:
-    if (j < k)
+    ((StringBuilder)localObject).append(i);
+    QLog.i("IceBreak.HotPic", 2, ((StringBuilder)localObject).toString());
+    if ((paramString != null) && (paramList != null))
     {
-      String str2 = (String)((Pair)paramList.get(j)).first;
-      if ((TextUtils.isEmpty(str2)) || (str2.equals(str1)) || (((FriendsManager)localObject).b(str2))) {
-        break label284;
+      if (paramList.size() <= 1) {
+        return;
       }
-      i += 1;
-    }
-    label284:
-    for (;;)
-    {
-      j += 1;
-      break label134;
-      float f = IceBreakingMng.a(this.a) / 100.0F;
-      QLog.i("IceBreak.HotPic", 1, "friendCount: " + i + " total count: " + paramList.size());
-      if (1.0F * i / (paramList.size() - 1) <= f) {
-        break;
+      if (paramString.equals(IceBreakingMng.a(this.a)))
+      {
+        localObject = (FriendsManager)this.a.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+        String str1 = this.a.a.getCurrentAccountUin();
+        int m = paramList.size();
+        int j = 0;
+        i = k;
+        while (i < m)
+        {
+          String str2 = (String)((Pair)paramList.get(i)).first;
+          k = j;
+          if (!TextUtils.isEmpty(str2))
+          {
+            k = j;
+            if (!str2.equals(str1))
+            {
+              k = j;
+              if (!((FriendsManager)localObject).b(str2)) {
+                k = j + 1;
+              }
+            }
+          }
+          i += 1;
+          j = k;
+        }
+        float f = IceBreakingMng.a(this.a) / 100.0F;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("friendCount: ");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(" total count: ");
+        ((StringBuilder)localObject).append(paramList.size());
+        QLog.i("IceBreak.HotPic", 1, ((StringBuilder)localObject).toString());
+        if (j * 1.0F / (paramList.size() - 1) > f) {
+          this.a.f(paramString);
+        }
       }
-      this.a.f(paramString);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.IceBreakingMng.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,13 +14,13 @@ class NotifyPushSettingFragment$14
   public void onClick(View paramView)
   {
     ReportController.a(NotifyPushSettingFragment.a(this.a), "0X800B84C");
-    PublicFragmentActivity.a(this.a.getActivity(), NewTempMsgSettingFragment.class);
+    PublicFragmentActivity.a(this.a.getBaseActivity(), NewTempMsgSettingFragment.class);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.14
  * JD-Core Version:    0.7.0.1
  */

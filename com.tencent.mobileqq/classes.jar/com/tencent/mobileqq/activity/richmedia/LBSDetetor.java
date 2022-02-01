@@ -27,8 +27,9 @@ public class LBSDetetor
   private LBSDetetor(AppInterface paramAppInterface)
   {
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null) {
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSDetectorObserver);
+    paramAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if (paramAppInterface != null) {
+      paramAppInterface.registObserver(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSDetectorObserver);
     }
   }
   
@@ -40,59 +41,77 @@ public class LBSDetetor
     return jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor;
   }
   
-  public static void a()
-  {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor != null)
-    {
-      jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor.b();
-      jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor = null;
-    }
-  }
-  
   private void a(double paramDouble1, double paramDouble2, int paramInt)
   {
+    Object localObject = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+    if (localObject == null) {
+      return;
+    }
+    localObject = new NewIntent(((AppInterface)localObject).getApp(), LbsPackPoiListServlet.class);
+    ((NewIntent)localObject).putExtra("key_latitude", paramDouble1);
+    ((NewIntent)localObject).putExtra("key_longitude", paramDouble2);
     int i = 4;
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface == null) {
-      return;
-    }
-    NewIntent localNewIntent = new NewIntent(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), LbsPackPoiListServlet.class);
-    localNewIntent.putExtra("key_latitude", paramDouble1);
-    localNewIntent.putExtra("key_longitude", paramDouble2);
-    localNewIntent.putExtra("k_cmd", 4);
-    localNewIntent.putExtra("key_lbs_template_cookie", paramInt);
-    switch (NetworkUtil.a(BaseApplicationImpl.getApplication().getBaseContext()))
+    ((NewIntent)localObject).putExtra("k_cmd", 4);
+    ((NewIntent)localObject).putExtra("key_lbs_template_cookie", paramInt);
+    int j = NetworkUtil.getSystemNetwork(BaseApplicationImpl.getApplication().getBaseContext());
+    if (j != 0)
     {
-    default: 
-      i = 0;
-    }
-    for (;;)
-    {
-      localNewIntent.putExtra("key_lbs_template_network_type", i);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet(localNewIntent);
-      if (!QLog.isColorLevel()) {
-        break;
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (j != 3) {
+            if (j != 4) {
+              i = 0;
+            } else {
+              i = 3;
+            }
+          }
+        }
+        else {
+          i = 5;
+        }
       }
-      QLog.d("LBSDetetor", 2, "getLBSTemplateIds. req:" + paramInt + " netType:" + i + " latitude:" + paramDouble1 + " longitude:" + paramDouble2);
-      return;
+      else {
+        i = 2;
+      }
+    }
+    else {
       i = 1;
-      continue;
-      i = 2;
-      continue;
-      i = 3;
-      continue;
-      i = 5;
+    }
+    ((NewIntent)localObject).putExtra("key_lbs_template_network_type", i);
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface.startServlet((NewIntent)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getLBSTemplateIds. req:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" netType:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" latitude:");
+      ((StringBuilder)localObject).append(paramDouble1);
+      ((StringBuilder)localObject).append(" longitude:");
+      ((StringBuilder)localObject).append(paramDouble2);
+      QLog.d("LBSDetetor", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   private void a(boolean paramBoolean, ArrayList<String> paramArrayList, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("LBSDetetor", 2, "callback. isSuccess: " + paramBoolean + " cookie: " + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("callback. isSuccess: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" cookie: ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("LBSDetetor", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
     if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener != null)
     {
-      Object localObject = paramArrayList;
+      localObject = paramArrayList;
       if (paramArrayList == null) {
         localObject = new ArrayList(1);
       }
@@ -100,91 +119,87 @@ public class LBSDetetor
     }
   }
   
-  private void b()
-  {
-    if (this.jdField_a_of_type_ComTencentCommonAppAppInterface != null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("LBSDetetor", 2, "destroy");
-      }
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface.unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSDetectorObserver);
-      this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener = null;
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-  }
-  
   @TargetApi(19)
   public void a(int paramInt)
   {
+    boolean bool4 = true;
+    boolean bool3 = true;
+    boolean bool1 = true;
+    boolean bool2 = bool4;
     for (;;)
     {
       try
       {
-        if (Build.VERSION.SDK_INT < 19) {
-          continue;
-        }
-        Object localObject = BaseApplicationImpl.getApplication().getBaseContext();
-        AppOpsManager localAppOpsManager = (AppOpsManager)((Context)localObject).getSystemService("appops");
-        localObject = ((Context)localObject).getApplicationInfo();
-        int i = localAppOpsManager.checkOpNoThrow("android:fine_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
-        int j = localAppOpsManager.checkOpNoThrow("android:coarse_location", ((ApplicationInfo)localObject).uid, ((ApplicationInfo)localObject).packageName);
-        if ((i == 0) && (j == 0))
+        if (Build.VERSION.SDK_INT >= 19)
         {
-          bool1 = true;
+          bool2 = bool4;
+          localObject3 = BaseApplicationImpl.getApplication().getBaseContext();
+          bool2 = bool4;
+          Object localObject1 = (AppOpsManager)((Context)localObject3).getSystemService("appops");
+          bool2 = bool4;
+          localObject3 = ((Context)localObject3).getApplicationInfo();
+          bool2 = bool4;
+          int i = ((AppOpsManager)localObject1).checkOpNoThrow("android:fine_location", ((ApplicationInfo)localObject3).uid, ((ApplicationInfo)localObject3).packageName);
+          bool2 = bool4;
+          int j = ((AppOpsManager)localObject1).checkOpNoThrow("android:coarse_location", ((ApplicationInfo)localObject3).uid, ((ApplicationInfo)localObject3).packageName);
+          if ((i != 0) || (j != 0)) {
+            break label364;
+          }
           bool2 = bool1;
+          bool3 = bool1;
+          if (QLog.isColorLevel())
+          {
+            bool2 = bool1;
+            localObject1 = new StringBuilder();
+            bool2 = bool1;
+            ((StringBuilder)localObject1).append("check permission by AppOpsManager:");
+            bool2 = bool1;
+            ((StringBuilder)localObject1).append(bool1);
+            bool2 = bool1;
+            QLog.d("LBSDetetor", 2, ((StringBuilder)localObject1).toString());
+            bool3 = bool1;
+          }
         }
       }
-      catch (Exception localException1)
+      catch (Exception localException)
       {
-        boolean bool1 = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("LBSDetetor", 2, "something wrong:" + localException1.toString());
-        }
-        boolean bool2 = bool1;
-        continue;
-        bool2 = true;
-        continue;
-      }
-      try
-      {
+        Object localObject3;
+        bool3 = bool2;
         if (QLog.isColorLevel())
         {
-          QLog.d("LBSDetetor", 2, "check permission by AppOpsManager:" + bool1);
-          bool2 = bool1;
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("something wrong:");
+          ((StringBuilder)localObject3).append(localException.toString());
+          QLog.d("LBSDetetor", 2, ((StringBuilder)localObject3).toString());
+          bool3 = bool2;
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("LBSDetetor", 2, "startCheckPermissionAndDetetLocation. hasPermission:" + bool2);
-        }
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
-        if (bool2)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, 30000L);
-          ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new LBSDetetor.LBSLocationListener(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener.a(paramInt, bool2);
-        }
-        return;
       }
-      catch (Exception localException2)
+      if (QLog.isColorLevel())
       {
-        continue;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("startCheckPermissionAndDetetLocation. hasPermission:");
+        ((StringBuilder)localObject2).append(bool3);
+        QLog.d("LBSDetetor", 2, ((StringBuilder)localObject2).toString());
       }
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(paramInt);
+      if (bool3)
+      {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(paramInt, 30000L);
+        ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new LBSDetetor.LBSLocationListener(this, 0, true, true, 30000L, false, false, "NewFlowCameraActivity", paramInt));
+      }
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener;
+      if (localObject2 != null) {
+        ((LBSDetetor.LBSTemplateListener)localObject2).a(paramInt, bool3);
+      }
+      return;
+      label364:
       bool1 = false;
     }
-  }
-  
-  public void a(LBSDetetor.LBSTemplateListener paramLBSTemplateListener)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaLBSDetetor$LBSTemplateListener = paramLBSTemplateListener;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.LBSDetetor
  * JD-Core Version:    0.7.0.1
  */

@@ -1,43 +1,33 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.text.Editable;
-import android.text.SpannableString;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import com.tencent.widget.XEditTextEx;
-import com.tencent.widget.XPanelContainer;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.app.DiscussionManager;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.app.proxy.RecentUserProxy;
+import com.tencent.mobileqq.data.RecentUser;
 
 class DiscussChatPie$7
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
-  DiscussChatPie$7(DiscussChatPie paramDiscussChatPie, boolean paramBoolean, String paramString1, String paramString2) {}
+  DiscussChatPie$7(DiscussChatPie paramDiscussChatPie, String paramString) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_Boolean)
-    {
-      j = this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-      this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().delete(j - 1, j);
+    ((DiscussionManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie.a.getManager(QQManagerFactory.DISCUSSION_MANAGER)).c(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie.a.getProxyManager().a();
+    RecentUser localRecentUser = paramDialogInterface.b(this.jdField_a_of_type_JavaLangString, 3000);
+    if (localRecentUser != null) {
+      paramDialogInterface.a(localRecentUser);
     }
-    SpannableString localSpannableString = AtTroopMemberSpan.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, this.b, false, this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx, false);
-    if ((localSpannableString == null) || (localSpannableString.length() == 0)) {
-      return;
-    }
-    int j = this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart();
-    if (j < 0) {}
-    for (;;)
-    {
-      this.this$0.jdField_a_of_type_ComTencentWidgetXEditTextEx.getEditableText().insert(i, localSpannableString);
-      this.this$0.jdField_a_of_type_ComTencentWidgetXPanelContainer.a(1);
-      return;
-      i = j;
-    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreDiscussChatPie.q();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.DiscussChatPie.7
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
 import com.tencent.mobileqq.activity.ChatActivityUtils;
 import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class QQStoryCommentItemBuilder$OnCommentTouchListener$1
   extends GestureDetector.SimpleOnGestureListener
@@ -17,7 +17,7 @@ class QQStoryCommentItemBuilder$OnCommentTouchListener$1
       return false;
     }
     com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
-    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (FragmentActivity)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_AndroidContentContext);
+    ChatActivityUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidViewView, (BaseActivity)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.jdField_a_of_type_AndroidContentContext);
     return true;
   }
   
@@ -30,7 +30,7 @@ class QQStoryCommentItemBuilder$OnCommentTouchListener$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder.OnCommentTouchListener.1
  * JD-Core Version:    0.7.0.1
  */

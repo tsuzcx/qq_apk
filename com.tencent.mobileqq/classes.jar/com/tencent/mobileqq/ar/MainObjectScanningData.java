@@ -153,12 +153,12 @@ public class MainObjectScanningData
   public void b()
   {
     super.b();
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_c_of_type_Boolean))
+    if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
     {
-      this.jdField_i_of_type_Float = ViewUtils.a(5.0F);
+      this.jdField_i_of_type_Float = ViewUtils.a(1.5F);
       return;
     }
-    this.jdField_i_of_type_Float = ViewUtils.a(1.5F);
+    this.jdField_i_of_type_Float = ViewUtils.a(5.0F);
   }
   
   @TargetApi(11)
@@ -865,132 +865,159 @@ public class MainObjectScanningData
   @TargetApi(11)
   public void l()
   {
-    if (this.jdField_a_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+    AnimatorSet localAnimatorSet = this.jdField_a_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_b_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_b_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_b_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_c_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_c_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_c_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_d_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_d_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_d_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_e_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_e_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_e_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_f_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_f_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_f_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
   }
   
   @TargetApi(11)
   public void m()
   {
-    if (this.jdField_g_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_g_of_type_AndroidAnimationAnimatorSet.start();
+    AnimatorSet localAnimatorSet = this.jdField_g_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_h_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_h_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_h_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_i_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_i_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_i_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
   }
   
   @TargetApi(11)
   public void n()
   {
-    if (this.jdField_j_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_j_of_type_AndroidAnimationAnimatorSet.start();
+    AnimatorSet localAnimatorSet = this.jdField_j_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_k_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_k_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_k_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_l_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_l_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_l_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_m_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_m_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_m_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
   }
   
   @TargetApi(11)
   public void o()
   {
-    if (this.jdField_n_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_n_of_type_AndroidAnimationAnimatorSet.start();
+    AnimatorSet localAnimatorSet = this.jdField_n_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_o_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_o_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_o_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
   }
   
   @TargetApi(11)
   public void p()
   {
-    if (this.jdField_p_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_p_of_type_AndroidAnimationAnimatorSet.start();
+    AnimatorSet localAnimatorSet = this.jdField_p_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_q_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_q_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_q_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_r_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_r_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_r_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
   }
   
   @TargetApi(11)
   public void q()
   {
-    if (this.jdField_s_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_s_of_type_AndroidAnimationAnimatorSet.start();
+    AnimatorSet localAnimatorSet = this.jdField_s_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_t_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_t_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_t_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
   }
   
   @TargetApi(11)
   public void r()
   {
-    if (this.jdField_u_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_u_of_type_AndroidAnimationAnimatorSet.start();
+    AnimatorSet localAnimatorSet = this.jdField_u_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_v_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_v_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_v_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
   }
   
   @TargetApi(11)
   public void s()
   {
-    if (this.jdField_w_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_w_of_type_AndroidAnimationAnimatorSet.start();
+    AnimatorSet localAnimatorSet = this.jdField_w_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_x_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_x_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_x_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
   }
   
   @TargetApi(11)
   public void t()
   {
-    if (this.jdField_y_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_y_of_type_AndroidAnimationAnimatorSet.start();
+    AnimatorSet localAnimatorSet = this.jdField_y_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_z_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_z_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_z_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
-    if (this.jdField_A_of_type_AndroidAnimationAnimatorSet != null) {
-      this.jdField_A_of_type_AndroidAnimationAnimatorSet.start();
+    localAnimatorSet = this.jdField_A_of_type_AndroidAnimationAnimatorSet;
+    if (localAnimatorSet != null) {
+      localAnimatorSet.start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.MainObjectScanningData
  * JD-Core Version:    0.7.0.1
  */

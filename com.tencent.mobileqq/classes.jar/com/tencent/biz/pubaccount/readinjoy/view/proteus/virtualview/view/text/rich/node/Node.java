@@ -32,22 +32,39 @@ public class Node
   
   public static boolean valueIsLegal(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
+    boolean bool1 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
-      if ((!paramString.startsWith("$")) || (paramString.length() <= 1)) {
-        break;
+    }
+    if ((paramString.startsWith("$")) && (paramString.length() > 1))
+    {
+      int i = paramString.charAt(1);
+      if (i >= 97)
+      {
+        bool1 = bool2;
+        if (i <= 122) {
+          return bool1;
+        }
       }
-      i = paramString.charAt(1);
-    } while (((i >= 97) && (i <= 122)) || ((i >= 65) && (i <= 90)) || (i == 95));
-    return true;
+      if (i >= 65)
+      {
+        bool1 = bool2;
+        if (i <= 90) {
+          return bool1;
+        }
+      }
+      if (i == 95) {
+        return false;
+      }
+    }
+    bool1 = true;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.text.rich.node.Node
  * JD-Core Version:    0.7.0.1
  */

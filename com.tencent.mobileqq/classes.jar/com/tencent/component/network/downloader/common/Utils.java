@@ -32,34 +32,28 @@ public class Utils
   
   public static Object convertToObject(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      paramString = new ByteArrayInputStream(Base64.decode(paramString.getBytes(), 0));
-      try
-      {
-        paramString = new ObjectInputStream(paramString);
-        if (paramString != null)
-        {
-          paramString = paramString.readObject();
-          return paramString;
-        }
-      }
-      catch (StreamCorruptedException paramString)
-      {
-        QDLog.e("Utils", "", paramString);
-        return null;
-      }
-      catch (IOException paramString)
-      {
-        QDLog.e("Utils", "", paramString);
-        return null;
-      }
-      catch (ClassNotFoundException paramString)
-      {
-        QDLog.e("Utils", "", paramString);
-      }
+    }
+    paramString = new ByteArrayInputStream(Base64.decode(paramString.getBytes(), 0));
+    try
+    {
+      paramString = new ObjectInputStream(paramString).readObject();
+      return paramString;
+    }
+    catch (ClassNotFoundException paramString)
+    {
+      QDLog.e("Utils", "", paramString);
+      return null;
+    }
+    catch (IOException paramString)
+    {
+      QDLog.e("Utils", "", paramString);
+      return null;
+    }
+    catch (StreamCorruptedException paramString)
+    {
+      QDLog.e("Utils", "", paramString);
     }
     return null;
   }
@@ -72,46 +66,34 @@ public class Utils
     ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
     try
     {
-      ObjectOutputStream localObjectOutputStream = new ObjectOutputStream(localByteArrayOutputStream);
-      if (localObjectOutputStream == null) {
-        break label59;
-      }
-      localObjectOutputStream.writeObject(paramObject);
+      new ObjectOutputStream(localByteArrayOutputStream).writeObject(paramObject);
       paramObject = new String(Base64.encode(localByteArrayOutputStream.toByteArray(), 0));
+      return paramObject;
     }
     catch (IOException paramObject)
     {
-      for (;;)
-      {
-        QDLog.e("Utils", "", paramObject);
-        paramObject = null;
-      }
+      QDLog.e("Utils", "", paramObject);
     }
-    return paramObject;
+    return null;
   }
   
   public static int count(String paramString, char paramChar)
   {
     int i = 0;
-    int k = 0;
     if (paramString == null) {
-      return k;
+      return 0;
     }
     int m = paramString.length();
-    int j = 0;
-    for (;;)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      k = i;
-      if (j >= m) {
-        break;
+      k = j;
+      if (paramChar == paramString.charAt(i)) {
+        k = j + 1;
       }
-      k = i;
-      if (paramChar == paramString.charAt(j)) {
-        k = i + 1;
-      }
-      j += 1;
-      i = k;
+      i += 1;
     }
+    return j;
   }
   
   public static String getCurrentProcessName(Context paramContext)
@@ -137,6 +119,7 @@ public class Utils
           }
         }
       }
+      return null;
     }
     catch (Throwable paramContext) {}
     return null;
@@ -144,40 +127,35 @@ public class Utils
   
   public static String getDomin(String paramString)
   {
-    String str2 = null;
+    boolean bool = TextUtils.isEmpty(paramString);
     String str1 = null;
-    if (TextUtils.isEmpty(paramString)) {
-      paramString = str1;
+    if (bool) {
+      return null;
     }
-    for (;;)
+    try
     {
-      return paramString;
-      str1 = str2;
-      try
+      paramString = new URL(paramString).getAuthority();
+      String str2 = paramString;
+      str1 = paramString;
+      if (!TextUtils.isEmpty(paramString))
       {
-        str2 = new URL(paramString).getAuthority();
-        paramString = str2;
-        str1 = str2;
-        if (!TextUtils.isEmpty(str2))
+        str1 = paramString;
+        int i = paramString.indexOf(":");
+        str2 = paramString;
+        if (i >= 0)
         {
-          str1 = str2;
-          int i = str2.indexOf(":");
-          paramString = str2;
-          if (i >= 0)
+          str2 = paramString;
+          str1 = paramString;
+          if (i < paramString.length())
           {
-            paramString = str2;
-            str1 = str2;
-            if (i < str2.length())
-            {
-              str1 = str2;
-              paramString = str2.substring(0, i);
-              return paramString;
-            }
+            str1 = paramString;
+            str2 = paramString.substring(0, i);
           }
         }
       }
-      catch (MalformedURLException paramString) {}
+      return str2;
     }
+    catch (MalformedURLException paramString) {}
     return str1;
   }
   
@@ -195,73 +173,43 @@ public class Utils
     return null;
   }
   
-  /* Error */
   public static int getPort(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokestatic 17	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   4: ifeq +5 -> 9
-    //   7: iconst_m1
-    //   8: ireturn
-    //   9: new 153	java/net/URL
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 156	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   17: invokevirtual 160	java/net/URL:getAuthority	()Ljava/lang/String;
-    //   20: astore_0
-    //   21: aload_0
-    //   22: invokestatic 17	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   25: ifne -18 -> 7
-    //   28: aload_0
-    //   29: ldc 162
-    //   31: invokevirtual 166	java/lang/String:indexOf	(Ljava/lang/String;)I
-    //   34: istore_1
-    //   35: iload_1
-    //   36: iflt -29 -> 7
-    //   39: aload_0
-    //   40: invokevirtual 93	java/lang/String:length	()I
-    //   43: istore_2
-    //   44: iload_1
-    //   45: iload_2
-    //   46: if_icmpge -39 -> 7
-    //   49: aload_0
-    //   50: iload_1
-    //   51: iconst_1
-    //   52: iadd
-    //   53: invokevirtual 177	java/lang/String:substring	(I)Ljava/lang/String;
-    //   56: invokestatic 183	java/lang/Integer:valueOf	(Ljava/lang/String;)Ljava/lang/Integer;
-    //   59: invokevirtual 186	java/lang/Integer:intValue	()I
-    //   62: istore_1
-    //   63: iload_1
-    //   64: ireturn
-    //   65: astore_0
-    //   66: iconst_m1
-    //   67: ireturn
-    //   68: astore_0
-    //   69: iconst_m1
-    //   70: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	71	0	paramString	String
-    //   34	30	1	i	int
-    //   43	4	2	j	int
-    // Exception table:
-    //   from	to	target	type
-    //   9	35	65	java/net/MalformedURLException
-    //   39	44	65	java/net/MalformedURLException
-    //   49	63	65	java/net/MalformedURLException
-    //   49	63	68	java/lang/Exception
+    boolean bool = TextUtils.isEmpty(paramString);
+    int j = -1;
+    if (bool) {
+      return -1;
+    }
+    try
+    {
+      paramString = new URL(paramString).getAuthority();
+      int i = j;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        int k = paramString.indexOf(":");
+        i = j;
+        if (k >= 0)
+        {
+          int m = paramString.length();
+          i = j;
+          if (k < m) {
+            i = Integer.valueOf(paramString.substring(k + 1)).intValue();
+          }
+        }
+      }
+      return i;
+    }
+    catch (MalformedURLException|Exception paramString) {}
+    return -1;
   }
   
   public static boolean isMainProcess(Context paramContext)
   {
     paramContext = getCurrentProcessName(paramContext);
-    if (paramContext == null) {}
-    while (!paramContext.contains(":")) {
+    if (paramContext == null) {
       return true;
     }
-    return false;
+    return !paramContext.contains(":");
   }
   
   public static boolean isPortValid(int paramInt)
@@ -293,17 +241,20 @@ public class Utils
   
   public static boolean match(Pattern paramPattern, String paramString)
   {
-    if ((paramPattern == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    try
+    if (paramPattern != null)
     {
-      boolean bool = paramPattern.matcher(paramString).matches();
-      return bool;
-    }
-    catch (Exception paramPattern)
-    {
-      QDLog.e("Utils", "", paramPattern);
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      try
+      {
+        boolean bool = paramPattern.matcher(paramString).matches();
+        return bool;
+      }
+      catch (Exception paramPattern)
+      {
+        QDLog.e("Utils", "", paramPattern);
+      }
     }
     return false;
   }
@@ -326,7 +277,7 @@ public class Utils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.common.Utils
  * JD-Core Version:    0.7.0.1
  */

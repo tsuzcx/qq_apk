@@ -14,24 +14,28 @@ final class ArNativeSoLoader$1
   
   public void run()
   {
-    Object localObject = new HashMap();
-    ((HashMap)localObject).put("param_soLoaderName", this.jdField_a_of_type_JavaLangString);
-    ((HashMap)localObject).put("param_FailCode", String.valueOf(this.jdField_a_of_type_Byte));
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplication.getContext());
-    if (this.jdField_a_of_type_Byte == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance(null, "AREnable", bool, 0L, 0L, (HashMap)localObject, null);
-      localObject = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      ((SharedPreferences.Editor)localObject).putInt("ar_native_so_load_result" + this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Byte);
-      SharedPreUtils.a((SharedPreferences.Editor)localObject);
-      return;
+    Object localObject1 = new HashMap();
+    ((HashMap)localObject1).put("param_soLoaderName", this.jdField_a_of_type_JavaLangString);
+    ((HashMap)localObject1).put("param_FailCode", String.valueOf(this.jdField_a_of_type_Byte));
+    Object localObject2 = StatisticCollector.getInstance(BaseApplication.getContext());
+    boolean bool;
+    if (this.jdField_a_of_type_Byte == 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    ((StatisticCollector)localObject2).collectPerformance(null, "AREnable", bool, 0L, 0L, (HashMap)localObject1, null);
+    localObject1 = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("ar_native_so_load_result");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+    ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), this.jdField_a_of_type_Byte);
+    SharedPreUtils.a((SharedPreferences.Editor)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ArNativeSoLoader.1
  * JD-Core Version:    0.7.0.1
  */

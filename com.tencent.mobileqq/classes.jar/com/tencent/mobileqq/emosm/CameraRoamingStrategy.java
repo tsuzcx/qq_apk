@@ -2,35 +2,36 @@ package com.tencent.mobileqq.emosm;
 
 import android.text.TextUtils;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.CameraEmoRoamingObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.api.ICameraEmotionRoamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.impl.CameraEmotionRoamingDBManagerServiceImpl;
 import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSingleSend;
-import com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmotionRoamingDBManager;
 import com.tencent.mobileqq.emoticonview.CameraEmoticonInfo;
 import com.tencent.mobileqq.emoticonview.EmoticonInfo;
 import com.tencent.mobileqq.emoticonview.ICustomEmotionInfo;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.GridView;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class CameraRoamingStrategy
   extends BaseEmosmStrategy
 {
   CameraEmoRoamingObserver jdField_a_of_type_ComTencentMobileqqAppCameraEmoRoamingObserver = new CameraRoamingStrategy.4(this);
-  private CameraEmotionRoamingDBManager jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager;
-  private List<CameraEmoticonInfo> b = new ArrayList();
+  private ICameraEmotionRoamingDBManagerService jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService;
+  protected List<CameraEmoticonInfo> b = new ArrayList();
   private volatile boolean c = false;
   
-  public CameraRoamingStrategy(QQAppInterface paramQQAppInterface, FavEmosmViewPage paramFavEmosmViewPage)
+  public CameraRoamingStrategy(BaseQQAppInterface paramBaseQQAppInterface, FavEmosmViewPage paramFavEmosmViewPage)
   {
-    super(paramQQAppInterface, paramFavEmosmViewPage);
+    super(paramBaseQQAppInterface, paramFavEmosmViewPage);
   }
   
   private List<? extends EmoticonInfo> a()
@@ -38,28 +39,17 @@ public class CameraRoamingStrategy
     return this.b;
   }
   
-  private void i()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.c.setVisibility(8);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.d.setVisibility(8);
-  }
-  
-  private void j()
-  {
-    a(new CameraRoamingStrategy.1(this));
-  }
-  
   public int a()
   {
-    return 2131691963;
+    return 2131691888;
   }
   
   public CustomEmotionRoamingDBManagerBase<CameraEmotionData> a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager = ((CameraEmotionRoamingDBManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER));
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService == null) {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService = ((ICameraEmotionRoamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(ICameraEmotionRoamingDBManagerService.class));
     }
-    return this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager;
+    return (CameraEmotionRoamingDBManagerServiceImpl)this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService;
   }
   
   public String a(EmoticonInfo paramEmoticonInfo)
@@ -71,7 +61,7 @@ public class CameraRoamingStrategy
       if (TextUtils.isEmpty(str)) {
         paramEmoticonInfo = "";
       }
-      return String.format(BaseApplicationImpl.getApplication().getString(2131691962), new Object[] { paramEmoticonInfo });
+      return String.format(MobileQQ.getContext().getString(2131691887), new Object[] { paramEmoticonInfo });
     }
     return null;
   }
@@ -79,92 +69,91 @@ public class CameraRoamingStrategy
   public void a()
   {
     super.a();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCameraEmoRoamingObserver);
-    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.b(2131691961);
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAppCameraEmoRoamingObserver);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.b(2131691886);
     this.c = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager == null) {
-      this.jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmotionRoamingDBManager = ((CameraEmotionRoamingDBManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER));
+    if (this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService == null) {
+      this.jdField_a_of_type_ComTencentMobileqqEmosmApiICameraEmotionRoamingDBManagerService = ((ICameraEmotionRoamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(ICameraEmotionRoamingDBManagerService.class));
     }
+    h();
     i();
-    j();
   }
   
   public void a(CustomEmotionRoamingDBManagerBase.CustomEmotionDataInPanelCallback paramCustomEmotionDataInPanelCallback)
   {
-    a().a(new CameraRoamingStrategy.2(this, paramCustomEmotionDataInPanelCallback));
+    a().asyncGetFavEmotionInfoShowedInPanel(new CameraRoamingStrategy.2(this, paramCustomEmotionDataInPanelCallback));
   }
   
   public void a(GridView paramGridView, int paramInt, ICustomEmotionInfo paramICustomEmotionInfo)
   {
-    Object localObject = ((CameraEmotionRoamingDBManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER)).a();
-    if (localObject == null) {}
-    for (;;)
-    {
+    Object localObject = ((ICameraEmotionRoamingDBManagerService)this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getRuntimeService(ICameraEmotionRoamingDBManagerService.class)).getEmoticonDataList();
+    if (localObject == null) {
       return;
-      int i = paramICustomEmotionInfo.getEmoId();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+    }
+    int i = paramICustomEmotionInfo.getEmoId();
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject).next();
+      if (localCameraEmotionData.emoId == i)
       {
-        CameraEmotionData localCameraEmotionData = (CameraEmotionData)((Iterator)localObject).next();
-        if (localCameraEmotionData.emoId == i)
-        {
-          QLog.d("CameraRoamingStrategy", 1, new Object[] { "resend, emoId:", Integer.valueOf(localCameraEmotionData.emoId) });
-          localCameraEmotionData.RomaingType = "needUpload";
-          ((CameraEmoticonInfo)paramICustomEmotionInfo).roamingType = "needUpload";
-          if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage != null) {
-            this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.a(paramGridView, paramInt);
-          }
-          com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.b = false;
-          ThreadManager.excute(new CameraEmoSingleSend(localCameraEmotionData, true), 64, null, false);
+        QLog.d("CameraRoamingStrategy", 1, new Object[] { "resend, emoId:", Integer.valueOf(localCameraEmotionData.emoId) });
+        localCameraEmotionData.RomaingType = "needUpload";
+        ((CameraEmoticonInfo)paramICustomEmotionInfo).roamingType = "needUpload";
+        if (this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage != null) {
+          this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.a(paramGridView, paramInt);
         }
+        com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoAllSend.b = false;
+        ThreadManager.excute(new CameraEmoSingleSend(localCameraEmotionData, true), 64, null, false);
       }
     }
   }
   
   public void a(List<EmoticonInfo> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      this.b.clear();
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        Object localObject = (EmoticonInfo)paramList.next();
+        if ((localObject instanceof CameraEmoticonInfo))
+        {
+          localObject = (CameraEmoticonInfo)localObject;
+          ((CameraEmoticonInfo)localObject).isChecked = false;
+          Iterator localIterator = this.b.iterator();
+          while (localIterator.hasNext())
+          {
+            CameraEmoticonInfo localCameraEmoticonInfo = (CameraEmoticonInfo)localIterator.next();
+            if (((CameraEmoticonInfo)localObject).emoId == localCameraEmoticonInfo.emoId) {
+              ((CameraEmoticonInfo)localObject).isChecked = localCameraEmoticonInfo.isChecked;
+            }
+          }
+          localArrayList.add(localObject);
+        }
+      }
+      this.b = localArrayList;
       return;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      EmoticonInfo localEmoticonInfo = (EmoticonInfo)paramList.next();
-      if ((localEmoticonInfo instanceof CameraEmoticonInfo))
-      {
-        ((CameraEmoticonInfo)localEmoticonInfo).isChecked = false;
-        Iterator localIterator = this.b.iterator();
-        while (localIterator.hasNext())
-        {
-          CameraEmoticonInfo localCameraEmoticonInfo = (CameraEmoticonInfo)localIterator.next();
-          if (((CameraEmoticonInfo)localEmoticonInfo).emoId == localCameraEmoticonInfo.emoId) {
-            ((CameraEmoticonInfo)localEmoticonInfo).isChecked = localCameraEmoticonInfo.isChecked;
-          }
-        }
-        localArrayList.add((CameraEmoticonInfo)localEmoticonInfo);
-      }
-    }
-    this.b = localArrayList;
+    this.b.clear();
   }
   
   public void d()
   {
     super.d();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCameraEmoRoamingObserver);
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppCameraEmoRoamingObserver);
     this.c = false;
   }
   
   public void e()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AC", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AC", 0, 0, "", "", "", "");
   }
   
   public void f()
   {
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AD", 0, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface, "dc00898", "", "", "ep_mall", "0X800A6AD", 0, 0, "", "", "", "");
   }
   
   public void g()
@@ -172,13 +161,24 @@ public class CameraRoamingStrategy
     if (QLog.isColorLevel()) {
       QLog.d("CameraRoamingStrategy", 2, "doSyncEmotion");
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+    if (this.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface == null) {
       return;
     }
     ThreadManager.excute(new CameraRoamingStrategy.5(this), 128, null, false);
   }
   
-  public void h()
+  protected void h()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.c.setVisibility(8);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmFavEmosmViewPage.d.setVisibility(8);
+  }
+  
+  protected void i()
+  {
+    a(new CameraRoamingStrategy.1(this));
+  }
+  
+  public void j()
   {
     if (this.c)
     {
@@ -187,7 +187,7 @@ public class CameraRoamingStrategy
     }
     this.c = true;
     ArrayList localArrayList = new ArrayList();
-    List localList = a().a();
+    List localList = a().getEmoticonDataList();
     Object localObject1 = a();
     if (localList != null)
     {
@@ -221,7 +221,7 @@ public class CameraRoamingStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.CameraRoamingStrategy
  * JD-Core Version:    0.7.0.1
  */

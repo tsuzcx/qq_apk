@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class daily_recommend_status
   extends JceStruct
 {
-  static int cache_switchType = 0;
+  static int cache_switchType;
   public boolean recommendPush_on = true;
   public boolean recommend_on = true;
   public int switchType = 0;
@@ -37,7 +37,7 @@ public final class daily_recommend_status
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.daily_recommend_status
  * JD-Core Version:    0.7.0.1
  */

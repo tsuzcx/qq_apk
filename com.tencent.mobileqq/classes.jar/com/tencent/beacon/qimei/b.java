@@ -1,23 +1,37 @@
 package com.tencent.beacon.qimei;
 
-import com.tencent.beacon.core.d.j;
-import com.tencent.beacon.core.d.k;
-import com.tencent.beacon.core.e.d;
+import android.text.TextUtils;
+import java.util.concurrent.atomic.AtomicInteger;
 
 class b
   implements Runnable
 {
-  b(e parame) {}
+  b(c paramc) {}
   
   public void run()
   {
-    d.a("[qimei] start query qimei", new Object[0]);
-    k.a(e.a(this.a)).a(new g(e.a(this.a), com.tencent.beacon.core.info.b.b(e.a(this.a)).a(), null));
+    f.d();
+    String str = f.a(c.a(this.a));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("non-main process check local qimei: ");
+    localStringBuilder.append(str);
+    com.tencent.beacon.base.util.c.a("[Qimei]", localStringBuilder.toString(), new Object[0]);
+    if (!TextUtils.isEmpty(str))
+    {
+      this.a.a(str);
+      f.a(System.currentTimeMillis());
+      c.b(this.a);
+      return;
+    }
+    if (c.c(this.a).getAndIncrement() > 30) {
+      return;
+    }
+    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.beacon.qimei.b
  * JD-Core Version:    0.7.0.1
  */

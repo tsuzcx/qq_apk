@@ -13,19 +13,16 @@ class FolderTextView$2
   {
     if (FolderTextView.a(this.a) == 0) {
       FolderTextView.a(this.a, 1);
-    }
-    for (;;)
-    {
-      FolderTextView.a(this.a);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       FolderTextView.a(this.a, 0);
     }
+    FolderTextView.a(this.a);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FolderTextView.2
  * JD-Core Version:    0.7.0.1
  */

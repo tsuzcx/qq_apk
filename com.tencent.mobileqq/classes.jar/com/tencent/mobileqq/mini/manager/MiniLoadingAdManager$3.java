@@ -12,13 +12,17 @@ class MiniLoadingAdManager$3
   
   public void run()
   {
-    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download newCachedAdInfo.url= " + this.val$newCachedAdInfo.url + " start");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("processSelectAdWithUncachedAd download newCachedAdInfo.url= ");
+    localStringBuilder.append(this.val$newCachedAdInfo.url);
+    localStringBuilder.append(" start");
+    QLog.d("MiniLoadingAdManager", 1, localStringBuilder.toString());
     MiniappDownloadUtil.getInstance().download(this.val$newCachedAdInfo.url, this.val$newCachedAdInfo.filePath, false, this.val$listener, Downloader.DownloadMode.OkHttpMode, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.manager.MiniLoadingAdManager.3
  * JD-Core Version:    0.7.0.1
  */

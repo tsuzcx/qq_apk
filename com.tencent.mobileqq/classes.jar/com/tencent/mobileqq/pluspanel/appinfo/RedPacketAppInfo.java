@@ -5,8 +5,9 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
-import com.tencent.mobileqq.activity.aio.rebuild.PlusPanelUtils;
-import com.tencent.mobileqq.activity.qwallet.utils.ReportUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.hb.IQWalletHbApi;
+import com.tencent.mobileqq.qwallet.report.IReportApi;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qphone.base.util.BaseApplication;
 
@@ -24,7 +25,7 @@ public class RedPacketAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839276;
+    return 2130839130;
   }
   
   public int getAppID()
@@ -53,7 +54,7 @@ public class RedPacketAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131719025);
+    return BaseApplicationImpl.getContext().getString(2131718741);
   }
   
   public void init()
@@ -70,28 +71,28 @@ public class RedPacketAppInfo
     }
     this.mLastClickedTime = l;
     paramPlusPanelViewModel.b(paramBaseChatPie);
-    paramBaseChatPie.q(10);
-    PlusPanelUtils.a(0);
-    paramPlusPanelViewModel = "";
-    if ((paramSessionInfo.a == 0) || (paramSessionInfo.a == 1000) || (paramSessionInfo.a == 1004) || (paramSessionInfo.a == 1001) || (paramSessionInfo.a == 10002) || (paramSessionInfo.a == 10004) || (paramSessionInfo.a == 10008)) {
-      paramPlusPanelViewModel = "entrance.click.c2c.plus";
-    }
-    for (;;)
+    paramBaseChatPie.j(10);
+    ((IQWalletHbApi)QRoute.api(IQWalletHbApi.class)).setPanelFrom(0);
+    if ((paramSessionInfo.a != 0) && (paramSessionInfo.a != 1000) && (paramSessionInfo.a != 1004) && (paramSessionInfo.a != 1001) && (paramSessionInfo.a != 10002) && (paramSessionInfo.a != 10004) && (paramSessionInfo.a != 10008))
     {
-      ReportController.b(paramBaseChatPie.a, "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramPlusPanelViewModel, 0, 0, "", "", "", "");
-      ReportUtils.a(paramBaseChatPie.a, "aio.luckyplus.click", paramSessionInfo);
-      return;
       if (paramSessionInfo.a == 3000) {
         paramPlusPanelViewModel = "entrance.click.group.plus";
       } else if (paramSessionInfo.a == 1) {
         paramPlusPanelViewModel = "entrance.click.chatgroup.plus";
+      } else {
+        paramPlusPanelViewModel = "";
       }
     }
+    else {
+      paramPlusPanelViewModel = "entrance.click.c2c.plus";
+    }
+    ReportController.b(paramBaseChatPie.a, "P_CliOper", "Vip_pay_mywallet", "", "wallet", paramPlusPanelViewModel, 0, 0, "", "", "", "");
+    ((IReportApi)QRoute.api(IReportApi.class)).reportHongbaoTo644(paramBaseChatPie.a, "aio.luckyplus.click", paramSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.RedPacketAppInfo
  * JD-Core Version:    0.7.0.1
  */

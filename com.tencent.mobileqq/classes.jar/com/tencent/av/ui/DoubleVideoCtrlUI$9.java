@@ -16,51 +16,60 @@ class DoubleVideoCtrlUI$9
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
-    for (;;)
-    {
+    if (this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {
       return;
-      if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController != null) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+    }
+    if (this.this$0.jdField_a_of_type_ComTencentAvVideoController != null)
+    {
+      if (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a() == null) {
+        return;
+      }
+      Object localObject = SharedPreUtils.c(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).getString("AvWeakNet_video_ConfigContent", "");
+      if (((String)localObject).length() == 0)
       {
-        Object localObject = SharedPreUtils.c(this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin()).getString("AvWeakNet_video_ConfigContent", "");
-        if (((String)localObject).length() == 0)
+        QLog.d(this.this$0.d, 1, "cannot Read AvWeaknetConfig");
+        return;
+      }
+      try
+      {
+        localObject = new JSONObject((String)localObject);
+        if (((JSONObject)localObject).has("ground_glass_switch_android"))
         {
-          QLog.d(this.this$0.d, 1, "cannot Read AvWeaknetConfig");
-          return;
-        }
-        try
-        {
-          localObject = new JSONObject((String)localObject);
-          if (((JSONObject)localObject).has("ground_glass_switch_android"))
+          if (((JSONObject)localObject).getInt("ground_glass_switch_android") == 1) {
+            this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ap = true;
+          }
+          if (((JSONObject)localObject).has("ground_glass_default_interval")) {
+            this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q = ((JSONObject)localObject).getInt("ground_glass_default_interval");
+          }
+          if (((JSONObject)localObject).has("ground_glass_default_timeout_rule")) {
+            this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R = ((JSONObject)localObject).getInt("ground_glass_default_timeout_rule");
+          }
+          localObject = this.this$0.d;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("AsyncReadDoubleGlassConfig mIsGlassCanUse=");
+          localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ap);
+          localStringBuilder.append(", mCurrentVideoGlassWaitTime=");
+          localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q);
+          localStringBuilder.append(", mCurrentDefaultTimeOutRule=");
+          localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().R);
+          QLog.d((String)localObject, 1, localStringBuilder.toString());
+          if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().ap) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().Q > 0))
           {
-            if (((JSONObject)localObject).getInt("ground_glass_switch_android") == 1) {
-              this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aA = true;
-            }
-            if (((JSONObject)localObject).has("ground_glass_default_interval")) {
-              this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S = ((JSONObject)localObject).getInt("ground_glass_default_interval");
-            }
-            if (((JSONObject)localObject).has("ground_glass_default_timeout_rule")) {
-              this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().T = ((JSONObject)localObject).getInt("ground_glass_default_timeout_rule");
-            }
-            QLog.d(this.this$0.d, 1, "AsyncReadDoubleGlassConfig mIsGlassCanUse=" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aA + ", mCurrentVideoGlassWaitTime=" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S + ", mCurrentDefaultTimeOutRule=" + this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().T);
-            if ((this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().aA) && (this.this$0.jdField_a_of_type_ComTencentAvVideoController.a().S > 0))
-            {
-              DoubleVideoCtrlUI.a(this.this$0, true);
-              return;
-            }
+            DoubleVideoCtrlUI.a(this.this$0, true);
+            return;
           }
         }
-        catch (JSONException localJSONException)
-        {
-          localJSONException.printStackTrace();
-        }
+      }
+      catch (JSONException localJSONException)
+      {
+        localJSONException.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.9
  * JD-Core Version:    0.7.0.1
  */

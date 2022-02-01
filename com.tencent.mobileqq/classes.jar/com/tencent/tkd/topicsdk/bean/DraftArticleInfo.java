@@ -11,7 +11,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/DraftArticleInfo;", "Ljava/io/Serializable;", "content", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/weibo/bean/EditObject;", "Lkotlin/collections/ArrayList;", "displayItems", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "allowMultiTweetTopic", "", "allowCommentAfterPublishConfig", "allowSaveAlbums", "(Ljava/util/ArrayList;Ljava/util/ArrayList;Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;ZZZ)V", "getAllowCommentAfterPublishConfig", "()Z", "setAllowCommentAfterPublishConfig", "(Z)V", "getAllowMultiTweetTopic", "setAllowMultiTweetTopic", "getAllowSaveAlbums", "setAllowSaveAlbums", "getContent", "()Ljava/util/ArrayList;", "setContent", "(Ljava/util/ArrayList;)V", "getDisplayItems", "setDisplayItems", "hasMedia", "getHasMedia", "mediaType", "Lcom/tencent/tkd/topicsdk/bean/MediaType;", "getMediaType", "()Lcom/tencent/tkd/topicsdk/bean/MediaType;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "other", "", "hashCode", "", "toString", "", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/bean/DraftArticleInfo;", "Ljava/io/Serializable;", "publishId", "", "content", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/weibo/bean/EditObject;", "Lkotlin/collections/ArrayList;", "displayItems", "Lcom/tencent/tkd/topicsdk/bean/DisplayItem;", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "commodityInfo", "Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "allowMultiTweetTopic", "", "allowCommentAfterPublishConfig", "allowSaveAlbums", "(Ljava/lang/String;Ljava/util/ArrayList;Ljava/util/ArrayList;Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;ZZZ)V", "getAllowCommentAfterPublishConfig", "()Z", "setAllowCommentAfterPublishConfig", "(Z)V", "getAllowMultiTweetTopic", "setAllowMultiTweetTopic", "getAllowSaveAlbums", "setAllowSaveAlbums", "getCommodityInfo", "()Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;", "setCommodityInfo", "(Lcom/tencent/tkd/topicsdk/bean/CommodityInfo;)V", "getContent", "()Ljava/util/ArrayList;", "setContent", "(Ljava/util/ArrayList;)V", "getDisplayItems", "setDisplayItems", "hasMedia", "getHasMedia", "mediaType", "Lcom/tencent/tkd/topicsdk/bean/MediaType;", "getMediaType", "()Lcom/tencent/tkd/topicsdk/bean/MediaType;", "getOriginContentInfo", "()Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "setOriginContentInfo", "(Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;)V", "getPublishId", "()Ljava/lang/String;", "setPublishId", "(Ljava/lang/String;)V", "component1", "component2", "component3", "component4", "component5", "component6", "component7", "component8", "copy", "equals", "other", "", "hashCode", "", "toString", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class DraftArticleInfo
   implements Serializable
 {
@@ -20,83 +20,102 @@ public final class DraftArticleInfo
   private boolean allowCommentAfterPublishConfig;
   private boolean allowMultiTweetTopic;
   private boolean allowSaveAlbums;
+  @Nullable
+  private CommodityInfo commodityInfo;
   @NotNull
   private ArrayList<EditObject> content;
   @NotNull
   private ArrayList<DisplayItem> displayItems;
   @Nullable
   private OriginContentInfo originContentInfo;
+  @NotNull
+  private String publishId;
   
   public DraftArticleInfo()
   {
-    this(null, null, null, false, false, false, 63, null);
+    this(null, null, null, null, null, false, false, false, 255, null);
   }
   
-  public DraftArticleInfo(@NotNull ArrayList<EditObject> paramArrayList, @NotNull ArrayList<DisplayItem> paramArrayList1, @Nullable OriginContentInfo paramOriginContentInfo, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public DraftArticleInfo(@NotNull String paramString, @NotNull ArrayList<EditObject> paramArrayList, @NotNull ArrayList<DisplayItem> paramArrayList1, @Nullable OriginContentInfo paramOriginContentInfo, @Nullable CommodityInfo paramCommodityInfo, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
+    this.publishId = paramString;
     this.content = paramArrayList;
     this.displayItems = paramArrayList1;
     this.originContentInfo = paramOriginContentInfo;
+    this.commodityInfo = paramCommodityInfo;
     this.allowMultiTweetTopic = paramBoolean1;
     this.allowCommentAfterPublishConfig = paramBoolean2;
     this.allowSaveAlbums = paramBoolean3;
   }
   
   @NotNull
-  public final ArrayList<EditObject> component1()
+  public final String component1()
+  {
+    return this.publishId;
+  }
+  
+  @NotNull
+  public final ArrayList<EditObject> component2()
   {
     return this.content;
   }
   
   @NotNull
-  public final ArrayList<DisplayItem> component2()
+  public final ArrayList<DisplayItem> component3()
   {
     return this.displayItems;
   }
   
   @Nullable
-  public final OriginContentInfo component3()
+  public final OriginContentInfo component4()
   {
     return this.originContentInfo;
   }
   
-  public final boolean component4()
+  @Nullable
+  public final CommodityInfo component5()
+  {
+    return this.commodityInfo;
+  }
+  
+  public final boolean component6()
   {
     return this.allowMultiTweetTopic;
   }
   
-  public final boolean component5()
+  public final boolean component7()
   {
     return this.allowCommentAfterPublishConfig;
   }
   
-  public final boolean component6()
+  public final boolean component8()
   {
     return this.allowSaveAlbums;
   }
   
   @NotNull
-  public final DraftArticleInfo copy(@NotNull ArrayList<EditObject> paramArrayList, @NotNull ArrayList<DisplayItem> paramArrayList1, @Nullable OriginContentInfo paramOriginContentInfo, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  public final DraftArticleInfo copy(@NotNull String paramString, @NotNull ArrayList<EditObject> paramArrayList, @NotNull ArrayList<DisplayItem> paramArrayList1, @Nullable OriginContentInfo paramOriginContentInfo, @Nullable CommodityInfo paramCommodityInfo, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
+    Intrinsics.checkParameterIsNotNull(paramString, "publishId");
     Intrinsics.checkParameterIsNotNull(paramArrayList, "content");
     Intrinsics.checkParameterIsNotNull(paramArrayList1, "displayItems");
-    return new DraftArticleInfo(paramArrayList, paramArrayList1, paramOriginContentInfo, paramBoolean1, paramBoolean2, paramBoolean3);
+    return new DraftArticleInfo(paramString, paramArrayList, paramArrayList1, paramOriginContentInfo, paramCommodityInfo, paramBoolean1, paramBoolean2, paramBoolean3);
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof DraftArticleInfo))
       {
         paramObject = (DraftArticleInfo)paramObject;
-        if ((!Intrinsics.areEqual(this.content, paramObject.content)) || (!Intrinsics.areEqual(this.displayItems, paramObject.displayItems)) || (!Intrinsics.areEqual(this.originContentInfo, paramObject.originContentInfo)) || (this.allowMultiTweetTopic != paramObject.allowMultiTweetTopic) || (this.allowCommentAfterPublishConfig != paramObject.allowCommentAfterPublishConfig) || (this.allowSaveAlbums != paramObject.allowSaveAlbums)) {}
+        if ((Intrinsics.areEqual(this.publishId, paramObject.publishId)) && (Intrinsics.areEqual(this.content, paramObject.content)) && (Intrinsics.areEqual(this.displayItems, paramObject.displayItems)) && (Intrinsics.areEqual(this.originContentInfo, paramObject.originContentInfo)) && (Intrinsics.areEqual(this.commodityInfo, paramObject.commodityInfo)) && (this.allowMultiTweetTopic == paramObject.allowMultiTweetTopic) && (this.allowCommentAfterPublishConfig == paramObject.allowCommentAfterPublishConfig) && (this.allowSaveAlbums == paramObject.allowSaveAlbums)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final boolean getAllowCommentAfterPublishConfig()
@@ -114,6 +133,12 @@ public final class DraftArticleInfo
     return this.allowSaveAlbums;
   }
   
+  @Nullable
+  public final CommodityInfo getCommodityInfo()
+  {
+    return this.commodityInfo;
+  }
+  
   @NotNull
   public final ArrayList<EditObject> getContent()
   {
@@ -128,7 +153,7 @@ public final class DraftArticleInfo
   
   public final boolean getHasMedia()
   {
-    return !((Collection)this.displayItems).isEmpty();
+    return ((Collection)this.displayItems).isEmpty() ^ true;
   }
   
   @Nullable
@@ -151,6 +176,12 @@ public final class DraftArticleInfo
     return this.originContentInfo;
   }
   
+  @NotNull
+  public final String getPublishId()
+  {
+    return this.publishId;
+  }
+  
   public int hashCode()
   {
     throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
@@ -171,6 +202,11 @@ public final class DraftArticleInfo
     this.allowSaveAlbums = paramBoolean;
   }
   
+  public final void setCommodityInfo(@Nullable CommodityInfo paramCommodityInfo)
+  {
+    this.commodityInfo = paramCommodityInfo;
+  }
+  
   public final void setContent(@NotNull ArrayList<EditObject> paramArrayList)
   {
     Intrinsics.checkParameterIsNotNull(paramArrayList, "<set-?>");
@@ -188,15 +224,39 @@ public final class DraftArticleInfo
     this.originContentInfo = paramOriginContentInfo;
   }
   
+  public final void setPublishId(@NotNull String paramString)
+  {
+    Intrinsics.checkParameterIsNotNull(paramString, "<set-?>");
+    this.publishId = paramString;
+  }
+  
   @NotNull
   public String toString()
   {
-    return "DraftArticleInfo(content=" + this.content + ", displayItems=" + this.displayItems + ", originContentInfo=" + this.originContentInfo + ", allowMultiTweetTopic=" + this.allowMultiTweetTopic + ", allowCommentAfterPublishConfig=" + this.allowCommentAfterPublishConfig + ", allowSaveAlbums=" + this.allowSaveAlbums + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DraftArticleInfo(publishId=");
+    localStringBuilder.append(this.publishId);
+    localStringBuilder.append(", content=");
+    localStringBuilder.append(this.content);
+    localStringBuilder.append(", displayItems=");
+    localStringBuilder.append(this.displayItems);
+    localStringBuilder.append(", originContentInfo=");
+    localStringBuilder.append(this.originContentInfo);
+    localStringBuilder.append(", commodityInfo=");
+    localStringBuilder.append(this.commodityInfo);
+    localStringBuilder.append(", allowMultiTweetTopic=");
+    localStringBuilder.append(this.allowMultiTweetTopic);
+    localStringBuilder.append(", allowCommentAfterPublishConfig=");
+    localStringBuilder.append(this.allowCommentAfterPublishConfig);
+    localStringBuilder.append(", allowSaveAlbums=");
+    localStringBuilder.append(this.allowSaveAlbums);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.DraftArticleInfo
  * JD-Core Version:    0.7.0.1
  */

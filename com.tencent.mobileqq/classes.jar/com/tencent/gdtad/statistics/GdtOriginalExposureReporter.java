@@ -41,21 +41,24 @@ public class GdtOriginalExposureReporter
   
   public static void a(GdtAd paramGdtAd, Context paramContext)
   {
-    if ((paramGdtAd == null) || (paramContext == null))
+    if ((paramGdtAd != null) && (paramContext != null))
     {
-      QLog.e("GdtOriginalExposureReporter", 1, "gdtAd or context is null");
+      String str = paramGdtAd.getOriginalExposureUrl();
+      if (TextUtils.isEmpty(str))
+      {
+        QLog.e("GdtOriginalExposureReporter", 1, "original exposure url is empty");
+        return;
+      }
+      boolean bool = PackageUtil.a(paramContext, paramGdtAd.getAppPackageName());
+      paramGdtAd = a(str, a(paramGdtAd.isAppProductType(), bool), "1", "0");
+      GdtReporter.doCgiReport(paramGdtAd);
+      paramContext = new StringBuilder();
+      paramContext.append("original exposure report url: ");
+      paramContext.append(paramGdtAd);
+      QLog.d("GdtOriginalExposureReporter", 1, paramContext.toString());
       return;
     }
-    String str = paramGdtAd.getOriginalExposureUrl();
-    if (TextUtils.isEmpty(str))
-    {
-      QLog.e("GdtOriginalExposureReporter", 1, "original exposure url is empty");
-      return;
-    }
-    boolean bool = PackageUtil.a(paramContext, paramGdtAd.getAppPackageName());
-    paramGdtAd = a(str, a(paramGdtAd.isAppProductType(), bool), "1", "0");
-    GdtReporter.doCgiReport(paramGdtAd);
-    QLog.d("GdtOriginalExposureReporter", 1, "original exposure report url: " + paramGdtAd);
+    QLog.e("GdtOriginalExposureReporter", 1, "gdtAd or context is null");
   }
   
   public static boolean a(int paramInt)
@@ -65,7 +68,7 @@ public class GdtOriginalExposureReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtOriginalExposureReporter
  * JD-Core Version:    0.7.0.1
  */

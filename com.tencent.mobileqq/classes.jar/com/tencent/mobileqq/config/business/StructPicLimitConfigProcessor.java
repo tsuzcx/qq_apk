@@ -25,24 +25,28 @@ public class StructPicLimitConfigProcessor
   public StructPicLimitDataBean a(QConfItem[] paramArrayOfQConfItem)
   {
     QLog.i("StructPicLimitConfigProcessor", 1, "[onParsed] config");
-    Object localObject = null;
+    Object localObject;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      localStructPicLimitDataBean = StructPicLimitDataBean.a(paramArrayOfQConfItem[0].a);
+      StructPicLimitDataBean localStructPicLimitDataBean = StructPicLimitDataBean.a(paramArrayOfQConfItem[0].a);
       localObject = localStructPicLimitDataBean;
       if (QLog.isColorLevel())
       {
-        QLog.d("StructPicLimitConfigProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
-        localObject = localStructPicLimitDataBean;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onParsed ");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+        QLog.d("StructPicLimitConfigProcessor", 2, ((StringBuilder)localObject).toString());
+        return localStructPicLimitDataBean;
       }
     }
-    while (!QLog.isColorLevel())
+    else
     {
-      StructPicLimitDataBean localStructPicLimitDataBean;
-      return localObject;
+      if (QLog.isColorLevel()) {
+        QLog.d("StructPicLimitConfigProcessor", 2, "onParsed is null");
+      }
+      localObject = null;
     }
-    QLog.d("StructPicLimitConfigProcessor", 2, "onParsed is null");
-    return null;
+    return localObject;
   }
   
   public void a(StructPicLimitDataBean paramStructPicLimitDataBean)
@@ -77,7 +81,10 @@ public class StructPicLimitConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("StructPicLimitConfigProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onReqFailed] failCode=");
+    localStringBuilder.append(paramInt);
+    QLog.i("StructPicLimitConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -87,7 +94,7 @@ public class StructPicLimitConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.StructPicLimitConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

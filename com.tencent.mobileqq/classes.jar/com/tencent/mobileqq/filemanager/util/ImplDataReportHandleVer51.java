@@ -244,9 +244,7 @@ public class ImplDataReportHandleVer51
   
   public void k()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("ImplDataReportHandle_Ver51<FileAssistant>", 2, "localfile download?!" + FileManagerUtil.a());
-    }
+    QLog.isColorLevel();
   }
   
   public void l()
@@ -326,7 +324,7 @@ public class ImplDataReportHandleVer51
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.ImplDataReportHandleVer51
  * JD-Core Version:    0.7.0.1
  */

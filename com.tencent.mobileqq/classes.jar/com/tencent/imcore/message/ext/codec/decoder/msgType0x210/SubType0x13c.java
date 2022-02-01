@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBStringField;
 import tencent.gdt.MsgType0x210_SubMsgType0x13c.MsgBody;
 
 public class SubType0x13c
-  implements Msg0X210SubTypeDecoder
+  implements Msg0X210SubTypeDecoder<OnLinePushMessageProcessor>
 {
   public MessageRecord a(OnLinePushMessageProcessor paramOnLinePushMessageProcessor, MsgType0x210 paramMsgType0x210, long paramLong, byte[] paramArrayOfByte, MsgInfo paramMsgInfo)
   {
@@ -20,21 +20,21 @@ public class SubType0x13c
     {
       paramOnLinePushMessageProcessor.mergeFrom(paramArrayOfByte);
       paramOnLinePushMessageProcessor = paramOnLinePushMessageProcessor.str_msg_id.get();
-      GdtLog.a("SubType0x13b", "msg_id:" + paramOnLinePushMessageProcessor);
-      return null;
+      paramMsgType0x210 = new StringBuilder();
+      paramMsgType0x210.append("msg_id:");
+      paramMsgType0x210.append(paramOnLinePushMessageProcessor);
+      GdtLog.a("SubType0x13b", paramMsgType0x210.toString());
     }
     catch (InvalidProtocolBufferMicroException paramOnLinePushMessageProcessor)
     {
-      for (;;)
-      {
-        paramOnLinePushMessageProcessor.printStackTrace();
-      }
+      paramOnLinePushMessageProcessor.printStackTrace();
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.msgType0x210.SubType0x13c
  * JD-Core Version:    0.7.0.1
  */

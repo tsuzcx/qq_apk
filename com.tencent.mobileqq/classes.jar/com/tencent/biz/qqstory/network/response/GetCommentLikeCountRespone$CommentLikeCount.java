@@ -18,12 +18,24 @@ public class GetCommentLikeCountRespone$CommentLikeCount
   
   public String toString()
   {
-    return "CommentLikeCount{storyId='" + this.jdField_a_of_type_JavaLangString + ", likeCount=" + this.jdField_a_of_type_Int + ", commentCount=" + this.b + ", isHasLike=" + this.jdField_a_of_type_Boolean + ", newlyThreeLikes=" + this.jdField_a_of_type_JavaUtilList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CommentLikeCount{storyId='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", likeCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", commentCount=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", isHasLike=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", newlyThreeLikes=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetCommentLikeCountRespone.CommentLikeCount
  * JD-Core Version:    0.7.0.1
  */

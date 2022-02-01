@@ -19,65 +19,83 @@ class NearbyCardHandler$2
     super(paramBoolean);
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     paramBundle = new NowSummaryCard.RespNearbySummaryCard();
     if (paramInt != 0)
     {
-      QLog.e("NearbyCardHandler", 1, "NowSummaryCard error, code=" + paramInt);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("NowSummaryCard error, code=");
+      paramArrayOfByte.append(paramInt);
+      QLog.e("NearbyCardHandler", 1, paramArrayOfByte.toString());
       NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
       return;
     }
-    NowSummaryCard.NearbySummaryCardRsp localNearbySummaryCardRsp = new NowSummaryCard.NearbySummaryCardRsp();
+    Object localObject = new NowSummaryCard.NearbySummaryCardRsp();
     try
     {
-      localNearbySummaryCardRsp.mergeFrom(paramArrayOfByte);
-      if (localNearbySummaryCardRsp.err_msg.has()) {
-        QLog.i("NearbyCardHandler", 1, "NowSummaryCard, err_msg=" + localNearbySummaryCardRsp.err_msg.get());
-      }
-      if (!localNearbySummaryCardRsp.ret_code.has())
-      {
-        QLog.i("NearbyCardHandler", 1, "NowSummaryCard error, ret_code=" + localNearbySummaryCardRsp.ret_code.get());
-        NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
-        return;
-      }
+      ((NowSummaryCard.NearbySummaryCardRsp)localObject).mergeFrom(paramArrayOfByte);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        QLog.i("NearbyCardHandler", 1, "NowSummaryCard, merge error e=" + paramArrayOfByte.toString(), paramArrayOfByte);
-      }
-      if (localNearbySummaryCardRsp.ret_code.get() == 0) {
-        if (QLog.isColorLevel()) {
-          QLog.i("NearbyCardHandler", 2, "NowSummaryCard rsp length=" + localNearbySummaryCardRsp.pb_data.get().toByteArray().length);
-        }
-      }
-      for (;;)
-      {
-        try
-        {
-          paramBundle.mergeFrom(localNearbySummaryCardRsp.pb_data.get().toByteArray());
-          paramInt = 1;
-          if (paramInt == 0) {
-            break;
-          }
-          NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, true, paramBundle, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
-          return;
-        }
-        catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-        {
-          QLog.i("NearbyCardHandler", 1, "NowSummaryCard, merge error e=" + paramArrayOfByte.toString(), paramArrayOfByte);
-        }
-        paramInt = 0;
-      }
-      NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("NowSummaryCard, merge error e=");
+      localStringBuilder.append(paramArrayOfByte.toString());
+      QLog.i("NearbyCardHandler", 1, localStringBuilder.toString(), paramArrayOfByte);
     }
+    if (((NowSummaryCard.NearbySummaryCardRsp)localObject).err_msg.has())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("NowSummaryCard, err_msg=");
+      paramArrayOfByte.append(((NowSummaryCard.NearbySummaryCardRsp)localObject).err_msg.get());
+      QLog.i("NearbyCardHandler", 1, paramArrayOfByte.toString());
+    }
+    if (!((NowSummaryCard.NearbySummaryCardRsp)localObject).ret_code.has())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("NowSummaryCard error, ret_code=");
+      paramArrayOfByte.append(((NowSummaryCard.NearbySummaryCardRsp)localObject).ret_code.get());
+      QLog.i("NearbyCardHandler", 1, paramArrayOfByte.toString());
+      NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
+      return;
+    }
+    if (((NowSummaryCard.NearbySummaryCardRsp)localObject).ret_code.get() == 0)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("NowSummaryCard rsp length=");
+        paramArrayOfByte.append(((NowSummaryCard.NearbySummaryCardRsp)localObject).pb_data.get().toByteArray().length);
+        QLog.i("NearbyCardHandler", 2, paramArrayOfByte.toString());
+      }
+      try
+      {
+        paramBundle.mergeFrom(((NowSummaryCard.NearbySummaryCardRsp)localObject).pb_data.get().toByteArray());
+        paramInt = 1;
+      }
+      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("NowSummaryCard, merge error e=");
+        ((StringBuilder)localObject).append(paramArrayOfByte.toString());
+        QLog.i("NearbyCardHandler", 1, ((StringBuilder)localObject).toString(), paramArrayOfByte);
+      }
+    }
+    else
+    {
+      paramInt = 0;
+    }
+    if (paramInt != 0)
+    {
+      NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, true, paramBundle, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
+      return;
+    }
+    NearbyCardHandler.a(this.jdField_a_of_type_ComTencentMobileqqNearbyBusinessNearbyCardHandler, false, null, this.jdField_a_of_type_ComTencentQphoneBaseRemoteToServiceMsg.extraData);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.business.NearbyCardHandler.2
  * JD-Core Version:    0.7.0.1
  */

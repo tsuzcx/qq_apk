@@ -6,16 +6,16 @@ import android.view.ViewGroup.LayoutParams;
 
 public abstract class NickNameLayoutExtender
 {
-  protected NickNameExtenderViewBasicAbility ability;
+  protected BaseChatItemLayoutViewBasicAbility ability;
   protected ViewGroup.LayoutParams layoutParams;
-  public Context mContext;
+  protected Context mContext;
   
   public NickNameLayoutExtender(Context paramContext)
   {
     this.mContext = paramContext;
   }
   
-  public abstract NickNameExtenderViewBasicAbility getBasicAbility();
+  public abstract BaseChatItemLayoutViewBasicAbility getBasicAbility();
   
   public abstract View getView();
   
@@ -24,11 +24,11 @@ public abstract class NickNameLayoutExtender
     return this.layoutParams;
   }
   
-  public void updateView(NickNameLayoutProcessor.NickNameLayoutData paramNickNameLayoutData) {}
+  public void updateView(NickNameChatItemLayoutProcessor.NickNameLayoutData paramNickNameLayoutData) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameLayoutExtender
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,7 @@ import tencent.im.oidb.cmd0x6d9.oidb_0x6d9.TransFileRspBody;
 public abstract class TroopFileReqTransFileObserver
   extends ProtoUtils.TroopProtocolObserver
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
-  
-  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (paramInt != 0)
     {
@@ -34,18 +27,27 @@ public abstract class TroopFileReqTransFileObserver
         a(true, 0, paramArrayOfByte, paramBundle);
         return;
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
       a(false, -1, null, paramBundle);
       return;
     }
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      label69:
+      break label69;
+    }
     a(false, -1, null, paramBundle);
+  }
+  
+  public abstract void a(boolean paramBoolean, int paramInt, oidb_0x6d9.TransFileRspBody paramTransFileRspBody, Bundle paramBundle);
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    a(paramInt, paramArrayOfByte, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.protocol.TroopFileReqTransFileObserver
  * JD-Core Version:    0.7.0.1
  */

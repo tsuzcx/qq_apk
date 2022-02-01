@@ -20,16 +20,17 @@ public class Party$PartyTask
   
   public String a()
   {
-    if (this.jdField_a_of_type_JavaLangObject != null)
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    if (localObject != null)
     {
-      if ((this.jdField_a_of_type_JavaLangObject instanceof BaseActivityData)) {
-        return ((BaseActivityData)this.jdField_a_of_type_JavaLangObject).id;
+      if ((localObject instanceof BaseActivityData)) {
+        return ((BaseActivityData)localObject).id;
       }
-      if ((this.jdField_a_of_type_JavaLangObject instanceof PopBannerData)) {
-        return ((PopBannerData)this.jdField_a_of_type_JavaLangObject).id;
+      if ((localObject instanceof PopBannerData)) {
+        return ((PopBannerData)localObject).id;
       }
-      if ((this.jdField_a_of_type_JavaLangObject instanceof MsgTabBannerData)) {
-        return ((MsgTabBannerData)this.jdField_a_of_type_JavaLangObject).id;
+      if ((localObject instanceof MsgTabBannerData)) {
+        return ((MsgTabBannerData)localObject).id;
       }
     }
     return "";
@@ -37,12 +38,20 @@ public class Party$PartyTask
   
   public String toString()
   {
-    return "PartyTask{entryId=" + a() + ", type=" + Party.b(this.jdField_a_of_type_Int) + ", time=" + TimeFormatterUtils.b(this.jdField_a_of_type_Long) + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PartyTask{entryId=");
+    localStringBuilder.append(a());
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(Party.b(this.jdField_a_of_type_Int));
+    localStringBuilder.append(", time=");
+    localStringBuilder.append(TimeFormatterUtils.b(this.jdField_a_of_type_Long));
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.Party.PartyTask
  * JD-Core Version:    0.7.0.1
  */

@@ -38,22 +38,19 @@ public class SearchContactsActivity
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramString.equals("//gettbs")))
     {
-      String str4 = WebAccelerateHelper.getInstance().getTBSDpcParam();
-      String str2 = "";
-      String str3 = "";
-      String str1 = str3;
-      paramString = str2;
-      if (!TextUtils.isEmpty(str4))
+      String str = WebAccelerateHelper.getInstance().getTBSDpcParam();
+      boolean bool = TextUtils.isEmpty(str);
+      paramString = "";
+      if ((!bool) && (str.length() > 2))
       {
-        str1 = str3;
-        paramString = str2;
-        if (str4.length() > 2)
-        {
-          paramString = String.valueOf(str4.charAt(0));
-          str1 = String.valueOf(str4.charAt(2));
-        }
+        paramString = String.valueOf(str.charAt(0));
+        str = String.valueOf(str.charAt(2));
       }
-      paramString = String.format("tbs_download:%s\ntbs_enable:%s\ntbsCoreVersion:%d\ntbsSdkVersion:%d", new Object[] { paramString, str1, Integer.valueOf(QbSdk.getTbsVersion(this)), Integer.valueOf(WebView.getTbsSDKVersion(this)) });
+      else
+      {
+        str = "";
+      }
+      paramString = String.format("tbs_download:%s\ntbs_enable:%s\ntbsCoreVersion:%d\ntbsSdkVersion:%d", new Object[] { paramString, str, Integer.valueOf(QbSdk.getTbsVersion(this)), Integer.valueOf(WebView.getTbsSDKVersion(this)) });
       QQToast.a(getActivity().getApplicationContext(), paramString, 0).b(getTitleBarHeight());
     }
   }
@@ -67,48 +64,46 @@ public class SearchContactsActivity
   {
     super.c();
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    String str1 = getIntent().getStringExtra("start_search_key");
-    boolean bool = TextUtils.isEmpty(str1);
+    String str = getIntent().getStringExtra("start_search_key");
+    boolean bool = TextUtils.isEmpty(str);
     if (!bool)
     {
       if (this.i == 12)
       {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131713567) + ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(this.app, getApplicationContext()) + HardCodeUtil.a(2131713566));
-        this.jdField_a_of_type_AndroidWidgetEditText.setText(str1);
-        this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
-        this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
+        localObject = this.jdField_a_of_type_AndroidWidgetEditText;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131713534));
+        localStringBuilder.append(((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getSubscriptName(this.app, getApplicationContext()));
+        localStringBuilder.append(HardCodeUtil.a(2131713533));
+        ((EditText)localObject).setHint(localStringBuilder.toString());
       }
-    }
-    else
-    {
-      if (this.h == 1) {
-        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131713574));
-      }
-      this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new SearchContactsActivity.1(this, bool));
-      String str2 = getResources().getString(2131690800);
-      this.jdField_a_of_type_AndroidWidgetButton.setText(str2);
-      this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new SearchContactsActivity.2(this));
-      if (AppSetting.d)
+      else
       {
-        this.jdField_a_of_type_AndroidWidgetButton.setContentDescription(str2);
-        if (this.i != 12) {
-          break label274;
-        }
-        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(HardCodeUtil.a(2131713576));
+        this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131713540));
       }
+      this.jdField_a_of_type_AndroidWidgetEditText.setText(str);
+      this.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_AndroidWidgetEditText.getText().length());
+      this.jdField_a_of_type_AndroidWidgetImageButton.setVisibility(0);
     }
-    for (;;)
+    if (this.h == 1) {
+      this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131713541));
+    }
+    this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(new SearchContactsActivity.1(this, bool));
+    Object localObject = getResources().getString(2131690728);
+    this.jdField_a_of_type_AndroidWidgetButton.setText((CharSequence)localObject);
+    this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(new SearchContactsActivity.2(this));
+    if (AppSetting.d)
     {
-      if ((TextUtils.isEmpty(str1)) || (getIntent().getBooleanExtra("auto_add_and_prohibit_auto_search", false))) {
-        break label290;
+      this.jdField_a_of_type_AndroidWidgetButton.setContentDescription((CharSequence)localObject);
+      if (this.i == 12) {
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(HardCodeUtil.a(2131713543));
+      } else {
+        this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(HardCodeUtil.a(2131713539));
       }
-      return;
-      this.jdField_a_of_type_AndroidWidgetEditText.setHint(HardCodeUtil.a(2131713573));
-      break;
-      label274:
-      this.jdField_a_of_type_AndroidWidgetEditText.setContentDescription(HardCodeUtil.a(2131713572));
     }
-    label290:
+    if ((!TextUtils.isEmpty(str)) && (!getIntent().getBooleanExtra("auto_add_and_prohibit_auto_search", false))) {
+      return;
+    }
     Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
   }
   
@@ -121,7 +116,7 @@ public class SearchContactsActivity
     return bool;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     Looper.myQueue().removeIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
@@ -145,7 +140,7 @@ public class SearchContactsActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.SearchContactsActivity
  * JD-Core Version:    0.7.0.1
  */

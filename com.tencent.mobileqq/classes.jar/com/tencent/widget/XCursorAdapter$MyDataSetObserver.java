@@ -5,21 +5,25 @@ import android.database.DataSetObserver;
 class XCursorAdapter$MyDataSetObserver
   extends DataSetObserver
 {
+  private XCursorAdapter$MyDataSetObserver(XCursorAdapter paramXCursorAdapter) {}
+  
   public void onChanged()
   {
-    this.a.a = true;
-    this.a.notifyDataSetChanged();
+    XCursorAdapter localXCursorAdapter = this.this$0;
+    localXCursorAdapter.mDataValid = true;
+    localXCursorAdapter.notifyDataSetChanged();
   }
   
   public void onInvalidated()
   {
-    this.a.a = false;
-    this.a.notifyDataSetInvalidated();
+    XCursorAdapter localXCursorAdapter = this.this$0;
+    localXCursorAdapter.mDataValid = false;
+    localXCursorAdapter.notifyDataSetInvalidated();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.XCursorAdapter.MyDataSetObserver
  * JD-Core Version:    0.7.0.1
  */

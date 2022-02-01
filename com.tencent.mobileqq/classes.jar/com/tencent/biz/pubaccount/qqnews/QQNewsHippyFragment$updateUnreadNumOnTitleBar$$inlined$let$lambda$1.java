@@ -21,41 +21,39 @@ final class QQNewsHippyFragment$updateUnreadNumOnTitleBar$$inlined$let$lambda$1
       localObject = QQNewsHippyFragment.a(this.this$0);
       if (localObject != null)
       {
-        localObject = (TextView)((NavBarAIO)localObject).findViewById(2131380148);
+        localObject = (TextView)((NavBarAIO)localObject).findViewById(2131379476);
         if (localObject != null)
         {
-          if (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element)) {
-            break label62;
+          if (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element))
+          {
+            ((TextView)localObject).setVisibility(8);
+            return;
           }
-          ((TextView)localObject).setVisibility(8);
+          ((TextView)localObject).setText((CharSequence)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element);
+          ((TextView)localObject).setVisibility(0);
         }
       }
     }
-    label62:
-    do
+    else
     {
-      for (;;)
-      {
-        return;
-        ((TextView)localObject).setText((CharSequence)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element);
-        ((TextView)localObject).setVisibility(0);
-      }
       localObject = QQNewsHippyFragment.a(this.this$0);
       if (localObject != null)
       {
-        localObject = (TextView)((NavBarAIO)localObject).findViewById(2131369525);
+        localObject = (TextView)((NavBarAIO)localObject).findViewById(2131369240);
         if (localObject != null) {
           ((TextView)localObject).setText((CharSequence)this.jdField_a_of_type_KotlinJvmInternalRef$ObjectRef.element);
         }
       }
       localObject = QQNewsHippyFragment.a(this.this$0);
-    } while (localObject == null);
-    ((NavBarAIO)localObject).e();
+      if (localObject != null) {
+        ((NavBarAIO)localObject).e();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.qqnews.QQNewsHippyFragment.updateUnreadNumOnTitleBar..inlined.let.lambda.1
  * JD-Core Version:    0.7.0.1
  */

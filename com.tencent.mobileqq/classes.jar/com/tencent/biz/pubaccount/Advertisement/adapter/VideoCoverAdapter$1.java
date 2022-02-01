@@ -11,19 +11,25 @@ class VideoCoverAdapter$1
   
   public void run()
   {
-    if ((VideoCoverAdapter.a(this.this$0) == null) || (VideoCoverAdapter.a(this.this$0).size() == 0)) {}
-    VideoCoverItem localVideoCoverItem;
-    do
+    if (VideoCoverAdapter.a(this.this$0) != null)
     {
-      return;
-      localVideoCoverItem = (VideoCoverItem)VideoCoverAdapter.a(this.this$0).get(0);
-    } while ((localVideoCoverItem == null) || (localVideoCoverItem.a == null));
-    localVideoCoverItem.a.a(VideoCoverAdapter.a(this.this$0));
+      if (VideoCoverAdapter.a(this.this$0).size() == 0) {
+        return;
+      }
+      VideoCoverItem localVideoCoverItem = (VideoCoverItem)VideoCoverAdapter.a(this.this$0).get(0);
+      if (localVideoCoverItem != null)
+      {
+        if (localVideoCoverItem.a == null) {
+          return;
+        }
+        ((VideoCoverView)localVideoCoverItem.a).a(VideoCoverAdapter.a(this.this$0));
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.adapter.VideoCoverAdapter.1
  * JD-Core Version:    0.7.0.1
  */

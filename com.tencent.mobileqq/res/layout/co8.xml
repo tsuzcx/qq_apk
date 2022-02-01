@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="46.0dip"
+<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="17.0sp" android:textColor="#ff03081a" android:id="@id/e85" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="20.0dip" android:text="@string/yb_" android:singleLine="true" android:layout_alignParentLeft="true" android:lineSpacingMultiplier="1.0" />
-    <ImageView android:id="@id/ija" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_marginTop="20.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/gyo" android:layout_alignParentRight="true" />
+    <com.tencent.biz.pubaccount.weishi_new.view.RoundCornerImageView android:id="@id/mvk" android:layout_width="113.0dip" android:layout_height="150.0dip" android:scaleType="centerCrop" />
+    <ImageView android:id="@id/mvl" android:background="@drawable/dyi" android:layout_width="113.0dip" android:layout_height="150.0dip" />
+    <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:id="@id/mvn" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginBottom="7.0dip" android:maxWidth="113.0dip" android:maxLines="1" android:layout_alignBottom="@id/mvk" />
+    <TextView android:textSize="@dimen/aym" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mvo" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="9.0dip" android:maxWidth="113.0dip" android:maxLines="1" android:layout_below="@id/mvk" />
+    <TextView android:textSize="@dimen/ayi" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/mvm" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:maxWidth="113.0dip" android:maxLines="1" android:layout_below="@id/mvo" />
 </RelativeLayout>

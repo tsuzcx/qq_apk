@@ -21,14 +21,15 @@ public final class Tlv
   
   public static Tlv[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new Tlv[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new Tlv[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static Tlv parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -50,16 +51,18 @@ public final class Tlv
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.tid;
     int i = j;
-    if (this.tid != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(1, this.tid);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
+    long l = this.value;
     j = i;
-    if (this.value != 0L) {
-      j = i + CodedOutputByteBufferNano.computeInt64Size(2, this.value);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeInt64Size(2, l);
     }
     i = j;
     if (!this.str.equals("")) {
@@ -73,32 +76,43 @@ public final class Tlv
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.tid = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 16: 
-        this.value = paramCodedInputByteBufferNano.readInt64();
+      if (i == 0) {
         break;
       }
-      this.str = paramCodedInputByteBufferNano.readString();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.str = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.value = paramCodedInputByteBufferNano.readInt64();
+        }
+      }
+      else {
+        this.tid = paramCodedInputByteBufferNano.readInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.tid != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.tid);
+    int i = this.tid;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
-    if (this.value != 0L) {
-      paramCodedOutputByteBufferNano.writeInt64(2, this.value);
+    long l = this.value;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeInt64(2, l);
     }
     if (!this.str.equals("")) {
       paramCodedOutputByteBufferNano.writeString(3, this.str);
@@ -108,7 +122,7 @@ public final class Tlv
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.Tlv
  * JD-Core Version:    0.7.0.1
  */

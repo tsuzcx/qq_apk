@@ -1,5 +1,177 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <style name="a3l" parent="@android:style/Theme.Holo">
+        <item name="android:colorForeground">@color/af_</item>
+        <item name="android:colorBackground">@color/m4</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:disabledAlpha">@dimen/ba3</item>
+        <item name="android:textAppearance">@style/a4_</item>
+        <item name="android:textAppearanceInverse">@style/a4j</item>
+        <item name="android:textColorPrimary">@color/dl</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/dj</item>
+        <item name="android:textColorSecondary">@color/dt</item>
+        <item name="android:textColorPrimaryInverse">@color/do</item>
+        <item name="android:textColorSecondaryInverse">@color/dv</item>
+        <item name="android:textColorHintInverse">@color/dh</item>
+        <item name="android:textAppearanceLarge">@style/a4k</item>
+        <item name="android:textAppearanceMedium">@style/a4q</item>
+        <item name="android:textAppearanceSmall">@style/a4v</item>
+        <item name="android:textAppearanceLargeInverse">@style/a4l</item>
+        <item name="android:textAppearanceMediumInverse">@style/a4r</item>
+        <item name="android:textAppearanceSmallInverse">@style/a4w</item>
+        <item name="android:listPreferredItemHeight">@dimen/bac</item>
+        <item name="android:windowBackground">@color/m4</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:textColorHighlight">@color/afj</item>
+        <item name="android:textColorHint">@color/dg</item>
+        <item name="android:textColorLink">?a27</item>
+        <item name="android:colorForegroundInverse">@color/afa</item>
+        <item name="android:textColorTertiary">@color/dt</item>
+        <item name="android:textColorTertiaryInverse">@color/dv</item>
+        <item name="android:listChoiceIndicatorSingle">@drawable/or</item>
+        <item name="android:listChoiceIndicatorMultiple">@drawable/cz</item>
+        <item name="android:colorBackgroundCacheHint">@color/db</item>
+        <item name="android:textSelectHandleLeft">@drawable/fzs</item>
+        <item name="android:textSelectHandleRight">@drawable/fzw</item>
+        <item name="android:textSelectHandle">@drawable/fzu</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:textColorAlertDialogListItem">@color/dl</item>
+        <item name="android:actionModeCutDrawable">?a0_</item>
+        <item name="android:actionModeCopyDrawable">?a09</item>
+        <item name="android:actionModePasteDrawable">?a0b</item>
+        <item name="android:borderlessButtonStyle">?a1j</item>
+        <item name="android:buttonBarStyle">?a1q</item>
+        <item name="android:buttonBarButtonStyle">?a1m</item>
+        <item name="android:textColorHighlightInverse">@color/afl</item>
+        <item name="android:textColorLinkInverse">?a27</item>
+        <item name="android:actionModeSelectAllDrawable">?a0d</item>
+        <item name="android:listPreferredItemHeightLarge">@dimen/bab</item>
+        <item name="android:listPreferredItemHeightSmall">@dimen/bad</item>
+        <item name="android:textAppearanceListItem">@style/a4x</item>
+        <item name="android:textAppearanceListItemSmall">@style/a4x</item>
+        <item name="android:listPreferredItemPaddingLeft">@dimen/bae</item>
+        <item name="android:listPreferredItemPaddingRight">@dimen/bae</item>
+        <item name="android:listPreferredItemPaddingStart">@dimen/bae</item>
+        <item name="android:listPreferredItemPaddingEnd">@dimen/bae</item>
+        <item name="a5t">@drawable/g_</item>
+        <item name="a5u">@drawable/os</item>
+    </style>
+    <style name="a3m" parent="@android:style/Theme.Holo.Light">
+        <item name="android:colorForeground">@color/afa</item>
+        <item name="android:colorBackground">@color/m5</item>
+        <item name="android:backgroundDimAmount">0.6</item>
+        <item name="android:disabledAlpha">@dimen/ba4</item>
+        <item name="android:textAppearance">@style/a4_</item>
+        <item name="android:textAppearanceInverse">@style/a4j</item>
+        <item name="android:textColorPrimary">@color/do</item>
+        <item name="android:textColorPrimaryDisableOnly">@color/dk</item>
+        <item name="android:textColorSecondary">@color/dv</item>
+        <item name="android:textColorPrimaryInverse">@color/dl</item>
+        <item name="android:textColorSecondaryInverse">@color/dt</item>
+        <item name="android:textColorHintInverse">@color/dg</item>
+        <item name="android:textAppearanceLarge">@style/a4k</item>
+        <item name="android:textAppearanceMedium">@style/a4q</item>
+        <item name="android:textAppearanceSmall">@style/a4v</item>
+        <item name="android:textAppearanceLargeInverse">@style/a4l</item>
+        <item name="android:textAppearanceMediumInverse">@style/a4r</item>
+        <item name="android:textAppearanceSmallInverse">@style/a4w</item>
+        <item name="android:listPreferredItemHeight">@dimen/bac</item>
+        <item name="android:windowBackground">@color/m5</item>
+        <item name="android:windowNoTitle">true</item>
+        <item name="android:textColorHighlight">@color/afl</item>
+        <item name="android:textColorHint">@color/dh</item>
+        <item name="android:textColorLink">?a27</item>
+        <item name="android:colorForegroundInverse">@color/af_</item>
+        <item name="android:textColorTertiary">@color/dv</item>
+        <item name="android:textColorTertiaryInverse">@color/dt</item>
+        <item name="android:listChoiceIndicatorSingle">@drawable/or</item>
+        <item name="android:listChoiceIndicatorMultiple">@drawable/cz</item>
+        <item name="android:textColorPrimaryInverseDisableOnly">@color/dj</item>
+        <item name="android:colorBackgroundCacheHint">@color/dc</item>
+        <item name="android:textSelectHandleLeft">@drawable/fzt</item>
+        <item name="android:textSelectHandleRight">@drawable/fzx</item>
+        <item name="android:textSelectHandle">@drawable/fzv</item>
+        <item name="android:windowActionBar">false</item>
+        <item name="android:textColorAlertDialogListItem">@color/do</item>
+        <item name="android:actionModeCutDrawable">?a0_</item>
+        <item name="android:actionModeCopyDrawable">?a09</item>
+        <item name="android:actionModePasteDrawable">?a0b</item>
+        <item name="android:borderlessButtonStyle">?a1j</item>
+        <item name="android:buttonBarStyle">?a1q</item>
+        <item name="android:buttonBarButtonStyle">?a1m</item>
+        <item name="android:textColorHighlightInverse">@color/afj</item>
+        <item name="android:textColorLinkInverse">?a27</item>
+        <item name="android:actionModeSelectAllDrawable">?a0d</item>
+        <item name="android:listPreferredItemHeightLarge">@dimen/bab</item>
+        <item name="android:listPreferredItemHeightSmall">@dimen/bad</item>
+        <item name="android:textAppearanceListItem">@style/a4x</item>
+        <item name="android:textAppearanceListItemSmall">@style/a4x</item>
+        <item name="android:listPreferredItemPaddingLeft">@dimen/bae</item>
+        <item name="android:listPreferredItemPaddingRight">@dimen/bae</item>
+        <item name="android:listPreferredItemPaddingStart">@dimen/bae</item>
+        <item name="android:listPreferredItemPaddingEnd">@dimen/bae</item>
+        <item name="a5t">@drawable/g_</item>
+        <item name="a5u">@drawable/os</item>
+    </style>
+    <style name="a3t" parent="@style/zi">
+        <item name="android:textAlignment">viewStart</item>
+    </style>
+    <style name="a3u" parent="@android:style/Widget">
+        <item name="android:layout_gravity">start|center</item>
+        <item name="android:paddingEnd">8.0dip</item>
+    </style>
+    <style name="a3v" parent="@android:style/Widget">
+        <item name="android:layout_marginEnd">8.0dip</item>
+    </style>
+    <style name="a3w" parent="@android:style/Widget">
+        <item name="android:paddingEnd">16.0dip</item>
+    </style>
+    <style name="a3x" parent="@android:style/Widget">
+        <item name="android:layout_marginStart">16.0dip</item>
+    </style>
+    <style name="a3y" parent="@android:style/Widget">
+        <item name="android:textAlignment">viewEnd</item>
+        <item name="android:layout_marginStart">16.0dip</item>
+    </style>
+    <style name="a3z" parent="@android:style/Widget">
+        <item name="android:layout_marginStart">8.0dip</item>
+    </style>
+    <style name="a40" parent="@android:style/Widget">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:layout_alignParentStart">true</item>
+    </style>
+    <style name="a41" parent="@android:style/Widget">
+        <item name="android:textAlignment">viewStart</item>
+        <item name="android:layout_marginStart">16.0dip</item>
+    </style>
+    <style name="a42" parent="@android:style/Widget">
+        <item name="android:paddingStart">@dimen/ba6</item>
+        <item name="android:paddingEnd">4.0dip</item>
+    </style>
+    <style name="a43" parent="@android:style/Widget">
+        <item name="android:layout_alignParentStart">true</item>
+    </style>
+    <style name="a44" parent="@android:style/Widget">
+        <item name="android:layout_toStartOf">@id/my1</item>
+    </style>
+    <style name="a45" parent="@android:style/Widget">
+        <item name="android:layout_alignParentEnd">true</item>
+    </style>
+    <style name="a46" parent="@style/a29">
+        <item name="android:layout_toStartOf">@android:id/icon2</item>
+        <item name="android:layout_toEndOf">@android:id/icon1</item>
+    </style>
+    <style name="a47" parent="@android:style/Widget">
+        <item name="android:layout_marginStart">@dimen/ba6</item>
+    </style>
+    <style name="a48" parent="@android:style/Widget">
+        <item name="android:paddingStart">12.0dip</item>
+        <item name="android:paddingEnd">12.0dip</item>
+    </style>
+    <style name="a49" parent="@style/a1q">
+        <item name="android:paddingStart">@dimen/b93</item>
+        <item name="android:paddingEnd">@dimen/b90</item>
+    </style>
     <style name="p5">
         <item name="android:textSize">16.0sp</item>
         <item name="android:textColor">#ff333333</item>

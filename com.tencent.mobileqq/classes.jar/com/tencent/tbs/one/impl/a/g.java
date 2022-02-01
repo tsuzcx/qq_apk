@@ -23,25 +23,26 @@ public final class g<T>
   public final void b()
   {
     super.b();
-    if (this.c != null) {
-      this.c.b();
+    a locala = this.c;
+    if (locala != null) {
+      locala.b();
     }
   }
   
   final void c()
   {
-    this.c = ((a)this.b.remove(0));
-    if (this.b.size() == 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.c.a(new g.1(this, bool));
-      return;
+    List localList = this.b;
+    boolean bool = false;
+    this.c = ((a)localList.remove(0));
+    if (this.b.size() == 0) {
+      bool = true;
     }
+    this.c.a(new g.1(this, bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.g
  * JD-Core Version:    0.7.0.1
  */

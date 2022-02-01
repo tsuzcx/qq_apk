@@ -16,24 +16,45 @@ final class AppCenterReporter$5
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo == null) {}
-    boolean bool;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo == null) {
       return;
-      localObject = DownloadInfoDB.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_b_of_type_JavaLangString);
-      if (localObject != null)
-      {
-        LogUtility.b("AppCenterReporter", ">reportInstallComplete " + ((DownloadInfo)localObject).w + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
-        this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w = ((DownloadInfo)localObject).w;
-      }
-      localObject = BaseApplicationImpl.getApplication().getQQProcessName();
-      bool = TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
-      LogUtility.b("AppCenterReporter", ">reportInstallComplete " + bool + "|" + (String)localObject + "|" + this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w + "|");
-    } while (!bool);
+    }
+    Object localObject = DownloadInfoDB.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_b_of_type_JavaLangString);
+    if (localObject != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(">reportInstallComplete ");
+      localStringBuilder.append(((DownloadInfo)localObject).w);
+      localStringBuilder.append("|");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
+      LogUtility.b("AppCenterReporter", localStringBuilder.toString());
+      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w = ((DownloadInfo)localObject).w;
+    }
+    localObject = BaseApplicationImpl.getApplication().getQQProcessName();
+    boolean bool = TextUtils.equals((CharSequence)localObject, this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(">reportInstallComplete ");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("|");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.w);
+    localStringBuilder.append("|");
+    LogUtility.b("AppCenterReporter", localStringBuilder.toString());
+    if (!bool) {
+      return;
+    }
     LogUtility.b("AppCenterReporter", "[reportInstallComplete]");
-    AppCenterReporter.a(3008, AppCenterReporter.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + AppCenterReporter.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo) + "|" + this.jdField_a_of_type_Int + "|" + AppCenterReporter.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e));
-    Object localObject = new InstallFinishLog();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(AppCenterReporter.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo));
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(AppCenterReporter.b(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo));
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(AppCenterReporter.a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e));
+    AppCenterReporter.a(3008, ((StringBuilder)localObject).toString());
+    localObject = new InstallFinishLog();
     ((InstallFinishLog)localObject).packageName = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.e;
     ((InstallFinishLog)localObject).versionCode = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.jdField_b_of_type_Int;
     ((InstallFinishLog)localObject).downloadUrl = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.d;
@@ -41,7 +62,7 @@ final class AppCenterReporter$5
     {
       ((InstallFinishLog)localObject).yybAppId = Long.parseLong(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.c);
       ((InstallFinishLog)localObject).yybApkId = Long.parseLong(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.k);
-      label302:
+      label345:
       ((InstallFinishLog)localObject).traceId = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadInfo.x;
       ((InstallFinishLog)localObject).installEndTime = System.currentTimeMillis();
       ((InstallFinishLog)localObject).externalParams = new HashMap();
@@ -51,13 +72,13 @@ final class AppCenterReporter$5
     }
     catch (Throwable localThrowable)
     {
-      break label302;
+      break label345;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.report.AppCenterReporter.5
  * JD-Core Version:    0.7.0.1
  */

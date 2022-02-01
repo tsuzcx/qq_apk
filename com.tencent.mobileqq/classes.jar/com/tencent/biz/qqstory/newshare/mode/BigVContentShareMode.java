@@ -12,10 +12,13 @@ public class BigVContentShareMode
   
   static
   {
-    jdField_a_of_type_JavaLangString = "https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromid=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&type=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0" + StoryApi.a(2131699762);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://story.now.qq.com/mobile/transfer.html?src_type=app&version=1&fromid=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&type=1&actionnamekey=1&storysharefrom=%s&sharefromtype=%d&one_page=0");
+    localStringBuilder.append(StoryApi.a(2131699903));
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
-  public String a(int paramInt)
+  protected String a(int paramInt)
   {
     if (paramInt == 1) {
       return String.format("mqqapi://qstory/openVideo?src_type=app&version=1&fromid=17&videoOwnerUin=%s&videoId=%s&unionid=%s&feedid=%s&identify=%d&type=1", new Object[] { this.e, this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVid, this.f, this.h, Integer.valueOf(this.b) });
@@ -25,7 +28,7 @@ public class BigVContentShareMode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.BigVContentShareMode
  * JD-Core Version:    0.7.0.1
  */

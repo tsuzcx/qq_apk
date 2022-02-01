@@ -1,24 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/bja" android:background="@drawable/b6n" android:layout_width="@dimen/bc_" android:layout_height="wrap_content" android:layout_marginLeft="25.0dip" android:layout_marginRight="25.0dip"
+<FrameLayout android:id="@id/root" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/aek" android:textColor="@color/fl" android:ellipsize="end" android:gravity="center" android:id="@id/dialogTitle" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/ma" android:layout_marginTop="@dimen/mc" android:layout_marginRight="@dimen/mb" android:singleLine="true" />
-    <com.tencent.widget.ListView android:id="@id/eap" android:visibility="gone" android:scrollbars="none" android:layout_width="@dimen/m3" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/lq" android:layout_marginRight="@dimen/lr" android:layout_below="@id/dialogTitle" />
-    <ImageView android:id="@id/bql" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="10.0dip" android:layout_below="@id/eap" />
-    <LinearLayout android:orientation="vertical" android:id="@id/abb" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/bc6" android:layout_marginTop="@dimen/bc8" android:layout_marginRight="@dimen/bc7" android:layout_marginBottom="@dimen/bc5" android:layout_below="@id/dialogTitle">
-        <com.tencent.mobileqq.widget.AnimationTextView android:textSize="@dimen/aej" android:textColor="@color/fl" android:layout_gravity="center_horizontal" android:id="@id/dialogText" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="@dimen/bc5" android:lineSpacingExtra="5.0dip" android:lineSpacingMultiplier="1.0" />
-        <LinearLayout android:gravity="center" android:orientation="horizontal" android:id="@id/nd8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/dialogText" />
-        <LinearLayout android:orientation="horizontal" android:id="@id/nd7" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="@dimen/ls" android:layout_below="@id/nd8" />
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/bqm" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <TextView android:layout_gravity="center_horizontal" android:id="@id/fyd" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-        <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/cl_" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="19.0dip">
-            <com.tencent.image.URLImageView android:layout_gravity="center_horizontal" android:id="@id/cla" android:layout_width="300.0dip" android:layout_height="300.0dip" android:scaleType="centerInside" android:adjustViewBounds="true" android:maxWidth="400.0dip" android:maxHeight="500.0dip" />
-        </RelativeLayout>
-        <com.tencent.mobileqq.widget.AnimationTextView android:textSize="14.0dip" android:textColor="#ff484848" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/bit" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="13.0dip" android:layout_marginBottom="19.0dip" />
+    <LinearLayout android:layout_gravity="center" android:orientation="vertical" android:id="@id/mpo" android:layout_width="wrap_content" android:layout_height="wrap_content">
+        <ImageView android:gravity="center" android:id="@id/ml1" android:layout_width="fill_parent" android:layout_height="24.0dip" android:contentDescription="@string/wjm" />
+        <TextView android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:id="@id/ml3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="24.0dip" android:text="@string/wjm" android:contentDescription="@string/wjm" />
+        <FrameLayout android:layout_gravity="center_horizontal" android:layout_width="312.0dip" android:layout_height="350.0dip" android:layout_marginTop="22.5dip">
+            <android.support.v7.widget.RecyclerView android:id="@id/mj2" android:scrollbars="none" android:clipToPadding="false" android:layout_width="312.0dip" android:layout_height="350.0dip" />
+            <View android:layout_gravity="bottom" android:background="@drawable/bkf" android:layout_width="fill_parent" android:layout_height="30.0dip" />
+        </FrameLayout>
+        <Button android:textSize="20.0dip" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/mj4" android:background="@drawable/bk4" android:focusable="false" android:duplicateParentState="false" android:layout_width="296.0dip" android:layout_height="45.0dip" android:layout_marginTop="20.0dip" />
     </LinearLayout>
-    <View android:id="@id/biw" android:background="@color/i5" android:layout_width="fill_parent" android:layout_height="@dimen/m2" android:layout_below="@id/abb" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/aew" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/biw">
-        <TextView android:textSize="@dimen/aei" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialogLeftBtn" android:background="@drawable/common_dialog_btn_left" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/qc2" android:singleLine="true" android:layout_weight="1.0" />
-        <View android:id="@id/aet" android:background="@color/i5" android:layout_width="@dimen/m2" android:layout_height="fill_parent" />
-        <TextView android:textSize="@dimen/aei" android:textColor="@color/fl" android:gravity="center" android:id="@id/dialogRightBtn" android:background="@drawable/common_dialog_btn_right" android:layout_width="fill_parent" android:layout_height="@dimen/ly" android:text="@string/qc1" android:singleLine="true" android:layout_weight="1.0" />
-    </LinearLayout>
-</RelativeLayout>
+</FrameLayout>

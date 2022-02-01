@@ -34,130 +34,139 @@ public class SysSuspiciousMsg
   
   public static SysSuspiciousMsg covertFrom(oidb_cmd0xd69.DoubtInfo paramDoubtInfo)
   {
-    int j = 0;
-    Object localObject2 = null;
     SysSuspiciousMsg localSysSuspiciousMsg = new SysSuspiciousMsg();
-    int i;
     if (paramDoubtInfo != null)
     {
       localSysSuspiciousMsg.uin = paramDoubtInfo.uint64_uin.get();
-      if (!paramDoubtInfo.bytes_nick.has()) {
-        break label382;
+      boolean bool = paramDoubtInfo.bytes_nick.has();
+      Object localObject2 = null;
+      if (bool) {
+        localObject1 = paramDoubtInfo.bytes_nick.get().toStringUtf8();
+      } else {
+        localObject1 = null;
       }
-      localObject1 = paramDoubtInfo.bytes_nick.get().toStringUtf8();
       localSysSuspiciousMsg.nick = ((String)localObject1);
-      if (!paramDoubtInfo.uint32_age.has()) {
-        break label387;
+      bool = paramDoubtInfo.uint32_age.has();
+      int j = 0;
+      if (bool) {
+        i = paramDoubtInfo.uint32_age.get();
+      } else {
+        i = 0;
       }
-      i = paramDoubtInfo.uint32_age.get();
-      label75:
       localSysSuspiciousMsg.age = i;
-      if (!paramDoubtInfo.uint32_sex.has()) {
-        break label392;
+      if (paramDoubtInfo.uint32_sex.has()) {
+        i = paramDoubtInfo.uint32_sex.get();
+      } else {
+        i = -1;
       }
-      i = paramDoubtInfo.uint32_sex.get();
-      label99:
       localSysSuspiciousMsg.sex = i;
-      if (!paramDoubtInfo.bytes_msg.has()) {
-        break label397;
+      if (paramDoubtInfo.bytes_msg.has()) {
+        localObject1 = paramDoubtInfo.bytes_msg.get().toStringUtf8();
+      } else {
+        localObject1 = null;
       }
-      localObject1 = paramDoubtInfo.bytes_msg.get().toStringUtf8();
-      label126:
       localSysSuspiciousMsg.msg = ((String)localObject1);
-      if (!paramDoubtInfo.bytes_source.has()) {
-        break label402;
+      if (paramDoubtInfo.bytes_source.has()) {
+        localObject1 = paramDoubtInfo.bytes_source.get().toStringUtf8();
+      } else {
+        localObject1 = null;
       }
-      localObject1 = paramDoubtInfo.bytes_source.get().toStringUtf8();
-      label153:
       localSysSuspiciousMsg.source = ((String)localObject1);
-      if (!paramDoubtInfo.bytes_reason.has()) {
-        break label407;
+      if (paramDoubtInfo.bytes_reason.has()) {
+        localObject1 = paramDoubtInfo.bytes_reason.get().toStringUtf8();
+      } else {
+        localObject1 = null;
       }
-      localObject1 = paramDoubtInfo.bytes_reason.get().toStringUtf8();
-      label180:
       localSysSuspiciousMsg.reason = ((String)localObject1);
       localSysSuspiciousMsg.time = paramDoubtInfo.uint32_time.get();
       localSysSuspiciousMsg.groupCode = paramDoubtInfo.uint64_group.get();
       localSysSuspiciousMsg.commFrdNum = paramDoubtInfo.uint32_comm_frd_num.get();
-      if (!paramDoubtInfo.bytes_name_more.has()) {
-        break label412;
+      if (paramDoubtInfo.bytes_name_more.has()) {
+        localObject1 = paramDoubtInfo.bytes_name_more.get().toStringUtf8();
+      } else {
+        localObject1 = null;
       }
-      localObject1 = paramDoubtInfo.bytes_name_more.get().toStringUtf8();
-      label245:
       localSysSuspiciousMsg.nameMore = ((String)localObject1);
-      if (!paramDoubtInfo.bytes_session_key.has()) {
-        break label417;
+      if (paramDoubtInfo.bytes_session_key.has()) {
+        localObject1 = paramDoubtInfo.bytes_session_key.get().toByteArray();
+      } else {
+        localObject1 = null;
       }
-      localObject1 = paramDoubtInfo.bytes_session_key.get().toByteArray();
-      label272:
       localSysSuspiciousMsg.session_key = ((byte[])localObject1);
-      if (!paramDoubtInfo.str_entity_category.has()) {
-        break label422;
+      if (paramDoubtInfo.str_entity_category.has()) {
+        localObject1 = paramDoubtInfo.str_entity_category.get();
+      } else {
+        localObject1 = null;
       }
-      localObject1 = paramDoubtInfo.str_entity_category.get();
-      label296:
       localSysSuspiciousMsg.entity_category = ((String)localObject1);
-      if (!paramDoubtInfo.str_entity_name.has()) {
-        break label427;
+      if (paramDoubtInfo.str_entity_name.has()) {
+        localObject1 = paramDoubtInfo.str_entity_name.get();
+      } else {
+        localObject1 = null;
       }
-    }
-    label387:
-    label392:
-    label397:
-    label402:
-    label407:
-    label412:
-    label417:
-    label422:
-    label427:
-    for (Object localObject1 = paramDoubtInfo.str_entity_name.get();; localObject1 = null)
-    {
       localSysSuspiciousMsg.entity_name = ((String)localObject1);
-      localObject1 = localObject2;
+      Object localObject1 = localObject2;
       if (paramDoubtInfo.str_entity_url.has()) {
         localObject1 = paramDoubtInfo.str_entity_url.get();
       }
       localSysSuspiciousMsg.entity_url = ((String)localObject1);
-      i = j;
+      int i = j;
       if (paramDoubtInfo.uint32_source_flag.has()) {
         i = paramDoubtInfo.uint32_source_flag.get();
       }
       localSysSuspiciousMsg.sourceflag = i;
-      return localSysSuspiciousMsg;
-      label382:
-      localObject1 = null;
-      break;
-      i = 0;
-      break label75;
-      i = -1;
-      break label99;
-      localObject1 = null;
-      break label126;
-      localObject1 = null;
-      break label153;
-      localObject1 = null;
-      break label180;
-      localObject1 = null;
-      break label245;
-      localObject1 = null;
-      break label272;
-      localObject1 = null;
-      break label296;
     }
+    return localSysSuspiciousMsg;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("SysSuspiciousMsg{uin=").append(this.uin).append(", nick='").append(this.nick).append(", age='").append(this.age).append(", sex='").append(this.sex).append(", msg='").append(this.msg).append(", source='").append(this.source).append(", reason='").append(this.reason).append(", time='").append(this.time).append(", groupCode='").append(this.groupCode).append(", commFrdNum='").append(this.commFrdNum).append(", nameMore='").append(this.nameMore).append(", session_key='");
-    if (this.session_key == null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + ", entity_category='" + this.entity_category + ", entity_name='" + this.entity_name + ", entity_url='" + this.entity_url + ", sourceflag='" + this.sourceflag + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SysSuspiciousMsg{uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(", nick='");
+    localStringBuilder.append(this.nick);
+    localStringBuilder.append(", age='");
+    localStringBuilder.append(this.age);
+    localStringBuilder.append(", sex='");
+    localStringBuilder.append(this.sex);
+    localStringBuilder.append(", msg='");
+    localStringBuilder.append(this.msg);
+    localStringBuilder.append(", source='");
+    localStringBuilder.append(this.source);
+    localStringBuilder.append(", reason='");
+    localStringBuilder.append(this.reason);
+    localStringBuilder.append(", time='");
+    localStringBuilder.append(this.time);
+    localStringBuilder.append(", groupCode='");
+    localStringBuilder.append(this.groupCode);
+    localStringBuilder.append(", commFrdNum='");
+    localStringBuilder.append(this.commFrdNum);
+    localStringBuilder.append(", nameMore='");
+    localStringBuilder.append(this.nameMore);
+    localStringBuilder.append(", session_key='");
+    boolean bool;
+    if (this.session_key == null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", entity_category='");
+    localStringBuilder.append(this.entity_category);
+    localStringBuilder.append(", entity_name='");
+    localStringBuilder.append(this.entity_name);
+    localStringBuilder.append(", entity_url='");
+    localStringBuilder.append(this.entity_url);
+    localStringBuilder.append(", sourceflag='");
+    localStringBuilder.append(this.sourceflag);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.SysSuspiciousMsg
  * JD-Core Version:    0.7.0.1
  */

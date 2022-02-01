@@ -29,42 +29,45 @@ public class QQFaceDetectBase
   
   public void onDrawFrame()
   {
+    boolean bool = this.isInit;
     int j = 1;
     int i = 1;
-    label79:
-    label248:
-    Frame localFrame2;
-    if ((!this.isInit) && (FeatureManager.loadBasicFeatures()))
+    Object localObject1;
+    if ((!bool) && (FeatureManager.loadBasicFeatures()))
     {
-      if (this.mFlipFilter == null)
-      {
+      localObject1 = this.mFlipFilter;
+      if (localObject1 == null) {
         this.mFlipFilter = new BaseFilter(BaseFilter.getFragmentShader(0));
-        this.mFlipFilter.apply();
-        this.mFlipFilter.setRotationAndFlip(0, 0, 1);
-        if (this.mCopyFilter != null) {
-          break label386;
-        }
-        this.mCopyFilter = new BaseFilter(BaseFilter.getFragmentShader(0));
-        this.mCopyFilter.apply();
-        this.isInit = true;
+      } else {
+        ((BaseFilter)localObject1).clearGLSL();
       }
+      this.mFlipFilter.apply();
+      this.mFlipFilter.setRotationAndFlip(0, 0, 1);
+      localObject1 = this.mCopyFilter;
+      if (localObject1 == null) {
+        this.mCopyFilter = new BaseFilter(BaseFilter.getFragmentShader(0));
+      } else {
+        ((BaseFilter)localObject1).clearGLSL();
+      }
+      this.mCopyFilter.apply();
+      this.isInit = true;
     }
-    else if (this.isInit)
+    if (this.isInit)
     {
       QQFilterLogManager.setPTVStart();
-      if (!this.needFlip) {
-        break label396;
+      if (this.needFlip) {
+        localObject1 = this.mFlipFilter.RenderProcess(this.mInputTextureID, getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
+      } else {
+        localObject1 = this.mCopyFilter.RenderProcess(this.mInputTextureID, getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
       }
-      localFrame1 = this.mFlipFilter.RenderProcess(this.mInputTextureID, getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
-      label134:
       QQFilterLogManager.setPTVEnd("第一次翻转texture耗时");
       getQQFilterRenderManager().setFaceDetectFlags(true);
-      getQQFilterRenderManager().initDetectFaceSDK(localFrame1);
-      if ((this.lastFrameWidth != localFrame1.width) || (this.lastFrameHeight != localFrame1.height)) {
-        getQQFilterRenderManager().initDetectFaceSDK(localFrame1);
+      getQQFilterRenderManager().initDetectFaceSDK((Frame)localObject1);
+      if ((this.lastFrameWidth != ((Frame)localObject1).width) || (this.lastFrameHeight != ((Frame)localObject1).height)) {
+        getQQFilterRenderManager().initDetectFaceSDK((Frame)localObject1);
       }
-      this.lastFrameWidth = localFrame1.width;
-      this.lastFrameHeight = localFrame1.height;
+      this.lastFrameWidth = ((Frame)localObject1).width;
+      this.lastFrameHeight = ((Frame)localObject1).height;
       QQFilterLogManager.setPTVEnd("人脸sdk耗时");
       if ((this.mNeedDetectCount) && (getQQFilterRenderManager().hasAEDetectorInited())) {
         this.mDetectCount += 1;
@@ -72,7 +75,7 @@ public class QQFaceDetectBase
       if (this.mNeedDetectCount)
       {
         if (this.mDetectCount < 2) {
-          break label425;
+          i = 0;
         }
         j = i;
         if (i != 0)
@@ -84,42 +87,28 @@ public class QQFaceDetectBase
         }
       }
       PTFaceAttr localPTFaceAttr = getQQFilterRenderManager().getFaceAttr();
-      localFrame2 = localFrame1;
+      Object localObject2 = localObject1;
       if (getQQFilterRenderManager().hasAEDetectorInited())
       {
-        localFrame2 = localFrame1;
+        localObject2 = localObject1;
         if (localPTFaceAttr != null)
         {
-          localFrame2 = localFrame1;
+          localObject2 = localObject1;
           if (localPTFaceAttr.getFaceCount() > 0)
           {
-            localFrame2 = localFrame1;
+            localObject2 = localObject1;
             if (j != 0) {
-              localFrame2 = getQQFilterRenderManager().getFaceAttr().getOrigFrame();
+              localObject2 = getQQFilterRenderManager().getFaceAttr().getOrigFrame();
             }
           }
         }
       }
-      if (!this.needFlip) {
-        break label430;
+      if (this.needFlip) {
+        localObject1 = this.mFlipFilter.RenderProcess(((Frame)localObject2).getTextureId(), getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
+      } else {
+        localObject1 = this.mCopyFilter.RenderProcess(((Frame)localObject2).getTextureId(), getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
       }
-    }
-    label386:
-    label396:
-    label425:
-    label430:
-    for (Frame localFrame1 = this.mFlipFilter.RenderProcess(localFrame2.getTextureId(), getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());; localFrame1 = this.mCopyFilter.RenderProcess(localFrame2.getTextureId(), getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight()))
-    {
-      this.mOutputTextureID = localFrame1.getTextureId();
-      return;
-      this.mFlipFilter.clearGLSL();
-      break;
-      this.mCopyFilter.clearGLSL();
-      break label79;
-      localFrame1 = this.mCopyFilter.RenderProcess(this.mInputTextureID, getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
-      break label134;
-      i = 0;
-      break label248;
+      this.mOutputTextureID = ((Frame)localObject1).getTextureId();
     }
   }
   
@@ -152,7 +141,7 @@ public class QQFaceDetectBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQFaceDetectBase
  * JD-Core Version:    0.7.0.1
  */

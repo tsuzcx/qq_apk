@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class f
   extends JceStruct
@@ -39,21 +40,24 @@ public final class f
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ak != null) {
-      paramJceOutputStream.write(this.ak, 0);
+    Object localObject = this.ak;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
     paramJceOutputStream.write(this.al, 1);
-    if (this.am != null) {
-      paramJceOutputStream.write(this.am, 2);
+    localObject = this.am;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.V != null) {
-      paramJceOutputStream.write(this.V, 3);
+    localObject = this.V;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.f
  * JD-Core Version:    0.7.0.1
  */

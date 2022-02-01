@@ -9,8 +9,9 @@ import com.tencent.image.DownloadParams;
 import com.tencent.image.RoundRectBitmap;
 import com.tencent.image.SafeBitmapFactory;
 import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.data.ThumbWidthHeightDP;
-import com.tencent.mobileqq.transfile.bitmapcreator.ExifBitmapCreator;
+import com.tencent.mobileqq.pic.api.IPicUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -31,7 +32,7 @@ public class ShortVideoForPicThumbDownloader
     localOptions.inScreenDensity = 160;
     localOptions.inJustDecodeBounds = false;
     String str = paramFile.getAbsolutePath();
-    if (!FileUtils.b(str))
+    if (!FileUtils.fileExistsAndNotEmpty(str))
     {
       if (QLog.isColorLevel()) {
         QLog.d("ShortVideoForPicThumbDownloader", 2, "decodeFile file not exits. just return");
@@ -40,11 +41,11 @@ public class ShortVideoForPicThumbDownloader
     }
     paramURLDrawableHandler = SafeBitmapFactory.decodeFile(paramFile.getAbsolutePath(), localOptions);
     SafeBitmapFactory.decodeFile(str, localOptions);
-    paramDownloadParams = ThumbWidthHeightDP.resizeAndClipBitmap(paramURLDrawableHandler, paramDownloadParams, ThumbWidthHeightDP.getThumbWidthHeightDP(false), false);
+    paramDownloadParams = ShortVideoUtils.resizeAndClipBitmap(paramURLDrawableHandler, paramDownloadParams, CommonImgThumbHelper.getThumbWidthHeightDP(false), false);
     if (!paramURLDrawableHandler.equals(paramDownloadParams.mBitmap)) {
       paramURLDrawableHandler.recycle();
     }
-    paramFile = new RoundRectBitmap(new ExifBitmapCreator(paramFile.getAbsolutePath()).creatBitmap(paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
+    paramFile = new RoundRectBitmap(((IPicUtil)QRoute.api(IPicUtil.class)).getExifBitmap(paramFile.getAbsolutePath(), paramDownloadParams.mBitmap), paramDownloadParams.mCornerRadius, paramDownloadParams.mBoardColor, paramDownloadParams.mBorderWidth);
     paramFile.mDisplayWidth = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().widthPixels;
     paramFile.mDisplayHeight = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().heightPixels;
     return paramFile;
@@ -62,7 +63,7 @@ public class ShortVideoForPicThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShortVideoForPicThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

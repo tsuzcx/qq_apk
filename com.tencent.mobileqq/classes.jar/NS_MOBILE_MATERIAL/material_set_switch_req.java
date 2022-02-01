@@ -9,7 +9,7 @@ import java.util.Map;
 public final class material_set_switch_req
   extends JceStruct
 {
-  static int cache_iSwitchState = 0;
+  static int cache_iSwitchState;
   static Map<String, String> cache_mapExtInfo = new HashMap();
   public int iAppid = 0;
   public int iSwitchState = 0;
@@ -44,14 +44,15 @@ public final class material_set_switch_req
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.iAppid, 1);
     paramJceOutputStream.write(this.iSwitchState, 2);
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 3);
+    Map localMap = this.mapExtInfo;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_set_switch_req
  * JD-Core Version:    0.7.0.1
  */

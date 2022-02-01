@@ -25,21 +25,22 @@ public class AutoBgTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
     super.drawableStateChanged();
-    if (isPressed()) {}
-    for (float f = this.pressedAlpha;; f = 1.0F)
-    {
-      setAlpha(f);
-      postInvalidate();
-      return;
+    float f;
+    if (isPressed()) {
+      f = this.pressedAlpha;
+    } else {
+      f = 1.0F;
     }
+    setAlpha(f);
+    postInvalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AutoBgTextView
  * JD-Core Version:    0.7.0.1
  */

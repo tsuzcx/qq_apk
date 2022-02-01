@@ -32,12 +32,16 @@ public class TPReadWriteLock
         boolean bool = readLock().tryLock(paramLong, TimeUnit.MICROSECONDS);
         return bool;
       }
-      catch (InterruptedException localInterruptedException)
+      catch (InterruptedException localInterruptedException1)
       {
-        TPLogUtil.e("TPReadWriteLock", localInterruptedException);
+        TPLogUtil.e("TPReadWriteLock", localInterruptedException1);
       }
     }
-    throw new InterruptedException("tryLock interrupted.");
+    InterruptedException localInterruptedException2 = new InterruptedException("tryLock interrupted.");
+    for (;;)
+    {
+      throw localInterruptedException2;
+    }
   }
   
   public void unReadLock()
@@ -67,23 +71,24 @@ public class TPReadWriteLock
   
   public boolean writeLockCondWait(long paramLong)
   {
-    boolean bool2 = false;
     int i = 3;
     for (;;)
     {
       i -= 1;
-      boolean bool1 = bool2;
-      if (i >= 0) {}
+      if (i < 0) {
+        break;
+      }
       try
       {
-        bool1 = this.mWriteLockCond.await(paramLong, TimeUnit.MILLISECONDS);
-        return bool1;
+        boolean bool = this.mWriteLockCond.await(paramLong, TimeUnit.MILLISECONDS);
+        return bool;
       }
       catch (InterruptedException localInterruptedException)
       {
         TPLogUtil.e("TPReadWriteLock", localInterruptedException);
       }
     }
+    return false;
   }
   
   public boolean writeTryLock(long paramLong)
@@ -100,17 +105,21 @@ public class TPReadWriteLock
         boolean bool = writeLock().tryLock(paramLong, TimeUnit.MICROSECONDS);
         return bool;
       }
-      catch (InterruptedException localInterruptedException)
+      catch (InterruptedException localInterruptedException1)
       {
-        TPLogUtil.e("TPReadWriteLock", localInterruptedException);
+        TPLogUtil.e("TPReadWriteLock", localInterruptedException1);
       }
     }
-    throw new InterruptedException("tryLock interrupted.");
+    InterruptedException localInterruptedException2 = new InterruptedException("tryLock interrupted.");
+    for (;;)
+    {
+      throw localInterruptedException2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPReadWriteLock
  * JD-Core Version:    0.7.0.1
  */

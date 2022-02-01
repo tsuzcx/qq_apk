@@ -6,7 +6,7 @@
     </FrameLayout>
     <RelativeLayout android:gravity="center_vertical" android:id="@id/laf" android:layout_width="fill_parent" android:layout_height="44.0dip">
         <TextView android:textSize="12.0dip" android:textColor="#ffa6a6a6" android:ellipsize="end" android:id="@id/afs" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.0dip" android:text="@string/vxq" android:maxLines="1" android:layout_alignParentLeft="true" />
-        <com.tencent.biz.pubaccount.readinjoy.view.KandianUrlImageView android:id="@id/aho" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="2.0dip" android:scaleType="fitCenter" android:layout_toRightOf="@id/afs" />
+        <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/aho" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginLeft="4.0dip" android:layout_marginTop="2.0dip" android:scaleType="fitCenter" android:layout_toRightOf="@id/afs" />
         <TextView android:textSize="12.0dip" android:textColor="#ff0dc4fd" android:ellipsize="end" android:id="@id/ai9" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="2.0dip" android:maxLines="1" android:layout_toLeftOf="@id/khw" android:layout_toRightOf="@id/aho" />
         <ImageView android:id="@id/khw" android:layout_width="18.0dip" android:layout_height="18.0dip" android:layout_marginRight="17.0dip" android:src="@drawable/drl" android:scaleType="fitCenter" android:layout_alignParentRight="true" />
     </RelativeLayout>

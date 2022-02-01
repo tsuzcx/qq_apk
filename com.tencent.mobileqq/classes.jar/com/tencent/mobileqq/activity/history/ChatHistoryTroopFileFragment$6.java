@@ -16,22 +16,25 @@ class ChatHistoryTroopFileFragment$6
   public void OnClick(View paramView, int paramInt)
   {
     paramView = ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a();
-    if ((paramView == null) || (paramView.isEmpty())) {}
-    do
+    if (paramView != null)
     {
-      return;
+      if (paramView.isEmpty()) {
+        return;
+      }
       ArrayList localArrayList = new ArrayList();
       localArrayList.addAll(paramView);
       ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(localArrayList, 3, new ChatHistoryTroopFileFragment.6.1(this));
       ChatHistoryTroopFileFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment).a(false);
       this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopFileFragment.h();
-    } while (!this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing());
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      if (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) {
+        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopFileFragment.6
  * JD-Core Version:    0.7.0.1
  */

@@ -26,9 +26,11 @@ final class ModuleNameRetriever
     }
     catch (Exception paramBaseContinuationImpl)
     {
-      paramBaseContinuationImpl = notOnJava9;
-      cache = paramBaseContinuationImpl;
+      label67:
+      break label67;
     }
+    paramBaseContinuationImpl = notOnJava9;
+    cache = paramBaseContinuationImpl;
     return paramBaseContinuationImpl;
   }
   
@@ -37,47 +39,45 @@ final class ModuleNameRetriever
   {
     Intrinsics.checkParameterIsNotNull(paramBaseContinuationImpl, "continuation");
     Object localObject = cache;
-    if (localObject != null) {
-      if (localObject != notOnJava9) {
-        break label32;
-      }
+    if (localObject == null) {
+      localObject = buildCache(paramBaseContinuationImpl);
     }
-    label32:
-    do
+    if (localObject == notOnJava9) {
+      return null;
+    }
+    Method localMethod = ((ModuleNameRetriever.Cache)localObject).getModuleMethod;
+    if (localMethod != null)
     {
-      Method localMethod;
-      do
+      paramBaseContinuationImpl = localMethod.invoke(paramBaseContinuationImpl.getClass(), new Object[0]);
+      if (paramBaseContinuationImpl != null)
       {
-        do
-        {
-          do
-          {
-            return null;
-            localObject = buildCache(paramBaseContinuationImpl);
-            break;
-            localMethod = ((ModuleNameRetriever.Cache)localObject).getModuleMethod;
-          } while (localMethod == null);
-          paramBaseContinuationImpl = localMethod.invoke(paramBaseContinuationImpl.getClass(), new Object[0]);
-        } while (paramBaseContinuationImpl == null);
         localMethod = ((ModuleNameRetriever.Cache)localObject).getDescriptorMethod;
-      } while (localMethod == null);
-      paramBaseContinuationImpl = localMethod.invoke(paramBaseContinuationImpl, new Object[0]);
-    } while (paramBaseContinuationImpl == null);
-    localObject = ((ModuleNameRetriever.Cache)localObject).nameMethod;
-    if (localObject != null) {}
-    for (paramBaseContinuationImpl = ((Method)localObject).invoke(paramBaseContinuationImpl, new Object[0]);; paramBaseContinuationImpl = null)
-    {
-      localObject = paramBaseContinuationImpl;
-      if (!(paramBaseContinuationImpl instanceof String)) {
-        localObject = null;
+        if (localMethod != null)
+        {
+          paramBaseContinuationImpl = localMethod.invoke(paramBaseContinuationImpl, new Object[0]);
+          if (paramBaseContinuationImpl != null)
+          {
+            localObject = ((ModuleNameRetriever.Cache)localObject).nameMethod;
+            if (localObject != null) {
+              paramBaseContinuationImpl = ((Method)localObject).invoke(paramBaseContinuationImpl, new Object[0]);
+            } else {
+              paramBaseContinuationImpl = null;
+            }
+            localObject = paramBaseContinuationImpl;
+            if (!(paramBaseContinuationImpl instanceof String)) {
+              localObject = null;
+            }
+            return (String)localObject;
+          }
+        }
       }
-      return (String)localObject;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.jvm.internal.ModuleNameRetriever
  * JD-Core Version:    0.7.0.1
  */

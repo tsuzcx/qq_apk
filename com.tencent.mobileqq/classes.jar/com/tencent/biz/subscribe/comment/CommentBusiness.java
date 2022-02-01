@@ -18,6 +18,7 @@ import com.tencent.biz.subscribe.network.GetCommentListRequest;
 import com.tencent.biz.subscribe.network.GetSubscribeFeedDetailRequest;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.engineering.preload.PreLoader;
+import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -31,7 +32,7 @@ import java.util.Map;
 
 public class CommentBusiness
 {
-  private static final String jdField_a_of_type_JavaLangString = CommentBusiness.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "CommentBusiness";
   private Handler jdField_a_of_type_AndroidOsHandler;
   private Map<String, ArrayList<CertifiedAccountMeta.StComment>> jdField_a_of_type_JavaUtilMap = new HashMap();
   private Map<String, Integer> b = new HashMap();
@@ -49,12 +50,16 @@ public class CommentBusiness
   {
     if (this.c.get(paramString) == null)
     {
-      CommentBusiness.CommentResponse localCommentResponse = new CommentBusiness.CommentResponse();
-      localCommentResponse.jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
-      localCommentResponse.jdField_a_of_type_Boolean = paramBoolean1;
-      localCommentResponse.b = paramBoolean2;
-      this.c.put(paramString, localCommentResponse);
-      QLog.d(jdField_a_of_type_JavaLangString, 1, "getDetailCommentSize: attachInfo:" + paramStCommonExt.attachInfo.get());
+      Object localObject = new CommentBusiness.CommentResponse();
+      ((CommentBusiness.CommentResponse)localObject).jdField_a_of_type_NS_COMMCOMM$StCommonExt = paramStCommonExt;
+      ((CommentBusiness.CommentResponse)localObject).jdField_a_of_type_Boolean = paramBoolean1;
+      ((CommentBusiness.CommentResponse)localObject).b = paramBoolean2;
+      this.c.put(paramString, localObject);
+      paramString = jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getDetailCommentSize: attachInfo:");
+      ((StringBuilder)localObject).append(paramStCommonExt.attachInfo.get());
+      QLog.d(paramString, 1, ((StringBuilder)localObject).toString());
       return;
     }
     ((CommentBusiness.CommentResponse)this.c.get(paramString)).jdField_a_of_type_Boolean = paramBoolean1;
@@ -63,7 +68,8 @@ public class CommentBusiness
   
   private void a(String paramString, boolean paramBoolean)
   {
-    if ((this.c != null) && (this.c.get(paramString) != null)) {
+    Map localMap = this.c;
+    if ((localMap != null) && (localMap.get(paramString) != null)) {
       ((CommentBusiness.CommentResponse)this.c.get(paramString)).b = paramBoolean;
     }
   }
@@ -151,26 +157,26 @@ public class CommentBusiness
   
   public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment)
   {
-    if ((paramStComment == null) || (paramStComment.id.get().startsWith("fake_id")))
+    if ((paramStComment != null) && (!paramStComment.id.get().startsWith("fake_id")))
     {
-      StoryDispatcher.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), HardCodeUtil.a(2131702227), null }));
-      return "";
+      paramStFeed = new DoCommentRequest(paramStFeed, paramStComment, 0);
+      VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.4(this, paramStComment));
+      return paramStComment.id.get();
     }
-    paramStFeed = new DoCommentRequest(paramStFeed, paramStComment, 0);
-    VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.4(this, paramStComment));
-    return paramStComment.id.get();
+    StoryDispatcher.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), HardCodeUtil.a(2131702361), null }));
+    return "";
   }
   
   public String a(CertifiedAccountMeta.StFeed paramStFeed, CertifiedAccountMeta.StComment paramStComment, CertifiedAccountMeta.StReply paramStReply)
   {
-    if ((paramStReply == null) || (paramStReply.id.get().startsWith("fake_id")))
+    if ((paramStReply != null) && (!paramStReply.id.get().startsWith("fake_id")))
     {
-      StoryDispatcher.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), HardCodeUtil.a(2131702225), null }));
-      return "";
+      paramStFeed = new DoReplyReq(paramStFeed, paramStComment, paramStReply, 0);
+      VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.6(this, paramStReply, paramStComment));
+      return paramStReply.id.get();
     }
-    paramStFeed = new DoReplyReq(paramStFeed, paramStComment, paramStReply, 0);
-    VSNetworkHelper.getInstance().sendRequest(paramStFeed, new CommentBusiness.6(this, paramStReply, paramStComment));
-    return paramStReply.id.get();
+    StoryDispatcher.a().dispatch(a(new Object[] { Integer.valueOf(5), Long.valueOf(-1L), HardCodeUtil.a(2131702359), null }));
+    return "";
   }
   
   public ArrayList<CertifiedAccountMeta.StComment> a(String paramString)
@@ -189,25 +195,29 @@ public class CommentBusiness
   public List<CertifiedAccountMeta.StComment> a(List<CertifiedAccountMeta.StComment> paramList, String paramString, int paramInt)
   {
     int j = paramList.size();
-    if ((TextUtils.isEmpty(paramString)) || (paramInt < 0) || (paramInt > j)) {
-      return paramList;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = paramInt;
-    if (paramInt > 0)
+    if ((!TextUtils.isEmpty(paramString)) && (paramInt >= 0))
     {
-      localArrayList.addAll(paramList.subList(0, paramInt));
-      i = paramInt;
-    }
-    while (i < j)
-    {
-      CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)paramList.get(i);
-      if (!localStComment.id.get().equals(paramString)) {
-        localArrayList.add(localStComment);
+      if (paramInt > j) {
+        return paramList;
       }
-      i += 1;
+      ArrayList localArrayList = new ArrayList();
+      int i = paramInt;
+      if (paramInt > 0)
+      {
+        localArrayList.addAll(paramList.subList(0, paramInt));
+        i = paramInt;
+      }
+      while (i < j)
+      {
+        CertifiedAccountMeta.StComment localStComment = (CertifiedAccountMeta.StComment)paramList.get(i);
+        if (!localStComment.id.get().equals(paramString)) {
+          localArrayList.add(localStComment);
+        }
+        i += 1;
+      }
+      return localArrayList;
     }
-    return localArrayList;
+    return paramList;
   }
   
   public void a()
@@ -235,10 +245,19 @@ public class CommentBusiness
     if (paramStCommonExt == null)
     {
       String str = paramStFeed.id.get();
-      if (PreLoader.exists("1002" + str))
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("1002");
+      localStringBuilder.append(str);
+      if (PreLoader.exists(localStringBuilder.toString()))
       {
-        PreLoader.addListener("1002" + str, new CommentBusiness.2(this, local1));
-        PreLoader.remove("1002" + str);
+        paramStFeed = new StringBuilder();
+        paramStFeed.append("1002");
+        paramStFeed.append(str);
+        PreLoader.addListener(paramStFeed.toString(), new CommentBusiness.2(this, local1));
+        paramStFeed = new StringBuilder();
+        paramStFeed.append("1002");
+        paramStFeed.append(str);
+        PreLoader.remove(paramStFeed.toString());
         return;
       }
     }
@@ -261,13 +280,25 @@ public class CommentBusiness
   public void a(CertifiedAccountMeta.StFeed paramStFeed, boolean paramBoolean, String paramString)
   {
     COMM.StCommonExt localStCommonExt;
+    Object localObject;
     if (paramBoolean)
     {
       localStCommonExt = a(paramStFeed.id.get());
-      QZLog.i(jdField_a_of_type_JavaLangString, 1, "getComments loadMore: " + paramBoolean + ", attachInfo:" + localStCommonExt);
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getComments loadMore: ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", attachInfo:");
+      localStringBuilder.append(localStCommonExt);
+      QZLog.i((String)localObject, 1, localStringBuilder.toString());
       if (localStCommonExt == null)
       {
-        QZLog.e(jdField_a_of_type_JavaLangString, 1, new Object[] { "getComments loadMore: " + paramBoolean + ", attachInfo is null " });
+        paramStFeed = jdField_a_of_type_JavaLangString;
+        paramString = new StringBuilder();
+        paramString.append("getComments loadMore: ");
+        paramString.append(paramBoolean);
+        paramString.append(", attachInfo is null ");
+        QZLog.e(paramStFeed, 1, new Object[] { paramString.toString() });
         return;
       }
       a(paramStFeed.id.get(), false);
@@ -277,10 +308,10 @@ public class CommentBusiness
     if (!TextUtils.isEmpty(paramString))
     {
       localStCommonExt = new COMM.StCommonExt();
-      COMM.Entry localEntry = new COMM.Entry();
-      localEntry.key.set("commentID");
-      localEntry.value.set(paramString);
-      localStCommonExt.mapInfo.add(localEntry);
+      localObject = new COMM.Entry();
+      ((COMM.Entry)localObject).key.set("commentID");
+      ((COMM.Entry)localObject).value.set(paramString);
+      localStCommonExt.mapInfo.add((MessageMicro)localObject);
       a(paramStFeed, localStCommonExt);
       return;
     }
@@ -289,7 +320,7 @@ public class CommentBusiness
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.CommentBusiness
  * JD-Core Version:    0.7.0.1
  */

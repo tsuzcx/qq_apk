@@ -22,16 +22,20 @@ public class CheckBindingStateRequest
   
   public static INTERFACE.StCheckBindingStateRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StCheckBindingStateRsp localStCheckBindingStateRsp = new INTERFACE.StCheckBindingStateRsp();
+    Object localObject = new INTERFACE.StCheckBindingStateRsp();
     try
     {
-      localStCheckBindingStateRsp.mergeFrom(paramArrayOfByte);
-      return localStCheckBindingStateRsp;
+      ((INTERFACE.StCheckBindingStateRsp)localObject).mergeFrom(paramArrayOfByte);
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CheckBindingStateRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("CheckBindingStateRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -44,7 +48,7 @@ public class CheckBindingStateRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.CheckBindingStateRequest
  * JD-Core Version:    0.7.0.1
  */

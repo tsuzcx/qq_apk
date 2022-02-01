@@ -5,6 +5,7 @@ import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
+import com.tencent.mobileqq.receipt.ReceiptHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 
 public class ReceiptMsgAppInfo
@@ -19,7 +20,7 @@ public class ReceiptMsgAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838373;
+    return 2130838202;
   }
   
   public int getAppID()
@@ -48,17 +49,17 @@ public class ReceiptMsgAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698486);
+    return BaseApplicationImpl.getContext().getString(2131698552);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    paramBaseChatPie.aU();
+    ((ReceiptHelper)paramBaseChatPie.a(118)).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.ReceiptMsgAppInfo
  * JD-Core Version:    0.7.0.1
  */

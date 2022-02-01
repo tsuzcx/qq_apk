@@ -19,13 +19,14 @@ public final class SttResultPush$textRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 32, 40, 48, 56, 66 }, new String[] { "uint32_total_len", "uint32_seq", "uint32_pos", "uint32_len", "bytes_text" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, textRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 32, 40, 48, 56, 66 }, new String[] { "uint32_total_len", "uint32_seq", "uint32_pos", "uint32_len", "bytes_text" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localByteStringMicro }, textRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x3d.SttResultPush.textRsp
  * JD-Core Version:    0.7.0.1
  */

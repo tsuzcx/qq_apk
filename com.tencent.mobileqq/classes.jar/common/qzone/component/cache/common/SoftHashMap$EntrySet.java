@@ -18,15 +18,22 @@ class SoftHashMap$EntrySet
   
   public boolean contains(Object paramObject)
   {
-    if (!(paramObject instanceof Map.Entry)) {}
-    SoftHashMap.Entry localEntry;
-    do
-    {
+    boolean bool1 = paramObject instanceof Map.Entry;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (Map.Entry)paramObject;
-      localEntry = SoftHashMap.a(this.a, paramObject.getKey());
-    } while ((localEntry == null) || (!localEntry.equals(paramObject)));
-    return true;
+    }
+    paramObject = (Map.Entry)paramObject;
+    SoftHashMap.Entry localEntry = SoftHashMap.a(this.a, paramObject.getKey());
+    bool1 = bool2;
+    if (localEntry != null)
+    {
+      bool1 = bool2;
+      if (localEntry.equals(paramObject)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public Iterator<Map.Entry<K, V>> iterator()
@@ -66,7 +73,7 @@ class SoftHashMap$EntrySet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     common.qzone.component.cache.common.SoftHashMap.EntrySet
  * JD-Core Version:    0.7.0.1
  */

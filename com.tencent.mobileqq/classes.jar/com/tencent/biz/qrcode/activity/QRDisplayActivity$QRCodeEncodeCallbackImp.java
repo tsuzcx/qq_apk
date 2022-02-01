@@ -1,7 +1,7 @@
 package com.tencent.biz.qrcode.activity;
 
-import com.tencent.biz.qrcode.QRCodeEncodeCallback;
 import com.tencent.biz.qrcode.util.QRUtils;
+import com.tencent.mobileqq.qrscan.QRCodeEncodeCallback;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 
@@ -14,38 +14,42 @@ class QRDisplayActivity$QRCodeEncodeCallbackImp
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    QRDisplayActivity localQRDisplayActivity;
-    do
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
+      return;
+    }
+    localObject = (QRDisplayActivity)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
+    }
+    if (!((QRDisplayActivity)localObject).b)
     {
-      do
-      {
+      if (((QRDisplayActivity)localObject).isFinishing()) {
         return;
-        localQRDisplayActivity = (QRDisplayActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      } while (localQRDisplayActivity == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("QRDisplayActivity", 2, String.format("onReceive qrcode url:%s suc:%b", new Object[] { paramString, Boolean.valueOf(paramBoolean) }));
       }
-    } while ((localQRDisplayActivity.b) || (localQRDisplayActivity.isFinishing()));
-    if (!paramBoolean)
-    {
-      localQRDisplayActivity.i();
-      return;
+      if (!paramBoolean)
+      {
+        ((QRDisplayActivity)localObject).i();
+        return;
+      }
+      ((QRDisplayActivity)localObject).a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
+      paramString = QRUtils.a(paramString, -1);
+      if (paramString != null)
+      {
+        ((QRDisplayActivity)localObject).a = paramString;
+        ((QRDisplayActivity)localObject).h();
+        return;
+      }
+      ((QRDisplayActivity)localObject).i();
     }
-    localQRDisplayActivity.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, paramString);
-    paramString = QRUtils.a(paramString, -1);
-    if (paramString != null)
-    {
-      localQRDisplayActivity.a = paramString;
-      localQRDisplayActivity.h();
-      return;
-    }
-    localQRDisplayActivity.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.QRCodeEncodeCallbackImp
  * JD-Core Version:    0.7.0.1
  */

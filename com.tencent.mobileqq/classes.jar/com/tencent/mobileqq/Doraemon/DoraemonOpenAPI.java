@@ -12,18 +12,19 @@ import com.tencent.qphone.base.util.QLog;
 
 public class DoraemonOpenAPI
 {
-  public static DoraemonAPIManager a(@NonNull Activity paramActivity, int paramInt, String paramString)
-  {
-    return a(paramActivity, paramInt, paramString, null);
-  }
-  
   public static DoraemonAPIManager a(@NonNull Activity paramActivity, int paramInt, String paramString, Bundle paramBundle)
   {
-    String str = null;
-    DefaultDoraemonAPIManager localDefaultDoraemonAPIManager = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI", 2, "createAPIManager type=" + paramInt + ", appid=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("createAPIManager type=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", appid=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("DoraemonOpenAPI", 2, ((StringBuilder)localObject).toString());
     }
+    Object localObject = null;
+    String str = null;
     if (paramActivity == null)
     {
       QLog.e("DoraemonOpenAPI", 1, "can not create APIManager activity == null");
@@ -32,53 +33,63 @@ public class DoraemonOpenAPI
     if (TextUtils.isEmpty(paramString)) {
       QLog.e("DoraemonOpenAPI", 1, "can not create APIManager appid is empty");
     }
-    Object localObject = localDefaultDoraemonAPIManager;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      localObject = localDefaultDoraemonAPIManager;
-    case 2: 
-    case 0: 
-    case 1: 
-    case 3: 
-    case 4: 
-    case 5: 
-      while (localObject == null)
+      if ((paramInt != 1) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5))
       {
-        QLog.e("DoraemonOpenAPI", 1, "can not create APIManager type=" + paramInt + ", appid=" + paramString);
-        return localObject;
-        if (paramBundle == null) {}
-        for (paramBundle = null; TextUtils.isEmpty(paramBundle); paramBundle = paramBundle.getString("urlSummary", ""))
+        if (paramInt != 6) {
+          paramActivity = (Activity)localObject;
+        } else {
+          paramActivity = new QQPayDoraemonAPIManager(paramActivity, paramInt, paramString);
+        }
+      }
+      else
+      {
+        DefaultDoraemonAPIManager localDefaultDoraemonAPIManager = new DefaultDoraemonAPIManager(paramActivity, paramInt, paramString);
+        if (paramBundle != null)
         {
-          QLog.e("DoraemonOpenAPI", 1, "can not create APIManger url is empty");
-          return null;
+          paramActivity = paramBundle.getString("sdkVersion");
+          localObject = paramBundle.getString("pkgName");
+          str = paramBundle.getString("signature");
+          paramBundle = (Bundle)localObject;
+          localObject = str;
         }
-        localObject = new WebViewDoraemonAPIManager(paramActivity, paramInt, paramString, paramBundle);
-        continue;
-        localDefaultDoraemonAPIManager = new DefaultDoraemonAPIManager(paramActivity, paramInt, paramString);
-        if (paramBundle == null) {
-          break label305;
+        else
+        {
+          paramBundle = null;
+          localObject = paramBundle;
+          paramActivity = str;
         }
-        localObject = paramBundle.getString("sdkVersion");
-        str = paramBundle.getString("pkgName");
-        paramActivity = paramBundle.getString("signature");
-        paramBundle = str;
+        ((DefaultDoraemonAPIManager)localDefaultDoraemonAPIManager).a(paramActivity, paramBundle, (String)localObject);
+        paramActivity = localDefaultDoraemonAPIManager;
       }
     }
-    for (;;)
+    else
     {
-      ((DefaultDoraemonAPIManager)localDefaultDoraemonAPIManager).a((String)localObject, paramBundle, paramActivity);
-      localObject = localDefaultDoraemonAPIManager;
-      break;
-      localObject = new QQPayDoraemonAPIManager(paramActivity, paramInt, paramString);
-      break;
-      ((DoraemonAPIManager)localObject).a();
-      return localObject;
-      label305:
-      paramBundle = null;
-      localObject = null;
-      paramActivity = str;
+      if (paramBundle == null) {
+        paramBundle = null;
+      } else {
+        paramBundle = paramBundle.getString("urlSummary", "");
+      }
+      if (TextUtils.isEmpty(paramBundle))
+      {
+        QLog.e("DoraemonOpenAPI", 1, "can not create APIManger url is empty");
+        return null;
+      }
+      paramActivity = new WebViewDoraemonAPIManager(paramActivity, paramInt, paramString, paramBundle);
     }
+    if (paramActivity == null)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("can not create APIManager type=");
+      paramBundle.append(paramInt);
+      paramBundle.append(", appid=");
+      paramBundle.append(paramString);
+      QLog.e("DoraemonOpenAPI", 1, paramBundle.toString());
+      return paramActivity;
+    }
+    paramActivity.a();
+    return paramActivity;
   }
   
   public static void a()
@@ -88,7 +99,7 @@ public class DoraemonOpenAPI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.DoraemonOpenAPI
  * JD-Core Version:    0.7.0.1
  */

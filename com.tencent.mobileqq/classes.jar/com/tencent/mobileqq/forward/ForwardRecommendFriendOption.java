@@ -29,19 +29,14 @@ public class ForwardRecommendFriendOption
     int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
     if (i == 63) {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B34", "0X8005B34", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      super.a();
-      return;
-      if (i == 84) {
-        if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007018", "0X8007018", 0, 0, "", "", "", "");
-        } else {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007169", "0X8007169", 0, 0, "", "", "", "");
-        }
+    } else if (i == 84) {
+      if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007018", "0X8007018", 0, 0, "", "", "", "");
+      } else {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007169", "0X8007169", 0, 0, "", "", "", "");
       }
     }
+    super.a();
   }
   
   public boolean a()
@@ -57,22 +52,21 @@ public class ForwardRecommendFriendOption
   
   protected boolean a(QQCustomDialog paramQQCustomDialog)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg != null) {
-      paramQQCustomDialog.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null));
-    }
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg;
+    if (localObject != null)
     {
-      return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
-      {
-        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
-        localLayoutParams.setMargins(AIOUtils.a(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 0, AIOUtils.a(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), AIOUtils.a(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
-        if (QLog.isColorLevel()) {
-          QLog.d("ForwardOption.ForwardRecommendFriendOption", 2, "updateImageView addStructView");
-        }
-        paramQQCustomDialog.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null), localLayoutParams);
-      }
+      paramQQCustomDialog.addView(((AbsStructMsg)localObject).getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null));
     }
+    else if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
+    {
+      localObject = new LinearLayout.LayoutParams(-1, -2);
+      ((LinearLayout.LayoutParams)localObject).setMargins(AIOUtils.b(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), 0, AIOUtils.b(-15.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()), AIOUtils.b(5.0F, this.jdField_a_of_type_AndroidAppActivity.getResources()));
+      if (QLog.isColorLevel()) {
+        QLog.d("ForwardOption.ForwardRecommendFriendOption", 2, "updateImageView addStructView");
+      }
+      paramQQCustomDialog.addView(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.getPreDialogView(this.jdField_a_of_type_AndroidAppActivity, null), (LinearLayout.LayoutParams)localObject);
+    }
+    return true;
   }
   
   protected void b()
@@ -88,29 +82,24 @@ public class ForwardRecommendFriendOption
     }
   }
   
-  protected void s()
+  protected void t()
   {
     int i = this.jdField_a_of_type_AndroidContentIntent.getIntExtra("structmsg_service_id", -1);
     if (i == 63) {
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8005B35", "0X8005B35", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      super.s();
-      return;
-      if (i == 84) {
-        if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007017", "0X8007017", 0, 0, "", "", "", "");
-        } else {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800716A", "0X800716A", 0, 0, "", "", "", "");
-        }
+    } else if (i == 84) {
+      if (this.jdField_a_of_type_AndroidContentIntent.getIntExtra("pa_type", -1) == 53) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8007017", "0X8007017", 0, 0, "", "", "", "");
+      } else {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800716A", "0X800716A", 0, 0, "", "", "", "");
       }
     }
+    super.t();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardRecommendFriendOption
  * JD-Core Version:    0.7.0.1
  */

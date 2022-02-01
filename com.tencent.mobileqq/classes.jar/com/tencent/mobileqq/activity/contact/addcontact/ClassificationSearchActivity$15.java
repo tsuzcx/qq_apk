@@ -11,11 +11,11 @@ class ClassificationSearchActivity$15
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 1: 
+      if (paramInt != 1) {
+        return;
+      }
       ThreadManager.post(new ClassificationSearchActivity.15.1(this), 10, null, true);
       return;
     }
@@ -24,7 +24,7 @@ class ClassificationSearchActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.ClassificationSearchActivity.15
  * JD-Core Version:    0.7.0.1
  */

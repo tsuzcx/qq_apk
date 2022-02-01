@@ -26,17 +26,20 @@ public abstract class NativeCallback
   
   public void Callback(long paramLong)
   {
-    LogUtils.e("Callback OK", paramLong + "");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("");
+    LogUtils.e("Callback OK", ((StringBuilder)localObject).toString());
     if (this.mHandler != null)
     {
-      NativeCallback.a locala = new NativeCallback.a(this, paramLong, this.mMsg, this.mAction);
-      this.mHandler.post(locala);
+      localObject = new NativeCallback.a(this, paramLong, this.mMsg, this.mAction);
+      this.mHandler.post((Runnable)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.bridge.NativeCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -79,18 +79,14 @@ public class AppUtil
     long l3 = getPackageLastUpdateTime(paramContext);
     if (l1 == 0L) {
       this.mLaunchMode = 1;
+    } else if (l2 >= l1) {
+      this.mLaunchMode = 1;
+    } else if (l3 >= l1) {
+      this.mLaunchMode = 2;
+    } else {
+      this.mLaunchMode = 3;
     }
-    for (;;)
-    {
-      return this.mLaunchMode;
-      if (l2 >= l1) {
-        this.mLaunchMode = 1;
-      } else if (l3 >= l1) {
-        this.mLaunchMode = 2;
-      } else {
-        this.mLaunchMode = 3;
-      }
-    }
+    return this.mLaunchMode;
   }
   
   public int getLaunchMode()
@@ -105,7 +101,7 @@ public class AppUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.AppUtil
  * JD-Core Version:    0.7.0.1
  */

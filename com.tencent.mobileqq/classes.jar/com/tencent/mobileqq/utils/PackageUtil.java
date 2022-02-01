@@ -31,19 +31,15 @@ public class PackageUtil
   
   public static boolean a(Context paramContext, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      try
-      {
-        paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
-        if (paramContext != null) {
-          return true;
-        }
-      }
-      catch (Exception paramContext) {}
     }
+    try
+    {
+      paramContext = paramContext.getPackageManager().getPackageInfo(paramString.trim(), 0);
+      return paramContext != null;
+    }
+    catch (Exception paramContext) {}
     return false;
   }
   
@@ -56,8 +52,15 @@ public class PackageUtil
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(a, 2, "<--startAppWithPkgName pkgName=" + paramString1 + ",openid=" + paramString2);
+      if (QLog.isColorLevel())
+      {
+        String str = a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("<--startAppWithPkgName pkgName=");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(",openid=");
+        localStringBuilder.append(paramString2);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
       paramString1 = paramContext.getPackageManager().getLaunchIntentForPackage(paramString1.trim());
       paramString1.setFlags(268435456);
@@ -70,7 +73,11 @@ public class PackageUtil
       paramContext.startActivity(paramString1);
       return true;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label133:
+      break label133;
+    }
     return false;
   }
   
@@ -83,63 +90,51 @@ public class PackageUtil
     paramString = paramString.split("\\|");
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
-    for (;;)
+    while (i < paramString.length)
     {
-      if (i < paramString.length)
+      if (i != 0) {
+        localStringBuffer.append("|");
+      }
+      try
       {
-        if (i != 0) {
-          localStringBuffer.append("|");
-        }
-        try
-        {
-          PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
-          if (localPackageInfo == null) {
-            localStringBuffer.append(0);
-          } else {
-            localStringBuffer.append(localPackageInfo.versionName);
-          }
-        }
-        catch (Exception localException)
-        {
+        PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
+        if (localPackageInfo == null) {
           localStringBuffer.append(0);
+        } else {
+          localStringBuffer.append(localPackageInfo.versionName);
         }
       }
-      else
+      catch (Exception localException)
       {
-        return localStringBuffer.toString();
+        label86:
+        break label86;
       }
+      localStringBuffer.append(0);
       i += 1;
     }
+    return localStringBuffer.toString();
   }
   
   public static boolean b(Context paramContext, String paramString1, String paramString2)
   {
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    paramContext = null;
+    paramContext = paramContext.getPackageManager();
     try
     {
-      paramString1 = localPackageManager.getPackageInfo(paramString1, 64);
-      paramContext = paramString1;
+      paramContext = paramContext.getPackageInfo(paramString1, 64);
     }
-    catch (PackageManager.NameNotFoundException paramString1)
+    catch (PackageManager.NameNotFoundException paramContext)
     {
-      do
-      {
-        for (;;)
-        {
-          paramString1.printStackTrace();
-        }
-      } while ((paramContext.signatures == null) || (paramContext.signatures.length <= 0));
-      paramContext = paramContext.signatures;
-      j = paramContext.length;
-      i = 0;
+      paramContext.printStackTrace();
+      paramContext = null;
     }
-    if (paramContext == null) {}
-    for (;;)
-    {
+    if (paramContext == null) {
       return false;
-      int j;
-      int i;
+    }
+    if ((paramContext.signatures != null) && (paramContext.signatures.length > 0))
+    {
+      paramContext = paramContext.signatures;
+      int j = paramContext.length;
+      int i = 0;
       while (i < j)
       {
         if (paramString2.equals(MD5.toMD5(paramContext[i].toByteArray()))) {
@@ -148,6 +143,7 @@ public class PackageUtil
         i += 1;
       }
     }
+    return false;
   }
   
   public static String c(Context paramContext, String paramString)
@@ -159,32 +155,28 @@ public class PackageUtil
     paramString = paramString.split("\\|");
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
-    for (;;)
+    while (i < paramString.length)
     {
-      if (i < paramString.length)
+      if (i != 0) {
+        localStringBuffer.append("|");
+      }
+      try
       {
-        if (i != 0) {
-          localStringBuffer.append("|");
-        }
-        try
-        {
-          if (paramContext.getPackageInfo(paramString[i].trim(), 0) == null) {
-            localStringBuffer.append(0);
-          } else {
-            localStringBuffer.append(1);
-          }
-        }
-        catch (Exception localException)
-        {
+        if (paramContext.getPackageInfo(paramString[i].trim(), 0) == null) {
           localStringBuffer.append(0);
+        } else {
+          localStringBuffer.append(1);
         }
       }
-      else
+      catch (Exception localException)
       {
-        return localStringBuffer.toString();
+        label78:
+        break label78;
       }
+      localStringBuffer.append(0);
       i += 1;
     }
+    return localStringBuffer.toString();
   }
   
   public static String d(Context paramContext, String paramString)
@@ -196,38 +188,34 @@ public class PackageUtil
     paramString = paramString.split("\\|");
     StringBuffer localStringBuffer = new StringBuffer();
     int i = 0;
-    for (;;)
+    while (i < paramString.length)
     {
-      if (i < paramString.length)
+      if (i != 0) {
+        localStringBuffer.append("|");
+      }
+      try
       {
-        if (i != 0) {
-          localStringBuffer.append("|");
-        }
-        try
-        {
-          PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
-          if (localPackageInfo == null) {
-            localStringBuffer.append(0);
-          } else {
-            localStringBuffer.append(localPackageInfo.versionCode);
-          }
-        }
-        catch (Exception localException)
-        {
+        PackageInfo localPackageInfo = paramContext.getPackageInfo(paramString[i].trim(), 0);
+        if (localPackageInfo == null) {
           localStringBuffer.append(0);
+        } else {
+          localStringBuffer.append(localPackageInfo.versionCode);
         }
       }
-      else
+      catch (Exception localException)
       {
-        return localStringBuffer.toString();
+        label86:
+        break label86;
       }
+      localStringBuffer.append(0);
       i += 1;
     }
+    return localStringBuffer.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.PackageUtil
  * JD-Core Version:    0.7.0.1
  */

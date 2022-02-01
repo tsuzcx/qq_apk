@@ -1,182 +1,251 @@
 package com.tencent.mobileqq.fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.CompoundButton.OnCheckedChangeListener;
-import com.tencent.TMG.utils.QLog;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxManager;
+import com.tencent.mobileqq.activity.recent.msgbox.api.ITempMsgBoxService;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.gamecenter.message.GameMsgManager;
 import com.tencent.mobileqq.managers.TempMsgManager;
 import com.tencent.mobileqq.managers.TempMsgManager.OnTempMsgSettingChangeListener;
-import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.FormSwitchItem;
-import common.config.service.QzoneConfig;
+import com.tencent.mobileqq.widget.QFormSimpleItem;
+import java.util.HashMap;
 import java.util.Map;
 
 public class TempMsgSettingFragment
   extends IphoneTitleBarFragment
   implements TempMsgManager.OnTempMsgSettingChangeListener
 {
+  private final View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new TempMsgSettingFragment.5(this);
   private CompoundButton.OnCheckedChangeListener jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
   QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private FormSwitchItem jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private QFormSimpleItem jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem;
+  private Map<Short, String> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private final View.OnClickListener jdField_b_of_type_AndroidViewView$OnClickListener = new TempMsgSettingFragment.6(this);
   private CompoundButton.OnCheckedChangeListener jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
   private FormSwitchItem jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private QFormSimpleItem jdField_b_of_type_ComTencentMobileqqWidgetQFormSimpleItem;
+  private Map<Integer, String> jdField_b_of_type_JavaUtilMap = new HashMap();
   private CompoundButton.OnCheckedChangeListener jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
   private FormSwitchItem jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private QFormSimpleItem jdField_c_of_type_ComTencentMobileqqWidgetQFormSimpleItem;
+  private Map<Integer, View> jdField_c_of_type_JavaUtilMap = new HashMap();
   private CompoundButton.OnCheckedChangeListener jdField_d_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  private FormSwitchItem jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private CompoundButton.OnCheckedChangeListener jdField_e_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  private FormSwitchItem jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private CompoundButton.OnCheckedChangeListener jdField_f_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  private FormSwitchItem jdField_f_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private CompoundButton.OnCheckedChangeListener jdField_g_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  private FormSwitchItem jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-  private CompoundButton.OnCheckedChangeListener jdField_h_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener;
-  private FormSwitchItem jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+  private QFormSimpleItem jdField_d_of_type_ComTencentMobileqqWidgetQFormSimpleItem;
+  private QFormSimpleItem e;
+  
+  private String a(String paramString, Map<String, Boolean> paramMap1, Map<String, Boolean> paramMap2)
+  {
+    paramMap1 = (Boolean)paramMap1.get(paramString);
+    paramString = (Boolean)paramMap2.get(paramString);
+    if (paramMap1 != null)
+    {
+      if (paramString == null) {
+        return "";
+      }
+      int i = ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getTempSettingStatus(paramString.booleanValue(), paramMap1.booleanValue());
+      paramString = (String)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(i));
+      if (paramString != null) {
+        return paramString;
+      }
+      return "";
+    }
+    return "";
+  }
+  
+  private String a(short paramShort)
+  {
+    if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Short.valueOf(paramShort))) {
+      return "";
+    }
+    return (String)this.jdField_a_of_type_JavaUtilMap.get(Short.valueOf(paramShort));
+  }
   
   private void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131378991));
-    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131378990));
-    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131378989));
-    this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131378988));
-    this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131378987));
-    this.jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131367628));
-    this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131367629));
-    this.jdField_f_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131378986));
-    GameMsgManager localGameMsgManager = (GameMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER);
-    boolean bool = localGameMsgManager.b();
-    QLog.i("TempMsgSettingFragment", 1, "isGameBuddyOpen:" + bool);
-    if (!bool)
+    this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(1000), this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem);
+    this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(1006), this.jdField_b_of_type_ComTencentMobileqqWidgetQFormSimpleItem);
+    this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(1005), this.jdField_c_of_type_ComTencentMobileqqWidgetQFormSimpleItem);
+    this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(1024), this.jdField_d_of_type_ComTencentMobileqqWidgetQFormSimpleItem);
+  }
+  
+  private void b()
+  {
+    if (getActivity() != null)
     {
-      this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
-      if (!QzoneConfig.isQQCircleShowLebaEntrance(StudyModeManager.a())) {
-        break label709;
+      if (getActivity().getIntent() == null) {
+        return;
       }
-      this.jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
-    }
-    for (;;)
-    {
-      Object localObject = (TempMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER);
-      ((TempMsgManager)localObject).a(this);
-      localObject = ((TempMsgManager)localObject).a();
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_troop_")).booleanValue());
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_nearby_")).booleanValue());
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_interest_v2")).booleanValue());
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_contact_")).booleanValue());
-      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_consult_")).booleanValue());
-      this.jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_circle_v2")).booleanValue());
-      this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_game_buddy_")).booleanValue());
-      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_audio_room")).booleanValue());
-      if (AppSetting.d)
+      int i = getActivity().getIntent().getIntExtra("uinType", 0);
+      ITempMsgBoxManager localITempMsgBoxManager = (ITempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempMsgBoxManager.class, "");
+      if (this.jdField_c_of_type_JavaUtilMap.containsKey(Integer.valueOf(i)))
       {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719865));
-        this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719859));
-        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719858));
-        this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719854));
-        this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719853));
-        this.jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131697845));
-        this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(localGameMsgManager.a());
-        this.jdField_f_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719852));
+        if (!localITempMsgBoxManager.configContains(i)) {
+          return;
+        }
+        this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick((View)this.jdField_c_of_type_JavaUtilMap.get(Integer.valueOf(i)));
       }
-      this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.1(this);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      this.jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.2(this);
-      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.3(this);
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      this.jdField_d_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.4(this);
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_d_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      this.jdField_e_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.5(this);
-      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_e_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      this.jdField_f_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.6(this);
-      this.jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_f_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      this.jdField_g_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.7(this);
-      this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_g_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      this.jdField_h_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.8(this);
-      this.jdField_f_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_h_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      return;
-      this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(0);
-      this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem.setText(localGameMsgManager.a());
-      break;
-      label709:
-      this.jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
     }
   }
   
-  public void a(short paramShort, boolean paramBoolean1, boolean paramBoolean2)
+  private void c()
   {
-    if (!paramBoolean1) {}
-    switch (paramShort)
+    this.jdField_a_of_type_JavaUtilMap.put(Short.valueOf((short)-23308), getString(2131719597));
+    this.jdField_a_of_type_JavaUtilMap.put(Short.valueOf((short)-23310), getString(2131719580));
+    this.jdField_a_of_type_JavaUtilMap.put(Short.valueOf((short)-23309), getString(2131719579));
+    this.jdField_a_of_type_JavaUtilMap.put(Short.valueOf((short)-20457), getString(2131719578));
+    this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(0), getString(2131719590));
+    this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(1), getString(2131719589));
+    this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(2), getString(2131719591));
+  }
+  
+  private void d()
+  {
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem = ((QFormSimpleItem)this.mContentView.findViewById(2131371822));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetQFormSimpleItem = ((QFormSimpleItem)this.mContentView.findViewById(2131371815));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetQFormSimpleItem = ((QFormSimpleItem)this.mContentView.findViewById(2131371814));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetQFormSimpleItem = ((QFormSimpleItem)this.mContentView.findViewById(2131371813));
+    this.e = ((QFormSimpleItem)this.mContentView.findViewById(2131371816));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131378368));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131378364));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem = ((FormSwitchItem)this.mContentView.findViewById(2131378363));
+    e();
+    Object localObject = (TempMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER);
+    ((TempMsgManager)localObject).a(this);
+    Map localMap = ((TempMsgManager)localObject).b();
+    localObject = ((TempMsgManager)localObject).a();
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setRightText(a("temp_msg_setting_troop_", localMap, (Map)localObject));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setRightText(a("temp_msg_setting_contact_", localMap, (Map)localObject));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setRightText(a("temp_msg_setting_consult_", localMap, (Map)localObject));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setRightText(a("temp_msg_setting_company_", localMap, (Map)localObject));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_troop_")).booleanValue());
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_contact_")).booleanValue());
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(((Boolean)((Map)localObject).get("temp_msg_setting_consult_")).booleanValue());
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setTag(Short.valueOf((short)-23308));
+    this.jdField_b_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setTag(Short.valueOf((short)-23310));
+    this.jdField_c_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setTag(Short.valueOf((short)-23309));
+    this.jdField_d_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setTag(Short.valueOf((short)-20457));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_c_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.jdField_d_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    this.e.setOnClickListener(this.jdField_b_of_type_AndroidViewView$OnClickListener);
+    if (AppSetting.d)
     {
-    default: 
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setContentDescription(getString(2131719597));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setContentDescription(getString(2131719580));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setContentDescription(getString(2131719579));
+      this.jdField_d_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setContentDescription(getString(2131719578));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719597));
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719580));
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setContentDescription(getString(2131719579));
+    }
+    this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.1(this);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+    this.jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.2(this);
+    this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+    this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.3(this);
+    this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+    this.jdField_d_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = new TempMsgSettingFragment.4(this);
+  }
+  
+  private void e()
+  {
+    ITempMsgBoxManager localITempMsgBoxManager = (ITempMsgBoxManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ITempMsgBoxManager.class, "");
+    if (localITempMsgBoxManager.configContains(1000)) {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+    } else {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setVisibility(8);
+    }
+    if (localITempMsgBoxManager.configContains(1006)) {
+      this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+    } else {
+      this.jdField_b_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setVisibility(8);
+    }
+    if (localITempMsgBoxManager.configContains(1005)) {
+      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setVisibility(8);
+    } else {
+      this.jdField_c_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setVisibility(8);
+    }
+    if (!localITempMsgBoxManager.configContains(1024)) {
+      this.jdField_d_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setVisibility(8);
+    }
+    if (!localITempMsgBoxManager.configContains(10007)) {
+      this.e.setVisibility(8);
+    }
+  }
+  
+  public void a(short paramShort, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
+  {
+    if (paramBoolean1) {
       return;
-    case -23308: 
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      return;
-    case -23309: 
-      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
-      this.jdField_e_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_e_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      return;
-    case -23310: 
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
-      this.jdField_d_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_d_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      return;
-    case -23166: 
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
-      this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      return;
-    case -23312: 
+    }
+    int i = ((ITempMsgBoxService)QRoute.api(ITempMsgBoxService.class)).getTempSettingStatus(paramBoolean2, paramBoolean3);
+    if ((paramShort != -20457) && (paramShort != -20455))
+    {
+      switch (paramShort)
+      {
+      default: 
+        switch (paramShort)
+        {
+        default: 
+          return;
+        }
+      case -23308: 
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setRightText((CharSequence)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(i)));
+        return;
+      case -23309: 
+        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
+        this.jdField_c_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_c_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+        this.jdField_c_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setRightText((CharSequence)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(i)));
+        return;
+      }
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
       this.jdField_b_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_b_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      return;
-    case -23168: 
-      this.jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      this.jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
-      this.jdField_g_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_f_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-      return;
-    case -23158: 
-      this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
-      this.jdField_h_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_g_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+      this.jdField_b_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setRightText((CharSequence)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(i)));
       return;
     }
-    this.jdField_f_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-    this.jdField_f_of_type_ComTencentMobileqqWidgetFormSwitchItem.setChecked(paramBoolean2);
-    this.jdField_f_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.jdField_h_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+    this.jdField_d_of_type_ComTencentMobileqqWidgetQFormSimpleItem.setRightText((CharSequence)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(i)));
   }
   
   protected void doOnCreateView(LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, Bundle paramBundle)
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
-    if ((getActivity().getAppRuntime() instanceof QQAppInterface)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getActivity().getAppRuntime());
+    if ((getBaseActivity().getAppRuntime() instanceof QQAppInterface)) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = ((QQAppInterface)getBaseActivity().getAppRuntime());
     }
+    c();
+    d();
     a();
+    b();
   }
   
   protected int getContentLayoutId()
   {
-    return 2131561628;
+    return 2131561470;
   }
   
   protected View onCreateCenterView()
   {
     View localView = super.onCreateCenterView();
-    setTitle(getString(2131719860));
+    setTitle(getString(2131719592));
     return localView;
   }
   
@@ -189,7 +258,7 @@ public class TempMsgSettingFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.TempMsgSettingFragment
  * JD-Core Version:    0.7.0.1
  */

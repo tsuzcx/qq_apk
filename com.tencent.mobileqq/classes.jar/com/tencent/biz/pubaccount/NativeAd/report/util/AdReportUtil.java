@@ -31,16 +31,19 @@ public class AdReportUtil
 {
   private static <T extends IReportObj> T a(AdReportData paramAdReportData, Class<T> paramClass)
   {
-    int j = 0;
-    if (paramAdReportData == null) {}
-    for (int i = 1;; i = 0)
-    {
-      if (paramClass == null) {
-        j = 1;
-      }
-      if ((j | i) == 0) {
-        break;
-      }
+    int i;
+    if (paramAdReportData == null) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    int j;
+    if (paramClass == null) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if ((i | j) != 0) {
       return null;
     }
     try
@@ -96,60 +99,79 @@ public class AdReportUtil
     if (paramAdReportData.a() != null) {
       return paramAdReportData.a();
     }
-    switch (paramAdReportData.a())
+    int i = paramAdReportData.a();
+    if ((i != 17) && (i != 23))
     {
-    default: 
-      if ((paramAdReportData.a() != null) && (paramAdReportData.a().adClickPos != null) && (paramAdReportData.a().adClickPos == AdClickPos.SoftAdClose)) {
-        return ReportAction.CLOSE;
+      if (i != 26)
+      {
+        if (i != 42) {
+          if (i != 80)
+          {
+            if (i == 116) {
+              break label186;
+            }
+            if (i != 19) {
+              if (i == 20) {
+                break label190;
+              }
+            }
+          }
+        }
+        switch (i)
+        {
+        default: 
+          if ((paramAdReportData.a() != null) && (paramAdReportData.a().adClickPos != null) && (paramAdReportData.a().adClickPos == AdClickPos.SoftAdClose)) {
+            return ReportAction.CLOSE;
+          }
+          if (paramAdReportData.b() != null) {
+            return ReportAction.CLICK;
+          }
+          return ReportAction.EXPOSE;
+        case 6: 
+          return ReportAction.VIDEO_SEE_TIME;
+        case 3: 
+          return ReportAction.NFB;
+        case 2: 
+          return ReportAction.EXPOSE;
+        case 1: 
+          if (paramAdReportData.d() == 39) {
+            return ReportAction.CLOSE;
+          }
+          return ReportAction.CLICK;
+          return ReportAction.RECEIVE;
+        case 5: 
+          label186:
+          return ReportAction.CLICK;
+        }
       }
-      break;
-    case 1: 
-    case 19: 
-      if (paramAdReportData.d() == 39) {
-        return ReportAction.CLOSE;
-      }
-      return ReportAction.CLICK;
-    case 17: 
-    case 23: 
-      return ReportAction.SLIDE;
-    case 5: 
-    case 42: 
-    case 116: 
-      return ReportAction.CLICK;
-    case 6: 
-      return ReportAction.VIDEO_SEE_TIME;
-    case 3: 
-      return ReportAction.NFB;
-    case 80: 
-      return ReportAction.RECEIVE;
-    case 4: 
-    case 20: 
-    case 26: 
+      label190:
       return ReportAction.CLOSE;
-    case 2: 
-      return ReportAction.EXPOSE;
     }
-    if (paramAdReportData.b() != null) {
-      return ReportAction.CLICK;
-    }
-    return ReportAction.EXPOSE;
+    return ReportAction.SLIDE;
   }
   
   public static Integer a(AdReportData paramAdReportData)
   {
+    Integer localInteger = Integer.valueOf(0);
     if (paramAdReportData == null) {
-      return Integer.valueOf(0);
+      return localInteger;
     }
-    if ((paramAdReportData.b() == null) || (paramAdReportData.b().intValue() == -1)) {
-      return Integer.valueOf(0);
+    if (paramAdReportData.b() != null)
+    {
+      if (paramAdReportData.b().intValue() == -1) {
+        return localInteger;
+      }
+      return paramAdReportData.b();
     }
-    return paramAdReportData.b();
+    return localInteger;
   }
   
   public static String a(AdReportData paramAdReportData)
   {
-    if (paramAdReportData == null) {}
-    while (paramAdReportData.a() == null) {
+    if (paramAdReportData == null) {
+      return null;
+    }
+    if (paramAdReportData.a() == null) {
       return null;
     }
     return paramAdReportData.a().getLiujinReportUrl();
@@ -157,14 +179,11 @@ public class AdReportUtil
   
   public static Map<String, IReportObj> a(AdReportData paramAdReportData)
   {
-    int i = 0;
-    Object localObject;
-    if (paramAdReportData == null)
-    {
-      localObject = null;
-      return localObject;
+    if (paramAdReportData == null) {
+      return null;
     }
     Class[] arrayOfClass = new Class[9];
+    int i = 0;
     arrayOfClass[0] = AdLoadReportObj.class;
     arrayOfClass[1] = AMSReportObj.class;
     arrayOfClass[2] = AppReportObj.class;
@@ -176,24 +195,23 @@ public class AdReportUtil
     arrayOfClass[8] = VideoReportObj.class;
     HashMap localHashMap = new HashMap();
     int j = arrayOfClass.length;
-    for (;;)
+    while (i < j)
     {
-      localObject = localHashMap;
-      if (i >= j) {
-        break;
-      }
-      localObject = a(paramAdReportData, arrayOfClass[i]);
-      if ((localObject != null) && (((IReportObj)localObject).a())) {
-        localHashMap.put(((IReportObj)localObject).a(), localObject);
+      IReportObj localIReportObj = a(paramAdReportData, arrayOfClass[i]);
+      if ((localIReportObj != null) && (localIReportObj.a())) {
+        localHashMap.put(localIReportObj.a(), localIReportObj);
       }
       i += 1;
     }
+    return localHashMap;
   }
   
   public static boolean a(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
+    if (paramContext != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
     }
     try
     {
@@ -202,12 +220,15 @@ public class AdReportUtil
     }
     catch (Exception paramContext) {}
     return false;
+    return false;
   }
   
   public static String b(AdReportData paramAdReportData)
   {
-    if (paramAdReportData == null) {}
-    while (paramAdReportData.a() == null) {
+    if (paramAdReportData == null) {
+      return null;
+    }
+    if (paramAdReportData.a() == null) {
       return null;
     }
     return paramAdReportData.a().getTicket();
@@ -215,8 +236,10 @@ public class AdReportUtil
   
   public static String c(AdReportData paramAdReportData)
   {
-    if (paramAdReportData == null) {}
-    while (paramAdReportData.a() == null) {
+    if (paramAdReportData == null) {
+      return null;
+    }
+    if (paramAdReportData.a() == null) {
       return null;
     }
     return paramAdReportData.a().getAmsNfbUrl();
@@ -224,7 +247,7 @@ public class AdReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.util.AdReportUtil
  * JD-Core Version:    0.7.0.1
  */

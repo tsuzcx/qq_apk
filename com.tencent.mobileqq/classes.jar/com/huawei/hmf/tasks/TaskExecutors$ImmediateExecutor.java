@@ -12,7 +12,7 @@ final class TaskExecutors$ImmediateExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hmf.tasks.TaskExecutors.ImmediateExecutor
  * JD-Core Version:    0.7.0.1
  */

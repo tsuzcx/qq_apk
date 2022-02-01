@@ -27,14 +27,15 @@ public final class ban_info
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iBanLevel, 0);
-    if (this.strMessage != null) {
-      paramJceOutputStream.write(this.strMessage, 1);
+    String str = this.strMessage;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_UNDEAL_COUNT.ban_info
  * JD-Core Version:    0.7.0.1
  */

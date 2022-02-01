@@ -12,12 +12,12 @@ public class IDataProvider$FakeGroupInfo
   public IDataProvider$FakeGroupInfo(IDataProvider.GroupId paramGroupId, @Nullable ErrorMessage paramErrorMessage)
   {
     super(paramGroupId);
-    if (paramErrorMessage == null) {}
-    for (this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");; this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage)
-    {
-      this.jdField_a_of_type_JavaUtilList = new ArrayList();
-      return;
+    if (paramErrorMessage == null) {
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = new ErrorMessage(97000001, "loading");
+    } else {
+      this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage = paramErrorMessage;
     }
+    this.jdField_a_of_type_JavaUtilList = new ArrayList();
   }
   
   public boolean a()
@@ -37,12 +37,18 @@ public class IDataProvider$FakeGroupInfo
   
   public String toString()
   {
-    return "fg{g=" + this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId + ", em=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fg{g=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId);
+    localStringBuilder.append(", em=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.IDataProvider.FakeGroupInfo
  * JD-Core Version:    0.7.0.1
  */

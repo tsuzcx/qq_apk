@@ -36,19 +36,21 @@ public final class GetFiltPhotoListReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 1);
+    String str = this.albumid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.batchid, 2);
     paramJceOutputStream.write(this.filt_richflag, 3);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 4);
+    str = this.attach_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetFiltPhotoListReq
  * JD-Core Version:    0.7.0.1
  */

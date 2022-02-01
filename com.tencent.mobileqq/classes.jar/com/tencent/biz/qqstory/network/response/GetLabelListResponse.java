@@ -22,32 +22,41 @@ public class GetLabelListResponse
     super(paramRspGetLabelList.result);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_JavaLangString = paramRspGetLabelList.next_cookie.get().toStringUtf8();
-    if (paramRspGetLabelList.is_end.get() == 1) {}
-    for (;;)
+    int i = paramRspGetLabelList.is_end.get();
+    boolean bool = true;
+    if (i != 1) {
+      bool = false;
+    }
+    this.jdField_a_of_type_Boolean = bool;
+    paramRspGetLabelList = paramRspGetLabelList.label_list.get();
+    if (paramRspGetLabelList != null)
     {
-      this.jdField_a_of_type_Boolean = bool;
-      paramRspGetLabelList = paramRspGetLabelList.label_list.get();
-      if (paramRspGetLabelList == null) {
-        break;
-      }
       paramRspGetLabelList = paramRspGetLabelList.iterator();
       while (paramRspGetLabelList.hasNext())
       {
         ByteStringMicro localByteStringMicro = (ByteStringMicro)paramRspGetLabelList.next();
         this.jdField_a_of_type_JavaUtilList.add(localByteStringMicro.toStringUtf8());
       }
-      bool = false;
     }
   }
   
   public String toString()
   {
-    return "GetLabelListResponse{isEnd=" + this.jdField_a_of_type_Boolean + ", labelList=" + this.jdField_a_of_type_JavaUtilList.size() + ", nextCookie='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetLabelListResponse{isEnd=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", labelList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(", nextCookie='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetLabelListResponse
  * JD-Core Version:    0.7.0.1
  */

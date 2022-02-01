@@ -12,15 +12,16 @@ class QQDailyArkView$2$1
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentArkArkViewModel != null) {
-      this.jdField_a_of_type_ComTencentArkArkViewModel.reinitArkContainer();
+    ArkViewModel localArkViewModel = this.jdField_a_of_type_ComTencentArkArkViewModel;
+    if (localArkViewModel != null) {
+      localArkViewModel.reinitArkContainer();
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.qqdaily.QQDailyArkView.2.1
  * JD-Core Version:    0.7.0.1
  */

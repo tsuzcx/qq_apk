@@ -1,8 +1,8 @@
 package com.tencent.av.opengl.config;
 
 import com.tencent.av.business.config.ConfigManager;
-import com.tencent.av.config.ConfigBaseParser;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.av.config.api.IConfigParser;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class RendererConfig
@@ -14,36 +14,46 @@ public class RendererConfig
   
   public static RendererConfig a()
   {
-    ConfigBaseParser localConfigBaseParser = ConfigManager.a(BaseApplicationImpl.getContext());
-    if (!localConfigBaseParser.a())
+    IConfigParser localIConfigParser = ConfigManager.a(BaseApplication.getContext());
+    if (!localIConfigParser.isEmpty())
     {
       RendererConfig localRendererConfig = new RendererConfig();
-      if (localRendererConfig.a(localConfigBaseParser)) {}
+      localRendererConfig.a(localIConfigParser);
       return localRendererConfig;
     }
     return null;
   }
   
-  public boolean a(ConfigBaseParser paramConfigBaseParser)
+  public boolean a(IConfigParser paramIConfigParser)
   {
     try
     {
-      this.jdField_a_of_type_Int = paramConfigBaseParser.a("OpenGLBlowUp/IsOpen", 0);
-      this.b = paramConfigBaseParser.a("OpenGLBlowUp/width", 0);
-      this.c = paramConfigBaseParser.a("OpenGLBlowUp/level", 0);
-      this.jdField_a_of_type_JavaLangString = paramConfigBaseParser.a("OpenGLBlowUp/versionname", "");
-      if (QLog.isColorLevel()) {
-        QLog.i("RendererConfig", 2, "OpenGLSharpenConfig isOpen: " + this.jdField_a_of_type_Int + " width: " + this.b + " level: " + this.c + " versionName: " + this.jdField_a_of_type_JavaLangString);
+      this.jdField_a_of_type_Int = paramIConfigParser.getIntValue("OpenGLBlowUp/IsOpen", 0);
+      this.b = paramIConfigParser.getIntValue("OpenGLBlowUp/width", 0);
+      this.c = paramIConfigParser.getIntValue("OpenGLBlowUp/level", 0);
+      this.jdField_a_of_type_JavaLangString = paramIConfigParser.getStringValue("OpenGLBlowUp/versionname", "");
+      if (QLog.isColorLevel())
+      {
+        paramIConfigParser = new StringBuilder();
+        paramIConfigParser.append("OpenGLSharpenConfig isOpen: ");
+        paramIConfigParser.append(this.jdField_a_of_type_Int);
+        paramIConfigParser.append(" width: ");
+        paramIConfigParser.append(this.b);
+        paramIConfigParser.append(" level: ");
+        paramIConfigParser.append(this.c);
+        paramIConfigParser.append(" versionName: ");
+        paramIConfigParser.append(this.jdField_a_of_type_JavaLangString);
+        QLog.i("RendererConfig", 2, paramIConfigParser.toString());
       }
       return true;
     }
-    catch (Exception paramConfigBaseParser) {}
+    catch (Exception paramIConfigParser) {}
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.config.RendererConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ class ArkIDESettingFragment$4$1
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    ArkAppCenter.c("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
+    ArkAppCenter.a("ArkApp.DebugOnlineActivity", String.format("ClearData actionsheet is closed", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.debug.ArkIDESettingFragment.4.1
  * JD-Core Version:    0.7.0.1
  */

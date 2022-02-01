@@ -12,14 +12,14 @@ class ChooseInterestTagActivity$12
   public void a(long paramLong)
   {
     int i = 0;
-    while (i < ChooseInterestTagActivity.a(this.a).getChildCount())
+    while (i < ChooseInterestTagActivity.access$600(this.a).getChildCount())
     {
-      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.a(this.a).getChildAt(i).getTag();
+      InterestTagInfo localInterestTagInfo = (InterestTagInfo)ChooseInterestTagActivity.access$600(this.a).getChildAt(i).getTag();
       if ((localInterestTagInfo != null) && (paramLong == localInterestTagInfo.tagId))
       {
-        ChooseInterestTagActivity.a(this.a).remove(localInterestTagInfo);
-        ChooseInterestTagActivity.a(this.a, localInterestTagInfo);
-        ChooseInterestTagActivity.b(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.access$2200(this.a).remove(localInterestTagInfo);
+        ChooseInterestTagActivity.access$3400(this.a, localInterestTagInfo);
+        ChooseInterestTagActivity.access$3500(this.a, localInterestTagInfo);
       }
       i += 1;
     }
@@ -27,7 +27,7 @@ class ChooseInterestTagActivity$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.12
  * JD-Core Version:    0.7.0.1
  */

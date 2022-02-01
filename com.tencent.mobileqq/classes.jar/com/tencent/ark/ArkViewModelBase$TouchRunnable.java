@@ -15,20 +15,10 @@ final class ArkViewModelBase$TouchRunnable
   {
     this.mAction = paramMotionEvent.getActionMasked();
     this.mContainer = paramContainer;
-    int i;
-    if ((this.mAction == 5) || (this.mAction == 6))
+    int i = this.mAction;
+    int j = 0;
+    if ((i != 5) && (i != 6))
     {
-      this.mId = new int[1];
-      this.mX = new float[1];
-      this.mY = new float[1];
-      i = paramMotionEvent.getActionIndex();
-      this.mId[0] = paramMotionEvent.getPointerId(i);
-      this.mX[0] = (paramMotionEvent.getX(i) / paramFloat);
-      this.mY[0] = (paramMotionEvent.getY(i) / paramFloat);
-    }
-    for (;;)
-    {
-      return;
       int k = paramMotionEvent.getPointerCount();
       i = k;
       if (k > ark.arkGetMaxTouchPoints()) {
@@ -37,39 +27,78 @@ final class ArkViewModelBase$TouchRunnable
       this.mId = new int[i];
       this.mX = new float[i];
       this.mY = new float[i];
-      while (j < i)
-      {
-        this.mId[j] = paramMotionEvent.getPointerId(j);
-        this.mX[j] = (paramMotionEvent.getX(j) / paramFloat);
-        this.mY[j] = (paramMotionEvent.getY(j) / paramFloat);
-        j += 1;
-      }
+    }
+    while (j < i)
+    {
+      this.mId[j] = paramMotionEvent.getPointerId(j);
+      this.mX[j] = (paramMotionEvent.getX(j) / paramFloat);
+      this.mY[j] = (paramMotionEvent.getY(j) / paramFloat);
+      j += 1;
+      continue;
+      this.mId = new int[1];
+      this.mX = new float[1];
+      this.mY = new float[1];
+      i = paramMotionEvent.getActionIndex();
+      this.mId[0] = paramMotionEvent.getPointerId(i);
+      this.mX[0] = (paramMotionEvent.getX(i) / paramFloat);
+      this.mY[0] = (paramMotionEvent.getY(i) / paramFloat);
     }
   }
   
   public void run()
   {
-    if ((ArkViewModelBase.ENV.mIsDebug) && (this.mAction != 2)) {
-      ArkViewModelBase.ENV.logD("ArkApp.ArkViewModelBase", String.format("TouchRunnable.action.%d.count.%d", new Object[] { Integer.valueOf(this.mAction), Integer.valueOf(this.mId.length) }));
-    }
-    switch (this.mAction)
+    if (ArkViewModelBase.ENV.mIsDebug)
     {
-    case 4: 
-    default: 
-      return;
-    case 0: 
-    case 5: 
-      this.mContainer.TouchStart(this.mX, this.mY, this.mId, this.mId.length);
-      return;
-    case 2: 
-      this.mContainer.TouchMove(this.mX, this.mY, this.mId, this.mId.length);
-      return;
-    case 1: 
-    case 6: 
-      this.mContainer.TouchEnd(this.mX, this.mY, this.mId, this.mId.length);
+      i = this.mAction;
+      if (i != 2) {
+        Logger.logD("ArkApp.ViewModel", String.format("TouchRunnable.action.%d.count.%d", new Object[] { Integer.valueOf(i), Integer.valueOf(this.mId.length) }));
+      }
+    }
+    int i = this.mAction;
+    if (i != 0)
+    {
+      if (i != 1) {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i == 5) {
+              break label192;
+            }
+            if (i == 6) {}
+          }
+          else
+          {
+            localContainer = this.mContainer;
+            arrayOfFloat1 = this.mX;
+            arrayOfFloat2 = this.mY;
+            arrayOfInt = this.mId;
+            localContainer.TouchCancel(arrayOfFloat1, arrayOfFloat2, arrayOfInt, arrayOfInt.length);
+          }
+        }
+        else
+        {
+          localContainer = this.mContainer;
+          arrayOfFloat1 = this.mX;
+          arrayOfFloat2 = this.mY;
+          arrayOfInt = this.mId;
+          localContainer.TouchMove(arrayOfFloat1, arrayOfFloat2, arrayOfInt, arrayOfInt.length);
+          return;
+        }
+      }
+      localContainer = this.mContainer;
+      arrayOfFloat1 = this.mX;
+      arrayOfFloat2 = this.mY;
+      arrayOfInt = this.mId;
+      localContainer.TouchEnd(arrayOfFloat1, arrayOfFloat2, arrayOfInt, arrayOfInt.length);
       return;
     }
-    this.mContainer.TouchCancel(this.mX, this.mY, this.mId, this.mId.length);
+    label192:
+    ark.Container localContainer = this.mContainer;
+    float[] arrayOfFloat1 = this.mX;
+    float[] arrayOfFloat2 = this.mY;
+    int[] arrayOfInt = this.mId;
+    localContainer.TouchStart(arrayOfFloat1, arrayOfFloat2, arrayOfInt, arrayOfInt.length);
   }
 }
 

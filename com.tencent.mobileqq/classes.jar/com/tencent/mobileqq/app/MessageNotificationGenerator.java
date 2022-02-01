@@ -33,37 +33,29 @@ public class MessageNotificationGenerator
   static void a(QQAppInterface paramQQAppInterface, Message paramMessage, boolean paramBoolean, NotificationElement paramNotificationElement)
   {
     paramNotificationElement = paramNotificationElement.a();
-    if ((paramBoolean) && (paramMessage.istroop != 6000) && (paramMessage.istroop != 1009) && (!paramMessage.frienduin.equals(AppConstants.RECOMMEND_CONTACT_UIN)))
-    {
-      if (!QQUtils.a(paramQQAppInterface.getApp())) {
-        break label160;
-      }
-      localQQLSRecentManager = (QQLSRecentManager)paramQQAppInterface.getManager(QQManagerFactory.QQLS_DATA_MANAGER);
-      if (!NotifyPushSettingActivity.a()) {
-        break label133;
-      }
-      paramBoolean = false;
-      bool = MessageNotificationSettingManager.a(paramQQAppInterface).a(paramMessage.frienduin, paramMessage.istroop);
-      if ((paramBoolean) && (bool))
+    if ((paramBoolean) && (paramMessage.istroop != 6000) && (paramMessage.istroop != 1009) && (!paramMessage.frienduin.equals(AppConstants.RECOMMEND_CONTACT_UIN))) {
+      if (QQUtils.a(paramQQAppInterface.getApp()))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QQLSActivity", 2, "videochatting start lsActivity notificationContentTitle appinterface  buildNotificationElement");
+        QQLSRecentManager localQQLSRecentManager = (QQLSRecentManager)paramQQAppInterface.getManager(QQManagerFactory.QQLS_DATA_MANAGER);
+        if (NotifyPushSettingActivity.a()) {
+          paramBoolean = false;
+        } else {
+          paramBoolean = SettingCloneUtil.readValue(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getApp().getString(2131693837), "qqsetting_lock_screen_whenexit_key", true);
         }
-        localQQLSRecentManager.a(paramQQAppInterface, paramMessage, false, MsgPushReportHelper.a(paramMessage.frienduin, paramMessage.istroop, paramNotificationElement));
+        boolean bool = MessageNotificationSettingManager.a(paramQQAppInterface).a(paramMessage.frienduin, paramMessage.istroop);
+        if ((paramBoolean) && (bool))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QQLSActivity", 2, "videochatting start lsActivity notificationContentTitle appinterface  buildNotificationElement");
+          }
+          localQQLSRecentManager.a(paramQQAppInterface, paramMessage, false, MsgPushReportHelper.a(paramMessage.frienduin, paramMessage.istroop, paramNotificationElement));
+        }
       }
-    }
-    label133:
-    label160:
-    while (!QLog.isColorLevel()) {
-      for (;;)
+      else if (QLog.isColorLevel())
       {
-        QQLSRecentManager localQQLSRecentManager;
-        boolean bool;
-        return;
-        paramBoolean = SettingCloneUtil.readValue(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramQQAppInterface.getApp().getString(2131693883), "qqsetting_lock_screen_whenexit_key", true);
+        QLog.d("[NotificationRebuild] MessageNotificationGenerator", 2, "screen unlock");
       }
     }
-    QLog.d("[NotificationRebuild] MessageNotificationGenerator", 2, "screen unlock");
   }
   
   public static void a(QQAppInterface paramQQAppInterface, @NonNull MessageRecord paramMessageRecord, NotificationElement paramNotificationElement, String paramString)
@@ -73,12 +65,22 @@ public class MessageNotificationGenerator
     String str2 = paramNotificationElement.c();
     String str3 = paramNotificationElement.d();
     Intent localIntent = paramNotificationElement.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("[NotificationRebuild] MessageNotificationGenerator", 2, "showNotificationElementOfMessage. cmd=" + paramString + ", ticker=" + MessageRecordUtil.a(str1) + ",msgShow:" + MessageRecordUtil.a(str3) + ", bitmap=" + localBitmap);
+    if (QLog.isColorLevel())
+    {
+      paramNotificationElement = new StringBuilder();
+      paramNotificationElement.append("showNotificationElementOfMessage. cmd=");
+      paramNotificationElement.append(paramString);
+      paramNotificationElement.append(", ticker=");
+      paramNotificationElement.append(MessageRecordUtil.a(str1));
+      paramNotificationElement.append(",msgShow:");
+      paramNotificationElement.append(MessageRecordUtil.a(str3));
+      paramNotificationElement.append(", bitmap=");
+      paramNotificationElement.append(localBitmap);
+      QLog.d("[NotificationRebuild] MessageNotificationGenerator", 2, paramNotificationElement.toString());
     }
     paramNotificationElement = localBitmap;
     if (localBitmap == null) {
-      paramNotificationElement = BitmapManager.a(paramQQAppInterface.getApp().getResources(), 2130840535);
+      paramNotificationElement = BitmapManager.a(paramQQAppInterface.getApp().getResources(), 2130840405);
     }
     if (paramNotificationElement != null)
     {
@@ -114,7 +116,7 @@ public class MessageNotificationGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.MessageNotificationGenerator
  * JD-Core Version:    0.7.0.1
  */

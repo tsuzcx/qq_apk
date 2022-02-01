@@ -30,17 +30,18 @@ public final class ilive_feeds_near_anchor$NearAnchorInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 33, 42, 50, 56, 66, 72, 82, 88, 96, 106, 112 }, new String[] { "uid", "root_roomid", "sub_roomid", "distance", "room_name", "cover_url", "create_time", "city", "start_time", "medal_face", "pic_time", "anchor_type", "lable_url", "jump_type" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Double.valueOf(0.0D), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), localByteStringMicro4, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro5, Integer.valueOf(0) }, NearAnchorInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 33, 42, 50, 56, 66, 72, 82, 88, 96, 106, 112 }, new String[] { "uid", "root_roomid", "sub_roomid", "distance", "room_name", "cover_url", "create_time", "city", "start_time", "medal_face", "pic_time", "anchor_type", "lable_url", "jump_type" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, Double.valueOf(0.0D), localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger, localByteStringMicro4, localInteger, localInteger, localByteStringMicro5, localInteger }, NearAnchorInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo
  * JD-Core Version:    0.7.0.1
  */

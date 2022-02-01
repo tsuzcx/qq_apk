@@ -42,77 +42,71 @@ public class PAGFont
   
   private static void RegisterFallbackFonts()
   {
-    int j = 0;
-    if (systemFontLoaded) {}
-    do
-    {
+    if (systemFontLoaded) {
       return;
-      systemFontLoaded = true;
-      localObject1 = new PAGFont.FontConfig[0];
-      if (new File("/system/etc/fonts.xml").exists()) {}
-      for (;;)
+    }
+    systemFontLoaded = true;
+    int j = 0;
+    Object localObject1 = new PAGFont.FontConfig[0];
+    if (new File("/system/etc/fonts.xml").exists()) {
+      try
       {
-        try
-        {
-          localObject2 = parseLollipop();
-          localObject1 = localObject2;
-        }
-        catch (Exception localException1)
-        {
-          Object localObject2;
-          Object localObject4;
-          Object localObject5;
-          PAGFont.FontConfig localFontConfig;
-          localException1.printStackTrace();
-          continue;
-        }
-        localObject3 = new ArrayList();
-        localObject2 = new ArrayList();
-        localObject4 = getFontByLanguage((PAGFont.FontConfig[])localObject1, "zh-Hans");
-        if (localObject4 != null) {
-          addFont((PAGFont.FontConfig)localObject4, (ArrayList)localObject3, (ArrayList)localObject2);
-        }
-        localObject4 = FallbackFontFileNames;
-        k = localObject4.length;
-        i = 0;
-        if (i >= k) {
-          break;
-        }
-        localObject5 = localObject4[i];
-        localFontConfig = new PAGFont.FontConfig(null);
-        localFontConfig.fileName = localObject5;
-        addFont(localFontConfig, (ArrayList)localObject3, (ArrayList)localObject2);
-        i += 1;
-        continue;
-        try
-        {
-          PAGFont.FontConfig[] arrayOfFontConfig = parseJellyBean();
-          localObject1 = arrayOfFontConfig;
-        }
-        catch (Exception localException2)
-        {
-          localException2.printStackTrace();
-        }
+        PAGFont.FontConfig[] arrayOfFontConfig1 = parseLollipop();
+        localObject1 = arrayOfFontConfig1;
       }
-      int k = localObject1.length;
-      i = 0;
-      while (i < k)
+      catch (Exception localException1)
       {
-        addFont(localObject1[i], (ArrayList)localObject3, localException2);
-        i += 1;
+        localException1.printStackTrace();
       }
-    } while (((ArrayList)localObject3).isEmpty());
-    Object localObject1 = new String[((ArrayList)localObject3).size()];
-    ((ArrayList)localObject3).toArray((Object[])localObject1);
-    Object localObject3 = new int[localException2.size()];
-    Iterator localIterator = localException2.iterator();
-    int i = j;
-    while (localIterator.hasNext())
+    } else {
+      try
+      {
+        PAGFont.FontConfig[] arrayOfFontConfig2 = parseJellyBean();
+        localObject1 = arrayOfFontConfig2;
+      }
+      catch (Exception localException2)
+      {
+        localException2.printStackTrace();
+      }
+    }
+    Object localObject3 = new ArrayList();
+    Object localObject2 = new ArrayList();
+    Object localObject4 = getFontByLanguage((PAGFont.FontConfig[])localObject1, "zh-Hans");
+    if (localObject4 != null) {
+      addFont((PAGFont.FontConfig)localObject4, (ArrayList)localObject3, (ArrayList)localObject2);
+    }
+    localObject4 = FallbackFontFileNames;
+    int k = localObject4.length;
+    int i = 0;
+    while (i < k)
     {
-      localObject3[i] = ((Integer)localIterator.next()).intValue();
+      Object localObject5 = localObject4[i];
+      PAGFont.FontConfig localFontConfig = new PAGFont.FontConfig(null);
+      localFontConfig.fileName = localObject5;
+      addFont(localFontConfig, (ArrayList)localObject3, (ArrayList)localObject2);
       i += 1;
     }
-    SetFallbackFontPaths((String[])localObject1, (int[])localObject3);
+    k = localObject1.length;
+    i = 0;
+    while (i < k)
+    {
+      addFont(localObject1[i], (ArrayList)localObject3, (ArrayList)localObject2);
+      i += 1;
+    }
+    if (!((ArrayList)localObject3).isEmpty())
+    {
+      localObject1 = new String[((ArrayList)localObject3).size()];
+      ((ArrayList)localObject3).toArray((Object[])localObject1);
+      localObject3 = new int[((ArrayList)localObject2).size()];
+      localObject2 = ((ArrayList)localObject2).iterator();
+      i = j;
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3[i] = ((Integer)((Iterator)localObject2).next()).intValue();
+        i += 1;
+      }
+      SetFallbackFontPaths((String[])localObject1, (int[])localObject3);
+    }
   }
   
   public static PAGFont RegisterFont(AssetManager paramAssetManager, String paramString)
@@ -150,8 +144,10 @@ public class PAGFont
   
   private static void addFont(PAGFont.FontConfig paramFontConfig, ArrayList<String> paramArrayList, ArrayList<Integer> paramArrayList1)
   {
-    if (paramArrayList.contains(paramFontConfig.fileName)) {}
-    while (!new File(paramFontConfig.fileName).exists()) {
+    if (paramArrayList.contains(paramFontConfig.fileName)) {
+      return;
+    }
+    if (!new File(paramFontConfig.fileName).exists()) {
       return;
     }
     paramArrayList.add(paramFontConfig.fileName);
@@ -266,6 +262,7 @@ public class PAGFont
   
   private static void readFamily(XmlPullParser paramXmlPullParser, ArrayList<PAGFont.FontConfig> paramArrayList)
   {
+    Object localObject = null;
     paramXmlPullParser.getAttributeValue(null, "name");
     String str = paramXmlPullParser.getAttributeValue(null, "lang");
     ArrayList localArrayList = new ArrayList();
@@ -281,31 +278,27 @@ public class PAGFont
     if (localArrayList.isEmpty()) {
       return;
     }
-    Object localObject = localArrayList.iterator();
+    Iterator localIterator = localArrayList.iterator();
     do
     {
-      if (!((Iterator)localObject).hasNext()) {
+      paramXmlPullParser = (XmlPullParser)localObject;
+      if (!localIterator.hasNext()) {
         break;
       }
-      paramXmlPullParser = (PAGFont.FontConfig)((Iterator)localObject).next();
+      paramXmlPullParser = (PAGFont.FontConfig)localIterator.next();
     } while (paramXmlPullParser.weight != 400);
-    for (;;)
+    localObject = paramXmlPullParser;
+    if (paramXmlPullParser == null) {
+      localObject = (PAGFont.FontConfig)localArrayList.get(0);
+    }
+    if (!((PAGFont.FontConfig)localObject).fileName.isEmpty())
     {
-      localObject = paramXmlPullParser;
-      if (paramXmlPullParser == null) {
-        localObject = (PAGFont.FontConfig)localArrayList.get(0);
-      }
-      if (((PAGFont.FontConfig)localObject).fileName.isEmpty()) {
-        break;
-      }
       paramXmlPullParser = str;
       if (str == null) {
         paramXmlPullParser = "";
       }
       ((PAGFont.FontConfig)localObject).language = paramXmlPullParser;
       paramArrayList.add(localObject);
-      return;
-      paramXmlPullParser = null;
     }
   }
   
@@ -324,26 +317,22 @@ public class PAGFont
     if (localArrayList.isEmpty()) {
       return;
     }
-    Object localObject = localArrayList.iterator();
+    Object localObject = null;
+    Iterator localIterator = localArrayList.iterator();
     do
     {
-      if (!((Iterator)localObject).hasNext()) {
+      paramXmlPullParser = (XmlPullParser)localObject;
+      if (!localIterator.hasNext()) {
         break;
       }
-      paramXmlPullParser = (PAGFont.FontConfig)((Iterator)localObject).next();
+      paramXmlPullParser = (PAGFont.FontConfig)localIterator.next();
     } while (paramXmlPullParser.weight != 400);
-    for (;;)
-    {
-      localObject = paramXmlPullParser;
-      if (paramXmlPullParser == null) {
-        localObject = (PAGFont.FontConfig)localArrayList.get(0);
-      }
-      if (((PAGFont.FontConfig)localObject).fileName.isEmpty()) {
-        break;
-      }
+    localObject = paramXmlPullParser;
+    if (paramXmlPullParser == null) {
+      localObject = (PAGFont.FontConfig)localArrayList.get(0);
+    }
+    if (!((PAGFont.FontConfig)localObject).fileName.isEmpty()) {
       paramArrayList.add(localObject);
-      return;
-      paramXmlPullParser = null;
     }
   }
   
@@ -351,56 +340,58 @@ public class PAGFont
   {
     PAGFont.FontConfig localFontConfig = new PAGFont.FontConfig(null);
     Object localObject = paramXmlPullParser.getAttributeValue(null, "index");
-    if (localObject == null)
-    {
+    int i;
+    if (localObject == null) {
       i = 0;
-      localFontConfig.ttcIndex = i;
-      localObject = paramXmlPullParser.getAttributeValue(null, "weight");
-      if (localObject != null) {
-        break label119;
-      }
-    }
-    label119:
-    for (int i = 400;; i = Integer.parseInt((String)localObject))
-    {
-      localFontConfig.weight = i;
-      localObject = new StringBuilder();
-      while (paramXmlPullParser.next() != 3)
-      {
-        if (paramXmlPullParser.getEventType() == 4) {
-          ((StringBuilder)localObject).append(paramXmlPullParser.getText());
-        }
-        if (paramXmlPullParser.getEventType() == 2) {
-          skip(paramXmlPullParser);
-        }
-      }
+    } else {
       i = Integer.parseInt((String)localObject);
-      break;
     }
-    localFontConfig.fileName = ("/system/fonts/" + FILENAME_WHITESPACE_PATTERN.matcher((CharSequence)localObject).replaceAll(""));
+    localFontConfig.ttcIndex = i;
+    localObject = paramXmlPullParser.getAttributeValue(null, "weight");
+    if (localObject == null) {
+      i = 400;
+    } else {
+      i = Integer.parseInt((String)localObject);
+    }
+    localFontConfig.weight = i;
+    localObject = new StringBuilder();
+    while (paramXmlPullParser.next() != 3)
+    {
+      if (paramXmlPullParser.getEventType() == 4) {
+        ((StringBuilder)localObject).append(paramXmlPullParser.getText());
+      }
+      if (paramXmlPullParser.getEventType() == 2) {
+        skip(paramXmlPullParser);
+      }
+    }
+    paramXmlPullParser = new StringBuilder();
+    paramXmlPullParser.append("/system/fonts/");
+    paramXmlPullParser.append(FILENAME_WHITESPACE_PATTERN.matcher((CharSequence)localObject).replaceAll(""));
+    localFontConfig.fileName = paramXmlPullParser.toString();
     return localFontConfig;
   }
   
   private static void skip(XmlPullParser paramXmlPullParser)
   {
     int i = 1;
-    while (i > 0) {
-      switch (paramXmlPullParser.next())
+    while (i > 0)
+    {
+      int j = paramXmlPullParser.next();
+      if (j != 2)
       {
-      default: 
-        break;
-      case 2: 
+        if (j == 3) {
+          i -= 1;
+        }
+      }
+      else {
         i += 1;
-        break;
-      case 3: 
-        i -= 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.libpag.PAGFont
  * JD-Core Version:    0.7.0.1
  */

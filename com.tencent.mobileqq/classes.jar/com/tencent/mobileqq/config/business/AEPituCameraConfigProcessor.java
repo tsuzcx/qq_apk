@@ -22,8 +22,12 @@ public class AEPituCameraConfigProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       AEPituCameraConfigProcessor.AEPituCameraConfigBean localAEPituCameraConfigBean = AEPituCameraConfigProcessor.AEPituCameraConfigBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("AEPituCameraConfigProcessor", 2, "onParsed:" + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed:");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("AEPituCameraConfigProcessor", 2, localStringBuilder.toString());
       }
       return localAEPituCameraConfigBean;
     }
@@ -32,8 +36,12 @@ public class AEPituCameraConfigProcessor
   
   public void a(AEPituCameraConfigProcessor.AEPituCameraConfigBean paramAEPituCameraConfigBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onUpdate: " + paramAEPituCameraConfigBean.a());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate: ");
+      localStringBuilder.append(paramAEPituCameraConfigBean.a());
+      QLog.d("AEPituCameraConfigProcessor", 2, localStringBuilder.toString());
     }
     ShortVideoUtils.setAEPituCameraTaKeSameSwitch(paramAEPituCameraConfigBean.a());
   }
@@ -67,8 +75,14 @@ public class AEPituCameraConfigProcessor
   
   public int onSend(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AEPituCameraConfigProcessor", 2, "onSend: " + paramInt + ", isOpen:" + ShortVideoUtils.isAEPituTakeSameOpen());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSend: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", isOpen:");
+      localStringBuilder.append(ShortVideoUtils.isAEPituTakeSameOpen());
+      QLog.d("AEPituCameraConfigProcessor", 2, localStringBuilder.toString());
     }
     return super.onSend(paramInt);
   }
@@ -80,7 +94,7 @@ public class AEPituCameraConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AEPituCameraConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

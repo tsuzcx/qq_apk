@@ -19,14 +19,15 @@ public final class oidb_0x829$AddFrdInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "bytes_mobile", "uint32_allow_type", "bytes_remark", "uint32_send_req_flag", "uint32_send_result" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0) }, AddFrdInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 40 }, new String[] { "bytes_mobile", "uint32_allow_type", "bytes_remark", "uint32_send_req_flag", "uint32_send_result" }, new Object[] { localByteStringMicro1, localInteger, localByteStringMicro2, localInteger, localInteger }, AddFrdInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x829.oidb_0x829.AddFrdInfo
  * JD-Core Version:    0.7.0.1
  */

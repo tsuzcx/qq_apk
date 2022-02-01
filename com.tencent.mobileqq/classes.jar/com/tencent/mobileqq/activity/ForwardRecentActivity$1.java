@@ -9,12 +9,12 @@ class ForwardRecentActivity$1
   
   public void run()
   {
-    this.this$0.a.sendAccessibilityEvent(8);
+    this.this$0.rightButton.sendAccessibilityEvent(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.1
  * JD-Core Version:    0.7.0.1
  */

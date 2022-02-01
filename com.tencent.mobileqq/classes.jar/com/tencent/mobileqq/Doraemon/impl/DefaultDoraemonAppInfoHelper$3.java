@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.Doraemon.impl;
 
-import android.support.annotation.NonNull;
 import com.tencent.mobileqq.Doraemon.impl.commonModule.AppInfoError;
 import com.tencent.mobileqq.miniapp.MiniAppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -14,30 +13,36 @@ class DefaultDoraemonAppInfoHelper$3
   public void a(MiniAppInfo paramMiniAppInfo)
   {
     DefaultDoraemonAppInfoHelper.OnGetAppInfo localOnGetAppInfo = this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$OnGetAppInfo;
-    if (paramMiniAppInfo.c == 1) {}
-    for (int i = 2;; i = 3)
-    {
-      localOnGetAppInfo.a(paramMiniAppInfo, i);
-      return;
+    int i;
+    if (paramMiniAppInfo.c == 1) {
+      i = 2;
+    } else {
+      i = 3;
     }
+    localOnGetAppInfo.a(paramMiniAppInfo, i);
   }
   
-  public void onError(@NonNull Error paramError)
+  public void onError(Error paramError)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("DoraemonOpenAPI.permissionHelper", 2, "onError: " + paramError.getMessage());
-    }
-    if ((paramError instanceof AppInfoError)) {}
-    for (int i = ((AppInfoError)paramError).type;; i = 0)
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$OnGetAppInfo.a(null, i);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onError: ");
+      localStringBuilder.append(paramError.getMessage());
+      QLog.i("DoraemonOpenAPI.permissionHelper", 2, localStringBuilder.toString());
     }
+    int i;
+    if ((paramError instanceof AppInfoError)) {
+      i = ((AppInfoError)paramError).type;
+    } else {
+      i = 0;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqDoraemonImplDefaultDoraemonAppInfoHelper$OnGetAppInfo.a(null, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.DefaultDoraemonAppInfoHelper.3
  * JD-Core Version:    0.7.0.1
  */

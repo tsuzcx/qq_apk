@@ -18,23 +18,36 @@ public class SearchHotWordConfBean
   public static SearchHotWordConfBean a(QConfItem paramQConfItem)
   {
     SearchHotWordConfBean localSearchHotWordConfBean = new SearchHotWordConfBean();
-    if (paramQConfItem != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchHotWordConfBean", 2, "parse taskid->" + paramQConfItem.jdField_a_of_type_Int + " content->" + paramQConfItem.jdField_a_of_type_JavaLangString);
+    if (paramQConfItem != null)
+    {
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parse taskid->");
+        localStringBuilder.append(paramQConfItem.jdField_a_of_type_Int);
+        localStringBuilder.append(" content->");
+        localStringBuilder.append(paramQConfItem.jdField_a_of_type_JavaLangString);
+        QLog.d("SearchHotWordConfBean", 2, localStringBuilder.toString());
       }
-    }
-    try
-    {
-      paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
-      localSearchHotWordConfBean.a(paramQConfItem.optInt("hotword_switch_message", 0));
-      localSearchHotWordConfBean.b(paramQConfItem.optInt("hotword_switch_contact", 0));
-      localSearchHotWordConfBean.c(paramQConfItem.optInt("hotword_switch_dongtai", 1));
-      return localSearchHotWordConfBean;
-    }
-    catch (Exception paramQConfItem)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SearchHotWordConfBean", 2, "parse error->" + paramQConfItem.toString());
+      try
+      {
+        paramQConfItem = new JSONObject(paramQConfItem.jdField_a_of_type_JavaLangString);
+        localSearchHotWordConfBean.a(paramQConfItem.optInt("hotword_switch_message", 0));
+        localSearchHotWordConfBean.b(paramQConfItem.optInt("hotword_switch_contact", 0));
+        localSearchHotWordConfBean.c(paramQConfItem.optInt("hotword_switch_dongtai", 1));
+        return localSearchHotWordConfBean;
+      }
+      catch (Exception paramQConfItem)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("parse error->");
+          localStringBuilder.append(paramQConfItem.toString());
+          QLog.d("SearchHotWordConfBean", 2, localStringBuilder.toString());
+        }
+      }
     }
     return localSearchHotWordConfBean;
   }
@@ -76,7 +89,7 @@ public class SearchHotWordConfBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.SearchHotWordConfBean
  * JD-Core Version:    0.7.0.1
  */

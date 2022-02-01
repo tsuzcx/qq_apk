@@ -67,7 +67,7 @@ public class SectorProgressView
     }
     if (jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(getResources(), 2130847770);
+      jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(getResources(), 2130847637);
       jdField_b_of_type_AndroidGraphicsRect = new Rect(0, 0, jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
     }
   }
@@ -95,7 +95,7 @@ public class SectorProgressView
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
     {
@@ -103,11 +103,15 @@ public class SectorProgressView
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     }
     this.jdField_a_of_type_AndroidGraphicsRect.set(0, 0, getMeasuredWidth(), getMeasuredHeight());
+    int i;
+    int j;
+    int k;
+    int m;
     if (this.jdField_b_of_type_Boolean)
     {
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1073741824);
       paramCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-      f = this.jdField_a_of_type_Int * 360 / 100;
+      float f = this.jdField_a_of_type_Int * 360 / 100;
       i = (getMeasuredWidth() - jdField_b_of_type_Int) / 2;
       j = (getMeasuredHeight() - jdField_b_of_type_Int) / 2;
       k = (getMeasuredWidth() + jdField_b_of_type_Int) / 2;
@@ -119,18 +123,18 @@ public class SectorProgressView
       paramCanvas.drawCircle(getMeasuredWidth() / 2, getMeasuredHeight() / 2, jdField_b_of_type_Int / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-13646081);
       paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, -90.0F, -f, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    }
-    while (!this.jdField_a_of_type_Boolean)
-    {
-      float f;
-      int k;
-      int m;
       return;
     }
-    int i = getMeasuredWidth() - e - d;
-    int j = getMeasuredHeight() - e - d;
-    this.jdField_c_of_type_AndroidGraphicsRect.set(i, j, d + i, d + j);
-    paramCanvas.drawBitmap(jdField_a_of_type_AndroidGraphicsBitmap, jdField_b_of_type_AndroidGraphicsRect, this.jdField_c_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      i = getMeasuredWidth() - e - d;
+      k = getMeasuredHeight();
+      m = e;
+      j = d;
+      k = k - m - j;
+      this.jdField_c_of_type_AndroidGraphicsRect.set(i, k, i + j, j + k);
+      paramCanvas.drawBitmap(jdField_a_of_type_AndroidGraphicsBitmap, jdField_b_of_type_AndroidGraphicsRect, this.jdField_c_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
   }
   
   public void setProgress(int paramInt)
@@ -144,7 +148,7 @@ public class SectorProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.SectorProgressView
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public abstract class MsgProcessConstant
 {
-  public String a = "MsgBackup." + getClass().getSimpleName();
+  public String a;
+  
+  public MsgProcessConstant()
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgBackup.");
+    localStringBuilder.append(getClass().getSimpleName());
+    this.a = localStringBuilder.toString();
+  }
   
   public void a(String paramString)
   {
@@ -17,12 +25,12 @@ public abstract class MsgProcessConstant
   
   protected boolean a(String paramString)
   {
-    return FileUtils.a(paramString);
+    return FileUtils.fileExists(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.msgprocess.MsgProcessConstant
  * JD-Core Version:    0.7.0.1
  */

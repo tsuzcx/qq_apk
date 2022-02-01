@@ -19,54 +19,53 @@ import java.util.List;
 public class CodecHelper
 {
   public static final int MAX_BIT_RATE = 8000000;
-  private static final String TAG = CodecHelper.class.getSimpleName();
+  private static final String TAG = "CodecHelper";
+  
+  private static int ceilTo(float paramFloat1, float paramFloat2)
+  {
+    double d1 = Math.floor(paramFloat1 / paramFloat2);
+    double d2 = paramFloat2;
+    Double.isNaN(d2);
+    return (int)(d1 * d2);
+  }
   
   @RequiresApi(api=21)
   public static boolean checkAudioOutSupported(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     Object localObject1 = encoderCodecInfo(paramString);
-    if (((List)localObject1).size() > 0) {
-      localObject1 = ((List)localObject1).iterator();
-    }
-    label143:
-    label154:
-    label158:
-    for (;;)
+    if (((List)localObject1).size() > 0)
     {
-      boolean bool;
-      int i;
-      if (((Iterator)localObject1).hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = ((MediaCodecInfo)((Iterator)localObject1).next()).getCapabilitiesForType(paramString).getAudioCapabilities();
-        bool = ((MediaCodecInfo.AudioCapabilities)localObject2).getBitrateRange().contains(Integer.valueOf(paramInt1));
-        if (((MediaCodecInfo.AudioCapabilities)localObject2).getMaxInputChannelCount() >= paramInt2)
-        {
+        boolean bool = ((MediaCodecInfo.AudioCapabilities)localObject2).getBitrateRange().contains(Integer.valueOf(paramInt1));
+        int i;
+        if (((MediaCodecInfo.AudioCapabilities)localObject2).getMaxInputChannelCount() >= paramInt2) {
           i = 1;
-          localObject2 = ((MediaCodecInfo.AudioCapabilities)localObject2).getSupportedSampleRateRanges();
-          int k = localObject2.length;
-          j = 0;
-          label95:
-          if (j >= k) {
-            break label154;
-          }
-          if (!localObject2[j].contains(Integer.valueOf(paramInt3))) {
-            break label143;
-          }
+        } else {
+          i = 0;
         }
-      }
-      for (int j = 1;; j = 0)
-      {
-        if ((!bool) || (i == 0) || (j == 0)) {
-          break label158;
+        localObject2 = ((MediaCodecInfo.AudioCapabilities)localObject2).getSupportedSampleRateRanges();
+        int k = localObject2.length;
+        int j = 0;
+        while (j < k)
+        {
+          if (localObject2[j].contains(Integer.valueOf(paramInt3)))
+          {
+            j = 1;
+            break label141;
+          }
+          j += 1;
         }
-        return true;
-        i = 0;
-        break;
-        j += 1;
-        break label95;
-        return false;
+        j = 0;
+        label141:
+        if ((bool) && (i != 0) && (j != 0)) {
+          return true;
+        }
       }
     }
+    return false;
   }
   
   @RequiresApi(api=21)
@@ -92,84 +91,131 @@ public class CodecHelper
   
   public static int clampHeight(MediaCodecInfo paramMediaCodecInfo, String paramString, int paramInt)
   {
-    if ((Build.VERSION.SDK_INT < 21) || (paramMediaCodecInfo == null)) {
-      return paramInt;
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      if (paramMediaCodecInfo == null) {
+        return paramInt;
+      }
+      return ((Integer)paramMediaCodecInfo.getCapabilitiesForType(paramString).getVideoCapabilities().getSupportedHeights().clamp(Integer.valueOf(paramInt))).intValue();
     }
-    return ((Integer)paramMediaCodecInfo.getCapabilitiesForType(paramString).getVideoCapabilities().getSupportedHeights().clamp(Integer.valueOf(paramInt))).intValue();
+    return paramInt;
   }
   
   public static int clampWidth(MediaCodecInfo paramMediaCodecInfo, String paramString, int paramInt)
   {
-    if ((Build.VERSION.SDK_INT < 21) || (paramMediaCodecInfo == null)) {
-      return paramInt;
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      if (paramMediaCodecInfo == null) {
+        return paramInt;
+      }
+      return ((Integer)paramMediaCodecInfo.getCapabilitiesForType(paramString).getVideoCapabilities().getSupportedWidths().clamp(Integer.valueOf(paramInt))).intValue();
     }
-    return ((Integer)paramMediaCodecInfo.getCapabilitiesForType(paramString).getVideoCapabilities().getSupportedWidths().clamp(Integer.valueOf(paramInt))).intValue();
+    return paramInt;
   }
   
   public static CGSize correctSupportSize(CGSize paramCGSize, String paramString)
   {
-    int i2 = (int)paramCGSize.width;
-    int i1 = (int)paramCGSize.height;
-    int m = MediaCodecList.getCodecCount();
-    int i = 0;
+    return correctSupportSize(paramCGSize, paramString, true);
+  }
+  
+  public static CGSize correctSupportSize(CGSize paramCGSize, String paramString, boolean paramBoolean)
+  {
+    int n = (int)paramCGSize.width;
+    int m = (int)paramCGSize.height;
+    int i1 = MediaCodecList.getCodecCount();
     paramCGSize = null;
-    if ((i < m) && (paramCGSize == null))
+    int i = 0;
+    while ((i < i1) && (paramCGSize == null))
     {
-      MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (!localMediaCodecInfo.isEncoder()) {}
-      for (;;)
+      localObject1 = MediaCodecList.getCodecInfoAt(i);
+      if (((MediaCodecInfo)localObject1).isEncoder())
       {
-        i += 1;
-        break;
-        String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-        k = 0;
+        localObject2 = ((MediaCodecInfo)localObject1).getSupportedTypes();
         j = 0;
-        while ((j < arrayOfString.length) && (k == 0))
+        k = 0;
+        while ((j < localObject2.length) && (k == 0))
         {
-          if (arrayOfString[j].equals(paramString)) {
+          if (localObject2[j].equals(paramString)) {
             k = 1;
           }
           j += 1;
         }
         if (k != 0) {
-          paramCGSize = localMediaCodecInfo;
+          paramCGSize = (CGSize)localObject1;
         }
       }
+      i += 1;
     }
-    int j = getWidthAlignment(paramCGSize, paramString);
-    i = getHeightAlignment(paramCGSize, paramString);
-    m = (int)(Math.ceil(i2 * 1.0F / j) * j);
-    int k = (int)(Math.ceil(i1 * 1.0F / i) * i);
-    Logger.d(TAG, "correctSupportSize 1: target = [" + m + ", " + k + "]");
-    i = clampWidth(paramCGSize, paramString, i2);
-    if (m != i)
+    i = getWidthAlignment(paramCGSize, paramString);
+    int j = getHeightAlignment(paramCGSize, paramString);
+    float f1 = n;
+    float f2 = i;
+    i = ceilTo(f1 * 1.0F, f2);
+    float f3 = m;
+    float f4 = j;
+    j = ceilTo(f3 * 1.0F, f4);
+    Object localObject1 = TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("correctSupportSize 1: target = [");
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(", ");
+    ((StringBuilder)localObject2).append(j);
+    ((StringBuilder)localObject2).append("]");
+    Logger.d((String)localObject1, ((StringBuilder)localObject2).toString());
+    int k = clampWidth(paramCGSize, paramString, n);
+    float f5;
+    if (i > k)
     {
-      float f = i * 1.0F / m;
-      k = (int)(k * f);
-      m = i;
+      f5 = k * 1.0F / i;
+      j = (int)(j * f5);
+      i = k;
     }
-    for (;;)
+    localObject1 = TAG;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("correctSupportSize 2: target = [");
+    ((StringBuilder)localObject2).append(i);
+    ((StringBuilder)localObject2).append(", ");
+    ((StringBuilder)localObject2).append(j);
+    ((StringBuilder)localObject2).append("]");
+    Logger.d((String)localObject1, ((StringBuilder)localObject2).toString());
+    k = clampHeight(paramCGSize, paramString, m);
+    if (j > k)
     {
-      Logger.d(TAG, "correctSupportSize 2: target = [" + m + ", " + k + "]");
-      int n = clampHeight(paramCGSize, paramString, i1);
+      f5 = k * 1.0F / j;
+      i = (int)(i * f5);
+      j = k;
+    }
+    k = ceilTo(i * 1.0F, f2);
+    m = ceilTo(j * 1.0F, f4);
+    localObject1 = TAG;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("correctSupportSize 3: target = [");
+    ((StringBuilder)localObject2).append(k);
+    ((StringBuilder)localObject2).append(", ");
+    ((StringBuilder)localObject2).append(m);
+    ((StringBuilder)localObject2).append("]");
+    Logger.d((String)localObject1, ((StringBuilder)localObject2).toString());
+    j = k;
+    i = m;
+    if (!isSupported(paramCGSize, paramString, k, m))
+    {
       j = k;
       i = m;
-      if (k != n)
+      if (paramBoolean)
       {
-        i = (int)(n * 1.0F / k * m);
-        j = n;
+        j = ceilTo(f1, 16.0F);
+        i = ceilTo(f3, 16.0F);
       }
-      Logger.d(TAG, "correctSupportSize 3: target = [" + i + ", " + j + "]");
-      m = j;
-      k = i;
-      if (!isSupported(paramCGSize, paramString, i, j))
-      {
-        k = (int)(Math.ceil(i2 / 16.0F) * 16.0D);
-        m = (int)(Math.ceil(i1 / 16.0F) * 16.0D);
-      }
-      Logger.i(TAG, "correctSupportSize return: target = [" + k + ", " + m + "]");
-      return new CGSize(k, m);
     }
+    paramCGSize = TAG;
+    paramString = new StringBuilder();
+    paramString.append("correctSupportSize return: target = [");
+    paramString.append(j);
+    paramString.append(", ");
+    paramString.append(i);
+    paramString.append("]");
+    Logger.i(paramCGSize, paramString.toString());
+    return new CGSize(j, i);
   }
   
   private static List<MediaCodecInfo> decoderCodecInfo(String paramString)
@@ -177,23 +223,16 @@ public class CodecHelper
     int k = MediaCodecList.getCodecCount();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (localMediaCodecInfo.isEncoder()) {}
-      label90:
-      for (;;)
+      if (!localMediaCodecInfo.isEncoder())
       {
-        i += 1;
-        break;
         String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
         int m = arrayOfString.length;
         int j = 0;
-        for (;;)
+        while (j < m)
         {
-          if (j >= m) {
-            break label90;
-          }
           if (arrayOfString[j].equals(paramString))
           {
             localArrayList.add(localMediaCodecInfo);
@@ -202,6 +241,7 @@ public class CodecHelper
           j += 1;
         }
       }
+      i += 1;
     }
     return localArrayList;
   }
@@ -211,23 +251,16 @@ public class CodecHelper
     int k = MediaCodecList.getCodecCount();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (!localMediaCodecInfo.isEncoder()) {}
-      label90:
-      for (;;)
+      if (localMediaCodecInfo.isEncoder())
       {
-        i += 1;
-        break;
         String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
         int m = arrayOfString.length;
         int j = 0;
-        for (;;)
+        while (j < m)
         {
-          if (j >= m) {
-            break label90;
-          }
           if (arrayOfString[j].equals(paramString))
           {
             localArrayList.add(localMediaCodecInfo);
@@ -236,15 +269,17 @@ public class CodecHelper
           j += 1;
         }
       }
+      i += 1;
     }
     return localArrayList;
   }
   
   private static int getHeightAlignment(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
+    int k = Build.VERSION.SDK_INT;
     int j = 16;
     int i = j;
-    if (Build.VERSION.SDK_INT >= 21)
+    if (k >= 21)
     {
       i = j;
       if (paramMediaCodecInfo != null) {
@@ -256,9 +291,10 @@ public class CodecHelper
   
   private static int getWidthAlignment(MediaCodecInfo paramMediaCodecInfo, String paramString)
   {
+    int k = Build.VERSION.SDK_INT;
     int j = 16;
     int i = j;
-    if (Build.VERSION.SDK_INT >= 21)
+    if (k >= 21)
     {
       i = j;
       if (paramMediaCodecInfo != null) {
@@ -277,14 +313,11 @@ public class CodecHelper
   {
     int k = MediaCodecList.getCodecCount();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (!localMediaCodecInfo.isEncoder()) {}
-      for (;;)
+      if (localMediaCodecInfo.isEncoder())
       {
-        i += 1;
-        break;
         String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
         int j = 0;
         while (j < arrayOfString.length)
@@ -295,76 +328,71 @@ public class CodecHelper
           j += 1;
         }
       }
+      i += 1;
     }
     return null;
   }
   
-  public static void selectProfileAndLevel(MediaFormat paramMediaFormat)
+  public static void selectProfileAndLevel(MediaFormat paramMediaFormat, String paramString)
   {
-    Object localObject = selectCodec("video/avc");
+    Object localObject = selectCodec(paramString);
     if (localObject != null)
     {
-      localObject = ((MediaCodecInfo)localObject).getCapabilitiesForType("video/avc");
-      int n;
-      int k;
-      if (((MediaCodecInfo.CodecCapabilities)localObject).profileLevels != null)
+      paramString = ((MediaCodecInfo)localObject).getCapabilitiesForType(paramString);
+      localObject = paramString.profileLevels;
+      int i = -1;
+      if (localObject != null)
       {
-        int j = -1;
-        int i = -1;
         int m = 0;
-        n = j;
-        k = i;
-        if (m < ((MediaCodecInfo.CodecCapabilities)localObject).profileLevels.length)
+        for (int j = -1;; j = k)
         {
-          k = j;
           n = i;
-          if (localObject.profileLevels[m].profile <= 8)
-          {
-            if (localObject.profileLevels[m].profile <= i) {
-              break label127;
-            }
-            n = localObject.profileLevels[m].profile;
-            k = localObject.profileLevels[m].level;
-          }
-          for (;;)
-          {
-            m += 1;
-            j = k;
-            i = n;
+          k = j;
+          if (m >= paramString.profileLevels.length) {
             break;
-            label127:
-            k = j;
-            n = i;
-            if (localObject.profileLevels[m].profile == i)
+          }
+          n = i;
+          k = j;
+          if (paramString.profileLevels[m].profile <= 8) {
+            if (paramString.profileLevels[m].profile > i)
             {
-              k = j;
+              n = paramString.profileLevels[m].profile;
+              k = paramString.profileLevels[m].level;
+            }
+            else
+            {
               n = i;
-              if (localObject.profileLevels[m].level > j)
+              k = j;
+              if (paramString.profileLevels[m].profile == i)
               {
-                k = localObject.profileLevels[m].level;
                 n = i;
+                k = j;
+                if (paramString.profileLevels[m].level > j)
+                {
+                  k = paramString.profileLevels[m].level;
+                  n = i;
+                }
               }
             }
           }
+          m += 1;
+          i = n;
         }
       }
-      else
+      int k = -1;
+      int n = i;
+      if (n == 8)
       {
-        n = -1;
-        k = -1;
-      }
-      if (k == 8)
-      {
-        paramMediaFormat.setInteger("profile", k);
-        paramMediaFormat.setInteger("level", n);
-        Logger.i(TAG, String.format("selectProfileAndLevel: 0x%x, 0x%x", new Object[] { Integer.valueOf(k), Integer.valueOf(n) }));
+        paramMediaFormat.setInteger("profile", n);
+        paramMediaFormat.setInteger("level", k);
+        Logger.i(TAG, String.format("selectProfileAndLevel: 0x%x, 0x%x", new Object[] { Integer.valueOf(n), Integer.valueOf(k) }));
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.CodecHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,13 @@ public abstract class FetchUserInfoCallback
   {
     if (paramInt2 == 0)
     {
-      if (paramLong == 0L) {}
-      for (paramString = null;; paramString = UserItem.newInstance(paramLong))
-      {
-        onSuccess(paramString, paramInt1);
-        return;
+      if (paramLong == 0L) {
+        paramString = null;
+      } else {
+        paramString = UserItem.newInstance(paramLong);
       }
+      onSuccess(paramString, paramInt1);
+      return;
     }
     onError(paramInt2, paramString, paramInt1);
   }
@@ -25,7 +26,7 @@ public abstract class FetchUserInfoCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.callback.FetchUserInfoCallback
  * JD-Core Version:    0.7.0.1
  */

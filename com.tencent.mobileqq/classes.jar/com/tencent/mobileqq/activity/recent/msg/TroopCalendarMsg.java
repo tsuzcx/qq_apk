@@ -17,45 +17,52 @@ public class TroopCalendarMsg
 {
   public TroopCalendarMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = ("[" + HardCodeUtil.a(2131697261) + "]");
+    paramContext = new StringBuilder();
+    paramContext.append("[");
+    paramContext.append(HardCodeUtil.a(2131697280));
+    paramContext.append("]");
+    this.jdField_a_of_type_JavaLangString = paramContext.toString();
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
     if ((StructMsgForGeneralShare)StructMsgFactory.a(paramMessageRecord.msgData) == null)
     {
-      if (!QLog.isColorLevel()) {
-        break label136;
+      if (QLog.isColorLevel()) {
+        QLog.d("Navigate.UpdateMsgInfoUtil", 2, "updateMsgInfo():calendarMsg getStructMsg is null");
       }
-      QLog.d("Navigate.UpdateMsgInfoUtil", 2, "updateMsgInfo():calendarMsg getStructMsg is null");
       paramMessageRecord = "";
     }
-    for (;;)
+    else
     {
-      if ((paramObject instanceof TroopCalendarMsg))
-      {
-        paramObject = (TroopCalendarMsg)paramObject;
-        paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
-      }
-      for (paramMessageInfo = paramObject;; paramMessageInfo = paramObject)
-      {
-        if (!TextUtils.isEmpty(paramMessageRecord)) {
-          paramMessageInfo.jdField_a_of_type_JavaLangString = ("[" + paramMessageRecord + "]");
-        }
-        return paramMessageInfo;
-        paramMessageRecord = StructMsgForGeneralShare.remindBrief;
-        break;
-        paramObject = new TroopCalendarMsg(BaseApplication.getContext());
-        paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
-      }
-      label136:
-      paramMessageRecord = "";
+      paramMessageRecord = StructMsgForGeneralShare.remindBrief;
     }
+    if ((paramObject instanceof TroopCalendarMsg))
+    {
+      paramObject = (TroopCalendarMsg)paramObject;
+      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramMessageInfo = paramObject;
+    }
+    else
+    {
+      paramObject = new TroopCalendarMsg(BaseApplication.getContext());
+      paramObject.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo = new MessageNavInfo(paramMessageInfo.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo);
+      paramMessageInfo = paramObject;
+    }
+    if (!TextUtils.isEmpty(paramMessageRecord))
+    {
+      paramObject = new StringBuilder();
+      paramObject.append("[");
+      paramObject.append(paramMessageRecord);
+      paramObject.append("]");
+      paramMessageInfo.jdField_a_of_type_JavaLangString = paramObject.toString();
+    }
+    return paramMessageInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopCalendarMsg
  * JD-Core Version:    0.7.0.1
  */

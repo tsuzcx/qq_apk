@@ -26,78 +26,83 @@ public class LimitChatConfirmElemDecoder
 {
   private void a(List<im_msg_body.Elem> paramList, List<MessageRecord> paramList1, StringBuilder paramStringBuilder)
   {
-    MessageForLimitChatConfirm localMessageForLimitChatConfirm = null;
-    Iterator localIterator = paramList.iterator();
-    do
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      paramList = localMessageForLimitChatConfirm;
-      if (!localIterator.hasNext()) {
-        break;
+      localObject = (im_msg_body.Elem)paramList.next();
+      if (((im_msg_body.Elem)localObject).common_elem.has())
+      {
+        paramList = (im_msg_body.CommonElem)((im_msg_body.Elem)localObject).common_elem.get();
+        break label55;
       }
-      paramList = (im_msg_body.Elem)localIterator.next();
-    } while (!paramList.common_elem.has());
-    paramList = (im_msg_body.CommonElem)paramList.common_elem.get();
+    }
+    paramList = null;
+    label55:
     if (paramList == null) {
       return;
     }
     if (QLog.isColorLevel()) {
       paramStringBuilder.append("decodePBMsgElems_LimitChatConfirmMsg;\n");
     }
-    paramStringBuilder = new hummer_commelem.MsgElemInfo_servtype24();
-    for (;;)
+    Object localObject = new hummer_commelem.MsgElemInfo_servtype24();
+    try
     {
-      try
+      ((hummer_commelem.MsgElemInfo_servtype24)localObject).mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
+      paramStringBuilder = (MessageForLimitChatConfirm)MessageRecordFactory.a(-7005);
+      paramStringBuilder.msgtype = -7005;
+      int i;
+      if (paramList.uint32_business_type.has()) {
+        i = paramList.uint32_business_type.get();
+      } else {
+        i = 1;
+      }
+      if (i == 1)
       {
-        paramStringBuilder.mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
-        localMessageForLimitChatConfirm = (MessageForLimitChatConfirm)MessageRecordFactory.a(-7005);
-        localMessageForLimitChatConfirm.msgtype = -7005;
-        if (paramList.uint32_business_type.has())
+        if (((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_enter.has())
         {
-          i = paramList.uint32_business_type.get();
-          if (i != 1) {
-            break label375;
-          }
-          if (!paramStringBuilder.limit_chat_enter.has()) {
-            break label364;
-          }
-          localMessageForLimitChatConfirm.SenderNickName = paramStringBuilder.limit_chat_enter.bytes_match_nick.get().toStringUtf8();
-          localMessageForLimitChatConfirm.tipsWording = paramStringBuilder.limit_chat_enter.bytes_tips_wording.get().toStringUtf8();
-          localMessageForLimitChatConfirm.leftChatTime = paramStringBuilder.limit_chat_enter.uint32_left_chat_time.get();
-          localMessageForLimitChatConfirm.c2cExpiredTime = paramStringBuilder.limit_chat_enter.uint32_c2c_expired_time.get();
-          localMessageForLimitChatConfirm.matchExpiredTime = paramStringBuilder.limit_chat_enter.uint32_match_expired_time.get();
-          localMessageForLimitChatConfirm.timeStamp = paramStringBuilder.limit_chat_enter.uint64_match_ts.get();
-          localMessageForLimitChatConfirm.readyTs = paramStringBuilder.limit_chat_enter.uint64_ready_ts.get();
-          localMessageForLimitChatConfirm.bEnterMsg = true;
-          if (QLog.isColorLevel()) {
-            QLog.i("LimitChatConfirmElemDecoderLimitChatConfirm msg", 1, " decodePBMsgElems_LimitChatConfirmMsg type" + i + " " + localMessageForLimitChatConfirm.matchExpiredTime + " " + localMessageForLimitChatConfirm.frienduin);
-          }
-          localMessageForLimitChatConfirm.prewrite();
-          paramList1.add(localMessageForLimitChatConfirm);
-          return;
+          paramStringBuilder.SenderNickName = ((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_enter.bytes_match_nick.get().toStringUtf8();
+          paramStringBuilder.tipsWording = ((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_enter.bytes_tips_wording.get().toStringUtf8();
+          paramStringBuilder.leftChatTime = ((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_enter.uint32_left_chat_time.get();
+          paramStringBuilder.c2cExpiredTime = ((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_enter.uint32_c2c_expired_time.get();
+          paramStringBuilder.matchExpiredTime = ((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_enter.uint32_match_expired_time.get();
+          paramStringBuilder.timeStamp = ((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_enter.uint64_match_ts.get();
+          paramStringBuilder.readyTs = ((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_enter.uint64_ready_ts.get();
+          paramStringBuilder.bEnterMsg = true;
+        }
+        else
+        {
+          QLog.e("LimitChatConfirmElemDecoderExtendFriendLimitChatLimitChatConfirm msg", 1, " !!!limitChatElem  limit_chat_enter is null ");
         }
       }
-      catch (InvalidProtocolBufferMicroException paramList)
+      else if (((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_exit.has())
       {
-        paramList.printStackTrace();
-        QLog.e("LimitChatConfirmElemDecoderscribble msg", 1, paramList, new Object[0]);
-        return;
-      }
-      int i = 1;
-      continue;
-      label364:
-      QLog.e("LimitChatConfirmElemDecoderExtendFriendLimitChatLimitChatConfirm msg", 1, " !!!limitChatElem  limit_chat_enter is null ");
-      continue;
-      label375:
-      if (paramStringBuilder.limit_chat_exit.has())
-      {
-        localMessageForLimitChatConfirm.bEnterMsg = false;
-        localMessageForLimitChatConfirm.leaveChatType = paramStringBuilder.limit_chat_exit.uint32_exit_method.get();
-        localMessageForLimitChatConfirm.timeStamp = paramStringBuilder.limit_chat_exit.uint64_match_ts.get();
+        paramStringBuilder.bEnterMsg = false;
+        paramStringBuilder.leaveChatType = ((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_exit.uint32_exit_method.get();
+        paramStringBuilder.timeStamp = ((hummer_commelem.MsgElemInfo_servtype24)localObject).limit_chat_exit.uint64_match_ts.get();
       }
       else
       {
         QLog.e("LimitChatConfirmElemDecoderLimitChatConfirm msg", 1, " limitChatElem  limit_chat_exit is null ");
       }
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append(" decodePBMsgElems_LimitChatConfirmMsg type");
+        paramList.append(i);
+        paramList.append(" ");
+        paramList.append(paramStringBuilder.matchExpiredTime);
+        paramList.append(" ");
+        paramList.append(paramStringBuilder.frienduin);
+        QLog.i("LimitChatConfirmElemDecoderLimitChatConfirm msg", 1, paramList.toString());
+      }
+      paramStringBuilder.prewrite();
+      paramList1.add(paramStringBuilder);
+      return;
+    }
+    catch (InvalidProtocolBufferMicroException paramList)
+    {
+      paramList.printStackTrace();
+      QLog.e("LimitChatConfirmElemDecoderscribble msg", 1, paramList, new Object[0]);
     }
   }
   
@@ -119,7 +124,7 @@ public class LimitChatConfirmElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.LimitChatConfirmElemDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -2,23 +2,25 @@ package com.tencent.mobileqq.activity.aio.stickerbubble;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.Paint;
 import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
+import android.graphics.Typeface;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.os.SystemClock;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.util.DisplayMetrics;
-import android.util.SparseArray;
 import android.view.View;
 import android.view.View.OnAttachStateChangeListener;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.activity.aio.stickerbubble.frame.FrameCache;
+import com.tencent.mobileqq.activity.aio.stickerbubble.frame.FrameManager;
+import com.tencent.mobileqq.activity.aio.stickerbubble.item.AnimationItem;
+import com.tencent.mobileqq.activity.aio.stickerbubble.item.AnimationItem.ItemAnimationCallback;
+import com.tencent.mobileqq.activity.aio.stickerbubble.item.ItemStatus.Acceleration;
+import com.tencent.mobileqq.activity.aio.stickerbubble.item.ItemStatus.Velocity;
+import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -28,60 +30,53 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.Set<Ljava.lang.String;>;
 
 public class StickerBubbleAnimationView
   extends View
-  implements View.OnAttachStateChangeListener, StickerBubbleAnimationItem.ItemAnimationCallback
+  implements View.OnAttachStateChangeListener, AnimationItem.ItemAnimationCallback
 {
-  private static SparseArray<Float> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray();
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
+  private Typeface jdField_a_of_type_AndroidGraphicsTypeface;
   private StickerBubbleAnimationView.StickerBubbleAnimationCallback jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback;
+  private FrameManager jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleFrameFrameManager;
   private String jdField_a_of_type_JavaLangString = "";
-  private List<Long> jdField_a_of_type_JavaUtilList;
-  private Map<String, List<StickerBubbleAnimationItem>> jdField_a_of_type_JavaUtilMap;
-  private Set<String> jdField_a_of_type_JavaUtilSet;
+  private List<Long> jdField_a_of_type_JavaUtilList = new ArrayList(70);
+  private Map<String, List<AnimationItem>> jdField_a_of_type_JavaUtilMap = new HashMap();
+  private Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   private boolean jdField_a_of_type_Boolean = true;
+  private int jdField_b_of_type_Int;
   private long jdField_b_of_type_Long;
   private Paint jdField_b_of_type_AndroidGraphicsPaint;
-  private Map<String, List<StickerBubbleAnimationItem>> jdField_b_of_type_JavaUtilMap;
-  private Map<String, BitmapDrawable[]> c;
-  private Map<String, Integer> d;
-  private Map<String, List<StickerBubbleAnimationView.AddItemRequest>> e;
+  private Map<String, List<AnimationItem>> jdField_b_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_b_of_type_Boolean;
+  private Map<String, BitmapDrawable[]> jdField_c_of_type_JavaUtilMap = new HashMap();
+  private boolean jdField_c_of_type_Boolean;
+  private Map<String, Integer> d = new HashMap();
+  private Map<String, List<AddItemRequest>> e = new HashMap();
   
   public StickerBubbleAnimationView(Context paramContext)
   {
     super(paramContext);
-    b();
   }
   
   private float a(long paramLong)
   {
-    if (this.jdField_a_of_type_Long == 0L) {
+    long l = this.jdField_a_of_type_Long;
+    if (l == 0L) {
       return 0.0F;
     }
-    double d1 = (paramLong - this.jdField_a_of_type_Long) % 400L / 400.0D * 20.0D;
-    if (d1 < 10.0D) {}
-    for (d1 -= 5.0D;; d1 = 10.0D - (d1 - 10.0D) - 5.0D) {
-      return (float)d1;
+    double d1 = (paramLong - l) % 400L;
+    Double.isNaN(d1);
+    d1 = d1 / 400.0D * 20.0D;
+    if (d1 < 10.0D) {
+      d1 -= 5.0D;
+    } else {
+      d1 = 10.0D - (d1 - 10.0D) - 5.0D;
     }
-  }
-  
-  @Nullable
-  private Bitmap a(@NonNull Bitmap paramBitmap, double paramDouble)
-  {
-    paramDouble = getResources().getDisplayMetrics().density * paramDouble / 2.75D;
-    try
-    {
-      paramBitmap = Bitmap.createScaledBitmap(paramBitmap, (int)(paramBitmap.getWidth() * paramDouble), (int)(paramDouble * paramBitmap.getHeight()), true);
-      return paramBitmap;
-    }
-    catch (OutOfMemoryError paramBitmap)
-    {
-      QLog.e("StickerBubbleAnimationView", 1, "oom when scale bitmap");
-    }
-    return null;
+    return (float)d1;
   }
   
   private BitmapDrawable a(long paramLong1, long paramLong2, BitmapDrawable[] paramArrayOfBitmapDrawable, int paramInt)
@@ -97,350 +92,284 @@ public class StickerBubbleAnimationView
     return paramArrayOfBitmapDrawable[0];
   }
   
-  private StickerBubbleAnimationItem a(StickerBubbleAnimationView.AddItemRequest paramAddItemRequest, long paramLong)
+  private AnimationItem a(AddItemRequest paramAddItemRequest, long paramLong)
   {
-    ItemStatus.Velocity localVelocity = new ItemStatus.Velocity(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest));
-    ItemStatus.Acceleration localAcceleration = new ItemStatus.Acceleration(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest));
-    paramAddItemRequest = new StickerBubbleAnimationItem(((BitmapDrawable[])this.c.get(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest)))[0], StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest), localVelocity, localAcceleration, 1.0D, paramLong, StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest), StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest));
+    float f1 = getContext().getResources().getDisplayMetrics().density;
+    Object localObject = ((BitmapDrawable[])this.jdField_c_of_type_JavaUtilMap.get(paramAddItemRequest.jdField_a_of_type_JavaLangString))[0];
+    float f2 = paramAddItemRequest.jdField_b_of_type_Int / ((Drawable)localObject).getIntrinsicWidth() / 3.0F * f1;
+    f1 = f2;
+    if (paramAddItemRequest.jdField_a_of_type_Boolean) {
+      f1 = f2 * 1.7F;
+    }
+    localObject = new ItemStatus.Velocity(paramAddItemRequest.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Velocity);
+    ItemStatus.Acceleration localAcceleration = new ItemStatus.Acceleration(paramAddItemRequest.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleItemItemStatus$Acceleration);
+    paramAddItemRequest = new AnimationItem(((BitmapDrawable[])this.jdField_c_of_type_JavaUtilMap.get(paramAddItemRequest.jdField_a_of_type_JavaLangString))[0], paramAddItemRequest.jdField_a_of_type_AndroidGraphicsPoint, (ItemStatus.Velocity)localObject, localAcceleration, paramLong, f1, paramAddItemRequest.jdField_a_of_type_Boolean, paramAddItemRequest.jdField_a_of_type_JavaLangString, paramAddItemRequest.jdField_a_of_type_Int);
     paramAddItemRequest.a(this);
     return paramAddItemRequest;
   }
   
   private void a(Canvas paramCanvas, long paramLong)
   {
-    int i = this.jdField_a_of_type_Int;
-    String str;
-    float f1;
-    if (i > 1)
-    {
-      str = Integer.toString(i);
-      if (i >= 10) {
-        break label244;
-      }
-      f1 = AIOUtils.a(i * 2.5F + 50.0F, getResources());
-      if (f1 >= 0.0F) {
-        break label386;
-      }
-      Float localFloat = (Float)jdField_a_of_type_AndroidUtilSparseArray.get(str.length());
-      if (localFloat == null) {
-        break label291;
-      }
-      f1 = localFloat.floatValue();
+    int j = this.jdField_a_of_type_Int;
+    if (j <= 1) {
+      return;
     }
-    label386:
+    if (j < 10) {
+      i = Utils.a(j * 2.5F + 50.0F, getResources());
+    }
     for (;;)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(f1);
-      this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(f1);
-      f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(str);
-      i = (int)((paramCanvas.getWidth() - f1) / 2.0F);
-      int j = paramCanvas.save();
-      int k = (int)(paramCanvas.getHeight() / 8 - this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent);
-      float f2 = a(paramLong);
-      float f3 = i;
-      paramCanvas.rotate(f2, f1 / 2.0F + f3, k + this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent / 2.0F);
-      paramCanvas.drawText(str, i, k, this.jdField_b_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawText(str, i, k, this.jdField_a_of_type_AndroidGraphicsPaint);
-      paramCanvas.restoreToCount(j);
-      if (this.jdField_a_of_type_Long == 0L) {
-        this.jdField_a_of_type_Long = paramLong;
-      }
-      return;
-      label244:
-      if (i < 100)
-      {
-        f1 = AIOUtils.a((i - 10) * 0.2777778F + 75.0F, getResources());
-        break;
-      }
-      f1 = AIOUtils.a(100.0F, getResources());
+      f1 = i;
       break;
-      label291:
-      i = 200;
-      for (;;)
-      {
-        if (i > 0)
-        {
-          f1 = AIOUtils.a(i, getResources());
-          this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(f1);
-          if (this.jdField_a_of_type_AndroidGraphicsPaint.measureText(str) >= getResources().getDisplayMetrics().widthPixels - AIOUtils.a(48.0F, getResources())) {}
-        }
-        else
-        {
-          jdField_a_of_type_AndroidUtilSparseArray.put(str.length(), Float.valueOf(f1));
-          break;
-        }
-        i -= 10;
+      if (j < 100) {
+        i = Utils.a((j - 10) * 0.2777778F + 75.0F, getResources());
+      } else {
+        i = Utils.a(100.0F, getResources());
       }
+    }
+    String str = Integer.toString(j);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(f1);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setTextSize(f1);
+    float f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(str);
+    int i = (int)((paramCanvas.getWidth() - f1) / 2.0F);
+    j = (int)(paramCanvas.getHeight() / 8 - this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent);
+    int k = paramCanvas.save();
+    if (!this.jdField_c_of_type_Boolean) {
+      paramCanvas.rotate(a(paramLong), i + f1 / 2.0F, j + this.jdField_a_of_type_AndroidGraphicsPaint.getFontMetrics().ascent / 2.0F);
+    }
+    f1 = i;
+    float f2 = j;
+    paramCanvas.drawText(str, f1, f2, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawText(str, f1, f2, this.jdField_a_of_type_AndroidGraphicsPaint);
+    paramCanvas.restoreToCount(k);
+    if (this.jdField_a_of_type_Long == 0L) {
+      this.jdField_a_of_type_Long = paramLong;
     }
   }
   
-  private void a(ManualDecodeGifImage paramManualDecodeGifImage, BitmapDrawable[] paramArrayOfBitmapDrawable, String paramString, int paramInt)
+  private void a(AddItemRequest paramAddItemRequest, long paramLong)
   {
-    ThreadManager.post(new StickerBubbleAnimationView.2(this, paramArrayOfBitmapDrawable, paramManualDecodeGifImage, paramString, paramInt), 8, null, true);
-  }
-  
-  private void a(StickerBubbleAnimationView.AddItemRequest paramAddItemRequest, long paramLong)
-  {
-    List localList;
-    Object localObject;
-    if (StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest))
+    Map localMap;
+    if (paramAddItemRequest.jdField_a_of_type_Boolean) {
+      localMap = this.jdField_b_of_type_JavaUtilMap;
+    } else {
+      localMap = this.jdField_a_of_type_JavaUtilMap;
+    }
+    List localList = (List)localMap.get(paramAddItemRequest.jdField_a_of_type_JavaLangString);
+    Object localObject = localList;
+    if (localList == null)
     {
-      localList = (List)this.jdField_b_of_type_JavaUtilMap.get(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest));
-      localObject = localList;
-      if (localList == null)
-      {
-        localObject = new LinkedList();
-        if (!StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest)) {
-          break label111;
-        }
-        this.jdField_b_of_type_JavaUtilMap.put(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest), localObject);
-      }
-      label66:
-      if (!StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest)) {
-        break label130;
-      }
+      localObject = new LinkedList();
+      localMap.put(paramAddItemRequest.jdField_a_of_type_JavaLangString, localObject);
     }
-    label130:
-    for (paramAddItemRequest = b(paramAddItemRequest, paramLong);; paramAddItemRequest = a(paramAddItemRequest, paramLong))
-    {
-      ((List)localObject).add(paramAddItemRequest);
-      return;
-      localList = (List)this.jdField_a_of_type_JavaUtilMap.get(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest));
-      break;
-      label111:
-      this.jdField_a_of_type_JavaUtilMap.put(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest), localObject);
-      break label66;
-    }
-  }
-  
-  private void a(String paramString)
-  {
-    ThreadManager.postImmediately(new StickerBubbleAnimationView.3(this, paramString), null, true);
-  }
-  
-  private void a(Set<String> paramSet)
-  {
-    paramSet = paramSet.iterator();
-    while (paramSet.hasNext())
-    {
-      String str = (String)paramSet.next();
-      if (!this.c.containsKey(str))
-      {
-        StickerBubbleAnimationHelper.CacheItem localCacheItem = StickerBubbleAnimationHelper.a(str);
-        if (localCacheItem != null)
-        {
-          this.c.put(str, localCacheItem.a());
-          this.d.put(str, Integer.valueOf(localCacheItem.a()));
-          if (QLog.isColorLevel()) {
-            QLog.d("StickerBubbleAnimationView", 2, "get frames from cache");
-          }
-        }
-        else if (!this.jdField_a_of_type_JavaUtilSet.contains(str))
-        {
-          this.jdField_a_of_type_JavaUtilSet.add(str);
-          a(str);
-        }
-      }
-    }
+    ((List)localObject).add(a(paramAddItemRequest, paramLong));
   }
   
   private void a(Set<String> paramSet, long paramLong, Canvas paramCanvas)
   {
-    label392:
-    label399:
     for (;;)
     {
-      long l;
-      int i;
-      Object localObject2;
-      Object localObject1;
-      List localList;
-      BitmapDrawable[] arrayOfBitmapDrawable;
-      int k;
-      Object localObject3;
       try
       {
-        l = SystemClock.uptimeMillis();
-        i = 0;
+        long l = SystemClock.uptimeMillis();
         paramSet = paramSet.iterator();
+        i = 0;
         if (paramSet.hasNext())
         {
-          localObject2 = (String)paramSet.next();
-          if (!this.c.containsKey(localObject2)) {
-            break label399;
+          localObject1 = (String)paramSet.next();
+          if (!this.jdField_c_of_type_JavaUtilMap.containsKey(localObject1)) {
+            break label384;
           }
-          localObject1 = (List)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
-          localList = (List)this.jdField_b_of_type_JavaUtilMap.get(localObject2);
-          arrayOfBitmapDrawable = (BitmapDrawable[])this.c.get(localObject2);
-          k = ((Integer)this.d.get(localObject2)).intValue();
-          if (localObject1 == null) {
-            break label392;
+          BitmapDrawable[] arrayOfBitmapDrawable = (BitmapDrawable[])this.jdField_c_of_type_JavaUtilMap.get(localObject1);
+          int k = ((Integer)this.d.get(localObject1)).intValue();
+          List localList = (List)this.jdField_a_of_type_JavaUtilMap.get(localObject1);
+          if (localList == null) {
+            break label381;
           }
-          localObject2 = ((List)localObject1).iterator();
+          Object localObject2 = localList.iterator();
           if (((Iterator)localObject2).hasNext())
           {
-            localObject3 = (StickerBubbleAnimationItem)((Iterator)localObject2).next();
-            BitmapDrawable localBitmapDrawable = a(paramLong, ((StickerBubbleAnimationItem)localObject3).a(), arrayOfBitmapDrawable, k);
-            ((StickerBubbleAnimationItem)localObject3).a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, paramLong, localBitmapDrawable);
+            AnimationItem localAnimationItem = (AnimationItem)((Iterator)localObject2).next();
+            localAnimationItem.a(paramCanvas, paramLong, a(paramLong, localAnimationItem.a(), arrayOfBitmapDrawable, k));
             continue;
           }
-          j = ((List)localObject1).size() + i;
+          i += localList.size();
+          localList = (List)this.jdField_b_of_type_JavaUtilMap.get(localObject1);
+          j = i;
+          localObject1 = paramSet;
+          if (localList == null) {
+            break label391;
+          }
+          localObject1 = localList.iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject2 = (AnimationItem)((Iterator)localObject1).next();
+            ((AnimationItem)localObject2).a(paramCanvas, paramLong, a(paramLong, ((AnimationItem)localObject2).a(), arrayOfBitmapDrawable, k));
+            continue;
+          }
+          j = i + localList.size();
+          localObject1 = paramSet;
+          break label391;
+        }
+        if (this.jdField_a_of_type_Boolean) {
+          a(paramCanvas, paramLong);
+        }
+        if (QLog.isColorLevel())
+        {
+          if (this.jdField_b_of_type_Long % 60L != 0L) {
+            return;
+          }
+          paramLong = SystemClock.uptimeMillis();
+          paramSet = new StringBuilder();
+          paramSet.append("draw ");
+          paramSet.append(i);
+          paramSet.append(" items, take time ");
+          paramSet.append(paramLong - l);
+          QLog.d("StickerBubble_AnimationView_Cost", 2, paramSet.toString());
+          return;
         }
       }
       catch (Exception paramSet)
       {
-        QLog.e("StickerBubbleAnimationView", 1, "throw exception in doDraw: " + paramSet);
-        return;
+        QLog.e("StickerBubble_AnimationView", 1, "throw exception in doDraw: ", paramSet);
       }
-      for (;;)
-      {
-        i = j;
-        if (localList == null) {
-          break label399;
-        }
-        localObject1 = localList.iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (StickerBubbleAnimationItem)((Iterator)localObject1).next();
-          localObject3 = a(paramLong, ((StickerBubbleAnimationItem)localObject2).a(), arrayOfBitmapDrawable, k);
-          ((StickerBubbleAnimationItem)localObject2).a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsPaint, paramLong, (Drawable)localObject3);
-        }
-        i = j + localList.size();
-        break label399;
-        if (this.jdField_a_of_type_Boolean) {
-          a(paramCanvas, paramLong);
-        }
-        paramLong = SystemClock.uptimeMillis();
-        if ((!QLog.isColorLevel()) || (this.jdField_b_of_type_Long % 60L != 0L)) {
-          break;
-        }
-        QLog.d("StickerBubbleAnimationViewCost", 2, "draw " + i + " items, take time " + (paramLong - l));
-        return;
-        int j = i;
-      }
-    }
-  }
-  
-  private StickerBubbleAnimationItem b(StickerBubbleAnimationView.AddItemRequest paramAddItemRequest, long paramLong)
-  {
-    ItemStatus.Velocity localVelocity = new ItemStatus.Velocity(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest));
-    ItemStatus.Acceleration localAcceleration = new ItemStatus.Acceleration(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest));
-    paramAddItemRequest = new StickerBubbleAnimationItem(((BitmapDrawable[])this.c.get(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest)))[0], StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest), localVelocity, localAcceleration, paramLong, 1.7D, true, StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest), StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest));
-    paramAddItemRequest.a(this);
-    return paramAddItemRequest;
-  }
-  
-  private void b()
-  {
-    setBackgroundColor(0);
-    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#FFDC4F"));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    if (PEPanelHelper.a == null) {
-      PEPanelHelper.b();
-    }
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(PEPanelHelper.a);
-    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(PEPanelHelper.a);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#418DFF"));
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(30.0F);
-    setFocusable(false);
-    setClickable(false);
-    this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    this.jdField_b_of_type_JavaUtilMap = new HashMap();
-    this.c = new HashMap();
-    this.d = new HashMap();
-    this.e = new HashMap();
-    this.jdField_a_of_type_JavaUtilSet = new HashSet();
-    this.jdField_a_of_type_JavaUtilList = new ArrayList(70);
-    addOnAttachStateChangeListener(this);
-  }
-  
-  private void c()
-  {
-    int j = 0;
-    if ((this.jdField_a_of_type_JavaUtilMap.isEmpty()) && (this.jdField_b_of_type_JavaUtilMap.isEmpty())) {}
-    label183:
-    for (;;)
-    {
       return;
-      int k = 1;
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      String str;
-      do
+      label381:
+      continue;
+      label384:
+      Object localObject1 = paramSet;
+      int j = i;
+      label391:
+      paramSet = (Set<String>)localObject1;
+      int i = j;
+    }
+  }
+  
+  private void e()
+  {
+    if ((this.jdField_a_of_type_JavaUtilMap.isEmpty()) && (this.jdField_b_of_type_JavaUtilMap.isEmpty())) {
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+    String str;
+    while (((Iterator)localObject).hasNext())
+    {
+      str = (String)((Iterator)localObject).next();
+      if (!((List)this.jdField_a_of_type_JavaUtilMap.get(str)).isEmpty())
       {
-        i = k;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        str = (String)localIterator.next();
-      } while (((List)this.jdField_a_of_type_JavaUtilMap.get(str)).isEmpty());
-      int i = 0;
-      localIterator = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
-      {
-        str = (String)localIterator.next();
-        if (!((List)this.jdField_b_of_type_JavaUtilMap.get(str)).isEmpty()) {
-          i = j;
-        }
+        i = 0;
+        break label89;
       }
-      for (;;)
-      {
-        if (i == 0) {
-          break label183;
-        }
-        this.jdField_a_of_type_JavaLangString = "";
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback.a();
-        return;
+    }
+    int i = 1;
+    label89:
+    localObject = this.jdField_b_of_type_JavaUtilMap.keySet().iterator();
+    do
+    {
+      j = i;
+      if (!((Iterator)localObject).hasNext()) {
+        break;
       }
+      str = (String)((Iterator)localObject).next();
+    } while (((List)this.jdField_b_of_type_JavaUtilMap.get(str)).isEmpty());
+    int j = 0;
+    if ((j != 0) && (!this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
+    {
+      this.jdField_b_of_type_Boolean = true;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback;
+      if (localObject != null) {
+        ((StickerBubbleAnimationView.StickerBubbleAnimationCallback)localObject).a(this.jdField_a_of_type_JavaUtilSet.size());
+      }
+      this.jdField_a_of_type_JavaLangString = "";
+      this.jdField_a_of_type_JavaUtilSet.clear();
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_JavaLangString = "";
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleFrameFrameManager = new FrameManager(getContext(), this.jdField_c_of_type_JavaUtilMap, this.d);
+    this.jdField_b_of_type_Int = getContext().getResources().getDisplayMetrics().widthPixels;
+    setBackgroundColor(0);
+    this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#FFDC4F"));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_b_of_type_AndroidGraphicsPaint = new Paint(this.jdField_a_of_type_AndroidGraphicsPaint);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#418DFF"));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(30.0F);
+    Typeface localTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
+    if (localTypeface != null)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setTypeface(localTypeface);
+      this.jdField_b_of_type_AndroidGraphicsPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
+    }
+    setFocusable(false);
+    setClickable(false);
+    addOnAttachStateChangeListener(this);
   }
   
-  public void a(StickerBubbleAnimationItem paramStickerBubbleAnimationItem)
+  public void a(AddItemRequest paramAddItemRequest)
   {
-    post(new StickerBubbleAnimationView.1(this, paramStickerBubbleAnimationItem));
-  }
-  
-  public void a(StickerBubbleAnimationView.AddItemRequest paramAddItemRequest)
-  {
-    if (!this.jdField_a_of_type_JavaLangString.equals(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest)))
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramAddItemRequest.jdField_a_of_type_JavaLangString))
     {
       this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_JavaLangString = StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest);
+      this.jdField_a_of_type_JavaLangString = paramAddItemRequest.jdField_a_of_type_JavaLangString;
+      this.jdField_a_of_type_JavaUtilSet.add(this.jdField_a_of_type_JavaLangString);
     }
+    this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_Int += 1;
-    List localList = (List)this.e.get(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest));
+    List localList = (List)this.e.get(paramAddItemRequest.jdField_a_of_type_JavaLangString);
     Object localObject = localList;
     if (localList == null)
     {
       localObject = new LinkedList();
-      this.e.put(StickerBubbleAnimationView.AddItemRequest.a(paramAddItemRequest), localObject);
+      this.e.put(paramAddItemRequest.jdField_a_of_type_JavaLangString, localObject);
     }
     ((List)localObject).add(paramAddItemRequest);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  public void a(AnimationItem paramAnimationItem)
+  {
+    post(new StickerBubbleAnimationView.1(this, paramAnimationItem));
+  }
+  
+  public void b()
+  {
+    this.jdField_c_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubble_AnimationView", 2, "pauseAnim");
+    }
+  }
+  
+  public void c()
+  {
+    this.jdField_c_of_type_Boolean = false;
+    if (QLog.isColorLevel()) {
+      QLog.d("StickerBubble_AnimationView", 2, "resumeAnim");
+    }
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_JavaLangString = "";
+  }
+  
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    this.jdField_b_of_type_Long += 1L;
+    if (paramCanvas.getWidth() < this.jdField_b_of_type_Int / 2) {
+      return;
+    }
     SystemClock.uptimeMillis();
+    this.jdField_b_of_type_Long += 1L;
     Set localSet = this.e.keySet();
-    a(localSet);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleFrameFrameManager.a(localSet);
     long l = SystemClock.uptimeMillis();
     Iterator localIterator1 = localSet.iterator();
     while (localIterator1.hasNext())
     {
       Object localObject = (String)localIterator1.next();
-      if (this.c.containsKey(localObject))
+      if (this.jdField_c_of_type_JavaUtilMap.containsKey(localObject))
       {
         localObject = (List)this.e.get(localObject);
         if (localObject == null) {
@@ -448,38 +377,36 @@ public class StickerBubbleAnimationView
         }
         Iterator localIterator2 = ((List)localObject).iterator();
         while (localIterator2.hasNext()) {
-          a((StickerBubbleAnimationView.AddItemRequest)localIterator2.next(), l);
+          a((AddItemRequest)localIterator2.next(), l);
         }
         ((List)localObject).clear();
       }
     }
     a(localSet, l, paramCanvas);
-    c();
-    SystemClock.uptimeMillis();
+    e();
     invalidate();
   }
   
   public void onViewAttachedToWindow(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationView", 2, "onViewAttachedToWindow");
+      QLog.d("StickerBubble_AnimationView", 2, "onViewAttachedToWindow");
     }
-    StickerBubbleAnimationHelper.a();
+    FrameCache.a();
   }
   
   public void onViewDetachedFromWindow(View paramView)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("StickerBubbleAnimationView", 2, "onViewDetachedFromWindow");
+      QLog.d("StickerBubble_AnimationView", 2, "onViewDetachedFromWindow");
     }
     this.jdField_a_of_type_JavaUtilMap.clear();
     this.jdField_b_of_type_JavaUtilMap.clear();
-    this.c.clear();
-    this.d.clear();
     this.e.clear();
-    this.jdField_a_of_type_JavaUtilSet.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback.b();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleFrameFrameManager.a();
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback;
+    if (paramView != null) {
+      paramView.a();
     }
   }
   
@@ -488,14 +415,15 @@ public class StickerBubbleAnimationView
     this.jdField_a_of_type_ComTencentMobileqqActivityAioStickerbubbleStickerBubbleAnimationView$StickerBubbleAnimationCallback = paramStickerBubbleAnimationCallback;
   }
   
-  public void setShowText(boolean paramBoolean)
+  public void setShowText(boolean paramBoolean, Typeface paramTypeface)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_AndroidGraphicsTypeface = paramTypeface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerbubble.StickerBubbleAnimationView
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,6 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lcom.tencent.ilivesdk.roomswitchservice_interface.SwitchRoomInfo;>;
 import java.util.Locale;
 import java.util.Map;
 import org.json.JSONArray;
@@ -42,17 +41,21 @@ public class NowRoomSwitchService
   
   private long a(SwitchRoomInfo paramSwitchRoomInfo1, SwitchRoomInfo paramSwitchRoomInfo2, SwitchRoomInfo paramSwitchRoomInfo3, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      paramSwitchRoomInfo1 = paramSwitchRoomInfo2;
+      if (paramInt != 1) {
+        if (paramInt != 2) {
+          paramSwitchRoomInfo1 = paramSwitchRoomInfo2;
+        } else {
+          paramSwitchRoomInfo1 = paramSwitchRoomInfo3;
+        }
+      }
     }
-    while (paramSwitchRoomInfo1 != null)
-    {
-      return paramSwitchRoomInfo1.roomId;
+    else {
       paramSwitchRoomInfo1 = null;
-      continue;
-      paramSwitchRoomInfo1 = paramSwitchRoomInfo3;
+    }
+    if (paramSwitchRoomInfo1 != null) {
+      return paramSwitchRoomInfo1.roomId;
     }
     return 0L;
   }
@@ -98,26 +101,32 @@ public class NowRoomSwitchService
     {
       paramJSONObject = paramJSONObject.getJSONObject("result").getJSONArray("room_list");
       int i = 0;
+      Object localObject1;
+      Object localObject2;
       while (i < paramJSONObject.length())
       {
-        Object localObject = (JSONObject)paramJSONObject.get(i);
-        long l = ((JSONObject)localObject).getLong("room_id");
-        localObject = ((JSONObject)localObject).getString("url");
-        SwitchRoomInfo localSwitchRoomInfo = new SwitchRoomInfo();
-        localSwitchRoomInfo.roomId = l;
-        localSwitchRoomInfo.logoUrl = ((String)localObject);
-        localSwitchRoomInfo.videoType = VideoType.LIVE;
-        localSwitchRoomInfo.extData = new Bundle();
-        localSwitchRoomInfo.extData.putInt("content_type", 1);
-        localArrayList.add(localSwitchRoomInfo);
-        a(localSwitchRoomInfo);
+        localObject1 = (JSONObject)paramJSONObject.get(i);
+        long l = ((JSONObject)localObject1).getLong("room_id");
+        localObject1 = ((JSONObject)localObject1).getString("url");
+        localObject2 = new SwitchRoomInfo();
+        ((SwitchRoomInfo)localObject2).roomId = l;
+        ((SwitchRoomInfo)localObject2).logoUrl = ((String)localObject1);
+        ((SwitchRoomInfo)localObject2).videoType = VideoType.LIVE;
+        ((SwitchRoomInfo)localObject2).extData = new Bundle();
+        ((SwitchRoomInfo)localObject2).extData.putInt("content_type", 1);
+        localArrayList.add(localObject2);
+        a((SwitchRoomInfo)localObject2);
         i += 1;
       }
       return localArrayList;
     }
     catch (JSONException paramJSONObject)
     {
-      this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger().e("NowRoomSwitchService", "" + paramJSONObject, new Object[0]);
+      localObject1 = this.jdField_a_of_type_ComTencentIlivesdkServiceRoomSwitchServiceAdapter.getLogger();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(paramJSONObject);
+      ((LogInterface)localObject1).e("NowRoomSwitchService", ((StringBuilder)localObject2).toString(), new Object[0]);
     }
   }
   
@@ -132,89 +141,76 @@ public class NowRoomSwitchService
   
   private Map<String, String> a(List<SwitchRoomInfo> paramList, int paramInt1, int paramInt2)
   {
-    SwitchRoomInfo localSwitchRoomInfo2 = a(paramList, 0);
+    Object localObject = a(paramList, 0);
     SwitchRoomInfo localSwitchRoomInfo1 = a(paramList, paramInt2);
-    SwitchRoomInfo localSwitchRoomInfo3 = a(paramList, paramList.size() - 1);
-    Object localObject = "";
-    paramList = (List<SwitchRoomInfo>)localObject;
-    if (localSwitchRoomInfo1 != null)
-    {
-      paramList = (List<SwitchRoomInfo>)localObject;
-      if (localSwitchRoomInfo1.extData != null) {
-        paramList = localSwitchRoomInfo1.extData.getString("mqqschema");
-      }
+    SwitchRoomInfo localSwitchRoomInfo2 = a(paramList, paramList.size() - 1);
+    String str1 = "";
+    if ((localSwitchRoomInfo1 != null) && (localSwitchRoomInfo1.extData != null)) {
+      paramList = localSwitchRoomInfo1.extData.getString("mqqschema");
+    } else {
+      paramList = "";
     }
     paramList = (String)RoomManager.a(paramList).get("fromid");
     int j = NowBizConfigConst.a(paramList);
-    String str1 = NowBizConfigConst.a(paramList);
+    String str2 = NowBizConfigConst.a(paramList);
     int i;
-    long l;
-    if (paramInt1 == 1)
-    {
+    if (paramInt1 == 1) {
       i = 0;
-      String str2 = String.format(Locale.ENGLISH, "%d_%s_%d_%s", new Object[] { Integer.valueOf(j), str1, Integer.valueOf(paramInt2), Integer.valueOf(i) });
-      l = a(localSwitchRoomInfo2, localSwitchRoomInfo1, localSwitchRoomInfo3, paramInt1);
-      localObject = new HashMap();
-      if (j == 5)
-      {
-        ((Map)localObject).put("story_topic", str2);
-        ((Map)localObject).put("topic_name", str1);
-      }
-      ((Map)localObject).put("from_id", paramList);
-      ((Map)localObject).put("ext", str1);
-      ((Map)localObject).put("source", String.valueOf(j));
-      if (paramInt1 != 0) {
-        break label344;
-      }
-      paramList = String.valueOf(2);
-      label241:
-      ((Map)localObject).put("direction", paramList);
-      if (localSwitchRoomInfo1 != null) {
-        break label352;
-      }
-    }
-    label344:
-    label352:
-    for (paramList = "";; paramList = String.valueOf(localSwitchRoomInfo1.roomId))
-    {
-      ((Map)localObject).put("room_id", paramList);
-      ((Map)localObject).put("next_room_id", String.valueOf(l));
-      ((Map)localObject).put("sex", "2");
-      ((Map)localObject).put("machine_code", DeviceUtils.a(this.jdField_a_of_type_AndroidContentContext));
-      ((Map)localObject).put("biz_version", "100");
-      return localObject;
+    } else {
       i = 10;
-      break;
-      paramList = String.valueOf(paramInt1);
-      break label241;
     }
+    String str3 = String.format(Locale.ENGLISH, "%d_%s_%d_%s", new Object[] { Integer.valueOf(j), str2, Integer.valueOf(paramInt2), Integer.valueOf(i) });
+    long l = a((SwitchRoomInfo)localObject, localSwitchRoomInfo1, localSwitchRoomInfo2, paramInt1);
+    localObject = new HashMap();
+    if (j == 5)
+    {
+      ((Map)localObject).put("story_topic", str3);
+      ((Map)localObject).put("topic_name", str2);
+    }
+    ((Map)localObject).put("from_id", paramList);
+    ((Map)localObject).put("ext", str2);
+    ((Map)localObject).put("source", String.valueOf(j));
+    if (paramInt1 == 0) {
+      paramList = String.valueOf(2);
+    } else {
+      paramList = String.valueOf(paramInt1);
+    }
+    ((Map)localObject).put("direction", paramList);
+    if (localSwitchRoomInfo1 == null) {
+      paramList = str1;
+    } else {
+      paramList = String.valueOf(localSwitchRoomInfo1.roomId);
+    }
+    ((Map)localObject).put("room_id", paramList);
+    ((Map)localObject).put("next_room_id", String.valueOf(l));
+    ((Map)localObject).put("sex", "2");
+    ((Map)localObject).put("machine_code", DeviceUtils.a(this.jdField_a_of_type_AndroidContentContext));
+    ((Map)localObject).put("biz_version", "100");
+    return localObject;
   }
   
   private void a(SwitchRoomInfo paramSwitchRoomInfo)
   {
+    JSONObject localJSONObject2;
     try
     {
-      localJSONObject = new JSONObject();
-      localJSONObject.put("room_id", String.valueOf(paramSwitchRoomInfo.roomId));
-      HashMap localHashMap = new HashMap();
-      HttpsInterface localHttpsInterface = HttpsFactory.a();
-      if (a())
-      {
-        String str1 = "https://test.ilive.qq.com/cgi-bin/core/room_video/get_video_streaming";
-        localHttpsInterface.a(str1, localHashMap, localJSONObject, new NowRoomSwitchService.2(this, paramSwitchRoomInfo), CookieHelper.a());
-        return;
-      }
+      JSONObject localJSONObject1 = new JSONObject();
+      localJSONObject1.put("room_id", String.valueOf(paramSwitchRoomInfo.roomId));
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        JSONObject localJSONObject = null;
-        localException.printStackTrace();
-        continue;
-        String str2 = "https://ilive.qq.com/cgi-bin/core/room_video/get_video_streaming";
-      }
+      localException.printStackTrace();
+      localJSONObject2 = null;
     }
+    HashMap localHashMap = new HashMap();
+    HttpsInterface localHttpsInterface = HttpsFactory.a();
+    String str;
+    if (a()) {
+      str = "https://test.ilive.qq.com/cgi-bin/core/room_video/get_video_streaming";
+    } else {
+      str = "https://ilive.qq.com/cgi-bin/core/room_video/get_video_streaming";
+    }
+    localHttpsInterface.a(str, localHashMap, localJSONObject2, new NowRoomSwitchService.2(this, paramSwitchRoomInfo), CookieHelper.a());
   }
   
   private boolean a()
@@ -244,12 +240,14 @@ public class NowRoomSwitchService
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     StringBuilder localStringBuilder = new StringBuilder();
-    if (a()) {}
-    for (paramContext = "https://fastest.now.qq.com/";; paramContext = "https://now.qq.com/")
-    {
-      this.jdField_a_of_type_JavaLangString = (paramContext + "cgi-bin/now/web/room/room_switch");
-      return;
+    if (a()) {
+      paramContext = "https://fastest.now.qq.com/";
+    } else {
+      paramContext = "https://now.qq.com/";
     }
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append("cgi-bin/now/web/room/room_switch");
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public void onDestroy() {}
@@ -257,8 +255,10 @@ public class NowRoomSwitchService
   public void queryRoomList(List<SwitchRoomInfo> paramList, int paramInt1, int paramInt2, RoomSwitchInterface.IRoomList paramIRoomList)
   {
     this.jdField_a_of_type_ComTencentFalcoBaseLibapiLogLogInterface.i("NowLiteRoomSwitchService", "queryRoomList direction[%d],  index[%d] ", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) });
-    if (paramInt1 == 1) {}
-    while (((paramInt1 == 2) || (paramInt1 == 0)) && (paramList.size() - paramInt2 > 3)) {
+    if (paramInt1 == 1) {
+      return;
+    }
+    if (((paramInt1 == 2) || (paramInt1 == 0)) && (paramList.size() - paramInt2 > 3)) {
       return;
     }
     Map localMap = a(paramList, paramInt1, paramInt2);
@@ -269,7 +269,7 @@ public class NowRoomSwitchService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.services.NowRoomSwitchService
  * JD-Core Version:    0.7.0.1
  */

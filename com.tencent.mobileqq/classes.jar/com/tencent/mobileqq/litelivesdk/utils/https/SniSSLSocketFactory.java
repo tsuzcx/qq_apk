@@ -57,23 +57,26 @@ public class SniSSLSocketFactory
     if (Build.VERSION.SDK_INT >= 17) {
       localSSLCertificateSocketFactory.setHostname(paramSocket, this.jdField_a_of_type_JavaLangString);
     }
-    for (;;)
+    try
     {
-      paramString = paramSocket.getSession();
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier == null) {
-        this.jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
-      }
-      if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(this.jdField_a_of_type_JavaLangString, paramString)) {
-        break;
-      }
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + this.jdField_a_of_type_JavaLangString);
-      try
-      {
-        paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.jdField_a_of_type_JavaLangString });
-      }
-      catch (Exception paramString) {}
+      paramSocket.getClass().getMethod("setHostname", new Class[] { String.class }).invoke(paramSocket, new Object[] { this.jdField_a_of_type_JavaLangString });
     }
-    return paramSocket;
+    catch (Exception paramString)
+    {
+      label100:
+      break label100;
+    }
+    paramString = paramSocket.getSession();
+    if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier == null) {
+      this.jdField_a_of_type_JavaxNetSslHostnameVerifier = HttpsURLConnection.getDefaultHostnameVerifier();
+    }
+    if (this.jdField_a_of_type_JavaxNetSslHostnameVerifier.verify(this.jdField_a_of_type_JavaLangString, paramString)) {
+      return paramSocket;
+    }
+    paramSocket = new StringBuilder();
+    paramSocket.append("Cannot verify hostname: ");
+    paramSocket.append(this.jdField_a_of_type_JavaLangString);
+    throw new SSLPeerUnverifiedException(paramSocket.toString());
   }
   
   public String[] getDefaultCipherSuites()
@@ -88,7 +91,7 @@ public class SniSSLSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.https.SniSSLSocketFactory
  * JD-Core Version:    0.7.0.1
  */

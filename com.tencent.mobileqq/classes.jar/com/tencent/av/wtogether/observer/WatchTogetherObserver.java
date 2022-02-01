@@ -30,9 +30,7 @@ public class WatchTogetherObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1) {
       return;
     }
     a(paramBoolean, paramObject);
@@ -40,7 +38,7 @@ public class WatchTogetherObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.observer.WatchTogetherObserver
  * JD-Core Version:    0.7.0.1
  */

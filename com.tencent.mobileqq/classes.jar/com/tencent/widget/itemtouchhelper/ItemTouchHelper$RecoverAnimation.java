@@ -1,13 +1,13 @@
 package com.tencent.widget.itemtouchhelper;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class ItemTouchHelper$RecoverAnimation
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   final int mActionState;
   final int mAnimationType;
@@ -80,18 +80,26 @@ class ItemTouchHelper$RecoverAnimation
   
   public void update()
   {
-    if (this.mStartDx == this.mTargetX) {}
-    for (this.mX = this.mViewHolder.itemView.getTranslationX(); this.mStartDy == this.mTargetY; this.mX = (this.mStartDx + this.mFraction * (this.mTargetX - this.mStartDx)))
+    float f1 = this.mStartDx;
+    float f2 = this.mTargetX;
+    if (f1 == f2) {
+      this.mX = this.mViewHolder.itemView.getTranslationX();
+    } else {
+      this.mX = (f1 + this.mFraction * (f2 - f1));
+    }
+    f1 = this.mStartDy;
+    f2 = this.mTargetY;
+    if (f1 == f2)
     {
       this.mY = this.mViewHolder.itemView.getTranslationY();
       return;
     }
-    this.mY = (this.mStartDy + this.mFraction * (this.mTargetY - this.mStartDy));
+    this.mY = (f1 + this.mFraction * (f2 - f1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchHelper.RecoverAnimation
  * JD-Core Version:    0.7.0.1
  */

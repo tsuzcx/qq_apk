@@ -17,7 +17,16 @@ class VideoController$10
   public void onCompletion(MediaPlayer paramMediaPlayer)
   {
     SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvVideoController.a();
-    QLog.w(VideoController.jdField_a_of_type_JavaLangString, 1, "onCompletion, onClose, mainSession[" + localSessionInfo + "], seq[" + this.jdField_a_of_type_Long + "], timeOutTask[" + VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController) + "]");
+    String str = VideoController.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCompletion, onClose, mainSession[");
+    localStringBuilder.append(localSessionInfo);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("], timeOutTask[");
+    localStringBuilder.append(VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController));
+    localStringBuilder.append("]");
+    QLog.w(str, 1, localStringBuilder.toString());
     if (VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController) != null)
     {
       this.jdField_a_of_type_ComTencentAvVideoController.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(VideoController.a(this.jdField_a_of_type_ComTencentAvVideoController));
@@ -26,21 +35,21 @@ class VideoController$10
     if (paramMediaPlayer != null) {
       paramMediaPlayer.release();
     }
-    if (!localSessionInfo.p())
+    if (!localSessionInfo.n())
     {
       AVLog.printAllUserLog(VideoController.jdField_a_of_type_JavaLangString, "onCompletion onClose is not Closing2");
       this.jdField_a_of_type_Long = 0L;
       return;
     }
-    this.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.d, 217);
+    this.jdField_a_of_type_ComTencentAvVideoController.a(localSessionInfo.c, 217);
     this.jdField_a_of_type_ComTencentAvVideoController.b(217);
-    this.jdField_a_of_type_ComTencentAvVideoController.b(localSessionInfo.d, this.jdField_a_of_type_ComTencentAvVideoController.a().z);
+    this.jdField_a_of_type_ComTencentAvVideoController.b(localSessionInfo.c, this.jdField_a_of_type_ComTencentAvVideoController.a().z);
     this.jdField_a_of_type_Long = 0L;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.10
  * JD-Core Version:    0.7.0.1
  */

@@ -26,19 +26,20 @@ public class JobController$DefaultJobControlHandler
   
   public void handleExecute(@NonNull Executor[] paramArrayOfExecutor, @NonNull Worker paramWorker)
   {
-    if (paramArrayOfExecutor.length > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.assertTrue(bool);
-      int i = paramWorker.getJobType();
-      Bosses.get().getExecutor(i).execute(paramWorker);
-      return;
+    boolean bool;
+    if (paramArrayOfExecutor.length > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtils.assertTrue(bool);
+    int i = paramWorker.getJobType();
+    Bosses.get().getExecutor(i).execute(paramWorker);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.JobController.DefaultJobControlHandler
  * JD-Core Version:    0.7.0.1
  */

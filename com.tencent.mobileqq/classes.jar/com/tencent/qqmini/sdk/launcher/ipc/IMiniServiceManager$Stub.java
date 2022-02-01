@@ -38,20 +38,23 @@ public abstract class IMiniServiceManager$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.qqmini.sdk.launcher.ipc.IMiniServiceManager");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IMiniServiceManager");
-      paramParcel1 = getService(paramParcel1.readString());
-      paramParcel2.writeNoException();
-      paramParcel2.writeStrongBinder(paramParcel1);
-      return true;
-    case 2: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 1598968902) {
+            return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+          }
+          paramParcel2.writeString("com.tencent.qqmini.sdk.launcher.ipc.IMiniServiceManager");
+          return true;
+        }
+        paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IMiniServiceManager");
+        addService(paramParcel1.readString(), paramParcel1.readStrongBinder());
+        paramParcel2.writeNoException();
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IMiniServiceManager");
       paramParcel1 = checkService(paramParcel1.readString());
       paramParcel2.writeNoException();
@@ -59,14 +62,15 @@ public abstract class IMiniServiceManager$Stub
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.qqmini.sdk.launcher.ipc.IMiniServiceManager");
-    addService(paramParcel1.readString(), paramParcel1.readStrongBinder());
+    paramParcel1 = getService(paramParcel1.readString());
     paramParcel2.writeNoException();
+    paramParcel2.writeStrongBinder(paramParcel1);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ipc.IMiniServiceManager.Stub
  * JD-Core Version:    0.7.0.1
  */

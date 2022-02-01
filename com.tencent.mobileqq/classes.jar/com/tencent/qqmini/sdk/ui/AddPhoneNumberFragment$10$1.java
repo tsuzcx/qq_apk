@@ -12,7 +12,12 @@ class AddPhoneNumberFragment$10$1
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("AddPhoneNumberFragment", "addPhoneNumber isSuccess=" + paramBoolean + "; result=" + paramJSONObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addPhoneNumber isSuccess=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("; result=");
+    localStringBuilder.append(paramJSONObject);
+    QMLog.d("AddPhoneNumberFragment", localStringBuilder.toString());
     if (paramBoolean)
     {
       AppBrandTask.runTaskOnUiThread(new AddPhoneNumberFragment.10.1.1(this, paramJSONObject));
@@ -23,7 +28,7 @@ class AddPhoneNumberFragment$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.AddPhoneNumberFragment.10.1
  * JD-Core Version:    0.7.0.1
  */

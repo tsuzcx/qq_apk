@@ -51,37 +51,33 @@ public final class FWActivityManager
   
   public final void createFloat(@NotNull FloatWindowConfig paramFloatWindowConfig)
   {
-    int j = -1;
     Intrinsics.checkParameterIsNotNull(paramFloatWindowConfig, "config");
-    FloatingView localFloatingView = new FloatingView((Context)this.activity, null, 2, null);
-    localFloatingView.setTag(getTag(paramFloatWindowConfig.floatTag));
+    Object localObject1 = new FloatingView((Context)this.activity, null, 2, null);
+    ((FloatingView)localObject1).setTag(getTag(paramFloatWindowConfig.floatTag));
+    boolean bool = paramFloatWindowConfig.widthMatch;
+    int j = -1;
     int i;
-    if (paramFloatWindowConfig.widthMatch)
-    {
+    if (bool) {
       i = -1;
-      if (!paramFloatWindowConfig.heightMatch) {
-        break label161;
-      }
-    }
-    for (;;)
-    {
-      FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(i, j);
-      if (Intrinsics.areEqual(paramFloatWindowConfig.locationPair, new Point(0, 0))) {
-        localLayoutParams.gravity = paramFloatWindowConfig.gravity;
-      }
-      localFloatingView.setLayoutParams((ViewGroup.LayoutParams)localLayoutParams);
-      localFloatingView.setFloatConfig(paramFloatWindowConfig);
-      this.parentFrame.addView((View)localFloatingView);
-      paramFloatWindowConfig.layoutView = ((View)localFloatingView);
-      paramFloatWindowConfig = paramFloatWindowConfig.callbacks;
-      if (paramFloatWindowConfig != null) {
-        paramFloatWindowConfig.createdResult(true, 0, (View)localFloatingView);
-      }
-      return;
+    } else {
       i = -2;
-      break;
-      label161:
+    }
+    if (!paramFloatWindowConfig.heightMatch) {
       j = -2;
+    }
+    Object localObject2 = new FrameLayout.LayoutParams(i, j);
+    if (Intrinsics.areEqual(paramFloatWindowConfig.locationPair, new Point(0, 0))) {
+      ((FrameLayout.LayoutParams)localObject2).gravity = paramFloatWindowConfig.gravity;
+    }
+    ((FloatingView)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+    ((FloatingView)localObject1).setFloatConfig(paramFloatWindowConfig);
+    localObject2 = this.parentFrame;
+    localObject1 = (View)localObject1;
+    ((FrameLayout)localObject2).addView((View)localObject1);
+    paramFloatWindowConfig.layoutView = ((View)localObject1);
+    paramFloatWindowConfig = paramFloatWindowConfig.callbacks;
+    if (paramFloatWindowConfig != null) {
+      paramFloatWindowConfig.createdResult(true, 0, (View)localObject1);
     }
   }
   
@@ -138,33 +134,42 @@ public final class FWActivityManager
   @Nullable
   public final FloatingView setVisibility(@Nullable String paramString, int paramInt)
   {
-    paramString = floatingView(paramString);
-    if (paramString != null)
+    FloatingView localFloatingView = floatingView(paramString);
+    if (localFloatingView != null)
     {
-      paramString.setVisibility(paramInt);
+      localFloatingView.setVisibility(paramInt);
       OnFloatWindowCallbacks localOnFloatWindowCallbacks;
       if (paramInt == 8)
       {
-        localOnFloatWindowCallbacks = paramString.getConfig().callbacks;
-        if (localOnFloatWindowCallbacks != null) {
-          localOnFloatWindowCallbacks.hide((View)paramString);
+        localOnFloatWindowCallbacks = localFloatingView.getConfig().callbacks;
+        paramString = localFloatingView;
+        if (localOnFloatWindowCallbacks != null)
+        {
+          localOnFloatWindowCallbacks.hide((View)localFloatingView);
+          return localFloatingView;
         }
       }
-      for (;;)
+      else
       {
-        return paramString;
-        localOnFloatWindowCallbacks = paramString.getConfig().callbacks;
-        if (localOnFloatWindowCallbacks != null) {
-          localOnFloatWindowCallbacks.show((View)paramString);
+        localOnFloatWindowCallbacks = localFloatingView.getConfig().callbacks;
+        paramString = localFloatingView;
+        if (localOnFloatWindowCallbacks != null)
+        {
+          localOnFloatWindowCallbacks.show((View)localFloatingView);
+          return localFloatingView;
         }
       }
     }
-    return null;
+    else
+    {
+      paramString = null;
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.activityfloat.FWActivityManager
  * JD-Core Version:    0.7.0.1
  */

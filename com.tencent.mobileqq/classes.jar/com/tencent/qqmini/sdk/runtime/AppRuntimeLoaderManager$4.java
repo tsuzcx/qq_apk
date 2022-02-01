@@ -14,10 +14,11 @@ class AppRuntimeLoaderManager$4
       if (this.val$listener != null) {
         this.val$listener.onResult(paramInt, paramString, paramBaseRuntimeLoader);
       }
-      if (paramInt != 0) {
+      if (paramInt != 0)
+      {
         this.this$0.removeRuntimeLoader(paramBaseRuntimeLoader);
+        return;
       }
-      return;
     }
     catch (Throwable paramString)
     {
@@ -27,7 +28,7 @@ class AppRuntimeLoaderManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppRuntimeLoaderManager.4
  * JD-Core Version:    0.7.0.1
  */

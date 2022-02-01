@@ -20,15 +20,18 @@ public class NonViewAware
   
   public NonViewAware(String paramString, ImageSize paramImageSize, ViewScaleType paramViewScaleType)
   {
-    if (paramImageSize == null) {
-      throw new IllegalArgumentException("imageSize must not be null");
-    }
-    if (paramViewScaleType == null) {
+    if (paramImageSize != null)
+    {
+      if (paramViewScaleType != null)
+      {
+        this.imageUri = paramString;
+        this.imageSize = paramImageSize;
+        this.scaleType = paramViewScaleType;
+        return;
+      }
       throw new IllegalArgumentException("scaleType must not be null");
     }
-    this.imageUri = paramString;
-    this.imageSize = paramImageSize;
-    this.scaleType = paramViewScaleType;
+    throw new IllegalArgumentException("imageSize must not be null");
   }
   
   public int getHeight()
@@ -73,7 +76,7 @@ public class NonViewAware
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.imageaware.NonViewAware
  * JD-Core Version:    0.7.0.1
  */

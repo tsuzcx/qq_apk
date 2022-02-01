@@ -23,25 +23,31 @@ public class RoamSetting
   
   public static int getIntValue(RoamSetting paramRoamSetting, int paramInt)
   {
-    if (paramRoamSetting == null) {}
-    while ((paramRoamSetting.value == null) || (paramRoamSetting.value.length() == 0)) {
+    if (paramRoamSetting == null) {
       return paramInt;
     }
-    try
+    String str = paramRoamSetting.value;
+    if (str != null)
     {
-      int i = Integer.parseInt(paramRoamSetting.value);
-      return i;
-    }
-    catch (Exception paramRoamSetting)
-    {
-      paramRoamSetting.printStackTrace();
+      if (str.length() == 0) {
+        return paramInt;
+      }
+      try
+      {
+        int i = Integer.parseInt(paramRoamSetting.value);
+        return i;
+      }
+      catch (Exception paramRoamSetting)
+      {
+        paramRoamSetting.printStackTrace();
+      }
     }
     return paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.RoamSetting
  * JD-Core Version:    0.7.0.1
  */

@@ -16,54 +16,78 @@ class VideoInviteFloatBarUICtr$2
 {
   VideoInviteFloatBarUICtr$2(VideoInviteFloatBarUICtr paramVideoInviteFloatBarUICtr) {}
   
-  public void a()
+  protected void a()
   {
     super.a();
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onServiceConnected uin = " + this.a.c);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceConnected uin = ");
+      localStringBuilder.append(this.a.c);
+      QLog.d("VideoInviteFloatBarUICtr", 2, localStringBuilder.toString());
     }
     if (this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface != null)
     {
       this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a(this.a.jdField_b_of_type_Int, this.a.c, this.a.d);
-      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.A, this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.p);
+      this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.c(this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.A, this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.o);
     }
     this.a.a(false);
   }
   
-  public void a(long paramLong)
+  protected void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w("VideoInviteFloatBarUICtr", 1, "onConnected, seq[" + paramLong + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onConnected, seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
     }
-    this.a.jdField_a_of_type_ComTencentAvVideoController.b();
+    this.a.jdField_a_of_type_ComTencentAvVideoController.d();
     SmallScreenActivityPlugin.a(this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface).a(paramLong, false);
     if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
       this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.c();
     }
     this.a.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this.a.jdField_b_of_type_JavaLangRunnable, 1000L);
     if (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.d == 1) {
-      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTHHEADSET;DEVICE_WIREDHEADSET;";
+      this.a.f = "DEVICE_SPEAKERPHONE;DEVICE_EARPHONE;DEVICE_BLUETOOTH_HEADSET;DEVICE_WIRED_HEADSET;";
     }
     TraeHelper.a().a(this.a.f);
   }
   
-  public void a(long paramLong, int paramInt, String paramString)
+  protected void a(long paramLong, int paramInt, String paramString)
   {
-    QLog.d("VideoInviteFloatBarUICtr", 1, "onClose  reason = " + paramInt + ",peerUin =  " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onClose  reason = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",peerUin =  ");
+    localStringBuilder.append(paramString);
+    QLog.d("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
     if (TextUtils.equals(this.a.c, paramString))
     {
-      QLog.d("VideoInviteFloatBarUICtr", 1, "onClose  wrong uin: " + this.a.c + ", " + paramString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onClose  wrong uin: ");
+      localStringBuilder.append(this.a.c);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(paramString);
+      QLog.d("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
       this.a.a();
-    }
-    while ((this.a.jdField_a_of_type_ComTencentAvVideoController == null) || (this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.j())) {
       return;
+    }
+    if (this.a.jdField_a_of_type_ComTencentAvVideoController != null) {
+      this.a.jdField_a_of_type_ComTencentAvAppSessionInfo.h();
     }
   }
   
-  public void a(String paramString, Bitmap paramBitmap)
+  protected void a(String paramString, Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VideoInviteFloatBarUICtr", 2, "onGetStrangeFace uin = " + this.a.c);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetStrangeFace uin = ");
+      localStringBuilder.append(this.a.c);
+      QLog.d("VideoInviteFloatBarUICtr", 2, localStringBuilder.toString());
     }
     if ((this.a.jdField_b_of_type_Int == 25) && (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null)) {
       this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.a(paramBitmap);
@@ -71,29 +95,39 @@ class VideoInviteFloatBarUICtr$2
     super.a(paramString, paramBitmap);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  protected void a(String paramString, boolean paramBoolean)
   {
     super.a(paramString, paramBoolean);
-    QLog.d("VideoInviteFloatBarUICtr", 1, "onDestroyUI  peerUin: " + this.a.c + ", isQuit : " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDestroyUI  peerUin: ");
+    localStringBuilder.append(this.a.c);
+    localStringBuilder.append(", isQuit : ");
+    localStringBuilder.append(paramBoolean);
+    QLog.d("VideoInviteFloatBarUICtr", 1, localStringBuilder.toString());
     if ((this.a.c != null) && (paramString != null) && (this.a.c.equals(paramString)) && (paramBoolean)) {
       this.a.a();
     }
   }
   
-  public void b(int paramInt) {}
+  protected void b(int paramInt) {}
   
-  public void c(int paramInt) {}
+  protected void c(int paramInt) {}
   
-  public void d(String paramString)
+  protected void d(String paramString)
   {
     super.d(paramString);
     if (this.a.jdField_b_of_type_Int == 25)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VideoInviteFloatBarUICtr", 2, "VideoInviteActivity onGetQCallNickName nickName:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("VideoInviteActivity onGetQCallNickName nickName:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("VideoInviteFloatBarUICtr", 2, ((StringBuilder)localObject).toString());
       }
-      this.a.jdField_b_of_type_JavaLangString = paramString;
-      if (this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
+      Object localObject = this.a;
+      ((VideoInviteFloatBarUICtr)localObject).jdField_b_of_type_JavaLangString = paramString;
+      if (((VideoInviteFloatBarUICtr)localObject).jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar != null) {
         this.a.jdField_a_of_type_ComTencentAvUiVideoInviteFloatBar.d(this.a.jdField_b_of_type_JavaLangString);
       }
     }
@@ -101,7 +135,7 @@ class VideoInviteFloatBarUICtr$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteFloatBarUICtr.2
  * JD-Core Version:    0.7.0.1
  */

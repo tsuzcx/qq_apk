@@ -15,12 +15,20 @@ public class AreaInfo
   
   public String toString()
   {
-    return "ExposureInfo {viewArea = " + this.viewArea + ", exposureArea = " + this.exposureArea + ", exposureRate = " + this.exposureRate + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExposureInfo {viewArea = ");
+    localStringBuilder.append(this.viewArea);
+    localStringBuilder.append(", exposureArea = ");
+    localStringBuilder.append(this.exposureArea);
+    localStringBuilder.append(", exposureRate = ");
+    localStringBuilder.append(this.exposureRate);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.exposure.AreaInfo
  * JD-Core Version:    0.7.0.1
  */

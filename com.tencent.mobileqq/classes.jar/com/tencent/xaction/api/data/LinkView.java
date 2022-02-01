@@ -3,26 +3,35 @@ package com.tencent.xaction.api.data;
 import androidx.annotation.Keep;
 import com.tencent.xaction.api.IView;
 import com.tencent.xaction.api.base.BaseAnim;
+import com.tencent.xaction.api.util.ScreenUnit;
+import com.tencent.xaction.api.util.ScreenUnit.Companion;
 import java.util.ArrayList;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/LinkView;", "", "()V", "anim", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseAnim;", "Lkotlin/collections/ArrayList;", "getAnim", "()Ljava/util/ArrayList;", "damping", "", "getDamping", "()F", "setDamping", "(F)V", "float", "", "getFloat", "()Ljava/lang/String;", "setFloat", "(Ljava/lang/String;)V", "floatData", "Lcom/tencent/xaction/api/data/FloatViewData;", "getFloatData", "()Lcom/tencent/xaction/api/data/FloatViewData;", "setFloatData", "(Lcom/tencent/xaction/api/data/FloatViewData;)V", "lId", "", "", "getLId", "()[Ljava/lang/Integer;", "setLId", "([Ljava/lang/Integer;)V", "[Ljava/lang/Integer;", "maxValue", "getMaxValue", "setMaxValue", "status", "getStatus", "setStatus", "views", "Lcom/tencent/xaction/api/IView;", "getViews", "setViews", "(Ljava/util/ArrayList;)V", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/LinkView;", "", "()V", "anim", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseAnim;", "Lkotlin/collections/ArrayList;", "getAnim", "()Ljava/util/ArrayList;", "bx", "", "getBx", "()I", "setBx", "(I)V", "by", "getBy", "setBy", "damping", "", "getDamping", "()F", "setDamping", "(F)V", "float", "", "getFloat", "()Ljava/lang/String;", "setFloat", "(Ljava/lang/String;)V", "floatData", "Lcom/tencent/xaction/api/data/FloatViewData;", "getFloatData", "()Lcom/tencent/xaction/api/data/FloatViewData;", "setFloatData", "(Lcom/tencent/xaction/api/data/FloatViewData;)V", "fx", "getFx", "setFx", "fy", "getFy", "setFy", "isForWardActive", "", "()Z", "setForWardActive", "(Z)V", "lId", "", "getLId", "()[Ljava/lang/Integer;", "setLId", "([Ljava/lang/Integer;)V", "[Ljava/lang/Integer;", "lTag", "getLTag", "()[Ljava/lang/String;", "setLTag", "([Ljava/lang/String;)V", "[Ljava/lang/String;", "runViewAnim", "getRunViewAnim", "status", "getStatus", "setStatus", "views", "Lcom/tencent/xaction/api/IView;", "getViews", "setViews", "(Ljava/util/ArrayList;)V", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class LinkView
 {
   @Nullable
   private final ArrayList<BaseAnim> anim;
+  private int bx = ScreenUnit.a.a();
+  private int by = ScreenUnit.a.a();
   private float damping = 1.0F;
   @NotNull
   private String jdField_float = "";
   @NotNull
-  private transient FloatViewData floatData = new FloatViewData();
+  private FloatViewData floatData = new FloatViewData();
+  private int fx = ScreenUnit.a.a();
+  private int fy = ScreenUnit.a.a();
+  private transient boolean isForWardActive;
   @Nullable
   private Integer[] lId;
-  private float maxValue;
+  @Nullable
+  private String[] lTag;
+  private final boolean runViewAnim;
   @NotNull
   private String status = "";
   @NotNull
@@ -32,6 +41,16 @@ public final class LinkView
   public final ArrayList<BaseAnim> getAnim()
   {
     return this.anim;
+  }
+  
+  public final int getBx()
+  {
+    return this.bx;
+  }
+  
+  public final int getBy()
+  {
+    return this.by;
   }
   
   public final float getDamping()
@@ -51,15 +70,31 @@ public final class LinkView
     return this.floatData;
   }
   
+  public final int getFx()
+  {
+    return this.fx;
+  }
+  
+  public final int getFy()
+  {
+    return this.fy;
+  }
+  
   @Nullable
   public final Integer[] getLId()
   {
     return this.lId;
   }
   
-  public final float getMaxValue()
+  @Nullable
+  public final String[] getLTag()
   {
-    return this.maxValue;
+    return this.lTag;
+  }
+  
+  public final boolean getRunViewAnim()
+  {
+    return this.runViewAnim;
   }
   
   @NotNull
@@ -72,6 +107,21 @@ public final class LinkView
   public final ArrayList<IView> getViews()
   {
     return this.views;
+  }
+  
+  public final boolean isForWardActive()
+  {
+    return this.isForWardActive;
+  }
+  
+  public final void setBx(int paramInt)
+  {
+    this.bx = paramInt;
+  }
+  
+  public final void setBy(int paramInt)
+  {
+    this.by = paramInt;
   }
   
   public final void setDamping(float paramFloat)
@@ -91,14 +141,29 @@ public final class LinkView
     this.floatData = paramFloatViewData;
   }
   
+  public final void setForWardActive(boolean paramBoolean)
+  {
+    this.isForWardActive = paramBoolean;
+  }
+  
+  public final void setFx(int paramInt)
+  {
+    this.fx = paramInt;
+  }
+  
+  public final void setFy(int paramInt)
+  {
+    this.fy = paramInt;
+  }
+  
   public final void setLId(@Nullable Integer[] paramArrayOfInteger)
   {
     this.lId = paramArrayOfInteger;
   }
   
-  public final void setMaxValue(float paramFloat)
+  public final void setLTag(@Nullable String[] paramArrayOfString)
   {
-    this.maxValue = paramFloat;
+    this.lTag = paramArrayOfString;
   }
   
   public final void setStatus(@NotNull String paramString)
@@ -115,7 +180,7 @@ public final class LinkView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.data.LinkView
  * JD-Core Version:    0.7.0.1
  */

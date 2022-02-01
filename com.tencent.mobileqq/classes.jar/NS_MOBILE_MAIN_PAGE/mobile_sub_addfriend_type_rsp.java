@@ -27,14 +27,15 @@ public final class mobile_sub_addfriend_type_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.errorstring != null) {
-      paramJceOutputStream.write(this.errorstring, 1);
+    String str = this.errorstring;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_addfriend_type_rsp
  * JD-Core Version:    0.7.0.1
  */

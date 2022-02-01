@@ -23,7 +23,11 @@ public class WMElement
     this.materialId = paramString1;
     this.elementId = paramString2;
     this.type = paramString3;
-    this.key = (this.materialId + "_" + this.elementId);
+    paramString1 = new StringBuilder();
+    paramString1.append(this.materialId);
+    paramString1.append("_");
+    paramString1.append(this.elementId);
+    this.key = paramString1.toString();
   }
   
   private native String getCustomInnerValue(String paramString1, String paramString2);
@@ -73,7 +77,7 @@ public class WMElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.bean.WMElement
  * JD-Core Version:    0.7.0.1
  */

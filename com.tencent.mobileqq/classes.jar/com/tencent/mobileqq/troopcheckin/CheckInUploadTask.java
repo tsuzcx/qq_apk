@@ -44,41 +44,46 @@ public abstract class CheckInUploadTask
   
   protected boolean a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic path= " + paramString);
-    }
-    ITransactionCallback localITransactionCallback = this.jdField_a_of_type_ComTencentMobileqqHighwayApiITransactionCallback;
-    QQAppInterface localQQAppInterface = a();
-    String str;
-    byte[] arrayOfByte;
-    if (localQQAppInterface != null)
+    if (QLog.isColorLevel())
     {
-      str = localQQAppInterface.getCurrentUin();
-      arrayOfByte = ARCloudFileUpload.a(paramString);
-      if (arrayOfByte != null) {
-        break label83;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic md5 null ");
-      }
+      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("uploadPic path= ");
+      ((StringBuilder)localObject2).append(paramString);
+      QLog.d((String)localObject1, 2, ((StringBuilder)localObject2).toString());
     }
-    label83:
-    int i;
-    do
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqHighwayApiITransactionCallback;
+    Object localObject1 = a();
+    if (localObject1 != null)
     {
-      return false;
+      String str = ((QQAppInterface)localObject1).getCurrentUin();
+      byte[] arrayOfByte = ARCloudFileUpload.a(paramString);
+      if (arrayOfByte == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic md5 null ");
+        }
+        return false;
+      }
       Bdh_extinfo.CommFileExtReq localCommFileExtReq = new Bdh_extinfo.CommFileExtReq();
       localCommFileExtReq.uint32_action_type.set(0);
       localCommFileExtReq.bytes_uuid.set(ByteStringMicro.copyFromUtf8(UUID.randomUUID().toString()));
-      paramString = new Transaction(str, 75, paramString, 0, arrayOfByte, localITransactionCallback, localCommFileExtReq.toByteArray(), false);
-      i = localQQAppInterface.getHwEngine().submitTransactionTask(paramString);
+      paramString = new Transaction(str, 75, paramString, 0, arrayOfByte, (ITransactionCallback)localObject2, localCommFileExtReq.toByteArray(), false);
+      int i = ((QQAppInterface)localObject1).getHwEngine().submitTransactionTask(paramString);
       if (i == 0)
       {
         this.jdField_a_of_type_ComTencentMobileqqHighwayTransactionTransaction = paramString;
         return true;
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "uploadPic submitTransactionTask  retCode= " + i);
+      if (QLog.isColorLevel())
+      {
+        paramString = this.jdField_a_of_type_JavaLangString;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("uploadPic submitTransactionTask  retCode= ");
+        ((StringBuilder)localObject1).append(i);
+        QLog.d(paramString, 2, ((StringBuilder)localObject1).toString());
+      }
+    }
     return false;
   }
   
@@ -99,7 +104,7 @@ public abstract class CheckInUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troopcheckin.CheckInUploadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -14,21 +14,20 @@ public class StoryDetailPresenter$WatchVideoReceiver
 {
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull WatchVideoHandler.WatchVideoEvent paramWatchVideoEvent)
   {
-    if (StoryDetailPresenter.a(paramStoryDetailPresenter) == null) {
-      SLog.b(this.TAG, "ignore this watch video event. %s.", paramWatchVideoEvent.toString());
-    }
-    Iterator localIterator;
-    do
+    if (StoryDetailPresenter.a(paramStoryDetailPresenter) == null)
     {
+      SLog.b(this.TAG, "ignore this watch video event. %s.", paramWatchVideoEvent.toString());
       return;
-      while (!localIterator.hasNext())
+    }
+    SLog.a(this.TAG, "receive watch video event. %s.", paramWatchVideoEvent.toString());
+    Iterator localIterator = StoryDetailPresenter.a(paramStoryDetailPresenter).a().iterator();
+    while (localIterator.hasNext()) {
+      if (((StoryVideoItem)localIterator.next()).mVid.equals(paramWatchVideoEvent.a))
       {
-        SLog.a(this.TAG, "receive watch video event. %s.", paramWatchVideoEvent.toString());
-        localIterator = StoryDetailPresenter.a(paramStoryDetailPresenter).a().iterator();
+        StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramWatchVideoEvent.a);
+        SLog.a(this.TAG, "find watched video. vid = %s.", paramWatchVideoEvent.a);
       }
-    } while (!((StoryVideoItem)localIterator.next()).mVid.equals(paramWatchVideoEvent.a));
-    StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramWatchVideoEvent.a);
-    SLog.a(this.TAG, "find watched video. vid = %s.", paramWatchVideoEvent.a);
+    }
   }
   
   public Class acceptEventClass()
@@ -38,7 +37,7 @@ public class StoryDetailPresenter$WatchVideoReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.WatchVideoReceiver
  * JD-Core Version:    0.7.0.1
  */

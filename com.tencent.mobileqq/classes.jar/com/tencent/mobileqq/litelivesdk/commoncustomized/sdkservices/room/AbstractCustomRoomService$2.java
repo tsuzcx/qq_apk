@@ -20,7 +20,7 @@ class AbstractCustomRoomService$2
       this.jdField_a_of_type_ComTencentMobileqqLitelivesdkCommoncustomizedSdkservicesRoomAbstractCustomRoomService.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceAdapter.getLogger().i("AbstractCustomRoomService", "listener video callback canceled...", new Object[0]);
       return;
     }
-    if (paramInt == 0) {
+    if ((paramInt == 0) && (paramJSONObject != null)) {
       try
       {
         paramJSONObject = paramJSONObject.getJSONObject("result").getJSONObject("video_info").getString("video_play_url");
@@ -46,7 +46,7 @@ class AbstractCustomRoomService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.room.AbstractCustomRoomService.2
  * JD-Core Version:    0.7.0.1
  */

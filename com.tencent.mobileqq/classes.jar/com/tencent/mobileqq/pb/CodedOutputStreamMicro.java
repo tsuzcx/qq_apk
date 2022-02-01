@@ -150,7 +150,7 @@ public final class CodedOutputStreamMicro
   public static int computeMessageSizeNoTag(MessageMicro<?> paramMessageMicro)
   {
     int i = paramMessageMicro.getCachedSize();
-    return i + computeRawVarint32Size(i);
+    return computeRawVarint32Size(i) + i;
   }
   
   public static int computeRawVarint32Size(int paramInt)
@@ -164,7 +164,7 @@ public final class CodedOutputStreamMicro
     if ((0xFFE00000 & paramInt) == 0) {
       return 3;
     }
-    if ((0xF0000000 & paramInt) == 0) {
+    if ((paramInt & 0xF0000000) == 0) {
       return 4;
     }
     return 5;
@@ -196,7 +196,7 @@ public final class CodedOutputStreamMicro
     if ((0x0 & paramLong) == 0L) {
       return 8;
     }
-    if ((0x0 & paramLong) == 0L) {
+    if ((paramLong & 0x0) == 0L) {
       return 9;
     }
     return 10;
@@ -254,12 +254,14 @@ public final class CodedOutputStreamMicro
       paramString = paramString.getBytes("UTF-8");
       int i = computeRawVarint32Size(paramString.length);
       int j = paramString.length;
-      return j + i;
+      return i + j;
     }
     catch (UnsupportedEncodingException paramString)
     {
-      throw new RuntimeException("UTF-8 not supported.");
+      label20:
+      break label20;
     }
+    throw new RuntimeException("UTF-8 not supported.");
   }
   
   public static int computeTagSize(int paramInt)
@@ -289,12 +291,12 @@ public final class CodedOutputStreamMicro
   
   public static int encodeZigZag32(int paramInt)
   {
-    return paramInt << 1 ^ paramInt >> 31;
+    return paramInt >> 31 ^ paramInt << 1;
   }
   
   public static long encodeZigZag64(long paramLong)
   {
-    return paramLong << 1 ^ paramLong >> 63;
+    return paramLong >> 63 ^ paramLong << 1;
   }
   
   public static CodedOutputStreamMicro newInstance(OutputStream paramOutputStream)
@@ -319,18 +321,22 @@ public final class CodedOutputStreamMicro
   
   private void refreshBuffer()
   {
-    if (this.output == null) {
-      throw new CodedOutputStreamMicro.OutOfSpaceException();
+    OutputStream localOutputStream = this.output;
+    if (localOutputStream != null)
+    {
+      localOutputStream.write(this.buffer, 0, this.position);
+      this.position = 0;
+      return;
     }
-    this.output.write(this.buffer, 0, this.position);
-    this.position = 0;
+    throw new CodedOutputStreamMicro.OutOfSpaceException();
   }
   
   public void checkNoSpaceLeft()
   {
-    if (spaceLeft() != 0) {
-      throw new IllegalStateException("Did not write as much data as expected.");
+    if (spaceLeft() == 0) {
+      return;
     }
+    throw new IllegalStateException("Did not write as much data as expected.");
   }
   
   public void flush()
@@ -356,12 +362,7 @@ public final class CodedOutputStreamMicro
   
   public void writeBoolNoTag(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      writeRawByte(i);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void writeByteArray(int paramInt, byte[] paramArrayOfByte)
@@ -518,16 +519,18 @@ public final class CodedOutputStreamMicro
   
   public void writeRawBytes(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (this.limit - this.position >= paramInt2)
+    int j = this.limit;
+    int i = this.position;
+    if (j - i >= paramInt2)
     {
-      System.arraycopy(paramArrayOfByte, paramInt1, this.buffer, this.position, paramInt2);
+      System.arraycopy(paramArrayOfByte, paramInt1, this.buffer, i, paramInt2);
       this.position += paramInt2;
       return;
     }
-    int i = this.limit - this.position;
-    System.arraycopy(paramArrayOfByte, paramInt1, this.buffer, this.position, i);
-    paramInt1 += i;
-    paramInt2 -= i;
+    j -= i;
+    System.arraycopy(paramArrayOfByte, paramInt1, this.buffer, i, j);
+    paramInt1 += j;
+    paramInt2 -= j;
     this.position = this.limit;
     refreshBuffer();
     if (paramInt2 <= this.limit)
@@ -673,7 +676,7 @@ public final class CodedOutputStreamMicro
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pb.CodedOutputStreamMicro
  * JD-Core Version:    0.7.0.1
  */

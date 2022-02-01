@@ -44,9 +44,9 @@ class ServiceFolderFollowPBHeadView$ServiceAccountViewHolder
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder = paramRecentFaceDecoder;
     this.jdField_a_of_type_JavaUtilHashMap = paramHashMap;
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener = paramDragFrameLayout;
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377845));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377850));
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131377853));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131377271));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131377276));
+    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView = ((DragTextView)paramView.findViewById(2131377279));
   }
   
   private void a(View paramView, ServiceAccountFolderFeed paramServiceAccountFolderFeed)
@@ -61,17 +61,21 @@ class ServiceFolderFollowPBHeadView$ServiceAccountViewHolder
   
   private boolean a(ServiceAccountFolderFeed paramServiceAccountFolderFeed1, ServiceAccountFolderFeed paramServiceAccountFolderFeed2)
   {
-    if ((paramServiceAccountFolderFeed1 != null) && (paramServiceAccountFolderFeed2 != null)) {
-      if ((!paramServiceAccountFolderFeed1.jdField_a_of_type_JavaLangString.equals(paramServiceAccountFolderFeed2.jdField_a_of_type_JavaLangString)) || (paramServiceAccountFolderFeed1.b != paramServiceAccountFolderFeed2.b) || (paramServiceAccountFolderFeed1.jdField_a_of_type_Int != paramServiceAccountFolderFeed2.jdField_a_of_type_Int) || (!paramServiceAccountFolderFeed1.c.equals(paramServiceAccountFolderFeed2.c))) {
-        break label88;
-      }
-    }
-    label88:
-    for (boolean bool = true;; bool = false)
+    if ((paramServiceAccountFolderFeed1 != null) && (paramServiceAccountFolderFeed2 != null))
     {
-      QLog.d(ServiceFolderFollowPBHeadView.a(), 4, "isSameServiceData:" + bool);
-      return false;
+      boolean bool;
+      if ((paramServiceAccountFolderFeed1.jdField_a_of_type_JavaLangString.equals(paramServiceAccountFolderFeed2.jdField_a_of_type_JavaLangString)) && (paramServiceAccountFolderFeed1.b == paramServiceAccountFolderFeed2.b) && (paramServiceAccountFolderFeed1.jdField_a_of_type_Int == paramServiceAccountFolderFeed2.jdField_a_of_type_Int) && (paramServiceAccountFolderFeed1.c.equals(paramServiceAccountFolderFeed2.c))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      paramServiceAccountFolderFeed1 = ServiceFolderFollowPBHeadView.a();
+      paramServiceAccountFolderFeed2 = new StringBuilder();
+      paramServiceAccountFolderFeed2.append("isSameServiceData:");
+      paramServiceAccountFolderFeed2.append(bool);
+      QLog.d(paramServiceAccountFolderFeed1, 4, paramServiceAccountFolderFeed2.toString());
     }
+    return false;
   }
   
   private void b(View paramView, ServiceAccountFolderFeed paramServiceAccountFolderFeed)
@@ -92,88 +96,103 @@ class ServiceFolderFollowPBHeadView$ServiceAccountViewHolder
     Bitmap localBitmap = (Bitmap)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
     if (localBitmap == null) {
       paramImageView.setImageDrawable(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentFaceDecoder.a(1008, paramString));
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        paramImageView.setColorFilter(1711276032);
-      }
-      return;
+    } else {
       paramImageView.setImageBitmap(localBitmap);
+    }
+    if (this.jdField_a_of_type_Boolean) {
+      paramImageView.setColorFilter(1711276032);
     }
   }
   
   public void a(ServiceAccountFolderFeed paramServiceAccountFolderFeed, int paramInt)
   {
-    if ((paramServiceAccountFolderFeed == null) || (a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed, paramServiceAccountFolderFeed))) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed = paramServiceAccountFolderFeed;
-    this.itemView.setTag(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131377847, this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
-    this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131377845, Integer.valueOf(paramInt));
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(paramServiceAccountFolderFeed.c);
-    if (this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5723992);
-    }
-    a(this.jdField_a_of_type_ComTencentImageURLImageView, paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
-    int j = paramServiceAccountFolderFeed.b;
-    int i = 0;
-    int k = 0;
-    int m = paramServiceAccountFolderFeed.jdField_a_of_type_Int;
-    Object localObject = paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-    if (localObject != null)
+    if (paramServiceAccountFolderFeed != null)
     {
-      localObject = PublicAccountEventReport.a(j + "", ((MessageRecord)localObject).msgseq + "", ((MessageRecord)localObject).msgBackupMsgRandom + "");
-      if (j <= 0) {
-        break label517;
+      if (a(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed, paramServiceAccountFolderFeed)) {
+        return;
       }
-      if (m != 0) {
-        break label447;
+      this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed = paramServiceAccountFolderFeed;
+      this.itemView.setTag(this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131377273, this.jdField_a_of_type_ComTencentBizPubaccountServiceAccountFolderServiceAccountFolderFeed);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setTag(2131377271, Integer.valueOf(paramInt));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramServiceAccountFolderFeed.c);
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-5723992);
       }
-      i = 0;
-      k = 0;
-      j = 0;
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, this.itemView);
-      this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
-    }
-    label517:
-    for (;;)
-    {
-      CustomWidgetUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, k, 99, null);
-      String str2 = "";
-      String str1 = str2;
-      if (paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null)
+      a(this.jdField_a_of_type_ComTencentImageURLImageView, paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+      int j = paramServiceAccountFolderFeed.b;
+      int i = paramServiceAccountFolderFeed.jdField_a_of_type_Int;
+      Object localObject1 = paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
+      if (localObject1 != null)
       {
-        str1 = str2;
-        if (paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mExJsonObject != null) {
-          str1 = paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mExJsonObject.optString("report_key_bytes_oac_msg_extend", "");
-        }
-      }
-      this.itemView.setOnClickListener(new ServiceFolderFollowPBHeadView.ServiceAccountViewHolder.1(this, paramServiceAccountFolderFeed, paramInt, str1, (String)localObject));
-      PublicAccountEventReport.a(null, paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, paramServiceAccountFolderFeed.jdField_a_of_type_Int, paramServiceAccountFolderFeed.b, paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangCharSequence + "", str1, (String)localObject, paramInt + "");
-      VSReporter.a(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, "auth_follow", "new_s_exp", 0, 0, new String[] { "", "", paramServiceAccountFolderFeed.c, paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangCharSequence + "" });
-      return;
-      localObject = "";
-      break;
-      label447:
-      if (m == 2)
-      {
-        i = 1;
-        k = 0;
-        j = 0;
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, this.itemView);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append("");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(((MessageRecord)localObject1).msgseq);
+        ((StringBuilder)localObject3).append("");
+        localObject3 = ((StringBuilder)localObject3).toString();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(((MessageRecord)localObject1).msgBackupMsgRandom);
+        ((StringBuilder)localObject4).append("");
+        localObject1 = PublicAccountEventReport.a((String)localObject2, (String)localObject3, ((StringBuilder)localObject4).toString());
       }
       else
       {
-        i = 3;
-        k = 2130850834;
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, this.itemView);
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener);
-        continue;
-        j = 0;
+        localObject1 = "";
       }
+      if (j > 0) {
+        if (i == 0)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, this.itemView);
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
+        }
+        else
+        {
+          if (i == 2)
+          {
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(-1, this.itemView);
+            this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(null);
+            i = 1;
+            break label333;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setDragViewType(0, this.itemView);
+          this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView.setOnModeChangeListener(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener);
+          i = 3;
+          k = 2130850770;
+          break label339;
+        }
+      }
+      i = 0;
+      label333:
+      j = 0;
+      int k = 0;
+      label339:
+      CustomWidgetUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurDragTextView, i, j, k, 99, null);
+      if ((paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mExJsonObject != null)) {
+        localObject2 = paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.mExJsonObject.optString("report_key_bytes_oac_msg_extend", "");
+      } else {
+        localObject2 = "";
+      }
+      this.itemView.setOnClickListener(new ServiceFolderFollowPBHeadView.ServiceAccountViewHolder.1(this, paramServiceAccountFolderFeed, paramInt, (String)localObject2, (String)localObject1));
+      Object localObject3 = paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString;
+      i = paramServiceAccountFolderFeed.jdField_a_of_type_Int;
+      j = paramServiceAccountFolderFeed.b;
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangCharSequence);
+      ((StringBuilder)localObject4).append("");
+      localObject4 = ((StringBuilder)localObject4).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("");
+      PublicAccountEventReport.a(null, (String)localObject3, i, j, (String)localObject4, (String)localObject2, (String)localObject1, localStringBuilder.toString());
+      localObject1 = paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString;
+      Object localObject2 = paramServiceAccountFolderFeed.c;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangCharSequence);
+      ((StringBuilder)localObject3).append("");
+      VSReporter.a((String)localObject1, "auth_follow", "new_s_exp", 0, 0, new String[] { "", "", localObject2, ((StringBuilder)localObject3).toString() });
     }
   }
   
@@ -184,7 +203,7 @@ class ServiceFolderFollowPBHeadView$ServiceAccountViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.ServiceFolderFollowPBHeadView.ServiceAccountViewHolder
  * JD-Core Version:    0.7.0.1
  */

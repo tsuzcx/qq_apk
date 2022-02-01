@@ -24,6 +24,7 @@ import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.sina.weibo.sdk.c.e;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtWebView;
 import java.lang.reflect.Method;
 
 public class WebActivity
@@ -93,7 +94,7 @@ public class WebActivity
     ((RelativeLayout)localObject1).addView(this.at, (ViewGroup.LayoutParams)localObject2);
     ((RelativeLayout)localObject1).addView(this.au, localLayoutParams);
     paramBundle.addView((View)localObject1, new RelativeLayout.LayoutParams(-1, e.a(55, this)));
-    this.av = new WebView(getApplicationContext());
+    this.av = new DtWebView(getApplicationContext());
     localObject1 = new RelativeLayout.LayoutParams(-1, -1);
     ((RelativeLayout.LayoutParams)localObject1).topMargin = e.a(55, this);
     paramBundle.addView(this.av, (ViewGroup.LayoutParams)localObject1);
@@ -152,49 +153,58 @@ public class WebActivity
       finish();
       return;
     }
-    switch (i)
+    if (i != 1)
     {
-    default: 
-      label740:
-      this.av.setWebViewClient(this.ay);
-      this.ax.readFromBundle((Bundle)localObject1);
-      paramBundle = this.av.getSettings();
-      paramBundle.setJavaScriptEnabled(true);
-      paramBundle.setSavePassword(false);
-      paramBundle.setAllowContentAccess(false);
-      paramBundle.setUserAgentString(e.r());
-      this.av.requestFocus();
-      this.av.setScrollBarStyle(0);
-      a(this.av, "searchBoxJavaBridge_");
-      a(this.av, "accessibility");
-      a(this.av, "accessibilityTraversal");
-      if (Build.VERSION.SDK_INT >= 21) {
-        paramBundle.setMixedContentMode(2);
+      if (i != 2)
+      {
+        if (i == 3)
+        {
+          this.ax = new com.sina.weibo.sdk.web.b.c();
+          this.ay = new com.sina.weibo.sdk.web.a.c(this, this.ax);
+        }
       }
-      if (this.ax.w()) {
-        this.ax.a(new WebActivity.1(this));
+      else
+      {
+        this.az = "微博登录";
+        this.ax = new com.sina.weibo.sdk.web.b.a();
+        this.ay = new com.sina.weibo.sdk.web.a.a(this, this, this.ax);
       }
-      break;
     }
-    while (this.au != null)
+    else
     {
-      this.au.setText(this.az);
-      return;
       this.az = "微博分享";
       this.ax = new com.sina.weibo.sdk.web.b.d(this);
       this.ay = new com.sina.weibo.sdk.web.a.d(this, this, this.ax);
-      break label740;
-      this.az = "微博登录";
-      this.ax = new com.sina.weibo.sdk.web.b.a();
-      this.ay = new com.sina.weibo.sdk.web.a.a(this, this, this.ax);
-      break label740;
-      this.ax = new com.sina.weibo.sdk.web.b.c();
-      this.ay = new com.sina.weibo.sdk.web.a.c(this, this.ax);
-      break label740;
+    }
+    this.av.setWebViewClient(this.ay);
+    this.ax.readFromBundle((Bundle)localObject1);
+    paramBundle = this.av.getSettings();
+    paramBundle.setJavaScriptEnabled(true);
+    paramBundle.setSavePassword(false);
+    paramBundle.setAllowContentAccess(false);
+    paramBundle.setUserAgentString(e.r());
+    this.av.requestFocus();
+    this.av.setScrollBarStyle(0);
+    a(this.av, "searchBoxJavaBridge_");
+    a(this.av, "accessibility");
+    a(this.av, "accessibilityTraversal");
+    if (Build.VERSION.SDK_INT >= 21) {
+      paramBundle.setMixedContentMode(2);
+    }
+    if (this.ax.w())
+    {
+      this.ax.a(new WebActivity.1(this));
+    }
+    else
+    {
       paramBundle = this.ax.getUrl();
       if (!TextUtils.isEmpty(paramBundle)) {
         this.av.loadUrl(paramBundle);
       }
+    }
+    paramBundle = this.au;
+    if (paramBundle != null) {
+      paramBundle.setText(this.az);
     }
   }
   

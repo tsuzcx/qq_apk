@@ -8,7 +8,6 @@ import com.tencent.open.base.http.HttpAsyncTask;
 import com.tencent.qphone.base.util.QLog;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashMap<Ljava.lang.String;Ljava.lang.Object;>;
 import java.util.concurrent.Executor;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -52,9 +51,6 @@ public class HttpWebCgiAsyncTask
     {
       paramVarArgs = (Context)((HashMap)localObject).get("CONTEXT");
       localObject = (Bundle)((HashMap)localObject).get("BUNDLE");
-    }
-    for (;;)
-    {
       try
       {
         Bundle localBundle = new Bundle();
@@ -76,35 +72,30 @@ public class HttpWebCgiAsyncTask
           localBundle.putString("Host", str3);
           ((Bundle)localObject).remove(str3);
         }
-        localObject = new JSONObject(HttpUtil.openUrl(paramVarArgs, this.jdField_a_of_type_JavaLangString, this.b, (Bundle)localObject, localBundle));
-        paramVarArgs = (HashMap<String, Object>[])localObject;
-        if (!this.jdField_a_of_type_Boolean)
+        paramVarArgs = new JSONObject(HttpUtil.openUrl(paramVarArgs, this.jdField_a_of_type_JavaLangString, this.b, (Bundle)localObject, localBundle));
+        if ((!this.jdField_a_of_type_Boolean) && (paramVarArgs.getInt("retcode") == 0))
         {
-          paramVarArgs = (HashMap<String, Object>[])localObject;
-          if (((JSONObject)localObject).getInt("retcode") == 0) {
-            paramVarArgs = ((JSONObject)localObject).getJSONObject("result");
-          }
+          paramVarArgs = paramVarArgs.getJSONObject("result");
+          return paramVarArgs;
         }
-      }
-      catch (IOException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
-      }
-      catch (JSONException paramVarArgs)
-      {
-        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
-        paramVarArgs = null;
-        continue;
+        return paramVarArgs;
       }
       catch (OutOfMemoryError paramVarArgs)
       {
         QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        return null;
       }
-      return paramVarArgs;
-      paramVarArgs = null;
+      catch (JSONException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+        return null;
+      }
+      catch (IOException paramVarArgs)
+      {
+        QLog.w("HttpWebCgiAsyncTask", 1, paramVarArgs.getMessage(), paramVarArgs);
+      }
     }
+    return null;
   }
   
   @SuppressLint({"InlinedApi", "NewApi"})
@@ -121,16 +112,18 @@ public class HttpWebCgiAsyncTask
   
   protected void a(JSONObject paramJSONObject)
   {
-    if (isCancelled()) {}
-    while (this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback == null) {
+    if (isCancelled()) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback.a(paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+    HttpWebCgiAsyncTask.Callback localCallback = this.jdField_a_of_type_ComTencentMobileqqTroopUtilsHttpWebCgiAsyncTask$Callback;
+    if (localCallback != null) {
+      localCallback.a(paramJSONObject, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidOsBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask
  * JD-Core Version:    0.7.0.1
  */

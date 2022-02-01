@@ -40,33 +40,26 @@ public class SearchRecommendAdapter$TitleDecoration
     super.onDraw(paramCanvas, paramRecyclerView, paramState);
     int j = paramRecyclerView.getChildCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      int k;
-      if (i < j)
+      paramState = paramRecyclerView.getChildAt(i);
+      if (paramState != null)
       {
-        paramState = paramRecyclerView.getChildAt(i);
-        if (paramState == null) {
-          break label107;
+        int k = paramRecyclerView.getChildAdapterPosition(paramState);
+        if (k < 0) {
+          return;
         }
-        k = paramRecyclerView.getChildAdapterPosition(paramState);
-        if (k >= 0) {}
+        if ((paramRecyclerView.getAdapter().getItemViewType(k) == 1) && (k > 0)) {
+          paramCanvas.drawRect(paramState.getLeft(), paramState.getTop() - ViewUtils.b(20.0F), paramRecyclerView.getWidth(), paramState.getTop() - ViewUtils.b(20.0F) + 2, this.paint);
+        }
       }
-      else
-      {
-        return;
-      }
-      if ((paramRecyclerView.getAdapter().getItemViewType(k) == 1) && (k > 0)) {
-        paramCanvas.drawRect(paramState.getLeft(), paramState.getTop() - ViewUtils.b(20.0F), paramRecyclerView.getWidth(), paramState.getTop() - ViewUtils.b(20.0F) + 2, this.paint);
-      }
-      label107:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchRecommendAdapter.TitleDecoration
  * JD-Core Version:    0.7.0.1
  */

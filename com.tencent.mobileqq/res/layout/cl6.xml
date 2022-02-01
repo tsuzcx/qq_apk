@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
+<LinearLayout android:orientation="vertical" android:background="#fff9f9fb" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/mzv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="35.0dip" android:layout_marginTop="11.0dip" android:layout_marginRight="24.0dip" android:text="@string/byr" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/mzr" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="6.0dip" android:layout_below="@id/mzv">
-        <androidx.recyclerview.widget.RecyclerView android:id="@id/mzs" android:paddingLeft="9.0dip" android:paddingRight="9.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+    <LinearLayout android:background="@drawable/skin_header_bar_bg" android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <com.tencent.mobileqq.widget.navbar.NavBarCommon android:gravity="center_vertical" android:id="@id/nlw" android:layout_width="fill_parent" android:layout_height="@dimen/title_bar_height" />
     </LinearLayout>
-</merge>
+    <FrameLayout android:layout_width="fill_parent" android:layout_height="fill_parent">
+        <FrameLayout android:id="@id/myu" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <RelativeLayout android:id="@id/n6t" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+</LinearLayout>

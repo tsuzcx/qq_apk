@@ -23,36 +23,48 @@ public final class TrackSelectorResult
   
   public boolean isEquivalent(TrackSelectorResult paramTrackSelectorResult)
   {
-    if ((paramTrackSelectorResult == null) || (paramTrackSelectorResult.selections.length != this.selections.length)) {
-      return false;
-    }
-    int i = 0;
-    for (;;)
+    if (paramTrackSelectorResult != null)
     {
-      if (i >= this.selections.length) {
-        break label52;
+      if (paramTrackSelectorResult.selections.length != this.selections.length) {
+        return false;
       }
-      if (!isEquivalent(paramTrackSelectorResult, i)) {
-        break;
+      int i = 0;
+      while (i < this.selections.length)
+      {
+        if (!isEquivalent(paramTrackSelectorResult, i)) {
+          return false;
+        }
+        i += 1;
       }
-      i += 1;
+      return true;
     }
-    label52:
-    return true;
+    return false;
   }
   
   public boolean isEquivalent(TrackSelectorResult paramTrackSelectorResult, int paramInt)
   {
-    if (paramTrackSelectorResult == null) {}
-    while ((this.renderersEnabled[paramInt] != paramTrackSelectorResult.renderersEnabled[paramInt]) || (!Util.areEqual(this.selections.get(paramInt), paramTrackSelectorResult.selections.get(paramInt))) || (!Util.areEqual(this.rendererConfigurations[paramInt], paramTrackSelectorResult.rendererConfigurations[paramInt]))) {
+    boolean bool2 = false;
+    if (paramTrackSelectorResult == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (this.renderersEnabled[paramInt] == paramTrackSelectorResult.renderersEnabled[paramInt])
+    {
+      bool1 = bool2;
+      if (Util.areEqual(this.selections.get(paramInt), paramTrackSelectorResult.selections.get(paramInt)))
+      {
+        bool1 = bool2;
+        if (Util.areEqual(this.rendererConfigurations[paramInt], paramTrackSelectorResult.rendererConfigurations[paramInt])) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.trackselection.TrackSelectorResult
  * JD-Core Version:    0.7.0.1
  */

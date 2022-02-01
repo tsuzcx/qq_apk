@@ -23,10 +23,11 @@ public class TopicUtil
   
   public static int a(Editable paramEditable, int paramInt)
   {
-    if ((paramEditable.length() < 0) || (paramInt < 2) || (paramInt > paramEditable.length())) {}
-    for (;;)
+    if ((paramEditable.length() >= 0) && (paramInt >= 2))
     {
-      return -1;
+      if (paramInt > paramEditable.length()) {
+        return -1;
+      }
       paramInt -= 1;
       while ((paramInt >= 0) && (a(paramEditable, paramInt) == null) && (paramEditable.charAt(paramInt) != ' '))
       {
@@ -35,7 +36,9 @@ public class TopicUtil
         }
         paramInt -= 1;
       }
+      return -1;
     }
+    return -1;
   }
   
   public static ColorStateList a(int paramInt1, int paramInt2)
@@ -45,19 +48,22 @@ public class TopicUtil
   
   public static ITopic a(Spannable paramSpannable, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= paramSpannable.length())) {
-      return null;
-    }
-    ITopic[] arrayOfITopic = (ITopic[])paramSpannable.getSpans(paramInt, paramInt, ITopic.class);
-    int i = 0;
-    while (i < arrayOfITopic.length)
+    if (paramInt >= 0)
     {
-      int j = paramSpannable.getSpanStart(arrayOfITopic[i]);
-      int k = paramSpannable.getSpanEnd(arrayOfITopic[i]);
-      if ((paramInt >= j) && (paramInt < k)) {
-        return arrayOfITopic[i];
+      if (paramInt >= paramSpannable.length()) {
+        return null;
       }
-      i += 1;
+      ITopic[] arrayOfITopic = (ITopic[])paramSpannable.getSpans(paramInt, paramInt, ITopic.class);
+      int i = 0;
+      while (i < arrayOfITopic.length)
+      {
+        int j = paramSpannable.getSpanStart(arrayOfITopic[i]);
+        int k = paramSpannable.getSpanEnd(arrayOfITopic[i]);
+        if ((paramInt >= j) && (paramInt < k)) {
+          return arrayOfITopic[i];
+        }
+        i += 1;
+      }
     }
     return null;
   }
@@ -73,33 +79,27 @@ public class TopicUtil
     try
     {
       localStringBuilder.append(URLEncoder.encode(paramString, "UTF-8"));
-      if (QLog.isColorLevel()) {
-        QLog.i("TopicUtil", 2, String.format("constructTopicDetailUrl[%d,%s]", new Object[] { Integer.valueOf(paramInt), paramString }));
-      }
-      return localStringBuilder.toString();
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
+      localUnsupportedEncodingException.printStackTrace();
     }
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicUtil", 2, String.format("constructTopicDetailUrl[%d,%s]", new Object[] { Integer.valueOf(paramInt), paramString }));
+    }
+    return localStringBuilder.toString();
   }
   
   public static String a(Editable paramEditable)
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < paramEditable.length())
+    while (i < paramEditable.length())
     {
-      if (a(paramEditable, i) != null) {}
-      for (;;)
-      {
-        i += 1;
-        break;
+      if (a(paramEditable, i) == null) {
         localStringBuilder.append(paramEditable.subSequence(i, i + 1));
       }
+      i += 1;
     }
     if (QLog.isColorLevel()) {
       QLog.i("TopicUtil", 2, String.format("getPlainText [edit=%s len=%d %s]", new Object[] { paramEditable, Integer.valueOf(paramEditable.length()), localStringBuilder.toString() }));
@@ -113,9 +113,15 @@ public class TopicUtil
     int i = 0;
     while (i < paramList.size())
     {
-      localStringBuilder.append("index = ").append(i).append(",");
-      localStringBuilder.append("id = ").append(((Pair)paramList.get(i)).first).append(",");
-      localStringBuilder.append("topic = ").append((String)((Pair)paramList.get(i)).second).append(",");
+      localStringBuilder.append("index = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",");
+      localStringBuilder.append("id = ");
+      localStringBuilder.append(((Pair)paramList.get(i)).first);
+      localStringBuilder.append(",");
+      localStringBuilder.append("topic = ");
+      localStringBuilder.append((String)((Pair)paramList.get(i)).second);
+      localStringBuilder.append(",");
       i += 1;
     }
     return localStringBuilder.toString();
@@ -126,32 +132,34 @@ public class TopicUtil
     ArrayList localArrayList = new ArrayList();
     Object localObject1 = null;
     int i = 0;
-    if (i < paramEditable.length())
+    while (i < paramEditable.length())
     {
-      Object localObject2 = (ITopic[])paramEditable.getSpans(i, i, ITopic.class);
-      if ((localObject2 == null) || (localObject2.length <= 0)) {
-        break label122;
+      Object localObject3 = (ITopic[])paramEditable.getSpans(i, i, ITopic.class);
+      Object localObject2 = localObject1;
+      if (localObject3 != null)
+      {
+        localObject2 = localObject1;
+        if (localObject3.length > 0)
+        {
+          localObject3 = localObject3[0];
+          localObject2 = localObject1;
+          if (localObject3 != localObject1)
+          {
+            localObject1 = ((ITopic)localObject3).getData();
+            if ((localObject1 instanceof Pair)) {
+              localArrayList.add((Pair)localObject1);
+            }
+            localObject2 = localObject3;
+          }
+        }
       }
-      localObject2 = localObject2[0];
-      if (localObject2 == localObject1) {
-        break label122;
-      }
-      localObject1 = ((ITopic)localObject2).getData();
-      if ((localObject1 instanceof Pair)) {
-        localArrayList.add((Pair)localObject1);
-      }
+      i += 1;
       localObject1 = localObject2;
     }
-    label122:
-    for (;;)
-    {
-      i += 1;
-      break;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("TopicUtil", 2, String.format("getTopics %s", new Object[] { a(localArrayList) }));
-      }
-      return localArrayList;
+    if (QLog.isDevelopLevel()) {
+      QLog.i("TopicUtil", 2, String.format("getTopics %s", new Object[] { a(localArrayList) }));
     }
+    return localArrayList;
   }
   
   public static void a(Context paramContext, String paramString, int paramInt)
@@ -167,51 +175,55 @@ public class TopicUtil
   
   public static void a(Editable paramEditable, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 >= 0) || (paramInt2 < 0) || (paramInt3 <= 0) || (paramInt3 < -paramInt1) || (paramInt2 + paramInt3 > paramEditable.length())) {}
-    int j;
-    do
+    if ((paramInt1 < 0) && (paramInt2 >= 0) && (paramInt3 > 0))
     {
-      return;
       paramInt1 = -paramInt1;
-      int i = 0;
-      j = paramInt2 + paramInt3 - paramInt1;
-      paramInt1 = i;
-      if (Character.isLowSurrogate(paramEditable.toString().charAt(j)))
+      if (paramInt3 >= paramInt1)
       {
-        paramInt1 = i;
-        if (j > 0)
+        paramInt3 = paramInt2 + paramInt3;
+        if (paramInt3 > paramEditable.length()) {
+          return;
+        }
+        paramInt2 = 0;
+        int i = paramInt3 - paramInt1;
+        paramInt1 = paramInt2;
+        if (Character.isLowSurrogate(paramEditable.toString().charAt(i)))
         {
-          paramInt1 = i;
-          if (j - 1 < paramEditable.length() - 1) {
-            paramInt1 = 1;
+          paramInt1 = paramInt2;
+          if (i > 0)
+          {
+            paramInt1 = paramInt2;
+            if (i - 1 < paramEditable.length() - 1) {
+              paramInt1 = 1;
+            }
           }
         }
+        paramEditable.delete(i, paramInt3);
+        if (paramInt1 != 0) {
+          paramEditable.delete(i - 1, i);
+        }
       }
-      paramEditable.delete(j, paramInt2 + paramInt3);
-    } while (paramInt1 == 0);
-    paramEditable.delete(j - 1, j);
+    }
   }
   
   public static void a(ETTextView paramETTextView, CharSequence paramCharSequence, int paramInt)
   {
     boolean bool;
-    if ((paramETTextView.mFont != null) && (paramETTextView.mFont.getId() != 0) && (9999 != paramETTextView.mFont.getId()))
-    {
+    if ((paramETTextView.mFont != null) && (paramETTextView.mFont.getId() != 0) && (9999 != paramETTextView.mFont.getId())) {
       bool = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("TopicUtil", 2, String.format("topicSpanCompactETTextView isCustom=%b from=%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
-      }
-      if (paramCharSequence != null) {
-        break label140;
-      }
+    } else {
+      bool = false;
     }
-    label140:
-    for (paramETTextView = paramETTextView.getText();; paramETTextView = paramCharSequence)
+    if (QLog.isColorLevel()) {
+      QLog.i("TopicUtil", 2, String.format("topicSpanCompactETTextView isCustom=%b from=%d", new Object[] { Boolean.valueOf(bool), Integer.valueOf(paramInt) }));
+    }
+    CharSequence localCharSequence = paramCharSequence;
+    if (paramCharSequence == null) {
+      localCharSequence = paramETTextView.getText();
+    }
+    if ((localCharSequence != null) && ((localCharSequence instanceof Spannable)))
     {
-      if ((paramETTextView == null) || (!(paramETTextView instanceof Spannable))) {
-        return;
-      }
-      paramETTextView = (Spannable)paramETTextView;
+      paramETTextView = (Spannable)localCharSequence;
       paramETTextView = (ITopic[])paramETTextView.getSpans(0, paramETTextView.length(), ITopic.class);
       paramInt = 0;
       while (paramInt < paramETTextView.length)
@@ -219,86 +231,74 @@ public class TopicUtil
         paramETTextView[0].setCustomFont(bool);
         paramInt += 1;
       }
-      bool = false;
-      break;
     }
   }
   
   public static boolean a(String paramString)
   {
-    if (paramString == null) {}
-    while (paramString.trim().length() < 3) {
+    if (paramString == null) {
       return false;
     }
-    return true;
+    return paramString.trim().length() >= 3;
   }
   
   public static List<Pair<Integer, Integer>> b(Editable paramEditable)
   {
     ArrayList localArrayList = new ArrayList();
+    Object localObject3 = null;
     int i = 0;
-    Object localObject2 = null;
-    ITopic[] arrayOfITopic;
-    int j;
-    Object localObject1;
-    if (i < paramEditable.length())
+    while (i < paramEditable.length())
     {
-      arrayOfITopic = (ITopic[])paramEditable.getSpans(i, i, ITopic.class);
-      if ((arrayOfITopic == null) || (arrayOfITopic.length <= 0)) {
-        break label184;
-      }
-      if (arrayOfITopic.length > 1)
+      ITopic[] arrayOfITopic = (ITopic[])paramEditable.getSpans(i, i, ITopic.class);
+      Object localObject2 = localObject3;
+      if (arrayOfITopic != null)
       {
-        int k = arrayOfITopic.length;
-        j = 0;
-        localObject1 = null;
-        label66:
-        if (j < k)
+        localObject2 = localObject3;
+        if (arrayOfITopic.length > 0)
         {
-          ITopic localITopic = arrayOfITopic[j];
-          if (localITopic == localObject2) {
-            break label194;
+          Object localObject1;
+          if (arrayOfITopic.length > 1)
+          {
+            int k = arrayOfITopic.length;
+            localObject2 = null;
+            int j = 0;
+            while (j < k)
+            {
+              localObject1 = arrayOfITopic[j];
+              if (localObject1 != localObject3) {
+                localObject2 = localObject1;
+              }
+              j += 1;
+            }
+            localObject1 = localObject2;
+            if (localObject2 == null) {
+              localObject1 = arrayOfITopic[(arrayOfITopic.length - 1)];
+            }
           }
-          localObject1 = localITopic;
-        }
-      }
-    }
-    label184:
-    label194:
-    for (;;)
-    {
-      j += 1;
-      break label66;
-      if (localObject1 == null) {
-        localObject1 = arrayOfITopic[(arrayOfITopic.length - 1)];
-      }
-      for (;;)
-      {
-        label110:
-        if (localObject1 != localObject2)
-        {
-          localObject2 = ((ITopic)localObject1).getData();
-          if ((localObject2 instanceof Pair)) {
-            localArrayList.add(new Pair(((Pair)localObject2).first, Integer.valueOf(i)));
+          else
+          {
+            localObject1 = arrayOfITopic[0];
+          }
+          localObject2 = localObject3;
+          if (localObject1 != localObject3)
+          {
+            localObject2 = ((ITopic)localObject1).getData();
+            if ((localObject2 instanceof Pair)) {
+              localArrayList.add(new Pair(((Pair)localObject2).first, Integer.valueOf(i)));
+            }
+            localObject2 = localObject1;
           }
         }
-        for (;;)
-        {
-          i += 1;
-          localObject2 = localObject1;
-          break;
-          localObject1 = arrayOfITopic[0];
-          break label110;
-          return localArrayList;
-          localObject1 = localObject2;
-        }
       }
+      i += 1;
+      localObject3 = localObject2;
     }
+    return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.topic.TopicUtil
  * JD-Core Version:    0.7.0.1
  */

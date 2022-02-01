@@ -1,11 +1,12 @@
 package com.tencent.mtt.hippy.uimanager;
 
-import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import com.tencent.mtt.hippy.utils.LogUtils;
 import com.tencent.mtt.hippy.views.view.HippyViewGroupController;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 public class k
 {
@@ -22,29 +23,30 @@ public class k
   {
     if (this.c == null)
     {
-      ArrayList localArrayList = new ArrayList();
+      localObject = new ArrayList();
       int i = 0;
       while (i < paramInt1)
       {
-        localArrayList.add(this.a.getChildAt(i));
+        ((ArrayList)localObject).add(this.a.getChildAt(i));
         i += 1;
       }
-      Collections.sort(localArrayList, new k.1(this));
+      Collections.sort((List)localObject, new k.1(this));
       this.c = new int[paramInt1];
       i = 0;
       while (i < paramInt1)
       {
-        View localView = (View)localArrayList.get(i);
+        View localView = (View)((ArrayList)localObject).get(i);
         this.c[i] = this.a.indexOfChild(localView);
         i += 1;
       }
     }
-    if (paramInt2 >= this.c.length)
+    Object localObject = this.c;
+    if (paramInt2 >= localObject.length)
     {
-      Log.e("VGDrawingOrderHelper", "WRONG, index out of mDrawingOrderIndices length");
+      LogUtils.d("VGDrawingOrderHelper", "WRONG, index out of mDrawingOrderIndices length");
       return 0;
     }
-    return this.c[paramInt2];
+    return localObject[paramInt2];
   }
   
   public void a(View paramView)
@@ -84,7 +86,7 @@ public class k
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.k
  * JD-Core Version:    0.7.0.1
  */

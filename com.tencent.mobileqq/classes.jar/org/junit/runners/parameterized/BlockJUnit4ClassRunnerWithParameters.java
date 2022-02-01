@@ -33,31 +33,53 @@ public class BlockJUnit4ClassRunnerWithParameters
   
   private Object createTestUsingFieldInjection()
   {
-    Object localObject2 = getAnnotatedFieldsByParameter();
-    if (((List)localObject2).size() != this.parameters.length) {
-      throw new Exception("Wrong number of parameters and @Parameter fields. @Parameter fields counted: " + ((List)localObject2).size() + ", available parameters: " + this.parameters.length + ".");
-    }
-    Object localObject1 = getTestClass().getJavaClass().newInstance();
-    Iterator localIterator = ((List)localObject2).iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = getAnnotatedFieldsByParameter();
+    if (((List)localObject1).size() == this.parameters.length)
     {
-      localObject2 = ((FrameworkField)localIterator.next()).getField();
-      int i = ((Parameterized.Parameter)((Field)localObject2).getAnnotation(Parameterized.Parameter.class)).value();
-      try
+      Object localObject2 = getTestClass().getJavaClass().newInstance();
+      Object localObject3 = ((List)localObject1).iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        ((Field)localObject2).set(localObject1, this.parameters[i]);
+        localObject1 = ((FrameworkField)((Iterator)localObject3).next()).getField();
+        int i = ((Parameterized.Parameter)((Field)localObject1).getAnnotation(Parameterized.Parameter.class)).value();
+        try
+        {
+          ((Field)localObject1).set(localObject2, this.parameters[i]);
+        }
+        catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(getTestClass().getName());
+          ((StringBuilder)localObject3).append(": Trying to set ");
+          ((StringBuilder)localObject3).append(((Field)localObject1).getName());
+          ((StringBuilder)localObject3).append(" with the value ");
+          ((StringBuilder)localObject3).append(this.parameters[i]);
+          ((StringBuilder)localObject3).append(" that is not the right type (");
+          ((StringBuilder)localObject3).append(this.parameters[i].getClass().getSimpleName());
+          ((StringBuilder)localObject3).append(" instead of ");
+          ((StringBuilder)localObject3).append(((Field)localObject1).getType().getSimpleName());
+          ((StringBuilder)localObject3).append(").");
+          throw new Exception(((StringBuilder)localObject3).toString(), localIllegalArgumentException);
+        }
       }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        throw new Exception(getTestClass().getName() + ": Trying to set " + ((Field)localObject2).getName() + " with the value " + this.parameters[i] + " that is not the right type (" + this.parameters[i].getClass().getSimpleName() + " instead of " + ((Field)localObject2).getType().getSimpleName() + ").", localIllegalArgumentException);
-      }
+      return localIllegalArgumentException;
     }
-    return localIllegalArgumentException;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Wrong number of parameters and @Parameter fields. @Parameter fields counted: ");
+    localStringBuilder.append(((List)localObject1).size());
+    localStringBuilder.append(", available parameters: ");
+    localStringBuilder.append(this.parameters.length);
+    localStringBuilder.append(".");
+    localObject1 = new Exception(localStringBuilder.toString());
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
+    }
   }
   
   private boolean fieldsAreAnnotated()
   {
-    return !getAnnotatedFieldsByParameter().isEmpty();
+    return getAnnotatedFieldsByParameter().isEmpty() ^ true;
   }
   
   private List<FrameworkField> getAnnotatedFieldsByParameter()
@@ -65,7 +87,7 @@ public class BlockJUnit4ClassRunnerWithParameters
     return getTestClass().getAnnotatedFields(Parameterized.Parameter.class);
   }
   
-  public Statement classBlock(RunNotifier paramRunNotifier)
+  protected Statement classBlock(RunNotifier paramRunNotifier)
   {
     return childrenInvoker(paramRunNotifier);
   }
@@ -78,22 +100,25 @@ public class BlockJUnit4ClassRunnerWithParameters
     return createTestUsingConstructorInjection();
   }
   
-  public String getName()
+  protected String getName()
   {
     return this.name;
   }
   
-  public Annotation[] getRunnerAnnotations()
+  protected Annotation[] getRunnerAnnotations()
   {
     return new Annotation[0];
   }
   
-  public String testName(FrameworkMethod paramFrameworkMethod)
+  protected String testName(FrameworkMethod paramFrameworkMethod)
   {
-    return paramFrameworkMethod.getName() + getName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramFrameworkMethod.getName());
+    localStringBuilder.append(getName());
+    return localStringBuilder.toString();
   }
   
-  public void validateConstructor(List<Throwable> paramList)
+  protected void validateConstructor(List<Throwable> paramList)
   {
     validateOnlyOneConstructor(paramList);
     if (fieldsAreAnnotated()) {
@@ -101,45 +126,64 @@ public class BlockJUnit4ClassRunnerWithParameters
     }
   }
   
-  public void validateFields(List<Throwable> paramList)
+  protected void validateFields(List<Throwable> paramList)
   {
     super.validateFields(paramList);
     if (fieldsAreAnnotated())
     {
-      List localList = getAnnotatedFieldsByParameter();
-      int[] arrayOfInt = new int[localList.size()];
-      Iterator localIterator = localList.iterator();
+      Object localObject = getAnnotatedFieldsByParameter();
+      int[] arrayOfInt = new int[((List)localObject).size()];
+      Iterator localIterator = ((List)localObject).iterator();
       while (localIterator.hasNext())
       {
         i = ((Parameterized.Parameter)((FrameworkField)localIterator.next()).getField().getAnnotation(Parameterized.Parameter.class)).value();
-        if ((i < 0) || (i > localList.size() - 1)) {
-          paramList.add(new Exception("Invalid @Parameter value: " + i + ". @Parameter fields counted: " + localList.size() + ". Please use an index between 0 and " + (localList.size() - 1) + "."));
-        } else {
+        if ((i >= 0) && (i <= ((List)localObject).size() - 1))
+        {
           arrayOfInt[i] += 1;
+        }
+        else
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Invalid @Parameter value: ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(". @Parameter fields counted: ");
+          localStringBuilder.append(((List)localObject).size());
+          localStringBuilder.append(". Please use an index between 0 and ");
+          localStringBuilder.append(((List)localObject).size() - 1);
+          localStringBuilder.append(".");
+          paramList.add(new Exception(localStringBuilder.toString()));
         }
       }
       int i = 0;
-      if (i < arrayOfInt.length)
+      while (i < arrayOfInt.length)
       {
         int j = arrayOfInt[i];
-        if (j == 0) {
-          paramList.add(new Exception("@Parameter(" + i + ") is never used."));
-        }
-        for (;;)
+        if (j == 0)
         {
-          i += 1;
-          break;
-          if (j > 1) {
-            paramList.add(new Exception("@Parameter(" + i + ") is used more than once (" + j + ")."));
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("@Parameter(");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(") is never used.");
+          paramList.add(new Exception(((StringBuilder)localObject).toString()));
         }
+        else if (j > 1)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("@Parameter(");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(") is used more than once (");
+          ((StringBuilder)localObject).append(j);
+          ((StringBuilder)localObject).append(").");
+          paramList.add(new Exception(((StringBuilder)localObject).toString()));
+        }
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.runners.parameterized.BlockJUnit4ClassRunnerWithParameters
  * JD-Core Version:    0.7.0.1
  */

@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.troop.utils;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -18,13 +19,13 @@ import com.tencent.mobileqq.app.MessageHandlerUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.MessageForGrayTips;
+import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
-import com.tencent.mobileqq.filemanager.data.FMDataCache;
+import com.tencent.mobileqq.filemanager.api.IFMDataCacheApi;
 import com.tencent.mobileqq.filemanager.data.FileInfo;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
@@ -32,13 +33,19 @@ import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.model.TroopInfoManager;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
-import com.tencent.mobileqq.service.troop.TroopNotificationConstants;
+import com.tencent.mobileqq.troop.api.handler.ITroopListHandler;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.data.MessageNavInfo;
 import com.tencent.mobileqq.troop.data.TroopTipsEntity;
-import com.tencent.mobileqq.troop.handler.TroopListHandler;
+import com.tencent.mobileqq.troop.homework.api.IHWTroopUtilsApi;
 import com.tencent.mobileqq.troop.navigatebar.TroopAioMsgNavigateUpdateMsgInfoUtil;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi;
+import com.tencent.mobileqq.troop.trooplink.api.ITroopLinkApi.LinkParams;
+import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -51,43 +58,34 @@ public class HWTroopUtils
   public static final Integer a = Integer.valueOf(1);
   public static final Integer b = Integer.valueOf(4);
   public static final Integer c = Integer.valueOf(2);
-  public static final Integer d = Integer.valueOf(3);
-  
-  public static int a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return 0;
-    }
-    return paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "_" + "file_homework_troop_aio_has_unread", 0).getInt(paramString, 0);
-  }
   
   public static String a(String paramString)
   {
-    String str2 = "";
     try
     {
       int i = paramString.lastIndexOf(".");
-      str1 = str2;
-      if (i != -1) {
-        str1 = paramString.substring(i, paramString.length());
+      if (i != -1)
+      {
+        paramString = paramString.substring(i, paramString.length());
+        return paramString;
       }
     }
     catch (Exception paramString)
     {
-      do
-      {
-        String str1 = str2;
-      } while (!QLog.isColorLevel());
-      QLog.e("hw_troop", 2, "getFileSuffix:", paramString);
+      if (QLog.isColorLevel()) {
+        QLog.e("hw_troop", 2, "getFileSuffix:", paramString);
+      }
     }
-    return str1;
     return "";
   }
   
   public static void a(Context paramContext, String paramString)
   {
     Intent localIntent = new Intent(paramContext, QQBrowserActivity.class);
-    localIntent.putExtra("url", "https://qun.qq.com/homework/features/guide.html?ishw=1&_wv=1027&_bid=2146&gid=" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://qun.qq.com/homework/features/guide.html?ishw=1&_wv=1027&_bid=2146&gid=");
+    localStringBuilder.append(paramString);
+    localIntent.putExtra("url", localStringBuilder.toString());
     localIntent.putExtra("webStyle", "noBottomBar");
     localIntent.putExtra("hide_more_button", true);
     localIntent.putExtra("hide_operation_bar", true);
@@ -111,153 +109,187 @@ public class HWTroopUtils
     paramContext.startActivity(localIntent);
   }
   
+  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString)
+  {
+    ITroopLinkApi localITroopLinkApi = (ITroopLinkApi)QRoute.api(ITroopLinkApi.class);
+    Object localObject2 = localITroopLinkApi.getUrl("troop_create_homework");
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      localObject1 = "https://qun.qq.com/homework/features/sethomework.html?_wv=5123&_bid=2146#role=teacher&gid=<$GC>&content=<$CONTENT>&type=word&from=<$FROM>";
+    }
+    localObject2 = new ITroopLinkApi.LinkParams();
+    ((ITroopLinkApi.LinkParams)localObject2).a = paramString;
+    ((ITroopLinkApi.LinkParams)localObject2).c = "aio";
+    ((ITroopLinkApi.LinkParams)localObject2).i = "";
+    paramString = localITroopLinkApi.replaceParams((String)localObject1, (ITroopLinkApi.LinkParams)localObject2);
+    if (paramString != null) {
+      if (paramString.startsWith("mqqapi://"))
+      {
+        paramQQAppInterface = JumpParser.a(paramQQAppInterface, paramContext, paramString);
+        if (paramQQAppInterface != null) {
+          paramQQAppInterface.a();
+        }
+      }
+      else
+      {
+        paramQQAppInterface = new Intent(paramContext, QQBrowserActivity.class);
+        paramQQAppInterface.putExtra("finish_animation_up_down", true);
+        paramQQAppInterface.putExtra("url", paramString);
+        paramContext.startActivity(paramQQAppInterface);
+        if ((paramContext instanceof Activity)) {
+          ((Activity)paramContext).overridePendingTransition(2130772342, 2130772004);
+        }
+      }
+    }
+  }
+  
   public static void a(QQAppInterface paramQQAppInterface, TroopTipsEntity paramTroopTipsEntity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("hw_troop", 2, "insertTroopHomeworkPriseGrayTips:" + paramTroopTipsEntity.troopUin + ", optContent:" + paramTroopTipsEntity.optContent + ", , remindFlag:" + paramTroopTipsEntity.grayTipsRemindFlag + ", serviceType:3, msgSeq:" + paramTroopTipsEntity.msgSeq + ", time:" + paramTroopTipsEntity.time + ", expireTime:" + paramTroopTipsEntity.expireTime + ", isOfflineMsg:" + paramTroopTipsEntity.isOfflineMsg + ", optShowLatest:" + paramTroopTipsEntity.optShowLatest + ", highlightItems:" + paramTroopTipsEntity.highlightItems + ", highLightNum:" + paramTroopTipsEntity.highlightNum);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("insertTroopHomeworkPriseGrayTips:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.troopUin);
+      ((StringBuilder)localObject1).append(", optContent:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.optContent);
+      ((StringBuilder)localObject1).append(", , remindFlag:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.grayTipsRemindFlag);
+      ((StringBuilder)localObject1).append(", serviceType:3, msgSeq:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.msgSeq);
+      ((StringBuilder)localObject1).append(", time:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.time);
+      ((StringBuilder)localObject1).append(", expireTime:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.expireTime);
+      ((StringBuilder)localObject1).append(", isOfflineMsg:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.isOfflineMsg);
+      ((StringBuilder)localObject1).append(", optShowLatest:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.optShowLatest);
+      ((StringBuilder)localObject1).append(", highlightItems:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.highlightItems);
+      ((StringBuilder)localObject1).append(", highLightNum:");
+      ((StringBuilder)localObject1).append(paramTroopTipsEntity.highlightNum);
+      QLog.d("hw_troop", 2, ((StringBuilder)localObject1).toString());
     }
-    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)MessageRecordFactory.a(-2043);
-    localMessageForGrayTips.frienduin = paramTroopTipsEntity.troopUin;
-    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramTroopTipsEntity.troopUin, paramTroopTipsEntity.troopUin, paramTroopTipsEntity.optContent, paramTroopTipsEntity.time, -2043, 1, paramTroopTipsEntity.msgSeq);
+    Object localObject1 = (MessageForGrayTips)MessageRecordFactory.a(-2043);
+    ((MessageForGrayTips)localObject1).frienduin = paramTroopTipsEntity.troopUin;
+    ((MessageForGrayTips)localObject1).init(paramQQAppInterface.getCurrentAccountUin(), paramTroopTipsEntity.troopUin, paramTroopTipsEntity.troopUin, paramTroopTipsEntity.optContent, paramTroopTipsEntity.time, -2043, 1, paramTroopTipsEntity.msgSeq);
     if (paramTroopTipsEntity.highlightNum != 0) {
-      TroopTipsMsgMgr.a(localMessageForGrayTips, paramTroopTipsEntity.highlightItems);
+      TroopTipsMsgMgr.a((MessageForGrayTips)localObject1, paramTroopTipsEntity.highlightItems);
     }
     if (paramTroopTipsEntity.optShowLatest == 1) {
-      localMessageForGrayTips.shmsgseq = 0L;
+      ((MessageForGrayTips)localObject1).shmsgseq = 0L;
     }
-    if (!MessageHandlerUtils.a(paramQQAppInterface, localMessageForGrayTips, false))
+    if (!MessageHandlerUtils.a(paramQQAppInterface, (MessageRecord)localObject1, false))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("hw_troop", 2, "insertTroopHomeworkPriseGrayTips, after msgFilter:" + paramTroopTipsEntity.troopUin);
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("insertTroopHomeworkPriseGrayTips, after msgFilter:");
+        ((StringBuilder)localObject2).append(paramTroopTipsEntity.troopUin);
+        QLog.d("hw_troop", 2, ((StringBuilder)localObject2).toString());
       }
-      paramQQAppInterface.getMessageFacade().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
+      paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject1, paramQQAppInterface.getCurrentAccountUin());
       if (!((TroopBindPublicAccountMgr)paramQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER)).a(paramTroopTipsEntity.troopUin))
       {
-        MessageInfo localMessageInfo = new MessageInfo();
-        Object localObject1 = new MessageInfo();
-        ((MessageInfo)localObject1).a.a(4, localMessageForGrayTips.shmsgseq, localMessageForGrayTips.uniseq);
-        localMessageInfo.a((MessageInfo)localObject1);
-        localMessageForGrayTips.mMessageInfo = ((MessageInfo)localObject1);
-        ((TroopInfoManager)paramQQAppInterface.getManager(QQManagerFactory.TROOPINFO_MANAGER)).a(paramTroopTipsEntity.troopUin, localMessageInfo);
-        Object localObject2 = new BaseMessageManager.AddMessageContext(paramQQAppInterface);
-        localObject1 = ((BaseMessageManager.AddMessageContext)localObject2).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
-        localObject2 = ((BaseMessageManager.AddMessageContext)localObject2).jdField_a_of_type_JavaUtilMap;
-        localObject1 = ((RecentUserProxy)localObject1).a(paramTroopTipsEntity.troopUin, 1);
-        int i = localMessageInfo.a();
-        if (i >= ((RecentUser)localObject1).msgType)
+        localObject2 = new MessageInfo();
+        Object localObject3 = new MessageInfo();
+        ((MessageInfo)localObject3).a.a(4, ((MessageForGrayTips)localObject1).shmsgseq, ((MessageForGrayTips)localObject1).uniseq);
+        ((MessageInfo)localObject2).a((MessageInfo)localObject3);
+        ((MessageForGrayTips)localObject1).mMessageInfo = ((MessageInfo)localObject3);
+        ((TroopInfoManager)paramQQAppInterface.getManager(QQManagerFactory.TROOPINFO_MANAGER)).a(paramTroopTipsEntity.troopUin, (MessageInfo)localObject2);
+        Object localObject4 = new BaseMessageManager.AddMessageContext(paramQQAppInterface);
+        localObject3 = ((BaseMessageManager.AddMessageContext)localObject4).jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy;
+        localObject4 = ((BaseMessageManager.AddMessageContext)localObject4).jdField_a_of_type_JavaUtilMap;
+        localObject3 = ((RecentUserProxy)localObject3).a(paramTroopTipsEntity.troopUin, 1);
+        int i = ((MessageInfo)localObject2).a();
+        if (i >= ((RecentUser)localObject3).msgType)
         {
-          ((RecentUser)localObject1).msgType = i;
-          ((RecentUser)localObject1).msg = TroopAioMsgNavigateUpdateMsgInfoUtil.a(paramQQAppInterface, paramTroopTipsEntity.troopUin, localMessageInfo, ((RecentUser)localObject1).msg, localMessageForGrayTips, true);
-          ((Map)localObject2).put(UinTypeUtil.a(paramTroopTipsEntity.troopUin, 1), localObject1);
+          ((RecentUser)localObject3).msgType = i;
+          ((RecentUser)localObject3).msg = TroopAioMsgNavigateUpdateMsgInfoUtil.a(paramQQAppInterface, paramTroopTipsEntity.troopUin, (MessageInfo)localObject2, ((RecentUser)localObject3).msg, (MessageRecord)localObject1, true);
+          ((Map)localObject4).put(UinTypeUtil.a(paramTroopTipsEntity.troopUin, 1), localObject3);
         }
-        ((TroopListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).notifyUI(TroopNotificationConstants.aC, true, null);
+        ((ITroopListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_LIST_HANDLER)).a(TroopObserver.TYPE_NOTIFY_UPDATE_RECENT_LIST, true, null);
       }
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    a(paramQQAppInterface, paramString, 0);
-    String str = String.valueOf(1104445552);
-    ((TroopHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).notifyUI(TroopNotificationConstants.aj, true, new Object[] { paramString, str, Boolean.valueOf(false) });
-    a(paramQQAppInterface, paramString, str);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
-  {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin() + "_" + "file_homework_troop_aio_has_unread", 0).edit().putInt(paramString, paramInt).commit();
-    ThreadManager.post(new HWTroopUtils.3(paramQQAppInterface, paramString), 8, null, true);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("hw_troop", 2, "insertAddHWTroopGrayTips:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("insertAddHWTroopGrayTips:");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("hw_troop", 2, ((StringBuilder)localObject1).toString());
     }
-    MessageForGrayTips localMessageForGrayTips = (MessageForGrayTips)MessageRecordFactory.a(-1013);
-    localMessageForGrayTips.frienduin = paramString;
-    Object localObject = BaseApplicationImpl.getApplication().getResources();
-    String str = ((Resources)localObject).getString(2131697503);
-    localObject = ((Resources)localObject).getString(2131697499);
-    localMessageForGrayTips.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, str, NetConnInfoCenter.getServerTime(), -1013, 1, paramInt);
-    localMessageForGrayTips.time = paramLong;
+    Object localObject1 = (MessageForGrayTips)MessageRecordFactory.a(-1013);
+    ((MessageForGrayTips)localObject1).frienduin = paramString;
+    Object localObject2 = BaseApplicationImpl.getApplication().getResources();
+    String str = ((Resources)localObject2).getString(2131697509);
+    localObject2 = ((Resources)localObject2).getString(2131697505);
+    ((MessageForGrayTips)localObject1).init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, str, NetConnInfoCenter.getServerTime(), -1013, 1, paramInt);
+    ((MessageForGrayTips)localObject1).time = paramLong;
     paramString = new Bundle();
     paramString.putInt("key_action", 10);
-    paramInt = str.indexOf((String)localObject);
-    localMessageForGrayTips.addHightlightItem(paramInt, ((String)localObject).length() + paramInt, paramString);
-    if (!MessageHandlerUtils.a(paramQQAppInterface, localMessageForGrayTips, false)) {
-      paramQQAppInterface.getMessageFacade().a(localMessageForGrayTips, paramQQAppInterface.getCurrentAccountUin());
-    }
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
-  {
-    if (QLog.isColorLevel()) {
-      if (paramString1 != null) {
-        break label64;
-      }
-    }
-    for (String str = "";; str = paramString1)
-    {
-      QLog.d("hw_troop", 2, new Object[] { "clearHomeworkTroopRedPointWith0x8c2. troopUin=", str, ", type=", paramString2 });
-      label64:
-      try
-      {
-        int i = Integer.parseInt(paramString2);
-        if (!TextUtils.isEmpty(paramString1)) {
-          TroopNotificationHelper.a(paramQQAppInterface, paramString1, i);
-        }
-        return;
-      }
-      catch (NumberFormatException paramQQAppInterface) {}
+    paramInt = str.indexOf((String)localObject2);
+    ((MessageForGrayTips)localObject1).addHightlightItem(paramInt, ((String)localObject2).length() + paramInt, paramString);
+    if (!MessageHandlerUtils.a(paramQQAppInterface, (MessageRecord)localObject1, false)) {
+      paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject1, paramQQAppInterface.getCurrentAccountUin());
     }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener, boolean paramBoolean)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (QLog.isColorLevel())
-      {
-        paramOnHomeworkTroopIdentityCheckListener = new StringBuilder().append("checkIdentity error. app null: ");
-        if (paramQQAppInterface != null) {
-          break label112;
-        }
-      }
-      label112:
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        paramOnHomeworkTroopIdentityCheckListener = paramOnHomeworkTroopIdentityCheckListener.append(String.valueOf(paramBoolean)).append(", troopUin: ");
-        paramQQAppInterface = paramString1;
-        if (TextUtils.isEmpty(paramString1)) {
-          paramQQAppInterface = "";
-        }
-        paramString1 = paramOnHomeworkTroopIdentityCheckListener.append(paramQQAppInterface).append(", memberUin: ");
-        paramQQAppInterface = paramString2;
-        if (TextUtils.isEmpty(paramString2)) {
-          paramQQAppInterface = "";
-        }
-        QLog.i("hw_troop", 2, paramQQAppInterface);
-        return;
-      }
+      ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString1, paramString2, new HWTroopUtils.1(paramString1, paramString2, paramBoolean, paramQQAppInterface, paramOnHomeworkTroopIdentityCheckListener));
+      return;
     }
-    ((TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString1, paramString2, new HWTroopUtils.1(paramString1, paramString2, paramBoolean, paramQQAppInterface, paramOnHomeworkTroopIdentityCheckListener));
+    if (QLog.isColorLevel())
+    {
+      paramOnHomeworkTroopIdentityCheckListener = new StringBuilder();
+      paramOnHomeworkTroopIdentityCheckListener.append("checkIdentity error. app null: ");
+      if (paramQQAppInterface == null) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
+      paramOnHomeworkTroopIdentityCheckListener.append(String.valueOf(paramBoolean));
+      paramOnHomeworkTroopIdentityCheckListener.append(", troopUin: ");
+      paramQQAppInterface = paramString1;
+      if (TextUtils.isEmpty(paramString1)) {
+        paramQQAppInterface = "";
+      }
+      paramOnHomeworkTroopIdentityCheckListener.append(paramQQAppInterface);
+      paramOnHomeworkTroopIdentityCheckListener.append(", memberUin: ");
+      paramQQAppInterface = paramString2;
+      if (TextUtils.isEmpty(paramString2)) {
+        paramQQAppInterface = "";
+      }
+      paramOnHomeworkTroopIdentityCheckListener.append(paramQQAppInterface);
+      QLog.i("hw_troop", 2, paramOnHomeworkTroopIdentityCheckListener.toString());
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1))) {
-      return;
+    if (paramQQAppInterface != null)
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return;
+      }
+      paramString1 = paramQQAppInterface.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("homework_troop_config");
+      localStringBuilder.append(paramQQAppInterface.getCurrentUin());
+      paramString1.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean(paramString2, paramBoolean).commit();
     }
-    paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.getCurrentUin(), 0).edit().putBoolean(paramString2, paramBoolean).commit();
   }
   
   public static boolean a(int paramInt)
   {
-    return (paramInt == 332) || (paramInt == 333) || (paramInt == 334) || (paramInt == 335);
+    return (paramInt != 332) && (paramInt != 333);
   }
   
   public static boolean a(Context paramContext, String paramString1, String paramString2)
@@ -265,77 +297,91 @@ public class HWTroopUtils
     try
     {
       Object localObject1 = new File(paramString1);
-      if (!((File)localObject1).exists()) {
-        break label405;
-      }
-      if (((File)localObject1).isDirectory()) {
-        return false;
-      }
-      FileInfo localFileInfo = new FileInfo();
-      localFileInfo.d(paramString2);
-      localFileInfo.b(false);
-      localFileInfo.e(((File)localObject1).getPath());
-      localFileInfo.a(((File)localObject1).length());
-      localFileInfo.b(((File)localObject1).lastModified());
-      Object localObject2 = FileManagerUtil.a(localFileInfo);
-      ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
-      localForwardFileInfo.b(((FileManagerEntity)localObject2).nSessionId);
-      localForwardFileInfo.d(3);
-      localForwardFileInfo.b(10000);
-      localForwardFileInfo.a(localFileInfo.c());
-      localForwardFileInfo.d(localFileInfo.d());
-      localForwardFileInfo.d(localFileInfo.a());
-      localObject1 = new Intent(paramContext, FileBrowserActivity.class);
-      ((Intent)localObject1).putExtra("fileinfo", localForwardFileInfo);
-      if ((((FileManagerEntity)localObject2).nFileType == 0) || (((FileManagerEntity)localObject2).nFileType == 1))
+      if (((File)localObject1).exists())
       {
-        localObject2 = new ArrayList();
-        ((ArrayList)localObject2).add(localFileInfo);
-        FMDataCache.a((ArrayList)localObject2);
-        ((Intent)localObject1).putExtra("clicked_file_hashcode", localFileInfo.hashCode());
+        if (((File)localObject1).isDirectory()) {
+          return false;
+        }
+        FileInfo localFileInfo = new FileInfo();
+        localFileInfo.d(paramString2);
+        localFileInfo.b(false);
+        localFileInfo.e(((File)localObject1).getPath());
+        localFileInfo.a(((File)localObject1).length());
+        localFileInfo.b(((File)localObject1).lastModified());
+        Object localObject2 = FileManagerUtil.a(localFileInfo);
+        ForwardFileInfo localForwardFileInfo = new ForwardFileInfo();
+        localForwardFileInfo.b(((FileManagerEntity)localObject2).nSessionId);
+        localForwardFileInfo.d(3);
+        localForwardFileInfo.b(10000);
+        localForwardFileInfo.a(localFileInfo.c());
+        localForwardFileInfo.d(localFileInfo.d());
+        localForwardFileInfo.d(localFileInfo.a());
+        localObject1 = new Intent(paramContext, FileBrowserActivity.class);
+        ((Intent)localObject1).putExtra("fileinfo", localForwardFileInfo);
+        if ((((FileManagerEntity)localObject2).nFileType == 0) || (((FileManagerEntity)localObject2).nFileType == 1))
+        {
+          localObject2 = new ArrayList();
+          ((ArrayList)localObject2).add(localFileInfo);
+          ((IFMDataCacheApi)QRoute.api(IFMDataCacheApi.class)).addFileViewerLocalFiles((ArrayList)localObject2);
+          ((Intent)localObject1).putExtra("clicked_file_hashcode", localFileInfo.hashCode());
+        }
+        ((Intent)localObject1).putExtra("selectMode", false);
+        ((Intent)localObject1).putExtra("enableDelete", false);
+        ((Intent)localObject1).putExtra("peerType", 0);
+        ((Intent)localObject1).putExtra("busiType", 0);
+        ((Intent)localObject1).putExtra("enterfrom", 0);
+        ((Intent)localObject1).putExtra("sendprepare", -100);
+        ((Intent)localObject1).putExtra("apautocreate", false);
+        ((Intent)localObject1).putExtra("qlinkselect", false);
+        ((Intent)localObject1).putExtra("max_select_size", 0);
+        ((Intent)localObject1).putExtra("max_select_count", 20);
+        ((Intent)localObject1).putExtra("rootEntrace", false);
+        ((Intent)localObject1).setFlags(268435456);
+        paramContext.startActivity((Intent)localObject1);
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("openLocalFilePreview:");
+          paramContext.append(paramString1);
+          paramContext.append(",");
+          paramContext.append(paramString2);
+          QLog.d("hw_troop", 2, paramContext.toString());
+          return true;
+        }
       }
-      ((Intent)localObject1).putExtra("selectMode", false);
-      ((Intent)localObject1).putExtra("enableDelete", false);
-      ((Intent)localObject1).putExtra("peerType", 0);
-      ((Intent)localObject1).putExtra("busiType", 0);
-      ((Intent)localObject1).putExtra("enterfrom", 0);
-      ((Intent)localObject1).putExtra("sendprepare", -100);
-      ((Intent)localObject1).putExtra("apautocreate", false);
-      ((Intent)localObject1).putExtra("qlinkselect", false);
-      ((Intent)localObject1).putExtra("max_select_size", 0);
-      ((Intent)localObject1).putExtra("max_select_count", 20);
-      ((Intent)localObject1).putExtra("rootEntrace", false);
-      ((Intent)localObject1).setFlags(268435456);
-      paramContext.startActivity((Intent)localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("hw_troop", 2, "openLocalFilePreview:" + paramString1 + "," + paramString2);
+      else
+      {
+        return false;
       }
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("hw_troop", 2, "openLocalFilePreview:", paramContext);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("hw_troop", 2, "openLocalFilePreview:", paramContext);
       }
     }
     return true;
-    label405:
-    return false;
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return false;
+    if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramString1)))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return false;
+      }
+      paramString1 = paramQQAppInterface.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("homework_troop_config");
+      localStringBuilder.append(paramQQAppInterface.getCurrentUin());
+      return paramString1.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean(paramString2, false);
     }
-    return paramQQAppInterface.getApp().getSharedPreferences("homework_troop_config" + paramQQAppInterface.getCurrentUin(), 0).getBoolean(paramString2, false);
+    return false;
   }
   
   public static boolean a(TroopMemberInfo paramTroopMemberInfo)
   {
-    return (paramTroopMemberInfo != null) && (a(paramTroopMemberInfo.level));
+    return (paramTroopMemberInfo != null) && (((IHWTroopUtilsApi)QRoute.api(IHWTroopUtilsApi.class)).hasHomeworkTroopIdentity(paramTroopMemberInfo.level));
   }
   
   private static void b(HWTroopUtils.OnHomeworkTroopIdentityCheckListener paramOnHomeworkTroopIdentityCheckListener, int paramInt)
@@ -350,15 +396,10 @@ public class HWTroopUtils
     }
     ThreadManager.getUIHandler().post(new HWTroopUtils.2(paramOnHomeworkTroopIdentityCheckListener, paramInt));
   }
-  
-  public static boolean b(int paramInt)
-  {
-    return (paramInt != 332) && (paramInt != 333);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.HWTroopUtils
  * JD-Core Version:    0.7.0.1
  */

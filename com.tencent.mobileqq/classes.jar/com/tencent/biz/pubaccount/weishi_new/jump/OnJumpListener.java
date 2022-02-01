@@ -24,10 +24,15 @@ public class OnJumpListener
   {
     WSLog.e("OnJumpListener", "[OnJumpListener.java][onDownloadWSApp]");
   }
+  
+  public void e()
+  {
+    WSLog.e("OnJumpListener", "[OnJumpListener.java][onJumpQQScheme]");
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.jump.OnJumpListener
  * JD-Core Version:    0.7.0.1
  */

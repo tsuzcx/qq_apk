@@ -105,12 +105,10 @@ public class FlutterFragment
   public FlutterShellArgs getFlutterShellArgs()
   {
     String[] arrayOfString = getArguments().getStringArray("initialization_args");
-    if (arrayOfString != null) {}
-    for (;;)
-    {
-      return new FlutterShellArgs(arrayOfString);
+    if (arrayOfString == null) {
       arrayOfString = new String[0];
     }
+    return new FlutterShellArgs(arrayOfString);
   }
   
   @Nullable
@@ -307,11 +305,16 @@ public class FlutterFragment
   
   public boolean shouldDestroyEngineWithHost()
   {
-    boolean bool = getArguments().getBoolean("destroy_engine_with_fragment", false);
-    if ((getCachedEngineId() != null) || (this.delegate.isFlutterEngineFromHost())) {
-      return bool;
+    boolean bool2 = getArguments().getBoolean("destroy_engine_with_fragment", false);
+    boolean bool1 = bool2;
+    if (getCachedEngineId() == null)
+    {
+      if (this.delegate.isFlutterEngineFromHost()) {
+        return bool2;
+      }
+      bool1 = getArguments().getBoolean("destroy_engine_with_fragment", true);
     }
-    return getArguments().getBoolean("destroy_engine_with_fragment", true);
+    return bool1;
   }
   
   public boolean shouldRestoreAndSaveState()
@@ -324,7 +327,7 @@ public class FlutterFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterFragment
  * JD-Core Version:    0.7.0.1
  */

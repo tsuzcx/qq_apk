@@ -1,17 +1,25 @@
 package com.tencent.mobileqq.richmedia.capture.view;
 
-import com.tencent.mobileqq.shortvideo.common.GloableValue;
+import com.tencent.mobileqq.qqconnectface.api.ICamera;
+import com.tencent.ttpic.openapi.filter.RenderBuffer;
+import java.util.Map;
 
 class QIdentifierCaptureView$2
   implements Runnable
 {
   QIdentifierCaptureView$2(QIdentifierCaptureView paramQIdentifierCaptureView) {}
   
-  public void run() {}
+  public void run()
+  {
+    if (!this.this$0.a.containsKey(CaptureParam.a)) {
+      this.this$0.a.put(CaptureParam.a, new RenderBuffer(this.this$0.e, this.this$0.f, 33984));
+    }
+    QIdentifierCaptureView.a(this.this$0).a(this.this$0.f, this.this$0.e, this.this$0.a(), this.this$0.b());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.QIdentifierCaptureView.2
  * JD-Core Version:    0.7.0.1
  */

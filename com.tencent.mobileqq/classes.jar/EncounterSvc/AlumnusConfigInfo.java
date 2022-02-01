@@ -39,17 +39,19 @@ public final class AlumnusConfigInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.alumnus_entrance_open, 0);
-    if (this.alumnus_pic_url != null) {
-      paramJceOutputStream.write(this.alumnus_pic_url, 1);
+    byte[] arrayOfByte = this.alumnus_pic_url;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
-    if (this.alumnus_pic_md5 != null) {
-      paramJceOutputStream.write(this.alumnus_pic_md5, 2);
+    arrayOfByte = this.alumnus_pic_md5;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.AlumnusConfigInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -52,20 +52,20 @@ public class LiteLiveSdkWebViewRuntime
   public EntityManagerFactory getEntityManagerFactory(String paramString)
   {
     paramString = getAccount();
-    if (paramString == null) {
-      throw new IllegalStateException("Can not create a entity factory, the account is null.");
-    }
-    try
-    {
-      if (this.a == null)
+    if (paramString != null) {
+      try
       {
-        paramString = QQEntityManagerFactoryProxy.a(paramString, super.getEntityManagerFactory());
-        paramString.verifyAuthentication();
-        this.a = paramString;
+        if (this.a == null)
+        {
+          paramString = QQEntityManagerFactoryProxy.a(paramString, super.getEntityManagerFactory());
+          paramString.verifyAuthentication();
+          this.a = paramString;
+        }
+        return this.a;
       }
-      return this.a;
+      finally {}
     }
-    finally {}
+    throw new IllegalStateException("Can not create a entity factory, the account is null.");
   }
   
   public Manager getManager(int paramInt)
@@ -91,7 +91,7 @@ public class LiteLiveSdkWebViewRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.webview.LiteLiveSdkWebViewRuntime
  * JD-Core Version:    0.7.0.1
  */

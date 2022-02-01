@@ -32,13 +32,17 @@ public final class DateUtil
   
   public static String formatDate(SimpleDateFormat paramSimpleDateFormat, Long paramLong)
   {
-    if ((paramLong == null) || (paramLong.longValue() <= 0L)) {
-      return "";
-    }
-    if (String.valueOf(paramLong).length() == 13) {}
-    for (long l = paramLong.longValue();; l = paramLong.longValue() * 1000L) {
+    if ((paramLong != null) && (paramLong.longValue() > 0L))
+    {
+      long l;
+      if (String.valueOf(paramLong).length() == 13) {
+        l = paramLong.longValue();
+      } else {
+        l = paramLong.longValue() * 1000L;
+      }
       return paramSimpleDateFormat.format(new Date(l));
     }
+    return "";
   }
   
   public static int getDay()
@@ -124,11 +128,20 @@ public final class DateUtil
     if ((l > 86400L) && ((int)(l / 86400L) == 1)) {
       return "昨天";
     }
-    if (l > 3600L) {
-      return (int)(l / 3600L) + "小时前";
+    StringBuilder localStringBuilder;
+    if (l > 3600L)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((int)(l / 3600L));
+      localStringBuilder.append("小时前");
+      return localStringBuilder.toString();
     }
-    if (l > 60L) {
-      return (int)(l / 60L) + "分钟前";
+    if (l > 60L)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((int)(l / 60L));
+      localStringBuilder.append("分钟前");
+      return localStringBuilder.toString();
     }
     return "刚刚";
   }
@@ -139,16 +152,31 @@ public final class DateUtil
       return "";
     }
     paramLong = (Calendar.getInstance().getTimeInMillis() - paramLong) / 1000L;
-    if (paramLong > 86400L) {
-      return (int)(paramLong / 86400L) + "天";
+    if (paramLong > 86400L)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((int)(paramLong / 86400L));
+      localStringBuilder.append("天");
+      return localStringBuilder.toString();
     }
-    if (paramLong > 3600L) {
-      return (int)(paramLong / 3600L) + "小时";
+    if (paramLong > 3600L)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((int)(paramLong / 3600L));
+      localStringBuilder.append("小时");
+      return localStringBuilder.toString();
     }
-    if (paramLong > 60L) {
-      return (int)(paramLong / 60L) + "分钟";
+    if (paramLong > 60L)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((int)(paramLong / 60L));
+      localStringBuilder.append("分钟");
+      return localStringBuilder.toString();
     }
-    return (int)paramLong + "秒";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((int)paramLong);
+    localStringBuilder.append("秒");
+    return localStringBuilder.toString();
   }
   
   private static int getTimeByType(int paramInt)
@@ -163,35 +191,47 @@ public final class DateUtil
     }
     int i = paramInt / 60;
     paramInt %= 60;
-    String str1;
+    Object localObject1;
     if (i >= 10)
     {
-      str1 = String.valueOf(i);
-      if (paramInt < 10) {
-        break label89;
-      }
+      localObject1 = String.valueOf(i);
     }
-    label89:
-    for (String str2 = String.valueOf(paramInt);; str2 = "0" + String.valueOf(paramInt))
+    else
     {
-      return str1 + ":" + str2;
-      str1 = "0" + String.valueOf(i);
-      break;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("0");
+      ((StringBuilder)localObject1).append(String.valueOf(i));
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
+    Object localObject2;
+    if (paramInt >= 10)
+    {
+      localObject2 = String.valueOf(paramInt);
+    }
+    else
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("0");
+      ((StringBuilder)localObject2).append(String.valueOf(paramInt));
+      localObject2 = ((StringBuilder)localObject2).toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(":");
+    localStringBuilder.append((String)localObject2);
+    return localStringBuilder.toString();
   }
   
   public static String getWeek(Date paramDate)
   {
-    int i = 0;
     Calendar localCalendar = Calendar.getInstance();
     localCalendar.setTime(paramDate);
     int j = localCalendar.get(7) - 1;
-    if (j < 0) {}
-    for (;;)
-    {
-      return new String[] { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" }[i];
-      i = j;
+    int i = j;
+    if (j < 0) {
+      i = 0;
     }
+    return new String[] { "星期日", "星期一", "星期二", "星期三", "星期四", "星期五", "星期六" }[i];
   }
   
   public static int getYear()
@@ -201,7 +241,7 @@ public final class DateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.DateUtil
  * JD-Core Version:    0.7.0.1
  */

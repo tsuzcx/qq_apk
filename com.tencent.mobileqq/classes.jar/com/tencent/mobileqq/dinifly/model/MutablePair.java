@@ -19,34 +19,38 @@ public class MutablePair<T>
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof Pair)) {}
-    do
-    {
+    boolean bool1 = paramObject instanceof Pair;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramObject = (Pair)paramObject;
-    } while ((!objectsEqual(paramObject.first, this.first)) || (!objectsEqual(paramObject.second, this.second)));
-    return true;
+    }
+    paramObject = (Pair)paramObject;
+    bool1 = bool2;
+    if (objectsEqual(paramObject.first, this.first))
+    {
+      bool1 = bool2;
+      if (objectsEqual(paramObject.second, this.second)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
   {
+    Object localObject = this.first;
     int j = 0;
     int i;
-    if (this.first == null)
-    {
+    if (localObject == null) {
       i = 0;
-      if (this.second != null) {
-        break label33;
-      }
+    } else {
+      i = localObject.hashCode();
     }
-    for (;;)
-    {
-      return i ^ j;
-      i = this.first.hashCode();
-      break;
-      label33:
-      j = this.second.hashCode();
+    localObject = this.second;
+    if (localObject != null) {
+      j = localObject.hashCode();
     }
+    return i ^ j;
   }
   
   public void set(T paramT1, T paramT2)
@@ -57,12 +61,18 @@ public class MutablePair<T>
   
   public String toString()
   {
-    return "Pair{" + String.valueOf(this.first) + " " + String.valueOf(this.second) + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Pair{");
+    localStringBuilder.append(String.valueOf(this.first));
+    localStringBuilder.append(" ");
+    localStringBuilder.append(String.valueOf(this.second));
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.MutablePair
  * JD-Core Version:    0.7.0.1
  */

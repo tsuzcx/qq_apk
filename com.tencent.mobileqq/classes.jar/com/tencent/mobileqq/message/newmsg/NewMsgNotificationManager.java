@@ -67,8 +67,18 @@ public class NewMsgNotificationManager
     ((DownloadTask)localObject).b(512);
     int i = DownloaderFactory.a((DownloadTask)localObject, null, null);
     long l2 = SystemClock.uptimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.i("NewMsgNotificationManager", 2, "download cost " + (l2 - l1) + " result " + i + " key " + ((DownloadTask)localObject).a + " iconUrl: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download cost ");
+      localStringBuilder.append(l2 - l1);
+      localStringBuilder.append(" result ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" key ");
+      localStringBuilder.append(((DownloadTask)localObject).a);
+      localStringBuilder.append(" iconUrl: ");
+      localStringBuilder.append(paramString);
+      QLog.i("NewMsgNotificationManager", 2, localStringBuilder.toString());
     }
     return SafeBitmapFactory.decodeFile(str);
   }
@@ -80,20 +90,136 @@ public class NewMsgNotificationManager
   
   private static boolean a(int paramInt)
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 3000) || (paramInt == 1009) || (paramInt == 1001) || (paramInt == 10002) || (paramInt == 10004) || (paramInt == 1003) || (paramInt == 1004) || (paramInt == 1005) || (paramInt == 1020) || (paramInt == 1000) || (paramInt == 1023) || (paramInt == 1024) || (paramInt == 1025) || (paramInt == 7220) || (paramInt == 7120) || (paramInt == 7200) || (paramInt == 1008) || (paramInt == 3001) || (paramInt == 7210) || (paramInt == 7230) || (paramInt == 7) || (paramInt == 6000) || (paramInt == 6003) || (paramInt == 7000) || (paramInt == 10007) || (paramInt == 10008) || (paramInt == 10010);
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 0)
+    {
+      bool1 = bool2;
+      if (paramInt != 1)
+      {
+        bool1 = bool2;
+        if (paramInt != 3000)
+        {
+          bool1 = bool2;
+          if (paramInt != 1009)
+          {
+            bool1 = bool2;
+            if (paramInt != 1001)
+            {
+              bool1 = bool2;
+              if (paramInt != 10002)
+              {
+                bool1 = bool2;
+                if (paramInt != 10004)
+                {
+                  bool1 = bool2;
+                  if (paramInt != 1003)
+                  {
+                    bool1 = bool2;
+                    if (paramInt != 1004)
+                    {
+                      bool1 = bool2;
+                      if (paramInt != 1005)
+                      {
+                        bool1 = bool2;
+                        if (paramInt != 1020)
+                        {
+                          bool1 = bool2;
+                          if (paramInt != 1000)
+                          {
+                            bool1 = bool2;
+                            if (paramInt != 1023)
+                            {
+                              bool1 = bool2;
+                              if (paramInt != 1024)
+                              {
+                                bool1 = bool2;
+                                if (paramInt != 1025)
+                                {
+                                  bool1 = bool2;
+                                  if (paramInt != 7220)
+                                  {
+                                    bool1 = bool2;
+                                    if (paramInt != 7120)
+                                    {
+                                      bool1 = bool2;
+                                      if (paramInt != 7200)
+                                      {
+                                        bool1 = bool2;
+                                        if (paramInt != 1008)
+                                        {
+                                          bool1 = bool2;
+                                          if (paramInt != 3001)
+                                          {
+                                            bool1 = bool2;
+                                            if (paramInt != 7210)
+                                            {
+                                              bool1 = bool2;
+                                              if (paramInt != 7230)
+                                              {
+                                                bool1 = bool2;
+                                                if (paramInt != 7)
+                                                {
+                                                  bool1 = bool2;
+                                                  if (paramInt != 6000)
+                                                  {
+                                                    bool1 = bool2;
+                                                    if (paramInt != 6003)
+                                                    {
+                                                      bool1 = bool2;
+                                                      if (paramInt != 7000)
+                                                      {
+                                                        bool1 = bool2;
+                                                        if (paramInt != 10007)
+                                                        {
+                                                          bool1 = bool2;
+                                                          if (paramInt != 10008)
+                                                          {
+                                                            if (paramInt == 10010) {
+                                                              return true;
+                                                            }
+                                                            bool1 = false;
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                }
+                                              }
+                                            }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private boolean a(int paramInt, String paramString)
   {
-    boolean bool1 = true;
-    boolean bool2 = c();
+    boolean bool = c();
     if (QLog.isColorLevel()) {
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "newMsgNotificationEnabled: invoked. ", " systemNotificationEnabled: ", Boolean.valueOf(bool2) });
+      QLog.d("NewMsgNotificationManager", 2, new Object[] { "newMsgNotificationEnabled: invoked. ", " systemNotificationEnabled: ", Boolean.valueOf(bool) });
     }
-    if ((a(paramInt)) || (a(paramString))) {
-      bool1 = b();
+    if ((!a(paramInt)) && (!a(paramString))) {
+      return true;
     }
-    return bool1;
+    return b();
   }
   
   private static boolean a(String paramString)
@@ -113,20 +239,17 @@ public class NewMsgNotificationManager
       paramString = BitmapFactory.decodeResource(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources(), i);
       return paramString;
     }
+    catch (OutOfMemoryError paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("NewMsgNotificationManager", 2, "getBitmapFromLocal: failed. ", paramString);
+      }
+    }
     catch (Exception paramString)
     {
       QLog.e("NewMsgNotificationManager", 1, "getBitmapFromLocal: failed. ", paramString);
-      return null;
     }
-    catch (OutOfMemoryError paramString)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("NewMsgNotificationManager", 2, "getBitmapFromLocal: failed. ", paramString);
-        }
-      }
-    }
+    return null;
   }
   
   private void b(BaseActivity paramBaseActivity)
@@ -142,15 +265,16 @@ public class NewMsgNotificationManager
   
   public Bitmap a(String paramString1, String paramString2, Bitmap paramBitmap)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       return paramBitmap;
-      if ("2".equals(paramString1)) {
-        return a(paramString2);
-      }
-    } while (!"1".equals(paramString1));
-    return b(paramString2);
+    }
+    if ("2".equals(paramString1)) {
+      return a(paramString2);
+    }
+    if ("1".equals(paramString1)) {
+      return b(paramString2);
+    }
+    return paramBitmap;
   }
   
   public CompoundButton.OnCheckedChangeListener a(BaseActivity paramBaseActivity, FormSwitchItem paramFormSwitchItem1, FormSimpleItem paramFormSimpleItem, FormSwitchItem paramFormSwitchItem2)
@@ -168,16 +292,25 @@ public class NewMsgNotificationManager
   {
     NewMsgNotificationManager.3 local3 = new NewMsgNotificationManager.3(this);
     NewMsgNotificationManager.4 local4 = new NewMsgNotificationManager.4(this, paramBaseActivity);
-    DialogUtil.a(paramBaseActivity, 230, null, paramBaseActivity.getString(2131693567), paramBaseActivity.getString(2131690800), paramBaseActivity.getString(2131693566), local4, local3).show();
+    DialogUtil.a(paramBaseActivity, 230, null, paramBaseActivity.getString(2131693522), paramBaseActivity.getString(2131690728), paramBaseActivity.getString(2131693521), local4, local3).show();
   }
   
   public void a(BaseActivity paramBaseActivity, TextView paramTextView)
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getResources();
     int i = paramTextView.getCurrentTextColor();
-    String str = ((Resources)localObject).getString(2131694988);
-    localObject = new SpannableString(str + "允许QQ通知" + ((Resources)localObject).getString(2131694989));
-    ((SpannableString)localObject).setSpan(new NewMsgNotificationManager.2(this, paramBaseActivity), str.length(), (str + "允许QQ通知").length(), 17);
+    String str = ((Resources)localObject).getString(2131694978);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("允许QQ通知");
+    localStringBuilder.append(((Resources)localObject).getString(2131694979));
+    localObject = new SpannableString(localStringBuilder.toString());
+    paramBaseActivity = new NewMsgNotificationManager.2(this, paramBaseActivity);
+    int j = str.length();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("允许QQ通知");
+    ((SpannableString)localObject).setSpan(paramBaseActivity, j, localStringBuilder.toString().length(), 17);
     paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
     paramTextView.setText((CharSequence)localObject);
     paramTextView.setClickable(true);
@@ -186,43 +319,43 @@ public class NewMsgNotificationManager
   
   public void a(FormSwitchItem paramFormSwitchItem1, TextView paramTextView, FormSwitchItem paramFormSwitchItem2, FormSwitchItem paramFormSwitchItem3)
   {
-    int i = 0;
     boolean bool1 = c();
-    if (bool1 != this.jdField_a_of_type_Boolean)
+    boolean bool2 = this.jdField_a_of_type_Boolean;
+    int i = 0;
+    if (bool1 != bool2)
     {
       if (QLog.isColorLevel()) {
         QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. ", " curSystemState[系统设置发生了变化]: ", Boolean.valueOf(bool1), " systemNotificationEnabled: ", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
       }
       this.jdField_a_of_type_Boolean = bool1;
       SettingCloneUtil.writeValue(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), null, "system_notification_enabled_key", bool1);
-      paramFormSwitchItem1 = paramFormSwitchItem1.a();
-      paramFormSwitchItem2 = paramFormSwitchItem2.a();
-      paramFormSwitchItem3 = paramFormSwitchItem3.a();
-      if (bool1) {
-        break label217;
+    }
+    else
+    {
+      bool2 = b();
+      if (QLog.isColorLevel()) {
+        QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. [系统设置未变化]", " curSystemState: ", Boolean.valueOf(bool1), " globalSwitchOn: ", Boolean.valueOf(bool2) });
       }
+    }
+    paramFormSwitchItem1 = paramFormSwitchItem1.a();
+    paramFormSwitchItem2 = paramFormSwitchItem2.a();
+    paramFormSwitchItem3 = paramFormSwitchItem3.a();
+    if (!bool1)
+    {
       paramFormSwitchItem1.setAlpha(0.5F);
       paramFormSwitchItem2.setAlpha(0.5F);
       paramFormSwitchItem3.setAlpha(0.5F);
     }
-    for (;;)
+    else
     {
-      if (bool1) {
-        i = 8;
-      }
-      paramTextView.setVisibility(i);
-      return;
-      boolean bool2 = b();
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("NewMsgNotificationManager", 2, new Object[] { "onNotifyPushActivityResume: invoked. [系统设置未变化]", " curSystemState: ", Boolean.valueOf(bool1), " globalSwitchOn: ", Boolean.valueOf(bool2) });
-      break;
-      label217:
       paramFormSwitchItem1.setAlpha(1.0F);
       paramFormSwitchItem2.setAlpha(1.0F);
       paramFormSwitchItem3.setAlpha(1.0F);
     }
+    if (bool1) {
+      i = 8;
+    }
+    paramTextView.setVisibility(i);
   }
   
   public boolean a()
@@ -279,7 +412,7 @@ public class NewMsgNotificationManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.message.newmsg.NewMsgNotificationManager
  * JD-Core Version:    0.7.0.1
  */

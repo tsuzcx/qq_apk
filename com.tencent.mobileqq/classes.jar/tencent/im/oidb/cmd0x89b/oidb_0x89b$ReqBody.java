@@ -16,7 +16,7 @@ public final class oidb_0x89b$ReqBody
   public static final int UINT32_REQ_TYPE_FIELD_NUMBER = 3;
   public static final int UINT64_GROUP_CODE_FIELD_NUMBER = 2;
   public static final int UINT64_GROUP_UIN_FIELD_NUMBER = 1;
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56 }, new String[] { "uint64_group_uin", "uint64_group_code", "uint32_req_type", "msg_join_group", "msg_exit_group", "msg_kick_visitor", "uint32_hot_group_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), null, null, null, Integer.valueOf(0) }, ReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public oidb_0x89b.ExitPublicGroupReqBody msg_exit_group = new oidb_0x89b.ExitPublicGroupReqBody();
   public oidb_0x89b.JoinPublicGroupReqBody msg_join_group = new oidb_0x89b.JoinPublicGroupReqBody();
   public oidb_0x89b.KickPublicGroupVisitorReqBody msg_kick_visitor = new oidb_0x89b.KickPublicGroupVisitorReqBody();
@@ -24,10 +24,17 @@ public final class oidb_0x89b$ReqBody
   public final PBUInt32Field uint32_req_type = PBField.initUInt32(0);
   public final PBUInt64Field uint64_group_code = PBField.initUInt64(0L);
   public final PBUInt64Field uint64_group_uin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 50, 56 }, new String[] { "uint64_group_uin", "uint64_group_code", "uint32_req_type", "msg_join_group", "msg_exit_group", "msg_kick_visitor", "uint32_hot_group_type" }, new Object[] { localLong, localLong, localInteger, null, null, null, localInteger }, ReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x89b.oidb_0x89b.ReqBody
  * JD-Core Version:    0.7.0.1
  */

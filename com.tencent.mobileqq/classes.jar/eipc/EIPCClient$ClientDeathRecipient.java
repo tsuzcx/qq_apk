@@ -13,18 +13,23 @@ public class EIPCClient$ClientDeathRecipient
   
   public void binderDied()
   {
-    if (this.eipcClient != null) {
-      this.eipcClient.connect(new EIPCClient.ClientDeathRecipient.1(this));
+    Object localObject = this.eipcClient;
+    if (localObject != null) {
+      ((EIPCClient)localObject).connect(new EIPCClient.ClientDeathRecipient.1(this));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EIPCConst", 2, "client binderDied, " + this.connection);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("client binderDied, ");
+      ((StringBuilder)localObject).append(this.connection);
+      QLog.d("EIPCConst", 2, ((StringBuilder)localObject).toString());
     }
     this.binder.unlinkToDeath(this, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     eipc.EIPCClient.ClientDeathRecipient
  * JD-Core Version:    0.7.0.1
  */

@@ -15,29 +15,34 @@ public class MiniappHttpUtil
   
   public static void fillErrMsg(String paramString, JSONObject paramJSONObject, int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt == -5) || ((paramInt != -3) && (paramInt != -2))) {}
+    try
     {
-    case -4: 
-    default: 
-    case -5: 
-      try
-      {
-        paramJSONObject.put("errMsg", "unknown reason");
-        return;
-      }
-      catch (Throwable paramString)
-      {
-        QMLog.e("MiniappHttpUtil", "fillErrMsg", paramString);
-        return;
-      }
-      if (TextUtils.isEmpty(paramString)) {}
-      for (paramString = "abort";; paramString = paramString + ":fail abort")
-      {
-        paramJSONObject.put("errMsg", paramString);
-        return;
-      }
+      paramJSONObject.put("errMsg", "unknown reason");
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      StringBuilder localStringBuilder;
+      break label86;
     }
     paramJSONObject.put("errMsg", "request protocol error");
+    return;
+    if (TextUtils.isEmpty(paramString))
+    {
+      paramString = "abort";
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(":fail abort");
+      paramString = localStringBuilder.toString();
+    }
+    paramJSONObject.put("errMsg", paramString);
+    return;
+    label86:
+    QMLog.e("MiniappHttpUtil", "fillErrMsg", paramString);
   }
   
   public static boolean isRefererVersionValid(String paramString)
@@ -49,24 +54,20 @@ public class MiniappHttpUtil
     }
     int j = paramString.length();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label59;
-      }
       int k = paramString.charAt(i);
       if (((k <= 31) && (k != 9)) || (k >= 127)) {
-        break;
+        return false;
       }
       i += 1;
     }
-    label59:
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.MiniappHttpUtil
  * JD-Core Version:    0.7.0.1
  */

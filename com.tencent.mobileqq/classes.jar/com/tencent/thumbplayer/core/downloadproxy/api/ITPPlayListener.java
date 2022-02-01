@@ -4,6 +4,7 @@ import java.util.Map;
 
 public abstract interface ITPPlayListener
 {
+  public static final int MESSAGE_FLV_PRELOAD_STATUS = 5;
   public static final int MESSAGE_HTTP_HEADER = 3;
   public static final int MESSAGE_NOTIFY_M3U8_CONTENT = 4;
   public static final int MESSAGE_NOTIFY_PLAYER_SWITCH_DEFINITION = 2;
@@ -55,7 +56,7 @@ public abstract interface ITPPlayListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.ITPPlayListener
  * JD-Core Version:    0.7.0.1
  */

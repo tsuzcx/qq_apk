@@ -44,8 +44,10 @@ public class TroopVideoManager
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(str)).intValue() == 1) {
-        ((StringBuilder)localObject).append(str).append(";");
+      if (((Integer)this.jdField_a_of_type_JavaUtilMap.get(str)).intValue() == 1)
+      {
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(";");
       }
     }
     if (((StringBuilder)localObject).length() > 0)
@@ -59,26 +61,23 @@ public class TroopVideoManager
   
   public void a(long paramLong)
   {
-    int j = 0;
     Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(String.valueOf(paramLong));
-    if (localInteger != null) {}
-    for (int i = localInteger.intValue();; i = 0)
-    {
-      boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().c(paramLong);
-      if ((bool) && (i == 0)) {
-        j = 1;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(paramLong), Integer.valueOf(j));
-        if (j != i) {
-          a();
-        }
-        return;
-        if (bool) {
-          j = i;
-        }
-      }
+    int j = 0;
+    int i;
+    if (localInteger != null) {
+      i = localInteger.intValue();
+    } else {
+      i = 0;
+    }
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAVNotifyCenter().c(paramLong);
+    if ((bool) && (i == 0)) {
+      j = 1;
+    } else if (bool) {
+      j = i;
+    }
+    this.jdField_a_of_type_JavaUtilMap.put(String.valueOf(paramLong), Integer.valueOf(j));
+    if (j != i) {
+      a();
     }
   }
   
@@ -113,7 +112,7 @@ public class TroopVideoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopVideoManager
  * JD-Core Version:    0.7.0.1
  */

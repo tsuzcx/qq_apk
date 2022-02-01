@@ -1,96 +1,112 @@
 package com.tencent.ark.open.delegate;
 
 import android.content.Context;
-import android.text.TextUtils;
 import com.tencent.ark.ArkEnvironmentManager;
 import com.tencent.ark.ArkViewImplement.InputCallback;
+import com.tencent.ark.Logger;
 import com.tencent.ark.ark.ApplicationCallback;
-import com.tencent.ark.open.ArkAppCacheMgr;
 import com.tencent.ark.open.ArkUtil;
 
 public class ArkDelegateManager
 {
   private static final ArkEnvironmentManager ENV = ;
   private static final String TAG = "ArkApp.ArkDelegateManager";
-  private Context mAppContext = null;
-  private ark.ApplicationCallback mApplicationCallback = null;
-  private IArkDelegateNet mArkDelegateNet = null;
-  ArkViewImplement.InputCallback mInputCallback = null;
-  private String mPorccessSufix = "";
-  private IArkDelegateSetup mSetupDelegate = null;
+  ArkDelegateManager.Config mConfig;
   
   public static ArkDelegateManager getInstance()
   {
     return ArkDelegateManager.Holder.gInstance;
   }
   
-  public ark.ApplicationCallback getApplicationCallback()
+  public static boolean setupArkEnvironment(boolean paramBoolean)
   {
-    if (this.mApplicationCallback != null) {
-      return this.mApplicationCallback;
-    }
-    return null;
-  }
-  
-  public Context getApplicationContext()
-  {
-    return this.mAppContext;
-  }
-  
-  public ArkViewImplement.InputCallback getInputCallback()
-  {
-    return this.mInputCallback;
-  }
-  
-  public IArkDelegateNet getNetDelegate()
-  {
-    return this.mArkDelegateNet;
-  }
-  
-  public String getPorcessName()
-  {
-    return this.mPorccessSufix;
-  }
-  
-  public IArkDelegateSetup getSetupDelegate()
-  {
-    return this.mSetupDelegate;
-  }
-  
-  public boolean init(String paramString1, String paramString2, String paramString3, Context paramContext)
-  {
-    if ((!TextUtils.isEmpty(paramString1)) && (paramContext != null))
+    IArkDelegateSetup localIArkDelegateSetup = getInstance().getSetupDelegate();
+    if (localIArkDelegateSetup != null)
     {
-      ArkAppCacheMgr.setupArkEnvironment(true);
-      this.mAppContext = paramContext.getApplicationContext();
-      this.mPorccessSufix = paramString2;
-      ArkUtil.createDir(paramString1);
-      ArkEnvironmentManager.getInstance().setRootDirecotry(paramString1);
-      ArkEnvironmentManager.getInstance().setQQVersion(paramString3);
-      ENV.logI("ArkApp.ArkDelegateManager", "ark init with dir:" + paramString1 + ",proSufix=" + paramString2 + ", qqVersion=" + paramString3);
+      localIArkDelegateSetup.setupArkEnvironment(paramBoolean);
       return true;
     }
     return false;
   }
   
-  public void setApplicationCallback(ark.ApplicationCallback paramApplicationCallback)
+  public ark.ApplicationCallback getApplicationCallback()
   {
-    this.mApplicationCallback = paramApplicationCallback;
+    ArkDelegateManager.Config localConfig = this.mConfig;
+    if (localConfig == null) {
+      return null;
+    }
+    return localConfig.applicationCallback;
   }
   
-  public void setInputCallback(ArkViewImplement.InputCallback paramInputCallback)
+  public Context getApplicationContext()
   {
-    this.mInputCallback = paramInputCallback;
+    ArkDelegateManager.Config localConfig = this.mConfig;
+    if (localConfig == null) {
+      return null;
+    }
+    return localConfig.context.getApplicationContext();
   }
   
-  public void setNetDelegate(IArkDelegateNet paramIArkDelegateNet)
+  public ArkViewImplement.InputCallback getInputCallback()
   {
-    this.mArkDelegateNet = paramIArkDelegateNet;
+    ArkDelegateManager.Config localConfig = this.mConfig;
+    if (localConfig == null) {
+      return null;
+    }
+    return localConfig.inputCallback;
   }
   
-  public void setSetupDelegate(IArkDelegateSetup paramIArkDelegateSetup)
+  public IArkDelegateNet getNetDelegate()
   {
-    this.mSetupDelegate = paramIArkDelegateSetup;
+    ArkDelegateManager.Config localConfig = this.mConfig;
+    if (localConfig == null) {
+      return null;
+    }
+    return localConfig.netDelegate;
+  }
+  
+  public String getProcessName()
+  {
+    return this.mConfig.processName;
+  }
+  
+  public IArkDelegateSSO getSSODelegate()
+  {
+    ArkDelegateManager.Config localConfig = this.mConfig;
+    if (localConfig == null) {
+      return null;
+    }
+    return localConfig.ssoDelegate;
+  }
+  
+  public IArkDelegateSetup getSetupDelegate()
+  {
+    ArkDelegateManager.Config localConfig = this.mConfig;
+    if (localConfig == null) {
+      return null;
+    }
+    return localConfig.setupDelegate;
+  }
+  
+  public boolean init(ArkDelegateManager.Config paramConfig)
+  {
+    if (!paramConfig.isValid()) {
+      return false;
+    }
+    this.mConfig = paramConfig;
+    setupArkEnvironment(true);
+    ArkUtil.createDir(paramConfig.rootDir);
+    ArkEnvironmentManager.getInstance().setRootDirecotry(paramConfig.rootDir);
+    ArkEnvironmentManager.getInstance().setQQVersion(paramConfig.qqVersion);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ark init with dir:");
+    localStringBuilder.append(paramConfig.rootDir);
+    localStringBuilder.append(", process=");
+    localStringBuilder.append(paramConfig.processName);
+    localStringBuilder.append(", qqVersion=");
+    localStringBuilder.append(paramConfig.qqVersion);
+    Logger.logI("ArkApp.ArkDelegateManager", localStringBuilder.toString());
+    return true;
   }
 }
 

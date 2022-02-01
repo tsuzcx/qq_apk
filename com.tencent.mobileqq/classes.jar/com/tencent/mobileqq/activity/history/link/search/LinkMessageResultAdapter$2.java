@@ -19,8 +19,9 @@ class LinkMessageResultAdapter$2
   
   public void run()
   {
+    Object localObject = this.this$0;
+    localObject = ((LinkMessageResultAdapter)localObject).a(LinkMessageResultAdapter.c((LinkMessageResultAdapter)localObject), this.jdField_a_of_type_JavaLangString);
     int j = 0;
-    Object localObject = this.this$0.a(LinkMessageResultAdapter.c(this.this$0), this.jdField_a_of_type_JavaLangString);
     int i;
     MessageRecord localMessageRecord;
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
@@ -51,8 +52,12 @@ class LinkMessageResultAdapter$2
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkMessageResultAdapter", 2, "localCacheMsgs size: " + this.this$0.jdField_a_of_type_JavaUtilList.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("localCacheMsgs size: ");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaUtilList.size());
+      QLog.d("LinkMessageResultAdapter", 2, ((StringBuilder)localObject).toString());
     }
     localObject = new HashMap();
     ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
@@ -63,7 +68,7 @@ class LinkMessageResultAdapter$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.LinkMessageResultAdapter.2
  * JD-Core Version:    0.7.0.1
  */

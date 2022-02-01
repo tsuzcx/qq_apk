@@ -19,8 +19,14 @@ class QRLoginAuthActivity$1
   
   public void onCloseCode(String paramString, byte[] paramArrayOfByte1, long paramLong, WUserSigInfo paramWUserSigInfo, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginAuthActivity", 2, "OnCloseCode userAccount=" + paramString + " ret=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte1 = new StringBuilder();
+      paramArrayOfByte1.append("OnCloseCode userAccount=");
+      paramArrayOfByte1.append(paramString);
+      paramArrayOfByte1.append(" ret=");
+      paramArrayOfByte1.append(paramInt);
+      QLog.d("QRLoginAuthActivity", 2, paramArrayOfByte1.toString());
     }
     paramArrayOfByte1 = null;
     paramString = paramArrayOfByte1;
@@ -45,8 +51,12 @@ class QRLoginAuthActivity$1
   
   public void onException(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginAuthActivity", 2, "OnException e=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnException e=");
+      localStringBuilder.append(paramString);
+      QLog.d("QRLoginAuthActivity", 2, localStringBuilder.toString());
     }
     paramString = new Message();
     paramString.what = 3;
@@ -55,8 +65,14 @@ class QRLoginAuthActivity$1
   
   public void onVerifyCode(String paramString, byte[] paramArrayOfByte1, long paramLong, ArrayList<String> paramArrayList, byte[] paramArrayOfByte2, int paramInt, ErrMsg paramErrMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QRLoginAuthActivity", 2, "OnVerifyCode userAccount=" + paramString + " ret=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramErrMsg = new StringBuilder();
+      paramErrMsg.append("OnVerifyCode userAccount=");
+      paramErrMsg.append(paramString);
+      paramErrMsg.append(" ret=");
+      paramErrMsg.append(paramInt);
+      QLog.d("QRLoginAuthActivity", 2, paramErrMsg.toString());
     }
     if (this.a.isFinishing()) {
       return;
@@ -71,22 +87,17 @@ class QRLoginAuthActivity$1
       {
         paramString = new ByteArrayOutputStream();
         int i = 0;
-        for (;;)
+        while (i < paramArrayList.size())
         {
-          if (i < paramArrayList.size()) {
-            try
-            {
-              paramString.write(HexUtil.hexStr2Bytes((String)paramArrayList.get(i)));
-              i += 1;
-            }
-            catch (Throwable paramErrMsg)
-            {
-              for (;;)
-              {
-                paramErrMsg.printStackTrace();
-              }
-            }
+          try
+          {
+            paramString.write(HexUtil.hexStr2Bytes((String)paramArrayList.get(i)));
           }
+          catch (Throwable paramErrMsg)
+          {
+            paramErrMsg.printStackTrace();
+          }
+          i += 1;
         }
         paramString = paramString.toByteArray();
       }
@@ -104,7 +115,7 @@ class QRLoginAuthActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginAuthActivity.1
  * JD-Core Version:    0.7.0.1
  */

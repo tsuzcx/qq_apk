@@ -39,42 +39,42 @@ public class FrdConfessInfo
   
   public void a()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    label171:
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = true;
-      this.d = SharedPreUtils.a(this.e, "confess_config_sp").getString("key_frd_rec_confess_info", "");
-      if (!TextUtils.isEmpty(this.d)) {}
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(this.d);
-        if (localJSONObject.has("nUnReadCnt")) {
-          this.jdField_a_of_type_Int = localJSONObject.getInt("nUnReadCnt");
-        }
-        if (localJSONObject.has("lLastMsgTime")) {
-          this.jdField_a_of_type_Long = localJSONObject.getLong("lLastMsgTime");
-        }
-        if (localJSONObject.has("nTopicId")) {
-          this.jdField_b_of_type_Int = localJSONObject.getInt("nTopicId");
-        }
-        if (localJSONObject.has("strTopicDesc")) {
-          this.c = localJSONObject.getString("strTopicDesc");
-        }
-        if (localJSONObject.has("strFrdUin")) {
-          this.jdField_a_of_type_JavaLangString = localJSONObject.getString("strFrdUin");
-        }
-        if (localJSONObject.has("strFrdNick")) {
-          this.jdField_b_of_type_JavaLangString = localJSONObject.getString("strFrdNick");
-        }
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.d = SharedPreUtils.a(this.e, "confess_config_sp").getString("key_frd_rec_confess_info", "");
+    if (!TextUtils.isEmpty(this.d)) {}
+    try
+    {
+      JSONObject localJSONObject = new JSONObject(this.d);
+      if (localJSONObject.has("nUnReadCnt")) {
+        this.jdField_a_of_type_Int = localJSONObject.getInt("nUnReadCnt");
       }
-      catch (Exception localException)
-      {
-        break label171;
+      if (localJSONObject.has("lLastMsgTime")) {
+        this.jdField_a_of_type_Long = localJSONObject.getLong("lLastMsgTime");
       }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("FrdConfessInfo", 4, String.format(Locale.getDefault(), "init strJsonStr: %s", new Object[] { this.d }));
+      if (localJSONObject.has("nTopicId")) {
+        this.jdField_b_of_type_Int = localJSONObject.getInt("nTopicId");
+      }
+      if (localJSONObject.has("strTopicDesc")) {
+        this.c = localJSONObject.getString("strTopicDesc");
+      }
+      if (localJSONObject.has("strFrdUin")) {
+        this.jdField_a_of_type_JavaLangString = localJSONObject.getString("strFrdUin");
+      }
+      if (localJSONObject.has("strFrdNick")) {
+        this.jdField_b_of_type_JavaLangString = localJSONObject.getString("strFrdNick");
+      }
+    }
+    catch (Exception localException)
+    {
+      label174:
+      break label174;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.i("FrdConfessInfo", 4, String.format(Locale.getDefault(), "init strJsonStr: %s", new Object[] { this.d }));
+    }
   }
   
   public void a(RedTouchItem paramRedTouchItem)
@@ -83,39 +83,30 @@ public class FrdConfessInfo
       return;
     }
     int i;
-    Object localObject;
-    if (paramRedTouchItem.unReadFlag)
-    {
+    if (paramRedTouchItem.unReadFlag) {
       i = paramRedTouchItem.count;
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_Long = paramRedTouchItem.lastRecvTime;
-      if ((paramRedTouchItem.extMsgs == null) || (paramRedTouchItem.extMsgs.size() <= 0)) {
-        break label232;
-      }
-      localObject = null;
-      Iterator localIterator = paramRedTouchItem.extMsgs.iterator();
+    } else {
       i = 0;
-      paramRedTouchItem = (RedTouchItem)localObject;
-      label67:
-      if (!localIterator.hasNext()) {
-        break label111;
-      }
-      localObject = (RedTouchItemExtMsg)localIterator.next();
-      if (((RedTouchItemExtMsg)localObject).time <= i) {
-        break label258;
-      }
-      i = ((RedTouchItemExtMsg)localObject).time;
-      paramRedTouchItem = (RedTouchItem)localObject;
     }
-    label258:
-    for (;;)
+    this.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_Long = paramRedTouchItem.lastRecvTime;
+    if ((paramRedTouchItem.extMsgs != null) && (paramRedTouchItem.extMsgs.size() > 0))
     {
-      break label67;
+      Iterator localIterator = paramRedTouchItem.extMsgs.iterator();
+      paramRedTouchItem = null;
       i = 0;
-      break;
+      Object localObject;
+      while (localIterator.hasNext())
+      {
+        localObject = (RedTouchItemExtMsg)localIterator.next();
+        if (((RedTouchItemExtMsg)localObject).time > i)
+        {
+          i = ((RedTouchItemExtMsg)localObject).time;
+          paramRedTouchItem = (RedTouchItem)localObject;
+        }
+      }
       try
       {
-        label111:
         localObject = new RedpointInfo();
         ((RedpointInfo)localObject).mergeFrom(paramRedTouchItem.bytesData);
         if (((RedpointInfo)localObject).data.has())
@@ -137,17 +128,12 @@ public class FrdConfessInfo
       }
       catch (Exception paramRedTouchItem)
       {
-        for (;;)
-        {
-          label232:
-          if (QLog.isColorLevel()) {
-            QLog.e("FrdConfessInfo", 2, paramRedTouchItem, new Object[0]);
-          }
+        if (QLog.isColorLevel()) {
+          QLog.e("FrdConfessInfo", 2, paramRedTouchItem, new Object[0]);
         }
       }
-      b();
-      return;
     }
+    b();
   }
   
   public boolean a()
@@ -183,13 +169,27 @@ public class FrdConfessInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
-    localStringBuilder.append("{isInit = ").append(this.jdField_a_of_type_Boolean).append(", nUnReadCnt = ").append(this.jdField_a_of_type_Int).append(", lLastMsgTime = ").append(this.jdField_a_of_type_Long).append(", nTopicId = ").append(this.jdField_b_of_type_Int).append(", strTopicDesc = ").append(this.c).append(", strFrdUin = ").append(this.jdField_a_of_type_JavaLangString).append(", strFrdNick = ").append(this.jdField_b_of_type_JavaLangString).append("}");
+    localStringBuilder.append("{isInit = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", nUnReadCnt = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", lLastMsgTime = ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", nTopicId = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", strTopicDesc = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", strFrdUin = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", strFrdNick = ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.FrdConfessInfo
  * JD-Core Version:    0.7.0.1
  */

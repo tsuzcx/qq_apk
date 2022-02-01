@@ -11,12 +11,24 @@ import java.util.regex.Pattern;
 public class StructLongMessageIpSaver
   implements INetInfoHandler
 {
-  private static final String LONG_MSG_IPLIST = AppConstants.SDCARD_DATABASE + "longMsgList.ini";
-  private static final String LONG_MSG_IPLIST_TMP = AppConstants.SDCARD_DATABASE + "longMsgList.tmp";
+  private static final String LONG_MSG_IPLIST;
+  private static final String LONG_MSG_IPLIST_TMP;
   public static final String TAG = "StructLongMessageIpSaver";
   private int connectionFlag = 0;
   private String ipCellular = null;
   private String ipWifi = null;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_DATABASE);
+    localStringBuilder.append("longMsgList.ini");
+    LONG_MSG_IPLIST = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_DATABASE);
+    localStringBuilder.append("longMsgList.tmp");
+    LONG_MSG_IPLIST_TMP = localStringBuilder.toString();
+  }
   
   public StructLongMessageIpSaver()
   {
@@ -32,22 +44,21 @@ public class StructLongMessageIpSaver
   
   private void initConnectionFlag()
   {
-    for (;;)
+    try
     {
-      try
+      int i = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+      if (i != 0)
       {
-        int i = NetworkUtil.b(BaseApplicationImpl.getContext());
-        switch (i)
-        {
-        default: 
-          return;
+        if (i == 1) {
+          this.connectionFlag = 2;
         }
       }
-      finally {}
-      this.connectionFlag = 2;
-      continue;
-      this.connectionFlag = 1;
+      else {
+        this.connectionFlag = 1;
+      }
+      return;
     }
+    finally {}
   }
   
   /* Error */
@@ -57,232 +68,205 @@ public class StructLongMessageIpSaver
     //   0: aconst_null
     //   1: astore 4
     //   3: aconst_null
-    //   4: astore_2
-    //   5: aconst_null
-    //   6: astore_3
-    //   7: aload_2
-    //   8: astore_1
-    //   9: getstatic 40	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST	Ljava/lang/String;
-    //   12: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
-    //   15: astore 5
+    //   4: astore 5
+    //   6: aconst_null
+    //   7: astore_2
+    //   8: aload_2
+    //   9: astore_1
+    //   10: getstatic 40	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST	Ljava/lang/String;
+    //   13: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   16: astore_3
     //   17: aload_2
     //   18: astore_1
-    //   19: aload 5
-    //   21: invokevirtual 118	java/io/File:length	()J
-    //   24: lconst_0
-    //   25: lcmp
-    //   26: ifne +40 -> 66
-    //   29: aload_2
-    //   30: astore_1
-    //   31: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   34: ifeq +13 -> 47
-    //   37: aload_2
-    //   38: astore_1
-    //   39: ldc 12
-    //   41: iconst_2
-    //   42: ldc 125
-    //   44: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   47: iconst_0
-    //   48: ifeq +11 -> 59
-    //   51: new 131	java/lang/NullPointerException
-    //   54: dup
-    //   55: invokespecial 132	java/lang/NullPointerException:<init>	()V
-    //   58: athrow
-    //   59: return
-    //   60: astore_1
-    //   61: aload_1
-    //   62: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   65: return
-    //   66: aload_2
-    //   67: astore_1
-    //   68: new 137	java/io/BufferedReader
-    //   71: dup
-    //   72: new 139	java/io/InputStreamReader
-    //   75: dup
-    //   76: new 141	java/io/FileInputStream
-    //   79: dup
-    //   80: aload 5
-    //   82: invokespecial 144	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   85: invokespecial 147	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   88: invokespecial 150	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   91: astore_2
-    //   92: aload_0
-    //   93: aload_2
-    //   94: invokevirtual 153	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   97: putfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
-    //   100: aload_0
-    //   101: aload_2
-    //   102: invokevirtual 153	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   105: putfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
-    //   108: aload_0
-    //   109: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
-    //   112: ifnull +14 -> 126
-    //   115: aload_0
-    //   116: aload_0
-    //   117: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
-    //   120: invokespecial 155	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:checkLegality	(Ljava/lang/String;)Z
-    //   123: ifne +8 -> 131
-    //   126: aload_0
-    //   127: aconst_null
-    //   128: putfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
-    //   131: aload_0
-    //   132: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
-    //   135: ifnull +14 -> 149
-    //   138: aload_0
-    //   139: aload_0
-    //   140: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
-    //   143: invokespecial 155	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:checkLegality	(Ljava/lang/String;)Z
-    //   146: ifne +8 -> 154
-    //   149: aload_0
-    //   150: aconst_null
-    //   151: putfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
-    //   154: aload_2
-    //   155: ifnull -96 -> 59
-    //   158: aload_2
-    //   159: invokevirtual 158	java/io/BufferedReader:close	()V
-    //   162: return
-    //   163: astore_1
-    //   164: aload_1
-    //   165: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   168: return
-    //   169: astore_1
-    //   170: aload_3
-    //   171: astore_2
-    //   172: aload_1
-    //   173: astore_3
-    //   174: aload_2
-    //   175: astore_1
-    //   176: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   179: ifeq +13 -> 192
-    //   182: aload_2
-    //   183: astore_1
-    //   184: ldc 12
-    //   186: iconst_2
-    //   187: ldc 160
-    //   189: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   192: aload_2
-    //   193: astore_1
-    //   194: aload_3
-    //   195: invokevirtual 161	java/io/FileNotFoundException:printStackTrace	()V
-    //   198: aload_2
-    //   199: ifnull -140 -> 59
-    //   202: aload_2
-    //   203: invokevirtual 158	java/io/BufferedReader:close	()V
-    //   206: return
-    //   207: astore_1
-    //   208: aload_1
-    //   209: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   212: return
-    //   213: astore_3
-    //   214: aload 4
-    //   216: astore_2
-    //   217: aload_2
-    //   218: astore_1
-    //   219: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   222: ifeq +13 -> 235
-    //   225: aload_2
-    //   226: astore_1
-    //   227: ldc 12
-    //   229: iconst_2
-    //   230: ldc 163
-    //   232: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   235: aload_2
-    //   236: astore_1
-    //   237: aload_3
-    //   238: invokevirtual 164	java/lang/Exception:printStackTrace	()V
-    //   241: aload_2
-    //   242: ifnull -183 -> 59
-    //   245: aload_2
-    //   246: invokevirtual 158	java/io/BufferedReader:close	()V
-    //   249: return
+    //   19: aload_3
+    //   20: invokevirtual 118	java/io/File:length	()J
+    //   23: lconst_0
+    //   24: lcmp
+    //   25: ifne +22 -> 47
+    //   28: aload_2
+    //   29: astore_1
+    //   30: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   33: ifeq +224 -> 257
+    //   36: aload_2
+    //   37: astore_1
+    //   38: ldc 12
+    //   40: iconst_2
+    //   41: ldc 125
+    //   43: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   46: return
+    //   47: aload_2
+    //   48: astore_1
+    //   49: new 131	java/io/BufferedReader
+    //   52: dup
+    //   53: new 133	java/io/InputStreamReader
+    //   56: dup
+    //   57: new 135	java/io/FileInputStream
+    //   60: dup
+    //   61: aload_3
+    //   62: invokespecial 138	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   65: invokespecial 141	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   68: invokespecial 144	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   71: astore_2
+    //   72: aload_0
+    //   73: aload_2
+    //   74: invokevirtual 147	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   77: putfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   80: aload_0
+    //   81: aload_2
+    //   82: invokevirtual 147	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   85: putfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   88: aload_0
+    //   89: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   92: ifnull +14 -> 106
+    //   95: aload_0
+    //   96: aload_0
+    //   97: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   100: invokespecial 149	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:checkLegality	(Ljava/lang/String;)Z
+    //   103: ifne +8 -> 111
+    //   106: aload_0
+    //   107: aconst_null
+    //   108: putfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   111: aload_0
+    //   112: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   115: ifnull +14 -> 129
+    //   118: aload_0
+    //   119: aload_0
+    //   120: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   123: invokespecial 149	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:checkLegality	(Ljava/lang/String;)Z
+    //   126: ifne +8 -> 134
+    //   129: aload_0
+    //   130: aconst_null
+    //   131: putfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   134: aload_2
+    //   135: invokevirtual 152	java/io/BufferedReader:close	()V
+    //   138: return
+    //   139: astore_3
+    //   140: aload_2
+    //   141: astore_1
+    //   142: aload_3
+    //   143: astore_2
+    //   144: goto +95 -> 239
+    //   147: astore_3
+    //   148: goto +15 -> 163
+    //   151: astore_3
+    //   152: goto +48 -> 200
+    //   155: astore_2
+    //   156: goto +83 -> 239
+    //   159: astore_3
+    //   160: aload 4
+    //   162: astore_2
+    //   163: aload_2
+    //   164: astore_1
+    //   165: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   168: ifeq +13 -> 181
+    //   171: aload_2
+    //   172: astore_1
+    //   173: ldc 12
+    //   175: iconst_2
+    //   176: ldc 154
+    //   178: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   181: aload_2
+    //   182: astore_1
+    //   183: aload_3
+    //   184: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   187: aload_2
+    //   188: ifnull +50 -> 238
+    //   191: aload_2
+    //   192: invokevirtual 152	java/io/BufferedReader:close	()V
+    //   195: return
+    //   196: astore_3
+    //   197: aload 5
+    //   199: astore_2
+    //   200: aload_2
+    //   201: astore_1
+    //   202: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   205: ifeq +13 -> 218
+    //   208: aload_2
+    //   209: astore_1
+    //   210: ldc 12
+    //   212: iconst_2
+    //   213: ldc 159
+    //   215: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   218: aload_2
+    //   219: astore_1
+    //   220: aload_3
+    //   221: invokevirtual 160	java/io/FileNotFoundException:printStackTrace	()V
+    //   224: aload_2
+    //   225: ifnull +13 -> 238
+    //   228: aload_2
+    //   229: invokevirtual 152	java/io/BufferedReader:close	()V
+    //   232: return
+    //   233: astore_1
+    //   234: aload_1
+    //   235: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   238: return
+    //   239: aload_1
+    //   240: ifnull +15 -> 255
+    //   243: aload_1
+    //   244: invokevirtual 152	java/io/BufferedReader:close	()V
+    //   247: goto +8 -> 255
     //   250: astore_1
     //   251: aload_1
-    //   252: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   255: return
-    //   256: astore_3
-    //   257: aload_1
-    //   258: astore_2
-    //   259: aload_3
-    //   260: astore_1
-    //   261: aload_2
-    //   262: ifnull +7 -> 269
-    //   265: aload_2
-    //   266: invokevirtual 158	java/io/BufferedReader:close	()V
-    //   269: aload_1
-    //   270: athrow
-    //   271: astore_2
-    //   272: aload_2
-    //   273: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   276: goto -7 -> 269
-    //   279: astore_1
-    //   280: goto -19 -> 261
-    //   283: astore_3
-    //   284: goto -67 -> 217
-    //   287: astore_3
-    //   288: goto -114 -> 174
+    //   252: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   255: aload_2
+    //   256: athrow
+    //   257: return
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	291	0	this	StructLongMessageIpSaver
-    //   8	31	1	localObject1	Object
-    //   60	2	1	localIOException1	java.io.IOException
-    //   67	1	1	localObject2	Object
-    //   163	2	1	localIOException2	java.io.IOException
-    //   169	4	1	localFileNotFoundException1	java.io.FileNotFoundException
-    //   175	19	1	localObject3	Object
-    //   207	2	1	localIOException3	java.io.IOException
-    //   218	19	1	localObject4	Object
-    //   250	8	1	localIOException4	java.io.IOException
-    //   260	10	1	localObject5	Object
-    //   279	1	1	localObject6	Object
-    //   4	262	2	localObject7	Object
-    //   271	2	2	localIOException5	java.io.IOException
-    //   6	189	3	localObject8	Object
-    //   213	25	3	localException1	java.lang.Exception
-    //   256	4	3	localObject9	Object
-    //   283	1	3	localException2	java.lang.Exception
-    //   287	1	3	localFileNotFoundException2	java.io.FileNotFoundException
-    //   1	214	4	localObject10	Object
-    //   15	66	5	localFile	java.io.File
+    //   0	258	0	this	StructLongMessageIpSaver
+    //   9	211	1	localObject1	Object
+    //   233	11	1	localIOException1	java.io.IOException
+    //   250	2	1	localIOException2	java.io.IOException
+    //   7	137	2	localObject2	Object
+    //   155	1	2	localObject3	Object
+    //   162	94	2	localObject4	Object
+    //   16	46	3	localFile	java.io.File
+    //   139	4	3	localObject5	Object
+    //   147	1	3	localException1	java.lang.Exception
+    //   151	1	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   159	25	3	localException2	java.lang.Exception
+    //   196	25	3	localFileNotFoundException2	java.io.FileNotFoundException
+    //   1	160	4	localObject6	Object
+    //   4	194	5	localObject7	Object
     // Exception table:
     //   from	to	target	type
-    //   51	59	60	java/io/IOException
-    //   158	162	163	java/io/IOException
-    //   9	17	169	java/io/FileNotFoundException
-    //   19	29	169	java/io/FileNotFoundException
-    //   31	37	169	java/io/FileNotFoundException
-    //   39	47	169	java/io/FileNotFoundException
-    //   68	92	169	java/io/FileNotFoundException
-    //   202	206	207	java/io/IOException
-    //   9	17	213	java/lang/Exception
-    //   19	29	213	java/lang/Exception
-    //   31	37	213	java/lang/Exception
-    //   39	47	213	java/lang/Exception
-    //   68	92	213	java/lang/Exception
-    //   245	249	250	java/io/IOException
-    //   9	17	256	finally
-    //   19	29	256	finally
-    //   31	37	256	finally
-    //   39	47	256	finally
-    //   68	92	256	finally
-    //   176	182	256	finally
-    //   184	192	256	finally
-    //   194	198	256	finally
-    //   219	225	256	finally
-    //   227	235	256	finally
-    //   237	241	256	finally
-    //   265	269	271	java/io/IOException
-    //   92	126	279	finally
-    //   126	131	279	finally
-    //   131	149	279	finally
-    //   149	154	279	finally
-    //   92	126	283	java/lang/Exception
-    //   126	131	283	java/lang/Exception
-    //   131	149	283	java/lang/Exception
-    //   149	154	283	java/lang/Exception
-    //   92	126	287	java/io/FileNotFoundException
-    //   126	131	287	java/io/FileNotFoundException
-    //   131	149	287	java/io/FileNotFoundException
-    //   149	154	287	java/io/FileNotFoundException
+    //   72	106	139	finally
+    //   106	111	139	finally
+    //   111	129	139	finally
+    //   129	134	139	finally
+    //   72	106	147	java/lang/Exception
+    //   106	111	147	java/lang/Exception
+    //   111	129	147	java/lang/Exception
+    //   129	134	147	java/lang/Exception
+    //   72	106	151	java/io/FileNotFoundException
+    //   106	111	151	java/io/FileNotFoundException
+    //   111	129	151	java/io/FileNotFoundException
+    //   129	134	151	java/io/FileNotFoundException
+    //   10	17	155	finally
+    //   19	28	155	finally
+    //   30	36	155	finally
+    //   38	46	155	finally
+    //   49	72	155	finally
+    //   165	171	155	finally
+    //   173	181	155	finally
+    //   183	187	155	finally
+    //   202	208	155	finally
+    //   210	218	155	finally
+    //   220	224	155	finally
+    //   10	17	159	java/lang/Exception
+    //   19	28	159	java/lang/Exception
+    //   30	36	159	java/lang/Exception
+    //   38	46	159	java/lang/Exception
+    //   49	72	159	java/lang/Exception
+    //   10	17	196	java/io/FileNotFoundException
+    //   19	28	196	java/io/FileNotFoundException
+    //   30	36	196	java/io/FileNotFoundException
+    //   38	46	196	java/io/FileNotFoundException
+    //   49	72	196	java/io/FileNotFoundException
+    //   134	138	233	java/io/IOException
+    //   191	195	233	java/io/IOException
+    //   228	232	233	java/io/IOException
+    //   243	247	250	java/io/IOException
   }
   
   /* Error */
@@ -292,377 +276,352 @@ public class StructLongMessageIpSaver
     //   0: aload_0
     //   1: monitorenter
     //   2: aconst_null
-    //   3: astore_3
-    //   4: aconst_null
-    //   5: astore_2
-    //   6: aconst_null
-    //   7: astore 4
-    //   9: aload_2
-    //   10: astore_1
-    //   11: getstatic 40	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST	Ljava/lang/String;
-    //   14: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
-    //   17: astore 5
+    //   3: astore 4
+    //   5: aconst_null
+    //   6: astore 5
+    //   8: aconst_null
+    //   9: astore_2
+    //   10: aload_2
+    //   11: astore_1
+    //   12: getstatic 40	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST	Ljava/lang/String;
+    //   15: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   18: astore_3
     //   19: aload_2
     //   20: astore_1
-    //   21: aload 5
-    //   23: invokevirtual 168	java/io/File:exists	()Z
-    //   26: ifeq +11 -> 37
-    //   29: aload_2
-    //   30: astore_1
-    //   31: aload 5
-    //   33: invokevirtual 171	java/io/File:delete	()Z
-    //   36: pop
-    //   37: aload_2
-    //   38: astore_1
-    //   39: aload_0
-    //   40: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
-    //   43: ifnonnull +52 -> 95
-    //   46: aload_2
-    //   47: astore_1
-    //   48: aload_0
-    //   49: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
-    //   52: astore 6
-    //   54: aload 6
-    //   56: ifnonnull +39 -> 95
-    //   59: iconst_0
-    //   60: ifeq +11 -> 71
-    //   63: new 131	java/lang/NullPointerException
-    //   66: dup
-    //   67: invokespecial 132	java/lang/NullPointerException:<init>	()V
-    //   70: athrow
-    //   71: aload_0
-    //   72: monitorexit
-    //   73: return
-    //   74: astore_1
-    //   75: aload_1
-    //   76: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   79: goto -8 -> 71
-    //   82: astore_1
-    //   83: aload_0
-    //   84: monitorexit
-    //   85: aload_1
-    //   86: athrow
-    //   87: astore_1
-    //   88: aload_1
-    //   89: invokevirtual 164	java/lang/Exception:printStackTrace	()V
-    //   92: goto -21 -> 71
-    //   95: aload_2
-    //   96: astore_1
-    //   97: getstatic 44	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST_TMP	Ljava/lang/String;
-    //   100: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:a	(Ljava/lang/String;)Ljava/io/File;
-    //   103: astore 6
-    //   105: aload_2
-    //   106: astore_1
-    //   107: aload 6
-    //   109: invokevirtual 168	java/io/File:exists	()Z
-    //   112: ifeq +11 -> 123
-    //   115: aload_2
-    //   116: astore_1
-    //   117: aload 6
-    //   119: invokevirtual 171	java/io/File:delete	()Z
-    //   122: pop
-    //   123: aload_2
-    //   124: astore_1
-    //   125: aload 6
-    //   127: invokevirtual 174	java/io/File:createNewFile	()Z
-    //   130: pop
-    //   131: aload_2
-    //   132: astore_1
-    //   133: new 176	java/io/BufferedWriter
-    //   136: dup
-    //   137: new 178	java/io/OutputStreamWriter
-    //   140: dup
-    //   141: new 180	java/io/FileOutputStream
-    //   144: dup
-    //   145: aload 6
-    //   147: invokespecial 181	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   150: invokespecial 184	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
-    //   153: invokespecial 187	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
-    //   156: astore_2
-    //   157: aload_0
-    //   158: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
-    //   161: ifnull +77 -> 238
-    //   164: aload_0
-    //   165: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
-    //   168: astore_1
-    //   169: aload_2
-    //   170: aload_1
-    //   171: invokevirtual 191	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   174: aload_2
-    //   175: ldc 193
-    //   177: invokevirtual 191	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   180: aload_0
-    //   181: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
-    //   184: ifnull +60 -> 244
-    //   187: aload_0
-    //   188: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
-    //   191: astore_1
-    //   192: aload_2
-    //   193: aload_1
-    //   194: invokevirtual 191	java/io/BufferedWriter:write	(Ljava/lang/String;)V
-    //   197: aload_2
-    //   198: invokevirtual 196	java/io/BufferedWriter:flush	()V
-    //   201: aload_2
-    //   202: ifnull +7 -> 209
-    //   205: aload_2
-    //   206: invokevirtual 197	java/io/BufferedWriter:close	()V
-    //   209: aload 6
-    //   211: ifnull -140 -> 71
-    //   214: aload 5
-    //   216: ifnull -145 -> 71
-    //   219: aload 6
-    //   221: aload 5
-    //   223: invokevirtual 201	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   226: pop
-    //   227: goto -156 -> 71
-    //   230: astore_1
-    //   231: aload_1
-    //   232: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   235: goto -164 -> 71
-    //   238: ldc 203
-    //   240: astore_1
-    //   241: goto -72 -> 169
-    //   244: ldc 203
-    //   246: astore_1
-    //   247: goto -55 -> 192
-    //   250: astore_1
-    //   251: aload_1
-    //   252: invokevirtual 164	java/lang/Exception:printStackTrace	()V
-    //   255: goto -184 -> 71
-    //   258: astore_3
-    //   259: aload 4
-    //   261: astore_2
+    //   21: aload_3
+    //   22: invokevirtual 165	java/io/File:exists	()Z
+    //   25: ifeq +10 -> 35
+    //   28: aload_2
+    //   29: astore_1
+    //   30: aload_3
+    //   31: invokevirtual 168	java/io/File:delete	()Z
+    //   34: pop
+    //   35: aload_2
+    //   36: astore_1
+    //   37: aload_0
+    //   38: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   41: ifnonnull +19 -> 60
+    //   44: aload_2
+    //   45: astore_1
+    //   46: aload_0
+    //   47: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   50: astore 6
+    //   52: aload 6
+    //   54: ifnonnull +6 -> 60
+    //   57: aload_0
+    //   58: monitorexit
+    //   59: return
+    //   60: aload_2
+    //   61: astore_1
+    //   62: getstatic 44	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:LONG_MSG_IPLIST_TMP	Ljava/lang/String;
+    //   65: invokestatic 112	com/tencent/mobileqq/utils/FileUtils:createFile	(Ljava/lang/String;)Ljava/io/File;
+    //   68: astore 6
+    //   70: aload_2
+    //   71: astore_1
+    //   72: aload 6
+    //   74: invokevirtual 165	java/io/File:exists	()Z
+    //   77: ifeq +11 -> 88
+    //   80: aload_2
+    //   81: astore_1
+    //   82: aload 6
+    //   84: invokevirtual 168	java/io/File:delete	()Z
+    //   87: pop
+    //   88: aload_2
+    //   89: astore_1
+    //   90: aload 6
+    //   92: invokevirtual 171	java/io/File:createNewFile	()Z
+    //   95: pop
+    //   96: aload_2
+    //   97: astore_1
+    //   98: new 173	java/io/BufferedWriter
+    //   101: dup
+    //   102: new 175	java/io/OutputStreamWriter
+    //   105: dup
+    //   106: new 177	java/io/FileOutputStream
+    //   109: dup
+    //   110: aload 6
+    //   112: invokespecial 178	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   115: invokespecial 181	java/io/OutputStreamWriter:<init>	(Ljava/io/OutputStream;)V
+    //   118: invokespecial 184	java/io/BufferedWriter:<init>	(Ljava/io/Writer;)V
+    //   121: astore_2
+    //   122: aload_0
+    //   123: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   126: ifnull +241 -> 367
+    //   129: aload_0
+    //   130: getfield 50	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipWifi	Ljava/lang/String;
+    //   133: astore_1
+    //   134: goto +3 -> 137
+    //   137: aload_2
+    //   138: aload_1
+    //   139: invokevirtual 188	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   142: aload_2
+    //   143: ldc 190
+    //   145: invokevirtual 188	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   148: aload_0
+    //   149: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   152: ifnull +221 -> 373
+    //   155: aload_0
+    //   156: getfield 52	com/tencent/mobileqq/transfile/StructLongMessageIpSaver:ipCellular	Ljava/lang/String;
+    //   159: astore_1
+    //   160: goto +3 -> 163
+    //   163: aload_2
+    //   164: aload_1
+    //   165: invokevirtual 188	java/io/BufferedWriter:write	(Ljava/lang/String;)V
+    //   168: aload_2
+    //   169: invokevirtual 193	java/io/BufferedWriter:flush	()V
+    //   172: aload_2
+    //   173: invokevirtual 194	java/io/BufferedWriter:close	()V
+    //   176: aload 6
+    //   178: ifnull +146 -> 324
+    //   181: aload_3
+    //   182: ifnull +142 -> 324
+    //   185: aload 6
+    //   187: aload_3
+    //   188: invokevirtual 198	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   191: pop
+    //   192: goto +132 -> 324
+    //   195: astore_1
+    //   196: aload_1
+    //   197: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   200: goto +124 -> 324
+    //   203: aload_1
+    //   204: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   207: goto +117 -> 324
+    //   210: astore_3
+    //   211: aload_2
+    //   212: astore_1
+    //   213: aload_3
+    //   214: astore_2
+    //   215: goto +112 -> 327
+    //   218: astore_3
+    //   219: goto +15 -> 234
+    //   222: astore_3
+    //   223: goto +58 -> 281
+    //   226: astore_2
+    //   227: goto +100 -> 327
+    //   230: astore_3
+    //   231: aload 4
+    //   233: astore_2
+    //   234: aload_2
+    //   235: astore_1
+    //   236: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   239: ifeq +13 -> 252
+    //   242: aload_2
+    //   243: astore_1
+    //   244: ldc 12
+    //   246: iconst_2
+    //   247: ldc 154
+    //   249: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   252: aload_2
+    //   253: astore_1
+    //   254: aload_3
+    //   255: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   258: aload_2
+    //   259: ifnull +65 -> 324
     //   262: aload_2
-    //   263: astore_1
-    //   264: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   267: ifeq +13 -> 280
-    //   270: aload_2
-    //   271: astore_1
-    //   272: ldc 12
-    //   274: iconst_2
-    //   275: ldc 160
-    //   277: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   280: aload_2
-    //   281: astore_1
-    //   282: aload_3
-    //   283: invokevirtual 161	java/io/FileNotFoundException:printStackTrace	()V
-    //   286: aload_2
-    //   287: ifnull -216 -> 71
-    //   290: aload_2
-    //   291: invokevirtual 197	java/io/BufferedWriter:close	()V
-    //   294: goto -223 -> 71
-    //   297: astore_1
-    //   298: aload_1
-    //   299: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   302: goto -231 -> 71
-    //   305: astore_1
-    //   306: aload_1
-    //   307: invokevirtual 164	java/lang/Exception:printStackTrace	()V
-    //   310: goto -239 -> 71
-    //   313: astore_1
-    //   314: aload_3
-    //   315: astore_2
-    //   316: aload_1
-    //   317: astore_3
-    //   318: aload_2
-    //   319: astore_1
-    //   320: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   323: ifeq +13 -> 336
-    //   326: aload_2
-    //   327: astore_1
-    //   328: ldc 12
-    //   330: iconst_2
-    //   331: ldc 163
-    //   333: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   336: aload_2
-    //   337: astore_1
-    //   338: aload_3
-    //   339: invokevirtual 164	java/lang/Exception:printStackTrace	()V
-    //   342: aload_2
-    //   343: ifnull -272 -> 71
-    //   346: aload_2
-    //   347: invokevirtual 197	java/io/BufferedWriter:close	()V
-    //   350: goto -279 -> 71
-    //   353: astore_1
-    //   354: aload_1
-    //   355: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   358: goto -287 -> 71
-    //   361: astore_1
+    //   263: invokevirtual 194	java/io/BufferedWriter:close	()V
+    //   266: goto +58 -> 324
+    //   269: astore_1
+    //   270: goto -74 -> 196
+    //   273: astore_1
+    //   274: goto -71 -> 203
+    //   277: astore_3
+    //   278: aload 5
+    //   280: astore_2
+    //   281: aload_2
+    //   282: astore_1
+    //   283: invokestatic 123	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   286: ifeq +13 -> 299
+    //   289: aload_2
+    //   290: astore_1
+    //   291: ldc 12
+    //   293: iconst_2
+    //   294: ldc 159
+    //   296: invokestatic 129	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   299: aload_2
+    //   300: astore_1
+    //   301: aload_3
+    //   302: invokevirtual 160	java/io/FileNotFoundException:printStackTrace	()V
+    //   305: aload_2
+    //   306: ifnull +18 -> 324
+    //   309: aload_2
+    //   310: invokevirtual 194	java/io/BufferedWriter:close	()V
+    //   313: goto +11 -> 324
+    //   316: astore_1
+    //   317: goto -121 -> 196
+    //   320: astore_1
+    //   321: goto -118 -> 203
+    //   324: aload_0
+    //   325: monitorexit
+    //   326: return
+    //   327: aload_1
+    //   328: ifnull +27 -> 355
+    //   331: aload_1
+    //   332: invokevirtual 194	java/io/BufferedWriter:close	()V
+    //   335: goto +20 -> 355
+    //   338: astore_1
+    //   339: goto +18 -> 357
+    //   342: astore_1
+    //   343: aload_1
+    //   344: invokevirtual 157	java/lang/Exception:printStackTrace	()V
+    //   347: goto +8 -> 355
+    //   350: astore_1
+    //   351: aload_1
+    //   352: invokevirtual 161	java/io/IOException:printStackTrace	()V
+    //   355: aload_2
+    //   356: athrow
+    //   357: aload_0
+    //   358: monitorexit
+    //   359: goto +5 -> 364
     //   362: aload_1
-    //   363: invokevirtual 164	java/lang/Exception:printStackTrace	()V
-    //   366: goto -295 -> 71
-    //   369: astore_3
-    //   370: aload_1
-    //   371: astore_2
-    //   372: aload_3
-    //   373: astore_1
-    //   374: aload_2
-    //   375: ifnull +7 -> 382
-    //   378: aload_2
-    //   379: invokevirtual 197	java/io/BufferedWriter:close	()V
-    //   382: aload_1
-    //   383: athrow
-    //   384: astore_2
-    //   385: aload_2
-    //   386: invokevirtual 135	java/io/IOException:printStackTrace	()V
-    //   389: goto -7 -> 382
-    //   392: astore_2
-    //   393: aload_2
-    //   394: invokevirtual 164	java/lang/Exception:printStackTrace	()V
-    //   397: goto -15 -> 382
-    //   400: astore_1
-    //   401: goto -27 -> 374
-    //   404: astore_3
-    //   405: goto -87 -> 318
-    //   408: astore_3
-    //   409: goto -147 -> 262
+    //   363: athrow
+    //   364: goto -2 -> 362
+    //   367: ldc 200
+    //   369: astore_1
+    //   370: goto -233 -> 137
+    //   373: ldc 200
+    //   375: astore_1
+    //   376: goto -213 -> 163
+    //   379: astore_1
+    //   380: goto -177 -> 203
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	412	0	this	StructLongMessageIpSaver
-    //   10	38	1	localObject1	Object
-    //   74	2	1	localIOException1	java.io.IOException
-    //   82	4	1	localObject2	Object
-    //   87	2	1	localException1	java.lang.Exception
-    //   96	98	1	localObject3	Object
-    //   230	2	1	localIOException2	java.io.IOException
-    //   240	7	1	str	String
-    //   250	2	1	localException2	java.lang.Exception
-    //   263	19	1	localObject4	Object
-    //   297	2	1	localIOException3	java.io.IOException
-    //   305	2	1	localException3	java.lang.Exception
-    //   313	4	1	localException4	java.lang.Exception
-    //   319	19	1	localObject5	Object
-    //   353	2	1	localIOException4	java.io.IOException
-    //   361	10	1	localException5	java.lang.Exception
-    //   373	10	1	localObject6	Object
-    //   400	1	1	localObject7	Object
-    //   5	374	2	localObject8	Object
-    //   384	2	2	localIOException5	java.io.IOException
-    //   392	2	2	localException6	java.lang.Exception
-    //   3	1	3	localObject9	Object
-    //   258	57	3	localFileNotFoundException1	java.io.FileNotFoundException
-    //   317	22	3	localObject10	Object
-    //   369	4	3	localObject11	Object
-    //   404	1	3	localException7	java.lang.Exception
-    //   408	1	3	localFileNotFoundException2	java.io.FileNotFoundException
-    //   7	253	4	localObject12	Object
-    //   17	205	5	localFile	java.io.File
-    //   52	168	6	localObject13	Object
+    //   0	383	0	this	StructLongMessageIpSaver
+    //   11	154	1	localObject1	Object
+    //   195	9	1	localException1	java.lang.Exception
+    //   212	42	1	localObject2	Object
+    //   269	1	1	localException2	java.lang.Exception
+    //   273	1	1	localIOException1	java.io.IOException
+    //   282	19	1	localObject3	Object
+    //   316	1	1	localException3	java.lang.Exception
+    //   320	12	1	localIOException2	java.io.IOException
+    //   338	1	1	localObject4	Object
+    //   342	2	1	localException4	java.lang.Exception
+    //   350	13	1	localIOException3	java.io.IOException
+    //   369	7	1	str	String
+    //   379	1	1	localIOException4	java.io.IOException
+    //   9	206	2	localObject5	Object
+    //   226	1	2	localObject6	Object
+    //   233	123	2	localObject7	Object
+    //   18	170	3	localFile	java.io.File
+    //   210	4	3	localObject8	Object
+    //   218	1	3	localException5	java.lang.Exception
+    //   222	1	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   230	25	3	localException6	java.lang.Exception
+    //   277	25	3	localFileNotFoundException2	java.io.FileNotFoundException
+    //   3	229	4	localObject9	Object
+    //   6	273	5	localObject10	Object
+    //   50	136	6	localObject11	Object
     // Exception table:
     //   from	to	target	type
-    //   63	71	74	java/io/IOException
-    //   63	71	82	finally
-    //   75	79	82	finally
-    //   88	92	82	finally
-    //   205	209	82	finally
-    //   219	227	82	finally
-    //   231	235	82	finally
-    //   251	255	82	finally
-    //   290	294	82	finally
-    //   298	302	82	finally
-    //   306	310	82	finally
-    //   346	350	82	finally
-    //   354	358	82	finally
-    //   362	366	82	finally
-    //   378	382	82	finally
-    //   382	384	82	finally
-    //   385	389	82	finally
-    //   393	397	82	finally
-    //   63	71	87	java/lang/Exception
-    //   205	209	230	java/io/IOException
-    //   219	227	230	java/io/IOException
-    //   205	209	250	java/lang/Exception
-    //   219	227	250	java/lang/Exception
-    //   11	19	258	java/io/FileNotFoundException
-    //   21	29	258	java/io/FileNotFoundException
-    //   31	37	258	java/io/FileNotFoundException
-    //   39	46	258	java/io/FileNotFoundException
-    //   48	54	258	java/io/FileNotFoundException
-    //   97	105	258	java/io/FileNotFoundException
-    //   107	115	258	java/io/FileNotFoundException
-    //   117	123	258	java/io/FileNotFoundException
-    //   125	131	258	java/io/FileNotFoundException
-    //   133	157	258	java/io/FileNotFoundException
-    //   290	294	297	java/io/IOException
-    //   290	294	305	java/lang/Exception
-    //   11	19	313	java/lang/Exception
-    //   21	29	313	java/lang/Exception
-    //   31	37	313	java/lang/Exception
-    //   39	46	313	java/lang/Exception
-    //   48	54	313	java/lang/Exception
-    //   97	105	313	java/lang/Exception
-    //   107	115	313	java/lang/Exception
-    //   117	123	313	java/lang/Exception
-    //   125	131	313	java/lang/Exception
-    //   133	157	313	java/lang/Exception
-    //   346	350	353	java/io/IOException
-    //   346	350	361	java/lang/Exception
-    //   11	19	369	finally
-    //   21	29	369	finally
-    //   31	37	369	finally
-    //   39	46	369	finally
-    //   48	54	369	finally
-    //   97	105	369	finally
-    //   107	115	369	finally
-    //   117	123	369	finally
-    //   125	131	369	finally
-    //   133	157	369	finally
-    //   264	270	369	finally
-    //   272	280	369	finally
-    //   282	286	369	finally
-    //   320	326	369	finally
-    //   328	336	369	finally
-    //   338	342	369	finally
-    //   378	382	384	java/io/IOException
-    //   378	382	392	java/lang/Exception
-    //   157	169	400	finally
-    //   169	192	400	finally
-    //   192	201	400	finally
-    //   157	169	404	java/lang/Exception
-    //   169	192	404	java/lang/Exception
-    //   192	201	404	java/lang/Exception
-    //   157	169	408	java/io/FileNotFoundException
-    //   169	192	408	java/io/FileNotFoundException
-    //   192	201	408	java/io/FileNotFoundException
+    //   172	176	195	java/lang/Exception
+    //   185	192	195	java/lang/Exception
+    //   122	134	210	finally
+    //   137	160	210	finally
+    //   163	172	210	finally
+    //   122	134	218	java/lang/Exception
+    //   137	160	218	java/lang/Exception
+    //   163	172	218	java/lang/Exception
+    //   122	134	222	java/io/FileNotFoundException
+    //   137	160	222	java/io/FileNotFoundException
+    //   163	172	222	java/io/FileNotFoundException
+    //   12	19	226	finally
+    //   21	28	226	finally
+    //   30	35	226	finally
+    //   37	44	226	finally
+    //   46	52	226	finally
+    //   62	70	226	finally
+    //   72	80	226	finally
+    //   82	88	226	finally
+    //   90	96	226	finally
+    //   98	122	226	finally
+    //   236	242	226	finally
+    //   244	252	226	finally
+    //   254	258	226	finally
+    //   283	289	226	finally
+    //   291	299	226	finally
+    //   301	305	226	finally
+    //   12	19	230	java/lang/Exception
+    //   21	28	230	java/lang/Exception
+    //   30	35	230	java/lang/Exception
+    //   37	44	230	java/lang/Exception
+    //   46	52	230	java/lang/Exception
+    //   62	70	230	java/lang/Exception
+    //   72	80	230	java/lang/Exception
+    //   82	88	230	java/lang/Exception
+    //   90	96	230	java/lang/Exception
+    //   98	122	230	java/lang/Exception
+    //   262	266	269	java/lang/Exception
+    //   262	266	273	java/io/IOException
+    //   12	19	277	java/io/FileNotFoundException
+    //   21	28	277	java/io/FileNotFoundException
+    //   30	35	277	java/io/FileNotFoundException
+    //   37	44	277	java/io/FileNotFoundException
+    //   46	52	277	java/io/FileNotFoundException
+    //   62	70	277	java/io/FileNotFoundException
+    //   72	80	277	java/io/FileNotFoundException
+    //   82	88	277	java/io/FileNotFoundException
+    //   90	96	277	java/io/FileNotFoundException
+    //   98	122	277	java/io/FileNotFoundException
+    //   309	313	316	java/lang/Exception
+    //   309	313	320	java/io/IOException
+    //   172	176	338	finally
+    //   185	192	338	finally
+    //   196	200	338	finally
+    //   203	207	338	finally
+    //   262	266	338	finally
+    //   309	313	338	finally
+    //   331	335	338	finally
+    //   343	347	338	finally
+    //   351	355	338	finally
+    //   355	357	338	finally
+    //   331	335	342	java/lang/Exception
+    //   331	335	350	java/io/IOException
+    //   172	176	379	java/io/IOException
+    //   185	192	379	java/io/IOException
   }
   
   public void deleteIp(ServerAddr paramServerAddr)
   {
-    if (paramServerAddr == null) {}
-    int j;
-    do
-    {
+    if (paramServerAddr == null) {
       return;
-      j = 0;
-      StringBuilder localStringBuilder = new StringBuilder(200);
-      localStringBuilder.append("http://").append(paramServerAddr.mIp);
-      if (paramServerAddr.port != 80) {
-        localStringBuilder.append(":").append(paramServerAddr.port);
-      }
-      localStringBuilder.append("/");
-      paramServerAddr = localStringBuilder.toString();
-      int i = j;
-      if (this.ipWifi != null)
+    }
+    int j = 0;
+    Object localObject = new StringBuilder(200);
+    ((StringBuilder)localObject).append("http://");
+    ((StringBuilder)localObject).append(paramServerAddr.mIp);
+    if (paramServerAddr.port != 80)
+    {
+      ((StringBuilder)localObject).append(":");
+      ((StringBuilder)localObject).append(paramServerAddr.port);
+    }
+    ((StringBuilder)localObject).append("/");
+    paramServerAddr = ((StringBuilder)localObject).toString();
+    localObject = this.ipWifi;
+    int i = j;
+    if (localObject != null)
+    {
+      i = j;
+      if (((String)localObject).equals(paramServerAddr))
       {
-        i = j;
-        if (this.ipWifi.equals(paramServerAddr))
-        {
-          this.ipWifi = null;
-          i = 1;
-        }
+        this.ipWifi = null;
+        i = 1;
       }
+    }
+    localObject = this.ipCellular;
+    j = i;
+    if (localObject != null)
+    {
       j = i;
-      if (this.ipCellular != null)
+      if (((String)localObject).equals(paramServerAddr))
       {
-        j = i;
-        if (this.ipCellular.equals(paramServerAddr))
-        {
-          this.ipCellular = null;
-          j = 1;
-        }
+        this.ipCellular = null;
+        j = 1;
       }
-    } while (j == 0);
-    writeToFile();
+    }
+    if (j != 0) {
+      writeToFile();
+    }
   }
   
   public void destroy()
@@ -686,14 +645,15 @@ public class StructLongMessageIpSaver
   
   public String getIp()
   {
-    switch (this.connectionFlag)
+    int i = this.connectionFlag;
+    if (i != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return this.ipCellular;
+      if (i != 2) {
+        return null;
+      }
+      return this.ipWifi;
     }
-    return this.ipWifi;
+    return this.ipCellular;
   }
   
   public void onNetMobile2None()
@@ -785,31 +745,28 @@ public class StructLongMessageIpSaver
     if ((paramServerAddr != null) && (this.connectionFlag != 0))
     {
       StringBuilder localStringBuilder = new StringBuilder(200);
-      localStringBuilder.append("http://").append(paramServerAddr.mIp);
-      if (paramServerAddr.port != 80) {
-        localStringBuilder.append(":").append(paramServerAddr.port);
+      localStringBuilder.append("http://");
+      localStringBuilder.append(paramServerAddr.mIp);
+      if (paramServerAddr.port != 80)
+      {
+        localStringBuilder.append(":");
+        localStringBuilder.append(paramServerAddr.port);
       }
       localStringBuilder.append("/");
       paramServerAddr = localStringBuilder.toString();
-      if (this.connectionFlag != 1) {
-        break label89;
-      }
-      this.ipCellular = paramServerAddr;
-    }
-    for (;;)
-    {
-      writeToFile();
-      return;
-      label89:
-      if (this.connectionFlag == 2) {
+      int i = this.connectionFlag;
+      if (i == 1) {
+        this.ipCellular = paramServerAddr;
+      } else if (i == 2) {
         this.ipWifi = paramServerAddr;
       }
+      writeToFile();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.StructLongMessageIpSaver
  * JD-Core Version:    0.7.0.1
  */

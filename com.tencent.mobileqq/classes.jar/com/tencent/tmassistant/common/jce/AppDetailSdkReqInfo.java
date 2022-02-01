@@ -26,17 +26,19 @@ public final class AppDetailSdkReqInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.channelId != null) {
-      paramJceOutputStream.write(this.channelId, 0);
+    String str = this.channelId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.packageName != null) {
-      paramJceOutputStream.write(this.packageName, 1);
+    str = this.packageName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.AppDetailSdkReqInfo
  * JD-Core Version:    0.7.0.1
  */

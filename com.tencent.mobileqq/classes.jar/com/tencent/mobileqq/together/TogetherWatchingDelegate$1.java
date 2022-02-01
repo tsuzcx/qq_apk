@@ -26,20 +26,21 @@ class TogetherWatchingDelegate$1
     }
     if ((k == 10004) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str1)))
     {
-      TogetherWatchingDelegate.a(this.a, this.a.a.getApplication(), str2, i, (String)localObject, j, str1);
+      paramBundle = this.a;
+      TogetherWatchingDelegate.a(paramBundle, paramBundle.a.getApplication(), str2, i, (String)localObject, j, str1);
       return;
     }
     localObject = this.a.a.getApplication();
     paramBundle = str1;
     if (TextUtils.isEmpty(str1)) {
-      paramBundle = ((Context)localObject).getString(2131693140);
+      paramBundle = ((Context)localObject).getString(2131693100);
     }
     QQToast.a((Context)localObject, 1, paramBundle, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.TogetherWatchingDelegate.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,41 +1,67 @@
 package com.tencent.xaction.trigger.touch;
 
 import android.content.Context;
-import android.os.Build.VERSION;
+import android.os.Handler;
+import android.os.Looper;
 import android.view.MotionEvent;
 import android.view.VelocityTracker;
-import android.view.View;
+import android.view.ViewConfiguration;
+import android.view.animation.Interpolator;
 import android.widget.Scroller;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
-import kotlin.jvm.internal.Ref.ObjectRef;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/trigger/touch/VelocityTrackerHelper;", "", "context", "Landroid/content/Context;", "(Landroid/content/Context;)V", "mScroller", "Landroid/widget/Scroller;", "mVelocityTracker", "Landroid/view/VelocityTracker;", "addVelocityTracker", "", "event", "Landroid/view/MotionEvent;", "computeScrollOffset", "", "getXScrollVelocity", "", "getYScrollVelocity", "nextInvalidate", "v", "Landroid/view/View;", "callback", "Lcom/tencent/xaction/trigger/touch/VelocityTrackerHelper$ScrollCallback;", "recycleVelocityTracker", "touchUp", "x", "y", "velocitySpeed", "", "ScrollCallback", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/trigger/touch/VelocityTrackerHelper;", "", "context", "Landroid/content/Context;", "interpolator", "Landroid/view/animation/Interpolator;", "(Landroid/content/Context;Landroid/view/animation/Interpolator;)V", "flingRunnable", "Ljava/lang/Runnable;", "mainHandler", "Landroid/os/Handler;", "maximumVelocity", "", "getMaximumVelocity", "()F", "setMaximumVelocity", "(F)V", "minimumVelocity", "getMinimumVelocity", "setMinimumVelocity", "scroller", "Landroid/widget/Scroller;", "velocityTracker", "Landroid/view/VelocityTracker;", "abortAnimation", "", "addVelocityTracker", "event", "Landroid/view/MotionEvent;", "computeScrollOffset", "", "nextInvalidate", "callback", "Lcom/tencent/xaction/trigger/touch/VelocityTrackerHelper$ScrollCallback;", "recycleVelocityTracker", "touchUp", "x", "", "y", "velocitySpeed", "Companion", "ScrollCallback", "XActionCore_release"}, k=1, mv={1, 1, 16})
 public final class VelocityTrackerHelper
 {
+  public static final VelocityTrackerHelper.Companion a;
+  private float jdField_a_of_type_Float;
+  private final Handler jdField_a_of_type_AndroidOsHandler;
   private VelocityTracker jdField_a_of_type_AndroidViewVelocityTracker;
   private final Scroller jdField_a_of_type_AndroidWidgetScroller;
+  private Runnable jdField_a_of_type_JavaLangRunnable;
+  private float b;
   
-  public VelocityTrackerHelper(@NotNull Context paramContext)
+  static
   {
-    this.jdField_a_of_type_AndroidWidgetScroller = new Scroller(paramContext);
+    jdField_a_of_type_ComTencentXactionTriggerTouchVelocityTrackerHelper$Companion = new VelocityTrackerHelper.Companion(null);
   }
   
-  private final int a()
+  public VelocityTrackerHelper(@NotNull Context paramContext, @Nullable Interpolator paramInterpolator)
+  {
+    if (paramInterpolator == null) {
+      paramInterpolator = new Scroller(paramContext);
+    } else {
+      paramInterpolator = new Scroller(paramContext, paramInterpolator);
+    }
+    this.jdField_a_of_type_AndroidWidgetScroller = paramInterpolator;
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
+    paramInterpolator = ViewConfiguration.get(paramContext);
+    Intrinsics.checkExpressionValueIsNotNull(paramInterpolator, "ViewConfiguration.get(context)");
+    this.jdField_a_of_type_Float = paramInterpolator.getScaledMaximumFlingVelocity();
+    paramContext = ViewConfiguration.get(paramContext);
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "ViewConfiguration.get(context)");
+    this.b = paramContext.getScaledMinimumFlingVelocity();
+  }
+  
+  private final void a(VelocityTrackerHelper.ScrollCallback paramScrollCallback)
+  {
+    this.jdField_a_of_type_JavaLangRunnable = ((Runnable)new VelocityTrackerHelper.nextInvalidate.1(this, paramScrollCallback));
+    this.jdField_a_of_type_AndroidOsHandler.post(this.jdField_a_of_type_JavaLangRunnable);
+  }
+  
+  private final boolean a()
+  {
+    return this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
+  }
+  
+  private final void b()
   {
     VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
-    if (localVelocityTracker == null) {
-      Intrinsics.throwNpe();
-    }
-    return (int)localVelocityTracker.getXVelocity();
-  }
-  
-  private final void a()
-  {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+    if (localVelocityTracker != null)
     {
-      VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
       if (localVelocityTracker == null) {
         Intrinsics.throwNpe();
       }
@@ -44,28 +70,20 @@ public final class VelocityTrackerHelper
     }
   }
   
-  private final void a(View paramView, VelocityTrackerHelper.ScrollCallback paramScrollCallback)
+  public final float a()
   {
-    Ref.ObjectRef localObjectRef = new Ref.ObjectRef();
-    localObjectRef.element = ((Runnable)null);
-    localObjectRef.element = ((Runnable)new VelocityTrackerHelper.nextInvalidate.1(this, paramScrollCallback, paramView, localObjectRef));
-    if (Build.VERSION.SDK_INT >= 16) {
-      paramView.postOnAnimation((Runnable)localObjectRef.element);
-    }
+    return this.b;
   }
   
-  private final boolean a()
+  public final void a()
   {
-    return this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-  }
-  
-  private final int b()
-  {
-    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
-    if (localVelocityTracker == null) {
-      Intrinsics.throwNpe();
+    if (!this.jdField_a_of_type_AndroidWidgetScroller.isFinished()) {
+      this.jdField_a_of_type_AndroidWidgetScroller.abortAnimation();
     }
-    return (int)localVelocityTracker.getYVelocity();
+    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    if (localRunnable != null) {
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
+    }
   }
   
   public final void a(@NotNull MotionEvent paramMotionEvent)
@@ -81,28 +99,44 @@ public final class VelocityTrackerHelper
     localVelocityTracker.addMovement(paramMotionEvent);
   }
   
-  public final void a(@NotNull View paramView, int paramInt1, int paramInt2, float paramFloat, @NotNull VelocityTrackerHelper.ScrollCallback paramScrollCallback)
+  public final void a(@NotNull VelocityTrackerHelper.ScrollCallback paramScrollCallback, int paramInt1, int paramInt2, float paramFloat)
   {
-    Intrinsics.checkParameterIsNotNull(paramView, "v");
     Intrinsics.checkParameterIsNotNull(paramScrollCallback, "callback");
     Object localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
     if (localObject == null) {
       Intrinsics.throwNpe();
     }
-    ((VelocityTracker)localObject).computeCurrentVelocity(1000);
-    int i = a();
-    int j = b();
+    ((VelocityTracker)localObject).computeCurrentVelocity(1000, this.jdField_a_of_type_Float);
+    localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    float f = ((VelocityTracker)localObject).getXVelocity();
+    localObject = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    if (localObject == null) {
+      Intrinsics.throwNpe();
+    }
+    paramScrollCallback.a(f, ((VelocityTracker)localObject).getYVelocity());
     this.jdField_a_of_type_AndroidWidgetScroller.forceFinished(true);
     localObject = this.jdField_a_of_type_AndroidWidgetScroller;
-    float f = -paramFloat;
-    ((Scroller)localObject).fling(paramInt1, paramInt2, (int)(i * f), (int)(-paramFloat * j), -2000, 2000, -2000, 2000);
-    a(paramView, paramScrollCallback);
-    a();
+    paramFloat = -paramFloat;
+    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    if (localVelocityTracker == null) {
+      Intrinsics.throwNpe();
+    }
+    int i = (int)(localVelocityTracker.getXVelocity() * paramFloat);
+    localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    if (localVelocityTracker == null) {
+      Intrinsics.throwNpe();
+    }
+    ((Scroller)localObject).fling(paramInt1, paramInt2, i, (int)(paramFloat * localVelocityTracker.getYVelocity()), -2000, 2000, -2000, 2000);
+    a(paramScrollCallback);
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.trigger.touch.VelocityTrackerHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import java.util.TreeSet;
 
 public class ParticleItem
 {
-  private static final String TAG = ParticleItem.class.getSimpleName();
+  private static final String TAG = "ParticleItem";
   private TreeSet<Integer> activeWMGroupIndiesSet = new TreeSet();
   public boolean canUpdateTexture = true;
   public int clearMode;
@@ -53,9 +53,9 @@ public class ParticleItem
     this.curRepeatCount = 0;
     this.curTexture = 0;
     this.triggered = false;
-    if (this.particles != null)
+    Particle[] arrayOfParticle = this.particles;
+    if (arrayOfParticle != null)
     {
-      Particle[] arrayOfParticle = this.particles;
       int j = arrayOfParticle.length;
       int i = 0;
       while (i < j)
@@ -84,7 +84,7 @@ public class ParticleItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.particlesystem2d.ParticleItem
  * JD-Core Version:    0.7.0.1
  */

@@ -24,8 +24,12 @@ public class RockDownloaderServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RockDownloaderServlet", 2, "onReceive with code: " + paramFromServiceMsg.getResultCode());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive with code: ");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.getResultCode());
+      QLog.d("RockDownloaderServlet", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = paramIntent.getStringExtra("BUNDLE_CMD");
     boolean bool = paramFromServiceMsg.isSuccess();
@@ -53,22 +57,21 @@ public class RockDownloaderServlet
         paramFromServiceMsg = (ServerApi.ErrorInfo)paramIntent.err_info.get();
         if (paramFromServiceMsg != null)
         {
-          if (!QLog.isColorLevel()) {
-            return;
+          if (QLog.isColorLevel()) {
+            QLog.d("RockDownloaderServlet", 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()), " ", paramFromServiceMsg.err_msg.get(), " ", Integer.valueOf(paramFromServiceMsg.err_code.get()), " ", paramFromServiceMsg.jump_url.get() });
           }
-          QLog.d("RockDownloaderServlet", 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()), " ", paramFromServiceMsg.err_msg.get(), " ", Integer.valueOf(paramFromServiceMsg.err_code.get()), " ", paramFromServiceMsg.jump_url.get() });
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("RockDownloaderServlet", 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()) });
+          return;
         }
       }
     }
     catch (Exception paramIntent)
     {
-      if (QLog.isColorLevel())
-      {
+      if (QLog.isColorLevel()) {
         QLog.d("RockDownloaderServlet", 2, paramIntent, new Object[0]);
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("RockDownloaderServlet", 2, new Object[] { localObject, " ", Boolean.valueOf(bool), " ", Integer.valueOf(paramIntent.download_num.get()) });
-        }
       }
     }
   }
@@ -94,28 +97,24 @@ public class RockDownloaderServlet
       paramPacket.setSSOCommand(str);
       paramPacket.putSendData(WupUtil.a(((ServerApi.ReqPreDownloadRecmd)localObject).toByteArray()));
     }
-    for (;;)
+    else if ("QQApkSvc.update_download_count".equals(str))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("RockDownloaderServlet", 2, "onSendFinish");
-      }
-      return;
-      if ("QQApkSvc.update_download_count".equals(str))
-      {
-        localObject = new ServerApi.ReqUpdateDownCountRecmd();
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
-        ((ServerApi.ReqUpdateDownCountRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
-        paramPacket.setSSOCommand(str);
-        paramPacket.putSendData(WupUtil.a(((ServerApi.ReqUpdateDownCountRecmd)localObject).toByteArray()));
-      }
+      localObject = new ServerApi.ReqUpdateDownCountRecmd();
+      ((ServerApi.ReqUpdateDownCountRecmd)localObject).source.set(paramIntent.getStringExtra("BUNDLE_KEY_SOURCE"));
+      ((ServerApi.ReqUpdateDownCountRecmd)localObject).scene.set(paramIntent.getStringExtra("BUNDLE_KEY_SCENE"));
+      ((ServerApi.ReqUpdateDownCountRecmd)localObject).pkg_name.set(paramIntent.getStringExtra("BUNDLE_KEY_PKG_NAME"));
+      ((ServerApi.ReqUpdateDownCountRecmd)localObject).uin.set(paramIntent.getLongExtra("BUNDLE_KEY_UIN", 0L));
+      paramPacket.setSSOCommand(str);
+      paramPacket.putSendData(WupUtil.a(((ServerApi.ReqUpdateDownCountRecmd)localObject).toByteArray()));
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RockDownloaderServlet", 2, "onSendFinish");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloaderServlet
  * JD-Core Version:    0.7.0.1
  */

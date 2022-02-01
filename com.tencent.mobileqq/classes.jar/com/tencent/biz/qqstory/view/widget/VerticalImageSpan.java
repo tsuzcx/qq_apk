@@ -25,8 +25,7 @@ public class VerticalImageSpan
   {
     paramCharSequence = getDrawable();
     paramPaint = paramPaint.getFontMetricsInt();
-    paramInt1 = paramPaint.descent;
-    paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2;
+    paramInt1 = (paramPaint.descent + paramInt4 + paramInt4 + paramPaint.ascent) / 2;
     paramInt2 = paramCharSequence.getBounds().bottom / 2;
     paramCanvas.save();
     paramCanvas.translate(paramFloat, paramInt1 - paramInt2);
@@ -36,7 +35,7 @@ public class VerticalImageSpan
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.VerticalImageSpan
  * JD-Core Version:    0.7.0.1
  */

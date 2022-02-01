@@ -3,10 +3,9 @@ package com.tencent.mobileqq.qwallet.preload.impl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.MD5Coding;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qwallet.impl.QWalletTools;
 import com.tencent.mobileqq.qwallet.preload.PreloadStaticApi;
 import com.tencent.mobileqq.qwallet.preload.ResourceInfo;
 import com.tencent.mobileqq.utils.FileUtils;
@@ -18,28 +17,27 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class ResUtil
 {
   public static int a(String paramString, int paramInt)
   {
-    int i = 0;
     SharedPreferences localSharedPreferences = a(paramInt);
-    paramInt = i;
-    if (localSharedPreferences != null)
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString)))
     {
-      paramInt = i;
-      if (!TextUtils.isEmpty(paramString)) {
-        paramInt = localSharedPreferences.getInt("url_abnormal_retry_times" + paramString, 0);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_abnormal_retry_times");
+      localStringBuilder.append(paramString);
+      return localSharedPreferences.getInt(localStringBuilder.toString(), 0);
     }
-    return paramInt;
+    return 0;
   }
   
   public static long a(int paramInt)
   {
-    long l = 0L;
     SharedPreferences localSharedPreferences = a(paramInt);
+    long l = 0L;
     if (localSharedPreferences != null) {
       l = localSharedPreferences.getLong("check_surplus_res_time", 0L);
     }
@@ -48,41 +46,38 @@ public class ResUtil
   
   public static long a(String paramString, int paramInt)
   {
-    long l2 = 0L;
     SharedPreferences localSharedPreferences = a(paramInt);
-    long l1 = l2;
-    if (localSharedPreferences != null)
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString)))
     {
-      l1 = l2;
-      if (!TextUtils.isEmpty(paramString)) {
-        l1 = localSharedPreferences.getLong("url_abnormal_retry_last_time" + paramString, 0L);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_abnormal_retry_last_time");
+      localStringBuilder.append(paramString);
+      return localSharedPreferences.getLong(localStringBuilder.toString(), 0L);
     }
-    return l1;
+    return 0L;
   }
   
   public static long a(String paramString, long paramLong, int paramInt)
   {
     SharedPreferences localSharedPreferences = a(paramInt);
-    long l = paramLong;
-    if (localSharedPreferences != null)
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString)))
     {
-      l = paramLong;
-      if (!TextUtils.isEmpty(paramString)) {
-        l = localSharedPreferences.getLong("url_doneTime" + paramString, paramLong);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_doneTime");
+      localStringBuilder.append(paramString);
+      return localSharedPreferences.getLong(localStringBuilder.toString(), paramLong);
     }
-    return l;
+    return paramLong;
   }
   
   private static SharedPreferences a(int paramInt)
   {
-    if (BaseApplicationImpl.getApplication() != null)
+    if (MobileQQ.sMobileQQ != null)
     {
       if (paramInt == 1) {
-        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_utilinner", 4);
+        return MobileQQ.sMobileQQ.getSharedPreferences("qwallet_res_utilinner", 4);
       }
-      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_util", 4);
+      return MobileQQ.sMobileQQ.getSharedPreferences("qwallet_res_util", 4);
     }
     return null;
   }
@@ -111,15 +106,14 @@ public class ResUtil
   public static String a(String paramString1, String paramString2, int paramInt)
   {
     SharedPreferences localSharedPreferences = a(paramInt);
-    String str = paramString2;
-    if (localSharedPreferences != null)
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString1)))
     {
-      str = paramString2;
-      if (!TextUtils.isEmpty(paramString1)) {
-        str = localSharedPreferences.getString("url_md5" + paramString1, paramString2);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_md5");
+      localStringBuilder.append(paramString1);
+      return localSharedPreferences.getString(localStringBuilder.toString(), paramString2);
     }
-    return str;
+    return paramString2;
   }
   
   public static List<ResUtil.ResTimeInfo> a(int paramInt)
@@ -134,7 +128,7 @@ public class ResUtil
         Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         String str = (String)localEntry.getKey();
         if (str.startsWith("url_last_use_time")) {
-          localArrayList.add(new ResUtil.ResTimeInfo(str.substring("url_last_use_time".length(), str.length()), ((Long)localEntry.getValue()).longValue(), paramInt));
+          localArrayList.add(new ResUtil.ResTimeInfo(str.substring(17, str.length()), ((Long)localEntry.getValue()).longValue(), paramInt));
         }
       }
     }
@@ -143,23 +137,34 @@ public class ResUtil
   
   public static void a(int paramInt, PreloadConfig paramPreloadConfig)
   {
-    if (paramPreloadConfig == null) {}
-    long l1;
-    do
-    {
+    if (paramPreloadConfig == null) {
       return;
-      l1 = NetConnInfoCenter.getServerTimeMillis();
-      if (l1 - a(paramInt) >= 86400000L) {
-        break;
+    }
+    long l1 = NetConnInfoCenter.getServerTimeMillis();
+    if (l1 - a(paramInt) < 86400000L)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramPreloadConfig = new StringBuilder();
+        paramPreloadConfig.append("removeSurplusRes already Check Today:");
+        paramPreloadConfig.append(paramInt);
+        QLog.d("ResUtil", 2, paramPreloadConfig.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("ResUtil", 2, "removeSurplusRes already Check Today:" + paramInt);
-    return;
+      return;
+    }
     Object localObject = PreloadStaticApi.a(paramInt);
     long l2 = System.currentTimeMillis();
-    long l3 = FileUtils.b((String)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("ResUtil", 2, "resFolderPathSize:" + l3 + "|" + 209715200L + "|" + (System.currentTimeMillis() - l2));
+    long l3 = FileUtils.getFileOrFolderSize((String)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("resFolderPathSize:");
+      ((StringBuilder)localObject).append(l3);
+      ((StringBuilder)localObject).append("|");
+      ((StringBuilder)localObject).append(209715200L);
+      ((StringBuilder)localObject).append("|");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l2);
+      QLog.d("ResUtil", 2, ((StringBuilder)localObject).toString());
     }
     if (l3 > 209715200L)
     {
@@ -194,49 +199,62 @@ public class ResUtil
   public static void a(String paramString, int paramInt)
   {
     int i = a(paramString, paramInt);
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().putInt("url_abnormal_retry_times" + paramString, i + 1).putLong("url_abnormal_retry_last_time" + paramString, NetConnInfoCenter.getServerTimeMillis()).apply();
+    Object localObject = a(paramInt);
+    if ((localObject != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_abnormal_retry_times");
+      localStringBuilder.append(paramString);
+      localObject = ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), i + 1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_abnormal_retry_last_time");
+      localStringBuilder.append(paramString);
+      ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), NetConnInfoCenter.getServerTimeMillis()).apply();
     }
   }
   
   public static void a(String paramString, int paramInt, long paramLong)
   {
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().putLong("url_last_use_time" + paramString, paramLong).apply();
+    Object localObject = a(paramInt);
+    if ((localObject != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_last_use_time");
+      localStringBuilder.append(paramString);
+      ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), paramLong).apply();
     }
   }
   
   public static void a(String paramString, long paramLong, int paramInt)
   {
-    int i = 1;
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if (localSharedPreferences != null)
-    {
+    Object localObject = a(paramInt);
+    if (localObject != null) {
       paramInt = 1;
-      if (TextUtils.isEmpty(paramString)) {
-        break label73;
-      }
-    }
-    for (;;)
-    {
-      if ((paramInt & i) != 0) {
-        localSharedPreferences.edit().putLong("url_doneTime" + paramString, paramLong).apply();
-      }
-      return;
+    } else {
       paramInt = 0;
-      break;
-      label73:
-      i = 0;
+    }
+    if (((true ^ TextUtils.isEmpty(paramString)) & paramInt))
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_doneTime");
+      localStringBuilder.append(paramString);
+      ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), paramLong).apply();
     }
   }
   
   public static void a(String paramString1, String paramString2, int paramInt)
   {
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2))) {
-      localSharedPreferences.edit().putString("url_md5" + paramString1, paramString2).apply();
+    Object localObject = a(paramInt);
+    if ((localObject != null) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_md5");
+      localStringBuilder.append(paramString1);
+      ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), paramString2).apply();
     }
   }
   
@@ -269,19 +287,35 @@ public class ResUtil
   
   public static void b(String paramString, int paramInt)
   {
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString)))
+    Object localObject1 = a(paramInt);
+    if ((localObject1 != null) && (!TextUtils.isEmpty(paramString)))
     {
-      localSharedPreferences.edit().remove("url_doneTime" + paramString);
-      localSharedPreferences.edit().remove("url_md5" + paramString);
-      localSharedPreferences.edit().remove("url_last_use_time" + paramString);
-      localSharedPreferences.edit().remove("url_abnormal_retry_times" + paramString).apply();
+      Object localObject2 = ((SharedPreferences)localObject1).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_doneTime");
+      localStringBuilder.append(paramString);
+      ((SharedPreferences.Editor)localObject2).remove(localStringBuilder.toString());
+      localObject2 = ((SharedPreferences)localObject1).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_md5");
+      localStringBuilder.append(paramString);
+      ((SharedPreferences.Editor)localObject2).remove(localStringBuilder.toString());
+      localObject2 = ((SharedPreferences)localObject1).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_last_use_time");
+      localStringBuilder.append(paramString);
+      ((SharedPreferences.Editor)localObject2).remove(localStringBuilder.toString());
+      localObject1 = ((SharedPreferences)localObject1).edit();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("url_abnormal_retry_times");
+      ((StringBuilder)localObject2).append(paramString);
+      ((SharedPreferences.Editor)localObject1).remove(((StringBuilder)localObject2).toString()).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.ResUtil
  * JD-Core Version:    0.7.0.1
  */

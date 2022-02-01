@@ -22,23 +22,26 @@ public class StructMsgNode
   
   public int a()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
   public StructMsgNode a()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return a(this.jdField_a_of_type_JavaUtilList.indexOf(this) + 1);
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return a(localList.indexOf(this) + 1);
     }
     return null;
   }
   
   public StructMsgNode a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (this.jdField_a_of_type_JavaUtilList.size() > paramInt)) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() > paramInt)) {
       return (StructMsgNode)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
@@ -46,8 +49,9 @@ public class StructMsgNode
   
   public String a(String paramString)
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      return (String)this.jdField_a_of_type_JavaUtilMap.get(paramString);
+    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    if (localMap != null) {
+      return (String)localMap.get(paramString);
     }
     return null;
   }
@@ -62,7 +66,8 @@ public class StructMsgNode
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_JavaUtilMap != null) && (this.jdField_a_of_type_JavaUtilMap.size() > 0);
+    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    return (localMap != null) && (localMap.size() > 0);
   }
   
   public StructMsgNode b()
@@ -72,7 +77,7 @@ public class StructMsgNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgNode
  * JD-Core Version:    0.7.0.1
  */

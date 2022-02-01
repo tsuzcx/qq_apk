@@ -39,7 +39,7 @@ public class ReqDpcInfoNewItem
     localReqItem.cOperType = 1;
     byte[] arrayOfByte1 = ((IDPCApi)QRoute.api(IDPCApi.class)).buidldReqConfig(this.a).toByteArray();
     byte[] arrayOfByte2 = new byte[arrayOfByte1.length + 4];
-    PkgTools.DWord2Byte(arrayOfByte2, 0, arrayOfByte1.length + 4);
+    PkgTools.dWord2Byte(arrayOfByte2, 0, arrayOfByte1.length + 4);
     PkgTools.copyData(arrayOfByte2, 4, arrayOfByte1, arrayOfByte1.length);
     localReqItem.vecParam = arrayOfByte2;
     return localReqItem;
@@ -47,64 +47,79 @@ public class ReqDpcInfoNewItem
   
   public void a(RespItem paramRespItem)
   {
-    QLog.i("ReqDpcInfoNewItem", 1, "handleCheckUpdateItemData" + paramRespItem.cResult);
-    byte[] arrayOfByte;
-    int i;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleCheckUpdateItemData");
+    ((StringBuilder)localObject).append(paramRespItem.cResult);
+    QLog.i("ReqDpcInfoNewItem", 1, ((StringBuilder)localObject).toString());
     if (paramRespItem.eServiceID == 117)
     {
-      if (paramRespItem.cResult != 2) {
-        break label239;
-      }
-      arrayOfByte = WupUtil.b(paramRespItem.vecUpdate);
-      if (arrayOfByte != null) {
-        paramRespItem = new ConfigurationService.RespGetConfig();
-      }
-    }
-    else
-    {
-      try
+      int i = paramRespItem.cResult;
+      int j = 0;
+      if (i == 2)
       {
-        paramRespItem.mergeFrom(arrayOfByte);
-        if ((paramRespItem != null) && (paramRespItem.result.get() == 0)) {
-          if ((paramRespItem.config_list != null) && (paramRespItem.config_list.size() > 0))
-          {
-            ((IDPCApi)QRoute.api(IDPCApi.class)).onDPCResponse(paramRespItem, this.a.getCurrentAccountUin());
-            i = 1;
-            if (i == 0) {
-              ((IDPCApi)QRoute.api(IDPCApi.class)).nextServerDataState(4);
-            }
-            return;
-          }
-        }
-      }
-      catch (InvalidProtocolBufferMicroException paramRespItem)
-      {
-        for (;;)
+        localObject = WupUtil.b(paramRespItem.vecUpdate);
+        i = j;
+        if (localObject != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.e("ReqDpcInfoNewItem", 2, "error: " + paramRespItem.getMessage());
+          paramRespItem = new ConfigurationService.RespGetConfig();
+          try
+          {
+            paramRespItem.mergeFrom((byte[])localObject);
           }
-          paramRespItem.printStackTrace();
-          paramRespItem = null;
-        }
-        QLog.i("ReqDpcInfoNewItem", 1, "respGetConfig has no contentlist");
-        if ((this.a instanceof QQAppInterface)) {
-          ((QQStoryHandler)((QQAppInterface)this.a).getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1023, true, Boolean.valueOf(false));
+          catch (InvalidProtocolBufferMicroException paramRespItem)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("error: ");
+              ((StringBuilder)localObject).append(paramRespItem.getMessage());
+              QLog.e("ReqDpcInfoNewItem", 2, ((StringBuilder)localObject).toString());
+            }
+            paramRespItem.printStackTrace();
+            paramRespItem = null;
+          }
+          i = j;
+          if (paramRespItem != null)
+          {
+            i = j;
+            if (paramRespItem.result.get() == 0) {
+              if ((paramRespItem.config_list != null) && (paramRespItem.config_list.size() > 0))
+              {
+                ((IDPCApi)QRoute.api(IDPCApi.class)).onDPCResponse(paramRespItem, this.a.getCurrentAccountUin());
+                i = 1;
+              }
+              else
+              {
+                QLog.i("ReqDpcInfoNewItem", 1, "respGetConfig has no contentlist");
+                paramRespItem = this.a;
+                i = j;
+                if ((paramRespItem instanceof QQAppInterface))
+                {
+                  ((QQStoryHandler)((QQAppInterface)paramRespItem).getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).notifyUI(1023, true, Boolean.valueOf(false));
+                  i = j;
+                }
+              }
+            }
+          }
         }
       }
-    }
-    for (;;)
-    {
-      i = 0;
-      break;
-      label239:
-      QLog.i("ReqDpcInfoNewItem", 1, "error happend item.cResult = " + paramRespItem.cResult);
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("error happend item.cResult = ");
+        ((StringBuilder)localObject).append(paramRespItem.cResult);
+        QLog.i("ReqDpcInfoNewItem", 1, ((StringBuilder)localObject).toString());
+        i = j;
+      }
+      if (i == 0) {
+        ((IDPCApi)QRoute.api(IDPCApi.class)).nextServerDataState(4);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ReqDpcInfoNewItem
  * JD-Core Version:    0.7.0.1
  */

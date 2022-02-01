@@ -8,10 +8,9 @@ import androidx.annotation.Nullable;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
 import com.tencent.mobileqq.filemanager.app.QFileConfigManager;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileAppStorePromoteDialogConfigProcessor
@@ -35,19 +34,24 @@ public class QFileAppStorePromoteDialogConfigProcessor
   
   public void a(QFileAppStorePromoteDialogConfigBean paramQFileAppStorePromoteDialogConfigBean)
   {
-    if (paramQFileAppStorePromoteDialogConfigBean == null) {
-      QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onUpdate: newConf is null.");
-    }
-    do
+    if (paramQFileAppStorePromoteDialogConfigBean == null)
     {
+      QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onUpdate: newConf is null.");
       return;
-      QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onUpdate");
-      localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getApp();
-    } while (localObject == null);
-    Object localObject = ((BaseQQAppInterface)localObject).getApplicationContext().getSharedPreferences("file_config_" + ((BaseQQAppInterface)localObject).getCurrentUin(), 0).edit();
-    ((SharedPreferences.Editor)localObject).putString("yyb_promote_dialog_key", paramQFileAppStorePromoteDialogConfigBean.a);
-    ((SharedPreferences.Editor)localObject).apply();
-    QFileConfigManager.a().a(paramQFileAppStorePromoteDialogConfigBean);
+    }
+    QLog.i("QFileAppStorePromoteDialogConfigProcessor<QFile>", 1, "onUpdate");
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    if (localBaseQQAppInterface != null)
+    {
+      Object localObject = localBaseQQAppInterface.getApplicationContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file_config_");
+      localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
+      localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putString("yyb_promote_dialog_key", paramQFileAppStorePromoteDialogConfigBean.a);
+      ((SharedPreferences.Editor)localObject).apply();
+      QFileConfigManager.a(localBaseQQAppInterface).a(paramQFileAppStorePromoteDialogConfigBean);
+    }
   }
   
   public Class<QFileAppStorePromoteDialogConfigBean> clazz()
@@ -79,7 +83,7 @@ public class QFileAppStorePromoteDialogConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileAppStorePromoteDialogConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -62,36 +62,57 @@ public class ZhituReportData
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("ZhituReportData{pass='").append(this.jdField_a_of_type_JavaLangString).append('\'').append(", imgId='").append(this.b).append('\'').append(", styles='").append(this.c).append('\'').append(", action=").append(this.jdField_a_of_type_Int).append(", aioType='").append(this.d).append('\'').append(", queryText='");
-    if (this.e != null)
-    {
-      str = MD5.a(this.e);
-      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastMessage='");
-      if (this.f == null) {
-        break label207;
-      }
-      str = MD5.a(this.f);
-      label139:
-      localStringBuilder = localStringBuilder.append(str).append('\'').append(", lastTwoMessage='");
-      if (this.g == null) {
-        break label213;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ZhituReportData{pass='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", imgId='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", styles='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", action=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", aioType='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", queryText='");
+    Object localObject = this.e;
+    String str1 = "null";
+    if (localObject != null) {
+      localObject = MD5.a((String)localObject);
+    } else {
+      localObject = "null";
     }
-    label207:
-    label213:
-    for (String str = MD5.a(this.g);; str = "null")
-    {
-      return str + '\'' + ", isReported=" + this.jdField_a_of_type_Boolean + '}';
-      str = "null";
-      break;
-      str = "null";
-      break label139;
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", lastMessage='");
+    localObject = this.f;
+    if (localObject != null) {
+      localObject = MD5.a((String)localObject);
+    } else {
+      localObject = "null";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", lastTwoMessage='");
+    String str2 = this.g;
+    localObject = str1;
+    if (str2 != null) {
+      localObject = MD5.a(str2);
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isReported=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituReportData
  * JD-Core Version:    0.7.0.1
  */

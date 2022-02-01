@@ -17,7 +17,10 @@ public class ClearCacheAction
     if (paramMiniAppControlInfo.data.containsKey("appid"))
     {
       paramMiniAppControlInfo = (String)paramMiniAppControlInfo.data.get("appid");
-      QLog.d("ClearCacheAction", 1, "ClearCacheAction: appid:" + paramMiniAppControlInfo);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ClearCacheAction: appid:");
+      localStringBuilder.append(paramMiniAppControlInfo);
+      QLog.d("ClearCacheAction", 1, localStringBuilder.toString());
       MiniCacheFreeManager.freeCache(BaseApplicationImpl.getApplication().getRuntime().getAccount(), paramMiniAppControlInfo, true, new ClearCacheAction.1(this, paramMiniAppControlInfo));
       return;
     }
@@ -27,7 +30,7 @@ public class ClearCacheAction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.push.ClearCacheAction
  * JD-Core Version:    0.7.0.1
  */

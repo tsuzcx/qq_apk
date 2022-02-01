@@ -2,7 +2,8 @@ package com.tencent.open.agent;
 
 import android.view.ViewTreeObserver;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
-import com.tencent.mobileqq.mini.util.DisplayUtil;
+import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
+import com.tencent.mobileqq.utils.DisplayUtils;
 import com.tencent.open.widget.MaxHeightScrollView;
 
 class QuickLoginAuthorityActivity$4
@@ -12,10 +13,10 @@ class QuickLoginAuthorityActivity$4
   
   public void onGlobalLayout()
   {
-    if ((DisplayUtil.hasNavBar(this.a)) && (DisplayUtil.isNavigationBarExist(this.a)))
+    if ((DisplayUtils.a(this.a)) && (ScreenUtil.isNavigationBarExist(this.a)))
     {
       int i = QuickLoginAuthorityActivity.a(this.a).a();
-      int j = DisplayUtil.getNavigationBarHeight(this.a);
+      int j = DisplayUtils.b(this.a);
       QuickLoginAuthorityActivity.a(this.a).setMaxHeight(i - j);
     }
     QuickLoginAuthorityActivity.a(this.a).getViewTreeObserver().removeGlobalOnLayoutListener(this);
@@ -23,7 +24,7 @@ class QuickLoginAuthorityActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.QuickLoginAuthorityActivity.4
  * JD-Core Version:    0.7.0.1
  */

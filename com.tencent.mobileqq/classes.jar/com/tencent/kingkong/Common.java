@@ -6,10 +6,12 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.mobileqq.app.ThreadManager;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
 import java.util.ArrayList;
+import mqq.os.MqqHandler;
 
 public class Common
 {
@@ -17,86 +19,61 @@ public class Common
   public static SharedPreferences.Editor a;
   public static SharedPreferences a;
   public static Utils.InterProcessLock a;
-  public static String a;
-  public static boolean a;
-  public static String b;
-  public static boolean b;
-  public static String c;
-  public static boolean c;
-  public static String d;
-  public static boolean d;
-  public static String e;
-  public static boolean e;
+  public static String a = "";
+  public static boolean a = false;
+  public static String b = "";
+  public static boolean b = false;
+  public static String c = "";
+  public static boolean c = false;
+  public static String d = File.separator;
+  public static boolean d = false;
+  public static String e = "";
+  public static boolean e = false;
   public static String f = "";
-  
-  static
-  {
-    jdField_a_of_type_AndroidContentContext = null;
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
-    jdField_c_of_type_Boolean = false;
-    jdField_a_of_type_AndroidContentSharedPreferences = null;
-    jdField_a_of_type_AndroidContentSharedPreferences$Editor = null;
-    jdField_a_of_type_ComTencentKingkongUtils$InterProcessLock = null;
-    jdField_d_of_type_Boolean = false;
-    jdField_e_of_type_Boolean = false;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_b_of_type_JavaLangString = "";
-    jdField_c_of_type_JavaLangString = "";
-    jdField_d_of_type_JavaLangString = File.separator;
-    jdField_e_of_type_JavaLangString = "";
-  }
   
   public static void EvilReportFromNative(int paramInt, String paramString1, String paramString2)
   {
-    Common.Log.a("KingKongCommon", "Evil Report " + paramString1 + ", " + paramString2);
-    ReportUtil.a(paramInt, 0, 0, "&str1=" + paramString1 + "&str2=" + paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Evil Report ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramString2);
+    Common.Log.a("KingKongCommon", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("&str1=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("&str2=");
+    localStringBuilder.append(paramString2);
+    ReportUtil.a(paramInt, 0, 0, localStringBuilder.toString());
   }
   
   public static void NotificationFromNative(int paramInt1, int paramInt2, int paramInt3)
   {
-    Common.Log.a("KingKongCommon", "Notification From Native " + paramInt1 + ", " + paramInt2 + ", " + paramInt3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Notification From Native ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(paramInt3);
+    Common.Log.a("KingKongCommon", localStringBuilder.toString());
     ReportUtil.a(paramInt1, paramInt2, paramInt3, "");
   }
   
-  /* Error */
   public static void OnLogin(Context paramContext, String paramString)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: aload_0
-    //   4: invokestatic 105	com/tencent/kingkong/Common:SetContext	(Landroid/content/Context;)V
-    //   7: getstatic 20	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   10: astore_0
-    //   11: aload_0
-    //   12: ifnonnull +7 -> 19
-    //   15: ldc 2
-    //   17: monitorexit
-    //   18: return
-    //   19: aload_1
-    //   20: invokestatic 109	com/tencent/kingkong/Common:SetQQUni	(Ljava/lang/String;)V
-    //   23: invokestatic 115	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   26: new 117	com/tencent/kingkong/Common$1
-    //   29: dup
-    //   30: invokespecial 118	com/tencent/kingkong/Common$1:<init>	()V
-    //   33: ldc2_w 119
-    //   36: invokevirtual 126	mqq/os/MqqHandler:postDelayed	(Ljava/lang/Runnable;J)Z
-    //   39: pop
-    //   40: goto -25 -> 15
-    //   43: astore_0
-    //   44: ldc 2
-    //   46: monitorexit
-    //   47: aload_0
-    //   48: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	49	0	paramContext	Context
-    //   0	49	1	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   3	11	43	finally
-    //   19	40	43	finally
+    try
+    {
+      SetContext(paramContext);
+      paramContext = jdField_a_of_type_AndroidContentContext;
+      if (paramContext == null) {
+        return;
+      }
+      SetQQUni(paramString);
+      ThreadManager.getSubThreadHandler().postDelayed(new Common.1(), 1000L);
+      return;
+    }
+    finally {}
   }
   
   public static void SetContext(Context paramContext)
@@ -120,53 +97,28 @@ public class Common
     DataReport.a(paramString);
   }
   
-  /* Error */
   public static void SetSafeStatus(boolean paramBoolean)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: invokestatic 168	com/tencent/kingkong/Common:a	()Z
-    //   6: istore_1
-    //   7: iload_1
-    //   8: ifne +7 -> 15
-    //   11: ldc 2
-    //   13: monitorexit
-    //   14: return
-    //   15: getstatic 20	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   18: ifnull -7 -> 11
-    //   21: iload_0
-    //   22: ifeq -11 -> 11
-    //   25: getstatic 22	com/tencent/kingkong/Common:jdField_a_of_type_Boolean	Z
-    //   28: ifne -17 -> 11
-    //   31: getstatic 24	com/tencent/kingkong/Common:jdField_b_of_type_Boolean	Z
-    //   34: ifne -23 -> 11
-    //   37: iconst_1
-    //   38: putstatic 24	com/tencent/kingkong/Common:jdField_b_of_type_Boolean	Z
-    //   41: invokestatic 170	com/tencent/kingkong/Common:b	()V
-    //   44: new 172	com/tencent/kingkong/Common$2
-    //   47: dup
-    //   48: invokespecial 173	com/tencent/kingkong/Common$2:<init>	()V
-    //   51: bipush 16
-    //   53: aconst_null
-    //   54: iconst_1
-    //   55: invokestatic 177	com/tencent/mobileqq/app/ThreadManager:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   58: goto -47 -> 11
-    //   61: astore_2
-    //   62: ldc 2
-    //   64: monitorexit
-    //   65: aload_2
-    //   66: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	67	0	paramBoolean	boolean
-    //   6	2	1	bool	boolean
-    //   61	5	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	61	finally
-    //   15	21	61	finally
-    //   25	58	61	finally
+    try
+    {
+      boolean bool = a();
+      if (!bool) {
+        return;
+      }
+      Context localContext = jdField_a_of_type_AndroidContentContext;
+      if (localContext == null) {
+        return;
+      }
+      if ((paramBoolean) && (!jdField_a_of_type_Boolean) && (!jdField_b_of_type_Boolean))
+      {
+        jdField_b_of_type_Boolean = true;
+        b();
+        ThreadManager.excute(new Common.2(), 16, null, true);
+        return;
+      }
+      return;
+    }
+    finally {}
   }
   
   public static int a()
@@ -177,35 +129,55 @@ public class Common
   public static int a(String paramString, ArrayList<String> paramArrayList)
   {
     int j = jdField_a_of_type_AndroidContentSharedPreferences.getInt(a("FINGERPRINT_LIB_COUNT", paramString), -1);
-    if ((j == -1) || (j != paramArrayList.size()))
+    if ((j != -1) && (j == paramArrayList.size()))
     {
-      Common.Log.a("KingKongCommon", "Library count mismatch " + j + ", " + paramArrayList.size());
-      return -1;
+      int i = 0;
+      while (i < j)
+      {
+        String str1 = jdField_a_of_type_AndroidContentSharedPreferences.getString(a("FINGERPRINT_LIB", paramString, i), "");
+        if (!((String)paramArrayList.get(i)).equals(str1))
+        {
+          paramString = new StringBuilder();
+          paramString.append("Library name mismatch ");
+          paramString.append(str1);
+          paramString.append(", ");
+          paramString.append((String)paramArrayList.get(i));
+          Common.Log.a("KingKongCommon", paramString.toString());
+          return -1;
+        }
+        String str2 = Utils.b(str1);
+        if (TextUtils.isEmpty(str2))
+        {
+          paramString = new StringBuilder();
+          paramString.append("Unable to get file SHA1 ");
+          paramString.append(str1);
+          Common.Log.a("KingKongCommon", paramString.toString());
+          return -1;
+        }
+        String str3 = jdField_a_of_type_AndroidContentSharedPreferences.getString(a("FINGERPRINT_LIB_SHA1", paramString, i), "");
+        if (!str3.equals(str2))
+        {
+          paramString = new StringBuilder();
+          paramString.append("Library SHA1 mismatch ");
+          paramString.append(str1);
+          paramString.append(", ");
+          paramString.append(str3);
+          paramString.append(", ");
+          paramString.append(str2);
+          Common.Log.a("KingKongCommon", paramString.toString());
+          return -1;
+        }
+        i += 1;
+      }
+      return jdField_a_of_type_AndroidContentSharedPreferences.getInt(a("SUBPATCH_INDEX", paramString), -1);
     }
-    int i = 0;
-    while (i < j)
-    {
-      String str1 = jdField_a_of_type_AndroidContentSharedPreferences.getString(a("FINGERPRINT_LIB", paramString, i), "");
-      if (!((String)paramArrayList.get(i)).equals(str1))
-      {
-        Common.Log.a("KingKongCommon", "Library name mismatch " + str1 + ", " + (String)paramArrayList.get(i));
-        return -1;
-      }
-      String str2 = Utils.b(str1);
-      if (TextUtils.isEmpty(str2))
-      {
-        Common.Log.a("KingKongCommon", "Unable to get file SHA1 " + str1);
-        return -1;
-      }
-      String str3 = jdField_a_of_type_AndroidContentSharedPreferences.getString(a("FINGERPRINT_LIB_SHA1", paramString, i), "");
-      if (!str3.equals(str2))
-      {
-        Common.Log.a("KingKongCommon", "Library SHA1 mismatch " + str1 + ", " + str3 + ", " + str2);
-        return -1;
-      }
-      i += 1;
-    }
-    return jdField_a_of_type_AndroidContentSharedPreferences.getInt(a("SUBPATCH_INDEX", paramString), -1);
+    paramString = new StringBuilder();
+    paramString.append("Library count mismatch ");
+    paramString.append(j);
+    paramString.append(", ");
+    paramString.append(paramArrayList.size());
+    Common.Log.a("KingKongCommon", paramString.toString());
+    return -1;
   }
   
   public static String a()
@@ -215,17 +187,31 @@ public class Common
   
   public static String a(String paramString)
   {
-    return jdField_b_of_type_JavaLangString + jdField_d_of_type_JavaLangString + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(d);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   private static String a(String paramString1, String paramString2)
   {
-    return paramString1 + "_" + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   private static String a(String paramString1, String paramString2, int paramInt)
   {
-    return paramString1 + "_" + paramString2 + "_" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static void a()
@@ -235,17 +221,16 @@ public class Common
     int j = d();
     try
     {
-      localStringBuffer.append("&str1=").append(URLEncoder.encode(Integer.toString(i), "UTF-8")).append("&str2=").append(URLEncoder.encode(Integer.toString(j), "UTF-8"));
-      ReportUtil.a(2087, 0, 0, localStringBuffer.toString());
-      return;
+      localStringBuffer.append("&str1=");
+      localStringBuffer.append(URLEncoder.encode(Integer.toString(i), "UTF-8"));
+      localStringBuffer.append("&str2=");
+      localStringBuffer.append(URLEncoder.encode(Integer.toString(j), "UTF-8"));
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
+      localUnsupportedEncodingException.printStackTrace();
     }
+    ReportUtil.a(2087, 0, 0, localStringBuffer.toString());
   }
   
   public static void a(int paramInt)
@@ -258,7 +243,12 @@ public class Common
   {
     try
     {
-      ReportUtil.a(paramInt, 0, 0, "&str1=" + URLEncoder.encode(paramString1, "UTF-8") + "&str3=" + URLEncoder.encode(paramString2, "UTF-8"));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("&str1=");
+      localStringBuilder.append(URLEncoder.encode(paramString1, "UTF-8"));
+      localStringBuilder.append("&str3=");
+      localStringBuilder.append(URLEncoder.encode(paramString2, "UTF-8"));
+      ReportUtil.a(paramInt, 0, 0, localStringBuilder.toString());
       return;
     }
     catch (UnsupportedEncodingException paramString1)
@@ -269,19 +259,40 @@ public class Common
   
   public static void a(int paramInt, String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    Common.Log.a("KingKongCommon", "Do patch " + paramInt + ", " + paramString1 + ", " + paramString2 + ", " + paramString3 + ", " + paramString4);
-    String str = a("DO_PATCH", paramString1, paramInt);
-    if (!jdField_a_of_type_AndroidContentSharedPreferences.getBoolean(str, false)) {}
-    try
-    {
-      ReportUtil.a(2081, paramInt, 0, "&str1=" + URLEncoder.encode(paramString1, "UTF-8") + "&str2=" + URLEncoder.encode(paramString2, "UTF-8") + "&str3=" + URLEncoder.encode(paramString3, "UTF-8") + "&v1=" + URLEncoder.encode(paramString4, "UTF-8"));
-      jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean(str, true);
-      jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-      return;
-    }
-    catch (UnsupportedEncodingException paramString1)
-    {
-      paramString1.printStackTrace();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Do patch ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(paramString4);
+    Common.Log.a("KingKongCommon", ((StringBuilder)localObject).toString());
+    localObject = a("DO_PATCH", paramString1, paramInt);
+    if (!jdField_a_of_type_AndroidContentSharedPreferences.getBoolean((String)localObject, false)) {
+      try
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("&str1=");
+        localStringBuilder.append(URLEncoder.encode(paramString1, "UTF-8"));
+        localStringBuilder.append("&str2=");
+        localStringBuilder.append(URLEncoder.encode(paramString2, "UTF-8"));
+        localStringBuilder.append("&str3=");
+        localStringBuilder.append(URLEncoder.encode(paramString3, "UTF-8"));
+        localStringBuilder.append("&v1=");
+        localStringBuilder.append(URLEncoder.encode(paramString4, "UTF-8"));
+        ReportUtil.a(2081, paramInt, 0, localStringBuilder.toString());
+        jdField_a_of_type_AndroidContentSharedPreferences$Editor.putBoolean((String)localObject, true);
+        jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+        return;
+      }
+      catch (UnsupportedEncodingException paramString1)
+      {
+        paramString1.printStackTrace();
+      }
     }
   }
   
@@ -292,21 +303,17 @@ public class Common
       return;
     }
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        break label90;
-      }
       String str1 = (String)paramArrayList.get(i);
       String str2 = Utils.b(str1);
       if (TextUtils.isEmpty(str2)) {
-        break;
+        return;
       }
       jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(a("FINGERPRINT_LIB_SHA1", paramString, i), str2);
       jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString(a("FINGERPRINT_LIB", paramString, i), str1);
       i += 1;
     }
-    label90:
     jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(a("FINGERPRINT_LIB_COUNT", paramString), j);
     jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(a("SUBPATCH_INDEX", paramString), paramInt);
     jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
@@ -314,30 +321,37 @@ public class Common
   
   public static void a(String paramString, int paramInt, int[] paramArrayOfInt1, int[] paramArrayOfInt2)
   {
-    if ((paramArrayOfInt1.length != paramArrayOfInt2.length) || (paramArrayOfInt1.length > 15) || (paramArrayOfInt1.length != paramInt))
+    if ((paramArrayOfInt1.length == paramArrayOfInt2.length) && (paramArrayOfInt1.length <= 15) && (paramArrayOfInt1.length == paramInt))
     {
-      Common.Log.a("KingKongCommon", "Params count mismatch : " + paramArrayOfInt1.length + ", " + paramArrayOfInt2.length + ", " + paramInt);
+      int i = 0;
+      while (i < paramInt)
+      {
+        jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(a("JUMPER", paramString, i), paramArrayOfInt1[i]);
+        jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(a("GOTHOOK", paramString, i), paramArrayOfInt2[i]);
+        i += 1;
+      }
+      jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(a("HOOKPOINT_COUNT", paramString), paramInt);
+      jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
       return;
     }
-    int i = 0;
-    while (i < paramInt)
-    {
-      jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(a("JUMPER", paramString, i), paramArrayOfInt1[i]);
-      jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(a("GOTHOOK", paramString, i), paramArrayOfInt2[i]);
-      i += 1;
-    }
-    jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt(a("HOOKPOINT_COUNT", paramString), paramInt);
-    jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+    paramString = new StringBuilder();
+    paramString.append("Params count mismatch : ");
+    paramString.append(paramArrayOfInt1.length);
+    paramString.append(", ");
+    paramString.append(paramArrayOfInt2.length);
+    paramString.append(", ");
+    paramString.append(paramInt);
+    Common.Log.a("KingKongCommon", paramString.toString());
   }
   
   public static void a(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (Constant.a += 1;; Constant.a = 0)
-    {
-      d(Constant.a);
-      return;
+    if (paramBoolean) {
+      Constant.a += 1;
+    } else {
+      Constant.a = 0;
     }
+    d(Constant.a);
   }
   
   public static boolean a()
@@ -386,14 +400,11 @@ public class Common
     }
     int[] arrayOfInt = new int[j];
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        return arrayOfInt;
-      }
       arrayOfInt[i] = jdField_a_of_type_AndroidContentSharedPreferences.getInt(a("GOTHOOK", paramString, i), -1);
       if (arrayOfInt[i] == -1) {
-        break;
+        return null;
       }
       i += 1;
     }
@@ -412,107 +423,53 @@ public class Common
   
   public static String b(String paramString)
   {
-    return jdField_c_of_type_JavaLangString + jdField_d_of_type_JavaLangString + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(jdField_c_of_type_JavaLangString);
+    localStringBuilder.append(d);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
-  /* Error */
   public static void b()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 26	com/tencent/kingkong/Common:jdField_c_of_type_Boolean	Z
-    //   6: istore_0
-    //   7: iload_0
-    //   8: ifeq +7 -> 15
-    //   11: ldc 2
-    //   13: monitorexit
-    //   14: return
-    //   15: iconst_1
-    //   16: putstatic 26	com/tencent/kingkong/Common:jdField_c_of_type_Boolean	Z
-    //   19: getstatic 20	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   22: ldc 140
-    //   24: iconst_0
-    //   25: invokevirtual 144	android/content/Context:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   28: putstatic 28	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   31: getstatic 28	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   34: invokeinterface 150 1 0
-    //   39: putstatic 30	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentSharedPreferences$Editor	Landroid/content/SharedPreferences$Editor;
-    //   42: getstatic 20	com/tencent/kingkong/Common:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   45: invokevirtual 335	android/content/Context:getFilesDir	()Ljava/io/File;
-    //   48: invokevirtual 338	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   51: putstatic 40	com/tencent/kingkong/Common:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   54: new 65	java/lang/StringBuilder
-    //   57: dup
-    //   58: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   61: getstatic 40	com/tencent/kingkong/Common:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   64: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: getstatic 51	com/tencent/kingkong/Common:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   70: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   73: ldc_w 340
-    //   76: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: getstatic 51	com/tencent/kingkong/Common:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   82: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: ldc_w 342
-    //   88: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   94: putstatic 42	com/tencent/kingkong/Common:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   97: new 65	java/lang/StringBuilder
-    //   100: dup
-    //   101: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   104: getstatic 40	com/tencent/kingkong/Common:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   107: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   110: getstatic 51	com/tencent/kingkong/Common:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   113: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: ldc_w 340
-    //   119: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: getstatic 51	com/tencent/kingkong/Common:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   125: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   128: ldc_w 344
-    //   131: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   137: putstatic 44	com/tencent/kingkong/Common:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   140: new 65	java/lang/StringBuilder
-    //   143: dup
-    //   144: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   147: getstatic 40	com/tencent/kingkong/Common:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   150: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   153: getstatic 51	com/tencent/kingkong/Common:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   156: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   159: ldc_w 346
-    //   162: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   165: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   168: putstatic 53	com/tencent/kingkong/Common:jdField_e_of_type_JavaLangString	Ljava/lang/String;
-    //   171: new 65	java/lang/StringBuilder
-    //   174: dup
-    //   175: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   178: getstatic 40	com/tencent/kingkong/Common:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   181: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   184: getstatic 51	com/tencent/kingkong/Common:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   187: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   190: ldc_w 348
-    //   193: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   196: invokevirtual 78	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   199: putstatic 55	com/tencent/kingkong/Common:f	Ljava/lang/String;
-    //   202: new 350	com/tencent/kingkong/Utils$InterProcessLock
-    //   205: dup
-    //   206: getstatic 53	com/tencent/kingkong/Common:jdField_e_of_type_JavaLangString	Ljava/lang/String;
-    //   209: invokespecial 352	com/tencent/kingkong/Utils$InterProcessLock:<init>	(Ljava/lang/String;)V
-    //   212: putstatic 32	com/tencent/kingkong/Common:jdField_a_of_type_ComTencentKingkongUtils$InterProcessLock	Lcom/tencent/kingkong/Utils$InterProcessLock;
-    //   215: goto -204 -> 11
-    //   218: astore_1
-    //   219: ldc 2
-    //   221: monitorexit
-    //   222: aload_1
-    //   223: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   6	2	0	bool	boolean
-    //   218	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	218	finally
-    //   15	215	218	finally
+    try
+    {
+      boolean bool = jdField_c_of_type_Boolean;
+      if (bool) {
+        return;
+      }
+      jdField_c_of_type_Boolean = true;
+      jdField_a_of_type_AndroidContentSharedPreferences = jdField_a_of_type_AndroidContentContext.getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0);
+      jdField_a_of_type_AndroidContentSharedPreferences$Editor = jdField_a_of_type_AndroidContentSharedPreferences.edit();
+      jdField_a_of_type_JavaLangString = jdField_a_of_type_AndroidContentContext.getFilesDir().getAbsolutePath();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(d);
+      localStringBuilder.append("kingkong");
+      localStringBuilder.append(d);
+      localStringBuilder.append("download");
+      jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(d);
+      localStringBuilder.append("kingkong");
+      localStringBuilder.append(d);
+      localStringBuilder.append("patches");
+      jdField_c_of_type_JavaLangString = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(d);
+      localStringBuilder.append("KingkongPatchInterprocess.Lock");
+      e = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(d);
+      localStringBuilder.append("KingkongUpdateInterprocess.Lock");
+      f = localStringBuilder.toString();
+      jdField_a_of_type_ComTencentKingkongUtils$InterProcessLock = new Utils.InterProcessLock(e);
+      return;
+    }
+    finally {}
   }
   
   private static void b(int paramInt)
@@ -535,14 +492,11 @@ public class Common
     }
     int[] arrayOfInt = new int[j];
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i >= j) {
-        return arrayOfInt;
-      }
       arrayOfInt[i] = jdField_a_of_type_AndroidContentSharedPreferences.getInt(a("JUMPER", paramString, i), -1);
       if (arrayOfInt[i] == -1) {
-        break;
+        return null;
       }
       i += 1;
     }
@@ -576,25 +530,22 @@ public class Common
     int i = b();
     if (i >= 0)
     {
-      if (d() == 0) {
-        break label46;
-      }
-      b(i + 1);
-      i = c();
-      if (i >= 2)
+      if (d() != 0)
       {
-        b(false);
-        a();
-        return false;
+        b(i + 1);
+        i = c();
+        if (i >= 2)
+        {
+          b(false);
+          a();
+          return false;
+        }
+        c(i + 1);
+        return true;
       }
-      c(i + 1);
-    }
-    for (;;)
-    {
-      return true;
-      label46:
       c(0);
     }
+    return true;
   }
   
   private static boolean f()
@@ -609,7 +560,7 @@ public class Common
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.Common
  * JD-Core Version:    0.7.0.1
  */

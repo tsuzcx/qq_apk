@@ -19,7 +19,7 @@ class StructingMsgItemBuilder$16
 {
   StructingMsgItemBuilder$16(StructingMsgItemBuilder paramStructingMsgItemBuilder, ChatMessage paramChatMessage, Activity paramActivity, AbsStructMsg paramAbsStructMsg) {}
   
-  public void a(PopupMenuDialog.MenuItem paramMenuItem)
+  public void onClickAction(PopupMenuDialog.MenuItem paramMenuItem)
   {
     if (StructingMsgItemBuilder.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {
       return;
@@ -30,7 +30,7 @@ class StructingMsgItemBuilder$16
     localNewIntent.putExtra("cmd", "PubAccountFollowSvc.subscribe");
     mobileqq_mp.SubscribeRequest localSubscribeRequest = new mobileqq_mp.SubscribeRequest();
     localSubscribeRequest.msg_id.set(this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsStructMsg.msgId);
-    localSubscribeRequest.index.set(paramMenuItem.a);
+    localSubscribeRequest.index.set(paramMenuItem.id);
     long l1 = 0L;
     try
     {
@@ -52,7 +52,7 @@ class StructingMsgItemBuilder$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.16
  * JD-Core Version:    0.7.0.1
  */

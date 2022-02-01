@@ -5,8 +5,6 @@ import android.support.annotation.Nullable;
 import android.text.TextUtils;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotificationUtils;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyHelper;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -17,6 +15,8 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
+import com.tencent.mobileqq.troop.troopnotification.utils.TroopNotificationUtils;
+import com.tencent.mobileqq.troop.utils.TroopNotifyHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import tencent.mobileim.structmsg.structmsg.MsgInviteExt;
@@ -37,159 +37,151 @@ public class RecentItemTroopNotification
   @Nullable
   private structmsg.StructMsg a(List<MessageRecord> paramList)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    structmsg.StructMsg localStructMsg;
     if (paramList != null)
     {
       int i = paramList.size() - 1;
-      localObject1 = localObject2;
-      if (i >= 0)
+      while (i >= 0)
       {
-        localObject1 = (MessageRecord)paramList.get(i);
-        if ((localObject1 instanceof MessageForSystemMsg))
+        Object localObject = (MessageRecord)paramList.get(i);
+        if ((localObject instanceof MessageForSystemMsg))
         {
-          localStructMsg = ((MessageForSystemMsg)localObject1).getSystemMsg();
+          structmsg.StructMsg localStructMsg = ((MessageForSystemMsg)localObject).getSystemMsg();
           if ((localStructMsg != null) && (localStructMsg.msg.has()))
           {
             structmsg.SystemMsg localSystemMsg = localStructMsg.msg;
-            if (!localSystemMsg.msg_invite_extinfo.has()) {
-              break label133;
+            if (localSystemMsg.msg_invite_extinfo.has()) {
+              localObject = (structmsg.MsgInviteExt)localSystemMsg.msg_invite_extinfo.get();
+            } else {
+              localObject = null;
             }
-            localObject1 = (structmsg.MsgInviteExt)localSystemMsg.msg_invite_extinfo.get();
-            label105:
             int j = localSystemMsg.group_msg_type.get();
-            if ((j != 13) && (j != 6)) {
-              break label139;
+            if ((j != 13) && (j != 6) && ((localObject == null) || (((structmsg.MsgInviteExt)localObject).uint32_wait_state.get() != 4))) {
+              return localStructMsg;
             }
           }
         }
-        label133:
-        label139:
-        do
-        {
-          i -= 1;
-          break;
-          localObject1 = null;
-          break label105;
-          if (localObject1 == null) {
-            break label163;
-          }
-        } while (((structmsg.MsgInviteExt)localObject1).uint32_wait_state.get() == 4);
-        localObject1 = localStructMsg;
+        i -= 1;
       }
     }
-    return localObject1;
-    label163:
-    return localStructMsg;
+    return null;
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
-    if ((paramQQAppInterface == null) || (paramContext == null)) {}
-    structmsg.StructMsg localStructMsg;
-    label101:
-    int i;
-    label191:
-    do
+    if (paramQQAppInterface != null)
     {
-      return;
+      if (paramContext == null) {
+        return;
+      }
       super.a(paramQQAppInterface, paramContext);
       if (TextUtils.isEmpty(this.mTitleName)) {
-        this.mTitleName = paramContext.getString(2131691181);
+        this.mTitleName = paramContext.getString(2131691101);
       }
       this.mUnreadNum = TroopNotificationUtils.a(paramQQAppInterface);
       String str = GroupSystemMsgController.a().a(paramQQAppInterface);
-      localStructMsg = GroupSystemMsgController.a().a();
-      paramQQAppInterface = paramQQAppInterface.getMessageFacade().b(AppConstants.TROOP_SYSTEM_MSG_UIN, 0);
-      if (paramQQAppInterface == null) {
-        break label510;
+      structmsg.StructMsg localStructMsg = GroupSystemMsgController.a().a();
+      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(AppConstants.TROOP_SYSTEM_MSG_UIN, 0);
+      if (paramQQAppInterface != null)
+      {
+        paramQQAppInterface = a(paramQQAppInterface);
+        if (paramQQAppInterface == null)
+        {
+          QLog.d("RecentItemTroopNotification", 1, "cannot found recent notification from cache");
+          paramQQAppInterface = localStructMsg;
+        }
       }
-      paramQQAppInterface = a(paramQQAppInterface);
-      if (paramQQAppInterface == null) {
-        break;
+      else
+      {
+        paramQQAppInterface = localStructMsg;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("RecentItemTroopNotification", 2, "notificationList is null");
+          paramQQAppInterface = localStructMsg;
+        }
       }
-      if (paramQQAppInterface == null) {
-        break label534;
+      if (paramQQAppInterface != null) {
+        this.mDisplayTime = paramQQAppInterface.msg_time.get();
+      } else {
+        QLog.d("RecentItemTroopNotification", 1, "cannot get recent notification info");
       }
-      this.mDisplayTime = paramQQAppInterface.msg_time.get();
       if (((this.mLastMsg == null) || (!this.mLastMsg.equals(str))) && (!TextUtils.isEmpty(str))) {
         this.mLastMsg = str;
       }
       if ((this.mDisplayTime > 0L) && (this.mDisplayTime != 9223372036854775806L)) {
         this.mShowTime = TimeManager.a().a(getRecentUserUin(), this.mDisplayTime);
       }
-      if (this.mUnreadNum != 0) {
-        break label546;
-      }
-      i = TroopNotifyHelper.c();
-      this.unDealMsgCountNumFlag = TroopNotifyHelper.a(i);
-      if (!this.unDealMsgCountNumFlag) {
-        break label556;
-      }
-      ReportController.b(null, "dc00898", "", "", "0X800B52C", "0X800B52C", 0, 0, "", "", null, null);
-      long l = System.currentTimeMillis();
-      this.mUnreadNum = i;
-      this.mLastMsg = (paramContext.getString(2131720259) + String.valueOf(this.mUnreadNum) + paramContext.getString(2131720260));
-      TroopNotifyHelper.a(true);
-      i = TroopNotifyHelper.a() + 1;
-      TroopNotifyHelper.a(i);
-      int j = TroopNotifyHelper.b() + 1;
-      TroopNotifyHelper.b(j);
-      TroopNotifyHelper.b(System.currentTimeMillis());
-      if (QLog.isColorLevel())
+      int i;
+      if (this.mUnreadNum == 0)
       {
-        QLog.d("RecentItemTroopNotification", 2, new Object[] { "unDealMsgCountNunFlag", "oneWeekCount =", Integer.valueOf(i), "oneDayCount =", Integer.valueOf(j), "mUnreadNum =", Integer.valueOf(this.mUnreadNum) });
-        QLog.d("RecentItemTroopNotification", 2, new Object[] { "unDealMsgCountNunFlag cost=", Long.valueOf(System.currentTimeMillis() - l) });
+        i = TroopNotifyHelper.c();
+        this.unDealMsgCountNumFlag = TroopNotifyHelper.a(i);
+      }
+      else
+      {
+        this.unDealMsgCountNumFlag = false;
+        i = 0;
+      }
+      if (this.unDealMsgCountNumFlag)
+      {
+        ReportController.b(null, "dc00898", "", "", "0X800B52C", "0X800B52C", 0, 0, "", "", null, null);
+        long l = System.currentTimeMillis();
+        this.mUnreadNum = i;
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append(paramContext.getString(2131719994));
+        paramQQAppInterface.append(String.valueOf(this.mUnreadNum));
+        paramQQAppInterface.append(paramContext.getString(2131719995));
+        this.mLastMsg = paramQQAppInterface.toString();
+        TroopNotifyHelper.a(true);
+        i = TroopNotifyHelper.a() + 1;
+        TroopNotifyHelper.a(i);
+        int j = TroopNotifyHelper.b() + 1;
+        TroopNotifyHelper.b(j);
+        TroopNotifyHelper.b(System.currentTimeMillis());
+        if (QLog.isColorLevel())
+        {
+          QLog.d("RecentItemTroopNotification", 2, new Object[] { "unDealMsgCountNunFlag", "oneWeekCount =", Integer.valueOf(i), "oneDayCount =", Integer.valueOf(j), "mUnreadNum =", Integer.valueOf(this.mUnreadNum) });
+          QLog.d("RecentItemTroopNotification", 2, new Object[] { "unDealMsgCountNunFlag cost=", Long.valueOf(System.currentTimeMillis() - l) });
+        }
+      }
+      else
+      {
+        TroopNotifyHelper.a(false);
       }
       this.mUser.jumpTabMode = 1;
-    } while (!AppSetting.d);
-    label394:
-    paramQQAppInterface = new StringBuilder(24);
-    paramQQAppInterface.append(this.mTitleName);
-    if (this.mUnreadNum == 1) {
-      paramQQAppInterface.append("有一条未读");
-    }
-    for (;;)
-    {
-      if (this.mMsgExtroInfo != null) {
-        paramQQAppInterface.append(this.mMsgExtroInfo).append(",");
-      }
-      paramQQAppInterface.append(this.mLastMsg).append(',').append(this.mShowTime);
-      this.mContentDesc = paramQQAppInterface.toString();
-      return;
-      QLog.d("RecentItemTroopNotification", 1, "cannot found recent notification from cache");
-      paramQQAppInterface = localStructMsg;
-      break;
-      label510:
-      paramQQAppInterface = localStructMsg;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("RecentItemTroopNotification", 2, "notificationList is null");
-      paramQQAppInterface = localStructMsg;
-      break;
-      label534:
-      QLog.d("RecentItemTroopNotification", 1, "cannot get recent notification info");
-      break label101;
-      label546:
-      this.unDealMsgCountNumFlag = false;
-      i = 0;
-      break label191;
-      label556:
-      TroopNotifyHelper.a(false);
-      break label394;
-      if (this.mUnreadNum == 2) {
-        paramQQAppInterface.append("有两条未读");
-      } else if (this.mUnreadNum > 0) {
-        paramQQAppInterface.append("有").append(this.mUnreadNum).append("条未读");
+      if (AppSetting.d)
+      {
+        paramQQAppInterface = new StringBuilder(24);
+        paramQQAppInterface.append(this.mTitleName);
+        if (this.mUnreadNum == 1)
+        {
+          paramQQAppInterface.append("有一条未读");
+        }
+        else if (this.mUnreadNum == 2)
+        {
+          paramQQAppInterface.append("有两条未读");
+        }
+        else if (this.mUnreadNum > 0)
+        {
+          paramQQAppInterface.append("有");
+          paramQQAppInterface.append(this.mUnreadNum);
+          paramQQAppInterface.append("条未读");
+        }
+        if (this.mMsgExtroInfo != null)
+        {
+          paramQQAppInterface.append(this.mMsgExtroInfo);
+          paramQQAppInterface.append(",");
+        }
+        paramQQAppInterface.append(this.mLastMsg);
+        paramQQAppInterface.append(',');
+        paramQQAppInterface.append(this.mShowTime);
+        this.mContentDesc = paramQQAppInterface.toString();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemTroopNotification
  * JD-Core Version:    0.7.0.1
  */

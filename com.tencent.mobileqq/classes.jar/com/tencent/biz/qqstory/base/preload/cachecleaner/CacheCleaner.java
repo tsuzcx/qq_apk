@@ -18,15 +18,21 @@ public class CacheCleaner
   protected static final String[] a;
   public static final String b;
   protected static final String[] b;
-  protected static final String[] c = { QQStoryConstant.i };
-  protected static final String[] d = { QQStoryConstant.e };
+  protected static final String[] c = { QQStoryConstant.j };
+  protected static final String[] d = { QQStoryConstant.f };
   
   static
   {
-    jdField_a_of_type_JavaLangString = AppConstants.SDCARD_FILE_SAVE_TMP_PATH + "qqstory/";
-    jdField_b_of_type_JavaLangString = AppConstants.SDCARD_FILE_SAVE_TMP_PATH + "qqstory_watermark/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_FILE_SAVE_TMP_PATH);
+    localStringBuilder.append("qqstory/");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_FILE_SAVE_TMP_PATH);
+    localStringBuilder.append("qqstory_watermark/");
+    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
     jdField_a_of_type_ArrayOfJavaLangString = new String[] { jdField_a_of_type_JavaLangString, jdField_b_of_type_JavaLangString };
-    jdField_b_of_type_ArrayOfJavaLangString = new String[] { QQStoryConstant.h, QQStoryConstant.k, QQStoryConstant.u };
+    jdField_b_of_type_ArrayOfJavaLangString = new String[] { QQStoryConstant.i, QQStoryConstant.l, QQStoryConstant.v };
   }
   
   public static CacheCleaner a()
@@ -49,8 +55,6 @@ public class CacheCleaner
   
   protected boolean a(boolean paramBoolean)
   {
-    long l1 = 3600L;
-    label185:
     for (;;)
     {
       try
@@ -58,48 +62,44 @@ public class CacheCleaner
         StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
         long l2 = System.currentTimeMillis();
         long l3 = ((Long)localStoryConfigManager.b("cache_clean_latest_time", Long.valueOf(0L))).longValue();
+        long l1 = 3600L;
+        if (!paramBoolean) {
+          l1 = ((Long)localStoryConfigManager.b("StoryClearRate", Long.valueOf(3600L))).longValue();
+        }
+        l3 = Math.abs(l2 - l3);
         String str1;
-        if (paramBoolean)
+        if (l3 < l1 * 1000L)
         {
-          l3 = Math.abs(l2 - l3);
-          if (l3 < l1 * 1000L)
+          l1 = l3 / 1000L / 60L / 60L;
+          if (paramBoolean)
           {
-            l1 = l3 / 1000L / 60L / 60L;
-            if (!paramBoolean) {
-              break label185;
-            }
             str1 = "low";
             SLog.a("Q.qqstory.cleaner:CacheCleaner", "clean before %d h , no need to clean again , capacity state :%s", Long.valueOf(l1), str1);
-            paramBoolean = false;
-            return paramBoolean;
+            return false;
           }
         }
         else
         {
-          l1 = ((Long)localStoryConfigManager.b("StoryClearRate", Long.valueOf(3600L))).longValue();
-          continue;
-        }
-        if (paramBoolean)
-        {
+          if (!paramBoolean) {
+            break label188;
+          }
           str1 = "low";
           SLog.d("Q.qqstory.cleaner:CacheCleaner", "clean cache , capacity state :%s", new Object[] { str1 });
           localStoryConfigManager.b("cache_clean_latest_time", Long.valueOf(l2));
-          paramBoolean = true;
-        }
-        else
-        {
-          str1 = "healthy";
-          continue;
-          String str2 = "healthy";
+          return true;
         }
       }
       finally {}
+      String str2 = "healthy";
+      continue;
+      label188:
+      str2 = "healthy";
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.CacheCleaner
  * JD-Core Version:    0.7.0.1
  */

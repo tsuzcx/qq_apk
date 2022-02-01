@@ -16,7 +16,10 @@ class Leba$4$1
     {
       this.jdField_a_of_type_ComTencentMobileqqLebaLeba$4.this$0.jdField_a_of_type_JavaUtilList.clear();
       this.jdField_a_of_type_ComTencentMobileqqLebaLeba$4.this$0.jdField_a_of_type_JavaUtilList.addAll(this.jdField_a_of_type_JavaUtilList);
-      QLog.i("LebaFrame", 1, "refreshLebaConfig. lebaData size=" + this.jdField_a_of_type_ComTencentMobileqqLebaLeba$4.this$0.jdField_a_of_type_JavaUtilList.size());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshLebaConfig. lebaData size=");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqLebaLeba$4.this$0.jdField_a_of_type_JavaUtilList.size());
+      QLog.i("LebaFrame", 1, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_ComTencentMobileqqLebaLeba$4.this$0.jdField_a_of_type_ComTencentMobileqqLebaControllerLebaController != null)
     {
@@ -31,7 +34,7 @@ class Leba$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.Leba.4.1
  * JD-Core Version:    0.7.0.1
  */

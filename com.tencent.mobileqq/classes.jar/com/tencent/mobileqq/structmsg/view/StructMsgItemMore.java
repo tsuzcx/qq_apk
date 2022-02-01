@@ -35,11 +35,11 @@ public class StructMsgItemMore
   {
     paramBundle = paramView;
     if (paramView == null) {
-      paramBundle = LayoutInflater.from(paramContext).inflate(2131563043, null);
+      paramBundle = LayoutInflater.from(paramContext).inflate(2131562866, null);
     }
-    paramContext = (TextView)paramBundle.findViewById(2131378573);
+    paramContext = (TextView)paramBundle.findViewById(2131377984);
     if (TextUtils.isEmpty(this.ac)) {
-      this.ac = HardCodeUtil.a(2131714493);
+      this.ac = HardCodeUtil.a(2131714414);
     }
     paramContext.setText(this.ac);
     return paramBundle;
@@ -59,12 +59,13 @@ public class StructMsgItemMore
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.ac == null) {}
-    for (String str = "";; str = MessageUtils.a(this.ac, false))
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
+    String str = this.ac;
+    if (str == null) {
+      str = "";
+    } else {
+      str = MessageUtils.a(str, false);
     }
+    paramObjectOutput.writeUTF(str);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
@@ -82,7 +83,7 @@ public class StructMsgItemMore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemMore
  * JD-Core Version:    0.7.0.1
  */

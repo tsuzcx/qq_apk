@@ -49,42 +49,38 @@ public class PerformanceTracker
   
   public void logRenderTimes()
   {
-    if (!this.enabled) {}
-    for (;;)
-    {
+    if (!this.enabled) {
       return;
-      List localList = getSortedRenderTimes();
-      Log.d("LOTTIE", "Render times:");
-      int i = 0;
-      while (i < localList.size())
-      {
-        Pair localPair = (Pair)localList.get(i);
-        Log.d("LOTTIE", String.format("\t\t%30s:%.2f", new Object[] { localPair.first, localPair.second }));
-        i += 1;
-      }
+    }
+    List localList = getSortedRenderTimes();
+    Log.d("LOTTIE", "Render times:");
+    int i = 0;
+    while (i < localList.size())
+    {
+      Pair localPair = (Pair)localList.get(i);
+      Log.d("LOTTIE", String.format("\t\t%30s:%.2f", new Object[] { localPair.first, localPair.second }));
+      i += 1;
     }
   }
   
   public void recordRenderTime(String paramString, float paramFloat)
   {
-    if (!this.enabled) {}
-    for (;;)
-    {
+    if (!this.enabled) {
       return;
-      MeanCalculator localMeanCalculator2 = (MeanCalculator)this.layerRenderTimes.get(paramString);
-      MeanCalculator localMeanCalculator1 = localMeanCalculator2;
-      if (localMeanCalculator2 == null)
-      {
-        localMeanCalculator1 = new MeanCalculator();
-        this.layerRenderTimes.put(paramString, localMeanCalculator1);
-      }
-      localMeanCalculator1.add(paramFloat);
-      if (paramString.equals("__container"))
-      {
-        paramString = this.frameListeners.iterator();
-        while (paramString.hasNext()) {
-          ((PerformanceTracker.FrameListener)paramString.next()).onFrameRendered(paramFloat);
-        }
+    }
+    MeanCalculator localMeanCalculator2 = (MeanCalculator)this.layerRenderTimes.get(paramString);
+    MeanCalculator localMeanCalculator1 = localMeanCalculator2;
+    if (localMeanCalculator2 == null)
+    {
+      localMeanCalculator1 = new MeanCalculator();
+      this.layerRenderTimes.put(paramString, localMeanCalculator1);
+    }
+    localMeanCalculator1.add(paramFloat);
+    if (paramString.equals("__container"))
+    {
+      paramString = this.frameListeners.iterator();
+      while (paramString.hasNext()) {
+        ((PerformanceTracker.FrameListener)paramString.next()).onFrameRendered(paramFloat);
       }
     }
   }
@@ -101,7 +97,7 @@ public class PerformanceTracker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.PerformanceTracker
  * JD-Core Version:    0.7.0.1
  */

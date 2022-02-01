@@ -4,6 +4,7 @@ import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpABTestManager;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.Presenter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
@@ -20,7 +21,7 @@ public class WSVerticalCommonVideoHolder
   
   public WSVerticalCommonVideoHolder(ViewGroup paramViewGroup, int paramInt, WSVerticalPageFragment paramWSVerticalPageFragment)
   {
-    super(paramViewGroup, 2131560146, paramInt, paramWSVerticalPageFragment);
+    super(paramViewGroup, 2131560028, paramInt, paramWSVerticalPageFragment);
   }
   
   public FrameLayout a()
@@ -33,18 +34,26 @@ public class WSVerticalCommonVideoHolder
   
   public AbsWSVideoItemView a(int paramInt)
   {
-    return new WSVerticalVideoItemView(a(), this);
+    return new WSVerticalVideoItemView(getContext(), this);
   }
   
   public void a() {}
   
+  public void a(boolean paramBoolean) {}
+  
   protected boolean a()
   {
-    if ((this.jdField_a_of_type_JavaLangObject != null) && (((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).a())) {
+    if ((this.jdField_a_of_type_JavaLangObject != null) && (((WSVerticalItemData)this.jdField_a_of_type_JavaLangObject).b())) {
       return true;
     }
+    if (((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).d()) {
+      return false;
+    }
     boolean bool = WSExpABTestManager.a().d();
-    WSLog.e("WS_VIDEO_PLAY_TIME", "[WSVerticalCommonVideoHolder.java][isPlayLoop] isLoop:" + bool);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[WSVerticalCommonVideoHolder.java][isPlayLoop] isLoop:");
+    localStringBuilder.append(bool);
+    WSLog.e("WS_VIDEO_PLAY_TIME", localStringBuilder.toString());
     return bool;
   }
   
@@ -54,6 +63,8 @@ public class WSVerticalCommonVideoHolder
   }
   
   public void b() {}
+  
+  public void b(boolean paramBoolean) {}
   
   protected boolean b()
   {
@@ -69,7 +80,7 @@ public class WSVerticalCommonVideoHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalCommonVideoHolder
  * JD-Core Version:    0.7.0.1
  */

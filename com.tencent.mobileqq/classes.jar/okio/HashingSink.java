@@ -26,8 +26,10 @@ public final class HashingSink
     }
     catch (NoSuchAlgorithmException paramSink)
     {
-      throw new AssertionError();
+      label19:
+      break label19;
     }
+    throw new AssertionError();
   }
   
   private HashingSink(Sink paramSink, ByteString paramByteString, String paramString)
@@ -40,13 +42,15 @@ public final class HashingSink
       this.messageDigest = null;
       return;
     }
-    catch (NoSuchAlgorithmException paramSink)
-    {
-      throw new AssertionError();
-    }
     catch (InvalidKeyException paramSink)
     {
       throw new IllegalArgumentException(paramSink);
+      throw new AssertionError();
+    }
+    catch (NoSuchAlgorithmException paramSink)
+    {
+      label48:
+      break label48;
     }
   }
   
@@ -87,37 +91,38 @@ public final class HashingSink
   
   public final ByteString hash()
   {
-    if (this.messageDigest != null) {}
-    for (byte[] arrayOfByte = this.messageDigest.digest();; arrayOfByte = this.mac.doFinal()) {
-      return ByteString.of(arrayOfByte);
+    Object localObject = this.messageDigest;
+    if (localObject != null) {
+      localObject = ((MessageDigest)localObject).digest();
+    } else {
+      localObject = this.mac.doFinal();
     }
+    return ByteString.of((byte[])localObject);
   }
   
   public void write(Buffer paramBuffer, long paramLong)
   {
-    long l = 0L;
     Util.checkOffsetAndCount(paramBuffer.size, 0L, paramLong);
     Segment localSegment = paramBuffer.head;
-    if (l < paramLong)
+    long l = 0L;
+    while (l < paramLong)
     {
       int i = (int)Math.min(paramLong - l, localSegment.limit - localSegment.pos);
-      if (this.messageDigest != null) {
-        this.messageDigest.update(localSegment.data, localSegment.pos, i);
-      }
-      for (;;)
-      {
-        l += i;
-        localSegment = localSegment.next;
-        break;
+      MessageDigest localMessageDigest = this.messageDigest;
+      if (localMessageDigest != null) {
+        localMessageDigest.update(localSegment.data, localSegment.pos, i);
+      } else {
         this.mac.update(localSegment.data, localSegment.pos, i);
       }
+      l += i;
+      localSegment = localSegment.next;
     }
     super.write(paramBuffer, paramLong);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.HashingSink
  * JD-Core Version:    0.7.0.1
  */

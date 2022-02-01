@@ -10,7 +10,7 @@ import java.util.List;
 public class MultiSoLoader
   implements ISoLoader
 {
-  private DownSoLoader jdField_a_of_type_ComTencentMobileqqSoloadApiImplDownSoLoader;
+  private SoLoaderLogic jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic;
   private LoadExtResult jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadExtResult;
   
   private LoadParam a(LoadParam paramLoadParam, LoadParam.LoadItem paramLoadItem)
@@ -26,19 +26,19 @@ public class MultiSoLoader
   private void a(LoadParam paramLoadParam, OnLoadListener paramOnLoadListener, int paramInt)
   {
     LoadParam localLoadParam = a(paramLoadParam, (LoadParam.LoadItem)paramLoadParam.mLoadItems.get(paramInt));
-    this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplDownSoLoader = new DownSoLoader();
-    this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplDownSoLoader.a(localLoadParam, new MultiSoLoader.1(this, paramInt, paramLoadParam, paramOnLoadListener));
+    this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic = new SoLoaderLogic();
+    this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic.a(localLoadParam, new MultiSoLoader.1(this, paramInt, paramLoadParam, paramOnLoadListener));
   }
   
   public LoadExtResult a(LoadParam paramLoadParam)
   {
-    Object localObject = null;
     Iterator localIterator = paramLoadParam.mLoadItems.iterator();
+    Object localObject = null;
     while (localIterator.hasNext())
     {
       localObject = a(paramLoadParam, (LoadParam.LoadItem)localIterator.next());
-      this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplDownSoLoader = new DownSoLoader();
-      LoadExtResult localLoadExtResult = LoadExtResult.mergeExtResult(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplDownSoLoader.a((LoadParam)localObject), this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadExtResult);
+      this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic = new SoLoaderLogic();
+      LoadExtResult localLoadExtResult = LoadExtResult.mergeExtResult(this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic.a((LoadParam)localObject), this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadExtResult);
       this.jdField_a_of_type_ComTencentMobileqqSoloadBizEntityLoadExtResult = localLoadExtResult;
       localObject = localLoadExtResult;
       if (localLoadExtResult.getResultCode() != 0) {
@@ -55,22 +55,24 @@ public class MultiSoLoader
   
   public void a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplDownSoLoader != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplDownSoLoader.a(paramString);
+    SoLoaderLogic localSoLoaderLogic = this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic;
+    if (localSoLoaderLogic != null) {
+      localSoLoaderLogic.a(paramString);
     }
   }
   
   public boolean a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplDownSoLoader != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplDownSoLoader.a(paramString);
+    SoLoaderLogic localSoLoaderLogic = this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplSoLoaderLogic;
+    if (localSoLoaderLogic != null) {
+      return localSoLoaderLogic.a(paramString);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.MultiSoLoader
  * JD-Core Version:    0.7.0.1
  */

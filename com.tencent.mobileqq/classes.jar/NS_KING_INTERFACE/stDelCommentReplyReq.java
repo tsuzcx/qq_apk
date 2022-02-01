@@ -14,16 +14,6 @@ public final class stDelCommentReplyReq
   public String feed_id = "";
   public String replyId = "";
   
-  static
-  {
-    if (!stDelCommentReplyReq.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public stDelCommentReplyReq() {}
   
   public stDelCommentReplyReq(String paramString1, String paramString2)
@@ -46,18 +36,17 @@ public final class stDelCommentReplyReq
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -78,13 +67,24 @@ public final class stDelCommentReplyReq
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stDelCommentReplyReq)paramObject;
-    } while ((!JceUtil.equals(this.feed_id, paramObject.feed_id)) || (!JceUtil.equals(this.commentId, paramObject.commentId)) || (!JceUtil.equals(this.replyId, paramObject.replyId)));
-    return true;
+    }
+    paramObject = (stDelCommentReplyReq)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.feed_id, paramObject.feed_id))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.commentId, paramObject.commentId))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.replyId, paramObject.replyId)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -144,20 +144,23 @@ public final class stDelCommentReplyReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.feed_id != null) {
-      paramJceOutputStream.write(this.feed_id, 0);
+    String str = this.feed_id;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.commentId != null) {
-      paramJceOutputStream.write(this.commentId, 1);
+    str = this.commentId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.replyId != null) {
-      paramJceOutputStream.write(this.replyId, 2);
+    str = this.replyId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stDelCommentReplyReq
  * JD-Core Version:    0.7.0.1
  */

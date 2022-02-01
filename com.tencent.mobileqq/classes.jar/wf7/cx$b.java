@@ -1,7 +1,6 @@
 package wf7;
 
 import android.net.wifi.ScanResult;
-import android.os.Handler;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -35,15 +34,12 @@ class cx$b
       paramLong = this.jn.jf;
       paramInt1 = this.jn.jg;
       localbh = this.jn.jh;
-      this.jn.jf = -1L;
-      this.jn.jg = -1;
-      this.jn.jh = null;
+      cx localcx = this.jn;
+      localcx.jf = -1L;
+      localcx.jg = -1;
+      localcx.jh = null;
     }
-    for (;;)
-    {
-      cx.a(this.jn, localbh, paramLong, paramInt1, paramInt2, paramInt3);
-      return;
-    }
+    cx.a(this.jn, localbh, paramLong, paramInt1, paramInt2, paramInt3);
   }
   
   private List<h> j(List<ScanResult> paramList)
@@ -55,51 +51,44 @@ class cx$b
     {
       Iterator localIterator = paramList.iterator();
       paramList = (List<ScanResult>)localObject2;
-      do
+      for (;;)
       {
         localObject1 = paramList;
         if (!localIterator.hasNext()) {
           break;
         }
         localObject2 = (ScanResult)localIterator.next();
-      } while (localObject2 == null);
-      localObject1 = paramList;
-      if (paramList == null) {
-        localObject1 = new ArrayList();
-      }
-      int i = cb.a((ScanResult)localObject2);
-      paramList = new h();
-      paramList.u = cb.m(((ScanResult)localObject2).BSSID);
-      paramList.ssid = cb.j(((ScanResult)localObject2).SSID);
-      paramList.C = cb.F(i);
-      paramList.frequency = ((ScanResult)localObject2).frequency;
-      localObject2 = ((bq)ao.c().i(1)).a(paramList.ssid, i);
-      boolean bool1;
-      if (localObject2 != null)
-      {
-        this.jz.add(localObject2);
-        if (((bn)localObject2).ac().aj() == null) {
-          break label223;
-        }
-        bool1 = true;
-        label181:
-        bool2 = bool1;
-        if (bool1) {
-          if (!((bn)localObject2).ad().S()) {
-            break label228;
+        if (localObject2 != null)
+        {
+          localObject1 = paramList;
+          if (paramList == null) {
+            localObject1 = new ArrayList();
           }
+          int i = cb.a((ScanResult)localObject2);
+          paramList = new h();
+          paramList.u = cb.m(((ScanResult)localObject2).BSSID);
+          paramList.ssid = cb.j(((ScanResult)localObject2).SSID);
+          paramList.C = cb.F(i);
+          paramList.frequency = ((ScanResult)localObject2).frequency;
+          localObject2 = ((bq)ao.c().i(1)).a(paramList.ssid, i);
+          if (localObject2 != null)
+          {
+            this.jz.add(localObject2);
+            boolean bool1;
+            if (((bn)localObject2).ac().aj() != null) {
+              bool1 = true;
+            } else {
+              bool1 = false;
+            }
+            boolean bool2 = bool1;
+            if (bool1) {
+              bool2 = ((bn)localObject2).ad().S() ^ true;
+            }
+            paramList.aC = bool2;
+          }
+          ((List)localObject1).add(paramList);
+          paramList = (List<ScanResult>)localObject1;
         }
-      }
-      label223:
-      label228:
-      for (boolean bool2 = false;; bool2 = true)
-      {
-        paramList.aC = bool2;
-        ((List)localObject1).add(paramList);
-        paramList = (List<ScanResult>)localObject1;
-        break;
-        bool1 = false;
-        break label181;
       }
     }
     return localObject1;
@@ -107,108 +96,12 @@ class cx$b
   
   public void a(long paramLong, boolean paramBoolean1, ArrayList<ct> paramArrayList, boolean paramBoolean2, int paramInt)
   {
-    paramBoolean2 = cv.bj().b(paramArrayList);
-    if ((!this.jx) && (paramInt == 0)) {
-      paramArrayList = this.jz.iterator();
-    }
-    while (paramArrayList.hasNext())
-    {
-      Object localObject = (bn)paramArrayList.next();
-      ct localct = cw.p((bn)localObject);
-      localct.U(5);
-      if ((localct != null) && ((((bn)localObject).ad() == null) || (((bl)localct.getData()).S()))) {
-        if ((!((bl)localct.getData()).O()) && (ck.P(localct.L())))
-        {
-          by.b(500096, "19_0");
-        }
-        else if (ck.m(localct.L(), ((bn)localObject).ab()))
-        {
-          by.b(500096, "25_0");
-        }
-        else if (ck.Q(localct.L()))
-        {
-          by.b(500096, "27_" + ((bl)localct.getData()).M());
-          continue;
-          if ((!this.jx) && (paramInt != 0)) {
-            paramArrayList = this.jz.iterator();
-          }
-          while (paramArrayList.hasNext())
-          {
-            localObject = (bn)paramArrayList.next();
-            localct = cw.p((bn)localObject);
-            if ((localct != null) && (((bl)localct.getData()).Q()) && (((bl)localct.getData()).S())) {
-              localct.U(5);
-            }
-            for (;;)
-            {
-              if ((localct == null) || ((localct.R() != null) && (((bl)localct.getData()).S()))) {
-                break label364;
-              }
-              if ((((bl)localct.getData()).O()) || (!ck.P(localct.L()))) {
-                break label366;
-              }
-              by.b(500096, "19_0");
-              break;
-              localct.U(4);
-            }
-            label364:
-            continue;
-            label366:
-            if (ck.m(localct.L(), ((bn)localObject).ab()))
-            {
-              by.b(500096, "25_0");
-            }
-            else if (ck.Q(localct.L()))
-            {
-              by.b(500096, "27_" + ((bl)localct.getData()).M());
-              continue;
-              if (this.jx)
-              {
-                paramArrayList = this.jz.iterator();
-                while (paramArrayList.hasNext())
-                {
-                  localObject = cw.p((bn)paramArrayList.next());
-                  if ((localObject != null) && (((bl)((ct)localObject).getData()).Q()) && (((bl)((ct)localObject).getData()).S())) {
-                    ((ct)localObject).U(5);
-                  }
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    if (!this.jx)
-    {
-      cx.a(this.jn, System.currentTimeMillis());
-      this.jn.iZ = false;
-      this.jn.mHandler.removeMessages(1);
-      j = this.jw;
-      if (paramBoolean1)
-      {
-        i = 1;
-        a(paramLong, j, i, paramInt);
-        if (this.jn.ja)
-        {
-          cx.a(this.jn, -1L, 1, null, cx.b(this.jn).js * 1000);
-          this.jn.ja = false;
-        }
-      }
-    }
-    while (!paramBoolean2) {
-      for (;;)
-      {
-        int j;
-        return;
-        int i = 0;
-      }
-    }
-    cx.a(this.jn, null, -1L, 1, 2, paramInt);
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cx.b
  * JD-Core Version:    0.7.0.1
  */

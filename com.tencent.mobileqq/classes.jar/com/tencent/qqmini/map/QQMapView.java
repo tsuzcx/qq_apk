@@ -42,25 +42,28 @@ public class QQMapView
   private void dealMapScroll(CameraPosition paramCameraPosition)
   {
     paramCameraPosition = new GeoPoint((int)(paramCameraPosition.target.getLatitude() * 1000000.0D), (int)(paramCameraPosition.target.getLongitude() * 1000000.0D));
-    if (this.mLastPoint != null)
+    Object localObject = this.mLastPoint;
+    if (localObject != null)
     {
-      int i = Math.abs(this.mLastPoint.getLatitudeE6() - paramCameraPosition.getLatitudeE6());
+      int i = Math.abs(((GeoPoint)localObject).getLatitudeE6() - paramCameraPosition.getLatitudeE6());
       int j = Math.abs(this.mLastPoint.getLongitudeE6() - paramCameraPosition.getLongitudeE6());
-      QMLog.d("QQMapView", "dealMapScroll() latScroll =" + i + " lngScroll =" + j);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dealMapScroll() latScroll =");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" lngScroll =");
+      ((StringBuilder)localObject).append(j);
+      QMLog.d("QQMapView", ((StringBuilder)localObject).toString());
       if ((i == 0) || (j == 0)) {
         return;
       }
     }
     if (!isSelectPoiListItem) {
       this.mObserver.onMapScrollEnd(paramCameraPosition);
-    }
-    for (;;)
-    {
-      this.mIsScrolling = false;
-      this.mLastPoint = paramCameraPosition;
-      return;
+    } else {
       isSelectPoiListItem = false;
     }
+    this.mIsScrolling = false;
+    this.mLastPoint = paramCameraPosition;
   }
   
   public void destroy()
@@ -87,7 +90,7 @@ public class QQMapView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.map.QQMapView
  * JD-Core Version:    0.7.0.1
  */

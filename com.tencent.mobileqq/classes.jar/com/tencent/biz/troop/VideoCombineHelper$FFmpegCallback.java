@@ -1,6 +1,6 @@
 package com.tencent.biz.troop;
 
-import com.tencent.biz.qqstory.utils.ffmpeg.FFmpegExecuteResponseCallback;
+import com.tencent.mobileqq.videocodec.ffmpeg.FFmpegExecuteResponseCallback;
 import com.tencent.qphone.base.util.QLog;
 
 class VideoCombineHelper$FFmpegCallback
@@ -13,8 +13,12 @@ class VideoCombineHelper$FFmpegCallback
   public void onFailure(String paramString)
   {
     a(false);
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onFailure" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ffmpeg onFailure");
+      localStringBuilder.append(paramString);
+      QLog.d(".troop.VideoCombineHelper", 2, localStringBuilder.toString());
     }
   }
   
@@ -22,8 +26,12 @@ class VideoCombineHelper$FFmpegCallback
   
   public void onProgress(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(".troop.VideoCombineHelper", 2, "ffmpeg onProgress" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ffmpeg onProgress");
+      localStringBuilder.append(paramString);
+      QLog.d(".troop.VideoCombineHelper", 2, localStringBuilder.toString());
     }
   }
   
@@ -41,7 +49,7 @@ class VideoCombineHelper$FFmpegCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.FFmpegCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -23,15 +23,17 @@ public final class oidb_0xdea$Comment
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 16, 24, 32, 42, 50, 56, 66, 72 }, new String[] { "uint64_comment_uin", "uint64_seq", "uint64_comment_location", "bytes_comment_msg", "bytes_pass_through", "uint32_comment_ctime", "bytes_nick", "uint32_source" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0) }, Comment.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 16, 24, 32, 42, 50, 56, 66, 72 }, new String[] { "uint64_comment_uin", "uint64_seq", "uint64_comment_location", "bytes_comment_msg", "bytes_pass_through", "uint32_comment_ctime", "bytes_nick", "uint32_source" }, new Object[] { localLong, localLong, localLong, localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger }, Comment.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.oidb_0xdea.Comment
  * JD-Core Version:    0.7.0.1
  */

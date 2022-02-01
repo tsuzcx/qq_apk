@@ -37,27 +37,30 @@ public class FavoritesProxyImpl
       if ((localObject1 instanceof QQAppInterface))
       {
         QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
-        String str1 = localQQAppInterface.getApplication().getString(2131692292) + paramInnerFavoritesData.title;
-        String str2 = paramInnerFavoritesData.entryPath;
-        String str3 = localQQAppInterface.getApplication().getString(2131692291);
-        String str4 = paramInnerFavoritesData.summary;
-        String str5 = paramInnerFavoritesData.picPath;
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(localQQAppInterface.getApplication().getString(2131692218));
+        ((StringBuilder)localObject2).append(paramInnerFavoritesData.title);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        String str1 = paramInnerFavoritesData.entryPath;
+        String str2 = localQQAppInterface.getApplication().getString(2131692217);
+        String str3 = paramInnerFavoritesData.summary;
+        String str4 = paramInnerFavoritesData.picPath;
         JSONObject localJSONObject = new JSONObject(paramInnerFavoritesData.bizDataList);
         paramInnerFavoritesData = new ArrayList();
-        Object localObject2 = new JSONObject();
-        ((JSONObject)localObject2).put(this.b, localJSONObject.optString("appName"));
-        ((JSONObject)localObject2).put(this.c, localJSONObject.optString("appView"));
-        ((JSONObject)localObject2).put(this.d, localJSONObject.optJSONObject("metaData").toString());
-        ((JSONObject)localObject2).put(this.e, localJSONObject.optString("appMinVersion"));
-        ((JSONObject)localObject2).put(this.f, localJSONObject.optJSONObject("appConfig").toString());
-        ((JSONObject)localObject2).put(this.h, localJSONObject.optString("promptText"));
+        Object localObject3 = new JSONObject();
+        ((JSONObject)localObject3).put(this.b, localJSONObject.optString("appName"));
+        ((JSONObject)localObject3).put(this.c, localJSONObject.optString("appView"));
+        ((JSONObject)localObject3).put(this.d, localJSONObject.optJSONObject("metaData").toString());
+        ((JSONObject)localObject3).put(this.e, localJSONObject.optString("appMinVersion"));
+        ((JSONObject)localObject3).put(this.f, localJSONObject.optJSONObject("appConfig").toString());
+        ((JSONObject)localObject3).put(this.h, localJSONObject.optString("promptText"));
         localJSONObject = new JSONObject();
-        localJSONObject.put(this.a, localObject2);
+        localJSONObject.put(this.a, localObject3);
         paramInnerFavoritesData.add(localJSONObject.toString().getBytes());
-        localObject2 = new MessageRecord();
-        ((MessageRecord)localObject2).senderuin = localQQAppInterface.getAccount();
+        localObject3 = new MessageRecord();
+        ((MessageRecord)localObject3).senderuin = localQQAppInterface.getAccount();
         localObject1 = ((AppRuntime)localObject1).getApplication().getApplicationContext();
-        ThreadManager.getUIHandler().post(new FavoritesProxyImpl.1(this, str1, str2, str3, str4, str5, paramInnerFavoritesData, localQQAppInterface, (MessageRecord)localObject2, (Context)localObject1));
+        ThreadManager.getUIHandler().post(new FavoritesProxyImpl.1(this, (String)localObject2, str1, str2, str3, str4, paramInnerFavoritesData, localQQAppInterface, (MessageRecord)localObject3, (Context)localObject1));
         return;
       }
       QLog.d("FavoritesProxyImpl", 1, "addToQQFavorites: failed runtime not instanceof QQAppInterface");
@@ -94,11 +97,12 @@ public class FavoritesProxyImpl
       QLog.w("FavoritesProxyImpl", 1, "onJsAddToFavorites. Unknown type of data");
       return;
     }
-    QLog.d("FavoritesProxyImpl", 1, "onJsAddToFavorites. data = " + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onJsAddToFavorites. data = ");
+    localStringBuilder.append(paramObject);
+    QLog.d("FavoritesProxyImpl", 1, localStringBuilder.toString());
     paramObject = (InnerFavoritesData)paramObject;
-    switch (paramObject.action)
-    {
-    default: 
+    if (paramObject.action != 1) {
       return;
     }
     a(paramObject);
@@ -106,7 +110,7 @@ public class FavoritesProxyImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.FavoritesProxyImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -16,23 +16,11 @@ public final class FWAppOperator$addView$2
   
   public void onLayout()
   {
-    FWAppOperator.access$setGravity(this.this$0, (View)this.this$0.getFrameLayout());
-    Object localObject1 = this.this$0.getConfig();
-    if ((((FloatWindowConfig)localObject1).filterSelf) || ((((FloatWindowConfig)localObject1).showPattern == 3) && (FloatWindowLifecycle.isForeground())) || ((((FloatWindowConfig)localObject1).showPattern == 2) && (!FloatWindowLifecycle.isForeground())) || ((((FloatWindowConfig)localObject1).showPattern == 1) && (FloatWindowLifecycle.isForeground()))) {
-      FWAppOperator.setVisible$default(this.this$0, 8, false, 2, null);
-    }
-    for (;;)
+    Object localObject1 = this.this$0;
+    FWAppOperator.access$setGravity((FWAppOperator)localObject1, (View)((FWAppOperator)localObject1).getFrameLayout());
+    localObject1 = this.this$0.getConfig();
+    if ((!((FloatWindowConfig)localObject1).filterSelf) && ((((FloatWindowConfig)localObject1).showPattern != 3) || (!FloatWindowLifecycle.isForeground())) && ((((FloatWindowConfig)localObject1).showPattern != 2) || (FloatWindowLifecycle.isForeground())) && ((((FloatWindowConfig)localObject1).showPattern != 1) || (!FloatWindowLifecycle.isForeground())))
     {
-      ((FloatWindowConfig)localObject1).layoutView = this.$floatingView;
-      Object localObject2 = ((FloatWindowConfig)localObject1).invokeView;
-      if (localObject2 != null) {
-        ((OnInvokeView)localObject2).invoke(this.$floatingView);
-      }
-      localObject1 = ((FloatWindowConfig)localObject1).callbacks;
-      if (localObject1 != null) {
-        ((OnFloatWindowCallbacks)localObject1).createdResult(true, 0, this.$floatingView);
-      }
-      return;
       localObject2 = this.this$0;
       View localView = this.$floatingView;
       Intrinsics.checkExpressionValueIsNotNull(localView, "floatingView");
@@ -42,11 +30,24 @@ public final class FWAppOperator$addView$2
         ((OnFloatWindowCallbacks)localObject2).show(this.$floatingView);
       }
     }
+    else
+    {
+      FWAppOperator.setVisible$default(this.this$0, 8, false, 2, null);
+    }
+    ((FloatWindowConfig)localObject1).layoutView = this.$floatingView;
+    Object localObject2 = ((FloatWindowConfig)localObject1).invokeView;
+    if (localObject2 != null) {
+      ((OnInvokeView)localObject2).invoke(this.$floatingView);
+    }
+    localObject1 = ((FloatWindowConfig)localObject1).callbacks;
+    if (localObject1 != null) {
+      ((OnFloatWindowCallbacks)localObject1).createdResult(true, 0, this.$floatingView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.appfloat.FWAppOperator.addView.2
  * JD-Core Version:    0.7.0.1
  */

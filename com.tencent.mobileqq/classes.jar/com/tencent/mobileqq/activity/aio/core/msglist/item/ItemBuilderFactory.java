@@ -26,6 +26,7 @@ import com.tencent.mobileqq.activity.aio.item.supplier.ArkAppSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.ArkFlashChatSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.AutoReplySupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.AutoVideoSupplier;
+import com.tencent.mobileqq.activity.aio.item.supplier.BeancurdSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.BirthdayNoticeSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.CmGameTipsSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.CommonHobbySupplier;
@@ -51,7 +52,6 @@ import com.tencent.mobileqq.activity.aio.item.supplier.FuDaiSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.GrayTipsSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.HiBoomSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.ImageSupplier;
-import com.tencent.mobileqq.activity.aio.item.supplier.LimitChatTopicSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.LocationShareSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.LongMsgSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.LongTextSupplier;
@@ -112,7 +112,6 @@ import com.tencent.mobileqq.activity.aio.item.supplier.UniteGrayTipSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.VIPDonateSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.VideoSupplier;
 import com.tencent.mobileqq.activity.aio.item.supplier.WriteTogetherSupplier;
-import com.tencent.mobileqq.activity.aio.item.typesupplier.ApolloTypeSupplier;
 import com.tencent.mobileqq.activity.aio.item.typesupplier.ArkAppTypeSupplier;
 import com.tencent.mobileqq.activity.aio.item.typesupplier.ArkBabyqReplyTypeSupplier;
 import com.tencent.mobileqq.activity.aio.item.typesupplier.DLFileTypeSupplier;
@@ -135,7 +134,8 @@ import com.tencent.mobileqq.activity.aio.item.typesupplier.TroopRewardTypeSuppli
 import com.tencent.mobileqq.activity.aio.item.typesupplier.TroopSignTypeSupplier;
 import com.tencent.mobileqq.activity.aio.item.typesupplier.UniteGrayTipTypeSupplier;
 import com.tencent.mobileqq.activity.miniaio.MiniChatTextItemBuilder;
-import com.tencent.mobileqq.apollo.api.model.MessageForApollo;
+import com.tencent.mobileqq.apollo.aio.item.ApolloMessageTypeSupplierApi;
+import com.tencent.mobileqq.apollo.utils.ApolloClassFactoryApi;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
@@ -144,9 +144,9 @@ import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForArkBabyqReply;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
 import com.tencent.mobileqq.data.MessageForAutoReply;
+import com.tencent.mobileqq.data.MessageForBeancurd;
 import com.tencent.mobileqq.data.MessageForBirthdayNotice;
 import com.tencent.mobileqq.data.MessageForBlessPTV;
-import com.tencent.mobileqq.data.MessageForCmGameTips;
 import com.tencent.mobileqq.data.MessageForColorRing;
 import com.tencent.mobileqq.data.MessageForCommonHobbyForAIOShow;
 import com.tencent.mobileqq.data.MessageForConfessCard;
@@ -161,7 +161,6 @@ import com.tencent.mobileqq.data.MessageForEnterTroop;
 import com.tencent.mobileqq.data.MessageForFile;
 import com.tencent.mobileqq.data.MessageForFoldMsgGrayTips;
 import com.tencent.mobileqq.data.MessageForFuDai;
-import com.tencent.mobileqq.data.MessageForFunnyFace;
 import com.tencent.mobileqq.data.MessageForGrayTips;
 import com.tencent.mobileqq.data.MessageForHiBoom;
 import com.tencent.mobileqq.data.MessageForIncompatibleGrayTips;
@@ -220,8 +219,9 @@ import com.tencent.mobileqq.data.MessageForVIPDonate;
 import com.tencent.mobileqq.data.MessageForVideo;
 import com.tencent.mobileqq.data.MessageForWriteTogether;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.ShareHotChatGrayTips;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.hotchat.api.IHotChatApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -242,10 +242,12 @@ public class ItemBuilderFactory
   
   static
   {
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForNewGrayTips.class, Integer.valueOf(15));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForSafeGrayTips.class, Integer.valueOf(15));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForIncompatibleGrayTips.class, Integer.valueOf(15));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForNearbyMarketGrayTips.class, Integer.valueOf(15));
+    Object localObject = jdField_a_of_type_AndroidSupportV4UtilArrayMap;
+    Integer localInteger = Integer.valueOf(15);
+    ((ArrayMap)localObject).put(MessageForNewGrayTips.class, localInteger);
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForSafeGrayTips.class, localInteger);
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForIncompatibleGrayTips.class, localInteger);
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForNearbyMarketGrayTips.class, localInteger);
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopEffectPic.class, Integer.valueOf(80));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDevPtt.class, Integer.valueOf(33));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForPtt.class, Integer.valueOf(2));
@@ -258,7 +260,6 @@ public class ItemBuilderFactory
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTribeShortVideo.class, Integer.valueOf(89));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopPobing.class, Integer.valueOf(77));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopNotification.class, Integer.valueOf(28));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForFunnyFace.class, Integer.valueOf(19));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQzoneFeed.class, Integer.valueOf(21));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForPLNews.class, Integer.valueOf(79));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForMedalNews.class, Integer.valueOf(86));
@@ -275,12 +276,11 @@ public class ItemBuilderFactory
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForColorRing.class, Integer.valueOf(31));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTroopFee.class, Integer.valueOf(44));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDeviceSingleStruct.class, Integer.valueOf(34));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQQWalletTips.class, Integer.valueOf(15));
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQQWalletTips.class, localInteger);
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDeviceText.class, Integer.valueOf(39));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(ShareHotChatGrayTips.class, Integer.valueOf(15));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDeliverGiftTips.class, Integer.valueOf(15));
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(((IHotChatApi)QRoute.api(IHotChatApi.class)).getShareHotChatGrayTipsClass(), localInteger);
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForDeliverGiftTips.class, localInteger);
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForArkFlashChat.class, Integer.valueOf(76));
-    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForCmGameTips.class, Integer.valueOf(100));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForReplyText.class, Integer.valueOf(50));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForApproval.class, Integer.valueOf(52));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForVIPDonate.class, Integer.valueOf(58));
@@ -305,6 +305,7 @@ public class ItemBuilderFactory
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForQCircleFeed.class, Integer.valueOf(123));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForWriteTogether.class, Integer.valueOf(125));
     jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForTofuAskAnonymously.class, Integer.valueOf(126));
+    jdField_a_of_type_AndroidSupportV4UtilArrayMap.put(MessageForBeancurd.class, Integer.valueOf(127));
     b = new ArrayMap();
     b.put(MessageForText.class, new TextTypeSupplier());
     b.put(MessageForTroopGift.class, new GiftTypeSupplier());
@@ -318,15 +319,18 @@ public class ItemBuilderFactory
     b.put(MessageForLongMsg.class, new LongMsgTypeSupplier());
     b.put(MessageForMixedMsg.class, new MixedTypeSupplier());
     b.put(MessageForTroopFile.class, new TroopFileTypeSupplier());
-    ShortVideoTypeSupplier localShortVideoTypeSupplier = new ShortVideoTypeSupplier();
-    b.put(MessageForShortVideo.class, localShortVideoTypeSupplier);
-    b.put(MessageForDanceMachine.class, localShortVideoTypeSupplier);
-    b.put(MessageForBlessPTV.class, localShortVideoTypeSupplier);
+    localObject = new ShortVideoTypeSupplier();
+    b.put(MessageForShortVideo.class, localObject);
+    b.put(MessageForDanceMachine.class, localObject);
+    b.put(MessageForBlessPTV.class, localObject);
     b.put(MessageForQQWalletMsg.class, new QQWalletTypeSupplier());
     b.put(MessageForDeviceFile.class, new DeviceFileTypeSupplier());
     b.put(MessageForArkApp.class, new ArkAppTypeSupplier());
     b.put(MessageForArkBabyqReply.class, new ArkBabyqReplyTypeSupplier());
-    b.put(MessageForApollo.class, new ApolloTypeSupplier());
+    localObject = ApolloMessageTypeSupplierApi.a();
+    if ((localObject instanceof MessageTypeSupplier)) {
+      b.put(ApolloClassFactoryApi.e(), (MessageTypeSupplier)localObject);
+    }
     b.put(MessageForTroopReward.class, new TroopRewardTypeSupplier());
     b.put(MessageForPoke.class, new PokeTypeSupplier());
     b.put(MessageForUniteGrayTip.class, new UniteGrayTipTypeSupplier());
@@ -423,15 +427,15 @@ public class ItemBuilderFactory
     this.jdField_a_of_type_AndroidUtilSparseArray.put(87, new QQStoryFeedSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(85, new TimDouFuGuideSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(93, new TimDocsSupplier());
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(102, new LimitChatTopicSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(101, new TroopStarLeagueSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(104, new FuDaiSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(109, new AIOStoryVideoSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(110, new LoverChattingGrayTipSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(111, new AutoVideoSupplier());
     localObject = new TextSupplier();
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(19, localObject);
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(0, localObject);
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    int i = 0;
+    localSparseArray.put(0, localObject);
     this.jdField_a_of_type_AndroidUtilSparseArray.put(115, new TofuIntimateAnniversarySupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(116, new TofuBaseProfileSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(117, new TofuNicePicsSupplier());
@@ -440,6 +444,7 @@ public class ItemBuilderFactory
     this.jdField_a_of_type_AndroidUtilSparseArray.put(123, new QCircleFeedSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(125, new WriteTogetherSupplier());
     this.jdField_a_of_type_AndroidUtilSparseArray.put(126, new TofuAskAnonymouslySupplier());
+    this.jdField_a_of_type_AndroidUtilSparseArray.put(127, new BeancurdSupplier());
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
@@ -447,7 +452,6 @@ public class ItemBuilderFactory
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_JavaUtilSet = new HashSet();
     int j = this.jdField_a_of_type_AndroidUtilSparseArray.size();
-    int i = 0;
     while (i < j)
     {
       ((ItemBuilderSupplier)this.jdField_a_of_type_AndroidUtilSparseArray.valueAt(i)).a(paramContext, paramQQAppInterface, paramSessionInfo, paramBaseChatPie, paramAIOAnimationConatiner);
@@ -457,22 +461,18 @@ public class ItemBuilderFactory
   
   public static int a(QQAppInterface paramQQAppInterface, @Nullable ChatMessage paramChatMessage)
   {
-    int i;
     if (paramChatMessage == null)
     {
       QLog.e("ItemBuilderFactory", 1, "message is null");
-      i = 0;
+      return 0;
     }
-    int j;
-    do
+    if (b.containsKey(paramChatMessage.getClass()))
     {
-      return i;
-      if (!b.containsKey(paramChatMessage.getClass())) {
-        break;
+      int i = ((MessageTypeSupplier)b.get(paramChatMessage.getClass())).get(paramQQAppInterface, paramChatMessage);
+      if (i != -1) {
+        return i;
       }
-      j = ((MessageTypeSupplier)b.get(paramChatMessage.getClass())).a(paramQQAppInterface, paramChatMessage);
-      i = j;
-    } while (j != -1);
+    }
     if (jdField_a_of_type_AndroidSupportV4UtilArrayMap.containsKey(paramChatMessage.getClass())) {
       return ((Integer)jdField_a_of_type_AndroidSupportV4UtilArrayMap.get(paramChatMessage.getClass())).intValue();
     }
@@ -492,22 +492,26 @@ public class ItemBuilderFactory
   
   public ChatItemBuilder a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ItemBuilderFactory", 2, "findItemBuilder: invoked. info: message = " + paramChatMessage);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("findItemBuilder: invoked. info: message = ");
+      ((StringBuilder)localObject).append(paramChatMessage);
+      QLog.i("ItemBuilderFactory", 2, ((StringBuilder)localObject).toString());
     }
     int i = a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
     if (this.jdField_a_of_type_AndroidUtilSparseArray.get(i) != null)
     {
-      ItemBuilderSupplier localItemBuilderSupplier = (ItemBuilderSupplier)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
-      paramChatMessage = localItemBuilderSupplier.a(paramChatMessage, paramBaseAdapter);
-      if (localItemBuilderSupplier.a()) {
-        a(paramChatMessage, paramBaseAdapter);
-      }
-      for (;;)
+      localObject = (ItemBuilderSupplier)this.jdField_a_of_type_AndroidUtilSparseArray.get(i);
+      paramChatMessage = ((ItemBuilderSupplier)localObject).a(paramChatMessage, paramBaseAdapter);
+      if (((ItemBuilderSupplier)localObject).a())
       {
+        a(paramChatMessage, paramBaseAdapter);
         return paramChatMessage;
-        this.jdField_a_of_type_JavaUtilSet.add(paramChatMessage);
       }
+      this.jdField_a_of_type_JavaUtilSet.add(paramChatMessage);
+      return paramChatMessage;
     }
     return ((ItemBuilderSupplier)this.jdField_a_of_type_AndroidUtilSparseArray.get(0)).a(paramChatMessage, paramBaseAdapter);
   }
@@ -522,7 +526,7 @@ public class ItemBuilderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.msglist.item.ItemBuilderFactory
  * JD-Core Version:    0.7.0.1
  */

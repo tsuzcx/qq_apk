@@ -22,13 +22,12 @@ public class MiniAppSSOCmdServlet
       bool = paramFromServiceMsg.isSuccess();
       localBundle.putParcelable("msg", paramFromServiceMsg);
     }
-    for (;;)
+    else
     {
-      notifyObserver(paramIntent, 0, bool, localBundle, MiniAppSSOCmdObserver.class);
-      super.onReceive(paramIntent, paramFromServiceMsg);
-      return;
       bool = false;
     }
+    notifyObserver(paramIntent, 0, bool, localBundle, MiniAppSSOCmdObserver.class);
+    super.onReceive(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -60,7 +59,7 @@ public class MiniAppSSOCmdServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.MiniAppSSOCmdServlet
  * JD-Core Version:    0.7.0.1
  */

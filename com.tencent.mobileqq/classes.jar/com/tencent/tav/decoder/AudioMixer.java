@@ -24,23 +24,24 @@ public class AudioMixer
   private short[] sampleBuffer;
   private float sampleFactor;
   private boolean singleChannel;
-  private int srcNumChannels = 1;
+  private int srcNumChannels;
   private int srcSampleRate = 44100;
   
   static
   {
-    if (!ResourceLoadUtil.isLoaded()) {}
-    try
-    {
-      System.out.println("loadlibrary : tav start");
-      System.loadLibrary("tav");
-      ResourceLoadUtil.setLoaded(true);
-      System.out.println("loadlibrary : tav end");
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
+    if (!ResourceLoadUtil.isLoaded()) {
+      try
+      {
+        System.out.println("loadlibrary : tav start");
+        System.loadLibrary("tav");
+        ResourceLoadUtil.setLoaded(true);
+        System.out.println("loadlibrary : tav end");
+        return;
+      }
+      catch (Throwable localThrowable)
+      {
+        localThrowable.printStackTrace();
+      }
     }
   }
   
@@ -51,18 +52,17 @@ public class AudioMixer
   
   public AudioMixer(int paramInt1, int paramInt2)
   {
+    boolean bool = true;
+    this.srcNumChannels = 1;
     this.destAudioSampleRate = paramInt1;
     this.destAudioChannelCount = paramInt2;
     this.nativeContext = nativeSetup(this.destAudioSampleRate, this.destAudioChannelCount);
     this.sampleFactor = 1.0F;
-    if (paramInt2 == 1) {}
-    for (;;)
-    {
-      this.singleChannel = bool;
-      this.pcmEncoding = 2;
-      return;
+    if (paramInt2 != 1) {
       bool = false;
     }
+    this.singleChannel = bool;
+    this.pcmEncoding = 2;
   }
   
   private short[] downRemix(short[] paramArrayOfShort)
@@ -75,13 +75,13 @@ public class AudioMixer
   
   private short[] getCachedSampleBuffer(int paramInt)
   {
-    if ((this.sampleBuffer == null) || (this.sampleBuffer.length < paramInt))
-    {
-      short[] arrayOfShort = new short[paramInt];
-      this.sampleBuffer = arrayOfShort;
+    short[] arrayOfShort = this.sampleBuffer;
+    if ((arrayOfShort != null) && (arrayOfShort.length >= paramInt)) {
       return arrayOfShort;
     }
-    return this.sampleBuffer;
+    arrayOfShort = new short[paramInt];
+    this.sampleBuffer = arrayOfShort;
+    return arrayOfShort;
   }
   
   private int getResampleLength(int paramInt)
@@ -102,47 +102,53 @@ public class AudioMixer
   
   private short[] resample(short[] paramArrayOfShort, int paramInt)
   {
-    int k = 0;
-    int j = 0;
-    if (this.sampleFactor == 1.0F) {
+    float f = this.sampleFactor;
+    if (f == 1.0F) {
       return paramArrayOfShort;
     }
-    if (Float.compare(this.sampleFactor, 0.5F) == 0) {
+    if (Float.compare(f, 0.5F) == 0) {
       return downRemix(paramArrayOfShort);
     }
-    int m = getResampleLength(paramInt);
-    short[] arrayOfShort;
-    if ((this.resampleBuffer == null) || (this.resampleBuffer.length < m))
+    int k = getResampleLength(paramInt);
+    short[] arrayOfShort2 = this.resampleBuffer;
+    short[] arrayOfShort1;
+    if (arrayOfShort2 != null)
     {
-      arrayOfShort = new short[m];
-      this.resampleBuffer = arrayOfShort;
+      arrayOfShort1 = arrayOfShort2;
+      if (arrayOfShort2.length >= k) {}
     }
-    float f;
-    for (;;)
+    else
     {
-      f = 1.0F / this.sampleFactor;
-      paramInt = k;
-      if (!this.singleChannel) {
-        break;
-      }
+      arrayOfShort1 = new short[k];
+      this.resampleBuffer = arrayOfShort1;
+    }
+    f = 1.0F / this.sampleFactor;
+    boolean bool = this.singleChannel;
+    paramInt = 0;
+    int j = 0;
+    if (bool)
+    {
       paramInt = j;
-      while (paramInt < m)
+      while (paramInt < k)
       {
         int i = paramArrayOfShort[((int)(paramInt * f))];
-        arrayOfShort[(paramInt + 1)] = i;
-        arrayOfShort[paramInt] = i;
+        arrayOfShort1[(paramInt + 1)] = i;
+        arrayOfShort1[paramInt] = i;
         paramInt += 2;
       }
-      arrayOfShort = this.resampleBuffer;
     }
-    while (paramInt < m)
+    while (paramInt < k)
     {
-      j = (int)(paramInt * 0.5D * f) * 2;
-      arrayOfShort[paramInt] = paramArrayOfShort[j];
-      arrayOfShort[(paramInt + 1)] = paramArrayOfShort[(j + 1)];
+      double d1 = paramInt;
+      Double.isNaN(d1);
+      double d2 = f;
+      Double.isNaN(d2);
+      j = (int)(d1 * 0.5D * d2) * 2;
+      arrayOfShort1[paramInt] = paramArrayOfShort[j];
+      arrayOfShort1[(paramInt + 1)] = paramArrayOfShort[(j + 1)];
       paramInt += 2;
     }
-    return arrayOfShort;
+    return arrayOfShort1;
   }
   
   private native int writeShortToStream(long paramLong, short[] paramArrayOfShort, int paramInt, float paramFloat1, float paramFloat2, float paramFloat3);
@@ -175,52 +181,47 @@ public class AudioMixer
   
   public ByteBuffer mergeSamples(ShortBuffer paramShortBuffer1, ShortBuffer paramShortBuffer2)
   {
-    ShortBuffer localShortBuffer;
-    short[] arrayOfShort;
-    int m;
-    int j;
-    label112:
-    int k;
-    int i;
-    if ((this.cachedMergedBuffer == null) || (this.cachedMergedBuffer.capacity() < paramShortBuffer1.limit() * 2))
+    Object localObject = this.cachedMergedBuffer;
+    if ((localObject != null) && (((ByteBuffer)localObject).capacity() >= paramShortBuffer1.limit() * 2))
+    {
+      this.cachedMergedBuffer.clear();
+    }
+    else
     {
       this.cachedMergedBuffer = ByteBuffer.allocate(paramShortBuffer1.limit() * 2);
       this.cachedMergedBuffer.order(paramShortBuffer1.order());
-      if ((this.cachedMergedBytes == null) || (this.cachedMergedBytes.length < paramShortBuffer1.limit() * 2)) {
-        this.cachedMergedBytes = new short[paramShortBuffer1.limit() * 2];
-      }
-      localShortBuffer = this.cachedMergedBuffer.asShortBuffer();
-      arrayOfShort = this.cachedMergedBytes;
-      m = Math.min(paramShortBuffer1.limit(), paramShortBuffer2.limit());
-      j = 0;
-      if (j >= m) {
-        break label191;
-      }
-      k = paramShortBuffer1.get(j) + paramShortBuffer2.get(j);
-      if (k >= -32768) {
-        break label173;
-      }
-      i = -32768;
     }
-    for (;;)
+    localObject = this.cachedMergedBytes;
+    if ((localObject == null) || (localObject.length < paramShortBuffer1.limit() * 2)) {
+      this.cachedMergedBytes = new short[paramShortBuffer1.limit() * 2];
+    }
+    localObject = this.cachedMergedBuffer.asShortBuffer();
+    short[] arrayOfShort = this.cachedMergedBytes;
+    int m = Math.min(paramShortBuffer1.limit(), paramShortBuffer2.limit());
+    int j = 0;
+    while (j < m)
     {
+      int k = paramShortBuffer1.get(j) + paramShortBuffer2.get(j);
+      int i;
+      if (k < -32768)
+      {
+        i = -32768;
+      }
+      else
+      {
+        i = k;
+        if (k > 32767) {
+          i = 32767;
+        }
+      }
       arrayOfShort[j] = ((short)i);
       j += 1;
-      break label112;
-      this.cachedMergedBuffer.clear();
-      break;
-      label173:
-      i = k;
-      if (k > 32767) {
-        i = 32767;
-      }
     }
-    label191:
-    localShortBuffer.put(arrayOfShort, 0, m);
+    ((ShortBuffer)localObject).put(arrayOfShort, 0, m);
     if (m < paramShortBuffer1.limit())
     {
       paramShortBuffer1.position(m);
-      localShortBuffer.put(paramShortBuffer1);
+      ((ShortBuffer)localObject).put(paramShortBuffer1);
     }
     this.cachedMergedBuffer.position(0);
     this.cachedMergedBuffer.limit(paramShortBuffer1.limit() * 2);
@@ -232,86 +233,89 @@ public class AudioMixer
     if ((paramFloat1 == 1.0F) && (paramFloat2 == 1.0F) && (paramFloat3 == 1.0F) && (this.sampleFactor == 1.0F)) {
       return paramByteBuffer;
     }
-    Object localObject2;
-    int i;
+    int i = this.pcmEncoding;
     Object localObject1;
-    int j;
-    if (this.pcmEncoding == 2)
+    if (i == 2)
     {
       localObject2 = paramByteBuffer.asShortBuffer();
-      i = ((ShortBuffer)localObject2).limit();
-      localObject1 = getCachedSampleBuffer(i);
-      ((ShortBuffer)localObject2).get((short[])localObject1, 0, i);
-      localObject2 = resample((short[])localObject1, i);
-      j = getResampleLength(i);
-      if (paramFloat2 != 0.0F) {
-        break label268;
-      }
-      i = (int)(j / paramFloat1);
-      localObject1 = localObject2;
+      j = ((ShortBuffer)localObject2).limit();
+      localObject1 = getCachedSampleBuffer(j);
+      ((ShortBuffer)localObject2).get((short[])localObject1, 0, j);
     }
-    for (;;)
+    else
     {
-      if (paramFloat2 != 0.0F) {
-        break label344;
-      }
-      if ((this.emptyAudioBuffer == null) || (this.emptyAudioBuffer.limit() < i * 2))
-      {
-        this.emptyAudioBuffer = ByteBuffer.allocate(i * 2);
-        this.emptyAudioBuffer.order(paramByteBuffer.order());
-        this.emptyAudioBuffer.put(new byte[i * 2]);
-      }
-      paramByteBuffer = this.emptyAudioBuffer;
-      paramByteBuffer.position(0);
-      paramByteBuffer.limit(i * 2);
-      return paramByteBuffer;
-      if (this.pcmEncoding != 3) {
-        break;
+      if (i != 3) {
+        return paramByteBuffer;
       }
       int k = paramByteBuffer.limit();
       byte[] arrayOfByte = new byte[k];
       paramByteBuffer.get(arrayOfByte, 0, k);
       localObject2 = getCachedSampleBuffer(k);
-      j = 0;
+      i = 0;
       for (;;)
       {
-        i = k;
+        j = k;
         localObject1 = localObject2;
-        if (j >= k) {
+        if (i >= k) {
           break;
         }
-        localObject2[j] = ((short)arrayOfByte[j]);
-        j += 1;
+        localObject2[i] = ((short)arrayOfByte[i]);
+        i += 1;
       }
-      label268:
-      if ((paramFloat1 == 1.0F) && (paramFloat2 == 1.0F))
+    }
+    Object localObject2 = resample((short[])localObject1, j);
+    int j = getResampleLength(j);
+    if (paramFloat2 == 0.0F)
+    {
+      i = (int)(j / paramFloat1);
+      localObject1 = localObject2;
+    }
+    else if ((paramFloat1 == 1.0F) && (paramFloat2 == 1.0F))
+    {
+      i = j;
+      localObject1 = localObject2;
+      if (paramFloat3 == 1.0F) {}
+    }
+    else
+    {
+      i = writeShortToStream(this.nativeContext, (short[])localObject2, j / this.destAudioChannelCount, paramFloat1, paramFloat2, paramFloat3);
+      i = this.destAudioChannelCount * i;
+      localObject1 = getCachedSampleBuffer(i);
+      readShortFromStream(this.nativeContext, (short[])localObject1);
+    }
+    if (paramFloat2 == 0.0F)
+    {
+      localObject1 = this.emptyAudioBuffer;
+      if ((localObject1 == null) || (((ByteBuffer)localObject1).limit() < i * 2))
       {
-        i = j;
-        localObject1 = localObject2;
-        if (paramFloat3 == 1.0F) {}
+        j = i * 2;
+        this.emptyAudioBuffer = ByteBuffer.allocate(j);
+        this.emptyAudioBuffer.order(paramByteBuffer.order());
+        this.emptyAudioBuffer.put(new byte[j]);
+      }
+      paramByteBuffer = this.emptyAudioBuffer;
+    }
+    else
+    {
+      localObject2 = this.cachedByteBuffer;
+      if ((localObject2 != null) && (((ByteBuffer)localObject2).capacity() >= i * 2))
+      {
+        paramByteBuffer = this.cachedByteBuffer;
+        paramByteBuffer.clear();
       }
       else
       {
-        i = writeShortToStream(this.nativeContext, (short[])localObject2, j / this.destAudioChannelCount, paramFloat1, paramFloat2, paramFloat3) * this.destAudioChannelCount;
-        localObject1 = getCachedSampleBuffer(i);
-        readShortFromStream(this.nativeContext, (short[])localObject1);
+        localObject2 = ByteBuffer.allocate(i * 2);
+        this.cachedByteBuffer = ((ByteBuffer)localObject2);
+        ((ByteBuffer)localObject2).order(paramByteBuffer.order());
+        paramByteBuffer = (ByteBuffer)localObject2;
       }
-    }
-    label344:
-    if ((this.cachedByteBuffer == null) || (this.cachedByteBuffer.capacity() < i * 2))
-    {
-      localObject2 = ByteBuffer.allocate(i * 2);
-      this.cachedByteBuffer = ((ByteBuffer)localObject2);
-      ((ByteBuffer)localObject2).order(paramByteBuffer.order());
-      paramByteBuffer = (ByteBuffer)localObject2;
-    }
-    for (;;)
-    {
       paramByteBuffer.asShortBuffer().put((short[])localObject1, 0, i);
-      break;
-      paramByteBuffer = this.cachedByteBuffer;
-      paramByteBuffer.clear();
     }
+    paramByteBuffer.position(0);
+    paramByteBuffer.limit(i * 2);
+    return paramByteBuffer;
+    return paramByteBuffer;
   }
   
   public final void release()
@@ -322,23 +326,20 @@ public class AudioMixer
   
   public void setAudioInfo(int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool = true;
     this.srcSampleRate = paramInt1;
     this.srcNumChannels = paramInt2;
     this.sampleFactor = (this.destAudioSampleRate * this.destAudioChannelCount / (paramInt1 * paramInt2 * 1.0F));
-    if (paramInt2 == 1) {}
-    for (;;)
-    {
-      this.singleChannel = bool;
-      this.pcmEncoding = paramInt3;
-      return;
+    boolean bool = true;
+    if (paramInt2 != 1) {
       bool = false;
     }
+    this.singleChannel = bool;
+    this.pcmEncoding = paramInt3;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.AudioMixer
  * JD-Core Version:    0.7.0.1
  */

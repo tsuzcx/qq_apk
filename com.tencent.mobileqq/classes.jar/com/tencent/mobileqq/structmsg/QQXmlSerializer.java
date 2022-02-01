@@ -26,131 +26,144 @@ public class QQXmlSerializer
   {
     int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] * 2 - 2;
     Object localObject;
-    int j;
-    if (i >= 0) {
-      if ((this.jdField_b_of_type_ArrayOfJavaLangString[(i + 1)].equals(paramString)) && ((paramBoolean1) || (this.jdField_b_of_type_ArrayOfJavaLangString[i].length() != 0)))
-      {
-        localObject = this.jdField_b_of_type_ArrayOfJavaLangString[i];
-        j = i + 2;
-        label70:
-        if (j >= this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] * 2) {
-          break label275;
-        }
-        if (this.jdField_b_of_type_ArrayOfJavaLangString[j].equals(localObject)) {
-          localObject = null;
-        }
-      }
-    }
-    label275:
+    String str;
     for (;;)
     {
-      if (localObject != null)
+      localObject = null;
+      if (i < 0) {
+        break;
+      }
+      if ((this.jdField_b_of_type_ArrayOfJavaLangString[(i + 1)].equals(paramString)) && ((paramBoolean1) || (this.jdField_b_of_type_ArrayOfJavaLangString[i].length() != 0)))
       {
-        return localObject;
-        j += 1;
-        break label70;
+        str = this.jdField_b_of_type_ArrayOfJavaLangString[i];
+        int j = i + 2;
+        while (j < this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] * 2)
+        {
+          if (this.jdField_b_of_type_ArrayOfJavaLangString[j].equals(str)) {
+            break label122;
+          }
+          j += 1;
+        }
+        localObject = str;
+        label122:
+        if (localObject != null) {
+          return localObject;
+        }
       }
       i -= 2;
-      break;
-      if (!paramBoolean2) {
-        return null;
-      }
-      if (paramString.length() == 0)
-      {
-        localObject = "";
-        paramBoolean1 = this.jdField_a_of_type_Boolean;
-        this.jdField_a_of_type_Boolean = false;
-        setPrefix((String)localObject, paramString);
-        this.jdField_a_of_type_Boolean = paramBoolean1;
-        return localObject;
-      }
-      label174:
-      localObject = new StringBuilder().append("n");
-      i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = (i + 1);
-      String str = i;
-      i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] * 2 - 2;
-      for (;;)
-      {
-        localObject = str;
-        if (i >= 0)
-        {
-          if (str.equals(this.jdField_b_of_type_ArrayOfJavaLangString[i])) {
-            localObject = null;
-          }
-        }
-        else
-        {
-          if (localObject == null) {
-            break label174;
-          }
-          break;
-        }
-        i -= 2;
-      }
     }
+    if (!paramBoolean2) {
+      return null;
+    }
+    if (paramString.length() == 0) {
+      localObject = "";
+    } else {
+      do
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("n");
+        i = this.jdField_a_of_type_Int;
+        this.jdField_a_of_type_Int = (i + 1);
+        ((StringBuilder)localObject).append(i);
+        str = ((StringBuilder)localObject).toString();
+        i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] * 2 - 2;
+        for (;;)
+        {
+          localObject = str;
+          if (i < 0) {
+            break;
+          }
+          if (str.equals(this.jdField_b_of_type_ArrayOfJavaLangString[i]))
+          {
+            localObject = null;
+            break;
+          }
+          i -= 2;
+        }
+      } while (localObject == null);
+    }
+    paramBoolean1 = this.jdField_a_of_type_Boolean;
+    this.jdField_a_of_type_Boolean = false;
+    setPrefix((String)localObject, paramString);
+    this.jdField_a_of_type_Boolean = paramBoolean1;
+    return localObject;
   }
   
   private static void a(char paramChar)
   {
-    throw new IllegalArgumentException("Illegal character (" + Integer.toHexString(paramChar) + ")");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Illegal character (");
+    localStringBuilder.append(Integer.toHexString(paramChar));
+    localStringBuilder.append(")");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   private final void a(String paramString, int paramInt)
   {
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
-      int k = paramString.charAt(i);
-      String str;
-      switch (k)
+      int j = paramString.charAt(i);
+      Object localObject2;
+      Object localObject1;
+      if ((j != 9) && (j != 10) && (j != 13))
       {
-      default: 
-        if (k == paramInt)
+        if (j != 38)
         {
-          BufferedWriter localBufferedWriter = this.jdField_a_of_type_JavaIoBufferedWriter;
-          if (k == 34)
+          if (j != 60)
           {
-            str = "&quot;";
-            label99:
-            localBufferedWriter.write(str);
-          }
-        }
-        break;
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (paramInt == -1)
-        {
-          this.jdField_a_of_type_JavaIoBufferedWriter.write(k);
-        }
-        else
-        {
-          this.jdField_a_of_type_JavaIoBufferedWriter.write("&#" + k + ';');
-          continue;
-          this.jdField_a_of_type_JavaIoBufferedWriter.write("&amp;");
-          continue;
-          this.jdField_a_of_type_JavaIoBufferedWriter.write("&gt;");
-          continue;
-          this.jdField_a_of_type_JavaIoBufferedWriter.write("&lt;");
-          continue;
-          str = "&apos;";
-          break label99;
-          if (((k >= 32) && (k <= 55295)) || ((k >= 57344) && (k <= 65533))) {}
-          for (int j = 1;; j = 0)
-          {
-            if ((j == 0) && ((!this.jdField_b_of_type_Boolean) && (k >= 127))) {
-              break label276;
+            if (j != 62)
+            {
+              if (j == paramInt)
+              {
+                localObject2 = this.jdField_a_of_type_JavaIoBufferedWriter;
+                if (j == 34) {
+                  localObject1 = "&quot;";
+                } else {
+                  localObject1 = "&apos;";
+                }
+                ((BufferedWriter)localObject2).write((String)localObject1);
+              }
+              else if (((j >= 32) && (j <= 55295)) || (j < 57344) || ((!this.jdField_b_of_type_Boolean) && (j >= 127)))
+              {
+                localObject1 = this.jdField_a_of_type_JavaIoBufferedWriter;
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("&#");
+                ((StringBuilder)localObject2).append(j);
+                ((StringBuilder)localObject2).append(";");
+                ((BufferedWriter)localObject1).write(((StringBuilder)localObject2).toString());
+              }
+              else
+              {
+                this.jdField_a_of_type_JavaIoBufferedWriter.write(j);
+              }
             }
-            this.jdField_a_of_type_JavaIoBufferedWriter.write(k);
-            break;
+            else {
+              this.jdField_a_of_type_JavaIoBufferedWriter.write("&gt;");
+            }
           }
-          label276:
-          this.jdField_a_of_type_JavaIoBufferedWriter.write("&#" + k + ";");
+          else {
+            this.jdField_a_of_type_JavaIoBufferedWriter.write("&lt;");
+          }
+        }
+        else {
+          this.jdField_a_of_type_JavaIoBufferedWriter.write("&amp;");
         }
       }
+      else if (paramInt == -1)
+      {
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(j);
+      }
+      else
+      {
+        localObject1 = this.jdField_a_of_type_JavaIoBufferedWriter;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("&#");
+        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append(';');
+        ((BufferedWriter)localObject1).write(((StringBuilder)localObject2).toString());
+      }
+      i += 1;
     }
   }
   
@@ -161,61 +174,76 @@ public class QQXmlSerializer
     }
     this.jdField_b_of_type_Int += 1;
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ArrayOfBoolean.length <= this.jdField_b_of_type_Int)
+    Object localObject1 = this.jdField_a_of_type_ArrayOfBoolean;
+    int i = localObject1.length;
+    int j = this.jdField_b_of_type_Int;
+    if (i <= j)
     {
-      localObject = new boolean[this.jdField_b_of_type_Int + 4];
-      System.arraycopy(this.jdField_a_of_type_ArrayOfBoolean, 0, localObject, 0, this.jdField_b_of_type_Int);
-      this.jdField_a_of_type_ArrayOfBoolean = ((boolean[])localObject);
+      localObject2 = new boolean[j + 4];
+      System.arraycopy(localObject1, 0, localObject2, 0, j);
+      this.jdField_a_of_type_ArrayOfBoolean = ((boolean[])localObject2);
     }
-    this.jdField_a_of_type_ArrayOfBoolean[this.jdField_b_of_type_Int] = this.jdField_a_of_type_ArrayOfBoolean[(this.jdField_b_of_type_Int - 1)];
-    int i = this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int - 1)];
-    if (i < this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int])
+    localObject1 = this.jdField_a_of_type_ArrayOfBoolean;
+    i = this.jdField_b_of_type_Int;
+    localObject1[i] = localObject1[(i - 1)];
+    i = this.jdField_a_of_type_ArrayOfInt[(i - 1)];
+    for (;;)
     {
-      this.jdField_a_of_type_JavaIoBufferedWriter.write(32);
-      this.jdField_a_of_type_JavaIoBufferedWriter.write("xmlns");
-      if (this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2)].length() != 0)
-      {
-        this.jdField_a_of_type_JavaIoBufferedWriter.write(58);
-        this.jdField_a_of_type_JavaIoBufferedWriter.write(this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2)]);
-      }
-      while ((getNamespace() == null) || (getNamespace().length() != 0) || (this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2 + 1)].length() == 0))
-      {
-        this.jdField_a_of_type_JavaIoBufferedWriter.write("=\"");
-        a(this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2 + 1)], 34);
-        this.jdField_a_of_type_JavaIoBufferedWriter.write(34);
-        i += 1;
+      localObject1 = this.jdField_a_of_type_ArrayOfInt;
+      j = this.jdField_b_of_type_Int;
+      if (i >= localObject1[j]) {
         break;
       }
-      throw new IllegalStateException("Cannot set default namespace for elements in no namespace");
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(32);
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("xmlns");
+      localObject1 = this.jdField_b_of_type_ArrayOfJavaLangString;
+      j = i * 2;
+      if (localObject1[j].length() != 0)
+      {
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(58);
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(this.jdField_b_of_type_ArrayOfJavaLangString[j]);
+      }
+      else if ((getNamespace() != null) && (getNamespace().length() == 0) && (this.jdField_b_of_type_ArrayOfJavaLangString[(j + 1)].length() != 0))
+      {
+        throw new IllegalStateException("Cannot set default namespace for elements in no namespace");
+      }
+      this.jdField_a_of_type_JavaIoBufferedWriter.write("=\"");
+      a(this.jdField_b_of_type_ArrayOfJavaLangString[(j + 1)], 34);
+      this.jdField_a_of_type_JavaIoBufferedWriter.write(34);
+      i += 1;
     }
-    if (this.jdField_a_of_type_ArrayOfInt.length <= this.jdField_b_of_type_Int + 1)
+    if (localObject1.length <= j + 1)
     {
-      localObject = new int[this.jdField_b_of_type_Int + 8];
-      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, localObject, 0, this.jdField_b_of_type_Int + 1);
-      this.jdField_a_of_type_ArrayOfInt = ((int[])localObject);
+      localObject2 = new int[j + 8];
+      System.arraycopy(localObject1, 0, localObject2, 0, j + 1);
+      this.jdField_a_of_type_ArrayOfInt = ((int[])localObject2);
     }
-    this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] = this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int];
-    BufferedWriter localBufferedWriter = this.jdField_a_of_type_JavaIoBufferedWriter;
-    if (paramBoolean) {}
-    for (Object localObject = " />";; localObject = ">")
-    {
-      localBufferedWriter.write((String)localObject);
-      return;
+    localObject1 = this.jdField_a_of_type_ArrayOfInt;
+    i = this.jdField_b_of_type_Int;
+    localObject1[(i + 1)] = localObject1[i];
+    Object localObject2 = this.jdField_a_of_type_JavaIoBufferedWriter;
+    if (paramBoolean) {
+      localObject1 = " />";
+    } else {
+      localObject1 = ">";
     }
+    ((BufferedWriter)localObject2).write((String)localObject1);
   }
   
   public XmlSerializer attribute(String paramString1, String paramString2, String paramString3)
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      throw new IllegalStateException("illegal position for attribute");
-    }
-    String str = paramString1;
-    if (paramString1 == null) {
-      str = "";
-    }
-    if (str.length() == 0)
+    if (this.jdField_a_of_type_Boolean)
     {
-      paramString1 = "";
+      String str2 = "";
+      String str1 = paramString1;
+      if (paramString1 == null) {
+        str1 = "";
+      }
+      if (str1.length() == 0) {
+        paramString1 = str2;
+      } else {
+        paramString1 = a(str1, false, true);
+      }
       this.jdField_a_of_type_JavaIoBufferedWriter.write(32);
       if (paramString1.length() != 0)
       {
@@ -224,20 +252,16 @@ public class QQXmlSerializer
       }
       this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString2);
       this.jdField_a_of_type_JavaIoBufferedWriter.write(61);
+      int i = 34;
       if (paramString3.indexOf('"') != -1) {
-        break label142;
+        i = 39;
       }
-    }
-    label142:
-    for (int i = 34;; i = 39)
-    {
       this.jdField_a_of_type_JavaIoBufferedWriter.write(i);
       a(paramString3, i);
       this.jdField_a_of_type_JavaIoBufferedWriter.write(i);
       return this;
-      paramString1 = a(str, false, true);
-      break;
     }
+    throw new IllegalStateException("illegal position for attribute");
   }
   
   public void cdsect(String paramString)
@@ -246,18 +270,19 @@ public class QQXmlSerializer
     paramString = paramString.replace("]]>", "]]]]><![CDATA[>").toCharArray();
     int m = paramString.length;
     int j = 0;
-    if (j < m)
+    while (j < m)
     {
       int i = paramString[j];
-      if (((i >= 32) && (i <= 55295)) || (i == 9) || (i == 10) || (i == 13) || ((i >= 57344) && (i <= 65533))) {}
-      for (int k = 1;; k = 0)
-      {
-        if (k == 0) {
-          a(i);
-        }
-        j += 1;
-        break;
+      int k;
+      if (((i < 32) || (i > 55295)) && (i != 9) && (i != 10) && (i != 13) && ((i < 57344) || (i > 65533))) {
+        k = 0;
+      } else {
+        k = 1;
       }
+      if (k == 0) {
+        a(i);
+      }
+      j += 1;
     }
     this.jdField_a_of_type_JavaIoBufferedWriter.write("<![CDATA[");
     this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString, 0, paramString.length);
@@ -281,8 +306,14 @@ public class QQXmlSerializer
   
   public void endDocument()
   {
-    while (this.jdField_b_of_type_Int > 0) {
-      endTag(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 - 3)], this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 - 1)]);
+    for (;;)
+    {
+      int i = this.jdField_b_of_type_Int;
+      if (i <= 0) {
+        break;
+      }
+      String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
+      endTag(arrayOfString[(i * 3 - 3)], arrayOfString[(i * 3 - 1)]);
     }
     flush();
   }
@@ -292,37 +323,50 @@ public class QQXmlSerializer
     if (!this.jdField_a_of_type_Boolean) {
       this.jdField_b_of_type_Int -= 1;
     }
-    if (((paramString1 == null) && (this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3)] != null)) || ((paramString1 != null) && (!paramString1.equals(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3)]))) || (!this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 + 2)].equals(paramString2))) {
-      throw new IllegalArgumentException("</{" + paramString1 + "}" + paramString2 + "> does not match start");
-    }
-    if (this.jdField_a_of_type_Boolean)
+    if (((paramString1 != null) || (this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3)] == null)) && ((paramString1 == null) || (paramString1.equals(this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3)]))) && (this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 + 2)].equals(paramString2)))
     {
-      a(true);
-      this.jdField_b_of_type_Int -= 1;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        a(true);
+        this.jdField_b_of_type_Int -= 1;
+      }
+      else
+      {
+        if (this.jdField_a_of_type_ArrayOfBoolean[(this.jdField_b_of_type_Int + 1)] != 0)
+        {
+          this.jdField_a_of_type_JavaIoBufferedWriter.write("\r\n");
+          i = 0;
+          while (i < this.jdField_b_of_type_Int)
+          {
+            this.jdField_a_of_type_JavaIoBufferedWriter.write("  ");
+            i += 1;
+          }
+        }
+        this.jdField_a_of_type_JavaIoBufferedWriter.write("</");
+        paramString1 = this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 + 1)];
+        if (paramString1.length() != 0)
+        {
+          this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString1);
+          this.jdField_a_of_type_JavaIoBufferedWriter.write(58);
+        }
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString2);
+        this.jdField_a_of_type_JavaIoBufferedWriter.write(62);
+      }
+      paramString1 = this.jdField_a_of_type_ArrayOfInt;
+      int i = this.jdField_b_of_type_Int;
+      paramString1[(i + 1)] = paramString1[i];
+      return this;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("</{");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("}");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("> does not match start");
+    paramString1 = new IllegalArgumentException(localStringBuilder.toString());
     for (;;)
     {
-      this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)] = this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int];
-      return this;
-      if (this.jdField_a_of_type_ArrayOfBoolean[(this.jdField_b_of_type_Int + 1)] != 0)
-      {
-        this.jdField_a_of_type_JavaIoBufferedWriter.write("\r\n");
-        int i = 0;
-        while (i < this.jdField_b_of_type_Int)
-        {
-          this.jdField_a_of_type_JavaIoBufferedWriter.write("  ");
-          i += 1;
-        }
-      }
-      this.jdField_a_of_type_JavaIoBufferedWriter.write("</");
-      paramString1 = this.jdField_a_of_type_ArrayOfJavaLangString[(this.jdField_b_of_type_Int * 3 + 1)];
-      if (paramString1.length() != 0)
-      {
-        this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString1);
-        this.jdField_a_of_type_JavaIoBufferedWriter.write(58);
-      }
-      this.jdField_a_of_type_JavaIoBufferedWriter.write(paramString2);
-      this.jdField_a_of_type_JavaIoBufferedWriter.write(62);
+      throw paramString1;
     }
   }
   
@@ -415,12 +459,13 @@ public class QQXmlSerializer
   
   public void setOutput(OutputStream paramOutputStream, String paramString)
   {
-    if (paramOutputStream == null) {
-      throw new IllegalArgumentException("os == null");
-    }
-    if (paramString == null) {}
-    for (paramOutputStream = new OutputStreamWriter(paramOutputStream);; paramOutputStream = new OutputStreamWriter(paramOutputStream, paramString))
+    if (paramOutputStream != null)
     {
+      if (paramString == null) {
+        paramOutputStream = new OutputStreamWriter(paramOutputStream);
+      } else {
+        paramOutputStream = new OutputStreamWriter(paramOutputStream, paramString);
+      }
       setOutput(paramOutputStream);
       this.jdField_a_of_type_JavaLangString = paramString;
       if ((paramString != null) && (paramString.toLowerCase(Locale.US).startsWith("utf"))) {
@@ -428,25 +473,28 @@ public class QQXmlSerializer
       }
       return;
     }
+    throw new IllegalArgumentException("os == null");
   }
   
   public void setOutput(Writer paramWriter)
   {
-    if ((paramWriter instanceof BufferedWriter)) {}
-    for (this.jdField_a_of_type_JavaIoBufferedWriter = ((BufferedWriter)paramWriter);; this.jdField_a_of_type_JavaIoBufferedWriter = new BufferedWriter(paramWriter, 500))
-    {
-      this.jdField_a_of_type_ArrayOfInt[0] = 2;
-      this.jdField_a_of_type_ArrayOfInt[1] = 2;
-      this.jdField_b_of_type_ArrayOfJavaLangString[0] = "";
-      this.jdField_b_of_type_ArrayOfJavaLangString[1] = "";
-      this.jdField_b_of_type_ArrayOfJavaLangString[2] = "xml";
-      this.jdField_b_of_type_ArrayOfJavaLangString[3] = "https://www.w3.org/XML/1998/namespace";
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_b_of_type_Boolean = false;
-      return;
+    if ((paramWriter instanceof BufferedWriter)) {
+      this.jdField_a_of_type_JavaIoBufferedWriter = ((BufferedWriter)paramWriter);
+    } else {
+      this.jdField_a_of_type_JavaIoBufferedWriter = new BufferedWriter(paramWriter, 500);
     }
+    paramWriter = this.jdField_a_of_type_ArrayOfInt;
+    paramWriter[0] = 2;
+    paramWriter[1] = 2;
+    paramWriter = this.jdField_b_of_type_ArrayOfJavaLangString;
+    paramWriter[0] = "";
+    paramWriter[1] = "";
+    paramWriter[2] = "xml";
+    paramWriter[3] = "https://www.w3.org/XML/1998/namespace";
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_b_of_type_Int = 0;
+    this.jdField_b_of_type_Boolean = false;
   }
   
   public void setPrefix(String paramString1, String paramString2)
@@ -468,19 +516,26 @@ public class QQXmlSerializer
     int j = paramString2[i];
     paramString2[i] = (j + 1);
     i = j << 1;
-    if (this.jdField_b_of_type_ArrayOfJavaLangString.length < i + 1)
+    paramString2 = this.jdField_b_of_type_ArrayOfJavaLangString;
+    j = paramString2.length;
+    int k = i + 1;
+    if (j < k)
     {
-      paramString2 = new String[this.jdField_b_of_type_ArrayOfJavaLangString.length + 16];
-      System.arraycopy(this.jdField_b_of_type_ArrayOfJavaLangString, 0, paramString2, 0, i);
-      this.jdField_b_of_type_ArrayOfJavaLangString = paramString2;
+      String[] arrayOfString = new String[paramString2.length + 16];
+      System.arraycopy(paramString2, 0, arrayOfString, 0, i);
+      this.jdField_b_of_type_ArrayOfJavaLangString = arrayOfString;
     }
-    this.jdField_b_of_type_ArrayOfJavaLangString[i] = str;
-    this.jdField_b_of_type_ArrayOfJavaLangString[(i + 1)] = paramString1;
+    paramString2 = this.jdField_b_of_type_ArrayOfJavaLangString;
+    paramString2[i] = str;
+    paramString2[k] = paramString1;
   }
   
   public void setProperty(String paramString, Object paramObject)
   {
-    throw new RuntimeException("Unsupported Property:" + paramObject);
+    paramString = new StringBuilder();
+    paramString.append("Unsupported Property:");
+    paramString.append(paramObject);
+    throw new RuntimeException(paramString.toString());
   }
   
   public void startDocument(String paramString, Boolean paramBoolean)
@@ -499,23 +554,19 @@ public class QQXmlSerializer
       this.jdField_a_of_type_JavaIoBufferedWriter.write(this.jdField_a_of_type_JavaLangString);
       this.jdField_a_of_type_JavaIoBufferedWriter.write("' ");
     }
-    BufferedWriter localBufferedWriter;
     if (paramBoolean != null)
     {
       this.jdField_a_of_type_JavaIoBufferedWriter.write("standalone='");
-      localBufferedWriter = this.jdField_a_of_type_JavaIoBufferedWriter;
-      if (!paramBoolean.booleanValue()) {
-        break label133;
+      BufferedWriter localBufferedWriter = this.jdField_a_of_type_JavaIoBufferedWriter;
+      if (paramBoolean.booleanValue()) {
+        paramString = "yes";
+      } else {
+        paramString = "no";
       }
-    }
-    label133:
-    for (paramString = "yes";; paramString = "no")
-    {
       localBufferedWriter.write(paramString);
       this.jdField_a_of_type_JavaIoBufferedWriter.write("' ");
-      this.jdField_a_of_type_JavaIoBufferedWriter.write("?>");
-      return;
     }
+    this.jdField_a_of_type_JavaIoBufferedWriter.write("?>");
   }
   
   public XmlSerializer startTag(String paramString1, String paramString2)
@@ -532,42 +583,36 @@ public class QQXmlSerializer
       }
     }
     int j = this.jdField_b_of_type_Int * 3;
-    Object localObject;
-    if (this.jdField_a_of_type_ArrayOfJavaLangString.length < j + 3)
+    Object localObject = this.jdField_a_of_type_ArrayOfJavaLangString;
+    if (localObject.length < j + 3)
     {
-      localObject = new String[this.jdField_a_of_type_ArrayOfJavaLangString.length + 12];
-      System.arraycopy(this.jdField_a_of_type_ArrayOfJavaLangString, 0, localObject, 0, j);
-      this.jdField_a_of_type_ArrayOfJavaLangString = ((String[])localObject);
+      arrayOfString = new String[localObject.length + 12];
+      System.arraycopy(localObject, 0, arrayOfString, 0, j);
+      this.jdField_a_of_type_ArrayOfJavaLangString = arrayOfString;
     }
-    if (paramString1 == null)
-    {
+    if (paramString1 == null) {
       localObject = "";
-      if ((paramString1 != null) && (paramString1.length() == 0)) {
-        i = this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int];
-      }
+    } else {
+      localObject = a(paramString1, true, true);
     }
-    else
+    if ((paramString1 != null) && (paramString1.length() == 0))
     {
-      for (;;)
+      i = this.jdField_a_of_type_ArrayOfInt[this.jdField_b_of_type_Int];
+      while (i < this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)])
       {
-        if (i >= this.jdField_a_of_type_ArrayOfInt[(this.jdField_b_of_type_Int + 1)]) {
-          break label207;
-        }
-        if ((this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2)].length() == 0) && (this.jdField_b_of_type_ArrayOfJavaLangString[(i * 2 + 1)].length() != 0))
-        {
+        arrayOfString = this.jdField_b_of_type_ArrayOfJavaLangString;
+        int k = i * 2;
+        if ((arrayOfString[k].length() == 0) && (this.jdField_b_of_type_ArrayOfJavaLangString[(k + 1)].length() != 0)) {
           throw new IllegalStateException("Cannot set default namespace for elements in no namespace");
-          localObject = a(paramString1, true, true);
-          break;
         }
         i += 1;
       }
     }
-    label207:
     String[] arrayOfString = this.jdField_a_of_type_ArrayOfJavaLangString;
     int i = j + 1;
     arrayOfString[j] = paramString1;
-    this.jdField_a_of_type_ArrayOfJavaLangString[i] = localObject;
-    this.jdField_a_of_type_ArrayOfJavaLangString[(i + 1)] = paramString2;
+    arrayOfString[i] = localObject;
+    arrayOfString[(i + 1)] = paramString2;
     this.jdField_a_of_type_JavaIoBufferedWriter.write(60);
     if (((String)localObject).length() != 0)
     {
@@ -595,7 +640,7 @@ public class QQXmlSerializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.QQXmlSerializer
  * JD-Core Version:    0.7.0.1
  */

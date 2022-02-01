@@ -12,25 +12,22 @@ class QCircleFollowView$5
   
   public void OnClick(View paramView, int paramInt)
   {
-    if (!FastClickUtils.a("showUnFollowUserActionSheetClick")) {
-      switch (paramInt)
-      {
-      }
-    }
-    for (;;)
+    if (!FastClickUtils.a("showUnFollowUserActionSheetClick"))
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView) != null) {
-        QCircleFollowView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView).a();
+      if (paramInt == 0)
+      {
+        if (QCircleFollowView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView) != null) {
+          QCircleFollowView.a(this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView).a();
+        }
+        this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.b(false);
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.b(false);
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.qcircle.widget.QCircleFollowView.5
  * JD-Core Version:    0.7.0.1
  */

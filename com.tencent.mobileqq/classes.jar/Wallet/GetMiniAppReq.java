@@ -47,33 +47,59 @@ public final class GetMiniAppReq
   
   public String toString()
   {
-    return "GetMiniAppReq{mini_appid='" + this.mini_appid + '\'' + ", uin='" + this.uin + '\'' + ", mini_version=" + this.mini_version + ", platform='" + this.platform + '\'' + ", qq_version='" + this.qq_version + '\'' + ", action=" + this.action + ", extra_keys='" + this.extra_keys + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetMiniAppReq{mini_appid='");
+    localStringBuilder.append(this.mini_appid);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", uin='");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mini_version=");
+    localStringBuilder.append(this.mini_version);
+    localStringBuilder.append(", platform='");
+    localStringBuilder.append(this.platform);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", qq_version='");
+    localStringBuilder.append(this.qq_version);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", action=");
+    localStringBuilder.append(this.action);
+    localStringBuilder.append(", extra_keys='");
+    localStringBuilder.append(this.extra_keys);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.mini_appid != null) {
-      paramJceOutputStream.write(this.mini_appid, 0);
+    String str = this.mini_appid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.uin != null) {
-      paramJceOutputStream.write(this.uin, 1);
+    str = this.uin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.mini_version, 2);
-    if (this.platform != null) {
-      paramJceOutputStream.write(this.platform, 3);
+    str = this.platform;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.qq_version != null) {
-      paramJceOutputStream.write(this.qq_version, 4);
+    str = this.qq_version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.action, 5);
-    if (this.extra_keys != null) {
-      paramJceOutputStream.write(this.extra_keys, 6);
+    str = this.extra_keys;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetMiniAppReq
  * JD-Core Version:    0.7.0.1
  */

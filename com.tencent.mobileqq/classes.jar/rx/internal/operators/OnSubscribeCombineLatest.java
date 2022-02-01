@@ -33,55 +33,52 @@ public final class OnSubscribeCombineLatest<T, R>
   
   public void call(Subscriber<? super R> paramSubscriber)
   {
-    Object localObject = this.sources;
+    Object localObject1 = this.sources;
     int i;
-    label80:
-    Observable localObservable;
-    if (localObject == null)
+    if (localObject1 == null)
     {
-      if ((this.sourcesIterable instanceof List))
+      Object localObject2 = this.sourcesIterable;
+      if ((localObject2 instanceof List))
       {
-        localObject = (List)this.sourcesIterable;
-        localObject = (Observable[])((List)localObject).toArray(new Observable[((List)localObject).size()]);
-        i = localObject.length;
-        if (i != 0) {
-          break label151;
-        }
-        paramSubscriber.onCompleted();
-        return;
+        localObject1 = (List)localObject2;
+        localObject1 = (Observable[])((List)localObject1).toArray(new Observable[((List)localObject1).size()]);
+        i = localObject1.length;
       }
-      localObject = new Observable[8];
-      Iterator localIterator = this.sourcesIterable.iterator();
-      i = 0;
-      if (localIterator.hasNext())
+      else
       {
-        localObservable = (Observable)localIterator.next();
-        if (i != localObject.length) {
-          break label177;
+        localObject1 = new Observable[8];
+        Iterator localIterator = ((Iterable)localObject2).iterator();
+        i = 0;
+        while (localIterator.hasNext())
+        {
+          Observable localObservable = (Observable)localIterator.next();
+          localObject2 = localObject1;
+          if (i == localObject1.length)
+          {
+            localObject2 = new Observable[(i >> 2) + i];
+            System.arraycopy(localObject1, 0, localObject2, 0, i);
+          }
+          localObject2[i] = localObservable;
+          i += 1;
+          localObject1 = localObject2;
         }
-        Observable[] arrayOfObservable = new Observable[(i >> 2) + i];
-        System.arraycopy(localObject, 0, arrayOfObservable, 0, i);
-        localObject = arrayOfObservable;
       }
     }
-    label151:
-    label177:
-    for (;;)
+    else
     {
-      localObject[i] = localObservable;
-      i += 1;
-      break label80;
-      break;
-      i = localObject.length;
-      break;
-      new OnSubscribeCombineLatest.LatestCoordinator(paramSubscriber, this.combiner, i, this.bufferSize, this.delayError).subscribe((Observable[])localObject);
+      i = localObject1.length;
+    }
+    if (i == 0)
+    {
+      paramSubscriber.onCompleted();
       return;
     }
+    new OnSubscribeCombineLatest.LatestCoordinator(paramSubscriber, this.combiner, i, this.bufferSize, this.delayError).subscribe((Observable[])localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeCombineLatest
  * JD-Core Version:    0.7.0.1
  */

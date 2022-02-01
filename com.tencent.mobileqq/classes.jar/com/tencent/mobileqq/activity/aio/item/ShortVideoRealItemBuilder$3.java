@@ -25,11 +25,15 @@ class ShortVideoRealItemBuilder$3
   
   public void onLoopBack(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoRealItemBuilder", 2, "playShortVideoByPath, onLoopBack, id = " + paramLong1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("playShortVideoByPath, onLoopBack, id = ");
+      ((StringBuilder)localObject).append(paramLong1);
+      QLog.d("ShortVideoRealItemBuilder", 2, ((StringBuilder)localObject).toString());
     }
-    MessageForShortVideo localMessageForShortVideo = AIOSingleReporter.a().a(Long.valueOf(paramLong1));
-    this.a.a(localMessageForShortVideo, paramLong2);
+    Object localObject = AIOSingleReporter.a().a(Long.valueOf(paramLong1));
+    this.a.a((MessageForShortVideo)localObject, paramLong2);
   }
   
   public void onPlayError(long paramLong, int paramInt1, int paramInt2, int paramInt3, String paramString) {}
@@ -38,8 +42,14 @@ class ShortVideoRealItemBuilder$3
   
   public void onStateChange(long paramLong, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoRealItemBuilder", 2, "onStateChange , state =  " + paramInt + ", msgUniseq = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onStateChange , state =  ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", msgUniseq = ");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("ShortVideoRealItemBuilder", 2, ((StringBuilder)localObject).toString());
     }
     if (paramInt == 4)
     {
@@ -56,60 +66,59 @@ class ShortVideoRealItemBuilder$3
       }
     }
     Object localObject = this.a.a(paramLong);
-    if (localObject == null) {
-      if (QLog.isColorLevel()) {
-        QLog.w("ShortVideoRealItemBuilder", 2, "holder == null, msgUniseq = " + paramLong);
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("holder == null, msgUniseq = ");
+        ((StringBuilder)localObject).append(paramLong);
+        QLog.w("ShortVideoRealItemBuilder", 2, ((StringBuilder)localObject).toString());
+      }
+      return;
+    }
+    if (paramInt == 5) {
+      return;
+    }
+    if ((paramInt != 7) && (paramInt != 8))
+    {
+      if (paramInt == 4)
+      {
+        ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
+        this.a.b((ShortVideoRealItemBuilder.Holder)localObject);
+        localObject = AIOSingleReporter.a().a(Long.valueOf(paramLong));
+        if (localObject != null) {
+          this.a.a((MessageForShortVideo)localObject, 0L);
+        }
+      }
+      else if (paramInt == 1)
+      {
+        MessageForShortVideo localMessageForShortVideo = AIOSingleReporter.a().a(Long.valueOf(paramLong));
+        if (localMessageForShortVideo != null)
+        {
+          ((ShortVideoRealItemBuilder.Holder)localObject).a.setVisibility(0);
+          this.a.c(localMessageForShortVideo, (ShortVideoRealItemBuilder.Holder)localObject);
+        }
       }
     }
-    label219:
-    MessageForShortVideo localMessageForShortVideo;
-    do
+    else
     {
-      do
+      ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
+      ((ShortVideoRealItemBuilder.Holder)localObject).a.setVisibility(0);
+      this.a.a((ShortVideoRealItemBuilder.Holder)localObject);
+      if (paramInt == 8)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              break label219;
-              break label219;
-              break label219;
-              do
-              {
-                return;
-              } while (paramInt == 5);
-              if ((paramInt != 7) && (paramInt != 8)) {
-                break;
-              }
-              ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
-              ((ShortVideoRealItemBuilder.Holder)localObject).a.setVisibility(0);
-              this.a.a((ShortVideoRealItemBuilder.Holder)localObject);
-            } while (paramInt != 8);
-            localObject = AIOSingleReporter.a().a(Long.valueOf(paramLong));
-          } while (localObject == null);
+        localObject = AIOSingleReporter.a().a(Long.valueOf(paramLong));
+        if (localObject != null) {
           this.a.a((MessageForShortVideo)localObject, ((MessageForShortVideo)localObject).videoFileTime * 1000);
-          return;
-          if (paramInt != 4) {
-            break;
-          }
-          ShortVideoRealItemBuilder.a(this.a).removeCallbacksAndMessages(null);
-          this.a.b((ShortVideoRealItemBuilder.Holder)localObject);
-          localObject = AIOSingleReporter.a().a(Long.valueOf(paramLong));
-        } while (localObject == null);
-        this.a.a((MessageForShortVideo)localObject, 0L);
-        return;
-      } while (paramInt != 1);
-      localMessageForShortVideo = AIOSingleReporter.a().a(Long.valueOf(paramLong));
-    } while (localMessageForShortVideo == null);
-    ((ShortVideoRealItemBuilder.Holder)localObject).a.setVisibility(0);
-    this.a.c(localMessageForShortVideo, (ShortVideoRealItemBuilder.Holder)localObject);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.3
  * JD-Core Version:    0.7.0.1
  */

@@ -18,48 +18,45 @@ final class AdRelationTargetMatch$1
   
   public void run()
   {
-    for (;;)
+    try
     {
-      AdDeviceInfo.Result localResult;
-      try
+      Object localObject = new AdDeviceInfo.Params();
+      ((AdDeviceInfo.Params)localObject).businessIdForAidTicketAndTaidTicket = "d61533";
+      AdDeviceInfo.Result localResult = AdDeviceInfo.INSTANCE.create((Context)this.val$context.get(), (AdDeviceInfo.Params)localObject);
+      if ((localResult != null) && (localResult.deviceInfo != null))
       {
-        Object localObject = new AdDeviceInfo.Params();
-        ((AdDeviceInfo.Params)localObject).businessIdForAidTicketAndTaidTicket = "d61533";
-        localResult = AdDeviceInfo.INSTANCE.create((Context)this.val$context.get(), (AdDeviceInfo.Params)localObject);
-        if ((localResult == null) || (localResult.deviceInfo == null))
-        {
-          AdLog.e("AdRelationTargetMatch", "report failed. getDeviceInfo null");
-          return;
-        }
         localObject = null;
-        if (localResult.deviceInfo.muid_type == 1)
-        {
+        if (localResult.deviceInfo.muid_type == 1) {
           localObject = "imei";
-          JSONObject localJSONObject = new JSONObject();
-          if ((!TextUtils.isEmpty(localResult.deviceInfo.muid)) && (!TextUtils.isEmpty((CharSequence)localObject)))
-          {
-            localJSONObject.put("muidtype", localObject);
-            localJSONObject.put("muid", localResult.deviceInfo.muid);
-          }
+        } else if (localResult.deviceInfo.muid_type == 3) {
+          localObject = "mac";
+        }
+        JSONObject localJSONObject = new JSONObject();
+        boolean bool = TextUtils.isEmpty(localResult.deviceInfo.muid);
+        if ((!bool) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        {
           localJSONObject.put("muidtype", localObject);
           localJSONObject.put("muid", localResult.deviceInfo.muid);
-          localJSONObject.put("package_name", this.val$ad.getAppPackageName());
-          localJSONObject.put("timestamp", System.currentTimeMillis() + "");
-          localJSONObject.put("install_status", this.val$installStatus);
-          localJSONObject.put("od", localResult.deviceInfo.aid_ticket);
-          localJSONObject.put("td", localResult.deviceInfo.taid_ticket);
-          c.reportMsg(this.val$context, this.val$ad, 1006, localJSONObject);
-          return;
         }
-      }
-      catch (Throwable localThrowable)
-      {
-        AdLog.e("AdRelationTargetMatch", "report failed", localThrowable);
+        localJSONObject.put("muidtype", localObject);
+        localJSONObject.put("muid", localResult.deviceInfo.muid);
+        localJSONObject.put("package_name", this.val$ad.getAppPackageName());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(System.currentTimeMillis());
+        ((StringBuilder)localObject).append("");
+        localJSONObject.put("timestamp", ((StringBuilder)localObject).toString());
+        localJSONObject.put("install_status", this.val$installStatus);
+        localJSONObject.put("od", localResult.deviceInfo.aid_ticket);
+        localJSONObject.put("td", localResult.deviceInfo.taid_ticket);
+        d.reportMsg(this.val$context, this.val$ad, 1006, localJSONObject);
         return;
       }
-      if (localResult.deviceInfo.muid_type == 3) {
-        String str = "mac";
-      }
+      AdLog.e("AdRelationTargetMatch", "report failed. getDeviceInfo null");
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      AdLog.e("AdRelationTargetMatch", "report failed", localThrowable);
     }
   }
 }

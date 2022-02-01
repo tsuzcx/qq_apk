@@ -7,12 +7,13 @@ class SocialWeeklyWebViewPlugin$1
   
   public void run()
   {
-    SocialWeeklyWebViewPlugin.a(this.this$0, SocialWeeklyWebViewPlugin.b(this.this$0, this.a));
+    SocialWeeklyWebViewPlugin localSocialWeeklyWebViewPlugin = this.this$0;
+    SocialWeeklyWebViewPlugin.a(localSocialWeeklyWebViewPlugin, SocialWeeklyWebViewPlugin.b(localSocialWeeklyWebViewPlugin, this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webviewplugin.SocialWeeklyWebViewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

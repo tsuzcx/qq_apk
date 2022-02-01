@@ -10,7 +10,7 @@ class GroupFileSearchDialog$6
 {
   GroupFileSearchDialog$6(GroupFileSearchDialog paramGroupFileSearchDialog) {}
   
-  public void onTroopFileStatusUpdate(Object paramObject)
+  protected void a(Object paramObject)
   {
     paramObject = (TroopFileStatusInfo)paramObject;
     if (this.a.a != null)
@@ -26,7 +26,7 @@ class GroupFileSearchDialog$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.6
  * JD-Core Version:    0.7.0.1
  */

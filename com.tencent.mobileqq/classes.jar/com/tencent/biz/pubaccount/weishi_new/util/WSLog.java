@@ -5,7 +5,15 @@ import com.tencent.qphone.base.util.QLog;
 
 public class WSLog
 {
-  private static final String a = "weishi" + "8.5.5".replaceAll("\\.", "");
+  private static final String a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("weishi");
+    localStringBuilder.append("8.7.0".replaceAll("\\.", ""));
+    a = localStringBuilder.toString();
+  }
   
   public static String a(Throwable paramThrowable)
   {
@@ -19,12 +27,16 @@ public class WSLog
   
   public static void a(String paramString1, int paramInt, String paramString2)
   {
-    String str = a + "-" + paramString1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(a);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(paramString1);
+    localObject = ((StringBuilder)localObject).toString();
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    QLog.i(str, paramInt, paramString1);
+    QLog.i((String)localObject, paramInt, paramString1);
   }
   
   public static void a(String paramString1, String paramString2)
@@ -39,12 +51,16 @@ public class WSLog
   
   public static void b(String paramString1, int paramInt, String paramString2)
   {
-    String str = a + "-" + paramString1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(a);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(paramString1);
+    localObject = ((StringBuilder)localObject).toString();
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    QLog.d(str, paramInt, paramString1);
+    QLog.d((String)localObject, paramInt, paramString1);
   }
   
   public static void b(String paramString1, String paramString2)
@@ -54,12 +70,16 @@ public class WSLog
   
   public static void c(String paramString1, int paramInt, String paramString2)
   {
-    String str = a + "-" + paramString1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(a);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(paramString1);
+    localObject = ((StringBuilder)localObject).toString();
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    QLog.w(str, paramInt, paramString1);
+    QLog.w((String)localObject, paramInt, paramString1);
   }
   
   public static void c(String paramString1, String paramString2)
@@ -69,12 +89,16 @@ public class WSLog
   
   public static void d(String paramString1, int paramInt, String paramString2)
   {
-    String str = a + "-" + paramString1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(a);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(paramString1);
+    localObject = ((StringBuilder)localObject).toString();
     paramString1 = paramString2;
     if (paramString2 == null) {
       paramString1 = "";
     }
-    QLog.e(str, paramInt, paramString1);
+    QLog.e((String)localObject, paramInt, paramString1);
   }
   
   public static void d(String paramString1, String paramString2)
@@ -105,7 +129,7 @@ public class WSLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.util.WSLog
  * JD-Core Version:    0.7.0.1
  */

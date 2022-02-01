@@ -16,30 +16,50 @@ final class FreeWifiHelper$1
   
   public void a(int paramInt)
   {
-    if ((1 == paramInt) && (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppWifiSdkObserver);
+    if (1 == paramInt)
+    {
+      QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (localQQAppInterface != null) {
+        localQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppWifiSdkObserver);
+      }
     }
   }
   
   public void a(SCGet3rdCloudCheck paramSCGet3rdCloudCheck)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, result: " + paramSCGet3rdCloudCheck);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startCheck onGetWifiSecurityCheckInfo, result: ");
+      ((StringBuilder)localObject).append(paramSCGet3rdCloudCheck);
+      QLog.i("WifiSdk", 2, ((StringBuilder)localObject).toString());
     }
     if (paramSCGet3rdCloudCheck != null)
     {
       if (paramSCGet3rdCloudCheck.delayHour > 24) {
         WifiSdkSharedPreUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramSCGet3rdCloudCheck.delayHour);
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("WifiSdk", 2, "startCheck onGetWifiSecurityCheckInfo, tips: " + paramSCGet3rdCloudCheck.tips + " tipsType: " + paramSCGet3rdCloudCheck.tipsType + " delayHour: " + paramSCGet3rdCloudCheck.delayHour + " URL: " + paramSCGet3rdCloudCheck.h5);
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      if (QLog.isColorLevel())
       {
-        MqqHandler localMqqHandler = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-        Message localMessage = localMqqHandler.obtainMessage(1134063);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("startCheck onGetWifiSecurityCheckInfo, tips: ");
+        ((StringBuilder)localObject).append(paramSCGet3rdCloudCheck.tips);
+        ((StringBuilder)localObject).append(" tipsType: ");
+        ((StringBuilder)localObject).append(paramSCGet3rdCloudCheck.tipsType);
+        ((StringBuilder)localObject).append(" delayHour: ");
+        ((StringBuilder)localObject).append(paramSCGet3rdCloudCheck.delayHour);
+        ((StringBuilder)localObject).append(" URL: ");
+        ((StringBuilder)localObject).append(paramSCGet3rdCloudCheck.h5);
+        QLog.i("WifiSdk", 2, ((StringBuilder)localObject).toString());
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      if (localObject != null)
+      {
+        localObject = ((QQAppInterface)localObject).getHandler(Conversation.class);
+        Message localMessage = ((MqqHandler)localObject).obtainMessage(1134063);
         localMessage.obj = paramSCGet3rdCloudCheck;
-        localMqqHandler.sendMessage(localMessage);
+        ((MqqHandler)localObject).sendMessage(localMessage);
         FreeWifiHelper.b(this.jdField_a_of_type_AndroidContentContext, 398677);
       }
     }
@@ -47,7 +67,7 @@ final class FreeWifiHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.wifi.FreeWifiHelper.1
  * JD-Core Version:    0.7.0.1
  */

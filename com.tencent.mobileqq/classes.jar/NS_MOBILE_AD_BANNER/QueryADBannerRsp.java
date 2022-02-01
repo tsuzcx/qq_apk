@@ -21,20 +21,20 @@ public final class QueryADBannerRsp
   
   public void readFrom(JceInputStream paramJceInputStream)
   {
-    if (!cacheInited) {}
-    try
-    {
-      if (!cacheInited)
+    if (!cacheInited) {
+      try
       {
-        cache_vecAdBanner = new ArrayList();
-        QueryADBannerUnit localQueryADBannerUnit = new QueryADBannerUnit();
-        cache_vecAdBanner.add(localQueryADBannerUnit);
-        cacheInited = true;
+        if (!cacheInited)
+        {
+          cache_vecAdBanner = new ArrayList();
+          QueryADBannerUnit localQueryADBannerUnit = new QueryADBannerUnit();
+          cache_vecAdBanner.add(localQueryADBannerUnit);
+          cacheInited = true;
+        }
       }
-      this.vecAdBanner = ((ArrayList)paramJceInputStream.read(cache_vecAdBanner, 0, true));
-      return;
+      finally {}
     }
-    finally {}
+    this.vecAdBanner = ((ArrayList)paramJceInputStream.read(cache_vecAdBanner, 0, true));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -44,7 +44,7 @@ public final class QueryADBannerRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_AD_BANNER.QueryADBannerRsp
  * JD-Core Version:    0.7.0.1
  */

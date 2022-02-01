@@ -1,5 +1,6 @@
 package com.tencent.biz.qrcode.activity;
 
+import android.content.Context;
 import com.tencent.biz.qrcode.util.QRUtils;
 import com.tencent.mobileqq.app.ThreadManager;
 import mqq.os.MqqHandler;
@@ -11,13 +12,14 @@ class QRDisplayActivity$24
   
   public void run()
   {
-    String str = QRUtils.a(this.this$0, this.a, this.this$0.b);
-    ThreadManager.getUIHandler().post(new QRDisplayActivity.24.1(this, str));
+    Object localObject = this.this$0;
+    localObject = QRUtils.a((Context)localObject, this.a, ((QRDisplayActivity)localObject).b);
+    ThreadManager.getUIHandler().post(new QRDisplayActivity.24.1(this, (String)localObject));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.24
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.av.ui.beauty;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
+import androidx.viewpager.widget.ViewPager;
 
 public class PanelViewPage
   extends ViewPager
@@ -27,29 +27,31 @@ public class PanelViewPage
     return (this.jdField_a_of_type_Boolean) && (super.onInterceptTouchEvent(paramMotionEvent));
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     int j = View.MeasureSpec.getMode(paramInt1);
     int k = View.MeasureSpec.getSize(paramInt1);
-    int i;
-    if ((j == 0) && (this.jdField_a_of_type_Int > 0)) {
-      i = View.MeasureSpec.makeMeasureSpec(this.jdField_a_of_type_Int, 1073741824);
-    }
-    for (;;)
+    if (j == 0)
     {
-      super.onMeasure(i, paramInt2);
-      return;
-      i = paramInt1;
-      if (j == 1073741824)
+      i = this.jdField_a_of_type_Int;
+      if (i > 0)
       {
-        i = paramInt1;
-        if (k > 0)
-        {
-          this.jdField_a_of_type_Int = k;
-          i = paramInt1;
-        }
+        i = View.MeasureSpec.makeMeasureSpec(i, 1073741824);
+        break label60;
       }
     }
+    int i = paramInt1;
+    if (j == 1073741824)
+    {
+      i = paramInt1;
+      if (k > 0)
+      {
+        this.jdField_a_of_type_Int = k;
+        i = paramInt1;
+      }
+    }
+    label60:
+    super.onMeasure(i, paramInt2);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -64,7 +66,7 @@ public class PanelViewPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.beauty.PanelViewPage
  * JD-Core Version:    0.7.0.1
  */

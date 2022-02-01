@@ -33,30 +33,30 @@ class VideoPreviewFaceOutlineDetector$TraceFaceItem
   
   public void updatePoints(FaceInfo paramFaceInfo)
   {
-    if ((paramFaceInfo == null) || (paramFaceInfo.points == null) || (paramFaceInfo.points.size() <= 53))
+    if ((paramFaceInfo != null) && (paramFaceInfo.points != null) && (paramFaceInfo.points.size() > 53))
     {
-      if ((VideoPreviewFaceOutlineDetector.access$300(this.this$0) != null) && (this.curFace != null)) {
+      if (VideoPreviewFaceOutlineDetector.access$300(this.this$0) == null) {
+        VideoPreviewFaceOutlineDetector.access$302(this.this$0, new HashMap());
+      }
+      if (this.curFace != null) {
         VideoPreviewFaceOutlineDetector.access$300(this.this$0).remove(Integer.valueOf(this.curFace.hashCode()));
       }
-      this.curFace = null;
+      this.curFace = paramFaceInfo;
+      VideoPreviewFaceOutlineDetector.access$300(this.this$0).put(Integer.valueOf(this.curFace.hashCode()), Long.valueOf(this.idFace));
+      this.centerPoint = ((PointF)paramFaceInfo.points.get(64));
+      this.centerPoint = new PointF(this.centerPoint.x, this.centerPoint.y);
+      paramFaceInfo.faceId = this.idFace;
       return;
     }
-    if (VideoPreviewFaceOutlineDetector.access$300(this.this$0) == null) {
-      VideoPreviewFaceOutlineDetector.access$302(this.this$0, new HashMap());
-    }
-    if (this.curFace != null) {
+    if ((VideoPreviewFaceOutlineDetector.access$300(this.this$0) != null) && (this.curFace != null)) {
       VideoPreviewFaceOutlineDetector.access$300(this.this$0).remove(Integer.valueOf(this.curFace.hashCode()));
     }
-    this.curFace = paramFaceInfo;
-    VideoPreviewFaceOutlineDetector.access$300(this.this$0).put(Integer.valueOf(this.curFace.hashCode()), Long.valueOf(this.idFace));
-    this.centerPoint = ((PointF)paramFaceInfo.points.get(64));
-    this.centerPoint = new PointF(this.centerPoint.x, this.centerPoint.y);
-    paramFaceInfo.faceId = this.idFace;
+    this.curFace = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.util.youtu.VideoPreviewFaceOutlineDetector.TraceFaceItem
  * JD-Core Version:    0.7.0.1
  */

@@ -9,14 +9,14 @@ public final class h$1
 {
   public h$1(h paramh, Bundle paramBundle) {}
   
-  public final void a()
+  protected final void a()
   {
     this.c.a(this.b, new h.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.h.1
  * JD-Core Version:    0.7.0.1
  */

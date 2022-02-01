@@ -16,42 +16,48 @@ class StructMsgItemLayout12$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (!this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b)
+      if (i != 1)
       {
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = true;
-        ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131374746);
-        paramMotionEvent = localObjectAnimator;
-        if (localObjectAnimator == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("StructMsgItemLayout12", 2, "animator is null");
-          }
-          paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
-          paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
-          paramMotionEvent.setDuration(100L);
-          paramView.setTag(2131374746, paramMotionEvent);
+        if (i != 3) {
+          return false;
         }
-        paramMotionEvent.start();
       }
-      return true;
-      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.a.onClick(this.jdField_a_of_type_AndroidViewView);
+      else {
+        this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.a.onClick(this.jdField_a_of_type_AndroidViewView);
+      }
       this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = false;
-      paramView = (ObjectAnimator)paramView.getTag(2131374746);
+      paramView = (ObjectAnimator)paramView.getTag(2131374282);
       if (paramView != null) {
         paramView.reverse();
       }
+      return false;
     }
+    if (!this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemLayout12.b = true;
+      ObjectAnimator localObjectAnimator = (ObjectAnimator)paramView.getTag(2131374282);
+      paramMotionEvent = localObjectAnimator;
+      if (localObjectAnimator == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("StructMsgItemLayout12", 2, "animator is null");
+        }
+        paramMotionEvent = ObjectAnimator.ofPropertyValuesHolder(this.jdField_a_of_type_AndroidViewView, new PropertyValuesHolder[] { PropertyValuesHolder.ofFloat("scaleX", new float[] { 0.9F }), PropertyValuesHolder.ofFloat("scaleY", new float[] { 0.95F }) });
+        paramMotionEvent.setInterpolator(new DecelerateInterpolator(2.0F));
+        paramMotionEvent.setDuration(100L);
+        paramView.setTag(2131374282, paramMotionEvent);
+      }
+      paramMotionEvent.start();
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemLayout12.2
  * JD-Core Version:    0.7.0.1
  */

@@ -27,54 +27,52 @@ public class MiniChatTextItemBuilder
     super(paramQQAppInterface, paramBaseAdapter, paramContext, paramSessionInfo, paramAIOAnimationConatiner);
   }
   
-  public void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
+  protected void a(ChatMessage paramChatMessage, Context paramContext, BaseChatItemLayout paramBaseChatItemLayout, BaseBubbleBuilder.ViewHolder paramViewHolder, int paramInt1, int paramInt2)
   {
     super.a(paramChatMessage, paramContext, paramBaseChatItemLayout, paramViewHolder, paramInt1, paramInt2);
     paramContext = (TextItemBuilder.Holder)paramViewHolder;
-    if (paramContext.d != null)
-    {
-      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo))) {
-        break label109;
+    if (paramContext.d != null) {
+      if ((!(paramChatMessage instanceof MessageForPoke)) && (!(paramChatMessage instanceof MessageForPokeEmo)))
+      {
+        if ((paramChatMessage instanceof MessageForScribble)) {
+          paramContext.d.setText(HardCodeUtil.a(2131706870));
+        } else {
+          paramContext.d.setText(HardCodeUtil.a(2131706872));
+        }
       }
-      if (!TextUtils.isEmpty(paramChatMessage.msg)) {
-        break label95;
+      else if (TextUtils.isEmpty(paramChatMessage.msg))
+      {
+        if (((paramChatMessage instanceof MessageForPokeEmo)) && (((MessageForPokeEmo)paramChatMessage).pokeemoId == 13)) {
+          paramContext.d.setText(HardCodeUtil.a(2131704213));
+        } else {
+          paramContext.d.setText(HardCodeUtil.a(2131706871));
+        }
       }
-      paramContext.d.setText(HardCodeUtil.a(2131706849));
+      else {
+        paramContext.d.setText(paramChatMessage.msg);
+      }
     }
-    for (;;)
-    {
-      if (paramContext.b != null) {
-        paramContext.b.setVisibility(8);
-      }
-      if (paramContext.c != null) {
-        paramContext.c.setVisibility(8);
-      }
-      return;
-      label95:
-      paramContext.d.setText(paramChatMessage.msg);
-      continue;
-      label109:
-      if ((paramChatMessage instanceof MessageForScribble)) {
-        paramContext.d.setText(HardCodeUtil.a(2131706848));
-      } else {
-        paramContext.d.setText(HardCodeUtil.a(2131706850));
-      }
+    if (paramContext.b != null) {
+      paramContext.b.setVisibility(8);
+    }
+    if (paramContext.c != null) {
+      paramContext.c.setVisibility(8);
     }
   }
   
-  public void b(View paramView)
+  protected void b(View paramView)
   {
     super.b(paramView);
   }
   
-  public boolean b()
+  protected boolean b()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatTextItemBuilder
  * JD-Core Version:    0.7.0.1
  */

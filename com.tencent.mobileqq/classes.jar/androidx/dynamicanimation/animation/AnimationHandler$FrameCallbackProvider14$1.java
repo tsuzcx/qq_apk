@@ -9,13 +9,13 @@ class AnimationHandler$FrameCallbackProvider14$1
   
   public void run()
   {
-    this.this$0.jdField_a_of_type_Long = SystemClock.uptimeMillis();
-    this.this$0.jdField_a_of_type_AndroidxDynamicanimationAnimationAnimationHandler$AnimationCallbackDispatcher.a();
+    this.this$0.mLastFrameTime = SystemClock.uptimeMillis();
+    this.this$0.mDispatcher.dispatchAnimationFrame();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.AnimationHandler.FrameCallbackProvider14.1
  * JD-Core Version:    0.7.0.1
  */

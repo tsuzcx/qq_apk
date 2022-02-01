@@ -5,12 +5,13 @@ class DataReportViewerFloatViewHelper$1
 {
   public void run()
   {
-    DataReportViewerFloatViewHelper.a(this.this$0, this.this$0.a());
+    DataReportViewerFloatViewHelper localDataReportViewerFloatViewHelper = this.this$0;
+    DataReportViewerFloatViewHelper.a(localDataReportViewerFloatViewHelper, localDataReportViewerFloatViewHelper.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.DataReportViewerFloatViewHelper.1
  * JD-Core Version:    0.7.0.1
  */

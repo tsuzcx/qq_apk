@@ -3,7 +3,7 @@ package tencent.im.cs.cmd0x6ff;
 public final class subcmd0x50b {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x50b
  * JD-Core Version:    0.7.0.1
  */

@@ -50,7 +50,15 @@ class AladdinRequestHandler$ConfigResult
   @NonNull
   public String toString()
   {
-    return "ConfigResult{id=" + this.id + ", version=" + this.version + ", retCode=" + this.retCode + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ConfigResult{id=");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(", version=");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(", retCode=");
+    localStringBuilder.append(this.retCode);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)

@@ -30,30 +30,42 @@ class LoginView$26
         MobileQQ.sMobileQQ.refreAccountList();
       }
       LoginView.a(this.a, null);
-      if ((LoginView.a(this.a) == null) || (LoginView.a(this.a).length() == 0)) {}
-      do
+      if (LoginView.a(this.a) != null)
       {
-        return;
-        if ((paramCharSequence == null) || (paramCharSequence.length() == 0) || (paramCharSequence.length() != LoginView.a(this.a).length() + 1))
-        {
-          MobileQQ.sMobileQQ.refreAccountList();
+        if (LoginView.a(this.a).length() == 0) {
           return;
         }
-        if ((!paramCharSequence.startsWith(LoginView.a(this.a))) || (this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText == null)) {
-          break;
+        if ((paramCharSequence != null) && (paramCharSequence.length() != 0) && (paramCharSequence.length() == LoginView.a(this.a).length() + 1))
+        {
+          if ((paramCharSequence.startsWith(LoginView.a(this.a))) && (this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText != null))
+          {
+            paramCharSequence = paramCharSequence.substring(LoginView.a(this.a).length());
+            if (paramCharSequence != null)
+            {
+              if (paramCharSequence.length() != 1) {
+                return;
+              }
+              this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText(paramCharSequence);
+              this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(1);
+              LoginView.c(this.a);
+            }
+          }
         }
-        paramCharSequence = paramCharSequence.substring(LoginView.a(this.a).length());
-      } while ((paramCharSequence == null) || (paramCharSequence.length() != 1));
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setText(paramCharSequence);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(1);
-      LoginView.c(this.a);
+        else {
+          MobileQQ.sMobileQQ.refreAccountList();
+        }
+      }
+      else
+      {
+        return;
+      }
     }
     LoginView.a(this.a, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.26
  * JD-Core Version:    0.7.0.1
  */

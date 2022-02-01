@@ -57,19 +57,33 @@ public class DiscussionManager
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
+    boolean bool = false;
     if (paramInt == 3000)
     {
       DiscussionManager localDiscussionManager = (DiscussionManager)paramQQAppInterface.getManager(QQManagerFactory.DISCUSSION_MANAGER);
       DiscussionInfo localDiscussionInfo = localDiscussionManager.a(paramString, true);
-      if ((localDiscussionInfo == null) || (localDiscussionInfo.isHidden())) {
+      if (localDiscussionInfo != null)
+      {
+        if (localDiscussionInfo.isHidden()) {
+          return true;
+        }
+        paramQQAppInterface = localDiscussionManager.a(paramString, paramQQAppInterface.getCurrentAccountUin());
+        if (paramQQAppInterface != null)
+        {
+          if ((paramQQAppInterface.flag & 0x1) == 1) {
+            bool = true;
+          }
+          return bool;
+        }
+        if (QLog.isColorLevel())
+        {
+          QLog.d("Q.msg.MsgProxyUtils", 2, String.format("isDiscussionFilter, discuss meminfo not find, uin:%s, uinType: %d ", new Object[] { paramString, Integer.valueOf(paramInt) }));
+          return false;
+        }
+      }
+      else
+      {
         return true;
-      }
-      paramQQAppInterface = localDiscussionManager.a(paramString, paramQQAppInterface.getCurrentAccountUin());
-      if (paramQQAppInterface != null) {
-        return (paramQQAppInterface.flag & 0x1) == 1;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MsgProxyUtils", 2, String.format("isDiscussionFilter, discuss meminfo not find, uin:%s, uinType: %d ", new Object[] { paramString, Integer.valueOf(paramInt) }));
       }
     }
     return false;
@@ -77,24 +91,29 @@ public class DiscussionManager
   
   private void b()
   {
-    int j = 0;
     if (QLog.isColorLevel()) {
       QLog.d("Q.contacttab.dscs", 2, "initDisscussCache begin");
     }
-    localObject2 = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(DiscussionInfo.class, false, null, null, null, null, null, null);
-    if (localObject2 != null) {}
-    ConcurrentHashMap localConcurrentHashMap;
-    ArrayList localArrayList;
-    for (int i = ((ArrayList)localObject2).size();; i = 0)
+    Object localObject2 = (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(DiscussionInfo.class, false, null, null, null, null, null, null);
+    int j = 0;
+    int i;
+    if (localObject2 != null) {
+      i = ((ArrayList)localObject2).size();
+    } else {
+      i = 0;
+    }
+    ConcurrentHashMap localConcurrentHashMap = new ConcurrentHashMap(i);
+    Object localObject1;
+    if (localObject2 != null)
     {
-      localConcurrentHashMap = new ConcurrentHashMap(i);
-      if (localObject2 == null) {
-        break label309;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("initDisscussCache disList.size: ");
+        ((StringBuilder)localObject1).append(((ArrayList)localObject2).size());
+        QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject1).toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.contacttab.dscs", 2, "initDisscussCache disList.size: " + ((ArrayList)localObject2).size());
-      }
-      localArrayList = new ArrayList(10);
+      localObject1 = new ArrayList(10);
       i = 0;
       while (i < ((ArrayList)localObject2).size())
       {
@@ -102,123 +121,139 @@ public class DiscussionManager
         localConcurrentHashMap.put(localDiscussionInfo.uin, localDiscussionInfo);
         if (ContactUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localDiscussionInfo))
         {
-          Map localMap = a(localDiscussionInfo.uin);
-          if (ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localDiscussionInfo.uin, localDiscussionInfo, localMap, false)) {
-            localArrayList.add(localDiscussionInfo);
+          Map localMap2 = a(localDiscussionInfo.uin);
+          if (ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localDiscussionInfo.uin, localDiscussionInfo, localMap2, false)) {
+            ((ArrayList)localObject1).add(localDiscussionInfo);
           }
         }
         i += 1;
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.dscs", 2, "initDisscussCache, updateList=" + localArrayList.size());
-    }
-    if (localArrayList.size() > 0)
-    {
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-      ((EntityTransaction)localObject2).begin();
-      i = j;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("initDisscussCache, updateList=");
+        ((StringBuilder)localObject2).append(((ArrayList)localObject1).size());
+        QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (((ArrayList)localObject1).size() > 0)
+      {
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
+        ((EntityTransaction)localObject2).begin();
+        i = j;
+      }
     }
     try
     {
-      while (i < localArrayList.size())
+      try
       {
-        a((Entity)localArrayList.get(i));
-        i += 1;
+        while (i < ((ArrayList)localObject1).size())
+        {
+          a((Entity)((ArrayList)localObject1).get(i));
+          i += 1;
+        }
       }
-      ((EntityTransaction)localObject2).commit();
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      finally
       {
         ((EntityTransaction)localObject2).end();
       }
     }
-    finally
+    catch (Exception localException)
     {
-      ((EntityTransaction)localObject2).end();
+      label330:
+      break label330;
     }
-    localArrayList.clear();
-    label309:
-    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(localConcurrentHashMap);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.dscs", 2, "initDisscussCache end: " + localConcurrentHashMap.size());
+    ((EntityTransaction)localObject2).end();
+    ((ArrayList)localObject1).clear();
+    this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.putAll(localMap1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("initDisscussCache end: ");
+      ((StringBuilder)localObject1).append(localMap1.size());
+      QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
   private void c()
   {
-    ArrayList localArrayList;
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.contacttab.dscs", 1, "buildDiscussUI, begin, discussList[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "], hideDiscussCache[" + this.b.size() + "]");
-        }
-        QQConcurrentHashMap localQQConcurrentHashMap = new QQConcurrentHashMap(1022, 0, 350);
-        localArrayList = new ArrayList();
-        if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null) {
-          break;
-        }
-        int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
-        if (i <= 0) {
-          break;
-        }
-        localArrayList.ensureCapacity(i);
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        DiscussionInfo localDiscussionInfo = (DiscussionInfo)localIterator.next();
-        if ((localDiscussionInfo.mCompareSpell == null) || (localDiscussionInfo.mCompareSpell.length() == 0)) {
-          ContactSorter.a(localDiscussionInfo);
-        }
-        if (localDiscussionInfo.isHidden()) {
-          localQQConcurrentHashMap.put(localDiscussionInfo.uin, localDiscussionInfo);
-        } else {
-          localArrayList.add(localDiscussionInfo);
-        }
-      }
-      finally {}
-    }
     try
     {
-      this.jdField_a_of_type_JavaUtilArrayList = localArrayList;
-      this.b = localObject1;
-      if (QLog.isColorLevel()) {
-        QLog.w("Q.contacttab.dscs", 1, "buildDiscussUI, end, discussList[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "], hideDiscussCache[" + this.b.size() + "]");
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("buildDiscussUI, begin, discussList[");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        ((StringBuilder)localObject1).append("], hideDiscussCache[");
+        ((StringBuilder)localObject1).append(this.b.size());
+        ((StringBuilder)localObject1).append("]");
+        QLog.w("Q.contacttab.dscs", 1, ((StringBuilder)localObject1).toString());
       }
-      return;
+      Object localObject1 = new QQConcurrentHashMap(1022, 0, 350);
+      ArrayList localArrayList = new ArrayList();
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
+      {
+        int i = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size();
+        if (i > 0)
+        {
+          localArrayList.ensureCapacity(i);
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.values().iterator();
+          while (localIterator.hasNext())
+          {
+            DiscussionInfo localDiscussionInfo = (DiscussionInfo)localIterator.next();
+            if ((localDiscussionInfo.mCompareSpell == null) || (localDiscussionInfo.mCompareSpell.length() == 0)) {
+              ContactSorter.a(localDiscussionInfo);
+            }
+            if (localDiscussionInfo.isHidden()) {
+              ((ConcurrentHashMap)localObject1).put(localDiscussionInfo.uin, localDiscussionInfo);
+            } else {
+              localArrayList.add(localDiscussionInfo);
+            }
+          }
+        }
+      }
+      try
+      {
+        this.jdField_a_of_type_JavaUtilArrayList = localArrayList;
+        this.b = ((ConcurrentHashMap)localObject1);
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("buildDiscussUI, end, discussList[");
+          ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+          ((StringBuilder)localObject1).append("], hideDiscussCache[");
+          ((StringBuilder)localObject1).append(this.b.size());
+          ((StringBuilder)localObject1).append("]");
+          QLog.w("Q.contacttab.dscs", 1, ((StringBuilder)localObject1).toString());
+        }
+        return;
+      }
+      finally {}
+      throw localObject3;
     }
     finally {}
+    for (;;) {}
   }
   
   public int a()
   {
-    int j;
-    if (this.jdField_a_of_type_Boolean)
+    boolean bool = this.jdField_a_of_type_Boolean;
+    int j = 0;
+    int i = 0;
+    if (bool)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      int i = 0;
-      j = i;
-      if (!localIterator.hasNext()) {
-        break label52;
+      for (;;)
+      {
+        j = i;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        if (((DiscussionInfo)localIterator.next()).hasCollect) {
+          i += 1;
+        }
       }
-      if (!((DiscussionInfo)localIterator.next()).hasCollect) {
-        break label54;
-      }
-      i += 1;
     }
-    label52:
-    label54:
-    for (;;)
-    {
-      break;
-      j = 0;
-      return j;
-    }
+    return j;
   }
   
   public int a(String paramString)
@@ -237,59 +272,66 @@ public class DiscussionManager
   
   public DiscussionInfo a(String paramString, boolean paramBoolean)
   {
-    boolean bool = false;
     if (!DiscussionInfo.isValidDisUin(paramString)) {
-      localObject2 = null;
+      return null;
     }
-    Object localObject1;
-    do
+    Object localObject2 = (DiscussionInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    boolean bool = false;
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      return localObject2;
-      localObject2 = (DiscussionInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
       localObject1 = localObject2;
-      if (localObject2 == null)
+      if (!paramBoolean)
       {
         localObject1 = localObject2;
-        if (!paramBoolean)
+        if (!this.jdField_a_of_type_Boolean)
         {
-          localObject1 = localObject2;
-          if (!this.jdField_a_of_type_Boolean)
+          localObject2 = (DiscussionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(DiscussionInfo.class, paramString);
+          if (QLog.isColorLevel())
           {
-            localObject2 = (DiscussionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(DiscussionInfo.class, paramString);
-            if (QLog.isColorLevel())
-            {
-              localObject1 = new StringBuilder().append("findDiscussionInfoByID db ");
-              if (localObject2 == null) {
-                break;
-              }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("findDiscussionInfoByID db ");
+            if (localObject2 != null) {
               paramBoolean = true;
-              QLog.d("Q.contacttab.dscs", 2, paramBoolean);
+            } else {
+              paramBoolean = false;
             }
+            ((StringBuilder)localObject1).append(paramBoolean);
+            QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject1).toString());
+          }
+          localObject1 = localObject2;
+          if (localObject2 != null)
+          {
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
             localObject1 = localObject2;
-            if (localObject2 != null)
-            {
-              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
-              localObject1 = localObject2;
-            }
           }
         }
       }
-      localObject2 = localObject1;
-    } while (!QLog.isColorLevel());
-    Object localObject2 = new StringBuilder().append("findDiscussionInfoByID, discussionID[").append(paramString).append("], isDiscussCacheInited[").append(this.jdField_a_of_type_Boolean).append("], discussionInfo[");
-    if (localObject1 != null) {}
-    for (paramBoolean = true;; paramBoolean = false)
+    }
+    if (QLog.isColorLevel())
     {
-      localObject2 = ((StringBuilder)localObject2).append(paramBoolean).append("], hideDiscussCache[");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("findDiscussionInfoByID, discussionID[");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append("], isDiscussCacheInited[");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Boolean);
+      ((StringBuilder)localObject2).append("], discussionInfo[");
+      if (localObject1 != null) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
+      }
+      ((StringBuilder)localObject2).append(paramBoolean);
+      ((StringBuilder)localObject2).append("], hideDiscussCache[");
       paramBoolean = bool;
       if (this.b.get(paramString) != null) {
         paramBoolean = true;
       }
-      QLog.w("Q.contacttab.dscs", 1, paramBoolean + "]");
-      return localObject1;
-      paramBoolean = false;
-      break;
+      ((StringBuilder)localObject2).append(paramBoolean);
+      ((StringBuilder)localObject2).append("]");
+      QLog.w("Q.contacttab.dscs", 1, ((StringBuilder)localObject2).toString());
     }
+    return localObject1;
   }
   
   @Nullable
@@ -297,121 +339,95 @@ public class DiscussionManager
   {
     Object localObject = new ArrayList();
     Iterator localIterator1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-    label242:
-    label248:
     for (;;)
     {
-      DiscussionInfo localDiscussionInfo;
-      if (localIterator1.hasNext())
-      {
-        localDiscussionInfo = (DiscussionInfo)((Map.Entry)localIterator1.next()).getValue();
-        if (!localDiscussionInfo.isDiscussHrMeeting())
-        {
-          Map localMap = a(localDiscussionInfo.uin);
-          if ((localMap != null) && (paramList.size() + 1 == localMap.size()))
-          {
-            Iterator localIterator2 = paramList.iterator();
-            do
-            {
-              if (!localIterator2.hasNext()) {
-                break;
-              }
-            } while (localMap.containsKey(String.valueOf(((AddDiscussMemberInfo)localIterator2.next()).getUin())));
-          }
-        }
+      boolean bool = localIterator1.hasNext();
+      i = 0;
+      if (!bool) {
+        break;
       }
-      else
+      DiscussionInfo localDiscussionInfo = (DiscussionInfo)((Map.Entry)localIterator1.next()).getValue();
+      if (!localDiscussionInfo.isDiscussHrMeeting())
       {
-        for (int i = 0;; i = 1)
+        Map localMap = a(localDiscussionInfo.uin);
+        if ((localMap != null) && (paramList.size() + 1 == localMap.size()))
         {
-          if (i == 0) {
-            break label248;
-          }
-          ((ArrayList)localObject).add(localDiscussionInfo);
-          break;
-          if (((ArrayList)localObject).size() == 0) {
-            return null;
-          }
-          if (((ArrayList)localObject).size() == 1) {
-            return (DiscussionInfo)((ArrayList)localObject).get(0);
-          }
-          localIterator1 = ((ArrayList)localObject).iterator();
-          long l = 0L;
-          paramList = null;
-          if (localIterator1.hasNext())
-          {
-            localObject = (DiscussionInfo)localIterator1.next();
-            if (((DiscussionInfo)localObject).createTime <= l) {
-              break label242;
+          Iterator localIterator2 = paramList.iterator();
+          while (localIterator2.hasNext()) {
+            if (!localMap.containsKey(String.valueOf(((AddDiscussMemberInfo)localIterator2.next()).getUin()))) {
+              break label154;
             }
-            l = ((DiscussionInfo)localObject).createTime;
-            paramList = (List<AddDiscussMemberInfo>)localObject;
           }
-          for (;;)
-          {
-            break;
-            return paramList;
+          i = 1;
+          label154:
+          if (i != 0) {
+            ((ArrayList)localObject).add(localDiscussionInfo);
           }
         }
       }
     }
+    int i = ((ArrayList)localObject).size();
+    paramList = null;
+    if (i == 0) {
+      return null;
+    }
+    if (((ArrayList)localObject).size() == 1) {
+      return (DiscussionInfo)((ArrayList)localObject).get(0);
+    }
+    long l = 0L;
+    localIterator1 = ((ArrayList)localObject).iterator();
+    while (localIterator1.hasNext())
+    {
+      localObject = (DiscussionInfo)localIterator1.next();
+      if (((DiscussionInfo)localObject).createTime > l)
+      {
+        l = ((DiscussionInfo)localObject).createTime;
+        paramList = (List<AddDiscussMemberInfo>)localObject;
+      }
+    }
+    return paramList;
   }
   
   public DiscussionMemberInfo a(String paramString1, String paramString2)
   {
-    Object localObject = null;
     paramString1 = a(paramString1);
     if (paramString1 != null) {
-      paramString1 = (DiscussionMemberInfo)paramString1.get(paramString2);
+      return (DiscussionMemberInfo)paramString1.get(paramString2);
     }
-    do
-    {
-      return paramString1;
-      paramString1 = localObject;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.contacttab.dscs", 2, "getDiscussionMemberInfo null");
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.contacttab.dscs", 2, "getDiscussionMemberInfo null");
+    }
     return null;
   }
   
   public DiscussionMemberInfo a(byte[] paramArrayOfByte, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      paramString1 = null;
-    }
-    do
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length > 0))
     {
-      do
+      paramString2 = a(paramString1, paramString2);
+      paramString1 = a(paramString1);
+      if ((paramString1 != null) && (paramString1.isDiscussHrMeeting())) {
+        return paramString2;
+      }
+      if (paramString2 != null)
       {
-        DiscussionInfo localDiscussionInfo;
-        do
+        paramArrayOfByte = new String(paramArrayOfByte);
+        if ((paramString2.inteRemark == null) || (!paramString2.inteRemark.equals(paramArrayOfByte)))
         {
-          return paramString1;
-          paramString2 = a(paramString1, paramString2);
-          localDiscussionInfo = a(paramString1);
-          if (localDiscussionInfo == null) {
-            break;
+          paramString2.inteRemark = paramArrayOfByte;
+          if (paramArrayOfByte.equals(paramString2.memberName)) {
+            paramString2.inteRemarkSource = 129L;
+          } else {
+            paramString2.inteRemarkSource = 128L;
           }
-          paramString1 = paramString2;
-        } while (localDiscussionInfo.isDiscussHrMeeting());
-        paramString1 = paramString2;
-      } while (paramString2 == null);
-      paramArrayOfByte = new String(paramArrayOfByte);
-      if (paramString2.inteRemark == null) {
-        break;
+          if (paramBoolean) {
+            a(paramString2);
+          }
+        }
       }
-      paramString1 = paramString2;
-    } while (paramString2.inteRemark.equals(paramArrayOfByte));
-    paramString2.inteRemark = paramArrayOfByte;
-    if ((paramArrayOfByte != null) && (paramArrayOfByte.equals(paramString2.memberName))) {}
-    for (paramString2.inteRemarkSource = 129L;; paramString2.inteRemarkSource = 128L)
-    {
-      paramString1 = paramString2;
-      if (!paramBoolean) {
-        break;
-      }
-      a(paramString2);
       return paramString2;
     }
+    return null;
   }
   
   public ArrayList<DiscussionInfo> a()
@@ -443,35 +459,38 @@ public class DiscussionManager
     }
     Object localObject2 = (Map)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
     Object localObject1;
-    int i;
     if (localObject2 != null)
     {
       localObject1 = localObject2;
       if (QLog.isColorLevel())
       {
-        paramString = new StringBuilder().append("getDiscussionMemberInfoListByUin from map list disUin=").append(paramString).append(" size=");
-        if (localObject2 != null) {
-          break label101;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getDiscussionMemberInfoListByUin from map list disUin=");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(" size=");
+        int i;
+        if (localObject2 == null) {
+          i = -1;
+        } else {
+          i = ((Map)localObject2).size();
         }
-        i = -1;
-        label82:
-        QLog.d("Q.contacttab.dscs", 2, i);
-        localObject1 = localObject2;
+        ((StringBuilder)localObject1).append(i);
+        QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject1).toString());
+        return localObject2;
       }
     }
-    for (;;)
+    else
     {
-      return localObject1;
-      label101:
-      i = ((Map)localObject2).size();
-      break label82;
       localObject2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(DiscussionMemberInfo.class, false, "discussionUin=? ", new String[] { paramString }, null, null, "memberUin", null);
       if (localObject2 == null)
       {
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("getDiscussionMemberInfoListByUin from DB list is null disUin=");
+          ((StringBuilder)localObject1).append(paramString);
+          QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject1).toString());
         }
-        QLog.d("Q.contacttab.dscs", 2, "getDiscussionMemberInfoListByUin from DB list is null disUin=" + paramString);
         return null;
       }
       localObject1 = new HashMap(((List)localObject2).size());
@@ -481,19 +500,27 @@ public class DiscussionManager
         DiscussionMemberInfo localDiscussionMemberInfo = (DiscussionMemberInfo)((Iterator)localObject2).next();
         ((Map)localObject1).put(localDiscussionMemberInfo.memberUin, localDiscussionMemberInfo);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.contacttab.dscs", 2, "getDiscussionMemberInfoListByUin from db list disUin=" + paramString + " size=" + ((Map)localObject1).size());
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getDiscussionMemberInfoListByUin from db list disUin=");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(" size=");
+        ((StringBuilder)localObject2).append(((Map)localObject1).size());
+        QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject2).toString());
       }
       this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString, localObject1);
     }
+    return localObject1;
   }
   
   public Map<String, ArrayList<DiscussionMemberInfo>> a(String[] paramArrayOfString)
   {
     HashMap localHashMap = new HashMap();
-    int j = paramArrayOfString.length;
+    int k = paramArrayOfString.length;
+    int j = 0;
     int i = 0;
-    while (i < j)
+    while (i < k)
     {
       localHashMap.put(paramArrayOfString[i], new ArrayList());
       i += 1;
@@ -511,7 +538,7 @@ public class DiscussionManager
     }
     ((StringBuilder)localObject).append(")");
     String[] arrayOfString = new String[paramArrayOfString.length];
-    i = 0;
+    i = j;
     while (i < arrayOfString.length)
     {
       arrayOfString[i] = SecurityUtile.encode(paramArrayOfString[i]);
@@ -541,22 +568,22 @@ public class DiscussionManager
   {
     if (QLog.isColorLevel())
     {
-      localObject2 = new StringBuilder().append("saveDiscussInfo ");
-      if (paramDiscussionInfo == null) {
-        break label48;
-      }
-    }
-    label48:
-    for (Object localObject1 = paramDiscussionInfo.uin;; localObject1 = Integer.valueOf(-1))
-    {
-      QLog.d("Q.contacttab.dscs", 2, localObject1);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("saveDiscussInfo ");
       if (paramDiscussionInfo != null) {
-        break;
+        localObject1 = paramDiscussionInfo.uin;
+      } else {
+        localObject1 = Integer.valueOf(-1);
       }
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (paramDiscussionInfo == null) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramDiscussionInfo.uin, paramDiscussionInfo);
+    Object localObject1 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if (localObject1 != null) {
+      ((ConcurrentHashMap)localObject1).put(paramDiscussionInfo.uin, paramDiscussionInfo);
     }
     a(paramDiscussionInfo);
     localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getProxyManager();
@@ -573,16 +600,20 @@ public class DiscussionManager
   {
     if (paramDiscussionMemberInfo != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.contacttab.dscs", 2, "saveDiscussionMemberInfo " + paramDiscussionMemberInfo);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("saveDiscussionMemberInfo ");
+        ((StringBuilder)localObject).append(paramDiscussionMemberInfo);
+        QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject).toString());
       }
-      Map localMap = a(paramDiscussionMemberInfo.discussionUin);
-      if (localMap != null) {
-        localMap.put(paramDiscussionMemberInfo.memberUin, paramDiscussionMemberInfo);
+      Object localObject = a(paramDiscussionMemberInfo.discussionUin);
+      if (localObject != null) {
+        ((Map)localObject).put(paramDiscussionMemberInfo.memberUin, paramDiscussionMemberInfo);
       }
       a(paramDiscussionMemberInfo);
       DiscussionInfo localDiscussionInfo = a(paramDiscussionMemberInfo.discussionUin);
-      if ((localDiscussionInfo != null) && (ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDiscussionMemberInfo.discussionUin, localDiscussionInfo, localMap, false))) {
+      if ((localDiscussionInfo != null) && (ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramDiscussionMemberInfo.discussionUin, localDiscussionInfo, (Map)localObject, false))) {
         a(localDiscussionInfo);
       }
     }
@@ -593,329 +624,514 @@ public class DiscussionManager
   {
     // Byte code:
     //   0: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +57 -> 60
-    //   6: ldc_w 481
-    //   9: iconst_2
-    //   10: new 159	java/lang/StringBuilder
-    //   13: dup
-    //   14: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   17: ldc_w 483
+    //   3: ifeq +82 -> 85
+    //   6: new 159	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   13: astore 9
+    //   15: aload 9
+    //   17: ldc_w 481
     //   20: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: aload_1
-    //   24: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: ldc_w 485
-    //   30: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   33: aload 5
-    //   35: invokeinterface 285 1 0
-    //   40: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   43: ldc_w 487
-    //   46: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   49: lload 6
-    //   51: invokevirtual 490	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   54: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   57: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   60: aload_0
-    //   61: getfield 42	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache	Lcom/tencent/commonsdk/cache/QQLruCache;
-    //   64: aload_1
-    //   65: aload 5
-    //   67: invokevirtual 417	com/tencent/commonsdk/cache/QQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   70: checkcast 284	java/util/Map
-    //   73: astore 9
-    //   75: aload 9
-    //   77: ifnull +57 -> 134
-    //   80: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   83: ifeq +51 -> 134
-    //   86: ldc 142
-    //   88: iconst_2
-    //   89: new 159	java/lang/StringBuilder
-    //   92: dup
-    //   93: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   96: ldc_w 492
-    //   99: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: aload 9
-    //   104: invokeinterface 285 1 0
-    //   109: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   112: ldc_w 494
-    //   115: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   118: aload 5
-    //   120: invokeinterface 285 1 0
-    //   125: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   128: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   131: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   134: new 49	java/util/HashSet
-    //   137: dup
-    //   138: invokespecial 50	java/util/HashSet:<init>	()V
-    //   141: astore 10
-    //   143: aload_0
-    //   144: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   147: invokevirtual 206	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   150: astore 9
-    //   152: aload 9
-    //   154: invokevirtual 211	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   157: aload 5
-    //   159: invokeinterface 495 1 0
-    //   164: invokeinterface 318 1 0
-    //   169: astore 11
-    //   171: aload 11
-    //   173: invokeinterface 260 1 0
-    //   178: ifeq +140 -> 318
-    //   181: aload 11
-    //   183: invokeinterface 264 1 0
-    //   188: checkcast 320	java/util/Map$Entry
-    //   191: invokeinterface 323 1 0
-    //   196: checkcast 109	com/tencent/mobileqq/data/DiscussionMemberInfo
-    //   199: astore 12
-    //   201: new 159	java/lang/StringBuilder
-    //   204: dup
-    //   205: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   208: aload 12
-    //   210: getfield 437	com/tencent/mobileqq/data/DiscussionMemberInfo:discussionUin	Ljava/lang/String;
-    //   213: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   216: ldc_w 497
-    //   219: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: aload 12
-    //   224: getfield 413	com/tencent/mobileqq/data/DiscussionMemberInfo:memberUin	Ljava/lang/String;
-    //   227: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: astore 12
-    //   235: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   238: ifeq +30 -> 268
-    //   241: ldc 142
-    //   243: iconst_2
-    //   244: new 159	java/lang/StringBuilder
-    //   247: dup
-    //   248: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   251: ldc_w 499
-    //   254: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   257: aload 12
-    //   259: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   262: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   265: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   268: aload 10
-    //   270: aload 12
-    //   272: invokevirtual 502	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   275: ifne -104 -> 171
-    //   278: aload 10
-    //   280: aload 12
-    //   282: invokevirtual 503	java/util/HashSet:add	(Ljava/lang/Object;)Z
-    //   285: pop
-    //   286: aload_0
-    //   287: aload_2
-    //   288: invokevirtual 216	com/tencent/mobileqq/app/DiscussionManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   291: pop
-    //   292: goto -121 -> 171
-    //   295: astore_1
-    //   296: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   299: ifeq +13 -> 312
-    //   302: ldc 142
-    //   304: iconst_2
-    //   305: ldc_w 505
-    //   308: aload_1
-    //   309: invokestatic 508	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   312: aload 9
-    //   314: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   317: return
-    //   318: aload_0
-    //   319: getfield 65	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   322: invokevirtual 512	com/tencent/mobileqq/app/QQAppInterface:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   325: ifnull +77 -> 402
-    //   328: aload_0
-    //   329: getfield 65	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   332: invokevirtual 512	com/tencent/mobileqq/app/QQAppInterface:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
-    //   335: new 109	com/tencent/mobileqq/data/DiscussionMemberInfo
-    //   338: dup
-    //   339: invokespecial 513	com/tencent/mobileqq/data/DiscussionMemberInfo:<init>	()V
-    //   342: invokevirtual 516	com/tencent/mobileqq/data/DiscussionMemberInfo:getTableName	()Ljava/lang/String;
-    //   345: ldc_w 518
-    //   348: iconst_2
-    //   349: anewarray 130	java/lang/String
-    //   352: dup
-    //   353: iconst_0
-    //   354: aload_1
-    //   355: aastore
-    //   356: dup
-    //   357: iconst_1
-    //   358: lload 6
-    //   360: invokestatic 339	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   363: aastore
-    //   364: invokevirtual 524	com/tencent/mobileqq/app/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
-    //   367: istore 8
-    //   369: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   372: ifeq +30 -> 402
-    //   375: ldc 142
-    //   377: iconst_2
-    //   378: new 159	java/lang/StringBuilder
-    //   381: dup
-    //   382: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   385: ldc_w 526
-    //   388: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   391: iload 8
-    //   393: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   396: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   399: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   402: aload_0
-    //   403: getfield 65	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   406: aload_1
-    //   407: aload_2
-    //   408: aload 5
-    //   410: iconst_0
-    //   411: invokestatic 196	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/data/DiscussionInfo;Ljava/util/Map;Z)Z
-    //   414: pop
-    //   415: aload_2
-    //   416: lload_3
-    //   417: putfield 529	com/tencent/mobileqq/data/DiscussionInfo:infoSeq	J
-    //   420: aload_0
-    //   421: aload_2
-    //   422: invokevirtual 530	com/tencent/mobileqq/app/DiscussionManager:a	(Lcom/tencent/mobileqq/data/DiscussionInfo;)V
-    //   425: aload 9
-    //   427: invokevirtual 219	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   430: aload 9
-    //   432: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   435: return
-    //   436: astore_1
-    //   437: aload 9
-    //   439: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   442: aload_1
-    //   443: athrow
+    //   23: pop
+    //   24: aload 9
+    //   26: aload_1
+    //   27: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload 9
+    //   33: ldc_w 483
+    //   36: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: pop
+    //   40: aload 9
+    //   42: aload 5
+    //   44: invokeinterface 285 1 0
+    //   49: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   52: pop
+    //   53: aload 9
+    //   55: ldc_w 485
+    //   58: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   61: pop
+    //   62: aload 9
+    //   64: lload 6
+    //   66: invokevirtual 488	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   69: pop
+    //   70: ldc_w 490
+    //   73: iconst_2
+    //   74: aload 9
+    //   76: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   79: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   82: goto +3 -> 85
+    //   85: aload_0
+    //   86: getfield 42	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache	Lcom/tencent/commonsdk/cache/QQLruCache;
+    //   89: aload_1
+    //   90: aload 5
+    //   92: invokevirtual 417	com/tencent/commonsdk/cache/QQLruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   95: checkcast 284	java/util/Map
+    //   98: astore 9
+    //   100: aload 9
+    //   102: ifnull +73 -> 175
+    //   105: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   108: ifeq +67 -> 175
+    //   111: new 159	java/lang/StringBuilder
+    //   114: dup
+    //   115: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   118: astore 10
+    //   120: aload 10
+    //   122: ldc_w 492
+    //   125: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: pop
+    //   129: aload 10
+    //   131: aload 9
+    //   133: invokeinterface 285 1 0
+    //   138: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   141: pop
+    //   142: aload 10
+    //   144: ldc_w 494
+    //   147: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   150: pop
+    //   151: aload 10
+    //   153: aload 5
+    //   155: invokeinterface 285 1 0
+    //   160: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   163: pop
+    //   164: ldc 142
+    //   166: iconst_2
+    //   167: aload 10
+    //   169: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   172: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   175: new 49	java/util/HashSet
+    //   178: dup
+    //   179: invokespecial 50	java/util/HashSet:<init>	()V
+    //   182: astore 10
+    //   184: aload_0
+    //   185: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   188: invokevirtual 206	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   191: astore 9
+    //   193: aload 9
+    //   195: invokevirtual 211	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   198: aload 5
+    //   200: invokeinterface 495 1 0
+    //   205: invokeinterface 318 1 0
+    //   210: astore 11
+    //   212: aload 11
+    //   214: invokeinterface 260 1 0
+    //   219: ifeq +140 -> 359
+    //   222: aload 11
+    //   224: invokeinterface 264 1 0
+    //   229: checkcast 320	java/util/Map$Entry
+    //   232: invokeinterface 323 1 0
+    //   237: checkcast 109	com/tencent/mobileqq/data/DiscussionMemberInfo
+    //   240: astore 12
+    //   242: new 159	java/lang/StringBuilder
+    //   245: dup
+    //   246: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   249: astore 13
+    //   251: aload 13
+    //   253: aload 12
+    //   255: getfield 437	com/tencent/mobileqq/data/DiscussionMemberInfo:discussionUin	Ljava/lang/String;
+    //   258: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   261: pop
+    //   262: aload 13
+    //   264: ldc_w 497
+    //   267: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   270: pop
+    //   271: aload 13
+    //   273: aload 12
+    //   275: getfield 413	com/tencent/mobileqq/data/DiscussionMemberInfo:memberUin	Ljava/lang/String;
+    //   278: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   281: pop
+    //   282: aload 13
+    //   284: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   287: astore 12
+    //   289: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   292: ifeq +40 -> 332
+    //   295: new 159	java/lang/StringBuilder
+    //   298: dup
+    //   299: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   302: astore 13
+    //   304: aload 13
+    //   306: ldc_w 499
+    //   309: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   312: pop
+    //   313: aload 13
+    //   315: aload 12
+    //   317: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   320: pop
+    //   321: ldc 142
+    //   323: iconst_2
+    //   324: aload 13
+    //   326: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   329: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   332: aload 10
+    //   334: aload 12
+    //   336: invokevirtual 502	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   339: ifne -127 -> 212
+    //   342: aload 10
+    //   344: aload 12
+    //   346: invokevirtual 503	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   349: pop
+    //   350: aload_0
+    //   351: aload_2
+    //   352: invokevirtual 216	com/tencent/mobileqq/app/DiscussionManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   355: pop
+    //   356: goto -144 -> 212
+    //   359: aload_0
+    //   360: getfield 65	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   363: invokevirtual 507	com/tencent/mobileqq/app/QQAppInterface:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   366: ifnull +87 -> 453
+    //   369: aload_0
+    //   370: getfield 65	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   373: invokevirtual 507	com/tencent/mobileqq/app/QQAppInterface:getWritableDatabase	()Lcom/tencent/mobileqq/app/SQLiteDatabase;
+    //   376: new 109	com/tencent/mobileqq/data/DiscussionMemberInfo
+    //   379: dup
+    //   380: invokespecial 508	com/tencent/mobileqq/data/DiscussionMemberInfo:<init>	()V
+    //   383: invokevirtual 511	com/tencent/mobileqq/data/DiscussionMemberInfo:getTableName	()Ljava/lang/String;
+    //   386: ldc_w 513
+    //   389: iconst_2
+    //   390: anewarray 130	java/lang/String
+    //   393: dup
+    //   394: iconst_0
+    //   395: aload_1
+    //   396: aastore
+    //   397: dup
+    //   398: iconst_1
+    //   399: lload 6
+    //   401: invokestatic 339	java/lang/String:valueOf	(J)Ljava/lang/String;
+    //   404: aastore
+    //   405: invokevirtual 519	com/tencent/mobileqq/app/SQLiteDatabase:delete	(Ljava/lang/String;Ljava/lang/String;[Ljava/lang/String;)I
+    //   408: istore 8
+    //   410: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   413: ifeq +40 -> 453
+    //   416: new 159	java/lang/StringBuilder
+    //   419: dup
+    //   420: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   423: astore 10
+    //   425: aload 10
+    //   427: ldc_w 521
+    //   430: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   433: pop
+    //   434: aload 10
+    //   436: iload 8
+    //   438: invokevirtual 169	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   441: pop
+    //   442: ldc 142
+    //   444: iconst_2
+    //   445: aload 10
+    //   447: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   450: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   453: aload_0
+    //   454: getfield 65	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   457: aload_1
+    //   458: aload_2
+    //   459: aload 5
+    //   461: iconst_0
+    //   462: invokestatic 196	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/data/DiscussionInfo;Ljava/util/Map;Z)Z
+    //   465: pop
+    //   466: aload_2
+    //   467: lload_3
+    //   468: putfield 524	com/tencent/mobileqq/data/DiscussionInfo:infoSeq	J
+    //   471: aload_0
+    //   472: aload_2
+    //   473: invokevirtual 525	com/tencent/mobileqq/app/DiscussionManager:a	(Lcom/tencent/mobileqq/data/DiscussionInfo;)V
+    //   476: aload 9
+    //   478: invokevirtual 219	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   481: goto +24 -> 505
+    //   484: astore_1
+    //   485: goto +26 -> 511
+    //   488: astore_1
+    //   489: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   492: ifeq +13 -> 505
+    //   495: ldc 142
+    //   497: iconst_2
+    //   498: ldc_w 527
+    //   501: aload_1
+    //   502: invokestatic 530	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   505: aload 9
+    //   507: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   510: return
+    //   511: aload 9
+    //   513: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   516: goto +5 -> 521
+    //   519: aload_1
+    //   520: athrow
+    //   521: goto -2 -> 519
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	444	0	this	DiscussionManager
-    //   0	444	1	paramString	String
-    //   0	444	2	paramDiscussionInfo	DiscussionInfo
-    //   0	444	3	paramLong1	long
-    //   0	444	5	paramMap	Map<String, DiscussionMemberInfo>
-    //   0	444	6	paramLong2	long
-    //   367	25	8	i	int
-    //   73	365	9	localObject1	Object
-    //   141	138	10	localHashSet	HashSet
-    //   169	13	11	localIterator	Iterator
-    //   199	82	12	localObject2	Object
+    //   0	524	0	this	DiscussionManager
+    //   0	524	1	paramString	String
+    //   0	524	2	paramDiscussionInfo	DiscussionInfo
+    //   0	524	3	paramLong1	long
+    //   0	524	5	paramMap	Map<String, DiscussionMemberInfo>
+    //   0	524	6	paramLong2	long
+    //   408	29	8	i	int
+    //   13	499	9	localObject1	Object
+    //   118	328	10	localObject2	Object
+    //   210	13	11	localIterator	Iterator
+    //   240	105	12	localObject3	Object
+    //   249	76	13	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   157	171	295	java/lang/Exception
-    //   171	268	295	java/lang/Exception
-    //   268	292	295	java/lang/Exception
-    //   318	402	295	java/lang/Exception
-    //   402	430	295	java/lang/Exception
-    //   157	171	436	finally
-    //   171	268	436	finally
-    //   268	292	436	finally
-    //   296	312	436	finally
-    //   318	402	436	finally
-    //   402	430	436	finally
+    //   198	212	484	finally
+    //   212	332	484	finally
+    //   332	356	484	finally
+    //   359	453	484	finally
+    //   453	481	484	finally
+    //   489	505	484	finally
+    //   198	212	488	java/lang/Exception
+    //   212	332	488	java/lang/Exception
+    //   332	356	488	java/lang/Exception
+    //   359	453	488	java/lang/Exception
+    //   453	481	488	java/lang/Exception
   }
   
   public void a(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.dscs", 2, "deleteDiscussionMember disUin=" + paramString1 + " memberUin=" + paramString2);
-    }
-    Object localObject1 = (Map)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString1);
-    Object localObject2;
-    if (localObject1 != null)
+    if (QLog.isColorLevel())
     {
-      localObject2 = (DiscussionMemberInfo)((Map)localObject1).remove(paramString2);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("deleteDiscussionMember disUin=");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(" memberUin=");
+      ((StringBuilder)localObject1).append(paramString2);
+      QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = null;
+    Object localObject2 = (Map)this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString1);
+    if (localObject2 != null)
+    {
+      localObject2 = (DiscussionMemberInfo)((Map)localObject2).remove(paramString2);
       localObject1 = localObject2;
       if (QLog.isColorLevel())
       {
-        if ("removed from cache " + localObject2 == null) {
-          break label181;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("removed from cache ");
+        ((StringBuilder)localObject1).append(localObject2);
+        if (((StringBuilder)localObject1).toString() != null) {
+          localObject1 = "true";
+        } else {
+          localObject1 = "false";
         }
-        localObject1 = "true";
         QLog.d("Q.contacttab.dscs", 2, (String)localObject1);
+        localObject1 = localObject2;
       }
     }
-    for (localObject1 = localObject2;; localObject1 = null)
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = (DiscussionMemberInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(DiscussionMemberInfo.class, new String[] { paramString1, paramString2 });
+    }
+    if (localObject2 != null)
     {
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = (DiscussionMemberInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(DiscussionMemberInfo.class, new String[] { paramString1, paramString2 });
+      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)localObject2);
+      if (QLog.isColorLevel()) {
+        QLog.d("Q.contacttab.dscs", 2, "removed from db ");
       }
-      if (localObject2 != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove((Entity)localObject2);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.contacttab.dscs", 2, "removed from db ");
-        }
-      }
-      return;
-      label181:
-      localObject1 = "false";
-      break;
     }
   }
   
+  /* Error */
   public void a(String paramString, Set<String> paramSet)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.dscs", 2, "deleteDiscussionMembers disuin=" + paramString);
-    }
-    if ((!DiscussionInfo.isValidDisUin(paramString)) || (paramSet == null) || (paramSet.size() == 0)) {}
-    for (;;)
-    {
-      return;
-      EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-      try
-      {
-        localEntityTransaction.begin();
-        localMap = a(paramString);
-        if (localMap != null)
-        {
-          localStringBuilder = new StringBuilder(paramSet.size() * 8);
-          if (QLog.isColorLevel()) {
-            localStringBuilder.append("remove member=");
-          }
-          paramSet = paramSet.iterator();
-          while (paramSet.hasNext())
-          {
-            String str = (String)paramSet.next();
-            DiscussionMemberInfo localDiscussionMemberInfo = (DiscussionMemberInfo)localMap.remove(str);
-            if (localDiscussionMemberInfo != null)
-            {
-              this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localDiscussionMemberInfo);
-              if (QLog.isColorLevel()) {
-                localStringBuilder.append(str.substring(0, 4)).append("|");
-              }
-            }
-          }
-        }
-      }
-      catch (Exception paramSet)
-      {
-        Map localMap;
-        StringBuilder localStringBuilder;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.contacttab.dscs", 2, "deleteDiscussionMembers exp disUin=" + paramString, paramSet);
-        }
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.contacttab.dscs", 2, localStringBuilder.toString());
-        }
-        paramSet = a(paramString);
-        if (ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, paramSet, localMap, false)) {
-          this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramSet);
-        }
-        localEntityTransaction.commit();
-        return;
-      }
-      finally
-      {
-        if (localEntityTransaction != null) {
-          localEntityTransaction.end();
-        }
-      }
-    }
+    // Byte code:
+    //   0: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +35 -> 38
+    //   6: new 159	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   13: astore_3
+    //   14: aload_3
+    //   15: ldc_w 555
+    //   18: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload_3
+    //   23: aload_1
+    //   24: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: pop
+    //   28: ldc 142
+    //   30: iconst_2
+    //   31: aload_3
+    //   32: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   35: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   38: aload_1
+    //   39: invokestatic 290	com/tencent/mobileqq/data/DiscussionInfo:isValidDisUin	(Ljava/lang/String;)Z
+    //   42: ifeq +286 -> 328
+    //   45: aload_2
+    //   46: ifnull +282 -> 328
+    //   49: aload_2
+    //   50: invokeinterface 556 1 0
+    //   55: ifne +4 -> 59
+    //   58: return
+    //   59: aload_0
+    //   60: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   63: invokevirtual 206	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   66: astore_3
+    //   67: aload_3
+    //   68: invokevirtual 211	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   71: aload_0
+    //   72: aload_1
+    //   73: invokevirtual 193	com/tencent/mobileqq/app/DiscussionManager:a	(Ljava/lang/String;)Ljava/util/Map;
+    //   76: astore 4
+    //   78: aload 4
+    //   80: ifnull +140 -> 220
+    //   83: new 159	java/lang/StringBuilder
+    //   86: dup
+    //   87: aload_2
+    //   88: invokeinterface 556 1 0
+    //   93: bipush 8
+    //   95: imul
+    //   96: invokespecial 557	java/lang/StringBuilder:<init>	(I)V
+    //   99: astore 5
+    //   101: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   104: ifeq +12 -> 116
+    //   107: aload 5
+    //   109: ldc_w 559
+    //   112: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: pop
+    //   116: aload_2
+    //   117: invokeinterface 318 1 0
+    //   122: astore_2
+    //   123: aload_2
+    //   124: invokeinterface 260 1 0
+    //   129: ifeq +74 -> 203
+    //   132: aload_2
+    //   133: invokeinterface 264 1 0
+    //   138: checkcast 130	java/lang/String
+    //   141: astore 6
+    //   143: aload 4
+    //   145: aload 6
+    //   147: invokeinterface 539 2 0
+    //   152: checkcast 109	com/tencent/mobileqq/data/DiscussionMemberInfo
+    //   155: astore 7
+    //   157: aload 7
+    //   159: ifnull -36 -> 123
+    //   162: aload_0
+    //   163: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   166: aload 7
+    //   168: invokevirtual 550	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   171: pop
+    //   172: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   175: ifeq -52 -> 123
+    //   178: aload 5
+    //   180: aload 6
+    //   182: iconst_0
+    //   183: iconst_4
+    //   184: invokevirtual 563	java/lang/String:substring	(II)Ljava/lang/String;
+    //   187: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   190: pop
+    //   191: aload 5
+    //   193: ldc_w 565
+    //   196: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   199: pop
+    //   200: goto -77 -> 123
+    //   203: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   206: ifeq +14 -> 220
+    //   209: ldc 142
+    //   211: iconst_2
+    //   212: aload 5
+    //   214: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   217: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   220: aload_0
+    //   221: aload_1
+    //   222: invokevirtual 356	com/tencent/mobileqq/app/DiscussionManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionInfo;
+    //   225: astore_2
+    //   226: aload_0
+    //   227: getfield 65	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   230: aload_1
+    //   231: aload_2
+    //   232: aload 4
+    //   234: iconst_0
+    //   235: invokestatic 196	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/data/DiscussionInfo;Ljava/util/Map;Z)Z
+    //   238: ifeq +12 -> 250
+    //   241: aload_0
+    //   242: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   245: aload_2
+    //   246: invokevirtual 568	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   249: pop
+    //   250: aload_3
+    //   251: invokevirtual 219	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   254: aload_3
+    //   255: ifnull +62 -> 317
+    //   258: goto +55 -> 313
+    //   261: astore_1
+    //   262: goto +56 -> 318
+    //   265: astore_2
+    //   266: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   269: ifeq +40 -> 309
+    //   272: new 159	java/lang/StringBuilder
+    //   275: dup
+    //   276: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   279: astore 4
+    //   281: aload 4
+    //   283: ldc_w 570
+    //   286: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   289: pop
+    //   290: aload 4
+    //   292: aload_1
+    //   293: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   296: pop
+    //   297: ldc 142
+    //   299: iconst_2
+    //   300: aload 4
+    //   302: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   305: aload_2
+    //   306: invokestatic 530	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   309: aload_3
+    //   310: ifnull +7 -> 317
+    //   313: aload_3
+    //   314: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   317: return
+    //   318: aload_3
+    //   319: ifnull +7 -> 326
+    //   322: aload_3
+    //   323: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   326: aload_1
+    //   327: athrow
+    //   328: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	329	0	this	DiscussionManager
+    //   0	329	1	paramString	String
+    //   0	329	2	paramSet	Set<String>
+    //   13	310	3	localObject1	Object
+    //   76	225	4	localObject2	Object
+    //   99	114	5	localStringBuilder	StringBuilder
+    //   141	40	6	str	String
+    //   155	12	7	localDiscussionMemberInfo	DiscussionMemberInfo
+    // Exception table:
+    //   from	to	target	type
+    //   67	78	261	finally
+    //   83	116	261	finally
+    //   116	123	261	finally
+    //   123	157	261	finally
+    //   162	200	261	finally
+    //   203	220	261	finally
+    //   220	250	261	finally
+    //   250	254	261	finally
+    //   266	309	261	finally
+    //   67	78	265	java/lang/Exception
+    //   83	116	265	java/lang/Exception
+    //   116	123	265	java/lang/Exception
+    //   123	157	265	java/lang/Exception
+    //   162	200	265	java/lang/Exception
+    //   203	220	265	java/lang/Exception
+    //   220	250	265	java/lang/Exception
+    //   250	254	265	java/lang/Exception
   }
   
   public void a(List<String> paramList)
   {
-    TraceUtils.traceBegin("queryDiscs_" + paramList.size());
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.dscs", 2, "preloadData size=" + paramList.size());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("queryDiscs_");
+    ((StringBuilder)localObject).append(paramList.size());
+    TraceUtils.traceBegin(((StringBuilder)localObject).toString());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("preloadData size=");
+      ((StringBuilder)localObject).append(paramList.size());
+      QLog.d("Q.contacttab.dscs", 2, ((StringBuilder)localObject).toString());
     }
     if (paramList.size() > 0)
     {
-      Object localObject = new StringBuilder("uin=? ");
+      localObject = new StringBuilder("uin=? ");
       int i = 1;
       while (i < paramList.size())
       {
@@ -938,154 +1154,294 @@ public class DiscussionManager
   
   public boolean a(Entity paramEntity)
   {
+    int i = paramEntity.getStatus();
     boolean bool = false;
-    if (paramEntity.getStatus() == 1000)
+    if (i == 1000)
     {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
       if (paramEntity.getStatus() == 1001) {
         bool = true;
       }
-    }
-    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
       return bool;
+    }
+    if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+      return false;
     }
     return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
   }
   
   public boolean a(String paramString)
   {
-    DiscussionInfo localDiscussionInfo = a(paramString);
-    StringBuilder localStringBuilder;
+    Object localObject = a(paramString);
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("hideDiscuss begin, uin[").append(paramString).append("], info[");
-      if (localDiscussionInfo == null) {
-        break label196;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hideDiscuss begin, uin[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("], info[");
+      boolean bool;
+      if (localObject != null) {
+        bool = true;
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      localStringBuilder.append("], discussList[");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      localStringBuilder.append("], hideDiscussCache[");
+      localStringBuilder.append(this.b.size());
+      localStringBuilder.append("]");
+      QLog.w("Q.contacttab.dscs", 1, localStringBuilder.toString());
     }
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.w("Q.contacttab.dscs", 1, bool + "], discussList[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "], hideDiscussCache[" + this.b.size() + "]");
-      if (localDiscussionInfo != null) {}
-      label196:
+    if (localObject != null) {
       try
       {
-        this.b.put(localDiscussionInfo.uin, localDiscussionInfo);
-        this.jdField_a_of_type_JavaUtilArrayList.remove(localDiscussionInfo);
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.contacttab.dscs", 1, "hideDiscuss end, uin[" + paramString + "], discussList[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "], hideDiscussCache[" + this.b.size() + "]");
+        this.b.put(((DiscussionInfo)localObject).uin, localObject);
+        this.jdField_a_of_type_JavaUtilArrayList.remove(localObject);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("hideDiscuss end, uin[");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append("], discussList[");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+          ((StringBuilder)localObject).append("], hideDiscussCache[");
+          ((StringBuilder)localObject).append(this.b.size());
+          ((StringBuilder)localObject).append("]");
+          QLog.w("Q.contacttab.dscs", 1, ((StringBuilder)localObject).toString());
+          return true;
         }
-        return true;
       }
       finally {}
     }
+    return true;
   }
   
   public boolean a(String paramString1, String paramString2)
   {
-    boolean bool = false;
-    if ((ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(DiscussionMemberInfo.class, false, "discussionUin=? and memberUin=?", new String[] { paramString1, paramString2 }, null, null, "memberUin", null) != null) {
-      bool = true;
-    }
-    return bool;
+    return (ArrayList)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(DiscussionMemberInfo.class, false, "discussionUin=? and memberUin=?", new String[] { paramString1, paramString2 }, null, null, "memberUin", null) != null;
   }
   
+  /* Error */
   boolean a(ArrayList<DiscussionInfo> paramArrayList, long paramLong, boolean paramBoolean)
   {
-    EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-    label298:
-    for (;;)
-    {
-      try
-      {
-        localEntityTransaction.begin();
-        int i;
-        DiscussionInfo localDiscussionInfo;
-        if ((paramArrayList != null) && (paramArrayList.size() > 0))
-        {
-          i = 0;
-          if (i < paramArrayList.size())
-          {
-            localDiscussionInfo = (DiscussionInfo)paramArrayList.get(i);
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localDiscussionInfo.uin, localDiscussionInfo);
-            a(localDiscussionInfo);
-            if (!QLog.isColorLevel()) {
-              break label298;
-            }
-            QLog.d("Q.contacttab.dscs", 2, "disUin=" + localDiscussionInfo.uin.substring(0, 4) + " has been updated");
-            break label298;
-          }
-        }
-        if (paramBoolean)
-        {
-          paramArrayList = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.entrySet().iterator();
-          if (paramArrayList.hasNext())
-          {
-            localDiscussionInfo = (DiscussionInfo)((Map.Entry)paramArrayList.next()).getValue();
-            if (localDiscussionInfo.timeSec >= paramLong) {
-              continue;
-            }
-            paramArrayList.remove();
-            this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localDiscussionInfo);
-            if (!QLog.isColorLevel()) {
-              continue;
-            }
-            QLog.d("Q.contacttab.dscs", 2, "disUin=" + localDiscussionInfo.uin.substring(0, 4) + " has been removed");
-            continue;
-          }
-        }
-        i += 1;
-      }
-      catch (Exception paramArrayList)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("Q.contacttab.dscs", 2, "saveAllDiscussions exception:", paramArrayList);
-        }
-        localEntityTransaction.end();
-        paramBoolean = false;
-        c();
-        return paramBoolean;
-        localEntityTransaction.commit();
-        localEntityTransaction.end();
-        paramBoolean = true;
-      }
-      finally
-      {
-        localEntityTransaction.end();
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   4: invokevirtual 206	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   7: astore 7
+    //   9: iconst_0
+    //   10: istore 6
+    //   12: aload 7
+    //   14: invokevirtual 211	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   17: aload_1
+    //   18: ifnull +118 -> 136
+    //   21: aload_1
+    //   22: invokevirtual 154	java/util/ArrayList:size	()I
+    //   25: ifle +111 -> 136
+    //   28: iconst_0
+    //   29: istore 5
+    //   31: iload 5
+    //   33: aload_1
+    //   34: invokevirtual 154	java/util/ArrayList:size	()I
+    //   37: if_icmpge +99 -> 136
+    //   40: aload_1
+    //   41: iload 5
+    //   43: invokevirtual 177	java/util/ArrayList:get	(I)Ljava/lang/Object;
+    //   46: checkcast 96	com/tencent/mobileqq/data/DiscussionInfo
+    //   49: astore 8
+    //   51: aload_0
+    //   52: getfield 35	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   55: aload 8
+    //   57: getfield 181	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
+    //   60: aload 8
+    //   62: invokevirtual 185	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   65: pop
+    //   66: aload_0
+    //   67: aload 8
+    //   69: invokevirtual 216	com/tencent/mobileqq/app/DiscussionManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   72: pop
+    //   73: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   76: ifeq +261 -> 337
+    //   79: new 159	java/lang/StringBuilder
+    //   82: dup
+    //   83: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   86: astore 9
+    //   88: aload 9
+    //   90: ldc_w 619
+    //   93: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: pop
+    //   97: aload 9
+    //   99: aload 8
+    //   101: getfield 181	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
+    //   104: iconst_0
+    //   105: iconst_4
+    //   106: invokevirtual 563	java/lang/String:substring	(II)Ljava/lang/String;
+    //   109: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: pop
+    //   113: aload 9
+    //   115: ldc_w 621
+    //   118: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: pop
+    //   122: ldc 142
+    //   124: iconst_2
+    //   125: aload 9
+    //   127: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   130: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   133: goto +204 -> 337
+    //   136: iload 4
+    //   138: ifeq +133 -> 271
+    //   141: aload_0
+    //   142: getfield 35	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   145: invokevirtual 315	java/util/concurrent/ConcurrentHashMap:entrySet	()Ljava/util/Set;
+    //   148: invokeinterface 318 1 0
+    //   153: astore_1
+    //   154: aload_1
+    //   155: invokeinterface 260 1 0
+    //   160: ifeq +111 -> 271
+    //   163: aload_1
+    //   164: invokeinterface 264 1 0
+    //   169: checkcast 320	java/util/Map$Entry
+    //   172: invokeinterface 323 1 0
+    //   177: checkcast 96	com/tencent/mobileqq/data/DiscussionInfo
+    //   180: astore 8
+    //   182: aload 8
+    //   184: getfield 624	com/tencent/mobileqq/data/DiscussionInfo:timeSec	J
+    //   187: lload_2
+    //   188: lcmp
+    //   189: ifge -35 -> 154
+    //   192: aload_1
+    //   193: invokeinterface 626 1 0
+    //   198: aload_0
+    //   199: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   202: aload 8
+    //   204: invokevirtual 550	com/tencent/mobileqq/persistence/EntityManager:remove	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   207: pop
+    //   208: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   211: ifeq -57 -> 154
+    //   214: new 159	java/lang/StringBuilder
+    //   217: dup
+    //   218: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   221: astore 9
+    //   223: aload 9
+    //   225: ldc_w 619
+    //   228: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: pop
+    //   232: aload 9
+    //   234: aload 8
+    //   236: getfield 181	com/tencent/mobileqq/data/DiscussionInfo:uin	Ljava/lang/String;
+    //   239: iconst_0
+    //   240: iconst_4
+    //   241: invokevirtual 563	java/lang/String:substring	(II)Ljava/lang/String;
+    //   244: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   247: pop
+    //   248: aload 9
+    //   250: ldc_w 628
+    //   253: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   256: pop
+    //   257: ldc 142
+    //   259: iconst_2
+    //   260: aload 9
+    //   262: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   265: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   268: goto -114 -> 154
+    //   271: aload 7
+    //   273: invokevirtual 219	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   276: aload 7
+    //   278: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   281: iconst_1
+    //   282: istore 4
+    //   284: goto +33 -> 317
+    //   287: astore_1
+    //   288: goto +36 -> 324
+    //   291: astore_1
+    //   292: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   295: ifeq +13 -> 308
+    //   298: ldc 142
+    //   300: iconst_2
+    //   301: ldc_w 630
+    //   304: aload_1
+    //   305: invokestatic 632	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   308: aload 7
+    //   310: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   313: iload 6
+    //   315: istore 4
+    //   317: aload_0
+    //   318: invokespecial 443	com/tencent/mobileqq/app/DiscussionManager:c	()V
+    //   321: iload 4
+    //   323: ireturn
+    //   324: aload 7
+    //   326: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   329: goto +5 -> 334
+    //   332: aload_1
+    //   333: athrow
+    //   334: goto -2 -> 332
+    //   337: iload 5
+    //   339: iconst_1
+    //   340: iadd
+    //   341: istore 5
+    //   343: goto -312 -> 31
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	346	0	this	DiscussionManager
+    //   0	346	1	paramArrayList	ArrayList<DiscussionInfo>
+    //   0	346	2	paramLong	long
+    //   0	346	4	paramBoolean	boolean
+    //   29	313	5	i	int
+    //   10	304	6	bool	boolean
+    //   7	318	7	localEntityTransaction	EntityTransaction
+    //   49	186	8	localDiscussionInfo	DiscussionInfo
+    //   86	175	9	localStringBuilder	StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   12	17	287	finally
+    //   21	28	287	finally
+    //   31	133	287	finally
+    //   141	154	287	finally
+    //   154	268	287	finally
+    //   271	276	287	finally
+    //   292	308	287	finally
+    //   12	17	291	java/lang/Exception
+    //   21	28	291	java/lang/Exception
+    //   31	133	291	java/lang/Exception
+    //   141	154	291	java/lang/Exception
+    //   154	268	291	java/lang/Exception
+    //   271	276	291	java/lang/Exception
   }
   
   public ArrayList<String> b(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
-    paramString = a(paramString);
-    if (paramString != null)
+    ArrayList localArrayList1 = new ArrayList();
+    ArrayList localArrayList2 = a(paramString);
+    paramString = localArrayList1;
+    if (localArrayList2 != null)
     {
-      paramString = paramString.iterator();
+      paramString = localArrayList2.iterator();
       while (paramString.hasNext()) {
-        localArrayList.add(((DiscussionMemberInfo)paramString.next()).memberUin);
+        localArrayList1.add(((DiscussionMemberInfo)paramString.next()).memberUin);
       }
+      paramString = GroupIconHelper.a(localArrayList1);
     }
-    for (paramString = GroupIconHelper.a(localArrayList);; paramString = localArrayList)
-    {
-      if (paramString.isEmpty()) {
-        paramString.add(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      }
-      return paramString;
+    if (paramString.isEmpty()) {
+      paramString.add(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     }
+    return paramString;
   }
   
   public void b(DiscussionInfo paramDiscussionInfo)
   {
-    if ((paramDiscussionInfo != null) && (this.jdField_a_of_type_JavaUtilArrayList != null))
+    if (paramDiscussionInfo != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      if (localObject != null)
       {
-        DiscussionInfo localDiscussionInfo = (DiscussionInfo)localIterator.next();
-        if (localDiscussionInfo.uin.equals(paramDiscussionInfo.uin)) {
-          localDiscussionInfo.hasCollect = paramDiscussionInfo.hasCollect;
+        localObject = ((ArrayList)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          DiscussionInfo localDiscussionInfo = (DiscussionInfo)((Iterator)localObject).next();
+          if (localDiscussionInfo.uin.equals(paramDiscussionInfo.uin)) {
+            localDiscussionInfo.hasCollect = paramDiscussionInfo.hasCollect;
+          }
         }
       }
     }
@@ -1096,249 +1452,368 @@ public class DiscussionManager
   {
     // Byte code:
     //   0: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +39 -> 42
-    //   6: ldc 142
-    //   8: iconst_2
-    //   9: new 159	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 160	java/lang/StringBuilder:<init>	()V
-    //   16: ldc_w 645
-    //   19: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   22: aload_1
-    //   23: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   26: ldc_w 647
-    //   29: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: aload_2
-    //   33: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   39: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   42: aload_1
-    //   43: invokestatic 395	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   46: ifeq +4 -> 50
-    //   49: return
-    //   50: aload_0
-    //   51: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   54: invokevirtual 206	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
-    //   57: astore_3
-    //   58: aload_3
-    //   59: invokevirtual 211	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
-    //   62: aload_0
-    //   63: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   66: ldc 109
-    //   68: iconst_0
-    //   69: ldc_w 649
-    //   72: iconst_1
-    //   73: anewarray 130	java/lang/String
-    //   76: dup
-    //   77: iconst_0
-    //   78: aload_1
-    //   79: aastore
-    //   80: aconst_null
-    //   81: aconst_null
-    //   82: ldc_w 406
-    //   85: aconst_null
-    //   86: invokevirtual 150	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
-    //   89: checkcast 60	java/util/ArrayList
-    //   92: astore 4
-    //   94: aload 4
-    //   96: ifnull +174 -> 270
-    //   99: aload 4
-    //   101: invokevirtual 154	java/util/ArrayList:size	()I
-    //   104: ifle +166 -> 270
-    //   107: aload 4
-    //   109: invokevirtual 278	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   112: astore 4
-    //   114: aload 4
-    //   116: invokeinterface 260 1 0
-    //   121: ifeq +149 -> 270
+    //   3: ifeq +49 -> 52
+    //   6: new 159	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   13: astore_3
+    //   14: aload_3
+    //   15: ldc_w 645
+    //   18: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   21: pop
+    //   22: aload_3
+    //   23: aload_1
+    //   24: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   27: pop
+    //   28: aload_3
+    //   29: ldc_w 647
+    //   32: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: pop
+    //   36: aload_3
+    //   37: aload_2
+    //   38: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   41: pop
+    //   42: ldc 142
+    //   44: iconst_2
+    //   45: aload_3
+    //   46: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   49: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   52: aload_1
+    //   53: invokestatic 395	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   56: ifeq +4 -> 60
+    //   59: return
+    //   60: aload_0
+    //   61: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   64: invokevirtual 206	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   67: astore_3
+    //   68: aload_3
+    //   69: invokevirtual 211	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   72: aload_0
+    //   73: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   76: ldc 109
+    //   78: iconst_0
+    //   79: ldc_w 649
+    //   82: iconst_1
+    //   83: anewarray 130	java/lang/String
+    //   86: dup
+    //   87: iconst_0
+    //   88: aload_1
+    //   89: aastore
+    //   90: aconst_null
+    //   91: aconst_null
+    //   92: ldc_w 406
+    //   95: aconst_null
+    //   96: invokevirtual 150	com/tencent/mobileqq/persistence/EntityManager:query	(Ljava/lang/Class;ZLjava/lang/String;[Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)Ljava/util/List;
+    //   99: checkcast 60	java/util/ArrayList
+    //   102: astore 4
+    //   104: aload 4
+    //   106: ifnull +152 -> 258
+    //   109: aload 4
+    //   111: invokevirtual 154	java/util/ArrayList:size	()I
+    //   114: ifle +144 -> 258
+    //   117: aload 4
+    //   119: invokevirtual 278	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   122: astore 4
     //   124: aload 4
-    //   126: invokeinterface 264 1 0
-    //   131: checkcast 109	com/tencent/mobileqq/data/DiscussionMemberInfo
-    //   134: getfield 437	com/tencent/mobileqq/data/DiscussionMemberInfo:discussionUin	Ljava/lang/String;
-    //   137: astore 5
-    //   139: aload_0
-    //   140: aload 5
-    //   142: invokevirtual 356	com/tencent/mobileqq/app/DiscussionManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionInfo;
-    //   145: astore 6
-    //   147: aload_0
-    //   148: aload 5
-    //   150: invokevirtual 193	com/tencent/mobileqq/app/DiscussionManager:a	(Ljava/lang/String;)Ljava/util/Map;
-    //   153: astore 7
-    //   155: aload 7
-    //   157: ifnull +45 -> 202
-    //   160: aload 7
-    //   162: aload_1
-    //   163: invokeinterface 351 2 0
-    //   168: checkcast 109	com/tencent/mobileqq/data/DiscussionMemberInfo
-    //   171: astore 8
-    //   173: aload 8
-    //   175: ifnull +27 -> 202
-    //   178: aload 8
-    //   180: aload_2
-    //   181: putfield 362	com/tencent/mobileqq/data/DiscussionMemberInfo:inteRemark	Ljava/lang/String;
-    //   184: aload 8
-    //   186: ldc2_w 377
-    //   189: putfield 373	com/tencent/mobileqq/data/DiscussionMemberInfo:inteRemarkSource	J
-    //   192: aload_0
-    //   193: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
-    //   196: aload 8
-    //   198: invokevirtual 570	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   201: pop
-    //   202: aload 6
-    //   204: ifnull -90 -> 114
-    //   207: aload 6
-    //   209: aload 6
-    //   211: getfield 652	com/tencent/mobileqq/data/DiscussionInfo:DiscussionFlag	J
-    //   214: ldc2_w 653
-    //   217: lor
-    //   218: putfield 652	com/tencent/mobileqq/data/DiscussionInfo:DiscussionFlag	J
-    //   221: aload_0
-    //   222: getfield 65	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   225: aload 5
-    //   227: aload 6
-    //   229: aload 7
-    //   231: iconst_0
-    //   232: invokestatic 196	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/data/DiscussionInfo;Ljava/util/Map;Z)Z
-    //   235: ifeq -121 -> 114
-    //   238: aload_0
-    //   239: aload 6
-    //   241: invokevirtual 216	com/tencent/mobileqq/app/DiscussionManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
-    //   244: pop
-    //   245: goto -131 -> 114
-    //   248: astore_1
-    //   249: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   252: ifeq +13 -> 265
-    //   255: ldc 142
-    //   257: iconst_2
-    //   258: ldc_w 656
-    //   261: aload_1
-    //   262: invokestatic 659	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   265: aload_3
-    //   266: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   269: return
-    //   270: aload_3
-    //   271: invokevirtual 219	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
-    //   274: aload_3
-    //   275: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   278: return
-    //   279: astore_1
-    //   280: aload_3
-    //   281: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
-    //   284: aload_1
-    //   285: athrow
+    //   126: invokeinterface 260 1 0
+    //   131: ifeq +127 -> 258
+    //   134: aload 4
+    //   136: invokeinterface 264 1 0
+    //   141: checkcast 109	com/tencent/mobileqq/data/DiscussionMemberInfo
+    //   144: getfield 437	com/tencent/mobileqq/data/DiscussionMemberInfo:discussionUin	Ljava/lang/String;
+    //   147: astore 5
+    //   149: aload_0
+    //   150: aload 5
+    //   152: invokevirtual 356	com/tencent/mobileqq/app/DiscussionManager:a	(Ljava/lang/String;)Lcom/tencent/mobileqq/data/DiscussionInfo;
+    //   155: astore 6
+    //   157: aload_0
+    //   158: aload 5
+    //   160: invokevirtual 193	com/tencent/mobileqq/app/DiscussionManager:a	(Ljava/lang/String;)Ljava/util/Map;
+    //   163: astore 7
+    //   165: aload 7
+    //   167: ifnull +45 -> 212
+    //   170: aload 7
+    //   172: aload_1
+    //   173: invokeinterface 351 2 0
+    //   178: checkcast 109	com/tencent/mobileqq/data/DiscussionMemberInfo
+    //   181: astore 8
+    //   183: aload 8
+    //   185: ifnull +27 -> 212
+    //   188: aload 8
+    //   190: aload_2
+    //   191: putfield 362	com/tencent/mobileqq/data/DiscussionMemberInfo:inteRemark	Ljava/lang/String;
+    //   194: aload 8
+    //   196: ldc2_w 374
+    //   199: putfield 373	com/tencent/mobileqq/data/DiscussionMemberInfo:inteRemarkSource	J
+    //   202: aload_0
+    //   203: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   206: aload 8
+    //   208: invokevirtual 568	com/tencent/mobileqq/persistence/EntityManager:update	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   211: pop
+    //   212: aload 6
+    //   214: ifnull -90 -> 124
+    //   217: aload 6
+    //   219: aload 6
+    //   221: getfield 652	com/tencent/mobileqq/data/DiscussionInfo:DiscussionFlag	J
+    //   224: ldc2_w 653
+    //   227: lor
+    //   228: putfield 652	com/tencent/mobileqq/data/DiscussionInfo:DiscussionFlag	J
+    //   231: aload_0
+    //   232: getfield 65	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   235: aload 5
+    //   237: aload 6
+    //   239: aload 7
+    //   241: iconst_0
+    //   242: invokestatic 196	com/tencent/mobileqq/utils/ContactUtils:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Ljava/lang/String;Lcom/tencent/mobileqq/data/DiscussionInfo;Ljava/util/Map;Z)Z
+    //   245: ifeq -121 -> 124
+    //   248: aload_0
+    //   249: aload 6
+    //   251: invokevirtual 216	com/tencent/mobileqq/app/DiscussionManager:a	(Lcom/tencent/mobileqq/persistence/Entity;)Z
+    //   254: pop
+    //   255: goto -131 -> 124
+    //   258: aload_3
+    //   259: invokevirtual 219	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   262: goto +24 -> 286
+    //   265: astore_1
+    //   266: goto +25 -> 291
+    //   269: astore_1
+    //   270: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   273: ifeq +13 -> 286
+    //   276: ldc 142
+    //   278: iconst_2
+    //   279: ldc_w 656
+    //   282: aload_1
+    //   283: invokestatic 659	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   286: aload_3
+    //   287: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   290: return
+    //   291: aload_3
+    //   292: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   295: goto +5 -> 300
+    //   298: aload_1
+    //   299: athrow
+    //   300: goto -2 -> 298
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	286	0	this	DiscussionManager
-    //   0	286	1	paramString1	String
-    //   0	286	2	paramString2	String
-    //   57	224	3	localEntityTransaction	EntityTransaction
-    //   92	33	4	localObject	Object
-    //   137	89	5	str	String
-    //   145	95	6	localDiscussionInfo	DiscussionInfo
-    //   153	77	7	localMap	Map
-    //   171	26	8	localDiscussionMemberInfo	DiscussionMemberInfo
+    //   0	303	0	this	DiscussionManager
+    //   0	303	1	paramString1	String
+    //   0	303	2	paramString2	String
+    //   13	279	3	localObject1	Object
+    //   102	33	4	localObject2	Object
+    //   147	89	5	str	String
+    //   155	95	6	localDiscussionInfo	DiscussionInfo
+    //   163	77	7	localMap	Map
+    //   181	26	8	localDiscussionMemberInfo	DiscussionMemberInfo
     // Exception table:
     //   from	to	target	type
-    //   58	94	248	java/lang/Exception
-    //   99	114	248	java/lang/Exception
-    //   114	155	248	java/lang/Exception
-    //   160	173	248	java/lang/Exception
-    //   178	202	248	java/lang/Exception
-    //   207	245	248	java/lang/Exception
-    //   270	274	248	java/lang/Exception
-    //   58	94	279	finally
-    //   99	114	279	finally
-    //   114	155	279	finally
-    //   160	173	279	finally
-    //   178	202	279	finally
-    //   207	245	279	finally
-    //   249	265	279	finally
-    //   270	274	279	finally
+    //   68	104	265	finally
+    //   109	124	265	finally
+    //   124	165	265	finally
+    //   170	183	265	finally
+    //   188	212	265	finally
+    //   217	255	265	finally
+    //   258	262	265	finally
+    //   270	286	265	finally
+    //   68	104	269	java/lang/Exception
+    //   109	124	269	java/lang/Exception
+    //   124	165	269	java/lang/Exception
+    //   170	183	269	java/lang/Exception
+    //   188	212	269	java/lang/Exception
+    //   217	255	269	java/lang/Exception
+    //   258	262	269	java/lang/Exception
   }
   
+  /* Error */
   public void b(List<DiscussionMemberInfo> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.dscs", 2, "saveDiscussionMemberInfoList");
-    }
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
-    }
-    if (paramList.size() == 1)
-    {
-      a((DiscussionMemberInfo)paramList.get(0));
-      return;
-    }
-    HashSet localHashSet = new HashSet();
-    EntityTransaction localEntityTransaction = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.getTransaction();
-    localEntityTransaction.begin();
-    for (;;)
-    {
-      try
-      {
-        if (QLog.isColorLevel())
-        {
-          localStringBuffer = new StringBuffer();
-          paramList = paramList.iterator();
-          if (paramList.hasNext())
-          {
-            DiscussionMemberInfo localDiscussionMemberInfo = (DiscussionMemberInfo)paramList.next();
-            String str = localDiscussionMemberInfo.discussionUin + "_" + localDiscussionMemberInfo.memberUin;
-            if (QLog.isColorLevel())
-            {
-              localStringBuffer.append(str);
-              localStringBuffer.append(";");
-            }
-            if (localHashSet.contains(str)) {
-              continue;
-            }
-            a(localDiscussionMemberInfo);
-            localHashSet.add(str);
-            continue;
-          }
-        }
-        StringBuffer localStringBuffer = null;
-      }
-      catch (Exception paramList)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("Q.contacttab.dscs", 2, "saveDiscussionMemberInfoList ex=", paramList);
-        }
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.contacttab.dscs", 2, "saveDiscussionMemberInfoList info=" + localStringBuffer.toString());
-        }
-        localEntityTransaction.commit();
-        return;
-      }
-      finally
-      {
-        localEntityTransaction.end();
-      }
-    }
+    // Byte code:
+    //   0: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +12 -> 15
+    //   6: ldc 142
+    //   8: iconst_2
+    //   9: ldc_w 661
+    //   12: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   15: aload_1
+    //   16: ifnull +277 -> 293
+    //   19: aload_1
+    //   20: invokeinterface 329 1 0
+    //   25: ifne +4 -> 29
+    //   28: return
+    //   29: aload_1
+    //   30: invokeinterface 329 1 0
+    //   35: iconst_1
+    //   36: if_icmpne +18 -> 54
+    //   39: aload_0
+    //   40: aload_1
+    //   41: iconst_0
+    //   42: invokeinterface 662 2 0
+    //   47: checkcast 109	com/tencent/mobileqq/data/DiscussionMemberInfo
+    //   50: invokevirtual 378	com/tencent/mobileqq/app/DiscussionManager:a	(Lcom/tencent/mobileqq/data/DiscussionMemberInfo;)V
+    //   53: return
+    //   54: new 49	java/util/HashSet
+    //   57: dup
+    //   58: invokespecial 50	java/util/HashSet:<init>	()V
+    //   61: astore 4
+    //   63: aload_0
+    //   64: getfield 79	com/tencent/mobileqq/app/DiscussionManager:jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager	Lcom/tencent/mobileqq/persistence/EntityManager;
+    //   67: invokevirtual 206	com/tencent/mobileqq/persistence/EntityManager:getTransaction	()Lcom/tencent/mobileqq/persistence/EntityTransaction;
+    //   70: astore_3
+    //   71: aload_3
+    //   72: invokevirtual 211	com/tencent/mobileqq/persistence/EntityTransaction:begin	()V
+    //   75: aconst_null
+    //   76: astore_2
+    //   77: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   80: ifeq +11 -> 91
+    //   83: new 664	java/lang/StringBuffer
+    //   86: dup
+    //   87: invokespecial 665	java/lang/StringBuffer:<init>	()V
+    //   90: astore_2
+    //   91: aload_1
+    //   92: invokeinterface 330 1 0
+    //   97: astore_1
+    //   98: aload_1
+    //   99: invokeinterface 260 1 0
+    //   104: ifeq +109 -> 213
+    //   107: aload_1
+    //   108: invokeinterface 264 1 0
+    //   113: checkcast 109	com/tencent/mobileqq/data/DiscussionMemberInfo
+    //   116: astore 5
+    //   118: new 159	java/lang/StringBuilder
+    //   121: dup
+    //   122: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   125: astore 6
+    //   127: aload 6
+    //   129: aload 5
+    //   131: getfield 437	com/tencent/mobileqq/data/DiscussionMemberInfo:discussionUin	Ljava/lang/String;
+    //   134: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   137: pop
+    //   138: aload 6
+    //   140: ldc_w 497
+    //   143: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   146: pop
+    //   147: aload 6
+    //   149: aload 5
+    //   151: getfield 413	com/tencent/mobileqq/data/DiscussionMemberInfo:memberUin	Ljava/lang/String;
+    //   154: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: pop
+    //   158: aload 6
+    //   160: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: astore 6
+    //   165: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   168: ifeq +18 -> 186
+    //   171: aload_2
+    //   172: aload 6
+    //   174: invokevirtual 668	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   177: pop
+    //   178: aload_2
+    //   179: ldc_w 670
+    //   182: invokevirtual 668	java/lang/StringBuffer:append	(Ljava/lang/String;)Ljava/lang/StringBuffer;
+    //   185: pop
+    //   186: aload 4
+    //   188: aload 6
+    //   190: invokevirtual 502	java/util/HashSet:contains	(Ljava/lang/Object;)Z
+    //   193: ifne -95 -> 98
+    //   196: aload_0
+    //   197: aload 5
+    //   199: invokevirtual 378	com/tencent/mobileqq/app/DiscussionManager:a	(Lcom/tencent/mobileqq/data/DiscussionMemberInfo;)V
+    //   202: aload 4
+    //   204: aload 6
+    //   206: invokevirtual 503	java/util/HashSet:add	(Ljava/lang/Object;)Z
+    //   209: pop
+    //   210: goto -112 -> 98
+    //   213: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   216: ifeq +38 -> 254
+    //   219: new 159	java/lang/StringBuilder
+    //   222: dup
+    //   223: invokespecial 160	java/lang/StringBuilder:<init>	()V
+    //   226: astore_1
+    //   227: aload_1
+    //   228: ldc_w 672
+    //   231: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   234: pop
+    //   235: aload_1
+    //   236: aload_2
+    //   237: invokevirtual 673	java/lang/StringBuffer:toString	()Ljava/lang/String;
+    //   240: invokevirtual 166	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   243: pop
+    //   244: ldc 142
+    //   246: iconst_2
+    //   247: aload_1
+    //   248: invokevirtual 172	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   251: invokestatic 138	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   254: aload_3
+    //   255: invokevirtual 219	com/tencent/mobileqq/persistence/EntityTransaction:commit	()V
+    //   258: goto +24 -> 282
+    //   261: astore_1
+    //   262: goto +25 -> 287
+    //   265: astore_1
+    //   266: invokestatic 118	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   269: ifeq +13 -> 282
+    //   272: ldc 142
+    //   274: iconst_2
+    //   275: ldc_w 675
+    //   278: aload_1
+    //   279: invokestatic 659	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   282: aload_3
+    //   283: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   286: return
+    //   287: aload_3
+    //   288: invokevirtual 222	com/tencent/mobileqq/persistence/EntityTransaction:end	()V
+    //   291: aload_1
+    //   292: athrow
+    //   293: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	294	0	this	DiscussionManager
+    //   0	294	1	paramList	List<DiscussionMemberInfo>
+    //   76	161	2	localStringBuffer	java.lang.StringBuffer
+    //   70	218	3	localEntityTransaction	EntityTransaction
+    //   61	142	4	localHashSet	HashSet
+    //   116	82	5	localDiscussionMemberInfo	DiscussionMemberInfo
+    //   125	80	6	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   77	91	261	finally
+    //   91	98	261	finally
+    //   98	186	261	finally
+    //   186	210	261	finally
+    //   213	254	261	finally
+    //   254	258	261	finally
+    //   266	282	261	finally
+    //   77	91	265	java/lang/Exception
+    //   91	98	265	java/lang/Exception
+    //   98	186	265	java/lang/Exception
+    //   186	210	265	java/lang/Exception
+    //   213	254	265	java/lang/Exception
+    //   254	258	265	java/lang/Exception
   }
   
   public boolean b(String paramString)
   {
-    boolean bool2 = false;
     DiscussionInfo localDiscussionInfo = a(paramString);
+    boolean bool1 = QLog.isColorLevel();
+    boolean bool2 = false;
     Object localObject;
-    boolean bool1;
-    if (QLog.isColorLevel())
+    if (bool1)
     {
-      localObject = new StringBuilder().append("reShowDiscuss begin, uin[").append(paramString).append("], info[");
-      if (localDiscussionInfo != null)
-      {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reShowDiscuss begin, uin[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("], info[");
+      if (localDiscussionInfo != null) {
         bool1 = true;
-        QLog.w("Q.contacttab.dscs", 1, bool1 + "], discussList[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "], hideDiscussCache[" + this.b.size() + "]");
+      } else {
+        bool1 = false;
       }
+      ((StringBuilder)localObject).append(bool1);
+      ((StringBuilder)localObject).append("], discussList[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      ((StringBuilder)localObject).append("], hideDiscussCache[");
+      ((StringBuilder)localObject).append(this.b.size());
+      ((StringBuilder)localObject).append("]");
+      QLog.w("Q.contacttab.dscs", 1, ((StringBuilder)localObject).toString());
     }
-    else
-    {
-      if (localDiscussionInfo == null) {
-        break label293;
-      }
-    }
+    if (localDiscussionInfo != null) {}
     for (;;)
     {
       try
@@ -1346,7 +1821,7 @@ public class DiscussionManager
         this.b.remove(localDiscussionInfo.uin);
         localObject = this.jdField_a_of_type_JavaUtilArrayList.iterator();
         if (!((Iterator)localObject).hasNext()) {
-          break label288;
+          break label360;
         }
         if (((DiscussionInfo)((Iterator)localObject).next()).uin != localDiscussionInfo.uin) {
           continue;
@@ -1355,23 +1830,30 @@ public class DiscussionManager
         if (!bool1) {
           this.jdField_a_of_type_JavaUtilArrayList.add(localDiscussionInfo);
         }
-        if (QLog.isColorLevel())
-        {
-          paramString = new StringBuilder().append("reShowDiscuss end, uin[").append(paramString).append("], info[");
-          if (localDiscussionInfo != null) {
-            bool2 = true;
-          }
-          QLog.w("Q.contacttab.dscs", 1, bool2 + "], bExist[" + bool1 + "], discussList[" + this.jdField_a_of_type_JavaUtilArrayList.size() + "], hideDiscussCache[" + this.b.size() + "]");
-        }
-        return true;
       }
       finally {}
       bool1 = false;
-      break;
-      label288:
-      bool1 = false;
-      continue;
-      label293:
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("reShowDiscuss end, uin[");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("], info[");
+        if (localDiscussionInfo != null) {
+          bool2 = true;
+        }
+        ((StringBuilder)localObject).append(bool2);
+        ((StringBuilder)localObject).append("], bExist[");
+        ((StringBuilder)localObject).append(bool1);
+        ((StringBuilder)localObject).append("], discussList[");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+        ((StringBuilder)localObject).append("], hideDiscussCache[");
+        ((StringBuilder)localObject).append(this.b.size());
+        ((StringBuilder)localObject).append("]");
+        QLog.w("Q.contacttab.dscs", 1, ((StringBuilder)localObject).toString());
+      }
+      return true;
+      label360:
       bool1 = false;
     }
   }
@@ -1379,14 +1861,23 @@ public class DiscussionManager
   public boolean c(String paramString)
   {
     DiscussionInfo localDiscussionInfo = a(paramString);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.contacttab.dscs", 2, "deleteDiscuss uin=" + paramString);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deleteDiscuss uin=");
+      localStringBuilder.append(paramString);
+      QLog.d("Q.contacttab.dscs", 2, localStringBuilder.toString());
     }
     if (localDiscussionInfo != null)
     {
       this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString);
       this.jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.remove(paramString);
-      paramString = "delete from DiscussionMemberInfo where discussionUin='" + paramString + "'";
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("delete from DiscussionMemberInfo where discussionUin='");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("'");
+      paramString = localStringBuilder.toString();
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL(paramString);
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.remove(localDiscussionInfo);
       c();
@@ -1401,7 +1892,7 @@ public class DiscussionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.DiscussionManager
  * JD-Core Version:    0.7.0.1
  */

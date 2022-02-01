@@ -4,9 +4,10 @@ import android.text.TextUtils;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.google.gson.Gson;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -20,21 +21,14 @@ public class SearchWordHistoryManager
 {
   private static final SearchWordHistoryManager jdField_a_of_type_ComTencentMobileqqAppSearchWordHistoryManager;
   public static final String a;
-  private static final CopyOnWriteArrayList<SearchWordHistoryManager.OnSearchHistoryChangeListener> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList;
+  private static final CopyOnWriteArrayList<SearchWordHistoryManager.OnSearchHistoryChangeListener> jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
   public static boolean a;
   
   static
   {
-    if (!SearchWordHistoryManager.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      b = bool;
-      jdField_a_of_type_JavaLangString = SearchWordHistoryManager.class.getSimpleName();
-      jdField_a_of_type_ComTencentMobileqqAppSearchWordHistoryManager = new SearchWordHistoryManager();
-      jdField_a_of_type_Boolean = false;
-      jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList = new CopyOnWriteArrayList();
-      return;
-    }
+    jdField_a_of_type_JavaLangString = SearchWordHistoryManager.class.getSimpleName();
+    jdField_a_of_type_ComTencentMobileqqAppSearchWordHistoryManager = new SearchWordHistoryManager();
+    jdField_a_of_type_Boolean = false;
   }
   
   public SearchWordHistoryManager() {}
@@ -50,7 +44,7 @@ public class SearchWordHistoryManager
   @NonNull
   private String a()
   {
-    return (String)ReadInJoyHelper.a("search_keyword_list", "");
+    return (String)((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getReadInJoySpValue("search_keyword_list", "");
   }
   
   @NonNull
@@ -61,7 +55,11 @@ public class SearchWordHistoryManager
       paramList = new Gson().toJson(paramList, a());
       return paramList;
     }
-    catch (Exception paramList) {}
+    catch (Exception paramList)
+    {
+      label18:
+      break label18;
+    }
     return "";
   }
   
@@ -83,7 +81,11 @@ public class SearchWordHistoryManager
       }
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label35:
+      break label35;
+    }
     return new ArrayList();
   }
   
@@ -99,7 +101,7 @@ public class SearchWordHistoryManager
       localObject = paramList.subList(0, 30);
     }
     jdField_a_of_type_Boolean = true;
-    ReadInJoyHelper.a("search_keyword_list", a((List)localObject));
+    ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).updateReadInJoySpValue("search_keyword_list", a((List)localObject));
     b();
   }
   
@@ -191,18 +193,16 @@ public class SearchWordHistoryManager
     List localList = a();
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    if (i < paramJSONArray.length())
+    while (i < paramJSONArray.length())
     {
       Object localObject = paramJSONArray.optString(i);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (;;)
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        i += 1;
-        break;
         localObject = TKDSearchHistoryBean.createFromKeyword((String)localObject);
         localArrayList.add(localObject);
         localList.remove(localObject);
       }
+      i += 1;
     }
     localArrayList.addAll(localList);
     a(localArrayList);
@@ -212,7 +212,7 @@ public class SearchWordHistoryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SearchWordHistoryManager
  * JD-Core Version:    0.7.0.1
  */

@@ -12,10 +12,10 @@ class VerifyCodeActivity$4
   {
     if (paramEditable.length() >= 4)
     {
-      VerifyCodeActivity.c(this.a, true);
+      VerifyCodeActivity.access$200(this.a, true);
       return;
     }
-    VerifyCodeActivity.d(this.a, false);
+    VerifyCodeActivity.access$300(this.a, false);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -24,7 +24,7 @@ class VerifyCodeActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VerifyCodeActivity.4
  * JD-Core Version:    0.7.0.1
  */

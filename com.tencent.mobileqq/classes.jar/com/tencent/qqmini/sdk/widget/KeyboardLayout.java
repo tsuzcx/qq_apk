@@ -80,78 +80,72 @@ public class KeyboardLayout
   
   public void setParam(String paramString)
   {
-    boolean bool1 = true;
-    if (!TextUtils.isEmpty(paramString)) {
-      label303:
-      for (;;)
+    if (!TextUtils.isEmpty(paramString)) {}
+    for (;;)
+    {
+      try
       {
-        try
+        paramString = new JSONObject(paramString);
+        Object localObject = paramString.optString("defaultValue", "");
+        int j = paramString.optInt("maxLength", -1);
+        boolean bool3 = paramString.optBoolean("multiple", false);
+        boolean bool2 = paramString.optBoolean("confirmHold", false);
+        String str = paramString.optString("confirmType");
+        int i = 6;
+        paramString = getResources().getText(R.string.mini_sdk_keyboard_ok);
+        if ("send".equals(str))
         {
-          paramString = new JSONObject(paramString);
-          Object localObject = paramString.optString("defaultValue", "");
-          int j = paramString.optInt("maxLength", -1);
-          boolean bool3 = paramString.optBoolean("multiple", false);
-          boolean bool2 = paramString.optBoolean("confirmHold", false);
-          String str = paramString.optString("confirmType");
-          int i = 6;
-          paramString = getResources().getText(R.string.mini_sdk_keyboard_ok);
-          if ("send".equals(str))
-          {
-            i = 4;
-            paramString = getResources().getText(R.string.mini_sdk_keyboard_send);
-            this.mInputET.setText((CharSequence)localObject);
-            if (j >= 0)
-            {
-              this.mInputET.setFilters(new InputFilter[] { new InputFilter.LengthFilter(j) });
-              localObject = this.mInputET;
-              if (bool3) {
-                break label303;
-              }
-              ((EditText)localObject).setSingleLine(bool1);
-              this.mInputET.setImeOptions(0x10000000 | i | 0x2000000);
-              this.mInputET.setSelection(this.mInputET.getText().length());
-              this.mConfirmHold = bool2;
-              this.mConfirmBT.setText(paramString);
-            }
-          }
-          else
-          {
-            if ("search".equals(str))
-            {
-              i = 3;
-              paramString = getResources().getText(R.string.mini_sdk_keyboard_search);
-              continue;
-            }
-            if ("next".equals(str))
-            {
-              i = 5;
-              paramString = getResources().getText(R.string.mini_sdk_keyboard_next);
-              continue;
-            }
-            if (!"go".equals(str)) {
-              continue;
-            }
-            i = 2;
-            paramString = getResources().getText(R.string.mini_sdk_keyboard_go);
-            continue;
-          }
+          i = 4;
+          paramString = getResources().getText(R.string.mini_sdk_keyboard_send);
+        }
+        else if ("search".equals(str))
+        {
+          i = 3;
+          paramString = getResources().getText(R.string.mini_sdk_keyboard_search);
+        }
+        else if ("next".equals(str))
+        {
+          i = 5;
+          paramString = getResources().getText(R.string.mini_sdk_keyboard_next);
+        }
+        else if ("go".equals(str))
+        {
+          i = 2;
+          paramString = getResources().getText(R.string.mini_sdk_keyboard_go);
+        }
+        this.mInputET.setText((CharSequence)localObject);
+        bool1 = true;
+        if (j >= 0) {
+          this.mInputET.setFilters(new InputFilter[] { new InputFilter.LengthFilter(j) });
+        } else {
           this.mInputET.setFilters(new InputFilter[0]);
-          continue;
-          bool1 = false;
         }
-        catch (JSONException paramString)
-        {
-          QMLog.e("KeyboardLayout", "setParam exception", paramString);
-          return;
+        localObject = this.mInputET;
+        if (bool3) {
+          break label315;
         }
+        ((EditText)localObject).setSingleLine(bool1);
+        this.mInputET.setImeOptions(0x10000000 | i | 0x2000000);
+        this.mInputET.setSelection(this.mInputET.getText().length());
+        this.mConfirmHold = bool2;
+        this.mConfirmBT.setText(paramString);
+        return;
       }
+      catch (JSONException paramString)
+      {
+        QMLog.e("KeyboardLayout", "setParam exception", paramString);
+        return;
+      }
+      QMLog.e("KeyboardLayout", "setParam no param ?");
+      return;
+      label315:
+      boolean bool1 = false;
     }
-    QMLog.e("KeyboardLayout", "setParam no param ?");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.KeyboardLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import android.animation.ValueAnimator;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import com.tencent.qphone.base.util.QLog;
 
 class SixCombolEffectView$3
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   SixCombolEffectView$3(SixCombolEffectView paramSixCombolEffectView) {}
   
@@ -25,18 +25,22 @@ class SixCombolEffectView$3
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (SixCombolEffectView.a(this.a)) {}
-    do
-    {
+    if (SixCombolEffectView.a(this.a)) {
       return;
-      SixCombolEffectView.jdField_a_of_type_Int = 1;
-    } while (!QLog.isColorLevel());
-    QLog.w("SixCombolEffectView", 2, "Animation 1 ,mAnimationState = " + SixCombolEffectView.jdField_a_of_type_Int);
+    }
+    SixCombolEffectView.jdField_a_of_type_Int = 1;
+    if (QLog.isColorLevel())
+    {
+      paramAnimator = new StringBuilder();
+      paramAnimator.append("Animation 1 ,mAnimationState = ");
+      paramAnimator.append(SixCombolEffectView.jdField_a_of_type_Int);
+      QLog.w("SixCombolEffectView", 2, paramAnimator.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.SixCombolEffectView.3
  * JD-Core Version:    0.7.0.1
  */

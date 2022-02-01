@@ -22,11 +22,10 @@ public class StoryMessage
   
   public boolean checkResource()
   {
-    if ((this.imageUri != null) && (this.videoUri != null)) {}
-    while ((this.imageUri == null) && (this.videoUri == null)) {
+    if ((this.imageUri != null) && (this.videoUri != null)) {
       return false;
     }
-    return true;
+    return (this.imageUri != null) || (this.videoUri != null);
   }
   
   public int describeContents()

@@ -34,13 +34,13 @@ public class QQTextBuilder
         localObject = (ITextProcessor)((Class)localObject).newInstance();
         sTextProcessorList.add(localObject);
       }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        QLog.e("QQTextBuilder", 1, "initTextProcessor error! ", localIllegalAccessException);
-      }
       catch (InstantiationException localInstantiationException)
       {
         QLog.e("QQTextBuilder", 1, "initTextProcessor error! ", localInstantiationException);
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        QLog.e("QQTextBuilder", 1, "initTextProcessor error! ", localIllegalAccessException);
       }
     }
   }
@@ -99,87 +99,112 @@ public class QQTextBuilder
     }
     catch (IndexOutOfBoundsException paramArrayOfChar)
     {
-      QLog.e("QQTextBuilder", 1, "text:" + toPlainText());
+      label38:
+      break label38;
     }
+    paramArrayOfChar = new StringBuilder();
+    paramArrayOfChar.append("text:");
+    paramArrayOfChar.append(toPlainText());
+    QLog.e("QQTextBuilder", 1, paramArrayOfChar.toString());
   }
   
   public SpannableStringBuilder replace(int paramInt1, int paramInt2, CharSequence paramCharSequence, int paramInt3, int paramInt4)
   {
+    int j = paramInt1;
     if (paramInt1 < 0) {
       j = 0;
     }
+    int i = paramInt2;
+    Object localObject2 = paramCharSequence;
     for (;;)
     {
       try
       {
-        k = length();
-        if (paramInt2 > k)
-        {
+        int k = length();
+        paramInt1 = paramInt2;
+        if (paramInt2 > k) {
           paramInt1 = k;
-          paramInt2 = paramInt1;
-          if (paramInt1 < 0) {
+        }
+        paramInt2 = paramInt1;
+        if (paramInt1 < 0)
+        {
+          i = paramInt1;
+          localObject2 = paramCharSequence;
+          if (QLog.isColorLevel())
+          {
             i = paramInt1;
+            localObject2 = paramCharSequence;
+            localObject1 = new StringBuilder();
+            i = paramInt1;
+            localObject2 = paramCharSequence;
+            ((StringBuilder)localObject1).append("selection error, start = ");
+            i = paramInt1;
+            localObject2 = paramCharSequence;
+            ((StringBuilder)localObject1).append(j);
+            i = paramInt1;
+            localObject2 = paramCharSequence;
+            ((StringBuilder)localObject1).append(" end = ");
+            i = paramInt1;
+            localObject2 = paramCharSequence;
+            ((StringBuilder)localObject1).append(paramInt1);
+            i = paramInt1;
+            localObject2 = paramCharSequence;
+            ((StringBuilder)localObject1).append(" length = ");
+            i = paramInt1;
+            localObject2 = paramCharSequence;
+            ((StringBuilder)localObject1).append(k);
+            i = paramInt1;
+            localObject2 = paramCharSequence;
+            QLog.w("QQTextBuilder", 2, ((StringBuilder)localObject1).toString());
           }
         }
+        else
+        {
+          localObject1 = paramCharSequence;
+          i = paramInt2;
+          localObject2 = paramCharSequence;
+          if (paramCharSequence.length() > 0)
+          {
+            i = paramInt2;
+            localObject2 = paramCharSequence;
+            localObject1 = new QQText(paramCharSequence, this.mflags, this.mEmoSize).toSpanableString();
+          }
+          i = paramInt2;
+          localObject2 = localObject1;
+          paramCharSequence = super.replace(j, paramInt2, (CharSequence)localObject1, paramInt3, paramInt4);
+          return paramCharSequence;
+        }
       }
-      catch (Throwable localThrowable1)
+      catch (Throwable paramCharSequence)
       {
-        int k;
-        Object localObject;
-        QLog.e("QQText", 1, "QQTextBuilder.replace caused crash..text:" + toString() + ", replace text:" + paramCharSequence + " , " + j + "-" + paramInt2 + " , " + paramInt3 + "-" + paramInt4, localThrowable1);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("QQTextBuilder.replace caused crash..text:");
+        ((StringBuilder)localObject1).append(toString());
+        ((StringBuilder)localObject1).append(", replace text:");
+        ((StringBuilder)localObject1).append(localObject2);
+        ((StringBuilder)localObject1).append(" , ");
+        ((StringBuilder)localObject1).append(j);
+        ((StringBuilder)localObject1).append("-");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(" , ");
+        ((StringBuilder)localObject1).append(paramInt3);
+        ((StringBuilder)localObject1).append("-");
+        ((StringBuilder)localObject1).append(paramInt4);
+        QLog.e("QQText", 1, ((StringBuilder)localObject1).toString(), paramCharSequence);
         return new SpannableStringBuilder();
       }
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          break label259;
-        }
-        i = paramInt1;
-        QLog.w("QQTextBuilder", 2, "selection error, start = " + j + " end = " + paramInt1 + " length = " + k);
-      }
-      catch (Throwable localThrowable2)
-      {
-        paramInt2 = i;
-        continue;
-        continue;
-        paramInt2 = 0;
-        continue;
-      }
-      i = paramInt2;
-      if (paramCharSequence.length() <= 0) {
-        break label256;
-      }
-      i = paramInt2;
-      localObject = new QQText(paramCharSequence, this.mflags, this.mEmoSize).toSpanableString();
-      paramCharSequence = (CharSequence)localObject;
-      try
-      {
-        localObject = super.replace(j, paramInt2, paramCharSequence, paramInt3, paramInt4);
-        return localObject;
-      }
-      catch (Throwable localThrowable3)
-      {
-        continue;
-      }
-      j = paramInt1;
-      continue;
-      paramInt1 = paramInt2;
+      paramInt2 = 0;
     }
   }
   
   public CharSequence subSequence(int paramInt1, int paramInt2)
   {
     if (!QQText.IS_FXXKED_MTK) {
-      localObject1 = super.subSequence(paramInt1, paramInt2);
+      return super.subSequence(paramInt1, paramInt2);
     }
-    do
-    {
-      return localObject1;
-      if (paramInt1 != 0) {
-        break;
-      }
-      localObject1 = this;
-    } while (paramInt2 == length());
+    if ((paramInt1 == 0) && (paramInt2 == length())) {
+      return this;
+    }
     int i = paramInt1;
     if (paramInt1 < 0) {
       i = 0;
@@ -189,15 +214,15 @@ public class QQTextBuilder
     if (paramInt2 > j) {
       paramInt1 = j;
     }
-    Object localObject2 = new char[paramInt1 - i];
-    getChars(i, paramInt1, (char[])localObject2, 0);
-    Object localObject1 = new StringBuilder();
-    ((StringBuilder)localObject1).append((char[])localObject2);
-    localObject2 = sTextProcessorList.iterator();
-    while (((Iterator)localObject2).hasNext()) {
-      ((ITextProcessor)((Iterator)localObject2).next()).doSubSequence(i, paramInt1, (StringBuilder)localObject1, this);
+    Object localObject = new char[paramInt1 - i];
+    getChars(i, paramInt1, (char[])localObject, 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((char[])localObject);
+    localObject = sTextProcessorList.iterator();
+    while (((Iterator)localObject).hasNext()) {
+      ((ITextProcessor)((Iterator)localObject).next()).doSubSequence(i, paramInt1, localStringBuilder, this);
     }
-    return localObject1;
+    return localStringBuilder;
   }
   
   public String toPlainText()
@@ -240,27 +265,19 @@ public class QQTextBuilder
     while ((i <= k) && (arrayOfChar[i] <= ' ') && (arrayOfChar[i] != '\024')) {
       i += 1;
     }
-    for (;;)
-    {
-      int j;
-      if ((j >= i) && (arrayOfChar[j] <= ' ') && ((j == 0) || (arrayOfChar[(j - 1)] != '\024')))
-      {
-        j -= 1;
-      }
-      else
-      {
-        if ((i == 0) && (j == k)) {
-          return str;
-        }
-        return str.substring(i, j + 1);
-        j = k;
-      }
+    int j = k;
+    while ((j >= i) && (arrayOfChar[j] <= ' ') && ((j == 0) || (arrayOfChar[(j - 1)] != '\024'))) {
+      j -= 1;
     }
+    if ((i == 0) && (j == k)) {
+      return str;
+    }
+    return str.substring(i, j + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.text.QQTextBuilder
  * JD-Core Version:    0.7.0.1
  */

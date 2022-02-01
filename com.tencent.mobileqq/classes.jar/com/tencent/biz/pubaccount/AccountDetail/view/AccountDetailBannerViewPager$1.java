@@ -1,6 +1,6 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -12,15 +12,20 @@ class AccountDetailBannerViewPager$1
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailBannerViewPager", 2, "onPageScrollStateChanged->" + paramInt);
+    Object localObject;
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPageScrollStateChanged->");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AccountDetailBannerViewPager", 2, ((StringBuilder)localObject).toString());
     }
     AccountDetailBannerViewPager.a(this.a, paramInt);
     if (AccountDetailBannerViewPager.a(this.a) != null)
     {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageScrollStateChanged(paramInt);
+      localObject = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((ViewPager.OnPageChangeListener)((Iterator)localObject).next()).onPageScrollStateChanged(paramInt);
       }
     }
   }
@@ -38,14 +43,19 @@ class AccountDetailBannerViewPager$1
   
   public void onPageSelected(int paramInt)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("AccountDetailBannerViewPager", 2, "onPageSelected->" + paramInt);
+    Object localObject;
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onPageSelected->");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AccountDetailBannerViewPager", 2, ((StringBuilder)localObject).toString());
     }
     if (AccountDetailBannerViewPager.a(this.a) != null)
     {
-      Iterator localIterator = AccountDetailBannerViewPager.a(this.a).iterator();
-      while (localIterator.hasNext()) {
-        ((ViewPager.OnPageChangeListener)localIterator.next()).onPageSelected(paramInt);
+      localObject = AccountDetailBannerViewPager.a(this.a).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((ViewPager.OnPageChangeListener)((Iterator)localObject).next()).onPageSelected(paramInt);
       }
     }
     if (AccountDetailBannerViewPager.a(this.a) != null) {
@@ -55,7 +65,7 @@ class AccountDetailBannerViewPager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailBannerViewPager.1
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailBannerViewPager.1
  * JD-Core Version:    0.7.0.1
  */

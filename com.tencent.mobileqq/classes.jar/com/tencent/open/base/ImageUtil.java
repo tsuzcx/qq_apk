@@ -22,46 +22,41 @@ public class ImageUtil
     }
     int i = paramDrawable.getIntrinsicWidth();
     int j = paramDrawable.getIntrinsicHeight();
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
-      paramDrawable.draw(localCanvas);
-      return localObject;
+    if (paramDrawable.getOpacity() != -1) {
+      localObject = Bitmap.Config.ARGB_8888;
+    } else {
+      localObject = Bitmap.Config.RGB_565;
     }
-  }
-  
-  public static Bitmap a(Drawable paramDrawable, int paramInt1, int paramInt2)
-  {
-    if ((paramDrawable instanceof BitmapDrawable)) {
-      return ((BitmapDrawable)paramDrawable).getBitmap();
-    }
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(paramInt1, paramInt2, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, paramInt1, paramInt2);
-      paramDrawable.draw(localCanvas);
-      return localObject;
-    }
+    Object localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    paramDrawable.setBounds(0, 0, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
+    paramDrawable.draw(localCanvas);
+    return localObject;
   }
   
   public static Bitmap a(String paramString)
   {
-    String str1 = a(paramString, 100);
-    String str2 = ImageCache.a("app", str1);
-    LogUtility.b("ImageUtil", "100_url:" + str1 + " icon_path=" + str2);
-    if (new File(str2).exists()) {
-      return BitmapUtil.a(str2, 72, 72, false);
+    String str = a(paramString, 100);
+    Object localObject = ImageCache.a("app", str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("100_url:");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" icon_path=");
+    localStringBuilder.append((String)localObject);
+    LogUtility.b("ImageUtil", localStringBuilder.toString());
+    if (new File((String)localObject).exists()) {
+      return BitmapUtil.a((String)localObject, 72, 72, false);
     }
     paramString = a(paramString, 75);
-    str1 = ImageCache.a("app", paramString);
-    LogUtility.b("ImageUtil", "75_url:" + paramString + " icon_path=" + str1);
-    if (new File(str1).exists()) {
-      return BitmapUtil.a(str1, 72, 72, false);
+    str = ImageCache.a("app", paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("75_url:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" icon_path=");
+    ((StringBuilder)localObject).append(str);
+    LogUtility.b("ImageUtil", ((StringBuilder)localObject).toString());
+    if (new File(str).exists()) {
+      return BitmapUtil.a(str, 72, 72, false);
     }
     return null;
   }
@@ -83,10 +78,16 @@ public class ImageUtil
     if (paramString == null) {
       return "";
     }
-    String str = "00000000" + paramString;
-    str = str.substring(str.length() - 8);
-    paramString = String.format("https://i.gtimg.cn/open/app_icon/%s/%s/%s/%s/%s_%d_m.png", new Object[] { str.substring(0, 2), str.substring(2, 4), str.substring(4, 6), str.substring(6, 8), paramString, Integer.valueOf(paramInt) });
-    LogUtility.b("opensdk", ">>iconUrl=" + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("00000000");
+    ((StringBuilder)localObject).append(paramString);
+    localObject = ((StringBuilder)localObject).toString();
+    localObject = ((String)localObject).substring(((String)localObject).length() - 8);
+    paramString = String.format("https://i.gtimg.cn/open/app_icon/%s/%s/%s/%s/%s_%d_m.png", new Object[] { ((String)localObject).substring(0, 2), ((String)localObject).substring(2, 4), ((String)localObject).substring(4, 6), ((String)localObject).substring(6, 8), paramString, Integer.valueOf(paramInt) });
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(">>iconUrl=");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtility.b("opensdk", ((StringBuilder)localObject).toString());
     return paramString;
   }
   
@@ -97,7 +98,7 @@ public class ImageUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.base.ImageUtil
  * JD-Core Version:    0.7.0.1
  */

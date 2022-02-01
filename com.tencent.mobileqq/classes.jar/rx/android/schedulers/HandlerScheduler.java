@@ -16,10 +16,10 @@ public final class HandlerScheduler
   
   public static HandlerScheduler from(Handler paramHandler)
   {
-    if (paramHandler == null) {
-      throw new NullPointerException("handler == null");
+    if (paramHandler != null) {
+      return new HandlerScheduler(paramHandler);
     }
-    return new HandlerScheduler(paramHandler);
+    throw new NullPointerException("handler == null");
   }
   
   public Scheduler.Worker createWorker()
@@ -29,7 +29,7 @@ public final class HandlerScheduler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.android.schedulers.HandlerScheduler
  * JD-Core Version:    0.7.0.1
  */

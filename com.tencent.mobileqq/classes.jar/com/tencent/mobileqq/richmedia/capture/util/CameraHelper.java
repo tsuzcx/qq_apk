@@ -8,18 +8,12 @@ public class CameraHelper
 {
   public static int a()
   {
-    int j = 2;
     SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("PTV.NewFlowCameraActivity", 4);
     long l = localSharedPreferences.getLong("key_open_camera_time", 0L);
-    int i = j;
-    if (l != 0L)
-    {
-      i = j;
-      if (System.currentTimeMillis() - l < 300000L) {
-        i = localSharedPreferences.getInt("camera", 2);
-      }
+    if ((l != 0L) && (System.currentTimeMillis() - l < 300000L)) {
+      return localSharedPreferences.getInt("camera", 2);
     }
-    return i;
+    return 2;
   }
   
   public static void a()
@@ -44,7 +38,7 @@ public class CameraHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.util.CameraHelper
  * JD-Core Version:    0.7.0.1
  */

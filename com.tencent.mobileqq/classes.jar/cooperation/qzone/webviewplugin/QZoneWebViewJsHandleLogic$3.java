@@ -27,26 +27,20 @@ final class QZoneWebViewJsHandleLogic$3
         }
       }
     }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        QZLog.e("QZoneWebViewJsHandleLogic", "download pic error", localIOException);
-      }
-    }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        QZLog.e("QZoneWebViewJsHandleLogic", "download pic error", localOutOfMemoryError);
-      }
+      QZLog.e("QZoneWebViewJsHandleLogic", "download pic error", localOutOfMemoryError);
+    }
+    catch (IOException localIOException)
+    {
+      QZLog.e("QZoneWebViewJsHandleLogic", "download pic error", localIOException);
     }
     this.val$runtime.a().runOnUiThread(this.val$r);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic.3
  * JD-Core Version:    0.7.0.1
  */

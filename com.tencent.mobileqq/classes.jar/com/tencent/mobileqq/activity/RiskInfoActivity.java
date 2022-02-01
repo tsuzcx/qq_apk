@@ -16,6 +16,7 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.ims.QQProtectRisks.QQProtectRisksRequest;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.statistics.ReportController;
@@ -43,81 +44,69 @@ public class RiskInfoActivity
   {
     QQProtectRisks.QQProtectRisksRequest localQQProtectRisksRequest = new QQProtectRisks.QQProtectRisksRequest();
     localQQProtectRisksRequest.uint32_sec_cmd.set(1);
-    localQQProtectRisksRequest.str_package_name.set(QPMiscUtils.c());
+    localQQProtectRisksRequest.str_package_name.set(QPMiscUtils.a());
     localQQProtectRisksRequest.uint32_app_id.set(AppSetting.a());
-    a("ALL", getResources().getString(2131717069));
+    a("ALL", getResources().getString(2131716728));
     ProtoUtils.a(this.app, new RiskInfoActivity.1(this), localQQProtectRisksRequest.toByteArray(), "AccountSafeSvc.RiskDetect");
   }
   
   private void a(String paramString1, String paramString2)
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+    while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
     {
       Object localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-      FormSimpleItem localFormSimpleItem;
       if (localObject != null)
       {
-        localFormSimpleItem = (FormSimpleItem)((View)localObject).findViewById(2131377138);
+        FormSimpleItem localFormSimpleItem = (FormSimpleItem)((View)localObject).findViewById(2131376613);
         if (localFormSimpleItem != null)
         {
           localObject = (RiskInfoItem)localFormSimpleItem.getTag(2017021601);
-          if (((RiskInfoItem)localObject).jdField_b_of_type_Int != 0) {
-            break label103;
+          if (((RiskInfoItem)localObject).jdField_b_of_type_Int == 0) {
+            localObject = ((RiskInfoItem)localObject).d;
+          } else {
+            localObject = String.format("%d", new Object[] { Integer.valueOf(((RiskInfoItem)localObject).jdField_b_of_type_Int) });
+          }
+          if ((paramString1.equalsIgnoreCase("ALL")) || (paramString1.equalsIgnoreCase((String)localObject))) {
+            localFormSimpleItem.setRightText(paramString2);
           }
         }
       }
-      label103:
-      for (localObject = ((RiskInfoItem)localObject).d;; localObject = String.format("%d", new Object[] { Integer.valueOf(((RiskInfoItem)localObject).jdField_b_of_type_Int) }))
-      {
-        if ((paramString1.equalsIgnoreCase("ALL")) || (paramString1.equalsIgnoreCase((String)localObject))) {
-          localFormSimpleItem.setRightText(paramString2);
-        }
-        i += 1;
-        break;
-      }
+      i += 1;
     }
   }
   
   private void a(List<RiskInfoItem> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+      int j = paramList.size();
+      int i = 0;
+      while (i < j)
+      {
+        RiskInfoItem localRiskInfoItem = (RiskInfoItem)paramList.get(i);
+        if (localRiskInfoItem != null)
+        {
+          View localView = getLayoutInflater().inflate(2131561862, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
+          LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131376614);
+          FormSimpleItem localFormSimpleItem = (FormSimpleItem)localView.findViewById(2131376613);
+          localFormSimpleItem.setLeftText(localRiskInfoItem.jdField_a_of_type_JavaLangString);
+          localFormSimpleItem.setRightText(localRiskInfoItem.jdField_b_of_type_JavaLangString);
+          ((TextView)localView.findViewById(2131376607)).setText(localRiskInfoItem.c);
+          String str = localRiskInfoItem.d;
+          localLinearLayout.setTag(2017021601, localRiskInfoItem);
+          localFormSimpleItem.setTag(2017021601, localRiskInfoItem);
+          localFormSimpleItem.setClickable(true);
+          localFormSimpleItem.setOnClickListener(this);
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
+        }
+        i += 1;
+      }
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.removeAllViews();
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-    int j = paramList.size();
-    int i = 0;
-    label47:
-    RiskInfoItem localRiskInfoItem;
-    if (i < j)
-    {
-      localRiskInfoItem = (RiskInfoItem)paramList.get(i);
-      if (localRiskInfoItem != null) {
-        break label76;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label47;
-      break;
-      label76:
-      View localView = getLayoutInflater().inflate(2131562030, this.jdField_a_of_type_AndroidWidgetLinearLayout, false);
-      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131377139);
-      FormSimpleItem localFormSimpleItem = (FormSimpleItem)localView.findViewById(2131377138);
-      localFormSimpleItem.setLeftText(localRiskInfoItem.jdField_a_of_type_JavaLangString);
-      localFormSimpleItem.setRightText(localRiskInfoItem.jdField_b_of_type_JavaLangString);
-      ((TextView)localView.findViewById(2131377132)).setText(localRiskInfoItem.c);
-      String str = localRiskInfoItem.d;
-      localLinearLayout.setTag(2017021601, localRiskInfoItem);
-      localFormSimpleItem.setTag(2017021601, localRiskInfoItem);
-      localFormSimpleItem.setClickable(true);
-      localFormSimpleItem.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.addView(localView);
-    }
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
   }
   
   private void a(Map<String, RiskInfoItem> paramMap, boolean paramBoolean)
@@ -141,7 +130,7 @@ public class RiskInfoActivity
           String str3 = localRiskInfoItem.e;
           String str2 = str3;
           if (TextUtils.isEmpty(str3)) {
-            str2 = getResources().getString(2131692061);
+            str2 = getResources().getString(2131691980);
           }
           a(str1, str2);
           if (localRiskInfoItem.d.equalsIgnoreCase("devlock")) {
@@ -162,50 +151,53 @@ public class RiskInfoActivity
       {
         if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo == null)
         {
-          if (NetworkUtil.d(this)) {
+          if (NetworkUtil.isNetSupport(this)) {
             return;
           }
-          QQToast.a(this, getString(2131692257), 0).b(getTitleBarHeight());
+          QQToast.a(this, getString(2131692183), 0).b(getTitleBarHeight());
           return;
         }
-        if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.DevSetup == 1)
+        int i = this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.DevSetup;
+        if (i == 1)
         {
           this.app.sendWirelessMeibaoReq(1);
-          paramString = new Intent(this, AuthDevActivity.class);
+          paramString = new Intent();
           paramString.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
           paramString.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
           paramString.putExtra("auth_dev_open", true);
+          RouteUtils.a(this, paramString, "/base/safe/authDevActivity", 0);
+          return;
+        }
+        this.app.sendWirelessMeibaoReq(1);
+        boolean bool = TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
+        if (bool)
+        {
+          paramString = new Intent(this, AuthDevOpenUgActivity.class);
+          paramString.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
           startActivityForResult(paramString, 0);
           return;
         }
+        if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet == 0)
+        {
+          paramString = new Intent(this, AuthDevOpenUgActivity.class);
+          paramString.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
+          startActivityForResult(paramString, 0);
+          return;
+        }
+        if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet != 1) {
+          return;
+        }
+        paramString = new Intent();
+        paramString.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
+        paramString.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
+        paramString.putExtra("auth_dev_open", false);
+        RouteUtils.a(this, paramString, "/base/safe/authDevActivity", 0);
+        return;
       }
       catch (Exception paramString)
       {
         paramString.printStackTrace();
         return;
-      }
-      this.app.sendWirelessMeibaoReq(1);
-      if (TextUtils.isEmpty(this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile))
-      {
-        paramString = new Intent(this, AuthDevOpenUgActivity.class);
-        paramString.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
-        startActivityForResult(paramString, 0);
-        return;
-      }
-      if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet == 0)
-      {
-        paramString = new Intent(this, AuthDevOpenUgActivity.class);
-        paramString.putExtra("DevlockInfo", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo);
-        startActivityForResult(paramString, 0);
-        return;
-      }
-      if (this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.AllowSet == 1)
-      {
-        paramString = new Intent(this, AuthDevActivity.class);
-        paramString.putExtra("phone_num", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.Mobile);
-        paramString.putExtra("country_code", this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo.CountryCode);
-        paramString.putExtra("auth_dev_open", false);
-        startActivityForResult(paramString, 0);
       }
     }
     else
@@ -249,28 +241,35 @@ public class RiskInfoActivity
         }
       }
       if (paramString.startsWith("http")) {
-        for (;;)
+        try
         {
-          String str;
-          try
+          String str = this.app.getCurrentAccountUin();
+          Intent localIntent = new Intent(this, QQBrowserActivity.class);
+          localIntent.putExtra("uin", str);
+          StringBuilder localStringBuilder;
+          if (paramString.indexOf("?") == -1)
           {
-            str = this.app.getCurrentAccountUin();
-            Intent localIntent = new Intent(this, QQBrowserActivity.class);
-            localIntent.putExtra("uin", str);
-            if (paramString.indexOf("?") == -1)
-            {
-              paramString = paramString + "?uin=" + str;
-              localIntent.putExtra("url", paramString);
-              startActivityForResult(localIntent, 0);
-              return;
-            }
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString);
+            localStringBuilder.append("?uin=");
+            localStringBuilder.append(str);
+            paramString = localStringBuilder.toString();
           }
-          catch (Exception paramString)
+          else
           {
-            paramString.printStackTrace();
-            return;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString);
+            localStringBuilder.append("&uin=");
+            localStringBuilder.append(str);
+            paramString = localStringBuilder.toString();
           }
-          paramString = paramString + "&uin=" + str;
+          localIntent.putExtra("url", paramString);
+          startActivityForResult(localIntent, 0);
+          return;
+        }
+        catch (Exception paramString)
+        {
+          paramString.printStackTrace();
         }
       }
     }
@@ -285,7 +284,7 @@ public class RiskInfoActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     a();
@@ -307,26 +306,26 @@ public class RiskInfoActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    super.setContentView(2131562029);
-    setTitle(2131717066);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131375207));
+    super.setContentView(2131561861);
+    setTitle(2131716725);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131374722));
     paramBundle = getIntent().getExtras();
     this.jdField_a_of_type_JavaUtilList = paramBundle.getParcelableArrayList("data");
     this.jdField_a_of_type_OicqWlogin_sdkDevicelockDevlockInfo = ((DevlockInfo)paramBundle.get("DevlockInfo"));
     a(this.jdField_a_of_type_JavaUtilList);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RiskInfoActivity
  * JD-Core Version:    0.7.0.1
  */

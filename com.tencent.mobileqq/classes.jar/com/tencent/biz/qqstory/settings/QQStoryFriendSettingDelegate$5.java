@@ -10,25 +10,21 @@ class QQStoryFriendSettingDelegate$5
 {
   QQStoryFriendSettingDelegate$5(QQStoryFriendSettingDelegate paramQQStoryFriendSettingDelegate, boolean paramBoolean) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (paramInt != 0)
     {
-      paramArrayOfByte = this.a;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramArrayOfByte.a(7, bool);
-        this.a.a(0, this.a.a.getString(2131720237));
-        return;
-      }
+      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettingDelegate.a(7, this.jdField_a_of_type_Boolean ^ true);
+      paramArrayOfByte = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettingDelegate;
+      paramArrayOfByte.a(0, paramArrayOfByte.a.getString(2131719970));
+      return;
     }
-    ((StoryConfigManager)SuperManager.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.b));
+    ((StoryConfigManager)SuperManager.a(10)).b("story_publish_flag_compress", Boolean.valueOf(this.jdField_a_of_type_Boolean));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate.5
  * JD-Core Version:    0.7.0.1
  */

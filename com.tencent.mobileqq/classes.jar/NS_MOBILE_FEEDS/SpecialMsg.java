@@ -33,14 +33,15 @@ public final class SpecialMsg
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    byte[] arrayOfByte = this.msg;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.SpecialMsg
  * JD-Core Version:    0.7.0.1
  */

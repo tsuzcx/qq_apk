@@ -3,15 +3,17 @@ package com.tencent.mobileqq.multicard;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.text.TextUtils;
 import android.util.LruCache;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.data.IntimateInfo;
 import com.tencent.mobileqq.friends.intimate.IntimateInfoHandler;
 import com.tencent.mobileqq.friends.intimate.IntimateInfoManager;
+import com.tencent.mobileqq.troop.api.handler.ITroopMemberListHandler;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -22,6 +24,7 @@ import java.util.Iterator;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
+import org.json.JSONException;
 
 public class MultiCardManager
   implements Manager
@@ -47,110 +50,54 @@ public class MultiCardManager
     this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoManager = ((IntimateInfoManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.INTIMATE_INFO_MANAGER));
   }
   
-  /* Error */
   private ArrayList<Long> a(long paramLong)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 60	com/tencent/mobileqq/multicard/MultiCardManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   4: invokevirtual 86	com/tencent/mobileqq/app/QQAppInterface:getApp	()Lcom/tencent/qphone/base/util/BaseApplication;
-    //   7: ldc 88
-    //   9: iconst_0
-    //   10: invokevirtual 94	com/tencent/qphone/base/util/BaseApplication:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   13: new 96	java/lang/StringBuilder
-    //   16: dup
-    //   17: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   20: aload_0
-    //   21: getfield 60	com/tencent/mobileqq/multicard/MultiCardManager:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
-    //   24: invokevirtual 101	com/tencent/mobileqq/app/QQAppInterface:getCurrentUin	()Ljava/lang/String;
-    //   27: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: ldc 107
-    //   32: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: lload_1
-    //   36: invokevirtual 110	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   39: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   42: ldc 115
-    //   44: invokeinterface 121 3 0
-    //   49: astore 5
-    //   51: aload 5
-    //   53: invokestatic 127	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   56: ifne +125 -> 181
-    //   59: new 129	org/json/JSONArray
-    //   62: dup
-    //   63: aload 5
-    //   65: invokespecial 132	org/json/JSONArray:<init>	(Ljava/lang/String;)V
-    //   68: astore 7
-    //   70: new 134	java/util/ArrayList
-    //   73: dup
-    //   74: aload 7
-    //   76: invokevirtual 138	org/json/JSONArray:length	()I
-    //   79: invokespecial 139	java/util/ArrayList:<init>	(I)V
-    //   82: astore 5
-    //   84: aload 7
-    //   86: invokevirtual 138	org/json/JSONArray:length	()I
-    //   89: istore 4
-    //   91: iconst_0
-    //   92: istore_3
-    //   93: aload 5
-    //   95: astore 6
-    //   97: iload_3
-    //   98: iload 4
-    //   100: if_icmpge +73 -> 173
-    //   103: aload 5
-    //   105: aload 7
-    //   107: iload_3
-    //   108: invokevirtual 143	org/json/JSONArray:optLong	(I)J
-    //   111: invokestatic 149	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   114: invokevirtual 153	java/util/ArrayList:add	(Ljava/lang/Object;)Z
-    //   117: pop
-    //   118: iload_3
-    //   119: iconst_1
-    //   120: iadd
-    //   121: istore_3
-    //   122: goto -29 -> 93
-    //   125: astore 7
-    //   127: aconst_null
-    //   128: astore 5
-    //   130: aload 5
-    //   132: astore 6
-    //   134: invokestatic 159	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   137: ifeq +36 -> 173
-    //   140: ldc 161
-    //   142: iconst_2
-    //   143: new 96	java/lang/StringBuilder
-    //   146: dup
-    //   147: invokespecial 97	java/lang/StringBuilder:<init>	()V
-    //   150: ldc 163
-    //   152: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: aload 7
-    //   157: invokevirtual 164	org/json/JSONException:toString	()Ljava/lang/String;
-    //   160: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: invokevirtual 113	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   166: invokestatic 167	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   169: aload 5
-    //   171: astore 6
-    //   173: aload 6
-    //   175: areturn
-    //   176: astore 7
-    //   178: goto -48 -> 130
-    //   181: aconst_null
-    //   182: areturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	183	0	this	MultiCardManager
-    //   0	183	1	paramLong	long
-    //   92	30	3	i	int
-    //   89	12	4	j	int
-    //   49	121	5	localObject1	Object
-    //   95	79	6	localObject2	Object
-    //   68	38	7	localJSONArray	JSONArray
-    //   125	31	7	localJSONException1	org.json.JSONException
-    //   176	1	7	localJSONException2	org.json.JSONException
-    // Exception table:
-    //   from	to	target	type
-    //   59	84	125	org/json/JSONException
-    //   84	91	176	org/json/JSONException
-    //   103	118	176	org/json/JSONException
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp();
+    int i = 0;
+    localObject1 = ((BaseApplication)localObject1).getSharedPreferences("group_intimate_recommend_uin_list", 0);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    ((StringBuilder)localObject2).append("_");
+    ((StringBuilder)localObject2).append(paramLong);
+    localObject2 = ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), "");
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject2);
+    JSONArray localJSONArray = null;
+    localObject1 = null;
+    Object localObject3;
+    if (!bool)
+    {
+      try
+      {
+        localJSONArray = new JSONArray((String)localObject2);
+        localObject2 = new ArrayList(localJSONArray.length());
+        try
+        {
+          int j = localJSONArray.length();
+          while (i < j)
+          {
+            ((ArrayList)localObject2).add(Long.valueOf(localJSONArray.optLong(i)));
+            i += 1;
+          }
+          return localObject2;
+        }
+        catch (JSONException localJSONException2)
+        {
+          localObject1 = localObject2;
+          localObject2 = localJSONException2;
+        }
+        localObject3 = localObject1;
+      }
+      catch (JSONException localJSONException1) {}
+      if (QLog.isColorLevel())
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("getGroupRecommendUinLists ");
+        ((StringBuilder)localObject3).append(localJSONException1.toString());
+        QLog.d("intimate_relationship", 2, ((StringBuilder)localObject3).toString());
+        localObject3 = localObject1;
+      }
+    }
+    return localObject3;
   }
   
   private void a(long paramLong, MultiCardManager.GetGroupRecommendUinListsListener paramGetGroupRecommendUinListsListener)
@@ -170,39 +117,49 @@ public class MultiCardManager
   
   public IntimateInfo a(long paramLong1, long paramLong2)
   {
-    IntimateInfo localIntimateInfo2 = (IntimateInfo)this.jdField_a_of_type_AndroidUtilLruCache.get(Long.valueOf(paramLong2));
-    IntimateInfo localIntimateInfo1 = localIntimateInfo2;
-    if (localIntimateInfo2 == null)
+    Object localObject2 = (IntimateInfo)this.jdField_a_of_type_AndroidUtilLruCache.get(Long.valueOf(paramLong2));
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      String str = IntimateInfo.convertUinKeyForGroupCard(paramLong1 + "", paramLong2 + "");
-      localIntimateInfo2 = this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoManager.a(str);
-      localIntimateInfo1 = localIntimateInfo2;
-      if (localIntimateInfo2 != null)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramLong1);
+      ((StringBuilder)localObject1).append("");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramLong2);
+      ((StringBuilder)localObject2).append("");
+      String str = IntimateInfo.convertUinKeyForGroupCard((String)localObject1, ((StringBuilder)localObject2).toString());
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoManager.a(str);
+      localObject1 = localObject2;
+      if (localObject2 != null)
       {
-        localIntimateInfo2.friendUin = IntimateInfo.getUinFromGroupCardKey(str);
-        localIntimateInfo1 = localIntimateInfo2;
+        ((IntimateInfo)localObject2).friendUin = IntimateInfo.getUinFromGroupCardKey(str);
+        localObject1 = localObject2;
       }
     }
-    return localIntimateInfo1;
+    return localObject1;
   }
   
   public HashMap<Long, IntimateInfo> a(long paramLong, ArrayList<Long> paramArrayList)
   {
     Object localObject2;
+    Object localObject1;
     if (QLog.isColorLevel())
     {
-      localObject2 = new StringBuilder().append("getIntimateInfoListCache, uinList: ");
-      if (paramArrayList == null) {
-        break label129;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getIntimateInfoListCache, uinList: ");
+      if (paramArrayList != null) {
+        localObject1 = paramArrayList.toString();
+      } else {
+        localObject1 = "null";
       }
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(" ");
+      ((StringBuilder)localObject2).append(paramLong);
+      QLog.d("MultiCardManager", 2, ((StringBuilder)localObject2).toString());
     }
-    label129:
-    for (Object localObject1 = paramArrayList.toString();; localObject1 = "null")
+    if (paramArrayList != null)
     {
-      QLog.d("MultiCardManager", 2, (String)localObject1 + " " + paramLong);
-      if (paramArrayList == null) {
-        break label140;
-      }
       localObject1 = new HashMap(paramArrayList.size() * 2);
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
@@ -213,9 +170,8 @@ public class MultiCardManager
           ((HashMap)localObject1).put(localObject2, localIntimateInfo);
         }
       }
+      return localObject1;
     }
-    return localObject1;
-    label140:
     return null;
   }
   
@@ -231,8 +187,12 @@ public class MultiCardManager
   
   public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "enter " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enter ");
+      localStringBuilder.append(paramLong);
+      QLog.d("intimate_relationship", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_Long = paramLong;
     this.jdField_a_of_type_Boolean = false;
@@ -252,30 +212,44 @@ public class MultiCardManager
   
   public void a(long paramLong, ArrayList<Long> paramArrayList)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("group_intimate_recommend_uin_list", 0);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("group_intimate_recommend_uin_list", 0);
+    Object localObject1;
     if (paramArrayList != null)
     {
-      JSONArray localJSONArray = new JSONArray();
-      Iterator localIterator = paramArrayList.iterator();
-      while (localIterator.hasNext()) {
-        localJSONArray.put((Long)localIterator.next());
+      localObject1 = new JSONArray();
+      Object localObject3 = paramArrayList.iterator();
+      while (((Iterator)localObject3).hasNext()) {
+        ((JSONArray)localObject1).put((Long)((Iterator)localObject3).next());
       }
-      ((SharedPreferences)localObject).edit().putString(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "_" + paramLong, localJSONArray.toString()).commit();
-      if (QLog.isColorLevel())
-      {
-        localObject = new StringBuilder().append("updateGroupRecommendUinListDiskCache, uin: ").append(paramLong).append(" ");
-        if (paramArrayList == null) {
-          break label220;
-        }
-      }
+      localObject2 = ((SharedPreferences)localObject2).edit();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      ((StringBuilder)localObject3).append("_");
+      ((StringBuilder)localObject3).append(paramLong);
+      ((SharedPreferences.Editor)localObject2).putString(((StringBuilder)localObject3).toString(), ((JSONArray)localObject1).toString()).commit();
     }
-    label220:
-    for (paramArrayList = paramArrayList.toString();; paramArrayList = "null")
+    else
     {
-      QLog.d("intimate_relationship", 2, paramArrayList);
-      return;
-      ((SharedPreferences)localObject).edit().remove(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + "_" + paramLong).commit();
-      break;
+      localObject1 = ((SharedPreferences)localObject2).edit();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(paramLong);
+      ((SharedPreferences.Editor)localObject1).remove(((StringBuilder)localObject2).toString()).commit();
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("updateGroupRecommendUinListDiskCache, uin: ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(" ");
+      if (paramArrayList != null) {
+        paramArrayList = paramArrayList.toString();
+      } else {
+        paramArrayList = "null";
+      }
+      ((StringBuilder)localObject1).append(paramArrayList);
+      QLog.d("intimate_relationship", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
@@ -286,67 +260,70 @@ public class MultiCardManager
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramGetGroupRecommendUinListsListener != null))
     {
-      if (!NetworkUtil.d(???)) {
-        a(paramLong, paramGetGroupRecommendUinListsListener);
-      }
-    }
-    else {
-      return;
-    }
-    synchronized (this.f)
-    {
-      ArrayList localArrayList = (ArrayList)this.f.get(Long.valueOf(paramLong));
-      if (localArrayList != null)
+      if (!NetworkUtil.isNetSupport(???))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MultiCardManager", 2, "getGroupRecommendUinLists return cache " + paramLong);
-        }
-        paramGetGroupRecommendUinListsListener.a(paramLong, localArrayList);
+        a(paramLong, paramGetGroupRecommendUinListsListener);
         return;
       }
-    }
-    paramGetGroupRecommendUinListsListener = new WeakReference(paramGetGroupRecommendUinListsListener);
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramGetGroupRecommendUinListsListener);
-      ((IntimateInfoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER)).a(paramLong, 10000L);
-      return;
+      synchronized (this.f)
+      {
+        ArrayList localArrayList = (ArrayList)this.f.get(Long.valueOf(paramLong));
+        if (localArrayList != null)
+        {
+          if (QLog.isColorLevel())
+          {
+            ??? = new StringBuilder();
+            ???.append("getGroupRecommendUinLists return cache ");
+            ???.append(paramLong);
+            QLog.d("MultiCardManager", 2, ???.toString());
+          }
+          paramGetGroupRecommendUinListsListener.a(paramLong, localArrayList);
+          return;
+        }
+        paramGetGroupRecommendUinListsListener = new WeakReference(paramGetGroupRecommendUinListsListener);
+        synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+        {
+          this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong), paramGetGroupRecommendUinListsListener);
+          ((IntimateInfoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER)).a(paramLong, 10000L);
+          return;
+        }
+      }
     }
   }
   
   public void a(Context paramContext, long paramLong, ArrayList<Long> arg4, MultiCardManager.GetGroupIntimateInfoListListener paramGetGroupIntimateInfoListListener)
   {
+    Object localObject1;
     if (QLog.isColorLevel())
     {
-      ??? = new StringBuilder().append("getGroupIntimateInfoList, uinList: ").append(paramLong).append(" ");
-      if (??? == null) {
-        break label92;
-      }
-    }
-    label92:
-    for (Object localObject1 = ???.toString();; localObject1 = "null")
-    {
-      QLog.d("MultiCardManager", 2, (String)localObject1);
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramGetGroupIntimateInfoListListener != null) && (??? != null))
-      {
-        if (NetworkUtil.d(paramContext)) {
-          break;
-        }
-        a(paramLong, ???, paramGetGroupIntimateInfoListListener);
-      }
-      return;
-    }
-    localObject1 = new ArrayList(???.size());
-    paramContext = new ArrayList(???.size());
-    Iterator localIterator = ???.iterator();
-    while (localIterator.hasNext())
-    {
-      Long localLong = (Long)localIterator.next();
-      if ((IntimateInfo)this.jdField_a_of_type_AndroidUtilLruCache.get(localLong) != null) {
-        ((ArrayList)localObject1).add(localLong);
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("getGroupIntimateInfoList, uinList: ");
+      ((StringBuilder)???).append(paramLong);
+      ((StringBuilder)???).append(" ");
+      if (??? != null) {
+        localObject1 = ???.toString();
       } else {
-        for (;;)
-        {
+        localObject1 = "null";
+      }
+      ((StringBuilder)???).append((String)localObject1);
+      QLog.d("MultiCardManager", 2, ((StringBuilder)???).toString());
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramGetGroupIntimateInfoListListener != null) && (??? != null))
+    {
+      if (!NetworkUtil.isNetSupport(paramContext))
+      {
+        a(paramLong, ???, paramGetGroupIntimateInfoListListener);
+        return;
+      }
+      localObject1 = new ArrayList(???.size());
+      paramContext = new ArrayList(???.size());
+      Iterator localIterator = ???.iterator();
+      while (localIterator.hasNext())
+      {
+        Long localLong = (Long)localIterator.next();
+        if ((IntimateInfo)this.jdField_a_of_type_AndroidUtilLruCache.get(localLong) != null) {
+          ((ArrayList)localObject1).add(localLong);
+        } else {
           synchronized (this.c)
           {
             if (!this.c.containsKey(localLong))
@@ -354,192 +331,240 @@ public class MultiCardManager
               paramContext.add(localLong);
               this.c.put(localLong, Boolean.TRUE);
             }
+            else
+            {
+              ((ArrayList)localObject1).add(localLong);
+            }
           }
-          ((ArrayList)localObject1).add(localLong);
         }
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiCardManager", 2, "getGroupIntimateInfoList  alreadyRequest: " + ((ArrayList)localObject1).toString() + " notRequest:" + paramContext.toString());
-    }
-    if (paramContext.isEmpty())
-    {
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("getGroupIntimateInfoList  alreadyRequest: ");
+        ((StringBuilder)???).append(((ArrayList)localObject1).toString());
+        ((StringBuilder)???).append(" notRequest:");
+        ((StringBuilder)???).append(paramContext.toString());
+        QLog.d("MultiCardManager", 2, ((StringBuilder)???).toString());
+      }
+      if (paramContext.isEmpty())
+      {
+        a(paramLong, ???, paramGetGroupIntimateInfoListListener);
+        return;
+      }
       a(paramLong, ???, paramGetGroupIntimateInfoListListener);
-      return;
-    }
-    a(paramLong, ???, paramGetGroupIntimateInfoListListener);
-    paramGetGroupIntimateInfoListListener = new WeakReference(paramGetGroupIntimateInfoListListener);
-    synchronized (this.b)
-    {
-      this.b.put(Long.valueOf(paramLong), paramGetGroupIntimateInfoListListener);
-      ??? = new HashMap(5);
-      ???.put("alreadyRequest", localObject1);
-      ???.put("notRequest", paramContext);
-      paramGetGroupIntimateInfoListListener = new ArrayList(1);
-      paramGetGroupIntimateInfoListListener.add(Long.valueOf(paramLong));
-      ???.put("groupUin", paramGetGroupIntimateInfoListListener);
-      ((IntimateInfoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER)).a(paramLong, paramContext, ???);
-      return;
+      paramGetGroupIntimateInfoListListener = new WeakReference(paramGetGroupIntimateInfoListListener);
+      synchronized (this.b)
+      {
+        this.b.put(Long.valueOf(paramLong), paramGetGroupIntimateInfoListListener);
+        ??? = new HashMap(5);
+        ???.put("alreadyRequest", localObject1);
+        ???.put("notRequest", paramContext);
+        paramGetGroupIntimateInfoListListener = new ArrayList(1);
+        paramGetGroupIntimateInfoListListener.add(Long.valueOf(paramLong));
+        ???.put("groupUin", paramGetGroupIntimateInfoListListener);
+        ((IntimateInfoHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.INTIMATE_INFO_HANDLER)).a(paramLong, paramContext, ???);
+        return;
+      }
     }
   }
   
   public void a(Context arg1, long paramLong, ArrayList<Long> paramArrayList, MultiCardManager.GetGroupMemberNickListener paramGetGroupMemberNickListener)
   {
     Object localObject2;
+    Object localObject1;
     if (QLog.isColorLevel())
     {
-      localObject2 = new StringBuilder().append("getGroupMemberNick, uinList: ").append(paramLong).append(" ");
-      if (paramArrayList == null) {
-        break label92;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getGroupMemberNick, uinList: ");
+      ((StringBuilder)localObject2).append(paramLong);
+      ((StringBuilder)localObject2).append(" ");
+      if (paramArrayList != null) {
+        localObject1 = paramArrayList.toString();
+      } else {
+        localObject1 = "null";
       }
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("MultiCardManager", 2, ((StringBuilder)localObject2).toString());
     }
-    label92:
-    for (Object localObject1 = paramArrayList.toString();; localObject1 = "null")
+    if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramGetGroupMemberNickListener != null) && (paramArrayList != null))
     {
-      QLog.d("MultiCardManager", 2, (String)localObject1);
-      if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (paramGetGroupMemberNickListener != null) && (paramArrayList != null))
+      if (!NetworkUtil.isNetSupport(???))
       {
-        if (NetworkUtil.d(???)) {
-          break;
+        a(paramLong, paramArrayList, paramGetGroupMemberNickListener);
+        return;
+      }
+      synchronized (this.e)
+      {
+        int i;
+        if (this.e.containsKey(Long.valueOf(paramLong)))
+        {
+          int j = 1;
+          localObject1 = (ArrayList)this.e.get(Long.valueOf(paramLong));
+          i = j;
+          if (localObject1 != null)
+          {
+            localObject1 = (ArrayList)((ArrayList)localObject1).clone();
+            localObject2 = paramArrayList.iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              Long localLong = (Long)((Iterator)localObject2).next();
+              if (!((ArrayList)localObject1).contains(localLong)) {
+                ((ArrayList)localObject1).add(localLong);
+              }
+            }
+            this.e.put(Long.valueOf(paramLong), localObject1);
+            i = j;
+          }
+        }
+        else
+        {
+          this.e.put(Long.valueOf(paramLong), (ArrayList)paramArrayList.clone());
+          i = 0;
         }
         a(paramLong, paramArrayList, paramGetGroupMemberNickListener);
-      }
-      return;
-    }
-    synchronized (this.e)
-    {
-      if (!this.e.containsKey(Long.valueOf(paramLong))) {
-        break label318;
-      }
-      localObject1 = (ArrayList)this.e.get(Long.valueOf(paramLong));
-      if (localObject1 == null) {
-        break label351;
-      }
-      localObject1 = (ArrayList)((ArrayList)localObject1).clone();
-      localObject2 = paramArrayList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Long localLong = (Long)((Iterator)localObject2).next();
-        if (!((ArrayList)localObject1).contains(localLong)) {
-          ((ArrayList)localObject1).add(localLong);
+        if (i != 0) {
+          return;
+        }
+        paramArrayList = new WeakReference(paramGetGroupMemberNickListener);
+        synchronized (this.d)
+        {
+          this.d.put(Long.valueOf(paramLong), paramArrayList);
+          ??? = (ITroopMemberListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_LIST_HANDLER);
+          paramArrayList = new StringBuilder();
+          paramArrayList.append(paramLong);
+          paramArrayList.append("");
+          ???.a(false, paramArrayList.toString(), "0", 9);
+          return;
         }
       }
-    }
-    this.e.put(Long.valueOf(paramLong), localObject1);
-    for (;;)
-    {
-      a(paramLong, paramArrayList, paramGetGroupMemberNickListener);
-      if (i != 0) {
-        break;
-      }
-      paramArrayList = new WeakReference(paramGetGroupMemberNickListener);
-      synchronized (this.d)
-      {
-        this.d.put(Long.valueOf(paramLong), paramArrayList);
-        ((TroopHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(false, paramLong + "", "0", 9);
-        return;
-        label318:
-        this.e.put(Long.valueOf(paramLong), (ArrayList)paramArrayList.clone());
-        i = 0;
-      }
-      label351:
-      int i = 1;
     }
   }
   
   public void a(String paramString, IntimateInfo paramIntimateInfo)
   {
-    if (paramIntimateInfo != null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "saveGroupCardIntimateInfo " + paramString + " " + paramIntimateInfo.toString());
-      }
-    }
-    try
+    if (paramIntimateInfo != null)
     {
-      long l = Long.parseLong(paramIntimateInfo.friendUin);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_AndroidUtilLruCache.put(Long.valueOf(l), paramIntimateInfo);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveGroupCardIntimateInfo ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramIntimateInfo.toString());
+        QLog.d("intimate_relationship", 2, localStringBuilder.toString());
       }
-      paramString = IntimateInfo.convertUinKeyForGroupCard(paramString, paramIntimateInfo.friendUin);
-      paramIntimateInfo.friendUin = paramString;
-      paramIntimateInfo.lastAnimAfterFriendDays = paramIntimateInfo.beFriendDays;
-      paramIntimateInfo.lastAnimAfterScore = paramIntimateInfo.currentScore;
-      this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoManager.a(paramString, paramIntimateInfo);
-      paramIntimateInfo.friendUin = (l + "");
-      return;
-    }
-    catch (Exception paramString)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("intimate_relationship", 2, "saveGroupCardIntimateInfo " + paramString.toString());
+      try
+      {
+        long l = Long.parseLong(paramIntimateInfo.friendUin);
+        if (!this.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_AndroidUtilLruCache.put(Long.valueOf(l), paramIntimateInfo);
+        }
+        paramString = IntimateInfo.convertUinKeyForGroupCard(paramString, paramIntimateInfo.friendUin);
+        paramIntimateInfo.friendUin = paramString;
+        paramIntimateInfo.lastAnimAfterFriendDays = paramIntimateInfo.beFriendDays;
+        paramIntimateInfo.lastAnimAfterScore = paramIntimateInfo.currentScore;
+        this.jdField_a_of_type_ComTencentMobileqqFriendsIntimateIntimateInfoManager.a(paramString, paramIntimateInfo);
+        paramString = new StringBuilder();
+        paramString.append(l);
+        paramString.append("");
+        paramIntimateInfo.friendUin = paramString.toString();
+        return;
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramIntimateInfo = new StringBuilder();
+          paramIntimateInfo.append("saveGroupCardIntimateInfo ");
+          paramIntimateInfo.append(paramString.toString());
+          QLog.d("intimate_relationship", 2, paramIntimateInfo.toString());
+        }
+      }
     }
   }
   
   public void b(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("intimate_relationship", 2, "exit " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("exit ");
+      ((StringBuilder)localObject1).append(paramLong);
+      QLog.d("intimate_relationship", 2, ((StringBuilder)localObject1).toString());
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Long = 0L;
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$GroupCardIntimateInfoObserver != null)
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$GroupCardIntimateInfoObserver;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$GroupCardIntimateInfoObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)localObject1);
       this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$GroupCardIntimateInfoObserver = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$MyFriendObserver != null)
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$MyFriendObserver;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$MyFriendObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)localObject1);
       this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$MyFriendObserver = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$MyTroopBusinessObserver != null)
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$MyTroopBusinessObserver;
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$MyTroopBusinessObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver((BusinessObserver)localObject1);
       this.jdField_a_of_type_ComTencentMobileqqMulticardMultiCardManager$MyTroopBusinessObserver = null;
     }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {}
-    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
-      if (this.b != null) {}
-      synchronized (this.b)
+    localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject1 != null) {
+      try
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.clear();
+      }
+      finally {}
+    }
+    localObject1 = this.b;
+    if (localObject1 != null) {
+      try
       {
         this.b.clear();
-        if (this.jdField_a_of_type_AndroidUtilLruCache != null) {
-          this.jdField_a_of_type_AndroidUtilLruCache.evictAll();
-        }
-        if (this.f != null) {}
-        synchronized (this.f)
-        {
-          this.f.clear();
-          if (this.d != null) {}
-          synchronized (this.d)
-          {
-            this.d.clear();
-            if (this.e != null) {}
-            synchronized (this.e)
-            {
-              this.e.clear();
-              if (this.c == null) {}
-            }
-          }
-        }
       }
+      finally {}
     }
-    synchronized (this.c)
-    {
-      this.c.clear();
-      return;
-      localObject1 = finally;
-      throw localObject1;
-      localObject2 = finally;
-      throw localObject2;
-      localObject3 = finally;
-      throw localObject3;
-      localObject4 = finally;
-      throw localObject4;
-      localObject5 = finally;
-      throw localObject5;
+    localObject1 = this.jdField_a_of_type_AndroidUtilLruCache;
+    if (localObject1 != null) {
+      ((LruCache)localObject1).evictAll();
+    }
+    localObject1 = this.f;
+    if (localObject1 != null) {
+      try
+      {
+        this.f.clear();
+      }
+      finally {}
+    }
+    localObject1 = this.d;
+    if (localObject1 != null) {
+      try
+      {
+        this.d.clear();
+      }
+      finally {}
+    }
+    localObject1 = this.e;
+    if (localObject1 != null) {
+      try
+      {
+        this.e.clear();
+      }
+      finally {}
+    }
+    localObject1 = this.c;
+    if (localObject1 != null) {
+      try
+      {
+        this.c.clear();
+        return;
+      }
+      finally {}
     }
   }
   
@@ -550,7 +575,7 @@ public class MultiCardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.MultiCardManager
  * JD-Core Version:    0.7.0.1
  */

@@ -28,10 +28,10 @@ public class QQHeadDetails
   
   public DestQQHeadInfo a()
   {
-    long l1 = 0L;
     if (this.jdField_a_of_type_Int == 11) {
       return new DestQQHeadInfo(0L, this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString);
     }
+    long l1 = 0L;
     try
     {
       long l2 = Long.parseLong(this.jdField_a_of_type_JavaLangString);
@@ -53,7 +53,11 @@ public class QQHeadDetails
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("{uinOrMobile:").append(this.jdField_a_of_type_JavaLangString).append(",timestamp:").append(this.jdField_a_of_type_Long).append("}");
+    localStringBuilder.append("{uinOrMobile:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",timestamp:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
   
@@ -67,7 +71,7 @@ public class QQHeadDetails
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.bean.QQHeadDetails
  * JD-Core Version:    0.7.0.1
  */

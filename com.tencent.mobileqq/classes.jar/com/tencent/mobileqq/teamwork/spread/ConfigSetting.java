@@ -13,7 +13,7 @@ import com.tencent.mobileqq.config.business.tendoc.TencentDocTipsConfigProcessor
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.teamwork.TeamWorkHandler;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -55,12 +55,15 @@ public class ConfigSetting
     }
     try
     {
-      paramTencentDocTipsConfigBean.a(((TeamWorkHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).a());
+      paramTencentDocTipsConfigBean.a(((ITeamWorkHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TEAM_WORK_HANDLER)).getTemplateListByHttp());
       return;
     }
     catch (Exception paramTencentDocTipsConfigBean)
     {
-      QLog.e("ConfigSetting", 2, " getTemplateListFromCgi failed :" + paramTencentDocTipsConfigBean.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" getTemplateListFromCgi failed :");
+      localStringBuilder.append(paramTencentDocTipsConfigBean.toString());
+      QLog.e("ConfigSetting", 2, localStringBuilder.toString());
       paramTencentDocTipsConfigBean.printStackTrace();
     }
   }
@@ -85,39 +88,41 @@ public class ConfigSetting
   
   public String a(BaseTimAIOTipsProcessor paramBaseTimAIOTipsProcessor)
   {
-    Object localObject1;
     Object localObject2;
-    if (((paramBaseTimAIOTipsProcessor instanceof BuddyFileAIOMsgTips)) || ((paramBaseTimAIOTipsProcessor instanceof TroopFileAIOMsgTips)))
+    Object localObject1;
+    if ((!(paramBaseTimAIOTipsProcessor instanceof BuddyFileAIOMsgTips)) && (!(paramBaseTimAIOTipsProcessor instanceof TroopFileAIOMsgTips)))
     {
-      localObject1 = a().a();
-      paramBaseTimAIOTipsProcessor = FileUtil.a(paramBaseTimAIOTipsProcessor.a());
-      localObject2 = ((Map)localObject1).keySet().iterator();
-    }
-    while (((Iterator)localObject2).hasNext())
-    {
-      Object localObject3 = (TencentDocTipsConfigBean.KeyWords)((Map)localObject1).get((String)((Iterator)localObject2).next());
-      String[] arrayOfString = ((TencentDocTipsConfigBean.KeyWords)localObject3).jdField_b_of_type_ArrayOfJavaLangString;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (arrayOfString[i].equalsIgnoreCase(paramBaseTimAIOTipsProcessor)) {
-          return ((TencentDocTipsConfigBean.KeyWords)localObject3).jdField_a_of_type_JavaLangString;
-        }
-        i += 1;
-      }
-      continue;
       if ((paramBaseTimAIOTipsProcessor instanceof TeamWorkTextMsgTipsProcessor))
       {
         localObject2 = a().a();
         localObject1 = a().a();
         paramBaseTimAIOTipsProcessor = paramBaseTimAIOTipsProcessor.a();
         localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+      }
+    }
+    else {
+      while (((Iterator)localObject2).hasNext())
+      {
+        Object localObject3 = (TencentDocTipsConfigBean.TeamworkKeyWords)((Iterator)localObject2).next();
+        if ((paramBaseTimAIOTipsProcessor.contains(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).jdField_a_of_type_JavaLangString)) && (((SparseArray)localObject1).valueAt(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).b) != null))
         {
-          localObject3 = (TencentDocTipsConfigBean.TeamworkKeyWords)((Iterator)localObject2).next();
-          if ((paramBaseTimAIOTipsProcessor.contains(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).jdField_a_of_type_JavaLangString)) && (((SparseArray)localObject1).valueAt(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).b) != null)) {
-            return ((TencentDocTipsConfigBean.KeyWords)((SparseArray)localObject1).valueAt(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).b)).jdField_a_of_type_JavaLangString;
+          return ((TencentDocTipsConfigBean.KeyWords)((SparseArray)localObject1).valueAt(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).b)).jdField_a_of_type_JavaLangString;
+          localObject1 = a().a();
+          paramBaseTimAIOTipsProcessor = FileUtil.a(paramBaseTimAIOTipsProcessor.a());
+          localObject2 = ((Map)localObject1).keySet().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (TencentDocTipsConfigBean.KeyWords)((Map)localObject1).get((String)((Iterator)localObject2).next());
+            String[] arrayOfString = ((TencentDocTipsConfigBean.KeyWords)localObject3).jdField_b_of_type_ArrayOfJavaLangString;
+            int j = arrayOfString.length;
+            int i = 0;
+            while (i < j)
+            {
+              if (arrayOfString[i].equalsIgnoreCase(paramBaseTimAIOTipsProcessor)) {
+                return ((TencentDocTipsConfigBean.KeyWords)localObject3).jdField_a_of_type_JavaLangString;
+              }
+              i += 1;
+            }
           }
         }
       }
@@ -158,14 +163,22 @@ public class ConfigSetting
   
   public String[] a(BaseTimAIOTipsProcessor paramBaseTimAIOTipsProcessor)
   {
-    int i = 0;
     Map localMap = a().a();
     Object localObject = a().a();
-    if (((paramBaseTimAIOTipsProcessor instanceof BuddyFileAIOMsgTips)) || ((paramBaseTimAIOTipsProcessor instanceof TroopFileAIOMsgTips)))
+    boolean bool = paramBaseTimAIOTipsProcessor instanceof BuddyFileAIOMsgTips;
+    int i = 0;
+    if ((!bool) && (!(paramBaseTimAIOTipsProcessor instanceof TroopFileAIOMsgTips)))
     {
-      paramBaseTimAIOTipsProcessor = FileUtil.a(paramBaseTimAIOTipsProcessor.a());
-      localObject = localMap.keySet().iterator();
+      paramBaseTimAIOTipsProcessor = new String[((List)localObject).size()];
+      while (i < ((List)localObject).size())
+      {
+        paramBaseTimAIOTipsProcessor[i] = ((TencentDocTipsConfigBean.TeamworkKeyWords)((List)localObject).get(i)).jdField_a_of_type_JavaLangString;
+        i += 1;
+      }
+      return paramBaseTimAIOTipsProcessor;
     }
+    paramBaseTimAIOTipsProcessor = FileUtil.a(paramBaseTimAIOTipsProcessor.a());
+    localObject = localMap.keySet().iterator();
     while (((Iterator)localObject).hasNext())
     {
       TencentDocTipsConfigBean.KeyWords localKeyWords = (TencentDocTipsConfigBean.KeyWords)localMap.get((String)((Iterator)localObject).next());
@@ -179,53 +192,47 @@ public class ConfigSetting
         }
         i += 1;
       }
-      continue;
-      paramBaseTimAIOTipsProcessor = new String[((List)localObject).size()];
-      while (i < ((List)localObject).size())
-      {
-        paramBaseTimAIOTipsProcessor[i] = ((TencentDocTipsConfigBean.TeamworkKeyWords)((List)localObject).get(i)).jdField_a_of_type_JavaLangString;
-        i += 1;
-      }
-      return paramBaseTimAIOTipsProcessor;
     }
     return new String[0];
   }
   
   public String b(BaseTimAIOTipsProcessor paramBaseTimAIOTipsProcessor)
   {
-    Object localObject1;
     Object localObject2;
-    if (((paramBaseTimAIOTipsProcessor instanceof BuddyFileAIOMsgTips)) || ((paramBaseTimAIOTipsProcessor instanceof TroopFileAIOMsgTips)))
+    Object localObject1;
+    if ((!(paramBaseTimAIOTipsProcessor instanceof BuddyFileAIOMsgTips)) && (!(paramBaseTimAIOTipsProcessor instanceof TroopFileAIOMsgTips)))
     {
-      localObject1 = a().a();
-      paramBaseTimAIOTipsProcessor = FileUtil.a(paramBaseTimAIOTipsProcessor.a());
-      localObject2 = ((Map)localObject1).keySet().iterator();
-    }
-    while (((Iterator)localObject2).hasNext())
-    {
-      Object localObject3 = (TencentDocTipsConfigBean.KeyWords)((Map)localObject1).get((String)((Iterator)localObject2).next());
-      String[] arrayOfString = ((TencentDocTipsConfigBean.KeyWords)localObject3).jdField_b_of_type_ArrayOfJavaLangString;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (arrayOfString[i].equalsIgnoreCase(paramBaseTimAIOTipsProcessor)) {
-          return ((TencentDocTipsConfigBean.KeyWords)localObject3).jdField_b_of_type_JavaLangString;
-        }
-        i += 1;
-      }
-      continue;
       if ((paramBaseTimAIOTipsProcessor instanceof TeamWorkTextMsgTipsProcessor))
       {
         localObject2 = a().a();
         localObject1 = a().a();
         paramBaseTimAIOTipsProcessor = paramBaseTimAIOTipsProcessor.a();
         localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+      }
+    }
+    else {
+      while (((Iterator)localObject2).hasNext())
+      {
+        Object localObject3 = (TencentDocTipsConfigBean.TeamworkKeyWords)((Iterator)localObject2).next();
+        if ((paramBaseTimAIOTipsProcessor.contains(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).jdField_a_of_type_JavaLangString)) && (((SparseArray)localObject1).valueAt(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).b) != null))
         {
-          localObject3 = (TencentDocTipsConfigBean.TeamworkKeyWords)((Iterator)localObject2).next();
-          if ((paramBaseTimAIOTipsProcessor.contains(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).jdField_a_of_type_JavaLangString)) && (((SparseArray)localObject1).valueAt(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).b) != null)) {
-            return ((TencentDocTipsConfigBean.KeyWords)((SparseArray)localObject1).valueAt(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).b)).jdField_b_of_type_JavaLangString;
+          return ((TencentDocTipsConfigBean.KeyWords)((SparseArray)localObject1).valueAt(((TencentDocTipsConfigBean.TeamworkKeyWords)localObject3).b)).jdField_b_of_type_JavaLangString;
+          localObject1 = a().a();
+          paramBaseTimAIOTipsProcessor = FileUtil.a(paramBaseTimAIOTipsProcessor.a());
+          localObject2 = ((Map)localObject1).keySet().iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (TencentDocTipsConfigBean.KeyWords)((Map)localObject1).get((String)((Iterator)localObject2).next());
+            String[] arrayOfString = ((TencentDocTipsConfigBean.KeyWords)localObject3).jdField_b_of_type_ArrayOfJavaLangString;
+            int j = arrayOfString.length;
+            int i = 0;
+            while (i < j)
+            {
+              if (arrayOfString[i].equalsIgnoreCase(paramBaseTimAIOTipsProcessor)) {
+                return ((TencentDocTipsConfigBean.KeyWords)localObject3).jdField_b_of_type_JavaLangString;
+              }
+              i += 1;
+            }
           }
         }
       }
@@ -235,7 +242,7 @@ public class ConfigSetting
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSetting
  * JD-Core Version:    0.7.0.1
  */

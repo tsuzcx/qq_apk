@@ -20,14 +20,15 @@ public final class Conf
   
   public static Conf[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new Conf[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new Conf[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static Conf parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -48,45 +49,55 @@ public final class Conf
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int m = 0;
     int j = super.computeSerializedSize();
+    Object localObject = this.defaultRoomInfos;
+    int m = 0;
     int i = j;
     int k;
-    if (this.defaultRoomInfos != null)
+    if (localObject != null)
     {
       i = j;
-      if (this.defaultRoomInfos.length > 0)
+      if (localObject.length > 0)
       {
         i = j;
         j = 0;
-        while (j < this.defaultRoomInfos.length)
+        for (;;)
         {
-          DefaultRoomInfo localDefaultRoomInfo = this.defaultRoomInfos[j];
+          localObject = this.defaultRoomInfos;
+          if (j >= localObject.length) {
+            break;
+          }
+          localObject = localObject[j];
           k = i;
-          if (localDefaultRoomInfo != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(1, localDefaultRoomInfo);
+          if (localObject != null) {
+            k = i + CodedOutputByteBufferNano.computeMessageSize(1, (MessageNano)localObject);
           }
           j += 1;
           i = k;
         }
       }
     }
+    localObject = this.multiLiveUids;
     j = i;
-    if (this.multiLiveUids != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.multiLiveUids.length > 0)
+      if (localObject.length > 0)
       {
         k = 0;
         j = m;
-        while (j < this.multiLiveUids.length)
+        for (;;)
         {
-          k += CodedOutputByteBufferNano.computeUInt64SizeNoTag(this.multiLiveUids[j]);
+          localObject = this.multiLiveUids;
+          if (j >= localObject.length) {
+            break;
+          }
+          k += CodedOutputByteBufferNano.computeUInt64SizeNoTag(localObject[j]);
           j += 1;
         }
-        j = i + k + this.multiLiveUids.length * 1;
+        j = i + k + localObject.length * 1;
       }
     }
     return j;
@@ -97,44 +108,63 @@ public final class Conf
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      Object localObject;
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
-        if (this.defaultRoomInfos == null) {}
-        for (i = 0;; i = this.defaultRoomInfos.length)
-        {
-          localObject = new DefaultRoomInfo[j + i];
-          j = i;
-          if (i != 0)
-          {
-            System.arraycopy(this.defaultRoomInfos, 0, localObject, 0, i);
-            j = i;
-          }
-          while (j < localObject.length - 1)
-          {
-            localObject[j] = new DefaultRoomInfo();
-            paramCodedInputByteBufferNano.readMessage(localObject[j]);
-            paramCodedInputByteBufferNano.readTag();
-            j += 1;
-          }
-        }
-        localObject[j] = new DefaultRoomInfo();
-        paramCodedInputByteBufferNano.readMessage(localObject[j]);
-        this.defaultRoomInfos = ((DefaultRoomInfo[])localObject);
+      if (i == 0) {
         break;
-      case 16: 
-        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 16);
-        if (this.multiLiveUids == null) {}
-        for (i = 0;; i = this.multiLiveUids.length)
+      }
+      int j;
+      Object localObject;
+      if (i != 10)
+      {
+        if (i != 16)
         {
+          if (i != 18)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else
+          {
+            int k = paramCodedInputByteBufferNano.pushLimit(paramCodedInputByteBufferNano.readRawVarint32());
+            i = paramCodedInputByteBufferNano.getPosition();
+            j = 0;
+            while (paramCodedInputByteBufferNano.getBytesUntilLimit() > 0)
+            {
+              paramCodedInputByteBufferNano.readUInt64();
+              j += 1;
+            }
+            paramCodedInputByteBufferNano.rewindToPosition(i);
+            localObject = this.multiLiveUids;
+            if (localObject == null) {
+              i = 0;
+            } else {
+              i = localObject.length;
+            }
+            localObject = new long[j + i];
+            j = i;
+            if (i != 0)
+            {
+              System.arraycopy(this.multiLiveUids, 0, localObject, 0, i);
+              j = i;
+            }
+            while (j < localObject.length)
+            {
+              localObject[j] = paramCodedInputByteBufferNano.readUInt64();
+              j += 1;
+            }
+            this.multiLiveUids = ((long[])localObject);
+            paramCodedInputByteBufferNano.popLimit(k);
+          }
+        }
+        else
+        {
+          j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 16);
+          localObject = this.multiLiveUids;
+          if (localObject == null) {
+            i = 0;
+          } else {
+            i = localObject.length;
+          }
           localObject = new long[j + i];
           j = i;
           if (i != 0)
@@ -148,63 +178,73 @@ public final class Conf
             paramCodedInputByteBufferNano.readTag();
             j += 1;
           }
+          localObject[j] = paramCodedInputByteBufferNano.readUInt64();
+          this.multiLiveUids = ((long[])localObject);
         }
-        localObject[j] = paramCodedInputByteBufferNano.readUInt64();
-        this.multiLiveUids = ((long[])localObject);
-        break;
       }
-      int k = paramCodedInputByteBufferNano.pushLimit(paramCodedInputByteBufferNano.readRawVarint32());
-      i = paramCodedInputByteBufferNano.getPosition();
-      int j = 0;
-      while (paramCodedInputByteBufferNano.getBytesUntilLimit() > 0)
+      else
       {
-        paramCodedInputByteBufferNano.readUInt64();
-        j += 1;
-      }
-      paramCodedInputByteBufferNano.rewindToPosition(i);
-      if (this.multiLiveUids == null) {}
-      for (i = 0;; i = this.multiLiveUids.length)
-      {
-        localObject = new long[j + i];
+        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
+        localObject = this.defaultRoomInfos;
+        if (localObject == null) {
+          i = 0;
+        } else {
+          i = localObject.length;
+        }
+        localObject = new DefaultRoomInfo[j + i];
         j = i;
         if (i != 0)
         {
-          System.arraycopy(this.multiLiveUids, 0, localObject, 0, i);
+          System.arraycopy(this.defaultRoomInfos, 0, localObject, 0, i);
           j = i;
         }
-        while (j < localObject.length)
+        while (j < localObject.length - 1)
         {
-          localObject[j] = paramCodedInputByteBufferNano.readUInt64();
+          localObject[j] = new DefaultRoomInfo();
+          paramCodedInputByteBufferNano.readMessage(localObject[j]);
+          paramCodedInputByteBufferNano.readTag();
           j += 1;
         }
+        localObject[j] = new DefaultRoomInfo();
+        paramCodedInputByteBufferNano.readMessage(localObject[j]);
+        this.defaultRoomInfos = ((DefaultRoomInfo[])localObject);
       }
-      this.multiLiveUids = ((long[])localObject);
-      paramCodedInputByteBufferNano.popLimit(k);
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
+    Object localObject = this.defaultRoomInfos;
     int j = 0;
     int i;
-    if ((this.defaultRoomInfos != null) && (this.defaultRoomInfos.length > 0))
+    if ((localObject != null) && (localObject.length > 0))
     {
       i = 0;
-      while (i < this.defaultRoomInfos.length)
+      for (;;)
       {
-        DefaultRoomInfo localDefaultRoomInfo = this.defaultRoomInfos[i];
-        if (localDefaultRoomInfo != null) {
-          paramCodedOutputByteBufferNano.writeMessage(1, localDefaultRoomInfo);
+        localObject = this.defaultRoomInfos;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(1, (MessageNano)localObject);
         }
         i += 1;
       }
     }
-    if ((this.multiLiveUids != null) && (this.multiLiveUids.length > 0))
+    localObject = this.multiLiveUids;
+    if ((localObject != null) && (localObject.length > 0))
     {
       i = j;
-      while (i < this.multiLiveUids.length)
+      for (;;)
       {
-        paramCodedOutputByteBufferNano.writeUInt64(2, this.multiLiveUids[i]);
+        localObject = this.multiLiveUids;
+        if (i >= localObject.length) {
+          break;
+        }
+        paramCodedOutputByteBufferNano.writeUInt64(2, localObject[i]);
         i += 1;
       }
     }
@@ -213,7 +253,7 @@ public final class Conf
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.Conf
  * JD-Core Version:    0.7.0.1
  */

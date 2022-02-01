@@ -1,21 +1,21 @@
 package com.tencent.imcore.message;
 
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.qidian.util.QidianUtils;
+import java.util.Comparator;
 
 class C2CMessageProcessor$4
-  implements Runnable
+  implements Comparator<MessageRecord>
 {
-  C2CMessageProcessor$4(C2CMessageProcessor paramC2CMessageProcessor, MessageRecord paramMessageRecord) {}
+  C2CMessageProcessor$4(C2CMessageProcessor paramC2CMessageProcessor) {}
   
-  public void run()
+  public int a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
   {
-    QidianUtils.a(this.this$0.a, this.a.istroop, this.a.frienduin, String.valueOf(this.a.mQidianMasterUin), String.valueOf(this.a.mQidianTaskId), this.a.mQidianTipText, this.a.time);
+    return (int)(paramMessageRecord2.time - paramMessageRecord1.time);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.C2CMessageProcessor.4
  * JD-Core Version:    0.7.0.1
  */

@@ -10,67 +10,71 @@ class TroopFileItemBuilder$1
     super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
+  public void getRightMenuItemInfo(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
   {
     if ((paramObject instanceof Object[]))
     {
       paramObject = (Object[])paramObject;
-      if (paramObject.length == 2) {
-        break label22;
-      }
-    }
-    label22:
-    do
-    {
-      do
-      {
+      if (paramObject.length != 2) {
         return;
-        paramObject = paramObject[0];
-      } while (!(paramObject instanceof boolean[]));
-      paramObject = (boolean[])paramObject;
-    } while ((paramArrayOfSwipRightMenuItem == null) || (paramArrayOfSwipRightMenuItem.length <= 0) || (paramObject.length != 3));
-    if ((paramArrayOfSwipRightMenuItem.length < 0) && (paramObject[0] != 0))
-    {
-      paramArrayOfSwipRightMenuItem[0].b = 0;
-      paramArrayOfSwipRightMenuItem[0].a = 0;
-    }
-    for (int i = 1;; i = 0)
-    {
-      paramInt = i;
-      if (i < paramArrayOfSwipRightMenuItem.length)
+      }
+      paramObject = paramObject[0];
+      if ((paramObject instanceof boolean[]))
       {
-        paramInt = i;
-        if (paramObject[1] != 0)
+        paramObject = (boolean[])paramObject;
+        if ((paramArrayOfSwipRightMenuItem != null) && (paramArrayOfSwipRightMenuItem.length > 0))
         {
-          paramArrayOfSwipRightMenuItem[i].b = 1;
-          paramArrayOfSwipRightMenuItem[i].a = 1;
-          paramInt = i + 1;
+          if (paramObject.length != 3) {
+            return;
+          }
+          if ((paramArrayOfSwipRightMenuItem.length > 0) && (paramObject[0] != 0))
+          {
+            paramArrayOfSwipRightMenuItem[0].menuId = 0;
+            paramArrayOfSwipRightMenuItem[0].menuType = 0;
+            i = 1;
+          }
+          else
+          {
+            i = 0;
+          }
+          paramInt = i;
+          if (i < paramArrayOfSwipRightMenuItem.length)
+          {
+            paramInt = i;
+            if (paramObject[1] != 0)
+            {
+              paramArrayOfSwipRightMenuItem[i].menuId = 1;
+              paramArrayOfSwipRightMenuItem[i].menuType = 1;
+              paramInt = i + 1;
+            }
+          }
+          int i = paramInt;
+          if (paramInt < paramArrayOfSwipRightMenuItem.length)
+          {
+            i = paramInt;
+            if (paramObject[2] != 0)
+            {
+              paramArrayOfSwipRightMenuItem[paramInt].menuId = 2;
+              paramArrayOfSwipRightMenuItem[paramInt].menuType = 0;
+              break label192;
+            }
+          }
+          while (i < paramArrayOfSwipRightMenuItem.length)
+          {
+            paramArrayOfSwipRightMenuItem[i].menuId = -1;
+            paramArrayOfSwipRightMenuItem[i].menuType = -1;
+            paramInt = i;
+            label192:
+            i = paramInt + 1;
+          }
         }
       }
-      i = paramInt;
-      if (paramInt < paramArrayOfSwipRightMenuItem.length)
-      {
-        i = paramInt;
-        if (paramObject[2] != 0)
-        {
-          paramArrayOfSwipRightMenuItem[paramInt].b = 2;
-          paramArrayOfSwipRightMenuItem[paramInt].a = 0;
-          i = paramInt + 1;
-        }
-      }
-      while (i < paramArrayOfSwipRightMenuItem.length)
-      {
-        paramArrayOfSwipRightMenuItem[i].b = -1;
-        paramArrayOfSwipRightMenuItem[i].a = -1;
-        i += 1;
-      }
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopFileItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

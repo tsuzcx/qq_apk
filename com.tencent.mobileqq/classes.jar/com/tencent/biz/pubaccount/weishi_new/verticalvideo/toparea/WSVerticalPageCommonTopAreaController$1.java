@@ -1,10 +1,10 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSVerticalBeaconReport;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class WSVerticalPageCommonTopAreaController$1
   implements View.OnClickListener
@@ -13,15 +13,16 @@ class WSVerticalPageCommonTopAreaController$1
   
   public void onClick(View paramView)
   {
-    if (WSVerticalPageCommonTopAreaController.a(this.a).getActivity() != null) {
-      WSVerticalPageCommonTopAreaController.a(this.a).getActivity().doOnBackPressed();
+    if (WSVerticalPageCommonTopAreaController.a(this.a).getBaseActivity() != null)
+    {
+      WSVerticalBeaconReport.d(WSVerticalPageCommonTopAreaController.a(this.a).a(), WSVerticalPageCommonTopAreaController.a(this.a).b(), WSVerticalPageCommonTopAreaController.a(this.a).a());
+      WSVerticalPageCommonTopAreaController.a(this.a).getBaseActivity().doOnBackPressed();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.toparea.WSVerticalPageCommonTopAreaController.1
  * JD-Core Version:    0.7.0.1
  */

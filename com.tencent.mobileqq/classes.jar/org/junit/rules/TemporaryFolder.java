@@ -50,9 +50,10 @@ public class TemporaryFolder
   
   private void validateFolderName(String paramString)
   {
-    if (new File(paramString).getParent() != null) {
-      throw new IOException("Folder name cannot consist of multiple path components separated by a file separator. Please use newFolder('MyParentFolder','MyFolder') to create hierarchies of folders");
+    if (new File(paramString).getParent() == null) {
+      return;
     }
+    throw new IOException("Folder name cannot consist of multiple path components separated by a file separator. Please use newFolder('MyParentFolder','MyFolder') to create hierarchies of folders");
   }
   
   protected void after()
@@ -72,17 +73,19 @@ public class TemporaryFolder
   
   public void delete()
   {
-    if (this.folder != null) {
-      recursiveDelete(this.folder);
+    File localFile = this.folder;
+    if (localFile != null) {
+      recursiveDelete(localFile);
     }
   }
   
   public File getRoot()
   {
-    if (this.folder == null) {
-      throw new IllegalStateException("the temporary folder has not yet been created");
+    File localFile = this.folder;
+    if (localFile != null) {
+      return localFile;
     }
-    return this.folder;
+    throw new IllegalStateException("the temporary folder has not yet been created");
   }
   
   public File newFile()
@@ -92,11 +95,15 @@ public class TemporaryFolder
   
   public File newFile(String paramString)
   {
-    File localFile = new File(getRoot(), paramString);
-    if (!localFile.createNewFile()) {
-      throw new IOException("a file with the name '" + paramString + "' already exists in the test folder");
+    Object localObject = new File(getRoot(), paramString);
+    if (((File)localObject).createNewFile()) {
+      return localObject;
     }
-    return localFile;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("a file with the name '");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("' already exists in the test folder");
+    throw new IOException(((StringBuilder)localObject).toString());
   }
   
   public File newFolder()
@@ -118,8 +125,13 @@ public class TemporaryFolder
       String str = paramVarArgs[i];
       validateFolderName(str);
       localFile = new File(localFile, str);
-      if ((!localFile.mkdir()) && (isLastElementInArray(i, paramVarArgs))) {
-        throw new IOException("a folder with the name '" + str + "' already exists");
+      if ((!localFile.mkdir()) && (isLastElementInArray(i, paramVarArgs)))
+      {
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("a folder with the name '");
+        paramVarArgs.append(str);
+        paramVarArgs.append("' already exists");
+        throw new IOException(paramVarArgs.toString());
       }
       i += 1;
     }
@@ -128,7 +140,7 @@ public class TemporaryFolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.rules.TemporaryFolder
  * JD-Core Version:    0.7.0.1
  */

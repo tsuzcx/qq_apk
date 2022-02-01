@@ -40,68 +40,72 @@ public class FontAssetManager
     if (localObject1 != null) {
       return localObject1;
     }
-    Object localObject2 = null;
-    if (this.delegate != null) {
-      localObject2 = this.delegate.fetchFont(paramString);
+    Object localObject3 = null;
+    localObject1 = this.delegate;
+    if (localObject1 != null) {
+      localObject3 = ((FontAssetDelegate)localObject1).fetchFont(paramString);
     }
-    localObject1 = localObject2;
-    String str;
-    if (this.delegate != null)
+    Object localObject4 = this.delegate;
+    localObject1 = localObject3;
+    Object localObject2;
+    if (localObject4 != null)
     {
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      localObject1 = localObject3;
+      if (localObject3 == null)
       {
-        str = this.delegate.getFontPath(paramString);
-        localObject1 = localObject2;
-        if (str == null) {}
-      }
-    }
-    try
-    {
-      localObject1 = Typeface.createFromAsset(this.assetManager, str);
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject1 = "fonts/" + paramString + this.defaultFontFileExtension;
-      }
-    }
-    catch (RuntimeException localRuntimeException1)
-    {
-      try
-      {
-        localObject2 = Typeface.createFromAsset(this.assetManager, (String)localObject1);
-        this.fontFamilies.put(paramString, localObject2);
-        return localObject2;
-        localRuntimeException1 = localRuntimeException1;
-        localRuntimeException1.printStackTrace();
-        Typeface localTypeface = Typeface.DEFAULT;
-      }
-      catch (RuntimeException localRuntimeException2)
-      {
-        for (;;)
-        {
-          localRuntimeException2.printStackTrace();
-          localObject2 = Typeface.DEFAULT;
+        localObject4 = ((FontAssetDelegate)localObject4).getFontPath(paramString);
+        localObject1 = localObject3;
+        if (localObject4 != null) {
+          try
+          {
+            localObject1 = Typeface.createFromAsset(this.assetManager, (String)localObject4);
+          }
+          catch (RuntimeException localRuntimeException1)
+          {
+            localRuntimeException1.printStackTrace();
+            localObject2 = Typeface.DEFAULT;
+          }
         }
       }
     }
+    localObject3 = localObject2;
+    if (localObject2 == null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("fonts/");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(this.defaultFontFileExtension);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      try
+      {
+        localObject3 = Typeface.createFromAsset(this.assetManager, (String)localObject2);
+      }
+      catch (RuntimeException localRuntimeException2)
+      {
+        localRuntimeException2.printStackTrace();
+        localObject3 = Typeface.DEFAULT;
+      }
+    }
+    this.fontFamilies.put(paramString, localObject3);
+    return localObject3;
   }
   
   private Typeface typefaceForStyle(Typeface paramTypeface, String paramString)
   {
-    int i = 0;
     boolean bool1 = paramString.contains("Italic");
     boolean bool2 = paramString.contains("Bold");
+    int i;
     if ((bool1) && (bool2)) {
       i = 3;
+    } else if (bool1) {
+      i = 2;
+    } else if (bool2) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    while (paramTypeface.getStyle() == i)
-    {
+    if (paramTypeface.getStyle() == i) {
       return paramTypeface;
-      if (bool1) {
-        i = 2;
-      } else if (bool2) {
-        i = 1;
-      }
     }
     return Typeface.create(paramTypeface, i);
   }
@@ -130,7 +134,7 @@ public class FontAssetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.manager.FontAssetManager
  * JD-Core Version:    0.7.0.1
  */

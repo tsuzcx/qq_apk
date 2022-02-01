@@ -108,7 +108,7 @@ public class SingleTouchLayout
   
   public static double a(double paramDouble)
   {
-    return 180.0D * paramDouble / 3.141592653589793D;
+    return paramDouble * 180.0D / 3.141592653589793D;
   }
   
   public static Point a(Point paramPoint1, Point paramPoint2, float paramFloat)
@@ -116,49 +116,65 @@ public class SingleTouchLayout
     Point localPoint = new Point();
     paramPoint2.x -= paramPoint1.x;
     paramPoint2.y -= paramPoint1.y;
-    double d2 = 0.0D;
     paramPoint2 = new Point();
     double d3 = Math.sqrt(localPoint.x * localPoint.x + localPoint.y * localPoint.y);
     if ((localPoint.x == 0) && (localPoint.y == 0)) {
       return paramPoint1;
     }
-    double d1;
-    if ((localPoint.x >= 0) && (localPoint.y >= 0)) {
-      d1 = Math.asin(localPoint.y / d3);
-    }
-    for (;;)
+    if ((localPoint.x >= 0) && (localPoint.y >= 0))
     {
-      d1 = b(a(d1) + paramFloat);
-      paramPoint2.x = ((int)Math.round(Math.cos(d1) * d3));
-      paramPoint2.y = ((int)Math.round(Math.sin(d1) * d3));
-      paramPoint2.x += paramPoint1.x;
-      paramPoint2.y += paramPoint1.y;
-      return paramPoint2;
+      d1 = localPoint.y;
+      Double.isNaN(d1);
+      d1 = Math.asin(d1 / d3);
+    }
+    else
+    {
       if ((localPoint.x < 0) && (localPoint.y >= 0))
       {
-        d1 = Math.asin(Math.abs(localPoint.x) / d3) + 1.570796326794897D;
+        d1 = Math.abs(localPoint.x);
+        Double.isNaN(d1);
+        d1 = Math.asin(d1 / d3);
+        d2 = 1.570796326794897D;
       }
-      else if ((localPoint.x < 0) && (localPoint.y < 0))
+      for (;;)
       {
-        d1 = Math.asin(Math.abs(localPoint.y) / d3) + 3.141592653589793D;
-      }
-      else
-      {
-        d1 = d2;
-        if (localPoint.x >= 0)
+        d1 += d2;
+        break label276;
+        if ((localPoint.x < 0) && (localPoint.y < 0))
         {
-          d1 = d2;
-          if (localPoint.y < 0) {
-            d1 = Math.asin(localPoint.x / d3) + 4.71238898038469D;
+          d1 = Math.abs(localPoint.y);
+          Double.isNaN(d1);
+          d1 = Math.asin(d1 / d3);
+          d2 = 3.141592653589793D;
+        }
+        else
+        {
+          if ((localPoint.x < 0) || (localPoint.y >= 0)) {
+            break;
           }
+          d1 = localPoint.x;
+          Double.isNaN(d1);
+          d1 = Math.asin(d1 / d3);
+          d2 = 4.71238898038469D;
         }
       }
+      d1 = 0.0D;
     }
+    label276:
+    double d1 = a(d1);
+    double d2 = paramFloat;
+    Double.isNaN(d2);
+    d1 = b(d1 + d2);
+    paramPoint2.x = ((int)Math.round(Math.cos(d1) * d3));
+    paramPoint2.y = ((int)Math.round(d3 * Math.sin(d1)));
+    paramPoint2.x += paramPoint1.x;
+    paramPoint2.y += paramPoint1.y;
+    return paramPoint2;
   }
   
   public static double b(double paramDouble)
   {
-    return 3.141592653589793D * paramDouble / 180.0D;
+    return paramDouble * 3.141592653589793D / 180.0D;
   }
   
   double a(PointF paramPointF1, PointF paramPointF2)
@@ -190,18 +206,22 @@ public class SingleTouchLayout
   
   Point a(int paramInt, SingleTouchLayout.ComputeResult paramComputeResult)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return paramComputeResult.jdField_a_of_type_AndroidGraphicsPoint;
-    case 0: 
-      return paramComputeResult.jdField_a_of_type_AndroidGraphicsPoint;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return paramComputeResult.jdField_a_of_type_AndroidGraphicsPoint;
+          }
+          return paramComputeResult.jdField_d_of_type_AndroidGraphicsPoint;
+        }
+        return paramComputeResult.jdField_c_of_type_AndroidGraphicsPoint;
+      }
       return paramComputeResult.jdField_b_of_type_AndroidGraphicsPoint;
-    case 2: 
-      return paramComputeResult.jdField_c_of_type_AndroidGraphicsPoint;
     }
-    return paramComputeResult.jdField_d_of_type_AndroidGraphicsPoint;
+    return paramComputeResult.jdField_a_of_type_AndroidGraphicsPoint;
   }
   
   public PointF a()
@@ -230,26 +250,24 @@ public class SingleTouchLayout
     localPoint1 = new Point((paramInt1 + paramInt2) / 2, (paramInt3 + paramInt4) / 2);
     localComputeResult.jdField_c_of_type_Int = (localComputeResult.jdField_a_of_type_Int / 2 - localPoint1.x);
     localComputeResult.jdField_d_of_type_Int = (localComputeResult.jdField_b_of_type_Int / 2 - localPoint1.y);
-    paramInt2 = this.jdField_e_of_type_Int / 2;
-    paramInt1 = this.jdField_f_of_type_Int / 2;
+    paramInt1 = this.jdField_e_of_type_Int / 2;
+    paramInt2 = this.jdField_f_of_type_Int / 2;
     localPoint1 = localComputeResult.jdField_a_of_type_AndroidGraphicsPoint;
-    localPoint1.x += localComputeResult.jdField_c_of_type_Int + paramInt2;
+    localPoint1.x += localComputeResult.jdField_c_of_type_Int + paramInt1;
     localPoint1 = localComputeResult.jdField_b_of_type_AndroidGraphicsPoint;
-    localPoint1.x += localComputeResult.jdField_c_of_type_Int + paramInt2;
+    localPoint1.x += localComputeResult.jdField_c_of_type_Int + paramInt1;
     localPoint1 = localComputeResult.jdField_c_of_type_AndroidGraphicsPoint;
-    localPoint1.x += localComputeResult.jdField_c_of_type_Int + paramInt2;
+    localPoint1.x += localComputeResult.jdField_c_of_type_Int + paramInt1;
     localPoint1 = localComputeResult.jdField_d_of_type_AndroidGraphicsPoint;
-    paramInt3 = localPoint1.x;
-    localPoint1.x = (paramInt2 + localComputeResult.jdField_c_of_type_Int + paramInt3);
+    localPoint1.x += localComputeResult.jdField_c_of_type_Int + paramInt1;
     localPoint1 = localComputeResult.jdField_a_of_type_AndroidGraphicsPoint;
-    localPoint1.y += localComputeResult.jdField_d_of_type_Int + paramInt1;
+    localPoint1.y += localComputeResult.jdField_d_of_type_Int + paramInt2;
     localPoint1 = localComputeResult.jdField_b_of_type_AndroidGraphicsPoint;
-    localPoint1.y += localComputeResult.jdField_d_of_type_Int + paramInt1;
+    localPoint1.y += localComputeResult.jdField_d_of_type_Int + paramInt2;
     localPoint1 = localComputeResult.jdField_c_of_type_AndroidGraphicsPoint;
-    localPoint1.y += localComputeResult.jdField_d_of_type_Int + paramInt1;
+    localPoint1.y += localComputeResult.jdField_d_of_type_Int + paramInt2;
     localPoint1 = localComputeResult.jdField_d_of_type_AndroidGraphicsPoint;
-    paramInt2 = localPoint1.y;
-    localPoint1.y = (paramInt1 + localComputeResult.jdField_d_of_type_Int + paramInt2);
+    localPoint1.y += localComputeResult.jdField_d_of_type_Int + paramInt2;
     localComputeResult.jdField_e_of_type_AndroidGraphicsPoint = a(this.m, localComputeResult);
     localComputeResult.jdField_f_of_type_AndroidGraphicsPoint = a(this.n, localComputeResult);
     return localComputeResult;
@@ -264,8 +282,8 @@ public class SingleTouchLayout
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.i);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.j);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_c_of_type_Float = AIOUtils.a(2.0F, getResources());
-    this.jdField_d_of_type_Float = AIOUtils.a(1.0F, getResources());
+    this.jdField_c_of_type_Float = AIOUtils.b(2.0F, getResources());
+    this.jdField_d_of_type_Float = AIOUtils.b(1.0F, getResources());
     this.jdField_a_of_type_AndroidGraphicsPaint.setShadowLayer(this.jdField_c_of_type_Float, 0.0F, this.jdField_d_of_type_Float, -16777216);
     BitmapFactory.Options localOptions = new BitmapFactory.Options();
     localOptions.inDensity = 320;
@@ -273,28 +291,27 @@ public class SingleTouchLayout
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {}
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130847776, localOptions);
-      if (this.jdField_c_of_type_AndroidGraphicsBitmap != null) {}
+      this.jdField_a_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130847643, localOptions);
     }
     catch (OutOfMemoryError localOutOfMemoryError2)
     {
-      try
-      {
-        this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130847777, localOptions);
-        setIconSize(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
-        a();
-        return;
-        localOutOfMemoryError2 = localOutOfMemoryError2;
-        QLog.e("SingleTouchLayout", 1, "controlDrawable decode failed");
-      }
-      catch (OutOfMemoryError localOutOfMemoryError1)
-      {
-        for (;;)
-        {
-          QLog.e("SingleTouchLayout", 1, "deleteDrawable decode failed");
-        }
-      }
+      label164:
+      break label164;
     }
+    QLog.e("SingleTouchLayout", 1, "controlDrawable decode failed");
+    if (this.jdField_c_of_type_AndroidGraphicsBitmap == null) {}
+    try
+    {
+      this.jdField_c_of_type_AndroidGraphicsBitmap = BitmapFactory.decodeResource(getResources(), 2130847644, localOptions);
+    }
+    catch (OutOfMemoryError localOutOfMemoryError1)
+    {
+      label199:
+      break label199;
+    }
+    QLog.e("SingleTouchLayout", 1, "deleteDrawable decode failed");
+    setIconSize(this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight());
+    a();
   }
   
   void a(AttributeSet paramAttributeSet)
@@ -333,36 +350,48 @@ public class SingleTouchLayout
     }
     int i1 = (int)(this.p * paramFloat1);
     int i2 = (int)(this.q * paramFloat1);
-    if (QLog.isColorLevel()) {
-      QLog.d("SingleTouchLayout", 2, "transformDraw(): mActualViewWidth=" + i1 + ", mActualViewHeight=" + i2);
-    }
-    Object localObject = a(-this.jdField_h_of_type_Int, -this.jdField_h_of_type_Int, this.jdField_h_of_type_Int + i1, i2 + this.jdField_h_of_type_Int, paramFloat2);
-    if ((a(((SingleTouchLayout.ComputeResult)localObject).jdField_a_of_type_Int, ((SingleTouchLayout.ComputeResult)localObject).jdField_b_of_type_Int)) || (!this.jdField_e_of_type_Boolean) || (this.jdField_c_of_type_AndroidGraphicsPointF.x == 0.0F) || (this.jdField_c_of_type_AndroidGraphicsPointF.y == 0.0F) || (!this.jdField_a_of_type_Boolean))
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_a_of_type_AndroidGraphicsPoint;
-      this.jdField_b_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_b_of_type_AndroidGraphicsPoint;
-      this.jdField_c_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_c_of_type_AndroidGraphicsPoint;
-      this.jdField_d_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_d_of_type_AndroidGraphicsPoint;
-      this.jdField_e_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_e_of_type_AndroidGraphicsPoint;
-      this.jdField_f_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_f_of_type_AndroidGraphicsPoint;
-      this.jdField_a_of_type_Int = ((SingleTouchLayout.ComputeResult)localObject).jdField_a_of_type_Int;
-      this.jdField_b_of_type_Int = ((SingleTouchLayout.ComputeResult)localObject).jdField_b_of_type_Int;
-      this.k = ((SingleTouchLayout.ComputeResult)localObject).jdField_c_of_type_Int;
-      this.l = ((SingleTouchLayout.ComputeResult)localObject).jdField_d_of_type_Int;
-      localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      ((FrameLayout.LayoutParams)localObject).leftMargin = ((this.jdField_a_of_type_Int + this.jdField_e_of_type_Int - this.jdField_a_of_type_AndroidViewView.getWidth()) / 2);
-      ((FrameLayout.LayoutParams)localObject).topMargin = ((this.jdField_b_of_type_Int + this.jdField_f_of_type_Int - this.jdField_a_of_type_AndroidViewView.getHeight()) / 2);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      this.jdField_a_of_type_AndroidViewView.setScaleX(paramFloat1);
-      this.jdField_a_of_type_AndroidViewView.setScaleY(paramFloat1);
-      this.jdField_a_of_type_AndroidViewView.setRotation(paramFloat2 % 360.0F);
-      if (QLog.isColorLevel()) {
-        QLog.d("SingleTouchLayout", 2, "transformDraw(): mViewWidth=" + this.jdField_a_of_type_Int + ", mViewHeight=" + this.jdField_b_of_type_Int);
-      }
-      b();
-      return true;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("transformDraw(): mActualViewWidth=");
+      ((StringBuilder)localObject).append(i1);
+      ((StringBuilder)localObject).append(", mActualViewHeight=");
+      ((StringBuilder)localObject).append(i2);
+      QLog.d("SingleTouchLayout", 2, ((StringBuilder)localObject).toString());
     }
-    return false;
+    int i3 = this.jdField_h_of_type_Int;
+    Object localObject = a(-i3, -i3, i1 + i3, i2 + i3, paramFloat2);
+    if ((!a(((SingleTouchLayout.ComputeResult)localObject).jdField_a_of_type_Int, ((SingleTouchLayout.ComputeResult)localObject).jdField_b_of_type_Int)) && (this.jdField_e_of_type_Boolean) && (this.jdField_c_of_type_AndroidGraphicsPointF.x != 0.0F) && (this.jdField_c_of_type_AndroidGraphicsPointF.y != 0.0F) && (this.jdField_a_of_type_Boolean)) {
+      return false;
+    }
+    this.jdField_a_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_a_of_type_AndroidGraphicsPoint;
+    this.jdField_b_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_b_of_type_AndroidGraphicsPoint;
+    this.jdField_c_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_c_of_type_AndroidGraphicsPoint;
+    this.jdField_d_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_d_of_type_AndroidGraphicsPoint;
+    this.jdField_e_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_e_of_type_AndroidGraphicsPoint;
+    this.jdField_f_of_type_AndroidGraphicsPoint = ((SingleTouchLayout.ComputeResult)localObject).jdField_f_of_type_AndroidGraphicsPoint;
+    this.jdField_a_of_type_Int = ((SingleTouchLayout.ComputeResult)localObject).jdField_a_of_type_Int;
+    this.jdField_b_of_type_Int = ((SingleTouchLayout.ComputeResult)localObject).jdField_b_of_type_Int;
+    this.k = ((SingleTouchLayout.ComputeResult)localObject).jdField_c_of_type_Int;
+    this.l = ((SingleTouchLayout.ComputeResult)localObject).jdField_d_of_type_Int;
+    localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    ((FrameLayout.LayoutParams)localObject).leftMargin = ((this.jdField_a_of_type_Int + this.jdField_e_of_type_Int - this.jdField_a_of_type_AndroidViewView.getWidth()) / 2);
+    ((FrameLayout.LayoutParams)localObject).topMargin = ((this.jdField_b_of_type_Int + this.jdField_f_of_type_Int - this.jdField_a_of_type_AndroidViewView.getHeight()) / 2);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    this.jdField_a_of_type_AndroidViewView.setScaleX(paramFloat1);
+    this.jdField_a_of_type_AndroidViewView.setScaleY(paramFloat1);
+    this.jdField_a_of_type_AndroidViewView.setRotation(paramFloat2 % 360.0F);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("transformDraw(): mViewWidth=");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(", mViewHeight=");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+      QLog.d("SingleTouchLayout", 2, ((StringBuilder)localObject).toString());
+    }
+    b();
+    return true;
   }
   
   boolean a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
@@ -374,26 +403,31 @@ public class SingleTouchLayout
   
   boolean a(int paramInt1, int paramInt2)
   {
-    int i1;
-    int i2;
-    if (this.jdField_c_of_type_Boolean)
+    boolean bool2 = this.jdField_c_of_type_Boolean;
+    boolean bool1 = true;
+    if (bool2)
     {
-      paramInt1 = this.jdField_e_of_type_Int + paramInt1;
-      paramInt2 = this.jdField_f_of_type_Int + paramInt2;
-      i1 = (int)(this.jdField_c_of_type_AndroidGraphicsPointF.x - paramInt1 / 2);
-      i2 = (int)(this.jdField_c_of_type_AndroidGraphicsPointF.y - paramInt2 / 2);
+      paramInt1 += this.jdField_e_of_type_Int;
+      paramInt2 += this.jdField_f_of_type_Int;
+      int i1 = (int)(this.jdField_c_of_type_AndroidGraphicsPointF.x - paramInt1 / 2);
+      int i2 = (int)(this.jdField_c_of_type_AndroidGraphicsPointF.y - paramInt2 / 2);
       if (QLog.isColorLevel()) {
         QLog.d("SingleTouchLayout", 2, String.format("inBounds: l=%s, t=%s, w=%s, h=%s, cp.x=%s, cp.y=%s, width=%s, height=%s", new Object[] { Integer.valueOf(i1), Integer.valueOf(i2), Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Float.valueOf(this.jdField_c_of_type_AndroidGraphicsPointF.x), Float.valueOf(this.jdField_c_of_type_AndroidGraphicsPointF.y), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(this.jdField_c_of_type_Int) }));
       }
+      if ((i1 >= 0) && (i2 >= 0) && (i1 + paramInt1 <= this.jdField_c_of_type_Int) && (i2 + paramInt2 <= this.jdField_d_of_type_Int)) {
+        return true;
+      }
+      bool1 = false;
     }
-    return (i1 >= 0) && (i2 >= 0) && (paramInt1 + i1 <= this.jdField_c_of_type_Int) && (i2 + paramInt2 <= this.jdField_d_of_type_Int);
+    return bool1;
   }
   
   public boolean a(View paramView)
   {
-    if (this.jdField_a_of_type_AndroidViewView != paramView)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != paramView)
     {
-      removeView(this.jdField_a_of_type_AndroidViewView);
+      removeView(localView);
       this.jdField_a_of_type_AndroidViewView = paramView;
       addView(this.jdField_a_of_type_AndroidViewView, new FrameLayout.LayoutParams(-2, -2));
       return true;
@@ -403,9 +437,10 @@ public class SingleTouchLayout
   
   public boolean a(View paramView, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidViewView != paramView)
+    View localView = this.jdField_a_of_type_AndroidViewView;
+    if (localView != paramView)
     {
-      removeView(this.jdField_a_of_type_AndroidViewView);
+      removeView(localView);
       this.jdField_a_of_type_AndroidViewView = paramView;
       addView(this.jdField_a_of_type_AndroidViewView, new FrameLayout.LayoutParams(paramInt, -2));
       return true;
@@ -447,71 +482,71 @@ public class SingleTouchLayout
   void c()
   {
     this.jdField_a_of_type_AndroidGraphicsMatrix.setRotate(this.jdField_g_of_type_Float);
-    if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (this.jdField_b_of_type_AndroidGraphicsBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap)) {
-      this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
+    Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (localBitmap != this.jdField_a_of_type_AndroidGraphicsBitmap)) {
+      localBitmap.recycle();
     }
-    this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0, 0, this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), this.jdField_a_of_type_AndroidGraphicsMatrix, false);
-    if ((this.jdField_d_of_type_AndroidGraphicsBitmap != null) && (this.jdField_d_of_type_AndroidGraphicsBitmap != this.jdField_c_of_type_AndroidGraphicsBitmap)) {
-      this.jdField_d_of_type_AndroidGraphicsBitmap.recycle();
+    localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    this.jdField_b_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), this.jdField_a_of_type_AndroidGraphicsMatrix, false);
+    localBitmap = this.jdField_d_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (localBitmap != this.jdField_c_of_type_AndroidGraphicsBitmap)) {
+      localBitmap.recycle();
     }
-    this.jdField_d_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, 0, 0, this.jdField_c_of_type_AndroidGraphicsBitmap.getWidth(), this.jdField_c_of_type_AndroidGraphicsBitmap.getHeight(), this.jdField_a_of_type_AndroidGraphicsMatrix, false);
+    localBitmap = this.jdField_c_of_type_AndroidGraphicsBitmap;
+    this.jdField_d_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap(localBitmap, 0, 0, localBitmap.getWidth(), this.jdField_c_of_type_AndroidGraphicsBitmap.getHeight(), this.jdField_a_of_type_AndroidGraphicsMatrix, false);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     Object localObject = (ViewGroup)getParent();
-    if ((this.jdField_c_of_type_AndroidGraphicsPointF.x == 0.0F) || (this.jdField_c_of_type_AndroidGraphicsPointF.y == 0.0F))
+    if ((this.jdField_c_of_type_AndroidGraphicsPointF.x != 0.0F) && (this.jdField_c_of_type_AndroidGraphicsPointF.y != 0.0F))
+    {
+      if ((this.jdField_c_of_type_Int == 0) || (this.jdField_d_of_type_Int == 0))
+      {
+        this.jdField_c_of_type_Int = ((ViewGroup)localObject).getWidth();
+        this.jdField_d_of_type_Int = ((ViewGroup)localObject).getHeight();
+        a();
+      }
+    }
+    else
     {
       this.jdField_c_of_type_Int = ((ViewGroup)localObject).getWidth();
       this.jdField_d_of_type_Int = ((ViewGroup)localObject).getHeight();
       this.jdField_c_of_type_AndroidGraphicsPointF.set(this.jdField_c_of_type_Int / 2, this.jdField_d_of_type_Int / 2);
       a();
-      if (!this.jdField_e_of_type_Boolean) {
-        a();
-      }
-      super.onDraw(paramCanvas);
-      if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsPoint != null) && (this.jdField_b_of_type_AndroidGraphicsPoint != null) && (this.jdField_c_of_type_AndroidGraphicsPoint != null) && (this.jdField_d_of_type_AndroidGraphicsPoint != null) && (this.jdField_e_of_type_AndroidGraphicsPoint != null) && (this.jdField_f_of_type_AndroidGraphicsPoint != null))
-      {
-        this.jdField_a_of_type_AndroidGraphicsPath.reset();
-        this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y);
-        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_b_of_type_AndroidGraphicsPoint.x, this.jdField_b_of_type_AndroidGraphicsPoint.y);
-        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_c_of_type_AndroidGraphicsPoint.x, this.jdField_c_of_type_AndroidGraphicsPoint.y);
-        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_d_of_type_AndroidGraphicsPoint.x, this.jdField_d_of_type_AndroidGraphicsPoint.y);
-        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y);
-        this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_b_of_type_AndroidGraphicsPoint.x, this.jdField_b_of_type_AndroidGraphicsPoint.y);
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_e_of_type_AndroidGraphicsPoint.x - this.jdField_e_of_type_Int / 2, this.jdField_e_of_type_AndroidGraphicsPoint.y - this.jdField_f_of_type_Int / 2, this.jdField_e_of_type_AndroidGraphicsPoint.x + this.jdField_e_of_type_Int / 2, this.jdField_e_of_type_AndroidGraphicsPoint.y + this.jdField_f_of_type_Int / 2);
-        if (this.jdField_b_of_type_AndroidGraphicsBitmap != null) {
-          break label534;
-        }
-        localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
-        label380:
-        paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
-        this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_f_of_type_AndroidGraphicsPoint.x - this.jdField_e_of_type_Int / 2, this.jdField_f_of_type_AndroidGraphicsPoint.y - this.jdField_f_of_type_Int / 2, this.jdField_f_of_type_AndroidGraphicsPoint.x + this.jdField_e_of_type_Int / 2, this.jdField_f_of_type_AndroidGraphicsPoint.y + this.jdField_f_of_type_Int / 2);
-        if (this.jdField_d_of_type_AndroidGraphicsBitmap != null) {
-          break label542;
-        }
-      }
     }
-    label534:
-    label542:
-    for (localObject = this.jdField_c_of_type_AndroidGraphicsBitmap;; localObject = this.jdField_d_of_type_AndroidGraphicsBitmap)
+    if (!this.jdField_e_of_type_Boolean) {
+      a();
+    }
+    super.onDraw(paramCanvas);
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsPoint != null) && (this.jdField_b_of_type_AndroidGraphicsPoint != null) && (this.jdField_c_of_type_AndroidGraphicsPoint != null) && (this.jdField_d_of_type_AndroidGraphicsPoint != null) && (this.jdField_e_of_type_AndroidGraphicsPoint != null) && (this.jdField_f_of_type_AndroidGraphicsPoint != null))
     {
+      this.jdField_a_of_type_AndroidGraphicsPath.reset();
+      this.jdField_a_of_type_AndroidGraphicsPath.moveTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_b_of_type_AndroidGraphicsPoint.x, this.jdField_b_of_type_AndroidGraphicsPoint.y);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_c_of_type_AndroidGraphicsPoint.x, this.jdField_c_of_type_AndroidGraphicsPoint.y);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_d_of_type_AndroidGraphicsPoint.x, this.jdField_d_of_type_AndroidGraphicsPoint.y);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_a_of_type_AndroidGraphicsPoint.x, this.jdField_a_of_type_AndroidGraphicsPoint.y);
+      this.jdField_a_of_type_AndroidGraphicsPath.lineTo(this.jdField_b_of_type_AndroidGraphicsPoint.x, this.jdField_b_of_type_AndroidGraphicsPoint.y);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+      this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_e_of_type_AndroidGraphicsPoint.x - this.jdField_e_of_type_Int / 2, this.jdField_e_of_type_AndroidGraphicsPoint.y - this.jdField_f_of_type_Int / 2, this.jdField_e_of_type_AndroidGraphicsPoint.x + this.jdField_e_of_type_Int / 2, this.jdField_e_of_type_AndroidGraphicsPoint.y + this.jdField_f_of_type_Int / 2);
+      Bitmap localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+      localObject = localBitmap;
+      if (localBitmap == null) {
+        localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      }
+      paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
+      this.jdField_a_of_type_AndroidGraphicsRect.set(this.jdField_f_of_type_AndroidGraphicsPoint.x - this.jdField_e_of_type_Int / 2, this.jdField_f_of_type_AndroidGraphicsPoint.y - this.jdField_f_of_type_Int / 2, this.jdField_f_of_type_AndroidGraphicsPoint.x + this.jdField_e_of_type_Int / 2, this.jdField_f_of_type_AndroidGraphicsPoint.y + this.jdField_f_of_type_Int / 2);
+      localBitmap = this.jdField_d_of_type_AndroidGraphicsBitmap;
+      localObject = localBitmap;
+      if (localBitmap == null) {
+        localObject = this.jdField_c_of_type_AndroidGraphicsBitmap;
+      }
       paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(false);
-      b();
-      return;
-      if ((this.jdField_c_of_type_Int != 0) && (this.jdField_d_of_type_Int != 0)) {
-        break;
-      }
-      this.jdField_c_of_type_Int = ((ViewGroup)localObject).getWidth();
-      this.jdField_d_of_type_Int = ((ViewGroup)localObject).getHeight();
-      a();
-      break;
-      localObject = this.jdField_b_of_type_AndroidGraphicsBitmap;
-      break label380;
     }
+    b();
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -519,135 +554,161 @@ public class SingleTouchLayout
     if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean)) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    switch (paramMotionEvent.getAction())
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-    }
-    label314:
-    label327:
-    label358:
-    do
-    {
-      do
+      if (i1 != 1)
       {
-        for (;;)
-        {
+        if (i1 != 2) {
           return true;
-          this.jdField_a_of_type_Long = System.currentTimeMillis();
-          this.jdField_e_of_type_Float = paramMotionEvent.getRawX();
-          this.jdField_f_of_type_Float = paramMotionEvent.getRawY();
-          this.jdField_a_of_type_AndroidGraphicsPointF.set(paramMotionEvent.getX() + this.r, paramMotionEvent.getY() + this.s);
-          this.jdField_g_of_type_Int = a(paramMotionEvent.getX(), paramMotionEvent.getY());
-          Log.d("SingleTouchLayout", "ActionDown -- (" + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ")");
         }
-        Log.d("SingleTouchLayout", "ActionUp -- (" + paramMotionEvent.getX() + ", " + paramMotionEvent.getY() + ")");
-        if ((this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout$SingleTapListener != null) && (this.jdField_a_of_type_Boolean))
+        if (QLog.isColorLevel())
         {
-          if (this.jdField_g_of_type_Int == 2) {
-            break label358;
-          }
-          if ((System.currentTimeMillis() - this.jdField_a_of_type_Long >= 100L) || (!a(this.jdField_e_of_type_Float, this.jdField_f_of_type_Float, paramMotionEvent.getRawX(), paramMotionEvent.getRawY()))) {
-            break label327;
-          }
-          if (!b(paramMotionEvent.getX(), paramMotionEvent.getY())) {
-            break label314;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout$SingleTapListener.b(this);
-        }
-        for (;;)
-        {
-          this.jdField_g_of_type_Int = 0;
-          break;
-          this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout$SingleTapListener.a(this);
-          continue;
-          this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout$SingleTapListener.a(this, paramMotionEvent.getX() - this.jdField_e_of_type_Float, paramMotionEvent.getY() - this.jdField_f_of_type_Float);
-          continue;
-          this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout$SingleTapListener.a(this, this.jdField_h_of_type_Float);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SingleTouchLayout", 4, "ActionMove: x=" + paramMotionEvent.getX() + ", y=" + paramMotionEvent.getY());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("ActionMove: x=");
+          ((StringBuilder)localObject).append(paramMotionEvent.getX());
+          ((StringBuilder)localObject).append(", y=");
+          ((StringBuilder)localObject).append(paramMotionEvent.getY());
+          QLog.d("SingleTouchLayout", 4, ((StringBuilder)localObject).toString());
         }
         this.jdField_b_of_type_AndroidGraphicsPointF.set(paramMotionEvent.getX() + this.r, paramMotionEvent.getY() + this.s);
-        if (this.jdField_g_of_type_Int != 2) {
-          break;
-        }
-      } while (!this.jdField_a_of_type_Boolean);
-      i1 = this.jdField_a_of_type_AndroidViewView.getWidth() / 2;
-      i2 = this.jdField_a_of_type_AndroidViewView.getHeight() / 2;
-      d1 = Math.sqrt(i1 * i1 + i2 * i2);
-      d2 = a(this.jdField_c_of_type_AndroidGraphicsPointF, this.jdField_b_of_type_AndroidGraphicsPointF) / d1;
-      if (d2 <= this.jdField_b_of_type_Float)
-      {
-        d1 = this.jdField_b_of_type_Float;
-        f1 = 0.0F;
-        if (this.jdField_d_of_type_Boolean)
+        i1 = this.jdField_g_of_type_Int;
+        float f1;
+        float f2;
+        if (i1 == 2)
         {
-          d2 = a(this.jdField_c_of_type_AndroidGraphicsPointF, this.jdField_a_of_type_AndroidGraphicsPointF);
-          d3 = a(this.jdField_a_of_type_AndroidGraphicsPointF, this.jdField_b_of_type_AndroidGraphicsPointF);
-          d4 = a(this.jdField_c_of_type_AndroidGraphicsPointF, this.jdField_b_of_type_AndroidGraphicsPointF);
-          d3 = (d2 * d2 + d4 * d4 - d3 * d3) / (d2 * 2.0D * d4);
-          d2 = d3;
-          if (d3 >= 1.0D) {
-            d2 = 1.0D;
+          if (!this.jdField_a_of_type_Boolean) {
+            return true;
           }
-          f2 = (float)a(Math.acos(d2));
-          paramMotionEvent = new PointF(this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_c_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_c_of_type_AndroidGraphicsPointF.y);
-          localPointF = new PointF(this.jdField_b_of_type_AndroidGraphicsPointF.x - this.jdField_c_of_type_AndroidGraphicsPointF.x, this.jdField_b_of_type_AndroidGraphicsPointF.y - this.jdField_c_of_type_AndroidGraphicsPointF.y);
-          f1 = f2;
-          if (paramMotionEvent.x * localPointF.y - paramMotionEvent.y * localPointF.x < 0.0F) {
-            f1 = -f2;
+          i1 = this.jdField_a_of_type_AndroidViewView.getWidth() / 2;
+          int i2 = this.jdField_a_of_type_AndroidViewView.getHeight() / 2;
+          double d1 = Math.sqrt(i1 * i1 + i2 * i2);
+          double d2 = a(this.jdField_c_of_type_AndroidGraphicsPointF, this.jdField_b_of_type_AndroidGraphicsPointF) / d1;
+          f1 = this.jdField_b_of_type_Float;
+          if (d2 <= f1) {}
+          do
+          {
+            d1 = f1;
+            break;
+            f1 = this.jdField_a_of_type_Float;
+            d1 = d2;
+          } while (d2 >= f1);
+          if (this.jdField_d_of_type_Boolean)
+          {
+            d2 = a(this.jdField_c_of_type_AndroidGraphicsPointF, this.jdField_a_of_type_AndroidGraphicsPointF);
+            double d3 = a(this.jdField_a_of_type_AndroidGraphicsPointF, this.jdField_b_of_type_AndroidGraphicsPointF);
+            double d4 = a(this.jdField_c_of_type_AndroidGraphicsPointF, this.jdField_b_of_type_AndroidGraphicsPointF);
+            d3 = (d2 * d2 + d4 * d4 - d3 * d3) / (d2 * 2.0D * d4);
+            d2 = d3;
+            if (d3 >= 1.0D) {
+              d2 = 1.0D;
+            }
+            f2 = (float)a(Math.acos(d2));
+            paramMotionEvent = new PointF(this.jdField_a_of_type_AndroidGraphicsPointF.x - this.jdField_c_of_type_AndroidGraphicsPointF.x, this.jdField_a_of_type_AndroidGraphicsPointF.y - this.jdField_c_of_type_AndroidGraphicsPointF.y);
+            localObject = new PointF(this.jdField_b_of_type_AndroidGraphicsPointF.x - this.jdField_c_of_type_AndroidGraphicsPointF.x, this.jdField_b_of_type_AndroidGraphicsPointF.y - this.jdField_c_of_type_AndroidGraphicsPointF.y);
+            f1 = f2;
+            if (paramMotionEvent.x * ((PointF)localObject).y - paramMotionEvent.y * ((PointF)localObject).x < 0.0F) {
+              f1 = -f2;
+            }
+          }
+          else
+          {
+            f1 = 0.0F;
+          }
+          f2 = (float)d1;
+          if (a(f2, this.jdField_g_of_type_Float + f1))
+          {
+            this.jdField_g_of_type_Float += f1;
+            this.jdField_h_of_type_Float = f2;
+            if (f1 != 0.0F) {
+              c();
+            }
+            if (QLog.isColorLevel())
+            {
+              paramMotionEvent = new StringBuilder();
+              paramMotionEvent.append("ActionMove-Zoom: scale=");
+              paramMotionEvent.append(this.jdField_h_of_type_Float);
+              paramMotionEvent.append(", deltaY=");
+              paramMotionEvent.append(this.jdField_g_of_type_Float);
+              QLog.d("SingleTouchLayout", 4, paramMotionEvent.toString());
+            }
           }
         }
-        if (a((float)d1, this.jdField_g_of_type_Float + f1))
+        else if (i1 == 1)
         {
-          this.jdField_g_of_type_Float += f1;
-          this.jdField_h_of_type_Float = ((float)d1);
-          if (f1 != 0.0F) {
-            c();
+          if (!this.jdField_b_of_type_Boolean) {
+            return true;
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("SingleTouchLayout", 4, "ActionMove-Zoom: scale=" + this.jdField_h_of_type_Float + ", deltaY=" + this.jdField_g_of_type_Float);
+          f1 = this.jdField_b_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsPointF.x;
+          f2 = this.jdField_b_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsPointF.y;
+          if (this.jdField_c_of_type_Boolean)
+          {
+            if ((getLeft() + f1 >= 0.0F) && (getRight() + f1 <= this.jdField_c_of_type_Int))
+            {
+              paramMotionEvent = this.jdField_c_of_type_AndroidGraphicsPointF;
+              paramMotionEvent.x += f1;
+            }
+            if ((getTop() + f2 >= 0.0F) && (getBottom() + f2 <= this.jdField_d_of_type_Int))
+            {
+              paramMotionEvent = this.jdField_c_of_type_AndroidGraphicsPointF;
+              paramMotionEvent.y += f2;
+            }
           }
+          else
+          {
+            paramMotionEvent = this.jdField_c_of_type_AndroidGraphicsPointF;
+            paramMotionEvent.x += f1;
+            paramMotionEvent = this.jdField_c_of_type_AndroidGraphicsPointF;
+            paramMotionEvent.y += f2;
+          }
+          b();
         }
+        this.jdField_a_of_type_AndroidGraphicsPointF.set(this.jdField_b_of_type_AndroidGraphicsPointF);
+        return true;
       }
-      while (this.jdField_g_of_type_Int != 1) {
-        for (;;)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ActionUp -- (");
+      ((StringBuilder)localObject).append(paramMotionEvent.getX());
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramMotionEvent.getY());
+      ((StringBuilder)localObject).append(")");
+      Log.d("SingleTouchLayout", ((StringBuilder)localObject).toString());
+      localObject = this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout$SingleTapListener;
+      if ((localObject != null) && (this.jdField_a_of_type_Boolean)) {
+        if (this.jdField_g_of_type_Int != 2)
         {
-          int i1;
-          int i2;
-          double d2;
-          double d3;
-          double d4;
-          PointF localPointF;
-          this.jdField_a_of_type_AndroidGraphicsPointF.set(this.jdField_b_of_type_AndroidGraphicsPointF);
-          break;
-          double d1 = d2;
-          if (d2 >= this.jdField_a_of_type_Float) {
-            d1 = this.jdField_a_of_type_Float;
+          if ((System.currentTimeMillis() - this.jdField_a_of_type_Long < 100L) && (a(this.jdField_e_of_type_Float, this.jdField_f_of_type_Float, paramMotionEvent.getRawX(), paramMotionEvent.getRawY())))
+          {
+            if (b(paramMotionEvent.getX(), paramMotionEvent.getY())) {
+              this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout$SingleTapListener.b(this);
+            } else {
+              this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout$SingleTapListener.a(this);
+            }
+          }
+          else {
+            this.jdField_a_of_type_ComTencentMobileqqProfileViewSingleTouchLayout$SingleTapListener.a(this, paramMotionEvent.getX() - this.jdField_e_of_type_Float, paramMotionEvent.getY() - this.jdField_f_of_type_Float);
           }
         }
+        else {
+          ((SingleTouchLayout.SingleTapListener)localObject).a(this, this.jdField_h_of_type_Float);
+        }
       }
-    } while (!this.jdField_b_of_type_Boolean);
-    float f1 = this.jdField_b_of_type_AndroidGraphicsPointF.x - this.jdField_a_of_type_AndroidGraphicsPointF.x;
-    float f2 = this.jdField_b_of_type_AndroidGraphicsPointF.y - this.jdField_a_of_type_AndroidGraphicsPointF.y;
-    if (this.jdField_c_of_type_Boolean)
-    {
-      if ((getLeft() + f1 >= 0.0F) && (getRight() + f1 <= this.jdField_c_of_type_Int))
-      {
-        paramMotionEvent = this.jdField_c_of_type_AndroidGraphicsPointF;
-        paramMotionEvent.x = (f1 + paramMotionEvent.x);
-      }
-      if ((getTop() + f2 >= 0.0F) && (getBottom() + f2 <= this.jdField_d_of_type_Int)) {
-        paramMotionEvent = this.jdField_c_of_type_AndroidGraphicsPointF;
-      }
+      this.jdField_g_of_type_Int = 0;
+      return true;
     }
-    for (paramMotionEvent.y = (f2 + paramMotionEvent.y);; paramMotionEvent.y = (f2 + paramMotionEvent.y))
-    {
-      b();
-      break;
-      paramMotionEvent = this.jdField_c_of_type_AndroidGraphicsPointF;
-      paramMotionEvent.x = (f1 + paramMotionEvent.x);
-      paramMotionEvent = this.jdField_c_of_type_AndroidGraphicsPointF;
-    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    this.jdField_e_of_type_Float = paramMotionEvent.getRawX();
+    this.jdField_f_of_type_Float = paramMotionEvent.getRawY();
+    this.jdField_a_of_type_AndroidGraphicsPointF.set(paramMotionEvent.getX() + this.r, paramMotionEvent.getY() + this.s);
+    this.jdField_g_of_type_Int = a(paramMotionEvent.getX(), paramMotionEvent.getY());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ActionDown -- (");
+    ((StringBuilder)localObject).append(paramMotionEvent.getX());
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(paramMotionEvent.getY());
+    ((StringBuilder)localObject).append(")");
+    Log.d("SingleTouchLayout", ((StringBuilder)localObject).toString());
+    return true;
   }
   
   public void setActualViewSize(int paramInt1, int paramInt2)
@@ -682,8 +743,9 @@ public class SingleTouchLayout
     if (this.j == paramInt) {
       return;
     }
-    this.j = ((int)TypedValue.applyDimension(1, paramInt, this.jdField_a_of_type_AndroidUtilDisplayMetrics));
-    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(paramInt);
+    float f1 = paramInt;
+    this.j = ((int)TypedValue.applyDimension(1, f1, this.jdField_a_of_type_AndroidUtilDisplayMetrics));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(f1);
     invalidate();
   }
   
@@ -731,7 +793,7 @@ public class SingleTouchLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.SingleTouchLayout
  * JD-Core Version:    0.7.0.1
  */

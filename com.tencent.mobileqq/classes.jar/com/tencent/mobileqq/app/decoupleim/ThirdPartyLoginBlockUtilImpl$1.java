@@ -12,9 +12,8 @@ class ThirdPartyLoginBlockUtilImpl$1
   
   private void a(EIPCResult paramEIPCResult)
   {
-    switch (paramEIPCResult.code)
+    if (paramEIPCResult.code != 0)
     {
-    default: 
       ThirdPartyLoginBlockUtilImpl.a(this.jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl).a();
       return;
     }
@@ -33,13 +32,18 @@ class ThirdPartyLoginBlockUtilImpl$1
       QLog.e("ThirdPartyLoginUtilImpl", 1, "toWtLoginOnOpenSdk callback params error");
       return;
     }
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "code=" + paramEIPCResult.code + " ssoResult=" + paramEIPCResult.data.getInt("key_sso_ret"));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("code=");
+    localStringBuilder.append(paramEIPCResult.code);
+    localStringBuilder.append(" ssoResult=");
+    localStringBuilder.append(paramEIPCResult.data.getInt("key_sso_ret"));
+    QLog.d("ThirdPartyLoginUtilImpl", 1, localStringBuilder.toString());
     a(paramEIPCResult);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.decoupleim.ThirdPartyLoginBlockUtilImpl.1
  * JD-Core Version:    0.7.0.1
  */

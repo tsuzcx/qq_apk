@@ -2,14 +2,11 @@ package com.tencent.mobileqq.config.business.tendoc;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager;
-import mqq.app.AppRuntime;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.IAIOMessageSpreadManager;
 
 public class TencentDocTipsConfigProcessor
   extends IQConfigProcessor<TencentDocTipsConfigBean>
@@ -36,9 +33,7 @@ public class TencentDocTipsConfigProcessor
   
   public void a(TencentDocTipsConfigBean paramTencentDocTipsConfigBean)
   {
-    if ((paramTencentDocTipsConfigBean != null) && (!TextUtils.isEmpty(paramTencentDocTipsConfigBean.d()))) {
-      ((AIOMessageSpreadManager)BaseApplicationImpl.getApplication().getRuntime().getManager(QQManagerFactory.TEAMWORK_SPREAD_MANAGER)).a(paramTencentDocTipsConfigBean);
-    }
+    ((IAIOMessageSpreadManager)QRoute.api(IAIOMessageSpreadManager.class)).updateConfig(paramTencentDocTipsConfigBean);
   }
   
   public Class<TencentDocTipsConfigBean> clazz()
@@ -70,7 +65,7 @@ public class TencentDocTipsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocTipsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -41,10 +41,10 @@ public abstract class BaseAppBrandRuntime
   protected IAppBrandService appBrandService;
   protected JsPluginEngine jsPluginEngine;
   protected Activity mActivity;
-  public ApkgInfo mApkgInfo;
+  protected ApkgInfo mApkgInfo;
   protected AppStateManager mAppStateManager;
   protected String mEntryPath;
-  public EventListener mEventListener = new EventListener(this);
+  protected EventListener mEventListener = new EventListener(this);
   private boolean mIsForground = true;
   protected MiniAppInfo mMiniAppInfo;
   protected boolean mPrecacheFetched = false;
@@ -138,87 +138,86 @@ public abstract class BaseAppBrandRuntime
     if (paramBoolean) {
       this.pageContainer.cleanup(false);
     }
-    if (!TextUtils.isEmpty(paramString))
-    {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label111;
-      }
-      if ((paramMiniAppInfo == null) || (paramMiniAppInfo.apkgInfo == null) || (((ApkgInfo)paramMiniAppInfo.apkgInfo).mAppConfigInfo == null)) {
-        break label100;
-      }
-      paramMiniAppInfo = ((ApkgInfo)paramMiniAppInfo.apkgInfo).mAppConfigInfo.entryPagePath;
+    if (TextUtils.isEmpty(paramString)) {
+      paramString = paramMiniAppInfo.launchParam.entryPath;
     }
-    for (;;)
+    Object localObject = paramString;
+    if (TextUtils.isEmpty(paramString))
     {
-      label66:
-      IAppBrandPageContainer localIAppBrandPageContainer = this.pageContainer;
-      if (paramBoolean) {}
-      for (paramString = "reLaunch";; paramString = "appLaunch")
-      {
-        localIAppBrandPageContainer.launch(paramMiniAppInfo, paramString);
-        return;
-        paramString = paramMiniAppInfo.launchParam.entryPath;
-        break;
-        label100:
+      if ((paramMiniAppInfo != null) && (paramMiniAppInfo.apkgInfo != null) && (((ApkgInfo)paramMiniAppInfo.apkgInfo).mAppConfigInfo != null)) {
+        paramMiniAppInfo = ((ApkgInfo)paramMiniAppInfo.apkgInfo).mAppConfigInfo.entryPagePath;
+      } else {
         paramMiniAppInfo = null;
-        break label66;
       }
-      label111:
-      paramMiniAppInfo = paramString;
+      localObject = paramMiniAppInfo;
     }
+    paramString = this.pageContainer;
+    if (paramBoolean) {
+      paramMiniAppInfo = "reLaunch";
+    } else {
+      paramMiniAppInfo = "appLaunch";
+    }
+    paramString.launch((String)localObject, paramMiniAppInfo);
   }
   
   public void loadMiniApp(MiniAppInfo paramMiniAppInfo)
   {
     QMLog.i("minisdk-start_BaseAppBrandRuntime", " [MiniLifecycle] loadMiniApp");
-    if (this.mApkgInfo != null) {}
-    do
-    {
+    if (this.mApkgInfo != null) {
       return;
-      this.mMiniAppInfo = paramMiniAppInfo;
-      this.mApkgInfo = ((ApkgInfo)paramMiniAppInfo.apkgInfo);
-      ((MiniAppFileManager)getManager(MiniAppFileManager.class)).initFileManager(this.mApkgInfo, false);
-      if (!this.mPrecacheFetched)
-      {
-        this.mPrecacheFetched = true;
-        PreCacheManager.g().fetchPreCacheData(this.mMiniAppInfo);
-        PreCacheManager.g().fetchPreResourceIfNeed(this.mMiniAppInfo);
-      }
-      this.mEntryPath = this.mMiniAppInfo.launchParam.entryPath;
-    } while (this.jsPluginEngine == null);
-    this.jsPluginEngine.onCreate(this);
+    }
+    this.mMiniAppInfo = paramMiniAppInfo;
+    this.mApkgInfo = ((ApkgInfo)paramMiniAppInfo.apkgInfo);
+    ((MiniAppFileManager)getManager(MiniAppFileManager.class)).initFileManager(this.mApkgInfo, false);
+    if (!this.mPrecacheFetched)
+    {
+      this.mPrecacheFetched = true;
+      PreCacheManager.g().fetchPreCacheData(this.mMiniAppInfo);
+      PreCacheManager.g().fetchPreResourceIfNeed(this.mMiniAppInfo);
+    }
+    this.mEntryPath = this.mMiniAppInfo.launchParam.entryPath;
+    paramMiniAppInfo = this.jsPluginEngine;
+    if (paramMiniAppInfo != null) {
+      paramMiniAppInfo.onCreate(this);
+    }
   }
   
   public boolean onBackPress()
   {
-    return (this.pageContainer != null) && (this.pageContainer.navigateBack(1, -1));
+    IAppBrandPageContainer localIAppBrandPageContainer = this.pageContainer;
+    return (localIAppBrandPageContainer != null) && (localIAppBrandPageContainer.navigateBack(1, -1));
   }
   
   public void onLoadMiniAppInfo(MiniAppInfo paramMiniAppInfo, boolean paramBoolean, String paramString)
   {
     QMLog.i("minisdk-start_BaseAppBrandRuntime", " [MiniLifecycle] onLoadMiniAppInfo");
-    QMLog.i("minisdk-start_BaseAppBrandRuntime", "onLoadMiniAppInfo miniAppInfo=" + paramMiniAppInfo + ",fromReload=" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onLoadMiniAppInfo miniAppInfo=");
+    localStringBuilder.append(paramMiniAppInfo);
+    localStringBuilder.append(",fromReload=");
+    localStringBuilder.append(paramBoolean);
+    QMLog.i("minisdk-start_BaseAppBrandRuntime", localStringBuilder.toString());
     this.mMiniAppInfo = paramMiniAppInfo;
     this.mApkgInfo = ((ApkgInfo)paramMiniAppInfo.apkgInfo);
     this.mEntryPath = this.mMiniAppInfo.launchParam.entryPath;
     this.jsPluginEngine.onCreate(this);
     this.pageContainer.setMiniAppInfo(paramMiniAppInfo);
     this.pageContainer.setFromReload(paramBoolean);
-    if (((AbsAppBrandService)this.appBrandService).getCurrState() == ((AbsAppBrandService)this.appBrandService).stateLoadSucc) {
+    if (((AbsAppBrandService)this.appBrandService).getCurrState() == ((AbsAppBrandService)this.appBrandService).stateLoadSucc)
+    {
       AppBrandTask.runTaskOnUiThread(new BaseAppBrandRuntime.1(this, paramMiniAppInfo, paramBoolean, paramString));
     }
-    for (;;)
+    else
     {
-      if ((this.appBrandService instanceof AppV8JsService))
-      {
-        QMLog.i("minisdk-start_BaseAppBrandRuntime", "onLoadMiniAppInfo run with v8rt");
-        if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-          new Handler(Looper.getMainLooper()).post(new BaseAppBrandRuntime.3(this));
-        }
-      }
-      return;
       ((AbsAppBrandService)this.appBrandService).addStateChangeListener(new BaseAppBrandRuntime.2(this, paramMiniAppInfo, paramBoolean, paramString));
       this.appBrandService.setApkgInfo((ApkgInfo)paramMiniAppInfo.apkgInfo);
+    }
+    if ((this.appBrandService instanceof AppV8JsService))
+    {
+      QMLog.i("minisdk-start_BaseAppBrandRuntime", "onLoadMiniAppInfo run with v8rt");
+      if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
+        new Handler(Looper.getMainLooper()).post(new BaseAppBrandRuntime.3(this));
+      }
     }
   }
   
@@ -257,11 +256,13 @@ public abstract class BaseAppBrandRuntime
   {
     QMLog.i("minisdk-start_BaseAppBrandRuntime", " [MiniLifecycle] onRuntimePause");
     this.mIsForground = false;
-    if (this.pageContainer != null) {
-      this.pageContainer.onPause();
+    Object localObject = this.pageContainer;
+    if (localObject != null) {
+      ((IAppBrandPageContainer)localObject).onPause();
     }
-    if (this.jsPluginEngine != null) {
-      this.jsPluginEngine.onPause();
+    localObject = this.jsPluginEngine;
+    if (localObject != null) {
+      ((JsPluginEngine)localObject).onPause();
     }
     this.lastStayTime += System.currentTimeMillis() - this.onResumeTime;
   }
@@ -270,11 +271,13 @@ public abstract class BaseAppBrandRuntime
   {
     QMLog.i("minisdk-start_BaseAppBrandRuntime", " [MiniLifecycle] onRuntimeResume");
     this.mIsForground = true;
-    if (this.pageContainer != null) {
-      this.pageContainer.onResume();
+    Object localObject = this.pageContainer;
+    if (localObject != null) {
+      ((IAppBrandPageContainer)localObject).onResume();
     }
-    if (this.jsPluginEngine != null) {
-      this.jsPluginEngine.onResume();
+    localObject = this.jsPluginEngine;
+    if (localObject != null) {
+      ((JsPluginEngine)localObject).onResume();
     }
     this.onResumeTime = System.currentTimeMillis();
     if (this.startTime == 0L) {
@@ -290,13 +293,20 @@ public abstract class BaseAppBrandRuntime
   public void onRuntimeStop()
   {
     QMLog.i("minisdk-start_BaseAppBrandRuntime", " [MiniLifecycle] onRuntimeStop");
-    if (this.pageContainer != null) {
-      this.pageContainer.onStop();
+    IAppBrandPageContainer localIAppBrandPageContainer = this.pageContainer;
+    if (localIAppBrandPageContainer != null) {
+      localIAppBrandPageContainer.onStop();
     }
   }
   
   public void onUpdateMiniAppInfo(MiniAppInfo paramMiniAppInfo)
   {
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    if (localMiniAppInfo != null) {
+      localMiniAppInfo.launchParam.clone(paramMiniAppInfo.launchParam);
+    } else {
+      this.mMiniAppInfo = paramMiniAppInfo;
+    }
     this.pageContainer.setMiniAppInfo(paramMiniAppInfo);
     this.appBrandService.setApkgInfo((ApkgInfo)paramMiniAppInfo.apkgInfo);
   }
@@ -308,7 +318,7 @@ public abstract class BaseAppBrandRuntime
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.BaseAppBrandRuntime
  * JD-Core Version:    0.7.0.1
  */

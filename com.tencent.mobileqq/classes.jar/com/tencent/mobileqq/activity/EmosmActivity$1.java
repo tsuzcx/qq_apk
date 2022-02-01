@@ -14,51 +14,57 @@ class EmosmActivity$1
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramInt == 1) {
+    if (paramInt == 1)
+    {
       if (paramBoolean)
       {
         paramObject = (EmoticonResp)paramObject;
-        this.a.a(paramObject.delEpId);
-        this.a.b();
-        this.a.jdField_a_of_type_ComTencentMobileqqEmosmViewDragSortListView.e();
+        this.a.updatePackageStatus(paramObject.delEpId);
       }
-    }
-    label119:
-    do
-    {
-      do
+      else
       {
-        return;
-        this.a.a();
-        EmosmActivity.a(this.a, (EmoticonResp)paramObject);
-        break;
-        if (paramInt != 2) {
-          break label119;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i("EmosmActivity", 2, "emoticon fetch:" + paramBoolean);
-        }
-      } while (!paramBoolean);
-      this.a.runOnUiThread(this.a.jdField_a_of_type_JavaLangRunnable);
+        this.a.showAuthErrorTips();
+        EmosmActivity.access$000(this.a, (EmoticonResp)paramObject);
+      }
+      this.a.dismissDialog();
+      this.a.mListView.e();
       return;
-    } while (paramInt != 17);
-    if (paramBoolean)
+    }
+    if (paramInt == 2)
     {
-      paramObject = ((EmoticonResp)paramObject).ids.iterator();
-      while (paramObject.hasNext())
+      if (QLog.isColorLevel())
       {
-        Integer localInteger = (Integer)paramObject.next();
-        this.a.a(localInteger.intValue());
+        paramObject = new StringBuilder();
+        paramObject.append("emoticon fetch:");
+        paramObject.append(paramBoolean);
+        QLog.i("EmosmActivity", 2, paramObject.toString());
+      }
+      if (paramBoolean)
+      {
+        paramObject = this.a;
+        paramObject.runOnUiThread(paramObject.mRefreshTask);
       }
     }
-    this.a.a();
-    EmosmActivity.a(this.a, (EmoticonResp)paramObject);
-    this.a.b();
+    else if (paramInt == 17)
+    {
+      if (paramBoolean)
+      {
+        paramObject = ((EmoticonResp)paramObject).ids.iterator();
+        while (paramObject.hasNext())
+        {
+          Integer localInteger = (Integer)paramObject.next();
+          this.a.updatePackageStatus(localInteger.intValue());
+        }
+      }
+      this.a.showAuthErrorTips();
+      EmosmActivity.access$000(this.a, (EmoticonResp)paramObject);
+      this.a.dismissDialog();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.EmosmActivity.1
  * JD-Core Version:    0.7.0.1
  */

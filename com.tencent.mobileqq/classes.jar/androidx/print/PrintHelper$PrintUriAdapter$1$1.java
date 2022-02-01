@@ -9,13 +9,13 @@ class PrintHelper$PrintUriAdapter$1$1
   
   public void onCancel()
   {
-    this.a.a.a();
-    this.a.cancel(false);
+    this.this$2.this$1.cancelLoad();
+    this.this$2.cancel(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.print.PrintHelper.PrintUriAdapter.1.1
  * JD-Core Version:    0.7.0.1
  */

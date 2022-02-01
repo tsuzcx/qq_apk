@@ -35,15 +35,16 @@ public class QAPMJavaScriptBridge
   
   public static QAPMJavaScriptBridge getInstance()
   {
-    if (javaScriptBridge == null) {}
-    try
-    {
-      if (javaScriptBridge == null) {
-        javaScriptBridge = new QAPMJavaScriptBridge();
+    if (javaScriptBridge == null) {
+      try
+      {
+        if (javaScriptBridge == null) {
+          javaScriptBridge = new QAPMJavaScriptBridge();
+        }
       }
-      return javaScriptBridge;
+      finally {}
     }
-    finally {}
+    return javaScriptBridge;
   }
   
   private String getLocalJs()
@@ -58,7 +59,13 @@ public class QAPMJavaScriptBridge
       str1 = str2;
       InputStream localInputStream = BaseInfo.app.getAssets().open("qapm-monitor.js");
       str1 = str2;
-      str2 = "javascript:" + FileUtil.readStream(localInputStream, 8192);
+      StringBuilder localStringBuilder = new StringBuilder();
+      str1 = str2;
+      localStringBuilder.append("javascript:");
+      str1 = str2;
+      localStringBuilder.append(FileUtil.readStream(localInputStream, 8192));
+      str1 = str2;
+      str2 = localStringBuilder.toString();
       str1 = str2;
       localInputStream.close();
       return str2;
@@ -75,12 +82,15 @@ public class QAPMJavaScriptBridge
     if (paramObject != null) {
       try
       {
+        Object localObject1;
+        Object localObject2;
         if (AndroidVersion.isKitKat())
         {
           if (TextUtils.isEmpty(this.js)) {
             this.js = getLocalJs();
           }
-          if ((paramObject instanceof WebView))
+          boolean bool = paramObject instanceof WebView;
+          if (bool)
           {
             ((WebView)paramObject).getSettings().setDomStorageEnabled(true);
             WebViewX5Proxy.getInstance().setCodeTypeIsX5(false);
@@ -89,18 +99,18 @@ public class QAPMJavaScriptBridge
             paramObject.evaluateJavascript("javascript:window.QAPM.qapmJsStart()", null);
             return;
           }
-          Method localMethod1 = WebViewX5Proxy.getInstance().getX5EvaluateJavascript();
-          Method localMethod2 = WebViewX5Proxy.getInstance().getX5GetSettingst();
-          Method localMethod3 = WebViewX5Proxy.getInstance().getX5SetDomStorageEnabled();
-          if ((localMethod2 != null) && (localMethod3 != null)) {
-            localMethod3.invoke(localMethod2.invoke(paramObject, new Object[0]), new Object[] { Boolean.valueOf(true) });
+          localObject1 = WebViewX5Proxy.getInstance().getX5EvaluateJavascript();
+          localObject2 = WebViewX5Proxy.getInstance().getX5GetSettingst();
+          Method localMethod = WebViewX5Proxy.getInstance().getX5SetDomStorageEnabled();
+          if ((localObject2 != null) && (localMethod != null)) {
+            localMethod.invoke(((Method)localObject2).invoke(paramObject, new Object[0]), new Object[] { Boolean.valueOf(true) });
           }
-          if (localMethod1 != null) {
+          if (localObject1 != null) {
             try
             {
               WebViewX5Proxy.getInstance().setCodeTypeIsX5(true);
-              localMethod1.invoke(paramObject, new Object[] { this.js, null });
-              localMethod1.invoke(paramObject, new Object[] { "javascript:window.QAPM.qapmJsStart()", null });
+              ((Method)localObject1).invoke(paramObject, new Object[] { this.js, null });
+              ((Method)localObject1).invoke(paramObject, new Object[] { "javascript:window.QAPM.qapmJsStart()", null });
               return;
             }
             catch (Exception paramObject)
@@ -114,7 +124,11 @@ public class QAPMJavaScriptBridge
       }
       catch (Exception paramObject)
       {
-        Logger.INSTANCE.w(new String[] { "QAPM_instrumentation_QAPMJavaScriptBridge", "injection js may be error, " + paramObject.getMessage() });
+        localObject1 = Logger.INSTANCE;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("injection js may be error, ");
+        ((StringBuilder)localObject2).append(paramObject.getMessage());
+        ((Logger)localObject1).w(new String[] { "QAPM_instrumentation_QAPMJavaScriptBridge", ((StringBuilder)localObject2).toString() });
       }
     }
   }
@@ -122,7 +136,11 @@ public class QAPMJavaScriptBridge
   @JavascriptInterface
   public String getAppkey()
   {
-    return BaseInfo.userMeta.appKey + "-" + BaseInfo.userMeta.appId;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseInfo.userMeta.appKey);
+    localStringBuilder.append("-");
+    localStringBuilder.append(BaseInfo.userMeta.appId);
+    return localStringBuilder.toString();
   }
   
   @JavascriptInterface
@@ -194,28 +212,29 @@ public class QAPMJavaScriptBridge
   public void initFileJS(Object paramObject, int paramInt)
   {
     int i = paramObject.hashCode();
-    boolean bool = this.loadMap.keySet().contains(Integer.valueOf(i));
+    boolean bool2 = this.loadMap.keySet().contains(Integer.valueOf(i));
     if (paramInt >= 100)
     {
-      if (!bool) {
+      if (!bool2) {
         injection(paramObject);
       }
       this.loadMap.put(Integer.valueOf(i), Boolean.valueOf(true));
-    }
-    for (;;)
-    {
       return;
-      if ((bool) && (((Boolean)this.loadMap.get(Integer.valueOf(i))).booleanValue()))
+    }
+    boolean bool1 = bool2;
+    if (bool2)
+    {
+      bool1 = bool2;
+      if (((Boolean)this.loadMap.get(Integer.valueOf(i))).booleanValue())
       {
         this.loadMap.remove(Integer.valueOf(i));
-        bool = false;
+        bool1 = false;
       }
-      while ((!bool) && (paramInt > 30))
-      {
-        this.loadMap.put(Integer.valueOf(i), Boolean.valueOf(false));
-        injection(paramObject);
-        return;
-      }
+    }
+    if ((!bool1) && (paramInt > 30))
+    {
+      this.loadMap.put(Integer.valueOf(i), Boolean.valueOf(false));
+      injection(paramObject);
     }
   }
   
@@ -227,7 +246,7 @@ public class QAPMJavaScriptBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.QAPMJavaScriptBridge
  * JD-Core Version:    0.7.0.1
  */

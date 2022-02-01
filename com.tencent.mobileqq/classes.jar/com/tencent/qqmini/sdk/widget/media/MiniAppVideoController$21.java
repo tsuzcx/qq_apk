@@ -7,12 +7,13 @@ class MiniAppVideoController$21
   
   public void run()
   {
-    this.this$0.play((MiniAppVideoController.access$000(this.this$0).initialTime * 1000.0D));
+    MiniAppVideoController localMiniAppVideoController = this.this$0;
+    localMiniAppVideoController.play((MiniAppVideoController.access$000(localMiniAppVideoController).initialTime * 1000.0D));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MiniAppVideoController.21
  * JD-Core Version:    0.7.0.1
  */

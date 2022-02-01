@@ -73,22 +73,28 @@ public class CircleProgressView
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("CircleProgressView", 2, "showLoading() mIndeterminate = " + this.jdField_b_of_type_Boolean + ",mAnimationRuning = " + this.jdField_c_of_type_Boolean);
-    }
-    if ((!this.jdField_b_of_type_Boolean) || (this.jdField_c_of_type_Boolean))
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("CircleProgressView", 2, "showLoading()  just return");
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showLoading() mIndeterminate = ");
+      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      localStringBuilder.append(",mAnimationRuning = ");
+      localStringBuilder.append(this.jdField_c_of_type_Boolean);
+      QLog.e("CircleProgressView", 2, localStringBuilder.toString());
+    }
+    if ((this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
+    {
+      setVisibility(0);
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      this.jdField_c_of_type_Boolean = true;
+      this.e = 0;
+      this.jdField_c_of_type_Int = 0;
+      this.jdField_a_of_type_AndroidOsHandler.post(new CircleProgressView.Animator(this, null));
       return;
     }
-    setVisibility(0);
-    this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    this.jdField_c_of_type_Boolean = true;
-    this.e = 0;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_AndroidOsHandler.post(new CircleProgressView.Animator(this, null));
+    if (QLog.isColorLevel()) {
+      QLog.e("CircleProgressView", 2, "showLoading()  just return");
+    }
   }
   
   public boolean a()
@@ -98,8 +104,12 @@ public class CircleProgressView
   
   public void b()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("CircleProgressView", 2, "dismissLoading() mIndeterminate = " + this.jdField_b_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("dismissLoading() mIndeterminate = ");
+      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      QLog.e("CircleProgressView", 2, localStringBuilder.toString());
     }
     if (!this.jdField_b_of_type_Boolean)
     {
@@ -117,8 +127,12 @@ public class CircleProgressView
   
   public void c()
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("CircleProgressView", 2, "hide() mIndeterminate = " + this.jdField_b_of_type_Boolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hide() mIndeterminate = ");
+      localStringBuilder.append(this.jdField_b_of_type_Boolean);
+      QLog.e("CircleProgressView", 2, localStringBuilder.toString());
     }
     setVisibility(4);
     if (this.jdField_b_of_type_Boolean)
@@ -141,13 +155,13 @@ public class CircleProgressView
         paramCanvas.rotate(-36.0F, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2);
         paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, this.e, false, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
-      for (;;)
+      else
       {
-        paramCanvas.restore();
-        return;
         paramCanvas.rotate(222.0F, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2);
         paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 0.0F, this.e, false, this.jdField_a_of_type_AndroidGraphicsPaint);
       }
+      paramCanvas.restore();
+      return;
     }
     paramCanvas.save();
     paramCanvas.rotate(this.e, this.jdField_a_of_type_Int / 2, this.jdField_b_of_type_Int / 2);
@@ -155,21 +169,27 @@ public class CircleProgressView
     paramCanvas.restore();
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
     this.d -= this.h;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(this.d, this.d, this.jdField_a_of_type_Int - this.d, this.jdField_b_of_type_Int - this.d);
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    paramInt1 = this.d;
+    localRectF.set(paramInt1, paramInt1, this.jdField_a_of_type_Int - paramInt1, this.jdField_b_of_type_Int - paramInt1);
   }
   
   public void setIndeterminate(boolean paramBoolean)
   {
     if (this.jdField_b_of_type_Boolean != paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("CircleProgressView", 2, "setIndeterminate() change mIndeterminate = " + this.jdField_b_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setIndeterminate() change mIndeterminate = ");
+        localStringBuilder.append(this.jdField_b_of_type_Boolean);
+        QLog.e("CircleProgressView", 2, localStringBuilder.toString());
       }
       this.jdField_b_of_type_Boolean = paramBoolean;
     }
@@ -179,8 +199,12 @@ public class CircleProgressView
   {
     if (this.jdField_b_of_type_Boolean != paramBoolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("CircleProgressView", 2, "setIndeterminate() change mIndeterminate = " + this.jdField_b_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setIndeterminate() change mIndeterminate = ");
+        localStringBuilder.append(this.jdField_b_of_type_Boolean);
+        QLog.e("CircleProgressView", 2, localStringBuilder.toString());
       }
       this.jdField_b_of_type_Boolean = paramBoolean;
     }
@@ -195,37 +219,44 @@ public class CircleProgressView
   
   public void setProgress(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("CircleProgressView", 2, "setProgress() progress = " + paramInt);
-    }
-    if ((paramInt < 0) || (paramInt > 100)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      if (!this.jdField_b_of_type_Boolean) {
-        break;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setProgress() progress = ");
+      localStringBuilder.append(paramInt);
+      QLog.e("CircleProgressView", 2, localStringBuilder.toString());
+    }
+    if (paramInt >= 0)
+    {
+      if (paramInt > 100) {
+        return;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("CircleProgressView", 2, "setProgress() mIndeterminate = true, just return");
-    return;
-    if (!a()) {
-      setVisibility(0);
+      if (this.jdField_b_of_type_Boolean)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("CircleProgressView", 2, "setProgress() mIndeterminate = true, just return");
+        }
+        return;
+      }
+      if (!a()) {
+        setVisibility(0);
+      }
+      if (this.jdField_c_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      }
+      int i = paramInt;
+      if (paramInt <= 2) {
+        i = 2;
+      }
+      this.jdField_c_of_type_Int = i;
+      this.e = a(this.jdField_c_of_type_Int);
+      invalidate();
     }
-    if (this.jdField_c_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    }
-    int i = paramInt;
-    if (paramInt <= 2) {
-      i = 2;
-    }
-    this.jdField_c_of_type_Int = i;
-    this.e = a(this.jdField_c_of_type_Int);
-    invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgressView
  * JD-Core Version:    0.7.0.1
  */

@@ -45,19 +45,22 @@ public class UploadRequest$Builder
   
   public UploadRequest build()
   {
-    if (TextUtils.isEmpty(this.path)) {
-      throw new IllegalStateException("path is empty");
-    }
-    if (TextUtils.isEmpty(this.fileId)) {
+    if (!TextUtils.isEmpty(this.path))
+    {
+      if (!TextUtils.isEmpty(this.fileId))
+      {
+        if ((this.uin != 0L) && (!TextUtils.isEmpty(this.sha)) && (!TextUtils.isEmpty(this.checkKey)) && ((!TextUtils.isEmpty(this.serverName)) || (!TextUtils.isEmpty(this.serverIp))))
+        {
+          if (TextUtils.isEmpty(this.requestKey)) {
+            this.requestKey = this.fileId;
+          }
+          return new UploadRequest(this, null);
+        }
+        throw new IllegalStateException("uin, sha, checkKey, serverName or serverIp is invalid.");
+      }
       throw new IllegalStateException("fileId is empty");
     }
-    if ((this.uin == 0L) || (TextUtils.isEmpty(this.sha)) || (TextUtils.isEmpty(this.checkKey)) || ((TextUtils.isEmpty(this.serverName)) && (TextUtils.isEmpty(this.serverIp)))) {
-      throw new IllegalStateException("uin, sha, checkKey, serverName or serverIp is invalid.");
-    }
-    if (TextUtils.isEmpty(this.requestKey)) {
-      this.requestKey = this.fileId;
-    }
-    return new UploadRequest(this, null);
+    throw new IllegalStateException("path is empty");
   }
   
   public Builder businessData(Object paramObject)
@@ -158,7 +161,7 @@ public class UploadRequest$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.uploader.UploadRequest.Builder
  * JD-Core Version:    0.7.0.1
  */

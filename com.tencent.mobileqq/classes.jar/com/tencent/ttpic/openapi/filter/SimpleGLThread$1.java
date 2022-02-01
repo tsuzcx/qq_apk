@@ -16,23 +16,28 @@ class SimpleGLThread$1
     try
     {
       SimpleGLThread.access$002(this.this$0, new EglCore(this.val$shareContext, 0));
-      SimpleGLThread.access$102(this.this$0, new OffscreenSurface(SimpleGLThread.access$000(this.this$0), MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT));
+      Object localObject = this.this$0;
+      SimpleGLThread.access$102((SimpleGLThread)localObject, new OffscreenSurface(SimpleGLThread.access$000((SimpleGLThread)localObject), MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT));
       SimpleGLThread.access$100(this.this$0).makeCurrent();
-      if (this.val$listener != null) {
-        this.val$listener.onSurfaceCreated(SimpleGLThread.access$100(this.this$0));
+      localObject = this.val$listener;
+      if (localObject != null) {
+        ((SimpleGLThread.OnSurfaceCreatedListener)localObject).onSurfaceCreated(SimpleGLThread.access$100(this.this$0));
       }
       return;
     }
     catch (RuntimeException localRuntimeException)
     {
-      Log.e("SimpleGLThread", "new EglCore crash : " + localRuntimeException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("new EglCore crash : ");
+      localStringBuilder.append(localRuntimeException.getMessage());
+      Log.e("SimpleGLThread", localStringBuilder.toString());
       SimpleGLThread.access$002(this.this$0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.SimpleGLThread.1
  * JD-Core Version:    0.7.0.1
  */

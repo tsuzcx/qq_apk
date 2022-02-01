@@ -54,7 +54,10 @@ public class DetectInterceptorsMonitor
   
   public void onActivityPause(Activity paramActivity)
   {
-    triggerTiming("activity pause: " + this.mCurrentActivityStr);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("activity pause: ");
+    localStringBuilder.append(this.mCurrentActivityStr);
+    triggerTiming(localStringBuilder.toString());
     this.mInterceptState.onActivityPause(paramActivity);
   }
   
@@ -68,8 +71,12 @@ public class DetectInterceptorsMonitor
         resetMonitorTime();
       }
       this.mInterceptActivities.onIntercept(paramActivity);
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("DetectInterceptorsMonitor", "Intercept duration start timing: " + this.mCurrentActivityStr);
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("Intercept duration start timing: ");
+        paramActivity.append(this.mCurrentActivityStr);
+        Log.d("DetectInterceptorsMonitor", paramActivity.toString());
       }
     }
   }
@@ -89,38 +96,52 @@ public class DetectInterceptorsMonitor
   
   void triggerTiming(String paramString)
   {
-    for (;;)
+    try
     {
-      try
+      StringBuilder localStringBuilder;
+      if (!this.mIsForeground)
       {
-        if (!this.mIsForeground)
+        if (VideoReportInner.getInstance().isDebugMode())
         {
-          if (VideoReportInner.getInstance().isDebugMode()) {
-            Log.d("DetectInterceptorsMonitor", "Interrupt intercept duration updating for app is background now, from: " + paramString);
-          }
-          return;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Interrupt intercept duration updating for app is background now, from: ");
+          localStringBuilder.append(paramString);
+          Log.d("DetectInterceptorsMonitor", localStringBuilder.toString());
         }
-        if (!this.mInterceptState.isIntercept())
-        {
-          if (!VideoReportInner.getInstance().isDebugMode()) {
-            continue;
-          }
-          Log.d("DetectInterceptorsMonitor", "Interrupt intercept duration updating for activity not intercept, Activity: " + this.mCurrentActivityStr + ", from: " + paramString);
-          continue;
-        }
-        this.mInterceptDuration += SystemClock.uptimeMillis() - this.mStartTime;
+        return;
       }
-      finally {}
-      if (VideoReportInner.getInstance().isDebugMode()) {
-        Log.d("DetectInterceptorsMonitor", "Intercept duration update: " + this.mInterceptDuration + ", from: " + paramString);
+      if (!this.mInterceptState.isIntercept())
+      {
+        if (VideoReportInner.getInstance().isDebugMode())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Interrupt intercept duration updating for activity not intercept, Activity: ");
+          localStringBuilder.append(this.mCurrentActivityStr);
+          localStringBuilder.append(", from: ");
+          localStringBuilder.append(paramString);
+          Log.d("DetectInterceptorsMonitor", localStringBuilder.toString());
+        }
+        return;
+      }
+      this.mInterceptDuration += SystemClock.uptimeMillis() - this.mStartTime;
+      if (VideoReportInner.getInstance().isDebugMode())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Intercept duration update: ");
+        localStringBuilder.append(this.mInterceptDuration);
+        localStringBuilder.append(", from: ");
+        localStringBuilder.append(paramString);
+        Log.d("DetectInterceptorsMonitor", localStringBuilder.toString());
       }
       resetMonitorTime();
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.detection.DetectInterceptorsMonitor
  * JD-Core Version:    0.7.0.1
  */

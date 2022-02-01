@@ -65,9 +65,13 @@ public final class AIOSelectableDelegateImpl
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.l);
     this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.l);
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1], 1);
+    SelectableCursor localSelectableCursor = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 1);
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, this.jdField_a_of_type_ArrayOfInt, false);
-    this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1], 2);
+    localSelectableCursor = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 2);
   }
   
   private boolean g()
@@ -77,9 +81,10 @@ public final class AIOSelectableDelegateImpl
   
   private void h()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor == null) || (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor == null)) {
-      throw new IllegalStateException("Has not bound cursors.");
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null)) {
+      return;
     }
+    throw new IllegalStateException("Has not bound cursors.");
   }
   
   private boolean h()
@@ -89,9 +94,10 @@ public final class AIOSelectableDelegateImpl
   
   private void i()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier == null) {
-      throw new IllegalStateException("Has no magnifier.");
+    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier != null) {
+      return;
     }
+    throw new IllegalStateException("Has no magnifier.");
   }
   
   private void j()
@@ -109,8 +115,9 @@ public final class AIOSelectableDelegateImpl
   public int a()
   {
     g();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.contentLength();
+    SelectableComponent localSelectableComponent = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+    if (localSelectableComponent != null) {
+      return localSelectableComponent.contentLength();
     }
     return 0;
   }
@@ -135,8 +142,9 @@ public final class AIOSelectableDelegateImpl
   @Nullable
   public View a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view();
+    SelectableComponent localSelectableComponent = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+    if (localSelectableComponent != null) {
+      return localSelectableComponent.view();
     }
     return null;
   }
@@ -144,8 +152,9 @@ public final class AIOSelectableDelegateImpl
   @Nullable
   AIOSelectableDelegateProxy a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      return (AIOSelectableDelegateProxy)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference != null) {
+      return (AIOSelectableDelegateProxy)localWeakReference.get();
     }
     return null;
   }
@@ -154,13 +163,13 @@ public final class AIOSelectableDelegateImpl
   public String a()
   {
     g();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+    if (localObject != null)
     {
-      CharSequence localCharSequence = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.content();
-      if (localCharSequence != null) {
-        return localCharSequence.toString();
+      localObject = ((SelectableComponent)localObject).content();
+      if (localObject != null) {
+        return ((CharSequence)localObject).toString();
       }
-      return "";
     }
     return "";
   }
@@ -177,38 +186,41 @@ public final class AIOSelectableDelegateImpl
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == -1) || (paramInt2 == -1))
+    if ((paramInt1 != -1) && (paramInt2 != -1))
+    {
+      if (paramInt1 > paramInt2)
+      {
+        this.e = paramInt2;
+        this.f = paramInt1;
+      }
+      else
+      {
+        this.e = paramInt1;
+        this.f = paramInt2;
+      }
+      if (this.f - this.e > 0) {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    else
     {
       this.e = -1;
       this.f = -1;
       this.jdField_a_of_type_Boolean = false;
     }
-    label191:
-    for (;;)
-    {
-      g();
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.selectContent(this.e, this.f);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.highlightContent();
-      h();
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1], 1);
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, this.jdField_a_of_type_ArrayOfInt, false);
-      this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1], 2);
-      j();
-      return;
-      if (paramInt1 > paramInt2) {
-        this.e = paramInt2;
-      }
-      for (this.f = paramInt1;; this.f = paramInt2)
-      {
-        if (this.f - this.e <= 0) {
-          break label191;
-        }
-        this.jdField_a_of_type_Boolean = true;
-        break;
-        this.e = paramInt1;
-      }
-    }
+    g();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.selectContent(this.e, this.f);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.highlightContent();
+    h();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
+    SelectableCursor localSelectableCursor = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 1);
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, this.jdField_a_of_type_ArrayOfInt, false);
+    localSelectableCursor = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    localSelectableCursor.b(arrayOfInt[0], arrayOfInt[1], 2);
+    j();
   }
   
   public void a(int paramInt1, int paramInt2, int paramInt3)
@@ -227,21 +239,24 @@ public final class AIOSelectableDelegateImpl
   {
     g();
     i();
-    if (this.g == -1) {}
-    while (!this.jdField_b_of_type_Boolean) {
+    if (this.g == -1) {
+      return;
+    }
+    if (!this.jdField_b_of_type_Boolean) {
       return;
     }
     Message localMessage = Message.obtain();
-    if (paramBoolean) {}
-    for (int m = 2;; m = 3)
-    {
-      localMessage.what = m;
-      localMessage.arg1 = paramInt1;
-      localMessage.arg2 = paramInt2;
-      localMessage.obj = Integer.valueOf(this.g);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 10L);
-      return;
+    int m;
+    if (paramBoolean) {
+      m = 2;
+    } else {
+      m = 3;
     }
+    localMessage.what = m;
+    localMessage.arg1 = paramInt1;
+    localMessage.arg2 = paramInt2;
+    localMessage.obj = Integer.valueOf(this.g);
+    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(localMessage, 10L);
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -254,14 +269,17 @@ public final class AIOSelectableDelegateImpl
   
   void a(View paramView)
   {
-    if (paramView != null) {
-      paramView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    }
-    for (int m = this.jdField_a_of_type_ArrayOfInt[1];; m = ViewUtils.b())
+    int m;
+    if (paramView != null)
     {
-      d(m);
-      return;
+      paramView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+      m = this.jdField_a_of_type_ArrayOfInt[1];
     }
+    else
+    {
+      m = ViewUtils.b();
+    }
+    d(m);
   }
   
   void a(BaseChatPie paramBaseChatPie)
@@ -269,25 +287,30 @@ public final class AIOSelectableDelegateImpl
     BaseChatPie localBaseChatPie = paramBaseChatPie;
     if (paramBaseChatPie == null)
     {
+      SelectablePopupMenu localSelectablePopupMenu = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
       localBaseChatPie = paramBaseChatPie;
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu instanceof AIOMenuWrapper)) {
-        localBaseChatPie = ((AIOMenuWrapper)this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu).a;
+      if ((localSelectablePopupMenu instanceof AIOMenuWrapper)) {
+        localBaseChatPie = ((AIOMenuWrapper)localSelectablePopupMenu).a;
       }
     }
-    if ((localBaseChatPie != null) && (localBaseChatPie.a != null) && (localBaseChatPie.a.getVisibility() == 0)) {
-      localBaseChatPie.a.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-    }
-    for (int m = this.jdField_a_of_type_ArrayOfInt[1];; m = ViewUtils.b())
+    int m;
+    if ((localBaseChatPie != null) && (localBaseChatPie.a != null) && (localBaseChatPie.a.getVisibility() == 0))
     {
-      d(m);
-      return;
+      localBaseChatPie.a.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+      m = this.jdField_a_of_type_ArrayOfInt[1];
     }
+    else
+    {
+      m = ViewUtils.b();
+    }
+    d(m);
   }
   
   void a(@Nullable AIOSelectableDelegateProxy paramAIOSelectableDelegateProxy)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-      this.jdField_a_of_type_JavaLangRefWeakReference.clear();
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference != null) {
+      localWeakReference.clear();
     }
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAIOSelectableDelegateProxy);
   }
@@ -295,18 +318,17 @@ public final class AIOSelectableDelegateImpl
   public void a(@NonNull OnSelectListener paramOnSelectListener)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
+    while (localIterator.hasNext()) {
+      if (paramOnSelectListener == (OnSelectListener)((WeakReference)localIterator.next()).get())
+      {
+        m = 1;
+        break label45;
       }
-    } while (paramOnSelectListener != (OnSelectListener)((WeakReference)localIterator.next()).get());
-    for (int m = 1;; m = 0)
-    {
-      if (m == 0) {
-        this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramOnSelectListener));
-      }
-      return;
+    }
+    int m = 0;
+    label45:
+    if (m == 0) {
+      this.jdField_a_of_type_JavaUtilList.add(new WeakReference(paramOnSelectListener));
     }
   }
   
@@ -350,21 +372,21 @@ public final class AIOSelectableDelegateImpl
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.l);
     this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.l);
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
-    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1], 1);
+    paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    paramChatMessage.b(arrayOfInt[0], arrayOfInt[1], 1);
     this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, this.jdField_a_of_type_ArrayOfInt, false);
-    this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.b(this.jdField_a_of_type_ArrayOfInt[0], this.jdField_a_of_type_ArrayOfInt[1], 2);
+    paramChatMessage = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    paramChatMessage.b(arrayOfInt[0], arrayOfInt[1], 2);
     a();
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier == null) {
+    paramChatMessage = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier;
+    if (paramChatMessage == null) {
       this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier = new QMagnifier();
+    } else if (paramChatMessage.a()) {
+      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a();
     }
-    for (;;)
-    {
-      j();
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a()) {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a();
-      }
-    }
+    j();
   }
   
   public void a(boolean paramBoolean)
@@ -374,33 +396,30 @@ public final class AIOSelectableDelegateImpl
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu.a();
+    SelectablePopupMenu localSelectablePopupMenu = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
+    if (localSelectablePopupMenu != null) {
+      return localSelectablePopupMenu.a();
     }
     return false;
   }
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    if (!c()) {}
-    int m;
-    int n;
-    int i1;
-    int i2;
-    do
-    {
-      do
-      {
-        return false;
-      } while (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent == null);
-      View localView = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view();
-      localView.getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-      m = this.jdField_a_of_type_ArrayOfInt[0];
-      n = this.jdField_a_of_type_ArrayOfInt[1];
-      i1 = localView.getMeasuredWidth();
-      i2 = localView.getMeasuredHeight();
-    } while ((paramInt1 < m) || (paramInt1 > i1 + m) || (paramInt2 < n) || (paramInt2 > i2 + n));
-    return true;
+    if (!c()) {
+      return false;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+    if (localObject == null) {
+      return false;
+    }
+    localObject = ((SelectableComponent)localObject).view();
+    ((View)localObject).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+    int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+    int m = arrayOfInt[0];
+    int n = arrayOfInt[1];
+    int i1 = ((View)localObject).getMeasuredWidth();
+    int i2 = ((View)localObject).getMeasuredHeight();
+    return (paramInt1 >= m) && (paramInt1 <= i1 + m) && (paramInt2 >= n) && (paramInt2 <= i2 + n);
   }
   
   public int b()
@@ -440,20 +459,19 @@ public final class AIOSelectableDelegateImpl
   public void b(@NonNull OnSelectListener paramOnSelectListener)
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    WeakReference localWeakReference;
-    do
+    while (localIterator.hasNext())
     {
-      if (!localIterator.hasNext()) {
-        break;
+      WeakReference localWeakReference = (WeakReference)localIterator.next();
+      if (paramOnSelectListener == (OnSelectListener)localWeakReference.get())
+      {
+        paramOnSelectListener = localWeakReference;
+        break label47;
       }
-      localWeakReference = (WeakReference)localIterator.next();
-    } while (paramOnSelectListener != (OnSelectListener)localWeakReference.get());
-    for (paramOnSelectListener = localWeakReference;; paramOnSelectListener = null)
-    {
-      if (paramOnSelectListener != null) {
-        this.jdField_a_of_type_JavaUtilList.remove(paramOnSelectListener);
-      }
-      return;
+    }
+    paramOnSelectListener = null;
+    label47:
+    if (paramOnSelectListener != null) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramOnSelectListener);
     }
   }
   
@@ -505,9 +523,10 @@ public final class AIOSelectableDelegateImpl
   public void d()
   {
     this.jdField_a_of_type_ComTencentMobileqqDataChatMessage = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier != null)
+    SelectableMagnifier localSelectableMagnifier = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier;
+    if (localSelectableMagnifier != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a()) {
+      if (localSelectableMagnifier.a()) {
         this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a();
       }
       this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier = null;
@@ -527,146 +546,150 @@ public final class AIOSelectableDelegateImpl
   
   void d(int paramInt)
   {
-    int i2 = 0;
-    if (!g()) {}
-    while (!h()) {
+    if (!g()) {
       return;
     }
-    int m;
-    int i1;
-    label61:
-    Object localObject;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu instanceof CommonMenuWrapper))
-    {
-      m = ((CommonMenuWrapper)this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu).jdField_b_of_type_Int;
-      if (!(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu instanceof CommonMenuWrapper)) {
-        break label328;
-      }
-      i1 = ((CommonMenuWrapper)this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu).jdField_a_of_type_Int;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view();
-      if (((View)localObject).getId() == 2131364634) {
-        break label594;
-      }
-      View localView = ((View)localObject).findViewById(2131364634);
-      if (localView == null) {
-        break label594;
-      }
-      localObject = localView;
+    if (!h()) {
+      return;
     }
-    label328:
-    label594:
-    for (;;)
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
+    if ((localObject1 instanceof CommonMenuWrapper)) {
+      n = ((CommonMenuWrapper)localObject1).jdField_b_of_type_Int;
+    } else {
+      n = ((SelectablePopupMenu)localObject1).a();
+    }
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
+    int i1;
+    if ((localObject1 instanceof CommonMenuWrapper)) {
+      i1 = ((CommonMenuWrapper)localObject1).jdField_a_of_type_Int;
+    } else {
+      i1 = ((SelectablePopupMenu)localObject1).b();
+    }
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view();
+    localObject1 = localObject2;
+    if (((View)localObject2).getId() != 2131364521)
     {
-      ((View)localObject).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
-      int i3 = this.jdField_a_of_type_ArrayOfInt[1];
-      int i4 = this.jdField_a_of_type_ArrayOfInt[1] + ((View)localObject).getHeight();
-      int i5 = this.jdField_a_of_type_ArrayOfInt[0];
-      int i6 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view().getPaddingLeft();
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
-      int i7 = this.jdField_a_of_type_ArrayOfInt[0];
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, this.jdField_a_of_type_ArrayOfInt, false);
-      int n = this.jdField_a_of_type_ArrayOfInt[0];
-      if (this.h == 2) {
-        if ((n - m > jdField_a_of_type_Int) || (n - m < 0)) {
-          if (n - jdField_a_of_type_Int < i6 + i5)
-          {
-            label242:
-            if (i3 - jdField_b_of_type_Int >= c + ImmersiveUtils.statusHeight) {
-              break label572;
-            }
-            if (i4 + 0 >= c + ImmersiveUtils.statusHeight) {
-              break label443;
-            }
-            if ((i1 == 0) || (i1 - jdField_b_of_type_Int <= c + ImmersiveUtils.statusHeight)) {
-              break label388;
-            }
-            paramInt = jdField_b_of_type_Int;
-            n = m;
-            paramInt = i1 - paramInt;
-            m = i2;
-          }
-        }
+      View localView = ((View)localObject2).findViewById(2131364521);
+      localObject1 = localObject2;
+      if (localView != null) {
+        localObject1 = localView;
       }
-      for (;;)
+    }
+    ((View)localObject1).getLocationInWindow(this.jdField_a_of_type_ArrayOfInt);
+    localObject2 = this.jdField_a_of_type_ArrayOfInt;
+    int i3 = 1;
+    int i4 = localObject2[1];
+    int i5 = localObject2[1];
+    int i6 = ((View)localObject1).getHeight();
+    localObject1 = this.jdField_a_of_type_ArrayOfInt;
+    int i2 = 0;
+    int i7 = localObject1[0];
+    int i8 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view().getPaddingLeft();
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.e, this.jdField_a_of_type_ArrayOfInt, true);
+    localObject1 = this.jdField_a_of_type_ArrayOfInt;
+    int i9 = localObject1[0];
+    this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.locationByIndex(this.f, (int[])localObject1, false);
+    int m = this.jdField_a_of_type_ArrayOfInt[0];
+    if (this.h == 2)
+    {
+      i9 = m - n;
+      if ((i9 > jdField_a_of_type_Int) || (i9 < 0))
       {
-        a(n, paramInt, m);
-        return;
-        m = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu.a();
-        break;
-        i1 = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu.b();
-        break label61;
-        n -= jdField_a_of_type_Int;
-        break label242;
-        n = m;
-        break label242;
-        if ((m - i7 > jdField_a_of_type_Int) || (m - i7 < 0))
-        {
-          n = jdField_a_of_type_Int + i7;
-          break label242;
+        i9 = jdField_a_of_type_Int;
+        if (m - i9 < i7 + i8) {
+          break label339;
         }
-        n = m;
-        break label242;
-        if ((i1 != 0) && (d + i1 - jdField_b_of_type_Int < paramInt))
-        {
-          paramInt = jdField_b_of_type_Int;
-          i2 = 1;
-          paramInt = i1 - paramInt;
-          n = m;
-          m = i2;
-        }
-        else
-        {
-          paramInt = c;
-          paramInt = ImmersiveUtils.statusHeight + paramInt;
-          m = i2;
-        }
+        m -= i9;
+        break label339;
       }
-      i2 = i4 + 0;
-      if (d + i2 > paramInt) {
+    }
+    else
+    {
+      m = n - i9;
+      if ((m > jdField_a_of_type_Int) || (m < 0)) {
+        break label332;
+      }
+    }
+    m = n;
+    break label339;
+    label332:
+    m = jdField_a_of_type_Int + i9;
+    label339:
+    if (i4 - jdField_b_of_type_Int < c + ImmersiveUtils.statusHeight)
+    {
+      i4 = i5 + i6 + 0;
+      if (i4 < c + ImmersiveUtils.statusHeight)
+      {
         if ((i1 != 0) && (i1 - jdField_b_of_type_Int > c + ImmersiveUtils.statusHeight))
         {
-          paramInt = jdField_b_of_type_Int;
-          i1 -= paramInt;
-          paramInt = 0;
-          n = m;
-          m = i1;
+          paramInt = i1 - jdField_b_of_type_Int;
+          m = i2;
+          break label591;
         }
-      }
-      for (;;)
-      {
-        i1 = paramInt;
-        paramInt = m;
-        m = i1;
-        break;
-        if ((i1 != 0) && (d + i1 - jdField_b_of_type_Int < paramInt))
+        if (i1 != 0)
         {
-          paramInt = jdField_b_of_type_Int;
-          n = m;
-          m = i1 - paramInt;
-          paramInt = 1;
+          i3 = d;
+          i4 = jdField_b_of_type_Int;
+          if (i3 + i1 - i4 < paramInt)
+          {
+            paramInt = i1 - i4;
+            m = 1;
+            break label591;
+          }
+        }
+        paramInt = c + ImmersiveUtils.statusHeight;
+      }
+      else
+      {
+        if (d + i4 > paramInt)
+        {
+          if ((i1 != 0) && (i1 - jdField_b_of_type_Int > c + ImmersiveUtils.statusHeight))
+          {
+            paramInt = i1 - jdField_b_of_type_Int;
+          }
+          else
+          {
+            if (i1 != 0)
+            {
+              i2 = d;
+              i4 = jdField_b_of_type_Int;
+              if (i2 + i1 - i4 < paramInt)
+              {
+                paramInt = i1 - i4;
+                break label564;
+              }
+            }
+            paramInt = c + ImmersiveUtils.statusHeight + d + jdField_b_of_type_Int;
+            n = m;
+          }
+          m = 0;
+          break label567;
         }
         else
         {
-          m = c + ImmersiveUtils.statusHeight + d + jdField_b_of_type_Int;
-          paramInt = 0;
-          continue;
-          paramInt = 1;
-          m = i2;
+          paramInt = i4;
+          n = m;
         }
-      }
-      if (i3 > paramInt) {}
-      for (;;)
-      {
-        m = i2;
-        break;
-        paramInt = i3 - jdField_b_of_type_Int;
+        m = i3;
+        break label591;
       }
     }
+    else if (i4 <= paramInt)
+    {
+      paramInt = i4 - jdField_b_of_type_Int;
+    }
+    label564:
+    label567:
+    int n = m;
+    m = i2;
+    label591:
+    a(n, paramInt, m);
   }
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(1));
+    SelectableCursor localSelectableCursor = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    return (localSelectableCursor != null) && (localSelectableCursor.a(1));
   }
   
   void e()
@@ -678,7 +701,8 @@ public final class AIOSelectableDelegateImpl
   
   public boolean e()
   {
-    return (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(2));
+    SelectableCursor localSelectableCursor = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    return (localSelectableCursor != null) && (localSelectableCursor.a(2));
   }
   
   void f()
@@ -690,22 +714,25 @@ public final class AIOSelectableDelegateImpl
         this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu.a();
       }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.selectContent(-1, -1);
+      ((SelectableComponent)localObject).selectContent(-1, -1);
       this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.clearHighlightContent();
       this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(1)) {
+      if (((SelectableCursor)localObject).a(1)) {
         this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(1);
       }
       this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor = null;
     }
-    if (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null)
+    localObject = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    if (localObject != null)
     {
-      if (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(2)) {
+      if (((SelectableCursor)localObject).a(2)) {
         this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(2);
       }
       this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor = null;
@@ -720,76 +747,72 @@ public final class AIOSelectableDelegateImpl
   
   public boolean handleMessage(Message paramMessage)
   {
+    Object localObject;
     if (paramMessage.what == 1)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu != null))
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view(), paramMessage.arg1, paramMessage.arg2, ((Integer)paramMessage.obj).intValue());
-        if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a())) {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a();
+        SelectablePopupMenu localSelectablePopupMenu = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu;
+        if (localSelectablePopupMenu != null)
+        {
+          localSelectablePopupMenu.a(((SelectableComponent)localObject).view(), paramMessage.arg1, paramMessage.arg2, ((Integer)paramMessage.obj).intValue());
+          paramMessage = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier;
+          if ((paramMessage != null) && (paramMessage.a())) {
+            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a();
+          }
         }
       }
       return true;
     }
-    SelectableCursor localSelectableCursor;
     if (paramMessage.what == 2)
     {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
       if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier != null)
       {
-        if (((Integer)paramMessage.obj).intValue() != 1) {
-          break label192;
+        if (((Integer)paramMessage.obj).intValue() == 1) {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+        } else {
+          localObject = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
         }
-        localSelectableCursor = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-        if ((localSelectableCursor != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null)) {
-          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a(localSelectableCursor.a(), paramMessage.arg1, paramMessage.arg2, this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view(), true);
+        if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a(((SelectableCursor)localObject).a(), paramMessage.arg1, paramMessage.arg2, this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view(), true);
         }
       }
     }
-    for (;;)
+    else if (paramMessage.what == 3)
     {
-      return false;
-      label192:
-      localSelectableCursor = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
-      break;
-      if (paramMessage.what == 3)
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+      if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier != null)
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier != null)
-        {
-          if (((Integer)paramMessage.obj).intValue() == 1) {}
-          for (localSelectableCursor = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;; localSelectableCursor = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor)
-          {
-            if ((localSelectableCursor == null) || (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent == null)) {
-              break label303;
-            }
-            this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a(localSelectableCursor.a(), paramMessage.arg1, paramMessage.arg2, this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view(), false);
-            break;
-          }
+        if (((Integer)paramMessage.obj).intValue() == 1) {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+        } else {
+          localObject = this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
         }
-      }
-      else
-      {
-        label303:
-        if (paramMessage.what == 4)
-        {
-          this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
-          if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null))
-          {
-            g();
-            a();
-          }
+        if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableMagnifier.a(((SelectableCursor)localObject).a(), paramMessage.arg1, paramMessage.arg2, this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent.view(), false);
         }
       }
     }
+    else if (paramMessage.what == 4)
+    {
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(4);
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (this.jdField_b_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null))
+      {
+        g();
+        a();
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.AIOSelectableDelegateImpl
  * JD-Core Version:    0.7.0.1
  */

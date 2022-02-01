@@ -73,59 +73,51 @@ public final class LightTemplateMediaBuilder
   
   private final void bindAudioPlaceHolder(MediaModel paramMediaModel, LightTemplate paramLightTemplate, LightMediaTemplateModel paramLightMediaTemplateModel, TAVComposition paramTAVComposition, boolean paramBoolean)
   {
-    if ((paramMediaModel.getMediaEffectModel().getMusicModel().getMetaDataBean() != null) && (paramBoolean)) {}
-    label49:
-    label312:
-    for (;;)
-    {
+    if ((paramMediaModel.getMediaEffectModel().getMusicModel().getMetaDataBean() != null) && (paramBoolean)) {
       return;
-      paramLightTemplate = paramLightTemplate.getMovieController();
-      Intrinsics.checkExpressionValueIsNotNull(paramLightTemplate, "lightTemplate.movieController");
-      paramLightTemplate = paramLightTemplate.getAudioPlaceHolders();
-      Intrinsics.checkExpressionValueIsNotNull(paramLightTemplate, "audioPlaceHolder");
-      int i;
-      int j;
-      if (paramLightTemplate.length == 0)
+    }
+    paramLightTemplate = paramLightTemplate.getMovieController();
+    Intrinsics.checkExpressionValueIsNotNull(paramLightTemplate, "lightTemplate.movieController");
+    paramLightTemplate = paramLightTemplate.getAudioPlaceHolders();
+    Intrinsics.checkExpressionValueIsNotNull(paramLightTemplate, "audioPlaceHolder");
+    int i = paramLightTemplate.length;
+    int j = 0;
+    if (i == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      return;
+    }
+    int k = paramLightTemplate.length;
+    i = j;
+    while (i < k)
+    {
+      paramTAVComposition = paramLightTemplate[i];
+      if (!TextUtils.isEmpty((CharSequence)paramTAVComposition.path))
       {
-        i = 1;
-        if (i != 0) {
-          break label298;
+        MusicMaterialMetaDataBean localMusicMaterialMetaDataBean = new MusicMaterialMetaDataBean(null, 0L, null, null, null, null, 0, 0, null, null, null, null, null, 0, null, 0, null, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0L, 0, 0, (byte)0, 0, null, null, null, null, null, null, null, null, 0, 0, 0, 0, 0, null, false, 0, 0, null, null, false, null, false, 0L, 0L, 0L, 0L, false, 0L, 0.0F, 0L, null, -1, 2147483647, null);
+        paramLightTemplate = paramTAVComposition.musicID;
+        Intrinsics.checkExpressionValueIsNotNull(paramLightTemplate, "audio.musicID");
+        localMusicMaterialMetaDataBean.id = paramLightTemplate;
+        localMusicMaterialMetaDataBean.path = paramTAVComposition.path;
+        paramLightTemplate = paramLightMediaTemplateModel.getTemplateBean();
+        if (paramLightTemplate != null) {
+          paramLightTemplate = paramLightTemplate.templateName;
+        } else {
+          paramLightTemplate = null;
         }
-        j = paramLightTemplate.length;
-        i = 0;
+        localMusicMaterialMetaDataBean.name = paramLightTemplate;
+        localMusicMaterialMetaDataBean.startTime = ((int)TimeUtil.us2Milli(paramTAVComposition.startOffset));
+        localMusicMaterialMetaDataBean.mTotalTimeMs = AudioUtils.getDuration(paramTAVComposition.path);
+        MusicMaterialMataDataBeanUtils.setStartInTime(localMusicMaterialMetaDataBean, TimeUtil.us2Milli(paramTAVComposition.fadeInDuration));
+        MusicMaterialMataDataBeanUtils.setEndOutTime(localMusicMaterialMetaDataBean, TimeUtil.us2Milli(paramTAVComposition.fadeOutDuration));
+        paramMediaModel.getMediaEffectModel().getMusicModel().setMetaDataBean(localMusicMaterialMetaDataBean);
+        paramMediaModel.getMediaEffectModel().getMusicModel().setBgmVolume(paramTAVComposition.volume);
+        return;
       }
-      for (;;)
-      {
-        if (i >= j) {
-          break label312;
-        }
-        paramTAVComposition = paramLightTemplate[i];
-        if (!TextUtils.isEmpty((CharSequence)paramTAVComposition.path))
-        {
-          MusicMaterialMetaDataBean localMusicMaterialMetaDataBean = new MusicMaterialMetaDataBean(null, 0L, null, null, null, null, 0, 0, null, null, null, null, null, 0, null, 0, null, 0, 0, 0, 0, null, null, 0, 0, 0, 0, 0L, 0, 0, (byte)0, 0, null, null, null, null, null, null, null, null, 0, 0, 0, 0, 0, null, false, 0, 0, null, null, false, null, false, 0L, 0L, 0L, 0L, false, 0L, 0.0F, 0L, null, -1, 2147483647, null);
-          paramLightTemplate = paramTAVComposition.musicID;
-          Intrinsics.checkExpressionValueIsNotNull(paramLightTemplate, "audio.musicID");
-          localMusicMaterialMetaDataBean.id = paramLightTemplate;
-          localMusicMaterialMetaDataBean.path = paramTAVComposition.path;
-          paramLightTemplate = paramLightMediaTemplateModel.getTemplateBean();
-          if (paramLightTemplate != null) {}
-          for (paramLightTemplate = paramLightTemplate.templateName;; paramLightTemplate = null)
-          {
-            localMusicMaterialMetaDataBean.name = paramLightTemplate;
-            localMusicMaterialMetaDataBean.startTime = ((int)TimeUtil.us2Milli(paramTAVComposition.startOffset));
-            localMusicMaterialMetaDataBean.mTotalTimeMs = AudioUtils.getDuration(paramTAVComposition.path);
-            MusicMaterialMataDataBeanUtils.setStartInTime(localMusicMaterialMetaDataBean, TimeUtil.us2Milli(paramTAVComposition.fadeInDuration));
-            MusicMaterialMataDataBeanUtils.setEndOutTime(localMusicMaterialMetaDataBean, TimeUtil.us2Milli(paramTAVComposition.fadeOutDuration));
-            paramMediaModel.getMediaEffectModel().getMusicModel().setMetaDataBean(localMusicMaterialMetaDataBean);
-            paramMediaModel.getMediaEffectModel().getMusicModel().setBgmVolume(paramTAVComposition.volume);
-            return;
-            i = 0;
-            break label49;
-            break;
-          }
-        }
-        i += 1;
-      }
+      i += 1;
     }
   }
   
@@ -147,28 +139,23 @@ public final class LightTemplateMediaBuilder
       ((MediaTemplateModel)localObject1).setOriginMediaResourceModel(paramMediaModel.getMediaResourceModel().deepCopy());
     }
     localObject1 = ((LightMediaTemplateModel)localObject2).getFilePath();
-    if (localObject1 != null)
-    {
-      localObject2 = new LightTemplate((String)localObject1);
-      if (paramVideoRenderChainConfigure.getRenderSize() == null) {
-        break label168;
-      }
+    if (localObject1 == null) {
+      localObject1 = "";
     }
-    label168:
-    for (localObject1 = paramVideoRenderChainConfigure.getRenderSize();; localObject1 = ((LightTemplate)localObject2).getRenderSize())
+    localObject2 = new LightTemplate((String)localObject1);
+    if (paramVideoRenderChainConfigure.getRenderSize() != null) {
+      localObject1 = paramVideoRenderChainConfigure.getRenderSize();
+    } else {
+      localObject1 = ((LightTemplate)localObject2).getRenderSize();
+    }
+    LightTemplateMediaBuilder localLightTemplateMediaBuilder = INSTANCE;
+    Intrinsics.checkExpressionValueIsNotNull(localObject1, "renderSize");
+    localObject1 = localLightTemplateMediaBuilder.buildComposition(paramMediaModel, (LightTemplate)localObject2, (CGSize)localObject1, paramVideoRenderChainConfigure, paramBoolean);
+    if (localObject1 == null)
     {
-      LightTemplateMediaBuilder localLightTemplateMediaBuilder = INSTANCE;
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "renderSize");
-      localObject1 = localLightTemplateMediaBuilder.buildComposition(paramMediaModel, (LightTemplate)localObject2, (CGSize)localObject1, paramVideoRenderChainConfigure, paramBoolean);
-      if (localObject1 != null) {
-        break label178;
-      }
       paramMediaBuilderListener.buildCompleted(-306, null, null);
       return;
-      localObject1 = "";
-      break;
     }
-    label178:
     paramMediaModel = INSTANCE.createVideoRenderChainManager(paramVideoRenderChainConfigure.getApplyType(), (TAVComposition)localObject1, paramMediaModel, paramIStickerContextInterface, paramVideoRenderChainConfigure, (LightTemplate)localObject2);
     paramIStickerContextInterface = new MediaBuilderOutput();
     paramIStickerContextInterface.setLightTemplate((LightTemplate)localObject2);
@@ -200,40 +187,47 @@ public final class LightTemplateMediaBuilder
   
   private final boolean initLightEngine(VideoRenderChainConfigure paramVideoRenderChainConfigure, LightTemplate paramLightTemplate)
   {
-    boolean bool = false;
     int i;
     if (paramVideoRenderChainConfigure.getApplyType() == 100)
     {
       i = 120000;
-      Logger.i("LightTemplateMediaBuilder", "开启LightSDK预解码，seekTolerance：" + 120000);
+      paramVideoRenderChainConfigure = new StringBuilder();
+      paramVideoRenderChainConfigure.append("开启LightSDK预解码，seekTolerance：");
+      paramVideoRenderChainConfigure.append(120000);
+      Logger.i("LightTemplateMediaBuilder", paramVideoRenderChainConfigure.toString());
     }
-    for (;;)
+    else
     {
-      paramVideoRenderChainConfigure = new VideoOutputConfig(30.0F, i);
-      AudioOutputConfig localAudioOutputConfig = new AudioOutputConfig();
-      localAudioOutputConfig.sampleRate = 44100;
-      localAudioOutputConfig.sampleCount = 2048;
-      localAudioOutputConfig.channels = 1;
-      RendererConfig localRendererConfig = new RendererConfig();
-      localRendererConfig.bundlePath = TAVCut.getLightBundleResPath();
-      paramVideoRenderChainConfigure = LightEngine.Make(paramVideoRenderChainConfigure, localAudioOutputConfig, localRendererConfig);
-      if (paramVideoRenderChainConfigure != null)
-      {
-        paramLightTemplate.setLightEngine(paramVideoRenderChainConfigure);
-        paramLightTemplate.setMovieController(paramVideoRenderChainConfigure.setAssetForMovie(paramLightTemplate.getLightAsset()));
-        bool = true;
-      }
-      return bool;
       i = 0;
     }
+    paramVideoRenderChainConfigure = new VideoOutputConfig(30.0F, i);
+    AudioOutputConfig localAudioOutputConfig = new AudioOutputConfig();
+    localAudioOutputConfig.sampleRate = 44100;
+    localAudioOutputConfig.sampleCount = 2048;
+    localAudioOutputConfig.channels = 1;
+    RendererConfig localRendererConfig = new RendererConfig(TAVCut.getLightBundleResPath());
+    localRendererConfig.initMode = 1;
+    paramVideoRenderChainConfigure = LightEngine.Make(paramVideoRenderChainConfigure, localAudioOutputConfig, localRendererConfig);
+    if (paramVideoRenderChainConfigure != null)
+    {
+      paramLightTemplate.setLightEngine(paramVideoRenderChainConfigure);
+      paramLightTemplate.setMovieController(paramVideoRenderChainConfigure.setAssetForMovie(paramLightTemplate.getLightAsset()));
+      return true;
+    }
+    return false;
   }
   
   @VisibleForTesting
   private final boolean parseSegmentInfo(LightMediaTemplateModel paramLightMediaTemplateModel, LightTemplate paramLightTemplate)
   {
     Object localObject = (Collection)paramLightMediaTemplateModel.getSegmentModels();
-    if ((localObject == null) || (((Collection)localObject).isEmpty())) {}
-    for (int i = 1; i == 0; i = 0)
+    int i;
+    if ((localObject != null) && (!((Collection)localObject).isEmpty())) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i == 0)
     {
       paramLightTemplate.setSegments(paramLightMediaTemplateModel.getSegmentModels());
       return true;
@@ -245,15 +239,18 @@ public final class LightTemplateMediaBuilder
       if (paramLightMediaTemplateModel != null)
       {
         paramLightMediaTemplateModel = ((Collection)paramLightMediaTemplateModel).toArray(new ClipPlaceHolder[0]);
-        if (paramLightMediaTemplateModel == null) {
+        if (paramLightMediaTemplateModel != null) {
+          paramLightMediaTemplateModel = (ClipPlaceHolder[])paramLightMediaTemplateModel;
+        } else {
           throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
         }
       }
-      for (paramLightMediaTemplateModel = (ClipPlaceHolder[])paramLightMediaTemplateModel;; paramLightMediaTemplateModel = null)
+      else
       {
-        paramLightTemplate.setSegments(((LightSegmentHelper)localObject).parseLightSegmentInfo(paramLightMediaTemplateModel));
-        return false;
+        paramLightMediaTemplateModel = null;
       }
+      paramLightTemplate.setSegments(((LightSegmentHelper)localObject).parseLightSegmentInfo(paramLightMediaTemplateModel));
+      return false;
     }
     paramLightMediaTemplateModel = LightSegmentHelper.INSTANCE;
     localObject = paramLightTemplate.getMovieController();
@@ -264,8 +261,7 @@ public final class LightTemplateMediaBuilder
   
   private final void replaceLightTextData(LightMediaTemplateModel paramLightMediaTemplateModel, LightTemplate paramLightTemplate)
   {
-    if (!paramLightMediaTemplateModel.getLightStickerTextModels().isEmpty()) {}
-    for (int i = 1; i != 0; i = 0)
+    if ((paramLightMediaTemplateModel.getLightStickerTextModels().isEmpty() ^ true))
     {
       paramLightMediaTemplateModel = paramLightMediaTemplateModel.getLightStickerTextModels().entrySet().iterator();
       while (paramLightMediaTemplateModel.hasNext())
@@ -339,7 +335,7 @@ public final class LightTemplateMediaBuilder
       localObject1 = paramLightTemplate.getLightSegments().iterator();
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "lightTemplate.lightSegments.iterator()");
       int i = 0;
-      if ((((Iterator)localObject1).hasNext()) && (i < k))
+      while ((((Iterator)localObject1).hasNext()) && (i < k))
       {
         MovieSegmentModel localMovieSegmentModel = (MovieSegmentModel)((Iterator)localObject1).next();
         Intrinsics.checkExpressionValueIsNotNull(localMovieSegmentModel, "currentSegment");
@@ -363,12 +359,11 @@ public final class LightTemplateMediaBuilder
           }
           localMovieSegmentModel.setMinDuration(CMTime.fromUs(l));
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
           ((Iterator)localObject1).remove();
         }
+        i += 1;
       }
     }
   }
@@ -431,14 +426,8 @@ public final class LightTemplateMediaBuilder
       Intrinsics.checkExpressionValueIsNotNull(localObject, "lightTemplate.lightSegments");
       paramVideoRenderChainConfigure = paramVideoRenderChainConfigure.fillSegmentToClipAsset((List)localObject, paramMediaModel.getMediaEffectModel().getMusicModel().getVolume());
     }
-    for (;;)
+    else
     {
-      localObject = paramLightTemplate.getMovieController();
-      paramVideoRenderChainConfigure = ((Collection)paramVideoRenderChainConfigure).toArray(new ClipAsset[0]);
-      if (paramVideoRenderChainConfigure != null) {
-        break;
-      }
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
       List localList;
       if ((paramLightTemplate.isNoDurationLimitTemplate()) && (localLightMediaTemplateModel.getClipPlaceHolders() == null))
       {
@@ -458,38 +447,48 @@ public final class LightTemplateMediaBuilder
         paramVideoRenderChainConfigure = paramVideoRenderChainConfigure.fillOriginResToClipAsset((List)localObject, localList, f, paramLightTemplate.getDuration());
       }
     }
-    ((MovieController)localObject).setClipAssets((ClipAsset[])paramVideoRenderChainConfigure, localLightMediaTemplateModel.getBackgroundEffectPath());
-    paramVideoRenderChainConfigure = paramLightTemplate.getMovieController();
-    Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController");
-    paramVideoRenderChainConfigure = paramVideoRenderChainConfigure.getClipInfos();
-    Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController.clipInfos");
-    if (((Object[])paramVideoRenderChainConfigure).length == 0) {}
-    for (int i = 1; i != 0; i = 0)
+    localObject = paramLightTemplate.getMovieController();
+    paramVideoRenderChainConfigure = (Collection)paramVideoRenderChainConfigure;
+    int i = 0;
+    paramVideoRenderChainConfigure = paramVideoRenderChainConfigure.toArray(new ClipAsset[0]);
+    if (paramVideoRenderChainConfigure != null)
     {
-      Logger.e("LightTemplateMediaBuilder", "setClipAssets called but clipInfo is empty. Build failed!!");
-      return null;
+      ((MovieController)localObject).setClipAssets((ClipAsset[])paramVideoRenderChainConfigure, localLightMediaTemplateModel.getBackgroundEffectPath());
+      paramVideoRenderChainConfigure = paramLightTemplate.getMovieController();
+      Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController");
+      paramVideoRenderChainConfigure = paramVideoRenderChainConfigure.getClipInfos();
+      Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController.clipInfos");
+      if (((Object[])paramVideoRenderChainConfigure).length == 0) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        Logger.e("LightTemplateMediaBuilder", "setClipAssets called but clipInfo is empty. Build failed!!");
+        return null;
+      }
+      paramVideoRenderChainConfigure = paramLightTemplate.getMovieController();
+      Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController");
+      paramVideoRenderChainConfigure = paramVideoRenderChainConfigure.getClipInfos();
+      Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController.clipInfos");
+      localObject = paramLightTemplate.getLightSegments();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "lightTemplate.lightSegments");
+      updateSegmentTimeRange(paramVideoRenderChainConfigure, (List)localObject);
+      updateSegmentCount(paramLightTemplate);
+      if (localLightMediaTemplateModel.getClipPlaceHolders() == null) {
+        updateSegmentMinDuration(paramLightTemplate);
+      }
+      updateTemplateDuration(paramLightTemplate);
+      updateClipPlaceHolderInfo(paramLightTemplate, localLightMediaTemplateModel);
+      paramVideoRenderChainConfigure = paramLightTemplate.getMovieController();
+      Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController");
+      replaceLightPresetData(paramVideoRenderChainConfigure, paramLightTemplate.getFilePath());
+      replaceLightTextData(localLightMediaTemplateModel, paramLightTemplate);
+      initBoundsRect(paramLightTemplate);
+      paramCGSize = generateTAVComposition(paramCGSize, paramLightTemplate.getDuration());
+      bindAudioPlaceHolder(paramMediaModel, paramLightTemplate, localLightMediaTemplateModel, paramCGSize, paramBoolean);
+      return paramCGSize;
     }
-    paramVideoRenderChainConfigure = paramLightTemplate.getMovieController();
-    Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController");
-    paramVideoRenderChainConfigure = paramVideoRenderChainConfigure.getClipInfos();
-    Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController.clipInfos");
-    localObject = paramLightTemplate.getLightSegments();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "lightTemplate.lightSegments");
-    updateSegmentTimeRange(paramVideoRenderChainConfigure, (List)localObject);
-    updateSegmentCount(paramLightTemplate);
-    if (localLightMediaTemplateModel.getClipPlaceHolders() == null) {
-      updateSegmentMinDuration(paramLightTemplate);
-    }
-    updateTemplateDuration(paramLightTemplate);
-    updateClipPlaceHolderInfo(paramLightTemplate, localLightMediaTemplateModel);
-    paramVideoRenderChainConfigure = paramLightTemplate.getMovieController();
-    Intrinsics.checkExpressionValueIsNotNull(paramVideoRenderChainConfigure, "lightTemplate.movieController");
-    replaceLightPresetData(paramVideoRenderChainConfigure, paramLightTemplate.getFilePath());
-    replaceLightTextData(localLightMediaTemplateModel, paramLightTemplate);
-    initBoundsRect(paramLightTemplate);
-    paramCGSize = generateTAVComposition(paramCGSize, paramLightTemplate.getDuration());
-    bindAudioPlaceHolder(paramMediaModel, paramLightTemplate, localLightMediaTemplateModel, paramCGSize, paramBoolean);
-    return paramCGSize;
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<T>");
   }
   
   @VisibleForTesting
@@ -522,7 +521,7 @@ public final class LightTemplateMediaBuilder
     Intrinsics.checkExpressionValueIsNotNull(paramArrayOfClipInfo, "lightSegments[lastIndex].videoResourceModels");
     paramArrayOfClipInfo = ((Iterable)paramArrayOfClipInfo).iterator();
     while (paramArrayOfClipInfo.hasNext()) {
-      l = ((VideoResourceModel)paramArrayOfClipInfo.next()).getSelectTimeDurationUs() + l;
+      l += ((VideoResourceModel)paramArrayOfClipInfo.next()).getSelectTimeDurationUs();
     }
     return l >= paramArrayOfClipPlaceHolder[i].contentDuration;
   }
@@ -532,18 +531,19 @@ public final class LightTemplateMediaBuilder
   {
     Intrinsics.checkParameterIsNotNull(paramMovieController, "movieController");
     HashMap localHashMap1 = paramMovieController.presetData();
-    if ((localHashMap1 == null) || (localHashMap1.size() == 0)) {
-      return null;
+    if ((localHashMap1 != null) && (localHashMap1.size() != 0))
+    {
+      HashMap localHashMap2 = new HashMap();
+      LightPatterHelper.fillNickName(localHashMap1, localHashMap2);
+      LightPatterHelper.fillDate(localHashMap1, localHashMap2);
+      LightPatterHelper.fillLocation(localHashMap1, localHashMap2);
+      LightPatterHelper.fillWeather(localHashMap1, localHashMap2);
+      LightPatterHelper.fillWatermark(localHashMap1, localHashMap2);
+      LightPatterHelper.fillAvatar(localHashMap1, localHashMap2, paramString, (XffectsDownloadListener)new LightTemplateMediaBuilder.replaceLightPresetData.1(localHashMap2, paramMovieController));
+      paramMovieController.setPresetData(localHashMap2);
+      return localHashMap2;
     }
-    HashMap localHashMap2 = new HashMap();
-    LightPatterHelper.fillNickName(localHashMap1, localHashMap2);
-    LightPatterHelper.fillDate(localHashMap1, localHashMap2);
-    LightPatterHelper.fillLocation(localHashMap1, localHashMap2);
-    LightPatterHelper.fillWeather(localHashMap1, localHashMap2);
-    LightPatterHelper.fillWatermark(localHashMap1, localHashMap2);
-    LightPatterHelper.fillAvatar(localHashMap1, localHashMap2, paramString, (XffectsDownloadListener)new LightTemplateMediaBuilder.replaceLightPresetData.1(localHashMap2, paramMovieController));
-    paramMovieController.setPresetData(localHashMap2);
-    return localHashMap2;
+    return null;
   }
   
   @VisibleForTesting
@@ -552,134 +552,114 @@ public final class LightTemplateMediaBuilder
     Intrinsics.checkParameterIsNotNull(paramArrayOfClipInfo, "clipInfos");
     Intrinsics.checkParameterIsNotNull(paramList, "lightSegments");
     Object[] arrayOfObject = (Object[])paramArrayOfClipInfo;
-    int n = arrayOfObject.length;
-    int k = 0;
+    int i = arrayOfObject.length;
     int j = 0;
-    Object localObject;
-    long l2;
-    long l1;
-    int m;
-    label66:
-    MovieSegmentModel localMovieSegmentModel;
-    label113:
-    int i;
-    label145:
-    label177:
-    label209:
-    long l3;
-    if (k < n)
+    int k = 0;
+    while (j < i)
     {
-      localObject = (ClipInfo[])arrayOfObject[k];
-      l2 = 9223372036854775807L;
-      l1 = -9223372036854775808L;
-      int i1 = localObject.length;
-      m = 0;
-      if (m < i1)
+      paramArrayOfClipInfo = (ClipInfo[])arrayOfObject[j];
+      int i1 = paramArrayOfClipInfo.length;
+      long l1 = -9223372036854775808L;
+      long l2 = 9223372036854775807L;
+      int n = 0;
+      int m = j;
+      while (n < i1)
       {
-        localMovieSegmentModel = localObject[m];
-        StringBuilder localStringBuilder = new StringBuilder().append("clipInfo: sourceTimeRange:[");
-        paramArrayOfClipInfo = localMovieSegmentModel.sourceTimeRange;
-        if (paramArrayOfClipInfo != null)
+        ClipInfo[] arrayOfClipInfo = paramArrayOfClipInfo[n];
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("clipInfo: sourceTimeRange:[");
+        localObject = arrayOfClipInfo.sourceTimeRange;
+        localMovieSegmentModel = null;
+        if (localObject != null) {
+          localObject = Long.valueOf(((TimeRange)localObject).startTime);
+        } else {
+          localObject = null;
+        }
+        localStringBuilder.append(localObject);
+        localStringBuilder.append(", ");
+        localObject = arrayOfClipInfo.sourceTimeRange;
+        if (localObject != null) {
+          localObject = Long.valueOf(((TimeRange)localObject).duration);
+        } else {
+          localObject = null;
+        }
+        localStringBuilder.append(localObject);
+        localStringBuilder.append("], targetTimeRange:[");
+        localObject = arrayOfClipInfo.targetTimeRange;
+        if (localObject != null) {
+          localObject = Long.valueOf(((TimeRange)localObject).startTime);
+        } else {
+          localObject = null;
+        }
+        localStringBuilder.append(localObject);
+        localStringBuilder.append(", ");
+        localObject = arrayOfClipInfo.targetTimeRange;
+        if (localObject != null) {
+          localObject = Long.valueOf(((TimeRange)localObject).duration);
+        } else {
+          localObject = null;
+        }
+        localStringBuilder.append(localObject);
+        localStringBuilder.append("], path:");
+        localStringBuilder.append(arrayOfClipInfo.path);
+        Logger.i("miles", localStringBuilder.toString());
+        localObject = ((MovieSegmentModel)paramList.get(k)).getVideoResourceModels();
+        Intrinsics.checkExpressionValueIsNotNull(localObject, "lightSegments[index].videoResourceModels");
+        localObject = ((List)localObject).iterator();
+        j = 0;
+        while (((Iterator)localObject).hasNext())
         {
-          paramArrayOfClipInfo = Long.valueOf(paramArrayOfClipInfo.startTime);
-          localStringBuilder = localStringBuilder.append(paramArrayOfClipInfo).append(", ");
-          paramArrayOfClipInfo = localMovieSegmentModel.sourceTimeRange;
-          if (paramArrayOfClipInfo == null) {
-            break label486;
+          if (Intrinsics.areEqual(((VideoResourceModel)((Iterator)localObject).next()).getPath(), arrayOfClipInfo.path)) {
+            break label390;
           }
-          paramArrayOfClipInfo = Long.valueOf(paramArrayOfClipInfo.duration);
-          localStringBuilder = localStringBuilder.append(paramArrayOfClipInfo).append("], targetTimeRange:[");
-          paramArrayOfClipInfo = localMovieSegmentModel.targetTimeRange;
-          if (paramArrayOfClipInfo == null) {
-            break label491;
+          j += 1;
+        }
+        j = -1;
+        label390:
+        long l3;
+        if (j != -1)
+        {
+          localObject = (VideoResourceModel)((MovieSegmentModel)paramList.get(k)).getVideoResourceModels().get(j);
+          if (localObject != null)
+          {
+            l3 = arrayOfClipInfo.sourceTimeRange.startTime;
+            long l4 = arrayOfClipInfo.sourceTimeRange.duration;
+            localObject = VideoResourceModel.copy$default((VideoResourceModel)localObject, null, arrayOfClipInfo.sourceTimeRange.duration / 1000, 0, 0L, 0L, l3, l4, 0L, 0L, 0, 0, 0, null, 8093, null);
           }
-          paramArrayOfClipInfo = Long.valueOf(paramArrayOfClipInfo.startTime);
-          localStringBuilder = localStringBuilder.append(paramArrayOfClipInfo).append(", ");
-          paramArrayOfClipInfo = localMovieSegmentModel.targetTimeRange;
-          if (paramArrayOfClipInfo == null) {
-            break label496;
+          else
+          {
+            localObject = localMovieSegmentModel;
           }
-          paramArrayOfClipInfo = Long.valueOf(paramArrayOfClipInfo.duration);
-          Logger.i("miles", paramArrayOfClipInfo + "], path:" + localMovieSegmentModel.path);
-          paramArrayOfClipInfo = ((MovieSegmentModel)paramList.get(j)).getVideoResourceModels();
-          Intrinsics.checkExpressionValueIsNotNull(paramArrayOfClipInfo, "lightSegments[index].videoResourceModels");
-          paramArrayOfClipInfo = (List)paramArrayOfClipInfo;
-          i = 0;
-          paramArrayOfClipInfo = paramArrayOfClipInfo.iterator();
-          label274:
-          if (!paramArrayOfClipInfo.hasNext()) {
-            break label508;
-          }
-          if (!Intrinsics.areEqual(((VideoResourceModel)paramArrayOfClipInfo.next()).getPath(), localMovieSegmentModel.path)) {
-            break label501;
-          }
-          label306:
-          if (i == -1) {
-            break label593;
-          }
-          paramArrayOfClipInfo = (VideoResourceModel)((MovieSegmentModel)paramList.get(j)).getVideoResourceModels().get(i);
-          if (paramArrayOfClipInfo == null) {
-            break label513;
-          }
-          l3 = localMovieSegmentModel.sourceTimeRange.startTime;
-          long l4 = localMovieSegmentModel.sourceTimeRange.duration;
-          paramArrayOfClipInfo = VideoResourceModel.copy$default(paramArrayOfClipInfo, null, localMovieSegmentModel.sourceTimeRange.duration / 1000, 0, 0L, 0L, l3, l4, 0L, 0L, 0, 0, 0, null, 8093, null);
-          label393:
-          ((MovieSegmentModel)paramList.get(j)).getVideoResourceModels().set(i, paramArrayOfClipInfo);
-          l2 = RangesKt.coerceAtMost(l2, localMovieSegmentModel.targetTimeRange.startTime);
-          l3 = RangesKt.coerceAtLeast(l1, localMovieSegmentModel.targetTimeRange.startTime + localMovieSegmentModel.targetTimeRange.duration);
+          ((MovieSegmentModel)paramList.get(k)).getVideoResourceModels().set(j, localObject);
+          l2 = RangesKt.coerceAtMost(l2, arrayOfClipInfo.targetTimeRange.startTime);
+          l3 = RangesKt.coerceAtLeast(l1, arrayOfClipInfo.targetTimeRange.startTime + arrayOfClipInfo.targetTimeRange.duration);
           l1 = l2;
           l2 = l3;
+          l3 = l2;
         }
+        else
+        {
+          l3 = l1;
+          l1 = l2;
+        }
+        n += 1;
+        l2 = l1;
+        l1 = l3;
       }
-    }
-    for (;;)
-    {
-      l3 = l1;
-      m += 1;
-      l1 = l2;
-      l2 = l3;
-      break label66;
-      paramArrayOfClipInfo = null;
-      break label113;
-      label486:
-      paramArrayOfClipInfo = null;
-      break label145;
-      label491:
-      paramArrayOfClipInfo = null;
-      break label177;
-      label496:
-      paramArrayOfClipInfo = null;
-      break label209;
-      label501:
-      i += 1;
-      break label274;
-      label508:
-      i = -1;
-      break label306;
-      label513:
-      paramArrayOfClipInfo = null;
-      break label393;
       paramArrayOfClipInfo = new CMTime(l2, 1000000);
-      localObject = new CMTime(l1 - l2, 1000000);
-      localMovieSegmentModel = (MovieSegmentModel)CollectionsKt.getOrNull(paramList, j);
+      Object localObject = new CMTime(l1 - l2, 1000000);
+      MovieSegmentModel localMovieSegmentModel = (MovieSegmentModel)CollectionsKt.getOrNull(paramList, k);
       if (localMovieSegmentModel != null) {
         localMovieSegmentModel.setTimeRange(new CMTimeRange(paramArrayOfClipInfo, (CMTime)localObject));
       }
       k += 1;
-      j += 1;
-      break;
-      return;
-      label593:
-      l3 = l2;
-      l2 = l1;
-      l1 = l3;
+      j = m + 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.light.LightTemplateMediaBuilder
  * JD-Core Version:    0.7.0.1
  */

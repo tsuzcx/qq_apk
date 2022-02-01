@@ -17,18 +17,22 @@ class PayBridgeActivity$MyPluginLoadedReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))) && (this.a != null))
+    if ((paramIntent != null) && ("action_launch_completed".equals(paramIntent.getAction())) && ("qwallet_plugin.apk".equals(paramIntent.getStringExtra("plugin_apk"))))
     {
-      paramContext = (PayBridgeActivity)this.a.get();
-      if (paramContext != null) {
-        paramContext.mIsPluginLoaded = true;
+      paramContext = this.a;
+      if (paramContext != null)
+      {
+        paramContext = (PayBridgeActivity)paramContext.get();
+        if (paramContext != null) {
+          paramContext.mIsPluginLoaded = true;
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PayBridgeActivity.MyPluginLoadedReceiver
  * JD-Core Version:    0.7.0.1
  */

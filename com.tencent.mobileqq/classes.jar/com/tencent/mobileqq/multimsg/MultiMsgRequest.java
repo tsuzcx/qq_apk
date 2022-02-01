@@ -49,7 +49,7 @@ public class MultiMsgRequest
   {
     synchronized (this.a)
     {
-      this.h ^= paramInt;
+      this.h = (paramInt ^ this.h);
       return;
     }
   }
@@ -78,7 +78,7 @@ public class MultiMsgRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.MultiMsgRequest
  * JD-Core Version:    0.7.0.1
  */

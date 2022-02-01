@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -17,25 +18,39 @@ public class GesturePWDUtils
 {
   public static boolean getJumpLock(Context paramContext, String paramString)
   {
-    boolean bool = true;
     paramContext = getSharedPreferences(paramContext);
-    int i = paramContext.getInt("gesturepassword_gesture_mode" + paramString, 21);
-    if (i == 21) {
-      if (paramContext.getInt("gesturepassword_gesture_state" + paramString, 0) != 2) {
-        break label127;
-      }
-    }
-    for (;;)
+    StringBuilder localStringBuilder = AIOUtils.a();
+    localStringBuilder.append("gesturepassword_gesture_mode");
+    localStringBuilder.append(paramString);
+    int i = paramContext.getInt(localStringBuilder.toString(), 21);
+    boolean bool = true;
+    if (i == 21)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.gesturelock.util", 2, "getJumpLock.uin=" + paramString + ",isjumplock=" + bool);
-      }
-      return bool;
-      if ((i != 20) || (!paramContext.getBoolean("gesturepassword_locking", false))) {
-        label127:
-        bool = false;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gesturepassword_gesture_state");
+      localStringBuilder.append(paramString);
+      if (paramContext.getInt(localStringBuilder.toString(), 0) == 2) {
+        break label113;
       }
     }
+    else
+    {
+      if ((i == 20) && (paramContext.getBoolean("gesturepassword_locking", false))) {
+        break label113;
+      }
+    }
+    bool = false;
+    label113:
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getJumpLock.uin=");
+      paramContext.append(paramString);
+      paramContext.append(",isjumplock=");
+      paramContext.append(bool);
+      QLog.d("Q.gesturelock.util", 2, paramContext.toString());
+    }
+    return bool;
   }
   
   public static String patternToString(List<LockPatternView.Cell> paramList)
@@ -49,8 +64,7 @@ public class GesturePWDUtils
     while (i < j)
     {
       LockPatternView.Cell localCell = (LockPatternView.Cell)paramList.get(i);
-      int k = localCell.a();
-      arrayOfByte[i] = ((byte)(localCell.b() + k * 3));
+      arrayOfByte[i] = ((byte)(localCell.a() * 3 + localCell.b()));
       i += 1;
     }
     return Arrays.toString(arrayOfByte);
@@ -58,8 +72,12 @@ public class GesturePWDUtils
   
   public static void setAppForground(Context paramContext, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setAppForground.uin=,isAppFroground=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setAppForground.uin=,isAppFroground=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("Q.gesturelock.util", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = getAppSharedPreferences(paramContext).edit();
     ((SharedPreferences.Editor)localObject).putBoolean("gesturepassword_appforground", paramBoolean);
@@ -78,19 +96,28 @@ public class GesturePWDUtils
         ThreadManager.post(new GesturePWDUtils.1(paramContext), 8, null, false);
       }
     }
-    while (paramContext == null) {
-      return;
+    else if (paramContext != null)
+    {
+      ThreadManager.post(new GesturePWDUtils.2(paramContext), 8, null, false);
     }
-    ThreadManager.post(new GesturePWDUtils.2(paramContext), 8, null, false);
   }
   
   public static void setGesturePWDState(Context paramContext, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.gesturelock.util", 2, "setGesturePWDState.uin=" + paramString + ",state=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGesturePWDState.uin=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",state=");
+      localStringBuilder.append(paramInt);
+      QLog.d("Q.gesturelock.util", 2, localStringBuilder.toString());
     }
     paramContext = getSharedPreferences(paramContext).edit();
-    paramContext.putInt("gesturepassword_gesture_state" + paramString, paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gesturepassword_gesture_state");
+    localStringBuilder.append(paramString);
+    paramContext.putInt(localStringBuilder.toString(), paramInt);
     if ((paramContext.commit()) && (paramInt == 2)) {
       com.tencent.mobileqq.app.BaseActivity.isUnLockSuccess = true;
     }
@@ -98,7 +125,7 @@ public class GesturePWDUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gesturelock.GesturePWDUtils
  * JD-Core Version:    0.7.0.1
  */

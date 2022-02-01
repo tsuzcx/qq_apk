@@ -28,13 +28,13 @@ import com.tencent.common.config.AppSetting;
 import com.tencent.gamecenter.activities.GameCenterActivity;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.gamecenter.data.GameCenterSessionInfo;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.mobileqq.gamecenter.media.DanmakuHost.Item;
 import com.tencent.mobileqq.gamecenter.media.DanmakuLayout;
 import com.tencent.mobileqq.gamecenter.media.GameCenterVideoManager;
 import com.tencent.mobileqq.gamecenter.media.GameCenterVideoViewController;
+import com.tencent.mobileqq.gamecenter.msgInfo.GameCenterSessionInfo;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -58,14 +58,14 @@ public class GameCenterAPIJavaScript
   public static final String APPKEY_PLAYER = "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==";
   public static final String CLOSE_SWITCH = "closeSwitch";
   public static final String DEL_IMG = "delImg";
-  public static String EVENT_UPDATE_SESSION_INFO;
-  public static String EVENT_UPDATE_UNREAD_CNT;
-  public static String METHOD_GET_REQUEST_INFO;
+  public static String EVENT_UPDATE_SESSION_INFO = "gameCenter_sessionChanged";
+  public static String EVENT_UPDATE_UNREAD_CNT = "gameCenter_newMsgCountChanged";
+  public static String METHOD_GET_REQUEST_INFO = "getRequestData";
   public static String METHOD_GET_SESSION_INFO = "getSessionData";
-  public static String METHOD_GET_UNREAD_TOTAL;
-  public static String METHOD_OPEN_AIO;
+  public static String METHOD_GET_UNREAD_TOTAL = "getNewMsgCount";
+  public static String METHOD_OPEN_AIO = "clickCommonSession";
   public static String METHOD_OPEN_QQPLAYER_AIO = "openQQPlayerAio";
-  public static String METHOD_TOGGLE_CHANGE;
+  public static String METHOD_TOGGLE_CHANGE = "setSwitch";
   public static final String OPEN_SWITCH = "openSwitch";
   public static final String QUERY_INFO = "queryInfo";
   public static final String REMOVE_MASK = "removeMask";
@@ -80,16 +80,6 @@ public class GameCenterAPIJavaScript
   private FrameLayout mVideoContainer;
   private Map<Integer, GameCenterAPIJavaScript.VideoViewInfo> mVideoViewMap = new HashMap();
   private String uin = "";
-  
-  static
-  {
-    METHOD_GET_REQUEST_INFO = "getRequestData";
-    METHOD_GET_UNREAD_TOTAL = "getNewMsgCount";
-    EVENT_UPDATE_UNREAD_CNT = "gameCenter_newMsgCountChanged";
-    EVENT_UPDATE_SESSION_INFO = "gameCenter_sessionChanged";
-    METHOD_OPEN_AIO = "clickCommonSession";
-    METHOD_TOGGLE_CHANGE = "setSwitch";
-  }
   
   public GameCenterAPIJavaScript()
   {
@@ -112,29 +102,45 @@ public class GameCenterAPIJavaScript
   
   public static JSONObject parseGameMessageChange(Bundle paramBundle)
   {
+    Object localObject;
+    int i;
     if (paramBundle != null)
     {
-      Object localObject = (GameCenterSessionInfo)paramBundle.getParcelable("key_game_msg");
-      int i = paramBundle.getInt("key_msg_change_type");
-      if (QLog.isColorLevel()) {
-        QLog.d("GCApi", 0, "[onReceive] type:" + i + ",info:" + localObject);
+      localObject = (GameCenterSessionInfo)paramBundle.getParcelable("key_game_msg");
+      i = paramBundle.getInt("key_msg_change_type");
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("[onReceive] type:");
+        paramBundle.append(i);
+        paramBundle.append(",info:");
+        paramBundle.append(localObject);
+        QLog.d("GCApi", 0, paramBundle.toString());
       }
       paramBundle = new JSONArray();
       if (localObject != null) {
         paramBundle.put(((GameCenterSessionInfo)localObject).a());
       }
-      try
+    }
+    try
+    {
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("session", paramBundle);
+      ((JSONObject)localObject).put("eventType", i);
+      ((JSONObject)localObject).put("ret", 0);
+      if (QLog.isColorLevel())
       {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("session", paramBundle);
-        ((JSONObject)localObject).put("eventType", i);
-        ((JSONObject)localObject).put("ret", 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("GCApi", 2, "[onReceive] gameCenterMsg: " + ((JSONObject)localObject).toString());
-        }
-        return localObject;
+        paramBundle = new StringBuilder();
+        paramBundle.append("[onReceive] gameCenterMsg: ");
+        paramBundle.append(((JSONObject)localObject).toString());
+        QLog.d("GCApi", 2, paramBundle.toString());
       }
-      catch (Exception paramBundle) {}
+      return localObject;
+    }
+    catch (Exception paramBundle)
+    {
+      label166:
+      break label166;
     }
     return null;
   }
@@ -144,8 +150,12 @@ public class GameCenterAPIJavaScript
     if (paramBundle != null)
     {
       int i = paramBundle.getInt("key_msg_unread_cnt");
-      if (QLog.isColorLevel()) {
-        QLog.d("GCApi", 2, "[onReceive] cnt:" + i);
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("[onReceive] cnt:");
+        paramBundle.append(i);
+        QLog.d("GCApi", 2, paramBundle.toString());
       }
       try
       {
@@ -169,20 +179,29 @@ public class GameCenterAPIJavaScript
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("result", 1);
       localJSONObject.put("msg", paramString2);
-      super.callJs(paramString1 + "&&" + paramString1 + "(" + localJSONObject.toString() + ");");
-      if (QLog.isColorLevel()) {
-        QLog.e("GCApi", 2, "callbackId->" + paramString1 + " errorMsg: " + paramString2);
-      }
-      return;
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(paramString1);
+      localStringBuilder2.append("&&");
+      localStringBuilder2.append(paramString1);
+      localStringBuilder2.append("(");
+      localStringBuilder2.append(localJSONObject.toString());
+      localStringBuilder2.append(");");
+      super.callJs(localStringBuilder2.toString());
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("GCApi", 2, localException.getMessage());
-        }
+      if (QLog.isColorLevel()) {
+        QLog.e("GCApi", 2, localException.getMessage());
       }
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("callbackId->");
+      localStringBuilder1.append(paramString1);
+      localStringBuilder1.append(" errorMsg: ");
+      localStringBuilder1.append(paramString2);
+      QLog.e("GCApi", 2, localStringBuilder1.toString());
     }
   }
   
@@ -193,16 +212,28 @@ public class GameCenterAPIJavaScript
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("result", paramInt);
       localJSONObject.put("msg", paramString2);
-      super.callJs(paramString1 + "(" + localJSONObject.toString() + ");");
-      if (QLog.isColorLevel()) {
-        QLog.d("GCApi", 2, "callbackId->" + paramString1 + " callbackOk" + localJSONObject.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append(paramString1);
+      paramString2.append("(");
+      paramString2.append(localJSONObject.toString());
+      paramString2.append(");");
+      super.callJs(paramString2.toString());
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("callbackId->");
+        paramString2.append(paramString1);
+        paramString2.append(" callbackOk");
+        paramString2.append(localJSONObject.toString());
+        QLog.d("GCApi", 2, paramString2.toString());
+        return;
       }
-      return;
     }
     catch (Exception paramString1)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GCApi", 2, paramString1.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.e("GCApi", 2, paramString1.getMessage());
+      }
     }
   }
   
@@ -213,16 +244,30 @@ public class GameCenterAPIJavaScript
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("ret", 0);
       localJSONObject.put("msg", "");
-      super.callJs(paramString + "&&" + paramString + "(" + localJSONObject.toString() + ");");
-      if (QLog.isColorLevel()) {
-        QLog.d("GCApi", 2, "callbackId->" + paramString + " callbackOk" + localJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("&&");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("(");
+      localStringBuilder.append(localJSONObject.toString());
+      localStringBuilder.append(");");
+      super.callJs(localStringBuilder.toString());
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("callbackId->");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" callbackOk");
+        localStringBuilder.append(localJSONObject.toString());
+        QLog.d("GCApi", 2, localStringBuilder.toString());
+        return;
       }
-      return;
     }
     catch (Exception paramString)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("GCApi", 2, paramString.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.e("GCApi", 2, paramString.getMessage());
+      }
     }
   }
   
@@ -250,7 +295,10 @@ public class GameCenterAPIJavaScript
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "clearDanmuData Err:" + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clearDanmuData Err:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, localStringBuilder.toString());
       return -1;
     }
     return 0;
@@ -260,525 +308,542 @@ public class GameCenterAPIJavaScript
   public int createVideo(JSONObject paramJSONObject)
   {
     // Byte code:
-    //   0: invokestatic 300	com/tencent/mobileqq/qqvideoplatform/api/QQVideoPlaySDKManager:a	()Z
-    //   3: ifne +53 -> 56
+    //   0: invokestatic 284	com/tencent/mobileqq/qqvideoplatform/api/QQVideoPlaySDKManager:a	()Z
+    //   3: ifne +54 -> 57
     //   6: aload_0
-    //   7: getfield 304	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   10: ifnull +26 -> 36
+    //   7: getfield 288	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   10: ifnull +45 -> 55
     //   13: aload_0
-    //   14: getfield 304	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   17: invokevirtual 309	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   20: ifnull +16 -> 36
+    //   14: getfield 288	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   17: invokevirtual 293	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   20: ifnull +35 -> 55
     //   23: aload_0
-    //   24: getfield 304	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   27: invokevirtual 309	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   30: invokevirtual 315	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   33: ifnonnull +9 -> 42
+    //   24: getfield 288	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   27: invokevirtual 293	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   30: invokevirtual 299	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   33: ifnonnull +5 -> 38
     //   36: iconst_m1
-    //   37: istore 4
-    //   39: iload 4
-    //   41: ireturn
-    //   42: aload_0
-    //   43: getfield 304	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   46: invokevirtual 309	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
-    //   49: invokevirtual 315	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
-    //   52: aconst_null
-    //   53: invokestatic 318	com/tencent/mobileqq/qqvideoplatform/api/QQVideoPlaySDKManager:a	(Landroid/content/Context;Lcom/tencent/mobileqq/videoplatform/SDKInitListener;)V
-    //   56: aload_1
-    //   57: ldc_w 320
-    //   60: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   63: istore 4
-    //   65: aload_1
-    //   66: ldc_w 322
-    //   69: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   72: istore 6
-    //   74: aload_1
-    //   75: ldc_w 324
-    //   78: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   81: istore 5
-    //   83: aload_1
-    //   84: ldc_w 326
-    //   87: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   90: istore 10
-    //   92: aload_1
-    //   93: ldc_w 328
-    //   96: invokevirtual 332	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   99: astore 17
-    //   101: aload_1
-    //   102: ldc_w 334
-    //   105: invokevirtual 332	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   108: astore 18
-    //   110: aload_1
-    //   111: ldc_w 336
-    //   114: invokevirtual 332	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   117: astore 22
-    //   119: aload_1
-    //   120: ldc_w 338
-    //   123: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   126: istore 7
-    //   128: aload_1
-    //   129: ldc_w 340
-    //   132: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   135: iconst_1
-    //   136: if_icmpne +798 -> 934
-    //   139: iconst_1
-    //   140: istore 14
-    //   142: aload_1
-    //   143: ldc_w 342
-    //   146: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   149: iconst_1
-    //   150: if_icmpne +790 -> 940
+    //   37: ireturn
+    //   38: aload_0
+    //   39: getfield 288	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   42: invokevirtual 293	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/common/app/AppInterface;
+    //   45: invokevirtual 299	com/tencent/common/app/AppInterface:getApplication	()Lmqq/app/MobileQQ;
+    //   48: aconst_null
+    //   49: invokestatic 302	com/tencent/mobileqq/qqvideoplatform/api/QQVideoPlaySDKManager:a	(Landroid/content/Context;Lcom/tencent/mobileqq/videoplatform/SDKInitListener;)V
+    //   52: goto +5 -> 57
+    //   55: iconst_m1
+    //   56: ireturn
+    //   57: aload_1
+    //   58: ldc_w 304
+    //   61: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   64: istore 4
+    //   66: aload_1
+    //   67: ldc_w 306
+    //   70: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   73: istore 5
+    //   75: aload_1
+    //   76: ldc_w 308
+    //   79: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   82: istore 9
+    //   84: aload_1
+    //   85: ldc_w 310
+    //   88: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   91: istore 10
+    //   93: aload_1
+    //   94: ldc_w 312
+    //   97: invokevirtual 316	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   100: astore 17
+    //   102: aload_1
+    //   103: ldc_w 318
+    //   106: invokevirtual 316	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   109: astore 18
+    //   111: aload_1
+    //   112: ldc_w 320
+    //   115: invokevirtual 316	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   118: astore 22
+    //   120: aload_1
+    //   121: ldc_w 322
+    //   124: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   127: istore 6
+    //   129: aload_1
+    //   130: ldc_w 324
+    //   133: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   136: iconst_1
+    //   137: if_icmpne +839 -> 976
+    //   140: iconst_1
+    //   141: istore 14
+    //   143: goto +3 -> 146
+    //   146: aload_1
+    //   147: ldc_w 326
+    //   150: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
     //   153: iconst_1
-    //   154: istore 15
-    //   156: aload_1
-    //   157: ldc_w 344
-    //   160: invokevirtual 332	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   163: astore 23
-    //   165: aload_1
-    //   166: ldc_w 346
-    //   169: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   172: istore 8
-    //   174: aload_1
-    //   175: ldc_w 348
-    //   178: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   181: istore 9
-    //   183: aload_1
-    //   184: ldc_w 350
-    //   187: invokevirtual 258	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   190: istore 11
-    //   192: aload_1
-    //   193: ldc_w 352
-    //   196: invokevirtual 332	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   199: astore 24
-    //   201: aload_1
-    //   202: ldc_w 354
-    //   205: invokevirtual 332	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   208: astore 25
-    //   210: aload_1
-    //   211: ldc_w 356
-    //   214: invokevirtual 332	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   217: astore 26
-    //   219: aload_1
-    //   220: ldc_w 358
-    //   223: invokevirtual 332	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   226: astore 27
-    //   228: aload_1
-    //   229: ldc_w 360
-    //   232: invokevirtual 332	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   235: astore 28
-    //   237: aload_1
-    //   238: ldc_w 362
-    //   241: aconst_null
-    //   242: invokevirtual 365	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   245: astore 19
-    //   247: aload_1
-    //   248: ldc_w 367
-    //   251: aconst_null
-    //   252: invokevirtual 365	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   255: astore 20
-    //   257: aload_1
-    //   258: ldc_w 369
-    //   261: aconst_null
-    //   262: invokevirtual 365	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   265: astore 21
-    //   267: aload_1
-    //   268: ldc_w 371
-    //   271: iconst_0
-    //   272: invokevirtual 374	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   275: istore 12
-    //   277: aload_1
-    //   278: ldc_w 376
-    //   281: iconst_0
-    //   282: invokevirtual 374	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
-    //   285: istore 13
-    //   287: aload_1
-    //   288: ldc_w 378
-    //   291: iconst_0
-    //   292: invokevirtual 382	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
-    //   295: istore 16
-    //   297: aload_1
-    //   298: ldc_w 384
-    //   301: ldc 95
-    //   303: invokevirtual 365	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
-    //   306: astore_1
-    //   307: aload_1
-    //   308: invokestatic 390	com/tencent/image/URLDrawable:getDrawable	(Ljava/lang/String;)Lcom/tencent/image/URLDrawable;
-    //   311: pop
-    //   312: invokestatic 396	com/tencent/mobileqq/app/FontSettingManager:getFontLevel	()F
-    //   315: ldc_w 397
-    //   318: fdiv
-    //   319: fstore_3
-    //   320: fconst_0
-    //   321: fstore_2
-    //   322: fload_3
-    //   323: fconst_0
-    //   324: fcmpl
-    //   325: ifeq +9 -> 334
-    //   328: invokestatic 401	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()F
-    //   331: fload_3
-    //   332: fdiv
-    //   333: fstore_2
-    //   334: fload_2
-    //   335: fconst_0
-    //   336: fcmpl
-    //   337: ifne +628 -> 965
-    //   340: invokestatic 401	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()F
-    //   343: fstore_2
-    //   344: aload_0
-    //   345: getfield 116	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mVideoContainer	Landroid/widget/FrameLayout;
-    //   348: invokevirtual 407	android/widget/FrameLayout:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   351: checkcast 409	android/widget/RelativeLayout$LayoutParams
-    //   354: astore_1
-    //   355: aload_1
-    //   356: iload 12
-    //   358: i2f
-    //   359: fload_2
-    //   360: fmul
-    //   361: f2i
-    //   362: putfield 413	android/widget/RelativeLayout$LayoutParams:topMargin	I
+    //   154: if_icmpne +828 -> 982
+    //   157: iconst_1
+    //   158: istore 15
+    //   160: goto +3 -> 163
+    //   163: aload_1
+    //   164: ldc_w 328
+    //   167: invokevirtual 316	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   170: astore 23
+    //   172: aload_1
+    //   173: ldc_w 330
+    //   176: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   179: istore 7
+    //   181: aload_1
+    //   182: ldc_w 332
+    //   185: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   188: istore 8
+    //   190: aload_1
+    //   191: ldc_w 334
+    //   194: invokevirtual 242	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   197: istore 11
+    //   199: aload_1
+    //   200: ldc_w 336
+    //   203: invokevirtual 316	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   206: astore 24
+    //   208: aload_1
+    //   209: ldc_w 338
+    //   212: invokevirtual 316	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   215: astore 25
+    //   217: aload_1
+    //   218: ldc_w 340
+    //   221: invokevirtual 316	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   224: astore 26
+    //   226: aload_1
+    //   227: ldc_w 342
+    //   230: invokevirtual 316	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   233: astore 27
+    //   235: aload_1
+    //   236: ldc_w 344
+    //   239: invokevirtual 316	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   242: astore 28
+    //   244: aload_1
+    //   245: ldc_w 346
+    //   248: aconst_null
+    //   249: invokevirtual 349	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   252: astore 19
+    //   254: aload_1
+    //   255: ldc_w 351
+    //   258: aconst_null
+    //   259: invokevirtual 349	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   262: astore 20
+    //   264: aload_1
+    //   265: ldc_w 353
+    //   268: aconst_null
+    //   269: invokevirtual 349	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   272: astore 21
+    //   274: aload_1
+    //   275: ldc_w 355
+    //   278: iconst_0
+    //   279: invokevirtual 358	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   282: istore 12
+    //   284: aload_1
+    //   285: ldc_w 360
+    //   288: iconst_0
+    //   289: invokevirtual 358	org/json/JSONObject:optInt	(Ljava/lang/String;I)I
+    //   292: istore 13
+    //   294: aload_1
+    //   295: ldc_w 362
+    //   298: iconst_0
+    //   299: invokevirtual 366	org/json/JSONObject:optBoolean	(Ljava/lang/String;Z)Z
+    //   302: istore 16
+    //   304: aload_1
+    //   305: ldc_w 368
+    //   308: ldc 79
+    //   310: invokevirtual 349	org/json/JSONObject:optString	(Ljava/lang/String;Ljava/lang/String;)Ljava/lang/String;
+    //   313: astore_1
+    //   314: aload_1
+    //   315: invokestatic 374	com/tencent/image/URLDrawable:getDrawable	(Ljava/lang/String;)Lcom/tencent/image/URLDrawable;
+    //   318: pop
+    //   319: invokestatic 380	com/tencent/mobileqq/app/FontSettingManager:getFontLevel	()F
+    //   322: ldc_w 381
+    //   325: fdiv
+    //   326: fstore_2
+    //   327: fload_2
+    //   328: fconst_0
+    //   329: fcmpl
+    //   330: ifeq +658 -> 988
+    //   333: invokestatic 385	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()F
+    //   336: fload_2
+    //   337: fdiv
+    //   338: fstore_2
+    //   339: goto +3 -> 342
+    //   342: fload_2
+    //   343: fstore_3
+    //   344: fload_2
+    //   345: fconst_0
+    //   346: fcmpl
+    //   347: ifne +7 -> 354
+    //   350: invokestatic 385	com/tencent/mobileqq/utils/DeviceInfoUtil:a	()F
+    //   353: fstore_3
+    //   354: aload_0
+    //   355: getfield 100	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mVideoContainer	Landroid/widget/FrameLayout;
+    //   358: invokevirtual 391	android/widget/FrameLayout:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   361: checkcast 393	android/widget/RelativeLayout$LayoutParams
+    //   364: astore_1
     //   365: aload_1
-    //   366: iload 13
+    //   366: iload 12
     //   368: i2f
-    //   369: fload_2
+    //   369: fload_3
     //   370: fmul
     //   371: f2i
-    //   372: putfield 416	android/widget/RelativeLayout$LayoutParams:bottomMargin	I
-    //   375: aload_0
-    //   376: getfield 116	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mVideoContainer	Landroid/widget/FrameLayout;
-    //   379: aload_1
-    //   380: invokevirtual 420	android/widget/FrameLayout:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   383: new 422	android/widget/FrameLayout$LayoutParams
-    //   386: dup
-    //   387: iload 5
-    //   389: i2f
-    //   390: fload_2
-    //   391: fmul
-    //   392: f2i
-    //   393: iload 10
-    //   395: i2f
-    //   396: fload_2
-    //   397: fmul
-    //   398: f2i
-    //   399: invokespecial 425	android/widget/FrameLayout$LayoutParams:<init>	(II)V
-    //   402: astore 29
-    //   404: aload 29
-    //   406: iload 4
-    //   408: iload 12
-    //   410: isub
-    //   411: i2f
-    //   412: fload_2
-    //   413: fmul
-    //   414: f2i
-    //   415: putfield 426	android/widget/FrameLayout$LayoutParams:topMargin	I
-    //   418: aload 29
-    //   420: fload_2
-    //   421: iload 6
-    //   423: i2f
-    //   424: fmul
-    //   425: f2i
-    //   426: putfield 429	android/widget/FrameLayout$LayoutParams:leftMargin	I
-    //   429: new 279	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController
-    //   432: dup
-    //   433: aload_0
-    //   434: getfield 304	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   437: invokevirtual 432	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   440: invokespecial 435	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:<init>	(Landroid/content/Context;)V
-    //   443: astore_1
-    //   444: aload_1
-    //   445: ldc_w 436
-    //   448: invokevirtual 440	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setBackgroundColor	(I)V
-    //   451: iload 16
-    //   453: ifeq +28 -> 481
-    //   456: getstatic 445	android/os/Build$VERSION:SDK_INT	I
-    //   459: bipush 21
-    //   461: if_icmplt +20 -> 481
-    //   464: aload_1
-    //   465: new 447	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$4
-    //   468: dup
-    //   469: aload_0
-    //   470: invokespecial 450	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$4:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
-    //   473: invokevirtual 454	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setOutlineProvider	(Landroid/view/ViewOutlineProvider;)V
-    //   476: aload_1
-    //   477: iconst_1
-    //   478: invokevirtual 458	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setClipToOutline	(Z)V
-    //   481: aload_1
-    //   482: invokevirtual 461	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:enableFullScreenSwitch	()V
-    //   485: aload_1
-    //   486: invokevirtual 464	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:enableVolumeSwitch	()V
-    //   489: aload_1
-    //   490: iload 8
-    //   492: invokevirtual 467	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setDanmakuSwitch	(I)V
+    //   372: putfield 397	android/widget/RelativeLayout$LayoutParams:topMargin	I
+    //   375: aload_1
+    //   376: iload 13
+    //   378: i2f
+    //   379: fload_3
+    //   380: fmul
+    //   381: f2i
+    //   382: putfield 400	android/widget/RelativeLayout$LayoutParams:bottomMargin	I
+    //   385: aload_0
+    //   386: getfield 100	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mVideoContainer	Landroid/widget/FrameLayout;
+    //   389: aload_1
+    //   390: invokevirtual 404	android/widget/FrameLayout:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   393: new 406	android/widget/FrameLayout$LayoutParams
+    //   396: dup
+    //   397: iload 9
+    //   399: i2f
+    //   400: fload_3
+    //   401: fmul
+    //   402: f2i
+    //   403: iload 10
+    //   405: i2f
+    //   406: fload_3
+    //   407: fmul
+    //   408: f2i
+    //   409: invokespecial 409	android/widget/FrameLayout$LayoutParams:<init>	(II)V
+    //   412: astore 30
+    //   414: aload 30
+    //   416: iload 4
+    //   418: iload 12
+    //   420: isub
+    //   421: i2f
+    //   422: fload_3
+    //   423: fmul
+    //   424: f2i
+    //   425: putfield 410	android/widget/FrameLayout$LayoutParams:topMargin	I
+    //   428: aload 30
+    //   430: iload 5
+    //   432: i2f
+    //   433: fload_3
+    //   434: fmul
+    //   435: f2i
+    //   436: putfield 413	android/widget/FrameLayout$LayoutParams:leftMargin	I
+    //   439: new 263	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController
+    //   442: dup
+    //   443: aload_0
+    //   444: getfield 288	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   447: invokevirtual 416	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   450: invokespecial 419	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:<init>	(Landroid/content/Context;)V
+    //   453: astore_1
+    //   454: aload_1
+    //   455: ldc_w 420
+    //   458: invokevirtual 424	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setBackgroundColor	(I)V
+    //   461: iload 16
+    //   463: ifeq +28 -> 491
+    //   466: getstatic 429	android/os/Build$VERSION:SDK_INT	I
+    //   469: bipush 21
+    //   471: if_icmplt +20 -> 491
+    //   474: aload_1
+    //   475: new 431	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$4
+    //   478: dup
+    //   479: aload_0
+    //   480: invokespecial 434	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$4:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
+    //   483: invokevirtual 438	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setOutlineProvider	(Landroid/view/ViewOutlineProvider;)V
+    //   486: aload_1
+    //   487: iconst_1
+    //   488: invokevirtual 442	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setClipToOutline	(Z)V
+    //   491: aload_1
+    //   492: invokevirtual 445	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:enableFullScreenSwitch	()V
     //   495: aload_1
-    //   496: iload 11
-    //   498: invokevirtual 470	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setUIStyle	(I)V
-    //   501: new 403	android/widget/FrameLayout
-    //   504: dup
-    //   505: aload_0
-    //   506: getfield 304	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   509: invokevirtual 432	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
-    //   512: invokespecial 471	android/widget/FrameLayout:<init>	(Landroid/content/Context;)V
-    //   515: astore 30
-    //   517: aload_1
-    //   518: aload 30
-    //   520: new 422	android/widget/FrameLayout$LayoutParams
-    //   523: dup
-    //   524: iconst_m1
-    //   525: iconst_m1
-    //   526: invokespecial 425	android/widget/FrameLayout$LayoutParams:<init>	(II)V
-    //   529: invokevirtual 475	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
-    //   532: aload_0
-    //   533: getfield 116	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mVideoContainer	Landroid/widget/FrameLayout;
-    //   536: aload_1
-    //   537: aload 29
-    //   539: invokevirtual 476	android/widget/FrameLayout:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    //   496: invokevirtual 448	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:enableVolumeSwitch	()V
+    //   499: aload_1
+    //   500: iload 7
+    //   502: invokevirtual 451	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setDanmakuSwitch	(I)V
+    //   505: aload_1
+    //   506: iload 11
+    //   508: invokevirtual 454	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setUIStyle	(I)V
+    //   511: new 387	android/widget/FrameLayout
+    //   514: dup
+    //   515: aload_0
+    //   516: getfield 288	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   519: invokevirtual 416	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Landroid/app/Activity;
+    //   522: invokespecial 455	android/widget/FrameLayout:<init>	(Landroid/content/Context;)V
+    //   525: astore 29
+    //   527: aload_1
+    //   528: aload 29
+    //   530: new 406	android/widget/FrameLayout$LayoutParams
+    //   533: dup
+    //   534: iconst_m1
+    //   535: iconst_m1
+    //   536: invokespecial 409	android/widget/FrameLayout$LayoutParams:<init>	(II)V
+    //   539: invokevirtual 459	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
     //   542: aload_0
-    //   543: getfield 304	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
-    //   546: invokevirtual 479	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
-    //   549: checkcast 481	com/tencent/biz/ui/TouchWebView
-    //   552: checkcast 481	com/tencent/biz/ui/TouchWebView
-    //   555: aload_0
-    //   556: getfield 483	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mScrollChangedListener	Lcom/tencent/biz/ui/TouchWebView$OnScrollChangedListener;
-    //   559: invokevirtual 487	com/tencent/biz/ui/TouchWebView:setOnScrollChangedListener	(Lcom/tencent/biz/ui/TouchWebView$OnScrollChangedListener;)V
-    //   562: new 157	java/lang/StringBuilder
-    //   565: dup
-    //   566: invokespecial 158	java/lang/StringBuilder:<init>	()V
-    //   569: aload 17
-    //   571: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   574: aload 18
-    //   576: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   579: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   582: invokevirtual 493	java/lang/String:hashCode	()I
-    //   585: invokestatic 499	java/lang/Math:abs	(I)I
-    //   588: istore 5
-    //   590: aload_1
-    //   591: iload 5
-    //   593: invokevirtual 502	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setVideoId	(I)V
-    //   596: new 274	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo
-    //   599: dup
-    //   600: aload_1
-    //   601: aload 30
-    //   603: new 99	java/util/HashMap
-    //   606: dup
-    //   607: invokespecial 100	java/util/HashMap:<init>	()V
-    //   610: invokespecial 505	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:<init>	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController;Landroid/widget/FrameLayout;Ljava/util/Map;)V
-    //   613: astore 29
-    //   615: aload 29
-    //   617: aload 17
-    //   619: putfield 507	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   622: aload 29
-    //   624: iload 15
-    //   626: putfield 509	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_b_of_type_Boolean	Z
-    //   629: aload 29
-    //   631: iload 6
-    //   633: putfield 512	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_c_of_type_Int	I
-    //   636: aload 29
-    //   638: iload 4
-    //   640: putfield 514	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_b_of_type_Int	I
-    //   643: aload 29
-    //   645: iload 5
-    //   647: putfield 516	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_a_of_type_Int	I
-    //   650: aload 29
-    //   652: iload 7
-    //   654: putfield 518	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_d_of_type_Int	I
-    //   657: aload 29
-    //   659: aload 22
-    //   661: putfield 520	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   664: aload 29
-    //   666: iload 14
-    //   668: putfield 522	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_a_of_type_Boolean	Z
-    //   671: iload 8
-    //   673: iconst_2
-    //   674: if_icmpne +272 -> 946
-    //   677: iconst_1
-    //   678: istore 16
-    //   680: aload 29
-    //   682: iload 16
-    //   684: putfield 524	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_d_of_type_Boolean	Z
-    //   687: aload 29
-    //   689: aload 23
-    //   691: putfield 526	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   694: aload 29
-    //   696: aload 24
-    //   698: putfield 528	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:e	Ljava/lang/String;
-    //   701: aload 29
-    //   703: aload 26
-    //   705: putfield 531	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:g	Ljava/lang/String;
-    //   708: aload 29
-    //   710: aload 25
-    //   712: putfield 534	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:f	Ljava/lang/String;
-    //   715: aload 29
-    //   717: aload 27
-    //   719: putfield 537	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:h	Ljava/lang/String;
-    //   722: aload 29
-    //   724: aload 28
-    //   726: putfield 540	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:i	Ljava/lang/String;
-    //   729: aload 29
-    //   731: aload 19
-    //   733: putfield 543	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:j	Ljava/lang/String;
-    //   736: aload 29
-    //   738: aload 21
-    //   740: putfield 546	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:k	Ljava/lang/String;
-    //   743: aload 29
-    //   745: aload 20
-    //   747: putfield 549	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:l	Ljava/lang/String;
-    //   750: aload_0
-    //   751: getfield 102	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mVideoViewMap	Ljava/util/Map;
-    //   754: iload 5
-    //   756: invokestatic 264	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   543: getfield 100	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mVideoContainer	Landroid/widget/FrameLayout;
+    //   546: aload_1
+    //   547: aload 30
+    //   549: invokevirtual 460	android/widget/FrameLayout:addView	(Landroid/view/View;Landroid/view/ViewGroup$LayoutParams;)V
+    //   552: aload_0
+    //   553: getfield 288	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mRuntime	Lcom/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime;
+    //   556: invokevirtual 463	com/tencent/mobileqq/webview/swift/WebViewPlugin$PluginRuntime:a	()Lcom/tencent/biz/pubaccount/CustomWebView;
+    //   559: checkcast 465	com/tencent/biz/ui/TouchWebView
+    //   562: checkcast 465	com/tencent/biz/ui/TouchWebView
+    //   565: aload_0
+    //   566: getfield 467	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mScrollChangedListener	Lcom/tencent/biz/ui/TouchWebView$OnScrollChangedListener;
+    //   569: invokevirtual 471	com/tencent/biz/ui/TouchWebView:setOnScrollChangedListener	(Lcom/tencent/biz/ui/TouchWebView$OnScrollChangedListener;)V
+    //   572: new 141	java/lang/StringBuilder
+    //   575: dup
+    //   576: invokespecial 142	java/lang/StringBuilder:<init>	()V
+    //   579: astore 30
+    //   581: aload 30
+    //   583: aload 17
+    //   585: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   588: pop
+    //   589: aload 30
+    //   591: aload 18
+    //   593: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   596: pop
+    //   597: aload 30
+    //   599: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   602: invokevirtual 477	java/lang/String:hashCode	()I
+    //   605: invokestatic 483	java/lang/Math:abs	(I)I
+    //   608: istore 9
+    //   610: aload_1
+    //   611: iload 9
+    //   613: invokevirtual 486	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setVideoId	(I)V
+    //   616: new 258	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo
+    //   619: dup
+    //   620: aload_1
+    //   621: aload 29
+    //   623: new 83	java/util/HashMap
+    //   626: dup
+    //   627: invokespecial 84	java/util/HashMap:<init>	()V
+    //   630: invokespecial 489	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:<init>	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController;Landroid/widget/FrameLayout;Ljava/util/Map;)V
+    //   633: astore 29
+    //   635: aload 29
+    //   637: aload 17
+    //   639: putfield 491	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   642: aload 29
+    //   644: iload 15
+    //   646: putfield 493	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_b_of_type_Boolean	Z
+    //   649: aload 29
+    //   651: iload 5
+    //   653: putfield 496	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_c_of_type_Int	I
+    //   656: aload 29
+    //   658: iload 4
+    //   660: putfield 498	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_b_of_type_Int	I
+    //   663: aload 29
+    //   665: iload 9
+    //   667: putfield 500	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_a_of_type_Int	I
+    //   670: aload 29
+    //   672: iload 6
+    //   674: putfield 502	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_d_of_type_Int	I
+    //   677: aload 29
+    //   679: aload 22
+    //   681: putfield 504	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   684: aload 29
+    //   686: iload 14
+    //   688: putfield 506	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_a_of_type_Boolean	Z
+    //   691: iload 7
+    //   693: iconst_2
+    //   694: if_icmpne +299 -> 993
+    //   697: iconst_1
+    //   698: istore 16
+    //   700: goto +3 -> 703
+    //   703: aload 29
+    //   705: iload 16
+    //   707: putfield 508	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_d_of_type_Boolean	Z
+    //   710: aload 29
+    //   712: aload 23
+    //   714: putfield 510	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:jdField_d_of_type_JavaLangString	Ljava/lang/String;
+    //   717: aload 29
+    //   719: aload 24
+    //   721: putfield 512	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:e	Ljava/lang/String;
+    //   724: aload 29
+    //   726: aload 26
+    //   728: putfield 515	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:g	Ljava/lang/String;
+    //   731: aload 29
+    //   733: aload 25
+    //   735: putfield 518	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:f	Ljava/lang/String;
+    //   738: aload 29
+    //   740: aload 27
+    //   742: putfield 521	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:h	Ljava/lang/String;
+    //   745: aload 29
+    //   747: aload 28
+    //   749: putfield 524	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:i	Ljava/lang/String;
+    //   752: aload 29
+    //   754: aload 19
+    //   756: putfield 527	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:j	Ljava/lang/String;
     //   759: aload 29
-    //   761: invokeinterface 552 3 0
-    //   766: pop
-    //   767: new 554	com/tencent/mobileqq/gamecenter/data/FeedsItemData
-    //   770: dup
-    //   771: invokespecial 555	com/tencent/mobileqq/gamecenter/data/FeedsItemData:<init>	()V
-    //   774: astore 22
-    //   776: aload 22
-    //   778: aload 17
-    //   780: putfield 558	com/tencent/mobileqq/gamecenter/data/FeedsItemData:videoVid	Ljava/lang/String;
-    //   783: iload 7
-    //   785: iconst_1
-    //   786: if_icmpne +166 -> 952
-    //   789: aload 22
-    //   791: iconst_2
-    //   792: putfield 561	com/tencent/mobileqq/gamecenter/data/FeedsItemData:type	I
-    //   795: aload 22
-    //   797: iload 9
-    //   799: putfield 564	com/tencent/mobileqq/gamecenter/data/FeedsItemData:videoDuration	I
-    //   802: aload 22
-    //   804: aload 18
-    //   806: putfield 567	com/tencent/mobileqq/gamecenter/data/FeedsItemData:videoUrl	Ljava/lang/String;
-    //   809: aload_1
-    //   810: aload 22
-    //   812: iconst_1
-    //   813: invokevirtual 571	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setData	(Lcom/tencent/mobileqq/gamecenter/data/FeedsItemData;I)V
-    //   816: iload 15
-    //   818: ifeq +7 -> 825
-    //   821: aload_1
-    //   822: invokevirtual 573	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:autoPlay	()V
-    //   825: iload 14
-    //   827: ifeq +8 -> 835
-    //   830: aload_1
-    //   831: iconst_1
-    //   832: invokevirtual 576	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setMute	(Z)V
-    //   835: aload_1
-    //   836: new 578	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$5
-    //   839: dup
-    //   840: aload_0
-    //   841: invokespecial 579	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$5:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
-    //   844: invokevirtual 583	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setVideoStatusChangerListener	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController$VideoStatusChangeListener;)V
-    //   847: aload 19
-    //   849: ifnull +15 -> 864
-    //   852: aload_1
-    //   853: new 585	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$6
-    //   856: dup
-    //   857: aload_0
-    //   858: invokespecial 586	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$6:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
-    //   861: invokevirtual 590	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setOnProgressChangeListener	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController$OnProgressChangeListener;)V
-    //   864: aload 21
-    //   866: ifnull +15 -> 881
-    //   869: aload_1
-    //   870: new 592	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$7
-    //   873: dup
-    //   874: aload_0
-    //   875: invokespecial 593	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$7:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
-    //   878: invokevirtual 597	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setOnSeekListener	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController$OnSeekListener;)V
-    //   881: iload 5
-    //   883: istore 4
-    //   885: aload 20
-    //   887: ifnull -848 -> 39
-    //   890: aload_1
-    //   891: new 599	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$8
-    //   894: dup
-    //   895: aload_0
-    //   896: invokespecial 600	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$8:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
-    //   899: invokevirtual 604	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setOnDanmakuChangeListener	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController$OnDanmakuChangeListener;)V
-    //   902: iload 5
-    //   904: ireturn
-    //   905: astore_1
-    //   906: ldc 37
-    //   908: iconst_1
-    //   909: new 157	java/lang/StringBuilder
-    //   912: dup
-    //   913: invokespecial 158	java/lang/StringBuilder:<init>	()V
-    //   916: ldc_w 606
-    //   919: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   922: aload_1
-    //   923: invokevirtual 172	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   926: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   929: invokestatic 180	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   932: iconst_m1
-    //   933: ireturn
-    //   934: iconst_0
-    //   935: istore 14
-    //   937: goto -795 -> 142
-    //   940: iconst_0
-    //   941: istore 15
-    //   943: goto -787 -> 156
-    //   946: iconst_0
-    //   947: istore 16
-    //   949: goto -269 -> 680
-    //   952: aload 22
-    //   954: iconst_1
-    //   955: putfield 561	com/tencent/mobileqq/gamecenter/data/FeedsItemData:type	I
-    //   958: goto -163 -> 795
-    //   961: astore_1
-    //   962: goto -650 -> 312
-    //   965: goto -621 -> 344
+    //   761: aload 21
+    //   763: putfield 530	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:k	Ljava/lang/String;
+    //   766: aload 29
+    //   768: aload 20
+    //   770: putfield 533	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$VideoViewInfo:l	Ljava/lang/String;
+    //   773: aload_0
+    //   774: getfield 86	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript:mVideoViewMap	Ljava/util/Map;
+    //   777: iload 9
+    //   779: invokestatic 248	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   782: aload 29
+    //   784: invokeinterface 536 3 0
+    //   789: pop
+    //   790: new 538	com/tencent/mobileqq/gamecenter/data/FeedsItemData
+    //   793: dup
+    //   794: invokespecial 539	com/tencent/mobileqq/gamecenter/data/FeedsItemData:<init>	()V
+    //   797: astore 22
+    //   799: aload 22
+    //   801: aload 17
+    //   803: putfield 542	com/tencent/mobileqq/gamecenter/data/FeedsItemData:videoVid	Ljava/lang/String;
+    //   806: iload 6
+    //   808: iconst_1
+    //   809: if_icmpne +12 -> 821
+    //   812: aload 22
+    //   814: iconst_2
+    //   815: putfield 545	com/tencent/mobileqq/gamecenter/data/FeedsItemData:type	I
+    //   818: goto +9 -> 827
+    //   821: aload 22
+    //   823: iconst_1
+    //   824: putfield 545	com/tencent/mobileqq/gamecenter/data/FeedsItemData:type	I
+    //   827: aload 22
+    //   829: iload 8
+    //   831: putfield 548	com/tencent/mobileqq/gamecenter/data/FeedsItemData:videoDuration	I
+    //   834: aload 22
+    //   836: aload 18
+    //   838: putfield 551	com/tencent/mobileqq/gamecenter/data/FeedsItemData:videoUrl	Ljava/lang/String;
+    //   841: aload_1
+    //   842: aload 22
+    //   844: iconst_1
+    //   845: invokevirtual 555	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setData	(Lcom/tencent/mobileqq/gamecenter/data/FeedsItemData;I)V
+    //   848: iload 15
+    //   850: ifeq +7 -> 857
+    //   853: aload_1
+    //   854: invokevirtual 557	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:autoPlay	()V
+    //   857: iload 14
+    //   859: ifeq +8 -> 867
+    //   862: aload_1
+    //   863: iconst_1
+    //   864: invokevirtual 560	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setMute	(Z)V
+    //   867: aload_1
+    //   868: new 562	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$5
+    //   871: dup
+    //   872: aload_0
+    //   873: invokespecial 563	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$5:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
+    //   876: invokevirtual 567	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setVideoStatusChangerListener	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController$VideoStatusChangeListener;)V
+    //   879: aload 19
+    //   881: ifnull +15 -> 896
+    //   884: aload_1
+    //   885: new 569	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$6
+    //   888: dup
+    //   889: aload_0
+    //   890: invokespecial 570	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$6:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
+    //   893: invokevirtual 574	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setOnProgressChangeListener	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController$OnProgressChangeListener;)V
+    //   896: aload 21
+    //   898: ifnull +15 -> 913
+    //   901: aload_1
+    //   902: new 576	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$7
+    //   905: dup
+    //   906: aload_0
+    //   907: invokespecial 577	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$7:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
+    //   910: invokevirtual 581	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setOnSeekListener	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController$OnSeekListener;)V
+    //   913: aload 20
+    //   915: ifnull +15 -> 930
+    //   918: aload_1
+    //   919: new 583	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$8
+    //   922: dup
+    //   923: aload_0
+    //   924: invokespecial 584	com/tencent/gamecenter/common/util/GameCenterAPIJavaScript$8:<init>	(Lcom/tencent/gamecenter/common/util/GameCenterAPIJavaScript;)V
+    //   927: invokevirtual 588	com/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController:setOnDanmakuChangeListener	(Lcom/tencent/mobileqq/gamecenter/media/GameCenterVideoViewController$OnDanmakuChangeListener;)V
+    //   930: iload 9
+    //   932: ireturn
+    //   933: astore_1
+    //   934: new 141	java/lang/StringBuilder
+    //   937: dup
+    //   938: invokespecial 142	java/lang/StringBuilder:<init>	()V
+    //   941: astore 17
+    //   943: aload 17
+    //   945: ldc_w 590
+    //   948: invokevirtual 148	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   951: pop
+    //   952: aload 17
+    //   954: aload_1
+    //   955: invokevirtual 156	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   958: pop
+    //   959: ldc 53
+    //   961: iconst_1
+    //   962: aload 17
+    //   964: invokevirtual 160	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   967: invokestatic 164	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   970: iconst_m1
+    //   971: ireturn
+    //   972: astore_1
+    //   973: goto -654 -> 319
+    //   976: iconst_0
+    //   977: istore 14
+    //   979: goto -833 -> 146
+    //   982: iconst_0
+    //   983: istore 15
+    //   985: goto -822 -> 163
+    //   988: fconst_0
+    //   989: fstore_2
+    //   990: goto -648 -> 342
+    //   993: iconst_0
+    //   994: istore 16
+    //   996: goto -293 -> 703
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	968	0	this	GameCenterAPIJavaScript
-    //   0	968	1	paramJSONObject	JSONObject
-    //   321	100	2	f1	float
-    //   319	13	3	f2	float
-    //   37	847	4	i	int
-    //   81	822	5	j	int
-    //   72	560	6	k	int
-    //   126	661	7	m	int
-    //   172	503	8	n	int
-    //   181	617	9	i1	int
-    //   90	304	10	i2	int
-    //   190	307	11	i3	int
-    //   275	136	12	i4	int
-    //   285	82	13	i5	int
-    //   140	796	14	bool1	boolean
-    //   154	788	15	bool2	boolean
-    //   295	653	16	bool3	boolean
-    //   99	680	17	str1	String
-    //   108	697	18	str2	String
-    //   245	603	19	str3	String
-    //   255	631	20	str4	String
-    //   265	600	21	str5	String
-    //   117	836	22	localObject1	Object
-    //   163	527	23	str6	String
-    //   199	498	24	str7	String
-    //   208	503	25	str8	String
-    //   217	487	26	str9	String
-    //   226	492	27	str10	String
-    //   235	490	28	str11	String
-    //   402	358	29	localObject2	Object
-    //   515	87	30	localFrameLayout	FrameLayout
+    //   0	999	0	this	GameCenterAPIJavaScript
+    //   0	999	1	paramJSONObject	JSONObject
+    //   326	664	2	f1	float
+    //   343	91	3	f2	float
+    //   64	595	4	i	int
+    //   73	579	5	j	int
+    //   127	683	6	k	int
+    //   179	516	7	m	int
+    //   188	642	8	n	int
+    //   82	849	9	i1	int
+    //   91	313	10	i2	int
+    //   197	310	11	i3	int
+    //   282	139	12	i4	int
+    //   292	85	13	i5	int
+    //   141	837	14	bool1	boolean
+    //   158	826	15	bool2	boolean
+    //   302	693	16	bool3	boolean
+    //   100	863	17	localObject1	Object
+    //   109	728	18	str1	String
+    //   252	628	19	str2	String
+    //   262	652	20	str3	String
+    //   272	625	21	str4	String
+    //   118	725	22	localObject2	Object
+    //   170	543	23	str5	String
+    //   206	514	24	str6	String
+    //   215	519	25	str7	String
+    //   224	503	26	str8	String
+    //   233	508	27	str9	String
+    //   242	506	28	str10	String
+    //   525	258	29	localObject3	Object
+    //   412	186	30	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   56	139	905	java/lang/Exception
-    //   142	153	905	java/lang/Exception
-    //   156	307	905	java/lang/Exception
-    //   312	320	905	java/lang/Exception
-    //   328	334	905	java/lang/Exception
-    //   340	344	905	java/lang/Exception
-    //   344	451	905	java/lang/Exception
-    //   456	481	905	java/lang/Exception
-    //   481	671	905	java/lang/Exception
-    //   680	783	905	java/lang/Exception
-    //   789	795	905	java/lang/Exception
-    //   795	816	905	java/lang/Exception
-    //   821	825	905	java/lang/Exception
-    //   830	835	905	java/lang/Exception
-    //   835	847	905	java/lang/Exception
-    //   852	864	905	java/lang/Exception
-    //   869	881	905	java/lang/Exception
-    //   890	902	905	java/lang/Exception
-    //   952	958	905	java/lang/Exception
-    //   307	312	961	java/lang/Exception
+    //   57	140	933	java/lang/Exception
+    //   146	157	933	java/lang/Exception
+    //   163	314	933	java/lang/Exception
+    //   319	327	933	java/lang/Exception
+    //   333	339	933	java/lang/Exception
+    //   350	354	933	java/lang/Exception
+    //   354	461	933	java/lang/Exception
+    //   466	491	933	java/lang/Exception
+    //   491	691	933	java/lang/Exception
+    //   703	806	933	java/lang/Exception
+    //   812	818	933	java/lang/Exception
+    //   821	827	933	java/lang/Exception
+    //   827	848	933	java/lang/Exception
+    //   853	857	933	java/lang/Exception
+    //   862	867	933	java/lang/Exception
+    //   867	879	933	java/lang/Exception
+    //   884	896	933	java/lang/Exception
+    //   901	913	933	java/lang/Exception
+    //   918	930	933	java/lang/Exception
+    //   314	319	972	java/lang/Exception
   }
   
   public int delFlag(JSONObject paramJSONObject)
@@ -790,8 +855,8 @@ public class GameCenterAPIJavaScript
       if (this.mVideoViewMap.get(Integer.valueOf(i)) != null)
       {
         paramJSONObject = (GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i));
-        View localView = (View)paramJSONObject.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j));
-        paramJSONObject.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(localView);
+        localObject = (View)paramJSONObject.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j));
+        paramJSONObject.jdField_a_of_type_AndroidWidgetFrameLayout.removeView((View)localObject);
         paramJSONObject.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(j));
         return 0;
       }
@@ -800,7 +865,10 @@ public class GameCenterAPIJavaScript
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "setText Err:" + paramJSONObject.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setText Err:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, ((StringBuilder)localObject).toString());
     }
     return -1;
   }
@@ -814,8 +882,8 @@ public class GameCenterAPIJavaScript
       if (this.mVideoViewMap.get(Integer.valueOf(i)) != null)
       {
         paramJSONObject = (GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i));
-        View localView = (View)paramJSONObject.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j));
-        paramJSONObject.jdField_a_of_type_AndroidWidgetFrameLayout.removeView(localView);
+        localObject = (View)paramJSONObject.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(j));
+        paramJSONObject.jdField_a_of_type_AndroidWidgetFrameLayout.removeView((View)localObject);
         paramJSONObject.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(j));
         return 0;
       }
@@ -824,7 +892,10 @@ public class GameCenterAPIJavaScript
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "setText Err:" + paramJSONObject.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setText Err:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, ((StringBuilder)localObject).toString());
     }
     return -1;
   }
@@ -847,22 +918,25 @@ public class GameCenterAPIJavaScript
       {
         QLog.e("GCApi", 1, "[destoryVideo] Err: not find videoPlayer");
       }
+      return 0;
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "[destoryVideo] Err:" + paramJSONObject.toString());
-      return -1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[destoryVideo] Err:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, localStringBuilder.toString());
     }
-    return 0;
+    return -1;
   }
   
   public String getOpenidBatch(String paramString)
   {
-    String str = "";
-    if ((this.mContext instanceof GameCenterActivity)) {
-      str = GameCenterActivity.a(this.mContext, "https://cgi.connect.qq.com/api/get_openids_by_appids", paramString, this.uin);
+    Context localContext = this.mContext;
+    if ((localContext instanceof GameCenterActivity)) {
+      return GameCenterActivity.httpRequest(localContext, "https://cgi.connect.qq.com/api/get_openids_by_appids", paramString, this.uin);
     }
-    return str;
+    return "";
   }
   
   public long getProgress(JSONObject paramJSONObject)
@@ -878,24 +952,39 @@ public class GameCenterAPIJavaScript
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "getProgress Err:" + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getProgress Err:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, localStringBuilder.toString());
     }
     return -1L;
   }
   
   public String getReportPublicData()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
     try
     {
-      localStringBuilder.append("" + MobileInfoUtil.c());
-      localStringBuilder.append("|");
-      localStringBuilder.append("" + MobileInfoUtil.a());
-      localStringBuilder.append("|");
-      localStringBuilder.append("" + GCCommon.a(this.mContext.getApplicationContext()));
-      localStringBuilder.append("|");
-      localStringBuilder.append("" + Build.MODEL);
-      return localStringBuilder.toString();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("");
+      localStringBuilder2.append(MobileInfoUtil.getImei());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("|");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("");
+      localStringBuilder2.append(MobileInfoUtil.getLocalMacAddress());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("|");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("");
+      localStringBuilder2.append(GCCommon.a(this.mContext.getApplicationContext()));
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("|");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("");
+      localStringBuilder2.append(Build.MODEL);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      return localStringBuilder1.toString();
     }
     catch (Exception localException) {}
     return "";
@@ -903,21 +992,37 @@ public class GameCenterAPIJavaScript
   
   public String getReportPublicHighData()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
     try
     {
-      localStringBuilder.append("" + GCCommon.b());
-      localStringBuilder.append("|");
-      localStringBuilder.append("" + APNUtil.a(this.mContext.getApplicationContext()));
-      localStringBuilder.append("|");
-      localStringBuilder.append("" + Build.VERSION.RELEASE);
-      localStringBuilder.append("|");
-      localStringBuilder.append("" + CommonDataAdapter.a().d());
-      localStringBuilder.append("|");
-      localStringBuilder.append(AppSetting.a());
-      localStringBuilder.append("|");
-      localStringBuilder.append(this.dm.widthPixels + " * " + this.dm.heightPixels);
-      return localStringBuilder.toString();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("");
+      localStringBuilder2.append(GCCommon.b());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("|");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("");
+      localStringBuilder2.append(APNUtil.a(this.mContext.getApplicationContext()));
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("|");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("");
+      localStringBuilder2.append(Build.VERSION.RELEASE);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("|");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("");
+      localStringBuilder2.append(CommonDataAdapter.a().d());
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder1.append("|");
+      localStringBuilder1.append(AppSetting.a());
+      localStringBuilder1.append("|");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(this.dm.widthPixels);
+      localStringBuilder2.append(" * ");
+      localStringBuilder2.append(this.dm.heightPixels);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      return localStringBuilder1.toString();
     }
     catch (Exception localException) {}
     return "";
@@ -936,7 +1041,10 @@ public class GameCenterAPIJavaScript
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "getProgress Err:" + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getProgress Err:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, localStringBuilder.toString());
     }
     return -1L;
   }
@@ -955,489 +1063,468 @@ public class GameCenterAPIJavaScript
     return "4.3.0";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("GCApi", 2, "[handleJsRequest] method:" + paramString3 + "params:" + paramVarArgs[0]);
+    if (bool)
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("[handleJsRequest] method:");
+      paramString1.append(paramString3);
+      paramString1.append("params:");
+      paramString1.append(paramVarArgs[0]);
+      QLog.d("GCApi", 2, paramString1.toString());
     }
     if ("GCApi".equals(paramString2))
     {
-      if (METHOD_GET_SESSION_INFO.equals(paramString3)) {}
-      for (;;)
-      {
+      paramString1 = null;
+      if (METHOD_GET_SESSION_INFO.equals(paramString3)) {
         try
         {
-          paramString1 = new JSONObject(paramVarArgs[0]);
-          paramString2 = paramString1.optString("callback");
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramString3 = paramString2.optString("callback");
           this.mReqBundle.clear();
-          this.mReqBundle.putInt("dataType", paramString1.optInt("dataType", 0));
-          super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_get_session_info", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-          paramString1 = null;
+          this.mReqBundle.putInt("dataType", paramString2.optInt("dataType", 0));
+          super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_get_session_info", paramString3, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         }
-        catch (JSONException paramString1)
+        catch (JSONException paramString2)
         {
-          paramString1.printStackTrace();
-          paramString1 = null;
-          continue;
+          paramString2.printStackTrace();
         }
-        if ((paramJsBridgeListener != null) && (paramString1 != null)) {
-          paramJsBridgeListener.a(paramString1);
-        }
-        return true;
-        if (METHOD_GET_REQUEST_INFO.equals(paramString3))
+      } else if (METHOD_GET_REQUEST_INFO.equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString1 = new JSONObject(paramVarArgs[0]);
-            paramString2 = paramString1.optString("callback");
-            this.mReqBundle.clear();
-            this.mReqBundle.putString("gameId", paramString1.optString("gameId", ""));
-            super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_get_request_info", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramString3 = paramString2.optString("callback");
+          this.mReqBundle.clear();
+          this.mReqBundle.putString("gameId", paramString2.optString("gameId", ""));
+          super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_get_request_info", paramString3, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         }
-        else if (METHOD_OPEN_AIO.equals(paramString3))
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString1 = new JSONObject(paramVarArgs[0]);
-            paramString2 = paramString1.optString("callback");
-            this.mReqBundle.clear();
-            this.mReqBundle.putString("sessionId", paramString1.optString("sessionId", ""));
-            super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_open_aio", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
         }
-        else if (METHOD_GET_UNREAD_TOTAL.equals(paramString3))
+      } else if (METHOD_OPEN_AIO.equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString1 = new JSONObject(paramVarArgs[0]).optString("callback");
-            this.mReqBundle.clear();
-            super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_get_unread_total", paramString1, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramString3 = paramString2.optString("callback");
+          this.mReqBundle.clear();
+          this.mReqBundle.putString("sessionId", paramString2.optString("sessionId", ""));
+          super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_open_aio", paramString3, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         }
-        else if (METHOD_TOGGLE_CHANGE.equals(paramString3))
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString1 = new JSONObject(paramVarArgs[0]);
-            paramString2 = paramString1.optString("callback");
-            this.mReqBundle.clear();
-            this.mReqBundle.putString("gameId", paramString1.optString("gameId", ""));
-            this.mReqBundle.putInt("switchType", paramString1.optInt("switchType", -1));
-            this.mReqBundle.putInt("value", paramString1.optInt("value", -1));
-            super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_toggle_changed", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
         }
-        else if ("createVideo".equals(paramString3))
+      } else if (METHOD_GET_UNREAD_TOTAL.equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            int j = createVideo(paramString2);
-            if (j > 0) {}
-            for (;;)
-            {
-              paramString2 = new JSONObject();
-              paramString2.put("ret", i);
-              paramString2.put("id", j);
-              super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-              paramString1 = null;
-              break;
-              i = j;
-            }
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2 = new JSONObject(paramVarArgs[0]).optString("callback");
+          this.mReqBundle.clear();
+          super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_get_unread_total", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         }
-        else if ("destoryVideo".equals(paramString3))
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = destoryVideo(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
         }
-        else if ("playVideo".equals(paramString3))
+      } else if (METHOD_TOGGLE_CHANGE.equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = playVideo(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramString3 = paramString2.optString("callback");
+          this.mReqBundle.clear();
+          this.mReqBundle.putString("gameId", paramString2.optString("gameId", ""));
+          this.mReqBundle.putInt("switchType", paramString2.optInt("switchType", -1));
+          this.mReqBundle.putInt("value", paramString2.optInt("value", -1));
+          super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_toggle_changed", paramString3, this.mOnRemoteResp.key, this.mReqBundle), false, true);
         }
-        else if ("pauseVideo".equals(paramString3))
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = pauseVideo(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
         }
-        else if ("stopVideo".equals(paramString3))
-        {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = stopVideo(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+      } else if (!"createVideo".equals(paramString3)) {}
+    }
+    for (;;)
+    {
+      int j;
+      try
+      {
+        paramString3 = new JSONObject(paramVarArgs[0]);
+        paramString2 = paramString3.optString("callback");
+        j = createVideo(paramString3);
+        if (j <= 0) {
+          break label3198;
         }
-        else if ("setPosition".equals(paramString3))
+        paramString3 = new JSONObject();
+        paramString3.put("ret", i);
+        paramString3.put("id", j);
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append(paramString2);
+        paramVarArgs.append("(");
+        paramVarArgs.append(paramString3.toString());
+        paramVarArgs.append(");");
+        super.callJs(paramVarArgs.toString());
+      }
+      catch (JSONException paramString2)
+      {
+        paramString2.printStackTrace();
+      }
+      if ("destoryVideo".equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = setPosition(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = destoryVideo(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if ("setFlag".equals(paramString3))
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = setFlag(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", 0);
-            paramString2.put("pid", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
         }
-        else if ("delFlag".equals(paramString3))
+      } else if ("playVideo".equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = delFlag(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = playVideo(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if ("setText".equals(paramString3))
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = setText(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", 0);
-            paramString2.put("pid", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
         }
-        else if ("delText".equals(paramString3))
+      } else if ("pauseVideo".equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = delText(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = pauseVideo(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if ("setFullScreen".equals(paramString3))
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = setFullScreen(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
         }
-        else if ("setMute".equals(paramString3))
+      } else if ("stopVideo".equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = setMute(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = stopVideo(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if ("getProgress".equals(paramString3))
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            long l1 = getProgress(paramString2);
-            long l2 = getTotalDuration(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", 0);
-            paramString2.put("current", l1);
-            paramString2.put("total", l2);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
         }
-        else if ("setDanmuViewProperty".equals(paramString3))
+      } else if ("setPosition".equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = setDanmuViewProperty(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = setPosition(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if ("setDanmuData".equals(paramString3))
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = setDanmuData(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
         }
-        else if ("clearDanmu".equals(paramString3))
+      } else if ("setFlag".equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString2 = new JSONObject(paramVarArgs[0]);
-            paramString1 = paramString2.optString("callback");
-            i = clearDanmu(paramString2);
-            paramString2 = new JSONObject();
-            paramString2.put("ret", i);
-            super.callJs(paramString1 + "(" + paramString2.toString() + ");");
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = setFlag(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", 0);
+          paramString3.put("pid", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if (("getOpenidBatch".equals(paramString3)) && (paramVarArgs.length == 1))
+        catch (JSONException paramString2)
         {
-          paramString1 = getOpenidBatch(paramVarArgs[0]);
+          paramString2.printStackTrace();
         }
-        else if (("showWarningToast".equals(paramString3)) && (paramVarArgs.length == 1))
+      } else if ("delFlag".equals(paramString3)) {
+        try
         {
-          showWarningToast(paramVarArgs[0]);
-          paramString1 = null;
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = delFlag(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if ("getUin".equals(paramString3))
+        catch (JSONException paramString2)
         {
-          paramString1 = this.uin;
+          paramString2.printStackTrace();
         }
-        else if (("setTitleLoading".equals(paramString3)) && (paramVarArgs.length == 1))
+      } else if ("setText".equals(paramString3)) {
+        try
         {
-          setTitleLoading(paramVarArgs[0]);
-          paramString1 = null;
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = setText(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", 0);
+          paramString3.put("pid", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if ("getReportPublicData".equals(paramString3))
+        catch (JSONException paramString2)
         {
-          paramString1 = getReportPublicData();
+          paramString2.printStackTrace();
         }
-        else if ("getReportPublicHighData".equals(paramString3))
+      } else if ("delText".equals(paramString3)) {
+        try
         {
-          paramString1 = getReportPublicHighData();
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = delText(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if (("reportAction".equals(paramString3)) && (paramVarArgs.length == 3))
+        catch (JSONException paramString2)
         {
-          reportAction(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
-          paramString1 = null;
+          paramString2.printStackTrace();
         }
-        else if ("getVersionName".equals(paramString3))
+      } else if ("setFullScreen".equals(paramString3)) {
+        try
         {
-          paramString1 = getVersionName();
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = setFullScreen(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else if (("startToAuthorized".equals(paramString3)) && (paramVarArgs.length == 1))
+        catch (JSONException paramString2)
         {
-          startToAuthorized(paramVarArgs[0]);
-          paramString1 = null;
+          paramString2.printStackTrace();
         }
-        else if (METHOD_OPEN_QQPLAYER_AIO.equals(paramString3))
+      } else if ("setMute".equals(paramString3)) {
+        try
         {
-          try
-          {
-            paramString1 = new JSONObject(paramVarArgs[0]);
-            paramString2 = paramString1.optString("callback");
-            this.mReqBundle.clear();
-            this.mReqBundle.putString("fromRoleId", paramString1.optString("fromRoleId", ""));
-            this.mReqBundle.putString("fromOpenId", paramString1.optString("fromOpenId", ""));
-            this.mReqBundle.putString("toRoleId", paramString1.optString("toRoleId", ""));
-            this.mReqBundle.putString("toOpenId", paramString1.optString("toOpenId", ""));
-            this.mReqBundle.putString("fromTinyId", paramString1.optString("fromTinyId", ""));
-            this.mReqBundle.putString("toTinyId", paramString1.optString("toTinyId", ""));
-            this.mReqBundle.putLong("gameAppId", paramString1.optLong("gameAppId", 0L));
-            this.mReqBundle.putInt("windowFlag", paramString1.optInt("windowFlag", 0));
-            this.mReqBundle.putString("topGrayText", paramString1.optString("topGrayText", ""));
-            this.mReqBundle.putString("sig", paramString1.optString("sig", ""));
-            this.mReqBundle.putInt("fromPage", paramString1.optInt("fromPage"));
-            super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_open_qqplayer_aio", paramString2, this.mOnRemoteResp.key, this.mReqBundle), false, true);
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            paramString1.printStackTrace();
-            paramString1 = null;
-          }
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = setMute(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
         }
-        else
+        catch (JSONException paramString2)
         {
-          try
-          {
-            paramString1 = new JSONObject(paramVarArgs[0]);
-            paramString2 = paramString1.optString("callback");
-            handleScreenShotMethod(paramString3, paramString1.optJSONObject("data"), paramString2);
-            paramString1 = null;
-          }
-          catch (JSONException paramString1)
-          {
-            QLog.e("GCApi", 1, "handleScreenShotMethod e=" + paramString1.toString());
-            paramString1 = null;
-          }
+          paramString2.printStackTrace();
+        }
+      } else if ("getProgress".equals(paramString3)) {
+        try
+        {
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          long l1 = getProgress(paramString3);
+          long l2 = getTotalDuration(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", 0);
+          paramString3.put("current", l1);
+          paramString3.put("total", l2);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
+        }
+        catch (JSONException paramString2)
+        {
+          paramString2.printStackTrace();
+        }
+      } else if ("setDanmuViewProperty".equals(paramString3)) {
+        try
+        {
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = setDanmuViewProperty(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
+        }
+        catch (JSONException paramString2)
+        {
+          paramString2.printStackTrace();
+        }
+      } else if ("setDanmuData".equals(paramString3)) {
+        try
+        {
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = setDanmuData(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
+        }
+        catch (JSONException paramString2)
+        {
+          paramString2.printStackTrace();
+        }
+      } else if ("clearDanmu".equals(paramString3)) {
+        try
+        {
+          paramString3 = new JSONObject(paramVarArgs[0]);
+          paramString2 = paramString3.optString("callback");
+          i = clearDanmu(paramString3);
+          paramString3 = new JSONObject();
+          paramString3.put("ret", i);
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append(paramString2);
+          paramVarArgs.append("(");
+          paramVarArgs.append(paramString3.toString());
+          paramVarArgs.append(");");
+          super.callJs(paramVarArgs.toString());
+        }
+        catch (JSONException paramString2)
+        {
+          paramString2.printStackTrace();
+        }
+      } else if (("getOpenidBatch".equals(paramString3)) && (paramVarArgs.length == 1)) {
+        paramString1 = getOpenidBatch(paramVarArgs[0]);
+      } else if (("showWarningToast".equals(paramString3)) && (paramVarArgs.length == 1)) {
+        showWarningToast(paramVarArgs[0]);
+      } else if ("getUin".equals(paramString3)) {
+        paramString1 = this.uin;
+      } else if (("setTitleLoading".equals(paramString3)) && (paramVarArgs.length == 1)) {
+        setTitleLoading(paramVarArgs[0]);
+      } else if ("getReportPublicData".equals(paramString3)) {
+        paramString1 = getReportPublicData();
+      } else if ("getReportPublicHighData".equals(paramString3)) {
+        paramString1 = getReportPublicHighData();
+      } else if (("reportAction".equals(paramString3)) && (paramVarArgs.length == 3)) {
+        reportAction(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
+      } else if ("getVersionName".equals(paramString3)) {
+        paramString1 = getVersionName();
+      } else if (("startToAuthorized".equals(paramString3)) && (paramVarArgs.length == 1)) {
+        startToAuthorized(paramVarArgs[0]);
+      } else if (METHOD_OPEN_QQPLAYER_AIO.equals(paramString3)) {
+        try
+        {
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramString3 = paramString2.optString("callback");
+          this.mReqBundle.clear();
+          this.mReqBundle.putString("fromRoleId", paramString2.optString("fromRoleId", ""));
+          this.mReqBundle.putString("fromOpenId", paramString2.optString("fromOpenId", ""));
+          this.mReqBundle.putString("toRoleId", paramString2.optString("toRoleId", ""));
+          this.mReqBundle.putString("toOpenId", paramString2.optString("toOpenId", ""));
+          this.mReqBundle.putString("fromTinyId", paramString2.optString("fromTinyId", ""));
+          this.mReqBundle.putString("toTinyId", paramString2.optString("toTinyId", ""));
+          this.mReqBundle.putLong("gameAppId", paramString2.optLong("gameAppId", 0L));
+          this.mReqBundle.putInt("windowFlag", paramString2.optInt("windowFlag", 0));
+          this.mReqBundle.putString("topGrayText", paramString2.optString("topGrayText", ""));
+          this.mReqBundle.putString("sig", paramString2.optString("sig", ""));
+          this.mReqBundle.putInt("fromPage", paramString2.optInt("fromPage"));
+          super.sendRemoteReq(DataFactory.a("ipc_cmd_gamecenter_open_qqplayer_aio", paramString3, this.mOnRemoteResp.key, this.mReqBundle), false, true);
+        }
+        catch (JSONException paramString2)
+        {
+          paramString2.printStackTrace();
+        }
+      } else {
+        try
+        {
+          paramString2 = new JSONObject(paramVarArgs[0]);
+          paramVarArgs = paramString2.optString("callback");
+          handleScreenShotMethod(paramString3, paramString2.optJSONObject("data"), paramVarArgs);
+        }
+        catch (JSONException paramString2)
+        {
+          paramString3 = new StringBuilder();
+          paramString3.append("handleScreenShotMethod e=");
+          paramString3.append(paramString2.toString());
+          QLog.e("GCApi", 1, paramString3.toString());
         }
       }
+      if ((paramJsBridgeListener != null) && (paramString1 != null)) {
+        paramJsBridgeListener.a(paramString1);
+      }
+      return true;
+      return false;
+      label3198:
+      i = j;
     }
-    return false;
   }
   
   public boolean handleScreenShotMethod(String paramString1, JSONObject paramJSONObject, String paramString2)
@@ -1476,25 +1563,26 @@ public class GameCenterAPIJavaScript
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     this.mReqBundle = new Bundle();
     this.dm = new DisplayMetrics();
     this.mContext = this.mRuntime.a();
-    if (this.mContext != null) {
-      ((Activity)this.mContext).getWindowManager().getDefaultDisplay().getMetrics(this.dm);
+    Object localObject = this.mContext;
+    if (localObject != null) {
+      ((Activity)localObject).getWindowManager().getDefaultDisplay().getMetrics(this.dm);
     }
     if (this.mRuntime.a() != null) {
       this.uin = this.mRuntime.a().getCurrentAccountUin();
     }
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("action_qgame_messgae_change");
-    localIntentFilter.addAction("action_qgame_unread_change");
-    BaseApplicationImpl.getApplication().registerReceiver(this.mMsgReceiver, localIntentFilter);
+    localObject = new IntentFilter();
+    ((IntentFilter)localObject).addAction("action_qgame_messgae_change");
+    ((IntentFilter)localObject).addAction("action_qgame_unread_change");
+    BaseApplicationImpl.getApplication().registerReceiver(this.mMsgReceiver, (IntentFilter)localObject);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     if (this.mMsgReceiver != null) {
@@ -1503,116 +1591,168 @@ public class GameCenterAPIJavaScript
     GameCenterVideoManager.a().a();
   }
   
-  public void onResponse(Bundle paramBundle)
+  protected void onResponse(Bundle paramBundle)
   {
     super.onResponse(paramBundle);
-    Object localObject;
-    String str;
     if (paramBundle != null)
     {
-      localObject = paramBundle.getString("cmd");
-      if (QLog.isColorLevel()) {
-        QLog.d("GCApi", 1, "[onResponse] cmd:" + (String)localObject);
+      Object localObject2 = paramBundle.getString("cmd");
+      Object localObject1;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[onResponse] cmd:");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        QLog.d("GCApi", 1, ((StringBuilder)localObject1).toString());
       }
-      i = paramBundle.getInt("respkey", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("GCApi", 1, "[onResponse] respkey:" + i + "，key:" + this.mOnRemoteResp.key);
+      int i = paramBundle.getInt("respkey", 0);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[onResponse] respkey:");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append("，key:");
+        ((StringBuilder)localObject1).append(this.mOnRemoteResp.key);
+        QLog.d("GCApi", 1, ((StringBuilder)localObject1).toString());
       }
       if (i == this.mOnRemoteResp.key)
       {
-        str = paramBundle.getString("callbackid");
+        localObject1 = paramBundle.getString("callbackid");
         paramBundle = paramBundle.getBundle("response");
-        if ((localObject != null) && (paramBundle != null))
+        if ((localObject2 != null) && (paramBundle != null))
         {
-          Activity localActivity = this.mRuntime.a();
-          if ((localActivity != null) && (!this.isDestroy) && (!localActivity.isFinishing())) {
-            break label182;
-          }
-          callbackError(str, "-1000");
-        }
-      }
-    }
-    label182:
-    do
-    {
-      do
-      {
-        do
-        {
-          for (;;)
-          {
-            return;
+          Object localObject3 = this.mRuntime.a();
+          if ((localObject3 != null) && (!this.isDestroy) && (!((Activity)localObject3).isFinishing())) {
             try
             {
-              if ("ipc_cmd_gamecenter_get_session_info".equals(localObject))
+              boolean bool = "ipc_cmd_gamecenter_get_session_info".equals(localObject2);
+              if (bool)
               {
                 i = paramBundle.getInt("result");
                 paramBundle = paramBundle.getString("data");
-                localObject = new JSONObject(paramBundle);
-                ((JSONObject)localObject).put("ret", i);
-                super.callJs(str + "&&" + str + "(" + ((JSONObject)localObject).toString() + ");");
+                localObject2 = new JSONObject(paramBundle);
+                ((JSONObject)localObject2).put("ret", i);
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append((String)localObject1);
+                ((StringBuilder)localObject3).append("&&");
+                ((StringBuilder)localObject3).append((String)localObject1);
+                ((StringBuilder)localObject3).append("(");
+                ((StringBuilder)localObject3).append(((JSONObject)localObject2).toString());
+                ((StringBuilder)localObject3).append(");");
+                super.callJs(((StringBuilder)localObject3).toString());
                 if (!QLog.isColorLevel()) {
-                  continue;
+                  return;
                 }
-                QLog.d("GCApi", 2, "ipc_cmd_gamecenter_get_session_info onResponse dataStr is:" + paramBundle);
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("ipc_cmd_gamecenter_get_session_info onResponse dataStr is:");
+                ((StringBuilder)localObject2).append(paramBundle);
+                QLog.d("GCApi", 2, ((StringBuilder)localObject2).toString());
+                return;
               }
+              bool = "ipc_cmd_gamecenter_get_request_info".equals(localObject2);
+              if (bool)
+              {
+                i = paramBundle.getInt("result");
+                paramBundle = paramBundle.getString("data");
+                localObject2 = new JSONObject(paramBundle);
+                ((JSONObject)localObject2).put("ret", i);
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append((String)localObject1);
+                ((StringBuilder)localObject3).append("&&");
+                ((StringBuilder)localObject3).append((String)localObject1);
+                ((StringBuilder)localObject3).append("(");
+                ((StringBuilder)localObject3).append(((JSONObject)localObject2).toString());
+                ((StringBuilder)localObject3).append(");");
+                super.callJs(((StringBuilder)localObject3).toString());
+                if (!QLog.isColorLevel()) {
+                  return;
+                }
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("ipc_cmd_gamecenter_get_request_info onResponse dataStr is:");
+                ((StringBuilder)localObject2).append(paramBundle);
+                QLog.d("GCApi", 2, ((StringBuilder)localObject2).toString());
+                return;
+              }
+              if ("ipc_cmd_gamecenter_open_aio".equals(localObject2))
+              {
+                i = paramBundle.getInt("result", -1);
+                paramBundle = new JSONObject();
+                paramBundle.put("ret", i);
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append((String)localObject1);
+                ((StringBuilder)localObject2).append("&&");
+                ((StringBuilder)localObject2).append((String)localObject1);
+                ((StringBuilder)localObject2).append("(");
+                ((StringBuilder)localObject2).append(paramBundle.toString());
+                ((StringBuilder)localObject2).append(");");
+                super.callJs(((StringBuilder)localObject2).toString());
+                return;
+              }
+              if ("ipc_cmd_gamecenter_get_unread_total".equals(localObject2))
+              {
+                i = paramBundle.getInt("result");
+                localObject2 = new JSONObject();
+                ((JSONObject)localObject2).put("ret", i);
+                ((JSONObject)localObject2).put("newMsgCount", paramBundle.getInt("cnt"));
+                paramBundle = new StringBuilder();
+                paramBundle.append((String)localObject1);
+                paramBundle.append("&&");
+                paramBundle.append((String)localObject1);
+                paramBundle.append("(");
+                paramBundle.append(((JSONObject)localObject2).toString());
+                paramBundle.append(");");
+                super.callJs(paramBundle.toString());
+                if (!QLog.isColorLevel()) {
+                  return;
+                }
+                paramBundle = new StringBuilder();
+                paramBundle.append("ipc_cmd_gamecenter_get_request_info onResponse dataStr is:");
+                paramBundle.append(((JSONObject)localObject2).toString());
+                QLog.d("GCApi", 2, paramBundle.toString());
+                return;
+              }
+              if ("ipc_cmd_gamecenter_toggle_changed".equals(localObject2))
+              {
+                callbackOk((String)localObject1);
+                return;
+              }
+              if (!"ipc_cmd_gamecenter_open_qqplayer_aio".equals(localObject2)) {
+                return;
+              }
+              i = paramBundle.getInt("result", -1);
+              paramBundle = new JSONObject();
+              paramBundle.put("ret", i);
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append((String)localObject1);
+              ((StringBuilder)localObject2).append("&&");
+              ((StringBuilder)localObject2).append((String)localObject1);
+              ((StringBuilder)localObject2).append("(");
+              ((StringBuilder)localObject2).append(paramBundle.toString());
+              ((StringBuilder)localObject2).append(");");
+              super.callJs(((StringBuilder)localObject2).toString());
+              return;
             }
             catch (Throwable paramBundle)
             {
               if (QLog.isColorLevel()) {
                 QLog.e("GCApi", 2, paramBundle.getMessage());
               }
-              callbackError(str, "-2000");
+              callbackError((String)localObject1, "-2000");
               return;
             }
+          } else {
+            callbackError((String)localObject1, "-1000");
           }
-          if (!"ipc_cmd_gamecenter_get_request_info".equals(localObject)) {
-            break;
-          }
-          i = paramBundle.getInt("result");
-          paramBundle = paramBundle.getString("data");
-          localObject = new JSONObject(paramBundle);
-          ((JSONObject)localObject).put("ret", i);
-          super.callJs(str + "&&" + str + "(" + ((JSONObject)localObject).toString() + ");");
-        } while (!QLog.isColorLevel());
-        QLog.d("GCApi", 2, "ipc_cmd_gamecenter_get_request_info onResponse dataStr is:" + paramBundle);
-        return;
-        if ("ipc_cmd_gamecenter_open_aio".equals(localObject))
-        {
-          i = paramBundle.getInt("result", -1);
-          paramBundle = new JSONObject();
-          paramBundle.put("ret", i);
-          super.callJs(str + "&&" + str + "(" + paramBundle.toString() + ");");
-          return;
         }
-        if (!"ipc_cmd_gamecenter_get_unread_total".equals(localObject)) {
-          break;
-        }
-        i = paramBundle.getInt("result");
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("ret", i);
-        ((JSONObject)localObject).put("newMsgCount", paramBundle.getInt("cnt"));
-        super.callJs(str + "&&" + str + "(" + ((JSONObject)localObject).toString() + ");");
-      } while (!QLog.isColorLevel());
-      QLog.d("GCApi", 2, "ipc_cmd_gamecenter_get_request_info onResponse dataStr is:" + ((JSONObject)localObject).toString());
-      return;
-      if ("ipc_cmd_gamecenter_toggle_changed".equals(localObject))
-      {
-        callbackOk(str);
-        return;
       }
-    } while (!"ipc_cmd_gamecenter_open_qqplayer_aio".equals(localObject));
-    int i = paramBundle.getInt("result", -1);
-    paramBundle = new JSONObject();
-    paramBundle.put("ret", i);
-    super.callJs(str + "&&" + str + "(" + paramBundle.toString() + ");");
+    }
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams(-2, -2);
-    RefreshView localRefreshView = (RefreshView)this.mRuntime.a().findViewById(2131381873);
+    RefreshView localRefreshView = (RefreshView)this.mRuntime.a().findViewById(2131381085);
     this.mVideoContainer = new GameCenterAPIJavaScript.2(this, this.mRuntime.a(), paramCustomWebView);
     localRefreshView.addView(this.mVideoContainer, localLayoutParams);
     paramCustomWebView = (TouchWebView)this.mRuntime.a();
@@ -1620,7 +1760,7 @@ public class GameCenterAPIJavaScript
     this.mScrollChangedListener = new GameCenterAPIJavaScript.3(this);
     paramCustomWebView = this.mRuntime.a();
     if ((paramCustomWebView instanceof GameCenterActivity)) {
-      ((GameCenterActivity)paramCustomWebView).a(this.mScrollChangedListener);
+      ((GameCenterActivity)paramCustomWebView).setOnScrollChangedListener(this.mScrollChangedListener);
     }
   }
   
@@ -1638,18 +1778,24 @@ public class GameCenterAPIJavaScript
       {
         QLog.e("GCApi", 1, "[pauseVideo] Err: not find videoPlayer");
       }
+      return 0;
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "pauseVideo Err:" + paramJSONObject.toString());
-      return -1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pauseVideo Err:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, localStringBuilder.toString());
     }
-    return 0;
+    return -1;
   }
   
   public int playVideo(JSONObject paramJSONObject)
   {
-    QLog.d("GCApi", 4, "playVideo JSONObject: " + paramJSONObject.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playVideo JSONObject: ");
+    localStringBuilder.append(paramJSONObject.toString());
+    QLog.d("GCApi", 4, localStringBuilder.toString());
     try
     {
       int i = paramJSONObject.optInt("id");
@@ -1658,13 +1804,16 @@ public class GameCenterAPIJavaScript
       } else {
         QLog.e("GCApi", 1, "[playVideo] Err: not find videoPlayer");
       }
+      return 0;
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "playVideo Err:" + paramJSONObject.toString());
-      return -1;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playVideo Err:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, localStringBuilder.toString());
     }
-    return 0;
+    return -1;
   }
   
   public void reportAction(String paramString1, String paramString2, String paramString3)
@@ -1682,7 +1831,7 @@ public class GameCenterAPIJavaScript
         i = paramJSONObject.optInt("id");
         if (this.mVideoViewMap.get(Integer.valueOf(i)) != null)
         {
-          GameCenterVideoViewController localGameCenterVideoViewController = ((GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i))).jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
+          localObject = ((GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i))).jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
           paramJSONObject = paramJSONObject.optJSONArray("data");
           if (paramJSONObject == null) {
             break;
@@ -1698,8 +1847,8 @@ public class GameCenterAPIJavaScript
           }
           else
           {
-            localGameCenterVideoViewController.getDanmakuLayout().a(arrayOfItem);
-            break;
+            ((GameCenterVideoViewController)localObject).getDanmakuLayout().a(arrayOfItem);
+            return 0;
           }
         }
         else
@@ -1710,7 +1859,10 @@ public class GameCenterAPIJavaScript
       }
       catch (Exception paramJSONObject)
       {
-        QLog.d("GCApi", 1, "setDanmuData Err:" + paramJSONObject.toString());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setDanmuData Err:");
+        ((StringBuilder)localObject).append(paramJSONObject.toString());
+        QLog.d("GCApi", 1, ((StringBuilder)localObject).toString());
         return -1;
       }
       i += 1;
@@ -1725,21 +1877,23 @@ public class GameCenterAPIJavaScript
       int i = paramJSONObject.optInt("id");
       if (this.mVideoViewMap.get(Integer.valueOf(i)) != null)
       {
-        GameCenterVideoViewController localGameCenterVideoViewController = ((GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i))).jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
+        localObject = ((GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i))).jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
         i = paramJSONObject.optInt("topDist");
         int j = paramJSONObject.optInt("bottomDist");
         if (!paramJSONObject.has("topDist")) {
-          i = localGameCenterVideoViewController.getDanmakuLayout().getPaddingTop();
+          i = ((GameCenterVideoViewController)localObject).getDanmakuLayout().getPaddingTop();
         }
         if (!paramJSONObject.has("bottomDist")) {
-          j = localGameCenterVideoViewController.getDanmakuLayout().getPaddingBottom();
+          j = ((GameCenterVideoViewController)localObject).getDanmakuLayout().getPaddingBottom();
         }
-        localGameCenterVideoViewController.getDanmakuLayout().setPadding(0, i, 0, j);
+        ((GameCenterVideoViewController)localObject).getDanmakuLayout().setPadding(0, i, 0, j);
         if (paramJSONObject.has("lineSpacing")) {
-          localGameCenterVideoViewController.getDanmakuLayout().setLineSpacing(paramJSONObject.optInt("lineSpacing"));
+          ((GameCenterVideoViewController)localObject).getDanmakuLayout().setLineSpacing(paramJSONObject.optInt("lineSpacing"));
         }
-        if (paramJSONObject.has("fontSize")) {
-          localGameCenterVideoViewController.getDanmakuLayout().setTextSize(paramJSONObject.optInt("fontSize"));
+        if (paramJSONObject.has("fontSize"))
+        {
+          ((GameCenterVideoViewController)localObject).getDanmakuLayout().setTextSize(paramJSONObject.optInt("fontSize"));
+          return 0;
         }
       }
       else
@@ -1750,7 +1904,10 @@ public class GameCenterAPIJavaScript
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "setDanmuViewProperty Err:" + paramJSONObject.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setDanmuViewProperty Err:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, ((StringBuilder)localObject).toString());
       return -1;
     }
     return 0;
@@ -1768,13 +1925,13 @@ public class GameCenterAPIJavaScript
       paramJSONObject = paramJSONObject.optString("pic");
       if (this.mVideoViewMap.get(Integer.valueOf(i)) != null)
       {
-        FrameLayout localFrameLayout = ((GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i))).jdField_a_of_type_AndroidWidgetFrameLayout;
+        localObject = ((GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i))).jdField_a_of_type_AndroidWidgetFrameLayout;
         URLImageView localURLImageView = new URLImageView(this.mContext);
         float f = this.mRuntime.a().getResources().getDisplayMetrics().density;
         FrameLayout.LayoutParams localLayoutParams = new FrameLayout.LayoutParams((int)(m * f), (int)(n * f));
         localLayoutParams.topMargin = ((int)(j * f));
         localLayoutParams.leftMargin = ((int)(k * f));
-        localFrameLayout.addView(localURLImageView, localLayoutParams);
+        ((FrameLayout)localObject).addView(localURLImageView, localLayoutParams);
         j = localURLImageView.hashCode();
         ((GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i))).jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(j), localURLImageView);
         localURLImageView.setImageURL(paramJSONObject);
@@ -1785,7 +1942,10 @@ public class GameCenterAPIJavaScript
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "setFlag Err:" + paramJSONObject.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setFlag Err:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, ((StringBuilder)localObject).toString());
     }
     return -1;
   }
@@ -1805,14 +1965,20 @@ public class GameCenterAPIJavaScript
           paramJSONObject.exitFullScreen();
         }
       }
+      else
+      {
+        QLog.e("GCApi", 1, "[setFullScreen] Err: not find videoPlayer");
+        return -1;
+      }
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "setFullScreen Err:" + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setFullScreen Err:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, localStringBuilder.toString());
       return -1;
     }
-    QLog.e("GCApi", 1, "[setFullScreen] Err: not find videoPlayer");
-    return -1;
     return 0;
   }
   
@@ -1832,7 +1998,10 @@ public class GameCenterAPIJavaScript
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "setMute Err:" + paramJSONObject.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setMute Err:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, localStringBuilder.toString());
     }
     return -1;
   }
@@ -1849,23 +2018,24 @@ public class GameCenterAPIJavaScript
       if (this.mVideoViewMap.get(Integer.valueOf(i)) != null)
       {
         paramJSONObject = ((GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i))).jdField_a_of_type_ComTencentMobileqqGamecenterMediaGameCenterVideoViewController;
-        FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)paramJSONObject.getLayoutParams();
+        localObject = (FrameLayout.LayoutParams)paramJSONObject.getLayoutParams();
         float f = this.mRuntime.a().getResources().getDisplayMetrics().density;
-        localLayoutParams.topMargin = ((int)((j - m) * f));
-        localLayoutParams.leftMargin = ((int)((k - n) * f));
-        paramJSONObject.setLayoutParams(localLayoutParams);
+        ((FrameLayout.LayoutParams)localObject).topMargin = ((int)((j - m) * f));
+        ((FrameLayout.LayoutParams)localObject).leftMargin = ((int)(f * (k - n)));
+        paramJSONObject.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        return 0;
       }
-      else
-      {
-        QLog.e("GCApi", 1, "[setPostion] Err: not find videoPlayer");
-      }
+      QLog.e("GCApi", 1, "[setPostion] Err: not find videoPlayer");
+      return 0;
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "setPostion Err:" + paramJSONObject.toString());
-      return -1;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setPostion Err:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, ((StringBuilder)localObject).toString());
     }
-    return 0;
+    return -1;
   }
   
   public int setText(JSONObject paramJSONObject)
@@ -1876,7 +2046,7 @@ public class GameCenterAPIJavaScript
       int j = paramJSONObject.optInt("y");
       int k = paramJSONObject.optInt("x");
       int m = paramJSONObject.optInt("fontsize", 10);
-      Object localObject = paramJSONObject.optString("color");
+      localObject = paramJSONObject.optString("color");
       String str = paramJSONObject.optString("txt");
       boolean bool = paramJSONObject.optBoolean("border", false);
       if (this.mVideoViewMap.get(Integer.valueOf(i)) != null)
@@ -1884,10 +2054,10 @@ public class GameCenterAPIJavaScript
         paramJSONObject = ((GameCenterAPIJavaScript.VideoViewInfo)this.mVideoViewMap.get(Integer.valueOf(i))).jdField_a_of_type_AndroidWidgetFrameLayout;
         TextView localTextView = new TextView(this.mContext);
         if (bool) {
-          localTextView.setBackgroundResource(2130840315);
+          localTextView.setBackgroundResource(2130840174);
         }
         float f = this.mRuntime.a().getResources().getDisplayMetrics().density;
-        localTextView.setPadding(AIOUtils.a(3.0F, this.mContext.getResources()), AIOUtils.a(3.0F, this.mContext.getResources()), AIOUtils.a(3.0F, this.mContext.getResources()), AIOUtils.a(3.0F, this.mContext.getResources()));
+        localTextView.setPadding(AIOUtils.b(3.0F, this.mContext.getResources()), AIOUtils.b(3.0F, this.mContext.getResources()), AIOUtils.b(3.0F, this.mContext.getResources()), AIOUtils.b(3.0F, this.mContext.getResources()));
         localTextView.setText(str);
         localTextView.setTextSize(m);
         localTextView.setTextColor(Color.parseColor((String)localObject));
@@ -1904,7 +2074,10 @@ public class GameCenterAPIJavaScript
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "setText Err:" + paramJSONObject.toString());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setText Err:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, ((StringBuilder)localObject).toString());
     }
     return -1;
   }
@@ -1914,16 +2087,26 @@ public class GameCenterAPIJavaScript
     if ((this.mContext instanceof GameCenterActivity)) {
       try
       {
-        if ("true".equals(paramString)) {}
-        for (int i = 1; i != 0; i = 0)
+        int i;
+        if ("true".equals(paramString))
         {
-          ((GameCenterActivity)this.mContext).a.sendEmptyMessage(2003);
-          return;
-          if (!"false".equals(paramString)) {
-            return;
-          }
+          i = 1;
         }
-        ((GameCenterActivity)this.mContext).a.sendEmptyMessage(2004);
+        else
+        {
+          if (!"false".equals(paramString)) {
+            break label77;
+          }
+          i = 0;
+        }
+        if (i != 0)
+        {
+          ((GameCenterActivity)this.mContext).gcHandler.sendEmptyMessage(2003);
+          return;
+        }
+        ((GameCenterActivity)this.mContext).gcHandler.sendEmptyMessage(2004);
+        return;
+        label77:
         return;
       }
       catch (Exception paramString)
@@ -1935,18 +2118,20 @@ public class GameCenterAPIJavaScript
   
   public void showWarningToast(String paramString)
   {
-    if ((this.mContext instanceof GameCenterActivity)) {}
-    try
-    {
-      Message localMessage = Message.obtain(((GameCenterActivity)this.mContext).a);
-      localMessage.what = 2006;
-      localMessage.obj = paramString;
-      ((GameCenterActivity)this.mContext).a.sendMessage(localMessage);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      paramString.printStackTrace();
+    Object localObject = this.mContext;
+    if ((localObject instanceof GameCenterActivity)) {
+      try
+      {
+        localObject = Message.obtain(((GameCenterActivity)localObject).gcHandler);
+        ((Message)localObject).what = 2006;
+        ((Message)localObject).obj = paramString;
+        ((GameCenterActivity)this.mContext).gcHandler.sendMessage((Message)localObject);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
     }
   }
   
@@ -1961,10 +2146,7 @@ public class GameCenterAPIJavaScript
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
     MyAppApi.a().a(paramString, null, (Activity)this.mContext);
   }
@@ -1979,18 +2161,21 @@ public class GameCenterAPIJavaScript
       } else {
         QLog.e("GCApi", 1, "[stopVideo] Err: not find videoPlayer");
       }
+      return 0;
     }
     catch (Exception paramJSONObject)
     {
-      QLog.d("GCApi", 1, "stopVideo Err:" + paramJSONObject.toString());
-      return -1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stopVideo Err:");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("GCApi", 1, localStringBuilder.toString());
     }
-    return 0;
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript
  * JD-Core Version:    0.7.0.1
  */

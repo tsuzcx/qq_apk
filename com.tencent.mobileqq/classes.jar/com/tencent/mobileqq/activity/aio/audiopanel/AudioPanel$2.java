@@ -9,8 +9,14 @@ class AudioPanel$2
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AudioPanel", 2, "playAnimRunable isEnabled():" + this.this$0.isEnabled() + " mCurAnimType=" + AudioPanel.a(this.this$0));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playAnimRunable isEnabled():");
+      localStringBuilder.append(this.this$0.isEnabled());
+      localStringBuilder.append(" mCurAnimType=");
+      localStringBuilder.append(AudioPanel.a(this.this$0));
+      QLog.d("AudioPanel", 2, localStringBuilder.toString());
     }
     if (this.this$0.isEnabled()) {
       AudioTransitionAnimManager.a().a(AudioPanel.a(this.this$0), AudioPanel.a(this.this$0), AudioPanel.a(this.this$0), AudioPanel.a(this.this$0));
@@ -19,7 +25,7 @@ class AudioPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanel.2
  * JD-Core Version:    0.7.0.1
  */

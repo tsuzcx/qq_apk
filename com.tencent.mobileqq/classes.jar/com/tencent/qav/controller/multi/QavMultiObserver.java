@@ -17,20 +17,38 @@ public class QavMultiObserver
     {
     default: 
       return;
-    case 1: 
-      a();
+    case 17: 
+      b(((Boolean)paramVarArgs[0]).booleanValue());
       return;
-    case 2: 
-      a(((Integer)paramVarArgs[0]).intValue());
+    case 16: 
+      a(((Boolean)paramVarArgs[0]).booleanValue());
       return;
-    case 3: 
-      a((QavDef.MultiUserInfo)paramVarArgs[0]);
+    case 15: 
+      c(((Integer)paramVarArgs[0]).intValue());
       return;
-    case 4: 
-      b((QavDef.MultiUserInfo)paramVarArgs[0]);
+    case 14: 
+      a(((Long)paramVarArgs[0]).longValue(), ((Integer)paramVarArgs[1]).intValue(), ((Long)paramVarArgs[2]).longValue(), ((Integer)paramVarArgs[3]).intValue());
       return;
-    case 5: 
-      a((QavDef.MultiUserInfo)paramVarArgs[0], ((Boolean)paramVarArgs[1]).booleanValue());
+    case 13: 
+      a(((Long)paramVarArgs[0]).longValue(), ((Integer)paramVarArgs[1]).intValue());
+      return;
+    case 12: 
+      b(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue());
+      return;
+    case 11: 
+      a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue());
+      return;
+    case 10: 
+      a(false, ((Long)paramVarArgs[0]).longValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue(), ((Long)paramVarArgs[3]).longValue(), ((Integer)paramVarArgs[4]).intValue());
+      return;
+    case 9: 
+      a(true, ((Long)paramVarArgs[0]).longValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue(), ((Long)paramVarArgs[3]).longValue(), ((Integer)paramVarArgs[4]).intValue());
+      return;
+    case 8: 
+      b(((Integer)paramVarArgs[0]).intValue());
+      return;
+    case 7: 
+      a((List)paramVarArgs[0]);
       return;
     case 6: 
       QavDef.MultiUserInfo localMultiUserInfo = (QavDef.MultiUserInfo)paramVarArgs[0];
@@ -38,38 +56,20 @@ public class QavMultiObserver
       a(localMultiUserInfo, bool, ((Integer)paramVarArgs[2]).intValue());
       b(localMultiUserInfo, bool);
       return;
-    case 7: 
-      a((List)paramVarArgs[0]);
+    case 5: 
+      a((QavDef.MultiUserInfo)paramVarArgs[0], ((Boolean)paramVarArgs[1]).booleanValue());
       return;
-    case 8: 
-      b(((Integer)paramVarArgs[0]).intValue());
+    case 4: 
+      b((QavDef.MultiUserInfo)paramVarArgs[0]);
       return;
-    case 9: 
-      a(true, ((Long)paramVarArgs[0]).longValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue(), ((Long)paramVarArgs[3]).longValue(), ((Integer)paramVarArgs[4]).intValue());
+    case 3: 
+      a((QavDef.MultiUserInfo)paramVarArgs[0]);
       return;
-    case 10: 
-      a(false, ((Long)paramVarArgs[0]).longValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue(), ((Long)paramVarArgs[3]).longValue(), ((Integer)paramVarArgs[4]).intValue());
-      return;
-    case 11: 
-      a(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue());
-      return;
-    case 12: 
-      b(((Boolean)paramVarArgs[0]).booleanValue(), ((Long)paramVarArgs[1]).longValue(), ((Integer)paramVarArgs[2]).intValue());
-      return;
-    case 13: 
-      a(((Long)paramVarArgs[0]).longValue(), ((Integer)paramVarArgs[1]).intValue());
-      return;
-    case 14: 
-      a(((Long)paramVarArgs[0]).longValue(), ((Integer)paramVarArgs[1]).intValue(), ((Long)paramVarArgs[2]).longValue(), ((Integer)paramVarArgs[3]).intValue());
-      return;
-    case 15: 
-      c(((Integer)paramVarArgs[0]).intValue());
-      return;
-    case 16: 
-      a(((Boolean)paramVarArgs[0]).booleanValue());
+    case 2: 
+      a(((Integer)paramVarArgs[0]).intValue());
       return;
     }
-    b(((Boolean)paramVarArgs[0]).booleanValue());
+    a();
   }
   
   public void a(long paramLong, int paramInt) {}
@@ -104,7 +104,7 @@ public class QavMultiObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qav.controller.multi.QavMultiObserver
  * JD-Core Version:    0.7.0.1
  */

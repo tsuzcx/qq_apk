@@ -32,13 +32,13 @@ class MyZipFile
     if ((paramInt != 1) && (paramInt != 5)) {
       throw new IllegalArgumentException();
     }
-    if ((paramInt & 0x4) != 0) {}
-    for (this.fileToDeleteOnClose = paramFile;; this.fileToDeleteOnClose = null)
-    {
-      this.mRaf = new RandomAccessFile(this.fileName, "r");
-      readCentralDir();
-      return;
+    if ((paramInt & 0x4) != 0) {
+      this.fileToDeleteOnClose = paramFile;
+    } else {
+      this.fileToDeleteOnClose = null;
     }
+    this.mRaf = new RandomAccessFile(this.fileName, "r");
+    readCentralDir();
   }
   
   public MyZipFile(File paramFile, String paramString)
@@ -53,71 +53,67 @@ class MyZipFile
   
   private void checkNotClosed()
   {
-    if (this.mRaf == null) {
-      throw new IllegalStateException("Zip file closed");
+    if (this.mRaf != null) {
+      return;
     }
+    throw new IllegalStateException("Zip file closed");
   }
   
   private void readCentralDir()
   {
-    long l1 = 0L;
     long l2 = this.mRaf.length() - 22L;
-    if (l2 < 0L) {
-      throw new ZipException("too short to be Zip");
-    }
-    long l3 = l2 - 65536L;
-    if (l3 < 0L) {}
-    for (;;)
+    long l1 = 0L;
+    if (l2 >= 0L)
     {
-      this.mRaf.seek(l2);
-      int j;
-      int n;
-      if (Integer.reverseBytes(this.mRaf.readInt()) == 101010256)
+      long l3 = l2 - 65536L;
+      if (l3 >= 0L) {
+        l1 = l3;
+      }
+      do
       {
-        localObject = new byte[18];
-        this.mRaf.readFully((byte[])localObject);
-        localObject = HeapBufferIterator.iterator((byte[])localObject, 0, localObject.length, ByteOrder.LITTLE_ENDIAN);
-        i = ((BufferIterator)localObject).readShort();
-        int k = ((BufferIterator)localObject).readShort();
-        j = ((BufferIterator)localObject).readShort();
-        int m = ((BufferIterator)localObject).readShort();
-        ((BufferIterator)localObject).skip(4);
-        n = ((BufferIterator)localObject).readInt();
-        if ((j != m) || (i != 0) || (k != 0)) {
+        this.mRaf.seek(l2);
+        if (Integer.reverseBytes(this.mRaf.readInt()) == 101010256)
+        {
+          localObject1 = new byte[18];
+          this.mRaf.readFully((byte[])localObject1);
+          int j = localObject1.length;
+          Object localObject2 = ByteOrder.LITTLE_ENDIAN;
+          int i = 0;
+          localObject1 = HeapBufferIterator.iterator((byte[])localObject1, 0, j, (ByteOrder)localObject2);
+          int k = ((BufferIterator)localObject1).readShort();
+          int m = ((BufferIterator)localObject1).readShort();
+          j = ((BufferIterator)localObject1).readShort();
+          int n = ((BufferIterator)localObject1).readShort();
+          ((BufferIterator)localObject1).skip(4);
+          int i1 = ((BufferIterator)localObject1).readInt();
+          if ((j == n) && (k == 0) && (m == 0))
+          {
+            localObject1 = new BufferedInputStream(new MyZipFile.RAFStream(this.mRaf, i1), 4096);
+            localObject2 = new byte[46];
+            while (i < j)
+            {
+              MyZipEntry localMyZipEntry = new MyZipEntry((byte[])localObject2, (InputStream)localObject1);
+              this.mEntries.put(localMyZipEntry.getName(), localMyZipEntry);
+              if (localMyZipEntry.getName().equals(this.libname))
+              {
+                this.desentry = localMyZipEntry;
+                return;
+              }
+              localMyZipEntry.getName().contains("lib");
+              i += 1;
+            }
+            return;
+          }
           throw new ZipException("spanned archives not supported");
         }
-      }
-      else
-      {
-        l3 = l2 - 1L;
-        l2 = l3;
-        if (l3 >= l1) {
-          continue;
-        }
-        throw new ZipException("EOCD not found; not a Zip archive?");
-      }
-      Object localObject = new BufferedInputStream(new MyZipFile.RAFStream(this.mRaf, n), 4096);
-      byte[] arrayOfByte = new byte[46];
-      int i = 0;
-      for (;;)
-      {
-        MyZipEntry localMyZipEntry;
-        if (i < j)
-        {
-          localMyZipEntry = new MyZipEntry(arrayOfByte, (InputStream)localObject);
-          this.mEntries.put(localMyZipEntry.getName(), localMyZipEntry);
-          if (localMyZipEntry.getName().equals(this.libname)) {
-            this.desentry = localMyZipEntry;
-          }
-        }
-        else
-        {
-          return;
-        }
-        if (!localMyZipEntry.getName().contains("lib")) {}
-        i += 1;
-      }
-      l1 = l3;
+        l2 -= 1L;
+      } while (l2 >= l1);
+      throw new ZipException("EOCD not found; not a Zip archive?");
+    }
+    Object localObject1 = new ZipException("too short to be Zip");
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
     }
   }
   
@@ -129,15 +125,21 @@ class MyZipFile
   public MyZipEntry getEntry(String paramString)
   {
     checkNotClosed();
-    if (paramString == null) {
-      throw new NullPointerException();
+    if (paramString != null)
+    {
+      Object localObject2 = (MyZipEntry)this.mEntries.get(paramString);
+      Object localObject1 = localObject2;
+      if (localObject2 == null)
+      {
+        localObject1 = this.mEntries;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append("/");
+        localObject1 = (MyZipEntry)((LinkedHashMap)localObject1).get(((StringBuilder)localObject2).toString());
+      }
+      return localObject1;
     }
-    MyZipEntry localMyZipEntry2 = (MyZipEntry)this.mEntries.get(paramString);
-    MyZipEntry localMyZipEntry1 = localMyZipEntry2;
-    if (localMyZipEntry2 == null) {
-      localMyZipEntry1 = (MyZipEntry)this.mEntries.get(paramString + "/");
-    }
-    return localMyZipEntry1;
+    throw new NullPointerException();
   }
   
   public InputStream getInputStream(MyZipEntry arg1)
@@ -150,10 +152,9 @@ class MyZipFile
     if ((??? != null) && ((???.contains("../")) || (???.contains("..\\")))) {
       throw new QZipIOException();
     }
-    MyZipFile.RAFStream localRAFStream;
     synchronized (this.mRaf)
     {
-      localRAFStream = new MyZipFile.RAFStream(???, ((MyZipEntry)localObject1).mLocalHeaderRelOffset + 28L);
+      MyZipFile.RAFStream localRAFStream = new MyZipFile.RAFStream(???, ((MyZipEntry)localObject1).mLocalHeaderRelOffset + 28L);
       DataInputStream localDataInputStream = new DataInputStream(localRAFStream);
       int i = Short.reverseBytes(localDataInputStream.readShort());
       localDataInputStream.close();
@@ -165,8 +166,8 @@ class MyZipFile
         localObject1 = new MyZipFile.ZipInflaterInputStream(localRAFStream, new Inflater(true), i, (MyZipEntry)localObject1);
         return localObject1;
       }
+      return localRAFStream;
     }
-    return localRAFStream;
   }
   
   public String getName()
@@ -176,7 +177,7 @@ class MyZipFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.commonsdk.soload.MyZipFile
  * JD-Core Version:    0.7.0.1
  */

@@ -9,17 +9,19 @@ class CodeMaskManager$2
   
   public void run()
   {
-    if (this.this$0.a) {}
-    while (!this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.a.compareAndSet(false, true)) {
+    if (this.this$0.a) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.this$0));
-    CodeMaskManager.a(this.this$0);
+    if (this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$PrepareBundleTask.a.compareAndSet(false, true))
+    {
+      this.jdField_a_of_type_ComTencentBizQrcodeCodeMaskManager$Callback.a(CodeMaskManager.a(this.this$0));
+      CodeMaskManager.a(this.this$0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.CodeMaskManager.2
  * JD-Core Version:    0.7.0.1
  */

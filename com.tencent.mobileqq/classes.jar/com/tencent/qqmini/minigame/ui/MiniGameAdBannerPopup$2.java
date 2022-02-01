@@ -18,7 +18,13 @@ final class MiniGameAdBannerPopup$2
     try
     {
       TianShuAccess.GetAdsRsp localGetAdsRsp = (TianShuAccess.GetAdsRsp)paramJSONObject.get("response");
-      QMLog.d("MiniGameAdBannerPopup", "onGetAdvs() called with: result = [" + paramJSONObject + "], getAdsRsp = [" + localGetAdsRsp + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetAdvs() called with: result = [");
+      localStringBuilder.append(paramJSONObject);
+      localStringBuilder.append("], getAdsRsp = [");
+      localStringBuilder.append(localGetAdsRsp);
+      localStringBuilder.append("]");
+      QMLog.d("MiniGameAdBannerPopup", localStringBuilder.toString());
       if ((this.val$weakContext == null) || (this.val$weakContext.get() == null)) {
         return;
       }
@@ -38,7 +44,7 @@ final class MiniGameAdBannerPopup$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.MiniGameAdBannerPopup.2
  * JD-Core Version:    0.7.0.1
  */

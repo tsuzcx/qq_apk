@@ -19,22 +19,28 @@ public class a
       paramFile = new FileInputStream(paramFile);
       return a(paramFile);
     }
-    catch (FileNotFoundException paramFile) {}
+    catch (FileNotFoundException paramFile)
+    {
+      label14:
+      break label14;
+    }
     return null;
   }
   
   public static String a(InputStream paramInputStream)
   {
-    MessageDigest localMessageDigest = null;
-    String str2 = null;
-    if (paramInputStream == null) {}
-    for (;;)
+    Object localObject1 = null;
+    Object localObject3 = null;
+    Object localObject4 = null;
+    if (paramInputStream == null) {
+      return null;
+    }
+    if (paramInputStream != null) {}
+    try
     {
-      return str2;
-      if (paramInputStream != null) {}
       try
       {
-        localMessageDigest = MessageDigest.getInstance("MD5");
+        localObject1 = MessageDigest.getInstance("MD5");
         byte[] arrayOfByte = new byte[8192];
         for (;;)
         {
@@ -42,56 +48,51 @@ public class a
           if (i <= 0) {
             break;
           }
-          localMessageDigest.update(arrayOfByte, 0, i);
+          ((MessageDigest)localObject1).update(arrayOfByte, 0, i);
         }
+        localObject1 = b(((MessageDigest)localObject1).digest());
       }
-      catch (Exception localException)
+      finally
       {
-        if (paramInputStream != null)
-        {
+        if (paramInputStream != null) {
           try
           {
             paramInputStream.close();
-            return null;
           }
           catch (IOException paramInputStream)
           {
             paramInputStream.printStackTrace();
-            return null;
-          }
-          String str1 = b(localException.digest());
-          str2 = str1;
-          if (paramInputStream != null) {
-            try
-            {
-              paramInputStream.close();
-              return str1;
-            }
-            catch (IOException paramInputStream)
-            {
-              paramInputStream.printStackTrace();
-              return str1;
-            }
           }
         }
       }
-      finally
+    }
+    catch (Exception localException)
+    {
+      label82:
+      break label82;
+    }
+    if (paramInputStream != null)
+    {
+      localObject3 = localObject4;
+      try
       {
-        if (paramInputStream == null) {}
+        paramInputStream.close();
+        return null;
       }
-    }
-    try
-    {
-      paramInputStream.close();
-      throw localObject;
-    }
-    catch (IOException paramInputStream)
-    {
-      for (;;)
+      catch (IOException paramInputStream)
       {
         paramInputStream.printStackTrace();
+        return localObject3;
+      }
+      localObject3 = localObject2;
+      if (paramInputStream != null)
+      {
+        localObject3 = localObject2;
+        paramInputStream.close();
+        localObject3 = localObject2;
       }
     }
+    return localObject3;
   }
   
   public static byte[] a(byte[] paramArrayOfByte)
@@ -132,7 +133,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kcsdkext.a
  * JD-Core Version:    0.7.0.1
  */

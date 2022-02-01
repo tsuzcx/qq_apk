@@ -22,62 +22,55 @@ public class HeartBreakCombolEffectView$DecodeRunnable
   
   public void run()
   {
-    Object localObject3;
     while ((this.jdField_a_of_type_JavaUtilArrayList.size() < 2) && (this.this$0.b < this.this$0.jdField_a_of_type_JavaUtilArrayList.size()) && (HeartBreakCombolEffectView.jdField_a_of_type_Boolean))
     {
-      localObject1 = this.this$0.jdField_a_of_type_JavaUtilArrayList;
-      localObject3 = this.this$0;
-      int i = ((HeartBreakCombolEffectView)localObject3).b;
-      ((HeartBreakCombolEffectView)localObject3).b = (i + 1);
-      localObject3 = (HeartBreakCombolEffectView.OneFrame)((ArrayList)localObject1).get(i);
-      if (localObject3 != null)
+      Object localObject = this.this$0.jdField_a_of_type_JavaUtilArrayList;
+      HeartBreakCombolEffectView localHeartBreakCombolEffectView = this.this$0;
+      int i = localHeartBreakCombolEffectView.b;
+      localHeartBreakCombolEffectView.b = (i + 1);
+      HeartBreakCombolEffectView.OneFrame localOneFrame = (HeartBreakCombolEffectView.OneFrame)((ArrayList)localObject).get(i);
+      if (localOneFrame != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inSampleSize = 1;
-        this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inPreferredConfig = Bitmap.Config.ARGB_4444;
+        localObject = this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
+        ((BitmapFactory.Options)localObject).inSampleSize = 1;
+        ((BitmapFactory.Options)localObject).inPreferredConfig = Bitmap.Config.ARGB_4444;
         this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inMutable = true;
-        if (HeartBreakCombolEffectView.a(this.this$0).size() <= 0) {
-          break label218;
+        i = HeartBreakCombolEffectView.a(this.this$0).size();
+        localHeartBreakCombolEffectView = null;
+        if (i > 0) {
+          localObject = (Bitmap)HeartBreakCombolEffectView.a(this.this$0).remove(0);
+        } else {
+          localObject = null;
         }
-      }
-    }
-    Object localObject2;
-    label218:
-    for (Object localObject1 = (Bitmap)HeartBreakCombolEffectView.a(this.this$0).remove(0);; localObject2 = null)
-    {
-      for (;;)
-      {
-        if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()) && (CustomFrameAnimationDrawable.a())) {
-          this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inBitmap = ((Bitmap)localObject1);
+        if ((localObject != null) && (!((Bitmap)localObject).isRecycled()) && (CustomFrameAnimationDrawable.a())) {
+          this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inBitmap = ((Bitmap)localObject);
         }
         try
         {
-          localObject1 = ImageUtil.a(((HeartBreakCombolEffectView.OneFrame)localObject3).a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
-          if (localObject1 == null) {
-            break;
-          }
-          this.jdField_a_of_type_JavaUtilArrayList.add(localObject1);
+          localObject = ImageUtil.a(localOneFrame.a, this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
         }
         catch (OutOfMemoryError localOutOfMemoryError)
         {
-          for (;;)
+          localObject = localHeartBreakCombolEffectView;
+          if (QLog.isColorLevel())
           {
-            if (QLog.isColorLevel()) {
-              QLog.d("HeartBreak", 2, localOutOfMemoryError.toString());
-            }
-            localObject2 = null;
+            QLog.d("HeartBreak", 2, localOutOfMemoryError.toString());
+            localObject = localHeartBreakCombolEffectView;
           }
         }
+        if (localObject != null) {
+          this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+        }
       }
-      if (!HeartBreakCombolEffectView.jdField_a_of_type_Boolean) {
-        this.this$0.c();
-      }
-      return;
+    }
+    if (!HeartBreakCombolEffectView.jdField_a_of_type_Boolean) {
+      this.this$0.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.HeartBreakCombolEffectView.DecodeRunnable
  * JD-Core Version:    0.7.0.1
  */

@@ -25,49 +25,49 @@ class PushBannerProcessor$1
   
   public void onClick(View paramView)
   {
-    PushBannerProcessor.a(this.a).getSharedPreferences("mobileQQ", 0).edit().putBoolean("push_banner_display" + PushBannerProcessor.b(this.a).getAppRuntime().getAccount(), false).commit();
-    Object localObject = BannerManager.a().a(24);
-    ADView localADView;
-    if ((localObject != null) && (((Banner)localObject).a != null))
+    Object localObject1 = PushBannerProcessor.a(this.a).getSharedPreferences("mobileQQ", 0).edit();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("push_banner_display");
+    ((StringBuilder)localObject2).append(PushBannerProcessor.b(this.a).getAppRuntime().getAccount());
+    ((SharedPreferences.Editor)localObject1).putBoolean(((StringBuilder)localObject2).toString(), false).commit();
+    localObject1 = BannerManager.a().a(PushBannerProcessor.a);
+    if ((localObject1 != null) && (((Banner)localObject1).a != null))
     {
-      localADView = (ADView)((Banner)localObject).a.findViewById(2131362258);
-      if (localADView == null) {
-        break label297;
+      localObject2 = (ADView)((Banner)localObject1).a.findViewById(2131362283);
+      if (localObject2 != null) {
+        localObject1 = ((ADView)localObject2).a(0);
+      } else {
+        localObject1 = null;
       }
-    }
-    label297:
-    for (localObject = localADView.a(0);; localObject = null)
-    {
-      if (localObject != null)
+      if (localObject1 != null)
       {
-        int j = ((ViewGroup)localObject).getChildCount();
+        int j = ((ViewGroup)localObject1).getChildCount();
         LinkedList localLinkedList = new LinkedList();
         int i = 0;
         while (i < j)
         {
-          View localView = ((ViewGroup)localObject).getChildAt(i);
+          View localView = ((ViewGroup)localObject1).getChildAt(i);
           if (localView != null) {
             localLinkedList.add((PushBanner)localView.getTag());
           }
           i += 1;
         }
         ThreadManager.getFileThreadHandler().post(new PushBannerProcessor.1.1(this, j, localLinkedList));
-        if (localADView != null) {
-          localADView.h();
+        if (localObject2 != null) {
+          ((ADView)localObject2).h();
         }
       }
-      BannerManager.a().a(24, 0, null);
-      PushBannerProcessor.a(this.a, false);
-      ReportController.b(PushBannerProcessor.d(this.a).getAppRuntime(), "dc00898", "", "", "0X80087C3", "0X80087C3", 0, 0, "", "", "", "");
-      ReportController.a(PushBannerProcessor.e(this.a).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 12, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
     }
+    BannerManager.a().a(PushBannerProcessor.a, 0, null);
+    PushBannerProcessor.a(this.a, false);
+    ReportController.b(PushBannerProcessor.d(this.a).getAppRuntime(), "dc00898", "", "", "0X80087C3", "0X80087C3", 0, 0, "", "", "", "");
+    ReportController.a(PushBannerProcessor.e(this.a).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 12, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.PushBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

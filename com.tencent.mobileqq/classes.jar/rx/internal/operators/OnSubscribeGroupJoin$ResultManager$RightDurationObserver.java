@@ -17,14 +17,15 @@ final class OnSubscribeGroupJoin$ResultManager$RightDurationObserver
   
   public void onCompleted()
   {
-    if (this.once) {
-      this.once = false;
-    }
-    synchronized (this.this$1.guard)
+    if (this.once)
     {
-      this.this$1.rightMap.remove(Integer.valueOf(this.id));
-      this.this$1.group.remove(this);
-      return;
+      this.once = false;
+      synchronized (this.this$1.guard)
+      {
+        this.this$1.rightMap.remove(Integer.valueOf(this.id));
+        this.this$1.group.remove(this);
+        return;
+      }
     }
   }
   
@@ -40,7 +41,7 @@ final class OnSubscribeGroupJoin$ResultManager$RightDurationObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeGroupJoin.ResultManager.RightDurationObserver
  * JD-Core Version:    0.7.0.1
  */

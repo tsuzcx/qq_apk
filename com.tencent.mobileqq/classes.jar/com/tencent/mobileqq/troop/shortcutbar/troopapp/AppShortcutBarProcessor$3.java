@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.troop.shortcutbar.troopapp;
 
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageObserver;
@@ -19,6 +18,7 @@ import com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarInfo;
 import com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
+import mqq.app.AppRuntime;
 import tencent.mobileim.structmsg.structmsg.StructMsg;
 import tencent.mobileim.structmsg.structmsg.SystemMsg;
 
@@ -27,70 +27,64 @@ class AppShortcutBarProcessor$3
 {
   AppShortcutBarProcessor$3(AppShortcutBarProcessor paramAppShortcutBarProcessor) {}
   
-  public void onGetSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
+  protected void onGetSystemMsgFin(boolean paramBoolean1, boolean paramBoolean2, List<MessageRecord> paramList)
   {
-    TroopShortcutBarHandler localTroopShortcutBarHandler = null;
-    if ((AppShortcutBarProcessor.a(this.a) == null) || (AppShortcutBarProcessor.a(this.a).a == null) || (AppShortcutBarProcessor.a(this.a).I))
-    {
-      break label39;
-      break label39;
-      break label39;
-      break label39;
-    }
-    for (;;)
-    {
-      label39:
+    if (AppShortcutBarProcessor.a(this.a) == null) {
       return;
-      if (paramBoolean1)
+    }
+    if (paramBoolean1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("AppShortcutBarProcessor", 2, "onGetSystemMsgFin.success");
+      }
+      paramList = ((QQAppInterface)AppShortcutBarProcessor.a(this.a)).getMessageFacade().a(AppConstants.TROOP_SYSTEM_MSG_UIN, 0);
+      if ((paramList != null) && (paramList.size() - 1 >= 0)) {
+        paramList = (MessageRecord)paramList.get(paramList.size() - 1);
+      } else {
+        paramList = null;
+      }
+      if (paramList != null)
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("AppShortcutBarProcessor", 2, "onGetSystemMsgFin.success");
-        }
-        Object localObject = AppShortcutBarProcessor.a(this.a).a.getMessageFacade().b(AppConstants.TROOP_SYSTEM_MSG_UIN, 0);
-        paramList = localTroopShortcutBarHandler;
-        if (localObject != null)
-        {
-          paramList = localTroopShortcutBarHandler;
-          if (((List)localObject).size() - 1 >= 0) {
-            paramList = (MessageRecord)((List)localObject).get(((List)localObject).size() - 1);
-          }
-        }
-        if ((paramList == null) || (!(paramList instanceof MessageForSystemMsg))) {
-          break;
+        if (!(paramList instanceof MessageForSystemMsg)) {
+          return;
         }
         paramList = ((MessageForSystemMsg)paramList).getSystemMsg();
-        if ((paramList.msg_type.get() != 2) || (paramList.msg.get() == null)) {
-          break;
-        }
-        int i = paramList.msg.group_msg_type.get();
-        if ((i != 3) && (i != 15)) {
-          break;
-        }
-        long l = paramList.msg.group_code.get();
-        if (!AppShortcutBarProcessor.a(this.a).equalsIgnoreCase("" + l)) {
-          break;
-        }
-        paramList = ((TroopManager)AppShortcutBarProcessor.a(this.a).a.getManager(QQManagerFactory.TROOP_MANAGER)).b(AppShortcutBarProcessor.a(this.a));
-        if (paramList == null) {
-          break;
-        }
-        try
+        if ((paramList.msg_type.get() == 2) && (paramList.msg.get() != null))
         {
-          localObject = (TroopShortcutBarManager)AppShortcutBarProcessor.a(this.a).a.getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER);
-          localTroopShortcutBarHandler = (TroopShortcutBarHandler)AppShortcutBarProcessor.a(this.a).a.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
-          localObject = ((TroopShortcutBarManager)localObject).a(Long.valueOf(AppShortcutBarProcessor.a(this.a)));
-          if (localObject != null)
+          int i = paramList.msg.group_msg_type.get();
+          if ((i == 3) || (i == 15))
           {
-            ((TroopShortcutBarInfo)localObject).c(0);
-            ((TroopShortcutBarInfo)localObject).d(0);
-            ((TroopShortcutBarInfo)localObject).a(0L);
-            localTroopShortcutBarHandler.a(AppShortcutBarProcessor.a(this.a), (int)paramList.dwGroupClassExt, null);
-            return;
+            long l = paramList.msg.group_code.get();
+            paramList = AppShortcutBarProcessor.a(this.a);
+            Object localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("");
+            ((StringBuilder)localObject1).append(l);
+            if (paramList.equalsIgnoreCase(((StringBuilder)localObject1).toString()))
+            {
+              paramList = ((TroopManager)AppShortcutBarProcessor.a(this.a).getManager(QQManagerFactory.TROOP_MANAGER)).b(AppShortcutBarProcessor.a(this.a));
+              if (paramList == null) {
+                return;
+              }
+              try
+              {
+                Object localObject2 = (TroopShortcutBarManager)AppShortcutBarProcessor.a(this.a).getManager(QQManagerFactory.TROOP_SHORTCUTBAR_MANAGER);
+                localObject1 = (TroopShortcutBarHandler)((QQAppInterface)AppShortcutBarProcessor.a(this.a)).getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
+                localObject2 = ((TroopShortcutBarManager)localObject2).a(Long.valueOf(AppShortcutBarProcessor.a(this.a)));
+                if (localObject2 != null)
+                {
+                  ((TroopShortcutBarInfo)localObject2).c(0);
+                  ((TroopShortcutBarInfo)localObject2).d(0);
+                  ((TroopShortcutBarInfo)localObject2).a(0L);
+                  ((TroopShortcutBarHandler)localObject1).a(AppShortcutBarProcessor.a(this.a), (int)paramList.dwGroupClassExt, null);
+                  return;
+                }
+              }
+              catch (Exception paramList)
+              {
+                QLog.e("AppShortcutBarProcessor", 1, paramList.getMessage());
+              }
+            }
           }
-        }
-        catch (Exception paramList)
-        {
-          QLog.e("AppShortcutBarProcessor", 1, paramList.getMessage());
         }
       }
     }
@@ -98,7 +92,7 @@ class AppShortcutBarProcessor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.troopapp.AppShortcutBarProcessor.3
  * JD-Core Version:    0.7.0.1
  */

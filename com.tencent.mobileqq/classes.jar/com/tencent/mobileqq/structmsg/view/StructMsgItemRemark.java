@@ -37,12 +37,12 @@ public class StructMsgItemRemark
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.as == null) {}
-    for (String str = "";; str = this.as)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
+    String str2 = this.as;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    paramObjectOutput.writeUTF(str1);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
@@ -69,7 +69,7 @@ public class StructMsgItemRemark
   
   public int c()
   {
-    return 2131380562;
+    return 2131379847;
   }
   
   public int e()
@@ -89,7 +89,7 @@ public class StructMsgItemRemark
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemRemark
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ class FriendClueCommonGroupHelper$2
 {
   FriendClueCommonGroupHelper$2(FriendClueCommonGroupHelper paramFriendClueCommonGroupHelper) {}
   
-  public void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo)
+  protected void a(boolean paramBoolean, String paramString, IntimateInfo paramIntimateInfo)
   {
     if (QLog.isColorLevel()) {
       QLog.d("intimate_relationship", 2, "onGetIntimateInfo");
@@ -30,7 +30,7 @@ class FriendClueCommonGroupHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.friendclue.FriendClueCommonGroupHelper.2
  * JD-Core Version:    0.7.0.1
  */

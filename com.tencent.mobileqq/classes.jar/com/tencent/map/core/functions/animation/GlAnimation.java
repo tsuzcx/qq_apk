@@ -18,10 +18,15 @@ public abstract class GlAnimation
   
   public void drawAnimation()
   {
+    GlAnimation.InnerAnimationListener localInnerAnimationListener;
     if (!this.a)
     {
-      if ((!this.c) && (this.animationListener != null)) {
-        this.animationListener.onAnimationFinish();
+      if (!this.c)
+      {
+        localInnerAnimationListener = this.animationListener;
+        if (localInnerAnimationListener != null) {
+          localInnerAnimationListener.onAnimationFinish();
+        }
       }
       return;
     }
@@ -30,8 +35,9 @@ public abstract class GlAnimation
     {
       this.a = false;
       performAnimation(1.0F, this.d);
-      if (this.animationListener != null) {
-        this.animationListener.onAnimationFinish();
+      localInnerAnimationListener = this.animationListener;
+      if (localInnerAnimationListener != null) {
+        localInnerAnimationListener.onAnimationFinish();
       }
       this.c = true;
       return;
@@ -83,18 +89,16 @@ public abstract class GlAnimation
   
   public boolean startAnimation(GeoPoint paramGeoPoint1, GeoPoint paramGeoPoint2)
   {
-    boolean bool = true;
     if (this.iDuration <= 0L) {
-      bool = false;
+      return false;
     }
-    do
-    {
-      return bool;
-      this.b = true;
-      this.ltimeStart = SystemClock.uptimeMillis();
-      this.a = true;
-    } while (this.animationListener == null);
-    this.animationListener.onAnimationStart();
+    this.b = true;
+    this.ltimeStart = SystemClock.uptimeMillis();
+    this.a = true;
+    paramGeoPoint1 = this.animationListener;
+    if (paramGeoPoint1 != null) {
+      paramGeoPoint1.onAnimationStart();
+    }
     return true;
   }
   
@@ -105,7 +109,7 @@ public abstract class GlAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GlAnimation
  * JD-Core Version:    0.7.0.1
  */

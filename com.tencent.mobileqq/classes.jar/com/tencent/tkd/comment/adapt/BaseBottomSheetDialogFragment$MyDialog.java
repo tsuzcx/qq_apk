@@ -5,11 +5,10 @@ import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnDismissListener;
 import android.view.Window;
-import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.tkd.comment.util.CommonUtil;
 
 class BaseBottomSheetDialogFragment$MyDialog
-  extends ReportDialog
+  extends Dialog
 {
   private DialogInterface.OnDismissListener dismissListener;
   private DialogInterface.OnCancelListener onCancelListener;
@@ -21,19 +20,20 @@ class BaseBottomSheetDialogFragment$MyDialog
   
   public void dismiss()
   {
-    BaseBottomSheetDialogFragment.access$200(this.this$0, this, BaseBottomSheetDialogFragment.access$100(this.this$0));
+    BaseBottomSheetDialogFragment localBaseBottomSheetDialogFragment = this.this$0;
+    BaseBottomSheetDialogFragment.access$200(localBaseBottomSheetDialogFragment, this, BaseBottomSheetDialogFragment.access$100(localBaseBottomSheetDialogFragment));
   }
   
   public void setOnCancelListener(DialogInterface.OnCancelListener paramOnCancelListener)
   {
     this.onCancelListener = paramOnCancelListener;
-    super.setOnCancelListener(new BaseBottomSheetDialogFragment.MyDialog.WrappedCancelListener(this, paramOnCancelListener));
+    super.setOnCancelListener(new BaseBottomSheetDialogFragment.WrappedCancelListener(paramOnCancelListener));
   }
   
   public void setOnDismissListener(DialogInterface.OnDismissListener paramOnDismissListener)
   {
     this.dismissListener = paramOnDismissListener;
-    super.setOnDismissListener(new BaseBottomSheetDialogFragment.MyDialog.WrappedDismissDialogListener(this, paramOnDismissListener));
+    super.setOnDismissListener(new BaseBottomSheetDialogFragment.WrappedDismissDialogListener(paramOnDismissListener));
   }
   
   public void show()
@@ -57,7 +57,7 @@ class BaseBottomSheetDialogFragment$MyDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.adapt.BaseBottomSheetDialogFragment.MyDialog
  * JD-Core Version:    0.7.0.1
  */

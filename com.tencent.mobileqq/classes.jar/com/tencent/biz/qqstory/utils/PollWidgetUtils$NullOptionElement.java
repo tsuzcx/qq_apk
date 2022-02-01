@@ -14,12 +14,6 @@ public class PollWidgetUtils$NullOptionElement
     this.a = paramInt;
   }
   
-  public int a()
-  {
-    SLog.e("NullOptionElement", "getOptionIndex() on %d", new Object[] { Integer.valueOf(this.a) });
-    return this.a;
-  }
-  
   public void a(CharSequence paramCharSequence)
   {
     SLog.e("NullOptionElement", "setText() on %d", new Object[] { Integer.valueOf(this.a) });
@@ -27,7 +21,7 @@ public class PollWidgetUtils$NullOptionElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.PollWidgetUtils.NullOptionElement
  * JD-Core Version:    0.7.0.1
  */

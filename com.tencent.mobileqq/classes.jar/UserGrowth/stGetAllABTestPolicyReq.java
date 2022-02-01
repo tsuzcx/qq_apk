@@ -26,15 +26,16 @@ public final class stGetAllABTestPolicyReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.uin != null) {
-      paramJceOutputStream.write(this.uin, 0);
+    String str = this.uin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.hasInstalledWeishi, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stGetAllABTestPolicyReq
  * JD-Core Version:    0.7.0.1
  */

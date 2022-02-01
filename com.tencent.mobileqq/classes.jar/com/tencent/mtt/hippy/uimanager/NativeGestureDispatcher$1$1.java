@@ -11,12 +11,13 @@ class NativeGestureDispatcher$1$1
   public void run()
   {
     int i = this.a.getId();
-    NativeGestureDispatcher.handleClick(((HippyInstanceContext)this.a.getContext()).getEngineContext(), i);
+    View localView = this.a;
+    NativeGestureDispatcher.handleClick(localView, ((HippyInstanceContext)localView.getContext()).getEngineContext(), i, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.NativeGestureDispatcher.1.1
  * JD-Core Version:    0.7.0.1
  */

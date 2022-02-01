@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -76,30 +77,36 @@ public final class get_photo_list_bytimeline_rsp
   {
     paramJceOutputStream.write(this.albuminfo, 0);
     paramJceOutputStream.write(this.photolist, 1);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 2);
+    Object localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.timeline != null) {
-      paramJceOutputStream.write(this.timeline, 3);
+    localObject = this.timeline;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.pos != null) {
-      paramJceOutputStream.write(this.pos, 4);
+    localObject = this.pos;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 5);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
     paramJceOutputStream.write(this.appid, 6);
-    if (this.shareinfo != null) {
-      paramJceOutputStream.write(this.shareinfo, 7);
+    localObject = this.shareinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
-    if (this.timeevent != null) {
-      paramJceOutputStream.write(this.timeevent, 8);
+    localObject = this.timeevent;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_photo_list_bytimeline_rsp
  * JD-Core Version:    0.7.0.1
  */

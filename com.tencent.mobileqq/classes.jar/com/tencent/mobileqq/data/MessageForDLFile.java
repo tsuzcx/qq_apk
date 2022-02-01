@@ -17,37 +17,38 @@ public class MessageForDLFile
   
   protected void doParse()
   {
+    Object localObject;
     try
     {
       DatalineFileData localDatalineFileData = (DatalineFileData)MessagePkgUtils.a(this.msgData);
-      if (localDatalineFileData == null) {
-        return;
-      }
     }
     catch (Exception localException)
     {
-      Object localObject;
-      for (;;)
-      {
-        localException.printStackTrace();
-        localObject = null;
-      }
-      this.associatedId = localObject.associatedId;
-      this.deviceType = localObject.deviceType;
-      this.fileName = localObject.filename;
-      this.fileSize = localObject.filesize;
-      this.localPath = localObject.localPath;
-      this.thumbPath = localObject.thumbPath;
+      localException.printStackTrace();
+      localObject = null;
     }
+    if (localObject == null) {
+      return;
+    }
+    this.associatedId = localObject.associatedId;
+    this.deviceType = localObject.deviceType;
+    this.fileName = localObject.filename;
+    this.fileSize = localObject.filesize;
+    this.localPath = localObject.localPath;
+    this.thumbPath = localObject.thumbPath;
   }
   
   public String getSummaryMsg()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(HardCodeUtil.a(2131706580));
-    if (this.fileName == null) {}
-    for (String str = "";; str = this.fileName) {
-      return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131706603));
+    String str2 = this.fileName;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    localStringBuilder.append(str1);
+    return localStringBuilder.toString();
   }
   
   public boolean isSend()
@@ -55,12 +56,12 @@ public class MessageForDLFile
     return super.isSend();
   }
   
-  public void postRead()
+  protected void postRead()
   {
     parse();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     serial();
   }
@@ -87,7 +88,7 @@ public class MessageForDLFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForDLFile
  * JD-Core Version:    0.7.0.1
  */

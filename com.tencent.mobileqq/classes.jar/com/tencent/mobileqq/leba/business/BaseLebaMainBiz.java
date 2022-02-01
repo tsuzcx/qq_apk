@@ -17,55 +17,62 @@ public abstract class BaseLebaMainBiz
   
   public int a()
   {
-    if (this.a != null) {
-      return this.a.a();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      return localILebaProxy.a();
     }
     return 0;
   }
   
   public QBaseActivity a()
   {
-    if (this.a != null) {
-      return this.a.a();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      return localILebaProxy.a();
     }
     return null;
   }
   
   public HashMap<String, LebaViewItem> a()
   {
-    if (this.a != null) {
-      return this.a.a();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      return localILebaProxy.a();
     }
     return new HashMap();
   }
   
   public List<LebaViewItem> a()
   {
-    if (this.a != null) {
-      return this.a.a();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      return localILebaProxy.a();
     }
     return null;
   }
   
   public AppRuntime a()
   {
-    if (this.a != null) {
-      return this.a.a();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      return localILebaProxy.a();
     }
     return null;
   }
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.a();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.a();
     }
   }
   
   public void a(Intent paramIntent)
   {
-    if (this.a != null) {
-      this.a.a(paramIntent);
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.a(paramIntent);
     }
   }
   
@@ -77,8 +84,9 @@ public abstract class BaseLebaMainBiz
   
   public void a(LebaClickReportInfo paramLebaClickReportInfo)
   {
-    if (this.a != null) {
-      this.a.a(paramLebaClickReportInfo);
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.a(paramLebaClickReportInfo);
     }
   }
   
@@ -89,8 +97,9 @@ public abstract class BaseLebaMainBiz
   
   public void a(Runnable paramRunnable)
   {
-    if (this.a != null) {
-      this.a.a(paramRunnable);
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.a(paramRunnable);
     }
   }
   
@@ -98,23 +107,26 @@ public abstract class BaseLebaMainBiz
   
   public void a(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (this.a != null) {
-      this.a.a(paramBoolean1, paramBoolean2, paramInt);
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.a(paramBoolean1, paramBoolean2, paramInt);
     }
   }
   
   public boolean a()
   {
-    if (this.a != null) {
-      return this.a.a();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      return localILebaProxy.a();
     }
     return false;
   }
   
   public void b()
   {
-    if (this.a != null) {
-      this.a.b();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.b();
     }
   }
   
@@ -127,8 +139,9 @@ public abstract class BaseLebaMainBiz
   
   public void c()
   {
-    if (this.a != null) {
-      this.a.c();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.c();
     }
   }
   
@@ -136,8 +149,9 @@ public abstract class BaseLebaMainBiz
   
   public void d()
   {
-    if (this.a != null) {
-      this.a.d();
+    ILebaProxy localILebaProxy = this.a;
+    if (localILebaProxy != null) {
+      localILebaProxy.d();
     }
   }
   
@@ -165,7 +179,7 @@ public abstract class BaseLebaMainBiz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.BaseLebaMainBiz
  * JD-Core Version:    0.7.0.1
  */

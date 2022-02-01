@@ -131,8 +131,12 @@ public final class TencentMapOptions
   
   public final void setSubInfo(String paramString1, String paramString2)
   {
-    if (paramString1 != null) {}
-    for (this.h = paramString1.trim(); paramString2 != null; this.h = "")
+    if (paramString1 != null) {
+      this.h = paramString1.trim();
+    } else {
+      this.h = "";
+    }
+    if (paramString2 != null)
     {
       this.g = paramString2.trim();
       return;
@@ -149,7 +153,7 @@ public final class TencentMapOptions
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.TencentMapOptions
  * JD-Core Version:    0.7.0.1
  */

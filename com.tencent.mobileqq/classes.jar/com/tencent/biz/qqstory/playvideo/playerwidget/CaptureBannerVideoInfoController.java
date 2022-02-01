@@ -35,20 +35,13 @@ public class CaptureBannerVideoInfoController
     if ((localVideoLinkInfo != null) && (localVideoLinkInfo.a != null))
     {
       SLog.b("CaptureBannerVideoInfoController", "getVideoCaptureInfo from oa");
-      paramStoryVideoItem = localVideoLinkInfo;
+      return localVideoLinkInfo;
     }
-    do
-    {
-      do
-      {
-        return paramStoryVideoItem;
-        localVideoLinkInfo = paramStoryVideoItem.getVideoLinkInfo();
-        paramStoryVideoItem = localVideoLinkInfo;
-      } while (localVideoLinkInfo == null);
-      paramStoryVideoItem = localVideoLinkInfo;
-    } while (localVideoLinkInfo.a == null);
-    SLog.b("CaptureBannerVideoInfoController", "getVideoCaptureInfo from extern");
-    return localVideoLinkInfo;
+    paramStoryVideoItem = paramStoryVideoItem.getVideoLinkInfo();
+    if ((paramStoryVideoItem != null) && (paramStoryVideoItem.a != null)) {
+      SLog.b("CaptureBannerVideoInfoController", "getVideoCaptureInfo from extern");
+    }
+    return paramStoryVideoItem;
   }
   
   public Set<ActivityLifeCycle> a()
@@ -60,8 +53,10 @@ public class CaptureBannerVideoInfoController
   
   public boolean a(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo == null) {}
-    while (!super.a(paramView)) {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo == null) {
+      return false;
+    }
+    if (!super.a(paramView)) {
       return false;
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryModelItemVideoLinkInfo.a == null)
@@ -116,17 +111,15 @@ public class CaptureBannerVideoInfoController
     paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
     if (!TextUtils.isEmpty(paramStoryPlayerVideoData.e)) {
       paramBannerViewHolder.b.setText(paramStoryPlayerVideoData.e);
-    }
-    for (;;)
-    {
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramStoryPlayerVideoData.b());
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
-      if (!TextUtils.isEmpty(paramStoryPlayerVideoData.d)) {
-        break;
-      }
-      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839756);
-      return;
+    } else {
       paramBannerViewHolder.b.setVisibility(8);
+    }
+    paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramStoryPlayerVideoData.b());
+    paramBannerViewHolder.jdField_a_of_type_AndroidWidgetTextView.setContentDescription(null);
+    if (TextUtils.isEmpty(paramStoryPlayerVideoData.d))
+    {
+      paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130839613);
+      return;
     }
     BannerVideoInfoWidget3.a(paramStoryPlayerVideoData.d, paramBannerViewHolder.jdField_a_of_type_AndroidWidgetImageView, paramBannerViewHolder.jdField_a_of_type_AndroidGraphicsDrawableDrawable, paramBannerViewHolder.jdField_a_of_type_Int, paramBannerViewHolder.jdField_a_of_type_Int);
   }
@@ -142,7 +135,7 @@ public class CaptureBannerVideoInfoController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.CaptureBannerVideoInfoController
  * JD-Core Version:    0.7.0.1
  */

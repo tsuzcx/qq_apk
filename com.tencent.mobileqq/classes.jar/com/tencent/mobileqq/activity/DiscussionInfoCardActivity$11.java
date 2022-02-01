@@ -1,13 +1,14 @@
 package com.tencent.mobileqq.activity;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import com.tencent.mobileqq.app.DiscussionManager;
-import com.tencent.mobileqq.app.DiscussionObserver;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionInfo;
+import com.tencent.mobileqq.discussion.observer.DiscussionObserver;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -23,51 +24,73 @@ class DiscussionInfoCardActivity$11
 {
   DiscussionInfoCardActivity$11(DiscussionInfoCardActivity paramDiscussionInfoCardActivity) {}
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, String paramString1, String paramString2, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionInfoCardActivity", 2, "onGetFlyTicket: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetFlyTicket: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("DiscussionInfoCardActivity", 2, ((StringBuilder)localObject).toString());
     }
     if (!paramBoolean)
     {
-      switch (paramInt)
+      if (paramInt != 1)
       {
-      default: 
-        paramString1 = HardCodeUtil.a(2131703379);
+        if (paramInt != 2) {
+          paramString1 = HardCodeUtil.a(2131703511);
+        } else {
+          paramString1 = HardCodeUtil.a(2131703522);
+        }
       }
-      for (;;)
-      {
-        this.a.a(2130839715, paramString1);
-        return;
-        paramString1 = HardCodeUtil.a(2131703394);
-        continue;
-        paramString1 = HardCodeUtil.a(2131703390);
+      else {
+        paramString1 = HardCodeUtil.a(2131703526);
       }
+      this.a.a(2130839573, paramString1);
+      return;
     }
-    SharedPreferences.Editor localEditor = this.a.getSharedPreferences("qrcode", 0).edit();
-    localEditor.putLong("discussionvalidtime" + DiscussionInfoCardActivity.a(this.a), paramLong1);
-    localEditor.putString("discussion" + DiscussionInfoCardActivity.a(this.a), paramString2);
-    localEditor.putString("discussionfullSig" + DiscussionInfoCardActivity.a(this.a), paramString1);
-    localEditor.commit();
-    this.a.jdField_a_of_type_Long = paramLong1;
-    this.a.b = paramString2;
-    this.a.c = paramString1;
-    this.a.jdField_a_of_type_Boolean = true;
+    Object localObject = this.a.getSharedPreferences("qrcode", 0).edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("discussionvalidtime");
+    localStringBuilder.append(DiscussionInfoCardActivity.a(this.a));
+    ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), paramLong1);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("discussion");
+    localStringBuilder.append(DiscussionInfoCardActivity.a(this.a));
+    ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), paramString2);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("discussionfullSig");
+    localStringBuilder.append(DiscussionInfoCardActivity.a(this.a));
+    ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), paramString1);
+    ((SharedPreferences.Editor)localObject).commit();
+    localObject = this.a;
+    ((DiscussionInfoCardActivity)localObject).jdField_a_of_type_Long = paramLong1;
+    ((DiscussionInfoCardActivity)localObject).b = paramString2;
+    ((DiscussionInfoCardActivity)localObject).c = paramString1;
+    ((DiscussionInfoCardActivity)localObject).jdField_a_of_type_Boolean = true;
   }
   
-  public void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, ArrayList<String> paramArrayList)
   {
     if ((paramBoolean) && (paramLong == Long.valueOf(DiscussionInfoCardActivity.a(this.a)).longValue()))
     {
       DiscussionInfoCardActivity.c(this.a);
-      this.a.a(2, this.a.getString(2131689567));
+      paramArrayList = this.a;
+      paramArrayList.a(2, paramArrayList.getString(2131689599));
     }
   }
   
-  public void a(boolean paramBoolean, Long paramLong)
+  protected void a(boolean paramBoolean, Long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionInfoCardActivity", 2, "onCollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCollectDiscussion isSuccess:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" uin:");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("DiscussionInfoCardActivity", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramBoolean) && (paramLong != null) && (String.valueOf(paramLong).equals(DiscussionInfoCardActivity.a(this.a))))
     {
@@ -77,7 +100,8 @@ class DiscussionInfoCardActivity$11
         paramLong = this.a.app.getApp().getSharedPreferences(this.a.app.getCurrentAccountUin(), 0);
         if (paramLong.getBoolean("multi_chat_set_common_use_key", true))
         {
-          this.a.jdField_a_of_type_AndroidAppDialog = DialogUtil.a(this.a, 230, this.a.getString(2131694375), this.a.getString(2131694374), 2131690800, 2131719599, new DiscussionInfoCardActivity.11.1(this), null);
+          localObject = this.a;
+          ((DiscussionInfoCardActivity)localObject).jdField_a_of_type_AndroidAppDialog = DialogUtil.a((Context)localObject, 230, ((DiscussionInfoCardActivity)localObject).getString(2131694340), this.a.getString(2131694339), 2131690728, 2131719318, new DiscussionInfoCardActivity.11.1(this), null);
           this.a.jdField_a_of_type_AndroidAppDialog.show();
           paramLong.edit().putBoolean("multi_chat_set_common_use_key", false).commit();
         }
@@ -85,17 +109,18 @@ class DiscussionInfoCardActivity$11
     }
   }
   
-  public void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
+  protected void a(boolean paramBoolean, Long paramLong1, Long paramLong2)
   {
     if ((paramBoolean) && (paramLong1 != null) && (String.valueOf(paramLong1).equals(DiscussionInfoCardActivity.a(this.a))))
     {
       DiscussionInfoCardActivity.c(this.a);
       return;
     }
-    QQToast.a(this.a, 1, this.a.getString(2131691862), 0).b(this.a.getTitleBarHeight());
+    paramLong1 = this.a;
+    QQToast.a(paramLong1, 1, paramLong1.getString(2131691784), 0).b(this.a.getTitleBarHeight());
   }
   
-  public void a(boolean paramBoolean, Object paramObject)
+  protected void a(boolean paramBoolean, Object paramObject)
   {
     paramObject = (ArrayList)paramObject;
     int i = paramObject.indexOf(DiscussionInfoCardActivity.a(this.a));
@@ -104,7 +129,8 @@ class DiscussionInfoCardActivity$11
       paramObject = (Boolean)paramObject.get(i + 1);
       if ((paramBoolean) && (paramObject.booleanValue()))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = DiscussionInfoCardActivity.a(this.a).a(DiscussionInfoCardActivity.a(this.a));
+        paramObject = this.a;
+        paramObject.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo = DiscussionInfoCardActivity.a(paramObject).a(DiscussionInfoCardActivity.a(this.a));
         DiscussionInfoCardActivity.c(this.a);
         this.a.a();
         DiscussionInfoCardActivity.d(this.a);
@@ -112,99 +138,108 @@ class DiscussionInfoCardActivity$11
     }
   }
   
-  public void a(boolean paramBoolean, String paramString)
+  protected void a(boolean paramBoolean, String paramString)
   {
-    if (DiscussionInfoCardActivity.a(this.a).equals(paramString))
+    if (DiscussionInfoCardActivity.a(this.a).equals(paramString)) {
+      if (paramBoolean)
+      {
+        paramString = DiscussionInfoCardActivity.a(this.a).a(paramString);
+        if (paramString != null)
+        {
+          DiscussionInfoCardActivity.a(this.a, paramString.discussionName);
+          paramString = this.a;
+          DiscussionInfoCardActivity.a(paramString, DiscussionInfoCardActivity.b(paramString));
+        }
+        if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+        {
+          DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131690783));
+          DiscussionInfoCardActivity.a(this.a).d(2130839588);
+          DiscussionInfoCardActivity.a(this.a).b(false);
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 1500L);
+        }
+      }
+      else
+      {
+        paramString = this.a;
+        DiscussionInfoCardActivity.a(paramString, DiscussionInfoCardActivity.b(paramString));
+        if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+        {
+          DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131690781));
+          DiscussionInfoCardActivity.a(this.a).d(2130839588);
+          DiscussionInfoCardActivity.a(this.a).b(false);
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 1500L);
+        }
+      }
+    }
+  }
+  
+  protected void a(Object[] paramArrayOfObject)
+  {
+    String str2 = (String)paramArrayOfObject[0];
+    int i = ((Integer)paramArrayOfObject[1]).intValue();
+    String str1 = (String)paramArrayOfObject[2];
+    if (str1 != null)
     {
-      if (!paramBoolean) {
-        break label154;
-      }
-      paramString = DiscussionInfoCardActivity.a(this.a).a(paramString);
-      if (paramString != null)
+      paramArrayOfObject = str1;
+      if (!str1.trim().equals("")) {}
+    }
+    else
+    {
+      paramArrayOfObject = this.a.getString(2131693129);
+    }
+    if ((DiscussionInfoCardActivity.a(this.a).equals(str2)) && (!this.a.isFinishing()))
+    {
+      if ((10001 != i) && (10002 != i))
       {
-        DiscussionInfoCardActivity.a(this.a, paramString.discussionName);
-        DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
+        this.a.a(1, paramArrayOfObject);
+        return;
       }
-      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+      DialogUtil.a(this.a, 230, null, paramArrayOfObject, new DiscussionInfoCardActivity.11.2(this, str2), null).show();
+    }
+  }
+  
+  protected void b(boolean paramBoolean, Long paramLong)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUncollectDiscussion isSuccess:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" uin:");
+      localStringBuilder.append(paramLong);
+      QLog.d("DiscussionInfoCardActivity", 2, localStringBuilder.toString());
+    }
+    if ((paramBoolean) && (paramLong != null)) {
+      String.valueOf(paramLong).equals(DiscussionInfoCardActivity.a(this.a));
+    }
+  }
+  
+  protected void b(boolean paramBoolean, String paramString)
+  {
+    if (DiscussionInfoCardActivity.a(this.a).equals(paramString)) {
+      if (paramBoolean)
       {
-        DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131690855));
-        DiscussionInfoCardActivity.a(this.a).d(2130839730);
+        if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+        {
+          DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131692089));
+          DiscussionInfoCardActivity.a(this.a).d(2130839588);
+          DiscussionInfoCardActivity.a(this.a).b(false);
+          this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(16, 1500L);
+        }
+      }
+      else if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
+      {
+        DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131692085));
+        DiscussionInfoCardActivity.a(this.a).d(2130839573);
         DiscussionInfoCardActivity.a(this.a).b(false);
         this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 1500L);
       }
     }
-    label154:
-    do
-    {
-      return;
-      DiscussionInfoCardActivity.a(this.a, DiscussionInfoCardActivity.b(this.a));
-    } while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing()));
-    DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131690853));
-    DiscussionInfoCardActivity.a(this.a).d(2130839730);
-    DiscussionInfoCardActivity.a(this.a).b(false);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 1500L);
-  }
-  
-  public void a(Object[] paramArrayOfObject)
-  {
-    String str = (String)paramArrayOfObject[0];
-    int i = ((Integer)paramArrayOfObject[1]).intValue();
-    paramArrayOfObject = (String)paramArrayOfObject[2];
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.trim().equals(""))) {
-      paramArrayOfObject = this.a.getString(2131693169);
-    }
-    for (;;)
-    {
-      if ((DiscussionInfoCardActivity.a(this.a).equals(str)) && (!this.a.isFinishing()))
-      {
-        if ((10001 == i) || (10002 == i)) {
-          DialogUtil.a(this.a, 230, null, paramArrayOfObject, new DiscussionInfoCardActivity.11.2(this, str), null).show();
-        }
-      }
-      else {
-        return;
-      }
-      this.a.a(1, paramArrayOfObject);
-      return;
-    }
-  }
-  
-  public void b(boolean paramBoolean, Long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("DiscussionInfoCardActivity", 2, "onUncollectDiscussion isSuccess:" + paramBoolean + " uin:" + paramLong);
-    }
-    if ((paramBoolean) && (paramLong != null) && (String.valueOf(paramLong).equals(DiscussionInfoCardActivity.a(this.a)))) {}
-  }
-  
-  public void b(boolean paramBoolean, String paramString)
-  {
-    if (DiscussionInfoCardActivity.a(this.a).equals(paramString))
-    {
-      if (!paramBoolean) {
-        break label112;
-      }
-      if ((DiscussionInfoCardActivity.a(this.a) != null) && (DiscussionInfoCardActivity.a(this.a).isShowing()) && (!this.a.isFinishing()))
-      {
-        DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131692169));
-        DiscussionInfoCardActivity.a(this.a).d(2130839730);
-        DiscussionInfoCardActivity.a(this.a).b(false);
-        this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(16, 1500L);
-      }
-    }
-    label112:
-    while ((DiscussionInfoCardActivity.a(this.a) == null) || (!DiscussionInfoCardActivity.a(this.a).isShowing()) || (this.a.isFinishing())) {
-      return;
-    }
-    DiscussionInfoCardActivity.a(this.a).a(this.a.getString(2131692165));
-    DiscussionInfoCardActivity.a(this.a).d(2130839715);
-    DiscussionInfoCardActivity.a(this.a).b(false);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(17, 1500L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -35,25 +35,41 @@ public final class stFollowFeedsReq
   
   public String toString()
   {
-    return "stFollowFeedsReq{attatch_info='" + this.attatch_info + '\'' + ", is_refresh=" + this.is_refresh + ", is_first=" + this.is_first + ", push_info='" + this.push_info + '\'' + ", scene=" + this.scene + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stFollowFeedsReq{attatch_info='");
+    localStringBuilder.append(this.attatch_info);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", is_refresh=");
+    localStringBuilder.append(this.is_refresh);
+    localStringBuilder.append(", is_first=");
+    localStringBuilder.append(this.is_first);
+    localStringBuilder.append(", push_info='");
+    localStringBuilder.append(this.push_info);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", scene=");
+    localStringBuilder.append(this.scene);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.attatch_info != null) {
-      paramJceOutputStream.write(this.attatch_info, 0);
+    String str = this.attatch_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.is_refresh, 1);
     paramJceOutputStream.write(this.is_first, 2);
-    if (this.push_info != null) {
-      paramJceOutputStream.write(this.push_info, 3);
+    str = this.push_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.scene, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stFollowFeedsReq
  * JD-Core Version:    0.7.0.1
  */

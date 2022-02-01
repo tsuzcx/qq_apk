@@ -20,13 +20,14 @@ class TimerTaskManager$InternalTaskEntry
   
   public String toString()
   {
-    boolean bool2 = false;
     long l = this.jdField_a_of_type_Long;
+    boolean bool2 = false;
+    TimerTaskManager.TimerTaskRunnable localTimerTaskRunnable = this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable;
     boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable != null)
+    if (localTimerTaskRunnable != null)
     {
       bool1 = bool2;
-      if (TimerTaskManager.TimerTaskRunnable.a(this.jdField_a_of_type_ComTencentMobileqqLyricCommonTimerTaskManager$TimerTaskRunnable)) {
+      if (TimerTaskManager.TimerTaskRunnable.a(localTimerTaskRunnable)) {
         bool1 = true;
       }
     }
@@ -35,7 +36,7 @@ class TimerTaskManager$InternalTaskEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.common.TimerTaskManager.InternalTaskEntry
  * JD-Core Version:    0.7.0.1
  */

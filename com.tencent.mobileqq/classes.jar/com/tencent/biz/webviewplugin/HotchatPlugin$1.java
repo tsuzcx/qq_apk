@@ -3,9 +3,8 @@ package com.tencent.biz.webviewplugin;
 import android.app.Activity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class HotchatPlugin$1
@@ -16,11 +15,12 @@ class HotchatPlugin$1
   public void onClick(View paramView)
   {
     this.jdField_a_of_type_ComTencentBizWebviewpluginHotchatPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
-    if ((this.jdField_a_of_type_AndroidAppActivity instanceof BaseActivity))
+    Object localObject = this.jdField_a_of_type_AndroidAppActivity;
+    if ((localObject instanceof QBaseActivity))
     {
-      AppInterface localAppInterface = ((BaseActivity)this.jdField_a_of_type_AndroidAppActivity).getAppInterface();
-      if ((localAppInterface instanceof NearbyAppInterface)) {
-        ((NearbyAppInterface)localAppInterface).b("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
+      localObject = ((QBaseActivity)localObject).getAppRuntime();
+      if ((localObject instanceof INearbyAppInterface)) {
+        ((INearbyAppInterface)localObject).nearbyReportClickEvent("dc00899", "grp_lbs", "", "hot_create", "clk_create", 0, 0, "", "", "", "");
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -28,7 +28,7 @@ class HotchatPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HotchatPlugin.1
  * JD-Core Version:    0.7.0.1
  */

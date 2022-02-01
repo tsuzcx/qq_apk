@@ -35,9 +35,10 @@ public class DTReportComponent
     if (VideoReportInner.getInstance().isDebugMode())
     {
       paramBuilder = checkInputs();
-      if (!TextUtils.isEmpty(paramBuilder)) {
-        throw new RuntimeException(paramBuilder);
+      if (TextUtils.isEmpty(paramBuilder)) {
+        return;
       }
+      throw new RuntimeException(paramBuilder);
     }
   }
   
@@ -53,9 +54,7 @@ public class DTReportComponent
   
   private IFormatter getFormatter(@DTConfigConstants.ElementFormatMode int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 2) {
       return new DTParamsFlattenFormatter();
     }
     return new DTParamsNewsFlattenFormatter();
@@ -75,10 +74,11 @@ public class DTReportComponent
   
   String checkInputs()
   {
-    if (this.mConfiguration == null) {
+    Configuration localConfiguration = this.mConfiguration;
+    if (localConfiguration == null) {
       return "config is null";
     }
-    if (this.mConfiguration.getAudioTimePinInterval() < 5) {
+    if (localConfiguration.getAudioTimePinInterval() < 5) {
       return "AudioTimePinInterval value below 5s, may cause performance issues";
     }
     if (this.mConfiguration.getAudioReportHearBeatInterval() < this.mConfiguration.getAudioTimePinInterval()) {
@@ -100,7 +100,7 @@ public class DTReportComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.DTReportComponent
  * JD-Core Version:    0.7.0.1
  */

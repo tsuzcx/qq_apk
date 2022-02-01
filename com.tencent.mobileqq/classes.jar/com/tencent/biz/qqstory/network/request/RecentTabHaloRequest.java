@@ -33,17 +33,18 @@ public class RecentTabHaloRequest
     try
     {
       localRspMsgListHeadNode.mergeFrom(paramArrayOfByte);
-      return new RecentTabHaloResponse(localRspMsgListHeadNode);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("RecentTabHaloRequest", 2, "decodeResponse: failed. Message: exception: " + paramArrayOfByte);
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("decodeResponse: failed. Message: exception: ");
+        localStringBuilder.append(paramArrayOfByte);
+        QLog.e("RecentTabHaloRequest", 2, localStringBuilder.toString());
       }
     }
+    return new RecentTabHaloResponse(localRspMsgListHeadNode);
   }
   
   public String a()
@@ -51,34 +52,38 @@ public class RecentTabHaloRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqMsgListHeadNode localReqMsgListHeadNode = new qqstory_service.ReqMsgListHeadNode();
     PBBytesField localPBBytesField = localReqMsgListHeadNode.current_seq;
-    if (this.b != null) {}
-    for (String str = this.b;; str = "")
-    {
-      localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
-      localReqMsgListHeadNode.uin_list.set(this.jdField_a_of_type_JavaUtilList);
-      localReqMsgListHeadNode.source.set(this.c);
-      localReqMsgListHeadNode.setHasFlag(true);
-      return localReqMsgListHeadNode.toByteArray();
+    String str = this.b;
+    if (str == null) {
+      str = "";
     }
+    localPBBytesField.set(ByteStringMicro.copyFromUtf8(str));
+    localReqMsgListHeadNode.uin_list.set(this.jdField_a_of_type_JavaUtilList);
+    localReqMsgListHeadNode.source.set(this.c);
+    localReqMsgListHeadNode.setHasFlag(true);
+    return localReqMsgListHeadNode.toByteArray();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("RecentTabHaloRequest{");
-    localStringBuilder.append("mCurrentSeq='").append(this.b).append('\'');
-    localStringBuilder.append(", mUins=").append(this.jdField_a_of_type_JavaUtilList);
-    localStringBuilder.append(", mWhen=").append(this.c);
+    localStringBuilder.append("mCurrentSeq='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mUins=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append(", mWhen=");
+    localStringBuilder.append(this.c);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.RecentTabHaloRequest
  * JD-Core Version:    0.7.0.1
  */

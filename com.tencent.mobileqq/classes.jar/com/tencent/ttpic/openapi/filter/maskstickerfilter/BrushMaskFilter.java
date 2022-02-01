@@ -23,35 +23,39 @@ public class BrushMaskFilter
   private static final int LINE_POINT_GAP = 200;
   private static final String TAG = FaceLineFilter.class.getSimpleName();
   private static final String VERTEX_SHADER = "attribute vec4 position;\nattribute vec4 inputGrayTextureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvoid main() {\n    gl_Position = position;\n    grayTextureCoordinate = inputGrayTextureCoordinate.xy;\n}\n";
-  private boolean mIsDrawLines = true;
+  private boolean mIsDrawLines;
   private PointF mLastPoint;
   private long mLastUpdateTime;
   private Frame mMaskFrame = new Frame();
-  private int mMaskType = 1;
-  private boolean mNeedMaksFrameClear = true;
+  private int mMaskType;
+  private boolean mNeedMaksFrameClear;
   private String mPaintImagePath;
-  private float[] mPaintPointList = new float[0];
-  private int mPaintSize = 10;
-  private float[] mTextruePointList = new float[0];
+  private float[] mPaintPointList;
+  private int mPaintSize;
+  private float[] mTextruePointList;
   
   public BrushMaskFilter(int paramInt1, int paramInt2, String paramString)
   {
     super("attribute vec4 position;\nattribute vec4 inputGrayTextureCoordinate;\nvarying vec2 grayTextureCoordinate;\nvoid main() {\n    gl_Position = position;\n    grayTextureCoordinate = inputGrayTextureCoordinate.xy;\n}\n", "precision mediump float;\n varying vec2 grayTextureCoordinate;\nvarying highp vec2 textureCoordinate;\nuniform sampler2D inputImageTexture2;\nuniform int drawTypeFragment;\nuniform int maskType;\nvoid main(void) {\n    if (drawTypeFragment == 1) {// 纯色笔触画到画布\n        gl_FragColor = vec4(1.0, 1.0, 1.0, 1.0);\n    } else if (drawTypeFragment == 2) {// 纯色笔触把画布融合到画面\n        vec4 texColor = texture2D(inputImageTexture2, grayTextureCoordinate);\n        gl_FragColor = vec4(texColor.rgb, texColor.a);\n    }\n}\n");
+    boolean bool = true;
+    this.mNeedMaksFrameClear = true;
+    this.mPaintSize = 10;
+    this.mPaintPointList = new float[0];
+    this.mTextruePointList = new float[0];
+    this.mIsDrawLines = true;
+    this.mMaskType = 1;
     String str = paramString;
     if (paramString == null) {
       str = FaceOffUtil.getMaskBrushPointPath();
     }
     this.mPaintImagePath = str;
-    if (this.mPaintImagePath == null) {}
-    for (;;)
-    {
-      this.mIsDrawLines = bool;
-      initParams();
-      this.mPaintSize = paramInt2;
-      this.mMaskType = paramInt1;
-      return;
+    if (this.mPaintImagePath != null) {
       bool = false;
     }
+    this.mIsDrawLines = bool;
+    initParams();
+    this.mPaintSize = paramInt2;
+    this.mMaskType = paramInt1;
   }
   
   private double caculateDistance(PointF paramPointF1, PointF paramPointF2)
@@ -63,52 +67,48 @@ public class BrushMaskFilter
   
   private ArrayList<PointF> check2Points(PointF paramPointF1, PointF paramPointF2)
   {
-    ArrayList localArrayList2 = null;
-    ArrayList localArrayList1 = localArrayList2;
-    if (paramPointF1 != null)
+    if ((paramPointF1 != null) && (paramPointF2 != null))
     {
-      localArrayList1 = localArrayList2;
-      if (paramPointF2 != null)
+      if (this.mPaintSize == 0) {
+        return null;
+      }
+      double d1 = caculateDistance(paramPointF1, paramPointF2);
+      int i = this.mPaintSize;
+      if (d1 > i * 0.5F)
       {
-        if (this.mPaintSize != 0) {
-          break label33;
+        double d2 = i;
+        Double.isNaN(d2);
+        int j = (int)Math.ceil(d1 * 2.0D / d2);
+        ArrayList localArrayList = new ArrayList();
+        float f1 = paramPointF2.x;
+        float f3 = paramPointF1.x;
+        float f2 = j;
+        f1 = (f1 - f3) / f2;
+        f2 = (paramPointF2.y - paramPointF1.y) / f2;
+        i = 1;
+        while (i < j)
+        {
+          f3 = paramPointF1.x;
+          float f4 = i;
+          localArrayList.add(new PointF(f3 + f1 * f4, paramPointF1.y + f4 * f2));
+          i += 1;
         }
-        localArrayList1 = localArrayList2;
+        return localArrayList;
       }
     }
-    label33:
-    double d;
-    do
-    {
-      return localArrayList1;
-      d = caculateDistance(paramPointF1, paramPointF2);
-      localArrayList1 = localArrayList2;
-    } while (d <= this.mPaintSize * 0.5F);
-    int j = (int)Math.ceil(2.0D * d / this.mPaintSize);
-    localArrayList2 = new ArrayList();
-    float f1 = (paramPointF2.x - paramPointF1.x) / j;
-    float f2 = (paramPointF2.y - paramPointF1.y) / j;
-    int i = 1;
-    for (;;)
-    {
-      localArrayList1 = localArrayList2;
-      if (i >= j) {
-        break;
-      }
-      localArrayList2.add(new PointF(paramPointF1.x + i * f1, paramPointF1.y + i * f2));
-      i += 1;
-    }
+    return null;
   }
   
   private List<PointF> insertPoints(List<PointF> paramList)
   {
-    if ((paramList == null) || (paramList.size() < 2)) {}
-    Object localObject1;
-    do
+    Object localObject1 = paramList;
+    if (paramList != null)
     {
-      return paramList;
-      Object localObject2 = (PointF)paramList.get(0);
+      if (paramList.size() < 2) {
+        return paramList;
+      }
       localObject1 = null;
+      Object localObject2 = (PointF)paramList.get(0);
       int i = 1;
       while (i < paramList.size())
       {
@@ -130,7 +130,10 @@ public class BrushMaskFilter
         localObject1 = localObject2;
         localObject2 = localPointF;
       }
-    } while (localObject1 == null);
+      if (localObject1 == null) {
+        return paramList;
+      }
+    }
     return localObject1;
   }
   
@@ -139,20 +142,18 @@ public class BrushMaskFilter
     super.ApplyGLSLFilter();
     if (this.mIsDrawLines) {
       setDrawMode(AEOpenRenderConfig.DRAW_MODE.LINES_STRIP);
-    }
-    for (;;)
-    {
-      this.mNeedMaksFrameClear = true;
-      return;
+    } else {
       setDrawMode(AEOpenRenderConfig.DRAW_MODE.TRIANGLES);
     }
+    this.mNeedMaksFrameClear = true;
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    if (this.mMaskFrame != null) {
-      this.mMaskFrame.clear();
+    Frame localFrame = this.mMaskFrame;
+    if (localFrame != null) {
+      localFrame.clear();
     }
   }
   
@@ -169,13 +170,14 @@ public class BrushMaskFilter
   
   public void initParams()
   {
-    if (this.mIsDrawLines) {}
-    for (int i = 1;; i = 2)
-    {
-      addParam(new UniformParam.IntParam("drawTypeFragment", i));
-      addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.mPaintImagePath, 1), 33986, true));
-      return;
+    int i;
+    if (this.mIsDrawLines) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    addParam(new UniformParam.IntParam("drawTypeFragment", i));
+    addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", BitmapUtils.decodeSampleBitmap(AEModule.getContext(), this.mPaintImagePath, 1), 33986, true));
   }
   
   public Frame render(int paramInt1, int paramInt2, int paramInt3)
@@ -185,7 +187,8 @@ public class BrushMaskFilter
       this.mNeedMaksFrameClear = false;
       FrameUtil.clearFrame(this.mMaskFrame, 0.0F, 0.0F, 0.0F, 0.0F, paramInt2, paramInt3);
     }
-    this.mMaskFrame.bindFrame(-1, this.mMaskFrame.width, this.mMaskFrame.height, 0.0D);
+    Frame localFrame = this.mMaskFrame;
+    localFrame.bindFrame(-1, localFrame.width, this.mMaskFrame.height, 0.0D);
     GlUtil.setBlendMode(true);
     OnDrawFrameGLSL();
     renderTexture(this.mMaskFrame.getTextureId(), paramInt2, paramInt3);
@@ -212,30 +215,33 @@ public class BrushMaskFilter
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      if ((this.mLastPoint != null) && (System.currentTimeMillis() - this.mLastUpdateTime < 200L)) {
+      PointF localPointF = this.mLastPoint;
+      int i = 0;
+      if ((localPointF != null) && (System.currentTimeMillis() - this.mLastUpdateTime < 200L)) {
         paramList.add(0, this.mLastPoint);
       }
       if (paramList.size() * 2 > this.mPaintPointList.length) {
         this.mPaintPointList = new float[paramList.size() * 2];
       }
-      int j = 0;
       int k = 0;
-      int i = 0;
-      while (j < paramList.size())
+      int j = 0;
+      while (i < paramList.size())
       {
-        PointF localPointF = (PointF)paramList.get(j);
+        localPointF = (PointF)paramList.get(i);
         this.mPaintPointList[k] = ((localPointF.x - this.mPaintSize * 0.5F) * 2.0F / paramInt1 - 1.0F);
         this.mPaintPointList[(k + 1)] = ((localPointF.y - this.mPaintSize * 0.5F) * 2.0F / paramInt2 - 1.0F);
         k += 2;
-        i += 1;
         j += 1;
+        i += 1;
       }
       if (this.mLastPoint == null) {
         this.mLastPoint = new PointF();
       }
       this.mLastUpdateTime = System.currentTimeMillis();
-      this.mLastPoint.x = ((PointF)paramList.get(i - 1)).x;
-      this.mLastPoint.y = ((PointF)paramList.get(i - 1)).y;
+      localPointF = this.mLastPoint;
+      paramInt1 = j - 1;
+      localPointF.x = ((PointF)paramList.get(paramInt1)).x;
+      this.mLastPoint.y = ((PointF)paramList.get(paramInt1)).y;
       setPositions(this.mPaintPointList);
       setCoordNum(paramList.size());
       GLES20.glLineWidth(this.mPaintSize);
@@ -246,13 +252,16 @@ public class BrushMaskFilter
   {
     if ((paramList != null) && (paramList.size() > 0))
     {
-      PointF localPointF;
-      if ((this.mLastPoint != null) && (System.currentTimeMillis() - this.mLastUpdateTime < 200L))
+      Object localObject = this.mLastPoint;
+      int i = 0;
+      float f1;
+      float f2;
+      if ((localObject != null) && (System.currentTimeMillis() - this.mLastUpdateTime < 200L))
       {
-        localPointF = (PointF)paramList.get(0);
-        float f1 = localPointF.x - this.mLastPoint.x;
-        float f2 = localPointF.y - this.mLastPoint.y;
-        if (Math.abs(f2 * f2 + f1 * f1) > 9.0F) {
+        localObject = (PointF)paramList.get(0);
+        f1 = ((PointF)localObject).x - this.mLastPoint.x;
+        f2 = ((PointF)localObject).y - this.mLastPoint.y;
+        if (Math.abs(f1 * f1 + f2 * f2) > 9.0F) {
           paramList.add(0, this.mLastPoint);
         }
       }
@@ -262,46 +271,73 @@ public class BrushMaskFilter
         this.mPaintPointList = new float[paramList.size() * 12];
         this.mTextruePointList = new float[paramList.size() * 12];
       }
-      int i = 0;
       int k = 0;
       int j = 0;
-      while (j < paramList.size())
+      while (i < paramList.size())
       {
-        localPointF = (PointF)paramList.get(j);
-        this.mPaintPointList[k] = ((localPointF.x + this.mPaintSize * 0.5F) * 2.0F / paramInt1 - 1.0F);
-        this.mPaintPointList[(k + 1)] = ((localPointF.y + this.mPaintSize * 0.5F) * 2.0F / paramInt2 - 1.0F);
-        this.mPaintPointList[(k + 2)] = ((localPointF.x + this.mPaintSize * 0.5F) * 2.0F / paramInt1 - 1.0F);
-        this.mPaintPointList[(k + 3)] = ((localPointF.y - this.mPaintSize * 0.5F) * 2.0F / paramInt2 - 1.0F);
-        this.mPaintPointList[(k + 4)] = ((localPointF.x - this.mPaintSize * 0.5F) * 2.0F / paramInt1 - 1.0F);
-        this.mPaintPointList[(k + 5)] = ((localPointF.y - this.mPaintSize * 0.5F) * 2.0F / paramInt2 - 1.0F);
-        this.mPaintPointList[(k + 6)] = this.mPaintPointList[k];
-        this.mPaintPointList[(k + 7)] = this.mPaintPointList[(k + 1)];
-        this.mPaintPointList[(k + 8)] = this.mPaintPointList[(k + 4)];
-        this.mPaintPointList[(k + 9)] = this.mPaintPointList[(k + 5)];
-        this.mPaintPointList[(k + 10)] = ((localPointF.x - this.mPaintSize * 0.5F) * 2.0F / paramInt1 - 1.0F);
-        this.mPaintPointList[(k + 11)] = ((localPointF.y + this.mPaintSize * 0.5F) * 2.0F / paramInt2 - 1.0F);
-        this.mTextruePointList[k] = 1.0F;
-        this.mTextruePointList[(k + 1)] = 1.0F;
-        this.mTextruePointList[(k + 2)] = 1.0F;
-        this.mTextruePointList[(k + 3)] = 0.0F;
-        this.mTextruePointList[(k + 4)] = 0.0F;
-        this.mTextruePointList[(k + 5)] = 0.0F;
-        this.mTextruePointList[(k + 6)] = 1.0F;
-        this.mTextruePointList[(k + 7)] = 1.0F;
-        this.mTextruePointList[(k + 8)] = 0.0F;
-        this.mTextruePointList[(k + 9)] = 0.0F;
-        this.mTextruePointList[(k + 10)] = 0.0F;
-        this.mTextruePointList[(k + 11)] = 1.0F;
+        localObject = (PointF)paramList.get(i);
+        float[] arrayOfFloat = this.mPaintPointList;
+        f2 = ((PointF)localObject).x;
+        float f3 = this.mPaintSize;
+        f1 = paramInt1;
+        arrayOfFloat[k] = ((f2 + f3 * 0.5F) * 2.0F / f1 - 1.0F);
+        arrayOfFloat = this.mPaintPointList;
+        int m = k + 1;
+        f2 = ((PointF)localObject).y;
+        f3 = this.mPaintSize;
+        float f4 = paramInt2;
+        arrayOfFloat[m] = ((f2 + f3 * 0.5F) * 2.0F / f4 - 1.0F);
+        arrayOfFloat = this.mPaintPointList;
+        int n = k + 2;
+        arrayOfFloat[n] = ((((PointF)localObject).x + this.mPaintSize * 0.5F) * 2.0F / f1 - 1.0F);
+        arrayOfFloat = this.mPaintPointList;
+        int i1 = k + 3;
+        arrayOfFloat[i1] = ((((PointF)localObject).y - this.mPaintSize * 0.5F) * 2.0F / f4 - 1.0F);
+        arrayOfFloat = this.mPaintPointList;
+        int i2 = k + 4;
+        arrayOfFloat[i2] = ((((PointF)localObject).x - this.mPaintSize * 0.5F) * 2.0F / f1 - 1.0F);
+        arrayOfFloat = this.mPaintPointList;
+        int i3 = k + 5;
+        arrayOfFloat[i3] = ((((PointF)localObject).y - this.mPaintSize * 0.5F) * 2.0F / f4 - 1.0F);
+        arrayOfFloat = this.mPaintPointList;
+        int i4 = k + 6;
+        arrayOfFloat[i4] = arrayOfFloat[k];
+        int i5 = k + 7;
+        arrayOfFloat[i5] = arrayOfFloat[m];
+        int i6 = k + 8;
+        arrayOfFloat[i6] = arrayOfFloat[i2];
+        int i7 = k + 9;
+        arrayOfFloat[i7] = arrayOfFloat[i3];
+        int i8 = k + 10;
+        arrayOfFloat[i8] = ((((PointF)localObject).x - this.mPaintSize * 0.5F) * 2.0F / f1 - 1.0F);
+        arrayOfFloat = this.mPaintPointList;
+        int i9 = k + 11;
+        arrayOfFloat[i9] = ((((PointF)localObject).y + this.mPaintSize * 0.5F) * 2.0F / f4 - 1.0F);
+        localObject = this.mTextruePointList;
+        localObject[k] = 1.0F;
+        localObject[m] = 1.0F;
+        localObject[n] = 1.0F;
+        localObject[i1] = 0.0F;
+        localObject[i2] = 0.0F;
+        localObject[i3] = 0.0F;
+        localObject[i4] = 1.0F;
+        localObject[i5] = 1.0F;
+        localObject[i6] = 0.0F;
+        localObject[i7] = 0.0F;
+        localObject[i8] = 0.0F;
+        localObject[i9] = 1.0F;
         k += 12;
-        i += 1;
         j += 1;
+        i += 1;
       }
       if (this.mLastPoint == null) {
         this.mLastPoint = new PointF();
       }
       this.mLastUpdateTime = System.currentTimeMillis();
-      this.mLastPoint.x = ((PointF)paramList.get(i - 1)).x;
-      this.mLastPoint.y = ((PointF)paramList.get(i - 1)).y;
+      localObject = this.mLastPoint;
+      paramInt1 = j - 1;
+      ((PointF)localObject).x = ((PointF)paramList.get(paramInt1)).x;
+      this.mLastPoint.y = ((PointF)paramList.get(paramInt1)).y;
       setPositions(this.mPaintPointList);
       setGrayCords(this.mTextruePointList);
       setCoordNum(paramList.size() * 6);
@@ -310,7 +346,7 @@ public class BrushMaskFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.maskstickerfilter.BrushMaskFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,8 @@ import android.util.Pair;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.friend.data.ExtRspData;
+import com.tencent.qphone.base.remote.ToServiceMsg;
+import friendlist.AddFriendResp;
 import friendlist.FriendInfo;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,6 +26,8 @@ public abstract class BaseFriendProcessor
   {
     this.mApp = null;
   }
+  
+  public void onAddFriendSuccess(AddFriendResp paramAddFriendResp, ToServiceMsg paramToServiceMsg) {}
   
   public void onBatchUpdateExtensionInfo(List<Pair<ExtensionInfo, FriendInfo>> paramList, ExtRspData paramExtRspData, long paramLong, boolean paramBoolean) {}
   
@@ -71,7 +75,7 @@ public abstract class BaseFriendProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.processor.BaseFriendProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -24,15 +24,16 @@ public class Router
   
   public static Router getInstance()
   {
-    if (instance != null) {
-      return instance;
+    Router localRouter = instance;
+    if (localRouter != null) {
+      return localRouter;
     }
     try
     {
       if (instance == null) {
         instance = new Router();
       }
-      Router localRouter = instance;
+      localRouter = instance;
       return localRouter;
     }
     finally {}
@@ -60,19 +61,33 @@ public class Router
   {
     try
     {
-      Logger.info("route init begin. pid=" + Process.myPid());
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("route init begin. pid=");
+      ((StringBuilder)localObject1).append(Process.myPid());
+      Logger.info(((StringBuilder)localObject1).toString());
       long l = System.currentTimeMillis();
-      ArrayList localArrayList = new ArrayList();
-      BaseRouteInitializer localBaseRouteInitializer = (BaseRouteInitializer)Class.forName("com.tencent.mobileqq.qroute.route.generated.DefaultRouteInitializer").newInstance();
-      localBaseRouteInitializer.routeRegister = new Router.1(this, localArrayList);
-      localBaseRouteInitializer.init();
-      Logger.debug("route path:\n" + routePathToString(localArrayList));
-      Logger.info("route init finished, count=" + localArrayList.size() + " cost-time=" + (System.currentTimeMillis() - l));
+      localObject1 = new ArrayList();
+      localObject2 = (BaseRouteInitializer)Class.forName("com.tencent.mobileqq.qroute.route.generated.DefaultRouteInitializer").newInstance();
+      ((BaseRouteInitializer)localObject2).routeRegister = new Router.1(this, (ArrayList)localObject1);
+      ((BaseRouteInitializer)localObject2).init();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("route path:\n");
+      ((StringBuilder)localObject2).append(routePathToString((List)localObject1));
+      Logger.debug(((StringBuilder)localObject2).toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("route init finished, count=");
+      ((StringBuilder)localObject2).append(((ArrayList)localObject1).size());
+      ((StringBuilder)localObject2).append(" cost-time=");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+      Logger.info(((StringBuilder)localObject2).toString());
       return;
     }
     catch (Exception localException)
     {
-      Logger.warning("init route failed, " + localException.toString());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("init route failed, ");
+      ((StringBuilder)localObject2).append(localException.toString());
+      Logger.warning(((StringBuilder)localObject2).toString());
     }
   }
   
@@ -101,8 +116,10 @@ public class Router
   {
     StringBuilder localStringBuilder = new StringBuilder();
     paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localStringBuilder.append((String)paramList.next()).append('\n');
+    while (paramList.hasNext())
+    {
+      localStringBuilder.append((String)paramList.next());
+      localStringBuilder.append('\n');
     }
     return localStringBuilder.toString();
   }
@@ -125,7 +142,7 @@ public class Router
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.Router
  * JD-Core Version:    0.7.0.1
  */

@@ -44,33 +44,30 @@ public class ClearEllipsisEditText
     if ((paramString != null) && (this.jdField_d_of_type_Boolean))
     {
       int i = paramString.length();
-      String str1 = paramString;
+      str = paramString;
       if (this.jdField_d_of_type_Int == 1)
       {
         i = paramString.getBytes().length;
-        str1 = paramString;
+        str = paramString;
       }
-      for (;;)
+      while (i > this.jdField_c_of_type_Int)
       {
-        str2 = str1;
-        if (i <= this.jdField_c_of_type_Int) {
-          break;
-        }
-        paramString = str1.substring(0, str1.length() - 1);
+        paramString = str.substring(0, str.length() - 1);
         i = paramString.length();
-        str1 = paramString;
+        str = paramString;
         if (this.jdField_d_of_type_Int == 1)
         {
           i = paramString.getBytes().length;
-          str1 = paramString;
+          str = paramString;
         }
       }
+      return str;
     }
-    String str2 = paramString;
+    String str = paramString;
     if (paramString == null) {
-      str2 = "";
+      str = "";
     }
-    return str2;
+    return str;
   }
   
   private String a(String paramString, int paramInt)
@@ -94,7 +91,7 @@ public class ClearEllipsisEditText
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
+  protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
     if (!paramBoolean) {}
@@ -114,7 +111,7 @@ public class ClearEllipsisEditText
     return;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.jdField_a_of_type_Int = getMeasuredHeight();
@@ -123,35 +120,37 @@ public class ClearEllipsisEditText
   
   public void setEllipsisText(String paramString)
   {
-    if (paramString == null) {}
-    for (String str = "";; str = paramString)
+    String str;
+    if (paramString == null) {
+      str = "";
+    } else {
+      str = paramString;
+    }
+    this.jdField_a_of_type_JavaLangString = a(paramString);
+    int i = this.jdField_b_of_type_Int;
+    if (i <= 0)
     {
-      this.jdField_a_of_type_JavaLangString = a(paramString);
-      if (this.jdField_b_of_type_Int <= 0)
-      {
-        post(new ClearEllipsisEditText.3(this, str));
-        return;
-      }
-      this.jdField_c_of_type_Boolean = true;
-      setText(a(str, this.jdField_b_of_type_Int));
+      post(new ClearEllipsisEditText.3(this, str));
       return;
     }
+    this.jdField_c_of_type_Boolean = true;
+    setText(a(str, i));
   }
   
   public void setMaxLength(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 == 1) || (paramInt2 == 2)) {}
-    for (this.jdField_d_of_type_Int = paramInt2;; this.jdField_d_of_type_Int = 2)
-    {
-      this.jdField_d_of_type_Boolean = true;
-      this.jdField_c_of_type_Int = paramInt1;
-      return;
+    if ((paramInt2 != 1) && (paramInt2 != 2)) {
+      this.jdField_d_of_type_Int = 2;
+    } else {
+      this.jdField_d_of_type_Int = paramInt2;
     }
+    this.jdField_d_of_type_Boolean = true;
+    this.jdField_c_of_type_Int = paramInt1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.views.ClearEllipsisEditText
  * JD-Core Version:    0.7.0.1
  */

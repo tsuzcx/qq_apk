@@ -30,14 +30,19 @@ public class BGLocateMonitor
   {
     if (!isAppOnForeground())
     {
-      RuntimeException localRuntimeException = new RuntimeException("BGLocate# SOSOInterface#startLocation perCheckCode = " + paramInt);
-      QLog.d("BGLocateMonitor", 1, "SOSOInterface#startLocation in background, perCheckCode = " + paramInt, localRuntimeException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("BGLocate# SOSOInterface#startLocation perCheckCode = ");
+      ((StringBuilder)localObject).append(paramInt);
+      localObject = new RuntimeException(((StringBuilder)localObject).toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SOSOInterface#startLocation in background, perCheckCode = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("BGLocateMonitor", 1, localStringBuilder.toString(), (Throwable)localObject);
     }
   }
   
   private static void clearLocationManagerCache(Context paramContext)
   {
-    Context localContext = null;
     QLog.d("BGLocateMonitor", 1, "clearLocationManagerCache");
     if (paramContext == null)
     {
@@ -45,56 +50,65 @@ public class BGLocateMonitor
       return;
     }
     if ((paramContext instanceof ContextWrapper)) {
-      localContext = ((ContextWrapper)paramContext).getBaseContext();
+      paramContext = ((ContextWrapper)paramContext).getBaseContext();
+    } else {
+      paramContext = null;
     }
     for (;;)
     {
       int i;
       try
       {
-        paramContext = Class.forName("android.app.ContextImpl").getDeclaredField("mServiceCache");
-        paramContext.setAccessible(true);
-        paramContext = (Object[])paramContext.get(localContext);
-        if (paramContext == null) {
-          break;
-        }
-        QLog.d("BGLocateMonitor", 1, "serviceCache: " + paramContext.length);
-        i = 0;
-        j = -1;
-        if (i < paramContext.length)
+        Object localObject = Class.forName("android.app.ContextImpl").getDeclaredField("mServiceCache");
+        ((Field)localObject).setAccessible(true);
+        paramContext = (Object[])((Field)localObject).get(paramContext);
+        if (paramContext != null)
         {
-          localContext = paramContext[i];
-          k = j;
-          if (localContext == null) {
-            break label218;
-          }
-          QLog.d("BGLocateMonitor", 1, "serviceType: " + localContext.getClass().getName() + " i: " + i);
-          if (!(localContext instanceof LocationManager))
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("serviceCache: ");
+          ((StringBuilder)localObject).append(paramContext.length);
+          QLog.d("BGLocateMonitor", 1, ((StringBuilder)localObject).toString());
+          i = 0;
+          j = -1;
+          if (i < paramContext.length)
           {
+            localObject = paramContext[i];
             k = j;
-            if (!(localContext instanceof TelephonyManager)) {
-              break label218;
+            if (localObject == null) {
+              break label247;
             }
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("serviceType: ");
+            localStringBuilder.append(localObject.getClass().getName());
+            localStringBuilder.append(" i: ");
+            localStringBuilder.append(i);
+            QLog.d("BGLocateMonitor", 1, localStringBuilder.toString());
+            if ((localObject instanceof LocationManager)) {
+              break label245;
+            }
+            k = j;
+            if (!(localObject instanceof TelephonyManager)) {
+              break label247;
+            }
+            break label245;
           }
-        }
-        else
-        {
-          if (j == -1) {
-            break;
+          if (j != -1)
+          {
+            paramContext[j] = null;
+            QLog.d("BGLocateMonitor", 1, "real clear locationManager cache");
+            return;
           }
-          paramContext[j] = null;
-          QLog.d("BGLocateMonitor", 1, "real clear locationManager cache");
-          return;
         }
       }
       catch (Throwable paramContext)
       {
         paramContext.printStackTrace();
         QLog.d("BGLocateMonitor", 1, "clearLocationManagerCache", paramContext);
-        return;
       }
+      return;
+      label245:
       int k = i;
-      label218:
+      label247:
       i += 1;
       int j = k;
     }
@@ -164,36 +178,56 @@ public class BGLocateMonitor
   
   private static boolean needReport(String paramString, String[] paramArrayOfString)
   {
-    boolean bool2 = true;
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool1 = TextUtils.isEmpty(paramString);
+    boolean bool3 = false;
+    if (bool1) {
       return false;
     }
-    boolean bool3 = isAppOnForeground();
+    boolean bool4 = isAppOnForeground();
     int j = paramArrayOfString.length;
     int i = 0;
-    if (i < j) {
-      if (!paramArrayOfString[i].equals(paramString)) {}
-    }
-    for (boolean bool1 = true;; bool1 = false)
+    while (i < j)
     {
-      if (bool1)
+      if (paramArrayOfString[i].equals(paramString))
       {
-        QLog.d("BGLocateMonitor", 1, "needReport, " + paramString + ", isMonitorMethod: " + bool1 + ", isAppOnForeground: " + bool3, new RuntimeException("BGLocateMonitor MonitorMethod"));
-        label103:
-        if ((!bool1) || (bool3)) {
-          break label178;
-        }
+        bool1 = true;
+        break label57;
       }
-      label178:
-      for (bool1 = bool2;; bool1 = false)
-      {
-        return bool1;
-        i += 1;
-        break;
-        QLog.d("BGLocateMonitor", 1, "needReport, " + paramString + ", isMonitorMethod: " + bool1 + ", isAppOnForeground: " + bool3);
-        break label103;
+      i += 1;
+    }
+    bool1 = false;
+    label57:
+    if (bool1)
+    {
+      paramArrayOfString = new StringBuilder();
+      paramArrayOfString.append("needReport, ");
+      paramArrayOfString.append(paramString);
+      paramArrayOfString.append(", isMonitorMethod: ");
+      paramArrayOfString.append(bool1);
+      paramArrayOfString.append(", isAppOnForeground: ");
+      paramArrayOfString.append(bool4);
+      QLog.d("BGLocateMonitor", 1, paramArrayOfString.toString(), new RuntimeException("BGLocateMonitor MonitorMethod"));
+    }
+    else
+    {
+      paramArrayOfString = new StringBuilder();
+      paramArrayOfString.append("needReport, ");
+      paramArrayOfString.append(paramString);
+      paramArrayOfString.append(", isMonitorMethod: ");
+      paramArrayOfString.append(bool1);
+      paramArrayOfString.append(", isAppOnForeground: ");
+      paramArrayOfString.append(bool4);
+      QLog.d("BGLocateMonitor", 1, paramArrayOfString.toString());
+    }
+    boolean bool2 = bool3;
+    if (bool1)
+    {
+      bool2 = bool3;
+      if (!bool4) {
+        bool2 = true;
       }
     }
+    return bool2;
   }
   
   private static void report(String paramString)
@@ -213,7 +247,7 @@ public class BGLocateMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.BGLocateMonitor
  * JD-Core Version:    0.7.0.1
  */

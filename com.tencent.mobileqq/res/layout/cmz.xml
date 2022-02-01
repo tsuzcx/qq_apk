@@ -1,3 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<ImageView android:id="@id/icon" android:layout_width="@dimen/bf2" android:layout_height="@dimen/bf1" android:scaleType="centerCrop"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<RelativeLayout android:id="@id/nuh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="16.0dip" android:textColor="@color/al3" android:ellipsize="marquee" android:id="@id/mgh" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:singleLine="true" android:layout_alignParentLeft="true" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
+    <ImageView android:id="@id/mgi" android:visibility="gone" android:clickable="true" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/gys" android:layout_toRightOf="@id/mgh" android:layout_centerVertical="true" android:onClick="BtnOnClick" />
+</RelativeLayout>

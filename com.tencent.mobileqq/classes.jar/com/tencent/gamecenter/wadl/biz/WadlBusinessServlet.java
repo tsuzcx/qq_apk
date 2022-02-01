@@ -15,88 +15,74 @@ public class WadlBusinessServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    Object localObject;
-    long l;
-    boolean bool;
-    label93:
-    int i;
-    if (QLog.isColorLevel())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceive... ");
+    if (paramFromServiceMsg != null)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("onReceive... ");
-      if (paramFromServiceMsg != null)
-      {
-        localObject = ",failCode=" + paramFromServiceMsg.getBusinessFailCode() + "  errMsg:" + paramFromServiceMsg.getBusinessFailMsg();
-        QLog.d("WadlBusinessServlet", 2, (String)localObject);
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(",failCode=");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.getBusinessFailCode());
+      ((StringBuilder)localObject).append("  errMsg:");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.getBusinessFailMsg());
+      localObject = ((StringBuilder)localObject).toString();
     }
     else
     {
-      l = 0L;
-      if ((paramFromServiceMsg == null) || (!paramFromServiceMsg.isSuccess())) {
-        break label189;
-      }
+      localObject = "";
+    }
+    localStringBuilder.append((String)localObject);
+    QLog.d("Wadl_WadlBusinessServlet", 1, localStringBuilder.toString());
+    long l = System.currentTimeMillis();
+    boolean bool;
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
       bool = true;
-      if (QLog.isColorLevel())
-      {
-        l = System.currentTimeMillis();
-        QLog.d("WadlBusinessServlet", 2, "onReceive success=" + bool);
-      }
-      if (!bool) {
-        break label286;
-      }
+    } else {
+      bool = false;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onReceive success=");
+    ((StringBuilder)localObject).append(bool);
+    QLog.d("Wadl_WadlBusinessServlet", 1, ((StringBuilder)localObject).toString());
+    localObject = null;
+    if (bool)
+    {
       i = paramFromServiceMsg.getWupBuffer().length - 4;
       localObject = new byte[i];
       PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    label286:
-    for (paramFromServiceMsg = (FromServiceMsg)localObject;; paramFromServiceMsg = null)
+    if (paramIntent == null)
     {
-      if (paramIntent == null) {
-        if (QLog.isColorLevel()) {
-          QLog.e("WadlBusinessServlet", 2, "onReceive fail, request is null");
-        }
-      }
-      for (;;)
-      {
-        return;
-        localObject = "";
-        break;
-        label189:
-        bool = false;
-        break label93;
-        i = paramIntent.getIntExtra("wadl_sso_type", 0);
-        if (i == 1) {
-          ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).onRespTrpcSso(paramIntent, bool, paramFromServiceMsg);
-        }
-        while (QLog.isColorLevel())
-        {
-          QLog.d("WadlBusinessServlet", 2, "onReceive exit|cost: " + (System.currentTimeMillis() - l));
-          return;
-          if (i == 0) {
-            ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).onRespWebSso(paramIntent, bool, paramFromServiceMsg);
-          }
-        }
-      }
+      QLog.w("Wadl_WadlBusinessServlet", 1, "onReceive fail, request is null");
+      return;
     }
+    int i = paramIntent.getIntExtra("wadl_sso_type", 0);
+    if (i == 1) {
+      ((IQQGameTrpcService)QRoute.api(IQQGameTrpcService.class)).onRespTrpcSso(paramIntent, bool, (byte[])localObject);
+    } else if (i == 0) {
+      ((IQQGameNetService)QRoute.api(IQQGameNetService.class)).onRespWebSso(paramIntent, bool, (byte[])localObject);
+    }
+    paramIntent = new StringBuilder();
+    paramIntent.append("onReceive exit|cost: ");
+    paramIntent.append(System.currentTimeMillis() - l);
+    QLog.d("Wadl_WadlBusinessServlet", 1, paramIntent.toString());
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WadlBusinessServlet", 2, "onSend...");
-    }
+    QLog.d("Wadl_WadlBusinessServlet", 1, "onSend...");
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("webssoReq");
     if (paramIntent.getIntExtra("wadl_sso_type", 0) == 1) {
       paramPacket.setSSOCommand("GDCTrpcProxy.service");
+    } else {
+      paramPacket.setSSOCommand("QQVacCommSvc.web_sso");
     }
-    while (arrayOfByte != null)
+    if (arrayOfByte != null)
     {
       paramIntent = new byte[arrayOfByte.length + 4];
       PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
       PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
       paramPacket.putSendData(paramIntent);
       return;
-      paramPacket.setSSOCommand("QQVacCommSvc.web_sso");
     }
     paramIntent = new byte[4];
     PkgTools.DWord2Byte(paramIntent, 0, 4L);
@@ -105,7 +91,7 @@ public class WadlBusinessServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.WadlBusinessServlet
  * JD-Core Version:    0.7.0.1
  */

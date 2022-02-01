@@ -27,7 +27,7 @@ public class FbTable
   {
     paramInt = (paramInt + 2) * 2;
     if (paramInt < this.b) {
-      return this.jdField_a_of_type_JavaNioByteBuffer.getShort(paramInt + this.jdField_a_of_type_Int);
+      return this.jdField_a_of_type_JavaNioByteBuffer.getShort(this.jdField_a_of_type_Int + paramInt);
     }
     return 0;
   }
@@ -57,12 +57,11 @@ public class FbTable
   
   public FbTable a(int paramInt, ByteBuffer paramByteBuffer)
   {
-    if ((paramInt < 0) || (paramByteBuffer.capacity() < paramInt + 4)) {
-      paramByteBuffer = null;
-    }
-    do
+    if (paramInt >= 0)
     {
-      return paramByteBuffer;
+      if (paramByteBuffer.capacity() < paramInt + 4) {
+        return null;
+      }
       this.c = paramInt;
       this.jdField_a_of_type_JavaNioByteBuffer = paramByteBuffer;
       this.jdField_a_of_type_Int = (this.c - this.jdField_a_of_type_JavaNioByteBuffer.getInt(this.c));
@@ -70,8 +69,11 @@ public class FbTable
         return null;
       }
       this.b = this.jdField_a_of_type_JavaNioByteBuffer.getShort(this.jdField_a_of_type_Int);
-      paramByteBuffer = this;
-    } while (a(this.jdField_a_of_type_Int, this.b));
+      if (!a(this.jdField_a_of_type_Int, this.b)) {
+        return null;
+      }
+      return this;
+    }
     return null;
   }
   
@@ -86,7 +88,7 @@ public class FbTable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.flatbuffers.FbTable
  * JD-Core Version:    0.7.0.1
  */

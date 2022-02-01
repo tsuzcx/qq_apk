@@ -42,9 +42,9 @@ public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
   private int a(boolean paramBoolean)
   {
     if (paramBoolean) {
-      return 2131693491;
+      return 2131693446;
     }
-    return 2131693494;
+    return 2131693449;
   }
   
   private void a(IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder paramIntimatePlayTogetherViewHolder)
@@ -69,7 +69,7 @@ public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
   
   public IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559399, null, false));
+    return new IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559274, null, false));
   }
   
   public void a(int paramInt)
@@ -87,10 +87,9 @@ public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
   public void a(IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherViewHolder paramIntimatePlayTogetherViewHolder, int paramInt)
   {
     MISC.StAppPlayingInfo localStAppPlayingInfo = (MISC.StAppPlayingInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    boolean bool;
     if (localStAppPlayingInfo != null)
     {
-      bool = MiniGamePlayTogetherHandler.a(localStAppPlayingInfo.appMetaInfo);
+      boolean bool = MiniGamePlayTogetherHandler.a(localStAppPlayingInfo.appMetaInfo);
       paramIntimatePlayTogetherViewHolder.itemView.setOnClickListener(new IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter.1(this, localStAppPlayingInfo, bool));
       paramIntimatePlayTogetherViewHolder.a().setVisibility(0);
       paramIntimatePlayTogetherViewHolder.a().setVisibility(0);
@@ -101,34 +100,28 @@ public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
         paramIntimatePlayTogetherViewHolder.a().setImageDrawable(((IMiniAppService)QRoute.api(IMiniAppService.class)).getIcon(paramIntimatePlayTogetherViewHolder.a().getContext(), localStAppPlayingInfo.appMetaInfo.icon.get(), true));
       }
       IntimatePlayTogetherMiniGameCardView.a(paramIntimatePlayTogetherViewHolder.a(), this.jdField_a_of_type_JavaLangString);
-      if ((localStAppPlayingInfo.myRank.get() == 0) || (localStAppPlayingInfo.friendRank.get() == 0)) {
-        break label281;
-      }
-      if (localStAppPlayingInfo.myRank.get() != localStAppPlayingInfo.friendRank.get()) {
-        break label238;
-      }
-      paramIntimatePlayTogetherViewHolder.b().setText(2131693486);
-      paramIntimatePlayTogetherViewHolder.a().setText(a(bool));
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_Boolean) {
-        a(paramIntimatePlayTogetherViewHolder);
-      }
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramIntimatePlayTogetherViewHolder, paramInt, getItemId(paramInt));
-      return;
-      label238:
-      TextView localTextView = paramIntimatePlayTogetherViewHolder.b();
-      if (localStAppPlayingInfo.myRank.get() < localStAppPlayingInfo.friendRank.get()) {}
-      for (int i = 2131693488;; i = 2131693487)
+      if ((localStAppPlayingInfo.myRank.get() != 0) && (localStAppPlayingInfo.friendRank.get() != 0))
       {
-        localTextView.setText(i);
-        break;
+        if (localStAppPlayingInfo.myRank.get() == localStAppPlayingInfo.friendRank.get())
+        {
+          paramIntimatePlayTogetherViewHolder.b().setText(2131693441);
+        }
+        else
+        {
+          TextView localTextView = paramIntimatePlayTogetherViewHolder.b();
+          int i;
+          if (localStAppPlayingInfo.myRank.get() < localStAppPlayingInfo.friendRank.get()) {
+            i = 2131693443;
+          } else {
+            i = 2131693442;
+          }
+          localTextView.setText(i);
+        }
+        paramIntimatePlayTogetherViewHolder.a().setText(a(bool));
       }
-      label281:
-      if ((localStAppPlayingInfo.myRank.get() == 0) && (localStAppPlayingInfo.friendRank.get() > 0))
+      else if ((localStAppPlayingInfo.myRank.get() == 0) && (localStAppPlayingInfo.friendRank.get() > 0))
       {
-        paramIntimatePlayTogetherViewHolder.b().setText(String.format(paramIntimatePlayTogetherViewHolder.itemView.getContext().getString(2131693489), new Object[] { Integer.valueOf(localStAppPlayingInfo.friendRank.get()) }));
+        paramIntimatePlayTogetherViewHolder.b().setText(String.format(paramIntimatePlayTogetherViewHolder.itemView.getContext().getString(2131693444), new Object[] { Integer.valueOf(localStAppPlayingInfo.friendRank.get()) }));
         paramIntimatePlayTogetherViewHolder.a().setText(a(bool));
       }
       else
@@ -138,7 +131,11 @@ public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
         paramIntimatePlayTogetherViewHolder.b().setVisibility(8);
         paramIntimatePlayTogetherViewHolder.a().setText(a(bool));
       }
+      if (this.jdField_a_of_type_Boolean) {
+        a(paramIntimatePlayTogetherViewHolder);
+      }
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramIntimatePlayTogetherViewHolder, paramInt, getItemId(paramInt));
   }
   
   public void b(int paramInt)
@@ -153,7 +150,7 @@ public class IntimatePlayTogetherMiniGameCardView$IntimatePlayTogetherAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimatePlayTogetherMiniGameCardView.IntimatePlayTogetherAdapter
  * JD-Core Version:    0.7.0.1
  */

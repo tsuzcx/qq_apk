@@ -25,46 +25,64 @@ public class RecentPubAccManager
   
   public static RecentPubAccManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager == null) {
-        jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager = new RecentPubAccManager();
+    if (jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager == null) {
+          jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager = new RecentPubAccManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqActivityRecentRecentPubAccManager;
   }
   
   private void a()
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if (localQQAppInterface == null) {}
-    do
-    {
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if (localObject == null) {
       return;
-      this.jdField_a_of_type_Boolean = SharedPreUtils.s(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin());
-      this.jdField_a_of_type_JavaUtilSet = localQQAppInterface.getApp().getSharedPreferences("RecentPubAccManager" + localQQAppInterface.getCurrentAccountUin(), 0).getStringSet("white_list_key", null);
-    } while (!QLog.isColorLevel());
-    QLog.d("RecentPubAccManager", 2, "loadFromSp   mBlackUinList:" + this.jdField_a_of_type_JavaUtilSet + ",  Switch: " + this.jdField_a_of_type_Boolean);
+    }
+    this.jdField_a_of_type_Boolean = SharedPreUtils.o(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getCurrentUin());
+    BaseApplication localBaseApplication = ((QQAppInterface)localObject).getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RecentPubAccManager");
+    localStringBuilder.append(((QQAppInterface)localObject).getCurrentAccountUin());
+    this.jdField_a_of_type_JavaUtilSet = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getStringSet("white_list_key", null);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadFromSp   mBlackUinList:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilSet);
+      ((StringBuilder)localObject).append(",  Switch: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+      QLog.d("RecentPubAccManager", 2, ((StringBuilder)localObject).toString());
+    }
   }
   
   public void a(QQAppInterface paramQQAppInterface, Set<String> paramSet)
   {
-    if (paramQQAppInterface == null) {}
-    for (;;)
-    {
+    if (paramQQAppInterface == null) {
       return;
-      try
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("RecentPubAccManager", 2, "setUnFollowPubAccWhiteList: " + paramSet);
-        }
-        this.jdField_a_of_type_JavaUtilSet = paramSet;
-        paramQQAppInterface.getApp().getSharedPreferences("RecentPubAccManager" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putStringSet("white_list_key", paramSet).apply();
-      }
-      finally {}
     }
+    try
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setUnFollowPubAccWhiteList: ");
+        ((StringBuilder)localObject).append(paramSet);
+        QLog.d("RecentPubAccManager", 2, ((StringBuilder)localObject).toString());
+      }
+      this.jdField_a_of_type_JavaUtilSet = paramSet;
+      Object localObject = paramQQAppInterface.getApp();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RecentPubAccManager");
+      localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+      ((BaseApplication)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit().putStringSet("white_list_key", paramSet).apply();
+      return;
+    }
+    finally {}
   }
   
   public void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
@@ -72,11 +90,15 @@ public class RecentPubAccManager
     if (paramQQAppInterface == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("RecentPubAccManager", 2, "setUnFollowPubAccSwitch: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setUnFollowPubAccSwitch: ");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("RecentPubAccManager", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_Boolean = paramBoolean;
-    SharedPreUtils.l(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
+    SharedPreUtils.h(paramQQAppInterface.getApp(), paramQQAppInterface.getCurrentAccountUin(), paramBoolean);
   }
   
   public boolean a()
@@ -86,23 +108,15 @@ public class RecentPubAccManager
   
   public boolean a(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_JavaUtilSet != null)
-    {
-      bool1 = bool2;
-      if (this.jdField_a_of_type_JavaUtilSet.contains(paramString)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    Set localSet = this.jdField_a_of_type_JavaUtilSet;
+    return (localSet != null) && (localSet.contains(paramString));
   }
   
   public void onDestroy() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentPubAccManager
  * JD-Core Version:    0.7.0.1
  */

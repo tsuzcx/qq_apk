@@ -36,25 +36,25 @@ class ForwardPhotoOption$ContentViewHolder
         this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(ViewUtils.a(140.0F));
         this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       }
-      for (;;)
+      else
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
-        if (paramInt >= 2) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
-        return;
         this.jdField_a_of_type_AndroidWidgetImageView.setAdjustViewBounds(true);
         this.jdField_a_of_type_AndroidWidgetImageView.setMaxWidth(ViewUtils.a(120.0F));
         this.jdField_a_of_type_AndroidWidgetImageView.setMaxHeight(ViewUtils.a(120.0F));
         this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
       }
-      if (paramInt == 2)
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramDrawable);
+      if (paramInt < 2)
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840291);
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(null);
         return;
       }
-      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840292);
+      if (paramInt == 2)
+      {
+        this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840150);
+        return;
+      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(2130840151);
       return;
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(8);
@@ -71,7 +71,7 @@ class ForwardPhotoOption$ContentViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPhotoOption.ContentViewHolder
  * JD-Core Version:    0.7.0.1
  */

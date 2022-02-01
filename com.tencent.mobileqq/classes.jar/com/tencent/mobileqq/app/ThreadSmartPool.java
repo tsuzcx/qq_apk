@@ -33,50 +33,63 @@ class ThreadSmartPool
   
   private void checkBlockingState()
   {
-    if (this.sAlreadyOutOfPool) {}
-    label7:
-    Object localObject;
-    StringBuilder localStringBuilder;
-    do
+    if (this.sAlreadyOutOfPool) {
+      return;
+    }
+    if (ThreadLog.needReportRunOrBlocking())
     {
-      Job localJob;
-      do
+      long l = SystemClock.uptimeMillis();
+      if (l - this.poolcheckTime > get_CHECK_PERIOD())
       {
-        long l;
-        do
+        this.poolcheckTime = l;
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(getName());
+        ((StringBuilder)localObject1).append("_checkBlockingState");
+        ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject1).toString());
+        Object localObject2 = getQueue().iterator();
+        l = SystemClock.uptimeMillis();
+        while (((Iterator)localObject2).hasNext())
         {
-          do
+          localObject1 = (Job)((Iterator)localObject2).next();
+          ((Job)localObject1).blcokingCost = (l - ((Job)localObject1).addPoint);
+          if (((Job)localObject1).blcokingCost >= get_BLOCKING_TIME_OUT())
           {
-            return;
-            break label7;
-            while (!ThreadLog.needReportRunOrBlocking()) {}
-            l = SystemClock.uptimeMillis();
-          } while (l - this.poolcheckTime <= get_CHECK_PERIOD());
-          this.poolcheckTime = l;
-          ThreadLog.printQLog("ThreadManager", getName() + "_checkBlockingState");
-          localObject = getQueue().iterator();
-          l = SystemClock.uptimeMillis();
-        } while (!((Iterator)localObject).hasNext());
-        localJob = (Job)((Iterator)localObject).next();
-        localJob.blcokingCost = (l - localJob.addPoint);
-      } while (localJob.blcokingCost < get_BLOCKING_TIME_OUT());
-      localObject = getName() + "_BlockingException";
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("\n revision:" + ThreadSetting.revision);
-      getRunningJob((String)localObject, localStringBuilder);
-      localStringBuilder.append("\nblocking JOB: " + localJob.toString());
-      localStringBuilder.append("\nblocking Executor:" + toString());
-      ThreadLog.printQLog("ThreadManager", localStringBuilder.toString());
-    } while ((!ThreadManagerV2.OPEN_RDM_REPORT) || (ThreadManagerV2.sThreadWrapContext == null) || (this.blockingReportCount >= 1));
-    ThreadManagerV2.sThreadWrapContext.reportRDMException(new TSPBlockingCatchedException((String)localObject), (String)localObject, localStringBuilder.toString());
-    this.blockingReportCount += 1;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(getName());
+            ((StringBuilder)localObject2).append("_BlockingException");
+            localObject2 = ((StringBuilder)localObject2).toString();
+            StringBuilder localStringBuilder1 = new StringBuilder();
+            StringBuilder localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("\n revision:");
+            localStringBuilder2.append(ThreadSetting.revision);
+            localStringBuilder1.append(localStringBuilder2.toString());
+            getRunningJob((String)localObject2, localStringBuilder1);
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("\nblocking JOB: ");
+            localStringBuilder2.append(((Job)localObject1).toString());
+            localStringBuilder1.append(localStringBuilder2.toString());
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("\nblocking Executor:");
+            ((StringBuilder)localObject1).append(toString());
+            localStringBuilder1.append(((StringBuilder)localObject1).toString());
+            ThreadLog.printQLog("ThreadManager", localStringBuilder1.toString());
+            if ((ThreadManagerV2.OPEN_RDM_REPORT) && (ThreadManagerV2.sThreadWrapContext != null) && (this.blockingReportCount < 1))
+            {
+              ThreadManagerV2.sThreadWrapContext.reportRDMException(new TSPBlockingCatchedException((String)localObject2), (String)localObject2, localStringBuilder1.toString());
+              this.blockingReportCount += 1;
+            }
+          }
+        }
+      }
+    }
   }
   
   private void doJobOneByOne(Runnable paramRunnable)
   {
     this.REJECTED_THREAD_HANDLER = getRejectedHandler();
-    if (this.REJECTED_THREAD_HANDLER != null) {
-      this.REJECTED_THREAD_HANDLER.post(paramRunnable);
+    Handler localHandler = this.REJECTED_THREAD_HANDLER;
+    if (localHandler != null) {
+      localHandler.post(paramRunnable);
     }
   }
   
@@ -85,7 +98,11 @@ class ThreadSmartPool
     if (this.REJECTED_THREAD_HANDLER == null) {
       try
       {
-        Object localObject = ThreadExcutor.getInstance().newFreeHandlerThread(getName() + "_Rejected_Handler", 10);
+        Object localObject = ThreadExcutor.getInstance();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(getName());
+        localStringBuilder.append("_Rejected_Handler");
+        localObject = ((ThreadExcutor)localObject).newFreeHandlerThread(localStringBuilder.toString(), 10);
         ((HandlerThread)localObject).start();
         this.REJECTED_THREAD_HANDLER = new Handler(((HandlerThread)localObject).getLooper());
         localObject = this.REJECTED_THREAD_HANDLER;
@@ -93,7 +110,10 @@ class ThreadSmartPool
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        ThreadLog.printQLog("ThreadManager", getName() + "_getRejectedHandler:", localOutOfMemoryError);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(getName());
+        localStringBuilder.append("_getRejectedHandler:");
+        ThreadLog.printQLog("ThreadManager", localStringBuilder.toString(), localOutOfMemoryError);
       }
     }
     return this.REJECTED_THREAD_HANDLER;
@@ -101,15 +121,21 @@ class ThreadSmartPool
   
   private StringBuilder getRunningJob(String paramString, StringBuilder paramStringBuilder)
   {
-    ThreadLog.printQLog("ThreadManager", "\ngetRunningJob from: " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("\ngetRunningJob from: ");
+    ((StringBuilder)localObject).append(paramString);
+    ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject).toString());
     paramString = getRunningJobCache();
     if (paramString != null)
     {
       paramString = paramString.iterator();
       while (paramString.hasNext())
       {
-        String str = (String)paramString.next();
-        paramStringBuilder.append("\n" + str);
+        localObject = (String)paramString.next();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("\n");
+        localStringBuilder.append((String)localObject);
+        paramStringBuilder.append(localStringBuilder.toString());
       }
     }
     return paramStringBuilder;
@@ -133,49 +159,71 @@ class ThreadSmartPool
   
   public void execute(Runnable paramRunnable)
   {
+    Object localObject1;
     if (ThreadManagerV2.IsRunTimeShutDown)
     {
-      ThreadLog.printQLog("ThreadManager", "pool has shutdown:" + paramRunnable.toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("pool has shutdown:");
+      ((StringBuilder)localObject1).append(paramRunnable.toString());
+      ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject1).toString());
       return;
     }
+    Object localObject2;
     if (!(paramRunnable instanceof Job))
     {
-      if (ThreadSetting.logcatBgTaskMonitor) {
-        ThreadLog.printQLog("ThreadManager", "command is not instanceof Job " + paramRunnable.toString());
+      if (ThreadSetting.logcatBgTaskMonitor)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("command is not instanceof Job ");
+        ((StringBuilder)localObject1).append(paramRunnable.toString());
+        ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject1).toString());
       }
-      Job localJob;
-      if ((this instanceof ThreadAsyncTaskPool)) {
-        localJob = ThreadExcutor.buildJob(256, paramRunnable, null, false);
+      if ((this instanceof ThreadAsyncTaskPool))
+      {
+        localObject1 = ThreadExcutor.buildJob(256, paramRunnable, null, false);
+        ((Job)localObject1).poolNum = 10;
       }
-      for (localJob.poolNum = 10; localJob == null; localJob.poolNum = 11)
+      else
+      {
+        localObject1 = ThreadExcutor.buildJob(512, paramRunnable, null, false);
+        ((Job)localObject1).poolNum = 11;
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null)
       {
         ThreadLog.printQLog("ThreadManager", "sp execute job == null ");
         doJobOneByOne(paramRunnable);
-        return;
-        localJob = ThreadExcutor.buildJob(512, paramRunnable, null, false);
       }
     }
-    for (paramRunnable = (Job)paramRunnable;; paramRunnable = localOutOfMemoryError) {
-      try
+    else
+    {
+      localObject2 = (Job)paramRunnable;
+    }
+    try
+    {
+      if (ThreadSetting.logcatBgTaskMonitor)
       {
-        if (ThreadSetting.logcatBgTaskMonitor) {
-          ThreadLog.printQLog("ThreadManager", "tsp execute:" + paramRunnable.toString());
-        }
-        checkBlockingState();
-        super.execute(paramRunnable);
-        return;
+        paramRunnable = new StringBuilder();
+        paramRunnable.append("tsp execute:");
+        paramRunnable.append(((Job)localObject2).toString());
+        ThreadLog.printQLog("ThreadManager", paramRunnable.toString());
       }
-      catch (OutOfMemoryError localOutOfMemoryError)
-      {
-        ThreadLog.printQLog("ThreadManager", "execute job OutOfMemoryError:" + paramRunnable.toString(), localOutOfMemoryError);
-        doJobOneByOne(paramRunnable);
-        return;
-      }
-      catch (InternalError paramRunnable)
-      {
-        ThreadLog.printQLog("ThreadManager", "java.lang.InternalError: Thread starting during runtime shutdown", paramRunnable);
-        return;
-      }
+      checkBlockingState();
+      super.execute((Runnable)localObject2);
+      return;
+    }
+    catch (InternalError paramRunnable)
+    {
+      ThreadLog.printQLog("ThreadManager", "java.lang.InternalError: Thread starting during runtime shutdown", paramRunnable);
+      return;
+    }
+    catch (OutOfMemoryError paramRunnable)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("execute job OutOfMemoryError:");
+      ((StringBuilder)localObject1).append(((Job)localObject2).toString());
+      ThreadLog.printQLog("ThreadManager", ((StringBuilder)localObject1).toString(), paramRunnable);
+      doJobOneByOne((Runnable)localObject2);
     }
   }
   
@@ -201,7 +249,7 @@ class ThreadSmartPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ThreadSmartPool
  * JD-Core Version:    0.7.0.1
  */

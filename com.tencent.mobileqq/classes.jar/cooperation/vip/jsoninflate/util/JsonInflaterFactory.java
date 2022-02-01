@@ -19,10 +19,11 @@ public class JsonInflaterFactory
 {
   public View a(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (paramContext != null)
     {
-      return null;
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
+      }
       if ("text_view".equals(paramString)) {
         return new TextView(paramContext);
       }
@@ -35,27 +36,34 @@ public class JsonInflaterFactory
       if ("lottie_view".equals(paramString)) {
         return new DiniFlyAnimationView(paramContext);
       }
-    } while (!"mask_view".equals(paramString));
-    return new ImageView(paramContext);
+      if ("mask_view".equals(paramString)) {
+        return new ImageView(paramContext);
+      }
+    }
+    return null;
   }
   
   public ViewModel a(View paramView)
   {
-    if ((paramView == null) || (paramView.getClass() == null)) {
-      return null;
+    if ((paramView != null) && (paramView.getClass() != null))
+    {
+      if (RelativeLayout.class.isInstance(paramView)) {
+        return new RelativeLayoutModel("layout", paramView);
+      }
+      return new ViewModel(paramView);
     }
-    if (RelativeLayout.class.isInstance(paramView)) {
-      return new RelativeLayoutModel("layout", paramView);
-    }
-    return new ViewModel(paramView);
+    return null;
   }
   
   public ViewModel a(String paramString, View paramView)
   {
-    if ((paramView == null) || (paramView.getClass() == null)) {}
-    do
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (paramView != null)
     {
-      return null;
+      if (paramView.getClass() == null) {
+        return null;
+      }
       if ("text_view".equals(paramString)) {
         return new TextViewModel(paramString, paramView);
       }
@@ -68,15 +76,19 @@ public class JsonInflaterFactory
       if ("lottie_view".equals(paramString)) {
         return new LottieViewModel(paramString, paramView);
       }
-    } while (!"mask_view".equals(paramString));
-    return new MaskViewModel(paramString, paramView);
+      localObject1 = localObject2;
+      if ("mask_view".equals(paramString)) {
+        localObject1 = new MaskViewModel(paramString, paramView);
+      }
+    }
+    return localObject1;
   }
   
   public void a(ViewModel paramViewModel, JSONObject paramJSONObject) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.jsoninflate.util.JsonInflaterFactory
  * JD-Core Version:    0.7.0.1
  */

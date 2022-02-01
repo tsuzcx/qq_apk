@@ -15,7 +15,7 @@ public class AEKitModel
   private String lutPath;
   private long mDuration = 2147483647L;
   private long mStartTime = 0L;
-  private String material;
+  private String material = "";
   private final int mediaType;
   private String overlayImgPath;
   private int smoothLevel = 0;
@@ -153,7 +153,7 @@ public class AEKitModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.aekit.AEKitModel
  * JD-Core Version:    0.7.0.1
  */

@@ -3,8 +3,7 @@ package com.tencent.gdtad.util;
 import android.os.Bundle;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.gdtad.params.GetUserInfoCallback;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.AuthorizationItem;
@@ -12,16 +11,23 @@ import java.util.List;
 import mqq.os.MqqHandler;
 
 class GdtUserInfoAuthorizationHelper$1
-  implements TroopMemberApiClient.Callback
+  implements GetUserInfoCallback
 {
-  public void callback(Bundle paramBundle)
+  public void a(Bundle paramBundle)
   {
     String str1 = paramBundle.getString("name");
     String str2 = paramBundle.getString("phone");
     paramBundle = paramBundle.getString("city");
-    this.jdField_a_of_type_ComTencentBizTroopTroopMemberApiClient.b();
-    if (QLog.isColorLevel()) {
-      QLog.d("GdtUserInfoAuthorizationHelper", 2, "getUserInfo : name -> " + str1 + ", phone -> " + str2 + ", city -> " + paramBundle);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getUserInfo : name -> ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(", phone -> ");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(", city -> ");
+      localStringBuilder.append(paramBundle);
+      QLog.d("GdtUserInfoAuthorizationHelper", 2, localStringBuilder.toString());
     }
     boolean bool2 = true;
     boolean bool1 = bool2;
@@ -40,23 +46,21 @@ class GdtUserInfoAuthorizationHelper$1
         bool2 = false;
       }
     }
-    if ((this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.c)) && (TextUtils.isEmpty(paramBundle))) {}
-    for (bool1 = false;; bool1 = bool2)
+    if ((this.jdField_a_of_type_JavaUtilList.contains(AuthorizationItem.c)) && (TextUtils.isEmpty(paramBundle))) {
+      bool2 = false;
+    }
+    paramBundle = GdtUserInfoAuthorizationHelper.a(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper, str1, str2, paramBundle, this.jdField_a_of_type_JavaUtilList);
+    if (Looper.myLooper() == Looper.getMainLooper())
     {
-      paramBundle = GdtUserInfoAuthorizationHelper.a(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper, str1, str2, paramBundle, this.jdField_a_of_type_JavaUtilList);
-      if (Looper.myLooper() == Looper.getMainLooper())
-      {
-        GdtUserInfoAuthorizationHelper.a(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper, this.jdField_a_of_type_AndroidAppActivity, bool1, paramBundle, this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback, this.jdField_a_of_type_JavaUtilList);
-        return;
-      }
-      ThreadManager.getUIHandler().post(new GdtUserInfoAuthorizationHelper.1.1(this, bool1, paramBundle));
+      GdtUserInfoAuthorizationHelper.a(this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper, this.jdField_a_of_type_AndroidAppActivity, bool2, paramBundle, this.jdField_a_of_type_ComTencentGdtadUtilGdtUserInfoAuthorizationHelper$UserInfoCallback, this.jdField_a_of_type_JavaUtilList);
       return;
     }
+    ThreadManager.getUIHandler().post(new GdtUserInfoAuthorizationHelper.1.1(this, bool2, paramBundle));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.util.GdtUserInfoAuthorizationHelper.1
  * JD-Core Version:    0.7.0.1
  */

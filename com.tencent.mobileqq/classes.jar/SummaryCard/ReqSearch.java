@@ -44,8 +44,9 @@ public final class ReqSearch
     paramJceOutputStream.write(this.strKeyword, 0);
     paramJceOutputStream.write(this.strCountryCode, 1);
     paramJceOutputStream.write(this.shVersion, 2);
-    if (this.vvReqServices != null) {
-      paramJceOutputStream.write(this.vvReqServices, 3);
+    ArrayList localArrayList = this.vvReqServices;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
   }
 }

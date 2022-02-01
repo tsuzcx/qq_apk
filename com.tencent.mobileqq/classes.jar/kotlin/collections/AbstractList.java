@@ -51,8 +51,8 @@ public abstract class AbstractList<E>
   
   public int indexOf(Object paramObject)
   {
-    int i = 0;
     Iterator localIterator = iterator();
+    int i = 0;
     while (localIterator.hasNext())
     {
       if (Intrinsics.areEqual(localIterator.next(), paramObject)) {
@@ -110,7 +110,7 @@ public abstract class AbstractList<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.AbstractList
  * JD-Core Version:    0.7.0.1
  */

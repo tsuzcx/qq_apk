@@ -1,6 +1,7 @@
 package androidx.fragment.app;
 
 import android.util.Log;
+import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.IdRes;
 import androidx.annotation.NonNull;
@@ -22,15 +23,18 @@ class FragmentStore
   
   void addFragment(@NonNull Fragment paramFragment)
   {
-    if (this.mAdded.contains(paramFragment)) {
-      throw new IllegalStateException("Fragment already added: " + paramFragment);
+    if (!this.mAdded.contains(paramFragment)) {
+      synchronized (this.mAdded)
+      {
+        this.mAdded.add(paramFragment);
+        paramFragment.mAdded = true;
+        return;
+      }
     }
-    synchronized (this.mAdded)
-    {
-      this.mAdded.add(paramFragment);
-      paramFragment.mAdded = true;
-      return;
-    }
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("Fragment already added: ");
+    ((StringBuilder)???).append(paramFragment);
+    throw new IllegalStateException(((StringBuilder)???).toString());
   }
   
   void burpActive()
@@ -67,7 +71,10 @@ class FragmentStore
   
   void dump(@NonNull String paramString, @Nullable FileDescriptor paramFileDescriptor, @NonNull PrintWriter paramPrintWriter, @Nullable String[] paramArrayOfString)
   {
-    String str = paramString + "    ";
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append("    ");
+    localObject1 = ((StringBuilder)localObject1).toString();
     if (!this.mActive.isEmpty())
     {
       paramPrintWriter.print(paramString);
@@ -75,13 +82,13 @@ class FragmentStore
       Iterator localIterator = this.mActive.values().iterator();
       while (localIterator.hasNext())
       {
-        Object localObject = (FragmentStateManager)localIterator.next();
+        Object localObject2 = (FragmentStateManager)localIterator.next();
         paramPrintWriter.print(paramString);
-        if (localObject != null)
+        if (localObject2 != null)
         {
-          localObject = ((FragmentStateManager)localObject).getFragment();
-          paramPrintWriter.println(localObject);
-          ((Fragment)localObject).dump(str, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+          localObject2 = ((FragmentStateManager)localObject2).getFragment();
+          paramPrintWriter.println(localObject2);
+          ((Fragment)localObject2).dump((String)localObject1, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
         }
         else
         {
@@ -200,29 +207,22 @@ class FragmentStore
   Fragment findFragmentUnder(@NonNull Fragment paramFragment)
   {
     ViewGroup localViewGroup = paramFragment.mContainer;
-    Object localObject = paramFragment.mView;
-    if ((localViewGroup == null) || (localObject == null))
+    View localView = paramFragment.mView;
+    if (localViewGroup != null)
     {
-      paramFragment = null;
-      return paramFragment;
-    }
-    int i = this.mAdded.indexOf(paramFragment) - 1;
-    for (;;)
-    {
-      if (i < 0) {
-        break label76;
+      if (localView == null) {
+        return null;
       }
-      localObject = (Fragment)this.mAdded.get(i);
-      if (((Fragment)localObject).mContainer == localViewGroup)
+      int i = this.mAdded.indexOf(paramFragment) - 1;
+      while (i >= 0)
       {
-        paramFragment = (Fragment)localObject;
-        if (((Fragment)localObject).mView != null) {
-          break;
+        paramFragment = (Fragment)this.mAdded.get(i);
+        if ((paramFragment.mContainer == localViewGroup) && (paramFragment.mView != null)) {
+          return paramFragment;
         }
+        i -= 1;
       }
-      i -= 1;
     }
-    label76:
     return null;
   }
   
@@ -315,18 +315,32 @@ class FragmentStore
     this.mAdded.clear();
     if (paramList != null)
     {
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+      Object localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        String str = (String)paramList.next();
-        Fragment localFragment = findActiveFragment(str);
-        if (localFragment == null) {
-          throw new IllegalStateException("No instantiated fragment for (" + str + ")");
+        paramList = (String)((Iterator)localObject).next();
+        Fragment localFragment = findActiveFragment(paramList);
+        if (localFragment != null)
+        {
+          if (FragmentManager.isLoggingEnabled(2))
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("restoreSaveState: added (");
+            localStringBuilder.append(paramList);
+            localStringBuilder.append("): ");
+            localStringBuilder.append(localFragment);
+            Log.v("FragmentManager", localStringBuilder.toString());
+          }
+          addFragment(localFragment);
         }
-        if (FragmentManager.isLoggingEnabled(2)) {
-          Log.v("FragmentManager", "restoreSaveState: added (" + str + "): " + localFragment);
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("No instantiated fragment for (");
+          ((StringBuilder)localObject).append(paramList);
+          ((StringBuilder)localObject).append(")");
+          throw new IllegalStateException(((StringBuilder)localObject).toString());
         }
-        addFragment(localFragment);
       }
     }
   }
@@ -344,8 +358,14 @@ class FragmentStore
         Fragment localFragment = ((FragmentStateManager)localObject).getFragment();
         localObject = ((FragmentStateManager)localObject).saveState();
         localArrayList.add(localObject);
-        if (FragmentManager.isLoggingEnabled(2)) {
-          Log.v("FragmentManager", "Saved state of " + localFragment + ": " + ((FragmentState)localObject).mSavedFragmentState);
+        if (FragmentManager.isLoggingEnabled(2))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Saved state of ");
+          localStringBuilder.append(localFragment);
+          localStringBuilder.append(": ");
+          localStringBuilder.append(((FragmentState)localObject).mSavedFragmentState);
+          Log.v("FragmentManager", localStringBuilder.toString());
         }
       }
     }
@@ -366,17 +386,27 @@ class FragmentStore
       {
         Fragment localFragment = (Fragment)localIterator.next();
         localArrayList2.add(localFragment.mWho);
-        if (FragmentManager.isLoggingEnabled(2)) {
-          Log.v("FragmentManager", "saveAllState: adding fragment (" + localFragment.mWho + "): " + localFragment);
+        if (FragmentManager.isLoggingEnabled(2))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("saveAllState: adding fragment (");
+          localStringBuilder.append(localFragment.mWho);
+          localStringBuilder.append("): ");
+          localStringBuilder.append(localFragment);
+          Log.v("FragmentManager", localStringBuilder.toString());
         }
       }
+      return localArrayList2;
     }
-    return localArrayList;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentStore
  * JD-Core Version:    0.7.0.1
  */

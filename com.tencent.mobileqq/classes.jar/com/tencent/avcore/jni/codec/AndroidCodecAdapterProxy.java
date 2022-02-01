@@ -3,38 +3,39 @@ package com.tencent.avcore.jni.codec;
 public class AndroidCodecAdapterProxy
   implements IAndroidCodecAdapter
 {
-  private static AndroidCodecAdapterProxy sProxy = null;
+  private static AndroidCodecAdapterProxy sProxy;
   private IAndroidCodecAdapter mImpl = null;
   
   public static AndroidCodecAdapterProxy getInstance()
   {
-    if (sProxy == null) {}
-    try
-    {
-      if (sProxy == null) {
-        sProxy = new AndroidCodecAdapterProxy();
+    if (sProxy == null) {
+      try
+      {
+        if (sProxy == null) {
+          sProxy = new AndroidCodecAdapterProxy();
+        }
       }
-      return sProxy;
+      finally {}
     }
-    finally {}
+    return sProxy;
   }
   
   public AndroidCodecBase createDecCodec(String paramString)
   {
-    AndroidCodecBase localAndroidCodecBase = null;
-    if (this.mImpl != null) {
-      localAndroidCodecBase = this.mImpl.createDecCodec(paramString);
+    IAndroidCodecAdapter localIAndroidCodecAdapter = this.mImpl;
+    if (localIAndroidCodecAdapter != null) {
+      return localIAndroidCodecAdapter.createDecCodec(paramString);
     }
-    return localAndroidCodecBase;
+    return null;
   }
   
   public AndroidCodecBase createEncCodec(String paramString)
   {
-    AndroidCodecBase localAndroidCodecBase = null;
-    if (this.mImpl != null) {
-      localAndroidCodecBase = this.mImpl.createEncCodec(paramString);
+    IAndroidCodecAdapter localIAndroidCodecAdapter = this.mImpl;
+    if (localIAndroidCodecAdapter != null) {
+      return localIAndroidCodecAdapter.createEncCodec(paramString);
     }
-    return localAndroidCodecBase;
+    return null;
   }
   
   public void init(IAndroidCodecAdapter paramIAndroidCodecAdapter)
@@ -49,16 +50,16 @@ public class AndroidCodecAdapterProxy
   
   public boolean isSupportAsyncAPI()
   {
-    boolean bool = false;
-    if (this.mImpl != null) {
-      bool = this.mImpl.isSupportAsyncAPI();
+    IAndroidCodecAdapter localIAndroidCodecAdapter = this.mImpl;
+    if (localIAndroidCodecAdapter != null) {
+      return localIAndroidCodecAdapter.isSupportAsyncAPI();
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.jni.codec.AndroidCodecAdapterProxy
  * JD-Core Version:    0.7.0.1
  */

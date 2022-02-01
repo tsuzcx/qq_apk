@@ -22,10 +22,22 @@ public final class ChunkedTrackBlacklistUtil
       int i = ((HttpDataSource.InvalidResponseCodeException)paramException).responseCode;
       if (bool)
       {
-        Log.w("ChunkedTrackBlacklist", "Blacklisted: duration=" + paramLong + ", responseCode=" + i + ", format=" + paramTrackSelection.getFormat(paramInt));
+        paramException = new StringBuilder();
+        paramException.append("Blacklisted: duration=");
+        paramException.append(paramLong);
+        paramException.append(", responseCode=");
+        paramException.append(i);
+        paramException.append(", format=");
+        paramException.append(paramTrackSelection.getFormat(paramInt));
+        Log.w("ChunkedTrackBlacklist", paramException.toString());
         return bool;
       }
-      Log.w("ChunkedTrackBlacklist", "Blacklisting failed (cannot blacklist last enabled track): responseCode=" + i + ", format=" + paramTrackSelection.getFormat(paramInt));
+      paramException = new StringBuilder();
+      paramException.append("Blacklisting failed (cannot blacklist last enabled track): responseCode=");
+      paramException.append(i);
+      paramException.append(", format=");
+      paramException.append(paramTrackSelection.getFormat(paramInt));
+      Log.w("ChunkedTrackBlacklist", paramException.toString());
       return bool;
     }
     return false;
@@ -33,9 +45,10 @@ public final class ChunkedTrackBlacklistUtil
   
   public static boolean shouldBlacklist(Exception paramException)
   {
+    boolean bool3 = paramException instanceof HttpDataSource.InvalidResponseCodeException;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if ((paramException instanceof HttpDataSource.InvalidResponseCodeException))
+    if (bool3)
     {
       int i = ((HttpDataSource.InvalidResponseCodeException)paramException).responseCode;
       if (i != 404)
@@ -53,7 +66,7 @@ public final class ChunkedTrackBlacklistUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.chunk.ChunkedTrackBlacklistUtil
  * JD-Core Version:    0.7.0.1
  */

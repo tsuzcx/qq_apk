@@ -19,16 +19,16 @@ public class DrawDrawableWallpaperModel
   
   private void a(boolean paramBoolean)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsDrawableDrawable instanceof ApngDrawable))
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if ((localDrawable instanceof ApngDrawable))
     {
-      if (paramBoolean) {
-        ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).resume();
+      if (paramBoolean)
+      {
+        ((ApngDrawable)localDrawable).resume();
+        return;
       }
+      ((ApngDrawable)localDrawable).pause();
     }
-    else {
-      return;
-    }
-    ((ApngDrawable)this.jdField_a_of_type_AndroidGraphicsDrawableDrawable).pause();
   }
   
   public void a()
@@ -44,8 +44,9 @@ public class DrawDrawableWallpaperModel
   public void a(DrawWallpaperContract.Model.DrawCallback paramDrawCallback)
   {
     this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new DrawDrawableWallpaperModel.1(this, paramDrawCallback);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+    paramDrawCallback = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (paramDrawCallback != null) {
+      paramDrawCallback.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
     }
   }
   
@@ -60,7 +61,7 @@ public class DrawDrawableWallpaperModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.model.DrawDrawableWallpaperModel
  * JD-Core Version:    0.7.0.1
  */

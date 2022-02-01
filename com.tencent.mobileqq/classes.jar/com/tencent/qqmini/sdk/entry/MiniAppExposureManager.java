@@ -16,14 +16,16 @@ public class MiniAppExposureManager
   
   public static String getAppType(MiniAppInfo paramMiniAppInfo)
   {
+    String str2 = "0";
+    String str1 = str2;
     if (paramMiniAppInfo != null)
     {
+      str1 = str2;
       if (paramMiniAppInfo.isReportTypeMiniGame()) {
-        return "1";
+        str1 = "1";
       }
-      return "0";
     }
-    return "0";
+    return str1;
   }
   
   public void addReportItem(MiniAppExposureManager.BaseExposureReport paramBaseExposureReport)
@@ -71,7 +73,7 @@ public class MiniAppExposureManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.entry.MiniAppExposureManager
  * JD-Core Version:    0.7.0.1
  */

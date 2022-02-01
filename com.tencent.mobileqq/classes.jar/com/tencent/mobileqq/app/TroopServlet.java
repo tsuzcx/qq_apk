@@ -5,6 +5,7 @@ import android.os.Bundle;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -43,19 +44,13 @@ public class TroopServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    boolean bool2 = false;
     int i = paramIntent.getIntExtra("command", -1);
     boolean bool1 = paramFromServiceMsg.isSuccess();
     Bundle localBundle = new Bundle();
-    switch (i)
-    {
-    }
-    label120:
-    byte b;
+    if (i == 0) {}
     for (;;)
     {
-      notifyObserver(paramIntent, i, bool1, localBundle, TroopBusinessObserver.class);
-      return;
+      byte b;
       try
       {
         paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.getWupBuffer());
@@ -64,11 +59,16 @@ public class TroopServlet
         paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)new oidb_sso.OIDBSSOPkg().mergeFrom((byte[])localObject1);
         int j = paramFromServiceMsg.uint32_result.get();
         if (j != 0) {
-          break label366;
+          break label381;
         }
         bool1 = true;
-        if (QLog.isColorLevel()) {
-          QLog.d("set_troop_admin", 2, "resultCode: " + j);
+        boolean bool2 = QLog.isColorLevel();
+        if (bool2)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("resultCode: ");
+          ((StringBuilder)localObject1).append(j);
+          QLog.d("set_troop_admin", 2, ((StringBuilder)localObject1).toString());
         }
         paramFromServiceMsg = ByteBuffer.wrap(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
         if (bool1)
@@ -82,20 +82,26 @@ public class TroopServlet
           b = paramFromServiceMsg.get();
           if (QLog.isColorLevel())
           {
-            StringBuilder localStringBuilder = new StringBuilder().append("set troop admin response. troopCode: ").append((String)localObject1).append(" memberUin: ").append((String)localObject2).append(" operation: ");
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("set troop admin response. troopCode: ");
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append(" memberUin: ");
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append(" operation: ");
             if (b != 0) {
-              break label372;
+              break label387;
             }
             paramFromServiceMsg = "delete";
-            label269:
-            QLog.d("set_troop_admin", 2, paramFromServiceMsg);
+            localStringBuilder.append(paramFromServiceMsg);
+            QLog.d("set_troop_admin", 2, localStringBuilder.toString());
           }
-          if ((localObject1 == null) || (((String)localObject1).length() <= 0) || (localObject2 == null) || (((String)localObject2).length() <= 0)) {
-            break label389;
+          if ((localObject1 != null) && (((String)localObject1).length() > 0) && (localObject2 != null) && (((String)localObject2).length() > 0))
+          {
+            localBundle.putString("troop_code", (String)localObject1);
+            localBundle.putString("troop_member_uin", (String)localObject2);
+            localBundle.putByte("operation", b);
+            break label367;
           }
-          localBundle.putString("troop_code", (String)localObject1);
-          localBundle.putString("troop_member_uin", (String)localObject2);
-          localBundle.putByte("operation", b);
         }
         else
         {
@@ -105,71 +111,63 @@ public class TroopServlet
       catch (Exception paramFromServiceMsg)
       {
         paramFromServiceMsg.printStackTrace();
-        bool1 = bool2;
+        bool1 = false;
       }
-    }
-    for (;;)
-    {
-      break;
-      label366:
+      label367:
+      notifyObserver(paramIntent, i, bool1, localBundle, TroopObserver.class);
+      return;
+      label381:
       bool1 = false;
-      break label120;
-      label372:
-      if (b == 1)
-      {
+      continue;
+      label387:
+      if (b == 1) {
         paramFromServiceMsg = "add";
-        break label269;
+      } else {
+        paramFromServiceMsg = "unkonwn";
       }
-      paramFromServiceMsg = "unkonwn";
-      break label269;
-      label389:
-      bool1 = false;
     }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    int i = paramIntent.getIntExtra("command", -1);
-    String str1 = null;
-    switch (i)
+    if (paramIntent.getIntExtra("command", -1) != 0)
     {
-    default: 
-      paramIntent = str1;
-      if (paramIntent != null) {
-        paramPacket.setSSOCommand(paramIntent);
-      }
-      return;
+      paramIntent = null;
     }
-    byte b = paramIntent.getByteExtra("operation", (byte)0);
-    str1 = paramIntent.getStringExtra("troop_code");
-    String str2 = paramIntent.getStringExtra("troop_member_uin");
-    StringBuilder localStringBuilder;
-    if (QLog.isColorLevel())
+    else
     {
-      localStringBuilder = new StringBuilder().append("request set troop admin. troopCode: ").append(str1).append(" memberUin: ").append(str2).append(" operation: ");
-      if (b != 0) {
-        break label150;
+      byte b = paramIntent.getByteExtra("operation", (byte)0);
+      String str1 = paramIntent.getStringExtra("troop_code");
+      String str2 = paramIntent.getStringExtra("troop_member_uin");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("request set troop admin. troopCode: ");
+        localStringBuilder.append(str1);
+        localStringBuilder.append(" memberUin: ");
+        localStringBuilder.append(str2);
+        localStringBuilder.append(" operation: ");
+        if (b == 0) {
+          paramIntent = "delete";
+        } else if (b == 1) {
+          paramIntent = "add";
+        } else {
+          paramIntent = "unkonwn";
+        }
+        localStringBuilder.append(paramIntent);
+        QLog.d("set_troop_admin", 2, localStringBuilder.toString());
       }
-      paramIntent = "delete";
-    }
-    for (;;)
-    {
-      QLog.d("set_troop_admin", 2, paramIntent);
       paramPacket.putSendData(a(b, str1, str2));
       paramIntent = "OidbSvc.0x55c_1";
-      break;
-      label150:
-      if (b == 1) {
-        paramIntent = "add";
-      } else {
-        paramIntent = "unkonwn";
-      }
+    }
+    if (paramIntent != null) {
+      paramPacket.setSSOCommand(paramIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.TroopServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -13,15 +13,21 @@ public abstract interface HippyEngineMonitorAdapter
   
   public abstract void reportBridgeANR(String paramString);
   
+  public abstract void reportClickEvent(Object paramObject, boolean paramBoolean);
+  
+  public abstract void reportDoCallNatives(String paramString1, String paramString2);
+  
   public abstract void reportEngineLoadResult(int paramInt1, int paramInt2, List<HippyEngineMonitorEvent> paramList, Throwable paramThrowable);
   
   public abstract void reportEngineLoadStart();
+  
+  public abstract void reportGestureEventCallStack(String paramString1, String paramString2);
   
   public abstract void reportModuleLoadComplete(HippyRootView paramHippyRootView, int paramInt, List<HippyEngineMonitorEvent> paramList);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.monitor.HippyEngineMonitorAdapter
  * JD-Core Version:    0.7.0.1
  */

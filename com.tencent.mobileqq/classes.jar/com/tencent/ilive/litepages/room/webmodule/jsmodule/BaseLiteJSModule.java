@@ -10,7 +10,7 @@ public abstract class BaseLiteJSModule
 {
   private static final String TAG = "LiteBaseJSModule";
   protected boolean isInit = false;
-  public Context mContext;
+  protected Context mContext;
   protected JsBizAdapter mJsBizAdapter;
   
   public BaseLiteJSModule(Context paramContext, JsBizAdapter paramJsBizAdapter)
@@ -21,8 +21,9 @@ public abstract class BaseLiteJSModule
   
   public void callJsFunctionByNative(String paramString, JSONObject paramJSONObject)
   {
-    if (this.mJsBizAdapter != null) {
-      this.mJsBizAdapter.callJsFunctionByNative(paramString, paramJSONObject, null);
+    JsBizAdapter localJsBizAdapter = this.mJsBizAdapter;
+    if (localJsBizAdapter != null) {
+      localJsBizAdapter.callJsFunctionByNative(paramString, paramJSONObject, null);
     }
   }
   
@@ -40,21 +41,24 @@ public abstract class BaseLiteJSModule
   
   protected void logD(String paramString1, String paramString2)
   {
-    if ((this.mJsBizAdapter != null) && (this.mJsBizAdapter.getLogger() != null)) {
+    paramString1 = this.mJsBizAdapter;
+    if ((paramString1 != null) && (paramString1.getLogger() != null)) {
       this.mJsBizAdapter.getLogger().d("LiteBaseJSModule", paramString2, new Object[0]);
     }
   }
   
-  public void logE(String paramString1, String paramString2)
+  protected void logE(String paramString1, String paramString2)
   {
-    if ((this.mJsBizAdapter != null) && (this.mJsBizAdapter.getLogger() != null)) {
+    paramString1 = this.mJsBizAdapter;
+    if ((paramString1 != null) && (paramString1.getLogger() != null)) {
       this.mJsBizAdapter.getLogger().e("LiteBaseJSModule", paramString2, new Object[0]);
     }
   }
   
-  public void logI(String paramString1, String paramString2)
+  protected void logI(String paramString1, String paramString2)
   {
-    if ((this.mJsBizAdapter != null) && (this.mJsBizAdapter.getLogger() != null)) {
+    paramString1 = this.mJsBizAdapter;
+    if ((paramString1 != null) && (paramString1.getLogger() != null)) {
       this.mJsBizAdapter.getLogger().i("LiteBaseJSModule", paramString2, new Object[0]);
     }
   }
@@ -65,7 +69,8 @@ public abstract class BaseLiteJSModule
   
   protected void postEvent(ModuleEventInterface paramModuleEventInterface)
   {
-    if ((this.mJsBizAdapter != null) && (this.mJsBizAdapter.getModuleEvent() != null)) {
+    JsBizAdapter localJsBizAdapter = this.mJsBizAdapter;
+    if ((localJsBizAdapter != null) && (localJsBizAdapter.getModuleEvent() != null)) {
       this.mJsBizAdapter.getModuleEvent().post(paramModuleEventInterface);
     }
   }
@@ -77,7 +82,7 @@ public abstract class BaseLiteJSModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.jsmodule.BaseLiteJSModule
  * JD-Core Version:    0.7.0.1
  */

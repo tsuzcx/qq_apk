@@ -11,7 +11,7 @@ class IntimateInfoView$10
 {
   IntimateInfoView$10(IntimateInfoView paramIntimateInfoView) {}
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (this.a.a != null) && (paramString.equals(this.a.a.getCurrentAccountUin())))
     {
@@ -24,7 +24,7 @@ class IntimateInfoView$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.10
  * JD-Core Version:    0.7.0.1
  */

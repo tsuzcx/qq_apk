@@ -1,8 +1,8 @@
 package cooperation.troop_homework;
 
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.widget.QQToast;
+import mqq.app.MobileQQ;
 
 class TroopHomeworkHelper$UploadFileTask$2
   implements Runnable
@@ -11,12 +11,12 @@ class TroopHomeworkHelper$UploadFileTask$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), HardCodeUtil.a(2131715303), 0).a();
+    QQToast.a(MobileQQ.getContext(), HardCodeUtil.a(2131715225), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.TroopHomeworkHelper.UploadFileTask.2
  * JD-Core Version:    0.7.0.1
  */

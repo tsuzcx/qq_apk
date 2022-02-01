@@ -14,7 +14,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class META$StStoryFeed
   extends MessageMicro<StStoryFeed>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 58, 66, 72, 82, 90, 98, 106, 114, 122, 128 }, new String[] { "id", "desc", "postUser", "coverImage", "storyVideo", "createTime", "vecText", "likeInfo", "commentCount", "vecComment", "cellComm", "vecExtInfo", "storyMusic", "emojiInfo", "vecBytesExt", "secureHit" }, new Object[] { "", "", null, null, null, Long.valueOf(0L), "", null, Integer.valueOf(0), null, null, null, null, null, null, Integer.valueOf(0) }, StStoryFeed.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public META.StCellComm cellComm = new META.StCellComm();
   public final PBUInt32Field commentCount = PBField.initUInt32(0);
   public META.StImage coverImage = new META.StImage();
@@ -31,10 +31,16 @@ public final class META$StStoryFeed
   public final PBRepeatMessageField<META.StComment> vecComment = PBField.initRepeatMessage(META.StComment.class);
   public final PBRepeatMessageField<COMM.Entry> vecExtInfo = PBField.initRepeatMessage(COMM.Entry.class);
   public final PBRepeatField<String> vecText = PBField.initRepeat(PBStringField.__repeatHelper__);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 48, 58, 66, 72, 82, 90, 98, 106, 114, 122, 128 }, new String[] { "id", "desc", "postUser", "coverImage", "storyVideo", "createTime", "vecText", "likeInfo", "commentCount", "vecComment", "cellComm", "vecExtInfo", "storyMusic", "emojiInfo", "vecBytesExt", "secureHit" }, new Object[] { "", "", null, null, null, Long.valueOf(0L), "", null, localInteger, null, null, null, null, null, null, localInteger }, StStoryFeed.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQ_STORY_META.META.StStoryFeed
  * JD-Core Version:    0.7.0.1
  */

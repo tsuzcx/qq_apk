@@ -27,23 +27,21 @@ public abstract class bb
       this.fe.bN = new HashMap();
     }
     Map localMap = this.fe.bN;
-    if (paramString != null) {}
-    for (;;)
-    {
-      localMap.put(Integer.valueOf(paramInt), paramString);
-      return;
+    if (paramString == null) {
       paramString = "";
     }
+    localMap.put(Integer.valueOf(paramInt), paramString);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (String str = "1";; str = "0")
-    {
-      a(paramInt, str);
-      return;
+    String str;
+    if (paramBoolean) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    a(paramInt, str);
   }
   
   public abstract void a(String... paramVarArgs);
@@ -55,7 +53,7 @@ public abstract class bb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.bb
  * JD-Core Version:    0.7.0.1
  */

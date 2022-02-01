@@ -11,6 +11,7 @@ import com.tencent.mobileqq.shortvideo.ShortVideoResourceManager;
 import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.DownloadResultCallback;
 import eipc.EIPCResult;
 
 public class QzoneVideoSoDownloadModule
@@ -36,18 +37,19 @@ public class QzoneVideoSoDownloadModule
   
   public static QzoneVideoSoDownloadModule getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new QzoneVideoSoDownloadModule("QzoneVideoSoDownloadModule");
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new QzoneVideoSoDownloadModule("QzoneVideoSoDownloadModule");
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
-  public static ResultReceiver getReceiverForSending(QzoneVideoSoDownloadModule.DownloadResultCallback paramDownloadResultCallback)
+  public static ResultReceiver getReceiverForSending(DownloadResultCallback paramDownloadResultCallback)
   {
     Object localObject = new QzoneVideoSoDownloadModule.QzoneVideoSoDownloadResultReceiver(paramDownloadResultCallback);
     paramDownloadResultCallback = Parcel.obtain();
@@ -70,8 +72,12 @@ public class QzoneVideoSoDownloadModule
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QzoneVideoSoDownloadModule", 2, "action = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("action = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("QzoneVideoSoDownloadModule", 2, ((StringBuilder)localObject).toString());
     }
     Object localObject = BaseApplicationImpl.getApplication().getRuntime();
     if (!(localObject instanceof QQAppInterface))
@@ -85,7 +91,7 @@ public class QzoneVideoSoDownloadModule
     if ("action_download_avcodec".equals(paramString))
     {
       QLog.i("QzoneVideoSoDownloadModule", 1, "try download libavcodec");
-      if ((NetworkUtil.g(null)) && (paramBundle != null))
+      if ((NetworkUtil.isNetworkAvailable(null)) && (paramBundle != null))
       {
         paramString = (ResultReceiver)paramBundle.getParcelable("key_download_result_receiver");
         if (paramString == null)
@@ -110,7 +116,7 @@ public class QzoneVideoSoDownloadModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QzoneVideoSoDownloadModule
  * JD-Core Version:    0.7.0.1
  */

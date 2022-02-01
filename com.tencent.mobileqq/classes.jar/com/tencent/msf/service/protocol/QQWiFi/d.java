@@ -30,15 +30,16 @@ public final class d
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.a, 0);
-    if (this.b != null) {
-      paramJceOutputStream.write(this.b, 1);
+    String str = this.b;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.c, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.QQWiFi.d
  * JD-Core Version:    0.7.0.1
  */

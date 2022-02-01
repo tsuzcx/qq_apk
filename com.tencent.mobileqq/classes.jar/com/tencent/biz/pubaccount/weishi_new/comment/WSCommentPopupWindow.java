@@ -12,7 +12,6 @@ import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout;
 import com.tencent.biz.pubaccount.weishi_new.view.WSDragLayout.TouchListener;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.immersive.SystemBarTintManager;
 
 public class WSCommentPopupWindow
@@ -31,9 +30,9 @@ public class WSCommentPopupWindow
   
   public static WSCommentPopupWindow a(Activity paramActivity, int paramInt1, int paramInt2)
   {
-    WSCommentPopupWindow localWSCommentPopupWindow = new WSCommentPopupWindow(LayoutInflater.from(paramActivity).inflate(2131560121, null), paramInt1, paramInt2);
+    WSCommentPopupWindow localWSCommentPopupWindow = new WSCommentPopupWindow(LayoutInflater.from(paramActivity).inflate(2131559993, null), paramInt1, paramInt2);
     localWSCommentPopupWindow.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    localWSCommentPopupWindow.setAnimationStyle(2131755487);
+    localWSCommentPopupWindow.setAnimationStyle(2131755835);
     localWSCommentPopupWindow.c();
     localWSCommentPopupWindow.setFocusable(true);
     localWSCommentPopupWindow.setInputMethodMode(1);
@@ -56,13 +55,13 @@ public class WSCommentPopupWindow
   private void c()
   {
     View localView = getContentView();
-    localView.findViewById(2131377366).setOnClickListener(new WSCommentPopupWindow.2(this));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout = ((WSDragLayout)localView.findViewById(2131365294));
+    localView.findViewById(2131376818).setOnClickListener(new WSCommentPopupWindow.2(this));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout = ((WSDragLayout)localView.findViewById(2131365169));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setDisableMinScrollY(true);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setControlLitTongue(false);
-    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131365058);
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366694));
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setListView(this.jdField_a_of_type_AndroidWidgetListView);
+    this.jdField_a_of_type_AndroidViewView = localView.findViewById(2131364941);
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)this.jdField_a_of_type_AndroidViewView.findViewById(2131366563));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setContentView(this.jdField_a_of_type_AndroidWidgetListView);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setTouchListener(this);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.setMode(1);
   }
@@ -76,8 +75,13 @@ public class WSCommentPopupWindow
   
   public void a(float paramFloat)
   {
-    WSLog.a("DraggablePopup", "progress = " + paramFloat);
-    b((float)(0.7D + paramFloat * 0.3D));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("progress = ");
+    localStringBuilder.append(paramFloat);
+    WSLog.a("DraggablePopup", localStringBuilder.toString());
+    double d = paramFloat;
+    Double.isNaN(d);
+    b((float)(d * 0.3D + 0.7D));
   }
   
   public void a(int paramInt)
@@ -87,10 +91,16 @@ public class WSCommentPopupWindow
   
   public void a(boolean paramBoolean) {}
   
+  public boolean a()
+  {
+    return false;
+  }
+  
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout.a(0);
+    WSDragLayout localWSDragLayout = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSDragLayout;
+    if (localWSDragLayout != null) {
+      localWSDragLayout.a(0);
     }
   }
   
@@ -102,10 +112,9 @@ public class WSCommentPopupWindow
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131379738) {
+    if (paramView.getId() == 2131379076) {
       dismiss();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void showAtLocation(View paramView, int paramInt1, int paramInt2, int paramInt3)
@@ -123,7 +132,7 @@ public class WSCommentPopupWindow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WSCommentPopupWindow
  * JD-Core Version:    0.7.0.1
  */

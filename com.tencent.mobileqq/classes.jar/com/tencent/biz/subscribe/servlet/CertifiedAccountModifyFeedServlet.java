@@ -20,62 +20,57 @@ public class CertifiedAccountModifyFeedServlet
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
-    Object localObject3 = null;
+    byte[] arrayOfByte1 = paramIntent.getByteArrayExtra("key_ext");
     Object localObject1 = null;
-    byte[] arrayOfByte = paramIntent.getByteArrayExtra("key_ext");
-    if (arrayOfByte != null) {}
-    for (Object localObject2 = new COMM.StCommonExt();; localObject2 = null) {
-      for (;;)
+    Object localObject3 = null;
+    if (arrayOfByte1 != null)
+    {
+      localObject2 = new COMM.StCommonExt();
+      try
       {
-        try
-        {
-          ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte);
-          i = paramIntent.getIntExtra("key_index", -1);
-          arrayOfByte = paramIntent.getByteArrayExtra("key_request_feed_bytes");
-          if (arrayOfByte == null) {}
-        }
-        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
-        {
-          try
-          {
-            localObject1 = new CertifiedAccountMeta.StFeed();
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2)
-          {
-            int i;
-            localObject1 = localObject3;
-          }
-          try
-          {
-            ((CertifiedAccountMeta.StFeed)localObject1).mergeFrom(arrayOfByte);
-            localObject2 = new CertifiedAccountModifyFeedRequest((COMM.StCommonExt)localObject2, (CertifiedAccountMeta.StFeed)localObject1).a(paramIntent, i, a());
-            localObject1 = localObject2;
-            if (localObject2 == null) {
-              localObject1 = new byte[4];
-            }
-            paramPacket.setSSOCommand("CertifiedAccountSvc.certified_account_write.ModifyFeed");
-            paramPacket.putSendData(WupUtil.a((byte[])localObject1));
-            paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
-            super.onSend(paramIntent, paramPacket);
-            return;
-          }
-          catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
-          {
-            break label166;
-          }
-          localInvalidProtocolBufferMicroException1 = localInvalidProtocolBufferMicroException1;
-          QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException1));
-          continue;
-        }
-        label166:
-        QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException2));
+        ((COMM.StCommonExt)localObject2).mergeFrom(arrayOfByte1);
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException1)
+      {
+        QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException1));
       }
     }
+    else
+    {
+      localObject2 = null;
+    }
+    int i = paramIntent.getIntExtra("key_index", -1);
+    byte[] arrayOfByte2 = paramIntent.getByteArrayExtra("key_request_feed_bytes");
+    if (arrayOfByte2 != null) {
+      try
+      {
+        localObject1 = new CertifiedAccountMeta.StFeed();
+        try
+        {
+          ((CertifiedAccountMeta.StFeed)localObject1).mergeFrom(arrayOfByte2);
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException2) {}
+        QLog.e("CertifiedAccountModifyFeedServlet", 2, QLog.getStackTraceString(localInvalidProtocolBufferMicroException3));
+      }
+      catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException3)
+      {
+        localObject1 = localObject3;
+      }
+    }
+    Object localObject2 = new CertifiedAccountModifyFeedRequest((COMM.StCommonExt)localObject2, (CertifiedAccountMeta.StFeed)localObject1).a(paramIntent, i, a());
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new byte[4];
+    }
+    paramPacket.setSSOCommand("CertifiedAccountSvc.certified_account_write.ModifyFeed");
+    paramPacket.putSendData(WupUtil.a((byte[])localObject1));
+    paramPacket.setTimeout(paramIntent.getLongExtra("key_timeout", 30000L));
+    super.onSend(paramIntent, paramPacket);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.servlet.CertifiedAccountModifyFeedServlet
  * JD-Core Version:    0.7.0.1
  */

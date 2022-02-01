@@ -12,24 +12,26 @@ class MultiRichMediaSaveManager$6
   
   public void a(int paramInt, PicResult paramPicResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("MultiRichMediaSaveManager", 2, "downloadPic key = " + this.jdField_a_of_type_JavaLangString + ", result = " + paramInt);
-    }
-    int j = 0;
-    String str2 = "";
-    String str1 = str2;
-    int i = j;
-    if (paramPicResult != null)
+    if (QLog.isColorLevel())
     {
-      str1 = str2;
-      i = j;
-      if (paramPicResult.a != null)
-      {
-        i = paramPicResult.a.a;
-        str1 = paramPicResult.a.b;
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadPic key = ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(", result = ");
+      localStringBuilder.append(paramInt);
+      QLog.i("MultiRichMediaSaveManager", 2, localStringBuilder.toString());
     }
-    MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq, paramInt, i, str1);
+    int i = 0;
+    if ((paramPicResult != null) && (paramPicResult.a != null))
+    {
+      i = paramPicResult.a.a;
+      paramPicResult = paramPicResult.a.b;
+    }
+    else
+    {
+      paramPicResult = "";
+    }
+    MultiRichMediaSaveManager.a(this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager, this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveReq, paramInt, i, paramPicResult);
   }
   
   public void a_(int paramInt, boolean paramBoolean)
@@ -39,7 +41,7 @@ class MultiRichMediaSaveManager$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.save.MultiRichMediaSaveManager.6
  * JD-Core Version:    0.7.0.1
  */

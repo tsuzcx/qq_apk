@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.phone;
 
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.forward.ForwardShareCardOption;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.QLog;
 
@@ -12,36 +12,41 @@ class ContactListView$ContactListObserver
 {
   private ContactListView$ContactListObserver(ContactListView paramContactListView) {}
   
-  public void onHideContact(boolean paramBoolean)
+  protected void onHideContact(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ContactListView", 2, "onHideContact isSuccess=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onHideContact isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("ContactListView", 2, localStringBuilder.toString());
     }
     if ((paramBoolean) && (this.a.jdField_a_of_type_Int == 5)) {
       this.a.j();
     }
   }
   
-  public void onQueryBindState(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onQueryBindState(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int i = this.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.d();
+    int i = this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService.getSelfBindState();
     if (!paramBoolean1)
     {
       this.a.i();
       this.a.g();
       if (((i == 0) || (i == 7)) && ((this.a.jdField_a_of_type_Int != 2) || (!(this.a.jdField_a_of_type_ComTencentMobileqqForwardForwardBaseOption instanceof ForwardShareCardOption))) && (this.a.b == 0)) {
-        this.a.a(2131718550, 3000L);
+        this.a.a(2131718218, 3000L);
       }
     }
-    do
+    else
     {
-      return;
       this.a.jdField_a_of_type_AndroidWidgetTextView.setEnabled(true);
-    } while (!this.a.jdField_a_of_type_ComTencentMobileqqActivityContactPhonecontactPhoneContactManagerImp.f());
-    this.a.a(2131719050, 0L, false);
+      if (this.a.jdField_a_of_type_ComTencentMobileqqPhonecontactApiIPhoneContactService.isAutoUploadContacts()) {
+        this.a.a(2131718766, 0L, false);
+      }
+    }
   }
   
-  public void onQueryContactList(boolean paramBoolean, int paramInt)
+  protected void onQueryContactList(boolean paramBoolean, int paramInt)
   {
     if (paramBoolean)
     {
@@ -51,19 +56,18 @@ class ContactListView$ContactListObserver
         this.a.g();
       }
     }
-    for (;;)
+    else
     {
-      if (this.a.jdField_a_of_type_Int == 6) {
-        this.a.f();
-      }
-      return;
       this.a.g();
+    }
+    if (this.a.jdField_a_of_type_Int == 6) {
+      this.a.f();
     }
   }
   
-  public void onUploadContact(boolean paramBoolean, int paramInt)
+  protected void onUploadContact(boolean paramBoolean, int paramInt)
   {
-    if ((!paramBoolean) || (!NetworkUtil.d(this.a.getContext())))
+    if ((!paramBoolean) || (!NetworkUtil.isNetSupport(this.a.getContext())))
     {
       this.a.i();
       this.a.g();
@@ -72,7 +76,7 @@ class ContactListView$ContactListObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.ContactListView.ContactListObserver
  * JD-Core Version:    0.7.0.1
  */

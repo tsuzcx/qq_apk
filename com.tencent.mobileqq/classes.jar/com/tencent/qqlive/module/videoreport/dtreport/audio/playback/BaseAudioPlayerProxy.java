@@ -41,8 +41,9 @@ class BaseAudioPlayerProxy
   {
     this.mAudioPlayListener.onAudioComplete(this.mAudioPlayer);
     this.mTimer.stop();
-    if (this.mBizCompletionListener != null) {
-      this.mBizCompletionListener.onAudioPlayComplete(this.mAudioPlayer);
+    paramIAudioPlayer = this.mBizCompletionListener;
+    if (paramIAudioPlayer != null) {
+      paramIAudioPlayer.onAudioPlayComplete(this.mAudioPlayer);
     }
   }
   
@@ -51,8 +52,9 @@ class BaseAudioPlayerProxy
     this.mState = 5;
     this.mAudioPlayListener.onAudioError(this.mAudioPlayer, paramInt1, paramInt2);
     this.mTimer.stop();
-    if (this.mBizErrorListener != null) {
-      return this.mBizErrorListener.onAudioError(this.mAudioPlayer, paramInt1, paramInt2);
+    paramIAudioPlayer = this.mBizErrorListener;
+    if (paramIAudioPlayer != null) {
+      return paramIAudioPlayer.onAudioError(this.mAudioPlayer, paramInt1, paramInt2);
     }
     return false;
   }
@@ -61,13 +63,12 @@ class BaseAudioPlayerProxy
   {
     if (paramInt1 == 701) {
       this.mAudioPlayListener.onBufferingStart(this.mAudioPlayer);
+    } else if (paramInt1 == 702) {
+      this.mAudioPlayListener.onBufferingEnd(this.mAudioPlayer);
     }
-    while (this.mBizInfoListener != null)
-    {
-      return this.mBizInfoListener.onAudioInfo(this.mAudioPlayer, paramInt1, paramInt2);
-      if (paramInt1 == 702) {
-        this.mAudioPlayListener.onBufferingEnd(this.mAudioPlayer);
-      }
+    paramIAudioPlayer = this.mBizInfoListener;
+    if (paramIAudioPlayer != null) {
+      return paramIAudioPlayer.onAudioInfo(this.mAudioPlayer, paramInt1, paramInt2);
     }
     return false;
   }
@@ -77,8 +78,9 @@ class BaseAudioPlayerProxy
     if (this.mAudioPlayer.isAudioPlayer__()) {
       this.mState = 1;
     }
-    if (this.mBizPreparedListener != null) {
-      this.mBizPreparedListener.onAudioPlayPrepared(this.mAudioPlayer);
+    paramIAudioPlayer = this.mBizPreparedListener;
+    if (paramIAudioPlayer != null) {
+      paramIAudioPlayer.onAudioPlayPrepared(this.mAudioPlayer);
     }
   }
   
@@ -160,7 +162,7 @@ class BaseAudioPlayerProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.audio.playback.BaseAudioPlayerProxy
  * JD-Core Version:    0.7.0.1
  */

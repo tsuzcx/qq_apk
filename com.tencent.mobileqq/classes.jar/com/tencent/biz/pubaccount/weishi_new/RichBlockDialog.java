@@ -26,7 +26,6 @@ import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 public class RichBlockDialog
@@ -57,7 +56,7 @@ public class RichBlockDialog
   
   private RichBlockDialog(Context paramContext, int paramInt1, int paramInt2)
   {
-    this(paramContext, 2131755959, paramInt1, paramInt2);
+    this(paramContext, 2131756308, paramInt1, paramInt2);
   }
   
   private RichBlockDialog(Context paramContext, int paramInt1, int paramInt2, int paramInt3)
@@ -91,20 +90,26 @@ public class RichBlockDialog
   
   private int a()
   {
-    switch (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type)
+    int i = this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type;
+    if (i != 1)
     {
-    case 1: 
-    default: 
-      return 6;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return 6;
+        }
+        return 7;
+      }
       return 401;
     }
-    return 7;
+    return 6;
   }
   
   private String a(int paramInt)
   {
-    String str2 = String.format("%.3f", new Object[] { Double.valueOf(paramInt / 100.0D) });
+    double d1 = paramInt;
+    Double.isNaN(d1);
+    String str2 = String.format("%.3f", new Object[] { Double.valueOf(d1 / 100.0D) });
     String str1 = str2;
     if (str2.indexOf(".") > 0) {
       str1 = str2.replaceAll("0+?$", "").replaceAll("[.]$", "");
@@ -121,25 +126,20 @@ public class RichBlockDialog
       return;
     }
     this.jdField_a_of_type_Long = l;
-    Context localContext;
-    if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig != null) && (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.jp_button != null))
+    Object localObject1 = this.jdField_a_of_type_UserGrowthStPopWindowsConfig;
+    if ((localObject1 != null) && (((stPopWindowsConfig)localObject1).jp_button != null))
     {
       a(112, "popup_clk");
-      localContext = getContext();
-      if (!(localContext instanceof ContextThemeWrapper)) {
-        break label133;
+      Object localObject2 = getContext();
+      localObject1 = localObject2;
+      if ((localObject2 instanceof ContextThemeWrapper)) {
+        localObject1 = ((ContextThemeWrapper)localObject2).getBaseContext();
       }
-      localContext = ((ContextThemeWrapper)localContext).getBaseContext();
+      localObject2 = this.jdField_a_of_type_UserGrowthStPopWindowsConfig.schema_url;
+      String str = this.jdField_a_of_type_UserGrowthStPopWindowsConfig.h5url;
+      WeishiUtils.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject2, str, "", this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type, new RichBlockDialog.1(this, (Context)localObject1));
     }
-    label133:
-    for (;;)
-    {
-      String str1 = this.jdField_a_of_type_UserGrowthStPopWindowsConfig.schema_url;
-      String str2 = this.jdField_a_of_type_UserGrowthStPopWindowsConfig.h5url;
-      WeishiUtils.a(this.jdField_a_of_type_AndroidContentContext, str1, str2, "", this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type, new RichBlockDialog.1(this, localContext));
-      d();
-      return;
-    }
+    d();
   }
   
   private void a(int paramInt, String paramString)
@@ -155,16 +155,16 @@ public class RichBlockDialog
   private void b()
   {
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562785, null, false);
+    this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131562601, null, false);
     setContentView(this.jdField_a_of_type_AndroidViewView);
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376422));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376426));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376423));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376425));
-    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376424));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376420));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376419));
-    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131376427));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375934));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375938));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375935));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375937));
+    this.e = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375936));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375932));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375931));
+    this.f = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131375939));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentImageURLImageView.setOnClickListener(this);
@@ -177,7 +177,8 @@ public class RichBlockDialog
   
   private void c()
   {
-    if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig != null) && (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type != 1))
+    stPopWindowsConfig localstPopWindowsConfig = this.jdField_a_of_type_UserGrowthStPopWindowsConfig;
+    if ((localstPopWindowsConfig != null) && (localstPopWindowsConfig.type != 1))
     {
       this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
       this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(4);
@@ -200,22 +201,28 @@ public class RichBlockDialog
   
   private void e()
   {
-    if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig != null)
+    Object localObject = this.jdField_a_of_type_UserGrowthStPopWindowsConfig;
+    if (localObject != null)
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.title)) {
+      if (!TextUtils.isEmpty(((stPopWindowsConfig)localObject).title)) {
         this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.title);
       }
-      if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type != 1) {
-        break label234;
-      }
-      if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation != null) && (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation.money > 0))
+      if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type == 1)
       {
-        String str = a(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation.money);
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(str);
+        if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation != null) && (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation.money > 0))
+        {
+          localObject = a(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation.money);
+          this.jdField_c_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+        }
       }
-    }
-    for (;;)
-    {
+      else if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation != null)
+      {
+        localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation.money);
+        localStringBuilder.append("");
+        ((TextView)localObject).setText(localStringBuilder.toString());
+      }
       if ((this.jdField_a_of_type_UserGrowthStPopWindowsConfig.jp_button != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.jp_button.title))) {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.jp_button.title);
       }
@@ -229,11 +236,6 @@ public class RichBlockDialog
       a(6, "popup_exp");
       WSPublicAccReport.getInstance().reportExposeRichBlockPop(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.trace_id, this.jdField_b_of_type_JavaLangString, this.jdField_d_of_type_Int);
       a();
-      return;
-      label234:
-      if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation != null) {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.annexation.money + "");
-      }
     }
   }
   
@@ -245,60 +247,62 @@ public class RichBlockDialog
     if (paramstGlobalConfig != null)
     {
       this.jdField_a_of_type_UserGrowthStGlobalConfig = paramstGlobalConfig;
-      if ((paramstGlobalConfig.windows_config == null) || (paramstGlobalConfig.windows_config.size() <= 0)) {
-        break label129;
-      }
-      paramstGlobalConfig = (stPopWindowsConfig)paramstGlobalConfig.windows_config.get(0);
-      if (paramstGlobalConfig == null) {
-        break label117;
-      }
-      if (paramstGlobalConfig.type != 1) {
-        break label93;
-      }
-      this.jdField_a_of_type_UserGrowthStPopWindowsConfig = paramstGlobalConfig;
-      WSLog.a("weishi-813", "阻断页rich化 type是：" + paramstGlobalConfig.type);
-    }
-    for (;;)
-    {
-      c();
-      return;
-      label93:
-      if (paramstGlobalConfig.type == 2)
+      if ((paramstGlobalConfig.windows_config != null) && (paramstGlobalConfig.windows_config.size() > 0))
       {
-        this.jdField_a_of_type_UserGrowthStPopWindowsConfig = paramstGlobalConfig;
-        break;
+        paramstGlobalConfig = (stPopWindowsConfig)paramstGlobalConfig.windows_config.get(0);
+        if (paramstGlobalConfig != null)
+        {
+          if (paramstGlobalConfig.type == 1) {
+            this.jdField_a_of_type_UserGrowthStPopWindowsConfig = paramstGlobalConfig;
+          } else if (paramstGlobalConfig.type == 2) {
+            this.jdField_a_of_type_UserGrowthStPopWindowsConfig = paramstGlobalConfig;
+          } else {
+            this.jdField_a_of_type_UserGrowthStPopWindowsConfig = paramstGlobalConfig;
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("阻断页rich化 type是：");
+          localStringBuilder.append(paramstGlobalConfig.type);
+          WSLog.a("weishi-813", localStringBuilder.toString());
+        }
+        else
+        {
+          WSLog.a("weishi-813", "阻断页rich化 windowsConfig为null");
+        }
       }
-      this.jdField_a_of_type_UserGrowthStPopWindowsConfig = paramstGlobalConfig;
-      break;
-      label117:
-      WSLog.a("weishi-813", "阻断页rich化 windowsConfig为null");
-      continue;
-      label129:
-      WSLog.c("weishi-813", "瀑布流阻断页rich化 windowsConfig size为0");
+      else
+      {
+        WSLog.c("weishi-813", "瀑布流阻断页rich化 windowsConfig size为0");
+      }
+      c();
     }
   }
   
   public void a(Context paramContext)
   {
-    if (paramContext == null) {}
-    while (this.jdField_a_of_type_UserGrowthStPopWindowsConfig == null) {
+    if (paramContext == null) {
       return;
     }
-    if (!TextUtils.isEmpty(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.bg_img_url))
+    paramContext = this.jdField_a_of_type_UserGrowthStPopWindowsConfig;
+    if (paramContext == null) {
+      return;
+    }
+    if (!TextUtils.isEmpty(paramContext.bg_img_url))
     {
-      paramContext = getContext().getResources().getDrawable(2130841881);
-      switch (this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type)
+      paramContext = getContext().getResources().getDrawable(2130841770);
+      int i = this.jdField_a_of_type_UserGrowthStPopWindowsConfig.type;
+      if (i != 2)
       {
-      default: 
-        d();
-        return;
-      case 3: 
+        if (i != 3)
+        {
+          d();
+          return;
+        }
         this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSMultiImageManager = new WSMultiImageManager();
         this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSMultiImageManager.a(this.jdField_a_of_type_ComTencentImageURLImageView, paramContext, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.bg_img_url, true, false);
         e();
         return;
       }
-      a(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.bg_img_url, paramContext, paramContext, HardCodeUtil.a(2131713402));
+      a(this.jdField_a_of_type_UserGrowthStPopWindowsConfig.bg_img_url, paramContext, paramContext, HardCodeUtil.a(2131713370));
       return;
     }
     d();
@@ -345,32 +349,29 @@ public class RichBlockDialog
   
   public void onClick(View paramView)
   {
-    if (paramView == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
+    if (paramView == null) {
       return;
-      switch (paramView.getId())
+    }
+    switch (paramView.getId())
+    {
+    case 2131375933: 
+    default: 
+    case 2131375934: 
+      WSLog.a("weishi-813", "点击了图片 背景图");
+      a(2);
+      return;
+    case 2131375932: 
+      d();
+      if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig != null)
       {
-      case 2131376421: 
-      default: 
-        break;
-      case 2131376419: 
-        WSLog.a("weishi-813", "点击了红包 提现");
-        a(1);
-        break;
-      case 2131376420: 
-        d();
-        if (this.jdField_a_of_type_UserGrowthStPopWindowsConfig != null)
-        {
-          a(117, "popup_close");
-          WSPublicAccReport.getInstance().reportClickRichBlockPop(1000005, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.trace_id, this.jdField_b_of_type_JavaLangString, this.jdField_d_of_type_Int);
-        }
-        break;
-      case 2131376422: 
-        WSLog.a("weishi-813", "点击了图片 背景图");
-        a(2);
+        a(117, "popup_close");
+        WSPublicAccReport.getInstance().reportClickRichBlockPop(1000005, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.windowsid, this.jdField_a_of_type_UserGrowthStPopWindowsConfig.trace_id, this.jdField_b_of_type_JavaLangString, this.jdField_d_of_type_Int);
+        return;
       }
+      break;
+    case 2131375931: 
+      WSLog.a("weishi-813", "点击了红包 提现");
+      a(1);
     }
   }
   
@@ -391,7 +392,7 @@ public class RichBlockDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.RichBlockDialog
  * JD-Core Version:    0.7.0.1
  */

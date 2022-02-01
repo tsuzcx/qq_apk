@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.extendfriend;
 
+import android.os.Bundle;
 import com.tencent.biz.webviewplugin.NewReportPlugin;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import java.util.HashMap;
 
 class ExtendOpenPageAction$1
@@ -13,14 +13,13 @@ class ExtendOpenPageAction$1
   
   public void run()
   {
-    QLog.d("expand.ExtendOpenPageAction", 2, "gotoSafetyReport, thread:" + Thread.currentThread().getName());
     String str = (String)this.this$0.jdField_a_of_type_JavaUtilHashMap.get("uin");
-    NewReportPlugin.a((BaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext, 1044, str, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    NewReportPlugin.a((QBaseActivity)this.this$0.jdField_a_of_type_AndroidContentContext, str, NewReportPlugin.b(str, NewReportPlugin.b(2)), "0", null, this.this$0.jdField_a_of_type_ComTencentCommonAppBusinessBaseQQAppInterface.getCurrentAccountUin(), 20005, null, new Bundle());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.extendfriend.ExtendOpenPageAction.1
  * JD-Core Version:    0.7.0.1
  */

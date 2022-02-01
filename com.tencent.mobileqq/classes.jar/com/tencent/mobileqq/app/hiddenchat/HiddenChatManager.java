@@ -69,28 +69,23 @@ public class HiddenChatManager
       {
         int j = localObject.length;
         int i = 0;
-        for (;;)
+        while (i < j)
         {
-          if (i < j)
-          {
-            String[] arrayOfString = localObject[i].split("\\|");
-            if ((arrayOfString != null) && (arrayOfString.length == 2)) {}
+          String[] arrayOfString = localObject[i].split("\\|");
+          if ((arrayOfString != null) && (arrayOfString.length == 2)) {
             try
             {
               HiddenChatEntity localHiddenChatEntity = new HiddenChatEntity();
               localHiddenChatEntity.jdField_a_of_type_JavaLangString = arrayOfString[0];
               localHiddenChatEntity.jdField_a_of_type_Int = Integer.parseInt(arrayOfString[1]);
               localArrayList.add(localHiddenChatEntity);
-              i += 1;
             }
             catch (Throwable localThrowable)
             {
-              for (;;)
-              {
-                QLog.e("tag_hidden_chat", 2, localThrowable, new Object[0]);
-              }
+              QLog.e("tag_hidden_chat", 2, localThrowable, new Object[0]);
             }
           }
+          i += 1;
         }
       }
     }
@@ -104,7 +99,10 @@ public class HiddenChatManager
     while (localIterator.hasNext())
     {
       HiddenChatEntity localHiddenChatEntity = (HiddenChatEntity)localIterator.next();
-      localStringBuilder.append(localHiddenChatEntity.jdField_a_of_type_JavaLangString).append("|").append(localHiddenChatEntity.jdField_a_of_type_Int).append(";");
+      localStringBuilder.append(localHiddenChatEntity.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("|");
+      localStringBuilder.append(localHiddenChatEntity.jdField_a_of_type_Int);
+      localStringBuilder.append(";");
     }
     this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putString("KeyHiddenChatList", localStringBuilder.toString()).commit();
   }
@@ -115,29 +113,29 @@ public class HiddenChatManager
     if (!((SharedPreferences)localObject).getBoolean("FirstSetHidden", false))
     {
       ((SharedPreferences)localObject).edit().putBoolean("FirstSetHidden", true).commit();
-      if (!PrivacySettingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-        break label141;
+      if (PrivacySettingUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+        localObject = paramActivity.getString(2131696350);
+      } else {
+        localObject = paramActivity.getString(2131696349);
       }
-    }
-    label141:
-    for (localObject = paramActivity.getString(2131696331);; localObject = paramActivity.getString(2131696330))
-    {
-      DialogUtil.a(paramActivity, 230, paramActivity.getString(2131696333), (CharSequence)localObject, paramActivity.getString(2131719347), paramActivity.getString(2131696332), new HiddenChatManager.1(this, paramActivity), new DialogUtil.DialogOnClickAdapter()).show();
+      DialogUtil.a(paramActivity, 230, paramActivity.getString(2131696352), (CharSequence)localObject, paramActivity.getString(2131719065), paramActivity.getString(2131696351), new HiddenChatManager.1(this, paramActivity), new DialogUtil.DialogOnClickAdapter()).show();
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A349", "0X800A349", 0, 0, "0", "0", "", "");
-      return;
     }
   }
   
   void a(HiddenChatEntity paramHiddenChatEntity)
   {
-    if ((paramHiddenChatEntity == null) || (TextUtils.isEmpty(paramHiddenChatEntity.jdField_a_of_type_JavaLangString))) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+    if (paramHiddenChatEntity != null)
     {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramHiddenChatEntity.jdField_a_of_type_JavaLangString, paramHiddenChatEntity);
-      a();
-      return;
+      if (TextUtils.isEmpty(paramHiddenChatEntity.jdField_a_of_type_JavaLangString)) {
+        return;
+      }
+      synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+      {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramHiddenChatEntity.jdField_a_of_type_JavaLangString, paramHiddenChatEntity);
+        a();
+        return;
+      }
     }
   }
   
@@ -166,6 +164,7 @@ public class HiddenChatManager
   
   boolean a()
   {
+    boolean bool = true;
     for (;;)
     {
       try
@@ -181,32 +180,37 @@ public class HiddenChatManager
         }
         else
         {
-          if (localObject1 == null) {
-            break label158;
-          }
-          synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-          {
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-            localObject1 = ((List)localObject1).iterator();
-            if (!((Iterator)localObject1).hasNext()) {
-              break;
+          if (localObject1 != null) {
+            synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
+            {
+              this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
+              localObject1 = ((List)localObject1).iterator();
+              if (((Iterator)localObject1).hasNext())
+              {
+                HiddenChatEntity localHiddenChatEntity = (HiddenChatEntity)((Iterator)localObject1).next();
+                this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localHiddenChatEntity.jdField_a_of_type_JavaLangString, localHiddenChatEntity);
+                continue;
+              }
+              return true;
             }
-            HiddenChatEntity localHiddenChatEntity = (HiddenChatEntity)((Iterator)localObject1).next();
-            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localHiddenChatEntity.jdField_a_of_type_JavaLangString, localHiddenChatEntity);
           }
+          StringBuilder localStringBuilder;
+          return bool;
         }
-        int i = 0;
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("tag_hidden_chat", 2, "doInitAllHidden exception:" + localException.getMessage());
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("doInitAllHidden exception:");
+          localStringBuilder.append(localException.getMessage());
+          QLog.e("tag_hidden_chat", 2, localStringBuilder.toString());
         }
-        return false;
+        bool = false;
       }
+      int i = 0;
     }
-    label158:
-    return true;
   }
   
   public void b()
@@ -225,7 +229,7 @@ public class HiddenChatManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatManager
  * JD-Core Version:    0.7.0.1
  */

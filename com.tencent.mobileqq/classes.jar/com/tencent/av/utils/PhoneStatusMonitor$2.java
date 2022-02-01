@@ -12,20 +12,27 @@ class PhoneStatusMonitor$2
   public void run()
   {
     boolean bool = PhoneStatusTools.e(PhoneStatusMonitor.a(this.this$0));
-    if (QLog.isColorLevel()) {
-      QLog.d("PhoneStatusMonitor", 2, "checkCalling, end, pre[" + PhoneStatusMonitor.a(this.this$0) + "], cur[" + bool + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkCalling, end, pre[");
+      ((StringBuilder)localObject).append(PhoneStatusMonitor.a(this.this$0));
+      ((StringBuilder)localObject).append("], cur[");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("PhoneStatusMonitor", 2, ((StringBuilder)localObject).toString());
     }
     PhoneStatusMonitor.a(this.this$0, bool);
-    Handler localHandler = PhoneStatusMonitor.a(this.this$0);
-    if ((localHandler != null) && (PhoneStatusMonitor.a(this.this$0).get())) {
-      localHandler.postDelayed(PhoneStatusMonitor.a(this.this$0), 10000L);
+    Object localObject = PhoneStatusMonitor.a(this.this$0);
+    if ((localObject != null) && (PhoneStatusMonitor.a(this.this$0).get())) {
+      ((Handler)localObject).postDelayed(PhoneStatusMonitor.a(this.this$0), 10000L);
     }
     PhoneStatusMonitor.b(this.this$0).set(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.PhoneStatusMonitor.2
  * JD-Core Version:    0.7.0.1
  */

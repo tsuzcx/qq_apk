@@ -19,8 +19,9 @@ public enum AdQQMINIProgram
   
   private static AdQQMINIProgramAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdQQMINIProgramAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdQQMINIProgramAdapter)localWeakReference.get();
     }
     return null;
   }

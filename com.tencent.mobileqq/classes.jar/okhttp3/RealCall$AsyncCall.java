@@ -1,24 +1,11 @@
 package okhttp3;
 
-import java.io.InterruptedIOException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.RejectedExecutionException;
 import okhttp3.internal.NamedRunnable;
 
 final class RealCall$AsyncCall
   extends NamedRunnable
 {
   private final Callback responseCallback;
-  
-  static
-  {
-    if (!RealCall.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
   
   RealCall$AsyncCall(RealCall paramRealCall, Callback paramCallback)
   {
@@ -27,163 +14,222 @@ final class RealCall$AsyncCall
   }
   
   /* Error */
-  public void execute()
+  protected void execute()
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: iconst_0
-    //   3: istore_1
-    //   4: aload_0
-    //   5: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   8: getfield 49	okhttp3/RealCall:timeout	Lokio/AsyncTimeout;
-    //   11: invokevirtual 54	okio/AsyncTimeout:enter	()V
-    //   14: aload_0
-    //   15: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   18: invokevirtual 58	okhttp3/RealCall:getResponseWithInterceptorChain	()Lokhttp3/Response;
-    //   21: astore_3
-    //   22: iconst_1
-    //   23: istore_2
-    //   24: iconst_1
-    //   25: istore_1
+    //   0: aload_0
+    //   1: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   4: getfield 42	okhttp3/RealCall:timeout	Lokio/AsyncTimeout;
+    //   7: invokevirtual 47	okio/AsyncTimeout:enter	()V
+    //   10: aload_0
+    //   11: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   14: invokevirtual 51	okhttp3/RealCall:getResponseWithInterceptorChain	()Lokhttp3/Response;
+    //   17: astore_3
+    //   18: iconst_1
+    //   19: istore_2
+    //   20: iconst_1
+    //   21: istore_1
+    //   22: aload_0
+    //   23: getfield 33	okhttp3/RealCall$AsyncCall:responseCallback	Lokhttp3/Callback;
     //   26: aload_0
-    //   27: getfield 40	okhttp3/RealCall$AsyncCall:responseCallback	Lokhttp3/Callback;
-    //   30: aload_0
-    //   31: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   34: aload_3
-    //   35: invokeinterface 64 3 0
-    //   40: aload_0
-    //   41: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   44: getfield 68	okhttp3/RealCall:client	Lokhttp3/OkHttpClient;
-    //   47: invokevirtual 74	okhttp3/OkHttpClient:dispatcher	()Lokhttp3/Dispatcher;
-    //   50: aload_0
-    //   51: invokevirtual 80	okhttp3/Dispatcher:finished	(Lokhttp3/RealCall$AsyncCall;)V
-    //   54: return
+    //   27: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   30: aload_3
+    //   31: invokeinterface 57 3 0
+    //   36: aload_0
+    //   37: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   40: getfield 61	okhttp3/RealCall:client	Lokhttp3/OkHttpClient;
+    //   43: invokevirtual 67	okhttp3/OkHttpClient:dispatcher	()Lokhttp3/Dispatcher;
+    //   46: aload_0
+    //   47: invokevirtual 73	okhttp3/Dispatcher:finished	(Lokhttp3/RealCall$AsyncCall;)V
+    //   50: return
+    //   51: astore_3
+    //   52: goto +16 -> 68
     //   55: astore_3
-    //   56: aload_0
-    //   57: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   60: aload_3
-    //   61: invokevirtual 84	okhttp3/RealCall:timeoutExit	(Ljava/io/IOException;)Ljava/io/IOException;
-    //   64: astore_3
-    //   65: iload_1
-    //   66: ifeq +51 -> 117
-    //   69: invokestatic 90	okhttp3/internal/platform/Platform:get	()Lokhttp3/internal/platform/Platform;
-    //   72: iconst_4
-    //   73: new 92	java/lang/StringBuilder
-    //   76: dup
-    //   77: invokespecial 94	java/lang/StringBuilder:<init>	()V
-    //   80: ldc 96
-    //   82: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: aload_0
-    //   86: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   89: invokevirtual 103	okhttp3/RealCall:toLoggableString	()Ljava/lang/String;
-    //   92: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   56: iload_2
+    //   57: istore_1
+    //   58: goto +76 -> 134
+    //   61: astore_3
+    //   62: goto +167 -> 229
+    //   65: astore_3
+    //   66: iconst_0
+    //   67: istore_1
+    //   68: aload_0
+    //   69: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   72: invokevirtual 76	okhttp3/RealCall:cancel	()V
+    //   75: iload_1
+    //   76: ifne +56 -> 132
+    //   79: new 78	java/lang/StringBuilder
+    //   82: dup
+    //   83: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   86: astore 4
+    //   88: aload 4
+    //   90: ldc 82
+    //   92: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: pop
+    //   96: aload 4
     //   98: aload_3
-    //   99: invokevirtual 110	okhttp3/internal/platform/Platform:log	(ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   102: aload_0
-    //   103: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   106: getfield 68	okhttp3/RealCall:client	Lokhttp3/OkHttpClient;
-    //   109: invokevirtual 74	okhttp3/OkHttpClient:dispatcher	()Lokhttp3/Dispatcher;
-    //   112: aload_0
-    //   113: invokevirtual 80	okhttp3/Dispatcher:finished	(Lokhttp3/RealCall$AsyncCall;)V
-    //   116: return
+    //   99: invokevirtual 89	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   102: pop
+    //   103: new 36	java/io/IOException
+    //   106: dup
+    //   107: aload 4
+    //   109: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   112: invokespecial 95	java/io/IOException:<init>	(Ljava/lang/String;)V
+    //   115: astore 4
     //   117: aload_0
-    //   118: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   121: invokestatic 114	okhttp3/RealCall:access$000	(Lokhttp3/RealCall;)Lokhttp3/EventListener;
-    //   124: aload_0
-    //   125: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   128: aload_3
-    //   129: invokevirtual 120	okhttp3/EventListener:callFailed	(Lokhttp3/Call;Ljava/io/IOException;)V
-    //   132: aload_0
-    //   133: getfield 40	okhttp3/RealCall$AsyncCall:responseCallback	Lokhttp3/Callback;
-    //   136: aload_0
-    //   137: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   140: aload_3
-    //   141: invokeinterface 123 3 0
-    //   146: goto -44 -> 102
-    //   149: astore_3
-    //   150: aload_0
-    //   151: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   154: getfield 68	okhttp3/RealCall:client	Lokhttp3/OkHttpClient;
-    //   157: invokevirtual 74	okhttp3/OkHttpClient:dispatcher	()Lokhttp3/Dispatcher;
-    //   160: aload_0
-    //   161: invokevirtual 80	okhttp3/Dispatcher:finished	(Lokhttp3/RealCall$AsyncCall;)V
-    //   164: aload_3
-    //   165: athrow
-    //   166: astore_3
-    //   167: aload_0
-    //   168: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   171: invokevirtual 126	okhttp3/RealCall:cancel	()V
-    //   174: iload_2
-    //   175: ifne +46 -> 221
-    //   178: new 43	java/io/IOException
-    //   181: dup
-    //   182: new 92	java/lang/StringBuilder
-    //   185: dup
-    //   186: invokespecial 94	java/lang/StringBuilder:<init>	()V
-    //   189: ldc 128
-    //   191: invokevirtual 100	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: aload_3
-    //   195: invokevirtual 131	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 106	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: invokespecial 134	java/io/IOException:<init>	(Ljava/lang/String;)V
-    //   204: astore 4
-    //   206: aload_0
-    //   207: getfield 40	okhttp3/RealCall$AsyncCall:responseCallback	Lokhttp3/Callback;
-    //   210: aload_0
-    //   211: getfield 27	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
-    //   214: aload 4
-    //   216: invokeinterface 123 3 0
-    //   221: aload_3
-    //   222: athrow
+    //   118: getfield 33	okhttp3/RealCall$AsyncCall:responseCallback	Lokhttp3/Callback;
+    //   121: aload_0
+    //   122: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   125: aload 4
+    //   127: invokeinterface 99 3 0
+    //   132: aload_3
+    //   133: athrow
+    //   134: aload_0
+    //   135: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   138: aload_3
+    //   139: invokevirtual 103	okhttp3/RealCall:timeoutExit	(Ljava/io/IOException;)Ljava/io/IOException;
+    //   142: astore_3
+    //   143: iload_1
+    //   144: ifeq +53 -> 197
+    //   147: invokestatic 109	okhttp3/internal/platform/Platform:get	()Lokhttp3/internal/platform/Platform;
+    //   150: astore 4
+    //   152: new 78	java/lang/StringBuilder
+    //   155: dup
+    //   156: invokespecial 80	java/lang/StringBuilder:<init>	()V
+    //   159: astore 5
+    //   161: aload 5
+    //   163: ldc 111
+    //   165: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   168: pop
+    //   169: aload 5
+    //   171: aload_0
+    //   172: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   175: invokevirtual 114	okhttp3/RealCall:toLoggableString	()Ljava/lang/String;
+    //   178: invokevirtual 86	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   181: pop
+    //   182: aload 4
+    //   184: iconst_4
+    //   185: aload 5
+    //   187: invokevirtual 92	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   190: aload_3
+    //   191: invokevirtual 118	okhttp3/internal/platform/Platform:log	(ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   194: goto -158 -> 36
+    //   197: aload_0
+    //   198: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   201: invokestatic 122	okhttp3/RealCall:access$000	(Lokhttp3/RealCall;)Lokhttp3/EventListener;
+    //   204: aload_0
+    //   205: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   208: aload_3
+    //   209: invokevirtual 127	okhttp3/EventListener:callFailed	(Lokhttp3/Call;Ljava/io/IOException;)V
+    //   212: aload_0
+    //   213: getfield 33	okhttp3/RealCall$AsyncCall:responseCallback	Lokhttp3/Callback;
+    //   216: aload_0
+    //   217: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   220: aload_3
+    //   221: invokeinterface 99 3 0
+    //   226: goto -190 -> 36
+    //   229: aload_0
+    //   230: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   233: getfield 61	okhttp3/RealCall:client	Lokhttp3/OkHttpClient;
+    //   236: invokevirtual 67	okhttp3/OkHttpClient:dispatcher	()Lokhttp3/Dispatcher;
+    //   239: aload_0
+    //   240: invokevirtual 73	okhttp3/Dispatcher:finished	(Lokhttp3/RealCall$AsyncCall;)V
+    //   243: goto +5 -> 248
+    //   246: aload_3
+    //   247: athrow
+    //   248: goto -2 -> 246
+    //   251: astore_3
+    //   252: iconst_0
+    //   253: istore_1
+    //   254: goto -120 -> 134
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	223	0	this	AsyncCall
-    //   3	63	1	i	int
-    //   1	174	2	j	int
-    //   21	14	3	localResponse	Response
-    //   55	6	3	localIOException1	java.io.IOException
-    //   64	77	3	localIOException2	java.io.IOException
-    //   149	16	3	localObject	Object
-    //   166	56	3	localThrowable	java.lang.Throwable
-    //   204	11	4	localIOException3	java.io.IOException
+    //   0	257	0	this	AsyncCall
+    //   21	233	1	i	int
+    //   19	38	2	j	int
+    //   17	14	3	localResponse	Response
+    //   51	1	3	localThrowable1	java.lang.Throwable
+    //   55	1	3	localIOException1	java.io.IOException
+    //   61	1	3	localObject1	Object
+    //   65	74	3	localThrowable2	java.lang.Throwable
+    //   142	105	3	localIOException2	java.io.IOException
+    //   251	1	3	localIOException3	java.io.IOException
+    //   86	97	4	localObject2	Object
+    //   159	27	5	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   14	22	55	java/io/IOException
-    //   26	40	55	java/io/IOException
-    //   14	22	149	finally
-    //   26	40	149	finally
-    //   56	65	149	finally
-    //   69	102	149	finally
-    //   117	146	149	finally
-    //   167	174	149	finally
-    //   178	221	149	finally
-    //   221	223	149	finally
-    //   14	22	166	java/lang/Throwable
-    //   26	40	166	java/lang/Throwable
+    //   22	36	51	java/lang/Throwable
+    //   22	36	55	java/io/IOException
+    //   10	18	61	finally
+    //   22	36	61	finally
+    //   68	75	61	finally
+    //   79	132	61	finally
+    //   132	134	61	finally
+    //   134	143	61	finally
+    //   147	194	61	finally
+    //   197	226	61	finally
+    //   10	18	65	java/lang/Throwable
+    //   10	18	251	java/io/IOException
   }
   
-  void executeOn(ExecutorService paramExecutorService)
+  /* Error */
+  void executeOn(java.util.concurrent.ExecutorService paramExecutorService)
   {
-    assert (!Thread.holdsLock(this.this$0.client.dispatcher()));
-    try
-    {
-      paramExecutorService.execute(this);
-      return;
-    }
-    catch (RejectedExecutionException paramExecutorService)
-    {
-      InterruptedIOException localInterruptedIOException = new InterruptedIOException("executor rejected");
-      localInterruptedIOException.initCause(paramExecutorService);
-      RealCall.access$000(this.this$0).callFailed(this.this$0, localInterruptedIOException);
-      this.responseCallback.onFailure(this.this$0, localInterruptedIOException);
-      return;
-    }
-    finally
-    {
-      this.this$0.client.dispatcher().finished(this);
-    }
+    // Byte code:
+    //   0: aload_1
+    //   1: aload_0
+    //   2: invokeinterface 136 2 0
+    //   7: return
+    //   8: astore_1
+    //   9: goto +64 -> 73
+    //   12: astore_1
+    //   13: new 138	java/io/InterruptedIOException
+    //   16: dup
+    //   17: ldc 140
+    //   19: invokespecial 141	java/io/InterruptedIOException:<init>	(Ljava/lang/String;)V
+    //   22: astore_2
+    //   23: aload_2
+    //   24: aload_1
+    //   25: invokevirtual 145	java/io/InterruptedIOException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   28: pop
+    //   29: aload_0
+    //   30: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   33: invokestatic 122	okhttp3/RealCall:access$000	(Lokhttp3/RealCall;)Lokhttp3/EventListener;
+    //   36: aload_0
+    //   37: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   40: aload_2
+    //   41: invokevirtual 127	okhttp3/EventListener:callFailed	(Lokhttp3/Call;Ljava/io/IOException;)V
+    //   44: aload_0
+    //   45: getfield 33	okhttp3/RealCall$AsyncCall:responseCallback	Lokhttp3/Callback;
+    //   48: aload_0
+    //   49: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   52: aload_2
+    //   53: invokeinterface 99 3 0
+    //   58: aload_0
+    //   59: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   62: getfield 61	okhttp3/RealCall:client	Lokhttp3/OkHttpClient;
+    //   65: invokevirtual 67	okhttp3/OkHttpClient:dispatcher	()Lokhttp3/Dispatcher;
+    //   68: aload_0
+    //   69: invokevirtual 73	okhttp3/Dispatcher:finished	(Lokhttp3/RealCall$AsyncCall;)V
+    //   72: return
+    //   73: aload_0
+    //   74: getfield 18	okhttp3/RealCall$AsyncCall:this$0	Lokhttp3/RealCall;
+    //   77: getfield 61	okhttp3/RealCall:client	Lokhttp3/OkHttpClient;
+    //   80: invokevirtual 67	okhttp3/OkHttpClient:dispatcher	()Lokhttp3/Dispatcher;
+    //   83: aload_0
+    //   84: invokevirtual 73	okhttp3/Dispatcher:finished	(Lokhttp3/RealCall$AsyncCall;)V
+    //   87: aload_1
+    //   88: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	89	0	this	AsyncCall
+    //   0	89	1	paramExecutorService	java.util.concurrent.ExecutorService
+    //   22	31	2	localInterruptedIOException	java.io.InterruptedIOException
+    // Exception table:
+    //   from	to	target	type
+    //   0	7	8	finally
+    //   13	58	8	finally
+    //   0	7	12	java/util/concurrent/RejectedExecutionException
   }
   
   RealCall get()
@@ -203,7 +249,7 @@ final class RealCall$AsyncCall
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.RealCall.AsyncCall
  * JD-Core Version:    0.7.0.1
  */

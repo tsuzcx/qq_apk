@@ -17,27 +17,44 @@ class AudioRecorderCompat$AsyncPcmWriter$2
   {
     try
     {
-      l = System.currentTimeMillis();
-      byte[] arrayOfByte = this.val$fileBuffer;
-      Object localObject1 = arrayOfByte;
+      long l = System.currentTimeMillis();
+      Object localObject2 = this.val$fileBuffer;
+      ??? = localObject2;
       if (this.this$1.this$0.mVoiceChangeEnable)
       {
-        localObject1 = arrayOfByte;
+        ??? = localObject2;
         if (this.this$1.this$0.mVoiceChanger != null)
         {
-          localObject1 = new short[this.val$count / 2];
-          ByteBuffer.wrap(this.val$fileBuffer).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer().get((short[])localObject1);
-          arrayOfByte = this.this$1.this$0.mVoiceChanger.writeVoiceFrames((short[])localObject1);
-          localObject1 = arrayOfByte;
-          if (arrayOfByte == null) {
+          ??? = new short[this.val$count / 2];
+          ByteBuffer.wrap(this.val$fileBuffer).order(ByteOrder.LITTLE_ENDIAN).asShortBuffer().get((short[])???);
+          ??? = this.this$1.this$0.mVoiceChanger.writeVoiceFrames((short[])???);
+          if (??? == null) {
             throw new Exception("frames is null");
           }
         }
       }
+      if ((this.this$1.this$0.mRealPackerEnable) && (this.this$1.this$0.mPcmPacker != null)) {
+        this.this$1.this$0.mPcmPacker.encodeBytes((byte[])???);
+      } else {
+        AudioRecorderCompat.AsyncPcmWriter.access$000(this.this$1).write((byte[])???, 0, ???.length);
+      }
+      ??? = AudioRecorderCompat.TAG;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Process 1 recorded frame: ");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis() - l);
+      ((StringBuilder)localObject2).append(" ms");
+      LogUtils.d((String)???, ((StringBuilder)localObject2).toString());
+      synchronized (AudioRecorderCompat.AsyncPcmWriter.access$100(this.this$1))
+      {
+        if (AudioRecorderCompat.AsyncPcmWriter.access$100(this.this$1).size() < 8) {
+          AudioRecorderCompat.AsyncPcmWriter.access$100(this.this$1).add(this.val$fileBuffer);
+        }
+        return;
+      }
+      return;
     }
     catch (Exception localException)
     {
-      long l;
       LogUtils.e(AudioRecorderCompat.TAG, "onRecord() - ERROR", new Object[] { localException.getMessage() });
       try
       {
@@ -48,27 +65,12 @@ class AudioRecorderCompat$AsyncPcmWriter$2
       {
         LogUtils.d(AudioRecorderCompat.TAG, "can't close?", localIOException, new Object[0]);
       }
-      if ((this.this$1.this$0.mRealPackerEnable) && (this.this$1.this$0.mPcmPacker != null)) {
-        this.this$1.this$0.mPcmPacker.encodeBytes(localException);
-      }
-      for (;;)
-      {
-        LogUtils.d(AudioRecorderCompat.TAG, "Process 1 recorded frame: " + (System.currentTimeMillis() - l) + " ms");
-        synchronized (AudioRecorderCompat.AsyncPcmWriter.access$100(this.this$1))
-        {
-          if (AudioRecorderCompat.AsyncPcmWriter.access$100(this.this$1).size() < 8) {
-            AudioRecorderCompat.AsyncPcmWriter.access$100(this.this$1).add(this.val$fileBuffer);
-          }
-          return;
-        }
-        AudioRecorderCompat.AsyncPcmWriter.access$000(this.this$1).write(???, 0, ???.length);
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorderCompat.AsyncPcmWriter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,8 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.nearby.HotChatUtil;
+import com.tencent.mobileqq.nearby.api.IHotChatUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class RecentSortTopProcessor
   implements IRecentSortTopProcessor
@@ -23,15 +24,15 @@ public class RecentSortTopProcessor
     if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {
       return false;
     }
-    if ((paramRecentUserBaseData.mUser.getType() == 1) && (!HotChatUtil.a((QQAppInterface)paramBaseQQAppInterface, paramRecentUserBaseData.mUser))) {
-      return ((TroopManager)paramBaseQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramRecentUserBaseData.getRecentUserUin());
+    if ((paramRecentUserBaseData.mUser.getType() == 1) && (!((IHotChatUtil)QRoute.api(IHotChatUtil.class)).checkIsHCRecentUser((QQAppInterface)paramBaseQQAppInterface, paramRecentUserBaseData.mUser))) {
+      return ((TroopManager)paramBaseQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramRecentUserBaseData.getRecentUserUin());
     }
     return FriendsStatusUtil.a((QQAppInterface)paramBaseQQAppInterface, paramRecentUserBaseData.mUser);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.recentsort.RecentSortTopProcessor
  * JD-Core Version:    0.7.0.1
  */

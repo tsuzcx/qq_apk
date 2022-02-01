@@ -21,18 +21,26 @@ class TroopAppShortcutContainer$2
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt != 0) || (this.jdField_a_of_type_Int != this.b - 1) || (!TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a())) {
-      return;
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == this.b - 1))
+    {
+      if (!TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a()) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramAbsListView = new StringBuilder();
+        paramAbsListView.append("needLoad mCurPage:");
+        paramAbsListView.append(TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a());
+        QLog.d("TroopAppShortcutContainer", 2, paramAbsListView.toString());
+      }
+      paramAbsListView = this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer;
+      TroopAppShortcutContainer.a(paramAbsListView, TroopAppShortcutContainer.a(paramAbsListView).a() + 1, 30, 2);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopAppShortcutContainer", 2, "needLoad mCurPage:" + TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a());
-    }
-    TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer, TroopAppShortcutContainer.a(this.jdField_a_of_type_ComTencentMobileqqTroopTroopappsTroopAppShortcutContainer).a() + 1, 30, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopapps.TroopAppShortcutContainer.2
  * JD-Core Version:    0.7.0.1
  */

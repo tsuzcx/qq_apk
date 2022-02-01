@@ -33,16 +33,20 @@ public final class VipWallpaperService
       Drawable localDrawable = ((WallpaperManager)BaseApplicationImpl.getApplication().getSystemService("wallpaper")).getDrawable();
       return localDrawable;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label25:
+      break label25;
+    }
     return null;
   }
   
   public static VipWallpaperService.WallpaperConfig a(Context paramContext, boolean paramBoolean)
   {
-    if ((!paramBoolean) || (VipWallpaperService.RunningStateHelper.a(paramContext))) {
-      return a(a(paramContext));
+    if ((paramBoolean) && (!VipWallpaperService.RunningStateHelper.a(paramContext))) {
+      return new VipWallpaperService.WallpaperConfig();
     }
-    return new VipWallpaperService.WallpaperConfig();
+    return a(a(paramContext));
   }
   
   static VipWallpaperService.WallpaperConfig a(SharedPreferences paramSharedPreferences)
@@ -53,7 +57,10 @@ public final class VipWallpaperService
   @SuppressLint({"ApplySharedPref"})
   public static void a(Activity paramActivity, VipWallpaperService.WallpaperConfig paramWallpaperConfig, AtomicBoolean paramAtomicBoolean)
   {
-    QLog.i("VipWallpaper", 1, "set wallpaper = " + paramWallpaperConfig.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("set wallpaper = ");
+    localStringBuilder.append(paramWallpaperConfig.toString());
+    QLog.i("VipWallpaper", 1, localStringBuilder.toString());
     a(paramActivity).edit().putString("wallpaper_item_id", paramWallpaperConfig.a).putString("wallpaper_path_img", paramWallpaperConfig.b).putString("wallpaper_path_video", paramWallpaperConfig.c).commit();
     if ((paramWallpaperConfig.a != null) && (!paramWallpaperConfig.a.equals("0"))) {
       a(paramActivity, paramAtomicBoolean);
@@ -64,7 +71,7 @@ public final class VipWallpaperService
   {
     if (!VipWallpaperService.RunningStateHelper.a(paramActivity))
     {
-      localIntent = new Intent("android.service.wallpaper.CHANGE_LIVE_WALLPAPER");
+      Intent localIntent = new Intent("android.service.wallpaper.CHANGE_LIVE_WALLPAPER");
       localIntent.putExtra("android.service.wallpaper.extra.LIVE_WALLPAPER_COMPONENT", new ComponentName(paramActivity, VipWallpaperService.class));
       localIntent.putExtra("big_brother_source_key", "biz_src_jc_vip");
       paramActivity.startActivity(localIntent);
@@ -72,12 +79,10 @@ public final class VipWallpaperService
         paramAtomicBoolean.set(true);
       }
     }
-    while (paramAtomicBoolean == null)
+    else if (paramAtomicBoolean != null)
     {
-      Intent localIntent;
-      return;
+      paramAtomicBoolean.set(false);
     }
-    paramAtomicBoolean.set(false);
   }
   
   public void onCreate()
@@ -99,7 +104,7 @@ public final class VipWallpaperService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.wallpaper.VipWallpaperService
  * JD-Core Version:    0.7.0.1
  */

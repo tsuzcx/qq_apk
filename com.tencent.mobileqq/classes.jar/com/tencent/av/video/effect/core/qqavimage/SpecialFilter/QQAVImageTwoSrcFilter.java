@@ -32,25 +32,25 @@ public class QQAVImageTwoSrcFilter
   
   public void setBitmap(int paramInt, Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {}
-    do
+    if ((paramBitmap != null) && (paramBitmap.isRecycled())) {
+      return;
+    }
+    if (paramBitmap == null) {
+      return;
+    }
+    if (paramInt == 0)
     {
-      do
-      {
-        return;
-      } while (paramBitmap == null);
-      if (paramInt == 0)
-      {
-        this.filterSourceTexture2 = OpenGlUtils.loadTexture(paramBitmap, this.filterSourceTexture2, false);
-        return;
-      }
-    } while (paramInt != 1);
-    this.filterSourceTexture3 = OpenGlUtils.loadTexture(paramBitmap, this.filterSourceTexture3, false);
+      this.filterSourceTexture2 = OpenGlUtils.loadTexture(paramBitmap, this.filterSourceTexture2, false);
+      return;
+    }
+    if (paramInt == 1) {
+      this.filterSourceTexture3 = OpenGlUtils.loadTexture(paramBitmap, this.filterSourceTexture3, false);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.video.effect.core.qqavimage.SpecialFilter.QQAVImageTwoSrcFilter
  * JD-Core Version:    0.7.0.1
  */

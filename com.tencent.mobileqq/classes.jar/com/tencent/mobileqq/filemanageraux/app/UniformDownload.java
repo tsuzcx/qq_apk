@@ -8,29 +8,27 @@ import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownload
 {
-  public static boolean a;
+  public static boolean a = true;
   Activity a;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = true;
-  }
   
   private UniformDownload(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidAppActivity = paramActivity;
+    this.a = paramActivity;
   }
   
   public static boolean a(Activity paramActivity, String paramString, Bundle paramBundle)
   {
-    QLog.i("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. >>>gotoDownload. url:" + paramString);
-    if ((paramActivity == null) || (paramString == null) || (paramBundle == null))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL]. >>>gotoDownload. url:");
+    localStringBuilder.append(paramString);
+    QLog.i("UniformDownloadMgr<FileAssistant>", 1, localStringBuilder.toString());
+    if ((paramActivity != null) && (paramString != null) && (paramBundle != null))
     {
-      QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. gotoDownload. param error:");
-      return false;
+      new UniformDownload(paramActivity).a(paramString, paramBundle);
+      return true;
     }
-    new UniformDownload(paramActivity).a(paramString, paramBundle);
-    return true;
+    QLog.e("UniformDownloadMgr<FileAssistant>", 1, "[UniformDL]. gotoDownload. param error:");
+    return false;
   }
   
   public void a(String paramString, Bundle paramBundle)
@@ -42,7 +40,7 @@ public class UniformDownload
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.app.UniformDownload
  * JD-Core Version:    0.7.0.1
  */

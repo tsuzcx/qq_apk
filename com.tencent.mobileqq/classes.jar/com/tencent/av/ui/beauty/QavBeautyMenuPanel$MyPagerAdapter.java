@@ -1,8 +1,8 @@
 package com.tencent.av.ui.beauty;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -23,16 +23,10 @@ class QavBeautyMenuPanel$MyPagerAdapter
   
   public BeautyBaseView a(int paramInt)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramInt >= 0)
-    {
-      localObject1 = localObject2;
-      if (paramInt < this.jdField_a_of_type_JavaUtilList.size()) {
-        localObject1 = (BeautyBaseView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      }
+    if ((paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+      return (BeautyBaseView)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
-    return localObject1;
+    return null;
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -63,7 +57,7 @@ class QavBeautyMenuPanel$MyPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.beauty.QavBeautyMenuPanel.MyPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

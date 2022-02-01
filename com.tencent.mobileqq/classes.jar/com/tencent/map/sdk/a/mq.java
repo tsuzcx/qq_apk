@@ -27,7 +27,7 @@ public class mq
   
   private static double a(double paramDouble1, double paramDouble2)
   {
-    return paramDouble1 / Math.cos(3.141592653589793D * paramDouble2 / 180.0D);
+    return paramDouble1 / Math.cos(paramDouble2 * 3.141592653589793D / 180.0D);
   }
   
   private static fw a(LatLng paramLatLng)
@@ -39,7 +39,9 @@ public class mq
   private static LatLng a(fw paramfw)
   {
     float f = (float)(paramfw.b * 180.0D / 20037508.34D);
-    return new LatLng((float)(57.295779513082323D * (2.0D * Math.atan(Math.exp((float)(paramfw.a * 180.0D / 20037508.34D) * 3.141592653589793D / 180.0D)) - 1.570796326794897D)), f);
+    double d = (float)(paramfw.a * 180.0D / 20037508.34D);
+    Double.isNaN(d);
+    return new LatLng((float)((Math.atan(Math.exp(d * 3.141592653589793D / 180.0D)) * 2.0D - 1.570796326794897D) * 57.295779513082323D), f);
   }
   
   public final Rect a(fu paramfu)
@@ -62,19 +64,23 @@ public class mq
   
   public final void a(double paramDouble)
   {
-    if (paramDouble < 0.0D) {}
-    double d;
-    do
-    {
+    if (paramDouble < 0.0D) {
       return;
-      d = paramDouble;
-      if (paramDouble == 0.0D) {
-        d = 1.0E-010D;
+    }
+    double d = paramDouble;
+    if (paramDouble == 0.0D) {
+      d = 1.0E-010D;
+    }
+    CircleOptions localCircleOptions = this.l;
+    if (localCircleOptions != null)
+    {
+      if (localCircleOptions.getCenter() == null) {
+        return;
       }
-    } while ((this.l == null) || (this.l.getCenter() == null));
-    this.i = d;
-    this.j = ((float)fz.a(d, this.l.getCenter().latitude));
-    this.f = true;
+      this.i = d;
+      this.j = ((float)fz.a(d, this.l.getCenter().latitude));
+      this.f = true;
+    }
   }
   
   public final void a(GeoPoint paramGeoPoint)
@@ -82,16 +88,17 @@ public class mq
     if (paramGeoPoint == null) {
       return;
     }
-    if (this.h == null) {
+    GeoPoint localGeoPoint = this.h;
+    if (localGeoPoint == null)
+    {
       this.h = new GeoPoint(paramGeoPoint.getLatitudeE6(), paramGeoPoint.getLongitudeE6());
     }
-    for (;;)
+    else
     {
-      this.f = true;
-      return;
-      this.h.setLatitudeE6(paramGeoPoint.getLatitudeE6());
+      localGeoPoint.setLatitudeE6(paramGeoPoint.getLatitudeE6());
       this.h.setLongitudeE6(paramGeoPoint.getLongitudeE6());
     }
+    this.f = true;
   }
   
   public final void a(CircleOptions paramCircleOptions)
@@ -117,10 +124,14 @@ public class mq
   
   public final void a(GL10 paramGL10)
   {
-    if ((this.k == null) || (this.k.az == null)) {
-      return;
+    paramGL10 = this.k;
+    if (paramGL10 != null)
+    {
+      if (paramGL10.az == null) {
+        return;
+      }
+      d();
     }
-    d();
   }
   
   public final boolean a()
@@ -130,22 +141,37 @@ public class mq
   
   public final boolean a(float paramFloat1, float paramFloat2)
   {
-    if ((this.h == null) || (this.k == null) || (this.k.az == null)) {}
-    GeoPoint localGeoPoint;
-    do
+    if (this.h != null)
     {
-      return false;
-      localGeoPoint = this.k.az.b.h.a(new DoublePoint(paramFloat1, paramFloat2));
-    } while (Math.hypot(localGeoPoint.getLatitudeE6() - this.h.getLatitudeE6(), localGeoPoint.getLongitudeE6() - this.h.getLongitudeE6()) > this.j);
-    return true;
+      Object localObject = this.k;
+      if (localObject != null)
+      {
+        if (((pt)localObject).az == null) {
+          return false;
+        }
+        localObject = this.k.az.b.h.a(new DoublePoint(paramFloat1, paramFloat2));
+        if (Math.hypot(((GeoPoint)localObject).getLatitudeE6() - this.h.getLatitudeE6(), ((GeoPoint)localObject).getLongitudeE6() - this.h.getLongitudeE6()) <= this.j) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
   
   public final Rect b(fu paramfu)
   {
-    double d = a(this.i, this.h.getLatitudeE6() / 1000000.0D);
-    Object localObject = a(new LatLng(this.h.getLatitudeE6() / 1000000.0D, this.h.getLongitudeE6() / 1000000.0D));
-    paramfu = new fw(((fw)localObject).b - d, ((fw)localObject).a + d);
-    localObject = new fw(((fw)localObject).b + d, ((fw)localObject).a - d);
+    double d1 = this.i;
+    double d2 = this.h.getLatitudeE6();
+    Double.isNaN(d2);
+    d1 = a(d1, d2 / 1000000.0D);
+    d2 = this.h.getLatitudeE6();
+    Double.isNaN(d2);
+    d2 /= 1000000.0D;
+    double d3 = this.h.getLongitudeE6();
+    Double.isNaN(d3);
+    Object localObject = a(new LatLng(d2, d3 / 1000000.0D));
+    paramfu = new fw(((fw)localObject).b - d1, ((fw)localObject).a + d1);
+    localObject = new fw(((fw)localObject).b + d1, ((fw)localObject).a - d1);
     paramfu = a(paramfu);
     localObject = a((fw)localObject);
     Rect localRect = new Rect();
@@ -158,25 +184,22 @@ public class mq
   
   public final void b()
   {
-    Object localObject;
-    int i1;
-    if ((this.m != -1) && (this.k != null) && (this.k.az != null))
+    if (this.m != -1)
     {
-      localObject = this.k.az;
-      i1 = this.m;
-      localObject = ((pm)localObject).b;
-      if ((((lw)localObject).a != null) && (i1 != -1)) {
-        break label61;
-      }
-    }
-    for (;;)
-    {
-      this.m = -1;
-      return;
-      label61:
-      localObject = ((lw)localObject).a;
-      if ((((pf)localObject).b != 0L) && (i1 >= 0) && (((pf)localObject).f != null)) {
-        ((pf)localObject).f.a(new pf.1((pf)localObject, i1));
+      Object localObject = this.k;
+      if ((localObject != null) && (((pt)localObject).az != null))
+      {
+        localObject = this.k.az;
+        int i1 = this.m;
+        localObject = ((pm)localObject).b;
+        if ((((lw)localObject).a != null) && (i1 != -1))
+        {
+          localObject = ((lw)localObject).a;
+          if ((((pf)localObject).b != 0L) && (i1 >= 0) && (((pf)localObject).f != null)) {
+            ((pf)localObject).f.a(new pf.1((pf)localObject, i1));
+          }
+        }
+        this.m = -1;
       }
     }
   }
@@ -191,27 +214,30 @@ public class mq
   
   public final void d()
   {
-    if (((this.m > 0) && (!this.f)) || (this.k == null) || (this.k.az == null)) {
-      return;
-    }
-    this.n.zIndex = ((int)this.d);
-    this.n.borderColor = this.c;
-    this.n.borderWidth = ((int)this.a);
-    this.n.fillColor = this.b;
-    this.n.radius = ((float)this.i);
-    this.n.centerX = this.h.getLongitudeE6();
-    this.n.centerY = this.h.getLatitudeE6();
-    this.n.isVisible = this.e;
-    this.n.level = this.g;
-    if (this.m == -1) {
-      this.m = this.k.az.a(this.n);
-    }
-    for (;;)
+    if ((this.m <= 0) || (this.f))
     {
-      this.f = false;
-      return;
-      if (this.f) {
-        this.k.az.a(this.m, this.n);
+      Object localObject = this.k;
+      if (localObject != null)
+      {
+        if (((pt)localObject).az == null) {
+          return;
+        }
+        this.n.zIndex = ((int)this.d);
+        this.n.borderColor = this.c;
+        this.n.borderWidth = ((int)this.a);
+        this.n.fillColor = this.b;
+        localObject = this.n;
+        ((CircleInfo)localObject).radius = ((float)this.i);
+        ((CircleInfo)localObject).centerX = this.h.getLongitudeE6();
+        this.n.centerY = this.h.getLatitudeE6();
+        this.n.isVisible = this.e;
+        this.n.level = this.g;
+        if (this.m == -1) {
+          this.m = this.k.az.a(this.n);
+        } else if (this.f) {
+          this.k.az.a(this.m, this.n);
+        }
+        this.f = false;
       }
     }
   }
@@ -223,7 +249,7 @@ public class mq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.mq
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,10 @@ public class TroopFansEntryConfigProcessor
   @NonNull
   public TroopFansEntryConfig migrateOldOrDefaultContent(int paramInt)
   {
-    QLog.d("TroopFansEntryConfigProcessor", 2, "migrateOldOrDefaultContent, type: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent, type: ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopFansEntryConfigProcessor", 2, localStringBuilder.toString());
     return new TroopFansEntryConfig();
   }
   
@@ -50,7 +53,10 @@ public class TroopFansEntryConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TroopFansEntryConfigProcessor", 1, "onReqFailed, failCode = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed, failCode = ");
+    localStringBuilder.append(paramInt);
+    QLog.d("TroopFansEntryConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public void onUpdate(TroopFansEntryConfig paramTroopFansEntryConfig) {}
@@ -62,7 +68,7 @@ public class TroopFansEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.TroopFansEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

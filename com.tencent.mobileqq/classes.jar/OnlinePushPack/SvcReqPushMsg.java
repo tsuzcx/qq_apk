@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -73,14 +74,17 @@ public final class SvcReqPushMsg
     paramJceOutputStream.write(this.uMsgTime, 1);
     paramJceOutputStream.write(this.vMsgInfos, 2);
     paramJceOutputStream.write(this.svrip, 3);
-    if (this.vSyncCookie != null) {
-      paramJceOutputStream.write(this.vSyncCookie, 4);
+    Object localObject = this.vSyncCookie;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 4);
     }
-    if (this.vUinPairMsg != null) {
-      paramJceOutputStream.write(this.vUinPairMsg, 5);
+    localObject = this.vUinPairMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
-    if (this.mPreviews != null) {
-      paramJceOutputStream.write(this.mPreviews, 6);
+    localObject = this.mPreviews;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 6);
     }
     paramJceOutputStream.write(this.wUserActive, 7);
     paramJceOutputStream.write(this.wGeneralFlag, 12);
@@ -88,7 +92,7 @@ public final class SvcReqPushMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     OnlinePushPack.SvcReqPushMsg
  * JD-Core Version:    0.7.0.1
  */

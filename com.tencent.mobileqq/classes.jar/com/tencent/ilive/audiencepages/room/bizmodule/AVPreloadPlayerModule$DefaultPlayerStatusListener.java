@@ -5,10 +5,11 @@ import com.tencent.falco.base.libapi.toast.ToastInterface;
 import com.tencent.ilive.audiencepages.room.events.PlayerCatonEvent;
 import com.tencent.ilive.audiencepages.room.events.PlayerStateEvent;
 import com.tencent.ilive.audiencepages.room.events.PlayerStateEvent.PlayerState;
+import com.tencent.ilive.audiencepages.room.events.PlayerStateMessageEvent;
 import com.tencent.ilive.audiencepages.room.events.ShowAnchorStateEvent;
 import com.tencent.ilive.audiencepages.room.events.ShowAnchorStateEvent.AnchorState;
 import com.tencent.ilive.base.event.ModuleEvent;
-import com.tencent.ilive.pages.room.RoomBizContext;
+import com.tencent.ilive.base.event.ModuleEventInterface;
 import com.tencent.ilive.pages.room.events.LiveStateEvent;
 import com.tencent.ilive.pages.room.events.LiveStateEvent.LiveState;
 import com.tencent.ilive.pages.room.events.PlayOverEvent;
@@ -16,10 +17,7 @@ import com.tencent.ilive.pages.room.events.PlayOverEvent.Source;
 import com.tencent.ilivesdk.avplayerbuilderservice_interface.AVPlayerBuilderServiceInterface;
 import com.tencent.ilivesdk.avplayerservice_interface.PlayerStatusListener;
 import com.tencent.ilivesdk.avpreloadservice_interface.AVPreloadTaskInterface;
-import com.tencent.ilivesdk.messageservice_interface.MessageServiceInterface;
-import com.tencent.ilivesdk.messageservice_interface.model.MessageData;
 import com.tencent.ilivesdk.roomservice_interface.RoomServiceInterface;
-import com.tencent.ilivesdk.roomservice_interface.model.EnterRoomInfo;
 import com.tencent.ilivesdk.roomservice_interface.model.LiveAnchorInfo;
 import com.tencent.ilivesdk.roomservice_interface.model.LiveInfo;
 import com.tencent.ilivesdk.roomservice_interface.model.LiveWatchMediaInfo;
@@ -31,9 +29,21 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
 {
   AVPreloadPlayerModule$DefaultPlayerStatusListener(AVPreloadPlayerModule paramAVPreloadPlayerModule) {}
   
+  void a()
+  {
+    AVPreloadPlayerModule.b(this.a);
+  }
+  
   public void onError(int paramInt, String paramString)
   {
-    this.a.getLog().e(AVPreloadPlayerModule.a(this.a), "error code:" + paramInt + " msg:" + paramString, new Object[0]);
+    LogInterface localLogInterface = this.a.getLog();
+    String str = AVPreloadPlayerModule.a(this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("error code:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" msg:");
+    localStringBuilder.append(paramString);
+    localLogInterface.e(str, localStringBuilder.toString(), new Object[0]);
     if (this.a.getEvent() != null)
     {
       paramString = new PlayerStateEvent(PlayerStateEvent.PlayerState.PLAY_ERROR);
@@ -69,32 +79,15 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
         AVPreloadPlayerModule.a(this.a).resetPlayer();
       }
       AVPreloadPlayerModule.a(this.a).showToast("当前没有网络连接", 1);
-    }
-    for (;;)
-    {
       return;
-      this.a.getLog().i(AVPreloadPlayerModule.a(this.a), "netWork restore type = " + paramInt, new Object[0]);
-      Object localObject2 = null;
-      Object localObject1;
-      if ((AVPreloadPlayerModule.a(this.a) != null) && (AVPreloadPlayerModule.a(this.a).getEnginLogic() != null) && (AVPreloadPlayerModule.a(this.a).getEnginLogic().getLiveInfo() != null)) {
-        localObject1 = AVPreloadPlayerModule.a(this.a).getEnginLogic().getLiveInfo().watchMediaInfo;
-      }
-      while (localObject1 != null)
-      {
-        AVPreloadPlayerModule.a(this.a, (LiveWatchMediaInfo)localObject1);
-        return;
-        localObject1 = localObject2;
-        if (AVPreloadPlayerModule.a(this.a) != null)
-        {
-          localObject1 = localObject2;
-          if (AVPreloadPlayerModule.b(this.a).getEnterRoomInfo() != null)
-          {
-            localObject1 = new LiveWatchMediaInfo();
-            ((LiveWatchMediaInfo)localObject1).first_play_url = AVPreloadPlayerModule.c(this.a).getEnterRoomInfo().preVideoUrl;
-          }
-        }
-      }
     }
+    LogInterface localLogInterface = this.a.getLog();
+    String str = AVPreloadPlayerModule.a(this.a);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("netWork restore type = ");
+    localStringBuilder.append(paramInt);
+    localLogInterface.i(str, localStringBuilder.toString(), new Object[0]);
+    a();
   }
   
   public void onPlayCaton()
@@ -118,19 +111,15 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   
   public void onPlayPause(long paramLong)
   {
-    if ((AVPreloadPlayerModule.a(this.a) != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo() != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo.uid != paramLong)) {
-      this.a.getEvent().post(new ShowAnchorStateEvent(ShowAnchorStateEvent.AnchorState.PAUSE, paramLong));
-    }
-    MessageData localMessageData;
-    do
+    if ((AVPreloadPlayerModule.a(this.a) != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo() != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo != null) && (((RoomServiceInterface)AVPreloadPlayerModule.a(this.a).getService(RoomServiceInterface.class)).getLiveInfo().anchorInfo.uid != paramLong))
     {
-      return;
       this.a.getEvent().post(new ShowAnchorStateEvent(ShowAnchorStateEvent.AnchorState.PAUSE, paramLong));
-      localMessageData = new MessageData();
-      localMessageData.mMessageType = 4;
-      localMessageData.mRawTipStr = "主播暂时离开，马上回来，不要走开哦！";
-    } while (AVPreloadPlayerModule.a(this.a) == null);
-    AVPreloadPlayerModule.a(this.a).sendMessage(localMessageData, new AVPreloadPlayerModule.DefaultPlayerStatusListener.1(this), 2);
+      return;
+    }
+    this.a.getEvent().post(new ShowAnchorStateEvent(ShowAnchorStateEvent.AnchorState.PAUSE, paramLong));
+    PlayerStateMessageEvent localPlayerStateMessageEvent = new PlayerStateMessageEvent();
+    localPlayerStateMessageEvent.msginfo = "主播暂时离开，马上回来，不要走开哦！";
+    this.a.getEvent().post(localPlayerStateMessageEvent);
     AVPreloadPlayerModule.a(this.a).stopPlay();
     AVPreloadPlayerModule.a(this.a).resetPlayer();
     AVPreloadPlayerModule.d(this.a, false);
@@ -144,12 +133,9 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
       return;
     }
     this.a.getEvent().post(new ShowAnchorStateEvent(ShowAnchorStateEvent.AnchorState.RECOVER, paramLong));
-    Object localObject = new MessageData();
-    ((MessageData)localObject).mMessageType = 4;
-    ((MessageData)localObject).mRawTipStr = "主播回来了，精彩马上继续！";
-    if (AVPreloadPlayerModule.a(this.a) != null) {
-      AVPreloadPlayerModule.a(this.a).sendMessage((MessageData)localObject, new AVPreloadPlayerModule.DefaultPlayerStatusListener.2(this), 2);
-    }
+    Object localObject = new PlayerStateMessageEvent();
+    ((PlayerStateMessageEvent)localObject).msginfo = "主播回来了，精彩马上继续！";
+    this.a.getEvent().post((ModuleEventInterface)localObject);
     localObject = AVPreloadPlayerModule.a(this.a).getEnginLogic().getLiveInfo().watchMediaInfo;
     if (AVPreloadPlayerModule.d(this.a))
     {
@@ -180,15 +166,15 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
   {
     this.a.getLog().i(AVPreloadPlayerModule.a(this.a), "Player -- onReadyCompleted", new Object[0]);
     this.a.getLog().i("AudienceTime", "Player -- onReadyCompleted", new Object[0]);
-    if (AVPreloadPlayerModule.a(this.a)) {
-      this.a.getLog().e(AVPreloadPlayerModule.a(this.a), "Player -- onReadyCompleted but isPageExit", new Object[0]);
-    }
-    do
+    if (AVPreloadPlayerModule.a(this.a))
     {
+      this.a.getLog().e(AVPreloadPlayerModule.a(this.a), "Player -- onReadyCompleted but isPageExit", new Object[0]);
       return;
-      AVPreloadPlayerModule.a(this.a, AVPreloadPlayerModule.StartPlayType.READY_PLAY);
-    } while (this.a.getEvent() == null);
-    this.a.getEvent().post(new PlayerStateEvent(PlayerStateEvent.PlayerState.PREPARE_READY));
+    }
+    AVPreloadPlayerModule.a(this.a, AVPreloadPlayerModule.StartPlayType.READY_PLAY);
+    if (this.a.getEvent() != null) {
+      this.a.getEvent().post(new PlayerStateEvent(PlayerStateEvent.PlayerState.PREPARE_READY));
+    }
   }
   
   public void onStartBuffer()
@@ -224,7 +210,7 @@ class AVPreloadPlayerModule$DefaultPlayerStatusListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.AVPreloadPlayerModule.DefaultPlayerStatusListener
  * JD-Core Version:    0.7.0.1
  */

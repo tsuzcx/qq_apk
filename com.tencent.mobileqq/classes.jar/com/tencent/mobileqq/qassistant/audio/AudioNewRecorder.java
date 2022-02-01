@@ -4,31 +4,28 @@ import android.content.Context;
 import android.media.AudioRecord;
 import android.media.audiofx.AcousticEchoCanceler;
 import android.os.Build.VERSION;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.mobileqq.ptt.IQQRecorderUtils;
 import com.tencent.mobileqq.qassistant.core.AssistantUtils;
 import com.tencent.mobileqq.qassistant.listener.IRecordEventListener;
+import com.tencent.mobileqq.qassistant.listener.IRecordStreamListener;
 import com.tencent.mobileqq.qqaudio.QQAudioUtils;
-import com.tencent.mobileqq.utils.QQRecorder;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.RecordParams.RecorderParam;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.concurrent.atomic.AtomicBoolean;
 import java.util.concurrent.atomic.AtomicLong;
 
 public class AudioNewRecorder
 {
-  public static int a;
-  private Context jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+  public static int a = -1;
+  private Context jdField_a_of_type_AndroidContentContext = BaseApplication.getContext();
   private volatile AudioRecord jdField_a_of_type_AndroidMediaAudioRecord;
   private AcousticEchoCanceler jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler;
   private volatile IRecordEventListener jdField_a_of_type_ComTencentMobileqqQassistantListenerIRecordEventListener;
   public AtomicBoolean a;
   public AtomicLong a;
   private volatile int b;
-  
-  static
-  {
-    jdField_a_of_type_Int = -1;
-  }
   
   public AudioNewRecorder()
   {
@@ -39,44 +36,45 @@ public class AudioNewRecorder
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(0L);
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
-    if (paramInt5 == -1)
-    {
+    if (paramInt5 == -1) {
       this.b = AudioRecord.getMinBufferSize(paramInt2, paramInt3, paramInt3);
-      AssistantUtils.a("AudioNewRecorder", "AudioNewRecorder, inited bufferSizeInBytes:" + this.b);
-      this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(paramInt1, paramInt2, paramInt3, paramInt4, this.b);
-      if (Build.VERSION.SDK_INT >= 16)
+    } else {
+      this.b = paramInt5;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("AudioNewRecorder, inited bufferSizeInBytes:");
+    ((StringBuilder)localObject).append(this.b);
+    AssistantUtils.a("AudioNewRecorder", ((StringBuilder)localObject).toString());
+    this.jdField_a_of_type_AndroidMediaAudioRecord = new AudioRecord(paramInt1, paramInt2, paramInt3, paramInt4, this.b);
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaAudioRecord.getAudioSessionId();
+      if (this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler != null)
       {
-        jdField_a_of_type_Int = this.jdField_a_of_type_AndroidMediaAudioRecord.getAudioSessionId();
-        if (this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler != null)
-        {
-          AssistantUtils.a("AudioNewRecorder", "echo canceler not null, release it");
-          this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler.release();
-          this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler = null;
-        }
-        if (!AcousticEchoCanceler.isAvailable()) {
-          break label218;
-        }
-        AssistantUtils.a("AudioNewRecorder", "create echo canceler, set enable true, session id:" + jdField_a_of_type_Int);
+        AssistantUtils.a("AudioNewRecorder", "echo canceler not null, release it");
+        this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler.release();
+        this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler = null;
+      }
+      if (AcousticEchoCanceler.isAvailable())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("create echo canceler, set enable true, session id:");
+        ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+        AssistantUtils.a("AudioNewRecorder", ((StringBuilder)localObject).toString());
         this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler = AcousticEchoCanceler.create(jdField_a_of_type_Int);
-        label184:
-        if (this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler == null) {
-          break label225;
-        }
-        this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler.setEnabled(true);
+      }
+      else
+      {
+        AssistantUtils.a(false);
+      }
+      localObject = this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler;
+      if (localObject != null) {
+        ((AcousticEchoCanceler)localObject).setEnabled(true);
+      } else {
+        AssistantUtils.a("AudioNewRecorder", "echo canceler not available");
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
-      return;
-      this.b = paramInt5;
-      break;
-      label218:
-      AssistantUtils.a(false);
-      break label184;
-      label225:
-      AssistantUtils.a("AudioNewRecorder", "echo canceler not available");
-    }
+    this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.set(true);
   }
   
   public AudioNewRecorder(RecordParams.RecorderParam paramRecorderParam)
@@ -86,15 +84,15 @@ public class AudioNewRecorder
   
   private void a(int paramInt1, int paramInt2)
   {
-    long l1 = 0L;
-    byte[] arrayOfByte = new byte[this.b];
+    Object localObject = new byte[this.b];
     System.currentTimeMillis();
     QQAudioUtils.a(this.jdField_a_of_type_AndroidContentContext, true);
-    double d = 0.0D;
     long l2 = 0L;
+    double d = 0.0D;
+    long l1 = 0L;
     while (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
-      paramInt1 = this.jdField_a_of_type_AndroidMediaAudioRecord.read(arrayOfByte, 0, this.b);
+      paramInt1 = this.jdField_a_of_type_AndroidMediaAudioRecord.read((byte[])localObject, 0, this.b);
       if (paramInt1 <= 0)
       {
         if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIRecordEventListener != null) {
@@ -105,15 +103,21 @@ public class AudioNewRecorder
       else
       {
         if (this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIRecordEventListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIRecordEventListener.a(arrayOfByte, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get());
+          this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIRecordEventListener.a((byte[])localObject, this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get());
         }
         l2 += 1L;
-        l1 += paramInt1;
-        d += QQRecorder.a(paramInt1, 16000);
+        long l3 = paramInt1;
+        l1 += l3;
+        d += ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).getMillisecond(16000, 2, 2, l3);
         this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.set(d);
       }
     }
-    AssistantUtils.a("AudioNewRecorder", "record finished, slice index:" + l2 + ", total size:" + l1);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("record finished, slice index:");
+    ((StringBuilder)localObject).append(l2);
+    ((StringBuilder)localObject).append(", total size:");
+    ((StringBuilder)localObject).append(l1);
+    AssistantUtils.a("AudioNewRecorder", ((StringBuilder)localObject).toString());
   }
   
   public void a()
@@ -124,10 +128,11 @@ public class AudioNewRecorder
       if (this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler != null) {
         this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler.setEnabled(false);
       }
-      if (this.jdField_a_of_type_AndroidMediaAudioRecord != null) {
+      if (this.jdField_a_of_type_AndroidMediaAudioRecord != null)
+      {
         this.jdField_a_of_type_AndroidMediaAudioRecord.stop();
+        return;
       }
-      return;
     }
     catch (IllegalStateException localIllegalStateException)
     {
@@ -152,54 +157,18 @@ public class AudioNewRecorder
     this.jdField_a_of_type_ComTencentMobileqqQassistantListenerIRecordEventListener = paramIRecordEventListener;
   }
   
-  /* Error */
-  public boolean a(com.tencent.mobileqq.qassistant.listener.IRecordStreamListener paramIRecordStreamListener)
+  public boolean a(IRecordStreamListener paramIRecordStreamListener)
   {
-    // Byte code:
-    //   0: iconst_1
-    //   1: istore_3
-    //   2: aload_0
-    //   3: monitorenter
-    //   4: aload_0
-    //   5: getfield 80	com/tencent/mobileqq/qassistant/audio/AudioNewRecorder:jdField_a_of_type_AndroidMediaAudioRecord	Landroid/media/AudioRecord;
-    //   8: invokevirtual 194	android/media/AudioRecord:getState	()I
-    //   11: istore_2
-    //   12: iload_2
-    //   13: iconst_1
-    //   14: if_icmpne +7 -> 21
-    //   17: aload_1
-    //   18: ifnonnull +9 -> 27
-    //   21: iconst_0
-    //   22: istore_3
-    //   23: aload_0
-    //   24: monitorexit
-    //   25: iload_3
-    //   26: ireturn
-    //   27: new 211	com/tencent/mobileqq/qassistant/audio/AudioNewRecorder$1
-    //   30: dup
-    //   31: aload_0
-    //   32: aload_1
-    //   33: invokespecial 214	com/tencent/mobileqq/qassistant/audio/AudioNewRecorder$1:<init>	(Lcom/tencent/mobileqq/qassistant/audio/AudioNewRecorder;Lcom/tencent/mobileqq/qassistant/listener/IRecordStreamListener;)V
-    //   36: bipush 16
-    //   38: aconst_null
-    //   39: iconst_0
-    //   40: invokestatic 207	com/tencent/mobileqq/app/ThreadManagerV2:excute	(Ljava/lang/Runnable;ILcom/tencent/mobileqq/app/ThreadExcutor$IThreadListener;Z)V
-    //   43: goto -20 -> 23
-    //   46: astore_1
-    //   47: aload_0
-    //   48: monitorexit
-    //   49: aload_1
-    //   50: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	51	0	this	AudioNewRecorder
-    //   0	51	1	paramIRecordStreamListener	com.tencent.mobileqq.qassistant.listener.IRecordStreamListener
-    //   11	4	2	i	int
-    //   1	25	3	bool	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   4	12	46	finally
-    //   27	43	46	finally
+    try
+    {
+      if ((this.jdField_a_of_type_AndroidMediaAudioRecord.getState() == 1) && (paramIRecordStreamListener != null))
+      {
+        ThreadManagerV2.excute(new AudioNewRecorder.1(this, paramIRecordStreamListener), 16, null, false);
+        return true;
+      }
+      return false;
+    }
+    finally {}
   }
   
   public void b()
@@ -220,18 +189,21 @@ public class AudioNewRecorder
       {
         this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler.release();
         this.jdField_a_of_type_AndroidMediaAudiofxAcousticEchoCanceler = null;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      AssistantUtils.a("AudioNewRecorder", "release err:" + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("release err:");
+      localStringBuilder.append(localException.getMessage());
+      AssistantUtils.a("AudioNewRecorder", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.AudioNewRecorder
  * JD-Core Version:    0.7.0.1
  */

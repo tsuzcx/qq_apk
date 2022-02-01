@@ -17,28 +17,26 @@ class ScanEntryProviderContainerView$1
       QLog.d("ScanEntryProviderContainerView", 2, String.format("dispatchTouchEvent onTabClickListener", new Object[0]));
     }
     long l = System.currentTimeMillis();
-    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L) {
-      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
-    }
-    do
+    if (l - ScanEntryProviderContainerView.a(this.a) <= 1000L)
     {
+      QLog.i("ScanEntryProviderContainerView", 1, "avoid user fast click");
       return false;
-      ScanEntryProviderContainerView.a(this.a, l);
-      switch (paramMotionEvent.getAction())
-      {
-      default: 
-        return false;
-      }
-      paramView = (Integer)paramView.getTag();
-      ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new ScanEntryProviderContainerView.1.1(this, paramView));
-    } while (paramView.intValue() != 2);
-    ReportController.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
+    }
+    ScanEntryProviderContainerView.a(this.a, l);
+    if (paramMotionEvent.getAction() != 0) {
+      return false;
+    }
+    paramView = (Integer)paramView.getTag();
+    ScanEntryProviderContainerView.a(this.a).a(paramView.intValue(), new ScanEntryProviderContainerView.1.1(this, paramView));
+    if (paramView.intValue() == 2) {
+      ReportController.b(null, "dc00898", "", "", "0X800A9CE", "0X800A9CE", 0, 0, "", "0", "0", "");
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderContainerView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -35,35 +35,36 @@ public class ApolloGameStateMachine
   
   public static ApolloGameStateMachine a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null) {}
-    for (;;)
-    {
-      try {}catch (Throwable localThrowable)
-      {
-        QLog.e("ApolloGameStateMachine", 1, localThrowable, new Object[0]);
-        continue;
-      }
+    if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null) {
       try
       {
-        if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null)
+        try
         {
-          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine = new ApolloGameStateMachine();
-          jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.b();
-          if ((jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine != null) && (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver != null)) {
-            jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.addObserver(jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver);
+          if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine == null)
+          {
+            jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine = new ApolloGameStateMachine();
+            jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.b();
+            if ((jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine != null) && (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver != null)) {
+              jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.addObserver(jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.jdField_a_of_type_JavaUtilObserver);
+            }
           }
         }
+        finally {}
         return jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
       }
-      finally {}
+      catch (Throwable localThrowable)
+      {
+        QLog.e("[cmshow]ApolloGameStateMachine", 1, localThrowable, new Object[0]);
+      }
     }
   }
   
   public static void d()
   {
-    if (jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine != null)
+    ApolloGameStateMachine localApolloGameStateMachine = jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine;
+    if (localApolloGameStateMachine != null)
     {
-      jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.deleteObservers();
+      localApolloGameStateMachine.deleteObservers();
       jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine.c();
       jdField_a_of_type_ComTencentMobileqqApolloGameApolloGameStateMachine = null;
     }
@@ -116,7 +117,7 @@ public class ApolloGameStateMachine
         return -1;
       }
     }
-    QLog.e("ApolloGameStateMachine", 1, "[changeToState] ill");
+    QLog.e("[cmshow]ApolloGameStateMachine", 1, "[changeToState] ill");
     return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get();
   }
   
@@ -125,30 +126,31 @@ public class ApolloGameStateMachine
     a();
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null)
-      {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
-        b();
-        return;
+      } else {
+        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
+      this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.set(0);
+      b();
+      return;
     }
   }
   
   public void a(int paramInt, Runnable paramRunnable)
   {
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) && (paramRunnable != null))
+    ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+    if ((localConcurrentHashMap != null) && (paramRunnable != null))
     {
       if ((paramRunnable instanceof ApolloGameStateMachine.StateTask))
       {
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), (ApolloGameStateMachine.StateTask)paramRunnable);
+        localConcurrentHashMap.put(Integer.valueOf(paramInt), (ApolloGameStateMachine.StateTask)paramRunnable);
         return;
       }
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(paramInt), new ApolloGameStateMachine.StateTask(paramInt, paramRunnable, this));
+      localConcurrentHashMap.put(Integer.valueOf(paramInt), new ApolloGameStateMachine.StateTask(paramInt, paramRunnable, this));
       return;
     }
-    QLog.e("ApolloGameStateMachine", 1, "[setTask] taskList is null rebuild");
+    QLog.e("[cmshow]ApolloGameStateMachine", 1, "[setTask] taskList is null rebuild");
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
   }
   
@@ -176,13 +178,13 @@ public class ApolloGameStateMachine
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("ApolloGameStateMachine", 1, localThrowable, new Object[] { "[destory]" });
+      QLog.e("[cmshow]ApolloGameStateMachine", 1, localThrowable, new Object[] { "[destroy]" });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGameStateMachine
  * JD-Core Version:    0.7.0.1
  */

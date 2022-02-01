@@ -29,20 +29,23 @@ public final class ActInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.act_name != null) {
-      paramJceOutputStream.write(this.act_name, 0);
+    String str = this.act_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.act_url != null) {
-      paramJceOutputStream.write(this.act_url, 1);
+    str = this.act_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.act_icon != null) {
-      paramJceOutputStream.write(this.act_icon, 2);
+    str = this.act_icon;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     WEBAPP_FAMOUS.ActInfo
  * JD-Core Version:    0.7.0.1
  */

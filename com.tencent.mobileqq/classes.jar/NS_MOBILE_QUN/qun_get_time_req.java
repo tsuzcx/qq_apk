@@ -21,14 +21,15 @@ public final class qun_get_time_req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.qunid != null) {
-      paramJceOutputStream.write(this.qunid, 0);
+    String str = this.qunid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_get_time_req
  * JD-Core Version:    0.7.0.1
  */

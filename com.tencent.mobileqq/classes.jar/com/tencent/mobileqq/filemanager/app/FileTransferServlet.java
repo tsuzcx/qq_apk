@@ -35,29 +35,31 @@ public class FileTransferServlet
     if (QLog.isColorLevel()) {
       QLog.d("FileTransferServlet<FileAssistant>", 2, "onSend called");
     }
-    if (paramIntent == null) {
-      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
-    }
-    do
+    if (paramIntent == null)
     {
+      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : req is null");
       return;
-      paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (paramIntent == null) {
-        break;
-      }
+    }
+    paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
+    if (paramIntent != null)
+    {
       paramPacket.setSSOCommand(paramIntent.getServiceCmd());
       paramPacket.putSendData(paramIntent.getWupBuffer());
       paramPacket.setTimeout(paramIntent.getTimeout());
       paramPacket.addAttribute("fastresend", Boolean.valueOf(true));
-    } while (paramIntent.isNeedCallback());
-    paramPacket.setNoResponse();
-    return;
-    QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
+      if (!paramIntent.isNeedCallback()) {
+        paramPacket.setNoResponse();
+      }
+    }
+    else
+    {
+      QLog.e("FileTransferServlet<FileAssistant>", 1, "onSend : toMsg is null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferServlet
  * JD-Core Version:    0.7.0.1
  */

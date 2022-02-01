@@ -1,15 +1,22 @@
 package com.tencent.mobileqq.activity.aio.rebuild.msglist;
 
 import android.util.SparseArray;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import androidx.annotation.NonNull;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.EggReadConfirmCallback;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.msglist.IHeadMsgRefresher;
 import com.tencent.mobileqq.activity.aio.core.msglist.IMsgLoader;
+import com.tencent.mobileqq.activity.aio.core.msglist.IMsgUpdateCallback;
 import com.tencent.mobileqq.activity.aio.core.msglist.IReadConfirmCallback;
 import com.tencent.mobileqq.activity.aio.core.msglist.IRefreshCallback;
 import com.tencent.mobileqq.activity.aio.core.msglist.IReloadFilter;
-import com.tencent.mobileqq.nearby.HotChatReadConfirmCallback;
+import com.tencent.mobileqq.dating.NearbyMsgBoxReadConfirmCallback;
+import com.tencent.mobileqq.dating.NearbyMsgBoxSendCallback;
+import com.tencent.mobileqq.nearby.api.IHotChatReadConfirmCallback;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.tofumsg.TofuMsgUpdateCallback;
+import com.tencent.widget.AbsListView.OnScrollListener;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,6 +28,8 @@ public class MsgListRegister
   private List<IReadConfirmCallback> b;
   private List<IReloadFilter> c;
   private List<IRefreshCallback> d;
+  private List<IMsgUpdateCallback> e;
+  private List<AbsListView.OnScrollListener> f;
   
   public MsgListRegister(AIOContext paramAIOContext)
   {
@@ -63,12 +72,22 @@ public class MsgListRegister
   
   private void c()
   {
-    this.b = new ArrayList();
-    this.b.add(new GrayTipsReadConfirmCallback());
-    this.b.add(new FlashChatReadConfirmCallback());
-    this.b.add(new EggReadConfirmCallback());
-    this.b.add(new PokeReadConfirmCallback());
-    this.b.add(new HotChatReadConfirmCallback());
+    try
+    {
+      if (this.b == null)
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(new GrayTipsReadConfirmCallback());
+        localArrayList.add(new FlashChatReadConfirmCallback());
+        localArrayList.add(new EggReadConfirmCallback());
+        localArrayList.add(new PokeReadConfirmCallback());
+        localArrayList.add((IReadConfirmCallback)((IHotChatReadConfirmCallback)QRoute.api(IHotChatReadConfirmCallback.class)).get());
+        localArrayList.add(new NearbyMsgBoxReadConfirmCallback());
+        this.b = localArrayList;
+      }
+      return;
+    }
+    finally {}
   }
   
   private void d()
@@ -76,7 +95,7 @@ public class MsgListRegister
     this.c = new ArrayList();
     this.c.add(new StickerReloadFilter());
     this.c.add(new MarketFaceReloadFilter());
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a.a == 1) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a().a == 1) {
       this.c.add(new TroopBindPAReloadFilter());
     }
     this.c.add(new PokeReloadFilter());
@@ -88,6 +107,45 @@ public class MsgListRegister
     this.d = new ArrayList();
     this.d.add((IRefreshCallback)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(65));
     this.d.add(new ScribbleRefreshCallback());
+  }
+  
+  private void f()
+  {
+    try
+    {
+      if (this.e == null)
+      {
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(new DtReportMsgUpdateCallback());
+        localArrayList.add(new ApolloUpdateCallback());
+        localArrayList.add(new ReactiveMsgUpdateCallback());
+        localArrayList.add(new TroopGiftMsgUpdateCallback());
+        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(65));
+        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(67));
+        localArrayList.add(new FlashChatMsgUpdateCallback());
+        localArrayList.add(new AppGuideTipsMsgUpdateCallback());
+        localArrayList.add(new AIOSpreadMsgUpdateCallback());
+        localArrayList.add(new ArkMsgUpdateCallback());
+        localArrayList.add(new StickerMsgUpdateCallback());
+        localArrayList.add(new StructMsgUpdateCallback());
+        localArrayList.add(new DiscussMsgUpdateCallback());
+        localArrayList.add(new NearbyMsgBoxSendCallback());
+        localArrayList.add(new TofuMsgUpdateCallback());
+        this.e = localArrayList;
+      }
+      return;
+    }
+    finally {}
+  }
+  
+  private void g()
+  {
+    this.f = new ArrayList();
+    this.f.add((AbsListView.OnScrollListener)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(121));
+    this.f.add((AbsListView.OnScrollListener)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(18));
+    this.f.add((AbsListView.OnScrollListener)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(110));
+    this.f.add((AbsListView.OnScrollListener)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(133));
+    this.f.add((AbsListView.OnScrollListener)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreAIOContext.a(102));
   }
   
   public IHeadMsgRefresher a(int paramInt)
@@ -129,10 +187,27 @@ public class MsgListRegister
     }
     return this.d;
   }
+  
+  public List<IMsgUpdateCallback> e()
+  {
+    if (this.e == null) {
+      f();
+    }
+    return this.e;
+  }
+  
+  @NonNull
+  public List<AbsListView.OnScrollListener> f()
+  {
+    if (this.f == null) {
+      g();
+    }
+    return this.f;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.MsgListRegister
  * JD-Core Version:    0.7.0.1
  */

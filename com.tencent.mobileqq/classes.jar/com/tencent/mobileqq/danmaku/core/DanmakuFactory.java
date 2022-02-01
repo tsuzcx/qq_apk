@@ -36,13 +36,13 @@ public class DanmakuFactory
       localObject = this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext.a(paramInt);
       Logger.a("DanmakuFactory", new Object[] { localObject, " is created " });
     }
-    for (;;)
+    else
     {
-      ((BaseDanmaku)localObject).e();
-      ((BaseDanmaku)localObject).a(paramObject);
-      return localObject;
       Logger.a("DanmakuFactory", new Object[] { localObject, " is reused " });
     }
+    ((BaseDanmaku)localObject).e();
+    ((BaseDanmaku)localObject).a(paramObject);
+    return localObject;
   }
   
   public void a(BaseDanmaku paramBaseDanmaku)
@@ -62,7 +62,7 @@ public class DanmakuFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.DanmakuFactory
  * JD-Core Version:    0.7.0.1
  */

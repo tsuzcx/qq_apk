@@ -13,12 +13,13 @@ class WatchTogetherOrdinaryControlView$3
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!WatchTogetherOrdinaryControlView.a(this.a)) {}
-    do
-    {
+    if (!WatchTogetherOrdinaryControlView.a(this.a)) {
       return false;
-      paramView = SessionMgr.a().a();
-    } while ((WatchTogetherOrdinaryControlView.a(this.a)) && (paramView != null) && (paramView.x));
+    }
+    paramView = SessionMgr.a().a();
+    if ((WatchTogetherOrdinaryControlView.a(this.a)) && (paramView != null) && (paramView.w)) {
+      return false;
+    }
     WatchTogetherOrdinaryControlView.b(this.a);
     WatchTogetherOrdinaryControlView.c(this.a);
     return false;
@@ -26,7 +27,7 @@ class WatchTogetherOrdinaryControlView$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherOrdinaryControlView.3
  * JD-Core Version:    0.7.0.1
  */

@@ -54,12 +54,18 @@ public class gifCoderWnsConfig
   
   public static boolean isQzoneGenerateGifBlackList()
   {
-    if (generateGifBlackList >= 0) {
-      return generateGifBlackList == 1;
+    int i = generateGifBlackList;
+    boolean bool = false;
+    if (i >= 0)
+    {
+      if (i == 1) {
+        bool = true;
+      }
+      return bool;
     }
     String[] arrayOfString = QzoneConfig.getInstance().getConfig("QZoneSetting", "GenerateGifBlackList", "X9007,MI 2C,A0001").split(",");
     int j = arrayOfString.length;
-    int i = 0;
+    i = 0;
     while (i < j)
     {
       String str = arrayOfString[i];
@@ -76,7 +82,7 @@ public class gifCoderWnsConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.gifCoderWnsConfig
  * JD-Core Version:    0.7.0.1
  */

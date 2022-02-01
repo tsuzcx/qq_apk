@@ -13,25 +13,25 @@ public class SensorModule
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
     long l;
-    switch (paramInt)
+    if (paramInt != 6)
     {
-    default: 
-      return false;
-    case 7: 
+      if (paramInt != 7) {
+        return false;
+      }
       l = paramJSONObject.optInt("allowCacheTime", 10);
-      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new SensorModule.GeoListener(paramAPICallback, 1000L * l));
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new SensorModule.GeoListener(paramAPICallback, l * 1000L));
     }
-    for (;;)
+    else
     {
-      return true;
       l = paramJSONObject.optInt("allowCacheTime", 10);
-      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new SensorModule.CityListener(paramAPICallback, 1000L * l));
+      ((ISosoInterfaceApi)QRoute.api(ISosoInterfaceApi.class)).startLocation(new SensorModule.CityListener(paramAPICallback, l * 1000L));
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.SensorModule
  * JD-Core Version:    0.7.0.1
  */

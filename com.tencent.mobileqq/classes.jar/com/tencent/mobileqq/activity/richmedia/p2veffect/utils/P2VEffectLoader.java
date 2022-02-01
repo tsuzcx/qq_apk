@@ -8,19 +8,55 @@ import java.io.File;
 
 public class P2VEffectLoader
 {
-  private static P2VEffectLoader jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader = null;
-  private boolean jdField_a_of_type_Boolean = false;
+  private static P2VEffectLoader jdField_a_of_type_ComTencentMobileqqActivityRichmediaP2veffectUtilsP2VEffectLoader;
+  private boolean jdField_a_of_type_Boolean;
+  
+  public P2VEffectLoader()
+  {
+    this.a = false;
+  }
   
   public static void a(Context paramContext)
   {
-    P2VGlobalConfig.P2V_VIDEO_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "qzone_dynamic_video" + File.separator;
-    P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT = paramContext.getFilesDir().getAbsolutePath() + File.separator + "tencent" + File.separator + "dynamic_video_cache" + File.separator;
-    P2VGlobalConfig.NO_AUDIO_MP4 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "no_audio.mp4";
-    P2VGlobalConfig.CONCAT_FINAL_M4A = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.m4a";
-    P2VGlobalConfig.CONCAT_FINAL_MP3 = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "concat_final.mp3";
-    P2VGlobalConfig.P2V_MATERIAL_ROOT = P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + "p2v_material" + File.separator;
-    P2VGlobalConfig.P2V_MATERIAL_WATER_MARKER_PNG_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "qzone_p2v_watermark.png";
-    P2VGlobalConfig.P2V_MATERIAL_DUMMY_VIDEO_NAME = P2VGlobalConfig.P2V_MATERIAL_ROOT + "resizeddummy.mp4";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("qzone_dynamic_video");
+    localStringBuilder.append(File.separator);
+    P2VGlobalConfig.P2V_VIDEO_ROOT = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext.getFilesDir().getAbsolutePath());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("dynamic_video_cache");
+    localStringBuilder.append(File.separator);
+    P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT = localStringBuilder.toString();
+    paramContext = new StringBuilder();
+    paramContext.append(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT);
+    paramContext.append("no_audio.mp4");
+    P2VGlobalConfig.NO_AUDIO_MP4 = paramContext.toString();
+    paramContext = new StringBuilder();
+    paramContext.append(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT);
+    paramContext.append("concat_final.m4a");
+    P2VGlobalConfig.CONCAT_FINAL_M4A = paramContext.toString();
+    paramContext = new StringBuilder();
+    paramContext.append(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT);
+    paramContext.append("concat_final.mp3");
+    P2VGlobalConfig.CONCAT_FINAL_MP3 = paramContext.toString();
+    paramContext = new StringBuilder();
+    paramContext.append(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT);
+    paramContext.append("p2v_material");
+    paramContext.append(File.separator);
+    P2VGlobalConfig.P2V_MATERIAL_ROOT = paramContext.toString();
+    paramContext = new StringBuilder();
+    paramContext.append(P2VGlobalConfig.P2V_MATERIAL_ROOT);
+    paramContext.append("qzone_p2v_watermark.png");
+    P2VGlobalConfig.P2V_MATERIAL_WATER_MARKER_PNG_NAME = paramContext.toString();
+    paramContext = new StringBuilder();
+    paramContext.append(P2VGlobalConfig.P2V_MATERIAL_ROOT);
+    paramContext.append("resizeddummy.mp4");
+    P2VGlobalConfig.P2V_MATERIAL_DUMMY_VIDEO_NAME = paramContext.toString();
     try
     {
       paramContext = new File(P2VGlobalConfig.P2V_VIDEO_ROOT);
@@ -34,18 +70,21 @@ public class P2VEffectLoader
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        QLog.d("P2VEffectLoader", 2, "initP2VCacheRootSpace exception", paramContext);
-      }
+      QLog.d("P2VEffectLoader", 2, "initP2VCacheRootSpace exception", paramContext);
     }
-    FileUtils.c(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT + ".nomedia");
-    FileUtils.c(P2VGlobalConfig.P2V_MATERIAL_ROOT + ".nomedia");
+    paramContext = new StringBuilder();
+    paramContext.append(P2VGlobalConfig.P2V_VIDEO_CACHE_ROOT);
+    paramContext.append(".nomedia");
+    FileUtils.createFileIfNotExits(paramContext.toString());
+    paramContext = new StringBuilder();
+    paramContext.append(P2VGlobalConfig.P2V_MATERIAL_ROOT);
+    paramContext.append(".nomedia");
+    FileUtils.createFileIfNotExits(paramContext.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.utils.P2VEffectLoader
  * JD-Core Version:    0.7.0.1
  */

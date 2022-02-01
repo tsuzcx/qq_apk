@@ -7,33 +7,50 @@ public class KeyingManager
 {
   public static KeyingBase a(KeyingParams paramKeyingParams, int paramInt)
   {
-    if (paramKeyingParams == null) {
-      throw new RuntimeException("params can not be null!");
-    }
-    Object localObject;
-    switch (paramKeyingParams.jdField_a_of_type_Int)
+    if (paramKeyingParams != null)
     {
-    default: 
-      localObject = new NoneKey(paramInt);
-    }
-    for (;;)
-    {
-      QLog.i("KeyingManager", 1, "getKeying keying: " + localObject + "  params: " + paramKeyingParams.toString());
-      return localObject;
-      localObject = new ColorDifferenceKey(paramInt);
-      continue;
-      localObject = new SeriouslyChromaKey(paramInt);
-      continue;
-      localObject = new GreenScreenChromaKey(paramInt);
-      continue;
-      localObject = new HighQualityChromaKey(paramInt);
-      continue;
-      if (TextUtils.isEmpty(paramKeyingParams.jdField_a_of_type_JavaLangString)) {
-        break;
+      int i = paramKeyingParams.jdField_a_of_type_Int;
+      Object localObject;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5) {
+                localObject = new NoneKey(paramInt);
+              } else if (!TextUtils.isEmpty(paramKeyingParams.jdField_a_of_type_JavaLangString)) {
+                localObject = new CustomizeKey(paramInt, paramKeyingParams.jdField_a_of_type_JavaLangString);
+              } else {
+                throw new RuntimeException("fragmentShader can not be empty!");
+              }
+            }
+            else {
+              localObject = new HighQualityChromaKey(paramInt);
+            }
+          }
+          else {
+            localObject = new GreenScreenChromaKey(paramInt);
+          }
+        }
+        else {
+          localObject = new SeriouslyChromaKey(paramInt);
+        }
       }
-      localObject = new CustomizeKey(paramInt, paramKeyingParams.jdField_a_of_type_JavaLangString);
+      else {
+        localObject = new ColorDifferenceKey(paramInt);
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getKeying keying: ");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append("  params: ");
+      localStringBuilder.append(paramKeyingParams.toString());
+      QLog.i("KeyingManager", 1, localStringBuilder.toString());
+      return localObject;
     }
-    throw new RuntimeException("fragmentShader can not be empty!");
+    throw new RuntimeException("params can not be null!");
   }
   
   public static KeyingParams a(int paramInt)
@@ -43,7 +60,7 @@ public class KeyingManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.keying.KeyingManager
  * JD-Core Version:    0.7.0.1
  */

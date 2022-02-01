@@ -16,22 +16,29 @@ class ReminderListFragment$ReminderListItemDecoration
   public void getItemOffsets(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
     super.getItemOffsets(paramRect, paramView, paramRecyclerView, paramState);
-    paramRect.left = AIOUtils.a(16.0F, this.a.getResources());
-    paramRect.right = AIOUtils.a(16.0F, this.a.getResources());
+    paramRect.left = AIOUtils.b(16.0F, this.a.getResources());
+    paramRect.right = AIOUtils.b(16.0F, this.a.getResources());
     int i = paramRecyclerView.getChildAdapterPosition(paramView);
     int j = ReminderListFragment.a(this.a).getItemCount();
-    if (QLog.isColorLevel()) {
-      QLog.i(ReminderListFragment.a(), 2, "position: " + i + ", totalCnt: " + j);
+    if (QLog.isColorLevel())
+    {
+      paramView = ReminderListFragment.a();
+      paramRecyclerView = new StringBuilder();
+      paramRecyclerView.append("position: ");
+      paramRecyclerView.append(i);
+      paramRecyclerView.append(", totalCnt: ");
+      paramRecyclerView.append(j);
+      QLog.i(paramView, 2, paramRecyclerView.toString());
     }
-    paramRect.top = AIOUtils.a(12.0F, this.a.getResources());
+    paramRect.top = AIOUtils.b(12.0F, this.a.getResources());
     if (i == j - 1) {
-      paramRect.bottom = AIOUtils.a(12.0F, this.a.getResources());
+      paramRect.bottom = AIOUtils.b(12.0F, this.a.getResources());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderListFragment.ReminderListItemDecoration
  * JD-Core Version:    0.7.0.1
  */

@@ -18,20 +18,21 @@ class WSPlayerAudioControl$AudioHandler
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      WSPlayerAudioControl.a(this.a);
+      if (i != 2) {
+        return;
+      }
+      WSPlayerAudioControl.b(this.a);
       return;
     }
-    WSPlayerAudioControl.b(this.a);
+    WSPlayerAudioControl.a(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.WSPlayerAudioControl.AudioHandler
  * JD-Core Version:    0.7.0.1
  */

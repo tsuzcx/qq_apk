@@ -10,6 +10,7 @@ import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
 import android.view.View;
 import android.view.animation.AccelerateInterpolator;
+import android.view.animation.Animation;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextSwitcher;
 import android.widget.TextView;
@@ -59,34 +60,35 @@ public class QzoneAutoVerticalScrollTextView
   
   public void a()
   {
-    if (getInAnimation() != this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation) {
-      setInAnimation(this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
+    Animation localAnimation = getInAnimation();
+    QzoneAutoVerticalScrollTextView.Rotate3dAnimation localRotate3dAnimation = this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation;
+    if (localAnimation != localRotate3dAnimation) {
+      setInAnimation(localRotate3dAnimation);
     }
-    if (getOutAnimation() != this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation) {
-      setOutAnimation(this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
+    localAnimation = getOutAnimation();
+    localRotate3dAnimation = this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation;
+    if (localAnimation != localRotate3dAnimation) {
+      setOutAnimation(localRotate3dAnimation);
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
+    if (paramMessage.what != 9001) {
       return true;
-      if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
-      {
-        a();
-        this.jdField_a_of_type_Int += 1;
-        if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
-          this.jdField_a_of_type_Int = 0;
-        }
-        setText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int]);
-      }
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(9001);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9001, this.jdField_a_of_type_Long);
     }
+    if (this.jdField_a_of_type_ArrayOfJavaLangString != null)
+    {
+      a();
+      this.jdField_a_of_type_Int += 1;
+      if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ArrayOfJavaLangString.length) {
+        this.jdField_a_of_type_Int = 0;
+      }
+      setText(this.jdField_a_of_type_ArrayOfJavaLangString[this.jdField_a_of_type_Int]);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(9001);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9001, this.jdField_a_of_type_Long);
+    return true;
   }
   
   public View makeView()
@@ -122,27 +124,30 @@ public class QzoneAutoVerticalScrollTextView
         this.jdField_a_of_type_Int = 0;
       }
       setText(paramArrayOfString[this.jdField_a_of_type_Int]);
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(9001);
+      Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      if (localHandler != null) {
+        localHandler.removeMessages(9001);
       }
-      if (paramArrayOfString.length <= 1) {
-        break label102;
+      if (paramArrayOfString.length > 1)
+      {
+        setInAnimation(this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
+        setOutAnimation(this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
+        paramArrayOfString = this.jdField_a_of_type_AndroidOsHandler;
+        if (paramArrayOfString != null) {
+          paramArrayOfString.sendEmptyMessageDelayed(9001, this.jdField_a_of_type_Long);
+        }
       }
-      setInAnimation(this.jdField_a_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
-      setOutAnimation(this.jdField_b_of_type_ComTencentWidgetQzoneAutoVerticalScrollTextView$Rotate3dAnimation);
-      if (this.jdField_a_of_type_AndroidOsHandler != null) {
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(9001, this.jdField_a_of_type_Long);
+      else
+      {
+        setInAnimation(null);
+        setOutAnimation(null);
       }
     }
-    return;
-    label102:
-    setInAnimation(null);
-    setOutAnimation(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.QzoneAutoVerticalScrollTextView
  * JD-Core Version:    0.7.0.1
  */

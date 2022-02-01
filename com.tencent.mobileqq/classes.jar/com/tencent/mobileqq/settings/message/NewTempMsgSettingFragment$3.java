@@ -15,14 +15,14 @@ class NewTempMsgSettingFragment$3
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    ((TempMsgManager)this.a.a.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER)).a((short)-23166, paramBoolean, true);
-    ReportController.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 3, 3, "", "", "", "");
+    ((TempMsgManager)this.a.a.getManager(QQManagerFactory.TEMP_MSG_SETTTING_MANAGER)).a((short)-23309, paramBoolean, true);
+    ReportController.b(this.a.a, "dc00898", "", "", "0X8009976", "0X8009976", 5, 5, "", "", "", "");
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NewTempMsgSettingFragment.3
  * JD-Core Version:    0.7.0.1
  */

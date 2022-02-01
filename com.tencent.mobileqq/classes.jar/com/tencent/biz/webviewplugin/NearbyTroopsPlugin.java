@@ -24,48 +24,56 @@ public class NearbyTroopsPlugin
   
   protected void a(String paramString)
   {
-    for (;;)
+    try
     {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setSelectTypeResult:");
+        localStringBuilder.append(paramString);
+        QLog.d("NearbyTroopsPlugin", 2, localStringBuilder.toString());
+      }
+      Activity localActivity = this.mRuntime.a();
+      Intent localIntent = new Intent();
+      localStringBuilder = null;
       try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString);
-        }
-        localActivity = this.mRuntime.a();
-        localIntent = new Intent();
-        try
-        {
-          paramString = new JSONObject(paramString).getJSONObject("data");
-          if (paramString == null) {
-            continue;
-          }
-          localIntent.putExtra("data", paramString.toString());
-          localActivity.setResult(-1, localIntent);
-          localActivity.finish();
-          return;
-        }
-        catch (Exception paramString)
-        {
-          if (!QLog.isColorLevel()) {
-            break label170;
-          }
-        }
-        QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString.toString());
+        paramString = new JSONObject(paramString).getJSONObject("data");
       }
-      catch (Exception paramString)
+      catch (Exception localException)
       {
-        Activity localActivity;
-        Intent localIntent;
-        if (!QLog.isColorLevel()) {
-          continue;
+        paramString = localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("setSelectTypeResult:");
+          paramString.append(localException.toString());
+          QLog.d("NearbyTroopsPlugin", 2, paramString.toString());
+          paramString = localStringBuilder;
         }
-        QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString.toString());
-        return;
       }
-      localActivity.setResult(0, localIntent);
-      continue;
-      label170:
-      paramString = null;
+      if (paramString != null)
+      {
+        localIntent.putExtra("data", paramString.toString());
+        localActivity.setResult(-1, localIntent);
+      }
+      else
+      {
+        localActivity.setResult(0, localIntent);
+      }
+      localActivity.finish();
+      return;
+    }
+    catch (Exception paramString)
+    {
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setSelectTypeResult:");
+        localStringBuilder.append(paramString.toString());
+        QLog.d("NearbyTroopsPlugin", 2, localStringBuilder.toString());
+      }
     }
   }
   
@@ -73,25 +81,29 @@ public class NearbyTroopsPlugin
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NearbyTroopsPlugin", 2, "giftAnimation:" + paramString);
-      }
-      localActivity = this.mRuntime.a();
-      if (localActivity != null)
+      if (QLog.isColorLevel())
       {
-        if (localActivity.isFinishing()) {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("giftAnimation:");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.d("NearbyTroopsPlugin", 2, ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = this.mRuntime.a();
+      if (localObject1 != null)
+      {
+        if (((Activity)localObject1).isFinishing()) {
           return;
         }
-        localObject = new JSONObject(paramString);
-        i = ((JSONObject)localObject).optInt("id");
-        long l1 = ((JSONObject)localObject).optLong("senderUin", 0L);
-        long l2 = ((JSONObject)localObject).optLong("receiveUin", 0L);
-        paramString = ((JSONObject)localObject).optString("brief");
-        boolean bool = ((JSONObject)localObject).optBoolean("showClose", false);
-        String str1 = ((JSONObject)localObject).optString("senderAvatarURL");
-        String str2 = ((JSONObject)localObject).optString("receiverAvatarURL");
-        localObject = ((JSONObject)localObject).optString("callback");
-        localMessageForDeliverGiftTips = new MessageForDeliverGiftTips();
+        Object localObject2 = new JSONObject(paramString);
+        int i = ((JSONObject)localObject2).optInt("id");
+        long l1 = ((JSONObject)localObject2).optLong("senderUin", 0L);
+        long l2 = ((JSONObject)localObject2).optLong("receiveUin", 0L);
+        paramString = ((JSONObject)localObject2).optString("brief");
+        boolean bool = ((JSONObject)localObject2).optBoolean("showClose", false);
+        String str1 = ((JSONObject)localObject2).optString("senderAvatarURL");
+        String str2 = ((JSONObject)localObject2).optString("receiverAvatarURL");
+        localObject2 = ((JSONObject)localObject2).optString("callback");
+        MessageForDeliverGiftTips localMessageForDeliverGiftTips = new MessageForDeliverGiftTips();
         localMessageForDeliverGiftTips.animationPackageId = i;
         localMessageForDeliverGiftTips.senderUin = l1;
         localMessageForDeliverGiftTips.receiverUin = l2;
@@ -102,34 +114,39 @@ public class NearbyTroopsPlugin
         localMessageForDeliverGiftTips.frienduin = String.valueOf(10000L);
         if (this.a == null)
         {
-          callJs((String)localObject, new String[] { "{\"result\":10,\"message\":\"troopGiftManager is null\"}" });
+          callJs((String)localObject2, new String[] { "{\"result\":10,\"message\":\"troopGiftManager is null\"}" });
           return;
         }
+        this.a.a((Activity)localObject1);
+        if (this.a.a(localMessageForDeliverGiftTips))
+        {
+          this.a.a = new NearbyTroopsPlugin.1(this, (String)localObject2);
+          paramString = new StringBuilder();
+          paramString.append("{\"result\":0,\"id\":");
+          paramString.append(i);
+          paramString.append("}");
+          callJs((String)localObject2, new String[] { paramString.toString() });
+          return;
+        }
+        callJs((String)localObject2, new String[] { "{\"result\":2}" });
+        return;
       }
+      return;
     }
     catch (Exception paramString)
     {
-      Activity localActivity;
-      Object localObject;
-      int i;
-      MessageForDeliverGiftTips localMessageForDeliverGiftTips;
+      Object localObject1;
       if (QLog.isColorLevel())
       {
-        QLog.d("NearbyTroopsPlugin", 2, "setSelectTypeResult:" + paramString.toString());
-        return;
-        this.a.a(localActivity);
-        if (this.a.a(localMessageForDeliverGiftTips))
-        {
-          this.a.a = new NearbyTroopsPlugin.1(this, (String)localObject);
-          callJs((String)localObject, new String[] { "{\"result\":0,\"id\":" + i + "}" });
-          return;
-        }
-        callJs((String)localObject, new String[] { "{\"result\":2}" });
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("setSelectTypeResult:");
+        ((StringBuilder)localObject1).append(paramString.toString());
+        QLog.d("NearbyTroopsPlugin", 2, ((StringBuilder)localObject1).toString());
       }
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if ("NearbyTroopsPlugin".equals(paramString2))
     {
@@ -147,26 +164,30 @@ public class NearbyTroopsPlugin
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     AppInterface localAppInterface = this.mRuntime.a();
     Activity localActivity = this.mRuntime.a();
-    if ((localAppInterface == null) || (localActivity == null)) {
-      return;
+    if (localAppInterface != null)
+    {
+      if (localActivity == null) {
+        return;
+      }
+      this.a = ((AIOAnimationControlManager)localAppInterface.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER));
     }
-    this.a = ((AIOAnimationControlManager)localAppInterface.getManager(QQManagerFactory.AIO_ANIMATION_MANAGER));
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
-    if (this.a != null) {
-      this.a.d();
+    AIOAnimationControlManager localAIOAnimationControlManager = this.a;
+    if (localAIOAnimationControlManager != null) {
+      localAIOAnimationControlManager.d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NearbyTroopsPlugin
  * JD-Core Version:    0.7.0.1
  */

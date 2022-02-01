@@ -78,20 +78,20 @@ public final class TsExtractor
   {
     this.payloadReaderFactory = ((TsPayloadReader.Factory)Assertions.checkNotNull(paramFactory));
     this.mode = paramInt;
-    if ((paramInt == 1) || (paramInt == 2)) {
-      this.timestampAdjusters = Collections.singletonList(paramTimestampAdjuster);
-    }
-    for (;;)
+    if ((paramInt != 1) && (paramInt != 2))
     {
-      this.tsPacketBuffer = new ParsableByteArray(9400);
-      this.trackIds = new SparseBooleanArray();
-      this.tsPayloadReaders = new SparseArray();
-      this.continuityCounters = new SparseIntArray();
-      resetPayloadReaders();
-      return;
       this.timestampAdjusters = new ArrayList();
       this.timestampAdjusters.add(paramTimestampAdjuster);
     }
+    else
+    {
+      this.timestampAdjusters = Collections.singletonList(paramTimestampAdjuster);
+    }
+    this.tsPacketBuffer = new ParsableByteArray(9400);
+    this.trackIds = new SparseBooleanArray();
+    this.tsPayloadReaders = new SparseArray();
+    this.continuityCounters = new SparseIntArray();
+    resetPayloadReaders();
   }
   
   private void resetPayloadReaders()
@@ -154,43 +154,32 @@ public final class TsExtractor
       return 0;
     }
     boolean bool;
-    int n;
-    if ((0x400000 & i1) != 0)
-    {
+    if ((0x400000 & i1) != 0) {
       bool = true;
-      n = (0x1FFF00 & i1) >> 8;
-      if ((i1 & 0x20) == 0) {
-        break label292;
-      }
-      i = 1;
-      label242:
-      if ((i1 & 0x10) == 0) {
-        break label297;
-      }
-      j = 1;
-      label253:
-      if (j == 0) {
-        break label303;
-      }
+    } else {
+      bool = false;
     }
-    label292:
-    label297:
-    label303:
-    for (paramExtractorInput = (TsPayloadReader)this.tsPayloadReaders.get(n);; paramExtractorInput = null)
+    int n = (0x1FFF00 & i1) >> 8;
+    if ((i1 & 0x20) != 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i1 & 0x10) != 0) {
+      j = 1;
+    } else {
+      j = 0;
+    }
+    if (j != 0) {
+      paramExtractorInput = (TsPayloadReader)this.tsPayloadReaders.get(n);
+    } else {
+      paramExtractorInput = null;
+    }
+    if (paramExtractorInput == null)
     {
-      if (paramExtractorInput != null) {
-        break label308;
-      }
       this.tsPacketBuffer.setPosition(m);
       return 0;
-      bool = false;
-      break;
-      i = 0;
-      break label242;
-      j = 0;
-      break label253;
     }
-    label308:
     if (this.mode != 2)
     {
       j = i1 & 0xF;
@@ -235,35 +224,33 @@ public final class TsExtractor
   
   public boolean sniff(ExtractorInput paramExtractorInput)
   {
-    boolean bool2 = false;
     byte[] arrayOfByte = this.tsPacketBuffer.data;
     paramExtractorInput.peekFully(arrayOfByte, 0, 940);
     int i = 0;
-    boolean bool1 = bool2;
-    int j;
-    if (i < 188) {
-      j = 0;
-    }
-    for (;;)
+    if (i < 188)
     {
-      if (j == 5)
+      int j = 0;
+      for (;;)
       {
-        paramExtractorInput.skipFully(i);
-        bool1 = true;
-        return bool1;
+        if (j == 5)
+        {
+          paramExtractorInput.skipFully(i);
+          return true;
+        }
+        if (arrayOfByte[(j * 188 + i)] != 71)
+        {
+          i += 1;
+          break;
+        }
+        j += 1;
       }
-      if (arrayOfByte[(j * 188 + i)] != 71)
-      {
-        i += 1;
-        break;
-      }
-      j += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.TsExtractor
  * JD-Core Version:    0.7.0.1
  */

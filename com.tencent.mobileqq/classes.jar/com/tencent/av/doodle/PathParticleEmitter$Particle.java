@@ -48,7 +48,9 @@ public class PathParticleEmitter$Particle
   {
     this.a.reset();
     this.a.preRotate(this.s, this.q, this.r);
-    this.a.preScale(this.t, this.t, this.q, this.r);
+    Matrix localMatrix = this.a;
+    float f1 = this.t;
+    localMatrix.preScale(f1, f1, this.q, this.r);
   }
   
   public void a(float paramFloat)
@@ -73,10 +75,12 @@ public class PathParticleEmitter$Particle
     this.v = paramFloat2;
     this.w = paramFloat3;
     this.x = paramFloat4;
-    localRect2.left = ((int)this.u);
-    localRect2.top = ((int)this.v);
-    localRect2.right = ((int)(this.u + this.w));
-    localRect2.bottom = ((int)(this.v + this.x));
+    paramFloat1 = this.u;
+    localRect2.left = ((int)paramFloat1);
+    paramFloat2 = this.v;
+    localRect2.top = ((int)paramFloat2);
+    localRect2.right = ((int)(paramFloat1 + this.w));
+    localRect2.bottom = ((int)(paramFloat2 + this.x));
     if (!localRect1.equals(localRect2)) {
       setBounds(localRect2);
     }
@@ -107,33 +111,31 @@ public class PathParticleEmitter$Particle
   
   public void setBounds(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    int i1 = 1;
     super.setBounds(paramInt1, paramInt2, paramInt3, paramInt4);
     float f1 = (paramInt1 + paramInt3) / 2;
     float f2 = (paramInt2 + paramInt4) / 2;
-    paramInt1 = 0;
     if (this.q != f1)
     {
       this.q = f1;
       paramInt1 = 1;
     }
+    else
+    {
+      paramInt1 = 0;
+    }
     if (this.r != f2)
     {
       this.r = f2;
-      paramInt1 = i1;
+      paramInt1 = 1;
     }
-    for (;;)
-    {
-      if (paramInt1 != 0) {
-        a();
-      }
-      return;
+    if (paramInt1 != 0) {
+      a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.doodle.PathParticleEmitter.Particle
  * JD-Core Version:    0.7.0.1
  */

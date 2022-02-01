@@ -12,14 +12,15 @@ class DownloadManager$16
       UpdateManager.a().a();
     }
     if (MyAppApi.d()) {
-      MyAppApi.a().h();
+      MyAppApi.a().j();
     }
-    this.this$0.a(this.this$0.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadLogListener);
+    DownloadManager localDownloadManager = this.this$0;
+    localDownloadManager.a(localDownloadManager.jdField_a_of_type_ComTencentTmdownloaderITMAssistantDownloadLogListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.16
  * JD-Core Version:    0.7.0.1
  */

@@ -131,82 +131,28 @@ public class AVAudioCtrl
     return nativeEnableSpeaker(this.mAppContext, paramBoolean, localEnableSpeakerCompleteCallback);
   }
   
-  /* Error */
   public int fillExternalAudioFrame(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 83	com/tencent/TMG/sdk/AVAudioCtrl:isEnableExternalAudioDataInput	Z
-    //   6: ifeq +87 -> 93
-    //   9: aload_0
-    //   10: getfield 81	com/tencent/TMG/sdk/AVAudioCtrl:audioDataByteBuffer	Ljava/nio/ByteBuffer;
-    //   13: ifnull +27 -> 40
-    //   16: aload_0
-    //   17: getfield 81	com/tencent/TMG/sdk/AVAudioCtrl:audioDataByteBuffer	Ljava/nio/ByteBuffer;
-    //   20: invokevirtual 174	java/nio/ByteBuffer:capacity	()I
-    //   23: iload_2
-    //   24: if_icmpeq +16 -> 40
-    //   27: aload_0
-    //   28: getfield 81	com/tencent/TMG/sdk/AVAudioCtrl:audioDataByteBuffer	Ljava/nio/ByteBuffer;
-    //   31: invokestatic 133	com/tencent/TMG/utils/NioUtils:destroyDirectByteBuffer	(Ljava/nio/ByteBuffer;)Z
-    //   34: pop
-    //   35: aload_0
-    //   36: aconst_null
-    //   37: putfield 81	com/tencent/TMG/sdk/AVAudioCtrl:audioDataByteBuffer	Ljava/nio/ByteBuffer;
-    //   40: aload_0
-    //   41: getfield 81	com/tencent/TMG/sdk/AVAudioCtrl:audioDataByteBuffer	Ljava/nio/ByteBuffer;
-    //   44: ifnonnull +11 -> 55
-    //   47: aload_0
-    //   48: iload_2
-    //   49: invokestatic 178	com/tencent/TMG/utils/NioUtils:createDirectByteBuffer	(I)Ljava/nio/ByteBuffer;
-    //   52: putfield 81	com/tencent/TMG/sdk/AVAudioCtrl:audioDataByteBuffer	Ljava/nio/ByteBuffer;
-    //   55: aload_0
-    //   56: getfield 81	com/tencent/TMG/sdk/AVAudioCtrl:audioDataByteBuffer	Ljava/nio/ByteBuffer;
-    //   59: aload_1
-    //   60: iconst_0
-    //   61: iload_2
-    //   62: invokevirtual 182	java/nio/ByteBuffer:put	([BII)Ljava/nio/ByteBuffer;
-    //   65: pop
-    //   66: aload_0
-    //   67: getfield 81	com/tencent/TMG/sdk/AVAudioCtrl:audioDataByteBuffer	Ljava/nio/ByteBuffer;
-    //   70: invokevirtual 186	java/nio/ByteBuffer:clear	()Ljava/nio/Buffer;
-    //   73: pop
-    //   74: aload_0
-    //   75: aload_0
-    //   76: getfield 81	com/tencent/TMG/sdk/AVAudioCtrl:audioDataByteBuffer	Ljava/nio/ByteBuffer;
-    //   79: iload_2
-    //   80: iload_3
-    //   81: iload 4
-    //   83: iload 5
-    //   85: invokespecial 188	com/tencent/TMG/sdk/AVAudioCtrl:nativeFillExternalAudioFrame	(Ljava/nio/ByteBuffer;IIII)I
-    //   88: istore_2
-    //   89: aload_0
-    //   90: monitorexit
-    //   91: iload_2
-    //   92: ireturn
-    //   93: iconst_1
-    //   94: istore_2
-    //   95: goto -6 -> 89
-    //   98: astore_1
-    //   99: aload_0
-    //   100: monitorexit
-    //   101: aload_1
-    //   102: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	103	0	this	AVAudioCtrl
-    //   0	103	1	paramArrayOfByte	byte[]
-    //   0	103	2	paramInt1	int
-    //   0	103	3	paramInt2	int
-    //   0	103	4	paramInt3	int
-    //   0	103	5	paramInt4	int
-    // Exception table:
-    //   from	to	target	type
-    //   2	40	98	finally
-    //   40	55	98	finally
-    //   55	89	98	finally
+    try
+    {
+      if (this.isEnableExternalAudioDataInput)
+      {
+        if ((this.audioDataByteBuffer != null) && (this.audioDataByteBuffer.capacity() != paramInt1))
+        {
+          NioUtils.destroyDirectByteBuffer(this.audioDataByteBuffer);
+          this.audioDataByteBuffer = null;
+        }
+        if (this.audioDataByteBuffer == null) {
+          this.audioDataByteBuffer = NioUtils.createDirectByteBuffer(paramInt1);
+        }
+        this.audioDataByteBuffer.put(paramArrayOfByte, 0, paramInt1);
+        this.audioDataByteBuffer.clear();
+        paramInt1 = nativeFillExternalAudioFrame(this.audioDataByteBuffer, paramInt1, paramInt2, paramInt3, paramInt4);
+        return paramInt1;
+      }
+      return 1;
+    }
+    finally {}
   }
   
   public native AVAudioCtrl.AudioFrameDesc getAudioDataFormat(int paramInt);
@@ -215,24 +161,16 @@ public class AVAudioCtrl
   
   public int getAudioOutputMode()
   {
-    int j = 0;
-    int i;
     if (this.mSelectedDeviceName.endsWith("DEVICE_SPEAKERPHONE")) {
-      i = 1;
+      return 1;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return i;
-          i = j;
-        } while (this.mSelectedDeviceName.endsWith("DEVICE_WIREDHEADSET"));
-        i = j;
-      } while (this.mSelectedDeviceName.endsWith("DEVICE_BLUETOOTHHEADSET"));
-      i = j;
-    } while (!this.mSelectedDeviceName.endsWith("DEVICE_EARPHONE"));
+    if (this.mSelectedDeviceName.endsWith("DEVICE_WIREDHEADSET")) {
+      return 0;
+    }
+    if (this.mSelectedDeviceName.endsWith("DEVICE_BLUETOOTHHEADSET")) {
+      return 0;
+    }
+    this.mSelectedDeviceName.endsWith("DEVICE_EARPHONE");
     return 0;
   }
   
@@ -305,76 +243,93 @@ public class AVAudioCtrl
   
   public boolean setAudioOutputMode(int paramInt)
   {
-    if (paramInt == 0) {
-      if ((this.mDeviceList != null) && (this.mAudioSession != null)) {}
-    }
-    label24:
-    label69:
-    while ((1 != paramInt) || (this.mAudioSession == null))
+    Object localObject;
+    if (paramInt == 0)
     {
-      return false;
-      int i = 0;
-      int j = 0;
-      paramInt = i;
-      if (j < this.mDeviceList.length)
+      if (this.mDeviceList != null)
       {
-        paramInt = i;
-        if (i == 0)
-        {
-          if (!"DEVICE_WIREDHEADSET".equals(this.mDeviceList[j])) {
-            break label165;
-          }
-          this.mAudioSession.connectDevice("DEVICE_WIREDHEADSET");
-          paramInt = 1;
+        if (this.mAudioSession == null) {
+          return false;
         }
-      }
-      j = 0;
-      i = paramInt;
-      if (j < this.mDeviceList.length)
-      {
-        i = paramInt;
-        if (paramInt == 0)
+        int i = 0;
+        do
         {
-          if (!"DEVICE_BLUETOOTHHEADSET".equals(this.mDeviceList[j])) {
-            break label172;
-          }
-          this.mAudioSession.connectDevice("DEVICE_BLUETOOTHHEADSET");
-          i = 1;
-        }
-      }
-      j = 0;
-      for (;;)
-      {
-        paramInt = i;
-        if (j < this.mDeviceList.length)
-        {
-          paramInt = i;
-          if (i == 0)
+          int j = 0;
+          for (;;)
           {
-            if (!"DEVICE_EARPHONE".equals(this.mDeviceList[j])) {
-              break label179;
+            localObject = this.mDeviceList;
+            paramInt = i;
+            if (j >= localObject.length) {
+              break;
             }
-            this.mAudioSession.connectDevice("DEVICE_EARPHONE");
-            paramInt = 1;
+            paramInt = i;
+            if (i != 0) {
+              break;
+            }
+            if ("DEVICE_WIREDHEADSET".equals(localObject[j]))
+            {
+              this.mAudioSession.connectDevice("DEVICE_WIREDHEADSET");
+              paramInt = 1;
+              break;
+            }
+            j += 1;
           }
-        }
-        i = paramInt;
-        if (paramInt == 0) {
-          break;
-        }
+          j = 0;
+          for (;;)
+          {
+            localObject = this.mDeviceList;
+            i = paramInt;
+            if (j >= localObject.length) {
+              break;
+            }
+            i = paramInt;
+            if (paramInt != 0) {
+              break;
+            }
+            if ("DEVICE_BLUETOOTHHEADSET".equals(localObject[j]))
+            {
+              this.mAudioSession.connectDevice("DEVICE_BLUETOOTHHEADSET");
+              i = 1;
+              break;
+            }
+            j += 1;
+          }
+          j = 0;
+          for (;;)
+          {
+            localObject = this.mDeviceList;
+            paramInt = i;
+            if (j >= localObject.length) {
+              break;
+            }
+            paramInt = i;
+            if (i != 0) {
+              break;
+            }
+            if ("DEVICE_EARPHONE".equals(localObject[j]))
+            {
+              this.mAudioSession.connectDevice("DEVICE_EARPHONE");
+              paramInt = 1;
+              break;
+            }
+            j += 1;
+          }
+          i = paramInt;
+        } while (paramInt == 0);
         return true;
-        j += 1;
-        break label24;
-        j += 1;
-        break label69;
-        j += 1;
       }
+      return false;
     }
-    label165:
-    label172:
-    label179:
-    this.mAudioSession.connectDevice("DEVICE_SPEAKERPHONE");
-    return true;
+    if (1 == paramInt)
+    {
+      localObject = this.mAudioSession;
+      if (localObject == null) {
+        return false;
+      }
+      ((TraeAudioSession)localObject).connectDevice("DEVICE_SPEAKERPHONE");
+      return true;
+    }
+    return false;
   }
   
   public void setDelegate(AVAudioCtrl.Delegate paramDelegate)
@@ -403,9 +358,10 @@ public class AVAudioCtrl
   
   public void startTRAEService()
   {
-    if (this.mAudioSession != null)
+    TraeAudioSession localTraeAudioSession = this.mAudioSession;
+    if (localTraeAudioSession != null)
     {
-      this.mAudioSession.startService(this.mAudioSessionType);
+      localTraeAudioSession.startService(this.mAudioSessionType);
       Log.e("SdkJni", "AVAudioCtrl startTRAEService succ");
       return;
     }
@@ -453,61 +409,63 @@ public class AVAudioCtrl
     // Byte code:
     //   0: aload_0
     //   1: getfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
-    //   4: ifnull +31 -> 35
-    //   7: aload_0
-    //   8: getfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
-    //   11: aconst_null
-    //   12: invokevirtual 323	com/tencent/TMG/audio/TraeAudioSession:setCallback	(Lcom/tencent/TMG/audio/TraeAudioSession$ITraeAudioCallback;)V
-    //   15: aload_0
-    //   16: getfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
-    //   19: invokevirtual 309	com/tencent/TMG/audio/TraeAudioSession:stopService	()I
-    //   22: pop
-    //   23: aload_0
-    //   24: getfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
-    //   27: invokevirtual 326	com/tencent/TMG/audio/TraeAudioSession:release	()V
-    //   30: aload_0
-    //   31: aconst_null
-    //   32: putfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
-    //   35: invokestatic 328	com/tencent/TMG/audio/TraeAudioManager:uninit	()V
-    //   38: aload_0
-    //   39: getfield 255	com/tencent/TMG/sdk/AVAudioCtrl:mPhoneStatusMonitor	Lcom/tencent/TMG/utils/PhoneStatusMonitor;
-    //   42: ifnull +15 -> 57
-    //   45: aload_0
-    //   46: getfield 255	com/tencent/TMG/sdk/AVAudioCtrl:mPhoneStatusMonitor	Lcom/tencent/TMG/utils/PhoneStatusMonitor;
-    //   49: invokevirtual 329	com/tencent/TMG/utils/PhoneStatusMonitor:uninit	()V
-    //   52: aload_0
-    //   53: aconst_null
-    //   54: putfield 255	com/tencent/TMG/sdk/AVAudioCtrl:mPhoneStatusMonitor	Lcom/tencent/TMG/utils/PhoneStatusMonitor;
-    //   57: aload_0
-    //   58: aconst_null
-    //   59: putfield 250	com/tencent/TMG/sdk/AVAudioCtrl:mPhoneStatusListener	Lcom/tencent/TMG/utils/PhoneStatusMonitor$PhoneStatusListener;
-    //   62: aload_0
-    //   63: iconst_0
-    //   64: putfield 59	com/tencent/TMG/sdk/AVAudioCtrl:mIsPauseByUser	Z
-    //   67: aload_0
-    //   68: invokevirtual 333	com/tencent/TMG/sdk/AVAudioCtrl:uninitNative	()Z
-    //   71: pop
-    //   72: return
-    //   73: astore_1
-    //   74: aload_0
-    //   75: aconst_null
-    //   76: putfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
-    //   79: goto -44 -> 35
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnull +39 -> 45
+    //   9: aload_1
+    //   10: aconst_null
+    //   11: invokevirtual 323	com/tencent/TMG/audio/TraeAudioSession:setCallback	(Lcom/tencent/TMG/audio/TraeAudioSession$ITraeAudioCallback;)V
+    //   14: aload_0
+    //   15: getfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
+    //   18: invokevirtual 309	com/tencent/TMG/audio/TraeAudioSession:stopService	()I
+    //   21: pop
+    //   22: aload_0
+    //   23: getfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
+    //   26: invokevirtual 326	com/tencent/TMG/audio/TraeAudioSession:release	()V
+    //   29: goto +11 -> 40
+    //   32: astore_1
+    //   33: aload_0
+    //   34: aconst_null
+    //   35: putfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
+    //   38: aload_1
+    //   39: athrow
+    //   40: aload_0
+    //   41: aconst_null
+    //   42: putfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
+    //   45: invokestatic 328	com/tencent/TMG/audio/TraeAudioManager:uninit	()V
+    //   48: aload_0
+    //   49: getfield 255	com/tencent/TMG/sdk/AVAudioCtrl:mPhoneStatusMonitor	Lcom/tencent/TMG/utils/PhoneStatusMonitor;
+    //   52: astore_1
+    //   53: aload_1
+    //   54: ifnull +12 -> 66
+    //   57: aload_1
+    //   58: invokevirtual 329	com/tencent/TMG/utils/PhoneStatusMonitor:uninit	()V
+    //   61: aload_0
+    //   62: aconst_null
+    //   63: putfield 255	com/tencent/TMG/sdk/AVAudioCtrl:mPhoneStatusMonitor	Lcom/tencent/TMG/utils/PhoneStatusMonitor;
+    //   66: aload_0
+    //   67: aconst_null
+    //   68: putfield 250	com/tencent/TMG/sdk/AVAudioCtrl:mPhoneStatusListener	Lcom/tencent/TMG/utils/PhoneStatusMonitor$PhoneStatusListener;
+    //   71: aload_0
+    //   72: iconst_0
+    //   73: putfield 59	com/tencent/TMG/sdk/AVAudioCtrl:mIsPauseByUser	Z
+    //   76: aload_0
+    //   77: invokevirtual 333	com/tencent/TMG/sdk/AVAudioCtrl:uninitNative	()Z
+    //   80: pop
+    //   81: return
     //   82: astore_1
-    //   83: aload_0
-    //   84: aconst_null
-    //   85: putfield 69	com/tencent/TMG/sdk/AVAudioCtrl:mAudioSession	Lcom/tencent/TMG/audio/TraeAudioSession;
-    //   88: aload_1
-    //   89: athrow
+    //   83: goto -43 -> 40
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	90	0	this	AVAudioCtrl
-    //   73	1	1	localException	java.lang.Exception
-    //   82	7	1	localObject	Object
+    //   0	86	0	this	AVAudioCtrl
+    //   4	6	1	localTraeAudioSession	TraeAudioSession
+    //   32	7	1	localObject	Object
+    //   52	6	1	localPhoneStatusMonitor	PhoneStatusMonitor
+    //   82	1	1	localException	java.lang.Exception
     // Exception table:
     //   from	to	target	type
-    //   15	30	73	java/lang/Exception
-    //   15	30	82	finally
+    //   14	29	32	finally
+    //   14	29	82	java/lang/Exception
   }
   
   native boolean uninitNative();

@@ -14,44 +14,36 @@ class SubMsgPermissionSettingFragment$1$1
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    boolean bool = true;
-    long l = -1L;
+    long l;
     if (paramJSONObject != null)
     {
-      QMLog.e(SubMsgPermissionSettingFragment.access$100(), "onCheckedChanged, " + this.val$scopeName + "_setAuthorize:" + paramBoolean + ",ret" + paramJSONObject.toString());
+      String str = SubMsgPermissionSettingFragment.access$100();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCheckedChanged, ");
+      localStringBuilder.append(this.val$scopeName);
+      localStringBuilder.append("_setAuthorize:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(",ret");
+      localStringBuilder.append(paramJSONObject.toString());
+      QMLog.e(str, localStringBuilder.toString());
       l = paramJSONObject.optLong("retCode");
     }
-    String str;
+    else
+    {
+      l = -1L;
+    }
     if ((!paramBoolean) || (l == -101510007L))
     {
       this.this$1.this$0.getActivity().runOnUiThread(new SubMsgPermissionSettingFragment.1.1.1(this, l));
       SubMsgPermissionSettingFragment.access$002(this.this$1.this$0, true);
-      paramJSONObject = this.val$buttonView;
-      if (this.val$isChecked) {
-        break label169;
-      }
-      paramBoolean = true;
-      paramJSONObject.setChecked(paramBoolean);
-      paramJSONObject = this.this$1.this$0.authState;
-      str = this.val$scopeName;
-      if (this.val$isChecked) {
-        break label174;
-      }
-    }
-    label169:
-    label174:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramJSONObject.setAuthState(str, paramBoolean);
-      return;
-      paramBoolean = false;
-      break;
+      this.val$buttonView.setChecked(this.val$isChecked ^ true);
+      this.this$1.this$0.authState.setAuthState(this.val$scopeName, true ^ this.val$isChecked);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubMsgPermissionSettingFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

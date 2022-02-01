@@ -33,35 +33,45 @@ public class CreateUpdatableMsgRequest
     if (paramInt3 > 0) {
       paramString1.subScene.set(paramInt3);
     }
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    default: 
-      QLog.e("CreateUpdatableMsgRequest", 2, "Create StUpdatableMsgShareInfo with wrong scene:" + paramInt2);
+      if (paramInt2 != 1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("Create StUpdatableMsgShareInfo with wrong scene:");
+        paramString2.append(paramInt2);
+        QLog.e("CreateUpdatableMsgRequest", 2, paramString2.toString());
+      }
+      else
+      {
+        paramString1.chatUin.set(paramString3);
+        paramString1.groupId.set("");
+      }
     }
-    for (;;)
+    else
     {
-      this.req.shareInfo.set(paramString1);
-      return;
       paramString1.groupId.set(paramString3);
       paramString1.chatUin.set("");
-      continue;
-      paramString1.chatUin.set(paramString3);
-      paramString1.groupId.set("");
     }
+    this.req.shareInfo.set(paramString1);
   }
   
   public static INTERFACE.StCreateUpdatableMsgRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StCreateUpdatableMsgRsp localStCreateUpdatableMsgRsp = new INTERFACE.StCreateUpdatableMsgRsp();
+    Object localObject = new INTERFACE.StCreateUpdatableMsgRsp();
     try
     {
-      localStCreateUpdatableMsgRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStCreateUpdatableMsgRsp;
+      ((INTERFACE.StCreateUpdatableMsgRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("CreateUpdatableMsgRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("CreateUpdatableMsgRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -74,7 +84,7 @@ public class CreateUpdatableMsgRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.CreateUpdatableMsgRequest
  * JD-Core Version:    0.7.0.1
  */

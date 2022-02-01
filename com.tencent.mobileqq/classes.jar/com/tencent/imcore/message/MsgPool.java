@@ -16,8 +16,12 @@ public class MsgPool
   
   public MsgPool()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgPool", 2, "MsgPool() called " + this);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MsgPool() called ");
+      localStringBuilder.append(this);
+      QLog.d("MsgPool", 2, localStringBuilder.toString());
     }
     this.c = new ConcurrentHashMap();
     this.a = new ConcurrentHashMap();
@@ -36,14 +40,20 @@ public class MsgPool
   
   public Lock a(String paramString)
   {
-    if (!this.a.containsKey(paramString)) {}
-    synchronized (this.a)
-    {
-      if (!this.a.containsKey(paramString)) {
-        this.a.put(paramString, new MsgLock("MsgPool"));
+    if (!this.a.containsKey(paramString)) {
+      synchronized (this.a)
+      {
+        if (!this.a.containsKey(paramString))
+        {
+          ConcurrentHashMap localConcurrentHashMap2 = this.a;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("MsgPool");
+          localStringBuilder.append(paramString);
+          localConcurrentHashMap2.put(paramString, new MsgLock(localStringBuilder.toString()));
+        }
       }
-      return (Lock)this.a.get(paramString);
     }
+    return (Lock)this.a.get(paramString);
   }
   
   public Lock a(String paramString, int paramInt)
@@ -58,7 +68,7 @@ public class MsgPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.MsgPool
  * JD-Core Version:    0.7.0.1
  */

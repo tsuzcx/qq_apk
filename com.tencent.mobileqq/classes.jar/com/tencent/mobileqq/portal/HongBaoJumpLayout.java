@@ -28,10 +28,10 @@ public class HongBaoJumpLayout
   
   public void a()
   {
-    this.a = getResources().getDimensionPixelOffset(2131298299);
-    this.b = getResources().getDimensionPixelOffset(2131298298);
-    this.c = getResources().getDimensionPixelOffset(2131298296);
-    this.d = getResources().getDimensionPixelOffset(2131298297);
+    this.a = getResources().getDimensionPixelOffset(2131298294);
+    this.b = getResources().getDimensionPixelOffset(2131298293);
+    this.c = getResources().getDimensionPixelOffset(2131298291);
+    this.d = getResources().getDimensionPixelOffset(2131298292);
   }
   
   public void draw(Canvas paramCanvas)
@@ -41,7 +41,7 @@ public class HongBaoJumpLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.HongBaoJumpLayout
  * JD-Core Version:    0.7.0.1
  */

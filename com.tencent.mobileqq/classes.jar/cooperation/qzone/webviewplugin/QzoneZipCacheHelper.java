@@ -37,13 +37,15 @@ public class QzoneZipCacheHelper
   {
     for (;;)
     {
-      String str;
       try
       {
-        str = getFileCache().getPath(getFolderName(paramString2, paramString3));
+        String str = getFileCache().getPath(getFolderName(paramString2, paramString3));
         if (isDangerousLocalPath(str))
         {
-          QLog.w("QzoneZipCacheHelper", 1, "路径不合法：" + str);
+          paramAppInterface = new StringBuilder();
+          paramAppInterface.append("路径不合法：");
+          paramAppInterface.append(str);
+          QLog.w("QzoneZipCacheHelper", 1, paramAppInterface.toString());
           return false;
         }
         ??? = new File(str);
@@ -57,10 +59,10 @@ public class QzoneZipCacheHelper
               QLog.i("QzoneZipCacheHelper", 2, String.format("file exist,update lru,url:%s,path:%s , zipUrl = %s ", new Object[] { paramString2, str, paramString1 }));
             }
             if (paramQzoneZipCacheHelperCallBack == null) {
-              break label304;
+              break label311;
             }
             paramQzoneZipCacheHelperCallBack.onResultOfNativeRequest(true, str, paramString1);
-            break label304;
+            return true;
           }
         }
         synchronized (URL_LOCK)
@@ -69,77 +71,72 @@ public class QzoneZipCacheHelper
           {
             paramString3 = (CopyOnWriteArrayList)sDownloadindUrlMap.get(paramString1);
             if (paramString3 != null) {
-              break label306;
+              break label313;
             }
             paramString3 = new CopyOnWriteArrayList();
             i = 0;
             if (!paramString3.contains(paramQzoneZipCacheHelperCallBack))
             {
-              if (paramQzoneZipCacheHelperCallBack != null)
-              {
-                paramString3.add(paramQzoneZipCacheHelperCallBack);
-                sDownloadindUrlMap.put(paramString1, paramString3);
+              if (paramQzoneZipCacheHelperCallBack == null) {
+                paramQzoneZipCacheHelperCallBack = new Object();
               }
+              paramString3.add(paramQzoneZipCacheHelperCallBack);
+              sDownloadindUrlMap.put(paramString1, paramString3);
             }
-            else
-            {
-              if (i == 0) {
-                break label278;
-              }
+            if (i != 0) {
               return false;
             }
-            paramQzoneZipCacheHelperCallBack = new Object();
           }
+          ThreadManager.postDownLoadTask(new QzoneZipCacheHelper.2(paramString2, str, paramString1, paramInt, paramAppInterface), 2, null, false);
+          return false;
         }
+        return true;
       }
       catch (Throwable paramAppInterface)
       {
         QLog.e("QzoneZipCacheHelper", 1, paramAppInterface, new Object[0]);
         return false;
       }
-      label278:
-      ThreadManager.postDownLoadTask(new QzoneZipCacheHelper.2(paramString2, str, paramString1, paramInt, paramAppInterface), 2, null, false);
-      continue;
-      label304:
-      return true;
-      label306:
+      label311:
+      label313:
       int i = 1;
     }
   }
   
   public static boolean checkDownloadZip(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || ((!paramString.contains("?_offline=1")) && (!paramString.contains("&_offline=1")))) {}
-    while ((!paramString.contains("&_type=1")) && (!paramString.contains("?_type=1"))) {
-      return false;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if ((!paramString.contains("?_offline=1")) && (!paramString.contains("&_offline=1"))) {
+        return false;
+      }
+      return (paramString.contains("&_type=1")) || (paramString.contains("?_type=1"));
     }
-    return true;
+    return false;
   }
   
   private static void createAndClearFile(File paramFile)
   {
-    if (!paramFile.exists()) {
-      paramFile.mkdir();
-    }
-    for (;;)
+    if (!paramFile.exists())
     {
+      paramFile.mkdir();
       return;
-      if (!paramFile.isDirectory()) {
-        break;
-      }
+    }
+    if (paramFile.isDirectory())
+    {
       paramFile = paramFile.listFiles();
-      if (paramFile != null)
+      if (paramFile == null) {
+        return;
+      }
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
       {
-        int j = paramFile.length;
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject = paramFile[i];
-          if (!localObject.isDirectory()) {
-            localObject.delete();
-          }
-          i += 1;
+        Object localObject = paramFile[i];
+        if (!localObject.isDirectory()) {
+          localObject.delete();
         }
+        i += 1;
       }
     }
     paramFile.mkdir();
@@ -157,20 +154,24 @@ public class QzoneZipCacheHelper
     }
     catch (OutOfMemoryError paramString1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QzoneZipCacheHelper", 2, "decodeByteArray out of memory");
-      }
-      return null;
+      break label38;
     }
     catch (Exception paramString1)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("QzoneZipCacheHelper", 2, "decodeByteArray exception ");
-        }
+      label21:
+      label38:
+      label52:
+      break label21;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.i("QzoneZipCacheHelper", 2, "decodeByteArray exception ");
+      break label52;
+      if (QLog.isColorLevel()) {
+        QLog.i("QzoneZipCacheHelper", 2, "decodeByteArray out of memory");
       }
     }
+    return null;
   }
   
   public static String getBasePath(String paramString1, String paramString2)
@@ -200,7 +201,11 @@ public class QzoneZipCacheHelper
     try
     {
       paramAppInterface = getFileCache().getPath(getFolderName(paramString3, paramString4));
-      paramString1 = new File(paramAppInterface + File.separator + paramString2);
+      paramString1 = new StringBuilder();
+      paramString1.append(paramAppInterface);
+      paramString1.append(File.separator);
+      paramString1.append(paramString2);
+      paramString1 = new File(paramString1.toString());
       if ((paramString1.exists()) && (paramString1.length() > 0L))
       {
         updateLruFileInNewThread(paramString3, paramString4);
@@ -219,56 +224,57 @@ public class QzoneZipCacheHelper
   
   public static String[] getFileList(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
+    }
+    try
+    {
+      Object localObject = new File(paramString);
+      if (!((File)localObject).exists())
       {
-        localObject = new File(paramString);
-        if (!((File)localObject).exists())
+        if (QLog.isColorLevel())
         {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("QzoneZipCacheHelper", 2, "getFileList doesn't exists path = " + paramString);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("getFileList doesn't exists path = ");
+          ((StringBuilder)localObject).append(paramString);
+          QLog.i("QzoneZipCacheHelper", 2, ((StringBuilder)localObject).toString());
           return null;
         }
       }
-      catch (Exception paramString)
+      else
       {
-        QZLog.e("QzoneZipCacheHelper", " getFileList ", paramString);
-        return null;
+        localObject = ((File)localObject).list();
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getFileList path = ");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" nameList = ");
+          localStringBuilder.append(localObject);
+          QLog.i("QzoneZipCacheHelper", 2, localStringBuilder.toString());
+        }
+        if (localObject != null) {
+          Arrays.sort((Object[])localObject);
+        }
+        return localObject;
       }
     }
-    Object localObject = ((File)localObject).list();
-    if (QLog.isColorLevel()) {
-      QLog.i("QzoneZipCacheHelper", 2, "getFileList path = " + paramString + " nameList = " + localObject);
+    catch (Exception paramString)
+    {
+      QZLog.e("QzoneZipCacheHelper", " getFileList ", paramString);
+      return null;
     }
-    if (localObject != null) {
-      Arrays.sort((Object[])localObject);
-    }
-    return localObject;
+    return null;
   }
   
   private static String getFileName(String paramString)
   {
-    Object localObject2 = null;
     int i = paramString.lastIndexOf(File.separator);
     int j = paramString.indexOf('?');
-    Object localObject1 = localObject2;
-    if (i != -1)
-    {
-      localObject1 = localObject2;
-      if (j != -1)
-      {
-        localObject1 = localObject2;
-        if (j > i) {
-          localObject1 = paramString.substring(i + 1, j);
-        }
-      }
+    if ((i != -1) && (j != -1) && (j > i)) {
+      return paramString.substring(i + 1, j);
     }
-    return localObject1;
+    return null;
   }
   
   public static String[] getFolderFileNameList(String paramString1, String paramString2)
@@ -279,12 +285,20 @@ public class QzoneZipCacheHelper
   public static String[] getFolderFileNameList(String paramString1, String paramString2, String paramString3)
   {
     paramString1 = getFileCache().getPath(getFolderName(paramString1, paramString2));
-    return getFileList(paramString1 + File.separator + paramString3);
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append(File.separator);
+    paramString2.append(paramString3);
+    return getFileList(paramString2.toString());
   }
   
   private static String getFolderName(String paramString1, String paramString2)
   {
-    return paramString1 + "_" + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   private static String getUrlBase(String paramString)
@@ -294,11 +308,10 @@ public class QzoneZipCacheHelper
   
   public static boolean isDangerousLocalPath(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((!paramString.contains("../")) && (!paramString.contains("..\\"))) {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
     }
-    return true;
+    return (paramString.contains("../")) || (paramString.contains("..\\"));
   }
   
   public static void unzipFile(String paramString1, String paramString2)
@@ -314,7 +327,7 @@ public class QzoneZipCacheHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneZipCacheHelper
  * JD-Core Version:    0.7.0.1
  */

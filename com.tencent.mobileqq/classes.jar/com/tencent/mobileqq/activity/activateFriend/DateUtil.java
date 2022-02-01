@@ -14,7 +14,11 @@ public class DateUtil
       paramString = new SimpleDateFormat(paramString, Locale.SIMPLIFIED_CHINESE).format(new Date(paramLong));
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label25:
+      break label25;
+    }
     return "";
   }
   
@@ -32,7 +36,7 @@ public class DateUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.DateUtil
  * JD-Core Version:    0.7.0.1
  */

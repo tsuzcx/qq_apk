@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -94,46 +95,56 @@ public final class CoverItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.type != null) {
-      paramJceOutputStream.write(this.type, 1);
+    localObject = this.type;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.imageUrls != null) {
-      paramJceOutputStream.write(this.imageUrls, 2);
+    localObject = this.imageUrls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.thumbUrl != null) {
-      paramJceOutputStream.write(this.thumbUrl, 3);
+    localObject = this.thumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.isVip, 4);
     paramJceOutputStream.write(this.initIndex, 5);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 6);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.packages != null) {
-      paramJceOutputStream.write(this.packages, 7);
+    localObject = this.packages;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 7);
     }
-    if (this.size != null) {
-      paramJceOutputStream.write(this.size, 8);
+    localObject = this.size;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.isFree, 9);
     paramJceOutputStream.write(this.isNew, 10);
-    if (this.description != null) {
-      paramJceOutputStream.write(this.description, 11);
+    localObject = this.description;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
     paramJceOutputStream.write(this.manyBits, 12);
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 13);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
-    if (this.imageUrls340 != null) {
-      paramJceOutputStream.write(this.imageUrls340, 14);
+    localObject = this.imageUrls340;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 14);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.CoverItem
  * JD-Core Version:    0.7.0.1
  */

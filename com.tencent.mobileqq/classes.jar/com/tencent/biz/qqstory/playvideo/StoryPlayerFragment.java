@@ -5,36 +5,28 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewTreeObserver;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationParam;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.inject.fragment.ReportV4Fragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.mobileqq.app.BaseFragment;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import com.tencent.widget.immersive.SystemBarCompact;
 
 public class StoryPlayerFragment
-  extends ReportV4Fragment
+  extends BaseFragment
   implements StoryPlayerImpl.Ui
 {
   private int jdField_a_of_type_Int;
   protected StoryPlayerImpl a;
   protected AnimationParam a;
   private boolean jdField_a_of_type_Boolean;
-  
-  @NonNull
-  public Context a()
-  {
-    return getActivity();
-  }
   
   @NonNull
   public View a()
@@ -44,7 +36,13 @@ public class StoryPlayerFragment
   
   public void finish()
   {
-    getActivity().getSupportFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
+    getBaseActivity().getSupportFragmentManager().beginTransaction().remove(this).commitAllowingStateLoss();
+  }
+  
+  @NonNull
+  public Context getContext()
+  {
+    return getBaseActivity();
   }
   
   public void onActivityCreated(Bundle paramBundle)
@@ -74,11 +72,11 @@ public class StoryPlayerFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = paramLayoutInflater.inflate(2131561887, paramViewGroup, false);
-    paramViewGroup = getActivity();
+    paramLayoutInflater = paramLayoutInflater.inflate(2131561737, paramViewGroup, false);
+    paramViewGroup = getBaseActivity();
     this.jdField_a_of_type_Int = paramViewGroup.getWindow().getAttributes().flags;
     if ((this.jdField_a_of_type_Int & 0x400) != 1024) {
-      getActivity().getWindow().setFlags(1024, 1024);
+      getBaseActivity().getWindow().setFlags(1024, 1024);
     }
     if (paramViewGroup.mSystemBarComp != null)
     {
@@ -91,7 +89,7 @@ public class StoryPlayerFragment
       paramLayoutInflater.getViewTreeObserver().addOnPreDrawListener(new StoryPlayerFragment.1(this, paramLayoutInflater));
     }
     paramLayoutInflater.setOnTouchListener(new StoryPlayerFragment.2(this));
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -104,10 +102,10 @@ public class StoryPlayerFragment
   public void onDestroyView()
   {
     super.onDestroyView();
-    FragmentActivity localFragmentActivity = getActivity();
-    localFragmentActivity.getWindow().setFlags(this.jdField_a_of_type_Int, -1);
-    if (localFragmentActivity.mSystemBarComp != null) {
-      localFragmentActivity.mSystemBarComp.setgetStatusBarVisible(this.jdField_a_of_type_Boolean, 0);
+    BaseActivity localBaseActivity = getBaseActivity();
+    localBaseActivity.getWindow().setFlags(this.jdField_a_of_type_Int, -1);
+    if (localBaseActivity.mSystemBarComp != null) {
+      localBaseActivity.mSystemBarComp.setgetStatusBarVisible(this.jdField_a_of_type_Boolean, 0);
     }
   }
   
@@ -145,7 +143,7 @@ public class StoryPlayerFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerFragment
  * JD-Core Version:    0.7.0.1
  */

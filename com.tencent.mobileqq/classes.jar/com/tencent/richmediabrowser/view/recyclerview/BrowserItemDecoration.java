@@ -24,13 +24,14 @@ public class BrowserItemDecoration
   {
     paramRect.top = 0;
     paramRect.bottom = 0;
-    paramRect.left = this.mSpace;
-    paramRect.right = this.mSpace;
+    int i = this.mSpace;
+    paramRect.left = i;
+    paramRect.right = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.recyclerview.BrowserItemDecoration
  * JD-Core Version:    0.7.0.1
  */

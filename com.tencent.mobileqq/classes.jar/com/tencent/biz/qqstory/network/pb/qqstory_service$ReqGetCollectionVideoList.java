@@ -25,15 +25,16 @@ public final class qqstory_service$ReqGetCollectionVideoList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 64, 72 }, new String[] { "target_uid", "start_cookie", "count", "collection_id", "time_zone", "union_id", "feed_id", "identify", "video_dir" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0) }, ReqGetCollectionVideoList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 50, 58, 64, 72 }, new String[] { "target_uid", "start_cookie", "count", "collection_id", "time_zone", "union_id", "feed_id", "identify", "video_dir" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localInteger, localInteger, localInteger, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger }, ReqGetCollectionVideoList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetCollectionVideoList
  * JD-Core Version:    0.7.0.1
  */

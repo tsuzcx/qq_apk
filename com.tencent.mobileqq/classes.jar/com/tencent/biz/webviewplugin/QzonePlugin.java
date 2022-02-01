@@ -10,27 +10,25 @@ import com.tencent.mobileqq.webview.swift.IPostCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.IPreCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.mobileqq.webviewplugin.WebUiUtils.QQBrowserBaseActivityInterface;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.smtt.sdk.WebView;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.CopyOnWriteArrayList;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 public class QzonePlugin
   extends WebViewPlugin
   implements IPostCreatePluginChecker, IPreCreatePluginChecker
 {
-  public static final String a;
+  public static final String a = "QzonePlugin";
   private WebView jdField_a_of_type_ComTencentSmttSdkWebView;
   private boolean jdField_a_of_type_Boolean = false;
-  private String b = null;
+  private String jdField_b_of_type_JavaLangString = null;
+  private boolean jdField_b_of_type_Boolean = false;
   private String c = "";
   private String d;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = QzonePlugin.class.getSimpleName();
-  }
   
   public QzonePlugin()
   {
@@ -44,12 +42,53 @@ public class QzonePlugin
   
   private void a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (this.d == null)) {}
-    while ((this.d != null) && (this.c != null) && (this.c.equals(this.d))) {
-      return;
+    if (paramArrayOfByte != null)
+    {
+      String str1 = this.d;
+      if (str1 == null) {
+        return;
+      }
+      if (str1 != null)
+      {
+        String str2 = this.c;
+        if ((str2 != null) && (str2.equals(str1))) {
+          return;
+        }
+      }
+      new Handler().post(new QzonePlugin.1(this, paramArrayOfByte));
+      this.c = this.d;
     }
-    new Handler().post(new QzonePlugin.1(this, paramArrayOfByte));
-    this.c = this.d;
+  }
+  
+  public void a(String paramString)
+  {
+    for (;;)
+    {
+      try
+      {
+        if (new JSONObject(paramString).getInt("resultCode") != 0) {
+          break label77;
+        }
+        bool = true;
+        this.jdField_b_of_type_Boolean = bool;
+        if (QLog.isColorLevel())
+        {
+          paramString = this.TAG;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onActivityResult: mPayActionSucc=");
+          localStringBuilder.append(this.jdField_b_of_type_Boolean);
+          QLog.d(paramString, 2, localStringBuilder.toString());
+          return;
+        }
+      }
+      catch (JSONException paramString)
+      {
+        paramString.printStackTrace();
+      }
+      return;
+      label77:
+      boolean bool = false;
+    }
   }
   
   public boolean a(Intent paramIntent, CopyOnWriteArrayList<WebViewPlugin> paramCopyOnWriteArrayList)
@@ -94,26 +133,26 @@ public class QzonePlugin
     return 11L;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
-    if ((paramLong == 8589934601L) && (this.b != null) && (!"".equals(this.b)))
+    if (paramLong == 8589934601L)
     {
-      paramString = new Intent();
-      paramString.setAction(this.b);
-      paramString.putExtra("key_qzone_vip_open_back_need_check_vipinfo", this.jdField_a_of_type_Boolean);
-      if ("com.tencent.mobileqq.opencenter.vipInfo".equals(this.b))
+      paramString = this.jdField_b_of_type_JavaLangString;
+      if ((paramString != null) && (!"".equals(paramString)))
       {
-        paramMap = this.mRuntime.a(this.mRuntime.a());
-        if ((paramMap != null) && ((paramMap instanceof WebUiUtils.QQBrowserBaseActivityInterface))) {
-          paramString.putExtra("key_pay_action_result", ((WebUiUtils.QQBrowserBaseActivityInterface)paramMap).getPayActionSucc());
+        paramString = new Intent();
+        paramString.setAction(this.jdField_b_of_type_JavaLangString);
+        paramString.putExtra("key_qzone_vip_open_back_need_check_vipinfo", this.jdField_a_of_type_Boolean);
+        if (("com.tencent.mobileqq.opencenter.vipInfo".equals(this.jdField_b_of_type_JavaLangString)) && (this.mRuntime.a(this.mRuntime.a()) != null)) {
+          paramString.putExtra("key_pay_action_result", this.jdField_b_of_type_Boolean);
         }
+        this.mRuntime.a().sendBroadcast(paramString);
       }
-      this.mRuntime.a().sendBroadcast(paramString);
     }
     return false;
   }
   
-  public boolean handleSchemaRequest(String paramString1, String paramString2)
+  protected boolean handleSchemaRequest(String paramString1, String paramString2)
   {
     if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equalsIgnoreCase("pay://requestQzoneOpenVip")))
     {
@@ -144,7 +183,7 @@ public class QzonePlugin
     return bool1;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
   }
@@ -154,18 +193,18 @@ public class QzonePlugin
     this.jdField_a_of_type_ComTencentSmttSdkWebView = null;
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     this.jdField_a_of_type_ComTencentSmttSdkWebView = this.mRuntime.a();
     if (this.mRuntime.a().getIntent() != null) {
-      this.b = this.mRuntime.a().getIntent().getStringExtra("broadcastAction");
+      this.jdField_b_of_type_JavaLangString = this.mRuntime.a().getIntent().getStringExtra("broadcastAction");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.QzonePlugin
  * JD-Core Version:    0.7.0.1
  */

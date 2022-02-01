@@ -5,7 +5,7 @@ import android.view.View;
 import com.tencent.biz.webviewplugin.NewReportPlugin;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DiscussionInfo;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.widget.ActionSheet;
 import com.tencent.widget.ActionSheet.OnButtonClickListener;
 
@@ -16,31 +16,37 @@ class DiscussionInfoCardActivity$6
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
+      if (paramInt != 1)
       {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
+        if (paramInt == 2) {
+          DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
+        }
       }
-      return;
+      else
+      {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.uin;
+        Bundle localBundle = NewReportPlugin.a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
+        DiscussionInfoCardActivity localDiscussionInfoCardActivity = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity;
+        NewReportPlugin.a(localDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(localDiscussionInfoCardActivity), "", "", paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 22001, null, localBundle);
+        TroopReportor.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
+      }
+    }
+    else {
       this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.b();
-      continue;
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a.uin;
-      Bundle localBundle = NewReportPlugin.a(DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), 3000);
-      NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity, DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), "", "", paramView, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app.getCurrentAccountUin(), 22001, null, localBundle);
-      TroopReportor.a("Grp_Dis_set", "Dis_info", "clk_report", 0, 0, new String[] { DiscussionInfoCardActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity), TroopReportor.a(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.app, this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.a) });
-      continue;
-      DiscussionInfoCardActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity);
+    }
+    paramView = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if ((paramView != null) && (paramView.isShowing()) && (!this.jdField_a_of_type_ComTencentMobileqqActivityDiscussionInfoCardActivity.isFinishing()))
+    {
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DiscussionInfoCardActivity.6
  * JD-Core Version:    0.7.0.1
  */

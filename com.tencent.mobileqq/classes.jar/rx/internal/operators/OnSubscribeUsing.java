@@ -30,14 +30,18 @@ public final class OnSubscribeUsing<T, Resource>
   
   private Throwable disposeEagerlyIfRequested(Action0 paramAction0)
   {
-    if (this.disposeEagerly) {}
-    try
-    {
-      paramAction0.call();
-      return null;
+    if (this.disposeEagerly) {
+      try
+      {
+        paramAction0.call();
+        return null;
+      }
+      catch (Throwable paramAction0)
+      {
+        return paramAction0;
+      }
     }
-    catch (Throwable paramAction0) {}
-    return paramAction0;
+    return null;
   }
   
   public void call(Subscriber<? super T> paramSubscriber)
@@ -62,25 +66,25 @@ public final class OnSubscribeUsing<T, Resource>
         localObject2 = disposeEagerlyIfRequested(localDisposeAction);
         Exceptions.throwIfFatal(localThrowable1);
         Exceptions.throwIfFatal((Throwable)localObject2);
-        if (localObject2 == null) {
-          break label124;
+        if (localObject2 != null)
+        {
+          paramSubscriber.onError(new CompositeException(Arrays.asList(new Throwable[] { localThrowable1, localObject2 })));
+          return;
         }
+        paramSubscriber.onError(localThrowable1);
+        return;
       }
-      paramSubscriber.onError(new CompositeException(Arrays.asList(new Throwable[] { localThrowable1, localObject2 })));
       return;
     }
     catch (Throwable localThrowable2)
     {
       Exceptions.throwOrReport(localThrowable2, paramSubscriber);
-      return;
     }
-    label124:
-    paramSubscriber.onError(localThrowable2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OnSubscribeUsing
  * JD-Core Version:    0.7.0.1
  */

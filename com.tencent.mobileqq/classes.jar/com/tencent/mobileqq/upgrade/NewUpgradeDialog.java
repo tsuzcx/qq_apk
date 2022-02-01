@@ -46,7 +46,7 @@ import protocol.KQQConfig.UpgradeInfo;
 public class NewUpgradeDialog
   extends QQCustomDialog
 {
-  private static long jdField_a_of_type_Long;
+  private static long jdField_a_of_type_Long = 0L;
   private static int jdField_b_of_type_Int = 3;
   private static boolean jdField_c_of_type_Boolean = false;
   private int jdField_a_of_type_Int = 1;
@@ -75,7 +75,7 @@ public class NewUpgradeDialog
     paramActivity = new ColorDrawable();
     paramActivity.setAlpha(0);
     getWindow().setBackgroundDrawable(paramActivity);
-    setContentView(2131559625);
+    setContentView(2131559502);
     this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener = new NewUpgradeDialog.YYBDownloadListener(this);
     this.jdField_b_of_type_Boolean = ControlPolicyUtil.b();
     DownloadManager.a();
@@ -99,31 +99,40 @@ public class NewUpgradeDialog
   
   public static String a(double paramDouble, int paramInt)
   {
-    int j = 0;
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramInt <= 0)
     {
       localStringBuilder.append((int)Math.round(paramDouble));
       return localStringBuilder.toString();
     }
-    if ((paramInt == 1) && (paramDouble >= (int)paramDouble + 0.95D)) {
-      localStringBuilder.append((int)paramDouble + 1);
-    }
-    double d1;
-    for (;;)
+    if (paramInt == 1)
     {
-      localStringBuilder.append(".");
-      d1 = 1.0D;
-      i = 0;
-      while (i < paramInt)
+      i = (int)paramDouble;
+      d1 = i;
+      Double.isNaN(d1);
+      if (paramDouble >= d1 + 0.95D)
       {
-        d1 *= 10.0D;
-        i += 1;
+        localStringBuilder.append(i + 1);
+        break label79;
       }
-      localStringBuilder.append((int)paramDouble);
     }
-    paramDouble = Math.abs(Math.round((paramDouble - (int)paramDouble) * d1) / d1);
-    int i = j;
+    localStringBuilder.append((int)paramDouble);
+    label79:
+    localStringBuilder.append(".");
+    int j = 0;
+    double d1 = 1.0D;
+    int i = 0;
+    while (i < paramInt)
+    {
+      d1 *= 10.0D;
+      i += 1;
+    }
+    double d2 = (int)paramDouble;
+    Double.isNaN(d2);
+    paramDouble = Math.round((paramDouble - d2) * d1);
+    Double.isNaN(paramDouble);
+    paramDouble = Math.abs(paramDouble / d1);
+    i = j;
     while (i < paramInt)
     {
       paramDouble *= 10.0D;
@@ -136,8 +145,10 @@ public class NewUpgradeDialog
   public static String a(float paramFloat, boolean paramBoolean, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder(a(paramFloat / 1024.0F / 1024.0F, paramInt));
-    if (paramBoolean) {
-      return "MB";
+    if (paramBoolean)
+    {
+      localStringBuilder.append("MB");
+      return localStringBuilder.toString();
     }
     return localStringBuilder.toString();
   }
@@ -157,25 +168,36 @@ public class NewUpgradeDialog
   {
     this.jdField_a_of_type_Int = paramInt;
     this.f.getPaint().setFakeBoldText(false);
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 2: 
-      this.f.setText(HardCodeUtil.a(2131707562));
-      return;
-    case 1: 
-    case 20: 
-      this.f.setText(HardCodeUtil.a(2131707574));
-      return;
-    case 3: 
-      this.f.setText(HardCodeUtil.a(2131707572));
-      return;
-    case 4: 
-      this.f.setText(HardCodeUtil.a(2131707576));
-      return;
+    if (paramInt != 1) {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 10)
+            {
+              if (paramInt == 20) {}
+            }
+            else {
+              this.f.setText(HardCodeUtil.a(2131707594));
+            }
+          }
+          else {
+            this.f.setText(HardCodeUtil.a(2131707601));
+          }
+        }
+        else {
+          this.f.setText(HardCodeUtil.a(2131707597));
+        }
+      }
+      else
+      {
+        this.f.setText(HardCodeUtil.a(2131707587));
+        return;
+      }
     }
-    this.f.setText(HardCodeUtil.a(2131707569));
+    this.f.setText(HardCodeUtil.a(2131707599));
   }
   
   public static boolean a(Activity paramActivity)
@@ -184,54 +206,50 @@ public class NewUpgradeDialog
       return false;
     }
     jdField_a_of_type_Long = System.currentTimeMillis();
-    Object localObject1 = UpgradeController.a().a();
-    if ((localObject1 == null) || (((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo == null))
+    Object localObject = UpgradeController.a().a();
+    if ((localObject != null) && (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) && (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo != null))
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131707566));
-      return false;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("sdkShowNotification", 0);
-    localBundle.putBoolean("showNetworkDialog", false);
-    localBundle.putString("appName", ((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString);
-    localBundle.putString("url", ((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL);
-    localBundle.putString("via", "ANDROIDQQ.YYB.QQUPDATE");
-    Object localObject2 = String.valueOf(((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iAppid);
-    localBundle.putString("appId", (String)localObject2);
-    localBundle.putLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", System.currentTimeMillis());
-    localBundle.putBoolean("autoInstall", true);
-    int j = ((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int;
-    int i = j;
-    if (j == 999) {
-      i = 718;
-    }
-    localBundle.putInt("versionCode", i);
-    localBundle.putString("packageName", BaseApplicationImpl.getApplication().getPackageName());
-    localBundle.putInt("downloadType", 1);
-    localBundle.putBoolean("autoDownload", true);
-    localObject2 = DownloadManager.a().a((String)localObject2);
-    localObject1 = "";
-    if (localObject2 != null) {
-      localObject1 = ((DownloadInfo)localObject2).l;
-    }
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject1 = new File((String)localObject1);
-      if ((localObject1 != null) && (((File)localObject1).exists()))
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("sdkShowNotification", 0);
+      localBundle.putBoolean("showNetworkDialog", false);
+      localBundle.putString("appName", ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString);
+      localBundle.putString("url", ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL);
+      localBundle.putString("via", "ANDROIDQQ.YYB.QQUPDATE");
+      String str = String.valueOf(((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iAppid);
+      localBundle.putString("appId", str);
+      localBundle.putLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", System.currentTimeMillis());
+      localBundle.putBoolean("autoInstall", true);
+      int j = ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int;
+      int i = j;
+      if (j == 999) {
+        i = 718;
+      }
+      localBundle.putInt("versionCode", i);
+      localBundle.putString("packageName", BaseApplicationImpl.getApplication().getPackageName());
+      localBundle.putInt("downloadType", 1);
+      localBundle.putBoolean("autoDownload", true);
+      localObject = DownloadManager.a().a(str);
+      if (localObject != null) {
+        localObject = ((DownloadInfo)localObject).l;
+      } else {
+        localObject = "";
+      }
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (new File((String)localObject).exists()))
       {
         localBundle.putInt(DownloadConstants.k, 5);
         DownloadApi.a(localBundle, "biz_src_jc_update", UpgradeController.a().a().jdField_a_of_type_ComTencentApkupdateLogicDataApkUpdateDetail);
         return true;
       }
-    }
-    if ((ControlPolicyUtil.h()) || (MyAppApi.a().g())) {
+      if ((!ControlPolicyUtil.h()) && (!MyAppApi.a().g()))
+      {
+        UpgradeDetailActivity.a(paramActivity, UpgradeController.a().a(), false, true, true);
+        return true;
+      }
       ThreadManager.getSubThreadHandler().post(new NewUpgradeDialog.7(paramActivity, localBundle));
-    }
-    for (;;)
-    {
       return true;
-      UpgradeDetailActivity.a(paramActivity, UpgradeController.a().a(), false, true, true);
     }
+    ToastUtil.a().a(HardCodeUtil.a(2131707591));
+    return false;
   }
   
   public static void b()
@@ -260,15 +278,14 @@ public class NewUpgradeDialog
     this.jdField_b_of_type_Boolean = ControlPolicyUtil.b();
     if (this.jdField_b_of_type_Boolean)
     {
-      if (!APNUtil.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())) {
-        ToastUtil.a().a(HardCodeUtil.a(2131707561));
+      if (!APNUtil.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()))
+      {
+        ToastUtil.a().a(HardCodeUtil.a(2131707586));
+        return;
       }
+      a(2);
+      DownloadManager.a().a(DownloadManager.a().a("1101070898"));
     }
-    else {
-      return;
-    }
-    a(2);
-    DownloadManager.a().a(DownloadManager.a().a("1101070898"));
   }
   
   private void h()
@@ -277,14 +294,16 @@ public class NewUpgradeDialog
     AppCircleReportManager.a().a(17, STUtils.a(10010, jdField_b_of_type_Int, 3, 200));
     if (jdField_b_of_type_Int == 2) {
       ReportController.b(null, "dc00898", "", "", "0X8008F81", "0X8008F81", 0, 0, "", "", "", "");
+    } else {
+      ReportController.b(null, "dc00898", "", "", "0X8008F84", "0X8008F84", 0, 0, "", "", "", "");
     }
-    while (MyAppApi.a().b())
+    MyAppApi.a();
+    if (MyAppApi.b())
     {
       a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get());
       dismiss();
       ((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get()).finish();
       return;
-      ReportController.b(null, "dc00898", "", "", "0X8008F84", "0X8008F84", 0, 0, "", "", "", "");
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_d_of_type_Boolean = true;
@@ -294,7 +313,7 @@ public class NewUpgradeDialog
     {
       if (!APNUtil.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()))
       {
-        ToastUtil.a().a(HardCodeUtil.a(2131707563));
+        ToastUtil.a().a(HardCodeUtil.a(2131707588));
         this.jdField_a_of_type_Boolean = false;
         this.jdField_d_of_type_Boolean = false;
         return;
@@ -309,54 +328,59 @@ public class NewUpgradeDialog
         MyAppApi.a().a((Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get(), "ANDROIDQQ.NEWYYB.QQUPDATE", true);
       }
     }
-    for (;;)
+    else
     {
-      DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
-      return;
       ThreadManager.post(new NewUpgradeDialog.6(this), 5, null, false);
     }
+    DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadListener);
   }
   
   private void i()
   {
-    int j = 0;
-    Object localObject = UpgradeController.a().a();
-    if ((localObject == null) || (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (((UpgradeDetailWrapper)localObject).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo == null))
+    Object localObject1 = UpgradeController.a().a();
+    if ((localObject1 != null) && (((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) && (((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo != null))
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131707571));
-      return;
-    }
-    int k = ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int;
-    int i = k;
-    if (k == 999) {
-      i = 718;
-    }
-    try
-    {
-      k = BaseActivity.sTopActivity.getPackageManager().getPackageInfo(BaseActivity.sTopActivity.getPackageName(), 0).versionCode;
-      j = k;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      for (;;)
+      int j = ((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int;
+      int i = j;
+      if (j == 999) {
+        i = 718;
+      }
+      j = 0;
+      try
       {
-        Bundle localBundle;
+        int k = BaseActivity.sTopActivity.getPackageManager().getPackageInfo(BaseActivity.sTopActivity.getPackageName(), 0).versionCode;
+        j = k;
+      }
+      catch (PackageManager.NameNotFoundException localNameNotFoundException)
+      {
         localNameNotFoundException.printStackTrace();
       }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("tmast://appdetails?r=0.9138136501079244&pname=com.tencent.mobileqq&oplist=1%3B2&via=ANDROIDQQ.NEWYYB.QQUPDATE&appid=");
+      ((StringBuilder)localObject2).append(((UpgradeDetailWrapper)localObject1).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iAppid);
+      ((StringBuilder)localObject2).append("&versioncode=");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append("&hostpname=");
+      ((StringBuilder)localObject2).append(BaseApplicationImpl.getApplication().getPackageName());
+      ((StringBuilder)localObject2).append("&hostversioncode=");
+      ((StringBuilder)localObject2).append(j);
+      ((StringBuilder)localObject2).append("\"\n");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      localObject2 = new Bundle();
+      ((Bundle)localObject2).putString("url", (String)localObject1);
+      DownloadApi.a((Bundle)localObject2);
+      DownloadApi.b((Bundle)localObject2);
+      MyAppApi.a().a();
+      k();
+      return;
     }
-    localObject = "tmast://appdetails?r=0.9138136501079244&pname=com.tencent.mobileqq&oplist=1%3B2&via=ANDROIDQQ.NEWYYB.QQUPDATE&appid=" + ((UpgradeDetailWrapper)localObject).jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iAppid + "&versioncode=" + i + "&hostpname=" + BaseApplicationImpl.getApplication().getPackageName() + "&hostversioncode=" + j + "\"\n";
-    localBundle = new Bundle();
-    localBundle.putString("url", (String)localObject);
-    DownloadApi.a(localBundle);
-    DownloadApi.b(localBundle);
-    MyAppApi.a().a();
-    k();
+    ToastUtil.a().a(HardCodeUtil.a(2131707596));
   }
   
   private void j()
   {
     this.f.getPaint().setFakeBoldText(true);
-    this.f.setText(HardCodeUtil.a(2131707565));
+    this.f.setText(HardCodeUtil.a(2131707590));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_Int = 1;
@@ -365,37 +389,42 @@ public class NewUpgradeDialog
   private void k()
   {
     UpgradeDetailWrapper localUpgradeDetailWrapper = UpgradeController.a().a();
-    if ((localUpgradeDetailWrapper == null) || (localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo == null) || (localUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo == null))
+    if ((localUpgradeDetailWrapper != null) && (localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo != null) && (localUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo != null))
     {
-      ToastUtil.a().a(HardCodeUtil.a(2131707564));
+      Bundle localBundle = new Bundle();
+      localBundle.putInt("sdkShowNotification", 0);
+      localBundle.putBoolean("showNetworkDialog", false);
+      localBundle.putString("appName", localUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString);
+      localBundle.putString("url", localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL);
+      localBundle.putString("via", "ANDROIDQQ.YYB.QQUPDATE");
+      localBundle.putString("appId", String.valueOf(localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iAppid));
+      localBundle.putLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", System.currentTimeMillis());
+      localBundle.putBoolean("autoInstall", true);
+      int j = localUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int;
+      int i = j;
+      if (j == 999) {
+        i = 718;
+      }
+      localBundle.putInt("versionCode", i);
+      localBundle.putString("packageName", "com.tencent.mobileqq");
+      localBundle.putInt("downloadType", 1);
+      localBundle.putBoolean("autoDownload", true);
+      ThreadManager.getSubThreadHandler().post(new NewUpgradeDialog.8(this, localBundle));
       return;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putInt("sdkShowNotification", 0);
-    localBundle.putBoolean("showNetworkDialog", false);
-    localBundle.putString("appName", localUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_JavaLangString);
-    localBundle.putString("url", localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.strNewSoftwareURL);
-    localBundle.putString("via", "ANDROIDQQ.YYB.QQUPDATE");
-    localBundle.putString("appId", String.valueOf(localUpgradeDetailWrapper.jdField_a_of_type_ProtocolKQQConfigUpgradeInfo.iAppid));
-    localBundle.putLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", System.currentTimeMillis());
-    localBundle.putBoolean("autoInstall", true);
-    int j = localUpgradeDetailWrapper.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeDetailWrapper$NewApkInfo.jdField_a_of_type_Int;
-    int i = j;
-    if (j == 999) {
-      i = 718;
-    }
-    localBundle.putInt("versionCode", i);
-    localBundle.putString("packageName", "com.tencent.mobileqq");
-    localBundle.putInt("downloadType", 1);
-    localBundle.putBoolean("autoDownload", true);
-    ThreadManager.getSubThreadHandler().post(new NewUpgradeDialog.8(this, localBundle));
+    ToastUtil.a().a(HardCodeUtil.a(2131707589));
   }
   
   public NewUpgradeDialog a(long paramLong)
   {
     String str = a((float)paramLong, true, 2);
-    if (!TextUtils.isEmpty(str)) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131707568) + str);
+    if (!TextUtils.isEmpty(str))
+    {
+      TextView localTextView = this.jdField_b_of_type_AndroidWidgetTextView;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(HardCodeUtil.a(2131707593));
+      localStringBuilder.append(str);
+      localTextView.setText(localStringBuilder.toString());
     }
     return this;
   }
@@ -419,40 +448,38 @@ public class NewUpgradeDialog
   
   public void a(int paramInt1, int paramInt2)
   {
-    int i = 100;
-    LogUtility.c("NewUpgradeDialog", "updateView--progress--" + paramInt1 + " state = " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateView--progress--");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" state = ");
+    localStringBuilder.append(paramInt2);
+    LogUtility.c("NewUpgradeDialog", localStringBuilder.toString());
     this.jdField_a_of_type_Int = paramInt2;
     a(paramInt2);
     if (paramInt2 == 4) {
       paramInt1 = 100;
     }
-    for (;;)
+    if (paramInt1 < 0)
     {
-      if (paramInt1 < 0)
+      this.jdField_a_of_type_Boolean = this.jdField_d_of_type_Boolean;
+      paramInt2 = 0;
+    }
+    else
+    {
+      paramInt2 = paramInt1;
+      if (paramInt1 >= 100)
       {
-        this.jdField_a_of_type_Boolean = this.jdField_d_of_type_Boolean;
-        paramInt1 = 0;
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt1);
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-          return;
-          if (paramInt1 >= 100)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            paramInt1 = i;
-          }
-        }
-        else
-        {
-          this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
-          return;
-        }
+        this.jdField_a_of_type_Boolean = false;
+        paramInt2 = 100;
       }
     }
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(paramInt2);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
+      return;
+    }
+    this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(4);
   }
   
   public NewUpgradeDialog b(CharSequence paramCharSequence)
@@ -480,15 +507,14 @@ public class NewUpgradeDialog
     this.jdField_b_of_type_Boolean = ControlPolicyUtil.b();
     if (this.jdField_b_of_type_Boolean)
     {
-      if (!APNUtil.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get())) {
-        ToastUtil.a().a(HardCodeUtil.a(2131707573));
+      if (!APNUtil.b((Context)this.jdField_a_of_type_JavaLangRefWeakReference.get()))
+      {
+        ToastUtil.a().a(HardCodeUtil.a(2131707598));
+        return;
       }
+      a(3);
+      DownloadManager.a().a("1101070898");
     }
-    else {
-      return;
-    }
-    a(3);
-    DownloadManager.a().a("1101070898");
   }
   
   public void d()
@@ -518,24 +544,24 @@ public class NewUpgradeDialog
   public void setContentView(int paramInt)
   {
     super.setContentView(paramInt);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365811));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380820));
-    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365807));
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380816));
-    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365796));
-    this.f = ((TextView)findViewById(2131365802));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365648));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380083));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365644));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131380079));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131365633));
+    this.f = ((TextView)findViewById(2131365639));
     this.f.setVisibility(0);
     this.f.getPaint().setFakeBoldText(true);
     this.f.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373545));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)findViewById(2131373123));
     this.jdField_a_of_type_AndroidWidgetProgressBar.setProgress(0);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368908));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131368634));
     this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new NewUpgradeDialog.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog
  * JD-Core Version:    0.7.0.1
  */

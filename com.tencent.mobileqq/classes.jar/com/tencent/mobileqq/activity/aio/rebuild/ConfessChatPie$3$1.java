@@ -17,8 +17,8 @@ class ConfessChatPie$3$1
   
   public void onCompositionLoaded(LottieComposition paramLottieComposition)
   {
-    int i = AIOUtils.a(30.0F, this.a.this$0.a.getResources());
-    int j = AIOUtils.a(30.0F, this.a.this$0.a.getResources());
+    int i = AIOUtils.b(30.0F, this.a.this$0.a.getResources());
+    int j = AIOUtils.b(30.0F, this.a.this$0.a.getResources());
     if (paramLottieComposition == null)
     {
       QLog.e(this.a.this$0.b, 1, "onCompositionLoaded lottieComposition is null");
@@ -38,7 +38,7 @@ class ConfessChatPie$3$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,6 @@ import com.tencent.biz.pubaccount.weishi_new.report.WSCommentBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.subscribe.comment.MoreCommentPanel;
 import com.tencent.biz.subscribe.comment.OnCommentElementClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
@@ -25,7 +24,7 @@ import java.util.Map;
 public class WsCommentAdapter
   extends BaseAdapter
 {
-  public static int a;
+  public static int a = 1;
   private stSimpleMetaFeed jdField_a_of_type_UserGrowthStSimpleMetaFeed;
   private Context jdField_a_of_type_AndroidContentContext;
   private OnCommentElementClickListener jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener;
@@ -37,11 +36,6 @@ public class WsCommentAdapter
   HashSet<Integer> jdField_b_of_type_JavaUtilHashSet = new HashSet();
   private String c;
   
-  static
-  {
-    jdField_a_of_type_Int = 1;
-  }
-  
   public WsCommentAdapter(Context paramContext, OnCommentElementClickListener paramOnCommentElementClickListener)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
@@ -50,13 +44,12 @@ public class WsCommentAdapter
       WSLog.a("comment", "create mComments ...");
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener = paramOnCommentElementClickListener;
-      this.jdField_a_of_type_JavaUtilMap = new HashMap();
-      return;
       WSLog.a("comment", "复用 mComments ...");
     }
+    this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener = paramOnCommentElementClickListener;
+    this.jdField_a_of_type_JavaUtilMap = new HashMap();
   }
   
   public int a(stSimpleMetaComment paramstSimpleMetaComment)
@@ -91,20 +84,15 @@ public class WsCommentAdapter
   
   public void a(stSimpleMetaComment paramstSimpleMetaComment)
   {
-    Integer localInteger;
     if ((paramstSimpleMetaComment != null) && (!TextUtils.isEmpty(paramstSimpleMetaComment.id)))
     {
-      localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramstSimpleMetaComment.id);
-      if (localInteger == null) {
-        break label66;
+      int i = 10;
+      Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(paramstSimpleMetaComment.id);
+      if (localInteger != null) {
+        i = 10 + localInteger.intValue();
       }
-    }
-    label66:
-    for (int i = localInteger.intValue() + 10;; i = 10)
-    {
       this.jdField_a_of_type_JavaUtilMap.put(paramstSimpleMetaComment.id, Integer.valueOf(i));
       notifyDataSetChanged();
-      return;
     }
   }
   
@@ -122,23 +110,26 @@ public class WsCommentAdapter
   
   public void a(String paramString, stSimpleMetaReply paramstSimpleMetaReply)
   {
-    if (paramstSimpleMetaReply == null) {}
-    stSimpleMetaComment localstSimpleMetaComment;
-    do
-    {
+    if (paramstSimpleMetaReply == null) {
       return;
-      Iterator localIterator;
-      while (!localIterator.hasNext())
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("addCommentReply :");
+    ((StringBuilder)localObject).append(paramstSimpleMetaReply.wording);
+    ((StringBuilder)localObject).append(",mComments size:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+    WSLog.d("comment", ((StringBuilder)localObject).toString());
+    if (!TextUtils.isEmpty(paramString))
+    {
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        do
-        {
-          WSLog.d("comment", "addCommentReply :" + paramstSimpleMetaReply.wording + ",mComments size:" + this.jdField_a_of_type_JavaUtilList.size());
-        } while (TextUtils.isEmpty(paramString));
-        localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        stSimpleMetaComment localstSimpleMetaComment = (stSimpleMetaComment)((Iterator)localObject).next();
+        if (paramString.equals(localstSimpleMetaComment.id)) {
+          localstSimpleMetaComment.replyList.add(0, paramstSimpleMetaReply);
+        }
       }
-      localstSimpleMetaComment = (stSimpleMetaComment)localIterator.next();
-    } while (!paramString.equals(localstSimpleMetaComment.id));
-    localstSimpleMetaComment.replyList.add(0, paramstSimpleMetaReply);
+    }
   }
   
   public void a(String paramString1, String paramString2)
@@ -149,175 +140,127 @@ public class WsCommentAdapter
   
   public boolean a(String paramString)
   {
-    boolean bool2 = false;
     WSLog.d("comment", "removeComment ...");
-    boolean bool1 = bool2;
-    int i;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    }
-    for (;;)
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (!bool2)
     {
-      bool1 = bool2;
-      if (i >= 0)
+      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      while (i >= 0)
       {
-        if (!paramString.equals(((stSimpleMetaComment)this.jdField_a_of_type_JavaUtilList.get(i)).id)) {
-          break label95;
+        if (paramString.equals(((stSimpleMetaComment)this.jdField_a_of_type_JavaUtilList.get(i)).id))
+        {
+          if (this.jdField_a_of_type_JavaUtilList.remove(i) != null) {
+            bool1 = true;
+          }
+          this.jdField_a_of_type_JavaUtilMap.remove(paramString);
+          return bool1;
         }
-        if (this.jdField_a_of_type_JavaUtilList.remove(i) == null) {
-          break label90;
-        }
+        i -= 1;
       }
-      label90:
-      for (bool1 = true;; bool1 = false)
-      {
-        this.jdField_a_of_type_JavaUtilMap.remove(paramString);
-        return bool1;
-      }
-      label95:
-      i -= 1;
     }
+    return false;
   }
   
   public boolean a(String paramString, stSimpleMetaComment paramstSimpleMetaComment)
   {
-    boolean bool2 = false;
     WSLog.d("comment", "updateComment ...");
-    boolean bool1 = bool2;
-    int i;
-    if (!TextUtils.isEmpty(paramString)) {
-      i = this.jdField_a_of_type_JavaUtilList.size() - 1;
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      bool1 = bool2;
-      if (i >= 0)
+      int i = this.jdField_a_of_type_JavaUtilList.size() - 1;
+      while (i >= 0)
       {
-        if (!paramString.equals(((stSimpleMetaComment)this.jdField_a_of_type_JavaUtilList.get(i)).id)) {
-          break label90;
+        if (paramString.equals(((stSimpleMetaComment)this.jdField_a_of_type_JavaUtilList.get(i)).id))
+        {
+          if (this.jdField_a_of_type_JavaUtilList.set(i, paramstSimpleMetaComment) == null) {
+            break;
+          }
+          return true;
         }
-        if (this.jdField_a_of_type_JavaUtilList.set(i, paramstSimpleMetaComment) == null) {
-          break label84;
-        }
+        i -= 1;
       }
-      label84:
-      for (bool1 = true;; bool1 = false) {
-        return bool1;
-      }
-      label90:
-      i -= 1;
     }
+    return false;
   }
   
   public boolean a(String paramString1, String paramString2)
   {
-    boolean bool2 = false;
     WSLog.d("comment", "removeCommentReply ...");
-    boolean bool1 = bool2;
-    int i;
-    if (!TextUtils.isEmpty(paramString1))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramString2))
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        stSimpleMetaComment localstSimpleMetaComment;
-        do
+        stSimpleMetaComment localstSimpleMetaComment = (stSimpleMetaComment)localIterator.next();
+        if (paramString1.equals(localstSimpleMetaComment.id))
         {
-          bool1 = bool2;
-          if (!localIterator.hasNext()) {
-            break;
+          int i = localstSimpleMetaComment.replyList.size();
+          boolean bool = true;
+          i -= 1;
+          while (i >= 0)
+          {
+            if (paramString2.equals(((stSimpleMetaReply)localstSimpleMetaComment.replyList.get(i)).id))
+            {
+              if (localstSimpleMetaComment.replyList.remove(i) == null) {
+                bool = false;
+              }
+              return bool;
+            }
+            i -= 1;
           }
-          localstSimpleMetaComment = (stSimpleMetaComment)localIterator.next();
-        } while (!paramString1.equals(localstSimpleMetaComment.id));
-        i = localstSimpleMetaComment.replyList.size() - 1;
-        if (i < 0) {
-          break label149;
         }
-        if (!paramString2.equals(((stSimpleMetaReply)localstSimpleMetaComment.replyList.get(i)).id)) {
-          break label142;
-        }
-        if (localstSimpleMetaComment.replyList.remove(i) == null) {
-          break label136;
-        }
-        bool1 = true;
       }
     }
-    for (;;)
-    {
-      return bool1;
-      label136:
-      bool1 = false;
-      continue;
-      label142:
-      i -= 1;
-      break;
-      label149:
-      bool1 = false;
-    }
+    return false;
   }
   
   public boolean a(String paramString1, String paramString2, stSimpleMetaReply paramstSimpleMetaReply)
   {
-    boolean bool2 = false;
-    WSLog.d("comment", "updateCommentReply ............. mComments.size:" + this.jdField_a_of_type_JavaUtilList.size());
-    boolean bool1 = bool2;
-    int i;
-    if (!TextUtils.isEmpty(paramString1))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateCommentReply ............. mComments.size:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+    WSLog.d("comment", ((StringBuilder)localObject).toString());
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramstSimpleMetaReply.id)))
     {
-      bool1 = bool2;
-      if (!TextUtils.isEmpty(paramstSimpleMetaReply.id))
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        stSimpleMetaComment localstSimpleMetaComment;
-        do
+        stSimpleMetaComment localstSimpleMetaComment = (stSimpleMetaComment)((Iterator)localObject).next();
+        if (paramString1.equals(localstSimpleMetaComment.id))
         {
-          bool1 = bool2;
-          if (!localIterator.hasNext()) {
-            break;
+          int i = localstSimpleMetaComment.replyList.size();
+          boolean bool = true;
+          i -= 1;
+          while (i >= 0)
+          {
+            if (paramString2.equals(((stSimpleMetaReply)localstSimpleMetaComment.replyList.get(i)).id))
+            {
+              if (localstSimpleMetaComment.replyList.set(i, paramstSimpleMetaReply) == null) {
+                bool = false;
+              }
+              return bool;
+            }
+            i -= 1;
           }
-          localstSimpleMetaComment = (stSimpleMetaComment)localIterator.next();
-        } while (!paramString1.equals(localstSimpleMetaComment.id));
-        i = localstSimpleMetaComment.replyList.size() - 1;
-        if (i < 0) {
-          break label184;
         }
-        if (!paramString2.equals(((stSimpleMetaReply)localstSimpleMetaComment.replyList.get(i)).id)) {
-          break label175;
-        }
-        if (localstSimpleMetaComment.replyList.set(i, paramstSimpleMetaReply) == null) {
-          break label169;
-        }
-        bool1 = true;
       }
     }
-    for (;;)
-    {
-      return bool1;
-      label169:
-      bool1 = false;
-      continue;
-      label175:
-      i -= 1;
-      break;
-      label184:
-      bool1 = false;
-    }
+    return false;
   }
   
   public boolean a(Collection<stSimpleMetaComment> paramCollection)
   {
-    boolean bool = false;
     if (paramCollection != null) {
-      bool = this.jdField_a_of_type_JavaUtilList.addAll(paramCollection);
+      return this.jdField_a_of_type_JavaUtilList.addAll(paramCollection);
     }
-    return bool;
+    return false;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilHashSet != null) {
-      this.jdField_a_of_type_JavaUtilHashSet.clear();
+    HashSet localHashSet = this.jdField_a_of_type_JavaUtilHashSet;
+    if (localHashSet != null) {
+      localHashSet.clear();
     }
   }
   
@@ -339,52 +282,57 @@ public class WsCommentAdapter
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     stSimpleMetaComment localstSimpleMetaComment = (stSimpleMetaComment)getItem(paramInt);
-    Object localObject1;
     if (localstSimpleMetaComment.isTempData)
     {
       if (!this.jdField_a_of_type_JavaUtilHashSet.contains(Integer.valueOf(localstSimpleMetaComment.hashCode())))
       {
         this.jdField_a_of_type_JavaUtilHashSet.add(Integer.valueOf(localstSimpleMetaComment.hashCode()));
-        localObject2 = WSCommentBeaconReport.c(this.jdField_b_of_type_JavaLangString);
-        localObject1 = localObject2;
-        if (!((String)localObject2).equals("comment_tag")) {
-          localObject1 = (String)localObject2 + jdField_a_of_type_Int;
+        paramViewGroup = WSCommentBeaconReport.c(this.jdField_b_of_type_JavaLangString);
+        paramView = paramViewGroup;
+        if (!paramViewGroup.equals("comment_tag"))
+        {
+          paramView = new StringBuilder();
+          paramView.append(paramViewGroup);
+          paramView.append(jdField_a_of_type_Int);
+          paramView = paramView.toString();
         }
-        WSCommentBeaconReport.b(this.jdField_b_of_type_JavaLangString, a(), (String)localObject1, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+        WSCommentBeaconReport.a(this.jdField_b_of_type_JavaLangString, a(), paramView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
       }
-      for (;;)
+      else
       {
-        localObject1 = new MoreCommentPanel(this.jdField_a_of_type_AndroidContentContext);
-        ((TextView)((MoreCommentPanel)localObject1).findViewById(2131371863)).setTextColor(-7829368);
-        ((MoreCommentPanel)localObject1).setOnClickListener(new WsCommentAdapter.1(this, paramInt));
-        ((MoreCommentPanel)localObject1).setHintText(localstSimpleMetaComment.wording);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return localObject1;
-        WSLog.b("beacon-comment", "重复的position:" + paramInt + ",不上报");
+        paramView = new StringBuilder();
+        paramView.append("重复的position:");
+        paramView.append(paramInt);
+        paramView.append(",不上报");
+        WSLog.b("beacon-comment", paramView.toString());
       }
+      paramView = new MoreCommentPanel(this.jdField_a_of_type_AndroidContentContext);
+      ((TextView)paramView.findViewById(2131371485)).setTextColor(-7829368);
+      paramView.setOnClickListener(new WsCommentAdapter.1(this, paramInt));
+      paramView.setHintText(localstSimpleMetaComment.wording);
+      return paramView;
     }
     if (paramView != null)
     {
-      localObject1 = paramView;
+      paramViewGroup = paramView;
       if (!(paramView instanceof MoreCommentPanel)) {}
     }
     else
     {
-      localObject1 = new WsCommentView(this.jdField_a_of_type_AndroidContentContext);
-      ((WsCommentView)localObject1).setOnCommentElementClickListener(this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener);
-      ((View)localObject1).setTag(localObject1);
+      paramViewGroup = new WsCommentView(this.jdField_a_of_type_AndroidContentContext);
+      ((WsCommentView)paramViewGroup).setOnCommentElementClickListener(this.jdField_a_of_type_ComTencentBizSubscribeCommentOnCommentElementClickListener);
+      paramViewGroup.setTag(paramViewGroup);
     }
-    paramView = (WsCommentView)((View)localObject1).getTag();
+    paramView = (WsCommentView)paramViewGroup.getTag();
     paramView.setPosition(paramInt);
+    paramInt = 3;
     paramView.setDisplayNum(3);
-    Object localObject2 = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localstSimpleMetaComment.id);
-    if (localObject2 != null) {}
-    for (int i = ((Integer)localObject2).intValue();; i = 3)
-    {
-      paramView.setData(localstSimpleMetaComment, i, this.jdField_a_of_type_JavaLangString);
-      paramView = (View)localObject1;
-      break;
+    Integer localInteger = (Integer)this.jdField_a_of_type_JavaUtilMap.get(localstSimpleMetaComment.id);
+    if (localInteger != null) {
+      paramInt = localInteger.intValue();
     }
+    paramView.setData(localstSimpleMetaComment, paramInt, this.jdField_a_of_type_JavaLangString);
+    return paramViewGroup;
   }
   
   public void notifyDataSetChanged()
@@ -394,7 +342,7 @@ public class WsCommentAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.comment.WsCommentAdapter
  * JD-Core Version:    0.7.0.1
  */

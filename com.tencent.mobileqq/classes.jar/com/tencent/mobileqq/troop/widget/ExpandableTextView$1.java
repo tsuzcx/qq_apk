@@ -9,12 +9,13 @@ class ExpandableTextView$1
   
   public void run()
   {
-    ExpandableTextView.a(this.this$0, this.this$0.getHeight() - this.this$0.a.getHeight());
+    ExpandableTextView localExpandableTextView = this.this$0;
+    ExpandableTextView.a(localExpandableTextView, localExpandableTextView.getHeight() - this.this$0.a.getHeight());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.ExpandableTextView.1
  * JD-Core Version:    0.7.0.1
  */

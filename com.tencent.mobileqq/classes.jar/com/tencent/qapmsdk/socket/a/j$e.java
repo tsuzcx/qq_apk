@@ -23,7 +23,6 @@ class j$e
   
   public void a(@NonNull byte[] paramArrayOfByte, int paramInt1, int paramInt2, com.tencent.qapmsdk.socket.c.a parama)
   {
-    boolean bool;
     if ((this.d) || (TextUtils.isEmpty(this.a)) || ((parama.i != null) && (!parama.i.equals(this.b))))
     {
       this.d = false;
@@ -31,101 +30,105 @@ class j$e
       parama.a();
       this.a = j.a(parama);
       this.c = new j.i(true, parama);
-      if ((parama.g == null) || (!parama.g.startsWith("HTTP/1"))) {
-        break label623;
-      }
-      bool = true;
-    }
-    for (;;)
-    {
-      this.e = bool;
-      label136:
-      j.g localg;
-      j.a locala;
-      if ((parama.g != null) && (parama.g.startsWith("HTTP/2")))
-      {
+      boolean bool;
+      if ((parama.g != null) && (parama.g.startsWith("HTTP/1"))) {
         bool = true;
-        this.f = bool;
-        parama.w += paramInt2;
-        if ((TrafficMonitor.a().a()) && (paramInt2 > 0) && (this.e))
-        {
-          localg = this.c.a;
-          locala = this.c.b;
-          if (localg.h) {
-            break label635;
-          }
-          localg.a(paramArrayOfByte, paramInt1, paramInt2);
-          if (localg.h)
-          {
-            this.a = j.a(parama);
-            locala.a = parama.A;
-            parama = localg.j.toByteArray();
-            locala.a(parama, localg.i, parama.length - localg.i);
-          }
-          if ((localg.h) && (locala.h) && (this.e))
-          {
-            Logger.INSTANCE.d(new String[] { "QAPM_Socket_TrafficOutputStream", "http1 write finish >>>> ", this.a });
-            this.d = true;
-          }
-        }
-        if ((TrafficMonitor.a().a()) && (paramInt2 > 0) && (this.f))
-        {
-          parama = new com.tencent.qapmsdk.socket.b.a(new ByteArrayInputStream(paramArrayOfByte));
-          localg = this.c.a;
-          locala = this.c.b;
-        }
+      } else {
+        bool = false;
       }
-      try
+      this.e = bool;
+      if ((parama.g != null) && (parama.g.startsWith("HTTP/2"))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.f = bool;
+    }
+    parama.w += paramInt2;
+    Object localObject;
+    j.a locala;
+    if ((TrafficMonitor.a().a()) && (paramInt2 > 0) && (this.e))
+    {
+      localObject = this.c.a;
+      locala = this.c.b;
+      if (!((j.g)localObject).h)
       {
-        parama.a(new j.h(this.c));
-        if ((localg.h) && (locala.h) && (this.f))
+        ((j.g)localObject).a(paramArrayOfByte, paramInt1, paramInt2);
+        if (((j.g)localObject).h)
         {
-          Logger.INSTANCE.d(new String[] { "QAPM_Socket_TrafficOutputStream", "http2 write finish >>>> ", this.a });
-          this.d = true;
-        }
-        e.a(this.g.a(paramInt2), 500L);
-        if ((TrafficMonitor.a().b()) && (!this.e))
-        {
-          if ((this.c != null) && (this.c.a() > 0) && (!this.f))
-          {
-            paramArrayOfByte = this.c.c();
-            this.c.b();
-            parama = paramArrayOfByte;
-            if (!new c().a(paramArrayOfByte)) {
-              parama = ("binary " + paramArrayOfByte.length + "-bytes body omitted").getBytes();
-            }
-            Logger.INSTANCE.d(new String[] { "QAPM_Socket_TrafficOutputStream", "write >>> [", this.a + "]\n", new String(parama) });
-          }
-        }
-        else
-        {
-          return;
-          label623:
-          bool = false;
-          continue;
-          bool = false;
-          break label136;
-          label635:
-          locala.a(paramArrayOfByte, paramInt1, paramInt2);
+          this.a = j.a(parama);
+          locala.a = parama.A;
+          parama = ((j.g)localObject).j.toByteArray();
+          locala.a(parama, ((j.g)localObject).i, parama.length - ((j.g)localObject).i);
         }
       }
-      catch (Exception parama)
+      else
       {
-        for (;;)
-        {
-          Logger.INSTANCE.w(new String[] { "QAPM_Socket_TrafficOutputStream", "http2 write failed >>> ", this.a });
-          continue;
-          parama = new byte[paramInt2];
-          System.arraycopy(paramArrayOfByte, paramInt1, parama, 0, paramInt2);
-          paramArrayOfByte = parama;
-        }
+        locala.a(paramArrayOfByte, paramInt1, paramInt2);
       }
+      if ((((j.g)localObject).h) && (locala.h) && (this.e))
+      {
+        Logger.INSTANCE.d(new String[] { "QAPM_Socket_TrafficOutputStream", "http1 write finish >>>> ", this.a });
+        this.d = true;
+      }
+    }
+    if ((TrafficMonitor.a().a()) && (paramInt2 > 0) && (this.f))
+    {
+      parama = new com.tencent.qapmsdk.socket.b.a(new ByteArrayInputStream(paramArrayOfByte));
+      localObject = this.c.a;
+      locala = this.c.b;
+    }
+    try
+    {
+      parama.a(new j.h(this.c));
+      if ((!((j.g)localObject).h) || (!locala.h) || (!this.f)) {
+        break label502;
+      }
+      Logger.INSTANCE.d(new String[] { "QAPM_Socket_TrafficOutputStream", "http2 write finish >>>> ", this.a });
+      this.d = true;
+    }
+    catch (Exception parama)
+    {
+      label475:
+      break label475;
+    }
+    Logger.INSTANCE.w(new String[] { "QAPM_Socket_TrafficOutputStream", "http2 write failed >>> ", this.a });
+    label502:
+    e.a(this.g.a(paramInt2), 500L);
+    if ((TrafficMonitor.a().b()) && (!this.e))
+    {
+      parama = this.c;
+      if ((parama != null) && (parama.a() > 0) && (!this.f))
+      {
+        paramArrayOfByte = this.c.c();
+        this.c.b();
+      }
+      else
+      {
+        parama = new byte[paramInt2];
+        System.arraycopy(paramArrayOfByte, paramInt1, parama, 0, paramInt2);
+        paramArrayOfByte = parama;
+      }
+      parama = paramArrayOfByte;
+      if (!new c().a(paramArrayOfByte))
+      {
+        parama = new StringBuilder();
+        parama.append("binary ");
+        parama.append(paramArrayOfByte.length);
+        parama.append("-bytes body omitted");
+        parama = parama.toString().getBytes();
+      }
+      paramArrayOfByte = Logger.INSTANCE;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.a);
+      ((StringBuilder)localObject).append("]\n");
+      paramArrayOfByte.d(new String[] { "QAPM_Socket_TrafficOutputStream", "write >>> [", ((StringBuilder)localObject).toString(), new String(parama) });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.a.j.e
  * JD-Core Version:    0.7.0.1
  */

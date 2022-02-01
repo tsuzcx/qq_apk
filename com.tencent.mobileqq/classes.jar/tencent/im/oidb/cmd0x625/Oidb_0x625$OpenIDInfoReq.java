@@ -17,13 +17,14 @@ public final class Oidb_0x625$OpenIDInfoReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_appid", "bytes_openid", "uint32_acounttype" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, OpenIDInfoReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_appid", "bytes_openid", "uint32_acounttype" }, new Object[] { localInteger, localByteStringMicro, localInteger }, OpenIDInfoReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x625.Oidb_0x625.OpenIDInfoReq
  * JD-Core Version:    0.7.0.1
  */

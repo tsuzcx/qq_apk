@@ -20,17 +20,20 @@ public class TroopFileControlReq
   
   public String a()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)))
+    if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)))
     {
-      QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
-      return "";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("");
+      return a(localStringBuilder.toString(), this.b, this.jdField_a_of_type_JavaLangString);
     }
-    return a(this.jdField_a_of_type_Int + "", this.b, this.jdField_a_of_type_JavaLangString);
+    QLog.e("TroopFileControlReq<QFile>", 1, "key params is null");
+    return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.TroopFileControlReq
  * JD-Core Version:    0.7.0.1
  */

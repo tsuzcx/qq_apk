@@ -11,7 +11,7 @@ class MultiIncomingCallsActivity$1
 {
   MultiIncomingCallsActivity$1(MultiIncomingCallsActivity paramMultiIncomingCallsActivity) {}
   
-  public void a(long paramLong1, long paramLong2, ArrayList<Memberinfo> paramArrayList)
+  protected void a(long paramLong1, long paramLong2, ArrayList<Memberinfo> paramArrayList)
   {
     if (MultiIncomingCallsActivity.a(this.a) != null)
     {
@@ -24,7 +24,7 @@ class MultiIncomingCallsActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiIncomingCallsActivity.1
  * JD-Core Version:    0.7.0.1
  */

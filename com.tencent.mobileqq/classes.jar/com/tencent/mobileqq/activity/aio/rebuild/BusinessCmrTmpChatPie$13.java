@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import com.tencent.biz.eqq.CrmUtils;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.data.EqqDetail;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
@@ -19,55 +19,59 @@ class BusinessCmrTmpChatPie$13
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("success:");
+      ((StringBuilder)localObject).append(String.valueOf(paramBoolean));
+      QLog.d("BusinessChatPie", 2, ((StringBuilder)localObject).toString());
     }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
     if (paramBoolean)
     {
       paramBundle = paramBundle.getByteArray("data");
       if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
+        localObject = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
       }
     }
-    for (;;)
+    try
     {
-      try
+      ((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).mergeFrom(paramBundle);
+      paramInt = ((mobileqq_mp.RetInfo)((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject).ret_info.get()).ret_code.get();
+      if (paramInt == 0)
       {
-        localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-        paramInt = ((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get();
-        if (paramInt == 0)
-        {
-          paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-          CrmUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
-          this.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(paramBundle, 0L);
-          BusinessCmrTmpChatPie.a(this.a, paramBundle);
-          this.a.b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getIntent());
-          return;
-        }
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail ret code error: " + paramInt);
+        paramBundle = new EqqDetail((mobileqq_mp.GetEqqAccountDetailInfoResponse)localObject);
+        CrmUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBundle);
+        this.a.jdField_a_of_type_ComTencentMobileqqDataPublicAccountInfo = PublicAccountInfo.createPublicAccount(paramBundle, 0L);
+        BusinessCmrTmpChatPie.a(this.a, paramBundle);
+        paramBundle = this.a;
+        paramBundle.b(paramBundle.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getIntent());
         return;
       }
-      catch (InvalidProtocolBufferMicroException paramBundle) {}
       if (QLog.isColorLevel())
       {
-        QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail data is null");
+        paramBundle = new StringBuilder();
+        paramBundle.append("showEqqLbsEnableDialog() get eqq detail ret code error: ");
+        paramBundle.append(paramInt);
+        QLog.d("BusinessChatPie", 2, paramBundle.toString());
         return;
         if (QLog.isColorLevel())
         {
-          QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail isSuccess is null");
+          QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail data is null");
           return;
+          if (QLog.isColorLevel()) {
+            QLog.d("BusinessChatPie", 2, "showEqqLbsEnableDialog() get eqq detail isSuccess is null");
+          }
         }
       }
+      return;
     }
+    catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.13
  * JD-Core Version:    0.7.0.1
  */

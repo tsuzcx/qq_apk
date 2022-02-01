@@ -62,7 +62,7 @@ public class TAVComposition
       this.videoChannels = new ArrayList();
     }
     this.videoChannels.add(new ArrayList(paramList));
-    if (this.renderSize == null) {}
+    paramList = this.renderSize;
   }
   
   public void attachVideoEffectChain(IVideoEffectContext paramIVideoEffectContext)
@@ -89,54 +89,40 @@ public class TAVComposition
   
   public CMTime getDuration()
   {
-    if (this.videoChannels == null) {
-      localObject3 = CMTime.CMTimeZero;
+    Object localObject1 = this.videoChannels;
+    if (localObject1 == null) {
+      return CMTime.CMTimeZero;
     }
-    int j;
-    Object localObject1;
-    Object localObject2;
-    int i;
-    do
+    int j = ((List)localObject1).size();
+    localObject1 = CMTime.CMTimeZero;
+    Object localObject2 = CMTime.CMTimeZero;
+    int i = 0;
+    while (i < j)
     {
-      return localObject3;
-      j = this.videoChannels.size();
-      localObject1 = CMTime.CMTimeZero;
-      localObject2 = CMTime.CMTimeZero;
-      i = 0;
-      localObject3 = localObject1;
-    } while (i >= j);
-    List localList = (List)this.videoChannels.get(i);
-    Object localObject4 = localObject2;
-    Object localObject3 = localObject1;
-    if (localList != null)
-    {
-      localObject3 = localList.iterator();
-      label80:
-      if (((Iterator)localObject3).hasNext())
+      List localList = (List)this.videoChannels.get(i);
+      Object localObject3 = localObject1;
+      Object localObject4 = localObject2;
+      if (localList != null)
       {
-        localObject4 = (TAVTransitionableVideo)((Iterator)localObject3).next();
-        if (localObject4 == null) {
-          break label162;
+        localObject3 = localList.iterator();
+        while (((Iterator)localObject3).hasNext())
+        {
+          localObject4 = (TAVTransitionableVideo)((Iterator)localObject3).next();
+          if (localObject4 != null) {
+            localObject2 = ((CMTime)localObject2).add(((TAVTransitionableVideo)localObject4).getDuration());
+          }
         }
-        localObject2 = ((CMTime)localObject2).add(((TAVTransitionableVideo)localObject4).getDuration());
-      }
-    }
-    label162:
-    for (;;)
-    {
-      break label80;
-      if (((CMTime)localObject2).bigThan((CMTime)localObject1)) {}
-      for (;;)
-      {
+        localObject3 = localObject1;
+        if (((CMTime)localObject2).bigThan((CMTime)localObject1)) {
+          localObject3 = localObject2;
+        }
         localObject4 = CMTime.CMTimeZero;
-        localObject3 = localObject2;
-        i += 1;
-        localObject2 = localObject4;
-        localObject1 = localObject3;
-        break;
-        localObject2 = localObject1;
       }
+      i += 1;
+      localObject1 = localObject3;
+      localObject2 = localObject4;
     }
+    return localObject1;
   }
   
   public CMTime getFrameDuration()
@@ -236,12 +222,30 @@ public class TAVComposition
   
   public String toString()
   {
-    return "TAVComposition{\nrenderSize=" + this.renderSize + ", renderLayoutMode=" + this.renderLayoutMode + ", backgroundColor=" + this.backgroundColor + ", frameDuration=" + this.frameDuration + "\nvideoChannels=" + this.videoChannels + "\naudioChannels=" + this.audioChannels + "\noverlays=" + this.overlays + "\naudios=" + this.audios + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TAVComposition{\nrenderSize=");
+    localStringBuilder.append(this.renderSize);
+    localStringBuilder.append(", renderLayoutMode=");
+    localStringBuilder.append(this.renderLayoutMode);
+    localStringBuilder.append(", backgroundColor=");
+    localStringBuilder.append(this.backgroundColor);
+    localStringBuilder.append(", frameDuration=");
+    localStringBuilder.append(this.frameDuration);
+    localStringBuilder.append("\nvideoChannels=");
+    localStringBuilder.append(this.videoChannels);
+    localStringBuilder.append("\naudioChannels=");
+    localStringBuilder.append(this.audioChannels);
+    localStringBuilder.append("\noverlays=");
+    localStringBuilder.append(this.overlays);
+    localStringBuilder.append("\naudios=");
+    localStringBuilder.append(this.audios);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.composition.TAVComposition
  * JD-Core Version:    0.7.0.1
  */

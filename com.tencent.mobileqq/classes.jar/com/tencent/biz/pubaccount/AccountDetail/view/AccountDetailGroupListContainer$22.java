@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.troop.utils.HttpWebCgiAsyncTask.Callback;
@@ -16,7 +16,7 @@ class AccountDetailGroupListContainer$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer.22
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.22
  * JD-Core Version:    0.7.0.1
  */

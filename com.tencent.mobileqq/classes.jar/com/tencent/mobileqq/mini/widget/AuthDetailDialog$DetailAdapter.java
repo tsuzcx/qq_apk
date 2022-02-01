@@ -18,8 +18,9 @@ class AuthDetailDialog$DetailAdapter
   
   public int getCount()
   {
-    if (this.detailList != null) {
-      return this.detailList.size();
+    ArrayList localArrayList = this.detailList;
+    if (localArrayList != null) {
+      return localArrayList.size();
     }
     return 0;
   }
@@ -43,22 +44,21 @@ class AuthDetailDialog$DetailAdapter
     paramViewGroup = paramView;
     if (localEntry != null)
     {
-      if (paramView == null) {
-        break label63;
+      if (paramView != null)
+      {
+        paramViewGroup = (AuthDetailDialog.DetailAdapter.DetailViewHolder)paramView.getTag();
       }
-      paramViewGroup = (AuthDetailDialog.DetailAdapter.DetailViewHolder)paramView.getTag();
-    }
-    for (;;)
-    {
+      else
+      {
+        paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(2131559371, null);
+        paramViewGroup = new AuthDetailDialog.DetailAdapter.DetailViewHolder(this, paramView);
+        paramView.setTag(paramViewGroup);
+      }
       paramViewGroup.tvTitle.setText(localEntry.key.get());
       paramViewGroup.tvDesc.setText(localEntry.value.get());
       paramViewGroup = paramView;
-      return paramViewGroup;
-      label63:
-      paramView = LayoutInflater.from(AuthDetailDialog.access$000(this.this$0)).inflate(2131559497, null);
-      paramViewGroup = new AuthDetailDialog.DetailAdapter.DetailViewHolder(this, paramView);
-      paramView.setTag(paramViewGroup);
     }
+    return paramViewGroup;
   }
   
   public void setData(ArrayList<COMM.Entry> paramArrayList)
@@ -68,7 +68,7 @@ class AuthDetailDialog$DetailAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.AuthDetailDialog.DetailAdapter
  * JD-Core Version:    0.7.0.1
  */

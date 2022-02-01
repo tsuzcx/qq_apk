@@ -33,50 +33,44 @@ class QfileLocalFileMediaTabView$1
     }
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     Iterator localIterator = localArrayList.iterator();
-    FileInfo localFileInfo;
-    for (;;)
+    while (localIterator.hasNext())
     {
-      if (localIterator.hasNext())
+      FileInfo localFileInfo = (FileInfo)localIterator.next();
+      if (localFileInfo == null)
       {
-        localFileInfo = (FileInfo)localIterator.next();
-        if (localFileInfo == null)
+        localIterator.remove();
+      }
+      else
+      {
+        String str = localFileInfo.a();
+        if ((str != null) && (str.length() != 0))
         {
-          localIterator.remove();
-        }
-        else
-        {
-          localObject = localFileInfo.a();
-          if ((localObject != null) && (((String)localObject).length() != 0)) {
-            if (("camera".equalsIgnoreCase((String)localObject) == true) || ("Video".equalsIgnoreCase((String)localObject) == true)) {
-              localObject = "Camera";
+          if (("camera".equalsIgnoreCase(str) != true) && ("Video".equalsIgnoreCase(str) != true))
+          {
+            localObject = str;
+            if ("QQ".equalsIgnoreCase(str)) {
+              localObject = HardCodeUtil.a(2131698191);
             }
+          }
+          else
+          {
+            localObject = "Camera";
+          }
+          if (!localLinkedHashMap.containsKey(localObject)) {
+            localLinkedHashMap.put(localObject, new ArrayList());
+          }
+          if (!((List)localLinkedHashMap.get(localObject)).contains(localFileInfo)) {
+            ((List)localLinkedHashMap.get(localObject)).add(localFileInfo);
           }
         }
       }
     }
-    for (;;)
-    {
-      if (!localLinkedHashMap.containsKey(localObject)) {
-        localLinkedHashMap.put(localObject, new ArrayList());
-      }
-      if (((List)localLinkedHashMap.get(localObject)).contains(localFileInfo)) {
-        break;
-      }
-      ((List)localLinkedHashMap.get(localObject)).add(localFileInfo);
-      break;
-      if ("QQ".equalsIgnoreCase((String)localObject))
-      {
-        localObject = HardCodeUtil.a(2131709644);
-        continue;
-        QfileLocalFileMediaTabView.a(this.this$0, new QfileLocalFileMediaTabView.1.1(this, localArrayList, localHashMap2, localHashMap1, localLinkedHashMap));
-        return;
-      }
-    }
+    QfileLocalFileMediaTabView.a(this.this$0, new QfileLocalFileMediaTabView.1.1(this, localArrayList, localHashMap2, localHashMap1, localLinkedHashMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileMediaTabView.1
  * JD-Core Version:    0.7.0.1
  */

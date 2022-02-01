@@ -18,13 +18,14 @@ public final class oidb_0x435$VoteItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_vote_id", "bytes_option_description", "uint32_vote_count", "uint32_user_define" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, VoteItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32 }, new String[] { "uint32_vote_id", "bytes_option_description", "uint32_vote_count", "uint32_user_define" }, new Object[] { localInteger, localByteStringMicro, localInteger, localInteger }, VoteItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x435.oidb_0x435.VoteItem
  * JD-Core Version:    0.7.0.1
  */

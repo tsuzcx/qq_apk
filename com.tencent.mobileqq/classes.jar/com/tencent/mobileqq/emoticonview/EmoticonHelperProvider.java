@@ -1,18 +1,11 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.support.v4.util.SparseArrayCompat;
+import com.tencent.mobileqq.popanim.EmoticonPopOutHelper;
 
 public class EmoticonHelperProvider
+  implements IEmoticonHelperProvider
 {
-  public static final int ID_CAMERA_EMOTICON_HELPER = 3;
-  public static final int ID_CMSHOW_EMOTICON_HELPER = 9;
-  public static final int ID_EMOTICON_EXTEND_HELPER = 1;
-  public static final int ID_FAV_EMOTICON_HELPER = 2;
-  public static final int ID_HOTPIC_SEARCH_EMOTICON_HELPER = 7;
-  public static final int ID_MALL_EMOTICON_HELPER = 5;
-  public static final int ID_SETTING_EMOTICON_HELPER = 6;
-  public static final int ID_SORT_EMOTICON_HELPER = 8;
-  public static final int ID_SYSTEM_EMOJI_EMOTICON_HELPER = 4;
   private static final String TAG = "EmoticonHelperProvider";
   private static final int THRESHOLD = 5;
   private SparseArrayCompat<AbstractEmoticonPanelHelper> helpers = new SparseArrayCompat();
@@ -28,14 +21,19 @@ public class EmoticonHelperProvider
     register(6, new EmoticonPanelSettingHelper(paramEmoticonPanelController));
     register(7, new EmoticonPanelHotPicSearchHelper(paramEmoticonPanelController));
     register(8, new EmoticonPanelTabSortHelper(paramEmoticonPanelController));
-    register(9, new EmoticonPanelCmshowHelper(paramEmoticonPanelController));
+    register(10, new EmoticonReportDtHelper(paramEmoticonPanelController));
+    register(11, new EmoticonPopOutHelper(paramEmoticonPanelController));
   }
   
   private void check(int paramInt)
   {
-    if (this.helpers.get(paramInt) != null) {
-      throw new IllegalArgumentException("emoticon helper already exist with id: " + paramInt);
+    if (this.helpers.get(paramInt) == null) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("emoticon helper already exist with id: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   private void dispatchSate(AbstractEmoticonPanelHelper paramAbstractEmoticonPanelHelper, int paramInt1, int paramInt2, boolean paramBoolean)
@@ -44,23 +42,32 @@ public class EmoticonHelperProvider
     {
     default: 
       return;
-    case 1: 
-      paramAbstractEmoticonPanelHelper.initBefore();
+    case 14: 
+      paramAbstractEmoticonPanelHelper.onShowPageFinish();
       return;
-    case 2: 
-      paramAbstractEmoticonPanelHelper.initAfter();
+    case 13: 
+      paramAbstractEmoticonPanelHelper.onItemTabClick(paramInt2);
       return;
-    case 9: 
-      paramAbstractEmoticonPanelHelper.onAttachedToWindow();
+    case 12: 
+      paramAbstractEmoticonPanelHelper.onPullUp();
+      return;
+    case 11: 
+      paramAbstractEmoticonPanelHelper.onPullDown();
       return;
     case 10: 
       paramAbstractEmoticonPanelHelper.onDetachedFromWindow();
       return;
+    case 9: 
+      paramAbstractEmoticonPanelHelper.onAttachedToWindow();
+      return;
     case 8: 
       paramAbstractEmoticonPanelHelper.onDestory();
       return;
-    case 3: 
-      paramAbstractEmoticonPanelHelper.onPageSelected(paramInt2);
+    case 7: 
+      paramAbstractEmoticonPanelHelper.onPause();
+      return;
+    case 6: 
+      paramAbstractEmoticonPanelHelper.onResume();
       return;
     case 5: 
       paramAbstractEmoticonPanelHelper.onShow();
@@ -68,14 +75,42 @@ public class EmoticonHelperProvider
     case 4: 
       paramAbstractEmoticonPanelHelper.onHide(paramBoolean);
       return;
-    case 7: 
-      paramAbstractEmoticonPanelHelper.onPause();
+    case 3: 
+      paramAbstractEmoticonPanelHelper.onPageSelected(paramInt2);
+      return;
+    case 2: 
+      paramAbstractEmoticonPanelHelper.initAfter();
       return;
     }
-    paramAbstractEmoticonPanelHelper.onResume();
+    paramAbstractEmoticonPanelHelper.initBefore();
   }
   
-  private void register(int paramInt, AbstractEmoticonPanelHelper paramAbstractEmoticonPanelHelper)
+  public void dispatchLifeCycle(int paramInt)
+  {
+    dispatchLifeCycle(paramInt, -1, false);
+  }
+  
+  public void dispatchLifeCycle(int paramInt1, int paramInt2, boolean paramBoolean)
+  {
+    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.lifecycleObservers.get(paramInt1);
+    if (localSparseArrayCompat == null) {
+      return;
+    }
+    int j = localSparseArrayCompat.size();
+    int i = 0;
+    while (i < j)
+    {
+      dispatchSate((AbstractEmoticonPanelHelper)localSparseArrayCompat.valueAt(i), paramInt1, paramInt2, paramBoolean);
+      i += 1;
+    }
+  }
+  
+  public <T extends AbstractEmoticonPanelHelper> T getHelper(int paramInt)
+  {
+    return (AbstractEmoticonPanelHelper)this.helpers.get(paramInt);
+  }
+  
+  public void register(int paramInt, AbstractEmoticonPanelHelper paramAbstractEmoticonPanelHelper)
   {
     this.helpers.put(paramInt, paramAbstractEmoticonPanelHelper);
     int[] arrayOfInt = paramAbstractEmoticonPanelHelper.interestedIn();
@@ -95,37 +130,10 @@ public class EmoticonHelperProvider
       i += 1;
     }
   }
-  
-  public void dispatchLifeCycle(int paramInt)
-  {
-    dispatchLifeCycle(paramInt, -1, false);
-  }
-  
-  public void dispatchLifeCycle(int paramInt1, int paramInt2, boolean paramBoolean)
-  {
-    SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)this.lifecycleObservers.get(paramInt1);
-    if (localSparseArrayCompat == null) {}
-    for (;;)
-    {
-      return;
-      int j = localSparseArrayCompat.size();
-      int i = 0;
-      while (i < j)
-      {
-        dispatchSate((AbstractEmoticonPanelHelper)localSparseArrayCompat.valueAt(i), paramInt1, paramInt2, paramBoolean);
-        i += 1;
-      }
-    }
-  }
-  
-  public <T extends AbstractEmoticonPanelHelper> T getHelper(int paramInt)
-  {
-    return (AbstractEmoticonPanelHelper)this.helpers.get(paramInt);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonHelperProvider
  * JD-Core Version:    0.7.0.1
  */

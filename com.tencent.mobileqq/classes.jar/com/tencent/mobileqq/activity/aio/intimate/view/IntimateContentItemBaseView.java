@@ -108,8 +108,12 @@ public abstract class IntimateContentItemBaseView
   {
     if (this.jdField_b_of_type_Int == 1)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("IntimateContentItemBaseView", 2, "onResumed isOpened:" + this.jdField_b_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onResumed isOpened:");
+        localStringBuilder.append(this.jdField_b_of_type_Boolean);
+        QLog.i("IntimateContentItemBaseView", 2, localStringBuilder.toString());
       }
       if (!this.jdField_b_of_type_Boolean) {
         return;
@@ -134,39 +138,39 @@ public abstract class IntimateContentItemBaseView
   public void onClick(View paramView)
   {
     long l = SystemClock.elapsedRealtime();
-    if (l - this.jdField_a_of_type_Long < 500L) {}
-    for (;;)
+    if (l - this.jdField_a_of_type_Long >= 500L)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.jdField_a_of_type_Long = l;
       a(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        paramView.setAlpha(0.5F);
-        continue;
-        if (Build.VERSION.SDK_INT >= 11) {
-          paramView.setAlpha(1.0F);
-        }
+      if (((i == 1) || (i == 3)) && (Build.VERSION.SDK_INT >= 11)) {
+        paramView.setAlpha(1.0F);
       }
     }
+    else if (Build.VERSION.SDK_INT >= 11) {
+      paramView.setAlpha(0.5F);
+    }
+    return false;
   }
   
   public void setCurrentShowType(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("IntimateContentItemBaseView", 2, "setCurrentShowType showType: " + paramInt + "  old:" + this.jdField_b_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setCurrentShowType showType: ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("  old:");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      QLog.d("IntimateContentItemBaseView", 2, localStringBuilder.toString());
     }
     this.jdField_b_of_type_Int = paramInt;
   }
@@ -178,7 +182,7 @@ public abstract class IntimateContentItemBaseView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemBaseView
  * JD-Core Version:    0.7.0.1
  */

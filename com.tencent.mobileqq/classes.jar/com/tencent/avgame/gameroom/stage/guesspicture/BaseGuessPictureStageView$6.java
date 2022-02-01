@@ -17,8 +17,12 @@ class BaseGuessPictureStageView$6
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseGuessPictureStageView", 2, "urlDrawable load failed and throwable" + paramThrowable);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("urlDrawable load failed and throwable");
+      localStringBuilder.append(paramThrowable);
+      QLog.i("BaseGuessPictureStageView", 2, localStringBuilder.toString());
     }
     ReportController.b(null, "dc00898", "", "", "0X800B0FA", "0X800B0FA", 0, 0, "", "", "", "");
     if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null) && (paramURLDrawable.getURL().toString().equals(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_a_of_type_JavaLangString))) {
@@ -35,19 +39,20 @@ class BaseGuessPictureStageView$6
     }
     ReportController.b(null, "dc00898", "", "", "0X800B0F5", "0X800B0F5", 0, 0, "", "", "", "");
     paramURLDrawable = MosaicUtil.a(paramURLDrawable.getCurrDrawable());
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView.jdField_a_of_type_AndroidGraphicsBitmap = paramURLDrawable;
     BaseGuessPictureStageView localBaseGuessPictureStageView = this.jdField_a_of_type_ComTencentAvgameGameroomStageGuesspictureBaseGuessPictureStageView;
-    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataTopicMosaicGuess.c == 0) {}
-    for (int i = 10;; i = this.jdField_a_of_type_ComTencentAvgameGamelogicDataTopicMosaicGuess.c)
-    {
-      localBaseGuessPictureStageView.setMosaicBitmapFromOriginal(paramURLDrawable, i);
-      return;
+    localBaseGuessPictureStageView.jdField_a_of_type_AndroidGraphicsBitmap = paramURLDrawable;
+    int i;
+    if (this.jdField_a_of_type_ComTencentAvgameGamelogicDataTopicMosaicGuess.c == 0) {
+      i = 10;
+    } else {
+      i = this.jdField_a_of_type_ComTencentAvgameGamelogicDataTopicMosaicGuess.c;
     }
+    localBaseGuessPictureStageView.setMosaicBitmapFromOriginal(paramURLDrawable, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guesspicture.BaseGuessPictureStageView.6
  * JD-Core Version:    0.7.0.1
  */

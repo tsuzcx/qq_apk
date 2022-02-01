@@ -11,10 +11,11 @@ import com.tencent.mobileqq.music.QQPlayerService;
 import com.tencent.mobileqq.music.SongInfo;
 import com.tencent.mobileqq.qipc.QIPCModule;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin;
 import com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.qzone.music.QzoneMusicHelper;
+import com.tencent.qzonehub.api.music.IQzoneMusicHelper;
 import eipc.EIPCResult;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -35,166 +36,198 @@ public class ListenTogetherIPCModuleMainServer
   
   private EIPCResult a(String paramString, Bundle paramBundle, int paramInt)
   {
-    if ((!"action_status_changed".equals(paramString)) || (paramBundle == null)) {}
-    for (;;)
+    if ("action_status_changed".equals(paramString))
     {
-      return null;
+      if (paramBundle == null) {
+        return null;
+      }
       paramBundle = paramBundle.getString("data");
+      Object localObject;
       try
       {
         paramBundle = new JSONObject(paramBundle);
-        if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface))
-        {
-          localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-          if (QLog.isColorLevel()) {
-            QLog.d("ListenTogetherIPCModuleMainServer", 2, "statusChanged action:" + paramString + " data=" + paramBundle + " app:" + localQQAppInterface);
-          }
-          if ((localQQAppInterface == null) || (paramBundle == null)) {
-            continue;
-          }
-          ((ListenTogetherManager)localQQAppInterface.getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).a(paramBundle);
-          paramString = new EIPCResult();
-          paramString.code = 0;
-          return paramString;
-        }
       }
       catch (JSONException paramBundle)
       {
-        for (;;)
-        {
-          QLog.i("ListenTogetherIPCModuleMainServer", 1, "statusChanged error:" + paramBundle.getMessage());
-          paramBundle = null;
-          continue;
-          QQAppInterface localQQAppInterface = null;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("statusChanged error:");
+        ((StringBuilder)localObject).append(paramBundle.getMessage());
+        QLog.i("ListenTogetherIPCModuleMainServer", 1, ((StringBuilder)localObject).toString());
+        paramBundle = null;
+      }
+      if ((BaseApplicationImpl.getApplication().getRuntime() instanceof QQAppInterface)) {
+        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+      } else {
+        localObject = null;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("statusChanged action:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" data=");
+        localStringBuilder.append(paramBundle);
+        localStringBuilder.append(" app:");
+        localStringBuilder.append(localObject);
+        QLog.d("ListenTogetherIPCModuleMainServer", 2, localStringBuilder.toString());
+      }
+      if ((localObject != null) && (paramBundle != null))
+      {
+        ((ListenTogetherManager)((QQAppInterface)localObject).getManager(QQManagerFactory.LISTEN_TOGETHER_MANAGER)).a(paramBundle);
+        paramString = new EIPCResult();
+        paramString.code = 0;
+        return paramString;
       }
     }
+    return null;
   }
   
   public static void a(JSONObject paramJSONObject)
   {
     boolean bool = QIPCServerHelper.getInstance().isProcessRunning("com.tencent.mobileqq:tool");
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "callWebClientStatusChanged data:" + paramJSONObject + "  isToolRunning:" + bool);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("callWebClientStatusChanged data:");
+      ((StringBuilder)localObject).append(paramJSONObject);
+      ((StringBuilder)localObject).append("  isToolRunning:");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("ListenTogetherIPCModuleMainServer", 2, ((StringBuilder)localObject).toString());
     }
     if (bool)
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putString("data", paramJSONObject.toString());
-      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "ListenTogetherIPCModuleWebClient", "action_status_changed", localBundle, null);
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("data", paramJSONObject.toString());
+      QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:tool", "ListenTogetherIPCModuleWebClient", "action_status_changed", (Bundle)localObject, null);
     }
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    boolean bool2 = false;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCall, params=");
+      ((StringBuilder)localObject).append(paramBundle);
+      ((StringBuilder)localObject).append(", action=");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", callBackId=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ListenTogetherIPCModuleMainServer", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramBundle == null)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onCall, param is null, action=");
+      paramBundle.append(paramString);
+      paramBundle.append(", callBackId=");
+      paramBundle.append(paramInt);
+      QLog.d("ListenTogetherIPCModuleMainServer", 1, paramBundle.toString());
+      return null;
+    }
+    if ("action_status_changed".equals(paramString)) {
+      return a(paramString, paramBundle, paramInt);
+    }
+    boolean bool2 = "isOpener".equals(paramString);
     int i = 0;
     boolean bool1 = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 2, "onCall, params=" + paramBundle + ", action=" + paramString + ", callBackId=" + paramInt);
-    }
-    if (paramBundle == null) {
-      QLog.d("ListenTogetherIPCModuleMainServer", 1, "onCall, param is null, action=" + paramString + ", callBackId=" + paramInt);
-    }
-    for (;;)
+    if (bool2)
     {
-      return null;
-      if ("action_status_changed".equals(paramString)) {
-        return a(paramString, paramBundle, paramInt);
-      }
-      if ("isOpener".equals(paramString))
+      paramString = new Bundle();
+      paramString.putBoolean("result", AIOMusicSkin.a().a());
+      paramString = EIPCResult.createResult(0, paramString);
+      if (paramInt > 0)
       {
-        paramString = new Bundle();
-        paramString.putBoolean("result", AIOMusicSkin.a().a());
-        paramString = EIPCResult.createResult(0, paramString);
-        if (paramInt > 0)
-        {
-          callbackResult(paramInt, paramString);
-          return null;
+        callbackResult(paramInt, paramString);
+        return null;
+      }
+    }
+    else if ("isShowAtmosphere".equals(paramString))
+    {
+      try
+      {
+        paramString = new JSONObject(paramBundle.getString("data")).optString("uin");
+        paramBundle = new Bundle();
+        if (AIOMusicSkin.a().a()) {
+          break label661;
+        }
+        if (!AIOMusicSkin.a().a(paramString)) {
+          break label655;
         }
       }
-      else if ("isShowAtmosphere".equals(paramString))
+      catch (JSONException paramString)
       {
+        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_IS_SHOW_ATMOSPHERE: ", paramString);
+        return null;
+      }
+      paramBundle.putBoolean("result", bool1);
+      paramString = EIPCResult.createResult(0, paramBundle);
+      if (paramInt > 0)
+      {
+        callbackResult(paramInt, paramString);
+        return null;
+      }
+    }
+    else
+    {
+      if ("setPlayerId".equals(paramString)) {
         try
         {
-          paramString = new JSONObject(paramBundle.getString("data")).optString("uin");
-          paramBundle = new Bundle();
-          if ((AIOMusicSkin.a().a()) || (AIOMusicSkin.a().a(paramString))) {
-            break label612;
-          }
-          label220:
-          paramBundle.putBoolean("result", bool1);
-          paramString = EIPCResult.createResult(0, paramBundle);
-          if (paramInt > 0)
-          {
-            callbackResult(paramInt, paramString);
-            return null;
-          }
+          paramInt = new JSONObject(paramBundle.getString("data")).optInt("id");
+          FloatViewSkin.a().a(paramInt);
+          return null;
         }
         catch (JSONException paramString)
         {
-          QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_IS_SHOW_ATMOSPHERE: ", paramString);
+          QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_PLAYERID: ", paramString);
           return null;
         }
       }
-    }
-    if ("setPlayerId".equals(paramString)) {
-      try
-      {
-        paramInt = new JSONObject(paramBundle.getString("data")).optInt("id");
-        FloatViewSkin.a().a(paramInt);
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_PLAYERID: ", paramString);
-        return null;
-      }
-    }
-    if ("setThemeEnabled".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramInt = paramBundle.optInt("id");
-        paramBundle = AIOMusicSkin.a();
-        bool1 = bool2;
-        if (paramInt == 1) {
-          bool1 = true;
+      if ("setThemeEnabled".equals(paramString)) {
+        try
+        {
+          paramBundle = new JSONObject(paramBundle.getString("data"));
+          paramString = paramBundle.optString("uin");
+          paramInt = paramBundle.optInt("id");
+          paramBundle = AIOMusicSkin.a();
+          if (paramInt == 1) {
+            bool1 = true;
+          }
+          paramBundle.a(paramString, bool1);
+          return null;
         }
-        paramBundle.a(paramString, bool1);
-        return null;
+        catch (JSONException paramString)
+        {
+          QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_THEME_ENABLED: ", paramString);
+          return null;
+        }
       }
-      catch (JSONException paramString)
+      if ("showFloatView".equals(paramString)) {
+        try
+        {
+          paramBundle = new JSONObject(paramBundle.getString("data"));
+          paramString = paramBundle.optString("uin");
+          paramBundle = paramBundle.optString("coverUrl");
+          ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.1(this, paramString, paramBundle));
+          return null;
+        }
+        catch (JSONException paramString)
+        {
+          paramString.printStackTrace();
+          return null;
+        }
+      }
+      if ("pauseFloatView".equals(paramString))
       {
-        QLog.e("ListenTogetherIPCModuleMainServer", 1, "METHOD_SET_THEME_ENABLED: ", paramString);
+        ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.2(this));
         return null;
       }
+      if (!"changeMusicList".equals(paramString)) {}
     }
-    if ("showFloatView".equals(paramString)) {
-      try
-      {
-        paramBundle = new JSONObject(paramBundle.getString("data"));
-        paramString = paramBundle.optString("uin");
-        paramBundle = paramBundle.optString("coverUrl");
-        ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.1(this, paramString, paramBundle));
-        return null;
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return null;
-      }
-    }
-    if ("pauseFloatView".equals(paramString))
-    {
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.2(this));
-      return null;
-    }
-    if ("changeMusicList".equals(paramString)) {}
     for (;;)
     {
-      SongInfo localSongInfo;
       try
       {
         paramString = new JSONObject(paramBundle.getString("data"));
@@ -205,12 +238,12 @@ public class ListenTogetherIPCModuleMainServer
         paramInt = i;
         if (paramInt < paramString.length())
         {
-          localSongInfo = QzoneMusicHelper.convertSongInfo(paramString.getJSONObject(paramInt));
-          if (localSongInfo.a != 0L) {
-            break label618;
+          localObject = (SongInfo)((IQzoneMusicHelper)QRoute.api(IQzoneMusicHelper.class)).convertSongInfo(paramString.getJSONObject(paramInt));
+          if (((SongInfo)localObject).a != 0L) {
+            break label667;
           }
-          localSongInfo.a = paramInt;
-          break label618;
+          ((SongInfo)localObject).a = paramInt;
+          break label667;
         }
         QQPlayerService.a(paramBundle, j, k);
         return null;
@@ -220,23 +253,25 @@ public class ListenTogetherIPCModuleMainServer
         paramString.printStackTrace();
         return null;
       }
-      if (!"stopMusicBox".equals(paramString)) {
-        break;
+      if ("stopMusicBox".equals(paramString)) {
+        ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.3(this));
       }
-      ThreadManagerV2.getUIHandlerV2().post(new ListenTogetherIPCModuleMainServer.3(this));
       return null;
-      label612:
+      label655:
+      bool1 = false;
+      break;
+      label661:
       bool1 = true;
-      break label220;
-      label618:
-      paramBundle[paramInt] = localSongInfo;
+      break;
+      label667:
+      paramBundle[paramInt] = localObject;
       paramInt += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ipc.ListenTogetherIPCModuleMainServer
  * JD-Core Version:    0.7.0.1
  */

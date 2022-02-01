@@ -20,614 +20,799 @@ class YTFetchLicenseHelper$1FetchThreadRunnable
     //   12: aconst_null
     //   13: astore 11
     //   15: aconst_null
-    //   16: astore 6
+    //   16: astore 12
     //   18: aconst_null
-    //   19: astore 4
-    //   21: invokestatic 58	java/lang/System:currentTimeMillis	()J
-    //   24: ldc2_w 59
-    //   27: ldiv
-    //   28: lstore_1
-    //   29: new 62	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   36: aload_0
-    //   37: getfield 21	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$appid	Ljava/lang/String;
-    //   40: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: ldc 69
-    //   45: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: lload_1
-    //   49: invokevirtual 72	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   52: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   55: astore_3
-    //   56: ldc 78
-    //   58: invokestatic 84	javax/crypto/Mac:getInstance	(Ljava/lang/String;)Ljavax/crypto/Mac;
-    //   61: astore 5
-    //   63: aload 5
-    //   65: new 86	javax/crypto/spec/SecretKeySpec
-    //   68: dup
-    //   69: aload_0
-    //   70: getfield 23	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$secret_key	Ljava/lang/String;
-    //   73: invokevirtual 92	java/lang/String:getBytes	()[B
-    //   76: ldc 78
-    //   78: invokespecial 95	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
-    //   81: invokevirtual 99	javax/crypto/Mac:init	(Ljava/security/Key;)V
-    //   84: aload 5
-    //   86: aload_3
+    //   19: astore 13
+    //   21: aconst_null
+    //   22: astore 5
+    //   24: aconst_null
+    //   25: astore 6
+    //   27: invokestatic 58	java/lang/System:currentTimeMillis	()J
+    //   30: ldc2_w 59
+    //   33: ldiv
+    //   34: lstore_1
+    //   35: new 62	java/lang/StringBuilder
+    //   38: dup
+    //   39: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   42: astore_3
+    //   43: aload_3
+    //   44: aload_0
+    //   45: getfield 21	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$appid	Ljava/lang/String;
+    //   48: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   51: pop
+    //   52: aload_3
+    //   53: ldc 69
+    //   55: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   58: pop
+    //   59: aload_3
+    //   60: lload_1
+    //   61: invokevirtual 72	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   64: pop
+    //   65: aload_3
+    //   66: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   69: astore_3
+    //   70: ldc 78
+    //   72: invokestatic 84	javax/crypto/Mac:getInstance	(Ljava/lang/String;)Ljavax/crypto/Mac;
+    //   75: astore 4
+    //   77: aload 4
+    //   79: new 86	javax/crypto/spec/SecretKeySpec
+    //   82: dup
+    //   83: aload_0
+    //   84: getfield 23	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$secret_key	Ljava/lang/String;
     //   87: invokevirtual 92	java/lang/String:getBytes	()[B
-    //   90: invokevirtual 103	javax/crypto/Mac:doFinal	([B)[B
-    //   93: iconst_2
-    //   94: invokestatic 109	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
-    //   97: astore_3
-    //   98: new 111	org/json/JSONObject
-    //   101: dup
-    //   102: invokespecial 112	org/json/JSONObject:<init>	()V
-    //   105: astore 5
-    //   107: aload 5
-    //   109: ldc 114
-    //   111: aload_0
-    //   112: getfield 21	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$appid	Ljava/lang/String;
-    //   115: invokevirtual 118	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   118: pop
-    //   119: aload 5
-    //   121: ldc 120
-    //   123: aload_3
-    //   124: invokevirtual 118	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   127: pop
-    //   128: aload 5
-    //   130: ldc 122
-    //   132: ldc 124
-    //   134: invokevirtual 118	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   137: pop
-    //   138: aload 5
-    //   140: ldc 126
-    //   142: aload_0
-    //   143: getfield 25	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$package_name	Ljava/lang/String;
-    //   146: invokevirtual 118	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   149: pop
-    //   150: aload 5
-    //   152: ldc 128
-    //   154: lload_1
-    //   155: invokevirtual 131	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
-    //   158: pop
-    //   159: aload 5
-    //   161: invokevirtual 132	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   164: astore 5
-    //   166: new 134	java/net/URL
-    //   169: dup
-    //   170: aload_0
-    //   171: getfield 27	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$url_str	Ljava/lang/String;
-    //   174: invokespecial 137	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   177: invokevirtual 141	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   180: checkcast 143	java/net/HttpURLConnection
-    //   183: astore_3
-    //   184: aload_3
-    //   185: ldc 145
-    //   187: invokevirtual 148	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   190: aload_3
-    //   191: iconst_1
-    //   192: invokevirtual 152	java/net/HttpURLConnection:setDoInput	(Z)V
-    //   195: aload_3
-    //   196: iconst_1
-    //   197: invokevirtual 155	java/net/HttpURLConnection:setDoOutput	(Z)V
-    //   200: aload_3
-    //   201: iconst_0
-    //   202: invokevirtual 158	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   90: ldc 78
+    //   92: invokespecial 95	javax/crypto/spec/SecretKeySpec:<init>	([BLjava/lang/String;)V
+    //   95: invokevirtual 99	javax/crypto/Mac:init	(Ljava/security/Key;)V
+    //   98: aload 4
+    //   100: aload_3
+    //   101: invokevirtual 92	java/lang/String:getBytes	()[B
+    //   104: invokevirtual 103	javax/crypto/Mac:doFinal	([B)[B
+    //   107: iconst_2
+    //   108: invokestatic 109	android/util/Base64:encodeToString	([BI)Ljava/lang/String;
+    //   111: astore_3
+    //   112: new 111	org/json/JSONObject
+    //   115: dup
+    //   116: invokespecial 112	org/json/JSONObject:<init>	()V
+    //   119: astore 4
+    //   121: aload 4
+    //   123: ldc 114
+    //   125: aload_0
+    //   126: getfield 21	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$appid	Ljava/lang/String;
+    //   129: invokevirtual 118	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   132: pop
+    //   133: aload 4
+    //   135: ldc 120
+    //   137: aload_3
+    //   138: invokevirtual 118	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   141: pop
+    //   142: aload 4
+    //   144: ldc 122
+    //   146: ldc 124
+    //   148: invokevirtual 118	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   151: pop
+    //   152: aload 4
+    //   154: ldc 126
+    //   156: aload_0
+    //   157: getfield 25	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$package_name	Ljava/lang/String;
+    //   160: invokevirtual 118	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
+    //   163: pop
+    //   164: aload 4
+    //   166: ldc 128
+    //   168: lload_1
+    //   169: invokevirtual 131	org/json/JSONObject:put	(Ljava/lang/String;J)Lorg/json/JSONObject;
+    //   172: pop
+    //   173: aload 4
+    //   175: invokevirtual 132	org/json/JSONObject:toString	()Ljava/lang/String;
+    //   178: astore 14
+    //   180: new 134	java/net/URL
+    //   183: dup
+    //   184: aload_0
+    //   185: getfield 27	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:val$url_str	Ljava/lang/String;
+    //   188: invokespecial 137	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   191: invokevirtual 141	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   194: checkcast 143	java/net/HttpURLConnection
+    //   197: astore_3
+    //   198: aload 13
+    //   200: astore 4
+    //   202: aload_3
+    //   203: astore 5
     //   205: aload_3
-    //   206: iconst_1
-    //   207: invokevirtual 161	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
-    //   210: aload_3
-    //   211: ldc 163
-    //   213: ldc 165
-    //   215: invokevirtual 169	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   206: ldc 145
+    //   208: invokevirtual 148	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   211: aload 13
+    //   213: astore 4
+    //   215: aload_3
+    //   216: astore 5
     //   218: aload_3
-    //   219: sipush 5000
-    //   222: invokevirtual 173	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   225: aload_3
-    //   226: sipush 5000
-    //   229: invokevirtual 176	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   232: aload_3
-    //   233: invokevirtual 179	java/net/HttpURLConnection:connect	()V
-    //   236: new 181	java/io/DataOutputStream
-    //   239: dup
-    //   240: aload_3
-    //   241: invokevirtual 185	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   244: invokespecial 188	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   247: astore 4
-    //   249: aload 4
-    //   251: aload 5
-    //   253: invokevirtual 92	java/lang/String:getBytes	()[B
-    //   256: invokevirtual 192	java/io/DataOutputStream:write	([B)V
-    //   259: aload 4
-    //   261: invokevirtual 195	java/io/DataOutputStream:flush	()V
-    //   264: aload 4
-    //   266: invokevirtual 198	java/io/DataOutputStream:close	()V
-    //   269: aload_0
-    //   270: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
-    //   273: aload_3
-    //   274: invokevirtual 202	java/net/HttpURLConnection:getResponseCode	()I
-    //   277: putfield 206	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:http_status	I
-    //   280: aload_0
-    //   281: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
-    //   284: getfield 206	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:http_status	I
-    //   287: sipush 200
-    //   290: if_icmpne +198 -> 488
-    //   293: new 208	java/io/BufferedReader
-    //   296: dup
-    //   297: new 210	java/io/InputStreamReader
-    //   300: dup
-    //   301: aload_3
-    //   302: invokevirtual 214	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   305: invokespecial 217	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   308: invokespecial 220	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   311: astore 4
-    //   313: new 62	java/lang/StringBuilder
-    //   316: dup
-    //   317: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   320: astore 5
-    //   322: aload 4
-    //   324: invokevirtual 223	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   327: astore 6
-    //   329: aload 6
-    //   331: ifnull +50 -> 381
-    //   334: aload 5
-    //   336: aload 6
-    //   338: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   341: pop
-    //   342: goto -20 -> 322
-    //   345: astore 5
-    //   347: aload 4
-    //   349: astore 6
-    //   351: aload_3
+    //   219: iconst_1
+    //   220: invokevirtual 152	java/net/HttpURLConnection:setDoInput	(Z)V
+    //   223: aload 13
+    //   225: astore 4
+    //   227: aload_3
+    //   228: astore 5
+    //   230: aload_3
+    //   231: iconst_1
+    //   232: invokevirtual 155	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   235: aload 13
+    //   237: astore 4
+    //   239: aload_3
+    //   240: astore 5
+    //   242: aload_3
+    //   243: iconst_0
+    //   244: invokevirtual 158	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   247: aload 13
+    //   249: astore 4
+    //   251: aload_3
+    //   252: astore 5
+    //   254: aload_3
+    //   255: iconst_1
+    //   256: invokevirtual 161	java/net/HttpURLConnection:setInstanceFollowRedirects	(Z)V
+    //   259: aload 13
+    //   261: astore 4
+    //   263: aload_3
+    //   264: astore 5
+    //   266: aload_3
+    //   267: ldc 163
+    //   269: ldc 165
+    //   271: invokevirtual 169	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   274: aload 13
+    //   276: astore 4
+    //   278: aload_3
+    //   279: astore 5
+    //   281: aload_3
+    //   282: sipush 5000
+    //   285: invokevirtual 173	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   288: aload 13
+    //   290: astore 4
+    //   292: aload_3
+    //   293: astore 5
+    //   295: aload_3
+    //   296: sipush 5000
+    //   299: invokevirtual 176	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   302: aload 13
+    //   304: astore 4
+    //   306: aload_3
+    //   307: astore 5
+    //   309: aload_3
+    //   310: invokevirtual 179	java/net/HttpURLConnection:connect	()V
+    //   313: aload 13
+    //   315: astore 4
+    //   317: aload_3
+    //   318: astore 5
+    //   320: new 181	java/io/DataOutputStream
+    //   323: dup
+    //   324: aload_3
+    //   325: invokevirtual 185	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   328: invokespecial 188	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   331: astore 15
+    //   333: aload 13
+    //   335: astore 4
+    //   337: aload_3
+    //   338: astore 5
+    //   340: aload 15
+    //   342: aload 14
+    //   344: invokevirtual 92	java/lang/String:getBytes	()[B
+    //   347: invokevirtual 192	java/io/DataOutputStream:write	([B)V
+    //   350: aload 13
     //   352: astore 4
-    //   354: aload 6
-    //   356: astore_3
-    //   357: aload 5
-    //   359: invokevirtual 226	java/net/MalformedURLException:printStackTrace	()V
-    //   362: aload_3
-    //   363: ifnull +7 -> 370
+    //   354: aload_3
+    //   355: astore 5
+    //   357: aload 15
+    //   359: invokevirtual 195	java/io/DataOutputStream:flush	()V
+    //   362: aload 13
+    //   364: astore 4
     //   366: aload_3
-    //   367: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   370: aload 4
-    //   372: ifnull +8 -> 380
-    //   375: aload 4
-    //   377: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
-    //   380: return
-    //   381: new 111	org/json/JSONObject
-    //   384: dup
-    //   385: aload 5
-    //   387: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   390: invokespecial 231	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   393: astore 6
-    //   395: aload 4
+    //   367: astore 5
+    //   369: aload 15
+    //   371: invokevirtual 198	java/io/DataOutputStream:close	()V
+    //   374: aload 13
+    //   376: astore 4
+    //   378: aload_3
+    //   379: astore 5
+    //   381: aload_0
+    //   382: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
+    //   385: aload_3
+    //   386: invokevirtual 202	java/net/HttpURLConnection:getResponseCode	()I
+    //   389: putfield 206	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:http_status	I
+    //   392: aload 13
+    //   394: astore 4
+    //   396: aload_3
     //   397: astore 5
-    //   399: aload 6
-    //   401: ldc 233
-    //   403: invokevirtual 237	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   406: ifeq +63 -> 469
-    //   409: aload_0
-    //   410: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
-    //   413: aload 6
-    //   415: ldc 233
-    //   417: invokevirtual 241	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   420: putfield 243	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:error_code	I
-    //   423: aload_0
-    //   424: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
-    //   427: aload 6
-    //   429: ldc 245
-    //   431: invokevirtual 249	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   434: putfield 251	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:error_msg	Ljava/lang/String;
-    //   437: aload 4
-    //   439: astore 5
-    //   441: aload_0
-    //   442: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
-    //   445: getfield 243	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:error_code	I
-    //   448: ifne +21 -> 469
-    //   451: aload_0
-    //   452: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
-    //   455: aload 6
-    //   457: ldc 253
-    //   459: invokevirtual 249	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   462: putfield 255	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:license	Ljava/lang/String;
-    //   465: aload 4
-    //   467: astore 5
-    //   469: aload 5
-    //   471: ifnull +8 -> 479
-    //   474: aload 5
-    //   476: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   479: aload_3
-    //   480: ifnull -100 -> 380
-    //   483: aload_3
-    //   484: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
-    //   487: return
-    //   488: invokestatic 260	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper:access$000	()Ljava/lang/String;
-    //   491: new 62	java/lang/StringBuilder
-    //   494: dup
-    //   495: invokespecial 63	java/lang/StringBuilder:<init>	()V
-    //   498: ldc_w 262
-    //   501: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   504: aload_0
-    //   505: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
-    //   508: getfield 206	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:http_status	I
-    //   511: invokevirtual 265	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   514: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   517: invokestatic 271	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
-    //   520: pop
-    //   521: aconst_null
-    //   522: astore 5
-    //   524: goto -55 -> 469
-    //   527: astore 4
-    //   529: aload 4
-    //   531: invokevirtual 272	java/io/IOException:printStackTrace	()V
-    //   534: goto -55 -> 479
-    //   537: astore_3
-    //   538: aload_3
-    //   539: invokevirtual 272	java/io/IOException:printStackTrace	()V
-    //   542: goto -172 -> 370
-    //   545: astore 6
-    //   547: aconst_null
-    //   548: astore 5
-    //   550: aload 5
-    //   552: astore 4
-    //   554: aload 7
-    //   556: astore_3
-    //   557: aload 6
-    //   559: invokevirtual 273	java/net/ProtocolException:printStackTrace	()V
-    //   562: aload 7
-    //   564: ifnull +8 -> 572
-    //   567: aload 7
-    //   569: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   572: aload 5
-    //   574: ifnull -194 -> 380
-    //   577: aload 5
-    //   579: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
-    //   582: return
-    //   583: astore_3
-    //   584: aload_3
-    //   585: invokevirtual 272	java/io/IOException:printStackTrace	()V
-    //   588: goto -16 -> 572
-    //   591: astore 6
-    //   593: aconst_null
-    //   594: astore 5
-    //   596: aload 8
-    //   598: astore 7
-    //   600: aload 5
-    //   602: astore 4
-    //   604: aload 7
-    //   606: astore_3
-    //   607: aload 6
-    //   609: invokevirtual 272	java/io/IOException:printStackTrace	()V
-    //   612: aload 7
-    //   614: ifnull +8 -> 622
-    //   617: aload 7
-    //   619: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   622: aload 5
-    //   624: ifnull -244 -> 380
-    //   627: aload 5
-    //   629: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
-    //   632: return
-    //   633: astore_3
-    //   634: aload_3
-    //   635: invokevirtual 272	java/io/IOException:printStackTrace	()V
-    //   638: goto -16 -> 622
-    //   641: astore 6
-    //   643: aconst_null
-    //   644: astore 5
-    //   646: aload 9
-    //   648: astore 7
-    //   650: aload 5
-    //   652: astore 4
-    //   654: aload 7
-    //   656: astore_3
-    //   657: aload 6
-    //   659: invokevirtual 274	org/json/JSONException:printStackTrace	()V
-    //   662: aload 7
-    //   664: ifnull +8 -> 672
-    //   667: aload 7
-    //   669: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   672: aload 5
-    //   674: ifnull -294 -> 380
-    //   677: aload 5
-    //   679: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
-    //   682: return
-    //   683: astore_3
+    //   399: aload_0
+    //   400: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
+    //   403: getfield 206	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:http_status	I
+    //   406: sipush 200
+    //   409: if_icmpne +228 -> 637
+    //   412: aload 13
+    //   414: astore 4
+    //   416: aload_3
+    //   417: astore 5
+    //   419: new 208	java/io/BufferedReader
+    //   422: dup
+    //   423: new 210	java/io/InputStreamReader
+    //   426: dup
+    //   427: aload_3
+    //   428: invokevirtual 214	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   431: invokespecial 217	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   434: invokespecial 220	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   437: astore 6
+    //   439: new 62	java/lang/StringBuilder
+    //   442: dup
+    //   443: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   446: astore 4
+    //   448: aload 6
+    //   450: invokevirtual 223	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   453: astore 5
+    //   455: aload 5
+    //   457: ifnull +14 -> 471
+    //   460: aload 4
+    //   462: aload 5
+    //   464: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   467: pop
+    //   468: goto -20 -> 448
+    //   471: new 111	org/json/JSONObject
+    //   474: dup
+    //   475: aload 4
+    //   477: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   480: invokespecial 224	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   483: astore 4
+    //   485: aload 4
+    //   487: ldc 226
+    //   489: invokevirtual 230	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   492: ifeq +55 -> 547
+    //   495: aload_0
+    //   496: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
+    //   499: aload 4
+    //   501: ldc 226
+    //   503: invokevirtual 234	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   506: putfield 236	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:error_code	I
+    //   509: aload_0
+    //   510: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
+    //   513: aload 4
+    //   515: ldc 238
+    //   517: invokevirtual 242	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   520: putfield 244	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:error_msg	Ljava/lang/String;
+    //   523: aload_0
+    //   524: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
+    //   527: getfield 236	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:error_code	I
+    //   530: ifne +17 -> 547
+    //   533: aload_0
+    //   534: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
+    //   537: aload 4
+    //   539: ldc 246
+    //   541: invokevirtual 242	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   544: putfield 248	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:license	Ljava/lang/String;
+    //   547: goto +171 -> 718
+    //   550: astore 4
+    //   552: aload 6
+    //   554: astore 5
+    //   556: goto +539 -> 1095
+    //   559: astore 4
+    //   561: aload 6
+    //   563: astore 7
+    //   565: aload 4
+    //   567: astore 6
+    //   569: goto +237 -> 806
+    //   572: astore 4
+    //   574: aload 6
+    //   576: astore 7
+    //   578: aload 4
+    //   580: astore 6
+    //   582: goto +271 -> 853
+    //   585: astore 4
+    //   587: aload 6
+    //   589: astore 7
+    //   591: aload 4
+    //   593: astore 6
+    //   595: goto +305 -> 900
+    //   598: astore 4
+    //   600: aload 6
+    //   602: astore 7
+    //   604: aload 4
+    //   606: astore 6
+    //   608: goto +339 -> 947
+    //   611: astore 4
+    //   613: aload 6
+    //   615: astore 7
+    //   617: aload 4
+    //   619: astore 6
+    //   621: goto +373 -> 994
+    //   624: astore 4
+    //   626: aload 6
+    //   628: astore 7
+    //   630: aload 4
+    //   632: astore 6
+    //   634: goto +407 -> 1041
+    //   637: aload 13
+    //   639: astore 4
+    //   641: aload_3
+    //   642: astore 5
+    //   644: invokestatic 253	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper:access$000	()Ljava/lang/String;
+    //   647: astore 14
+    //   649: aload 13
+    //   651: astore 4
+    //   653: aload_3
+    //   654: astore 5
+    //   656: new 62	java/lang/StringBuilder
+    //   659: dup
+    //   660: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   663: astore 15
+    //   665: aload 13
+    //   667: astore 4
+    //   669: aload_3
+    //   670: astore 5
+    //   672: aload 15
+    //   674: ldc 255
+    //   676: invokevirtual 67	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   679: pop
+    //   680: aload 13
+    //   682: astore 4
     //   684: aload_3
-    //   685: invokevirtual 272	java/io/IOException:printStackTrace	()V
-    //   688: goto -16 -> 672
-    //   691: astore 6
-    //   693: aconst_null
-    //   694: astore 5
-    //   696: aload 10
-    //   698: astore 7
-    //   700: aload 5
+    //   685: astore 5
+    //   687: aload 15
+    //   689: aload_0
+    //   690: getfield 37	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$1FetchThreadRunnable:result	Lcom/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult;
+    //   693: getfield 206	com/tencent/youtu/sdkkitframework/common/YTFetchLicenseHelper$FetchLicenseResult:http_status	I
+    //   696: invokevirtual 258	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   699: pop
+    //   700: aload 13
     //   702: astore 4
-    //   704: aload 7
-    //   706: astore_3
-    //   707: aload 6
-    //   709: invokevirtual 275	java/security/NoSuchAlgorithmException:printStackTrace	()V
-    //   712: aload 7
-    //   714: ifnull +8 -> 722
-    //   717: aload 7
-    //   719: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   722: aload 5
-    //   724: ifnull -344 -> 380
-    //   727: aload 5
-    //   729: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
-    //   732: return
-    //   733: astore_3
-    //   734: aload_3
-    //   735: invokevirtual 272	java/io/IOException:printStackTrace	()V
-    //   738: goto -16 -> 722
-    //   741: astore 6
-    //   743: aconst_null
-    //   744: astore 5
-    //   746: aload 11
-    //   748: astore 7
-    //   750: aload 5
-    //   752: astore 4
-    //   754: aload 7
-    //   756: astore_3
-    //   757: aload 6
-    //   759: invokevirtual 276	java/security/InvalidKeyException:printStackTrace	()V
-    //   762: aload 7
-    //   764: ifnull +8 -> 772
-    //   767: aload 7
-    //   769: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   772: aload 5
-    //   774: ifnull -394 -> 380
-    //   777: aload 5
-    //   779: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
-    //   782: return
-    //   783: astore_3
-    //   784: aload_3
-    //   785: invokevirtual 272	java/io/IOException:printStackTrace	()V
-    //   788: goto -16 -> 772
-    //   791: astore 5
-    //   793: aconst_null
-    //   794: astore 4
-    //   796: aload 6
+    //   704: aload_3
+    //   705: astore 5
+    //   707: aload 14
+    //   709: aload 15
+    //   711: invokevirtual 76	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   714: invokestatic 264	android/util/Log:e	(Ljava/lang/String;Ljava/lang/String;)I
+    //   717: pop
+    //   718: aload 6
+    //   720: ifnull +18 -> 738
+    //   723: aload 6
+    //   725: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   728: goto +10 -> 738
+    //   731: astore 4
+    //   733: aload 4
+    //   735: invokevirtual 268	java/io/IOException:printStackTrace	()V
+    //   738: aload_3
+    //   739: ifnull +342 -> 1081
+    //   742: goto +335 -> 1077
+    //   745: astore 6
+    //   747: goto +59 -> 806
+    //   750: astore 6
+    //   752: aload 8
+    //   754: astore 7
+    //   756: goto +97 -> 853
+    //   759: astore 6
+    //   761: aload 9
+    //   763: astore 7
+    //   765: goto +135 -> 900
+    //   768: astore 6
+    //   770: aload 10
+    //   772: astore 7
+    //   774: goto +173 -> 947
+    //   777: astore 6
+    //   779: aload 11
+    //   781: astore 7
+    //   783: goto +211 -> 994
+    //   786: astore 6
+    //   788: aload 12
+    //   790: astore 7
+    //   792: goto +249 -> 1041
+    //   795: astore 4
+    //   797: aconst_null
     //   798: astore_3
-    //   799: aload_3
-    //   800: ifnull +7 -> 807
-    //   803: aload_3
-    //   804: invokevirtual 227	java/io/BufferedReader:close	()V
-    //   807: aload 4
-    //   809: ifnull +8 -> 817
-    //   812: aload 4
-    //   814: invokevirtual 230	java/net/HttpURLConnection:disconnect	()V
-    //   817: aload 5
-    //   819: athrow
-    //   820: astore_3
-    //   821: aload_3
-    //   822: invokevirtual 272	java/io/IOException:printStackTrace	()V
-    //   825: goto -18 -> 807
-    //   828: astore 5
-    //   830: aload_3
+    //   799: goto +296 -> 1095
+    //   802: astore 6
+    //   804: aconst_null
+    //   805: astore_3
+    //   806: aload 7
+    //   808: astore 4
+    //   810: aload_3
+    //   811: astore 5
+    //   813: aload 6
+    //   815: invokevirtual 269	java/security/InvalidKeyException:printStackTrace	()V
+    //   818: aload 7
+    //   820: ifnull +18 -> 838
+    //   823: aload 7
+    //   825: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   828: goto +10 -> 838
     //   831: astore 4
-    //   833: aload 6
-    //   835: astore_3
-    //   836: goto -37 -> 799
-    //   839: astore 5
-    //   841: aload 4
-    //   843: astore 6
-    //   845: aload_3
-    //   846: astore 4
-    //   848: aload 6
-    //   850: astore_3
-    //   851: goto -52 -> 799
-    //   854: astore 5
-    //   856: goto -57 -> 799
-    //   859: astore 5
-    //   861: goto -62 -> 799
-    //   864: astore 6
-    //   866: aload_3
-    //   867: astore 5
-    //   869: aload 11
-    //   871: astore 7
-    //   873: goto -123 -> 750
-    //   876: astore 6
-    //   878: aload_3
-    //   879: astore 5
-    //   881: aload 4
-    //   883: astore 7
-    //   885: goto -135 -> 750
-    //   888: astore 6
-    //   890: aload_3
-    //   891: astore 5
-    //   893: aload 10
-    //   895: astore 7
-    //   897: goto -197 -> 700
-    //   900: astore 6
-    //   902: aload_3
-    //   903: astore 5
-    //   905: aload 4
-    //   907: astore 7
-    //   909: goto -209 -> 700
-    //   912: astore 6
-    //   914: aload_3
-    //   915: astore 5
-    //   917: aload 9
-    //   919: astore 7
-    //   921: goto -271 -> 650
-    //   924: astore 6
-    //   926: aload_3
-    //   927: astore 5
-    //   929: aload 4
-    //   931: astore 7
-    //   933: goto -283 -> 650
-    //   936: astore 6
-    //   938: aload_3
-    //   939: astore 5
-    //   941: aload 8
-    //   943: astore 7
-    //   945: goto -345 -> 600
-    //   948: astore 6
-    //   950: aload_3
-    //   951: astore 5
-    //   953: aload 4
-    //   955: astore 7
-    //   957: goto -357 -> 600
-    //   960: astore 6
-    //   962: aload_3
-    //   963: astore 5
-    //   965: goto -415 -> 550
-    //   968: astore 6
-    //   970: aload_3
-    //   971: astore 5
-    //   973: aload 4
-    //   975: astore 7
-    //   977: goto -427 -> 550
-    //   980: astore 5
-    //   982: aconst_null
-    //   983: astore_3
-    //   984: goto -627 -> 357
-    //   987: astore 5
-    //   989: aconst_null
-    //   990: astore 6
-    //   992: aload_3
-    //   993: astore 4
-    //   995: aload 6
-    //   997: astore_3
-    //   998: goto -641 -> 357
+    //   833: aload 4
+    //   835: invokevirtual 268	java/io/IOException:printStackTrace	()V
+    //   838: aload_3
+    //   839: ifnull +242 -> 1081
+    //   842: goto +235 -> 1077
+    //   845: astore 6
+    //   847: aconst_null
+    //   848: astore_3
+    //   849: aload 8
+    //   851: astore 7
+    //   853: aload 7
+    //   855: astore 4
+    //   857: aload_3
+    //   858: astore 5
+    //   860: aload 6
+    //   862: invokevirtual 270	java/security/NoSuchAlgorithmException:printStackTrace	()V
+    //   865: aload 7
+    //   867: ifnull +18 -> 885
+    //   870: aload 7
+    //   872: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   875: goto +10 -> 885
+    //   878: astore 4
+    //   880: aload 4
+    //   882: invokevirtual 268	java/io/IOException:printStackTrace	()V
+    //   885: aload_3
+    //   886: ifnull +195 -> 1081
+    //   889: goto +188 -> 1077
+    //   892: astore 6
+    //   894: aconst_null
+    //   895: astore_3
+    //   896: aload 9
+    //   898: astore 7
+    //   900: aload 7
+    //   902: astore 4
+    //   904: aload_3
+    //   905: astore 5
+    //   907: aload 6
+    //   909: invokevirtual 271	org/json/JSONException:printStackTrace	()V
+    //   912: aload 7
+    //   914: ifnull +18 -> 932
+    //   917: aload 7
+    //   919: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   922: goto +10 -> 932
+    //   925: astore 4
+    //   927: aload 4
+    //   929: invokevirtual 268	java/io/IOException:printStackTrace	()V
+    //   932: aload_3
+    //   933: ifnull +148 -> 1081
+    //   936: goto +141 -> 1077
+    //   939: astore 6
+    //   941: aconst_null
+    //   942: astore_3
+    //   943: aload 10
+    //   945: astore 7
+    //   947: aload 7
+    //   949: astore 4
+    //   951: aload_3
+    //   952: astore 5
+    //   954: aload 6
+    //   956: invokevirtual 268	java/io/IOException:printStackTrace	()V
+    //   959: aload 7
+    //   961: ifnull +18 -> 979
+    //   964: aload 7
+    //   966: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   969: goto +10 -> 979
+    //   972: astore 4
+    //   974: aload 4
+    //   976: invokevirtual 268	java/io/IOException:printStackTrace	()V
+    //   979: aload_3
+    //   980: ifnull +101 -> 1081
+    //   983: goto +94 -> 1077
+    //   986: astore 6
+    //   988: aconst_null
+    //   989: astore_3
+    //   990: aload 11
+    //   992: astore 7
+    //   994: aload 7
+    //   996: astore 4
+    //   998: aload_3
+    //   999: astore 5
+    //   1001: aload 6
+    //   1003: invokevirtual 272	java/net/ProtocolException:printStackTrace	()V
+    //   1006: aload 7
+    //   1008: ifnull +18 -> 1026
+    //   1011: aload 7
+    //   1013: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   1016: goto +10 -> 1026
+    //   1019: astore 4
+    //   1021: aload 4
+    //   1023: invokevirtual 268	java/io/IOException:printStackTrace	()V
+    //   1026: aload_3
+    //   1027: ifnull +54 -> 1081
+    //   1030: goto +47 -> 1077
+    //   1033: astore 6
+    //   1035: aconst_null
+    //   1036: astore_3
+    //   1037: aload 12
+    //   1039: astore 7
+    //   1041: aload 7
+    //   1043: astore 4
+    //   1045: aload_3
+    //   1046: astore 5
+    //   1048: aload 6
+    //   1050: invokevirtual 273	java/net/MalformedURLException:printStackTrace	()V
+    //   1053: aload 7
+    //   1055: ifnull +18 -> 1073
+    //   1058: aload 7
+    //   1060: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   1063: goto +10 -> 1073
+    //   1066: astore 4
+    //   1068: aload 4
+    //   1070: invokevirtual 268	java/io/IOException:printStackTrace	()V
+    //   1073: aload_3
+    //   1074: ifnull +7 -> 1081
+    //   1077: aload_3
+    //   1078: invokevirtual 276	java/net/HttpURLConnection:disconnect	()V
+    //   1081: return
+    //   1082: astore 6
+    //   1084: aload 5
+    //   1086: astore_3
+    //   1087: aload 4
+    //   1089: astore 5
+    //   1091: aload 6
+    //   1093: astore 4
+    //   1095: aload 5
+    //   1097: ifnull +18 -> 1115
+    //   1100: aload 5
+    //   1102: invokevirtual 265	java/io/BufferedReader:close	()V
+    //   1105: goto +10 -> 1115
+    //   1108: astore 5
+    //   1110: aload 5
+    //   1112: invokevirtual 268	java/io/IOException:printStackTrace	()V
+    //   1115: aload_3
+    //   1116: ifnull +7 -> 1123
+    //   1119: aload_3
+    //   1120: invokevirtual 276	java/net/HttpURLConnection:disconnect	()V
+    //   1123: goto +6 -> 1129
+    //   1126: aload 4
+    //   1128: athrow
+    //   1129: goto -3 -> 1126
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1001	0	this	1FetchThreadRunnable
-    //   28	127	1	l	long
-    //   55	429	3	localObject1	Object
-    //   537	2	3	localIOException1	java.io.IOException
-    //   556	1	3	localObject2	Object
-    //   583	2	3	localIOException2	java.io.IOException
-    //   606	1	3	localObject3	Object
-    //   633	2	3	localIOException3	java.io.IOException
-    //   656	1	3	localObject4	Object
-    //   683	2	3	localIOException4	java.io.IOException
-    //   706	1	3	localObject5	Object
-    //   733	2	3	localIOException5	java.io.IOException
-    //   756	1	3	localObject6	Object
-    //   783	2	3	localIOException6	java.io.IOException
-    //   798	6	3	localInvalidKeyException1	java.security.InvalidKeyException
-    //   820	11	3	localIOException7	java.io.IOException
-    //   835	163	3	localObject7	Object
-    //   19	447	4	localObject8	Object
-    //   527	3	4	localIOException8	java.io.IOException
-    //   552	442	4	localObject9	Object
-    //   61	274	5	localObject10	Object
-    //   345	41	5	localMalformedURLException1	java.net.MalformedURLException
-    //   397	381	5	localObject11	Object
-    //   791	27	5	localObject12	Object
-    //   828	1	5	localObject13	Object
-    //   839	1	5	localObject14	Object
-    //   854	1	5	localObject15	Object
-    //   859	1	5	localObject16	Object
-    //   867	105	5	localObject17	Object
-    //   980	1	5	localMalformedURLException2	java.net.MalformedURLException
-    //   987	1	5	localMalformedURLException3	java.net.MalformedURLException
-    //   16	440	6	localObject18	Object
-    //   545	13	6	localProtocolException1	java.net.ProtocolException
-    //   591	17	6	localIOException9	java.io.IOException
-    //   641	17	6	localJSONException1	org.json.JSONException
-    //   691	17	6	localNoSuchAlgorithmException1	java.security.NoSuchAlgorithmException
-    //   741	93	6	localInvalidKeyException2	java.security.InvalidKeyException
-    //   843	6	6	localObject19	Object
-    //   864	1	6	localInvalidKeyException3	java.security.InvalidKeyException
-    //   876	1	6	localInvalidKeyException4	java.security.InvalidKeyException
-    //   888	1	6	localNoSuchAlgorithmException2	java.security.NoSuchAlgorithmException
-    //   900	1	6	localNoSuchAlgorithmException3	java.security.NoSuchAlgorithmException
-    //   912	1	6	localJSONException2	org.json.JSONException
-    //   924	1	6	localJSONException3	org.json.JSONException
-    //   936	1	6	localIOException10	java.io.IOException
-    //   948	1	6	localIOException11	java.io.IOException
-    //   960	1	6	localProtocolException2	java.net.ProtocolException
-    //   968	1	6	localProtocolException3	java.net.ProtocolException
-    //   990	6	6	localObject20	Object
-    //   1	975	7	localObject21	Object
-    //   4	938	8	localObject22	Object
-    //   7	911	9	localObject23	Object
-    //   10	884	10	localObject24	Object
-    //   13	857	11	localObject25	Object
+    //   0	1132	0	this	1FetchThreadRunnable
+    //   34	135	1	l	long
+    //   42	1078	3	localObject1	Object
+    //   75	463	4	localObject2	Object
+    //   550	1	4	localObject3	Object
+    //   559	7	4	localInvalidKeyException1	java.security.InvalidKeyException
+    //   572	7	4	localNoSuchAlgorithmException1	java.security.NoSuchAlgorithmException
+    //   585	7	4	localJSONException1	org.json.JSONException
+    //   598	7	4	localIOException1	java.io.IOException
+    //   611	7	4	localProtocolException1	java.net.ProtocolException
+    //   624	7	4	localMalformedURLException1	java.net.MalformedURLException
+    //   639	64	4	localObject4	Object
+    //   731	3	4	localIOException2	java.io.IOException
+    //   795	1	4	localObject5	Object
+    //   808	1	4	localObject6	Object
+    //   831	3	4	localIOException3	java.io.IOException
+    //   855	1	4	localObject7	Object
+    //   878	3	4	localIOException4	java.io.IOException
+    //   902	1	4	localObject8	Object
+    //   925	3	4	localIOException5	java.io.IOException
+    //   949	1	4	localObject9	Object
+    //   972	3	4	localIOException6	java.io.IOException
+    //   996	1	4	localObject10	Object
+    //   1019	3	4	localIOException7	java.io.IOException
+    //   1043	1	4	localObject11	Object
+    //   1066	22	4	localIOException8	java.io.IOException
+    //   1093	34	4	localObject12	Object
+    //   22	1079	5	localObject13	Object
+    //   1108	3	5	localIOException9	java.io.IOException
+    //   25	699	6	localObject14	Object
+    //   745	1	6	localInvalidKeyException2	java.security.InvalidKeyException
+    //   750	1	6	localNoSuchAlgorithmException2	java.security.NoSuchAlgorithmException
+    //   759	1	6	localJSONException2	org.json.JSONException
+    //   768	1	6	localIOException10	java.io.IOException
+    //   777	1	6	localProtocolException2	java.net.ProtocolException
+    //   786	1	6	localMalformedURLException2	java.net.MalformedURLException
+    //   802	12	6	localInvalidKeyException3	java.security.InvalidKeyException
+    //   845	16	6	localNoSuchAlgorithmException3	java.security.NoSuchAlgorithmException
+    //   892	16	6	localJSONException3	org.json.JSONException
+    //   939	16	6	localIOException11	java.io.IOException
+    //   986	16	6	localProtocolException3	java.net.ProtocolException
+    //   1033	16	6	localMalformedURLException3	java.net.MalformedURLException
+    //   1082	10	6	localObject15	Object
+    //   1	1058	7	localObject16	Object
+    //   4	846	8	localObject17	Object
+    //   7	890	9	localObject18	Object
+    //   10	934	10	localObject19	Object
+    //   13	978	11	localObject20	Object
+    //   16	1022	12	localObject21	Object
+    //   19	682	13	localObject22	Object
+    //   178	530	14	str	java.lang.String
+    //   331	379	15	localObject23	Object
     // Exception table:
     //   from	to	target	type
-    //   313	322	345	java/net/MalformedURLException
-    //   322	329	345	java/net/MalformedURLException
-    //   334	342	345	java/net/MalformedURLException
-    //   381	395	345	java/net/MalformedURLException
-    //   399	437	345	java/net/MalformedURLException
-    //   441	465	345	java/net/MalformedURLException
-    //   474	479	527	java/io/IOException
-    //   366	370	537	java/io/IOException
-    //   21	184	545	java/net/ProtocolException
-    //   567	572	583	java/io/IOException
-    //   21	184	591	java/io/IOException
-    //   617	622	633	java/io/IOException
-    //   21	184	641	org/json/JSONException
-    //   667	672	683	java/io/IOException
-    //   21	184	691	java/security/NoSuchAlgorithmException
-    //   717	722	733	java/io/IOException
-    //   21	184	741	java/security/InvalidKeyException
-    //   767	772	783	java/io/IOException
-    //   21	184	791	finally
-    //   803	807	820	java/io/IOException
-    //   184	313	828	finally
-    //   488	521	828	finally
-    //   313	322	839	finally
-    //   322	329	839	finally
-    //   334	342	839	finally
-    //   381	395	839	finally
-    //   399	437	839	finally
-    //   441	465	839	finally
-    //   357	362	854	finally
-    //   557	562	859	finally
-    //   607	612	859	finally
-    //   657	662	859	finally
-    //   707	712	859	finally
-    //   757	762	859	finally
-    //   184	313	864	java/security/InvalidKeyException
-    //   488	521	864	java/security/InvalidKeyException
-    //   313	322	876	java/security/InvalidKeyException
-    //   322	329	876	java/security/InvalidKeyException
-    //   334	342	876	java/security/InvalidKeyException
-    //   381	395	876	java/security/InvalidKeyException
-    //   399	437	876	java/security/InvalidKeyException
-    //   441	465	876	java/security/InvalidKeyException
-    //   184	313	888	java/security/NoSuchAlgorithmException
-    //   488	521	888	java/security/NoSuchAlgorithmException
-    //   313	322	900	java/security/NoSuchAlgorithmException
-    //   322	329	900	java/security/NoSuchAlgorithmException
-    //   334	342	900	java/security/NoSuchAlgorithmException
-    //   381	395	900	java/security/NoSuchAlgorithmException
-    //   399	437	900	java/security/NoSuchAlgorithmException
-    //   441	465	900	java/security/NoSuchAlgorithmException
-    //   184	313	912	org/json/JSONException
-    //   488	521	912	org/json/JSONException
-    //   313	322	924	org/json/JSONException
-    //   322	329	924	org/json/JSONException
-    //   334	342	924	org/json/JSONException
-    //   381	395	924	org/json/JSONException
-    //   399	437	924	org/json/JSONException
-    //   441	465	924	org/json/JSONException
-    //   184	313	936	java/io/IOException
-    //   488	521	936	java/io/IOException
-    //   313	322	948	java/io/IOException
-    //   322	329	948	java/io/IOException
-    //   334	342	948	java/io/IOException
-    //   381	395	948	java/io/IOException
-    //   399	437	948	java/io/IOException
-    //   441	465	948	java/io/IOException
-    //   184	313	960	java/net/ProtocolException
-    //   488	521	960	java/net/ProtocolException
-    //   313	322	968	java/net/ProtocolException
-    //   322	329	968	java/net/ProtocolException
-    //   334	342	968	java/net/ProtocolException
-    //   381	395	968	java/net/ProtocolException
-    //   399	437	968	java/net/ProtocolException
-    //   441	465	968	java/net/ProtocolException
-    //   21	184	980	java/net/MalformedURLException
-    //   184	313	987	java/net/MalformedURLException
-    //   488	521	987	java/net/MalformedURLException
+    //   439	448	550	finally
+    //   448	455	550	finally
+    //   460	468	550	finally
+    //   471	547	550	finally
+    //   439	448	559	java/security/InvalidKeyException
+    //   448	455	559	java/security/InvalidKeyException
+    //   460	468	559	java/security/InvalidKeyException
+    //   471	547	559	java/security/InvalidKeyException
+    //   439	448	572	java/security/NoSuchAlgorithmException
+    //   448	455	572	java/security/NoSuchAlgorithmException
+    //   460	468	572	java/security/NoSuchAlgorithmException
+    //   471	547	572	java/security/NoSuchAlgorithmException
+    //   439	448	585	org/json/JSONException
+    //   448	455	585	org/json/JSONException
+    //   460	468	585	org/json/JSONException
+    //   471	547	585	org/json/JSONException
+    //   439	448	598	java/io/IOException
+    //   448	455	598	java/io/IOException
+    //   460	468	598	java/io/IOException
+    //   471	547	598	java/io/IOException
+    //   439	448	611	java/net/ProtocolException
+    //   448	455	611	java/net/ProtocolException
+    //   460	468	611	java/net/ProtocolException
+    //   471	547	611	java/net/ProtocolException
+    //   439	448	624	java/net/MalformedURLException
+    //   448	455	624	java/net/MalformedURLException
+    //   460	468	624	java/net/MalformedURLException
+    //   471	547	624	java/net/MalformedURLException
+    //   723	728	731	java/io/IOException
+    //   205	211	745	java/security/InvalidKeyException
+    //   218	223	745	java/security/InvalidKeyException
+    //   230	235	745	java/security/InvalidKeyException
+    //   242	247	745	java/security/InvalidKeyException
+    //   254	259	745	java/security/InvalidKeyException
+    //   266	274	745	java/security/InvalidKeyException
+    //   281	288	745	java/security/InvalidKeyException
+    //   295	302	745	java/security/InvalidKeyException
+    //   309	313	745	java/security/InvalidKeyException
+    //   320	333	745	java/security/InvalidKeyException
+    //   340	350	745	java/security/InvalidKeyException
+    //   357	362	745	java/security/InvalidKeyException
+    //   369	374	745	java/security/InvalidKeyException
+    //   381	392	745	java/security/InvalidKeyException
+    //   399	412	745	java/security/InvalidKeyException
+    //   419	439	745	java/security/InvalidKeyException
+    //   644	649	745	java/security/InvalidKeyException
+    //   656	665	745	java/security/InvalidKeyException
+    //   672	680	745	java/security/InvalidKeyException
+    //   687	700	745	java/security/InvalidKeyException
+    //   707	718	745	java/security/InvalidKeyException
+    //   205	211	750	java/security/NoSuchAlgorithmException
+    //   218	223	750	java/security/NoSuchAlgorithmException
+    //   230	235	750	java/security/NoSuchAlgorithmException
+    //   242	247	750	java/security/NoSuchAlgorithmException
+    //   254	259	750	java/security/NoSuchAlgorithmException
+    //   266	274	750	java/security/NoSuchAlgorithmException
+    //   281	288	750	java/security/NoSuchAlgorithmException
+    //   295	302	750	java/security/NoSuchAlgorithmException
+    //   309	313	750	java/security/NoSuchAlgorithmException
+    //   320	333	750	java/security/NoSuchAlgorithmException
+    //   340	350	750	java/security/NoSuchAlgorithmException
+    //   357	362	750	java/security/NoSuchAlgorithmException
+    //   369	374	750	java/security/NoSuchAlgorithmException
+    //   381	392	750	java/security/NoSuchAlgorithmException
+    //   399	412	750	java/security/NoSuchAlgorithmException
+    //   419	439	750	java/security/NoSuchAlgorithmException
+    //   644	649	750	java/security/NoSuchAlgorithmException
+    //   656	665	750	java/security/NoSuchAlgorithmException
+    //   672	680	750	java/security/NoSuchAlgorithmException
+    //   687	700	750	java/security/NoSuchAlgorithmException
+    //   707	718	750	java/security/NoSuchAlgorithmException
+    //   205	211	759	org/json/JSONException
+    //   218	223	759	org/json/JSONException
+    //   230	235	759	org/json/JSONException
+    //   242	247	759	org/json/JSONException
+    //   254	259	759	org/json/JSONException
+    //   266	274	759	org/json/JSONException
+    //   281	288	759	org/json/JSONException
+    //   295	302	759	org/json/JSONException
+    //   309	313	759	org/json/JSONException
+    //   320	333	759	org/json/JSONException
+    //   340	350	759	org/json/JSONException
+    //   357	362	759	org/json/JSONException
+    //   369	374	759	org/json/JSONException
+    //   381	392	759	org/json/JSONException
+    //   399	412	759	org/json/JSONException
+    //   419	439	759	org/json/JSONException
+    //   644	649	759	org/json/JSONException
+    //   656	665	759	org/json/JSONException
+    //   672	680	759	org/json/JSONException
+    //   687	700	759	org/json/JSONException
+    //   707	718	759	org/json/JSONException
+    //   205	211	768	java/io/IOException
+    //   218	223	768	java/io/IOException
+    //   230	235	768	java/io/IOException
+    //   242	247	768	java/io/IOException
+    //   254	259	768	java/io/IOException
+    //   266	274	768	java/io/IOException
+    //   281	288	768	java/io/IOException
+    //   295	302	768	java/io/IOException
+    //   309	313	768	java/io/IOException
+    //   320	333	768	java/io/IOException
+    //   340	350	768	java/io/IOException
+    //   357	362	768	java/io/IOException
+    //   369	374	768	java/io/IOException
+    //   381	392	768	java/io/IOException
+    //   399	412	768	java/io/IOException
+    //   419	439	768	java/io/IOException
+    //   644	649	768	java/io/IOException
+    //   656	665	768	java/io/IOException
+    //   672	680	768	java/io/IOException
+    //   687	700	768	java/io/IOException
+    //   707	718	768	java/io/IOException
+    //   205	211	777	java/net/ProtocolException
+    //   218	223	777	java/net/ProtocolException
+    //   230	235	777	java/net/ProtocolException
+    //   242	247	777	java/net/ProtocolException
+    //   254	259	777	java/net/ProtocolException
+    //   266	274	777	java/net/ProtocolException
+    //   281	288	777	java/net/ProtocolException
+    //   295	302	777	java/net/ProtocolException
+    //   309	313	777	java/net/ProtocolException
+    //   320	333	777	java/net/ProtocolException
+    //   340	350	777	java/net/ProtocolException
+    //   357	362	777	java/net/ProtocolException
+    //   369	374	777	java/net/ProtocolException
+    //   381	392	777	java/net/ProtocolException
+    //   399	412	777	java/net/ProtocolException
+    //   419	439	777	java/net/ProtocolException
+    //   644	649	777	java/net/ProtocolException
+    //   656	665	777	java/net/ProtocolException
+    //   672	680	777	java/net/ProtocolException
+    //   687	700	777	java/net/ProtocolException
+    //   707	718	777	java/net/ProtocolException
+    //   205	211	786	java/net/MalformedURLException
+    //   218	223	786	java/net/MalformedURLException
+    //   230	235	786	java/net/MalformedURLException
+    //   242	247	786	java/net/MalformedURLException
+    //   254	259	786	java/net/MalformedURLException
+    //   266	274	786	java/net/MalformedURLException
+    //   281	288	786	java/net/MalformedURLException
+    //   295	302	786	java/net/MalformedURLException
+    //   309	313	786	java/net/MalformedURLException
+    //   320	333	786	java/net/MalformedURLException
+    //   340	350	786	java/net/MalformedURLException
+    //   357	362	786	java/net/MalformedURLException
+    //   369	374	786	java/net/MalformedURLException
+    //   381	392	786	java/net/MalformedURLException
+    //   399	412	786	java/net/MalformedURLException
+    //   419	439	786	java/net/MalformedURLException
+    //   644	649	786	java/net/MalformedURLException
+    //   656	665	786	java/net/MalformedURLException
+    //   672	680	786	java/net/MalformedURLException
+    //   687	700	786	java/net/MalformedURLException
+    //   707	718	786	java/net/MalformedURLException
+    //   27	198	795	finally
+    //   27	198	802	java/security/InvalidKeyException
+    //   823	828	831	java/io/IOException
+    //   27	198	845	java/security/NoSuchAlgorithmException
+    //   870	875	878	java/io/IOException
+    //   27	198	892	org/json/JSONException
+    //   917	922	925	java/io/IOException
+    //   27	198	939	java/io/IOException
+    //   964	969	972	java/io/IOException
+    //   27	198	986	java/net/ProtocolException
+    //   1011	1016	1019	java/io/IOException
+    //   27	198	1033	java/net/MalformedURLException
+    //   1058	1063	1066	java/io/IOException
+    //   205	211	1082	finally
+    //   218	223	1082	finally
+    //   230	235	1082	finally
+    //   242	247	1082	finally
+    //   254	259	1082	finally
+    //   266	274	1082	finally
+    //   281	288	1082	finally
+    //   295	302	1082	finally
+    //   309	313	1082	finally
+    //   320	333	1082	finally
+    //   340	350	1082	finally
+    //   357	362	1082	finally
+    //   369	374	1082	finally
+    //   381	392	1082	finally
+    //   399	412	1082	finally
+    //   419	439	1082	finally
+    //   644	649	1082	finally
+    //   656	665	1082	finally
+    //   672	680	1082	finally
+    //   687	700	1082	finally
+    //   707	718	1082	finally
+    //   813	818	1082	finally
+    //   860	865	1082	finally
+    //   907	912	1082	finally
+    //   954	959	1082	finally
+    //   1001	1006	1082	finally
+    //   1048	1053	1082	finally
+    //   1100	1105	1108	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.common.YTFetchLicenseHelper.1FetchThreadRunnable
  * JD-Core Version:    0.7.0.1
  */

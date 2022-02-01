@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -35,17 +35,23 @@ public class ActivatePageAdapter
   
   public void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList == null) || (this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {}
-    ActivateBasePage localActivateBasePage;
-    do
+    Object localObject = this.jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      do
-      {
+      if (((ArrayList)localObject).isEmpty()) {
         return;
-      } while ((paramInt < 0) || (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()));
-      localActivateBasePage = (ActivateBasePage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    } while (localActivateBasePage == null);
-    localActivateBasePage.d();
+      }
+      if (paramInt >= 0)
+      {
+        if (paramInt >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
+          return;
+        }
+        localObject = (ActivateBasePage)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+        if (localObject != null) {
+          ((ActivateBasePage)localObject).d();
+        }
+      }
+    }
   }
   
   public void a(ActivateBasePage paramActivateBasePage)
@@ -70,12 +76,16 @@ public class ActivatePageAdapter
   
   public void c()
   {
-    if ((this.jdField_a_of_type_MqqUtilWeakReference == null) || (this.jdField_a_of_type_MqqUtilWeakReference.get() == null)) {
-      return;
+    WeakReference localWeakReference = this.jdField_a_of_type_MqqUtilWeakReference;
+    if (localWeakReference != null)
+    {
+      if (localWeakReference.get() == null) {
+        return;
+      }
+      ((ViewPager)this.jdField_a_of_type_MqqUtilWeakReference.get()).setAdapter(null);
+      this.jdField_a_of_type_JavaUtilArrayList.clear();
+      ((ViewPager)this.jdField_a_of_type_MqqUtilWeakReference.get()).setAdapter(this);
     }
-    ((ViewPager)this.jdField_a_of_type_MqqUtilWeakReference.get()).setAdapter(null);
-    this.jdField_a_of_type_JavaUtilArrayList.clear();
-    ((ViewPager)this.jdField_a_of_type_MqqUtilWeakReference.get()).setAdapter(this);
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -109,8 +119,12 @@ public class ActivatePageAdapter
     if (localActivateBasePage.getParent() != null)
     {
       ((ViewGroup)localActivateBasePage.getParent()).removeView(localActivateBasePage);
-      if (QLog.isColorLevel()) {
-        QLog.i("ActivatePageAdapter", 2, "instantiateItem page already has parent pos:" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("instantiateItem page already has parent pos:");
+        localStringBuilder.append(paramInt);
+        QLog.i("ActivatePageAdapter", 2, localStringBuilder.toString());
       }
     }
     try
@@ -120,8 +134,9 @@ public class ActivatePageAdapter
     }
     catch (Exception paramViewGroup)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("ActivatePageAdapter", 2, paramViewGroup.getMessage(), paramViewGroup);
+      if (QLog.isColorLevel()) {
+        QLog.i("ActivatePageAdapter", 2, paramViewGroup.getMessage(), paramViewGroup);
+      }
     }
     return localActivateBasePage;
   }
@@ -133,7 +148,7 @@ public class ActivatePageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivatePageAdapter
  * JD-Core Version:    0.7.0.1
  */

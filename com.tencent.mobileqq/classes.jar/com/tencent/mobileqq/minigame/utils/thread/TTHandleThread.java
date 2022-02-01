@@ -21,19 +21,20 @@ public class TTHandleThread
   
   public static TTHandleThread getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null)
+    if (instance == null) {
+      try
       {
-        TTHandleThread localTTHandleThread = new TTHandleThread("TTIOThread");
-        localTTHandleThread.start();
-        handler = new Handler(localTTHandleThread.getLooper());
-        instance = localTTHandleThread;
+        if (instance == null)
+        {
+          TTHandleThread localTTHandleThread = new TTHandleThread("TTIOThread");
+          localTTHandleThread.start();
+          handler = new Handler(localTTHandleThread.getLooper());
+          instance = localTTHandleThread;
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   public final void post(Runnable paramRunnable)
@@ -53,7 +54,7 @@ public class TTHandleThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.utils.thread.TTHandleThread
  * JD-Core Version:    0.7.0.1
  */

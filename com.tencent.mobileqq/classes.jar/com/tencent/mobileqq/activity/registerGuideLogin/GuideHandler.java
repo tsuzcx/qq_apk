@@ -30,11 +30,12 @@ public class GuideHandler
   
   public static GuideBaseFragment a(QBaseActivity paramQBaseActivity, AppRuntime paramAppRuntime)
   {
-    switch (a(paramQBaseActivity.getIntent()))
+    int i = a(paramQBaseActivity.getIntent());
+    if (i != 101)
     {
-    default: 
-      return new LoginView(paramAppRuntime);
-    case 102: 
+      if (i != 102) {
+        return new LoginView(paramAppRuntime);
+      }
       return new LoginView(paramAppRuntime);
     }
     return new RegisterGuideView(paramAppRuntime);
@@ -42,38 +43,32 @@ public class GuideHandler
   
   public static boolean a(String[] paramArrayOfString)
   {
-    boolean bool2 = false;
     String str = Build.MODEL;
-    if (QLog.isColorLevel()) {
-      QLog.d("GuideHandler", 2, "isKeyBoardBlackList model=" + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isKeyBoardBlackList model=");
+      localStringBuilder.append(str);
+      QLog.d("GuideHandler", 2, localStringBuilder.toString());
     }
-    boolean bool1 = bool2;
-    int j;
-    int i;
     if (str != null)
     {
-      j = paramArrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
         if (str.equals(paramArrayOfString[i])) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.GuideHandler
  * JD-Core Version:    0.7.0.1
  */

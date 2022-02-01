@@ -34,7 +34,7 @@ public class PopupMenu
   {
     super(paramContext);
     this.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
-    a(2131559220);
+    a(2131559098);
     this.b = 4;
     this.jdField_a_of_type_Int = 0;
   }
@@ -63,19 +63,17 @@ public class PopupMenu
   
   private void a(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    switch (this.b)
-    {
-    default: 
+    if (this.b != 4) {
       return;
     }
-    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755043);
+    this.jdField_a_of_type_AndroidWidgetPopupWindow.setAnimationStyle(2131755046);
   }
   
   public void a(int paramInt)
   {
     this.jdField_a_of_type_AndroidViewView = ((ViewGroup)this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt, null));
-    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131371176));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131363033));
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)this.jdField_a_of_type_AndroidViewView.findViewById(2131370800));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362981));
     this.jdField_a_of_type_AndroidViewView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
     super.b(this.jdField_a_of_type_AndroidViewView);
   }
@@ -111,49 +109,43 @@ public class PopupMenu
     if (this.jdField_a_of_type_Int != 0)
     {
       localObject1 = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      ((ImageView)localObject1).setBackgroundResource(2130839805);
+      ((ImageView)localObject1).setBackgroundResource(2130839664);
       localObject2 = new LinearLayout.LayoutParams(-1, -2, 1.0F);
-      ((LinearLayout.LayoutParams)localObject2).setMargins(AIOUtils.a(15.0F, ((ImageView)localObject1).getResources()), 0, AIOUtils.a(15.0F, ((ImageView)localObject1).getResources()), 0);
+      ((LinearLayout.LayoutParams)localObject2).setMargins(AIOUtils.b(15.0F, ((ImageView)localObject1).getResources()), 0, AIOUtils.b(15.0F, ((ImageView)localObject1).getResources()), 0);
       this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1, (ViewGroup.LayoutParams)localObject2);
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559219, null);
-    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131371180);
-    TextView localTextView = (TextView)((View)localObject1).findViewById(2131371191);
-    if (localDrawable != null)
-    {
+    Object localObject1 = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559097, null);
+    Object localObject2 = (ImageView)((View)localObject1).findViewById(2131370804);
+    TextView localTextView = (TextView)((View)localObject1).findViewById(2131370816);
+    if (localDrawable != null) {
       ((ImageView)localObject2).setImageDrawable(localDrawable);
-      if (str == null) {
-        break label267;
-      }
-      if (SubString.a(str) <= 18) {
-        break label258;
-      }
-      localTextView.setText(SubString.a(str, 18, "..."));
-    }
-    for (;;)
-    {
-      ((View)localObject1).setOnClickListener(new PopupMenu.1(this, paramMenuItem.c(), paramMenuItem.a()));
-      ((View)localObject1).setFocusable(true);
-      ((View)localObject1).setClickable(true);
-      paramMenuItem = new LinearLayout.LayoutParams(-1, -2, 1.0F);
-      paramMenuItem.gravity = 17;
-      ((View)localObject1).setLayoutParams(paramMenuItem);
-      this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
-      this.jdField_a_of_type_Int += 1;
-      return;
+    } else {
       ((ImageView)localObject2).setVisibility(8);
-      break;
-      label258:
-      localTextView.setText(str);
-      continue;
-      label267:
+    }
+    if (str != null)
+    {
+      if (SubString.a(str) > 18) {
+        localTextView.setText(SubString.a(str, 18, "..."));
+      } else {
+        localTextView.setText(str);
+      }
+    }
+    else {
       localTextView.setVisibility(8);
     }
+    ((View)localObject1).setOnClickListener(new PopupMenu.1(this, paramMenuItem.c(), paramMenuItem.a()));
+    ((View)localObject1).setFocusable(true);
+    ((View)localObject1).setClickable(true);
+    paramMenuItem = new LinearLayout.LayoutParams(-1, -2, 1.0F);
+    paramMenuItem.gravity = 17;
+    ((View)localObject1).setLayoutParams(paramMenuItem);
+    this.jdField_a_of_type_AndroidViewViewGroup.addView((View)localObject1);
+    this.jdField_a_of_type_Int += 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.PopupMenu
  * JD-Core Version:    0.7.0.1
  */

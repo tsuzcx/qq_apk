@@ -1,108 +1,28 @@
 package com.huawei.hms.support.hianalytics;
 
 import android.content.Context;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
-import android.os.Bundle;
-import android.provider.Settings.Secure;
-import android.provider.Settings.SettingNotFoundException;
 import android.text.TextUtils;
-import com.huawei.hms.stats.bs;
-import com.huawei.hms.stats.bu;
+import com.huawei.hianalytics.process.HiAnalyticsManager;
+import com.huawei.hianalytics.util.HiAnalyticTools;
+import com.huawei.hms.hatool.HmsHiAnalyticsUtils;
+import com.huawei.hms.stats.a;
+import com.huawei.hms.stats.b;
+import com.huawei.hms.stats.c;
 import com.huawei.hms.support.log.HMSLog;
-import com.huawei.hms.utils.countrycode.CountryCodeBean;
 import java.util.Iterator;
 import java.util.LinkedHashMap;
-import java.util.Locale;
 import java.util.Map;
-import java.util.Map.Entry;
 import java.util.Set;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 public class HiAnalyticsUtils
 {
-  private static final Object a = new Object();
-  private static final Object b = new Object();
-  private static HiAnalyticsUtils c;
-  private static String e = new String();
-  private int d = 0;
-  private final int f = -1;
-  private int g = -1;
-  private int h = -1;
-  private boolean i = false;
+  public static final Object c = new Object();
+  public static final Object d = new Object();
+  public static HiAnalyticsUtils e;
+  public int a = 0;
+  public boolean b = c.a();
   
-  private String a(Map<String, String> paramMap)
-  {
-    if (paramMap == null) {
-      return null;
-    }
-    localJSONObject = new JSONObject();
-    try
-    {
-      paramMap = paramMap.entrySet().iterator();
-      while (paramMap.hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)paramMap.next();
-        localJSONObject.put((String)localEntry.getKey(), localEntry.getValue());
-      }
-      return localJSONObject.toString();
-    }
-    catch (JSONException paramMap)
-    {
-      HMSLog.e("HiAnalyticsUtils", "AnalyticsHelper create json exception" + paramMap.getMessage());
-    }
-  }
-  
-  private void a()
-  {
-    synchronized (b)
-    {
-      if (this.d < 60)
-      {
-        this.d += 1;
-        return;
-      }
-      this.d = 0;
-      bs.a();
-    }
-  }
-  
-  private boolean a(Context paramContext)
-  {
-    if (paramContext == null)
-    {
-      HMSLog.e("HiAnalyticsUtils", "In getBiIsReportSetting, context is null.");
-      return false;
-    }
-    PackageManager localPackageManager = paramContext.getPackageManager();
-    if (localPackageManager == null)
-    {
-      HMSLog.e("HiAnalyticsUtils", "In getBiIsReportSetting, Failed to get 'PackageManager' instance.");
-      return false;
-    }
-    this.h = 0;
-    try
-    {
-      paramContext = localPackageManager.getPackageInfo(paramContext.getPackageName(), 128).applicationInfo;
-      if ((paramContext != null) && (paramContext.metaData != null))
-      {
-        this.i = paramContext.metaData.getBoolean("com.huawei.hms.client.bireport.setting");
-        return this.i;
-      }
-      HMSLog.i("HiAnalyticsUtils", "In getBiIsReportSetting, Failed to read meta data bi report setting.");
-      return false;
-    }
-    catch (PackageManager.NameNotFoundException paramContext)
-    {
-      HMSLog.e("HiAnalyticsUtils", "In getBiIsReportSetting, Failed to read meta data bi report setting.");
-    }
-    return false;
-  }
-  
-  private static LinkedHashMap<String, String> b(Map<String, String> paramMap)
+  public static LinkedHashMap<String, String> a(Map<String, String> paramMap)
   {
     LinkedHashMap localLinkedHashMap = new LinkedHashMap();
     Iterator localIterator = paramMap.keySet().iterator();
@@ -116,184 +36,252 @@ public class HiAnalyticsUtils
   
   public static HiAnalyticsUtils getInstance()
   {
-    synchronized (a)
+    synchronized (c)
     {
-      if (c == null) {
-        c = new HiAnalyticsUtils();
+      if (e == null) {
+        e = new HiAnalyticsUtils();
       }
-      HiAnalyticsUtils localHiAnalyticsUtils = c;
+      HiAnalyticsUtils localHiAnalyticsUtils = e;
       return localHiAnalyticsUtils;
     }
   }
   
   public static String versionCodeToName(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && ((paramString.length() == 8) || (paramString.length() == 9))) {
-      try
-      {
-        Integer.parseInt(paramString);
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append(Integer.parseInt(paramString.substring(0, paramString.length() - 7)));
-        localStringBuilder.append(".");
-        localStringBuilder.append(Integer.parseInt(paramString.substring(paramString.length() - 7, paramString.length() - 5)));
-        localStringBuilder.append(".");
-        localStringBuilder.append(Integer.parseInt(paramString.substring(paramString.length() - 5, paramString.length() - 3)));
-        localStringBuilder.append(".");
-        localStringBuilder.append(Integer.parseInt(paramString.substring(paramString.length() - 3)));
-        paramString = localStringBuilder.toString();
-        return paramString;
-      }
-      catch (NumberFormatException paramString)
-      {
-        return "";
-      }
+    if ((!TextUtils.isEmpty(paramString)) && ((paramString.length() == 8) || (paramString.length() == 9))) {}
+    try
+    {
+      Integer.parseInt(paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Integer.parseInt(paramString.substring(0, paramString.length() - 7)));
+      localStringBuilder.append(".");
+      localStringBuilder.append(Integer.parseInt(paramString.substring(paramString.length() - 7, paramString.length() - 5)));
+      localStringBuilder.append(".");
+      localStringBuilder.append(Integer.parseInt(paramString.substring(paramString.length() - 5, paramString.length() - 3)));
+      localStringBuilder.append(".");
+      localStringBuilder.append(Integer.parseInt(paramString.substring(paramString.length() - 3)));
+      paramString = localStringBuilder.toString();
+      return paramString;
     }
+    catch (NumberFormatException paramString) {}
     return "";
+    return "";
+  }
+  
+  public final void a(Context paramContext)
+  {
+    synchronized (d)
+    {
+      if (this.a < 60)
+      {
+        this.a += 1;
+      }
+      else
+      {
+        this.a = 0;
+        if (!this.b)
+        {
+          HmsHiAnalyticsUtils.onReport();
+        }
+        else
+        {
+          b.a(paramContext, 0);
+          b.a(paramContext, 1);
+        }
+      }
+      return;
+    }
   }
   
   public void enableLog()
   {
     HMSLog.i("HiAnalyticsUtils", "Enable Log");
-    bu.a();
+    if (!this.b)
+    {
+      HmsHiAnalyticsUtils.enableLog();
+      return;
+    }
+    HMSLog.i("HiAnalyticsUtils", "cp needs to pass in the context, this method is not supported");
+  }
+  
+  public void enableLog(Context paramContext)
+  {
+    HMSLog.i("HiAnalyticsUtils", "Enable Log");
+    if (!this.b)
+    {
+      HmsHiAnalyticsUtils.enableLog();
+      return;
+    }
+    HiAnalyticTools.enableLog(paramContext);
   }
   
   public boolean getInitFlag()
   {
-    HMSLog.i("HiAnalyticsUtils", "Get the init flag");
-    return bs.b();
+    if (!this.b) {
+      return HmsHiAnalyticsUtils.getInitFlag();
+    }
+    return HiAnalyticsManager.getInitFlag("hms_config_tag");
   }
   
   public boolean hasError(Context paramContext)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if (this.h == -1)
-    {
-      bool1 = a(paramContext);
-      if (!bool1) {
-        break label39;
-      }
-      HMSLog.i("HiAnalyticsUtils", "cp BI report protocol is true");
-      bool1 = false;
-    }
-    label39:
-    label179:
-    label204:
-    label209:
-    do
-    {
-      String str;
-      do
-      {
-        return bool1;
-        bool1 = this.i;
-        break;
-        if ((e == null) || (e.isEmpty()))
-        {
-          HMSLog.i("HiAnalyticsUtils", "issueCountry initial");
-          e = new CountryCodeBean(paramContext, false).a();
-          if (!TextUtils.isEmpty(e)) {
-            break label179;
-          }
-          str = "CN";
-          e = str;
-        }
-        if (("CN".equalsIgnoreCase(e)) || (this.g != -1)) {
-          break label209;
-        }
-        HMSLog.i("HiAnalyticsUtils", "not ChinaROM");
-        bool1 = bool2;
-      } while (paramContext == null);
-      for (;;)
-      {
-        try
-        {
-          this.g = Settings.Secure.getInt(paramContext.getContentResolver(), "hw_app_analytics_state");
-          HMSLog.i("HiAnalyticsUtils", "hw_app_analytics_state value is " + this.g);
-          if (this.g == 1) {
-            break label204;
-          }
-          bool1 = true;
-          return bool1;
-        }
-        catch (Settings.SettingNotFoundException paramContext)
-        {
-          HMSLog.i("HiAnalyticsUtils", "Get OOBE failed");
-          return true;
-        }
-        str = e.toUpperCase(Locale.ENGLISH);
-        break;
-        bool1 = false;
-      }
-      bool1 = bool2;
-    } while (this.g == 0);
-    return false;
+    return a.c(paramContext);
   }
   
   public void onBuoyEvent(Context paramContext, String paramString1, String paramString2)
   {
-    if (hasError(paramContext)) {}
-    while (paramContext == null) {
+    if (hasError(paramContext)) {
       return;
     }
-    onEvent2(paramContext, paramString1, paramString2);
+    if (paramContext != null) {
+      onEvent2(paramContext, paramString1, paramString2);
+    }
   }
   
   public void onEvent(Context paramContext, String paramString, Map<String, String> paramMap)
   {
-    if (hasError(paramContext)) {}
-    String str;
-    do
-    {
+    if (hasError(paramContext)) {
       return;
-      str = a(paramMap);
-    } while (TextUtils.isEmpty(str));
-    onEvent2(paramContext, paramString, str);
-    bs.a(1, paramString, b(paramMap));
-    a();
+    }
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramContext != null))
+    {
+      if (!getInitFlag()) {
+        return;
+      }
+      if (!this.b)
+      {
+        HmsHiAnalyticsUtils.onEvent(0, paramString, a(paramMap));
+        HmsHiAnalyticsUtils.onEvent(1, paramString, a(paramMap));
+      }
+      else
+      {
+        b.a(paramContext, 0, paramString, a(paramMap));
+        b.a(paramContext, 1, paramString, a(paramMap));
+      }
+      a(paramContext);
+    }
   }
   
   public void onEvent2(Context paramContext, String paramString1, String paramString2)
   {
-    if (hasError(paramContext)) {}
-    while ((paramContext == null) || (!bs.b())) {
+    if (hasError(paramContext)) {
       return;
     }
-    bs.a(paramContext, paramString1, paramString2);
+    if (paramContext != null)
+    {
+      if (!getInitFlag()) {
+        return;
+      }
+      if (!this.b)
+      {
+        HmsHiAnalyticsUtils.onEvent(paramContext, paramString1, paramString2);
+        return;
+      }
+      b.a(paramContext, paramString1, paramString2);
+    }
   }
   
   public void onNewEvent(Context paramContext, String paramString, Map paramMap)
   {
-    if (hasError(paramContext)) {}
-    String str;
-    do
-    {
+    if (hasError(paramContext)) {
       return;
-      str = a(paramMap);
-    } while ((paramContext == null) || (!bs.b()));
-    bs.a(paramContext, paramString, str);
-    bs.a(1, paramString, b(paramMap));
-    a();
+    }
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramContext != null))
+    {
+      if (!getInitFlag()) {
+        return;
+      }
+      if (!this.b)
+      {
+        HmsHiAnalyticsUtils.onEvent(0, paramString, a(paramMap));
+        HmsHiAnalyticsUtils.onEvent(1, paramString, a(paramMap));
+      }
+      else
+      {
+        b.a(paramContext, 0, paramString, a(paramMap));
+        b.a(paramContext, 1, paramString, a(paramMap));
+      }
+      a(paramContext);
+    }
+  }
+  
+  public void onNewEvent(Context paramContext, String paramString, Map paramMap, int paramInt)
+  {
+    if (hasError(paramContext)) {
+      return;
+    }
+    if ((paramInt != 0) && (paramInt != 1))
+    {
+      HMSLog.e("HiAnalyticsUtils", "Data reporting type is not supported");
+      return;
+    }
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramContext != null))
+    {
+      if (!getInitFlag()) {
+        return;
+      }
+      if (!this.b) {
+        HmsHiAnalyticsUtils.onEvent(paramInt, paramString, a(paramMap));
+      } else {
+        b.a(paramContext, paramInt, paramString, a(paramMap));
+      }
+      a(paramContext);
+    }
   }
   
   public void onReport(Context paramContext, String paramString, Map paramMap)
   {
-    if (hasError(paramContext)) {}
-    String str;
-    do
-    {
+    if (hasError(paramContext)) {
       return;
-      str = a(paramMap);
-    } while (TextUtils.isEmpty(str));
-    HMSLog.i("HiAnalyticsUtils", "Report the data");
-    onEvent2(paramContext, paramString, str);
-    bs.a(1, paramString, b(paramMap));
-    bs.a();
+    }
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramContext != null))
+    {
+      if (!getInitFlag()) {
+        return;
+      }
+      if (!this.b)
+      {
+        HmsHiAnalyticsUtils.onEvent(0, paramString, a(paramMap));
+        HmsHiAnalyticsUtils.onEvent(1, paramString, a(paramMap));
+        HmsHiAnalyticsUtils.onReport();
+        return;
+      }
+      b.a(paramContext, 0, paramString, a(paramMap));
+      b.a(paramContext, 1, paramString, a(paramMap));
+      b.a(paramContext, 0);
+      b.a(paramContext, 1);
+    }
+  }
+  
+  public void onReport(Context paramContext, String paramString, Map paramMap, int paramInt)
+  {
+    if (hasError(paramContext)) {
+      return;
+    }
+    if ((paramInt != 0) && (paramInt != 1))
+    {
+      HMSLog.e("HiAnalyticsUtils", "Data reporting type is not supported");
+      return;
+    }
+    if ((paramMap != null) && (!paramMap.isEmpty()) && (paramContext != null))
+    {
+      if (!getInitFlag()) {
+        return;
+      }
+      if (!this.b)
+      {
+        HmsHiAnalyticsUtils.onEvent(paramInt, paramString, a(paramMap));
+        HmsHiAnalyticsUtils.onReport();
+        return;
+      }
+      b.a(paramContext, paramInt, paramString, a(paramMap));
+      b.a(paramContext, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.hianalytics.HiAnalyticsUtils
  * JD-Core Version:    0.7.0.1
  */

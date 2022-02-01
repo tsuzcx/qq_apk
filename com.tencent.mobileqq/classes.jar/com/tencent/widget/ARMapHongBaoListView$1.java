@@ -5,7 +5,6 @@ import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
 import com.tencent.mobileqq.armap.ConversationActivePendantHolderBase;
-import com.tencent.mobileqq.armap.ConversationPullDownActiveBase;
 import com.tencent.qphone.base.util.QLog;
 
 class ARMapHongBaoListView$1
@@ -15,100 +14,122 @@ class ARMapHongBaoListView$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    int j;
-    int k;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return false;
-    case 1: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return false;
+            }
+            this.a.setIsShowingPreguide(false);
+            return false;
+          }
+          if (((Bundle)paramMessage.obj).getBoolean("isSpringBack")) {
+            ARMapHongBaoListView.a(this.a, paramMessage.what);
+          }
+          ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+          if (ARMapHongBaoListView.a(this.a) != null)
+          {
+            ARMapHongBaoListView.a(this.a).a(false);
+            return false;
+          }
+        }
+        else
+        {
+          this.a.setIsShowingPreguide(true);
+          i = this.a.e;
+          if (paramMessage.arg1 != 0) {
+            i = paramMessage.arg1;
+          }
+          if (this.a.a != null) {
+            this.a.a.a(this.a.e / 3, 300L);
+          }
+          Message localMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 4);
+          localMessage.obj = paramMessage.obj;
+          ARMapHongBaoListView.a(this.a).sendMessageDelayed(localMessage, 2000L);
+          if ((ARMapHongBaoListView.a(this.a) != null) && (this.a.b))
+          {
+            ARMapHongBaoListView.a(this.a).b(false);
+            return false;
+          }
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_HIDE");
+        }
+        if (ARMapHongBaoListView.a(this.a) != null) {
+          ARMapHongBaoListView.a(this.a).a(false);
+        }
+        ARMapHongBaoListView.a(this.a, paramMessage.what);
+        ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
+        return false;
+      }
+    }
+    else
+    {
       this.a.setIsShowingPreguide(true);
       boolean bool1 = paramMessage.getData().getBoolean("isFirstCall", false);
       boolean bool2 = paramMessage.getData().getBoolean("isListViewSpring", false);
       boolean bool3 = paramMessage.getData().getBoolean("isPendantBounce", false);
-      j = paramMessage.getData().getInt("pendantBountCnt", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_SHOW, " + bool1 + "," + bool2 + "," + bool3 + "," + j);
-      }
-      if ((bool1) && (bool2))
+      int j = paramMessage.getData().getInt("pendantBountCnt", 0);
+      if (QLog.isColorLevel())
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.a(-this.a.e);
-        if ((ARMapHongBaoListView.a(this.a) != null) && (this.a.b)) {
-          ARMapHongBaoListView.a(this.a).b(false);
-        }
+        paramMessage = new StringBuilder();
+        paramMessage.append("ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_SHOW, ");
+        paramMessage.append(bool1);
+        paramMessage.append(",");
+        paramMessage.append(bool2);
+        paramMessage.append(",");
+        paramMessage.append(bool3);
+        paramMessage.append(",");
+        paramMessage.append(j);
+        QLog.d("ARMapHongBaoListView", 2, paramMessage.toString());
       }
-      if ((bool3) && (j > 0))
+      if ((bool1) && (bool2) && (ARMapHongBaoListView.a(this.a) != null) && (this.a.b)) {
+        ARMapHongBaoListView.a(this.a).b(false);
+      }
+      i = j;
+      if (bool3)
       {
-        float f = j * 1.0F / 6.0F;
-        if (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase != null) {
-          this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.a((int)(f * this.a.e), j * 300L);
-        }
-        k = j - 1;
-        i = k;
-        if (k > 0)
+        i = j;
+        if (j > 0)
         {
-          paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 1);
-          paramMessage.getData().putBoolean("isFirstCall", false);
-          paramMessage.getData().putBoolean("isListViewSpring", false);
-          paramMessage.getData().putBoolean("isPendantBounce", bool3);
-          paramMessage.getData().putInt("pendantBountCnt", k);
-          ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, j * 300L + 200L);
+          float f = j * 1.0F / 6.0F;
+          if (this.a.a != null) {
+            this.a.a.a((int)(this.a.e * f), j * 300L);
+          }
+          i = j - 1;
+          if (i > 0)
+          {
+            paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 1);
+            paramMessage.getData().putBoolean("isFirstCall", false);
+            paramMessage.getData().putBoolean("isListViewSpring", false);
+            paramMessage.getData().putBoolean("isPendantBounce", bool3);
+            paramMessage.getData().putInt("pendantBountCnt", i);
+            ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, j * 300L + 200L);
+          }
         }
       }
-      break;
-    }
-    for (int i = k;; i = j)
-    {
       if (i == 0)
       {
         paramMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 2);
         ARMapHongBaoListView.a(this.a).sendMessageDelayed(paramMessage, 1200L);
       }
       this.a.invalidate();
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.d("ARMapHongBaoListView", 2, "ARMapHongBaoListView handleMessage MSG_WHAT_GUIDE_HIDE");
-      }
-      if (ARMapHongBaoListView.a(this.a) != null) {
-        ARMapHongBaoListView.a(this.a).a(false);
-      }
-      ARMapHongBaoListView.a(this.a, paramMessage.what);
-      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
-      return false;
-      this.a.setIsShowingPreguide(true);
-      i = this.a.e;
-      if (paramMessage.arg1 != 0) {
-        i = paramMessage.arg1;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationPullDownActiveBase.a(-i);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqArmapConversationActivePendantHolderBase.a(this.a.e / 3, 300L);
-      }
-      Message localMessage = Message.obtain(ARMapHongBaoListView.a(this.a), 4);
-      localMessage.obj = paramMessage.obj;
-      ARMapHongBaoListView.a(this.a).sendMessageDelayed(localMessage, 2000L);
-      if ((ARMapHongBaoListView.a(this.a) == null) || (!this.a.b)) {
-        break;
-      }
-      ARMapHongBaoListView.a(this.a).b(false);
-      return false;
-      if (((Bundle)paramMessage.obj).getBoolean("isSpringBack")) {
-        ARMapHongBaoListView.a(this.a, paramMessage.what);
-      }
-      ARMapHongBaoListView.a(this.a).sendEmptyMessageDelayed(5, 300L);
-      if (ARMapHongBaoListView.a(this.a) == null) {
-        break;
-      }
-      ARMapHongBaoListView.a(this.a).a(false);
-      return false;
-      this.a.setIsShowingPreguide(false);
-      return false;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ARMapHongBaoListView.1
  * JD-Core Version:    0.7.0.1
  */

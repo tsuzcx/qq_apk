@@ -38,7 +38,7 @@ public class GameCenterPackeger
             paramArrayOfByte.setServerEncoding("utf-8");
             localObject = new RespGetPluginSettings();
             ((RespGetPluginSettings)localObject).readFrom(paramArrayOfByte);
-            if ((localObject != null) && (((RespGetPluginSettings)localObject).PluginInfoList != null))
+            if (((RespGetPluginSettings)localObject).PluginInfoList != null)
             {
               paramArrayOfByte = ((RespGetPluginSettings)localObject).PluginInfoList;
               return paramArrayOfByte;
@@ -46,11 +46,11 @@ public class GameCenterPackeger
           }
         }
       }
+      return null;
     }
     catch (Exception paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
-      return null;
     }
     return null;
   }
@@ -78,20 +78,18 @@ public class GameCenterPackeger
     ArrayList localArrayList = new ArrayList();
     if ((paramList != null) && (paramList.size() > 0)) {
       localArrayList.addAll(paramList);
-    }
-    for (;;)
-    {
-      localReqGetPluginSettings.PluginList = localArrayList;
-      paramList = new JceOutputStream();
-      localReqGetPluginSettings.writeTo(paramList);
-      return paramList.toByteArray();
+    } else {
       localArrayList.add(Long.valueOf(489L));
     }
+    localReqGetPluginSettings.PluginList = localArrayList;
+    paramList = new JceOutputStream();
+    localReqGetPluginSettings.writeTo(paramList);
+    return paramList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.gamecenter.GameCenterPackeger
  * JD-Core Version:    0.7.0.1
  */

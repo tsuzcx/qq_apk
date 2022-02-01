@@ -20,35 +20,36 @@ public class WeiyunCheckAlbumConfigBean
   
   public static WeiyunCheckAlbumConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      return null;
-    }
-    WeiyunCheckAlbumConfigBean localWeiyunCheckAlbumConfigBean = new WeiyunCheckAlbumConfigBean();
-    try
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
-      localWeiyunCheckAlbumConfigBean.jdField_a_of_type_Int = paramArrayOfQConfItem.getInt("check_day");
-      localWeiyunCheckAlbumConfigBean.jdField_b_of_type_Int = paramArrayOfQConfItem.getInt("check_time");
-      localWeiyunCheckAlbumConfigBean.jdField_c_of_type_Int = paramArrayOfQConfItem.getInt("album_days");
-      localWeiyunCheckAlbumConfigBean.jdField_d_of_type_Int = paramArrayOfQConfItem.getInt("photos_limit");
-      localWeiyunCheckAlbumConfigBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("tips");
-      localWeiyunCheckAlbumConfigBean.jdField_b_of_type_JavaLangString = paramArrayOfQConfItem.getString("jump_text");
-      localWeiyunCheckAlbumConfigBean.jdField_c_of_type_JavaLangString = paramArrayOfQConfItem.getString("t_show");
-      localWeiyunCheckAlbumConfigBean.jdField_d_of_type_JavaLangString = paramArrayOfQConfItem.getString("t_click");
-      localWeiyunCheckAlbumConfigBean.e = paramArrayOfQConfItem.getString("t_close");
-      localWeiyunCheckAlbumConfigBean.jdField_a_of_type_Boolean = true;
-      return localWeiyunCheckAlbumConfigBean;
+      WeiyunCheckAlbumConfigBean localWeiyunCheckAlbumConfigBean = new WeiyunCheckAlbumConfigBean();
+      try
+      {
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].jdField_a_of_type_JavaLangString);
+        localWeiyunCheckAlbumConfigBean.jdField_a_of_type_Int = paramArrayOfQConfItem.getInt("check_day");
+        localWeiyunCheckAlbumConfigBean.jdField_b_of_type_Int = paramArrayOfQConfItem.getInt("check_time");
+        localWeiyunCheckAlbumConfigBean.jdField_c_of_type_Int = paramArrayOfQConfItem.getInt("album_days");
+        localWeiyunCheckAlbumConfigBean.jdField_d_of_type_Int = paramArrayOfQConfItem.getInt("photos_limit");
+        localWeiyunCheckAlbumConfigBean.jdField_a_of_type_JavaLangString = paramArrayOfQConfItem.getString("tips");
+        localWeiyunCheckAlbumConfigBean.jdField_b_of_type_JavaLangString = paramArrayOfQConfItem.getString("jump_text");
+        localWeiyunCheckAlbumConfigBean.jdField_c_of_type_JavaLangString = paramArrayOfQConfItem.getString("t_show");
+        localWeiyunCheckAlbumConfigBean.jdField_d_of_type_JavaLangString = paramArrayOfQConfItem.getString("t_click");
+        localWeiyunCheckAlbumConfigBean.e = paramArrayOfQConfItem.getString("t_close");
+        localWeiyunCheckAlbumConfigBean.jdField_a_of_type_Boolean = true;
+        return localWeiyunCheckAlbumConfigBean;
+      }
+      catch (JSONException paramArrayOfQConfItem)
+      {
+        QLog.e("WeiyunCheckAlbumConfigBean", 1, "wy check album config parse failed", paramArrayOfQConfItem);
+        return localWeiyunCheckAlbumConfigBean;
+      }
     }
-    catch (JSONException paramArrayOfQConfItem)
-    {
-      QLog.e("WeiyunCheckAlbumConfigBean", 1, "wy check album config parse failed", paramArrayOfQConfItem);
-    }
-    return localWeiyunCheckAlbumConfigBean;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.WeiyunCheckAlbumConfigBean
  * JD-Core Version:    0.7.0.1
  */

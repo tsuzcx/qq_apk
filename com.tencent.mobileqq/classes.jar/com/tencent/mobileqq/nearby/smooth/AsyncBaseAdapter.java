@@ -4,7 +4,6 @@ import android.database.DataSetObserver;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AsyncBaseAdapter
   extends BaseAdapter
@@ -50,10 +49,9 @@ class AsyncBaseAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    View localView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(paramInt, paramView, paramViewGroup);
-    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager.a(paramViewGroup, localView, paramInt);
-    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-    return localView;
+    paramView = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(paramInt, paramView, paramViewGroup);
+    this.jdField_a_of_type_ComTencentMobileqqNearbySmoothItemManager.a(paramViewGroup, paramView, paramInt);
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -98,7 +96,7 @@ class AsyncBaseAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.AsyncBaseAdapter
  * JD-Core Version:    0.7.0.1
  */

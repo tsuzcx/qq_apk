@@ -71,14 +71,11 @@ public final class OperatorGroupBy$GroupBySubscriber<T, K, V>
   
   public void cancel(K paramK)
   {
-    if (paramK != null) {}
-    for (;;)
-    {
-      if ((this.groups.remove(paramK) != null) && (GROUP_COUNT.decrementAndGet(this) == 0)) {
-        unsubscribe();
-      }
-      return;
+    if (paramK == null) {
       paramK = NULL_KEY;
+    }
+    if ((this.groups.remove(paramK) != null) && (GROUP_COUNT.decrementAndGet(this) == 0)) {
+      unsubscribe();
     }
   }
   
@@ -115,58 +112,47 @@ public final class OperatorGroupBy$GroupBySubscriber<T, K, V>
     Queue localQueue = this.queue;
     Subscriber localSubscriber = this.actual;
     int i = 1;
-    label25:
-    long l2;
     int j;
-    if (!checkTerminated(this.done, localQueue.isEmpty(), localSubscriber, localQueue))
+    do
     {
-      l2 = this.requested;
-      if (l2 != 9223372036854775807L) {
-        break label164;
+      if (checkTerminated(this.done, localQueue.isEmpty(), localSubscriber, localQueue)) {
+        return;
       }
-      j = 1;
-    }
-    label64:
-    for (long l1 = 0L;; l1 -= 1L)
-    {
-      boolean bool2;
-      GroupedObservable localGroupedObservable;
-      if (l2 != 0L)
+      long l2 = this.requested;
+      if (l2 == 9223372036854775807L) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      for (long l1 = 0L; l2 != 0L; l1 -= 1L)
       {
-        bool2 = this.done;
-        localGroupedObservable = (GroupedObservable)localQueue.poll();
-        if (localGroupedObservable != null) {
-          break label169;
+        boolean bool2 = this.done;
+        GroupedObservable localGroupedObservable = (GroupedObservable)localQueue.poll();
+        boolean bool1;
+        if (localGroupedObservable == null) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-      }
-      for (boolean bool1 = true;; bool1 = false)
-      {
         if (checkTerminated(bool2, bool1, localSubscriber, localQueue)) {
-          break label173;
+          return;
         }
-        if (!bool1) {
-          break label175;
-        }
-        if (l1 != 0L)
-        {
-          if (j == 0) {
-            REQUESTED.addAndGet(this, l1);
-          }
-          this.s.request(-l1);
-        }
-        i = WIP.addAndGet(this, -i);
-        if (i == 0) {
+        if (bool1) {
           break;
         }
-        break label25;
-        break;
-        j = 0;
-        break label64;
+        localSubscriber.onNext(localGroupedObservable);
+        l2 -= 1L;
       }
-      break;
-      localSubscriber.onNext(localGroupedObservable);
-      l2 -= 1L;
-    }
+      if (l1 != 0L)
+      {
+        if (j == 0) {
+          REQUESTED.addAndGet(this, l1);
+        }
+        this.s.request(-l1);
+      }
+      j = WIP.addAndGet(this, -i);
+      i = j;
+    } while (j != 0);
   }
   
   void errorAll(Subscriber<? super GroupedObservable<K, V>> paramSubscriber, Queue<?> paramQueue, Throwable paramThrowable)
@@ -211,69 +197,69 @@ public final class OperatorGroupBy$GroupBySubscriber<T, K, V>
     }
     Queue localQueue = this.queue;
     Subscriber localSubscriber = this.actual;
-    for (;;)
+    try
     {
-      OperatorGroupBy.GroupedUnicast localGroupedUnicast;
-      try
-      {
-        Object localObject2 = this.keySelector.call(paramT);
-        if (localObject2 != null)
+      Object localObject2 = this.keySelector.call(paramT);
+      int i = 1;
+      Object localObject1;
+      if (localObject2 != null) {
+        localObject1 = localObject2;
+      } else {
+        localObject1 = NULL_KEY;
+      }
+      OperatorGroupBy.GroupedUnicast localGroupedUnicast2 = (OperatorGroupBy.GroupedUnicast)this.groups.get(localObject1);
+      OperatorGroupBy.GroupedUnicast localGroupedUnicast1 = localGroupedUnicast2;
+      if (localGroupedUnicast2 == null) {
+        if (this.cancelled == 0)
         {
-          localObject1 = localObject2;
-          localGroupedUnicast = (OperatorGroupBy.GroupedUnicast)this.groups.get(localObject1);
-          if (localGroupedUnicast != null) {
-            break label189;
-          }
-          if (this.cancelled != 0) {
-            break;
-          }
-          localObject2 = OperatorGroupBy.GroupedUnicast.createWith(localObject2, this.bufferSize, this, this.delayError);
-          this.groups.put(localObject1, localObject2);
+          localGroupedUnicast1 = OperatorGroupBy.GroupedUnicast.createWith(localObject2, this.bufferSize, this, this.delayError);
+          this.groups.put(localObject1, localGroupedUnicast1);
           GROUP_COUNT.getAndIncrement(this);
           i = 0;
-          localQueue.offer(localObject2);
+          localQueue.offer(localGroupedUnicast1);
           drain();
-          localObject1 = localObject2;
         }
+        else
+        {
+          return;
+        }
+      }
+      try
+      {
+        paramT = this.valueSelector.call(paramT);
+        localGroupedUnicast1.onNext(paramT);
+        if (i != 0) {
+          this.s.request(1L);
+        }
+        return;
       }
       catch (Throwable paramT)
       {
-        try
-        {
-          paramT = this.valueSelector.call(paramT);
-          localObject1.onNext(paramT);
-          if (i == 0) {
-            break;
-          }
-          this.s.request(1L);
-          return;
-        }
-        catch (Throwable paramT)
-        {
-          unsubscribe();
-          errorAll(localSubscriber, localQueue, paramT);
-          return;
-        }
-        paramT = paramT;
         unsubscribe();
         errorAll(localSubscriber, localQueue, paramT);
         return;
       }
-      Object localObject1 = NULL_KEY;
-      continue;
-      label189:
-      int i = 1;
-      localObject1 = localGroupedUnicast;
+      return;
+    }
+    catch (Throwable paramT)
+    {
+      unsubscribe();
+      errorAll(localSubscriber, localQueue, paramT);
     }
   }
   
   public void requestMore(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required but it was " + paramLong);
+    if (paramLong >= 0L)
+    {
+      BackpressureUtils.getAndAddRequest(REQUESTED, this, paramLong);
+      drain();
+      return;
     }
-    BackpressureUtils.getAndAddRequest(REQUESTED, this, paramLong);
-    drain();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n >= 0 required but it was ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void setProducer(Producer paramProducer)
@@ -283,7 +269,7 @@ public final class OperatorGroupBy$GroupBySubscriber<T, K, V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorGroupBy.GroupBySubscriber
  * JD-Core Version:    0.7.0.1
  */

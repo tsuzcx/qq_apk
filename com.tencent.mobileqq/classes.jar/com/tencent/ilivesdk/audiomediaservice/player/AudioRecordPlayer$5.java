@@ -49,13 +49,14 @@ class AudioRecordPlayer$5
   public boolean onAVStreamEvent(int paramInt, String paramString)
   {
     AudioRecordPlayer.a(this.a).i("AudioRecordPlayer", "audioCoreEventCallback: onAVStreamEvent eventId[%d] aUin[%s]", new Object[] { Integer.valueOf(paramInt), paramString });
-    if (paramInt == 5) {
+    if (paramInt == 5)
+    {
       AudioRecordPlayer.a(this.a).a(Long.valueOf(paramString).longValue());
-    }
-    while (paramInt != 4) {
       return false;
     }
-    AudioRecordPlayer.a(this.a).b(Long.valueOf(paramString).longValue());
+    if (paramInt == 4) {
+      AudioRecordPlayer.a(this.a).b(Long.valueOf(paramString).longValue());
+    }
     return false;
   }
   
@@ -71,7 +72,7 @@ class AudioRecordPlayer$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.AudioRecordPlayer.5
  * JD-Core Version:    0.7.0.1
  */

@@ -2,19 +2,13 @@ package com.tencent.mobileqq.activity;
 
 import android.app.Activity;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.content.IntentSender;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.net.Uri;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.SystemClock;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.text.TextUtils;
 import android.util.DisplayMetrics;
 import android.view.KeyEvent;
@@ -22,30 +16,25 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
-import android.view.ViewParent;
 import android.view.Window;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.webviewbase.AbsBaseWebViewActivity;
-import com.tencent.biz.webviewplugin.Share;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.lightGame.CmGameFragment;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.app.ActivityCompat;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.colornote.ColorNoteController;
-import com.tencent.mobileqq.colornote.IServiceInfo;
-import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.data.ColorNote.Builder;
-import com.tencent.mobileqq.colornote.data.ColorNoteUtils;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
-import com.tencent.mobileqq.colornote.swipeback.SwipePostTableLayout;
-import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.app.utils.RouteUtils;
+import com.tencent.mobileqq.gesturelock.BaseGesturePWDUtil;
 import com.tencent.mobileqq.qroute.route.annotation.RoutePage;
-import com.tencent.mobileqq.shortvideo.util.ShortVideoGuideUtil;
-import com.tencent.mobileqq.transfile.dns.InnerDns;
+import com.tencent.mobileqq.transfile.dns.BaseInnerDns;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.WebViewTitleStyleHelper;
-import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
+import com.tencent.mobileqq.webview.swift.SwiftBrowserUIStyle;
 import com.tencent.mobileqq.webview.swift.SwiftWebViewFragmentSupporter;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.mobileqq.webview.swift.WebViewFragmentBuilder;
@@ -55,18 +44,17 @@ import com.tencent.mobileqq.webview.swift.WebviewFragmentTabBarBuilder;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderContext;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserNavigator;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
+import com.tencent.mobileqq.webview.swift.injector.WebColorNoteInjectorUtil;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebAccelerator.TbsAccelerator;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
+import com.tencent.mobileqq.webview.util.IWebColorNoteInject;
+import com.tencent.mobileqq.webview.util.WebViewComUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.smtt.sdk.WebView;
 import com.tencent.widget.immersive.ImmersiveUtils;
-import cooperation.comic.utils.VipComicUrlHelper;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
@@ -74,19 +62,19 @@ import java.util.List;
 import mqq.app.AppRuntime;
 import mqq.app.IBrowserThirdAppReport;
 import mqq.app.MobileQQ;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 @RoutePage(desc="内置浏览器", path="/base/browser")
 public class QQBrowserActivity
-  extends FragmentActivity
-  implements IServiceInfo, SwiftWebViewFragmentSupporter, SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderContext, IBrowserThirdAppReport
+  extends QBaseActivity
+  implements SwiftWebViewFragmentSupporter, SwiftBrowserComponentsProvider.SwiftBrowserComponentProviderContext, IBrowserThirdAppReport
 {
   public static final String ACTION_NAME = "action_name";
+  public static final String ACTION_UPDATE_VIP_INFO = "com.tencent.mobileqq.opencenter.vipInfo";
+  public static final String ACTION_VIEW_SELF_ALBUM = "com.tencent.mobileqq.view.self.album";
   public static final String APP_ID = "appid";
   public static final String APP_PARAM = "extraParams";
   public static final String ARTICAL_CHANNEL_EXTRAL_INFO = "ARTICAL_CHANNEL_EXTRAL_INFO";
-  public static final String ARTICAL_CHANNEL_ID = "articalChannelId";
+  public static final String BROADCAST_ACTION_KEY = "broadcastAction";
   public static final int CHANNEL_C2C_AIO = 2;
   public static final int CHANNEL_CONTACT_ADD_SEARCH = 12;
   public static final int CHANNEL_CONTACT_SEARCH = 11;
@@ -94,7 +82,6 @@ public class QQBrowserActivity
   public static final int CHANNEL_DYBAMIC_SEARCH = 13;
   public static final int CHANNEL_KANDIAN = 7;
   public static final int CHANNEL_NO_REPORT = 0;
-  public static final int CHANNEL_OTHER = 100;
   public static final int CHANNEL_PB_AIO = 1;
   public static final int CHANNEL_QZONE_FEED = 5;
   public static final int CHANNEL_QZONE_KANDIAN = 6;
@@ -108,11 +95,10 @@ public class QQBrowserActivity
   public static final String EXTRA_FINISH_ANIMATION_UP_DOWN = "finish_animation_up_down";
   private static final String FLAG_BROWSER_RESTORE = "browserRestoreFlag";
   public static final String FRAGMENT_CLASS = "fragment_class";
-  public static final HashSet<String> HWForbiddenList = AbsBaseWebViewActivity.HWForbiddenList;
+  public static final HashSet<String> HW_FORBINDDEN_LIST = WebViewComUtils.a;
   public static final String INEWS_HEADLINES_URL = "miniqb://home";
   public static final String INEWS_PUBLIC_UIN = "2909288299";
   public static final String IS_OPENING_QUN_APP = "isOpeningQunApp";
-  public static final String IS_SHOW_AD = "isShowAd";
   public static final String IS_WRAP_CONTENT = "is_wrap_content";
   public static final String KEY_DISCUSS_GROUP_UIN = "dicussgroup_uin";
   public static final String KEY_FAV_GROUP_ID = "favGroupID";
@@ -120,31 +106,19 @@ public class QQBrowserActivity
   public static final String KEY_FRIEND_UIN = "friend_uin";
   public static final String KEY_FROM_FAV = "fromFav";
   public static final String KEY_FROM_NEARBY = "fromNearby";
-  public static final String KEY_FROM_PUBLIC_AIO = "fromPublicAccount";
   public static final String KEY_GROUP_UIN = "groupUin";
   public static final String KEY_IS_SEND = "is_send";
   public static final String KEY_IS_TRANSPARENT_TITLE = "isTransparentTitle";
   private static final String KEY_MAINTAB_INDEX = "key_maintab";
   public static final String KEY_PAY_ACTION_RESULT = "key_pay_action_result";
-  public static final String KEY_SCROLL_Y = "key_scroll_y";
   public static final String KEY_SENDER_UIN = "friendUin";
-  public static final String KEY_TITLE_STYLE = "titleStyle";
   public static final String KEY_UIN_TYPE = "uinType";
   public static final String MAIN_ACTION = "webview";
-  public static final String MI2 = "Xiaomi_MI 2";
-  public static final String NAME_IS_LOGIN = "ba_is_login";
-  public static final String ON_NEW_INTENT_REDO_STATEMACHINE = "onNewIntentReDoStateMachine";
   public static final int PLUGIN_START_REQUEST_CODE = 10000;
   public static final String QB_DOT_SHOW_VERSION_CODE_KEY = "version_code_key";
-  public static final String QQBROWSERACTIVITY_CREATED_TIME = "qqBrowserActivityCreateTime";
   public static final String QQBROWSER_DOWNLOAD_URL_DIRECT = "https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=50079";
   public static final String QQBROWSER_DOWNLOAD_URL_DIRECT_QBSHARE = "https://appchannel.html5.qq.com/directdown?app=qqbrowser&channel=10367";
   public static final int REQ_TYPE_BROWSE_ALBUM = 2;
-  public static final int REQ_TYPE_EMOJI_SUB_PAGE = 6;
-  public static final int REQ_TYPE_FIND_PASSWORD = 3;
-  public static final int REQ_TYPE_FORWARD_DIALOG_PREVIEW = 7;
-  public static final int REQ_TYPE_MODIFY_SELF_DETAIL = 1;
-  public static final int REQ_TYPE_STREET_VIEW_MAP = 4;
   public static final int REQ_TYPE_TROOP_MEMBER_LEVEL = 5;
   public static final int RESULT_FINISHSELF = 4660;
   public static final int SUMMARY_FOR_SEND_TO_FRIEND = 1;
@@ -155,118 +129,19 @@ public class QQBrowserActivity
   public static final String TAB_CONFIG_DATA = "tabConfigData";
   public static final String TAB_DEFAULT_INDEX = "tabDefaultIndex";
   public static final String TAG = "WebLog_QQBrowserActivity";
-  public static final String TAG_WEB_REPORT = "web_report";
   public static final String TOPTAB_SELECT_INDEX = "topTabSelectIndex";
   public static final String TOPTAB_SWITCH_FRAGMENT = "topTabSwitchFragment";
   public static final String TROOP_ID = "troopid";
   public static final String WEB_FLOAT_SHORTCUT_FROM = "qqbrowser_float_shortcut";
-  public static final String actionModifyDetailInfo = "com.tencent.mobileqq.card.modify";
-  public static final String actionUpdateVipInfo = "com.tencent.mobileqq.opencenter.vipInfo";
-  public static final String actionViewSelfAlbum = "com.tencent.mobileqq.view.self.album";
-  public static final String broadcastActionKey = "broadcastAction";
-  public static final String reqTypeKey = "reqType";
   public static int sQQBrowserActivityCounter = 0;
-  public static long s_lastJumpWebTs;
   public int currentTabIndex = 0;
   private FrameLayout fragmentContentView;
-  private ColorNote mColorNoteCache;
-  protected ColorNoteController mColorNoteController;
+  private IWebColorNoteInject inject;
   public final SwiftBrowserComponentsProvider mComponentsProvider = createComponentsProvider();
-  private boolean mEnableSwipeLayout = true;
   public Class<? extends WebViewFragment> mFragmentClass = null;
   public int oldTabSelectIndex = -1;
   public ArrayList<WebViewTabBarData> tabBarConfigData;
   private View tabBarView;
-  
-  public static boolean checkNotFrequentlyThenEnter(long paramLong)
-  {
-    long l = System.currentTimeMillis();
-    if (l - s_lastJumpWebTs > paramLong)
-    {
-      s_lastJumpWebTs = l;
-      return true;
-    }
-    return false;
-  }
-  
-  private void doFinish()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_QQBrowserActivity", 2, "finish");
-    }
-    Object localObject = getCurrentWebViewFragment();
-    if (localObject != null) {
-      ((WebViewFragment)localObject).activityFinish();
-    }
-    InputMethodManager localInputMethodManager = (InputMethodManager)getSystemService("input_method");
-    if ((localInputMethodManager != null) && (access$101(this) != null)) {
-      localInputMethodManager.hideSoftInputFromWindow(access$201(this).getWindowToken(), 0);
-    }
-    super.finish();
-    if ((this.mColorNoteController != null) && ((this.mColorNoteController.c()) || (this.mColorNoteController.d()))) {
-      overridePendingTransition(0, 0);
-    }
-    if (getIntent().getBooleanExtra("finish_animation_up_down", false)) {
-      overridePendingTransition(0, 2130771980);
-    }
-    if (getIntent().getBooleanExtra("finish_animation_out_to_right", false)) {
-      overridePendingTransition(0, 2130772229);
-    }
-    if (getIntent().getBooleanExtra("finish_animation_out_to_top", false)) {
-      overridePendingTransition(0, 2130772318);
-    }
-    if (getIntent().getBooleanExtra("finish_animation_none", false)) {
-      overridePendingTransition(0, 0);
-    }
-    if ((localObject != null) && (((WebViewFragment)localObject).mUIStyle != null))
-    {
-      if ((((WebViewFragment)localObject).mUIStyle.d & 0x100) == 0L) {
-        break label266;
-      }
-      overridePendingTransition(0, 0);
-    }
-    for (;;)
-    {
-      if (getIntent().getBooleanExtra("from_risk_hint", false))
-      {
-        getIntent().removeExtra("from_risk_hint");
-        localObject = new Intent(this, LoginInfoActivity.class);
-        ((Intent)localObject).putExtra("from_risk_hint", true);
-        startActivity((Intent)localObject);
-      }
-      return;
-      label266:
-      if ((((WebViewFragment)localObject).mUIStyle.d & 0x200) != 0L) {
-        overridePendingTransition(0, 2130772003);
-      }
-    }
-  }
-  
-  public static boolean isCmShowUrl(String paramString)
-  {
-    if (!TextUtils.isEmpty(paramString)) {
-      try
-      {
-        Object localObject = Uri.parse(paramString);
-        paramString = ((Uri)localObject).getHost();
-        localObject = ((Uri)localObject).getQueryParameter("useCMShowWebview");
-        if ((!TextUtils.isEmpty(paramString)) && (paramString.contains("qq.com")) && (!TextUtils.isEmpty((CharSequence)localObject)))
-        {
-          int i = Integer.parseInt((String)localObject);
-          if (i == 1) {
-            return true;
-          }
-        }
-        return false;
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return false;
-      }
-    }
-    return false;
-  }
   
   private void preInitWebViewFragment(Intent paramIntent)
   {
@@ -276,24 +151,6 @@ public class QQBrowserActivity
     WebAccelerateHelper.getInstance().preFetchResource(str);
   }
   
-  public static void setPreloadSucess(boolean paramBoolean)
-  {
-    BaseApplicationImpl.getApplication().getSharedPreferences("web_process_preload_file", 4).edit().putBoolean("key_preload", paramBoolean).commit();
-  }
-  
-  private void showColorServiceTypeLog(int paramInt)
-  {
-    if (QLog.isColorLevel())
-    {
-      if (paramInt == 16908288) {
-        QLog.d("WebLog_QQBrowserActivity", 2, "QQBrowserActivity getColorNote,serviceType is ColorNoteConstants.ServiceType.WEB.");
-      }
-      if (paramInt == 16908292) {
-        QLog.d("WebLog_QQBrowserActivity", 2, "QQBrowserActivity getColorNote,serviceType is ColorNoteConstants.ServiceType.BODONG.");
-      }
-    }
-  }
-  
   public static WebViewFragment switchFragment(int paramInt, QQBrowserActivity paramQQBrowserActivity)
   {
     WebViewTabBarData localWebViewTabBarData = (WebViewTabBarData)paramQQBrowserActivity.tabBarConfigData.get(paramInt);
@@ -301,15 +158,13 @@ public class QQBrowserActivity
     FragmentTransaction localFragmentTransaction = paramQQBrowserActivity.getSupportFragmentManager().beginTransaction();
     paramQQBrowserActivity.hideCurrentWebViewFragment(localFragmentTransaction);
     if (!localWebViewFragment.isAdded()) {
-      localFragmentTransaction.add(2131365308, localWebViewFragment, localWebViewTabBarData.tag);
-    }
-    for (;;)
-    {
-      localFragmentTransaction.commitAllowingStateLoss();
-      paramQQBrowserActivity.currentTabIndex = paramInt;
-      return localWebViewFragment;
+      localFragmentTransaction.add(2131365183, localWebViewFragment, localWebViewTabBarData.tag);
+    } else {
       localFragmentTransaction.show(localWebViewFragment);
     }
+    localFragmentTransaction.commitAllowingStateLoss();
+    paramQQBrowserActivity.currentTabIndex = paramInt;
+    return localWebViewFragment;
   }
   
   public SwiftBrowserComponentsProvider createComponentsProvider()
@@ -317,110 +172,154 @@ public class QQBrowserActivity
     return new SwiftBrowserComponentsProvider(this, 1, null);
   }
   
+  /* Error */
   public WebViewFragment createFragment(Intent paramIntent)
   {
-    Object localObject2;
-    Object localObject1;
-    if (this.mFragmentClass != null) {
-      try
-      {
-        WebViewFragment localWebViewFragment1 = (WebViewFragment)this.mFragmentClass.newInstance();
-        localObject2 = new Bundle();
-        ((Bundle)localObject2).putParcelable("intent", paramIntent);
-        localWebViewFragment1.setArguments((Bundle)localObject2);
-        return localWebViewFragment1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          localObject1 = new WebViewFragment();
-        }
-      }
-    }
-    if (!TextUtils.isEmpty(paramIntent.getStringExtra("fragment_class"))) {
-      localObject1 = paramIntent.getStringExtra("fragment_class");
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject1 = Class.forName((String)localObject1).newInstance();
-        if (!(localObject1 instanceof WebViewFragment)) {
-          break label200;
-        }
-        localObject2 = (WebViewFragment)localObject1;
-        localObject1 = localObject2;
-        if (localObject2 != null) {
-          break;
-        }
-        localObject1 = new WebViewFragment();
-        break;
-      }
-      catch (InstantiationException localInstantiationException)
-      {
-        localInstantiationException.printStackTrace();
-        if (0 != 0) {
-          break label195;
-        }
-        WebViewFragment localWebViewFragment2 = new WebViewFragment();
-        break;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        localIllegalAccessException.printStackTrace();
-        if (0 != 0) {
-          break label195;
-        }
-        WebViewFragment localWebViewFragment3 = new WebViewFragment();
-        break;
-      }
-      catch (ClassNotFoundException localClassNotFoundException)
-      {
-        localClassNotFoundException.printStackTrace();
-        if (0 != 0) {
-          break label195;
-        }
-        localWebViewFragment4 = new WebViewFragment();
-        break;
-      }
-      finally
-      {
-        if (0 == 0) {
-          new WebViewFragment();
-        }
-      }
-      WebViewFragment localWebViewFragment4 = new WebViewFragment();
-      break;
-      label195:
-      localWebViewFragment4 = null;
-      break;
-      label200:
-      localObject2 = null;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 219	com/tencent/mobileqq/activity/QQBrowserActivity:mFragmentClass	Ljava/lang/Class;
+    //   4: astore_2
+    //   5: aload_2
+    //   6: ifnull +25 -> 31
+    //   9: aload_2
+    //   10: invokevirtual 331	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   13: checkcast 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   16: astore_2
+    //   17: goto +145 -> 162
+    //   20: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   23: dup
+    //   24: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   27: astore_2
+    //   28: goto +134 -> 162
+    //   31: aload_1
+    //   32: ldc 83
+    //   34: invokevirtual 338	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   37: invokestatic 344	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   40: ifne +114 -> 154
+    //   43: aload_1
+    //   44: ldc 83
+    //   46: invokevirtual 338	android/content/Intent:getStringExtra	(Ljava/lang/String;)Ljava/lang/String;
+    //   49: astore_2
+    //   50: aload_2
+    //   51: invokestatic 348	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   54: invokevirtual 331	java/lang/Class:newInstance	()Ljava/lang/Object;
+    //   57: astore_2
+    //   58: aload_2
+    //   59: instanceof 288
+    //   62: ifeq +11 -> 73
+    //   65: aload_2
+    //   66: checkcast 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   69: astore_3
+    //   70: goto +5 -> 75
+    //   73: aconst_null
+    //   74: astore_3
+    //   75: aload_3
+    //   76: astore_2
+    //   77: aload_3
+    //   78: ifnonnull +84 -> 162
+    //   81: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   84: dup
+    //   85: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   88: astore_2
+    //   89: goto +73 -> 162
+    //   92: astore_1
+    //   93: goto +51 -> 144
+    //   96: astore_2
+    //   97: aload_2
+    //   98: invokevirtual 351	java/lang/ClassNotFoundException:printStackTrace	()V
+    //   101: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   104: dup
+    //   105: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   108: astore_2
+    //   109: goto +53 -> 162
+    //   112: astore_2
+    //   113: aload_2
+    //   114: invokevirtual 352	java/lang/IllegalAccessException:printStackTrace	()V
+    //   117: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   120: dup
+    //   121: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   124: astore_2
+    //   125: goto +37 -> 162
+    //   128: astore_2
+    //   129: aload_2
+    //   130: invokevirtual 353	java/lang/InstantiationException:printStackTrace	()V
+    //   133: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   136: dup
+    //   137: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   140: astore_2
+    //   141: goto +21 -> 162
+    //   144: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   147: dup
+    //   148: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   151: pop
+    //   152: aload_1
+    //   153: athrow
+    //   154: new 288	com/tencent/mobileqq/webview/swift/WebViewFragment
+    //   157: dup
+    //   158: invokespecial 332	com/tencent/mobileqq/webview/swift/WebViewFragment:<init>	()V
+    //   161: astore_2
+    //   162: new 355	android/os/Bundle
+    //   165: dup
+    //   166: invokespecial 356	android/os/Bundle:<init>	()V
+    //   169: astore_3
+    //   170: aload_3
+    //   171: ldc_w 358
+    //   174: aload_1
+    //   175: invokevirtual 362	android/os/Bundle:putParcelable	(Ljava/lang/String;Landroid/os/Parcelable;)V
+    //   178: aload_2
+    //   179: aload_3
+    //   180: invokevirtual 366	com/tencent/mobileqq/webview/swift/WebViewFragment:setArguments	(Landroid/os/Bundle;)V
+    //   183: aload_2
+    //   184: areturn
+    //   185: astore_2
+    //   186: goto -166 -> 20
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	189	0	this	QQBrowserActivity
+    //   0	189	1	paramIntent	Intent
+    //   4	85	2	localObject1	Object
+    //   96	2	2	localClassNotFoundException	java.lang.ClassNotFoundException
+    //   108	1	2	localWebViewFragment1	WebViewFragment
+    //   112	2	2	localIllegalAccessException	java.lang.IllegalAccessException
+    //   124	1	2	localWebViewFragment2	WebViewFragment
+    //   128	2	2	localInstantiationException	java.lang.InstantiationException
+    //   140	44	2	localWebViewFragment3	WebViewFragment
+    //   185	1	2	localException	Exception
+    //   69	111	3	localObject2	Object
+    // Exception table:
+    //   from	to	target	type
+    //   50	70	92	finally
+    //   97	101	92	finally
+    //   113	117	92	finally
+    //   129	133	92	finally
+    //   50	70	96	java/lang/ClassNotFoundException
+    //   50	70	112	java/lang/IllegalAccessException
+    //   50	70	128	java/lang/InstantiationException
+    //   9	17	185	java/lang/Exception
   }
   
   public void createTabBarView()
   {
-    if ((this.tabBarConfigData != null) && (this.tabBarConfigData.size() > 1) && (this.tabBarView == null))
+    Object localObject = this.tabBarConfigData;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 1) && (this.tabBarView == null))
     {
       this.tabBarView = WebviewFragmentTabBarBuilder.a(this, super.getIntent(), this.tabBarConfigData, new QQBrowserActivity.MyOnTabChangeListener(this));
-      this.tabBarView.setId(2131378815);
-      Object localObject = this.fragmentContentView.getParent();
-      if (!(localObject instanceof FrameLayout)) {
-        break label153;
-      }
-      if (!super.getIntent().getBooleanExtra("topTabSwitchFragment", false))
+      this.tabBarView.setId(2131378204);
+      localObject = this.fragmentContentView.getParent();
+      if ((localObject instanceof FrameLayout))
       {
-        ((FrameLayout)localObject).addView(this.tabBarView, new FrameLayout.LayoutParams(-1, -2, 80));
-        localObject = (FrameLayout.LayoutParams)this.fragmentContentView.getLayoutParams();
-        ((FrameLayout.LayoutParams)localObject).bottomMargin = ((int)(54.0F * getResources().getDisplayMetrics().density + 0.5F));
-        this.fragmentContentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        if (!super.getIntent().getBooleanExtra("topTabSwitchFragment", false))
+        {
+          ((FrameLayout)localObject).addView(this.tabBarView, new FrameLayout.LayoutParams(-1, -2, 80));
+          localObject = (FrameLayout.LayoutParams)this.fragmentContentView.getLayoutParams();
+          ((FrameLayout.LayoutParams)localObject).bottomMargin = ((int)(getResources().getDisplayMetrics().density * 54.0F + 0.5F));
+          this.fragmentContentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+        }
+      }
+      else {
+        QLog.e("WebLog_QQBrowserActivity", 1, "doOnCreate error:should not enter here!");
       }
     }
-    return;
-    label153:
-    QLog.e("WebLog_QQBrowserActivity", 1, "doOnCreate error:should not enter here!");
   }
   
   protected boolean directSuperDoOnCreate(Bundle paramBundle)
@@ -433,11 +332,6 @@ public class QQBrowserActivity
     super.onCreate(paramBundle);
   }
   
-  public void disableSwipeLayout()
-  {
-    this.mEnableSwipeLayout = false;
-  }
-  
   @Override
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
@@ -447,46 +341,89 @@ public class QQBrowserActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  public void doFinish()
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("WebLog_QQBrowserActivity", 2, "finish");
+    }
+    Object localObject1 = getCurrentWebViewFragment();
+    if (localObject1 != null) {
+      ((WebViewFragment)localObject1).activityFinish();
+    }
+    Object localObject2 = (InputMethodManager)getSystemService("input_method");
+    if ((localObject2 != null) && (access$001(this) != null)) {
+      ((InputMethodManager)localObject2).hideSoftInputFromWindow(access$101(this).getWindowToken(), 0);
+    }
+    super.finish();
+    localObject2 = this.inject;
+    if ((localObject2 != null) && (((IWebColorNoteInject)localObject2).b())) {
+      overridePendingTransition(0, 0);
+    }
+    if (getIntent().getBooleanExtra("finish_animation_up_down", false)) {
+      overridePendingTransition(0, 2130771992);
+    }
+    if (getIntent().getBooleanExtra("finish_animation_out_to_right", false)) {
+      overridePendingTransition(0, 2130772258);
+    }
+    if (getIntent().getBooleanExtra("finish_animation_out_to_top", false)) {
+      overridePendingTransition(0, 2130772346);
+    }
+    if (getIntent().getBooleanExtra("finish_animation_none", false)) {
+      overridePendingTransition(0, 0);
+    }
+    if ((localObject1 != null) && (((WebViewFragment)localObject1).getUIStyle() != null)) {
+      if ((((WebViewFragment)localObject1).getUIStyle().d & 0x100) != 0L) {
+        overridePendingTransition(0, 0);
+      } else if ((((WebViewFragment)localObject1).getUIStyle().d & 0x200) != 0L) {
+        overridePendingTransition(0, 2130772015);
+      }
+    }
+    if (getIntent().getBooleanExtra("from_risk_hint", false))
+    {
+      getIntent().removeExtra("from_risk_hint");
+      localObject1 = new Intent();
+      ((Intent)localObject1).putExtra("from_risk_hint", true);
+      RouteUtils.a(this, (Intent)localObject1, "/base/safe/loginInfo");
+    }
+  }
+  
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     if (QLog.isColorLevel()) {
       QLog.i("WebLog_QQBrowserActivity", 2, String.format("doOnActivityResult resultCode=0x%x", new Object[] { Integer.valueOf(paramInt2) }));
     }
-    if (paramInt2 == 4660) {
-      if (paramIntent != null)
-      {
-        super.setResult(4660, paramIntent);
-        finish();
-      }
-    }
-    for (;;)
+    if (paramInt2 == 4660)
     {
-      WebViewFragment localWebViewFragment = getCurrentWebViewFragment();
-      if (localWebViewFragment != null) {
-        localWebViewFragment.doOnActivityResult(paramInt1, paramInt2, paramIntent);
+      if (paramIntent != null) {
+        super.setResult(4660, paramIntent);
+      } else {
+        super.setResult(4660);
       }
-      return;
-      super.setResult(4660);
-      break;
-      if ((paramInt2 == -1) && (paramInt1 == 1))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("WebLog_QQBrowserActivity", 2, "upload shotphoto request");
-        }
-        ShortVideoGuideUtil.a(this);
-      }
+      finish();
+    }
+    WebViewFragment localWebViewFragment = getCurrentWebViewFragment();
+    if (localWebViewFragment != null) {
+      localWebViewFragment.doOnActivityResult(paramInt1, paramInt2, paramIntent);
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     com.tencent.mobileqq.webview.swift.component.SwiftBrowserStatistics.C = SystemClock.elapsedRealtime();
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_QQBrowserActivity", 2, "doOnCreate start");
     }
-    if ((Build.VERSION.SDK_INT > 10) && (!HWForbiddenList.contains(Build.MANUFACTURER + "_" + Build.MODEL))) {
-      getWindow().addFlags(16777216);
+    if (Build.VERSION.SDK_INT > 10)
+    {
+      localObject1 = HW_FORBINDDEN_LIST;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(Build.MANUFACTURER);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(Build.MODEL);
+      if (!((HashSet)localObject1).contains(((StringBuilder)localObject2).toString())) {
+        getWindow().addFlags(16777216);
+      }
     }
     getWindow().setFormat(-3);
     getWindow().setBackgroundDrawable(null);
@@ -517,65 +454,51 @@ public class QQBrowserActivity
       }
       this.tabBarConfigData = new ArrayList(1);
       this.tabBarConfigData.add(localObject2);
-      localObject2 = paramBundle.getExtras();
-      if (localObject2 != null)
-      {
-        if (!isCmShowUrl(SwiftWebViewUtils.a(paramBundle))) {
-          break label461;
-        }
-        this.mFragmentClass = CmGameFragment.class;
-      }
-      label304:
-      this.fragmentContentView = ((FrameLayout)localObject1);
-      if ((this.tabBarConfigData.size() > 1) && (!(((FrameLayout)localObject1).getParent() instanceof FrameLayout)))
-      {
-        this.fragmentContentView = new FrameLayout(this);
-        ((FrameLayout)localObject1).addView(this.fragmentContentView, new FrameLayout.LayoutParams(-1, -1));
-        QLog.i("WebLog_QQBrowserActivity", 1, "doOnCreate warning:content is not an instance of FrameLayout.");
-      }
-      this.fragmentContentView.setId(2131365308);
-      int i = paramBundle.getIntExtra("tabDefaultIndex", 0);
-      localObject1 = (WebViewTabBarData)this.tabBarConfigData.get(i);
-      paramBundle.removeExtra("tabDefaultIndex");
-      paramBundle = getFragmentByTabBarData((WebViewTabBarData)localObject1);
-      if (paramBundle.isAdded()) {
-        break label488;
-      }
-      super.getSupportFragmentManager().beginTransaction().add(2131365308, paramBundle, ((WebViewTabBarData)localObject1).tag).commitAllowingStateLoss();
     }
-    for (;;)
+    else
     {
-      if (this.mEnableSwipeLayout) {
-        initColorNote();
-      }
-      return true;
       paramBundle.removeExtra("tabConfigData");
-      break;
-      label461:
-      localObject2 = (Class)((Bundle)localObject2).getSerializable("fragmentClass");
-      if (localObject2 == null) {
-        break label304;
-      }
-      this.mFragmentClass = ((Class)localObject2);
-      break label304;
-      label488:
-      super.getSupportFragmentManager().beginTransaction().show(paramBundle).commitAllowingStateLoss();
     }
+    localObject2 = paramBundle.getExtras();
+    if (localObject2 != null)
+    {
+      localObject2 = (Class)((Bundle)localObject2).getSerializable("fragmentClass");
+      if (localObject2 != null) {
+        this.mFragmentClass = ((Class)localObject2);
+      }
+    }
+    this.fragmentContentView = ((FrameLayout)localObject1);
+    if ((this.tabBarConfigData.size() > 1) && (!(((FrameLayout)localObject1).getParent() instanceof FrameLayout)))
+    {
+      this.fragmentContentView = new FrameLayout(this);
+      ((FrameLayout)localObject1).addView(this.fragmentContentView, new FrameLayout.LayoutParams(-1, -1));
+      QLog.i("WebLog_QQBrowserActivity", 1, "doOnCreate warning:content is not an instance of FrameLayout.");
+    }
+    this.fragmentContentView.setId(2131365183);
+    int i = paramBundle.getIntExtra("tabDefaultIndex", 0);
+    localObject1 = (WebViewTabBarData)this.tabBarConfigData.get(i);
+    paramBundle.removeExtra("tabDefaultIndex");
+    paramBundle = getFragmentByTabBarData((WebViewTabBarData)localObject1);
+    if (!paramBundle.isAdded())
+    {
+      super.getSupportFragmentManager().beginTransaction().add(2131365183, paramBundle, ((WebViewTabBarData)localObject1).tag).commitAllowingStateLoss();
+      return true;
+    }
+    super.getSupportFragmentManager().beginTransaction().show(paramBundle).commitAllowingStateLoss();
+    return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     sQQBrowserActivityCounter -= 1;
-    if (this.fragmentContentView != null)
+    Object localObject = this.fragmentContentView;
+    if (localObject != null)
     {
-      ViewParent localViewParent = this.fragmentContentView.getParent();
-      if ((localViewParent instanceof ViewGroup)) {
-        ((ViewGroup)localViewParent).removeView(this.tabBarView);
+      localObject = ((FrameLayout)localObject).getParent();
+      if ((localObject instanceof ViewGroup)) {
+        ((ViewGroup)localObject).removeView(this.tabBarView);
       }
       this.tabBarView = null;
-    }
-    if ((this.mEnableSwipeLayout) && (this.mColorNoteController != null)) {
-      this.mColorNoteController.c();
     }
     try
     {
@@ -588,7 +511,7 @@ public class QQBrowserActivity
     }
   }
   
-  public boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
+  protected boolean doOnKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
     WebViewFragment localWebViewFragment = getCurrentWebViewFragment();
     if (localWebViewFragment != null) {
@@ -597,7 +520,7 @@ public class QQBrowserActivity
     return super.doOnKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void doOnNewIntent(Intent paramIntent)
+  protected void doOnNewIntent(Intent paramIntent)
   {
     super.doOnNewIntent(paramIntent);
     WebViewFragment localWebViewFragment = getCurrentWebViewFragment();
@@ -606,41 +529,7 @@ public class QQBrowserActivity
     }
   }
   
-  public void doOnPause()
-  {
-    super.doOnPause();
-    if ((this.mEnableSwipeLayout) && (this.mColorNoteController != null))
-    {
-      this.mColorNoteController.b();
-      if (getIntent().getBooleanExtra("isFromFavourite", false)) {
-        this.mColorNoteController.p();
-      }
-    }
-    if (ColorNoteUtils.b(getOriginalUrl()))
-    {
-      ColorNoteSmallScreenUtil.a(this, 2, true);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_QQBrowserActivity", 2, "color note small screen visible by doOnPause");
-      }
-    }
-  }
-  
-  public void doOnResume()
-  {
-    super.doOnResume();
-    if ((this.mEnableSwipeLayout) && (this.mColorNoteController != null)) {
-      this.mColorNoteController.a();
-    }
-    if (ColorNoteUtils.b(getOriginalUrl()))
-    {
-      ColorNoteSmallScreenUtil.a(this, 2, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebLog_QQBrowserActivity", 2, "color note small screen invisible by doOnResume");
-      }
-    }
-  }
-  
-  public void doOnSaveInstanceState(Bundle paramBundle)
+  protected void doOnSaveInstanceState(Bundle paramBundle)
   {
     Bundle localBundle = paramBundle;
     if (paramBundle == null) {
@@ -653,193 +542,23 @@ public class QQBrowserActivity
     super.doOnSaveInstanceState(localBundle);
   }
   
-  public void doOnUserLeaveHint()
+  protected void doOnUserLeaveHint()
   {
     Intent localIntent = new Intent("tencent.notify.background");
     localIntent.setPackage(MobileQQ.getContext().getPackageName());
-    localIntent.putExtra("selfuin", BaseApplicationImpl.getApplication().getRuntime().getAccount());
+    localIntent.putExtra("selfuin", MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
     localIntent.putExtra("AccountInfoSync", "mobileqq.web");
     localIntent.putExtra("classname", getClass().getName());
     sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
     super.doOnUserLeaveHint();
   }
   
-  public void enableSwipeLayout()
-  {
-    this.mEnableSwipeLayout = true;
-  }
-  
   public void finish()
   {
-    if ((this.mEnableSwipeLayout) && (this.mColorNoteController != null))
-    {
-      this.mColorNoteController.d();
-      return;
+    IWebColorNoteInject localIWebColorNoteInject = this.inject;
+    if ((localIWebColorNoteInject == null) || (!localIWebColorNoteInject.a())) {
+      doFinish();
     }
-    doFinish();
-  }
-  
-  public ColorNote getColorNote()
-  {
-    Object localObject4 = null;
-    Object localObject8 = super.getIntent();
-    Object localObject5 = getCurrentWebViewFragment();
-    Object localObject3 = "";
-    Object localObject1;
-    if ((localObject5 != null) && (((WebViewFragment)localObject5).mApp != null))
-    {
-      localObject4 = ((WebViewFragment)localObject5).getShare();
-      if (!TextUtils.isEmpty(((Share)localObject4).b()))
-      {
-        localObject1 = ((Share)localObject4).b();
-        localObject3 = ((Share)localObject4).c();
-        localObject5 = ((Share)localObject4).d();
-        if (!TextUtils.isEmpty((CharSequence)localObject5)) {
-          break label649;
-        }
-        localObject4 = ColorNoteUtils.a(getOriginalUrl());
-        localObject5 = localObject3;
-        localObject3 = localObject1;
-        localObject1 = localObject5;
-      }
-    }
-    for (;;)
-    {
-      for (;;)
-      {
-        if ((this.mColorNoteCache == null) || (!this.mColorNoteCache.isTitleAndPicValid())) {
-          break label219;
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
-          this.mColorNoteCache.mMainTitle = ((String)localObject3);
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          this.mColorNoteCache.mSubTitle = ((String)localObject1);
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject4)) {
-          this.mColorNoteCache.mPicUrl = ((String)localObject4);
-        }
-        return this.mColorNoteCache;
-        localObject1 = localObject3;
-        if (((WebViewFragment)localObject5).mSwiftTitleUI == null) {
-          break;
-        }
-        try
-        {
-          localObject1 = ((WebViewFragment)localObject5).mSwiftTitleUI.a();
-        }
-        catch (Exception localException1)
-        {
-          QLog.e("WebLog_QQBrowserActivity", 2, "fragment.mSwiftTitleUI.getTitle()", localException1);
-          localObject2 = localObject3;
-        }
-      }
-      break;
-      label219:
-      localObject5 = getHostWebView();
-      JSONObject localJSONObject = new JSONObject();
-      if (localObject5 != null) {}
-      for (;;)
-      {
-        try
-        {
-          localJSONObject.put("key_scroll_y", ((WebView)localObject5).getWebScrollY());
-          localObject5 = getOriginalUrl();
-          localObject6 = localObject5;
-          if (TextUtils.isEmpty((CharSequence)localObject5)) {
-            localObject6 = ((Intent)localObject8).getStringExtra("subType");
-          }
-          if (localObject6 != null)
-          {
-            localObject5 = localObject6;
-            if (!TextUtils.isEmpty((CharSequence)localObject6)) {}
-          }
-          else
-          {
-            localObject5 = "unregistered service sub type";
-          }
-          localObject6 = localObject2;
-          if (TextUtils.isEmpty((CharSequence)localObject2))
-          {
-            localObject2 = getOriginalUrl();
-            try
-            {
-              localObject6 = new URL((String)localObject2);
-              boolean bool = TextUtils.isEmpty(((URL)localObject6).getHost());
-              if (!bool) {
-                continue;
-              }
-            }
-            catch (RuntimeException localRuntimeException)
-            {
-              int j;
-              QLog.e("WebLog_QQBrowserActivity", 1, localRuntimeException, new Object[0]);
-              continue;
-            }
-            catch (MalformedURLException localMalformedURLException)
-            {
-              QLog.e("WebLog_QQBrowserActivity", 1, localMalformedURLException, new Object[0]);
-              continue;
-            }
-            catch (Exception localException2)
-            {
-              QLog.e("WebLog_QQBrowserActivity", 1, localException2, new Object[0]);
-              localObject7 = localObject2;
-            }
-            localObject8 = getOriginalUrl();
-            if (!VipComicUrlHelper.a((String)localObject8)) {
-              break label642;
-            }
-            j = 16908292;
-            localObject6 = VipComicUrlHelper.b(VipComicUrlHelper.a(VipComicUrlHelper.b((String)localObject8, "from", "1041001"), "from", "1041001"), "openFromColorTab", "1");
-            i = j;
-            localObject5 = localObject6;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("WebLog_QQBrowserActivity", 2, "isBoodoUlr,serviceType is ColorNoteConstants.ServiceType.BODONG, original url is " + (String)localObject8 + ", new url is " + (String)localObject6);
-              localObject5 = localObject6;
-              i = j;
-            }
-            showColorServiceTypeLog(i);
-            if (this.mColorNoteController == null) {
-              continue;
-            }
-            localObject2 = this.mColorNoteController.a(i, (String)localObject5, (String)localObject3, (String)localObject2, (String)localObject4, localJSONObject.toString().getBytes());
-            this.mColorNoteCache = ((ColorNote)localObject2);
-            return localObject2;
-          }
-        }
-        catch (JSONException localJSONException)
-        {
-          QLog.e("WebLog_QQBrowserActivity", 1, localJSONException, new Object[0]);
-          continue;
-          Object localObject6 = ((URL)localObject6).getHost();
-          localObject2 = localObject6;
-          continue;
-          Object localObject7;
-          localObject2 = localObject7;
-          continue;
-          localObject2 = new ColorNote.Builder().a(i).a(localJSONException).b((String)localObject3).c((String)localObject2).d((String)localObject4).a(localJSONObject.toString().getBytes()).a();
-          this.mColorNoteCache = ((ColorNote)localObject2);
-          return localObject2;
-        }
-        label642:
-        int i = 16908288;
-      }
-      label649:
-      localObject4 = localObject2;
-      Object localObject2 = localObject3;
-      localObject3 = localObject4;
-      localObject4 = localJSONException;
-      continue;
-      localObject3 = "";
-      localObject2 = null;
-    }
-  }
-  
-  public ColorNoteController getColorNoteController()
-  {
-    return this.mColorNoteController;
   }
   
   public String getCurrentUrl()
@@ -853,7 +572,11 @@ public class QQBrowserActivity
         return localObject;
       }
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label16:
+      break label16;
+    }
     return null;
   }
   
@@ -882,26 +605,26 @@ public class QQBrowserActivity
   {
     if (paramWebViewTabBarData != null)
     {
-      Object localObject2 = (WebViewFragment)super.getSupportFragmentManager().findFragmentByTag(paramWebViewTabBarData.tag);
-      Object localObject1 = localObject2;
-      if (localObject2 == null)
+      Object localObject = (WebViewFragment)super.getSupportFragmentManager().findFragmentByTag(paramWebViewTabBarData.tag);
+      if (localObject == null)
       {
-        localObject2 = super.getIntent();
-        long l = ((Intent)localObject2).getLongExtra("startOpenPageTime", -1L);
+        localObject = super.getIntent();
+        long l = ((Intent)localObject).getLongExtra("startOpenPageTime", -1L);
         if ((l == -1L) || (System.currentTimeMillis() - l > 5000L)) {
-          ((Intent)localObject2).putExtra("startOpenPageTime", System.currentTimeMillis());
+          ((Intent)localObject).putExtra("startOpenPageTime", System.currentTimeMillis());
         }
-        Intent localIntent = new Intent((Intent)localObject2);
-        if (!TextUtils.isEmpty(((Intent)localObject2).getStringExtra("fragment_class"))) {
-          ((Intent)localObject2).removeExtra("fragment_class");
+        Intent localIntent = new Intent((Intent)localObject);
+        if (!TextUtils.isEmpty(((Intent)localObject).getStringExtra("fragment_class"))) {
+          ((Intent)localObject).removeExtra("fragment_class");
         }
-        localObject1 = WebViewFragmentBuilder.a(this, paramWebViewTabBarData, localIntent);
+        paramWebViewTabBarData = WebViewFragmentBuilder.a(this, paramWebViewTabBarData, localIntent);
         preInitWebViewFragment(localIntent);
-        ((Intent)localObject2).removeExtra("startOpenPageTime");
-        ((Intent)localObject2).removeExtra("qqBrowserActivityCreateTime");
-        ((Intent)localObject2).removeExtra("reportSourceFrom");
+        ((Intent)localObject).removeExtra("startOpenPageTime");
+        ((Intent)localObject).removeExtra("qqBrowserActivityCreateTime");
+        ((Intent)localObject).removeExtra("reportSourceFrom");
+        return paramWebViewTabBarData;
       }
-      return localObject1;
+      return localObject;
     }
     return null;
   }
@@ -944,9 +667,9 @@ public class QQBrowserActivity
     return this.fragmentContentView;
   }
   
-  public View getTabBarView()
+  public IWebColorNoteInject getWebColorNoteInjector()
   {
-    return this.tabBarView;
+    return this.inject;
   }
   
   public WebViewProvider getWebViewProvider()
@@ -956,75 +679,30 @@ public class QQBrowserActivity
   
   public void hideCurrentWebViewFragment(FragmentTransaction paramFragmentTransaction)
   {
-    if (paramFragmentTransaction == null) {}
-    for (;;)
-    {
+    if (paramFragmentTransaction == null) {
       return;
-      Object localObject = super.getSupportFragmentManager();
-      if (localObject != null)
+    }
+    Object localObject = super.getSupportFragmentManager();
+    if (localObject != null)
+    {
+      localObject = ((FragmentManager)localObject).getFragments();
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
-        localObject = ((FragmentManager)localObject).getFragments();
-        if ((localObject != null) && (((List)localObject).size() > 0))
+        localObject = ((List)localObject).iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
-          {
-            Fragment localFragment = (Fragment)((Iterator)localObject).next();
-            if (((localFragment instanceof WebViewFragment)) && (localFragment.isVisible())) {
-              paramFragmentTransaction.hide(localFragment);
-            }
+          Fragment localFragment = (Fragment)((Iterator)localObject).next();
+          if (((localFragment instanceof WebViewFragment)) && (localFragment.isVisible())) {
+            paramFragmentTransaction.hide(localFragment);
           }
         }
       }
     }
   }
   
-  protected void initColorNote()
-  {
-    initColorNote(null);
-  }
-  
-  protected void initColorNote(SwipePostTableLayout paramSwipePostTableLayout)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_QQBrowserActivity", 2, "QQBrowserActivity initColorNote.");
-    }
-    int j = 1;
-    int i = 1;
-    if (!BaseApplicationImpl.getApplication().getRuntime().isLogin()) {
-      j = 0;
-    }
-    if (ColorNoteUtils.d(getOriginalUrl())) {
-      i = 0;
-    }
-    if ((ColorNoteUtils.a(getOriginalUrl())) || (TextUtils.isEmpty(getOriginalUrl()))) {
-      i = 0;
-    }
-    if (j != 0) {
-      if (i == 0) {
-        break label162;
-      }
-    }
-    label162:
-    for (this.mColorNoteController = new ColorNoteController(this, true, false, paramSwipePostTableLayout, true, true, false, 2131165528);; this.mColorNoteController = new ColorNoteController(this, false, true, paramSwipePostTableLayout, true, true, false, 2131165528))
-    {
-      this.mColorNoteController.a(this);
-      this.mColorNoteController.a(this);
-      this.mColorNoteCache = getColorNote();
-      this.mColorNoteController.a(new QQBrowserActivity.4(this));
-      this.mColorNoteController.a(new QQBrowserActivity.5(this));
-      this.mColorNoteController.a(getOriginalUrl());
-      return;
-    }
-  }
-  
   public boolean isWrapContent()
   {
-    boolean bool = false;
-    if (getIntent().getBooleanExtra("is_wrap_content", false)) {
-      bool = true;
-    }
-    return bool;
+    return getIntent().getBooleanExtra("is_wrap_content", false);
   }
   
   public boolean onBackEvent()
@@ -1046,7 +724,7 @@ public class QQBrowserActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     if (QLog.isColorLevel()) {
       QLog.d("WebLog_QQBrowserActivity", 2, "onCreate start");
@@ -1056,14 +734,14 @@ public class QQBrowserActivity
     Object localObject = (SwiftBrowserNavigator)this.mComponentsProvider.a(1);
     if (localObject != null)
     {
-      if (!((SwiftBrowserNavigator)localObject).a(localIntent))
+      if (((SwiftBrowserNavigator)localObject).a(localIntent))
       {
         QLog.e("WebLog_QQBrowserActivity", 1, "navigate to another activity!");
         super.onCreate(paramBundle);
         super.getActivity().finish();
         return;
       }
-      if ((!((SwiftBrowserNavigator)localObject).b(localIntent)) && (QLog.isColorLevel())) {
+      if ((((SwiftBrowserNavigator)localObject).b(localIntent)) && (QLog.isColorLevel())) {
         QLog.i("WebLog_QQBrowserActivity", 2, "switch to different fragment.");
       }
     }
@@ -1078,13 +756,16 @@ public class QQBrowserActivity
       }
     }
     localIntent.putExtra("qqBrowserActivityCreateTime", System.currentTimeMillis());
-    QLog.d("WebLog_QQBrowserActivity", 1, "onCreate createTime = " + System.currentTimeMillis());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onCreate createTime = ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    QLog.d("WebLog_QQBrowserActivity", 1, ((StringBuilder)localObject).toString());
     SwiftWebAccelerator.a().a();
     SwiftWebAccelerator.b();
     if (!WebAccelerateHelper.isWebViewCache)
     {
       ThreadManager.postImmediately(new QQBrowserActivity.1(this), null, false);
-      if (InnerDns.queryInstance() == null) {
+      if (BaseInnerDns.queryInstance() == null) {
         ThreadManager.postImmediately(new QQBrowserActivity.2(this), null, false);
       }
       if (!WebViewTitleStyleHelper.a().a) {
@@ -1099,6 +780,11 @@ public class QQBrowserActivity
         localObject = new Bundle();
       }
       ((Bundle)localObject).putAll(localIntent.getExtras());
+    }
+    this.inject = WebColorNoteInjectorUtil.a();
+    paramBundle = this.inject;
+    if (paramBundle != null) {
+      registerActivityLifecycleCallbacks(paramBundle);
     }
     super.onCreate((Bundle)localObject);
   }
@@ -1126,12 +812,12 @@ public class QQBrowserActivity
   public void receiveScreenOff()
   {
     super.receiveScreenOff();
-    if ((this.mCanLock) && (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount())) && (GesturePWDUtils.getGesturePWDState(this, BaseApplicationImpl.getApplication().getRuntime().getAccount()) == 2) && (GesturePWDUtils.getGesturePWDMode(this, BaseApplicationImpl.getApplication().getRuntime().getAccount()) == 21)) {
+    if ((this.mCanLock) && (!TextUtils.isEmpty(MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount())) && (BaseGesturePWDUtil.getGesturePWDState(this, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount()) == 2) && (BaseGesturePWDUtil.getGesturePWDMode(this, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount()) == 21)) {
       startUnlockActivity();
     }
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     if (getWindow().getContainer() == null) {
       requestWindowFeature(7);
@@ -1140,32 +826,30 @@ public class QQBrowserActivity
   
   public boolean setBottomBarVisibility(boolean paramBoolean)
   {
-    Object localObject;
-    if (this.tabBarView != null)
+    Object localObject = this.tabBarView;
+    int i;
+    if (localObject != null)
     {
-      localObject = this.tabBarView;
-      if (paramBoolean)
-      {
+      if (paramBoolean) {
         i = 0;
-        ((View)localObject).setVisibility(i);
+      } else {
+        i = 8;
       }
+      ((View)localObject).setVisibility(i);
     }
-    else if (this.fragmentContentView != null)
+    localObject = this.fragmentContentView;
+    if (localObject != null)
     {
-      localObject = (FrameLayout.LayoutParams)this.fragmentContentView.getLayoutParams();
-      if (!paramBoolean) {
-        break label86;
+      localObject = (FrameLayout.LayoutParams)((FrameLayout)localObject).getLayoutParams();
+      if (paramBoolean) {
+        i = 54;
+      } else {
+        i = 0;
       }
-    }
-    label86:
-    for (int i = 54;; i = 0)
-    {
       ((FrameLayout.LayoutParams)localObject).bottomMargin = ((int)(i * getResources().getDisplayMetrics().density + 0.5F));
       this.fragmentContentView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-      return false;
-      i = 8;
-      break;
     }
+    return false;
   }
   
   public void setTitle(CharSequence paramCharSequence)
@@ -1176,10 +860,30 @@ public class QQBrowserActivity
     }
     super.setTitle(paramCharSequence);
   }
+  
+  public void startActivityFromFragment(@NonNull Fragment paramFragment, Intent paramIntent, int paramInt, @Nullable Bundle paramBundle)
+  {
+    if (paramInt == -1)
+    {
+      ActivityCompat.startActivityForResult(this, paramIntent, -1, paramBundle);
+      return;
+    }
+    ActivityCompat.startActivityForResult(this, paramIntent, paramInt, paramBundle);
+  }
+  
+  public void startIntentSenderFromFragment(@NonNull Fragment paramFragment, IntentSender paramIntentSender, int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, @Nullable Bundle paramBundle)
+  {
+    if (paramInt1 == -1)
+    {
+      ActivityCompat.startIntentSenderForResult(this, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+      return;
+    }
+    ActivityCompat.startIntentSenderForResult(this, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserActivity
  * JD-Core Version:    0.7.0.1
  */

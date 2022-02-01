@@ -27,8 +27,9 @@ public class DoubleMoveAvgPredictor
     paramLong = this.firstMoveAvg.currentPredition;
     this.secondMoveAvg.sample(paramLong);
     long l = this.secondMoveAvg.currentPredition;
-    float f = 2.0F / (Math.max(this.firstMoveAvg.getSampleSize(), 2) - 1);
-    return ((float)(paramLong - l) * f + (float)(2L * paramLong - l));
+    float f1 = 2.0F / (Math.max(this.firstMoveAvg.getSampleSize(), 2) - 1);
+    float f2 = (float)(paramLong - l);
+    return ((float)(2L * paramLong - l) + f1 * f2);
   }
   
   public void reset()
@@ -40,12 +41,16 @@ public class DoubleMoveAvgPredictor
   
   public String toString()
   {
-    return "DoubleMoveAvgPredictor(" + this.maxSize + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoubleMoveAvgPredictor(");
+    localStringBuilder.append(this.maxSize);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.DoubleMoveAvgPredictor
  * JD-Core Version:    0.7.0.1
  */

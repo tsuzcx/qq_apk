@@ -8,14 +8,13 @@ import java.util.ArrayList;
 public final class photo_adapt_req
   extends JceStruct
 {
-  static ArrayList<String> cache_photoUrls;
-  static int cache_reqSource = 0;
+  static ArrayList<String> cache_photoUrls = new ArrayList();
+  static int cache_reqSource;
   public ArrayList<String> photoUrls = null;
   public int reqSource = 0;
   
   static
   {
-    cache_photoUrls = new ArrayList();
     cache_photoUrls.add("");
   }
   
@@ -41,7 +40,7 @@ public final class photo_adapt_req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.photo_adapt_req
  * JD-Core Version:    0.7.0.1
  */

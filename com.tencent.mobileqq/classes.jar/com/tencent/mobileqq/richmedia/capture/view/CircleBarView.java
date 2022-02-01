@@ -42,22 +42,21 @@ public class CircleBarView
   
   private int a(int paramInt1, int paramInt2)
   {
-    int j = View.MeasureSpec.getMode(paramInt2);
-    int i = View.MeasureSpec.getSize(paramInt2);
-    if (j == 1073741824) {
-      paramInt2 = i;
+    int i = View.MeasureSpec.getMode(paramInt2);
+    int j = View.MeasureSpec.getSize(paramInt2);
+    if (i == 1073741824) {
+      return j;
     }
-    do
-    {
-      return paramInt2;
-      paramInt2 = paramInt1;
-    } while (j != -2147483648);
-    return Math.min(paramInt1, i);
+    paramInt2 = paramInt1;
+    if (i == -2147483648) {
+      paramInt2 = Math.min(paramInt1, j);
+    }
+    return paramInt2;
   }
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -88,7 +87,8 @@ public class CircleBarView
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim.hasStarted())) {
+    CircleBarView.CircleAnim localCircleAnim = this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim;
+    if ((localCircleAnim != null) && (localCircleAnim.hasStarted())) {
       this.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureViewCircleBarView$CircleAnim.cancel();
     }
     clearAnimation();
@@ -126,21 +126,23 @@ public class CircleBarView
     return false;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Float, this.d, false, this.jdField_a_of_type_AndroidGraphicsPaint);
     paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_c_of_type_Float, this.f, false, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     paramInt2 = a(this.jdField_c_of_type_Int, paramInt2);
     paramInt1 = Math.min(a(this.jdField_c_of_type_Int, paramInt1), paramInt2);
     setMeasuredDimension(paramInt1, paramInt1);
-    if (paramInt1 >= this.e * 2.0F) {
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.e / 2.0F, this.e / 2.0F, paramInt1 - this.e / 2.0F, paramInt1 - this.e / 2.0F);
+    float f1 = paramInt1;
+    float f2 = this.e;
+    if (f1 >= f2 * 2.0F) {
+      this.jdField_a_of_type_AndroidGraphicsRectF.set(f2 / 2.0F, f2 / 2.0F, f1 - f2 / 2.0F, f1 - f2 / 2.0F);
     }
   }
   
@@ -161,7 +163,7 @@ public class CircleBarView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.capture.view.CircleBarView
  * JD-Core Version:    0.7.0.1
  */

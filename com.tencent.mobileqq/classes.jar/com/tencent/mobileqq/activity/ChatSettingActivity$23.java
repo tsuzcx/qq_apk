@@ -8,38 +8,55 @@ class ChatSettingActivity$23
 {
   ChatSettingActivity$23(ChatSettingActivity paramChatSettingActivity) {}
   
-  public void onInsertIntoBlackList(boolean paramBoolean, String paramString)
+  protected void onInsertIntoBlackList(boolean paramBoolean, String paramString)
   {
     if (!ChatSettingActivity.d(this.a)) {
       return;
     }
     ChatSettingActivity.c(this.a, false);
     ChatSettingActivity.g(this.a);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onInsertIntoBlackList, isSuccess=" + paramBoolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = this.a.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onInsertIntoBlackList, isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     if (paramBoolean)
     {
       if ((paramString != null) && (paramString.equals(ChatSettingActivity.e(this.a)))) {
         ChatSettingActivity.a(this.a, true);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onInsertIntoBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      if (QLog.isColorLevel())
+      {
+        paramString = this.a.a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onInsertIntoBlackList, mIsShield=");
+        ((StringBuilder)localObject).append(ChatSettingActivity.a(this.a));
+        QLog.d(paramString, 2, ((StringBuilder)localObject).toString());
       }
       ChatSettingActivity.b(this.a);
       return;
     }
-    ChatSettingActivity.a(this.a, 2131719330, 1);
+    ChatSettingActivity.a(this.a, 2131719048, 1);
   }
   
-  public void onRemoveFromBlackList(boolean paramBoolean, String paramString)
+  protected void onRemoveFromBlackList(boolean paramBoolean, String paramString)
   {
     if (!ChatSettingActivity.d(this.a)) {
       return;
     }
     ChatSettingActivity.c(this.a, false);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.a, 2, "onRemoveFromBlackList, isSuccess=" + paramBoolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = this.a.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRemoveFromBlackList, isSuccess=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     ChatSettingActivity.g(this.a);
     if (paramBoolean)
@@ -47,18 +64,23 @@ class ChatSettingActivity$23
       if ((paramString != null) && (paramString.equals(ChatSettingActivity.e(this.a)))) {
         ChatSettingActivity.a(this.a, false);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.a, 2, "onRemoveFromBlackList, mIsShield=" + ChatSettingActivity.a(this.a));
+      if (QLog.isColorLevel())
+      {
+        paramString = this.a.a;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onRemoveFromBlackList, mIsShield=");
+        ((StringBuilder)localObject).append(ChatSettingActivity.a(this.a));
+        QLog.d(paramString, 2, ((StringBuilder)localObject).toString());
       }
       ChatSettingActivity.b(this.a);
       return;
     }
-    ChatSettingActivity.a(this.a, 2131719330, 1);
+    ChatSettingActivity.a(this.a, 2131719048, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.23
  * JD-Core Version:    0.7.0.1
  */

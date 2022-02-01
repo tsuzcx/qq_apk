@@ -31,14 +31,14 @@ public class QCircleMoonCakeRequest
     return "FeedCloudSvr.trpc.videocircle.circleconfig.CircleConfigService.GetMooncake";
   }
   
-  public byte[] getRequestByteData()
+  protected byte[] getRequestByteData()
   {
     return this.mReq.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.requests.QCircleMoonCakeRequest
  * JD-Core Version:    0.7.0.1
  */

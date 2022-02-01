@@ -25,26 +25,31 @@ public class FabbyGLParam$FloatV4Param
   {
     if (this.handle >= 0)
     {
-      if ((this.value.length > 0) && (this.value.length % 4 == 0))
+      float[] arrayOfFloat = this.value;
+      if ((arrayOfFloat.length > 0) && (arrayOfFloat.length % 4 == 0))
       {
-        GLES20.glUniform4fv(this.handle, this.value.length / 4, this.value, 0);
+        paramInt = this.handle;
+        arrayOfFloat = this.value;
+        GLES20.glUniform4fv(paramInt, arrayOfFloat.length / 4, arrayOfFloat, 0);
         RendererUtils.checkGlError("FloatsParam setParams");
+        return;
       }
+      throw new IllegalStateException("floats length can't be divided by 4");
     }
-    else {
-      return;
-    }
-    throw new IllegalStateException("floats length can't be divided by 4");
   }
   
   public String toString()
   {
-    return this.name + "=" + this.value.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.value.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.filter.FabbyGLParam.FloatV4Param
  * JD-Core Version:    0.7.0.1
  */

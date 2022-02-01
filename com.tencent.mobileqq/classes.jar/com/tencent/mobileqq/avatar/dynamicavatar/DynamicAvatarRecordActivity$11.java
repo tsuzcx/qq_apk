@@ -14,9 +14,10 @@ class DynamicAvatarRecordActivity$11
   {
     String str = this.jdField_a_of_type_JavaLangString;
     if (this.jdField_a_of_type_Int == 2002) {
-      str = this.this$0.getString(2131699097);
+      str = this.this$0.getString(2131699201);
     }
-    this.this$0.a = DialogUtil.a(this.this$0, 230).setMessage(str).setPositiveButton(this.this$0.getString(2131693935), new DynamicAvatarRecordActivity.11.1(this));
+    DynamicAvatarRecordActivity localDynamicAvatarRecordActivity = this.this$0;
+    localDynamicAvatarRecordActivity.a = DialogUtil.a(localDynamicAvatarRecordActivity, 230).setMessage(str).setPositiveButton(this.this$0.getString(2131693890), new DynamicAvatarRecordActivity.11.1(this));
     try
     {
       this.this$0.a.setCancelable(false);
@@ -25,14 +26,15 @@ class DynamicAvatarRecordActivity$11
     }
     catch (WindowManager.BadTokenException localBadTokenException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.i("DynamicAvatarRecordActivity", 2, "", localBadTokenException);
+      if (QLog.isColorLevel()) {
+        QLog.i("DynamicAvatarRecordActivity", 2, "", localBadTokenException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -2,39 +2,52 @@ package com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodu
 
 import android.support.annotation.Nullable;
 import androidx.lifecycle.Observer;
-import com.tencent.ilive.audiencepages.room.AudienceRoomViewPager;
-import com.tencent.ilive.interfaces.IAudienceRoomPager;
-import com.tencent.ilive.litepages.room.webmodule.event.ScreenModeEvent;
-import com.tencent.ilive.litepages.room.webmodule.js.NormalJavascriptInterface;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.biz.ui.TouchWebView;
+import com.tencent.ilive.litepages.room.webmodule.event.SendChatInputEvent;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 class CustomWebModule$8
-  implements Observer<ScreenModeEvent>
+  implements Observer<SendChatInputEvent>
 {
   CustomWebModule$8(CustomWebModule paramCustomWebModule) {}
   
-  public void a(@Nullable ScreenModeEvent paramScreenModeEvent)
+  public void a(@Nullable SendChatInputEvent paramSendChatInputEvent)
   {
-    QLog.d("IliveCustomWebModule", 1, "screenModeEvent isLandscape = " + paramScreenModeEvent.isLandscape);
-    NormalJavascriptInterface.setLandscape(paramScreenModeEvent.isLandscape);
-    AudienceRoomViewPager localAudienceRoomViewPager;
-    if (this.a.getAudienceRoomPager() != null)
+    if (paramSendChatInputEvent != null)
     {
-      localAudienceRoomViewPager = (AudienceRoomViewPager)this.a.getAudienceRoomPager().getViewPager();
-      if (paramScreenModeEvent.isLandscape) {
-        localAudienceRoomViewPager.setScrollForbidden(true);
+      if (this.a.a == null) {
+        return;
+      }
+      int i = paramSendChatInputEvent.mType;
+      if (i == 1) {
+        try
+        {
+          JSONObject localJSONObject = new JSONObject();
+          localJSONObject.put("content", paramSendChatInputEvent.mContent);
+          paramSendChatInputEvent = new StringBuilder();
+          paramSendChatInputEvent.append("javascript:(__WEBVIEW_SENDTEXT(");
+          paramSendChatInputEvent.append(localJSONObject.toString());
+          paramSendChatInputEvent.append("))");
+          paramSendChatInputEvent = paramSendChatInputEvent.toString();
+          this.a.a.evaluateJavascript(paramSendChatInputEvent, new CustomWebModule.8.1(this));
+          return;
+        }
+        catch (JSONException paramSendChatInputEvent)
+        {
+          paramSendChatInputEvent.printStackTrace();
+          return;
+        }
+      }
+      if (i == 2) {
+        this.a.a.evaluateJavascript("javascript:__WEBVIEW_CANCELKEYBOARD()", new CustomWebModule.8.2(this));
       }
     }
-    else
-    {
-      return;
-    }
-    localAudienceRoomViewPager.setScrollForbidden(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.CustomWebModule.8
  * JD-Core Version:    0.7.0.1
  */

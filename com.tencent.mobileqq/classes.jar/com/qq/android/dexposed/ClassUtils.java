@@ -85,8 +85,10 @@ public class ClassUtils
       }
       catch (Exception localException)
       {
-        localArrayList.add(null);
+        label62:
+        break label62;
       }
+      localArrayList.add(null);
     }
   }
   
@@ -113,33 +115,29 @@ public class ClassUtils
   
   public static String deleteWhitespace(String paramString)
   {
-    if (isEmpty(paramString)) {}
-    int m;
-    char[] arrayOfChar;
-    int j;
-    int i;
-    do
-    {
+    if (isEmpty(paramString)) {
       return paramString;
-      m = paramString.length();
-      arrayOfChar = new char[m];
-      j = 0;
-      i = 0;
-      if (j < m) {
-        break;
-      }
-    } while (i == m);
-    return new String(arrayOfChar, 0, i);
-    if (!Character.isWhitespace(paramString.charAt(j)))
-    {
-      int k = i + 1;
-      arrayOfChar[i] = paramString.charAt(j);
-      i = k;
     }
-    for (;;)
+    int m = paramString.length();
+    char[] arrayOfChar = new char[m];
+    int i = 0;
+    int k;
+    for (int j = 0;; j = k)
     {
-      j += 1;
-      break;
+      if (i >= m)
+      {
+        if (j == m) {
+          return paramString;
+        }
+        return new String(arrayOfChar, 0, j);
+      }
+      k = j;
+      if (!Character.isWhitespace(paramString.charAt(i)))
+      {
+        arrayOfChar[j] = paramString.charAt(i);
+        k = j + 1;
+      }
+      i += 1;
     }
   }
   
@@ -178,19 +176,16 @@ public class ClassUtils
   
   public static List<Class<?>> getAllSuperclasses(Class<?> paramClass)
   {
-    if (paramClass == null)
-    {
-      paramClass = null;
-      return paramClass;
+    if (paramClass == null) {
+      return null;
     }
     ArrayList localArrayList = new ArrayList();
-    for (Class localClass = paramClass.getSuperclass();; localClass = localClass.getSuperclass())
+    for (paramClass = paramClass.getSuperclass();; paramClass = paramClass.getSuperclass())
     {
-      paramClass = localArrayList;
-      if (localClass == null) {
-        break;
+      if (paramClass == null) {
+        return localArrayList;
       }
-      localArrayList.add(localClass);
+      localArrayList.add(paramClass);
     }
   }
   
@@ -201,27 +196,37 @@ public class ClassUtils
   
   public static Class<?> getClass(ClassLoader paramClassLoader, String paramString, boolean paramBoolean)
   {
+    int i;
     try
     {
-      if (abbreviationMap.containsKey(paramString)) {
-        return Class.forName("[" + (String)abbreviationMap.get(paramString), paramBoolean, paramClassLoader).getComponentType();
+      if (abbreviationMap.containsKey(paramString))
+      {
+        localObject = new StringBuilder("[");
+        ((StringBuilder)localObject).append((String)abbreviationMap.get(paramString));
+        return Class.forName(((StringBuilder)localObject).toString(), paramBoolean, paramClassLoader).getComponentType();
       }
-      Class localClass = Class.forName(toCanonicalName(paramString), paramBoolean, paramClassLoader);
-      return localClass;
+      Object localObject = Class.forName(toCanonicalName(paramString), paramBoolean, paramClassLoader);
+      return localObject;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      int i = paramString.lastIndexOf('.');
-      if (i != -1) {
-        try
-        {
-          paramClassLoader = getClass(paramClassLoader, paramString.substring(0, i) + '$' + paramString.substring(i + 1), paramBoolean);
-          return paramClassLoader;
-        }
-        catch (ClassNotFoundException paramClassLoader) {}
-      }
-      throw localClassNotFoundException;
+      i = paramString.lastIndexOf('.');
+      if (i == -1) {}
     }
+    try
+    {
+      StringBuilder localStringBuilder = new StringBuilder(String.valueOf(paramString.substring(0, i)));
+      localStringBuilder.append('$');
+      localStringBuilder.append(paramString.substring(i + 1));
+      paramClassLoader = getClass(paramClassLoader, localStringBuilder.toString(), paramBoolean);
+      return paramClassLoader;
+    }
+    catch (ClassNotFoundException paramClassLoader)
+    {
+      label135:
+      break label135;
+    }
+    throw localClassNotFoundException;
   }
   
   public static Class<?> getClass(String paramString)
@@ -257,32 +262,34 @@ public class ClassUtils
   
   public static String getPackageName(String paramString)
   {
-    String str;
     if (paramString != null)
     {
-      str = paramString;
-      if (paramString.length() != 0) {}
-    }
-    else
-    {
-      return "";
-    }
-    while (str.charAt(0) == '[') {
-      str = str.substring(1);
-    }
-    paramString = str;
-    if (str.charAt(0) == 'L')
-    {
-      paramString = str;
-      if (str.charAt(str.length() - 1) == ';') {
-        paramString = str.substring(1);
+      String str = paramString;
+      if (paramString.length() == 0) {
+        return "";
+      }
+      for (;;)
+      {
+        if (str.charAt(0) != '[')
+        {
+          paramString = str;
+          if (str.charAt(0) == 'L')
+          {
+            paramString = str;
+            if (str.charAt(str.length() - 1) == ';') {
+              paramString = str.substring(1);
+            }
+          }
+          int i = paramString.lastIndexOf('.');
+          if (i == -1) {
+            return "";
+          }
+          return paramString.substring(0, i);
+        }
+        str = str.substring(1);
       }
     }
-    int i = paramString.lastIndexOf('.');
-    if (i == -1) {
-      return "";
-    }
-    return paramString.substring(0, i);
+    return "";
   }
   
   public static String getShortClassName(Class<?> paramClass)
@@ -303,7 +310,6 @@ public class ClassUtils
   
   public static String getShortClassName(String paramString)
   {
-    int i = 0;
     if (paramString == null) {
       return "";
     }
@@ -311,42 +317,46 @@ public class ClassUtils
       return "";
     }
     StringBuilder localStringBuilder = new StringBuilder();
+    boolean bool = paramString.startsWith("[");
+    int i = 0;
     String str = paramString;
-    if (paramString.startsWith("["))
-    {
-      if (paramString.charAt(0) == '[') {
-        break label179;
-      }
-      str = paramString;
-      if (paramString.charAt(0) == 'L')
-      {
-        str = paramString;
-        if (paramString.charAt(paramString.length() - 1) == ';') {
-          str = paramString.substring(1, paramString.length() - 1);
-        }
-      }
-    }
-    if (reverseAbbreviationMap.containsKey(str)) {}
-    for (paramString = (String)reverseAbbreviationMap.get(str);; paramString = str)
-    {
-      int j = paramString.lastIndexOf('.');
-      if (j == -1) {}
+    if (bool) {
       for (;;)
       {
-        i = paramString.indexOf('$', i);
-        str = paramString.substring(j + 1);
-        paramString = str;
-        if (i != -1) {
-          paramString = str.replace('$', '.');
+        if (paramString.charAt(0) != '[')
+        {
+          str = paramString;
+          if (paramString.charAt(0) != 'L') {
+            break;
+          }
+          str = paramString;
+          if (paramString.charAt(paramString.length() - 1) != ';') {
+            break;
+          }
+          str = paramString.substring(1, paramString.length() - 1);
+          break;
         }
-        return paramString + localStringBuilder;
-        label179:
         paramString = paramString.substring(1);
         localStringBuilder.append("[]");
-        break;
-        i = j + 1;
       }
     }
+    paramString = str;
+    if (reverseAbbreviationMap.containsKey(str)) {
+      paramString = (String)reverseAbbreviationMap.get(str);
+    }
+    int j = paramString.lastIndexOf('.');
+    if (j != -1) {
+      i = j + 1;
+    }
+    i = paramString.indexOf('$', i);
+    str = paramString.substring(j + 1);
+    paramString = str;
+    if (i != -1) {
+      paramString = str.replace('$', '.');
+    }
+    paramString = new StringBuilder(String.valueOf(paramString));
+    paramString.append(localStringBuilder);
+    return paramString.toString();
   }
   
   public static String getSimpleName(Class<?> paramClass)
@@ -373,54 +383,65 @@ public class ClassUtils
   private static String toCanonicalName(String paramString)
   {
     paramString = deleteWhitespace(paramString);
-    if (paramString == null) {
-      throw new NullPointerException("className must not be null.");
-    }
-    Object localObject = paramString;
-    if (paramString.endsWith("[]"))
+    if (paramString != null)
     {
-      localObject = new StringBuilder();
-      if (paramString.endsWith("[]")) {
-        break label80;
+      if (paramString.endsWith("[]"))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        for (;;)
+        {
+          if (!paramString.endsWith("[]"))
+          {
+            String str = (String)abbreviationMap.get(paramString);
+            if (str != null)
+            {
+              localStringBuilder.append(str);
+            }
+            else
+            {
+              localStringBuilder.append("L");
+              localStringBuilder.append(paramString);
+              localStringBuilder.append(";");
+            }
+            return localStringBuilder.toString();
+          }
+          paramString = paramString.substring(0, paramString.length() - 2);
+          localStringBuilder.append("[");
+        }
       }
-      String str = (String)abbreviationMap.get(paramString);
-      if (str == null) {
-        break label102;
-      }
-      ((StringBuilder)localObject).append(str);
+      return paramString;
     }
+    paramString = new NullPointerException("className must not be null.");
     for (;;)
     {
-      localObject = ((StringBuilder)localObject).toString();
-      return localObject;
-      label80:
-      paramString = paramString.substring(0, paramString.length() - 2);
-      ((StringBuilder)localObject).append("[");
-      break;
-      label102:
-      ((StringBuilder)localObject).append("L").append(paramString).append(";");
+      throw paramString;
     }
   }
   
   public static Class<?>[] toClass(Object... paramVarArgs)
   {
-    int i = 0;
     if (paramVarArgs == null) {
       return null;
     }
-    if (paramVarArgs.length == 0) {
+    int j = paramVarArgs.length;
+    int i = 0;
+    if (j == 0) {
       return new Class[0];
     }
     Class[] arrayOfClass = new Class[paramVarArgs.length];
-    if (i >= paramVarArgs.length) {
-      return arrayOfClass;
-    }
-    if (paramVarArgs[i] == null) {}
-    for (Class localClass = null;; localClass = paramVarArgs[i].getClass())
+    for (;;)
     {
+      if (i >= paramVarArgs.length) {
+        return arrayOfClass;
+      }
+      Class localClass;
+      if (paramVarArgs[i] == null) {
+        localClass = null;
+      } else {
+        localClass = paramVarArgs[i].getClass();
+      }
       arrayOfClass[i] = localClass;
       i += 1;
-      break;
     }
   }
 }

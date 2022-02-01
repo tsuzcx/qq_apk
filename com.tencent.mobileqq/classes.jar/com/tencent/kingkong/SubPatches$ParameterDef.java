@@ -9,12 +9,21 @@ public class SubPatches$ParameterDef
   
   public String toString()
   {
-    return "Index " + this.jdField_a_of_type_Int + ": " + this.jdField_b_of_type_Int + ", " + this.jdField_a_of_type_JavaLangString + ", " + this.jdField_b_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Index ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(": ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.SubPatches.ParameterDef
  * JD-Core Version:    0.7.0.1
  */

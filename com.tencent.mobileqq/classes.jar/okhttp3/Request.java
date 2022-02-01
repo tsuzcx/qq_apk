@@ -87,7 +87,15 @@ public final class Request
   
   public String toString()
   {
-    return "Request{method=" + this.method + ", url=" + this.url + ", tags=" + this.tags + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Request{method=");
+    localStringBuilder.append(this.method);
+    localStringBuilder.append(", url=");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append(", tags=");
+    localStringBuilder.append(this.tags);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public HttpUrl url()
@@ -97,7 +105,7 @@ public final class Request
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.Request
  * JD-Core Version:    0.7.0.1
  */

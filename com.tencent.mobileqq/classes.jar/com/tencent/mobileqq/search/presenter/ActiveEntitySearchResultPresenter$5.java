@@ -12,27 +12,24 @@ class ActiveEntitySearchResultPresenter$5
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b != null) && (this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.b.equals(paramString)))
     {
-      if (paramInt != 3) {
-        break label45;
+      if (paramInt == 3) {
+        this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.m = 2;
+      } else if ((paramInt != 2) && (paramInt != 4))
+      {
+        if (paramInt == 1) {
+          this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.m = 0;
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.m = 2;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter.a();
-      return;
-      label45:
-      if ((paramInt == 2) || (paramInt == 4)) {
+      else {
         this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.m = 1;
-      } else if (paramInt == 1) {
-        this.jdField_a_of_type_ComTencentMobileqqSearchModelGroupBaseNetSearchModelItem.m = 0;
       }
+      this.jdField_a_of_type_ComTencentMobileqqSearchPresenterActiveEntitySearchResultPresenter.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter.5
  * JD-Core Version:    0.7.0.1
  */

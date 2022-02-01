@@ -27,7 +27,10 @@ public class VideoEffectProxy
   @NonNull
   public String effectId()
   {
-    return "VideoEffectProxy" + Integer.toHexString(hashCode());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoEffectProxy");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    return localStringBuilder.toString();
   }
   
   @NonNull
@@ -79,7 +82,7 @@ public class VideoEffectProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.component.effectchain.VideoEffectProxy
  * JD-Core Version:    0.7.0.1
  */

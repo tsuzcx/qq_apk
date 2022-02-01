@@ -20,9 +20,10 @@ public class SnapShotFilter
   
   public void clear()
   {
-    if (this.mFrame != null)
+    Frame localFrame = this.mFrame;
+    if (localFrame != null)
     {
-      this.mFrame.setCanUnlock(true);
+      localFrame.setCanUnlock(true);
       this.mFrame.unlock();
     }
   }
@@ -75,7 +76,7 @@ public class SnapShotFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.SnapShotFilter
  * JD-Core Version:    0.7.0.1
  */

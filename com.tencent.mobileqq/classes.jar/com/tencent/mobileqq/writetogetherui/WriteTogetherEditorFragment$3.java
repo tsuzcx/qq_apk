@@ -2,7 +2,7 @@ package com.tencent.mobileqq.writetogetherui;
 
 import android.content.Context;
 import android.content.res.Resources;
-import android.support.v4.app.QFragmentActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.writetogether.WriteTogetherOidbObserver;
 import com.tencent.mobileqq.writetogether.data.CreateDocParam;
@@ -32,20 +32,20 @@ class WriteTogetherEditorFragment$3
     WriteTogetherEditorFragment.b(this.a, paramBoolean);
     WriteTogetherEditorFragment.a(this.a);
     if (!paramBoolean) {
-      QQToast.a(WriteTogetherEditorFragment.a(this.a), WriteTogetherEditorFragment.a(this.a).getResources().getString(2131720749), 0).a();
+      QQToast.a(WriteTogetherEditorFragment.a(this.a), WriteTogetherEditorFragment.a(this.a).getResources().getString(2131720474), 0).a();
     }
     if (paramBoolean)
     {
       paramArrayOfObject = WriteTogetherEditorFragment.a(this.a, paramArrayOfObject);
-      this.a.getActivity().setResult(15, paramArrayOfObject);
-      this.a.getActivity().finish();
+      this.a.getQBaseActivity().setResult(15, paramArrayOfObject);
+      this.a.getQBaseActivity().finish();
       WriteTogetherEditorFragment.b(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.3
  * JD-Core Version:    0.7.0.1
  */

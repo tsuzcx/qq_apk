@@ -15,13 +15,13 @@ class DoubleVideoMeetingCtrlUI$3
   {
     QLog.d(this.a.d, 1, "onClick R.id.qav_btn_accept_video");
     this.a.e();
-    this.a.a.a().as = true;
+    this.a.a.a().ag = true;
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoMeetingCtrlUI.3
  * JD-Core Version:    0.7.0.1
  */

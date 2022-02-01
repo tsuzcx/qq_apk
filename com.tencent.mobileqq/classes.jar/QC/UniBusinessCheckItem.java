@@ -44,23 +44,27 @@ public final class UniBusinessCheckItem
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.itemid, 1);
     paramJceOutputStream.write(this.ret, 2);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 3);
+    String str = this.errmsg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 4);
+    str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.txRuleID != null) {
-      paramJceOutputStream.write(this.txRuleID, 5);
+    str = this.txRuleID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.strAID != null) {
-      paramJceOutputStream.write(this.strAID, 6);
+    str = this.strAID;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusinessCheckItem
  * JD-Core Version:    0.7.0.1
  */

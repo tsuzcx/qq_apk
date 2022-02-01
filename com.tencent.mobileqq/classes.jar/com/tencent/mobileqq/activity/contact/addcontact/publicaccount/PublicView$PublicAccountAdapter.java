@@ -49,46 +49,46 @@ class PublicView$PublicAccountAdapter
     if (paramView == null)
     {
       localObject1 = new FormMultiLineItem(this.a.a);
-      ((View)localObject1).setId(2131374500);
+      ((View)localObject1).setId(2131374038);
       paramView = new PublicView.ViewHolder();
-      paramView.c = ((FormMultiLineItem)localObject1).a();
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((FormMultiLineItem)localObject1).a(0);
-      paramView.b = ((FormMultiLineItem)localObject1).a(1);
+      localObject2 = (FormMultiLineItem)localObject1;
+      paramView.c = ((FormMultiLineItem)localObject2).a();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((FormMultiLineItem)localObject2).a(0);
+      paramView.b = ((FormMultiLineItem)localObject2).a(1);
       ((View)localObject1).setTag(paramView);
       ((View)localObject1).setOnClickListener(this.a);
     }
-    Object localObject2;
-    for (;;)
+    else
     {
-      localObject2 = a(paramInt);
-      if (localObject2 != null) {
-        break;
-      }
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
-      return localObject1;
       localObject2 = (PublicView.ViewHolder)paramView.getTag();
       localObject1 = paramView;
       paramView = (View)localObject2;
     }
-    if (((PublicRecommendAccountInfo)localObject2).mSource == 1)
+    Object localObject2 = a(paramInt);
+    if (localObject2 != null)
     {
-      paramView.jdField_a_of_type_JavaLangString = ((PublicRecommendAccountInfo)localObject2).mEqqNameAccount;
-      label154:
+      if (((PublicRecommendAccountInfo)localObject2).mSource == 1) {
+        paramView.jdField_a_of_type_JavaLangString = ((PublicRecommendAccountInfo)localObject2).mEqqNameAccount;
+      } else {
+        paramView.jdField_a_of_type_JavaLangString = String.valueOf(((PublicRecommendAccountInfo)localObject2).mPublicuin);
+      }
       paramView.jdField_a_of_type_ComTencentMobileqqDataPublicRecommendAccountInfo = ((PublicRecommendAccountInfo)localObject2);
       paramView.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
       paramView.b.setVisibility(0);
       paramView.c.setImageBitmap(a(1, paramView.jdField_a_of_type_JavaLangString));
-      if (((PublicRecommendAccountInfo)localObject2).mSource != 1) {
-        break label404;
+      if (((PublicRecommendAccountInfo)localObject2).mSource == 1)
+      {
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject2).mEqqCs);
+        paramView.b.setText(((PublicRecommendAccountInfo)localObject2).mEqqSi);
       }
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject2).mEqqCs);
-      paramView.b.setText(((PublicRecommendAccountInfo)localObject2).mEqqSi);
-    }
-    for (;;)
-    {
+      else
+      {
+        paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject2).mPublicname);
+        paramView.b.setText(((PublicRecommendAccountInfo)localObject2).mPublicdesc);
+      }
       if ((((PublicRecommendAccountInfo)localObject2).mIsVerified != null) && (((PublicRecommendAccountInfo)localObject2).mIsVerified.equalsIgnoreCase("1")))
       {
-        localObject2 = this.a.getResources().getDrawable(2130841947);
+        localObject2 = this.a.getResources().getDrawable(2130841838);
         int i = (int)DisplayUtils.a(this.a.a, 15.0F);
         ((Drawable)localObject2).setBounds(0, 0, i, i);
         ((MultiImageTextView)paramView.jdField_a_of_type_AndroidWidgetTextView).a(6.0F);
@@ -102,18 +102,14 @@ class PublicView$PublicAccountAdapter
         ((StringBuilder)localObject2).append(paramView.b.getText().toString());
         ((View)localObject1).setContentDescription(((StringBuilder)localObject2).toString());
       }
-      break;
-      paramView.jdField_a_of_type_JavaLangString = String.valueOf(((PublicRecommendAccountInfo)localObject2).mPublicuin);
-      break label154;
-      label404:
-      paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((PublicRecommendAccountInfo)localObject2).mPublicname);
-      paramView.b.setText(((PublicRecommendAccountInfo)localObject2).mPublicdesc);
     }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject1, paramViewGroup, getItemId(paramInt));
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.publicaccount.PublicView.PublicAccountAdapter
  * JD-Core Version:    0.7.0.1
  */

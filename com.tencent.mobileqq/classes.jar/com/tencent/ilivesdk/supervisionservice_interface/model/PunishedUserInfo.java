@@ -8,12 +8,18 @@ public class PunishedUserInfo
   
   public String toString()
   {
-    return "RoomAdminInfo {userInfo=" + this.userInfo.toString() + "\nendTime=" + this.endTime + "\n}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RoomAdminInfo {userInfo=");
+    localStringBuilder.append(this.userInfo.toString());
+    localStringBuilder.append("\nendTime=");
+    localStringBuilder.append(this.endTime);
+    localStringBuilder.append("\n}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.supervisionservice_interface.model.PunishedUserInfo
  * JD-Core Version:    0.7.0.1
  */

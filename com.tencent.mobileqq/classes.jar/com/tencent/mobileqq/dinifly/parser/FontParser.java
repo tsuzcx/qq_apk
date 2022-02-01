@@ -7,62 +7,71 @@ class FontParser
 {
   static Font parse(JsonReader paramJsonReader)
   {
-    String str3 = null;
-    float f = 0.0F;
     paramJsonReader.beginObject();
+    String str3 = null;
     String str2 = null;
-    String str1 = null;
-    label14:
+    String str1 = str2;
+    float f = 0.0F;
     while (paramJsonReader.hasNext())
     {
       String str4 = paramJsonReader.nextName();
       int i = -1;
       switch (str4.hashCode())
       {
+      default: 
+        break;
+      case 96619537: 
+        if (str4.equals("fName")) {
+          i = 1;
+        }
+        break;
+      case -1294566165: 
+        if (str4.equals("fStyle")) {
+          i = 2;
+        }
+        break;
+      case -1408684838: 
+        if (str4.equals("ascent")) {
+          i = 3;
+        }
+        break;
+      case -1866931350: 
+        if (str4.equals("fFamily")) {
+          i = 0;
+        }
+        break;
       }
-      for (;;)
+      if (i != 0)
       {
-        switch (i)
+        if (i != 1)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label14;
-          if (str4.equals("fFamily"))
+          if (i != 2)
           {
-            i = 0;
-            continue;
-            if (str4.equals("fName"))
-            {
-              i = 1;
-              continue;
-              if (str4.equals("fStyle"))
-              {
-                i = 2;
-                continue;
-                if (str4.equals("ascent")) {
-                  i = 3;
-                }
-              }
+            if (i != 3) {
+              paramJsonReader.skipValue();
+            } else {
+              f = (float)paramJsonReader.nextDouble();
             }
           }
-          break;
+          else {
+            str1 = paramJsonReader.nextString();
+          }
+        }
+        else {
+          str2 = paramJsonReader.nextString();
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      str2 = paramJsonReader.nextString();
-      continue;
-      str3 = paramJsonReader.nextString();
-      continue;
-      f = (float)paramJsonReader.nextDouble();
+      else {
+        str3 = paramJsonReader.nextString();
+      }
     }
     paramJsonReader.endObject();
-    return new Font(str1, str2, str3, f);
+    return new Font(str3, str2, str1, f);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.FontParser
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,13 @@ package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
-import com.tencent.mobileqq.troopshare.TroopShareResp;
+import com.tencent.mobileqq.troop.troopmanager.api.TroopManagerBizObserver;
+import com.tencent.mobileqq.troop.troopshare.TroopShareResp;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 
 class ForwardShareCardOption$2
-  extends TroopBusinessObserver
+  extends TroopManagerBizObserver
 {
   ForwardShareCardOption$2(ForwardShareCardOption paramForwardShareCardOption) {}
   
@@ -17,47 +17,52 @@ class ForwardShareCardOption$2
     if (QLog.isColorLevel()) {
       QLog.d("ForwardOption.ForwardShareCardOption", 2, "onTroopShareLink start");
     }
-    this.a.z();
-    if (ForwardShareCardOption.a(this.a) != -1)
-    {
-      if ((!paramBoolean) || (paramTroopShareResp.jdField_a_of_type_Int != 0)) {
-        break label189;
-      }
-      if (paramTroopShareResp.jdField_a_of_type_Boolean)
+    this.a.A();
+    if (ForwardShareCardOption.a(this.a) != -1) {
+      if ((paramBoolean) && (paramTroopShareResp.jdField_a_of_type_Int == 0))
       {
-        ForwardShareCardOption.a(this.a, paramTroopShareResp.b);
-        if (ForwardShareCardOption.a(this.a) == 0) {}
+        if (paramTroopShareResp.jdField_a_of_type_Boolean)
+        {
+          ForwardShareCardOption.a(this.a, paramTroopShareResp.b);
+          if (ForwardShareCardOption.a(this.a) == 0) {}
+        }
+        else
+        {
+          ForwardShareCardOption.b(this.a, paramTroopShareResp.b);
+          if (ForwardShareCardOption.a(this.a) != 1) {
+            return;
+          }
+        }
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("mTroopVerifyLink=");
+          localStringBuilder.append(ForwardShareCardOption.a(this.a));
+          localStringBuilder.append(" mTroopNotNeedVefifyLink=");
+          localStringBuilder.append(ForwardShareCardOption.b(this.a));
+          QLog.d("ForwardOption.ForwardShareCardOption", 2, localStringBuilder.toString());
+        }
+        if ((paramTroopShareResp.jdField_a_of_type_JavaLangString != null) && (paramTroopShareResp.jdField_a_of_type_JavaLangString.equals(ForwardShareCardOption.c(this.a)))) {
+          ForwardShareCardOption.a(this.a);
+        }
       }
       else
       {
-        do
-        {
+        if ((paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 0)) {
           return;
-          ForwardShareCardOption.b(this.a, paramTroopShareResp.b);
-        } while (ForwardShareCardOption.a(this.a) != 1);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ForwardOption.ForwardShareCardOption", 2, "mTroopVerifyLink=" + ForwardShareCardOption.a(this.a) + " mTroopNotNeedVefifyLink=" + ForwardShareCardOption.b(this.a));
-      }
-      if ((paramTroopShareResp.jdField_a_of_type_JavaLangString != null) && (paramTroopShareResp.jdField_a_of_type_JavaLangString.equals(ForwardShareCardOption.c(this.a)))) {
-        ForwardShareCardOption.a(this.a);
+        }
+        if ((!paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 1)) {
+          return;
+        }
+        QQToast.a(this.a.a, 1, this.a.a.getString(2131692928), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
       }
     }
-    for (;;)
-    {
-      ForwardShareCardOption.a(this.a, -1);
-      return;
-      label189:
-      if (((paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 0)) || ((!paramTroopShareResp.jdField_a_of_type_Boolean) && (ForwardShareCardOption.a(this.a) != 1))) {
-        break;
-      }
-      QQToast.a(this.a.a, 1, this.a.a.getString(2131692968), 0).b(((BaseActivity)this.a.a).getTitleBarHeight());
-    }
+    ForwardShareCardOption.a(this.a, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardShareCardOption.2
  * JD-Core Version:    0.7.0.1
  */

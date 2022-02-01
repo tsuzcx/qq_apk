@@ -13,26 +13,43 @@ final class LinkedHashTreeMap$AvlBuilder<K, V>
     paramNode.parent = null;
     paramNode.left = null;
     paramNode.height = 1;
-    if ((this.leavesToSkip > 0) && ((this.size & 0x1) == 0))
+    int i = this.leavesToSkip;
+    int j;
+    if (i > 0)
     {
-      this.size += 1;
-      this.leavesToSkip -= 1;
-      this.leavesSkipped += 1;
+      j = this.size;
+      if ((j & 0x1) == 0)
+      {
+        this.size = (j + 1);
+        this.leavesToSkip = (i - 1);
+        this.leavesSkipped += 1;
+      }
     }
     paramNode.parent = this.stack;
     this.stack = paramNode;
     this.size += 1;
-    if ((this.leavesToSkip > 0) && ((this.size & 0x1) == 0))
+    i = this.leavesToSkip;
+    if (i > 0)
     {
-      this.size += 1;
-      this.leavesToSkip -= 1;
-      this.leavesSkipped += 1;
+      j = this.size;
+      if ((j & 0x1) == 0)
+      {
+        this.size = (j + 1);
+        this.leavesToSkip = (i - 1);
+        this.leavesSkipped += 1;
+      }
     }
-    int i = 4;
-    if ((this.size & i - 1) == i - 1)
+    i = 4;
+    for (;;)
     {
+      j = this.size;
+      int k = i - 1;
+      if ((j & k) != k) {
+        break;
+      }
+      j = this.leavesSkipped;
       LinkedHashTreeMap.Node localNode1;
-      if (this.leavesSkipped == 0)
+      if (j == 0)
       {
         paramNode = this.stack;
         localNode1 = paramNode.parent;
@@ -45,25 +62,21 @@ final class LinkedHashTreeMap$AvlBuilder<K, V>
         localNode2.parent = localNode1;
         paramNode.parent = localNode1;
       }
-      for (;;)
+      else if (j == 1)
       {
-        i *= 2;
-        break;
-        if (this.leavesSkipped == 1)
-        {
-          paramNode = this.stack;
-          localNode1 = paramNode.parent;
-          this.stack = localNode1;
-          localNode1.right = paramNode;
-          paramNode.height += 1;
-          paramNode.parent = localNode1;
-          this.leavesSkipped = 0;
-        }
-        else if (this.leavesSkipped == 2)
-        {
-          this.leavesSkipped = 0;
-        }
+        paramNode = this.stack;
+        localNode1 = paramNode.parent;
+        this.stack = localNode1;
+        localNode1.right = paramNode;
+        paramNode.height += 1;
+        paramNode.parent = localNode1;
+        this.leavesSkipped = 0;
       }
+      else if (j == 2)
+      {
+        this.leavesSkipped = 0;
+      }
+      i *= 2;
     }
   }
   
@@ -78,15 +91,15 @@ final class LinkedHashTreeMap$AvlBuilder<K, V>
   LinkedHashTreeMap.Node<K, V> root()
   {
     LinkedHashTreeMap.Node localNode = this.stack;
-    if (localNode.parent != null) {
-      throw new IllegalStateException();
+    if (localNode.parent == null) {
+      return localNode;
     }
-    return localNode;
+    throw new IllegalStateException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.LinkedHashTreeMap.AvlBuilder
  * JD-Core Version:    0.7.0.1
  */

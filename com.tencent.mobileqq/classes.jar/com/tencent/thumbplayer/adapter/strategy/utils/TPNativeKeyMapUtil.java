@@ -1,501 +1,490 @@
 package com.tencent.thumbplayer.adapter.strategy.utils;
 
+import android.text.TextUtils;
+import android.util.SparseArray;
 import com.tencent.thumbplayer.adapter.player.thumbplayer.TPThumbPlayerUtils.OptionIdMapping;
-import com.tencent.thumbplayer.api.ITPPlayer;
-import com.tencent.thumbplayer.api.TPCommonEnum.NativeErrorType;
-import com.tencent.thumbplayer.api.TPCommonEnum.NativeMsgInfo;
-import com.tencent.thumbplayer.api.TPCommonEnum.NativeSeekMode;
-import com.tencent.thumbplayer.api.TPCommonEnum.NativeSwitchDefMode;
-import com.tencent.thumbplayer.api.TPCommonEnum.TPErrorType;
-import com.tencent.thumbplayer.api.TPCommonEnum.TPMsgInfo;
 import com.tencent.thumbplayer.api.TPCommonEnum.TPOptionalId;
-import com.tencent.thumbplayer.api.TPCommonEnum.TPSeekMode;
-import com.tencent.thumbplayer.api.TPCommonEnum.TPSwitchDefMode;
-import com.tencent.thumbplayer.api.TPErrorCode;
 import com.tencent.thumbplayer.api.TPOptionalID;
-import com.tencent.thumbplayer.api.TPPlayerMsg;
-import com.tencent.thumbplayer.api.TPPropertyID;
-import com.tencent.thumbplayer.api.connection.TPPlayerConnectionConstant;
 import com.tencent.thumbplayer.tplayer.TPOptionalIDInternal;
 import com.tencent.thumbplayer.utils.TPLogUtil;
+import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
+import java.lang.reflect.Modifier;
+import java.util.HashSet;
+import java.util.Map;
+import java.util.Map.Entry;
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+import java.util.concurrent.atomic.AtomicBoolean;
 
 public class TPNativeKeyMapUtil
 {
+  private static final String REVERSE_MAP_NAME_SUFFIX = ".reverseMap";
   private static final String TAG = "TPNativeKeyMapUtil";
+  private static final AtomicBoolean sHasOptionalIdMapInit = new AtomicBoolean(false);
+  private static final Map<Class<?>, AtomicBoolean> sHasThisAnnotationInitMap;
+  private static final Map<String, Map<Number, Number>> sNameToMap = new ConcurrentHashMap();
+  private static final SparseArray<String> sOptionalIdKeyToNameMap;
+  private static final SparseArray<TPThumbPlayerUtils.OptionIdMapping> sToNativeOptionalIdMap;
   
-  public static int convertToNativeConnectionAction(int paramInt)
+  static
   {
-    try
+    sHasThisAnnotationInitMap = new ConcurrentHashMap();
+    sToNativeOptionalIdMap = new SparseArray();
+    sOptionalIdKeyToNameMap = new SparseArray();
+  }
+  
+  private static <T extends Annotation> void buildBiDirectionMapForAnnotation(Class<T> paramClass)
+  {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("buildBiDirectionMapForAnnotation, clazz=");
+    ((StringBuilder)localObject1).append(paramClass);
+    TPLogUtil.i("TPNativeKeyMapUtil", ((StringBuilder)localObject1).toString());
+    synchronized (sHasThisAnnotationInitMap)
     {
-      localClass = Class.forName(TPPlayerConnectionConstant.class.getName());
-      arrayOfField = localClass.getDeclaredFields();
-      j = arrayOfField.length;
-      i = 0;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass;
-      Field[] arrayOfField;
-      int j;
-      Object localObject;
-      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      TPLogUtil.w("TPNativeKeyMapUtil", "convertToNativeConnectionAction, tpConnectionAction: " + paramInt + " not recognition, return -1");
-      return -1;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
+      Object localObject2 = (AtomicBoolean)sHasThisAnnotationInitMap.get(paramClass);
+      localObject1 = localObject2;
+      if (localObject2 == null)
       {
-        int i;
-        TPLogUtil.e("TPNativeKeyMapUtil", localIllegalAccessException);
-        continue;
-        label142:
-        i += 1;
+        localObject1 = new AtomicBoolean(false);
+        sHasThisAnnotationInitMap.put(paramClass, localObject1);
       }
-    }
-    if (i < j)
-    {
-      localObject = arrayOfField[i];
-      if (!((Field)localObject).getType().toString().equals("int")) {
-        break label142;
+      try
+      {
+        if (((AtomicBoolean)localObject1).get())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("className=");
+          ((StringBuilder)localObject2).append(paramClass.getSimpleName());
+          ((StringBuilder)localObject2).append(" already init");
+          TPLogUtil.i("TPNativeKeyMapUtil", ((StringBuilder)localObject2).toString());
+          return;
+        }
+        searchClassToFillMap(paramClass);
+        ((AtomicBoolean)localObject1).set(true);
+        return;
       }
-      ((Field)localObject).setAccessible(true);
-      if (paramInt != ((Field)localObject).getInt(localClass)) {
-        break label142;
-      }
-      localObject = (TPNativeKeyMap.MapConnectionAction)((Field)localObject).getAnnotation(TPNativeKeyMap.MapConnectionAction.class);
-      if (localObject == null) {
-        break label142;
-      }
-      i = ((TPNativeKeyMap.MapConnectionAction)localObject).value();
-      return i;
+      finally {}
     }
   }
   
-  public static int convertToNativeConnectionConfig(int paramInt)
+  private static void buildNativeInitConfigMap()
   {
     try
     {
-      localClass = Class.forName(TPPlayerConnectionConstant.class.getName());
-      arrayOfField = localClass.getDeclaredFields();
-      j = arrayOfField.length;
-      i = 0;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass;
-      Field[] arrayOfField;
-      int j;
-      Object localObject;
-      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      TPLogUtil.w("TPNativeKeyMapUtil", "convertToNativeConnectionConfig, tpConnectionConfig: " + paramInt + " not recognition, return -1");
-      return -1;
+      Class localClass = Class.forName(TPOptionalID.class.getName());
+      Field[] arrayOfField = localClass.getDeclaredFields();
+      int j = arrayOfField.length;
+      int i = 0;
+      while (i < j)
+      {
+        Field localField = arrayOfField[i];
+        if (localField.getType().toString().equals("int"))
+        {
+          TPNativeKeyMap.MapInitConfig localMapInitConfig = (TPNativeKeyMap.MapInitConfig)localField.getAnnotation(TPNativeKeyMap.MapInitConfig.class);
+          if (localMapInitConfig != null)
+          {
+            int k = localField.getInt(localClass);
+            sOptionalIdKeyToNameMap.put(k, localMapInitConfig.keyName());
+            if (localMapInitConfig.value() == -1)
+            {
+              sToNativeOptionalIdMap.put(k, new TPThumbPlayerUtils.OptionIdMapping());
+            }
+            else
+            {
+              localField.setAccessible(true);
+              sToNativeOptionalIdMap.put(k, new TPThumbPlayerUtils.OptionIdMapping(localMapInitConfig.type(), localMapInitConfig.value()));
+            }
+          }
+        }
+        i += 1;
+      }
+      return;
     }
     catch (IllegalAccessException localIllegalAccessException)
     {
-      for (;;)
-      {
-        int i;
-        TPLogUtil.e("TPNativeKeyMapUtil", localIllegalAccessException);
-        continue;
-        label142:
-        i += 1;
-      }
+      TPLogUtil.e("TPNativeKeyMapUtil", localIllegalAccessException);
+      return;
     }
-    if (i < j)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      localObject = arrayOfField[i];
-      if (!((Field)localObject).getType().toString().equals("int")) {
-        break label142;
-      }
-      ((Field)localObject).setAccessible(true);
-      if (paramInt != ((Field)localObject).getInt(localClass)) {
-        break label142;
-      }
-      localObject = (TPNativeKeyMap.MapConnectionConfig)((Field)localObject).getAnnotation(TPNativeKeyMap.MapConnectionConfig.class);
-      if (localObject == null) {
-        break label142;
-      }
-      i = ((TPNativeKeyMap.MapConnectionConfig)localObject).value();
-      return i;
+      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
     }
   }
   
-  public static TPThumbPlayerUtils.OptionIdMapping convertToNativeInitConfig(@TPCommonEnum.TPOptionalId int paramInt)
+  private static void buildNativeOptionalIdToMapInternal(Class<?> paramClass)
   {
     try
     {
-      localObject1 = Class.forName(TPOptionalID.class.getName());
-      arrayOfField = ((Class)localObject1).getDeclaredFields();
-      j = arrayOfField.length;
-      i = 0;
+      Field[] arrayOfField = paramClass.getDeclaredFields();
+      int j = arrayOfField.length;
+      int i = 0;
+      while (i < j)
+      {
+        Field localField = arrayOfField[i];
+        if (localField.getType().toString().equals("int"))
+        {
+          TPNativeKeyMap.MapOptionalId localMapOptionalId = (TPNativeKeyMap.MapOptionalId)localField.getAnnotation(TPNativeKeyMap.MapOptionalId.class);
+          if (localMapOptionalId != null)
+          {
+            int k = localField.getInt(paramClass);
+            sOptionalIdKeyToNameMap.put(k, localMapOptionalId.keyName());
+            if (localMapOptionalId.value() == -1)
+            {
+              sToNativeOptionalIdMap.put(k, new TPThumbPlayerUtils.OptionIdMapping());
+            }
+            else
+            {
+              localField.setAccessible(true);
+              sToNativeOptionalIdMap.put(k, new TPThumbPlayerUtils.OptionIdMapping(localMapOptionalId.type(), localMapOptionalId.value()));
+            }
+          }
+        }
+        i += 1;
+      }
+      return;
+    }
+    catch (IllegalAccessException paramClass)
+    {
+      TPLogUtil.e("TPNativeKeyMapUtil", paramClass);
+    }
+  }
+  
+  private static void buildOptionalIdMap()
+  {
+    synchronized (sHasOptionalIdMapInit)
+    {
+      if (sToNativeOptionalIdMap.size() != 0) {
+        return;
+      }
+      if (!sHasOptionalIdMapInit.get())
+      {
+        buildNativeInitConfigMap();
+        buildPublicToNativeOptionalIdMap();
+        buildPrivateToNativeOptionalIdMap();
+        sHasOptionalIdMapInit.set(true);
+        return;
+      }
+      throw new IllegalStateException("构建Map错误，请查看【--keep class com.tencent.thumbplayer.api.** { *; }】是否加入反混淆");
+    }
+  }
+  
+  private static void buildPrivateToNativeOptionalIdMap()
+  {
+    try
+    {
+      buildNativeOptionalIdToMapInternal(Class.forName(TPOptionalIDInternal.class.getName()));
+      return;
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      Object localObject1;
-      Field[] arrayOfField;
-      int j;
-      Object localObject2;
       TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      TPLogUtil.w("TPNativeKeyMapUtil", "convertToNativeInitConfig, tpInitConfig: " + paramInt + " not recognition, return null");
-      return null;
     }
-    catch (IllegalAccessException localIllegalAccessException)
+  }
+  
+  private static void buildPublicToNativeOptionalIdMap()
+  {
+    try
     {
-      for (;;)
-      {
-        int i;
-        TPLogUtil.e("TPNativeKeyMapUtil", localIllegalAccessException);
-        continue;
-        label156:
-        i += 1;
-      }
+      buildNativeOptionalIdToMapInternal(Class.forName(TPOptionalID.class.getName()));
+      return;
     }
-    if (i < j)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      localObject2 = arrayOfField[i];
-      if (!((Field)localObject2).getType().toString().equals("int")) {
-        break label156;
-      }
-      ((Field)localObject2).setAccessible(true);
-      if (paramInt != ((Field)localObject2).getInt(localObject1)) {
-        break label156;
-      }
-      localObject2 = (TPNativeKeyMap.MapInitConfig)((Field)localObject2).getAnnotation(TPNativeKeyMap.MapInitConfig.class);
-      if (localObject2 == null) {
-        break label156;
-      }
-      localObject1 = new TPThumbPlayerUtils.OptionIdMapping(((TPNativeKeyMap.MapInitConfig)localObject2).type(), ((TPNativeKeyMap.MapInitConfig)localObject2).value());
-      return localObject1;
+      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
     }
+  }
+  
+  private static <T extends Annotation> void checkFillMapValidity(Class<T> paramClass, Map<Number, Number> paramMap1, Map<Number, Number> paramMap2, Class<?> paramClass1, Number paramNumber1, Number paramNumber2)
+  {
+    if (!paramMap1.containsKey(paramNumber2))
+    {
+      if (!paramMap2.containsKey(paramNumber1)) {
+        return;
+      }
+      paramMap1 = new StringBuilder();
+      paramMap1.append(paramClass1.getName());
+      paramMap1.append(" 配置了重复的注解值，注解=");
+      paramMap1.append(paramClass.getName());
+      paramMap1.append(" 成员变量值=");
+      paramMap1.append(paramNumber2);
+      paramMap1.append(" 请查找一下@");
+      paramMap1.append(paramClass.getName());
+      paramMap1.append("(这个值)在哪里重复了");
+      throw new IllegalStateException(paramMap1.toString());
+    }
+    paramMap1 = new StringBuilder();
+    paramMap1.append(paramClass1.getName());
+    paramMap1.append(" 配置了重复的成员变量，注解=");
+    paramMap1.append(paramClass.getName());
+    paramMap1.append(" 成员变量值=");
+    paramMap1.append(paramNumber2);
+    paramMap1.append(" 请查找一下使用这个注解@");
+    paramMap1.append(paramClass.getName());
+    paramMap1.append("的哪两个成员变量值相等");
+    throw new IllegalStateException(paramMap1.toString());
   }
   
   public static TPThumbPlayerUtils.OptionIdMapping convertToNativeOptionalId(@TPCommonEnum.TPOptionalId int paramInt)
   {
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping2 = convertToPublicNativeOptionalId(paramInt);
-    TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping1 = localOptionIdMapping2;
-    if (localOptionIdMapping2 == null) {
-      localOptionIdMapping1 = convertToPrivateNativeOptionalId(paramInt);
+    if (sToNativeOptionalIdMap.size() == 0) {
+      buildOptionalIdMap();
     }
-    return localOptionIdMapping1;
+    return (TPThumbPlayerUtils.OptionIdMapping)sToNativeOptionalIdMap.get(paramInt, new TPThumbPlayerUtils.OptionIdMapping());
   }
   
-  private static TPThumbPlayerUtils.OptionIdMapping convertToNativeOptionalIdInternal(@TPCommonEnum.TPOptionalId int paramInt, Class paramClass)
+  public static <T extends Annotation> Set<Map.Entry<Number, Number>> getEntrySetOfMap(Class<T> paramClass)
   {
+    return new HashSet(getMapForAnnotation(paramClass).entrySet());
+  }
+  
+  private static <T extends Annotation> Map<Number, Number> getMapForAnnotation(Class<T> paramClass)
+  {
+    String str = paramClass.getCanonicalName();
+    Map localMap = (Map)sNameToMap.get(str);
+    if (localMap != null)
+    {
+      localObject = localMap;
+      if (localMap.size() != 0) {}
+    }
+    else
+    {
+      buildBiDirectionMapForAnnotation(paramClass);
+      localObject = (Map)sNameToMap.get(str);
+    }
+    if ((TPNativeKeyMap.SearchConfig)paramClass.getAnnotation(TPNativeKeyMap.SearchConfig.class) != null)
+    {
+      if ((localObject != null) && (((Map)localObject).size() != 0)) {
+        return localObject;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramClass.getSimpleName());
+      ((StringBuilder)localObject).append(" is null after buildBiDirectionMap");
+      throw new IllegalStateException(((StringBuilder)localObject).toString());
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramClass.getSimpleName());
+    ((StringBuilder)localObject).append("has not SearchConfig annotation");
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+  }
+  
+  public static String getOptionalIdName(int paramInt)
+  {
+    if (!sHasOptionalIdMapInit.get()) {
+      buildOptionalIdMap();
+    }
+    return (String)sOptionalIdKeyToNameMap.get(paramInt, "");
+  }
+  
+  public static void init()
+  {
+    long l1 = System.currentTimeMillis();
+    Object localObject = TPNativeKeyMap.class.getDeclaredClasses();
+    TPLogUtil.i("TPNativeKeyMapUtil", "init BiDirectionMap for tp&native value");
+    int j = localObject.length;
+    int i = 0;
+    while (i < j)
+    {
+      Class localClass = localObject[i];
+      if ((localClass.isAnnotation()) && (Modifier.isPublic(localClass.getModifiers())) && ((TPNativeKeyMap.SearchConfig)localClass.getAnnotation(TPNativeKeyMap.SearchConfig.class) != null)) {
+        buildBiDirectionMapForAnnotation(localClass);
+      }
+      i += 1;
+    }
+    long l2 = System.currentTimeMillis();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init cost time=");
+    ((StringBuilder)localObject).append(l2 - l1);
+    TPLogUtil.i("TPNativeKeyMapUtil", ((StringBuilder)localObject).toString());
+  }
+  
+  private static <T extends Annotation> void searchClassToFillMap(Class<T> paramClass)
+  {
+    Object localObject1 = paramClass.getCanonicalName();
+    Object localObject2 = (Map)sNameToMap.get(localObject1);
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append(".reverseMap");
+    Object localObject4 = ((StringBuilder)localObject3).toString();
+    localObject3 = (Map)sNameToMap.get(localObject4);
+    if ((localObject2 != null) && (localObject3 != null))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramClass);
+      ((StringBuilder)localObject1).append(" toNativeMap.size=");
+      ((StringBuilder)localObject1).append(((Map)localObject2).size());
+      ((StringBuilder)localObject1).append(" toTPMap.size=");
+      ((StringBuilder)localObject1).append(((Map)localObject3).size());
+      TPLogUtil.e("TPNativeKeyMapUtil", ((StringBuilder)localObject1).toString());
+    }
+    else
+    {
+      localObject2 = new ConcurrentHashMap();
+      sNameToMap.put(localObject1, localObject2);
+      localObject3 = new ConcurrentHashMap();
+      sNameToMap.put(localObject4, localObject3);
+    }
     for (;;)
     {
       int i;
       try
       {
-        Field[] arrayOfField = paramClass.getDeclaredFields();
-        int j = arrayOfField.length;
-        i = 0;
-        if (i < j)
+        TPNativeKeyMap.SearchConfig localSearchConfig = (TPNativeKeyMap.SearchConfig)paramClass.getAnnotation(TPNativeKeyMap.SearchConfig.class);
+        if (localSearchConfig != null)
         {
-          Object localObject = arrayOfField[i];
-          if (!((Field)localObject).getType().toString().equals("int")) {
-            break label137;
+          Class localClass = localSearchConfig.searchClass();
+          Field[] arrayOfField = localClass.getDeclaredFields();
+          int j = arrayOfField.length;
+          i = 0;
+          if (i < j)
+          {
+            localObject4 = arrayOfField[i];
+            localObject1 = "";
+            if (localSearchConfig.valueClass() == Integer.TYPE) {
+              localObject1 = "int";
+            } else if (localSearchConfig.valueClass() == Long.TYPE) {
+              localObject1 = "long";
+            }
+            boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
+            if (!bool)
+            {
+              if (!((Field)localObject4).getType().toString().equals(localObject1)) {
+                break label664;
+              }
+              localObject1 = ((Field)localObject4).getAnnotation(paramClass);
+              if (localObject1 == null) {
+                break label664;
+              }
+              ((Field)localObject4).setAccessible(true);
+              Method localMethod = paramClass.getDeclaredMethod("value", new Class[0]);
+              localMethod.setAccessible(true);
+              if (localSearchConfig.valueClass() == Integer.TYPE)
+              {
+                localObject1 = (Integer)localMethod.invoke(localObject1, new Object[0]);
+                localObject4 = Integer.valueOf(((Field)localObject4).getInt(localClass));
+              }
+              else
+              {
+                if (localSearchConfig.valueClass() != Long.TYPE) {
+                  continue;
+                }
+                localObject1 = (Long)localMethod.invoke(localObject1, new Object[0]);
+                localObject4 = Long.valueOf(((Field)localObject4).getLong(localClass));
+              }
+              checkFillMapValidity(paramClass, (Map)localObject2, (Map)localObject3, localClass, (Number)localObject1, (Number)localObject4);
+              ((Map)localObject2).put(localObject4, localObject1);
+              ((Map)localObject3).put(localObject1, localObject4);
+              break label664;
+              paramClass = new StringBuilder();
+              paramClass.append("代码还没实现对");
+              paramClass.append(localSearchConfig.valueClass().getName());
+              paramClass.append("的支持");
+              throw new IllegalArgumentException(paramClass.toString());
+            }
+            paramClass = new StringBuilder();
+            paramClass.append("代码还没实现对");
+            paramClass.append(localSearchConfig.valueClass().getName());
+            paramClass.append("的支持");
+            throw new IllegalArgumentException(paramClass.toString());
           }
-          ((Field)localObject).setAccessible(true);
-          if (paramInt != ((Field)localObject).getInt(paramClass)) {
-            break label137;
-          }
-          localObject = (TPNativeKeyMap.MapOptionalId)((Field)localObject).getAnnotation(TPNativeKeyMap.MapOptionalId.class);
-          if (localObject == null) {
-            break label137;
-          }
-          paramClass = new TPThumbPlayerUtils.OptionIdMapping(((TPNativeKeyMap.MapOptionalId)localObject).type(), ((TPNativeKeyMap.MapOptionalId)localObject).value());
-          return paramClass;
         }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramClass.getCanonicalName());
+          ((StringBuilder)localObject1).append("has not SearchConfig annotation");
+          throw new IllegalArgumentException(((StringBuilder)localObject1).toString());
+        }
+      }
+      catch (InvocationTargetException paramClass)
+      {
+        TPLogUtil.e("TPNativeKeyMapUtil", paramClass);
+        return;
+      }
+      catch (NoSuchMethodException paramClass)
+      {
+        TPLogUtil.e("TPNativeKeyMapUtil", paramClass);
+        throw new IllegalStateException("com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap下所有元素需要加到混淆中, 并且每个MapXXX注解需要有value方法");
       }
       catch (IllegalAccessException paramClass)
       {
         TPLogUtil.e("TPNativeKeyMapUtil", paramClass);
-        TPLogUtil.w("TPNativeKeyMapUtil", "convertToNativeOptionalIdInternal, tpOptionalId: " + paramInt + " not recognition, return null");
-        return null;
       }
-      label137:
+      return;
+      label664:
       i += 1;
     }
   }
   
-  public static int convertToNativePropertyId(int paramInt)
+  public static <T extends Annotation> int toNativeIntValue(Class<T> paramClass, int paramInt)
   {
-    try
+    Object localObject = getMapForAnnotation(paramClass);
+    if (!((Map)localObject).containsKey(Integer.valueOf(paramInt)))
     {
-      localClass = Class.forName(TPPropertyID.class.getName());
-      arrayOfField = localClass.getDeclaredFields();
-      j = arrayOfField.length;
-      i = 0;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("toNativeValue, tpValue=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("return default value, clazz");
+      ((StringBuilder)localObject).append(paramClass);
+      TPLogUtil.e("TPNativeKeyMapUtil", ((StringBuilder)localObject).toString());
+      return (int)((TPNativeKeyMap.SearchConfig)paramClass.getAnnotation(TPNativeKeyMap.SearchConfig.class)).nativeDefValue();
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass;
-      Field[] arrayOfField;
-      int j;
-      Object localObject;
-      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      TPLogUtil.w("TPNativeKeyMapUtil", "convertToNativePropertyId, tpPropertyId: " + paramInt + " not recognition, return -1");
-      return -1;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        int i;
-        TPLogUtil.e("TPNativeKeyMapUtil", localIllegalAccessException);
-        continue;
-        label142:
-        i += 1;
-      }
-    }
-    if (i < j)
-    {
-      localObject = arrayOfField[i];
-      if (!((Field)localObject).getType().toString().equals("int")) {
-        break label142;
-      }
-      ((Field)localObject).setAccessible(true);
-      if (paramInt != ((Field)localObject).getInt(localClass)) {
-        break label142;
-      }
-      localObject = (TPNativeKeyMap.MapPropertyId)((Field)localObject).getAnnotation(TPNativeKeyMap.MapPropertyId.class);
-      if (localObject == null) {
-        break label142;
-      }
-      i = ((TPNativeKeyMap.MapPropertyId)localObject).value();
-      return i;
-    }
+    return ((Number)((Map)localObject).get(Integer.valueOf(paramInt))).intValue();
   }
   
-  @TPCommonEnum.NativeSeekMode
-  public static int convertToNativeSeekMode(@TPCommonEnum.TPSeekMode int paramInt)
+  public static <T extends Annotation> long toNativeLongValue(Class<T> paramClass, long paramLong)
   {
-    try
+    Object localObject = getMapForAnnotation(paramClass);
+    if (!((Map)localObject).containsKey(Long.valueOf(paramLong)))
     {
-      localClass = Class.forName(ITPPlayer.class.getName());
-      arrayOfField = localClass.getDeclaredFields();
-      j = arrayOfField.length;
-      i = 0;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("toNativeValue, tpValue=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("return default value, clazz");
+      ((StringBuilder)localObject).append(paramClass);
+      TPLogUtil.e("TPNativeKeyMapUtil", ((StringBuilder)localObject).toString());
+      return ((TPNativeKeyMap.SearchConfig)paramClass.getAnnotation(TPNativeKeyMap.SearchConfig.class)).nativeDefValue();
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass;
-      Field[] arrayOfField;
-      int j;
-      Object localObject;
-      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      TPLogUtil.w("TPNativeKeyMapUtil", "convertToNativeSeekMode, seek mode is invalid(" + paramInt + "), return default mode instead");
-      return 2;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        int i;
-        TPLogUtil.e("TPNativeKeyMapUtil", localIllegalAccessException);
-        continue;
-        label142:
-        i += 1;
-      }
-    }
-    if (i < j)
-    {
-      localObject = arrayOfField[i];
-      if (!((Field)localObject).getType().toString().equals("int")) {
-        break label142;
-      }
-      ((Field)localObject).setAccessible(true);
-      if (paramInt != ((Field)localObject).getInt(localClass)) {
-        break label142;
-      }
-      localObject = (TPNativeKeyMap.MapSeekMode)((Field)localObject).getAnnotation(TPNativeKeyMap.MapSeekMode.class);
-      if (localObject == null) {
-        break label142;
-      }
-      i = ((TPNativeKeyMap.MapSeekMode)localObject).value();
-      return i;
-    }
+    return ((Number)((Map)localObject).get(Long.valueOf(paramLong))).longValue();
   }
   
-  @TPCommonEnum.NativeSwitchDefMode
-  public static int convertToNativeSwitchDefMode(@TPCommonEnum.TPSwitchDefMode int paramInt)
+  public static <T extends Annotation> int toTPIntValue(Class<T> paramClass, int paramInt)
   {
-    try
+    Object localObject = getMapForAnnotation(paramClass);
+    if (!((Map)localObject).containsKey(Integer.valueOf(paramInt)))
     {
-      localClass = Class.forName(ITPPlayer.class.getName());
-      arrayOfField = localClass.getDeclaredFields();
-      j = arrayOfField.length;
-      i = 0;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("toTPValue, nativeValue=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("return default value, clazz");
+      ((StringBuilder)localObject).append(paramClass);
+      TPLogUtil.i("TPNativeKeyMapUtil", ((StringBuilder)localObject).toString());
+      return (int)((TPNativeKeyMap.SearchConfig)paramClass.getAnnotation(TPNativeKeyMap.SearchConfig.class)).tpDefValue();
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass;
-      Field[] arrayOfField;
-      int j;
-      Object localObject;
-      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      TPLogUtil.w("TPNativeKeyMapUtil", "convertToNativeSwitchDefMode, player switch definition mode is invalid(" + paramInt + "), return default mode instead");
-      return 2;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        int i;
-        TPLogUtil.e("TPNativeKeyMapUtil", localIllegalAccessException);
-        continue;
-        label142:
-        i += 1;
-      }
-    }
-    if (i < j)
-    {
-      localObject = arrayOfField[i];
-      if (!((Field)localObject).getType().toString().equals("int")) {
-        break label142;
-      }
-      ((Field)localObject).setAccessible(true);
-      if (paramInt != ((Field)localObject).getInt(localClass)) {
-        break label142;
-      }
-      localObject = (TPNativeKeyMap.MapSwitchDefMode)((Field)localObject).getAnnotation(TPNativeKeyMap.MapSwitchDefMode.class);
-      if (localObject == null) {
-        break label142;
-      }
-      i = ((TPNativeKeyMap.MapSwitchDefMode)localObject).value();
-      return i;
-    }
+    return ((Number)((Map)localObject).get(Integer.valueOf(paramInt))).intValue();
   }
   
-  private static TPThumbPlayerUtils.OptionIdMapping convertToPrivateNativeOptionalId(@TPCommonEnum.TPOptionalId int paramInt)
+  public static <T extends Annotation> long toTPLongValue(Class<T> paramClass, long paramLong)
   {
-    try
+    Object localObject = getMapForAnnotation(paramClass);
+    if (!((Map)localObject).containsKey(Long.valueOf(paramLong)))
     {
-      TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = convertToNativeOptionalIdInternal(paramInt, Class.forName(TPOptionalIDInternal.class.getName()));
-      return localOptionIdMapping;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("toTPValue, nativeValue=");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("return default value, clazz");
+      ((StringBuilder)localObject).append(paramClass);
+      TPLogUtil.i("TPNativeKeyMapUtil", ((StringBuilder)localObject).toString());
+      return ((TPNativeKeyMap.SearchConfig)paramClass.getAnnotation(TPNativeKeyMap.SearchConfig.class)).tpDefValue();
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-    }
-    return null;
-  }
-  
-  private static TPThumbPlayerUtils.OptionIdMapping convertToPublicNativeOptionalId(@TPCommonEnum.TPOptionalId int paramInt)
-  {
-    try
-    {
-      TPThumbPlayerUtils.OptionIdMapping localOptionIdMapping = convertToNativeOptionalIdInternal(paramInt, Class.forName(TPOptionalID.class.getName()));
-      return localOptionIdMapping;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-    }
-    return null;
-  }
-  
-  @TPCommonEnum.TPErrorType
-  public static int convertToTPErrorType(@TPCommonEnum.NativeErrorType int paramInt)
-  {
-    try
-    {
-      localClass = Class.forName(TPErrorCode.class.getName());
-      arrayOfField = localClass.getDeclaredFields();
-      j = arrayOfField.length;
-      i = 0;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass;
-      Field[] arrayOfField;
-      int j;
-      Field localField;
-      TPNativeKeyMap.MapErrorType localMapErrorType;
-      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      TPLogUtil.w("TPNativeKeyMapUtil", "convertToTPErrorType, nativeErrorType: " + paramInt + " not recognition, return 1001");
-      return 1001;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        int i;
-        TPLogUtil.e("TPNativeKeyMapUtil", localIllegalAccessException);
-        continue;
-        label144:
-        i += 1;
-      }
-    }
-    if (i < j)
-    {
-      localField = arrayOfField[i];
-      if (!localField.getType().toString().equals("int")) {
-        break label144;
-      }
-      localField.setAccessible(true);
-      localMapErrorType = (TPNativeKeyMap.MapErrorType)localField.getAnnotation(TPNativeKeyMap.MapErrorType.class);
-      if ((localMapErrorType == null) || (paramInt != localMapErrorType.value())) {
-        break label144;
-      }
-      i = localField.getInt(localClass);
-      return i;
-    }
-  }
-  
-  @TPCommonEnum.TPMsgInfo
-  public static int convertToTPMsgInfo(@TPCommonEnum.NativeMsgInfo int paramInt)
-  {
-    try
-    {
-      localClass = Class.forName(TPPlayerMsg.class.getName());
-      arrayOfField = localClass.getDeclaredFields();
-      j = arrayOfField.length;
-      i = 0;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      Class localClass;
-      Field[] arrayOfField;
-      int j;
-      Field localField;
-      TPNativeKeyMap.MapMsgInfo localMapMsgInfo;
-      TPLogUtil.e("TPNativeKeyMapUtil", localClassNotFoundException);
-      TPLogUtil.w("TPNativeKeyMapUtil", "convertToTPMsgInfo, nativeMsgInfo: " + paramInt + " not recognition, return TP_PLAYER_INFO_LONG0_UNKNOW");
-      return -1;
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        int i;
-        TPLogUtil.e("TPNativeKeyMapUtil", localIllegalAccessException);
-        continue;
-        label142:
-        i += 1;
-      }
-    }
-    if (i < j)
-    {
-      localField = arrayOfField[i];
-      if (!localField.getType().toString().equals("int")) {
-        break label142;
-      }
-      localField.setAccessible(true);
-      localMapMsgInfo = (TPNativeKeyMap.MapMsgInfo)localField.getAnnotation(TPNativeKeyMap.MapMsgInfo.class);
-      if ((localMapMsgInfo == null) || (paramInt != localMapMsgInfo.value())) {
-        break label142;
-      }
-      i = localField.getInt(localClass);
-      return i;
-    }
+    return ((Number)((Map)localObject).get(Long.valueOf(paramLong))).longValue();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMapUtil
  * JD-Core Version:    0.7.0.1
  */

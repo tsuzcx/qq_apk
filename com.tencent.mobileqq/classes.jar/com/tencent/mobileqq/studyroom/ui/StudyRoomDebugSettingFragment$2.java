@@ -1,37 +1,37 @@
 package com.tencent.mobileqq.studyroom.ui;
 
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.CompoundButton;
+import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.EditText;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import cooperation.plugin.IPluginManager;
+import cooperation.plugin.PluginUpdater;
 
 class StudyRoomDebugSettingFragment$2
-  implements View.OnClickListener
+  implements CompoundButton.OnCheckedChangeListener
 {
-  StudyRoomDebugSettingFragment$2(StudyRoomDebugSettingFragment paramStudyRoomDebugSettingFragment) {}
+  StudyRoomDebugSettingFragment$2(StudyRoomDebugSettingFragment paramStudyRoomDebugSettingFragment, EditText paramEditText, Button paramButton) {}
   
-  public void onClick(View paramView)
+  public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    String str = ((EditText)StudyRoomDebugSettingFragment.a(this.a).findViewById(2131378621)).getText().toString();
-    if (TextUtils.isEmpty(str)) {
-      QQToast.a(this.a.getActivity(), "分支名不能为空。", 0).a();
-    }
-    for (;;)
+    PluginUpdater.a(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqStudyroomUiStudyRoomDebugSettingFragment.getQBaseActivity());
+    if (!paramBoolean)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      StudyRoomDebugSettingFragment.a(this.a, "studyroom_plugin_name", str);
-      StudyRoomDebugSettingFragment.a(this.a, "/data/local/tmp/StudyRoom.zip");
-      StudyRoomDebugSettingFragment.a(this.a, "/data/local/tmp/StudyRoomPluginManager.apk");
-      QQToast.a(this.a.getActivity(), "重置成功，返回打开自习室吧。", 2).a();
+      paramCompoundButton = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqStudyroomUiStudyRoomDebugSettingFragment.getQBaseActivity().getAppRuntime();
+      if (paramCompoundButton != null) {
+        ((IPluginManager)paramCompoundButton.getManager(QQManagerFactory.MGR_PLUGIN)).b();
+      }
     }
+    this.jdField_a_of_type_AndroidWidgetEditText.setEnabled(paramBoolean);
+    this.jdField_a_of_type_AndroidWidgetButton.setEnabled(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.ui.StudyRoomDebugSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

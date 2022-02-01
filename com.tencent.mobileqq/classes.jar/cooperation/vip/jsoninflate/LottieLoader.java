@@ -8,7 +8,7 @@ public class LottieLoader
 {
   private Downloader a;
   
-  public void a(String paramString1, String paramString2, String paramString3)
+  protected void a(String paramString1, String paramString2, String paramString3)
   {
     this.jdField_a_of_type_Int = 1;
     paramString3 = new LottieLoader.1(this, paramString2, paramString3);
@@ -17,7 +17,7 @@ public class LottieLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.jsoninflate.LottieLoader
  * JD-Core Version:    0.7.0.1
  */

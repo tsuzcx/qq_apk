@@ -39,31 +39,33 @@ public class WebView$HitTestResult
   
   public String getExtra()
   {
-    String str = "";
-    if (this.a != null) {
-      str = this.a.getExtra();
+    Object localObject = this.a;
+    if (localObject != null) {
+      return ((IX5WebViewBase.HitTestResult)localObject).getExtra();
     }
-    while (this.b == null) {
-      return str;
+    localObject = this.b;
+    if (localObject != null) {
+      return ((android.webkit.WebView.HitTestResult)localObject).getExtra();
     }
-    return this.b.getExtra();
+    return "";
   }
   
   public int getType()
   {
-    int i = 0;
-    if (this.a != null) {
-      i = this.a.getType();
+    Object localObject = this.a;
+    if (localObject != null) {
+      return ((IX5WebViewBase.HitTestResult)localObject).getType();
     }
-    while (this.b == null) {
-      return i;
+    localObject = this.b;
+    if (localObject != null) {
+      return ((android.webkit.WebView.HitTestResult)localObject).getType();
     }
-    return this.b.getType();
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.WebView.HitTestResult
  * JD-Core Version:    0.7.0.1
  */

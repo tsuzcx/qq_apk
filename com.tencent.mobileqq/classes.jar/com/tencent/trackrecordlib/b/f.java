@@ -7,7 +7,16 @@ public class f
 {
   public static b a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    return new b(paramInt1 + "," + paramInt2, paramInt3 + "," + paramInt4);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt4);
+    return new b((String)localObject, localStringBuilder.toString());
   }
   
   public static c a(int paramInt)
@@ -22,7 +31,16 @@ public class f
   
   public static e a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    return new e(paramInt1 + "," + paramInt2, paramInt3 + "," + paramInt4, paramInt5);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramInt2);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt4);
+    return new e((String)localObject, localStringBuilder.toString(), paramInt5);
   }
   
   public static g a(UiActionScreenRotation paramUiActionScreenRotation)
@@ -32,17 +50,55 @@ public class f
   
   public static h a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
   {
-    return new h(paramInt1 + "," + paramInt2, paramInt3 + "," + paramInt4, paramInt5 + "," + paramInt6, paramInt7 + "," + paramInt8, paramInt9);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramInt1);
+    ((StringBuilder)localObject1).append(",");
+    ((StringBuilder)localObject1).append(paramInt2);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramInt3);
+    ((StringBuilder)localObject2).append(",");
+    ((StringBuilder)localObject2).append(paramInt4);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(paramInt5);
+    ((StringBuilder)localObject3).append(",");
+    ((StringBuilder)localObject3).append(paramInt6);
+    localObject3 = ((StringBuilder)localObject3).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt7);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt8);
+    return new h((String)localObject1, (String)localObject2, (String)localObject3, localStringBuilder.toString(), paramInt9);
   }
   
   public static i a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    return new i(paramInt1 + "," + paramInt2, paramInt3 + "," + paramInt4, paramInt5 + "," + paramInt6, paramInt7 + "," + paramInt8);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramInt1);
+    ((StringBuilder)localObject1).append(",");
+    ((StringBuilder)localObject1).append(paramInt2);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramInt3);
+    ((StringBuilder)localObject2).append(",");
+    ((StringBuilder)localObject2).append(paramInt4);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(paramInt5);
+    ((StringBuilder)localObject3).append(",");
+    ((StringBuilder)localObject3).append(paramInt6);
+    localObject3 = ((StringBuilder)localObject3).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt7);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt8);
+    return new i((String)localObject1, (String)localObject2, (String)localObject3, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.b.f
  * JD-Core Version:    0.7.0.1
  */

@@ -104,19 +104,18 @@ public class FeedManager
     }
     localObject2 = localFeedManager.a((String)localObject1);
     localObject1 = localObject2;
-    if (localObject2 == null) {
-      if (!paramBoolean) {
-        break label101;
-      }
-    }
-    label101:
-    for (paramString1 = ShareGroupFeedItem.createFakeFeedItem(paramString1, paramString2);; paramString1 = GeneralFeedItem.createFakeFeedItem(paramString2))
+    if (localObject2 == null)
     {
+      if (paramBoolean) {
+        paramString1 = ShareGroupFeedItem.createFakeFeedItem(paramString1, paramString2);
+      } else {
+        paramString1 = GeneralFeedItem.createFakeFeedItem(paramString2);
+      }
       localFeedManager.a(paramString1);
       SLog.b("Q.qqstory.publish.upload:StoryVideoUploadManager", "save fake item %s", paramString1.feedId);
       localObject1 = paramString1;
-      return localObject1;
     }
+    return localObject1;
   }
   
   public static GeneralFeedItem a(String paramString1, String paramString2)
@@ -125,32 +124,28 @@ public class FeedManager
     if ((paramString1 != null) && ((paramString1 instanceof GeneralFeedItem))) {
       return (GeneralFeedItem)paramString1;
     }
-    AssertUtils.a(paramString1);
+    AssertUtils.checkNotNull(paramString1);
     return null;
   }
   
   public static ShareGroupFeedItem a(String paramString1, String paramString2)
   {
     paramString1 = a(true, paramString1, paramString2);
-    if (paramString1 == null) {}
-    while (!(paramString1 instanceof ShareGroupFeedItem))
-    {
-      AssertUtils.a("feed type wrong for shareGroupItem:%s", new Object[] { paramString1 });
-      return null;
+    if ((paramString1 != null) && ((paramString1 instanceof ShareGroupFeedItem))) {
+      return (ShareGroupFeedItem)paramString1;
     }
-    return (ShareGroupFeedItem)paramString1;
+    AssertUtils.fail("feed type wrong for shareGroupItem:%s", new Object[] { paramString1 });
+    return null;
   }
   
   public static VideoListFeedItem a(String paramString1, String paramString2)
   {
     paramString1 = a(true, paramString1, paramString2);
-    if (paramString1 == null) {}
-    while (!(paramString1 instanceof ShareGroupFeedItem))
-    {
-      AssertUtils.a("feed type wrong for shareGroupItem:%s", new Object[] { paramString1 });
-      return null;
+    if ((paramString1 != null) && ((paramString1 instanceof ShareGroupFeedItem))) {
+      return (ShareGroupFeedItem)paramString1;
     }
-    return (ShareGroupFeedItem)paramString1;
+    AssertUtils.fail("feed type wrong for shareGroupItem:%s", new Object[] { paramString1 });
+    return null;
   }
   
   public static String a()
@@ -222,27 +217,33 @@ public class FeedManager
   {
     if (TextUtils.isEmpty(paramString))
     {
-      SLog.e("Q.qqstory.home.data.FeedManager", "feedId is null,you cant queryFeedItem:" + FeedUtils.a(3));
-      localObject = null;
-    }
-    do
-    {
-      return localObject;
-      localFeedItem = (FeedItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
-      localObject = localFeedItem;
-    } while (localFeedItem != null);
-    Object localObject = a(paramString);
-    if (localObject == null) {
+      paramString = new StringBuilder();
+      paramString.append("feedId is null,you cant queryFeedItem:");
+      paramString.append(FeedUtils.a(3));
+      SLog.e("Q.qqstory.home.data.FeedManager", paramString.toString());
       return null;
     }
-    FeedItem localFeedItem = FeedItem.createFeedItemByType(((FeedEntry)localObject).type);
+    FeedItem localFeedItem = (FeedItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
+    Object localObject = localFeedItem;
     if (localFeedItem == null)
     {
-      SLog.e("Q.qqstory.home.data.FeedManager", "这种类型目前还不支持：" + ((FeedEntry)localObject).type);
-      return null;
+      localObject = a(paramString);
+      if (localObject == null) {
+        return null;
+      }
+      localFeedItem = FeedItem.createFeedItemByType(((FeedEntry)localObject).type);
+      if (localFeedItem == null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("这种类型目前还不支持：");
+        paramString.append(((FeedEntry)localObject).type);
+        SLog.e("Q.qqstory.home.data.FeedManager", paramString.toString());
+        return null;
+      }
+      localFeedItem.covertFromEntry((FeedEntry)localObject);
+      localObject = (FeedItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString, localFeedItem);
     }
-    localFeedItem.covertFromEntry((FeedEntry)localObject);
-    return (FeedItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString, localFeedItem);
+    return localObject;
   }
   
   @Nullable
@@ -262,7 +263,11 @@ public class FeedManager
   public String a(String paramString1, String paramString2)
   {
     SLog.a("Q.qqstory.home.data.FeedManager", "query my feedId unionId:%s, date:%s %s", paramString1, paramString2, this.jdField_a_of_type_JavaUtilHashMap);
-    return (String)this.jdField_a_of_type_JavaUtilHashMap.get(paramString1 + paramString2);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    return (String)localHashMap.get(localStringBuilder.toString());
   }
   
   public List<String> a()
@@ -299,13 +304,18 @@ public class FeedManager
         localEntityManager.persistOrReplace(localFeedItem.covertToEntry());
         localArrayList.add(localFeedItem);
       }
+      localEntityManager.getTransaction().commit();
+      localEntityManager.getTransaction().end();
+      return localArrayList;
     }
     finally
     {
       localEntityManager.getTransaction().end();
     }
-    localEntityManager.getTransaction().end();
-    return localArrayList;
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public void a()
@@ -327,7 +337,11 @@ public class FeedManager
   
   public void a(String paramString1, String paramString2, String paramString3)
   {
-    this.jdField_a_of_type_JavaUtilHashMap.put(paramString1 + paramString2, paramString3);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    localHashMap.put(localStringBuilder.toString(), paramString3);
     SLog.a("Q.qqstory.home.data.FeedManager", "save my feedId %s", this.jdField_a_of_type_JavaUtilHashMap);
   }
   
@@ -337,7 +351,11 @@ public class FeedManager
     while (paramList.hasNext())
     {
       FeedIdListSeqInfo localFeedIdListSeqInfo = (FeedIdListSeqInfo)paramList.next();
-      this.jdField_a_of_type_JavaUtilHashMap.put(localFeedIdListSeqInfo.b + localFeedIdListSeqInfo.c, localFeedIdListSeqInfo.a);
+      HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localFeedIdListSeqInfo.b);
+      localStringBuilder.append(localFeedIdListSeqInfo.c);
+      localHashMap.put(localStringBuilder.toString(), localFeedIdListSeqInfo.a);
     }
   }
   
@@ -357,12 +375,18 @@ public class FeedManager
         localFeedIdListEntry.feedId = str;
         localEntityManager.persistOrReplace(localFeedIdListEntry);
       }
+      localEntityManager.getTransaction().commit();
+      localEntityManager.getTransaction().end();
+      return;
     }
     finally
     {
       localEntityManager.getTransaction().end();
     }
-    localEntityManager.getTransaction().end();
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public boolean a(String paramString)
@@ -378,12 +402,12 @@ public class FeedManager
   {
     ArrayList localArrayList = new ArrayList();
     List localList = StoryManager.a(QQStoryContext.a().a().createEntityManager(), FeedIdListEntry.class, FeedIdListEntry.class.getSimpleName(), null, null);
+    int i = 0;
     if (localList == null) {
       return false;
     }
-    int i = 0;
     boolean bool = false;
-    if (i < localList.size())
+    while (i < localList.size())
     {
       FeedIdListEntry localFeedIdListEntry = (FeedIdListEntry)localList.get(i);
       if (localFeedIdListEntry.feedId.equals(paramString1))
@@ -391,12 +415,11 @@ public class FeedManager
         localArrayList.add(paramString2);
         bool = true;
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         localArrayList.add(localFeedIdListEntry.feedId);
       }
+      i += 1;
     }
     if (bool) {
       a(localArrayList, true);
@@ -429,7 +452,10 @@ public class FeedManager
   {
     if (TextUtils.isEmpty(paramString))
     {
-      SLog.e("Q.qqstory.home.data.FeedManager", "feedId is null,you cant queryFeedItem:" + FeedUtils.a(3));
+      paramString = new StringBuilder();
+      paramString.append("feedId is null,you cant queryFeedItem:");
+      paramString.append(FeedUtils.a(3));
+      SLog.e("Q.qqstory.home.data.FeedManager", paramString.toString());
       return null;
     }
     return (FeedItem)this.jdField_a_of_type_ComTencentBizQqstoryBaseOneObjectCacheList.a(paramString);
@@ -466,7 +492,10 @@ public class FeedManager
           paramList = FeedItem.createFeedItemByType(((FeedEntry)localObject).type);
           if (paramList == null)
           {
-            SLog.e("Q.qqstory.home.data.FeedManager", "这种类型目前还不支持：" + ((FeedEntry)localObject).type);
+            paramList = new StringBuilder();
+            paramList.append("这种类型目前还不支持：");
+            paramList.append(((FeedEntry)localObject).type);
+            SLog.e("Q.qqstory.home.data.FeedManager", paramList.toString());
           }
           else
           {
@@ -516,24 +545,18 @@ public class FeedManager
           localObject2 = new FeedIdListSeqInfo((String)localObject1, 0, "", "");
           paramList.a.add(localObject2);
           paramList.b.add(localObject1);
-          if (paramList.a.size() <= 3) {
-            break label194;
+          if (paramList.a.size() > 3)
+          {
+            a(paramList);
+            paramList = new BatchGetFriendStoryFeedInfoRequest();
           }
-          a(paramList);
-          paramList = new BatchGetFriendStoryFeedInfoRequest();
         }
       }
     }
-    label194:
-    for (;;)
-    {
-      break;
-      if (paramList.a.size() == 0) {
-        return;
-      }
-      a(paramList);
+    if (paramList.a.size() == 0) {
       return;
     }
+    a(paramList);
   }
   
   public void b(List<String> paramList, boolean paramBoolean)
@@ -553,32 +576,45 @@ public class FeedManager
         localTroopAssistantFeedIdListEntry.feedId = str;
         localEntityManager.persistOrReplace(localTroopAssistantFeedIdListEntry);
       }
+      localEntityManager.getTransaction().commit();
+      localEntityManager.getTransaction().end();
+      return;
     }
     finally
     {
       localEntityManager.getTransaction().end();
     }
-    localEntityManager.getTransaction().end();
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public FeedItem c(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      SLog.e("Q.qqstory.home.data.FeedManager", "feedId is null,you cant queryFeedItem:" + FeedUtils.a(3));
-    }
-    do
+    if (TextUtils.isEmpty(paramString))
     {
-      return null;
-      paramString = a(paramString);
-    } while (paramString == null);
-    FeedItem localFeedItem = FeedItem.createFeedItemByType(paramString.type);
-    if (localFeedItem == null)
-    {
-      SLog.e("Q.qqstory.home.data.FeedManager", "这种类型目前还不支持：" + paramString.type);
+      paramString = new StringBuilder();
+      paramString.append("feedId is null,you cant queryFeedItem:");
+      paramString.append(FeedUtils.a(3));
+      SLog.e("Q.qqstory.home.data.FeedManager", paramString.toString());
       return null;
     }
-    localFeedItem.covertFromEntry(paramString);
-    return localFeedItem;
+    paramString = a(paramString);
+    if (paramString == null) {
+      return null;
+    }
+    Object localObject = FeedItem.createFeedItemByType(paramString.type);
+    if (localObject == null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("这种类型目前还不支持：");
+      ((StringBuilder)localObject).append(paramString.type);
+      SLog.e("Q.qqstory.home.data.FeedManager", ((StringBuilder)localObject).toString());
+      return null;
+    }
+    ((FeedItem)localObject).covertFromEntry(paramString);
+    return localObject;
   }
   
   public List<String> c()
@@ -618,22 +654,28 @@ public class FeedManager
         localMemoriesFeedIdListEntry.feedId = str;
         localEntityManager.persistOrReplace(localMemoriesFeedIdListEntry);
       }
+      localEntityManager.getTransaction().commit();
+      localEntityManager.getTransaction().end();
+      return;
     }
     finally
     {
       localEntityManager.getTransaction().end();
     }
-    localEntityManager.getTransaction().end();
+    for (;;)
+    {
+      throw paramList;
+    }
   }
   
   public boolean isValidate()
   {
-    return !this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get();
+    return this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get() ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedManager
  * JD-Core Version:    0.7.0.1
  */

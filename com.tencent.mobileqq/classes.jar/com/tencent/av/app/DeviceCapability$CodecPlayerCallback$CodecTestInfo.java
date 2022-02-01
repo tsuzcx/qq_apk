@@ -15,16 +15,17 @@ public class DeviceCapability$CodecPlayerCallback$CodecTestInfo
   
   public int a()
   {
-    if (this.a == 1) {
+    int i = this.a;
+    if (i == 1) {
       return 2;
     }
-    if (this.a == 4) {
+    if (i == 4) {
       return 1;
     }
-    if (this.a == 2) {
+    if (i == 2) {
       return 4;
     }
-    if (this.a == 8) {
+    if (i == 8) {
       return 3;
     }
     return 0;
@@ -44,35 +45,30 @@ public class DeviceCapability$CodecPlayerCallback$CodecTestInfo
         localFile.delete();
       }
     }
-    for (;;)
+    else
     {
-      return localGlStringParser.flatten();
       localGlStringParser.set("s_expMd5", this.jdField_c_of_type_JavaLangString);
     }
+    return localGlStringParser.flatten();
   }
   
   public boolean a()
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.a == 2) || (this.a == 8)) {
-      bool1 = true;
-    }
-    do
+    int i = this.a;
+    if (i != 2)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (this.a == 1);
-      bool1 = bool2;
-    } while (this.a != 4);
-    return false;
+      if (i == 8) {
+        return true;
+      }
+      if ((i != 1) && (i == 4)) {}
+      return false;
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.DeviceCapability.CodecPlayerCallback.CodecTestInfo
  * JD-Core Version:    0.7.0.1
  */

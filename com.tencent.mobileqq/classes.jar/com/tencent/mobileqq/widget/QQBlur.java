@@ -27,6 +27,7 @@ import android.view.ViewGroup;
 import com.enrique.stackblur.StackBlurManager;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.util.ReflectionUtil;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -36,7 +37,7 @@ import java.util.List;
 public class QQBlur
 {
   public static int a;
-  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread;
+  private static HandlerThread jdField_a_of_type_AndroidOsHandlerThread = ThreadManagerV2.newFreeHandlerThread("QQBlur", -8);
   private static Field jdField_a_of_type_JavaLangReflectField;
   private float jdField_a_of_type_Float = 8.0F;
   private long jdField_a_of_type_Long;
@@ -73,8 +74,6 @@ public class QQBlur
   
   static
   {
-    jdField_a_of_type_Int = 0;
-    jdField_a_of_type_AndroidOsHandlerThread = ThreadManagerV2.newFreeHandlerThread("QQBlur", -8);
     jdField_a_of_type_AndroidOsHandlerThread.start();
   }
   
@@ -85,30 +84,40 @@ public class QQBlur
   
   public static int a(int paramInt)
   {
-    if (paramInt % 16 == 0) {
+    int i = paramInt % 16;
+    if (i == 0) {
       return paramInt;
     }
-    return paramInt - paramInt % 16 + 16;
+    return paramInt - i + 16;
   }
   
   private CharSequence a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "StackBlur.Java";
-    case 1: 
-      return "StackBlur.Native";
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return "StackBlur.Java";
+        }
+        return "GaussBlur.RS";
+      }
       return "StackBlur.RS";
     }
-    return "GaussBlur.RS";
+    return "StackBlur.Native";
   }
   
   private void a(int paramInt1, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQBlur", 2, "onPolicyChange() called with: from = [" + paramInt1 + "], to = [" + paramInt2 + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPolicyChange() called with: from = [");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("], to = [");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append("]");
+      QLog.d("QQBlur", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_Long = 0L;
     this.jdField_b_of_type_Long = 0L;
@@ -121,53 +130,43 @@ public class QQBlur
     SystemClock.uptimeMillis();
     try
     {
-      if (jdField_a_of_type_JavaLangReflectField == null)
-      {
-        jdField_a_of_type_JavaLangReflectField = View.class.getDeclaredField("mViewFlags");
-        jdField_a_of_type_JavaLangReflectField.setAccessible(true);
+      if (jdField_a_of_type_JavaLangReflectField == null) {
+        jdField_a_of_type_JavaLangReflectField = ReflectionUtil.a("android.view.View", "mViewFlags");
       }
       int i = jdField_a_of_type_JavaLangReflectField.getInt(paramView);
-      jdField_a_of_type_JavaLangReflectField.setInt(paramView, i & 0xFFFFFFF3 | paramInt & 0xC);
+      jdField_a_of_type_JavaLangReflectField.setInt(paramView, paramInt & 0xC | i & 0xFFFFFFF3);
     }
     catch (Exception paramView)
     {
-      for (;;)
-      {
-        QLog.e("QQBlur", 1, "setViewInvisible: ", paramView);
-      }
+      QLog.e("QQBlur", 1, "setViewInvisible: ", paramView);
     }
     SystemClock.uptimeMillis();
     if (this.h >= 100000L) {
       this.h = 0L;
     }
     this.h += 1L;
-    if (this.h % 2000L == 0L) {}
+    long l = this.h;
   }
   
   private void a(View paramView, List<View> paramList)
   {
     if (paramView == null) {
-      break label4;
-    }
-    for (;;)
-    {
-      label4:
       return;
-      if (paramView.getVisibility() == 0)
+    }
+    if (paramView.getVisibility() != 0) {
+      return;
+    }
+    paramList.add(paramView);
+    a(paramView, 4);
+    if ((paramView instanceof ViewGroup))
+    {
+      paramView = (ViewGroup)paramView;
+      int j = paramView.getChildCount();
+      int i = 0;
+      while (i < j)
       {
-        paramList.add(paramView);
-        a(paramView, 4);
-        if (!(paramView instanceof ViewGroup)) {
-          break;
-        }
-        paramView = (ViewGroup)paramView;
-        int j = paramView.getChildCount();
-        int i = 0;
-        while (i < j)
-        {
-          a(paramView.getChildAt(i), paramList);
-          i += 1;
-        }
+        a(paramView.getChildAt(i), paramList);
+        i += 1;
       }
     }
   }
@@ -184,112 +183,136 @@ public class QQBlur
     int j = a(paramInt2, this.jdField_a_of_type_Float);
     int k = a(i);
     int m = a(j);
-    if (k > this.jdField_b_of_type_AndroidViewView.getResources().getDisplayMetrics().widthPixels) {
-      QLog.e("QQBlur", 1, "prepareBlurBitmapCore: roundScaledWidth = " + k + ", viewWidth = " + paramInt1 + ", scaleFactor = " + this.jdField_a_of_type_Float);
-    }
-    for (;;)
+    if (k > this.jdField_b_of_type_AndroidViewView.getResources().getDisplayMetrics().widthPixels)
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("prepareBlurBitmapCore: roundScaledWidth = ");
+      ((StringBuilder)localObject1).append(k);
+      ((StringBuilder)localObject1).append(", viewWidth = ");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(", scaleFactor = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Float);
+      QLog.e("QQBlur", 1, ((StringBuilder)localObject1).toString());
       return true;
-      if (m > this.jdField_b_of_type_AndroidViewView.getResources().getDisplayMetrics().heightPixels)
-      {
-        QLog.e("QQBlur", 1, "prepareBlurBitmapCore: roundScaledHeight = " + m + ", viewHeight = " + paramInt2 + ", scaleFactor = " + this.jdField_a_of_type_Float);
-        return true;
-      }
-      this.jdField_c_of_type_Float = (j / m);
-      this.jdField_b_of_type_Float = (i / k);
-      float f1 = this.jdField_a_of_type_Float * this.jdField_b_of_type_Float;
-      float f2 = this.jdField_a_of_type_Float * this.jdField_c_of_type_Float;
-      try
-      {
-        Bitmap localBitmap = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
-        if (localBitmap == null) {
-          continue;
-        }
-        this.jdField_e_of_type_Long = localBitmap.getWidth();
-        this.f = localBitmap.getHeight();
-        if (Build.VERSION.SDK_INT >= 19)
-        {
-          this.g = localBitmap.getAllocationByteCount();
-          localBitmap.eraseColor(this.jdField_c_of_type_Int);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap(localBitmap);
-          Object localObject2 = new int[2];
-          this.jdField_b_of_type_AndroidViewView.getLocationInWindow((int[])localObject2);
-          Object localObject3 = new int[2];
-          this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject3);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.save();
-          this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-(localObject2[0] - localObject3[0]) / f1, -(localObject2[1] - localObject3[1]) / f2);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.scale(1.0F / f1, 1.0F / f2);
-          localObject2 = new StackBlurManager(localBitmap);
-          ((StackBlurManager)localObject2).setDbg(false);
-          ((StackBlurManager)localObject2).setExecutorThreads(((StackBlurManager)localObject2).getExecutorThreads());
-          localObject3 = new Bundle();
-          if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur$OnDrawBgListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur$OnDrawBgListener.a((Bundle)localObject3);
-          }
-          this.jdField_c_of_type_Boolean = true;
-          if ((Build.VERSION.SDK_INT <= 27) || (this.jdField_b_of_type_AndroidViewView.getContext().getApplicationInfo().targetSdkVersion <= 27)) {
-            break label546;
-          }
-          this.jdField_a_of_type_AndroidViewView.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
-          this.jdField_a_of_type_AndroidGraphicsCanvas.restore();
-          g();
-          this.jdField_c_of_type_Boolean = false;
-          if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur$OnDrawBgListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur$OnDrawBgListener.b((Bundle)localObject3);
-          }
-          a((StackBlurManager)localObject2);
-          return false;
-        }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.e("QQBlur", 1, "prepareBlurBitmapCore: ", localThrowable);
-          Object localObject1 = null;
-          continue;
-          this.g = localObject1.getByteCount();
-          continue;
-          label546:
-          Rect localRect = this.jdField_a_of_type_AndroidGraphicsCanvas.getClipBounds();
-          localRect.inset(-localObject1.getWidth(), -localObject1.getHeight());
-          if (this.jdField_a_of_type_AndroidGraphicsCanvas.clipRect(localRect, Region.Op.REPLACE)) {
-            this.jdField_a_of_type_AndroidViewView.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
-          } else {
-            QLog.e("QQBlur", 1, "prepareBlurBitmapCore: canvas clip rect empty. Cannot draw!!!");
-          }
-        }
+    }
+    if (m > this.jdField_b_of_type_AndroidViewView.getResources().getDisplayMetrics().heightPixels)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("prepareBlurBitmapCore: roundScaledHeight = ");
+      ((StringBuilder)localObject1).append(m);
+      ((StringBuilder)localObject1).append(", viewHeight = ");
+      ((StringBuilder)localObject1).append(paramInt2);
+      ((StringBuilder)localObject1).append(", scaleFactor = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Float);
+      QLog.e("QQBlur", 1, ((StringBuilder)localObject1).toString());
+      return true;
+    }
+    this.jdField_c_of_type_Float = (j / m);
+    this.jdField_b_of_type_Float = (i / k);
+    float f2 = this.jdField_a_of_type_Float;
+    float f1 = this.jdField_b_of_type_Float * f2;
+    f2 *= this.jdField_c_of_type_Float;
+    Object localObject1 = null;
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(k, m, Bitmap.Config.ARGB_8888);
+      localObject1 = localBitmap;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("QQBlur", 1, "prepareBlurBitmapCore: ", localThrowable);
+    }
+    if (localObject1 == null) {
+      return true;
+    }
+    this.jdField_e_of_type_Long = ((Bitmap)localObject1).getWidth();
+    this.f = ((Bitmap)localObject1).getHeight();
+    if (Build.VERSION.SDK_INT >= 19) {
+      this.g = ((Bitmap)localObject1).getAllocationByteCount();
+    } else {
+      this.g = ((Bitmap)localObject1).getByteCount();
+    }
+    ((Bitmap)localObject1).eraseColor(this.jdField_c_of_type_Int);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.setBitmap((Bitmap)localObject1);
+    Object localObject2 = new int[2];
+    this.jdField_b_of_type_AndroidViewView.getLocationInWindow((int[])localObject2);
+    Object localObject3 = new int[2];
+    this.jdField_a_of_type_AndroidViewView.getLocationInWindow((int[])localObject3);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.save();
+    this.jdField_a_of_type_AndroidGraphicsCanvas.translate(-(localObject2[0] - localObject3[0]) / f1, -(localObject2[1] - localObject3[1]) / f2);
+    this.jdField_a_of_type_AndroidGraphicsCanvas.scale(1.0F / f1, 1.0F / f2);
+    localObject2 = new StackBlurManager((Bitmap)localObject1);
+    ((StackBlurManager)localObject2).setDbg(false);
+    ((StackBlurManager)localObject2).setExecutorThreads(((StackBlurManager)localObject2).getExecutorThreads());
+    localObject3 = new Bundle();
+    Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur$OnDrawBgListener;
+    if (localObject4 != null) {
+      ((QQBlur.OnDrawBgListener)localObject4).a((Bundle)localObject3);
+    }
+    this.jdField_c_of_type_Boolean = true;
+    if ((Build.VERSION.SDK_INT > 27) && (this.jdField_b_of_type_AndroidViewView.getContext().getApplicationInfo().targetSdkVersion > 27))
+    {
+      this.jdField_a_of_type_AndroidViewView.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
+    }
+    else
+    {
+      localObject4 = this.jdField_a_of_type_AndroidGraphicsCanvas.getClipBounds();
+      ((Rect)localObject4).inset(-((Bitmap)localObject1).getWidth(), -((Bitmap)localObject1).getHeight());
+      if (this.jdField_a_of_type_AndroidGraphicsCanvas.clipRect((Rect)localObject4, Region.Op.REPLACE)) {
+        this.jdField_a_of_type_AndroidViewView.draw(this.jdField_a_of_type_AndroidGraphicsCanvas);
+      } else {
+        QLog.e("QQBlur", 1, "prepareBlurBitmapCore: canvas clip rect empty. Cannot draw!!!");
       }
     }
+    this.jdField_a_of_type_AndroidGraphicsCanvas.restore();
+    g();
+    this.jdField_c_of_type_Boolean = false;
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur$OnDrawBgListener;
+    if (localObject1 != null) {
+      ((QQBlur.OnDrawBgListener)localObject1).b((Bundle)localObject3);
+    }
+    a((StackBlurManager)localObject2);
+    return false;
   }
   
   private void e()
   {
     long l1 = SystemClock.elapsedRealtime();
-    if ((this.jdField_a_of_type_AndroidViewView == null) || (this.jdField_b_of_type_AndroidViewView == null)) {
-      QLog.e("QQBlur", 1, "prepareBlurBitmap: mBgView = " + this.jdField_a_of_type_AndroidViewView + " mBlurView = " + this.jdField_b_of_type_AndroidViewView);
-    }
-    int i;
-    int j;
-    do
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView != null))
     {
-      return;
-      i = this.jdField_b_of_type_AndroidViewView.getWidth();
-      j = this.jdField_b_of_type_AndroidViewView.getHeight();
-      if ((i <= 0) || (j <= 0))
+      int i = this.jdField_b_of_type_AndroidViewView.getWidth();
+      int j = this.jdField_b_of_type_AndroidViewView.getHeight();
+      if ((i > 0) && (j > 0))
       {
-        QLog.e("QQBlur", 1, "prepareBlurBitmap: viewWidth = " + i + " viewHeight = " + j);
+        if (a(i, j)) {
+          return;
+        }
+        long l2 = SystemClock.elapsedRealtime();
+        this.jdField_a_of_type_Long += 1L;
+        this.jdField_b_of_type_Long += l2 - l1;
         return;
       }
-    } while (a(i, j));
-    long l2 = SystemClock.elapsedRealtime();
-    this.jdField_a_of_type_Long += 1L;
-    this.jdField_b_of_type_Long = (l2 - l1 + this.jdField_b_of_type_Long);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("prepareBlurBitmap: viewWidth = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" viewHeight = ");
+      localStringBuilder.append(j);
+      QLog.e("QQBlur", 1, localStringBuilder.toString());
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("prepareBlurBitmap: mBgView = ");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidViewView);
+    localStringBuilder.append(" mBlurView = ");
+    localStringBuilder.append(this.jdField_b_of_type_AndroidViewView);
+    QLog.e("QQBlur", 1, localStringBuilder.toString());
   }
   
   private void f()
   {
-    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView == null)) {}
+    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_AndroidViewView != null)) {
+      View localView = this.jdField_b_of_type_AndroidViewView;
+    }
   }
   
   private void g()
@@ -309,7 +332,7 @@ public class QQBlur
     if (QLog.isColorLevel()) {
       QLog.d("QQBlur", 2, "onCreate() called");
     }
-    if (this.jdField_b_of_type_Boolean) {}
+    boolean bool = this.jdField_b_of_type_Boolean;
     this.jdField_a_of_type_AndroidContentContext = this.jdField_b_of_type_AndroidViewView.getContext();
     this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(jdField_a_of_type_AndroidOsHandlerThread.getLooper());
@@ -332,22 +355,55 @@ public class QQBlur
   
   public String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("方案=").append(a(jdField_a_of_type_Int)).append(",");
-    localStringBuilder.append("缩放倍数=").append(this.jdField_a_of_type_Float).append(",");
-    localStringBuilder.append("模糊半径=").append(this.jdField_b_of_type_Int).append(",");
-    localStringBuilder.append("尺寸=" + this.jdField_e_of_type_Long + "x" + this.f).append(",");
-    localStringBuilder.append("空间=" + this.g / 1000L + "KB").append(",");
-    localStringBuilder.append("并发数=" + this.jdField_d_of_type_Int).append(",");
-    localStringBuilder.append("主线程采样=[" + String.format("%.2f", new Object[] { Float.valueOf((float)this.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Long) }) + "]ms").append(",");
-    localStringBuilder.append("后台线程处理=[" + String.format("%.2f", new Object[] { Float.valueOf((float)this.jdField_d_of_type_Long / (float)this.jdField_c_of_type_Long) }) + "]ms");
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("方案=");
+    localStringBuilder1.append(a(jdField_a_of_type_Int));
+    localStringBuilder1.append(",");
+    localStringBuilder1.append("缩放倍数=");
+    localStringBuilder1.append(this.jdField_a_of_type_Float);
+    localStringBuilder1.append(",");
+    localStringBuilder1.append("模糊半径=");
+    localStringBuilder1.append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append(",");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("尺寸=");
+    localStringBuilder2.append(this.jdField_e_of_type_Long);
+    localStringBuilder2.append("x");
+    localStringBuilder2.append(this.f);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("空间=");
+    localStringBuilder2.append(this.g / 1000L);
+    localStringBuilder2.append("KB");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("并发数=");
+    localStringBuilder2.append(this.jdField_d_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("主线程采样=[");
+    localStringBuilder2.append(String.format("%.2f", new Object[] { Float.valueOf((float)this.jdField_b_of_type_Long / (float)this.jdField_a_of_type_Long) }));
+    localStringBuilder2.append("]ms");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(",");
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("后台线程处理=[");
+    localStringBuilder2.append(String.format("%.2f", new Object[] { Float.valueOf((float)this.jdField_d_of_type_Long / (float)this.jdField_c_of_type_Long) }));
+    localStringBuilder2.append("]ms");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
   
   public void a()
   {
     this.jdField_a_of_type_Boolean = true;
-    QLog.i("QQBlur." + this.jdField_a_of_type_JavaLangString, 2, a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QQBlur.");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    QLog.i(localStringBuilder.toString(), 2, a());
   }
   
   public void a(float paramFloat)
@@ -378,15 +434,19 @@ public class QQBlur
       this.jdField_a_of_type_AndroidGraphicsPaint.setShader(new BitmapShader(localBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP));
       this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, localBitmap.getWidth(), localBitmap.getHeight());
       paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_Float, this.jdField_e_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+      paramView = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (paramView != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
+        paramView.setBounds(0, 0, localBitmap.getWidth(), localBitmap.getHeight());
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
       }
       paramCanvas.restore();
       return;
     }
-    QLog.e("QQBlur", 1, "onDrawBlur: blured bitmap is null " + Integer.toHexString(System.identityHashCode(paramView)));
+    paramCanvas = new StringBuilder();
+    paramCanvas.append("onDrawBlur: blured bitmap is null ");
+    paramCanvas.append(Integer.toHexString(System.identityHashCode(paramView)));
+    QLog.e("QQBlur", 1, paramCanvas.toString());
   }
   
   public void a(QQBlur.BackgroundViewDirtyListener paramBackgroundViewDirtyListener)
@@ -422,23 +482,28 @@ public class QQBlur
   
   public boolean b()
   {
-    boolean bool = false;
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur$BackgroundViewDirtyListener != null) {
-      bool = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur$BackgroundViewDirtyListener.isDirty();
-    }
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlur$BackgroundViewDirtyListener;
+    boolean bool;
+    if (localObject != null)
     {
-      View localView = this.jdField_b_of_type_AndroidViewView;
-      if ((!this.jdField_a_of_type_Boolean) && (bool) && (localView != null) && (localView.isShown()))
-      {
-        e();
-        localView.invalidate();
-      }
-      return true;
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        bool = this.jdField_a_of_type_AndroidViewView.isDirty();
+      bool = ((QQBlur.BackgroundViewDirtyListener)localObject).isDirty();
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if (localObject != null) {
+        bool = ((View)localObject).isDirty();
+      } else {
+        bool = false;
       }
     }
+    localObject = this.jdField_b_of_type_AndroidViewView;
+    if ((!this.jdField_a_of_type_Boolean) && (bool) && (localObject != null) && (((View)localObject).isShown()))
+    {
+      e();
+      ((View)localObject).invalidate();
+    }
+    return true;
   }
   
   public void c()
@@ -479,7 +544,7 @@ public class QQBlur
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQBlur
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,14 @@ public final class cmd0xac5$NowAnchorState
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_level", "uint32_live_status", "bytes_live_url" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, NowAnchorState.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_level", "uint32_live_status", "bytes_live_url" }, new Object[] { localInteger, localInteger, localByteStringMicro }, NowAnchorState.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xac5.cmd0xac5.NowAnchorState
  * JD-Core Version:    0.7.0.1
  */

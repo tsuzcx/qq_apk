@@ -11,6 +11,7 @@ public final class Frame
 {
   private static volatile Frame[] _emptyArray;
   public Address[] addresses;
+  public String definition;
   public int level;
   
   public Frame()
@@ -20,14 +21,15 @@ public final class Frame
   
   public static Frame[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new Frame[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new Frame[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static Frame parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -44,38 +46,49 @@ public final class Frame
   {
     this.level = 0;
     this.addresses = Address.emptyArray();
+    this.definition = "";
     this.cachedSize = -1;
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.level;
     int i = j;
-    if (this.level != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(1, this.level);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(1, k);
     }
+    Object localObject = this.addresses;
     j = i;
-    if (this.addresses != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.addresses.length > 0)
+      if (localObject.length > 0)
       {
-        j = 0;
-        while (j < this.addresses.length)
+        k = 0;
+        for (;;)
         {
-          Address localAddress = this.addresses[j];
-          int k = i;
-          if (localAddress != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(2, localAddress);
+          localObject = this.addresses;
+          j = i;
+          if (k >= localObject.length) {
+            break;
           }
-          j += 1;
-          i = k;
+          localObject = localObject[k];
+          j = i;
+          if (localObject != null) {
+            j = i + CodedOutputByteBufferNano.computeMessageSize(2, (MessageNano)localObject);
+          }
+          k += 1;
+          i = j;
         }
-        j = i;
       }
     }
-    return j;
+    i = j;
+    if (!this.definition.equals("")) {
+      i = j + CodedOutputByteBufferNano.computeStringSize(3, this.definition);
+    }
+    return i;
   }
   
   public Frame mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -83,67 +96,90 @@ public final class Frame
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.level = paramCodedInputByteBufferNano.readInt32();
+      if (i == 0) {
         break;
       }
-      int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
-      if (this.addresses == null) {}
-      Address[] arrayOfAddress;
-      for (i = 0;; i = this.addresses.length)
+      if (i != 8)
       {
-        arrayOfAddress = new Address[j + i];
-        j = i;
-        if (i != 0)
+        if (i != 18)
         {
-          System.arraycopy(this.addresses, 0, arrayOfAddress, 0, i);
-          j = i;
+          if (i != 26)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.definition = paramCodedInputByteBufferNano.readString();
+          }
         }
-        while (j < arrayOfAddress.length - 1)
+        else
         {
+          int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 18);
+          Address[] arrayOfAddress = this.addresses;
+          if (arrayOfAddress == null) {
+            i = 0;
+          } else {
+            i = arrayOfAddress.length;
+          }
+          arrayOfAddress = new Address[j + i];
+          j = i;
+          if (i != 0)
+          {
+            System.arraycopy(this.addresses, 0, arrayOfAddress, 0, i);
+            j = i;
+          }
+          while (j < arrayOfAddress.length - 1)
+          {
+            arrayOfAddress[j] = new Address();
+            paramCodedInputByteBufferNano.readMessage(arrayOfAddress[j]);
+            paramCodedInputByteBufferNano.readTag();
+            j += 1;
+          }
           arrayOfAddress[j] = new Address();
           paramCodedInputByteBufferNano.readMessage(arrayOfAddress[j]);
-          paramCodedInputByteBufferNano.readTag();
-          j += 1;
+          this.addresses = arrayOfAddress;
         }
       }
-      arrayOfAddress[j] = new Address();
-      paramCodedInputByteBufferNano.readMessage(arrayOfAddress[j]);
-      this.addresses = arrayOfAddress;
+      else {
+        this.level = paramCodedInputByteBufferNano.readInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.level != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(1, this.level);
+    int i = this.level;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(1, i);
     }
-    if ((this.addresses != null) && (this.addresses.length > 0))
+    Object localObject = this.addresses;
+    if ((localObject != null) && (localObject.length > 0))
     {
-      int i = 0;
-      while (i < this.addresses.length)
+      i = 0;
+      for (;;)
       {
-        Address localAddress = this.addresses[i];
-        if (localAddress != null) {
-          paramCodedOutputByteBufferNano.writeMessage(2, localAddress);
+        localObject = this.addresses;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(2, (MessageNano)localObject);
         }
         i += 1;
       }
+    }
+    if (!this.definition.equals("")) {
+      paramCodedOutputByteBufferNano.writeString(3, this.definition);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.Frame
  * JD-Core Version:    0.7.0.1
  */

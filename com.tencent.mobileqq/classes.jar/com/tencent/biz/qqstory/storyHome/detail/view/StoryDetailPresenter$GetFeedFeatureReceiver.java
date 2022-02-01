@@ -20,26 +20,26 @@ public final class StoryDetailPresenter$GetFeedFeatureReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull GetFeedFeatureHandler.GetFeedFeatureEvent paramGetFeedFeatureEvent)
   {
-    if (StoryDetailPresenter.a(paramStoryDetailPresenter) == null) {
-      SLog.b(this.TAG, "ignore this feature event. %s.", paramGetFeedFeatureEvent.toString());
-    }
-    FeedFeatureItem localFeedFeatureItem;
-    do
+    if (StoryDetailPresenter.a(paramStoryDetailPresenter) == null)
     {
+      SLog.b(this.TAG, "ignore this feature event. %s.", paramGetFeedFeatureEvent.toString());
       return;
-      while (!paramGetFeedFeatureEvent.hasNext())
+    }
+    SLog.a(this.TAG, "receive feature event. %s.", paramGetFeedFeatureEvent.toString());
+    if (paramGetFeedFeatureEvent.a != null)
+    {
+      paramGetFeedFeatureEvent = paramGetFeedFeatureEvent.a.iterator();
+      while (paramGetFeedFeatureEvent.hasNext())
       {
-        do
+        FeedFeatureItem localFeedFeatureItem = (FeedFeatureItem)paramGetFeedFeatureEvent.next();
+        if (localFeedFeatureItem.a.equals(StoryDetailPresenter.a(paramStoryDetailPresenter)))
         {
-          SLog.a(this.TAG, "receive feature event. %s.", paramGetFeedFeatureEvent.toString());
-        } while (paramGetFeedFeatureEvent.a == null);
-        paramGetFeedFeatureEvent = paramGetFeedFeatureEvent.a.iterator();
+          SLog.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(StoryDetailPresenter.a(paramStoryDetailPresenter).a.mViewTotalTime), Integer.valueOf(localFeedFeatureItem.c));
+          StoryDetailPresenter.a(paramStoryDetailPresenter).a.mViewTotalTime = localFeedFeatureItem.c;
+          paramStoryDetailPresenter.a();
+        }
       }
-      localFeedFeatureItem = (FeedFeatureItem)paramGetFeedFeatureEvent.next();
-    } while (!localFeedFeatureItem.a.equals(StoryDetailPresenter.a(paramStoryDetailPresenter)));
-    SLog.a(this.TAG, "receive feature data. update visit count from %d to %d.", Long.valueOf(StoryDetailPresenter.a(paramStoryDetailPresenter).a.mViewTotalTime), Integer.valueOf(localFeedFeatureItem.c));
-    StoryDetailPresenter.a(paramStoryDetailPresenter).a.mViewTotalTime = localFeedFeatureItem.c;
-    paramStoryDetailPresenter.a();
+    }
   }
   
   public Class acceptEventClass()
@@ -49,7 +49,7 @@ public final class StoryDetailPresenter$GetFeedFeatureReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.GetFeedFeatureReceiver
  * JD-Core Version:    0.7.0.1
  */

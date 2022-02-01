@@ -25,7 +25,6 @@ import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.ExtensionInfo;
 import com.tencent.mobileqq.data.MessageForTroopConfess;
 import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.extendfriend.apollo.aio.AioApolloHelper;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.utils.AvatarPendantUtil;
 import com.tencent.mobileqq.vas.AvatarPendantManager;
@@ -45,34 +44,31 @@ public class AvatarPendantHandler
     if (paramChatMessage.isSend()) {
       return paramChatMessage.selfuin;
     }
-    if ((paramChatMessage.istroop == 1000) || (paramChatMessage.istroop == 1020) || (paramChatMessage.istroop == 1004)) {
-      return paramChatMessage.frienduin;
+    if ((paramChatMessage.istroop != 1000) && (paramChatMessage.istroop != 1020) && (paramChatMessage.istroop != 1004)) {
+      return paramChatMessage.senderuin;
     }
-    return paramChatMessage.senderuin;
+    return paramChatMessage.frienduin;
   }
   
   private void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout)
   {
-    if ((paramChatMessage == null) || (paramChatMessage.senderuin == null) || (AnonymousChatHelper.a(paramChatMessage)) || ((this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.n))
+    if ((paramChatMessage != null) && (paramChatMessage.senderuin != null) && (!AnonymousChatHelper.a(paramChatMessage)) && (!(this.jdField_a_of_type_AndroidContentContext instanceof MultiForwardActivity)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.n))
     {
-      paramBaseChatItemLayout.setPendantImageVisible(false);
-      return;
-    }
-    String str = a(paramChatMessage);
-    FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (localFriendsManager != null) {
-      a(paramChatMessage, paramBaseChatItemLayout, str, localFriendsManager);
-    }
-    for (;;)
-    {
-      paramChatMessage.mPendantAnimatable = false;
-      return;
-      if (paramBaseChatItemLayout.a != null)
+      String str = a(paramChatMessage);
+      FriendsManager localFriendsManager = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (localFriendsManager != null)
+      {
+        a(paramChatMessage, paramBaseChatItemLayout, str, localFriendsManager);
+      }
+      else if (paramBaseChatItemLayout.a != null)
       {
         paramBaseChatItemLayout.a.setImageDrawable(null);
         paramBaseChatItemLayout.a.setVisibility(8);
       }
+      paramChatMessage.mPendantAnimatable = false;
+      return;
     }
+    paramBaseChatItemLayout.setPendantImageVisible(false);
   }
   
   private void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, String paramString, FriendsManager paramFriendsManager)
@@ -83,8 +79,12 @@ public class AvatarPendantHandler
     if ((localExtensionInfo != null) && (localExtensionInfo.lastUpdateTime < paramChatMessage.time))
     {
       str = paramChatMessage.getExtInfoFromExtStr("vip_pendant_id");
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantHandler", 2, "handleAvatarPendant: message id = " + str);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleAvatarPendant: message id = ");
+        localStringBuilder.append(str);
+        QLog.d("AvatarPendantHandler", 2, localStringBuilder.toString());
       }
       if ((!TextUtils.isEmpty(str)) && (Long.parseLong(str) != localExtensionInfo.pendantId))
       {
@@ -95,51 +95,58 @@ public class AvatarPendantHandler
         AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       }
       str = paramChatMessage.getExtInfoFromExtStr("vip_pendant_diy_id");
-      if (QLog.isColorLevel()) {
-        QLog.d("AvatarPendantHandler", 2, "handleAvatarPendant: message pendantDiyId = " + str);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleAvatarPendant: message pendantDiyId = ");
+        localStringBuilder.append(str);
+        QLog.d("AvatarPendantHandler", 2, localStringBuilder.toString());
       }
       if (TextUtils.isEmpty(str)) {}
     }
     try
     {
-      if (Integer.parseInt(str) != localExtensionInfo.pendantDiyId)
-      {
-        AvatarPendantUtil.a(paramString);
-        AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+      if (Integer.parseInt(str) == localExtensionInfo.pendantDiyId) {
+        break label260;
       }
-      if ((localExtensionInfo != null) && (localExtensionInfo.isPendantValid()))
-      {
-        AvatarPendantManager.b = true;
-        if (AvatarPendantUtil.a(localExtensionInfo.pendantId))
-        {
-          localAvatarPendantManager.a(localExtensionInfo.pendantId).a(paramBaseChatItemLayout, 2, paramChatMessage.uniseq, paramString, localExtensionInfo.pendantDiyId);
-          if ((!paramFriendsManager.b(paramString)) && (localExtensionInfo.isPendantExpired())) {
-            AvatarPendantUtil.a(paramString);
-          }
-          if ((!localAvatarPendantManager.a(paramChatMessage.uniseq)) && (paramBaseChatItemLayout.a != null)) {
-            paramBaseChatItemLayout.a.setVisibility(4);
-          }
-          return;
-        }
-      }
+      AvatarPendantUtil.a(paramString);
+      AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     }
     catch (Exception localException)
     {
-      do
+      label224:
+      break label224;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("parse vip_pendant_diy_id field failed, value=");
+    localStringBuilder.append(str);
+    QLog.e("AvatarPendantHandler", 1, localStringBuilder.toString());
+    label260:
+    if ((localExtensionInfo != null) && (localExtensionInfo.isPendantValid()))
+    {
+      AvatarPendantManager.b = true;
+      if (AvatarPendantUtil.a(localExtensionInfo.pendantId)) {
+        localAvatarPendantManager.a(localExtensionInfo.pendantId).a(paramBaseChatItemLayout, 2, paramChatMessage.uniseq, paramString, localExtensionInfo.pendantDiyId);
+      } else {
+        localAvatarPendantManager.a(localExtensionInfo.pendantId).a(paramBaseChatItemLayout, 1, paramChatMessage.uniseq, paramString, localExtensionInfo.pendantDiyId);
+      }
+      if ((!paramFriendsManager.b(paramString)) && (localExtensionInfo.isPendantExpired())) {
+        AvatarPendantUtil.a(paramString);
+      }
+      if ((!localAvatarPendantManager.a(paramChatMessage.uniseq)) && (paramBaseChatItemLayout.a != null)) {
+        paramBaseChatItemLayout.a.setVisibility(4);
+      }
+    }
+    else
+    {
+      if (paramBaseChatItemLayout.a != null)
       {
-        for (;;)
-        {
-          QLog.e("AvatarPendantHandler", 1, "parse vip_pendant_diy_id field failed, value=" + str);
-          continue;
-          localAvatarPendantManager.a(localExtensionInfo.pendantId).a(paramBaseChatItemLayout, 1, paramChatMessage.uniseq, paramString, localExtensionInfo.pendantDiyId);
-        }
-        if (paramBaseChatItemLayout.a != null)
-        {
-          paramBaseChatItemLayout.a.setImageDrawable(null);
-          paramBaseChatItemLayout.a.setVisibility(8);
-        }
-      } while (localExtensionInfo != null);
-      AvatarPendantUtil.a(paramString);
+        paramBaseChatItemLayout.a.setImageDrawable(null);
+        paramBaseChatItemLayout.a.setVisibility(8);
+      }
+      if (localExtensionInfo == null) {
+        AvatarPendantUtil.a(paramString);
+      }
     }
   }
   
@@ -150,38 +157,36 @@ public class AvatarPendantHandler
   
   protected void a(ChatMessage paramChatMessage, BaseChatItemLayout paramBaseChatItemLayout, int paramInt1, int paramInt2)
   {
-    if (SimpleUIUtil.a()) {}
-    label6:
-    do
+    if (SimpleUIUtil.a()) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10007) {
+      return;
+    }
+    if ((paramChatMessage != null) && (!paramChatMessage.isShowQimStyleAvater) && ((!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h)) && (!ConfessMsgUtil.a(paramChatMessage)) && (UinTypeUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) != 1044) && (paramChatMessage.fakeSenderType == 0))
     {
-      TroopInfo localTroopInfo;
-      do
+      if (AIOUtils.i) {
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1)
       {
-        do
-        {
-          break label6;
-          do
-          {
-            return;
-          } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 10007);
-          if ((paramChatMessage == null) || (paramChatMessage.isShowQimStyleAvater) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.h)) || (ConfessMsgUtil.a(paramChatMessage)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 1037) || (UinTypeUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int) == 1044) || (paramChatMessage.fakeSenderType != 0))
-          {
-            paramBaseChatItemLayout.setPendantImageVisible(false);
-            return;
-          }
-        } while (AIOUtils.i);
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 1) {
-          break;
+        TroopInfo localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+        if ((localTroopInfo != null) && (localTroopInfo.hasOrgs())) {
+          return;
         }
-        localTroopInfo = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      } while ((localTroopInfo != null) && (localTroopInfo.hasOrgs()));
-    } while ((AioApolloHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo)) || ((paramChatMessage instanceof MessageForTroopConfess)));
-    a(paramChatMessage, paramBaseChatItemLayout);
+      }
+      if ((paramChatMessage instanceof MessageForTroopConfess)) {
+        return;
+      }
+      a(paramChatMessage, paramBaseChatItemLayout);
+      return;
+    }
+    paramBaseChatItemLayout.setPendantImageVisible(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.AvatarPendantHandler
  * JD-Core Version:    0.7.0.1
  */

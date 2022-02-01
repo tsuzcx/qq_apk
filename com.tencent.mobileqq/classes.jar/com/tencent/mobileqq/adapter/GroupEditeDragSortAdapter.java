@@ -29,22 +29,27 @@ public class GroupEditeDragSortAdapter<T>
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (paramView == null) {}
-    for (View localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561265, null);; localView = paramView)
-    {
-      localView.setVisibility(0);
-      localView.findViewById(2131377928).setVisibility(8);
-      TextView localTextView = (TextView)localView.findViewById(2131368095);
-      Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      localTextView.setText(localGroups.group_name);
-      ViewCompat.setImportantForAccessibility(localView.findViewById(2131368099), 1);
-      localView.setContentDescription(localGroups.group_name + HardCodeUtil.a(2131705365));
-      if ((VersionUtils.m()) && (AppSetting.d)) {
-        localView.setOnClickListener(this);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return localView;
+    View localView;
+    if (paramView == null) {
+      localView = View.inflate(this.jdField_a_of_type_AndroidContentContext, 2131561595, null);
+    } else {
+      localView = paramView;
     }
+    localView.setVisibility(0);
+    localView.findViewById(2131377351).setVisibility(8);
+    Object localObject = (TextView)localView.findViewById(2131367848);
+    Groups localGroups = (Groups)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    ((TextView)localObject).setText(localGroups.group_name);
+    ViewCompat.setImportantForAccessibility(localView.findViewById(2131367852), 1);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(localGroups.group_name);
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131705439));
+    localView.setContentDescription(((StringBuilder)localObject).toString());
+    if ((VersionUtils.m()) && (AppSetting.d)) {
+      localView.setOnClickListener(this);
+    }
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onClick(View paramView)
@@ -57,7 +62,7 @@ public class GroupEditeDragSortAdapter<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.GroupEditeDragSortAdapter
  * JD-Core Version:    0.7.0.1
  */

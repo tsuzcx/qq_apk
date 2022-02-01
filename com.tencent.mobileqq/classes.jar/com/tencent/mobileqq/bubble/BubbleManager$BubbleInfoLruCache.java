@@ -19,12 +19,16 @@ class BubbleManager$BubbleInfoLruCache
     Map localMap = snapshot();
     if (localMap != null)
     {
-      Iterator localIterator = localMap.values().iterator();
-      while (localIterator.hasNext()) {
-        ((BubbleInfo)localIterator.next()).a();
+      Object localObject = localMap.values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((BubbleInfo)((Iterator)localObject).next()).a();
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleManager", 2, "BubbleInfoLruCache cleared, size = " + localMap.size());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("BubbleInfoLruCache cleared, size = ");
+        ((StringBuilder)localObject).append(localMap.size());
+        QLog.i("BubbleManager", 2, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -32,8 +36,12 @@ class BubbleManager$BubbleInfoLruCache
   protected void a(boolean paramBoolean, Integer paramInteger, BubbleInfo paramBubbleInfo1, BubbleInfo paramBubbleInfo2)
   {
     super.entryRemoved(paramBoolean, paramInteger, paramBubbleInfo1, paramBubbleInfo2);
-    if (QLog.isColorLevel()) {
-      QLog.d("BubbleManager", 2, "entryRemoved key=" + paramInteger);
+    if (QLog.isColorLevel())
+    {
+      paramBubbleInfo2 = new StringBuilder();
+      paramBubbleInfo2.append("entryRemoved key=");
+      paramBubbleInfo2.append(paramInteger);
+      QLog.d("BubbleManager", 2, paramBubbleInfo2.toString());
     }
     paramBubbleInfo1.a();
   }
@@ -45,7 +53,7 @@ class BubbleManager$BubbleInfoLruCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleManager.BubbleInfoLruCache
  * JD-Core Version:    0.7.0.1
  */

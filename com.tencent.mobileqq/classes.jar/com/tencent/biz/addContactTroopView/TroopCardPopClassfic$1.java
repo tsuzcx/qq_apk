@@ -37,7 +37,7 @@ class TroopCardPopClassfic$1
   
   public TroopCardPopClassfic.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131559970, null);
+    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131559841, null);
     paramViewGroup.setLayoutParams(new RecyclerView.LayoutParams(this.a.jdField_a_of_type_Int, -2));
     return new TroopCardPopClassfic.ViewHolder(paramViewGroup);
   }
@@ -59,7 +59,7 @@ class TroopCardPopClassfic$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.TroopCardPopClassfic.1
  * JD-Core Version:    0.7.0.1
  */

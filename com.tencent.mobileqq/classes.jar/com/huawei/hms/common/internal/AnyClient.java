@@ -6,6 +6,8 @@ public abstract interface AnyClient
 {
   public abstract void connect(int paramInt);
   
+  public abstract void connect(int paramInt, boolean paramBoolean);
+  
   public abstract void disconnect();
   
   public abstract String getSessionId();
@@ -18,7 +20,7 @@ public abstract interface AnyClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.AnyClient
  * JD-Core Version:    0.7.0.1
  */

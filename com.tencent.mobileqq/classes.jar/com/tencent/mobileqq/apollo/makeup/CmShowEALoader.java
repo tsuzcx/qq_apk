@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.apollo.makeup;
 
 import android.content.Context;
+import com.tencent.aelight.camera.cmsshow.api.CmShowAssetsData;
 import com.tencent.mobileqq.apollo.utils.task.BaseTask;
 import com.tencent.mobileqq.apollo.utils.task.TaskFlowEngine;
 import kotlin.Metadata;
@@ -8,7 +9,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader;", "Lcom/tencent/mobileqq/apollo/utils/task/TaskFlowEngine;", "uin", "", "(Ljava/lang/String;)V", "aEKitEssentialResDownloadTask", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitEssentialResDownloadTask;", "getAEKitEssentialResDownloadTask", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitEssentialResDownloadTask;", "setAEKitEssentialResDownloadTask", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitEssentialResDownloadTask;)V", "aEKitResDownloadTask", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitResDownloadTask;", "getAEKitResDownloadTask", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitResDownloadTask;", "setAEKitResDownloadTask", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitResDownloadTask;)V", "cmShowResDownloadTask", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$CmShowResDownloadTask;", "getCmShowResDownloadTask", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$CmShowResDownloadTask;", "setCmShowResDownloadTask", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$CmShowResDownloadTask;)V", "initAEEngineTask", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitAEEngineTask;", "getInitAEEngineTask", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitAEEngineTask;", "setInitAEEngineTask", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitAEEngineTask;)V", "initListener", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitListener;", "getInitListener", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitListener;", "setInitListener", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitListener;)V", "result", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitResult;", "getResult", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitResult;", "setResult", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitResult;)V", "initEngine", "", "context", "Landroid/content/Context;", "notifyComplete", "step", "", "errorCode", "onTaskDone", "task", "Lcom/tencent/mobileqq/apollo/utils/task/BaseTask;", "AEKitEssentialResDownloadTask", "AEKitResDownloadTask", "CmShowResDownloadTask", "Companion", "InitAEEngineTask", "InitListener", "InitResult", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader;", "Lcom/tencent/mobileqq/apollo/utils/task/TaskFlowEngine;", "uin", "", "(Ljava/lang/String;)V", "aEKitEssentialResDownloadTask", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitEssentialResDownloadTask;", "getAEKitEssentialResDownloadTask", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitEssentialResDownloadTask;", "setAEKitEssentialResDownloadTask", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitEssentialResDownloadTask;)V", "aEKitResDownloadTask", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitResDownloadTask;", "getAEKitResDownloadTask", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitResDownloadTask;", "setAEKitResDownloadTask", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$AEKitResDownloadTask;)V", "cmShowResDownloadTask", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$CmShowResDownloadTask;", "getCmShowResDownloadTask", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$CmShowResDownloadTask;", "setCmShowResDownloadTask", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$CmShowResDownloadTask;)V", "initAEEngineTask", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitAEEngineTask;", "getInitAEEngineTask", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitAEEngineTask;", "setInitAEEngineTask", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitAEEngineTask;)V", "initListener", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitListener;", "getInitListener", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitListener;", "setInitListener", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitListener;)V", "result", "Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitResult;", "getResult", "()Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitResult;", "setResult", "(Lcom/tencent/mobileqq/apollo/makeup/CmShowEALoader$InitResult;)V", "initEngine", "", "context", "Landroid/content/Context;", "notifyComplete", "step", "", "errorCode", "onTaskDone", "task", "Lcom/tencent/mobileqq/apollo/utils/task/BaseTask;", "AEKitEssentialResDownloadTask", "AEKitResDownloadTask", "CmShowResDownloadTask", "Companion", "InitAEEngineTask", "InitListener", "InitResult", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class CmShowEALoader
   extends TaskFlowEngine
 {
@@ -96,80 +97,83 @@ public final class CmShowEALoader
   public void a(@Nullable BaseTask paramBaseTask)
   {
     super.a(paramBaseTask);
-    if ((paramBaseTask instanceof CmShowEALoader.CmShowResDownloadTask)) {
-      if (((CmShowEALoader.CmShowResDownloadTask)paramBaseTask).b())
+    Object localObject;
+    int i;
+    if ((paramBaseTask instanceof CmShowEALoader.CmShowResDownloadTask))
+    {
+      localObject = (CmShowEALoader.CmShowResDownloadTask)paramBaseTask;
+      if (((CmShowEALoader.CmShowResDownloadTask)localObject).b())
       {
-        CmShowEALoader.InitResult localInitResult = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
-        paramBaseTask = ((CmShowEALoader.CmShowResDownloadTask)paramBaseTask).a();
-        if (paramBaseTask == null) {
+        paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
+        localObject = ((CmShowEALoader.CmShowResDownloadTask)localObject).a();
+        if (localObject == null) {
           Intrinsics.throwNpe();
         }
-        localInitResult.a(paramBaseTask);
+        paramBaseTask.a((CmShowAssetsData)localObject);
         paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitListener;
         if (paramBaseTask == null) {
           Intrinsics.throwUninitializedPropertyAccessException("initListener");
         }
         paramBaseTask.a(2, 0, this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult);
+        return;
+      }
+      i = paramBaseTask.a;
+      if (a() != null) {
+        a().a(2, i, null);
       }
     }
-    label166:
-    do
+    else if ((paramBaseTask instanceof CmShowEALoader.InitAEEngineTask))
     {
-      do
+      if (((CmShowEALoader.InitAEEngineTask)paramBaseTask).b())
       {
-        do
-        {
-          return;
-          i = paramBaseTask.a;
-          if (a() != null) {
-            a().a(2, i, null);
-          }
-          return;
-          if (!(paramBaseTask instanceof CmShowEALoader.InitAEEngineTask)) {
-            break label166;
-          }
-          if (!((CmShowEALoader.InitAEEngineTask)paramBaseTask).b()) {
-            break;
-          }
-          paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
-        } while (a() == null);
-        a().a(1, 0, paramBaseTask);
-        return;
-        int i = paramBaseTask.a;
+        paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
+        if (a() != null) {
+          a().a(1, 0, paramBaseTask);
+        }
+      }
+      else
+      {
+        i = paramBaseTask.a;
         if (a() != null) {
           a().a(1, i, null);
         }
-        return;
-        if ((paramBaseTask instanceof CmShowEALoader.AEKitEssentialResDownloadTask))
-        {
-          if (((CmShowEALoader.AEKitEssentialResDownloadTask)paramBaseTask).b())
-          {
-            this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult.a(((CmShowEALoader.AEKitEssentialResDownloadTask)paramBaseTask).a());
-            return;
-          }
-          i = paramBaseTask.a;
-          if (a() != null) {
-            a().a(1, i, null);
-          }
-          return;
-        }
-      } while (!(paramBaseTask instanceof CmShowEALoader.AEKitResDownloadTask));
-      if (!((CmShowEALoader.AEKitResDownloadTask)paramBaseTask).b()) {
-        break;
       }
-      paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
-    } while (a() == null);
-    a().a(3, 0, paramBaseTask);
-    return;
-    paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
-    if (a() != null) {
-      a().a(3, -5032, paramBaseTask);
+    }
+    else if ((paramBaseTask instanceof CmShowEALoader.AEKitEssentialResDownloadTask))
+    {
+      localObject = (CmShowEALoader.AEKitEssentialResDownloadTask)paramBaseTask;
+      if (((CmShowEALoader.AEKitEssentialResDownloadTask)localObject).b())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult.a(((CmShowEALoader.AEKitEssentialResDownloadTask)localObject).a());
+        return;
+      }
+      i = paramBaseTask.a;
+      if (a() != null) {
+        a().a(1, i, null);
+      }
+    }
+    else if ((paramBaseTask instanceof CmShowEALoader.AEKitResDownloadTask))
+    {
+      if (((CmShowEALoader.AEKitResDownloadTask)paramBaseTask).b())
+      {
+        paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
+        if (a() != null) {
+          a().a(3, 0, paramBaseTask);
+        }
+      }
+      else
+      {
+        paramBaseTask = this.jdField_a_of_type_ComTencentMobileqqApolloMakeupCmShowEALoader$InitResult;
+        if (a() != null) {
+          a().a(3, -5032, paramBaseTask);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.makeup.CmShowEALoader
  * JD-Core Version:    0.7.0.1
  */

@@ -23,35 +23,26 @@ public final class QQNewsConfigProcessor
   @Nullable
   public QQNewsConfigProcessor.Config a(@Nullable QConfItem[] paramArrayOfQConfItem)
   {
-    int j = 1;
     if (QLog.isColorLevel()) {
       QLog.d("QQNewsConfigProcessor", 2, "onParsed");
     }
     QQNewsConfigProcessor.Config localConfig = new QQNewsConfigProcessor.Config();
     if (paramArrayOfQConfItem != null)
     {
-      if (paramArrayOfQConfItem.length != 0) {
-        break label68;
+      int i;
+      if (paramArrayOfQConfItem.length == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      if (i != 0) {
-        break label73;
-      }
-    }
-    label68:
-    label73:
-    for (int i = j;; i = 0)
-    {
-      if (i != 0)
+      if ((i ^ 0x1) != 0)
       {
         paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
         Intrinsics.checkExpressionValueIsNotNull(paramArrayOfQConfItem, "confFiles[0].content");
         localConfig.a(paramArrayOfQConfItem);
       }
-      return localConfig;
-      i = 0;
-      break;
     }
+    return localConfig;
   }
   
   public void a(@Nullable QQNewsConfigProcessor.Config paramConfig) {}
@@ -96,7 +87,7 @@ public final class QQNewsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.qqnews.QQNewsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

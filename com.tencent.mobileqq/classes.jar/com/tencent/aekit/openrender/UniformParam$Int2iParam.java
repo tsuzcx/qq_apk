@@ -27,7 +27,14 @@ public class UniformParam$Int2iParam
   
   public String toString()
   {
-    return this.name + " = [ x = " + this.x + ", y = " + this.y + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = [ x = ");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", y = ");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 

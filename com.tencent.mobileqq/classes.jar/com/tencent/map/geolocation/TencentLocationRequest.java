@@ -151,20 +151,22 @@ public final class TencentLocationRequest
   
   public final TencentLocationRequest setCheckInterval(long paramLong)
   {
-    if (paramLong < 30000L) {
-      throw new IllegalArgumentException("interval should >= 30*1000");
+    if (paramLong >= 30000L)
+    {
+      this.b = paramLong;
+      return this;
     }
-    this.b = paramLong;
-    return this;
+    throw new IllegalArgumentException("interval should >= 30*1000");
   }
   
   public final TencentLocationRequest setInterval(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("interval should >= 0");
+    if (paramLong >= 0L)
+    {
+      this.a = paramLong;
+      return this;
     }
-    this.a = paramLong;
-    return this;
+    throw new IllegalArgumentException("interval should >= 0");
   }
   
   public final TencentLocationRequest setPhoneNumber(String paramString)
@@ -190,17 +192,41 @@ public final class TencentLocationRequest
       this.c = paramInt;
       return this;
     }
-    throw new IllegalArgumentException("request_level: " + paramInt + " not supported!");
+    StringBuilder localStringBuilder = new StringBuilder("request_level: ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" not supported!");
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public final String toString()
   {
-    return "TencentLocationRequest [mInterval=" + this.a + ", mCheckInterval=" + this.b + ", mRequestLevel=" + this.c + ", mAllowCache=" + this.d + ", mAllowDirection=" + this.e + ", mNumUpdates=" + this.f + ", mAllowStepCount=" + this.g + ", mAllowGps=" + this.h + ", mQQ=" + this.i + ", mExtras=" + this.j + "]";
+    StringBuilder localStringBuilder = new StringBuilder("TencentLocationRequest [mInterval=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", mCheckInterval=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", mRequestLevel=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", mAllowCache=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", mAllowDirection=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", mNumUpdates=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", mAllowStepCount=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", mAllowGps=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", mQQ=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", mExtras=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.geolocation.TencentLocationRequest
  * JD-Core Version:    0.7.0.1
  */

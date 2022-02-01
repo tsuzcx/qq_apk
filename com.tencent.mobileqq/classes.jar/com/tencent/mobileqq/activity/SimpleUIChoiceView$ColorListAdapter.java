@@ -27,30 +27,21 @@ public class SimpleUIChoiceView$ColorListAdapter
   private void a(int paramInt)
   {
     SimpleUIChoiceView.ColorItemInfo localColorItemInfo = a(paramInt);
-    if (localColorItemInfo != null) {
-      if (localColorItemInfo.jdField_a_of_type_Boolean) {
-        break label44;
-      }
-    }
-    label44:
-    for (boolean bool = true;; bool = false)
-    {
-      if (a(localColorItemInfo, paramInt, bool)) {
-        SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView).c(localColorItemInfo.jdField_a_of_type_Int);
-      }
-      return;
+    if ((localColorItemInfo != null) && (a(localColorItemInfo, paramInt, localColorItemInfo.jdField_a_of_type_Boolean ^ true))) {
+      SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView).c(localColorItemInfo.jdField_a_of_type_Int);
     }
   }
   
   public SimpleUIChoiceView.ColorHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView).getLayoutInflater().inflate(2131563020, paramViewGroup, false);
+    paramViewGroup = SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView).getLayoutInflater().inflate(2131562842, paramViewGroup, false);
     return new SimpleUIChoiceView.ColorHolder(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView, paramViewGroup);
   }
   
   public SimpleUIChoiceView.ColorItemInfo a(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilList != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_JavaUtilList.size())) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (paramInt >= 0) && (paramInt < localList.size())) {
       return (SimpleUIChoiceView.ColorItemInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
     }
     return null;
@@ -58,43 +49,46 @@ public class SimpleUIChoiceView$ColorListAdapter
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      localList.clear();
     }
   }
   
   public void a(SimpleUIChoiceView.ColorHolder paramColorHolder, int paramInt)
   {
-    SimpleUIChoiceView.ColorItemInfo localColorItemInfo = a(paramInt);
-    if (localColorItemInfo == null)
+    Object localObject = a(paramInt);
+    if (localObject != null)
     {
-      EventCollector.getInstance().onRecyclerBindViewHolder(paramColorHolder, paramInt, getItemId(paramInt));
-      return;
-    }
-    if (localColorItemInfo.jdField_a_of_type_Boolean)
-    {
-      paramColorHolder.b.setVisibility(0);
-      ViewCompat.setAccessibilityDelegate(paramColorHolder.jdField_a_of_type_ComTencentImageURLImageView, new SimpleUIChoiceView.ColorListAdapter.1(this));
-      label54:
-      SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView, paramColorHolder.jdField_a_of_type_ComTencentImageURLImageView, localColorItemInfo);
-      if (!localColorItemInfo.b) {
-        break label158;
+      if (((SimpleUIChoiceView.ColorItemInfo)localObject).jdField_a_of_type_Boolean)
+      {
+        paramColorHolder.b.setVisibility(0);
+        ViewCompat.setAccessibilityDelegate(paramColorHolder.jdField_a_of_type_ComTencentImageURLImageView, new SimpleUIChoiceView.ColorListAdapter.1(this));
       }
-      paramColorHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      ((Animatable)paramColorHolder.jdField_a_of_type_AndroidViewView.getBackground()).start();
-    }
-    for (;;)
-    {
-      paramColorHolder.itemView.setContentDescription(SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView)[paramInt]);
+      else
+      {
+        paramColorHolder.b.setVisibility(8);
+        ViewCompat.setAccessibilityDelegate(paramColorHolder.jdField_a_of_type_ComTencentImageURLImageView, new SimpleUIChoiceView.ColorListAdapter.2(this));
+      }
+      SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView, paramColorHolder.jdField_a_of_type_ComTencentImageURLImageView, (SimpleUIChoiceView.ColorItemInfo)localObject);
+      if (((SimpleUIChoiceView.ColorItemInfo)localObject).b)
+      {
+        paramColorHolder.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        ((Animatable)paramColorHolder.jdField_a_of_type_AndroidViewView.getBackground()).start();
+      }
+      else
+      {
+        paramColorHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
+        ((Animatable)paramColorHolder.jdField_a_of_type_AndroidViewView.getBackground()).stop();
+      }
+      localObject = paramColorHolder.itemView;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(SimpleUIChoiceView.a[paramInt]);
+      localStringBuilder.append("按钮");
+      ((View)localObject).setContentDescription(localStringBuilder.toString());
       paramColorHolder.itemView.setOnClickListener(new SimpleUIChoiceView.ColorListAdapter.3(this, paramInt));
-      break;
-      paramColorHolder.b.setVisibility(8);
-      ViewCompat.setAccessibilityDelegate(paramColorHolder.jdField_a_of_type_ComTencentImageURLImageView, new SimpleUIChoiceView.ColorListAdapter.2(this));
-      break label54;
-      label158:
-      paramColorHolder.jdField_a_of_type_AndroidViewView.setVisibility(8);
-      ((Animatable)paramColorHolder.jdField_a_of_type_AndroidViewView.getBackground()).stop();
     }
+    EventCollector.getInstance().onRecyclerBindViewHolder(paramColorHolder, paramInt, getItemId(paramInt));
   }
   
   public void a(List<SimpleUIChoiceView.ColorItemInfo> paramList)
@@ -110,24 +104,27 @@ public class SimpleUIChoiceView$ColorListAdapter
       return false;
     }
     paramColorItemInfo.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramColorItemInfo.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_Int >= 0) {
-        break label46;
-      }
-    }
-    for (this.jdField_a_of_type_Int = paramInt;; this.jdField_a_of_type_Int = paramInt)
+    if (paramColorItemInfo.jdField_a_of_type_Boolean)
     {
-      notifyItemChanged(paramInt);
-      return true;
-      label46:
-      paramColorItemInfo = a(this.jdField_a_of_type_Int);
-      if (paramColorItemInfo != null)
+      int i = this.jdField_a_of_type_Int;
+      if (i < 0)
       {
-        paramColorItemInfo.jdField_a_of_type_Boolean = false;
-        paramColorItemInfo.b = false;
-        notifyItemChanged(this.jdField_a_of_type_Int);
+        this.jdField_a_of_type_Int = paramInt;
+      }
+      else
+      {
+        paramColorItemInfo = a(i);
+        if (paramColorItemInfo != null)
+        {
+          paramColorItemInfo.jdField_a_of_type_Boolean = false;
+          paramColorItemInfo.b = false;
+          notifyItemChanged(this.jdField_a_of_type_Int);
+        }
+        this.jdField_a_of_type_Int = paramInt;
       }
     }
+    notifyItemChanged(paramInt);
+    return true;
   }
   
   public int getItemCount()
@@ -137,7 +134,7 @@ public class SimpleUIChoiceView$ColorListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SimpleUIChoiceView.ColorListAdapter
  * JD-Core Version:    0.7.0.1
  */

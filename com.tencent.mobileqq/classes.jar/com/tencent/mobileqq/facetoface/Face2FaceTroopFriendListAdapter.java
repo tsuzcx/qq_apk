@@ -28,7 +28,8 @@ public class Face2FaceTroopFriendListAdapter
   
   public Face2FaceUserProfile a(int paramInt)
   {
-    if ((this.a != null) && (this.a.size() > paramInt)) {
+    List localList = this.a;
+    if ((localList != null) && (localList.size() > paramInt)) {
       return (Face2FaceUserProfile)this.a.get(paramInt);
     }
     return null;
@@ -51,8 +52,9 @@ public class Face2FaceTroopFriendListAdapter
   
   public int getCount()
   {
-    if (this.a != null) {
-      return this.a.size();
+    List localList = this.a;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
@@ -67,53 +69,58 @@ public class Face2FaceTroopFriendListAdapter
     long l3 = System.currentTimeMillis();
     View localView;
     Face2FaceTroopFriendListAdapter.ViewHolder localViewHolder;
-    Face2FaceUserProfile localFace2FaceUserProfile;
-    long l1;
-    String str;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559238, null);
+      localView = LayoutInflater.from(BaseApplicationImpl.getContext()).inflate(2131559115, null);
       localViewHolder = new Face2FaceTroopFriendListAdapter.ViewHolder();
-      localViewHolder.c = ((ImageView)localView.findViewById(2131367564));
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367590));
+      localViewHolder.c = ((ImageView)localView.findViewById(2131367322));
+      localViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131367348));
       localView.setTag(localViewHolder);
-      long l2 = System.currentTimeMillis();
-      localFace2FaceUserProfile = a(paramInt);
-      l1 = l2;
-      if (localFace2FaceUserProfile != null)
-      {
-        localViewHolder.jdField_a_of_type_JavaLangString = localFace2FaceUserProfile.e;
-        localViewHolder.c.setImageBitmap(a(1, localFace2FaceUserProfile.e));
-        l1 = System.currentTimeMillis() - l2;
-        str = localFace2FaceUserProfile.jdField_a_of_type_JavaLangString;
-        if (str != null) {
-          break label236;
-        }
-        paramView = localFace2FaceUserProfile.e;
-      }
     }
-    for (;;)
+    else
     {
-      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
-      if (QLog.isColorLevel()) {
-        QLog.d("zivonchen", 2, paramInt + ": totalTime = " + (System.currentTimeMillis() - l3) + ", faceBitmap = " + l1);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localViewHolder = (Face2FaceTroopFriendListAdapter.ViewHolder)paramView.getTag();
       localView = paramView;
-      break;
-      label236:
-      paramView = str;
-      if (TextUtils.isEmpty(str.trim())) {
+    }
+    long l2 = System.currentTimeMillis();
+    Face2FaceUserProfile localFace2FaceUserProfile = a(paramInt);
+    long l1 = l2;
+    if (localFace2FaceUserProfile != null)
+    {
+      localViewHolder.jdField_a_of_type_JavaLangString = localFace2FaceUserProfile.e;
+      localViewHolder.c.setImageBitmap(a(1, localFace2FaceUserProfile.e));
+      l1 = System.currentTimeMillis() - l2;
+      String str = localFace2FaceUserProfile.jdField_a_of_type_JavaLangString;
+      if (str == null)
+      {
         paramView = localFace2FaceUserProfile.e;
       }
+      else
+      {
+        paramView = str;
+        if (TextUtils.isEmpty(str.trim())) {
+          paramView = localFace2FaceUserProfile.e;
+        }
+      }
+      localViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramView);
     }
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append(paramInt);
+      paramView.append(": totalTime = ");
+      paramView.append(System.currentTimeMillis() - l3);
+      paramView.append(", faceBitmap = ");
+      paramView.append(l1);
+      QLog.d("zivonchen", 2, paramView.toString());
+    }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceTroopFriendListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -11,15 +11,15 @@ final class FileUtils$3
   {
     paramContext = FileUtils.getAssetsMD5(paramContext, paramString, "aekit");
     paramString = FileUtils.getMD5(paramFile.getAbsolutePath(), "aekit");
-    if ((TextUtils.isEmpty(paramContext)) || (TextUtils.isEmpty(paramString))) {
-      return false;
+    if ((!TextUtils.isEmpty(paramContext)) && (!TextUtils.isEmpty(paramString))) {
+      return paramContext.equals(paramString);
     }
-    return paramContext.equals(paramString);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.io.FileUtils.3
  * JD-Core Version:    0.7.0.1
  */

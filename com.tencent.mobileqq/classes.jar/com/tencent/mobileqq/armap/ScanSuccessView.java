@@ -7,9 +7,10 @@ import android.graphics.Paint.FontMetrics;
 import android.graphics.Paint.Style;
 import android.graphics.RectF;
 import android.view.View;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.util.DisplayUtil;
 import java.util.Random;
+import mqq.app.MobileQQ;
 
 public class ScanSuccessView
   extends View
@@ -18,7 +19,7 @@ public class ScanSuccessView
   private int jdField_a_of_type_Int;
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   RectF jdField_a_of_type_AndroidGraphicsRectF = new RectF();
-  String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713475);
+  String jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131713442);
   boolean jdField_a_of_type_Boolean = true;
   private float jdField_b_of_type_Float;
   private int jdField_b_of_type_Int;
@@ -56,11 +57,12 @@ public class ScanSuccessView
   
   private void a()
   {
-    this.jdField_b_of_type_Float = (this.jdField_a_of_type_Float + 4.0F + 6.0F);
-    this.jdField_e_of_type_Float = (this.jdField_a_of_type_Float + 25.0F);
-    this.jdField_c_of_type_Float = (this.jdField_a_of_type_Float + 36.0F);
-    this.jdField_d_of_type_Float = (this.jdField_a_of_type_Float + this.jdField_g_of_type_Float / 2.0F + 47.0F);
-    this.jdField_f_of_type_Float = (this.jdField_a_of_type_Float + 72.0F);
+    float f1 = this.jdField_a_of_type_Float;
+    this.jdField_b_of_type_Float = (4.0F + f1 + 6.0F);
+    this.jdField_e_of_type_Float = (25.0F + f1);
+    this.jdField_c_of_type_Float = (36.0F + f1);
+    this.jdField_d_of_type_Float = (this.jdField_g_of_type_Float / 2.0F + f1 + 47.0F);
+    this.jdField_f_of_type_Float = (f1 + 72.0F);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(2147483647);
@@ -69,7 +71,7 @@ public class ScanSuccessView
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(8.0F * this.j);
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.j * 8.0F);
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_c_of_type_AndroidGraphicsPaint.setColor(2147483647);
@@ -84,23 +86,23 @@ public class ScanSuccessView
     this.jdField_e_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_e_of_type_AndroidGraphicsPaint.setColor(-1);
     this.jdField_e_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
-    this.jdField_e_of_type_AndroidGraphicsPaint.setStrokeWidth(16.0F * this.j);
+    this.jdField_e_of_type_AndroidGraphicsPaint.setStrokeWidth(this.j * 16.0F);
     this.jdField_f_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_f_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_f_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_f_of_type_AndroidGraphicsPaint.setARGB(255, 255, 255, 255);
-    this.jdField_f_of_type_AndroidGraphicsPaint.setTextSize(28.0F * this.j);
+    this.jdField_f_of_type_AndroidGraphicsPaint.setTextSize(this.j * 28.0F);
     this.jdField_g_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_g_of_type_AndroidGraphicsPaint.setAntiAlias(true);
     this.jdField_g_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     this.jdField_g_of_type_AndroidGraphicsPaint.setARGB(255, 255, 255, 255);
-    this.jdField_h_of_type_Int = AIOUtils.a(18.0F, getResources());
+    this.jdField_h_of_type_Int = DisplayUtil.a(MobileQQ.sMobileQQ, 18.0F);
     this.jdField_g_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_h_of_type_Int);
     Paint.FontMetrics localFontMetrics = this.jdField_f_of_type_AndroidGraphicsPaint.getFontMetrics();
     this.i = ((int)Math.ceil(localFontMetrics.descent - localFontMetrics.ascent));
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (this.jdField_g_of_type_Int % 10 == 9) {
       this.jdField_b_of_type_Boolean = false;
@@ -108,68 +110,97 @@ public class ScanSuccessView
     if (this.jdField_g_of_type_Int % 10 == 0) {
       this.jdField_b_of_type_Boolean = true;
     }
-    if (this.jdField_b_of_type_Boolean) {}
-    for (this.jdField_g_of_type_Int += 1;; this.jdField_g_of_type_Int -= 1)
-    {
-      if (this.jdField_g_of_type_Int % 2 == 0) {}
-      this.jdField_a_of_type_Int = (getWidth() / 2);
-      this.jdField_b_of_type_Int = (getHeight() / 2);
-      this.jdField_a_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_b_of_type_Float * this.j);
-      this.jdField_a_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_b_of_type_Float * this.j);
-      this.jdField_a_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_b_of_type_Float * this.j);
-      this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_b_of_type_Float * this.j);
-      this.jdField_b_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_c_of_type_Float * this.j);
-      this.jdField_b_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_c_of_type_Float * this.j);
-      this.jdField_b_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_c_of_type_Float * this.j);
-      this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_c_of_type_Float * this.j);
-      this.jdField_c_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_d_of_type_Float * this.j);
-      this.jdField_c_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_d_of_type_Float * this.j);
-      this.jdField_c_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_d_of_type_Float * this.j);
-      this.jdField_c_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_d_of_type_Float * this.j);
-      this.jdField_d_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_e_of_type_Float * this.j);
-      this.jdField_d_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_e_of_type_Float * this.j);
-      this.jdField_d_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_e_of_type_Float * this.j);
-      this.jdField_d_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_e_of_type_Float * this.j);
-      this.jdField_e_of_type_AndroidGraphicsRectF.left = (this.jdField_a_of_type_Int - this.jdField_f_of_type_Float * this.j - this.jdField_g_of_type_Int % 10);
-      this.jdField_e_of_type_AndroidGraphicsRectF.top = (this.jdField_b_of_type_Int - this.jdField_f_of_type_Float * this.j - this.jdField_g_of_type_Int % 10);
-      this.jdField_e_of_type_AndroidGraphicsRectF.right = (this.jdField_a_of_type_Int + this.jdField_f_of_type_Float * this.j + this.jdField_g_of_type_Int % 10);
-      this.jdField_e_of_type_AndroidGraphicsRectF.bottom = (this.jdField_b_of_type_Int + this.jdField_f_of_type_Float * this.j + this.jdField_g_of_type_Int % 10);
-      this.jdField_d_of_type_Int += 10;
-      this.jdField_e_of_type_Int += 10;
-      this.jdField_f_of_type_Int += 10;
-      paramCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_d_of_type_Int + 270, 90.0F, false, this.jdField_b_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_e_of_type_Int + 270, 270.0F, false, this.jdField_d_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawArc(this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_f_of_type_Int + 90, 90.0F, false, this.jdField_e_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawArc(this.jdField_e_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, false, this.jdField_c_of_type_AndroidGraphicsPaint);
-      paramCanvas.drawArc(this.jdField_d_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, false, this.jdField_c_of_type_AndroidGraphicsPaint);
-      if (this.jdField_a_of_type_Boolean)
-      {
-        paramCanvas.drawCircle(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float * this.j, this.jdField_a_of_type_AndroidGraphicsPaint);
-        if (this.jdField_c_of_type_Int > 99) {
-          this.jdField_c_of_type_Int = 99;
-        }
-        String str = this.jdField_c_of_type_Int + "%";
-        this.jdField_h_of_type_Float = this.jdField_f_of_type_AndroidGraphicsPaint.measureText(str, 0, str.length());
-        if (this.jdField_c_of_type_Int != 0) {
-          paramCanvas.drawText(str, this.jdField_a_of_type_Int - this.jdField_h_of_type_Float / 2.0F, this.jdField_b_of_type_Int + this.i / 4.0F, this.jdField_f_of_type_AndroidGraphicsPaint);
-        }
-      }
-      float f2 = this.jdField_b_of_type_Int + this.i / 4.0F + 165.0F * this.j;
-      float f1 = f2;
-      if (f2 < this.jdField_b_of_type_Int + this.jdField_f_of_type_Float * this.j + this.jdField_h_of_type_Int / 2) {
-        f1 = this.jdField_b_of_type_Int + this.jdField_f_of_type_Float * this.j + this.jdField_h_of_type_Int / 2;
-      }
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int - this.jdField_g_of_type_AndroidGraphicsPaint.measureText(this.jdField_a_of_type_JavaLangString, 0, this.jdField_a_of_type_JavaLangString.length()) / 2.0F, f1, this.jdField_g_of_type_AndroidGraphicsPaint);
-      postInvalidateDelayed(15L);
-      return;
+    if (this.jdField_b_of_type_Boolean) {
+      this.jdField_g_of_type_Int += 1;
+    } else {
+      this.jdField_g_of_type_Int -= 1;
     }
+    int k = this.jdField_g_of_type_Int;
+    this.jdField_a_of_type_Int = (getWidth() / 2);
+    this.jdField_b_of_type_Int = (getHeight() / 2);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    k = this.jdField_a_of_type_Int;
+    float f2 = k;
+    float f3 = this.jdField_b_of_type_Float;
+    float f1 = this.j;
+    ((RectF)localObject).left = (f2 - f3 * f1);
+    int m = this.jdField_b_of_type_Int;
+    ((RectF)localObject).top = (m - f3 * f1);
+    ((RectF)localObject).right = (k + f3 * f1);
+    ((RectF)localObject).bottom = (m + f3 * f1);
+    RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    f2 = k;
+    f3 = this.jdField_c_of_type_Float;
+    localRectF.left = (f2 - f3 * f1);
+    localRectF.top = (m - f3 * f1);
+    localRectF.right = (k + f3 * f1);
+    localRectF.bottom = (m + f3 * f1);
+    localRectF = this.jdField_c_of_type_AndroidGraphicsRectF;
+    f2 = k;
+    f3 = this.jdField_d_of_type_Float;
+    localRectF.left = (f2 - f3 * f1);
+    localRectF.top = (m - f3 * f1);
+    localRectF.right = (k + f3 * f1);
+    localRectF.bottom = (m + f3 * f1);
+    localRectF = this.jdField_d_of_type_AndroidGraphicsRectF;
+    f2 = k;
+    f3 = this.jdField_e_of_type_Float;
+    localRectF.left = (f2 - f3 * f1);
+    localRectF.top = (m - f3 * f1);
+    localRectF.right = (k + f3 * f1);
+    localRectF.bottom = (m + f3 * f1);
+    localRectF = this.jdField_e_of_type_AndroidGraphicsRectF;
+    f2 = k;
+    f3 = this.jdField_f_of_type_Float;
+    int n = this.jdField_g_of_type_Int;
+    localRectF.left = (f2 - f3 * f1 - n % 10);
+    localRectF.top = (m - f3 * f1 - n % 10);
+    localRectF.right = (k + f3 * f1 + n % 10);
+    localRectF.bottom = (m + f3 * f1 + n % 10);
+    this.jdField_d_of_type_Int += 10;
+    this.jdField_e_of_type_Int += 10;
+    this.jdField_f_of_type_Int += 10;
+    paramCanvas.drawArc((RectF)localObject, this.jdField_d_of_type_Int + 270, 90.0F, false, this.jdField_b_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_e_of_type_Int + 270, 270.0F, false, this.jdField_d_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawArc(this.jdField_c_of_type_AndroidGraphicsRectF, this.jdField_f_of_type_Int + 90, 90.0F, false, this.jdField_e_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawArc(this.jdField_e_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, false, this.jdField_c_of_type_AndroidGraphicsPaint);
+    paramCanvas.drawArc(this.jdField_d_of_type_AndroidGraphicsRectF, 0.0F, 360.0F, false, this.jdField_c_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramCanvas.drawCircle(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float * this.j, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (this.jdField_c_of_type_Int > 99) {
+        this.jdField_c_of_type_Int = 99;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+      ((StringBuilder)localObject).append("%");
+      localObject = ((StringBuilder)localObject).toString();
+      this.jdField_h_of_type_Float = this.jdField_f_of_type_AndroidGraphicsPaint.measureText((String)localObject, 0, ((String)localObject).length());
+      if (this.jdField_c_of_type_Int != 0) {
+        paramCanvas.drawText((String)localObject, this.jdField_a_of_type_Int - this.jdField_h_of_type_Float / 2.0F, this.jdField_b_of_type_Int + this.i / 4.0F, this.jdField_f_of_type_AndroidGraphicsPaint);
+      }
+    }
+    k = this.jdField_b_of_type_Int;
+    f1 = k;
+    f2 = this.i / 4.0F;
+    f3 = this.j;
+    f2 = f1 + f2 + 165.0F * f3;
+    float f4 = k;
+    float f5 = this.jdField_f_of_type_Float;
+    m = this.jdField_h_of_type_Int;
+    f1 = f2;
+    if (f2 < f4 + f5 * f3 + m / 2) {
+      f1 = k + f5 * f3 + m / 2;
+    }
+    localObject = this.jdField_a_of_type_JavaLangString;
+    paramCanvas.drawText((String)localObject, this.jdField_a_of_type_Int - this.jdField_g_of_type_AndroidGraphicsPaint.measureText((String)localObject, 0, ((String)localObject).length()) / 2.0F, f1, this.jdField_g_of_type_AndroidGraphicsPaint);
+    postInvalidateDelayed(15L);
   }
   
   public void setFistAgree()
   {
     Random localRandom = new Random();
-    int k = this.jdField_c_of_type_Int;
-    this.jdField_c_of_type_Int = (localRandom.nextInt(20) + k);
+    this.jdField_c_of_type_Int += localRandom.nextInt(20);
   }
   
   public void setScale(int paramInt)
@@ -196,7 +227,7 @@ public class ScanSuccessView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ScanSuccessView
  * JD-Core Version:    0.7.0.1
  */

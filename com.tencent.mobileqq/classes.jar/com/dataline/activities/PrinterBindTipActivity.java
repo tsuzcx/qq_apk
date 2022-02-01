@@ -32,14 +32,14 @@ public class PrinterBindTipActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.getWindow().setBackgroundDrawableResource(2131165443);
-    super.setContentView(2131559697);
-    super.setTitle(HardCodeUtil.a(2131708406));
-    super.setLeftViewName(2131691652);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363663));
+    super.getWindow().setBackgroundDrawableResource(2131165419);
+    super.setContentView(2131559573);
+    super.setTitle(HardCodeUtil.a(2131708412));
+    super.setLeftViewName(2131691574);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)super.findViewById(2131363591));
     this.jdField_a_of_type_AndroidWidgetButton.setOnClickListener(this);
     paramBundle = super.getIntent();
     this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("printer_bind_url");
@@ -72,7 +72,7 @@ public class PrinterBindTipActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.PrinterBindTipActivity
  * JD-Core Version:    0.7.0.1
  */

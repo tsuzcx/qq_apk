@@ -3,55 +3,64 @@ package com.tencent.mobileqq.qwallet.preload.impl;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.MobileQQ;
 
 public class ResDownRecordUtil
 {
   public static int a(String paramString, int paramInt1, int paramInt2)
   {
     SharedPreferences localSharedPreferences = a(paramInt2);
-    paramInt2 = paramInt1;
-    if (localSharedPreferences != null)
+    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString)))
     {
-      paramInt2 = paramInt1;
-      if (!TextUtils.isEmpty(paramString)) {
-        paramInt2 = localSharedPreferences.getInt("url_down_scene" + paramString, paramInt1);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_down_scene");
+      localStringBuilder.append(paramString);
+      return localSharedPreferences.getInt(localStringBuilder.toString(), paramInt1);
     }
-    return paramInt2;
+    return paramInt1;
   }
   
   private static SharedPreferences a(int paramInt)
   {
-    if (BaseApplicationImpl.getApplication() != null)
+    if (MobileQQ.sMobileQQ != null)
     {
       if (paramInt == 1) {
-        return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_utilinner", 4);
+        return MobileQQ.sMobileQQ.getSharedPreferences("qwallet_res_down_record_utilinner", 4);
       }
-      return BaseApplicationImpl.getApplication().getSharedPreferences("qwallet_res_down_record_util", 4);
+      return MobileQQ.sMobileQQ.getSharedPreferences("qwallet_res_down_record_util", 4);
     }
     return null;
   }
   
   public static void a(String paramString, int paramInt)
   {
-    SharedPreferences localSharedPreferences = a(paramInt);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().remove("url_down_scene" + paramString).apply();
+    Object localObject = a(paramInt);
+    if ((localObject != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_down_scene");
+      localStringBuilder.append(paramString);
+      ((SharedPreferences.Editor)localObject).remove(localStringBuilder.toString()).apply();
     }
   }
   
   public static void a(String paramString, int paramInt1, int paramInt2)
   {
-    SharedPreferences localSharedPreferences = a(paramInt2);
-    if ((localSharedPreferences != null) && (!TextUtils.isEmpty(paramString))) {
-      localSharedPreferences.edit().putInt("url_down_scene" + paramString, paramInt1).apply();
+    Object localObject = a(paramInt2);
+    if ((localObject != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url_down_scene");
+      localStringBuilder.append(paramString);
+      ((SharedPreferences.Editor)localObject).putInt(localStringBuilder.toString(), paramInt1).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.ResDownRecordUtil
  * JD-Core Version:    0.7.0.1
  */

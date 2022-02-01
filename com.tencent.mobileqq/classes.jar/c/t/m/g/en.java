@@ -28,19 +28,22 @@ final class en
   
   private void a(et paramet)
   {
-    if ((!this.a) || (paramet == null) || (this.c == null)) {
-      return;
-    }
-    try
+    if ((this.a) && (paramet != null))
     {
-      if (this.d != null) {
-        paramet.a(this.d.a());
+      if (this.c == null) {
+        return;
       }
-      this.d = paramet;
-      this.c.b(paramet);
-      return;
+      try
+      {
+        if (this.d != null) {
+          paramet.a(this.d.a());
+        }
+        this.d = paramet;
+        this.c.b(paramet);
+        return;
+      }
+      finally {}
     }
-    finally {}
   }
   
   public final void a()
@@ -75,7 +78,7 @@ final class en
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.en
  * JD-Core Version:    0.7.0.1
  */

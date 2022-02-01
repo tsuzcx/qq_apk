@@ -16,18 +16,15 @@ class H5MagicPlayerActivity$1
     H5MagicPlayerActivity.a(this.a);
     if ((this.a.d.equals(this.a.c)) && (this.a.a != null)) {
       ReportController.b(null, "CliOper", "", "", "MbFasong", "MbGuanbi", 0, 0, this.a.a.epId, "", "", "");
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       ReportController.b(null, "CliOper", "", "", "MbJieshou", "MbZhudongGuanbi", 0, 0, this.a.a.epId, "", "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.H5MagicPlayerActivity.1
  * JD-Core Version:    0.7.0.1
  */

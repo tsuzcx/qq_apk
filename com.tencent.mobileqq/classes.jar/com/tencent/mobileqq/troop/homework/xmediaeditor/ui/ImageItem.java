@@ -15,14 +15,14 @@ import android.widget.ImageView;
 import com.tencent.biz.qqstory.storyHome.discover.RoundCornerImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.ITroopHWApi;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo;
-import com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler;
-import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -64,19 +64,19 @@ public class ImageItem
       paramInt1 = paramView.getPaddingLeft() + paramView.getPaddingRight() + paramInt1;
       paramInt2 = paramView.getPaddingTop() + paramView.getPaddingBottom() + paramInt2;
       ViewGroup.LayoutParams localLayoutParams = paramView.getLayoutParams();
-      if (localLayoutParams == null) {
-        break label77;
-      }
-      if ((localLayoutParams.width != paramInt1) || (localLayoutParams.height != paramInt2))
+      if (localLayoutParams != null)
       {
-        localLayoutParams.width = paramInt1;
-        localLayoutParams.height = paramInt2;
-        paramView.setLayoutParams(localLayoutParams);
+        if ((localLayoutParams.width != paramInt1) || (localLayoutParams.height != paramInt2))
+        {
+          localLayoutParams.width = paramInt1;
+          localLayoutParams.height = paramInt2;
+          paramView.setLayoutParams(localLayoutParams);
+        }
+      }
+      else {
+        paramView.setLayoutParams(new ViewGroup.LayoutParams(paramInt1, paramInt2));
       }
     }
-    return;
-    label77:
-    paramView.setLayoutParams(new ViewGroup.LayoutParams(paramInt1, paramInt2));
   }
   
   private void a(ImageInfo paramImageInfo, boolean paramBoolean)
@@ -98,83 +98,70 @@ public class ImageItem
   
   public static boolean a(XMediaEditor paramXMediaEditor, Intent paramIntent, boolean paramBoolean)
   {
-    if (paramIntent != null) {}
-    for (Object localObject = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS"); (localObject == null) || (((ArrayList)localObject).size() == 0); localObject = null)
-    {
-      QLog.e("ImageItem", 1, "selected list empty!");
-      return paramBoolean;
+    Object localObject;
+    if (paramIntent != null) {
+      localObject = paramIntent.getStringArrayListExtra("PhotoConst.PHOTO_PATHS");
+    } else {
+      localObject = null;
     }
-    HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
-    int i;
-    ArrayList localArrayList;
-    label116:
-    int j;
-    if (QLog.isColorLevel())
+    if ((localObject != null) && (((ArrayList)localObject).size() != 0))
     {
-      paramIntent = new StringBuilder().append("selected pic or video! size = ");
-      if (localHashMap != null)
+      HashMap localHashMap = (HashMap)paramIntent.getSerializableExtra("PeakConstants.selectedMediaInfoHashMap");
+      if (QLog.isColorLevel())
       {
-        i = localHashMap.size();
-        QLog.d("ImageItem", 2, i);
+        paramIntent = new StringBuilder();
+        paramIntent.append("selected pic or video! size = ");
+        if (localHashMap != null) {
+          i = localHashMap.size();
+        } else {
+          i = 0;
+        }
+        paramIntent.append(i);
+        QLog.d("ImageItem", 2, paramIntent.toString());
       }
-    }
-    else
-    {
-      localArrayList = new ArrayList();
+      ArrayList localArrayList = new ArrayList();
       localObject = ((ArrayList)localObject).iterator();
-      i = 0;
-      if (!((Iterator)localObject).hasNext()) {
-        break label216;
-      }
-      paramIntent = (String)((Iterator)localObject).next();
-      if (localHashMap == null) {
-        break label423;
-      }
-      if (AlbumUtil.getMediaType((LocalMediaInfo)localHashMap.get(paramIntent)) != 1) {
-        break label198;
-      }
-      j = 1;
-    }
-    for (;;)
-    {
-      label163:
-      if (j != 0)
+      int i = 0;
+      while (((Iterator)localObject).hasNext())
       {
-        paramIntent = new VideoInfo(paramIntent);
-        i += 1;
-      }
-      for (;;)
-      {
+        paramIntent = (String)((Iterator)localObject).next();
+        int j;
+        if ((localHashMap != null) && (QAlbumUtil.getMediaType((LocalMediaInfo)localHashMap.get(paramIntent)) == 1)) {
+          j = 1;
+        } else {
+          j = 0;
+        }
+        if (j != 0)
+        {
+          i += 1;
+          paramIntent = new VideoInfo(paramIntent);
+        }
+        else
+        {
+          paramIntent = new ImageInfo(paramIntent);
+        }
         localArrayList.add(paramIntent);
-        break label116;
-        i = 0;
-        break;
-        label198:
-        j = 0;
-        break label163;
-        paramIntent = new ImageInfo(paramIntent);
       }
-      label216:
       if (QLog.isColorLevel()) {
         QLog.d("ImageItem", 2, new Object[] { "video selected! size = ", Integer.valueOf(i), ". pic selected! size = ", Integer.valueOf(localArrayList.size() - i) });
       }
       paramIntent = paramXMediaEditor.getContext();
-      if (!NetworkUtil.d(paramIntent))
+      if (!NetworkUtil.isNetSupport(paramIntent))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ImageItem", 2, "no network toast from select media");
         }
-        QQToast.a(paramIntent, 2131697207, 0).a();
+        QQToast.a(paramIntent, 2131697226, 0).a();
         return paramBoolean;
       }
-      if ((i > 0) && (!NetworkUtil.h(paramIntent)))
+      if ((i > 0) && (!NetworkUtil.isWifiConnected(paramIntent)))
       {
         if (QLog.isColorLevel()) {
           QLog.d("ImageItem", 2, new Object[] { "no wifi. hasShownNetworkTip=", Boolean.valueOf(paramBoolean) });
         }
         if (!paramBoolean)
         {
-          DialogUtil.a(paramIntent, 230, paramXMediaEditor.getResources().getString(2131695677), paramXMediaEditor.getResources().getString(2131695673), 2131695411, 2131695423, new ImageItem.3(paramXMediaEditor, localArrayList), new ImageItem.4()).show();
+          DialogUtil.a(paramIntent, 230, paramXMediaEditor.getResources().getString(2131695691), paramXMediaEditor.getResources().getString(2131695687), 2131695421, 2131695433, new ImageItem.3(paramXMediaEditor, localArrayList), new ImageItem.4()).show();
           return true;
         }
       }
@@ -183,9 +170,9 @@ public class ImageItem
       }
       paramXMediaEditor.a(localArrayList);
       return paramBoolean;
-      label423:
-      j = 0;
     }
+    QLog.e("ImageItem", 1, "selected list empty!");
+    return paramBoolean;
   }
   
   public static int[] a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
@@ -193,38 +180,41 @@ public class ImageItem
     int[] arrayOfInt = new int[2];
     arrayOfInt[0] = paramInt4;
     arrayOfInt[1] = paramInt5;
-    if ((paramInt4 > 0) && (paramInt5 > 0)) {
+    if ((paramInt4 > 0) && (paramInt5 > 0))
+    {
       if (paramInt4 > paramInt3)
       {
         arrayOfInt[0] = paramInt1;
         arrayOfInt[1] = ((int)(paramInt1 * 1.0F * paramInt5 / paramInt4));
+        return arrayOfInt;
+      }
+      if (Math.min(paramInt4, paramInt5) < paramInt2)
+      {
+        if (paramInt4 <= paramInt5)
+        {
+          arrayOfInt[0] = paramInt2;
+          arrayOfInt[1] = ((int)(paramInt2 * 1.0F * paramInt5 / paramInt4));
+          return arrayOfInt;
+        }
+        arrayOfInt[0] = ((int)(paramInt2 * 1.0F * paramInt4 / paramInt5));
+        arrayOfInt[1] = paramInt2;
+        return arrayOfInt;
       }
     }
-    do
+    else
     {
-      do
-      {
-        return arrayOfInt;
-      } while (Math.min(paramInt4, paramInt5) >= paramInt2);
-      if (paramInt4 <= paramInt5)
-      {
-        arrayOfInt[0] = paramInt2;
-        arrayOfInt[1] = ((int)(paramInt2 * 1.0F * paramInt5 / paramInt4));
-        return arrayOfInt;
-      }
-      arrayOfInt[0] = ((int)(paramInt2 * 1.0F * paramInt4 / paramInt5));
-      arrayOfInt[1] = paramInt2;
-      return arrayOfInt;
       arrayOfInt[0] = paramInt1;
       arrayOfInt[1] = ((int)(paramInt1 * 9 / 16.0F));
-    } while (!QLog.isColorLevel());
-    QLog.d("ImageItem", 2, new Object[] { "calculateMaxMinImageSize doudi. maxWidth=", Integer.valueOf(arrayOfInt[0]), ", height=", Integer.valueOf(arrayOfInt[1]) });
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageItem", 2, new Object[] { "calculateMaxMinImageSize doudi. maxWidth=", Integer.valueOf(arrayOfInt[0]), ", height=", Integer.valueOf(arrayOfInt[1]) });
+      }
+    }
     return arrayOfInt;
   }
   
   public ImageItem.ImageViewHolder a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = new ImageItem.ImageViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560776, paramViewGroup, false));
+    paramViewGroup = new ImageItem.ImageViewHolder(LayoutInflater.from(paramViewGroup.getContext()).inflate(2131560662, paramViewGroup, false));
     if (QLog.isColorLevel()) {
       QLog.d("ImageItem", 2, new Object[] { "Image onCreateViewHolder. vh hash=", Integer.valueOf(paramViewGroup.hashCode()) });
     }
@@ -244,15 +234,16 @@ public class ImageItem
   
   public void a()
   {
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
+    Object localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    if ((localObject1 != null) && (!((Map)localObject1).isEmpty()))
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.jdField_a_of_type_JavaUtilMap.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject = (ImageInfo)localIterator.next();
-        localObject = (Stream)this.jdField_a_of_type_JavaUtilMap.get(localObject);
-        if (localObject != null) {
-          ((Stream)localObject).cancel();
+        Object localObject2 = (ImageInfo)((Iterator)localObject1).next();
+        localObject2 = (Stream)this.jdField_a_of_type_JavaUtilMap.get(localObject2);
+        if (localObject2 != null) {
+          ((Stream)localObject2).cancel();
         }
       }
       this.jdField_a_of_type_JavaUtilMap.clear();
@@ -265,74 +256,71 @@ public class ImageItem
     if (QLog.isColorLevel()) {
       QLog.d("ImageItem", 2, new Object[] { "scheduleStream. hasNext=", Boolean.valueOf(((Iterator)localObject).hasNext()) });
     }
-    ImageInfo localImageInfo;
     if (paramBoolean) {
-      do
+      while (((Iterator)localObject).hasNext())
       {
-        if (!((Iterator)localObject).hasNext()) {
-          break;
-        }
         localImageInfo = (ImageInfo)((Iterator)localObject).next();
-      } while (localImageInfo.g == 2);
+        if (localImageInfo.f != 2) {
+          break label113;
+        }
+      }
     }
-    for (;;)
+    while (!((Iterator)localObject).hasNext())
     {
-      if (localImageInfo != null)
+      localImageInfo = null;
+      break;
+    }
+    ImageInfo localImageInfo = (ImageInfo)((Iterator)localObject).next();
+    label113:
+    if (localImageInfo != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageItem", 2, new Object[] { "scheduleStream. next info position=", Integer.valueOf(localImageInfo.c), ", type=", Integer.valueOf(localImageInfo.b()), ", hash=", Integer.valueOf(localImageInfo.hashCode()) });
+      }
+      localObject = (Stream)this.jdField_a_of_type_JavaUtilMap.get(localImageInfo);
+      if (localObject != null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ImageItem", 2, new Object[] { "scheduleStream. next info position=", Integer.valueOf(localImageInfo.c), ", type=", Integer.valueOf(localImageInfo.b()), ", hash=", Integer.valueOf(localImageInfo.hashCode()) });
+          QLog.d("ImageItem", 2, new Object[] { "scheduleStream. fire stream. info hash=", Integer.valueOf(localImageInfo.hashCode()) });
         }
-        localObject = (Stream)this.jdField_a_of_type_JavaUtilMap.get(localImageInfo);
-        if (localObject != null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ImageItem", 2, new Object[] { "scheduleStream. fire stream. info hash=", Integer.valueOf(localImageInfo.hashCode()) });
-          }
-          this.jdField_a_of_type_JavaLangString = localImageInfo.jdField_d_of_type_JavaLangString;
-          this.jdField_a_of_type_Boolean = true;
-          localImageInfo.jdField_a_of_type_Long = System.currentTimeMillis();
-          ((Stream)localObject).subscribe(a(localImageInfo));
-        }
-        return;
-        if (((Iterator)localObject).hasNext()) {
-          localImageInfo = (ImageInfo)((Iterator)localObject).next();
-        }
+        this.jdField_a_of_type_JavaLangString = localImageInfo.jdField_d_of_type_JavaLangString;
+        this.jdField_a_of_type_Boolean = true;
+        localImageInfo.jdField_a_of_type_Long = System.currentTimeMillis();
+        ((Stream)localObject).subscribe(a(localImageInfo));
       }
-      else
-      {
-        this.jdField_a_of_type_JavaLangString = null;
-        this.jdField_a_of_type_Boolean = false;
-        return;
-      }
-      localImageInfo = null;
+    }
+    else
+    {
+      this.jdField_a_of_type_JavaLangString = null;
+      this.jdField_a_of_type_Boolean = false;
     }
   }
   
   public void a(View paramView, ImageItem.ImageViewHolder paramImageViewHolder)
   {
     ImageInfo localImageInfo = (ImageInfo)paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelEditItemInfoBase;
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i == 2131368227)
     {
-    case 2131368481: 
-    case 2131368482: 
-    default: 
-    case 2131368479: 
-    case 2131368483: 
-      do
-      {
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(paramImageViewHolder);
-        return;
-      } while (localImageInfo.g != 2);
-      paramImageViewHolder.b.setVisibility(4);
-      a(localImageInfo);
+      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a(paramImageViewHolder);
       return;
     }
-    InputMethodUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext());
-    if (QLog.isColorLevel()) {
-      QLog.d("ImageItem", 2, new Object[] { "onItemViewClick preview. info position=", Integer.valueOf(localImageInfo.c), ", path=", localImageInfo.jdField_a_of_type_JavaLangString });
+    if (i == 2131368231)
+    {
+      if (localImageInfo.f == 2)
+      {
+        paramImageViewHolder.b.setVisibility(4);
+        a(localImageInfo);
+      }
     }
-    TroopNoticeJsHandler.a((BaseActivity)paramView.getContext(), localImageInfo.a());
+    else if (i == 2131368228)
+    {
+      InputMethodUtil.a((Activity)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext());
+      if (QLog.isColorLevel()) {
+        QLog.d("ImageItem", 2, new Object[] { "onItemViewClick preview. info position=", Integer.valueOf(localImageInfo.c), ", path=", localImageInfo.jdField_a_of_type_JavaLangString });
+      }
+      ((ITroopHWApi)QRoute.api(ITroopHWApi.class)).showOnePicture((Activity)paramView.getContext(), localImageInfo.a());
+    }
   }
   
   public void a(EditItemInfoBase paramEditItemInfoBase)
@@ -363,20 +351,19 @@ public class ImageItem
   
   public void a(ImageItem.ImageViewHolder paramImageViewHolder, EditItemInfoBase paramEditItemInfoBase, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      if (!(paramEditItemInfoBase instanceof VideoInfo)) {
-        break label79;
-      }
-    }
-    ImageInfo localImageInfo;
-    label79:
-    for (Object localObject = "Video";; localObject = "Image")
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      QLog.d("ImageItem", 2, new Object[] { localObject, " onBindViewHolder. vh hash=", Integer.valueOf(paramImageViewHolder.hashCode()) });
-      localImageInfo = (ImageInfo)paramEditItemInfoBase;
-      if (localImageInfo.jdField_d_of_type_Int > 0) {
-        break;
+      if ((paramEditItemInfoBase instanceof VideoInfo)) {
+        localObject = "Video";
+      } else {
+        localObject = "Image";
       }
+      QLog.d("ImageItem", 2, new Object[] { localObject, " onBindViewHolder. vh hash=", Integer.valueOf(paramImageViewHolder.hashCode()) });
+    }
+    ImageInfo localImageInfo = (ImageInfo)paramEditItemInfoBase;
+    if (localImageInfo.jdField_d_of_type_Int <= 0)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("ImageItem", 2, "onBindViewHolder maxWidth fail. return");
       }
@@ -384,84 +371,86 @@ public class ImageItem
     }
     paramImageViewHolder.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setTag(localImageInfo.jdField_d_of_type_JavaLangString);
     int i;
-    String str;
-    int j;
     if (QLog.isColorLevel())
     {
       i = localImageInfo.hashCode();
-      str = localImageInfo.jdField_d_of_type_JavaLangString;
-      j = localImageInfo.c;
-      if (localImageInfo.jdField_a_of_type_JavaNetURL != null) {
-        break label499;
-      }
-      paramEditItemInfoBase = "null";
-      label138:
-      if (paramImageViewHolder.jdField_a_of_type_ComTencentImageURLDrawable != null) {
-        break label508;
-      }
-    }
-    label499:
-    label508:
-    for (localObject = "null";; localObject = paramImageViewHolder.jdField_a_of_type_ComTencentImageURLDrawable.getURL())
-    {
-      QLog.d("ImageItem", 2, new Object[] { "onBindViewHolder. VHHash=", paramImageViewHolder, ", infoHash=", Integer.valueOf(i), ", progressKey=", str, ", infoPosition=", Integer.valueOf(j), ", info URL=", paramEditItemInfoBase, ", vh URL=", localObject, ", showType=", Integer.valueOf(paramInt) });
-      paramEditItemInfoBase = a(localImageInfo.jdField_d_of_type_Int, 200, 300, localImageInfo.jdField_a_of_type_Int, localImageInfo.b);
-      if (QLog.isColorLevel()) {
-        QLog.d("ImageItem", 2, new Object[] { "onBindViewHolder calculateMaxWidth. infoMaxWidth=", Integer.valueOf(localImageInfo.jdField_d_of_type_Int), ", infoWidth=", Integer.valueOf(localImageInfo.jdField_a_of_type_Int), ", infoHeight=", Integer.valueOf(localImageInfo.b), ", dstWidth=", Integer.valueOf(paramEditItemInfoBase[0]), ", dstHeight=", Integer.valueOf(paramEditItemInfoBase[1]) });
-      }
-      a(paramImageViewHolder.jdField_a_of_type_AndroidViewView, paramEditItemInfoBase[0], paramEditItemInfoBase[1]);
-      a(paramImageViewHolder, localImageInfo, paramInt);
-      if ((localImageInfo.jdField_a_of_type_JavaNetURL == null) || (localImageInfo.g == -2147483645)) {
-        break label520;
-      }
-      localObject = paramImageViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getDrawable();
-      if (((localObject instanceof URLDrawable)) && (localImageInfo.jdField_a_of_type_JavaNetURL.equals(((URLDrawable)localObject).getURL()))) {
-        break;
-      }
-      paramEditItemInfoBase = URLDrawable.getDrawable(localImageInfo.jdField_a_of_type_JavaNetURL, paramEditItemInfoBase[0], paramEditItemInfoBase[1], this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
-      paramImageViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramEditItemInfoBase);
-      if (paramEditItemInfoBase.getStatus() != 2) {
-        break;
-      }
-      paramEditItemInfoBase.restartDownload();
-      return;
+      String str = localImageInfo.jdField_d_of_type_JavaLangString;
+      int j = localImageInfo.c;
       paramEditItemInfoBase = localImageInfo.jdField_a_of_type_JavaNetURL;
-      break label138;
+      localObject = "null";
+      if (paramEditItemInfoBase == null) {
+        paramEditItemInfoBase = "null";
+      } else {
+        paramEditItemInfoBase = localImageInfo.jdField_a_of_type_JavaNetURL;
+      }
+      if (paramImageViewHolder.jdField_a_of_type_ComTencentImageURLDrawable != null) {
+        localObject = paramImageViewHolder.jdField_a_of_type_ComTencentImageURLDrawable.getURL();
+      }
+      QLog.d("ImageItem", 2, new Object[] { "onBindViewHolder. VHHash=", paramImageViewHolder, ", infoHash=", Integer.valueOf(i), ", progressKey=", str, ", infoPosition=", Integer.valueOf(j), ", info URL=", paramEditItemInfoBase, ", vh URL=", localObject, ", showType=", Integer.valueOf(paramInt) });
     }
-    label520:
-    paramImageViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
+    paramEditItemInfoBase = a(localImageInfo.jdField_d_of_type_Int, 200, 300, localImageInfo.jdField_a_of_type_Int, localImageInfo.b);
+    if (QLog.isColorLevel()) {
+      QLog.d("ImageItem", 2, new Object[] { "onBindViewHolder calculateMaxWidth. infoMaxWidth=", Integer.valueOf(localImageInfo.jdField_d_of_type_Int), ", infoWidth=", Integer.valueOf(localImageInfo.jdField_a_of_type_Int), ", infoHeight=", Integer.valueOf(localImageInfo.b), ", dstWidth=", Integer.valueOf(paramEditItemInfoBase[0]), ", dstHeight=", Integer.valueOf(paramEditItemInfoBase[1]) });
+    }
+    a(paramImageViewHolder.jdField_a_of_type_AndroidViewView, paramEditItemInfoBase[0], paramEditItemInfoBase[1]);
+    a(paramImageViewHolder, localImageInfo, paramInt);
+    if ((localImageInfo.jdField_a_of_type_JavaNetURL != null) && (localImageInfo.f != -2147483645))
+    {
+      localObject = paramImageViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getDrawable();
+      if ((!(localObject instanceof URLDrawable)) || (!localImageInfo.jdField_a_of_type_JavaNetURL.equals(((URLDrawable)localObject).getURL())))
+      {
+        localObject = localImageInfo.jdField_a_of_type_JavaNetURL;
+        paramInt = paramEditItemInfoBase[0];
+        i = paramEditItemInfoBase[1];
+        paramEditItemInfoBase = this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable;
+        paramEditItemInfoBase = URLDrawable.getDrawable((URL)localObject, paramInt, i, paramEditItemInfoBase, paramEditItemInfoBase);
+        paramImageViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(paramEditItemInfoBase);
+        if (paramEditItemInfoBase.getStatus() == 2) {
+          paramEditItemInfoBase.restartDownload();
+        }
+      }
+    }
+    else
+    {
+      paramImageViewHolder.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableColorDrawable);
+    }
   }
   
   protected <VH extends ImageItem.ImageViewHolder, INFO extends ImageInfo> void a(VH paramVH, INFO paramINFO, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
       paramVH.jdField_a_of_type_AndroidWidgetImageView.setVisibility(4);
       paramVH.b.setVisibility(4);
       paramVH.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
-    }
-    do
-    {
       return;
-      paramVH.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      switch (paramINFO.g)
+    }
+    paramVH.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    paramInt = paramINFO.f;
+    if (paramInt != 1)
+    {
+      if (paramInt != 2)
       {
-      default: 
-        return;
-      case 1: 
-        paramVH.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
-        paramVH.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
-        paramVH.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramINFO.e, paramINFO.jdField_d_of_type_JavaLangString);
-        paramVH.b.setVisibility(4);
-        return;
-      case 2: 
+        if (paramInt != 3) {
+          return;
+        }
+        if (paramINFO.e == 100) {
+          paramVH.a();
+        }
+      }
+      else
+      {
         paramVH.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(4);
         paramVH.b.setVisibility(0);
-        return;
       }
-    } while (paramINFO.e != 100);
-    paramVH.a();
+    }
+    else
+    {
+      paramVH.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setVisibility(0);
+      paramVH.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setDrawStatus(1);
+      paramVH.jdField_a_of_type_ComTencentMobileqqWidgetMessageProgressView.setAnimProgress(paramINFO.e, paramINFO.jdField_d_of_type_JavaLangString);
+      paramVH.b.setVisibility(4);
+    }
   }
   
   public void b(EditItemInfoBase paramEditItemInfoBase)
@@ -484,11 +473,12 @@ public class ImageItem
   public void d(EditItemInfoBase paramEditItemInfoBase)
   {
     paramEditItemInfoBase = (ImageInfo)paramEditItemInfoBase;
-    if ((this.jdField_a_of_type_JavaUtilMap != null) && (!this.jdField_a_of_type_JavaUtilMap.isEmpty()))
+    Object localObject = this.jdField_a_of_type_JavaUtilMap;
+    if ((localObject != null) && (!((Map)localObject).isEmpty()))
     {
-      Stream localStream = (Stream)this.jdField_a_of_type_JavaUtilMap.get(paramEditItemInfoBase);
-      if (localStream != null) {
-        localStream.cancel();
+      localObject = (Stream)this.jdField_a_of_type_JavaUtilMap.get(paramEditItemInfoBase);
+      if (localObject != null) {
+        ((Stream)localObject).cancel();
       }
     }
     if (paramEditItemInfoBase.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
@@ -501,7 +491,7 @@ public class ImageItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.ImageItem
  * JD-Core Version:    0.7.0.1
  */

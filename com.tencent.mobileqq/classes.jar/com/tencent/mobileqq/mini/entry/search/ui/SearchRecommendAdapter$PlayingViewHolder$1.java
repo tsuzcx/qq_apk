@@ -20,34 +20,41 @@ class SearchRecommendAdapter$PlayingViewHolder$1
   
   public void onClick(View paramView)
   {
-    try
+    for (;;)
     {
-      ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
-      paramView = this.val$activity;
-      MiniAppInfo localMiniAppInfo = this.val$miniAppInfo;
-      if (this.val$searchInfo.getType() == 4) {}
-      for (int i = 3029;; i = 3024)
+      try
       {
-        MiniAppController.launchMiniAppByAppInfo(paramView, localMiniAppInfo, i);
-        paramView = new MiniAppConfig(this.val$miniAppInfo);
-        paramView.launchParam.scene = 3024;
-        if (this.val$searchInfo.getType() == 4) {
-          paramView.launchParam.scene = 3029;
+        ((InputMethodManager)paramView.getContext().getSystemService("input_method")).hideSoftInputFromWindow(paramView.getWindowToken(), 0);
+        paramView = this.val$activity;
+        localObject = this.val$miniAppInfo;
+        if (this.val$searchInfo.getType() == 4)
+        {
+          i = 3029;
+          MiniAppController.launchMiniAppByAppInfo(paramView, (MiniAppInfo)localObject, i);
+          paramView = new MiniAppConfig(this.val$miniAppInfo);
+          paramView.launchParam.scene = 3024;
+          if (this.val$searchInfo.getType() == 4) {
+            paramView.launchParam.scene = 3029;
+          }
+          MiniProgramLpReportDC04239.reportAsync(paramView, "desktop", "search", "click", this.val$miniAppInfo.name);
+          return;
         }
-        MiniProgramLpReportDC04239.reportAsync(paramView, "desktop", "search", "click", this.val$miniAppInfo.name);
+      }
+      catch (Exception paramView)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("HotSearchAdapter, start miniApp exception: ");
+        ((StringBuilder)localObject).append(Log.getStackTraceString(paramView));
+        QLog.e("SearchRecommendAdapter", 1, ((StringBuilder)localObject).toString());
         return;
       }
-      return;
-    }
-    catch (Exception paramView)
-    {
-      QLog.e("SearchRecommendAdapter", 1, "HotSearchAdapter, start miniApp exception: " + Log.getStackTraceString(paramView));
+      int i = 3024;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchRecommendAdapter.PlayingViewHolder.1
  * JD-Core Version:    0.7.0.1
  */

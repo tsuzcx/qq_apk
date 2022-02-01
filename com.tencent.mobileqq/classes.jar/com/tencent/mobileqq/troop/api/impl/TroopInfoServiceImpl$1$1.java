@@ -15,23 +15,28 @@ class TroopInfoServiceImpl$1$1
   
   public void run()
   {
-    Object localObject = (List)TroopInfoServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopApiImplTroopInfoServiceImpl$1.this$0).remove(this.jdField_a_of_type_ComTencentMobileqqTroopApiImplTroopInfoServiceImpl$1.a);
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopManager", 2, "asyncGetTroopInfo, size=" + ((List)localObject).size());
-    }
-    localObject = ((List)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    Object localObject1 = (List)TroopInfoServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqTroopApiImplTroopInfoServiceImpl$1.this$0).remove(this.jdField_a_of_type_ComTencentMobileqqTroopApiImplTroopInfoServiceImpl$1.a);
+    Object localObject2;
+    if (QLog.isColorLevel())
     {
-      ITroopInfoCallback localITroopInfoCallback = (ITroopInfoCallback)((WeakReference)((Iterator)localObject).next()).get();
-      if (localITroopInfoCallback != null) {
-        localITroopInfoCallback.a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("asyncGetTroopInfo, size=");
+      ((StringBuilder)localObject2).append(((List)localObject1).size());
+      QLog.i("TroopManager", 2, ((StringBuilder)localObject2).toString());
+    }
+    localObject1 = ((List)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      localObject2 = (ITroopInfoCallback)((WeakReference)((Iterator)localObject1).next()).get();
+      if (localObject2 != null) {
+        ((ITroopInfoCallback)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.impl.TroopInfoServiceImpl.1.1
  * JD-Core Version:    0.7.0.1
  */

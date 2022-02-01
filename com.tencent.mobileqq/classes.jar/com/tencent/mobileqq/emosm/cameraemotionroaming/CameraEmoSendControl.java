@@ -1,35 +1,35 @@
 package com.tencent.mobileqq.emosm.cameraemotionroaming;
 
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.CameraEmoRoamingHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.CameraEmotionData;
+import com.tencent.mobileqq.emosm.api.ICameraEmotionRoamingDBManagerService;
+import com.tencent.mobileqq.emosm.control.EmoCaptureAsyncControl;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.capture.CaptureContext;
-import dov.com.qq.im.capture.control.CaptureAsyncControl;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class CameraEmoSendControl
+  implements ICameraEmoSendControl
 {
   private static int jdField_a_of_type_Int = -1;
   private static CameraEmoSendControl jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSendControl;
   private static Object jdField_a_of_type_JavaLangObject = new Object();
-  public CaptureAsyncControl a;
+  public EmoCaptureAsyncControl a;
   
   public CameraEmoSendControl()
   {
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncControl = new CaptureAsyncControl();
+    this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoCaptureAsyncControl = new EmoCaptureAsyncControl();
   }
   
   private int a()
   {
-    Object localObject = (CameraEmotionRoamingDBManager)a().getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER);
+    Object localObject = (ICameraEmotionRoamingDBManagerService)a().getRuntimeService(ICameraEmotionRoamingDBManagerService.class);
     if (jdField_a_of_type_Int == -1)
     {
       jdField_a_of_type_Int = 1;
-      localObject = ((CameraEmotionRoamingDBManager)localObject).a();
+      localObject = ((ICameraEmotionRoamingDBManagerService)localObject).getEmoticonDataList();
       if (localObject != null)
       {
         i = 0;
@@ -73,19 +73,20 @@ public class CameraEmoSendControl
   
   public static CameraEmoSendControl a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSendControl == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSendControl == null) {
-        jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSendControl = new CameraEmoSendControl();
+    if (jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSendControl == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSendControl == null) {
+          jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSendControl = new CameraEmoSendControl();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSendControl;
     }
+    return jdField_a_of_type_ComTencentMobileqqEmosmCameraemotionroamingCameraEmoSendControl;
   }
   
-  public QQAppInterface a()
+  public BaseQQAppInterface a()
   {
-    return (QQAppInterface)CaptureContext.a();
+    return (BaseQQAppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null);
   }
   
   public void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3)
@@ -96,15 +97,15 @@ public class CameraEmoSendControl
       QLog.d("CameraEmoSendControl", 1, "app null");
       return;
     }
-    CameraEmotionRoamingDBManager localCameraEmotionRoamingDBManager = (CameraEmotionRoamingDBManager)((QQAppInterface)localObject).getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER);
-    localObject = (CameraEmoRoamingHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER);
+    ICameraEmotionRoamingDBManagerService localICameraEmotionRoamingDBManagerService = (ICameraEmotionRoamingDBManagerService)((BaseQQAppInterface)localObject).getRuntimeService(ICameraEmotionRoamingDBManagerService.class);
+    localObject = (CameraEmoRoamingHandler)((BaseQQAppInterface)localObject).getBusinessHandler(CameraEmoRoamingHandler.a);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramArrayList1.size())
     {
       CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i));
       localCameraEmotionData.emoId = a();
-      localCameraEmotionRoamingDBManager.c(localCameraEmotionData);
+      localICameraEmotionRoamingDBManagerService.insertCustomEmotion(localCameraEmotionData);
       localArrayList.add(localCameraEmotionData);
       i += 1;
     }
@@ -112,21 +113,21 @@ public class CameraEmoSendControl
     if (QLog.isColorLevel()) {
       QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
     }
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncControl.a(String.valueOf(1011), new Object[] { localArrayList });
+    this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoCaptureAsyncControl.a(String.valueOf(1000), new Object[] { localArrayList });
   }
   
   public void a(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2, ArrayList<String> paramArrayList3, ArrayList<String> paramArrayList4)
   {
     Object localObject = a();
-    CameraEmotionRoamingDBManager localCameraEmotionRoamingDBManager = (CameraEmotionRoamingDBManager)((QQAppInterface)localObject).getManager(QQManagerFactory.CAMERA_EMOTION_DB_MANAGER);
-    localObject = (CameraEmoRoamingHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER);
+    ICameraEmotionRoamingDBManagerService localICameraEmotionRoamingDBManagerService = (ICameraEmotionRoamingDBManagerService)((BaseQQAppInterface)localObject).getRuntimeService(ICameraEmotionRoamingDBManagerService.class);
+    localObject = (CameraEmoRoamingHandler)((BaseQQAppInterface)localObject).getBusinessHandler(CameraEmoRoamingHandler.a);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
     while (i < paramArrayList1.size())
     {
       CameraEmotionData localCameraEmotionData = a((String)paramArrayList1.get(i), (String)paramArrayList2.get(i), (String)paramArrayList3.get(i), (String)paramArrayList4.get(i));
       localCameraEmotionData.emoId = a();
-      localCameraEmotionRoamingDBManager.c(localCameraEmotionData);
+      localICameraEmotionRoamingDBManagerService.insertCustomEmotion(localCameraEmotionData);
       localArrayList.add(localCameraEmotionData);
       i += 1;
     }
@@ -134,12 +135,12 @@ public class CameraEmoSendControl
     if (QLog.isColorLevel()) {
       QLog.d("CameraEmoSendControl", 2, "doStep, insert completed");
     }
-    this.jdField_a_of_type_DovComQqImCaptureControlCaptureAsyncControl.a(String.valueOf(1011), new Object[] { localArrayList });
+    this.jdField_a_of_type_ComTencentMobileqqEmosmControlEmoCaptureAsyncControl.a(String.valueOf(1000), new Object[] { localArrayList });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.cameraemotionroaming.CameraEmoSendControl
  * JD-Core Version:    0.7.0.1
  */

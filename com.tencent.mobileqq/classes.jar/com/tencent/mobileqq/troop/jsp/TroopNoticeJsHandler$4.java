@@ -9,14 +9,22 @@ class TroopNoticeJsHandler$4
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkWebView != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkWebView.loadUrl("javascript: " + this.jdField_a_of_type_JavaLangString + "(" + this.b + ")");
+    WebView localWebView = this.jdField_a_of_type_ComTencentSmttSdkWebView;
+    if (localWebView != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript: ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("(");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(")");
+      localWebView.loadUrl(localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.jsp.TroopNoticeJsHandler.4
  * JD-Core Version:    0.7.0.1
  */

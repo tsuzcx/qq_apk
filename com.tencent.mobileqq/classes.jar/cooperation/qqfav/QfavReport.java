@@ -21,10 +21,21 @@ public final class QfavReport
   
   public static void a(AppRuntime paramAppRuntime, int paramInt1, int paramInt2, int paramInt3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfavReport", 2, "subAction= 0X800AA51, actionName = 0X800AA51, fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 = " + paramInt3);
+    if (QLog.isColorLevel())
+    {
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("subAction= 0X800AA51, actionName = 0X800AA51, fromType = ");
+      paramAppRuntime.append(paramInt1);
+      paramAppRuntime.append(", actionResult = ");
+      paramAppRuntime.append(paramInt2);
+      paramAppRuntime.append(", ext2 = ");
+      paramAppRuntime.append(paramInt3);
+      QLog.i("qqfavReport", 2, paramAppRuntime.toString());
     }
-    ReportController.b(null, "dc00898", "", "", "0X800AA51", "0X800AA51", paramInt1, paramInt2, "" + paramInt3, "", "", "");
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("");
+    paramAppRuntime.append(paramInt3);
+    ReportController.b(null, "dc00898", "", "", "0X800AA51", "0X800AA51", paramInt1, paramInt2, paramAppRuntime.toString(), "", "", "");
   }
   
   public static void a(AppRuntime paramAppRuntime, String paramString, int paramInt1, int paramInt2, int paramInt3)
@@ -34,68 +45,86 @@ public final class QfavReport
   
   public static void a(AppRuntime paramAppRuntime, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2, String paramString3)
   {
-    QQAppInterface localQQAppInterface = null;
     if ((paramAppRuntime instanceof QQAppInterface)) {
-      localQQAppInterface = (QQAppInterface)paramAppRuntime;
+      paramAppRuntime = (QQAppInterface)paramAppRuntime;
+    } else {
+      paramAppRuntime = null;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("qqfavReport", 2, "actionName = " + paramString1 + ", fromType = " + paramInt1 + ", actionResult = " + paramInt2 + ", ext2 =" + paramInt3 + ", ext3 =" + paramInt4 + ", ext4 =" + paramString2 + ", ext5 =" + paramString3);
-    }
-    String str1 = "" + paramInt3;
-    String str2 = "" + paramInt4;
-    if (paramString2 == null)
+    if (QLog.isColorLevel())
     {
-      paramAppRuntime = "";
-      if (paramString3 != null) {
-        break label196;
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("actionName = ");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(", fromType = ");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(", actionResult = ");
+      ((StringBuilder)localObject1).append(paramInt2);
+      ((StringBuilder)localObject1).append(", ext2 =");
+      ((StringBuilder)localObject1).append(paramInt3);
+      ((StringBuilder)localObject1).append(", ext3 =");
+      ((StringBuilder)localObject1).append(paramInt4);
+      ((StringBuilder)localObject1).append(", ext4 =");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(", ext5 =");
+      ((StringBuilder)localObject1).append(paramString3);
+      QLog.i("qqfavReport", 2, ((StringBuilder)localObject1).toString());
     }
-    label196:
-    for (paramString2 = "";; paramString2 = paramString3)
-    {
-      ReportController.b(localQQAppInterface, "CliOper", "", "", "Favorite", paramString1, paramInt1, paramInt2, str1, str2, paramAppRuntime, paramString2);
-      return;
-      paramAppRuntime = paramString2;
-      break;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(paramInt3);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(paramInt4);
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (paramString2 == null) {
+      paramString2 = "";
     }
+    if (paramString3 == null) {
+      paramString3 = "";
+    }
+    ReportController.b(paramAppRuntime, "CliOper", "", "", "Favorite", paramString1, paramInt1, paramInt2, (String)localObject1, (String)localObject2, paramString2, paramString3);
   }
   
   public static void a(AppRuntime paramAppRuntime, boolean paramBoolean, long paramLong)
   {
     Object localObject = new String[3];
-    int i = NetworkUtil.a(paramAppRuntime.getApplication().getApplicationContext());
-    if (i == 1) {
-      if (paramBoolean)
-      {
-        localObject[0] = "param_WIFIFavoritesUploadFlow";
-        localObject[1] = "param_WIFIFlow";
-        localObject[2] = "param_Flow";
-        paramAppRuntime.sendAppDataIncermentMsg(paramAppRuntime.getAccount(), (String[])localObject, paramLong);
-        if (QLog.isColorLevel())
-        {
-          localObject = new StringBuilder().append("addFlowCount ").append(paramLong).append(" for ");
-          if (!paramBoolean) {
-            break label156;
-          }
-        }
-      }
-    }
-    label156:
-    for (paramAppRuntime = "upload";; paramAppRuntime = "download")
+    int i = NetworkUtil.getSystemNetwork(paramAppRuntime.getApplication().getApplicationContext());
+    if (i == 1)
     {
-      QLog.d("qqfav", 2, paramAppRuntime + ", netType is " + i);
-      return;
-      localObject[0] = "param_WIFIFavoritesDownloadFlow";
-      break;
+      if (paramBoolean) {
+        localObject[0] = "param_WIFIFavoritesUploadFlow";
+      } else {
+        localObject[0] = "param_WIFIFavoritesDownloadFlow";
+      }
+      localObject[1] = "param_WIFIFlow";
+    }
+    else
+    {
       if (paramBoolean) {
         localObject[0] = "param_XGFavoritesUploadFlow";
-      }
-      for (;;)
-      {
-        localObject[1] = "param_XGFlow";
-        break;
+      } else {
         localObject[0] = "param_XGFavoritesDownloadFlow";
       }
+      localObject[1] = "param_XGFlow";
+    }
+    localObject[2] = "param_Flow";
+    paramAppRuntime.sendAppDataIncermentMsg(paramAppRuntime.getAccount(), (String[])localObject, paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("addFlowCount ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(" for ");
+      if (paramBoolean) {
+        paramAppRuntime = "upload";
+      } else {
+        paramAppRuntime = "download";
+      }
+      ((StringBuilder)localObject).append(paramAppRuntime);
+      ((StringBuilder)localObject).append(", netType is ");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("qqfav", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -111,7 +140,7 @@ public final class QfavReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.QfavReport
  * JD-Core Version:    0.7.0.1
  */

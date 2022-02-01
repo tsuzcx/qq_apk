@@ -32,93 +32,87 @@ public class fs
   
   private void J(boolean paramBoolean)
   {
-    Object localObject2 = I(paramBoolean);
-    label20:
-    Object localObject3;
+    Object localObject3 = I(paramBoolean);
+    Object localObject4;
     int i;
-    label47:
-    ArrayList localArrayList;
-    if ((localObject2 == null) || (((SparseArray)localObject2).size() <= 0))
+    Object localObject1;
+    if (localObject3 != null)
     {
-      return;
-    }
-    else
-    {
-      localObject3 = ((b)ao.c().i(3)).o();
-      if (localObject3 == null)
-      {
-        i = -1122;
-        localArrayList = new ArrayList();
+      if (((SparseArray)localObject3).size() <= 0) {
+        return;
       }
+      localObject4 = ((b)ao.c().i(3)).o();
+      if (localObject4 == null) {
+        i = -1122;
+      } else {
+        i = ((bn)localObject4).Y();
+      }
+      localObject1 = new ArrayList();
     }
     for (;;)
     {
-      Object localObject4;
+      int j;
+      int m;
       try
       {
-        int m = ((SparseArray)localObject2).size();
-        int j = 0;
-        if (j < m)
+        int k = ((SparseArray)localObject3).size();
+        j = 0;
+        Object localObject5;
+        if (j < k)
         {
-          k = ((SparseArray)localObject2).keyAt(j);
-          localObject4 = (Pair)((SparseArray)localObject2).valueAt(j);
-          if (localObject4 == null)
-          {
-            j += 1;
-            continue;
-            i = ((bn)localObject3).Y();
-            break label47;
+          m = ((SparseArray)localObject3).keyAt(j);
+          localObject5 = (Pair)((SparseArray)localObject3).valueAt(j);
+          if (localObject5 != null) {
+            break label410;
           }
-          if ((localObject3 != null) && (i == k)) {
-            continue;
+          if ((goto 421) || (!eF()) || (!bw.as().c((String)((Pair)localObject5).first, ((Integer)((Pair)localObject5).second).intValue()))) {
+            break label421;
           }
-          if (!eF()) {
-            break label427;
-          }
-          k = 1;
-          if ((k == 0) || (!bw.as().c((String)((Pair)localObject4).first, ((Integer)((Pair)localObject4).second).intValue()))) {
-            continue;
-          }
-          localArrayList.add(localObject4);
+          ((ArrayList)localObject1).add(localObject5);
           by.r(266579);
+          break label421;
+        }
+        localObject3 = bw.as().at();
+        if (localObject3 == null)
+        {
+          localObject1 = ((ArrayList)localObject1).iterator();
+          if (((Iterator)localObject1).hasNext())
+          {
+            localObject3 = (Pair)((Iterator)localObject1).next();
+            i((String)((Pair)localObject3).first, ((Integer)((Pair)localObject3).second).intValue());
+            ft.eJ().k((String)((Pair)localObject3).first, ((Integer)((Pair)localObject3).second).intValue());
+            continue;
+          }
+          return;
+        }
+        localObject4 = ((List)localObject3).iterator();
+        if (((Iterator)localObject4).hasNext())
+        {
+          if ((WifiConfiguration)((Iterator)localObject4).next() == null) {
+            continue;
+          }
+          localObject5 = ((ArrayList)localObject1).iterator();
+          if (((Iterator)localObject5).hasNext())
+          {
+            Pair localPair = (Pair)((Iterator)localObject5).next();
+            i((String)localPair.first, ((Integer)localPair.second).intValue());
+            if (a((String)localPair.first, ((Integer)localPair.second).intValue(), (List)localObject3) != null) {
+              continue;
+            }
+            ft.eJ().k((String)localPair.first, ((Integer)localPair.second).intValue());
+            continue;
+          }
           continue;
         }
+        return;
       }
       finally {}
-      localObject2 = bw.as().at();
-      Iterator localIterator;
-      if (localObject2 == null)
-      {
-        localIterator = localObject1.iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = (Pair)localIterator.next();
-          i((String)((Pair)localObject2).first, ((Integer)((Pair)localObject2).second).intValue());
-          ft.eJ().k((String)((Pair)localObject2).first, ((Integer)((Pair)localObject2).second).intValue());
-        }
-        break label20;
+      return;
+      label410:
+      if ((localObject4 != null) && (i == m)) {
+        label421:
+        j += 1;
       }
-      localObject3 = ((List)localObject2).iterator();
-      for (;;)
-      {
-        if (!((Iterator)localObject3).hasNext()) {
-          break label20;
-        }
-        if ((WifiConfiguration)((Iterator)localObject3).next() == null) {
-          break;
-        }
-        localObject4 = localIterator.iterator();
-        while (((Iterator)localObject4).hasNext())
-        {
-          Pair localPair = (Pair)((Iterator)localObject4).next();
-          i((String)localPair.first, ((Integer)localPair.second).intValue());
-          if (a((String)localPair.first, ((Integer)localPair.second).intValue(), (List)localObject2) == null) {
-            ft.eJ().k((String)localPair.first, ((Integer)localPair.second).intValue());
-          }
-        }
-      }
-      label427:
-      int k = 0;
     }
   }
   
@@ -149,22 +143,22 @@ public class fs
       return this.ru;
     }
     Object localObject1 = ft.eJ().eI();
-    if ((localObject1 == null) || (((List)localObject1).isEmpty())) {
-      return this.ru;
-    }
-    synchronized (this.ru)
-    {
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+    if ((localObject1 != null) && (!((List)localObject1).isEmpty())) {
+      synchronized (this.ru)
       {
-        Pair localPair = (Pair)((Iterator)localObject1).next();
-        if ((localPair != null) && (cb.l((String)localPair.first)))
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          localPair = as(cb.d((String)localPair.first, ((Integer)localPair.second).intValue()));
-          if (localPair == null) {
-            h((String)localPair.first, ((Integer)localPair.second).intValue());
+          Pair localPair = (Pair)((Iterator)localObject1).next();
+          if ((localPair != null) && (cb.l((String)localPair.first)))
+          {
+            localPair = as(cb.d((String)localPair.first, ((Integer)localPair.second).intValue()));
+            if (localPair == null) {
+              h((String)localPair.first, ((Integer)localPair.second).intValue());
+            }
           }
         }
+        return this.ru;
       }
     }
     return this.ru;
@@ -219,8 +213,10 @@ public class fs
   
   public void d(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((!paramBoolean2) && (!eE()) && (!eF())) {}
-    while ((eH() <= 0) && (!paramBoolean1)) {
+    if ((!paramBoolean2) && (!eE()) && (!eF())) {
+      return;
+    }
+    if ((eH() <= 0) && (!paramBoolean1)) {
       return;
     }
     av localav = bz.av().u().v();
@@ -258,9 +254,10 @@ public class fs
   
   protected boolean eE()
   {
+    boolean bool3 = this.rt;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (!this.rt)
+    if (!bool3)
     {
       bool1 = bool2;
       if (this.rs > 0L) {
@@ -310,7 +307,7 @@ public class fs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fs
  * JD-Core Version:    0.7.0.1
  */

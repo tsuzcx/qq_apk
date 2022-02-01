@@ -1,8 +1,10 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.HotChatRecentUserMgr;
-import com.tencent.mobileqq.data.HotChatInfo;
+import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.hotchat.api.IHotChatApi;
+import com.tencent.mobileqq.hotchat.api.IHotChatHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class HotChatPie$8
   implements Runnable
@@ -11,14 +13,12 @@ class HotChatPie$8
   
   public void run()
   {
-    int i = this.this$0.jdField_a_of_type_ComTencentMobileqqDataHotChatInfo.state;
-    HotChatRecentUserMgr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, i);
-    HotChatRecentUserMgr.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    ((IHotChatHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(((IHotChatApi)QRoute.api(IHotChatApi.class)).getHotChatHandlerClassName())).getGlobalAdmin(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin(), this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.HotChatPie.8
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,19 @@ class VehicleMovementDetector$1
   
   public void a(Location paramLocation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("VehicleMovementDetector", 2, "[status][vehicle] onLocationChanged: " + paramLocation);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[status][vehicle] onLocationChanged: ");
+      localStringBuilder.append(paramLocation);
+      QLog.i("VehicleMovementDetector", 2, localStringBuilder.toString());
     }
     this.a.a(paramLocation);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.VehicleMovementDetector.1
  * JD-Core Version:    0.7.0.1
  */

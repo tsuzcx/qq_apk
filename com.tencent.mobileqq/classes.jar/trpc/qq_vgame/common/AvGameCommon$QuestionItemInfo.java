@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class AvGameCommon$QuestionItemInfo
   extends MessageMicro<QuestionItemInfo>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 50, 58, 66, 74, 82, 90, 96, 104, 114, 120 }, new String[] { "question_content", "question_duration", "answer_content", "answer_duration", "question_md5", "answer_md5", "reward_type", "extra_reward", "reward_stroke_color", "question_url", "answer_option", "answer_index", "business_flag", "business_ads", "prize_id" }, new Object[] { "", Integer.valueOf(0), "", Integer.valueOf(0), "", "", "", "", "", "", "", Integer.valueOf(0), Boolean.valueOf(false), "", Integer.valueOf(0) }, QuestionItemInfo.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField answer_content = PBField.initString("");
   public final PBUInt32Field answer_duration = PBField.initUInt32(0);
   public final PBUInt32Field answer_index = PBField.initUInt32(0);
@@ -27,10 +27,16 @@ public final class AvGameCommon$QuestionItemInfo
   public final PBStringField question_url = PBField.initString("");
   public final PBStringField reward_stroke_color = PBField.initString("");
   public final PBStringField reward_type = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 32, 42, 50, 58, 66, 74, 82, 90, 96, 104, 114, 120 }, new String[] { "question_content", "question_duration", "answer_content", "answer_duration", "question_md5", "answer_md5", "reward_type", "extra_reward", "reward_stroke_color", "question_url", "answer_option", "answer_index", "business_flag", "business_ads", "prize_id" }, new Object[] { "", localInteger, "", localInteger, "", "", "", "", "", "", "", localInteger, Boolean.valueOf(false), "", localInteger }, QuestionItemInfo.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trpc.qq_vgame.common.AvGameCommon.QuestionItemInfo
  * JD-Core Version:    0.7.0.1
  */

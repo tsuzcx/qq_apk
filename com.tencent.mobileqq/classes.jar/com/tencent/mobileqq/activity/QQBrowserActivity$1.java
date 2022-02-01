@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
+import com.tencent.mobileqq.webview.api.impl.WebProcessManagerServiceImpl;
 import com.tencent.mobileqq.webview.swift.utils.SwiftWebViewUtils;
 import com.tencent.mobileqq.webview.utils.ProxyConfig;
 import com.tencent.qphone.base.util.QLog;
@@ -12,17 +13,21 @@ class QQBrowserActivity$1
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("WebLog_QQBrowserActivity", 2, "start request: " + WebAccelerateHelper.isWebViewCache);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start request: ");
+      localStringBuilder.append(WebAccelerateHelper.isWebViewCache);
+      QLog.d("WebLog_QQBrowserActivity", 2, localStringBuilder.toString());
     }
-    QQBrowserActivity.setPreloadSucess(true);
+    WebProcessManagerServiceImpl.setPreloadSuccess(true);
     SwiftWebViewUtils.a();
     ProxyConfig.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserActivity.1
  * JD-Core Version:    0.7.0.1
  */

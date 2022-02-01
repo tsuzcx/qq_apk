@@ -17,7 +17,7 @@ class QQToast$ShowToastMessage
   private boolean a()
   {
     QQToast.IToastValidListener localIToastValidListener = (QQToast.IToastValidListener)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    return (localIToastValidListener != null) && (localIToastValidListener.a());
+    return (localIToastValidListener != null) && (localIToastValidListener.e());
   }
   
   @Nullable
@@ -31,7 +31,7 @@ class QQToast$ShowToastMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast.ShowToastMessage
  * JD-Core Version:    0.7.0.1
  */

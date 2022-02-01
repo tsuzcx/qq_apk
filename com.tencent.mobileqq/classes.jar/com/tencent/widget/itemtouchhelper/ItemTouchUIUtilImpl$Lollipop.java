@@ -11,54 +11,54 @@ public class ItemTouchUIUtilImpl$Lollipop
   private float findMaxElevation(RecyclerView paramRecyclerView, View paramView)
   {
     int j = paramRecyclerView.getChildCount();
-    int i = 0;
     float f1 = 0.0F;
-    if (i < j)
+    int i = 0;
+    while (i < j)
     {
       View localView = paramRecyclerView.getChildAt(i);
       float f2;
-      if (localView == paramView) {
+      if (localView == paramView)
+      {
         f2 = f1;
       }
-      for (;;)
+      else
       {
-        i += 1;
-        f1 = f2;
-        break;
         float f3 = ViewCompat.getElevation(localView);
         f2 = f1;
         if (f3 > f1) {
           f2 = f3;
         }
       }
+      i += 1;
+      f1 = f2;
     }
     return f1;
   }
   
   public void clearView(View paramView)
   {
-    Object localObject = paramView.getTag(2131369436);
+    Object localObject = paramView.getTag(2131369164);
     if ((localObject != null) && ((localObject instanceof Float))) {
       ViewCompat.setElevation(paramView, ((Float)localObject).floatValue());
     }
-    paramView.setTag(2131369436, null);
+    paramView.setTag(2131369164, null);
     super.clearView(paramView);
   }
   
   public void onDraw(Canvas paramCanvas, RecyclerView paramRecyclerView, View paramView, float paramFloat1, float paramFloat2, int paramInt, boolean paramBoolean)
   {
-    if ((paramBoolean) && (paramView.getTag(2131369436) == null))
+    if ((paramBoolean) && (paramView.getTag(2131369164) == null))
     {
       float f = ViewCompat.getElevation(paramView);
-      ViewCompat.setElevation(paramView, 1.0F + findMaxElevation(paramRecyclerView, paramView));
-      paramView.setTag(2131369436, Float.valueOf(f));
+      ViewCompat.setElevation(paramView, findMaxElevation(paramRecyclerView, paramView) + 1.0F);
+      paramView.setTag(2131369164, Float.valueOf(f));
     }
     super.onDraw(paramCanvas, paramRecyclerView, paramView, paramFloat1, paramFloat2, paramInt, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.itemtouchhelper.ItemTouchUIUtilImpl.Lollipop
  * JD-Core Version:    0.7.0.1
  */

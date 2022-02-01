@@ -34,10 +34,11 @@ public class AbsVideoPlayerImpl
   
   public int captureImageInTime(int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
       try
       {
-        paramInt1 = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.captureImageInTime(paramInt1, paramInt2);
+        paramInt1 = localTVK_IMediaPlayer.captureImageInTime(paramInt1, paramInt2);
         return paramInt1;
       }
       catch (IllegalAccessException localIllegalAccessException)
@@ -50,264 +51,283 @@ public class AbsVideoPlayerImpl
   
   public void createVideoView(Context paramContext, AbsVideoPlayer.OnVideoViewInitListener paramOnVideoViewInitListener)
   {
-    Object localObject;
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null)
     {
-      localObject = new OskPlayerConfig();
-      ((OskPlayerConfig)localObject).setEnableHLSCache(true);
-      ((OskPlayerConfig)localObject).setDebugVersion(true);
-      ((OskPlayerConfig)localObject).setLogger(new DefaultLogger());
-      ((OskPlayerConfig)localObject).setCacheKeyGenerator(new DefaultCacheKeyGenerator());
-      OskPlayerCore.init(paramContext.getApplicationContext(), (OskPlayerConfig)localObject);
-      localObject = PlayerConfig.g().getContentTypeList();
-      if (localObject == null) {
-        break label165;
-      }
-    }
-    label165:
-    IVideoViewBase localIVideoViewBase;
-    do
-    {
-      TVK_IProxyFactory localTVK_IProxyFactory;
-      do
-      {
-        for (;;)
+      Object localObject1 = new OskPlayerConfig();
+      ((OskPlayerConfig)localObject1).setEnableHLSCache(true);
+      ((OskPlayerConfig)localObject1).setDebugVersion(true);
+      ((OskPlayerConfig)localObject1).setLogger(new DefaultLogger());
+      ((OskPlayerConfig)localObject1).setCacheKeyGenerator(new DefaultCacheKeyGenerator());
+      OskPlayerCore.init(paramContext.getApplicationContext(), (OskPlayerConfig)localObject1);
+      localObject1 = PlayerConfig.g().getContentTypeList();
+      if (localObject1 != null) {
+        try
         {
-          try
-          {
-            ((List)localObject).addAll(Arrays.asList(jdField_a_of_type_JavaLangString.split("|")));
-            PlayerConfig.g().setContentTypeList((List)localObject);
-            TVK_SDKMgr.setDebugEnable(true);
-            TVK_SDKMgr.setOnLogListener(new AbsVideoPlayerImpl.1(this));
-            TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
-            if (TVK_SDKMgr.isInstalled(paramContext)) {
-              break;
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("AbsVideoPlayerImpl", 2, "TVK_SDK is not installed");
-            }
-            return;
-          }
-          catch (Exception localException)
-          {
-            QLog.e("AbsVideoPlayerImpl", 2, "initOskOnce contentTypeList.addAll oskPlayerContentTypeStrList get an err!!:" + localException);
-            continue;
-          }
-          QLog.e("AbsVideoPlayerImpl", 2, "getContentTypeList null");
+          ((List)localObject1).addAll(Arrays.asList(jdField_a_of_type_JavaLangString.split("|")));
+          PlayerConfig.g().setContentTypeList((List)localObject1);
         }
-        localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
-      } while (localTVK_IProxyFactory == null);
-      localIVideoViewBase = localTVK_IProxyFactory.createVideoView_Scroll(paramContext);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = localTVK_IProxyFactory.createMediaPlayer(paramContext, localIVideoViewBase);
-    } while (paramOnVideoViewInitListener == null);
-    paramOnVideoViewInitListener.onVideoViewInit((View)localIVideoViewBase);
+        catch (Exception localException)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("initOskOnce contentTypeList.addAll oskPlayerContentTypeStrList get an err!!:");
+          ((StringBuilder)localObject2).append(localException);
+          QLog.e("AbsVideoPlayerImpl", 2, ((StringBuilder)localObject2).toString());
+        }
+      } else {
+        QLog.e("AbsVideoPlayerImpl", 2, "getContentTypeList null");
+      }
+      TVK_SDKMgr.setDebugEnable(true);
+      TVK_SDKMgr.setOnLogListener(new AbsVideoPlayerImpl.1(this));
+      TVK_SDKMgr.initSdk(paramContext, "qlZy1cUgJFUcdIxwLCxe2Bwl2Iy1G1W1Scj0JYW0q2gNAn3XAYvu6kgSaMFDI+caBVR6jDCu/2+MMP/ 5+bNIv+d+bn4ihMBUKcpWIDySGIAv7rlarJXCev4i7a0qQD2f3s6vtdD9YdQ81ZyeA+nD0MenBGrPPd GeDBvIFQSGz4jB4m6G4fa2abCqy1JQc+r+OGk6hVJQXMGpROgPiIGlF3o/sHuBblmfwvIDtYviSIKD4 UGd0IeJn/IqVI3vUZ3ETgea6FkqDoA00SrTlTYfJUJk/h2lk1rkibIkQMPZhVjI2HYDxV4y501Xj2vD fjFPoNJImVtMjdE2BIIEawxYKA==", "");
+    }
+    if (!TVK_SDKMgr.isInstalled(paramContext))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AbsVideoPlayerImpl", 2, "TVK_SDK is not installed");
+      }
+      return;
+    }
+    TVK_IProxyFactory localTVK_IProxyFactory = TVK_SDKMgr.getProxyFactory();
+    if (localTVK_IProxyFactory == null) {
+      return;
+    }
+    Object localObject2 = localTVK_IProxyFactory.createVideoView_Scroll(paramContext);
+    this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = localTVK_IProxyFactory.createMediaPlayer(paramContext, (IVideoViewBase)localObject2);
+    if (paramOnVideoViewInitListener != null) {
+      paramOnVideoViewInitListener.onVideoViewInit((View)localObject2);
+    }
   }
   
   public long getCurrentPostion()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.getCurrentPostion();
     }
     return 0L;
   }
   
   public long getDuration()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.getDuration();
     }
     return 0L;
   }
   
   public boolean getOutputMute()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getOutputMute();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.getOutputMute();
     }
     return false;
   }
   
   public int getVideoHeight()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getVideoHeight();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.getVideoHeight();
     }
     return 0;
   }
   
   public int getVideoWidth()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getVideoWidth();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.getVideoWidth();
     }
     return 0;
   }
   
   public boolean isPlaying()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.isPlaying();
     }
     return false;
   }
   
   public void openMediaPlayerByUrl(Context paramContext, String paramString, long paramLong)
   {
-    TVK_PlayerVideoInfo localTVK_PlayerVideoInfo;
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
     {
-      localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
-      if ((!paramString.startsWith("http")) && (!paramString.startsWith("https"))) {
-        break label154;
+      TVK_PlayerVideoInfo localTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo();
+      Object localObject;
+      if ((!paramString.startsWith("http")) && (!paramString.startsWith("https")))
+      {
+        localTVK_PlayerVideoInfo.setPlayType(4);
+        localObject = paramString;
       }
-      if (!paramString.toLowerCase().contains(".m3u8")) {
-        break label85;
+      else if (paramString.toLowerCase().contains(".m3u8"))
+      {
+        localTVK_PlayerVideoInfo.setPlayType(1);
+        localObject = paramString;
+        if (paramString.startsWith("https")) {
+          localObject = OskPlayerCore.getInstance().getUrl(paramString);
+        }
       }
-      localTVK_PlayerVideoInfo.setPlayType(1);
-      if (!paramString.startsWith("https")) {
-        break label160;
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("OskPlayerCore.getInstance().getUrl: ");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("AbsVideoPlayerImpl", 1, ((StringBuilder)localObject).toString());
+        localObject = OskPlayerCore.getInstance().getUrl(paramString);
+        paramString = new StringBuilder();
+        paramString.append("OskPlayerCore.getInstance().getUrl done: ");
+        paramString.append((String)localObject);
+        QLog.d("AbsVideoPlayerImpl", 1, paramString.toString());
+        localTVK_PlayerVideoInfo.setPlayType(5);
       }
-      paramString = OskPlayerCore.getInstance().getUrl(paramString);
-    }
-    label154:
-    label160:
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(paramContext, paramString, paramLong, 0L, localTVK_PlayerVideoInfo);
-      return;
-      label85:
-      QLog.d("AbsVideoPlayerImpl", 1, "OskPlayerCore.getInstance().getUrl: " + paramString);
-      paramString = OskPlayerCore.getInstance().getUrl(paramString);
-      QLog.d("AbsVideoPlayerImpl", 1, "OskPlayerCore.getInstance().getUrl done: " + paramString);
-      localTVK_PlayerVideoInfo.setPlayType(5);
-      continue;
-      localTVK_PlayerVideoInfo.setPlayType(4);
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayerByUrl(paramContext, (String)localObject, paramLong, 0L, localTVK_PlayerVideoInfo);
     }
   }
   
   public void pause()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.pause();
     }
   }
   
   public void release()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.release();
     }
   }
   
   public void seekTo(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(paramInt);
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.seekTo(paramInt);
     }
   }
   
   public void setLoopback(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setLoopback(paramBoolean);
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setLoopback(paramBoolean);
     }
   }
   
   public void setOnCaptureImageListener(AbsVideoPlayer.OnCaptureImageListener paramOnCaptureImageListener)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCaptureImageListener(new AbsVideoPlayerImpl.8(this, paramOnCaptureImageListener));
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setOnCaptureImageListener(new AbsVideoPlayerImpl.8(this, paramOnCaptureImageListener));
     }
   }
   
   public void setOnCompletionListener(AbsVideoPlayer.OnCompletionListener paramOnCompletionListener)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new AbsVideoPlayerImpl.4(this, paramOnCompletionListener));
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setOnCompletionListener(new AbsVideoPlayerImpl.4(this, paramOnCompletionListener));
     }
   }
   
   public void setOnControllerClickListener(AbsVideoPlayer.OnControllerClickListener paramOnControllerClickListener)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnControllerClickListener(new AbsVideoPlayerImpl.2(this, paramOnControllerClickListener));
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setOnControllerClickListener(new AbsVideoPlayerImpl.2(this, paramOnControllerClickListener));
     }
   }
   
   public void setOnErrorListener(AbsVideoPlayer.OnErrorListener paramOnErrorListener)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new AbsVideoPlayerImpl.5(this, paramOnErrorListener));
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setOnErrorListener(new AbsVideoPlayerImpl.5(this, paramOnErrorListener));
     }
   }
   
   public void setOnInfoListener(AbsVideoPlayer.OnInfoListener paramOnInfoListener)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnInfoListener(new AbsVideoPlayerImpl.6(this, paramOnInfoListener));
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setOnInfoListener(new AbsVideoPlayerImpl.6(this, paramOnInfoListener));
     }
   }
   
   public void setOnSeekCompleteListener(AbsVideoPlayer.OnSeekCompleteListener paramOnSeekCompleteListener)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnSeekCompleteListener(new AbsVideoPlayerImpl.7(this, paramOnSeekCompleteListener));
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setOnSeekCompleteListener(new AbsVideoPlayerImpl.7(this, paramOnSeekCompleteListener));
     }
   }
   
   public void setOnVideoPreparedListener(AbsVideoPlayer.OnVideoPreparedListener paramOnVideoPreparedListener)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new AbsVideoPlayerImpl.3(this, paramOnVideoPreparedListener));
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setOnVideoPreparedListener(new AbsVideoPlayerImpl.3(this, paramOnVideoPreparedListener));
     }
   }
   
   public boolean setOutputMute(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      return this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOutputMute(paramBoolean);
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      return localTVK_IMediaPlayer.setOutputMute(paramBoolean);
     }
     return false;
   }
   
   public void setXYaxis(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(paramInt);
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.setXYaxis(paramInt);
     }
   }
   
   public void start()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.start();
     }
   }
   
   public void startPlayDanmu()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.startPlayDanmu();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.startPlayDanmu();
     }
   }
   
   public void stop()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.stop();
     }
   }
   
   public void stopPlayDanmu()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stopPlayDanmu();
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null) {
+      localTVK_IMediaPlayer.stopPlayDanmu();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AbsVideoPlayerImpl
  * JD-Core Version:    0.7.0.1
  */

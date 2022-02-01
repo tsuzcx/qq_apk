@@ -35,7 +35,7 @@ class ReceiptMessageReadMemberListFragment$MemberAdapter
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = paramIFaceDecoder;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.c();
+    this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = paramRecyclerView;
@@ -77,7 +77,7 @@ class ReceiptMessageReadMemberListFragment$MemberAdapter
   
   public ReceiptMessageReadMemberListFragment.MemberViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new ReceiptMessageReadMemberListFragment.MemberViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562905, paramViewGroup, false), null);
+    return new ReceiptMessageReadMemberListFragment.MemberViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562720, paramViewGroup, false), null);
   }
   
   public void a(ReceiptMessageReadMemberListFragment.MemberViewHolder paramMemberViewHolder, int paramInt)
@@ -97,10 +97,11 @@ class ReceiptMessageReadMemberListFragment$MemberAdapter
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -117,7 +118,7 @@ class ReceiptMessageReadMemberListFragment$MemberAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageReadMemberListFragment.MemberAdapter
  * JD-Core Version:    0.7.0.1
  */

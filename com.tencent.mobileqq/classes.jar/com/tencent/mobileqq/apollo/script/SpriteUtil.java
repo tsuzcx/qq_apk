@@ -1,59 +1,55 @@
 package com.tencent.mobileqq.apollo.script;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import androidx.annotation.NonNull;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.apollo.ApolloEngine;
-import com.tencent.mobileqq.apollo.IApolloRenderView;
-import com.tencent.mobileqq.apollo.aioChannel.HandleResult;
+import com.tencent.mobileqq.apollo.aio.api.ICmShowAioMatcher.AioSupported;
+import com.tencent.mobileqq.apollo.aio.api.impl.CmShowAioMatcherImpl;
 import com.tencent.mobileqq.apollo.api.IApolloManagerService;
 import com.tencent.mobileqq.apollo.api.IApolloMessageService;
 import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
-import com.tencent.mobileqq.apollo.api.aio.CmShowAioMatcher;
-import com.tencent.mobileqq.apollo.api.aio.CmShowAioMatcher.AioSupported;
-import com.tencent.mobileqq.apollo.api.data.IApolloDaoManagerService;
-import com.tencent.mobileqq.apollo.api.data.impl.ApolloDaoManagerServiceImpl;
 import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
 import com.tencent.mobileqq.apollo.api.impl.SpriteScriptManagerImpl;
-import com.tencent.mobileqq.apollo.api.model.Apollo3DMessage;
-import com.tencent.mobileqq.apollo.api.model.ApolloActionData;
-import com.tencent.mobileqq.apollo.api.model.ApolloMessage;
-import com.tencent.mobileqq.apollo.api.model.MessageForApollo;
-import com.tencent.mobileqq.apollo.api.script.ISpriteBridge;
-import com.tencent.mobileqq.apollo.api.script.ISpriteContext;
-import com.tencent.mobileqq.apollo.api.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.api.uitls.IApolloActionHelper;
-import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
-import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloUtilImpl;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoBridge;
-import com.tencent.mobileqq.apollo.script.drawerInfo.SpriteDrawerInfoManager;
+import com.tencent.mobileqq.apollo.channel.HandleResult;
+import com.tencent.mobileqq.apollo.config.CmShowWnsUtils;
+import com.tencent.mobileqq.apollo.model.Apollo3DMessage;
+import com.tencent.mobileqq.apollo.model.ApolloActionData;
+import com.tencent.mobileqq.apollo.model.ApolloMessage;
+import com.tencent.mobileqq.apollo.model.MessageForApollo;
+import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
+import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
+import com.tencent.mobileqq.apollo.render.IApolloRunnableTask;
+import com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoBridge;
+import com.tencent.mobileqq.apollo.script.drawerinfo.SpriteDrawerInfoManager;
 import com.tencent.mobileqq.apollo.statistics.trace.TraceReportUtil;
-import com.tencent.mobileqq.apollo.utils.CmShowWnsUtils;
+import com.tencent.mobileqq.apollo.utils.api.IApolloActionHelper;
+import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloMessageUtilImpl;
+import com.tencent.mobileqq.apollo.utils.api.impl.ApolloUtilImpl;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.ApolloEngine;
+import com.tencent.mobileqq.cmshow.engine.CMShowPlatform;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.service.message.MessageRecordFactory;
 import com.tencent.mobileqq.utils.Base64Util;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.VipUtils;
-import com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import mqq.os.MqqHandler;
+import mqq.app.AppRuntime;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
@@ -66,109 +62,123 @@ public class SpriteUtil
   
   public static int a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 7)
     {
-    case 8: 
-    default: 
-      return 0;
-    case 7: 
-      return 1;
+      if (paramInt != 9) {
+        return 0;
+      }
+      return 2;
     }
-    return 2;
+    return 1;
   }
   
   public static int a(int paramInt1, int paramInt2, String paramString, int paramInt3)
   {
-    if ((paramInt1 == 0) || (8 == paramInt1)) {
-      paramInt2 = ApolloUtilImpl.handleBubbleType(208.0F, paramString, paramInt3);
-    }
-    do
+    if ((paramInt1 != 0) && (8 != paramInt1))
     {
-      do
+      if (3 == paramInt1) {}
+      for (;;)
       {
-        return paramInt2;
-        if (3 == paramInt1) {
-          return 32;
+        return 32;
+        if (6 == paramInt1)
+        {
+          paramInt1 = 33;
+          if (paramInt3 != 2) {
+            break;
+          }
+          return 75;
         }
-        if (6 != paramInt1) {
-          break;
+        if (7 == paramInt1)
+        {
+          if (paramInt3 == 2) {
+            return 74;
+          }
         }
-        paramInt2 = 33;
-      } while (paramInt3 != 2);
-      return 75;
-      if (7 == paramInt1)
-      {
-        if (paramInt3 != 2) {
-          break;
+        else
+        {
+          if (9 == paramInt1) {
+            return paramInt2;
+          }
+          QLog.d("[cmshow][scripted]SpriteUtil", 1, new Object[] { "Other bubble type, NOT Handle, bubbleType:", Integer.valueOf(paramInt1), ", bubbleId:", Integer.valueOf(32) });
         }
-        return 74;
       }
-    } while (9 == paramInt1);
-    QLog.d("cmshow_scripted_SpriteUtil", 1, new Object[] { "Other bubble type, NOT Handle, bubbleType:", Integer.valueOf(paramInt1), ", bubbleId:", Integer.valueOf(32) });
-    return 32;
+    }
+    paramInt1 = ApolloUtilImpl.handleBubbleType(208.0F, paramString, paramInt3);
+    return paramInt1;
   }
   
   public static int a(int paramInt, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int j = 26;
-    int i = 0;
+    int i;
     if (paramBoolean1)
     {
-      if (!paramBoolean2) {
-        break label93;
+      if (paramBoolean2)
+      {
+        if (paramBoolean3) {
+          i = 81;
+        } else {
+          i = 82;
+        }
       }
-      if (paramBoolean3) {
-        i = 81;
+      else {
+        i = 25;
       }
     }
-    else if (!paramBoolean1)
-    {
-      if (!paramBoolean2) {
-        break label107;
-      }
-      if (!paramBoolean3) {
-        break label100;
-      }
-      i = 84;
+    else {
+      i = 0;
     }
-    for (;;)
-    {
-      if (ApolloUtilImpl.isNickBubbleRscExist(paramInt, i)) {
-        break label114;
+    if (!paramBoolean1) {
+      if (paramBoolean2)
+      {
+        if (paramBoolean3) {
+          i = 84;
+        } else {
+          i = 83;
+        }
       }
-      QLog.w("cmshow_scripted_SpriteUtil", 1, "nick bubble not exist, id:" + i);
-      paramInt = j;
+      else {
+        i = 26;
+      }
+    }
+    int j = i;
+    if (!ApolloUtilImpl.isNickBubbleRscExist(paramInt, i))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("nick bubble not exist, id:");
+      localStringBuilder.append(i);
+      QLog.w("[cmshow][scripted]SpriteUtil", 1, localStringBuilder.toString());
       if (paramBoolean1) {
-        paramInt = 25;
+        return 25;
       }
-      return paramInt;
-      i = 82;
-      break;
-      label93:
-      i = 25;
-      break;
-      label100:
-      i = 83;
-      continue;
-      label107:
-      i = 26;
+      j = 26;
     }
-    label114:
-    return i;
+    return j;
   }
   
   public static int a(Context paramContext)
   {
-    int i = 0;
+    int i;
     if (paramContext != null) {
-      i = AIOUtils.a(46.0F, paramContext.getResources());
+      i = AIOUtils.b(46.0F, paramContext.getResources());
+    } else {
+      i = 0;
     }
-    return Math.max(i, (int)((float)DeviceInfoUtil.h() / 7.0F / 2.84D) + 40);
+    double d = (float)DeviceInfoUtil.h() / 7.0F;
+    Double.isNaN(d);
+    return Math.max(i, (int)(d / 2.84D) + 40);
   }
   
-  public static int a(QQAppInterface paramQQAppInterface)
+  public static int a(AppRuntime paramAppRuntime)
   {
-    return ApolloManagerServiceImpl.get3dWhiteListStatus(paramQQAppInterface);
+    return ApolloManagerServiceImpl.get3dWhiteListStatus(paramAppRuntime);
+  }
+  
+  public static ISpriteScriptManager a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {
+      return null;
+    }
+    return (ISpriteScriptManager)paramAppRuntime.getRuntimeService(ISpriteScriptManager.class, "all");
   }
   
   public static HandleResult a(String paramString1, QQAppInterface paramQQAppInterface, int paramInt, String paramString2)
@@ -200,27 +210,20 @@ public class SpriteUtil
         else
         {
           paramString1.put("nicknames", localJSONArray2);
+          paramString1.put("errCode", 0);
           paramQQAppInterface = new HandleResult();
-          paramQQAppInterface.jdField_b_of_type_Boolean = true;
+          paramQQAppInterface.b = true;
           paramQQAppInterface.jdField_a_of_type_JavaLangString = paramString1.toString();
           return paramQQAppInterface;
         }
       }
       catch (Throwable paramString1)
       {
-        QLog.e("cmshow_scripted_SpriteUtil", 1, paramString1, new Object[0]);
+        QLog.e("[cmshow][scripted]SpriteUtil", 1, paramString1, new Object[0]);
         return null;
       }
       boolean bool = false;
     }
-  }
-  
-  public static ISpriteScriptManager a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    return (ISpriteScriptManager)paramQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all");
   }
   
   public static ApolloActionData a(QQAppInterface paramQQAppInterface, int paramInt)
@@ -233,172 +236,190 @@ public class SpriteUtil
   
   public static MessageForApollo a(String paramString, SpriteContext paramSpriteContext)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (paramSpriteContext.a() == null) {
-          return null;
-        }
-        Object localObject = new JSONObject(new JSONObject(paramString).optString("basicMsg"));
-        ApolloMessage localApolloMessage = new ApolloMessage();
-        localApolloMessage.id = ((JSONObject)localObject).optInt("id");
-        paramString = ((JSONObject)localObject).optString("name");
-        if (!TextUtils.isEmpty(paramString)) {
-          localApolloMessage.name = Base64Util.decode(paramString.getBytes("utf-8"), 0);
-        }
-        localApolloMessage.flag = ((JSONObject)localObject).optInt("flag");
-        localApolloMessage.peer_status = ((JSONObject)localObject).optInt("peerStatus");
-        localApolloMessage.sender_status = ((JSONObject)localObject).optInt("senderStatus");
-        localApolloMessage.peer_ts = ((JSONObject)localObject).optLong("peerTS");
-        localApolloMessage.sender_ts = ((JSONObject)localObject).optLong("senderTS");
-        localApolloMessage.peer_uin = ((JSONObject)localObject).optLong("peerUin");
-        paramString = ((JSONObject)localObject).optString("atText");
-        if (!paramString.isEmpty()) {
-          localApolloMessage.text = Base64Util.decode(paramString.getBytes("utf-8"), 0);
-        }
-        paramString = ((JSONObject)localObject).optJSONObject("extraStr");
-        JSONObject localJSONObject = ((JSONObject)localObject).optJSONObject("extendJson");
-        if (paramString == null)
-        {
-          paramString = new JSONObject();
-          if (localJSONObject != null) {
-            paramString.put("extendJson", localJSONObject);
-          }
-          localApolloMessage.extStr = paramString.toString();
-          paramSpriteContext = MessageRecordFactory.a(paramSpriteContext.a(), paramSpriteContext.a().a.jdField_a_of_type_JavaLangString, paramSpriteContext.a().a.jdField_b_of_type_JavaLangString, paramSpriteContext.a, localApolloMessage);
-          paramSpriteContext.inputText = paramString.optString("inputText");
-          paramSpriteContext.audioId = paramString.optInt("audioID");
-          if (paramString.has("audioStartTime")) {
-            paramSpriteContext.audioStartTime = ((float)paramString.optDouble("audioStartTime"));
-          }
-          paramSpriteContext.actionType = paramString.optInt("actionType");
-          paramSpriteContext.msgType = paramString.optInt("msgTyep");
-          paramSpriteContext.welcomeId = paramString.optLong("welcomeId");
-          paramSpriteContext.curUsedIdType = ((JSONObject)localObject).optInt("curUsedIdType");
-          if (localJSONObject != null) {
-            paramSpriteContext.extendJson = localJSONObject.toString();
-          }
-          if (paramString.has("mApollo3DMessage"))
-          {
-            paramString = paramString.getJSONObject("mApollo3DMessage");
-            localObject = new Apollo3DMessage();
-            ((Apollo3DMessage)localObject).setMessageWithJSONObject(paramString);
-            paramSpriteContext.mApollo3DMessage = ((Apollo3DMessage)localObject);
-          }
-          return paramSpriteContext;
-        }
-      }
-      catch (Throwable paramString)
-      {
-        QLog.e("cmshow_scripted_SpriteUtil", 1, paramString, new Object[0]);
+      if (paramSpriteContext.a() == null) {
         return null;
       }
+      JSONObject localJSONObject1 = new JSONObject(new JSONObject(paramString).optString("basicMsg"));
+      ApolloMessage localApolloMessage = new ApolloMessage();
+      localApolloMessage.id = localJSONObject1.optInt("id");
+      paramString = localJSONObject1.optString("name");
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (!bool) {
+        localApolloMessage.name = Base64Util.decode(paramString.getBytes("utf-8"), 0);
+      }
+      localApolloMessage.flag = localJSONObject1.optInt("flag");
+      localApolloMessage.peerStatus = localJSONObject1.optInt("peerStatus");
+      localApolloMessage.senderStatus = localJSONObject1.optInt("senderStatus");
+      localApolloMessage.peerTs = localJSONObject1.optLong("peerTS");
+      localApolloMessage.senderTs = localJSONObject1.optLong("senderTS");
+      localApolloMessage.peerUin = localJSONObject1.optLong("peerUin");
+      paramString = localJSONObject1.optString("atText");
+      if (!paramString.isEmpty()) {
+        localApolloMessage.text = Base64Util.decode(paramString.getBytes("utf-8"), 0);
+      }
+      Object localObject = localJSONObject1.optJSONObject("extraStr");
+      JSONObject localJSONObject2 = localJSONObject1.optJSONObject("extendJson");
+      paramString = (String)localObject;
+      if (localObject == null) {
+        paramString = new JSONObject();
+      }
+      if (localJSONObject2 != null) {
+        paramString.put("extendJson", localJSONObject2);
+      }
+      localApolloMessage.extStr = paramString.toString();
+      paramSpriteContext = ApolloMessageUtilImpl.createSendMsg_ApolloAction(paramSpriteContext.a(), paramSpriteContext.a().a.jdField_a_of_type_JavaLangString, paramSpriteContext.a().a.b, paramSpriteContext.a, localApolloMessage);
+      paramSpriteContext.inputText = paramString.optString("inputText");
+      paramSpriteContext.audioId = paramString.optInt("audioID");
+      if (paramString.has("audioStartTime")) {
+        paramSpriteContext.audioStartTime = ((float)paramString.optDouble("audioStartTime"));
+      }
+      paramSpriteContext.actionType = paramString.optInt("actionType");
+      paramSpriteContext.msgType = paramString.optInt("msgTyep");
+      paramSpriteContext.welcomeId = paramString.optLong("welcomeId");
+      paramSpriteContext.curUsedIdType = localJSONObject1.optInt("curUsedIdType");
+      if (localJSONObject2 != null) {
+        paramSpriteContext.extendJson = localJSONObject2.toString();
+      }
+      if (paramString.has("mApollo3DMessage"))
+      {
+        paramString = paramString.getJSONObject("mApollo3DMessage");
+        localObject = new Apollo3DMessage();
+        ((Apollo3DMessage)localObject).setMessageWithJSONObject(paramString);
+        paramSpriteContext.mApollo3DMessage = ((Apollo3DMessage)localObject);
+      }
+      return paramSpriteContext;
     }
-  }
-  
-  public static ISpriteBridge a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    do
+    catch (Throwable paramString)
     {
-      return null;
-      paramQQAppInterface = a(paramQQAppInterface);
-    } while (paramQQAppInterface == null);
-    return paramQQAppInterface.getSpriteBridge();
+      QLog.e("[cmshow][scripted]SpriteUtil", 1, paramString, new Object[0]);
+    }
+    return null;
   }
   
-  public static ISpriteContext a(QQAppInterface paramQQAppInterface)
+  public static IApolloRunnableTask a(String paramString, int paramInt, ApolloEngine paramApolloEngine)
   {
-    if (paramQQAppInterface == null) {
-      return null;
-    }
-    return ((ISpriteScriptManager)paramQQAppInterface.getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteContext();
+    return new SpriteUtil.1(paramString, paramApolloEngine, paramInt);
   }
   
-  public static SpriteActionScript a(QQAppInterface paramQQAppInterface)
+  public static ISpriteBridge a(AppRuntime paramAppRuntime)
   {
-    if (paramQQAppInterface == null) {
+    if (paramAppRuntime == null) {
       return null;
     }
-    return (SpriteActionScript)((SpriteScriptManagerImpl)a(paramQQAppInterface)).getSpriteCreator().a(0);
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime == null) {
+      return null;
+    }
+    return paramAppRuntime.getSpriteBridge();
   }
   
-  public static SpriteRscBuilder a(QQAppInterface paramQQAppInterface)
+  public static ISpriteContext a(AppRuntime paramAppRuntime)
   {
-    if (paramQQAppInterface == null) {
+    if (paramAppRuntime == null) {
       return null;
     }
-    return ((SpriteScriptManagerImpl)a(paramQQAppInterface)).getRscBuilder();
+    return ((ISpriteScriptManager)paramAppRuntime.getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteContext();
+  }
+  
+  public static SpriteActionScript a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {
+      return null;
+    }
+    return (SpriteActionScript)((SpriteScriptManagerImpl)a(paramAppRuntime)).getSpriteCreator().b(0);
+  }
+  
+  public static SpriteRscBuilder a(AppRuntime paramAppRuntime)
+  {
+    if (paramAppRuntime == null) {
+      return null;
+    }
+    return ((SpriteScriptManagerImpl)a(paramAppRuntime)).getRscBuilder();
   }
   
   public static String a(QQAppInterface paramQQAppInterface, int paramInt, String paramString1, String paramString2, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteUtil", 2, new Object[] { "[getSpriteName], uin:", paramString1, ",sessionType:", Integer.valueOf(paramInt), ",groupUin:", paramString2, ",isNeedRemark:", Boolean.valueOf(paramBoolean) });
+      QLog.d("[cmshow][scripted]SpriteUtil", 2, new Object[] { "[getSpriteName], uin:", paramString1, ",sessionType:", Integer.valueOf(paramInt), ",groupUin:", paramString2, ",isNeedRemark:", Boolean.valueOf(paramBoolean) });
     }
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString1)))
+    if (paramQQAppInterface != null)
     {
-      paramString1 = "";
-      return paramString1;
-    }
-    if (("-1".equals(paramString1)) || ("-2".equals(paramString1))) {
-      return "";
-    }
-    String str = "";
-    if (-1 == paramInt) {
-      paramString2 = ContactUtils.d(paramQQAppInterface, paramString1, true);
-    }
-    label250:
-    do
-    {
-      for (;;)
+      if (TextUtils.isEmpty(paramString1)) {
+        return "";
+      }
+      if (!"-1".equals(paramString1))
       {
-        paramQQAppInterface = paramString2;
-        if (!TextUtils.isEmpty(paramString2)) {
-          paramQQAppInterface = paramString2.replace("\\", "").replace("'", "").replace("\"", "");
+        if ("-2".equals(paramString1)) {
+          return "";
         }
-        if (TextUtils.isEmpty(paramQQAppInterface)) {
-          break;
-        }
-        return paramQQAppInterface;
-        if (!CmShowAioMatcher.a(paramInt, 2)) {
-          break label271;
-        }
-        if (paramBoolean) {}
-        for (str = ContactUtils.e(paramQQAppInterface, paramString2, paramString1);; str = ContactUtils.d(paramQQAppInterface, paramString2, paramString1))
+        if (-1 == paramInt)
         {
-          if (!TextUtils.isEmpty(str))
+          paramQQAppInterface = ContactUtils.b(paramQQAppInterface, paramString1, true);
+        }
+        else
+        {
+          Object localObject;
+          if (CmShowAioMatcherImpl.judgeSupported(paramInt, 2))
           {
-            paramString2 = str;
-            if (!str.equals(paramString1)) {
-              break;
+            if (paramBoolean) {
+              paramString2 = ContactUtils.b(paramQQAppInterface, paramString2, paramString1);
+            } else {
+              paramString2 = ContactUtils.a(paramQQAppInterface, paramString2, paramString1);
+            }
+            if (!TextUtils.isEmpty(paramString2))
+            {
+              localObject = paramString2;
+              if (!paramString2.equals(paramString1)) {}
+            }
+            else
+            {
+              localObject = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString1);
+              if (localObject != null)
+              {
+                paramQQAppInterface = ((Friends)localObject).name;
+                break label287;
+              }
+              ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(paramString1, false);
+              localObject = paramString2;
             }
           }
-          paramString2 = ((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(paramString1);
-          if (paramString2 == null) {
-            break label250;
+          else
+          {
+            if (!CmShowAioMatcherImpl.judgeSupported(paramInt, 1)) {
+              break label283;
+            }
+            if (paramBoolean) {
+              paramString2 = ContactUtils.i(paramQQAppInterface, paramString1);
+            } else {
+              paramString2 = ContactUtils.b(paramQQAppInterface, paramString1, true);
+            }
+            localObject = paramString2;
+            if (paramString1.equals(paramString2))
+            {
+              ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(paramString1, false);
+              localObject = paramString2;
+            }
           }
-          paramString2 = paramString2.name;
-          break;
+          paramQQAppInterface = (QQAppInterface)localObject;
+          break label287;
+          label283:
+          paramQQAppInterface = "";
         }
-        ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(paramString1, false);
-        paramString2 = str;
+        label287:
+        paramString2 = paramQQAppInterface;
+        if (!TextUtils.isEmpty(paramQQAppInterface)) {
+          paramString2 = paramQQAppInterface.replace("\\", "").replace("'", "").replace("\"", "");
+        }
+        paramQQAppInterface = paramString2;
+        if (TextUtils.isEmpty(paramString2)) {
+          paramQQAppInterface = paramString1;
+        }
+        return paramQQAppInterface;
       }
-      paramString2 = str;
-    } while (!CmShowAioMatcher.a(paramInt, 1));
-    label271:
-    if (paramBoolean) {}
-    for (str = ContactUtils.p(paramQQAppInterface, paramString1);; str = ContactUtils.d(paramQQAppInterface, paramString1, true))
-    {
-      paramString2 = str;
-      if (!paramString1.equals(str)) {
-        break;
-      }
-      ((FriendListHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).getFriendInfo(paramString1, false);
-      paramString2 = str;
-      break;
     }
+    return "";
   }
   
   public static String a(String paramString)
@@ -412,30 +433,34 @@ public class SpriteUtil
   
   public static void a(int paramInt, Object... paramVarArgs)
   {
-    if (BaseApplicationImpl.sProcessId != 1) {}
-    QQAppInterface localQQAppInterface;
-    do
-    {
+    if (BaseApplicationImpl.sProcessId != 1) {
       return;
-      localQQAppInterface = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getQQApp();
-    } while (localQQAppInterface == null);
+    }
+    AppRuntime localAppRuntime = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getAppInterface();
+    if (localAppRuntime == null) {
+      return;
+    }
     int i = paramInt;
     if (paramInt == 0) {
       i = -100;
     }
-    ((IApolloMessageService)localQQAppInterface.getRuntimeService(IApolloMessageService.class, "all")).reportTraceSpanMsg(i, paramVarArgs);
+    ((IApolloMessageService)localAppRuntime.getRuntimeService(IApolloMessageService.class, "all")).reportTraceSpanMsg(i, paramVarArgs);
   }
   
   public static void a(ISpriteContext paramISpriteContext, List<SpriteTaskParam> paramList)
   {
-    paramISpriteContext = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getQQApp();
-    if ((paramISpriteContext == null) || (paramList == null) || (paramList.size() == 0)) {}
-    do
+    paramISpriteContext = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getAppInterface();
+    if ((paramISpriteContext != null) && (paramList != null))
     {
-      return;
+      if (paramList.size() == 0) {
+        return;
+      }
       paramISpriteContext = a(paramISpriteContext);
-    } while (paramISpriteContext == null);
-    ((SpriteBridge)paramISpriteContext.getSpriteBridge()).a(paramList);
+      if (paramISpriteContext == null) {
+        return;
+      }
+      ((SpriteBridge)paramISpriteContext.getSpriteBridge()).a(paramList);
+    }
   }
   
   public static void a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, int paramInt, ApolloActionData paramApolloActionData)
@@ -451,7 +476,7 @@ public class SpriteUtil
     localSpriteTaskParam.e = 0;
     localSpriteTaskParam.jdField_a_of_type_Long = 1000000L;
     localSpriteTaskParam.jdField_a_of_type_Boolean = true;
-    localSpriteTaskParam.jdField_b_of_type_Boolean = false;
+    localSpriteTaskParam.b = false;
     paramApolloActionData = paramSpriteDrawerInfoManager.a();
     if (paramApolloActionData != null) {
       localSpriteTaskParam.jdField_a_of_type_JavaLangString = paramApolloActionData.a();
@@ -461,154 +486,138 @@ public class SpriteUtil
   
   public static void a(SpriteDrawerInfoManager paramSpriteDrawerInfoManager, String paramString, int paramInt1, int paramInt2)
   {
-    if ((paramSpriteDrawerInfoManager == null) || (paramSpriteDrawerInfoManager.a() == null)) {
-      return;
-    }
-    SpriteActionScript localSpriteActionScript = paramSpriteDrawerInfoManager.a();
-    IApolloRenderView localIApolloRenderView = paramSpriteDrawerInfoManager.a().a();
-    if (localIApolloRenderView != null) {
-      localIApolloRenderView.setBubbleType(paramInt1);
-    }
-    paramSpriteDrawerInfoManager = paramSpriteDrawerInfoManager.a();
-    int i = 1;
-    if (paramSpriteDrawerInfoManager != null) {
-      i = ((IApolloManagerService)paramSpriteDrawerInfoManager.getRuntimeService(IApolloManagerService.class, "all")).getCmShowStatus(paramSpriteDrawerInfoManager, paramSpriteDrawerInfoManager.getCurrentUin());
-    }
-    localSpriteActionScript.a("", paramString, a(paramInt1, paramInt2, paramString, i));
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {}
-    do
+    if (paramSpriteDrawerInfoManager != null)
     {
-      return;
-      paramQQAppInterface = a(paramQQAppInterface);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.d(true);
+      if (paramSpriteDrawerInfoManager.a() == null) {
+        return;
+      }
+      SpriteActionScript localSpriteActionScript = paramSpriteDrawerInfoManager.a();
+      paramSpriteDrawerInfoManager.a().a(paramInt1);
+      paramSpriteDrawerInfoManager = paramSpriteDrawerInfoManager.a();
+      int i = 1;
+      if (paramSpriteDrawerInfoManager != null) {
+        i = ((IApolloManagerService)paramSpriteDrawerInfoManager.getRuntimeService(IApolloManagerService.class, "all")).getCmShowStatus(paramSpriteDrawerInfoManager.getCurrentUin());
+      }
+      localSpriteActionScript.a("", paramString, a(paramInt1, paramInt2, paramString, i));
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, SpriteTaskParam paramSpriteTaskParam)
   {
-    if ((paramSpriteTaskParam == null) || (paramQQAppInterface == null)) {}
-    ISpriteContext localISpriteContext;
-    do
+    if (paramSpriteTaskParam != null)
     {
-      return;
-      localISpriteContext = a(paramQQAppInterface);
-    } while (localISpriteContext == null);
-    int k = localISpriteContext.c();
-    int i;
-    if ((1 == k) || (3000 == k))
-    {
-      if (TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {
-        break label289;
+      if (paramQQAppInterface == null) {
+        return;
       }
-      if (paramSpriteTaskParam.jdField_b_of_type_Boolean) {
-        i = 2;
+      ISpriteContext localISpriteContext = a(paramQQAppInterface);
+      if (localISpriteContext == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      int j;
-      if (paramSpriteTaskParam.jdField_a_of_type_Boolean)
+      int j = localISpriteContext.b();
+      String str1 = "1";
+      if ((1 != j) && (3000 != j))
       {
-        j = 0;
-        label71:
-        k = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(k);
-        str = Integer.toString(paramSpriteTaskParam.f);
-        if (paramSpriteTaskParam.e != 0) {
-          break label179;
+        if (j == 0)
+        {
+          if (TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {
+            str1 = "0";
+          }
+          VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "msg_clk", paramSpriteTaskParam.jdField_a_of_type_Boolean ^ true, 0, new String[] { Integer.toString(paramSpriteTaskParam.f), str1, "", String.valueOf(System.currentTimeMillis() / 1000L), localISpriteContext.b() });
         }
       }
-      label179:
-      for (paramSpriteTaskParam = "0";; paramSpriteTaskParam = "1")
+      else
       {
-        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "g_msg_clk", j, k, new String[] { str, paramSpriteTaskParam, String.valueOf(i), String.valueOf(System.currentTimeMillis() / 1000L), localISpriteContext.b() });
-        return;
-        i = 1;
-        break;
-        j = 1;
-        break label71;
+        int i;
+        if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString))
+        {
+          if (paramSpriteTaskParam.b) {
+            i = 2;
+          } else {
+            i = 1;
+          }
+        }
+        else {
+          i = 0;
+        }
+        boolean bool = paramSpriteTaskParam.jdField_a_of_type_Boolean;
+        j = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(j);
+        String str2 = Integer.toString(paramSpriteTaskParam.f);
+        if (paramSpriteTaskParam.e == 0) {
+          str1 = "0";
+        }
+        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "g_msg_clk", bool ^ true, j, new String[] { str2, str1, String.valueOf(i), String.valueOf(System.currentTimeMillis() / 1000L), localISpriteContext.b() });
       }
-      if (k != 0) {
-        break;
-      }
-      String str = "0";
-      if (!TextUtils.isEmpty(paramSpriteTaskParam.jdField_c_of_type_JavaLangString)) {
-        str = "1";
-      }
-      if (paramSpriteTaskParam.jdField_a_of_type_Boolean) {}
-      for (i = 0;; i = 1)
-      {
-        VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "msg_clk", i, 0, new String[] { Integer.toString(paramSpriteTaskParam.f), str, "", String.valueOf(System.currentTimeMillis() / 1000L), localISpriteContext.b() });
-        return;
-      }
-      label289:
-      i = 0;
     }
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface)
+  public static void a(AppRuntime paramAppRuntime)
   {
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
+    if (paramAppRuntime == null) {
+      return;
+    }
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime == null) {
+      return;
+    }
+    paramAppRuntime.d(true);
+  }
+  
+  public static boolean a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
+  {
+    Object localObject = ApolloUtilImpl.getQQApp();
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (localObject == null) {
+        return false;
+      }
+      localObject = ((QQAppInterface)localObject).getCurrentAccountUin();
+      if ((!TextUtils.isEmpty(paramString3)) && (paramString3.length() > 4))
+      {
+        if ((paramString1.equals(paramString3)) && (paramString1.equals(localObject)) && (!paramString1.equals(paramString2))) {
+          return true;
+        }
+        return (paramString1.equals(paramString2)) && (paramBoolean);
+      }
+      if ((!TextUtils.isEmpty(paramString2)) && (paramString1.equals(localObject))) {
+        return true;
+      }
+    }
+    return false;
+  }
+  
+  public static boolean a(AppRuntime paramAppRuntime)
+  {
+    paramAppRuntime = a(paramAppRuntime);
+    if (paramAppRuntime == null) {
       return true;
     }
-    if (-1 == paramQQAppInterface.a()) {
-      paramQQAppInterface.a();
-    }
-    return paramQQAppInterface.a();
+    return paramAppRuntime.a();
   }
   
-  public static boolean a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  public static boolean a(AppRuntime paramAppRuntime, int paramInt, String paramString)
   {
-    CmShowAioMatcher.AioSupported localAioSupported = CmShowAioMatcher.a(paramInt);
+    ICmShowAioMatcher.AioSupported localAioSupported = CmShowAioMatcherImpl.match(paramInt);
     if (localAioSupported == null)
     {
-      QLog.d("cmshow_scripted_SpriteUtil", 2, "cmshow NOT support, not friend or troop or discussion.");
+      QLog.d("[cmshow][scripted]SpriteUtil", 2, "cmshow NOT support, not friend or troop or discussion.");
       return false;
     }
-    return localAioSupported.a(paramQQAppInterface, paramString);
+    return localAioSupported.a(paramAppRuntime, paramString);
   }
   
-  public static boolean a(String paramString, SpriteTaskParam paramSpriteTaskParam, SpriteContext paramSpriteContext, boolean paramBoolean)
+  public static boolean a(AppRuntime paramAppRuntime, @NonNull Scene paramScene)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((TextUtils.isEmpty(paramString)) || (paramSpriteContext == null) || (paramSpriteContext.a() == null)) {
-      bool1 = false;
-    }
-    label111:
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          paramSpriteContext = paramSpriteContext.a().getCurrentAccountUin();
-          if ((TextUtils.isEmpty(paramSpriteTaskParam.jdField_b_of_type_JavaLangString)) || (paramSpriteTaskParam.jdField_b_of_type_JavaLangString.length() <= 4)) {
-            break label111;
-          }
-          if ((!paramString.equals(paramSpriteTaskParam.jdField_b_of_type_JavaLangString)) || (!paramString.equals(paramSpriteContext))) {
-            break;
-          }
-          bool1 = bool2;
-        } while (!paramString.equals(paramSpriteTaskParam.jdField_a_of_type_JavaLangString));
-        if (!paramString.equals(paramSpriteTaskParam.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramBoolean);
+    if (paramAppRuntime == null) {
       return false;
-      if (TextUtils.isEmpty(paramSpriteTaskParam.jdField_a_of_type_JavaLangString)) {
-        break;
+    }
+    if (!((IApolloManagerService)paramAppRuntime.getRuntimeService(IApolloManagerService.class, "all")).isApolloSupport(BaseApplicationImpl.getContext()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("[cmshow][scripted]SpriteUtil", 2, "NOT allowed to use cmshow.");
       }
-      bool1 = bool2;
-    } while (paramString.equals(paramSpriteContext));
-    return false;
-    return false;
+      return false;
+    }
+    return CMShowPlatform.a.a(paramScene);
   }
   
   public static int b()
@@ -616,113 +625,56 @@ public class SpriteUtil
     return (int)DeviceInfoUtil.i();
   }
   
-  public static int b(int paramInt)
+  public static boolean b(AppRuntime paramAppRuntime)
   {
-    switch (paramInt)
-    {
-    case 0: 
-    default: 
-      return 1;
-    case 1: 
-      return 2;
-    case 2: 
-      return 3;
-    }
-    return 113;
+    paramAppRuntime = a(paramAppRuntime);
+    return (paramAppRuntime == null) || (paramAppRuntime.b());
   }
   
-  public static void b(QQAppInterface paramQQAppInterface)
+  public static boolean b(AppRuntime paramAppRuntime, int paramInt, String paramString)
   {
-    if (paramQQAppInterface == null) {}
-    do
-    {
-      ISpriteContext localISpriteContext;
-      SharedPreferences localSharedPreferences;
-      int i;
-      do
-      {
-        do
-        {
-          return;
-          localISpriteContext = a(paramQQAppInterface);
-        } while (localISpriteContext == null);
-        localSharedPreferences = SharedPreferencesProxyManager.getInstance().getProxy("apollo_sp", 0);
-        i = localSharedPreferences.getInt("audio_tips_times" + localISpriteContext.a(), 0);
-        if (QLog.isColorLevel()) {
-          QLog.d("cmshow_scripted_SpriteUtil", 2, "totalTimes:" + i);
-        }
-      } while (3 == i);
-      localSharedPreferences.edit().putInt("audio_tips_times" + localISpriteContext.a(), i + 1).commit();
-      paramQQAppInterface = paramQQAppInterface.getHandler(ChatActivity.class);
-    } while (paramQQAppInterface == null);
-    paramQQAppInterface.post(new SpriteUtil.1());
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = a(paramQQAppInterface);
-    return (paramQQAppInterface == null) || (paramQQAppInterface.b());
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
-  {
-    int i = b(0);
-    if (!d(paramQQAppInterface))
+    int i = TraceReportUtil.a(0);
+    if (!a(paramAppRuntime, Scene.AIO))
     {
       TraceReportUtil.a(i, 10, 102, new Object[] { "not meet basic case" });
-      QLog.i("cmshow_scripted_SpriteUtil", 1, "not meet basic case.");
+      QLog.i("[cmshow][scripted]SpriteUtil", 1, "not meet basic case.");
       return false;
     }
-    if (2 == ((IApolloActionHelper)QRoute.api(IApolloActionHelper.class)).getApolloFuncSwitch(paramQQAppInterface.getCurrentUin(), paramQQAppInterface))
+    if (2 == ((IApolloActionHelper)QRoute.api(IApolloActionHelper.class)).getApolloFuncSwitch(paramAppRuntime.getCurrentUin(), paramAppRuntime))
     {
       TraceReportUtil.a(i, 10, 101, new Object[] { "cmshow switch NOT opend CLOSED_STATUS" });
-      QLog.i("cmshow_scripted_SpriteUtil", 1, "cmshow switch NOT opend.");
+      QLog.i("[cmshow][scripted]SpriteUtil", 1, "cmshow switch NOT opend.");
       return false;
     }
     if (AnonymousChatHelper.a().a(paramString))
     {
       TraceReportUtil.a(i, 10, 104, new Object[] { "aio anonymous" });
       if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteUtil", 2, "aio anonymous.");
+        QLog.d("[cmshow][scripted]SpriteUtil", 2, "aio anonymous.");
       }
       return false;
     }
-    if (!a(paramQQAppInterface, paramInt, paramString)) {
+    if (!a(paramAppRuntime, paramInt, paramString)) {
       return false;
     }
-    return !b(paramQQAppInterface);
+    return !b(paramAppRuntime);
   }
   
-  public static boolean c(QQAppInterface paramQQAppInterface)
+  public static boolean c(AppRuntime paramAppRuntime)
   {
-    return (!b(paramQQAppInterface)) && (CmShowWnsUtils.e());
+    return (!b(paramAppRuntime)) && (CmShowWnsUtils.f());
   }
   
-  public static boolean d(QQAppInterface paramQQAppInterface)
+  public static boolean d(AppRuntime paramAppRuntime)
   {
-    if (paramQQAppInterface == null) {
+    if (!a(paramAppRuntime, Scene.DRAWER))
+    {
+      QLog.i("[cmshow][scripted]SpriteUtil", 1, "not meet basic case.");
       return false;
     }
-    if (!((IApolloManagerService)paramQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).isApolloSupport(BaseApplicationImpl.getContext()))
+    if (1 != ((IApolloActionHelper)QRoute.api(IApolloActionHelper.class)).getApolloFuncSwitch(paramAppRuntime.getCurrentUin(), paramAppRuntime))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteUtil", 2, "NOT allowed to use cmshow.");
-      }
-      return false;
-    }
-    return ApolloEngine.a();
-  }
-  
-  public static boolean e(QQAppInterface paramQQAppInterface)
-  {
-    if (!d(paramQQAppInterface))
-    {
-      QLog.i("cmshow_scripted_SpriteUtil", 1, "not meet basic case.");
-      return false;
-    }
-    if (1 != ((IApolloActionHelper)QRoute.api(IApolloActionHelper.class)).getApolloFuncSwitch(paramQQAppInterface.getCurrentUin(), paramQQAppInterface))
-    {
-      QLog.i("cmshow_scripted_SpriteUtil", 1, "cmshow switch NOT opend.");
+      QLog.i("[cmshow][scripted]SpriteUtil", 1, "cmshow switch NOT opend.");
       return false;
     }
     return true;
@@ -730,7 +682,7 @@ public class SpriteUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUtil
  * JD-Core Version:    0.7.0.1
  */

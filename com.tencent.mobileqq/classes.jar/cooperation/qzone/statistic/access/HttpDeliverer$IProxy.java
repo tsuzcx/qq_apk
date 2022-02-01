@@ -10,12 +10,16 @@ public abstract class HttpDeliverer$IProxy
   
   public String toString()
   {
-    return getHost() + ':' + getPort();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getHost());
+    localStringBuilder.append(':');
+    localStringBuilder.append(getPort());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.statistic.access.HttpDeliverer.IProxy
  * JD-Core Version:    0.7.0.1
  */

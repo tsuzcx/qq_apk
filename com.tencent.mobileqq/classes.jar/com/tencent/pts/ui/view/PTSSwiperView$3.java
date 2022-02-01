@@ -11,24 +11,29 @@ class PTSSwiperView$3
   
   public void run()
   {
-    if ((PTSSwiperView.access$100(this.this$0) == null) || (PTSSwiperView.access$600(this.this$0) == null)) {}
-    while (!PTSSwiperView.access$700(this.this$0)) {
-      return;
-    }
-    PTSNodeSwiper localPTSNodeSwiper = PTSSwiperView.access$800(this.this$0);
-    if ((localPTSNodeSwiper != null) && (localPTSNodeSwiper.getAppInstance() != null) && (localPTSNodeSwiper.getAppInstance().getContext() == null))
+    if (PTSSwiperView.access$100(this.this$0) != null)
     {
-      PTSLog.i("PTSSwiperView", "mAutoPlayRunnable [run] context is null, stop scroll.");
-      return;
+      if (PTSSwiperView.access$600(this.this$0) == null) {
+        return;
+      }
+      if (!PTSSwiperView.access$700(this.this$0)) {
+        return;
+      }
+      PTSNodeSwiper localPTSNodeSwiper = PTSSwiperView.access$800(this.this$0);
+      if ((localPTSNodeSwiper != null) && (localPTSNodeSwiper.getAppInstance() != null) && (localPTSNodeSwiper.getAppInstance().getContext() == null))
+      {
+        PTSLog.i("PTSSwiperView", "mAutoPlayRunnable [run] context is null, stop scroll.");
+        return;
+      }
+      PTSSwiperView.access$100(this.this$0).snapToNextPosition();
+      PTSSwiperView.access$600(this.this$0).removeCallbacks(PTSSwiperView.access$900(this.this$0));
+      PTSSwiperView.access$600(this.this$0).postDelayed(PTSSwiperView.access$900(this.this$0), PTSSwiperView.access$1000(this.this$0));
     }
-    PTSSwiperView.access$100(this.this$0).snapToNextPosition();
-    PTSSwiperView.access$600(this.this$0).removeCallbacks(PTSSwiperView.access$900(this.this$0));
-    PTSSwiperView.access$600(this.this$0).postDelayed(PTSSwiperView.access$900(this.this$0), PTSSwiperView.access$1000(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSSwiperView.3
  * JD-Core Version:    0.7.0.1
  */

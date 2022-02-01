@@ -7,7 +7,7 @@ public class RMVideoPreviewState
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
     if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.n();
+      localRMVideoStateMgr.a.d();
     }
   }
   
@@ -18,7 +18,7 @@ public class RMVideoPreviewState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoPreviewState
  * JD-Core Version:    0.7.0.1
  */

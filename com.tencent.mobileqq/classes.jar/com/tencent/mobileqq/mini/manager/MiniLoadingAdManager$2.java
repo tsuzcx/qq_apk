@@ -12,13 +12,21 @@ class MiniLoadingAdManager$2
   
   public void onDownloadCanceled(String paramString)
   {
-    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " canceled");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("processSelectAdWithUncachedAd download url= ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" canceled");
+    QLog.d("MiniLoadingAdManager", 1, localStringBuilder.toString());
     this.val$onChooseAdEndListener.onDownloadAdEnd(null, null);
   }
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " failed");
+    paramDownloadResult = new StringBuilder();
+    paramDownloadResult.append("processSelectAdWithUncachedAd download url= ");
+    paramDownloadResult.append(paramString);
+    paramDownloadResult.append(" failed");
+    QLog.d("MiniLoadingAdManager", 1, paramDownloadResult.toString());
     this.val$onChooseAdEndListener.onDownloadAdEnd(null, null);
   }
   
@@ -26,13 +34,17 @@ class MiniLoadingAdManager$2
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " succeed");
+    paramDownloadResult = new StringBuilder();
+    paramDownloadResult.append("processSelectAdWithUncachedAd download url= ");
+    paramDownloadResult.append(paramString);
+    paramDownloadResult.append(" succeed");
+    QLog.d("MiniLoadingAdManager", 1, paramDownloadResult.toString());
     this.val$onChooseAdEndListener.onDownloadAdEnd(this.val$newCachedAdInfo.filePath, this.val$adInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.manager.MiniLoadingAdManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -40,26 +40,33 @@ public class BannerFeedItem
   {
     super.copy(paramObject);
     paramObject = (BannerFeedItem)paramObject;
-    if (paramObject.content != null) {
-      this.content = paramObject.content;
+    String str = paramObject.content;
+    if (str != null) {
+      this.content = str;
     }
-    if (paramObject.coverUrl != null) {
-      this.coverUrl = paramObject.coverUrl;
+    str = paramObject.coverUrl;
+    if (str != null) {
+      this.coverUrl = str;
     }
-    if (paramObject.schema != null) {
-      this.schema = paramObject.schema;
+    str = paramObject.schema;
+    if (str != null) {
+      this.schema = str;
     }
-    if (paramObject.blurb != null) {
-      this.blurb = paramObject.blurb;
+    str = paramObject.blurb;
+    if (str != null) {
+      this.blurb = str;
     }
-    if (paramObject.coverHeight != -1) {
-      this.coverHeight = paramObject.coverHeight;
+    int i = paramObject.coverHeight;
+    if (i != -1) {
+      this.coverHeight = i;
     }
-    if (paramObject.coverWidth != -1) {
-      this.coverWidth = paramObject.coverWidth;
+    i = paramObject.coverWidth;
+    if (i != -1) {
+      this.coverWidth = i;
     }
-    if (paramObject.recommendId != -1L) {
-      this.recommendId = paramObject.recommendId;
+    long l = paramObject.recommendId;
+    if (l != -1L) {
+      this.recommendId = l;
     }
     if (!TextUtils.isEmpty(paramObject.recommendTitle)) {
       this.recommendTitle = paramObject.recommendTitle;
@@ -74,7 +81,7 @@ public class BannerFeedItem
     paramString = new QQUserUIItem();
     paramString.convertFrom((qqstory_struct.UserInfo)paramBannerFeed.user.get());
     this.mOwner = ((UserManager)SuperManager.a(2)).a(paramString);
-    AssertUtils.a(this.mOwner);
+    AssertUtils.checkNotNull(this.mOwner);
     this.ownerId = this.mOwner.getUnionId();
     this.date = String.valueOf(paramBannerFeed.date.get());
     super.setDate(this.date);
@@ -98,89 +105,71 @@ public class BannerFeedItem
     SerializationPB.BannerFeed localBannerFeed = new SerializationPB.BannerFeed();
     localBannerFeed.commet_like_feed.set(super.writeCommentLikeFeedlocalPB());
     PBStringField localPBStringField = localBannerFeed.share_info_title;
-    if (TextUtils.isEmpty(this.shareInfo.a))
-    {
-      str = "";
-      localPBStringField.set(str);
-      localPBStringField = localBannerFeed.share_info_icon;
-      if (!TextUtils.isEmpty(this.shareInfo.c)) {
-        break label288;
-      }
-      str = "";
-      label66:
-      localPBStringField.set(str);
-      localPBStringField = localBannerFeed.share_info_content;
-      if (!TextUtils.isEmpty(this.shareInfo.b)) {
-        break label299;
-      }
-      str = "";
-      label92:
-      localPBStringField.set(str);
-      localPBStringField = localBannerFeed.share_info_jump_url;
-      if (!TextUtils.isEmpty(this.shareInfo.d)) {
-        break label310;
-      }
-      str = "";
-      label118:
-      localPBStringField.set(str);
-      localPBStringField = localBannerFeed.blurb;
-      if (!TextUtils.isEmpty(this.blurb)) {
-        break label321;
-      }
-      str = "";
-      label141:
-      localPBStringField.set(str);
-      localPBStringField = localBannerFeed.schema;
-      if (!TextUtils.isEmpty(this.schema)) {
-        break label329;
-      }
-      str = "";
-      label164:
-      localPBStringField.set(str);
-      localPBStringField = localBannerFeed.content;
-      if (!TextUtils.isEmpty(this.content)) {
-        break label337;
-      }
-      str = "";
-      label187:
-      localPBStringField.set(str);
-      localPBStringField = localBannerFeed.cover_url;
-      if (!TextUtils.isEmpty(this.coverUrl)) {
-        break label345;
-      }
+    boolean bool = TextUtils.isEmpty(this.shareInfo.a);
+    String str2 = "";
+    String str1;
+    if (bool) {
+      str1 = "";
+    } else {
+      str1 = this.shareInfo.a;
     }
-    label288:
-    label299:
-    label310:
-    label321:
-    label329:
-    label337:
-    label345:
-    for (String str = "";; str = this.coverUrl)
-    {
-      localPBStringField.set(str);
-      localBannerFeed.height.set(this.coverHeight);
-      localBannerFeed.width.set(this.coverWidth);
-      localBannerFeed.recommend_id.set(this.recommendId);
-      if (!TextUtils.isEmpty(this.recommendTitle)) {
-        localBannerFeed.title_wording.set(ByteStringMicro.copyFromUtf8(this.recommendTitle));
-      }
-      return localBannerFeed.toByteArray();
-      str = this.shareInfo.a;
-      break;
-      str = this.shareInfo.c;
-      break label66;
-      str = this.shareInfo.b;
-      break label92;
-      str = this.shareInfo.d;
-      break label118;
-      str = this.blurb;
-      break label141;
-      str = this.schema;
-      break label164;
-      str = this.content;
-      break label187;
+    localPBStringField.set(str1);
+    localPBStringField = localBannerFeed.share_info_icon;
+    if (TextUtils.isEmpty(this.shareInfo.c)) {
+      str1 = "";
+    } else {
+      str1 = this.shareInfo.c;
     }
+    localPBStringField.set(str1);
+    localPBStringField = localBannerFeed.share_info_content;
+    if (TextUtils.isEmpty(this.shareInfo.b)) {
+      str1 = "";
+    } else {
+      str1 = this.shareInfo.b;
+    }
+    localPBStringField.set(str1);
+    localPBStringField = localBannerFeed.share_info_jump_url;
+    if (TextUtils.isEmpty(this.shareInfo.d)) {
+      str1 = "";
+    } else {
+      str1 = this.shareInfo.d;
+    }
+    localPBStringField.set(str1);
+    localPBStringField = localBannerFeed.blurb;
+    if (TextUtils.isEmpty(this.blurb)) {
+      str1 = "";
+    } else {
+      str1 = this.blurb;
+    }
+    localPBStringField.set(str1);
+    localPBStringField = localBannerFeed.schema;
+    if (TextUtils.isEmpty(this.schema)) {
+      str1 = "";
+    } else {
+      str1 = this.schema;
+    }
+    localPBStringField.set(str1);
+    localPBStringField = localBannerFeed.content;
+    if (TextUtils.isEmpty(this.content)) {
+      str1 = "";
+    } else {
+      str1 = this.content;
+    }
+    localPBStringField.set(str1);
+    localPBStringField = localBannerFeed.cover_url;
+    if (TextUtils.isEmpty(this.coverUrl)) {
+      str1 = str2;
+    } else {
+      str1 = this.coverUrl;
+    }
+    localPBStringField.set(str1);
+    localBannerFeed.height.set(this.coverHeight);
+    localBannerFeed.width.set(this.coverWidth);
+    localBannerFeed.recommend_id.set(this.recommendId);
+    if (!TextUtils.isEmpty(this.recommendTitle)) {
+      localBannerFeed.title_wording.set(ByteStringMicro.copyFromUtf8(this.recommendTitle));
+    }
+    return localBannerFeed.toByteArray();
   }
   
   @NonNull
@@ -230,7 +219,7 @@ public class BannerFeedItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.BannerFeedItem
  * JD-Core Version:    0.7.0.1
  */

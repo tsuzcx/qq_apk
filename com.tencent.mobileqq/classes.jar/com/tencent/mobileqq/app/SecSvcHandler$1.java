@@ -2,8 +2,7 @@ package com.tencent.mobileqq.app;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.activity.NotificationActivity;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 
 class SecSvcHandler$1
   implements Runnable
@@ -14,7 +13,7 @@ class SecSvcHandler$1
   {
     try
     {
-      Intent localIntent = new Intent(SecSvcHandler.a(this.this$0).getApp(), NotificationActivity.class);
+      Intent localIntent = new Intent();
       localIntent.putExtra("type", 11);
       Bundle localBundle = new Bundle();
       localBundle.putString("dlg_title", this.jdField_a_of_type_JavaLangString);
@@ -27,10 +26,11 @@ class SecSvcHandler$1
       localBundle.putInt("dlg_seccmd", this.jdField_c_of_type_Int);
       localIntent.putExtras(localBundle);
       localIntent.setFlags(872415232);
-      if (!SecSvcHandler.a(this.this$0).isBackgroundStop) {
-        SecSvcHandler.a(this.this$0).getApp().startActivity(localIntent);
+      if (!SecSvcHandler.a(this.this$0).isBackgroundStop)
+      {
+        RouteUtils.a(SecSvcHandler.a(this.this$0).getApp(), localIntent, "/base/notification");
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -40,7 +40,7 @@ class SecSvcHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SecSvcHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -48,18 +48,18 @@ public abstract class PageProxy
   
   public void b() {}
   
-  public void d() {}
-  
-  public void e() {}
-  
-  public boolean e()
+  public boolean c()
   {
     return false;
   }
+  
+  public void d() {}
+  
+  public void e() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.interfaces.PageProxy
  * JD-Core Version:    0.7.0.1
  */

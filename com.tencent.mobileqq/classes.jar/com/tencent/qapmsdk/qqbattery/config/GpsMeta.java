@@ -33,8 +33,8 @@ public class GpsMeta
       {
         this.maxCallTimeInLongTime = Integer.valueOf(localObject[1][0]).intValue();
         this.longTime = (Integer.valueOf(localObject[1][1]).intValue() * 60 * 1000L);
+        return this;
       }
-      return this;
     }
     catch (Exception paramString)
     {
@@ -45,7 +45,7 @@ public class GpsMeta
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.config.GpsMeta
  * JD-Core Version:    0.7.0.1
  */

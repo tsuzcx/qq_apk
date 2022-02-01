@@ -10,18 +10,19 @@ public class BaseViewModel$PreloadListener
   
   public void onComplete(Object[] paramArrayOfObject)
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      BaseViewModel localBaseViewModel = (BaseViewModel)this.a.get();
-      if (localBaseViewModel != null) {
-        localBaseViewModel.a(paramArrayOfObject);
+      localObject = (BaseViewModel)((WeakReference)localObject).get();
+      if (localObject != null) {
+        ((BaseViewModel)localObject).a(paramArrayOfObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.BaseViewModel.PreloadListener
  * JD-Core Version:    0.7.0.1
  */

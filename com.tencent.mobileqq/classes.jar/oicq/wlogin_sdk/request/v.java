@@ -36,14 +36,23 @@ public class v
     int i = 0;
     for (;;)
     {
-      byte[] arrayOfByte = a(paramArrayOfByte1, paramArrayOfByte2, paramWUserSigInfo.extraLoginTLVMap);
-      a(this.x.f, arrayOfByte, this.y);
+      Object localObject = a(paramArrayOfByte1, paramArrayOfByte2, paramWUserSigInfo.extraLoginTLVMap);
+      a(this.x.f, (byte[])localObject, this.y);
       int j = a(String.valueOf(this.x.f), false, paramWUserSigInfo);
       if (j != 0) {
         return j;
       }
       j = b();
-      util.LOGI("retry num:" + i + " ret:" + j, "" + this.x.f);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("retry num:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" ret:");
+      ((StringBuilder)localObject).append(j);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.x.f);
+      util.LOGI((String)localObject, localStringBuilder.toString());
       if (j != 180) {
         return j;
       }
@@ -56,111 +65,121 @@ public class v
   
   public byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, Map<Integer, tlv_t> paramMap)
   {
-    int i = 0;
     int[] arrayOfInt = new int[7];
-    int[] tmp11_9 = arrayOfInt;
-    tmp11_9[0] = 256;
-    int[] tmp17_11 = tmp11_9;
-    tmp17_11[1] = 322;
-    int[] tmp23_17 = tmp17_11;
-    tmp23_17[2] = 325;
-    int[] tmp29_23 = tmp23_17;
-    tmp29_23[3] = 387;
-    int[] tmp35_29 = tmp29_23;
-    tmp35_29[4] = 388;
-    int[] tmp41_35 = tmp35_29;
-    tmp41_35[5] = 1331;
-    int[] tmp47_41 = tmp41_35;
-    tmp47_41[6] = 1313;
-    tmp47_41;
+    int[] tmp8_6 = arrayOfInt;
+    tmp8_6[0] = 256;
+    int[] tmp14_8 = tmp8_6;
+    tmp14_8[1] = 322;
+    int[] tmp20_14 = tmp14_8;
+    tmp20_14[2] = 325;
+    int[] tmp26_20 = tmp20_14;
+    tmp26_20[3] = 387;
+    int[] tmp32_26 = tmp26_20;
+    tmp32_26[4] = 388;
+    int[] tmp38_32 = tmp32_26;
+    tmp38_32[5] = 1331;
+    int[] tmp44_38 = tmp38_32;
+    tmp44_38[6] = 1313;
+    tmp44_38;
     ArrayList localArrayList = new ArrayList();
-    int m = arrayOfInt.length;
-    int j = 0;
+    int i1 = arrayOfInt.length;
     async_context localasync_context = t.b(this.x.h);
     int k = 0;
-    Object localObject;
-    if (k < m)
+    int j = 0;
+    for (int i = 0; k < i1; i = m)
     {
-      localObject = new byte[0];
-      switch (arrayOfInt[k])
+      Object localObject = new byte[0];
+      m = arrayOfInt[k];
+      if (m != 256)
       {
-      default: 
-        label172:
-        if (localObject.length > 4)
-        {
-          int n = localObject.length;
-          localArrayList.add(localObject);
-          j = n + j;
-          i += 1;
+        if (m != 322) {
+          if (m != 325) {
+            if (m != 1313) {
+              if (m != 1331) {
+                if (m != 387) {
+                  if (m != 388) {
+                    break label344;
+                  }
+                }
+              }
+            }
+          }
         }
-        break;
-      }
-    }
-    for (;;)
-    {
-      k += 1;
-      break;
-      localObject = new tlv_t100().get_tlv_100(localasync_context._appid, localasync_context._sub_appid, 0, localasync_context._main_sigmap);
-      break label172;
-      localObject = new tlv_t142().get_tlv_142(t.F);
-      break label172;
-      localObject = new tlv_t145().get_tlv_145(t.B);
-      break label172;
-      localObject = new tlv_t183().get_tlv_183(localasync_context._msalt);
-      break label172;
-      localObject = new tlv_t184().get_tlv_184(localasync_context._msalt, localasync_context._mpasswd);
-      break label172;
-      localObject = new tlv_t533().get_tlv_533(paramArrayOfByte1, paramArrayOfByte2);
-      break label172;
-      localObject = new tlv_t(1313);
-      byte[] arrayOfByte = new byte[6];
-      util.int32_to_buf(arrayOfByte, 0, t.aA);
-      util.int16_to_buf(arrayOfByte, 4, 0);
-      ((tlv_t)localObject).set_data(arrayOfByte, 6);
-      localObject = ((tlv_t)localObject).get_buf();
-      break label172;
-      m = j;
-      k = i;
-      if (paramMap != null)
-      {
-        paramArrayOfByte1 = paramMap.keySet().iterator();
         for (;;)
         {
-          m = j;
-          k = i;
-          if (!paramArrayOfByte1.hasNext()) {
-            break;
-          }
-          paramArrayOfByte2 = (tlv_t)paramMap.get((Integer)paramArrayOfByte1.next());
-          if (paramArrayOfByte2 != null)
-          {
-            paramArrayOfByte2 = paramArrayOfByte2.get_buf();
-            i += 1;
-            localArrayList.add(paramArrayOfByte2);
-            j += paramArrayOfByte2.length;
-          }
+          localObject = new tlv_t184().get_tlv_184(localasync_context._msalt, localasync_context._mpasswd);
+          continue;
+          localObject = new tlv_t183().get_tlv_183(localasync_context._msalt);
+          continue;
+          localObject = new tlv_t533().get_tlv_533(paramArrayOfByte1, paramArrayOfByte2);
+          continue;
+          localObject = new tlv_t(1313);
+          byte[] arrayOfByte = new byte[6];
+          util.int32_to_buf(arrayOfByte, 0, t.aA);
+          util.int16_to_buf(arrayOfByte, 4, 0);
+          ((tlv_t)localObject).set_data(arrayOfByte, 6);
+          localObject = ((tlv_t)localObject).get_buf();
+          continue;
+          localObject = new tlv_t145().get_tlv_145(t.B);
+          continue;
+          localObject = new tlv_t142().get_tlv_142(t.F);
         }
       }
-      paramArrayOfByte1 = new byte[m];
-      j = 0;
-      i = 0;
-      while (i < k)
+      else
       {
-        paramArrayOfByte2 = (byte[])localArrayList.get(i);
-        System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte1, j, paramArrayOfByte2.length);
-        j += paramArrayOfByte2.length;
-        i += 1;
+        localObject = new tlv_t100().get_tlv_100(localasync_context._appid, localasync_context._sub_appid, 0, localasync_context._main_sigmap);
       }
-      return b(paramArrayOfByte1, this.u, k);
+      label344:
+      int n = j;
+      m = i;
+      if (localObject.length > 4)
+      {
+        n = j + 1;
+        m = i + localObject.length;
+        localArrayList.add(localObject);
+      }
+      k += 1;
+      j = n;
     }
+    k = j;
+    int m = i;
+    if (paramMap != null)
+    {
+      paramArrayOfByte1 = paramMap.keySet().iterator();
+      for (;;)
+      {
+        k = j;
+        m = i;
+        if (!paramArrayOfByte1.hasNext()) {
+          break;
+        }
+        paramArrayOfByte2 = (tlv_t)paramMap.get((Integer)paramArrayOfByte1.next());
+        if (paramArrayOfByte2 != null)
+        {
+          paramArrayOfByte2 = paramArrayOfByte2.get_buf();
+          j += 1;
+          localArrayList.add(paramArrayOfByte2);
+          i += paramArrayOfByte2.length;
+        }
+      }
+    }
+    paramArrayOfByte1 = new byte[m];
+    i = 0;
+    j = 0;
+    while (i < k)
+    {
+      paramArrayOfByte2 = (byte[])localArrayList.get(i);
+      System.arraycopy(paramArrayOfByte2, 0, paramArrayOfByte1, j, paramArrayOfByte2.length);
+      j += paramArrayOfByte2.length;
+      i += 1;
+    }
+    return b(paramArrayOfByte1, this.u, k);
   }
   
   public int d(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (paramInt2 < 5)
-    {
-      paramInt1 = -1009;
-      return paramInt1;
+    if (paramInt2 < 5) {
+      return -1009;
     }
     Object localObject3 = new tlv_t104();
     tlv_t113 localtlv_t113 = new tlv_t113();
@@ -168,108 +187,136 @@ public class v
     tlv_t541 localtlv_t541 = new tlv_t541();
     Object localObject2 = t.b(this.x.h);
     paramInt2 = c(paramArrayOfByte, paramInt1 + 2);
-    int j = paramInt1 + 5;
+    int i = paramInt1 + 5;
     this.x.d = null;
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    default: 
-      c(paramArrayOfByte, j, this.c - j - 1);
-      paramInt1 = paramInt2;
-      label130:
-      localObject2 = new StringBuilder().append("request_login_by_wechat type:").append(paramInt2).append(" ret:");
-      if (paramInt1 > 0)
+      if (paramInt2 != 230)
       {
-        localObject1 = "0x" + Integer.toHexString(paramInt1);
-        label183:
-        util.LOGI(localObject1, "" + this.x.f);
-        if (paramInt1 != 0) {
-          break label630;
-        }
-        a(null);
-        paramInt2 = paramInt1;
+        c(paramArrayOfByte, i, this.c - i - 1);
+        paramInt1 = paramInt2;
       }
-      break;
+      else
+      {
+        localObject3 = new tlv_t543();
+        paramInt1 = ((tlv_t543)localObject3).get_tlv(paramArrayOfByte, i, this.c - i);
+        if (paramInt1 > 0)
+        {
+          ((async_context)localObject2)._t543 = ((tlv_t543)localObject3);
+          paramInt1 = ((tlv_t)localObject1).get_tlv(paramArrayOfByte, i, this.c - i);
+          if (paramInt1 > 0)
+          {
+            ((async_context)localObject2).tlv540 = ((tlv_t)localObject1);
+            paramInt1 = 230;
+          }
+          else
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("");
+            ((StringBuilder)localObject1).append(this.x.f);
+            util.LOGI("request_login_by_wechat ret oxe6 t540 is null subCmd= 0x17", ((StringBuilder)localObject1).toString());
+          }
+        }
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("");
+          ((StringBuilder)localObject1).append(this.x.f);
+          util.LOGI("request_login_by_wechat ret oxe6 t543 is null subCmd= 0x17", ((StringBuilder)localObject1).toString());
+        }
+      }
     }
-    for (;;)
+    else
     {
-      if ((paramInt2 != 10) && (paramInt2 != 161) && (paramInt2 != 162) && (paramInt2 != 164) && (paramInt2 != 165) && (paramInt2 != 166) && (paramInt2 != 154))
+      paramInt1 = ((tlv_t104)localObject3).get_tlv(paramArrayOfByte, i, this.c - i);
+      if (paramInt1 >= 0)
       {
-        paramInt1 = paramInt2;
-        if (paramInt2 < 128) {
-          break;
+        ((async_context)localObject2)._t104 = ((tlv_t104)localObject3);
+        if (((tlv_t)localObject1).get_tlv(paramArrayOfByte, i, this.c - i) > 0)
+        {
+          ((async_context)localObject2).tlv540 = ((tlv_t)localObject1);
+          if (localtlv_t541.get_tlv(paramArrayOfByte, i, this.c - i - 1) >= 0) {
+            ((async_context)localObject2)._weixinUserFlags = localtlv_t541.get_flags();
+          }
+          if (localtlv_t113.get_tlv(paramArrayOfByte, i, this.c - i - 1) >= 0)
+          {
+            this.x.f = localtlv_t113.get_uin();
+            ((async_context)localObject2)._uin = this.x.f;
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("");
+            ((StringBuilder)localObject1).append(this.x.f);
+            util.LOGI("request_login_by_wechat get_response_body subCmd= 0x17 success", ((StringBuilder)localObject1).toString());
+            paramInt1 = 0;
+          }
+          else
+          {
+            paramInt1 = -2003;
+          }
         }
-        paramInt1 = paramInt2;
-        if (paramInt2 > 143) {
-          break;
+        else
+        {
+          paramInt1 = -2002;
         }
       }
-      return -1000;
-      int i = ((tlv_t104)localObject3).get_tlv(paramArrayOfByte, j, this.c - j);
-      paramInt1 = i;
-      if (i < 0) {
-        break label130;
-      }
-      ((async_context)localObject2)._t104 = ((tlv_t104)localObject3);
-      if (((tlv_t)localObject1).get_tlv(paramArrayOfByte, j, this.c - j) > 0)
-      {
-        ((async_context)localObject2).tlv540 = ((tlv_t)localObject1);
-        if (localtlv_t541.get_tlv(paramArrayOfByte, j, this.c - j - 1) >= 0) {
-          ((async_context)localObject2)._weixinUserFlags = localtlv_t541.get_flags();
-        }
-        if (localtlv_t113.get_tlv(paramArrayOfByte, j, this.c - j - 1) < 0) {
-          break label476;
-        }
-        this.x.f = localtlv_t113.get_uin();
-        ((async_context)localObject2)._uin = this.x.f;
-        util.LOGI("request_login_by_wechat get_response_body subCmd= 0x17 success", "" + this.x.f);
-        paramInt1 = 0;
-        break label130;
-      }
-      paramInt1 = -2002;
-      break label130;
-      label476:
-      paramInt1 = -2003;
-      break label130;
-      localObject3 = new tlv_t543();
-      paramInt1 = ((tlv_t543)localObject3).get_tlv(paramArrayOfByte, j, this.c - j);
-      if (paramInt1 > 0)
-      {
-        ((async_context)localObject2)._t543 = ((tlv_t543)localObject3);
-        paramInt1 = ((tlv_t)localObject1).get_tlv(paramArrayOfByte, j, this.c - j);
-        if (paramInt1 <= 0) {
-          break label587;
-        }
-        ((async_context)localObject2).tlv540 = ((tlv_t)localObject1);
-        paramInt1 = 230;
-        break label130;
-      }
-      util.LOGI("request_login_by_wechat ret oxe6 t543 is null subCmd= 0x17", "" + this.x.f);
-      break label130;
-      label587:
-      util.LOGI("request_login_by_wechat ret oxe6 t540 is null subCmd= 0x17", "" + this.x.f);
-      break label130;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("request_login_by_wechat type:");
+    ((StringBuilder)localObject2).append(paramInt2);
+    ((StringBuilder)localObject2).append(" ret:");
+    if (paramInt1 > 0)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("0x");
+      ((StringBuilder)localObject1).append(Integer.toHexString(paramInt1));
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    else
+    {
       localObject1 = Integer.valueOf(paramInt1);
-      break label183;
-      label630:
-      new tlv_t508().get_tlv(paramArrayOfByte, j, this.c - j - 1);
-      paramInt2 = paramInt1;
+    }
+    ((StringBuilder)localObject2).append(localObject1);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(this.x.f);
+    util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+    if (paramInt1 == 0)
+    {
+      a(null);
+    }
+    else
+    {
+      new tlv_t508().get_tlv(paramArrayOfByte, i, this.c - i - 1);
       if (tlv_t508.doFetch)
       {
         paramArrayOfByte = new ErrMsg();
-        i = new h(this.x, this.t, this.u, paramArrayOfByte).b(paramInt1);
-        paramInt2 = paramInt1;
-        if (i != -1000)
+        paramInt2 = new h(this.x, this.t, this.u, paramArrayOfByte).b(paramInt1);
+        if (paramInt2 != -1000)
         {
           a(paramArrayOfByte);
-          paramInt2 = i;
+          paramInt1 = paramInt2;
         }
       }
     }
+    if ((paramInt1 != 10) && (paramInt1 != 161) && (paramInt1 != 162) && (paramInt1 != 164) && (paramInt1 != 165) && (paramInt1 != 166) && (paramInt1 != 154))
+    {
+      paramInt2 = paramInt1;
+      if (paramInt1 >= 128)
+      {
+        paramInt2 = paramInt1;
+        if (paramInt1 > 143) {}
+      }
+    }
+    else
+    {
+      paramInt2 = -1000;
+    }
+    return paramInt2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.v
  * JD-Core Version:    0.7.0.1
  */

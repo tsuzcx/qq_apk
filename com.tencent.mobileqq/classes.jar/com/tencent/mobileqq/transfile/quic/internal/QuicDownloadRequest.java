@@ -31,7 +31,8 @@ public class QuicDownloadRequest
     this.host = paramString1;
     this.ip = paramString1;
     this.port = paramInt;
-    if ((this.ip == null) || (TextUtils.isEmpty(this.ip))) {
+    paramString1 = this.ip;
+    if ((paramString1 == null) || (TextUtils.isEmpty(paramString1))) {
       this.ip = "";
     }
   }
@@ -47,12 +48,16 @@ public class QuicDownloadRequest
     localStringBuilder.append(this.method);
     localStringBuilder.append(' ');
     localStringBuilder.append(this.path);
-    localStringBuilder.append(" HTTP/1.1").append("\r\n");
+    localStringBuilder.append(" HTTP/1.1");
+    localStringBuilder.append("\r\n");
     Iterator localIterator = this.headers.keySet().iterator();
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
-      localStringBuilder.append(str).append(": ").append((String)this.headers.get(str)).append("\r\n");
+      localStringBuilder.append(str);
+      localStringBuilder.append(": ");
+      localStringBuilder.append((String)this.headers.get(str));
+      localStringBuilder.append("\r\n");
     }
     localStringBuilder.append("\r\n");
     this.isFinish = true;
@@ -69,12 +74,42 @@ public class QuicDownloadRequest
   
   public String toString()
   {
-    return "QuicDownloadRequest{method='" + this.method + '\'' + ", SCHEME_HTTPS='" + "https" + '\'' + ", PORT_QUIC=" + 443 + ", PORT_TCP=" + 80 + ", host='" + this.host + '\'' + ", ip='" + this.ip + '\'' + ", port=" + this.port + ", scheme='" + this.scheme + '\'' + ", path='" + this.path + '\'' + ", isFinish=" + this.isFinish + ", headers=" + this.headers + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QuicDownloadRequest{method='");
+    localStringBuilder.append(this.method);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", SCHEME_HTTPS='");
+    localStringBuilder.append("https");
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", PORT_QUIC=");
+    localStringBuilder.append(443);
+    localStringBuilder.append(", PORT_TCP=");
+    localStringBuilder.append(80);
+    localStringBuilder.append(", host='");
+    localStringBuilder.append(this.host);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ip='");
+    localStringBuilder.append(this.ip);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", port=");
+    localStringBuilder.append(this.port);
+    localStringBuilder.append(", scheme='");
+    localStringBuilder.append(this.scheme);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", path='");
+    localStringBuilder.append(this.path);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isFinish=");
+    localStringBuilder.append(this.isFinish);
+    localStringBuilder.append(", headers=");
+    localStringBuilder.append(this.headers);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.quic.internal.QuicDownloadRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -41,13 +41,14 @@ class TavLutEffect$LutEffectFilter
   
   private void b()
   {
-    if (TextUtils.isEmpty(TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect))) {}
-    do
-    {
+    if (TextUtils.isEmpty(TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect))) {
       return;
-      TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect, BitmapFactory.decodeFile(TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect)));
-    } while (TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect) == null);
-    this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect = new LookupFilter(TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect));
+    }
+    TavLutEffect localTavLutEffect = this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect;
+    TavLutEffect.a(localTavLutEffect, BitmapFactory.decodeFile(TavLutEffect.a(localTavLutEffect)));
+    if (TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect) != null) {
+      this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect = new LookupFilter(TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect));
+    }
   }
   
   @NonNull
@@ -58,59 +59,59 @@ class TavLutEffect$LutEffectFilter
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect != null)
+    Object localObject = this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.release();
+      ((BaseEffect)localObject).release();
       this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect = null;
     }
-    if ((this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo != null) && (!this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.isReleased())) {
+    localObject = this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo;
+    if ((localObject != null) && (!((TextureInfo)localObject).isReleased())) {
       this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.release();
     }
   }
   
   public void a(@NotNull ImageParams paramImageParams, @NotNull RenderInfo paramRenderInfo)
   {
-    if (this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect == null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect == null) {
       return;
-      if ((TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect) == null) || (TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect).containsTime(paramRenderInfo.getTime())))
+    }
+    if ((TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect) != null) && (!TavLutEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyTavLutEffect).containsTime(paramRenderInfo.getTime()))) {
+      return;
+    }
+    paramRenderInfo = paramRenderInfo.getCiContext();
+    int i = 0;
+    while (i < paramImageParams.a.size())
+    {
+      ImageParams.ImageTrackPair localImageTrackPair = (ImageParams.ImageTrackPair)paramImageParams.a.get(i);
+      Object localObject = localImageTrackPair.a();
+      int j = (int)((CIImage)localObject).getSize().width;
+      int k = (int)((CIImage)localObject).getSize().height;
+      this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.setRendererWidth(j);
+      this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.setRendererHeight(k);
+      if (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo == null)
       {
-        paramRenderInfo = paramRenderInfo.getCiContext();
-        int i = 0;
-        while (i < paramImageParams.a.size())
-        {
-          ImageParams.ImageTrackPair localImageTrackPair = (ImageParams.ImageTrackPair)paramImageParams.a.get(i);
-          Object localObject = localImageTrackPair.a();
-          int j = (int)((CIImage)localObject).getSize().width;
-          int k = (int)((CIImage)localObject).getSize().height;
-          this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.setRendererWidth(j);
-          this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.setRendererHeight(k);
-          if (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo == null)
-          {
-            paramRenderInfo.getRenderContext().makeCurrent();
-            this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo = CIContext.newTextureInfo(j, k);
-          }
-          if ((this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.width != j) || (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.height != k))
-          {
-            paramRenderInfo.getRenderContext().makeCurrent();
-            this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.release();
-            this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo = CIContext.newTextureInfo(j, k);
-          }
-          paramRenderInfo.convertImageToTexture((CIImage)localObject, this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo);
-          localObject = a(this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo);
-          localObject = a(this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.applyFilter((TAVTextureInfo)localObject));
-          ((TextureInfo)localObject).setTextureMatrix(this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.getTextureMatrix());
-          localImageTrackPair.a(new CIImage((TextureInfo)localObject));
-          i += 1;
-        }
+        paramRenderInfo.getRenderContext().makeCurrent();
+        this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo = CIContext.newTextureInfo(j, k);
       }
+      if ((this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.width != j) || (this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.height != k))
+      {
+        paramRenderInfo.getRenderContext().makeCurrent();
+        this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.release();
+        this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo = CIContext.newTextureInfo(j, k);
+      }
+      paramRenderInfo.convertImageToTexture((CIImage)localObject, this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo);
+      localObject = a(this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo);
+      localObject = a(this.jdField_a_of_type_ComTencentTaveffectEffectsBaseEffect.applyFilter((TAVTextureInfo)localObject));
+      ((TextureInfo)localObject).setTextureMatrix(this.jdField_a_of_type_ComTencentTavCoremediaTextureInfo.getTextureMatrix());
+      localImageTrackPair.a(new CIImage((TextureInfo)localObject));
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavLutEffect.LutEffectFilter
  * JD-Core Version:    0.7.0.1
  */

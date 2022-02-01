@@ -1,24 +1,31 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder;
 
-import android.view.GestureDetector;
+import android.view.GestureDetector.SimpleOnGestureListener;
 import android.view.MotionEvent;
-import android.view.View;
-import android.view.View.OnTouchListener;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 
 class WSVerticalVideoOperationRightItemView$2
-  implements View.OnTouchListener
+  extends GestureDetector.SimpleOnGestureListener
 {
   WSVerticalVideoOperationRightItemView$2(WSVerticalVideoOperationRightItemView paramWSVerticalVideoOperationRightItemView) {}
   
-  public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
+  public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    WSVerticalVideoOperationRightItemView.a(this.a).onTouchEvent(paramMotionEvent);
-    return true;
+    WSLog.b("WSVerticalVideoOperationRightItemView", "itemView onDoubleTap");
+    WSVerticalVideoOperationRightItemView.a(this.a, paramMotionEvent);
+    return super.onDoubleTap(paramMotionEvent);
+  }
+  
+  public boolean onSingleTapConfirmed(MotionEvent paramMotionEvent)
+  {
+    WSLog.b("WSVerticalVideoOperationRightItemView", "itemView onSingleTapConfirmed");
+    WSVerticalVideoOperationRightItemView.a(this.a);
+    return super.onSingleTapConfirmed(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalVideoOperationRightItemView.2
  * JD-Core Version:    0.7.0.1
  */

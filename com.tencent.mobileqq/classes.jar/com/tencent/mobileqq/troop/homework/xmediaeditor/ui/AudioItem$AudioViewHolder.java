@@ -18,15 +18,15 @@ public class AudioItem$AudioViewHolder
   {
     super(paramView);
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363096));
-    this.c = ((ImageView)paramView.findViewById(2131377016));
-    this.b = ((ImageView)paramView.findViewById(2131364832));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363105));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131363036));
+    this.c = ((ImageView)paramView.findViewById(2131376497));
+    this.b = ((ImageView)paramView.findViewById(2131364719));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131363045));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.AudioItem.AudioViewHolder
  * JD-Core Version:    0.7.0.1
  */

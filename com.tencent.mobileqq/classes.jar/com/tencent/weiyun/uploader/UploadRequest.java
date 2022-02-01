@@ -56,28 +56,28 @@ public class UploadRequest
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof UploadRequest)) {
+    }
+    if (!(paramObject instanceof UploadRequest)) {
+      return false;
+    }
+    paramObject = (UploadRequest)paramObject;
+    Object localObject = this.mRequestKey;
+    if (localObject != null)
+    {
+      if (!((String)localObject).equals(paramObject.mRequestKey)) {
         return false;
       }
-      paramObject = (UploadRequest)paramObject;
-      if (this.mRequestKey != null)
-      {
-        if (this.mRequestKey.equals(paramObject.mRequestKey)) {}
-      }
-      else {
-        while (paramObject.mRequestKey != null) {
-          return false;
-        }
-      }
-      if (this.mListener != null) {
-        return this.mListener.equals(paramObject.mListener);
-      }
-    } while (paramObject.mListener == null);
-    return false;
+    }
+    else if (paramObject.mRequestKey != null) {
+      return false;
+    }
+    localObject = this.mListener;
+    if (localObject != null) {
+      return localObject.equals(paramObject.mListener);
+    }
+    return paramObject.mListener == null;
   }
   
   public String fileId()
@@ -87,15 +87,19 @@ public class UploadRequest
   
   public int hashCode()
   {
+    Object localObject = this.mRequestKey;
     int j = 0;
-    if (this.mRequestKey != null) {}
-    for (int i = this.mRequestKey.hashCode();; i = 0)
-    {
-      if (this.mListener != null) {
-        j = this.mListener.hashCode();
-      }
-      return i * 31 + j;
+    int i;
+    if (localObject != null) {
+      i = ((String)localObject).hashCode();
+    } else {
+      i = 0;
     }
+    localObject = this.mListener;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return i * 31 + j;
   }
   
   public IUploader.IUploadListener listener()
@@ -155,7 +159,44 @@ public class UploadRequest
   
   public String toString()
   {
-    return "UploadRequest{requestKey='" + this.mRequestKey + '\'' + ", listener=" + this.mListener + ", uin=" + this.mUin + ", path='" + this.mPath + '\'' + ", sha='" + this.mSha + '\'' + ", size=" + this.mSize + ", uploadedSize=" + this.mUploadedSize + ", fileId='" + this.mFileId + '\'' + ", checkKey='" + this.mCheckKey + '\'' + ", serverName='" + this.mServerName + '\'' + ", serverIp='" + this.mServerIp + '\'' + ", serverPort=" + this.mServerPort + ", channelCount=" + this.mChannelCount + ", businessData=" + this.mBusinessData + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UploadRequest{requestKey='");
+    localStringBuilder.append(this.mRequestKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", listener=");
+    localStringBuilder.append(this.mListener);
+    localStringBuilder.append(", uin=");
+    localStringBuilder.append(this.mUin);
+    localStringBuilder.append(", path='");
+    localStringBuilder.append(this.mPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", sha='");
+    localStringBuilder.append(this.mSha);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", size=");
+    localStringBuilder.append(this.mSize);
+    localStringBuilder.append(", uploadedSize=");
+    localStringBuilder.append(this.mUploadedSize);
+    localStringBuilder.append(", fileId='");
+    localStringBuilder.append(this.mFileId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", checkKey='");
+    localStringBuilder.append(this.mCheckKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", serverName='");
+    localStringBuilder.append(this.mServerName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", serverIp='");
+    localStringBuilder.append(this.mServerIp);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", serverPort=");
+    localStringBuilder.append(this.mServerPort);
+    localStringBuilder.append(", channelCount=");
+    localStringBuilder.append(this.mChannelCount);
+    localStringBuilder.append(", businessData=");
+    localStringBuilder.append(this.mBusinessData);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public long uin()
@@ -170,7 +211,7 @@ public class UploadRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.uploader.UploadRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -1,20 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <com.tencent.widget.ThemeImageView android:id="@id/imu" android:background="@null" android:padding="2.0dip" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginTop="45.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/com" android:layout_alignParentRight="true" />
-    <com.tencent.widget.ThemeImageView android:id="@id/cnr" android:background="@null" android:padding="2.0dip" android:layout_width="60.0dip" android:layout_height="60.0dip" android:layout_marginRight="64.0dip" android:src="@drawable/com" android:layout_alignTop="@id/imu" android:layout_alignParentRight="true" />
-    <LinearLayout android:orientation="vertical" android:id="@id/lmm" android:layout_width="180.0dip" android:layout_height="wrap_content" android:layout_marginLeft="40.0dip" android:layout_marginTop="26.0dip" android:layout_marginRight="130.0dip">
-        <LinearLayout android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
-            <com.tencent.biz.pubaccount.readinjoy.view.widget.ticker.TickerView android:textSize="40.0dip" android:textColor="@color/intimate_relationship_text_color" android:id="@id/dnx" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="" android:layout_alignParentLeft="true" app:ticker_animationDuration="2000" app:ticker_defaultCharacterList="fca" />
-            <TextView android:textSize="17.0dip" android:textColor="@color/intimate_relationship_text_color" android:layout_gravity="bottom" android:id="@id/lm7" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="3.0dip" android:layout_marginBottom="4.0dip" android:text="@string/ngo" android:lines="1" />
-        </LinearLayout>
-        <TextView android:textSize="17.0dip" android:textColor="@color/intimate_relationship_text_color" android:id="@id/dnv" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="-5.0dip" android:text="@string/ngj" android:lines="1" android:includeFontPadding="false" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/n5_" android:background="@drawable/ef1" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
-            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/mti" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" />
-            <View android:id="@id/n59" android:background="@color/hj" android:layout_width="0.5dip" android:layout_height="fill_parent" android:layout_marginLeft="4.0dip" android:layout_marginTop="3.0dip" android:layout_marginBottom="3.0dip" />
-            <TextView android:textSize="12.0dip" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/mtj" android:paddingTop="2.0dip" android:paddingBottom="2.0dip" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="4.0dip" />
-            <ImageView android:layout_width="6.0dip" android:layout_height="10.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/dvl" />
-        </LinearLayout>
-        <TextView android:textSize="10.0dip" android:textColor="@color/bp" android:gravity="center_vertical" android:id="@id/nn1" android:background="@drawable/ih3" android:paddingLeft="6.0dip" android:paddingTop="4.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="3.0dip" android:layout_below="@id/dnw" android:layout_alignLeft="@id/dnw" />
-    </LinearLayout>
-</merge>
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <TextView android:textSize="14.0sp" android:textColor="@color/skin_gray2_theme_version2" android:gravity="center_vertical" android:id="@id/nl3" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/x01" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <ImageView android:gravity="center_vertical" android:id="@id/nl2" android:layout_width="14.0dip" android:layout_height="14.0dip" android:layout_marginRight="16.0dip" android:src="@drawable/gs6" android:scaleType="fitCenter" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+</RelativeLayout>

@@ -1,0 +1,340 @@
+[
+  {
+    "dynamicFields": {},
+    "id": "10006000",
+    "materials": [
+      {
+        "additionalFields": {
+          "name": "元素比例适配"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "muban_zhaopiantuya",
+        "packageMd5": "75030d79df924e5ec4c5b8c721720c1a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/3a7f3d80-7b16-11eb-955a-260ddf59845b-muban_zhaopiantuya.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 382,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6e4dd646-79ac-11eb-b7e9-260ddf59845b-照片涂鸦.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "name": "纯文字id"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "muban_wenyipailide",
+        "packageMd5": "9c18a91dcf86f63522f1b462d3061aca",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/4ad58732-7b18-11eb-9208-260ddf59845b-muban_wenyipailide.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 382,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/587f5ba8-79ae-11eb-acdd-260ddf59845b-文艺拍立得.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "name": "元素比例适配"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "muban_kamanxingqiu",
+        "packageMd5": "152691712b97eff64dd1faa569767a3c",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/dd32a79c-7afd-11eb-972e-260ddf59845b-muban_kamanxingqiu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 382,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/71ad23da-79b3-11eb-b6e7-260ddf59845b-3-卡漫星球.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "name": "无框适配"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "muban_kamanhuojian",
+        "packageMd5": "6e12666bf349fb446e23f5d61eab7690",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2d3d96c6-7b1b-11eb-a0e0-260ddf59845b-muban_kamanhuojian.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 382,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8f7ddd78-79b3-11eb-b306-260ddf59845b-4-卡漫火箭.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "name": "无框+花字"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "muban_meishibiaoqing",
+        "packageMd5": "fc111bb3b1b9d0500be888bc7c551102",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c0359dac-79b8-11eb-bc7b-260ddf59845b-muban_meishibiaoqing.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 382,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a2bea5ac-79b8-11eb-8880-260ddf59845b-5-美食表情.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "name": "无框元素适配"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "muban_meiweizhiyu",
+        "packageMd5": "7ca87a85882cded01ee28a25826e9058",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/ce100cc4-7b38-11eb-bbe0-260ddf59845b-muban_meiweizhiyu.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 382,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/2bb02e9c-79c0-11eb-a3d0-260ddf59845b-6-美味治愈.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "name": "固定比例元素"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "muban_jietoumeishijia",
+        "packageMd5": "a7471283f70f3d7ffc1a7bf60a3d6175",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/a563eb9c-79c1-11eb-8a93-260ddf59845b-muban_jietoumeishijia.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 382,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/9a97f78a-79c1-11eb-87f8-260ddf59845b-7-街头艺术家.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "name": "固定比例元素"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "muban_riximeishi",
+        "packageMd5": "a2592fd22b23743d9ceeba613c467f4b",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/8c0ad98e-79c2-11eb-95dd-260ddf59845b-muban_riximeishi.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 382,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6c1ce97a-79c0-11eb-82ac-260ddf59845b-8-日系美食.png",
+        "thumbWidth": 300
+      },
+      {
+        "additionalFields": {
+          "name": "固定比例",
+          "preDownload": "0"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "moban_test3_fixedratio",
+        "packageMd5": "85051462a8883f7a05bdae6a60fa113a",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/c9718536-677d-11eb-9913-7ac5100db047-moban_test3_fixedratio.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/6449b46e-675d-11eb-a84c-7ac5100db047-2ff8b45a-66c5-11eb-adf2-7ac5100db047-effect_katonghua_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "拍立得",
+          "preDownload": "0"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "moban_test2_pailide",
+        "packageMd5": "9e37aae7e9cc7ab93da6a522b52a4717",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/dd00f10e-677d-11eb-b35c-7ac5100db047-moban_test2_pailide.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/13c16a82-675d-11eb-a0da-7ac5100db047-2ff8b45a-66c5-11eb-adf2-7ac5100db047-effect_katonghua_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "固定颜色",
+          "preDownload": "0"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "moban_test1_solidcolor",
+        "packageMd5": "6aab595ca8c3e0203f9d4a24568743ae",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/fba6a3ec-677d-11eb-8cc4-7ac5100db047-moban_test1_solidcolor.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/15bf598a-675c-11eb-95d2-7ac5100db047-2ff8b45a-66c5-11eb-adf2-7ac5100db047-effect_katonghua_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "图片模版无边框",
+          "preDownload": "0"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "moban_test4_noframe_fixedratio",
+        "packageMd5": "cfd4d200dc03e08ea270497610c5ca25",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/5a1a44a2-7286-11eb-8a5c-a2ecb18294e0-moban_test4_noframe_fixedratio.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/d671d734-6a81-11eb-936c-7ac5100db047-2ff8b45a-66c5-11eb-adf2-7ac5100db047-effect_katonghua_cover.png",
+        "thumbWidth": 210
+      },
+      {
+        "additionalFields": {
+          "name": "图片模版无边框"
+        },
+        "additionalPackage": {
+          "highPackageMd5": "",
+          "highPackageUrl": "",
+          "lowPackageMd5": "",
+          "lowPackageUrl": "",
+          "midPackageMd5": "",
+          "midPackageUrl": "",
+          "superLowPackageMd5": "",
+          "superLowPackageUrl": ""
+        },
+        "id": "moban_test5_noframe_adaptive",
+        "packageMd5": "b39cb9a42ad81308118ee2700dd6a060",
+        "packageUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/e61ac1de-7286-11eb-92cc-a2ecb18294e0-moban_test5_noframe_adaptive.zip",
+        "sdkInfo": {
+          "sdk": 0,
+          "sdkVersion": "2.1.0"
+        },
+        "thumbHeight": 210,
+        "thumbUrl": "https://xmaterial.tu.qq.com/xmaterial/materials/f7009fda-6a81-11eb-ba43-7ac5100db047-2ff8b45a-66c5-11eb-adf2-7ac5100db047-effect_katonghua_cover.png",
+        "thumbWidth": 210
+      }
+    ],
+    "name": "推荐",
+    "subCategories": [],
+    "thumbUrl": ""
+  }
+]

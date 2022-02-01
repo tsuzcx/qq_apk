@@ -18,8 +18,13 @@ public class AIOMessageRecordExposeLogic
   
   private void a(QQAppInterface paramQQAppInterface, ListView paramListView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOMessageRecordExposeLogic", 2, "reportListItemMessage : exposeItemIndex -> " + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportListItemMessage : exposeItemIndex -> ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("AIOMessageRecordExposeLogic", 2, ((StringBuilder)localObject).toString());
     }
     if (paramInt >= 0)
     {
@@ -30,12 +35,12 @@ public class AIOMessageRecordExposeLogic
         if ((paramListView instanceof MessageRecord))
         {
           paramListView = (MessageRecord)paramListView;
-          OnAIOMessageExposeListener[] arrayOfOnAIOMessageExposeListener = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioMessageexposeOnAIOMessageExposeListener;
-          int i = arrayOfOnAIOMessageExposeListener.length;
+          localObject = this.jdField_a_of_type_ArrayOfComTencentMobileqqActivityAioMessageexposeOnAIOMessageExposeListener;
+          int i = localObject.length;
           paramInt = 0;
           while (paramInt < i)
           {
-            arrayOfOnAIOMessageExposeListener[paramInt].a(paramQQAppInterface, paramListView);
+            localObject[paramInt].a(paramQQAppInterface, paramListView);
             paramInt += 1;
           }
         }
@@ -47,8 +52,14 @@ public class AIOMessageRecordExposeLogic
   {
     int j = paramListView.mFirstPosition;
     int k = paramListView.getChildCount();
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOMessageRecordExposeLogic", 2, "reportExposeOnShowFirst : curFirstPosition -> " + j + ", childCount -> " + k);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportExposeOnShowFirst : curFirstPosition -> ");
+      localStringBuilder.append(j);
+      localStringBuilder.append(", childCount -> ");
+      localStringBuilder.append(k);
+      QLog.d("AIOMessageRecordExposeLogic", 2, localStringBuilder.toString());
     }
     int i = j;
     while (i < j + k)
@@ -68,27 +79,37 @@ public class AIOMessageRecordExposeLogic
       return;
     }
     int i = -1;
-    if (j < this.jdField_a_of_type_Int) {
+    int m = this.jdField_a_of_type_Int;
+    if (j < m)
+    {
       i = j;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOMessageRecordExposeLogic", 2, "handleListViewScroll : curExposeItemIndex -> " + i + ", curFirstPosition -> " + j + ", childCount -> " + k);
-      }
-      this.jdField_a_of_type_Int = j;
-      this.b = k;
-      a(paramQQAppInterface, paramListView, i);
-      return;
-      if (j + k > this.jdField_a_of_type_Int + this.b) {
-        i = j + k - 1;
+      int n = j + k;
+      if (n > m + this.b) {
+        i = n - 1;
       }
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleListViewScroll : curExposeItemIndex -> ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", curFirstPosition -> ");
+      localStringBuilder.append(j);
+      localStringBuilder.append(", childCount -> ");
+      localStringBuilder.append(k);
+      QLog.d("AIOMessageRecordExposeLogic", 2, localStringBuilder.toString());
+    }
+    this.jdField_a_of_type_Int = j;
+    this.b = k;
+    a(paramQQAppInterface, paramListView, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.messageexpose.AIOMessageRecordExposeLogic
  * JD-Core Version:    0.7.0.1
  */

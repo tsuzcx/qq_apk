@@ -12,7 +12,7 @@ class TouchEventHandler$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    paramView = paramView.getTag(2131362377);
+    paramView = paramView.getTag(2131362333);
     if (!(paramView instanceof GestureDetector)) {
       return false;
     }
@@ -24,7 +24,7 @@ class TouchEventHandler$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.avatardoubletap.TouchEventHandler.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,10 @@ public class AppBrandMainReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     Object localObject = paramIntent.getAction();
-    QMLog.i("minisdk-start", "AppBrandTaskPreloadReceiver onReceive action: " + (String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AppBrandTaskPreloadReceiver onReceive action: ");
+    localStringBuilder.append((String)localObject);
+    QMLog.i("minisdk-start", localStringBuilder.toString());
     MiniSDK.init(paramContext.getApplicationContext());
     AppLoaderFactory.g().getMiniAppEnv().setupWithIntent(paramIntent);
     localObject = AppLoaderFactory.g().getMiniAppEnv().getReceiverProxy();
@@ -26,7 +29,7 @@ public class AppBrandMainReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.receiver.AppBrandMainReceiver
  * JD-Core Version:    0.7.0.1
  */

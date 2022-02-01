@@ -104,22 +104,22 @@ public class DevlockInfo
     paramParcel.writeInt(this.BakMobileState);
     paramParcel.writeString(this.BakCountryCode);
     paramParcel.writeString(this.BakMobile);
-    if ((this.TransferInfo != null) && (this.TransferInfo.length > 0))
+    byte[] arrayOfByte = this.TransferInfo;
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0))
     {
-      paramParcel.writeInt(this.TransferInfo.length);
+      paramParcel.writeInt(arrayOfByte.length);
       paramParcel.writeByteArray(this.TransferInfo);
     }
-    for (;;)
+    else
     {
-      paramParcel.writeString(this.OtherDevLockVerifyUrl);
-      return;
       paramParcel.writeInt(0);
     }
+    paramParcel.writeString(this.OtherDevLockVerifyUrl);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.devicelock.DevlockInfo
  * JD-Core Version:    0.7.0.1
  */

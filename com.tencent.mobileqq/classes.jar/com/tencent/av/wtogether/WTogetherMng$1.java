@@ -19,21 +19,21 @@ class WTogetherMng$1
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       WTogetherMng.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng, this.jdField_a_of_type_ComTencentAvAppSessionInfo, this.jdField_a_of_type_ComTencentAvWtogetherDataWatchTogetherInfo.a, this.jdField_a_of_type_ComTencentAvWtogetherDataWatchTogetherInfo.a());
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper.a(null);
-      return;
       WTogetherMng.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng, this.jdField_a_of_type_ComTencentAvWtogetherDataWatchTogetherInfo);
-      WTogetherMng.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng, BaseApplicationImpl.getContext().getString(2131695996), 0L);
+      WTogetherMng.a(this.jdField_a_of_type_ComTencentAvWtogetherWTogetherMng, BaseApplicationImpl.getContext().getString(2131696011), 0L);
     }
+    this.jdField_a_of_type_ComTencentAvWtogetherWTogetherRealNameVideoProcessHelper.a(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.WTogetherMng.1
  * JD-Core Version:    0.7.0.1
  */

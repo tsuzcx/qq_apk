@@ -32,11 +32,6 @@ public class QavRecordDpc
   public int r;
   public int s;
   
-  static
-  {
-    jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc = null;
-  }
-  
   public QavRecordDpc()
   {
     this.jdField_a_of_type_JavaLangString = null;
@@ -45,17 +40,20 @@ public class QavRecordDpc
   
   private static int a(String[] paramArrayOfString, int paramInt1, int paramInt2)
   {
-    if ((paramArrayOfString == null) || (paramInt1 >= paramArrayOfString.length)) {
-      return paramInt2;
-    }
-    try
+    if (paramArrayOfString != null)
     {
-      paramInt1 = Integer.parseInt(paramArrayOfString[paramInt1]);
-      return paramInt1;
-    }
-    catch (Exception paramArrayOfString)
-    {
-      paramArrayOfString.printStackTrace();
+      if (paramInt1 >= paramArrayOfString.length) {
+        return paramInt2;
+      }
+      try
+      {
+        paramInt1 = Integer.parseInt(paramArrayOfString[paramInt1]);
+        return paramInt1;
+      }
+      catch (Exception paramArrayOfString)
+      {
+        paramArrayOfString.printStackTrace();
+      }
     }
     return paramInt2;
   }
@@ -96,20 +94,27 @@ public class QavRecordDpc
     }
     localQavRecordDpc.r = DeviceInfoUtil.b();
     localQavRecordDpc.s = ((int)(DeviceInfoUtil.c() / 1000L));
-    if (QLog.isColorLevel()) {
-      QLog.d("QavRecordDpc", 2, "init=" + localQavRecordDpc);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("init=");
+      ((StringBuilder)localObject).append(localQavRecordDpc);
+      QLog.d("QavRecordDpc", 2, ((StringBuilder)localObject).toString());
     }
     return localQavRecordDpc;
   }
   
   public String toString()
   {
-    return String.format(Locale.getDefault(), "QavRecordDpc:dpc=%s, default=%d|%d|%d|%d|%d|%d, value=%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%s|%s|%s, system=%d|%d", new Object[] { this.jdField_a_of_type_JavaLangString, Integer.valueOf(1), Integer.valueOf(4), Integer.valueOf(2000), Integer.valueOf(4), Integer.valueOf(2150), Integer.valueOf(720), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(this.i), Integer.valueOf(this.k), Integer.valueOf(this.l), Integer.valueOf(this.m), Integer.valueOf(this.n), Integer.valueOf(this.o), Integer.valueOf(this.p), Integer.valueOf(this.q), Integer.valueOf(this.r), Integer.valueOf(this.s) });
+    Locale localLocale = Locale.getDefault();
+    String str = this.jdField_a_of_type_JavaLangString;
+    Integer localInteger = Integer.valueOf(4);
+    return String.format(localLocale, "QavRecordDpc:dpc=%s, default=%d|%d|%d|%d|%d|%d, value=%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%d|%s|%s|%s, system=%d|%d", new Object[] { str, Integer.valueOf(1), localInteger, Integer.valueOf(2000), localInteger, Integer.valueOf(2150), Integer.valueOf(720), Integer.valueOf(this.jdField_a_of_type_Int), Integer.valueOf(this.b), Integer.valueOf(this.c), Integer.valueOf(this.d), Integer.valueOf(this.e), Integer.valueOf(this.f), Integer.valueOf(this.g), Integer.valueOf(this.h), Integer.valueOf(this.i), Integer.valueOf(this.k), Integer.valueOf(this.l), Integer.valueOf(this.m), Integer.valueOf(this.n), Integer.valueOf(this.o), Integer.valueOf(this.p), Integer.valueOf(this.q), Integer.valueOf(this.r), Integer.valueOf(this.s) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavRecordDpc
  * JD-Core Version:    0.7.0.1
  */

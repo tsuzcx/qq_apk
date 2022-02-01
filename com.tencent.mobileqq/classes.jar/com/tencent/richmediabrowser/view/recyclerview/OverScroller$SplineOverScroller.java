@@ -21,8 +21,8 @@ class OverScroller$SplineOverScroller
   private static float PHYSICAL_COEF = 0.0F;
   private static final int SCROLL = 4;
   private static final int SPLINE = 0;
-  private static final float[] SPLINE_POSITION;
-  private static final float[] SPLINE_TIME;
+  private static final float[] SPLINE_POSITION = new float[101];
+  private static final float[] SPLINE_TIME = new float[101];
   private static final float START_TENSION = 0.5F;
   private float mCurrVelocity;
   private int mCurrentPosition;
@@ -45,47 +45,49 @@ class OverScroller$SplineOverScroller
   
   static
   {
-    float f2 = 0.0F;
     DECELERATION_RATE = (float)(Math.log(0.78D) / Math.log(0.9D));
-    SPLINE_POSITION = new float[101];
-    SPLINE_TIME = new float[101];
-    int i = 0;
     float f1 = 0.0F;
+    int i = 0;
+    float f2 = 0.0F;
     if (i < 100)
     {
       float f5 = i / 100.0F;
       float f3 = 1.0F;
-      label55:
-      float f4 = (f3 - f1) / 2.0F + f1;
-      float f6 = 3.0F * f4 * (1.0F - f4);
-      float f7 = ((1.0F - f4) * 0.175F + 0.35F * f4) * f6 + f4 * f4 * f4;
-      if (Math.abs(f7 - f5) < 1.E-005D)
-      {
-        SPLINE_POSITION[i] = (f4 * (f4 * f4) + f6 * ((1.0F - f4) * 0.5F + f4));
-        f3 = 1.0F;
-      }
       for (;;)
       {
-        f4 = (f3 - f2) / 2.0F + f2;
-        f6 = 3.0F * f4 * (1.0F - f4);
-        f7 = ((1.0F - f4) * 0.5F + f4) * f6 + f4 * f4 * f4;
-        if (Math.abs(f7 - f5) < 1.E-005D)
+        float f4 = (f3 - f1) / 2.0F + f1;
+        float f6 = 1.0F - f4;
+        float f7 = f4 * 3.0F * f6;
+        float f8 = f4 * f4 * f4;
+        float f9 = (f6 * 0.175F + f4 * 0.35F) * f7 + f8;
+        if (Math.abs(f9 - f5) < 1.E-005D)
         {
-          SPLINE_TIME[i] = (f4 * (f4 * f4) + ((1.0F - f4) * 0.175F + 0.35F * f4) * f6);
-          i += 1;
-          break;
-          if (f7 > f5)
+          SPLINE_POSITION[i] = (f7 * (f6 * 0.5F + f4) + f8);
+          f3 = 1.0F;
+          for (;;)
           {
-            f3 = f4;
-            break label55;
+            f4 = (f3 - f2) / 2.0F + f2;
+            f6 = 1.0F - f4;
+            f7 = f4 * 3.0F * f6;
+            f8 = f4 * f4 * f4;
+            f9 = (f6 * 0.5F + f4) * f7 + f8;
+            if (Math.abs(f9 - f5) < 1.E-005D)
+            {
+              SPLINE_TIME[i] = (f7 * (f6 * 0.175F + f4 * 0.35F) + f8);
+              i += 1;
+              break;
+            }
+            if (f9 > f5) {
+              f3 = f4;
+            } else {
+              f2 = f4;
+            }
           }
-          f1 = f4;
-          break label55;
         }
-        if (f7 > f5) {
+        if (f9 > f5) {
           f3 = f4;
         } else {
-          f2 = f4;
+          f1 = f4;
         }
       }
     }
@@ -96,34 +98,46 @@ class OverScroller$SplineOverScroller
   
   private void adjustDuration(int paramInt1, int paramInt2, int paramInt3)
   {
-    float f1 = Math.abs((paramInt3 - paramInt1) / (paramInt2 - paramInt1));
-    paramInt1 = (int)(100.0F * f1);
+    float f3 = Math.abs((paramInt3 - paramInt1) / (paramInt2 - paramInt1));
+    paramInt1 = (int)(f3 * 100.0F);
     if (paramInt1 < 100)
     {
-      float f2 = paramInt1 / 100.0F;
-      float f3 = (paramInt1 + 1) / 100.0F;
-      float f4 = SPLINE_TIME[paramInt1];
-      float f5 = SPLINE_TIME[(paramInt1 + 1)];
-      this.mDuration = ((int)(((f1 - f2) / (f3 - f2) * (f5 - f4) + f4) * this.mDuration));
+      float f4 = paramInt1 / 100.0F;
+      paramInt2 = paramInt1 + 1;
+      float f5 = paramInt2 / 100.0F;
+      float[] arrayOfFloat = SPLINE_TIME;
+      float f1 = arrayOfFloat[paramInt1];
+      float f2 = arrayOfFloat[paramInt2];
+      f3 = (f3 - f4) / (f5 - f4);
+      this.mDuration = ((int)(this.mDuration * (f1 + f3 * (f2 - f1))));
     }
   }
   
   private double getSplineDeceleration(int paramInt)
   {
-    return Math.log(0.35F * Math.abs(paramInt) / (this.mFlingFriction * PHYSICAL_COEF));
+    return Math.log(Math.abs(paramInt) * 0.35F / (this.mFlingFriction * PHYSICAL_COEF));
   }
   
   private double getSplineFlingDistance(int paramInt)
   {
-    double d1 = getSplineDeceleration(paramInt);
-    double d2 = DECELERATION_RATE;
-    double d3 = this.mFlingFriction * PHYSICAL_COEF;
-    return Math.exp(d1 * (DECELERATION_RATE / (d2 - 1.0D))) * d3;
+    double d2 = getSplineDeceleration(paramInt);
+    float f = DECELERATION_RATE;
+    double d3 = f;
+    Double.isNaN(d3);
+    double d1 = this.mFlingFriction * PHYSICAL_COEF;
+    double d4 = f;
+    Double.isNaN(d4);
+    d2 = Math.exp(d4 / (d3 - 1.0D) * d2);
+    Double.isNaN(d1);
+    return d1 * d2;
   }
   
   private int getSplineFlingDuration(int paramInt)
   {
-    return (int)(Math.exp(getSplineDeceleration(paramInt) / (DECELERATION_RATE - 1.0D)) * 1000.0D);
+    double d1 = getSplineDeceleration(paramInt);
+    double d2 = DECELERATION_RATE;
+    Double.isNaN(d2);
+    return (int)(Math.exp(d1 / (d2 - 1.0D)) * 1000.0D);
   }
   
   static void initFromContext(Context paramContext)
@@ -134,19 +148,31 @@ class OverScroller$SplineOverScroller
   private void onEdgeReached()
   {
     long l = this.mStartTime;
-    l = this.mDuration + l;
-    int i = (int)(this.mDuration / this.mSplineDuration * 100.0F);
-    float f1 = 0.0F;
+    int i = this.mDuration;
+    l += i;
+    i = (int)(i / this.mSplineDuration * 100.0F);
     if (i < 100)
     {
       f1 = i / 100.0F;
-      float f2 = (i + 1) / 100.0F;
-      float f3 = SPLINE_POSITION[i];
-      f1 = (SPLINE_POSITION[(i + 1)] - f3) / (f2 - f1);
+      int j = i + 1;
+      float f2 = j / 100.0F;
+      float[] arrayOfFloat = SPLINE_POSITION;
+      float f3 = arrayOfFloat[i];
+      f1 = (arrayOfFloat[j] - f3) / (f2 - f1);
+    }
+    else
+    {
+      f1 = 0.0F;
     }
     this.mCurrVelocity = (f1 * this.mSplineDistance / this.mSplineDuration * 1000.0F);
-    this.mDeceleration = ((float)((this.mCurrVelocity - this.mLastVelocity) / (l - this.mLastTime) * 1000.0D));
-    bounce(this.mFinal, this.mOver, (int)this.mCurrVelocity, OverScroller.BOUNCE_DURANTION);
+    float f1 = this.mCurrVelocity;
+    double d1 = f1;
+    double d2 = this.mLastVelocity;
+    Double.isNaN(d1);
+    double d3 = l - this.mLastTime;
+    Double.isNaN(d3);
+    this.mDeceleration = ((float)((d1 - d2) / d3 * 1000.0D));
+    bounce(this.mFinal, this.mOver, (int)f1, OverScroller.BOUNCE_DURANTION);
     this.mStartTime = l;
     update();
   }
@@ -154,18 +180,30 @@ class OverScroller$SplineOverScroller
   private void onEdgeReachedNoBack()
   {
     long l = this.mStartTime;
-    l = this.mDuration + l;
-    int i = (int)(this.mDuration / this.mSplineDuration * 100.0F);
-    float f1 = 0.0F;
+    int i = this.mDuration;
+    l += i;
+    i = (int)(i / this.mSplineDuration * 100.0F);
+    float f1;
     if (i < 100)
     {
       f1 = i / 100.0F;
-      float f2 = (i + 1) / 100.0F;
-      float f3 = SPLINE_POSITION[i];
-      f1 = (SPLINE_POSITION[(i + 1)] - f3) / (f2 - f1);
+      int j = i + 1;
+      float f2 = j / 100.0F;
+      float[] arrayOfFloat = SPLINE_POSITION;
+      float f3 = arrayOfFloat[i];
+      f1 = (arrayOfFloat[j] - f3) / (f2 - f1);
+    }
+    else
+    {
+      f1 = 0.0F;
     }
     this.mCurrVelocity = (f1 * this.mSplineDistance / this.mSplineDuration * 1000.0F);
-    this.mDeceleration = ((float)((this.mCurrVelocity - this.mLastVelocity) / (l - this.mLastTime) * 1000.0D));
+    double d1 = this.mCurrVelocity;
+    double d2 = this.mLastVelocity;
+    Double.isNaN(d1);
+    double d3 = l - this.mLastTime;
+    Double.isNaN(d3);
+    this.mDeceleration = ((float)((d1 - d2) / d3 * 1000.0D));
     this.mStartTime = l;
   }
   
@@ -191,57 +229,58 @@ class OverScroller$SplineOverScroller
   
   void bounce(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    float f2 = 0.09606F * paramInt2 / (1.E-005F * paramInt4);
-    if (paramInt3 > 0) {}
-    for (float f1 = 10.0F;; f1 = -10.0F)
-    {
-      if (Math.abs(paramInt3) < f2) {
-        f1 = paramInt3 * 10.0F / f2;
-      }
-      this.mStart = paramInt1;
-      this.mFinal = paramInt1;
-      this.mVelocity = paramInt3;
-      this.mOver = paramInt2;
-      this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
-      this.mDuration = paramInt4;
-      this.mTension = f1;
-      this.mCurrentPosition = this.mStart;
-      this.mState = 3;
-      return;
+    float f2 = paramInt2 * 0.09606F / (paramInt4 * 1.E-005F);
+    float f1;
+    if (paramInt3 > 0) {
+      f1 = 10.0F;
+    } else {
+      f1 = -10.0F;
     }
+    if (Math.abs(paramInt3) < f2) {
+      f1 = paramInt3 * 10.0F / f2;
+    }
+    this.mStart = paramInt1;
+    this.mFinal = paramInt1;
+    this.mVelocity = paramInt3;
+    this.mOver = paramInt2;
+    this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
+    this.mDuration = paramInt4;
+    this.mTension = f1;
+    this.mCurrentPosition = this.mStart;
+    this.mState = 3;
   }
   
   boolean continueWhenFinished()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    switch (this.mState)
+    int i = this.mState;
+    if (i != 0)
     {
+      if ((i == 1) || (i == 3)) {
+        return false;
+      }
     }
-    for (;;)
+    else
     {
-      update();
-      bool1 = true;
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (this.mDuration >= this.mSplineDuration);
+      if (this.mDuration >= this.mSplineDuration) {
+        break label46;
+      }
       onEdgeReached();
     }
+    update();
+    return true;
+    label46:
+    return false;
   }
   
   boolean continueWhenFinishedForNoBack()
   {
-    boolean bool = false;
-    switch (this.mState)
+    int i = this.mState;
+    if ((i != 0) && (i != 1) && (i != 3))
     {
-    case 2: 
-    default: 
       update();
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   void extendDuration(int paramInt)
@@ -263,74 +302,80 @@ class OverScroller$SplineOverScroller
     this.mOver = paramInt5;
     this.mFinished = false;
     this.mVelocity = paramInt2;
-    this.mCurrVelocity = paramInt2;
+    float f = paramInt2;
+    this.mCurrVelocity = f;
     this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
     this.mStart = paramInt1;
     this.mCurrentPosition = paramInt1;
-    if ((paramInt1 > paramInt4) || (paramInt1 < paramInt3))
+    if ((paramInt1 <= paramInt4) && (paramInt1 >= paramInt3))
     {
-      if (paramInt1 > paramInt4) {}
-      for (;;)
+      this.mState = 0;
+      double d1 = 0.0D;
+      if (paramInt2 != 0)
       {
-        startSpringback(paramInt1, paramInt4, paramInt2);
-        return;
-        paramInt4 = paramInt3;
+        if (this.mFlingMode == 1)
+        {
+          paramInt5 = getSplineFlingDuration(paramInt2) * 3 / 2;
+          this.mSplineDuration = paramInt5;
+          this.mDuration = paramInt5;
+        }
+        else
+        {
+          paramInt5 = getSplineFlingDuration(paramInt2);
+          this.mSplineDuration = paramInt5;
+          this.mDuration = paramInt5;
+        }
+        this.mDeceleration = ((float)(getSplineDeceleration(paramInt2) * 1000.0D));
+        d1 = getSplineFlingDistance(paramInt2);
       }
-    }
-    this.mState = 0;
-    double d = 0.0D;
-    if (paramInt2 != 0)
-    {
-      if (this.mFlingMode != 1) {
-        break label239;
-      }
-      paramInt5 = getSplineFlingDuration(paramInt2) * 3 / 2;
-      this.mSplineDuration = paramInt5;
-    }
-    for (this.mDuration = paramInt5;; this.mDuration = paramInt5)
-    {
-      this.mDeceleration = ((float)(getSplineDeceleration(paramInt2) * 1000.0D));
-      d = getSplineFlingDistance(paramInt2);
-      this.mSplineDistance = ((int)(d * Math.signum(paramInt2)));
-      this.mFinal = (this.mSplineDistance + paramInt1);
-      if (this.mFinal < paramInt3)
+      double d2 = Math.signum(f);
+      Double.isNaN(d2);
+      this.mSplineDistance = ((int)(d1 * d2));
+      this.mFinal = (paramInt1 + this.mSplineDistance);
+      paramInt1 = this.mFinal;
+      if (paramInt1 < paramInt3)
       {
-        adjustDuration(this.mStart, this.mFinal, paramInt3);
+        adjustDuration(this.mStart, paramInt1, paramInt3);
         this.mFinal = paramInt3;
       }
-      if (this.mFinal > paramInt4)
+      paramInt1 = this.mFinal;
+      if (paramInt1 > paramInt4)
       {
-        adjustDuration(this.mStart, this.mFinal, paramInt4);
+        adjustDuration(this.mStart, paramInt1, paramInt4);
         this.mFinal = paramInt4;
       }
       this.mLastVelocity = paramInt2;
       this.mLastTime = this.mStartTime;
       return;
-      label239:
-      paramInt5 = getSplineFlingDuration(paramInt2);
-      this.mSplineDuration = paramInt5;
     }
+    if (paramInt1 > paramInt4) {
+      paramInt3 = paramInt4;
+    }
+    startSpringback(paramInt1, paramInt3, paramInt2);
   }
   
   void notifyEdgeReached(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.mState == 0) {
-      if (paramInt1 == paramInt2) {
-        bounce(paramInt2, paramInt3, this.mVelocity, OverScroller.BOUNCE_DURANTION);
-      }
-    }
-    while (this.mState != 4)
+    int i = this.mState;
+    if (i == 0)
     {
-      return;
+      if (paramInt1 == paramInt2)
+      {
+        bounce(paramInt2, paramInt3, this.mVelocity, OverScroller.BOUNCE_DURANTION);
+        return;
+      }
       adjustDuration(this.mStart, this.mFinal, this.mCurrentPosition - (paramInt1 - paramInt2));
       this.mOver = paramInt3;
       this.mFinal = paramInt2;
       onEdgeReached();
       return;
     }
-    this.mCurrentPosition = 0;
-    this.mFinal = 0;
-    this.mFinished = true;
+    if (i == 4)
+    {
+      this.mCurrentPosition = 0;
+      this.mFinal = 0;
+      this.mFinished = true;
+    }
   }
   
   void setFinalPosition(int paramInt)
@@ -341,9 +386,7 @@ class OverScroller$SplineOverScroller
   
   void setFlingMode(int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 0) && (paramInt != 1)) {
       return;
     }
     this.mFlingMode = paramInt;
@@ -364,15 +407,10 @@ class OverScroller$SplineOverScroller
     this.mDuration = 0;
     if (paramInt1 < paramInt2) {
       startSpringback(paramInt1, paramInt2, 0);
+    } else if (paramInt1 > paramInt3) {
+      startSpringback(paramInt1, paramInt3, 0);
     }
-    while (!this.mFinished)
-    {
-      return true;
-      if (paramInt1 > paramInt3) {
-        startSpringback(paramInt1, paramInt3, 0);
-      }
-    }
-    return false;
+    return this.mFinished ^ true;
   }
   
   boolean springback(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -385,15 +423,10 @@ class OverScroller$SplineOverScroller
     this.mDuration = 0;
     if (paramInt1 < paramInt2) {
       startSpringback(paramInt1, paramInt2, 0, paramInt4);
+    } else if (paramInt1 > paramInt3) {
+      startSpringback(paramInt1, paramInt3, 0, paramInt4);
     }
-    while (!this.mFinished)
-    {
-      return true;
-      if (paramInt1 > paramInt3) {
-        startSpringback(paramInt1, paramInt3, 0, paramInt4);
-      }
-    }
-    return false;
+    return this.mFinished ^ true;
   }
   
   void startScroll(int paramInt1, int paramInt2, int paramInt3)
@@ -410,55 +443,74 @@ class OverScroller$SplineOverScroller
   
   boolean update()
   {
-    float f2 = 1.0F;
     long l1 = AnimationUtils.currentAnimationTimeMillis();
     long l2 = l1 - this.mStartTime;
-    if (l2 > this.mDuration) {
+    int i = this.mDuration;
+    if (l2 > i) {
       return false;
     }
-    double d;
-    switch (this.mState)
+    double d1 = 0.0D;
+    int j = this.mState;
+    float f2 = 1.0F;
+    float f1;
+    float f3;
+    if (j != 0)
     {
-    case 2: 
-    default: 
-      d = 0.0D;
+      if (j != 1)
+      {
+        if (j == 3)
+        {
+          f1 = (float)l2 / i - 1.0F;
+          f2 = this.mOver;
+          f3 = this.mTension;
+          d1 = f2 * f1 * f1 * f1 * f1 * (f1 * f3 + f3);
+        }
+      }
+      else {
+        d1 = AnimateUtils.viscousFluid((float)l2 / i) * this.mOver;
+      }
     }
-    for (;;)
+    else
     {
-      int i = this.mStart;
-      this.mCurrentPosition = ((int)Math.round(d) + i);
-      return true;
-      float f3 = (float)l2 / this.mSplineDuration;
-      i = (int)(100.0F * f3);
-      float f1 = 0.0F;
+      f3 = (float)l2 / this.mSplineDuration;
+      i = (int)(f3 * 100.0F);
       if (i < 100)
       {
         f2 = i / 100.0F;
-        f1 = (i + 1) / 100.0F;
-        float f4 = SPLINE_POSITION[i];
-        f1 = (SPLINE_POSITION[(i + 1)] - f4) / (f1 - f2);
-        f2 = (f3 - f2) * f1 + f4;
+        j = i + 1;
+        f1 = j / 100.0F;
+        float[] arrayOfFloat = SPLINE_POSITION;
+        float f4 = arrayOfFloat[i];
+        f1 = (arrayOfFloat[j] - f4) / (f1 - f2);
+        f2 = f4 + (f3 - f2) * f1;
       }
-      d = f2 * this.mSplineDistance;
-      this.mCurrVelocity = (f1 * this.mSplineDistance / this.mSplineDuration * 1000.0F);
-      this.mDeceleration = ((float)((this.mCurrVelocity - this.mLastVelocity) / (l1 - this.mLastTime) * 1000.0D));
-      continue;
-      d = AnimateUtils.viscousFluid((float)l2 / this.mDuration) * this.mOver;
-      continue;
-      f1 = (float)l2 / this.mDuration - 1.0F;
-      f2 = this.mOver;
-      d = (f1 * this.mTension + this.mTension) * (f2 * f1 * f1 * f1 * f1);
+      else
+      {
+        f1 = 0.0F;
+      }
+      i = this.mSplineDistance;
+      d1 = f2 * i;
+      this.mCurrVelocity = (f1 * i / this.mSplineDuration * 1000.0F);
+      double d2 = this.mCurrVelocity;
+      double d3 = this.mLastVelocity;
+      Double.isNaN(d2);
+      double d4 = l1 - this.mLastTime;
+      Double.isNaN(d4);
+      this.mDeceleration = ((float)((d2 - d3) / d4 * 1000.0D));
     }
+    this.mCurrentPosition = (this.mStart + (int)Math.round(d1));
+    return true;
   }
   
   void updateScroll(float paramFloat)
   {
-    this.mCurrentPosition = (this.mStart + Math.round((this.mFinal - this.mStart) * paramFloat));
+    int i = this.mStart;
+    this.mCurrentPosition = (i + Math.round(paramFloat * (this.mFinal - i)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.recyclerview.OverScroller.SplineOverScroller
  * JD-Core Version:    0.7.0.1
  */

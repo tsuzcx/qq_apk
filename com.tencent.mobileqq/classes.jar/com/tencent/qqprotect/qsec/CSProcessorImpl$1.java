@@ -14,22 +14,20 @@ class CSProcessorImpl$1
       if (QLog.isColorLevel()) {
         QLog.d("QSec.CSP", 2, String.format("Cookie: %08X, cmd: %s", new Object[] { Long.valueOf(paramLong1), paramObject1 }));
       }
-      if (paramLong1 == 0L) {
-        break label99;
+      if (paramLong1 != 0L)
+      {
+        paramArrayOfObject1 = this.a;
+        paramArrayOfObject1.a((String)paramObject1, (byte[])paramObject2, new CSProcessorImpl.NativeListenerWrapper(paramArrayOfObject1, paramLong1));
+        return 0;
       }
-      this.a.a((String)paramObject1, (byte[])paramObject2, new CSProcessorImpl.NativeListenerWrapper(this.a, paramLong1));
-    }
-    for (;;)
-    {
-      return 0;
-      label99:
       this.a.a((String)paramObject1, (byte[])paramObject2, null);
     }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CSProcessorImpl.1
  * JD-Core Version:    0.7.0.1
  */

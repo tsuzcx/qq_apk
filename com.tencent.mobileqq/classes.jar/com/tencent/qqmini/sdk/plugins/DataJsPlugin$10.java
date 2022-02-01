@@ -15,26 +15,30 @@ class DataJsPlugin$10
   {
     if (paramBoolean)
     {
-      if (QMLog.isColorLevel()) {
-        QMLog.d("DataJsPlugin", "call checkNavigateRight ： " + paramJSONObject.toString());
+      if (QMLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("call checkNavigateRight ： ");
+        ((StringBuilder)localObject).append(paramJSONObject.toString());
+        QMLog.d("DataJsPlugin", ((StringBuilder)localObject).toString());
       }
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
+      Object localObject = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
       try
       {
-        localJSONObject2.put("data", paramJSONObject.toString());
-        localJSONObject1.put("respData", localJSONObject2);
-        QMLog.d("DataJsPlugin", "call checkNavigateRight real： " + localJSONObject1.toString());
-        this.val$req.ok(localJSONObject1);
-        return;
+        localJSONObject.put("data", paramJSONObject.toString());
+        ((JSONObject)localObject).put("respData", localJSONObject);
       }
       catch (JSONException paramJSONObject)
       {
-        for (;;)
-        {
-          paramJSONObject.printStackTrace();
-        }
+        paramJSONObject.printStackTrace();
       }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("call checkNavigateRight real： ");
+      paramJSONObject.append(((JSONObject)localObject).toString());
+      QMLog.d("DataJsPlugin", paramJSONObject.toString());
+      this.val$req.ok((JSONObject)localObject);
+      return;
     }
     QMLog.d("DataJsPlugin", "call checkNavigateRight failed. ");
     this.val$req.fail();
@@ -42,7 +46,7 @@ class DataJsPlugin$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

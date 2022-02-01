@@ -6,16 +6,20 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.VideoInfo.GameAdComData;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.AdData;
+import com.tencent.biz.pubaccount.readinjoy.video.playfeeds.GameAdComData;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_bar.callback.AdDownloadCallback;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadData;
 import com.tencent.gamecenter.wadl.biz.entity.WadlParams;
 import com.tencent.gamecenter.wadl.biz.entity.WadlResult;
 import com.tencent.gamecenter.wadl.biz.listener.WadlProxyServiceCallBackInterface;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceUtil;
+import com.tencent.gamecenter.wadl.util.WadlProxyServiceWrap;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.kandian.ad.api.entity.IADBaseAppDownloadManager;
+import com.tencent.mobileqq.kandian.biz.fastweb.data.AdData;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.open.appstore.dl.DownloadManagerV2;
 import com.tencent.open.appstore.dl.DownloadProxy;
 import com.tencent.open.downloadnew.DownloadConstants;
@@ -23,8 +27,6 @@ import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.tmassistantbase.util.GlobalUtil;
-import cooperation.wadl.ipc.WadlProxyServiceUtil;
-import cooperation.wadl.ipc.WadlProxyServiceWrap;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStream;
@@ -37,7 +39,7 @@ import java.util.concurrent.CopyOnWriteArrayList;
 import mqq.os.MqqHandler;
 
 public class ADBaseAppDownloadManager
-  implements WadlProxyServiceCallBackInterface, DownloadListener
+  implements WadlProxyServiceCallBackInterface, IADBaseAppDownloadManager, DownloadListener
 {
   protected Handler a;
   protected SoftReference<Activity> a;
@@ -56,28 +58,31 @@ public class ADBaseAppDownloadManager
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper());
     WadlProxyServiceUtil.a().a(this);
     DownloadManagerV2.a().a(this);
-    QLog.d("ADBaseAppDownloadManager", 1, "registerWadlServiceCallBack ：" + this);
+    paramActivity = new StringBuilder();
+    paramActivity.append("registerWadlServiceCallBack ：");
+    paramActivity.append(this);
+    QLog.d("ADBaseAppDownloadManager", 1, paramActivity.toString());
   }
   
   public static int a(WadlResult paramWadlResult)
   {
-    int i = 5;
     if (4 == paramWadlResult.jdField_b_of_type_Int) {
-      i = 3;
+      return 3;
     }
-    while (6 == paramWadlResult.jdField_b_of_type_Int) {
-      return i;
+    if (6 == paramWadlResult.jdField_b_of_type_Int) {
+      return 5;
     }
     if (5 == paramWadlResult.jdField_b_of_type_Int) {
       return 4;
     }
-    if ((9 == paramWadlResult.jdField_b_of_type_Int) || (10 == paramWadlResult.jdField_b_of_type_Int)) {
-      return 1;
+    if ((9 != paramWadlResult.jdField_b_of_type_Int) && (10 != paramWadlResult.jdField_b_of_type_Int))
+    {
+      if (7 == paramWadlResult.jdField_b_of_type_Int) {
+        return 6;
+      }
+      return 0;
     }
-    if (7 == paramWadlResult.jdField_b_of_type_Int) {
-      return 6;
-    }
-    return 0;
+    return 1;
   }
   
   protected static String a(InputStream paramInputStream)
@@ -99,246 +104,363 @@ public class ADBaseAppDownloadManager
   public static String a(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: aconst_null
-    //   4: astore_3
-    //   5: aload_0
-    //   6: invokestatic 140	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   9: ifeq +5 -> 14
-    //   12: aload_3
-    //   13: areturn
-    //   14: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   17: ifeq +37 -> 54
-    //   20: ldc 81
-    //   22: iconst_2
-    //   23: new 83	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 84	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 146
-    //   32: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: aload_0
-    //   36: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   39: ldc 148
-    //   41: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   44: iload_1
-    //   45: invokevirtual 151	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   48: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   51: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   54: invokestatic 144	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   57: ifeq +28 -> 85
-    //   60: ldc 81
+    //   0: aload_0
+    //   1: invokestatic 142	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: istore_2
+    //   5: aconst_null
+    //   6: astore 6
+    //   8: aconst_null
+    //   9: astore 7
+    //   11: aconst_null
+    //   12: astore 5
+    //   14: iload_2
+    //   15: ifeq +5 -> 20
+    //   18: aconst_null
+    //   19: areturn
+    //   20: invokestatic 146	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: ifeq +47 -> 70
+    //   26: new 83	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   33: astore_3
+    //   34: aload_3
+    //   35: ldc 148
+    //   37: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: aload_3
+    //   42: aload_0
+    //   43: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: aload_3
+    //   48: ldc 150
+    //   50: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: aload_3
+    //   55: iload_1
+    //   56: invokevirtual 153	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   59: pop
+    //   60: ldc 95
     //   62: iconst_2
-    //   63: new 83	java/lang/StringBuilder
-    //   66: dup
-    //   67: invokespecial 84	java/lang/StringBuilder:<init>	()V
-    //   70: ldc 153
-    //   72: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: aload_0
-    //   76: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   85: new 155	java/net/URL
-    //   88: dup
-    //   89: aload_0
-    //   90: invokespecial 158	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   93: invokevirtual 162	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   96: checkcast 164	java/net/HttpURLConnection
-    //   99: astore_2
-    //   100: aload_2
-    //   101: ldc 166
-    //   103: invokevirtual 169	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
-    //   106: aload_2
-    //   107: ldc 171
-    //   109: ldc 173
-    //   111: invokevirtual 177	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   114: aload_2
-    //   115: ldc 179
-    //   117: ldc 181
-    //   119: invokevirtual 177	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   122: aload_2
-    //   123: ldc 183
-    //   125: ldc 185
-    //   127: invokevirtual 177	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
-    //   130: aload_2
-    //   131: sipush 3000
-    //   134: invokevirtual 189	java/net/HttpURLConnection:setConnectTimeout	(I)V
-    //   137: aload_2
-    //   138: sipush 3000
-    //   141: invokevirtual 192	java/net/HttpURLConnection:setReadTimeout	(I)V
-    //   144: aload_2
-    //   145: invokevirtual 196	java/net/HttpURLConnection:getResponseCode	()I
-    //   148: sipush 200
-    //   151: if_icmpne +106 -> 257
-    //   154: aload_2
-    //   155: invokevirtual 200	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   158: invokestatic 202	com/tencent/biz/pubaccount/NativeAd/util/ADBaseAppDownloadManager:a	(Ljava/io/InputStream;)Ljava/lang/String;
-    //   161: astore_0
-    //   162: aload_0
-    //   163: invokestatic 140	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   166: ifne +32 -> 198
-    //   169: new 204	org/json/JSONObject
-    //   172: dup
-    //   173: aload_0
-    //   174: invokespecial 205	org/json/JSONObject:<init>	(Ljava/lang/String;)V
-    //   177: astore_0
-    //   178: getstatic 210	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	Lcom/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil;
-    //   181: aload_0
-    //   182: invokevirtual 213	com/tencent/biz/pubaccount/readinjoyAd/ad/common_ad_download/util/RIJAdUrlChangeUtil:a	(Lorg/json/JSONObject;)Ljava/lang/String;
-    //   185: astore_0
-    //   186: aload_0
-    //   187: astore_3
-    //   188: aload_2
-    //   189: ifnull -177 -> 12
-    //   192: aload_2
-    //   193: invokevirtual 216	java/net/HttpURLConnection:disconnect	()V
-    //   196: aload_0
-    //   197: areturn
-    //   198: ldc 81
-    //   200: iconst_1
-    //   201: ldc 218
-    //   203: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   206: aload 4
-    //   208: astore_0
-    //   209: goto -23 -> 186
-    //   212: astore 4
-    //   214: aload_2
-    //   215: astore_0
-    //   216: aload 4
-    //   218: astore_2
-    //   219: ldc 81
-    //   221: iconst_1
-    //   222: new 83	java/lang/StringBuilder
-    //   225: dup
-    //   226: invokespecial 84	java/lang/StringBuilder:<init>	()V
-    //   229: ldc 220
-    //   231: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: aload_2
-    //   235: invokevirtual 221	java/lang/Exception:toString	()Ljava/lang/String;
-    //   238: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   244: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   247: aload_0
-    //   248: ifnull -236 -> 12
-    //   251: aload_0
-    //   252: invokevirtual 216	java/net/HttpURLConnection:disconnect	()V
-    //   255: aconst_null
-    //   256: areturn
-    //   257: ldc 81
-    //   259: iconst_1
-    //   260: new 83	java/lang/StringBuilder
-    //   263: dup
-    //   264: invokespecial 84	java/lang/StringBuilder:<init>	()V
-    //   267: ldc 223
-    //   269: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: aload_2
-    //   273: invokevirtual 196	java/net/HttpURLConnection:getResponseCode	()I
-    //   276: invokevirtual 151	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   279: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   282: invokestatic 103	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   285: aload 4
+    //   63: aload_3
+    //   64: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   70: invokestatic 146	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   73: ifeq +34 -> 107
+    //   76: new 83	java/lang/StringBuilder
+    //   79: dup
+    //   80: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   83: astore_3
+    //   84: aload_3
+    //   85: ldc 155
+    //   87: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   90: pop
+    //   91: aload_3
+    //   92: aload_0
+    //   93: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: pop
+    //   97: ldc 95
+    //   99: iconst_2
+    //   100: aload_3
+    //   101: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   104: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   107: new 157	java/net/URL
+    //   110: dup
+    //   111: aload_0
+    //   112: invokespecial 160	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   115: invokevirtual 164	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   118: checkcast 166	java/net/HttpURLConnection
+    //   121: astore 4
+    //   123: aload 4
+    //   125: astore_3
+    //   126: aload 4
+    //   128: ldc 168
+    //   130: invokevirtual 171	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   133: aload 4
+    //   135: astore_3
+    //   136: aload 4
+    //   138: ldc 173
+    //   140: ldc 175
+    //   142: invokevirtual 179	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   145: aload 4
+    //   147: astore_3
+    //   148: aload 4
+    //   150: ldc 181
+    //   152: ldc 183
+    //   154: invokevirtual 179	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   157: aload 4
+    //   159: astore_3
+    //   160: aload 4
+    //   162: ldc 185
+    //   164: ldc 187
+    //   166: invokevirtual 179	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: aload 4
+    //   171: astore_3
+    //   172: aload 4
+    //   174: sipush 3000
+    //   177: invokevirtual 191	java/net/HttpURLConnection:setConnectTimeout	(I)V
+    //   180: aload 4
+    //   182: astore_3
+    //   183: aload 4
+    //   185: sipush 3000
+    //   188: invokevirtual 194	java/net/HttpURLConnection:setReadTimeout	(I)V
+    //   191: aload 4
+    //   193: astore_3
+    //   194: aload 4
+    //   196: invokevirtual 198	java/net/HttpURLConnection:getResponseCode	()I
+    //   199: sipush 200
+    //   202: if_icmpne +75 -> 277
+    //   205: aload 4
+    //   207: astore_3
+    //   208: aload 4
+    //   210: invokevirtual 202	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   213: invokestatic 204	com/tencent/biz/pubaccount/NativeAd/util/ADBaseAppDownloadManager:a	(Ljava/io/InputStream;)Ljava/lang/String;
+    //   216: astore_0
+    //   217: aload 4
+    //   219: astore_3
+    //   220: aload_0
+    //   221: invokestatic 142	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   224: ifne +36 -> 260
+    //   227: aload 4
+    //   229: astore_3
+    //   230: new 206	org/json/JSONObject
+    //   233: dup
+    //   234: aload_0
+    //   235: invokespecial 207	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   238: astore_0
+    //   239: aload 4
+    //   241: astore_3
+    //   242: ldc 209
+    //   244: invokestatic 215	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   247: checkcast 209	com/tencent/mobileqq/kandian/ad/api/IRIJAdDownloadService
+    //   250: aload_0
+    //   251: invokeinterface 219 2 0
+    //   256: astore_0
+    //   257: goto +70 -> 327
+    //   260: aload 4
+    //   262: astore_3
+    //   263: ldc 95
+    //   265: iconst_1
+    //   266: ldc 221
+    //   268: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   271: aload 5
+    //   273: astore_0
+    //   274: goto +53 -> 327
+    //   277: aload 4
+    //   279: astore_3
+    //   280: new 83	java/lang/StringBuilder
+    //   283: dup
+    //   284: invokespecial 84	java/lang/StringBuilder:<init>	()V
     //   287: astore_0
-    //   288: goto -102 -> 186
-    //   291: astore_3
-    //   292: aload_2
-    //   293: astore_0
-    //   294: aload_3
-    //   295: astore_2
-    //   296: aload_0
-    //   297: ifnull +7 -> 304
-    //   300: aload_0
-    //   301: invokevirtual 216	java/net/HttpURLConnection:disconnect	()V
-    //   304: aload_2
-    //   305: athrow
-    //   306: astore_2
-    //   307: aconst_null
-    //   308: astore_0
-    //   309: goto -13 -> 296
-    //   312: astore_2
-    //   313: goto -17 -> 296
-    //   316: astore_2
-    //   317: aconst_null
-    //   318: astore_0
-    //   319: goto -100 -> 219
+    //   288: aload 4
+    //   290: astore_3
+    //   291: aload_0
+    //   292: ldc 223
+    //   294: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   297: pop
+    //   298: aload 4
+    //   300: astore_3
+    //   301: aload_0
+    //   302: aload 4
+    //   304: invokevirtual 198	java/net/HttpURLConnection:getResponseCode	()I
+    //   307: invokevirtual 153	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   310: pop
+    //   311: aload 4
+    //   313: astore_3
+    //   314: ldc 95
+    //   316: iconst_1
+    //   317: aload_0
+    //   318: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   321: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   324: aload 5
+    //   326: astore_0
+    //   327: aload_0
+    //   328: astore_3
+    //   329: aload 4
+    //   331: ifnull +93 -> 424
+    //   334: aload_0
+    //   335: astore_3
+    //   336: aload 4
+    //   338: invokevirtual 226	java/net/HttpURLConnection:disconnect	()V
+    //   341: aload_3
+    //   342: areturn
+    //   343: astore 5
+    //   345: aload 4
+    //   347: astore_0
+    //   348: goto +13 -> 361
+    //   351: astore_0
+    //   352: aconst_null
+    //   353: astore_3
+    //   354: goto +73 -> 427
+    //   357: astore 5
+    //   359: aconst_null
+    //   360: astore_0
+    //   361: aload_0
+    //   362: astore_3
+    //   363: new 83	java/lang/StringBuilder
+    //   366: dup
+    //   367: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   370: astore 4
+    //   372: aload_0
+    //   373: astore_3
+    //   374: aload 4
+    //   376: ldc 228
+    //   378: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   381: pop
+    //   382: aload_0
+    //   383: astore_3
+    //   384: aload 4
+    //   386: aload 5
+    //   388: invokevirtual 229	java/lang/Exception:toString	()Ljava/lang/String;
+    //   391: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   394: pop
+    //   395: aload_0
+    //   396: astore_3
+    //   397: ldc 95
+    //   399: iconst_1
+    //   400: aload 4
+    //   402: invokevirtual 99	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   405: invokestatic 105	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   408: aload 7
+    //   410: astore_3
+    //   411: aload_0
+    //   412: ifnull +12 -> 424
+    //   415: aload 6
+    //   417: astore_3
+    //   418: aload_0
+    //   419: astore 4
+    //   421: goto -85 -> 336
+    //   424: aload_3
+    //   425: areturn
+    //   426: astore_0
+    //   427: aload_3
+    //   428: ifnull +7 -> 435
+    //   431: aload_3
+    //   432: invokevirtual 226	java/net/HttpURLConnection:disconnect	()V
+    //   435: goto +5 -> 440
+    //   438: aload_0
+    //   439: athrow
+    //   440: goto -2 -> 438
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	322	0	paramString	String
-    //   0	322	1	paramInt	int
-    //   99	206	2	localObject1	Object
-    //   306	1	2	localObject2	Object
-    //   312	1	2	localObject3	Object
-    //   316	1	2	localException1	Exception
-    //   4	184	3	str	String
-    //   291	4	3	localObject4	Object
-    //   1	206	4	localObject5	Object
-    //   212	74	4	localException2	Exception
+    //   0	443	0	paramString	String
+    //   0	443	1	paramInt	int
+    //   4	11	2	bool	boolean
+    //   33	399	3	localObject1	Object
+    //   121	299	4	localObject2	Object
+    //   12	313	5	localObject3	Object
+    //   343	1	5	localException1	Exception
+    //   357	30	5	localException2	Exception
+    //   6	410	6	localObject4	Object
+    //   9	400	7	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   100	186	212	java/lang/Exception
-    //   198	206	212	java/lang/Exception
-    //   257	285	212	java/lang/Exception
-    //   100	186	291	finally
-    //   198	206	291	finally
-    //   257	285	291	finally
-    //   85	100	306	finally
-    //   219	247	312	finally
-    //   85	100	316	java/lang/Exception
+    //   126	133	343	java/lang/Exception
+    //   136	145	343	java/lang/Exception
+    //   148	157	343	java/lang/Exception
+    //   160	169	343	java/lang/Exception
+    //   172	180	343	java/lang/Exception
+    //   183	191	343	java/lang/Exception
+    //   194	205	343	java/lang/Exception
+    //   208	217	343	java/lang/Exception
+    //   220	227	343	java/lang/Exception
+    //   230	239	343	java/lang/Exception
+    //   242	257	343	java/lang/Exception
+    //   263	271	343	java/lang/Exception
+    //   280	288	343	java/lang/Exception
+    //   291	298	343	java/lang/Exception
+    //   301	311	343	java/lang/Exception
+    //   314	324	343	java/lang/Exception
+    //   107	123	351	finally
+    //   107	123	357	java/lang/Exception
+    //   126	133	426	finally
+    //   136	145	426	finally
+    //   148	157	426	finally
+    //   160	169	426	finally
+    //   172	180	426	finally
+    //   183	191	426	finally
+    //   194	205	426	finally
+    //   208	217	426	finally
+    //   220	227	426	finally
+    //   230	239	426	finally
+    //   242	257	426	finally
+    //   263	271	426	finally
+    //   280	288	426	finally
+    //   291	298	426	finally
+    //   301	311	426	finally
+    //   314	324	426	finally
+    //   363	372	426	finally
+    //   374	382	426	finally
+    //   384	395	426	finally
+    //   397	408	426	finally
   }
   
   private void a(Activity paramActivity, ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    int i = 0;
-    if ((paramActivity == null) || (paramADVideoAppDownloadData == null)) {
-      return;
-    }
-    if ((TextUtils.isEmpty(paramADVideoAppDownloadData.c)) && (!TextUtils.isEmpty(paramADVideoAppDownloadData.jdField_b_of_type_JavaLangString))) {
-      paramADVideoAppDownloadData.c = a(paramADVideoAppDownloadData.jdField_b_of_type_JavaLangString, 0);
-    }
-    String str1 = paramADVideoAppDownloadData.d;
-    String str2 = paramADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
-    String str3 = paramADVideoAppDownloadData.c;
-    String str4 = paramADVideoAppDownloadData.e;
-    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)) || (TextUtils.isEmpty(str3)) || (TextUtils.isEmpty(str4)))
+    if (paramActivity != null)
     {
+      if (paramADVideoAppDownloadData == null) {
+        return;
+      }
+      boolean bool = TextUtils.isEmpty(paramADVideoAppDownloadData.c);
+      int i = 0;
+      if ((bool) && (!TextUtils.isEmpty(paramADVideoAppDownloadData.jdField_b_of_type_JavaLangString))) {
+        paramADVideoAppDownloadData.c = a(paramADVideoAppDownloadData.jdField_b_of_type_JavaLangString, 0);
+      }
+      String str1 = paramADVideoAppDownloadData.d;
+      String str2 = paramADVideoAppDownloadData.jdField_a_of_type_JavaLangString;
+      String str3 = paramADVideoAppDownloadData.c;
+      String str4 = paramADVideoAppDownloadData.e;
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)) && (!TextUtils.isEmpty(str4)))
+      {
+        Bundle localBundle = new Bundle();
+        localBundle.putString(DownloadConstants.f, str1);
+        localBundle.putString(DownloadConstants.jdField_b_of_type_JavaLangString, str2);
+        localBundle.putString(DownloadConstants.j, str3);
+        localBundle.putString(DownloadConstants.l, str4);
+        localBundle.putInt(DownloadConstants.k, 2);
+        localBundle.putInt(DownloadConstants.G, 0);
+        localBundle.putBoolean(DownloadConstants.y, false);
+        localBundle.putInt(DownloadConstants.J, 0);
+        localBundle.putBoolean(DownloadConstants.z, true);
+        localBundle.putBoolean(DownloadConstants.h, true);
+        localBundle.putBoolean(DownloadConstants.s, false);
+        localBundle.putBoolean(DownloadConstants.L, false);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("_");
+        localStringBuilder.append(GlobalUtil.calcMD5AsString(str3));
+        localBundle.putString("sendTime", localStringBuilder.toString());
+        if (!TextUtils.isEmpty(paramADVideoAppDownloadData.f)) {
+          localBundle.putString(DownloadConstants.i, paramADVideoAppDownloadData.f);
+        }
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("startRealDownload pkg:");
+          localStringBuilder.append(str1);
+          localStringBuilder.append(", appid:");
+          localStringBuilder.append(str2);
+          localStringBuilder.append(", name:");
+          localStringBuilder.append(str4);
+          localStringBuilder.append(", url:");
+          localStringBuilder.append(str3);
+          QLog.d("ADBaseAppDownloadManager", 2, localStringBuilder.toString());
+        }
+        if (this.jdField_a_of_type_JavaUtilList.contains(paramADVideoAppDownloadData)) {
+          this.jdField_a_of_type_JavaUtilList.remove(paramADVideoAppDownloadData);
+        }
+        this.jdField_a_of_type_JavaUtilList.add(paramADVideoAppDownloadData);
+        DownloadProxy.a().a(paramActivity, localBundle, "biz_src_feeds_kandianads", null, 0);
+        return;
+      }
       if (paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null) {
         i = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress;
+      } else if (paramADVideoAppDownloadData.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData != null) {
+        i = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData.k;
+      } else if (paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoPlayfeedsGameAdComData != null) {
+        i = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoPlayfeedsGameAdComData.c;
       }
-      for (;;)
-      {
-        a(paramADVideoAppDownloadData, 6, i);
-        return;
-        if (paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null) {
-          i = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.i;
-        } else if (paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData != null) {
-          i = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.c;
-        }
-      }
+      a(paramADVideoAppDownloadData, 6, i);
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString(DownloadConstants.f, str1);
-    localBundle.putString(DownloadConstants.jdField_b_of_type_JavaLangString, str2);
-    localBundle.putString(DownloadConstants.j, str3);
-    localBundle.putString(DownloadConstants.l, str4);
-    localBundle.putInt(DownloadConstants.k, 2);
-    localBundle.putInt(DownloadConstants.F, 0);
-    localBundle.putBoolean(DownloadConstants.x, false);
-    localBundle.putInt(DownloadConstants.I, 0);
-    localBundle.putBoolean(DownloadConstants.y, true);
-    localBundle.putBoolean(DownloadConstants.h, true);
-    localBundle.putBoolean(DownloadConstants.r, false);
-    localBundle.putBoolean(DownloadConstants.K, false);
-    localBundle.putString("sendTime", "_" + GlobalUtil.calcMD5AsString(str3));
-    if (!TextUtils.isEmpty(paramADVideoAppDownloadData.f)) {
-      localBundle.putString(DownloadConstants.i, paramADVideoAppDownloadData.f);
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "startRealDownload pkg:" + str1 + ", appid:" + str2 + ", name:" + str4 + ", url:" + str3);
-    }
-    if (this.jdField_a_of_type_JavaUtilList.contains(paramADVideoAppDownloadData)) {
-      this.jdField_a_of_type_JavaUtilList.remove(paramADVideoAppDownloadData);
-    }
-    this.jdField_a_of_type_JavaUtilList.add(paramADVideoAppDownloadData);
-    DownloadProxy.a().a(paramActivity, localBundle, "biz_src_feeds_kandianads", null, 0);
   }
   
   public static boolean a(Context paramContext, ADVideoAppDownloadData paramADVideoAppDownloadData)
@@ -355,47 +477,65 @@ public class ADBaseAppDownloadManager
   {
     do
     {
-      try
+      do
       {
-        if (!paramADVideoAppDownloadData.jdField_a_of_type_Boolean) {
-          break;
+        try
+        {
+          if (paramADVideoAppDownloadData.jdField_a_of_type_Boolean)
+          {
+            if (!TextUtils.isEmpty(paramADVideoAppDownloadData.i)) {
+              continue;
+            }
+            if (!TextUtils.isEmpty(paramADVideoAppDownloadData.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData.Q))
+            {
+              continue;
+              if (TextUtils.isEmpty(paramADVideoAppDownloadData.i)) {
+                paramADVideoAppDownloadData = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData.Q;
+              } else {
+                paramADVideoAppDownloadData = paramADVideoAppDownloadData.i;
+              }
+              boolean bool = new File(paramADVideoAppDownloadData).exists();
+              if (bool) {
+                return true;
+              }
+            }
+          }
+          return false;
         }
-        if (!TextUtils.isEmpty(paramADVideoAppDownloadData.i)) {
-          continue;
+        catch (Exception paramADVideoAppDownloadData)
+        {
+          return false;
         }
-        if (TextUtils.isEmpty(paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.I)) {
-          break;
-        }
-      }
-      catch (Exception paramADVideoAppDownloadData)
-      {
-        return false;
-      }
-      if (TextUtils.isEmpty(paramADVideoAppDownloadData.i)) {}
-      for (paramADVideoAppDownloadData = paramADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.I; new File(paramADVideoAppDownloadData).exists(); paramADVideoAppDownloadData = paramADVideoAppDownloadData.i) {
-        return true;
-      }
-    } while ((paramInt != 3) && (paramInt != 4));
+      } while (paramInt == 3);
+    } while (paramInt != 4);
     return false;
   }
   
   private static boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    DownloadInfo localDownloadInfo;
-    do
-    {
+    boolean bool1 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
-      localDownloadInfo = DownloadManagerV2.a().b(paramString);
-    } while (localDownloadInfo == null);
-    paramString = "";
-    if (!TextUtils.isEmpty(localDownloadInfo.l)) {
-      paramString = localDownloadInfo.l;
     }
-    if ((!TextUtils.isEmpty(paramString)) && (new File(paramString).exists())) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    paramString = DownloadManagerV2.a().b(paramString);
+    if (paramString == null) {
+      return false;
     }
+    if (!TextUtils.isEmpty(paramString.l)) {
+      paramString = paramString.l;
+    } else {
+      paramString = "";
+    }
+    bool1 = bool2;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      bool1 = bool2;
+      if (new File(paramString).exists()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private void b()
@@ -407,48 +547,60 @@ public class ADBaseAppDownloadManager
   
   private static boolean b(Context paramContext, ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    if ((paramContext == null) || (paramADVideoAppDownloadData == null) || (TextUtils.isEmpty(paramADVideoAppDownloadData.d)) || (TextUtils.isEmpty(paramADVideoAppDownloadData.jdField_a_of_type_JavaLangString))) {
-      return false;
+    if ((paramContext != null) && (paramADVideoAppDownloadData != null) && (!TextUtils.isEmpty(paramADVideoAppDownloadData.d)) && (!TextUtils.isEmpty(paramADVideoAppDownloadData.jdField_a_of_type_JavaLangString)))
+    {
+      if (paramADVideoAppDownloadData.jdField_a_of_type_Boolean) {
+        return a(paramADVideoAppDownloadData, paramADVideoAppDownloadData.jdField_a_of_type_Int);
+      }
+      if (TextUtils.isEmpty(paramADVideoAppDownloadData.c)) {
+        return b(paramContext, paramADVideoAppDownloadData.d);
+      }
+      return a(paramADVideoAppDownloadData.c);
     }
-    if (paramADVideoAppDownloadData.jdField_a_of_type_Boolean) {
-      return a(paramADVideoAppDownloadData, paramADVideoAppDownloadData.jdField_a_of_type_Int);
-    }
-    if (TextUtils.isEmpty(paramADVideoAppDownloadData.c)) {
-      return b(paramContext, paramADVideoAppDownloadData.d);
-    }
-    return a(paramADVideoAppDownloadData.c);
+    return false;
   }
   
   private static boolean b(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {}
-    DownloadInfo localDownloadInfo;
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramContext != null)
     {
-      return false;
-      localDownloadInfo = DownloadManagerV2.a().c(paramString);
-    } while (localDownloadInfo == null);
-    paramContext = "";
-    if (!TextUtils.isEmpty(localDownloadInfo.l)) {
-      paramContext = localDownloadInfo.l;
-    }
-    paramString = paramContext;
-    if (TextUtils.isEmpty(paramContext))
-    {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      DownloadInfo localDownloadInfo = DownloadManagerV2.a().c(paramString);
+      if (localDownloadInfo == null) {
+        return false;
+      }
+      if (!TextUtils.isEmpty(localDownloadInfo.l)) {
+        paramContext = localDownloadInfo.l;
+      } else {
+        paramContext = "";
+      }
       paramString = paramContext;
-      if (!TextUtils.isEmpty(localDownloadInfo.d))
+      if (TextUtils.isEmpty(paramContext))
       {
-        localDownloadInfo = DownloadManagerV2.a().b(localDownloadInfo.d);
         paramString = paramContext;
-        if (localDownloadInfo != null) {
-          paramString = localDownloadInfo.l;
+        if (!TextUtils.isEmpty(localDownloadInfo.d))
+        {
+          localDownloadInfo = DownloadManagerV2.a().b(localDownloadInfo.d);
+          paramString = paramContext;
+          if (localDownloadInfo != null) {
+            paramString = localDownloadInfo.l;
+          }
+        }
+      }
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString))
+      {
+        bool1 = bool2;
+        if (new File(paramString).exists()) {
+          bool1 = true;
         }
       }
     }
-    if ((!TextUtils.isEmpty(paramString)) && (new File(paramString).exists())) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    return bool1;
   }
   
   private void e(ADVideoAppDownloadData paramADVideoAppDownloadData)
@@ -468,7 +620,11 @@ public class ADBaseAppDownloadManager
     WadlParams localWadlParams = new WadlParams(paramADVideoAppDownloadData.jdField_a_of_type_JavaLangString, paramADVideoAppDownloadData.d);
     localWadlParams.c = 7;
     localWadlParams.jdField_b_of_type_Int = 2;
-    localWadlParams.n = (paramADVideoAppDownloadData.g + "@" + paramADVideoAppDownloadData.h);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramADVideoAppDownloadData.g);
+    localStringBuilder.append("@");
+    localStringBuilder.append(paramADVideoAppDownloadData.h);
+    localWadlParams.n = localStringBuilder.toString();
     localWadlParams.e = paramADVideoAppDownloadData.c;
     localWadlParams.j = paramADVideoAppDownloadData.e;
     localWadlParams.p = "biz_src_feeds_kandianads";
@@ -480,7 +636,10 @@ public class ADBaseAppDownloadManager
   {
     b();
     WadlProxyServiceUtil.a().b(this);
-    QLog.d("ADBaseAppDownloadManager", 1, "unRegisterWadlServiceCallBack ：" + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("unRegisterWadlServiceCallBack ：");
+    localStringBuilder.append(this);
+    QLog.d("ADBaseAppDownloadManager", 1, localStringBuilder.toString());
     this.jdField_a_of_type_JavaLangRefSoftReference = null;
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_b_of_type_JavaUtilList.clear();
@@ -515,71 +674,141 @@ public class ADBaseAppDownloadManager
   
   protected void a(ADVideoAppDownloadData paramADVideoAppDownloadData, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "startDownload " + paramADVideoAppDownloadData.d + " progress " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startDownload ");
+      ((StringBuilder)localObject).append(paramADVideoAppDownloadData.d);
+      ((StringBuilder)localObject).append(" progress ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ADBaseAppDownloadManager", 2, ((StringBuilder)localObject).toString());
     }
     paramADVideoAppDownloadData.jdField_a_of_type_Int = 3;
     DownloadManagerV2.a().a(this);
-    if (this.jdField_a_of_type_JavaLangRefSoftReference == null) {}
-    for (Activity localActivity = null;; localActivity = (Activity)this.jdField_a_of_type_JavaLangRefSoftReference.get())
-    {
-      a(localActivity, paramADVideoAppDownloadData);
-      return;
+    Object localObject = this.jdField_a_of_type_JavaLangRefSoftReference;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = (Activity)((SoftReference)localObject).get();
     }
+    a((Activity)localObject, paramADVideoAppDownloadData);
   }
   
   protected void a(ADVideoAppDownloadData paramADVideoAppDownloadData, int paramInt1, int paramInt2)
   {
     if (this.jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-      ReadInJoyAdLog.a("ADBaseAppDownloadManager", "updateUIState error : empty progressCallbacks");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ADBaseAppDownloadManager", "updateUIState error : empty progressCallbacks");
     }
     ThreadManager.getUIHandler().post(new ADBaseAppDownloadManager.1(this, paramADVideoAppDownloadData, paramInt1, paramInt2));
+  }
+  
+  public void a(WadlResult paramWadlResult)
+  {
+    if (paramWadlResult != null)
+    {
+      if (paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams == null) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onWadlTaskStatusChanged，wadlResult.taskStatus=");
+        localStringBuilder.append(paramWadlResult.jdField_b_of_type_Int);
+        QLog.d("ADBaseAppDownloadManager", 2, localStringBuilder.toString());
+      }
+      if (4 == paramWadlResult.jdField_b_of_type_Int)
+      {
+        a(paramWadlResult, 3);
+        return;
+      }
+      if (6 == paramWadlResult.jdField_b_of_type_Int)
+      {
+        a(paramWadlResult, 5);
+        return;
+      }
+      if (5 == paramWadlResult.jdField_b_of_type_Int)
+      {
+        a(paramWadlResult, 4);
+        return;
+      }
+      if ((9 != paramWadlResult.jdField_b_of_type_Int) && (10 != paramWadlResult.jdField_b_of_type_Int))
+      {
+        if (7 == paramWadlResult.jdField_b_of_type_Int) {
+          a(paramWadlResult, 6);
+        }
+        return;
+      }
+      a(paramWadlResult, 1);
+    }
   }
   
   protected void a(WadlResult paramWadlResult, int paramInt)
   {
     try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        ADVideoAppDownloadData localADVideoAppDownloadData = (ADVideoAppDownloadData)localIterator.next();
-        if ((localADVideoAppDownloadData.jdField_a_of_type_JavaLangString != null) && (localADVideoAppDownloadData.d != null) && (localADVideoAppDownloadData.jdField_a_of_type_JavaLangString.equals(paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.jdField_a_of_type_JavaLangString)) && (localADVideoAppDownloadData.d.equals(paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.f)))
+        localObject2 = (ADVideoAppDownloadData)((Iterator)localObject1).next();
+        if ((((ADVideoAppDownloadData)localObject2).jdField_a_of_type_JavaLangString != null) && (((ADVideoAppDownloadData)localObject2).d != null) && (((ADVideoAppDownloadData)localObject2).jdField_a_of_type_JavaLangString.equals(paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.jdField_a_of_type_JavaLangString)) && (((ADVideoAppDownloadData)localObject2).d.equals(paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams.f)))
         {
           int i = a(paramWadlResult);
           int j = paramWadlResult.d;
           if (!TextUtils.isEmpty(paramWadlResult.jdField_b_of_type_JavaLangString)) {
-            localADVideoAppDownloadData.i = paramWadlResult.jdField_b_of_type_JavaLangString;
+            ((ADVideoAppDownloadData)localObject2).i = paramWadlResult.jdField_b_of_type_JavaLangString;
           }
-          if (localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
+          if (((ADVideoAppDownloadData)localObject2).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo != null)
           {
-            localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = i;
-            localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress = j;
+            ((ADVideoAppDownloadData)localObject2).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.downloadState = i;
+            ((ADVideoAppDownloadData)localObject2).jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.progress = j;
           }
-          if (localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData != null)
+          if (((ADVideoAppDownloadData)localObject2).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoPlayfeedsGameAdComData != null)
           {
-            localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.jdField_b_of_type_Int = i;
-            localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountVideoInfo$GameAdComData.c = j;
+            ((ADVideoAppDownloadData)localObject2).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoPlayfeedsGameAdComData.jdField_b_of_type_Int = i;
+            ((ADVideoAppDownloadData)localObject2).jdField_a_of_type_ComTencentBizPubaccountReadinjoyVideoPlayfeedsGameAdComData.c = j;
           }
-          if (localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData != null)
+          if (((ADVideoAppDownloadData)localObject2).jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData != null)
           {
-            localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.j = i;
-            localADVideoAppDownloadData.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewFastwebDataAdData.i = j;
+            ((ADVideoAppDownloadData)localObject2).jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData.l = i;
+            ((ADVideoAppDownloadData)localObject2).jdField_a_of_type_ComTencentMobileqqKandianBizFastwebDataAdData.k = j;
           }
-          a(localADVideoAppDownloadData, paramInt, paramWadlResult.d);
+          a((ADVideoAppDownloadData)localObject2, paramInt, paramWadlResult.d);
+          return;
         }
       }
-      return;
     }
     catch (Exception paramWadlResult)
     {
-      ReadInJoyAdLog.a("ADBaseAppDownloadManager", "notifyState error " + paramWadlResult.getMessage());
+      Object localObject1 = (IRIJAdLogService)QRoute.api(IRIJAdLogService.class);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("notifyState error ");
+      ((StringBuilder)localObject2).append(paramWadlResult.getMessage());
+      ((IRIJAdLogService)localObject1).d("ADBaseAppDownloadManager", ((StringBuilder)localObject2).toString());
     }
   }
   
   protected void a(DownloadInfo paramDownloadInfo, int paramInt)
   {
     ThreadManager.getUIHandler().post(new ADBaseAppDownloadManager.2(this, paramDownloadInfo, paramInt));
+  }
+  
+  public void a(ArrayList<WadlResult> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ADBaseAppDownloadManager", 2, "onQueryCallback ");
+    }
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
+    {
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        a((WadlResult)paramArrayList.next(), 8);
+      }
+      return;
+    }
+    paramArrayList = this.jdField_b_of_type_JavaUtilList.iterator();
+    while (paramArrayList.hasNext()) {
+      a(new WadlResult(((ADVideoAppDownloadData)paramArrayList.next()).jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams), 8);
+    }
   }
   
   public boolean a(ADVideoAppDownloadData paramADVideoAppDownloadData)
@@ -592,16 +821,24 @@ public class ADBaseAppDownloadManager
   
   public void b(ADVideoAppDownloadData paramADVideoAppDownloadData)
   {
-    if ((paramADVideoAppDownloadData.jdField_a_of_type_Boolean) && (paramADVideoAppDownloadData.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams != null)) {
-      WadlProxyServiceUtil.a().a(0, paramADVideoAppDownloadData.jdField_a_of_type_JavaLangString);
-    }
-    do
+    if ((paramADVideoAppDownloadData.jdField_a_of_type_Boolean) && (paramADVideoAppDownloadData.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams != null))
     {
+      WadlProxyServiceUtil.a().a(0, paramADVideoAppDownloadData.jdField_a_of_type_JavaLangString);
       return;
-      c(paramADVideoAppDownloadData);
-      paramADVideoAppDownloadData = paramADVideoAppDownloadData.c;
-    } while (TextUtils.isEmpty(paramADVideoAppDownloadData));
+    }
+    c(paramADVideoAppDownloadData);
+    paramADVideoAppDownloadData = paramADVideoAppDownloadData.c;
+    if (TextUtils.isEmpty(paramADVideoAppDownloadData)) {
+      return;
+    }
     DownloadManagerV2.a().a(paramADVideoAppDownloadData);
+  }
+  
+  public void b(ArrayList<WadlResult> paramArrayList)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("ADBaseAppDownloadManager", 2, "onQueryCallbackVia ");
+    }
   }
   
   public void c(ADVideoAppDownloadData paramADVideoAppDownloadData)
@@ -635,146 +872,121 @@ public class ADBaseAppDownloadManager
   
   public void installSucceed(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "installSucceed " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("installSucceed ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("ADBaseAppDownloadManager", 2, ((StringBuilder)localObject).toString());
     }
-    DownloadInfo localDownloadInfo = new DownloadInfo();
-    localDownloadInfo.c = paramString1;
-    localDownloadInfo.e = paramString2;
-    a(localDownloadInfo, 1);
+    Object localObject = new DownloadInfo();
+    ((DownloadInfo)localObject).c = paramString1;
+    ((DownloadInfo)localObject).e = paramString2;
+    a((DownloadInfo)localObject, 1);
   }
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "onDownloadCancel " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadCancel ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d("ADBaseAppDownloadManager", 2, localStringBuilder.toString());
     }
     a(paramDownloadInfo, 7);
   }
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "onDownloadError " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("onDownloadError ");
+      paramString.append(paramDownloadInfo.e);
+      QLog.d("ADBaseAppDownloadManager", 2, paramString.toString());
     }
     a(paramDownloadInfo, 6);
   }
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "onDownloadFinish " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadFinish ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d("ADBaseAppDownloadManager", 2, localStringBuilder.toString());
     }
     a(paramDownloadInfo, 5);
   }
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "onDownloadPause " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadPause ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d("ADBaseAppDownloadManager", 2, localStringBuilder.toString());
     }
     a(paramDownloadInfo, 4);
   }
   
   public void onDownloadUpdate(List<DownloadInfo> paramList)
   {
-    if (paramList == null) {}
-    for (;;)
-    {
+    if (paramList == null) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ADBaseAppDownloadManager", 2, "onDownloadUpdate " + paramList.size());
-      }
-      paramList = paramList.iterator();
-      while (paramList.hasNext()) {
-        a((DownloadInfo)paramList.next(), 3);
-      }
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadUpdate ");
+      localStringBuilder.append(paramList.size());
+      QLog.d("ADBaseAppDownloadManager", 2, localStringBuilder.toString());
+    }
+    paramList = paramList.iterator();
+    while (paramList.hasNext()) {
+      a((DownloadInfo)paramList.next(), 3);
     }
   }
   
   public void onDownloadWait(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "onDownloadWait " + paramDownloadInfo.e);
-    }
-  }
-  
-  public void onQueryCallback(ArrayList<WadlResult> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "onQueryCallback ");
-    }
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0)) {
-      paramArrayList = this.jdField_b_of_type_JavaUtilList.iterator();
-    }
-    while (paramArrayList.hasNext())
+    if (QLog.isColorLevel())
     {
-      a(new WadlResult(((ADVideoAppDownloadData)paramArrayList.next()).jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams), 8);
-      continue;
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext()) {
-        a((WadlResult)paramArrayList.next(), 8);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadWait ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d("ADBaseAppDownloadManager", 2, localStringBuilder.toString());
     }
-  }
-  
-  public void onQueryCallbackVia(ArrayList<WadlResult> paramArrayList)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "onQueryCallbackVia ");
-    }
-  }
-  
-  public void onWadlTaskStatusChanged(WadlResult paramWadlResult)
-  {
-    if ((paramWadlResult == null) || (paramWadlResult.jdField_a_of_type_ComTencentGamecenterWadlBizEntityWadlParams == null)) {}
-    do
-    {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("ADBaseAppDownloadManager", 2, "onWadlTaskStatusChanged，wadlResult.taskStatus=" + paramWadlResult.jdField_b_of_type_Int);
-      }
-      if (4 == paramWadlResult.jdField_b_of_type_Int)
-      {
-        a(paramWadlResult, 3);
-        return;
-      }
-      if (6 == paramWadlResult.jdField_b_of_type_Int)
-      {
-        a(paramWadlResult, 5);
-        return;
-      }
-      if (5 == paramWadlResult.jdField_b_of_type_Int)
-      {
-        a(paramWadlResult, 4);
-        return;
-      }
-      if ((9 == paramWadlResult.jdField_b_of_type_Int) || (10 == paramWadlResult.jdField_b_of_type_Int))
-      {
-        a(paramWadlResult, 1);
-        return;
-      }
-    } while (7 != paramWadlResult.jdField_b_of_type_Int);
-    a(paramWadlResult, 6);
   }
   
   public void packageReplaced(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "packageReplaced " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("packageReplaced ");
+      paramString1.append(paramString2);
+      QLog.d("ADBaseAppDownloadManager", 2, paramString1.toString());
     }
   }
   
   public void uninstallSucceed(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ADBaseAppDownloadManager", 2, "uninstallSucceed " + paramString2);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("uninstallSucceed ");
+      paramString1.append(paramString2);
+      QLog.d("ADBaseAppDownloadManager", 2, paramString1.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.util.ADBaseAppDownloadManager
  * JD-Core Version:    0.7.0.1
  */

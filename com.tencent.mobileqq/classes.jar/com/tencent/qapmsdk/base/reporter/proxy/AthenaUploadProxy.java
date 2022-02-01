@@ -33,12 +33,23 @@ public final class AthenaUploadProxy
   
   private final void reportFile(JSONObject paramJSONObject, String paramString1, String paramString2, IReporter.ReportResultCallback paramReportResultCallback)
   {
-    String str = BaseInfo.urlMeta.getAthenaFileUploadUrl() + '?' + paramString1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseInfo.urlMeta.getAthenaFileUploadUrl());
+    ((StringBuilder)localObject).append('?');
+    ((StringBuilder)localObject).append(paramString1);
+    localObject = ((StringBuilder)localObject).toString();
     try
     {
       paramString1 = StringsKt.split$default((CharSequence)paramString2, new String[] { ";" }, false, 0, 6, null);
-      Logger.INSTANCE.i(new String[] { "QAPM_base_AthenaUploadProxy", "[athena_report] file url: " + str + " jsonObj: " + paramJSONObject + '}' });
-      paramString2 = new URL(str);
+      paramString2 = Logger.INSTANCE;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[athena_report] file url: ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" jsonObj: ");
+      localStringBuilder.append(paramJSONObject);
+      localStringBuilder.append('}');
+      paramString2.i(new String[] { "QAPM_base_AthenaUploadProxy", localStringBuilder.toString() });
+      paramString2 = new URL((String)localObject);
       paramJSONObject = paramJSONObject.getJSONObject("meta");
       Intrinsics.checkExpressionValueIsNotNull(paramJSONObject, "jsonObject.getJSONObject(\"meta\")");
       paramJSONObject = new AthenaFileUploadRunnable(paramString2, paramJSONObject, paramString1, paramReportResultCallback);
@@ -53,8 +64,18 @@ public final class AthenaUploadProxy
   
   private final void reportJson(JSONObject paramJSONObject, String paramString, IReporter.ReportResultCallback paramReportResultCallback)
   {
-    paramString = BaseInfo.urlMeta.getAthenaJsonUploadUrl() + '?' + paramString;
-    Logger.INSTANCE.i(new String[] { "QAPM_base_AthenaUploadProxy", "[athena_report] json url: " + paramString + " jsonObj: " + paramJSONObject });
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(BaseInfo.urlMeta.getAthenaJsonUploadUrl());
+    ((StringBuilder)localObject).append('?');
+    ((StringBuilder)localObject).append(paramString);
+    paramString = ((StringBuilder)localObject).toString();
+    localObject = Logger.INSTANCE;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[athena_report] json url: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" jsonObj: ");
+    localStringBuilder.append(paramJSONObject);
+    ((Logger)localObject).i(new String[] { "QAPM_base_AthenaUploadProxy", localStringBuilder.toString() });
     paramJSONObject = new AthenaJsonUploadRunnable(new URL(paramString), paramJSONObject, paramReportResultCallback);
     this.handler.post((Runnable)paramJSONObject);
   }
@@ -68,31 +89,30 @@ public final class AthenaUploadProxy
   public boolean report(@NotNull BaseJsonObject paramBaseJsonObject, @Nullable IReporter.ReportResultCallback paramReportResultCallback)
   {
     Intrinsics.checkParameterIsNotNull(paramBaseJsonObject, "baseJson");
-    Object localObject2;
-    Object localObject1;
-    if (!(paramBaseJsonObject instanceof ResultObject))
+    Object localObject1 = paramBaseJsonObject;
+    if (!(paramBaseJsonObject instanceof ResultObject)) {
+      localObject1 = null;
+    }
+    Object localObject2 = (ResultObject)localObject1;
+    if (localObject2 != null)
     {
-      paramBaseJsonObject = null;
-      localObject2 = (ResultObject)paramBaseJsonObject;
-      if (localObject2 == null) {
-        break label201;
-      }
       localObject1 = ((ResultObject)localObject2).getParams();
       paramBaseJsonObject = new StringBuffer(1024);
-    }
-    for (;;)
-    {
       try
       {
         localObject1 = ((JSONObject)localObject1).optString("fileObj");
         Intrinsics.checkExpressionValueIsNotNull(localObject1, "filePath");
-        if (((CharSequence)localObject1).length() != 0) {
-          break label203;
+        int i = ((CharSequence)localObject1).length();
+        if (i == 0) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        i = 1;
         if (i != 0)
         {
-          paramBaseJsonObject.append("format=2").append("&user_id=").append(BaseInfo.userMeta.uin);
+          paramBaseJsonObject.append("format=2");
+          paramBaseJsonObject.append("&user_id=");
+          paramBaseJsonObject.append(BaseInfo.userMeta.uin);
           localObject1 = ((ResultObject)localObject2).getParams();
           paramBaseJsonObject = paramBaseJsonObject.toString();
           Intrinsics.checkExpressionValueIsNotNull(paramBaseJsonObject, "buffer.toString()");
@@ -100,30 +120,27 @@ public final class AthenaUploadProxy
         }
         else
         {
-          paramBaseJsonObject.append("format=1").append("&user_id=").append(BaseInfo.userMeta.uin);
+          paramBaseJsonObject.append("format=1");
+          paramBaseJsonObject.append("&user_id=");
+          paramBaseJsonObject.append(BaseInfo.userMeta.uin);
           localObject2 = ((ResultObject)localObject2).getParams();
           paramBaseJsonObject = paramBaseJsonObject.toString();
           Intrinsics.checkExpressionValueIsNotNull(paramBaseJsonObject, "buffer.toString()");
           reportFile((JSONObject)localObject2, paramBaseJsonObject, (String)localObject1, paramReportResultCallback);
         }
+        return true;
       }
       catch (Exception paramBaseJsonObject)
       {
         Logger.INSTANCE.exception("QAPM_base_AthenaUploadProxy", (Throwable)paramBaseJsonObject);
-        return false;
       }
-      break;
-      return true;
-      label201:
-      return false;
-      label203:
-      int i = 0;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.proxy.AthenaUploadProxy
  * JD-Core Version:    0.7.0.1
  */

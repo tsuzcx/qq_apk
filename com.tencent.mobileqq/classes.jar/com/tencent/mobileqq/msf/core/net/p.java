@@ -19,17 +19,30 @@ class p
     try
     {
       n.a(this.c, false);
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "start send checkNetConnectBySocket server:" + this.a + " port:" + this.b);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("start send checkNetConnectBySocket server:");
+        ((StringBuilder)localObject1).append(this.a);
+        ((StringBuilder)localObject1).append(" port:");
+        ((StringBuilder)localObject1).append(this.b);
+        QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject1).toString());
       }
       Object localObject1 = new Socket();
-      Object localObject2 = new InetSocketAddress(this.a, this.b);
+      localObject2 = new InetSocketAddress(this.a, this.b);
       ((Socket)localObject1).setSoTimeout(10000);
       ((Socket)localObject1).setTcpNoDelay(true);
       ((Socket)localObject1).setKeepAlive(true);
       ((Socket)localObject1).connect((SocketAddress)localObject2, 10000);
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "checkNetConnectBySocket connect server:" + this.a + " port:" + this.b + " success");
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("checkNetConnectBySocket connect server:");
+        ((StringBuilder)localObject2).append(this.a);
+        ((StringBuilder)localObject2).append(" port:");
+        ((StringBuilder)localObject2).append(this.b);
+        ((StringBuilder)localObject2).append(" success");
+        QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject2).toString());
       }
       localObject2 = new OutputStreamWriter(((Socket)localObject1).getOutputStream());
       Object localObject3 = new StringBuffer();
@@ -48,36 +61,65 @@ class p
       if (((String)localObject1).indexOf("302") != -1) {
         n.a(this.c, true);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "checkNetConnectBySocket get header:" + (String)localObject1);
-      }
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        ((InputStream)localObject2).close();
-        return;
-        QLog.d("MSF.C.NetConnTag", 1, "checkNetConnectBySocket " + ((String)localObject1).hashCode() + " len: " + ((String)localObject1).length());
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("checkNetConnectBySocket get header:");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject3).toString());
       }
-      return;
-    }
-    catch (UnknownHostException localUnknownHostException)
-    {
-      QLog.d("MSF.C.NetConnTag", 1, "checkNetConnectBySocket connect server UnknownHostException:" + this.a + " port:" + this.b + " failed" + localUnknownHostException, localUnknownHostException);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      QLog.d("MSF.C.NetConnTag", 1, "checkNetConnectBySocket connect server IOException:" + this.a + " port:" + this.b + " failed" + localIOException, localIOException);
+      else
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("checkNetConnectBySocket ");
+        ((StringBuilder)localObject3).append(((String)localObject1).hashCode());
+        ((StringBuilder)localObject3).append(" len: ");
+        ((StringBuilder)localObject3).append(((String)localObject1).length());
+        QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject3).toString());
+      }
+      ((InputStream)localObject2).close();
       return;
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.C.NetConnTag", 1, "checkNetConnectBySocket connect server:" + this.a + " port:" + this.b + " failed" + localException, localException);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkNetConnectBySocket connect server:");
+      ((StringBuilder)localObject2).append(this.a);
+      ((StringBuilder)localObject2).append(" port:");
+      ((StringBuilder)localObject2).append(this.b);
+      ((StringBuilder)localObject2).append(" failed");
+      ((StringBuilder)localObject2).append(localException);
+      QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject2).toString(), localException);
+      return;
+    }
+    catch (IOException localIOException)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkNetConnectBySocket connect server IOException:");
+      ((StringBuilder)localObject2).append(this.a);
+      ((StringBuilder)localObject2).append(" port:");
+      ((StringBuilder)localObject2).append(this.b);
+      ((StringBuilder)localObject2).append(" failed");
+      ((StringBuilder)localObject2).append(localIOException);
+      QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject2).toString(), localIOException);
+      return;
+    }
+    catch (UnknownHostException localUnknownHostException)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("checkNetConnectBySocket connect server UnknownHostException:");
+      ((StringBuilder)localObject2).append(this.a);
+      ((StringBuilder)localObject2).append(" port:");
+      ((StringBuilder)localObject2).append(this.b);
+      ((StringBuilder)localObject2).append(" failed");
+      ((StringBuilder)localObject2).append(localUnknownHostException);
+      QLog.d("MSF.C.NetConnTag", 1, ((StringBuilder)localObject2).toString(), localUnknownHostException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.p
  * JD-Core Version:    0.7.0.1
  */

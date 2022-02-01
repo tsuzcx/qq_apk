@@ -13,12 +13,14 @@ public final class PBDoubleField
   
   public void clear(Object paramObject)
   {
-    if ((paramObject instanceof Double)) {}
-    for (this.value = ((Double)paramObject).doubleValue();; this.value = 0.0D)
-    {
-      setHasFlag(false);
-      return;
+    double d;
+    if ((paramObject instanceof Double)) {
+      d = ((Double)paramObject).doubleValue();
+    } else {
+      d = 0.0D;
     }
+    this.value = d;
+    setHasFlag(false);
   }
   
   public int computeSize(int paramInt)
@@ -81,7 +83,7 @@ public final class PBDoubleField
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pb.PBDoubleField
  * JD-Core Version:    0.7.0.1
  */

@@ -3,6 +3,7 @@ package com.tencent.mobileqq.service.message;
 import SecurityAccountServer.RespondQueryQQBindingStat;
 import android.text.TextUtils;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
+import com.tencent.common.app.AppInterface;
 import com.tencent.device.msg.data.MessageForDevLittleVideo;
 import com.tencent.device.msg.data.MessageForDevPtt;
 import com.tencent.device.msg.data.MessageForDevShortVideo;
@@ -11,13 +12,9 @@ import com.tencent.imcore.message.core.CreateMessageRecordCallback;
 import com.tencent.imcore.message.core.CreateMessageRecordCallbackGenerator;
 import com.tencent.imcore.message.core.CreateMessageRecordCallbackGeneratorImpl;
 import com.tencent.mobileqq.activity.aio.item.PokeItemAnimationManager;
-import com.tencent.mobileqq.apollo.api.model.ApolloMessage;
-import com.tencent.mobileqq.apollo.api.model.MessageForApollo;
-import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
+import com.tencent.mobileqq.apollo.utils.api.IApolloMessageUtil;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.activateFriends.MessageForActivateFriends;
 import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.ArkAppMessage;
@@ -34,13 +31,11 @@ import com.tencent.mobileqq.data.MessageForArkFlashChat;
 import com.tencent.mobileqq.data.MessageForAutoReply;
 import com.tencent.mobileqq.data.MessageForBirthdayNotice;
 import com.tencent.mobileqq.data.MessageForBlessPTV;
-import com.tencent.mobileqq.data.MessageForCmGameTips;
 import com.tencent.mobileqq.data.MessageForColorRing;
 import com.tencent.mobileqq.data.MessageForCommonHobbyForAIOShow;
 import com.tencent.mobileqq.data.MessageForConfessCard;
 import com.tencent.mobileqq.data.MessageForConfessNews;
 import com.tencent.mobileqq.data.MessageForDLFile;
-import com.tencent.mobileqq.data.MessageForDanceMachine;
 import com.tencent.mobileqq.data.MessageForDarenAssistant;
 import com.tencent.mobileqq.data.MessageForDateFeed;
 import com.tencent.mobileqq.data.MessageForDeliverGiftTips;
@@ -110,14 +105,15 @@ import com.tencent.mobileqq.data.MessageForVideoVip;
 import com.tencent.mobileqq.data.MessageForWantGiftMsg;
 import com.tencent.mobileqq.data.MessageForYanZhi;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.data.ShareHotChatGrayTips;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.hotchat.api.IHotChatApi;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.MobileQQService;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.systemmsg.MessageForSystemMsg;
 import com.tencent.mobileqq.utils.HexUtil;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
@@ -142,26 +138,6 @@ public class MessageRecordFactory
   public static CreateMessageRecordCallbackGenerator a()
   {
     return a;
-  }
-  
-  public static MessageForApollo a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ApolloMessage paramApolloMessage)
-  {
-    MessageForApollo localMessageForApollo = (MessageForApollo)a(-2039);
-    localMessageForApollo.msgtype = -2039;
-    localMessageForApollo.mApolloMessage = paramApolloMessage;
-    localMessageForApollo.mIsParsed = true;
-    a(paramQQAppInterface, localMessageForApollo, paramString1, paramString2, paramInt);
-    try
-    {
-      localMessageForApollo.msg = ((IApolloUtil)QRoute.api(IApolloUtil.class)).getApolloDescMsg(localMessageForApollo);
-      localMessageForApollo.msgData = MessagePkgUtils.a(paramApolloMessage);
-      return localMessageForApollo;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      paramQQAppInterface.printStackTrace();
-    }
-    return localMessageForApollo;
   }
   
   public static MessageForArkApp a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArkAppMessage paramArkAppMessage)
@@ -210,19 +186,16 @@ public class MessageRecordFactory
     try
     {
       localMessageForHiBoom.msgData = MessagePkgUtils.a(paramHiBoomMessage);
-      a(paramQQAppInterface, localMessageForHiBoom, paramString1, paramString2, paramInt);
-      localMessageForHiBoom.longMsgCount = 1;
-      localMessageForHiBoom.longMsgIndex = 0;
-      localMessageForHiBoom.longMsgId = ((short)(int)localMessageForHiBoom.shmsgseq);
-      return localMessageForHiBoom;
     }
     catch (Exception paramHiBoomMessage)
     {
-      for (;;)
-      {
-        QLog.e("HiBoomFont.MessageRecordFactory", 1, "createSendMsg_HiBoom error: ", paramHiBoomMessage);
-      }
+      QLog.e("HiBoomFont.MessageRecordFactory", 1, "createSendMsg_HiBoom error: ", paramHiBoomMessage);
     }
+    a(paramQQAppInterface, localMessageForHiBoom, paramString1, paramString2, paramInt);
+    localMessageForHiBoom.longMsgCount = 1;
+    localMessageForHiBoom.longMsgIndex = 0;
+    localMessageForHiBoom.longMsgId = ((short)(int)localMessageForHiBoom.shmsgseq);
+    return localMessageForHiBoom;
   }
   
   public static MessageForMarketFace a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, MarkFaceMessage paramMarkFaceMessage)
@@ -255,11 +228,11 @@ public class MessageRecordFactory
     return localMessageForMixedMsg;
   }
   
-  public static MessageForPic a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
+  public static MessageForPic a(AppInterface paramAppInterface, String paramString1, String paramString2, int paramInt)
   {
     MessageForPic localMessageForPic = new MessageForPic();
     localMessageForPic.msgtype = -2000;
-    a(paramQQAppInterface, localMessageForPic, paramString1, paramString2, paramInt);
+    a(paramAppInterface, localMessageForPic, paramString1, paramString2, paramInt);
     localMessageForPic.longMsgCount = 1;
     localMessageForPic.longMsgIndex = 0;
     localMessageForPic.longMsgId = ((short)(int)localMessageForPic.shmsgseq);
@@ -287,69 +260,57 @@ public class MessageRecordFactory
     try
     {
       paramString1.msgData = paramAbsStructMsg.getBytes();
-      if (paramAbsStructMsg.sourceAccoutType != 0) {
-        paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
-      }
-      return paramString1;
     }
     catch (Exception paramQQAppInterface)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
       }
     }
+    if (paramAbsStructMsg.sourceAccoutType != 0) {
+      paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
+    }
+    return paramString1;
   }
   
   public static MessageForReplyText a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo, String paramString2)
   {
     if (paramSourceMsgInfo == null) {
-      paramString1 = null;
+      return null;
     }
-    for (;;)
+    MessageForReplyText localMessageForReplyText = (MessageForReplyText)a(-1049);
+    localMessageForReplyText.selfuin = paramQQAppInterface.getCurrentAccountUin();
+    localMessageForReplyText.frienduin = paramString1;
+    localMessageForReplyText.senderuin = paramQQAppInterface.getCurrentAccountUin();
+    localMessageForReplyText.msg = paramString2;
+    localMessageForReplyText.msgtype = -1049;
+    localMessageForReplyText.isread = true;
+    localMessageForReplyText.issend = 1;
+    localMessageForReplyText.istroop = paramInt;
+    localMessageForReplyText.msgUid = MessageUtils.a(MessageUtils.a());
+    paramString1 = paramQQAppInterface.getMessageFacade().b(localMessageForReplyText.senderuin, paramInt);
+    if ((paramString1 != null) && (!paramString1.isEmpty())) {
+      localMessageForReplyText.shmsgseq = ((ChatMessage)paramString1.get(paramString1.size() - 1)).shmsgseq;
+    } else {
+      localMessageForReplyText.shmsgseq = Math.abs(new Random().nextInt());
+    }
+    localMessageForReplyText.time = MessageCache.a();
+    localMessageForReplyText.mSourceMsgInfo = new MessageForReplyText.SourceMsgInfo(paramSourceMsgInfo);
+    localMessageForReplyText.sb = paramString2;
+    try
     {
-      return paramString1;
-      MessageForReplyText localMessageForReplyText = (MessageForReplyText)a(-1049);
-      localMessageForReplyText.selfuin = paramQQAppInterface.getCurrentAccountUin();
-      localMessageForReplyText.frienduin = paramString1;
-      localMessageForReplyText.senderuin = paramQQAppInterface.getCurrentAccountUin();
-      localMessageForReplyText.msg = paramString2;
-      localMessageForReplyText.msgtype = -1049;
-      localMessageForReplyText.isread = true;
-      localMessageForReplyText.issend = 1;
-      localMessageForReplyText.istroop = paramInt;
-      localMessageForReplyText.msgUid = MessageUtils.a(MessageUtils.a());
-      paramString1 = paramQQAppInterface.getMessageFacade().a(localMessageForReplyText.senderuin, paramInt);
-      if ((paramString1 != null) && (!paramString1.isEmpty()))
-      {
-        localMessageForReplyText.shmsgseq = ((ChatMessage)paramString1.get(paramString1.size() - 1)).shmsgseq;
-        localMessageForReplyText.time = MessageCache.a();
-        localMessageForReplyText.mSourceMsgInfo = new MessageForReplyText.SourceMsgInfo(paramSourceMsgInfo);
-        localMessageForReplyText.sb = paramString2;
-      }
-      try
-      {
-        localMessageForReplyText.saveExtInfoToExtStr("sens_msg_source_msg_info", HexUtil.bytes2HexStr(MessagePkgUtils.a(localMessageForReplyText.mSourceMsgInfo)));
-        paramString1 = localMessageForReplyText;
-        if (!localMessageForReplyText.isSend()) {
-          continue;
-        }
-        ((SVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForReplyText);
-        return localMessageForReplyText;
-        localMessageForReplyText.shmsgseq = Math.abs(new Random().nextInt());
-      }
-      catch (Exception paramString1)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MessageRecordFactory", 2, QLog.getStackTraceString(paramString1));
-          }
-        }
+      localMessageForReplyText.saveExtInfoToExtStr("sens_msg_source_msg_info", HexUtil.bytes2HexStr(MessagePkgUtils.a(localMessageForReplyText.mSourceMsgInfo)));
+    }
+    catch (Exception paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MessageRecordFactory", 2, QLog.getStackTraceString(paramString1));
       }
     }
+    if (localMessageForReplyText.isSend()) {
+      ((ISVIPHandler)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localMessageForReplyText);
+    }
+    return localMessageForReplyText;
   }
   
   public static MessageForShortVideo a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
@@ -373,23 +334,20 @@ public class MessageRecordFactory
     try
     {
       paramString1.msgData = paramAbsStructMsg.getBytes();
-      if (paramAbsStructMsg.sourceAccoutType != 0) {
-        paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
-      }
-      return paramString1;
     }
     catch (Exception paramQQAppInterface)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
       }
     }
+    if (paramAbsStructMsg.sourceAccoutType != 0) {
+      paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
+    }
+    return paramString1;
   }
   
-  public static MessageForText a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, byte paramByte1, byte paramByte2, short paramShort, String paramString4)
+  public static MessageForText a(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, byte paramByte1, byte paramByte2, short paramShort, String paramString4)
   {
     paramString1 = (MessageForText)a(-1000);
     paramString1.msgtype = -1000;
@@ -400,17 +358,14 @@ public class MessageRecordFactory
     try
     {
       paramString1.msgData = paramString4.getBytes("utf-8");
-      a(paramQQAppInterface, paramString1, paramString2, paramString3, paramInt);
-      paramString1.parse();
-      return paramString1;
     }
     catch (UnsupportedEncodingException paramString4)
     {
-      for (;;)
-      {
-        paramString4.printStackTrace();
-      }
+      paramString4.printStackTrace();
     }
+    a(paramAppInterface, paramString1, paramString2, paramString3, paramInt);
+    paramString1.parse();
+    return paramString1;
   }
   
   public static MessageForTribeShortVideo a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt, long paramLong, AbsStructMsg paramAbsStructMsg)
@@ -423,20 +378,17 @@ public class MessageRecordFactory
     try
     {
       paramString1.msgData = paramAbsStructMsg.getBytes();
-      if (paramAbsStructMsg.sourceAccoutType != 0) {
-        paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
-      }
-      return paramString1;
     }
     catch (Exception paramQQAppInterface)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("structMsg", 2, paramQQAppInterface.getMessage(), paramQQAppInterface);
       }
     }
+    if (paramAbsStructMsg.sourceAccoutType != 0) {
+      paramString1.saveExtInfoToExtStr("accostType", String.valueOf(AbsStructMsg.SOURCE_ACCOUNT_TYPE_PA));
+    }
+    return paramString1;
   }
   
   public static MessageRecord a(int paramInt)
@@ -453,47 +405,26 @@ public class MessageRecordFactory
   
   private static MessageRecord a(int paramInt1, int paramInt2, String paramString, int paramInt3, MessageRecord paramMessageRecord)
   {
-    Object localObject;
-    if (paramInt1 != -1000)
-    {
-      localObject = paramMessageRecord;
-      if (paramInt1 != -2006) {}
-    }
-    else
-    {
-      localObject = paramMessageRecord;
-      if (paramInt3 == 1)
+    if (((paramInt1 == -1000) || (paramInt1 == -2006)) && (paramInt3 == 1) && ((paramInt2 & 0x1) == 1)) {
+      try
       {
-        localObject = paramMessageRecord;
-        if ((paramInt2 & 0x1) == 1) {
-          localObject = paramMessageRecord;
-        }
-      }
-    }
-    try
-    {
-      if (!TextUtils.isEmpty(paramString))
-      {
-        paramString = new JSONObject(paramString);
-        localObject = paramMessageRecord;
-        if (paramString.has("redbag_fold_msg"))
+        if (!TextUtils.isEmpty(paramString))
         {
-          localObject = paramMessageRecord;
-          if (paramString.getString("redbag_fold_msg").equals("true")) {
-            localObject = new MessageForFoldMsg();
+          paramString = new JSONObject(paramString);
+          if ((paramString.has("redbag_fold_msg")) && (paramString.getString("redbag_fold_msg").equals("true")))
+          {
+            paramString = new MessageForFoldMsg();
+            return paramString;
           }
         }
       }
-    }
-    catch (Exception paramString)
-    {
-      do
+      catch (Exception paramString)
       {
-        localObject = paramMessageRecord;
-      } while (!QLog.isColorLevel());
-      QLog.e("msgFold", 2, paramString.getMessage(), paramString);
+        if (QLog.isColorLevel()) {
+          QLog.e("msgFold", 2, paramString.getMessage(), paramString);
+        }
+      }
     }
-    return localObject;
     return paramMessageRecord;
   }
   
@@ -505,55 +436,51 @@ public class MessageRecordFactory
       localObject = paramMessageRecord;
       if (MessageUtils.a(paramInt))
       {
-        if (paramInt != -1002) {
-          break label32;
+        if (paramInt == -1002) {
+          return new MessageForSafeGrayTips();
         }
-        localObject = new MessageForSafeGrayTips();
+        if ((paramInt != -5000) && (paramInt != -5001) && (paramInt != -2037))
+        {
+          if (paramInt == -5002) {
+            return new MessageForIncompatibleGrayTips();
+          }
+          if (paramInt == -2027) {
+            return new MessageForNearbyMarketGrayTips();
+          }
+          if (paramInt == -4011) {
+            return new MessageForNearbyRecommenderTips();
+          }
+          return new MessageForGrayTips();
+        }
+        localObject = new MessageForNewGrayTips();
       }
     }
     return localObject;
-    label32:
-    if ((paramInt == -5000) || (paramInt == -5001) || (paramInt == -2037)) {
-      return new MessageForNewGrayTips();
-    }
-    if (paramInt == -5002) {
-      return new MessageForIncompatibleGrayTips();
-    }
-    if (paramInt == -2027) {
-      return new MessageForNearbyMarketGrayTips();
-    }
-    if (paramInt == -4011) {
-      return new MessageForNearbyRecommenderTips();
-    }
-    return new MessageForGrayTips();
   }
   
   private static MessageRecord a(int paramInt, String paramString, MessageRecord paramMessageRecord)
   {
-    MessageRecord localMessageRecord = paramMessageRecord;
-    if (paramInt == -2058) {}
-    try
-    {
-      paramString = new JSONObject(paramString);
-      localMessageRecord = paramMessageRecord;
-      if (paramString.has("Emoji_Sticker_Info"))
+    if (paramInt == -2058) {
+      try
       {
-        paramInt = new JSONObject(paramString.getString("Emoji_Sticker_Info")).optInt("msgType", 0);
-        localMessageRecord = paramMessageRecord;
-        if (paramInt != 0) {
-          localMessageRecord = b(paramInt);
+        paramString = new JSONObject(paramString);
+        if (paramString.has("Emoji_Sticker_Info"))
+        {
+          paramInt = new JSONObject(paramString.getString("Emoji_Sticker_Info")).optInt("msgType", 0);
+          if (paramInt != 0)
+          {
+            paramString = b(paramInt);
+            return paramString;
+          }
+        }
+      }
+      catch (Exception paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("MessageRecordFactory", 2, "", paramString);
         }
       }
     }
-    catch (Exception paramString)
-    {
-      do
-      {
-        localMessageRecord = paramMessageRecord;
-      } while (!QLog.isColorLevel());
-      QLog.e("MessageRecordFactory", 2, "", paramString);
-    }
-    return localMessageRecord;
     return paramMessageRecord;
   }
   
@@ -566,181 +493,170 @@ public class MessageRecordFactory
       localMessageRecord2.msgtype = paramInt1;
       localMessageRecord1 = localMessageRecord2;
     }
-    for (;;)
+    else
     {
-      a(paramString, localMessageRecord1);
-      paramString = a(paramInt1, paramString, a(paramInt1, paramInt2, paramString, paramInt3, localMessageRecord1));
-      paramArrayOfByte = paramString;
-      if (paramString == null)
-      {
-        paramArrayOfByte = new MessageForText();
-        paramArrayOfByte.msgtype = paramInt1;
-      }
-      return paramArrayOfByte;
       localMessageRecord1 = localMessageRecord2;
       if (paramArrayOfByte != null) {
         localMessageRecord1 = a(paramArrayOfByte, localMessageRecord2);
       }
     }
+    a(paramString, localMessageRecord1);
+    paramString = a(paramInt1, paramString, a(paramInt1, paramInt2, paramString, paramInt3, localMessageRecord1));
+    paramArrayOfByte = paramString;
+    if (paramString == null)
+    {
+      paramArrayOfByte = new MessageForText();
+      paramArrayOfByte.msgtype = paramInt1;
+    }
+    return paramArrayOfByte;
   }
   
   public static MessageRecord a(MessageRecord paramMessageRecord)
   {
     if (paramMessageRecord == null) {
-      paramMessageRecord = null;
+      return null;
     }
-    MessageRecord localMessageRecord;
-    do
-    {
-      return paramMessageRecord;
-      localMessageRecord = a(paramMessageRecord.msgtype);
-      localMessageRecord.msgtype = paramMessageRecord.msgtype;
-      a(localMessageRecord, paramMessageRecord);
-      if (paramMessageRecord.msgData != null) {
-        localMessageRecord.msgData = paramMessageRecord.msgData;
-      }
-      if (paramMessageRecord.msg != null) {
-        localMessageRecord.msg = paramMessageRecord.msg;
-      }
-      paramMessageRecord = localMessageRecord;
-    } while (!(localMessageRecord instanceof ChatMessage));
-    ((ChatMessage)localMessageRecord).parse();
+    MessageRecord localMessageRecord = a(paramMessageRecord.msgtype);
+    localMessageRecord.msgtype = paramMessageRecord.msgtype;
+    a(localMessageRecord, paramMessageRecord);
+    if (paramMessageRecord.msgData != null) {
+      localMessageRecord.msgData = paramMessageRecord.msgData;
+    }
+    if (paramMessageRecord.msg != null) {
+      localMessageRecord.msg = paramMessageRecord.msg;
+    }
+    if ((localMessageRecord instanceof ChatMessage)) {
+      ((ChatMessage)localMessageRecord).parse();
+    }
     return localMessageRecord;
   }
   
   private static MessageRecord a(byte[] paramArrayOfByte, MessageRecord paramMessageRecord)
   {
-    label78:
-    do
+    try
     {
-      try
+      Object localObject = new String(paramArrayOfByte, "UTF-8");
+      paramArrayOfByte = paramMessageRecord;
+      if (((String)localObject).length() > 0)
       {
-        Object localObject = new String(paramArrayOfByte, "UTF-8");
         paramArrayOfByte = paramMessageRecord;
-        if (((String)localObject).length() > 0)
+        if (((String)localObject).charAt(0) == '\026')
         {
+          localObject = ((String)localObject).split("\\|");
           paramArrayOfByte = paramMessageRecord;
-          if (((String)localObject).charAt(0) == '\026')
+          if (localObject.length > 2)
           {
-            localObject = ((String)localObject).split("\\|");
-            paramArrayOfByte = paramMessageRecord;
-            if (localObject.length > 2)
+            int i = Integer.parseInt(localObject[2]);
+            if (i == 3)
             {
-              i = Integer.parseInt(localObject[2]);
-              if (i != 3) {
-                break label78;
+              localObject = new MessageForGrayTips();
+              paramArrayOfByte = (byte[])localObject;
+              try
+              {
+                ((MessageRecord)localObject).msgtype = -1001;
+                return localObject;
               }
-              paramArrayOfByte = new MessageForGrayTips();
+              catch (Exception localException1)
+              {
+                paramMessageRecord = paramArrayOfByte;
+              }
+            }
+            else
+            {
+              if (i != 2)
+              {
+                paramArrayOfByte = paramMessageRecord;
+                if (i != 8) {
+                  return paramArrayOfByte;
+                }
+              }
+              MessageForPtt localMessageForPtt = new MessageForPtt();
+              paramArrayOfByte = localMessageForPtt;
+              localMessageForPtt.msgtype = -2002;
+              return localMessageForPtt;
             }
           }
         }
       }
-      catch (Exception paramArrayOfByte)
-      {
-        try
-        {
-          int i;
-          paramArrayOfByte.msgtype = -2002;
-          return paramArrayOfByte;
-        }
-        catch (Exception localException2)
-        {
-          for (;;)
-          {
-            paramMessageRecord = paramArrayOfByte;
-            paramArrayOfByte = localException2;
-          }
-        }
-        paramArrayOfByte = paramArrayOfByte;
-      }
-      try
-      {
-        paramArrayOfByte.msgtype = -1001;
-        return paramArrayOfByte;
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          paramMessageRecord = paramArrayOfByte;
-          paramArrayOfByte = localException1;
-        }
-      }
-      if (i == 2) {
-        break;
-      }
+    }
+    catch (Exception localException2)
+    {
+      localException2.printStackTrace();
       paramArrayOfByte = paramMessageRecord;
-    } while (i != 8);
-    paramArrayOfByte = new MessageForPtt();
-    paramArrayOfByte.printStackTrace();
-    return paramMessageRecord;
+    }
+    return paramArrayOfByte;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, String paramString1, String paramString2, int paramInt)
+  public static void a(AppInterface paramAppInterface, MessageRecord paramMessageRecord, String paramString1, String paramString2, int paramInt)
   {
+    String str1 = paramString2;
     int i = MessageUtils.a();
     int j = (int)MessageCache.a();
     int k = MobileQQService.seq;
     MobileQQService.seq = k + 1;
     long l = k;
-    String str2 = paramQQAppInterface.getCurrentAccountUin();
-    String str1;
-    if ((paramInt == 1000) || (paramInt == 1020) || (paramInt == 1004)) {
-      if (paramString2 != null)
-      {
-        str1 = paramString2;
-        if (paramString2.length() != 0) {}
-      }
-      else
-      {
-        str1 = paramString2;
-        if (QLog.isColorLevel())
-        {
-          QLog.e("MessageRecordFactory", 2, "createPicMessageToShow : error groupUin:" + paramString2);
-          str1 = paramString2;
-        }
-      }
-    }
-    for (;;)
+    String str2 = paramAppInterface.getCurrentAccountUin();
+    Object localObject;
+    if ((paramInt != 1000) && (paramInt != 1020) && (paramInt != 1004))
     {
-      if ((!(paramMessageRecord instanceof MessageForPoke)) && (paramInt == 0))
-      {
-        PokeItemAnimationManager.a().a(paramQQAppInterface, paramString1, -1, 0, -1);
-        if (QLog.isColorLevel()) {
-          QLog.d("PokeMsg", 2, "send unPokeMsg strength:-1");
-        }
-      }
-      paramMessageRecord.frienduin = paramString1;
-      paramMessageRecord.istroop = paramInt;
-      paramMessageRecord.selfuin = str2;
-      paramMessageRecord.senderuin = str1;
-      paramMessageRecord.isread = true;
-      paramMessageRecord.time = j;
-      paramMessageRecord.msgseq = l;
-      paramMessageRecord.msgUid = MessageUtils.a(i);
-      paramMessageRecord.shmsgseq = MessageUtils.a(l, paramInt);
-      paramMessageRecord.issend = 1;
-      return;
       if (paramInt == 1006)
       {
-        paramString2 = ((PhoneContactManager)paramQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).a();
+        paramString2 = ((IPhoneContactService)paramAppInterface.getRuntimeService(IPhoneContactService.class, "")).getSelfBindInfo();
         if (paramString2 != null)
         {
-          paramString2 = paramString2.nationCode + paramString2.mobileNo;
-          if (paramString2 != null)
-          {
-            str1 = paramString2;
-            if (paramString2.length() > 0) {
-              continue;
-            }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramString2.nationCode);
+          ((StringBuilder)localObject).append(paramString2.mobileNo);
+          localObject = ((StringBuilder)localObject).toString();
+          if ((localObject != null) && (((String)localObject).length() > 0)) {
+            break label261;
           }
-          if (QLog.isColorLevel()) {
-            QLog.e("MessageRecordFactory", 2, "createPicMessageToShow : error selfPhoneNum:" + paramString2);
+          if (QLog.isColorLevel())
+          {
+            paramString2 = new StringBuilder();
+            paramString2.append("createPicMessageToShow : error selfPhoneNum:");
+            paramString2.append((String)localObject);
+            QLog.e("MessageRecordFactory", 2, paramString2.toString());
           }
         }
       }
-      str1 = str2;
+      localObject = str2;
     }
+    else if (str1 != null)
+    {
+      localObject = str1;
+      if (paramString2.length() != 0) {}
+    }
+    else
+    {
+      localObject = str1;
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("createPicMessageToShow : error groupUin:");
+        paramString2.append(str1);
+        QLog.e("MessageRecordFactory", 2, paramString2.toString());
+        localObject = str1;
+      }
+    }
+    label261:
+    if ((!(paramMessageRecord instanceof MessageForPoke)) && (paramInt == 0))
+    {
+      PokeItemAnimationManager.a().a(paramAppInterface, paramString1, -1, 0, -1);
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeMsg", 2, "send unPokeMsg strength:-1");
+      }
+    }
+    paramMessageRecord.frienduin = paramString1;
+    paramMessageRecord.istroop = paramInt;
+    paramMessageRecord.selfuin = str2;
+    paramMessageRecord.senderuin = ((String)localObject);
+    paramMessageRecord.isread = true;
+    paramMessageRecord.time = j;
+    paramMessageRecord.msgseq = l;
+    paramMessageRecord.msgUid = MessageUtils.a(i);
+    paramMessageRecord.shmsgseq = MessageUtils.a(l, paramInt);
+    paramMessageRecord.issend = 1;
   }
   
   private static void a(MessageRecord paramMessageRecord1, MessageRecord paramMessageRecord2)
@@ -770,70 +686,77 @@ public class MessageRecordFactory
   {
     // Byte code:
     //   0: aload_1
-    //   1: ifnull +101 -> 102
+    //   1: ifnull +127 -> 128
     //   4: aload_1
-    //   5: getfield 429	com/tencent/mobileqq/data/MessageRecord:msgtype	I
+    //   5: getfield 405	com/tencent/mobileqq/data/MessageRecord:msgtype	I
     //   8: sipush -2056
-    //   11: if_icmpne +91 -> 102
-    //   14: new 437	org/json/JSONObject
+    //   11: if_icmpne +117 -> 128
+    //   14: new 413	org/json/JSONObject
     //   17: dup
     //   18: aload_0
-    //   19: invokespecial 440	org/json/JSONObject:<init>	(Ljava/lang/String;)V
+    //   19: invokespecial 416	org/json/JSONObject:<init>	(Ljava/lang/String;)V
     //   22: astore_0
     //   23: aload_0
-    //   24: getstatic 630	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
-    //   27: invokevirtual 446	org/json/JSONObject:has	(Ljava/lang/String;)Z
-    //   30: ifeq +72 -> 102
-    //   33: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   36: ifeq +32 -> 68
-    //   39: ldc_w 632
-    //   42: iconst_2
-    //   43: new 543	java/lang/StringBuilder
-    //   46: dup
-    //   47: invokespecial 544	java/lang/StringBuilder:<init>	()V
-    //   50: ldc_w 634
-    //   53: invokevirtual 550	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   56: getstatic 630	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
-    //   59: invokevirtual 550	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: invokevirtual 553	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   65: invokestatic 555	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   68: aload_1
-    //   69: checkcast 627	com/tencent/mobileqq/data/MessageForWantGiftMsg
-    //   72: aload_0
-    //   73: getstatic 630	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
-    //   76: invokevirtual 450	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   79: invokestatic 639	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
-    //   82: invokevirtual 642	java/lang/Long:longValue	()J
-    //   85: putfield 645	com/tencent/mobileqq/data/MessageForWantGiftMsg:wantGiftSenderUin	J
-    //   88: aload_1
-    //   89: getstatic 630	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
-    //   92: aload_0
-    //   93: getstatic 630	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
-    //   96: invokevirtual 450	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
-    //   99: invokevirtual 646	com/tencent/mobileqq/data/MessageRecord:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
-    //   102: return
-    //   103: astore_0
-    //   104: invokestatic 240	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   107: ifeq -5 -> 102
-    //   110: ldc_w 632
-    //   113: iconst_2
-    //   114: aload_0
-    //   115: invokevirtual 245	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   118: aload_0
-    //   119: invokestatic 162	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   122: return
-    //   123: astore_2
-    //   124: goto -36 -> 88
+    //   24: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   27: invokevirtual 422	org/json/JSONObject:has	(Ljava/lang/String;)Z
+    //   30: ifeq +98 -> 128
+    //   33: invokestatic 196	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   36: ifeq +38 -> 74
+    //   39: new 533	java/lang/StringBuilder
+    //   42: dup
+    //   43: invokespecial 534	java/lang/StringBuilder:<init>	()V
+    //   46: astore_2
+    //   47: aload_2
+    //   48: ldc_w 608
+    //   51: invokevirtual 543	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   54: pop
+    //   55: aload_2
+    //   56: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   59: invokevirtual 543	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: pop
+    //   63: ldc_w 610
+    //   66: iconst_2
+    //   67: aload_2
+    //   68: invokevirtual 549	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokestatic 553	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   74: aload_1
+    //   75: checkcast 603	com/tencent/mobileqq/data/MessageForWantGiftMsg
+    //   78: aload_0
+    //   79: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   82: invokevirtual 426	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   85: invokestatic 615	java/lang/Long:valueOf	(Ljava/lang/String;)Ljava/lang/Long;
+    //   88: invokevirtual 618	java/lang/Long:longValue	()J
+    //   91: putfield 621	com/tencent/mobileqq/data/MessageForWantGiftMsg:wantGiftSenderUin	J
+    //   94: aload_1
+    //   95: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   98: aload_0
+    //   99: getstatic 606	com/tencent/mobileqq/data/MessageForWantGiftMsg:GIFT_SENDER_UIN	Ljava/lang/String;
+    //   102: invokevirtual 426	org/json/JSONObject:getString	(Ljava/lang/String;)Ljava/lang/String;
+    //   105: invokevirtual 622	com/tencent/mobileqq/data/MessageRecord:saveExtInfoToExtStr	(Ljava/lang/String;Ljava/lang/String;)V
+    //   108: return
+    //   109: astore_0
+    //   110: invokestatic 196	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   113: ifeq +15 -> 128
+    //   116: ldc_w 610
+    //   119: iconst_2
+    //   120: aload_0
+    //   121: invokevirtual 201	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   124: aload_0
+    //   125: invokestatic 127	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   128: return
+    //   129: astore_2
+    //   130: goto -36 -> 94
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	127	0	paramString	String
-    //   0	127	1	paramMessageRecord	MessageRecord
-    //   123	1	2	localException	Exception
+    //   0	133	0	paramString	String
+    //   0	133	1	paramMessageRecord	MessageRecord
+    //   46	22	2	localStringBuilder	StringBuilder
+    //   129	1	2	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   14	68	103	java/lang/Exception
-    //   88	102	103	java/lang/Exception
-    //   68	88	123	java/lang/Exception
+    //   14	74	109	java/lang/Exception
+    //   94	108	109	java/lang/Exception
+    //   74	94	129	java/lang/Exception
   }
   
   public static MessageForArkApp b(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, ArkAppMessage paramArkAppMessage)
@@ -887,56 +810,6 @@ public class MessageRecordFactory
   
   public static MessageForShortVideo c(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
   {
-    MessageForDanceMachine localMessageForDanceMachine = new MessageForDanceMachine();
-    localMessageForDanceMachine.msgtype = -2022;
-    a(paramQQAppInterface, localMessageForDanceMachine, paramString1, paramString2, paramInt);
-    localMessageForDanceMachine.longMsgCount = 1;
-    localMessageForDanceMachine.longMsgIndex = 0;
-    localMessageForDanceMachine.longMsgId = ((short)(int)localMessageForDanceMachine.shmsgseq);
-    return localMessageForDanceMachine;
-  }
-  
-  private static MessageRecord c(int paramInt)
-  {
-    MessageRecord localMessageRecord = null;
-    switch (paramInt)
-    {
-    default: 
-      localMessageRecord = d(paramInt);
-    case -2010: 
-      return localMessageRecord;
-    case -2056: 
-      return new MessageForWantGiftMsg();
-    case -2008: 
-    case -1003: 
-    case -1000: 
-      return new MessageForText();
-    case -20000: 
-    case -3005: 
-    case -3004: 
-    case -3001: 
-    case -3000: 
-    case -2000: 
-    case -1032: 
-      return new MessageForPic();
-    case -2011: 
-      return new MessageForStructing();
-    case -2021: 
-      return new MessageForTroopNotification();
-    case -2007: 
-      return new MessageForMarketFace();
-    case -5004: 
-    case -3006: 
-      return new MessageForPubAccount();
-    case -2002: 
-    case -1031: 
-      return new MessageForPtt();
-    }
-    return new MessageForFile();
-  }
-  
-  public static MessageForShortVideo d(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt)
-  {
     MessageForDevShortVideo localMessageForDevShortVideo = new MessageForDevShortVideo();
     localMessageForDevShortVideo.msgtype = -4503;
     a(paramQQAppInterface, localMessageForDevShortVideo, paramString1, paramString2, paramInt);
@@ -944,6 +817,37 @@ public class MessageRecordFactory
     localMessageForDevShortVideo.longMsgIndex = 0;
     localMessageForDevShortVideo.longMsgId = ((short)(int)localMessageForDevShortVideo.shmsgseq);
     return localMessageForDevShortVideo;
+  }
+  
+  private static MessageRecord c(int paramInt)
+  {
+    switch (paramInt)
+    {
+    default: 
+      return d(paramInt);
+    case -2002: 
+    case -1031: 
+      return new MessageForPtt();
+    case -2007: 
+      return new MessageForMarketFace();
+    case -2008: 
+    case -1003: 
+    case -1000: 
+      return new MessageForText();
+    case -2011: 
+      return new MessageForStructing();
+    case -2014: 
+    case -2005: 
+      return new MessageForFile();
+    case -2021: 
+      return new MessageForTroopNotification();
+    case -2056: 
+      return new MessageForWantGiftMsg();
+    case -5004: 
+    case -3006: 
+      return new MessageForPubAccount();
+    }
+    return new MessageForPic();
   }
   
   private static MessageRecord d(int paramInt)
@@ -954,204 +858,261 @@ public class MessageRecordFactory
       return e(paramInt);
     case -1034: 
       return new MessageForRichState();
-    case -1042: 
-      return new MessageForDateFeed();
-    case -2046: 
-    case -2026: 
-    case -2016: 
-    case -2009: 
-      return new MessageForVideo();
-    case -2076: 
-      return new MessageForLocationShare();
-    case -10000: 
-      return new MessageForAutoReply();
-    case -4002: 
-      return new MessageForActivity();
-    case -4003: 
-      return new MessageForEnterTroop();
     case -1035: 
       return new MessageForMixedMsg();
+    case -1042: 
+      return new MessageForDateFeed();
     case -2015: 
       return new MessageForQzoneFeed();
-    case -2050: 
-    case -2018: 
-      return new MessageForSystemMsg();
-    case -4004: 
-      return new MessageForMyEnterTroop();
     case -2017: 
       return new MessageForTroopFile();
     case -2020: 
       MessageForShakeWindow localMessageForShakeWindow = new MessageForShakeWindow();
       localMessageForShakeWindow.msgtype = -2020;
       return localMessageForShakeWindow;
+    case -2022: 
+      return new MessageForShortVideo();
+    case -2046: 
+    case -2026: 
+    case -2016: 
+    case -2009: 
+      return new MessageForVideo();
+    case -2050: 
+    case -2018: 
+      return new MessageForSystemMsg();
+    case -2076: 
+      return new MessageForLocationShare();
+    case -4002: 
+      return new MessageForActivity();
+    case -4003: 
+      return new MessageForEnterTroop();
+    case -4004: 
+      return new MessageForMyEnterTroop();
     case -4009: 
       return new MessageForTroopUnreadTips();
     case -4012: 
       return new MessageForSplitLineTips();
     }
-    return new MessageForShortVideo();
+    return new MessageForAutoReply();
   }
   
   private static MessageRecord e(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -5003)
     {
-    default: 
-      return f(paramInt);
-    case -3012: 
+      if (paramInt != -3012)
+      {
+        if ((paramInt != -2049) && (paramInt != -2043) && (paramInt != -2041))
+        {
+          if (paramInt != -2038) {
+            if (paramInt != -2033) {
+              if (paramInt != -2029) {
+                if (paramInt != -2025) {
+                  if (paramInt != -2036) {
+                    if (paramInt == -2035) {}
+                  }
+                }
+              }
+            }
+          }
+          switch (paramInt)
+          {
+          default: 
+            switch (paramInt)
+            {
+            default: 
+              return f(paramInt);
+            case -4500: 
+              return new MessageForDeviceFile();
+            case -4501: 
+              return new MessageForDevPtt();
+            case -4502: 
+              return new MessageForDeviceSingleStruct();
+            }
+            return new MessageForDevShortVideo();
+          case -4508: 
+            return new MessageForDeviceText();
+          case -4509: 
+            return new MessageForDevLittleVideo();
+            return new MessageForDeliverGiftTips();
+            return new MessageForTroopFee();
+            return new MessageForQQWalletMsg();
+            return new MessageForQQWalletTips();
+            return ((IHotChatApi)QRoute.api(IHotChatApi.class)).getShareHotChatGrayTips();
+            return new MessageForTroopGift();
+          }
+        }
+        return new MessageForGrayTips();
+      }
       return new MessageForColorRing();
-    case -2025: 
-      return new MessageForQQWalletMsg();
-    case -5003: 
-      return new MessageForActivateFriends();
-    case -4500: 
-      return new MessageForDeviceFile();
-    case -4501: 
-      return new MessageForDevPtt();
-    case -4503: 
-      return new MessageForDevShortVideo();
-    case -4509: 
-      return new MessageForDevLittleVideo();
-    case -4502: 
-      return new MessageForDeviceSingleStruct();
-    case -4507: 
-    case -4506: 
-    case -4505: 
-    case -2049: 
-    case -2043: 
-    case -2041: 
-      return new MessageForGrayTips();
-    case -2029: 
-      return new MessageForQQWalletTips();
-    case -4508: 
-      return new MessageForDeviceText();
-    case -2033: 
-      return new ShareHotChatGrayTips();
-    case -2035: 
-      return new MessageForDeliverGiftTips();
-    case -2038: 
-      return new MessageForTroopGift();
     }
-    return new MessageForTroopFee();
+    return new MessageForActivateFriends();
   }
   
   private static MessageRecord f(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -5018)
     {
-    default: 
-      return g(paramInt);
-    case -2039: 
-      return new MessageForApollo();
-    case -7004: 
-      return new MessageForCmGameTips();
-    case -5017: 
-    case -5008: 
-    case -4027: 
-    case -4026: 
-    case -4025: 
+      if ((paramInt != -5017) && (paramInt != -5008))
+      {
+        if (paramInt != -2045)
+        {
+          if (paramInt != -1051)
+          {
+            if (paramInt != -1049)
+            {
+              if (paramInt != -2048)
+              {
+                if (paramInt != -2047)
+                {
+                  if (paramInt != -2040)
+                  {
+                    if (paramInt != -2039)
+                    {
+                      switch (paramInt)
+                      {
+                      default: 
+                        switch (paramInt)
+                        {
+                        default: 
+                          return g(paramInt);
+                        }
+                      case -5011: 
+                        return new MessageForFoldMsgGrayTips();
+                      case -5012: 
+                        return new MessageForPoke();
+                      case -5013: 
+                        return new MessageForArkFlashChat();
+                      }
+                      return new MessageForHiBoom();
+                    }
+                    return ((IApolloMessageUtil)QRoute.api(IApolloMessageUtil.class)).createApolloMsgRecord();
+                  }
+                  return new MessageForApproval();
+                }
+                return new MessageForVIPDonate();
+              }
+              return new MessageForTroopReward();
+            }
+            return new MessageForReplyText();
+          }
+          return new MessageForLongTextMsg();
+        }
+        return new MessageForVideoVip();
+      }
       return new MessageForArkApp();
-    case -5013: 
-      return new MessageForArkFlashChat();
-    case -5014: 
-      return new MessageForHiBoom();
-    case -1049: 
-      return new MessageForReplyText();
-    case -2040: 
-      return new MessageForApproval();
-    case -2048: 
-      return new MessageForTroopReward();
-    case -2045: 
-      return new MessageForVideoVip();
-    case -2047: 
-      return new MessageForVIPDonate();
-    case -5011: 
-      return new MessageForFoldMsgGrayTips();
-    case -5012: 
-      return new MessageForPoke();
-    case -5018: 
-      return new MessageForPokeEmo();
     }
-    return new MessageForLongTextMsg();
+    return new MessageForPokeEmo();
   }
   
   private static MessageRecord g(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -7001)
     {
-    default: 
-      return h(paramInt);
-    case -5040: 
-    case -5023: 
-    case -5022: 
-    case -5021: 
-    case -5020: 
+      if (paramInt != -5040)
+      {
+        if (paramInt != -5015) {
+          if (paramInt != -2062) {
+            if (paramInt != -2057) {
+              if (paramInt != -2023) {
+                if (paramInt != -2060) {
+                  if (paramInt == -2059) {}
+                }
+              }
+            }
+          }
+        }
+        switch (paramInt)
+        {
+        default: 
+          switch (paramInt)
+          {
+          default: 
+            switch (paramInt)
+            {
+            default: 
+              return h(paramInt);
+            case -2051: 
+              return new MessageForQQStory();
+            case -2052: 
+              return new MessageForQQStoryComment();
+            case -2053: 
+              return new MessageForNearbyLiveTip();
+            case -2054: 
+              return new MessageForTroopSign();
+            }
+            return new MessageForInteractAndFollow();
+          case -2065: 
+            return new MessageForConfessNews();
+          case -2066: 
+            return new MessageForConfessCard();
+          }
+          return new MessageForTroopConfess();
+          return new MessageForTroopPobing();
+          return new MessageForPLNews();
+          return new MessageForCommonHobbyForAIOShow();
+          return new MessageForTroopStory();
+          return new MessageForMedalNews();
+          return new MessageForTroopEffectPic();
+        }
+      }
       return new MessageForUniteGrayTip();
-    case -2051: 
-      return new MessageForQQStory();
-    case -2059: 
-      return new MessageForTroopPobing();
-    case -2052: 
-      return new MessageForQQStoryComment();
-    case -2053: 
-      return new MessageForNearbyLiveTip();
-    case -2054: 
-      return new MessageForTroopSign();
-    case -2055: 
-      return new MessageForInteractAndFollow();
-    case -2057: 
-      return new MessageForTroopStory();
-    case -7001: 
-      return new MessageForScribble();
-    case -2060: 
-      return new MessageForPLNews();
-    case -2062: 
-      return new MessageForMedalNews();
-    case -2023: 
-      return new MessageForCommonHobbyForAIOShow();
-    case -2065: 
-      return new MessageForConfessNews();
-    case -2066: 
-      return new MessageForConfessCard();
-    case -2067: 
-      return new MessageForTroopConfess();
     }
-    return new MessageForTroopEffectPic();
+    return new MessageForScribble();
   }
   
   private static MessageRecord h(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -7007)
     {
-    default: 
-      return i(paramInt);
-    case -5016: 
-      return new MessageForArkBabyqReply();
-    case -2061: 
-      return new MessageForQQStoryFeed();
-    case -7002: 
-      return new MessageForTribeShortVideo();
-    case -2068: 
-      return new MessageForDarenAssistant();
-    case -4024: 
-    case -4023: 
-      return new MessageForLimitChatTopic();
-    case -7005: 
+      if (paramInt != -7005)
+      {
+        if (paramInt != -7002)
+        {
+          if (paramInt != -5016)
+          {
+            if (paramInt != -3017)
+            {
+              if (paramInt != -2077)
+              {
+                if (paramInt != -2074)
+                {
+                  if (paramInt != -2072)
+                  {
+                    if (paramInt != -2061)
+                    {
+                      if ((paramInt != -4024) && (paramInt != -4023))
+                      {
+                        switch (paramInt)
+                        {
+                        default: 
+                          return i(paramInt);
+                        case -2068: 
+                          return new MessageForDarenAssistant();
+                        case -2069: 
+                          return new MessageForStarLeague();
+                        }
+                        return new MessageForYanZhi();
+                      }
+                      return new MessageForLimitChatTopic();
+                    }
+                    return new MessageForQQStoryFeed();
+                  }
+                  return new MessageForFuDai();
+                }
+                return new MessageForAIOStoryVideo();
+              }
+              return new MessageForQCircleFeed();
+            }
+            return new MessageForDLFile();
+          }
+          return new MessageForArkBabyqReply();
+        }
+        return new MessageForTribeShortVideo();
+      }
       return new MessageForLimitChatConfirm();
-    case -2069: 
-      return new MessageForStarLeague();
-    case -2070: 
-      return new MessageForYanZhi();
-    case -2072: 
-      return new MessageForFuDai();
-    case -7007: 
-      return new MessageForBirthdayNotice();
-    case -2074: 
-      return new MessageForAIOStoryVideo();
-    case -3017: 
-      return new MessageForDLFile();
     }
-    return new MessageForQCircleFeed();
+    return new MessageForBirthdayNotice();
   }
   
   private static MessageRecord i(int paramInt)
@@ -1165,7 +1126,7 @@ public class MessageRecordFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageRecordFactory
  * JD-Core Version:    0.7.0.1
  */

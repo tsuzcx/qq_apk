@@ -8,7 +8,7 @@ public class EmojiStickerManager$Sticker
   public float a = 1.0F;
   public int a;
   public Drawable a;
-  public EmojiStickerManager.StickerInfo a;
+  public StickerInfo a;
   public String a;
   public boolean a;
   public int b;
@@ -22,7 +22,7 @@ public class EmojiStickerManager$Sticker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.Sticker
  * JD-Core Version:    0.7.0.1
  */

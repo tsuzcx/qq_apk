@@ -1,6 +1,7 @@
 package com.tencent.biz.cookie;
 
-import com.tencent.mobileqq.activity.weather.webpage.WeatherWebPageHelperKt;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.weather.api.IWeatherCommApi;
 import com.tencent.mobileqq.webview.cookie.IBrowserCookieInjector;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster;
 import com.tencent.qphone.base.util.QLog;
@@ -12,7 +13,7 @@ public class WeatherBrowserCookieInjector
   {
     if ("https://weather.mp.qq.com/".equals(paramString))
     {
-      paramString = WeatherWebPageHelperKt.a();
+      paramString = ((IWeatherCommApi)QRoute.api(IWeatherCommApi.class)).getGdtDeviceInfoBase64();
       if (paramString != null)
       {
         if (QLog.isColorLevel()) {
@@ -26,7 +27,7 @@ public class WeatherBrowserCookieInjector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.cookie.WeatherBrowserCookieInjector
  * JD-Core Version:    0.7.0.1
  */

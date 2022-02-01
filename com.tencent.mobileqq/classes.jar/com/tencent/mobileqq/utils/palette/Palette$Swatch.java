@@ -30,47 +30,39 @@ public final class Palette$Swatch
   
   private void a()
   {
-    int j;
     if (!this.jdField_a_of_type_Boolean)
     {
-      i = ColorUtils.a(-1, this.d, 4.5F);
-      j = ColorUtils.a(-1, this.d, 3.0F);
+      int i = ColorUtils.a(-1, this.d, 4.5F);
+      int j = ColorUtils.a(-1, this.d, 3.0F);
       if ((i != -1) && (j != -1))
       {
         this.g = ColorUtils.b(-1, i);
         this.f = ColorUtils.b(-1, j);
         this.jdField_a_of_type_Boolean = true;
+        return;
       }
-    }
-    else
-    {
-      return;
-    }
-    int m = ColorUtils.a(-16777216, this.d, 4.5F);
-    int k = ColorUtils.a(-16777216, this.d, 3.0F);
-    if ((m != -1) && (k != -1))
-    {
-      this.g = ColorUtils.b(-16777216, m);
-      this.f = ColorUtils.b(-16777216, k);
-      this.jdField_a_of_type_Boolean = true;
-      return;
-    }
-    if (i != -1)
-    {
-      i = ColorUtils.b(-1, i);
+      int m = ColorUtils.a(-16777216, this.d, 4.5F);
+      int k = ColorUtils.a(-16777216, this.d, 3.0F);
+      if ((m != -1) && (k != -1))
+      {
+        this.g = ColorUtils.b(-16777216, m);
+        this.f = ColorUtils.b(-16777216, k);
+        this.jdField_a_of_type_Boolean = true;
+        return;
+      }
+      if (i != -1) {
+        i = ColorUtils.b(-1, i);
+      } else {
+        i = ColorUtils.b(-16777216, m);
+      }
       this.g = i;
-      if (j == -1) {
-        break label175;
+      if (j != -1) {
+        i = ColorUtils.b(-1, j);
+      } else {
+        i = ColorUtils.b(-16777216, k);
       }
-    }
-    label175:
-    for (int i = ColorUtils.b(-1, j);; i = ColorUtils.b(-16777216, k))
-    {
       this.f = i;
       this.jdField_a_of_type_Boolean = true;
-      return;
-      i = ColorUtils.b(-16777216, m);
-      break;
     }
   }
   
@@ -111,15 +103,17 @@ public final class Palette$Swatch
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (Swatch)paramObject;
-    } while ((this.e == paramObject.e) && (this.d == paramObject.d));
+      return (this.e == paramObject.e) && (this.d == paramObject.d);
+    }
     return false;
   }
   
@@ -131,12 +125,28 @@ public final class Palette$Swatch
   @NonNull
   public String toString()
   {
-    return getClass().getSimpleName() + " [RGB: #" + Integer.toHexString(a()) + ']' + " [HSL: " + Arrays.toString(a()) + ']' + " [Population: " + this.e + ']' + " [Title Text: #" + Integer.toHexString(c()) + ']' + " [Body Text: #" + Integer.toHexString(d()) + ']';
+    StringBuilder localStringBuilder = new StringBuilder(getClass().getSimpleName());
+    localStringBuilder.append(" [RGB: #");
+    localStringBuilder.append(Integer.toHexString(a()));
+    localStringBuilder.append(']');
+    localStringBuilder.append(" [HSL: ");
+    localStringBuilder.append(Arrays.toString(a()));
+    localStringBuilder.append(']');
+    localStringBuilder.append(" [Population: ");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(']');
+    localStringBuilder.append(" [Title Text: #");
+    localStringBuilder.append(Integer.toHexString(c()));
+    localStringBuilder.append(']');
+    localStringBuilder.append(" [Body Text: #");
+    localStringBuilder.append(Integer.toHexString(d()));
+    localStringBuilder.append(']');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.palette.Palette.Swatch
  * JD-Core Version:    0.7.0.1
  */

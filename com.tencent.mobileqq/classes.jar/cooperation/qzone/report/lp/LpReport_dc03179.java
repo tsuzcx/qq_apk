@@ -34,7 +34,12 @@ public class LpReport_dc03179
   
   public String getSimpleInfo()
   {
-    return "dc03179:, total_photo_count" + this.total_photo_count + ", scan_photo_count=" + this.scan_photo_count;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc03179:, total_photo_count");
+    localStringBuilder.append(this.total_photo_count);
+    localStringBuilder.append(", scan_photo_count=");
+    localStringBuilder.append(this.scan_photo_count);
+    return localStringBuilder.toString();
   }
   
   public void report(int paramInt1, int paramInt2, int paramInt3, int paramInt4, float paramFloat1, int paramInt5, int paramInt6, int paramInt7, float paramFloat2, int paramInt8, int paramInt9, int paramInt10, float paramFloat3, int paramInt11, int paramInt12, String paramString)
@@ -90,7 +95,7 @@ public class LpReport_dc03179
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_dc03179
  * JD-Core Version:    0.7.0.1
  */

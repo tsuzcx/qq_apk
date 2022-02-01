@@ -59,14 +59,15 @@ public class FileItem
   
   public static FileItem createFile(String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      throw new IllegalArgumentException("createFile: the params fileId, fileName and pDirKey should be valid.");
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
+    {
+      FileItem localFileItem = new FileItem();
+      localFileItem.fileId = paramString1;
+      localFileItem.fileName = paramString2;
+      localFileItem.pDirKey = paramString3;
+      return localFileItem;
     }
-    FileItem localFileItem = new FileItem();
-    localFileItem.fileId = paramString1;
-    localFileItem.fileName = paramString2;
-    localFileItem.pDirKey = paramString3;
-    return localFileItem;
+    throw new IllegalArgumentException("createFile: the params fileId, fileName and pDirKey should be valid.");
   }
   
   public static FileItem newInstance(long paramLong)
@@ -84,7 +85,11 @@ public class FileItem
       FileItem localFileItem = (FileItem)super.clone();
       return localFileItem;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -138,8 +143,13 @@ public class FileItem
     {
       String str1 = CBundleReader.getString(this.nativePtr, "download_cookie_name");
       String str2 = CBundleReader.getString(this.nativePtr, "download_cookie_value");
-      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-        localDownloadServerInfo.cookie = (str1 + '=' + str2);
+      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append('=');
+        localStringBuilder.append(str2);
+        localDownloadServerInfo.cookie = localStringBuilder.toString();
       }
     }
     return localDownloadServerInfo;
@@ -350,7 +360,7 @@ public class FileItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.data.FileItem
  * JD-Core Version:    0.7.0.1
  */

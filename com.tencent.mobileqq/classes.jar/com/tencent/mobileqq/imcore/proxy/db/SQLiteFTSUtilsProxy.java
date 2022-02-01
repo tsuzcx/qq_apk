@@ -6,8 +6,9 @@ public class SQLiteFTSUtilsProxy
   
   public static int getFTSNotifyFlag()
   {
-    if (proxy != null) {
-      return proxy.getFTSNotifyFlag();
+    SQLiteFTSUtilsProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      return localProxy.getFTSNotifyFlag();
     }
     return 0;
   }
@@ -19,7 +20,7 @@ public class SQLiteFTSUtilsProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.db.SQLiteFTSUtilsProxy
  * JD-Core Version:    0.7.0.1
  */

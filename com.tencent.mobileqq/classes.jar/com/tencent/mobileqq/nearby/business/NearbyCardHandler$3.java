@@ -10,12 +10,15 @@ class NearbyCardHandler$3
   
   public void a(int paramInt, byte[] paramArrayOfByte)
   {
-    QLog.e("NearbyCardHandler", 1, "sendPoBingMsg. errorCode=" + paramInt);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("sendPoBingMsg. errorCode=");
+    paramArrayOfByte.append(paramInt);
+    QLog.e("NearbyCardHandler", 1, paramArrayOfByte.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.business.NearbyCardHandler.3
  * JD-Core Version:    0.7.0.1
  */

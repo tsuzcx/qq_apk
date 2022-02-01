@@ -21,32 +21,36 @@ class DevLittleVideoItemBuilder$7
   {
     SmartDeviceProxyMgr localSmartDeviceProxyMgr = (SmartDeviceProxyMgr)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER);
     DeviceMsgHandle localDeviceMsgHandle = (DeviceMsgHandle)this.this$0.a.getBusinessHandler(BusinessHandlerFactory.DEVICEMSG_HANDLER);
+    ConcurrentHashMap localConcurrentHashMap = localDeviceMsgHandle.a;
+    int j = 0;
+    try
+    {
+      Iterator localIterator = localDeviceMsgHandle.a.entrySet().iterator();
+      do
+      {
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+      } while (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.a.uniseq);
+      int i = 1;
+      if ((i == 0) && (!TextUtils.isEmpty(this.a.thumbFileKey)))
+      {
+        long l = localSmartDeviceProxyMgr.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
+        localDeviceMsgHandle.a.put(Long.valueOf(l), this.a);
+      }
+      return;
+    }
+    finally {}
     for (;;)
     {
-      synchronized (localDeviceMsgHandle.a)
-      {
-        Iterator localIterator = localDeviceMsgHandle.a.entrySet().iterator();
-        if (localIterator.hasNext())
-        {
-          if (((MessageRecord)((Map.Entry)localIterator.next()).getValue()).uniseq != this.a.uniseq) {
-            continue;
-          }
-          i = 1;
-          if ((i == 0) && (!TextUtils.isEmpty(this.a.thumbFileKey)))
-          {
-            long l = localSmartDeviceProxyMgr.a(this.a.thumbFileKey, this.a.coverkey2, 2154);
-            localDeviceMsgHandle.a.put(Long.valueOf(l), this.a);
-          }
-          return;
-        }
-      }
-      int i = 0;
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.activities.DevLittleVideoItemBuilder.7
  * JD-Core Version:    0.7.0.1
  */

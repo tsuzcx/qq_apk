@@ -23,19 +23,22 @@ public class FutureListener$FutureListenerWrapper<Progress, Result>
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      this.listener.onFutureCanceled();
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        this.listener.onFutureDone(paramMessage.obj);
+        return;
+      }
       AssertUtils.checkNotNull(paramMessage.obj);
       this.listener.onFutureProgress(paramMessage.obj);
       return;
     }
-    this.listener.onFutureDone(paramMessage.obj);
+    this.listener.onFutureCanceled();
   }
   
   public void onFutureCanceled()
@@ -55,7 +58,7 @@ public class FutureListener$FutureListenerWrapper<Progress, Result>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.FutureListener.FutureListenerWrapper
  * JD-Core Version:    0.7.0.1
  */

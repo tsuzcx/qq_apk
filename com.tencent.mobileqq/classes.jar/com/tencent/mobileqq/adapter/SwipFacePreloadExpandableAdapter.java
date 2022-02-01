@@ -30,7 +30,7 @@ public abstract class SwipFacePreloadExpandableAdapter
   private final Context jdField_a_of_type_AndroidContentContext;
   private final QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = null;
-  public ExpandableListView a;
+  protected ExpandableListView a;
   
   public SwipFacePreloadExpandableAdapter(Context paramContext, QQAppInterface paramQQAppInterface, ExpandableListView paramExpandableListView)
   {
@@ -40,7 +40,7 @@ public abstract class SwipFacePreloadExpandableAdapter
     this.jdField_a_of_type_ComTencentWidgetExpandableListView = paramExpandableListView;
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.setDecodeTaskCompletionListener(this);
-    ImageUtil.c();
+    ImageUtil.f();
   }
   
   protected void a(SwipFacePreloadExpandableAdapter.ViewHolder paramViewHolder, Bitmap paramBitmap)
@@ -55,25 +55,25 @@ public abstract class SwipFacePreloadExpandableAdapter
     }
     if (AppConstants.DATALINE_PC_UIN.equals(paramViewHolder.a))
     {
-      paramViewHolder.d.setBackgroundResource(2130844376);
+      paramViewHolder.d.setBackgroundResource(2130844282);
       return;
     }
     if (AppConstants.DATALINE_IPAD_UIN.equals(paramViewHolder.a))
     {
-      paramViewHolder.d.setBackgroundResource(2130844371);
+      paramViewHolder.d.setBackgroundResource(2130844277);
       return;
     }
     if (AppConstants.DATALINE_PRINTER_UIN.equals(paramViewHolder.a))
     {
-      paramViewHolder.d.setBackgroundResource(2130844379);
+      paramViewHolder.d.setBackgroundResource(2130844285);
       return;
     }
     if (AppConstants.SMARTDEVICE_SEARCH_UIN.equals(paramViewHolder.a))
     {
-      paramViewHolder.d.setBackgroundResource(2130839708);
+      paramViewHolder.d.setBackgroundResource(2130839566);
       return;
     }
-    Bitmap localBitmap;
+    Bitmap localBitmap = paramBitmap;
     if (paramBitmap == null) {
       if ((AppConstants.SMARTDEVICE_UIN.equals(paramViewHolder.a)) && ((paramViewHolder instanceof BuddyListFriends.BuddyChildTag)))
       {
@@ -93,98 +93,88 @@ public abstract class SwipFacePreloadExpandableAdapter
             localBitmap = DeviceHeadMgr.getInstance().getDeviceHeadByDin(((Friends)localObject).name);
           }
         }
+      }
+      else
+      {
+        localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(paramViewHolder.b, paramViewHolder.a);
+      }
+    }
+    paramBitmap = localBitmap;
+    if (localBitmap == null)
+    {
+      if (paramBoolean) {
+        if ((paramViewHolder instanceof BuddyListTroop.TroopDisChildTag)) {
+          localBitmap = ImageUtil.e();
+        } else {
+          localBitmap = ImageUtil.f();
+        }
+      }
+      paramBitmap = localBitmap;
+      if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramViewHolder.a, paramViewHolder.b, false);
         paramBitmap = localBitmap;
       }
     }
-    for (;;)
+    if (paramBitmap != null)
     {
-      label205:
-      localBitmap = paramBitmap;
-      if (paramBitmap == null) {
-        if (paramBoolean) {
-          if (!(paramViewHolder instanceof BuddyListTroop.TroopDisChildTag)) {
-            break label374;
-          }
-        }
-      }
-      label374:
-      for (paramBitmap = ImageUtil.b();; paramBitmap = ImageUtil.c())
+      if ((paramViewHolder.b == 1) && ((paramViewHolder.d instanceof DynamicAvatarView)) && ((paramViewHolder instanceof BuddyListFriends.BuddyChildTag)))
       {
-        localBitmap = paramBitmap;
-        if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
+        if (!((BuddyListFriends.BuddyChildTag)paramViewHolder).b)
         {
-          this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramViewHolder.a, paramViewHolder.b, false);
-          localBitmap = paramBitmap;
+          paramViewHolder.d.setBackgroundDrawable(null);
+          ((DynamicAvatarView)paramViewHolder.d).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap), 1, paramViewHolder.a, 100, false, true, 1);
+          return;
         }
-        if (localBitmap == null) {
-          break;
-        }
-        if ((paramViewHolder.b != 1) || (!(paramViewHolder.d instanceof DynamicAvatarView)) || (!(paramViewHolder instanceof BuddyListFriends.BuddyChildTag))) {
-          break label405;
-        }
-        if (((BuddyListFriends.BuddyChildTag)paramViewHolder).b) {
-          break label381;
-        }
-        paramViewHolder.d.setBackgroundDrawable(null);
-        ((DynamicAvatarView)paramViewHolder.d).setFaceDrawable(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap), 1, paramViewHolder.a, 100, false, true, 1);
+        paramViewHolder.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
         return;
-        paramBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(paramViewHolder.b, paramViewHolder.a);
-        break label205;
       }
-      label381:
-      paramViewHolder.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-      return;
-      label405:
-      paramViewHolder.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), localBitmap));
-      return;
+      paramViewHolder.d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
     }
   }
   
-  public void a(String paramString, Bitmap paramBitmap)
+  protected void a(String paramString, Bitmap paramBitmap)
   {
     int j = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildCount();
     int i = 0;
-    Object localObject;
-    if (i < j)
+    while (i < j)
     {
-      localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
+      Object localObject = this.jdField_a_of_type_ComTencentWidgetExpandableListView.getChildAt(i).getTag();
       if ((localObject != null) && ((localObject instanceof SwipFacePreloadExpandableAdapter.ViewHolder)))
       {
         localObject = (SwipFacePreloadExpandableAdapter.ViewHolder)localObject;
-        if (paramString != null) {
-          break label69;
+        if (paramString == null)
+        {
+          a((SwipFacePreloadExpandableAdapter.ViewHolder)localObject, null, false);
         }
-        a((SwipFacePreloadExpandableAdapter.ViewHolder)localObject, null, false);
-      }
-      label69:
-      while (!paramString.equals(((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).a))
-      {
-        i += 1;
-        break;
-      }
-      if (paramBitmap != null)
-      {
-        if ((((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).b != 1) || (!(((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d instanceof DynamicAvatarView)) || (!(localObject instanceof BuddyListFriends.BuddyChildTag))) {
-          break label175;
+        else if (paramString.equals(((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).a))
+        {
+          if (paramBitmap == null) {
+            break;
+          }
+          if ((((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).b == 1) && ((((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d instanceof DynamicAvatarView)) && ((localObject instanceof BuddyListFriends.BuddyChildTag)))
+          {
+            if (!((BuddyListFriends.BuddyChildTag)localObject).b)
+            {
+              ((DynamicAvatarView)((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+              return;
+            }
+            ((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+            return;
+          }
+          ((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
+          return;
         }
-        if (((BuddyListFriends.BuddyChildTag)localObject).b) {
-          break label151;
-        }
-        ((DynamicAvatarView)((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d).a(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
       }
+      i += 1;
     }
-    return;
-    label151:
-    ((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
-    return;
-    label175:
-    ((SwipFacePreloadExpandableAdapter.ViewHolder)localObject).d.setBackgroundDrawable(new BitmapDrawable(this.jdField_a_of_type_AndroidContentContext.getResources(), paramBitmap));
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+    IFaceDecoder localIFaceDecoder = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localIFaceDecoder != null) {
+      localIFaceDecoder.destory();
     }
   }
   
@@ -217,7 +207,7 @@ public abstract class SwipFacePreloadExpandableAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.SwipFacePreloadExpandableAdapter
  * JD-Core Version:    0.7.0.1
  */

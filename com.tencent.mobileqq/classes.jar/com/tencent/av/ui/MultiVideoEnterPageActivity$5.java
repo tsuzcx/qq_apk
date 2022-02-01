@@ -10,7 +10,7 @@ class MultiVideoEnterPageActivity$5
 {
   MultiVideoEnterPageActivity$5(MultiVideoEnterPageActivity paramMultiVideoEnterPageActivity) {}
   
-  public void a(int paramInt)
+  protected void a(int paramInt)
   {
     if (this.a.b()) {
       return;
@@ -18,7 +18,7 @@ class MultiVideoEnterPageActivity$5
     this.a.c(paramInt);
   }
   
-  public void a(long paramLong, ArrayList<VideoController.GAudioFriends> paramArrayList, int paramInt1, int paramInt2)
+  protected void a(long paramLong, ArrayList<VideoController.GAudioFriends> paramArrayList, int paramInt1, int paramInt2)
   {
     if (this.a.b()) {
       return;
@@ -26,39 +26,41 @@ class MultiVideoEnterPageActivity$5
     this.a.a(paramLong, paramArrayList, paramInt1, paramInt2);
   }
   
-  public void a(long paramLong, boolean paramBoolean, int paramInt)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    if (this.a.b()) {}
-    do
+    if (this.a.b()) {
+      return;
+    }
+    if (paramLong == this.a.jdField_a_of_type_Long)
     {
-      do
-      {
-        return;
-      } while (paramLong != this.a.jdField_a_of_type_Long);
       if (paramBoolean)
       {
         this.a.b(paramInt);
         return;
       }
-    } while (((paramInt != 10) && (paramInt != 1)) || (!MultiVideoEnterPageActivity.a(this.a)));
-    this.a.a(paramInt);
+      if (((paramInt == 10) || (paramInt == 1)) && (MultiVideoEnterPageActivity.a(this.a))) {
+        this.a.a(paramInt);
+      }
+    }
   }
   
-  public void e()
+  protected void e()
   {
-    if (this.a.b()) {}
-    while (this.a.jdField_a_of_type_Boolean) {
+    if (this.a.b()) {
       return;
     }
-    super.e();
-    ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
-    localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
-    this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
+    if (!this.a.jdField_a_of_type_Boolean)
+    {
+      super.e();
+      ArrayList localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.e();
+      localArrayList = this.a.jdField_a_of_type_ComTencentAvVideoController.a(localArrayList.size(), localArrayList);
+      this.a.jdField_a_of_type_ComTencentAvUiMultiMembersAudioUI.a(localArrayList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.5
  * JD-Core Version:    0.7.0.1
  */

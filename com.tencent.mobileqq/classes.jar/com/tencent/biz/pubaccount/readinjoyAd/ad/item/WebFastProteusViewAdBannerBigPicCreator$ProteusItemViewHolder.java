@@ -2,10 +2,10 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.item;
 
 import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.data.BaseData;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.container.Container;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.ViewFactory;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.data.ProteusBannerBigPicItemData;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.BaseData;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
@@ -29,7 +29,7 @@ public class WebFastProteusViewAdBannerBigPicCreator$ProteusItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.item.WebFastProteusViewAdBannerBigPicCreator.ProteusItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

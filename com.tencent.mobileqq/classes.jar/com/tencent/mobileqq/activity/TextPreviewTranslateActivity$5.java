@@ -14,13 +14,14 @@ class TextPreviewTranslateActivity$5
     if ((paramOptionItem != null) && (!TextUtils.isEmpty(TextPreviewTranslateActivity.b(this.a))) && (!TextPreviewTranslateActivity.b(this.a).equals(paramOptionItem.b)))
     {
       TextPreviewTranslateActivity.b(this.a, paramOptionItem.b);
-      TextPreviewTranslateActivity.a(this.a, TextPreviewTranslateActivity.b(this.a, TextPreviewTranslateActivity.c(this.a)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
+      paramOptionItem = this.a;
+      TextPreviewTranslateActivity.a(paramOptionItem, TextPreviewTranslateActivity.b(paramOptionItem, TextPreviewTranslateActivity.c(paramOptionItem)), TextPreviewTranslateActivity.a(this.a), TextPreviewTranslateActivity.b(this.a));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewTranslateActivity.5
  * JD-Core Version:    0.7.0.1
  */

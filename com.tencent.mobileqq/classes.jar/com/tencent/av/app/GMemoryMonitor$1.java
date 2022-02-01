@@ -23,23 +23,28 @@ class GMemoryMonitor$1
     if (localVideoController != null) {
       localVideoController.a("lowMemoryLevel", String.valueOf(paramInt));
     }
-    try
+    for (;;)
     {
-      ActivityManager localActivityManager = (ActivityManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("activity");
-      ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
-      localActivityManager.getMemoryInfo(localMemoryInfo);
-      localVideoController = localVideoController.a("availMem", String.valueOf(localMemoryInfo.availMem / 1048576L)).a("threshold", String.valueOf(localMemoryInfo.threshold / 1048576L));
-      if (localMemoryInfo.lowMemory) {}
-      for (paramInt = 1;; paramInt = 0)
+      try
       {
+        ActivityManager localActivityManager = (ActivityManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("activity");
+        ActivityManager.MemoryInfo localMemoryInfo = new ActivityManager.MemoryInfo();
+        localActivityManager.getMemoryInfo(localMemoryInfo);
+        localVideoController = localVideoController.a("availMem", String.valueOf(localMemoryInfo.availMem / 1048576L)).a("threshold", String.valueOf(localMemoryInfo.threshold / 1048576L));
+        if (!localMemoryInfo.lowMemory) {
+          break label125;
+        }
+        paramInt = 1;
         localVideoController.a("lowMemory", String.valueOf(paramInt));
         return;
       }
+      catch (Throwable localThrowable)
+      {
+        AVLog.printErrorLog("GMemoryMonitor", localThrowable.getMessage());
+      }
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      AVLog.printErrorLog("GMemoryMonitor", localThrowable.getMessage());
+      label125:
+      paramInt = 0;
     }
   }
   
@@ -53,7 +58,8 @@ class GMemoryMonitor$1
   public void onLowMemory()
   {
     QLog.d("GMemoryMonitor", 1, "onLowMemory called");
-    this.a.a(-10, this.a.a.e);
+    GMemoryMonitor localGMemoryMonitor = this.a;
+    localGMemoryMonitor.a(-10, localGMemoryMonitor.a.d);
     a(-10);
   }
   
@@ -64,10 +70,15 @@ class GMemoryMonitor$1
     }
     if (paramInt == 15)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GMemoryMonitor", 2, "onTrimMemory called ,level = " + paramInt);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onTrimMemory called ,level = ");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("GMemoryMonitor", 2, ((StringBuilder)localObject).toString());
       }
-      this.a.a(paramInt, this.a.a.e);
+      Object localObject = this.a;
+      ((GMemoryMonitor)localObject).a(paramInt, ((GMemoryMonitor)localObject).a.d);
       ((VideoNodeReporter)this.a.a.a(4)).a(27, paramInt);
       a(paramInt);
     }
@@ -75,7 +86,7 @@ class GMemoryMonitor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.GMemoryMonitor.1
  * JD-Core Version:    0.7.0.1
  */

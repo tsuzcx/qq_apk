@@ -15,21 +15,22 @@ class PublicAccountChatPie$64
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     boolean bool = HwNetworkUtil.isNetworkAvailable(this.a.a);
-    if ((bool) && (PublicAccountChatPie.e(this.a)))
+    if ((bool) && (PublicAccountChatPie.d(this.a)))
     {
       OfficialAccountReporter.a.a();
       PublicAccountChatPie.c(this.a, false);
-    }
-    while (bool) {
       return;
     }
-    OfficialAccountReporter.a.a(this.a.d());
-    PublicAccountChatPie.c(this.a, true);
+    if (!bool)
+    {
+      OfficialAccountReporter.a.a(this.a.d());
+      PublicAccountChatPie.c(this.a, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.64
  * JD-Core Version:    0.7.0.1
  */

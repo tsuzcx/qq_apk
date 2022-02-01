@@ -16,82 +16,80 @@ class PrintHelper$PrintUriAdapter$1
 {
   PrintHelper$PrintUriAdapter$1(PrintHelper.PrintUriAdapter paramPrintUriAdapter, CancellationSignal paramCancellationSignal, PrintAttributes paramPrintAttributes1, PrintAttributes paramPrintAttributes2, PrintDocumentAdapter.LayoutResultCallback paramLayoutResultCallback) {}
   
-  protected Bitmap a(Uri... paramVarArgs)
+  protected Bitmap doInBackground(Uri... paramVarArgs)
   {
     try
     {
-      paramVarArgs = this.jdField_a_of_type_AndroidxPrintPrintHelper$PrintUriAdapter.jdField_a_of_type_AndroidxPrintPrintHelper.a(this.jdField_a_of_type_AndroidxPrintPrintHelper$PrintUriAdapter.jdField_a_of_type_AndroidNetUri);
+      paramVarArgs = this.this$1.this$0.loadConstrainedBitmap(this.this$1.mImageFile);
       return paramVarArgs;
     }
-    catch (FileNotFoundException paramVarArgs) {}
+    catch (FileNotFoundException paramVarArgs)
+    {
+      label20:
+      break label20;
+    }
     return null;
   }
   
-  protected void a(Bitmap paramBitmap)
+  protected void onCancelled(Bitmap paramBitmap)
   {
-    boolean bool = true;
+    this.val$layoutResultCallback.onLayoutCancelled();
+    this.this$1.mLoadBitmap = null;
+  }
+  
+  protected void onPostExecute(Bitmap paramBitmap)
+  {
     super.onPostExecute(paramBitmap);
     Object localObject = paramBitmap;
     if (paramBitmap != null) {
-      if (PrintHelper.jdField_a_of_type_Boolean)
+      if (PrintHelper.PRINT_ACTIVITY_RESPECTS_ORIENTATION)
       {
         localObject = paramBitmap;
-        if (this.jdField_a_of_type_AndroidxPrintPrintHelper$PrintUriAdapter.jdField_a_of_type_AndroidxPrintPrintHelper.jdField_a_of_type_Int != 0) {
-          break label103;
-        }
+        if (this.this$1.this$0.mOrientation != 0) {}
       }
-    }
-    for (;;)
-    {
-      try
+      else
       {
-        PrintAttributes.MediaSize localMediaSize = this.jdField_a_of_type_AndroidxPrintPrintHelper$PrintUriAdapter.jdField_a_of_type_AndroidPrintPrintAttributes.getMediaSize();
-        localObject = paramBitmap;
-        if (localMediaSize != null)
+        try
         {
+          PrintAttributes.MediaSize localMediaSize = this.this$1.mAttributes.getMediaSize();
           localObject = paramBitmap;
-          if (localMediaSize.isPortrait() != PrintHelper.a(paramBitmap))
+          if (localMediaSize != null)
           {
-            localObject = new Matrix();
-            ((Matrix)localObject).postRotate(90.0F);
-            localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
+            localObject = paramBitmap;
+            if (localMediaSize.isPortrait() != PrintHelper.isPortrait(paramBitmap))
+            {
+              localObject = new Matrix();
+              ((Matrix)localObject).postRotate(90.0F);
+              localObject = Bitmap.createBitmap(paramBitmap, 0, 0, paramBitmap.getWidth(), paramBitmap.getHeight(), (Matrix)localObject, true);
+            }
           }
         }
-        label103:
-        this.jdField_a_of_type_AndroidxPrintPrintHelper$PrintUriAdapter.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
-        if (localObject == null) {
-          break label183;
-        }
-        paramBitmap = new PrintDocumentInfo.Builder(this.jdField_a_of_type_AndroidxPrintPrintHelper$PrintUriAdapter.jdField_a_of_type_JavaLangString).setContentType(1).setPageCount(1).build();
-        if (!this.jdField_a_of_type_AndroidPrintPrintAttributes.equals(this.b))
-        {
-          this.jdField_a_of_type_AndroidPrintPrintDocumentAdapter$LayoutResultCallback.onLayoutFinished(paramBitmap, bool);
-          this.jdField_a_of_type_AndroidxPrintPrintHelper$PrintUriAdapter.jdField_a_of_type_AndroidOsAsyncTask = null;
-          return;
-        }
+        finally {}
       }
-      finally {}
-      bool = false;
-      continue;
-      label183:
-      this.jdField_a_of_type_AndroidPrintPrintDocumentAdapter$LayoutResultCallback.onLayoutFailed(null);
     }
-  }
-  
-  protected void b(Bitmap paramBitmap)
-  {
-    this.jdField_a_of_type_AndroidPrintPrintDocumentAdapter$LayoutResultCallback.onLayoutCancelled();
-    this.jdField_a_of_type_AndroidxPrintPrintHelper$PrintUriAdapter.jdField_a_of_type_AndroidOsAsyncTask = null;
+    paramBitmap = this.this$1;
+    paramBitmap.mBitmap = ((Bitmap)localObject);
+    if (localObject != null)
+    {
+      paramBitmap = new PrintDocumentInfo.Builder(paramBitmap.mJobName).setContentType(1).setPageCount(1).build();
+      boolean bool = this.val$newPrintAttributes.equals(this.val$oldPrintAttributes);
+      this.val$layoutResultCallback.onLayoutFinished(paramBitmap, true ^ bool);
+    }
+    else
+    {
+      this.val$layoutResultCallback.onLayoutFailed(null);
+    }
+    this.this$1.mLoadBitmap = null;
   }
   
   protected void onPreExecute()
   {
-    this.jdField_a_of_type_AndroidOsCancellationSignal.setOnCancelListener(new PrintHelper.PrintUriAdapter.1.1(this));
+    this.val$cancellationSignal.setOnCancelListener(new PrintHelper.PrintUriAdapter.1.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.print.PrintHelper.PrintUriAdapter.1
  * JD-Core Version:    0.7.0.1
  */

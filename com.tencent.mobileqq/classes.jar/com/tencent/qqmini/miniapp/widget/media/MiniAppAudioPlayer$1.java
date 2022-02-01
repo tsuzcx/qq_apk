@@ -10,31 +10,32 @@ class MiniAppAudioPlayer$1
   
   public void run()
   {
-    if (MiniAppAudioPlayer.access$000(this.this$0) == null) {}
-    for (;;)
-    {
+    if (MiniAppAudioPlayer.access$000(this.this$0) == null) {
       return;
-      try
+    }
+    try
+    {
+      MiniAppAudioPlayer.access$000(this.this$0).start();
+      MiniAppAudioPlayer.access$100(this.this$0, 2);
+      if (MiniAppAudioPlayer.access$200(this.this$0) > 0)
       {
-        MiniAppAudioPlayer.access$000(this.this$0).start();
-        MiniAppAudioPlayer.access$100(this.this$0, 2);
-        if (MiniAppAudioPlayer.access$200(this.this$0) > 0)
-        {
-          this.this$0.seekTo(MiniAppAudioPlayer.access$200(this.this$0));
-          return;
-        }
+        this.this$0.seekTo(MiniAppAudioPlayer.access$200(this.this$0));
+        return;
       }
-      catch (Exception localException)
-      {
-        MiniAppAudioPlayer.access$300(this.this$0, 1, 0);
-        QMLog.d("MiniAppAudioPlayer", "mStartRunnable....." + localException);
-      }
+    }
+    catch (Exception localException)
+    {
+      MiniAppAudioPlayer.access$300(this.this$0, 1, 0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mStartRunnable.....");
+      localStringBuilder.append(localException);
+      QMLog.d("MiniAppAudioPlayer", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppAudioPlayer.1
  * JD-Core Version:    0.7.0.1
  */

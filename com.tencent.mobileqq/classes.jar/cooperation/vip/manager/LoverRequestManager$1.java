@@ -24,9 +24,10 @@ class LoverRequestManager$1
     Object localObject = new ArrayList();
     ((ArrayList)localObject).add(Integer.valueOf(1));
     localsweet_comm_cfg_get_req.vec_cfg = ((ArrayList)localObject);
-    if (this.jdField_a_of_type_AndroidContentIntent != null)
+    localObject = this.jdField_a_of_type_AndroidContentIntent;
+    if (localObject != null)
     {
-      long l = this.jdField_a_of_type_AndroidContentIntent.getLongExtra("currentUin", -1L);
+      long l = ((Intent)localObject).getLongExtra("currentUin", -1L);
       localObject = new sweet_req_comm();
       ((sweet_req_comm)localObject).opuin = l;
       ((sweet_req_comm)localObject).uin = l;
@@ -46,7 +47,7 @@ class LoverRequestManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.manager.LoverRequestManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,9 @@ import androidx.annotation.Nullable;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
 import com.tencent.mobileqq.filemanager.app.QFileConfigManager;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileDownloadConfigProcessor
@@ -38,17 +37,25 @@ public class QFileDownloadConfigProcessor
   {
     if ((paramQFileDownloadConfigBean != null) && (paramQFileDownloadConfigBean.jdField_a_of_type_JavaUtilHashMap != null))
     {
-      Object localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getApp();
-      if (localObject != null)
+      BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+      if (localBaseQQAppInterface != null)
       {
         if (!TextUtils.isEmpty(paramQFileDownloadConfigBean.jdField_a_of_type_JavaLangString))
         {
-          localObject = ((BaseQQAppInterface)localObject).getApplicationContext().getSharedPreferences("file_config_" + ((BaseQQAppInterface)localObject).getCurrentUin(), 0).edit();
+          Object localObject = localBaseQQAppInterface.getApplicationContext();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("file_config_");
+          localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
+          localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
           ((SharedPreferences.Editor)localObject).putString("qfile_file_auto_download", paramQFileDownloadConfigBean.jdField_a_of_type_JavaLangString);
           ((SharedPreferences.Editor)localObject).apply();
-          QLog.i("QFileDownloadConfigProcessor", 1, "save download config [" + paramQFileDownloadConfigBean.jdField_a_of_type_JavaLangString + "]");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("save download config [");
+          ((StringBuilder)localObject).append(paramQFileDownloadConfigBean.jdField_a_of_type_JavaLangString);
+          ((StringBuilder)localObject).append("]");
+          QLog.i("QFileDownloadConfigProcessor", 1, ((StringBuilder)localObject).toString());
         }
-        QFileConfigManager.a().a(paramQFileDownloadConfigBean.jdField_a_of_type_JavaUtilHashMap);
+        QFileConfigManager.a(localBaseQQAppInterface).a(paramQFileDownloadConfigBean.jdField_a_of_type_JavaUtilHashMap);
       }
     }
   }
@@ -75,7 +82,11 @@ public class QFileDownloadConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("QFileDownloadConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: failCode[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QFileDownloadConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -85,7 +96,7 @@ public class QFileDownloadConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileDownloadConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

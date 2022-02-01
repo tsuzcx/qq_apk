@@ -14,13 +14,13 @@ class GameCenterAPIJavaScript$4
   public void getOutline(View paramView, Outline paramOutline)
   {
     if (Build.VERSION.SDK_INT >= 21) {
-      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), AIOUtils.a(5.0F, paramView.getResources()));
+      paramOutline.setRoundRect(0, 0, paramView.getWidth(), paramView.getHeight(), AIOUtils.b(5.0F, paramView.getResources()));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript.4
  * JD-Core Version:    0.7.0.1
  */

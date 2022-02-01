@@ -22,35 +22,56 @@ class ac$d
     try
     {
       long l = System.currentTimeMillis();
-      Object localObject = Environment.getExternalStorageDirectory().getPath() + "/tencent/msflogs/com/tencent/mobileqq/com.tencent.mobileqq_logcat_" + this.a + "_" + QLog.getLogFileFormatter().format(Long.valueOf(l)) + ".log";
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "start to store logcat " + (String)localObject);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory().getPath());
+      ((StringBuilder)localObject1).append("/tencent/msflogs/com/tencent/mobileqq/com.tencent.mobileqq_logcat_");
+      ((StringBuilder)localObject1).append(this.a);
+      ((StringBuilder)localObject1).append("_");
+      ((StringBuilder)localObject1).append(QLog.getLogFileFormatter().format(Long.valueOf(l)));
+      ((StringBuilder)localObject1).append(".log");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("start to store logcat ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject2).toString());
       }
-      localObject = "logcat -b main -b system -b radio -b events -v time -f " + (String)localObject;
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.NetConnTag", 2, "start to execute command " + (String)localObject);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("logcat -b main -b system -b radio -b events -v time -f ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("start to execute command ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.d("MSF.C.NetConnTag", 2, ((StringBuilder)localObject2).toString());
       }
-      localObject = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec((String)localObject).getErrorStream()));
+      localObject1 = new BufferedReader(new InputStreamReader(Runtime.getRuntime().exec((String)localObject1).getErrorStream()));
       for (;;)
       {
-        String str = ((BufferedReader)localObject).readLine();
-        if (str == null) {
+        localObject2 = ((BufferedReader)localObject1).readLine();
+        if (localObject2 == null) {
           break;
         }
-        QLog.d("MSF.C.NetConnTag", 1, "logcat storage error:" + str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("logcat storage error:");
+        localStringBuilder.append((String)localObject2);
+        QLog.d("MSF.C.NetConnTag", 1, localStringBuilder.toString());
       }
-      localException.close();
+      ((BufferedReader)localObject1).close();
+      return;
     }
     catch (Exception localException)
     {
       QLog.d("MSF.C.NetConnTag", 1, "failed to store logcat ", localException);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.ac.d
  * JD-Core Version:    0.7.0.1
  */

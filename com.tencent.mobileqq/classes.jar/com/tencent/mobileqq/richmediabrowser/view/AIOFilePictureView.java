@@ -12,7 +12,6 @@ import android.os.Bundle;
 import android.os.Looper;
 import android.os.MessageQueue;
 import android.os.MessageQueue.IdleHandler;
-import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,75 +23,78 @@ import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.SeekBar;
 import android.widget.TextView;
-import com.tencent.TMG.utils.QLog;
-import com.tencent.biz.qrcode.activity.ScannerResult;
-import com.tencent.biz.qrcode.activity.ScannerUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.JpegExifReader;
-import com.tencent.image.RegionDrawableData;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.imcore.message.UinTypeUtil;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.activity.miniaio.MiniChatActivity;
-import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.ar.codeEngine.MiniScanReport;
 import com.tencent.mobileqq.comment.danmaku.CommentDanmakuManager;
 import com.tencent.mobileqq.filemanager.api.IFMConfig;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.filemanager.util.FileUtil;
-import com.tencent.mobileqq.filemanager.util.QFileUtils;
-import com.tencent.mobileqq.pic.PicShareToWX;
+import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.richmedia.dc.DCAIOPreviewProgressive;
 import com.tencent.mobileqq.richmediabrowser.AIOBrowserBaseData;
+import com.tencent.mobileqq.richmediabrowser.IProvider;
 import com.tencent.mobileqq.richmediabrowser.ImmersionHelper;
 import com.tencent.mobileqq.richmediabrowser.ParamsManager;
+import com.tencent.mobileqq.richmediabrowser.api.IBrowserDepend;
+import com.tencent.mobileqq.richmediabrowser.api.IFileDepend;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureData;
 import com.tencent.mobileqq.richmediabrowser.model.AIOFilePictureModel;
+import com.tencent.mobileqq.richmediabrowser.presenter.AIOBrowserPresenter;
 import com.tencent.mobileqq.richmediabrowser.presenter.AIOFilePicturePresenter;
-import com.tencent.mobileqq.startup.step.CheckPermission;
+import com.tencent.mobileqq.richmediabrowser.utils.RichMediaBrowserUtils;
+import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
+import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.utils.FileSizeFormat;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.mobileqq.utils.RichMediaShareActionSheetUtil;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.mobileqq.widget.share.ShareActionSheet;
+import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.richmediabrowser.core.RichMediaBrowserManager;
-import com.tencent.richmediabrowser.listener.IBrowserItemEventListener;
+import com.tencent.richmediabrowser.api.BrowserParamsBuilder;
+import com.tencent.richmediabrowser.core.IBaseViewBuilder;
 import com.tencent.richmediabrowser.log.BrowserLogHelper;
 import com.tencent.richmediabrowser.log.IBrowserLog;
 import com.tencent.richmediabrowser.model.RichMediaBaseData;
 import com.tencent.richmediabrowser.model.RichMediaBrowserInfo;
-import com.tencent.richmediabrowser.presenter.IProvider;
+import com.tencent.richmediabrowser.presenter.BrowserBasePresenter;
+import com.tencent.richmediabrowser.utils.BrowserUtils;
+import com.tencent.richmediabrowser.view.BrowserBaseView;
 import com.tencent.richmediabrowser.view.GalleryUrlImageView;
+import com.tencent.richmediabrowser.view.pic.PictureView;
 import com.tencent.richmediabrowser.view.recyclerview.BrowserScaleView;
+import com.tencent.smtt.sdk.QbSdk;
 import com.tencent.theme.SkinnableBitmapDrawable;
 import com.tencent.util.LiuHaiUtils;
+import com.tencent.util.PermissionUtil;
 import com.tencent.widget.ActionSheet.WatchDismissActions;
-import dov.com.tencent.biz.qqstory.takevideo.EditPicActivity;
 import java.io.File;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public class AIOFilePictureView
   extends AIOBrowserBaseView
-  implements View.OnClickListener, IBrowserItemEventListener, ActionSheet.WatchDismissActions
+  implements View.OnClickListener, ActionSheet.WatchDismissActions
 {
-  MessageQueue.IdleHandler a;
+  private Intent jdField_a_of_type_AndroidContentIntent;
+  MessageQueue.IdleHandler jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new AIOFilePictureView.4(this);
   public ImageView a;
   public SeekBar a;
   public TextView a;
+  private IProvider jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider;
   public AIOFilePicturePresenter a;
-  public BrowserScaleView a;
+  public PictureView a;
   public Runnable a;
   public String a;
   public boolean a;
@@ -105,165 +107,209 @@ public class AIOFilePictureView
   public ImageButton d;
   public TextView d;
   
-  public AIOFilePictureView(Activity paramActivity, AIOFilePicturePresenter paramAIOFilePicturePresenter)
+  public AIOFilePictureView(Context paramContext, AIOFilePicturePresenter paramAIOFilePicturePresenter)
   {
-    super(paramActivity, paramAIOFilePicturePresenter);
+    super(paramContext, paramAIOFilePicturePresenter);
     this.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler = new AIOFilePictureView.5(this);
     this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter = paramAIOFilePicturePresenter;
+  }
+  
+  private int a(int paramInt)
+  {
+    int i = 6;
+    if (paramInt != 2)
+    {
+      if (paramInt != 6)
+      {
+        if (paramInt != 39)
+        {
+          if (paramInt != 52)
+          {
+            if (paramInt != 64)
+            {
+              if ((paramInt != 121) && (paramInt != 132))
+              {
+                if (paramInt != 26)
+                {
+                  if (paramInt == 27) {
+                    return i;
+                  }
+                  if ((paramInt != 72) && (paramInt != 73)) {
+                    switch (paramInt)
+                    {
+                    default: 
+                      break;
+                    case 56: 
+                      return 10;
+                    case 55: 
+                      return 9;
+                    case 54: 
+                      return 7;
+                    }
+                  }
+                }
+                return -1;
+              }
+              else
+              {
+                return 13;
+              }
+            }
+            else {
+              return 11;
+            }
+          }
+          else {
+            return 8;
+          }
+        }
+        else {
+          return 2;
+        }
+      }
+      else {
+        return 3;
+      }
+    }
+    else {
+      i = 1;
+    }
+    return i;
   }
   
   private void a(long paramLong, int paramInt1, int paramInt2)
   {
-    if (RichMediaBrowserManager.getInstance().getProvider() != null) {
-      RichMediaBrowserManager.getInstance().getProvider().downloadMedia(paramLong, paramInt1, paramInt2);
+    IProvider localIProvider = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider;
+    if (localIProvider != null) {
+      localIProvider.a(paramLong, paramInt1, paramInt2);
     }
     this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a(paramLong, paramInt1, 1);
   }
   
   private void a(Uri paramUri, ArrayList<ShareActionSheetBuilder.ActionSheetItem> paramArrayList)
   {
-    int k = 0;
-    if ((this.mContext == null) || (this.mContext.isFinishing()) || (this.mBrowserItemView == null)) {
-      return;
-    }
-    ScannerResult localScannerResult = ScannerUtils.a(paramUri, this.mContext, 3);
-    int i;
-    int j;
-    if (localScannerResult != null)
+    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (!((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing()))
     {
-      ThreadManager.getUIHandler().post(new AIOFilePictureView.2(this, localScannerResult, paramArrayList));
-      if (localScannerResult.a != null)
-      {
-        i = localScannerResult.a.size();
-        if (localScannerResult.b == null) {
-          break label176;
-        }
-        j = localScannerResult.b.size();
-        label97:
-        BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "qrSize = " + i + ", miniSize = " + j);
+      if (this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.mBrowserItemView == null) {
+        return;
       }
+      this.jdField_a_of_type_JavaLangString = ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).checkQQCode(paramUri, paramArrayList, (Activity)this.jdField_a_of_type_AndroidContentContext, this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet);
     }
-    for (;;)
-    {
-      i = k;
-      if (localScannerResult != null) {
-        i = localScannerResult.a();
-      }
-      if (i > 0) {
-        this.jdField_a_of_type_JavaLangString = paramUri.getPath();
-      }
-      MiniScanReport.b(i);
-      return;
-      i = 0;
-      break;
-      label176:
-      j = 0;
-      break label97;
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "checkQQCode scannerResult is null");
+  }
+  
+  private void a(AIOFilePictureData paramAIOFilePictureData, int paramInt)
+  {
+    Intent localIntent = new Intent();
+    String str;
+    if (MessageRecordInfo.a(paramAIOFilePictureData.jdField_d_of_type_Int)) {
+      str = ParamsManager.a().d();
+    } else {
+      str = ParamsManager.a().c();
     }
+    ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).onQRDecodeSucceed(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, paramAIOFilePictureData.jdField_c_of_type_Int, true, str, null, null, paramAIOFilePictureData.jdField_e_of_type_JavaLangString, paramInt, ParamsManager.a().d(), ParamsManager.a().c(), localIntent);
   }
   
   private void a(RichMediaBrowserInfo paramRichMediaBrowserInfo, AIOFilePictureData paramAIOFilePictureData, AIOFilePictureModel paramAIOFilePictureModel, File paramFile, int paramInt)
   {
-    Object localObject = null;
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = this.mScreenWidthPx;
-    localURLDrawableOptions.mRequestHeight = this.mScreenHeightPx;
+    localURLDrawableOptions.mRequestWidth = this.jdField_a_of_type_Int;
+    localURLDrawableOptions.mRequestHeight = this.jdField_b_of_type_Int;
     if (paramAIOFilePictureModel.a(paramAIOFilePictureData, 16) != null)
     {
-      paramAIOFilePictureModel = URLDrawable.getFileDrawable(paramAIOFilePictureData.jdField_b_of_type_JavaLangString, null);
+      paramAIOFilePictureModel = URLDrawable.getFileDrawable(paramAIOFilePictureData.jdField_a_of_type_JavaLangString, null);
       paramAIOFilePictureModel.downloadImediatly();
       localURLDrawableOptions.mLoadingDrawable = paramAIOFilePictureModel;
     }
-    for (;;)
+    else
     {
-      localURLDrawableOptions.mPlayGifImage = true;
-      localURLDrawableOptions.mUseExifOrientation = false;
-      try
-      {
-        paramAIOFilePictureModel = URLDrawable.getFileDrawable(paramFile.getAbsolutePath(), localURLDrawableOptions);
-        if (paramAIOFilePictureModel != null)
-        {
-          paramAIOFilePictureModel.setTag(Integer.valueOf(1));
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.mActiveDrawable.put(Integer.valueOf(paramInt), paramAIOFilePictureModel);
-          paramFile = paramFile.getAbsolutePath();
-          this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setGalleryImageListener(new AIOFilePictureView.6(this, paramRichMediaBrowserInfo, paramFile, paramAIOFilePictureModel, paramAIOFilePictureData));
-          this.jdField_a_of_type_JavaLangRunnable = AIOUtils.a(this.jdField_b_of_type_AndroidWidgetImageView, paramAIOFilePictureModel);
-          if ((this.jdField_a_of_type_JavaLangRunnable == null) && (paramAIOFilePictureModel.getStatus() == 1))
-          {
-            a(paramRichMediaBrowserInfo, paramFile, paramAIOFilePictureModel, paramInt);
-            this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setImageDrawable(paramAIOFilePictureModel);
-          }
-        }
-        else
-        {
-          return;
-          localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-        }
+      localURLDrawableOptions.mLoadingDrawable = URLDrawableHelperConstants.a;
+    }
+    localURLDrawableOptions.mPlayGifImage = true;
+    localURLDrawableOptions.mUseExifOrientation = false;
+    try
+    {
+      paramAIOFilePictureModel = URLDrawable.getFileDrawable(paramFile.getAbsolutePath(), localURLDrawableOptions);
+    }
+    catch (Throwable paramAIOFilePictureModel)
+    {
+      label89:
+      break label89;
+    }
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "[getView] URLDrawable.getDrawable failed.");
+    paramAIOFilePictureModel = null;
+    if (paramAIOFilePictureModel != null)
+    {
+      paramAIOFilePictureModel.setTag(Integer.valueOf(1));
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable.put(Integer.valueOf(paramInt), paramAIOFilePictureModel);
+      paramFile = paramFile.getAbsolutePath();
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setGalleryImageListener(new AIOFilePictureView.5(this, paramRichMediaBrowserInfo, paramFile, paramAIOFilePictureModel, paramAIOFilePictureData));
+      this.jdField_a_of_type_JavaLangRunnable = RichMediaBrowserUtils.a(this.jdField_b_of_type_AndroidWidgetImageView, paramAIOFilePictureModel);
+      if ((this.jdField_a_of_type_JavaLangRunnable == null) && (paramAIOFilePictureModel.getStatus() == 1)) {
+        a(paramRichMediaBrowserInfo, paramFile, paramAIOFilePictureModel, paramInt);
+      } else {
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.initDrawable(paramAIOFilePictureModel, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, BrowserUtils.a(paramAIOFilePictureModel.getExifOrientation()));
       }
-      catch (Throwable paramAIOFilePictureModel)
-      {
-        for (;;)
-        {
-          BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "[getView] URLDrawable.getDrawable failed.");
-          paramAIOFilePictureModel = localObject;
-          continue;
-          this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.initDrawable(paramAIOFilePictureModel, this.mScreenWidthPx, this.mScreenHeightPx, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getRotation(paramRichMediaBrowserInfo.orientation));
-        }
-      }
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setImageDrawable(paramAIOFilePictureModel);
     }
   }
   
   private void a(RichMediaBrowserInfo paramRichMediaBrowserInfo, AIOFilePictureData paramAIOFilePictureData, File paramFile, int paramInt)
   {
-    Object localObject1 = null;
-    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestWidth = this.mScreenWidthPx;
-    ((URLDrawable.URLDrawableOptions)localObject2).mRequestHeight = this.mScreenHeightPx;
-    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = true;
-    ((URLDrawable.URLDrawableOptions)localObject2).mUseExifOrientation = false;
+    paramRichMediaBrowserInfo = URLDrawable.URLDrawableOptions.obtain();
+    paramRichMediaBrowserInfo.mRequestWidth = this.jdField_a_of_type_Int;
+    paramRichMediaBrowserInfo.mRequestHeight = this.jdField_b_of_type_Int;
+    paramRichMediaBrowserInfo.mLoadingDrawable = URLDrawableHelperConstants.a;
+    paramRichMediaBrowserInfo.mPlayGifImage = true;
+    int i = 0;
+    paramRichMediaBrowserInfo.mUseExifOrientation = false;
     try
     {
-      localObject2 = URLDrawable.getDrawable(paramFile, (URLDrawable.URLDrawableOptions)localObject2);
-      localObject1 = localObject2;
-      ((URLDrawable)localObject2).setTag(Integer.valueOf(1));
-      localObject1 = localObject2;
-      ((URLDrawable)localObject2).downloadImediatly();
-      localObject1 = localObject2;
+      paramRichMediaBrowserInfo = URLDrawable.getDrawable(paramFile, paramRichMediaBrowserInfo);
+    }
+    catch (Throwable paramRichMediaBrowserInfo)
+    {
+      label61:
+      label63:
+      break label61;
+    }
+    try
+    {
+      paramRichMediaBrowserInfo.setTag(Integer.valueOf(1));
+      paramRichMediaBrowserInfo.downloadImediatly();
     }
     catch (Throwable localThrowable)
     {
+      break label63;
+    }
+    paramRichMediaBrowserInfo = null;
+    BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "[getView] URLDrawable.getDrawable failed.");
+    if (paramRichMediaBrowserInfo != null) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable.put(Integer.valueOf(paramInt), paramRichMediaBrowserInfo);
+    }
+    if ((paramRichMediaBrowserInfo != null) && (paramRichMediaBrowserInfo.getStatus() == 1))
+    {
       try
       {
-        paramRichMediaBrowserInfo.orientation = JpegExifReader.readOrientation(paramFile.getAbsolutePath());
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setImageDrawable(localObject1);
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.initDrawable(localObject1, this.mScreenWidthPx, this.mScreenHeightPx, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getRotation(paramRichMediaBrowserInfo.orientation));
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.onLoadFinish(paramInt, true);
-        return;
-        localThrowable = localThrowable;
-        BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "[getView] URLDrawable.getDrawable failed.");
+        int j = JpegExifReader.readOrientation(paramFile.getAbsolutePath());
+        i = j;
       }
       catch (Exception paramAIOFilePictureData)
       {
-        for (;;)
-        {
-          BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "read exif error" + paramAIOFilePictureData.getMessage());
-          paramRichMediaBrowserInfo.orientation = 1;
-        }
+        paramFile = BrowserLogHelper.getInstance().getGalleryLog();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("read exif error");
+        localStringBuilder.append(paramAIOFilePictureData.getMessage());
+        paramFile.d("AIOGalleryFilePicView", 4, localStringBuilder.toString());
       }
-      if ((a(paramAIOFilePictureData, this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView)) || (b(paramAIOFilePictureData, this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView))) {
-        break label286;
-      }
-      a(this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView);
-      a(paramAIOFilePictureData.jdField_a_of_type_Long, paramAIOFilePictureData.jdField_a_of_type_Int, 18);
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setImageDrawable(paramRichMediaBrowserInfo);
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.initDrawable(paramRichMediaBrowserInfo, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, BrowserUtils.a(i));
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(paramInt, true);
+      return;
     }
-    if (localObject1 != null) {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.mActiveDrawable.put(Integer.valueOf(paramInt), localObject1);
+    if ((!a(paramAIOFilePictureData, this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView)) && (!b(paramAIOFilePictureData, this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView))) {
+      a(this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView);
     }
-    if ((localObject1 == null) || (localObject1.getStatus() != 1) || (paramRichMediaBrowserInfo.orientation == -2)) {}
-    label286:
+    a(paramAIOFilePictureData.jdField_a_of_type_Long, paramAIOFilePictureData.jdField_a_of_type_Int, 18);
   }
   
   private void a(RichMediaBrowserInfo paramRichMediaBrowserInfo1, RichMediaBrowserInfo paramRichMediaBrowserInfo2)
@@ -279,23 +325,25 @@ public class AIOFilePictureView
   
   private void a(RichMediaBrowserInfo paramRichMediaBrowserInfo, String paramString, URLDrawable paramURLDrawable, int paramInt)
   {
-    if (paramRichMediaBrowserInfo.orientation == -2) {}
+    int i;
     try
     {
-      paramRichMediaBrowserInfo.orientation = JpegExifReader.readOrientation(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.mActiveDrawable.put(Integer.valueOf(paramInt), paramURLDrawable);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.initDrawable(paramURLDrawable, this.mScreenWidthPx, this.mScreenHeightPx, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getRotation(paramRichMediaBrowserInfo.orientation));
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.onLoadFinish(paramInt, true);
-      return;
+      i = JpegExifReader.readOrientation(paramString);
     }
-    catch (Exception paramString)
+    catch (Exception paramRichMediaBrowserInfo)
     {
-      for (;;)
-      {
-        BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "read exif error" + paramString.getMessage());
-        paramRichMediaBrowserInfo.orientation = 1;
-      }
+      paramString = BrowserLogHelper.getInstance().getGalleryLog();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("read exif error");
+      localStringBuilder.append(paramRichMediaBrowserInfo.getMessage());
+      paramString.d("AIOGalleryFilePicView", 4, localStringBuilder.toString());
+      i = 0;
     }
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter != null) && (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable.put(Integer.valueOf(paramInt), paramURLDrawable);
+    }
+    this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.initDrawable(paramURLDrawable, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, BrowserUtils.a(i));
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(paramInt, true);
   }
   
   private void a(File paramFile, AIOFilePictureData paramAIOFilePictureData)
@@ -309,12 +357,12 @@ public class AIOFilePictureView
       BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 1, "setItemClickListenerForFile: error, file is null.");
       return;
     }
-    if (!CheckPermission.isHasStoragePermission(this.mContext))
+    if ((!PermissionUtil.a(this.jdField_a_of_type_AndroidContentContext)) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)))
     {
-      CheckPermission.requestStorePermission(this.mContext, null);
+      PermissionUtil.a((Activity)this.jdField_a_of_type_AndroidContentContext, null);
       return;
     }
-    FileManagerUtil.a(this.mContext, localFile.getAbsolutePath());
+    ((IFileDepend)QRoute.api(IFileDepend.class)).saveToAlbum(this.jdField_a_of_type_AndroidContentContext, localFile.getAbsolutePath());
   }
   
   private boolean a(AIOFilePictureData paramAIOFilePictureData, GalleryUrlImageView paramGalleryUrlImageView)
@@ -324,8 +372,8 @@ public class AIOFilePictureView
     if (((AIOFilePictureModel)localObject2).a(paramAIOFilePictureData, 16) != null)
     {
       Object localObject1 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
+      ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = URLDrawableHelperConstants.a;
+      ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = URLDrawableHelperConstants.a;
       localObject2 = ((AIOFilePictureModel)localObject2).a(paramAIOFilePictureData, 16);
       paramAIOFilePictureData = null;
       try
@@ -337,16 +385,17 @@ public class AIOFilePictureView
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "dealTempImage() exception = " + localException.getMessage());
-        }
+        localObject2 = BrowserLogHelper.getInstance().getGalleryLog();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("dealTempImage() exception = ");
+        localStringBuilder.append(localException.getMessage());
+        ((IBrowserLog)localObject2).d("AIOGalleryFilePicView", 4, localStringBuilder.toString());
       }
       if ((paramAIOFilePictureData != null) && (paramAIOFilePictureData.getStatus() == 1))
       {
         paramAIOFilePictureData.setTag(Integer.valueOf(1));
         paramGalleryUrlImageView.setImageDrawable(paramAIOFilePictureData);
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.initDrawable(paramAIOFilePictureData, this.mScreenWidthPx, this.mScreenHeightPx, 0);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.initDrawable(paramAIOFilePictureData, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0);
         BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "set thumb image");
         return true;
       }
@@ -357,125 +406,427 @@ public class AIOFilePictureView
   private boolean a(GalleryUrlImageView paramGalleryUrlImageView)
   {
     BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "dealDefaultImage()");
-    paramGalleryUrlImageView.setImageDrawable(URLDrawableHelper.TRANSPARENT);
+    paramGalleryUrlImageView.setImageDrawable(URLDrawableHelperConstants.a);
     return true;
   }
   
   private boolean b(AIOFilePictureData paramAIOFilePictureData, GalleryUrlImageView paramGalleryUrlImageView)
   {
-    boolean bool = false;
     BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "dealErrorImage()");
     if (paramAIOFilePictureData.jdField_d_of_type_Boolean)
     {
-      paramAIOFilePictureData = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838183);
+      paramAIOFilePictureData = MobileQQ.getContext().getResources().getDrawable(2130849901);
       paramGalleryUrlImageView.setImageDrawable(paramAIOFilePictureData);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.initDrawable(paramAIOFilePictureData, this.mScreenWidthPx, this.mScreenHeightPx, 0);
-      bool = true;
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.initDrawable(paramAIOFilePictureData, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0);
+      return true;
     }
-    return bool;
+    return false;
   }
   
   private boolean d()
   {
-    return (RichMediaBrowserManager.getInstance().getProvider() != null) && (RichMediaBrowserManager.getInstance().getProvider().isPingBinder());
+    IProvider localIProvider = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider;
+    return (localIProvider != null) && (localIProvider.a());
   }
   
-  private void k()
+  private void m()
   {
     AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
     if ((localAIOFilePictureData != null) && (new AIOFilePictureModel().a(localAIOFilePictureData, 20)))
     {
-      if (localAIOFilePictureData.jdField_c_of_type_Long > 0L) {
-        a(String.format(Locale.CHINA, this.mContext.getString(2131695009), new Object[] { FileUtil.a(localAIOFilePictureData.jdField_c_of_type_Long) }));
+      if (localAIOFilePictureData.jdField_e_of_type_Long > 0L)
+      {
+        a(String.format(Locale.CHINA, this.jdField_a_of_type_AndroidContentContext.getString(2131718255), new Object[] { FileSizeFormat.a(localAIOFilePictureData.jdField_e_of_type_Long) }));
+        return;
       }
+      a(this.jdField_a_of_type_AndroidContentContext.getString(2131718252));
     }
-    else {
-      return;
+  }
+  
+  public View a(View paramView, ViewGroup paramViewGroup)
+  {
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562763, null));
+    l();
+    this.jdField_c_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(2, 8.0F);
+    this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
+    paramView = new RelativeLayout.LayoutParams(-2, -2);
+    paramView.addRule(3, 2131366456);
+    paramView.addRule(14);
+    paramView.topMargin = Utils.a(4.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.mBrowserItemView.addView(this.jdField_c_of_type_AndroidWidgetTextView, paramView);
+    this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(this.jdField_a_of_type_AndroidContentContext);
+    this.jdField_c_of_type_AndroidWidgetImageView.setId(2131366456);
+    paramView = new RelativeLayout.LayoutParams(120, 120);
+    paramView.addRule(13);
+    this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.mBrowserItemView.addView(this.jdField_c_of_type_AndroidWidgetImageView, paramView);
+    this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    if (this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.controlViewContainer != null)
+    {
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.controlViewContainer.addView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
+      return this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.mBrowserItemView;
     }
-    a(this.mContext.getString(2131695006));
+    return null;
+  }
+  
+  public void a()
+  {
+    super.a();
+    AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
+    if (localAIOFilePictureData != null)
+    {
+      int i = localAIOFilePictureData.status;
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 3)
+          {
+            localObject = BrowserLogHelper.getInstance().getGalleryLog();
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("updateUI status is error, status = ");
+            localStringBuilder.append(localAIOFilePictureData.status);
+            ((IBrowserLog)localObject).d("AIOGalleryFilePicView", 4, localStringBuilder.toString());
+            return;
+          }
+          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), true);
+          g(false);
+          c(false);
+          h(false);
+          d(false);
+          localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.jdField_a_of_type_AndroidContentContext.getString(2131718238));
+          localStringBuilder.append(localAIOFilePictureData.progress / 100);
+          localStringBuilder.append("%");
+          ((TextView)localObject).setText(localStringBuilder.toString());
+          this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(localAIOFilePictureData.progress / 100);
+          this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+          return;
+        }
+        g(false);
+        c(false);
+        h(false);
+        d(false);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadStart(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), localAIOFilePictureData.progress);
+        return;
+      }
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
+      c(b());
+      d(a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedItem()));
+      g(FileUtils.fileExistsAndNotEmpty(localAIOFilePictureData.jdField_c_of_type_JavaLangString) ^ true);
+      h(true);
+      Object localObject = new AIOFilePictureModel();
+      if (localAIOFilePictureData.jdField_e_of_type_Long > 10485760L) {
+        i(false);
+      } else if ((((AIOFilePictureModel)localObject).a(localAIOFilePictureData, 18) == null) && (((AIOFilePictureModel)localObject).a(localAIOFilePictureData, 20) == null)) {
+        i(false);
+      } else {
+        i(true);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedIndex(), true);
+    }
   }
   
   public void a(int paramInt)
   {
     super.a(paramInt);
-    AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
-    Object localObject2;
-    if (localAIOFilePictureData != null)
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getItem(paramInt);
+    if ((localObject3 != null) && (((RichMediaBrowserInfo)localObject3).baseData != null))
     {
-      AIOFilePictureModel localAIOFilePictureModel = new AIOFilePictureModel();
-      localObject2 = localAIOFilePictureModel.a(localAIOFilePictureData, 20);
-      Object localObject1 = localObject2;
-      if (localObject2 == null) {
-        localObject1 = localAIOFilePictureModel.a(localAIOFilePictureData, 18);
+      if (this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView == null) {
+        return;
       }
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = localAIOFilePictureModel.a(localAIOFilePictureData, 16);
+      if (((RichMediaBrowserInfo)localObject3).baseData.getType() == 102)
+      {
+        a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a(), (RichMediaBrowserInfo)localObject3);
+        Object localObject2 = (AIOFilePictureData)((RichMediaBrowserInfo)localObject3).baseData;
+        AIOFilePictureModel localAIOFilePictureModel = new AIOFilePictureModel();
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setOnItemEventListener(this);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setPosition(paramInt);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setImageInfo((RichMediaBrowserInfo)localObject3);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setIgnoreLayout(false);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setContentDescription(this.jdField_a_of_type_AndroidContentContext.getString(2131718251));
+        URLDrawable localURLDrawable = (URLDrawable)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mActiveDrawable.get(Integer.valueOf(paramInt));
+        String str1 = localAIOFilePictureModel.a((AIOFilePictureData)localObject2, 20);
+        String str2 = localAIOFilePictureModel.a((AIOFilePictureData)localObject2, 18);
+        String str3 = localAIOFilePictureModel.a((AIOFilePictureData)localObject2, 16);
+        if ((localURLDrawable != null) && (localURLDrawable.getURL() != null)) {
+          localObject1 = localURLDrawable.getURL().toString();
+        } else {
+          localObject1 = "";
+        }
+        if ((localURLDrawable != null) && (localURLDrawable.getStatus() == 1) && (!TextUtils.isEmpty((CharSequence)localObject1)) && ((((String)localObject1).equals(str1)) || (((String)localObject1).equals(str2)) || (((String)localObject1).equals(str3))))
+        {
+          this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setImageDrawable(localURLDrawable);
+          localObject1 = localAIOFilePictureModel.a((AIOFilePictureData)localObject2, 20);
+          localObject2 = localURLDrawable.getURL().toString();
+          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(paramInt, true);
+          if (((String)localObject2).equals(localObject1)) {
+            this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setOriginalImage(true);
+          }
+          this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.initDrawable(localURLDrawable, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, BrowserUtils.a(JpegExifReader.readOrientation(localURLDrawable.getURL().getFile())));
+        }
+        else
+        {
+          localObject1 = localAIOFilePictureModel.a((AIOFilePictureData)localObject2, 20);
+          if (localObject1 != null)
+          {
+            a((RichMediaBrowserInfo)localObject3, (AIOFilePictureData)localObject2, localAIOFilePictureModel, (File)localObject1, paramInt);
+          }
+          else
+          {
+            localObject1 = localAIOFilePictureModel.a((AIOFilePictureData)localObject2, 18);
+            if (localObject1 != null)
+            {
+              a((RichMediaBrowserInfo)localObject3, (AIOFilePictureData)localObject2, (File)localObject1, paramInt);
+            }
+            else if (localAIOFilePictureModel.a((AIOFilePictureData)localObject2, 16) != null)
+            {
+              if ((!a((AIOFilePictureData)localObject2, this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView)) && (!b((AIOFilePictureData)localObject2, this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView))) {
+                a(this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView);
+              }
+              a(((AIOFilePictureData)localObject2).jdField_a_of_type_Long, ((AIOFilePictureData)localObject2).jdField_a_of_type_Int, 18);
+              localObject1 = BrowserLogHelper.getInstance().getGalleryLog();
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("getView(): url is ");
+              ((StringBuilder)localObject3).append(localAIOFilePictureModel.a((AIOFilePictureData)localObject2, 16));
+              ((StringBuilder)localObject3).append(", file type is ");
+              ((StringBuilder)localObject3).append(16);
+              ((IBrowserLog)localObject1).d("AIOGalleryFilePicView", 4, ((StringBuilder)localObject3).toString());
+            }
+            else if ((!((IFileDepend)QRoute.api(IFileDepend.class)).checkFileThumbOverSize(((AIOFilePictureData)localObject2).jdField_e_of_type_Int, ((AIOFilePictureData)localObject2).f, ((AIOFilePictureData)localObject2).jdField_e_of_type_Long)) && (((AIOFilePictureData)localObject2).jdField_g_of_type_Int != 1))
+            {
+              if (((AIOFilePictureData)localObject2).jdField_d_of_type_Boolean)
+              {
+                a(this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView);
+              }
+              else
+              {
+                a(this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView);
+                a(((AIOFilePictureData)localObject2).jdField_a_of_type_Long, ((AIOFilePictureData)localObject2).jdField_a_of_type_Int, 18);
+              }
+              BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "getView(): No pic");
+            }
+            else
+            {
+              localObject1 = MobileQQ.getContext().getResources().getDrawable(2130849898);
+              this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+              this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+              this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
+              this.jdField_c_of_type_AndroidWidgetTextView.setText(2131718268);
+              this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().b();
+            }
+          }
+        }
       }
-      if ((localObject2 != null) || (!ParamsManager.a().a())) {}
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setMainBrowserPresenter(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.mainBrowserPresenter);
+      Object localObject1 = new AIOFilePictureView.GalleryFilePicViewHolder(this);
+      ((AIOFilePictureView.GalleryFilePicViewHolder)localObject1).jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView = this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView;
+      ((AIOFilePictureView.GalleryFilePicViewHolder)localObject1).jdField_a_of_type_AndroidWidgetTextView = this.jdField_c_of_type_AndroidWidgetTextView;
+      ((AIOFilePictureView.GalleryFilePicViewHolder)localObject1).jdField_a_of_type_AndroidWidgetImageView = this.jdField_c_of_type_AndroidWidgetImageView;
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.mBrowserItemView.setTag(localObject1);
     }
-    else
+  }
+  
+  public void a(int paramInt, View paramView, boolean paramBoolean)
+  {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getItem(paramInt);
+    if ((localObject1 != null) && (((RichMediaBrowserInfo)localObject1).baseData != null) && (((RichMediaBrowserInfo)localObject1).baseData.getType() == 102) && (this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.mBrowserItemView != null) && ((paramView.getTag() instanceof AIOFilePictureView.GalleryFilePicViewHolder)))
     {
-      return;
+      paramView = (AIOFilePictureView.GalleryFilePicViewHolder)paramView.getTag();
+      Object localObject2 = paramView.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView;
+      Object localObject3 = paramView.jdField_a_of_type_AndroidWidgetImageView;
+      TextView localTextView = paramView.jdField_a_of_type_AndroidWidgetTextView;
+      AIOFilePictureData localAIOFilePictureData = (AIOFilePictureData)((RichMediaBrowserInfo)localObject1).baseData;
+      paramView = new AIOFilePictureModel();
+      ((ImageView)localObject3).setVisibility(8);
+      localTextView.setVisibility(8);
+      if (localAIOFilePictureData.jdField_d_of_type_Boolean)
+      {
+        paramView = ((BrowserScaleView)localObject2).getDrawable();
+        paramBoolean = URLDrawable.class.isInstance(paramView);
+        localObject1 = null;
+        if (paramBoolean)
+        {
+          localObject1 = (URLDrawable)paramView;
+          paramView = ((URLDrawable)localObject1).getURL().getRef();
+        }
+        else
+        {
+          paramView = null;
+        }
+        if ((paramView == null) && (FileUtils.fileExistsAndNotEmpty(localAIOFilePictureData.jdField_a_of_type_JavaLangString)))
+        {
+          paramView = URLDrawable.URLDrawableOptions.obtain();
+          paramView.mLoadingDrawable = URLDrawableHelperConstants.a;
+          paramView.mFailedDrawable = URLDrawableHelperConstants.a;
+          paramView = URLDrawable.getDrawable(new File(localAIOFilePictureData.jdField_a_of_type_JavaLangString), paramView);
+          if (paramView != null)
+          {
+            ((BrowserScaleView)localObject2).setImageDrawable(paramView);
+            paramView.downloadImediatly();
+          }
+        }
+        else if ((localObject1 == null) || (paramView == null) || ((!"PART".equals(paramView)) && (!"DISPLAY".equals(paramView))))
+        {
+          if ((!((IFileDepend)QRoute.api(IFileDepend.class)).checkFileThumbOverSize(localAIOFilePictureData.jdField_e_of_type_Int, localAIOFilePictureData.f, localAIOFilePictureData.jdField_e_of_type_Long)) && (localAIOFilePictureData.jdField_g_of_type_Int != 1))
+          {
+            paramView = MobileQQ.getContext().getResources().getDrawable(2130849901);
+            ((BrowserScaleView)localObject2).setImageDrawable(paramView);
+            ((BrowserScaleView)localObject2).initDrawable(paramView, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0);
+          }
+          else
+          {
+            paramView = MobileQQ.getContext().getResources().getDrawable(2130849898);
+            ((ImageView)localObject3).setVisibility(0);
+            ((ImageView)localObject3).setImageDrawable(paramView);
+            localTextView.setVisibility(0);
+            localTextView.setText(2131718268);
+            this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().b();
+          }
+          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.onLoadFinish(paramInt, false);
+        }
+      }
+      else if (paramView.a(localAIOFilePictureData, 18) != null)
+      {
+        paramView = paramView.a(localAIOFilePictureData, 18);
+        a(paramInt);
+        localObject1 = FileUtils.estimateFileType(localAIOFilePictureData.jdField_b_of_type_JavaLangString);
+        localObject2 = BrowserLogHelper.getInstance().getGalleryLog();
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("AIOGalleryAdapter.updateView(): Update large image, position=");
+        ((StringBuilder)localObject3).append(paramInt);
+        ((StringBuilder)localObject3).append("url = ");
+        ((StringBuilder)localObject3).append(paramView);
+        ((StringBuilder)localObject3).append(",extName = ");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((IBrowserLog)localObject2).d("AIOGalleryFilePicView", 4, ((StringBuilder)localObject3).toString());
+      }
     }
-    a(localAIOFilePictureData, (File)localObject2, paramInt);
+  }
+  
+  public void a(Intent paramIntent)
+  {
+    super.a(paramIntent);
+    this.jdField_a_of_type_AndroidContentIntent = paramIntent;
+    this.jdField_a_of_type_Boolean = paramIntent.getExtras().getBoolean("extra.OCR", false);
+    if ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter != null) && ((this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.getParamsBuilder().a() instanceof IProvider))) {
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider = ((IProvider)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.getParamsBuilder().a());
+    }
   }
   
   public void a(AIOFilePictureData paramAIOFilePictureData, File paramFile)
   {
-    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new AIOFilePictureView.4(this, paramAIOFilePictureData, paramFile));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setItemClickListenerV2(new AIOFilePictureView.3(this, paramAIOFilePictureData, paramFile));
   }
   
   public void a(AIOFilePictureData paramAIOFilePictureData, File paramFile, int paramInt)
   {
-    if ((this.mContext != null) && (this.mContext.getIntent() != null)) {
-      this.mContext.getIntent().putExtra("big_brother_source_key", "biz_src_jc_file");
+    if (this.jdField_a_of_type_AndroidContentContext != null)
+    {
+      localObject = this.jdField_a_of_type_AndroidContentIntent;
+      if (localObject != null) {
+        ((Intent)localObject).putExtra("big_brother_source_key", "biz_src_jc_file");
+      }
     }
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
+    Object localObject = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
     if (paramFile != null)
     {
-      RichMediaShareActionSheetUtil.a(2, localArrayList1);
-      if ((PicShareToWX.a().a()) && (PicShareToWX.a().a(paramFile))) {
-        RichMediaShareActionSheetUtil.a(9, localArrayList1);
+      RichMediaBrowserUtils.a(2, (ArrayList)localObject);
+      if ((((IBrowserDepend)QRoute.api(IBrowserDepend.class)).isPicShareToWXEnable()) && (((IBrowserDepend)QRoute.api(IBrowserDepend.class)).isFileSizeEnable(paramFile))) {
+        RichMediaBrowserUtils.a(9, (ArrayList)localObject);
       }
-      RichMediaShareActionSheetUtil.a(27, localArrayList1);
-      RichMediaShareActionSheetUtil.a(39, localArrayList2);
-      RichMediaShareActionSheetUtil.a(6, localArrayList2);
+      RichMediaBrowserUtils.a(27, (ArrayList)localObject);
+      RichMediaBrowserUtils.a(64, (ArrayList)localObject);
+      RichMediaBrowserUtils.a(39, localArrayList);
+      RichMediaBrowserUtils.a(6, localArrayList);
       if ((ParamsManager.a().g()) && (!TextUtils.isEmpty(ParamsManager.a().c()))) {
-        RichMediaShareActionSheetUtil.a(54, localArrayList2);
+        RichMediaBrowserUtils.a(54, localArrayList);
       }
       if (this.jdField_a_of_type_Boolean) {
-        RichMediaShareActionSheetUtil.a(52, localArrayList2);
+        RichMediaBrowserUtils.a(52, localArrayList);
       }
-      ThreadManager.getFileThreadHandler().post(new AIOFilePictureView.3(this, paramFile, localArrayList2));
+      ThreadManager.getFileThreadHandler().post(new AIOFilePictureView.2(this, paramFile, localArrayList));
+      RichMediaBrowserUtils.a(121, localArrayList);
+      if (QbSdk.isInDefaultBrowser(this.jdField_a_of_type_AndroidContentContext, paramFile.getPath())) {
+        RichMediaBrowserUtils.a(132, localArrayList);
+      }
     }
-    for (;;)
+    else if ((ParamsManager.a().g()) && (!TextUtils.isEmpty(ParamsManager.a().c())))
     {
-      a(paramAIOFilePictureData, paramFile);
-      paramAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a(paramAIOFilePictureData, this.mContext);
+      RichMediaBrowserUtils.a(54, localArrayList);
+    }
+    a(paramAIOFilePictureData, paramFile);
+    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    {
+      paramAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a(paramAIOFilePictureData, (Activity)this.jdField_a_of_type_AndroidContentContext);
       if (paramAIOFilePictureData != null) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setIntentForStartForwardRecentActivity(paramAIOFilePictureData);
       }
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems(localArrayList1, localArrayList2);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
-      return;
-      if ((ParamsManager.a().g()) && (!TextUtils.isEmpty(ParamsManager.a().c()))) {
-        RichMediaShareActionSheetUtil.a(54, localArrayList2);
-      }
     }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.setActionSheetItems((List)localObject, localArrayList);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetShareShareActionSheet.show();
+  }
+  
+  public void a(IBaseViewBuilder paramIBaseViewBuilder)
+  {
+    super.a(paramIBaseViewBuilder);
+    if ((paramIBaseViewBuilder instanceof PictureView)) {
+      this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView = ((PictureView)paramIBaseViewBuilder);
+    }
+    this.jdField_a_of_type_ComTencentRichmediabrowserViewBrowserBaseView.setPictureScaleEventListener(this);
   }
   
   public void a(String paramString)
   {
-    if (this.jdField_d_of_type_AndroidWidgetTextView != null) {
-      this.jdField_d_of_type_AndroidWidgetTextView.setText(paramString);
+    TextView localTextView = this.jdField_d_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
   
   public boolean a(RichMediaBrowserInfo paramRichMediaBrowserInfo)
   {
     return super.a(paramRichMediaBrowserInfo);
+  }
+  
+  public void b()
+  {
+    super.b();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider = null;
+    PictureView localPictureView = this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView;
+    if (localPictureView != null) {
+      localPictureView.onDestroy();
+    }
+  }
+  
+  public void b(int paramInt)
+  {
+    super.b(paramInt);
+    a(paramInt);
+    AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
+    Object localObject;
+    if (this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView != null)
+    {
+      localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.getDrawable();
+      if ((localAIOFilePictureData != null) && (!this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.isOriginalImage()) && ((localObject instanceof SkinnableBitmapDrawable)) && (localAIOFilePictureData.jdField_b_of_type_Int == 1) && (localAIOFilePictureData.jdField_c_of_type_Long > ((IFMConfig)QRoute.api(IFMConfig.class)).getMaxCreateThumbFileSize()))
+      {
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setDoubleTapEnable(false);
+        this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setScaleEnable(false);
+      }
+    }
+    if (localAIOFilePictureData != null)
+    {
+      localObject = new AIOFilePictureModel();
+      if ((((AIOFilePictureModel)localObject).a(localAIOFilePictureData, 20) == null) && (((AIOFilePictureModel)localObject).a(localAIOFilePictureData, 18) == null) && (((AIOFilePictureModel)localObject).a(localAIOFilePictureData, 16) == null) && ((((IFileDepend)QRoute.api(IFileDepend.class)).checkFileThumbOverSize(localAIOFilePictureData.jdField_e_of_type_Int, localAIOFilePictureData.f, localAIOFilePictureData.jdField_e_of_type_Long)) || (localAIOFilePictureData.jdField_g_of_type_Int == 1))) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().b();
+      }
+    }
+    a();
   }
   
   public boolean b()
@@ -491,157 +842,73 @@ public class AIOFilePictureView
         if (localFile2 == null) {
           localFile1 = localAIOFilePictureModel.a(localAIOFilePictureData, 18);
         }
-        if ((localFile1 != null) || (!ParamsManager.a().a())) {
-          break label67;
+        if ((localFile1 == null) && (ParamsManager.a().b())) {
+          return false;
+        }
+        if ((!ParamsManager.a().b()) && (!ParamsManager.a().d())) {
+          return true;
         }
       }
     }
-    label67:
-    while ((ParamsManager.a().a()) || (ParamsManager.a().c())) {
-      return false;
-    }
-    return true;
+    return false;
   }
   
-  public boolean back()
+  public void c(int paramInt)
   {
-    return super.back();
-  }
-  
-  public void bindView(int paramInt)
-  {
-    super.bindView(paramInt);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-    RichMediaBrowserInfo localRichMediaBrowserInfo = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getItem(paramInt);
-    if ((localRichMediaBrowserInfo == null) || (localRichMediaBrowserInfo.baseData == null)) {
-      return;
-    }
-    AIOFilePictureData localAIOFilePictureData;
-    AIOFilePictureModel localAIOFilePictureModel;
-    Object localObject;
-    if (localRichMediaBrowserInfo.baseData.getType() == 102)
+    super.c(paramInt);
+    AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
+    if (localAIOFilePictureData != null)
     {
-      a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a(), localRichMediaBrowserInfo);
-      localAIOFilePictureData = (AIOFilePictureData)localRichMediaBrowserInfo.baseData;
-      localAIOFilePictureModel = new AIOFilePictureModel();
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setOnItemEventListener(this);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setPosition(paramInt);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setImageInfo(localRichMediaBrowserInfo);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setIgnoreLayout(false);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setContentDescription(this.mContext.getString(2131691649));
-      URLDrawable localURLDrawable = (URLDrawable)this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.mActiveDrawable.get(Integer.valueOf(paramInt));
-      String str2 = localAIOFilePictureModel.a(localAIOFilePictureData, 20);
-      String str3 = localAIOFilePictureModel.a(localAIOFilePictureData, 18);
-      String str4 = localAIOFilePictureModel.a(localAIOFilePictureData, 16);
-      String str1 = "";
-      localObject = str1;
-      if (localURLDrawable != null)
-      {
-        localObject = str1;
-        if (localURLDrawable.getURL() != null) {
-          localObject = localURLDrawable.getURL().toString();
-        }
+      AIOFilePictureModel localAIOFilePictureModel = new AIOFilePictureModel();
+      Object localObject2 = localAIOFilePictureModel.a(localAIOFilePictureData, 20);
+      Object localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = localAIOFilePictureModel.a(localAIOFilePictureData, 18);
       }
-      if ((localURLDrawable == null) || (localURLDrawable.getStatus() != 1) || (TextUtils.isEmpty((CharSequence)localObject)) || ((!((String)localObject).equals(str2)) && (!((String)localObject).equals(str3)) && (!((String)localObject).equals(str4)))) {
-        break label427;
+      localObject2 = localObject1;
+      if (localObject1 == null) {
+        localObject2 = localAIOFilePictureModel.a(localAIOFilePictureData, 16);
       }
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setImageDrawable(localURLDrawable);
-      localObject = localAIOFilePictureModel.a(localAIOFilePictureData, 20);
-      str1 = localURLDrawable.getURL().toString();
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.onLoadFinish(paramInt, true);
-      if (str1.equals(localObject)) {
-        this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setOriginalImage(true);
+      if ((localObject2 == null) && (ParamsManager.a().b())) {
+        return;
       }
-      if (localRichMediaBrowserInfo.orientation == -2) {
-        localRichMediaBrowserInfo.orientation = JpegExifReader.readOrientation(localURLDrawable.getURL().getFile());
-      }
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.initDrawable(localURLDrawable, this.mScreenWidthPx, this.mScreenHeightPx, this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getRotation(localRichMediaBrowserInfo.orientation));
+      a(localAIOFilePictureData, (File)localObject2, paramInt);
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setMainBrowserPresenter(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.mainBrowserPresenter);
-      localObject = new AIOFilePictureView.GalleryFilePicViewHolder(this);
-      ((AIOFilePictureView.GalleryFilePicViewHolder)localObject).jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView = this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView;
-      ((AIOFilePictureView.GalleryFilePicViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView = this.jdField_c_of_type_AndroidWidgetTextView;
-      ((AIOFilePictureView.GalleryFilePicViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView = this.jdField_c_of_type_AndroidWidgetImageView;
-      this.mBrowserItemView.setTag(localObject);
-      return;
-      label427:
-      localObject = localAIOFilePictureModel.a(localAIOFilePictureData, 20);
-      if (localObject != null)
-      {
-        a(localRichMediaBrowserInfo, localAIOFilePictureData, localAIOFilePictureModel, (File)localObject, paramInt);
-      }
-      else
-      {
-        localObject = localAIOFilePictureModel.a(localAIOFilePictureData, 18);
-        if (localObject != null)
-        {
-          a(localRichMediaBrowserInfo, localAIOFilePictureData, (File)localObject, paramInt);
-        }
-        else if (localAIOFilePictureModel.a(localAIOFilePictureData, 16) != null)
-        {
-          if ((!a(localAIOFilePictureData, this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView)) && (!b(localAIOFilePictureData, this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView))) {
-            a(this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView);
-          }
-          a(localAIOFilePictureData.jdField_a_of_type_Long, localAIOFilePictureData.jdField_a_of_type_Int, 18);
-          BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "getView(): url is " + localAIOFilePictureModel.a(localAIOFilePictureData, 16) + ", file type is " + 16);
-        }
-        else
-        {
-          if ((!QFileUtils.a(localAIOFilePictureData.jdField_e_of_type_Int, localAIOFilePictureData.f, localAIOFilePictureData.jdField_e_of_type_Long)) && (localAIOFilePictureData.jdField_g_of_type_Int != 1))
-          {
-            if (localAIOFilePictureData.jdField_d_of_type_Boolean) {
-              a(this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView);
-            }
-            for (;;)
-            {
-              BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "getView(): No pic");
-              break;
-              a(this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView);
-              a(localAIOFilePictureData.jdField_a_of_type_Long, localAIOFilePictureData.jdField_a_of_type_Int, 18);
-            }
-          }
-          localObject = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844424);
-          this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.jdField_c_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-          this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(0);
-          this.jdField_c_of_type_AndroidWidgetTextView.setText(2131692465);
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().b();
-        }
-      }
-    }
-  }
-  
-  public void buildComplete()
-  {
-    super.buildComplete();
-  }
-  
-  public void buildParams(Intent paramIntent)
-  {
-    super.buildParams(paramIntent);
-    this.jdField_a_of_type_Boolean = paramIntent.getExtras().getBoolean("extra.OCR", false);
-  }
-  
-  public void buildView(ViewGroup paramViewGroup)
-  {
-    super.buildView(paramViewGroup);
-    onCreate(paramViewGroup);
   }
   
   public boolean c()
   {
-    if ((this.mContext.getIntent().getBooleanExtra("extra.FROM_AIO", false)) || (ParamsManager.a().c() == 3) || (ParamsManager.a().c() == 2)) {}
-    for (int i = 1;; i = 0)
-    {
-      Bundle localBundle = this.mContext.getIntent().getExtras();
-      if (((i == 0) && ((ParamsManager.a().c() != 4) || (!localBundle.getBoolean("key_allow_forward_photo_preview_edit", false)))) || (UinTypeUtil.a(ParamsManager.a().a()) == 1032) || (UinTypeUtil.a(ParamsManager.a().a()) == 1044) || (ParamsManager.a().a() == 1037)) {
-        break;
-      }
-      return true;
+    Object localObject = this.jdField_a_of_type_AndroidContentIntent;
+    boolean bool2 = false;
+    int i;
+    if ((!((Intent)localObject).getBooleanExtra("extra.FROM_AIO", false)) && (ParamsManager.a().c() != 3) && (ParamsManager.a().c() != 2)) {
+      i = 0;
+    } else {
+      i = 1;
     }
-    return false;
+    localObject = this.jdField_a_of_type_AndroidContentIntent.getExtras();
+    boolean bool1;
+    if (i == 0)
+    {
+      bool1 = bool2;
+      if (ParamsManager.a().c() == 4)
+      {
+        bool1 = bool2;
+        if (!((Bundle)localObject).getBoolean("key_allow_forward_photo_preview_edit", false)) {}
+      }
+    }
+    else
+    {
+      bool1 = bool2;
+      if (UinTypeUtil.a(ParamsManager.a().a()) != 1032)
+      {
+        bool1 = bool2;
+        if (UinTypeUtil.a(ParamsManager.a().a()) != 1044) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public void e(boolean paramBoolean)
@@ -652,170 +919,132 @@ public class AIOFilePictureView
       this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().jdField_a_of_type_Boolean = false;
       return;
     }
-    showContentView(false);
+    f(false);
     b(false);
     this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().g();
   }
   
-  public void f(boolean paramBoolean)
+  public void g(boolean paramBoolean)
   {
-    TextView localTextView;
     if (this.jdField_d_of_type_AndroidWidgetTextView != null)
     {
       if (paramBoolean) {
-        k();
+        m();
       }
-      localTextView = this.jdField_d_of_type_AndroidWidgetTextView;
-      if (!paramBoolean) {
-        break label32;
+      TextView localTextView = this.jdField_d_of_type_AndroidWidgetTextView;
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label32:
-    for (int i = 0;; i = 8)
-    {
       localTextView.setVisibility(i);
-      return;
-    }
-  }
-  
-  public void g(boolean paramBoolean)
-  {
-    ImageButton localImageButton;
-    if (this.jdField_d_of_type_AndroidWidgetImageButton != null)
-    {
-      localImageButton = this.jdField_d_of_type_AndroidWidgetImageButton;
-      if (!paramBoolean) {
-        break label24;
-      }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
-      localImageButton.setVisibility(i);
-      return;
     }
   }
   
   public Rect getAnimationEndDstRect()
   {
-    if (this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView != null)
+    if (this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.getCurrentMatrixRectF();
-      if (((RectF)localObject).bottom > this.mScreenHeightPx) {}
-      for (int i = this.mScreenHeightPx;; i = (int)((RectF)localObject).bottom)
-      {
-        localObject = new Rect((int)((RectF)localObject).left, (int)((RectF)localObject).top, (int)((RectF)localObject).right, i);
-        ((Rect)localObject).offset((int)this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.getContext().getResources().getDimension(2131296673), 0);
-        return localObject;
+      Object localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.getCurrentMatrixRectF();
+      int i;
+      if (((RectF)localObject).bottom > this.jdField_b_of_type_Int) {
+        i = this.jdField_b_of_type_Int;
+      } else {
+        i = (int)((RectF)localObject).bottom;
       }
+      localObject = new Rect((int)((RectF)localObject).left, (int)((RectF)localObject).top, (int)((RectF)localObject).right, i);
+      ((Rect)localObject).offset((int)this.jdField_a_of_type_AndroidContentContext.getResources().getDimension(2131298924), 0);
+      return localObject;
     }
     return super.getAnimationEndDstRect();
   }
   
-  public View getView(View paramView, ViewGroup paramViewGroup)
-  {
-    if (((paramView instanceof RelativeLayout)) && ((paramView.getTag() instanceof AIOFilePictureView.GalleryFilePicViewHolder)))
-    {
-      this.mBrowserItemView = ((RelativeLayout)paramView);
-      paramView = (AIOFilePictureView.GalleryFilePicViewHolder)paramView.getTag();
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView = paramView.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView;
-      this.jdField_c_of_type_AndroidWidgetTextView = paramView.jdField_a_of_type_AndroidWidgetTextView;
-      this.jdField_c_of_type_AndroidWidgetImageView = paramView.jdField_a_of_type_AndroidWidgetImageView;
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-      paramView = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.getLayoutParams();
-      paramView.width = -1;
-      paramView.height = -1;
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setLayoutParams(paramView);
-    }
-    for (;;)
-    {
-      return this.mBrowserItemView;
-      this.mBrowserItemView = ((RelativeLayout)LayoutInflater.from(this.mContext).inflate(2131559261, paramViewGroup, false));
-      j();
-      this.jdField_c_of_type_AndroidWidgetTextView = new TextView(this.mContext);
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextSize(2, 8.0F);
-      this.jdField_c_of_type_AndroidWidgetTextView.setTextColor(-1);
-      paramView = new RelativeLayout.LayoutParams(-2, -2);
-      paramView.addRule(3, 2131366584);
-      paramView.addRule(14);
-      paramView.topMargin = AIOUtils.a(4.0F, this.mContext.getResources());
-      this.mBrowserItemView.addView(this.jdField_c_of_type_AndroidWidgetTextView, paramView);
-      this.jdField_c_of_type_AndroidWidgetImageView = new ImageView(this.mContext);
-      this.jdField_c_of_type_AndroidWidgetImageView.setId(2131366584);
-      paramView = new RelativeLayout.LayoutParams(120, 120);
-      paramView.addRule(13);
-      this.mBrowserItemView.addView(this.jdField_c_of_type_AndroidWidgetImageView, paramView);
-      this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
-    }
-  }
-  
-  public void h()
-  {
-    AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
-    if ((localAIOFilePictureData != null) && (RichMediaBrowserManager.getInstance().getProvider() != null) && (RichMediaBrowserManager.getInstance().getProvider().isPingBinder()))
-    {
-      if (!NetworkUtil.d(this.mContext))
-      {
-        QQToast.a(this.mContext, this.mContext.getString(2131693806), 0).a();
-        updateUI();
-      }
-    }
-    else {
-      return;
-    }
-    if (localAIOFilePictureData.jdField_g_of_type_Boolean)
-    {
-      QQToast.a(this.mContext, this.mContext.getString(2131692760), 0).a();
-      updateUI();
-      return;
-    }
-    if (localAIOFilePictureData.h) {
-      updateUI();
-    }
-    long l = ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize();
-    if ((localAIOFilePictureData.jdField_e_of_type_Long > l) && (FileManagerUtil.a())) {
-      try
-      {
-        FileManagerUtil.a(false, this.mContext, new AIOFilePictureView.1(this, localAIOFilePictureData));
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "showFlowDialog throwable = " + localThrowable.getMessage());
-        return;
-      }
-    }
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a(localThrowable.jdField_a_of_type_Long, localThrowable.jdField_a_of_type_Int, 2);
-    RichMediaBrowserManager.getInstance().getProvider().downloadMedia(localThrowable.jdField_a_of_type_Long, localThrowable.jdField_a_of_type_Int, 20);
-    if (this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView != null)
-    {
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setDoubleTapEnable(true);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setScaleEnable(true);
-    }
-    d();
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().b();
-    updateUI();
-  }
-  
   public void h(boolean paramBoolean)
   {
-    if (this.jdField_d_of_type_AndroidWidgetImageButton != null) {
-      this.jdField_d_of_type_AndroidWidgetImageButton.setEnabled(paramBoolean);
+    ImageButton localImageButton = this.jdField_d_of_type_AndroidWidgetImageButton;
+    if (localImageButton != null)
+    {
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
+      }
+      localImageButton.setVisibility(i);
     }
   }
   
-  void i()
+  public void i(boolean paramBoolean)
+  {
+    ImageButton localImageButton = this.jdField_d_of_type_AndroidWidgetImageButton;
+    if (localImageButton != null) {
+      localImageButton.setEnabled(paramBoolean);
+    }
+  }
+  
+  public void j()
   {
     AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
-    Object localObject2;
-    Object localObject1;
+    if (localAIOFilePictureData != null)
+    {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider;
+      if ((localObject != null) && (((IProvider)localObject).a()))
+      {
+        if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_AndroidContentContext))
+        {
+          QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131718250), 0).a();
+          a();
+          return;
+        }
+        if (localAIOFilePictureData.jdField_g_of_type_Boolean)
+        {
+          QQToast.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidContentContext.getString(2131718242), 0).a();
+          a();
+          return;
+        }
+        if (localAIOFilePictureData.h) {
+          a();
+        }
+        long l = ((IFMConfig)QRoute.api(IFMConfig.class)).getFlowDialogSize();
+        if ((localAIOFilePictureData.jdField_e_of_type_Long > l) && (AppNetConnInfo.isMobileConn())) {
+          try
+          {
+            ((IFileDepend)QRoute.api(IFileDepend.class)).showFlowDialog(false, this.jdField_a_of_type_AndroidContentContext, new AIOFilePictureView.1(this, localAIOFilePictureData));
+            return;
+          }
+          catch (Throwable localThrowable)
+          {
+            localObject = BrowserLogHelper.getInstance().getGalleryLog();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("showFlowDialog throwable = ");
+            localStringBuilder.append(localThrowable.getMessage());
+            ((IBrowserLog)localObject).d("AIOGalleryFilePicView", 4, localStringBuilder.toString());
+            return;
+          }
+        }
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a(localThrowable.jdField_a_of_type_Long, localThrowable.jdField_a_of_type_Int, 3);
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider.a(localThrowable.jdField_a_of_type_Long, localThrowable.jdField_a_of_type_Int, 20);
+        if (this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView != null)
+        {
+          this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setDoubleTapEnable(true);
+          this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView.imageView.setScaleEnable(true);
+        }
+        f();
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().b();
+        a();
+      }
+    }
+  }
+  
+  void k()
+  {
+    AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
     if (localAIOFilePictureData != null)
     {
       AIOFilePictureModel localAIOFilePictureModel = new AIOFilePictureModel();
-      localObject2 = localAIOFilePictureModel.a(localAIOFilePictureData, 20);
-      localObject1 = localObject2;
+      Object localObject2 = localAIOFilePictureModel.a(localAIOFilePictureData, 20);
+      Object localObject1 = localObject2;
       if (localObject2 == null) {
         localObject1 = localAIOFilePictureModel.a(localAIOFilePictureData, 18);
       }
@@ -823,376 +1052,185 @@ public class AIOFilePictureView
       if (localObject1 == null) {
         localObject2 = localAIOFilePictureModel.a(localAIOFilePictureData, 16);
       }
-      if (localObject2 != null) {}
-    }
-    else
-    {
-      return;
-    }
-    this.jdField_b_of_type_JavaLangString = ((File)localObject2).getAbsolutePath();
-    int i = 99;
-    int j;
-    boolean bool;
-    int k;
-    switch (ParamsManager.a().c())
-    {
-    default: 
-      j = 0;
-      bool = false;
-      k = 0;
-      localObject1 = EditPicActivity.a(this.mContext, ((File)localObject2).getAbsolutePath(), true, true, true, true, true, 2, i, 7);
-      ((Intent)localObject1).putExtra("uintype", ParamsManager.a().a());
-      ((Intent)localObject1).putExtra("open_chatfragment", true);
-      ((Intent)localObject1).putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1041);
-      ((Intent)localObject1).putExtra("key_enable_edit_title_bar", true);
-      if (bool) {
-        ((Intent)localObject1).putExtra("key_help_forward_pic", bool);
+      if (localObject2 == null) {
+        return;
       }
-      if (j != 0) {
-        ((Intent)localObject1).putExtra("key_allow_multiple_forward_from_limit", false);
+      this.jdField_b_of_type_JavaLangString = ((File)localObject2).getAbsolutePath();
+      int i;
+      switch (ParamsManager.a().c())
+      {
+      default: 
+        i = 99;
+        bool1 = false;
+        bool2 = false;
+        j = 0;
+        break;
+      case 6: 
+        i = 130;
+        bool2 = false;
+        break;
+      case 5: 
+        i = 129;
+        break;
+      case 4: 
+        i = 125;
+        bool1 = true;
+        bool2 = false;
+        j = 19002;
+        break;
+      case 3: 
+        i = 128;
+        break;
+      case 2: 
+        i = 127;
+        break;
+      case 1: 
+        i = 126;
       }
+      boolean bool2 = true;
+      boolean bool1 = true;
+      int j = 19000;
       if (d())
       {
-        localObject2 = RichMediaBrowserManager.getInstance().getProvider().getForwardData(localAIOFilePictureData.jdField_a_of_type_Long, localAIOFilePictureData.jdField_a_of_type_Int, ParamsManager.a().a());
-        if (localObject2 != null)
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider;
+        if (localObject1 != null)
         {
-          ((Intent)localObject2).setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
-          localObject2 = (ForwardFileInfo)((Intent)localObject2).getParcelableExtra("fileinfo");
-          if (localObject2 != null) {
-            ((Intent)localObject1).putExtra("fileinfo", (Parcelable)localObject2);
+          localObject1 = ((IProvider)localObject1).a(localAIOFilePictureData.jdField_a_of_type_Long, localAIOFilePictureData.jdField_a_of_type_Int, ParamsManager.a().a());
+          if (localObject1 != null)
+          {
+            ((Intent)localObject1).setExtrasClassLoader(ForwardFileInfo.class.getClassLoader());
+            localObject1 = (ForwardFileInfo)((Intent)localObject1).getParcelableExtra("fileinfo");
+            break label280;
           }
         }
       }
-      ((Intent)localObject1).putExtra("not_forward", true);
-      if (k != 0) {
-        this.mContext.startActivityForResult((Intent)localObject1, k);
+      localObject1 = null;
+      label280:
+      if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
+        ((IFileDepend)QRoute.api(IFileDepend.class)).startEditPicActivity((Activity)this.jdField_a_of_type_AndroidContentContext, i, bool1, bool2, j, ((File)localObject2).getAbsolutePath(), ParamsManager.a().a(), (ForwardFileInfo)localObject1);
       }
-      break;
-    }
-    for (;;)
-    {
       ReportController.b(null, "dc00898", "", "", "0X8007ACE", "0X8007ACE", 0, 0, "", "", "", "");
-      return;
-      i = 125;
-      j = 0;
-      bool = true;
-      k = 19002;
-      break;
-      i = 126;
-      j = 1;
-      bool = true;
-      k = 19000;
-      break;
-      i = 127;
-      j = 1;
-      bool = true;
-      k = 19000;
-      break;
-      i = 128;
-      j = 1;
-      bool = true;
-      k = 19000;
-      break;
-      i = 129;
-      j = 1;
-      bool = true;
-      k = 19000;
-      break;
-      i = 130;
-      j = 0;
-      bool = true;
-      k = 19000;
-      break;
-      this.mContext.startActivity((Intent)localObject1);
     }
   }
   
-  public void j()
+  public void l()
   {
-    if (this.mBrowserItemView != null)
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mBrowserItemView.findViewById(2131373170));
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView = ((BrowserScaleView)this.mBrowserItemView.findViewById(2131368729));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.mBrowserItemView.findViewById(2131377442));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mBrowserItemView.findViewById(2131373573));
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.mBrowserItemView.findViewById(2131364828));
-      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.mBrowserItemView.findViewById(2131377693));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.mBrowserItemView.findViewById(2131366585));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.mBrowserItemView.findViewById(2131370751));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131372747));
+      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376889));
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373153));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131364715));
+      this.jdField_a_of_type_AndroidWidgetSeekBar = ((SeekBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377129));
+      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131366457));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131370386));
       this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetImageButton = ((ImageButton)this.mBrowserItemView.findViewById(2131374678));
+      this.jdField_d_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374216));
       this.jdField_d_of_type_AndroidWidgetImageButton.setOnClickListener(this);
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.mBrowserItemView.findViewById(2131374681));
+      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374219));
       this.jdField_d_of_type_AndroidWidgetTextView.setOnClickListener(this);
-      g(c());
-      this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)this.mBrowserItemView.findViewById(2131374674));
+      h(c());
+      this.jdField_c_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374212));
       if (this.jdField_c_of_type_AndroidWidgetImageButton != null) {
         this.jdField_c_of_type_AndroidWidgetImageButton.setOnClickListener(this);
       }
-      this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)this.mBrowserItemView.findViewById(2131374676));
+      this.jdField_b_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374214));
       if (this.jdField_b_of_type_AndroidWidgetImageButton != null) {
         this.jdField_b_of_type_AndroidWidgetImageButton.setOnClickListener(this);
       }
-      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.mBrowserItemView.findViewById(2131374677));
+      this.jdField_a_of_type_AndroidWidgetImageButton = ((ImageButton)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374215));
       this.jdField_a_of_type_AndroidWidgetImageButton.setOnClickListener(this);
       if (LiuHaiUtils.b())
       {
-        RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
-        localLayoutParams.addRule(10, -1);
-        localLayoutParams.topMargin = LiuHaiUtils.jdField_a_of_type_Int;
+        localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageButton.getLayoutParams();
+        ((RelativeLayout.LayoutParams)localObject).addRule(10, -1);
+        ((RelativeLayout.LayoutParams)localObject).topMargin = LiuHaiUtils.jdField_a_of_type_Int;
       }
     }
-    if (!this.isInExitAnim) {
-      showContentView(true);
+    Object localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewPicPictureView;
+    if ((localObject != null) && (!((PictureView)localObject).isInExitAnim)) {
+      f(true);
     }
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    Object localObject;
+    if (i == 2131370699)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getSelectedItem();
-      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null) && (((RichMediaBrowserInfo)localObject).baseData.getType() == 102))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.back();
-        continue;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
-        if (localObject != null)
-        {
-          if (RichMediaBrowserManager.getInstance().getProvider() != null) {
-            RichMediaBrowserManager.getInstance().getProvider().cancelDownloadMedia(((AIOFilePictureData)localObject).jdField_a_of_type_Long, ((AIOFilePictureData)localObject).jdField_a_of_type_Int, 20);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a(((AIOFilePictureData)localObject).jdField_a_of_type_Long, ((AIOFilePictureData)localObject).jdField_a_of_type_Int, 0);
-          updateUI();
-          continue;
-          c();
-          continue;
-          h();
-          continue;
-          i();
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.h();
-          continue;
-          b();
-          continue;
-          if (QLog.isColorLevel()) {
-            QLog.d("AIOGalleryFilePicView", 0, "onClick qq_gallery_danmaku_view ");
-          }
-          localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
-          if (localObject != null) {
-            MiniChatActivity.a(this.mContext, ParamsManager.a().a(), ParamsManager.a().a(), false, 26, ((AIOFilePictureData)localObject).jdField_d_of_type_Long, 0L);
-          }
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.l();
-        }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.getSelectedItem();
+      if ((localObject != null) && (((RichMediaBrowserInfo)localObject).baseData != null) && (((RichMediaBrowserInfo)localObject).baseData.getType() == 102)) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.d();
       }
     }
-  }
-  
-  public void onClickEvent()
-  {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.back();
-  }
-  
-  public void onCreate(ViewGroup paramViewGroup)
-  {
-    super.onCreate(paramViewGroup);
+    else if (i == 2131364715)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
+      if (localObject != null)
+      {
+        IProvider localIProvider = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserIProvider;
+        if (localIProvider != null) {
+          localIProvider.b(((AIOFilePictureData)localObject).jdField_a_of_type_Long, ((AIOFilePictureData)localObject).jdField_a_of_type_Int, 20);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a(((AIOFilePictureData)localObject).jdField_a_of_type_Long, ((AIOFilePictureData)localObject).jdField_a_of_type_Int, 0);
+        a();
+      }
+    }
+    else if (i == 2131374215)
+    {
+      e();
+    }
+    else if (i == 2131374219)
+    {
+      j();
+    }
+    else if (i == 2131374216)
+    {
+      k();
+      if (this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter != null) {
+        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOBrowserPresenter.f();
+      }
+    }
+    else if (i == 2131374214)
+    {
+      d();
+    }
+    else if (i == 2131374212)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOGalleryFilePicView", 2, "onClick qq_gallery_danmaku_view ");
+      }
+      localObject = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
+      if ((localObject != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))) {
+        ((IBrowserDepend)QRoute.api(IBrowserDepend.class)).openMiniAioForDanmaku((Activity)this.jdField_a_of_type_AndroidContentContext, ParamsManager.a().a(), ParamsManager.a().a(), false, ((AIOFilePictureData)localObject).jdField_d_of_type_Long, 0L);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.i();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDismissOperations()
   {
-    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.updateSystemUIVisablity();
+    this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.jdField_a_of_type_ComTencentRichmediabrowserPresenterBrowserBasePresenter.updateSystemUIVisablity();
   }
   
   public void onEnterAnimationEnd()
   {
     super.onEnterAnimationEnd();
     Looper.myQueue().addIdleHandler(this.jdField_a_of_type_AndroidOsMessageQueue$IdleHandler);
-    showContentView(true);
-    updateUI();
+    f(true);
+    a();
   }
   
   public void onEnterAnimationStart()
   {
-    showContentView(false);
-  }
-  
-  public void onItemSelected(int paramInt)
-  {
-    super.onItemSelected(paramInt);
-    bindView(paramInt);
-    Object localObject = this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.getDrawable();
-    AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
-    if ((localAIOFilePictureData != null) && (!this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.isOriginalImage()) && ((localObject instanceof SkinnableBitmapDrawable)) && (localAIOFilePictureData.jdField_b_of_type_Int == 1) && (localAIOFilePictureData.jdField_c_of_type_Long > ((IFMConfig)QRoute.api(IFMConfig.class)).getMaxCreateThumbFileSize()))
-    {
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setDoubleTapEnable(false);
-      this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.setScaleEnable(false);
-    }
-    if (localAIOFilePictureData != null)
-    {
-      localObject = new AIOFilePictureModel();
-      if ((((AIOFilePictureModel)localObject).a(localAIOFilePictureData, 20) == null) && (((AIOFilePictureModel)localObject).a(localAIOFilePictureData, 18) == null) && (((AIOFilePictureModel)localObject).a(localAIOFilePictureData, 16) == null) && ((QFileUtils.a(localAIOFilePictureData.jdField_e_of_type_Int, localAIOFilePictureData.f, localAIOFilePictureData.jdField_e_of_type_Long)) || (localAIOFilePictureData.jdField_g_of_type_Int == 1))) {
-        this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().b();
-      }
-    }
-    updateUI();
-  }
-  
-  public void onLongClickEvent()
-  {
-    onLongClick(this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView);
-  }
-  
-  public void onShowAreaChanged(int paramInt, View paramView, RegionDrawableData paramRegionDrawableData)
-  {
-    paramView = this.jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView.getDrawable();
-    if (!URLDrawable.class.isInstance(paramView)) {
-      return;
-    }
-    ((URLDrawable)paramView).updateRegionBitmap(paramRegionDrawableData);
-  }
-  
-  public void updateUI()
-  {
-    super.updateUI();
-    AIOFilePictureData localAIOFilePictureData = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a();
-    if (localAIOFilePictureData != null) {}
-    switch (localAIOFilePictureData.status)
-    {
-    default: 
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "updateUI status is error, status = " + localAIOFilePictureData.status);
-      return;
-    case 1: 
-      f(false);
-      c(false);
-      g(false);
-      d(false);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.onLoadStart(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getSelectedIndex(), localAIOFilePictureData.progress);
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getSelectedIndex(), true);
-      f(false);
-      c(false);
-      g(false);
-      d(false);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131700139) + localAIOFilePictureData.progress / 100 + "%");
-      this.jdField_a_of_type_AndroidWidgetSeekBar.setProgress(localAIOFilePictureData.progress / 100);
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      return;
-    }
-    this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
-    c(b());
-    d(a(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getSelectedItem()));
-    boolean bool;
-    AIOFilePictureModel localAIOFilePictureModel;
-    if (!FileUtil.b(localAIOFilePictureData.jdField_d_of_type_JavaLangString))
-    {
-      bool = true;
-      f(bool);
-      g(true);
-      localAIOFilePictureModel = new AIOFilePictureModel();
-      if (localAIOFilePictureData.jdField_e_of_type_Long <= 10485760L) {
-        break label324;
-      }
-      h(false);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.onLoadFinish(this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getSelectedIndex(), true);
-      return;
-      bool = false;
-      break;
-      label324:
-      if ((localAIOFilePictureModel.a(localAIOFilePictureData, 18) != null) || (localAIOFilePictureModel.a(localAIOFilePictureData, 20) != null)) {
-        h(true);
-      } else {
-        h(false);
-      }
-    }
-  }
-  
-  public void updateView(int paramInt, String paramString1, String paramString2, View paramView, boolean paramBoolean)
-  {
-    paramString1 = null;
-    paramString2 = this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.getItem(paramInt);
-    Object localObject;
-    ImageView localImageView;
-    AIOFilePictureData localAIOFilePictureData;
-    if ((paramString2 != null) && (paramString2.baseData != null) && (paramString2.baseData.getType() == 102) && (this.mBrowserItemView != null) && ((paramView.getTag() instanceof AIOFilePictureView.GalleryFilePicViewHolder)))
-    {
-      localObject = (AIOFilePictureView.GalleryFilePicViewHolder)paramView.getTag();
-      paramView = ((AIOFilePictureView.GalleryFilePicViewHolder)localObject).jdField_a_of_type_ComTencentRichmediabrowserViewRecyclerviewBrowserScaleView;
-      localImageView = ((AIOFilePictureView.GalleryFilePicViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView;
-      localObject = ((AIOFilePictureView.GalleryFilePicViewHolder)localObject).jdField_a_of_type_AndroidWidgetTextView;
-      localAIOFilePictureData = (AIOFilePictureData)paramString2.baseData;
-      paramString2 = new AIOFilePictureModel();
-      localImageView.setVisibility(8);
-      ((TextView)localObject).setVisibility(8);
-      if (!localAIOFilePictureData.jdField_d_of_type_Boolean) {
-        break label379;
-      }
-      paramString2 = paramView.getDrawable();
-      if (!URLDrawable.class.isInstance(paramString2)) {
-        break label478;
-      }
-      paramString1 = (URLDrawable)paramString2;
-    }
-    label478:
-    for (paramString2 = paramString1.getURL().getRef();; paramString2 = null)
-    {
-      if ((paramString2 == null) && (FileUtil.b(localAIOFilePictureData.jdField_b_of_type_JavaLangString)))
-      {
-        paramString1 = URLDrawable.URLDrawableOptions.obtain();
-        paramString1.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-        paramString1.mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-        paramString1 = URLDrawable.getDrawable(new File(localAIOFilePictureData.jdField_b_of_type_JavaLangString), paramString1);
-        if (paramString1 != null)
-        {
-          paramView.setImageDrawable(paramString1);
-          paramString1.downloadImediatly();
-        }
-      }
-      label379:
-      do
-      {
-        do
-        {
-          return;
-        } while ((paramString1 != null) && (paramString2 != null) && (("PART".equals(paramString2)) || ("DISPLAY".equals(paramString2))));
-        if ((QFileUtils.a(localAIOFilePictureData.jdField_e_of_type_Int, localAIOFilePictureData.f, localAIOFilePictureData.jdField_e_of_type_Long)) || (localAIOFilePictureData.jdField_g_of_type_Int == 1))
-        {
-          paramString1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130844424);
-          localImageView.setVisibility(0);
-          localImageView.setImageDrawable(paramString1);
-          ((TextView)localObject).setVisibility(0);
-          ((TextView)localObject).setText(2131692465);
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().b();
-        }
-        for (;;)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.onLoadFinish(paramInt, false);
-          this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().d();
-          return;
-          paramString1 = BaseApplicationImpl.getApplication().getResources().getDrawable(2130838183);
-          paramView.setImageDrawable(paramString1);
-          paramView.initDrawable(paramString1, this.mScreenWidthPx, this.mScreenHeightPx, 0);
-        }
-      } while (paramString2.a(localAIOFilePictureData, 18) == null);
-      paramString1 = paramString2.a(localAIOFilePictureData, 18);
-      bindView(paramInt);
-      paramString2 = FileUtils.b(localAIOFilePictureData.jdField_c_of_type_JavaLangString);
-      BrowserLogHelper.getInstance().getGalleryLog().d("AIOGalleryFilePicView", 4, "AIOGalleryAdapter.updateView(): Update large image, position=" + paramInt + "url = " + paramString1 + ",extName = " + paramString2);
-      this.jdField_a_of_type_ComTencentMobileqqRichmediabrowserPresenterAIOFilePicturePresenter.a().c();
-      return;
-    }
+    f(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.view.AIOFilePictureView
  * JD-Core Version:    0.7.0.1
  */

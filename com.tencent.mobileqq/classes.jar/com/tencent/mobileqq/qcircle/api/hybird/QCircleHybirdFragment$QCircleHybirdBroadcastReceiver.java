@@ -24,34 +24,28 @@ class QCircleHybirdFragment$QCircleHybirdBroadcastReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = (QCircleHybirdFragment)this.a.get();
-    Object localObject;
     if ((paramContext != null) && (paramIntent != null))
     {
-      localObject = paramIntent.getAction();
-      if (!TextUtils.equals((CharSequence)localObject, "action_update_web_user_follow_state")) {
-        break label110;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("uin", paramIntent.getStringExtra("uin"));
-        ((JSONObject)localObject).put("followstate", paramIntent.getIntExtra("followstate", 0));
-        ((JSONObject)localObject).put("blackState", paramIntent.getIntExtra("blackstate", 0));
-        if (paramContext.getWebView() != null) {
+      Object localObject = paramIntent.getAction();
+      if (TextUtils.equals((CharSequence)localObject, "action_update_web_user_follow_state")) {
+        try
+        {
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("uin", paramIntent.getStringExtra("uin"));
+          ((JSONObject)localObject).put("followstate", paramIntent.getIntExtra("followstate", 0));
+          ((JSONObject)localObject).put("blackState", paramIntent.getIntExtra("blackstate", 0));
+          if (paramContext.getWebView() == null) {
+            return;
+          }
           paramContext.getWebView().callJs(WebViewPlugin.toJsScript("updateQCircleFollowState", (JSONObject)localObject, null));
+          return;
         }
-        return;
-      }
-      catch (JSONException paramContext)
-      {
-        paramContext.printStackTrace();
-        return;
-      }
-      label110:
-      if (TextUtils.equals((CharSequence)localObject, "action_update_web_tag_follow_state")) {
+        catch (JSONException paramContext)
+        {
+          paramContext.printStackTrace();
+          return;
+        }
+      } else if (TextUtils.equals((CharSequence)localObject, "action_update_web_tag_follow_state")) {
         try
         {
           localObject = new JSONObject();
@@ -73,7 +67,7 @@ class QCircleHybirdFragment$QCircleHybirdBroadcastReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.hybird.QCircleHybirdFragment.QCircleHybirdBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

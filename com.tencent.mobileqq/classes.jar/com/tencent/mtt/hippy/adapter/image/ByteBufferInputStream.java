@@ -62,12 +62,14 @@ public class ByteBufferInputStream
   {
     try
     {
-      if (this.markPos == -1) {
-        throw new IOException("Cannot reset to unset mark position");
+      if (this.markPos != -1)
+      {
+        this.byteBuffer.position(this.markPos);
+        return;
       }
+      throw new IOException("Cannot reset to unset mark position");
     }
     finally {}
-    this.byteBuffer.position(this.markPos);
   }
   
   public long skip(long paramLong)
@@ -76,13 +78,14 @@ public class ByteBufferInputStream
       return -1L;
     }
     paramLong = Math.min(paramLong, available());
-    this.byteBuffer.position((int)(this.byteBuffer.position() + paramLong));
+    ByteBuffer localByteBuffer = this.byteBuffer;
+    localByteBuffer.position((int)(localByteBuffer.position() + paramLong));
     return paramLong;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.image.ByteBufferInputStream
  * JD-Core Version:    0.7.0.1
  */

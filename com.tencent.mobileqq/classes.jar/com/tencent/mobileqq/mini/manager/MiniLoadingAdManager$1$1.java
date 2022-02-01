@@ -23,41 +23,47 @@ class MiniLoadingAdManager$1$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (paramBoolean) {
-      try
+    if (paramBoolean) {}
+    try
+    {
+      Object localObject = (MiniAppAd.StGetAdRsp)paramJSONObject.get("response");
+      int i = paramJSONObject.getInt("retCode");
+      paramJSONObject = paramJSONObject.getString("errMsg");
+      localObject = ((MiniAppAd.StGetAdRsp)localObject).strAdsJson.get();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("选单接口 receive retCode= ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" errMsg=");
+      localStringBuilder.append(paramJSONObject);
+      localStringBuilder.append(" adJson=");
+      localStringBuilder.append((String)localObject);
+      QLog.d("MiniLoadingAdManager", 1, localStringBuilder.toString());
+      if ((i == 0) && (!TextUtils.isEmpty((CharSequence)localObject)))
       {
-        Object localObject = (MiniAppAd.StGetAdRsp)paramJSONObject.get("response");
-        int i = paramJSONObject.getInt("retCode");
-        paramJSONObject = paramJSONObject.getString("errMsg");
-        localObject = ((MiniAppAd.StGetAdRsp)localObject).strAdsJson.get();
-        QLog.d("MiniLoadingAdManager", 1, "选单接口 receive retCode= " + i + " errMsg=" + paramJSONObject + " adJson=" + (String)localObject);
-        if ((i == 0) && (!TextUtils.isEmpty((CharSequence)localObject)))
+        paramJSONObject = AdUtils.convertJson2GdtAds((String)localObject);
+        if ((paramJSONObject != null) && (paramJSONObject.size() > 0))
         {
-          paramJSONObject = AdUtils.convertJson2GdtAds((String)localObject);
-          if ((paramJSONObject != null) && (paramJSONObject.size() > 0))
+          paramJSONObject = (GdtAd)paramJSONObject.get(0);
+          if ((paramJSONObject != null) && (paramJSONObject.info != null) && (paramJSONObject.info.report_info != null) && (paramJSONObject.info.report_info.trace_info != null))
           {
-            paramJSONObject = (GdtAd)paramJSONObject.get(0);
-            if ((paramJSONObject != null) && (paramJSONObject.info != null) && (paramJSONObject.info.report_info != null) && (paramJSONObject.info.report_info.trace_info != null))
-            {
-              long l = paramJSONObject.info.report_info.trace_info.aid.get();
-              localObject = (String)MiniLoadingAdManager.access$100().get(Long.valueOf(l));
-              this.this$1.val$onChooseAdEndListener.onChooseAdEnd((String)localObject, paramJSONObject);
-            }
+            long l = paramJSONObject.info.report_info.trace_info.aid.get();
+            localObject = (String)MiniLoadingAdManager.access$100().get(Long.valueOf(l));
+            this.this$1.val$onChooseAdEndListener.onChooseAdEnd((String)localObject, paramJSONObject);
           }
         }
-        else
-        {
-          this.this$1.val$onChooseAdEndListener.onChooseAdEnd(null, null);
-          return;
-        }
       }
-      catch (JSONException paramJSONObject) {}
+      else
+      {
+        this.this$1.val$onChooseAdEndListener.onChooseAdEnd(null, null);
+      }
+      return;
     }
+    catch (JSONException paramJSONObject) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.manager.MiniLoadingAdManager.1.1
  * JD-Core Version:    0.7.0.1
  */

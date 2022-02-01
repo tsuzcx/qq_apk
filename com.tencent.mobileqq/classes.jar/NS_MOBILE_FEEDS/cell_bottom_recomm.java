@@ -79,50 +79,61 @@ public final class cell_bottom_recomm
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.picinfo != null) {
-      paramJceOutputStream.write(this.picinfo, 0);
+    Object localObject = this.picinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 1);
+    localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 2);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.buttonIconUrl != null) {
-      paramJceOutputStream.write(this.buttonIconUrl, 3);
+    localObject = this.buttonIconUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.actiontype, 4);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 5);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.AdvIconUrl != null) {
-      paramJceOutputStream.write(this.AdvIconUrl, 6);
+    localObject = this.AdvIconUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.summaryColor != null) {
-      paramJceOutputStream.write(this.summaryColor, 7);
+    localObject = this.summaryColor;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.buttontext != null) {
-      paramJceOutputStream.write(this.buttontext, 8);
+    localObject = this.buttontext;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
     paramJceOutputStream.write(this.anonymity, 9);
-    if (this.joinlist != null) {
-      paramJceOutputStream.write(this.joinlist, 10);
+    localObject = this.joinlist;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 10);
     }
     paramJceOutputStream.write(this.isSupportFeedback, 11);
     paramJceOutputStream.write(this.iReportFlag, 12);
     paramJceOutputStream.write(this.iButtonFlag, 13);
-    if (this.downloadUrl != null) {
-      paramJceOutputStream.write(this.downloadUrl, 14);
+    localObject = this.downloadUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
-    if (this.jsonData != null) {
-      paramJceOutputStream.write(this.jsonData, 15);
+    localObject = this.jsonData;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 15);
     }
     paramJceOutputStream.write(this.style, 16);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_bottom_recomm
  * JD-Core Version:    0.7.0.1
  */

@@ -29,6 +29,12 @@ public abstract interface AttrContants$Name
   public static final String LIST_DIRECTION = "direction";
   public static final String LIST_DIRECTION_HORIZONTAL = "horizontal";
   public static final String LIST_DIRECTION_VERTICAL = "vertical";
+  public static final String LIST_INIT_CONTENT_OFFSET = "initContentOffset";
+  public static final String LIST_ISCOMPATIBLE_LEFTPAN = "setIsCompatibleLeftPan";
+  public static final String LIST_KEEP_POSITION = "keepPosition";
+  public static final String LIST_KEEP_TOP = "keepTop";
+  public static final String LIST_KEEP_TOP_ITEM = "keepTopItem";
+  public static final String LIST_PAGER_HEADER_COUNT = "adsorptionOffsetIndex";
   public static final String LIST_PRELOAD_DISTANCE = "preloadDistance";
   public static final String LIST_REVERSE_LAYOUT = "reverse";
   public static final String LIST_SCROLL_MINOFFSET = "scrollMinOffset";
@@ -75,7 +81,7 @@ public abstract interface AttrContants$Name
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.AttrContants.Name
  * JD-Core Version:    0.7.0.1
  */

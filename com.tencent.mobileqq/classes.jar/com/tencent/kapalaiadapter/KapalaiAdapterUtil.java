@@ -1,8 +1,6 @@
 package com.tencent.kapalaiadapter;
 
 import android.annotation.TargetApi;
-import android.app.Notification;
-import android.app.Notification.Builder;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
@@ -14,7 +12,6 @@ import android.os.Build.VERSION;
 import android.view.Window;
 import android.view.WindowManager.LayoutParams;
 import android.widget.EditText;
-import com.tencent.TMG.utils.QLog;
 import com.tencent.kapalaiadapter.sdcardmountinforutil.SDCardMountInforUtil;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
@@ -31,138 +28,132 @@ public class KapalaiAdapterUtil
   
   private Camera tryCoolpadFrontCamera()
   {
-    Object localObject2 = null;
+    Camera localCamera1;
+    Camera localCamera2;
     try
     {
-      localObject1 = Camera.open();
-      Camera.Parameters localParameters;
-      if ((localObject1 != null) && (localObject1 == null)) {
-        break label57;
+      localCamera1 = Camera.open();
+      localCamera2 = localCamera1;
+      if (localCamera1 == null) {
+        return localCamera2;
       }
-      ((Camera)localObject1).release();
-    }
-    catch (Exception localException1)
-    {
       try
       {
-        localParameters = ((Camera)localObject1).getParameters();
-        if (localParameters != null)
-        {
-          localParameters.set("device", "/dev/video1");
-          ((Camera)localObject1).setParameters(localParameters);
+        Camera.Parameters localParameters = localCamera1.getParameters();
+        localCamera2 = localCamera1;
+        if (localParameters == null) {
+          return localCamera2;
         }
-        return localObject1;
+        localParameters.set("device", "/dev/video1");
+        localCamera1.setParameters(localParameters);
+        return localCamera1;
       }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          Object localObject1;
-        }
-      }
-      localException1 = localException1;
-      localObject1 = null;
+      catch (Exception localException1) {}
+      localCamera2 = localCamera1;
     }
-    localObject1 = localObject2;
-    localException1.printStackTrace();
-    return localObject1;
+    catch (Exception localException2)
+    {
+      localCamera1 = null;
+    }
+    if (localCamera1 != null)
+    {
+      localCamera1.release();
+      localCamera2 = null;
+    }
+    localException2.printStackTrace();
+    return localCamera2;
   }
   
   private Camera tryHTCFrontCamera()
   {
-    Object localObject2 = null;
+    Camera localCamera1;
+    Camera localCamera2;
     try
     {
-      localObject1 = Camera.open();
-      Camera.Parameters localParameters;
-      if ((localObject1 != null) && (localObject1 == null)) {
-        break label57;
+      localCamera1 = Camera.open();
+      localCamera2 = localCamera1;
+      if (localCamera1 == null) {
+        return localCamera2;
       }
-      ((Camera)localObject1).release();
-    }
-    catch (Exception localException1)
-    {
       try
       {
-        localParameters = ((Camera)localObject1).getParameters();
-        if (localParameters != null)
-        {
-          localParameters.set("video_input", "secondary");
-          ((Camera)localObject1).setParameters(localParameters);
+        Camera.Parameters localParameters = localCamera1.getParameters();
+        localCamera2 = localCamera1;
+        if (localParameters == null) {
+          return localCamera2;
         }
-        return localObject1;
+        localParameters.set("video_input", "secondary");
+        localCamera1.setParameters(localParameters);
+        return localCamera1;
       }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          Object localObject1;
-        }
-      }
-      localException1 = localException1;
-      localObject1 = null;
+      catch (Exception localException1) {}
+      localCamera2 = localCamera1;
     }
-    localObject1 = localObject2;
-    localException1.printStackTrace();
-    return localObject1;
+    catch (Exception localException2)
+    {
+      localCamera1 = null;
+    }
+    if (localCamera1 != null)
+    {
+      localCamera1.release();
+      localCamera2 = null;
+    }
+    localException2.printStackTrace();
+    return localCamera2;
   }
   
   private Camera tryHisenseFrontCamera()
   {
-    Object localObject2 = null;
+    Camera localCamera1;
+    Camera localCamera2;
     try
     {
-      localObject1 = Camera.open();
-      Method localMethod;
-      if ((localObject1 != null) && (localObject1 == null)) {
-        break label76;
+      localCamera1 = Camera.open();
+      localCamera2 = localCamera1;
+      if (localCamera1 == null) {
+        return localCamera2;
       }
-      ((Camera)localObject1).release();
-    }
-    catch (Exception localException1)
-    {
       try
       {
-        localMethod = localObject1.getClass().getMethod("setSensorID", new Class[] { Integer.TYPE });
-        if (localMethod != null) {
-          localMethod.invoke(localObject1, new Object[] { Integer.valueOf(1) });
+        Method localMethod = localCamera1.getClass().getMethod("setSensorID", new Class[] { Integer.TYPE });
+        localCamera2 = localCamera1;
+        if (localMethod == null) {
+          return localCamera2;
         }
-        return localObject1;
+        localMethod.invoke(localCamera1, new Object[] { Integer.valueOf(1) });
+        return localCamera1;
       }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          Object localObject1;
-        }
-      }
-      localException1 = localException1;
-      localObject1 = null;
+      catch (Exception localException1) {}
+      localCamera2 = localCamera1;
     }
-    localObject1 = localObject2;
-    localException1.printStackTrace();
-    return localObject1;
+    catch (Exception localException2)
+    {
+      localCamera1 = null;
+    }
+    if (localCamera1 != null)
+    {
+      localCamera1.release();
+      localCamera2 = null;
+    }
+    localException2.printStackTrace();
+    return localCamera2;
   }
   
   private Camera tryHuaweiFrontCamera()
   {
-    Camera localCamera = null;
     try
     {
-      Class localClass = Class.forName("android.hardware.Camera");
-      Method localMethod = localClass.getMethod("setCurrentCamera", new Class[] { Integer.TYPE });
+      Object localObject = Class.forName("android.hardware.Camera");
+      Method localMethod = ((Class)localObject).getMethod("setCurrentCamera", new Class[] { Integer.TYPE });
       if (localMethod != null)
       {
-        localMethod.invoke(localClass, new Object[] { Integer.valueOf(1) });
-        localCamera = Camera.open();
+        localMethod.invoke(localObject, new Object[] { Integer.valueOf(1) });
+        localObject = Camera.open();
+        return localObject;
       }
-      return localCamera;
     }
     catch (Exception localException)
     {
-      if (0 != 0) {
-        throw new NullPointerException();
-      }
       localException.printStackTrace();
     }
     return null;
@@ -171,19 +162,16 @@ public class KapalaiAdapterUtil
   @TargetApi(9)
   private Camera tryLenovoFrontCamera()
   {
-    Camera localCamera = null;
     try
     {
-      if (Build.VERSION.SDK_INT >= 9) {
-        localCamera = Camera.open();
+      if (Build.VERSION.SDK_INT >= 9)
+      {
+        Camera localCamera = Camera.open();
+        return localCamera;
       }
-      return localCamera;
     }
     catch (Exception localException)
     {
-      if (0 != 0) {
-        throw new NullPointerException();
-      }
       localException.printStackTrace();
     }
     return null;
@@ -200,20 +188,21 @@ public class KapalaiAdapterUtil
   public ArrayList<String> getAllExSDCardMountPaths(Context paramContext)
   {
     ArrayList localArrayList1 = getAllPath(paramContext);
-    if ((localArrayList1 == null) || (localArrayList1.size() < 1)) {
-      return null;
-    }
-    ArrayList localArrayList2 = new ArrayList();
-    int i = 0;
-    while (i < localArrayList1.size())
+    if ((localArrayList1 != null) && (localArrayList1.size() >= 1))
     {
-      String str = (String)localArrayList1.get(i);
-      if (SDCardMountInforUtil.getSelf(paramContext).isExSdcard(str)) {
-        localArrayList2.add(str);
+      ArrayList localArrayList2 = new ArrayList();
+      int i = 0;
+      while (i < localArrayList1.size())
+      {
+        String str = (String)localArrayList1.get(i);
+        if (SDCardMountInforUtil.getSelf(paramContext).isExSdcard(str)) {
+          localArrayList2.add(str);
+        }
+        i += 1;
       }
-      i += 1;
+      return localArrayList2;
     }
-    return localArrayList2;
+    return null;
   }
   
   public ArrayList<String> getAllPath(Context paramContext)
@@ -241,57 +230,126 @@ public class KapalaiAdapterUtil
     return (paramParameters.getSupportedFlashModes() != null) && (paramContext.getPackageManager().hasSystemFeature("android.hardware.camera.flash")) && (paramParameters.getSupportedFlashModes().size() > 1);
   }
   
+  /* Error */
   @TargetApi(16)
-  public Notification newNotificationForMeizu(Context paramContext, int paramInt)
+  public android.app.Notification newNotificationForMeizu(Context paramContext, int paramInt)
   {
-    for (;;)
-    {
-      try
-      {
-        if (Build.VERSION.SDK_INT < 11)
-        {
-          paramContext = new Notification(paramInt, null, System.currentTimeMillis());
-          localObject = paramContext;
-          if (paramContext == null) {
-            localObject = new Notification(paramInt, null, System.currentTimeMillis());
-          }
-          return localObject;
-        }
-        paramContext = new Notification.Builder(paramContext);
-        Object localObject = Class.forName("android.app.Notification$Builder").getDeclaredMethod("setInternalApp", new Class[] { Integer.TYPE });
-        if (localObject != null)
-        {
-          ((Method)localObject).invoke(paramContext, new Object[] { Integer.valueOf(1) });
-          if (Build.VERSION.SDK_INT >= 16)
-          {
-            paramContext = paramContext.build();
-            continue;
-          }
-          if ((Build.VERSION.SDK_INT < 16) && (Build.VERSION.SDK_INT >= 11))
-          {
-            paramContext = paramContext.getNotification();
-            continue;
-            return null;
-          }
-        }
-      }
-      catch (Exception paramContext)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("newNotificationForMeizu", 0, paramContext.getMessage());
-        }
-        if (0 == 0) {
-          return new Notification(paramInt, null, System.currentTimeMillis());
-        }
-      }
-      finally
-      {
-        if (0 == 0) {
-          new Notification(paramInt, null, System.currentTimeMillis());
-        }
-      }
-      paramContext = null;
-    }
+    // Byte code:
+    //   0: getstatic 108	android/os/Build$VERSION:SDK_INT	I
+    //   3: bipush 11
+    //   5: if_icmpge +19 -> 24
+    //   8: new 185	android/app/Notification
+    //   11: dup
+    //   12: iload_2
+    //   13: aconst_null
+    //   14: invokestatic 191	java/lang/System:currentTimeMillis	()J
+    //   17: invokespecial 194	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   20: astore_1
+    //   21: goto +96 -> 117
+    //   24: new 196	android/app/Notification$Builder
+    //   27: dup
+    //   28: aload_1
+    //   29: invokespecial 199	android/app/Notification$Builder:<init>	(Landroid/content/Context;)V
+    //   32: astore_1
+    //   33: ldc 201
+    //   35: invokestatic 97	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   38: ldc 203
+    //   40: iconst_1
+    //   41: anewarray 70	java/lang/Class
+    //   44: dup
+    //   45: iconst_0
+    //   46: getstatic 76	java/lang/Integer:TYPE	Ljava/lang/Class;
+    //   49: aastore
+    //   50: invokevirtual 206	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   53: astore_3
+    //   54: aload_3
+    //   55: ifnull +60 -> 115
+    //   58: aload_3
+    //   59: aload_1
+    //   60: iconst_1
+    //   61: anewarray 4	java/lang/Object
+    //   64: dup
+    //   65: iconst_0
+    //   66: iconst_1
+    //   67: invokestatic 84	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   70: aastore
+    //   71: invokevirtual 90	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   74: pop
+    //   75: getstatic 108	android/os/Build$VERSION:SDK_INT	I
+    //   78: bipush 16
+    //   80: if_icmplt +11 -> 91
+    //   83: aload_1
+    //   84: invokevirtual 210	android/app/Notification$Builder:build	()Landroid/app/Notification;
+    //   87: astore_1
+    //   88: goto +29 -> 117
+    //   91: getstatic 108	android/os/Build$VERSION:SDK_INT	I
+    //   94: bipush 16
+    //   96: if_icmpge +19 -> 115
+    //   99: getstatic 108	android/os/Build$VERSION:SDK_INT	I
+    //   102: bipush 11
+    //   104: if_icmplt +11 -> 115
+    //   107: aload_1
+    //   108: invokevirtual 213	android/app/Notification$Builder:getNotification	()Landroid/app/Notification;
+    //   111: astore_1
+    //   112: goto +5 -> 117
+    //   115: aconst_null
+    //   116: astore_1
+    //   117: aload_1
+    //   118: astore_3
+    //   119: aload_1
+    //   120: ifnonnull +50 -> 170
+    //   123: new 185	android/app/Notification
+    //   126: dup
+    //   127: iload_2
+    //   128: aconst_null
+    //   129: invokestatic 191	java/lang/System:currentTimeMillis	()J
+    //   132: invokespecial 194	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   135: areturn
+    //   136: astore_1
+    //   137: goto +35 -> 172
+    //   140: astore_1
+    //   141: invokestatic 219	com/tencent/TMG/utils/QLog:isColorLevel	()Z
+    //   144: ifeq +13 -> 157
+    //   147: ldc 220
+    //   149: iconst_0
+    //   150: aload_1
+    //   151: invokevirtual 224	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   154: invokestatic 228	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   157: new 185	android/app/Notification
+    //   160: dup
+    //   161: iload_2
+    //   162: aconst_null
+    //   163: invokestatic 191	java/lang/System:currentTimeMillis	()J
+    //   166: invokespecial 194	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   169: astore_3
+    //   170: aload_3
+    //   171: areturn
+    //   172: new 185	android/app/Notification
+    //   175: dup
+    //   176: iload_2
+    //   177: aconst_null
+    //   178: invokestatic 191	java/lang/System:currentTimeMillis	()J
+    //   181: invokespecial 194	android/app/Notification:<init>	(ILjava/lang/CharSequence;J)V
+    //   184: pop
+    //   185: aload_1
+    //   186: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	187	0	this	KapalaiAdapterUtil
+    //   0	187	1	paramContext	Context
+    //   0	187	2	paramInt	int
+    //   53	118	3	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   0	21	136	finally
+    //   24	54	136	finally
+    //   58	88	136	finally
+    //   91	112	136	finally
+    //   141	157	136	finally
+    //   0	21	140	java/lang/Exception
+    //   24	54	140	java/lang/Exception
+    //   58	88	140	java/lang/Exception
+    //   91	112	140	java/lang/Exception
   }
   
   public void setActivityWindowType_TYPE_APPLICATION(Window paramWindow)
@@ -318,20 +376,17 @@ public class KapalaiAdapterUtil
   
   public String setFlashMode_TORCH(Camera.Parameters paramParameters)
   {
-    String str = "off";
-    List localList = paramParameters.getSupportedFlashModes();
-    if (localList.contains("torch")) {
-      paramParameters = "torch";
+    paramParameters = paramParameters.getSupportedFlashModes();
+    if (paramParameters.contains("torch")) {
+      return "torch";
     }
-    do
-    {
-      return paramParameters;
-      if (localList.contains("on")) {
-        return "on";
-      }
-      paramParameters = str;
-    } while (!localList.contains("auto"));
-    return "auto";
+    if (paramParameters.contains("on")) {
+      return "on";
+    }
+    if (paramParameters.contains("auto")) {
+      return "auto";
+    }
+    return "off";
   }
   
   public void setScreenBrightness(WindowManager.LayoutParams paramLayoutParams)
@@ -346,29 +401,27 @@ public class KapalaiAdapterUtil
   
   public Camera tryGetFrontCamera()
   {
-    Camera localCamera = null;
     if (Build.MANUFACTURER.equalsIgnoreCase("HTC")) {
-      localCamera = tryHTCFrontCamera();
+      return tryHTCFrontCamera();
     }
-    do
-    {
-      return localCamera;
-      if (Build.MANUFACTURER.equalsIgnoreCase("YuLong")) {
-        return tryCoolpadFrontCamera();
-      }
-      if (Build.MANUFACTURER.equalsIgnoreCase("HISENSE")) {
-        return tryHisenseFrontCamera();
-      }
-      if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
-        return tryHuaweiFrontCamera();
-      }
-    } while (!Build.MANUFACTURER.equalsIgnoreCase("LENOVO"));
-    return tryLenovoFrontCamera();
+    if (Build.MANUFACTURER.equalsIgnoreCase("YuLong")) {
+      return tryCoolpadFrontCamera();
+    }
+    if (Build.MANUFACTURER.equalsIgnoreCase("HISENSE")) {
+      return tryHisenseFrontCamera();
+    }
+    if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) {
+      return tryHuaweiFrontCamera();
+    }
+    if (Build.MANUFACTURER.equalsIgnoreCase("LENOVO")) {
+      return tryLenovoFrontCamera();
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kapalaiadapter.KapalaiAdapterUtil
  * JD-Core Version:    0.7.0.1
  */

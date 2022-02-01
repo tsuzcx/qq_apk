@@ -24,8 +24,8 @@ public class InputDialog
   
   public static InputDialog a(Context paramContext, String paramString1, String paramString2, int paramInt1, int paramInt2, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2)
   {
-    InputDialog localInputDialog = new InputDialog(paramContext, 2131755842);
-    localInputDialog.setContentView(2131559084);
+    InputDialog localInputDialog = new InputDialog(paramContext, 2131756189);
+    localInputDialog.setContentView(2131558978);
     localInputDialog.setTitle(paramString1);
     localInputDialog.setMessage(paramString2);
     localInputDialog.a(paramInt1, paramOnClickListener2);
@@ -34,12 +34,12 @@ public class InputDialog
     paramString1 = new EditText(paramContext);
     paramString1.setSingleLine();
     paramString1.setFilters(new InputFilter[] { new InputFilter.LengthFilter(120) });
-    paramString1.setBackgroundResource(2130843964);
+    paramString1.setBackgroundResource(2130843884);
     paramString1.setPadding(20, 0, 20, 0);
-    paramString1.setHeight(AIOUtils.a(37.0F, paramContext.getResources()));
+    paramString1.setHeight(AIOUtils.b(37.0F, paramContext.getResources()));
     paramString1.setTextSize(1, 14.0F);
-    paramString2 = new LinearLayout.LayoutParams(-1, AIOUtils.a(37.0F, paramContext.getResources()));
-    paramString2.topMargin = AIOUtils.a(11.0F, paramContext.getResources());
+    paramString2 = new LinearLayout.LayoutParams(-1, AIOUtils.b(37.0F, paramContext.getResources()));
+    paramString2.topMargin = AIOUtils.b(11.0F, paramContext.getResources());
     paramString1.setLayoutParams(paramString2);
     localInputDialog.a(paramString1);
     return localInputDialog;
@@ -63,9 +63,9 @@ public class InputDialog
   protected void a(EditText paramEditText)
   {
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.bodyLayout.getLayoutParams();
-    localLayoutParams.bottomMargin = AIOUtils.a(16.0F, getContext().getResources());
-    localLayoutParams.topMargin = AIOUtils.a(8.0F, getContext().getResources());
-    ((RelativeLayout.LayoutParams)this.title.getLayoutParams()).bottomMargin = AIOUtils.a(5.0F, getContext().getResources());
+    localLayoutParams.bottomMargin = AIOUtils.b(16.0F, getContext().getResources());
+    localLayoutParams.topMargin = AIOUtils.b(8.0F, getContext().getResources());
+    ((RelativeLayout.LayoutParams)this.title.getLayoutParams()).bottomMargin = AIOUtils.b(5.0F, getContext().getResources());
     addView(paramEditText);
     this.a = paramEditText;
   }
@@ -79,7 +79,7 @@ public class InputDialog
       this.text.setGravity(1);
       LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(-1, -2);
       localLayoutParams.topMargin = 0;
-      localLayoutParams.bottomMargin = AIOUtils.a(9.0F, getContext().getResources());
+      localLayoutParams.bottomMargin = AIOUtils.b(9.0F, getContext().getResources());
       this.text.setLayoutParams(localLayoutParams);
       this.text.setContentDescription(paramString);
       this.text.setVisibility(0);
@@ -117,7 +117,7 @@ public class InputDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.widgets.InputDialog
  * JD-Core Version:    0.7.0.1
  */

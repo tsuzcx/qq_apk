@@ -12,36 +12,38 @@ class FriendProfileImageAvatar$1
   
   public void run()
   {
-    localEntityManager = this.this$0.a.getEntityManagerFactory().createEntityManager();
+    EntityManager localEntityManager = this.this$0.a.getEntityManagerFactory().createEntityManager();
     if (localEntityManager != null) {}
     try
     {
-      Setting localSetting = (Setting)localEntityManager.find(Setting.class, this.a.d);
-      if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
+      try
       {
-        localSetting.headImgTimestamp = 0L;
-        localSetting.updateTimestamp = 0L;
-        localEntityManager.update(localSetting);
-        this.this$0.a.updateSettingTableCache(localSetting);
+        Setting localSetting = (Setting)localEntityManager.find(Setting.class, this.a.d);
+        if ((localSetting != null) && ((localSetting.headImgTimestamp != 0L) || (localSetting.updateTimestamp != 0L)))
+        {
+          localSetting.headImgTimestamp = 0L;
+          localSetting.updateTimestamp = 0L;
+          localEntityManager.update(localSetting);
+          this.this$0.a.updateSettingTableCache(localSetting);
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      finally
       {
         localEntityManager.close();
       }
     }
-    finally
+    catch (Exception localException)
     {
-      localEntityManager.close();
+      label94:
+      break label94;
     }
+    localEntityManager.close();
     this.this$0.a.refreshFace(this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,10 +24,12 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.filemanager.activity.LocalFileBrowserActivity;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
+import com.tencent.mobileqq.filemanager.api.IQQFileSelector;
 import com.tencent.mobileqq.filemanager.settings.FMSettings;
 import com.tencent.mobileqq.filemanager.util.FMToastUtil;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.StatisticAssist;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -63,145 +65,153 @@ public class LiteAdvanceActivity
   
   private void a()
   {
-    setContentView(2131559112);
-    Object localObject1 = (ImageView)findViewById(2131368603);
-    Object localObject2 = (TextView)findViewById(2131369051);
-    TextView localTextView1 = (TextView)findViewById(2131365294);
-    TextView localTextView2 = (TextView)findViewById(2131372527);
-    TextView localTextView3 = (TextView)findViewById(2131372528);
-    if (this.jdField_a_of_type_Int == 0)
+    setContentView(2131559006);
+    Object localObject1 = (ImageView)findViewById(2131368343);
+    Object localObject2 = (TextView)findViewById(2131368773);
+    TextView localTextView1 = (TextView)findViewById(2131365169);
+    TextView localTextView2 = (TextView)findViewById(2131372112);
+    TextView localTextView3 = (TextView)findViewById(2131372113);
+    int i = this.jdField_a_of_type_Int;
+    if (i == 0)
     {
-      ((ImageView)localObject1).setBackgroundResource(2130844376);
-      ((TextView)localObject2).setText(2131693826);
-      localTextView1.setText(2131693778);
-      localTextView2.setText(2131693801);
-      localTextView3.setText(2131693802);
+      ((ImageView)localObject1).setBackgroundResource(2130844282);
+      ((TextView)localObject2).setText(2131693779);
+      localTextView1.setText(2131693731);
+      localTextView2.setText(2131693754);
+      localTextView3.setText(2131693755);
     }
-    for (;;)
+    else if (i == 1)
     {
-      setTitle(2131695190);
-      this.jdField_a_of_type_AndroidViewView = findViewById(2131381629);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_b_of_type_AndroidViewView = findViewById(2131362215);
-      this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_c_of_type_AndroidViewView = findViewById(2131364788);
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376813));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(FMSettings.a().b());
-      this.jdField_c_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131378432));
-      this.jdField_c_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_c_of_type_Boolean);
-      this.jdField_c_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new LiteAdvanceActivity.1(this));
-      this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131378428));
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
-      this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new LiteAdvanceActivity.2(this));
-      this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131372822));
-      this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
-      this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new LiteAdvanceActivity.3(this));
-      if (ChatActivityConstants.jdField_a_of_type_Boolean)
+      ((ImageView)localObject1).setBackgroundResource(2130844277);
+      ((TextView)localObject2).setText(2131693780);
+      localTextView1.setText(2131693732);
+      localTextView2.setText(2131693733);
+      localTextView3.setText(2131693734);
+    }
+    setTitle(2131695182);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131380860);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_b_of_type_AndroidViewView = findViewById(2131362240);
+    this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_c_of_type_AndroidViewView = findViewById(2131364676);
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131376305));
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(FMSettings.a().getDefaultRecvPath());
+    this.jdField_c_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131377845));
+    this.jdField_c_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_c_of_type_Boolean);
+    this.jdField_c_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new LiteAdvanceActivity.1(this));
+    this.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131377841));
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_a_of_type_Boolean);
+    this.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new LiteAdvanceActivity.2(this));
+    this.jdField_b_of_type_ComTencentWidgetSwitch = ((Switch)findViewById(2131372401));
+    this.jdField_b_of_type_ComTencentWidgetSwitch.setChecked(this.jdField_b_of_type_Boolean);
+    this.jdField_b_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(new LiteAdvanceActivity.3(this));
+    if (ChatActivityConstants.jdField_a_of_type_Boolean)
+    {
+      localObject2 = this.leftView.getText().toString();
+      localObject1 = localObject2;
+      if (!getString(2131690529).equals(localObject2))
       {
-        localObject2 = this.leftView.getText().toString();
-        localObject1 = localObject2;
-        if (!getString(2131690601).equals(localObject2)) {
-          localObject1 = HardCodeUtil.a(2131706222) + (String)localObject2 + HardCodeUtil.a(2131706223);
-        }
-        this.leftView.setContentDescription((CharSequence)localObject1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706273));
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706274));
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
-      return;
-      if (this.jdField_a_of_type_Int == 1)
-      {
-        ((ImageView)localObject1).setBackgroundResource(2130844371);
-        ((TextView)localObject2).setText(2131693827);
-        localTextView1.setText(2131693779);
-        localTextView2.setText(2131693780);
-        localTextView3.setText(2131693781);
-      }
+      this.leftView.setContentDescription((CharSequence)localObject1);
     }
   }
   
   private void a(boolean paramBoolean)
   {
     SharedPreferences localSharedPreferences = this.app.getPreferences();
-    if (this.jdField_a_of_type_Int == 0) {
+    int i = this.jdField_a_of_type_Int;
+    if (i == 0)
+    {
       localSharedPreferences.edit().putBoolean("auto_receive_files", paramBoolean).commit();
-    }
-    while (this.jdField_a_of_type_Int != 1) {
       return;
     }
-    localSharedPreferences.edit().putBoolean("auto_receive_files_ipad", paramBoolean).commit();
+    if (i == 1) {
+      localSharedPreferences.edit().putBoolean("auto_receive_files_ipad", paramBoolean).commit();
+    }
   }
   
   private boolean a()
   {
-    boolean bool2 = false;
-    boolean bool1 = false;
     Object localObject = this.app.getProxyManager().a();
     String str = this.jdField_a_of_type_JavaLangString;
-    if ((str == null) || (str.length() == 0) || (localObject == null))
+    boolean bool = false;
+    if ((str != null) && (str.length() != 0) && (localObject != null))
     {
-      bool2 = bool1;
+      localObject = ((RecentUserProxy)localObject).b(str, 6000);
+      if (localObject == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("IphoneTitleBarActivity", 2, "isChatAtTop ru == null, return false.");
+        }
+        return false;
+      }
+      if (((RecentUser)localObject).showUpTime > 0L) {
+        bool = true;
+      }
       if (QLog.isColorLevel())
       {
-        QLog.d("IphoneTitleBarActivity", 2, "isChatAtTop params error, return false.");
-        bool2 = bool1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isChatAtTop result is: ");
+        ((StringBuilder)localObject).append(bool);
+        QLog.d("IphoneTitleBarActivity", 2, ((StringBuilder)localObject).toString());
       }
+      return bool;
     }
-    do
-    {
-      do
-      {
-        return bool2;
-        localObject = ((RecentUserProxy)localObject).b(str, 6000);
-        if (localObject != null) {
-          break;
-        }
-        bool2 = bool1;
-      } while (!QLog.isColorLevel());
-      QLog.d("IphoneTitleBarActivity", 2, "isChatAtTop ru == null, return false.");
-      return false;
-      bool1 = bool2;
-      if (((RecentUser)localObject).showUpTime > 0L) {
-        bool1 = true;
-      }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.d("IphoneTitleBarActivity", 2, "isChatAtTop result is: " + bool1);
-    return bool1;
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "isChatAtTop params error, return false.");
+    }
+    return false;
   }
   
   private boolean a(boolean paramBoolean)
   {
     RecentUserProxy localRecentUserProxy = this.app.getProxyManager().a();
     String str = this.jdField_a_of_type_JavaLangString;
-    if ((str == null) || (str.length() == 0) || (localRecentUserProxy == null))
+    if ((str != null) && (str.length() != 0) && (localRecentUserProxy != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("IphoneTitleBarActivity", 2, "setChatAtTop params error, return false.");
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setChatAtTop top: ");
+        ((StringBuilder)localObject).append(paramBoolean);
+        ((StringBuilder)localObject).append(" uin: ");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(" userType: ");
+        ((StringBuilder)localObject).append(6000);
+        QLog.d("IphoneTitleBarActivity", 2, ((StringBuilder)localObject).toString());
       }
-      return false;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("IphoneTitleBarActivity", 2, "setChatAtTop top: " + paramBoolean + " uin: " + str + " userType: " + 6000);
-    }
-    RecentUser localRecentUser2 = localRecentUserProxy.b(str, 6000);
-    RecentUser localRecentUser1 = localRecentUser2;
-    if (localRecentUser2 == null) {
-      localRecentUser1 = new RecentUser(str, 6000);
-    }
-    if (paramBoolean) {}
-    for (localRecentUser1.showUpTime = (System.currentTimeMillis() / 1000L);; localRecentUser1.showUpTime = 0L)
-    {
-      localRecentUserProxy.b(localRecentUser1);
+      RecentUser localRecentUser = localRecentUserProxy.b(str, 6000);
+      Object localObject = localRecentUser;
+      if (localRecentUser == null) {
+        localObject = new RecentUser(str, 6000);
+      }
+      if (paramBoolean) {
+        ((RecentUser)localObject).showUpTime = (System.currentTimeMillis() / 1000L);
+      } else {
+        ((RecentUser)localObject).showUpTime = 0L;
+      }
+      localRecentUserProxy.b((RecentUser)localObject);
       return true;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("IphoneTitleBarActivity", 2, "setChatAtTop params error, return false.");
+    }
+    return false;
   }
   
   private void b()
   {
-    String str = getString(2131693751);
+    String str = getString(2131693704);
     ActionSheet localActionSheet = (ActionSheet)ActionSheetHelper.a(this, null);
     localActionSheet.setMainTitle(str);
-    localActionSheet.addButton(getResources().getString(2131693757), 3);
-    localActionSheet.addCancelButton(2131690800);
+    localActionSheet.addButton(getResources().getString(2131693710), 3);
+    localActionSheet.addCancelButton(2131690728);
     localActionSheet.setOnButtonClickListener(new LiteAdvanceActivity.4(this, localActionSheet));
     localActionSheet.show();
   }
@@ -209,47 +219,41 @@ public class LiteAdvanceActivity
   private void b(boolean paramBoolean)
   {
     SharedPreferences localSharedPreferences = this.app.getPreferences();
-    if (this.jdField_a_of_type_Int == 0) {
+    int i = this.jdField_a_of_type_Int;
+    if (i == 0)
+    {
       localSharedPreferences.edit().putBoolean("dl_pc_online_notify", paramBoolean).commit();
-    }
-    while (this.jdField_a_of_type_Int != 1) {
       return;
     }
-    localSharedPreferences.edit().putBoolean("dl_ipad_online_notify", paramBoolean).commit();
+    if (i == 1) {
+      localSharedPreferences.edit().putBoolean("dl_ipad_online_notify", paramBoolean).commit();
+    }
   }
   
   private boolean b()
   {
-    boolean bool = false;
     SharedPreferences localSharedPreferences = this.app.getPreferences();
-    if (this.jdField_a_of_type_Int == 0) {
-      bool = localSharedPreferences.getBoolean("auto_receive_files", false);
+    int i = this.jdField_a_of_type_Int;
+    boolean bool = false;
+    if (i == 0) {
+      return localSharedPreferences.getBoolean("auto_receive_files", false);
     }
-    while (this.jdField_a_of_type_Int != 1) {
-      return bool;
+    if (i == 1) {
+      bool = localSharedPreferences.getBoolean("auto_receive_files_ipad", false);
     }
-    return localSharedPreferences.getBoolean("auto_receive_files_ipad", false);
+    return bool;
   }
   
   private void c()
   {
-    Intent localIntent = null;
-    if (Environment.getExternalStorageState().equals("mounted")) {
-      localIntent = new Intent(getApplicationContext(), LocalFileBrowserActivity.class);
-    }
-    while (localIntent == null)
+    if (!Environment.getExternalStorageState().equals("mounted"))
     {
+      FMToastUtil.a(2131719713);
       return;
-      FMToastUtil.a(2131719981);
     }
     try
     {
-      Bundle localBundle = new Bundle();
-      localBundle.putInt("category", 6);
-      localIntent.putExtra("bundle", localBundle);
-      localIntent.putExtra("localSdCardfile", 0);
-      localIntent.putExtra("open_with_qq_images", true);
-      startActivityForResult(localIntent, 103);
+      ((IQQFileSelector)QRoute.api(IQQFileSelector.class)).openFileSelectorByLiteAdvance(this);
       return;
     }
     catch (Exception localException)
@@ -260,15 +264,16 @@ public class LiteAdvanceActivity
   
   private boolean c()
   {
-    boolean bool = true;
     SharedPreferences localSharedPreferences = this.app.getPreferences();
-    if (this.jdField_a_of_type_Int == 0) {
-      bool = localSharedPreferences.getBoolean("dl_pc_online_notify", true);
+    int i = this.jdField_a_of_type_Int;
+    boolean bool = true;
+    if (i == 0) {
+      return localSharedPreferences.getBoolean("dl_pc_online_notify", true);
     }
-    while (this.jdField_a_of_type_Int != 1) {
-      return bool;
+    if (i == 1) {
+      bool = localSharedPreferences.getBoolean("dl_ipad_online_notify", true);
     }
-    return localSharedPreferences.getBoolean("dl_ipad_online_notify", true);
+    return bool;
   }
   
   private void d()
@@ -278,22 +283,24 @@ public class LiteAdvanceActivity
   
   private void e()
   {
-    HardCodeUtil.a(2131706221);
-    if (FileManagerUtil.a(this, getString(2131693826))) {
-      this.app.getApp().getString(2131692167);
-    }
-    do
+    HardCodeUtil.a(2131706272);
+    if (FileManagerUtil.a(this, getString(2131693779)))
     {
+      this.app.getApp().getString(2131692087);
       return;
-      if (this.jdField_a_of_type_Int == 0)
-      {
-        FileManagerUtil.a(this.app, this, "jump_shortcut_dataline", getString(2131693826), 2130844376);
-        DataLineReportUtil.q(this.app);
-        return;
-      }
-    } while (this.jdField_a_of_type_Int != 1);
-    FileManagerUtil.a(this.app, this, "jump_shortcut_dataline", getString(2131693826), 2130844376);
-    DataLineReportUtil.q(this.app);
+    }
+    int i = this.jdField_a_of_type_Int;
+    if (i == 0)
+    {
+      FileManagerUtil.a(this.app, this, "jump_shortcut_dataline", getString(2131693779), 2130844282);
+      DataLineReportUtil.q(this.app);
+      return;
+    }
+    if (i == 1)
+    {
+      FileManagerUtil.a(this.app, this, "jump_shortcut_dataline", getString(2131693779), 2130844282);
+      DataLineReportUtil.q(this.app);
+    }
   }
   
   @Override
@@ -305,7 +312,7 @@ public class LiteAdvanceActivity
     return bool;
   }
   
-  public void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
+  protected void doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
     if ((paramInt2 == -1) && (paramIntent != null) && (paramIntent.getExtras() != null))
     {
@@ -317,45 +324,52 @@ public class LiteAdvanceActivity
     super.doOnActivityResult(paramInt1, paramInt2, paramIntent);
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("targetUin");
-    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString.length() != 0)) {
+    paramBundle = this.jdField_a_of_type_JavaLangString;
+    if ((paramBundle != null) && (paramBundle.length() != 0))
+    {
       if (this.jdField_a_of_type_JavaLangString.equals(AppConstants.DATALINE_IPAD_UIN)) {
         this.jdField_a_of_type_Int = 1;
+      } else {
+        this.jdField_a_of_type_Int = 0;
       }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Boolean = b();
-      this.jdField_b_of_type_Boolean = c();
-      this.jdField_c_of_type_Boolean = a();
-      a();
-      return true;
-      this.jdField_a_of_type_Int = 0;
-      continue;
       this.jdField_a_of_type_Int = 0;
       this.jdField_a_of_type_JavaLangString = AppConstants.DATALINE_PC_UIN;
     }
+    this.jdField_a_of_type_Boolean = b();
+    this.jdField_b_of_type_Boolean = c();
+    this.jdField_c_of_type_Boolean = a();
+    a();
+    return true;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131362240)
     {
+      if (i != 2131364676)
+      {
+        if (i == 2131380860)
+        {
+          StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckviewrecvfile");
+          c();
+        }
+      }
+      else {
+        d();
+      }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      StatisticAssist.a(this.app.getApplication().getApplicationContext(), this.app.getCurrentAccountUin(), "dl_ckviewrecvfile");
-      c();
-      continue;
+    else {
       e();
-      continue;
-      d();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -367,7 +381,7 @@ public class LiteAdvanceActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteAdvanceActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -40,8 +40,16 @@ public class ParcelableListWrapper
           localParcelableListWrapper.parcelableList = paramArrayList;
           return localParcelableListWrapper;
         }
-        finally {}
+        finally
+        {
+          break label53;
+        }
         return new ParcelableListWrapper(paramArrayList);
+        label53:
+        for (;;)
+        {
+          throw paramArrayList;
+        }
       }
       i += 1;
     }
@@ -83,7 +91,7 @@ public class ParcelableListWrapper
     //   13: aload_2
     //   14: iload_1
     //   15: aaload
-    //   16: ifnonnull +18 -> 34
+    //   16: ifnonnull +24 -> 40
     //   19: aload_2
     //   20: iload_1
     //   21: aload_0
@@ -97,17 +105,19 @@ public class ParcelableListWrapper
     //   29: astore_0
     //   30: aload_2
     //   31: monitorexit
-    //   32: aload_0
-    //   33: athrow
-    //   34: iload_1
-    //   35: iconst_1
-    //   36: iadd
-    //   37: istore_1
-    //   38: goto -30 -> 8
+    //   32: goto +5 -> 37
+    //   35: aload_0
+    //   36: athrow
+    //   37: goto -2 -> 35
+    //   40: iload_1
+    //   41: iconst_1
+    //   42: iadd
+    //   43: istore_1
+    //   44: goto -36 -> 8
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	41	0	paramParcelableListWrapper	ParcelableListWrapper
-    //   7	31	1	i	int
+    //   0	47	0	paramParcelableListWrapper	ParcelableListWrapper
+    //   7	37	1	i	int
     //   3	28	2	arrayOfParcelableListWrapper	ParcelableListWrapper[]
     // Exception table:
     //   from	to	target	type
@@ -118,22 +128,20 @@ public class ParcelableListWrapper
   
   public static void writeList(Parcel paramParcel, List<? extends SmartParcelable> paramList)
   {
-    if (paramList == null) {
-      paramParcel.writeInt(-1);
-    }
-    for (;;)
+    if (paramList == null)
     {
+      paramParcel.writeInt(-1);
       return;
-      int j = paramList.size();
-      paramParcel.writeInt(j);
-      int i = 0;
-      while (i < j)
-      {
-        ParcelableWrapper localParcelableWrapper = ParcelableWrapper.obtain((SmartParcelable)paramList.get(i));
-        paramParcel.writeValue(localParcelableWrapper);
-        ParcelableWrapper.recycle(localParcelableWrapper);
-        i += 1;
-      }
+    }
+    int j = paramList.size();
+    int i = 0;
+    paramParcel.writeInt(j);
+    while (i < j)
+    {
+      ParcelableWrapper localParcelableWrapper = ParcelableWrapper.obtain((SmartParcelable)paramList.get(i));
+      paramParcel.writeValue(localParcelableWrapper);
+      ParcelableWrapper.recycle(localParcelableWrapper);
+      i += 1;
     }
   }
   
@@ -154,7 +162,7 @@ public class ParcelableListWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.app.common.ParcelableListWrapper
  * JD-Core Version:    0.7.0.1
  */

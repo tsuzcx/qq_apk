@@ -10,7 +10,6 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import com.tencent.biz.qqstory.takevideo.TakeVideoUtils;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class FrameAdapter
@@ -46,14 +45,6 @@ public class FrameAdapter
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader = paramFrameLoader;
   }
   
-  public void a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader.a(paramLocalMediaInfo);
-  }
-  
   public int getCount()
   {
     return this.jdField_a_of_type_Int;
@@ -70,8 +61,9 @@ public class FrameAdapter
     if (paramView == null)
     {
       localObject = new ImageView(this.jdField_a_of_type_AndroidContentContext);
-      int i = (int)(TakeVideoUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources()) * this.b);
-      paramView = new ViewGroup.LayoutParams(this.b, i);
+      float f = TakeVideoUtils.a(this.jdField_a_of_type_AndroidContentContext.getResources());
+      int i = this.b;
+      paramView = new ViewGroup.LayoutParams(i, (int)(f * i));
       ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_CROP);
       ((ImageView)localObject).setLayoutParams(paramView);
       paramView = new FrameAdapter.Holder();
@@ -79,20 +71,20 @@ public class FrameAdapter
       paramView.a.setImageDrawable(new ColorDrawable(-12303292));
       ((View)localObject).setTag(paramView);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader.a(paramView.a, Integer.valueOf(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return localObject;
       FrameAdapter.Holder localHolder = (FrameAdapter.Holder)paramView.getTag();
       localObject = paramView;
       paramView = localHolder;
     }
+    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader.a(paramView.a, Integer.valueOf(paramInt));
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.FrameAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -26,12 +26,24 @@ class MediaCodecDecoder$FrameInfo
   
   public String toString()
   {
-    return "FrameInfo{buffer=" + this.jdField_a_of_type_Int + ", data=" + this.jdField_a_of_type_JavaNioByteBuffer + ", presentationTimeUs=" + this.jdField_a_of_type_Long + ", endOfStream=" + this.jdField_a_of_type_Boolean + ", representationChanged=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FrameInfo{buffer=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", data=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaNioByteBuffer);
+    localStringBuilder.append(", presentationTimeUs=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", endOfStream=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", representationChanged=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaCodecDecoder.FrameInfo
  * JD-Core Version:    0.7.0.1
  */

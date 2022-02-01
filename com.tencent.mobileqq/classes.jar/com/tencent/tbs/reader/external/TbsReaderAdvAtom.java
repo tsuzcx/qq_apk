@@ -17,71 +17,81 @@ public class TbsReaderAdvAtom
   
   public void enterEditMode()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.enterEditMode();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.enterEditMode();
     }
   }
   
   public void enterFindMode()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.enterFindMode();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.enterFindMode();
     }
   }
   
   public void enterFitScreen()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.enterFitScreen();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.enterFitScreen();
     }
   }
   
   public void enterPlayMode()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.enterPlayMode();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.enterPlayMode();
     }
   }
   
   public void exitEditMode()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.exitEditMode();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.exitEditMode();
     }
   }
   
   public void exitFindMode()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.exitFindMode();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.exitFindMode();
     }
   }
   
   public void exitFitScreen()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.exitFitScreen();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.exitFitScreen();
     }
   }
   
   public void exitPlayMode()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.exitPlayMode();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.exitPlayMode();
     }
   }
   
   public void findNext()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.findNext();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.findNext();
     }
   }
   
   public void findPrev()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.findPrev();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.findPrev();
     }
   }
   
@@ -92,73 +102,82 @@ public class TbsReaderAdvAtom
   
   public void getOutLineData()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.getOutLineData();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.getOutLineData();
     }
   }
   
   public int init(Object paramObject)
   {
-    if (this.mReaderAtom != null) {
-      return this.mReaderAtom.init(paramObject);
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      return localITbsReaderEditAtom.init(paramObject);
     }
     return -1;
   }
   
   public boolean isDocModified()
   {
-    if (this.mReaderAtom != null) {
-      return this.mReaderAtom.isDocModified();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      return localITbsReaderEditAtom.isDocModified();
     }
     return false;
   }
   
   public boolean qryFitScreenMode()
   {
-    if (this.mReaderAtom != null) {
-      return this.mReaderAtom.qryFitScreenMode();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      return localITbsReaderEditAtom.qryFitScreenMode();
     }
     return false;
   }
   
   public void revertEdit()
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.revertEdit();
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.revertEdit();
     }
   }
   
   public void saveDoc(String paramString)
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.saveDoc(paramString);
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.saveDoc(paramString);
     }
   }
   
   public void setDecryptPassWord(String paramString)
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.setDecryptPassWord(paramString);
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.setDecryptPassWord(paramString);
     }
   }
   
   public void setExcelEditBarBottomMargin(int paramInt)
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.setExcelEditBarBottomMargin(paramInt);
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.setExcelEditBarBottomMargin(paramInt);
     }
   }
   
   public void setFindText(String paramString)
   {
-    if (this.mReaderAtom != null) {
-      this.mReaderAtom.setFindText(paramString);
+    ITbsReaderEditAtom localITbsReaderEditAtom = this.mReaderAtom;
+    if (localITbsReaderEditAtom != null) {
+      localITbsReaderEditAtom.setFindText(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.reader.external.TbsReaderAdvAtom
  * JD-Core Version:    0.7.0.1
  */

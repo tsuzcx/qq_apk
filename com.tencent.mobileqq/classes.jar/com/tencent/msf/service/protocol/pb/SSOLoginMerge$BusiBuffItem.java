@@ -26,13 +26,14 @@ public final class SSOLoginMerge$BusiBuffItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40 }, new String[] { "SeqNo", "ServiceCmd", "BusiBuffLen", "BusiBuff", "NeedResp" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), localByteStringMicro, Boolean.valueOf(false) }, BusiBuffItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40 }, new String[] { "SeqNo", "ServiceCmd", "BusiBuffLen", "BusiBuff", "NeedResp" }, new Object[] { localInteger, "", localInteger, localByteStringMicro, Boolean.valueOf(false) }, BusiBuffItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.pb.SSOLoginMerge.BusiBuffItem
  * JD-Core Version:    0.7.0.1
  */

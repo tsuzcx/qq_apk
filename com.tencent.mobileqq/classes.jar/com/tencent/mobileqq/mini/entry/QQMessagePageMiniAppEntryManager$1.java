@@ -16,7 +16,7 @@ class QQMessagePageMiniAppEntryManager$1
   
   public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && (SharedPreUtils.G(QQMessagePageMiniAppEntryManager.access$000(this.this$0)) == 0) && (QQMessagePageMiniAppEntryManager.access$100(this.this$0) != 3))
+    if ((paramInt4 - paramInt2 > 0) && (paramInt3 - paramInt1 > 0) && (SharedPreUtils.E(QQMessagePageMiniAppEntryManager.access$000(this.this$0)) == 0) && (QQMessagePageMiniAppEntryManager.access$100(this.this$0) != 3))
     {
       paramView = (MiniAppUserAppInfoListManager)QQMessagePageMiniAppEntryManager.access$200(this.this$0).getManager(QQManagerFactory.MINI_APP_ITEM_MANAGER);
       if ((paramView != null) && (paramView.checkAutoShowPullDownEntry()) && (paramView.getPullDownEntryExtInfo() != null))
@@ -26,7 +26,7 @@ class QQMessagePageMiniAppEntryManager$1
         {
           this.this$0.showMicroAppEntry();
           QQMessagePageMiniAppEntryManager.access$300(this.this$0).getRecyclerView().requestLayout();
-          SharedPreUtils.v(QQMessagePageMiniAppEntryManager.access$000(this.this$0), 1);
+          SharedPreUtils.u(QQMessagePageMiniAppEntryManager.access$000(this.this$0), 1);
         }
       }
     }
@@ -34,7 +34,7 @@ class QQMessagePageMiniAppEntryManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.QQMessagePageMiniAppEntryManager.1
  * JD-Core Version:    0.7.0.1
  */

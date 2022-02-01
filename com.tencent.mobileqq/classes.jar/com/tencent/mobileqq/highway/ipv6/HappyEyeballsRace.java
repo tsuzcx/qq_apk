@@ -20,25 +20,41 @@ public class HappyEyeballsRace
   {
     try
     {
-      BdhLogUtil.LogEvent("C", "HappyEyeballsRace.breakOtherConns, mConnList.size() = " + this.mConnList.size());
-      Iterator localIterator = this.mConnList.iterator();
-      while (localIterator.hasNext())
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("HappyEyeballsRace.breakOtherConns, mConnList.size() = ");
+      ((StringBuilder)localObject).append(this.mConnList.size());
+      BdhLogUtil.LogEvent("C", ((StringBuilder)localObject).toString());
+      localObject = this.mConnList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        IConnection localIConnection = (IConnection)localIterator.next();
+        IConnection localIConnection = (IConnection)((Iterator)localObject).next();
         if (localIConnection.getConnId() != paramIConnection.getConnId())
         {
-          BdhLogUtil.LogEvent("C", "HappyEyeballsRace.breakOtherConns, connId = " + localIConnection.getConnId());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("HappyEyeballsRace.breakOtherConns, connId = ");
+          localStringBuilder.append(localIConnection.getConnId());
+          BdhLogUtil.LogEvent("C", localStringBuilder.toString());
           localIConnection.disConnect();
         }
-        localIterator.remove();
+        ((Iterator)localObject).remove();
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramIConnection;
+    }
   }
   
   public void doOnConect(boolean paramBoolean, IConnection paramIConnection, HwEngine paramHwEngine)
   {
-    BdhLogUtil.LogEvent("C", "HappyEyeballsRace.doOnConect , isSuccess = " + paramBoolean + " ,connId = " + paramIConnection.getConnId());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HappyEyeballsRace.doOnConect , isSuccess = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" ,connId = ");
+    localStringBuilder.append(paramIConnection.getConnId());
+    BdhLogUtil.LogEvent("C", localStringBuilder.toString());
     if (paramBoolean)
     {
       doOnConnSuc(paramIConnection, paramHwEngine);
@@ -49,25 +65,37 @@ public class HappyEyeballsRace
   
   public void doOnConnFail(IConnection paramIConnection)
   {
-    boolean bool = false;
-    try
+    for (;;)
     {
-      BdhLogUtil.LogEvent("C", "HappyEyeballsRace.doOnConnFail. mIsRacing = " + this.mIsRacing);
-      if (this.mIsRacing)
+      try
       {
-        this.mConnList.remove(paramIConnection);
-        paramIConnection = new StringBuilder().append("HappyEyeballsRace.doOnConnFail, mRacingRunnable == null : ");
-        if (this.mRacingRunnable == null) {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("HappyEyeballsRace.doOnConnFail. mIsRacing = ");
+        localStringBuilder.append(this.mIsRacing);
+        BdhLogUtil.LogEvent("C", localStringBuilder.toString());
+        if (this.mIsRacing)
+        {
+          this.mConnList.remove(paramIConnection);
+          paramIConnection = new StringBuilder();
+          paramIConnection.append("HappyEyeballsRace.doOnConnFail, mRacingRunnable == null : ");
+          if (this.mRacingRunnable != null) {
+            break label148;
+          }
           bool = true;
+          paramIConnection.append(bool);
+          paramIConnection.append(" , mConnList.size() = ");
+          paramIConnection.append(this.mConnList.size());
+          BdhLogUtil.LogEvent("C", paramIConnection.toString());
+          if ((this.mRacingRunnable == null) && (this.mConnList.size() == 0)) {
+            this.mIsRacing = false;
+          }
         }
-        BdhLogUtil.LogEvent("C", bool + " , mConnList.size() = " + this.mConnList.size());
-        if ((this.mRacingRunnable == null) && (this.mConnList.size() == 0)) {
-          this.mIsRacing = false;
-        }
+        return;
       }
-      return;
+      finally {}
+      label148:
+      boolean bool = false;
     }
-    finally {}
   }
   
   public void doOnConnSuc(IConnection paramIConnection, HwEngine paramHwEngine)
@@ -81,13 +109,16 @@ public class HappyEyeballsRace
       }
       breakOtherConns(paramIConnection);
       this.mIsIpv6Fast = paramIConnection.isIpv6();
-      BdhLogUtil.LogEvent("C", "HappyEyeballsRace.doOnConnSuc, mIsIpv6Fast = " + this.mIsIpv6Fast);
+      paramIConnection = new StringBuilder();
+      paramIConnection.append("HappyEyeballsRace.doOnConnSuc, mIsIpv6Fast = ");
+      paramIConnection.append(this.mIsIpv6Fast);
+      BdhLogUtil.LogEvent("C", paramIConnection.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.ipv6.HappyEyeballsRace
  * JD-Core Version:    0.7.0.1
  */

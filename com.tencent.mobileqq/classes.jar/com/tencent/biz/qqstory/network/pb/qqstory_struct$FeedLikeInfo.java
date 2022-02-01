@@ -19,13 +19,14 @@ public final class qqstory_struct$FeedLikeInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "feed_id", "like_list", "like_total_count", "has_like" }, new Object[] { localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0) }, FeedLikeInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32 }, new String[] { "feed_id", "like_list", "like_total_count", "has_like" }, new Object[] { localByteStringMicro, null, localInteger, localInteger }, FeedLikeInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedLikeInfo
  * JD-Core Version:    0.7.0.1
  */

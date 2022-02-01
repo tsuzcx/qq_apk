@@ -13,7 +13,7 @@ import android.view.Gravity;
 public class QQLiveDrawable
   extends Drawable
 {
-  private static final String TAG = QQLiveDrawable.class.getSimpleName();
+  private static final String TAG = "QQLiveDrawable";
   public static final String URL_PROTOCOL = "qqlive";
   private boolean mApplyGravity;
   private final Rect mDstRect = new Rect();
@@ -26,12 +26,12 @@ public class QQLiveDrawable
   {
     this.mQQLiveState = paramQQLiveState;
     this.mQQLiveState.mVideo.attachDrawable(this);
-    if (paramResources != null) {}
-    for (this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;; this.mTargetDensity = paramQQLiveState.mTargetDensity)
-    {
-      computeImageSize();
-      return;
+    if (paramResources != null) {
+      this.mTargetDensity = paramResources.getDisplayMetrics().densityDpi;
+    } else {
+      this.mTargetDensity = paramQQLiveState.mTargetDensity;
     }
+    computeImageSize();
   }
   
   public QQLiveDrawable(QQLiveImage paramQQLiveImage, Resources paramResources)
@@ -69,7 +69,8 @@ public class QQLiveDrawable
   
   public long getCurrentPosition()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       return this.mQQLiveState.mVideo.getCurrentPosition();
     }
     return 0L;
@@ -77,7 +78,8 @@ public class QQLiveDrawable
   
   public long getCurrentPostion()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       return this.mQQLiveState.mVideo.getCurrentPosition();
     }
     return -1L;
@@ -95,7 +97,8 @@ public class QQLiveDrawable
   
   public long getMsgUniseq()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null) && (this.mQQLiveState.mVideo.mParams != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null) && (this.mQQLiveState.mVideo.mParams != null)) {
       return this.mQQLiveState.mVideo.mParams.msgUniseq;
     }
     return 0L;
@@ -108,7 +111,8 @@ public class QQLiveDrawable
   
   public int getPlayState()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       return this.mQQLiveState.mVideo.getPlayState();
     }
     return 7;
@@ -116,7 +120,8 @@ public class QQLiveDrawable
   
   public boolean isPaused()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       return this.mQQLiveState.mVideo.isPaused();
     }
     return true;
@@ -130,70 +135,80 @@ public class QQLiveDrawable
   
   public void onDetachedFromWindow()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.onDetachedFromWindow();
     }
   }
   
   public void pause()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.pause();
     }
   }
   
   public void recyleAndKeepPostion()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.recyleAndKeepPostion();
     }
   }
   
   public void recyleAndNotKeepPosition()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.recyleAndNotKeepPosition();
     }
   }
   
   public void recyleFor2Background()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.recyleFor2Background();
     }
   }
   
   public void release()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.release();
     }
   }
   
   public void replay()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.replay();
     }
   }
   
   public void resume()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.resume();
     }
   }
   
   public void resumeFromPosi(int paramInt)
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.resumeFromPosi(paramInt);
     }
   }
   
   public void seek(int paramInt)
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.seek(paramInt);
     }
   }
@@ -216,35 +231,40 @@ public class QQLiveDrawable
   
   public void setMute(boolean paramBoolean)
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null) && (this.mQQLiveState.mVideo.mParams != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null) && (this.mQQLiveState.mVideo.mParams != null)) {
       this.mQQLiveState.mVideo.mParams.mMute = paramBoolean;
     }
   }
   
   public void setOnDownloadListener(QQLiveDrawable.OnDownloadListener paramOnDownloadListener)
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.setOnDownloadListener(paramOnDownloadListener);
     }
   }
   
   public void setOnLoopBackListener(QQLiveDrawable.OnLoopBackListener paramOnLoopBackListener)
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.setOnLoopBackListener(paramOnLoopBackListener);
     }
   }
   
   public void setOnStateListener(QQLiveDrawable.OnStateListener paramOnStateListener)
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.setOnStateListener(paramOnStateListener);
     }
   }
   
   public void setParams(QQLiveDrawable.QQLiveDrawableParams paramQQLiveDrawableParams)
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.mParams = paramQQLiveDrawableParams;
     }
   }
@@ -265,14 +285,15 @@ public class QQLiveDrawable
   
   public void startVideo()
   {
-    if ((this.mQQLiveState != null) && (this.mQQLiveState.mVideo != null)) {
+    QQLiveDrawable.QQLiveState localQQLiveState = this.mQQLiveState;
+    if ((localQQLiveState != null) && (localQQLiveState.mVideo != null)) {
       this.mQQLiveState.mVideo.start();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.QQLiveDrawable
  * JD-Core Version:    0.7.0.1
  */

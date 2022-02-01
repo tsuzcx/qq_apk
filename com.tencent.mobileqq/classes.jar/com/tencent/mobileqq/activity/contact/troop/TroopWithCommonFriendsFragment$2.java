@@ -8,8 +8,8 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.CommonAdapter;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.ViewHolder;
+import com.tencent.mobileqq.troop.adapter.CommonAdapter;
+import com.tencent.mobileqq.troop.adapter.base.ViewHolder;
 
 class TroopWithCommonFriendsFragment$2
   extends CommonAdapter<CommonTroopData>
@@ -19,16 +19,16 @@ class TroopWithCommonFriendsFragment$2
     super(paramContext, paramInt);
   }
   
-  public ViewHolder a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
+  protected ViewHolder a(Context paramContext, ViewGroup paramViewGroup, int paramInt)
   {
     paramViewGroup = LayoutInflater.from(paramContext).inflate(paramInt, paramViewGroup, false);
     paramContext = new TroopCommonHolder(paramContext, paramViewGroup);
-    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131374134));
-    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131374117));
-    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131374125));
-    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131374123));
-    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131374135));
-    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131374133));
+    paramContext.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373689));
+    paramContext.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramViewGroup.findViewById(2131373672));
+    paramContext.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramViewGroup.findViewById(2131373680));
+    paramContext.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373678));
+    paramContext.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131373690));
+    paramContext.jdField_a_of_type_AndroidWidgetButton = ((Button)paramViewGroup.findViewById(2131373688));
     return paramContext;
   }
   
@@ -39,7 +39,7 @@ class TroopWithCommonFriendsFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.troop.TroopWithCommonFriendsFragment.2
  * JD-Core Version:    0.7.0.1
  */

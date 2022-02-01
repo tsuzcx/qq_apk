@@ -50,55 +50,51 @@ public class FrameComparePipeLine
   {
     Iterator localIterator = this.mTaskResultList.iterator();
     Object localObject = null;
-    int i = 1;
-    int k = 1;
     int j = 1;
-    FrameComparePipeLine.TaskResult localTaskResult;
-    if (localIterator.hasNext())
+    int i = 1;
+    int k;
+    for (int m = 1;; m = k)
     {
-      localTaskResult = (FrameComparePipeLine.TaskResult)localIterator.next();
-      if ((j != 0) && (localTaskResult.isBlack))
-      {
-        j = 1;
-        label56:
-        if ((k == 0) || (!localTaskResult.isTransparent)) {
-          break label109;
-        }
-        k = 1;
-        label70:
-        if (localObject == null) {
-          break label139;
-        }
-        if ((i == 0) || (BitmapHashUtil.hammingDistance(localTaskResult.pHash, localObject.pHash) > 0)) {
-          break label114;
-        }
+      boolean bool = localIterator.hasNext();
+      int n = 0;
+      if (!bool) {
+        break;
+      }
+      FrameComparePipeLine.TaskResult localTaskResult = (FrameComparePipeLine.TaskResult)localIterator.next();
+      if ((i != 0) && (localTaskResult.isBlack)) {
         i = 1;
+      } else {
+        i = 0;
       }
-    }
-    label139:
-    for (;;)
-    {
+      if ((j != 0) && (localTaskResult.isTransparent)) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      k = m;
+      if (localObject != null)
+      {
+        k = n;
+        if (m != 0)
+        {
+          k = n;
+          if (BitmapHashUtil.hammingDistance(localTaskResult.pHash, localObject.pHash) <= 0) {
+            k = 1;
+          }
+        }
+      }
       localObject = localTaskResult;
-      break;
-      j = 0;
-      break label56;
-      label109:
-      k = 0;
-      break label70;
-      label114:
-      i = 0;
-      continue;
-      if (k != 0) {
-        return 1;
-      }
-      if (j != 0) {
-        return 2;
-      }
-      if (i != 0) {
-        return 3;
-      }
-      return 0;
     }
+    if (j != 0) {
+      return 1;
+    }
+    if (i != 0) {
+      return 2;
+    }
+    if (m != 0) {
+      return 3;
+    }
+    return 0;
   }
   
   private void fetchOneTaskAndRun()
@@ -117,7 +113,8 @@ public class FrameComparePipeLine
     while (localIterator.hasNext())
     {
       FrameComparePipeLine.TaskResult localTaskResult = (FrameComparePipeLine.TaskResult)localIterator.next();
-      localStringBuilder.append("\n").append(localTaskResult);
+      localStringBuilder.append("\n");
+      localStringBuilder.append(localTaskResult);
     }
     return localStringBuilder.toString();
   }
@@ -130,40 +127,39 @@ public class FrameComparePipeLine
   private void runTask(VideoFrameCaptureTask paramVideoFrameCaptureTask)
   {
     Bitmap localBitmap = paramVideoFrameCaptureTask.doTask();
-    if (localBitmap == null) {
-      onTaskException();
-    }
-    for (;;)
+    if (localBitmap == null)
     {
+      onTaskException();
       return;
-      FrameComparePipeLine.TaskResult localTaskResult = new FrameComparePipeLine.TaskResult(this);
-      if (checkBitmapIsColor(localBitmap, 0))
-      {
-        LogUtil.d("SuperPlayer-.FrameComparePipeLine", "checkTransparentBitmap unPass, " + paramVideoFrameCaptureTask);
-        localTaskResult.isTransparent = true;
-      }
-      try
-      {
-        localTaskResult.pHash = BitmapHashUtil.dctImageHash(localBitmap, true);
-        if (BitmapHashUtil.hammingDistance(-2L, localTaskResult.pHash) == 0)
-        {
-          LogUtil.d("SuperPlayer-.FrameComparePipeLine", "checkBlackBitmap unPass, " + paramVideoFrameCaptureTask);
-          localTaskResult.isBlack = true;
-        }
-        this.mTaskResultList.add(localTaskResult);
-        if (localBitmap.isRecycled()) {
-          continue;
-        }
-        localBitmap.recycle();
-        return;
-      }
-      catch (IOException localIOException)
-      {
-        for (;;)
-        {
-          LogUtil.e("SuperPlayer-.FrameComparePipeLine", "dctImageHash exception", localIOException);
-        }
-      }
+    }
+    FrameComparePipeLine.TaskResult localTaskResult = new FrameComparePipeLine.TaskResult(this);
+    if (checkBitmapIsColor(localBitmap, 0))
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("checkTransparentBitmap unPass, ");
+      localStringBuilder1.append(paramVideoFrameCaptureTask);
+      LogUtil.d("SuperPlayer-.FrameComparePipeLine", localStringBuilder1.toString());
+      localTaskResult.isTransparent = true;
+    }
+    try
+    {
+      localTaskResult.pHash = BitmapHashUtil.dctImageHash(localBitmap, true);
+    }
+    catch (IOException localIOException)
+    {
+      LogUtil.e("SuperPlayer-.FrameComparePipeLine", "dctImageHash exception", localIOException);
+    }
+    if (BitmapHashUtil.hammingDistance(-2L, localTaskResult.pHash) == 0)
+    {
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("checkBlackBitmap unPass, ");
+      localStringBuilder2.append(paramVideoFrameCaptureTask);
+      LogUtil.d("SuperPlayer-.FrameComparePipeLine", localStringBuilder2.toString());
+      localTaskResult.isBlack = true;
+    }
+    this.mTaskResultList.add(localTaskResult);
+    if (!localBitmap.isRecycled()) {
+      localBitmap.recycle();
     }
   }
   
@@ -215,7 +211,7 @@ public class FrameComparePipeLine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.framecheck.FrameComparePipeLine
  * JD-Core Version:    0.7.0.1
  */

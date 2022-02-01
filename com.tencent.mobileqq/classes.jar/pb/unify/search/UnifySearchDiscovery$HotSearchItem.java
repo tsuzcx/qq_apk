@@ -14,6 +14,7 @@ public final class UnifySearchDiscovery$HotSearchItem
   public final PBBytesField detail_text = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField img_bg_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField img_url = PBField.initBytes(ByteStringMicro.EMPTY);
+  public final PBBytesField item_ext = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField jump_url = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField mark_bg_color = PBField.initBytes(ByteStringMicro.EMPTY);
   public final PBBytesField mark_text_color = PBField.initBytes(ByteStringMicro.EMPTY);
@@ -26,6 +27,7 @@ public final class UnifySearchDiscovery$HotSearchItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
@@ -36,12 +38,13 @@ public final class UnifySearchDiscovery$HotSearchItem
     ByteStringMicro localByteStringMicro8 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro9 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro10 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 82, 88, 98 }, new String[] { "show_type", "img_url", "title", "detail_text", "jump_url", "mark_text_color", "mark_bg_color", "img_bg_url", "text_color", "right_icon_url", "wz_ts", "recall_word" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, Integer.valueOf(0), localByteStringMicro10 }, HotSearchItem.class);
+    ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 66, 74, 82, 88, 98, 106 }, new String[] { "show_type", "img_url", "title", "detail_text", "jump_url", "mark_text_color", "mark_bg_color", "img_bg_url", "text_color", "right_icon_url", "wz_ts", "recall_word", "item_ext" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localByteStringMicro5, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localByteStringMicro9, localInteger, localByteStringMicro10, localByteStringMicro11 }, HotSearchItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     pb.unify.search.UnifySearchDiscovery.HotSearchItem
  * JD-Core Version:    0.7.0.1
  */

@@ -52,17 +52,14 @@ public class BigHeadBuckler
   public void drawTexture(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, float[] paramArrayOfFloat3)
   {
     int i = this.mProgram;
-    float[] arrayOfFloat = paramArrayOfFloat1;
     if (paramArrayOfFloat1 == null) {
-      arrayOfFloat = sGIdentity;
-    }
-    paramArrayOfFloat1 = paramArrayOfFloat2;
-    if (paramArrayOfFloat2 == null) {
       paramArrayOfFloat1 = sGIdentity;
     }
-    paramArrayOfFloat2 = paramArrayOfFloat3;
-    if (paramArrayOfFloat3 == null) {
+    if (paramArrayOfFloat2 == null) {
       paramArrayOfFloat2 = sGIdentity;
+    }
+    if (paramArrayOfFloat3 == null) {
+      paramArrayOfFloat3 = sGIdentity;
     }
     GLES20.glUseProgram(i);
     int j = GLES20.glGetAttribLocation(i, "aPosition");
@@ -74,9 +71,9 @@ public class BigHeadBuckler
     GLES20.glEnableVertexAttribArray(j);
     GLES20.glVertexAttribPointer(k, 2, 5126, false, 8, TEXTURE_BUF);
     GLES20.glEnableVertexAttribArray(k);
-    GLES20.glUniformMatrix4fv(m, 1, false, paramArrayOfFloat2, 0);
-    GLES20.glUniformMatrix4fv(n, 1, false, arrayOfFloat, 0);
-    GLES20.glUniformMatrix4fv(i1, 1, false, paramArrayOfFloat1, 0);
+    GLES20.glUniformMatrix4fv(m, 1, false, paramArrayOfFloat3, 0);
+    GLES20.glUniformMatrix4fv(n, 1, false, paramArrayOfFloat1, 0);
+    GLES20.glUniformMatrix4fv(i1, 1, false, paramArrayOfFloat2, 0);
     GLES20.glActiveTexture(33984);
     GLES20.glBindTexture(this.mTextureType, paramInt1);
     GLES20.glUniform1i(GLES20.glGetUniformLocation(i, "uTexture"), 0);
@@ -86,9 +83,13 @@ public class BigHeadBuckler
     GLES20.glUniform1i(paramInt1, 1);
     GLES20.glDrawArrays(5, 0, 4);
     paramInt1 = GLES20.glGetError();
-    if (paramInt1 != 0) {
-      throw new RuntimeException("error =" + paramInt1);
+    if (paramInt1 == 0) {
+      return;
     }
+    paramArrayOfFloat1 = new StringBuilder();
+    paramArrayOfFloat1.append("error =");
+    paramArrayOfFloat1.append(paramInt1);
+    throw new RuntimeException(paramArrayOfFloat1.toString());
   }
   
   public void init()
@@ -97,15 +98,19 @@ public class BigHeadBuckler
       return;
     }
     this.mProgram = GlUtil.createProgram(this.mVertexShader, this.mFragmentShader);
-    if (this.mProgram == 0) {
-      new RuntimeException("failed creating program " + getClass().getSimpleName()).printStackTrace();
+    if (this.mProgram == 0)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("failed creating program ");
+      localStringBuilder.append(getClass().getSimpleName());
+      new RuntimeException(localStringBuilder.toString()).printStackTrace();
     }
     this.mIsInitialized = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.bighead.BigHeadBuckler
  * JD-Core Version:    0.7.0.1
  */

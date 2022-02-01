@@ -16,7 +16,6 @@ import android.webkit.ValueCallback;
 import android.webkit.WebChromeClient.CustomViewCallback;
 import android.webkit.WebChromeClient.FileChooserParams;
 import android.webkit.WebStorage.QuotaUpdater;
-import com.tencent.qqlive.module.videoreport.inject.webview.jsbridge.JsBridgeController;
 import com.tencent.qqlive.module.videoreport.inject.webview.jsinject.JsInjector;
 
 class SystemWebChromeClient
@@ -132,9 +131,6 @@ class SystemWebChromeClient
   
   public boolean onJsPrompt(android.webkit.WebView paramWebView, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    if (JsBridgeController.getInstance().shouldIntercept(paramWebView, paramString2, paramString1, paramJsPromptResult)) {
-      return true;
-    }
     this.a.a(paramWebView);
     return this.b.onJsPrompt(this.a, paramString1, paramString2, paramString3, new SystemWebChromeClient.d(this, paramJsPromptResult));
   }
@@ -234,7 +230,7 @@ class SystemWebChromeClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebChromeClient
  * JD-Core Version:    0.7.0.1
  */

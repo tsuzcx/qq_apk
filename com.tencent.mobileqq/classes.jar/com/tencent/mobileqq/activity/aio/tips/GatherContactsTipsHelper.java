@@ -15,27 +15,37 @@ public class GatherContactsTipsHelper
 {
   public static void a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (paramQQAppInterface != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       c(paramQQAppInterface, paramString);
-      MessageRecord localMessageRecord = MessageRecordFactory.a(-1026);
+      Object localObject = MessageRecordFactory.a(-1026);
       long l = MessageCache.a();
-      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1026, 0, l);
-      localMessageRecord.isread = true;
-      paramQQAppInterface.getMessageFacade().a(localMessageRecord, localMessageRecord.selfuin);
+      ((MessageRecord)localObject).init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1026, 0, l);
+      ((MessageRecord)localObject).isread = true;
+      paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject, ((MessageRecord)localObject).selfuin);
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004C56", "0X8004C56", 0, 0, "", "", "", "");
-    } while (!QLog.isColorLevel());
-    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("insertUncommonlyUsedContactsTips success, currentUin: ");
+        ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentAccountUin());
+        ((StringBuilder)localObject).append(" friendUin:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("GatherContactsTipsHelper", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, List<String> paramList)
   {
-    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if ((paramQQAppInterface != null) && (paramList != null))
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         a(paramQQAppInterface, (String)paramList.next());
@@ -45,27 +55,37 @@ public class GatherContactsTipsHelper
   
   public static void b(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
-    do
+    if (paramQQAppInterface != null)
     {
-      return;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
+      }
       c(paramQQAppInterface, paramString);
-      MessageRecord localMessageRecord = MessageRecordFactory.a(-1027);
+      Object localObject = MessageRecordFactory.a(-1027);
       long l = MessageCache.a();
-      localMessageRecord.init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1027, 0, l);
-      localMessageRecord.isread = true;
-      paramQQAppInterface.getMessageFacade().a(localMessageRecord, localMessageRecord.selfuin);
+      ((MessageRecord)localObject).init(paramQQAppInterface.getCurrentAccountUin(), paramString, paramString, "", l, -1027, 0, l);
+      ((MessageRecord)localObject).isread = true;
+      paramQQAppInterface.getMessageFacade().a((MessageRecord)localObject, ((MessageRecord)localObject).selfuin);
       ReportController.b(paramQQAppInterface, "CliOper", "", "", "0X8004C57", "0X8004C57", 0, 0, "", "", "", "");
-    } while (!QLog.isColorLevel());
-    QLog.d("GatherContactsTipsHelper", 2, "insertUncommonlyUsedContactsCancelSetTips success, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("insertUncommonlyUsedContactsCancelSetTips success, currentUin: ");
+        ((StringBuilder)localObject).append(paramQQAppInterface.getCurrentAccountUin());
+        ((StringBuilder)localObject).append(" friendUin:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("GatherContactsTipsHelper", 2, ((StringBuilder)localObject).toString());
+      }
+    }
   }
   
   public static void b(QQAppInterface paramQQAppInterface, List<String> paramList)
   {
-    if ((paramQQAppInterface == null) || (paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if ((paramQQAppInterface != null) && (paramList != null))
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext()) {
         b(paramQQAppInterface, (String)paramList.next());
@@ -75,15 +95,23 @@ public class GatherContactsTipsHelper
   
   public static void c(QQAppInterface paramQQAppInterface, String paramString)
   {
-    Iterator localIterator = paramQQAppInterface.getMessageFacade().b(paramString, 0).iterator();
+    Iterator localIterator = paramQQAppInterface.getMessageFacade().a(paramString, 0).iterator();
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
       if ((localMessageRecord.msgtype == -1026) || (localMessageRecord.msgtype == -1027))
       {
         paramQQAppInterface.getMessageFacade().b(paramString, 0, localMessageRecord.uniseq);
-        if (QLog.isColorLevel()) {
-          QLog.d("GatherContactsTipsHelper", 2, "deleteUncommonlyUsedContactsAndCancelTips, currentUin: " + paramQQAppInterface.getCurrentAccountUin() + " friendUin:" + paramString + " msgtype:" + localMessageRecord.msgtype);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("deleteUncommonlyUsedContactsAndCancelTips, currentUin: ");
+          localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+          localStringBuilder.append(" friendUin:");
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" msgtype:");
+          localStringBuilder.append(localMessageRecord.msgtype);
+          QLog.d("GatherContactsTipsHelper", 2, localStringBuilder.toString());
         }
       }
     }
@@ -91,7 +119,7 @@ public class GatherContactsTipsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.GatherContactsTipsHelper
  * JD-Core Version:    0.7.0.1
  */

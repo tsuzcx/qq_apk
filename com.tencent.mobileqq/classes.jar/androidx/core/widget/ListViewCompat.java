@@ -9,66 +9,58 @@ public final class ListViewCompat
 {
   public static boolean canScrollList(@NonNull ListView paramListView, int paramInt)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (Build.VERSION.SDK_INT >= 19) {
-      bool1 = paramListView.canScrollList(paramInt);
+      return paramListView.canScrollList(paramInt);
     }
-    label83:
-    do
+    int j = paramListView.getChildCount();
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (j == 0) {
+      return false;
+    }
+    int i = paramListView.getFirstVisiblePosition();
+    if (paramInt > 0)
     {
-      int i;
-      do
-      {
-        int j;
-        do
-        {
-          return bool1;
-          j = paramListView.getChildCount();
-          bool1 = bool2;
-        } while (j == 0);
-        i = paramListView.getFirstVisiblePosition();
-        if (paramInt <= 0) {
-          break label83;
-        }
-        paramInt = paramListView.getChildAt(j - 1).getBottom();
-        if (j + i < paramListView.getCount()) {
-          break;
-        }
-        bool1 = bool2;
-      } while (paramInt <= paramListView.getHeight() - paramListView.getListPaddingBottom());
-      return true;
-      paramInt = paramListView.getChildAt(0).getTop();
-      if (i > 0) {
-        break;
+      paramInt = paramListView.getChildAt(j - 1).getBottom();
+      if ((i + j < paramListView.getCount()) || (paramInt > paramListView.getHeight() - paramListView.getListPaddingBottom())) {
+        bool1 = true;
       }
+      return bool1;
+    }
+    paramInt = paramListView.getChildAt(0).getTop();
+    if (i <= 0)
+    {
       bool1 = bool2;
-    } while (paramInt >= paramListView.getListPaddingTop());
-    return true;
+      if (paramInt >= paramListView.getListPaddingTop()) {}
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static void scrollListBy(@NonNull ListView paramListView, int paramInt)
   {
-    if (Build.VERSION.SDK_INT >= 19) {
-      paramListView.scrollListBy(paramInt);
-    }
-    int i;
-    View localView;
-    do
+    if (Build.VERSION.SDK_INT >= 19)
     {
-      do
-      {
-        return;
-        i = paramListView.getFirstVisiblePosition();
-      } while (i == -1);
-      localView = paramListView.getChildAt(0);
-    } while (localView == null);
+      paramListView.scrollListBy(paramInt);
+      return;
+    }
+    int i = paramListView.getFirstVisiblePosition();
+    if (i == -1) {
+      return;
+    }
+    View localView = paramListView.getChildAt(0);
+    if (localView == null) {
+      return;
+    }
     paramListView.setSelectionFromTop(i, localView.getTop() - paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.ListViewCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -14,6 +14,7 @@ import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.PicUpR
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.C2CPicUpResp;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -35,22 +36,25 @@ public class ShareToWXUploadProcessor
   
   private final void sendRequest()
   {
-    this.mStepUrl.logStartTime();
+    this.mProcessorReport.mStepUrl.logStartTime();
     RichProto.RichProtoReq localRichProtoReq = buildRichProtoReq();
     if (!isAppValid())
     {
-      setError(9366, "illegal app", null, this.mStepUrl);
+      this.mProcessorReport.setError(9366, "illegal app", null, this.mProcessorReport.mStepUrl);
       onError();
-    }
-    do
-    {
       return;
-      if (QLog.isColorLevel()) {
-        logRichMediaEvent("requestStart", localRichProtoReq.toString());
-      }
-    } while ((!canDoNextStep()) || (localRichProtoReq == null));
-    this.mRichProtoReq = localRichProtoReq;
-    RichProtoProc.procRichProtoReq(localRichProtoReq);
+    }
+    if (QLog.isColorLevel()) {
+      logRichMediaEvent("requestStart", localRichProtoReq.toString());
+    }
+    if (!canDoNextStep()) {
+      return;
+    }
+    if (localRichProtoReq != null)
+    {
+      this.mRichProtoReq = localRichProtoReq;
+      RichProtoProc.procRichProtoReq(localRichProtoReq);
+    }
   }
   
   protected RichProto.RichProtoReq buildRichProtoReq()
@@ -75,23 +79,28 @@ public class ShareToWXUploadProcessor
   
   protected void doReport(boolean paramBoolean)
   {
-    long l = System.currentTimeMillis() - this.mStartTime;
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "doReport, timeCost:" + l + " mFileSize:" + this.mFileSize + " errorCode:" + this.errCode);
+    long l = System.currentTimeMillis() - this.mProcessorReport.mStartTime;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doReport, timeCost:");
+      localStringBuilder.append(l);
+      localStringBuilder.append(" mFileSize:");
+      localStringBuilder.append(this.mFileSize);
+      localStringBuilder.append(" errorCode:");
+      localStringBuilder.append(this.mProcessorReport.errCode);
+      QLog.d("ShareToWXUploadProcessor", 2, localStringBuilder.toString());
     }
     if (paramBoolean) {
-      this.mReportInfo.put("param_succ_flag", "1");
+      this.mProcessorReport.mReportInfo.put("param_succ_flag", "1");
+    } else {
+      this.mProcessorReport.mReportInfo.put("param_succ_flag", "0");
     }
-    for (;;)
-    {
-      this.mReportInfo.put("param_picSize", String.valueOf(this.mFileSize));
-      this.mReportInfo.put("param_errorDesc", this.errDesc);
-      this.mReportInfo.put("param_FailCode", String.valueOf(this.errCode));
-      this.mReportInfo.put("param_time_cost", String.valueOf(l));
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPicShareToWXUpload", paramBoolean, l, this.mFileSize, this.mReportInfo, null);
-      return;
-      this.mReportInfo.put("param_succ_flag", "0");
-    }
+    this.mProcessorReport.mReportInfo.put("param_picSize", String.valueOf(this.mFileSize));
+    this.mProcessorReport.mReportInfo.put("param_errorDesc", this.mProcessorReport.errDesc);
+    this.mProcessorReport.mReportInfo.put("param_FailCode", String.valueOf(this.mProcessorReport.errCode));
+    this.mProcessorReport.mReportInfo.put("param_time_cost", String.valueOf(l));
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actPicShareToWXUpload", paramBoolean, l, this.mFileSize, this.mProcessorReport.mReportInfo, null);
   }
   
   public final void onBusiProtoResp(RichProto.RichProtoReq paramRichProtoReq, RichProto.RichProtoResp paramRichProtoResp)
@@ -99,15 +108,19 @@ public class ShareToWXUploadProcessor
     if (paramRichProtoResp != null)
     {
       int i = 0;
-      if (i < paramRichProtoResp.resps.size())
+      while (i < paramRichProtoResp.resps.size())
       {
         paramRichProtoReq = (RichProto.RichProtoResp.C2CPicUpResp)paramRichProtoResp.resps.get(i);
         if (QLog.isColorLevel()) {
           logRichMediaEvent("onBusiProtoResp", paramRichProtoReq.toString());
         }
-        copyRespCommon(this.mStepUrl, paramRichProtoReq);
-        if (QLog.isColorLevel()) {
-          QLog.d("ShareToWXUploadProcessor", 2, "onBusiProtoResp()------response.result = " + paramRichProtoReq.result);
+        this.mProcessorReport.copyRespCommon(this.mProcessorReport.mStepUrl, paramRichProtoReq);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onBusiProtoResp()------response.result = ");
+          localStringBuilder.append(paramRichProtoReq.result);
+          QLog.d("ShareToWXUploadProcessor", 2, localStringBuilder.toString());
         }
         if (paramRichProtoReq.result == 0)
         {
@@ -117,20 +130,25 @@ public class ShareToWXUploadProcessor
           {
             this.file.closeInputStream();
             onSuccess();
-            if (QLog.isColorLevel()) {
-              QLog.d("ShareToWXUploadProcessor", 2, "onBusiProtoResp()---- file is Exsit! " + this.mUiRequest.mLocalPath);
+            if (QLog.isColorLevel())
+            {
+              paramRichProtoReq = new StringBuilder();
+              paramRichProtoReq.append("onBusiProtoResp()---- file is Exsit! ");
+              paramRichProtoReq.append(this.mUiRequest.mLocalPath);
+              QLog.d("ShareToWXUploadProcessor", 2, paramRichProtoReq.toString());
             }
           }
+          else
+          {
+            this.mStartOffset = paramRichProtoReq.startOffset;
+            sendFileBDH();
+          }
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
-          this.mStartOffset = paramRichProtoReq.startOffset;
-          sendFileBDH();
-          continue;
           onError();
         }
+        i += 1;
       }
     }
   }
@@ -147,16 +165,15 @@ public class ShareToWXUploadProcessor
       localSendResult.e = this.file.orgiDownUrl;
       this.mUiRequest.mUpCallBack.b(localSendResult);
     }
-    for (;;)
+    else
     {
-      sendMessageToUpdate(1003);
-      if (this.mRichProtoReq != null)
-      {
-        RichProtoProc.cancelRichProtoReq(this.mRichProtoReq);
-        this.mRichProtoReq = null;
-      }
-      return;
       updateMessageDataBaseContent(true);
+    }
+    sendMessageToUpdate(1003);
+    if (this.mRichProtoReq != null)
+    {
+      RichProtoProc.cancelRichProtoReq(this.mRichProtoReq);
+      this.mRichProtoReq = null;
     }
   }
   
@@ -165,17 +182,31 @@ public class ShareToWXUploadProcessor
     if (QLog.isColorLevel()) {
       QLog.d("ShareToWXUploadProcessor", 2, "sendFileBDH");
     }
-    this.mStepTrans.logStartTime();
-    Object localObject = new ShareToWXUploadProcessor.1(this, SystemClock.uptimeMillis());
-    byte[] arrayOfByte = HexUtil.hexStr2Bytes(this.mUkey);
-    localObject = new Transaction(this.app.getCurrentAccountUin(), 73, this.mUiRequest.mLocalPath, (int)this.mStartOffset, arrayOfByte, this.mLocalMd5, (ITransactionCallback)localObject);
-    int i = this.app.getHwEngine().submitTransactionTask((Transaction)localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShareToWXUploadProcessor", 2, "<BDH_LOG> Transaction submit RetCode:" + i + " T_ID:" + ((Transaction)localObject).getTransationId() + " UniSeq:" + this.mUiRequest.mUniseq + " MD5:" + this.mMd5Str + " Path:" + ((Transaction)localObject).filePath + " Cmd:" + 73);
+    this.mProcessorReport.mStepTrans.logStartTime();
+    Object localObject1 = new ShareToWXUploadProcessor.1(this, SystemClock.uptimeMillis());
+    Object localObject2 = HexUtil.hexStr2Bytes(this.mUkey);
+    localObject1 = new Transaction(this.app.getCurrentAccountUin(), 73, this.mUiRequest.mLocalPath, (int)this.mStartOffset, (byte[])localObject2, this.mLocalMd5, (ITransactionCallback)localObject1);
+    int i = this.app.getHwEngine().submitTransactionTask((Transaction)localObject1);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("<BDH_LOG> Transaction submit RetCode:");
+      ((StringBuilder)localObject2).append(i);
+      ((StringBuilder)localObject2).append(" T_ID:");
+      ((StringBuilder)localObject2).append(((Transaction)localObject1).getTransationId());
+      ((StringBuilder)localObject2).append(" UniSeq:");
+      ((StringBuilder)localObject2).append(this.mUiRequest.mUniseq);
+      ((StringBuilder)localObject2).append(" MD5:");
+      ((StringBuilder)localObject2).append(this.mMd5Str);
+      ((StringBuilder)localObject2).append(" Path:");
+      ((StringBuilder)localObject2).append(((Transaction)localObject1).filePath);
+      ((StringBuilder)localObject2).append(" Cmd:");
+      ((StringBuilder)localObject2).append(73);
+      QLog.d("ShareToWXUploadProcessor", 2, ((StringBuilder)localObject2).toString());
     }
     if (i != 0)
     {
-      setError(i, "SubmitError.", "", this.mStepTrans);
+      this.mProcessorReport.setError(i, "SubmitError.", "", this.mProcessorReport.mStepTrans);
       onError();
     }
   }
@@ -195,7 +226,7 @@ public class ShareToWXUploadProcessor
     long l = new File(str).length();
     this.file.fileSize = l;
     this.mFileSize = l;
-    str = FileUtils.b(str);
+    str = FileUtils.estimateFileType(str);
     if (!TextUtils.isEmpty(str)) {
       this.mExtName = str;
     }
@@ -204,7 +235,7 @@ public class ShareToWXUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ShareToWXUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

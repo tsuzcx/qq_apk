@@ -21,22 +21,31 @@ public class LocationColorNoteServiceInfo
   public ColorNote getColorNote()
   {
     ColorNote.Builder localBuilder = new ColorNote.Builder();
-    if (QLog.isColorLevel()) {
-      QLog.i("FavColorNoteServiceInfo", 2, "getColorNote: colorNote key [" + "qfav" + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getColorNote: colorNote key [");
+      ((StringBuilder)localObject).append("qfav");
+      ((StringBuilder)localObject).append("]");
+      QLog.i("FavColorNoteServiceInfo", 2, ((StringBuilder)localObject).toString());
     }
-    String str1 = this.jdField_a_of_type_AndroidContentContext.getString(2131689571);
-    String str2 = this.jdField_a_of_type_AndroidContentContext.getString(2131692258);
+    Object localObject = this.jdField_a_of_type_AndroidContentContext.getString(2131689603);
+    String str = this.jdField_a_of_type_AndroidContentContext.getString(2131692184);
     localBuilder.a(17104896);
-    localBuilder.a("" + this.jdField_a_of_type_JavaLangLong + "-4");
-    localBuilder.b(str1);
-    localBuilder.c(str2);
-    localBuilder.d("resdrawable://2130844321");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangLong);
+    localStringBuilder.append("-4");
+    localBuilder.a(localStringBuilder.toString());
+    localBuilder.b((String)localObject);
+    localBuilder.c(str);
+    localBuilder.d("resdrawable://2130844227");
     return localBuilder.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.widget.LocationColorNoteServiceInfo
  * JD-Core Version:    0.7.0.1
  */

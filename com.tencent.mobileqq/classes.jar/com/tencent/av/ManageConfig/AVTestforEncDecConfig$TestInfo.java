@@ -32,29 +32,43 @@ public class AVTestforEncDecConfig$TestInfo
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("TestInfo{");
-    localStringBuffer.append("taskId='").append(this.jdField_a_of_type_Int).append('\'');
-    localStringBuffer.append(", codec=").append(this.b);
-    localStringBuffer.append(", min_sdk=").append(this.c);
-    localStringBuffer.append(", async_min_sdk=").append(this.d);
-    localStringBuffer.append(", min_version=").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuffer.append(", test_ver=").append(this.e);
-    if (this.jdField_a_of_type_JavaUtilArrayList != null) {
-      localStringBuffer.append(", disable_sdks=").append(Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray()));
-    }
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    localStringBuffer.append("taskId='");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", codec=");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append(", min_sdk=");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append(", async_min_sdk=");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append(", min_version=");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(", test_ver=");
+    localStringBuffer.append(this.e);
+    if (this.jdField_a_of_type_JavaUtilArrayList != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-      while (localIterator.hasNext())
+      localStringBuffer.append(", disable_sdks=");
+      localStringBuffer.append(Arrays.toString(this.jdField_a_of_type_JavaUtilArrayList.toArray()));
+    }
+    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject1 != null)
+    {
+      localObject1 = ((HashMap)localObject1).entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject = (Map.Entry)localIterator.next();
-        String str = (String)((Map.Entry)localObject).getKey();
-        localObject = (AVTestforEncDecConfig.Sample)((Map.Entry)localObject).getValue();
-        localStringBuffer.append(", codecKey=").append(str);
-        localStringBuffer.append(", codecValue=").append(localObject);
+        Object localObject2 = (Map.Entry)((Iterator)localObject1).next();
+        String str = (String)((Map.Entry)localObject2).getKey();
+        localObject2 = (AVTestforEncDecConfig.Sample)((Map.Entry)localObject2).getValue();
+        localStringBuffer.append(", codecKey=");
+        localStringBuffer.append(str);
+        localStringBuffer.append(", codecValue=");
+        localStringBuffer.append(localObject2);
       }
     }
-    localStringBuffer.append(", upload = ").append(this.jdField_a_of_type_Boolean);
-    localStringBuffer.append(", expdate = ").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append(", upload = ");
+    localStringBuffer.append(this.jdField_a_of_type_Boolean);
+    localStringBuffer.append(", expdate = ");
+    localStringBuffer.append(this.jdField_a_of_type_Long);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }

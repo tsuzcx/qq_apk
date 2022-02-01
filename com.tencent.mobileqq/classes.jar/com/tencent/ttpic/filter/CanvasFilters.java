@@ -16,106 +16,90 @@ public class CanvasFilters
   
   private float[] calculateTexPosTriangles(GridModel paramGridModel, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
   {
-    int j = paramInt3;
-    int i = paramInt4;
     if (paramGridModel.positionMode == 0)
     {
-      j = paramInt3 * paramInt5 / paramInt1;
-      i = paramInt4 * paramInt6 / paramInt2;
+      paramInt3 = paramInt3 * paramInt5 / paramInt1;
+      paramInt1 = paramInt4 * paramInt6 / paramInt2;
+    }
+    else
+    {
+      paramInt1 = paramInt4;
     }
     if (paramGridModel.aspectMode == 1) {
       return new float[] { 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 0.0F };
     }
-    float f1 = j / i;
-    float f2 = paramInt5 / paramInt6;
-    if (f1 > f2)
+    float f1 = paramInt3;
+    float f2 = paramInt1;
+    float f3 = f1 / f2;
+    float f4 = paramInt5 / paramInt6;
+    if (f3 > f4)
     {
-      f1 = j / f2;
-      paramGridModel = new PointF(0.0F, 0.5F + 0.5F * i / f1);
-      localPointF1 = new PointF(0.0F, 0.5F - 0.5F * i / f1);
-      localPointF2 = new PointF(1.0F, 0.5F - 0.5F * i / f1);
-      localPointF3 = new PointF(1.0F, 0.5F * i / f1 + 0.5F);
+      f2 = f2 * 0.5F / (f1 / f4);
+      f1 = f2 + 0.5F;
+      paramGridModel = new PointF(0.0F, f1);
+      f2 = 0.5F - f2;
+      localPointF1 = new PointF(0.0F, f2);
+      localPointF2 = new PointF(1.0F, f2);
+      localPointF3 = new PointF(1.0F, f1);
       return new float[] { localPointF1.x, localPointF1.y, paramGridModel.x, paramGridModel.y, localPointF3.x, localPointF3.y, localPointF1.x, localPointF1.y, localPointF3.x, localPointF3.y, localPointF2.x, localPointF2.y };
     }
-    f1 = i * f2;
-    paramGridModel = new PointF(0.5F - 0.5F * j / f1, 1.0F);
-    PointF localPointF1 = new PointF(0.5F - 0.5F * j / f1, 0.0F);
-    PointF localPointF2 = new PointF(0.5F + 0.5F * j / f1, 0.0F);
-    PointF localPointF3 = new PointF(0.5F * j / f1 + 0.5F, 1.0F);
+    f1 = f1 * 0.5F / (f2 * f4);
+    f2 = 0.5F - f1;
+    paramGridModel = new PointF(f2, 1.0F);
+    PointF localPointF1 = new PointF(f2, 0.0F);
+    f1 += 0.5F;
+    PointF localPointF2 = new PointF(f1, 0.0F);
+    PointF localPointF3 = new PointF(f1, 1.0F);
     return new float[] { localPointF1.x, localPointF1.y, paramGridModel.x, paramGridModel.y, localPointF3.x, localPointF3.y, localPointF1.x, localPointF1.y, localPointF3.x, localPointF3.y, localPointF2.x, localPointF2.y };
   }
   
   private float[] calculateVerPosTriangles(GridModel paramGridModel, int paramInt1, int paramInt2, float paramFloat)
   {
-    float f1 = paramInt1 / paramInt2;
+    float f1 = paramInt1;
+    float f2 = paramInt2;
+    float f3 = f1 / f2;
     Object localObject1 = new float[12];
-    if ((Math.abs(f1 - paramFloat) < 0.0001D) || (paramGridModel.positionMode == 0)) {
-      localObject1 = AlgoUtils.calPositionsTriangles(paramGridModel.canvasRect.x, paramGridModel.canvasRect.y, paramGridModel.canvasRect.x + paramGridModel.canvasRect.width, paramGridModel.canvasRect.y + paramGridModel.canvasRect.height, paramInt1, paramInt2);
-    }
-    for (;;)
+    if ((Math.abs(f3 - paramFloat) >= 0.0001D) && (paramGridModel.positionMode != 0))
     {
-      Object localObject2 = localObject1;
-      float f2;
-      float f3;
-      if (BitUtils.checkBit(paramGridModel.transformType, FabbyUtil.TransformType.MIRROR_TOP_BOTTOM.value))
+      if (f3 > paramFloat)
       {
-        paramFloat = localObject1[0];
-        f1 = localObject1[1];
-        f2 = localObject1[3];
-        f3 = localObject1[4];
-        localObject2 = new float[12];
-        localObject2[0] = paramFloat;
-        localObject2[1] = f2;
-        localObject2[2] = paramFloat;
-        localObject2[3] = f1;
-        localObject2[4] = f3;
-        localObject2[5] = f1;
-        localObject2[6] = paramFloat;
-        localObject2[7] = f2;
-        localObject2[8] = f3;
-        localObject2[9] = f1;
-        localObject2[10] = f3;
-        localObject2[11] = f2;
-      }
-      localObject1 = localObject2;
-      if (BitUtils.checkBit(paramGridModel.transformType, FabbyUtil.TransformType.MIRROR_LEFT_RIGHT.value))
-      {
-        paramFloat = localObject2[0];
-        f1 = localObject2[1];
-        f2 = localObject2[3];
-        f3 = localObject2[4];
-        localObject1 = new float[12];
-        localObject1[0] = f3;
-        localObject1[1] = f1;
-        localObject1[2] = f3;
-        localObject1[3] = f2;
-        localObject1[4] = paramFloat;
-        localObject1[5] = f2;
-        localObject1[6] = f3;
-        localObject1[7] = f1;
-        localObject1[8] = paramFloat;
-        localObject1[9] = f2;
-        localObject1[10] = paramFloat;
-        localObject1[11] = f1;
-      }
-      return localObject1;
-      if (f1 > paramFloat)
-      {
-        paramFloat = paramInt2 * paramFloat;
-        f1 = (paramInt1 - paramFloat) / 2.0F;
+        paramFloat = f2 * paramFloat;
+        f1 = (f1 - paramFloat) / 2.0F;
         f1 = paramGridModel.canvasRect.x - f1;
         f2 = paramGridModel.canvasRect.y;
         localObject1 = AlgoUtils.calPositionsTriangles(f1, f2, paramGridModel.canvasRect.width + f1, paramGridModel.canvasRect.height + f2, (int)paramFloat, paramInt2);
       }
       else
       {
-        paramFloat = paramInt1 / paramFloat;
-        f2 = (paramInt2 - paramFloat) / 2.0F;
+        paramFloat = f1 / paramFloat;
+        f2 = (f2 - paramFloat) / 2.0F;
         f1 = paramGridModel.canvasRect.x;
         f2 = paramGridModel.canvasRect.y - f2;
         localObject1 = AlgoUtils.calPositionsTriangles(f1, f2, paramGridModel.canvasRect.width + f1, paramGridModel.canvasRect.height + f2, paramInt1, (int)paramFloat);
       }
     }
+    else {
+      localObject1 = AlgoUtils.calPositionsTriangles(paramGridModel.canvasRect.x, paramGridModel.canvasRect.y, paramGridModel.canvasRect.x + paramGridModel.canvasRect.width, paramGridModel.canvasRect.y + paramGridModel.canvasRect.height, paramInt1, paramInt2);
+    }
+    Object localObject2 = localObject1;
+    if (BitUtils.checkBit(paramGridModel.transformType, FabbyUtil.TransformType.MIRROR_TOP_BOTTOM.value))
+    {
+      paramFloat = localObject1[0];
+      f1 = localObject1[1];
+      f2 = localObject1[3];
+      f3 = localObject1[4];
+      localObject2 = new float[] { paramFloat, f2, paramFloat, f1, f3, f1, paramFloat, f2, f3, f1, f3, f2 };
+    }
+    localObject1 = localObject2;
+    if (BitUtils.checkBit(paramGridModel.transformType, FabbyUtil.TransformType.MIRROR_LEFT_RIGHT.value))
+    {
+      paramFloat = localObject2[0];
+      f1 = localObject2[1];
+      f2 = localObject2[3];
+      f3 = localObject2[4];
+      localObject1 = new float[] { f3, f1, f3, f2, paramFloat, f2, f3, f1, paramFloat, f2, paramFloat, f1 };
+    }
+    return localObject1;
   }
   
   public void ApplyGLSLFilter()
@@ -151,7 +135,7 @@ public class CanvasFilters
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.CanvasFilters
  * JD-Core Version:    0.7.0.1
  */

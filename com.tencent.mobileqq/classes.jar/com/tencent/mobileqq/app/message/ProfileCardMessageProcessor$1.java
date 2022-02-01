@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.app.message;
 
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
 
 class ProfileCardMessageProcessor$1
   implements Runnable
@@ -19,7 +19,7 @@ class ProfileCardMessageProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.ProfileCardMessageProcessor.1
  * JD-Core Version:    0.7.0.1
  */

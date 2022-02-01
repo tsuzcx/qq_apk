@@ -20,33 +20,63 @@ public abstract class ScreenLayout
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
-    QLog.d("ScreenLayout", 1, "ScreenLayout. onCreate." + this);
+    paramContext = new StringBuilder();
+    paramContext.append("ScreenLayout. onCreate.");
+    paramContext.append(this);
+    QLog.d("ScreenLayout", 1, paramContext.toString());
   }
   
   public static ScreenLayout a(Context paramContext, VideoAppInterface paramVideoAppInterface, int paramInt, boolean paramBoolean)
   {
     Object localObject = null;
-    switch (paramInt)
-    {
-    default: 
-      paramContext = localObject;
+    if (paramInt != 1) {
+      if (paramInt != 2) {
+        if (paramInt != 3) {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5)
+            {
+              paramContext = localObject;
+              break label187;
+            }
+            if (!paramBoolean) {}
+          }
+        }
+      }
     }
-    for (;;)
+    try
     {
-      return paramContext;
+      paramContext = new ScreenLayoutWatchTogetherDoubleUI(paramContext, paramVideoAppInterface);
+    }
+    finally
+    {
+      for (;;)
+      {
+        for (;;)
+        {
+          label187:
+          throw paramContext;
+        }
+      }
+    }
+    paramContext = new ScreenLayoutSliderWindow(paramContext, paramVideoAppInterface);
+    break label204;
+    if (paramBoolean)
+    {
+      paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
+    }
+    else
+    {
+      paramContext = new ScreenLayoutSliderWindow(paramContext, paramVideoAppInterface);
+      break label204;
       if (paramBoolean)
       {
-        try
-        {
-          paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
-          continue;
-        }
-        finally {}
+        paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
       }
       else
       {
-        paramContext = new ScreenLayoutOrigin(paramContext, paramVideoAppInterface);
-        continue;
+        paramContext = new ScreenLayoutMultipleGrid(paramContext, paramVideoAppInterface);
+        break label204;
         if (paramBoolean)
         {
           paramContext = new ScreenLayoutSmallUIDouble(paramContext, paramVideoAppInterface);
@@ -54,29 +84,16 @@ public abstract class ScreenLayout
         else
         {
           paramContext = new ScreenLayoutDoubleScreen(paramContext, paramVideoAppInterface);
-          continue;
+          break label204;
           if (paramBoolean)
           {
             paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
           }
           else
           {
-            paramContext = new ScreenLayoutMultipleGrid(paramContext, paramVideoAppInterface);
-            continue;
-            if (paramBoolean)
-            {
-              paramContext = new ScreenLayoutSmallUIOrigin(paramContext, paramVideoAppInterface);
-            }
-            else
-            {
-              paramContext = new ScreenLayoutSliderWindow(paramContext, paramVideoAppInterface);
-              continue;
-              if (paramBoolean) {
-                paramContext = new ScreenLayoutWatchTogetherDoubleUI(paramContext, paramVideoAppInterface);
-              } else {
-                paramContext = new ScreenLayoutSliderWindow(paramContext, paramVideoAppInterface);
-              }
-            }
+            paramContext = new ScreenLayoutOrigin(paramContext, paramVideoAppInterface);
+            break label204;
+            return paramContext;
           }
         }
       }
@@ -87,7 +104,10 @@ public abstract class ScreenLayout
   
   public void a()
   {
-    QLog.d("ScreenLayout", 1, "ScreenLayout. onDestroy." + this);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ScreenLayout. onDestroy.");
+    localStringBuilder.append(this);
+    QLog.d("ScreenLayout", 1, localStringBuilder.toString());
     this.jdField_a_of_type_AndroidContentContext = null;
   }
   
@@ -123,7 +143,7 @@ public abstract class ScreenLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.ScreenLayout
  * JD-Core Version:    0.7.0.1
  */

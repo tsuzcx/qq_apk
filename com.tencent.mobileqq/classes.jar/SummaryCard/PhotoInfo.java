@@ -43,8 +43,9 @@ public final class PhotoInfo
     paramJceOutputStream.write(this.strPicUrl, 0);
     paramJceOutputStream.write(this.uPhotoTimestamp, 1);
     paramJceOutputStream.write(this.IsOnlySelf, 2);
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 3);
+    Map localMap = this.mapEx;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 3);
     }
   }
 }

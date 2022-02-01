@@ -7,8 +7,8 @@ import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qzone.api.FeedViewHolderInterface;
+import com.tencent.qzonehub.api.contentbox.IFeedViewHolderInterface;
+import com.tencent.qzonehub.api.contentbox.IMQMsg;
 import cooperation.qzone.contentbox.model.MQLikeCell;
 import cooperation.qzone.contentbox.model.MQMsg;
 import cooperation.qzone.contentbox.model.MQMsgBody;
@@ -32,10 +32,10 @@ public class QZoneMsgAdapter
   public static final int TYPE_NEW_LARGE = 1;
   public static final int TYPE_NEW_SMALL = 2;
   public static final int TYPE_NORMAL = 0;
-  private ArrayList<MQMsg> MQMsgs = new ArrayList();
+  private ArrayList<IMQMsg> MQMsgs = new ArrayList();
   private boolean isNightMode;
   private BaseActivity mActivity;
-  private FeedViewHolderInterface mFeedHolder;
+  private IFeedViewHolderInterface mFeedHolder;
   private boolean mShowFeeds;
   private boolean mUseNewUI;
   private MsgOnClickListener msgOnClickListener;
@@ -46,36 +46,49 @@ public class QZoneMsgAdapter
     this.mActivity = paramBaseActivity;
   }
   
-  private void reportExpose(MQMsg paramMQMsg, int paramInt)
+  private void reportExpose(ArrayList<IMQMsg> paramArrayList, int paramInt)
   {
-    LpReportInfo_dc02880 localLpReportInfo_dc028801;
-    if ((paramMQMsg != null) && (paramInt == 0))
+    if ((paramArrayList != null) && (paramArrayList.size() > 0) && (paramInt == 0))
     {
-      if (!paramMQMsg.isRecommGuideCard()) {
-        break label65;
-      }
-      LpReportInfo_dc02880 localLpReportInfo_dc028802 = new LpReportInfo_dc02880(9, 1);
-      localLpReportInfo_dc028801 = localLpReportInfo_dc028802;
-      if (paramMQMsg.postGuide != null)
+      Iterator localIterator = paramArrayList.iterator();
+      while (localIterator.hasNext())
       {
-        localLpReportInfo_dc028802.reserves8 = String.valueOf(paramMQMsg.postGuide.leadType);
-        localLpReportInfo_dc028801 = localLpReportInfo_dc028802;
-      }
-    }
-    for (;;)
-    {
-      LpReportManager.getInstance().reportToDC02880(localLpReportInfo_dc028801, false, true);
-      return;
-      label65:
-      localLpReportInfo_dc028801 = new LpReportInfo_dc02880(8, 1, null, paramMQMsg.reportValue);
-      localLpReportInfo_dc028801.reserves6 = paramMQMsg.getReportRev6();
-      if ((paramMQMsg.expand != null) && (paramMQMsg.expand.containsKey("feedid"))) {
-        localLpReportInfo_dc028801.reserves3 = ((String)paramMQMsg.expand.get("feedid"));
+        MQMsg localMQMsg = QZoneMsgManager.getMqMsg((IMQMsg)localIterator.next());
+        if (localMQMsg != null)
+        {
+          LpReportInfo_dc02880 localLpReportInfo_dc02880;
+          if (localMQMsg.isRecommGuideCard())
+          {
+            localLpReportInfo_dc02880 = new LpReportInfo_dc02880(9, 1);
+            paramArrayList = localLpReportInfo_dc02880;
+            if (localMQMsg.postGuide != null)
+            {
+              localLpReportInfo_dc02880.reserves8 = String.valueOf(localMQMsg.postGuide.leadType);
+              paramArrayList = localLpReportInfo_dc02880;
+            }
+          }
+          else
+          {
+            localLpReportInfo_dc02880 = new LpReportInfo_dc02880(8, 1, null, localMQMsg.reportValue);
+            localLpReportInfo_dc02880.reserves6 = localMQMsg.getReportRev6();
+            paramArrayList = localLpReportInfo_dc02880;
+            if (localMQMsg.expand != null)
+            {
+              paramArrayList = localLpReportInfo_dc02880;
+              if (localMQMsg.expand.containsKey("feedid"))
+              {
+                localLpReportInfo_dc02880.reserves3 = ((String)localMQMsg.expand.get("feedid"));
+                paramArrayList = localLpReportInfo_dc02880;
+              }
+            }
+          }
+          LpReportManager.getInstance().reportToDC02880(paramArrayList, false, true);
+        }
       }
     }
   }
   
-  public void addMQMsgs(ArrayList<MQMsg> paramArrayList)
+  public void addMQMsgs(ArrayList<IMQMsg> paramArrayList)
   {
     if (paramArrayList != null)
     {
@@ -91,10 +104,11 @@ public class QZoneMsgAdapter
   
   public Object getItem(int paramInt)
   {
-    if ((this.MQMsgs == null) || (paramInt < 0) || (paramInt >= this.MQMsgs.size())) {
-      return null;
+    ArrayList localArrayList = this.MQMsgs;
+    if ((localArrayList != null) && (paramInt >= 0) && (paramInt < localArrayList.size())) {
+      return this.MQMsgs.get(paramInt);
     }
-    return this.MQMsgs.get(paramInt);
+    return null;
   }
   
   public long getItemId(int paramInt)
@@ -119,172 +133,205 @@ public class QZoneMsgAdapter
   
   public MQMsg getLastMQMsg()
   {
-    if (this.MQMsgs.isEmpty()) {
+    boolean bool = this.MQMsgs.isEmpty();
+    MQMsg localMQMsg = null;
+    if (bool) {
       return null;
     }
     Iterator localIterator = this.MQMsgs.iterator();
-    Object localObject1 = null;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
-      MQMsg localMQMsg = (MQMsg)localIterator.next();
-      Object localObject2;
-      if (localObject1 == null) {
-        localObject2 = localMQMsg;
-      }
-      for (;;)
-      {
-        localObject1 = localObject2;
-        break;
-        localObject2 = localMQMsg;
-        if (localObject1.pushTime > localMQMsg.pushTime) {
-          localObject2 = localObject1;
-        }
+      IMQMsg localIMQMsg = (IMQMsg)localIterator.next();
+      if (localMQMsg == null) {
+        localMQMsg = QZoneMsgManager.getMqMsg(localIMQMsg);
+      } else if (localMQMsg.getPushTime() <= localIMQMsg.getPushTime()) {
+        localMQMsg = QZoneMsgManager.getMqMsg(localIMQMsg);
       }
     }
-    return localObject1;
+    return localMQMsg;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    int i = getItemViewType(paramInt);
+    if (paramView == null)
+    {
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i == 3)
+            {
+              paramView = this.mActivity;
+              paramView = new MsgNewGuideCardView(paramView, paramView.app);
+              paramView.initDateRegion((MQMsg)getItem(paramInt), paramInt);
+              paramView.setData((MQMsg)getItem(paramInt));
+              paramView.setMsgOnClickListener(this.msgOnClickListener);
+            }
+          }
+          else
+          {
+            paramView = this.mActivity;
+            paramView = new MsgNewSmallCardView(paramView, paramView.app);
+            paramView.setData((MQMsg)getItem(paramInt));
+            paramView.setMsgOnClickListener(this.msgOnClickListener);
+          }
+        }
+        else
+        {
+          paramView = this.mActivity;
+          paramView = new MsgNewLargeCardView(paramView, paramView.app);
+          paramView.initDateRegion((MQMsg)getItem(paramInt), paramInt);
+          paramView.setData((MQMsg)getItem(paramInt));
+          paramView.setMsgOnClickListener(this.msgOnClickListener);
+        }
+      }
+      else
+      {
+        paramView = this.mActivity;
+        paramView = new MsgCardView(paramView, paramView.app);
+        paramView.setMsgOnClickListener(this.msgOnClickListener);
+        paramView.setData(paramInt, (MQMsg)getItem(paramInt), this.isNightMode, this.mUseNewUI);
+      }
+    }
+    else if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i == 3)
+          {
+            localObject1 = (MsgNewGuideCardView)paramView;
+            ((MsgNewGuideCardView)localObject1).setMsgOnClickListener(this.msgOnClickListener);
+            ((MsgNewGuideCardView)localObject1).initDateRegion((MQMsg)getItem(paramInt), paramInt);
+            ((MsgNewGuideCardView)localObject1).setData((MQMsg)getItem(paramInt));
+          }
+        }
+        else
+        {
+          localObject1 = (MsgNewSmallCardView)paramView;
+          ((MsgNewSmallCardView)localObject1).setMsgOnClickListener(this.msgOnClickListener);
+          ((MsgNewSmallCardView)localObject1).setData((MQMsg)getItem(paramInt));
+        }
+      }
+      else
+      {
+        localObject1 = (MsgNewLargeCardView)paramView;
+        ((MsgNewLargeCardView)localObject1).setMsgOnClickListener(this.msgOnClickListener);
+        ((MsgNewLargeCardView)localObject1).initDateRegion((MQMsg)getItem(paramInt), paramInt);
+        ((MsgNewLargeCardView)localObject1).setData((MQMsg)getItem(paramInt));
+      }
+    }
+    else
+    {
+      localObject1 = (MsgCardView)paramView;
+      ((MsgCardView)localObject1).setMsgOnClickListener(this.msgOnClickListener);
+      ((MsgCardView)localObject1).setData(paramInt, (MQMsg)getItem(paramInt), this.isNightMode, this.mUseNewUI);
+    }
     int k = 0;
     int m = 0;
     int j = 0;
-    int i = getItemViewType(paramInt);
-    if (paramView == null) {
-      switch (i)
-      {
-      default: 
-        switch (i)
-        {
-        }
-        break;
-      }
-    }
-    for (;;)
+    Object localObject2;
+    boolean bool;
+    if (i != 0)
     {
-      if (this.onGetViewLinstener != null) {
-        this.onGetViewLinstener.onGetView(paramInt, paramView, paramViewGroup);
-      }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      paramView = new MsgCardView(this.mActivity, this.mActivity.app);
-      paramView.setMsgOnClickListener(this.msgOnClickListener);
-      paramView.setData(paramInt, (MQMsg)getItem(paramInt), this.isNightMode, this.mUseNewUI);
-      break;
-      paramView = new MsgNewSmallCardView(this.mActivity, this.mActivity.app);
-      paramView.setData((MQMsg)getItem(paramInt));
-      paramView.setMsgOnClickListener(this.msgOnClickListener);
-      break;
-      paramView = new MsgNewLargeCardView(this.mActivity, this.mActivity.app);
-      paramView.initDateRegion((MQMsg)getItem(paramInt), paramInt);
-      paramView.setData((MQMsg)getItem(paramInt));
-      paramView.setMsgOnClickListener(this.msgOnClickListener);
-      break;
-      paramView = new MsgNewGuideCardView(this.mActivity, this.mActivity.app);
-      paramView.initDateRegion((MQMsg)getItem(paramInt), paramInt);
-      paramView.setData((MQMsg)getItem(paramInt));
-      paramView.setMsgOnClickListener(this.msgOnClickListener);
-      break;
-      switch (i)
+      if (i != 1)
       {
-      }
-      for (;;)
-      {
-        break;
-        ((MsgCardView)paramView).setMsgOnClickListener(this.msgOnClickListener);
-        ((MsgCardView)paramView).setData(paramInt, (MQMsg)getItem(paramInt), this.isNightMode, this.mUseNewUI);
-        break;
-        ((MsgNewSmallCardView)paramView).setMsgOnClickListener(this.msgOnClickListener);
-        ((MsgNewSmallCardView)paramView).setData((MQMsg)getItem(paramInt));
-        break;
-        ((MsgNewLargeCardView)paramView).setMsgOnClickListener(this.msgOnClickListener);
-        ((MsgNewLargeCardView)paramView).initDateRegion((MQMsg)getItem(paramInt), paramInt);
-        ((MsgNewLargeCardView)paramView).setData((MQMsg)getItem(paramInt));
-        break;
-        ((MsgNewGuideCardView)paramView).setMsgOnClickListener(this.msgOnClickListener);
-        ((MsgNewGuideCardView)paramView).initDateRegion((MQMsg)getItem(paramInt), paramInt);
-        ((MsgNewGuideCardView)paramView).setData((MQMsg)getItem(paramInt));
-      }
-      boolean bool;
-      Object localObject;
-      if ((paramInt == 0) && (this.mFeedHolder != null))
-      {
-        bool = this.mFeedHolder.addFeedViewToGroup(((MsgCardView)paramView).getFeedsContainer(), (MQMsg)getItem(paramInt));
-        localObject = ((MsgCardView)paramView).getFeedTitleTv();
-        if (bool)
-        {
-          i = 0;
-          label566:
-          ((TextView)localObject).setVisibility(i);
-          localObject = ((MsgCardView)paramView).getFeedsContainer();
-          if (!bool) {
-            break label608;
+        if (i == 2) {
+          if ((this.mFeedHolder != null) && (paramInt == getCount() - 1))
+          {
+            localObject2 = this.mFeedHolder;
+            localObject1 = (MsgNewSmallCardView)paramView;
+            bool = ((IFeedViewHolderInterface)localObject2).addFeedViewToGroup(((MsgNewSmallCardView)localObject1).getFeedsContainer(), (MQMsg)getItem(paramInt));
+            localObject2 = ((MsgNewSmallCardView)localObject1).getFeedTitleTv();
+            if (bool) {
+              i = 0;
+            } else {
+              i = 8;
+            }
+            ((TextView)localObject2).setVisibility(i);
+            localObject1 = ((MsgNewSmallCardView)localObject1).getFeedsContainer();
+            if (bool) {
+              i = j;
+            } else {
+              i = 8;
+            }
+            ((LinearLayout)localObject1).setVisibility(i);
+          }
+          else
+          {
+            localObject1 = (MsgNewSmallCardView)paramView;
+            ((MsgNewSmallCardView)localObject1).getFeedTitleTv().setVisibility(8);
+            ((MsgNewSmallCardView)localObject1).getFeedsContainer().setVisibility(8);
           }
         }
-        label608:
-        for (i = j;; i = 8)
-        {
-          ((LinearLayout)localObject).setVisibility(i);
-          break;
-          i = 8;
-          break label566;
-        }
       }
-      ((MsgCardView)paramView).getFeedTitleTv().setVisibility(8);
-      ((MsgCardView)paramView).getFeedsContainer().setVisibility(8);
-      continue;
-      if ((this.mFeedHolder != null) && (paramInt == getCount() - 1))
+      else if ((this.mFeedHolder != null) && (paramInt == getCount() - 1))
       {
-        bool = this.mFeedHolder.addFeedViewToGroup(((MsgNewLargeCardView)paramView).getFeedsContainer(), (MQMsg)getItem(paramInt));
-        localObject = ((MsgNewLargeCardView)paramView).getFeedTitleTv();
-        if (bool)
-        {
+        localObject2 = this.mFeedHolder;
+        localObject1 = (MsgNewLargeCardView)paramView;
+        bool = ((IFeedViewHolderInterface)localObject2).addFeedViewToGroup(((MsgNewLargeCardView)localObject1).getFeedsContainer(), (MQMsg)getItem(paramInt));
+        localObject2 = ((MsgNewLargeCardView)localObject1).getFeedTitleTv();
+        if (bool) {
           i = 0;
-          label702:
-          ((TextView)localObject).setVisibility(i);
-          localObject = ((MsgNewLargeCardView)paramView).getFeedsContainer();
-          if (!bool) {
-            break label744;
-          }
-        }
-        label744:
-        for (i = k;; i = 8)
-        {
-          ((LinearLayout)localObject).setVisibility(i);
-          break;
+        } else {
           i = 8;
-          break label702;
         }
+        ((TextView)localObject2).setVisibility(i);
+        localObject1 = ((MsgNewLargeCardView)localObject1).getFeedsContainer();
+        if (bool) {
+          i = k;
+        } else {
+          i = 8;
+        }
+        ((LinearLayout)localObject1).setVisibility(i);
       }
-      ((MsgNewLargeCardView)paramView).getFeedTitleTv().setVisibility(8);
-      ((MsgNewLargeCardView)paramView).getFeedsContainer().setVisibility(8);
-      continue;
-      if ((this.mFeedHolder != null) && (paramInt == getCount() - 1))
+      else
       {
-        bool = this.mFeedHolder.addFeedViewToGroup(((MsgNewSmallCardView)paramView).getFeedsContainer(), (MQMsg)getItem(paramInt));
-        localObject = ((MsgNewSmallCardView)paramView).getFeedTitleTv();
-        if (bool)
-        {
-          i = 0;
-          label838:
-          ((TextView)localObject).setVisibility(i);
-          localObject = ((MsgNewSmallCardView)paramView).getFeedsContainer();
-          if (!bool) {
-            break label880;
-          }
-        }
-        label880:
-        for (i = m;; i = 8)
-        {
-          ((LinearLayout)localObject).setVisibility(i);
-          break;
-          i = 8;
-          break label838;
-        }
+        localObject1 = (MsgNewLargeCardView)paramView;
+        ((MsgNewLargeCardView)localObject1).getFeedTitleTv().setVisibility(8);
+        ((MsgNewLargeCardView)localObject1).getFeedsContainer().setVisibility(8);
       }
-      ((MsgNewSmallCardView)paramView).getFeedTitleTv().setVisibility(8);
-      ((MsgNewSmallCardView)paramView).getFeedsContainer().setVisibility(8);
     }
+    else
+    {
+      if (paramInt == 0)
+      {
+        localObject2 = this.mFeedHolder;
+        if (localObject2 != null)
+        {
+          localObject1 = (MsgCardView)paramView;
+          bool = ((IFeedViewHolderInterface)localObject2).addFeedViewToGroup(((MsgCardView)localObject1).getFeedsContainer(), (MQMsg)getItem(paramInt));
+          localObject2 = ((MsgCardView)localObject1).getFeedTitleTv();
+          if (bool) {
+            i = 0;
+          } else {
+            i = 8;
+          }
+          ((TextView)localObject2).setVisibility(i);
+          localObject1 = ((MsgCardView)localObject1).getFeedsContainer();
+          if (bool) {
+            i = m;
+          } else {
+            i = 8;
+          }
+          ((LinearLayout)localObject1).setVisibility(i);
+          break label864;
+        }
+      }
+      localObject1 = (MsgCardView)paramView;
+      ((MsgCardView)localObject1).getFeedTitleTv().setVisibility(8);
+      ((MsgCardView)localObject1).getFeedsContainer().setVisibility(8);
+    }
+    label864:
+    Object localObject1 = this.onGetViewLinstener;
+    if (localObject1 != null) {
+      ((QZoneMsgAdapter.OnGetViewLinstener)localObject1).onGetView(paramInt, paramView, paramViewGroup);
+    }
+    return paramView;
   }
   
   public int getViewTypeCount()
@@ -294,43 +341,48 @@ public class QZoneMsgAdapter
   
   public void removeFirstMQMsg()
   {
-    if ((this.MQMsgs != null) && (!this.MQMsgs.isEmpty())) {
+    ArrayList localArrayList = this.MQMsgs;
+    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
       this.MQMsgs.remove(0);
     }
   }
   
   public boolean removeLastEmptyMQMsg()
   {
-    MQMsg localMQMsg = getLastMQMsg();
-    if ((localMQMsg == null) || (localMQMsg.msgBody == null) || (localMQMsg.msgBody.photolist == null) || (localMQMsg.msgBody.photolist.isEmpty()))
-    {
-      boolean bool = this.MQMsgs.remove(localMQMsg);
-      if ((bool) && (this.mFeedHolder != null)) {
-        this.mFeedHolder.clearCache();
-      }
-      return bool;
+    Object localObject = getLastMQMsg();
+    if ((localObject != null) && (((MQMsg)localObject).msgBody != null) && (((MQMsg)localObject).msgBody.photolist != null) && (!((MQMsg)localObject).msgBody.photolist.isEmpty())) {
+      return false;
     }
-    return false;
+    boolean bool = this.MQMsgs.remove(localObject);
+    if (bool)
+    {
+      localObject = this.mFeedHolder;
+      if (localObject != null) {
+        ((IFeedViewHolderInterface)localObject).clearCache();
+      }
+    }
+    return bool;
   }
   
-  public void setFeedHolder(FeedViewHolderInterface paramFeedViewHolderInterface, boolean paramBoolean1, boolean paramBoolean2)
+  public void setFeedHolder(IFeedViewHolderInterface paramIFeedViewHolderInterface, boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.mFeedHolder = paramFeedViewHolderInterface;
+    this.mFeedHolder = paramIFeedViewHolderInterface;
     this.mShowFeeds = paramBoolean1;
     this.mUseNewUI = paramBoolean2;
   }
   
-  public void setMQMsgs(ArrayList<MQMsg> paramArrayList, int paramInt)
+  public void setMQMsgs(ArrayList<IMQMsg> paramArrayList, int paramInt)
   {
-    if (this.mFeedHolder != null) {
-      this.mFeedHolder.clearCache();
+    IFeedViewHolderInterface localIFeedViewHolderInterface = this.mFeedHolder;
+    if (localIFeedViewHolderInterface != null) {
+      localIFeedViewHolderInterface.clearCache();
     }
     if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
       this.MQMsgs.clear();
       this.MQMsgs.addAll(paramArrayList);
       notifyDataSetChanged();
-      reportExpose((MQMsg)paramArrayList.get(0), paramInt);
+      reportExpose(this.MQMsgs, paramInt);
       return;
     }
     this.MQMsgs.clear();
@@ -357,7 +409,7 @@ public class QZoneMsgAdapter
     Iterator localIterator = this.MQMsgs.iterator();
     while (localIterator.hasNext())
     {
-      Object localObject = (MQMsg)localIterator.next();
+      Object localObject = QZoneMsgManager.getMqMsg((IMQMsg)localIterator.next());
       if ((localObject != null) && (((MQMsg)localObject).pushTime == paramLong) && (((MQMsg)localObject).msgInteractData != null) && (((MQMsg)localObject).msgInteractData.likeCell != null) && (((MQMsg)localObject).msgInteractData.likeCell.liked != paramBoolean))
       {
         ((MQMsg)localObject).msgInteractData.likeCell.liked = paramBoolean;
@@ -378,52 +430,54 @@ public class QZoneMsgAdapter
   
   public void updateMQMsgs(MQMsg paramMQMsg)
   {
-    int i;
-    MQMsg localMQMsg;
     if ((this.MQMsgs != null) && (paramMQMsg != null))
     {
-      i = 0;
-      if (i >= this.MQMsgs.size()) {
-        break label131;
-      }
-      localMQMsg = (MQMsg)this.MQMsgs.get(i);
-      if ((localMQMsg == null) || (localMQMsg.pushTime != paramMQMsg.pushTime)) {
-        break label86;
-      }
-    }
-    for (;;)
-    {
-      if (i < 0)
-      {
-        this.MQMsgs.add(0, paramMQMsg);
-        if (this.mFeedHolder != null) {
-          this.mFeedHolder.clearCache();
-        }
-      }
+      int k = -1;
+      Object localObject2 = null;
+      int i = 0;
+      int j;
+      Object localObject1;
       for (;;)
       {
-        notifyDataSetChanged();
-        return;
-        label86:
-        i += 1;
-        break;
-        if (paramMQMsg != localMQMsg)
+        j = k;
+        localObject1 = localObject2;
+        if (i >= this.MQMsgs.size()) {
+          break;
+        }
+        localObject1 = QZoneMsgManager.getMqMsg((IMQMsg)this.MQMsgs.get(i));
+        if ((localObject1 != null) && (((MQMsg)localObject1).pushTime == paramMQMsg.pushTime))
         {
-          this.MQMsgs.set(i, paramMQMsg);
-          if ((i == 0) && (this.mFeedHolder != null)) {
-            this.mFeedHolder.clearCache();
+          j = i;
+          break;
+        }
+        i += 1;
+      }
+      if (j < 0)
+      {
+        this.MQMsgs.add(0, paramMQMsg);
+        paramMQMsg = this.mFeedHolder;
+        if (paramMQMsg != null) {
+          paramMQMsg.clearCache();
+        }
+      }
+      else if (paramMQMsg != localObject1)
+      {
+        this.MQMsgs.set(j, paramMQMsg);
+        if (j == 0)
+        {
+          paramMQMsg = this.mFeedHolder;
+          if (paramMQMsg != null) {
+            paramMQMsg.clearCache();
           }
         }
       }
-      label131:
-      localMQMsg = null;
-      i = -1;
+      notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgAdapter
  * JD-Core Version:    0.7.0.1
  */

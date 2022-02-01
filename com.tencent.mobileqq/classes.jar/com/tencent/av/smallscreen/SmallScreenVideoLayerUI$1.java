@@ -10,13 +10,13 @@ class SmallScreenVideoLayerUI$1
   public void run()
   {
     if (SmallScreenVideoLayerUI.a(this.this$0) != null) {
-      SmallScreenVideoLayerUI.b(this.this$0).findViewById(2131363184).setVisibility(8);
+      SmallScreenVideoLayerUI.b(this.this$0).findViewById(2013331457).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoLayerUI.1
  * JD-Core Version:    0.7.0.1
  */

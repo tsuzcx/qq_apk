@@ -32,7 +32,7 @@ public class MoreVideoInfoWidget$StoryVideoDeleteReceiver
       if (QLog.isColorLevel()) {
         SLog.d(this.TAG, "删除失败：%s", new Object[] { paramDeleteStoryVideoEvent.a() });
       }
-      QQToast.a(paramMoreVideoInfoWidget.b(), 1, HardCodeUtil.a(2131706890), 0).a();
+      QQToast.a(paramMoreVideoInfoWidget.b(), 1, HardCodeUtil.a(2131706912), 0).a();
     }
   }
   
@@ -43,7 +43,7 @@ public class MoreVideoInfoWidget$StoryVideoDeleteReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.MoreVideoInfoWidget.StoryVideoDeleteReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public final class ImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.framework.bridge.ImageLoader
  * JD-Core Version:    0.7.0.1
  */

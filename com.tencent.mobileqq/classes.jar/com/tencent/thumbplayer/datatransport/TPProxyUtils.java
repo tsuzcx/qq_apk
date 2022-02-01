@@ -16,45 +16,47 @@ import java.util.Map;
 public class TPProxyUtils
 {
   public static final String PROXY_SO_NAME = "DownloadProxy";
+  public static final String TAG = "TPProxyUtils";
   
-  public static TPDownloadParam convertProxyDownloadParams(String paramString, TPDownloadParamData paramTPDownloadParamData)
+  public static TPDownloadParam convertProxyDownloadParams(String paramString, TPDownloadParamData paramTPDownloadParamData, Map<String, String> paramMap)
   {
     if (paramTPDownloadParamData != null)
     {
       Object localObject1 = new ArrayList();
       Object localObject2;
-      if ((paramTPDownloadParamData.getUrlCdnidList() == null) || (paramTPDownloadParamData.getUrlCdnidList().isEmpty()))
+      if ((paramTPDownloadParamData.getUrlCdnidList() != null) && (!paramTPDownloadParamData.getUrlCdnidList().isEmpty()))
+      {
+        paramString = paramTPDownloadParamData.getUrlCdnidList();
+      }
+      else
       {
         if (!TextUtils.isEmpty(paramString)) {
           ((ArrayList)localObject1).add(paramString);
-        }
-        for (;;)
-        {
-          localObject2 = paramTPDownloadParamData.getBakUrl();
-          paramString = (String)localObject1;
-          if (localObject2 == null) {
-            break;
-          }
-          paramString = (String)localObject1;
-          if (localObject2.length <= 0) {
-            break;
-          }
-          int i = 0;
-          for (;;)
-          {
-            paramString = (String)localObject1;
-            if (i >= localObject2.length) {
-              break;
-            }
-            if (!TextUtils.isEmpty(localObject2[i])) {
-              ((ArrayList)localObject1).add(localObject2[i]);
-            }
-            i += 1;
-          }
+        } else {
           ((ArrayList)localObject1).add(paramTPDownloadParamData.url);
         }
+        localObject2 = paramTPDownloadParamData.getBakUrl();
+        paramString = (String)localObject1;
+        if (localObject2 != null)
+        {
+          paramString = (String)localObject1;
+          if (localObject2.length > 0)
+          {
+            int i = 0;
+            for (;;)
+            {
+              paramString = (String)localObject1;
+              if (i >= localObject2.length) {
+                break;
+              }
+              if (!TextUtils.isEmpty(localObject2[i])) {
+                ((ArrayList)localObject1).add(localObject2[i]);
+              }
+              i += 1;
+            }
+          }
+        }
       }
-      paramString = paramTPDownloadParamData.getUrlCdnidList();
       localObject1 = new HashMap();
       if (!TextUtils.isEmpty(paramTPDownloadParamData.getFlowId()))
       {
@@ -97,6 +99,12 @@ public class TPProxyUtils
       ((Map)localObject1).put("dl_param_cache_need_encrypt", Boolean.valueOf(paramTPDownloadParamData.isNeedEncryptCache()));
       ((Map)localObject1).put("dl_param_is_offline", Boolean.valueOf(paramTPDownloadParamData.isOffline()));
       ((Map)localObject1).put("dl_param_enable_expand_donwload_url", Boolean.valueOf(paramTPDownloadParamData.isExtraParam()));
+      if (paramMap != null)
+      {
+        localObject2 = new ArrayList();
+        ((ArrayList)localObject2).add(paramMap);
+        ((Map)localObject1).put("dl_param_url_header", localObject2);
+      }
       if (paramTPDownloadParamData.getPreloadSize() > 0L) {
         ((Map)localObject1).put("dl_param_preload_size", Long.valueOf(paramTPDownloadParamData.getPreloadSize()));
       }
@@ -133,6 +141,30 @@ public class TPProxyUtils
       if (paramTPDownloadParamData.getTm() > 0L) {
         ((Map)localObject1).put("dl_param_vinfo_tm", Long.valueOf(paramTPDownloadParamData.getTm()));
       }
+      if (!TextUtils.isEmpty(paramTPDownloadParamData.getNonce()))
+      {
+        paramMap = new StringBuilder();
+        paramMap.append("nonce:");
+        paramMap.append(paramTPDownloadParamData.getNonce());
+        TPLogUtil.i("TPProxyUtils", paramMap.toString());
+        ((Map)localObject1).put("dl_param_nonce", paramTPDownloadParamData.getNonce());
+      }
+      if (!TextUtils.isEmpty(paramTPDownloadParamData.getDecKey()))
+      {
+        paramMap = new StringBuilder();
+        paramMap.append("encrypt stream key:");
+        paramMap.append(paramTPDownloadParamData.getDecKey());
+        TPLogUtil.i("TPProxyUtils", paramMap.toString());
+        ((Map)localObject1).put("dl_param_encrypt_stream_key", paramTPDownloadParamData.getDecKey());
+      }
+      if (!TextUtils.isEmpty(paramTPDownloadParamData.getRandoms()))
+      {
+        paramMap = new StringBuilder();
+        paramMap.append("encrypt randoms:");
+        paramMap.append(paramTPDownloadParamData.getRandoms());
+        TPLogUtil.i("TPProxyUtils", paramMap.toString());
+        ((Map)localObject1).put("dl_param_encrypt_stream_randoms", paramTPDownloadParamData.getRandoms());
+      }
       if (paramTPDownloadParamData.getFp2p() > 0) {
         ((Map)localObject1).put("dl_param_vinfo_fp2p", Integer.valueOf(paramTPDownloadParamData.getFp2p()));
       }
@@ -147,42 +179,41 @@ public class TPProxyUtils
       }
       if (paramTPDownloadParamData.getSelfAdaption()) {
         ((Map)localObject1).put("dl_param_adaptive_type", Integer.valueOf(3));
-      }
-      Iterator localIterator;
-      for (;;)
-      {
-        ((Map)localObject1).put("dl_param_format_nodes", paramTPDownloadParamData.getDefInfoList());
-        if ((paramTPDownloadParamData.getPcdnUrlList() == null) || (paramTPDownloadParamData.getPcdnUrlList().isEmpty())) {
-          break label1029;
-        }
-        localObject2 = new StringBuilder("");
-        localIterator = paramTPDownloadParamData.getPcdnUrlList().iterator();
-        while (localIterator.hasNext())
-        {
-          ((StringBuilder)localObject2).append((String)localIterator.next());
-          ((StringBuilder)localObject2).append(";");
-        }
+      } else {
         ((Map)localObject1).put("dl_param_adaptive_type", Integer.valueOf(0));
       }
-      if (((StringBuilder)localObject2).length() > 0) {
-        ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
+      ((Map)localObject1).put("dl_param_format_nodes", paramTPDownloadParamData.getDefInfoList());
+      if ((paramTPDownloadParamData.getPcdnUrlList() != null) && (!paramTPDownloadParamData.getPcdnUrlList().isEmpty()))
+      {
+        paramMap = new StringBuilder("");
+        localObject2 = paramTPDownloadParamData.getPcdnUrlList().iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          paramMap.append((String)((Iterator)localObject2).next());
+          paramMap.append(";");
+        }
+        if (paramMap.length() > 0) {
+          paramMap.deleteCharAt(paramMap.length() - 1);
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("pcdn url list: ");
+        ((StringBuilder)localObject2).append(paramMap.toString());
+        TPLogUtil.i("TPProxyUtils", ((StringBuilder)localObject2).toString());
+        ((Map)localObject1).put("dl_param_pcdn_urls", paramMap.toString());
       }
-      TPLogUtil.i("TPProxyUtils", "pcdn url list: " + ((StringBuilder)localObject2).toString());
-      ((Map)localObject1).put("dl_param_pcdn_urls", ((StringBuilder)localObject2).toString());
-      label1029:
       if ((paramTPDownloadParamData.getPcdnVtList() != null) && (!paramTPDownloadParamData.getPcdnVtList().isEmpty()))
       {
-        localObject2 = new StringBuilder("");
-        localIterator = paramTPDownloadParamData.getPcdnVtList().iterator();
-        while (localIterator.hasNext())
+        paramMap = new StringBuilder("");
+        localObject2 = paramTPDownloadParamData.getPcdnVtList().iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          ((StringBuilder)localObject2).append(((Integer)localIterator.next()).intValue());
-          ((StringBuilder)localObject2).append(";");
+          paramMap.append(((Integer)((Iterator)localObject2).next()).intValue());
+          paramMap.append(";");
         }
-        if (((StringBuilder)localObject2).length() > 0) {
-          ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
+        if (paramMap.length() > 0) {
+          paramMap.deleteCharAt(paramMap.length() - 1);
         }
-        ((Map)localObject1).put("dl_param_pcdn_vts", ((StringBuilder)localObject2).toString());
+        ((Map)localObject1).put("dl_param_pcdn_vts", paramMap.toString());
       }
       return new TPDownloadParam(paramString, TPProxyEnumUtils.dlType2Inner(paramTPDownloadParamData.getDlType()), (Map)localObject1);
     }
@@ -198,7 +229,7 @@ public class TPProxyUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.datatransport.TPProxyUtils
  * JD-Core Version:    0.7.0.1
  */

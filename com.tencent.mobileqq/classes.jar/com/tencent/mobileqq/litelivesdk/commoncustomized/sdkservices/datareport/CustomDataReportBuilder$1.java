@@ -55,17 +55,19 @@ class CustomDataReportBuilder$1
   
   public String getAppKey()
   {
+    Object localObject = getHostProxy();
     boolean bool = false;
-    if ((getHostProxy() != null) && (getHostProxy().getReportInterface() != null) && (getHostProxy().getReportInterface().isBeaconRealTimeDebug())) {}
-    for (int i = 1;; i = 0)
-    {
-      AppGeneralInfoService localAppGeneralInfoService = (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
-      if (localAppGeneralInfoService != null) {
-        bool = localAppGeneralInfoService.isLiteSdk();
-      }
-      if (i == 0) {
-        break;
-      }
+    int i;
+    if ((localObject != null) && (getHostProxy().getReportInterface() != null) && (getHostProxy().getReportInterface().isBeaconRealTimeDebug())) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    localObject = (AppGeneralInfoService)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(AppGeneralInfoService.class);
+    if (localObject != null) {
+      bool = ((AppGeneralInfoService)localObject).isLiteSdk();
+    }
+    if (i != 0) {
       return "LOGDEBUGKEY00001";
     }
     if (bool) {
@@ -164,7 +166,7 @@ class CustomDataReportBuilder$1
   
   public boolean isOutRoomHasRoomInfo()
   {
-    return (ServiceAccessorMgr.getInstance().getUserAccessor() != null) && (ServiceAccessorMgr.getInstance().getUserAccessor().getService(StartLiveServiceInterface.class) != null) && (((StartLiveServiceInterface)ServiceAccessorMgr.getInstance().getUserAccessor().getService(StartLiveServiceInterface.class)).getLiveApplyRoomInfo() != null);
+    return false;
   }
   
   public boolean isRoomAccessorNull()
@@ -175,13 +177,14 @@ class CustomDataReportBuilder$1
   public boolean isUserHostBeacon()
   {
     String str = ((HostProxyInterface)this.jdField_a_of_type_ComTencentLivesdkServicefactoryServiceAccessor.getService(HostProxyInterface.class)).isUserHostBeacon();
-    if (TextUtils.isEmpty(str)) {
-      throw new RuntimeException("isUserHostBeacon should not be null");
+    if (!TextUtils.isEmpty(str))
+    {
+      if ((!str.equals("1")) && (!str.equals("0"))) {
+        throw new RuntimeException("isUserHostBeacon should be in 0 and 1");
+      }
+      return str.equals("1");
     }
-    if ((!str.equals("1")) && (!str.equals("0"))) {
-      throw new RuntimeException("isUserHostBeacon should be in 0 and 1");
-    }
-    return str.equals("1");
+    throw new RuntimeException("isUserHostBeacon should not be null");
   }
   
   public void onGetBeaconImei(String paramString)
@@ -194,7 +197,7 @@ class CustomDataReportBuilder$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport.CustomDataReportBuilder.1
  * JD-Core Version:    0.7.0.1
  */

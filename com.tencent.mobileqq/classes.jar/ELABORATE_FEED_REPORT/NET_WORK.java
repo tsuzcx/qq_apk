@@ -14,7 +14,7 @@ public final class NET_WORK
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.NET_WORK
  * JD-Core Version:    0.7.0.1
  */

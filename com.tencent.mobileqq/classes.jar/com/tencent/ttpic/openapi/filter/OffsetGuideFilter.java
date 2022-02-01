@@ -15,8 +15,9 @@ public class OffsetGuideFilter
   
   private void updatePosition()
   {
-    float f1 = 0.0F - this.xOffset;
-    float f2 = 0.5F - this.xOffset / 2.0F;
+    float f2 = this.xOffset;
+    float f1 = 0.0F - f2;
+    f2 = 0.5F - f2 / 2.0F;
     setPositions(new float[] { f1, -1.0F, f1, 1.0F, 1.0F, 1.0F, 1.0F, -1.0F });
     setTexCords(new float[] { f2, 1.0F, f2, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F });
   }
@@ -34,7 +35,7 @@ public class OffsetGuideFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.OffsetGuideFilter
  * JD-Core Version:    0.7.0.1
  */

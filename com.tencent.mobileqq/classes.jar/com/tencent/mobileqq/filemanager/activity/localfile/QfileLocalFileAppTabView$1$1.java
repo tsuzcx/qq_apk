@@ -11,21 +11,24 @@ class QfileLocalFileAppTabView$1$1
   
   public void run()
   {
-    if ((this.a.this$0.a == null) || (this.a.this$0.a.isFinishing())) {
-      return;
+    if (this.a.this$0.a != null)
+    {
+      if (this.a.this$0.a.isFinishing()) {
+        return;
+      }
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(QfileLocalFileAppTabView.a(this.a.this$0), 230).setMessage(2131692440).setNegativeButton(2131690728, new QfileLocalFileAppTabView.1.1.2(this)).setPositiveButton(2131692441, new QfileLocalFileAppTabView.1.1.1(this));
+      localQQCustomDialog.setOnDismissListener(new QfileLocalFileAppTabView.1.1.3(this));
+      localQQCustomDialog.setTitle(2131692442);
+      localQQCustomDialog.setCancelable(false);
+      localQQCustomDialog.setCanceledOnTouchOutside(false);
+      localQQCustomDialog.show();
+      this.a.this$0.i();
     }
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(QfileLocalFileAppTabView.a(this.a.this$0), 230).setMessage(2131692504).setNegativeButton(2131690800, new QfileLocalFileAppTabView.1.1.2(this)).setPositiveButton(2131692505, new QfileLocalFileAppTabView.1.1.1(this));
-    localQQCustomDialog.setOnDismissListener(new QfileLocalFileAppTabView.1.1.3(this));
-    localQQCustomDialog.setTitle(2131692506);
-    localQQCustomDialog.setCancelable(false);
-    localQQCustomDialog.setCanceledOnTouchOutside(false);
-    localQQCustomDialog.show();
-    this.a.this$0.i();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFileAppTabView.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class TroopReceiptMsg
 {
   public TroopReceiptMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131698497);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131698563);
     this.b = this.jdField_a_of_type_JavaLangString;
   }
   
@@ -32,7 +32,7 @@ public class TroopReceiptMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopReceiptMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -26,8 +26,12 @@ class ReadInjoyIMAXAdFragment$2
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyIMAXAdFragment", 2, "onLoadProgressed =" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append("onLoadProgressed =");
+      paramURLDrawable.append(paramInt);
+      QLog.d("ReadInjoyIMAXAdFragment", 2, paramURLDrawable.toString());
     }
   }
   
@@ -40,7 +44,7 @@ class ReadInjoyIMAXAdFragment$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.fragment.ReadInjoyIMAXAdFragment.2
  * JD-Core Version:    0.7.0.1
  */

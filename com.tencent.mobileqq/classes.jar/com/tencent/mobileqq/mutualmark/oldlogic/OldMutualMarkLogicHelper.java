@@ -6,6 +6,7 @@ import android.text.TextUtils;
 import android.text.format.Time;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.QQMessageFacade;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.activity.aio.anim.AioAnimationDetector;
@@ -38,410 +39,419 @@ public class OldMutualMarkLogicHelper
     ThreadManager.post(new OldMutualMarkLogicHelper.3(paramQQAppInterface), 5, null, true);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, FriendChatPie paramFriendChatPie)
-  {
-    ThreadManager.post(new OldMutualMarkLogicHelper.1(paramQQAppInterface, paramSessionInfo, paramFriendChatPie), 5, null, false);
-  }
-  
-  private static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForUniteGrayTip paramMessageForUniteGrayTip, MqqHandler paramMqqHandler, AIOAnimationConatiner paramAIOAnimationConatiner)
+  private static void a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, MessageForUniteGrayTip paramMessageForUniteGrayTip, MqqHandler paramMqqHandler, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
     if (!TextUtils.isEmpty(paramMessageForUniteGrayTip.caidanAnimUrl))
     {
-      paramSessionInfo = AioAnimationDetector.a();
+      paramBaseSessionInfo = AioAnimationDetector.a();
       paramMessageForUniteGrayTip = new MutualMarkIconProxyDrawable(BaseApplicationImpl.getContext(), paramMessageForUniteGrayTip.caidanAnimUrl);
-      if (paramMessageForUniteGrayTip.a()) {
-        paramSessionInfo.a(paramQQAppInterface, false, true, paramAIOAnimationConatiner, 0, paramMessageForUniteGrayTip, 4);
+      if (paramMessageForUniteGrayTip.a())
+      {
+        paramBaseSessionInfo.a(paramQQAppInterface, false, true, paramAIOAnimationConatiner, 0, paramMessageForUniteGrayTip, 4);
+        return;
       }
+      paramMqqHandler.postDelayed(new OldMutualMarkLogicHelper.2(paramMessageForUniteGrayTip, paramBaseSessionInfo, paramQQAppInterface, paramAIOAnimationConatiner), 800L);
     }
-    else
-    {
-      return;
-    }
-    paramMqqHandler.postDelayed(new OldMutualMarkLogicHelper.2(paramMessageForUniteGrayTip, paramSessionInfo, paramQQAppInterface, paramAIOAnimationConatiner), 800L);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForUniteGrayTip paramMessageForUniteGrayTip, MqqHandler paramMqqHandler, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt)
+  public static void a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, MessageForUniteGrayTip paramMessageForUniteGrayTip, MqqHandler paramMqqHandler, AIOAnimationConatiner paramAIOAnimationConatiner, int paramInt)
   {
-    Object localObject = null;
     if (a(paramMessageForUniteGrayTip.subType))
     {
       if (QLog.isColorLevel()) {
         QLog.d("FriendReactive", 2, "new message graytips big ship");
       }
       paramMqqHandler.sendEmptyMessage(70);
+      return;
+    }
+    if (b(paramMessageForUniteGrayTip.subType))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FriendReactive", 2, "new message graytips friendship");
+      }
+      paramMqqHandler.sendEmptyMessage(88);
+      return;
+    }
+    if (c(paramMessageForUniteGrayTip.subType))
+    {
+      paramMqqHandler.obtainMessage(201, new String[] { paramMessageForUniteGrayTip.caidanAnimUrl, paramMessageForUniteGrayTip.caidanAnimUrlMd5 }).sendToTarget();
+      return;
+    }
+    if (d(paramMessageForUniteGrayTip.subType))
+    {
+      a(paramQQAppInterface, paramBaseSessionInfo, paramMessageForUniteGrayTip, paramMqqHandler, paramAIOAnimationConatiner);
+      return;
+    }
+    paramMessageForUniteGrayTip = AioAnimationDetector.a();
+    if (paramInt == 3) {
+      paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850540);
     }
     for (;;)
     {
-      return;
-      if (b(paramMessageForUniteGrayTip.subType))
+      break;
+      if (paramInt == 26)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("FriendReactive", 2, "new message graytips friendship");
-        }
-        paramMqqHandler.sendEmptyMessage(88);
-        return;
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850541);
       }
-      if (c(paramMessageForUniteGrayTip.subType))
+      else if (paramInt == 27)
       {
-        paramMqqHandler.obtainMessage(201, new String[] { paramMessageForUniteGrayTip.caidanAnimUrl, paramMessageForUniteGrayTip.caidanAnimUrlMd5 }).sendToTarget();
-        return;
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850542);
       }
-      if (d(paramMessageForUniteGrayTip.subType))
+      else if (paramInt == 4)
       {
-        a(paramQQAppInterface, paramSessionInfo, paramMessageForUniteGrayTip, paramMqqHandler, paramAIOAnimationConatiner);
-        return;
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850487);
       }
-      paramMqqHandler = AioAnimationDetector.a();
-      if (paramInt == 3) {
-        paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850614);
-      }
-      while (paramMessageForUniteGrayTip != null)
+      else if (paramInt == 28)
       {
-        paramMqqHandler.a(paramQQAppInterface, false, true, paramAIOAnimationConatiner, 0, paramMessageForUniteGrayTip, 4);
-        return;
-        if (paramInt == 26)
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850488);
+      }
+      else if (paramInt == 29)
+      {
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850489);
+      }
+      else if (paramInt == 1)
+      {
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850544);
+      }
+      else if (paramInt == 2)
+      {
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850491);
+      }
+      else if (paramInt == 5)
+      {
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850543);
+      }
+      else if (paramInt == 30)
+      {
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850545);
+      }
+      else if (paramInt == 31)
+      {
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850546);
+      }
+      else if (paramInt == 7)
+      {
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850538);
+      }
+      else if (paramInt == 8)
+      {
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850539);
+      }
+      else
+      {
+        if (paramInt == 11) {}
+        do
         {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850615);
-        }
-        else if (paramInt == 27)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850616);
-        }
-        else if (paramInt == 4)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850561);
-        }
-        else if (paramInt == 28)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850562);
-        }
-        else if (paramInt == 29)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850563);
-        }
-        else if (paramInt == 1)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850618);
-        }
-        else if (paramInt == 2)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850565);
-        }
-        else if (paramInt == 5)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850617);
-        }
-        else if (paramInt == 30)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850619);
-        }
-        else if (paramInt == 31)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850620);
-        }
-        else if (paramInt == 7)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850612);
-        }
-        else if (paramInt == 8)
-        {
-          paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850613);
-        }
-        else
-        {
-          paramMessageForUniteGrayTip = localObject;
-          if (paramInt != 11) {
+          do
+          {
+            paramBaseSessionInfo = null;
+            break;
             if (paramInt == 12)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850582);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850508);
+              break;
             }
-            else if (paramInt == 13)
+            if (paramInt == 13)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850583);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850509);
+              break;
             }
-            else if (paramInt == 14)
+            if (paramInt == 14)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850590);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850516);
+              break;
             }
-            else if (paramInt == 15)
+            if (paramInt == 15)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850591);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850517);
+              break;
             }
-            else if (paramInt == 16)
+            if (paramInt == 16)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850592);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850518);
+              break;
             }
-            else if (paramInt == 17)
+            if (paramInt == 17)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850584);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850510);
+              break;
             }
-            else if (paramInt == 18)
+            if (paramInt == 18)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850585);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850511);
+              break;
             }
-            else if (paramInt == 19)
+            if (paramInt == 19)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850586);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850512);
+              break;
             }
-            else if (paramInt == 20)
+            if (paramInt == 20)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850587);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850513);
+              break;
             }
-            else if (paramInt == 21)
+            if (paramInt == 21)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850588);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850514);
+              break;
             }
-            else if (paramInt == 22)
+            if (paramInt == 22)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850589);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850515);
+              break;
             }
-            else if (paramInt == 23)
+            if (paramInt == 23)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850593);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850519);
+              break;
             }
-            else if (paramInt == 24)
+            if (paramInt == 24)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850594);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850520);
+              break;
             }
-            else if (paramInt == 25)
+            if (paramInt == 25)
             {
-              paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(2130850595);
+              paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(2130850521);
+              break;
             }
-            else
-            {
-              paramMessageForUniteGrayTip = localObject;
-              if (MutualMarkUtils.a(paramInt))
-              {
-                paramMessageForUniteGrayTip = localObject;
-                if (paramSessionInfo != null)
-                {
-                  paramInt = MutualMarkConfigHelper.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, String.valueOf(paramInt));
-                  paramMessageForUniteGrayTip = localObject;
-                  if (paramInt != 0) {
-                    paramMessageForUniteGrayTip = BaseApplicationImpl.getContext().getResources().getDrawable(paramInt);
-                  }
-                }
-              }
-            }
-          }
-        }
+          } while ((!MutualMarkUtils.a(paramInt)) || (paramBaseSessionInfo == null));
+          paramInt = MutualMarkConfigHelper.a(paramQQAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, String.valueOf(paramInt));
+        } while (paramInt == 0);
+        paramBaseSessionInfo = BaseApplicationImpl.getContext().getResources().getDrawable(paramInt);
       }
     }
+    if (paramBaseSessionInfo != null) {
+      paramMessageForUniteGrayTip.a(paramQQAppInterface, false, true, paramAIOAnimationConatiner, 0, paramBaseSessionInfo, 4);
+    }
+  }
+  
+  public static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, FriendChatPie paramFriendChatPie)
+  {
+    ThreadManager.post(new OldMutualMarkLogicHelper.1(paramQQAppInterface, paramSessionInfo, paramFriendChatPie), 5, null, false);
   }
   
   private static void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List<ChatMessage> paramList, FriendChatPie paramFriendChatPie)
   {
     if ((QzoneLoverService.a().a()) && (a(paramQQAppInterface, paramSessionInfo, paramList)))
     {
-      paramFriendChatPie.Q = true;
+      paramFriendChatPie.G = true;
       QzoneLoverService.a().a();
       if (QLog.isColorLevel()) {
         QLog.i("OldMutualMarkLogicHelper", 2, "checkLightingQzoneLover enter!!!!!!!!");
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel())
+    {
+      QLog.i("OldMutualMarkLogicHelper", 2, "checkLightingQzoneLover not enter!!!!!!!!");
     }
-    QLog.i("OldMutualMarkLogicHelper", 2, "checkLightingQzoneLover not enter!!!!!!!!");
   }
   
   public static boolean a(int paramInt)
   {
-    if ((paramInt == 6) || (paramInt == 32) || (paramInt == 33)) {}
-    while (paramInt == MutualMarkUtils.a(12L, 2L)) {
-      return true;
+    if ((paramInt != 6) && (paramInt != 32))
+    {
+      if (paramInt == 33) {
+        return true;
+      }
+      return paramInt == MutualMarkUtils.a(12L, 2L);
     }
-    return false;
+    return true;
   }
   
   private static boolean a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, List<ChatMessage> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty()) || (paramSessionInfo == null) || (paramQQAppInterface == null)) {
-      return false;
-    }
-    long l1 = MessageCache.a();
-    Time localTime1 = new Time();
-    localTime1.set(1000L * l1);
-    Time localTime2 = new Time();
-    boolean bool1 = false;
-    boolean bool2 = false;
-    int i = paramList.size() - 1;
-    for (;;)
+    if ((paramList != null) && (!paramList.isEmpty()) && (paramSessionInfo != null))
     {
-      boolean bool3 = bool2;
-      boolean bool4 = bool1;
-      if (i >= 0) {}
-      try
-      {
-        localChatMessage = (ChatMessage)paramList.get(i);
-        if (localChatMessage == null)
-        {
-          bool3 = bool1;
-          bool1 = bool2;
-          bool2 = bool3;
-          break label413;
-        }
-        long l2 = Math.abs(localChatMessage.time - l1);
-        if (l2 <= 86400L) {
-          break label202;
-        }
-        bool4 = bool1;
-        bool3 = bool2;
-      }
-      catch (Throwable paramQQAppInterface)
-      {
-        for (;;)
-        {
-          ChatMessage localChatMessage;
-          bool4 = false;
-          bool3 = false;
-          QLog.e("OldMutualMarkLogicHelper", 1, "hasInteractiveToday error: " + paramQQAppInterface.getMessage());
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("OldMutualMarkLogicHelper", 2, "hasInteractiveToday selfSend:" + bool4 + " friendSend: " + bool3);
-      }
-      if ((bool4) && (bool3))
-      {
-        return true;
-        label202:
-        if (!a(localChatMessage))
-        {
-          bool3 = bool1;
-          bool1 = bool2;
-          bool2 = bool3;
-          break label413;
-        }
-        if ((TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString)) || (TextUtils.equals(localChatMessage.senderuin, paramQQAppInterface.getCurrentAccountUin())))
-        {
-          localTime2.set(localChatMessage.time * 1000L);
-          if ((localTime1.year == localTime2.year) && (localTime1.yearDay == localTime2.yearDay))
-          {
-            bool3 = TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString);
-            if (bool3)
-            {
-              bool3 = true;
-              bool4 = bool1;
-            }
-            for (;;)
-            {
-              bool1 = bool3;
-              bool2 = bool4;
-              if (!bool4) {
-                break label413;
-              }
-              bool1 = bool3;
-              bool2 = bool4;
-              if (!bool3) {
-                break label413;
-              }
-              break;
-              bool4 = true;
-              bool3 = bool2;
-            }
-          }
-        }
-      }
-      else
-      {
+      if (paramQQAppInterface == null) {
         return false;
       }
-      bool3 = bool2;
-      bool2 = bool1;
-      bool1 = bool3;
-      label413:
-      i -= 1;
-      bool3 = bool2;
-      bool2 = bool1;
-      bool1 = bool3;
+      long l = MessageCache.a();
+      Time localTime1 = new Time();
+      localTime1.set(l * 1000L);
+      Time localTime2 = new Time();
+      int i = paramList.size() - 1;
+      boolean bool1 = false;
+      boolean bool2 = false;
+      if (i >= 0) {}
+      for (;;)
+      {
+        try
+        {
+          ChatMessage localChatMessage = (ChatMessage)paramList.get(i);
+          boolean bool4;
+          boolean bool3;
+          if (localChatMessage == null)
+          {
+            bool4 = bool2;
+            bool3 = bool1;
+          }
+          else if (Math.abs(localChatMessage.time - l) <= 86400L)
+          {
+            if (!a(localChatMessage))
+            {
+              bool4 = bool2;
+              bool3 = bool1;
+              continue;
+            }
+            if (!TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString))
+            {
+              bool4 = bool2;
+              bool3 = bool1;
+              if (!TextUtils.equals(localChatMessage.senderuin, paramQQAppInterface.getCurrentAccountUin())) {
+                continue;
+              }
+            }
+            localTime2.set(localChatMessage.time * 1000L);
+            bool4 = bool2;
+            bool3 = bool1;
+            if (localTime1.year != localTime2.year) {
+              continue;
+            }
+            bool4 = bool2;
+            bool3 = bool1;
+            if (localTime1.yearDay != localTime2.yearDay) {
+              continue;
+            }
+            bool3 = TextUtils.equals(localChatMessage.senderuin, paramSessionInfo.jdField_a_of_type_JavaLangString);
+            if (bool3) {
+              bool2 = true;
+            } else {
+              bool1 = true;
+            }
+            bool4 = bool2;
+            bool3 = bool1;
+            if (!bool1) {
+              continue;
+            }
+            bool4 = bool2;
+            bool3 = bool1;
+            if (bool2) {
+              break label358;
+            }
+          }
+          bool1 = bool3;
+          i -= 1;
+          bool2 = bool4;
+        }
+        catch (Throwable paramQQAppInterface)
+        {
+          paramSessionInfo = new StringBuilder();
+          paramSessionInfo.append("hasInteractiveToday error: ");
+          paramSessionInfo.append(paramQQAppInterface.getMessage());
+          QLog.e("OldMutualMarkLogicHelper", 1, paramSessionInfo.toString());
+          bool1 = false;
+          bool2 = false;
+          break label358;
+        }
+      }
+      label358:
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("hasInteractiveToday selfSend:");
+        paramQQAppInterface.append(bool1);
+        paramQQAppInterface.append(" friendSend: ");
+        paramQQAppInterface.append(bool2);
+        QLog.i("OldMutualMarkLogicHelper", 2, paramQQAppInterface.toString());
+      }
+      return (bool1) && (bool2);
     }
+    return false;
   }
   
   private static boolean a(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    for (;;)
-    {
+    if (paramChatMessage == null) {
       return false;
-      int[] arrayOfInt = new int[20];
-      int[] tmp12_11 = arrayOfInt;
-      tmp12_11[0] = -1000;
-      int[] tmp18_12 = tmp12_11;
-      tmp18_12[1] = -1001;
-      int[] tmp24_18 = tmp18_12;
-      tmp24_18[2] = -2009;
-      int[] tmp30_24 = tmp24_18;
-      tmp30_24[3] = -2045;
-      int[] tmp36_30 = tmp30_24;
-      tmp36_30[4] = -2009;
-      int[] tmp42_36 = tmp36_30;
-      tmp42_36[5] = -2001;
-      int[] tmp48_42 = tmp42_36;
-      tmp48_42[6] = -2005;
-      int[] tmp55_48 = tmp48_42;
-      tmp55_48[7] = -2010;
-      int[] tmp62_55 = tmp55_48;
-      tmp62_55[8] = -2000;
-      int[] tmp69_62 = tmp62_55;
-      tmp69_62[9] = -2002;
-      int[] tmp76_69 = tmp69_62;
-      tmp76_69[10] = -2008;
-      int[] tmp83_76 = tmp76_69;
-      tmp83_76[11] = -2022;
-      int[] tmp90_83 = tmp83_76;
-      tmp90_83[12] = -30002;
-      int[] tmp97_90 = tmp90_83;
-      tmp97_90[13] = -2011;
-      int[] tmp104_97 = tmp97_90;
-      tmp104_97[14] = -2020;
-      int[] tmp111_104 = tmp104_97;
-      tmp111_104[15] = -2025;
-      int[] tmp118_111 = tmp111_104;
-      tmp118_111[16] = -2065;
-      int[] tmp125_118 = tmp118_111;
-      tmp125_118[17] = -2066;
-      int[] tmp132_125 = tmp125_118;
-      tmp132_125[18] = -3000;
-      int[] tmp139_132 = tmp132_125;
-      tmp139_132[19] = -1035;
-      tmp139_132;
-      int i = 0;
-      while (i < arrayOfInt.length)
-      {
-        if (paramChatMessage.msgtype == arrayOfInt[i]) {
-          return true;
-        }
-        i += 1;
-      }
     }
+    int[] arrayOfInt = new int[19];
+    int[] tmp12_11 = arrayOfInt;
+    tmp12_11[0] = -1000;
+    int[] tmp18_12 = tmp12_11;
+    tmp18_12[1] = -1001;
+    int[] tmp24_18 = tmp18_12;
+    tmp24_18[2] = -2009;
+    int[] tmp30_24 = tmp24_18;
+    tmp30_24[3] = -2045;
+    int[] tmp36_30 = tmp30_24;
+    tmp36_30[4] = -2009;
+    int[] tmp42_36 = tmp36_30;
+    tmp42_36[5] = -2001;
+    int[] tmp48_42 = tmp42_36;
+    tmp48_42[6] = -2005;
+    int[] tmp55_48 = tmp48_42;
+    tmp55_48[7] = -2000;
+    int[] tmp62_55 = tmp55_48;
+    tmp62_55[8] = -2002;
+    int[] tmp69_62 = tmp62_55;
+    tmp69_62[9] = -2008;
+    int[] tmp76_69 = tmp69_62;
+    tmp76_69[10] = -2022;
+    int[] tmp83_76 = tmp76_69;
+    tmp83_76[11] = -30002;
+    int[] tmp90_83 = tmp83_76;
+    tmp90_83[12] = -2011;
+    int[] tmp97_90 = tmp90_83;
+    tmp97_90[13] = -2020;
+    int[] tmp104_97 = tmp97_90;
+    tmp104_97[14] = -2025;
+    int[] tmp111_104 = tmp104_97;
+    tmp111_104[15] = -2065;
+    int[] tmp118_111 = tmp111_104;
+    tmp118_111[16] = -2066;
+    int[] tmp125_118 = tmp118_111;
+    tmp125_118[17] = -3000;
+    int[] tmp132_125 = tmp125_118;
+    tmp132_125[18] = -1035;
+    tmp132_125;
+    int i = 0;
+    while (i < arrayOfInt.length)
+    {
+      if (paramChatMessage.msgtype == arrayOfInt[i]) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public static void b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, FriendChatPie paramFriendChatPie)
   {
-    if (paramFriendChatPie.Q) {}
-    for (;;)
-    {
+    if (paramFriendChatPie.G) {
       return;
-      if (((FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(paramSessionInfo.jdField_a_of_type_JavaLangString, false) != null)
+    }
+    Object localObject = (FriendsManager)paramQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    String str = paramSessionInfo.jdField_a_of_type_JavaLangString;
+    int j = 0;
+    if (((FriendsManager)localObject).a(str, false) == null) {
+      return;
+    }
+    localObject = MutualMarkDataCenter.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, 7L, false);
+    int i = j;
+    if (localObject != null)
+    {
+      i = j;
+      if (((MutualMarkForDisplayInfo)localObject).b > 0L)
       {
-        MutualMarkForDisplayInfo localMutualMarkForDisplayInfo = MutualMarkDataCenter.a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, 7L, false);
-        if ((localMutualMarkForDisplayInfo != null) && (localMutualMarkForDisplayInfo.b > 0L) && (localMutualMarkForDisplayInfo.a())) {}
-        for (int i = 1; i != 0; i = 0)
-        {
-          a(paramQQAppInterface, paramSessionInfo, paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int), paramFriendChatPie);
-          return;
+        i = j;
+        if (((MutualMarkForDisplayInfo)localObject).a()) {
+          i = 1;
         }
       }
+    }
+    if (i != 0) {
+      a(paramQQAppInterface, paramSessionInfo, paramQQAppInterface.getMessageFacade().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int), paramFriendChatPie);
     }
   }
   
   public static boolean b(int paramInt)
   {
-    if (paramInt == 13) {}
-    while (paramInt == MutualMarkUtils.a(4L, 3L)) {
+    if (paramInt == 13) {
       return true;
     }
-    return false;
+    return paramInt == MutualMarkUtils.a(4L, 3L);
   }
   
   public static boolean c(int paramInt)
@@ -456,7 +466,7 @@ public class OldMutualMarkLogicHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.oldlogic.OldMutualMarkLogicHelper
  * JD-Core Version:    0.7.0.1
  */

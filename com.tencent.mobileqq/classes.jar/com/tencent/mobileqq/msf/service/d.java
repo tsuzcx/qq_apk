@@ -21,36 +21,34 @@ class d
   {
     boolean bool = i.a().g();
     QLog.w("MSF.S.AppProcessInfo", 1, String.format("binderDied appProcessName = %s, keepProcessAlive = %s, isBinderConnectOptEnable = %b", new Object[] { this.a.g, Boolean.valueOf(this.a.k), Boolean.valueOf(bool) }));
-    Object localObject2 = "";
-    Object localObject1 = localObject2;
-    if (MsfCore.sCore != null)
-    {
-      localObject1 = localObject2;
-      if (MsfCore.sCore.getAccountCenter() != null) {
-        localObject1 = MsfCore.sCore.getAccountCenter().i();
-      }
+    String str;
+    if ((MsfCore.sCore != null) && (MsfCore.sCore.getAccountCenter() != null)) {
+      str = MsfCore.sCore.getAccountCenter().i();
+    } else {
+      str = "";
     }
     if (this.a.k) {
-      u.a(BaseApplication.getContext(), this.a.g, (String)localObject1, this.a.h, 0, 1, null);
+      u.a(BaseApplication.getContext(), this.a.g, str, this.a.h, 0, 1, null);
     }
-    this.a.k = false;
+    Object localObject = this.a;
+    ((c)localObject).k = false;
     if (bool) {
-      this.a.a(this.a.c());
+      ((c)localObject).a(((c)localObject).c());
     }
-    localObject2 = new HashMap();
-    ((HashMap)localObject2).put("process", this.a.g);
-    ((HashMap)localObject2).put("isUseNewProxy", String.valueOf(MsfServiceSdk.isUseNewProxy));
-    ((HashMap)localObject2).put("isProcess_exist", String.valueOf(MsfSdkUtils.isProcessExist(BaseApplication.getContext(), this.a.g)));
-    ((HashMap)localObject2).put("account_uin", localObject1);
-    ((HashMap)localObject2).put("isBinderConnectOptEnable", String.valueOf(bool));
+    localObject = new HashMap();
+    ((HashMap)localObject).put("process", this.a.g);
+    ((HashMap)localObject).put("isUseNewProxy", String.valueOf(MsfServiceSdk.isUseNewProxy));
+    ((HashMap)localObject).put("isProcess_exist", String.valueOf(MsfSdkUtils.isProcessExist(BaseApplication.getContext(), this.a.g)));
+    ((HashMap)localObject).put("account_uin", str);
+    ((HashMap)localObject).put("isBinderConnectOptEnable", String.valueOf(bool));
     if (MsfService.getCore().getStatReporter() != null) {
-      MsfService.getCore().getStatReporter().a("msf_binder_died_b", false, 0L, 0L, (Map)localObject2, true, false);
+      MsfService.getCore().getStatReporter().a("msf_binder_died_b", false, 0L, 0L, (Map)localObject, true, false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.d
  * JD-Core Version:    0.7.0.1
  */

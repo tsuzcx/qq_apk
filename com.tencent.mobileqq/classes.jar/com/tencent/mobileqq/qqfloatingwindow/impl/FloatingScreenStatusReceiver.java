@@ -51,92 +51,94 @@ public class FloatingScreenStatusReceiver
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    int i = 1;
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
+    if (paramIntent != null)
     {
-      for (;;)
-      {
+      if (paramIntent.getAction() == null) {
         return;
+      }
+      boolean bool = QLog.isColorLevel();
+      int i = 1;
+      if (bool) {
+        QLog.d("FSReceiver", 4, new Object[] { "action: ", paramIntent.getAction() });
+      }
+      if ("tencent.mobileqq.floatingscreen.statuschange".equals(paramIntent.getAction()))
+      {
+        i = paramIntent.getIntExtra("param_concern_floating_type", -1);
+        if (!a(i))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("FSReceiver", 2, new Object[] { "type not available, concern:", Integer.valueOf(i), " ,curr:", Integer.valueOf(this.b) });
+          }
+          return;
+        }
+        i = paramIntent.getIntExtra("param_curr_window_status", 0);
+        int j = paramIntent.getIntExtra("param_busitype", -1);
         if (QLog.isColorLevel()) {
-          QLog.d("FSReceiver", 4, new Object[] { "action: ", paramIntent.getAction() });
+          QLog.d("FSReceiver", 2, new Object[] { "busiType:", Integer.valueOf(j), " ,status:", Integer.valueOf(i), " ,hide:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
         }
-        if ("tencent.mobileqq.floatingscreen.statuschange".equals(paramIntent.getAction()))
+        if (paramIntent.hasExtra("param_ignored_processid"))
         {
-          i = paramIntent.getIntExtra("param_concern_floating_type", -1);
-          if (!a(i))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("FSReceiver", 2, new Object[] { "type not available, concern:", Integer.valueOf(i), " ,curr:", Integer.valueOf(this.b) });
-            }
-          }
-          else
-          {
-            i = paramIntent.getIntExtra("param_curr_window_status", 0);
-            int j = paramIntent.getIntExtra("param_busitype", -1);
-            if (QLog.isColorLevel()) {
-              QLog.d("FSReceiver", 2, new Object[] { "busiType:", Integer.valueOf(j), " ,status:", Integer.valueOf(i), " ,hide:", Boolean.valueOf(this.jdField_a_of_type_Boolean) });
-            }
-            if (paramIntent.hasExtra("param_ignored_processid"))
-            {
-              j = paramIntent.getIntExtra("param_ignored_processid", -1);
-              if (jdField_a_of_type_Int == j) {}
-            }
-            else
-            {
-              switch (i)
-              {
-              default: 
-                return;
-              case 102: 
-                this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.b();
-                this.jdField_a_of_type_Boolean = true;
-                return;
-              case 103: 
-                this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.a(true);
-                this.jdField_a_of_type_Boolean = false;
-                return;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.c();
-            }
+          j = paramIntent.getIntExtra("param_ignored_processid", -1);
+          if (jdField_a_of_type_Int == j) {
+            return;
           }
         }
-        else
+        switch (i)
         {
-          if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.a();
-            return;
-          }
-          if ("mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.b();
-            return;
-          }
-          if (!"mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction())) {
-            break;
-          }
-          paramContext = paramIntent.getStringExtra("process_name");
-          if ((paramContext != null) && (paramContext.contains("openSdk"))) {}
-          while ((i == 0) && (!this.jdField_a_of_type_Boolean))
-          {
-            this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.a(false);
-            return;
-            i = 0;
-          }
+        default: 
+          return;
+        case 104: 
+          this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.c();
+          return;
+        case 103: 
+          this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.a(true);
+          this.jdField_a_of_type_Boolean = false;
+          return;
+        }
+        this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.b();
+        this.jdField_a_of_type_Boolean = true;
+        return;
+      }
+      if ("android.intent.action.SCREEN_OFF".equals(paramIntent.getAction()))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.a();
+        return;
+      }
+      if ("mqq.intent.action.QQ_BACKGROUND".equals(paramIntent.getAction()))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.b();
+        return;
+      }
+      if ("mqq.intent.action.QQ_FOREGROUND".equals(paramIntent.getAction()))
+      {
+        paramContext = paramIntent.getStringExtra("process_name");
+        if ((paramContext == null) || (!paramContext.contains("openSdk"))) {
+          i = 0;
+        }
+        if ((i == 0) && (!this.jdField_a_of_type_Boolean)) {
+          this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.a(false);
         }
       }
-    } while ((!"mqq.intent.action.ACCOUNT_CHANGED".equals(paramIntent.getAction())) && (!"mqq.intent.action.ACCOUNT_KICKED".equals(paramIntent.getAction())) && (!"mqq.intent.action.ACCOUNT_EXPIRED".equals(paramIntent.getAction())) && (!"mqq.intent.action.FORCE_LOGOUT".equals(paramIntent.getAction())) && (!"mqq.intent.action.LOGOUT".equals(paramIntent.getAction())));
-    i = paramIntent.getIntExtra("type", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("FSReceiver", 2, "cnrType=" + i + " action=" + paramIntent.getAction());
+      else if (("mqq.intent.action.ACCOUNT_CHANGED".equals(paramIntent.getAction())) || ("mqq.intent.action.ACCOUNT_KICKED".equals(paramIntent.getAction())) || ("mqq.intent.action.ACCOUNT_EXPIRED".equals(paramIntent.getAction())) || ("mqq.intent.action.FORCE_LOGOUT".equals(paramIntent.getAction())) || ("mqq.intent.action.LOGOUT".equals(paramIntent.getAction())))
+      {
+        i = paramIntent.getIntExtra("type", -1);
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("cnrType=");
+          paramContext.append(i);
+          paramContext.append(" action=");
+          paramContext.append(paramIntent.getAction());
+          QLog.d("FSReceiver", 2, paramContext.toString());
+        }
+        this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.c();
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqQqfloatingwindowListenerIWindowStatusListener.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenStatusReceiver
  * JD-Core Version:    0.7.0.1
  */

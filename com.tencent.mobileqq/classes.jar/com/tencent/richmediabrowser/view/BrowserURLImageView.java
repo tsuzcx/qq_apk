@@ -31,9 +31,10 @@ public class BrowserURLImageView
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (paramURLDrawable == this.mDecoding)
+    URLDrawable localURLDrawable = this.mDecoding;
+    if (paramURLDrawable == localURLDrawable)
     {
-      setImageDrawable(this.mDecoding);
+      setImageDrawable(localURLDrawable);
       return;
     }
     super.onLoadFialed(paramURLDrawable, paramThrowable);
@@ -67,8 +68,9 @@ public class BrowserURLImageView
   
   public void setDecodingDrawble(URLDrawable paramURLDrawable)
   {
-    if (this.mDecoding != null) {
-      this.mDecoding.setURLDrawableListener(null);
+    URLDrawable localURLDrawable = this.mDecoding;
+    if (localURLDrawable != null) {
+      localURLDrawable.setURLDrawableListener(null);
     }
     paramURLDrawable.setURLDrawableListener(this);
     this.mDecoding = paramURLDrawable;
@@ -77,16 +79,17 @@ public class BrowserURLImageView
   public void setImageDrawable(Drawable paramDrawable)
   {
     super.setImageDrawable(paramDrawable);
-    if (this.mDecoding != null)
+    paramDrawable = this.mDecoding;
+    if (paramDrawable != null)
     {
-      this.mDecoding.setURLDrawableListener(null);
+      paramDrawable.setURLDrawableListener(null);
       this.mDecoding = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.BrowserURLImageView
  * JD-Core Version:    0.7.0.1
  */

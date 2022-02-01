@@ -5,7 +5,7 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.os.Message;
 import android.os.Process;
-import com.tencent.av.AVLog;
+import com.tencent.avcore.util.AVCoreLog;
 
 public abstract class GLContextThread
   extends OffscreenSurface
@@ -14,9 +14,12 @@ public abstract class GLContextThread
   
   public GLContextThread()
   {
-    HandlerThread localHandlerThread = new HandlerThread("OffscreenGLThread" + (int)(Math.random() * 100.0D));
-    localHandlerThread.start();
-    this.a = new GLContextThread.MyHandler(localHandlerThread.getLooper(), this);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("OffscreenGLThread");
+    ((StringBuilder)localObject).append((int)(Math.random() * 100.0D));
+    localObject = new HandlerThread(((StringBuilder)localObject).toString());
+    ((HandlerThread)localObject).start();
+    this.a = new GLContextThread.MyHandler(((HandlerThread)localObject).getLooper(), this);
   }
   
   protected abstract void a(Message paramMessage);
@@ -25,7 +28,7 @@ public abstract class GLContextThread
   {
     super.b();
     Process.setThreadPriority(0);
-    AVLog.printColorLog("GLContextThread", "init: ");
+    AVCoreLog.i("GLContextThread", "init:");
   }
   
   protected void c()
@@ -36,7 +39,7 @@ public abstract class GLContextThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.GLContextThread
  * JD-Core Version:    0.7.0.1
  */

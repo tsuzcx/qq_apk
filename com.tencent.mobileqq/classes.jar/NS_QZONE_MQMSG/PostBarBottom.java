@@ -26,17 +26,19 @@ public final class PostBarBottom
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 0);
+    String str = this.content;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.jumpUrl != null) {
-      paramJceOutputStream.write(this.jumpUrl, 1);
+    str = this.jumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.PostBarBottom
  * JD-Core Version:    0.7.0.1
  */

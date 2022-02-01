@@ -20,249 +20,307 @@ import java.util.Queue;
 public class HuaweiApiManager$ConnectionManager<OptionsT extends Api.ApiOptions>
   implements BaseHmsClient.ConnectionCallbacks, BaseHmsClient.OnConnectionFailedListener
 {
-  private final Queue<HuaweiApiManager.a> b = new LinkedList();
-  private final AnyClient c;
-  private ConnectionResult d;
-  private final ConnectionManagerKey e;
-  private final HuaweiApi<OptionsT> f;
+  private final Queue<HuaweiApiManager.TaskApiCallbackWrapper> callbackQueue = new LinkedList();
+  private final HuaweiApi<OptionsT> mApi;
+  private final AnyClient mClient;
+  private final ConnectionManagerKey mConnectionManagerKey;
+  private ConnectionResult mConnectionResult;
+  private ResolveClientBean mResolveClientBean;
   
   HuaweiApiManager$ConnectionManager(HuaweiApi<OptionsT> paramHuaweiApi)
   {
     Object localObject;
-    this.f = localObject;
-    this.c = localObject.getClient(HuaweiApiManager.a(paramHuaweiApi).getLooper(), this);
-    this.d = null;
-    this.e = localObject.getConnectionManagerKey();
+    this.mApi = localObject;
+    this.mClient = localObject.getClient(HuaweiApiManager.access$100(paramHuaweiApi).getLooper(), this);
+    this.mConnectionResult = null;
+    this.mConnectionManagerKey = localObject.getConnectionManagerKey();
   }
   
-  private String a(String paramString1, String paramString2)
+  private String errorReason(ConnectionResult paramConnectionResult)
+  {
+    int i;
+    if (Util.isAvailableLibExist(this.mApi.getContext()))
+    {
+      i = paramConnectionResult.getErrorCode();
+      if (i == -1) {
+        break label132;
+      }
+      if (i != 3)
+      {
+        if (i == 8) {
+          break label129;
+        }
+        if (i == 10) {
+          break label126;
+        }
+        if (i != 13)
+        {
+          if (i != 21) {
+            switch (i)
+            {
+            default: 
+              break;
+            case 27: 
+              return "there is already an update popup at the front desk, but it hasn't been clicked or it is not effective for a while";
+            case 26: 
+              return "update failed, because no activity incoming, can't pop update page";
+            case 25: 
+              return "failed to get update result";
+            }
+          } else {
+            return "device is too old to be support";
+          }
+        }
+        else {
+          return "update cancelled";
+        }
+      }
+      else
+      {
+        return "HuaWei Mobile Service is disabled";
+      }
+    }
+    else
+    {
+      i = paramConnectionResult.getErrorCode();
+      if (i == -1) {
+        break label132;
+      }
+      if (i == 8) {
+        break label129;
+      }
+      if (i == 10) {
+        break label126;
+      }
+    }
+    return "unknown errorReason";
+    label126:
+    return "application configuration error, please developer check configuration";
+    label129:
+    return "internal error";
+    label132:
+    return "get update result, but has other error codes";
+  }
+  
+  private String getTransactionId(String paramString1, String paramString2)
   {
     String str = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      str = TransactionIdCreater.getId(this.f.getAppID(), paramString2);
+      str = TransactionIdCreater.getId(this.mApi.getAppID(), paramString2);
     }
     return str;
   }
   
-  private void a(ConnectionResult paramConnectionResult)
+  private void innerConnected()
   {
-    Checker.assertHandlerThread(HuaweiApiManager.a(this.a));
-    this.d = paramConnectionResult;
-    Iterator localIterator = this.b.iterator();
-    int i = 1;
-    TaskApiCallWrapper localTaskApiCallWrapper;
-    ResponseHeader localResponseHeader;
-    if (localIterator.hasNext())
-    {
-      localTaskApiCallWrapper = ((HuaweiApiManager.a)localIterator.next()).a();
-      localResponseHeader = new ResponseHeader(1, 907135003, "Connection Failed:" + b(paramConnectionResult) + "(" + paramConnectionResult.getErrorCode() + ")");
-      localResponseHeader.setTransactionId(localTaskApiCallWrapper.getTaskApiCall().getTransactionId());
-      b.a(this.f.getContext(), localResponseHeader, String.valueOf(this.f.getKitSdkVersion()));
-      if ((this.d.getResolution() == null) || (i == 0)) {
-        break label229;
-      }
-      localResponseHeader.setParcelable(this.d.getResolution());
-      i = 0;
+    Checker.assertHandlerThread(HuaweiApiManager.access$100(this.this$0));
+    this.mConnectionResult = null;
+    Iterator localIterator = this.callbackQueue.iterator();
+    while (localIterator.hasNext()) {
+      postMessage((HuaweiApiManager.TaskApiCallbackWrapper)localIterator.next());
     }
-    label229:
-    for (;;)
-    {
-      localTaskApiCallWrapper.getTaskApiCall().onResponse(this.c, localResponseHeader, null, localTaskApiCallWrapper.getTaskCompletionSource());
-      break;
-      this.b.clear();
-      this.d = null;
-      this.c.disconnect();
-      HuaweiApiManager.b(this.a).remove(this.e);
-      return;
-    }
+    this.callbackQueue.clear();
   }
   
-  private void a(HuaweiApiManager.a parama)
+  private void innerConnectionFailed(ConnectionResult paramConnectionResult)
   {
-    String str = parama.a().getTaskApiCall().getUri();
+    Checker.assertHandlerThread(HuaweiApiManager.access$100(this.this$0));
+    this.mConnectionResult = paramConnectionResult;
+    Iterator localIterator = this.callbackQueue.iterator();
+    int i;
+    for (int j = 1; localIterator.hasNext(); j = i)
+    {
+      TaskApiCallWrapper localTaskApiCallWrapper = ((HuaweiApiManager.TaskApiCallbackWrapper)localIterator.next()).getApiCallWrapper();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Connection Failed:");
+      ((StringBuilder)localObject).append(errorReason(paramConnectionResult));
+      ((StringBuilder)localObject).append("(");
+      ((StringBuilder)localObject).append(paramConnectionResult.getErrorCode());
+      ((StringBuilder)localObject).append(")");
+      localObject = new ResponseHeader(1, 907135003, ((StringBuilder)localObject).toString());
+      ((ResponseHeader)localObject).setTransactionId(localTaskApiCallWrapper.getTaskApiCall().getTransactionId());
+      b.a(this.mApi.getContext(), (ResponseHeader)localObject, String.valueOf(this.mApi.getKitSdkVersion()));
+      i = j;
+      if (this.mConnectionResult.getResolution() != null)
+      {
+        i = j;
+        if (j != 0)
+        {
+          ((ResponseHeader)localObject).setParcelable(this.mConnectionResult.getResolution());
+          j = 0;
+          i = j;
+          if (Util.isAvailableLibExist(this.mApi.getContext()))
+          {
+            i = j;
+            if (this.mConnectionResult.getErrorCode() == 26)
+            {
+              ((ResponseHeader)localObject).setResolution("hasContextResolution");
+              i = j;
+            }
+          }
+        }
+      }
+      localTaskApiCallWrapper.getTaskApiCall().onResponse(this.mClient, (ResponseErrorCode)localObject, null, localTaskApiCallWrapper.getTaskCompletionSource());
+    }
+    this.callbackQueue.clear();
+    this.mConnectionResult = null;
+    this.mClient.disconnect();
+    HuaweiApiManager.access$400(this.this$0).remove(this.mConnectionManagerKey);
+  }
+  
+  private void innerConnectionSuspended(int paramInt)
+  {
+    Checker.assertHandlerThread(HuaweiApiManager.access$100(this.this$0));
+    Iterator localIterator = this.callbackQueue.iterator();
+    while (localIterator.hasNext())
+    {
+      TaskApiCallWrapper localTaskApiCallWrapper = ((HuaweiApiManager.TaskApiCallbackWrapper)localIterator.next()).getApiCallWrapper();
+      ResponseHeader localResponseHeader = new ResponseHeader(1, 907135003, "Connection Suspended");
+      localResponseHeader.setTransactionId(localTaskApiCallWrapper.getTaskApiCall().getTransactionId());
+      localTaskApiCallWrapper.getTaskApiCall().onResponse(this.mClient, localResponseHeader, null, localTaskApiCallWrapper.getTaskCompletionSource());
+    }
+    this.callbackQueue.clear();
+    this.mConnectionResult = null;
+    this.mClient.disconnect();
+    HuaweiApiManager.access$400(this.this$0).remove(this.mConnectionManagerKey);
+  }
+  
+  private void postMessage(HuaweiApiManager.TaskApiCallbackWrapper paramTaskApiCallbackWrapper)
+  {
+    String str = paramTaskApiCallbackWrapper.getApiCallWrapper().getTaskApiCall().getUri();
     RequestHeader localRequestHeader = new RequestHeader();
     localRequestHeader.setSrvName(str.split("\\.")[0]);
     localRequestHeader.setApiName(str);
-    localRequestHeader.setAppID(this.f.getAppID() + "|" + this.f.getSubAppID());
-    localRequestHeader.setPkgName(this.f.getContext().getPackageName());
-    localRequestHeader.setSessionId(this.c.getSessionId());
-    TaskApiCall localTaskApiCall = parama.a().getTaskApiCall();
-    localRequestHeader.setTransactionId(a(localTaskApiCall.getTransactionId(), str));
-    localRequestHeader.setParcelable(localTaskApiCall.getParcelable());
-    localRequestHeader.setKitSdkVersion(this.f.getKitSdkVersion());
-    if (this.f.getApiLevel() > localTaskApiCall.getApiLevel()) {}
-    for (int i = this.f.getApiLevel();; i = localTaskApiCall.getApiLevel())
-    {
-      localRequestHeader.setApiLevel(i);
-      this.c.post(localRequestHeader, localTaskApiCall.getRequestJson(), parama.b());
-      return;
-    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.mApi.getAppID());
+    ((StringBuilder)localObject).append("|");
+    ((StringBuilder)localObject).append(this.mApi.getSubAppID());
+    localRequestHeader.setAppID(((StringBuilder)localObject).toString());
+    localRequestHeader.setPkgName(this.mApi.getContext().getPackageName());
+    localRequestHeader.setSessionId(this.mClient.getSessionId());
+    localObject = paramTaskApiCallbackWrapper.getApiCallWrapper().getTaskApiCall();
+    localRequestHeader.setTransactionId(getTransactionId(((TaskApiCall)localObject).getTransactionId(), str));
+    localRequestHeader.setParcelable(((TaskApiCall)localObject).getParcelable());
+    localRequestHeader.setKitSdkVersion(this.mApi.getKitSdkVersion());
+    localRequestHeader.setApiLevel(Math.max(this.mApi.getApiLevel(), ((TaskApiCall)localObject).getApiLevel()));
+    this.mClient.post(localRequestHeader, ((TaskApiCall)localObject).getRequestJson(), paramTaskApiCallbackWrapper.getCallBack());
   }
   
-  private HuaweiApiManager.a b(TaskApiCallWrapper paramTaskApiCallWrapper)
+  private HuaweiApiManager.TaskApiCallbackWrapper wrapperRequest(TaskApiCallWrapper paramTaskApiCallWrapper)
   {
-    return new HuaweiApiManager.a(paramTaskApiCallWrapper, new HuaweiApiManager.ConnectionManager.1(this, paramTaskApiCallWrapper));
+    return new HuaweiApiManager.TaskApiCallbackWrapper(paramTaskApiCallWrapper, new HuaweiApiManager.ConnectionManager.1(this, paramTaskApiCallWrapper));
   }
   
-  private String b(ConnectionResult paramConnectionResult)
+  void connect(int paramInt)
   {
-    if (Util.isAvailableLibExist(this.f.getContext()))
+    try
     {
-      switch (paramConnectionResult.getErrorCode())
+      Checker.assertHandlerThread(HuaweiApiManager.access$100(this.this$0));
+      if (this.mClient.isConnected())
       {
-      default: 
-        return "unknown errorReason";
-      case 10: 
-        return "application configuration error, please developer check configuration";
-      case 26: 
-        return "update failed, because no activity incoming, can't pop update page";
-      case 21: 
-        return "device is too old to be support";
-      case 3: 
-        return "HuaWei Mobile Service is disabled";
-      case 27: 
-        return "there is already an update popup at the front desk, but it hasn't been clicked or it is not effective for a while";
-      case 13: 
-        return "update cancelled";
-      case 8: 
-        return "internal error";
-      case 25: 
-        return "failed to get update result";
-      }
-      return "get update result, but has other error codes";
-    }
-    switch (paramConnectionResult.getErrorCode())
-    {
-    default: 
-      return "unknown errorReason";
-    case 10: 
-      return "application configuration error, please developer check configuration";
-    case 8: 
-      return "internal error";
-    }
-    return "get update result, but has other error codes";
-  }
-  
-  private void b()
-  {
-    Checker.assertHandlerThread(HuaweiApiManager.a(this.a));
-    this.d = null;
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext()) {
-      a((HuaweiApiManager.a)localIterator.next());
-    }
-    this.b.clear();
-  }
-  
-  private void b(int paramInt)
-  {
-    Checker.assertHandlerThread(HuaweiApiManager.a(this.a));
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
-    {
-      TaskApiCallWrapper localTaskApiCallWrapper = ((HuaweiApiManager.a)localIterator.next()).a();
-      ResponseHeader localResponseHeader = new ResponseHeader(1, 907135003, "Connection Suspended");
-      localResponseHeader.setTransactionId(localTaskApiCallWrapper.getTaskApiCall().getTransactionId());
-      localTaskApiCallWrapper.getTaskApiCall().onResponse(this.c, localResponseHeader, null, localTaskApiCallWrapper.getTaskCompletionSource());
-    }
-    this.b.clear();
-    this.d = null;
-    this.c.disconnect();
-    HuaweiApiManager.b(this.a).remove(this.e);
-  }
-  
-  void a(int paramInt)
-  {
-    for (;;)
-    {
-      try
-      {
-        Checker.assertHandlerThread(HuaweiApiManager.a(this.a));
-        if (this.c.isConnected())
-        {
-          HMSLog.d("HuaweiApiManager", "client is connected");
-          return;
-        }
-        if (this.c.isConnecting()) {
-          HMSLog.d("HuaweiApiManager", "client is isConnecting");
-        } else {
-          this.c.connect(paramInt);
-        }
-      }
-      finally {}
-    }
-  }
-  
-  void a(TaskApiCallWrapper paramTaskApiCallWrapper)
-  {
-    HMSLog.i("HuaweiApiManager", "sendRequest");
-    Checker.assertHandlerThread(HuaweiApiManager.a(this.a));
-    HuaweiApiManager.a locala = b(paramTaskApiCallWrapper);
-    int i = paramTaskApiCallWrapper.getTaskApiCall().getMinApkVersion();
-    if (this.c.isConnected())
-    {
-      if (HMSPackageManager.getInstance(this.f.getContext()).hmsVerHigherThan(i))
-      {
-        a(locala);
+        HMSLog.d("HuaweiApiManager", "client is connected");
         return;
       }
-      a();
-      this.b.add(locala);
-      a(i);
+      if (this.mClient.isConnecting())
+      {
+        HMSLog.d("HuaweiApiManager", "client is isConnecting");
+        return;
+      }
+      if (this.mApi.getActivity() != null)
+      {
+        if (this.mResolveClientBean == null) {
+          this.mResolveClientBean = new ResolveClientBean(this.mClient, paramInt);
+        }
+        if (BindResolveClients.getInstance().isClientRegistered(this.mResolveClientBean))
+        {
+          HMSLog.i("HuaweiApiManager", "mResolveClientBean has already register, return!");
+          return;
+        }
+        BindResolveClients.getInstance().register(this.mResolveClientBean);
+      }
+      this.mClient.connect(paramInt);
       return;
     }
-    this.b.add(locala);
-    if ((this.d != null) && (this.d.getErrorCode() != 0))
-    {
-      onConnectionFailed(this.d);
-      return;
-    }
-    a(i);
+    finally {}
   }
   
-  boolean a()
+  boolean disconnect()
   {
-    Checker.assertHandlerThread(HuaweiApiManager.a(this.a));
-    this.c.disconnect();
+    Checker.assertHandlerThread(HuaweiApiManager.access$100(this.this$0));
+    this.mClient.disconnect();
     return true;
   }
   
   public void onConnected()
   {
     HMSLog.d("HuaweiApiManager", "onConnected");
-    if (Looper.myLooper() == HuaweiApiManager.a(this.a).getLooper())
+    BindResolveClients.getInstance().unRegister(this.mResolveClientBean);
+    this.mResolveClientBean = null;
+    if (Looper.myLooper() == HuaweiApiManager.access$100(this.this$0).getLooper())
     {
-      b();
+      innerConnected();
       return;
     }
-    HuaweiApiManager.a(this.a).post(new HuaweiApiManager.ConnectionManager.3(this));
+    HuaweiApiManager.access$100(this.this$0).post(new HuaweiApiManager.ConnectionManager.3(this));
   }
   
   public void onConnectionFailed(ConnectionResult paramConnectionResult)
   {
     HMSLog.i("HuaweiApiManager", "onConnectionFailed");
-    if (Looper.myLooper() == HuaweiApiManager.a(this.a).getLooper())
+    BindResolveClients.getInstance().unRegister(this.mResolveClientBean);
+    this.mResolveClientBean = null;
+    if (Looper.myLooper() == HuaweiApiManager.access$100(this.this$0).getLooper())
     {
-      a(paramConnectionResult);
+      innerConnectionFailed(paramConnectionResult);
       return;
     }
-    HuaweiApiManager.a(this.a).post(new HuaweiApiManager.ConnectionManager.2(this, paramConnectionResult));
+    HuaweiApiManager.access$100(this.this$0).post(new HuaweiApiManager.ConnectionManager.2(this, paramConnectionResult));
   }
   
   public void onConnectionSuspended(int paramInt)
   {
     HMSLog.i("HuaweiApiManager", "onConnectionSuspended");
-    if (Looper.myLooper() == HuaweiApiManager.a(this.a).getLooper())
+    BindResolveClients.getInstance().unRegister(this.mResolveClientBean);
+    this.mResolveClientBean = null;
+    if (Looper.myLooper() == HuaweiApiManager.access$100(this.this$0).getLooper())
     {
-      b(paramInt);
+      innerConnectionSuspended(paramInt);
       return;
     }
-    HuaweiApiManager.a(this.a).post(new HuaweiApiManager.ConnectionManager.4(this, paramInt));
+    HuaweiApiManager.access$100(this.this$0).post(new HuaweiApiManager.ConnectionManager.4(this, paramInt));
+  }
+  
+  void sendRequest(TaskApiCallWrapper paramTaskApiCallWrapper)
+  {
+    HMSLog.i("HuaweiApiManager", "sendRequest");
+    Checker.assertHandlerThread(HuaweiApiManager.access$100(this.this$0));
+    HuaweiApiManager.TaskApiCallbackWrapper localTaskApiCallbackWrapper = wrapperRequest(paramTaskApiCallWrapper);
+    int i = paramTaskApiCallWrapper.getTaskApiCall().getMinApkVersion();
+    if (this.mClient.isConnected())
+    {
+      if (HMSPackageManager.getInstance(this.mApi.getContext()).hmsVerHigherThan(i))
+      {
+        postMessage(localTaskApiCallbackWrapper);
+        return;
+      }
+      disconnect();
+      this.callbackQueue.add(localTaskApiCallbackWrapper);
+      connect(i);
+      return;
+    }
+    this.callbackQueue.add(localTaskApiCallbackWrapper);
+    paramTaskApiCallWrapper = this.mConnectionResult;
+    if ((paramTaskApiCallWrapper != null) && (paramTaskApiCallWrapper.getErrorCode() != 0))
+    {
+      onConnectionFailed(this.mConnectionResult);
+      return;
+    }
+    connect(i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.HuaweiApiManager.ConnectionManager
  * JD-Core Version:    0.7.0.1
  */

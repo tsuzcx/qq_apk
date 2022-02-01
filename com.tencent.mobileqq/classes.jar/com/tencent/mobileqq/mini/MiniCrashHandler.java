@@ -12,10 +12,18 @@ import mqq.app.MobileQQ;
 public class MiniCrashHandler
   extends CrashHandler
 {
-  public static final String FOLDER = BaseApplicationImpl.getApplication().getFilesDir().getPath() + "/mini/";
+  public static final String FOLDER;
   private static final String TAG = "MiniCrashHandler";
   public Thread.UncaughtExceptionHandler defaultHandler = null;
   private MiniAppConfig miniAppConfig;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getFilesDir().getPath());
+    localStringBuilder.append("/mini/");
+    FOLDER = localStringBuilder.toString();
+  }
   
   public MiniCrashHandler()
   {
@@ -47,29 +55,35 @@ public class MiniCrashHandler
   
   public static String getCrashFilePath(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
-      {
-        if (paramString.contains(":"))
-        {
-          String str = paramString.substring(paramString.indexOf(":") + 1);
-          str = FOLDER + str + "_crash";
-          return str;
-        }
+    }
+    try
+    {
+      if (!paramString.contains(":")) {
+        return null;
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("MiniCrashHandler", 1, "getFilePath exception! processName:" + paramString, localThrowable);
-      }
+      String str = paramString.substring(paramString.indexOf(":") + 1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FOLDER);
+      localStringBuilder.append(str);
+      localStringBuilder.append("_crash");
+      str = localStringBuilder.toString();
+      return str;
+    }
+    catch (Throwable localThrowable)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getFilePath exception! processName:");
+      localStringBuilder.append(paramString);
+      QLog.e("MiniCrashHandler", 1, localStringBuilder.toString(), localThrowable);
     }
     return null;
   }
   
   public static long getLastCrashTime(String paramString)
   {
+    long l = -1L;
     try
     {
       paramString = getCrashFilePath(paramString);
@@ -77,11 +91,14 @@ public class MiniCrashHandler
         return -1L;
       }
       paramString = new File(paramString);
-      if ((paramString.exists()) && (paramString.isFile()))
+      if (paramString.exists())
       {
-        long l = paramString.lastModified();
-        return l;
+        if (!paramString.isFile()) {
+          return -1L;
+        }
+        l = paramString.lastModified();
       }
+      return l;
     }
     catch (Throwable paramString)
     {
@@ -95,193 +112,211 @@ public class MiniCrashHandler
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_2
-    //   2: invokestatic 26	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   5: invokevirtual 63	com/tencent/common/app/BaseApplicationImpl:getQQProcessName	()Ljava/lang/String;
-    //   8: invokestatic 67	com/tencent/mobileqq/mini/MiniCrashHandler:getCrashFilePath	(Ljava/lang/String;)Ljava/lang/String;
-    //   11: astore 4
-    //   13: aload 4
-    //   15: invokestatic 73	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   18: istore_1
-    //   19: iload_1
-    //   20: ifeq +27 -> 47
-    //   23: iconst_0
-    //   24: ifeq +11 -> 35
-    //   27: new 130	java/lang/NullPointerException
-    //   30: dup
-    //   31: invokespecial 131	java/lang/NullPointerException:<init>	()V
-    //   34: athrow
-    //   35: return
-    //   36: astore_2
-    //   37: ldc 9
-    //   39: iconst_1
-    //   40: ldc 133
-    //   42: aload_2
-    //   43: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   46: return
-    //   47: new 32	java/io/File
-    //   50: dup
-    //   51: aload 4
-    //   53: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
-    //   56: astore 5
-    //   58: new 32	java/io/File
-    //   61: dup
-    //   62: getstatic 47	com/tencent/mobileqq/mini/MiniCrashHandler:FOLDER	Ljava/lang/String;
-    //   65: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
-    //   68: astore_3
-    //   69: aload_3
-    //   70: invokevirtual 80	java/io/File:exists	()Z
-    //   73: ifeq +10 -> 83
-    //   76: aload_3
-    //   77: invokevirtual 136	java/io/File:isDirectory	()Z
-    //   80: ifne +8 -> 88
-    //   83: aload_3
-    //   84: invokevirtual 139	java/io/File:mkdirs	()Z
-    //   87: pop
-    //   88: aload 5
-    //   90: invokevirtual 80	java/io/File:exists	()Z
-    //   93: ifeq +11 -> 104
-    //   96: aload 5
-    //   98: invokevirtual 83	java/io/File:isFile	()Z
-    //   101: ifne +9 -> 110
-    //   104: aload 5
-    //   106: invokevirtual 142	java/io/File:createNewFile	()Z
-    //   109: pop
-    //   110: new 144	java/io/FileOutputStream
-    //   113: dup
-    //   114: aload 5
-    //   116: iconst_0
-    //   117: invokespecial 147	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   120: astore_3
-    //   121: aload_3
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_2
+    //   5: aload_2
+    //   6: astore_1
+    //   7: invokestatic 26	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   10: invokevirtual 63	com/tencent/common/app/BaseApplicationImpl:getQQProcessName	()Ljava/lang/String;
+    //   13: invokestatic 67	com/tencent/mobileqq/mini/MiniCrashHandler:getCrashFilePath	(Ljava/lang/String;)Ljava/lang/String;
+    //   16: astore_3
+    //   17: aload_2
+    //   18: astore_1
+    //   19: aload_3
+    //   20: invokestatic 73	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   23: ifeq +4 -> 27
+    //   26: return
+    //   27: aload_2
+    //   28: astore_1
+    //   29: new 32	java/io/File
+    //   32: dup
+    //   33: aload_3
+    //   34: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
+    //   37: astore 5
+    //   39: aload_2
+    //   40: astore_1
+    //   41: new 32	java/io/File
+    //   44: dup
+    //   45: getstatic 47	com/tencent/mobileqq/mini/MiniCrashHandler:FOLDER	Ljava/lang/String;
+    //   48: invokespecial 76	java/io/File:<init>	(Ljava/lang/String;)V
+    //   51: astore 6
+    //   53: aload_2
+    //   54: astore_1
+    //   55: aload 6
+    //   57: invokevirtual 80	java/io/File:exists	()Z
+    //   60: ifeq +13 -> 73
+    //   63: aload_2
+    //   64: astore_1
+    //   65: aload 6
+    //   67: invokevirtual 131	java/io/File:isDirectory	()Z
+    //   70: ifne +11 -> 81
+    //   73: aload_2
+    //   74: astore_1
+    //   75: aload 6
+    //   77: invokevirtual 134	java/io/File:mkdirs	()Z
+    //   80: pop
+    //   81: aload_2
+    //   82: astore_1
+    //   83: aload 5
+    //   85: invokevirtual 80	java/io/File:exists	()Z
+    //   88: ifeq +13 -> 101
+    //   91: aload_2
+    //   92: astore_1
+    //   93: aload 5
+    //   95: invokevirtual 83	java/io/File:isFile	()Z
+    //   98: ifne +11 -> 109
+    //   101: aload_2
+    //   102: astore_1
+    //   103: aload 5
+    //   105: invokevirtual 137	java/io/File:createNewFile	()Z
+    //   108: pop
+    //   109: aload_2
+    //   110: astore_1
+    //   111: new 139	java/io/FileOutputStream
+    //   114: dup
+    //   115: aload 5
+    //   117: iconst_0
+    //   118: invokespecial 142	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   121: astore_2
     //   122: new 17	java/lang/StringBuilder
     //   125: dup
     //   126: invokespecial 20	java/lang/StringBuilder:<init>	()V
-    //   129: ldc 149
-    //   131: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   134: invokestatic 154	java/lang/System:currentTimeMillis	()J
-    //   137: invokevirtual 157	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   140: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   143: invokevirtual 161	java/lang/String:getBytes	()[B
-    //   146: invokevirtual 165	java/io/FileOutputStream:write	([B)V
-    //   149: aload_3
-    //   150: invokevirtual 168	java/io/FileOutputStream:flush	()V
-    //   153: ldc 9
-    //   155: iconst_1
-    //   156: new 17	java/lang/StringBuilder
-    //   159: dup
-    //   160: invokespecial 20	java/lang/StringBuilder:<init>	()V
-    //   163: ldc 170
-    //   165: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: aload 4
-    //   170: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   173: ldc 172
-    //   175: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: invokestatic 154	java/lang/System:currentTimeMillis	()J
-    //   181: invokevirtual 157	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   184: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   187: invokestatic 175	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   190: aload_3
-    //   191: ifnull -156 -> 35
-    //   194: aload_3
-    //   195: invokevirtual 178	java/io/FileOutputStream:close	()V
-    //   198: return
-    //   199: astore_2
-    //   200: ldc 9
-    //   202: iconst_1
-    //   203: ldc 133
-    //   205: aload_2
-    //   206: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   209: return
-    //   210: astore_3
-    //   211: ldc 9
-    //   213: iconst_1
-    //   214: ldc 133
-    //   216: aload_3
-    //   217: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   220: aload_2
-    //   221: ifnull -186 -> 35
-    //   224: aload_2
-    //   225: invokevirtual 178	java/io/FileOutputStream:close	()V
-    //   228: return
-    //   229: astore_2
-    //   230: ldc 9
-    //   232: iconst_1
-    //   233: ldc 133
-    //   235: aload_2
-    //   236: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   239: return
-    //   240: astore_2
-    //   241: aconst_null
-    //   242: astore_3
-    //   243: aload_3
-    //   244: ifnull +7 -> 251
-    //   247: aload_3
-    //   248: invokevirtual 178	java/io/FileOutputStream:close	()V
-    //   251: aload_2
-    //   252: athrow
-    //   253: astore_3
-    //   254: ldc 9
-    //   256: iconst_1
-    //   257: ldc 133
-    //   259: aload_3
-    //   260: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   263: goto -12 -> 251
-    //   266: astore_2
-    //   267: goto -24 -> 243
-    //   270: astore 4
-    //   272: aload_2
-    //   273: astore_3
-    //   274: aload 4
-    //   276: astore_2
-    //   277: goto -34 -> 243
-    //   280: astore 4
-    //   282: aload_3
-    //   283: astore_2
-    //   284: aload 4
-    //   286: astore_3
-    //   287: goto -76 -> 211
+    //   129: astore_1
+    //   130: aload_1
+    //   131: ldc 144
+    //   133: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   136: pop
+    //   137: aload_1
+    //   138: invokestatic 149	java/lang/System:currentTimeMillis	()J
+    //   141: invokevirtual 152	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   144: pop
+    //   145: aload_2
+    //   146: aload_1
+    //   147: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: invokevirtual 156	java/lang/String:getBytes	()[B
+    //   153: invokevirtual 160	java/io/FileOutputStream:write	([B)V
+    //   156: aload_2
+    //   157: invokevirtual 163	java/io/FileOutputStream:flush	()V
+    //   160: new 17	java/lang/StringBuilder
+    //   163: dup
+    //   164: invokespecial 20	java/lang/StringBuilder:<init>	()V
+    //   167: astore_1
+    //   168: aload_1
+    //   169: ldc 165
+    //   171: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: pop
+    //   175: aload_1
+    //   176: aload_3
+    //   177: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   180: pop
+    //   181: aload_1
+    //   182: ldc 167
+    //   184: invokevirtual 40	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   187: pop
+    //   188: aload_1
+    //   189: invokestatic 149	java/lang/System:currentTimeMillis	()J
+    //   192: invokevirtual 152	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   195: pop
+    //   196: ldc 9
+    //   198: iconst_1
+    //   199: aload_1
+    //   200: invokevirtual 45	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   203: invokestatic 170	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   206: aload_2
+    //   207: invokevirtual 173	java/io/FileOutputStream:close	()V
+    //   210: return
+    //   211: astore_1
+    //   212: goto +50 -> 262
+    //   215: astore_3
+    //   216: goto +15 -> 231
+    //   219: astore_3
+    //   220: aload_1
+    //   221: astore_2
+    //   222: aload_3
+    //   223: astore_1
+    //   224: goto +38 -> 262
+    //   227: astore_3
+    //   228: aload 4
+    //   230: astore_2
+    //   231: aload_2
+    //   232: astore_1
+    //   233: ldc 9
+    //   235: iconst_1
+    //   236: ldc 175
+    //   238: aload_3
+    //   239: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   242: aload_2
+    //   243: ifnull +18 -> 261
+    //   246: aload_2
+    //   247: invokevirtual 173	java/io/FileOutputStream:close	()V
+    //   250: return
+    //   251: astore_1
+    //   252: ldc 9
+    //   254: iconst_1
+    //   255: ldc 175
+    //   257: aload_1
+    //   258: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   261: return
+    //   262: aload_2
+    //   263: ifnull +20 -> 283
+    //   266: aload_2
+    //   267: invokevirtual 173	java/io/FileOutputStream:close	()V
+    //   270: goto +13 -> 283
+    //   273: astore_2
+    //   274: ldc 9
+    //   276: iconst_1
+    //   277: ldc 175
+    //   279: aload_2
+    //   280: invokestatic 98	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   283: aload_1
+    //   284: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	290	0	this	MiniCrashHandler
-    //   18	2	1	bool	boolean
-    //   1	1	2	localObject1	Object
-    //   36	7	2	localThrowable1	Throwable
-    //   199	26	2	localThrowable2	Throwable
-    //   229	7	2	localThrowable3	Throwable
-    //   240	12	2	localObject2	Object
-    //   266	7	2	localObject3	Object
-    //   276	8	2	localObject4	Object
-    //   68	127	3	localObject5	Object
-    //   210	7	3	localThrowable4	Throwable
-    //   242	6	3	localObject6	Object
-    //   253	7	3	localThrowable5	Throwable
-    //   273	14	3	localObject7	Object
-    //   11	158	4	str	String
-    //   270	5	4	localObject8	Object
-    //   280	5	4	localThrowable6	Throwable
-    //   56	59	5	localFile	File
+    //   0	285	0	this	MiniCrashHandler
+    //   6	194	1	localObject1	Object
+    //   211	10	1	localObject2	Object
+    //   223	10	1	localObject3	Object
+    //   251	33	1	localThrowable1	Throwable
+    //   4	263	2	localObject4	Object
+    //   273	7	2	localThrowable2	Throwable
+    //   16	161	3	str	String
+    //   215	1	3	localThrowable3	Throwable
+    //   219	4	3	localObject5	Object
+    //   227	12	3	localThrowable4	Throwable
+    //   1	228	4	localObject6	Object
+    //   37	79	5	localFile1	File
+    //   51	25	6	localFile2	File
     // Exception table:
     //   from	to	target	type
-    //   27	35	36	java/lang/Throwable
-    //   194	198	199	java/lang/Throwable
-    //   2	19	210	java/lang/Throwable
-    //   47	83	210	java/lang/Throwable
-    //   83	88	210	java/lang/Throwable
-    //   88	104	210	java/lang/Throwable
-    //   104	110	210	java/lang/Throwable
-    //   110	121	210	java/lang/Throwable
-    //   224	228	229	java/lang/Throwable
-    //   2	19	240	finally
-    //   47	83	240	finally
-    //   83	88	240	finally
-    //   88	104	240	finally
-    //   104	110	240	finally
-    //   110	121	240	finally
-    //   247	251	253	java/lang/Throwable
-    //   121	190	266	finally
-    //   211	220	270	finally
-    //   121	190	280	java/lang/Throwable
+    //   122	206	211	finally
+    //   122	206	215	java/lang/Throwable
+    //   7	17	219	finally
+    //   19	26	219	finally
+    //   29	39	219	finally
+    //   41	53	219	finally
+    //   55	63	219	finally
+    //   65	73	219	finally
+    //   75	81	219	finally
+    //   83	91	219	finally
+    //   93	101	219	finally
+    //   103	109	219	finally
+    //   111	122	219	finally
+    //   233	242	219	finally
+    //   7	17	227	java/lang/Throwable
+    //   19	26	227	java/lang/Throwable
+    //   29	39	227	java/lang/Throwable
+    //   41	53	227	java/lang/Throwable
+    //   55	63	227	java/lang/Throwable
+    //   65	73	227	java/lang/Throwable
+    //   75	81	227	java/lang/Throwable
+    //   83	91	227	java/lang/Throwable
+    //   93	101	227	java/lang/Throwable
+    //   103	109	227	java/lang/Throwable
+    //   111	122	227	java/lang/Throwable
+    //   206	210	251	java/lang/Throwable
+    //   246	250	251	java/lang/Throwable
+    //   266	270	273	java/lang/Throwable
   }
   
   public void setMiniAppConfig(MiniAppConfig paramMiniAppConfig)
@@ -294,8 +329,9 @@ public class MiniCrashHandler
     QLog.e("MiniCrashHandler", 1, "uncaughtException ", paramThrowable);
     saveCrashInfo();
     MiniProgramLpReportDC05115.reportCrash(this.miniAppConfig, paramThrowable);
-    if (this.defaultHandler != null) {
-      this.defaultHandler.uncaughtException(paramThread, paramThrowable);
+    Thread.UncaughtExceptionHandler localUncaughtExceptionHandler = this.defaultHandler;
+    if (localUncaughtExceptionHandler != null) {
+      localUncaughtExceptionHandler.uncaughtException(paramThread, paramThrowable);
     }
     super.uncaughtException(paramThread, paramThrowable);
     paramThread = MobileQQ.sMobileQQ;
@@ -305,7 +341,7 @@ public class MiniCrashHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.MiniCrashHandler
  * JD-Core Version:    0.7.0.1
  */

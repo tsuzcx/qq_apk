@@ -17,29 +17,38 @@ class WatchTogetherFloatingView$UIHandle
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
-      return;
-      sendEmptyMessageDelayed(2, 20000L);
-      return;
-      removeMessages(2);
-      return;
-      try
+    int i = paramMessage.what;
+    if (i != 1) {
+      if (i != 2)
       {
-        ((WatchTogetherFloatingView)this.a.get()).a();
+        if (i != 3) {
+          return;
+        }
+        removeMessages(2);
         return;
       }
-      catch (NullPointerException paramMessage) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("WatchTogetherFloatingView", 2, "MESSAGE_WAIT_LOADING END, but View missing");
+    }
+    try
+    {
+      ((WatchTogetherFloatingView)this.a.get()).a();
+      return;
+    }
+    catch (NullPointerException paramMessage)
+    {
+      label41:
+      break label41;
+    }
+    if (QLog.isColorLevel())
+    {
+      QLog.d("WatchTogetherFloatingView", 2, "MESSAGE_WAIT_LOADING END, but View missing");
+      return;
+      sendEmptyMessageDelayed(2, 20000L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherFloatingView.UIHandle
  * JD-Core Version:    0.7.0.1
  */

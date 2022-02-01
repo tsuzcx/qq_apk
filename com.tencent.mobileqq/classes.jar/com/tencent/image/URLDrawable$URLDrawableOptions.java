@@ -91,27 +91,25 @@ public class URLDrawable$URLDrawableOptions
       return;
     }
     clearForRecycle();
-    for (;;)
+    synchronized (sPoolSync)
     {
-      synchronized (sPoolSync)
+      if (sPoolSize < 30)
       {
-        if (sPoolSize < 30)
-        {
-          this.mNext = sPool;
-          sPool = this;
-          sPoolSize += 1;
-          return;
-        }
+        this.mNext = sPool;
+        sPool = this;
+        sPoolSize += 1;
       }
-      if (URLDrawable.depImp.mLog.isColorLevel()) {
+      else if (URLDrawable.depImp.mLog.isColorLevel())
+      {
         URLDrawable.depImp.mLog.i("URLDrawableOptions", 2, "URLDrawableOptions pool size is full");
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.URLDrawable.URLDrawableOptions
  * JD-Core Version:    0.7.0.1
  */

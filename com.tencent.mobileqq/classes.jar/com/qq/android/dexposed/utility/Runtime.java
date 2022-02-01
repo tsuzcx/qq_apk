@@ -9,25 +9,25 @@ public class Runtime
   private static final String TAG = "Runtime";
   private static volatile boolean g64 = false;
   private static volatile boolean isArt = true;
-  private static volatile Boolean isThumb = null;
+  private static volatile Boolean isThumb;
   
   static
   {
     try
     {
       g64 = ((Boolean)Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("is64Bit", new Class[0]).invoke(Class.forName("dalvik.system.VMRuntime").getDeclaredMethod("getRuntime", new Class[0]).invoke(null, new Object[0]), new Object[0])).booleanValue();
-      isArt = System.getProperty("java.vm.version").startsWith("2");
-      Log.i("Runtime", "is64Bit: " + g64 + ", isArt: " + isArt);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Log.e("Runtime", "get is64Bit failed, default not 64bit!", localException);
-        g64 = false;
-      }
+      Log.e("Runtime", "get is64Bit failed, default not 64bit!", localException);
+      g64 = false;
     }
+    isArt = System.getProperty("java.vm.version").startsWith("2");
+    StringBuilder localStringBuilder = new StringBuilder("is64Bit: ");
+    localStringBuilder.append(g64);
+    localStringBuilder.append(", isArt: ");
+    localStringBuilder.append(isArt);
+    Log.i("Runtime", localStringBuilder.toString());
   }
   
   public static boolean is64Bit()
@@ -42,14 +42,16 @@ public class Runtime
   
   public static boolean isThumb2()
   {
-    boolean bool = false;
     if (isThumb != null) {
       return isThumb.booleanValue();
     }
+    boolean bool = false;
     try
     {
       long l = ArtMethod.of(String.class.getDeclaredMethod("hashCode", new Class[0])).getEntryPointFromQuickCompiledCode();
-      Logger.w("Runtime", "isThumb2, entry: " + Long.toHexString(l));
+      StringBuilder localStringBuilder1 = new StringBuilder("isThumb2, entry: ");
+      localStringBuilder1.append(Long.toHexString(l));
+      Logger.w("Runtime", localStringBuilder1.toString());
       if ((l & 1L) == 1L) {
         bool = true;
       }
@@ -59,7 +61,9 @@ public class Runtime
     }
     catch (Throwable localThrowable)
     {
-      Logger.w("Runtime", "isThumb2, error: " + localThrowable);
+      StringBuilder localStringBuilder2 = new StringBuilder("isThumb2, error: ");
+      localStringBuilder2.append(localThrowable);
+      Logger.w("Runtime", localStringBuilder2.toString());
     }
     return true;
   }

@@ -20,11 +20,9 @@ import android.view.View.OnClickListener;
 import android.view.View.OnLongClickListener;
 import android.view.ViewConfiguration;
 import android.view.ViewParent;
-import com.tencent.biz.qqstory.album.tools.PhotoDetection;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.StatisticCollector;
+import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -44,6 +42,7 @@ public class PttAudioWaveView
   private Xfermode jdField_a_of_type_AndroidGraphicsXfermode;
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener;
   View.OnLongClickListener jdField_a_of_type_AndroidViewView$OnLongClickListener;
+  PttAudioWaveView.OnPressListener jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$OnPressListener;
   private PttAudioWaveView.SeekProgressListener jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener;
   Runnable jdField_a_of_type_JavaLangRunnable = new PttAudioWaveView.1(this);
   boolean jdField_a_of_type_Boolean = false;
@@ -104,9 +103,41 @@ public class PttAudioWaveView
     c();
   }
   
+  public static double a(int[] paramArrayOfInt)
+  {
+    int i3 = paramArrayOfInt.length;
+    int i2 = 0;
+    double d2 = 0.0D;
+    double d1 = 0.0D;
+    int i1 = 0;
+    while (i1 < i3)
+    {
+      d3 = paramArrayOfInt[i1];
+      Double.isNaN(d3);
+      d1 += d3;
+      i1 += 1;
+    }
+    double d3 = i3;
+    Double.isNaN(d3);
+    double d4 = d1 / d3;
+    d1 = d2;
+    i1 = i2;
+    while (i1 < i3)
+    {
+      d2 = paramArrayOfInt[i1];
+      Double.isNaN(d2);
+      double d5 = paramArrayOfInt[i1];
+      Double.isNaN(d5);
+      d1 += (d2 - d4) * (d5 - d4);
+      i1 += 1;
+    }
+    Double.isNaN(d3);
+    return d1 / d3;
+  }
+  
   public static float a(int paramInt1, int paramInt2, float paramFloat)
   {
-    return (float)(1.0D - Math.pow(1.0F - paramInt1 / paramInt2, 2.0F * paramFloat));
+    return (float)(1.0D - Math.pow(1.0F - paramInt1 / paramInt2, paramFloat * 2.0F));
   }
   
   public static int a(int paramInt, float paramFloat)
@@ -114,31 +145,34 @@ public class PttAudioWaveView
     float f1 = (paramInt >> 16 & 0xFF) / 255.0F;
     float f2 = (paramInt >> 8 & 0xFF) / 255.0F;
     float f3 = (paramInt & 0xFF) / 255.0F;
-    paramInt = (int)((paramInt >> 24 & 0xFF) / 255.0F * paramFloat * 255.0F + 0.5F);
-    return (int)(f1 * 255.0F + 0.5F) << 16 | paramInt << 24 | (int)(f2 * 255.0F + 0.5F) << 8 | (int)(f3 * 255.0F + 0.5F);
+    return (int)((paramInt >> 24 & 0xFF) / 255.0F * paramFloat * 255.0F + 0.5F) << 24 | (int)(f1 * 255.0F + 0.5F) << 16 | (int)(f2 * 255.0F + 0.5F) << 8 | (int)(f3 * 255.0F + 0.5F);
   }
   
   private Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     if (paramBitmap == null) {
-      paramBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      return Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
     }
-    int i1;
-    int i2;
-    Bitmap localBitmap;
-    do
+    int i1 = paramBitmap.getWidth();
+    int i2 = paramBitmap.getHeight();
+    if ((i1 == paramInt1) && (i2 == paramInt2)) {
+      return paramBitmap;
+    }
+    paramBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return paramBitmap;
-        i1 = paramBitmap.getWidth();
-        i2 = paramBitmap.getHeight();
-      } while ((i1 == paramInt1) && (i2 == paramInt2));
-      localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      paramBitmap = localBitmap;
-    } while (!QLog.isColorLevel());
-    QLog.d("PttAudioWaveView", 2, "initBitmap change width =" + paramInt1 + " height=" + paramInt2 + " oldBitmapWidth =" + i1 + " oldBitmpHeight=" + i2);
-    return localBitmap;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initBitmap change width =");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" height=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" oldBitmapWidth =");
+      localStringBuilder.append(i1);
+      localStringBuilder.append(" oldBitmpHeight=");
+      localStringBuilder.append(i2);
+      QLog.d("PttAudioWaveView", 2, localStringBuilder.toString());
+    }
+    return paramBitmap;
   }
   
   private void a(float paramFloat, int paramInt1, int paramInt2)
@@ -149,89 +183,86 @@ public class PttAudioWaveView
   private void a(Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.r);
-    if (this.jdField_d_of_type_Float > this.s) {
-      this.jdField_d_of_type_Float = this.s;
+    float f1 = this.jdField_d_of_type_Float;
+    int i1 = this.s;
+    if (f1 > i1) {
+      this.jdField_d_of_type_Float = i1;
     }
-    if (this.jdField_d_of_type_Float < this.t) {
-      this.jdField_d_of_type_Float = this.t;
+    f1 = this.jdField_d_of_type_Float;
+    i1 = this.t;
+    if (f1 < i1) {
+      this.jdField_d_of_type_Float = i1;
     }
     if (this.jdField_e_of_type_Boolean)
     {
-      float f1 = this.jdField_d_of_type_Float;
-      float f2 = this.jdField_d_of_type_Float;
-      float f3 = getMeasuredHeight();
-      int i1 = this.jdField_a_of_type_Int;
+      f1 = this.jdField_d_of_type_Float;
+      float f2 = getMeasuredHeight();
+      i1 = this.jdField_a_of_type_Int;
       int i2 = this.jdField_i_of_type_Int;
-      int i3 = this.jdField_a_of_type_Int;
       Object localObject = Shader.TileMode.CLAMP;
-      localObject = new LinearGradient(f1, 0.0F, f2, f3, new int[] { i1, i2, i3 }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject);
+      localObject = new LinearGradient(f1, 0.0F, f1, f2, new int[] { i1, i2, i1 }, new float[] { 0.0F, 0.5F, 1.0F }, (Shader.TileMode)localObject);
       this.jdField_a_of_type_AndroidGraphicsPaint.setShader((Shader)localObject);
-      paramCanvas.drawLine(this.jdField_d_of_type_Float, 0.0F, this.jdField_d_of_type_Float, getMeasuredHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
+      f1 = this.jdField_d_of_type_Float;
+      paramCanvas.drawLine(f1, 0.0F, f1, getMeasuredHeight(), this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.setShader(null);
     }
   }
   
-  private void a(View paramView, boolean paramBoolean)
+  private void a(boolean paramBoolean)
   {
-    if ((paramView != null) && (paramView.isPressed() != paramBoolean) && ((PttItemBuilder.Holder)paramView.getTag() != null))
-    {
-      ChatMessage localChatMessage = AIOUtils.a(paramView);
-      if ((localChatMessage != null) && (localChatMessage.vipBubbleID == 0L)) {
-        paramView.setPressed(paramBoolean);
-      }
+    PttAudioWaveView.OnPressListener localOnPressListener = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$OnPressListener;
+    if (localOnPressListener != null) {
+      localOnPressListener.a(paramBoolean);
     }
     super.setPressed(paramBoolean);
   }
   
   public static int[] a(int[] paramArrayOfInt, int paramInt)
   {
+    int i1 = 0;
     if (paramInt < 100)
     {
-      int[] arrayOfInt2 = new int[paramInt];
-      i1 = 0;
-      for (;;)
+      arrayOfInt = new int[paramInt];
+      while (i1 < paramInt)
       {
-        arrayOfInt1 = arrayOfInt2;
-        if (i1 >= paramInt) {
-          break;
-        }
-        arrayOfInt2[i1] = ((int)(paramArrayOfInt[i1] * 0.02480583F));
-        if (arrayOfInt2[i1] > 255) {
-          arrayOfInt2[i1] = 255;
+        arrayOfInt[i1] = ((int)(paramArrayOfInt[i1] * 0.02480583F));
+        if (arrayOfInt[i1] > 255) {
+          arrayOfInt[i1] = 255;
         }
         i1 += 1;
       }
+      return arrayOfInt;
     }
-    int[] arrayOfInt1 = new int[100];
+    int[] arrayOfInt = new int[100];
     float f3 = paramInt / 100.0F;
+    float f1 = f3;
     long l1 = 0L;
     int i2 = 0;
-    int i3 = 0;
-    int i1 = 0;
-    float f2;
-    for (float f1 = f3; i2 < paramInt; f1 = f2)
+    i1 = 0;
+    int i4;
+    for (int i3 = 0; i2 < paramInt; i3 = i4)
     {
       long l2 = l1 + paramArrayOfInt[i2];
       int i5 = i1 + 1;
-      int i4 = i3;
-      i1 = i5;
       l1 = l2;
-      f2 = f1;
+      i1 = i5;
+      float f2 = f1;
+      i4 = i3;
       if (i2 > f1)
       {
-        arrayOfInt1[i3] = ((int)((float)l2 / i5 * 0.02480583F));
-        if (arrayOfInt1[i3] > 255) {
-          arrayOfInt1[i3] = 255;
+        arrayOfInt[i3] = ((int)((float)l2 / i5 * 0.02480583F));
+        if (arrayOfInt[i3] > 255) {
+          arrayOfInt[i3] = 255;
         }
         i4 = i3 + 1;
-        f2 = f3 * (i4 + 1);
+        f2 = (i4 + 1) * f3;
         i1 = 0;
         l1 = 0L;
       }
       i2 += 1;
-      i3 = i4;
+      f1 = f2;
     }
-    return arrayOfInt1;
+    return arrayOfInt;
   }
   
   private void c()
@@ -242,33 +273,52 @@ public class PttAudioWaveView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.j);
     this.k = (ViewConfiguration.get(getContext()).getScaledTouchSlop() * 2);
     this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuff$Mode);
-    this.l = AIOUtils.a(3.0F, getResources());
+    this.l = ViewUtils.a(3.0F);
     this.o = this.l;
-    this.q = (AIOUtils.a(3.0F, getResources()) - 1);
-    this.r = AIOUtils.a(1.0F, getResources());
-    this.u = AIOUtils.a(174.0F, getResources());
-    this.v = AIOUtils.a(5.0F, getResources());
+    this.q = (ViewUtils.a(3.0F) - 1);
+    this.r = ViewUtils.a(1.0F);
+    this.u = ViewUtils.a(174.0F);
+    this.v = ViewUtils.a(5.0F);
   }
   
   private void d()
   {
-    int i1 = 0;
-    if ((this.jdField_b_of_type_AndroidGraphicsCanvas == null) || (this.jdField_a_of_type_AndroidGraphicsPaint == null) || (this.jdField_a_of_type_ArrayOfFloat.length <= 0) || (!this.jdField_g_of_type_Boolean)) {}
-    for (;;)
+    if ((this.jdField_b_of_type_AndroidGraphicsCanvas != null) && (this.jdField_a_of_type_AndroidGraphicsPaint != null) && (this.jdField_a_of_type_ArrayOfFloat.length > 0))
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("PttAudioWaveView", 2, "drawBitMapDesWave mSelectColor=" + Integer.toHexString(this.jdField_i_of_type_Int) + "bitmpt" + this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight() + " " + this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth() + " len" + this.jdField_a_of_type_ArrayOfFloat.length + " this=" + this);
+      if (!this.jdField_g_of_type_Boolean) {
+        return;
       }
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("drawBitMapDesWave mSelectColor=");
+        ((StringBuilder)localObject).append(Integer.toHexString(this.jdField_i_of_type_Int));
+        ((StringBuilder)localObject).append("bitmpt");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidGraphicsBitmap.getHeight());
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidGraphicsBitmap.getWidth());
+        ((StringBuilder)localObject).append(" len");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfFloat.length);
+        ((StringBuilder)localObject).append(" this=");
+        ((StringBuilder)localObject).append(this);
+        QLog.d("PttAudioWaveView", 2, ((StringBuilder)localObject).toString());
+      }
+      int i1 = 0;
       this.jdField_g_of_type_Boolean = false;
       this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(1.0F);
       this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_i_of_type_Int);
       this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsPorterDuffXfermode);
       this.jdField_b_of_type_AndroidGraphicsCanvas.drawPaint(this.jdField_a_of_type_AndroidGraphicsPaint);
       this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      while (i1 < this.jdField_a_of_type_ArrayOfFloat.length)
+      for (;;)
       {
-        a(i1, this.jdField_h_of_type_Int - this.jdField_a_of_type_ArrayOfFloat[i1] / 2.0F, this.jdField_h_of_type_Int + this.jdField_a_of_type_ArrayOfFloat[i1] / 2.0F);
+        localObject = this.jdField_a_of_type_ArrayOfFloat;
+        if (i1 >= localObject.length) {
+          break;
+        }
+        int i2 = this.jdField_h_of_type_Int;
+        a(i1, i2 - localObject[i1] / 2.0F, i2 + localObject[i1] / 2.0F);
         i1 += 1;
       }
     }
@@ -290,50 +340,73 @@ public class PttAudioWaveView
   
   public float a(float paramFloat)
   {
-    float f1 = this.jdField_e_of_type_Float * this.jdField_a_of_type_ArrayOfFloat.length;
-    paramFloat /= f1;
-    return (f1 - (this.jdField_e_of_type_Float - this.q)) * paramFloat;
+    float f1 = this.jdField_e_of_type_Float;
+    float f2 = this.jdField_a_of_type_ArrayOfFloat.length * f1;
+    return paramFloat / f2 * (f2 - (f1 - this.q));
   }
   
   public void a()
   {
     this.jdField_i_of_type_Boolean = true;
-    int i2 = this.jdField_a_of_type_ArrayOfInt.length;
-    this.jdField_a_of_type_ArrayOfFloat = new float[this.jdField_a_of_type_ArrayOfInt.length];
+    Object localObject = this.jdField_a_of_type_ArrayOfInt;
+    int i2 = localObject.length;
+    this.jdField_a_of_type_ArrayOfFloat = new float[localObject.length];
     int i3 = this.m;
     int i4 = this.n;
     int i1 = 0;
     float f1;
+    double d1;
     float f2;
-    if (i1 < this.jdField_a_of_type_ArrayOfFloat.length)
+    while (i1 < this.jdField_a_of_type_ArrayOfFloat.length)
     {
       f1 = a(this.jdField_a_of_type_ArrayOfInt[i1], 255, this.jdField_f_of_type_Float);
-      if (f1 > 0.9D) {
-        f2 = this.l;
-      }
-      for (f1 = f1 * (this.n - this.l) + f2 + (float)Math.sin(6.28D / (i2 % 4 + 3) * i1) * (i3 - i4);; f1 = f1 * (this.m - this.l) + f2)
+      int i5;
+      float f3;
+      if (f1 > 0.9D)
       {
-        if (f1 > this.o) {
-          this.o = ((int)f1);
-        }
-        this.jdField_a_of_type_ArrayOfFloat[i1] = f1;
-        i1 += 1;
-        break;
-        f2 = this.l;
+        i5 = this.l;
+        f3 = i5 + f1 * (this.n - i5);
+        d1 = i2 % 4 + 3;
+        Double.isNaN(d1);
+        d1 = 6.28D / d1;
+        double d2 = i1;
+        Double.isNaN(d2);
+        f1 = (float)Math.sin(d1 * d2);
+        f2 = i3 - i4;
       }
-    }
-    i1 = 1;
-    while (i1 < this.jdField_a_of_type_ArrayOfFloat.length - 1)
-    {
-      f1 = this.jdField_a_of_type_ArrayOfFloat[(i1 - 1)];
-      f2 = this.jdField_a_of_type_ArrayOfFloat[(i1 + 1)];
-      if (f1 * 0.5D > this.jdField_a_of_type_ArrayOfFloat[i1]) {
-        this.jdField_a_of_type_ArrayOfFloat[i1] = ((f1 + this.jdField_a_of_type_ArrayOfFloat[i1]) / 2.0F);
+      else
+      {
+        i5 = this.l;
+        f3 = i5;
+        f2 = this.m - i5;
       }
-      if (f2 * 0.5D > this.jdField_a_of_type_ArrayOfFloat[i1]) {
-        this.jdField_a_of_type_ArrayOfFloat[i1] = ((f2 + this.jdField_a_of_type_ArrayOfFloat[i1]) / 2.0F);
+      f1 = f3 + f1 * f2;
+      if (f1 > this.o) {
+        this.o = ((int)f1);
       }
+      this.jdField_a_of_type_ArrayOfFloat[i1] = f1;
       i1 += 1;
+    }
+    for (i1 = 1;; i1 = i2)
+    {
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      if (i1 >= localObject.length - 1) {
+        break;
+      }
+      f1 = localObject[(i1 - 1)];
+      i2 = i1 + 1;
+      f2 = localObject[i2];
+      d1 = f1;
+      Double.isNaN(d1);
+      if (d1 * 0.5D > localObject[i1]) {
+        localObject[i1] = ((f1 + localObject[i1]) / 2.0F);
+      }
+      d1 = f2;
+      Double.isNaN(d1);
+      localObject = this.jdField_a_of_type_ArrayOfFloat;
+      if (d1 * 0.5D > localObject[i1]) {
+        localObject[i1] = ((localObject[i1] + f2) / 2.0F);
+      }
     }
   }
   
@@ -341,14 +414,18 @@ public class PttAudioWaveView
   {
     int i1 = this.jdField_a_of_type_ArrayOfFloat.length;
     float f2 = (getMeasuredWidth() - this.j - this.jdField_b_of_type_Int - this.jdField_d_of_type_Int) / i1;
+    i1 = this.v;
     float f1 = f2;
-    if (f2 > this.v) {
-      f1 = this.v;
+    if (f2 > i1) {
+      f1 = i1;
     }
     this.jdField_e_of_type_Float = f1;
-    i1 = (int)(f1 * paramInt) + this.j + this.jdField_b_of_type_Int;
-    int i2 = i1 + this.q;
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, paramFloat1, i2, paramFloat2);
+    i1 = (int)(paramInt * f1) + this.j + this.jdField_b_of_type_Int;
+    int i2 = this.q + i1;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    f1 = i1;
+    f2 = i2;
+    localRectF.set(f1, paramFloat1, f2, paramFloat2);
     this.jdField_b_of_type_AndroidGraphicsCanvas.drawRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_AndroidGraphicsPaint);
     if (paramInt == this.jdField_a_of_type_ArrayOfFloat.length - 1) {
       this.s = i2;
@@ -357,9 +434,11 @@ public class PttAudioWaveView
       this.t = i1;
     }
     paramInt = (int)(this.q / 2.0F);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, paramFloat1 - paramInt + 1.0F, i2, paramInt + paramFloat1 + 1.0F);
+    localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f3 = paramInt;
+    localRectF.set(f1, paramFloat1 - f3 + 1.0F, f2, paramFloat1 + f3 + 1.0F);
     this.jdField_b_of_type_AndroidGraphicsCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 180.0F, 180.0F, true, this.jdField_a_of_type_AndroidGraphicsPaint);
-    this.jdField_a_of_type_AndroidGraphicsRectF.set(i1, paramFloat2 - paramInt - 1.0F, i2, paramInt + paramFloat2 - 1.0F);
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(f1, paramFloat2 - f3 - 1.0F, f2, paramFloat2 + f3 - 1.0F);
     this.jdField_b_of_type_AndroidGraphicsCanvas.drawArc(this.jdField_a_of_type_AndroidGraphicsRectF, 180.0F, -180.0F, true, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
@@ -368,95 +447,125 @@ public class PttAudioWaveView
     if (QLog.isColorLevel()) {
       QLog.d("PttAudioWaveView", 2, "destory");
     }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
-    if ((this.jdField_b_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       this.jdField_b_of_type_AndroidGraphicsBitmap.recycle();
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = null;
     this.jdField_b_of_type_AndroidGraphicsBitmap = null;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled()) || (this.jdField_b_of_type_AndroidGraphicsBitmap == null) || (this.jdField_b_of_type_AndroidGraphicsBitmap.isRecycled())) {
-      return;
-    }
-    d();
-    int i1;
-    if ((this.jdField_d_of_type_Float > 0.0F) || (this.jdField_d_of_type_Boolean))
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      i1 = paramCanvas.saveLayer(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight(), null, 31);
-      this.jdField_h_of_type_Boolean = true;
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_i_of_type_Int);
-      paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if (this.jdField_d_of_type_Float > 0.0F)
+      localBitmap = this.jdField_b_of_type_AndroidGraphicsBitmap;
+      if (localBitmap != null)
       {
-        e();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsXfermode);
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        if (localBitmap.isRecycled()) {
+          return;
+        }
+        d();
+        int i1;
+        if ((this.jdField_d_of_type_Float <= 0.0F) && (!this.jdField_d_of_type_Boolean))
+        {
+          paramCanvas.save();
+          i1 = 0;
+        }
+        else
+        {
+          i1 = paramCanvas.saveLayer(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight(), null, 31);
+          this.jdField_h_of_type_Boolean = true;
+        }
         this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_i_of_type_Int);
+        paramCanvas.drawBitmap(this.jdField_b_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+        if (this.jdField_d_of_type_Float > 0.0F)
+        {
+          e();
+          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsXfermode);
+          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+          this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+        }
+        if ((this.jdField_d_of_type_Float > 0.0F) || (this.jdField_d_of_type_Boolean)) {
+          a(paramCanvas);
+        }
+        if (this.jdField_h_of_type_Boolean)
+        {
+          paramCanvas.restoreToCount(i1);
+          this.jdField_h_of_type_Boolean = false;
+          return;
+        }
+        paramCanvas.restore();
       }
-      if ((this.jdField_d_of_type_Float > 0.0F) || (this.jdField_d_of_type_Boolean)) {
-        a(paramCanvas);
-      }
-      if (!this.jdField_h_of_type_Boolean) {
-        break;
-      }
-      paramCanvas.restoreToCount(i1);
-      this.jdField_h_of_type_Boolean = false;
-      return;
-      paramCanvas.save();
-      i1 = 0;
     }
-    paramCanvas.restore();
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if (QLog.isColorLevel()) {
-      QLog.d("PttAudioWaveView", 2, "onLayout changed=" + paramBoolean + " left=" + paramInt1 + " top=" + paramInt2 + " right=" + paramInt3 + " bottom=" + paramInt4 + " hasDataConvert=" + this.jdField_i_of_type_Boolean);
-    }
-    if ((getMeasuredWidth() <= 0) || (getMeasuredHeight() <= 0)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLayout changed=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" left=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" top=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" right=");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(" bottom=");
+      localStringBuilder.append(paramInt4);
+      localStringBuilder.append(" hasDataConvert=");
+      localStringBuilder.append(this.jdField_i_of_type_Boolean);
+      QLog.d("PttAudioWaveView", 2, localStringBuilder.toString());
+    }
+    if (getMeasuredWidth() > 0)
+    {
+      if (getMeasuredHeight() <= 0) {
         return;
-      } while (!paramBoolean);
-      this.jdField_b_of_type_Int = getPaddingLeft();
-      this.jdField_c_of_type_Int = getPaddingTop();
-      this.jdField_d_of_type_Int = getPaddingRight();
-      this.jdField_e_of_type_Int = getPaddingBottom();
-      this.jdField_g_of_type_Int = ((this.jdField_g_of_type_Int + getMeasuredWidth() / 2) / 2 - getMeasuredWidth() / 2);
-      if (this.jdField_g_of_type_Int < 0) {
-        this.jdField_g_of_type_Int = 0;
       }
-      this.jdField_h_of_type_Int = (getMeasuredHeight() / 2);
-      this.m = (getMeasuredHeight() - AIOUtils.a(this.jdField_f_of_type_Int, getResources()) * 2);
-      if (this.m < AIOUtils.a(12.0F, getResources())) {
-        this.m = AIOUtils.a(12.0F, getResources());
+      if (paramBoolean)
+      {
+        this.jdField_b_of_type_Int = getPaddingLeft();
+        this.jdField_c_of_type_Int = getPaddingTop();
+        this.jdField_d_of_type_Int = getPaddingRight();
+        this.jdField_e_of_type_Int = getPaddingBottom();
+        this.jdField_g_of_type_Int = ((this.jdField_g_of_type_Int + getMeasuredWidth() / 2) / 2 - getMeasuredWidth() / 2);
+        if (this.jdField_g_of_type_Int < 0) {
+          this.jdField_g_of_type_Int = 0;
+        }
+        this.jdField_h_of_type_Int = (getMeasuredHeight() / 2);
+        this.m = (getMeasuredHeight() - ViewUtils.b(this.jdField_f_of_type_Int) * 2);
+        if (this.m < ViewUtils.b(12.0F)) {
+          this.m = ViewUtils.b(12.0F);
+        }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.u + this.jdField_b_of_type_Int + this.jdField_d_of_type_Int, getMeasuredHeight() + this.jdField_c_of_type_Int + this.jdField_e_of_type_Int);
+        this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.jdField_b_of_type_AndroidGraphicsBitmap, this.u + this.jdField_b_of_type_Int + this.jdField_d_of_type_Int, getMeasuredHeight() + this.jdField_c_of_type_Int + this.jdField_e_of_type_Int);
+        this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        this.jdField_b_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_b_of_type_AndroidGraphicsBitmap);
+        this.jdField_g_of_type_Boolean = true;
+        paramInt1 = this.jdField_h_of_type_Int;
+        paramInt2 = this.m;
+        this.p = (paramInt1 + paramInt2 / 2);
+        double d1 = paramInt2;
+        Double.isNaN(d1);
+        this.n = ((int)(d1 * 0.8D));
+        if (!this.jdField_i_of_type_Boolean) {
+          a();
+        }
       }
-      this.jdField_a_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.u + this.jdField_b_of_type_Int + this.jdField_d_of_type_Int, getMeasuredHeight() + this.jdField_c_of_type_Int + this.jdField_e_of_type_Int);
-      this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.jdField_b_of_type_AndroidGraphicsBitmap, this.u + this.jdField_b_of_type_Int + this.jdField_d_of_type_Int, getMeasuredHeight() + this.jdField_c_of_type_Int + this.jdField_e_of_type_Int);
-      this.jdField_a_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      this.jdField_b_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_b_of_type_AndroidGraphicsBitmap);
-      this.jdField_g_of_type_Boolean = true;
-      this.p = (this.jdField_h_of_type_Int + this.m / 2);
-      this.n = ((int)(this.m * 0.8D));
-    } while (this.jdField_i_of_type_Boolean);
-    a();
+    }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
     if (paramMotionEvent.getAction() == 0)
     {
       this.jdField_a_of_type_Float = paramMotionEvent.getX();
@@ -467,174 +576,172 @@ public class PttAudioWaveView
       this.jdField_a_of_type_Boolean = false;
       this.jdField_b_of_type_Boolean = false;
       this.jdField_d_of_type_Boolean = false;
+      a(true);
+      getHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
+      return true;
     }
-    do
+    if (paramMotionEvent.getAction() == 2)
     {
-      do
+      float f1 = Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float);
+      float f2 = Math.abs(paramMotionEvent.getY() - this.jdField_b_of_type_Float);
+      int i1 = this.k;
+      if ((f1 > i1) || (f2 > i1))
       {
-        do
+        if (this.jdField_c_of_type_Boolean)
         {
-          try
+          this.jdField_d_of_type_Float = paramMotionEvent.getX();
+          invalidate();
+          a(paramMotionEvent.getX(), this.t, this.s);
+          paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener;
+          if ((paramMotionEvent != null) && (!this.jdField_d_of_type_Boolean))
           {
-            a((View)getParent().getParent().getParent(), true);
-            getHandler().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 500L);
-            bool1 = true;
-            return bool1;
+            this.jdField_d_of_type_Boolean = true;
+            paramMotionEvent.a(this);
           }
-          catch (Exception paramMotionEvent)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PttAudioWaveView", 2, "onTouchEvent ACTION_DOWN error:" + paramMotionEvent.toString());
-              }
-            }
-          }
-          if (paramMotionEvent.getAction() == 2)
-          {
-            float f1 = Math.abs(paramMotionEvent.getX() - this.jdField_a_of_type_Float);
-            float f2 = Math.abs(paramMotionEvent.getY() - this.jdField_b_of_type_Float);
-            if ((f1 > this.k) || (f2 > this.k))
-            {
-              if (this.jdField_c_of_type_Boolean)
-              {
-                this.jdField_d_of_type_Float = paramMotionEvent.getX();
-                invalidate();
-                a(paramMotionEvent.getX(), this.t, this.s);
-                if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener != null) && (!this.jdField_d_of_type_Boolean))
-                {
-                  this.jdField_d_of_type_Boolean = true;
-                  this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener.a(this);
-                }
-              }
-              getHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-              this.jdField_b_of_type_Boolean = true;
-            }
-            return true;
-          }
-          if (paramMotionEvent.getAction() != 1) {
-            break;
-          }
-          getHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-          this.jdField_d_of_type_Boolean = false;
-          try
-          {
-            a((View)getParent().getParent().getParent(), false);
-            if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
-            {
-              if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-                this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(this);
-              }
-              return true;
-            }
-          }
-          catch (Exception paramMotionEvent)
-          {
-            for (;;)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("PttAudioWaveView", 2, "ACTION_UP error:" + paramMotionEvent.toString());
-              }
-            }
-            bool1 = bool2;
-          }
-        } while (this.jdField_a_of_type_Boolean);
-        bool1 = bool2;
-      } while (!this.jdField_c_of_type_Boolean);
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener.a(this, this.jdField_c_of_type_Float);
-        ReportController.b(null, "dc00898", "", "", "0X8009D00", "0X8009D00", 3, 0, "", "", "", "");
+        }
+        getHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+        this.jdField_b_of_type_Boolean = true;
       }
       return true;
-      boolean bool1 = bool2;
-    } while (paramMotionEvent.getAction() != 3);
-    getHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_d_of_type_Boolean = false;
+    }
+    if (paramMotionEvent.getAction() == 1)
+    {
+      getHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_d_of_type_Boolean = false;
+      a(false);
+      if ((!this.jdField_a_of_type_Boolean) && (!this.jdField_b_of_type_Boolean))
+      {
+        paramMotionEvent = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+        if (paramMotionEvent != null) {
+          paramMotionEvent.onClick(this);
+        }
+        return true;
+      }
+      if ((!this.jdField_a_of_type_Boolean) && (this.jdField_c_of_type_Boolean))
+      {
+        paramMotionEvent = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$SeekProgressListener;
+        if (paramMotionEvent != null)
+        {
+          paramMotionEvent.a(this, this.jdField_c_of_type_Float);
+          ReportController.b(null, "dc00898", "", "", "0X8009D00", "0X8009D00", 3, 0, "", "", "", "");
+        }
+        return true;
+      }
+    }
+    else if (paramMotionEvent.getAction() == 3)
+    {
+      getHandler().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_d_of_type_Boolean = false;
+    }
     return false;
   }
   
   public void setAudioData(int[] paramArrayOfInt, int paramInt1, int paramInt2)
   {
+    int i3 = 0;
     this.jdField_i_of_type_Boolean = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("PttAudioWaveView", 2, "setAudioData mCenterHeight=" + this.jdField_h_of_type_Int + " data.length" + this.jdField_a_of_type_ArrayOfFloat.length);
-    }
-    int i2 = paramInt1 / AIOUtils.a(5.0F, getResources());
-    int i1 = i2;
-    if (i2 > 34) {
-      i1 = 34;
-    }
-    if (i1 < 3) {}
-    for (i2 = 3;; i2 = i1)
+    boolean bool = QLog.isColorLevel();
+    String str = "PttAudioWaveView";
+    if (bool)
     {
-      if (paramArrayOfInt == null)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setAudioData mCenterHeight=");
+      ((StringBuilder)localObject).append(this.jdField_h_of_type_Int);
+      ((StringBuilder)localObject).append(" data.length");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ArrayOfFloat.length);
+      QLog.d("PttAudioWaveView", 2, ((StringBuilder)localObject).toString());
+    }
+    int i1 = paramInt1 / ViewUtils.b(5.0F);
+    int i2 = i1;
+    if (i1 > 34) {
+      i2 = 34;
+    }
+    i1 = i2;
+    if (i2 < 3) {
+      i1 = 3;
+    }
+    if (paramArrayOfInt == null)
+    {
+      this.jdField_a_of_type_ArrayOfInt = new int[i1];
+      paramArrayOfInt = new Random(System.currentTimeMillis());
+      paramInt1 = i3;
+      while (paramInt1 < i1)
       {
-        this.jdField_a_of_type_ArrayOfInt = new int[i2];
-        paramArrayOfInt = new Random(System.currentTimeMillis());
-        paramInt1 = 0;
-        while (paramInt1 < i2)
-        {
-          this.jdField_a_of_type_ArrayOfInt[paramInt1] = paramArrayOfInt.nextInt(255);
-          paramInt1 += 1;
-        }
+        this.jdField_a_of_type_ArrayOfInt[paramInt1] = paramArrayOfInt.nextInt(255);
+        paramInt1 += 1;
       }
-      int[] arrayOfInt = new int[i2];
-      float f2 = paramArrayOfInt.length / i2;
-      i1 = 0;
-      long l1 = 0L;
-      int i4 = 0;
-      int i7 = 0;
-      int i6 = 0;
-      int i5 = 255;
-      int i3 = 0;
-      float f1 = f2;
-      int i8;
-      if (i3 < paramArrayOfInt.length)
+      return;
+    }
+    Object localObject = new int[i1];
+    float f1 = paramArrayOfInt.length;
+    float f3 = i1;
+    float f2 = f1 / f3;
+    f1 = f2;
+    int i6 = 255;
+    i3 = 0;
+    int i8 = 0;
+    int i4 = 0;
+    long l1 = 0L;
+    int i9 = 0;
+    int i5 = 0;
+    i2 = i1;
+    while (i3 < paramArrayOfInt.length)
+    {
+      long l2 = l1 + paramArrayOfInt[i3];
+      int i12 = i9 + 1;
+      int i11;
+      int i10;
+      int i7;
+      if (i3 < f1)
       {
-        l1 += paramArrayOfInt[i3];
-        i8 = i1 + 1;
-        if ((i3 < f1) && (i3 != paramArrayOfInt.length - 1)) {
-          break label512;
-        }
-        i1 = i4 + 1;
-        arrayOfInt[i4] = ((int)(l1 / i8));
-        i7 += arrayOfInt[(i1 - 1)];
-        i6 = Math.max(i6, arrayOfInt[(i1 - 1)]);
-        i5 = Math.min(i5, arrayOfInt[(i1 - 1)]);
-        f1 = f2 * (i1 + 1);
+        i11 = i6;
+        i10 = i8;
+        i9 = i4;
+        l1 = l2;
+        i1 = i12;
+        i7 = i5;
+        if (i3 != paramArrayOfInt.length - 1) {}
+      }
+      else
+      {
+        i7 = i5 + 1;
+        localObject[i5] = ((int)(l2 / i12));
+        i1 = i7 - 1;
+        i10 = i8 + localObject[i1];
+        i9 = Math.max(i4, localObject[i1]);
+        i11 = Math.min(i6, localObject[i1]);
+        f1 = i7 + 1;
+        f1 *= f2;
         l1 = 0L;
-        i8 = 0;
-        i4 = i1;
+        i1 = 0;
       }
-      label512:
-      for (i1 = i8;; i1 = i8)
-      {
-        i3 += 1;
-        break;
-        this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
-        if ((this.jdField_a_of_type_ArrayOfFloat.length <= 0) && (this.jdField_h_of_type_Int > 0))
-        {
-          a();
-          this.jdField_g_of_type_Boolean = true;
-        }
-        if (new Random().nextInt(1000) == 520)
-        {
-          paramArrayOfInt = new HashMap();
-          paramArrayOfInt.put("voiceLength", String.valueOf(paramInt2));
-          paramArrayOfInt.put("waveWidth", String.valueOf(paramInt1));
-          paramArrayOfInt.put("waveNum", String.valueOf(i2));
-          paramArrayOfInt.put("waveMax", String.valueOf(i6));
-          paramArrayOfInt.put("waveMin", String.valueOf(i5));
-          paramArrayOfInt.put("waveAvg", String.valueOf(i7 / i2));
-          paramArrayOfInt.put("waveVar", String.valueOf(Math.sqrt(PhotoDetection.a(arrayOfInt))));
-          if (QLog.isColorLevel()) {
-            QLog.d("PttAudioWaveView", 2, "real do report");
-          }
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "PttWaveInfo", true, 0L, 0L, paramArrayOfInt, "");
-        }
-        return;
+      i3 += 1;
+      i6 = i11;
+      i8 = i10;
+      i4 = i9;
+      i9 = i1;
+      i5 = i7;
+    }
+    this.jdField_a_of_type_ArrayOfInt = ((int[])localObject);
+    if ((this.jdField_a_of_type_ArrayOfFloat.length <= 0) && (this.jdField_h_of_type_Int > 0))
+    {
+      a();
+      this.jdField_g_of_type_Boolean = true;
+    }
+    if (new Random().nextInt(1000) == 520)
+    {
+      paramArrayOfInt = new HashMap();
+      paramArrayOfInt.put("voiceLength", String.valueOf(paramInt2));
+      paramArrayOfInt.put("waveWidth", String.valueOf(paramInt1));
+      paramArrayOfInt.put("waveNum", String.valueOf(i2));
+      paramArrayOfInt.put("waveMax", String.valueOf(i4));
+      paramArrayOfInt.put("waveMin", String.valueOf(i6));
+      paramArrayOfInt.put("waveAvg", String.valueOf(i8 / f3));
+      paramArrayOfInt.put("waveVar", String.valueOf(Math.sqrt(a((int[])localObject))));
+      if (QLog.isColorLevel()) {
+        QLog.d(str, 2, "real do report");
       }
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance("", "PttWaveInfo", true, 0L, 0L, paramArrayOfInt, "");
     }
   }
   
@@ -656,6 +763,11 @@ public class PttAudioWaveView
   public void setOnLongClickListener(View.OnLongClickListener paramOnLongClickListener)
   {
     this.jdField_a_of_type_AndroidViewView$OnLongClickListener = paramOnLongClickListener;
+  }
+  
+  public void setOnPressListener(PttAudioWaveView.OnPressListener paramOnPressListener)
+  {
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemPttAudioWaveView$OnPressListener = paramOnPressListener;
   }
   
   public void setProgress(float paramFloat)
@@ -697,7 +809,7 @@ public class PttAudioWaveView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttAudioWaveView
  * JD-Core Version:    0.7.0.1
  */

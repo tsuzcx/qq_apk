@@ -27,23 +27,25 @@ public class RaftConfigService
   
   private void handleArgs(Map<String, Object> paramMap1, Map<String, Object> paramMap2)
   {
-    if (paramMap2 == null) {}
-    String str;
-    do
-    {
+    if (paramMap2 == null) {
       return;
-      str = (String)paramMap2.keySet().toArray()[0];
-      paramMap2 = paramMap2.get(str);
-      if (!(paramMap2 instanceof HashMap)) {
-        break;
-      }
+    }
+    String str = (String)paramMap2.keySet().toArray()[0];
+    paramMap2 = paramMap2.get(str);
+    if ((paramMap2 instanceof HashMap))
+    {
       paramMap2 = (Map)((Map)paramMap2).get("service");
-    } while (paramMap2 == null);
-    RaftConfigService localRaftConfigService = new RaftConfigService();
-    localRaftConfigService.parse(paramMap2);
-    paramMap1.put(str, localRaftConfigService);
-    return;
-    paramMap1.put(str, paramMap2);
+      if (paramMap2 != null)
+      {
+        RaftConfigService localRaftConfigService = new RaftConfigService();
+        localRaftConfigService.parse(paramMap2);
+        paramMap1.put(str, localRaftConfigService);
+      }
+    }
+    else
+    {
+      paramMap1.put(str, paramMap2);
+    }
   }
   
   private Object handleValueWithDefault(Object paramObject1, Object paramObject2)
@@ -57,22 +59,20 @@ public class RaftConfigService
   private void parseConstructorArgs(Map<String, Object> paramMap)
   {
     paramMap = paramMap.get("init-method");
-    if (!(paramMap instanceof HashMap)) {}
-    for (;;)
-    {
+    if (!(paramMap instanceof HashMap)) {
       return;
-      paramMap = ((Map)paramMap).get("args");
-      if ((paramMap instanceof List))
-      {
-        paramMap = (List)paramMap;
-        this.constructorArgs = new HashMap(1);
-        int i = 0;
-        while (i < paramMap.size())
-        {
-          handleArgs(this.constructorArgs, (Map)paramMap.get(i));
-          i += 1;
-        }
-      }
+    }
+    paramMap = ((Map)paramMap).get("args");
+    if (!(paramMap instanceof List)) {
+      return;
+    }
+    paramMap = (List)paramMap;
+    this.constructorArgs = new HashMap(1);
+    int i = 0;
+    while (i < paramMap.size())
+    {
+      handleArgs(this.constructorArgs, (Map)paramMap.get(i));
+      i += 1;
     }
   }
   
@@ -80,76 +80,70 @@ public class RaftConfigService
   {
     this.factoryClass = ((String)handleValueWithDefault(paramMap.get("factory-class"), null));
     paramMap = paramMap.get("factory-method");
-    if (!(paramMap instanceof HashMap)) {}
-    for (;;)
-    {
+    if (!(paramMap instanceof HashMap)) {
       return;
-      paramMap = (HashMap)paramMap;
-      this.factoryMethod = ((String)paramMap.get("name"));
-      paramMap = paramMap.get("args");
-      if ((paramMap instanceof List))
-      {
-        paramMap = (List)paramMap;
-        this.factoryMethodArgs = new HashMap(1);
-        int i = 0;
-        while (i < paramMap.size())
-        {
-          handleArgs(this.factoryMethodArgs, (Map)paramMap.get(i));
-          i += 1;
-        }
-      }
+    }
+    paramMap = (HashMap)paramMap;
+    this.factoryMethod = ((String)paramMap.get("name"));
+    paramMap = paramMap.get("args");
+    if (!(paramMap instanceof List)) {
+      return;
+    }
+    paramMap = (List)paramMap;
+    this.factoryMethodArgs = new HashMap(1);
+    int i = 0;
+    while (i < paramMap.size())
+    {
+      handleArgs(this.factoryMethodArgs, (Map)paramMap.get(i));
+      i += 1;
     }
   }
   
   private void parseMethods(Map<String, Object> paramMap)
   {
     paramMap = paramMap.get("methods");
-    if (!(paramMap instanceof List)) {}
-    for (;;)
-    {
+    if (!(paramMap instanceof List)) {
       return;
-      paramMap = ((List)paramMap).iterator();
-      while (paramMap.hasNext())
+    }
+    paramMap = ((List)paramMap).iterator();
+    while (paramMap.hasNext())
+    {
+      Object localObject1 = (Map)paramMap.next();
+      String str = (String)((Map)localObject1).get("name");
+      Object localObject2 = ((Map)localObject1).get("args");
+      localObject1 = new HashMap(1);
+      if ((localObject2 instanceof List))
       {
-        Object localObject1 = (Map)paramMap.next();
-        String str = (String)((Map)localObject1).get("name");
-        Object localObject2 = ((Map)localObject1).get("args");
-        localObject1 = new HashMap(1);
-        if ((localObject2 instanceof List))
+        localObject2 = (List)localObject2;
+        int i = 0;
+        while (i < ((List)localObject2).size())
         {
-          localObject2 = (List)localObject2;
-          int i = 0;
-          while (i < ((List)localObject2).size())
-          {
-            handleArgs((Map)localObject1, (Map)((List)localObject2).get(i));
-            i += 1;
-          }
+          handleArgs((Map)localObject1, (Map)((List)localObject2).get(i));
+          i += 1;
         }
-        if (this.methods == null) {
-          this.methods = new ArrayList();
-        }
-        localObject2 = new HashMap();
-        ((Map)localObject2).put(str, localObject1);
-        this.methods.add(localObject2);
       }
+      if (this.methods == null) {
+        this.methods = new ArrayList();
+      }
+      localObject2 = new HashMap();
+      ((Map)localObject2).put(str, localObject1);
+      this.methods.add(localObject2);
     }
   }
   
   private void parseProperties(Map<String, Object> paramMap)
   {
     paramMap = paramMap.get("properties");
-    if (!(paramMap instanceof List)) {}
-    for (;;)
-    {
+    if (!(paramMap instanceof List)) {
       return;
-      paramMap = (List)paramMap;
-      this.properties = new HashMap(1);
-      int i = 0;
-      while (i < paramMap.size())
-      {
-        handleArgs(this.properties, (Map)paramMap.get(i));
-        i += 1;
-      }
+    }
+    paramMap = (List)paramMap;
+    this.properties = new HashMap(1);
+    int i = 0;
+    while (i < paramMap.size())
+    {
+      handleArgs(this.properties, (Map)paramMap.get(i));
+      i += 1;
     }
   }
   
@@ -177,12 +171,36 @@ public class RaftConfigService
   
   public String toString()
   {
-    return "RaftConfigService{from='" + this.from + '\'' + ", className='" + this.className + '\'' + ", scope=" + this.scope + ", factoryClass='" + this.factoryClass + '\'' + ", factoryMethod='" + this.factoryMethod + '\'' + ", factoryMethodArgs=" + this.factoryMethodArgs + ", constructorArgs=" + this.constructorArgs + ", properties=" + this.properties + ", methods=" + this.methods + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RaftConfigService{from='");
+    localStringBuilder.append(this.from);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", className='");
+    localStringBuilder.append(this.className);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", scope=");
+    localStringBuilder.append(this.scope);
+    localStringBuilder.append(", factoryClass='");
+    localStringBuilder.append(this.factoryClass);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", factoryMethod='");
+    localStringBuilder.append(this.factoryMethod);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", factoryMethodArgs=");
+    localStringBuilder.append(this.factoryMethodArgs);
+    localStringBuilder.append(", constructorArgs=");
+    localStringBuilder.append(this.constructorArgs);
+    localStringBuilder.append(", properties=");
+    localStringBuilder.append(this.properties);
+    localStringBuilder.append(", methods=");
+    localStringBuilder.append(this.methods);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.codegenmeta.config.RaftConfigService
  * JD-Core Version:    0.7.0.1
  */

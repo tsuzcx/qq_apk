@@ -13,28 +13,19 @@ public abstract class SonicCacheInterceptor
   static String getSonicCacheData(SonicSession paramSonicSession)
   {
     SonicCacheInterceptor localSonicCacheInterceptor = paramSonicSession.config.cacheInterceptor;
-    Object localObject;
     if (localSonicCacheInterceptor == null) {
-      localObject = SonicCacheInterceptor.SonicCacheInterceptorDefaultImpl.getCacheData(paramSonicSession);
+      return SonicCacheInterceptor.SonicCacheInterceptorDefaultImpl.getCacheData(paramSonicSession);
     }
-    label45:
-    for (;;)
+    String str = null;
+    while (localSonicCacheInterceptor != null)
     {
-      return localObject;
-      String str;
-      for (localObject = null;; localObject = str)
-      {
-        if (localSonicCacheInterceptor == null) {
-          break label45;
-        }
-        str = localSonicCacheInterceptor.getCacheData(paramSonicSession);
-        localObject = str;
-        if (str != null) {
-          break;
-        }
-        localSonicCacheInterceptor = localSonicCacheInterceptor.next();
+      str = localSonicCacheInterceptor.getCacheData(paramSonicSession);
+      if (str != null) {
+        return str;
       }
+      localSonicCacheInterceptor = localSonicCacheInterceptor.next();
     }
+    return str;
   }
   
   public abstract String getCacheData(SonicSession paramSonicSession);
@@ -46,7 +37,7 @@ public abstract class SonicCacheInterceptor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicCacheInterceptor
  * JD-Core Version:    0.7.0.1
  */

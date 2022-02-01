@@ -73,27 +73,32 @@ public final class UploadVideoInfoReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sTitle != null) {
-      paramJceOutputStream.write(this.sTitle, 0);
+    Object localObject = this.sTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.sDesc != null) {
-      paramJceOutputStream.write(this.sDesc, 1);
+    localObject = this.sDesc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.iFlag, 2);
     paramJceOutputStream.write(this.iUploadTime, 3);
     paramJceOutputStream.write(this.iBusiNessType, 4);
-    if (this.vBusiNessData != null) {
-      paramJceOutputStream.write(this.vBusiNessData, 5);
+    localObject = this.vBusiNessData;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
     paramJceOutputStream.write(this.iPlayTime, 6);
-    if (this.sCoverUrl != null) {
-      paramJceOutputStream.write(this.sCoverUrl, 7);
+    localObject = this.sCoverUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.iIsNew, 8);
     paramJceOutputStream.write(this.iIsOriginalVideo, 9);
     paramJceOutputStream.write(this.iIsFormatF20, 10);
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 11);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 11);
     }
     paramJceOutputStream.write(this.height, 12);
     paramJceOutputStream.write(this.width, 13);
@@ -101,7 +106,7 @@ public final class UploadVideoInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     FileUpload.UploadVideoInfoReq
  * JD-Core Version:    0.7.0.1
  */

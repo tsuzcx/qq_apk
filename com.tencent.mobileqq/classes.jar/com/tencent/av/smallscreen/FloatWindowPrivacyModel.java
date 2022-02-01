@@ -9,7 +9,7 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.SystemClock;
-import com.tencent.av.app.VideoAppInterface;
+import com.tencent.common.app.business.BaseVideoAppInterface;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -23,7 +23,7 @@ public class FloatWindowPrivacyModel
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 0L;
   BroadcastReceiver jdField_a_of_type_AndroidContentBroadcastReceiver = new FloatWindowPrivacyModel.1(this);
-  VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+  BaseVideoAppInterface jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
   private QQCustomDialog b = null;
   
@@ -34,23 +34,21 @@ public class FloatWindowPrivacyModel
   
   private QQCustomDialog a()
   {
-    QQCustomDialog localQQCustomDialog;
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null)
     {
-      localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_MqqAppBaseActivity, 230).setMessage(2131695854).setNegativeButton(2131690800, this);
-      if (!c()) {
-        break label79;
+      QQCustomDialog localQQCustomDialog = DialogUtil.a(this.jdField_a_of_type_MqqAppBaseActivity, 230).setMessage(2131695868).setNegativeButton(2131690728, this);
+      int i;
+      if (c()) {
+        i = 2131695870;
+      } else {
+        i = 2131695881;
       }
-    }
-    label79:
-    for (int i = 2131695858;; i = 2131695869)
-    {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = localQQCustomDialog.setPositiveButton(i, this);
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131695856);
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(2131695869);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCancelable(false);
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setCanceledOnTouchOutside(false);
-      return this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
     }
+    return this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   }
   
   static boolean a()
@@ -58,28 +56,166 @@ public class FloatWindowPrivacyModel
     return !"vivo".equalsIgnoreCase(DeviceInfoUtil.h());
   }
   
+  private boolean a(boolean paramBoolean, String paramString, StringBuilder paramStringBuilder)
+  {
+    boolean bool = paramBoolean;
+    if (!paramBoolean)
+    {
+      bool = paramBoolean;
+      if (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "miui.intent.action.APP_PERM_EDITOR"))
+      {
+        Intent localIntent = new Intent("miui.intent.action.APP_PERM_EDITOR");
+        localIntent.setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+        localIntent.putExtra("extra_pkgname", paramString);
+        try
+        {
+          this.jdField_a_of_type_MqqAppBaseActivity.startActivity(localIntent);
+          paramStringBuilder.append("ACTION_MIUI");
+          return true;
+        }
+        catch (Exception paramString)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", paramString);
+          }
+          bool = false;
+        }
+      }
+    }
+    return bool;
+  }
+  
   private QQCustomDialog b()
   {
     if (this.b == null)
     {
-      this.b = DialogUtil.a(this.jdField_a_of_type_MqqAppBaseActivity, 230).setMessage(2131695691).setPositiveButton(2131695607, this);
+      this.b = DialogUtil.a(this.jdField_a_of_type_MqqAppBaseActivity, 230).setMessage(2131695705).setPositiveButton(2131695618, this);
       this.b.setCancelable(false);
       this.b.setCanceledOnTouchOutside(false);
     }
     return this.b;
   }
   
+  private boolean b(boolean paramBoolean, String paramString, StringBuilder paramStringBuilder)
+  {
+    boolean bool = paramBoolean;
+    if (!paramBoolean)
+    {
+      bool = paramBoolean;
+      if (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "com.meizu.safe.security.SHOW_APPSEC"))
+      {
+        Intent localIntent = new Intent("com.meizu.safe.security.SHOW_APPSEC");
+        localIntent.setClassName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
+        localIntent.putExtra("packageName", paramString);
+        try
+        {
+          this.jdField_a_of_type_MqqAppBaseActivity.startActivity(localIntent);
+          paramStringBuilder.append("ACTION_MEIZU");
+          return true;
+        }
+        catch (Exception paramString)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", paramString);
+          }
+          bool = false;
+        }
+      }
+    }
+    return bool;
+  }
+  
   private boolean c()
   {
-    if ((SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "miui.intent.action.APP_PERM_EDITOR")) || (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "com.meizu.safe.security.SHOW_APPSEC")) || (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "huawei.intent.action.NOTIFICATIONMANAGER")) || (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION"))) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      boolean bool2 = bool1;
-      if (bool1) {
-        bool2 = b();
-      }
-      return bool2;
+    boolean bool1;
+    if ((!SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "miui.intent.action.APP_PERM_EDITOR")) && (!SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "com.meizu.safe.security.SHOW_APPSEC")) && (!SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "huawei.intent.action.NOTIFICATIONMANAGER")) && (!SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION"))) {
+      bool1 = false;
+    } else {
+      bool1 = true;
     }
+    boolean bool2 = bool1;
+    if (bool1) {
+      bool2 = b();
+    }
+    return bool2;
+  }
+  
+  private boolean c(boolean paramBoolean, String paramString, StringBuilder paramStringBuilder)
+  {
+    boolean bool = paramBoolean;
+    if (!paramBoolean)
+    {
+      bool = paramBoolean;
+      if ("vivo".equalsIgnoreCase(DeviceInfoUtil.h()))
+      {
+        bool = paramBoolean;
+        if (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "permission.intent.action.softPermissionDetail"))
+        {
+          Intent localIntent = new Intent("permission.intent.action.softPermissionDetail");
+          try
+          {
+            localIntent.putExtra("packagename", paramString);
+            this.jdField_a_of_type_MqqAppBaseActivity.startActivity(localIntent);
+            paramStringBuilder.append("ACTION_VIVO");
+            return true;
+          }
+          catch (Exception paramString)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", paramString);
+            }
+            bool = false;
+          }
+        }
+      }
+    }
+    return bool;
+  }
+  
+  private boolean d(boolean paramBoolean, String paramString, StringBuilder paramStringBuilder)
+  {
+    boolean bool = paramBoolean;
+    if (!paramBoolean)
+    {
+      bool = paramBoolean;
+      if (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "huawei.intent.action.NOTIFICATIONMANAGER"))
+      {
+        paramString = new Intent();
+        paramString.setClassName("com.huawei.systemmanager", "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity");
+        try
+        {
+          this.jdField_a_of_type_MqqAppBaseActivity.startActivity(paramString);
+          paramStringBuilder.append("ACTION_HUAWEI_1");
+          paramBoolean = true;
+        }
+        catch (Exception paramString)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", paramString);
+          }
+          paramBoolean = false;
+        }
+        bool = paramBoolean;
+        if (!paramBoolean)
+        {
+          paramString = new Intent("huawei.intent.action.NOTIFICATIONMANAGER");
+          try
+          {
+            this.jdField_a_of_type_MqqAppBaseActivity.startActivity(paramString);
+            paramStringBuilder.append("ACTION_HUAWEI_2");
+            return true;
+          }
+          catch (Exception paramString)
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", paramString);
+            }
+            bool = false;
+          }
+        }
+      }
+    }
+    return bool;
   }
   
   protected void a()
@@ -96,7 +232,7 @@ public class FloatWindowPrivacyModel
       a("onResume.1", this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog);
       return;
     }
-    if (!SmallScreenUtils.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp()))
+    if (!SmallScreenUtils.c(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getApp()))
     {
       b();
       a("onResume.1", this.b);
@@ -108,11 +244,11 @@ public class FloatWindowPrivacyModel
   
   protected void a(Bundle paramBundle)
   {
-    this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = ((VideoAppInterface)this.jdField_a_of_type_MqqAppBaseActivity.getAppRuntime());
+    this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface = ((BaseVideoAppInterface)this.jdField_a_of_type_MqqAppBaseActivity.getAppRuntime());
     paramBundle = new IntentFilter();
     paramBundle.addAction("tencent.video.v2q.SmallScreenState");
     this.jdField_a_of_type_MqqAppBaseActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramBundle);
-    if (SmallScreenUtils.c(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApp())) {
+    if (SmallScreenUtils.c(this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getApp())) {
       this.jdField_a_of_type_MqqAppBaseActivity.finish();
     }
   }
@@ -121,45 +257,52 @@ public class FloatWindowPrivacyModel
   
   boolean b()
   {
+    boolean bool1 = Build.MANUFACTURER.equalsIgnoreCase("OPPO");
     boolean bool2 = false;
-    boolean bool1;
-    if ((Build.MANUFACTURER.equalsIgnoreCase("OPPO")) && (Build.MODEL.equalsIgnoreCase("PCKM80"))) {
+    if ((bool1) && (Build.MODEL.equalsIgnoreCase("PCKM80")))
+    {
       bool1 = bool2;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("FloatWindowPrivacyModel", 2, "isSupport, manufacturer[" + Build.MANUFACTURER + "], model[" + Build.MODEL + "], bSupport[" + bool1 + "]");
-      }
-      return bool1;
       if (Build.MANUFACTURER.equalsIgnoreCase("VIVO"))
       {
         bool1 = bool2;
-        if (!Build.MODEL.equalsIgnoreCase("V1838A"))
+        if (Build.MODEL.equalsIgnoreCase("V1838A")) {
+          break label142;
+        }
+        bool1 = bool2;
+        if (Build.MODEL.equalsIgnoreCase("V1936A")) {
+          break label142;
+        }
+        if (Build.MODEL.equalsIgnoreCase("vivo X9s L"))
         {
           bool1 = bool2;
-          if (!Build.MODEL.equalsIgnoreCase("V1936A"))
-          {
-            bool1 = bool2;
-            if (Build.MODEL.equalsIgnoreCase("vivo X9s L")) {}
-          }
+          break label142;
         }
       }
-      else if (Build.MANUFACTURER.equalsIgnoreCase("HUAWEI"))
-      {
+      if ((Build.MANUFACTURER.equalsIgnoreCase("HUAWEI")) && (Build.MODEL.equalsIgnoreCase("H60-L01"))) {
         bool1 = bool2;
-        if (Build.MODEL.equalsIgnoreCase("H60-L01")) {}
-      }
-      else if (Build.MANUFACTURER.equalsIgnoreCase("Xiaomi"))
-      {
+      } else if ((Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) && (Build.MODEL.equalsIgnoreCase("MI 5X"))) {
         bool1 = bool2;
-        if (Build.MODEL.equalsIgnoreCase("MI 5X")) {}
-      }
-      else
-      {
+      } else {
         bool1 = true;
       }
     }
+    label142:
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupport, manufacturer[");
+      localStringBuilder.append(Build.MANUFACTURER);
+      localStringBuilder.append("], model[");
+      localStringBuilder.append(Build.MODEL);
+      localStringBuilder.append("], bSupport[");
+      localStringBuilder.append(bool1);
+      localStringBuilder.append("]");
+      QLog.i("FloatWindowPrivacyModel", 2, localStringBuilder.toString());
+    }
+    return bool1;
   }
   
   protected void c() {}
@@ -171,220 +314,91 @@ public class FloatWindowPrivacyModel
   
   void e()
   {
-    boolean bool3 = false;
-    String str3 = this.jdField_a_of_type_MqqAppBaseActivity.getPackageName();
-    Object localObject1 = null;
-    if ((a()) && (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION"))) {
-      localObject1 = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse("package:" + str3));
-    }
-    for (;;)
+    Object localObject1 = this.jdField_a_of_type_MqqAppBaseActivity.getPackageName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    boolean bool3 = a();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
-      try
+      bool1 = bool2;
+      if (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "android.settings.action.MANAGE_OVERLAY_PERMISSION"))
       {
-        this.jdField_a_of_type_MqqAppBaseActivity.startActivity((Intent)localObject1);
-        localObject1 = "ACTION_ANDROID";
-        bool2 = true;
-      }
-      catch (Exception localException1)
-      {
-        Object localObject3;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", localException1);
-        str1 = "Exception:" + localException1.getMessage();
-        bool2 = false;
-        continue;
-      }
-      boolean bool1 = bool2;
-      localObject3 = localObject1;
-      if (!bool2)
-      {
-        bool1 = bool2;
-        localObject3 = localObject1;
-        if (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "miui.intent.action.APP_PERM_EDITOR"))
-        {
-          localObject3 = new Intent("miui.intent.action.APP_PERM_EDITOR");
-          ((Intent)localObject3).setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
-          ((Intent)localObject3).putExtra("extra_pkgname", str3);
-        }
-      }
-      try
-      {
-        this.jdField_a_of_type_MqqAppBaseActivity.startActivity((Intent)localObject3);
-        localObject3 = "ACTION_MIUI";
-        bool1 = true;
-      }
-      catch (Exception localException3)
-      {
-        if (!QLog.isColorLevel()) {
-          break label538;
-        }
-        QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", localException3);
-        bool1 = false;
-        str2 = str1;
-        continue;
-      }
-      boolean bool2 = bool1;
-      localObject1 = localObject3;
-      if (!bool1)
-      {
-        bool2 = bool1;
-        localObject1 = localObject3;
-        if (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "com.meizu.safe.security.SHOW_APPSEC"))
-        {
-          localObject1 = new Intent("com.meizu.safe.security.SHOW_APPSEC");
-          ((Intent)localObject1).setClassName("com.meizu.safe", "com.meizu.safe.security.AppSecActivity");
-          ((Intent)localObject1).putExtra("packageName", str3);
-        }
-      }
-      try
-      {
-        this.jdField_a_of_type_MqqAppBaseActivity.startActivity((Intent)localObject1);
-        localObject1 = "ACTION_MEIZU";
-        bool2 = true;
-      }
-      catch (Exception localException2)
-      {
-        label538:
-        if (!QLog.isColorLevel()) {
-          break label566;
-        }
-        QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", localException2);
-        label566:
-        bool2 = false;
-        localObject2 = str2;
-        continue;
-      }
-      if ((!bool2) && ("vivo".equalsIgnoreCase(DeviceInfoUtil.h())) && (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "permission.intent.action.softPermissionDetail")))
-      {
-        localObject3 = new Intent("permission.intent.action.softPermissionDetail");
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("package:");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject2 = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION", Uri.parse(((StringBuilder)localObject2).toString()));
         try
         {
-          ((Intent)localObject3).putExtra("packagename", str3);
-          this.jdField_a_of_type_MqqAppBaseActivity.startActivity((Intent)localObject3);
-          localObject1 = "ACTION_VIVO";
+          this.jdField_a_of_type_MqqAppBaseActivity.startActivity((Intent)localObject2);
+          localStringBuilder.append("ACTION_ANDROID");
           bool1 = true;
         }
-        catch (Exception localException4)
+        catch (Exception localException)
         {
-          if (!QLog.isColorLevel()) {
-            break label594;
+          if (QLog.isColorLevel()) {
+            QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", localException);
           }
-          QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", localException4);
-          bool1 = false;
-          continue;
+          localStringBuilder.append("Exception:");
+          localStringBuilder.append(localException.getMessage());
+          bool1 = bool2;
         }
-        localObject3 = localObject1;
-        bool2 = bool1;
-        if (!bool1)
-        {
-          localObject3 = localObject1;
-          bool2 = bool1;
-          if (SmallScreenUtils.a(this.jdField_a_of_type_MqqAppBaseActivity, "huawei.intent.action.NOTIFICATIONMANAGER"))
-          {
-            localObject3 = new Intent();
-            ((Intent)localObject3).setClassName("com.huawei.systemmanager", "com.huawei.systemmanager.addviewmonitor.AddViewMonitorActivity");
-            try
-            {
-              this.jdField_a_of_type_MqqAppBaseActivity.startActivity((Intent)localObject3);
-              localObject1 = "ACTION_HUAWEI_1";
-              bool1 = true;
-            }
-            catch (Exception localException5)
-            {
-              if (!QLog.isColorLevel()) {
-                break label618;
-              }
-              QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", localException5);
-              bool1 = false;
-              continue;
-            }
-            localObject3 = localObject1;
-            bool2 = bool1;
-            if (!bool1)
-            {
-              localObject3 = new Intent("huawei.intent.action.NOTIFICATIONMANAGER");
-              try
-              {
-                this.jdField_a_of_type_MqqAppBaseActivity.startActivity((Intent)localObject3);
-                localObject3 = "ACTION_HUAWEI_2";
-                bool1 = true;
-              }
-              catch (Exception localException6)
-              {
-                String str1;
-                String str2;
-                Object localObject2;
-                Object localObject4 = localObject2;
-                bool1 = bool3;
-                if (!QLog.isColorLevel()) {
-                  continue;
-                }
-                QLog.e("FloatWindowPrivacyModel", 2, "openPermissionActivity Exception", localException6);
-                localObject4 = localObject2;
-                bool1 = bool3;
-                continue;
-                this.jdField_a_of_type_Int += 1;
-                this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-                return;
-              }
-              QLog.w("FloatWindowPrivacyModel", 1, "openPermissionActivity, openSuccess[" + bool1 + "], code[" + (String)localObject3 + "]");
-              if (!bool1)
-              {
-                b();
-                a("openPermissionActivity", this.b);
-                return;
-              }
-            }
-          }
-        }
-        label594:
-        label618:
-        bool1 = bool2;
-        continue;
       }
-      bool1 = bool2;
-      continue;
-      bool2 = false;
     }
+    bool1 = d(c(b(a(bool1, (String)localObject1, localStringBuilder), (String)localObject1, localStringBuilder), (String)localObject1, localStringBuilder), (String)localObject1, localStringBuilder);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("openPermissionActivity, openSuccess[");
+    ((StringBuilder)localObject1).append(bool1);
+    ((StringBuilder)localObject1).append("], code[");
+    ((StringBuilder)localObject1).append(localStringBuilder.toString());
+    ((StringBuilder)localObject1).append("]");
+    QLog.w("FloatWindowPrivacyModel", 1, ((StringBuilder)localObject1).toString());
+    if (!bool1)
+    {
+      b();
+      a("openPermissionActivity", this.b);
+      return;
+    }
+    this.jdField_a_of_type_Int += 1;
+    this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
   }
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (paramDialogInterface.equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog)) {
-      switch (paramInt)
-      {
-      }
-    }
-    while (!paramDialogInterface.equals(this.b))
+    if (paramDialogInterface.equals(this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog))
     {
-      return;
+      if (paramInt != 0)
+      {
+        if (paramInt != 1) {
+          return;
+        }
+        if (c())
+        {
+          e();
+          return;
+        }
+        b();
+        a("WHICH_POSITIVE", this.b);
+        return;
+      }
       boolean bool = this.jdField_a_of_type_MqqAppBaseActivity.getIntent().getBooleanExtra("is_video", false);
-      paramDialogInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getCurrentAccountUin();
+      paramDialogInterface = this.jdField_a_of_type_ComTencentCommonAppBusinessBaseVideoAppInterface.getCurrentAccountUin();
       SmallScreenUtils.a(paramDialogInterface, SmallScreenUtils.a(paramDialogInterface, bool) + 1, bool);
       this.jdField_a_of_type_MqqAppBaseActivity.finish();
       return;
-      if (c())
-      {
-        e();
+    }
+    if (paramDialogInterface.equals(this.b))
+    {
+      if (paramInt != 1) {
         return;
       }
-      b();
-      a("WHICH_POSITIVE", this.b);
-      return;
+      this.jdField_a_of_type_MqqAppBaseActivity.finish();
     }
-    switch (paramInt)
-    {
-    default: 
-      return;
-    }
-    this.jdField_a_of_type_MqqAppBaseActivity.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.smallscreen.FloatWindowPrivacyModel
  * JD-Core Version:    0.7.0.1
  */

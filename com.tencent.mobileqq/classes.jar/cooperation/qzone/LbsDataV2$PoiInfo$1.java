@@ -30,16 +30,14 @@ final class LbsDataV2$PoiInfo$1
       localPoiInfo.province = paramParcel.readString();
       localPoiInfo.city = paramParcel.readString();
       localPoiInfo.district = paramParcel.readString();
-      if (paramParcel.readByte() != 1) {
-        break label189;
+      int i = paramParcel.readByte();
+      boolean bool = true;
+      if (i != 1) {
+        bool = false;
       }
-    }
-    label189:
-    for (boolean bool = true;; bool = false)
-    {
       localPoiInfo.isRecomm = bool;
-      return localPoiInfo;
     }
+    return localPoiInfo;
   }
   
   public LbsDataV2.PoiInfo[] newArray(int paramInt)
@@ -49,7 +47,7 @@ final class LbsDataV2$PoiInfo$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.PoiInfo.1
  * JD-Core Version:    0.7.0.1
  */

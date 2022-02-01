@@ -54,46 +54,51 @@ public class WatchTogetherMiniAioHelper
   {
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
-      this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2131563222, null);
+      this.jdField_a_of_type_AndroidViewView = View.inflate(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), 2131563046, null);
       this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      String str = ((ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class)).getAvatarAddress("", this.jdField_a_of_type_JavaLangString, 0);
-      AbsDownloader.getFile(str);
-      Object localObject2 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371622);
-      URLImageView localURLImageView = (URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371623);
-      Object localObject1 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371624);
-      localObject2 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject2).getLayoutParams();
+      Object localObject1 = ((ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class)).getAvatarAddress("", this.jdField_a_of_type_JavaLangString, 0);
+      AbsDownloader.getFile((String)localObject1);
+      Object localObject3 = (RelativeLayout)this.jdField_a_of_type_AndroidViewView.findViewById(2131371242);
+      URLImageView localURLImageView = (URLImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371243);
+      Object localObject2 = (TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131371244);
+      localObject3 = (RelativeLayout.LayoutParams)((RelativeLayout)localObject3).getLayoutParams();
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localURLImageView.getLayoutParams();
-      localObject1 = (RelativeLayout.LayoutParams)((TextView)localObject1).getLayoutParams();
+      localObject2 = (RelativeLayout.LayoutParams)((TextView)localObject2).getLayoutParams();
       int i = ViewUtils.b(32.0F);
       int j = ViewUtils.b(28.0F);
-      ((RelativeLayout.LayoutParams)localObject2).width = i;
-      ((RelativeLayout.LayoutParams)localObject2).height = j;
+      ((RelativeLayout.LayoutParams)localObject3).width = i;
+      ((RelativeLayout.LayoutParams)localObject3).height = j;
       i = ViewUtils.b(24.0F);
       localLayoutParams.width = i;
       localLayoutParams.height = i;
       localLayoutParams.leftMargin = ViewUtils.b(4.0F);
       localURLImageView.setPadding(0, 0, 0, 0);
       localURLImageView.setBackgroundDrawable(null);
-      localURLImageView.setImageDrawable(URLDrawable.getDrawable(str, null));
+      localURLImageView.setImageDrawable(URLDrawable.getDrawable((String)localObject1, null));
       if (AppSetting.d) {
         AccessibilityUtil.b(this.jdField_a_of_type_AndroidViewView, false);
       }
       this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)this.jdField_a_of_type_AndroidAppActivity.getApplicationContext().getSystemService("window"));
       this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams = new WindowManager.LayoutParams();
-      if (QLog.isColorLevel()) {
-        QLog.d("WatchTogetherMiniAioHelper", 0, "is activity window focused " + this.jdField_a_of_type_AndroidAppActivity.hasWindowFocus());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("is activity window focused ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_AndroidAppActivity.hasWindowFocus());
+        QLog.d("WatchTogetherMiniAioHelper", 0, ((StringBuilder)localObject1).toString());
       }
       i = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.positionX;
       j = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.positionY;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.type = 1002;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.format = 1;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.flags = 40;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.gravity = 51;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.x = i;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.y = j;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.width = -2;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.height = -2;
-      this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams.token = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getWindowToken();
+      localObject1 = this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams;
+      ((WindowManager.LayoutParams)localObject1).type = 1002;
+      ((WindowManager.LayoutParams)localObject1).format = 1;
+      ((WindowManager.LayoutParams)localObject1).flags = 40;
+      ((WindowManager.LayoutParams)localObject1).gravity = 51;
+      ((WindowManager.LayoutParams)localObject1).x = i;
+      ((WindowManager.LayoutParams)localObject1).y = j;
+      ((WindowManager.LayoutParams)localObject1).width = -2;
+      ((WindowManager.LayoutParams)localObject1).height = -2;
+      ((WindowManager.LayoutParams)localObject1).token = this.jdField_a_of_type_AndroidAppActivity.getWindow().getDecorView().getWindowToken();
       this.jdField_a_of_type_AndroidViewWindowManager.addView(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidViewWindowManager$LayoutParams);
     }
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
@@ -113,18 +118,19 @@ public class WatchTogetherMiniAioHelper
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
+    if (localObject != null)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.accessType == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.entryType == 0))
+      if ((((MiniMsgUserParam)localObject).accessType == 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.entryType == 0))
       {
-        MiniMsgBusinessInfo localMiniMsgBusinessInfo = MiniMsgIPCClient.getInstance().getBusinessInfo(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.businessName);
-        if (localMiniMsgBusinessInfo != null)
+        localObject = MiniMsgIPCClient.getInstance().getBusinessInfo(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.businessName);
+        if (localObject != null)
         {
           int[] arrayOfInt = ((MiniEntryViewManager)this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.unreadCallback).a();
           if (arrayOfInt != null)
           {
-            localMiniMsgBusinessInfo.c = arrayOfInt[0];
-            localMiniMsgBusinessInfo.d = arrayOfInt[1];
+            ((MiniMsgBusinessInfo)localObject).c = arrayOfInt[0];
+            ((MiniMsgBusinessInfo)localObject).d = arrayOfInt[1];
           }
         }
       }
@@ -137,30 +143,29 @@ public class WatchTogetherMiniAioHelper
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam == null) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam;
+    if (localObject != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback != null) {
+      if (((MiniMsgUserParam)localObject).actionCallback != null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.actionCallback.onOpenMiniAIOCallback();
       }
-      Intent localIntent = new Intent();
-      localIntent.putExtra("key_mini_need_update_unread", true);
-      localIntent.putExtra("key_mini_msgtab_businame", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.businessName);
-      localIntent.putExtra("key_mini_msgtab_type", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.filterMsgType);
-      localIntent.putExtra("key_mini_msgtab_need_full_screen", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.isNeedFullScreen);
-      localIntent.putExtra("key_mini_msgtab_isneed_back_conversation", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.isNeedBackConversation);
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("key_mini_need_update_unread", true);
+      ((Intent)localObject).putExtra("key_mini_msgtab_businame", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.businessName);
+      ((Intent)localObject).putExtra("key_mini_msgtab_type", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.filterMsgType);
+      ((Intent)localObject).putExtra("key_mini_msgtab_need_full_screen", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.isNeedFullScreen);
+      ((Intent)localObject).putExtra("key_mini_msgtab_isneed_back_conversation", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.isNeedBackConversation);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.isNeedBackConversation) {
-        localIntent.putExtra("key_mini_msgtab_back_pending_intent", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.backConversationIntent);
+        ((Intent)localObject).putExtra("key_mini_msgtab_back_pending_intent", this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniMsgUserParam.backConversationIntent);
       }
       MiniChatActivity.a(this.jdField_a_of_type_AndroidAppActivity, 1, this.jdField_a_of_type_JavaLangString, this.b);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.yiqikan.WatchTogetherMiniAioHelper
  * JD-Core Version:    0.7.0.1
  */

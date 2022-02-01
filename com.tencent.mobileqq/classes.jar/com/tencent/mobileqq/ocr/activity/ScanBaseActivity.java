@@ -3,13 +3,13 @@ package com.tencent.mobileqq.ocr.activity;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.config.AppSetting;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -19,7 +19,7 @@ import com.tencent.mobileqq.ar.ArCloudNativeSoLoader;
 import com.tencent.mobileqq.ar.ArNativeSoManager;
 import com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo;
 import com.tencent.mobileqq.ar.arengine.ARCloudControl;
-import com.tencent.mobileqq.ocr.OCRManager;
+import com.tencent.mobileqq.ocr.api.IOCRService;
 import com.tencent.mobileqq.ocr.data.OcrConfig;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -28,7 +28,7 @@ import com.tencent.widget.immersive.ImmersiveUtils;
 import java.util.ArrayList;
 
 public class ScanBaseActivity
-  extends FragmentActivity
+  extends BaseActivity
 {
   protected TextView a;
   public AppInterface a;
@@ -53,7 +53,7 @@ public class ScanBaseActivity
       QLog.d("ScanBaseActivity", 1, "checkOcrEnable config is null");
       return false;
     }
-    boolean bool1 = OCRManager.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
+    boolean bool1 = ((IOCRService)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IOCRService.class, "")).isSupportOcr(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin(), 0);
     if (bool1)
     {
       boolean bool2 = ARCloudControl.a();
@@ -81,39 +81,45 @@ public class ScanBaseActivity
   
   public OcrConfig a()
   {
-    OcrConfig localOcrConfig = null;
-    Object localObject = getIntent().getExtras();
-    if (localObject != null) {
-      localOcrConfig = (OcrConfig)((Bundle)localObject).get("key_ocr_config");
+    Object localObject1 = getIntent().getExtras();
+    if (localObject1 != null) {
+      localObject1 = (OcrConfig)((Bundle)localObject1).get("key_ocr_config");
+    } else {
+      localObject1 = null;
     }
-    localObject = localOcrConfig;
-    if (localOcrConfig == null)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localObject = localOcrConfig;
-      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof QQAppInterface)) {
-        localObject = ((OCRManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.OCR_MANAGER)).a(false);
+      AppInterface localAppInterface = this.jdField_a_of_type_ComTencentCommonAppAppInterface;
+      localObject2 = localObject1;
+      if ((localAppInterface instanceof QQAppInterface)) {
+        localObject2 = ((IOCRService)localAppInterface.getRuntimeService(IOCRService.class, "")).getOCRConfig(false);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanBaseActivity", 2, "getOcrConfig:" + localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getOcrConfig:");
+      ((StringBuilder)localObject1).append(localObject2);
+      QLog.d("ScanBaseActivity", 2, ((StringBuilder)localObject1).toString());
     }
-    return localObject;
+    return localObject2;
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369487));
-    this.b = ((TextView)findViewById(2131369534));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131369202));
+    this.b = ((TextView)findViewById(2131369249));
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       int i = ImmersiveUtils.getStatusBarHeight(this);
-      View localView = findViewById(2131379446);
+      View localView = findViewById(2131378798);
       RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
       localLayoutParams.topMargin = i;
       localView.setLayoutParams(localLayoutParams);
     }
     if (AppSetting.d) {
-      findViewById(2131369487).setContentDescription(HardCodeUtil.a(2131713462));
+      findViewById(2131369202).setContentDescription(HardCodeUtil.a(2131713430));
     }
   }
   
@@ -128,35 +134,40 @@ public class ScanBaseActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     boolean bool = a();
-    if (QLog.isColorLevel()) {
-      QLog.d("ScanBaseActivity", 2, "checkOcrEnable:" + bool);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("checkOcrEnable:");
+      paramBundle.append(bool);
+      QLog.d("ScanBaseActivity", 2, paramBundle.toString());
     }
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog.dismiss();
+    QQProgressDialog localQQProgressDialog = this.jdField_a_of_type_ComTencentMobileqqWidgetQQProgressDialog;
+    if (localQQProgressDialog != null) {
+      localQQProgressDialog.dismiss();
     }
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
   }
   
-  public void doOnResume()
+  protected void doOnResume()
   {
     super.doOnResume();
   }
   
-  public String getModuleId()
+  protected String getModuleId()
   {
     if ("ScanTorchActivity".equals(getClass().getSimpleName())) {
       return "module_olympic";
@@ -179,7 +190,7 @@ public class ScanBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.activity.ScanBaseActivity
  * JD-Core Version:    0.7.0.1
  */

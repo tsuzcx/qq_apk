@@ -1,31 +1,66 @@
 package com.tencent.mobileqq.emoticonview;
 
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import android.content.Context;
+import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
+import com.tencent.mobileqq.EmotionPanelInjectionInfoManager;
+import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
+import com.tencent.mobileqq.config.business.EmoticonTabSortConfMapping;
+import com.tencent.mobileqq.emoticon.EmotionInjectionInfo;
 import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.view.IBasePanelView;
 
 public class EmoticonMainPanel$EmoticonPanelBuilder
 {
-  private final EmoticonPanelController.EmoticonPanelParams mPanelParams;
+  private final EmoticonPanelParams mPanelParams;
   
-  EmoticonMainPanel$EmoticonPanelBuilder(EmoticonMainPanel paramEmoticonMainPanel, QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, BaseChatPie paramBaseChatPie, int paramInt)
+  public EmoticonMainPanel$EmoticonPanelBuilder(QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, Context paramContext, int paramInt)
   {
-    this.mPanelParams = new EmoticonPanelController.EmoticonPanelParams(paramEmoticonMainPanel);
-    this.mPanelParams.app = paramQQEmoticonMainPanelApp;
-    this.mPanelParams.mBaseChatPie = paramBaseChatPie;
+    this.mPanelParams = new EmoticonPanelParams();
+    EmoticonPanelParams localEmoticonPanelParams = this.mPanelParams;
+    localEmoticonPanelParams.app = paramQQEmoticonMainPanelApp;
+    localEmoticonPanelParams.context = paramContext;
+    localEmoticonPanelParams.sessionType = paramInt;
+  }
+  
+  EmoticonMainPanel$EmoticonPanelBuilder(IBasePanelView paramIBasePanelView, QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, int paramInt)
+  {
+    this.mPanelParams = new EmoticonPanelParams(paramIBasePanelView.getController());
+    EmoticonPanelParams localEmoticonPanelParams = this.mPanelParams;
+    localEmoticonPanelParams.app = paramQQEmoticonMainPanelApp;
+    localEmoticonPanelParams.context = paramIBasePanelView.getContext();
     this.mPanelParams.sessionType = paramInt;
   }
   
-  public EmoticonMainPanel$EmoticonPanelBuilder(QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, BaseChatPie paramBaseChatPie, int paramInt)
+  public EmoticonPanelBuilder addEmotionInjectionInfo(String paramString, EmotionInjectionInfo paramEmotionInjectionInfo)
   {
-    this.mPanelParams = new EmoticonPanelController.EmoticonPanelParams();
-    this.mPanelParams.app = paramQQEmoticonMainPanelApp;
-    this.mPanelParams.mBaseChatPie = paramBaseChatPie;
-    this.mPanelParams.sessionType = paramInt;
+    if (this.mPanelParams.emoInjectionInfoManager == null) {
+      this.mPanelParams.emoInjectionInfoManager = new EmotionPanelInjectionInfoManager();
+    }
+    this.mPanelParams.emoInjectionInfoManager.a(paramString, paramEmotionInjectionInfo);
+    EmoticonTabSortConfMapping.a(paramEmotionInjectionInfo.emotionType, paramString);
+    return this;
   }
   
-  public EmoticonMainPanel create()
+  public IEmoticonMainPanel create()
   {
     return this.mPanelParams.create();
+  }
+  
+  public IEmoticonMainPanelApp getEmoticonMainPanelApp()
+  {
+    return this.mPanelParams.app;
+  }
+  
+  public EmoticonPanelBuilder setAIOContext(BaseAIOContext paramBaseAIOContext)
+  {
+    this.mPanelParams.aioContext = paramBaseAIOContext;
+    return this;
+  }
+  
+  public EmoticonPanelBuilder setCallBack(EmoticonCallback paramEmoticonCallback)
+  {
+    this.mPanelParams.callback = paramEmoticonCallback;
+    return this;
   }
   
   public EmoticonPanelBuilder setDefaultEpId(String paramString)
@@ -61,12 +96,6 @@ public class EmoticonMainPanel$EmoticonPanelBuilder
   public EmoticonPanelBuilder setDisableMoreEmotionButton(boolean paramBoolean)
   {
     this.mPanelParams.disableMoreEmotionButton = paramBoolean;
-    return this;
-  }
-  
-  public EmoticonPanelBuilder setEmoticonCallback(EmoticonCallback paramEmoticonCallback)
-  {
-    this.mPanelParams.callback = paramEmoticonCallback;
     return this;
   }
   
@@ -118,6 +147,18 @@ public class EmoticonMainPanel$EmoticonPanelBuilder
     return this;
   }
   
+  public EmoticonPanelBuilder setPanelInteractionListener(IPanelInteractionListener paramIPanelInteractionListener)
+  {
+    this.mPanelParams.interactionListener = paramIPanelInteractionListener;
+    return this;
+  }
+  
+  public EmoticonPanelBuilder setSysEmotionOrder(int[] paramArrayOfInt)
+  {
+    this.mPanelParams.sysEmotionOrder = paramArrayOfInt;
+    return this;
+  }
+  
   public EmoticonPanelBuilder setToastOffset(int paramInt)
   {
     this.mPanelParams.toastOffset = paramInt;
@@ -131,7 +172,7 @@ public class EmoticonMainPanel$EmoticonPanelBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonMainPanel.EmoticonPanelBuilder
  * JD-Core Version:    0.7.0.1
  */

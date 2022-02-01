@@ -19,125 +19,150 @@ public class GpsComplementUtil
   
   public static boolean complementByDB(String paramString, double paramDouble1, double paramDouble2)
   {
-    if ((QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) == 0) || (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0)) {
-      return false;
-    }
-    if (JpegExifReader.isCrashJpeg(paramString)) {
-      return false;
-    }
-    ExifInterface localExifInterface;
-    try
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) != 0)
     {
-      localExifInterface = new ExifInterface(paramString);
-      if (localExifInterface == null) {
+      if (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0) {
         return false;
       }
-    }
-    catch (IOException paramString)
-    {
-      paramString.printStackTrace();
-      return false;
-    }
-    QLog.i("ExifComplement", 2, "complementByDB destPath:" + paramString + "\nlat: " + paramDouble2 + " lng:" + paramDouble1 + "\nTAG_GPS_LATITUDE:" + localExifInterface.getAttribute("GPSLatitude"));
-    if ((paramDouble1 == 0.0D) || (paramDouble2 == 0.0D) || (!TextUtils.isEmpty(localExifInterface.getAttribute("GPSLatitude")))) {
-      return false;
-    }
-    QZLog.i("ExifComplement", 2, "[Complement] complementByDB gps lat: " + paramDouble2 + " lng:" + paramDouble1);
-    localExifInterface.setAttribute("GPSLatitude", PhotoUtils.gpsInfoConvert(paramDouble2));
-    localExifInterface.setAttribute("GPSLongitude", PhotoUtils.gpsInfoConvert(paramDouble1));
-    if (paramDouble1 > 0.0D)
-    {
-      paramString = "E";
-      localExifInterface.setAttribute("GPSLongitudeRef", paramString);
-      if (paramDouble2 <= 0.0D) {
-        break label320;
+      if (JpegExifReader.isCrashJpeg(paramString)) {
+        return false;
       }
-    }
-    label320:
-    for (paramString = "N";; paramString = "S")
-    {
-      localExifInterface.setAttribute("GPSLatitudeRef", paramString);
-      localExifInterface.setAttribute("DateTime", new SimpleDateFormat("yyyy:MM:dd hh:mm:ss").format(new Date()));
       try
       {
-        localExifInterface.saveAttributes();
-        paramString = new HashMap();
-        paramString.put("gpsPicEdit", String.valueOf(1));
-        paramString.put("gpsComplementByDB", String.valueOf(1));
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "gpsComplement", true, 0L, 0L, paramString, null, true);
-        return true;
+        ExifInterface localExifInterface = new ExifInterface(paramString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("complementByDB destPath:");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("\nlat: ");
+        localStringBuilder.append(paramDouble2);
+        localStringBuilder.append(" lng:");
+        localStringBuilder.append(paramDouble1);
+        localStringBuilder.append("\nTAG_GPS_LATITUDE:");
+        localStringBuilder.append(localExifInterface.getAttribute("GPSLatitude"));
+        QLog.i("ExifComplement", 2, localStringBuilder.toString());
+        if ((paramDouble1 != 0.0D) && (paramDouble2 != 0.0D))
+        {
+          if (!TextUtils.isEmpty(localExifInterface.getAttribute("GPSLatitude"))) {
+            return false;
+          }
+          paramString = new StringBuilder();
+          paramString.append("[Complement] complementByDB gps lat: ");
+          paramString.append(paramDouble2);
+          paramString.append(" lng:");
+          paramString.append(paramDouble1);
+          QZLog.i("ExifComplement", 2, paramString.toString());
+          localExifInterface.setAttribute("GPSLatitude", PhotoUtils.gpsInfoConvert(paramDouble2));
+          localExifInterface.setAttribute("GPSLongitude", PhotoUtils.gpsInfoConvert(paramDouble1));
+          if (paramDouble1 > 0.0D) {
+            paramString = "E";
+          } else {
+            paramString = "W";
+          }
+          localExifInterface.setAttribute("GPSLongitudeRef", paramString);
+          if (paramDouble2 > 0.0D) {
+            paramString = "N";
+          } else {
+            paramString = "S";
+          }
+          localExifInterface.setAttribute("GPSLatitudeRef", paramString);
+          localExifInterface.setAttribute("DateTime", new SimpleDateFormat("yyyy:MM:dd hh:mm:ss").format(new Date()));
+          try
+          {
+            localExifInterface.saveAttributes();
+            paramString = new HashMap();
+            paramString.put("gpsPicEdit", String.valueOf(1));
+            paramString.put("gpsComplementByDB", String.valueOf(1));
+            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "gpsComplement", true, 0L, 0L, paramString, null, true);
+            return true;
+          }
+          catch (IOException paramString)
+          {
+            paramString.printStackTrace();
+          }
+        }
+        return false;
       }
       catch (IOException paramString)
       {
         paramString.printStackTrace();
       }
-      paramString = "W";
-      break;
     }
     return false;
   }
   
   public static boolean complementByExif(String paramString1, String paramString2)
   {
-    if ((QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) == 0) || (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0)) {
-      return false;
-    }
-    if ((JpegExifReader.isCrashJpeg(paramString2)) || (JpegExifReader.isCrashJpeg(paramString1))) {
-      return false;
-    }
-    ExifInterface localExifInterface1;
-    ExifInterface localExifInterface2;
-    try
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) != 0)
     {
-      localExifInterface1 = new ExifInterface(paramString2);
-      localExifInterface2 = new ExifInterface(paramString1);
-      if ((localExifInterface2 == null) || (localExifInterface1 == null)) {
+      if (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0) {
         return false;
       }
-    }
-    catch (IOException paramString1)
-    {
-      paramString1.printStackTrace();
-      return false;
-    }
-    QLog.i("ExifComplement", 2, "complementByExif srcPath:" + paramString1 + "\ndestPath:" + paramString2 + "\nTAG_GPS_LONGITUDE:" + localExifInterface1.getAttribute("GPSLongitude"));
-    paramString1 = new HashMap();
-    if ((localExifInterface2 != null) && (TextUtils.isEmpty(localExifInterface1.getAttribute("GPSLongitude"))))
-    {
-      paramString2 = localExifInterface2.getAttribute("GPSLongitude");
-      String str = localExifInterface2.getAttribute("GPSLatitude");
-      if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(str)))
+      if (!JpegExifReader.isCrashJpeg(paramString2))
       {
-        QZLog.i("ExifComplement", 2, "[Complement] complementByExif lat: " + str + " lng:" + paramString2);
-        localExifInterface1.setAttribute("GPSLongitude", paramString2);
-        localExifInterface1.setAttribute("GPSLatitude", str);
-        if (localExifInterface2.getAttribute("GPSLongitudeRef") != null) {
-          localExifInterface1.setAttribute("GPSLongitudeRef", localExifInterface2.getAttribute("GPSLongitudeRef"));
-        }
-        if (localExifInterface2.getAttribute("GPSLatitudeRef") != null) {
-          localExifInterface1.setAttribute("GPSLatitudeRef", localExifInterface2.getAttribute("GPSLatitudeRef"));
-        }
-        if (localExifInterface2.getAttribute("DateTime") != null) {
-          localExifInterface1.setAttribute("DateTime", localExifInterface2.getAttribute("DateTime"));
-        }
-        if (localExifInterface2.getAttribute("Make") != null) {
-          localExifInterface1.setAttribute("Make", localExifInterface2.getAttribute("Make"));
-        }
-        if (localExifInterface2.getAttribute("Model") != null) {
-          localExifInterface1.setAttribute("Model", localExifInterface2.getAttribute("Model"));
+        if (JpegExifReader.isCrashJpeg(paramString1)) {
+          return false;
         }
         try
         {
-          localExifInterface1.saveAttributes();
-          paramString1.put("gpsPicEdit", String.valueOf(1));
-          paramString1.put("gpsComplementByExif", String.valueOf(1));
-          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "gpsComplement", true, 0L, 0L, paramString1, null, true);
-          return true;
+          ExifInterface localExifInterface1 = new ExifInterface(paramString2);
+          ExifInterface localExifInterface2 = new ExifInterface(paramString1);
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("complementByExif srcPath:");
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append("\ndestPath:");
+          ((StringBuilder)localObject).append(paramString2);
+          ((StringBuilder)localObject).append("\nTAG_GPS_LONGITUDE:");
+          ((StringBuilder)localObject).append(localExifInterface1.getAttribute("GPSLongitude"));
+          QLog.i("ExifComplement", 2, ((StringBuilder)localObject).toString());
+          paramString1 = new HashMap();
+          if (TextUtils.isEmpty(localExifInterface1.getAttribute("GPSLongitude")))
+          {
+            paramString2 = localExifInterface2.getAttribute("GPSLongitude");
+            localObject = localExifInterface2.getAttribute("GPSLatitude");
+            if ((!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty((CharSequence)localObject)))
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[Complement] complementByExif lat: ");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append(" lng:");
+              localStringBuilder.append(paramString2);
+              QZLog.i("ExifComplement", 2, localStringBuilder.toString());
+              localExifInterface1.setAttribute("GPSLongitude", paramString2);
+              localExifInterface1.setAttribute("GPSLatitude", (String)localObject);
+              if (localExifInterface2.getAttribute("GPSLongitudeRef") != null) {
+                localExifInterface1.setAttribute("GPSLongitudeRef", localExifInterface2.getAttribute("GPSLongitudeRef"));
+              }
+              if (localExifInterface2.getAttribute("GPSLatitudeRef") != null) {
+                localExifInterface1.setAttribute("GPSLatitudeRef", localExifInterface2.getAttribute("GPSLatitudeRef"));
+              }
+              if (localExifInterface2.getAttribute("DateTime") != null) {
+                localExifInterface1.setAttribute("DateTime", localExifInterface2.getAttribute("DateTime"));
+              }
+              if (localExifInterface2.getAttribute("Make") != null) {
+                localExifInterface1.setAttribute("Make", localExifInterface2.getAttribute("Make"));
+              }
+              if (localExifInterface2.getAttribute("Model") != null) {
+                localExifInterface1.setAttribute("Model", localExifInterface2.getAttribute("Model"));
+              }
+              try
+              {
+                localExifInterface1.saveAttributes();
+                paramString1.put("gpsPicEdit", String.valueOf(1));
+                paramString1.put("gpsComplementByExif", String.valueOf(1));
+                StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "gpsComplement", true, 0L, 0L, paramString1, null, true);
+                return true;
+              }
+              catch (Exception paramString1)
+              {
+                paramString1.printStackTrace();
+              }
+            }
+          }
+          return false;
         }
-        catch (Exception paramString1)
+        catch (IOException paramString1)
         {
           paramString1.printStackTrace();
-          return false;
         }
       }
     }
@@ -146,69 +171,82 @@ public class GpsComplementUtil
   
   public static boolean complementByLocal(String paramString, double paramDouble1, double paramDouble2)
   {
-    if ((QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) == 0) || (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0)) {
-      return false;
-    }
-    if ((paramDouble1 == 4.9E-324D) || (paramDouble2 == 4.9E-324D)) {
-      return false;
-    }
-    if (!JpegExifReader.isCrashJpeg(paramString)) {
-      for (;;)
+    if (QzoneConfig.getInstance().getConfig("QZoneSetting", "QzoneGpsComplement", 1) != 0)
+    {
+      if (LocalMultiProcConfig.getInt("Qzone_gps_switch", 1) == 0) {
+        return false;
+      }
+      if (paramDouble1 != 4.9E-324D)
       {
-        try
-        {
-          ExifInterface localExifInterface = new ExifInterface(paramString);
-          QLog.i("ExifComplement", 2, "complementByLocal path:" + paramString + "\nlat: " + paramDouble2 + " lng:" + paramDouble1 + "\nTAG_GPS_LATITUDE:" + localExifInterface.getAttribute("GPSLatitude"));
-          if ((localExifInterface == null) || (!TextUtils.isEmpty(localExifInterface.getAttribute("GPSLatitude")))) {
-            break;
-          }
-          QLog.i("ExifComplement", 2, "[Complement] complementByLocal lat: " + paramDouble2 + " lng:" + paramDouble1);
-          localExifInterface.setAttribute("GPSLatitude", PhotoUtils.gpsInfoConvert(paramDouble2));
-          localExifInterface.setAttribute("GPSLongitude", PhotoUtils.gpsInfoConvert(paramDouble1));
-          if (paramDouble1 > 0.0D)
-          {
-            paramString = "E";
-            localExifInterface.setAttribute("GPSLongitudeRef", paramString);
-            if (paramDouble2 <= 0.0D) {
-              break label320;
-            }
-            paramString = "N";
-            localExifInterface.setAttribute("GPSLatitudeRef", paramString);
-            localExifInterface.setAttribute("DateTime", new SimpleDateFormat("yyyy:MM:dd hh:mm:ss").format(new Date()));
-          }
-          paramString = "W";
+        if (paramDouble2 == 4.9E-324D) {
+          return false;
         }
-        catch (IOException paramString)
-        {
+        if (!JpegExifReader.isCrashJpeg(paramString)) {
           try
           {
-            localExifInterface.saveAttributes();
-            paramString = new HashMap();
-            paramString.put("gpsCapturePic", String.valueOf(1));
-            paramString.put("gpsComplementByLocal", String.valueOf(1));
-            StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "gpsComplement", true, 0L, 0L, paramString, null, true);
-            return true;
+            ExifInterface localExifInterface = new ExifInterface(paramString);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("complementByLocal path:");
+            localStringBuilder.append(paramString);
+            localStringBuilder.append("\nlat: ");
+            localStringBuilder.append(paramDouble2);
+            localStringBuilder.append(" lng:");
+            localStringBuilder.append(paramDouble1);
+            localStringBuilder.append("\nTAG_GPS_LATITUDE:");
+            localStringBuilder.append(localExifInterface.getAttribute("GPSLatitude"));
+            QLog.i("ExifComplement", 2, localStringBuilder.toString());
+            if (TextUtils.isEmpty(localExifInterface.getAttribute("GPSLatitude")))
+            {
+              paramString = new StringBuilder();
+              paramString.append("[Complement] complementByLocal lat: ");
+              paramString.append(paramDouble2);
+              paramString.append(" lng:");
+              paramString.append(paramDouble1);
+              QLog.i("ExifComplement", 2, paramString.toString());
+              localExifInterface.setAttribute("GPSLatitude", PhotoUtils.gpsInfoConvert(paramDouble2));
+              localExifInterface.setAttribute("GPSLongitude", PhotoUtils.gpsInfoConvert(paramDouble1));
+              if (paramDouble1 > 0.0D) {
+                paramString = "E";
+              } else {
+                paramString = "W";
+              }
+              localExifInterface.setAttribute("GPSLongitudeRef", paramString);
+              if (paramDouble2 > 0.0D) {
+                paramString = "N";
+              } else {
+                paramString = "S";
+              }
+              localExifInterface.setAttribute("GPSLatitudeRef", paramString);
+              localExifInterface.setAttribute("DateTime", new SimpleDateFormat("yyyy:MM:dd hh:mm:ss").format(new Date()));
+              try
+              {
+                localExifInterface.saveAttributes();
+                paramString = new HashMap();
+                paramString.put("gpsCapturePic", String.valueOf(1));
+                paramString.put("gpsComplementByLocal", String.valueOf(1));
+                StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "gpsComplement", true, 0L, 0L, paramString, null, true);
+                return true;
+              }
+              catch (IOException paramString)
+              {
+                paramString.printStackTrace();
+                return false;
+              }
+            }
+            return false;
           }
           catch (IOException paramString)
           {
             paramString.printStackTrace();
-            return false;
           }
-          paramString = paramString;
-          paramString.printStackTrace();
-          return false;
         }
-        continue;
-        label320:
-        paramString = "S";
       }
     }
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.GpsComplementUtil
  * JD-Core Version:    0.7.0.1
  */

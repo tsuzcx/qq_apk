@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout android:orientation="vertical" android:id="@id/knd" android:background="@color/mi" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:mobileqq="http://schemas.android.com/apk/res-auto">
+    <include android:id="@id/jp4" android:layout_width="wrap_content" android:layout_height="wrap_content" layout="@layout/bwi" />
+    <TextView android:textSize="@dimen/aym" android:textColor="#ff7d8290" android:id="@id/kes" android:focusable="true" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="27.0dip" android:layout_marginTop="6.0dip" />
+    <com.tencent.mobileqq.widget.VerifyCodeView android:id="@id/ojx" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="27.0dip" android:layout_marginTop="44.0dip" mobileqq:block_height="40.0dip" mobileqq:block_width="40.0dip" mobileqq:verify_code_digit_color_normal="#ff03081a" mobileqq:verify_code_digit_color_wrong="#ffff596a" mobileqq:verify_code_digit_padding_width="10.0dip" mobileqq:verify_code_digit_text_size_sp="29.0" mobileqq:verify_code_length="6" />
+    <TextView android:enabled="false" android:textSize="@dimen/aym" android:textColor="#ff878b99" android:ellipsize="middle" android:gravity="center" android:id="@id/aji" android:background="@drawable/oq" android:clickable="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="27.0dip" android:layout_marginTop="14.0dip" android:singleLine="true" />
+</LinearLayout>

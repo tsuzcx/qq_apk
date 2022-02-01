@@ -20,13 +20,20 @@ final class DesktopDataManager$14
       if (localDesktopDataManager != null) {
         DesktopDataManager.access$2500(localDesktopDataManager, this.val$appInfo);
       }
-      QLog.d("DesktopDataManager", 1, "recordMiniAppStart, appInfo = " + this.val$appInfo + ", appRuntime = " + localAppRuntime + "， manager = " + localDesktopDataManager);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recordMiniAppStart, appInfo = ");
+      localStringBuilder.append(this.val$appInfo);
+      localStringBuilder.append(", appRuntime = ");
+      localStringBuilder.append(localAppRuntime);
+      localStringBuilder.append("， manager = ");
+      localStringBuilder.append(localDesktopDataManager);
+      QLog.d("DesktopDataManager", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.14
  * JD-Core Version:    0.7.0.1
  */

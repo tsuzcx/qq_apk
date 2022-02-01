@@ -47,13 +47,16 @@ public class QAPMMemCellingListener
     if ((bool) && (paramString[1] != null)) {
       localArrayList.add((String)paramString[1]);
     }
-    QLog.i("QAPM_QQ_Impl", 1, "Celling onBeforeDump " + bool);
+    paramString = new StringBuilder();
+    paramString.append("Celling onBeforeDump ");
+    paramString.append(bool);
+    QLog.i("QAPM_QQ_Impl", 1, paramString.toString());
     return localArrayList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMMemCellingListener
  * JD-Core Version:    0.7.0.1
  */

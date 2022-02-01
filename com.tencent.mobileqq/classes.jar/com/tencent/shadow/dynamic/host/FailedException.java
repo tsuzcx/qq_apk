@@ -36,13 +36,21 @@ public class FailedException
   public FailedException(RemoteException paramRemoteException)
   {
     this.errorCode = 1;
-    this.errorMessage = (paramRemoteException.getClass().getSimpleName() + ":" + paramRemoteException.getMessage());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramRemoteException.getClass().getSimpleName());
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramRemoteException.getMessage());
+    this.errorMessage = localStringBuilder.toString();
   }
   
   public FailedException(RuntimeException paramRuntimeException)
   {
     this.errorCode = 2;
-    this.errorMessage = (paramRuntimeException.getClass().getSimpleName() + ":" + paramRuntimeException.getMessage());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramRuntimeException.getClass().getSimpleName());
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramRuntimeException.getMessage());
+    this.errorMessage = localStringBuilder.toString();
   }
   
   public int describeContents()
@@ -58,7 +66,7 @@ public class FailedException
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.shadow.dynamic.host.FailedException
  * JD-Core Version:    0.7.0.1
  */

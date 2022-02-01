@@ -10,21 +10,24 @@ class OfflinePlugin$5
   
   public void run()
   {
-    if ((this.this$0.a == null) || (this.this$0.a.size() == 0)) {
-      return;
-    }
-    Iterator localIterator = this.this$0.a.iterator();
-    while (localIterator.hasNext())
+    if (this.this$0.a != null)
     {
-      String str = (String)localIterator.next();
-      this.this$0.b(str);
+      if (this.this$0.a.size() == 0) {
+        return;
+      }
+      Iterator localIterator = this.this$0.a.iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        this.this$0.b(str);
+      }
+      this.this$0.a.clear();
     }
-    this.this$0.a.clear();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.5
  * JD-Core Version:    0.7.0.1
  */

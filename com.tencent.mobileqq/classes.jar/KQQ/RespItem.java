@@ -38,14 +38,15 @@ public final class RespItem
   {
     paramJceOutputStream.write(this.cResult, 0);
     paramJceOutputStream.write(this.eServiceID, 1);
-    if (this.vecUpdate != null) {
-      paramJceOutputStream.write(this.vecUpdate, 2);
+    byte[] arrayOfByte = this.vecUpdate;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.RespItem
  * JD-Core Version:    0.7.0.1
  */

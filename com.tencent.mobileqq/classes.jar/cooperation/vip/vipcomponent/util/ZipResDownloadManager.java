@@ -23,11 +23,10 @@ import java.io.File;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.HashSet;
 
 public class ZipResDownloadManager
 {
-  private static ZipResDownloadManager jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager = null;
+  private static ZipResDownloadManager jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager;
   private static String jdField_a_of_type_JavaLangString;
   public static final ArrayList<String> a;
   private static String b;
@@ -52,56 +51,34 @@ public class ZipResDownloadManager
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache = new LruCache((int)(MemoryManager.a() / 8L));
   }
   
-  /* Error */
   private QzonePreDownloadManager a()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 42	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_CooperationQzoneQzonePreDownloadManager	Lcooperation/qzone/QzonePreDownloadManager;
-    //   6: ifnull +12 -> 18
-    //   9: aload_0
-    //   10: getfield 42	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_CooperationQzoneQzonePreDownloadManager	Lcooperation/qzone/QzonePreDownloadManager;
-    //   13: astore_1
-    //   14: aload_0
-    //   15: monitorexit
-    //   16: aload_1
-    //   17: areturn
-    //   18: aload_0
-    //   19: invokestatic 95	cooperation/qzone/QzonePreDownloadManager:getInstance	()Lcooperation/qzone/QzonePreDownloadManager;
-    //   22: putfield 42	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_CooperationQzoneQzonePreDownloadManager	Lcooperation/qzone/QzonePreDownloadManager;
-    //   25: aload_0
-    //   26: getfield 42	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_CooperationQzoneQzonePreDownloadManager	Lcooperation/qzone/QzonePreDownloadManager;
-    //   29: astore_1
-    //   30: goto -16 -> 14
-    //   33: astore_1
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: aload_1
-    //   37: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	38	0	this	ZipResDownloadManager
-    //   13	17	1	localQzonePreDownloadManager	QzonePreDownloadManager
-    //   33	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	14	33	finally
-    //   18	30	33	finally
+    try
+    {
+      if (this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager != null)
+      {
+        localQzonePreDownloadManager = this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager;
+        return localQzonePreDownloadManager;
+      }
+      this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager = QzonePreDownloadManager.getInstance();
+      QzonePreDownloadManager localQzonePreDownloadManager = this.jdField_a_of_type_CooperationQzoneQzonePreDownloadManager;
+      return localQzonePreDownloadManager;
+    }
+    finally {}
   }
   
   public static ZipResDownloadManager a()
   {
-    if (jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager == null) {
-        jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager = new ZipResDownloadManager();
+    if (jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager == null) {
+          jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager = new ZipResDownloadManager();
+        }
       }
-      return jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationVipVipcomponentUtilZipResDownloadManager;
   }
   
   private ZipResEntry a(String paramString1, int paramInt, String paramString2, ZipResLoadListener paramZipResLoadListener)
@@ -120,7 +97,12 @@ public class ZipResDownloadManager
     if (paramBoolean) {}
     try
     {
-      for (paramString = (HashSet)this.jdField_a_of_type_CooperationQzoneUtilMultiHashMap.remove(paramString); paramCollection != null; paramString = (HashSet)this.jdField_a_of_type_CooperationQzoneUtilMultiHashMap.get(paramString))
+      for (paramString = this.jdField_a_of_type_CooperationQzoneUtilMultiHashMap.remove(paramString);; paramString = this.jdField_a_of_type_CooperationQzoneUtilMultiHashMap.get(paramString))
+      {
+        paramString = (Collection)paramString;
+        break;
+      }
+      if (paramCollection != null)
       {
         paramCollection.clear();
         if (paramString != null) {
@@ -131,6 +113,10 @@ public class ZipResDownloadManager
       return paramString;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   private void a(ZipResEntry paramZipResEntry)
@@ -144,28 +130,26 @@ public class ZipResDownloadManager
   
   private static void a(File paramFile)
   {
-    if (!paramFile.exists()) {
-      paramFile.mkdir();
-    }
-    for (;;)
+    if (!paramFile.exists())
     {
+      paramFile.mkdir();
       return;
-      if (!paramFile.isDirectory()) {
-        break;
-      }
+    }
+    if (paramFile.isDirectory())
+    {
       paramFile = paramFile.listFiles();
-      if (paramFile != null)
+      if (paramFile == null) {
+        return;
+      }
+      int j = paramFile.length;
+      int i = 0;
+      while (i < j)
       {
-        int j = paramFile.length;
-        int i = 0;
-        while (i < j)
-        {
-          Object localObject = paramFile[i];
-          if (!localObject.isDirectory()) {
-            localObject.delete();
-          }
-          i += 1;
+        Object localObject = paramFile[i];
+        if (!localObject.isDirectory()) {
+          localObject.delete();
         }
+        i += 1;
       }
     }
     paramFile.mkdir();
@@ -191,32 +175,82 @@ public class ZipResDownloadManager
   
   private static File b(String paramString)
   {
-    if (jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {}
-    for (paramString = b + VipUtils.a(paramString);; paramString = b + VipUtils.b(paramString)) {
-      return new File(paramString);
+    StringBuilder localStringBuilder;
+    if (jdField_a_of_type_JavaUtilArrayList.contains(paramString))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b);
+      localStringBuilder.append(VipUtils.a(paramString));
+      paramString = localStringBuilder.toString();
     }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b);
+      localStringBuilder.append(VipUtils.b(paramString));
+      paramString = localStringBuilder.toString();
+    }
+    return new File(paramString);
   }
   
   private static File b(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    if (jdField_a_of_type_JavaUtilArrayList.contains(paramString1)) {}
-    for (paramString1 = b + VipUtils.a(paramString1) + File.separator + paramString2 + ".png";; paramString1 = b + VipUtils.b(paramString1) + File.separator + paramString2 + ".png") {
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
+    {
+      StringBuilder localStringBuilder;
+      if (jdField_a_of_type_JavaUtilArrayList.contains(paramString1))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(b);
+        localStringBuilder.append(VipUtils.a(paramString1));
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(".png");
+        paramString1 = localStringBuilder.toString();
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(b);
+        localStringBuilder.append(VipUtils.b(paramString1));
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(".png");
+        paramString1 = localStringBuilder.toString();
+      }
       return new File(paramString1);
     }
+    return null;
   }
   
   private static String c(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (!paramString.endsWith("zip"))) {
-      return paramString;
+    Object localObject = paramString;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (!paramString.endsWith("zip")) {
+        return paramString;
+      }
+      if (jdField_a_of_type_JavaUtilArrayList.contains(paramString))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(VipUtils.a(paramString));
+        ((StringBuilder)localObject).append(".zip");
+        paramString = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(VipUtils.b(paramString));
+        ((StringBuilder)localObject).append(".zip");
+        paramString = ((StringBuilder)localObject).toString();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    if (jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {}
-    for (paramString = VipUtils.a(paramString) + ".zip";; paramString = VipUtils.b(paramString) + ".zip") {
-      return jdField_a_of_type_JavaLangString + paramString;
-    }
+    return localObject;
   }
   
   private static void c(String paramString)
@@ -236,7 +270,10 @@ public class ZipResDownloadManager
   
   private static String d(String paramString)
   {
-    return b + paramString.substring(paramString.lastIndexOf("/") + 1, paramString.length() - 4);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(b);
+    localStringBuilder.append(paramString.substring(paramString.lastIndexOf("/") + 1, paramString.length() - 4));
+    return localStringBuilder.toString();
   }
   
   private static boolean d(File paramFile)
@@ -246,23 +283,38 @@ public class ZipResDownloadManager
   
   private static String e(String paramString)
   {
-    String str2 = BaseApplicationImpl.getContext().getCacheDir().getAbsolutePath();
-    String str1 = paramString;
-    if (!paramString.startsWith(File.separator)) {
-      str1 = File.separator + paramString;
+    String str = BaseApplicationImpl.getContext().getCacheDir().getAbsolutePath();
+    Object localObject = paramString;
+    if (!paramString.startsWith(File.separator))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    paramString = str1;
-    if (!str1.endsWith(File.separator)) {
-      paramString = str1 + File.separator;
+    paramString = (String)localObject;
+    if (!((String)localObject).endsWith(File.separator))
+    {
+      paramString = new StringBuilder();
+      paramString.append((String)localObject);
+      paramString.append(File.separator);
+      paramString = paramString.toString();
     }
-    paramString = new File(str2 + paramString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(paramString);
+    paramString = new File(((StringBuilder)localObject).toString());
     if (!paramString.exists()) {
       paramString.mkdirs();
     }
-    str1 = paramString.getAbsolutePath();
-    paramString = str1;
-    if (!str1.endsWith(File.separator)) {
-      paramString = str1 + File.separator;
+    localObject = paramString.getAbsolutePath();
+    paramString = (String)localObject;
+    if (!((String)localObject).endsWith(File.separator))
+    {
+      paramString = new StringBuilder();
+      paramString.append((String)localObject);
+      paramString.append(File.separator);
+      paramString = paramString.toString();
     }
     return paramString;
   }
@@ -271,165 +323,192 @@ public class ZipResDownloadManager
   public Bitmap a(String paramString1, int paramInt, String paramString2, ZipResLoadListener paramZipResLoadListener)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 7
-    //   3: aload_1
-    //   4: invokestatic 229	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   7: ifeq +6 -> 13
-    //   10: aload 7
-    //   12: areturn
-    //   13: aload_0
-    //   14: getfield 88	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
-    //   17: new 205	java/lang/StringBuilder
-    //   20: dup
-    //   21: invokespecial 206	java/lang/StringBuilder:<init>	()V
-    //   24: aload_1
-    //   25: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: ldc_w 298
-    //   31: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: aload_3
-    //   35: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: invokevirtual 218	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   41: invokevirtual 299	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   44: checkcast 301	android/graphics/Bitmap
-    //   47: astore 5
-    //   49: aload 5
-    //   51: astore 7
-    //   53: aload 5
-    //   55: ifnonnull -45 -> 10
-    //   58: aload_1
-    //   59: aload_3
-    //   60: invokestatic 117	cooperation/vip/vipcomponent/util/ZipResDownloadManager:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
-    //   63: astore 8
-    //   65: aload 5
-    //   67: astore 6
-    //   69: aload 8
-    //   71: invokestatic 240	cooperation/vip/vipcomponent/util/ZipResDownloadManager:c	(Ljava/io/File;)Z
-    //   74: ifeq +167 -> 241
-    //   77: aload_0
-    //   78: monitorenter
-    //   79: aload 5
-    //   81: astore 6
-    //   83: aload_0
-    //   84: getfield 88	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
-    //   87: new 205	java/lang/StringBuilder
-    //   90: dup
-    //   91: invokespecial 206	java/lang/StringBuilder:<init>	()V
-    //   94: aload_1
-    //   95: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: ldc_w 298
-    //   101: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: aload_3
-    //   105: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: invokevirtual 218	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   111: invokevirtual 299	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   114: checkcast 301	android/graphics/Bitmap
-    //   117: astore 7
-    //   119: aload 7
-    //   121: ifnull +13 -> 134
-    //   124: aload_0
-    //   125: monitorexit
-    //   126: aload 7
-    //   128: areturn
-    //   129: astore_1
-    //   130: aload_0
-    //   131: monitorexit
-    //   132: aload_1
-    //   133: athrow
-    //   134: aload 7
-    //   136: astore 6
-    //   138: aload 7
-    //   140: astore 5
-    //   142: aload 8
-    //   144: invokevirtual 285	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   147: aconst_null
-    //   148: invokestatic 304	cooperation/vip/vipcomponent/VipUtils:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   151: astore 7
-    //   153: aload 7
-    //   155: astore 5
-    //   157: aload_0
-    //   158: monitorexit
-    //   159: aload 5
-    //   161: astore 6
-    //   163: aload 5
-    //   165: ifnull +76 -> 241
-    //   168: aload_0
-    //   169: getfield 88	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
-    //   172: new 205	java/lang/StringBuilder
-    //   175: dup
-    //   176: invokespecial 206	java/lang/StringBuilder:<init>	()V
-    //   179: aload_1
-    //   180: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   183: ldc_w 298
-    //   186: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   189: aload_3
-    //   190: invokevirtual 210	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   193: invokevirtual 218	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   196: aload 5
-    //   198: invokevirtual 308	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   201: pop
-    //   202: aload 5
-    //   204: areturn
-    //   205: astore 5
-    //   207: ldc_w 310
-    //   210: aload 5
-    //   212: invokevirtual 311	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
-    //   215: invokestatic 316	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   218: aload 6
-    //   220: astore 5
-    //   222: goto -65 -> 157
-    //   225: astore 6
-    //   227: ldc_w 310
-    //   230: aload 6
-    //   232: invokevirtual 317	java/lang/Exception:toString	()Ljava/lang/String;
-    //   235: invokestatic 316	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   238: goto -81 -> 157
-    //   241: aload_0
-    //   242: aload_1
-    //   243: iload_2
-    //   244: aload_3
-    //   245: aload 4
-    //   247: invokespecial 101	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Ljava/lang/String;ILjava/lang/String;Lcooperation/vip/vipcomponent/util/ZipResLoadListener;)Lcooperation/vip/vipcomponent/util/ZipResEntry;
-    //   250: astore_3
-    //   251: aload 6
-    //   253: astore 7
-    //   255: aload_0
-    //   256: aload_1
-    //   257: aload_3
-    //   258: invokespecial 189	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Ljava/lang/String;Lcooperation/vip/vipcomponent/util/ZipResEntry;)Z
-    //   261: ifeq -251 -> 10
-    //   264: aload_0
-    //   265: aload_3
-    //   266: invokespecial 152	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Lcooperation/vip/vipcomponent/util/ZipResEntry;)V
-    //   269: aload 6
-    //   271: areturn
+    //   0: aload_1
+    //   1: invokestatic 227	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: ifeq +5 -> 9
+    //   7: aconst_null
+    //   8: areturn
+    //   9: aload_0
+    //   10: getfield 86	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   13: astore 5
+    //   15: new 203	java/lang/StringBuilder
+    //   18: dup
+    //   19: invokespecial 204	java/lang/StringBuilder:<init>	()V
+    //   22: astore 6
+    //   24: aload 6
+    //   26: aload_1
+    //   27: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload 6
+    //   33: ldc_w 296
+    //   36: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: pop
+    //   40: aload 6
+    //   42: aload_3
+    //   43: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   46: pop
+    //   47: aload 5
+    //   49: aload 6
+    //   51: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: invokevirtual 297	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   57: checkcast 299	android/graphics/Bitmap
+    //   60: astore 5
+    //   62: aload 5
+    //   64: ifnull +6 -> 70
+    //   67: aload 5
+    //   69: areturn
+    //   70: aload_1
+    //   71: aload_3
+    //   72: invokestatic 117	cooperation/vip/vipcomponent/util/ZipResDownloadManager:b	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
+    //   75: astore 7
+    //   77: aload 5
+    //   79: astore 6
+    //   81: aload 7
+    //   83: invokestatic 238	cooperation/vip/vipcomponent/util/ZipResDownloadManager:c	(Ljava/io/File;)Z
+    //   86: ifeq +200 -> 286
+    //   89: aload_0
+    //   90: monitorenter
+    //   91: aload_0
+    //   92: getfield 86	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   95: astore 6
+    //   97: new 203	java/lang/StringBuilder
+    //   100: dup
+    //   101: invokespecial 204	java/lang/StringBuilder:<init>	()V
+    //   104: astore 8
+    //   106: aload 8
+    //   108: aload_1
+    //   109: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   112: pop
+    //   113: aload 8
+    //   115: ldc_w 296
+    //   118: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   121: pop
+    //   122: aload 8
+    //   124: aload_3
+    //   125: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: pop
+    //   129: aload 6
+    //   131: aload 8
+    //   133: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   136: invokevirtual 297	android/support/v4/util/LruCache:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   139: checkcast 299	android/graphics/Bitmap
+    //   142: astore 6
+    //   144: aload 6
+    //   146: ifnull +8 -> 154
+    //   149: aload_0
+    //   150: monitorexit
+    //   151: aload 6
+    //   153: areturn
+    //   154: aload 7
+    //   156: invokevirtual 283	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   159: aconst_null
+    //   160: invokestatic 302	cooperation/vip/vipcomponent/VipUtils:a	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   163: astore 5
+    //   165: goto +52 -> 217
+    //   168: astore 7
+    //   170: aload 6
+    //   172: astore 5
+    //   174: goto +18 -> 192
+    //   177: astore 7
+    //   179: aload 6
+    //   181: astore 5
+    //   183: goto +23 -> 206
+    //   186: astore_1
+    //   187: goto +95 -> 282
+    //   190: astore 7
+    //   192: ldc_w 304
+    //   195: aload 7
+    //   197: invokevirtual 305	java/lang/Exception:toString	()Ljava/lang/String;
+    //   200: invokestatic 310	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   203: goto +14 -> 217
+    //   206: ldc_w 304
+    //   209: aload 7
+    //   211: invokevirtual 311	java/lang/OutOfMemoryError:toString	()Ljava/lang/String;
+    //   214: invokestatic 310	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   217: aload_0
+    //   218: monitorexit
+    //   219: aload 5
+    //   221: astore 6
+    //   223: aload 5
+    //   225: ifnull +61 -> 286
+    //   228: aload_0
+    //   229: getfield 86	cooperation/vip/vipcomponent/util/ZipResDownloadManager:jdField_a_of_type_AndroidSupportV4UtilLruCache	Landroid/support/v4/util/LruCache;
+    //   232: astore 4
+    //   234: new 203	java/lang/StringBuilder
+    //   237: dup
+    //   238: invokespecial 204	java/lang/StringBuilder:<init>	()V
+    //   241: astore 6
+    //   243: aload 6
+    //   245: aload_1
+    //   246: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: pop
+    //   250: aload 6
+    //   252: ldc_w 296
+    //   255: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   258: pop
+    //   259: aload 6
+    //   261: aload_3
+    //   262: invokevirtual 208	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   265: pop
+    //   266: aload 4
+    //   268: aload 6
+    //   270: invokevirtual 216	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   273: aload 5
+    //   275: invokevirtual 315	android/support/v4/util/LruCache:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   278: pop
+    //   279: aload 5
+    //   281: areturn
+    //   282: aload_0
+    //   283: monitorexit
+    //   284: aload_1
+    //   285: athrow
+    //   286: aload_0
+    //   287: aload_1
+    //   288: iload_2
+    //   289: aload_3
+    //   290: aload 4
+    //   292: invokespecial 101	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Ljava/lang/String;ILjava/lang/String;Lcooperation/vip/vipcomponent/util/ZipResLoadListener;)Lcooperation/vip/vipcomponent/util/ZipResEntry;
+    //   295: astore_3
+    //   296: aload_0
+    //   297: aload_1
+    //   298: aload_3
+    //   299: invokespecial 187	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Ljava/lang/String;Lcooperation/vip/vipcomponent/util/ZipResEntry;)Z
+    //   302: ifeq +8 -> 310
+    //   305: aload_0
+    //   306: aload_3
+    //   307: invokespecial 150	cooperation/vip/vipcomponent/util/ZipResDownloadManager:a	(Lcooperation/vip/vipcomponent/util/ZipResEntry;)V
+    //   310: aload 6
+    //   312: areturn
+    //   313: astore 7
+    //   315: goto -109 -> 206
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	272	0	this	ZipResDownloadManager
-    //   0	272	1	paramString1	String
-    //   0	272	2	paramInt	int
-    //   0	272	3	paramString2	String
-    //   0	272	4	paramZipResLoadListener	ZipResLoadListener
-    //   47	156	5	localObject1	Object
-    //   205	6	5	localOutOfMemoryError	java.lang.OutOfMemoryError
-    //   220	1	5	localObject2	Object
-    //   67	152	6	localObject3	Object
-    //   225	45	6	localException	Exception
-    //   1	253	7	localObject4	Object
-    //   63	80	8	localFile	File
+    //   0	318	0	this	ZipResDownloadManager
+    //   0	318	1	paramString1	String
+    //   0	318	2	paramInt	int
+    //   0	318	3	paramString2	String
+    //   0	318	4	paramZipResLoadListener	ZipResLoadListener
+    //   13	267	5	localObject1	Object
+    //   22	289	6	localObject2	Object
+    //   75	80	7	localFile	File
+    //   168	1	7	localException1	Exception
+    //   177	1	7	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   190	20	7	localException2	Exception
+    //   313	1	7	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   104	28	8	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   83	119	129	finally
-    //   124	126	129	finally
-    //   130	132	129	finally
-    //   142	153	129	finally
-    //   157	159	129	finally
-    //   207	218	129	finally
-    //   227	238	129	finally
-    //   83	119	205	java/lang/OutOfMemoryError
-    //   142	153	205	java/lang/OutOfMemoryError
-    //   83	119	225	java/lang/Exception
-    //   142	153	225	java/lang/Exception
+    //   154	165	168	java/lang/Exception
+    //   154	165	177	java/lang/OutOfMemoryError
+    //   91	144	186	finally
+    //   149	151	186	finally
+    //   154	165	186	finally
+    //   192	203	186	finally
+    //   206	217	186	finally
+    //   217	219	186	finally
+    //   282	284	186	finally
+    //   91	144	190	java/lang/Exception
+    //   91	144	313	java/lang/OutOfMemoryError
   }
   
   public Drawable a(String paramString1, int paramInt, String paramString2, ZipResLoadListener paramZipResLoadListener)
@@ -484,53 +563,65 @@ public class ZipResDownloadManager
   
   public boolean a(String paramString)
   {
-    if (jdField_a_of_type_JavaUtilArrayList.contains(paramString)) {
-      paramString = b + VipUtils.a(paramString) + File.separator;
+    StringBuilder localStringBuilder;
+    if (jdField_a_of_type_JavaUtilArrayList.contains(paramString))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b);
+      localStringBuilder.append(VipUtils.a(paramString));
+      localStringBuilder.append(File.separator);
+      paramString = localStringBuilder.toString();
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(b);
+      localStringBuilder.append(VipUtils.b(paramString));
+      localStringBuilder.append(File.separator);
+      paramString = localStringBuilder.toString();
     }
     try
     {
-      for (;;)
+      paramString = new File(paramString);
+      if ((paramString.exists()) && (paramString.isDirectory()) && (paramString.list() != null))
       {
-        paramString = new File(paramString);
-        if ((paramString == null) || (!paramString.exists()) || (!paramString.isDirectory()) || (paramString.list() == null)) {
-          break;
-        }
         int i = paramString.list().length;
-        if (i <= 0) {
-          break;
+        if (i > 0) {
+          return true;
         }
-        return true;
-        paramString = b + VipUtils.b(paramString) + File.separator;
       }
-      return false;
     }
     catch (Exception paramString)
     {
-      QZLog.w("test", " file exception " + paramString.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" file exception ");
+      localStringBuilder.append(paramString.toString());
+      QZLog.w("test", localStringBuilder.toString());
     }
     return false;
   }
   
   public Bitmap b(String paramString1, int paramInt, String paramString2, ZipResLoadListener paramZipResLoadListener)
   {
-    Object localObject;
     if (TextUtils.isEmpty(paramString2)) {
-      localObject = null;
+      return null;
     }
-    Bitmap localBitmap;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_AndroidSupportV4UtilLruCache;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramString2);
+    localObject = (Bitmap)((LruCache)localObject).get(localStringBuilder.toString());
+    if (localObject != null) {
       return localObject;
-      localBitmap = (Bitmap)this.jdField_a_of_type_AndroidSupportV4UtilLruCache.get(paramString1 + " " + paramString2);
-      localObject = localBitmap;
-    } while (localBitmap != null);
+    }
     QzoneHandlerThreadFactory.getHandlerThread("BackGround_HandlerThread").postDelayed(new ZipResDownloadManager.2(this, paramString1, paramString2, paramZipResLoadListener, paramInt), 400L);
-    return localBitmap;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.vipcomponent.util.ZipResDownloadManager
  * JD-Core Version:    0.7.0.1
  */

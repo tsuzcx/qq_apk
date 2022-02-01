@@ -129,12 +129,8 @@ public class PullToZoomListView
     if (!this.jdField_a_of_type_Boolean) {
       return super.dispatchTouchEvent(paramMotionEvent);
     }
-    switch (paramMotionEvent.getAction())
+    if (paramMotionEvent.getAction() == 0)
     {
-    }
-    for (;;)
-    {
-      return super.dispatchTouchEvent(paramMotionEvent);
       if (!this.jdField_a_of_type_ComTencentWidgetPullToZoomListView$ScalingRunnalable.jdField_a_of_type_Boolean) {
         this.jdField_a_of_type_ComTencentWidgetPullToZoomListView$ScalingRunnalable.a();
       }
@@ -143,86 +139,126 @@ public class PullToZoomListView
       this.jdField_c_of_type_Float = (this.d * 1.0F / this.jdField_b_of_type_Int);
       this.jdField_b_of_type_Float = (this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() / this.jdField_b_of_type_Int);
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_b_of_type_Int == 0) && (this.jdField_a_of_type_AndroidWidgetFrameLayout != null) && (this.jdField_a_of_type_AndroidViewView != null))
+    if (this.jdField_b_of_type_Int == 0)
     {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetFrameLayout.getHeight();
-      this.jdField_c_of_type_Int = (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidViewView.getHeight());
-      if (QLog.isColorLevel()) {
-        QLog.d("PullToZoomListView", 2, "mHeaderHeight:" + this.jdField_b_of_type_Int + " mHeaderBottomHeight:" + this.jdField_c_of_type_Int);
-      }
-      if (this.jdField_b_of_type_Int > 0) {
-        this.jdField_a_of_type_Boolean = true;
+      Object localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout;
+      if ((localObject != null) && (this.jdField_a_of_type_AndroidViewView != null))
+      {
+        this.jdField_b_of_type_Int = ((FrameLayout)localObject).getHeight();
+        this.jdField_c_of_type_Int = (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidViewView.getHeight());
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("mHeaderHeight:");
+          ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject).append(" mHeaderBottomHeight:");
+          ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+          QLog.d("PullToZoomListView", 2, ((StringBuilder)localObject).toString());
+        }
+        if (this.jdField_b_of_type_Int > 0) {
+          this.jdField_a_of_type_Boolean = true;
+        }
       }
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((!this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
-      return super.onTouchEvent(paramMotionEvent);
-    }
-    switch (paramMotionEvent.getAction() & 0xFF)
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_b_of_type_Boolean))
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      int i = paramMotionEvent.findPointerIndex(this.jdField_a_of_type_Int);
-      if (i == -1)
+      int i = paramMotionEvent.getAction() & 0xFF;
+      if (i != 1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PullToZoomListView", 2, "Invalid pointerId=" + this.jdField_a_of_type_Int + " in onTouchEvent");
+        if (i != 2)
+        {
+          if (i == 3)
+          {
+            i = paramMotionEvent.getActionIndex();
+            this.jdField_a_of_type_Float = paramMotionEvent.getY(i);
+            this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(i);
+          }
+        }
+        else
+        {
+          i = paramMotionEvent.findPointerIndex(this.jdField_a_of_type_Int);
+          Object localObject;
+          if (i == -1)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("Invalid pointerId=");
+              ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+              ((StringBuilder)localObject).append(" in onTouchEvent");
+              QLog.d("PullToZoomListView", 2, ((StringBuilder)localObject).toString());
+            }
+          }
+          else
+          {
+            if (this.jdField_a_of_type_Float == -1.0F) {
+              this.jdField_a_of_type_Float = paramMotionEvent.getY(i);
+            }
+            if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() >= this.jdField_b_of_type_Int)
+            {
+              localObject = this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
+              ViewGroup.LayoutParams localLayoutParams = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+              float f1 = paramMotionEvent.getY(i);
+              float f2 = this.jdField_a_of_type_Float;
+              float f3 = this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom();
+              int j = this.jdField_b_of_type_Int;
+              f2 = (f1 - f2 + f3) / j;
+              f1 = this.jdField_b_of_type_Float;
+              f2 = (f2 - f1) / 2.0F + f1;
+              if ((f1 <= 1.0D) && (f2 < f1))
+              {
+                ((ViewGroup.LayoutParams)localObject).height = j;
+                localLayoutParams.height = (j - this.jdField_c_of_type_Int);
+                this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+                this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+                return super.onTouchEvent(paramMotionEvent);
+              }
+              this.jdField_b_of_type_Float = Math.min(Math.max(f2, 1.0F), this.jdField_c_of_type_Float);
+              ((ViewGroup.LayoutParams)localObject).height = ((int)(this.jdField_b_of_type_Int * this.jdField_b_of_type_Float));
+              localLayoutParams.height = (((ViewGroup.LayoutParams)localObject).height - this.jdField_c_of_type_Int);
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("new height:");
+                localStringBuilder.append(((ViewGroup.LayoutParams)localObject).height);
+                localStringBuilder.append(" imgHeight:");
+                localStringBuilder.append(localLayoutParams.height);
+                localStringBuilder.append(" mLastScale:");
+                localStringBuilder.append(this.jdField_b_of_type_Float);
+                QLog.d("PullToZoomListView", 2, localStringBuilder.toString());
+              }
+              if (((ViewGroup.LayoutParams)localObject).height < this.d)
+              {
+                this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams((ViewGroup.LayoutParams)localObject);
+                this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
+              }
+              this.jdField_a_of_type_Float = paramMotionEvent.getY(i);
+            }
+            else
+            {
+              this.jdField_a_of_type_Float = paramMotionEvent.getY(i);
+            }
+          }
         }
       }
       else
       {
-        if (this.jdField_a_of_type_Float == -1.0F) {
-          this.jdField_a_of_type_Float = paramMotionEvent.getY(i);
-        }
-        if (this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom() >= this.jdField_b_of_type_Int)
-        {
-          ViewGroup.LayoutParams localLayoutParams1 = this.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams();
-          ViewGroup.LayoutParams localLayoutParams2 = this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-          float f = ((paramMotionEvent.getY(i) - this.jdField_a_of_type_Float + this.jdField_a_of_type_AndroidWidgetFrameLayout.getBottom()) / this.jdField_b_of_type_Int - this.jdField_b_of_type_Float) / 2.0F + this.jdField_b_of_type_Float;
-          if ((this.jdField_b_of_type_Float <= 1.0D) && (f < this.jdField_b_of_type_Float))
-          {
-            localLayoutParams1.height = this.jdField_b_of_type_Int;
-            localLayoutParams2.height = (this.jdField_b_of_type_Int - this.jdField_c_of_type_Int);
-            this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams1);
-            this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams2);
-            return super.onTouchEvent(paramMotionEvent);
-          }
-          this.jdField_b_of_type_Float = Math.min(Math.max(f, 1.0F), this.jdField_c_of_type_Float);
-          localLayoutParams1.height = ((int)(this.jdField_b_of_type_Int * this.jdField_b_of_type_Float));
-          localLayoutParams1.height -= this.jdField_c_of_type_Int;
-          if (QLog.isColorLevel()) {
-            QLog.d("PullToZoomListView", 2, "new height:" + localLayoutParams1.height + " imgHeight:" + localLayoutParams2.height + " mLastScale:" + this.jdField_b_of_type_Float);
-          }
-          if (localLayoutParams1.height < this.d)
-          {
-            this.jdField_a_of_type_AndroidWidgetFrameLayout.setLayoutParams(localLayoutParams1);
-            this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams2);
-          }
-          this.jdField_a_of_type_Float = paramMotionEvent.getY(i);
-        }
-        else
-        {
-          this.jdField_a_of_type_Float = paramMotionEvent.getY(i);
-          continue;
-          b();
-          a();
-          continue;
-          i = paramMotionEvent.getActionIndex();
-          this.jdField_a_of_type_Float = paramMotionEvent.getY(i);
-          this.jdField_a_of_type_Int = paramMotionEvent.getPointerId(i);
-        }
+        b();
+        a();
       }
+      return super.onTouchEvent(paramMotionEvent);
     }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setHeaderImage(View paramView)
@@ -232,7 +268,7 @@ public class PullToZoomListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PullToZoomListView
  * JD-Core Version:    0.7.0.1
  */

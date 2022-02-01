@@ -4,8 +4,9 @@ import android.content.Intent;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.messageclean.MessageTypeUtils;
+import com.tencent.mobileqq.colornote.api.IColorNoteUtil;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.colornote.smallscreen.ColorNoteSmallScreenUtil;
+import com.tencent.mobileqq.colornote.smallscreen.UpComingMsgModel;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForDLFile;
@@ -20,6 +21,7 @@ import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageForTroopFile;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.structmsg.AbsStructMsg;
 import com.tencent.mobileqq.utils.ActionMsgUtil;
 import com.tencent.qphone.base.util.QLog;
@@ -28,63 +30,73 @@ public class UpComingMsgUtil
 {
   private static int a(MessageForArkApp paramMessageForArkApp)
   {
-    if (paramMessageForArkApp == null) {}
-    Object localObject;
-    do
+    if (paramMessageForArkApp != null)
     {
-      do
+      Object localObject = paramMessageForArkApp.ark_app_message;
+      if (localObject != null)
       {
-        do
-        {
-          return 6;
-          localObject = paramMessageForArkApp.ark_app_message;
-        } while (localObject == null);
         paramMessageForArkApp = ((ArkAppMessage)localObject).appName;
         localObject = ((ArkAppMessage)localObject).appView;
-      } while ((android.text.TextUtils.isEmpty(paramMessageForArkApp)) || (android.text.TextUtils.isEmpty((CharSequence)localObject)));
-      if ("com.tencent.map".equals(paramMessageForArkApp)) {
-        return 10;
+        if ((!android.text.TextUtils.isEmpty(paramMessageForArkApp)) && (!android.text.TextUtils.isEmpty((CharSequence)localObject)))
+        {
+          if ("com.tencent.map".equals(paramMessageForArkApp)) {
+            return 10;
+          }
+          if (("com.tencent.miniapp_01".equals(paramMessageForArkApp)) || (("com.tencent.structmsg".equals(paramMessageForArkApp)) && ("news".equals(localObject)))) {
+            return 9;
+          }
+        }
       }
-    } while ((!"com.tencent.miniapp_01".equals(paramMessageForArkApp)) && ((!"com.tencent.structmsg".equals(paramMessageForArkApp)) || (!"news".equals(localObject))));
-    return 9;
+    }
+    return 6;
   }
   
   public static int a(MessageRecord paramMessageRecord)
   {
+    boolean bool = paramMessageRecord instanceof MessageForText;
     int i = 6;
-    if (((paramMessageRecord instanceof MessageForText)) || ((paramMessageRecord instanceof MessageForLongMsg))) {
-      if (com.tencent.mobileqq.text.TextUtils.isAllSystemEmotcation(paramMessageRecord.msg)) {
-        i = 12;
+    if ((!bool) && (!(paramMessageRecord instanceof MessageForLongMsg)))
+    {
+      if ((paramMessageRecord instanceof MessageForPic)) {
+        return 2;
+      }
+      if ((paramMessageRecord instanceof MessageForArkApp)) {
+        return a((MessageForArkApp)paramMessageRecord);
+      }
+      if ((paramMessageRecord instanceof MessageForPtt)) {
+        return 3;
+      }
+      if ((paramMessageRecord instanceof MessageForMixedMsg)) {
+        return 4;
+      }
+      if ((!(paramMessageRecord instanceof MessageForFile)) && (!(paramMessageRecord instanceof MessageForTroopFile)) && (!(paramMessageRecord instanceof MessageForDeviceFile)) && (!(paramMessageRecord instanceof MessageForDLFile)))
+      {
+        if ((paramMessageRecord instanceof MessageForStructing))
+        {
+          if (a((MessageForStructing)paramMessageRecord)) {
+            return 11;
+          }
+        }
+        else
+        {
+          if (MessageTypeUtils.a(paramMessageRecord)) {
+            return 6;
+          }
+          return 7;
+        }
+      }
+      else {
+        return b(paramMessageRecord);
       }
     }
-    do
+    else
     {
-      do
-      {
-        return i;
-        return 1;
-        if ((paramMessageRecord instanceof MessageForPic)) {
-          return 2;
-        }
-        if ((paramMessageRecord instanceof MessageForArkApp)) {
-          return a((MessageForArkApp)paramMessageRecord);
-        }
-        if ((paramMessageRecord instanceof MessageForPtt)) {
-          return 3;
-        }
-        if ((paramMessageRecord instanceof MessageForMixedMsg)) {
-          return 4;
-        }
-        if (((paramMessageRecord instanceof MessageForFile)) || ((paramMessageRecord instanceof MessageForTroopFile)) || ((paramMessageRecord instanceof MessageForDeviceFile)) || ((paramMessageRecord instanceof MessageForDLFile))) {
-          return b(paramMessageRecord);
-        }
-        if (!(paramMessageRecord instanceof MessageForStructing)) {
-          break;
-        }
-      } while (!a((MessageForStructing)paramMessageRecord));
-      return 11;
-    } while (MessageTypeUtils.a(paramMessageRecord));
-    return 7;
+      if (com.tencent.mobileqq.text.TextUtils.isAllSystemEmotcation(paramMessageRecord.msg)) {
+        return 12;
+      }
+      i = 1;
+    }
+    return i;
   }
   
   public static long a(ColorNote paramColorNote)
@@ -99,23 +111,14 @@ public class UpComingMsgUtil
   
   private static long a(ColorNote paramColorNote, int paramInt)
   {
-    long l2 = 0L;
     try
     {
       paramColorNote = a(paramColorNote);
-      long l1 = l2;
-      if (paramColorNote != null)
+      if ((paramColorNote != null) && (paramColorNote.length > 0) && (paramInt < paramColorNote.length))
       {
-        l1 = l2;
-        if (paramColorNote.length > 0)
-        {
-          l1 = l2;
-          if (paramInt < paramColorNote.length) {
-            l1 = Long.valueOf(paramColorNote[paramInt]).longValue();
-          }
-        }
+        long l = Long.valueOf(paramColorNote[paramInt]).longValue();
+        return l;
       }
-      return l1;
     }
     catch (Exception paramColorNote)
     {
@@ -126,96 +129,136 @@ public class UpComingMsgUtil
   
   public static UpComingMsgModel a(ColorNote paramColorNote)
   {
-    if ((paramColorNote == null) || (paramColorNote.getServiceType() != 17235968)) {
-      return new UpComingMsgModel();
+    if ((paramColorNote != null) && (paramColorNote.getServiceType() == 17235968))
+    {
+      paramColorNote = new String(paramColorNote.getReserve());
+      UpComingMsgModel localUpComingMsgModel = new UpComingMsgModel();
+      localUpComingMsgModel.parseFromJson(paramColorNote);
+      return localUpComingMsgModel;
     }
-    paramColorNote = new String(paramColorNote.getReserve());
-    UpComingMsgModel localUpComingMsgModel = new UpComingMsgModel();
-    localUpComingMsgModel.parseFromJson(paramColorNote);
-    return localUpComingMsgModel;
+    return new UpComingMsgModel();
   }
   
   public static String a(long paramLong)
   {
     long l = System.currentTimeMillis();
-    return paramLong + "_" + l;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("_");
+    localStringBuilder.append(l);
+    return localStringBuilder.toString();
   }
   
   public static String a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord == null) {
-      if (paramQQAppInterface == null) {
-        paramQQAppInterface = "";
-      }
-    }
-    String str;
-    do
+    String str = "";
+    if (paramMessageRecord == null)
     {
-      do
+      if (paramQQAppInterface == null) {
+        return "";
+      }
+      return paramQQAppInterface.getCurrentAccountUin();
+    }
+    if (paramMessageRecord.msg != null) {
+      str = paramMessageRecord.msg;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("message type = ");
+      localStringBuilder.append(paramMessageRecord.msgtype);
+      localStringBuilder.append(", result = ");
+      localStringBuilder.append(str);
+      QLog.d("UpComingMsgLogic.UpComingMsgUtil", 2, localStringBuilder.toString());
+    }
+    if ((paramMessageRecord.msgtype != -2000) && (paramMessageRecord.msgtype != -5015) && (paramMessageRecord.msgtype != -2007))
+    {
+      if (paramMessageRecord.msgtype == -1031) {
+        return "[语音]";
+      }
+      if (paramMessageRecord.msgtype == -2002) {
+        return a(paramMessageRecord);
+      }
+      if (paramMessageRecord.msgtype == -2017)
       {
-        do
+        if ((paramMessageRecord instanceof MessageForTroopFile))
         {
-          return paramQQAppInterface;
-          return paramQQAppInterface.getCurrentAccountUin();
-          if (paramMessageRecord.msg != null) {}
-          for (str = paramMessageRecord.msg;; str = "")
+          paramQQAppInterface = (MessageForTroopFile)paramMessageRecord;
+          if (!android.text.TextUtils.isEmpty(paramQQAppInterface.fileName))
           {
-            if (QLog.isDevelopLevel()) {
-              QLog.d("UpComingMsgLogic.UpComingMsgUtil", 2, "message type = " + paramMessageRecord.msgtype + ", result = " + str);
-            }
-            if ((paramMessageRecord.msgtype != -2000) && (paramMessageRecord.msgtype != -5015) && (paramMessageRecord.msgtype != -2007)) {
-              break;
-            }
-            return "[图片]";
+            paramMessageRecord = new StringBuilder();
+            paramMessageRecord.append("[文件]");
+            paramMessageRecord.append(paramQQAppInterface.fileName);
+            return paramMessageRecord.toString();
           }
-          if (paramMessageRecord.msgtype == -1031) {
-            return "[语音]";
-          }
-          if (paramMessageRecord.msgtype == -2002) {
-            return a(paramMessageRecord);
-          }
-          if (paramMessageRecord.msgtype == -2017)
-          {
-            if ((!(paramMessageRecord instanceof MessageForTroopFile)) || (android.text.TextUtils.isEmpty(((MessageForTroopFile)paramMessageRecord).fileName))) {
-              break label353;
-            }
-            return "[文件]" + ((MessageForTroopFile)paramMessageRecord).fileName;
-          }
-          if (paramMessageRecord.msgtype == -2005) {
-            return FileManagerUtil.a(paramQQAppInterface, paramMessageRecord);
-          }
-          if (paramMessageRecord.msgtype == -3017) {
-            return "[文件]" + ((MessageForDLFile)paramMessageRecord).fileName;
-          }
-          if (!ActionMsgUtil.a(paramMessageRecord.msgtype)) {
-            break;
-          }
-          paramQQAppInterface = "[分享]";
-        } while (!(paramMessageRecord instanceof MessageForStructing));
-        return "[分享]" + ((MessageForStructing)paramMessageRecord).getSummaryMsg();
+        }
+        return "[文件]";
+      }
+      if (paramMessageRecord.msgtype == -2005) {
+        return FileManagerUtil.a(paramQQAppInterface, paramMessageRecord);
+      }
+      if (paramMessageRecord.msgtype == -3017)
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("[文件]");
+        paramQQAppInterface.append(((MessageForDLFile)paramMessageRecord).fileName);
+        return paramQQAppInterface.toString();
+      }
+      if (ActionMsgUtil.a(paramMessageRecord.msgtype))
+      {
+        paramQQAppInterface = "[分享]";
+        if ((paramMessageRecord instanceof MessageForStructing))
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("[分享]");
+          paramQQAppInterface.append(((MessageForStructing)paramMessageRecord).getSummaryMsg());
+          return paramQQAppInterface.toString();
+        }
+      }
+      else
+      {
         if (paramMessageRecord.msgtype == -2022) {
           return "[视频]";
         }
         paramQQAppInterface = str;
-      } while (paramMessageRecord.msgtype != -2011);
-      paramQQAppInterface = str;
-    } while (!(paramMessageRecord instanceof MessageForStructing));
-    return str + ((MessageForStructing)paramMessageRecord).getSummaryMsg();
-    label353:
-    return "[文件]";
+        if (paramMessageRecord.msgtype == -2011)
+        {
+          paramQQAppInterface = str;
+          if ((paramMessageRecord instanceof MessageForStructing))
+          {
+            paramQQAppInterface = new StringBuilder();
+            paramQQAppInterface.append(str);
+            paramQQAppInterface.append(((MessageForStructing)paramMessageRecord).getSummaryMsg());
+            return paramQQAppInterface.toString();
+          }
+        }
+      }
+    }
+    else
+    {
+      paramQQAppInterface = "[图片]";
+    }
+    return paramQQAppInterface;
   }
   
   private static String a(MessageRecord paramMessageRecord)
   {
-    if (((paramMessageRecord instanceof MessageForPtt)) && (((MessageForPtt)paramMessageRecord).hasSttTxt())) {}
-    for (paramMessageRecord = ((MessageForPtt)paramMessageRecord).sttText;; paramMessageRecord = "")
+    if ((paramMessageRecord instanceof MessageForPtt))
     {
-      Object localObject = paramMessageRecord;
-      if (android.text.TextUtils.isEmpty(paramMessageRecord)) {
-        localObject = "[语音]";
+      paramMessageRecord = (MessageForPtt)paramMessageRecord;
+      if (paramMessageRecord.hasSttTxt())
+      {
+        paramMessageRecord = paramMessageRecord.sttText;
+        break label30;
       }
-      return localObject;
     }
+    paramMessageRecord = "";
+    label30:
+    Object localObject = paramMessageRecord;
+    if (android.text.TextUtils.isEmpty(paramMessageRecord)) {
+      localObject = "[语音]";
+    }
+    return localObject;
   }
   
   public static void a(BaseActivity paramBaseActivity, boolean paramBoolean)
@@ -226,53 +269,76 @@ public class UpComingMsgUtil
       if ((localIntent != null) && (localIntent.getBooleanExtra("flag_open_up_coming_list", false)))
       {
         localIntent.removeExtra("flag_open_up_coming_list");
-        ColorNoteSmallScreenUtil.b(paramBaseActivity, true);
+        ((IColorNoteUtil)QRoute.api(IColorNoteUtil.class)).showListFromAddTodo(paramBaseActivity, true);
       }
     }
   }
   
   public static boolean a(int paramInt)
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 1000) || (paramInt == 3000) || (paramInt == 1004) || (paramInt == 1006);
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (paramInt != 0)
+    {
+      bool1 = bool2;
+      if (paramInt != 1)
+      {
+        bool1 = bool2;
+        if (paramInt != 1000)
+        {
+          bool1 = bool2;
+          if (paramInt != 3000)
+          {
+            bool1 = bool2;
+            if (paramInt != 1004)
+            {
+              if (paramInt == 1006) {
+                return true;
+              }
+              bool1 = false;
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private static boolean a(MessageForStructing paramMessageForStructing)
   {
-    if (paramMessageForStructing == null) {}
-    while ((paramMessageForStructing.structingMsg == null) || (!"viewMultiMsg".equals(paramMessageForStructing.structingMsg.mMsgAction))) {
+    boolean bool2 = false;
+    if (paramMessageForStructing == null) {
       return false;
     }
-    return true;
+    boolean bool1 = bool2;
+    if (paramMessageForStructing.structingMsg != null)
+    {
+      bool1 = bool2;
+      if ("viewMultiMsg".equals(paramMessageForStructing.structingMsg.mMsgAction)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
   {
-    boolean bool2 = true;
     if (paramMessageRecord == null) {
       return false;
     }
-    boolean bool1;
-    if (1 != paramMessageRecord.istroop)
+    int i = paramMessageRecord.istroop;
+    boolean bool = true;
+    if ((1 == i) || (3000 == paramMessageRecord.istroop))
     {
-      bool1 = bool2;
-      if (3000 != paramMessageRecord.istroop) {}
-    }
-    else
-    {
-      if (paramMessageRecord.extraflag != 32772) {
-        break label45;
+      if (paramMessageRecord.extraflag == 32772) {
+        return paramMessageRecord.isValid;
       }
-      bool1 = paramMessageRecord.isValid;
-    }
-    for (;;)
-    {
-      return bool1;
-      label45:
-      bool1 = bool2;
-      if (paramMessageRecord.msgtype == -2006) {
-        bool1 = false;
+      if (paramMessageRecord.msgtype != -2006) {
+        return true;
       }
+      bool = false;
     }
+    return bool;
   }
   
   private static String[] a(ColorNote paramColorNote)
@@ -295,26 +361,25 @@ public class UpComingMsgUtil
   {
     if ((paramMessageRecord instanceof MessageForFile))
     {
-      if (FileManagerUtil.a(((MessageForFile)paramMessageRecord).fileName) != 0) {}
-    }
-    else {
-      do
-      {
+      if (FileManagerUtil.a(((MessageForFile)paramMessageRecord).fileName) == 0) {
         return 2;
-        if (!(paramMessageRecord instanceof MessageForDeviceFile)) {
-          break;
-        }
-      } while (2 == ((MessageForDeviceFile)paramMessageRecord).nFileMsgType);
+      }
     }
-    while ((!(paramMessageRecord instanceof MessageForTroopFile)) || (FileManagerUtil.a(((MessageForTroopFile)paramMessageRecord).fileName) != 0)) {
-      return 5;
+    else if ((paramMessageRecord instanceof MessageForDeviceFile))
+    {
+      if (2 == ((MessageForDeviceFile)paramMessageRecord).nFileMsgType) {
+        return 2;
+      }
     }
-    return 2;
+    else if (((paramMessageRecord instanceof MessageForTroopFile)) && (FileManagerUtil.a(((MessageForTroopFile)paramMessageRecord).fileName) == 0)) {
+      return 2;
+    }
+    return 5;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.upcoming.UpComingMsgUtil
  * JD-Core Version:    0.7.0.1
  */

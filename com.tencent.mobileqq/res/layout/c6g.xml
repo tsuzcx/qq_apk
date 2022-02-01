@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/oj4" android:layout_width="wrap_content" android:layout_height="wrap_content">
         <TextView android:textSize="12.0dip" android:textColor="@color/skin_gray2_theme_version2" android:id="@id/kfr" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j_c" />
         <TextView android:textSize="12.0dip" android:textColor="#ff4d94ff" android:id="@id/mej" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/j__" android:layout_toRightOf="@id/kfr" />
     </RelativeLayout>
-    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/n5y" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="24.0dip">
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/n8b" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="20.0dip" android:layout_marginBottom="24.0dip">
         <com.tencent.widget.CustomImgView android:id="@id/llq" android:layout_width="80.0dip" android:layout_height="80.0dip" />
         <com.tencent.widget.CustomImgView android:id="@id/llr" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginLeft="16.0dip" android:layout_toRightOf="@id/llq" />
         <com.tencent.widget.CustomImgView android:id="@id/lls" android:layout_width="80.0dip" android:layout_height="80.0dip" android:layout_marginLeft="16.0dip" android:layout_toRightOf="@id/llr" />

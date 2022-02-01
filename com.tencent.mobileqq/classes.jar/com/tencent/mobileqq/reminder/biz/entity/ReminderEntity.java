@@ -31,8 +31,9 @@ public class ReminderEntity
   
   private void acsMsgPack()
   {
-    this.mAcsMsg.msg_id = this.mMsgId;
-    this.mAcsMsg.notice_time = this.mReminderTime;
+    AcsMsg localAcsMsg = this.mAcsMsg;
+    localAcsMsg.msg_id = this.mMsgId;
+    localAcsMsg.notice_time = this.mReminderTime;
   }
   
   public AcsMsg getAcsMsg()
@@ -40,7 +41,7 @@ public class ReminderEntity
     return this.mAcsMsg;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     super.postRead();
     JceInputStream localJceInputStream = new JceInputStream(this.mMsgDate);
@@ -50,7 +51,7 @@ public class ReminderEntity
     acsMsgPack();
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
     super.prewrite();
     JceOutputStream localJceOutputStream = new JceOutputStream();
@@ -68,7 +69,7 @@ public class ReminderEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.reminder.biz.entity.ReminderEntity
  * JD-Core Version:    0.7.0.1
  */

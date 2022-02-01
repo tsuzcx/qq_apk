@@ -43,30 +43,36 @@ public final class ae
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bH, 0);
-    if (this.bZ != 0) {
-      paramJceOutputStream.write(this.bZ, 1);
+    int i = this.bZ;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 1);
     }
-    if (this.ca != 0) {
-      paramJceOutputStream.write(this.ca, 2);
+    i = this.ca;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
     paramJceOutputStream.write(this.cc, 3);
-    if (this.cd != 0) {
-      paramJceOutputStream.write(this.cd, 4);
+    i = this.cd;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.data != null) {
-      paramJceOutputStream.write(this.data, 5);
+    Object localObject = this.data;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
-    if (this.cp != null) {
-      paramJceOutputStream.write(this.cp, 6);
+    localObject = this.cp;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
-    if (this.cf != 0) {
-      paramJceOutputStream.write(this.cf, 7);
+    i = this.cf;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ae
  * JD-Core Version:    0.7.0.1
  */

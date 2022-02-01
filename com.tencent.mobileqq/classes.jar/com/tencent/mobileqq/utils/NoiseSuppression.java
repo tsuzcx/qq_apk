@@ -25,8 +25,9 @@ public class NoiseSuppression
   
   public int a()
   {
-    if (this.c != 0) {
-      return nativeRelease(this.c);
+    int i = this.c;
+    if (i != 0) {
+      return nativeRelease(i);
     }
     return -1;
   }
@@ -36,8 +37,9 @@ public class NoiseSuppression
     if ((paramInt2 != 80) && (paramInt2 != 160) && (paramInt2 != jdField_a_of_type_Int)) {
       throw new IllegalArgumentException();
     }
-    if (this.c != 0) {
-      return nativeProcess(this.c, paramArrayOfByte, paramInt1, paramInt2);
+    int i = this.c;
+    if (i != 0) {
+      return nativeProcess(i, paramArrayOfByte, paramInt1, paramInt2);
     }
     return -1;
   }
@@ -50,7 +52,7 @@ public class NoiseSuppression
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.NoiseSuppression
  * JD-Core Version:    0.7.0.1
  */

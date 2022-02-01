@@ -58,19 +58,25 @@ public class QzoneAnimationDrawable
   
   private void doBeforeDraw()
   {
-    if ((this.mNextFrameIndex - 1 == 0) && (this.mAnimationListener != null)) {
-      this.mAnimationListener.onAnimationStart(this);
+    if (this.mNextFrameIndex - 1 == 0)
+    {
+      localAnimationListener = this.mAnimationListener;
+      if (localAnimationListener != null) {
+        localAnimationListener.onAnimationStart(this);
+      }
     }
-    if (this.mAnimationListener != null) {
-      this.mAnimationListener.onAnimationPlay(this, this.mNextFrameIndex - 1);
+    QzoneAnimationDrawable.AnimationListener localAnimationListener = this.mAnimationListener;
+    if (localAnimationListener != null) {
+      localAnimationListener.onAnimationPlay(this, this.mNextFrameIndex - 1);
     }
   }
   
   private void init()
   {
     this.mFrameOptions = ImageLoader.Options.copy(this.mImageKey.options);
-    this.mFrameOptions.needShowPhotoGifAnimation = false;
-    this.mFrameOptions.photoList = null;
+    ImageLoader.Options localOptions = this.mFrameOptions;
+    localOptions.needShowPhotoGifAnimation = false;
+    localOptions.photoList = null;
     this.mExecutor = GifRenderingExecutor.getInstance();
     this.mInvalidationHandler = new InvalidationHandler(this);
     this.mPhotoLoadListener = new QzoneAnimationDrawable.PhotoLoadListener(this, null);
@@ -82,21 +88,34 @@ public class QzoneAnimationDrawable
   {
     if (this.mNextFrameIndex < this.mImageKey.options.photoList.size())
     {
-      String str = (String)this.mImageKey.options.photoList.get(this.mNextFrameIndex);
-      ImageLoader.getInstance().loadImageAsync(str, this.mPhotoLoadListener, this.mFrameOptions);
-      ImageManagerEnv.getLogger().d("QzoneAnimationDrawable", new Object[] { "loadNextFrame:" + str + ",frameIndex:" + this.mNextFrameIndex });
+      localObject1 = (String)this.mImageKey.options.photoList.get(this.mNextFrameIndex);
+      ImageLoader.getInstance().loadImageAsync((String)localObject1, this.mPhotoLoadListener, this.mFrameOptions);
+      localObject2 = ImageManagerEnv.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadNextFrame:");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(",frameIndex:");
+      localStringBuilder.append(this.mNextFrameIndex);
+      ((ILog)localObject2).d("QzoneAnimationDrawable", new Object[] { localStringBuilder.toString() });
       if (this.mNextFrameIndex == getFrameCounts() - 1) {
         this.mPlayCount += 1;
       }
       this.mNextFrameIndex = ((this.mNextFrameIndex + 1) % this.mImageKey.options.photoList.size());
       return;
     }
-    ImageManagerEnv.getLogger().e("QzoneAnimationDrawable", new Object[] { "loadNextFrame: out of index,mNextFrameIndex:" + this.mNextFrameIndex + ",photosize:" + this.mImageKey.options.photoList.size() });
+    Object localObject1 = ImageManagerEnv.getLogger();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("loadNextFrame: out of index,mNextFrameIndex:");
+    ((StringBuilder)localObject2).append(this.mNextFrameIndex);
+    ((StringBuilder)localObject2).append(",photosize:");
+    ((StringBuilder)localObject2).append(this.mImageKey.options.photoList.size());
+    ((ILog)localObject1).e("QzoneAnimationDrawable", new Object[] { ((StringBuilder)localObject2).toString() });
   }
   
   private void reset()
   {
-    if ((this.mScheduledFuture != null) && (!this.mScheduledFuture.isDone())) {
+    ScheduledFuture localScheduledFuture = this.mScheduledFuture;
+    if ((localScheduledFuture != null) && (!localScheduledFuture.isDone())) {
       this.mScheduledFuture.cancel(true);
     }
     this.mIsRunning = true;
@@ -113,7 +132,9 @@ public class QzoneAnimationDrawable
     if (!this.mIsRunning) {
       return false;
     }
-    if (this.mNextFrame != null) {
+    boolean bool;
+    if (this.mNextFrame != null)
+    {
       if (canAnimate())
       {
         this.mCurrentFrame = this.mNextFrame;
@@ -124,36 +145,45 @@ public class QzoneAnimationDrawable
         }
         loadNextFrame();
       }
-    }
-    for (boolean bool = true;; bool = false)
-    {
-      if ((this.mScheduledFuture != null) && (!this.mScheduledFuture.isDone())) {
-        this.mScheduledFuture.cancel(true);
-      }
-      if ((this.mRepeatCount == LOOP_INFINITE) || (this.mPlayCount < this.mRepeatCount))
+      else if (this.mCurrentFrame == null)
       {
-        this.mScheduledFuture = this.mExecutor.schedule(this.mFrameSwitcher, this.mImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
-        ImageManagerEnv.getLogger().d("QzoneAnimationDrawable", new Object[] { "------next index:" + this.mNextFrameIndex });
-      }
-      for (;;)
-      {
-        return bool;
-        if (this.mCurrentFrame != null) {
-          break;
-        }
         this.mCurrentFrame = this.mNextFrame;
         doBeforeDraw();
-        if (this.mInvalidationHandler.hasMessages(0)) {
-          break;
-        }
-        this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
-        break;
-        stop();
-        if (this.mAnimationListener != null) {
-          this.mAnimationListener.onAnimationEnd(this);
+        if (!this.mInvalidationHandler.hasMessages(0)) {
+          this.mInvalidationHandler.sendEmptyMessageAtTime(0, 0L);
         }
       }
+      bool = true;
     }
+    else
+    {
+      bool = false;
+    }
+    Object localObject = this.mScheduledFuture;
+    if ((localObject != null) && (!((ScheduledFuture)localObject).isDone())) {
+      this.mScheduledFuture.cancel(true);
+    }
+    int i = this.mRepeatCount;
+    if ((i != LOOP_INFINITE) && (this.mPlayCount >= i))
+    {
+      stop();
+      localObject = this.mAnimationListener;
+      if (localObject != null)
+      {
+        ((QzoneAnimationDrawable.AnimationListener)localObject).onAnimationEnd(this);
+        return bool;
+      }
+    }
+    else
+    {
+      this.mScheduledFuture = this.mExecutor.schedule(this.mFrameSwitcher, this.mImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
+      localObject = ImageManagerEnv.getLogger();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("------next index:");
+      localStringBuilder.append(this.mNextFrameIndex);
+      ((ILog)localObject).d("QzoneAnimationDrawable", new Object[] { localStringBuilder.toString() });
+    }
+    return bool;
   }
   
   public boolean canAnimate()
@@ -169,9 +199,10 @@ public class QzoneAnimationDrawable
       this.mCurrentFrame.draw(paramCanvas);
       return;
     }
-    if (this.mDefaultFrame != null)
+    Drawable localDrawable = this.mDefaultFrame;
+    if (localDrawable != null)
     {
-      this.mDefaultFrame.setBounds(getBounds());
+      localDrawable.setBounds(getBounds());
       this.mDefaultFrame.draw(paramCanvas);
       return;
     }
@@ -193,8 +224,9 @@ public class QzoneAnimationDrawable
     if (this.mCurrentFrame != null) {
       return this.mCurrentFrame.getIntrinsicHeight();
     }
-    if (this.mDefaultFrame != null) {
-      return this.mDefaultFrame.getIntrinsicHeight();
+    Drawable localDrawable = this.mDefaultFrame;
+    if (localDrawable != null) {
+      return localDrawable.getIntrinsicHeight();
     }
     return this.mFrameOptions.clipHeight;
   }
@@ -204,8 +236,9 @@ public class QzoneAnimationDrawable
     if (this.mCurrentFrame != null) {
       return this.mCurrentFrame.getIntrinsicWidth();
     }
-    if (this.mDefaultFrame != null) {
-      return this.mDefaultFrame.getIntrinsicWidth();
+    Drawable localDrawable = this.mDefaultFrame;
+    if (localDrawable != null) {
+      return localDrawable.getIntrinsicWidth();
     }
     return this.mFrameOptions.clipWidth;
   }
@@ -215,8 +248,9 @@ public class QzoneAnimationDrawable
     if (this.mCurrentFrame != null) {
       return this.mCurrentFrame.getMinimumHeight();
     }
-    if (this.mDefaultFrame != null) {
-      return this.mDefaultFrame.getMinimumHeight();
+    Drawable localDrawable = this.mDefaultFrame;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumHeight();
     }
     return this.mFrameOptions.clipHeight;
   }
@@ -226,8 +260,9 @@ public class QzoneAnimationDrawable
     if (this.mCurrentFrame != null) {
       return this.mCurrentFrame.getMinimumWidth();
     }
-    if (this.mDefaultFrame != null) {
-      return this.mDefaultFrame.getMinimumWidth();
+    Drawable localDrawable = this.mDefaultFrame;
+    if (localDrawable != null) {
+      return localDrawable.getMinimumWidth();
     }
     return this.mFrameOptions.clipWidth;
   }
@@ -269,18 +304,19 @@ public class QzoneAnimationDrawable
   public boolean setVisible(boolean paramBoolean1, boolean paramBoolean2)
   {
     boolean bool = super.setVisible(paramBoolean1, paramBoolean2);
-    if (paramBoolean1) {
-      if (paramBoolean2) {
-        reset();
-      }
-    }
-    while (!bool)
+    if (paramBoolean1)
     {
-      return bool;
+      if (paramBoolean2)
+      {
+        reset();
+        return bool;
+      }
       start();
       return bool;
     }
-    stop();
+    if (bool) {
+      stop();
+    }
     return bool;
   }
   
@@ -294,7 +330,8 @@ public class QzoneAnimationDrawable
     if (this.mNextFrame == null) {
       loadNextFrame();
     }
-    if ((this.mScheduledFuture != null) && (!this.mScheduledFuture.isDone())) {
+    ScheduledFuture localScheduledFuture = this.mScheduledFuture;
+    if ((localScheduledFuture != null) && (!localScheduledFuture.isDone())) {
       this.mScheduledFuture.cancel(true);
     }
     this.mScheduledFuture = this.mExecutor.schedule(this.mFrameSwitcher, this.mImageKey.options.photoDelayTimeInMs, TimeUnit.MILLISECONDS);
@@ -307,7 +344,7 @@ public class QzoneAnimationDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.photogif.QzoneAnimationDrawable
  * JD-Core Version:    0.7.0.1
  */

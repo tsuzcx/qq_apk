@@ -2,7 +2,6 @@ package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.KeyEvent;
 import android.view.LayoutInflater;
@@ -10,6 +9,7 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewParent;
 import android.widget.RelativeLayout;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
@@ -47,50 +47,43 @@ public class SystemEmoticonPanel
   public SystemEmoticonPanel(Context paramContext, EmoticonCallback paramEmoticonCallback, boolean paramBoolean)
   {
     super(paramContext);
-    if (Build.VERSION.SDK_INT < 24) {}
-    try
-    {
-      Field localField = Class.forName("android.view.LayoutInflater").getDeclaredField("sConstructorMap");
-      localField.setAccessible(true);
-      ((HashMap)localField.get(LayoutInflater.from(paramContext))).remove("android.support.v4.view.ViewPager");
-      this.root = LayoutInflater.from(paramContext).inflate(getLayoutId(), this);
-      this.mIsHighDifinition = paramBoolean;
-      initUI(paramContext, paramEmoticonCallback);
-      return;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
+    if (Build.VERSION.SDK_INT < 24) {
+      try
+      {
+        Field localField = Class.forName("android.view.LayoutInflater").getDeclaredField("sConstructorMap");
+        localField.setAccessible(true);
+        ((HashMap)localField.get(LayoutInflater.from(paramContext))).remove("androidx.viewpager.widget.ViewPager");
+      }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        QLog.e("SystemEmoticonPanel", 2, "init SystemEmoticonPanel error.", localIllegalAccessException);
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
+        QLog.e("SystemEmoticonPanel", 2, "init SystemEmoticonPanel error.", localNoSuchFieldException);
+      }
+      catch (ClassNotFoundException localClassNotFoundException)
       {
         QLog.e("SystemEmoticonPanel", 2, "init SystemEmoticonPanel error.", localClassNotFoundException);
       }
     }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
-      {
-        QLog.e("SystemEmoticonPanel", 2, "init SystemEmoticonPanel error.", localNoSuchFieldException);
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        QLog.e("SystemEmoticonPanel", 2, "init SystemEmoticonPanel error.", localIllegalAccessException);
-      }
-    }
+    this.root = LayoutInflater.from(paramContext).inflate(getLayoutId(), this);
+    this.mIsHighDifinition = paramBoolean;
+    initUI(paramContext, paramEmoticonCallback);
   }
   
   public void destory()
   {
-    if (this.pageAdapter != null) {
-      this.pageAdapter.destroy();
+    EmoticonPagerAdapter localEmoticonPagerAdapter = this.pageAdapter;
+    if (localEmoticonPagerAdapter != null) {
+      localEmoticonPagerAdapter.destroy();
     }
   }
   
   public boolean dispatchKeyEvent(KeyEvent paramKeyEvent)
   {
-    if ((this.mDispatchKeyEventListener != null) && (this.mDispatchKeyEventListener.dispatchKeyEvent(paramKeyEvent))) {
+    SystemEmoticonPanel.DispatchKeyEventListener localDispatchKeyEventListener = this.mDispatchKeyEventListener;
+    if ((localDispatchKeyEventListener != null) && (localDispatchKeyEventListener.dispatchKeyEvent(paramKeyEvent))) {
       return true;
     }
     return super.dispatchKeyEvent(paramKeyEvent);
@@ -98,13 +91,13 @@ public class SystemEmoticonPanel
   
   protected int getLayoutId()
   {
-    return 2131563075;
+    return 2131562900;
   }
   
   protected void initUI(Context paramContext, EmoticonCallback paramEmoticonCallback)
   {
-    this.pageRadioGroup = ((EmoticonPagerRadioGroup)this.root.findViewById(2131376453));
-    this.viewPager = ((ViewPager)this.root.findViewById(2131381588));
+    this.pageRadioGroup = ((EmoticonPagerRadioGroup)this.root.findViewById(2131375962));
+    this.viewPager = ((ViewPager)this.root.findViewById(2131380822));
     this.pageRadioGroup.setViewPager(this.viewPager);
     this.pageAdapter = new EmoticonPagerAdapter();
     ArrayList localArrayList = new ArrayList(1);
@@ -119,24 +112,28 @@ public class SystemEmoticonPanel
   {
     for (;;)
     {
+      int i;
       try
       {
         i = paramMotionEvent.getAction() & 0xFF;
         if (i != 0) {
-          continue;
+          break label55;
         }
         getParent().requestDisallowInterceptTouchEvent(true);
       }
       catch (Exception localException)
       {
-        int i;
         QLog.e("SystemEmoticonPanel", 1, "onInterceptTouchEvent failed", localException);
-        continue;
       }
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      if ((i == 1) || (i == 3)) {
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
+      getParent().requestDisallowInterceptTouchEvent(false);
+      label55:
+      do
+      {
+        return super.onInterceptTouchEvent(paramMotionEvent);
+        if (i == 1) {
+          break;
+        }
+      } while (i != 3);
     }
   }
   
@@ -152,7 +149,7 @@ public class SystemEmoticonPanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemEmoticonPanel
  * JD-Core Version:    0.7.0.1
  */

@@ -32,15 +32,15 @@ public class ModelInfo
   
   public ModelInfo(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2, int paramInt)
   {
-    if ((!paramString1.endsWith(File.separator)) && (!paramString1.equals(""))) {}
-    for (this.assetsDir = FileUtils.genSeperateFileDir(paramString1);; this.assetsDir = paramString1)
-    {
-      this.fileName = paramString2;
-      this.mustUseSDCardPath = paramBoolean1;
-      this.fileSizeBytes = paramInt;
-      this.isEncrypted = paramBoolean2;
-      return;
+    if ((!paramString1.endsWith(File.separator)) && (!paramString1.equals(""))) {
+      this.assetsDir = FileUtils.genSeperateFileDir(paramString1);
+    } else {
+      this.assetsDir = paramString1;
     }
+    this.fileName = paramString2;
+    this.mustUseSDCardPath = paramBoolean1;
+    this.fileSizeBytes = paramInt;
+    this.isEncrypted = paramBoolean2;
   }
   
   public String getAssetsDir()
@@ -50,12 +50,19 @@ public class ModelInfo
   
   public String getFullAssetsPathNoPrefix()
   {
-    return (getAssetsDir() + this.fileName).replace("assets://", "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getAssetsDir());
+    localStringBuilder.append(this.fileName);
+    return localStringBuilder.toString().replace("assets://", "");
   }
   
   public String getFullAssetsPathWithPrefix()
   {
-    return "assets://" + getAssetsDir() + this.fileName;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("assets://");
+    localStringBuilder.append(getAssetsDir());
+    localStringBuilder.append(this.fileName);
+    return localStringBuilder.toString();
   }
   
   public boolean isEncrypted()
@@ -70,7 +77,7 @@ public class ModelInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.ModelInfo
  * JD-Core Version:    0.7.0.1
  */

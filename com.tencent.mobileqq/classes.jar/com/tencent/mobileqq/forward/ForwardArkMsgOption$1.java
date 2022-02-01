@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.forward;
 
 import android.app.Activity;
-import com.tencent.mobileqq.ark.API.ArkAppModuleReg.CheckShareUrlResult;
+import com.tencent.mobileqq.ark.secure.CheckShareUrlResult;
 
 class ForwardArkMsgOption$1
-  implements ArkAppModuleReg.CheckShareUrlResult
+  implements CheckShareUrlResult
 {
   ForwardArkMsgOption$1(ForwardArkMsgOption paramForwardArkMsgOption) {}
   
@@ -17,7 +17,7 @@ class ForwardArkMsgOption$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardArkMsgOption.1
  * JD-Core Version:    0.7.0.1
  */

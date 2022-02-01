@@ -9,11 +9,12 @@ import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.config.QConfigManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.honor.config.TroopHonor;
 import com.tencent.mobileqq.troop.honor.config.TroopHonorConfig;
 import com.tencent.mobileqq.troop.honor.util.TroopHonorUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
+import com.tencent.mobileqq.vas.apng.api.IVasApngFactory;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Collections;
 import java.util.List;
@@ -45,10 +46,11 @@ public class TroopHonorView
   
   public int a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return 0;
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (localList.size() != 0)) {
+      return this.jdField_a_of_type_JavaUtilList.size() * jdField_a_of_type_Int + (this.jdField_a_of_type_JavaUtilList.size() - 1) * c + getPaddingLeft() + getPaddingRight();
     }
-    return this.jdField_a_of_type_JavaUtilList.size() * jdField_a_of_type_Int + (this.jdField_a_of_type_JavaUtilList.size() - 1) * c + getPaddingLeft() + getPaddingRight();
+    return 0;
   }
   
   public String a()
@@ -58,44 +60,42 @@ public class TroopHonorView
   
   public void setHonorList(List<TroopHonor> paramList)
   {
-    if (this.jdField_a_of_type_JavaLangString.equals(TroopHonorUtils.b(paramList))) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_JavaLangString.equals(TroopHonorUtils.b(paramList))) {
       return;
-      if (paramList != null) {
-        Collections.sort(paramList);
-      }
-      this.jdField_a_of_type_JavaUtilList = paramList;
-      this.jdField_a_of_type_JavaLangString = TroopHonorUtils.b(this.jdField_a_of_type_JavaUtilList);
-      removeAllViews();
-      if ((paramList != null) && (paramList.size() > 0))
+    }
+    if (paramList != null) {
+      Collections.sort(paramList);
+    }
+    this.jdField_a_of_type_JavaUtilList = paramList;
+    this.jdField_a_of_type_JavaLangString = TroopHonorUtils.b(this.jdField_a_of_type_JavaUtilList);
+    removeAllViews();
+    if ((paramList != null) && (paramList.size() > 0))
+    {
+      int i = 0;
+      int k;
+      for (int j = 0; i < paramList.size(); j = k)
       {
-        int i = 0;
-        int k;
-        for (int j = 0; i < paramList.size(); j = k)
+        TroopHonor localTroopHonor = (TroopHonor)paramList.get(i);
+        k = j;
+        if (!TextUtils.isEmpty(localTroopHonor.b))
         {
-          TroopHonor localTroopHonor = (TroopHonor)paramList.get(i);
+          URLDrawable localURLDrawable = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(localTroopHonor.b);
           k = j;
-          if (!TextUtils.isEmpty(localTroopHonor.b))
+          if (localURLDrawable != null)
           {
-            URLDrawable localURLDrawable = VasApngFactory.a(localTroopHonor.b);
-            k = j;
-            if (localURLDrawable != null)
-            {
-              LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(jdField_a_of_type_Int, b);
-              ImageView localImageView = new ImageView(getContext());
-              localURLDrawable.setURLDrawableListener(new TroopHonorView.WeakViewDownloadListener(localImageView));
-              localImageView.setImageDrawable(localURLDrawable);
-              localImageView.setContentDescription(localTroopHonor.jdField_a_of_type_JavaLangString);
-              if (j != 0) {
-                localLayoutParams.leftMargin = c;
-              }
-              addView(localImageView, localLayoutParams);
-              k = j + 1;
+            LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(jdField_a_of_type_Int, b);
+            ImageView localImageView = new ImageView(getContext());
+            localURLDrawable.setURLDrawableListener(new TroopHonorView.WeakViewDownloadListener(localImageView));
+            localImageView.setImageDrawable(localURLDrawable);
+            localImageView.setContentDescription(localTroopHonor.jdField_a_of_type_JavaLangString);
+            if (j != 0) {
+              localLayoutParams.leftMargin = c;
             }
+            addView(localImageView, localLayoutParams);
+            k = j + 1;
           }
-          i += 1;
         }
+        i += 1;
       }
     }
   }
@@ -105,7 +105,10 @@ public class TroopHonorView
     if (paramList == null) {
       return;
     }
-    int i = (int)((paramFloat - getPaddingLeft() - getPaddingRight() + c) / (jdField_a_of_type_Int + c));
+    float f1 = getPaddingLeft();
+    float f2 = getPaddingRight();
+    int i = c;
+    i = (int)((paramFloat - f1 - f2 + i) / (jdField_a_of_type_Int + i));
     Collections.sort(paramList);
     setHonorList(paramList.subList(0, Math.min(i, paramList.size())));
   }
@@ -115,32 +118,32 @@ public class TroopHonorView
     if (paramList == null) {
       return;
     }
-    TroopHonorConfig localTroopHonorConfig;
-    if ((paramInt == 1) || (paramInt == 2))
+    if ((paramInt != 1) && (paramInt != 2))
     {
-      localTroopHonorConfig = (TroopHonorConfig)QConfigManager.a().a(544);
-      if (localTroopHonorConfig == null) {
-        break label114;
-      }
-    }
-    label114:
-    for (paramInt = localTroopHonorConfig.jdField_a_of_type_Int;; paramInt = 3)
-    {
-      Collections.sort(paramList);
-      setHonorList(paramList.subList(0, Math.min(paramInt, paramList.size())));
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("TroopHonorView", 2, "maxNumberOfAIOIcon = " + paramInt + ",honorList.size = " + paramList.size());
-      return;
       setHonorList(paramList);
       return;
+    }
+    paramInt = 3;
+    Object localObject = (TroopHonorConfig)QConfigManager.a().a(544);
+    if (localObject != null) {
+      paramInt = ((TroopHonorConfig)localObject).jdField_a_of_type_Int;
+    }
+    Collections.sort(paramList);
+    setHonorList(paramList.subList(0, Math.min(paramInt, paramList.size())));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("maxNumberOfAIOIcon = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",honorList.size = ");
+      ((StringBuilder)localObject).append(paramList.size());
+      QLog.d("TroopHonorView", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.widget.TroopHonorView
  * JD-Core Version:    0.7.0.1
  */

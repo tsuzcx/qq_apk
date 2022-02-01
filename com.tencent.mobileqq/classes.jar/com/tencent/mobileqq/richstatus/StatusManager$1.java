@@ -26,94 +26,93 @@ class StatusManager$1
   private void a(long paramLong)
   {
     long l = StatusManager.a(this.a).getLong("k_icon", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask clearIcons " + l + ", " + paramLong + ", " + 104L);
-    }
     Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mUpdateLocalTask clearIcons ");
+      ((StringBuilder)localObject).append(l);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(104L);
+      QLog.d("Q.richstatus.xml", 2, ((StringBuilder)localObject).toString());
+    }
     if (l < paramLong)
     {
       localObject = null;
-      if (paramLong <= 104L) {
-        break label180;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        InputStream localInputStream = StatusManager.a(this.a).getApp().getAssets().open("rich_status.xml");
-        localObject = localInputStream;
-      }
-      catch (Exception localException)
-      {
-        localException.printStackTrace();
-        continue;
+      if (paramLong > 104L) {
+        try
+        {
+          InputStream localInputStream = StatusManager.a(this.a).getApp().getAssets().open("rich_status.xml");
+          localObject = localInputStream;
+        }
+        catch (Exception localException)
+        {
+          localException.printStackTrace();
+        }
+      } else {
+        try
+        {
+          FileInputStream localFileInputStream = new FileInputStream(new File(StatusManager.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
+          localObject = localFileInputStream;
+        }
+        catch (FileNotFoundException localFileNotFoundException)
+        {
+          localFileNotFoundException.printStackTrace();
+        }
       }
       localObject = (SparseArray)StatusManager.a(this.a, localObject)[0];
-      if (StatusManager.a(this.a, (SparseArray)localObject, StatusManager.a(this.a))) {
+      StatusManager localStatusManager = this.a;
+      if (StatusManager.a(localStatusManager, (SparseArray)localObject, StatusManager.a(localStatusManager))) {
         StatusManager.a(this.a).edit().putLong("k_icon", paramLong).commit();
-      }
-      return;
-      try
-      {
-        label180:
-        FileInputStream localFileInputStream = new FileInputStream(new File(StatusManager.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
-        localObject = localFileInputStream;
-      }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        localFileNotFoundException.printStackTrace();
       }
     }
   }
   
   protected Integer a(Void... paramVarArgs)
   {
-    long l = StatusManager.a(this.a).getLong("k_version", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "updateActions_Local with file " + l + ", " + 104L);
-    }
-    if (l > 104L) {}
-    ArrayList localArrayList;
-    label221:
-    for (;;)
+    long l2 = StatusManager.a(this.a).getLong("k_version", 0L);
+    if (QLog.isColorLevel())
     {
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("updateActions_Local with file ");
+      paramVarArgs.append(l2);
+      paramVarArgs.append(", ");
+      paramVarArgs.append(104L);
+      QLog.d("Q.richstatus.xml", 2, paramVarArgs.toString());
+    }
+    if (l2 > 104L) {
       try
       {
         paramVarArgs = new FileInputStream(new File(StatusManager.a(this.a).getApp().getFilesDir(), "rich_status.xml"));
-        if (paramVarArgs != null) {
-          break label221;
-        }
-        Object localObject;
-        paramVarArgs = null;
       }
       catch (FileNotFoundException paramVarArgs)
       {
-        try
-        {
-          localObject = StatusManager.a(this.a).getApp().getAssets().open("rich_status.xml");
-          paramVarArgs = (Void[])localObject;
-          l = 104L;
-          localObject = StatusManager.a(this.a, paramVarArgs);
-          paramVarArgs = (SparseArray)localObject[0];
-          localArrayList = (ArrayList)localObject[1];
-          if ((paramVarArgs != null) && (paramVarArgs.size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
-            break;
-          }
-          publishProgress(new Integer[] { Integer.valueOf(-1) });
-          a(l);
-          return Integer.valueOf(100);
-        }
-        catch (IOException localIOException)
-        {
-          localIOException.printStackTrace();
-        }
-        paramVarArgs = paramVarArgs;
         paramVarArgs.printStackTrace();
       }
+    } else {
+      paramVarArgs = null;
     }
-    for (;;)
-    {
+    long l1 = l2;
+    Object localObject1 = paramVarArgs;
+    if (paramVarArgs == null) {
+      try
+      {
+        localObject1 = StatusManager.a(this.a).getApp().getAssets().open("rich_status.xml");
+        l1 = 104L;
+      }
+      catch (IOException localIOException)
+      {
+        localIOException.printStackTrace();
+        ??? = paramVarArgs;
+        l1 = l2;
+      }
+    }
+    ??? = StatusManager.a(this.a, (InputStream)???);
+    paramVarArgs = (SparseArray)???[0];
+    ArrayList localArrayList = (ArrayList)???[1];
+    if ((paramVarArgs != null) && (paramVarArgs.size() != 0) && (localArrayList != null) && (localArrayList.size() != 0)) {
       synchronized (StatusManager.a(this.a))
       {
         if ((!isCancelled()) && (StatusManager.a(this.a).size() == 0))
@@ -123,15 +122,25 @@ class StatusManager$1
           StatusManager.a(this.a).addAll(localArrayList);
           publishProgress(new Integer[] { Integer.valueOf(102) });
         }
+        else
+        {
+          cancel(true);
+        }
       }
-      cancel(true);
     }
+    publishProgress(new Integer[] { Integer.valueOf(-1) });
+    a(l1);
+    return Integer.valueOf(100);
   }
   
   protected void a(Integer paramInteger)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onPostExecute " + paramInteger);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mUpdateLocalTask onPostExecute ");
+      localStringBuilder.append(paramInteger);
+      QLog.d("Q.richstatus.xml", 2, localStringBuilder.toString());
     }
     StatusManager.a(this.a, null);
     if (101 == StatusManager.a(this.a, false)) {
@@ -143,8 +152,12 @@ class StatusManager$1
   protected void a(Integer... paramVarArgs)
   {
     int i = paramVarArgs[0].intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.richstatus.xml", 2, "mUpdateLocalTask onProgressUpdate " + i);
+    if (QLog.isColorLevel())
+    {
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("mUpdateLocalTask onProgressUpdate ");
+      paramVarArgs.append(i);
+      QLog.d("Q.richstatus.xml", 2, paramVarArgs.toString());
     }
     if (StatusManager.a(this.a) != null)
     {
@@ -166,7 +179,7 @@ class StatusManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.StatusManager.1
  * JD-Core Version:    0.7.0.1
  */

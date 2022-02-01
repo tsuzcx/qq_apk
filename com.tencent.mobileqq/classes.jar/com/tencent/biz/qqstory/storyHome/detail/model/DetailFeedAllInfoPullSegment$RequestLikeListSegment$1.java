@@ -21,15 +21,14 @@ class DetailFeedAllInfoPullSegment$RequestLikeListSegment$1
       SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "feed like info pull segment cancel on net respond");
       return;
     }
-    if ((paramGetLikeListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetLikeListResponse != null) && (!paramErrorMessage.isFail()))
     {
-      SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
-      DetailFeedAllInfoPullSegment.RequestLikeListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestLikeListSegment, paramErrorMessage);
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestLikeListSegment.a == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
+      boolean bool;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestLikeListSegment.a == 0) {
+        bool = false;
+      } else {
+        bool = true;
+      }
       ((LikeManager)SuperManager.a(15)).a(paramGetLikeListResponse.a, this.jdField_a_of_type_JavaLangString, bool, true);
       paramGetLikeListRequest = new DetailFeedAllInfoPullSegment.LikeData(bool, paramGetLikeListResponse.a, paramGetLikeListResponse.b, paramGetLikeListResponse.c);
       try
@@ -44,11 +43,13 @@ class DetailFeedAllInfoPullSegment$RequestLikeListSegment$1
         return;
       }
     }
+    SLog.d("Q.qqstory.detail:DetailFeedAllInfoPullSegment", "request fail for like request");
+    DetailFeedAllInfoPullSegment.RequestLikeListSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedAllInfoPullSegment$RequestLikeListSegment, paramErrorMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailFeedAllInfoPullSegment.RequestLikeListSegment.1
  * JD-Core Version:    0.7.0.1
  */

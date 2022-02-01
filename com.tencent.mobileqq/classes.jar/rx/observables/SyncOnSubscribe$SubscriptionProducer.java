@@ -82,47 +82,48 @@ class SyncOnSubscribe$SubscriptionProducer<S, T>
   {
     SyncOnSubscribe localSyncOnSubscribe = this.parent;
     Subscriber localSubscriber = this.actualSubscriber;
-    long l1;
-    do
+    for (;;)
     {
-      l1 = paramLong;
-      long l2;
-      do
+      long l1 = paramLong;
+      try
       {
-        try
+        long l2;
+        do
         {
           this.onNextCalled = false;
           nextIteration(localSyncOnSubscribe);
           if (tryUnsubscribe()) {
             return;
           }
-        }
-        catch (Throwable localThrowable)
+          l2 = l1;
+          if (this.onNextCalled) {
+            l2 = l1 - 1L;
+          }
+          l1 = l2;
+        } while (l2 != 0L);
+        l1 = addAndGet(-paramLong);
+        paramLong = l1;
+        if (l1 <= 0L)
         {
-          handleThrownError(localSubscriber, localThrowable);
+          tryUnsubscribe();
           return;
         }
-        l2 = l1;
-        if (this.onNextCalled) {
-          l2 = l1 - 1L;
-        }
-        l1 = l2;
-      } while (l2 != 0L);
-      l1 = addAndGet(-paramLong);
-      paramLong = l1;
-    } while (l1 > 0L);
-    tryUnsubscribe();
+      }
+      catch (Throwable localThrowable)
+      {
+        handleThrownError(localSubscriber, localThrowable);
+      }
+    }
   }
   
   private boolean tryUnsubscribe()
   {
-    if ((this.hasTerminated) || (get() < -1L))
-    {
-      set(-1L);
-      doUnsubscribe();
-      return true;
+    if ((!this.hasTerminated) && (get() >= -1L)) {
+      return false;
     }
-    return false;
+    set(-1L);
+    doUnsubscribe();
+    return true;
   }
   
   public boolean isUnsubscribed()
@@ -132,47 +133,52 @@ class SyncOnSubscribe$SubscriptionProducer<S, T>
   
   public void onCompleted()
   {
-    if (this.hasTerminated) {
-      throw new IllegalStateException("Terminal event already emitted.");
+    if (!this.hasTerminated)
+    {
+      this.hasTerminated = true;
+      if (!this.actualSubscriber.isUnsubscribed()) {
+        this.actualSubscriber.onCompleted();
+      }
+      return;
     }
-    this.hasTerminated = true;
-    if (!this.actualSubscriber.isUnsubscribed()) {
-      this.actualSubscriber.onCompleted();
-    }
+    throw new IllegalStateException("Terminal event already emitted.");
   }
   
   public void onError(Throwable paramThrowable)
   {
-    if (this.hasTerminated) {
-      throw new IllegalStateException("Terminal event already emitted.");
+    if (!this.hasTerminated)
+    {
+      this.hasTerminated = true;
+      if (!this.actualSubscriber.isUnsubscribed()) {
+        this.actualSubscriber.onError(paramThrowable);
+      }
+      return;
     }
-    this.hasTerminated = true;
-    if (!this.actualSubscriber.isUnsubscribed()) {
-      this.actualSubscriber.onError(paramThrowable);
-    }
+    throw new IllegalStateException("Terminal event already emitted.");
   }
   
   public void onNext(T paramT)
   {
-    if (this.onNextCalled) {
-      throw new IllegalStateException("onNext called multiple times!");
+    if (!this.onNextCalled)
+    {
+      this.onNextCalled = true;
+      this.actualSubscriber.onNext(paramT);
+      return;
     }
-    this.onNextCalled = true;
-    this.actualSubscriber.onNext(paramT);
+    throw new IllegalStateException("onNext called multiple times!");
   }
   
   public void request(long paramLong)
   {
     if ((paramLong > 0L) && (BackpressureUtils.getAndAddRequest(this, paramLong) == 0L))
     {
-      if (paramLong == 9223372036854775807L) {
+      if (paramLong == 9223372036854775807L)
+      {
         fastpath();
+        return;
       }
+      slowPath(paramLong);
     }
-    else {
-      return;
-    }
-    slowPath(paramLong);
   }
   
   public void unsubscribe()
@@ -191,7 +197,7 @@ class SyncOnSubscribe$SubscriptionProducer<S, T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.observables.SyncOnSubscribe.SubscriptionProducer
  * JD-Core Version:    0.7.0.1
  */

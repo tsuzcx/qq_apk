@@ -12,18 +12,20 @@ public class KSAppChannel$IdToIdCallbackImpl
   
   public void onError(int paramInt, String paramString)
   {
-    if (this.mCallback != null)
+    AVAppChannel.IdToIdCallback localIdToIdCallback = this.mCallback;
+    if (localIdToIdCallback != null)
     {
-      this.mCallback.onError(paramInt, paramString);
+      localIdToIdCallback.onError(paramInt, paramString);
       this.mCallback = null;
     }
   }
   
   public void onSuccess(String[] paramArrayOfString, long[] paramArrayOfLong)
   {
-    if (this.mCallback != null)
+    AVAppChannel.IdToIdCallback localIdToIdCallback = this.mCallback;
+    if (localIdToIdCallback != null)
     {
-      this.mCallback.onSuccess(paramArrayOfString, paramArrayOfLong);
+      localIdToIdCallback.onSuccess(paramArrayOfString, paramArrayOfLong);
       this.mCallback = null;
     }
   }

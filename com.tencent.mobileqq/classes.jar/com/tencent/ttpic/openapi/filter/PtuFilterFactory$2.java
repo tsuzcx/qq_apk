@@ -12,14 +12,15 @@ final class PtuFilterFactory$2
   {
     FilterEngineFactory.getInstance().usecurruntContext();
     PtuFilterFactory.renderBitmapByFilterID(this.val$src, this.val$filterId, this.val$effectIndex, this.val$adjustParam);
-    if (this.val$run != null) {
-      this.val$run.run();
+    Runnable localRunnable = this.val$run;
+    if (localRunnable != null) {
+      localRunnable.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.PtuFilterFactory.2
  * JD-Core Version:    0.7.0.1
  */

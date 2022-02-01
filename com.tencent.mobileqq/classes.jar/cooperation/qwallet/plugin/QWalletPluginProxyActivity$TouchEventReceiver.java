@@ -20,32 +20,32 @@ public class QWalletPluginProxyActivity$TouchEventReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = (QWalletPluginProxyActivity)this.activityWeakReference.get();
-    if ((paramContext == null) || (paramIntent == null) || (paramContext.isFinishing()) || (paramContext.mIsStop)) {}
-    do
+    if ((paramContext != null) && (paramIntent != null) && (!paramContext.isFinishing()))
     {
-      String str;
-      do
-      {
-        do
-        {
-          return;
-          str = paramIntent.getAction();
-          if (!"action_touch_event".equals(str)) {
-            break;
-          }
-          paramIntent = (MotionEvent)paramIntent.getParcelableExtra("extra_key_event");
-        } while (paramIntent == null);
-        paramContext.dispatchTouchEvent(paramIntent);
+      if (paramContext.mIsStop) {
         return;
-      } while (!"action_key_event".equals(str));
-      paramIntent = (KeyEvent)paramIntent.getParcelableExtra("extra_key_event");
-    } while (paramIntent == null);
-    paramContext.dispatchKeyEvent(paramIntent);
+      }
+      String str = paramIntent.getAction();
+      if ("action_touch_event".equals(str))
+      {
+        paramIntent = (MotionEvent)paramIntent.getParcelableExtra("extra_key_event");
+        if (paramIntent != null) {
+          paramContext.dispatchTouchEvent(paramIntent);
+        }
+      }
+      else if ("action_key_event".equals(str))
+      {
+        paramIntent = (KeyEvent)paramIntent.getParcelableExtra("extra_key_event");
+        if (paramIntent != null) {
+          paramContext.dispatchKeyEvent(paramIntent);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qwallet.plugin.QWalletPluginProxyActivity.TouchEventReceiver
  * JD-Core Version:    0.7.0.1
  */

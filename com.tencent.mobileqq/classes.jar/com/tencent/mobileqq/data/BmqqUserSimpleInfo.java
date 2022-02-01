@@ -27,16 +27,18 @@ public class BmqqUserSimpleInfo
   {
     try
     {
-      localObject = super.clone();
+      Object localObject = super.clone();
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        Object localObject = this;
-      } while (!QLog.isColorLevel());
-      QLog.d("BmqqUserSimpleInfo", 2, "BmqqUser clone failed." + localCloneNotSupportedException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("BmqqUser clone failed.");
+        localStringBuilder.append(localCloneNotSupportedException.toString());
+        QLog.d("BmqqUserSimpleInfo", 2, localStringBuilder.toString());
+      }
     }
     return this;
   }
@@ -71,37 +73,43 @@ public class BmqqUserSimpleInfo
     if (!(paramObject instanceof BmqqUserSimpleInfo)) {
       return false;
     }
-    if (!((BmqqUserSimpleInfo)paramObject).mBmqqUin.equals(this.mBmqqUin)) {
+    paramObject = (BmqqUserSimpleInfo)paramObject;
+    if (!paramObject.mBmqqUin.equals(this.mBmqqUin)) {
       return false;
     }
-    if (((((BmqqUserSimpleInfo)paramObject).mBmqqMasterUin == null) && (this.mBmqqMasterUin != null)) || ((((BmqqUserSimpleInfo)paramObject).mBmqqMasterUin != null) && (this.mBmqqMasterUin == null))) {
+    if (((paramObject.mBmqqMasterUin == null) && (this.mBmqqMasterUin != null)) || ((paramObject.mBmqqMasterUin != null) && (this.mBmqqMasterUin == null))) {
       return false;
     }
-    if ((((BmqqUserSimpleInfo)paramObject).mBmqqMasterUin != null) && (this.mBmqqMasterUin != null) && (!((BmqqUserSimpleInfo)paramObject).mBmqqMasterUin.equals(this.mBmqqMasterUin))) {
+    String str1 = paramObject.mBmqqMasterUin;
+    if (str1 != null)
+    {
+      String str2 = this.mBmqqMasterUin;
+      if ((str2 != null) && (!str1.equals(str2))) {
+        return false;
+      }
+    }
+    if (!paramObject.mBmqqNickName.equals(this.mBmqqNickName)) {
       return false;
     }
-    if (!((BmqqUserSimpleInfo)paramObject).mBmqqNickName.equals(this.mBmqqNickName)) {
+    if (!paramObject.mBmqqRemarkName.equals(this.mBmqqRemarkName)) {
       return false;
     }
-    if (!((BmqqUserSimpleInfo)paramObject).mBmqqRemarkName.equals(this.mBmqqRemarkName)) {
+    if (!paramObject.mBmqqJobTitle.equals(this.mBmqqJobTitle)) {
       return false;
     }
-    if (!((BmqqUserSimpleInfo)paramObject).mBmqqJobTitle.equals(this.mBmqqJobTitle)) {
+    if (!paramObject.mBmqqMobileNum.equals(this.mBmqqMobileNum)) {
       return false;
     }
-    if (!((BmqqUserSimpleInfo)paramObject).mBmqqMobileNum.equals(this.mBmqqMobileNum)) {
+    if (!paramObject.mBmqqTelphone.equals(this.mBmqqTelphone)) {
       return false;
     }
-    if (!((BmqqUserSimpleInfo)paramObject).mBmqqTelphone.equals(this.mBmqqTelphone)) {
+    if (!paramObject.mBmqqEmail.equals(this.mBmqqEmail)) {
       return false;
     }
-    if (!((BmqqUserSimpleInfo)paramObject).mBmqqEmail.equals(this.mBmqqEmail)) {
+    if (!paramObject.mBmqqCompany.equals(this.mBmqqCompany)) {
       return false;
     }
-    if (!((BmqqUserSimpleInfo)paramObject).mBmqqCompany.equals(this.mBmqqCompany)) {
-      return false;
-    }
-    return ((BmqqUserSimpleInfo)paramObject).mFlag == this.mFlag;
+    return paramObject.mFlag == this.mFlag;
   }
   
   public boolean isCertified()
@@ -113,7 +121,7 @@ public class BmqqUserSimpleInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.BmqqUserSimpleInfo
  * JD-Core Version:    0.7.0.1
  */

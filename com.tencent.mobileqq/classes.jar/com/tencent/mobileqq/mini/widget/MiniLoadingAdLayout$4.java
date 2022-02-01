@@ -13,26 +13,32 @@ class MiniLoadingAdLayout$4
   {
     try
     {
-      HttpURLConnection localHttpURLConnection = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
-      localHttpURLConnection.setRequestMethod("GET");
-      localHttpURLConnection.setConnectTimeout(10000);
-      localHttpURLConnection.setReadTimeout(10000);
-      localHttpURLConnection.setUseCaches(false);
-      localHttpURLConnection.setInstanceFollowRedirects(true);
-      localHttpURLConnection.connect();
-      int i = localHttpURLConnection.getResponseCode();
-      QLog.i("MiniLoadingAdLayout", 1, "reportToGdt LoadingAd rspCode" + i);
+      Object localObject = (HttpURLConnection)new URL(this.val$reportUrl).openConnection();
+      ((HttpURLConnection)localObject).setRequestMethod("GET");
+      ((HttpURLConnection)localObject).setConnectTimeout(10000);
+      ((HttpURLConnection)localObject).setReadTimeout(10000);
+      ((HttpURLConnection)localObject).setUseCaches(false);
+      ((HttpURLConnection)localObject).setInstanceFollowRedirects(true);
+      ((HttpURLConnection)localObject).connect();
+      int i = ((HttpURLConnection)localObject).getResponseCode();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportToGdt LoadingAd rspCode");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("MiniLoadingAdLayout", 1, ((StringBuilder)localObject).toString());
       return;
     }
     catch (Throwable localThrowable)
     {
-      QLog.i("MiniLoadingAdLayout", 1, "reportToGdt LoadingAd error, url = " + this.val$reportUrl, localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportToGdt LoadingAd error, url = ");
+      localStringBuilder.append(this.val$reportUrl);
+      QLog.i("MiniLoadingAdLayout", 1, localStringBuilder.toString(), localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniLoadingAdLayout.4
  * JD-Core Version:    0.7.0.1
  */

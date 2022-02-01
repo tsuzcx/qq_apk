@@ -40,12 +40,12 @@ public class ReportDataConfigGroup
       while (localIterator.hasNext()) {
         localJSONArray.put(((ReportDataConfig)localIterator.next()).a());
       }
-      localJSONObject.put("configs", localJSONException);
+      localJSONObject.put("configs", localJSONArray);
+      return localJSONObject;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      return localJSONObject;
     }
     return localJSONObject;
   }
@@ -57,7 +57,7 @@ public class ReportDataConfigGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.datareportviewer.ReportDataConfigGroup
  * JD-Core Version:    0.7.0.1
  */

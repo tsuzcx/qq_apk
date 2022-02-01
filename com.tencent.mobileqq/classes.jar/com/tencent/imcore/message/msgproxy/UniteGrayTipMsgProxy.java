@@ -3,7 +3,7 @@ package com.tencent.imcore.message.msgproxy;
 import com.tencent.imcore.message.MsgPool;
 import com.tencent.mobileqq.app.proxy.BaseProxyManager;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.qroute.annotation.Metadata;
 import mqq.app.AppRuntime;
 
@@ -18,8 +18,12 @@ public class UniteGrayTipMsgProxy
   
   protected int a(MessageRecord paramMessageRecord)
   {
-    if (paramMessageRecord.extraflag == 32772) {}
-    for (paramMessageRecord = a(paramMessageRecord, false); paramMessageRecord == null; paramMessageRecord = a(paramMessageRecord, -2006)) {
+    if (paramMessageRecord.extraflag == 32772) {
+      paramMessageRecord = a(paramMessageRecord, false);
+    } else {
+      paramMessageRecord = a(paramMessageRecord, -2006);
+    }
+    if (paramMessageRecord == null) {
       return -1;
     }
     if (paramMessageRecord.isread) {
@@ -30,7 +34,7 @@ public class UniteGrayTipMsgProxy
   
   public int a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    if (UniteGrayTipUtil.a(paramMessageRecord)) {
+    if (UniteGrayTipMsgUtil.a(paramMessageRecord)) {
       return a(paramMessageRecord);
     }
     return super.a(paramMessageRecord, paramBoolean);
@@ -38,7 +42,7 @@ public class UniteGrayTipMsgProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.imcore.message.msgproxy.UniteGrayTipMsgProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -33,18 +33,20 @@ public final class GetMobilePhoneQqApkInfoRequest
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.apkId, 0);
-    if (this.pkgName != null) {
-      paramJceOutputStream.write(this.pkgName, 1);
+    String str = this.pkgName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.appId, 2);
-    if (this.downloadUrl != null) {
-      paramJceOutputStream.write(this.downloadUrl, 3);
+    str = this.downloadUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.replacemonitor.jce.GetMobilePhoneQqApkInfoRequest
  * JD-Core Version:    0.7.0.1
  */

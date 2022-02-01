@@ -71,11 +71,6 @@ public class AVReport
   public long y;
   public long z;
   
-  static
-  {
-    jdField_a_of_type_ComTencentAvReportAVReport = null;
-  }
-  
   private AVReport()
   {
     this.jdField_a_of_type_JavaLangString = "";
@@ -84,15 +79,16 @@ public class AVReport
   
   public static AVReport a()
   {
-    if (jdField_a_of_type_ComTencentAvReportAVReport == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvReportAVReport == null) {
-        jdField_a_of_type_ComTencentAvReportAVReport = new AVReport();
+    if (jdField_a_of_type_ComTencentAvReportAVReport == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvReportAVReport == null) {
+          jdField_a_of_type_ComTencentAvReportAVReport = new AVReport();
+        }
       }
-      return jdField_a_of_type_ComTencentAvReportAVReport;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvReportAVReport;
   }
   
   public void a()
@@ -170,18 +166,15 @@ public class AVReport
         this.jdField_h_of_type_Long = SystemClock.elapsedRealtime();
         this.jdField_i_of_type_Long = 0L;
         this.jdField_a_of_type_Long = paramIntent.getLongExtra("senderStartTime", 0L);
+        return;
       }
+      this.w = SystemClock.elapsedRealtime();
     }
-    else
-    {
-      return;
-    }
-    this.w = SystemClock.elapsedRealtime();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.AVReport
  * JD-Core Version:    0.7.0.1
  */

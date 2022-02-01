@@ -8,11 +8,10 @@ public class ProfileCommonUtils
 {
   public static <T extends AbsProfileCommonProcessor> T a(Class<? extends AbsProfileCommonProcessor> paramClass, AppRuntime paramAppRuntime)
   {
-    AbsProfileCommonProcessor localAbsProfileCommonProcessor = null;
     if (paramAppRuntime != null) {
-      localAbsProfileCommonProcessor = ((IProfileCommonService)paramAppRuntime.getRuntimeService(IProfileCommonService.class, "all")).getProcessor(paramClass);
+      return ((IProfileCommonService)paramAppRuntime.getRuntimeService(IProfileCommonService.class, "all")).getProcessor(paramClass);
     }
-    return localAbsProfileCommonProcessor;
+    return null;
   }
   
   public static void a(AppRuntime paramAppRuntime)
@@ -24,7 +23,7 @@ public class ProfileCommonUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecommon.utils.ProfileCommonUtils
  * JD-Core Version:    0.7.0.1
  */

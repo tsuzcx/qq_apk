@@ -20,9 +20,10 @@ public class LiveRoomBusinessPlugin
     this.mPluginNameSpace = "gflivesdk";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ("openView".equals(paramString3)) {
+    if ("openView".equals(paramString3))
+    {
       try
       {
         if (QLog.isColorLevel()) {
@@ -45,38 +46,44 @@ public class LiveRoomBusinessPlugin
       }
       catch (JSONException paramJsBridgeListener)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
+        if (!QLog.isColorLevel()) {
+          break label257;
         }
       }
-    }
-    for (;;)
-    {
+      QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
       return false;
-      if ("checkSDKInstalled".equals(paramString3))
+    }
+    else if ("checkSDKInstalled".equals(paramString3))
+    {
+      try
       {
-        try
+        paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
+        if ((LiveRoomHelper.getPluginInstalledInTool()) && (!TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool())))
         {
-          paramJsBridgeListener = new JSONObject(paramVarArgs[0]).optString("callback");
-          if ((!LiveRoomHelper.getPluginInstalledInTool()) || (TextUtils.isEmpty(LiveRoomHelper.getPluginVersionInTool()))) {
-            break;
-          }
-          callJs(paramJsBridgeListener, new String[] { "{\"result\":0,\"version\":\"" + LiveRoomHelper.getPluginVersionInTool() + "\"}" });
+          paramString1 = new StringBuilder();
+          paramString1.append("{\"result\":0,\"version\":\"");
+          paramString1.append(LiveRoomHelper.getPluginVersionInTool());
+          paramString1.append("\"}");
+          callJs(paramJsBridgeListener, new String[] { paramString1.toString() });
           return true;
         }
-        catch (JSONException paramJsBridgeListener) {}
+        PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new LiveRoomBusinessPlugin.1(this, paramJsBridgeListener));
+        return true;
+      }
+      catch (JSONException paramJsBridgeListener)
+      {
         if (QLog.isColorLevel()) {
           QLog.d("LiveRoomBusinessPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
         }
       }
     }
-    PluginManagerHelper.getPluginInterface(BaseApplicationImpl.getContext(), new LiveRoomBusinessPlugin.1(this, paramJsBridgeListener));
-    return true;
+    label257:
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.LiveRoomBusinessPlugin
  * JD-Core Version:    0.7.0.1
  */

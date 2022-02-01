@@ -19,7 +19,6 @@ import android.graphics.Shader.TileMode;
 import android.graphics.drawable.Drawable;
 import android.os.Build.VERSION;
 import android.text.Spanned;
-import android.text.TextPaint;
 import android.text.TextUtils;
 import android.text.style.CharacterStyle;
 import android.text.style.ClickableSpan;
@@ -29,12 +28,12 @@ import android.util.SparseIntArray;
 import android.view.View.MeasureSpec;
 import com.etrump.mixlayout.ETFont;
 import com.etrump.mixlayout.ETLayout;
-import com.etrump.mixlayout.ETTextView;
 import com.etrump.mixlayout.FontReportUtils;
 import com.etrump.mixlayout.TextGraphMap;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.richstatus.SignatureActionSpan;
 import com.tencent.mobileqq.text.style.EmoticonSpan;
+import com.tencent.mobileqq.vas.font.api.IETextView;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -44,14 +43,14 @@ public class FounderColorLayout
   extends FounderBaseLayout
   implements FounderBaseLayout.FounderHighlightInterface
 {
-  public static boolean a;
+  public static boolean a = false;
   protected int a;
   private long jdField_a_of_type_Long;
   protected Paint a;
   protected Path a;
   private SparseIntArray jdField_a_of_type_AndroidUtilSparseIntArray;
-  private FounderColorLayout.spanComparator jdField_a_of_type_ComVasColorFontFounderColorLayout$spanComparator;
-  protected ETTextView a;
+  private FounderColorLayout.SpanComparator jdField_a_of_type_ComVasColorFontFounderColorLayout$SpanComparator;
+  protected IETextView a;
   private ArrayList<Integer> jdField_a_of_type_JavaUtilArrayList;
   protected List<List<ModelFastColorFont>> a;
   protected int[] a;
@@ -97,21 +96,16 @@ public class FounderColorLayout
   private int w;
   private int x;
   
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
-  
-  public FounderColorLayout(ETTextView paramETTextView, ETFont paramETFont)
+  public FounderColorLayout(IETextView paramIETextView, ETFont paramETFont)
   {
     this.jdField_h_of_type_ArrayOfInt = new int[2];
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_g_of_type_ArrayOfInt = new int[2];
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView = paramETTextView;
+    this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView = paramIETextView;
     this.jdField_a_of_type_ComEtrumpMixlayoutETFont = paramETFont;
     k();
-    this.jdField_a_of_type_ComVasColorFontFounderColorLayout$spanComparator = new FounderColorLayout.spanComparator();
+    this.jdField_a_of_type_ComVasColorFontFounderColorLayout$SpanComparator = new FounderColorLayout.SpanComparator();
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
   }
   
@@ -129,36 +123,35 @@ public class FounderColorLayout
     k();
     paramInt2 = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
-    if ((paramInt2 == -2147483648) || (paramInt2 == 1073741824)) {}
-    int i5;
-    for (this.jdField_f_of_type_Int = Math.min(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMaxWidth, paramInt1);; this.jdField_f_of_type_Int = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.mMaxWidth)
-    {
-      this.jdField_g_of_type_Int = 0;
-      this.m = 0;
-      this.p = 0;
-      this.q = 0;
-      this.s = 0;
-      this.t = 0;
-      this.u = 0;
-      this.r = 1;
-      this.w = 0;
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaddingLeft();
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaddingRight();
-      this.jdField_c_of_type_Int = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaddingTop();
-      this.jdField_d_of_type_Int = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaddingBottom();
-      this.v = (this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int);
-      if (Build.VERSION.SDK_INT >= 16) {
-        this.t = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getMaxEms();
-      }
-      this.u = this.v;
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_c_of_type_JavaUtilList.clear();
-      paramInt1 = this.jdField_d_of_type_JavaUtilList.size();
-      i5 = paramCharSequence.length();
-      if ((paramInt1 >= i5) || (this.jdField_b_of_type_JavaUtilList.isEmpty())) {
-        break;
-      }
-      while (paramInt1 < i5)
+    if ((paramInt2 != -2147483648) && (paramInt2 != 1073741824)) {
+      this.jdField_f_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getETMaxWidth();
+    } else {
+      this.jdField_f_of_type_Int = Math.min(this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getETMaxWidth(), paramInt1);
+    }
+    this.jdField_g_of_type_Int = 0;
+    this.m = 0;
+    this.p = 0;
+    this.q = 0;
+    this.s = 0;
+    this.t = 0;
+    this.u = 0;
+    this.r = 1;
+    this.w = 0;
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaddingLeft();
+    this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaddingRight();
+    this.jdField_c_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaddingTop();
+    this.jdField_d_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaddingBottom();
+    this.v = (this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int);
+    if (Build.VERSION.SDK_INT >= 16) {
+      this.t = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getMaxEms();
+    }
+    this.u = this.v;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_c_of_type_JavaUtilList.clear();
+    paramInt1 = this.jdField_d_of_type_JavaUtilList.size();
+    int i4 = paramCharSequence.length();
+    if ((paramInt1 < i4) && (!this.jdField_b_of_type_JavaUtilList.isEmpty())) {
+      while (paramInt1 < i4)
       {
         if (!this.jdField_b_of_type_JavaUtilList.isEmpty()) {
           this.jdField_d_of_type_JavaUtilList.add(this.jdField_b_of_type_JavaUtilList.remove(0));
@@ -169,263 +162,270 @@ public class FounderColorLayout
     this.jdField_b_of_type_JavaUtilList.clear();
     this.jdField_a_of_type_AndroidUtilSparseIntArray.clear();
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    this.jdField_j_of_type_ArrayOfInt = new int[i5];
-    Object localObject = new int[i5];
-    int i1 = 0;
-    int i3 = 0;
-    paramInt2 = 0;
-    int i2;
-    if (paramInt2 < i5)
-    {
-      localObject[paramInt2] = paramCharSequence.charAt(paramInt2);
-      if (((localObject[paramInt2] >= 97) && (localObject[paramInt2] <= 122)) || ((localObject[paramInt2] >= 65) && (localObject[paramInt2] <= 90))) {
-        if (i3 == 0)
-        {
-          paramInt1 = 1;
-          i2 = paramInt2;
-        }
-      }
-      for (;;)
-      {
-        paramInt2 += 1;
-        i3 = paramInt1;
-        i1 = i2;
-        break;
-        paramInt1 = i3;
-        i2 = i1;
-        if (paramInt2 == i5 - 1)
-        {
-          paramInt1 = 0;
-          this.jdField_a_of_type_AndroidUtilSparseIntArray.put(i1, i5 - i1);
-          i2 = i1;
-          continue;
-          paramInt1 = i3;
-          i2 = i1;
-          if (i3 != 0)
-          {
-            paramInt1 = 0;
-            this.jdField_a_of_type_AndroidUtilSparseIntArray.put(i1, paramInt2 - i1);
-            i2 = i1;
-          }
-        }
-      }
-    }
-    float f2 = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getTextSize();
-    int i4 = (int)f2;
-    FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, (int[])localObject, i4, this.jdField_j_of_type_ArrayOfInt);
+    this.jdField_j_of_type_ArrayOfInt = new int[i4];
+    Object localObject1 = new int[i4];
     paramInt1 = 0;
-    float f1;
-    if (paramInt1 < i5)
+    int i1 = 0;
+    int i3;
+    for (int i2 = 0; paramInt1 < i4; i2 = paramInt2)
+    {
+      localObject1[paramInt1] = paramCharSequence.charAt(paramInt1);
+      if (((localObject1[paramInt1] >= 97) && (localObject1[paramInt1] <= 122)) || ((localObject1[paramInt1] >= 65) && (localObject1[paramInt1] <= 90)))
+      {
+        if (i2 == 0)
+        {
+          i3 = paramInt1;
+          paramInt2 = 1;
+          break label479;
+        }
+        i3 = i1;
+        paramInt2 = i2;
+        if (paramInt1 != i4 - 1) {
+          break label479;
+        }
+        this.jdField_a_of_type_AndroidUtilSparseIntArray.put(i1, i4 - i1);
+      }
+      else
+      {
+        i3 = i1;
+        paramInt2 = i2;
+        if (i2 == 0) {
+          break label479;
+        }
+        this.jdField_a_of_type_AndroidUtilSparseIntArray.put(i1, paramInt1 - i1);
+      }
+      paramInt2 = 0;
+      i3 = i1;
+      label479:
+      paramInt1 += 1;
+      i1 = i3;
+    }
+    float f2 = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getTextSize();
+    int i5 = (int)f2;
+    FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, (int[])localObject1, i5, this.jdField_j_of_type_ArrayOfInt);
+    paramInt1 = 0;
+    while (paramInt1 < i4)
     {
       i1 = this.jdField_j_of_type_ArrayOfInt[paramInt1];
       paramInt2 = i1;
       if (i1 <= 0)
       {
-        f1 = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint().measureText(String.valueOf((char)localObject[paramInt1]));
+        f1 = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaint().measureText(String.valueOf((char)localObject1[paramInt1]));
         if (f1 <= 0.0F) {
-          break label622;
+          f1 = i5;
         }
-      }
-      for (;;)
-      {
         paramInt2 = (int)(f1 * FastColorFontCache.d(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId) / FastColorFontCache.e(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId));
         this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(paramInt1));
-        this.jdField_j_of_type_ArrayOfInt[paramInt1] = paramInt2;
-        paramInt1 += 1;
-        break;
-        label622:
-        f1 = i4;
       }
+      this.jdField_j_of_type_ArrayOfInt[paramInt1] = paramInt2;
+      paramInt1 += 1;
     }
-    CharacterStyle[] arrayOfCharacterStyle;
+    Object localObject2;
     if ((paramCharSequence instanceof Spanned))
     {
-      localObject = (Spanned)paramCharSequence;
-      arrayOfCharacterStyle = (CharacterStyle[])((Spanned)localObject).getSpans(0, ((Spanned)localObject).length(), CharacterStyle.class);
-      this.jdField_a_of_type_ComVasColorFontFounderColorLayout$spanComparator.a((Spanned)localObject);
-      Arrays.sort(arrayOfCharacterStyle, this.jdField_a_of_type_ComVasColorFontFounderColorLayout$spanComparator);
+      localObject1 = (Spanned)paramCharSequence;
+      localObject2 = (CharacterStyle[])((Spanned)localObject1).getSpans(0, ((Spanned)localObject1).length(), CharacterStyle.class);
+      this.jdField_a_of_type_ComVasColorFontFounderColorLayout$SpanComparator.a((Spanned)localObject1);
+      Arrays.sort((Object[])localObject2, this.jdField_a_of_type_ComVasColorFontFounderColorLayout$SpanComparator);
     }
-    for (;;)
+    else
     {
-      this.jdField_j_of_type_Int = ((int)(FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId) * f2 / FastColorFontCache.e(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId)));
-      i2 = (int)(FastColorFontCache.d(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId) * f2 / FastColorFontCache.e(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId));
-      CharacterStyle localCharacterStyle;
-      int i6;
-      boolean bool;
-      if ((localObject != null) && (arrayOfCharacterStyle != null) && (arrayOfCharacterStyle.length > 0))
-      {
-        i1 = 0;
-        i3 = arrayOfCharacterStyle.length;
-        paramInt1 = 0;
-        while (paramInt1 < i3)
-        {
-          localCharacterStyle = arrayOfCharacterStyle[paramInt1];
-          if ((localCharacterStyle instanceof RelativeSizeSpan))
-          {
-            paramInt2 = ((Spanned)localObject).getSpanStart(localCharacterStyle);
-            i5 = ((Spanned)localObject).getSpanEnd(localCharacterStyle);
-            f1 = ((RelativeSizeSpan)localCharacterStyle).getSizeChange();
-            while (paramInt2 < i5)
-            {
-              i6 = this.jdField_j_of_type_ArrayOfInt[paramInt2];
-              this.jdField_j_of_type_ArrayOfInt[paramInt2] = ((int)(i6 * f1));
-              paramInt2 += 1;
-            }
-          }
-          paramInt1 += 1;
-        }
-        paramInt2 = 0;
-        paramInt1 = i1;
-        if (paramInt2 < arrayOfCharacterStyle.length)
-        {
-          localCharacterStyle = arrayOfCharacterStyle[paramInt2];
-          i3 = ((Spanned)localObject).getSpanStart(localCharacterStyle);
-          i1 = ((Spanned)localObject).getSpanEnd(localCharacterStyle);
-          if (i1 == ((Spanned)localObject).length())
-          {
-            bool = true;
-            label917:
-            if ((i3 <= paramInt1) || (i1 <= i3) || (!a(ETLayout.a(paramCharSequence, paramInt1, i3), paramInt1, i4, 0, false, i2))) {
-              break label1082;
-            }
-          }
-        }
-        else
-        {
-          label951:
-          if (Build.VERSION.SDK_INT < 16) {
-            break label1545;
-          }
-        }
-      }
-      label1280:
-      label1542:
-      label1545:
-      for (paramInt2 = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getMaxLines();; paramInt2 = 0)
-      {
-        f1 = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint().getFontMetrics().bottom;
-        this.jdField_i_of_type_Int = 0;
-        this.jdField_h_of_type_Int = this.jdField_a_of_type_JavaUtilList.size();
-        i5 = this.jdField_a_of_type_JavaUtilList.size();
-        i1 = 0;
-        i2 = 0;
-        if ((i1 >= i5) || (i1 >= paramInt2))
-        {
-          if (this.m < this.v) {
-            this.jdField_f_of_type_Int = (this.m + this.jdField_a_of_type_Int + this.jdField_b_of_type_Int);
-          }
-          this.jdField_g_of_type_Int = (this.jdField_d_of_type_Int + i2 + this.jdField_c_of_type_Int);
-          return;
-          bool = false;
-          break label917;
-          label1082:
-          if ((localCharacterStyle instanceof ClickableSpan)) {
-            if (a(ETLayout.a(paramCharSequence, i3, i1), i3, i4, 1, bool, i2)) {
-              break label951;
-            }
-          }
-          for (;;)
-          {
-            if ((paramInt2 == arrayOfCharacterStyle.length - 1) && (!bool) && (a(ETLayout.a(paramCharSequence, i1, ((Spanned)localObject).length()), i1, i4, 0, true, i2))) {
-              break label1280;
-            }
-            paramInt2 += 1;
-            paramInt1 = i1;
-            break;
-            if (((localCharacterStyle instanceof EmoticonSpan)) || ((localCharacterStyle instanceof SignatureActionSpan)))
-            {
-              if (!a(localCharacterStyle, i3, i1, 2, bool)) {
-                continue;
-              }
-              break label951;
-            }
-            if ((localCharacterStyle instanceof RelativeSizeSpan))
-            {
-              if (!a((RelativeSizeSpan)localCharacterStyle, ETLayout.a(paramCharSequence, i3, i1), i3, i4, 3, bool, i2)) {
-                continue;
-              }
-              break label951;
-            }
-            FastColorFontLog.b("FounderColorLayout", "Un Know CharacterStyle   start:" + i3 + "  end:" + i1);
-          }
-          break label951;
-          a(paramCharSequence, 0, i4, 0, true, i2);
-          break label951;
-        }
-        paramCharSequence = (List)this.jdField_a_of_type_JavaUtilList.get(i1);
-        if ((paramCharSequence == null) || (paramCharSequence.isEmpty()))
-        {
-          if (i1 == i5 - 1) {}
-          for (paramInt1 = 0;; paramInt1 = this.jdField_j_of_type_Int)
-          {
-            paramInt1 += i2 + i4;
-            i1 += 1;
-            i2 = paramInt1;
-            break;
-          }
-        }
-        this.jdField_i_of_type_Int = Math.max(this.jdField_i_of_type_Int, paramCharSequence.size());
-        paramInt1 = 0;
-        i6 = paramCharSequence.size();
-        i3 = 0;
-        label1395:
-        if (i3 < i6)
-        {
-          localObject = (ModelFastColorFont)paramCharSequence.get(i3);
-          if (((ModelFastColorFont)localObject).jdField_c_of_type_Int <= paramInt1) {
-            break label1542;
-          }
-          paramInt1 = ((ModelFastColorFont)localObject).jdField_c_of_type_Int;
-        }
-        for (;;)
-        {
-          i3 += 1;
-          break label1395;
-          i6 = paramCharSequence.size();
-          i3 = 0;
-          while (i3 < i6)
-          {
-            localObject = (ModelFastColorFont)paramCharSequence.get(i3);
-            ((ModelFastColorFont)localObject).jdField_e_of_type_Int = (paramInt1 - ((ModelFastColorFont)localObject).jdField_c_of_type_Int + i2 - (int)((1.0F - ((ModelFastColorFont)localObject).jdField_c_of_type_Int / paramInt1) * f1));
-            i3 += 1;
-          }
-          if (i1 == i5 - 1) {}
-          for (i3 = 0;; i3 = this.jdField_j_of_type_Int)
-          {
-            paramInt1 = i3 + (i2 + paramInt1);
-            break;
-          }
-        }
-      }
-      localObject = null;
-      arrayOfCharacterStyle = null;
+      localObject1 = null;
+      localObject2 = localObject1;
     }
+    this.jdField_j_of_type_Int = ((int)(FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId) * f2 / FastColorFontCache.e(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId)));
+    i1 = (int)(f2 * FastColorFontCache.d(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId) / FastColorFontCache.e(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId));
+    Object localObject3;
+    if ((localObject1 != null) && (localObject2 != null) && (localObject2.length > 0))
+    {
+      i2 = localObject2.length;
+      paramInt1 = 0;
+      while (paramInt1 < i2)
+      {
+        localObject3 = localObject2[paramInt1];
+        if ((localObject3 instanceof RelativeSizeSpan))
+        {
+          paramInt2 = ((Spanned)localObject1).getSpanStart(localObject3);
+          i3 = ((Spanned)localObject1).getSpanEnd(localObject3);
+          f1 = ((RelativeSizeSpan)localObject3).getSizeChange();
+          while (paramInt2 < i3)
+          {
+            localObject3 = this.jdField_j_of_type_ArrayOfInt;
+            localObject3[paramInt2] = ((int)(localObject3[paramInt2] * f1));
+            paramInt2 += 1;
+          }
+        }
+        paramInt1 += 1;
+      }
+      i2 = 0;
+      paramInt2 = 0;
+      paramInt1 = i1;
+      i1 = i2;
+    }
+    while (paramInt2 < localObject2.length)
+    {
+      localObject3 = localObject2[paramInt2];
+      i3 = ((Spanned)localObject1).getSpanStart(localObject3);
+      i2 = ((Spanned)localObject1).getSpanEnd(localObject3);
+      boolean bool;
+      if (i2 == ((Spanned)localObject1).length()) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      if ((i3 <= i1) || (i2 <= i3) || (!a(ETLayout.a(paramCharSequence, i1, i3), i1, i5, 0, false, paramInt1)))
+      {
+        i1 = i2;
+        if ((localObject3 instanceof ClickableSpan)) {
+          if (a(ETLayout.a(paramCharSequence, i3, i1), i3, i5, 1, bool, paramInt1)) {
+            break;
+          }
+        } else if ((!(localObject3 instanceof EmoticonSpan)) && (!(localObject3 instanceof SignatureActionSpan)))
+        {
+          if ((localObject3 instanceof RelativeSizeSpan))
+          {
+            if (a((RelativeSizeSpan)localObject3, ETLayout.a(paramCharSequence, i3, i1), i3, i5, 3, bool, paramInt1)) {
+              break;
+            }
+          }
+          else
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("Un Know CharacterStyle   start:");
+            ((StringBuilder)localObject3).append(i3);
+            ((StringBuilder)localObject3).append("  end:");
+            ((StringBuilder)localObject3).append(i1);
+            FastColorFontLog.b("FounderColorLayout", ((StringBuilder)localObject3).toString());
+          }
+        }
+        else {
+          if (a((CharacterStyle)localObject3, i3, i1, 2, bool)) {
+            break;
+          }
+        }
+        if ((paramInt2 != localObject2.length - 1) || (bool) || (!a(ETLayout.a(paramCharSequence, i1, ((Spanned)localObject1).length()), i1, i5, 0, true, paramInt1)))
+        {
+          paramInt2 += 1;
+          continue;
+          a(paramCharSequence, 0, i5, 0, true, i1);
+        }
+      }
+    }
+    if (Build.VERSION.SDK_INT >= 16) {
+      i1 = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getMaxLines();
+    } else {
+      i1 = 0;
+    }
+    paramCharSequence = this;
+    float f1 = paramCharSequence.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaint().getFontMetrics().bottom;
+    paramCharSequence.jdField_i_of_type_Int = 0;
+    paramCharSequence.jdField_h_of_type_Int = paramCharSequence.jdField_a_of_type_JavaUtilList.size();
+    int i6 = paramCharSequence.jdField_a_of_type_JavaUtilList.size();
+    i2 = 0;
+    paramInt1 = 0;
+    while ((i2 < i6) && (i2 < i1))
+    {
+      localObject1 = (List)paramCharSequence.jdField_a_of_type_JavaUtilList.get(i2);
+      if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
+      {
+        paramCharSequence.jdField_i_of_type_Int = Math.max(paramCharSequence.jdField_i_of_type_Int, ((List)localObject1).size());
+        int i7 = ((List)localObject1).size();
+        i3 = 0;
+        for (paramInt2 = 0; i3 < i7; paramInt2 = i4)
+        {
+          localObject2 = (ModelFastColorFont)((List)localObject1).get(i3);
+          i4 = paramInt2;
+          if (((ModelFastColorFont)localObject2).jdField_c_of_type_Int > paramInt2) {
+            i4 = ((ModelFastColorFont)localObject2).jdField_c_of_type_Int;
+          }
+          i3 += 1;
+        }
+        i4 = ((List)localObject1).size();
+        i3 = 0;
+        while (i3 < i4)
+        {
+          localObject2 = (ModelFastColorFont)((List)localObject1).get(i3);
+          ((ModelFastColorFont)localObject2).jdField_e_of_type_Int = (paramInt2 - ((ModelFastColorFont)localObject2).jdField_c_of_type_Int + paramInt1 - (int)((1.0F - ((ModelFastColorFont)localObject2).jdField_c_of_type_Int / paramInt2) * f1));
+          i3 += 1;
+        }
+        paramInt2 = paramInt1 + paramInt2;
+        if (i2 != i6 - 1)
+        {
+          paramInt1 = paramCharSequence.jdField_j_of_type_Int;
+          break label1561;
+        }
+      }
+      else
+      {
+        paramInt2 = paramInt1 + i5;
+        if (i2 != i6 - 1) {
+          break label1556;
+        }
+      }
+      paramInt1 = 0;
+      break label1561;
+      label1556:
+      paramInt1 = paramCharSequence.jdField_j_of_type_Int;
+      label1561:
+      paramInt1 = paramInt2 + paramInt1;
+      i2 += 1;
+    }
+    paramInt2 = paramCharSequence.m;
+    if (paramInt2 < paramCharSequence.v) {
+      paramCharSequence.jdField_f_of_type_Int = (paramInt2 + paramCharSequence.jdField_a_of_type_Int + paramCharSequence.jdField_b_of_type_Int);
+    }
+    paramCharSequence.jdField_g_of_type_Int = (paramInt1 + paramCharSequence.jdField_d_of_type_Int + paramCharSequence.jdField_c_of_type_Int);
   }
   
   private void a(Canvas paramCanvas, ModelFastColorFont paramModelFastColorFont)
   {
-    if ((paramModelFastColorFont.jdField_b_of_type_Int <= 0) || (paramModelFastColorFont.jdField_c_of_type_Int <= 0)) {
-      return;
-    }
-    BitmapShader localBitmapShader = FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int);
-    Bitmap localBitmap2;
-    Bitmap localBitmap1;
-    if (localBitmapShader == null)
+    if (paramModelFastColorFont.jdField_b_of_type_Int > 0)
     {
-      localBitmap2 = Bitmap.createBitmap(paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
-      localBitmap1 = Bitmap.createBitmap(paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
-      switch (FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, localBitmap2, localBitmap1, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex))
-      {
-      default: 
-        localBitmap2 = Bitmap.createBitmap(paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
-        if (this.jdField_c_of_type_AndroidGraphicsCanvas == null) {
-          this.jdField_c_of_type_AndroidGraphicsCanvas = new Canvas(localBitmap2);
-        }
-        break;
+      if (paramModelFastColorFont.jdField_c_of_type_Int <= 0) {
+        return;
       }
-    }
-    for (;;)
-    {
+      BitmapShader localBitmapShader = FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int);
+      Bitmap localBitmap1;
+      if (localBitmapShader == null)
+      {
+        localBitmap2 = Bitmap.createBitmap(paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
+        localBitmap1 = Bitmap.createBitmap(paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
+        int i1 = FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, localBitmap2, localBitmap1, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex);
+        if (i1 != 0)
+        {
+          if (i1 != 1)
+          {
+            if (i1 != 2) {
+              break label290;
+            }
+            localBitmapShader = new BitmapShader(localBitmap2, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+            FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, localBitmapShader);
+            FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, localBitmap1);
+            break label290;
+          }
+          localBitmapShader = new BitmapShader(localBitmap2, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
+          FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, localBitmapShader);
+          localBitmap1.recycle();
+        }
+        else
+        {
+          localBitmap2.recycle();
+          localBitmap1.recycle();
+        }
+        localBitmap1 = null;
+      }
+      else
+      {
+        localBitmap1 = FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int);
+      }
+      label290:
+      Bitmap localBitmap2 = Bitmap.createBitmap(paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, Bitmap.Config.ARGB_8888);
+      Canvas localCanvas = this.jdField_c_of_type_AndroidGraphicsCanvas;
+      if (localCanvas == null) {
+        this.jdField_c_of_type_AndroidGraphicsCanvas = new Canvas(localBitmap2);
+      } else {
+        localCanvas.setBitmap(localBitmap2);
+      }
       if (localBitmap1 != null) {
         this.jdField_c_of_type_AndroidGraphicsCanvas.drawBitmap(localBitmap1, 0.0F, 0.0F, null);
       }
@@ -436,96 +436,75 @@ public class FounderColorLayout
       this.jdField_c_of_type_AndroidGraphicsCanvas.drawText(String.valueOf(paramModelFastColorFont.jdField_a_of_type_Char), 0.0F, (int)(paramModelFastColorFont.jdField_c_of_type_Int / 2.0F - (this.jdField_d_of_type_AndroidGraphicsPaint.descent() + this.jdField_d_of_type_AndroidGraphicsPaint.ascent()) / 2.0F), this.jdField_d_of_type_AndroidGraphicsPaint);
       paramCanvas.drawBitmap(localBitmap2, paramModelFastColorFont.jdField_d_of_type_Int, paramModelFastColorFont.jdField_e_of_type_Int, this.jdField_d_of_type_AndroidGraphicsPaint);
       localBitmap2.recycle();
-      return;
-      localBitmap2.recycle();
-      localBitmap1.recycle();
-      localBitmap1 = null;
-      break;
-      localBitmapShader = new BitmapShader(localBitmap2, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-      FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, localBitmapShader);
-      localBitmap1.recycle();
-      localBitmap1 = null;
-      break;
-      localBitmapShader = new BitmapShader(localBitmap2, Shader.TileMode.REPEAT, Shader.TileMode.REPEAT);
-      FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, localBitmapShader);
-      FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int, localBitmap1);
-      break;
-      localBitmap1 = FastColorFontCache.a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramModelFastColorFont.jdField_b_of_type_Int, paramModelFastColorFont.jdField_c_of_type_Int);
-      break;
-      this.jdField_c_of_type_AndroidGraphicsCanvas.setBitmap(localBitmap2);
     }
   }
   
   private boolean a(CharacterStyle paramCharacterStyle, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean)
   {
-    boolean bool = false;
-    Object localObject;
     if ((paramCharacterStyle instanceof EmoticonSpan))
     {
       localObject = ((EmoticonSpan)paramCharacterStyle).getDrawable().getBounds();
-      paramInt2 = ((Rect)localObject).width();
-      paramInt1 = ((Rect)localObject).height();
+      paramInt1 = ((Rect)localObject).width();
+      paramInt2 = ((Rect)localObject).height();
     }
-    for (;;)
+    else if ((paramCharacterStyle instanceof SignatureActionSpan))
     {
-      localObject = a();
-      ((ModelFastColorFont)localObject).jdField_a_of_type_Char = 65535;
-      ((ModelFastColorFont)localObject).jdField_a_of_type_Boolean = false;
-      ((ModelFastColorFont)localObject).jdField_b_of_type_Int = paramInt2;
-      ((ModelFastColorFont)localObject).jdField_c_of_type_Int = paramInt1;
-      ((ModelFastColorFont)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
-      ((ModelFastColorFont)localObject).jdField_a_of_type_Int = paramInt3;
-      if (this.u < ((ModelFastColorFont)localObject).jdField_b_of_type_Int)
-      {
-        this.q = Math.max(this.p, this.q);
-        this.p = ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
-        this.r += 1;
-        this.w = 0;
-        ((ModelFastColorFont)localObject).jdField_d_of_type_Int = this.w;
-        ((ModelFastColorFont)localObject).jdField_f_of_type_Int = this.r;
-        this.w = ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
-        this.u = (this.v - ((ModelFastColorFont)localObject).jdField_b_of_type_Int);
-        this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
-        this.jdField_c_of_type_JavaUtilList = new ArrayList();
-        this.jdField_c_of_type_JavaUtilList.add(localObject);
-        this.jdField_b_of_type_JavaUtilList.add(localObject);
-        label220:
-        if (this.w > this.m) {
-          this.m = this.w;
-        }
-        this.s += 1;
-        if ((this.t <= 0) || (this.s < this.t)) {
-          break label402;
-        }
-        this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
-        bool = true;
-      }
-      label402:
-      while (!paramBoolean)
-      {
-        return bool;
-        if (!(paramCharacterStyle instanceof SignatureActionSpan)) {
-          break label423;
-        }
-        localObject = (SignatureActionSpan)paramCharacterStyle;
-        paramInt2 = ((SignatureActionSpan)localObject).a();
-        paramInt1 = ((SignatureActionSpan)localObject).b();
-        break;
-        this.p += ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
-        ((ModelFastColorFont)localObject).jdField_d_of_type_Int = this.w;
-        ((ModelFastColorFont)localObject).jdField_f_of_type_Int = this.r;
-        this.u -= ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
-        this.w += ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
-        this.jdField_c_of_type_JavaUtilList.add(localObject);
-        this.jdField_b_of_type_JavaUtilList.add(localObject);
-        break label220;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
-      return false;
-      label423:
-      paramInt1 = 0;
-      paramInt2 = 0;
+      localObject = (SignatureActionSpan)paramCharacterStyle;
+      paramInt1 = ((SignatureActionSpan)localObject).a();
+      paramInt2 = ((SignatureActionSpan)localObject).b();
     }
+    else
+    {
+      paramInt2 = 0;
+      paramInt1 = 0;
+    }
+    Object localObject = a();
+    ((ModelFastColorFont)localObject).jdField_a_of_type_Char = 65535;
+    ((ModelFastColorFont)localObject).jdField_a_of_type_Boolean = false;
+    ((ModelFastColorFont)localObject).jdField_b_of_type_Int = paramInt1;
+    ((ModelFastColorFont)localObject).jdField_c_of_type_Int = paramInt2;
+    ((ModelFastColorFont)localObject).jdField_a_of_type_AndroidTextStyleCharacterStyle = paramCharacterStyle;
+    ((ModelFastColorFont)localObject).jdField_a_of_type_Int = paramInt3;
+    if (this.u < ((ModelFastColorFont)localObject).jdField_b_of_type_Int)
+    {
+      this.q = Math.max(this.p, this.q);
+      this.p = ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
+      this.r += 1;
+      this.w = 0;
+      ((ModelFastColorFont)localObject).jdField_d_of_type_Int = this.w;
+      ((ModelFastColorFont)localObject).jdField_f_of_type_Int = this.r;
+      this.w = ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
+      this.u = (this.v - ((ModelFastColorFont)localObject).jdField_b_of_type_Int);
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
+      this.jdField_c_of_type_JavaUtilList = new ArrayList();
+      this.jdField_c_of_type_JavaUtilList.add(localObject);
+      this.jdField_b_of_type_JavaUtilList.add(localObject);
+    }
+    else
+    {
+      this.p += ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
+      ((ModelFastColorFont)localObject).jdField_d_of_type_Int = this.w;
+      ((ModelFastColorFont)localObject).jdField_f_of_type_Int = this.r;
+      this.u -= ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
+      this.w += ((ModelFastColorFont)localObject).jdField_b_of_type_Int;
+      this.jdField_c_of_type_JavaUtilList.add(localObject);
+      this.jdField_b_of_type_JavaUtilList.add(localObject);
+    }
+    paramInt1 = this.w;
+    if (paramInt1 > this.m) {
+      this.m = paramInt1;
+    }
+    this.s += 1;
+    paramInt1 = this.t;
+    if ((paramInt1 > 0) && (this.s >= paramInt1))
+    {
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
+      return true;
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
+    }
+    return false;
   }
   
   private boolean a(RelativeSizeSpan paramRelativeSizeSpan, CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3, boolean paramBoolean, int paramInt4)
@@ -537,6 +516,7 @@ public class FounderColorLayout
     {
       char c1 = paramCharSequence.charAt(i2);
       paramRelativeSizeSpan = a();
+      int i1;
       if (c1 == '\n')
       {
         paramRelativeSizeSpan.jdField_a_of_type_Boolean = false;
@@ -545,63 +525,69 @@ public class FounderColorLayout
         paramRelativeSizeSpan.jdField_c_of_type_Int = paramInt4;
         paramRelativeSizeSpan.jdField_a_of_type_Char = c1;
         paramRelativeSizeSpan.jdField_d_of_type_Int = this.w;
-        paramRelativeSizeSpan.jdField_f_of_type_Int = this.r;
+        i1 = this.r;
+        paramRelativeSizeSpan.jdField_f_of_type_Int = i1;
         this.u = this.v;
-        this.r += 1;
+        this.r = (i1 + 1);
         this.w = 0;
         this.q = Math.max(this.p, this.q);
         this.p = 0;
         this.jdField_c_of_type_JavaUtilList.add(paramRelativeSizeSpan);
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
         this.jdField_c_of_type_JavaUtilList = new ArrayList();
-        this.jdField_b_of_type_JavaUtilList.add(paramRelativeSizeSpan);
-        if ((i2 == i5 - 1) && (paramBoolean)) {
-          this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
-        }
-        i2 += 1;
       }
       else
       {
-        int i4 = 0;
-        int i1 = 0;
-        int i3 = i4;
         if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() > 0)
         {
-          int i6 = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1 + i2);
-          i3 = i4;
-          if (i6 > 0)
+          localObject = this.jdField_a_of_type_AndroidUtilSparseIntArray;
+          int i6 = paramInt1 + i2;
+          int i7 = ((SparseIntArray)localObject).get(i6);
+          if (i7 > 0)
           {
-            i4 = 0;
+            int i4 = 0;
+            i1 = 0;
             for (;;)
             {
               i3 = i1;
-              if (i4 >= i6) {
+              if (i4 >= i7) {
                 break;
               }
-              i3 = this.jdField_j_of_type_ArrayOfInt[(paramInt1 + i2 + i4)];
+              i1 += this.jdField_j_of_type_ArrayOfInt[(i6 + i4)];
               i4 += 1;
-              i1 = i3 + i1;
             }
           }
         }
+        int i3 = 0;
+        i1 = paramInt1 + i2;
+        Object localObject = this.jdField_j_of_type_ArrayOfInt;
         float f1;
-        if (paramInt1 + i2 < this.jdField_j_of_type_ArrayOfInt.length)
-        {
-          f1 = this.jdField_j_of_type_ArrayOfInt[(paramInt1 + i2)];
-          label327:
-          paramRelativeSizeSpan.jdField_a_of_type_Boolean = this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt1 + i2));
-          paramRelativeSizeSpan.jdField_a_of_type_Int = paramInt3;
-          paramRelativeSizeSpan.jdField_b_of_type_Int = ((int)f1);
-          if (!paramRelativeSizeSpan.jdField_a_of_type_Boolean) {
-            break label598;
-          }
+        if (i1 < localObject.length) {
+          f1 = localObject[i1];
+        } else {
+          f1 = paramInt2 * f2;
+        }
+        paramRelativeSizeSpan.jdField_a_of_type_Boolean = this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(i1));
+        paramRelativeSizeSpan.jdField_a_of_type_Int = paramInt3;
+        paramRelativeSizeSpan.jdField_b_of_type_Int = ((int)f1);
+        if (paramRelativeSizeSpan.jdField_a_of_type_Boolean) {
           i1 = paramInt2;
-          label369:
-          paramRelativeSizeSpan.jdField_c_of_type_Int = ((int)(i1 * f2));
-          paramRelativeSizeSpan.jdField_a_of_type_Char = c1;
-          if ((this.u >= paramRelativeSizeSpan.jdField_b_of_type_Int) && ((this.u >= i3) || (this.w == 0))) {
-            break label605;
-          }
+        } else {
+          i1 = paramInt4;
+        }
+        paramRelativeSizeSpan.jdField_c_of_type_Int = ((int)(i1 * f2));
+        paramRelativeSizeSpan.jdField_a_of_type_Char = c1;
+        if ((this.u >= paramRelativeSizeSpan.jdField_b_of_type_Int) && ((this.u >= i3) || (this.w == 0)))
+        {
+          this.p += paramRelativeSizeSpan.jdField_b_of_type_Int;
+          paramRelativeSizeSpan.jdField_d_of_type_Int = this.w;
+          paramRelativeSizeSpan.jdField_f_of_type_Int = this.r;
+          this.u -= paramRelativeSizeSpan.jdField_b_of_type_Int;
+          this.w += paramRelativeSizeSpan.jdField_b_of_type_Int;
+          this.jdField_c_of_type_JavaUtilList.add(paramRelativeSizeSpan);
+        }
+        else
+        {
           this.q = Math.max(this.p, this.q);
           this.p = paramRelativeSizeSpan.jdField_b_of_type_Int;
           this.r += 1;
@@ -614,31 +600,23 @@ public class FounderColorLayout
           this.jdField_c_of_type_JavaUtilList = new ArrayList();
           this.jdField_c_of_type_JavaUtilList.add(paramRelativeSizeSpan);
         }
-        for (;;)
+        i1 = this.w;
+        if (i1 > this.m) {
+          this.m = i1;
+        }
+        this.s += 1;
+        i1 = this.t;
+        if ((i1 > 0) && (this.s >= i1))
         {
-          if (this.w > this.m) {
-            this.m = this.w;
-          }
-          this.s += 1;
-          if ((this.t <= 0) || (this.s < this.t)) {
-            break;
-          }
           this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
           return true;
-          f1 = paramInt2 * f2;
-          break label327;
-          label598:
-          i1 = paramInt4;
-          break label369;
-          label605:
-          this.p += paramRelativeSizeSpan.jdField_b_of_type_Int;
-          paramRelativeSizeSpan.jdField_d_of_type_Int = this.w;
-          paramRelativeSizeSpan.jdField_f_of_type_Int = this.r;
-          this.u -= paramRelativeSizeSpan.jdField_b_of_type_Int;
-          this.w += paramRelativeSizeSpan.jdField_b_of_type_Int;
-          this.jdField_c_of_type_JavaUtilList.add(paramRelativeSizeSpan);
         }
       }
+      this.jdField_b_of_type_JavaUtilList.add(paramRelativeSizeSpan);
+      if ((i2 == i5 - 1) && (paramBoolean)) {
+        this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
+      }
+      i2 += 1;
     }
     return false;
   }
@@ -651,6 +629,7 @@ public class FounderColorLayout
     {
       char c1 = paramCharSequence.charAt(i2);
       ModelFastColorFont localModelFastColorFont = a();
+      int i1;
       if (c1 == '\n')
       {
         localModelFastColorFont.jdField_a_of_type_Boolean = false;
@@ -659,63 +638,69 @@ public class FounderColorLayout
         localModelFastColorFont.jdField_c_of_type_Int = paramInt4;
         localModelFastColorFont.jdField_a_of_type_Char = c1;
         localModelFastColorFont.jdField_d_of_type_Int = this.w;
-        localModelFastColorFont.jdField_f_of_type_Int = this.r;
+        i1 = this.r;
+        localModelFastColorFont.jdField_f_of_type_Int = i1;
         this.u = this.v;
-        this.r += 1;
+        this.r = (i1 + 1);
         this.w = 0;
         this.q = Math.max(this.p, this.q);
         this.p = 0;
         this.jdField_c_of_type_JavaUtilList.add(localModelFastColorFont);
         this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
         this.jdField_c_of_type_JavaUtilList = new ArrayList();
-        this.jdField_b_of_type_JavaUtilList.add(localModelFastColorFont);
-        if ((i2 == i5 - 1) && (paramBoolean)) {
-          this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
-        }
-        i2 += 1;
       }
       else
       {
-        int i4 = 0;
-        int i1 = 0;
-        int i3 = i4;
         if (this.jdField_a_of_type_AndroidUtilSparseIntArray.size() > 0)
         {
-          int i6 = this.jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt1 + i2);
-          i3 = i4;
-          if (i6 > 0)
+          localObject = this.jdField_a_of_type_AndroidUtilSparseIntArray;
+          int i6 = paramInt1 + i2;
+          int i7 = ((SparseIntArray)localObject).get(i6);
+          if (i7 > 0)
           {
-            i4 = 0;
+            int i4 = 0;
+            i1 = 0;
             for (;;)
             {
               i3 = i1;
-              if (i4 >= i6) {
+              if (i4 >= i7) {
                 break;
               }
-              i3 = this.jdField_j_of_type_ArrayOfInt[(paramInt1 + i2 + i4)];
+              i1 += this.jdField_j_of_type_ArrayOfInt[(i6 + i4)];
               i4 += 1;
-              i1 = i3 + i1;
             }
           }
         }
+        int i3 = 0;
+        i1 = paramInt1 + i2;
+        Object localObject = this.jdField_j_of_type_ArrayOfInt;
         float f1;
-        if (paramInt1 + i2 < this.jdField_j_of_type_ArrayOfInt.length)
-        {
-          f1 = this.jdField_j_of_type_ArrayOfInt[(paramInt1 + i2)];
-          label331:
-          localModelFastColorFont.jdField_a_of_type_Boolean = this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt1 + i2));
-          localModelFastColorFont.jdField_a_of_type_Int = paramInt3;
-          localModelFastColorFont.jdField_b_of_type_Int = ((int)f1);
-          if (!localModelFastColorFont.jdField_a_of_type_Boolean) {
-            break label605;
-          }
+        if (i1 < localObject.length) {
+          f1 = localObject[i1];
+        } else {
+          f1 = paramInt2;
+        }
+        localModelFastColorFont.jdField_a_of_type_Boolean = this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(i1));
+        localModelFastColorFont.jdField_a_of_type_Int = paramInt3;
+        localModelFastColorFont.jdField_b_of_type_Int = ((int)f1);
+        if (localModelFastColorFont.jdField_a_of_type_Boolean) {
           i1 = paramInt2;
-          label376:
-          localModelFastColorFont.jdField_c_of_type_Int = i1;
-          localModelFastColorFont.jdField_a_of_type_Char = c1;
-          if ((this.u >= localModelFastColorFont.jdField_b_of_type_Int) && ((this.u >= i3) || (this.w == 0))) {
-            break label612;
-          }
+        } else {
+          i1 = paramInt4;
+        }
+        localModelFastColorFont.jdField_c_of_type_Int = i1;
+        localModelFastColorFont.jdField_a_of_type_Char = c1;
+        if ((this.u >= localModelFastColorFont.jdField_b_of_type_Int) && ((this.u >= i3) || (this.w == 0)))
+        {
+          this.p += localModelFastColorFont.jdField_b_of_type_Int;
+          localModelFastColorFont.jdField_d_of_type_Int = this.w;
+          localModelFastColorFont.jdField_f_of_type_Int = this.r;
+          this.u -= localModelFastColorFont.jdField_b_of_type_Int;
+          this.w += localModelFastColorFont.jdField_b_of_type_Int;
+          this.jdField_c_of_type_JavaUtilList.add(localModelFastColorFont);
+        }
+        else
+        {
           this.q = Math.max(this.p, this.q);
           this.p = localModelFastColorFont.jdField_b_of_type_Int;
           this.r += 1;
@@ -728,31 +713,23 @@ public class FounderColorLayout
           this.jdField_c_of_type_JavaUtilList = new ArrayList();
           this.jdField_c_of_type_JavaUtilList.add(localModelFastColorFont);
         }
-        for (;;)
+        i1 = this.w;
+        if (i1 > this.m) {
+          this.m = i1;
+        }
+        this.s += 1;
+        i1 = this.t;
+        if ((i1 > 0) && (this.s >= i1))
         {
-          if (this.w > this.m) {
-            this.m = this.w;
-          }
-          this.s += 1;
-          if ((this.t <= 0) || (this.s < this.t)) {
-            break;
-          }
           this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
           return true;
-          f1 = paramInt2;
-          break label331;
-          label605:
-          i1 = paramInt4;
-          break label376;
-          label612:
-          this.p += localModelFastColorFont.jdField_b_of_type_Int;
-          localModelFastColorFont.jdField_d_of_type_Int = this.w;
-          localModelFastColorFont.jdField_f_of_type_Int = this.r;
-          this.u -= localModelFastColorFont.jdField_b_of_type_Int;
-          this.w += localModelFastColorFont.jdField_b_of_type_Int;
-          this.jdField_c_of_type_JavaUtilList.add(localModelFastColorFont);
         }
       }
+      this.jdField_b_of_type_JavaUtilList.add(localModelFastColorFont);
+      if ((i2 == i5 - 1) && (paramBoolean)) {
+        this.jdField_a_of_type_JavaUtilList.add(this.jdField_c_of_type_JavaUtilList);
+      }
+      i2 += 1;
     }
     return false;
   }
@@ -777,7 +754,7 @@ public class FounderColorLayout
     }
     if ((this.n <= 0) || (this.o <= 0))
     {
-      DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getResources().getDisplayMetrics();
+      DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getResources().getDisplayMetrics();
       this.n = localDisplayMetrics.widthPixels;
       this.o = localDisplayMetrics.heightPixels;
     }
@@ -812,65 +789,50 @@ public class FounderColorLayout
   
   public int a(int paramInt1, int paramInt2)
   {
+    this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getLocationInWindow(this.jdField_g_of_type_ArrayOfInt);
+    Object localObject1 = this.jdField_g_of_type_ArrayOfInt;
     int i5 = 0;
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getLocationInWindow(this.jdField_g_of_type_ArrayOfInt);
-    int i6 = this.jdField_g_of_type_ArrayOfInt[0];
-    int i7 = this.jdField_g_of_type_ArrayOfInt[1];
-    int i3 = 0;
+    int i6 = localObject1[0];
+    int i7 = localObject1[1];
     int i2 = 0;
-    List localList;
-    Object localObject;
-    int i1;
-    label78:
-    int i4;
-    if (i3 < this.jdField_a_of_type_JavaUtilList.size())
+    int i1 = 0;
+    while (i2 < this.jdField_a_of_type_JavaUtilList.size())
     {
-      localList = (List)this.jdField_a_of_type_JavaUtilList.get(i3);
-      localObject = localList.iterator();
-      i1 = -2147483648;
-      if (((Iterator)localObject).hasNext())
+      localObject1 = (List)this.jdField_a_of_type_JavaUtilList.get(i2);
+      int i3 = -2147483648;
+      Object localObject2 = ((List)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)((Iterator)localObject).next();
-        i4 = this.jdField_c_of_type_Int;
-        int i8 = localModelFastColorFont.jdField_e_of_type_Int;
-        i4 = localModelFastColorFont.jdField_c_of_type_Int + (i4 + i8);
-        if (i4 <= i1) {
-          break label274;
+        ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)((Iterator)localObject2).next();
+        i4 = this.jdField_c_of_type_Int + localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int;
+        if (i4 > i3) {
+          i3 = i4;
         }
-        i1 = i4;
       }
-    }
-    label274:
-    for (;;)
-    {
-      break label78;
-      i4 = i5;
-      if (i1 < paramInt2 - i7)
-      {
-        if (i3 == this.jdField_a_of_type_JavaUtilList.size() - 1) {
+      int i4 = i5;
+      if (i3 < paramInt2 - i7) {
+        if (i2 == this.jdField_a_of_type_JavaUtilList.size() - 1)
+        {
           i4 = i5;
         }
-      }
-      else
-      {
-        while (i4 < localList.size())
+        else
         {
-          localObject = (ModelFastColorFont)localList.get(i4);
-          paramInt2 = this.jdField_a_of_type_Int;
-          i1 = ((ModelFastColorFont)localObject).jdField_d_of_type_Int;
-          if (paramInt1 - i6 <= ((ModelFastColorFont)localObject).jdField_b_of_type_Int + (paramInt2 + i1)) {
-            return i2 + i4;
-          }
-          i4 += 1;
+          i1 += ((List)localObject1).size();
+          i2 += 1;
+          continue;
         }
-        return localList.size() + i2;
       }
-      i1 = localList.size();
-      i3 += 1;
-      i2 += i1;
-      break;
-      return -1;
+      while (i4 < ((List)localObject1).size())
+      {
+        localObject2 = (ModelFastColorFont)((List)localObject1).get(i4);
+        if (paramInt1 - i6 <= this.jdField_a_of_type_Int + ((ModelFastColorFont)localObject2).jdField_d_of_type_Int + ((ModelFastColorFont)localObject2).jdField_b_of_type_Int) {
+          return i1 + i4;
+        }
+        i4 += 1;
+      }
+      return i1 + ((List)localObject1).size();
     }
+    return -1;
   }
   
   public int a(int paramInt1, int paramInt2, TextGraphMap paramTextGraphMap)
@@ -879,12 +841,8 @@ public class FounderColorLayout
     while (i1 < this.jdField_b_of_type_JavaUtilList.size())
     {
       ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)this.jdField_b_of_type_JavaUtilList.get(i1);
-      if ((paramInt1 >= localModelFastColorFont.jdField_d_of_type_Int) && (paramInt1 <= localModelFastColorFont.jdField_d_of_type_Int + localModelFastColorFont.jdField_b_of_type_Int) && (paramInt2 >= localModelFastColorFont.jdField_e_of_type_Int))
-      {
-        int i2 = localModelFastColorFont.jdField_e_of_type_Int;
-        if (paramInt2 <= localModelFastColorFont.jdField_c_of_type_Int + i2) {
-          return paramTextGraphMap.b(i1);
-        }
+      if ((paramInt1 >= localModelFastColorFont.jdField_d_of_type_Int) && (paramInt1 <= localModelFastColorFont.jdField_d_of_type_Int + localModelFastColorFont.jdField_b_of_type_Int) && (paramInt2 >= localModelFastColorFont.jdField_e_of_type_Int) && (paramInt2 <= localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int)) {
+        return paramTextGraphMap.b(i1);
       }
       i1 += 1;
     }
@@ -893,21 +851,26 @@ public class FounderColorLayout
   
   protected Bitmap a(int paramInt1, int paramInt2)
   {
-    Bitmap localBitmap2 = FastColorFontCache.b(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramInt1, paramInt2);
-    Bitmap localBitmap1 = localBitmap2;
-    if (localBitmap2 == null)
+    Bitmap localBitmap = FastColorFontCache.b(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramInt1, paramInt2);
+    Object localObject = localBitmap;
+    if (localBitmap == null)
     {
-      localBitmap2 = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
-      FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, localBitmap2, null);
-      FastColorFontCache.b(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramInt1, paramInt2, localBitmap2);
-      localBitmap1 = localBitmap2;
+      localBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
+      FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, localBitmap, null);
+      FastColorFontCache.b(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex, paramInt1, paramInt2, localBitmap);
+      localObject = localBitmap;
       if (FastColorFontHelper.jdField_a_of_type_Boolean)
       {
-        FastColorFontLog.a("FounderColorLayout", "create new under line bitmap.... width:" + paramInt1 + "  height:" + paramInt2);
-        localBitmap1 = localBitmap2;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("create new under line bitmap.... width:");
+        ((StringBuilder)localObject).append(paramInt1);
+        ((StringBuilder)localObject).append("  height:");
+        ((StringBuilder)localObject).append(paramInt2);
+        FastColorFontLog.a("FounderColorLayout", ((StringBuilder)localObject).toString());
+        localObject = localBitmap;
       }
     }
-    return localBitmap1;
+    return localObject;
   }
   
   protected void a()
@@ -921,24 +884,16 @@ public class FounderColorLayout
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     int i2 = this.jdField_b_of_type_JavaUtilList.size();
     int i1 = 0;
-    if (i1 < i2)
+    while (i1 < i2)
     {
-      if ((i1 < paramInt1) || (i1 >= paramInt2)) {}
-      for (;;)
+      if ((i1 >= paramInt1) && (i1 < paramInt2))
       {
-        i1 += 1;
-        break;
         ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)this.jdField_b_of_type_JavaUtilList.get(i1);
-        Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
-        float f1 = this.jdField_a_of_type_Int + localModelFastColorFont.jdField_d_of_type_Int;
-        float f2 = this.jdField_c_of_type_Int + localModelFastColorFont.jdField_e_of_type_Int;
-        float f3 = this.jdField_a_of_type_Int + localModelFastColorFont.jdField_d_of_type_Int + localModelFastColorFont.jdField_b_of_type_Int;
-        int i3 = this.jdField_c_of_type_Int;
-        int i4 = localModelFastColorFont.jdField_e_of_type_Int;
-        localPath.addRect(f1, f2, f3, localModelFastColorFont.jdField_c_of_type_Int + (i3 + i4), Path.Direction.CW);
+        this.jdField_a_of_type_AndroidGraphicsPath.addRect(this.jdField_a_of_type_Int + localModelFastColorFont.jdField_d_of_type_Int, this.jdField_c_of_type_Int + localModelFastColorFont.jdField_e_of_type_Int, this.jdField_a_of_type_Int + localModelFastColorFont.jdField_d_of_type_Int + localModelFastColorFont.jdField_b_of_type_Int, this.jdField_c_of_type_Int + localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int, Path.Direction.CW);
       }
+      i1 += 1;
     }
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
+    this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.invalidate();
   }
   
   public void a(int paramInt, int[] paramArrayOfInt, boolean paramBoolean)
@@ -956,22 +911,16 @@ public class FounderColorLayout
     if (paramInt < 0) {
       return;
     }
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getLocationInWindow(paramArrayOfInt);
+    this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getLocationInWindow(paramArrayOfInt);
     ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)this.jdField_b_of_type_JavaUtilList.get(paramInt);
     if (paramBoolean)
     {
       paramArrayOfInt[0] += this.jdField_a_of_type_Int + localModelFastColorFont.jdField_d_of_type_Int;
-      paramInt = paramArrayOfInt[1];
-      i1 = this.jdField_c_of_type_Int;
-      i2 = localModelFastColorFont.jdField_e_of_type_Int;
-      paramArrayOfInt[1] = (localModelFastColorFont.jdField_c_of_type_Int + (i1 + i2) + paramInt);
+      paramArrayOfInt[1] += this.jdField_c_of_type_Int + localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int;
       return;
     }
     paramArrayOfInt[0] += this.jdField_a_of_type_Int + localModelFastColorFont.jdField_d_of_type_Int + localModelFastColorFont.jdField_b_of_type_Int;
-    paramInt = paramArrayOfInt[1];
-    i1 = this.jdField_c_of_type_Int;
-    int i2 = localModelFastColorFont.jdField_e_of_type_Int;
-    paramArrayOfInt[1] = (localModelFastColorFont.jdField_c_of_type_Int + (i1 + i2) + paramInt);
+    paramArrayOfInt[1] += this.jdField_c_of_type_Int + localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int;
   }
   
   protected void a(Canvas paramCanvas)
@@ -983,7 +932,12 @@ public class FounderColorLayout
     int i1 = 0;
     while (i1 < this.jdField_a_of_type_ArrayOfInt.length)
     {
-      paramCanvas.drawRect(this.jdField_a_of_type_Int + this.jdField_b_of_type_ArrayOfInt[i1], this.jdField_c_of_type_Int + this.jdField_c_of_type_ArrayOfInt[i1], this.jdField_a_of_type_Int + this.jdField_b_of_type_ArrayOfInt[i1] + this.jdField_d_of_type_ArrayOfInt[i1], this.jdField_c_of_type_Int + this.jdField_c_of_type_ArrayOfInt[i1] + this.jdField_e_of_type_ArrayOfInt[i1], localPaint);
+      int i2 = this.jdField_a_of_type_Int;
+      int[] arrayOfInt1 = this.jdField_b_of_type_ArrayOfInt;
+      float f1 = arrayOfInt1[i1] + i2;
+      int i3 = this.jdField_c_of_type_Int;
+      int[] arrayOfInt2 = this.jdField_c_of_type_ArrayOfInt;
+      paramCanvas.drawRect(f1, arrayOfInt2[i1] + i3, i2 + arrayOfInt1[i1] + this.jdField_d_of_type_ArrayOfInt[i1], i3 + arrayOfInt2[i1] + this.jdField_e_of_type_ArrayOfInt[i1], localPaint);
       i1 += 1;
     }
   }
@@ -994,7 +948,7 @@ public class FounderColorLayout
   {
     super.a(paramBoolean);
     if (paramBoolean) {
-      this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
+      this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.invalidate();
     }
   }
   
@@ -1010,7 +964,8 @@ public class FounderColorLayout
     if (this.x != i2) {
       this.jdField_a_of_type_ArrayOfInt = new int[i2];
     }
-    if ((this.x < i2) || (this.x - i2 > 100))
+    int i1 = this.x;
+    if ((i1 < i2) || (i1 - i2 > 100))
     {
       this.jdField_b_of_type_ArrayOfInt = new int[i2];
       this.jdField_c_of_type_ArrayOfInt = new int[i2];
@@ -1019,7 +974,7 @@ public class FounderColorLayout
     }
     this.x = i2;
     this.jdField_b_of_type_Boolean = true;
-    int i1 = 0;
+    i1 = 0;
     while (i1 < i2)
     {
       ModelFastColorFont localModelFastColorFont = (ModelFastColorFont)this.jdField_b_of_type_JavaUtilList.get(i1);
@@ -1048,64 +1003,81 @@ public class FounderColorLayout
       a("FounderColorLayout::onDraw 创建bitmap失败！");
       return false;
     }
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty()))
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if ((localList != null) && (!localList.isEmpty()))
     {
-      a(HardCodeUtil.a(2131704881));
-      return false;
-    }
-    if (this.jdField_a_of_type_ArrayOfInt.length <= 0)
-    {
-      a(HardCodeUtil.a(2131704880));
-      return false;
-    }
-    c();
-    b(paramCanvas);
-    long l1 = System.nanoTime();
-    int i1 = FastColorFontCache.b(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
-    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation) && (!this.jdField_b_of_type_Boolean) && (i1 == 3) && (this.jdField_h_of_type_Int > 0) && (this.jdField_h_of_type_Int < 6))
-    {
-      FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.jdField_j_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_e_of_type_Int, this.jdField_i_of_type_ArrayOfInt);
-      j();
-      paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
-      if (this.jdField_e_of_type_Int == 0) {
-        b();
-      }
-      if (FastColorFontHelper.jdField_a_of_type_Boolean)
+      if (this.jdField_a_of_type_ArrayOfInt.length <= 0)
       {
-        long l2 = System.nanoTime();
-        FastColorFontLog.b("FounderColorLayout", "动画帧耗时 frameIndex:" + this.jdField_e_of_type_Int + "  行：" + this.jdField_h_of_type_Int + "  列：" + this.jdField_i_of_type_Int + "  耗时：" + (float)(l2 - l1) / 1000000.0F + "ms");
-        if (this.jdField_e_of_type_Int == 0) {
-          a("drawAnimationText.....");
+        a(HardCodeUtil.a(2131704956));
+        return false;
+      }
+      c();
+      b(paramCanvas);
+      long l1 = System.nanoTime();
+      int i1 = FastColorFontCache.b(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
+      if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation) && (!this.jdField_b_of_type_Boolean) && (i1 == 3))
+      {
+        int i2 = this.jdField_h_of_type_Int;
+        if ((i2 > 0) && (i2 < 6))
+        {
+          FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.jdField_j_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_e_of_type_Int, this.jdField_i_of_type_ArrayOfInt);
+          j();
+          paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
+          if (this.jdField_e_of_type_Int == 0) {
+            b();
+          }
+          if (FastColorFontHelper.jdField_a_of_type_Boolean)
+          {
+            long l2 = System.nanoTime();
+            paramCanvas = new StringBuilder();
+            paramCanvas.append("动画帧耗时 frameIndex:");
+            paramCanvas.append(this.jdField_e_of_type_Int);
+            paramCanvas.append("  行：");
+            paramCanvas.append(this.jdField_h_of_type_Int);
+            paramCanvas.append("  列：");
+            paramCanvas.append(this.jdField_i_of_type_Int);
+            paramCanvas.append("  耗时：");
+            paramCanvas.append((float)(l2 - l1) / 1000000.0F);
+            paramCanvas.append("ms");
+            FastColorFontLog.b("FounderColorLayout", paramCanvas.toString());
+            if (this.jdField_e_of_type_Int == 0) {
+              a("drawAnimationText.....");
+            }
+          }
+          return true;
         }
       }
-      return true;
-    }
-    if ((!this.jdField_b_of_type_Boolean) && (i1 == 5))
-    {
-      FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex);
+      if ((!this.jdField_b_of_type_Boolean) && (i1 == 5))
+      {
+        FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mComboIndex);
+        j();
+        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
+        return true;
+      }
+      this.jdField_f_of_type_ArrayOfInt = new int[0];
+      FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.k, this.jdField_f_of_type_ArrayOfInt, this.l);
       j();
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
       return true;
     }
-    this.jdField_f_of_type_ArrayOfInt = new int[0];
-    FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.k, this.jdField_f_of_type_ArrayOfInt, this.l);
-    j();
-    paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, null);
-    return true;
+    a(HardCodeUtil.a(2131704957));
+    return false;
   }
   
   public int[] a(int paramInt1, int paramInt2, long paramLong, boolean paramBoolean, ETFont paramETFont)
   {
-    if ((this.jdField_a_of_type_Long == paramLong) && (this.jdField_d_of_type_Boolean == paramBoolean) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(paramETFont)) && (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.isCacheMeasureResult())) {
+    if ((this.jdField_a_of_type_Long == paramLong) && (this.jdField_d_of_type_Boolean == paramBoolean) && (this.jdField_a_of_type_ComEtrumpMixlayoutETFont.equals(paramETFont)) && (this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.isCacheMeasureResult())) {
       return this.jdField_h_of_type_ArrayOfInt;
     }
+    Object localObject;
     if (this.jdField_a_of_type_Long != paramLong)
     {
       if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) {
         this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
       }
-      if (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null) {
-        this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.isFounderAnimating = false;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView;
+      if (localObject != null) {
+        ((IETextView)localObject).setIsFounderAnimating(false);
       }
       if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null) {
         this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
@@ -1118,114 +1090,131 @@ public class FounderColorLayout
     this.jdField_a_of_type_ComEtrumpMixlayoutETFont.copy(paramETFont);
     this.jdField_h_of_type_ArrayOfInt[0] = View.MeasureSpec.getSize(paramInt1);
     this.jdField_h_of_type_ArrayOfInt[1] = View.MeasureSpec.getSize(paramInt2);
-    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath)) || (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView == null) || (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getVisibility() == 8)) {
-      return this.jdField_h_of_type_ArrayOfInt;
+    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath)))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView;
+      if ((localObject != null) && (((IETextView)localObject).getVisibility() != 8))
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getText();
+        if (TextUtils.isEmpty((CharSequence)localObject)) {
+          return this.jdField_h_of_type_ArrayOfInt;
+        }
+        paramLong = System.nanoTime();
+        a(paramInt1, paramInt2, (CharSequence)localObject);
+        double d1 = (float)(System.nanoTime() - paramLong) / 1000000.0F;
+        if (FastColorFontHelper.jdField_a_of_type_Boolean)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("字数：");
+          localStringBuilder.append(((CharSequence)localObject).length());
+          localStringBuilder.append("   字号：");
+          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getTextSize());
+          localStringBuilder.append("px   排版耗时：");
+          localStringBuilder.append(d1);
+          localStringBuilder.append("ms");
+          FastColorFontLog.a("FounderColorLayout", localStringBuilder.toString());
+        }
+        if (this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView != null) {
+          FontReportUtils.a("action_measure", paramETFont.mFontId, 4, this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getText().length(), d1);
+        }
+        if (b()) {
+          return this.jdField_h_of_type_ArrayOfInt;
+        }
+        paramETFont = this.jdField_h_of_type_ArrayOfInt;
+        paramETFont[0] = this.jdField_f_of_type_Int;
+        paramETFont[1] = this.jdField_g_of_type_Int;
+        return paramETFont;
+      }
     }
-    CharSequence localCharSequence = this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getText();
-    if (TextUtils.isEmpty(localCharSequence)) {
-      return this.jdField_h_of_type_ArrayOfInt;
-    }
-    paramLong = System.nanoTime();
-    a(paramInt1, paramInt2, localCharSequence);
-    double d1 = (float)(System.nanoTime() - paramLong) / 1000000.0F;
-    if (FastColorFontHelper.jdField_a_of_type_Boolean) {
-      FastColorFontLog.a("FounderColorLayout", "字数：" + localCharSequence.length() + "   字号：" + this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getTextSize() + "px   排版耗时：" + d1 + "ms");
-    }
-    if (this.jdField_a_of_type_ComEtrumpMixlayoutETTextView != null) {
-      FontReportUtils.a("action_measure", paramETFont.mFontId, 4, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getText().length(), d1);
-    }
-    if (b()) {
-      return this.jdField_h_of_type_ArrayOfInt;
-    }
-    this.jdField_h_of_type_ArrayOfInt[0] = this.jdField_f_of_type_Int;
-    this.jdField_h_of_type_ArrayOfInt[1] = this.jdField_g_of_type_Int;
     return this.jdField_h_of_type_ArrayOfInt;
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComEtrumpMixlayoutETFont == null) || (b())) {}
-    do
+    if (this.jdField_a_of_type_ComEtrumpMixlayoutETFont != null)
     {
-      return;
+      if (b()) {
+        return;
+      }
       if (FastColorFontCache.b(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId) < 3)
       {
-        FastColorFontLog.b("FounderColorLayout", "当前字体未加载或不支持动画..." + this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("当前字体未加载或不支持动画...");
+        localStringBuilder.append(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath);
+        FastColorFontLog.b("FounderColorLayout", localStringBuilder.toString());
         return;
       }
-      if ((this.jdField_h_of_type_Int <= 0) || (this.jdField_h_of_type_Int > 5) || (this.jdField_b_of_type_Boolean))
+      int i1 = this.jdField_h_of_type_Int;
+      if ((i1 > 0) && (i1 <= 5) && (!this.jdField_b_of_type_Boolean))
       {
-        FastColorFontLog.b("FounderColorLayout", "0行或超过5行不支持播放动画..." + this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath);
+        if ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning())) {
+          return;
+        }
+        if ((this.jdField_i_of_type_ArrayOfInt[0] > 0) && (this.jdField_i_of_type_ArrayOfInt[1] > 0))
+        {
+          h();
+          return;
+        }
+        this.jdField_e_of_type_Int = 0;
+        FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.jdField_j_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_e_of_type_Int, this.jdField_i_of_type_ArrayOfInt);
+        if ((this.jdField_i_of_type_ArrayOfInt[0] > 0) && (this.jdField_i_of_type_ArrayOfInt[1] > 0))
+        {
+          h();
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("StartAnimation......动画帧数和帧间隔数据异常 animInfo:");
+        localStringBuilder.append(Arrays.toString(this.jdField_i_of_type_ArrayOfInt));
+        FastColorFontLog.b("FounderColorLayout", localStringBuilder.toString());
         return;
       }
-    } while ((this.jdField_a_of_type_AndroidAnimationValueAnimator != null) && (this.jdField_a_of_type_AndroidAnimationValueAnimator.isRunning()));
-    if ((this.jdField_i_of_type_ArrayOfInt[0] > 0) && (this.jdField_i_of_type_ArrayOfInt[1] > 0))
-    {
-      h();
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("0行或超过5行不支持播放动画...");
+      localStringBuilder.append(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontPath);
+      FastColorFontLog.b("FounderColorLayout", localStringBuilder.toString());
     }
-    this.jdField_e_of_type_Int = 0;
-    FastColorFontHelper.a().a(this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId, this.jdField_a_of_type_ArrayOfInt, this.jdField_b_of_type_ArrayOfInt, this.jdField_c_of_type_ArrayOfInt, this.jdField_d_of_type_ArrayOfInt, this.jdField_e_of_type_ArrayOfInt, this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int, this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int, this.jdField_h_of_type_Int, this.jdField_i_of_type_Int, this.jdField_j_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETFont.mAnimationId, this.jdField_e_of_type_Int, this.jdField_i_of_type_ArrayOfInt);
-    if ((this.jdField_i_of_type_ArrayOfInt[0] > 0) && (this.jdField_i_of_type_ArrayOfInt[1] > 0))
-    {
-      h();
-      return;
-    }
-    FastColorFontLog.b("FounderColorLayout", "StartAnimation......动画帧数和帧间隔数据异常 animInfo:" + Arrays.toString(this.jdField_i_of_type_ArrayOfInt));
   }
   
   protected void b(Canvas paramCanvas)
   {
-    if (!this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.hasSelected()) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.hasSelected()) {
       return;
     }
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.highlightBackgroundColor());
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.highlightBackgroundColor());
     paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_b_of_type_AndroidGraphicsPaint);
   }
   
   protected boolean b()
   {
+    int i1 = this.jdField_f_of_type_Int;
+    int i2 = this.jdField_a_of_type_Int;
+    int i3 = this.jdField_b_of_type_Int;
     int i4 = 1;
-    int i1;
-    int i2;
-    label41:
-    int i3;
-    if (this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int <= 0)
-    {
+    if (i1 - i2 - i3 <= 0) {
       i1 = 1;
-      if (this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int > 0) {
-        break label101;
-      }
-      i2 = 1;
-      if (this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int <= this.n) {
-        break label106;
-      }
-      i3 = 1;
-      label64:
-      if (this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int <= this.o) {
-        break label111;
-      }
-    }
-    for (;;)
-    {
-      return i3 | 0x0 | i1 | i2 | i4;
+    } else {
       i1 = 0;
-      break;
-      label101:
+    }
+    if (this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int <= 0) {
+      i2 = 1;
+    } else {
       i2 = 0;
-      break label41;
-      label106:
+    }
+    if (this.jdField_f_of_type_Int - this.jdField_a_of_type_Int - this.jdField_b_of_type_Int > this.n) {
+      i3 = 1;
+    } else {
       i3 = 0;
-      break label64;
-      label111:
+    }
+    if (this.jdField_g_of_type_Int - this.jdField_c_of_type_Int - this.jdField_d_of_type_Int <= this.o) {
       i4 = 0;
     }
+    return i1 | 0x0 | i2 | i3 | i4;
   }
   
   public void d()
   {
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.invalidate();
+    this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.invalidate();
   }
   
   public void e()
@@ -1237,52 +1226,68 @@ public class FounderColorLayout
   
   protected void j()
   {
-    int i2 = (int)(this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getTextSize() / 15.0F);
-    int i1;
-    label47:
-    ModelFastColorFont localModelFastColorFont;
-    if (this.jdField_b_of_type_AndroidGraphicsCanvas == null)
-    {
+    int i2 = (int)(this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getTextSize() / 15.0F);
+    Object localObject1 = this.jdField_b_of_type_AndroidGraphicsCanvas;
+    if (localObject1 == null) {
       this.jdField_b_of_type_AndroidGraphicsCanvas = new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      int i3 = this.jdField_b_of_type_JavaUtilList.size();
-      i1 = 0;
-      if (i1 >= i3) {
-        return;
-      }
-      localModelFastColorFont = (ModelFastColorFont)this.jdField_b_of_type_JavaUtilList.get(i1);
-      switch (localModelFastColorFont.jdField_a_of_type_Int)
-      {
-      }
+    } else {
+      ((Canvas)localObject1).setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
-    for (;;)
+    int i3 = this.jdField_b_of_type_JavaUtilList.size();
+    int i1 = 0;
+    while (i1 < i3)
     {
-      if (localModelFastColorFont.jdField_a_of_type_Boolean) {
-        a(this.jdField_b_of_type_AndroidGraphicsCanvas, localModelFastColorFont);
+      localObject1 = (ModelFastColorFont)this.jdField_b_of_type_JavaUtilList.get(i1);
+      int i4 = ((ModelFastColorFont)localObject1).jdField_a_of_type_Int;
+      Object localObject2;
+      if (i4 != 1)
+      {
+        if (i4 == 2)
+        {
+          this.jdField_b_of_type_AndroidGraphicsCanvas.drawRect(((ModelFastColorFont)localObject1).jdField_d_of_type_Int, ((ModelFastColorFont)localObject1).jdField_e_of_type_Int, ((ModelFastColorFont)localObject1).jdField_d_of_type_Int + ((ModelFastColorFont)localObject1).jdField_b_of_type_Int, ((ModelFastColorFont)localObject1).jdField_e_of_type_Int + ((ModelFastColorFont)localObject1).jdField_c_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+          Canvas localCanvas;
+          float f1;
+          int i5;
+          int i6;
+          if ((((ModelFastColorFont)localObject1).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof EmoticonSpan))
+          {
+            localObject2 = (EmoticonSpan)((ModelFastColorFont)localObject1).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+            localCanvas = this.jdField_b_of_type_AndroidGraphicsCanvas;
+            f1 = ((ModelFastColorFont)localObject1).jdField_d_of_type_Int;
+            i4 = ((ModelFastColorFont)localObject1).jdField_e_of_type_Int;
+            i5 = ((ModelFastColorFont)localObject1).jdField_e_of_type_Int;
+            i6 = ((ModelFastColorFont)localObject1).jdField_c_of_type_Int;
+            int i7 = ((ModelFastColorFont)localObject1).jdField_e_of_type_Int;
+            ((EmoticonSpan)localObject2).draw(localCanvas, null, 0, 0, f1, i4, i6 + i5, ((ModelFastColorFont)localObject1).jdField_c_of_type_Int + i7, this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaint());
+          }
+          else if ((((ModelFastColorFont)localObject1).jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof SignatureActionSpan))
+          {
+            localObject2 = (SignatureActionSpan)((ModelFastColorFont)localObject1).jdField_a_of_type_AndroidTextStyleCharacterStyle;
+            ((SignatureActionSpan)localObject2).jdField_a_of_type_Boolean = false;
+            localCanvas = this.jdField_b_of_type_AndroidGraphicsCanvas;
+            f1 = ((ModelFastColorFont)localObject1).jdField_d_of_type_Int;
+            i4 = ((ModelFastColorFont)localObject1).jdField_e_of_type_Int;
+            i5 = ((ModelFastColorFont)localObject1).jdField_e_of_type_Int;
+            i6 = ((ModelFastColorFont)localObject1).jdField_e_of_type_Int;
+            ((SignatureActionSpan)localObject2).draw(localCanvas, null, 0, 0, f1, i4, i5, ((ModelFastColorFont)localObject1).jdField_c_of_type_Int + i6, this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaint());
+          }
+        }
+      }
+      else
+      {
+        localObject2 = a(((ModelFastColorFont)localObject1).jdField_b_of_type_Int, i2);
+        this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject2, ((ModelFastColorFont)localObject1).jdField_d_of_type_Int, ((ModelFastColorFont)localObject1).jdField_e_of_type_Int + ((ModelFastColorFont)localObject1).jdField_c_of_type_Int - i2, this.jdField_a_of_type_ComTencentMobileqqVasFontApiIETextView.getPaint());
+      }
+      if (((ModelFastColorFont)localObject1).jdField_a_of_type_Boolean) {
+        a(this.jdField_b_of_type_AndroidGraphicsCanvas, (ModelFastColorFont)localObject1);
       }
       i1 += 1;
-      break label47;
-      this.jdField_b_of_type_AndroidGraphicsCanvas.setBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
-      break;
-      Object localObject = a(localModelFastColorFont.jdField_b_of_type_Int, i2);
-      this.jdField_b_of_type_AndroidGraphicsCanvas.drawBitmap((Bitmap)localObject, localModelFastColorFont.jdField_d_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int - i2, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
-      continue;
-      this.jdField_b_of_type_AndroidGraphicsCanvas.drawRect(localModelFastColorFont.jdField_d_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int, localModelFastColorFont.jdField_d_of_type_Int + localModelFastColorFont.jdField_b_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
-      if ((localModelFastColorFont.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof EmoticonSpan))
-      {
-        ((EmoticonSpan)localModelFastColorFont.jdField_a_of_type_AndroidTextStyleCharacterStyle).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localModelFastColorFont.jdField_d_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
-      }
-      else if ((localModelFastColorFont.jdField_a_of_type_AndroidTextStyleCharacterStyle instanceof SignatureActionSpan))
-      {
-        localObject = (SignatureActionSpan)localModelFastColorFont.jdField_a_of_type_AndroidTextStyleCharacterStyle;
-        ((SignatureActionSpan)localObject).jdField_a_of_type_Boolean = false;
-        ((SignatureActionSpan)localObject).draw(this.jdField_b_of_type_AndroidGraphicsCanvas, null, 0, 0, localModelFastColorFont.jdField_d_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int, localModelFastColorFont.jdField_e_of_type_Int + localModelFastColorFont.jdField_c_of_type_Int, this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getPaint());
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.Vas.ColorFont.FounderColorLayout
  * JD-Core Version:    0.7.0.1
  */

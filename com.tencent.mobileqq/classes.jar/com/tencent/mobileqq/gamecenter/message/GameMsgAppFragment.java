@@ -12,15 +12,16 @@ import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.view.Window;
 import android.widget.FrameLayout;
+import com.tencent.hippy.qq.api.IHippyAccessHelper;
 import com.tencent.hippy.qq.app.HippyQQPreloadEngine;
 import com.tencent.hippy.qq.fragment.BaseHippyFragment;
 import com.tencent.hippy.qq.fragment.HippyErrorViewWrapper;
 import com.tencent.hippy.qq.fragment.HippyProgressBarWrapper;
-import com.tencent.hippy.qq.utils.HippyAccessHelper;
 import com.tencent.hippy.qq.utils.HippyReporter;
 import com.tencent.hippy.qq.utils.SerializableMap;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import java.util.HashMap;
 import org.json.JSONObject;
 
@@ -37,12 +38,12 @@ public class GameMsgAppFragment
   
   private void b()
   {
-    boolean bool = false;
     if (this.mHippyQQEngine == null) {
       return;
     }
     HashMap localHashMap1 = generateStepCosts();
     HashMap localHashMap2 = new HashMap();
+    boolean bool = false;
     localHashMap2.put("ret", Integer.valueOf(0));
     localHashMap2.put("errMsg", getLastStepName());
     if (this.mHippyQQEngine != null) {
@@ -55,8 +56,9 @@ public class GameMsgAppFragment
   
   public void a()
   {
-    if (this.jdField_a_of_type_AndroidViewView$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidViewView$OnClickListener.onClick(null);
+    View.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidViewView$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(null);
     }
   }
   
@@ -83,55 +85,50 @@ public class GameMsgAppFragment
   
   protected void a(ViewGroup paramViewGroup, View.OnClickListener paramOnClickListener)
   {
-    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131366416);
+    paramViewGroup = (FrameLayout)paramViewGroup.findViewById(2131366297);
     if (paramViewGroup.getVisibility() != 0) {
       paramViewGroup.setVisibility(0);
     }
     this.jdField_a_of_type_ComTencentHippyQqFragmentHippyErrorViewWrapper.initNetworkErrorView(paramViewGroup, paramOnClickListener);
   }
   
-  public JSONObject doBussinessInitData(JSONObject paramJSONObject)
+  protected JSONObject doBussinessInitData(JSONObject paramJSONObject)
   {
     try
     {
-      Object localObject2 = getParameters();
-      Object localObject1 = paramJSONObject;
-      if (localObject2 != null)
+      Object localObject = getParameters();
+      if (localObject != null)
       {
-        localObject2 = (SerializableMap)((Bundle)localObject2).getSerializable("js_param_map");
-        localObject1 = paramJSONObject;
-        if (localObject2 != null)
+        localObject = (SerializableMap)((Bundle)localObject).getSerializable("js_param_map");
+        if (localObject != null)
         {
-          localObject2 = HippyAccessHelper.wrapHashMap(paramJSONObject, ((SerializableMap)localObject2).getMap());
-          localObject1 = paramJSONObject;
-          if (localObject2 != null) {
-            localObject1 = localObject2;
+          localObject = ((IHippyAccessHelper)QRoute.api(IHippyAccessHelper.class)).wrapHashMap(paramJSONObject, ((SerializableMap)localObject).getMap());
+          if (localObject != null) {
+            paramJSONObject = (JSONObject)localObject;
           }
+          return paramJSONObject;
         }
       }
-      return localObject1;
     }
     catch (Throwable localThrowable)
     {
-      QLog.e("BaseHippyFragment", 1, "doBussinessInitData:" + localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doBussinessInitData:");
+      localStringBuilder.append(localThrowable);
+      QLog.e("BaseHippyFragment", 1, localStringBuilder.toString());
     }
     return paramJSONObject;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    switch (paramMessage.what)
-    {
-    default: 
-      bool = false;
+    if (paramMessage.what != 1) {
+      return false;
     }
-    do
-    {
-      return bool;
-      QLog.d("BaseHippyFragment", 1, "Hippy: load timeout");
-    } while (this.mHippyQQEngine == null);
-    b();
+    QLog.d("BaseHippyFragment", 1, "Hippy: load timeout");
+    if (this.mHippyQQEngine != null) {
+      b();
+    }
     return true;
   }
   
@@ -139,7 +136,7 @@ public class GameMsgAppFragment
   {
     super.initWindowStyleAndAnimation(paramActivity);
     if (Build.VERSION.SDK_INT >= 11) {
-      a(getActivity(), 16777216);
+      a(getQBaseActivity(), 16777216);
     }
   }
   
@@ -149,48 +146,51 @@ public class GameMsgAppFragment
     try
     {
       if (Build.VERSION.SDK_INT >= 11) {
-        a(getActivity(), 16777216);
+        a(getQBaseActivity(), 16777216);
       }
-      this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131558452, null, false));
-      this.b = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368438));
-      loadHippy(this.b);
-      a(this.jdField_a_of_type_AndroidViewViewGroup);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
-      paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup;
-      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
     }
     catch (Throwable paramViewGroup)
     {
-      for (;;)
-      {
-        QLog.e("BaseHippyFragment", 1, "onCreateView setWindowFlag e:" + paramViewGroup);
-      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("onCreateView setWindowFlag e:");
+      paramBundle.append(paramViewGroup);
+      QLog.e("BaseHippyFragment", 1, paramBundle.toString());
     }
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
+    this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)paramLayoutInflater.inflate(2131558481, null, false));
+    this.b = ((ViewGroup)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131368190));
+    loadHippy(this.b);
+    a(this.jdField_a_of_type_AndroidViewViewGroup);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 10000L);
+    paramLayoutInflater = this.jdField_a_of_type_AndroidViewViewGroup;
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.removeCallbacksAndMessages(null);
     }
     super.onDestroy();
   }
   
-  public void onLoadHippyError(int paramInt, String paramString)
+  protected void onLoadHippyError(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    paramString = this.jdField_a_of_type_AndroidOsHandler;
+    if (paramString != null) {
+      paramString.removeMessages(1);
     }
     this.jdField_a_of_type_ComTencentHippyQqFragmentHippyProgressBarWrapper.hideProgressBar();
     a(this.jdField_a_of_type_AndroidViewViewGroup, null);
   }
   
-  public void onLoadHippySuccess()
+  protected void onLoadHippySuccess()
   {
-    if (this.jdField_a_of_type_AndroidOsHandler != null) {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(1);
+    Handler localHandler = this.jdField_a_of_type_AndroidOsHandler;
+    if (localHandler != null) {
+      localHandler.removeMessages(1);
     }
     this.jdField_a_of_type_ComTencentHippyQqFragmentHippyProgressBarWrapper.hideProgressBar();
   }
@@ -207,7 +207,7 @@ public class GameMsgAppFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.message.GameMsgAppFragment
  * JD-Core Version:    0.7.0.1
  */

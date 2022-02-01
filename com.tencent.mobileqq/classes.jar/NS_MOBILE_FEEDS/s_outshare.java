@@ -45,26 +45,31 @@ public final class s_outshare
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    Object localObject = this.title;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.summary != null) {
-      paramJceOutputStream.write(this.summary, 1);
+    localObject = this.summary;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.photourl != null) {
-      paramJceOutputStream.write(this.photourl, 2);
+    localObject = this.photourl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.ark_sharedata != null) {
-      paramJceOutputStream.write(this.ark_sharedata, 3);
+    localObject = this.ark_sharedata;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 4);
+    localObject = this.action_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_outshare
  * JD-Core Version:    0.7.0.1
  */

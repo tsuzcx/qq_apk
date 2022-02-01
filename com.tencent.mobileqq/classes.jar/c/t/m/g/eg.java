@@ -17,21 +17,27 @@ public final class eg
     StringBuilder localStringBuilder1 = new StringBuilder();
     boolean bool = da.a().d("https");
     StringBuilder localStringBuilder2 = new StringBuilder("http");
-    if (bool) {}
-    for (String str = "s";; str = "")
-    {
-      localStringBuilder1.append(str + "://lbs.map.qq.com/loc");
-      localStringBuilder1.append("?");
-      localStringBuilder1.append("c=1");
-      localStringBuilder1.append("&mars=").append(paramInt1);
-      localStringBuilder1.append("&obs=").append(paramInt2);
-      return localStringBuilder1.toString();
+    String str;
+    if (bool) {
+      str = "s";
+    } else {
+      str = "";
     }
+    localStringBuilder2.append(str);
+    localStringBuilder2.append("://lbs.map.qq.com/loc");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append("?");
+    localStringBuilder1.append("c=1");
+    localStringBuilder1.append("&mars=");
+    localStringBuilder1.append(paramInt1);
+    localStringBuilder1.append("&obs=");
+    localStringBuilder1.append(paramInt2);
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.eg
  * JD-Core Version:    0.7.0.1
  */

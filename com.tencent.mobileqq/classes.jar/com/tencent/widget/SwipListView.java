@@ -88,12 +88,13 @@ public class SwipListView
   {
     int i = getScrollVelocity();
     int j = this.mCurItemView.getScrollX();
-    if (i > this.mMinFlingVelocity)
+    int k = this.mMinFlingVelocity;
+    if (i > k)
     {
       hiddeRight(this.mCurItemView);
       return;
     }
-    if (i < -this.mMinFlingVelocity)
+    if (i < -k)
     {
       showRight(this.mCurItemView);
       return;
@@ -123,11 +124,10 @@ public class SwipListView
   
   private int getAnimDuration(int paramInt1, int paramInt2)
   {
-    int i = 300;
     if (paramInt1 > 0) {
-      i = (int)(Math.abs(paramInt2) / paramInt1 * 300.0F) + 50;
+      return (int)(Math.abs(paramInt2) / paramInt1 * 300.0F) + 50;
     }
-    return i;
+    return 300;
   }
   
   private int getScrollVelocity()
@@ -138,35 +138,38 @@ public class SwipListView
   
   private void hiddeRight(View paramView)
   {
-    if (paramView != null) {}
-    for (int i = paramView.getScrollX();; i = 0)
+    int i;
+    if (paramView != null) {
+      i = paramView.getScrollX();
+    } else {
+      i = 0;
+    }
+    Object localObject = this.mListener;
+    if (localObject != null) {
+      ((SwipListView.SwipListListener)localObject).updateCurShowRightView(null);
+    }
+    if (i != 0)
     {
-      if (this.mListener != null) {
-        this.mListener.updateCurShowRightView(null);
+      int j;
+      if ((paramView.getTag(-3) instanceof Integer)) {
+        j = ((Integer)paramView.getTag(-3)).intValue();
+      } else {
+        j = 0;
       }
-      if (i != 0) {
-        if (!(paramView.getTag(-3) instanceof Integer)) {
-          break label139;
-        }
+      localObject = this.mToAnimView;
+      if ((localObject != paramView) && (localObject != null)) {
+        ((View)localObject).scrollTo(0, 0);
       }
-      label139:
-      for (int j = ((Integer)paramView.getTag(-3)).intValue();; j = 0)
-      {
-        if ((this.mToAnimView != paramView) && (this.mToAnimView != null)) {
-          this.mToAnimView.scrollTo(0, 0);
-        }
-        cancelShowHideAnim();
-        this.mToAnimView = paramView;
-        int k = -i;
-        this.mScroller.startScroll(i, 0, k, 0, getAnimDuration(j, k));
-        this.mScrollerHandler.sendEmptyMessage(1);
-        do
-        {
-          return;
-        } while (this.mRIMListenr == null);
-        this.mRIMListenr.onRightIconMenuHide(paramView);
-        return;
-      }
+      cancelShowHideAnim();
+      this.mToAnimView = paramView;
+      int k = -i;
+      this.mScroller.startScroll(i, 0, k, 0, getAnimDuration(j, k));
+      this.mScrollerHandler.sendEmptyMessage(1);
+      return;
+    }
+    localObject = this.mRIMListenr;
+    if (localObject != null) {
+      ((SwipListView.RightIconMenuListener)localObject).onRightIconMenuHide(paramView);
     }
   }
   
@@ -182,24 +185,25 @@ public class SwipListView
   
   private boolean judgeScrollDirection(float paramFloat1, float paramFloat2)
   {
-    if ((paramFloat1 > this.scaledTouchSlop) || (paramFloat2 > this.scaledTouchSlop))
+    int i = this.scaledTouchSlop;
+    if ((paramFloat1 <= i) && (paramFloat2 <= i)) {
+      return false;
+    }
+    if ((paramFloat1 > this.scaledTouchSlop) && (paramFloat2 / paramFloat1 < 0.6F))
     {
-      if ((paramFloat1 > this.scaledTouchSlop) && (paramFloat2 / paramFloat1 < 0.6F))
-      {
-        this.mSlideDir = 1;
-        return true;
-      }
-      this.mSlideDir = 2;
+      this.mSlideDir = 1;
       return true;
     }
-    return false;
+    this.mSlideDir = 2;
+    return true;
   }
   
   private void recycleVelocityTracker()
   {
-    if (this.velocityTracker != null)
+    VelocityTracker localVelocityTracker = this.velocityTracker;
+    if (localVelocityTracker != null)
     {
-      this.velocityTracker.recycle();
+      localVelocityTracker.recycle();
       this.velocityTracker = null;
     }
   }
@@ -207,246 +211,215 @@ public class SwipListView
   private void scrollItemView(int paramInt1, int paramInt2, View paramView, int paramInt3)
   {
     paramInt2 = this.mCurX;
-    paramInt1 = paramView.getScrollX() - (paramInt1 - paramInt2);
-    if (paramInt1 > paramInt3) {}
-    for (;;)
+    paramInt2 = paramView.getScrollX() - (paramInt1 - paramInt2);
+    if (paramInt2 > paramInt3)
     {
-      paramView.scrollTo(paramInt3, 0);
-      return;
-      if (paramInt1 < 0) {
-        paramInt3 = 0;
-      } else {
-        paramInt3 = paramInt1;
+      paramInt1 = paramInt3;
+    }
+    else
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 < 0) {
+        paramInt1 = 0;
       }
     }
+    paramView.scrollTo(paramInt1, 0);
   }
   
   private void showRight(View paramView)
   {
-    int j;
+    int i;
     if (paramView != null)
     {
-      j = paramView.getScrollX();
-      i = j;
-      if (this.mListener != null) {
-        this.mListener.updateCurShowRightView(paramView);
+      i = paramView.getScrollX();
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipListView.SwipListListener)localObject).updateCurShowRightView(paramView);
       }
     }
-    for (int i = j;; i = 0)
+    else
     {
-      j = this.mCurViewRVWidth;
-      if ((j == 0) && (paramView != null) && ((paramView.getTag(-3) instanceof Integer))) {
-        j = ((Integer)paramView.getTag(-3)).intValue();
-      }
-      for (;;)
+      i = 0;
+    }
+    int k = this.mCurViewRVWidth;
+    int j = k;
+    if (k == 0)
+    {
+      j = k;
+      if (paramView != null)
       {
-        if (i != j)
-        {
-          if ((this.mToAnimView != paramView) && (this.mToAnimView != null)) {
-            this.mToAnimView.scrollTo(0, 0);
-          }
-          cancelShowHideAnim();
-          this.mToAnimView = paramView;
-          k = j - i;
-          this.mScroller.startScroll(i, 0, k, 0, getAnimDuration(j, k));
-          this.mScrollerHandler.sendEmptyMessage(0);
+        j = k;
+        if ((paramView.getTag(-3) instanceof Integer)) {
+          j = ((Integer)paramView.getTag(-3)).intValue();
         }
-        while ((this.mRIMListenr == null) || (paramView == null))
-        {
-          int k;
-          return;
-        }
-        this.mRIMListenr.onRightIconMenuShow(paramView);
-        return;
       }
+    }
+    if (i != j)
+    {
+      localObject = this.mToAnimView;
+      if ((localObject != paramView) && (localObject != null)) {
+        ((View)localObject).scrollTo(0, 0);
+      }
+      cancelShowHideAnim();
+      this.mToAnimView = paramView;
+      k = j - i;
+      this.mScroller.startScroll(i, 0, k, 0, getAnimDuration(j, k));
+      this.mScrollerHandler.sendEmptyMessage(0);
+      return;
+    }
+    Object localObject = this.mRIMListenr;
+    if ((localObject != null) && (paramView != null)) {
+      ((SwipListView.RightIconMenuListener)localObject).onRightIconMenuShow(paramView);
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    boolean bool;
+    float f;
+    int j;
+    View localView;
+    if (i != 0)
     {
-    default: 
-      bool = false;
-    }
-    do
-    {
-      return bool;
-      bool = this.mScroller.computeScrollOffset();
-      float f = this.mScroller.getCurrX();
-      if ((this.mToAnimView != null) && (this.mToAnimView.getScrollX() < (int)f))
+      if (i != 1)
       {
-        this.mToAnimView.scrollTo((int)f, 0);
-        invalidate();
+        if (i != 2) {
+          return false;
+        }
+        paramMessage = this.mListener;
+        if (paramMessage != null)
+        {
+          paramMessage.hideMenuPop();
+          return true;
+        }
+      }
+      else
+      {
+        bool = this.mScroller.computeScrollOffset();
+        f = this.mScroller.getCurrX();
+        paramMessage = this.mToAnimView;
+        if (paramMessage != null)
+        {
+          i = paramMessage.getScrollX();
+          j = (int)f;
+          if (i > j)
+          {
+            this.mToAnimView.scrollTo(j, 0);
+            invalidate();
+          }
+        }
+        if (bool)
+        {
+          this.mScrollerHandler.sendEmptyMessage(1);
+          return true;
+        }
+        paramMessage = this.mRIMListenr;
+        if (paramMessage != null)
+        {
+          localView = this.mToAnimView;
+          if (localView != null) {
+            paramMessage.onRightIconMenuHide(localView);
+          }
+        }
+        this.mToAnimView = null;
+        return true;
+      }
+    }
+    else
+    {
+      bool = this.mScroller.computeScrollOffset();
+      f = this.mScroller.getCurrX();
+      paramMessage = this.mToAnimView;
+      if (paramMessage != null)
+      {
+        i = paramMessage.getScrollX();
+        j = (int)f;
+        if (i < j)
+        {
+          this.mToAnimView.scrollTo(j, 0);
+          invalidate();
+        }
       }
       if (bool)
       {
         this.mScrollerHandler.sendEmptyMessage(0);
         return true;
       }
-      if ((this.mRIMListenr != null) && (this.mToAnimView != null)) {
-        this.mRIMListenr.onRightIconMenuShow(this.mToAnimView);
+      paramMessage = this.mRIMListenr;
+      if (paramMessage != null)
+      {
+        localView = this.mToAnimView;
+        if (localView != null) {
+          paramMessage.onRightIconMenuShow(localView);
+        }
       }
       this.mToAnimView = null;
-      return true;
-      bool = this.mScroller.computeScrollOffset();
-      f = this.mScroller.getCurrX();
-      if ((this.mToAnimView != null) && (this.mToAnimView.getScrollX() > (int)f))
-      {
-        this.mToAnimView.scrollTo((int)f, 0);
-        invalidate();
-      }
-      if (bool)
-      {
-        this.mScrollerHandler.sendEmptyMessage(1);
-        return true;
-      }
-      if ((this.mRIMListenr != null) && (this.mToAnimView != null)) {
-        this.mRIMListenr.onRightIconMenuHide(this.mToAnimView);
-      }
-      this.mToAnimView = null;
-      return true;
-    } while (this.mListener == null);
-    this.mListener.hideMenuPop();
+    }
     return true;
   }
   
   public void hideCurShowingRightView()
   {
-    int i;
-    int j;
     if (!isShowingRightView(this.mCurItemView))
     {
-      i = getFirstVisiblePosition() - getHeaderViewsCount();
-      j = getLastVisiblePosition();
-    }
-    for (;;)
-    {
-      if (i <= j)
+      int i = getFirstVisiblePosition() - getHeaderViewsCount();
+      int j = getLastVisiblePosition();
+      while (i <= j)
       {
         View localView = getChildAt(i);
-        if (isShowingRightView(localView)) {
+        if (isShowingRightView(localView))
+        {
           this.mCurItemView = localView;
+          break;
         }
+        i += 1;
       }
-      else
-      {
-        hiddeRight(this.mCurItemView);
-        return;
-      }
-      i += 1;
     }
+    hiddeRight(this.mCurItemView);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2;
-    if (!this.mDragEnable)
-    {
-      bool2 = super.onInterceptTouchEvent(paramMotionEvent);
-      return bool2;
+    if (!this.mDragEnable) {
+      return super.onInterceptTouchEvent(paramMotionEvent);
     }
     int j = (int)(paramMotionEvent.getX() + 0.5F);
     int i = (int)(paramMotionEvent.getY() + 0.5F);
     int k = paramMotionEvent.getAction();
-    label76:
-    boolean bool1;
-    switch (k)
+    if (k != 0)
     {
-    default: 
-      bool1 = false;
-      label79:
-      if ((k == 0) && (this.mIsShowRV))
-      {
-        if (this.mListener != null) {
-          this.mListener.interceptTouchEvent(true);
-        }
-        cancelShowHideAnim();
-      }
-      break;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (bool1) {
-        break;
-      }
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      this.mSlideDir = 0;
-      if (this.mListener != null) {
-        this.mListener.updateCurShowRightView(null);
-      }
-      this.mStartX = j;
-      this.mCurX = j;
-      this.mStartY = i;
-      this.mCurY = i;
-      this.mPreItemView = this.mCurItemView;
-      this.mIsShowRV = isShowingRightView(this.mPreItemView);
-      int m;
-      int n;
-      if (!this.mIsShowRV)
-      {
-        m = getFirstVisiblePosition();
-        n = getHeaderViewsCount();
-        i = getLastVisiblePosition();
-      }
-      for (;;)
-      {
-        if (i >= m - n)
+      if (k != 1) {
+        if (k != 2)
         {
-          View localView = getChildAt(i);
-          this.mIsShowRV = isShowingRightView(localView);
-          if (this.mIsShowRV) {
-            this.mPreItemView = localView;
+          if (k != 3) {
+            break label189;
           }
         }
         else
         {
-          this.mCurViewRVWidth = 0;
-          this.mCurItemView = null;
-          i = this.mStartY;
-          if (isOverscrollHeadVisiable()) {
-            i = this.mStartY + getScrollY();
+          if (this.mCurViewRVWidth <= 0) {
+            break label189;
           }
-          i = pointToPosition(this.mStartX, i);
-          if (i >= 0)
-          {
-            this.mCurItemView = getChildAt(i - getFirstVisiblePosition());
-            if ((this.mCurItemView != null) && ((this.mCurItemView.getTag(-3) instanceof Integer))) {
-              this.mCurViewRVWidth = ((Integer)this.mCurItemView.getTag(-3)).intValue();
-            }
+          if (this.mSlideDir == 0) {
+            judgeScrollDirection(Math.abs(j - this.mStartX), Math.abs(i - this.mStartY));
           }
-          if ((!this.mIsShowRV) || ((this.mCurItemView == this.mPreItemView) && (!isHitCurItemLeft(j)))) {
-            break label393;
+          if (this.mSlideDir != 1) {
+            break label189;
           }
-          bool1 = true;
-          break;
+          if (j < this.mStartX) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+          bool1 = bool2;
+          if (!bool2) {
+            break label465;
+          }
+          this.mScrollerHandler.sendEmptyMessage(2);
+          bool1 = bool2;
+          break label465;
         }
-        i -= 1;
-      }
-      label393:
-      bool1 = false;
-      break label79;
-      if (this.mCurViewRVWidth <= 0) {
-        break label76;
-      }
-      if (this.mSlideDir == 0) {
-        judgeScrollDirection(Math.abs(j - this.mStartX), Math.abs(i - this.mStartY));
-      }
-      if (this.mSlideDir != 1) {
-        break label76;
-      }
-      if (j < this.mStartX) {}
-      for (bool2 = true;; bool2 = false)
-      {
-        bool1 = bool2;
-        if (!bool2) {
-          break;
-        }
-        this.mScrollerHandler.sendEmptyMessage(2);
-        bool1 = bool2;
-        break;
       }
       if (this.mIsShowRV) {
         hiddeRight(this.mPreItemView);
@@ -455,167 +428,228 @@ public class SwipListView
       this.mCurX = -1;
       this.mStartY = -1;
       this.mCurY = -1;
-      break label76;
-      if (((k == 1) || (k == 3)) && (this.mListener != null)) {
-        this.mListener.interceptTouchEvent(false);
+    }
+    label189:
+    Object localObject;
+    do
+    {
+      bool1 = false;
+      break;
+      this.mSlideDir = 0;
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipListView.SwipListListener)localObject).updateCurShowRightView(null);
+      }
+      this.mStartX = j;
+      this.mCurX = j;
+      this.mStartY = i;
+      this.mCurY = i;
+      this.mPreItemView = this.mCurItemView;
+      this.mIsShowRV = isShowingRightView(this.mPreItemView);
+      if (!this.mIsShowRV)
+      {
+        int m = getFirstVisiblePosition();
+        int n = getHeaderViewsCount();
+        i = getLastVisiblePosition();
+        while (i >= m - n)
+        {
+          localObject = getChildAt(i);
+          this.mIsShowRV = isShowingRightView((View)localObject);
+          if (this.mIsShowRV)
+          {
+            this.mPreItemView = ((View)localObject);
+            break;
+          }
+          i -= 1;
+        }
+      }
+      this.mCurViewRVWidth = 0;
+      this.mCurItemView = null;
+      i = this.mStartY;
+      if (isOverscrollHeadVisiable()) {
+        i = this.mStartY + getScrollY();
+      }
+      i = pointToPosition(this.mStartX, i);
+      if (i >= 0)
+      {
+        this.mCurItemView = getChildAt(i - getFirstVisiblePosition());
+        localObject = this.mCurItemView;
+        if ((localObject != null) && ((((View)localObject).getTag(-3) instanceof Integer))) {
+          this.mCurViewRVWidth = ((Integer)this.mCurItemView.getTag(-3)).intValue();
+        }
+      }
+    } while ((!this.mIsShowRV) || ((this.mCurItemView == this.mPreItemView) && (!isHitCurItemLeft(j))));
+    boolean bool1 = true;
+    label465:
+    if ((k == 0) && (this.mIsShowRV))
+    {
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipListView.SwipListListener)localObject).interceptTouchEvent(true);
+      }
+      cancelShowHideAnim();
+    }
+    else if ((k == 1) || (k == 3))
+    {
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipListView.SwipListListener)localObject).interceptTouchEvent(false);
       }
     }
+    boolean bool2 = bool1;
+    if (!bool1) {
+      bool2 = super.onInterceptTouchEvent(paramMotionEvent);
+    }
+    return bool2;
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool2;
-    if (!this.mDragEnable)
-    {
-      bool2 = super.onTouchEvent(paramMotionEvent);
-      return bool2;
+    if (!this.mDragEnable) {
+      return super.onTouchEvent(paramMotionEvent);
     }
     addVelocityTracker(paramMotionEvent);
     int i = (int)(paramMotionEvent.getX() + 0.5F);
     int j = (int)(paramMotionEvent.getY() + 0.5F);
     int k = paramMotionEvent.getAction();
     boolean bool1;
-    switch (k)
+    label265:
+    label268:
+    label282:
+    label285:
+    Object localObject;
+    if (k != 0)
     {
-    default: 
-      bool1 = false;
-    case 0: 
-    case 2: 
-      for (;;)
+      if (k != 1)
       {
-        if ((k == 0) && (this.mIsShowRV))
+        if (k != 2)
         {
-          if (this.mListener != null) {
-            this.mListener.interceptTouchEvent(true);
-          }
-          label112:
-          bool2 = bool1;
-          if (bool1) {
-            break;
-          }
-          return super.onTouchEvent(paramMotionEvent);
-          if ((this.mIsShowRV) && ((this.mCurItemView != this.mPreItemView) || (isHitCurItemLeft(i)))) {}
-          for (bool2 = true;; bool2 = false)
-          {
-            bool1 = bool2;
-            if (!this.mIsShowRV) {
-              break;
-            }
-            bool1 = bool2;
-            if (this.mPreItemView == this.mCurItemView) {
-              break;
-            }
-            hiddeRight(this.mPreItemView);
-            bool1 = bool2;
-            break;
-          }
-          if (this.mIsShowRV) {
-            if ((this.mCurItemView != this.mPreItemView) || (isHitCurItemLeft(i)))
-            {
-              bool2 = true;
-              label234:
-              bool1 = bool2;
-              if (this.mCurItemView == this.mPreItemView)
-              {
-                if (this.mSlideDir == 0)
-                {
-                  bool1 = bool2;
-                  if (!judgeScrollDirection(Math.abs(i - this.mStartX), Math.abs(j - this.mStartY))) {
-                    continue;
-                  }
-                }
-                bool1 = bool2;
-                if (this.mSlideDir == 1)
-                {
-                  scrollItemView(i, j, this.mCurItemView, this.mCurViewRVWidth);
-                  bool1 = true;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      this.mCurX = i;
-      this.mCurY = j;
-      break;
-      bool2 = false;
-      break label234;
-      if (this.mCurViewRVWidth == 0)
-      {
-        bool1 = false;
-      }
-      else
-      {
-        if ((this.mSlideDir == 0) && (!judgeScrollDirection(Math.abs(i - this.mStartX), Math.abs(j - this.mStartY))))
-        {
-          bool1 = false;
-          break;
-        }
-        if (this.mSlideDir == 1)
-        {
-          scrollItemView(i, j, this.mCurItemView, this.mCurViewRVWidth);
-          bool1 = true;
-          continue;
-          if (this.mIsShowRV) {
-            if ((this.mCurItemView != this.mPreItemView) || (isHitCurItemLeft(i)))
-            {
-              bool2 = true;
-              label446:
-              bool1 = bool2;
-              if (this.mCurItemView == this.mPreItemView)
-              {
-                if (this.mSlideDir != 1) {
-                  break label509;
-                }
-                endOfTouch();
-                bool1 = true;
-              }
-            }
-          }
-          for (;;)
-          {
-            recycleVelocityTracker();
-            this.mStartX = -1;
-            this.mCurX = -1;
-            this.mStartY = -1;
-            this.mCurY = -1;
-            break;
-            bool2 = false;
-            break label446;
-            label509:
-            hiddeRight(this.mCurItemView);
-            bool1 = bool2;
-            continue;
-            if (this.mCurViewRVWidth == 0)
-            {
-              bool1 = false;
-            }
-            else
-            {
-              if (this.mSlideDir == 1)
-              {
-                endOfTouch();
-                bool1 = true;
-                continue;
-                if (((k != 1) && (k != 3)) || (this.mListener == null)) {
-                  break label112;
-                }
-                this.mListener.interceptTouchEvent(false);
-                break label112;
-              }
-              bool1 = false;
-            }
+          if (k == 3) {
+            break label285;
           }
         }
         else
         {
-          bool1 = false;
+          if (this.mIsShowRV)
+          {
+            if ((this.mCurItemView == this.mPreItemView) && (!isHitCurItemLeft(i))) {
+              bool1 = false;
+            } else {
+              bool1 = true;
+            }
+            bool2 = bool1;
+            if (this.mCurItemView != this.mPreItemView) {
+              break label268;
+            }
+            if ((this.mSlideDir == 0) && (!judgeScrollDirection(Math.abs(i - this.mStartX), Math.abs(j - this.mStartY)))) {
+              break label282;
+            }
+            bool2 = bool1;
+            if (this.mSlideDir != 1) {
+              break label268;
+            }
+            scrollItemView(i, j, this.mCurItemView, this.mCurViewRVWidth);
+            break label265;
+          }
+          if (this.mCurViewRVWidth != 0) {}
+        }
+        do
+        {
+          bool2 = false;
+          break;
+          if ((this.mSlideDir == 0) && (!judgeScrollDirection(Math.abs(i - this.mStartX), Math.abs(j - this.mStartY))))
+          {
+            bool1 = false;
+            break label505;
+          }
+        } while (this.mSlideDir != 1);
+        scrollItemView(i, j, this.mCurItemView, this.mCurViewRVWidth);
+        bool2 = true;
+        this.mCurX = i;
+        this.mCurY = j;
+        bool1 = bool2;
+        break label505;
+      }
+      if (this.mIsShowRV)
+      {
+        if ((this.mCurItemView == this.mPreItemView) && (!isHitCurItemLeft(i))) {
+          bool2 = false;
+        } else {
+          bool2 = true;
+        }
+        localObject = this.mCurItemView;
+        bool1 = bool2;
+        if (localObject != this.mPreItemView) {
+          break label402;
+        }
+        if (this.mSlideDir == 1)
+        {
+          endOfTouch();
+        }
+        else
+        {
+          hiddeRight((View)localObject);
+          bool1 = bool2;
+          break label402;
+        }
+      }
+      else
+      {
+        if ((this.mCurViewRVWidth == 0) || (this.mSlideDir != 1)) {
+          break label399;
+        }
+        endOfTouch();
+      }
+      bool1 = true;
+      break label402;
+      label399:
+      bool1 = false;
+      label402:
+      recycleVelocityTracker();
+      this.mStartX = -1;
+      this.mCurX = -1;
+      this.mStartY = -1;
+      this.mCurY = -1;
+    }
+    else
+    {
+      if ((this.mIsShowRV) && ((this.mCurItemView != this.mPreItemView) || (isHitCurItemLeft(i)))) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      bool1 = bool2;
+      if (this.mIsShowRV)
+      {
+        localObject = this.mPreItemView;
+        bool1 = bool2;
+        if (localObject != this.mCurItemView)
+        {
+          hiddeRight((View)localObject);
+          bool1 = bool2;
         }
       }
     }
+    label505:
+    if ((k == 0) && (this.mIsShowRV))
+    {
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipListView.SwipListListener)localObject).interceptTouchEvent(true);
+      }
+    }
+    else if ((k == 1) || (k == 3))
+    {
+      localObject = this.mListener;
+      if (localObject != null) {
+        ((SwipListView.SwipListListener)localObject).interceptTouchEvent(false);
+      }
+    }
+    boolean bool2 = bool1;
+    if (!bool1) {
+      bool2 = super.onTouchEvent(paramMotionEvent);
+    }
+    return bool2;
   }
   
   public void setAdapter(ListAdapter paramListAdapter)
@@ -652,7 +686,7 @@ public class SwipListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.SwipListView
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ class PagerSnapHelper$2
     super(paramContext);
   }
   
-  public int calculateTimeForDeceleration(int paramInt)
+  protected int calculateTimeForDeceleration(int paramInt)
   {
     return Math.min(300, super.calculateTimeForDeceleration(paramInt));
   }
@@ -26,7 +26,7 @@ class PagerSnapHelper$2
     return this.val$layoutManager.computeScrollVectorForPosition(paramInt);
   }
   
-  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
+  protected void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
   {
     paramView = PagerSnapHelper.access$1400(this.this$0, this.val$layoutManager, paramView);
     int i = paramView[0];
@@ -42,7 +42,7 @@ class PagerSnapHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.support.PagerSnapHelper.2
  * JD-Core Version:    0.7.0.1
  */

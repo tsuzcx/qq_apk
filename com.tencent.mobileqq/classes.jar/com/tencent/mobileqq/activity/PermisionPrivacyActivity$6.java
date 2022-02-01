@@ -13,18 +13,19 @@ class PermisionPrivacyActivity$6
   public void run()
   {
     ArrayList localArrayList = ((FriendsManager)this.this$0.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).a();
-    if ((localArrayList == null) || (localArrayList.isEmpty())) {}
-    for (int i = 0;; i = localArrayList.size())
-    {
-      PermisionPrivacyActivity.a(this.this$0, i);
-      this.this$0.runOnUiThread(new PermisionPrivacyActivity.6.1(this));
-      return;
+    int i;
+    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
+      i = localArrayList.size();
+    } else {
+      i = 0;
     }
+    PermisionPrivacyActivity.a(this.this$0, i);
+    this.this$0.runOnUiThread(new PermisionPrivacyActivity.6.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.6
  * JD-Core Version:    0.7.0.1
  */

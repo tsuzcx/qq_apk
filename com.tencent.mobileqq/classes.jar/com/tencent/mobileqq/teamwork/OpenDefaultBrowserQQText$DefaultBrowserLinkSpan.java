@@ -16,26 +16,31 @@ public class OpenDefaultBrowserQQText$DefaultBrowserLinkSpan
     super(paramString);
   }
   
-  public void a(View paramView, String paramString)
+  protected void a(View paramView, String paramString)
   {
     paramString = Uri.parse(paramString);
-    paramView = paramView.getContext();
-    paramString = new Intent("android.intent.action.VIEW", paramString);
-    paramString.putExtra("com.android.browser.application_id", paramView.getPackageName());
+    Context localContext = paramView.getContext();
+    paramView = new Intent("android.intent.action.VIEW", paramString);
+    paramView.putExtra("com.android.browser.application_id", localContext.getPackageName());
     try
     {
-      paramView.startActivity(paramString);
+      localContext.startActivity(paramView);
       return;
     }
-    catch (ActivityNotFoundException paramView)
+    catch (ActivityNotFoundException paramString)
     {
-      QLog.w("OpenDefaultBrowserQQText", 1, "Activity was not found for intent, " + paramString.toString());
+      label38:
+      break label38;
     }
+    paramString = new StringBuilder();
+    paramString.append("Activity was not found for intent, ");
+    paramString.append(paramView.toString());
+    QLog.w("OpenDefaultBrowserQQText", 1, paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.OpenDefaultBrowserQQText.DefaultBrowserLinkSpan
  * JD-Core Version:    0.7.0.1
  */

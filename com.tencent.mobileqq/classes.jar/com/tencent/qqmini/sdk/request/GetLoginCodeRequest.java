@@ -40,24 +40,22 @@ public class GetLoginCodeRequest
     try
     {
       localStGetCodeRsp.mergeFrom(paramArrayOfByte);
-      if (localStGetCodeRsp != null)
-      {
-        paramJSONObject.put("code", localStGetCodeRsp.code.get());
-        return paramJSONObject;
-      }
+      paramJSONObject.put("code", localStGetCodeRsp.code.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("ProtoBufRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("ProtoBufRequest", paramJSONObject.toString());
     }
-    QMLog.d("ProtoBufRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetLoginCodeRequest
  * JD-Core Version:    0.7.0.1
  */

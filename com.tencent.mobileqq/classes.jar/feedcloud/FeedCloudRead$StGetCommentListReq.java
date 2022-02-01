@@ -26,13 +26,14 @@ public final class FeedCloudRead$StGetCommentListReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 58, 66, 74 }, new String[] { "extInfo", "userId", "feedId", "listNum", "from", "feedAttchInfo", "busiReqData", "likeKey", "busiTranparent" }, new Object[] { null, "", "", Integer.valueOf(0), Integer.valueOf(0), "", localByteStringMicro, "", null }, StGetCommentListReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 50, 58, 66, 74 }, new String[] { "extInfo", "userId", "feedId", "listNum", "from", "feedAttchInfo", "busiReqData", "likeKey", "busiTranparent" }, new Object[] { null, "", "", localInteger, localInteger, "", localByteStringMicro, "", null }, StGetCommentListReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetCommentListReq
  * JD-Core Version:    0.7.0.1
  */

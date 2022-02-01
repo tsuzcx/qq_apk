@@ -12,27 +12,44 @@ class RequestFollowCase$1
   
   public void onFollowUserFail(String paramString)
   {
-    RequestFollowCase.access$600(this.this$0).i("RequestFollowCase", "onQueryFollowSuccess--onFollowUserFail--errMsg=" + paramString, new Object[0]);
-    RequestFollowCase.access$700(this.this$0, new RequestFollowCase.ResponseValue(true, false));
+    LogInterface localLogInterface = RequestFollowCase.access$500(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onQueryFollowSuccess--onFollowUserFail--errMsg=");
+    localStringBuilder.append(paramString);
+    localLogInterface.i("RequestFollowCase", localStringBuilder.toString(), new Object[0]);
+    RequestFollowCase.access$600(this.this$0, new RequestFollowCase.ResponseValue(true, false));
   }
   
   public void onFollowUserSuccess(FollowUserRspModel paramFollowUserRspModel)
   {
-    RequestFollowCase.access$000(this.this$0).i("MiniCardCreateProcessor", "onFollowUserSuccess uin:" + this.val$userUid.toString() + " ret:" + paramFollowUserRspModel.ret, new Object[0]);
+    LogInterface localLogInterface = RequestFollowCase.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onFollowUserSuccess uin:");
+    localStringBuilder.append(this.val$userUid.toString());
+    localStringBuilder.append(" ret:");
+    localStringBuilder.append(paramFollowUserRspModel.ret);
+    localLogInterface.i("MiniCardCreateProcessor", localStringBuilder.toString(), new Object[0]);
     if (paramFollowUserRspModel.ret != 0L)
     {
-      RequestFollowCase.access$100(this.this$0).i("RequestFollowCase", "onQueryFollowSuccess--onFollowUserFail--errMsg=" + paramFollowUserRspModel.msg, new Object[0]);
+      localLogInterface = RequestFollowCase.access$100(this.this$0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onQueryFollowSuccess--onFollowUserFail--errMsg=");
+      localStringBuilder.append(paramFollowUserRspModel.msg);
+      localLogInterface.i("RequestFollowCase", localStringBuilder.toString(), new Object[0]);
       RequestFollowCase.access$200(this.this$0, new RequestFollowCase.ResponseValue(true, false));
       return;
     }
-    RequestFollowCase.access$300(this.this$0).i("RequestFollowCase", "onQueryFollowSuccess--onFollowUserSuccess--intentFollow=" + this.val$intentFollow, new Object[0]);
-    RequestFollowCase.access$402(this.this$0, this.val$intentFollow);
-    RequestFollowCase.access$500(this.this$0, new RequestFollowCase.ResponseValue(false, true));
+    localLogInterface = RequestFollowCase.access$300(this.this$0);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onQueryFollowSuccess--onFollowUserSuccess--intentFollow=");
+    localStringBuilder.append(this.val$intentFollow);
+    localLogInterface.i("RequestFollowCase", localStringBuilder.toString(), new Object[0]);
+    RequestFollowCase.access$400(this.this$0, new RequestFollowCase.ResponseValue(false, paramFollowUserRspModel.isFans));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.domain.usecase.RequestFollowCase.1
  * JD-Core Version:    0.7.0.1
  */

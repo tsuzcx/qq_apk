@@ -42,100 +42,125 @@ public class c
   
   private void a(int paramInt, String paramString, MonitorType paramMonitorType)
   {
-    if (this.c != null) {
-      this.c.onMonitorFinish(this.a, new MonitorResult(this.b, paramInt, paramString, paramMonitorType));
+    MonitorListener localMonitorListener = this.c;
+    if (localMonitorListener != null) {
+      localMonitorListener.onMonitorFinish(this.a, new MonitorResult(this.b, paramInt, paramString, paramMonitorType));
     }
   }
   
   private void b()
   {
-    ab.c("WashMonitor", "ReplaceMonitorTask >>updateLastModifyTime enter lastModifyTime = " + this.a.lastModifedTime);
-    Object localObject;
-    if ((this.b == MonitorStep.DOWNLOADING) || (this.b == MonitorStep.BEFORE_INSTALL))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ReplaceMonitorTask >>updateLastModifyTime enter lastModifyTime = ");
+    ((StringBuilder)localObject).append(this.a.lastModifedTime);
+    ab.c("WashMonitor", ((StringBuilder)localObject).toString());
+    if ((this.b != MonitorStep.DOWNLOADING) && (this.b != MonitorStep.BEFORE_INSTALL))
+    {
+      localObject = q.c(this.a.packageName);
+      if (localObject != null) {
+        this.a.lastModifedTime = ((PackageInfo)localObject).lastUpdateTime;
+      }
+    }
+    else
     {
       localObject = new File(this.a.filePath);
       if (((File)localObject).exists()) {
         this.a.lastModifedTime = ((File)localObject).lastModified();
       }
     }
-    for (;;)
-    {
-      com.tencent.replacemonitor.replace.b.a.a().a(this.a);
-      ab.c("WashMonitor", "ReplaceMonitorTask >>updateLastModifyTime exit lastModifyTime = " + this.a.lastModifedTime);
-      return;
-      localObject = q.c(this.a.packageName);
-      if (localObject != null) {
-        this.a.lastModifedTime = ((PackageInfo)localObject).lastUpdateTime;
-      }
-    }
+    com.tencent.replacemonitor.replace.b.a.a().a(this.a);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ReplaceMonitorTask >>updateLastModifyTime exit lastModifyTime = ");
+    ((StringBuilder)localObject).append(this.a.lastModifedTime);
+    ab.c("WashMonitor", ((StringBuilder)localObject).toString());
   }
   
   private void c()
   {
-    ab.c("WashMonitor", "ReplaceMonitorTask >>updateAppName enter appName = " + this.a.appName);
-    PackageInfo localPackageInfo2 = q.c(this.a.packageName);
-    PackageInfo localPackageInfo1 = localPackageInfo2;
-    if (localPackageInfo2 == null) {
-      localPackageInfo1 = q.b(this.a.filePath);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ReplaceMonitorTask >>updateAppName enter appName = ");
+    ((StringBuilder)localObject).append(this.a.appName);
+    ab.c("WashMonitor", ((StringBuilder)localObject).toString());
+    PackageInfo localPackageInfo = q.c(this.a.packageName);
+    localObject = localPackageInfo;
+    if (localPackageInfo == null) {
+      localObject = q.b(this.a.filePath);
     }
-    if (localPackageInfo1 != null)
+    if (localObject != null)
     {
-      localPackageInfo1.applicationInfo.sourceDir = this.a.filePath;
-      localPackageInfo1.applicationInfo.publicSourceDir = this.a.filePath;
-      this.a.appName = q.a(localPackageInfo1);
-      ab.c("WashMonitor", "ReplaceMonitorTask >>updateAppName success appName = " + this.a.appName);
+      ((PackageInfo)localObject).applicationInfo.sourceDir = this.a.filePath;
+      ((PackageInfo)localObject).applicationInfo.publicSourceDir = this.a.filePath;
+      this.a.appName = q.a((PackageInfo)localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ReplaceMonitorTask >>updateAppName success appName = ");
+      ((StringBuilder)localObject).append(this.a.appName);
+      ab.c("WashMonitor", ((StringBuilder)localObject).toString());
       com.tencent.replacemonitor.replace.b.a.a().a(this.a);
     }
   }
   
   private void d()
   {
-    ab.c("WashMonitor", "ReplaceMonitorTask >>updateInstallDir enter installDir = " + this.a.installDir);
-    PackageInfo localPackageInfo = q.c(this.a.packageName);
-    if ((localPackageInfo != null) && (localPackageInfo.versionCode == this.a.versionCode))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ReplaceMonitorTask >>updateInstallDir enter installDir = ");
+    ((StringBuilder)localObject).append(this.a.installDir);
+    ab.c("WashMonitor", ((StringBuilder)localObject).toString());
+    localObject = q.c(this.a.packageName);
+    if ((localObject != null) && (((PackageInfo)localObject).versionCode == this.a.versionCode))
     {
-      this.a.installDir = localPackageInfo.applicationInfo.sourceDir;
-      ab.c("WashMonitor", "ReplaceMonitorTask >>updateInstallDir success installDir = " + this.a.installDir);
+      this.a.installDir = ((PackageInfo)localObject).applicationInfo.sourceDir;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ReplaceMonitorTask >>updateInstallDir success installDir = ");
+      ((StringBuilder)localObject).append(this.a.installDir);
+      ab.c("WashMonitor", ((StringBuilder)localObject).toString());
       com.tencent.replacemonitor.replace.b.a.a().a(this.a);
     }
   }
   
   private boolean e()
   {
+    boolean bool1 = TextUtils.isEmpty(this.a.packageName);
+    boolean bool2 = false;
     int i;
-    int j;
-    if ((!TextUtils.isEmpty(this.a.packageName)) && (this.a.versionCode > 0))
-    {
+    if ((!bool1) && (this.a.versionCode > 0)) {
       i = 1;
-      if (TextUtils.isEmpty(this.a.filePath)) {
-        break label86;
-      }
-      j = 1;
-      label40:
-      if ((this.a.fileSize <= 0L) && (TextUtils.isEmpty(this.a.fileMd5))) {
-        break label91;
-      }
-    }
-    label86:
-    label91:
-    for (int k = 1;; k = 0)
-    {
-      if ((i == 0) || (j == 0) || (k == 0)) {
-        break label96;
-      }
-      return true;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label40;
     }
-    label96:
-    return false;
+    boolean bool3 = TextUtils.isEmpty(this.a.filePath);
+    int j;
+    if ((this.a.fileSize <= 0L) && (TextUtils.isEmpty(this.a.fileMd5))) {
+      j = 0;
+    } else {
+      j = 1;
+    }
+    bool1 = bool2;
+    if (i != 0)
+    {
+      bool1 = bool2;
+      if ((bool3 ^ true))
+      {
+        bool1 = bool2;
+        if (j != 0) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private boolean f()
   {
-    return (Build.VERSION.SDK_INT < 23) || (GlobalUtil.getInstance().getContext().checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0);
+    int i = Build.VERSION.SDK_INT;
+    boolean bool = true;
+    if (i >= 23)
+    {
+      if (GlobalUtil.getInstance().getContext().checkSelfPermission("android.permission.READ_EXTERNAL_STORAGE") == 0) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public void a()
@@ -144,19 +169,20 @@ public class c
     this.d.add(new d());
     this.d.add(new j());
     this.d.add(new h());
-    if ((com.tencent.replacemonitor.a.a > 0L) && (this.a.fileSize < com.tencent.replacemonitor.a.a)) {}
-    for (int i = 1;; i = 0)
-    {
-      if ((this.a.appType == 1) || (i != 0)) {
-        this.d.add(new f());
-      }
-      if (this.a.appType == 2) {
-        this.d.add(new com.tencent.replacemonitor.replace.a.a());
-      }
-      if (this.a.appType == 3) {
-        this.d.add(new b());
-      }
-      return;
+    int i;
+    if ((com.tencent.replacemonitor.a.a > 0L) && (this.a.fileSize < com.tencent.replacemonitor.a.a)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((this.a.appType == 1) || (i != 0)) {
+      this.d.add(new f());
+    }
+    if (this.a.appType == 2) {
+      this.d.add(new com.tencent.replacemonitor.replace.a.a());
+    }
+    if (this.a.appType == 3) {
+      this.d.add(new b());
     }
   }
   
@@ -167,52 +193,52 @@ public class c
       if (!TextUtils.isEmpty(this.a.filePath)) {
         b();
       }
-      a(3, "普通检测未通过" + toString(), MonitorType.BY_COMMON);
-    }
-    for (;;)
-    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("普通检测未通过");
+      ((StringBuilder)localObject1).append(toString());
+      a(3, ((StringBuilder)localObject1).toString(), MonitorType.BY_COMMON);
       return;
-      if (!f())
+    }
+    if (!f())
+    {
+      a(4, "没有SD卡读权限", MonitorType.BY_COMMON);
+      return;
+    }
+    d();
+    c();
+    Iterator localIterator = this.d.iterator();
+    while (localIterator.hasNext())
+    {
+      Object localObject2 = (i)localIterator.next();
+      localObject1 = null;
+      try
       {
-        a(4, "没有SD卡读权限", MonitorType.BY_COMMON);
-        return;
+        localObject2 = ((i)localObject2).a(this.a, this.b);
+        localObject1 = localObject2;
       }
-      d();
-      c();
-      Iterator localIterator = this.d.iterator();
-      label91:
-      if (localIterator.hasNext())
+      catch (Exception localException)
       {
-        Object localObject1 = (i)localIterator.next();
-        try
-        {
-          localObject1 = ((i)localObject1).a(this.a, this.b);
-          if ((localObject1 == null) || (((MonitorResult)localObject1).resultCode != 1)) {
-            break label91;
-          }
-          if (this.c != null)
-          {
-            this.c.onMonitorFinish(this.a, (MonitorResult)localObject1);
-            return;
-          }
+        localException.printStackTrace();
+      }
+      if ((localObject1 != null) && (((MonitorResult)localObject1).resultCode == 1))
+      {
+        MonitorListener localMonitorListener = this.c;
+        if (localMonitorListener != null) {
+          localMonitorListener.onMonitorFinish(this.a, (MonitorResult)localObject1);
         }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            localException.printStackTrace();
-            Object localObject2 = null;
-          }
-        }
+        return;
       }
     }
     b();
-    a(0, this.b + "检测通过", MonitorType.BY_COMMON);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append("检测通过");
+    a(0, ((StringBuilder)localObject1).toString(), MonitorType.BY_COMMON);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.replacemonitor.replace.c
  * JD-Core Version:    0.7.0.1
  */

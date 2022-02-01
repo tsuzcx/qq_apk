@@ -23,15 +23,16 @@ public final class AdTAID
   
   public static AdTAID getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new AdTAID();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new AdTAID();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   public AdTAID.Entity getEntity(Context paramContext, String paramString)
@@ -48,10 +49,12 @@ public final class AdTAID
   public void init(Context paramContext)
   {
     AdTAIDAdapter localAdTAIDAdapter = getAdapter();
-    if (localAdTAIDAdapter == null) {
+    if (localAdTAIDAdapter == null)
+    {
       AdLog.e("AdTAID", "getEntity error, adapter is null");
+      return;
     }
-    while (this.initialized) {
+    if (this.initialized) {
       return;
     }
     try
@@ -59,10 +62,11 @@ public final class AdTAID
       if (this.initialized) {
         return;
       }
+      this.initialized = true;
+      localAdTAIDAdapter.init(paramContext);
+      return;
     }
     finally {}
-    this.initialized = true;
-    localAdTAIDAdapter.init(paramContext);
   }
   
   public void setAdapter(WeakReference<AdTAIDAdapter> paramWeakReference)

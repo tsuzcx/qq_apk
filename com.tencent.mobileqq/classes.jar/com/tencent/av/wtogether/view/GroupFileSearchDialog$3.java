@@ -12,20 +12,17 @@ class GroupFileSearchDialog$3
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if (paramMotionEvent.getAction() == 1)
     {
-    }
-    for (;;)
-    {
-      return false;
       InputMethodUtil.b(paramView);
       this.a.d();
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.3
  * JD-Core Version:    0.7.0.1
  */

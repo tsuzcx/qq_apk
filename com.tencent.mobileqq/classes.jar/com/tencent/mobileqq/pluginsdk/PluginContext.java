@@ -4,9 +4,12 @@ import android.content.Context;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.content.res.Resources.Theme;
+import android.util.DisplayMetrics;
 import android.view.ContextThemeWrapper;
 import com.tencent.commonsdk.soload.SoLoadCore;
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
@@ -16,7 +19,7 @@ import mqq.app.MobileQQ;
 public class PluginContext
   extends ContextThemeWrapper
 {
-  private static final String TAG = PluginContext.class.getSimpleName();
+  private static final String TAG = "PluginContext";
   private static final boolean USE_RESOURCES_CACHE = false;
   private static final HashMap<String, PluginContext.ContextRIT> sResourcesCache = new HashMap();
   private ClassLoader mClassLoader;
@@ -27,24 +30,21 @@ public class PluginContext
   {
     super(paramContext, paramInt1);
     this.mClassLoader = paramClassLoader;
-    if (paramInt2 == 2) {
+    if (paramInt2 == 2)
+    {
       paramString = getOrCreateRIT(paramContext, new String[] { SoLoadCore.getApkPath(MobileQQ.getContext()), paramString });
     }
-    for (;;)
+    else if (paramInt2 == 1)
     {
-      this.mRIT = paramString;
-      this.mOutContext = paramContext;
-      return;
-      if (paramInt2 == 1)
-      {
-        paramString = new PluginContext.ContextRIT(null, paramResources);
-        createTheme(paramString);
-      }
-      else
-      {
-        paramString = getOrCreateRIT(paramContext, new String[] { paramString });
-      }
+      paramString = new PluginContext.ContextRIT(null, paramResources);
+      createTheme(paramString);
     }
+    else
+    {
+      paramString = getOrCreateRIT(paramContext, new String[] { paramString });
+    }
+    this.mRIT = paramString;
+    this.mOutContext = paramContext;
   }
   
   private static Resources createResources(Context paramContext, AssetManager paramAssetManager)
@@ -52,123 +52,71 @@ public class PluginContext
     return new Resources(paramAssetManager, paramContext.getResources().getDisplayMetrics(), paramContext.getResources().getConfiguration());
   }
   
-  /* Error */
   private static Resources createResources(Context paramContext, String[] paramArrayOfString)
   {
-    // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: ldc 105
-    //   4: invokevirtual 109	java/lang/Class:newInstance	()Ljava/lang/Object;
-    //   7: checkcast 105	android/content/res/AssetManager
-    //   10: astore 4
-    //   12: ldc 105
-    //   14: ldc 111
-    //   16: iconst_1
-    //   17: anewarray 22	java/lang/Class
-    //   20: dup
-    //   21: iconst_0
-    //   22: ldc 44
-    //   24: aastore
-    //   25: invokevirtual 115	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   28: astore 5
-    //   30: aload_1
-    //   31: arraylength
-    //   32: istore_3
-    //   33: iload_2
-    //   34: iload_3
-    //   35: if_icmpge +28 -> 63
-    //   38: aload 5
-    //   40: aload 4
-    //   42: iconst_1
-    //   43: anewarray 117	java/lang/Object
-    //   46: dup
-    //   47: iconst_0
-    //   48: aload_1
-    //   49: iload_2
-    //   50: aaload
-    //   51: aastore
-    //   52: invokevirtual 123	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   55: pop
-    //   56: iload_2
-    //   57: iconst_1
-    //   58: iadd
-    //   59: istore_2
-    //   60: goto -27 -> 33
-    //   63: aload_0
-    //   64: aload 4
-    //   66: invokestatic 125	com/tencent/mobileqq/pluginsdk/PluginContext:createResources	(Landroid/content/Context;Landroid/content/res/AssetManager;)Landroid/content/res/Resources;
-    //   69: astore_1
-    //   70: aload_1
-    //   71: invokevirtual 87	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   74: aload_0
-    //   75: invokevirtual 83	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   78: invokevirtual 87	android/content/res/Resources:getDisplayMetrics	()Landroid/util/DisplayMetrics;
-    //   81: invokevirtual 131	android/util/DisplayMetrics:setTo	(Landroid/util/DisplayMetrics;)V
-    //   84: aload_1
-    //   85: areturn
-    //   86: astore_0
-    //   87: aconst_null
-    //   88: astore_1
-    //   89: aload_0
-    //   90: invokevirtual 134	java/lang/InstantiationException:printStackTrace	()V
-    //   93: aload_1
-    //   94: areturn
-    //   95: astore_0
-    //   96: aconst_null
-    //   97: astore_1
-    //   98: aload_0
-    //   99: invokevirtual 135	java/lang/IllegalAccessException:printStackTrace	()V
-    //   102: aload_1
-    //   103: areturn
-    //   104: astore_0
-    //   105: aconst_null
-    //   106: astore_1
-    //   107: aload_0
-    //   108: invokevirtual 136	java/lang/NoSuchMethodException:printStackTrace	()V
-    //   111: aload_1
-    //   112: areturn
-    //   113: astore_0
-    //   114: aconst_null
-    //   115: astore_1
-    //   116: aload_0
-    //   117: invokevirtual 137	java/lang/reflect/InvocationTargetException:printStackTrace	()V
-    //   120: aload_1
-    //   121: areturn
-    //   122: astore_0
-    //   123: goto -7 -> 116
-    //   126: astore_0
-    //   127: goto -20 -> 107
-    //   130: astore_0
-    //   131: goto -33 -> 98
-    //   134: astore_0
-    //   135: goto -46 -> 89
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	138	0	paramContext	Context
-    //   0	138	1	paramArrayOfString	String[]
-    //   1	59	2	i	int
-    //   32	4	3	j	int
-    //   10	55	4	localAssetManager	AssetManager
-    //   28	11	5	localMethod	java.lang.reflect.Method
-    // Exception table:
-    //   from	to	target	type
-    //   2	33	86	java/lang/InstantiationException
-    //   38	56	86	java/lang/InstantiationException
-    //   63	70	86	java/lang/InstantiationException
-    //   2	33	95	java/lang/IllegalAccessException
-    //   38	56	95	java/lang/IllegalAccessException
-    //   63	70	95	java/lang/IllegalAccessException
-    //   2	33	104	java/lang/NoSuchMethodException
-    //   38	56	104	java/lang/NoSuchMethodException
-    //   63	70	104	java/lang/NoSuchMethodException
-    //   2	33	113	java/lang/reflect/InvocationTargetException
-    //   38	56	113	java/lang/reflect/InvocationTargetException
-    //   63	70	113	java/lang/reflect/InvocationTargetException
-    //   70	84	122	java/lang/reflect/InvocationTargetException
-    //   70	84	126	java/lang/NoSuchMethodException
-    //   70	84	130	java/lang/IllegalAccessException
-    //   70	84	134	java/lang/InstantiationException
+    Object localObject6 = null;
+    Object localObject7 = null;
+    Object localObject8 = null;
+    Object localObject5 = null;
+    Object localObject1 = localObject5;
+    Object localObject2 = localObject6;
+    Object localObject3 = localObject7;
+    Object localObject4 = localObject8;
+    try
+    {
+      AssetManager localAssetManager = (AssetManager)AssetManager.class.newInstance();
+      localObject1 = localObject5;
+      localObject2 = localObject6;
+      localObject3 = localObject7;
+      localObject4 = localObject8;
+      Method localMethod = AssetManager.class.getDeclaredMethod("addAssetPath", new Class[] { String.class });
+      localObject1 = localObject5;
+      localObject2 = localObject6;
+      localObject3 = localObject7;
+      localObject4 = localObject8;
+      int j = paramArrayOfString.length;
+      int i = 0;
+      while (i < j)
+      {
+        localObject1 = localObject5;
+        localObject2 = localObject6;
+        localObject3 = localObject7;
+        localObject4 = localObject8;
+        localMethod.invoke(localAssetManager, new Object[] { paramArrayOfString[i] });
+        i += 1;
+      }
+      localObject1 = localObject5;
+      localObject2 = localObject6;
+      localObject3 = localObject7;
+      localObject4 = localObject8;
+      paramArrayOfString = createResources(paramContext, localAssetManager);
+      localObject1 = paramArrayOfString;
+      localObject2 = paramArrayOfString;
+      localObject3 = paramArrayOfString;
+      localObject4 = paramArrayOfString;
+      paramArrayOfString.getDisplayMetrics().setTo(paramContext.getResources().getDisplayMetrics());
+      return paramArrayOfString;
+    }
+    catch (InvocationTargetException paramContext)
+    {
+      paramContext.printStackTrace();
+      return localObject1;
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      paramContext.printStackTrace();
+      return localObject2;
+    }
+    catch (IllegalAccessException paramContext)
+    {
+      paramContext.printStackTrace();
+      return localObject3;
+    }
+    catch (InstantiationException paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    return localObject4;
   }
   
   private static void createTheme(PluginContext.ContextRIT paramContextRIT)
@@ -180,39 +128,69 @@ public class PluginContext
   
   private static int getInnerRIdValue(String paramString)
   {
+    int j = -1;
+    int i = j;
+    int k;
     try
     {
       String str2 = paramString.substring(0, paramString.indexOf(".R.") + 2);
-      i = paramString.lastIndexOf(".");
-      String str1 = paramString.substring(i + 1, paramString.length());
-      paramString = paramString.substring(0, i);
-      String str3 = paramString.substring(paramString.lastIndexOf(".") + 1, paramString.length());
-      str2 = str2 + "$" + str3;
-      i = Class.forName(str2).getDeclaredField(str1).getInt(null);
-      paramString.printStackTrace();
+      i = j;
+      k = paramString.lastIndexOf(".");
+      i = j;
+      String str1 = paramString.substring(k + 1, paramString.length());
+      i = j;
+      paramString = paramString.substring(0, k);
+      i = j;
+      Object localObject = paramString.substring(paramString.lastIndexOf(".") + 1, paramString.length());
+      i = j;
+      StringBuilder localStringBuilder = new StringBuilder();
+      i = j;
+      localStringBuilder.append(str2);
+      i = j;
+      localStringBuilder.append("$");
+      i = j;
+      localStringBuilder.append((String)localObject);
+      i = j;
+      str2 = localStringBuilder.toString();
+      i = j;
+      j = Class.forName(str2).getDeclaredField(str1).getInt(null);
+      i = j;
+      k = j;
+      if (DebugHelper.sDebug)
+      {
+        i = j;
+        localObject = new StringBuilder();
+        i = j;
+        ((StringBuilder)localObject).append("getInnderR rStrnig:");
+        i = j;
+        ((StringBuilder)localObject).append(paramString);
+        i = j;
+        DebugHelper.log("plugin_tag", ((StringBuilder)localObject).toString());
+        i = j;
+        paramString = new StringBuilder();
+        i = j;
+        paramString.append("getInnderR className:");
+        i = j;
+        paramString.append(str2);
+        i = j;
+        DebugHelper.log("plugin_tag", paramString.toString());
+        i = j;
+        paramString = new StringBuilder();
+        i = j;
+        paramString.append("getInnderR fieldName:");
+        i = j;
+        paramString.append(str1);
+        i = j;
+        DebugHelper.log("plugin_tag", paramString.toString());
+        return j;
+      }
     }
     catch (Throwable paramString)
     {
-      try
-      {
-        if (DebugHelper.sDebug)
-        {
-          DebugHelper.log("plugin_tag", "getInnderR rStrnig:" + paramString);
-          DebugHelper.log("plugin_tag", "getInnderR className:" + str2);
-          DebugHelper.log("plugin_tag", "getInnderR fieldName:" + str1);
-        }
-        return i;
-      }
-      catch (Throwable paramString)
-      {
-        int i;
-        break label179;
-      }
-      paramString = paramString;
-      i = -1;
+      paramString.printStackTrace();
+      k = i;
     }
-    label179:
-    return i;
+    return k;
   }
   
   private static PluginContext.ContextRIT getOrCreateRIT(Context paramContext, String... paramVarArgs)
@@ -238,8 +216,9 @@ public class PluginContext
   
   public ClassLoader getClassLoader()
   {
-    if (this.mClassLoader != null) {
-      return this.mClassLoader;
+    ClassLoader localClassLoader = this.mClassLoader;
+    if (localClassLoader != null) {
+      return localClassLoader;
     }
     return super.getClassLoader();
   }
@@ -266,14 +245,15 @@ public class PluginContext
   
   public void setTheme(Resources.Theme paramTheme)
   {
-    if (this.mRIT != null) {
-      this.mRIT.mT = paramTheme;
+    PluginContext.ContextRIT localContextRIT = this.mRIT;
+    if (localContextRIT != null) {
+      localContextRIT.mT = paramTheme;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginContext
  * JD-Core Version:    0.7.0.1
  */

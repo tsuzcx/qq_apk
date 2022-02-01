@@ -2,6 +2,8 @@ package com.tencent.mobileqq.filemanager.core;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
+import com.tencent.mobileqq.filemanager.api.IFileIPv6StrateyController;
 import com.tencent.mobileqq.filemanager.app.FMObserver;
 import com.tencent.mobileqq.filemanager.app.FileTransferHandler;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
@@ -42,41 +44,68 @@ public class DiscVideoThumbDownloader
   {
     if (paramFileManagerEntity.Uuid == null)
     {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. uuid = null nSession[" + paramFileManagerEntity.nSessionId + "]");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[downloadThumb]  download. uuid = null nSession[");
+      ((StringBuilder)localObject1).append(paramFileManagerEntity.nSessionId);
+      ((StringBuilder)localObject1).append("]");
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
       return null;
     }
     int i = a(paramFileManagerEntity.fileName);
     if (-1 == i)
     {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  download. can not getThumb of file:" + paramFileManagerEntity.fileName);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[downloadThumb]  download. can not getThumb of file:");
+      ((StringBuilder)localObject1).append(paramFileManagerEntity.fileName);
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerNotifyCenter().a(false, 50, new Object[] { paramFileManagerEntity });
       return null;
     }
-    String str = paramFileManagerEntity.Uuid.replace("/", "");
+    Object localObject1 = paramFileManagerEntity.Uuid.replace("/", "");
     a();
-    str = FMSettings.a().d() + a(paramInt, str);
-    if (FileUtils.b(str) == true)
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(FMSettings.a().getDefaultThumbPath());
+    ((StringBuilder)localObject2).append(a(paramInt, (String)localObject1));
+    localObject1 = ((StringBuilder)localObject2).toString();
+    if (FileUtils.fileExistsAndNotEmpty((String)localObject1) == true)
     {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] Id[" + paramFileManagerEntity.nSessionId + "] thumb Downloaded:" + str);
-      return str;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[downloadThumb] Id[");
+      ((StringBuilder)localObject2).append(paramFileManagerEntity.nSessionId);
+      ((StringBuilder)localObject2).append("] thumb Downloaded:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
+      return localObject1;
     }
-    DiscVideoThumbDownloader.VideoSession localVideoSession = new DiscVideoThumbDownloader.VideoSession(paramFileManagerEntity);
-    localVideoSession.jdField_a_of_type_Int = paramInt;
-    localVideoSession.b = i;
-    a(localVideoSession, str);
-    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb] download  nSession[" + paramFileManagerEntity.nSessionId + "], ThumbDownloadId[" + localVideoSession.jdField_a_of_type_Long + "]");
+    localObject2 = new DiscVideoThumbDownloader.VideoSession(paramFileManagerEntity);
+    ((DiscVideoThumbDownloader.VideoSession)localObject2).jdField_a_of_type_Int = paramInt;
+    ((DiscVideoThumbDownloader.VideoSession)localObject2).b = i;
+    a((BaseThumbDownloader.Session)localObject2, (String)localObject1);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[downloadThumb] download  nSession[");
+    ((StringBuilder)localObject1).append(paramFileManagerEntity.nSessionId);
+    ((StringBuilder)localObject1).append("], ThumbDownloadId[");
+    ((StringBuilder)localObject1).append(((DiscVideoThumbDownloader.VideoSession)localObject2).jdField_a_of_type_Long);
+    ((StringBuilder)localObject1).append("]");
+    QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
     return null;
   }
   
   public List<String> a(long paramLong, String paramString, int paramInt, boolean paramBoolean, List<String> paramList)
   {
     paramList = a(paramLong, false);
-    if ((paramList != null) && (paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (!TextUtils.isEmpty(paramString)) && (FileIPv6StrateyController.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5)))
+    if ((paramList != null) && (paramList.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity != null) && (!TextUtils.isEmpty(paramString)) && (FileIPv6StrateyController.a().isConfigEnableIPV6(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 5)))
     {
-      QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] [IPv6-File] discVideo thumb. is config enable IPv6. domain[" + paramString + "]");
+      paramList = new StringBuilder();
+      paramList.append("[downloadThumb]  ID[");
+      paramList.append(paramLong);
+      paramList.append("] [IPv6-File] discVideo thumb. is config enable IPv6. domain[");
+      paramList.append(paramString);
+      paramList.append("]");
+      QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, paramList.toString());
       paramString = new FileIPv6StrateyController.DomainInfo(paramString, paramInt);
-      paramList = FileIPv6StrateyController.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 5);
+      paramList = FileIPv6StrateyController.a().getIPlistForV6Domain(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, 5);
       if ((paramList != null) && (!paramList.a()))
       {
         paramString = new ArrayList();
@@ -84,12 +113,25 @@ public class DiscVideoThumbDownloader
         while (paramList.hasNext())
         {
           FileIPv6StrateyController.IPInfo localIPInfo = (FileIPv6StrateyController.IPInfo)paramList.next();
-          paramString.add(localIPInfo.jdField_a_of_type_JavaLangString + ":" + localIPInfo.jdField_a_of_type_Int);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localIPInfo.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append(":");
+          localStringBuilder.append(localIPInfo.jdField_a_of_type_Int);
+          paramString.add(localStringBuilder.toString());
         }
-        QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] [IPv6-File] discVideo thumb. use IPv6. hostlist:" + paramString.toString());
+        paramList = new StringBuilder();
+        paramList.append("[downloadThumb]  ID[");
+        paramList.append(paramLong);
+        paramList.append("] [IPv6-File] discVideo thumb. use IPv6. hostlist:");
+        paramList.append(paramString.toString());
+        QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, paramList.toString());
         return paramString;
       }
-      QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, "[downloadThumb]  ID[" + paramLong + "] [IPv6-File] discVideo thumb. use IPv4:");
+      paramString = new StringBuilder();
+      paramString.append("[downloadThumb]  ID[");
+      paramString.append(paramLong);
+      paramString.append("] [IPv6-File] discVideo thumb. use IPv4:");
+      QLog.i("DiscVideoThumbDownloader<FileAssistant>", 1, paramString.toString());
     }
     return null;
   }
@@ -106,7 +148,11 @@ public class DiscVideoThumbDownloader
     DiscVideoThumbDownloader.VideoSession localVideoSession = a(paramLong, false);
     if (localVideoSession == null)
     {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onDownloadCompleted no this session");
+      paramString = new StringBuilder();
+      paramString.append("[downloadThumb]  ID[");
+      paramString.append(paramLong);
+      paramString.append("] onDownloadCompleted no this session");
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, paramString.toString());
       return;
     }
     if (paramBoolean)
@@ -124,7 +170,11 @@ public class DiscVideoThumbDownloader
     paramDownloadTask = a(paramLong, false);
     if (paramDownloadTask == null)
     {
-      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, "[downloadThumb]  ID[" + paramLong + "] onGetDownloadUrl no this session");
+      paramDownloadTask = new StringBuilder();
+      paramDownloadTask.append("[downloadThumb]  ID[");
+      paramDownloadTask.append(paramLong);
+      paramDownloadTask.append("] onGetDownloadUrl no this session");
+      QLog.e("DiscVideoThumbDownloader<FileAssistant>", 2, paramDownloadTask.toString());
       return false;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileTransferHandler().b(paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.peerUin, paramDownloadTask.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.Uuid, paramLong);
@@ -135,7 +185,7 @@ public class DiscVideoThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.DiscVideoThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

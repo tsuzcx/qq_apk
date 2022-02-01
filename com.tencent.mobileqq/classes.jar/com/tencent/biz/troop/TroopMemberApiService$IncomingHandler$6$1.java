@@ -14,25 +14,33 @@ class TroopMemberApiService$IncomingHandler$6$1
   
   public void onDownloadFinish(String paramString1, int paramInt, String paramString2)
   {
-    if (paramString1.startsWith("new_qq_android_native_short_video_"))
-    {
-      if (paramInt == 0) {
-        break label152;
+    if (paramString1.startsWith("new_qq_android_native_short_video_")) {
+      if (paramInt != 0)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131715333));
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("]");
+        VideoEnvironment.LogDownLoad("TroopMemberApiService", localStringBuilder.toString(), null);
+        ShortVideoResourceManager.a(HardCodeUtil.a(2131715387));
+        ShortVideoErrorReport.a(2, paramInt);
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
       }
-      VideoEnvironment.LogDownLoad("TroopMemberApiService", HardCodeUtil.a(2131715411) + paramInt + "]", null);
-      ShortVideoResourceManager.a(HardCodeUtil.a(2131715465));
-      ShortVideoErrorReport.a(2, paramInt);
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", 0);
+      else
+      {
+        this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
+      }
     }
-    for (;;)
-    {
-      VideoEnvironment.LogDownLoad("TroopMemberApiService", "name=" + paramString1 + ",result=" + paramInt + ",filePath=" + paramString2, null);
-      this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
-      this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.b = false;
-      return;
-      label152:
-      this.a.jdField_a_of_type_AndroidOsBundle.putInt("result", -2);
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("name=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",result=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",filePath=");
+    localStringBuilder.append(paramString2);
+    VideoEnvironment.LogDownLoad("TroopMemberApiService", localStringBuilder.toString(), null);
+    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.a(93, this.a.jdField_a_of_type_AndroidOsBundle);
+    this.a.jdField_a_of_type_ComTencentBizTroopTroopMemberApiService$IncomingHandler.a.b = false;
   }
   
   public void onNetWorkNone()
@@ -44,7 +52,7 @@ class TroopMemberApiService$IncomingHandler$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.TroopMemberApiService.IncomingHandler.6.1
  * JD-Core Version:    0.7.0.1
  */

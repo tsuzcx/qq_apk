@@ -13,31 +13,31 @@ public class OpenDeviceClientImpl
   extends HuaweiApi<OpenDeviceOptions>
   implements OpenDeviceClient
 {
-  private static final OpenDeviceHmsClientBuilder a = new OpenDeviceHmsClientBuilder();
-  private static final Api<OpenDeviceOptions> b = new Api("HuaweiOpenDevice.API");
-  private static OpenDeviceOptions c = new OpenDeviceOptions();
+  public static final OpenDeviceHmsClientBuilder a = new OpenDeviceHmsClientBuilder();
+  public static final Api<OpenDeviceOptions> b = new Api("HuaweiOpenDevice.API");
+  public static OpenDeviceOptions c = new OpenDeviceOptions();
   
-  OpenDeviceClientImpl(Activity paramActivity)
+  public OpenDeviceClientImpl(Activity paramActivity)
   {
     super(paramActivity, b, c, a);
-    super.setKitSdkVersion(50002300);
+    super.setKitSdkVersion(50101300);
   }
   
-  OpenDeviceClientImpl(Context paramContext)
+  public OpenDeviceClientImpl(Context paramContext)
   {
     super(paramContext, b, c, a);
-    super.setKitSdkVersion(50002300);
+    super.setKitSdkVersion(50101300);
   }
   
   public Task<OdidResult> getOdid()
   {
-    String str = HiAnalyticsClient.reportEntry(getContext(), "opendevice.getodid", 50002300);
+    String str = HiAnalyticsClient.reportEntry(getContext(), "opendevice.getodid", 50101300);
     return doWrite(new OpenDeviceTaskApiCall("opendevice.getodid", JsonUtil.createJsonString(null), str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.opendevice.OpenDeviceClientImpl
  * JD-Core Version:    0.7.0.1
  */

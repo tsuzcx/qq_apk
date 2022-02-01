@@ -19,26 +19,34 @@ public final class VisibleRegion
   
   public final boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof VisibleRegion)) {
-        return false;
-      }
-      paramObject = (VisibleRegion)paramObject;
-    } while ((this.nearLeft.equals(paramObject.nearLeft)) && (this.nearRight.equals(paramObject.nearRight)) && (this.farLeft.equals(paramObject.farLeft)) && (this.farRight.equals(paramObject.farRight)) && (this.latLngBounds.equals(paramObject.latLngBounds)));
-    return false;
+    }
+    if (!(paramObject instanceof VisibleRegion)) {
+      return false;
+    }
+    paramObject = (VisibleRegion)paramObject;
+    return (this.nearLeft.equals(paramObject.nearLeft)) && (this.nearRight.equals(paramObject.nearRight)) && (this.farLeft.equals(paramObject.farLeft)) && (this.farRight.equals(paramObject.farRight)) && (this.latLngBounds.equals(paramObject.latLngBounds));
   }
   
   public final String toString()
   {
-    return "nearLeft" + this.nearLeft + "nearRight" + this.nearRight + "farLeft" + this.farLeft + "farRight" + this.farRight + "latLngBounds" + this.latLngBounds;
+    StringBuilder localStringBuilder = new StringBuilder("nearLeft");
+    localStringBuilder.append(this.nearLeft);
+    localStringBuilder.append("nearRight");
+    localStringBuilder.append(this.nearRight);
+    localStringBuilder.append("farLeft");
+    localStringBuilder.append(this.farLeft);
+    localStringBuilder.append("farRight");
+    localStringBuilder.append(this.farRight);
+    localStringBuilder.append("latLngBounds");
+    localStringBuilder.append(this.latLngBounds);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.model.VisibleRegion
  * JD-Core Version:    0.7.0.1
  */

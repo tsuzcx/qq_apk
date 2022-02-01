@@ -76,12 +76,27 @@ public class MessageStruct
   
   public String toString()
   {
-    return "{id:0x" + Integer.toHexString(this.mId).toUpperCase() + ", name=" + this.mName + ", param0:" + this.mParam0 + ", param1:" + this.mParam1 + ", obj0:" + this.mObj0 + ", obj1:" + this.mObj1 + ", msgCallBack:" + this.mMsgCallBack + "}";
+    StringBuilder localStringBuilder = new StringBuilder("{id:0x");
+    localStringBuilder.append(Integer.toHexString(this.mId).toUpperCase());
+    localStringBuilder.append(", name=");
+    localStringBuilder.append(this.mName);
+    localStringBuilder.append(", param0:");
+    localStringBuilder.append(this.mParam0);
+    localStringBuilder.append(", param1:");
+    localStringBuilder.append(this.mParam1);
+    localStringBuilder.append(", obj0:");
+    localStringBuilder.append(this.mObj0);
+    localStringBuilder.append(", obj1:");
+    localStringBuilder.append(this.mObj1);
+    localStringBuilder.append(", msgCallBack:");
+    localStringBuilder.append(this.mMsgCallBack);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.maxvideo.common.MessageStruct
  * JD-Core Version:    0.7.0.1
  */

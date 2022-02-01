@@ -42,45 +42,57 @@ public class PlatformChannel
   
   private int decodeOrientations(@NonNull JSONArray paramJSONArray)
   {
-    int n = 0;
     int k = 0;
     int i = 0;
-    int j = 0;
-    if (j < paramJSONArray.length())
+    int m;
+    for (int j = 0; k < paramJSONArray.length(); j = m)
     {
-      PlatformChannel.DeviceOrientation localDeviceOrientation = PlatformChannel.DeviceOrientation.fromValue(paramJSONArray.getString(j));
-      switch (PlatformChannel.2.$SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$DeviceOrientation[localDeviceOrientation.ordinal()])
+      PlatformChannel.DeviceOrientation localDeviceOrientation = PlatformChannel.DeviceOrientation.fromValue(paramJSONArray.getString(k));
+      m = PlatformChannel.2.$SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$DeviceOrientation[localDeviceOrientation.ordinal()];
+      if (m != 1)
       {
-      }
-      for (;;)
-      {
-        int m = k;
-        if (k == 0) {
-          m = i;
+        if (m != 2)
+        {
+          if (m != 3)
+          {
+            if (m == 4) {
+              i |= 0x8;
+            }
+          }
+          else {
+            i |= 0x2;
+          }
         }
-        j += 1;
-        k = m;
-        break;
-        i |= 0x8;
-        continue;
-        i |= 0x2;
-        continue;
-        i |= 0x4;
-        continue;
+        else {
+          i |= 0x4;
+        }
+      }
+      else {
         i |= 0x1;
       }
+      m = j;
+      if (j == 0) {
+        m = i;
+      }
+      k += 1;
     }
-    j = n;
+    k = 9;
     switch (i)
     {
     default: 
-    case 2: 
+      return 1;
     case 15: 
+      return 13;
     case 11: 
+      return 2;
     case 10: 
+      return 11;
     case 8: 
+      return 8;
     case 5: 
+      k = 12;
     case 4: 
+      return k;
     case 3: 
     case 6: 
     case 7: 
@@ -88,32 +100,25 @@ public class PlatformChannel
     case 12: 
     case 13: 
     case 14: 
-      for (;;)
+      if (j != 4)
       {
-        j = 1;
-        return j;
-        return 13;
-        return 2;
-        return 11;
-        return 8;
-        return 12;
-        return 9;
-        if (k == 4) {
-          break label272;
-        }
-        if (k == 8) {
-          break;
-        }
-        j = n;
-        switch (k)
+        if (j != 8)
         {
+          if (j != 1)
+          {
+            if (j != 2) {
+              return 1;
+            }
+            return 0;
+          }
+          return 1;
         }
+        return 8;
       }
-      return 1;
-      return 8;
       return 9;
+    case 2: 
+      return 0;
     case 1: 
-      label272:
       return 1;
     }
     return -1;
@@ -122,48 +127,36 @@ public class PlatformChannel
   @NonNull
   private PlatformChannel.SystemChromeStyle decodeSystemChromeStyle(@NonNull JSONObject paramJSONObject)
   {
+    boolean bool = paramJSONObject.isNull("systemNavigationBarIconBrightness");
+    Integer localInteger3 = null;
     PlatformChannel.Brightness localBrightness1;
-    Integer localInteger1;
-    label38:
-    PlatformChannel.Brightness localBrightness2;
-    label58:
-    Integer localInteger2;
-    if (!paramJSONObject.isNull("systemNavigationBarIconBrightness"))
-    {
+    if (!bool) {
       localBrightness1 = PlatformChannel.Brightness.fromValue(paramJSONObject.getString("systemNavigationBarIconBrightness"));
-      if (paramJSONObject.isNull("systemNavigationBarColor")) {
-        break label117;
-      }
-      localInteger1 = Integer.valueOf(paramJSONObject.getInt("systemNavigationBarColor"));
-      if (paramJSONObject.isNull("statusBarIconBrightness")) {
-        break label122;
-      }
-      localBrightness2 = PlatformChannel.Brightness.fromValue(paramJSONObject.getString("statusBarIconBrightness"));
-      if (paramJSONObject.isNull("statusBarColor")) {
-        break label128;
-      }
-      localInteger2 = Integer.valueOf(paramJSONObject.getInt("statusBarColor"));
-      label78:
-      if (paramJSONObject.isNull("systemNavigationBarDividerColor")) {
-        break label134;
-      }
-    }
-    label128:
-    label134:
-    for (paramJSONObject = Integer.valueOf(paramJSONObject.getInt("systemNavigationBarDividerColor"));; paramJSONObject = null)
-    {
-      return new PlatformChannel.SystemChromeStyle(localInteger2, localBrightness2, localInteger1, localBrightness1, paramJSONObject);
+    } else {
       localBrightness1 = null;
-      break;
-      label117:
-      localInteger1 = null;
-      break label38;
-      label122:
-      localBrightness2 = null;
-      break label58;
-      localInteger2 = null;
-      break label78;
     }
+    Integer localInteger1;
+    if (!paramJSONObject.isNull("systemNavigationBarColor")) {
+      localInteger1 = Integer.valueOf(paramJSONObject.getInt("systemNavigationBarColor"));
+    } else {
+      localInteger1 = null;
+    }
+    PlatformChannel.Brightness localBrightness2;
+    if (!paramJSONObject.isNull("statusBarIconBrightness")) {
+      localBrightness2 = PlatformChannel.Brightness.fromValue(paramJSONObject.getString("statusBarIconBrightness"));
+    } else {
+      localBrightness2 = null;
+    }
+    Integer localInteger2;
+    if (!paramJSONObject.isNull("statusBarColor")) {
+      localInteger2 = Integer.valueOf(paramJSONObject.getInt("statusBarColor"));
+    } else {
+      localInteger2 = null;
+    }
+    if (!paramJSONObject.isNull("systemNavigationBarDividerColor")) {
+      localInteger3 = Integer.valueOf(paramJSONObject.getInt("systemNavigationBarDividerColor"));
+    }
+    return new PlatformChannel.SystemChromeStyle(localInteger2, localBrightness2, localInteger1, localBrightness1, localInteger3);
   }
   
   @NonNull
@@ -171,20 +164,24 @@ public class PlatformChannel
   {
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    if (i < paramJSONArray.length())
+    while (i < paramJSONArray.length())
     {
       PlatformChannel.SystemUiOverlay localSystemUiOverlay = PlatformChannel.SystemUiOverlay.fromValue(paramJSONArray.getString(i));
-      switch (PlatformChannel.2.$SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$SystemUiOverlay[localSystemUiOverlay.ordinal()])
+      int j = PlatformChannel.2.$SwitchMap$io$flutter$embedding$engine$systemchannels$PlatformChannel$SystemUiOverlay[localSystemUiOverlay.ordinal()];
+      if (j != 1)
       {
+        if (j != 2) {
+          break label75;
+        }
+        localSystemUiOverlay = PlatformChannel.SystemUiOverlay.BOTTOM_OVERLAYS;
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        localArrayList.add(PlatformChannel.SystemUiOverlay.BOTTOM_OVERLAYS);
-        continue;
-        localArrayList.add(PlatformChannel.SystemUiOverlay.TOP_OVERLAYS);
+        localSystemUiOverlay = PlatformChannel.SystemUiOverlay.TOP_OVERLAYS;
       }
+      localArrayList.add(localSystemUiOverlay);
+      label75:
+      i += 1;
     }
     return localArrayList;
   }
@@ -196,7 +193,7 @@ public class PlatformChannel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.PlatformChannel
  * JD-Core Version:    0.7.0.1
  */

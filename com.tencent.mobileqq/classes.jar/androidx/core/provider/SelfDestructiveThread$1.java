@@ -10,11 +10,12 @@ class SelfDestructiveThread$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return true;
-    case 1: 
+      if (i != 1) {
+        return true;
+      }
       this.this$0.onInvokeRunnable((Runnable)paramMessage.obj);
       return true;
     }
@@ -24,7 +25,7 @@ class SelfDestructiveThread$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.provider.SelfDestructiveThread.1
  * JD-Core Version:    0.7.0.1
  */

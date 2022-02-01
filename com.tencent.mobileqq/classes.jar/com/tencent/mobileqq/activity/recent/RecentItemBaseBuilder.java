@@ -19,14 +19,14 @@ import java.util.List;
 public abstract class RecentItemBaseBuilder
 {
   public static final int[] a;
-  public static final int[] b = { 2130839649, 2130839648, 2130839648, 2130839648, 2130839650, 2130839650, 2130839648, 2130839648, 2130839648, 2130839650 };
-  public static final int[] c = { 2131371177, 2131371194, 2131371173, 2131371187, 2131371184, 2131371185, 2131371197, 2131371193, 2131371192, 2131371172 };
+  public static final int[] b = { 2130839507, 2130839506, 2130839506, 2130839506, 2130839508, 2130839508, 2130839506, 2130839506, 2130839506, 2130839508 };
+  public static final int[] c = { 2131370801, 2131370819, 2131370797, 2131370812, 2131370809, 2131370810, 2131370822, 2131370818, 2131370817, 2131370796 };
   protected RecentAdapter a;
   protected SwipRightMenuBuilder a;
   
   static
   {
-    jdField_a_of_type_ArrayOfInt = new int[] { 2131691558, 2131691356, 2131691339, 2131691342, 2131691340, 2131691341, 2131694370, 2131693109, 2131693107, 2131691338 };
+    jdField_a_of_type_ArrayOfInt = new int[] { 2131691479, 2131691277, 2131691260, 2131691263, 2131691261, 2131691262, 2131694335, 2131693069, 2131693067, 2131691259 };
   }
   
   public int a()
@@ -39,22 +39,23 @@ public abstract class RecentItemBaseBuilder
   public final View a(Context paramContext, int paramInt, RecentItemBaseBuilder.RecentItemBaseHolder paramRecentItemBaseHolder)
   {
     View localView = LayoutInflater.from(paramContext).inflate(paramInt, null);
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a()))
+    RecentAdapter localRecentAdapter = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
+    if ((localRecentAdapter != null) && (localRecentAdapter.a()))
     {
       if (this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder == null) {
         this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder = a(paramContext);
       }
-      return this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder.a(paramContext, localView, paramRecentItemBaseHolder, -1);
+      return this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder.createView(paramContext, localView, paramRecentItemBaseHolder, -1);
     }
-    paramRecentItemBaseHolder.g = localView;
-    paramRecentItemBaseHolder.a = null;
+    paramRecentItemBaseHolder.leftView = localView;
+    paramRecentItemBaseHolder.rightMenuItems = null;
     return localView;
   }
   
   public SwipRightMenuBuilder a(Context paramContext)
   {
-    int i = paramContext.getResources().getDimensionPixelSize(2131298882);
-    int j = paramContext.getResources().getDimensionPixelSize(2131298883);
+    int i = paramContext.getResources().getDimensionPixelSize(2131298886);
+    int j = paramContext.getResources().getDimensionPixelSize(2131298887);
     int k = a();
     paramContext = c;
     int[] arrayOfInt1 = jdField_a_of_type_ArrayOfInt;
@@ -69,30 +70,36 @@ public abstract class RecentItemBaseBuilder
   
   public void a(Context paramContext, View paramView, int paramInt, Object paramObject, RecentItemBaseBuilder.RecentItemBaseHolder paramRecentItemBaseHolder, View.OnClickListener paramOnClickListener)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder != null) {}
-    for (int i = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder.a(paramContext, paramView, paramInt, paramObject, paramRecentItemBaseHolder, paramOnClickListener);; i = 0)
+    SwipRightMenuBuilder localSwipRightMenuBuilder = this.jdField_a_of_type_ComTencentWidgetSwipRightMenuBuilder;
+    int i;
+    if (localSwipRightMenuBuilder != null) {
+      i = localSwipRightMenuBuilder.updateRightMenuView(paramContext, paramView, paramInt, paramObject, paramRecentItemBaseHolder, paramOnClickListener);
+    } else {
+      i = 0;
+    }
+    int j = paramView.getScrollX();
+    if (paramInt >= 0)
     {
-      int j = paramView.getScrollX();
-      if ((paramInt >= 0) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a == paramInt))
+      paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
+      if ((paramContext != null) && (paramContext.a == paramInt))
       {
         paramView.scrollTo(i, 0);
-        if ((j != 0) && (QLog.isDevelopLevel())) {
-          if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter != null) {
-            break label123;
-          }
-        }
+        break label81;
       }
-      label123:
-      for (paramContext = null;; paramContext = Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter.a))
-      {
-        NearbyUtils.a("updateItemMenuView", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext });
-        return;
-        if (j == 0) {
-          break;
-        }
-        paramView.scrollTo(0, 0);
-        break;
+    }
+    if (j != 0) {
+      paramView.scrollTo(0, 0);
+    }
+    label81:
+    if ((j != 0) && (QLog.isDevelopLevel()))
+    {
+      paramContext = this.jdField_a_of_type_ComTencentMobileqqActivityRecentRecentAdapter;
+      if (paramContext == null) {
+        paramContext = null;
+      } else {
+        paramContext = Integer.valueOf(paramContext.a);
       }
+      NearbyUtils.a("updateItemMenuView", new Object[] { Integer.valueOf(paramInt), Integer.valueOf(j), paramContext });
     }
   }
   
@@ -117,7 +124,7 @@ public abstract class RecentItemBaseBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentItemBaseBuilder
  * JD-Core Version:    0.7.0.1
  */

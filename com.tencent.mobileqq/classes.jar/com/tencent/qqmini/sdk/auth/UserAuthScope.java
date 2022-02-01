@@ -62,7 +62,20 @@ public class UserAuthScope
   
   public String toString()
   {
-    return "UserAuthScope{scope='" + this.scope + '\'' + ", authType=" + this.authType + ", desc='" + this.desc + '\'' + ", settingPageTitle='" + this.settingPageTitle + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UserAuthScope{scope='");
+    localStringBuilder.append(this.scope);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", authType=");
+    localStringBuilder.append(this.authType);
+    localStringBuilder.append(", desc='");
+    localStringBuilder.append(this.desc);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", settingPageTitle='");
+    localStringBuilder.append(this.settingPageTitle);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -75,7 +88,7 @@ public class UserAuthScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.auth.UserAuthScope
  * JD-Core Version:    0.7.0.1
  */

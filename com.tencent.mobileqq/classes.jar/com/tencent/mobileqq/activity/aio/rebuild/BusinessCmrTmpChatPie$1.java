@@ -12,14 +12,14 @@ class BusinessCmrTmpChatPie$1
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if (this.a.o.isShown()) {
-      this.a.o.setVisibility(8);
+    if (this.a.i.isShown()) {
+      this.a.i.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import java.net.URL;
 class UIUtils$DrawableListenerHolder
   implements URLDrawable.DownloadListener, URLDrawable.URLDrawableListener
 {
-  public static String c;
+  public static String c = "story_url_drawable";
   public static int f = 1;
   public static int g = 2;
   public static int h = 4;
@@ -28,11 +28,6 @@ class UIUtils$DrawableListenerHolder
   int c;
   int d = 0;
   int e = 0;
-  
-  static
-  {
-    jdField_c_of_type_JavaLangString = "story_url_drawable";
-  }
   
   public UIUtils$DrawableListenerHolder(UIUtils.URLDrawableMonitor paramURLDrawableMonitor, URLDrawable paramURLDrawable, String paramString)
   {
@@ -55,26 +50,26 @@ class UIUtils$DrawableListenerHolder
   {
     this.jdField_b_of_type_Int |= g;
     this.jdField_a_of_type_Int = paramInt;
-    SLog.a("Q.qqstory.UIUtils", "onFileDownloadFailed() %s, error(%d), %s, %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    SLog.a("Q.qqstory.UIViewUtils", "onFileDownloadFailed() %s, error(%d), %s, %d", this.jdField_a_of_type_JavaLangString, Integer.valueOf(paramInt), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
   public void onFileDownloadStarted()
   {
     this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    SLog.a("Q.qqstory.UIUtils", "onFileDownloadStarted() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    SLog.a("Q.qqstory.UIViewUtils", "onFileDownloadStarted() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
   public void onFileDownloadSucceed(long paramLong)
   {
     this.jdField_b_of_type_Int |= f;
     this.jdField_a_of_type_Long = paramLong;
-    SLog.a("Q.qqstory.UIUtils", "onFileDownloadSucceed() %s, %d, %s, %d", this.jdField_a_of_type_JavaLangString, Long.valueOf(paramLong), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    SLog.a("Q.qqstory.UIViewUtils", "onFileDownloadSucceed() %s, %d, %s, %d", this.jdField_a_of_type_JavaLangString, Long.valueOf(paramLong), this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
     this.jdField_b_of_type_Int |= j;
-    SLog.a("Q.qqstory.UIUtils", "onLoadCanceled() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    SLog.a("Q.qqstory.UIViewUtils", "onLoadCanceled() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
     a();
     this.e += 1;
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$URLDrawableMonitor.a(this);
@@ -83,7 +78,7 @@ class UIUtils$DrawableListenerHolder
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     this.jdField_b_of_type_Int |= i;
-    SLog.a("Q.qqstory.UIUtils", "onLoadFialed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    SLog.a("Q.qqstory.UIViewUtils", "onLoadFialed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
     a();
     this.jdField_c_of_type_Int += 1;
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$URLDrawableMonitor.a(this);
@@ -91,13 +86,13 @@ class UIUtils$DrawableListenerHolder
   
   public void onLoadProgressed(URLDrawable paramURLDrawable, int paramInt)
   {
-    SLog.a("Q.qqstory.UIUtils", "onLoadProgressed(%d/10000%%) %s, %s, %d", Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    SLog.a("Q.qqstory.UIViewUtils", "onLoadProgressed(%d/10000%%) %s, %s, %d", Integer.valueOf(paramInt), this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
   }
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
     this.jdField_b_of_type_Int |= h;
-    SLog.a("Q.qqstory.UIUtils", "onLoadSuccessed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
+    SLog.a("Q.qqstory.UIViewUtils", "onLoadSuccessed() %s, %s, %d", this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentImageURLDrawable, Integer.valueOf(System.identityHashCode(this)));
     a();
     this.d += 1;
     this.jdField_a_of_type_ComTencentBizQqstoryUtilsUIUtils$URLDrawableMonitor.a(this);
@@ -105,12 +100,34 @@ class UIUtils$DrawableListenerHolder
   
   public String toString()
   {
-    return "DrawableListenerHolder{url='" + this.jdField_a_of_type_JavaLangString + '\'' + ", fileSize=" + this.jdField_a_of_type_Long + ", startTime=" + this.jdField_b_of_type_Long + ", errorCode=" + this.jdField_a_of_type_Int + ", result=" + this.jdField_b_of_type_Int + ", loadFailTime=" + this.jdField_c_of_type_Int + ", loadSuccessTime=" + this.d + ", loadCancelTime=" + this.e + ", op_name='" + this.jdField_b_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DrawableListenerHolder{url='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fileSize=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", startTime=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", errorCode=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", result=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", loadFailTime=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", loadSuccessTime=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", loadCancelTime=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", op_name='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.UIUtils.DrawableListenerHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -36,15 +36,21 @@ public class StaticNumFilter
   
   private Bitmap getNextFrame(String paramString, int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(paramString).append("_").append(paramInt2).append("_");
-    if (paramInt1 == -1) {}
-    for (Object localObject = "x";; localObject = Integer.valueOf(paramInt1))
-    {
-      localObject = localObject + ".png";
-      localObject = VideoMemoryManager.getInstance().loadImage(paramString, (String)localObject);
-      if (!BitmapUtils.isLegal((Bitmap)localObject)) {
-        break;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    if (paramInt1 == -1) {
+      localObject = "x";
+    } else {
+      localObject = Integer.valueOf(paramInt1);
+    }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append(".png");
+    Object localObject = localStringBuilder.toString();
+    localObject = VideoMemoryManager.getInstance().loadImage(paramString, (String)localObject);
+    if (BitmapUtils.isLegal((Bitmap)localObject)) {
       return localObject;
     }
     return loadFromAssetsOrFile(paramString, paramInt1, paramInt2);
@@ -65,14 +71,24 @@ public class StaticNumFilter
   
   private Bitmap loadFromAssetsOrFile(String paramString, int paramInt1, int paramInt2)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(this.dataPath).append(File.separator).append(paramString).append(File.separator).append(paramString).append("_").append(paramInt2).append("_");
-    if (paramInt1 == -1) {}
-    for (paramString = "x";; paramString = Integer.valueOf(paramInt1))
-    {
-      paramString = paramString + ".png";
-      if (!this.dataPath.startsWith("assets://")) {
-        break;
-      }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.dataPath);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("_");
+    if (paramInt1 == -1) {
+      paramString = "x";
+    } else {
+      paramString = Integer.valueOf(paramInt1);
+    }
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".png");
+    paramString = localStringBuilder.toString();
+    if (this.dataPath.startsWith("assets://")) {
       return BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
     }
     return BitmapUtils.decodeSampledBitmapFromFile(paramString, MediaConfig.VIDEO_OUTPUT_WIDTH, MediaConfig.VIDEO_OUTPUT_HEIGHT);
@@ -80,104 +96,168 @@ public class StaticNumFilter
   
   private void updateNumPosition(String paramString, int paramInt1, int paramInt2)
   {
-    if ((this.item == null) || (this.item.position == null) || (this.item.position.length < 2))
+    if ((this.item != null) && (this.item.position != null) && (this.item.position.length >= 2))
     {
-      setPositions(GlUtil.EMPTY_POSITIONS);
-      return;
-    }
-    if (this.mBitSizeMap.containsKey(paramString)) {}
-    int i;
-    int j;
-    for (paramString = (Point)this.mBitSizeMap.get(paramString);; paramString = new Point(this.item.width, this.item.height))
-    {
-      d1 = this.item.height;
-      i = (int)(paramString.x * 1.0D / paramString.y * d1);
-      j = (this.item.width - paramInt2 * i) / 2;
-      if (this.width / this.height < 0.75D) {
-        break;
+      if (this.mBitSizeMap.containsKey(paramString)) {
+        paramString = (Point)this.mBitSizeMap.get(paramString);
+      } else {
+        paramString = new Point(this.item.width, this.item.height);
       }
-      d1 = this.width / 720.0D;
-      k = (int)(this.width / 0.75D);
-      m = (int)(k * (1.0D - this.item.position[1]));
-      paramInt1 = (int)((int)((int)(this.width * this.item.position[0]) + (paramInt2 - paramInt1 - 1) * i * d1) + j * d1);
-      paramInt2 = m - (k - this.height) / 2;
-      setPositions(AlgoUtils.calPositions(paramInt1, paramInt2, (int)(i * d1) + paramInt1, (int)(paramInt2 - d1 * this.item.height), this.width, this.height));
+      double d1 = this.item.height;
+      double d2 = paramString.x;
+      Double.isNaN(d2);
+      double d3 = paramString.y;
+      Double.isNaN(d3);
+      d2 = d2 * 1.0D / d3;
+      Double.isNaN(d1);
+      int i = (int)(d1 * d2);
+      int j = (this.item.width - paramInt2 * i) / 2;
+      d1 = this.width;
+      d2 = this.height;
+      Double.isNaN(d1);
+      Double.isNaN(d2);
+      if (d1 / d2 >= 0.75D)
+      {
+        d1 = this.width;
+        Double.isNaN(d1);
+        d1 /= 720.0D;
+        d2 = this.width;
+        Double.isNaN(d2);
+        k = (int)(d2 / 0.75D);
+        d2 = k;
+        d3 = this.item.position[1];
+        Double.isNaN(d2);
+        m = (int)(d2 * (1.0D - d3));
+        d2 = this.width;
+        d3 = this.item.position[0];
+        Double.isNaN(d2);
+        d2 = (int)(d2 * d3);
+        d3 = (paramInt2 - paramInt1 - 1) * i;
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        d2 = (int)(d2 + d3 * d1);
+        d3 = j;
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        paramInt1 = (int)(d2 + d3 * d1);
+        paramInt2 = m - (k - this.height) / 2;
+        f1 = paramInt1;
+        f2 = paramInt2;
+        d2 = i;
+        Double.isNaN(d2);
+        f3 = paramInt1 + (int)(d2 * d1);
+        d2 = paramInt2;
+        d3 = this.item.height;
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        setPositions(AlgoUtils.calPositions(f1, f2, f3, (int)(d2 - d3 * d1), this.width, this.height));
+        return;
+      }
+      d1 = this.height;
+      Double.isNaN(d1);
+      d1 /= 960.0D;
+      d2 = this.height;
+      Double.isNaN(d2);
+      int m = (int)(d2 * 0.75D);
+      d2 = this.height;
+      d3 = this.item.position[1];
+      Double.isNaN(d2);
+      int k = (int)(d2 * (1.0D - d3));
+      d2 = m;
+      d3 = this.item.position[0];
+      Double.isNaN(d2);
+      d2 = (int)(d2 * d3);
+      d3 = (paramInt2 - paramInt1 - 1) * i;
+      Double.isNaN(d3);
+      Double.isNaN(d2);
+      d2 = (int)(d2 + d3 * d1);
+      d3 = j;
+      Double.isNaN(d3);
+      Double.isNaN(d2);
+      paramInt1 = (int)(d2 + d3 * d1);
+      float f1 = paramInt1;
+      float f2 = k;
+      d2 = i;
+      Double.isNaN(d2);
+      float f3 = paramInt1 + (int)(d2 * d1);
+      d2 = k;
+      d3 = this.item.height;
+      Double.isNaN(d3);
+      Double.isNaN(d2);
+      setPositions(AlgoUtils.calPositions(f1, f2, f3, (int)(d2 - d3 * d1), this.width, this.height));
       return;
     }
-    double d1 = this.height / 960.0D;
-    int m = (int)(this.height * 0.75D);
-    int k = (int)(this.height * (1.0D - this.item.position[1]));
-    double d2 = (int)((int)(m * this.item.position[0]) + (paramInt2 - paramInt1 - 1) * i * d1);
-    paramInt1 = (int)(j * d1 + d2);
-    setPositions(AlgoUtils.calPositions(paramInt1, k, (int)(i * d1) + paramInt1, (int)(k - d1 * this.item.height), this.width, this.height));
+    setPositions(GlUtil.EMPTY_POSITIONS);
   }
   
   private void updateTextureParam(String paramString, int paramInt1, int paramInt2)
   {
-    Object localObject2 = new StringBuilder().append(paramString).append("_");
-    if (paramInt1 == -1) {}
-    int i;
-    for (Object localObject1 = "x";; localObject1 = Integer.valueOf(paramInt1))
-    {
-      localObject1 = localObject1;
-      i = getFrameIndex();
-      if ((paramInt2 != this.mLastBitIndex) || (!this.mLastImageIndexMap.containsKey(localObject1)) || (i != ((Integer)this.mLastImageIndexMap.get(localObject1)).intValue()) || (this.mTextureParam == null)) {
-        break;
-      }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append("_");
+    String str = "x";
+    if (paramInt1 == -1) {
+      localObject1 = "x";
+    } else {
+      localObject1 = Integer.valueOf(paramInt1);
+    }
+    ((StringBuilder)localObject2).append(localObject1);
+    Object localObject1 = ((StringBuilder)localObject2).toString();
+    int i = getFrameIndex();
+    if ((paramInt2 == this.mLastBitIndex) && (this.mLastImageIndexMap.containsKey(localObject1)) && (i == ((Integer)this.mLastImageIndexMap.get(localObject1)).intValue()) && (this.mTextureParam != null)) {
       return;
     }
     localObject2 = getNextFrame(paramString, paramInt1, i);
-    if ((!BitmapUtils.isLegal((Bitmap)localObject2)) || (!needRenderTexture()))
+    if ((BitmapUtils.isLegal((Bitmap)localObject2)) && (needRenderTexture()))
     {
-      clearTextureParam();
-      return;
-    }
-    if (paramInt1 == -1) {
-      this.mIsUnitExists = true;
-    }
-    if (!this.mBitSizeMap.containsKey(localObject1)) {
-      this.mBitSizeMap.put(localObject1, new Point(((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight()));
-    }
-    try
-    {
-      if (this.mTextureParam != null)
-      {
-        this.mTextureParam.swapTextureBitmap((Bitmap)localObject2);
-        this.mTextureParam.setParams(getProgramIds());
+      if (paramInt1 == -1) {
+        this.mIsUnitExists = true;
       }
-      for (;;)
+      if (!this.mBitSizeMap.containsKey(localObject1)) {
+        this.mBitSizeMap.put(localObject1, new Point(((Bitmap)localObject2).getWidth(), ((Bitmap)localObject2).getHeight()));
+      }
+      try
       {
-        localObject1 = this.mLastImageIndexMap;
-        localObject2 = new StringBuilder().append(paramString).append("_");
-        if (paramInt1 != -1) {
-          break;
+        if (this.mTextureParam != null)
+        {
+          this.mTextureParam.swapTextureBitmap((Bitmap)localObject2);
+          this.mTextureParam.setParams(getProgramIds());
         }
-        paramString = "x";
-        ((Map)localObject1).put(paramString, Integer.valueOf(i));
-        return;
-        this.mTextureParam = new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject2, 33986, false);
-        this.mTextureParam.initialParams(getProgramIds());
-        this.mTextureParam.setParams(getProgramIds());
-        addParam(this.mTextureParam);
+        else
+        {
+          this.mTextureParam = new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject2, 33986, false);
+          this.mTextureParam.initialParams(getProgramIds());
+          this.mTextureParam.setParams(getProgramIds());
+          addParam(this.mTextureParam);
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         localException.printStackTrace();
         LogUtils.e(this, localException.getMessage());
-        continue;
+      }
+      Map localMap = this.mLastImageIndexMap;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append("_");
+      if (paramInt1 == -1) {
+        paramString = str;
+      } else {
         paramString = Integer.valueOf(paramInt1);
       }
+      ((StringBuilder)localObject2).append(paramString);
+      localMap.put(((StringBuilder)localObject2).toString(), Integer.valueOf(i));
+      return;
     }
+    clearTextureParam();
   }
   
   public void clearTextureParam()
   {
-    if (this.mTextureParam != null)
+    UniformParam.TextureBitmapParam localTextureBitmapParam = this.mTextureParam;
+    if (localTextureBitmapParam != null)
     {
-      this.mTextureParam.clear();
+      localTextureBitmapParam.clear();
       this.mTextureParam = null;
     }
     setPositions(GlUtil.EMPTY_POSITIONS);
@@ -196,81 +276,7 @@ public class StaticNumFilter
   
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
-    int k = 0;
-    int m = 0;
-    int j = 0;
-    if (this.mNum < 0) {
-      return true;
-    }
-    int n = getTotalBit(this.mNum);
-    updateTextureParam(this.item.id, -1, 0);
-    int i = n;
-    if (this.mIsUnitExists)
-    {
-      i = n + 1;
-      updateNumPosition(this.item.id + "_x", 0, i);
-      OnDrawFrameGLSL();
-      super.renderTexture(paramInt1, paramInt2, paramInt3);
-      this.mLastBitIndex = 0;
-    }
-    if (this.mNum < 10)
-    {
-      if (this.mIsUnitExists) {
-        j = 1;
-      }
-      updateTextureParam(this.item.id, this.mNum, j);
-      updateNumPosition(this.item.id + "_" + this.mNum, j, i);
-      OnDrawFrameGLSL();
-      super.renderTexture(paramInt1, paramInt2, paramInt3);
-      this.mLastBitIndex = j;
-      return true;
-    }
-    if ((10 <= this.mNum) && (this.mNum < 100))
-    {
-      j = k;
-      if (this.mIsUnitExists) {
-        j = 1;
-      }
-      k = this.mNum % 10;
-      updateTextureParam(this.item.id, k, j);
-      updateNumPosition(this.item.id + "_" + k, j, i);
-      OnDrawFrameGLSL();
-      super.renderTexture(paramInt1, paramInt2, paramInt3);
-      this.mLastBitIndex = j;
-      j += 1;
-      k = this.mNum / 10;
-      updateTextureParam(this.item.id, k, j);
-      updateNumPosition(this.item.id + "_" + k, j, i);
-      OnDrawFrameGLSL();
-      super.renderTexture(paramInt1, paramInt2, paramInt3);
-      this.mLastBitIndex = j;
-      return true;
-    }
-    j = m;
-    if (this.mIsUnitExists) {
-      j = 1;
-    }
-    k = this.mNum % 10;
-    updateTextureParam(this.item.id, k, j);
-    updateNumPosition(this.item.id + "_" + k, j, i);
-    OnDrawFrameGLSL();
-    super.renderTexture(paramInt1, paramInt2, paramInt3);
-    this.mLastBitIndex = j;
-    j += 1;
-    k = this.mNum / 10 % 10;
-    updateTextureParam(this.item.id, k, j);
-    updateNumPosition(this.item.id + "_" + k, j, i);
-    OnDrawFrameGLSL();
-    super.renderTexture(paramInt1, paramInt2, paramInt3);
-    this.mLastBitIndex = j;
-    j += 1;
-    k = this.mNum / 100;
-    updateTextureParam(this.item.id, k, j);
-    updateNumPosition(this.item.id + "_" + k, j, i);
-    OnDrawFrameGLSL();
-    super.renderTexture(paramInt1, paramInt2, paramInt3);
-    this.mLastBitIndex = j;
-    return true;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void setNum(int paramInt)
@@ -297,7 +303,7 @@ public class StaticNumFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.StaticNumFilter
  * JD-Core Version:    0.7.0.1
  */

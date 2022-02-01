@@ -1,16 +1,15 @@
 package com.tencent.biz.pubaccount.api.impl;
 
 import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.TextView;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.biz.ui.TouchWebView;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.webview.swift.SwiftBrowserUIStyle;
 import com.tencent.mobileqq.webview.swift.SwiftIphoneTitleBarUI;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class PublicAccountBrowserImpl$PublicAccountBrowserFragment$1
   implements View.OnClickListener
@@ -19,50 +18,58 @@ class PublicAccountBrowserImpl$PublicAccountBrowserFragment$1
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    TouchWebView localTouchWebView;
+    StringBuilder localStringBuilder;
+    if (i != 2131369202)
     {
-    default: 
-      onClick(paramView);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      String str;
-      if (!this.a.mUIStyleHandler.a.a)
+      if (i != 2131369233)
       {
-        str = this.a.mSwiftTitleUI.c.getText().toString();
-        this.a.webView.loadUrl("javascript:onRightBtn(\"" + str + "\")");
+        onClick(paramView);
+        return;
       }
-      else if (PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a) == 1001)
+      if (!this.a.getUIStyleHandler().a.a)
+      {
+        paramView = this.a.getSwiftTitleUI().c.getText().toString();
+        localTouchWebView = PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("javascript:onRightBtn(\"");
+        localStringBuilder.append(paramView);
+        localStringBuilder.append("\")");
+        localTouchWebView.loadUrl(localStringBuilder.toString());
+        return;
+      }
+      if (PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a) == 1001)
       {
         ThreadManager.executeOnSubThread(new PublicAccountBrowserImpl.PublicAccountBrowserFragment.1.1(this));
         this.a.getActivity().finish();
+        return;
       }
-      else
-      {
-        onClick(paramView);
-        continue;
-        if (!this.a.mUIStyleHandler.a.a)
-        {
-          str = this.a.mSwiftTitleUI.a.getText().toString();
-          if (str.equals(PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText"))) {
-            this.a.doOnBackEvent();
-          } else {
-            this.a.webView.loadUrl("javascript:onLeftBtn(\"" + str + "\")");
-          }
-        }
-        else
-        {
-          onClick(paramView);
-        }
-      }
+      onClick(paramView);
+      return;
     }
+    if (!this.a.getUIStyleHandler().a.a)
+    {
+      paramView = this.a.getSwiftTitleUI().a.getText().toString();
+      if (paramView.equals(PublicAccountBrowserImpl.PublicAccountBrowserFragment.a(this.a).getStringExtra("leftViewText")))
+      {
+        this.a.doOnBackEvent();
+        return;
+      }
+      localTouchWebView = PublicAccountBrowserImpl.PublicAccountBrowserFragment.b(this.a);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("javascript:onLeftBtn(\"");
+      localStringBuilder.append(paramView);
+      localStringBuilder.append("\")");
+      localTouchWebView.loadUrl(localStringBuilder.toString());
+      return;
+    }
+    onClick(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.api.impl.PublicAccountBrowserImpl.PublicAccountBrowserFragment.1
  * JD-Core Version:    0.7.0.1
  */

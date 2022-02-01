@@ -15,7 +15,7 @@ class NearbyReportManager$1
     int i = 0;
     while (i < this.jdField_a_of_type_ComTencentUtilLongSparseArray.a())
     {
-      localArrayList.add((NearbyReportManager.ReportRecord)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i));
+      localArrayList.add((ReportRecord)this.jdField_a_of_type_ComTencentUtilLongSparseArray.a(i));
       i += 1;
     }
     this.jdField_a_of_type_ComTencentMobileqqAppNearbyHandler.a(localArrayList, this.jdField_a_of_type_Boolean);
@@ -23,7 +23,7 @@ class NearbyReportManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyReportManager.1
  * JD-Core Version:    0.7.0.1
  */

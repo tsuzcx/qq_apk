@@ -17,13 +17,14 @@ public final class cmd0x388$ExpRoamPicInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_shop_flag", "uint32_pkg_id", "bytes_pic_id" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, ExpRoamPicInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint32_shop_flag", "uint32_pkg_id", "bytes_pic_id" }, new Object[] { localInteger, localInteger, localByteStringMicro }, ExpRoamPicInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x388.cmd0x388.ExpRoamPicInfo
  * JD-Core Version:    0.7.0.1
  */

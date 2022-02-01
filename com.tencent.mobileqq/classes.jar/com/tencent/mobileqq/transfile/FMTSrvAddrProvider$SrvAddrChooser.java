@@ -2,7 +2,7 @@ package com.tencent.mobileqq.transfile;
 
 import ConfigPush.FileStoragePushFSSvcList;
 import ConfigPush.FileStorageServerListInfo;
-import com.tencent.mobileqq.ptt.PttIpSaver;
+import com.tencent.mobileqq.richmedia.IRichMediaIpSaver;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -25,7 +25,7 @@ class FMTSrvAddrProvider$SrvAddrChooser
       int j = 5;
       ArrayList localArrayList = new ArrayList();
       int i = 0;
-      if (i < paramArrayOfInt.length)
+      while (i < paramArrayOfInt.length)
       {
         int k;
         if (paramArrayOfInt[i] < j)
@@ -34,11 +34,8 @@ class FMTSrvAddrProvider$SrvAddrChooser
           localArrayList.clear();
           localArrayList.add(Integer.valueOf(i));
         }
-        for (;;)
+        else
         {
-          i += 1;
-          j = k;
-          break;
           k = j;
           if (paramArrayOfInt[i] == j)
           {
@@ -46,6 +43,8 @@ class FMTSrvAddrProvider$SrvAddrChooser
             k = j;
           }
         }
+        i += 1;
+        j = k;
       }
       if (localArrayList.size() > 0) {
         return ((Integer)localArrayList.get(Math.abs(this.rand.nextInt()) % localArrayList.size())).intValue();
@@ -56,116 +55,97 @@ class FMTSrvAddrProvider$SrvAddrChooser
   
   private int findBestServerForPttDown(int[] paramArrayOfInt)
   {
-    if (!FMTSrvAddrProvider.access$600(this.this$0).a()) {}
-    for (int i = 2;; i = 5)
-    {
-      if (paramArrayOfInt != null)
-      {
-        int j = 0;
-        while (j < paramArrayOfInt.length)
-        {
-          if (paramArrayOfInt[j] < i) {
-            return j;
-          }
-          j += 1;
-        }
-      }
-      return -1;
+    int i;
+    if (!FMTSrvAddrProvider.access$600(this.this$0).a()) {
+      i = 2;
+    } else {
+      i = 5;
     }
+    if (paramArrayOfInt != null)
+    {
+      int j = 0;
+      while (j < paramArrayOfInt.length)
+      {
+        if (paramArrayOfInt[j] < i) {
+          return j;
+        }
+        j += 1;
+      }
+    }
+    return -1;
   }
   
   void clear() {}
   
   FileStorageServerListInfo getAddr(int paramInt)
   {
-    Object localObject2 = null;
-    ArrayList localArrayList = FMTSrvAddrProvider.access$500(this.this$0, paramInt);
-    Object localObject1 = localObject2;
-    if (localArrayList != null)
+    Object localObject = FMTSrvAddrProvider.access$500(this.this$0, paramInt);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      localObject1 = localObject2;
-      if (localArrayList.size() > 0)
+      paramInt = findBestServer(getFailedTimesArray(paramInt));
+      if ((paramInt > -1) && (paramInt < ((ArrayList)localObject).size()))
       {
-        paramInt = findBestServer(getFailedTimesArray(paramInt));
-        localObject1 = localObject2;
-        if (paramInt > -1)
-        {
-          localObject1 = localObject2;
-          if (paramInt < localArrayList.size()) {
-            localObject1 = (FileStorageServerListInfo)localArrayList.get(paramInt);
-          }
-        }
+        localObject = (FileStorageServerListInfo)((ArrayList)localObject).get(paramInt);
+        break label57;
       }
     }
+    localObject = null;
+    label57:
     if (QLog.isColorLevel()) {
       QLog.d("FMT_ADDR", 2, "getAddr error,ret=null");
     }
-    return localObject1;
+    return localObject;
   }
   
   FileStorageServerListInfo getAddrForPttDownload()
   {
-    Object localObject2 = null;
-    ArrayList localArrayList = FMTSrvAddrProvider.access$500(this.this$0, 16);
-    Object localObject1 = localObject2;
-    if (localArrayList != null)
+    Object localObject = FMTSrvAddrProvider.access$500(this.this$0, 16);
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      localObject1 = localObject2;
-      if (localArrayList.size() > 0)
+      int i = findBestServerForPttDown(FMTSrvAddrProvider.access$400(this.this$0).getPttFailTimesArea(FMTSrvAddrProvider.access$600(this.this$0).a()));
+      if ((i > -1) && (i < ((ArrayList)localObject).size()))
       {
-        int i = findBestServerForPttDown(FMTSrvAddrProvider.access$400(this.this$0).getPttFailTimesArea(FMTSrvAddrProvider.access$600(this.this$0).b()));
-        localObject1 = localObject2;
-        if (i > -1)
-        {
-          localObject1 = localObject2;
-          if (i < localArrayList.size()) {
-            localObject1 = (FileStorageServerListInfo)localArrayList.get(i);
-          }
-        }
+        localObject = (FileStorageServerListInfo)((ArrayList)localObject).get(i);
+        break label75;
       }
     }
+    localObject = null;
+    label75:
     if (QLog.isColorLevel()) {
       QLog.d("FMT_ADDR", 2, "getAddr error,ret=null");
     }
-    return localObject1;
+    return localObject;
   }
   
   int[] getFailedTimesArray(int paramInt)
   {
-    if (this.mUrlFailedTimes == null) {
+    int[][] arrayOfInt = this.mUrlFailedTimes;
+    if (arrayOfInt == null) {
       return null;
     }
-    return this.mUrlFailedTimes[paramInt];
+    return arrayOfInt[paramInt];
   }
   
   ArrayList<FileStorageServerListInfo> getOrderAddrList(int paramInt)
   {
-    int i3 = 2147483647;
-    int i2 = 0;
     ArrayList localArrayList1 = FMTSrvAddrProvider.access$500(this.this$0, paramInt);
-    int i;
-    int k;
-    ArrayList localArrayList2;
-    int[] arrayOfInt;
-    int j;
-    int m;
-    int n;
-    int i1;
     if ((localArrayList1 != null) && (localArrayList1.size() > 0))
     {
-      i = localArrayList1.size();
-      k = i;
+      int i = localArrayList1.size();
+      int k = i;
       if (i >= 3) {
         k = 3;
       }
-      localArrayList2 = new ArrayList(k);
-      arrayOfInt = getFailedTimesArray(paramInt);
+      ArrayList localArrayList2 = new ArrayList(k);
+      int[] arrayOfInt = getFailedTimesArray(paramInt);
       if ((arrayOfInt != null) && (arrayOfInt.length == localArrayList1.size()))
       {
+        int i2 = 2147483647;
+        int i3 = 0;
         paramInt = 0;
-        i = 2147483647;
-        j = 0;
-        while (paramInt < arrayOfInt.length)
+        int j = 0;
+        int m;
+        for (i = 2147483647; paramInt < arrayOfInt.length; i = m)
         {
           m = i;
           if (arrayOfInt[paramInt] < i)
@@ -174,79 +154,76 @@ class FMTSrvAddrProvider$SrvAddrChooser
             j = paramInt;
           }
           paramInt += 1;
-          i = m;
         }
         localArrayList2.add(0, localArrayList1.get(j));
-        if (k < 2) {
-          break label342;
-        }
-        paramInt = 0;
-        n = 2147483647;
-        for (i = 0; paramInt < arrayOfInt.length; i = m)
+        int i1;
+        int n;
+        if (k >= 2)
         {
-          i1 = n;
-          m = i;
-          if (paramInt != j)
+          paramInt = 0;
+          i = 0;
+          for (m = 2147483647; paramInt < arrayOfInt.length; m = n)
           {
-            i1 = n;
-            m = i;
-            if (arrayOfInt[paramInt] < n)
+            i1 = i;
+            n = m;
+            if (paramInt != j)
             {
-              i1 = arrayOfInt[paramInt];
-              m = paramInt;
-            }
-          }
-          paramInt += 1;
-          n = i1;
-        }
-        localArrayList2.add(1, localArrayList1.get(i));
-      }
-    }
-    for (;;)
-    {
-      if (k >= 3)
-      {
-        n = 0;
-        k = i3;
-        paramInt = i2;
-        while (paramInt < arrayOfInt.length)
-        {
-          i1 = n;
-          m = k;
-          if (paramInt != j)
-          {
-            i1 = n;
-            m = k;
-            if (paramInt != i)
-            {
-              i1 = n;
-              m = k;
-              if (arrayOfInt[paramInt] < k)
+              i1 = i;
+              n = m;
+              if (arrayOfInt[paramInt] < m)
               {
-                m = arrayOfInt[paramInt];
+                n = arrayOfInt[paramInt];
                 i1 = paramInt;
               }
             }
+            paramInt += 1;
+            i = i1;
           }
-          paramInt += 1;
-          n = i1;
-          k = m;
+          localArrayList2.add(1, localArrayList1.get(i));
         }
-        localArrayList2.add(2, localArrayList1.get(n));
+        else
+        {
+          i = 0;
+        }
+        if (k >= 3)
+        {
+          n = 0;
+          paramInt = i3;
+          for (k = i2; paramInt < arrayOfInt.length; k = m)
+          {
+            i1 = n;
+            m = k;
+            if (paramInt != j)
+            {
+              i1 = n;
+              m = k;
+              if (paramInt != i)
+              {
+                i1 = n;
+                m = k;
+                if (arrayOfInt[paramInt] < k)
+                {
+                  m = arrayOfInt[paramInt];
+                  i1 = paramInt;
+                }
+              }
+            }
+            paramInt += 1;
+            n = i1;
+          }
+          localArrayList2.add(2, localArrayList1.get(n));
+        }
+        return localArrayList2;
       }
-      return localArrayList2;
-      if (QLog.isColorLevel()) {
-        QLog.d("FMT_ADDR", 2, "getAddr error,ret=null");
-      }
-      return null;
-      label342:
-      i = 0;
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("FMT_ADDR", 2, "getAddr error,ret=null");
+    }
+    return null;
   }
   
   void init(FileStoragePushFSSvcList paramFileStoragePushFSSvcList)
   {
-    int k = 0;
     if (paramFileStoragePushFSSvcList != null)
     {
       this.mUrlFailedTimes = new int[18][];
@@ -262,7 +239,9 @@ class FMTSrvAddrProvider$SrvAddrChooser
       if ((paramFileStoragePushFSSvcList.vQzoneProxyServiceList != null) && (paramFileStoragePushFSSvcList.vQzoneProxyServiceList.size() > 0)) {
         this.mUrlFailedTimes[3] = new int[paramFileStoragePushFSSvcList.vQzoneProxyServiceList.size()];
       }
-      if ((paramFileStoragePushFSSvcList.vUpLoadList != null) && (paramFileStoragePushFSSvcList.vUpLoadList.size() > 0)) {
+      ArrayList localArrayList = paramFileStoragePushFSSvcList.vUpLoadList;
+      int k = 0;
+      if ((localArrayList != null) && (paramFileStoragePushFSSvcList.vUpLoadList.size() > 0)) {
         this.mUrlFailedTimes[0] = new int[paramFileStoragePushFSSvcList.vUpLoadList.size()];
       }
       if ((paramFileStoragePushFSSvcList.vVipEmotionList != null) && (paramFileStoragePushFSSvcList.vVipEmotionList.size() > 0)) {
@@ -273,30 +252,33 @@ class FMTSrvAddrProvider$SrvAddrChooser
       }
       int i = 6;
       int j;
-      if (i <= 10)
+      while (i <= 10)
       {
-        paramFileStoragePushFSSvcList = FMTSrvAddrProvider.access$100(this.this$0, FMTSrvAddrProvider.access$000(this.this$0, i));
-        if (paramFileStoragePushFSSvcList != null) {}
-        for (j = paramFileStoragePushFSSvcList.size();; j = 0)
-        {
-          this.mUrlFailedTimes[i] = new int[j];
-          i += 1;
-          break;
+        paramFileStoragePushFSSvcList = this.this$0;
+        paramFileStoragePushFSSvcList = FMTSrvAddrProvider.access$100(paramFileStoragePushFSSvcList, FMTSrvAddrProvider.access$000(paramFileStoragePushFSSvcList, i));
+        if (paramFileStoragePushFSSvcList != null) {
+          j = paramFileStoragePushFSSvcList.size();
+        } else {
+          j = 0;
         }
+        this.mUrlFailedTimes[i] = new int[j];
+        i += 1;
       }
       i = 12;
-      if (i <= 15)
+      while (i <= 15)
       {
-        paramFileStoragePushFSSvcList = FMTSrvAddrProvider.access$300(this.this$0, FMTSrvAddrProvider.access$200(this.this$0, i));
-        if (paramFileStoragePushFSSvcList != null) {}
-        for (j = paramFileStoragePushFSSvcList.size();; j = 0)
-        {
-          this.mUrlFailedTimes[i] = new int[j];
-          i += 1;
-          break;
+        paramFileStoragePushFSSvcList = this.this$0;
+        paramFileStoragePushFSSvcList = FMTSrvAddrProvider.access$300(paramFileStoragePushFSSvcList, FMTSrvAddrProvider.access$200(paramFileStoragePushFSSvcList, i));
+        if (paramFileStoragePushFSSvcList != null) {
+          j = paramFileStoragePushFSSvcList.size();
+        } else {
+          j = 0;
         }
+        this.mUrlFailedTimes[i] = new int[j];
+        i += 1;
       }
-      paramFileStoragePushFSSvcList = FMTSrvAddrProvider.access$300(this.this$0, FMTSrvAddrProvider.access$200(this.this$0, 17));
+      paramFileStoragePushFSSvcList = this.this$0;
+      paramFileStoragePushFSSvcList = FMTSrvAddrProvider.access$300(paramFileStoragePushFSSvcList, FMTSrvAddrProvider.access$200(paramFileStoragePushFSSvcList, 17));
       i = k;
       if (paramFileStoragePushFSSvcList != null) {
         i = paramFileStoragePushFSSvcList.size();
@@ -315,25 +297,23 @@ class FMTSrvAddrProvider$SrvAddrChooser
       if ((localArrayList != null) && (localArrayList.size() > 0) && (arrayOfInt != null) && (arrayOfInt.length > 0))
       {
         paramString = new URL(paramString).getHost();
-        if ((paramString != null) && (paramString.length() > 0)) {
-          paramInt = 0;
-        }
-      }
-      for (;;)
-      {
-        if (paramInt < localArrayList.size())
+        if ((paramString != null) && (paramString.length() > 0))
         {
-          String str = ((FileStorageServerListInfo)localArrayList.get(paramInt)).sIP;
-          if ((str == null) || (!str.equalsIgnoreCase(paramString))) {
-            break label116;
-          }
-          if (arrayOfInt.length > paramInt) {
-            arrayOfInt[paramInt] += 1;
+          paramInt = 0;
+          while (paramInt < localArrayList.size())
+          {
+            String str = ((FileStorageServerListInfo)localArrayList.get(paramInt)).sIP;
+            if ((str != null) && (str.equalsIgnoreCase(paramString)))
+            {
+              if (arrayOfInt.length <= paramInt) {
+                break;
+              }
+              arrayOfInt[paramInt] += 1;
+              return;
+            }
+            paramInt += 1;
           }
         }
-        return;
-        label116:
-        paramInt += 1;
       }
       return;
     }
@@ -342,7 +322,7 @@ class FMTSrvAddrProvider$SrvAddrChooser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FMTSrvAddrProvider.SrvAddrChooser
  * JD-Core Version:    0.7.0.1
  */

@@ -43,12 +43,13 @@ public abstract interface LottieProperty
     TRANSFORM_POSITION = new PointF();
     ELLIPSE_SIZE = new PointF();
     RECTANGLE_SIZE = new PointF();
-    CORNER_RADIUS = Float.valueOf(0.0F);
+    Float localFloat = Float.valueOf(0.0F);
+    CORNER_RADIUS = localFloat;
     POSITION = new PointF();
     TRANSFORM_SCALE = new ScaleXY();
     TRANSFORM_ROTATION = Float.valueOf(1.0F);
-    TRANSFORM_SKEW = Float.valueOf(0.0F);
-    TRANSFORM_SKEW_ANGLE = Float.valueOf(0.0F);
+    TRANSFORM_SKEW = localFloat;
+    TRANSFORM_SKEW_ANGLE = localFloat;
     STROKE_WIDTH = Float.valueOf(2.0F);
     TEXT_TRACKING = Float.valueOf(3.0F);
     REPEATER_COPIES = Float.valueOf(4.0F);
@@ -59,14 +60,15 @@ public abstract interface LottieProperty
     POLYSTAR_OUTER_RADIUS = Float.valueOf(9.0F);
     POLYSTAR_INNER_ROUNDEDNESS = Float.valueOf(10.0F);
     POLYSTAR_OUTER_ROUNDEDNESS = Float.valueOf(11.0F);
-    TRANSFORM_START_OPACITY = Float.valueOf(12.0F);
-    TRANSFORM_END_OPACITY = Float.valueOf(12.0F);
+    localFloat = Float.valueOf(12.0F);
+    TRANSFORM_START_OPACITY = localFloat;
+    TRANSFORM_END_OPACITY = localFloat;
     TIME_REMAP = Float.valueOf(13.0F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieProperty
  * JD-Core Version:    0.7.0.1
  */

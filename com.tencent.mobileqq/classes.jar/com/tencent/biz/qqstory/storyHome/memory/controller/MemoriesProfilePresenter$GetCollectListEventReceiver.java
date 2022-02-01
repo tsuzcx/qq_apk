@@ -21,20 +21,18 @@ class MemoriesProfilePresenter$GetCollectListEventReceiver
     if (paramGetCollectionListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess())
     {
       SLog.b("Q.qqstory.memories.MemoriesProfilePresenter", "update video total count. %d.", Integer.valueOf(paramGetCollectionListEvent.jdField_a_of_type_Int));
-      if ((TextUtils.isEmpty(paramGetCollectionListEvent.b)) || (paramGetCollectionListEvent.b.equals(paramMemoriesProfilePresenter.jdField_a_of_type_JavaLangString))) {
-        break label49;
+      if ((!TextUtils.isEmpty(paramGetCollectionListEvent.b)) && (!paramGetCollectionListEvent.b.equals(paramMemoriesProfilePresenter.jdField_a_of_type_JavaLangString))) {
+        return;
       }
-    }
-    label49:
-    do
-    {
-      return;
       if (paramGetCollectionListEvent.jdField_a_of_type_Int != -1) {
         MemoriesProfilePresenter.a(paramMemoriesProfilePresenter, paramGetCollectionListEvent.jdField_a_of_type_Int);
       }
-    } while (paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem == null);
-    paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
-    ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramMemoriesProfilePresenter), 5, null, false);
+      if (paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem != null)
+      {
+        paramMemoriesProfilePresenter.jdField_a_of_type_ComTencentBizQqstoryModelItemQQUserUIItem.videoCount = MemoriesProfilePresenter.a(paramMemoriesProfilePresenter);
+        ThreadManager.post(new MemoriesProfilePresenter.GetCollectListEventReceiver.1(this, paramMemoriesProfilePresenter), 5, null, false);
+      }
+    }
   }
   
   public Class acceptEventClass()
@@ -44,7 +42,7 @@ class MemoriesProfilePresenter$GetCollectListEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesProfilePresenter.GetCollectListEventReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -61,7 +61,7 @@ public class ReportCenter
   
   private static int a(Context paramContext)
   {
-    int i = NetworkUtil.b(paramContext);
+    int i = NetworkUtil.getNetworkType(paramContext);
     if (i == 1) {
       return 2;
     }
@@ -78,37 +78,42 @@ public class ReportCenter
   {
     JSONArray localJSONArray1 = new JSONArray();
     JSONArray localJSONArray2 = new JSONArray();
-    String str1 = "personal_live_base";
     Iterator localIterator = paramBundle.keySet().iterator();
-    while (localIterator.hasNext())
+    String str1 = "personal_live_base";
+    Object localObject;
+    for (;;)
     {
+      boolean bool = localIterator.hasNext();
+      localObject = "";
+      if (!bool) {
+        break;
+      }
       String str2 = (String)localIterator.next();
       if ("tid".equals(str2))
       {
         str1 = paramBundle.getString(str2);
       }
-      else
+      else if (!"bid".equals(str2))
       {
-        if (!"bid".equals(str2))
-        {
-          localJSONArray1.put(str2);
-          if (!StringUtil.a(paramBundle.getString(str2))) {
-            break label111;
-          }
+        localJSONArray1.put(str2);
+        if (!StringUtil.a(paramBundle.getString(str2))) {
+          localObject = paramBundle.getString(str2);
         }
-        label111:
-        for (str2 = "";; str2 = paramBundle.getString(str2))
-        {
-          localJSONArray2.put(str2);
-          break;
-        }
+        localJSONArray2.put(localObject);
       }
     }
     paramBundle = new JSONArray();
     paramBundle.put(localJSONArray2);
     try
     {
-      paramBundle = "&table=" + str1 + "&fields=" + URLEncoder.encode(localJSONArray1.toString(), "UTF-8") + "&datas=" + URLEncoder.encode(paramBundle.toString(), "UTF-8");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("&table=");
+      ((StringBuilder)localObject).append(str1);
+      ((StringBuilder)localObject).append("&fields=");
+      ((StringBuilder)localObject).append(URLEncoder.encode(localJSONArray1.toString(), "UTF-8"));
+      ((StringBuilder)localObject).append("&datas=");
+      ((StringBuilder)localObject).append(URLEncoder.encode(paramBundle.toString(), "UTF-8"));
+      paramBundle = ((StringBuilder)localObject).toString();
       return paramBundle;
     }
     catch (UnsupportedEncodingException paramBundle)
@@ -142,20 +147,19 @@ public class ReportCenter
     localBundle.putString("qqversion", this.jdField_a_of_type_JavaLangString);
     localBundle.putString("timestr", String.valueOf(System.currentTimeMillis() / 1000L));
     localBundle.putString("networktype", String.valueOf(a(this.jdField_a_of_type_ComTencentQphoneBaseUtilBaseApplication)));
-    Object localObject = "";
     try
     {
-      String str = DeviceInfoUtil.a();
-      localObject = str;
+      str = DeviceInfoUtil.a();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.i("ReportCenter", 4, "no phone permission");
-      }
+      String str;
+      label172:
+      break label172;
     }
-    localBundle.putString("imei", (String)localObject);
+    QLog.i("ReportCenter", 4, "no phone permission");
+    str = "";
+    localBundle.putString("imei", str);
     return localBundle;
   }
   
@@ -171,7 +175,7 @@ public class ReportCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.roport.ReportCenter
  * JD-Core Version:    0.7.0.1
  */

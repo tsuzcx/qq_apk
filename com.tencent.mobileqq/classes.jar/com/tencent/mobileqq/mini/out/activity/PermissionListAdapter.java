@@ -47,12 +47,13 @@ public class PermissionListAdapter
       AuthorizeCenter.AuthorizeInfo localAuthorizeInfo = (AuthorizeCenter.AuthorizeInfo)localIterator.next();
       if (paramString.equals(localAuthorizeInfo.scopeName))
       {
-        if (paramBoolean) {}
-        for (int i = 2;; i = 4)
-        {
-          localAuthorizeInfo.authFlag = i;
-          break;
+        int i;
+        if (paramBoolean) {
+          i = 2;
+        } else {
+          i = 4;
         }
+        localAuthorizeInfo.authFlag = i;
       }
     }
   }
@@ -86,45 +87,36 @@ public class PermissionListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    boolean bool = true;
     AuthorizeCenter.AuthorizeInfo localAuthorizeInfo = getItem(paramInt);
     if (localAuthorizeInfo != null)
     {
-      if ("setting.appMsgSubscribed".equals(localAuthorizeInfo.scopeName))
+      boolean bool2 = "setting.appMsgSubscribed".equals(localAuthorizeInfo.scopeName);
+      boolean bool1 = true;
+      if (bool2)
       {
         paramView = new FormSimpleItem(this.context);
         paramView.a(true);
-        paramView.setLeftText(HardCodeUtil.a(2131694184));
+        paramView.setLeftText(HardCodeUtil.a(2131694148));
         paramView.setOnClickListener(this.subMsgPermissionClickListener);
         return paramView;
       }
-      if ((paramView instanceof FormSwitchItem))
-      {
+      if ((paramView instanceof FormSwitchItem)) {
         paramView = (FormSwitchItem)paramView;
-        paramView.a().setTag(localAuthorizeInfo.scopeName);
-        if (localAuthorizeInfo.authFlag != 2) {
-          break label152;
-        }
-        label97:
-        paramView.setChecked(bool);
-        paramView.setOnCheckedChangeListener(this.checkedChangeListener);
-        paramViewGroup = (String)AuthorizeCenter.settingScopeTitleMap.get(localAuthorizeInfo.scopeName);
-        if (paramViewGroup == null) {
-          break label158;
-        }
-      }
-      for (;;)
-      {
-        paramView.setText(paramViewGroup);
-        return paramView;
+      } else {
         paramView = new FormSwitchItem(this.context);
-        break;
-        label152:
-        bool = false;
-        break label97;
-        label158:
+      }
+      paramView.a().setTag(localAuthorizeInfo.scopeName);
+      if (localAuthorizeInfo.authFlag != 2) {
+        bool1 = false;
+      }
+      paramView.setChecked(bool1);
+      paramView.setOnCheckedChangeListener(this.checkedChangeListener);
+      paramViewGroup = (String)AuthorizeCenter.settingScopeTitleMap.get(localAuthorizeInfo.scopeName);
+      if (paramViewGroup == null) {
         paramViewGroup = localAuthorizeInfo.scopeName;
       }
+      paramView.setText(paramViewGroup);
+      return paramView;
     }
     return null;
   }
@@ -144,7 +136,7 @@ public class PermissionListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.activity.PermissionListAdapter
  * JD-Core Version:    0.7.0.1
  */

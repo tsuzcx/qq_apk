@@ -9,7 +9,7 @@ import com.tencent.thumbplayer.core.downloadproxy.utils.TPDLProxyUtils;
 public class TPDownloadProxyNative
 {
   private static final String FILE_NAME = "TPDownloadProxyNative";
-  private static Context appContext = null;
+  private static Context appContext;
   private static boolean isLoadDownloadProxySucceed = false;
   private ITPDLProxyNativeLibLoader mLibLoader;
   
@@ -75,15 +75,20 @@ public class TPDownloadProxyNative
   
   public native byte[] getHLSOfflineExttag(String paramString1, String paramString2, int paramInt, long paramLong);
   
-  public native byte[] getNativeInfo(String paramString);
+  public native byte[] getNativeInfo(int paramInt);
   
   public String getNativeVersion()
   {
-    String str = "2.0.0.00016";
+    String str;
     if (isLoadDownloadProxySucceed) {
       str = TPDLProxyUtils.byteArrayToString(getVersion());
+    } else {
+      str = "2.3.0.00016";
     }
-    TPDLProxyLog.i("TPDownloadProxyNative", 0, "tpdlnative", "get native version:" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("get native version:");
+    localStringBuilder.append(str);
+    TPDLProxyLog.i("TPDownloadProxyNative", 0, "tpdlnative", localStringBuilder.toString());
     return str;
   }
   
@@ -94,49 +99,53 @@ public class TPDownloadProxyNative
   public boolean isNativeLoaded()
   {
     if (!isLoadDownloadProxySucceed) {}
-    try
+    for (;;)
     {
-      if (this.mLibLoader == null) {
-        break label69;
-      }
-      isLoadDownloadProxySucceed = this.mLibLoader.loadLib("DownloadProxy", getNativeVersion());
-      localStringBuilder = new StringBuilder().append("third module so load ret:");
-      if (!isLoadDownloadProxySucceed) {
-        break label98;
-      }
-      str = "0";
-    }
-    catch (Throwable localThrowable1)
-    {
+      StringBuilder localStringBuilder;
       try
       {
-        for (;;)
+        if (this.mLibLoader != null)
         {
-          StringBuilder localStringBuilder;
-          if (!isLoadDownloadProxySucceed)
-          {
-            System.loadLibrary("DownloadProxy");
-            isLoadDownloadProxySucceed = true;
-            TPDLProxyLog.i("TPDownloadProxyNative", 0, "tpdlnative", "system so load success!");
+          isLoadDownloadProxySucceed = this.mLibLoader.loadLib("DownloadProxy", getNativeVersion());
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("third module so load ret:");
+          if (!isLoadDownloadProxySucceed) {
+            break label193;
           }
-          return isLoadDownloadProxySucceed;
-          String str = "1";
-          continue;
-          localThrowable1 = localThrowable1;
-          isLoadDownloadProxySucceed = false;
-          TPDLProxyLog.e("TPDownloadProxyNative", 0, "tpdlnative", "third module so load failed, error:" + localThrowable1.toString());
+          String str1 = "0";
+          localStringBuilder.append(str1);
+          TPDLProxyLog.i("TPDownloadProxyNative", 0, "tpdlnative", localStringBuilder.toString());
+        }
+      }
+      catch (Throwable localThrowable1)
+      {
+        isLoadDownloadProxySucceed = false;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("third module so load failed, error:");
+        localStringBuilder.append(localThrowable1.toString());
+        TPDLProxyLog.e("TPDownloadProxyNative", 0, "tpdlnative", localStringBuilder.toString());
+      }
+      try
+      {
+        if (!isLoadDownloadProxySucceed)
+        {
+          System.loadLibrary("DownloadProxy");
+          isLoadDownloadProxySucceed = true;
+          TPDLProxyLog.i("TPDownloadProxyNative", 0, "tpdlnative", "system so load success!");
         }
       }
       catch (Throwable localThrowable2)
       {
-        for (;;)
-        {
-          isLoadDownloadProxySucceed = false;
-          TPDLProxyLog.e("TPDownloadProxyNative", 0, "tpdlnative", "system so load failed, error:" + localThrowable2.toString());
-        }
+        isLoadDownloadProxySucceed = false;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("system so load failed, error:");
+        localStringBuilder.append(localThrowable2.toString());
+        TPDLProxyLog.e("TPDownloadProxyNative", 0, "tpdlnative", localStringBuilder.toString());
       }
+      return isLoadDownloadProxySucceed;
+      label193:
+      String str2 = "1";
     }
-    TPDLProxyLog.i("TPDownloadProxyNative", 0, "tpdlnative", str);
   }
   
   public native boolean isNativeReadyForWork();
@@ -192,7 +201,7 @@ public class TPDownloadProxyNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.jni.TPDownloadProxyNative
  * JD-Core Version:    0.7.0.1
  */

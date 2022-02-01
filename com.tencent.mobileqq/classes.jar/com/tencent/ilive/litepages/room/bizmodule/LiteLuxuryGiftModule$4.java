@@ -23,7 +23,7 @@ class LiteLuxuryGiftModule$4
       while (((Iterator)localObject2).hasNext())
       {
         localObject3 = (GiftEffectResourceInfo)((Iterator)localObject2).next();
-        ((List)localObject1).add(LiteLuxuryGiftModule.access$1300(this.this$0, (GiftEffectResourceInfo)localObject3));
+        ((List)localObject1).add(LiteLuxuryGiftModule.access$1200(this.this$0, (GiftEffectResourceInfo)localObject3));
       }
     }
     Object localObject2 = new ArrayList();
@@ -31,14 +31,14 @@ class LiteLuxuryGiftModule$4
     while (((Iterator)localObject1).hasNext())
     {
       localObject3 = (LuxuryGiftInfo)((Iterator)localObject1).next();
-      ((ArrayList)localObject2).add(LiteLuxuryGiftModule.access$1200(this.this$0, (LuxuryGiftInfo)localObject3));
+      ((ArrayList)localObject2).add(LiteLuxuryGiftModule.access$1100(this.this$0, (LuxuryGiftInfo)localObject3));
     }
-    LiteLuxuryGiftModule.access$500(this.this$0).queryH264GiftRes((List)localObject2, new LiteLuxuryGiftModule.4.1(this, paramList));
+    this.this$0.getGiftServiceInterface().queryH264GiftRes((List)localObject2, new LiteLuxuryGiftModule.4.1(this, paramList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.bizmodule.LiteLuxuryGiftModule.4
  * JD-Core Version:    0.7.0.1
  */

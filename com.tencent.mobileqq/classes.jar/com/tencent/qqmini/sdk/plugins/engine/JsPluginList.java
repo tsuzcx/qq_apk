@@ -42,7 +42,10 @@ public class JsPluginList
       localObject = (Class)((Map.Entry)localObject).getValue();
       if (paramMap.containsKey(str))
       {
-        QMLog.w("JsPluginList", "register JsPlugin, conflict event:" + str);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("register JsPlugin, conflict event:");
+        ((StringBuilder)localObject).append(str);
+        QMLog.w("JsPluginList", ((StringBuilder)localObject).toString());
       }
       else
       {
@@ -70,7 +73,10 @@ public class JsPluginList
       localObject = (Class)((Map.Entry)localObject).getValue();
       if (paramMap.containsKey(str))
       {
-        QMLog.w("JsPluginList", "register Secondary JsPlugin, conflict event:" + str);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("register Secondary JsPlugin, conflict event:");
+        ((StringBuilder)localObject).append(str);
+        QMLog.w("JsPluginList", ((StringBuilder)localObject).toString());
       }
       else
       {
@@ -93,46 +99,56 @@ public class JsPluginList
   {
     HashMap localHashMap = new HashMap();
     fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope", localHashMap);
-    if (paramBoolean) {}
-    for (String str = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";; str = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope")
-    {
-      fillEventPluginMap(str, localHashMap);
-      fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.MapJsPluginScope", localHashMap);
-      fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localHashMap);
-      QMLog.i("JsPluginList", "Registered events size: " + localHashMap.keySet().size());
-      return localHashMap;
+    if (paramBoolean) {
+      localObject = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";
+    } else {
+      localObject = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope";
     }
+    fillEventPluginMap((String)localObject, localHashMap);
+    fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.MapJsPluginScope", localHashMap);
+    fillEventPluginMap("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localHashMap);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Registered events size: ");
+    ((StringBuilder)localObject).append(localHashMap.keySet().size());
+    QMLog.i("JsPluginList", ((StringBuilder)localObject).toString());
+    return localHashMap;
   }
   
   public static Method getMethod(Class paramClass, String paramString)
   {
-    if ((paramClass == null) || (paramString == null)) {
-      return null;
-    }
-    Method[] arrayOfMethod = paramClass.getDeclaredMethods();
-    int k = arrayOfMethod.length;
-    int i = 0;
-    if (i < k)
+    if (paramClass != null)
     {
-      Method localMethod = arrayOfMethod[i];
-      if (!localMethod.isAnnotationPresent(JsEvent.class)) {}
-      for (;;)
-      {
-        i += 1;
-        break;
-        String[] arrayOfString = ((JsEvent)localMethod.getAnnotation(JsEvent.class)).value();
-        int m = arrayOfString.length;
-        int j = 0;
-        while (j < m)
-        {
-          if (arrayOfString[j].equals(paramString)) {
-            return localMethod;
-          }
-          j += 1;
-        }
+      if (paramString == null) {
+        return null;
       }
+      Object localObject = paramClass.getDeclaredMethods();
+      int k = localObject.length;
+      int i = 0;
+      while (i < k)
+      {
+        Method localMethod = localObject[i];
+        if (localMethod.isAnnotationPresent(JsEvent.class))
+        {
+          String[] arrayOfString = ((JsEvent)localMethod.getAnnotation(JsEvent.class)).value();
+          int m = arrayOfString.length;
+          int j = 0;
+          while (j < m)
+          {
+            if (arrayOfString[j].equals(paramString)) {
+              return localMethod;
+            }
+            j += 1;
+          }
+        }
+        i += 1;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Failed to getMethod in JsPlugin ");
+      ((StringBuilder)localObject).append(paramClass);
+      ((StringBuilder)localObject).append(" for event ");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.w("JsPluginList", ((StringBuilder)localObject).toString());
     }
-    QMLog.w("JsPluginList", "Failed to getMethod in JsPlugin " + paramClass + " for event " + paramString);
     return null;
   }
   
@@ -140,13 +156,15 @@ public class JsPluginList
   {
     ArrayList localArrayList = new ArrayList();
     fillPreloadPlugins("com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope", localArrayList);
-    if (paramBoolean) {}
-    for (String str = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";; str = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope")
-    {
-      fillPreloadPlugins(str, localArrayList);
-      fillPreloadPlugins("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localArrayList);
-      return localArrayList;
+    String str;
+    if (paramBoolean) {
+      str = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";
+    } else {
+      str = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope";
     }
+    fillPreloadPlugins(str, localArrayList);
+    fillPreloadPlugins("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localArrayList);
+    return localArrayList;
   }
   
   private static List<Class> getPreloadPluginsByScope(String paramString)
@@ -171,19 +189,23 @@ public class JsPluginList
   {
     HashMap localHashMap = new HashMap();
     fillSecondaryEventPluginMap("com.tencent.qqmini.sdk.core.generated.SdkJsPluginScope", localHashMap);
-    if (paramBoolean) {}
-    for (String str = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";; str = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope")
-    {
-      fillSecondaryEventPluginMap(str, localHashMap);
-      fillSecondaryEventPluginMap("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localHashMap);
-      QMLog.i("JsPluginList", "Registered secondary events size: " + localHashMap.keySet().size());
-      return localHashMap;
+    if (paramBoolean) {
+      localObject = "com.tencent.qqmini.sdk.core.generated.GameJsPluginScope";
+    } else {
+      localObject = "com.tencent.qqmini.sdk.core.generated.AppJsPluginScope";
     }
+    fillSecondaryEventPluginMap((String)localObject, localHashMap);
+    fillSecondaryEventPluginMap("com.tencent.qqmini.sdk.core.generated.ExtJsPluginScope", localHashMap);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Registered secondary events size: ");
+    ((StringBuilder)localObject).append(localHashMap.keySet().size());
+    QMLog.i("JsPluginList", ((StringBuilder)localObject).toString());
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.JsPluginList
  * JD-Core Version:    0.7.0.1
  */

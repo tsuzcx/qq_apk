@@ -43,15 +43,15 @@ public abstract class RecyclerAdapter
   
   public void addSuspentedPos(int paramInt)
   {
-    if (!this.mParentRecyclerView.hasSuspentedItem()) {}
-    do
-    {
+    if (!this.mParentRecyclerView.hasSuspentedItem()) {
       return;
-      if (this.mSuspentedPos == null) {
-        this.mSuspentedPos = new ArrayList();
-      }
-    } while (this.mSuspentedPos.contains(Integer.valueOf(paramInt)));
-    this.mSuspentedPos.add(Integer.valueOf(paramInt));
+    }
+    if (this.mSuspentedPos == null) {
+      this.mSuspentedPos = new ArrayList();
+    }
+    if (!this.mSuspentedPos.contains(Integer.valueOf(paramInt))) {
+      this.mSuspentedPos.add(Integer.valueOf(paramInt));
+    }
   }
   
   public final void appendData(ArrayList<RecyclerAdapter.DataHolder> paramArrayList)
@@ -65,22 +65,25 @@ public abstract class RecyclerAdapter
   
   int binarySearch(SparseIntArray paramSparseIntArray, int paramInt)
   {
-    if ((paramSparseIntArray == null) || (paramSparseIntArray.size() == 0)) {
-      return -1;
-    }
-    int i = paramSparseIntArray.keyAt(0);
-    int j = paramSparseIntArray.keyAt(paramSparseIntArray.size() - 1);
-    while (i <= j)
+    if (paramSparseIntArray != null)
     {
-      int k = (j - i >> 1) + i;
-      int m = itemRangeCompare(k, paramSparseIntArray.valueAt(k), paramInt);
-      if (m == 0) {
-        return k;
+      if (paramSparseIntArray.size() == 0) {
+        return -1;
       }
-      if (m > 0) {
-        j = k - 1;
-      } else {
-        i = k + 1;
+      int j = paramSparseIntArray.keyAt(0);
+      int i = paramSparseIntArray.keyAt(paramSparseIntArray.size() - 1);
+      while (j <= i)
+      {
+        int k = (i - j >> 1) + j;
+        int m = itemRangeCompare(k, paramSparseIntArray.valueAt(k), paramInt);
+        if (m == 0) {
+          return k;
+        }
+        if (m > 0) {
+          i = k - 1;
+        } else {
+          j = k + 1;
+        }
       }
     }
     return -1;
@@ -130,8 +133,10 @@ public abstract class RecyclerAdapter
   public void deleteItem(int paramInt)
   {
     onItemDeleted(paramInt);
-    if ((this.mParentRecyclerView != null) && (doDeleteItem())) {
-      this.mParentRecyclerView.postAdapterUpdate(this.mParentRecyclerView.obtainUpdateOp(1, paramInt, 1));
+    if ((this.mParentRecyclerView != null) && (doDeleteItem()))
+    {
+      RecyclerView localRecyclerView = this.mParentRecyclerView;
+      localRecyclerView.postAdapterUpdate(localRecyclerView.obtainUpdateOp(1, paramInt, 1));
     }
   }
   
@@ -151,41 +156,58 @@ public abstract class RecyclerAdapter
   
   public int findNextSuspentedPos(int paramInt)
   {
-    if ((this.mSuspentedPos == null) || (this.mSuspentedPos.isEmpty())) {}
-    int i;
-    do
+    List localList = this.mSuspentedPos;
+    if (localList != null)
     {
-      return -1;
+      if (localList.isEmpty()) {
+        return -1;
+      }
       paramInt = findPrevSuspentedPos(paramInt);
-      i = this.mSuspentedPos.indexOf(Integer.valueOf(paramInt));
-    } while ((paramInt == -1) || (i + 1 >= this.mSuspentedPos.size()));
-    return ((Integer)this.mSuspentedPos.get(i + 1)).intValue();
+      int i = this.mSuspentedPos.indexOf(Integer.valueOf(paramInt));
+      if (paramInt != -1)
+      {
+        paramInt = i + 1;
+        if (paramInt >= this.mSuspentedPos.size()) {
+          return -1;
+        }
+        return ((Integer)this.mSuspentedPos.get(paramInt)).intValue();
+      }
+    }
+    return -1;
   }
   
   public int findPrevSuspentedPos(int paramInt)
   {
     initSuspentedPosIfNeed();
-    if ((this.mSuspentedPos == null) || (this.mSuspentedPos.isEmpty())) {
-      return -1;
-    }
-    int j = this.mSuspentedPos.size();
-    int i = 0;
-    while (i < j)
+    Object localObject = this.mSuspentedPos;
+    if (localObject != null)
     {
-      int k = ((Integer)this.mSuspentedPos.get(i)).intValue();
-      if (((Integer)this.mSuspentedPos.get(i)).intValue() >= paramInt)
-      {
-        if (k == paramInt) {
-          return k;
-        }
-        if (i == 0) {
-          return -1;
-        }
-        return ((Integer)this.mSuspentedPos.get(i - 1)).intValue();
+      if (((List)localObject).isEmpty()) {
+        return -1;
       }
-      i += 1;
+      int j = this.mSuspentedPos.size();
+      int i = 0;
+      if (i < j)
+      {
+        int k = ((Integer)this.mSuspentedPos.get(i)).intValue();
+        if (((Integer)this.mSuspentedPos.get(i)).intValue() >= paramInt)
+        {
+          if (k == paramInt) {
+            return k;
+          }
+          if (i == 0) {
+            return -1;
+          }
+        }
+      }
+      for (localObject = this.mSuspentedPos.get(i - 1);; localObject = this.mSuspentedPos.get(j - 1))
+      {
+        return ((Integer)localObject).intValue();
+        i += 1;
+        break;
+      }
     }
-    return ((Integer)this.mSuspentedPos.get(j - 1)).intValue();
+    return -1;
   }
   
   public void forceUpdateOffsetMap()
@@ -196,128 +218,107 @@ public abstract class RecyclerAdapter
   
   public int[] getBeginPositionWithOffset(int paramInt)
   {
-    int k = 1;
     int[] arrayOfInt = new int[2];
-    int m = getItemCount() + getFooterViewCount();
-    int n = getHeaderViewCount();
-    int i1 = this.mParentRecyclerView.getCachedTotalHeight();
-    int j = 0;
+    int k = getItemCount() + getFooterViewCount();
+    int m = getHeaderViewCount();
+    int n = this.mParentRecyclerView.getCachedTotalHeight();
     int i = 1;
-    while (i <= n)
+    int j = 0;
+    while (i <= m)
     {
       j += getHeaderViewHeight(i);
       i += 1;
     }
-    if (paramInt >= i1)
+    if (paramInt >= n)
     {
-      arrayOfInt[0] = m;
-      arrayOfInt[1] = (i1 - getItemHeight(m) - paramInt);
-    }
-    label304:
-    label432:
-    label440:
-    label443:
-    for (;;)
-    {
+      arrayOfInt[0] = k;
+      arrayOfInt[1] = (n - getItemHeight(k) - paramInt);
       return arrayOfInt;
-      if (paramInt < 0)
+    }
+    if (paramInt < 0)
+    {
+      arrayOfInt[0] = (-m);
+      arrayOfInt[1] = (-j - paramInt);
+      return arrayOfInt;
+    }
+    if (paramInt < j)
+    {
+      i = -m;
+      j = 0;
+      while (i < 0)
       {
-        arrayOfInt[0] = (-n);
-        arrayOfInt[1] = (-j - paramInt);
-      }
-      else
-      {
-        if (paramInt < j)
+        k = -i;
+        j += getHeaderViewHeight(k);
+        if (j > paramInt)
         {
-          i = -n;
-          j = 0;
-          label122:
-          if (i >= 0) {
-            break label440;
-          }
-          j += getHeaderViewHeight(-i);
-          if (j > paramInt)
-          {
-            arrayOfInt[0] = i;
-            arrayOfInt[1] = (j - getHeaderViewHeight(-i) - paramInt);
-          }
+          arrayOfInt[0] = i;
+          arrayOfInt[1] = (j - getHeaderViewHeight(k) - paramInt);
+          return arrayOfInt;
         }
-        for (paramInt = k;; paramInt = 0)
-        {
-          if (paramInt != 0) {
-            break label443;
-          }
-          break;
-          i += 1;
-          break label122;
-          calculateOffsetMapIfNeed();
-          n = this.mOffsetMap.size() - 1;
-          i = this.mOffsetMap.get(n) + getItemRange(n);
-          if (paramInt > i)
-          {
-            k = getFooterViewCount();
-            if (k > 0)
-            {
-              j = 1;
-              label226:
-              if (j > k) {
-                break label432;
-              }
-              i += getFooterViewHeight(j);
-              if (i <= paramInt) {
-                break label304;
-              }
-              arrayOfInt[0] = (n + j);
-              arrayOfInt[1] = (i - getFooterViewHeight(j) - paramInt);
-              m = 1;
-              k = i;
-            }
-          }
-          for (i = m;; i = 0)
-          {
-            if (i == 0)
-            {
-              arrayOfInt[0] = (n + j);
-              arrayOfInt[1] = (k - getFooterViewHeight(j) - paramInt);
-            }
-            return arrayOfInt;
-            j += 1;
-            break label226;
-            i = binarySearch(this.mOffsetMap, paramInt);
-            if (paramInt == 0) {
-              i = 0;
-            }
-            if (i == -1) {
-              break;
-            }
-            k = this.mOffsetMap.get(i);
-            if (this.mParentRecyclerView.mLayoutType == 2)
-            {
-              do
-              {
-                j = i - 1;
-                if (j < 0) {
-                  break;
-                }
-                i = j;
-              } while (this.mOffsetMap.get(j) == k);
-              arrayOfInt[0] = (j + 1);
-            }
-            for (;;)
-            {
-              arrayOfInt[1] = (k - paramInt);
-              break;
-              if (this.mParentRecyclerView.mLayoutType == 1) {
-                arrayOfInt[0] = i;
-              } else if (this.mParentRecyclerView.mLayoutType == 3) {
-                arrayOfInt[0] = i;
-              }
-            }
-            k = i;
-          }
-        }
+        i += 1;
       }
     }
+    calculateOffsetMapIfNeed();
+    m = this.mOffsetMap.size() - 1;
+    i = this.mOffsetMap.get(m) + getItemRange(m);
+    if (paramInt > i)
+    {
+      k = getFooterViewCount();
+      if (k > 0)
+      {
+        j = 1;
+        while (j <= k)
+        {
+          i += getFooterViewHeight(j);
+          if (i > paramInt)
+          {
+            arrayOfInt[0] = (m + j);
+            arrayOfInt[1] = (i - getFooterViewHeight(j) - paramInt);
+            k = 1;
+            break label276;
+          }
+          j += 1;
+        }
+        k = 0;
+        label276:
+        if (k == 0)
+        {
+          arrayOfInt[0] = (m + j);
+          arrayOfInt[1] = (i - getFooterViewHeight(j) - paramInt);
+        }
+      }
+      return arrayOfInt;
+    }
+    i = binarySearch(this.mOffsetMap, paramInt);
+    if (paramInt == 0) {
+      i = 0;
+    }
+    if (i != -1)
+    {
+      k = this.mOffsetMap.get(i);
+      if (this.mParentRecyclerView.mLayoutType == 2)
+      {
+        do
+        {
+          j = i - 1;
+          if (j < 0) {
+            break;
+          }
+          i = j;
+        } while (this.mOffsetMap.get(j) == k);
+        arrayOfInt[0] = (j + 1);
+      }
+      else if (this.mParentRecyclerView.mLayoutType == 1)
+      {
+        arrayOfInt[0] = i;
+      }
+      else if (this.mParentRecyclerView.mLayoutType == 3)
+      {
+        arrayOfInt[0] = i;
+      }
+      arrayOfInt[1] = (k - paramInt);
+    }
+    return arrayOfInt;
   }
   
   public int getCardItemViewType(int paramInt)
@@ -330,7 +331,11 @@ public abstract class RecyclerAdapter
       paramInt = super.getCardItemViewType(paramInt);
       return paramInt;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label38:
+      break label38;
+    }
     return 0;
   }
   
@@ -379,7 +384,11 @@ public abstract class RecyclerAdapter
         return localDataHolder;
       }
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label29:
+      break label29;
+    }
     return null;
   }
   
@@ -399,14 +408,18 @@ public abstract class RecyclerAdapter
     {
       if (paramInt == getFooterViewCount())
       {
-        if (this.mDefaultLoadingView == null) {
-          this.mDefaultLoadingView = this.mParentRecyclerView.createFooterView(this.mParentRecyclerView.getContext());
+        if (this.mDefaultLoadingView == null)
+        {
+          localObject = this.mParentRecyclerView;
+          this.mDefaultLoadingView = ((RecyclerView)localObject).createFooterView(((RecyclerView)localObject).getContext());
         }
-        if (this.mDefaultLoadingView != null) {
-          this.mDefaultLoadingView.setOnClickListener(this);
+        Object localObject = this.mDefaultLoadingView;
+        if (localObject != null) {
+          ((View)localObject).setOnClickListener(this);
         }
-        if ((this.mDefaultLoadingView != null) && ((this.mDefaultLoadingView instanceof IRecyclerViewFooter))) {
-          ((IRecyclerViewFooter)this.mDefaultLoadingView).setLoadingStatus(this.mLoadingStatus);
+        localObject = this.mDefaultLoadingView;
+        if ((localObject != null) && ((localObject instanceof IRecyclerViewFooter))) {
+          ((IRecyclerViewFooter)localObject).setLoadingStatus(this.mLoadingStatus);
         }
         return this.mDefaultLoadingView;
       }
@@ -457,26 +470,26 @@ public abstract class RecyclerAdapter
   
   public int getHeightBefore(int paramInt)
   {
-    int i = getHeaderViewCount();
-    if (paramInt < -i) {
-      throw new IllegalStateException("pos less than header count,should not happened");
-    }
-    int k;
-    if (paramInt >= 0)
+    int i = -getHeaderViewCount();
+    if (paramInt >= i)
     {
-      calculateOffsetMapIfNeed();
-      k = this.mOffsetMap.get(paramInt);
-      return k;
-    }
-    int j = -i;
-    for (i = 0;; i = k + i)
-    {
-      k = i;
-      if (j >= paramInt) {
-        break;
+      if (paramInt >= 0)
+      {
+        calculateOffsetMapIfNeed();
+        return this.mOffsetMap.get(paramInt);
       }
-      k = getHeaderViewHeight(-j);
-      j += 1;
+      int j = 0;
+      while (i < paramInt)
+      {
+        j += getHeaderViewHeight(-i);
+        i += 1;
+      }
+      return j;
+    }
+    IllegalStateException localIllegalStateException = new IllegalStateException("pos less than header count,should not happened");
+    for (;;)
+    {
+      throw localIllegalStateException;
     }
   }
   
@@ -507,52 +520,59 @@ public abstract class RecyclerAdapter
   
   public int getItemMaigin(int paramInt1, int paramInt2)
   {
+    int k = this.mDataList.size();
     int j = 0;
     int i = j;
-    if (paramInt2 < this.mDataList.size())
+    if (paramInt2 < k)
     {
       i = j;
-      if (paramInt2 >= 0)
+      if (paramInt2 < 0) {}
+    }
+    try
+    {
+      RecyclerAdapter.DataHolder localDataHolder = (RecyclerAdapter.DataHolder)this.mDataList.get(paramInt2);
+      if (paramInt1 != 0)
       {
-        try
+        if (paramInt1 != 1)
         {
-          localDataHolder = (RecyclerAdapter.DataHolder)this.mDataList.get(paramInt2);
-          switch (paramInt1)
+          if (paramInt1 != 2)
           {
-          case 0: 
-            paramInt1 = localDataHolder.mLeftMargin;
+            if (paramInt1 != 3) {
+              return 0;
+            }
+            paramInt1 = localDataHolder.mBottomMargin;
+          }
+          else
+          {
+            paramInt1 = localDataHolder.mRightMargin;
           }
         }
-        catch (Exception localException)
-        {
-          RecyclerAdapter.DataHolder localDataHolder;
-          return 0;
+        else {
+          paramInt1 = localDataHolder.mTopMargin;
         }
-        paramInt1 = localDataHolder.mTopMargin;
-        break label110;
-        paramInt1 = localDataHolder.mRightMargin;
-        break label110;
-        paramInt1 = localDataHolder.mBottomMargin;
-        break label110;
-        paramInt1 = 0;
-        label110:
-        i = paramInt1;
       }
+      else {
+        paramInt1 = localDataHolder.mLeftMargin;
+      }
+      i = paramInt1;
+      return i;
     }
-    return i;
+    catch (Exception localException) {}
+    return 0;
   }
   
   public int getItemOffset(int paramInt)
   {
-    if (this.mOffsetMap != null) {
-      return this.mOffsetMap.get(paramInt);
+    SparseIntArray localSparseIntArray = this.mOffsetMap;
+    if (localSparseIntArray != null) {
+      return localSparseIntArray.get(paramInt);
     }
     return -1;
   }
   
   protected int getItemRange(int paramInt)
   {
-    return 0 + (getItemHeight(paramInt) + getItemMaigin(1, paramInt) + getItemMaigin(3, paramInt));
+    return getItemHeight(paramInt) + getItemMaigin(1, paramInt) + getItemMaigin(3, paramInt) + 0;
   }
   
   public int getItemViewType(int paramInt)
@@ -565,7 +585,11 @@ public abstract class RecyclerAdapter
       paramInt = super.getItemViewType(paramInt);
       return paramInt;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label38:
+      break label38;
+    }
     return 0;
   }
   
@@ -591,13 +615,13 @@ public abstract class RecyclerAdapter
   
   public int getTotalHeight()
   {
-    int i = 0;
     if (isAutoCalculateItemHeight()) {
       this.mContentHeight = -1;
     }
     if (this.mContentHeight == -1)
     {
       int j = getItemCount();
+      int i = 0;
       this.mContentHeight = 0;
       if (this.mParentRecyclerView.mLayoutType == 1) {
         while (i < j)
@@ -608,7 +632,7 @@ public abstract class RecyclerAdapter
           i += 1;
         }
       }
-      if (this.mParentRecyclerView.mLayoutType != 3) {}
+      i = this.mParentRecyclerView.mLayoutType;
     }
     return this.mContentHeight;
   }
@@ -625,7 +649,7 @@ public abstract class RecyclerAdapter
   
   public final boolean hasData()
   {
-    return !this.mDataList.isEmpty();
+    return this.mDataList.isEmpty() ^ true;
   }
   
   public int indexOf(RecyclerAdapter.DataHolder paramDataHolder)
@@ -681,7 +705,7 @@ public abstract class RecyclerAdapter
     if (paramInt2 > paramInt3) {
       return 1;
     }
-    if (paramInt1 + paramInt2 < paramInt3) {
+    if (paramInt2 + paramInt1 < paramInt3) {
       return -1;
     }
     return 0;
@@ -751,20 +775,24 @@ public abstract class RecyclerAdapter
   
   public void onBindViewHolder(RecyclerView.ViewHolderWrapper paramViewHolderWrapper, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramViewHolderWrapper == null) || (paramViewHolderWrapper.itemView == null) || (paramViewHolderWrapper.mContentHolder == null)) {
-      return;
-    }
-    paramViewHolderWrapper.itemView.setPressed(false);
-    paramViewHolderWrapper.itemView.setSelected(false);
-    onBindContentView(paramViewHolderWrapper.mContentHolder, paramInt1, paramInt2);
-    positionContentView(paramViewHolderWrapper.mContentHolder, paramInt1, paramInt2, false);
-    onBindCustomerView(paramViewHolderWrapper, paramInt1, paramInt2);
-    RecyclerViewBase.LayoutParams localLayoutParams;
-    if (this.mParentRecyclerView.mLayoutType == 3) {
-      localLayoutParams = this.mParentRecyclerView.mLayout.onCreateItemLayoutParams(paramViewHolderWrapper, paramInt1, paramInt2, paramInt3);
-    }
-    for (;;)
+    if ((paramViewHolderWrapper != null) && (paramViewHolderWrapper.itemView != null))
     {
+      if (paramViewHolderWrapper.mContentHolder == null) {
+        return;
+      }
+      paramViewHolderWrapper.itemView.setPressed(false);
+      paramViewHolderWrapper.itemView.setSelected(false);
+      onBindContentView(paramViewHolderWrapper.mContentHolder, paramInt1, paramInt2);
+      positionContentView(paramViewHolderWrapper.mContentHolder, paramInt1, paramInt2, false);
+      onBindCustomerView(paramViewHolderWrapper, paramInt1, paramInt2);
+      RecyclerViewBase.LayoutParams localLayoutParams;
+      if (this.mParentRecyclerView.mLayoutType == 3) {
+        localLayoutParams = this.mParentRecyclerView.mLayout.onCreateItemLayoutParams(paramViewHolderWrapper, paramInt1, paramInt2, paramInt3);
+      } else if (this.mParentRecyclerView.mLayout.canScrollHorizontally()) {
+        localLayoutParams = new RecyclerViewBase.LayoutParams(getItemWidth(paramInt1), -1);
+      } else {
+        localLayoutParams = new RecyclerViewBase.LayoutParams(-1, getItemHeight(paramInt1));
+      }
       localLayoutParams.mViewHolder = paramViewHolderWrapper;
       localLayoutParams.topMargin = getItemMaigin(1, paramInt1);
       localLayoutParams.bottomMargin = getItemMaigin(3, paramInt1);
@@ -775,33 +803,28 @@ public abstract class RecyclerAdapter
       paramViewHolderWrapper.mForceBind = paramViewHolderWrapper.mContentHolder.mForceBind;
       paramViewHolderWrapper.itemView.setFocusable(paramViewHolderWrapper.mContentHolder.mFocusable);
       paramViewHolderWrapper.itemView.setOnClickListener(new RecyclerAdapter.1(this, paramViewHolderWrapper));
-      return;
-      if (this.mParentRecyclerView.mLayout.canScrollHorizontally()) {
-        localLayoutParams = new RecyclerViewBase.LayoutParams(getItemWidth(paramInt1), -1);
-      } else {
-        localLayoutParams = new RecyclerViewBase.LayoutParams(-1, getItemHeight(paramInt1));
-      }
     }
   }
   
   public void onClick(View paramView)
   {
-    if ((this.mLoadingStatus == 4) || (this.mLoadingStatus == 9) || (this.mLoadingStatus == 10)) {
-      onClickRetry();
-    }
-    for (;;)
+    int i = this.mLoadingStatus;
+    if ((i != 4) && (i != 9) && (i != 10))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.mLoadingStatus == 6) {
+      if (i == 6) {
         onClickBackward();
       }
     }
+    else {
+      onClickRetry();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   protected void onClickBackward()
   {
-    this.mParentRecyclerView.smoothScrollBy(0, -this.mParentRecyclerView.mOffsetY);
+    RecyclerView localRecyclerView = this.mParentRecyclerView;
+    localRecyclerView.smoothScrollBy(0, -localRecyclerView.mOffsetY);
   }
   
   protected void onClickRetry() {}
@@ -886,21 +909,31 @@ public abstract class RecyclerAdapter
   
   public void positionContentView(ContentHolder paramContentHolder, int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    if ((paramInt2 == 2) || (paramInt2 == 3)) {}
-    while ((paramInt2 != 1) || (paramContentHolder == null) || (paramContentHolder.mContentView == null)) {
-      return;
+    if (paramInt2 != 2)
+    {
+      if (paramInt2 == 3) {
+        return;
+      }
+      if ((paramInt2 == 1) && (paramContentHolder != null))
+      {
+        if (paramContentHolder.mContentView == null) {
+          return;
+        }
+        paramContentHolder = (FrameLayout.LayoutParams)paramContentHolder.mContentView.getLayoutParams();
+        paramContentHolder.gravity = 5;
+        paramContentHolder.leftMargin = 0;
+        paramContentHolder.rightMargin = 0;
+      }
     }
-    paramContentHolder = (FrameLayout.LayoutParams)paramContentHolder.mContentView.getLayoutParams();
-    paramContentHolder.gravity = 5;
-    paramContentHolder.leftMargin = 0;
-    paramContentHolder.rightMargin = 0;
   }
   
   public void removeData(int paramInt1, int paramInt2)
   {
-    if ((this.mDataList.size() >= paramInt1 + paramInt2) && (paramInt1 >= 0) && (paramInt2 > 0))
+    int i = this.mDataList.size();
+    int j = paramInt1 + paramInt2;
+    if ((i >= j) && (paramInt1 >= 0) && (paramInt2 > 0))
     {
-      this.mDataList.subList(paramInt1, paramInt1 + paramInt2).clear();
+      this.mDataList.subList(paramInt1, j).clear();
       this.mContentHeight = -1;
     }
   }
@@ -933,8 +966,9 @@ public abstract class RecyclerAdapter
   
   public void setItemOffset(int paramInt1, int paramInt2)
   {
-    if (this.mOffsetMap != null) {
-      this.mOffsetMap.put(paramInt1, paramInt2);
+    SparseIntArray localSparseIntArray = this.mOffsetMap;
+    if (localSparseIntArray != null) {
+      localSparseIntArray.put(paramInt1, paramInt2);
     }
   }
   
@@ -946,8 +980,9 @@ public abstract class RecyclerAdapter
   public void setLoadingStatus(int paramInt1, int paramInt2)
   {
     this.mLoadingStatus = paramInt1;
-    if ((this.mDefaultLoadingView != null) && ((this.mDefaultLoadingView instanceof IRecyclerViewFooter))) {
-      ((IRecyclerViewFooter)this.mDefaultLoadingView).setLoadingStatus(paramInt1);
+    View localView = this.mDefaultLoadingView;
+    if ((localView != null) && ((localView instanceof IRecyclerViewFooter))) {
+      ((IRecyclerViewFooter)localView).setLoadingStatus(paramInt1);
     }
   }
   
@@ -958,7 +993,7 @@ public abstract class RecyclerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.recyclerview.RecyclerAdapter
  * JD-Core Version:    0.7.0.1
  */

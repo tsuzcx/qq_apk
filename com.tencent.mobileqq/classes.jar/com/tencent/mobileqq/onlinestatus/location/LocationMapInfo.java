@@ -10,14 +10,16 @@ public class LocationMapInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(10);
-    localStringBuilder.append("mLastCameraPosition:").append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition);
-    localStringBuilder.append(" mMapZoomKey:").append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("mLastCameraPosition:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelCameraPosition);
+    localStringBuilder.append(" mMapZoomKey:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.location.LocationMapInfo
  * JD-Core Version:    0.7.0.1
  */

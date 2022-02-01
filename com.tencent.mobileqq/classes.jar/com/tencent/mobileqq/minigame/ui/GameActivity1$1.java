@@ -13,19 +13,38 @@ class GameActivity1$1
   
   public ColorNote getColorNote()
   {
-    if (this.val$miniAppInfo == null)
+    Object localObject2 = this.val$miniAppInfo;
+    Object localObject1 = null;
+    if (localObject2 == null)
     {
-      QLog.e("qqBaseActivity", 1, "getColorNote, miniAppInfo: " + this.val$miniAppInfo);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getColorNote, miniAppInfo: ");
+      ((StringBuilder)localObject1).append(this.val$miniAppInfo);
+      QLog.e("qqBaseActivity", 1, ((StringBuilder)localObject1).toString());
       return null;
     }
-    QLog.d("qqBaseActivity", 2, "getColorNote, appId: " + this.val$miniAppInfo.appId + ", name: " + this.val$miniAppInfo.name + ", colorNoteQueryPath: " + GameActivity1.access$000(this.this$0));
-    byte[] arrayOfByte = GameActivity1.access$100(this.this$0, this.val$miniAppInfo, GameActivity1.access$000(this.this$0));
-    return new ColorNote.Builder().a(16842752).a(this.val$miniAppInfo.appId + "###" + this.val$miniAppInfo.verType).b(this.val$miniAppInfo.name).c(this.val$miniAppInfo.desc).d(this.val$miniAppInfo.iconUrl).a(arrayOfByte).a();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getColorNote, appId: ");
+    ((StringBuilder)localObject2).append(this.val$miniAppInfo.appId);
+    ((StringBuilder)localObject2).append(", name: ");
+    ((StringBuilder)localObject2).append(this.val$miniAppInfo.name);
+    ((StringBuilder)localObject2).append(", colorNoteQueryPath: ");
+    ((StringBuilder)localObject2).append(GameActivity1.access$000(this.this$0));
+    QLog.d("qqBaseActivity", 2, ((StringBuilder)localObject2).toString());
+    if (GameActivity1.access$000(this.this$0) != null) {
+      localObject1 = GameActivity1.access$000(this.this$0).getBytes();
+    }
+    localObject2 = new ColorNote.Builder().a(16842752);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.val$miniAppInfo.appId);
+    localStringBuilder.append("#@#");
+    localStringBuilder.append(this.val$miniAppInfo.verType);
+    return ((ColorNote.Builder)localObject2).a(localStringBuilder.toString()).b(this.val$miniAppInfo.name).c(this.val$miniAppInfo.desc).d(this.val$miniAppInfo.iconUrl).a((byte[])localObject1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.GameActivity1.1
  * JD-Core Version:    0.7.0.1
  */

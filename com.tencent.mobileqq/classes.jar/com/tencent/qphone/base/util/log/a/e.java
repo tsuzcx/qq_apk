@@ -14,82 +14,88 @@ final class e
   public void run()
   {
     Object localObject1 = new File(QLog.getLogPath());
-    Object localObject2;
-    int j;
     if (((File)localObject1).exists())
     {
       localObject1 = ((File)localObject1).listFiles();
-      if ((localObject1 == null) || (localObject1.length == 0)) {
-        return;
-      }
-      Arrays.sort((Object[])localObject1, new f(this));
-      localObject2 = Calendar.getInstance();
-      j = 3;
-      try
+      Object localObject2;
+      int i;
+      int j;
+      long l;
+      if ((localObject1 != null) && (localObject1.length != 0))
       {
-        str = a.h();
-        i = j;
-        if (str != null)
+        Arrays.sort((Object[])localObject1, new f(this));
+        localObject2 = Calendar.getInstance();
+        try
         {
-          i = j;
-          if (str.length() > 0) {
-            i = Integer.parseInt(str);
+          String str1 = a.h();
+          if ((str1 != null) && (str1.length() > 0)) {
+            i = Integer.parseInt(str1);
           }
         }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
+        catch (Exception localException)
         {
-          String str;
-          long l;
           localException.printStackTrace();
-          int i = j;
-          continue;
-          if ((!TextUtils.isEmpty(localException.getName())) && (localException.getName().endsWith(".log")) && ((localException.lastModified() < System.currentTimeMillis() - 3600000L) || (localException.getName().contains((CharSequence)localObject2)))) {
-            if (b.a(localException))
+          i = 3;
+        }
+        if (i >= 1)
+        {
+          j = i;
+          if (i <= 14) {}
+        }
+        else
+        {
+          j = 3;
+        }
+        ((Calendar)localObject2).add(6, j - j * 2);
+        l = ((Calendar)localObject2).getTimeInMillis();
+        localObject2 = b.h();
+        j = localObject1.length;
+        i = 0;
+      }
+      while (i < j)
+      {
+        File localFile = localObject1[i];
+        String str2;
+        StringBuilder localStringBuilder;
+        if ((l <= localFile.lastModified()) && (localFile.lastModified() <= System.currentTimeMillis() + 3600000L))
+        {
+          if ((!TextUtils.isEmpty(localFile.getName())) && (localFile.getName().endsWith(".log")) && ((localFile.lastModified() < System.currentTimeMillis() - 3600000L) || (localFile.getName().contains((CharSequence)localObject2)))) {
+            if (b.a(localFile))
             {
-              localException.delete();
-              QLog.d(b.f, 1, "compress log " + localException.getName());
+              localFile.delete();
+              str2 = b.f;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("compress log ");
+              localStringBuilder.append(localFile.getName());
+              QLog.d(str2, 1, localStringBuilder.toString());
             }
             else
             {
-              QLog.d(b.f, 1, "compress log fail " + localException.getName());
+              str2 = b.f;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("compress log fail ");
+              localStringBuilder.append(localFile.getName());
+              QLog.d(str2, 1, localStringBuilder.toString());
             }
           }
         }
-      }
-      if (i >= 1)
-      {
-        j = i;
-        if (i <= 14) {}
-      }
-      else
-      {
-        j = 3;
-      }
-      ((Calendar)localObject2).add(6, j - j * 2);
-      l = ((Calendar)localObject2).getTimeInMillis();
-      localObject2 = b.h();
-      j = localObject1.length;
-      i = 0;
-      for (;;)
-      {
-        if (i >= j) {
-          break label362;
-        }
-        str = localObject1[i];
-        if ((l <= str.lastModified()) && (str.lastModified() <= System.currentTimeMillis() + 3600000L)) {
-          break;
-        }
-        str.delete();
-        if (QLog.isColorLevel()) {
-          QLog.d(b.f, 2, "del expires log " + str.getName());
+        else
+        {
+          localFile.delete();
+          if (QLog.isColorLevel())
+          {
+            str2 = b.f;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("del expires log ");
+            localStringBuilder.append(localFile.getName());
+            QLog.d(str2, 2, localStringBuilder.toString());
+          }
         }
         i += 1;
+        continue;
+        return;
       }
     }
-    label362:
     localObject1 = Calendar.getInstance();
     ((Calendar)localObject1).set(6, ((Calendar)localObject1).get(6) - 7);
     ((Calendar)localObject1).set(11, 0);
@@ -101,7 +107,7 @@ final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.a.e
  * JD-Core Version:    0.7.0.1
  */

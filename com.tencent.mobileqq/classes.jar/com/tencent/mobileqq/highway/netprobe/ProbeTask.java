@@ -25,18 +25,18 @@ public class ProbeTask
   public void collectResult()
   {
     this.resp.success = true;
-    for (ProbeItem localProbeItem = this.req.root;; localProbeItem = localProbeItem.getSuccessor()) {
-      if (localProbeItem != null)
+    for (ProbeItem localProbeItem = this.req.root; localProbeItem != null; localProbeItem = localProbeItem.getSuccessor())
+    {
+      this.resp.mProbeItemResults.put(localProbeItem, localProbeItem.mResult);
+      if (!localProbeItem.mResult.success)
       {
-        this.resp.mProbeItemResults.put(localProbeItem, localProbeItem.mResult);
-        if (!localProbeItem.mResult.success)
-        {
-          this.resp.success = false;
-          this.resp.errDesc = (localProbeItem.getProbeName() + ":" + localProbeItem.mResult.errDesc);
-        }
-      }
-      else
-      {
+        ProbeResponse localProbeResponse = this.resp;
+        localProbeResponse.success = false;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localProbeItem.getProbeName());
+        localStringBuilder.append(":");
+        localStringBuilder.append(localProbeItem.mResult.errDesc);
+        localProbeResponse.errDesc = localStringBuilder.toString();
         return;
       }
     }
@@ -49,8 +49,13 @@ public class ProbeTask
   
   public void onTaskFinish()
   {
-    if ((this.cb != null) && (this.resp != null)) {
-      this.cb.onProbeFinish(this.resp);
+    ProbeCallback localProbeCallback = this.cb;
+    if (localProbeCallback != null)
+    {
+      ProbeResponse localProbeResponse = this.resp;
+      if (localProbeResponse != null) {
+        localProbeCallback.onProbeFinish(localProbeResponse);
+      }
     }
     if (this.learner.get() != null) {
       ((WeakNetLearner)this.learner.get()).onTaskFinish(this);
@@ -65,25 +70,25 @@ public class ProbeTask
       {
         this.req.root.probe(this.req, this.cb);
         collectResult();
-        onTaskFinish();
-        return;
       }
-      throw new Exception("at lease one probe item need！");
+      else
+      {
+        throw new Exception("at lease one probe item need！");
+      }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-        this.resp.success = false;
-        this.resp.errDesc = localThrowable.toString();
-      }
+      localThrowable.printStackTrace();
+      ProbeResponse localProbeResponse = this.resp;
+      localProbeResponse.success = false;
+      localProbeResponse.errDesc = localThrowable.toString();
+      onTaskFinish();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.ProbeTask
  * JD-Core Version:    0.7.0.1
  */

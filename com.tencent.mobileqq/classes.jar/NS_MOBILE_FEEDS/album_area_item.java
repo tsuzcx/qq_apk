@@ -49,21 +49,24 @@ public final class album_area_item
     paramJceOutputStream.write(this.poi_photo_num, 1);
     paramJceOutputStream.write(this.start_shoot_time, 2);
     paramJceOutputStream.write(this.end_shoot_time, 3);
-    if (this.poi_info != null) {
-      paramJceOutputStream.write(this.poi_info, 4);
+    Object localObject = this.poi_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.description != null) {
-      paramJceOutputStream.write(this.description, 5);
+    localObject = this.description;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.scenery_name != null) {
-      paramJceOutputStream.write(this.scenery_name, 6);
+    localObject = this.scenery_name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.is_userconfirmed, 7);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.album_area_item
  * JD-Core Version:    0.7.0.1
  */

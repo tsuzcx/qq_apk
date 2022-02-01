@@ -20,13 +20,8 @@ class ChatHistoryC2CAllFragment$10
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
       if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList = new ArrayList();
       }
@@ -37,18 +32,20 @@ class ChatHistoryC2CAllFragment$10
           MediaPlayerManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).c(false);
         }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.e = true;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment;
+      paramView.e = true;
+      paramView.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord);
       paramView = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.obtainMessage(1);
       this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.b.sendMessageDelayed(paramView, 800L);
       Utils.executeAsyncTaskOnThreadPool(new ChatHistoryC2CAllFragment.10.1(this), new MessageRecord[] { this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord });
       VipUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CAllFragment.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "chat_history", "ChatHistory", "Clk_deleteOne", 1, 0, new String[0]);
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.10
  * JD-Core Version:    0.7.0.1
  */

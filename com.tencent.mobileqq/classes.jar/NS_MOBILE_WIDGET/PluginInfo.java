@@ -41,20 +41,23 @@ public final class PluginInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.id, 0);
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 1);
+    Object localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.iconurl != null) {
-      paramJceOutputStream.write(this.iconurl, 2);
+    localObject = this.iconurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.extinfo != null) {
-      paramJceOutputStream.write(this.extinfo, 3);
+    localObject = this.extinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_WIDGET.PluginInfo
  * JD-Core Version:    0.7.0.1
  */

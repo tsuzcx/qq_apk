@@ -24,13 +24,14 @@ public final class FeedCloudRead$StGetFollowListReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48, 56, 64 }, new String[] { "extInfo", "userId", "attachInfo", "count", "busiReqData", "filterRelation", "sortType", "followMethod" }, new Object[] { null, "", "", Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, StGetFollowListReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48, 56, 64 }, new String[] { "extInfo", "userId", "attachInfo", "count", "busiReqData", "filterRelation", "sortType", "followMethod" }, new Object[] { null, "", "", localInteger, localByteStringMicro, localInteger, localInteger, localInteger }, StGetFollowListReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetFollowListReq
  * JD-Core Version:    0.7.0.1
  */

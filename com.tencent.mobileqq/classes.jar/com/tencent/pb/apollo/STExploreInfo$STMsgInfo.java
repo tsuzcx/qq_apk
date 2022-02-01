@@ -25,15 +25,16 @@ public final class STExploreInfo$STMsgInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 56, 64, 80 }, new String[] { "seq", "wording", "jump_url", "scheme", "is_red", "icon_url", "action_id", "bubble_id", "msg_id" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, "", Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, STMsgInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 56, 64, 80 }, new String[] { "seq", "wording", "jump_url", "scheme", "is_red", "icon_url", "action_id", "bubble_id", "msg_id" }, new Object[] { Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, "", localInteger, localByteStringMicro3, localInteger, localInteger, localInteger }, STMsgInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.apollo.STExploreInfo.STMsgInfo
  * JD-Core Version:    0.7.0.1
  */

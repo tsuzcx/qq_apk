@@ -1,20 +1,22 @@
 package com.tencent.hippy.qq.adapter;
 
 import android.content.res.Resources;
+import android.graphics.Movie;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.hippy.qq.offline.HippyOfflineAssist;
 import com.tencent.image.AbstractGifImage;
 import com.tencent.image.ApngDrawable;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.vas.VasApngUtil;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory.Options;
+import com.tencent.mobileqq.vas.apng.api.ApngOptions;
+import com.tencent.mobileqq.vas.apng.api.IVasApngFactory;
 import com.tencent.mtt.hippy.adapter.image.HippyDrawable;
 import com.tencent.mtt.hippy.adapter.image.HippyImageLoader;
 import com.tencent.mtt.hippy.adapter.image.HippyImageLoader.Callback;
@@ -26,6 +28,7 @@ import java.net.URL;
 import java.util.HashSet;
 import java.util.Map;
 import java.util.Set;
+import mqq.app.MobileQQ;
 
 public class HippyQQImageLoader
   extends HippyImageLoader
@@ -35,46 +38,172 @@ public class HippyQQImageLoader
   private Handler mHandler = new Handler(Looper.getMainLooper());
   private Set<URLDrawable> urlDrawableList = new HashSet();
   
+  private void decodeImage(HippyQQImageLoader.HippyImageInfo paramHippyImageInfo, File paramFile)
+  {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decodeImage url:");
+      ((StringBuilder)localObject).append(paramHippyImageInfo.url);
+      ((StringBuilder)localObject).append(" useLocal setData");
+      QLog.i("HippyImageAdapter", 2, ((StringBuilder)localObject).toString());
+    }
+    HippyDrawable localHippyDrawable = new HippyDrawable();
+    localHippyDrawable.setData(paramFile, paramHippyImageInfo.isGif);
+    if ((localHippyDrawable.getGIF() != null) && (localHippyDrawable.getGIF().duration() <= 0))
+    {
+      paramFile = new Exception("DecodeGifError");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decodeImage gif duration is error. url:");
+      ((StringBuilder)localObject).append(paramHippyImageInfo.url);
+      QLog.e("HippyImageAdapter", 1, ((StringBuilder)localObject).toString());
+      localObject = "Duration of gif is error";
+    }
+    else
+    {
+      paramFile = null;
+      localObject = paramFile;
+    }
+    this.mHandler.post(new HippyQQImageLoader.3(this, paramHippyImageInfo, paramFile, (String)localObject, localHippyDrawable));
+  }
+  
+  private URLDrawable getApngDrawableFromOffline(HippyQQImageLoader.HippyImageInfo paramHippyImageInfo)
+  {
+    if (paramHippyImageInfo == null) {
+      return null;
+    }
+    String str = HippyOfflineAssist.getOfflineResPath(paramHippyImageInfo.url);
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    ApngOptions localApngOptions = new ApngOptions();
+    localApngOptions.c(paramHippyImageInfo.reqHeight);
+    localApngOptions.b(paramHippyImageInfo.reqWidth);
+    localApngOptions.a(paramHippyImageInfo.repeatCount);
+    return ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(paramHippyImageInfo.url, localApngOptions, str);
+  }
+  
+  private URLDrawable getDrawalbeFromOffline(HippyQQImageLoader.HippyImageInfo paramHippyImageInfo)
+  {
+    if (paramHippyImageInfo == null) {
+      return null;
+    }
+    String str = HippyOfflineAssist.getOfflineResPath(paramHippyImageInfo.url);
+    if (TextUtils.isEmpty(str)) {
+      return null;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[getDrawalbeFromOffline], url:");
+      ((StringBuilder)localObject).append(paramHippyImageInfo.url);
+      ((StringBuilder)localObject).append(",localPath:");
+      ((StringBuilder)localObject).append(str);
+      QLog.d("HippyImageAdapter", 1, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = MobileQQ.getContext().getResources().getDrawable(2130851078);
+    ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = MobileQQ.getContext().getResources().getDrawable(2130851078);
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = paramHippyImageInfo.reqWidth;
+    ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = paramHippyImageInfo.reqHeight;
+    ((URLDrawable.URLDrawableOptions)localObject).mUseApngImage = paramHippyImageInfo.isApng;
+    ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = paramHippyImageInfo.isGif;
+    return URLDrawable.getFileDrawable(str, (URLDrawable.URLDrawableOptions)localObject);
+  }
+  
+  private String getOfflinePath(URLDrawable paramURLDrawable)
+  {
+    if (paramURLDrawable == null) {
+      return null;
+    }
+    try
+    {
+      paramURLDrawable = paramURLDrawable.getURL().toString();
+      if (TextUtils.isEmpty(paramURLDrawable)) {
+        return null;
+      }
+      if (paramURLDrawable.startsWith("file:/"))
+      {
+        paramURLDrawable = paramURLDrawable.substring(6);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[getOfflinePath], path:");
+          localStringBuilder.append(paramURLDrawable);
+          QLog.d("HippyImageAdapter", 2, localStringBuilder.toString());
+        }
+        return paramURLDrawable;
+      }
+      return null;
+    }
+    catch (Throwable paramURLDrawable) {}
+    return null;
+  }
+  
   private void internalRequestApngImage(HippyQQImageLoader.HippyImageInfo paramHippyImageInfo, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
-    VasApngFactory.Options localOptions = new VasApngFactory.Options();
-    localOptions.c(paramHippyImageInfo.reqHeight);
-    localOptions.b(paramHippyImageInfo.reqWidth);
-    localOptions.a(paramHippyImageInfo.repeatCount);
-    String str = VasApngUtil.getCacheFilePath(paramHippyImageInfo.url);
-    URLDrawable localURLDrawable = VasApngFactory.a(paramHippyImageInfo.url, localOptions, str);
-    if (localURLDrawable == null) {
-      QLog.e("HippyImageAdapter", 1, "internalRequestApngImage urlDrawable is null");
-    }
-    do
+    Object localObject1 = getApngDrawableFromOffline(paramHippyImageInfo);
+    if (localObject1 != null)
     {
+      if (paramURLDrawableListener != null) {
+        paramURLDrawableListener.onLoadSuccessed((URLDrawable)localObject1);
+      }
       return;
-      this.urlDrawableList.add(localURLDrawable);
-      boolean bool = new File(str).exists();
-      if (QLog.isColorLevel()) {
-        QLog.i("HippyImageAdapter", 2, "internalRequestApngImage url:" + paramHippyImageInfo.url + " localFileExist:" + bool + " status:" + localURLDrawable.getStatus());
-      }
-      if ((!bool) && (localURLDrawable.getStatus() != 1)) {
-        break;
-      }
-    } while (paramURLDrawableListener == null);
-    paramURLDrawableListener.onLoadSuccessed(localURLDrawable);
-    return;
-    localOptions.a(paramURLDrawableListener);
-    if ((localURLDrawable.getStatus() == 2) || (localURLDrawable.getStatus() == 3))
+    }
+    localObject1 = new ApngOptions();
+    ((ApngOptions)localObject1).c(paramHippyImageInfo.reqHeight);
+    ((ApngOptions)localObject1).b(paramHippyImageInfo.reqWidth);
+    ((ApngOptions)localObject1).a(paramHippyImageInfo.repeatCount);
+    Object localObject2 = VasApngUtil.getCacheFilePath(paramHippyImageInfo.url);
+    URLDrawable localURLDrawable = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(paramHippyImageInfo.url, (ApngOptions)localObject1, (String)localObject2);
+    if (localURLDrawable == null)
     {
+      QLog.e("HippyImageAdapter", 1, "internalRequestApngImage urlDrawable is null");
+      return;
+    }
+    this.urlDrawableList.add(localURLDrawable);
+    boolean bool = new File((String)localObject2).exists();
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("internalRequestApngImage url:");
+      ((StringBuilder)localObject2).append(paramHippyImageInfo.url);
+      ((StringBuilder)localObject2).append(" localFileExist:");
+      ((StringBuilder)localObject2).append(bool);
+      ((StringBuilder)localObject2).append(" status:");
+      ((StringBuilder)localObject2).append(localURLDrawable.getStatus());
+      QLog.i("HippyImageAdapter", 2, ((StringBuilder)localObject2).toString());
+    }
+    if ((!bool) && (localURLDrawable.getStatus() != 1))
+    {
+      ((ApngOptions)localObject1).a(paramURLDrawableListener);
+      if ((localURLDrawable.getStatus() != 2) && (localURLDrawable.getStatus() != 3))
+      {
+        localURLDrawable.startDownload();
+        return;
+      }
       localURLDrawable.restartDownload();
       return;
     }
-    localURLDrawable.startDownload();
+    if (paramURLDrawableListener != null) {
+      paramURLDrawableListener.onLoadSuccessed(localURLDrawable);
+    }
   }
   
   private void internalRequestImage(HippyQQImageLoader.HippyImageInfo paramHippyImageInfo, URLDrawable.URLDrawableListener paramURLDrawableListener)
   {
-    boolean bool = true;
+    Object localObject1 = getDrawalbeFromOffline(paramHippyImageInfo);
+    if (localObject1 != null)
+    {
+      if (paramURLDrawableListener != null) {
+        paramURLDrawableListener.onLoadSuccessed((URLDrawable)localObject1);
+      }
+      return;
+    }
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mFailedDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130851162);
-    localURLDrawableOptions.mLoadingDrawable = BaseApplicationImpl.getContext().getResources().getDrawable(2130851162);
+    localURLDrawableOptions.mFailedDrawable = MobileQQ.getContext().getResources().getDrawable(2130851078);
+    localURLDrawableOptions.mLoadingDrawable = MobileQQ.getContext().getResources().getDrawable(2130851078);
     localURLDrawableOptions.mRequestWidth = paramHippyImageInfo.reqWidth;
     localURLDrawableOptions.mRequestHeight = paramHippyImageInfo.reqHeight;
     localURLDrawableOptions.mUseApngImage = paramHippyImageInfo.isApng;
@@ -83,8 +212,9 @@ public class HippyQQImageLoader
       AbstractGifImage.resumeAll();
     }
     Object localObject2 = URLDrawable.getDrawable(paramHippyImageInfo.url, localURLDrawableOptions);
-    Object localObject1;
-    if (((URLDrawable)localObject2).getFileInLocal() != null)
+    localObject1 = ((URLDrawable)localObject2).getFileInLocal();
+    boolean bool = true;
+    if (localObject1 != null)
     {
       localObject1 = localObject2;
       if (((URLDrawable)localObject2).getFileInLocal().exists()) {}
@@ -94,36 +224,49 @@ public class HippyQQImageLoader
       localObject1 = localObject2;
       if (((URLDrawable)localObject2).getStatus() == 1)
       {
-        QLog.i("HippyImageAdapter", 2, "internalRequestImage url:" + paramHippyImageInfo.url + " remove cache status:" + ((URLDrawable)localObject2).getStatus());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("internalRequestImage url:");
+        ((StringBuilder)localObject1).append(paramHippyImageInfo.url);
+        ((StringBuilder)localObject1).append(" remove cache status:");
+        ((StringBuilder)localObject1).append(((URLDrawable)localObject2).getStatus());
+        QLog.i("HippyImageAdapter", 2, ((StringBuilder)localObject1).toString());
         URLDrawable.removeMemoryCacheByUrl(paramHippyImageInfo.url, localURLDrawableOptions);
         localObject1 = URLDrawable.getDrawable(paramHippyImageInfo.url, localURLDrawableOptions);
       }
     }
     this.urlDrawableList.add(localObject1);
     localObject2 = ((URLDrawable)localObject1).getFileInLocal();
-    if ((localObject2 != null) && (((File)localObject2).exists())) {}
-    for (;;)
+    if ((localObject2 == null) || (!((File)localObject2).exists())) {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("HippyImageAdapter", 2, "internalRequestImage url:" + paramHippyImageInfo.url + " localFileExist:" + bool + " status:" + ((URLDrawable)localObject1).getStatus());
-      }
-      if (!bool) {
-        break;
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("internalRequestImage url:");
+      ((StringBuilder)localObject2).append(paramHippyImageInfo.url);
+      ((StringBuilder)localObject2).append(" localFileExist:");
+      ((StringBuilder)localObject2).append(bool);
+      ((StringBuilder)localObject2).append(" status:");
+      ((StringBuilder)localObject2).append(((URLDrawable)localObject1).getStatus());
+      QLog.i("HippyImageAdapter", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (bool)
+    {
       if (paramURLDrawableListener != null) {
         paramURLDrawableListener.onLoadSuccessed((URLDrawable)localObject1);
       }
-      return;
-      bool = false;
     }
-    ((URLDrawable)localObject1).setTag(Integer.valueOf(0));
-    ((URLDrawable)localObject1).setURLDrawableListener(paramURLDrawableListener);
-    if ((((URLDrawable)localObject1).getStatus() == 2) || (((URLDrawable)localObject1).getStatus() == 3))
+    else
     {
+      ((URLDrawable)localObject1).setTag(Integer.valueOf(0));
+      ((URLDrawable)localObject1).setURLDrawableListener(paramURLDrawableListener);
+      if ((((URLDrawable)localObject1).getStatus() != 2) && (((URLDrawable)localObject1).getStatus() != 3))
+      {
+        ((URLDrawable)localObject1).startDownload();
+        return;
+      }
       ((URLDrawable)localObject1).restartDownload();
-      return;
     }
-    ((URLDrawable)localObject1).startDownload();
   }
   
   private void onApngImageDownloadSuccessed(HippyQQImageLoader.HippyImageInfo paramHippyImageInfo, URLDrawable paramURLDrawable)
@@ -142,83 +285,114 @@ public class HippyQQImageLoader
   
   private void onImageDownloadSuccessed(HippyQQImageLoader.HippyImageInfo paramHippyImageInfo, URLDrawable paramURLDrawable)
   {
-    if (paramHippyImageInfo.isApng) {
+    if (paramHippyImageInfo.isApng)
+    {
       if (Looper.myLooper() == Looper.getMainLooper()) {
         onApngImageDownloadSuccessed(paramHippyImageInfo, paramURLDrawable);
+      } else {
+        this.mHandler.post(new HippyQQImageLoader.1(this, paramHippyImageInfo, paramURLDrawable));
       }
     }
-    for (;;)
+    else
     {
-      this.urlDrawableList.remove(paramURLDrawable);
-      return;
-      this.mHandler.post(new HippyQQImageLoader.1(this, paramHippyImageInfo, paramURLDrawable));
-      continue;
-      File localFile = paramURLDrawable.getFileInLocal();
-      if ((localFile == null) || (!localFile.exists()))
+      localObject = getOfflinePath(paramURLDrawable);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        QLog.e("HippyImageAdapter", 1, "onImageDownloadSuccessed url:" + paramHippyImageInfo.url + " onLoadSuccessed notExists");
-        return;
+        localObject = new File((String)localObject);
       }
-      ThreadManager.post(new HippyQQImageLoader.2(this, paramHippyImageInfo, localFile), 8, null, true);
+      else
+      {
+        File localFile = paramURLDrawable.getFileInLocal();
+        if (localFile == null) {
+          break label125;
+        }
+        localObject = localFile;
+        if (!localFile.exists()) {
+          break label125;
+        }
+      }
+      ThreadManager.post(new HippyQQImageLoader.2(this, paramHippyImageInfo, (File)localObject), 8, null, true);
     }
+    this.urlDrawableList.remove(paramURLDrawable);
+    return;
+    label125:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onImageDownloadSuccessed url:");
+    ((StringBuilder)localObject).append(paramHippyImageInfo.url);
+    ((StringBuilder)localObject).append(" onLoadSuccessed notExists， url：");
+    ((StringBuilder)localObject).append(paramURLDrawable.getURL());
+    QLog.e("HippyImageAdapter", 1, ((StringBuilder)localObject).toString());
   }
   
   private void tryReDownload(URLDrawable paramURLDrawable, Throwable paramThrowable, HippyQQImageLoader.HippyImageInfo paramHippyImageInfo)
   {
-    if ((paramURLDrawable == null) || (!NetworkUtil.g(null))) {}
-    do
+    if (paramURLDrawable != null)
     {
-      return;
-      localObject = paramURLDrawable.getTag();
-    } while (!(localObject instanceof Integer));
-    StringBuilder localStringBuilder1 = new StringBuilder();
-    int i = ((Integer)localObject).intValue();
-    if (i < 3)
-    {
-      i += 1;
-      paramURLDrawable.setTag(Integer.valueOf(i));
-      paramURLDrawable.restartDownload();
-      paramHippyImageInfo = localStringBuilder1.append("hit restart download, retryCounts: ").append(i).append(", url: ");
-      if (paramURLDrawable.getURL() != null) {}
-      for (paramURLDrawable = paramURLDrawable.getURL().toString();; paramURLDrawable = "null")
-      {
-        paramHippyImageInfo.append(paramURLDrawable).append(", errorMsg: ").append(paramThrowable.getMessage());
-        QLog.e("HippyImageAdapter", 1, "tryReDownload " + localStringBuilder1.toString());
+      if (!NetworkUtil.isNetworkAvailable(null)) {
         return;
       }
-    }
-    StringBuilder localStringBuilder2 = localStringBuilder1.append("reach max restart count, ").append(", url: ");
-    if (paramURLDrawable.getURL() != null) {}
-    for (Object localObject = paramURLDrawable.getURL().toString();; localObject = "null")
-    {
-      localStringBuilder2.append((String)localObject).append(", errorMsg: ").append(paramThrowable.getMessage());
-      paramHippyImageInfo.onRequestFail(paramThrowable, null);
-      this.urlDrawableList.remove(paramURLDrawable);
-      break;
+      Object localObject = paramURLDrawable.getTag();
+      if ((localObject instanceof Integer))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        int i = ((Integer)localObject).intValue();
+        localObject = "null";
+        if (i < 3)
+        {
+          i += 1;
+          paramURLDrawable.setTag(Integer.valueOf(i));
+          paramURLDrawable.restartDownload();
+          localStringBuilder.append("hit restart download, retryCounts: ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(", url: ");
+          if (paramURLDrawable.getURL() != null) {
+            localObject = paramURLDrawable.getURL().toString();
+          }
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(", errorMsg: ");
+          localStringBuilder.append(paramThrowable.getMessage());
+        }
+        else
+        {
+          localStringBuilder.append("reach max restart count, ");
+          localStringBuilder.append(", url: ");
+          if (paramURLDrawable.getURL() != null) {
+            localObject = paramURLDrawable.getURL().toString();
+          }
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(", errorMsg: ");
+          localStringBuilder.append(paramThrowable.getMessage());
+          paramHippyImageInfo.onRequestFail(paramThrowable, null);
+          this.urlDrawableList.remove(paramURLDrawable);
+        }
+        paramURLDrawable = new StringBuilder();
+        paramURLDrawable.append("tryReDownload ");
+        paramURLDrawable.append(localStringBuilder.toString());
+        QLog.e("HippyImageAdapter", 1, paramURLDrawable.toString());
+      }
     }
   }
   
   public void fetchImage(String paramString, HippyImageLoader.Callback paramCallback, Object paramObject)
   {
-    if ((paramObject != null) && ((paramObject instanceof Map)))
+    Object localObject = paramObject;
+    if (paramObject != null)
     {
-      paramObject = ((Map)paramObject).get("props");
-      if ((paramObject == null) || (!(paramObject instanceof HippyMap))) {
-        break label65;
+      localObject = paramObject;
+      if ((paramObject instanceof Map)) {
+        localObject = ((Map)paramObject).get("props");
       }
     }
-    label65:
-    for (paramObject = (HippyMap)paramObject;; paramObject = new HippyMap())
-    {
-      paramString = new HippyQQImageLoader.HippyImageInfo(paramString, paramObject, paramCallback);
-      if (!TextUtils.isEmpty(paramString.url)) {
-        break label76;
-      }
+    if ((localObject != null) && ((localObject instanceof HippyMap))) {
+      paramObject = (HippyMap)localObject;
+    } else {
+      paramObject = new HippyMap();
+    }
+    paramString = new HippyQQImageLoader.HippyImageInfo(paramString, paramObject, paramCallback);
+    if (TextUtils.isEmpty(paramString.url)) {
       return;
-      break;
     }
-    label76:
-    paramCallback = new HippyQQImageLoader.3(this, paramString);
+    paramCallback = new HippyQQImageLoader.4(this, paramString);
     if (paramString.isApng)
     {
       internalRequestApngImage(paramString, paramCallback);
@@ -229,7 +403,7 @@ public class HippyQQImageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.adapter.HippyQQImageLoader
  * JD-Core Version:    0.7.0.1
  */

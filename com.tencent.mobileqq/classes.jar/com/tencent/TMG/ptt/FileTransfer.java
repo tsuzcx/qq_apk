@@ -5,60 +5,80 @@ import java.io.File;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Map<Ljava.lang.String;Ljava.lang.String;>;
 import java.util.Set;
 
 public class FileTransfer
 {
   public static final String TAG = "FileTransfer";
-  private static FileTransfer s_instance = null;
+  private static FileTransfer s_instance;
   
   public static FileTransfer getInstance()
   {
-    if (s_instance == null) {}
-    try
-    {
-      if (s_instance == null) {
-        s_instance = new FileTransfer();
+    if (s_instance == null) {
+      try
+      {
+        if (s_instance == null) {
+          s_instance = new FileTransfer();
+        }
       }
-      return s_instance;
+      finally {}
     }
-    finally {}
+    return s_instance;
   }
   
   private String getParamString(Map<String, String> paramMap, String paramString)
   {
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
     if (paramMap != null)
     {
       Iterator localIterator = paramMap.entrySet().iterator();
-      for (paramMap = "";; paramMap = paramMap + (String)((Map.Entry)localObject).getValue() + "\r\n")
+      for (paramMap = (Map<String, String>)localObject2;; paramMap = ((StringBuilder)localObject2).toString())
       {
-        localObject = paramMap;
+        localObject1 = paramMap;
         if (!localIterator.hasNext()) {
           break;
         }
-        localObject = (Map.Entry)localIterator.next();
-        paramMap = paramMap + "--" + paramString + "\r\n";
-        paramMap = paramMap + "Content-Disposition: form-data; name=\"" + (String)((Map.Entry)localObject).getKey() + "\"\r\n\r\n";
+        localObject1 = (Map.Entry)localIterator.next();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramMap);
+        ((StringBuilder)localObject2).append("--");
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append("\r\n");
+        paramMap = ((StringBuilder)localObject2).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramMap);
+        ((StringBuilder)localObject2).append("Content-Disposition: form-data; name=\"");
+        ((StringBuilder)localObject2).append((String)((Map.Entry)localObject1).getKey());
+        ((StringBuilder)localObject2).append("\"\r\n\r\n");
+        paramMap = ((StringBuilder)localObject2).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(paramMap);
+        ((StringBuilder)localObject2).append((String)((Map.Entry)localObject1).getValue());
+        ((StringBuilder)localObject2).append("\r\n");
       }
     }
-    Object localObject = "";
-    return localObject;
+    return localObject1;
   }
   
   private File openFile(String paramString)
   {
-    if ((paramString == null) || (paramString.equals("")))
+    if ((paramString != null) && (!paramString.equals("")))
     {
-      Log.e("FileTransfer", "checkFile| filePath == null.");
-      return null;
+      Object localObject = new File(paramString);
+      if (!((File)localObject).exists())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("checkFile| filePath is not exist. path=");
+        ((StringBuilder)localObject).append(paramString);
+        Log.e("FileTransfer", ((StringBuilder)localObject).toString());
+        return null;
+      }
+      return localObject;
     }
-    File localFile = new File(paramString);
-    if (!localFile.exists())
-    {
-      Log.e("FileTransfer", "checkFile| filePath is not exist. path=" + paramString);
-      return null;
-    }
-    return localFile;
+    Log.e("FileTransfer", "checkFile| filePath == null.");
+    return null;
   }
   
   public void applyMessageKey(String paramString1, String paramString2, String paramString3, String paramString4)

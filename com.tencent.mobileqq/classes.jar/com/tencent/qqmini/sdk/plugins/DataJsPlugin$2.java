@@ -27,16 +27,17 @@ class DataJsPlugin$2
         return;
       }
     }
-    String str = "getUserGroupInfo failed.";
     if (paramJSONObject != null) {
-      str = paramJSONObject.optString("errMsg");
+      paramJSONObject = paramJSONObject.optString("errMsg");
+    } else {
+      paramJSONObject = "getUserGroupInfo failed.";
     }
-    this.val$req.fail(str);
+    this.val$req.fail(paramJSONObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.DataJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

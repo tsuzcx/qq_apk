@@ -2,7 +2,7 @@ package com.tencent.mobileqq.apollo.api.impl;
 
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/api/impl/ApolloMessageServiceImpl$Companion$MessageType;", "", "(Ljava/lang/String;I)V", "STATE_OR_DRESS_CHANGE", "TRACE_SPAN_MESSAGE", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/api/impl/ApolloMessageServiceImpl$Companion$MessageType;", "", "(Ljava/lang/String;I)V", "STATE_OR_DRESS_CHANGE", "TRACE_SPAN_MESSAGE", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public enum ApolloMessageServiceImpl$Companion$MessageType
 {
   static
@@ -18,7 +18,7 @@ public enum ApolloMessageServiceImpl$Companion$MessageType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.api.impl.ApolloMessageServiceImpl.Companion.MessageType
  * JD-Core Version:    0.7.0.1
  */

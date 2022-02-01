@@ -30,7 +30,7 @@ final class SdkDynamicAvatarSettingHelper$2
       QLog.d("SdkDynamicAvatarSettingHelper", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
     }
     ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, this.jdField_a_of_type_JavaLangString, "2", "", "");
-    SdkDynamicAvatarSettingHelper.a(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131713550), this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    SdkDynamicAvatarSettingHelper.a(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131713517), this.b, this.c, this.jdField_a_of_type_JavaLangString);
   }
   
   public void a(int paramInt, String paramString)
@@ -51,8 +51,7 @@ final class SdkDynamicAvatarSettingHelper$2
       if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramJSONObject)))
       {
         OpenID localOpenID = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.jdField_a_of_type_JavaLangString);
-        if (localOpenID == null) {}
-        while (paramJSONObject.equals(localOpenID.openID)) {
+        if (localOpenID == null) {
           try
           {
             long l1 = Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
@@ -66,14 +65,20 @@ final class SdkDynamicAvatarSettingHelper$2
             return;
           }
         }
-        SdkDynamicAvatarSettingHelper.b(this.jdField_a_of_type_AndroidAppActivity);
-        return;
+        if (!paramJSONObject.equals(localOpenID.openID)) {
+          SdkDynamicAvatarSettingHelper.b(this.jdField_a_of_type_AndroidAppActivity);
+        }
       }
-      QLog.e("SdkDynamicAvatarSettingHelper", 1, "checkOpenid, openId null");
-      return;
+      else
+      {
+        QLog.e("SdkDynamicAvatarSettingHelper", 1, "checkOpenid, openId null");
+      }
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, this.jdField_a_of_type_JavaLangString, "3", "", "");
-    SdkDynamicAvatarSettingHelper.a(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131713554), this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    else
+    {
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009DFB", "0X8009DFB", 0, 0, this.jdField_a_of_type_JavaLangString, "3", "", "");
+      SdkDynamicAvatarSettingHelper.a(this.jdField_a_of_type_AndroidAppActivity, HardCodeUtil.a(2131713521), this.b, this.c, this.jdField_a_of_type_JavaLangString);
+    }
   }
   
   public void b(JSONObject paramJSONObject)
@@ -85,7 +90,7 @@ final class SdkDynamicAvatarSettingHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SdkDynamicAvatarSettingHelper.2
  * JD-Core Version:    0.7.0.1
  */

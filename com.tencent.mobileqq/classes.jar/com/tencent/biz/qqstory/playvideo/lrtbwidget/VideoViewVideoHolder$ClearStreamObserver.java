@@ -13,29 +13,32 @@ class VideoViewVideoHolder$ClearStreamObserver<T>
   {
     super.onCancel();
     SLog.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  CANCEL", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    VideoViewVideoHolder localVideoViewVideoHolder = this.b;
+    localVideoViewVideoHolder.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    localVideoViewVideoHolder.b = null;
   }
   
   public void onError(@NonNull Error paramError)
   {
     super.onError(paramError);
     SLog.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s]  ERROR", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    paramError = this.b;
+    paramError.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    paramError.b = null;
   }
   
   public void onNext(T paramT)
   {
     super.onNext(paramT);
     SLog.d(this.b.jdField_a_of_type_JavaLangString, "stream : [%s] DONE", new Object[] { this.b.b });
-    this.b.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
-    this.b.b = null;
+    paramT = this.b;
+    paramT.jdField_a_of_type_ComTribeAsyncReactiveStream = null;
+    paramT.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoViewVideoHolder.ClearStreamObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -115,12 +115,21 @@ public class MediaItem
   
   public String toString()
   {
-    return "[" + this.start + ", " + this.end + ", " + this.path + "], duration = " + (this.end - this.start);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.start);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.end);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.path);
+    localStringBuilder.append("], duration = ");
+    localStringBuilder.append(this.end - this.start);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.p2veffect.model.MediaItem
  * JD-Core Version:    0.7.0.1
  */

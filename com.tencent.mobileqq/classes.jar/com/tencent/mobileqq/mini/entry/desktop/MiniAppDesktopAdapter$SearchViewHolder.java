@@ -19,8 +19,8 @@ import com.tencent.mobileqq.mini.entry.MiniAppExposureManager.TianShuExposureDat
 import com.tencent.mobileqq.mini.entry.MiniAppUtils;
 import com.tencent.mobileqq.mini.entry.desktop.item.DesktopSearchInfo;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.QQTheme;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
@@ -36,8 +36,8 @@ class MiniAppDesktopAdapter$SearchViewHolder
   public MiniAppDesktopAdapter$SearchViewHolder(WeakReference<Activity> paramWeakReference, View paramView)
   {
     super(paramView);
-    this.keywordTv = ((TextView)paramView.findViewById(2131371591));
-    this.container = paramView.findViewById(2131371584);
+    this.keywordTv = ((TextView)paramView.findViewById(2131371211));
+    this.container = paramView.findViewById(2131371204);
     this.container.setPadding(0, 0, 0, 0);
     paramView.setOnClickListener(new MiniAppDesktopAdapter.SearchViewHolder.1(this, paramWeakReference));
   }
@@ -45,11 +45,12 @@ class MiniAppDesktopAdapter$SearchViewHolder
   public void update(DesktopSearchInfo paramDesktopSearchInfo)
   {
     Object localObject2 = MiniAppUtils.getAppInterface();
+    Object localObject1;
     if (localObject2 != null)
     {
-      int i = 2130850768;
-      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (QQTheme.c(ThemeUtil.getCurrentThemeId()))) {
-        i = 2130841174;
+      int i = 2130850694;
+      if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (QQTheme.d(ThemeUtil.getCurrentThemeId()))) {
+        i = 2130841050;
       }
       int j = i;
       if (paramDesktopSearchInfo != null)
@@ -60,11 +61,11 @@ class MiniAppDesktopAdapter$SearchViewHolder
           if (QLog.isColorLevel()) {
             QLog.i("MiniAppDesktopAdapter", 2, "updateSearchBar, ContainerBg");
           }
-          j = 2130850770;
+          j = 2130850696;
         }
       }
       this.container.setBackgroundResource(j);
-      j = 2130850763;
+      j = 2130850689;
       i = j;
       if (paramDesktopSearchInfo != null)
       {
@@ -74,13 +75,13 @@ class MiniAppDesktopAdapter$SearchViewHolder
           if (QLog.isColorLevel()) {
             QLog.i("MiniAppDesktopAdapter", 2, "updateSearchBar, SearchIconBg");
           }
-          i = 2130850766;
+          i = 2130850692;
         }
       }
       localObject1 = BaseApplicationImpl.getContext().getResources().getDrawable(i);
       ((Drawable)localObject1).setBounds(0, 0, ((Drawable)localObject1).getMinimumWidth(), ((Drawable)localObject1).getMinimumHeight());
       this.keywordTv.setCompoundDrawables((Drawable)localObject1, null, null, null);
-      j = BaseApplicationImpl.getContext().getResources().getColor(2131167130);
+      j = BaseApplicationImpl.getContext().getResources().getColor(2131167155);
       i = j;
       if (paramDesktopSearchInfo != null)
       {
@@ -100,38 +101,36 @@ class MiniAppDesktopAdapter$SearchViewHolder
     if ((paramDesktopSearchInfo != null) && (paramDesktopSearchInfo.keyword != null) && (paramDesktopSearchInfo.keyword.size() > 0))
     {
       localObject1 = (String)paramDesktopSearchInfo.keyword.get(0);
-      if (!TextUtils.isEmpty((CharSequence)localObject1))
-      {
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         this.keywordTv.setText((CharSequence)localObject1);
-        if (this.keywordTv.getText() == null) {
-          break label432;
-        }
+      } else {
+        this.keywordTv.setText(HardCodeUtil.a(2131706824));
       }
     }
-    label432:
-    for (Object localObject1 = this.keywordTv.getText().toString();; localObject1 = HardCodeUtil.a(2131706810))
+    else
     {
-      if (localObject2 != null)
+      this.keywordTv.setText(HardCodeUtil.a(2131706827));
+    }
+    if (this.keywordTv.getText() != null) {
+      localObject1 = this.keywordTv.getText().toString();
+    } else {
+      localObject1 = HardCodeUtil.a(2131706832);
+    }
+    if (localObject2 != null)
+    {
+      localObject2 = (MiniAppExposureManager)((AppInterface)localObject2).getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
+      ((MiniAppExposureManager)localObject2).putReportDataToMap("search", new MiniAppExposureManager.CardModuleExposureData("desktop", "search", "expo_search", (String)localObject1));
+      if ((paramDesktopSearchInfo != null) && (paramDesktopSearchInfo.mAppInfo != null) && (paramDesktopSearchInfo.mAppInfo.tianshuAdId > 0))
       {
-        localObject2 = (MiniAppExposureManager)((AppInterface)localObject2).getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
-        ((MiniAppExposureManager)localObject2).putReportDataToMap("search", new MiniAppExposureManager.CardModuleExposureData("desktop", "search", "expo_search", (String)localObject1));
-        if ((paramDesktopSearchInfo != null) && (paramDesktopSearchInfo.mAppInfo != null) && (paramDesktopSearchInfo.mAppInfo.tianshuAdId > 0))
-        {
-          paramDesktopSearchInfo = String.valueOf(paramDesktopSearchInfo.mAppInfo.tianshuAdId);
-          ((MiniAppExposureManager)localObject2).putReportDataToMap(paramDesktopSearchInfo, new MiniAppExposureManager.TianShuExposureData("tianshu.78", "tianshu.78", paramDesktopSearchInfo, 101));
-        }
+        paramDesktopSearchInfo = String.valueOf(paramDesktopSearchInfo.mAppInfo.tianshuAdId);
+        ((MiniAppExposureManager)localObject2).putReportDataToMap(paramDesktopSearchInfo, new MiniAppExposureManager.TianShuExposureData("tianshu.78", "tianshu.78", paramDesktopSearchInfo, 101));
       }
-      return;
-      this.keywordTv.setText(HardCodeUtil.a(2131706802));
-      break;
-      this.keywordTv.setText(HardCodeUtil.a(2131706805));
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopAdapter.SearchViewHolder
  * JD-Core Version:    0.7.0.1
  */

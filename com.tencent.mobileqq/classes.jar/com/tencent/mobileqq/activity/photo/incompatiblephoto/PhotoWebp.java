@@ -23,212 +23,184 @@ public class PhotoWebp
   static boolean a(String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 5
-    //   3: bipush 16
-    //   5: newarray byte
-    //   7: astore 7
-    //   9: new 44	java/io/FileInputStream
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 45	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   17: astore 6
-    //   19: aload 6
-    //   21: astore_0
-    //   22: aload 6
-    //   24: aload 7
-    //   26: invokevirtual 49	java/io/FileInputStream:read	([B)I
-    //   29: pop
-    //   30: aload 6
-    //   32: astore_0
-    //   33: aload 7
-    //   35: arraylength
-    //   36: istore_1
-    //   37: iload_1
-    //   38: bipush 12
-    //   40: if_icmpge +31 -> 71
-    //   43: iload 5
-    //   45: istore 4
-    //   47: aload 6
-    //   49: ifnull +12 -> 61
-    //   52: aload 6
-    //   54: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   57: iload 5
-    //   59: istore 4
-    //   61: iload 4
-    //   63: ireturn
-    //   64: astore_0
-    //   65: aload_0
-    //   66: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   69: iconst_0
-    //   70: ireturn
-    //   71: iconst_0
-    //   72: istore_1
-    //   73: aload 6
-    //   75: astore_0
-    //   76: iload_1
-    //   77: getstatic 23	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:jdField_b_of_type_ArrayOfByte	[B
-    //   80: arraylength
-    //   81: if_icmpge +52 -> 133
-    //   84: aload 6
-    //   86: astore_0
-    //   87: getstatic 23	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:jdField_b_of_type_ArrayOfByte	[B
+    //   0: bipush 16
+    //   2: newarray byte
+    //   4: astore 5
+    //   6: aconst_null
+    //   7: astore 6
+    //   9: aconst_null
+    //   10: astore 4
+    //   12: new 44	java/io/FileInputStream
+    //   15: dup
+    //   16: aload_0
+    //   17: invokespecial 45	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   20: astore_0
+    //   21: aload_0
+    //   22: aload 5
+    //   24: invokevirtual 49	java/io/FileInputStream:read	([B)I
+    //   27: pop
+    //   28: aload 5
+    //   30: arraylength
+    //   31: istore_1
+    //   32: iload_1
+    //   33: bipush 12
+    //   35: if_icmpge +16 -> 51
+    //   38: aload_0
+    //   39: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   42: iconst_0
+    //   43: ireturn
+    //   44: astore_0
+    //   45: aload_0
+    //   46: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   49: iconst_0
+    //   50: ireturn
+    //   51: iconst_0
+    //   52: istore_1
+    //   53: iload_1
+    //   54: getstatic 23	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:jdField_b_of_type_ArrayOfByte	[B
+    //   57: arraylength
+    //   58: if_icmpge +39 -> 97
+    //   61: getstatic 23	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:jdField_b_of_type_ArrayOfByte	[B
+    //   64: iload_1
+    //   65: baload
+    //   66: istore_2
+    //   67: aload 5
+    //   69: iload_1
+    //   70: baload
+    //   71: istore_3
+    //   72: iload_2
+    //   73: iload_3
+    //   74: if_icmpeq +16 -> 90
+    //   77: aload_0
+    //   78: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   81: iconst_0
+    //   82: ireturn
+    //   83: astore_0
+    //   84: aload_0
+    //   85: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   88: iconst_0
+    //   89: ireturn
     //   90: iload_1
-    //   91: baload
-    //   92: istore_2
-    //   93: aload 7
-    //   95: iload_1
-    //   96: baload
-    //   97: istore_3
-    //   98: iload_2
-    //   99: iload_3
-    //   100: if_icmpeq +26 -> 126
-    //   103: iload 5
-    //   105: istore 4
-    //   107: aload 6
-    //   109: ifnull -48 -> 61
-    //   112: aload 6
-    //   114: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   117: iconst_0
-    //   118: ireturn
-    //   119: astore_0
-    //   120: aload_0
-    //   121: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   124: iconst_0
-    //   125: ireturn
-    //   126: iload_1
-    //   127: iconst_1
-    //   128: iadd
-    //   129: istore_1
-    //   130: goto -57 -> 73
-    //   133: bipush 8
-    //   135: istore_1
-    //   136: iload_1
-    //   137: bipush 12
-    //   139: if_icmpge +55 -> 194
-    //   142: aload 6
-    //   144: astore_0
-    //   145: getstatic 19	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:jdField_a_of_type_ArrayOfByte	[B
-    //   148: iload_1
-    //   149: bipush 8
-    //   151: isub
-    //   152: baload
-    //   153: istore_2
-    //   154: aload 7
-    //   156: iload_1
-    //   157: baload
-    //   158: istore_3
-    //   159: iload_2
-    //   160: iload_3
-    //   161: if_icmpeq +26 -> 187
-    //   164: iload 5
-    //   166: istore 4
-    //   168: aload 6
-    //   170: ifnull -109 -> 61
-    //   173: aload 6
-    //   175: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   178: iconst_0
-    //   179: ireturn
-    //   180: astore_0
-    //   181: aload_0
-    //   182: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   185: iconst_0
-    //   186: ireturn
-    //   187: iload_1
-    //   188: iconst_1
-    //   189: iadd
-    //   190: istore_1
-    //   191: goto -55 -> 136
-    //   194: iconst_1
-    //   195: istore 4
-    //   197: aload 6
-    //   199: ifnull -138 -> 61
-    //   202: aload 6
-    //   204: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   207: iconst_1
-    //   208: ireturn
-    //   209: astore_0
-    //   210: aload_0
-    //   211: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   214: iconst_1
-    //   215: ireturn
-    //   216: astore 7
-    //   218: aconst_null
-    //   219: astore 6
-    //   221: aload 6
-    //   223: astore_0
-    //   224: aload 7
-    //   226: invokevirtual 56	java/lang/Exception:printStackTrace	()V
-    //   229: iload 5
-    //   231: istore 4
-    //   233: aload 6
-    //   235: ifnull -174 -> 61
-    //   238: aload 6
-    //   240: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   243: iconst_0
-    //   244: ireturn
-    //   245: astore_0
-    //   246: aload_0
-    //   247: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   250: iconst_0
-    //   251: ireturn
-    //   252: astore 6
-    //   254: aconst_null
-    //   255: astore_0
-    //   256: aload_0
-    //   257: ifnull +7 -> 264
-    //   260: aload_0
-    //   261: invokevirtual 52	java/io/FileInputStream:close	()V
-    //   264: aload 6
-    //   266: athrow
-    //   267: astore_0
-    //   268: aload_0
-    //   269: invokevirtual 55	java/io/IOException:printStackTrace	()V
-    //   272: goto -8 -> 264
-    //   275: astore 6
-    //   277: goto -21 -> 256
-    //   280: astore 7
-    //   282: goto -61 -> 221
+    //   91: iconst_1
+    //   92: iadd
+    //   93: istore_1
+    //   94: goto -41 -> 53
+    //   97: bipush 8
+    //   99: istore_1
+    //   100: iload_1
+    //   101: bipush 12
+    //   103: if_icmpge +42 -> 145
+    //   106: getstatic 19	com/tencent/mobileqq/activity/photo/incompatiblephoto/PhotoWebp:jdField_a_of_type_ArrayOfByte	[B
+    //   109: iload_1
+    //   110: bipush 8
+    //   112: isub
+    //   113: baload
+    //   114: istore_2
+    //   115: aload 5
+    //   117: iload_1
+    //   118: baload
+    //   119: istore_3
+    //   120: iload_2
+    //   121: iload_3
+    //   122: if_icmpeq +16 -> 138
+    //   125: aload_0
+    //   126: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   129: iconst_0
+    //   130: ireturn
+    //   131: astore_0
+    //   132: aload_0
+    //   133: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   136: iconst_0
+    //   137: ireturn
+    //   138: iload_1
+    //   139: iconst_1
+    //   140: iadd
+    //   141: istore_1
+    //   142: goto -42 -> 100
+    //   145: aload_0
+    //   146: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   149: goto +8 -> 157
+    //   152: astore_0
+    //   153: aload_0
+    //   154: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   157: iconst_1
+    //   158: ireturn
+    //   159: astore 4
+    //   161: goto +50 -> 211
+    //   164: astore 5
+    //   166: goto +20 -> 186
+    //   169: astore 5
+    //   171: aload 4
+    //   173: astore_0
+    //   174: aload 5
+    //   176: astore 4
+    //   178: goto +33 -> 211
+    //   181: astore 5
+    //   183: aload 6
+    //   185: astore_0
+    //   186: aload_0
+    //   187: astore 4
+    //   189: aload 5
+    //   191: invokevirtual 56	java/lang/Exception:printStackTrace	()V
+    //   194: aload_0
+    //   195: ifnull +14 -> 209
+    //   198: aload_0
+    //   199: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   202: iconst_0
+    //   203: ireturn
+    //   204: astore_0
+    //   205: aload_0
+    //   206: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   209: iconst_0
+    //   210: ireturn
+    //   211: aload_0
+    //   212: ifnull +15 -> 227
+    //   215: aload_0
+    //   216: invokevirtual 52	java/io/FileInputStream:close	()V
+    //   219: goto +8 -> 227
+    //   222: astore_0
+    //   223: aload_0
+    //   224: invokevirtual 55	java/io/IOException:printStackTrace	()V
+    //   227: goto +6 -> 233
+    //   230: aload 4
+    //   232: athrow
+    //   233: goto -3 -> 230
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	285	0	paramString	String
-    //   36	155	1	i	int
-    //   92	70	2	j	int
-    //   97	65	3	k	int
-    //   45	187	4	bool1	boolean
-    //   1	229	5	bool2	boolean
-    //   17	222	6	localFileInputStream	java.io.FileInputStream
-    //   252	13	6	localObject1	java.lang.Object
-    //   275	1	6	localObject2	java.lang.Object
-    //   7	148	7	arrayOfByte	byte[]
-    //   216	9	7	localException1	java.lang.Exception
-    //   280	1	7	localException2	java.lang.Exception
+    //   0	236	0	paramString	String
+    //   31	111	1	i	int
+    //   66	57	2	j	int
+    //   71	52	3	k	int
+    //   10	1	4	localObject1	java.lang.Object
+    //   159	13	4	localObject2	java.lang.Object
+    //   176	55	4	localObject3	java.lang.Object
+    //   4	112	5	arrayOfByte	byte[]
+    //   164	1	5	localException1	java.lang.Exception
+    //   169	6	5	localObject4	java.lang.Object
+    //   181	9	5	localException2	java.lang.Exception
+    //   7	177	6	localObject5	java.lang.Object
     // Exception table:
     //   from	to	target	type
-    //   52	57	64	java/io/IOException
-    //   112	117	119	java/io/IOException
-    //   173	178	180	java/io/IOException
-    //   202	207	209	java/io/IOException
-    //   9	19	216	java/lang/Exception
-    //   238	243	245	java/io/IOException
-    //   9	19	252	finally
-    //   260	264	267	java/io/IOException
-    //   22	30	275	finally
-    //   33	37	275	finally
-    //   76	84	275	finally
-    //   87	93	275	finally
-    //   145	154	275	finally
-    //   224	229	275	finally
-    //   22	30	280	java/lang/Exception
-    //   33	37	280	java/lang/Exception
-    //   76	84	280	java/lang/Exception
-    //   87	93	280	java/lang/Exception
-    //   145	154	280	java/lang/Exception
+    //   38	42	44	java/io/IOException
+    //   77	81	83	java/io/IOException
+    //   125	129	131	java/io/IOException
+    //   145	149	152	java/io/IOException
+    //   21	32	159	finally
+    //   53	67	159	finally
+    //   106	115	159	finally
+    //   21	32	164	java/lang/Exception
+    //   53	67	164	java/lang/Exception
+    //   106	115	164	java/lang/Exception
+    //   12	21	169	finally
+    //   189	194	169	finally
+    //   12	21	181	java/lang/Exception
+    //   198	202	204	java/io/IOException
+    //   215	219	222	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.incompatiblephoto.PhotoWebp
  * JD-Core Version:    0.7.0.1
  */

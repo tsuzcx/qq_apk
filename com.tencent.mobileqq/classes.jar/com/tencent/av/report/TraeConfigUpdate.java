@@ -5,7 +5,7 @@ import java.util.Map;
 
 public class TraeConfigUpdate
 {
-  private static volatile TraeConfigUpdate jdField_a_of_type_ComTencentAvReportTraeConfigUpdate = null;
+  private static volatile TraeConfigUpdate jdField_a_of_type_ComTencentAvReportTraeConfigUpdate;
   private Map<String, String> jdField_a_of_type_JavaUtilMap = new HashMap();
   
   private TraeConfigUpdate()
@@ -17,15 +17,16 @@ public class TraeConfigUpdate
   
   public static TraeConfigUpdate a()
   {
-    if (jdField_a_of_type_ComTencentAvReportTraeConfigUpdate == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentAvReportTraeConfigUpdate == null) {
-        jdField_a_of_type_ComTencentAvReportTraeConfigUpdate = new TraeConfigUpdate();
+    if (jdField_a_of_type_ComTencentAvReportTraeConfigUpdate == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentAvReportTraeConfigUpdate == null) {
+          jdField_a_of_type_ComTencentAvReportTraeConfigUpdate = new TraeConfigUpdate();
+        }
       }
-      return jdField_a_of_type_ComTencentAvReportTraeConfigUpdate;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentAvReportTraeConfigUpdate;
   }
   
   public String a(String paramString)
@@ -48,7 +49,7 @@ public class TraeConfigUpdate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.TraeConfigUpdate
  * JD-Core Version:    0.7.0.1
  */

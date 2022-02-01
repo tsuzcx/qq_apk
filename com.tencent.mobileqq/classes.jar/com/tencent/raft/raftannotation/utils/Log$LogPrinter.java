@@ -6,37 +6,73 @@ public class Log$LogPrinter
 {
   public void d(String paramString1, String paramString2)
   {
-    System.out.println("[" + paramString1 + "]" + paramString2);
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("]");
+    localStringBuilder.append(paramString2);
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   public void e(String paramString1, String paramString2)
   {
-    System.out.println("[" + paramString1 + "]" + paramString2);
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("]");
+    localStringBuilder.append(paramString2);
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   public void e(String paramString, Throwable paramThrowable)
   {
-    System.out.println("[" + paramString + "]" + paramThrowable.toString());
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    localStringBuilder.append(paramThrowable.toString());
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   public void i(String paramString1, String paramString2)
   {
-    System.out.println("[" + paramString1 + "]" + paramString2);
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("]");
+    localStringBuilder.append(paramString2);
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   public void v(String paramString1, String paramString2)
   {
-    System.out.println("[" + paramString1 + "]" + paramString2);
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("]");
+    localStringBuilder.append(paramString2);
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   public void w(String paramString1, String paramString2)
   {
-    System.out.println("[" + paramString1 + "]" + paramString2);
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("]");
+    localStringBuilder.append(paramString2);
+    localPrintStream.println(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.raftannotation.utils.Log.LogPrinter
  * JD-Core Version:    0.7.0.1
  */

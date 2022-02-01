@@ -11,7 +11,7 @@ public class PollWidgetUtils$QuestionElement
   public PollWidgetUtils$QuestionElement(PollWidgetUtils.WidgetWrapper paramWidgetWrapper, View paramView)
   {
     super(paramWidgetWrapper, paramView);
-    this.a = ((TextView)paramView.findViewById(2131379129));
+    this.a = ((TextView)paramView.findViewById(2131378499));
     this.a.setMaxLines(1);
     this.a.setSingleLine();
   }
@@ -29,11 +29,11 @@ public class PollWidgetUtils$QuestionElement
     this.a.setText(paramCharSequence);
   }
   
-  public void f_(boolean paramBoolean)
+  public void b_(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      this.a.setBackgroundResource(2130844730);
+      this.a.setBackgroundResource(2130844614);
       return;
     }
     this.a.setBackgroundResource(0);
@@ -41,7 +41,7 @@ public class PollWidgetUtils$QuestionElement
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.PollWidgetUtils.QuestionElement
  * JD-Core Version:    0.7.0.1
  */

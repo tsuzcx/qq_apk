@@ -25,13 +25,14 @@ public final class CLIENT$StGetStoryFeedListRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66 }, new String[] { "extInfo", "vecStoryFeed", "totalNum", "isFinish", "isShowCamera", "vecUinStory", "hasNewStory", "storyBannerBuff" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro }, StGetStoryFeedListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 66 }, new String[] { "extInfo", "vecStoryFeed", "totalNum", "isFinish", "isShowCamera", "vecUinStory", "hasNewStory", "storyBannerBuff" }, new Object[] { null, null, localInteger, localInteger, localInteger, null, localInteger, localByteStringMicro }, StGetStoryFeedListRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQ_STORY_CLIENT.CLIENT.StGetStoryFeedListRsp
  * JD-Core Version:    0.7.0.1
  */

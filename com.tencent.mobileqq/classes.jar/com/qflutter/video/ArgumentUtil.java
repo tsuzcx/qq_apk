@@ -37,16 +37,14 @@ public class ArgumentUtil
   
   private static Object processJsonValue(Object paramObject)
   {
-    Object localObject;
     if ((paramObject instanceof JSONObject)) {
-      localObject = jsonObjectToMap((JSONObject)paramObject);
+      return jsonObjectToMap((JSONObject)paramObject);
     }
-    do
-    {
-      return localObject;
-      localObject = paramObject;
-    } while (!(paramObject instanceof JSONArray));
-    return jsonArrayToList((JSONArray)paramObject);
+    Object localObject = paramObject;
+    if ((paramObject instanceof JSONArray)) {
+      localObject = jsonArrayToList((JSONArray)paramObject);
+    }
+    return localObject;
   }
   
   public static Map<String, Object> transFlutterArguments(Object paramObject)
@@ -65,7 +63,7 @@ public class ArgumentUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.video.ArgumentUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -16,27 +16,28 @@ public class EcShopServlet
 {
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EcShopServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive cmd=");
+      ((StringBuilder)localObject).append(paramIntent.getStringExtra("cmd"));
+      ((StringBuilder)localObject).append(",success=");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.isSuccess());
+      QLog.d("EcShopServlet", 2, ((StringBuilder)localObject).toString());
     }
-    byte[] arrayOfByte;
+    Object localObject = null;
     if (paramFromServiceMsg.isSuccess())
     {
       int i = paramFromServiceMsg.getWupBuffer().length - 4;
-      arrayOfByte = new byte[i];
-      PkgTools.copyData(arrayOfByte, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+      localObject = new byte[i];
+      PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
     }
-    for (;;)
-    {
-      new Bundle().putByteArray("data", arrayOfByte);
-      EcShopHandler localEcShopHandler = (EcShopHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.ECSHOP_HANDLER);
-      if (localEcShopHandler != null) {
-        localEcShopHandler.a(paramIntent, paramFromServiceMsg, arrayOfByte);
-      }
-      QLog.d("EcShopServlet", 2, "onReceive exit");
-      return;
-      arrayOfByte = null;
+    new Bundle().putByteArray("data", (byte[])localObject);
+    EcShopHandler localEcShopHandler = (EcShopHandler)((QQAppInterface)super.getAppRuntime()).getBusinessHandler(BusinessHandlerFactory.ECSHOP_HANDLER);
+    if (localEcShopHandler != null) {
+      localEcShopHandler.a(paramIntent, paramFromServiceMsg, (byte[])localObject);
     }
+    QLog.d("EcShopServlet", 2, "onReceive exit");
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -46,32 +47,37 @@ public class EcShopServlet
     long l = paramIntent.getLongExtra("timeout", 30000L);
     if (!TextUtils.isEmpty(str))
     {
-      paramPacket.setSSOCommand("SQQShopFolderSvc." + str);
+      paramIntent = new StringBuilder();
+      paramIntent.append("SQQShopFolderSvc.");
+      paramIntent.append(str);
+      paramPacket.setSSOCommand(paramIntent.toString());
       paramPacket.setTimeout(l);
-      if (arrayOfByte == null) {
-        break label135;
+      if (arrayOfByte != null)
+      {
+        paramIntent = new byte[arrayOfByte.length + 4];
+        PkgTools.dWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
+        PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
+        paramPacket.putSendData(paramIntent);
       }
-      paramIntent = new byte[arrayOfByte.length + 4];
-      PkgTools.DWord2Byte(paramIntent, 0, arrayOfByte.length + 4);
-      PkgTools.copyData(paramIntent, 4, arrayOfByte, arrayOfByte.length);
-      paramPacket.putSendData(paramIntent);
+      else
+      {
+        paramIntent = new byte[4];
+        PkgTools.dWord2Byte(paramIntent, 0, 4L);
+        paramPacket.putSendData(paramIntent);
+      }
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EcShopServlet", 2, "onSend exit cmd=" + str);
-      }
-      return;
-      label135:
-      paramIntent = new byte[4];
-      PkgTools.DWord2Byte(paramIntent, 0, 4L);
-      paramPacket.putSendData(paramIntent);
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend exit cmd=");
+      paramIntent.append(str);
+      QLog.d("EcShopServlet", 2, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.ecshopassit.EcShopServlet
  * JD-Core Version:    0.7.0.1
  */

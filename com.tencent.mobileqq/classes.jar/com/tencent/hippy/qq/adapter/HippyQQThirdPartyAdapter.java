@@ -9,11 +9,9 @@ public class HippyQQThirdPartyAdapter
   protected JSONObject mExtraData;
   protected String mPageUrl;
   
-  public void SetHippyBridgeId(long paramLong) {}
-  
   public String getAppVersion()
   {
-    return "8.5.5";
+    return "8.7.0";
   }
   
   public JSONObject getExtraData()
@@ -31,6 +29,10 @@ public class HippyQQThirdPartyAdapter
     return this.mPageUrl;
   }
   
+  public void onRuntimeDestroy() {}
+  
+  public void onRuntimeInit(long paramLong) {}
+  
   public void setExtraData(JSONObject paramJSONObject)
   {
     this.mExtraData = paramJSONObject;
@@ -43,7 +45,7 @@ public class HippyQQThirdPartyAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.adapter.HippyQQThirdPartyAdapter
  * JD-Core Version:    0.7.0.1
  */

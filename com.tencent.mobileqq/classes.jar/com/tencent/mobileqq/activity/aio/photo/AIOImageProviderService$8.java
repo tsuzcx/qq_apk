@@ -11,14 +11,18 @@ class AIOImageProviderService$8
   
   public void a(int paramInt1, int paramInt2, long paramLong1, long paramLong2)
   {
-    IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
-    if (localIAIOImageProviderCallBack == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
+    if (localObject == null)
     {
-      QLog.i("AIOImageProviderService", 2, "onDownloadProgressUpdate: callback = null , ctxId[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a() + "] ");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadProgressUpdate: callback = null , ctxId[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a());
+      ((StringBuilder)localObject).append("] ");
+      QLog.i("AIOImageProviderService", 2, ((StringBuilder)localObject).toString());
       return;
     }
     paramInt1 = (int)((float)paramLong1 / (float)paramLong2 * 10000.0F);
-    localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, 0, 269484035, paramInt1, paramLong2, false);
+    ((IAIOImageProviderCallBack)localObject).a(this.jdField_a_of_type_Long, 0, 269484035, paramInt1, paramLong2, false);
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
@@ -26,15 +30,19 @@ class AIOImageProviderService$8
     IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
     if (localIAIOImageProviderCallBack == null)
     {
-      QLog.i("AIOImageProviderService", 2, "onDownloadProgressUpdate: error, ctxId[" + this.jdField_a_of_type_Long + "] ");
+      paramString = new StringBuilder();
+      paramString.append("onDownloadProgressUpdate: error, ctxId[");
+      paramString.append(this.jdField_a_of_type_Long);
+      paramString.append("] ");
+      QLog.i("AIOImageProviderService", 2, paramString.toString());
       return;
     }
-    if ((paramInt2 == -7003) || (paramInt2 == -6101)) {}
-    for (paramInt1 = 16;; paramInt1 = 0)
-    {
-      localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, paramInt1, 269484034, 2, paramString, false);
-      return;
+    if ((paramInt2 != -7003) && (paramInt2 != -6101)) {
+      paramInt1 = 0;
+    } else {
+      paramInt1 = 16;
     }
+    localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, paramInt1, 269484034, 2, paramString, false);
   }
   
   public void a(String paramString)
@@ -42,16 +50,23 @@ class AIOImageProviderService$8
     IAIOImageProviderCallBack localIAIOImageProviderCallBack = this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOImageProviderService.a;
     if (localIAIOImageProviderCallBack == null)
     {
-      QLog.i("AIOImageProviderServiceXOXO", 2, "onDownloadFinish callback = null , ctxId[" + this.jdField_a_of_type_Long + "] ");
+      paramString = new StringBuilder();
+      paramString.append("onDownloadFinish callback = null , ctxId[");
+      paramString.append(this.jdField_a_of_type_Long);
+      paramString.append("] ");
+      QLog.i("AIOImageProviderServiceXOXO", 2, paramString.toString());
       return;
     }
-    QLog.i("AIOImageProviderService", 1, "-----------> notify download finish:" + this.jdField_a_of_type_Long);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-----------> notify download finish:");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    QLog.i("AIOImageProviderService", 1, localStringBuilder.toString());
     localIAIOImageProviderCallBack.a(this.jdField_a_of_type_Long, 1, 269484034, 1, paramString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOImageProviderService.8
  * JD-Core Version:    0.7.0.1
  */

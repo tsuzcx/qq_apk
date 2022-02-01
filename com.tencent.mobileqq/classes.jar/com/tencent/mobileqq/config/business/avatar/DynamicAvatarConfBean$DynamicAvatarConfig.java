@@ -36,7 +36,10 @@ public final class DynamicAvatarConfBean$DynamicAvatarConfig
     try
     {
       this.jdField_a_of_type_Boolean = new JSONObject(paramString).optBoolean("is_support_dynamic_avatar", true);
-      QLog.i("DynamicAvatarConfBean", 2, "dynamic avatar config parse ok, isSupportDynamicAvatar is " + this.jdField_a_of_type_Boolean);
+      paramString = new StringBuilder();
+      paramString.append("dynamic avatar config parse ok, isSupportDynamicAvatar is ");
+      paramString.append(this.jdField_a_of_type_Boolean);
+      QLog.i("DynamicAvatarConfBean", 2, paramString.toString());
       return;
     }
     catch (JSONException paramString)
@@ -53,12 +56,15 @@ public final class DynamicAvatarConfBean$DynamicAvatarConfig
   @NotNull
   public String toString()
   {
-    return "isSupportDynamicAvatar is " + this.jdField_a_of_type_Boolean;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isSupportDynamicAvatar is ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.avatar.DynamicAvatarConfBean.DynamicAvatarConfig
  * JD-Core Version:    0.7.0.1
  */

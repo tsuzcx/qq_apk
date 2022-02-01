@@ -26,11 +26,13 @@ final class Http1Codec$FixedLengthSink
       return;
     }
     this.closed = true;
-    if (this.bytesRemaining > 0L) {
-      throw new ProtocolException("unexpected end of stream");
+    if (this.bytesRemaining <= 0L)
+    {
+      this.this$0.detachTimeout(this.timeout);
+      this.this$0.state = 3;
+      return;
     }
-    this.this$0.detachTimeout(this.timeout);
-    this.this$0.state = 3;
+    throw new ProtocolException("unexpected end of stream");
   }
   
   public void flush()
@@ -48,20 +50,28 @@ final class Http1Codec$FixedLengthSink
   
   public void write(Buffer paramBuffer, long paramLong)
   {
-    if (this.closed) {
-      throw new IllegalStateException("closed");
+    if (!this.closed)
+    {
+      Util.checkOffsetAndCount(paramBuffer.size(), 0L, paramLong);
+      if (paramLong <= this.bytesRemaining)
+      {
+        this.this$0.sink.write(paramBuffer, paramLong);
+        this.bytesRemaining -= paramLong;
+        return;
+      }
+      paramBuffer = new StringBuilder();
+      paramBuffer.append("expected ");
+      paramBuffer.append(this.bytesRemaining);
+      paramBuffer.append(" bytes but received ");
+      paramBuffer.append(paramLong);
+      throw new ProtocolException(paramBuffer.toString());
     }
-    Util.checkOffsetAndCount(paramBuffer.size(), 0L, paramLong);
-    if (paramLong > this.bytesRemaining) {
-      throw new ProtocolException("expected " + this.bytesRemaining + " bytes but received " + paramLong);
-    }
-    this.this$0.sink.write(paramBuffer, paramLong);
-    this.bytesRemaining -= paramLong;
+    throw new IllegalStateException("closed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http1.Http1Codec.FixedLengthSink
  * JD-Core Version:    0.7.0.1
  */

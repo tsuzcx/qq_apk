@@ -28,11 +28,11 @@ public class UnitedVerifyMsgEditFragment
   {
     super.doOnCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     this.jdField_a_of_type_Int = getArguments().getInt("VERIFY_MSG_BYTES_LIMIT", 100);
-    setTitle(getString(2131689577));
-    setLeftButton(2131690800, null);
-    setRightButton(2131690891, this);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131376956));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376957));
+    setTitle(getString(2131689609));
+    setLeftButton(2131690728, null);
+    setRightButton(2131690820, this);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.mContentView.findViewById(2131376446));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.mContentView.findViewById(2131376447));
     this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$MaxBytesTextWatcher = new AddFriendVerifyActivity.MaxBytesTextWatcher(this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidWidgetEditText);
     this.jdField_a_of_type_AndroidWidgetEditText.addTextChangedListener(this.jdField_a_of_type_ComTencentMobileqqActivityAddFriendVerifyActivity$MaxBytesTextWatcher);
     ThreadManager.post(new UnitedVerifyMsgEditFragment.1(this), 8, null, true);
@@ -40,14 +40,14 @@ public class UnitedVerifyMsgEditFragment
   
   protected int getContentLayoutId()
   {
-    return 2131561730;
+    return 2131561573;
   }
   
   public boolean onBackEvent()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(0);
     boolean bool = super.onBackEvent();
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2130771992, 2130772003);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2130772004, 2130772015);
     return bool;
   }
   
@@ -60,7 +60,7 @@ public class UnitedVerifyMsgEditFragment
       localIntent.putExtra("VERIFY_MSG", str);
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.setResult(-1, localIntent);
       this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.finish();
-      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2130771992, 2130772003);
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.overridePendingTransition(2130772004, 2130772015);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
@@ -68,7 +68,7 @@ public class UnitedVerifyMsgEditFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getActivity();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseActivity = getBaseActivity();
   }
   
   public void onDestroyView()
@@ -79,7 +79,7 @@ public class UnitedVerifyMsgEditFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -1,63 +1,72 @@
 package com.huawei.agconnect.config.a;
 
-import javax.crypto.SecretKey;
-import javax.crypto.SecretKeyFactory;
-import javax.crypto.spec.PBEKeySpec;
-import javax.crypto.spec.SecretKeySpec;
-
 public class e
 {
-  public static SecretKey a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3, byte[] paramArrayOfByte4)
-  {
-    if ((paramArrayOfByte1.length != 16) || (paramArrayOfByte2.length != 16) || (paramArrayOfByte3.length != 16)) {
-      throw new IllegalArgumentException("invalid data for generating the key.");
-    }
-    paramArrayOfByte1 = c.a(a(paramArrayOfByte1, paramArrayOfByte2, paramArrayOfByte3));
-    return new SecretKeySpec(SecretKeyFactory.getInstance("PBKDF2WithHmacSHA1").generateSecret(new PBEKeySpec(paramArrayOfByte1.toCharArray(), paramArrayOfByte4, 5000, 128)).getEncoded(), "AES");
-  }
+  private static final char[] a = "0123456789ABCDEF".toCharArray();
   
-  private static byte[] a(byte[] paramArrayOfByte, int paramInt)
+  public static String a(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
-      throw new NullPointerException("bytes must not be null.");
-    }
+    StringBuilder localStringBuilder = new StringBuilder(paramArrayOfByte.length * 2);
+    int j = paramArrayOfByte.length;
     int i = 0;
-    if (i < paramArrayOfByte.length)
+    while (i < j)
     {
-      if (paramInt < 0) {
-        paramArrayOfByte[i] = ((byte)(paramArrayOfByte[i] << -paramInt));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        paramArrayOfByte[i] = ((byte)(paramArrayOfByte[i] >> paramInt));
-      }
-    }
-    return paramArrayOfByte;
-  }
-  
-  private static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
-  {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null)) {
-      throw new NullPointerException("left or right must not be null.");
-    }
-    if (paramArrayOfByte1.length != paramArrayOfByte2.length) {
-      throw new IllegalArgumentException("left and right must be the same length.");
-    }
-    byte[] arrayOfByte = new byte[paramArrayOfByte1.length];
-    int i = 0;
-    while (i < paramArrayOfByte1.length)
-    {
-      arrayOfByte[i] = ((byte)(paramArrayOfByte1[i] ^ paramArrayOfByte2[i]));
+      int k = paramArrayOfByte[i];
+      localStringBuilder.append(a[(k >> 4 & 0xF)]);
+      localStringBuilder.append(a[(k & 0xF)]);
       i += 1;
     }
-    return arrayOfByte;
+    return localStringBuilder.toString();
   }
   
-  public static byte[] a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
+  public static byte[] a(String paramString)
   {
-    return a(a(a(a(paramArrayOfByte1, -4), paramArrayOfByte2), 6), paramArrayOfByte3);
+    return a(paramString.toCharArray());
+  }
+  
+  private static byte[] a(char[] paramArrayOfChar)
+  {
+    if ((paramArrayOfChar.length & 0x1) == 0)
+    {
+      byte[] arrayOfByte = new byte[paramArrayOfChar.length >> 1];
+      int j = 0;
+      int i = 0;
+      while (j < paramArrayOfChar.length)
+      {
+        int k = Character.digit(paramArrayOfChar[j], 16);
+        if (k != -1)
+        {
+          j += 1;
+          int m = Character.digit(paramArrayOfChar[j], 16);
+          if (m != -1)
+          {
+            j += 1;
+            arrayOfByte[i] = ((byte)((k << 4 | m) & 0xFF));
+            i += 1;
+          }
+          else
+          {
+            paramArrayOfChar = new StringBuilder();
+            paramArrayOfChar.append("Illegal hexadecimal character at index ");
+            paramArrayOfChar.append(j);
+            throw new IllegalArgumentException(paramArrayOfChar.toString());
+          }
+        }
+        else
+        {
+          paramArrayOfChar = new StringBuilder();
+          paramArrayOfChar.append("Illegal hexadecimal character at index ");
+          paramArrayOfChar.append(j);
+          throw new IllegalArgumentException(paramArrayOfChar.toString());
+        }
+      }
+      return arrayOfByte;
+    }
+    paramArrayOfChar = new IllegalArgumentException("Odd number of characters.");
+    for (;;)
+    {
+      throw paramArrayOfChar;
+    }
   }
 }
 

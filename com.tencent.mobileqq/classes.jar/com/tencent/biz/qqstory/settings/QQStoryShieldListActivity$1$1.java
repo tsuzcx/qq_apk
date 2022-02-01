@@ -13,41 +13,41 @@ class QQStoryShieldListActivity$1$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager == null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager == null) {
       return;
-      Object localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
-      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_Int == 2) {}
-      QQStoryUserInfo localQQStoryUserInfo;
-      for (boolean bool = true;; bool = false)
-      {
-        localObject = ((QQStoryManager)localObject).b(bool).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
-          if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a != null) {
-            this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a.remove(localQQStoryUserInfo);
-          }
-        }
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager;
+    boolean bool;
+    if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_Int == 2) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localObject = ((QQStoryManager)localObject).b(bool).iterator();
+    QQStoryUserInfo localQQStoryUserInfo;
+    while (((Iterator)localObject).hasNext())
+    {
+      localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
+      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a != null) {
+        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a.remove(localQQStoryUserInfo);
       }
-      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
-        if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a != null) {
-          this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a.persistOrReplace(localQQStoryUserInfo);
-        }
-        if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b != null) {
-          this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b.put(localQQStoryUserInfo.uin, localQQStoryUserInfo);
-        }
+    }
+    localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      localQQStoryUserInfo = (QQStoryUserInfo)((Iterator)localObject).next();
+      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a != null) {
+        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.a.persistOrReplace(localQQStoryUserInfo);
+      }
+      if (this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b != null) {
+        this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryShieldListActivity$1.a.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryManager.b.put(localQQStoryUserInfo.uin, localQQStoryUserInfo);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryShieldListActivity.1.1
  * JD-Core Version:    0.7.0.1
  */

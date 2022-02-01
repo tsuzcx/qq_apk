@@ -13,68 +13,62 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.view.ViewParent;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.business.EmoticonSearchTagsConfProcessor;
 import com.tencent.mobileqq.config.business.EmoticonSearchTagsConfProcessor.EmoticonSearchTagConfBean;
-import com.tencent.mobileqq.emosm.AIOEmoticonUIHelper;
+import com.tencent.mobileqq.core.util.EmotionSharedPreUtils;
+import com.tencent.mobileqq.emosm.IAIOEmoticonUIHelper;
+import com.tencent.mobileqq.emosm.IEmoticonPanelHotPicSearchHelper;
+import com.tencent.mobileqq.emosm.api.IEmotionSearchManagerService;
+import com.tencent.mobileqq.emosm.api.IEmotionSearchManagerService.EmotionSearchResult;
+import com.tencent.mobileqq.emosm.api.IEmotionSearchManagerService.EmotionSearchTask;
+import com.tencent.mobileqq.emosm.api.IEmotionSearchManagerService.IEmotionSearchCallBack;
 import com.tencent.mobileqq.emosm.emosearch.EmotionSearchItem;
-import com.tencent.mobileqq.emosm.emosearch.EmotionSearchManager;
-import com.tencent.mobileqq.emosm.emosearch.EmotionSearchManager.EmotionSearchResult;
-import com.tencent.mobileqq.emosm.emosearch.EmotionSearchManager.EmotionSearchTask;
-import com.tencent.mobileqq.emosm.emosearch.EmotionSearchManager.IEmotionSearchCallBack;
 import com.tencent.mobileqq.emosm.emosearch.IEmoticonSearchHelper;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
 import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.EmotionSearchManagerProxy;
-import com.tencent.mobileqq.extendfriend.wiget.ExtendFriendLabelFlowLayout;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmotionSearchManagerServiceProxy;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.utils.SharedPreUtils;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView;
 import com.tencent.widget.AbsListView.LayoutParams;
 import com.tencent.widget.AbsListView.OnScrollListener;
 import com.tencent.widget.ListView;
-import com.tencent.widget.XEditTextEx;
 import com.tencent.widget.XPanelContainer;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 
 public class EmoticonPanelHotPicSearchHelper
-  extends AbstractEmoticonPanelHelper
-  implements View.OnClickListener, EmotionSearchManager.IEmotionSearchCallBack, IEmoticonSearchHelper, AbsListView.OnScrollListener
+  extends AbstractEmoticonPanelHelper<EmoticonPanelController>
+  implements View.OnClickListener, IEmoticonPanelHotPicSearchHelper, IEmotionSearchManagerService.IEmotionSearchCallBack, IEmoticonSearchHelper, AbsListView.OnScrollListener
 {
-  public static final int ITEM_TYPE_FIRST_LOAD_ERROR = 4;
-  public static final int ITEM_TYPE_LOAD_EMPTY = 8;
   public static final int ITEM_TYPE_LOAD_INIT = 0;
-  public static final int ITEM_TYPE_LOAD_INNER_ERROR = 7;
-  public static final int ITEM_TYPE_LOAD_MORE = 1;
-  public static final int ITEM_TYPE_LOAD_MORE_ERROR = 2;
-  public static final int ITEM_TYPE_NO_MORE = 3;
-  public static final int ITEM_TYPE_SEARCH_EXIT = 6;
-  public static final int ITEM_TYPE_SEARCH_LOADING = 5;
   public static final String TAG = "EmoticonPanelHotPicSearchHelper";
   protected static int sLastShowPageType = 1;
-  protected static boolean sNeedPullUp;
+  protected static boolean sNeedPullUp = false;
   protected static boolean sPrepareSearch = false;
   protected static int sSearchVisibility;
-  protected static String sSearchWord = null;
+  protected static String sSearchWord;
   protected List<String> mEmoticonTags;
   protected View mFooterView;
   protected View mHeaderView;
+  protected IPanelInteractionListener mInteractionListener;
   protected boolean mIsClearWords = false;
-  protected ExtendFriendLabelFlowLayout mLabelFlowLayout;
+  protected EmotionLabelFlowLayout mLabelFlowLayout;
   protected int mLastScrollState = 0;
   protected ListView mListView;
   protected boolean mLoadMore = false;
@@ -87,15 +81,10 @@ public class EmoticonPanelHotPicSearchHelper
   protected View mSearchView;
   View searchBoxView;
   
-  static
-  {
-    sNeedPullUp = false;
-    sSearchVisibility = 0;
-  }
-  
-  public EmoticonPanelHotPicSearchHelper()
+  public EmoticonPanelHotPicSearchHelper(IPanelInteractionListener paramIPanelInteractionListener)
   {
     super(null);
+    this.mInteractionListener = paramIPanelInteractionListener;
   }
   
   public EmoticonPanelHotPicSearchHelper(EmoticonPanelController paramEmoticonPanelController)
@@ -114,7 +103,7 @@ public class EmoticonPanelHotPicSearchHelper
       {
         if (this.mSearchView == null)
         {
-          this.mSearchView = View.inflate(getContext(), 2131559205, null);
+          this.mSearchView = View.inflate(getContext(), 2131561597, null);
           initHeader(this.mSearchView);
         }
         if (this.mSearchView.getParent() != null) {
@@ -140,8 +129,9 @@ public class EmoticonPanelHotPicSearchHelper
   
   protected void clearReportedMD5List()
   {
-    if ((this.mSearchAdapter instanceof EmotionHotPicSearchAdapter)) {
-      ((EmotionHotPicSearchAdapter)this.mSearchAdapter).clearReportedMD5List();
+    BaseEmotionAdapter localBaseEmotionAdapter = this.mSearchAdapter;
+    if ((localBaseEmotionAdapter instanceof EmotionHotPicSearchAdapter)) {
+      ((EmotionHotPicSearchAdapter)localBaseEmotionAdapter).clearReportedMD5List();
     }
   }
   
@@ -155,10 +145,11 @@ public class EmoticonPanelHotPicSearchHelper
     return ViewUtils.a(paramInt);
   }
   
-  public AIOEmoticonUIHelper getAIOEmoticonUIHelper()
+  public IAIOEmoticonUIHelper getAIOEmoticonUIHelper()
   {
-    if ((this.mPanelController != null) && (this.mPanelController.mBaseChatPie != null)) {
-      return (AIOEmoticonUIHelper)this.mPanelController.mBaseChatPie.a(105);
+    IPanelInteractionListener localIPanelInteractionListener = this.mInteractionListener;
+    if (localIPanelInteractionListener != null) {
+      return localIPanelInteractionListener.getAIOEmoticonUIHelper();
     }
     return null;
   }
@@ -166,24 +157,24 @@ public class EmoticonPanelHotPicSearchHelper
   public QQEmoticonMainPanelApp getApp()
   {
     if (this.mPanelController == null) {
-      return new QQEmoticonMainPanelApp(BaseApplicationImpl.sApplication.getRuntime());
+      return new QQEmoticonMainPanelApp(MobileQQ.sMobileQQ.waitAppRuntime(null));
     }
-    return this.mPanelController.app;
+    return ((EmoticonPanelController)this.mPanelController).app;
   }
   
   public Context getContext()
   {
     if (this.mPanelController == null) {
-      return BaseApplicationImpl.sApplication;
+      return MobileQQ.getContext();
     }
-    return this.mPanelController.context;
+    return ((EmoticonPanelController)this.mPanelController).context;
   }
   
   protected View getFooterView()
   {
     if (this.mFooterView == null)
     {
-      this.mFooterView = View.inflate(getContext(), 2131558652, null);
+      this.mFooterView = View.inflate(getContext(), 2131561596, null);
       this.mFooterView.setBackgroundColor(0);
       this.mFooterView.setLayoutParams(new AbsListView.LayoutParams(-1, ViewUtils.a(74.0F)));
     }
@@ -194,12 +185,13 @@ public class EmoticonPanelHotPicSearchHelper
   @NonNull
   public View getHeaderView()
   {
-    if (this.mHeaderView != null) {
-      return this.mHeaderView;
+    Object localObject = this.mHeaderView;
+    if (localObject != null) {
+      return localObject;
     }
-    this.mHeaderView = View.inflate(getContext(), 2131559206, null);
-    this.mLabelFlowLayout = ((ExtendFriendLabelFlowLayout)this.mHeaderView.findViewById(2131367240));
-    Object localObject = EmoticonSearchTagsConfProcessor.a();
+    this.mHeaderView = View.inflate(getContext(), 2131561598, null);
+    this.mLabelFlowLayout = ((EmotionLabelFlowLayout)this.mHeaderView.findViewById(2131367029));
+    localObject = EmoticonSearchTagsConfProcessor.a();
     if (localObject != null)
     {
       localObject = ((EmoticonSearchTagsConfProcessor.EmoticonSearchTagConfBean)localObject).a;
@@ -207,25 +199,26 @@ public class EmoticonPanelHotPicSearchHelper
       if ((localObject != null) && (!this.mEmoticonTags.isEmpty()))
       {
         this.mLabelFlowLayout.setAdapter(new EmoticonPanelHotPicSearchHelper.LabelFlowAdapter(this, getContext(), this.mEmoticonTags));
-        if (this.mEmoticonTags != null) {
-          break label172;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("EmoticonPanelHotPicSearchHelper", 4, "emoticonTags is null. ");
-        }
+        break label144;
       }
     }
-    for (;;)
+    this.mEmoticonTags = Arrays.asList(getContext().getResources().getStringArray(2130968663));
+    this.mLabelFlowLayout.setAdapter(new EmoticonPanelHotPicSearchHelper.LabelFlowAdapter(this, getContext(), this.mEmoticonTags));
+    label144:
+    if (this.mEmoticonTags == null)
     {
-      return this.mHeaderView;
-      this.mEmoticonTags = Arrays.asList(getContext().getResources().getStringArray(2130968579));
-      this.mLabelFlowLayout.setAdapter(new EmoticonPanelHotPicSearchHelper.LabelFlowAdapter(this, getContext(), this.mEmoticonTags));
-      break;
-      label172:
       if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelHotPicSearchHelper", 4, "emoticonTags size: " + this.mEmoticonTags.size());
+        QLog.d("EmoticonPanelHotPicSearchHelper", 4, "emoticonTags is null. ");
       }
     }
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("emoticonTags size: ");
+      ((StringBuilder)localObject).append(this.mEmoticonTags.size());
+      QLog.d("EmoticonPanelHotPicSearchHelper", 4, ((StringBuilder)localObject).toString());
+    }
+    return this.mHeaderView;
   }
   
   public int getPageType()
@@ -240,10 +233,13 @@ public class EmoticonPanelHotPicSearchHelper
   
   protected Drawable getShapeDrawable(int paramInt)
   {
-    if (ThemeUtil.isNowThemeIsNight(getApp().getAppRuntime(), false, null)) {}
-    for (String str = "#1C1C1C";; str = "#F5F6FA") {
-      return ViewUtils.a(Color.parseColor(str), ViewUtils.a(paramInt));
+    String str;
+    if (ThemeUtil.isNowThemeIsNight(getApp().getAppRuntime(), false, null)) {
+      str = "#1C1C1C";
+    } else {
+      str = "#F5F6FA";
     }
+    return ViewUtils.a(Color.parseColor(str), ViewUtils.a(paramInt));
   }
   
   public String getTag()
@@ -251,57 +247,63 @@ public class EmoticonPanelHotPicSearchHelper
     return "EmoticonPanelHotPicSearchHelper";
   }
   
+  public void initBefore()
+  {
+    this.mInteractionListener = ((EmoticonPanelController)this.mPanelController).mInteractionListener;
+  }
+  
   protected void initHeader(View paramView)
   {
-    this.mSearchResultTitleCon = ((ViewGroup)paramView.findViewById(2131370709));
-    this.mSearchTv = ((TextView)paramView.findViewById(2131380582));
-    ImageView localImageView = (ImageView)paramView.findViewById(2131369800);
-    Button localButton = (Button)paramView.findViewById(2131363941);
-    this.mSearchTitleCon = ((ViewGroup)paramView.findViewById(2131367071));
-    this.searchBoxView = paramView.findViewById(2131377327);
+    this.mSearchResultTitleCon = ((ViewGroup)paramView.findViewById(2131370348));
+    this.mSearchTv = ((TextView)paramView.findViewById(2131379864));
+    ImageView localImageView = (ImageView)paramView.findViewById(2131369487);
+    Button localButton = (Button)paramView.findViewById(2131363867);
+    this.mSearchTitleCon = ((ViewGroup)paramView.findViewById(2131366916));
+    this.searchBoxView = paramView.findViewById(2131376780);
     this.searchBoxView.setBackgroundDrawable(getShapeDrawable(18));
     this.mSearchTitleCon.setBackgroundDrawable(getShapeDrawable(18));
     TextView localTextView = this.mSearchTv;
-    if (ThemeUtil.isNowThemeIsNight(getApp().getAppRuntime(), false, null)) {}
-    for (paramView = "#B0B3BF";; paramView = "#03081A")
-    {
-      localTextView.setTextColor(Color.parseColor(paramView));
-      localImageView.setOnClickListener(this);
-      this.mSearchTitleCon.setOnClickListener(this);
-      localButton.setOnClickListener(this);
-      this.mSearchTv.setOnClickListener(this);
-      setSearchContainerVisibility(sSearchVisibility);
-      return;
+    if (ThemeUtil.isNowThemeIsNight(getApp().getAppRuntime(), false, null)) {
+      paramView = "#B0B3BF";
+    } else {
+      paramView = "#03081A";
     }
+    localTextView.setTextColor(Color.parseColor(paramView));
+    localImageView.setOnClickListener(this);
+    this.mSearchTitleCon.setOnClickListener(this);
+    localButton.setOnClickListener(this);
+    this.mSearchTv.setOnClickListener(this);
+    setSearchContainerVisibility(sSearchVisibility);
   }
   
   protected void initListener()
   {
-    if (this.mListView == null) {
+    ListView localListView = this.mListView;
+    if (localListView == null) {
       return;
     }
-    this.mListView.setOnScrollListener(new EmoticonPanelHotPicSearchHelper.2(this));
+    localListView.setOnScrollListener(new EmoticonPanelHotPicSearchHelper.2(this));
   }
   
   public int[] interestedIn()
   {
-    return new int[] { 8, 4, 5, 3 };
+    return new int[] { 8, 4, 5, 3, 1 };
   }
   
   protected boolean isInEmoticonSearchPanel()
   {
-    return (getPageType() == 1) && (this.mPanelController != null) && (this.mPanelController.findIndexByPanelType(12) == EmoticonPanelController.sLastSelectedSecondTabIndex);
+    return (getPageType() == 1) && (this.mPanelController != null) && (((EmoticonPanelController)this.mPanelController).findIndexByPanelType(12) == BasePanelModel.sLastSelectedSecondTabIndex);
   }
   
   protected boolean isInRichTextSearchPanel()
   {
-    int i = SharedPreUtils.aL(getContext(), getApp().getCurrentAccountUin());
-    return (getPageType() == 2) && (i == 5);
+    int i = EmotionSharedPreUtils.a(getContext(), getApp().getCurrentAccountUin());
+    return (getPageType() == 2) && (i == ((IEmosmService)QRoute.api(IEmosmService.class)).getRichTextChatManagerEmoSearchConfig());
   }
   
   public boolean isInSearchPage()
   {
-    return !StringUtil.a(getSearchWord());
+    return StringUtil.a(getSearchWord()) ^ true;
   }
   
   protected void loadHotPicData()
@@ -315,33 +317,40 @@ public class EmoticonPanelHotPicSearchHelper
     notifyHeaderViewChange();
     updateLoadingView();
     updateAllTabs();
-    EmotionSearchManager.EmotionSearchTask localEmotionSearchTask = new EmotionSearchManager.EmotionSearchTask(0);
+    IEmotionSearchManagerService.EmotionSearchTask localEmotionSearchTask = new IEmotionSearchManagerService.EmotionSearchTask(0);
     pushEmotionSearchTask(getApp(), localEmotionSearchTask, this);
   }
   
   public void loadPicData()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelHotPicSearchHelper", 4, "start loadPicData word is null: " + TextUtils.isEmpty(getSearchWord()) + " sPrepareSearch: " + sPrepareSearch);
-    }
-    if (TextUtils.isEmpty(getSearchWord())) {
-      loadHotPicData();
-    }
-    do
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start loadPicData word is null: ");
+      localStringBuilder.append(TextUtils.isEmpty(getSearchWord()));
+      localStringBuilder.append(" sPrepareSearch: ");
+      localStringBuilder.append(sPrepareSearch);
+      QLog.d("EmoticonPanelHotPicSearchHelper", 4, localStringBuilder.toString());
+    }
+    if (TextUtils.isEmpty(getSearchWord()))
+    {
+      loadHotPicData();
       return;
-      if (!sPrepareSearch)
-      {
-        onSearchPullUp();
-        loadSearchPicData();
-        return;
-      }
-    } while (this.mLoadingStatus == 5);
-    setLoadingStatus(5);
-    notifyHeaderViewChange();
-    notifyFooterViewChange();
-    updateLoadingView();
-    onSearchPullUp();
+    }
+    if (!sPrepareSearch)
+    {
+      onSearchPullUp();
+      loadSearchPicData();
+      return;
+    }
+    if (this.mLoadingStatus != 5)
+    {
+      setLoadingStatus(5);
+      notifyHeaderViewChange();
+      notifyFooterViewChange();
+      updateLoadingView();
+      onSearchPullUp();
+    }
   }
   
   public void loadSearchPicData()
@@ -360,59 +369,63 @@ public class EmoticonPanelHotPicSearchHelper
     notifyHeaderViewChange();
     updateAllTabs();
     updateLoadingView();
-    EmotionSearchManager.EmotionSearchTask localEmotionSearchTask = new EmotionSearchManager.EmotionSearchTask(1, getSearchWord());
+    IEmotionSearchManagerService.EmotionSearchTask localEmotionSearchTask = new IEmotionSearchManagerService.EmotionSearchTask(1, getSearchWord());
     pushEmotionSearchTask(getApp(), localEmotionSearchTask, this);
   }
   
   protected void notifyFooterViewChange()
   {
-    if (this.mFooterView == null) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelHotPicSearchHelper", 2, "notifyFooterViewChange.");
-    }
-    TextView localTextView1 = (TextView)this.mFooterView.findViewById(2131368563);
-    localTextView1.setTextSize(12.0F);
-    View localView = this.mFooterView.findViewById(2131368562);
-    TextView localTextView2 = (TextView)this.mFooterView.findViewById(2131370757);
-    localTextView2.setTextSize(12.0F);
-    localTextView1.setOnClickListener(this);
-    ViewGroup.LayoutParams localLayoutParams = this.mFooterView.getLayoutParams();
-    int i = dip2px(74);
-    if (localLayoutParams.height != i)
+    if (this.mFooterView != null)
     {
-      localLayoutParams.height = i;
-      this.mFooterView.setLayoutParams(localLayoutParams);
-    }
-    if ((this.mLoadingStatus == 1) || (this.mLoadingStatus == 0))
-    {
+      if (this.mInteractionListener == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonPanelHotPicSearchHelper", 2, "notifyFooterViewChange.");
+      }
+      TextView localTextView1 = (TextView)this.mFooterView.findViewById(2131368306);
+      localTextView1.setTextSize(12.0F);
+      View localView = this.mFooterView.findViewById(2131368305);
+      TextView localTextView2 = (TextView)this.mFooterView.findViewById(2131370392);
+      localTextView2.setTextSize(12.0F);
+      localTextView1.setOnClickListener(this);
+      ViewGroup.LayoutParams localLayoutParams = this.mFooterView.getLayoutParams();
+      int i = dip2px(74);
+      if (localLayoutParams.height != i)
+      {
+        localLayoutParams.height = i;
+        this.mFooterView.setLayoutParams(localLayoutParams);
+      }
+      i = this.mLoadingStatus;
+      if ((i != 1) && (i != 0))
+      {
+        if (i == 7)
+        {
+          localTextView1.setVisibility(0);
+          localTextView1.setText(2131689858);
+          localView.setVisibility(4);
+          reportRequestErrorExposed();
+          return;
+        }
+        if ((i != 2) && ((i != 4) || (dip2px(XPanelContainer.b()) < XPanelContainer.a) || (!"EmoticonPanelHotPicSearchHelper".equals(getTag()))))
+        {
+          localTextView1.setVisibility(8);
+          localView.setVisibility(8);
+          localLayoutParams.height = -2;
+          this.mFooterView.setLayoutParams(localLayoutParams);
+          return;
+        }
+        localTextView1.setVisibility(0);
+        localTextView1.setText(2131689859);
+        localView.setVisibility(4);
+        reportRequestErrorExposed();
+        return;
+      }
       localView.setVisibility(0);
-      localTextView2.setText(2131689939);
+      localTextView2.setText(2131689854);
       localTextView1.setVisibility(4);
       reportLoading();
-      return;
     }
-    if (this.mLoadingStatus == 7)
-    {
-      localTextView1.setVisibility(0);
-      localTextView1.setText(2131689943);
-      localView.setVisibility(4);
-      reportRequestErrorExposed();
-      return;
-    }
-    if ((this.mLoadingStatus == 2) || ((this.mLoadingStatus == 4) && (dip2px(XPanelContainer.b()) >= XPanelContainer.a) && ("EmoticonPanelHotPicSearchHelper".equals(getTag()))))
-    {
-      localTextView1.setVisibility(0);
-      localTextView1.setText(2131689944);
-      localView.setVisibility(4);
-      reportRequestErrorExposed();
-      return;
-    }
-    localTextView1.setVisibility(8);
-    localView.setVisibility(8);
-    localLayoutParams.height = -2;
-    this.mFooterView.setLayoutParams(localLayoutParams);
   }
   
   protected void notifyHeaderViewChange()
@@ -420,8 +433,13 @@ public class EmoticonPanelHotPicSearchHelper
     if (this.mHeaderView == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelHotPicSearchHelper", 2, "notifyHeaderViewChange loadingStatus:" + this.mLoadingStatus);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("notifyHeaderViewChange loadingStatus:");
+      ((StringBuilder)localObject).append(this.mLoadingStatus);
+      QLog.d("EmoticonPanelHotPicSearchHelper", 2, ((StringBuilder)localObject).toString());
     }
     if (TextUtils.isEmpty(getSearchWord()))
     {
@@ -429,92 +447,102 @@ public class EmoticonPanelHotPicSearchHelper
       this.mSearchTitleCon.setVisibility(0);
       this.mLabelFlowLayout.setVisibility(0);
     }
-    for (;;)
+    else
     {
-      setSearchContainerVisibility(sSearchVisibility);
-      return;
       this.mSearchTv.setText(getSearchWord());
       this.mSearchResultTitleCon.setVisibility(0);
       this.mSearchTitleCon.setVisibility(8);
       this.mLabelFlowLayout.setVisibility(8);
-      if ((this.mPanelController != null) && (this.mPanelController.mBaseChatPie != null) && (this.mPanelController.mBaseChatPie.a != null) && (this.mPanelController.mBaseChatPie.a.isFocused())) {
-        try
-        {
-          this.mPanelController.mBaseChatPie.a.clearFocus();
-        }
-        catch (Exception localException)
-        {
-          QLog.e("EmoticonPanelHotPicSearchHelper", 2, localException, new Object[0]);
-        }
-      }
-    }
-  }
-  
-  public void onClick(View paramView)
-  {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       if (this.mPanelController != null)
       {
-        this.mIsClearWords = true;
-        clearSearchWords();
-        Rect localRect = new Rect();
-        this.mSearchResultTitleCon.getGlobalVisibleRect(localRect);
-        AIOEmoticonUIHelper localAIOEmoticonUIHelper = getAIOEmoticonUIHelper();
-        if (localAIOEmoticonUIHelper != null)
-        {
-          localAIOEmoticonUIHelper.a(true, localRect.bottom, true, null, this.searchBoxView.getWidth());
-          continue;
-          clearSearchWords();
-          onPullDown();
-          loadHotPicData();
-          report("0X800AE30", 0);
-          continue;
-          if (this.mPanelController != null)
+        localObject = this.mInteractionListener;
+        if ((localObject != null) && (((IPanelInteractionListener)localObject).getAIOInput() != null) && (this.mInteractionListener.getAIOInput().isFocused())) {
+          try
           {
-            report("0X800AE2F", 0);
-            localRect = new Rect();
-            this.mSearchTitleCon.getGlobalVisibleRect(localRect);
-            localAIOEmoticonUIHelper = getAIOEmoticonUIHelper();
-            if (localAIOEmoticonUIHelper != null) {
-              localAIOEmoticonUIHelper.a(true, localRect.bottom, false, null, this.mSearchTitleCon.getWidth());
-            }
-            reportClickEvent("0X800AE1E");
-            continue;
-            if (this.mPanelController != null)
-            {
-              localRect = new Rect();
-              this.mSearchTv.getGlobalVisibleRect(localRect);
-              localAIOEmoticonUIHelper = getAIOEmoticonUIHelper();
-              if (localAIOEmoticonUIHelper != null)
-              {
-                localAIOEmoticonUIHelper.a(true, localRect.bottom, false, getSearchWord(), this.searchBoxView.getWidth());
-                continue;
-                if (this.mLoadingStatus == 4)
-                {
-                  loadPicData();
-                  reportNetworkErrorClickEvent();
-                }
-                else
-                {
-                  setLoadingStatus(1);
-                  notifyFooterViewChange();
-                  onLoadMore();
-                  continue;
-                  loadPicData();
-                  reportNetworkErrorClickEvent();
-                }
-              }
-            }
+            this.mInteractionListener.getAIOInput().clearFocus();
+          }
+          catch (Exception localException)
+          {
+            QLog.e("EmoticonPanelHotPicSearchHelper", 2, localException, new Object[0]);
           }
         }
       }
     }
+    setSearchContainerVisibility(sSearchVisibility);
+  }
+  
+  public void onClick(View paramView)
+  {
+    int i = paramView.getId();
+    Rect localRect;
+    IAIOEmoticonUIHelper localIAIOEmoticonUIHelper;
+    if (i == 2131369487)
+    {
+      if (this.mPanelController != null)
+      {
+        this.mIsClearWords = true;
+        clearSearchWords();
+        localRect = new Rect();
+        this.mSearchResultTitleCon.getGlobalVisibleRect(localRect);
+        localIAIOEmoticonUIHelper = getAIOEmoticonUIHelper();
+        if (localIAIOEmoticonUIHelper != null) {
+          localIAIOEmoticonUIHelper.a(true, localRect.bottom, true, null, this.searchBoxView.getWidth());
+        }
+      }
+    }
+    else if (i == 2131363867)
+    {
+      clearSearchWords();
+      onPullDown();
+      loadHotPicData();
+      report("0X800AE30", 0);
+    }
+    else if (i == 2131366916)
+    {
+      if (this.mPanelController != null)
+      {
+        report("0X800AE2F", 0);
+        localRect = new Rect();
+        this.mSearchTitleCon.getGlobalVisibleRect(localRect);
+        localIAIOEmoticonUIHelper = getAIOEmoticonUIHelper();
+        if (localIAIOEmoticonUIHelper != null) {
+          localIAIOEmoticonUIHelper.a(true, localRect.bottom, false, null, this.mSearchTitleCon.getWidth());
+        }
+        reportClickEvent("0X800AE1E");
+      }
+    }
+    else if (i == 2131379864)
+    {
+      if (this.mPanelController != null)
+      {
+        localRect = new Rect();
+        this.mSearchTv.getGlobalVisibleRect(localRect);
+        localIAIOEmoticonUIHelper = getAIOEmoticonUIHelper();
+        if (localIAIOEmoticonUIHelper != null) {
+          localIAIOEmoticonUIHelper.a(true, localRect.bottom, false, getSearchWord(), this.searchBoxView.getWidth());
+        }
+      }
+    }
+    else if (i == 2131368306)
+    {
+      if (this.mLoadingStatus == 4)
+      {
+        loadPicData();
+        reportNetworkErrorClickEvent();
+      }
+      else
+      {
+        setLoadingStatus(1);
+        notifyFooterViewChange();
+        onLoadMore();
+      }
+    }
+    else if (i == 2131366135)
+    {
+      loadPicData();
+      reportNetworkErrorClickEvent();
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDestory()
@@ -532,60 +560,72 @@ public class EmoticonPanelHotPicSearchHelper
     this.mListView = null;
   }
   
-  protected void onHandleResult(EmotionSearchManager.EmotionSearchResult paramEmotionSearchResult)
+  protected void onHandleResult(IEmotionSearchManagerService.EmotionSearchResult paramEmotionSearchResult)
   {
-    if ((this.mSearchAdapter == null) || (paramEmotionSearchResult == null)) {
-      return;
-    }
-    int i;
-    if (paramEmotionSearchResult.getResult() == 0)
+    if (this.mSearchAdapter != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelHotPicSearchHelper", 2, "onSearchCallBack success isHasMore: " + paramEmotionSearchResult.isHasMore());
-      }
-      Object localObject = paramEmotionSearchResult.getItemList();
-      if ((localObject == null) || (((List)localObject).isEmpty()))
-      {
-        if ((isInSearchPage()) && (isInEmoticonSearchPanel())) {
-          EmoticonUtils.report("0X800AE2B", 0);
-        }
-        setLoadingStatus(8);
-        this.mSearchAdapter.setData(new ArrayList());
-        updateLoadingView();
-        notifyHeaderViewChange();
-        notifyFooterViewChange();
+      if (paramEmotionSearchResult == null) {
         return;
       }
-      ArrayList localArrayList = new ArrayList();
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      if (paramEmotionSearchResult.getResult() == 0)
       {
-        EmotionSearchItem localEmotionSearchItem = (EmotionSearchItem)((Iterator)localObject).next();
-        localArrayList.add(new HotPicSearchEmoticonInfo(getPageType(), localArrayList.size() + 1, getSearchWord(), localEmotionSearchItem));
+        Object localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("onSearchCallBack success isHasMore: ");
+          ((StringBuilder)localObject1).append(paramEmotionSearchResult.isHasMore());
+          QLog.d("EmoticonPanelHotPicSearchHelper", 2, ((StringBuilder)localObject1).toString());
+        }
+        Object localObject2 = paramEmotionSearchResult.getItemList();
+        if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
+        {
+          localObject1 = new ArrayList();
+          localObject2 = ((List)localObject2).iterator();
+          int i;
+          for (;;)
+          {
+            boolean bool = ((Iterator)localObject2).hasNext();
+            i = 1;
+            if (!bool) {
+              break;
+            }
+            EmotionSearchItem localEmotionSearchItem = (EmotionSearchItem)((Iterator)localObject2).next();
+            ((List)localObject1).add(new HotPicSearchEmoticonInfo(getPageType(), ((List)localObject1).size() + 1, getSearchWord(), localEmotionSearchItem));
+          }
+          int j = this.mLoadingStatus;
+          if ((j == 0) || (j == 5)) {
+            initListener();
+          }
+          if (!paramEmotionSearchResult.isHasMore()) {
+            i = 3;
+          }
+          setLoadingStatus(i);
+          notifyHeaderViewChange();
+          notifyFooterViewChange();
+          this.mSearchAdapter.setData((List)localObject1);
+          updateLoadingView();
+        }
+        else
+        {
+          if ((isInSearchPage()) && (isInEmoticonSearchPanel())) {
+            EmoticonUtils.report("0X800AE2B", 0);
+          }
+          setLoadingStatus(8);
+          this.mSearchAdapter.setData(new ArrayList());
+          updateLoadingView();
+          notifyHeaderViewChange();
+          notifyFooterViewChange();
+        }
       }
-      if ((this.mLoadingStatus == 0) || (this.mLoadingStatus == 5)) {
-        initListener();
-      }
-      if (paramEmotionSearchResult.isHasMore())
+      else
       {
-        i = 1;
-        setLoadingStatus(i);
-        notifyHeaderViewChange();
-        notifyFooterViewChange();
-        this.mSearchAdapter.setData(localArrayList);
-        updateLoadingView();
+        if (QLog.isColorLevel()) {
+          QLog.d("EmoticonPanelHotPicSearchHelper", 2, "onSearchCallBack fail");
+        }
+        onRequestFail(paramEmotionSearchResult);
       }
-    }
-    for (;;)
-    {
       this.mLoadMore = false;
-      return;
-      i = 3;
-      break;
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonPanelHotPicSearchHelper", 2, "onSearchCallBack fail");
-      }
-      onRequestFail(paramEmotionSearchResult);
     }
   }
   
@@ -605,19 +645,18 @@ public class EmoticonPanelHotPicSearchHelper
     }
     if (isInRichTextSearchPanel()) {
       reportEvent("0X800AE37");
-    }
-    for (;;)
-    {
-      EmotionSearchManager.a(getApp()).loadMore();
-      return;
-      if (isInEmoticonSearchPanel()) {
-        if (isInSearchPage()) {
-          EmoticonUtils.report("0X800AE2C", 0);
-        } else {
-          EmoticonUtils.report("0X800AE21", 0);
-        }
+    } else if (isInEmoticonSearchPanel()) {
+      if (isInSearchPage()) {
+        EmoticonUtils.report("0X800AE2C", 0);
+      } else {
+        EmoticonUtils.report("0X800AE21", 0);
       }
     }
+    IEmotionSearchManagerService localIEmotionSearchManagerService = (IEmotionSearchManagerService)getApp().getService(IEmotionSearchManagerService.class);
+    if (localIEmotionSearchManagerService == null) {
+      return;
+    }
+    localIEmotionSearchManagerService.loadMore();
   }
   
   public void onPageSelected(int paramInt)
@@ -625,8 +664,8 @@ public class EmoticonPanelHotPicSearchHelper
     updateAllTabs();
     if (this.mPanelController != null)
     {
-      paramInt = this.mPanelController.findIndexByPanelType(12);
-      if (EmoticonPanelController.sLastSelectedSecondTabIndex == paramInt) {
+      paramInt = ((EmoticonPanelController)this.mPanelController).findIndexByPanelType(12);
+      if (BasePanelModel.sLastSelectedSecondTabIndex == paramInt) {
         reportItemExposed();
       }
     }
@@ -637,7 +676,7 @@ public class EmoticonPanelHotPicSearchHelper
     if (this.mPanelController == null) {
       return;
     }
-    ((EmoticonPanelExtendHelper)this.mPanelController.getHelper(1)).onPullDown();
+    ((EmoticonPanelExtendHelper)((EmoticonPanelController)this.mPanelController).getHelper(1)).onPullDown();
   }
   
   public void onPullUp()
@@ -645,72 +684,90 @@ public class EmoticonPanelHotPicSearchHelper
     if (this.mPanelController == null) {
       return;
     }
-    ((EmoticonPanelExtendHelper)this.mPanelController.getHelper(1)).onPullUp();
+    ((EmoticonPanelExtendHelper)((EmoticonPanelController)this.mPanelController).getHelper(1)).onPullUp();
   }
   
-  protected void onRequestFail(EmotionSearchManager.EmotionSearchResult paramEmotionSearchResult)
+  protected void onRequestFail(IEmotionSearchManagerService.EmotionSearchResult paramEmotionSearchResult)
   {
-    if ((this.mLoadingStatus == 0) || (this.mLoadingStatus == 5)) {
-      setLoadingStatus(4);
-    }
-    for (;;)
+    int i = this.mLoadingStatus;
+    if ((i != 0) && (i != 5))
     {
-      notifyHeaderViewChange();
-      updateLoadingView();
-      notifyFooterViewChange();
-      return;
-      if ((paramEmotionSearchResult.getResult() == -102) || (paramEmotionSearchResult.getResult() == -100)) {
+      if ((paramEmotionSearchResult.getResult() != -102) && (paramEmotionSearchResult.getResult() != -100))
+      {
+        if (paramEmotionSearchResult.getResult() == -104) {
+          setLoadingStatus(3);
+        } else {
+          setLoadingStatus(2);
+        }
+      }
+      else {
         setLoadingStatus(7);
-      } else if (paramEmotionSearchResult.getResult() == -104) {
-        setLoadingStatus(3);
-      } else {
-        setLoadingStatus(2);
       }
     }
+    else {
+      setLoadingStatus(4);
+    }
+    notifyHeaderViewChange();
+    updateLoadingView();
+    notifyFooterViewChange();
   }
   
   public void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {}
-    while ((paramInt1 + paramInt2 < paramInt3) || (this.mLoadingStatus != 1) || (this.mLoadMore)) {
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
       return;
     }
-    this.mLoadMore = true;
-    if (((paramAbsListView instanceof EmotionPanelListView)) && (this.mLastScrollState == 2)) {
-      ((EmotionPanelListView)paramAbsListView).abordFling();
+    if ((paramInt1 + paramInt2 >= paramInt3) && (this.mLoadingStatus == 1) && (!this.mLoadMore))
+    {
+      this.mLoadMore = true;
+      if (((paramAbsListView instanceof EmotionPanelListView)) && (this.mLastScrollState == 2)) {
+        ((EmotionPanelListView)paramAbsListView).abordFling();
+      }
+      if (QLog.isColorLevel())
+      {
+        paramAbsListView = new StringBuilder();
+        paramAbsListView.append("firstVisibleItem: ");
+        paramAbsListView.append(paramInt1);
+        paramAbsListView.append(" visibleItemCount: ");
+        paramAbsListView.append(paramInt2);
+        paramAbsListView.append(" totalItemCount: ");
+        paramAbsListView.append(paramInt3);
+        QLog.d("EmoticonPanelHotPicSearchHelper", 4, paramAbsListView.toString());
+      }
+      onLoadMore();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelHotPicSearchHelper", 4, "firstVisibleItem: " + paramInt1 + " visibleItemCount: " + paramInt2 + " totalItemCount: " + paramInt3);
-    }
-    onLoadMore();
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt) {}
   
-  public void onSearchCallBack(EmotionSearchManager.EmotionSearchResult paramEmotionSearchResult)
+  public void onSearchCallBack(IEmotionSearchManagerService.EmotionSearchResult paramEmotionSearchResult)
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelHotPicSearchHelper", 2, "onSearchCallBack ");
     }
-    if ((this.mSearchAdapter == null) || (this.mListView == null))
+    if ((this.mSearchAdapter != null) && (this.mListView != null))
     {
+      if (paramEmotionSearchResult == null)
+      {
+        this.mLoadMore = false;
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onSearchCallBack result： ");
+        localStringBuilder.append(paramEmotionSearchResult.getResult());
+        QLog.d("EmoticonPanelHotPicSearchHelper", 2, localStringBuilder.toString());
+      }
+      if ((paramEmotionSearchResult.getResult() != -101) && (paramEmotionSearchResult.getResult() != -103))
+      {
+        ThreadManager.getUIHandler().post(new EmoticonPanelHotPicSearchHelper.1(this, paramEmotionSearchResult));
+        return;
+      }
       this.mLoadMore = false;
       return;
     }
-    if (paramEmotionSearchResult == null)
-    {
-      this.mLoadMore = false;
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelHotPicSearchHelper", 2, "onSearchCallBack result： " + paramEmotionSearchResult.getResult());
-    }
-    if ((paramEmotionSearchResult.getResult() == -101) || (paramEmotionSearchResult.getResult() == -103))
-    {
-      this.mLoadMore = false;
-      return;
-    }
-    ThreadManager.getUIHandler().post(new EmoticonPanelHotPicSearchHelper.1(this, paramEmotionSearchResult));
+    this.mLoadMore = false;
   }
   
   protected void onSearchPullUp()
@@ -724,55 +781,48 @@ public class EmoticonPanelHotPicSearchHelper
   
   public void onShow()
   {
-    int k = 1;
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelHotPicSearchHelper", 4, "onShow ");
     }
-    int i;
-    int j;
-    if ((sLastShowPageType != getPageType()) || (getPageType() == 2))
-    {
+    int i = sLastShowPageType;
+    int j = getPageType();
+    int k = 1;
+    if ((i == j) && (getPageType() != 2)) {
+      i = 0;
+    } else {
       i = 1;
-      j = k;
-      if (i == 0) {
-        if (sLastShowPageType != getPageType())
-        {
-          j = k;
-          if (isInEmoticonSearchPanel()) {}
-        }
-        else
-        {
-          if (!this.mIsClearWords) {
-            break label114;
-          }
-          j = k;
-        }
-      }
-      label71:
-      if ((j != 0) && (this.mListView != null) && (this.mSearchAdapter != null))
+    }
+    j = k;
+    if (i == 0) {
+      if (sLastShowPageType != getPageType())
       {
-        if (!TextUtils.isEmpty(getSearchWord())) {
-          break label119;
-        }
+        j = k;
+        if (isInEmoticonSearchPanel()) {}
+      }
+      else if (this.mIsClearWords)
+      {
+        j = k;
+      }
+      else
+      {
+        j = 0;
+      }
+    }
+    if ((j != 0) && (this.mListView != null) && (this.mSearchAdapter != null)) {
+      if (TextUtils.isEmpty(getSearchWord()))
+      {
         loadHotPicData();
       }
-    }
-    for (;;)
-    {
-      this.mIsClearWords = false;
-      return;
-      i = 0;
-      break;
-      label114:
-      j = 0;
-      break label71;
-      label119:
-      boolean bool = sNeedPullUp;
-      onSearchPullUp();
-      if (!bool) {
-        loadSearchPicData();
+      else
+      {
+        boolean bool = sNeedPullUp;
+        onSearchPullUp();
+        if (!bool) {
+          loadSearchPicData();
+        }
       }
     }
+    this.mIsClearWords = false;
   }
   
   public void prepareSearch()
@@ -788,12 +838,12 @@ public class EmoticonPanelHotPicSearchHelper
     }
   }
   
-  protected void pushEmotionSearchTask(QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, EmotionSearchManager.EmotionSearchTask paramEmotionSearchTask, EmotionSearchManager.IEmotionSearchCallBack paramIEmotionSearchCallBack)
+  protected void pushEmotionSearchTask(QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, IEmotionSearchManagerService.EmotionSearchTask paramEmotionSearchTask, IEmotionSearchManagerService.IEmotionSearchCallBack paramIEmotionSearchCallBack)
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonPanelHotPicSearchHelper", 2, "pushEmotionSearchTask ");
     }
-    paramQQEmoticonMainPanelApp = (EmotionSearchManagerProxy)paramQQEmoticonMainPanelApp.getManager(QQManagerFactory.EMOTION_SEARCH_MANAGER);
+    paramQQEmoticonMainPanelApp = (EmotionSearchManagerServiceProxy)paramQQEmoticonMainPanelApp.getRuntimeService(IEmotionSearchManagerService.class);
     paramQQEmoticonMainPanelApp.resetData();
     paramQQEmoticonMainPanelApp.setSearchCallBack(paramIEmotionSearchCallBack);
     paramQQEmoticonMainPanelApp.pushEmotionSearchTask(paramEmotionSearchTask);
@@ -801,11 +851,13 @@ public class EmoticonPanelHotPicSearchHelper
   
   public void removeHeaderAndFooterView(EmotionPanelListView paramEmotionPanelListView)
   {
-    if (this.mHeaderView != null) {
-      paramEmotionPanelListView.removeHeaderView(this.mHeaderView);
+    View localView = this.mHeaderView;
+    if (localView != null) {
+      paramEmotionPanelListView.removeHeaderView(localView);
     }
-    if (this.mFooterView != null) {
-      paramEmotionPanelListView.removeFooterView(this.mFooterView);
+    localView = this.mFooterView;
+    if (localView != null) {
+      paramEmotionPanelListView.removeFooterView(localView);
     }
   }
   
@@ -826,65 +878,79 @@ public class EmoticonPanelHotPicSearchHelper
   
   public void reportItemExposed()
   {
-    if ((this.mSearchAdapter != null) && (this.mListView != null) && ((this.mSearchAdapter instanceof EmotionHotPicSearchAdapter)))
+    BaseEmotionAdapter localBaseEmotionAdapter = this.mSearchAdapter;
+    if (localBaseEmotionAdapter != null)
     {
-      int i = this.mListView.getFirstVisiblePosition();
-      int j = this.mListView.getLastVisiblePosition();
-      ((EmotionHotPicSearchAdapter)this.mSearchAdapter).reportDefaultExposeEvent(i, j);
+      ListView localListView = this.mListView;
+      if ((localListView != null) && ((localBaseEmotionAdapter instanceof EmotionHotPicSearchAdapter)))
+      {
+        int i = localListView.getFirstVisiblePosition();
+        int j = this.mListView.getLastVisiblePosition();
+        ((EmotionHotPicSearchAdapter)this.mSearchAdapter).reportDefaultExposeEvent(i, j);
+      }
     }
   }
   
   protected void reportLoading()
   {
-    if (isInEmoticonSearchPanel()) {
-      if (isInSearchPage()) {
-        EmoticonUtils.report("0X800AE31", 0);
-      }
-    }
-    while (!isInRichTextSearchPanel())
+    if (isInEmoticonSearchPanel())
     {
-      return;
+      if (isInSearchPage())
+      {
+        EmoticonUtils.report("0X800AE31", 0);
+        return;
+      }
       EmoticonUtils.report("0X800AE22", 0);
       return;
     }
-    reportEvent("0X800AE38");
+    if (isInRichTextSearchPanel()) {
+      reportEvent("0X800AE38");
+    }
   }
   
   protected void reportNetworkErrorClickEvent()
   {
-    if (isInRichTextSearchPanel()) {
-      reportEvent("0X800AE3A");
-    }
-    while (!isInEmoticonSearchPanel()) {
-      return;
-    }
-    if (isInSearchPage())
+    if (isInRichTextSearchPanel())
     {
-      EmoticonUtils.report("0X800AE33", 0);
+      reportEvent("0X800AE3A");
       return;
     }
-    EmoticonUtils.report("0X800AE24", 0);
+    if (isInEmoticonSearchPanel())
+    {
+      if (isInSearchPage())
+      {
+        EmoticonUtils.report("0X800AE33", 0);
+        return;
+      }
+      EmoticonUtils.report("0X800AE24", 0);
+    }
   }
   
   protected void reportRequestErrorExposed()
   {
-    if (isInRichTextSearchPanel()) {
-      reportEvent("0X800AE39");
-    }
-    while (!isInEmoticonSearchPanel()) {
-      return;
-    }
-    if (isInSearchPage())
+    if (isInRichTextSearchPanel())
     {
-      EmoticonUtils.report("0X800AE32", 0);
+      reportEvent("0X800AE39");
       return;
     }
-    EmoticonUtils.report("0X800AE23", 0);
+    if (isInEmoticonSearchPanel())
+    {
+      if (isInSearchPage())
+      {
+        EmoticonUtils.report("0X800AE32", 0);
+        return;
+      }
+      EmoticonUtils.report("0X800AE23", 0);
+    }
   }
   
   public void resetEmoticonSearch()
   {
-    EmotionSearchManager.a(getApp()).resetData();
+    IEmotionSearchManagerService localIEmotionSearchManagerService = (IEmotionSearchManagerService)getApp().getService(IEmotionSearchManagerService.class);
+    if (localIEmotionSearchManagerService == null) {
+      return;
+    }
+    localIEmotionSearchManagerService.resetData();
   }
   
   public void setEmptyView(View paramView)
@@ -904,8 +970,14 @@ public class EmoticonPanelHotPicSearchHelper
   
   public void setSearchContainerVisibility(int paramInt)
   {
-    if ((QLog.isColorLevel()) && (sSearchVisibility != paramInt)) {
-      QLog.d("EmoticonPanelHotPicSearchHelper", 4, "setSearchContainerVisibility visibility= " + paramInt + " mLoadingStatus: " + this.mLoadingStatus);
+    if ((QLog.isColorLevel()) && (sSearchVisibility != paramInt))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setSearchContainerVisibility visibility= ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" mLoadingStatus: ");
+      localStringBuilder.append(this.mLoadingStatus);
+      QLog.d("EmoticonPanelHotPicSearchHelper", 4, localStringBuilder.toString());
     }
     sSearchVisibility = paramInt;
     if ((this.mSearchTitleCon != null) && (this.mSearchResultTitleCon != null))
@@ -914,13 +986,11 @@ public class EmoticonPanelHotPicSearchHelper
       {
         this.mSearchResultTitleCon.setVisibility(8);
         this.mSearchTitleCon.setVisibility(paramInt);
+        return;
       }
+      this.mSearchTitleCon.setVisibility(8);
+      this.mSearchResultTitleCon.setVisibility(paramInt);
     }
-    else {
-      return;
-    }
-    this.mSearchTitleCon.setVisibility(8);
-    this.mSearchResultTitleCon.setVisibility(paramInt);
   }
   
   public void setSearchWords(String paramString)
@@ -934,16 +1004,19 @@ public class EmoticonPanelHotPicSearchHelper
   public void startSearch(String paramString)
   {
     sPrepareSearch = false;
-    if ((TextUtils.isEmpty(paramString)) || (this.mSearchAdapter == null)) {
-      return;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (this.mSearchAdapter == null) {
+        return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("EmoticonPanelHotPicSearchHelper", 4, "startSearch.");
+      }
+      setSearchWords(paramString);
+      this.mSearchAdapter.setData(new ArrayList());
+      loadSearchPicData();
+      onPullUp();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonPanelHotPicSearchHelper", 4, "startSearch.");
-    }
-    setSearchWords(paramString);
-    this.mSearchAdapter.setData(new ArrayList());
-    loadSearchPicData();
-    onPullUp();
   }
   
   protected void updateAllTabs()
@@ -953,80 +1026,88 @@ public class EmoticonPanelHotPicSearchHelper
     }
     if ((isInEmoticonSearchPanel()) && (!TextUtils.isEmpty(getSearchWord())))
     {
-      this.mPanelController.hideAllTabs();
-      this.mPanelController.viewPager.setLeftScrollDisEnable(true);
-      this.mPanelController.viewPager.setRightScrollDisEnable(true);
+      ((EmoticonPanelController)this.mPanelController).hideAllTabs();
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setLeftScrollDisEnable(true);
+      ((EmoticonPanelController)this.mPanelController).getViewPager().setRightScrollDisEnable(true);
       return;
     }
-    this.mPanelController.showAllTabs();
-    this.mPanelController.mPanelTabSortHelper.updateViewPagerScrollEnable(EmoticonPanelController.sLastSelectedSecondTabIndex);
+    ((EmoticonPanelController)this.mPanelController).showAllTabs();
+    ((EmoticonPanelController)this.mPanelController).mPanelTabSortHelper.updateViewPagerScrollEnable(BasePanelModel.sLastSelectedSecondTabIndex);
   }
   
   protected boolean updateEmptyViewLayoutParams()
   {
-    RelativeLayout.LayoutParams localLayoutParams;
-    int i;
     if ("EmoticonPanelHotPicSearchHelper".equals(getTag()))
     {
-      localLayoutParams = (RelativeLayout.LayoutParams)this.mLoadingEmptyView.getLayoutParams();
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)this.mLoadingEmptyView.getLayoutParams();
       if (localLayoutParams == null) {
         return true;
       }
-      i = localLayoutParams.topMargin;
-      if ((this.mEmoticonTags == null) || (this.mEmoticonTags.isEmpty()) || (this.mLabelFlowLayout == null) || (this.mLabelFlowLayout.getVisibility() != 0)) {
-        break label106;
+      int i = localLayoutParams.topMargin;
+      Object localObject = this.mEmoticonTags;
+      if ((localObject != null) && (!((List)localObject).isEmpty()))
+      {
+        localObject = this.mLabelFlowLayout;
+        if ((localObject != null) && (((EmotionLabelFlowLayout)localObject).getVisibility() == 0))
+        {
+          localLayoutParams.topMargin = (ViewUtils.a(60.0F) + this.mLabelFlowLayout.getHeight());
+          break label99;
+        }
       }
-    }
-    label106:
-    for (localLayoutParams.topMargin = (ViewUtils.a(60.0F) + this.mLabelFlowLayout.getHeight());; localLayoutParams.topMargin = ViewUtils.a(60.0F))
-    {
+      localLayoutParams.topMargin = ViewUtils.a(60.0F);
+      label99:
       if (localLayoutParams.topMargin != i) {
         this.mLoadingEmptyView.setLayoutParams(localLayoutParams);
       }
-      return false;
     }
+    return false;
   }
   
   protected void updateLoadingView()
   {
-    if ((this.mListView == null) || (this.mLoadingEmptyView == null)) {}
-    do
+    if ((this.mListView != null) && (this.mLoadingEmptyView != null))
     {
-      return;
+      if (this.mInteractionListener == null) {
+        return;
+      }
       if (QLog.isColorLevel()) {
         QLog.d("EmoticonPanelHotPicSearchHelper", 2, "updateLoadingView.");
       }
-    } while (updateEmptyViewLayoutParams());
-    TextView localTextView = (TextView)this.mLoadingEmptyView.findViewById(2131366247);
-    View localView = this.mLoadingEmptyView.findViewById(2131366258);
-    this.mLoadingEmptyView.setVisibility(0);
-    if ((this.mLoadingStatus == 4) && ((ViewUtils.a(XPanelContainer.b()) < XPanelContainer.a) || ("RichTextPanelEmoticonSearchLayoutHelper".equals(getTag()))))
-    {
-      localView.setVisibility(8);
-      localTextView.setText(2131689944);
-      localTextView.setOnClickListener(this);
-      reportRequestErrorExposed();
-      return;
+      if (updateEmptyViewLayoutParams()) {
+        return;
+      }
+      TextView localTextView = (TextView)this.mLoadingEmptyView.findViewById(2131366135);
+      View localView = this.mLoadingEmptyView.findViewById(2131366146);
+      this.mLoadingEmptyView.setVisibility(0);
+      if ((this.mLoadingStatus == 4) && ((ViewUtils.a(XPanelContainer.b()) < XPanelContainer.a) || (getPageType() == 2)))
+      {
+        localView.setVisibility(8);
+        localTextView.setText(2131689859);
+        localTextView.setOnClickListener(this);
+        reportRequestErrorExposed();
+        return;
+      }
+      int i = this.mLoadingStatus;
+      if (i == 5)
+      {
+        localView.setVisibility(0);
+        localTextView.setText(2131689854);
+        reportLoading();
+        return;
+      }
+      if (i == 8)
+      {
+        localView.setVisibility(8);
+        localTextView.setText(2131689857);
+        return;
+      }
+      this.mLoadingEmptyView.setVisibility(8);
     }
-    if (this.mLoadingStatus == 5)
-    {
-      localView.setVisibility(0);
-      localTextView.setText(2131689939);
-      reportLoading();
-      return;
-    }
-    if (this.mLoadingStatus == 8)
-    {
-      localView.setVisibility(8);
-      localTextView.setText(2131689942);
-      return;
-    }
-    this.mLoadingEmptyView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelHotPicSearchHelper
  * JD-Core Version:    0.7.0.1
  */

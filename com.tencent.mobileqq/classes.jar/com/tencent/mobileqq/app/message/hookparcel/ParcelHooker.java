@@ -7,24 +7,21 @@ import android.util.Base64;
 import com.google.gson.ExclusionStrategy;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.tencent.imcore.message.InitMsgModule;
 import com.tencent.mobileqq.app.message.OnReceiveVerify;
-import com.tencent.mobileqq.app.message.RecordForTest;
 import com.tencent.mobileqq.app.message.SendMsgVerify;
+import com.tencent.mobileqq.cuckoo.Cuckoo;
+import com.tencent.mobileqq.cuckoo.MethodCallback;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.pb.MessageMicro;
 import com.tencent.mobileqq.persistence.Entity;
-import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.vfs.VFSAssistantUtils;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor;
-import com.tencent.qq.permissionmonitorcore.PermissionMonitor.Listener;
 import com.tencent.robolectric.ShadowParcel;
 import java.io.File;
-import java.lang.reflect.Field;
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.Type;
@@ -35,45 +32,27 @@ import java.util.Set;
 
 public class ParcelHooker
 {
+  private static ParcelHooker.Callback jdField_a_of_type_ComTencentMobileqqAppMessageHookparcelParcelHooker$Callback;
   private static Set<Class> jdField_a_of_type_JavaUtilSet;
   private static volatile boolean b;
   private volatile long jdField_a_of_type_Long;
   private volatile Parcel jdField_a_of_type_AndroidOsParcel;
   private volatile Thread jdField_a_of_type_JavaLangThread;
   private ThreadLocal<SendMsgVerify> jdField_a_of_type_JavaLangThreadLocal = new ThreadLocal();
-  private volatile boolean jdField_a_of_type_Boolean;
+  volatile boolean jdField_a_of_type_Boolean;
+  
+  static {}
   
   public static Gson a(Class<? extends MessageRecord> paramClass)
   {
     GsonBuilder localGsonBuilder = new GsonBuilder();
     paramClass = paramClass.getFields();
-    int j = paramClass.length;
-    int i = 0;
-    if (i < j)
-    {
-      Object localObject = paramClass[i];
-      if (((localObject.getModifiers() & 0xC8) == 0) && (localObject.getAnnotation(RecordForTest.class) != null))
-      {
-        if (!MessageMicro.class.isAssignableFrom(localObject.getType())) {
-          break label92;
-        }
-        localGsonBuilder.registerTypeAdapter(localObject.getType(), new PBJsonAdapter(localObject.getType()));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        label92:
-        if (StructMsgForGeneralShare.class == localObject.getType()) {
-          localGsonBuilder.registerTypeAdapter(localObject.getType(), new GeneralStructMsgJsonAdapter());
-        }
-      }
-    }
+    jdField_a_of_type_ComTencentMobileqqAppMessageHookparcelParcelHooker$Callback.a(localGsonBuilder, paramClass);
     return localGsonBuilder.excludeFieldsWithModifiers(new int[] { 8, 128, 64 }).setExclusionStrategies(new ExclusionStrategy[] { new ParcelHooker.10() }).create();
   }
   
   @NonNull
-  private PermissionMonitor.Listener a()
+  private MethodCallback a()
   {
     return new ParcelHooker.1(this);
   }
@@ -81,41 +60,55 @@ public class ParcelHooker
   private void a(OnReceiveVerify paramOnReceiveVerify, String paramString)
   {
     paramOnReceiveVerify = new Gson().toJson(paramOnReceiveVerify);
-    String str = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory() + "/Tencent/MobileQQ/MessageHandlerOnReceive/");
-    File localFile = new File(str);
-    if (!localFile.exists()) {
-      localFile.mkdirs();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(Environment.getExternalStorageDirectory());
+    ((StringBuilder)localObject1).append("/Tencent/MobileQQ/MessageHandlerOnReceive/");
+    localObject1 = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject1).toString());
+    Object localObject2 = new File((String)localObject1);
+    if (!((File)localObject2).exists()) {
+      ((File)localObject2).mkdirs();
     }
-    FileUtils.a(str, System.currentTimeMillis() + "-" + paramString + ".json", paramOnReceiveVerify);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(System.currentTimeMillis());
+    ((StringBuilder)localObject2).append("-");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(".json");
+    FileUtils.writeFile((String)localObject1, ((StringBuilder)localObject2).toString(), paramOnReceiveVerify);
+  }
+  
+  public static void a(ParcelHooker.Callback paramCallback)
+  {
+    jdField_a_of_type_ComTencentMobileqqAppMessageHookparcelParcelHooker$Callback = paramCallback;
   }
   
   private static void a(String paramString1, String paramString2)
   {
-    String str = VFSAssistantUtils.getSDKPrivatePath(Environment.getExternalStorageDirectory() + "/Tencent/MobileQQ/QQMessageFacade/");
-    Object localObject = new File(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Environment.getExternalStorageDirectory());
+    ((StringBuilder)localObject).append("/Tencent/MobileQQ/QQMessageFacade/");
+    String str = VFSAssistantUtils.getSDKPrivatePath(((StringBuilder)localObject).toString());
+    localObject = new File(str);
     if (!((File)localObject).exists()) {
       ((File)localObject).mkdirs();
     }
-    StringBuilder localStringBuilder = new StringBuilder().append(System.currentTimeMillis());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(System.currentTimeMillis());
     localObject = paramString2;
     if (paramString2 == null) {
       localObject = "";
     }
-    FileUtils.a(str, (String)localObject + ".txt", paramString1);
-  }
-  
-  private void a(Thread paramThread, Parcel paramParcel, long paramLong)
-  {
-    this.jdField_a_of_type_Boolean = false;
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(".txt");
+    FileUtils.writeFile(str, localStringBuilder.toString(), paramString1);
   }
   
   private byte[] a(FromServiceMsg paramFromServiceMsg)
   {
     Parcel localParcel = Parcel.obtain();
     Number localNumber = ShadowParcel.a();
-    b(Thread.currentThread(), localParcel, localNumber.longValue());
-    paramFromServiceMsg.writeToParcel(localParcel, 0);
     a(Thread.currentThread(), localParcel, localNumber.longValue());
+    paramFromServiceMsg.writeToParcel(localParcel, 0);
+    b(Thread.currentThread(), localParcel, localNumber.longValue());
     paramFromServiceMsg = ShadowParcel.a(localNumber.intValue());
     localParcel.recycle();
     return paramFromServiceMsg;
@@ -125,18 +118,18 @@ public class ParcelHooker
   {
     Parcel localParcel = Parcel.obtain();
     Number localNumber = ShadowParcel.a();
-    b(Thread.currentThread(), localParcel, localNumber.longValue());
+    a(Thread.currentThread(), localParcel, localNumber.longValue());
     paramToServiceMsg.mSkipBinderWhenMarshall = true;
     paramToServiceMsg.writeToParcel(localParcel, 0);
     paramToServiceMsg.mSkipBinderWhenMarshall = false;
-    a(Thread.currentThread(), localParcel, localNumber.longValue());
+    b(Thread.currentThread(), localParcel, localNumber.longValue());
     paramToServiceMsg = ShadowParcel.a(localNumber.intValue());
     localParcel.recycle();
     return paramToServiceMsg;
   }
   
   @NonNull
-  private PermissionMonitor.Listener b()
+  private MethodCallback b()
   {
     return new ParcelHooker.2(this);
   }
@@ -150,7 +143,7 @@ public class ParcelHooker
       localMethod.invoke(paramMessageRecord, new Object[0]);
       return;
     }
-    catch (NoSuchMethodException paramMessageRecord)
+    catch (InvocationTargetException paramMessageRecord)
     {
       paramMessageRecord.printStackTrace();
       return;
@@ -160,7 +153,7 @@ public class ParcelHooker
       paramMessageRecord.printStackTrace();
       return;
     }
-    catch (InvocationTargetException paramMessageRecord)
+    catch (NoSuchMethodException paramMessageRecord)
     {
       paramMessageRecord.printStackTrace();
     }
@@ -168,24 +161,7 @@ public class ParcelHooker
   
   private void b(Thread paramThread, Parcel paramParcel, long paramLong)
   {
-    if (!b)
-    {
-      b = true;
-      PermissionMonitor.Listener localListener1 = i();
-      PermissionMonitor.Listener localListener2 = h();
-      PermissionMonitor.Listener localListener3 = e();
-      PermissionMonitor.Listener localListener4 = a();
-      PermissionMonitor.Listener localListener5 = b();
-      PermissionMonitor.Listener localListener6 = c();
-      PermissionMonitor.Listener localListener7 = d();
-      PermissionMonitor.Listener localListener8 = f();
-      PermissionMonitor.Listener localListener9 = g();
-      PermissionMonitor.getInstance().config(new PermissionMonitor.Listener[] { localListener1, localListener2, localListener3, localListener4, localListener5, localListener6, localListener7, localListener8, localListener9 }, new String[] { "android/os/Parcel$ReadWriteHelper", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel", "android/os/Parcel" }, new String[] { "writeString", "writeStringNoHelper", "writeInt", "writeLong", "writeFloat", "writeDouble", "writeByteArray", "writeBlob", "setDataPosition" }, new String[] { "(Landroid/os/Parcel;Ljava/lang/String;)V", "(Ljava/lang/String;)V", "(I)V", "(J)V", "(F)V", "(D)V", "([BII)V", "([BII)V", "(I)V" }).start();
-    }
-    this.jdField_a_of_type_JavaLangThread = paramThread;
-    this.jdField_a_of_type_AndroidOsParcel = paramParcel;
-    this.jdField_a_of_type_Long = paramLong;
-    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_Boolean = false;
   }
   
   private static boolean b(Type paramType)
@@ -202,43 +178,43 @@ public class ParcelHooker
   }
   
   @NonNull
-  private PermissionMonitor.Listener c()
+  private MethodCallback c()
   {
     return new ParcelHooker.3(this);
   }
   
   @NonNull
-  private PermissionMonitor.Listener d()
+  private MethodCallback d()
   {
     return new ParcelHooker.4(this);
   }
   
   @NonNull
-  private PermissionMonitor.Listener e()
+  private MethodCallback e()
   {
     return new ParcelHooker.5(this);
   }
   
   @NonNull
-  private PermissionMonitor.Listener f()
+  private MethodCallback f()
   {
     return new ParcelHooker.6(this);
   }
   
   @NonNull
-  private PermissionMonitor.Listener g()
+  private MethodCallback g()
   {
     return new ParcelHooker.7(this);
   }
   
   @NonNull
-  private PermissionMonitor.Listener h()
+  private MethodCallback h()
   {
     return new ParcelHooker.8(this);
   }
   
   @NonNull
-  private PermissionMonitor.Listener i()
+  private MethodCallback i()
   {
     return new ParcelHooker.9(this);
   }
@@ -262,36 +238,77 @@ public class ParcelHooker
   
   public void a(ToServiceMsg paramToServiceMsg)
   {
-    paramToServiceMsg = Utils.a(a(paramToServiceMsg));
-    if (QLog.isColorLevel()) {
-      QLog.d("ParcelHooker", 2, "printSendParams reqData=[" + paramToServiceMsg + "]");
+    String str = Utils.a(a(paramToServiceMsg));
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("printSendParams reqData=[");
+      paramToServiceMsg.append(str);
+      paramToServiceMsg.append("]");
+      QLog.d("ParcelHooker", 2, paramToServiceMsg.toString());
     }
-    SendMsgVerify localSendMsgVerify = a();
-    localSendMsgVerify.c = paramToServiceMsg;
-    localSendMsgVerify.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)a(localSendMsgVerify.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getClass()).fromJson(localSendMsgVerify.jdField_b_of_type_JavaLangString, localSendMsgVerify.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getClass()));
-    localSendMsgVerify.jdField_b_of_type_JavaLangString = null;
-    a(a(localSendMsgVerify.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getClass()).toJson(localSendMsgVerify), "_" + localSendMsgVerify.jdField_a_of_type_JavaLangString);
+    paramToServiceMsg = a();
+    paramToServiceMsg.c = str;
+    paramToServiceMsg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = ((MessageRecord)a(paramToServiceMsg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getClass()).fromJson(paramToServiceMsg.jdField_b_of_type_JavaLangString, paramToServiceMsg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getClass()));
+    paramToServiceMsg.jdField_b_of_type_JavaLangString = null;
+    str = a(paramToServiceMsg.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.getClass()).toJson(paramToServiceMsg);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramToServiceMsg.jdField_a_of_type_JavaLangString);
+    a(str, localStringBuilder.toString());
   }
   
   public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     paramToServiceMsg = Utils.a(a(paramToServiceMsg));
-    if (QLog.isColorLevel()) {
-      QLog.d("ParcelHooker", 2, "printParams reqData=[" + paramToServiceMsg + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("printParams reqData=[");
+      ((StringBuilder)localObject1).append(paramToServiceMsg);
+      ((StringBuilder)localObject1).append("]");
+      QLog.d("ParcelHooker", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject = paramFromServiceMsg.attributes.remove("FromServiceMsg");
-    String str = Utils.a(a(paramFromServiceMsg));
-    paramFromServiceMsg.attributes.put("FromServiceMsg", localObject);
-    if (QLog.isColorLevel()) {
-      QLog.d("ParcelHooker", 2, "printParams respData=[" + str + "]");
+    Object localObject2 = paramFromServiceMsg.attributes.remove("FromServiceMsg");
+    Object localObject1 = Utils.a(a(paramFromServiceMsg));
+    paramFromServiceMsg.attributes.put("FromServiceMsg", localObject2);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("printParams respData=[");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("]");
+      QLog.d("ParcelHooker", 2, ((StringBuilder)localObject2).toString());
     }
-    localObject = new OnReceiveVerify();
-    ((OnReceiveVerify)localObject).jdField_a_of_type_JavaLangString = paramToServiceMsg;
-    ((OnReceiveVerify)localObject).jdField_b_of_type_JavaLangString = str;
-    ((OnReceiveVerify)localObject).c = "placeholder for MessageRecord's metadata";
-    ((OnReceiveVerify)localObject).jdField_b_of_type_Int = 1;
-    ((OnReceiveVerify)localObject).jdField_a_of_type_Int = 1;
-    a((OnReceiveVerify)localObject, paramFromServiceMsg.getServiceCmd());
+    localObject2 = new OnReceiveVerify();
+    ((OnReceiveVerify)localObject2).jdField_a_of_type_JavaLangString = paramToServiceMsg;
+    ((OnReceiveVerify)localObject2).jdField_b_of_type_JavaLangString = ((String)localObject1);
+    ((OnReceiveVerify)localObject2).c = "placeholder for MessageRecord's metadata";
+    ((OnReceiveVerify)localObject2).jdField_b_of_type_Int = 1;
+    ((OnReceiveVerify)localObject2).jdField_a_of_type_Int = 1;
+    a((OnReceiveVerify)localObject2, paramFromServiceMsg.getServiceCmd());
+  }
+  
+  void a(Thread paramThread, Parcel paramParcel, long paramLong)
+  {
+    if (!b)
+    {
+      b = true;
+      Cuckoo.a(true);
+      Cuckoo.a("android/os/Parcel$ReadWriteHelper", "writeString", "(Landroid/os/Parcel;Ljava/lang/String;)V", i());
+      Cuckoo.a("android/os/Parcel", "writeStringNoHelper", "(Ljava/lang/String;)V", h());
+      Cuckoo.a("android/os/Parcel", "writeInt", "(I)V", e());
+      Cuckoo.a("android/os/Parcel", "writeLong", "(J)V", a());
+      Cuckoo.a("android/os/Parcel", "writeFloat", "(F)V", b());
+      Cuckoo.a("android/os/Parcel", "writeDouble", "(D)V", c());
+      Cuckoo.a("android/os/Parcel", "writeByteArray", "([BII)V", d());
+      Cuckoo.a("android/os/Parcel", "writeBlob", "([BII)V", f());
+      Cuckoo.a("android/os/Parcel", "setDataPosition", "(I)V", g());
+    }
+    this.jdField_a_of_type_JavaLangThread = paramThread;
+    this.jdField_a_of_type_AndroidOsParcel = paramParcel;
+    this.jdField_a_of_type_Long = paramLong;
+    this.jdField_a_of_type_Boolean = true;
   }
   
   public void a(byte[] paramArrayOfByte)
@@ -301,7 +318,7 @@ public class ParcelHooker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.hookparcel.ParcelHooker
  * JD-Core Version:    0.7.0.1
  */

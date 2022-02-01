@@ -30,42 +30,14 @@ class CodeMaskManager$PrepareBundleTask
     {
       if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrsz"))
       {
-        Object localObject1 = ((QRDisplayActivity)this.this$0.jdField_a_of_type_AndroidAppActivity).a();
-        boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
-        if (!bool) {
-          try
-          {
-            localObject1 = QRUtils.a((String)localObject1, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
-            if (localObject1 == null) {
-              return null;
-            }
-          }
-          catch (Exception localException)
-          {
-            for (;;)
-            {
-              localObject2 = null;
-            }
-          }
-        }
+        localObject = ((QRDisplayActivity)this.this$0.jdField_a_of_type_AndroidAppActivity).a();
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+        if (bool) {}
       }
-      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("bkgUrl"))
-      {
-        localObject2 = CodeMaskManager.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle.getString("bkgUrl"));
-        this.jdField_a_of_type_AndroidOsBundle.putParcelable("bkg", (Parcelable)localObject2);
-        this.jdField_a_of_type_AndroidOsBundle.remove("bkgUrl");
-      }
-      if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrbkgUrl"))
-      {
-        localObject2 = CodeMaskManager.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle.getString("qrbkgUrl"));
-        this.jdField_a_of_type_AndroidOsBundle.putParcelable("qrbkg", (Parcelable)localObject2);
-        this.jdField_a_of_type_AndroidOsBundle.remove("qrbkgUrl");
-      }
-      Object localObject2 = this.jdField_a_of_type_AndroidOsBundle;
-      return localObject2;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
+      Object localObject;
       if (QLog.isColorLevel()) {
         QLog.d("CodeMaskManager", 2, localOutOfMemoryError.getMessage());
       }
@@ -74,9 +46,35 @@ class CodeMaskManager$PrepareBundleTask
     }
     catch (IOException localIOException)
     {
-      label184:
-      break label184;
+      label52:
+      return null;
     }
+    try
+    {
+      localObject = QRUtils.a((String)localObject, this.jdField_a_of_type_AndroidOsBundle.getInt("qrsz"));
+    }
+    catch (Exception localException)
+    {
+      break label52;
+    }
+    localObject = null;
+    if (localObject == null) {
+      return null;
+    }
+    if (this.jdField_a_of_type_AndroidOsBundle.containsKey("bkgUrl"))
+    {
+      localObject = CodeMaskManager.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle.getString("bkgUrl"));
+      this.jdField_a_of_type_AndroidOsBundle.putParcelable("bkg", (Parcelable)localObject);
+      this.jdField_a_of_type_AndroidOsBundle.remove("bkgUrl");
+    }
+    if (this.jdField_a_of_type_AndroidOsBundle.containsKey("qrbkgUrl"))
+    {
+      localObject = CodeMaskManager.a(this.this$0, this.jdField_a_of_type_AndroidOsBundle.getString("qrbkgUrl"));
+      this.jdField_a_of_type_AndroidOsBundle.putParcelable("qrbkg", (Parcelable)localObject);
+      this.jdField_a_of_type_AndroidOsBundle.remove("qrbkgUrl");
+    }
+    localObject = this.jdField_a_of_type_AndroidOsBundle;
+    return localObject;
   }
   
   public void run()
@@ -89,7 +87,7 @@ class CodeMaskManager$PrepareBundleTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.CodeMaskManager.PrepareBundleTask
  * JD-Core Version:    0.7.0.1
  */

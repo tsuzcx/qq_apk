@@ -7,12 +7,13 @@ public class EVad
   
   public int AddData(byte[] paramArrayOfByte, int paramInt)
   {
-    short[] arrayOfShort = new short[paramInt / 2];
+    int j = paramInt / 2;
+    short[] arrayOfShort = new short[j];
     int i = 0;
     for (;;)
     {
       if (i >= paramInt) {
-        return AddData(arrayOfShort, paramInt / 2);
+        return AddData(arrayOfShort, j);
       }
       arrayOfShort[(i / 2)] = ((short)((paramArrayOfByte[(i + 1)] & 0xFF) << 8 | paramArrayOfByte[i] & 0xFF));
       i += 2;
@@ -21,10 +22,11 @@ public class EVad
   
   public int AddData(short[] paramArrayOfShort, int paramInt)
   {
-    if (this.a == 0L) {
+    long l = this.a;
+    if (l == 0L) {
       return 1;
     }
-    return this.b.AddData(this.a, paramArrayOfShort, paramInt);
+    return this.b.AddData(l, paramArrayOfShort, paramInt);
   }
   
   public int Init(int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4)
@@ -41,20 +43,22 @@ public class EVad
   
   public int Release()
   {
-    if (this.a == 0L) {
+    long l = this.a;
+    if (l == 0L) {
       return 0;
     }
-    int i = this.b.Release(this.a);
+    int i = this.b.Release(l);
     this.a = 0L;
     return i;
   }
   
   public int Reset()
   {
-    if (this.a == 0L) {
+    long l = this.a;
+    if (l == 0L) {
       return 1;
     }
-    return this.b.Reset(this.a);
+    return this.b.Reset(l);
   }
 }
 

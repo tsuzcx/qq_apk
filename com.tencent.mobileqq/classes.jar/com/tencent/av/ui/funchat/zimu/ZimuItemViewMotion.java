@@ -16,19 +16,20 @@ public abstract class ZimuItemViewMotion
   
   public int a(long paramLong)
   {
-    int i = 0;
     if (a())
     {
-      i = b(paramLong);
+      int i = b(paramLong);
       this.e -= i;
+      return i;
     }
-    return i;
+    return 0;
   }
   
   public void a(long paramLong)
   {
     super.a(paramLong);
-    this.e = (b(paramLong) + this.e);
+    int i = b(paramLong);
+    this.e += i;
   }
   
   public boolean a()
@@ -55,7 +56,7 @@ public abstract class ZimuItemViewMotion
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuItemViewMotion
  * JD-Core Version:    0.7.0.1
  */

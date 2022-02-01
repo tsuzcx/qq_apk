@@ -44,7 +44,11 @@ public final class g
       InputStream localInputStream = paramHttpURLConnection.getInputStream();
       return localInputStream;
     }
-    catch (IOException localIOException) {}
+    catch (IOException localIOException)
+    {
+      label7:
+      break label7;
+    }
     return paramHttpURLConnection.getErrorStream();
   }
   
@@ -71,86 +75,118 @@ public final class g
     HashMap localHashMap = new HashMap();
     localHashMap.putAll(paramm.g());
     localHashMap.putAll(paramMap);
-    String str;
-    if (this.a != null)
+    paramMap = this.a;
+    if (paramMap != null)
     {
-      str = this.a.a();
-      paramMap = str;
-      if (str == null) {
-        throw new IOException("URL blocked by rewriter: " + (String)localObject);
+      paramMap = paramMap.a();
+      if (paramMap == null)
+      {
+        paramm = new StringBuilder("URL blocked by rewriter: ");
+        paramm.append((String)localObject);
+        throw new IOException(paramm.toString());
       }
     }
     else
     {
       paramMap = (Map<String, String>)localObject;
     }
-    localObject = new URL(paramMap);
-    paramMap = (HttpURLConnection)((URL)localObject).openConnection();
-    paramMap.setInstanceFollowRedirects(HttpURLConnection.getFollowRedirects());
+    paramMap = new URL(paramMap);
+    localObject = (HttpURLConnection)paramMap.openConnection();
+    ((HttpURLConnection)localObject).setInstanceFollowRedirects(HttpURLConnection.getFollowRedirects());
     int i = paramm.n();
-    paramMap.setConnectTimeout(i);
-    paramMap.setReadTimeout(i);
-    paramMap.setUseCaches(false);
-    paramMap.setDoInput(true);
-    if (("https".equals(((URL)localObject).getProtocol())) && (this.b != null)) {
-      ((HttpsURLConnection)paramMap).setSSLSocketFactory(this.b);
-    }
-    localObject = localHashMap.keySet().iterator();
-    while (((Iterator)localObject).hasNext())
+    ((HttpURLConnection)localObject).setConnectTimeout(i);
+    ((HttpURLConnection)localObject).setReadTimeout(i);
+    int j = 0;
+    ((HttpURLConnection)localObject).setUseCaches(false);
+    ((HttpURLConnection)localObject).setDoInput(true);
+    if ("https".equals(paramMap.getProtocol()))
     {
-      str = (String)((Iterator)localObject).next();
-      paramMap.addRequestProperty(str, (String)localHashMap.get(str));
+      paramMap = this.b;
+      if (paramMap != null) {
+        ((HttpsURLConnection)localObject).setSSLSocketFactory(paramMap);
+      }
+    }
+    paramMap = localHashMap.keySet().iterator();
+    while (paramMap.hasNext())
+    {
+      String str = (String)paramMap.next();
+      ((HttpURLConnection)localObject).addRequestProperty(str, (String)localHashMap.get(str));
     }
     switch (paramm.a())
     {
     default: 
       throw new IllegalStateException("Unknown method type.");
-    case -1: 
-      localObject = paramm.h();
-      if (localObject != null)
-      {
-        paramMap.setRequestMethod("POST");
-        a(paramMap, paramm, (byte[])localObject);
-      }
+    case 7: 
+      paramMap = "PATCH";
+      break;
+    case 6: 
+      paramMap = "TRACE";
+      break;
+    case 5: 
+      paramMap = "OPTIONS";
+      break;
+    case 4: 
+      paramMap = "HEAD";
+      break;
+    case 3: 
+      paramMap = "DELETE";
+      break;
+    case 2: 
+      paramMap = "PUT";
+      ((HttpURLConnection)localObject).setRequestMethod(paramMap);
+      break;
+    case 1: 
+      ((HttpURLConnection)localObject).setRequestMethod("POST");
+      a((HttpURLConnection)localObject, paramm);
+      break;
+    case 0: 
+      paramMap = "GET";
+      ((HttpURLConnection)localObject).setRequestMethod(paramMap);
       break;
     }
-    int j;
+    paramMap = paramm.h();
+    if (paramMap != null)
+    {
+      ((HttpURLConnection)localObject).setRequestMethod("POST");
+      a((HttpURLConnection)localObject, paramm, paramMap);
+    }
+    int k = ((HttpURLConnection)localObject).getResponseCode();
+    if (k != -1)
+    {
+      i = j;
+      if (paramm.a() != 4) {
+        if (100 <= k)
+        {
+          i = j;
+          if (k < 200) {}
+        }
+        else
+        {
+          i = j;
+          if (k != 204)
+          {
+            i = j;
+            if (k != 304) {
+              i = 1;
+            }
+          }
+        }
+      }
+      if (i == 0) {
+        return new e(k, ((HttpURLConnection)localObject).getHeaderFields());
+      }
+      return new e(k, ((HttpURLConnection)localObject).getHeaderFields(), ((HttpURLConnection)localObject).getContentLength(), a((HttpURLConnection)localObject));
+    }
+    paramm = new IOException("Could not retrieve response code from HttpUrlConnection.");
     for (;;)
     {
-      j = paramMap.getResponseCode();
-      if (j != -1) {
-        break;
-      }
-      throw new IOException("Could not retrieve response code from HttpUrlConnection.");
-      paramMap.setRequestMethod("GET");
-      continue;
-      paramMap.setRequestMethod("DELETE");
-      continue;
-      paramMap.setRequestMethod("POST");
-      a(paramMap, paramm);
-      continue;
-      paramMap.setRequestMethod("PUT");
-      a(paramMap, paramm);
-      continue;
-      paramMap.setRequestMethod("HEAD");
-      continue;
-      paramMap.setRequestMethod("OPTIONS");
-      continue;
-      paramMap.setRequestMethod("TRACE");
-      continue;
-      paramMap.setRequestMethod("PATCH");
-      a(paramMap, paramm);
+      throw paramm;
     }
-    if ((paramm.a() != 4) && ((100 > j) || (j >= 200)) && (j != 204) && (j != 304)) {}
-    for (i = 1; i == 0; i = 0) {
-      return new e(j, paramMap.getHeaderFields());
-    }
-    return new e(j, paramMap.getHeaderFields(), paramMap.getContentLength(), a(paramMap));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.b.a.a.g
  * JD-Core Version:    0.7.0.1
  */

@@ -23,12 +23,17 @@ public class ProfileDataServiceImpl
   
   private boolean updateEntity(Entity paramEntity)
   {
-    if (this.entityManager.isOpen())
+    boolean bool2 = this.entityManager.isOpen();
+    boolean bool1 = false;
+    if (bool2)
     {
       if (paramEntity.getStatus() == 1000)
       {
         this.entityManager.persistOrReplace(paramEntity);
-        return paramEntity.getStatus() == 1001;
+        if (paramEntity.getStatus() == 1001) {
+          bool1 = true;
+        }
+        return bool1;
       }
       if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
         return this.entityManager.update(paramEntity);
@@ -57,62 +62,62 @@ public class ProfileDataServiceImpl
   
   public Card getProfileCard(String paramString, boolean paramBoolean)
   {
-    ??? = null;
-    if (!TextUtils.isEmpty(paramString)) {}
-    synchronized (PROFILE_CARD_CACHE_LOCK)
-    {
-      ??? = (Card)this.profileCardCache.get(paramString);
-      ??? = ???;
-      if (QLog.isColorLevel())
+    if (!TextUtils.isEmpty(paramString)) {
+      synchronized (PROFILE_CARD_CACHE_LOCK)
       {
+        ??? = (Card)this.profileCardCache.get(paramString);
+        ??? = ???;
+        if (!QLog.isColorLevel()) {
+          break label77;
+        }
         QLog.d("ProfileDataServiceImpl", 2, String.format("getProfileCard from cache. uin=%s card=%s", new Object[] { paramString, ??? }));
         ??? = ???;
       }
-      ??? = ???;
-      if (??? == null)
-      {
-        ??? = (Card)this.entityManager.find(Card.class, paramString);
-        if ((??? == null) || (TextUtils.isEmpty(paramString))) {}
-      }
-      synchronized (PROFILE_CARD_CACHE_LOCK)
-      {
-        this.profileCardCache.put(paramString, ???);
-        ??? = ???;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("ProfileDataServiceImpl", 2, String.format("getProfileCard from db. uin=%s card=%s", new Object[] { paramString, ??? }));
-          ??? = ???;
-        }
-        ??? = ???;
-        if (??? == null)
-        {
-          ??? = ???;
-          if (paramBoolean)
-          {
-            ??? = new Card();
-            ((Card)???).uin = paramString;
-            ((Card)???).shGender = -1;
-            this.entityManager.persist((Entity)???);
-            if (TextUtils.isEmpty(paramString)) {}
-          }
-        }
-      }
     }
-    synchronized (PROFILE_CARD_CACHE_LOCK)
+    ??? = null;
+    label77:
+    ??? = ???;
+    if (??? == null)
     {
-      this.profileCardCache.put(paramString, ???);
+      ??? = (Card)this.entityManager.find(Card.class, paramString);
+      if ((??? != null) && (!TextUtils.isEmpty(paramString))) {
+        synchronized (PROFILE_CARD_CACHE_LOCK)
+        {
+          this.profileCardCache.put(paramString, ???);
+        }
+      }
       ??? = ???;
       if (QLog.isColorLevel())
       {
-        QLog.d("ProfileDataServiceImpl", 2, String.format("getProfileCard from new. uin=%s card=%s", new Object[] { paramString, ??? }));
+        QLog.d("ProfileDataServiceImpl", 2, String.format("getProfileCard from db. uin=%s card=%s", new Object[] { paramString, ??? }));
         ??? = ???;
       }
-      return ???;
-      paramString = finally;
-      throw paramString;
-      paramString = finally;
-      throw paramString;
     }
+    ??? = ???;
+    if (??? == null)
+    {
+      ??? = ???;
+      if (paramBoolean)
+      {
+        ??? = new Card();
+        ((Card)???).uin = paramString;
+        ((Card)???).shGender = -1;
+        this.entityManager.persist((Entity)???);
+        if (!TextUtils.isEmpty(paramString)) {
+          synchronized (PROFILE_CARD_CACHE_LOCK)
+          {
+            this.profileCardCache.put(paramString, ???);
+          }
+        }
+        ??? = ???;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("ProfileDataServiceImpl", 2, String.format("getProfileCard from new. uin=%s card=%s", new Object[] { paramString, ??? }));
+          ??? = ???;
+        }
+      }
+    }
+    return ???;
   }
   
   public Card getProfileCardFromCache(String paramString)
@@ -148,7 +153,7 @@ public class ProfileDataServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.api.impl.ProfileDataServiceImpl
  * JD-Core Version:    0.7.0.1
  */

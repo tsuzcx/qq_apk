@@ -10,12 +10,14 @@ class ChatHistoryBaseTenDocFragment$5
   
   public void run()
   {
-    ChatHistoryBaseTenDocFragment.a(this.this$0).obtainMessage(1234, ChatHistoryBaseTenDocFragment.a(this.this$0, ChatHistoryBaseTenDocFragment.a(this.this$0))).sendToTarget();
+    MqqHandler localMqqHandler = ChatHistoryBaseTenDocFragment.a(this.this$0);
+    ChatHistoryBaseTenDocFragment localChatHistoryBaseTenDocFragment = this.this$0;
+    localMqqHandler.obtainMessage(1234, ChatHistoryBaseTenDocFragment.a(localChatHistoryBaseTenDocFragment, ChatHistoryBaseTenDocFragment.a(localChatHistoryBaseTenDocFragment))).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryBaseTenDocFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -16,24 +16,27 @@ public class TBSOneStandaloneService
   @Nullable
   public IBinder onBind(Intent paramIntent)
   {
-    if (this.a == null) {
+    TBSOneStandaloneService.ServiceImpl localServiceImpl = this.a;
+    if (localServiceImpl == null) {
       return null;
     }
-    return this.a.onBind(paramIntent);
+    return localServiceImpl.onBind(paramIntent);
   }
   
   public void onConfigurationChanged(Configuration paramConfiguration)
   {
     super.onConfigurationChanged(paramConfiguration);
-    if (this.a != null) {
-      this.a.onConfigurationChanged(paramConfiguration);
+    TBSOneStandaloneService.ServiceImpl localServiceImpl = this.a;
+    if (localServiceImpl != null) {
+      localServiceImpl.onConfigurationChanged(paramConfiguration);
     }
   }
   
   public void onDestroy()
   {
-    if (this.a != null) {
-      this.a.onDestroy();
+    TBSOneStandaloneService.ServiceImpl localServiceImpl = this.a;
+    if (localServiceImpl != null) {
+      localServiceImpl.onDestroy();
     }
     super.onDestroy();
   }
@@ -41,46 +44,53 @@ public class TBSOneStandaloneService
   public void onLowMemory()
   {
     super.onLowMemory();
-    if (this.a != null) {
-      this.a.onLowMemory();
+    TBSOneStandaloneService.ServiceImpl localServiceImpl = this.a;
+    if (localServiceImpl != null) {
+      localServiceImpl.onLowMemory();
     }
   }
   
   public void onRebind(Intent paramIntent)
   {
     super.onRebind(paramIntent);
-    if (this.a != null) {
-      this.a.onRebind(paramIntent);
+    TBSOneStandaloneService.ServiceImpl localServiceImpl = this.a;
+    if (localServiceImpl != null) {
+      localServiceImpl.onRebind(paramIntent);
     }
   }
   
   public int onStartCommand(Intent paramIntent, int paramInt1, int paramInt2)
   {
     String str = paramIntent.getStringExtra("implClassName");
-    if ((!TextUtils.isEmpty(str)) && ((this.a == null) || (!this.a.getClass().getName().equals(str)))) {
-      if (this.a != null)
+    if (!TextUtils.isEmpty(str))
+    {
+      TBSOneStandaloneService.ServiceImpl localServiceImpl2 = this.a;
+      if ((localServiceImpl2 == null) || (!localServiceImpl2.getClass().getName().equals(str)))
       {
-        this.a.onDestroy();
-        this.a = null;
+        localServiceImpl2 = this.a;
+        if (localServiceImpl2 != null)
+        {
+          localServiceImpl2.onDestroy();
+          this.a = null;
+        }
+        try
+        {
+          this.a = ((TBSOneStandaloneService.ServiceImpl)Class.forName(str).newInstance());
+          this.a.setBaseService(this);
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+        }
+        localServiceImpl1 = this.a;
+        if (localServiceImpl1 != null) {
+          localServiceImpl1.onCreate();
+        }
       }
     }
-    try
-    {
-      this.a = ((TBSOneStandaloneService.ServiceImpl)Class.forName(str).newInstance());
-      this.a.setBaseService(this);
-      if (this.a != null) {
-        this.a.onCreate();
-      }
-      if (this.a != null) {
-        return this.a.onStartCommand(paramIntent, paramInt1, paramInt2);
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+    TBSOneStandaloneService.ServiceImpl localServiceImpl1 = this.a;
+    if (localServiceImpl1 != null) {
+      return localServiceImpl1.onStartCommand(paramIntent, paramInt1, paramInt2);
     }
     return super.onStartCommand(paramIntent, paramInt1, paramInt2);
   }
@@ -88,30 +98,33 @@ public class TBSOneStandaloneService
   public void onTaskRemoved(Intent paramIntent)
   {
     super.onTaskRemoved(paramIntent);
-    if (this.a != null) {
-      this.a.onTaskRemoved(paramIntent);
+    TBSOneStandaloneService.ServiceImpl localServiceImpl = this.a;
+    if (localServiceImpl != null) {
+      localServiceImpl.onTaskRemoved(paramIntent);
     }
   }
   
   public void onTrimMemory(int paramInt)
   {
     super.onTrimMemory(paramInt);
-    if (this.a != null) {
-      this.a.onTrimMemory(paramInt);
+    TBSOneStandaloneService.ServiceImpl localServiceImpl = this.a;
+    if (localServiceImpl != null) {
+      localServiceImpl.onTrimMemory(paramInt);
     }
   }
   
   public boolean onUnbind(Intent paramIntent)
   {
-    if (this.a == null) {
+    TBSOneStandaloneService.ServiceImpl localServiceImpl = this.a;
+    if (localServiceImpl == null) {
       return super.onUnbind(paramIntent);
     }
-    return this.a.onUnbind(paramIntent);
+    return localServiceImpl.onUnbind(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.optional.TBSOneStandaloneService
  * JD-Core Version:    0.7.0.1
  */

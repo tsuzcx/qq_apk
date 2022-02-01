@@ -44,21 +44,17 @@ public class FileProvider
   {
     int j = paramVarArgs.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       String str = paramVarArgs[i];
-      if (str == null) {
-        break label40;
+      File localFile = paramFile;
+      if (str != null) {
+        localFile = new File(paramFile, str);
       }
-      paramFile = new File(paramFile, str);
-    }
-    label40:
-    for (;;)
-    {
       i += 1;
-      break;
-      return paramFile;
+      paramFile = localFile;
     }
+    return paramFile;
   }
   
   private static Object[] copyOf(Object[] paramArrayOfObject, int paramInt)
@@ -77,28 +73,26 @@ public class FileProvider
   
   private static FileProvider.PathStrategy getPathStrategy(Context paramContext, String paramString)
   {
-    FileProvider.PathStrategy localPathStrategy1;
     synchronized (sCache)
     {
       FileProvider.PathStrategy localPathStrategy2 = (FileProvider.PathStrategy)sCache.get(paramString);
-      localPathStrategy1 = localPathStrategy2;
-      if (localPathStrategy2 != null) {}
-    }
-    try
-    {
-      localPathStrategy1 = parsePathStrategy(paramContext, paramString);
-      sCache.put(paramString, localPathStrategy1);
+      FileProvider.PathStrategy localPathStrategy1 = localPathStrategy2;
+      if (localPathStrategy2 == null) {
+        try
+        {
+          localPathStrategy1 = parsePathStrategy(paramContext, paramString);
+          sCache.put(paramString, localPathStrategy1);
+        }
+        catch (XmlPullParserException paramContext)
+        {
+          throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
+        }
+        catch (IOException paramContext)
+        {
+          throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
+        }
+      }
       return localPathStrategy1;
-    }
-    catch (IOException paramContext)
-    {
-      throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
-      paramContext = finally;
-      throw paramContext;
-    }
-    catch (XmlPullParserException paramContext)
-    {
-      throw new IllegalArgumentException("Failed to parse android.support.FILE_PROVIDER_PATHS meta-data", paramContext);
     }
   }
   
@@ -112,119 +106,131 @@ public class FileProvider
     if ("r".equals(paramString)) {
       return 268435456;
     }
-    if (("w".equals(paramString)) || ("wt".equals(paramString))) {
-      return 738197504;
+    if ((!"w".equals(paramString)) && (!"wt".equals(paramString)))
+    {
+      if ("wa".equals(paramString)) {
+        return 704643072;
+      }
+      if ("rw".equals(paramString)) {
+        return 939524096;
+      }
+      if ("rwt".equals(paramString)) {
+        return 1006632960;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Invalid mode: ");
+      localStringBuilder.append(paramString);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    if ("wa".equals(paramString)) {
-      return 704643072;
-    }
-    if ("rw".equals(paramString)) {
-      return 939524096;
-    }
-    if ("rwt".equals(paramString)) {
-      return 1006632960;
-    }
-    throw new IllegalArgumentException("Invalid mode: " + paramString);
+    return 738197504;
   }
   
   private static FileProvider.PathStrategy parsePathStrategy(Context paramContext, String paramString)
   {
     FileProvider.SimplePathStrategy localSimplePathStrategy = new FileProvider.SimplePathStrategy(paramString);
-    Object localObject = paramContext.getPackageManager().resolveContentProvider(paramString, 128);
-    if (localObject == null) {
-      throw new IllegalArgumentException("Couldn't find meta-data for provider with authority " + paramString);
-    }
-    localObject = ((ProviderInfo)localObject).loadXmlMetaData(paramContext.getPackageManager(), "android.support.FILE_PROVIDER_PATHS");
-    if (localObject == null) {
+    ProviderInfo localProviderInfo = paramContext.getPackageManager().resolveContentProvider(paramString, 128);
+    if (localProviderInfo != null)
+    {
+      XmlResourceParser localXmlResourceParser = localProviderInfo.loadXmlMetaData(paramContext.getPackageManager(), "android.support.FILE_PROVIDER_PATHS");
+      if (localXmlResourceParser != null)
+      {
+        for (;;)
+        {
+          int i = localXmlResourceParser.next();
+          if (i == 1) {
+            break;
+          }
+          if (i == 2)
+          {
+            Object localObject = localXmlResourceParser.getName();
+            localProviderInfo = null;
+            String str1 = localXmlResourceParser.getAttributeValue(null, "name");
+            String str2 = localXmlResourceParser.getAttributeValue(null, "path");
+            if ("root-path".equals(localObject))
+            {
+              paramString = DEVICE_ROOT;
+            }
+            else if ("files-path".equals(localObject))
+            {
+              paramString = paramContext.getFilesDir();
+            }
+            else if ("cache-path".equals(localObject))
+            {
+              paramString = paramContext.getCacheDir();
+            }
+            else if ("external-path".equals(localObject))
+            {
+              paramString = Environment.getExternalStorageDirectory();
+            }
+            else if ("external-files-path".equals(localObject))
+            {
+              localObject = ContextCompat.getExternalFilesDirs(paramContext, null);
+              paramString = localProviderInfo;
+              if (localObject.length > 0) {
+                paramString = localObject[0];
+              }
+            }
+            else if ("external-cache-path".equals(localObject))
+            {
+              localObject = ContextCompat.getExternalCacheDirs(paramContext);
+              paramString = localProviderInfo;
+              if (localObject.length > 0) {
+                paramString = localObject[0];
+              }
+            }
+            else
+            {
+              paramString = localProviderInfo;
+              if (Build.VERSION.SDK_INT >= 21)
+              {
+                paramString = localProviderInfo;
+                if ("external-media-path".equals(localObject))
+                {
+                  localObject = paramContext.getExternalMediaDirs();
+                  paramString = localProviderInfo;
+                  if (localObject.length > 0) {
+                    paramString = localObject[0];
+                  }
+                }
+              }
+            }
+            if (paramString != null) {
+              localSimplePathStrategy.addRoot(str1, buildPath(paramString, new String[] { str2 }));
+            }
+          }
+        }
+        return localSimplePathStrategy;
+      }
       throw new IllegalArgumentException("Missing android.support.FILE_PROVIDER_PATHS meta-data");
     }
-    label313:
+    paramContext = new StringBuilder();
+    paramContext.append("Couldn't find meta-data for provider with authority ");
+    paramContext.append(paramString);
+    paramContext = new IllegalArgumentException(paramContext.toString());
     for (;;)
     {
-      int i = ((XmlResourceParser)localObject).next();
-      String str1;
-      String str2;
-      if (i != 1)
-      {
-        if (i != 2) {
-          continue;
-        }
-        paramString = ((XmlResourceParser)localObject).getName();
-        str1 = ((XmlResourceParser)localObject).getAttributeValue(null, "name");
-        str2 = ((XmlResourceParser)localObject).getAttributeValue(null, "path");
-        if ("root-path".equals(paramString)) {
-          paramString = DEVICE_ROOT;
-        }
-      }
-      for (;;)
-      {
-        if (paramString == null) {
-          break label313;
-        }
-        localSimplePathStrategy.addRoot(str1, buildPath(paramString, new String[] { str2 }));
-        break;
-        if ("files-path".equals(paramString))
-        {
-          paramString = paramContext.getFilesDir();
-        }
-        else if ("cache-path".equals(paramString))
-        {
-          paramString = paramContext.getCacheDir();
-        }
-        else if ("external-path".equals(paramString))
-        {
-          paramString = Environment.getExternalStorageDirectory();
-        }
-        else
-        {
-          if ("external-files-path".equals(paramString))
-          {
-            paramString = ContextCompat.getExternalFilesDirs(paramContext, null);
-            if (paramString.length > 0) {
-              paramString = paramString[0];
-            }
-          }
-          else if ("external-cache-path".equals(paramString))
-          {
-            paramString = ContextCompat.getExternalCacheDirs(paramContext);
-            if (paramString.length > 0) {
-              paramString = paramString[0];
-            }
-          }
-          else if ((Build.VERSION.SDK_INT >= 21) && ("external-media-path".equals(paramString)))
-          {
-            paramString = paramContext.getExternalMediaDirs();
-            if (paramString.length > 0)
-            {
-              paramString = paramString[0];
-              continue;
-              return localSimplePathStrategy;
-            }
-          }
-          paramString = null;
-        }
-      }
+      throw paramContext;
     }
   }
   
   public void attachInfo(@NonNull Context paramContext, @NonNull ProviderInfo paramProviderInfo)
   {
     super.attachInfo(paramContext, paramProviderInfo);
-    if (paramProviderInfo.exported) {
-      throw new SecurityException("Provider must not be exported");
-    }
-    if (!paramProviderInfo.grantUriPermissions) {
+    if (!paramProviderInfo.exported)
+    {
+      if (paramProviderInfo.grantUriPermissions)
+      {
+        this.mStrategy = getPathStrategy(paramContext, paramProviderInfo.authority);
+        return;
+      }
       throw new SecurityException("Provider must grant uri permissions");
     }
-    this.mStrategy = getPathStrategy(paramContext, paramProviderInfo.authority);
+    throw new SecurityException("Provider must not be exported");
   }
   
   public int delete(@NonNull Uri paramUri, @Nullable String paramString, @Nullable String[] paramArrayOfString)
   {
-    if (this.mStrategy.getFileForUri(paramUri).delete()) {
-      return 1;
-    }
-    return 0;
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public String getType(@NonNull Uri paramUri)
@@ -268,9 +274,8 @@ public class FileProvider
     paramArrayOfString1 = new Object[paramUri.length];
     int m = paramUri.length;
     int j = 0;
-    int i = 0;
     int k;
-    if (j < m)
+    for (int i = 0; j < m; i = k)
     {
       paramString2 = paramUri[j];
       if ("_display_name".equals(paramString2))
@@ -278,27 +283,26 @@ public class FileProvider
         paramArrayOfString2[i] = "_display_name";
         k = i + 1;
         paramArrayOfString1[i] = paramString1.getName();
-        i = k;
       }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      if ("_size".equals(paramString2))
+      for (i = k;; i = k)
       {
+        k = i;
+        break;
+        k = i;
+        if (!"_size".equals(paramString2)) {
+          break;
+        }
         paramArrayOfString2[i] = "_size";
         k = i + 1;
         paramArrayOfString1[i] = Long.valueOf(paramString1.length());
-        i = k;
-        continue;
-        paramUri = copyOf(paramArrayOfString2, i);
-        paramArrayOfString1 = copyOf(paramArrayOfString1, i);
-        paramUri = new MatrixCursor(paramUri, 1);
-        paramUri.addRow(paramArrayOfString1);
-        return paramUri;
       }
+      j += 1;
     }
+    paramUri = copyOf(paramArrayOfString2, i);
+    paramArrayOfString1 = copyOf(paramArrayOfString1, i);
+    paramUri = new MatrixCursor(paramUri, 1);
+    paramUri.addRow(paramArrayOfString1);
+    return paramUri;
   }
   
   public int update(@NonNull Uri paramUri, ContentValues paramContentValues, @Nullable String paramString, @Nullable String[] paramArrayOfString)
@@ -308,7 +312,7 @@ public class FileProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.content.FileProvider
  * JD-Core Version:    0.7.0.1
  */

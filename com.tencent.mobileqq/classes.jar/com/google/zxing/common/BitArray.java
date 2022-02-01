@@ -9,9 +9,10 @@ public final class BitArray
   {
     if (paramInt > this.jdField_a_of_type_ArrayOfInt.length << 5)
     {
-      int[] arrayOfInt = a(paramInt);
-      System.arraycopy(this.jdField_a_of_type_ArrayOfInt, 0, arrayOfInt, 0, this.jdField_a_of_type_ArrayOfInt.length);
-      this.jdField_a_of_type_ArrayOfInt = arrayOfInt;
+      int[] arrayOfInt1 = a(paramInt);
+      int[] arrayOfInt2 = this.jdField_a_of_type_ArrayOfInt;
+      System.arraycopy(arrayOfInt2, 0, arrayOfInt1, 0, arrayOfInt2.length);
+      this.jdField_a_of_type_ArrayOfInt = arrayOfInt1;
     }
   }
   
@@ -27,19 +28,24 @@ public final class BitArray
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt2 < 0) || (paramInt2 > 32)) {
-      throw new IllegalArgumentException("Num bits must be between 0 and 32");
-    }
-    a(this.jdField_a_of_type_Int + paramInt2);
-    if (paramInt2 > 0)
+    if ((paramInt2 >= 0) && (paramInt2 <= 32))
     {
-      if ((paramInt1 >> paramInt2 - 1 & 0x1) == 1) {}
-      for (boolean bool = true;; bool = false)
+      a(this.jdField_a_of_type_Int + paramInt2);
+      while (paramInt2 > 0)
       {
+        boolean bool = true;
+        if ((paramInt1 >> paramInt2 - 1 & 0x1) != 1) {
+          bool = false;
+        }
         a(bool);
         paramInt2 -= 1;
-        break;
       }
+      return;
+    }
+    IllegalArgumentException localIllegalArgumentException = new IllegalArgumentException("Num bits must be between 0 and 32");
+    for (;;)
+    {
+      throw localIllegalArgumentException;
     }
   }
   
@@ -82,15 +88,16 @@ public final class BitArray
     if (paramBoolean)
     {
       int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      int i = this.jdField_a_of_type_Int >> 5;
-      arrayOfInt[i] |= 1 << (this.jdField_a_of_type_Int & 0x1F);
+      int i = this.jdField_a_of_type_Int;
+      int j = i >> 5;
+      arrayOfInt[j] = (1 << (i & 0x1F) | arrayOfInt[j]);
     }
     this.jdField_a_of_type_Int += 1;
   }
   
   public boolean a(int paramInt)
   {
-    return (this.jdField_a_of_type_ArrayOfInt[(paramInt >> 5)] & 1 << (paramInt & 0x1F)) != 0;
+    return (1 << (paramInt & 0x1F) & this.jdField_a_of_type_ArrayOfInt[(paramInt >> 5)]) != 0;
   }
   
   public int b()
@@ -100,15 +107,24 @@ public final class BitArray
   
   public void b(BitArray paramBitArray)
   {
-    if (this.jdField_a_of_type_ArrayOfInt.length != paramBitArray.jdField_a_of_type_ArrayOfInt.length) {
-      throw new IllegalArgumentException("Sizes don't match");
-    }
-    int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfInt.length)
+    if (this.jdField_a_of_type_ArrayOfInt.length == paramBitArray.jdField_a_of_type_ArrayOfInt.length)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
-      arrayOfInt[i] ^= paramBitArray.jdField_a_of_type_ArrayOfInt[i];
-      i += 1;
+      int i = 0;
+      for (;;)
+      {
+        int[] arrayOfInt = this.jdField_a_of_type_ArrayOfInt;
+        if (i >= arrayOfInt.length) {
+          break;
+        }
+        arrayOfInt[i] ^= paramBitArray.jdField_a_of_type_ArrayOfInt[i];
+        i += 1;
+      }
+      return;
+    }
+    paramBitArray = new IllegalArgumentException("Sizes don't match");
+    for (;;)
+    {
+      throw paramBitArray;
     }
   }
   
@@ -116,18 +132,19 @@ public final class BitArray
   {
     StringBuilder localStringBuilder = new StringBuilder(this.jdField_a_of_type_Int);
     int i = 0;
-    if (i < this.jdField_a_of_type_Int)
+    while (i < this.jdField_a_of_type_Int)
     {
       if ((i & 0x7) == 0) {
         localStringBuilder.append(' ');
       }
-      if (a(i)) {}
-      for (char c = 'X';; c = '.')
-      {
-        localStringBuilder.append(c);
-        i += 1;
-        break;
+      char c;
+      if (a(i)) {
+        c = 'X';
+      } else {
+        c = '.';
       }
+      localStringBuilder.append(c);
+      i += 1;
     }
     return localStringBuilder.toString();
   }

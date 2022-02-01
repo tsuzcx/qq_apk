@@ -39,22 +39,24 @@ final class SavedStateHandleController
   private static void tryToAddRecreator(SavedStateRegistry paramSavedStateRegistry, Lifecycle paramLifecycle)
   {
     Lifecycle.State localState = paramLifecycle.getCurrentState();
-    if ((localState == Lifecycle.State.INITIALIZED) || (localState.isAtLeast(Lifecycle.State.STARTED)))
+    if ((localState != Lifecycle.State.INITIALIZED) && (!localState.isAtLeast(Lifecycle.State.STARTED)))
     {
-      paramSavedStateRegistry.runOnNextRecreation(SavedStateHandleController.OnRecreation.class);
+      paramLifecycle.addObserver(new SavedStateHandleController.1(paramLifecycle, paramSavedStateRegistry));
       return;
     }
-    paramLifecycle.addObserver(new SavedStateHandleController.1(paramLifecycle, paramSavedStateRegistry));
+    paramSavedStateRegistry.runOnNextRecreation(SavedStateHandleController.OnRecreation.class);
   }
   
   void attachToLifecycle(SavedStateRegistry paramSavedStateRegistry, Lifecycle paramLifecycle)
   {
-    if (this.mIsAttached) {
-      throw new IllegalStateException("Already attached to lifecycleOwner");
+    if (!this.mIsAttached)
+    {
+      this.mIsAttached = true;
+      paramLifecycle.addObserver(this);
+      paramSavedStateRegistry.registerSavedStateProvider(this.mKey, this.mHandle.savedStateProvider());
+      return;
     }
-    this.mIsAttached = true;
-    paramLifecycle.addObserver(this);
-    paramSavedStateRegistry.registerSavedStateProvider(this.mKey, this.mHandle.savedStateProvider());
+    throw new IllegalStateException("Already attached to lifecycleOwner");
   }
   
   SavedStateHandle getHandle()
@@ -78,7 +80,7 @@ final class SavedStateHandleController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.SavedStateHandleController
  * JD-Core Version:    0.7.0.1
  */

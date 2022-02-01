@@ -14,15 +14,19 @@ public class MiniBaseActivity
   
   protected void doRefreshMiniBadge(Bundle paramBundle) {}
   
-  public void onProcessBackground(Bundle paramBundle)
+  protected void onProcessBackground(Bundle paramBundle)
   {
     QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_proc_backgound", paramBundle, this.mEIPCResultCallback);
   }
   
   protected void onProcessForeGround(Bundle paramBundle)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("MiniMsgIPCServer", 4, "onProcessForeGround" + paramBundle.toString());
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onProcessForeGround");
+      localStringBuilder.append(paramBundle.toString());
+      QLog.i("MiniMsgIPCServer", 4, localStringBuilder.toString());
     }
     QIPCClientHelper.getInstance().getClient().callServer("MiniMsgIPCServer", "cmd_proc_foregound", paramBundle, this.mEIPCResultCallback);
   }
@@ -34,7 +38,7 @@ public class MiniBaseActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.MiniBaseActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@
         <com.tencent.mobileqq.mini.entry.desktop.widget.DragRecyclerView android:id="@id/equ" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:paddingBottom="65.0dip" android:scrollbars="none" android:clipChildren="false" android:clipToPadding="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:overScrollMode="never" />
     </LinearLayout>
     <RelativeLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/ltv" android:layout_width="fill_parent" android:layout_height="65.0dip">
-        <com.tencent.mobileqq.widget.QQBlurView android:id="@id/nhr" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        <com.tencent.mobileqq.widget.QQBlurView android:id="@id/nju" android:layout_width="fill_parent" android:layout_height="fill_parent" />
         <ImageView android:id="@id/ltw" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/hcc" android:layout_centerInParent="true" />
     </RelativeLayout>
     <LinearLayout android:gravity="center" android:layout_gravity="bottom" android:id="@id/lff" android:background="@drawable/hcd" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="65.0dip">

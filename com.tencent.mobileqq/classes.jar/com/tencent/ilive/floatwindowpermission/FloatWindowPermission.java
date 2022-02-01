@@ -34,12 +34,6 @@ public class FloatWindowPermission
     this.adapter.getDataReporter().newTask().setPage("room_page").setPageDesc("直播/视频房间").setModule("narrow_window_authority").setModuleDesc("小窗授权弹框").setActType(paramString1).setActTypeDesc(paramString2).addKeyValue("zt_int1", paramInt).send();
   }
   
-  private void requestFWPermission(Activity paramActivity, FloatWindowPermissionInterface.OnRequestResult paramOnRequestResult)
-  {
-    DialogUtil.createDialog(paramActivity, paramActivity.getString(2131692564), paramActivity.getString(2131692565), paramActivity.getString(2131693288), paramActivity.getString(2131693289), new FloatWindowPermission.1(this, paramOnRequestResult), new FloatWindowPermission.2(this, paramActivity)).show(((FragmentActivity)paramActivity).getSupportFragmentManager(), "");
-    reportPermissionDialogAction("view", "曝光", -1);
-  }
-  
   public void clearEventOutput() {}
   
   public boolean hasFWPermission()
@@ -58,6 +52,12 @@ public class FloatWindowPermission
   }
   
   public void onDestroy() {}
+  
+  public void requestFWPermission(Activity paramActivity, FloatWindowPermissionInterface.OnRequestResult paramOnRequestResult)
+  {
+    DialogUtil.createDialog(paramActivity, paramActivity.getString(2131692516), paramActivity.getString(2131692517), paramActivity.getString(2131693242), paramActivity.getString(2131693243), new FloatWindowPermission.1(this, paramOnRequestResult), new FloatWindowPermission.2(this, paramActivity)).show(((FragmentActivity)paramActivity).getSupportFragmentManager(), "");
+    reportPermissionDialogAction("view", "曝光", -1);
+  }
   
   public void requestPermissionAndDoJump(Activity paramActivity, Runnable paramRunnable)
   {
@@ -88,7 +88,7 @@ public class FloatWindowPermission
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.floatwindowpermission.FloatWindowPermission
  * JD-Core Version:    0.7.0.1
  */

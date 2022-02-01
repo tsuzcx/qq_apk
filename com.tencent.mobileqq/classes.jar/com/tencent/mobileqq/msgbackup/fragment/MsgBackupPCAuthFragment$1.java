@@ -29,9 +29,11 @@ class MsgBackupPCAuthFragment$1
           MsgBackupPCAuthFragment.b(this.a).setRightViewTextVisible(8);
         }
         MsgBackupPCAuthFragment.b(this.a);
-        this.a.b.setText(this.a.getString(2131690684, new Object[] { Integer.valueOf(MsgBackupPCAuthFragment.a(this.a)) }));
+        paramMessage = this.a.b;
+        MsgBackupPCAuthFragment localMsgBackupPCAuthFragment = this.a;
+        paramMessage.setText(localMsgBackupPCAuthFragment.getString(2131690612, new Object[] { Integer.valueOf(MsgBackupPCAuthFragment.a(localMsgBackupPCAuthFragment)) }));
         if (AppSetting.d) {
-          this.a.b.setContentDescription(this.a.getString(2131690684));
+          this.a.b.setContentDescription(this.a.getString(2131690612));
         }
         MsgBackupPCAuthFragment.a(this.a).sendEmptyMessageDelayed(1, 1000L);
         return true;
@@ -39,37 +41,33 @@ class MsgBackupPCAuthFragment$1
       MsgBackupPCAuthFragment.a(this.a).removeCallbacksAndMessages(null);
       MsgBackupPCAuthFragment.a(this.a, 60);
       MsgBackupPCAuthFragment.a(this.a, false);
-      if (NetworkUtil.a(this.a.getActivity()) == 1)
-      {
+      int i;
+      if (NetworkUtil.getSystemNetwork(this.a.getActivity()) == 1) {
         i = 1;
-        label205:
-        paramMessage = this.a;
-        if (i == 0) {
-          break label288;
-        }
-      }
-      label288:
-      for (int i = 0;; i = 2)
-      {
-        MsgBackupPCAuthFragment.a(paramMessage, i);
-        MsgBackupPCAuthFragment.c(this.a).setLeftBackVisible(0);
-        MsgBackupPCAuthFragment.d(this.a).setRightViewTextVisible(8);
-        this.a.b.setText(2131690674);
-        if (!AppSetting.d) {
-          break;
-        }
-        this.a.b.setContentDescription(this.a.getString(2131690674));
-        return true;
+      } else {
         i = 0;
-        break label205;
       }
+      paramMessage = this.a;
+      if (i != 0) {
+        i = 0;
+      } else {
+        i = 2;
+      }
+      MsgBackupPCAuthFragment.a(paramMessage, i);
+      MsgBackupPCAuthFragment.c(this.a).setLeftBackVisible(0);
+      MsgBackupPCAuthFragment.d(this.a).setRightViewTextVisible(8);
+      this.a.b.setText(2131690602);
+      if (AppSetting.d) {
+        this.a.b.setContentDescription(this.a.getString(2131690602));
+      }
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupPCAuthFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.MessageForAIOStoryVideo;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.util.StStoryFeedUtil;
-import com.tencent.mobileqq.utils.JumpAction;
+import com.tencent.mobileqq.utils.JumpActionLegacy;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -42,14 +42,14 @@ class AIOStoryVideoBuilder$1
       ((Bundle)localObject1).putInt("key_video_story_jump_position", 0);
       ((Bundle)localObject1).putSerializable("key_video_story_tranparent_story_feed", (Serializable)localObject2);
       ((Bundle)localObject1).putInt("key_request_business_type", 7);
-      JumpAction.a((Bundle)localObject1);
+      JumpActionLegacy.a((Bundle)localObject1);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.AIOStoryVideoBuilder.1
  * JD-Core Version:    0.7.0.1
  */

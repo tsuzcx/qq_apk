@@ -17,43 +17,47 @@ public class MediaFocusIpcServer
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusModuleServer", 2, "action = " + paramString + ", params = " + paramBundle);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("action = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", params = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.d("MediaFocusModuleServer", 2, ((StringBuilder)localObject).toString());
     }
-    Bundle localBundle = new Bundle();
+    Object localObject = new Bundle();
     if ("actionCheckItemExist".equals(paramString))
     {
       paramBundle.setClassLoader(getClass().getClassLoader());
-      paramString = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
-      if (paramString == null) {
-        break label161;
+      MediaFocusStackItem localMediaFocusStackItem = (MediaFocusStackItem)paramBundle.getParcelable("focusItem");
+      paramString = (String)localObject;
+      if (localMediaFocusStackItem != null)
+      {
+        boolean bool = QIPCServerHelper.getInstance().isProcessRunning(localMediaFocusStackItem.b());
+        paramString = (String)localObject;
+        if (bool)
+        {
+          paramBundle = QIPCServerHelper.getInstance().getServer().callClient(localMediaFocusStackItem.b(), 1, "MediaFocusModuleClient", "actionCheckItemExist", paramBundle);
+          paramString = (String)localObject;
+          if (paramBundle != null)
+          {
+            paramString = (String)localObject;
+            if (paramBundle.data != null) {
+              paramString = paramBundle.data;
+            }
+          }
+        }
+        paramString.putBoolean("isProcessRunning", bool);
       }
-      boolean bool = QIPCServerHelper.getInstance().isProcessRunning(paramString.b());
-      if (!bool) {
-        break label155;
-      }
-      paramString = QIPCServerHelper.getInstance().getServer().callClient(paramString.b(), 1, "MediaFocusModuleClient", "actionCheckItemExist", paramBundle);
-      if ((paramString == null) || (paramString.data == null)) {
-        break label155;
-      }
-      paramString = paramString.data;
-      paramString.putBoolean("isProcessRunning", bool);
-    }
-    for (;;)
-    {
       callbackResult(paramInt, EIPCResult.createSuccessResult(paramString));
-      return null;
-      label155:
-      paramString = localBundle;
-      break;
-      label161:
-      paramString = localBundle;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusIpcServer
  * JD-Core Version:    0.7.0.1
  */

@@ -9,15 +9,14 @@ import android.graphics.Rect;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewTreeObserver;
 import android.widget.Button;
 import android.widget.FrameLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.biz.AuthorizeConfig;
-import com.tencent.biz.webviewplugin.Hole;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.biz.widgets.Hole;
 import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler;
-import com.tencent.mobileqq.webview.swift.component.SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.widget.immersive.SystemBarTintManager;
 
@@ -27,7 +26,7 @@ public class SwiftFloatViewUI
   Rect jdField_a_of_type_AndroidGraphicsRect = new Rect();
   public View a;
   public Hole a;
-  public SwiftBrowserUIStyleHandler.SwiftBrowserUIStyle a;
+  public SwiftBrowserUIStyle a;
   public SwiftBrowserUIStyleHandler a;
   Runnable jdField_a_of_type_JavaLangRunnable = new SwiftFloatViewUI.3(this);
   public int b;
@@ -45,31 +44,32 @@ public class SwiftFloatViewUI
   public SwiftFloatViewUI(SwiftBrowserUIStyleHandler paramSwiftBrowserUIStyleHandler)
   {
     this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler = paramSwiftBrowserUIStyleHandler;
-    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle = paramSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle;
+    this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle = paramSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle;
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (8 == this.c.getVisibility())) {
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity == null) {
-        break label91;
-      }
-    }
-    label91:
-    for (DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();; localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics())
+    if ((this.jdField_a_of_type_AndroidViewView != null) && (8 == this.c.getVisibility()))
     {
+      DisplayMetrics localDisplayMetrics;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity != null) {
+        localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
+      } else {
+        localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
+      }
       this.jdField_a_of_type_Int = localDisplayMetrics.widthPixels;
       this.jdField_b_of_type_Int = localDisplayMetrics.heightPixels;
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle == null) || (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.d) || (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.H)) {
-        break;
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle;
+      if ((localObject != null) && (((SwiftBrowserUIStyle)localObject).d) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.I))
+      {
+        c();
+        return;
       }
-      c();
-      return;
+      localObject = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+      ((FrameLayout.LayoutParams)localObject).leftMargin = ((int)(this.jdField_a_of_type_Int - localDisplayMetrics.density * 50.0F));
+      ((FrameLayout.LayoutParams)localObject).topMargin = ((int)(this.jdField_b_of_type_Int - localDisplayMetrics.density * 100.0F));
+      this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
-    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-    localLayoutParams.leftMargin = ((int)(this.jdField_a_of_type_Int - 50.0F * localDisplayMetrics.density));
-    localLayoutParams.topMargin = ((int)(this.jdField_b_of_type_Int - localDisplayMetrics.density * 100.0F));
-    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
   
   @TargetApi(11)
@@ -84,73 +84,61 @@ public class SwiftFloatViewUI
   
   public void a(View paramView)
   {
-    int j = paramView.getResources().getColor(2131167229);
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
-      j = paramView.getResources().getColor(2131167230);
+    int j = paramView.getResources().getColor(2131167254);
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
+      j = paramView.getResources().getColor(2131167255);
     }
-    for (;;)
+    paramView = this.f;
+    int k;
+    if ((paramView != null) && ((paramView instanceof TextView)))
     {
-      if ((this.f != null) && ((this.f instanceof TextView))) {
-        if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
-          break label326;
-        }
+      k = 2130842722;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
+        k = 2130842723;
       }
-      label292:
-      label308:
-      label314:
-      label320:
-      label326:
-      for (int k = 2130842823;; k = 2130842822)
-      {
-        ((TextView)this.f).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
-        ((TextView)this.f).setTextColor(j);
-        if ((this.g != null) && ((this.g instanceof TextView))) {
-          if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
-            break label320;
-          }
-        }
-        for (k = 2130842820;; k = 2130842819)
-        {
-          ((TextView)this.g).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
-          ((TextView)this.g).setTextColor(j);
-          if ((this.e != null) && ((this.e instanceof TextView))) {
-            if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
-              break label314;
-            }
-          }
-          for (k = 2130842814;; k = 2130842813)
-          {
-            ((TextView)this.e).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
-            ((TextView)this.e).setTextColor(j);
-            if ((this.d != null) && ((this.d instanceof TextView))) {
-              if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
-                break label308;
-              }
-            }
-            for (k = 2130842811;; k = 2130842810)
-            {
-              ((TextView)this.d).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
-              ((TextView)this.d).setTextColor(j);
-              if ((this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView instanceof Button)))
-              {
-                j = 2130842806;
-                if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
-                  break label292;
-                }
-                j = 2130842816;
-              }
-              for (;;)
-              {
-                this.jdField_a_of_type_AndroidViewView.setBackgroundResource(j);
-                return;
-                if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.H) {
-                  j = 2130842818;
-                }
-              }
-            }
-          }
-        }
+      ((TextView)this.f).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
+      ((TextView)this.f).setTextColor(j);
+    }
+    paramView = this.g;
+    if ((paramView != null) && ((paramView instanceof TextView)))
+    {
+      k = 2130842719;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
+        k = 2130842720;
       }
+      ((TextView)this.g).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
+      ((TextView)this.g).setTextColor(j);
+    }
+    paramView = this.e;
+    if ((paramView != null) && ((paramView instanceof TextView)))
+    {
+      k = 2130842713;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
+        k = 2130842714;
+      }
+      ((TextView)this.e).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
+      ((TextView)this.e).setTextColor(j);
+    }
+    paramView = this.d;
+    if ((paramView != null) && ((paramView instanceof TextView)))
+    {
+      k = 2130842710;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
+        k = 2130842711;
+      }
+      ((TextView)this.d).setCompoundDrawablesWithIntrinsicBounds(0, k, 0, 0);
+      ((TextView)this.d).setTextColor(j);
+    }
+    paramView = this.jdField_a_of_type_AndroidViewView;
+    if ((paramView != null) && ((paramView instanceof Button)))
+    {
+      j = 2130842706;
+      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
+        j = 2130842716;
+      } else if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.I) {
+        j = 2130842718;
+      }
+      this.jdField_a_of_type_AndroidViewView.setBackgroundResource(j);
     }
   }
   
@@ -158,187 +146,177 @@ public class SwiftFloatViewUI
   public void a(View paramView, View.OnClickListener paramOnClickListener)
   {
     DisplayMetrics localDisplayMetrics;
-    int j;
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity != null)
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity != null) {
       localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
-      if (!this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.d) {
-        break label559;
+    } else {
+      localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
+    }
+    int j;
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.d)
+    {
+      if (localDisplayMetrics.heightPixels > localDisplayMetrics.widthPixels) {
+        j = localDisplayMetrics.heightPixels;
+      } else {
+        j = localDisplayMetrics.widthPixels;
       }
-      if (localDisplayMetrics.heightPixels <= localDisplayMetrics.widthPixels) {
-        break label541;
-      }
-      j = localDisplayMetrics.heightPixels;
-      label54:
       this.jdField_a_of_type_Int = j;
-      if (localDisplayMetrics.heightPixels <= localDisplayMetrics.widthPixels) {
-        break label550;
+      if (localDisplayMetrics.heightPixels > localDisplayMetrics.widthPixels) {
+        j = localDisplayMetrics.widthPixels;
+      } else {
+        j = localDisplayMetrics.heightPixels;
       }
-      j = localDisplayMetrics.widthPixels;
-      label78:
       this.jdField_b_of_type_Int = j;
-      this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131367137);
-      this.c = paramView.findViewById(2131379381);
-      this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363862);
-      this.d = paramView.findViewById(2131366471);
-      this.f = paramView.findViewById(2131377936);
-      this.g = paramView.findViewById(2131377807);
-      this.h = paramView.findViewById(2131371850);
-      this.e = paramView.findViewById(2131367270);
-      this.i = paramView.findViewById(2131371065);
-      this.jdField_a_of_type_ComTencentBizWebviewpluginHole = ((Hole)paramView.findViewById(2131368455));
-      b();
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
-        a(paramView);
+    }
+    else
+    {
+      if (localDisplayMetrics.heightPixels < localDisplayMetrics.widthPixels) {
+        j = localDisplayMetrics.heightPixels;
+      } else {
+        j = localDisplayMetrics.widthPixels;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Long & 1L) != 0L)
-      {
-        this.f.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+      this.jdField_a_of_type_Int = j;
+      if (localDisplayMetrics.heightPixels < localDisplayMetrics.widthPixels) {
+        j = localDisplayMetrics.widthPixels;
+      } else {
+        j = localDisplayMetrics.heightPixels;
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Long & 0x4) != 0L)
-      {
-        this.d.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Long & 0x2) != 0L)
-      {
-        this.h.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      if ((((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.b & 0x800) != 0L) || ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.a & 0x80000000) != 0L)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment != null) && (AuthorizeConfig.a().d("aio_authorize_config", this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewFragment.mUrl)))
-      {
-        this.e.setVisibility(0);
-        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      }
-      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("secondHandSharePre", 0);
-      if (!localSharedPreferences.getBoolean("first_float_tip", true)) {
-        break label628;
-      }
+      this.jdField_b_of_type_Int = j;
+    }
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131366974);
+    this.c = paramView.findViewById(2131378732);
+    this.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131363790);
+    this.d = paramView.findViewById(2131366350);
+    this.f = paramView.findViewById(2131377360);
+    this.g = paramView.findViewById(2131377235);
+    this.h = paramView.findViewById(2131371472);
+    this.e = paramView.findViewById(2131367053);
+    this.i = paramView.findViewById(2131370699);
+    this.jdField_a_of_type_ComTencentBizWidgetsHole = ((Hole)paramView.findViewById(2131368201));
+    b();
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Boolean) {
+      a(paramView);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Long & 1L) != 0L)
+    {
+      this.f.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Long & 0x4) != 0L)
+    {
+      this.d.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Long & 0x2) != 0L)
+    {
+      this.h.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    if ((((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.b & 0x800) != 0L) || ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.a & 0x80000000) != 0L)) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider != null) && (AuthorizeConfig.a().d("aio_authorize_config", this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_ComTencentMobileqqWebviewSwiftWebViewProvider.getCurrentUrl())))
+    {
+      this.e.setVisibility(0);
+      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+    }
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("secondHandSharePre", 0);
+    if (localSharedPreferences.getBoolean("first_float_tip", true))
+    {
       this.c.setVisibility(0);
       localSharedPreferences.edit().putBoolean("first_float_tip", false).apply();
       paramView.getViewTreeObserver().addOnGlobalLayoutListener(new SwiftFloatViewUI.1(this, paramView, localDisplayMetrics));
     }
-    for (;;)
+    else
     {
-      paramView = new SwiftFloatViewUI.2(this, localDisplayMetrics);
-      this.d.setOnClickListener(paramOnClickListener);
-      this.f.setOnClickListener(paramOnClickListener);
-      this.h.setOnClickListener(paramOnClickListener);
-      this.g.setOnClickListener(paramOnClickListener);
-      this.e.setOnClickListener(paramOnClickListener);
-      this.jdField_a_of_type_AndroidViewView.setOnTouchListener(paramView);
-      this.c.setOnTouchListener(paramView);
-      this.i.setOnTouchListener(paramView);
-      return;
-      localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics();
-      break;
-      label541:
-      j = localDisplayMetrics.widthPixels;
-      break label54;
-      label550:
-      j = localDisplayMetrics.heightPixels;
-      break label78;
-      label559:
-      if (localDisplayMetrics.heightPixels < localDisplayMetrics.widthPixels)
-      {
-        j = localDisplayMetrics.heightPixels;
-        label578:
-        this.jdField_a_of_type_Int = j;
-        if (localDisplayMetrics.heightPixels >= localDisplayMetrics.widthPixels) {
-          break label619;
-        }
-      }
-      label619:
-      for (j = localDisplayMetrics.widthPixels;; j = localDisplayMetrics.heightPixels)
-      {
-        this.jdField_b_of_type_Int = j;
-        break;
-        j = localDisplayMetrics.widthPixels;
-        break label578;
-      }
-      label628:
       this.c.setVisibility(8);
     }
+    paramView = new SwiftFloatViewUI.2(this, localDisplayMetrics);
+    this.d.setOnClickListener(paramOnClickListener);
+    this.f.setOnClickListener(paramOnClickListener);
+    this.h.setOnClickListener(paramOnClickListener);
+    this.g.setOnClickListener(paramOnClickListener);
+    this.e.setOnClickListener(paramOnClickListener);
+    this.jdField_a_of_type_AndroidViewView.setOnTouchListener(paramView);
+    this.c.setOnTouchListener(paramView);
+    this.i.setOnTouchListener(paramView);
   }
   
   public void a(View paramView, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.jdField_c_of_type_Boolean)
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.jdField_c_of_type_Boolean)
     {
-      paramView.setBackgroundResource(2130842816);
+      paramView.setBackgroundResource(2130842716);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.H)
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.I)
     {
-      paramView.setBackgroundResource(2130842818);
+      paramView.setBackgroundResource(2130842718);
       return;
     }
     if (paramBoolean)
     {
-      paramView.setBackgroundResource(2130842806);
+      paramView.setBackgroundResource(2130842706);
       return;
     }
-    paramView.setBackgroundResource(2130842807);
+    paramView.setBackgroundResource(2130842707);
   }
   
   public void a(boolean paramBoolean)
   {
-    View localView;
-    if (this.f != null)
+    View localView = this.f;
+    if (localView != null)
     {
-      localView = this.f;
-      if (!paramBoolean) {
-        break label67;
+      int j;
+      if (paramBoolean) {
+        j = 8;
+      } else {
+        j = 0;
       }
-    }
-    label67:
-    for (int j = 8;; j = 0)
-    {
       localView.setVisibility(j);
-      if ((!paramBoolean) && (this.jdField_a_of_type_AndroidViewView != null) && ((this.jdField_a_of_type_AndroidViewView.getVisibility() == 8) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4))) {
+    }
+    if (!paramBoolean)
+    {
+      localView = this.jdField_a_of_type_AndroidViewView;
+      if ((localView != null) && ((localView.getVisibility() == 8) || (this.jdField_a_of_type_AndroidViewView.getVisibility() == 4))) {
         this.jdField_a_of_type_AndroidViewView.setVisibility(0);
       }
-      return;
     }
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle != null) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.d) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler$SwiftBrowserUIStyle.H) && (this.jdField_a_of_type_AndroidViewView != null) && (8 == this.c.getVisibility())) {
+    SwiftBrowserUIStyle localSwiftBrowserUIStyle = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle;
+    if ((localSwiftBrowserUIStyle != null) && (localSwiftBrowserUIStyle.d) && (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftSwiftBrowserUIStyle.I) && (this.jdField_a_of_type_AndroidViewView != null) && (8 == this.c.getVisibility())) {
       c();
     }
   }
   
   public void c()
   {
-    int j;
-    int k;
-    if (this.jdField_b_of_type_Int > this.jdField_a_of_type_Int)
+    int k = this.jdField_b_of_type_Int;
+    int j = this.jdField_a_of_type_Int;
+    int m;
+    if (k > j)
     {
-      j = this.jdField_a_of_type_Int;
-      k = this.jdField_b_of_type_Int;
-      if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity == null) {
-        break label115;
-      }
+      m = j;
     }
-    label115:
-    for (DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();; localDisplayMetrics = BaseApplicationImpl.getContext().getResources().getDisplayMetrics())
+    else
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
-      localLayoutParams.leftMargin = ((int)(k - localDisplayMetrics.density * 70.0F));
-      localLayoutParams.topMargin = (j / 2 - this.jdField_a_of_type_AndroidViewView.getWidth() / 2);
-      this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
-      return;
-      j = this.jdField_b_of_type_Int;
-      k = this.jdField_a_of_type_Int;
-      break;
+      m = k;
+      k = j;
     }
+    DisplayMetrics localDisplayMetrics;
+    if (this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity != null) {
+      localDisplayMetrics = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.jdField_a_of_type_AndroidAppActivity.getResources().getDisplayMetrics();
+    } else {
+      localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
+    }
+    FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)this.jdField_a_of_type_AndroidViewView.getLayoutParams();
+    localLayoutParams.leftMargin = ((int)(k - localDisplayMetrics.density * 70.0F));
+    localLayoutParams.topMargin = (m / 2 - this.jdField_a_of_type_AndroidViewView.getWidth() / 2);
+    this.jdField_a_of_type_AndroidViewView.setLayoutParams(localLayoutParams);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.SwiftFloatViewUI
  * JD-Core Version:    0.7.0.1
  */

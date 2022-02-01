@@ -30,7 +30,11 @@ public class VipSpecialSoundWebViewPlugin$PreparedListener
     }
     catch (Exception localException1)
     {
-      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->handleJsRequest exception:" + localException1.toString());
+      VipSpecialSoundWebViewPlugin localVipSpecialSoundWebViewPlugin = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->handleJsRequest exception:");
+      localStringBuilder.append(localException1.toString());
+      VipSpecialSoundWebViewPlugin.a(localVipSpecialSoundWebViewPlugin, localStringBuilder.toString());
       try
       {
         JSONObject localJSONObject = new JSONObject();
@@ -51,23 +55,26 @@ public class VipSpecialSoundWebViewPlugin$PreparedListener
     if (VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin).a()) {}
     try
     {
-      if (!this.jdField_a_of_type_Boolean)
+      if (this.jdField_a_of_type_Boolean)
+      {
+        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
+      }
+      else
       {
         VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->play failed");
         this.jdField_a_of_type_OrgJsonJSONObject.put("code", 2);
         this.jdField_a_of_type_OrgJsonJSONObject.put("errorMessage", "can't play");
       }
-      for (;;)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
-        return;
-        this.jdField_a_of_type_OrgJsonJSONObject.put("code", 0);
-      }
+      this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { this.jdField_a_of_type_OrgJsonJSONObject.toString() });
       return;
     }
     catch (Exception paramMediaPlayer)
     {
-      VipSpecialSoundWebViewPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin, "-->handleJsRequest exception:" + paramMediaPlayer.toString());
+      VipSpecialSoundWebViewPlugin localVipSpecialSoundWebViewPlugin = this.jdField_a_of_type_ComTencentMobileqqActivitySpecialcareVipSpecialSoundWebViewPlugin;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("-->handleJsRequest exception:");
+      localStringBuilder.append(paramMediaPlayer.toString());
+      VipSpecialSoundWebViewPlugin.a(localVipSpecialSoundWebViewPlugin, localStringBuilder.toString());
       try
       {
         paramMediaPlayer = new JSONObject();
@@ -85,7 +92,7 @@ public class VipSpecialSoundWebViewPlugin$PreparedListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.specialcare.VipSpecialSoundWebViewPlugin.PreparedListener
  * JD-Core Version:    0.7.0.1
  */

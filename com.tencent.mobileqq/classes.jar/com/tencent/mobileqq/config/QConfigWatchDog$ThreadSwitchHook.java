@@ -7,26 +7,28 @@ import com.tencent.qphone.base.util.QLog;
 final class QConfigWatchDog$ThreadSwitchHook
   extends XC_MethodHook
 {
-  public void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
+  protected void beforeHookedMethod(XC_MethodHook.MethodHookParam paramMethodHookParam)
   {
     try
     {
       paramMethodHookParam = QConfigWatchDog.a();
-      if ((paramMethodHookParam.contains("QConfigManager.save")) && (paramMethodHookParam.contains("onParsed"))) {
+      if ((paramMethodHookParam.contains("QConfigManager.save")) && (paramMethodHookParam.contains("onParsed")))
+      {
         QConfigWatchDog.a(new QConfigureException(paramMethodHookParam), "Can not switch thread when parsing config.", "QConfigWatchDog_threadswitch");
+        return;
       }
-      return;
     }
     catch (Exception paramMethodHookParam)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("QConfigWatchDog", 2, "hook thread exception.", paramMethodHookParam);
+      if (QLog.isColorLevel()) {
+        QLog.d("QConfigWatchDog", 2, "hook thread exception.", paramMethodHookParam);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.QConfigWatchDog.ThreadSwitchHook
  * JD-Core Version:    0.7.0.1
  */

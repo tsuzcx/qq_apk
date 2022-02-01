@@ -19,43 +19,33 @@ class KeyframesParser
       return localArrayList;
     }
     paramJsonReader.beginObject();
-    label32:
     while (paramJsonReader.hasNext())
     {
       String str = paramJsonReader.nextName();
       int i = -1;
-      switch (str.hashCode())
-      {
+      if ((str.hashCode() == 107) && (str.equals("k"))) {
+        i = 0;
       }
-      for (;;)
+      if (i != 0)
       {
-        switch (i)
-        {
-        default: 
-          paramJsonReader.skipValue();
-          break label32;
-          if (str.equals("k")) {
-            i = 0;
-          }
-          break;
-        }
+        paramJsonReader.skipValue();
       }
-      if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY)
+      else if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY)
       {
         paramJsonReader.beginArray();
         if (paramJsonReader.peek() == JsonToken.NUMBER) {
           localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false));
-        }
-        for (;;)
-        {
-          paramJsonReader.endArray();
-          break;
+        } else {
           while (paramJsonReader.hasNext()) {
             localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, true));
           }
         }
+        paramJsonReader.endArray();
       }
-      localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false));
+      else
+      {
+        localArrayList.add(KeyframeParser.parse(paramJsonReader, paramLottieComposition, paramFloat, paramValueParser, false));
+      }
     }
     paramJsonReader.endObject();
     setEndFrames(localArrayList);
@@ -64,23 +54,36 @@ class KeyframesParser
   
   public static <T> void setEndFrames(List<? extends Keyframe<T>> paramList)
   {
-    int j = paramList.size();
+    int k = paramList.size();
     int i = 0;
-    while (i < j - 1)
+    int j;
+    for (;;)
     {
+      j = k - 1;
+      if (i >= j) {
+        break;
+      }
       localKeyframe1 = (Keyframe)paramList.get(i);
-      Keyframe localKeyframe2 = (Keyframe)paramList.get(i + 1);
+      j = i + 1;
+      Keyframe localKeyframe2 = (Keyframe)paramList.get(j);
       localKeyframe1.endFrame = Float.valueOf(localKeyframe2.startFrame);
-      if ((localKeyframe1.endValue == null) && (localKeyframe2.startValue != null))
+      i = j;
+      if (localKeyframe1.endValue == null)
       {
-        localKeyframe1.endValue = localKeyframe2.startValue;
-        if ((localKeyframe1 instanceof PathKeyframe)) {
-          ((PathKeyframe)localKeyframe1).createPath();
+        i = j;
+        if (localKeyframe2.startValue != null)
+        {
+          localKeyframe1.endValue = localKeyframe2.startValue;
+          i = j;
+          if ((localKeyframe1 instanceof PathKeyframe))
+          {
+            ((PathKeyframe)localKeyframe1).createPath();
+            i = j;
+          }
         }
       }
-      i += 1;
     }
-    Keyframe localKeyframe1 = (Keyframe)paramList.get(j - 1);
+    Keyframe localKeyframe1 = (Keyframe)paramList.get(j);
     if (((localKeyframe1.startValue == null) || (localKeyframe1.endValue == null)) && (paramList.size() > 1)) {
       paramList.remove(localKeyframe1);
     }
@@ -88,7 +91,7 @@ class KeyframesParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.KeyframesParser
  * JD-Core Version:    0.7.0.1
  */

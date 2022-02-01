@@ -32,10 +32,20 @@ public class b
   File a(String paramString)
   {
     File localFile = Environment.getExternalStorageDirectory();
-    return new File(localFile + File.separator + "tencent" + File.separator + "tbs" + File.separator + "backup" + File.separator + paramString, "x5.tbs.org");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localFile);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("tbs");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("backup");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    return new File(localStringBuilder.toString(), "x5.tbs.org");
   }
   
-  public final void a()
+  protected final void a()
   {
     m.b(new b.1(this));
   }
@@ -52,7 +62,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.e.c.b
  * JD-Core Version:    0.7.0.1
  */

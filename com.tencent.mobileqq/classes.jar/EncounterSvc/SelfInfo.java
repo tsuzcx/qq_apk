@@ -52,11 +52,13 @@ public final class SelfInfo
   {
     paramJceOutputStream.write(this.cSex, 0);
     paramJceOutputStream.write(this.cAge, 1);
-    if (this.strBirthDay != null) {
-      paramJceOutputStream.write(this.strBirthDay, 2);
+    String str = this.strBirthDay;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 3);
+    str = this.strNick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iVoteNum, 4);
     paramJceOutputStream.write(this.iVoteIncrement, 5);
@@ -68,7 +70,7 @@ public final class SelfInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     EncounterSvc.SelfInfo
  * JD-Core Version:    0.7.0.1
  */

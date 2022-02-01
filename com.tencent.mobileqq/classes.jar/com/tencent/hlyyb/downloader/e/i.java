@@ -28,169 +28,221 @@ import java.util.concurrent.atomic.AtomicLong;
 public final class i
   implements DownloaderTask, com.tencent.hlyyb.downloader.a.b, com.tencent.hlyyb.downloader.b.a, com.tencent.hlyyb.downloader.e.a.d, Comparable<i>, Runnable
 {
-  public long A = 0L;
-  public boolean B = true;
-  public boolean C = false;
-  public boolean D = false;
+  public long A;
+  public boolean B;
+  public boolean C;
+  public boolean D;
   private com.tencent.hlyyb.downloader.e.d.c E;
   private DownloaderTaskCategory F = DownloaderTaskCategory.Cate_DefaultMass;
   private boolean G = true;
   private volatile DownloaderTaskPriority H = DownloaderTaskPriority.NORMAL;
-  private volatile long I = 0L;
-  private String J = "";
-  private boolean K = false;
-  private long L = -1L;
+  private volatile long I;
+  private String J;
+  private boolean K;
+  private long L;
   private h M;
   private com.tencent.hlyyb.downloader.e.a.a N;
   private File O;
   private RandomAccessFile P;
   private File Q;
   private RandomAccessFile R;
-  private volatile boolean S = false;
-  private d T = new d(this);
-  private boolean U = false;
+  private volatile boolean S;
+  private d T;
+  private boolean U;
   private a V;
-  private int W = 0;
-  private volatile boolean X = false;
-  private AtomicInteger Y = new AtomicInteger(0);
-  private Object Z = new Object();
+  private int W;
+  private volatile boolean X;
+  private AtomicInteger Y;
+  private Object Z;
   public int a = -1;
-  private volatile boolean aa = false;
+  private volatile boolean aa;
   private Object ab;
-  private boolean ac = false;
-  private k ad = new k(this, (byte)0);
+  private boolean ac;
+  private k ad;
   private com.tencent.hlyyb.downloader.e.c.a ae;
   private com.tencent.hlyyb.common.a.e af;
-  private long ag = 0L;
-  private String ah = "";
-  private boolean ai = false;
-  private volatile HashMap<String, Long> aj = new LinkedHashMap();
-  private List<com.tencent.hlyyb.downloader.b.c> ak = Collections.synchronizedList(new ArrayList());
-  private Map<com.tencent.hlyyb.downloader.e.d.a, com.tencent.hlyyb.downloader.b.c> al = new ConcurrentHashMap();
-  private Map<com.tencent.hlyyb.downloader.e.d.a, List<String>> am = new ConcurrentHashMap();
-  private volatile long an = -1L;
-  private AtomicInteger ao = new AtomicInteger(0);
-  private AtomicInteger ap = new AtomicInteger(0);
-  private Object aq = new Object();
-  private com.tencent.hlyyb.downloader.b.b ar = new com.tencent.hlyyb.downloader.b.b();
-  private long as = 0L;
-  private long at = 0L;
-  private int au = -1;
+  private long ag;
+  private String ah;
+  private boolean ai;
+  private volatile HashMap<String, Long> aj;
+  private List<com.tencent.hlyyb.downloader.b.c> ak;
+  private Map<com.tencent.hlyyb.downloader.e.d.a, com.tencent.hlyyb.downloader.b.c> al;
+  private Map<com.tencent.hlyyb.downloader.e.d.a, List<String>> am;
+  private volatile long an;
+  private AtomicInteger ao;
+  private AtomicInteger ap;
+  private Object aq;
+  private com.tencent.hlyyb.downloader.b.b ar;
+  private long as;
+  private long at;
+  private int au;
   public String b = "";
   public String c = "";
   public String d = "";
   public Map<String, String> e = new HashMap();
-  public long f = -1L;
-  public volatile long g = -1L;
-  public String h = "";
-  public String i = "";
-  public volatile long j = 0L;
-  public volatile boolean k = true;
-  public String l = "";
-  public String m = "";
-  public String n = null;
-  public AtomicLong o = new AtomicLong(0L);
-  public AtomicLong p = new AtomicLong(0L);
-  public volatile int q = 0;
-  public volatile int r = 0;
-  public String s = "";
-  public long t = -1L;
-  public long u = -1L;
-  public long v = -1L;
-  public boolean w = false;
-  public String x = "";
+  public long f;
+  public volatile long g;
+  public String h;
+  public String i;
+  public volatile long j;
+  public volatile boolean k;
+  public String l;
+  public String m;
+  public String n;
+  public AtomicLong o;
+  public AtomicLong p;
+  public volatile int q;
+  public volatile int r;
+  public String s;
+  public long t;
+  public long u;
+  public long v;
+  public boolean w;
+  public String x;
   public String y;
-  public int z = -1;
+  public int z;
   
   public i(com.tencent.hlyyb.downloader.e.d.c paramc, String paramString1, String paramString2, DownloaderTaskListener paramDownloaderTaskListener, long paramLong, String paramString3)
   {
+    long l1 = -1L;
+    this.f = -1L;
+    this.g = -1L;
+    this.I = 0L;
+    this.h = "";
+    this.i = "";
+    this.J = "";
+    this.j = 0L;
+    this.k = true;
+    this.l = "";
+    this.m = "";
+    this.n = null;
+    this.o = new AtomicLong(0L);
+    this.p = new AtomicLong(0L);
+    this.q = 0;
+    this.K = false;
+    this.r = 0;
+    this.s = "";
+    this.L = -1L;
+    this.t = -1L;
+    this.u = -1L;
+    this.v = -1L;
+    this.S = false;
+    this.T = new d(this);
+    this.U = false;
+    this.W = 0;
+    this.X = false;
+    this.Y = new AtomicInteger(0);
+    this.Z = new Object();
+    this.aa = false;
+    this.w = false;
+    this.x = "";
+    this.ac = false;
+    this.ad = new k(this, (byte)0);
+    this.z = -1;
+    this.A = 0L;
+    this.ag = 0L;
+    this.B = true;
+    this.ah = "";
+    this.ai = false;
+    this.C = false;
+    this.D = false;
+    this.aj = new LinkedHashMap();
+    this.ak = Collections.synchronizedList(new ArrayList());
+    this.al = new ConcurrentHashMap();
+    this.am = new ConcurrentHashMap();
+    this.an = -1L;
+    this.ao = new AtomicInteger(0);
+    this.ap = new AtomicInteger(0);
+    this.aq = new Object();
+    this.ar = new com.tencent.hlyyb.downloader.b.b();
+    this.as = 0L;
+    this.at = 0L;
+    this.au = -1;
     this.E = paramc;
     this.h = paramString1;
     this.i = paramString2;
     this.T.a(paramDownloaderTaskListener);
-    if (paramLong > 0L) {}
-    for (;;)
-    {
-      this.f = paramLong;
-      TextUtils.isEmpty(paramString3);
-      paramc = new StringBuilder("");
-      paramc.append(com.tencent.hlyyb.common.b.b.b());
-      paramc.append(com.tencent.hlyyb.common.b.b.c());
-      paramc.append(System.currentTimeMillis());
-      paramc.append(this.E.a.a);
-      paramc.append(com.tencent.hlyyb.common.b.b.a());
-      this.n = com.tencent.hlyyb.common.b.a.a(paramc.toString());
-      return;
-      paramLong = -1L;
+    if (paramLong > 0L) {
+      l1 = paramLong;
     }
+    this.f = l1;
+    TextUtils.isEmpty(paramString3);
+    paramc = new StringBuilder("");
+    paramc.append(com.tencent.hlyyb.common.b.b.b());
+    paramc.append(com.tencent.hlyyb.common.b.b.c());
+    paramc.append(System.currentTimeMillis());
+    paramc.append(this.E.a.a);
+    paramc.append(com.tencent.hlyyb.common.b.b.a());
+    this.n = com.tencent.hlyyb.common.b.a.a(paramc.toString());
   }
   
   private boolean A()
   {
-    int i3 = 1;
-    int i2 = 1;
     int i1;
-    for (;;)
+    label688:
+    label819:
+    label842:
+    label847:
+    label854:
+    label859:
+    synchronized (getClass())
     {
-      synchronized (getClass())
+      this.aj.put("point0", Long.valueOf(0L));
+      long l1 = System.currentTimeMillis();
+      new File(this.h).mkdirs();
+      Object localObject3;
+      if (!com.tencent.hlyyb.downloader.a.a.g(this.i))
       {
-        this.aj.put("point0", Long.valueOf(0L));
-        long l1 = System.currentTimeMillis();
-        new File(this.h).mkdirs();
-        if (!com.tencent.hlyyb.downloader.a.a.g(this.i))
+        this.J = f.a(this.E.a.a, this.l, this.m, "");
+        localObject1 = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.J));
+        localObject3 = new File(this.h, this.J);
+        if ((((File)localObject1).exists()) || (((File)localObject3).exists()))
         {
-          this.J = f.a(this.E.a.a, this.l, this.m, "");
-          Object localObject1 = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.J));
-          Object localObject3 = new File(this.h, this.J);
-          if ((((File)localObject1).exists()) || (((File)localObject3).exists()))
+          i1 = this.J.lastIndexOf(".");
+          if ((i1 > 0) && (this.J.length() > i1 + 1))
           {
-            i1 = this.J.lastIndexOf(".");
-            localObject1 = "";
-            String str3;
-            if ((i1 > 0) && (this.J.length() > i1 + 1))
-            {
-              localObject3 = this.J.substring(0, i1);
-              localObject1 = this.J.substring(i1);
-              break label795;
-              str3 = (String)localObject3 + "(" + i1 + ")" + (String)localObject1;
-              File localFile1 = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(str3));
-              File localFile2 = new File(this.h, str3);
-              if (localFile1.exists()) {
-                break label800;
-              }
-              if (localFile2.exists()) {
-                break label800;
-              }
-            }
-            else
-            {
-              localObject3 = this.J;
-              break label795;
-            }
-            this.J = str3;
+            localObject3 = this.J.substring(0, i1);
+            localObject1 = this.J.substring(i1);
+            break label842;
           }
-          this.aj.put("point1", Long.valueOf(System.currentTimeMillis() - Long.valueOf(l1).longValue()));
-          l1 = System.currentTimeMillis();
-          if (!this.G) {
-            break label533;
+          localObject3 = this.J;
+          localObject1 = "";
+          break label842;
+          Object localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append((String)localObject3);
+          ((StringBuilder)localObject4).append("(");
+          ((StringBuilder)localObject4).append(i1);
+          ((StringBuilder)localObject4).append(")");
+          ((StringBuilder)localObject4).append((String)localObject1);
+          localObject4 = ((StringBuilder)localObject4).toString();
+          File localFile1 = new File(this.h, com.tencent.hlyyb.downloader.a.a.f((String)localObject4));
+          File localFile2 = new File(this.h, (String)localObject4);
+          if ((localFile1.exists()) || (localFile2.exists())) {
+            break label847;
           }
-          this.O = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.J));
-          this.Q = new File(this.h, com.tencent.hlyyb.downloader.a.a.e(this.J));
+          this.J = ((String)localObject4);
         }
-        try
-        {
-          this.R = new j(this.Q, "rw");
-          this.aj.put("point2", Long.valueOf(System.currentTimeMillis() - Long.valueOf(l1).longValue()));
-          l1 = System.currentTimeMillis();
-        }
-        catch (Exception localException1)
-        {
-          this.r = -49;
-          this.s = ("initFileOnDetected...create RandomAccessFile of path:" + this.Q.getAbsolutePath() + " fail.|" + localException1);
-          if (!f.a(localException1)) {
-            break;
-          }
-        }
+      }
+      else
+      {
+        this.J = this.i;
+      }
+      this.aj.put("point1", Long.valueOf(System.currentTimeMillis() - Long.valueOf(l1).longValue()));
+      l1 = System.currentTimeMillis();
+      if (this.G) {}
+      for (Object localObject1 = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.J));; localObject1 = new File(this.h, this.J))
+      {
+        this.O = ((File)localObject1);
+        break;
+      }
+      this.Q = new File(this.h, com.tencent.hlyyb.downloader.a.a.e(this.J));
+      int i2 = 1;
+      i1 = 1;
+      try
+      {
+        this.R = new j(this.Q, "rw");
+        this.aj.put("point2", Long.valueOf(System.currentTimeMillis() - Long.valueOf(l1).longValue()));
+        l1 = System.currentTimeMillis();
         try
         {
           this.P = new j(this.O, "rw");
@@ -200,67 +252,60 @@ public final class i
           System.currentTimeMillis();
           return true;
         }
-        catch (Exception localException2)
+        catch (Exception localException1)
         {
-          localException2.printStackTrace();
+          localException1.printStackTrace();
           this.r = -49;
-          this.s = ("initFileOnDetected...create RandomAccessFile of path:" + this.O.getAbsolutePath() + " fail.|" + localException2);
-          if (!f.a(localException2)) {
-            break label744;
+          localObject3 = new StringBuilder("initFileOnDetected...create RandomAccessFile of path:");
+          ((StringBuilder)localObject3).append(this.O.getAbsolutePath());
+          ((StringBuilder)localObject3).append(" fail.|");
+          ((StringBuilder)localObject3).append(localException1);
+          this.s = ((StringBuilder)localObject3).toString();
+          if (f.a(localException1))
+          {
+            this.r = -12;
+            break label688;
+          }
+          if (!(localException1 instanceof IOException)) {
+            break label854;
           }
         }
-        this.J = this.i;
-      }
-      label533:
-      this.O = new File(this.h, this.J);
-      continue;
-      this.r = -12;
-    }
-    label793:
-    label795:
-    label800:
-    label810:
-    for (;;)
-    {
-      label615:
-      E();
-      return false;
-      if ((localException1 instanceof IOException))
-      {
         String str1 = localException1.getMessage();
-        if ((str1 == null) || (!str1.contains("Read-only file system"))) {}
+        if ((str1 == null) || (!str1.contains("Read-only file system"))) {
+          break label854;
+        }
+        if (i1 != 0) {
+          this.r = -13;
+        }
+        E();
+        return false;
       }
-      for (i1 = i2;; i1 = 0)
+      catch (Exception localException2)
       {
-        if (i1 == 0) {
-          break label810;
-        }
-        this.r = -13;
-        break label615;
-        this.r = -12;
-        for (;;)
+        this.r = -49;
+        localObject3 = new StringBuilder("initFileOnDetected...create RandomAccessFile of path:");
+        ((StringBuilder)localObject3).append(this.Q.getAbsolutePath());
+        ((StringBuilder)localObject3).append(" fail.|");
+        ((StringBuilder)localObject3).append(localException2);
+        this.s = ((StringBuilder)localObject3).toString();
+        if (f.a(localException2))
         {
-          E();
-          return false;
-          label744:
-          if ((localException2 instanceof IOException))
-          {
-            String str2 = localException2.getMessage();
-            if ((str2 == null) || (!str2.contains("Read-only file system"))) {}
-          }
-          for (i1 = i3;; i1 = 0)
-          {
-            if (i1 == 0) {
-              break label793;
-            }
-            this.r = -13;
-            break;
-          }
+          this.r = -12;
+          break label819;
         }
-        i1 = 2;
-        break;
-        i1 += 1;
-        break;
+        if (!(localException2 instanceof IOException)) {
+          break label859;
+        }
+      }
+      String str2 = localException2.getMessage();
+      if ((str2 != null) && (str2.contains("Read-only file system")))
+      {
+        i1 = i2;
+        if (i1 != 0) {
+          this.r = -13;
+        }
+        E();
+        return false;
       }
     }
   }
@@ -282,50 +327,45 @@ public final class i
   
   private void C()
   {
-    int i2 = 0;
     I();
-    for (;;)
+    int i2;
+    label178:
+    synchronized (this.T)
     {
-      synchronized (this.T)
+      if (this.T.a() != DownloaderTaskStatus.PAUSED)
       {
-        if (this.T.a() != DownloaderTaskStatus.PAUSED)
+        if (!this.G) {
+          break label178;
+        }
+        int i1 = 0;
+        boolean bool;
+        for (i2 = 0; i1 < 3; i2 = bool)
         {
-          if (!this.G) {
-            break label172;
+          File localFile1 = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.J));
+          File localFile2 = new File(this.h, this.J);
+          if (localFile2.exists()) {
+            localFile2.delete();
           }
-          int i1 = 0;
-          if (i1 < 3)
-          {
-            File localFile1 = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.J));
-            File localFile2 = new File(this.h, this.J);
-            if (localFile2.exists()) {
-              localFile2.delete();
-            }
-            boolean bool = localFile1.renameTo(localFile2);
-            i2 = bool;
-            if (!bool)
-            {
-              SystemClock.sleep(50L);
-              i1 += 1;
-              i2 = bool;
-              continue;
-            }
+          bool = localFile1.renameTo(localFile2);
+          i2 = bool;
+          if (bool) {
+            break;
           }
-          if (i2 != 0)
-          {
-            x();
-            J();
-            this.T.a(DownloaderTaskStatus.COMPLETE);
-          }
+          SystemClock.sleep(50L);
+          i1 += 1;
+        }
+        if (i2 != 0)
+        {
+          x();
+          J();
+          this.T.a(DownloaderTaskStatus.COMPLETE);
         }
         else
         {
-          return;
+          a(false, -72, "", DownloaderTaskStatus.FAILED);
         }
-        a(false, -72, "", DownloaderTaskStatus.FAILED);
       }
-      label172:
-      i2 = 1;
+      return;
     }
   }
   
@@ -349,100 +389,66 @@ public final class i
     }
   }
   
-  /* Error */
   private void E()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 447	com/tencent/hlyyb/downloader/e/i:P	Ljava/io/RandomAccessFile;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +15 -> 23
-    //   11: aload_0
-    //   12: getfield 447	com/tencent/hlyyb/downloader/e/i:P	Ljava/io/RandomAccessFile;
-    //   15: invokevirtual 547	java/io/RandomAccessFile:close	()V
-    //   18: aload_0
-    //   19: aconst_null
-    //   20: putfield 447	com/tencent/hlyyb/downloader/e/i:P	Ljava/io/RandomAccessFile;
-    //   23: aload_0
-    //   24: getfield 443	com/tencent/hlyyb/downloader/e/i:R	Ljava/io/RandomAccessFile;
-    //   27: astore_1
-    //   28: aload_1
-    //   29: ifnull +15 -> 44
-    //   32: aload_0
-    //   33: getfield 443	com/tencent/hlyyb/downloader/e/i:R	Ljava/io/RandomAccessFile;
-    //   36: invokevirtual 547	java/io/RandomAccessFile:close	()V
-    //   39: aload_0
-    //   40: aconst_null
-    //   41: putfield 443	com/tencent/hlyyb/downloader/e/i:R	Ljava/io/RandomAccessFile;
-    //   44: aload_0
-    //   45: monitorexit
-    //   46: return
-    //   47: astore_1
-    //   48: aload_1
-    //   49: invokevirtual 548	java/io/IOException:printStackTrace	()V
-    //   52: goto -34 -> 18
-    //   55: astore_1
-    //   56: aload_0
-    //   57: monitorexit
-    //   58: aload_1
-    //   59: athrow
-    //   60: astore_1
-    //   61: aload_1
-    //   62: invokevirtual 548	java/io/IOException:printStackTrace	()V
-    //   65: goto -26 -> 39
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	68	0	this	i
-    //   6	23	1	localRandomAccessFile	RandomAccessFile
-    //   47	2	1	localIOException1	IOException
-    //   55	4	1	localObject	Object
-    //   60	2	1	localIOException2	IOException
-    // Exception table:
-    //   from	to	target	type
-    //   11	18	47	java/io/IOException
-    //   2	7	55	finally
-    //   11	18	55	finally
-    //   18	23	55	finally
-    //   23	28	55	finally
-    //   32	39	55	finally
-    //   39	44	55	finally
-    //   48	52	55	finally
-    //   61	65	55	finally
-    //   32	39	60	java/io/IOException
+    try
+    {
+      RandomAccessFile localRandomAccessFile1 = this.P;
+      if (localRandomAccessFile1 != null)
+      {
+        try
+        {
+          this.P.close();
+        }
+        catch (IOException localIOException1)
+        {
+          localIOException1.printStackTrace();
+        }
+        this.P = null;
+      }
+      RandomAccessFile localRandomAccessFile2 = this.R;
+      if (localRandomAccessFile2 != null)
+      {
+        try
+        {
+          this.R.close();
+        }
+        catch (IOException localIOException2)
+        {
+          localIOException2.printStackTrace();
+        }
+        this.R = null;
+      }
+      return;
+    }
+    finally {}
   }
   
   private String F()
   {
-    for (Object localObject1 = "";; localObject1 = localObject2)
+    String str2;
+    try
     {
-      try
+      String str1;
+      if ((this.ah != null) && (this.ah.length() != 0))
       {
-        if ((this.ah == null) || (this.ah.length() == 0)) {
-          break label41;
-        }
-        localObject2 = this.ah;
-        localObject1 = localObject2;
+        str1 = this.ah;
       }
-      catch (Exception localException)
+      else
       {
-        for (;;)
-        {
-          Object localObject2;
-          label41:
-          localException.printStackTrace();
-        }
+        this.R.seek(0L);
+        str1 = this.R.readUTF();
       }
-      localObject2 = localObject1;
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        localObject2 = "";
-      }
-      return localObject2;
-      this.R.seek(0L);
-      localObject2 = this.R.readUTF();
     }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
+      str2 = "";
+    }
+    if (TextUtils.isEmpty(str2)) {
+      return "";
+    }
+    return str2;
   }
   
   private void G()
@@ -472,9 +478,14 @@ public final class i
     synchronized (this.ak)
     {
       Iterator localIterator = this.ak.iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((com.tencent.hlyyb.downloader.b.c)localIterator.next()).a();
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -486,63 +497,64 @@ public final class i
       this.au = -2;
       return;
     }
-    if ((localObject1 == null) || (((List)localObject1).size() <= 0))
+    if ((localObject1 != null) && (((List)localObject1).size() > 0))
     {
-      this.au = -3;
-      return;
-    }
-    if (TextUtils.isEmpty(this.E.c()))
-    {
-      this.au = -3;
-      return;
-    }
-    SystemClock.elapsedRealtime();
-    j localj;
-    try
-    {
-      ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
-      localj = new j(new File(this.h, this.J), "r");
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      if (TextUtils.isEmpty(this.E.c()))
       {
-        Object localObject2 = (com.tencent.hlyyb.downloader.d.a)((Iterator)localObject1).next();
-        long l1 = ((com.tencent.hlyyb.downloader.d.a)localObject2).a;
-        int i1 = ((com.tencent.hlyyb.downloader.d.a)localObject2).b;
-        localObject2 = new byte[i1];
-        localj.seek(l1);
-        localj.read((byte[])localObject2, 0, i1);
-        localByteArrayOutputStream.write((byte[])localObject2, 0, i1);
+        this.au = -3;
+        return;
       }
       SystemClock.elapsedRealtime();
-    }
-    catch (IOException localIOException1)
-    {
-      this.au = -4;
-      localIOException1.printStackTrace();
-    }
-    return;
-    localObject1 = localIOException1.toByteArray();
-    if (com.tencent.hlyyb.common.b.b.a((byte[])localObject1)) {
-      this.au = -4;
-    }
-    localObject1 = com.tencent.hlyyb.common.b.a.a((byte[])localObject1);
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      this.au = -5;
-    }
-    for (;;)
-    {
       try
       {
-        localIOException1.close();
-        localj.close();
+        ByteArrayOutputStream localByteArrayOutputStream = new ByteArrayOutputStream();
+        j localj = new j(new File(this.h, this.J), "r");
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
+          Object localObject2 = (com.tencent.hlyyb.downloader.d.a)((Iterator)localObject1).next();
+          long l1 = ((com.tencent.hlyyb.downloader.d.a)localObject2).a;
+          int i1 = ((com.tencent.hlyyb.downloader.d.a)localObject2).b;
+          localObject2 = new byte[i1];
+          localj.seek(l1);
+          localj.read((byte[])localObject2, 0, i1);
+          localByteArrayOutputStream.write((byte[])localObject2, 0, i1);
+        }
+        localObject1 = localByteArrayOutputStream.toByteArray();
+        if (com.tencent.hlyyb.common.b.b.a((byte[])localObject1)) {
+          this.au = -4;
+        }
+        localObject1 = com.tencent.hlyyb.common.b.a.a((byte[])localObject1);
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          this.au = -5;
+        } else if (((String)localObject1).toLowerCase().equals(this.E.c().toLowerCase())) {
+          this.au = 1;
+        } else {
+          this.au = 0;
+        }
+        SystemClock.elapsedRealtime();
       }
-      catch (IOException localIOException2) {}
-      break;
-      if (((String)localObject1).toLowerCase().equals(this.E.c().toLowerCase())) {
-        this.au = 1;
-      } else {
-        this.au = 0;
+      catch (IOException localIOException1)
+      {
+        try
+        {
+          localByteArrayOutputStream.close();
+          localj.close();
+        }
+        catch (IOException localIOException2)
+        {
+          break label287;
+        }
+        localIOException1 = localIOException1;
+        this.au = -4;
+        localIOException1.printStackTrace();
       }
+    }
+    else
+    {
+      label287:
+      this.au = -3;
+      return;
     }
   }
   
@@ -552,11 +564,12 @@ public final class i
     {
       if (this.g > 0L)
       {
-        int i1 = (int)(this.g * 0.2D);
+        double d1 = this.g;
+        Double.isNaN(d1);
+        int i1 = (int)(d1 * 0.2D);
         if (i1 > 41943040) {
           return i1;
         }
-        return 41943040;
       }
       return 41943040;
     }
@@ -581,46 +594,61 @@ public final class i
   
   private boolean v()
   {
-    boolean bool = true;
     try
     {
       File localFile = new File(getSavePath());
-      if (localFile.exists()) {
-        bool = localFile.delete();
+      if (localFile.exists())
+      {
+        boolean bool = localFile.delete();
+        return bool;
       }
-      return bool;
+      return true;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label28:
+      break label28;
+    }
     return false;
   }
   
   private boolean w()
   {
-    boolean bool = true;
     try
     {
       File localFile = new File(getSaveDir(), com.tencent.hlyyb.downloader.a.a.f(this.J));
-      if (localFile.exists()) {
-        bool = localFile.delete();
+      if (localFile.exists())
+      {
+        boolean bool = localFile.delete();
+        return bool;
       }
-      return bool;
+      return true;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label35:
+      break label35;
+    }
     return false;
   }
   
   private boolean x()
   {
-    boolean bool = true;
     try
     {
       File localFile = new File(this.h, com.tencent.hlyyb.downloader.a.a.e(this.J));
-      if (localFile.exists()) {
-        bool = localFile.delete();
+      if (localFile.exists())
+      {
+        boolean bool = localFile.delete();
+        return bool;
       }
-      return bool;
+      return true;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label35:
+      break label35;
+    }
     return false;
   }
   
@@ -631,72 +659,77 @@ public final class i
     try
     {
       this.R = new j(this.Q, "rw");
-      String str1;
-      this.r = -12;
-    }
-    catch (Exception localException1)
-    {
+      StringBuilder localStringBuilder;
       try
       {
         this.P = new j(this.O, "rw");
         return true;
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        localException2.printStackTrace();
+        localException1.printStackTrace();
         this.r = -49;
-        this.s = ("initFileOnStart...create RandomAccessFile of path:" + this.O.getAbsolutePath() + " fail.|" + localException2);
-        if (!f.a(localException2)) {
-          break label220;
+        localStringBuilder = new StringBuilder("initFileOnStart...create RandomAccessFile of path:");
+        localStringBuilder.append(this.O.getAbsolutePath());
+        localStringBuilder.append(" fail.|");
+        localStringBuilder.append(localException1);
+        this.s = localStringBuilder.toString();
+        if (f.a(localException1))
+        {
+          this.r = -12;
         }
-      }
-      localException1 = localException1;
-      localException1.printStackTrace();
-      this.r = -49;
-      this.s = ("initFileOnStart...create RandomAccessFile of path:" + this.Q.getAbsolutePath() + " fail.|" + localException1);
-      if (f.a(localException1)) {
-        this.r = -12;
-      }
-      for (;;)
-      {
+        else
+        {
+          if ((localException1 instanceof IOException))
+          {
+            String str1 = localException1.getMessage();
+            if ((str1 != null) && (str1.contains("Read-only file system"))) {}
+          }
+          else
+          {
+            i1 = 0;
+          }
+          if (i1 != 0) {
+            this.r = -13;
+          }
+        }
         E();
         return false;
-        if ((localException1 instanceof IOException))
-        {
-          str1 = localException1.getMessage();
-          if ((str1 == null) || (!str1.contains("Read-only file system"))) {}
-        }
-        for (;;)
-        {
-          if (i1 == 0) {
-            break label151;
-          }
-          this.r = -13;
-          break;
-          i1 = 0;
-        }
       }
-    }
-    label264:
-    for (;;)
-    {
-      label151:
-      E();
+      String str2;
+      label276:
       return false;
-      label220:
-      if ((localException2 instanceof IOException))
+    }
+    catch (Exception localException2)
+    {
+      localException2.printStackTrace();
+      this.r = -49;
+      localStringBuilder = new StringBuilder("initFileOnStart...create RandomAccessFile of path:");
+      localStringBuilder.append(this.Q.getAbsolutePath());
+      localStringBuilder.append(" fail.|");
+      localStringBuilder.append(localException2);
+      this.s = localStringBuilder.toString();
+      if (f.a(localException2))
       {
-        String str2 = localException2.getMessage();
-        if ((str2 == null) || (!str2.contains("Read-only file system"))) {}
+        this.r = -12;
       }
-      for (i1 = i2;; i1 = 0)
+      else
       {
-        if (i1 == 0) {
-          break label264;
+        if ((localException2 instanceof IOException))
+        {
+          str2 = localException2.getMessage();
+          if ((str2 != null) && (str2.contains("Read-only file system")))
+          {
+            i1 = i2;
+            break label276;
+          }
         }
-        this.r = -13;
-        break;
+        i1 = 0;
+        if (i1 != 0) {
+          this.r = -13;
+        }
       }
+      E();
     }
   }
   
@@ -705,124 +738,124 @@ public final class i
     try
     {
       new File(this.h).mkdirs();
-      this.O = null;
-      this.Q = null;
-      if (this.M != null)
-      {
-        if ((this.M.d() <= 0L) || (TextUtils.isEmpty(this.J))) {
-          break label651;
-        }
-        if (this.G)
-        {
-          this.O = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.J));
-          this.Q = new File(this.h, com.tencent.hlyyb.downloader.a.a.e(this.J));
-          i1 = 1;
-          int i3 = 0;
-          i2 = i1;
-          i1 = i3;
-          if (((i2 == 0) && (i1 == 0)) || (!this.O.exists())) {
-            break label632;
-          }
-          if (y()) {
-            break label262;
-          }
-          return false;
-        }
-      }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
+      localThrowable.printStackTrace();
+    }
+    this.O = null;
+    this.Q = null;
+    Object localObject = this.M;
+    if (localObject != null)
+    {
+      if ((((h)localObject).d() > 0L) && (!TextUtils.isEmpty(this.J)))
       {
-        localThrowable.printStackTrace();
-        continue;
-        this.O = new File(this.h, this.J);
-        continue;
-        if (com.tencent.hlyyb.downloader.a.a.g(this.i))
-        {
-          if (this.G) {}
-          for (this.O = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.i));; this.O = new File(this.h, this.i))
-          {
-            this.Q = new File(this.h, com.tencent.hlyyb.downloader.a.a.e(this.i));
-            i1 = 1;
-            i2 = 0;
-            break;
-          }
-          label262:
-          Object localObject = F();
-          this.M = new h((String)localObject);
-          long l1;
-          boolean bool;
-          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.M.e))
-          {
-            l1 = this.O.lastModified();
-            if ((i1 != 0) && (l1 >= this.M.b) && (this.M.a > 0L) && (this.M.d() <= this.M.a)) {
-              bool = true;
-            }
-          }
-          for (;;)
-          {
-            if (bool)
-            {
-              if (TextUtils.isEmpty(this.J)) {
-                this.J = this.i;
-              }
-              this.j = this.M.c;
-              this.o.set(this.M.d);
-              if ((i1 == 0) || (this.M.a <= 0L)) {
-                break label602;
-              }
-              this.w = true;
-            }
-            for (;;)
-            {
-              if (!bool)
-              {
-                E();
-                this.g = -1L;
-                this.J = "";
-                this.j = 0L;
-                this.o.set(0L);
-                this.k = true;
-                this.l = "";
-                this.m = "";
-                this.q = 0;
-                this.K = false;
-                this.r = 0;
-                this.s = "";
-                this.M = new h("");
-                this.w = false;
-              }
-              this.ac = bool;
-              return true;
-              if ((i2 == 0) || (l1 < this.M.b)) {
-                break label638;
-              }
-              bool = true;
-              break;
-              localObject = new StringBuilder("resume failed. cfg:").append((String)localObject).append(",flm:").append(l1).append(",from:");
-              if (i1 != 0) {}
-              for (i1 = 0;; i1 = 1)
-              {
-                this.x = i1;
-                label602:
-                break;
-              }
-              this.x = ("resume failed. cfg:" + (String)localObject);
-              label632:
-              bool = false;
-            }
-            label638:
-            bool = false;
-          }
+        if (this.G) {
+          localObject = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.J));
+        } else {
+          localObject = new File(this.h, this.J);
         }
-        int i1 = 0;
-        int i2 = 0;
-        continue;
-        label651:
-        i1 = 0;
+        this.O = ((File)localObject);
+        this.Q = new File(this.h, com.tencent.hlyyb.downloader.a.a.e(this.J));
+        i1 = 1;
+        break label240;
       }
     }
+    else if (com.tencent.hlyyb.downloader.a.a.g(this.i))
+    {
+      if (this.G) {
+        localObject = new File(this.h, com.tencent.hlyyb.downloader.a.a.f(this.i));
+      } else {
+        localObject = new File(this.h, this.i);
+      }
+      this.O = ((File)localObject);
+      this.Q = new File(this.h, com.tencent.hlyyb.downloader.a.a.e(this.i));
+      i1 = 0;
+      i2 = 1;
+      break label242;
+    }
+    int i1 = 0;
+    label240:
+    int i2 = 0;
+    label242:
+    boolean bool2;
+    if (((i1 != 0) || (i2 != 0)) && (this.O.exists()))
+    {
+      if (!y()) {
+        return false;
+      }
+      localObject = F();
+      this.M = new h((String)localObject);
+      StringBuilder localStringBuilder;
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (this.M.e))
+      {
+        long l1 = this.O.lastModified();
+        boolean bool1;
+        if (((i2 != 0) && (l1 >= this.M.b) && (this.M.a > 0L) && (this.M.d() <= this.M.a)) || ((i1 != 0) && (l1 >= this.M.b))) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        if (bool1)
+        {
+          if (TextUtils.isEmpty(this.J)) {
+            this.J = this.i;
+          }
+          this.j = this.M.c;
+          this.o.set(this.M.d);
+          bool2 = bool1;
+          if (i2 != 0)
+          {
+            bool2 = bool1;
+            if (this.M.a > 0L)
+            {
+              this.w = true;
+              bool2 = bool1;
+            }
+          }
+        }
+        else
+        {
+          localStringBuilder = new StringBuilder("resume failed. cfg:");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(",flm:");
+          localStringBuilder.append(l1);
+          localStringBuilder.append(",from:");
+          localStringBuilder.append(i2 ^ 0x1);
+          this.x = localStringBuilder.toString();
+          bool2 = bool1;
+        }
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder("resume failed. cfg:");
+        localStringBuilder.append((String)localObject);
+        this.x = localStringBuilder.toString();
+      }
+    }
+    else
+    {
+      bool2 = false;
+    }
+    if (!bool2)
+    {
+      E();
+      this.g = -1L;
+      this.J = "";
+      this.j = 0L;
+      this.o.set(0L);
+      this.k = true;
+      this.l = "";
+      this.m = "";
+      this.q = 0;
+      this.K = false;
+      this.r = 0;
+      this.s = "";
+      this.M = new h("");
+      this.w = false;
+    }
+    this.ac = bool2;
+    return true;
   }
   
   public final void a(int paramInt)
@@ -843,63 +876,66 @@ public final class i
   
   public final void a(long paramLong)
   {
+    long l1;
+    label349:
     synchronized (this.ad)
     {
       if (this.g == -1L)
       {
-        if (paramLong > 0L) {
+        if (paramLong > 0L) {}
+        for (;;)
+        {
           this.an = paramLong;
+          break;
+          if (this.f <= 0L) {
+            break;
+          }
+          paramLong = this.f;
         }
-        while (this.f <= 0L) {
-          return;
-        }
-        this.an = this.f;
       }
-    }
-    long l1 = this.g;
-    long l2 = this.g;
-    if (paramLong > 0L) {}
-    while (this.g != paramLong)
-    {
-      for (;;)
+      l1 = this.g;
+      long l2 = this.g;
+      if (paramLong <= 0L)
+      {
+        if (this.f <= 0L) {
+          break label349;
+        }
+        paramLong = this.f;
+      }
+      if (this.g != paramLong)
       {
         this.g = -1L;
         this.an = paramLong;
-        if (this.M == null) {
-          break;
-        }
-        synchronized (this.aq)
-        {
-          paramLong = this.M.h();
-          int i1 = this.M.i();
-          this.ar.a = 1;
-          this.ar.d = this.z;
-          this.ar.c = l2;
-          this.ar.b = this.o.get();
-          if (this.ad.a != null)
+        if (this.M != null) {
+          synchronized (this.aq)
           {
-            this.ar.e = this.ad.a.k();
-            String str = this.ad.a.l();
-            if (!TextUtils.isEmpty(str)) {
-              this.ar.f = com.tencent.hlyyb.common.b.b.b(str);
+            paramLong = this.M.h();
+            int i1 = this.M.i();
+            this.ar.a = 1;
+            this.ar.d = this.z;
+            this.ar.c = l2;
+            this.ar.b = this.o.get();
+            if (this.ad.a != null)
+            {
+              this.ar.e = this.ad.a.k();
+              String str = this.ad.a.l();
+              if (!TextUtils.isEmpty(str)) {
+                this.ar.f = com.tencent.hlyyb.common.b.b.b(str);
+              }
+            }
+            this.M = new h("");
+            if ((this.ad.a != null) && (this.ad.a.c)) {
+              this.ad.a.e();
+            }
+            G();
+            this.M.a(paramLong, i1);
+            if (this.N != null) {
+              this.N.c();
             }
           }
-          this.M = new h("");
-          if ((this.ad.a != null) && (this.ad.a.c)) {
-            this.ad.a.e();
-          }
-          G();
-          this.M.a(paramLong, i1);
-          if (this.N != null) {
-            this.N.c();
-          }
         }
       }
-      if (this.f > 0L) {
-        paramLong = this.f;
-      } else {
-        paramLong = l1;
-      }
+      return;
     }
   }
   
@@ -912,42 +948,43 @@ public final class i
       {
         long l1 = this.M.d();
         int i1;
-        if (l1 > K())
-        {
+        if (l1 > K()) {
           i1 = 1;
-          if (i1 != 0)
-          {
-            this.as = l1;
-            H();
-            paramc.c();
-          }
-          localObject1 = ((List)localObject1).iterator();
+        } else {
+          i1 = 0;
         }
-        for (;;)
+        if (i1 != 0)
         {
-          if (!((Iterator)localObject1).hasNext()) {
-            break label224;
-          }
+          this.as = l1;
+          H();
+          paramc.c();
+        }
+        localObject1 = ((List)localObject1).iterator();
+        while (((Iterator)localObject1).hasNext())
+        {
           Object localObject2 = ((String)((Iterator)localObject1).next()).split(",");
           if (localObject2.length == 2)
           {
             l1 = Long.parseLong(localObject2[0]);
             long l2 = Long.parseLong(localObject2[1]);
-            localObject2 = l1 + "-" + l2;
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(l1);
+            ((StringBuilder)localObject2).append("-");
+            ((StringBuilder)localObject2).append(l2);
+            localObject2 = ((StringBuilder)localObject2).toString();
             com.tencent.hlyyb.downloader.e.b.a locala = new com.tencent.hlyyb.downloader.e.b.a(this.M, l1, l1, l1, l2);
             if (i1 == 0)
             {
               this.M.a(locala);
               paramc.a((String)localObject2);
-              continue;
-              i1 = 0;
-              break;
             }
-            paramc.b((String)localObject2);
+            else
+            {
+              paramc.b((String)localObject2);
+            }
           }
         }
       }
-      label224:
       this.am.remove(parama);
     }
   }
@@ -1006,34 +1043,35 @@ public final class i
   
   public final boolean a(com.tencent.hlyyb.downloader.e.b.a parama, com.tencent.hlyyb.downloader.b.c paramc)
   {
-    boolean bool = false;
-    long l1;
-    if (this.M != null)
+    Object localObject = this.M;
+    if (localObject != null)
     {
-      l1 = this.M.d();
-      if (l1 <= K()) {
-        break label116;
+      long l1 = ((h)localObject).d();
+      int i1;
+      if (l1 > K()) {
+        i1 = 1;
+      } else {
+        i1 = 0;
       }
-    }
-    label116:
-    for (int i1 = 1;; i1 = 0)
-    {
       long l2 = parama.d;
       long l3 = parama.f;
-      parama = l2 + "-" + l3;
-      if (i1 != 0) {
-        break;
+      parama = new StringBuilder();
+      parama.append(l2);
+      parama.append("-");
+      parama.append(l3);
+      parama = parama.toString();
+      if (i1 == 0)
+      {
+        localObject = new com.tencent.hlyyb.downloader.e.b.a(this.M, l2, l2, l2, l3);
+        this.M.a((com.tencent.hlyyb.downloader.e.b.a)localObject);
+        paramc.a(parama);
+        return true;
       }
-      com.tencent.hlyyb.downloader.e.b.a locala = new com.tencent.hlyyb.downloader.e.b.a(this.M, l2, l2, l2, l3);
-      this.M.a(locala);
-      paramc.a(parama);
-      bool = true;
-      return bool;
+      this.as = l1;
+      H();
+      paramc.c();
+      paramc.b(parama);
     }
-    this.as = l1;
-    H();
-    paramc.c();
-    paramc.b(parama);
     return false;
   }
   
@@ -1051,117 +1089,89 @@ public final class i
   
   public final boolean b()
   {
-    int i3 = 1;
-    if ((this.S) || (isPaused()) || (isDeleted()) || (isCompleted()) || (isFailed()))
+    long l2;
+    boolean bool1;
+    Object localObject2;
+    label549:
+    label552:
+    long l1;
+    if ((!this.S) && (!isPaused()) && (!isDeleted()) && (!isCompleted()) && (!isFailed()))
     {
-      if (this.N != null) {
-        this.N.c();
-      }
-      E();
-      return false;
-    }
-    long l2 = SystemClock.elapsedRealtime();
-    int i2 = 0;
-    boolean bool;
-    if ((this.S) || (isPaused()) || (isDeleted()) || (isCompleted()) || (isFailed()))
-    {
-      if (this.N != null) {
-        this.N.c();
-      }
-      bool = false;
-    }
-    for (;;)
-    {
-      if (!bool) {
-        B();
-      }
-      long l1 = SystemClock.elapsedRealtime();
-      if (this.V != null) {
-        this.V.a(i2, (int)(l1 - l2));
-      }
-      if (i2 > 0) {
-        D();
-      }
-      if ((this.S) || (isPaused()) || (isDeleted()) || (isCompleted()) || (isFailed())) {
-        E();
-      }
+      l2 = SystemClock.elapsedRealtime();
+      int i2 = 0;
       for (;;)
       {
-        com.tencent.hlyyb.downloader.e.b.a locala;
-        for (;;)
+        boolean bool2 = this.S;
+        int i3 = 1;
+        bool1 = true;
+        int i1 = 1;
+        if ((!bool2) && (!isPaused()) && (!isDeleted()) && (!isCompleted()) && (!isFailed()))
         {
-          return bool;
           if (SystemClock.elapsedRealtime() - l2 > com.tencent.hlyyb.downloader.a.a.d)
           {
             this.Y.getAndIncrement();
-            bool = true;
-            break;
+            break label552;
           }
           synchronized (this.aq)
           {
-            com.tencent.hlyyb.downloader.e.a.b localb = this.N.b();
-            if (localb == null)
-            {
-              bool = false;
-              break;
+            Object localObject3 = this.N.b();
+            if (localObject3 == null) {
+              break label549;
             }
-            locala = this.M.a(localb.a);
-            if (locala == null)
+            com.tencent.hlyyb.downloader.e.b.a locala = this.M.a(((com.tencent.hlyyb.downloader.e.a.b)localObject3).a);
+            if (locala == null) {
+              ??? = new StringBuilder("inner error: getRange null for sectionId:");
+            }
+            for (;;)
             {
-              a(false, -42, "inner error: getRange null for sectionId:" + localb.a, DownloaderTaskStatus.FAILED);
+              ((StringBuilder)???).append(((com.tencent.hlyyb.downloader.e.a.b)localObject3).a);
+              a(false, -42, ((StringBuilder)???).toString(), DownloaderTaskStatus.FAILED);
               return false;
+              if (locala.e == ((com.tencent.hlyyb.downloader.e.a.b)localObject3).b) {
+                break;
+              }
+              ??? = new StringBuilder("inner error: check offset fail for section:");
+              ((StringBuilder)???).append(locala);
+              ((StringBuilder)???).append(",buffer offset:");
+              ((StringBuilder)???).append(((com.tencent.hlyyb.downloader.e.a.b)localObject3).b);
+              ((StringBuilder)???).append(",sectionId:");
             }
-          }
-        }
-        if (locala.e != localObject2.b)
-        {
-          a(false, -42, "inner error: check offset fail for section:" + locala + ",buffer offset:" + localObject2.b + ",sectionId:" + localObject2.a, DownloaderTaskStatus.FAILED);
-          return false;
-        }
-        for (;;)
-        {
-          try
-          {
-            if (this.P.getFilePointer() != localObject2.b) {
-              this.P.seek(localObject2.b);
+            try
+            {
+              if (this.P.getFilePointer() != ((com.tencent.hlyyb.downloader.e.a.b)localObject3).b) {
+                this.P.seek(((com.tencent.hlyyb.downloader.e.a.b)localObject3).b);
+              }
+              this.P.write(((com.tencent.hlyyb.downloader.e.a.b)localObject3).c, 0, (int)((com.tencent.hlyyb.downloader.e.a.b)localObject3).d);
+              locala.e = (((com.tencent.hlyyb.downloader.e.a.b)localObject3).b + ((com.tencent.hlyyb.downloader.e.a.b)localObject3).d);
+              i3 = (int)(i2 + ((com.tencent.hlyyb.downloader.e.a.b)localObject3).d);
+              ((com.tencent.hlyyb.downloader.e.a.b)localObject3).c = null;
+              i2 = i3;
+              if (!this.aa) {
+                continue;
+              }
+              if (com.tencent.hlyyb.downloader.c.b.a().f() >= 2097152L) {
+                i1 = 0;
+              }
+              i2 = i3;
+              if (i1 == 0) {
+                continue;
+              }
+              B();
+              i2 = i3;
             }
-            this.P.write(localObject2.c, 0, (int)localObject2.d);
-            locala.e = (localObject2.b + localObject2.d);
-            int i4 = (int)(i2 + localObject2.d);
-            localObject2.c = null;
-            i2 = i4;
-            if (!this.aa) {
-              break;
+            catch (Exception localException)
+            {
+              localException.printStackTrace();
+              if ((localException instanceof NullPointerException)) {
+                break label549;
+              }
             }
-            if (com.tencent.hlyyb.downloader.c.b.a().f() >= 2097152L) {
-              break label642;
+            i1 = -50;
+            if (!this.O.exists())
+            {
+              i1 = -14;
             }
-            i1 = 1;
-            i2 = i4;
-            if (i1 == 0) {
-              break;
-            }
-            B();
-            i2 = i4;
-          }
-          catch (Exception localException)
-          {
-            localException.printStackTrace();
-            if ((localException instanceof NullPointerException)) {
-              break label842;
-            }
-          }
-          int i1 = -50;
-          if (!this.O.exists()) {
-            i1 = -14;
-          }
-          label640:
-          for (;;)
-          {
-            a(false, i1, "saveData fail.|" + localException, DownloaderTaskStatus.FAILED);
-            bool = false;
-            break;
-            if (f.a(localException))
+            else if (f.a(localException))
             {
               i1 = -12;
             }
@@ -1169,55 +1179,86 @@ public final class i
             {
               if ((localException instanceof IOException))
               {
-                String str = localException.getMessage();
-                if ((str == null) || (!str.contains("Read-only file system"))) {}
+                localObject3 = localException.getMessage();
+                if ((localObject3 != null) && (((String)localObject3).contains("Read-only file system"))) {}
               }
-              for (;;)
+              else
               {
-                if (i3 == 0) {
-                  break label640;
-                }
-                i1 = -17;
-                break;
                 i3 = 0;
               }
+              if (i3 != 0) {
+                i1 = -17;
+              }
             }
-          }
-          label642:
-          i1 = 0;
-        }
-        if (this.g > 0L)
-        {
-          l2 = this.M.d();
-          if (((l1 - this.ag <= com.tencent.hlyyb.downloader.a.a.c()) && (l2 != this.g)) || ((i2 > 0) && (!this.B))) {}
-          try
-          {
-            this.P.getFD().sync();
-            label711:
-            this.I = l2;
-            this.M.a(this.I, getPercentage());
-            this.T.a(DownloaderTaskStatus.DOWNLOADING);
-            this.ag = l1;
-            if (l2 == this.g)
-            {
-              this.V.c();
-              this.v = l1;
-              C();
-            }
-            else if (l2 > this.g)
-            {
-              a(false, -42, "inner error: receivedLength > detectLength:" + l2 + " > " + this.g, DownloaderTaskStatus.FAILED);
-              x();
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            break label711;
+            localObject3 = new StringBuilder("saveData fail.|");
+            ((StringBuilder)localObject3).append(localException);
+            a(false, i1, ((StringBuilder)localObject3).toString(), DownloaderTaskStatus.FAILED);
           }
         }
       }
+      localObject2 = this.N;
+      if (localObject2 != null) {
+        ((com.tencent.hlyyb.downloader.e.a.a)localObject2).c();
+      }
+      bool1 = false;
+      if (!bool1) {
+        B();
+      }
+      l1 = SystemClock.elapsedRealtime();
+      localObject2 = this.V;
+      if (localObject2 != null) {
+        ((a)localObject2).a(i2, (int)(l1 - l2));
+      }
+      if (i2 > 0) {
+        D();
+      }
+      if ((!this.S) && (!isPaused()) && (!isDeleted()) && (!isCompleted()) && (!isFailed()))
+      {
+        if (this.g <= 0L) {
+          break label842;
+        }
+        l2 = this.M.d();
+        if (((l1 - this.ag > com.tencent.hlyyb.downloader.a.a.c()) || (l2 == this.g)) && ((i2 <= 0) || (this.B))) {}
+      }
+    }
+    try
+    {
+      this.P.getFD().sync();
+      label699:
+      this.I = l2;
+      this.M.a(this.I, getPercentage());
+      this.T.a(DownloaderTaskStatus.DOWNLOADING);
+      this.ag = l1;
+      if (l2 == this.g)
+      {
+        this.V.c();
+        this.v = l1;
+        C();
+        return bool1;
+      }
+      if (l2 > this.g)
+      {
+        localObject2 = new StringBuilder("inner error: receivedLength > detectLength:");
+        ((StringBuilder)localObject2).append(l2);
+        ((StringBuilder)localObject2).append(" > ");
+        ((StringBuilder)localObject2).append(this.g);
+        a(false, -42, ((StringBuilder)localObject2).toString(), DownloaderTaskStatus.FAILED);
+        x();
+        return bool1;
+        E();
+      }
       label842:
-      bool = false;
+      return bool1;
+      localObject2 = this.N;
+      if (localObject2 != null) {
+        ((com.tencent.hlyyb.downloader.e.a.a)localObject2).c();
+      }
+      E();
+      return false;
+    }
+    catch (Throwable localThrowable)
+    {
+      break label699;
     }
   }
   
@@ -1232,7 +1273,9 @@ public final class i
     }
     catch (Exception localException)
     {
-      throw new HalleyException(localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localException);
+      throw new HalleyException(localStringBuilder.toString());
     }
   }
   
@@ -1261,10 +1304,10 @@ public final class i
   
   public final int getAverageSpeed()
   {
-    if ((this.j <= 10L) || (this.g <= 0L)) {
-      return -1;
+    if ((this.j > 10L) && (this.g > 0L)) {
+      return (int)(getReceivedLength() * 1000L / this.j);
     }
-    return (int)(getReceivedLength() * 1000L / this.j);
+    return -1;
   }
   
   public final DownloaderTaskCategory getCategory()
@@ -1332,24 +1375,27 @@ public final class i
     long l1 = l2;
     if (l2 == -1L)
     {
+      localh = this.M;
       l1 = l2;
-      if (this.M != null) {
-        l1 = this.M.a;
+      if (localh != null) {
+        l1 = localh.a;
       }
     }
-    if (this.M != null) {}
-    for (int i1 = this.M.i();; i1 = 0)
-    {
-      if (l1 <= 0L) {}
-      for (int i2 = 0;; i2 = (int)(getReceivedLength() * 100L / l1))
-      {
-        int i3 = i2;
-        if (i1 > i2) {
-          i3 = i1;
-        }
-        return i3;
-      }
+    h localh = this.M;
+    int i2 = 0;
+    int i1;
+    if (localh != null) {
+      i1 = localh.i();
+    } else {
+      i1 = 0;
     }
+    if (l1 > 0L) {
+      i2 = (int)(getReceivedLength() * 100L / l1);
+    }
+    if (i1 > i2) {
+      return i1;
+    }
+    return i2;
   }
   
   public final DownloaderTaskPriority getPriority()
@@ -1372,9 +1418,10 @@ public final class i
   
   public final long getReceivedLength()
   {
-    if (this.M != null)
+    h localh = this.M;
+    if (localh != null)
     {
-      long l1 = this.M.h();
+      long l1 = localh.h();
       if ((l1 > this.I) && (l1 <= this.M.a)) {
         return l1;
       }
@@ -1389,21 +1436,26 @@ public final class i
   
   public final String getSavePath()
   {
-    Object localObject1 = "";
     try
     {
-      localObject2 = new File(this.h, this.J).getAbsolutePath();
-      localObject1 = localObject2;
+      localObject1 = new File(this.h, this.J).getAbsolutePath();
     }
     catch (Exception localException)
     {
+      Object localObject1;
+      label22:
       Object localObject2;
-      label24:
-      break label24;
+      break label22;
     }
+    localObject1 = "";
     localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = this.h + "/" + this.J;
+    if (TextUtils.isEmpty((CharSequence)localObject1))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.h);
+      ((StringBuilder)localObject1).append("/");
+      ((StringBuilder)localObject1).append(this.J);
+      localObject2 = ((StringBuilder)localObject1).toString();
     }
     return localObject2;
   }
@@ -1428,15 +1480,16 @@ public final class i
     if (this.E.a() > 0L) {
       return this.E.a();
     }
-    if (this.f > 0L) {
-      return this.f;
+    long l1 = this.f;
+    if (l1 > 0L) {
+      return l1;
     }
     if (this.g > 0L) {
       return this.g;
     }
     try
     {
-      long l1 = this.M.a;
+      l1 = this.M.a;
       return l1;
     }
     catch (Exception localException) {}
@@ -1460,16 +1513,18 @@ public final class i
   
   public final long h()
   {
-    if (this.V != null) {
-      return this.V.d();
+    a locala = this.V;
+    if (locala != null) {
+      return locala.d();
     }
     return -1L;
   }
   
   public final long i()
   {
-    if (this.N != null) {
-      return this.N.a();
+    com.tencent.hlyyb.downloader.e.a.a locala = this.N;
+    if (locala != null) {
+      return locala.a();
     }
     return 0L;
   }
@@ -1526,33 +1581,36 @@ public final class i
   
   public final long j()
   {
-    if (this.M != null) {
-      return this.M.g();
+    h localh = this.M;
+    if (localh != null) {
+      return localh.g();
     }
     return 0L;
   }
   
   public final String k()
   {
-    if (this.ae != null) {
-      return this.ae.a();
+    com.tencent.hlyyb.downloader.e.c.a locala = this.ae;
+    if (locala != null) {
+      return locala.a();
     }
     return "";
   }
   
   public final String l()
   {
-    if (this.E != null) {
-      return this.E.g();
+    com.tencent.hlyyb.downloader.e.d.c localc = this.E;
+    if (localc != null) {
+      return localc.g();
     }
     return "";
   }
   
   public final String m()
   {
-    if (this.ad != null)
+    k localk = this.ad;
+    if (localk != null)
     {
-      k localk = this.ad;
       StringBuilder localStringBuilder = new StringBuilder();
       if (localk.a != null) {
         localStringBuilder.append(localk.a.h());
@@ -1567,9 +1625,9 @@ public final class i
   
   public final String n()
   {
-    if (this.ad != null)
+    k localk = this.ad;
+    if (localk != null)
     {
-      k localk = this.ad;
       StringBuilder localStringBuilder = new StringBuilder();
       if (localk.a != null) {
         localStringBuilder.append(localk.a.i());
@@ -1584,9 +1642,9 @@ public final class i
   
   public final String o()
   {
-    if (this.ad != null)
+    k localk = this.ad;
+    if (localk != null)
     {
-      k localk = this.ad;
       StringBuilder localStringBuilder = new StringBuilder();
       if (localk.a != null) {
         localStringBuilder.append(localk.a.j());
@@ -1601,76 +1659,71 @@ public final class i
   
   public final String p()
   {
+    boolean bool = this.E.f();
+    String str2 = "1";
     String str1;
-    String str2;
-    label47:
-    Object localObject;
-    if (this.E.f())
-    {
+    if (bool) {
       str1 = "1";
-      if (this.E.a() <= 0L) {
-        break label156;
-      }
-      str2 = this.E.a();
-      localObject = this.E.d();
-      if ((localObject == null) || (((List)localObject).size() <= 0) || (TextUtils.isEmpty(this.E.c()))) {
-        break label163;
-      }
-      localObject = "1";
-      label85:
-      if (TextUtils.isEmpty(this.E.b())) {
-        break label170;
-      }
-    }
-    label156:
-    label163:
-    label170:
-    for (String str3 = "1";; str3 = "0")
-    {
-      return str1 + "," + str2 + "," + (String)localObject + "," + str3;
+    } else {
       str1 = "0";
-      break;
-      str2 = "0";
-      break label47;
-      localObject = "0";
-      break label85;
     }
+    Object localObject1;
+    if (this.E.a() > 0L)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.E.a());
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    else
+    {
+      localObject1 = "0";
+    }
+    Object localObject2 = this.E.d();
+    if ((localObject2 != null) && (((List)localObject2).size() > 0) && (!TextUtils.isEmpty(this.E.c()))) {
+      localObject2 = "1";
+    } else {
+      localObject2 = "0";
+    }
+    if (TextUtils.isEmpty(this.E.b())) {
+      str2 = "0";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str1);
+    localStringBuilder.append(",");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(",");
+    localStringBuilder.append((String)localObject2);
+    localStringBuilder.append(",");
+    localStringBuilder.append(str2);
+    return localStringBuilder.toString();
   }
   
   public final void pause()
   {
     Object localObject = this.T.a();
-    int i1;
     if ((localObject == DownloaderTaskStatus.PENDING) || (localObject == DownloaderTaskStatus.STARTED) || (localObject == DownloaderTaskStatus.DOWNLOADING))
     {
-      if (this.M == null) {
-        break label80;
-      }
       localObject = this.M;
-      long l1 = ((h)localObject).f();
-      if ((l1 <= 0L) || (l1 != ((h)localObject).a)) {
-        break label75;
+      if (localObject != null)
+      {
+        long l1 = ((h)localObject).f();
+        int i1;
+        if ((l1 > 0L) && (l1 == ((h)localObject).a)) {
+          i1 = 1;
+        } else {
+          i1 = 0;
+        }
+        if (i1 != 0) {
+          return;
+        }
       }
-      i1 = 1;
-      if (i1 == 0) {
-        break label80;
-      }
-    }
-    for (;;)
-    {
-      return;
-      label75:
-      i1 = 0;
-      break;
-      label80:
       a(true, 0, "", DownloaderTaskStatus.PAUSED);
       try
       {
-        if (this.af != null)
-        {
+        if (this.af != null) {
           this.af.a();
-          return;
         }
+        return;
       }
       catch (Throwable localThrowable)
       {
@@ -1681,65 +1734,78 @@ public final class i
   
   public final String q()
   {
-    int i3 = 1;
     Object localObject3 = this.ar;
     Object localObject1 = this.M;
     Object localObject2 = this.ak;
     int i4 = this.au;
     long l1 = this.as;
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(((com.tencent.hlyyb.downloader.b.b)localObject3).a).append(",").append(((com.tencent.hlyyb.downloader.b.b)localObject3).b).append(",").append(((com.tencent.hlyyb.downloader.b.b)localObject3).d).append(",").append(((com.tencent.hlyyb.downloader.b.b)localObject3).c).append(",").append(((com.tencent.hlyyb.downloader.b.b)localObject3).e).append(",").append(((com.tencent.hlyyb.downloader.b.b)localObject3).f).append(",");
+    localStringBuilder.append(((com.tencent.hlyyb.downloader.b.b)localObject3).a);
+    localStringBuilder.append(",");
+    localStringBuilder.append(((com.tencent.hlyyb.downloader.b.b)localObject3).b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(((com.tencent.hlyyb.downloader.b.b)localObject3).d);
+    localStringBuilder.append(",");
+    localStringBuilder.append(((com.tencent.hlyyb.downloader.b.b)localObject3).c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(((com.tencent.hlyyb.downloader.b.b)localObject3).e);
+    localStringBuilder.append(",");
+    localStringBuilder.append(((com.tencent.hlyyb.downloader.b.b)localObject3).f);
+    localStringBuilder.append(",");
     localObject3 = ((List)localObject2).iterator();
     do
     {
-      if (!((Iterator)localObject3).hasNext()) {
+      boolean bool = ((Iterator)localObject3).hasNext();
+      i3 = 1;
+      if (!bool) {
         break;
       }
     } while (!((com.tencent.hlyyb.downloader.b.c)((Iterator)localObject3).next()).c);
-    for (int i2 = 1;; i2 = 0)
+    int i1 = 1;
+    break label207;
+    i1 = 0;
+    label207:
+    if (((List)localObject2).size() > 0)
     {
-      if (((List)localObject2).size() > 0)
+      localObject2 = ((List)localObject2).iterator();
+      do
       {
-        localObject2 = ((List)localObject2).iterator();
-        do
-        {
-          i1 = i3;
-          if (!((Iterator)localObject2).hasNext()) {
-            break;
-          }
-        } while (((com.tencent.hlyyb.downloader.b.c)((Iterator)localObject2).next()).c);
-      }
-      for (int i1 = 0;; i1 = 0)
-      {
-        i3 = ((h)localObject1).b();
-        localObject2 = localStringBuilder.append(0).append(",");
-        if (i2 != 0)
-        {
-          localObject1 = "1";
-          localObject2 = ((StringBuilder)localObject2).append((String)localObject1).append(",");
-          if (i1 == 0) {
-            break label339;
-          }
-          localObject1 = "1";
-          label267:
-          localObject2 = ((StringBuilder)localObject2).append((String)localObject1).append(",").append(i3).append(",");
-          if (l1 <= 0L) {
-            break label347;
-          }
-        }
-        label339:
-        label347:
-        for (localObject1 = Long.valueOf(l1);; localObject1 = "0")
-        {
-          ((StringBuilder)localObject2).append(localObject1).append(",").append(i4);
-          return localStringBuilder.toString();
-          localObject1 = "0";
+        i2 = i3;
+        if (!((Iterator)localObject2).hasNext()) {
           break;
-          localObject1 = "0";
-          break label267;
         }
-      }
+      } while (((com.tencent.hlyyb.downloader.b.c)((Iterator)localObject2).next()).c);
     }
+    int i2 = 0;
+    int i3 = ((h)localObject1).b();
+    localStringBuilder.append(0);
+    localStringBuilder.append(",");
+    localObject3 = "1";
+    localObject2 = "0";
+    if (i1 != 0) {
+      localObject1 = "1";
+    } else {
+      localObject1 = "0";
+    }
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(",");
+    if (i2 != 0) {
+      localObject1 = localObject3;
+    } else {
+      localObject1 = "0";
+    }
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(i3);
+    localStringBuilder.append(",");
+    localObject1 = localObject2;
+    if (l1 > 0L) {
+      localObject1 = Long.valueOf(l1);
+    }
+    localStringBuilder.append(localObject1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(i4);
+    return localStringBuilder.toString();
   }
   
   public final String r()
@@ -1748,8 +1814,10 @@ public final class i
     if (this.ak.size() > 0)
     {
       Iterator localIterator = this.ak.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append(((com.tencent.hlyyb.downloader.b.c)localIterator.next()).g.toString()).append(";");
+      while (localIterator.hasNext())
+      {
+        localStringBuilder.append(((com.tencent.hlyyb.downloader.b.c)localIterator.next()).g.toString());
+        localStringBuilder.append(";");
       }
       localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
     }
@@ -1771,18 +1839,20 @@ public final class i
     synchronized (this.T)
     {
       DownloaderTaskStatus localDownloaderTaskStatus = this.T.a();
-      if ((localDownloaderTaskStatus == DownloaderTaskStatus.STARTED) || (localDownloaderTaskStatus == DownloaderTaskStatus.DOWNLOADING) || (localDownloaderTaskStatus == DownloaderTaskStatus.COMPLETE) || (localDownloaderTaskStatus == DownloaderTaskStatus.PENDING)) {
-        return true;
-      }
-      if ((localDownloaderTaskStatus == DownloaderTaskStatus.DELETED) || (this.T.e())) {
+      if ((localDownloaderTaskStatus != DownloaderTaskStatus.STARTED) && (localDownloaderTaskStatus != DownloaderTaskStatus.DOWNLOADING) && (localDownloaderTaskStatus != DownloaderTaskStatus.COMPLETE) && (localDownloaderTaskStatus != DownloaderTaskStatus.PENDING))
+      {
+        if ((localDownloaderTaskStatus != DownloaderTaskStatus.DELETED) && (!this.T.e()))
+        {
+          this.K = false;
+          this.S = false;
+          this.k = true;
+          this.q = 0;
+          this.D = false;
+          c();
+          return true;
+        }
         return false;
       }
-      this.K = false;
-      this.S = false;
-      this.k = true;
-      this.q = 0;
-      this.D = false;
-      c();
       return true;
     }
   }
@@ -1810,34 +1880,48 @@ public final class i
       if (this.S) {
         return;
       }
-    }
-    this.T.c();
-    this.N = new com.tencent.hlyyb.downloader.e.a.a();
-    this.V = new a(this);
-    this.V.a();
-    boolean bool = z();
-    this.T.a(DownloaderTaskStatus.STARTED);
-    this.ae = new com.tencent.hlyyb.downloader.e.c.a();
-    a(com.tencent.hlyyb.common.a.a.g(), com.tencent.hlyyb.common.a.a.b());
-    if (!bool)
-    {
-      a(false, this.r, this.s, DownloaderTaskStatus.FAILED);
+      this.T.c();
+      this.N = new com.tencent.hlyyb.downloader.e.a.a();
+      this.V = new a(this);
+      this.V.a();
+      boolean bool = z();
+      this.T.a(DownloaderTaskStatus.STARTED);
+      this.ae = new com.tencent.hlyyb.downloader.e.c.a();
+      a(com.tencent.hlyyb.common.a.a.g(), com.tencent.hlyyb.common.a.a.b());
+      if (!bool)
+      {
+        a(false, this.r, this.s, DownloaderTaskStatus.FAILED);
+      }
+      else if (this.M.e())
+      {
+        this.I = this.M.a;
+        C();
+      }
+      else
+      {
+        ??? = this.ad.b();
+        if (((f)???).a != 0) {
+          a(false, ((f)???).a, ((f)???).b, DownloaderTaskStatus.FAILED);
+        }
+      }
       this.T.d();
-      if (this.N != null) {
-        this.N.c();
+      ??? = this.N;
+      if (??? != null) {
+        ((com.tencent.hlyyb.downloader.e.a.a)???).c();
       }
       E();
-      if (!this.U) {
-        break label378;
+      if (this.U)
+      {
+        x();
+        v();
+        if (this.G) {
+          w();
+        }
       }
-      x();
-      v();
-      if (this.G) {
-        w();
+      else if ((isCompleted()) || (this.r == -75))
+      {
+        x();
       }
-    }
-    for (;;)
-    {
       G();
       this.p.set(0L);
       this.ae = null;
@@ -1845,22 +1929,6 @@ public final class i
       ((k)???).a = null;
       ((k)???).b = null;
       return;
-      if (this.M.e())
-      {
-        this.I = this.M.a;
-        C();
-        break;
-      }
-      ??? = this.ad.b();
-      if (((f)???).a == 0) {
-        break;
-      }
-      a(false, ((f)???).a, ((f)???).b, DownloaderTaskStatus.FAILED);
-      break;
-      label378:
-      if ((isCompleted()) || (this.r == -75)) {
-        x();
-      }
     }
   }
   
@@ -1873,8 +1941,10 @@ public final class i
       while (localIterator.hasNext())
       {
         String str = ((com.tencent.hlyyb.downloader.b.c)localIterator.next()).b();
-        if (!TextUtils.isEmpty(str)) {
-          localStringBuilder.append(str).append(";");
+        if (!TextUtils.isEmpty(str))
+        {
+          localStringBuilder.append(str);
+          localStringBuilder.append(";");
         }
       }
       if (localStringBuilder.length() > 0) {
@@ -1978,13 +2048,13 @@ public final class i
   
   public final void t()
   {
-    if (!this.ai) {}
-    File localFile;
-    do
-    {
+    if (!this.ai) {
       return;
-      localFile = new File(this.h, this.J);
-    } while (!localFile.exists());
+    }
+    File localFile = new File(this.h, this.J);
+    if (!localFile.exists()) {
+      return;
+    }
     try
     {
       com.tencent.hlyyb.common.b.a.a(localFile);
@@ -2003,7 +2073,7 @@ public final class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.i
  * JD-Core Version:    0.7.0.1
  */

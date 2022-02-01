@@ -13,15 +13,16 @@ public enum AdVersion
   
   private AdVersion() {}
   
-  public static AdVersionAdapter getAdapter()
+  private AdVersionAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdVersionAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdVersionAdapter)localWeakReference.get();
     }
     return null;
   }
   
-  public static String getAppVersion()
+  public String getAppVersion()
   {
     AdVersionAdapter localAdVersionAdapter = getAdapter();
     if (localAdVersionAdapter != null) {
@@ -30,7 +31,7 @@ public enum AdVersion
     return null;
   }
   
-  public static void setAdapter(WeakReference<AdVersionAdapter> paramWeakReference)
+  public void setAdapter(WeakReference<AdVersionAdapter> paramWeakReference)
   {
     INSTANCE.adapter = paramWeakReference;
   }

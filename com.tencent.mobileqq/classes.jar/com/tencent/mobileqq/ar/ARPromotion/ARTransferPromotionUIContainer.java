@@ -25,8 +25,8 @@ public class ARTransferPromotionUIContainer
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561097, null));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131381991));
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560959, null));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131381195));
   }
   
   public void a(RelativeLayout paramRelativeLayout)
@@ -37,7 +37,7 @@ public class ARTransferPromotionUIContainer
     }
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -2);
     localLayoutParams.addRule(12);
-    localLayoutParams.bottomMargin = AIOUtils.a(57.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    localLayoutParams.bottomMargin = AIOUtils.b(57.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     paramRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetFrameLayout, localLayoutParams);
     this.jdField_a_of_type_Boolean = true;
   }
@@ -51,17 +51,19 @@ public class ARTransferPromotionUIContainer
   public void b(RelativeLayout paramRelativeLayout)
   {
     QLog.d("ARTransferPromotionUIContainer", 2, "disattachFromRootViewGroup");
-    if (!this.jdField_a_of_type_Boolean) {}
-    while (Thread.currentThread() != Looper.getMainLooper().getThread()) {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    paramRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    this.jdField_a_of_type_Boolean = false;
+    if (Thread.currentThread() == Looper.getMainLooper().getThread())
+    {
+      paramRelativeLayout.removeView(this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      this.jdField_a_of_type_Boolean = false;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotion.ARTransferPromotionUIContainer
  * JD-Core Version:    0.7.0.1
  */

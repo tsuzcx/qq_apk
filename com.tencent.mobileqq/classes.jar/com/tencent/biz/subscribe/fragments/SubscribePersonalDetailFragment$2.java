@@ -46,17 +46,17 @@ class SubscribePersonalDetailFragment$2
     SLog.c("SubscribePersonalDetail", "sendRequest GetMainPage error");
     paramBaseRequest = paramString;
     if (!TextUtils.isEmpty(paramString)) {
-      paramBaseRequest = HardCodeUtil.a(2131714523);
+      paramBaseRequest = HardCodeUtil.a(2131714444);
     }
-    if (this.a.getActivity() != null) {
-      QQToast.a(this.a.getActivity(), paramBaseRequest, 0).a();
+    if (this.a.getBaseActivity() != null) {
+      QQToast.a(this.a.getBaseActivity(), paramBaseRequest, 0).a();
     }
     VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(paramLong, System.currentTimeMillis() - SubscribePersonalDetailFragment.a(this.a)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribePersonalDetailFragment.2
  * JD-Core Version:    0.7.0.1
  */

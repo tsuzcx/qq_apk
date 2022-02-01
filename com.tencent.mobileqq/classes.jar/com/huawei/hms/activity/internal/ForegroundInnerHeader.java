@@ -7,55 +7,58 @@ import org.json.JSONObject;
 
 public class ForegroundInnerHeader
 {
-  private int a;
-  private String b;
-  private String c;
-  private final String d = "ForegroundInnerHeader";
+  private final String TAG = "ForegroundInnerHeader";
+  private String action;
+  private int apkVersion;
+  private String responseCallbackKey;
   
   public void fromJson(String paramString)
   {
     try
     {
       paramString = new JSONObject(paramString);
-      this.a = JsonUtil.getIntValue(paramString, "apkVersion");
-      this.b = JsonUtil.getStringValue(paramString, "action");
-      this.c = JsonUtil.getStringValue(paramString, "responseCallbackKey");
+      this.apkVersion = JsonUtil.getIntValue(paramString, "apkVersion");
+      this.action = JsonUtil.getStringValue(paramString, "action");
+      this.responseCallbackKey = JsonUtil.getStringValue(paramString, "responseCallbackKey");
       return;
     }
     catch (JSONException paramString)
     {
-      HMSLog.e("ForegroundInnerHeader", "fromJson failed: " + paramString.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("fromJson failed: ");
+      localStringBuilder.append(paramString.getMessage());
+      HMSLog.e("ForegroundInnerHeader", localStringBuilder.toString());
     }
   }
   
   public String getAction()
   {
-    return this.b;
+    return this.action;
   }
   
   public int getApkVersion()
   {
-    return this.a;
+    return this.apkVersion;
   }
   
   public String getResponseCallbackKey()
   {
-    return this.c;
+    return this.responseCallbackKey;
   }
   
   public void setAction(String paramString)
   {
-    this.b = paramString;
+    this.action = paramString;
   }
   
   public void setApkVersion(int paramInt)
   {
-    this.a = paramInt;
+    this.apkVersion = paramInt;
   }
   
   public void setResponseCallbackKey(String paramString)
   {
-    this.c = paramString;
+    this.responseCallbackKey = paramString;
   }
   
   public String toJson()
@@ -63,28 +66,35 @@ public class ForegroundInnerHeader
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      localJSONObject.put("apkVersion", this.a);
-      localJSONObject.put("action", this.b);
-      localJSONObject.put("responseCallbackKey", this.c);
-      return localJSONObject.toString();
+      localJSONObject.put("apkVersion", this.apkVersion);
+      localJSONObject.put("action", this.action);
+      localJSONObject.put("responseCallbackKey", this.responseCallbackKey);
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        HMSLog.e("ForegroundInnerHeader", "ForegroundInnerHeader toJson failed: " + localJSONException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ForegroundInnerHeader toJson failed: ");
+      localStringBuilder.append(localJSONException.getMessage());
+      HMSLog.e("ForegroundInnerHeader", localStringBuilder.toString());
     }
+    return localJSONObject.toString();
   }
   
   public String toString()
   {
-    return "apkVersion:" + this.a + ", action:" + this.b + ", responseCallbackKey:" + this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("apkVersion:");
+    localStringBuilder.append(this.apkVersion);
+    localStringBuilder.append(", action:");
+    localStringBuilder.append(this.action);
+    localStringBuilder.append(", responseCallbackKey:");
+    localStringBuilder.append(this.responseCallbackKey);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.activity.internal.ForegroundInnerHeader
  * JD-Core Version:    0.7.0.1
  */

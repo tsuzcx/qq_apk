@@ -52,46 +52,77 @@ public class JsStatMachine$JsState
   
   public void setJsContent(String paramString1, String paramString2)
   {
-    int j = 0;
     this.jsContent = paramString1;
     this.jsPath = paramString2;
-    StringBuilder localStringBuilder = new StringBuilder().append("JsState id:").append(this.id).append(" contentLength=");
-    if (paramString1 != null) {}
-    for (int i = paramString1.length();; i = 0)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JsState id:");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append(" contentLength=");
+    int j = 0;
+    int i;
+    if (paramString1 != null) {
+      i = paramString1.length();
+    } else {
+      i = 0;
+    }
+    localStringBuilder.append(i);
+    localStringBuilder.append(" path=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(" (");
+    localStringBuilder.append(this);
+    localStringBuilder.append(")");
+    QMLog.i("JsDebugInfo", localStringBuilder.toString());
+    try
     {
-      QMLog.i("JsDebugInfo", i + " path=" + paramString2 + " (" + this + ")");
-      try
+      if (!TextUtils.isEmpty(this.jsContent))
       {
-        if (!TextUtils.isEmpty(this.jsContent))
-        {
-          paramString1 = this.jsContent;
-          if (this.jsContent.length() > 150) {}
-          for (i = 150;; i = this.jsContent.length())
-          {
-            paramString1 = paramString1.substring(0, i);
-            paramString2 = this.jsContent;
-            i = j;
-            if (this.jsContent.length() > 150) {
-              i = this.jsContent.length() - 150;
-            }
-            paramString2 = paramString2.substring(i);
-            QMLog.i("JsDebugInfo", "JsState id:" + this.id + " begin=" + paramString1 + " (" + this + ")");
-            QMLog.i("JsDebugInfo", "JsState id:" + this.id + " end=" + paramString2 + " (" + this + ")");
-            return;
-          }
+        paramString1 = this.jsContent;
+        if (this.jsContent.length() > 150) {
+          i = 150;
+        } else {
+          i = this.jsContent.length();
         }
+        paramString1 = paramString1.substring(0, i);
+        paramString2 = this.jsContent;
+        i = j;
+        if (this.jsContent.length() > 150) {
+          i = this.jsContent.length() - 150;
+        }
+        paramString2 = paramString2.substring(i);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("JsState id:");
+        localStringBuilder.append(this.id);
+        localStringBuilder.append(" begin=");
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append(" (");
+        localStringBuilder.append(this);
+        localStringBuilder.append(")");
+        QMLog.i("JsDebugInfo", localStringBuilder.toString());
+        paramString1 = new StringBuilder();
+        paramString1.append("JsState id:");
+        paramString1.append(this.id);
+        paramString1.append(" end=");
+        paramString1.append(paramString2);
+        paramString1.append(" (");
+        paramString1.append(this);
+        paramString1.append(")");
+        QMLog.i("JsDebugInfo", paramString1.toString());
         return;
       }
-      catch (Throwable paramString1)
-      {
-        QMLog.i("JsDebugInfo", " (" + this + ")", paramString1);
-      }
+    }
+    catch (Throwable paramString1)
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append(" (");
+      paramString2.append(this);
+      paramString2.append(")");
+      QMLog.i("JsDebugInfo", paramString2.toString(), paramString1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.fsm.JsStatMachine.JsState
  * JD-Core Version:    0.7.0.1
  */

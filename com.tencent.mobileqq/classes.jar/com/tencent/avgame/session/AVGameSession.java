@@ -74,20 +74,25 @@ public class AVGameSession
     {
       try
       {
-        if (i < this.jdField_a_of_type_JavaUtilList.size())
+        if (i >= this.jdField_a_of_type_JavaUtilList.size()) {
+          break label90;
+        }
+        if (((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mUin == paramLong)
         {
-          if (((AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i)).mUin != paramLong) {
-            break label80;
-          }
           AVGameUserInfo localAVGameUserInfo = (AVGameUserInfo)this.jdField_a_of_type_JavaUtilList.get(i);
           return localAVGameUserInfo;
         }
       }
-      finally {}
-      Object localObject2 = null;
+      finally
+      {
+        continue;
+        throw localObject1;
+        continue;
+        i += 1;
+      }
       continue;
-      label80:
-      i += 1;
+      label90:
+      Object localObject2 = null;
     }
   }
   
@@ -132,27 +137,48 @@ public class AVGameSession
           return;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw localObject;
+        continue;
+        i += 1;
+      }
     }
   }
   
   public void a(int paramInt)
   {
-    AVLog.d("AVGameSession", "setSessionStatus. old status = " + this.jdField_f_of_type_Int + ", new status = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setSessionStatus. old status = ");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(", new status = ");
+    localStringBuilder.append(paramInt);
+    AVLog.d("AVGameSession", localStringBuilder.toString());
     this.jdField_f_of_type_Int = paramInt;
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
     int i = this.jdField_c_of_type_Int;
-    if (paramBoolean) {}
-    for (this.jdField_c_of_type_Int &= (paramInt ^ 0xFFFFFFFF);; this.jdField_c_of_type_Int |= paramInt)
+    if (paramBoolean) {
+      this.jdField_c_of_type_Int = ((paramInt ^ 0xFFFFFFFF) & i);
+    } else {
+      this.jdField_c_of_type_Int = (i | paramInt);
+    }
+    if (i != this.jdField_c_of_type_Int)
     {
-      if (i != this.jdField_c_of_type_Int) {
-        AVLog.d("AVGameSession", "setLocalVideoFlag, mask[" + paramInt + "], clear[" + paramBoolean + "], [" + i + "->" + this.jdField_c_of_type_Int + "]");
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setLocalVideoFlag, mask[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("], clear[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], [");
+      localStringBuilder.append(i);
+      localStringBuilder.append("->");
+      localStringBuilder.append(this.jdField_c_of_type_Int);
+      localStringBuilder.append("]");
+      AVLog.d("AVGameSession", localStringBuilder.toString());
     }
   }
   
@@ -170,57 +196,69 @@ public class AVGameSession
   
   public void a(List<Long> paramList)
   {
-    if ((paramList == null) || (this.jdField_a_of_type_JavaUtilList.size() == 0)) {
-      return;
+    ArrayList localArrayList;
+    if (paramList != null)
+    {
+      if (this.jdField_a_of_type_JavaUtilList.size() == 0) {
+        return;
+      }
+      localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
+      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
     }
-    ArrayList localArrayList = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
-    localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
     for (;;)
     {
-      Long localLong;
       int i;
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
         this.jdField_a_of_type_JavaUtilList.clear();
         Iterator localIterator = paramList.iterator();
-        if (!localIterator.hasNext()) {
-          break label213;
-        }
-        localLong = (Long)localIterator.next();
-        i = 0;
-        if (i >= localArrayList.size()) {
-          break label273;
-        }
-        if (((AVGameUserInfo)localArrayList.get(i)).mUin == localLong.longValue())
+        if (localIterator.hasNext())
         {
-          paramList = (AVGameUserInfo)localArrayList.get(i);
-          if (paramList == null) {
-            break label180;
+          Long localLong = (Long)localIterator.next();
+          Object localObject = null;
+          i = 0;
+          paramList = localObject;
+          if (i < localArrayList.size())
+          {
+            if (((AVGameUserInfo)localArrayList.get(i)).mUin != localLong.longValue()) {
+              break label294;
+            }
+            paramList = (AVGameUserInfo)localArrayList.get(i);
           }
-          this.jdField_a_of_type_JavaUtilList.add(paramList);
-          localArrayList.remove(paramList);
+          if (paramList != null)
+          {
+            this.jdField_a_of_type_JavaUtilList.add(paramList);
+            localArrayList.remove(paramList);
+            continue;
+          }
+          paramList = new StringBuilder();
+          paramList.append("updateUserPos cur[");
+          paramList.append(localLong);
+          paramList.append("] not exist. ");
+          AVLog.d("AVGameSession", paramList.toString());
+          continue;
         }
-      }
-      i += 1;
-      continue;
-      label180:
-      AVLog.d("AVGameSession", "updateUserPos cur[" + localLong + "] not exist. ");
-      continue;
-      label213:
-      if (localArrayList.size() > 0)
-      {
-        AVLog.d("AVGameSession", "updateUserPos, user[" + localArrayList.size() + "] not in list.");
-        this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+        if (localArrayList.size() > 0)
+        {
+          paramList = new StringBuilder();
+          paramList.append("updateUserPos, user[");
+          paramList.append(localArrayList.size());
+          paramList.append("] not in list.");
+          AVLog.d("AVGameSession", paramList.toString());
+          this.jdField_a_of_type_JavaUtilList.addAll(localArrayList);
+        }
+        return;
       }
       return;
-      label273:
-      paramList = null;
+      label294:
+      i += 1;
     }
   }
   
   public boolean a()
   {
-    return (this.jdField_f_of_type_Int == 0) || (this.jdField_f_of_type_Int == 4);
+    int i = this.jdField_f_of_type_Int;
+    return (i == 0) || (i == 4);
   }
   
   public boolean a(int paramInt)
@@ -230,36 +268,57 @@ public class AVGameSession
   
   public boolean a(long paramLong, boolean paramBoolean)
   {
-    boolean bool2 = false;
-    AVGameUserInfo localAVGameUserInfo = a(paramLong);
-    boolean bool1 = bool2;
-    if (localAVGameUserInfo != null)
+    Object localObject = a(paramLong);
+    boolean bool;
+    if ((localObject != null) && (((AVGameUserInfo)localObject).hasVideo()))
     {
-      bool1 = bool2;
-      if (localAVGameUserInfo.hasVideo())
-      {
-        localAVGameUserInfo.mBigVideo = paramBoolean;
-        bool1 = true;
-      }
+      ((AVGameUserInfo)localObject).mBigVideo = paramBoolean;
+      bool = true;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameSession", 4, "updateUserBigVideoFlag, uin[" + paramLong + "], bigVideoFlag[" + paramBoolean + "], updateSuccess[" + bool1 + "]");
+    else
+    {
+      bool = false;
     }
-    return bool1;
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateUserBigVideoFlag, uin[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("], bigVideoFlag[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("], updateSuccess[");
+      ((StringBuilder)localObject).append(bool);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameSession", 4, ((StringBuilder)localObject).toString());
+    }
+    return bool;
   }
   
   public boolean a(long paramLong, boolean paramBoolean, int paramInt)
   {
-    boolean bool = false;
-    AVGameUserInfo localAVGameUserInfo = a(paramLong);
-    if (localAVGameUserInfo != null)
+    Object localObject = a(paramLong);
+    boolean bool;
+    if (localObject != null)
     {
-      localAVGameUserInfo.mVideoOn = paramBoolean;
-      localAVGameUserInfo.mVideoSrc = paramInt;
+      ((AVGameUserInfo)localObject).mVideoOn = paramBoolean;
+      ((AVGameUserInfo)localObject).mVideoSrc = paramInt;
       bool = true;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameSession", 4, "updateUserVideoStatus, uin[" + paramLong + "], on[" + paramBoolean + "], src[" + paramInt + "]");
+    else
+    {
+      bool = false;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateUserVideoStatus, uin[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("], on[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("], src[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameSession", 4, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
@@ -268,7 +327,13 @@ public class AVGameSession
   {
     if (this.jdField_d_of_type_Int != paramInt)
     {
-      AVLog.d("AVGameSession", "updateStageStatus, [" + this.jdField_d_of_type_Int + "->" + paramInt + "]");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateStageStatus, [");
+      localStringBuilder.append(this.jdField_d_of_type_Int);
+      localStringBuilder.append("->");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      AVLog.d("AVGameSession", localStringBuilder.toString());
       this.jdField_d_of_type_Int = paramInt;
     }
   }
@@ -288,16 +353,29 @@ public class AVGameSession
   
   public boolean b(long paramLong, boolean paramBoolean, int paramInt)
   {
-    boolean bool = false;
-    AVGameUserInfo localAVGameUserInfo = a(paramLong);
-    if (localAVGameUserInfo != null)
+    Object localObject = a(paramLong);
+    boolean bool;
+    if (localObject != null)
     {
-      localAVGameUserInfo.mSubVideoOn = paramBoolean;
-      localAVGameUserInfo.mSubVideoSrc = paramInt;
+      ((AVGameUserInfo)localObject).mSubVideoOn = paramBoolean;
+      ((AVGameUserInfo)localObject).mSubVideoSrc = paramInt;
       bool = true;
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("AVGameSession", 4, "updateUserVideoStatus, uin[" + paramLong + "], on[" + paramBoolean + "], src[" + paramInt + "]");
+    else
+    {
+      bool = false;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateUserVideoStatus, uin[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("], on[");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("], src[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("AVGameSession", 4, ((StringBuilder)localObject).toString());
     }
     return bool;
   }
@@ -324,21 +402,42 @@ public class AVGameSession
           return;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw paramList;
+        continue;
+        i += 1;
+      }
     }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(200);
-    localStringBuilder.append("[sessionId: ").append(this.jdField_a_of_type_JavaLangString).append(", relationType: ").append(this.jdField_b_of_type_Int).append(", relationId: ").append(this.jdField_a_of_type_Long).append(", localSpeakerOn: ").append(this.jdField_d_of_type_Boolean).append(", localMute: ").append(this.jdField_e_of_type_Boolean).append(", localVideoFlag: ").append(this.jdField_c_of_type_Int).append(", isAutoGoOnStage: ").append(this.g).append(", stageStatus: ").append(this.jdField_d_of_type_Int).append("]");
+    localStringBuilder.append("[sessionId: ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", relationType: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", relationId: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", localSpeakerOn: ");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append(", localMute: ");
+    localStringBuilder.append(this.jdField_e_of_type_Boolean);
+    localStringBuilder.append(", localVideoFlag: ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", isAutoGoOnStage: ");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", stageStatus: ");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.session.AVGameSession
  * JD-Core Version:    0.7.0.1
  */

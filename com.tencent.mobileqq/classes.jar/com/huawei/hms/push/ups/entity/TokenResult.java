@@ -3,7 +3,7 @@ package com.huawei.hms.push.ups.entity;
 public class TokenResult
   extends CodeResult
 {
-  private String a;
+  public String c;
   
   public TokenResult() {}
   
@@ -19,17 +19,17 @@ public class TokenResult
   
   public TokenResult(String paramString)
   {
-    this.a = paramString;
+    this.c = paramString;
   }
   
   public String getToken()
   {
-    return this.a;
+    return this.c;
   }
   
   public void setToken(String paramString)
   {
-    this.a = paramString;
+    this.c = paramString;
   }
 }
 

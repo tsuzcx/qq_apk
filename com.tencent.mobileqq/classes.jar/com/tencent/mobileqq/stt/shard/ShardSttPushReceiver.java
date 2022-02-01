@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.stt.shard;
 
-import android.support.annotation.Nullable;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -32,67 +31,91 @@ public class ShardSttPushReceiver
     return localSttPushPacket;
   }
   
-  @Nullable
   private String a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.stt_ShardSttRcv", 2, "tryGetContinuouslyString start Start = " + this.jdField_a_of_type_Int + " | Current = " + this.b);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("tryGetContinuouslyString start Start = ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject1).append(" | Current = ");
+      ((StringBuilder)localObject1).append(this.b);
+      QLog.d("Q.stt_ShardSttRcv", 2, ((StringBuilder)localObject1).toString());
     }
     if (this.b < this.jdField_a_of_type_Int) {
-      localObject = null;
+      return null;
     }
-    int i;
-    String str;
-    do
+    int i = this.jdField_a_of_type_Int;
+    Object localObject1 = "";
+    while (i <= this.b)
     {
-      return localObject;
-      i = this.jdField_a_of_type_Int;
-      str = "";
-      localObject = str;
-    } while (i > this.b);
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(i))) {}
-    for (Object localObject = (BaseSttPushReceiver.SttPushPacket)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));; localObject = null)
-    {
-      if ((localObject == null) || (!((BaseSttPushReceiver.SttPushPacket)localObject).jdField_a_of_type_Boolean))
+      Object localObject2;
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey(Integer.valueOf(i))) {
+        localObject2 = (BaseSttPushReceiver.SttPushPacket)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Integer.valueOf(i));
+      } else {
+        localObject2 = null;
+      }
+      StringBuilder localStringBuilder;
+      if ((localObject2 != null) && (((BaseSttPushReceiver.SttPushPacket)localObject2).jdField_a_of_type_Boolean))
       {
-        StringBuilder localStringBuilder;
+        localObject2 = new String(((BaseSttPushReceiver.SttPushPacket)localObject2).jdField_a_of_type_JavaNioByteBuffer.array());
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append((String)localObject2);
+        localObject1 = localStringBuilder.toString();
+        i += 1;
+      }
+      else
+      {
         if (QLog.isColorLevel())
         {
-          localStringBuilder = new StringBuilder().append("tryGetContinuouslyString return null index = ").append(i).append(" | tempPacket is ");
-          if (localObject != null) {
-            break label172;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("tryGetContinuouslyString return null index = ");
+          localStringBuilder.append(i);
+          localStringBuilder.append(" | tempPacket is ");
+          if (localObject2 == null) {
+            localObject1 = "null";
+          } else {
+            localObject1 = "not end";
           }
+          localStringBuilder.append((String)localObject1);
+          QLog.d("Q.stt_ShardSttRcv", 2, localStringBuilder.toString());
         }
-        label172:
-        for (str = "null";; str = "not end")
-        {
-          QLog.d("Q.stt_ShardSttRcv", 2, str);
-          return null;
-        }
+        return null;
       }
-      localObject = new String(((BaseSttPushReceiver.SttPushPacket)localObject).jdField_a_of_type_JavaNioByteBuffer.array());
-      str = str + (String)localObject;
-      i += 1;
-      break;
     }
+    return localObject1;
   }
   
   private void a(int paramInt)
   {
-    if ((this.jdField_a_of_type_Long == 0L) || (paramInt == 0)) {
-      return;
+    if (this.jdField_a_of_type_Long != 0L)
+    {
+      if (paramInt == 0) {
+        return;
+      }
+      long l1 = System.currentTimeMillis();
+      long l2 = this.jdField_a_of_type_Long;
+      this.jdField_a_of_type_Long = 0L;
+      l1 = (l1 - l2) / paramInt;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("PttSttReport reportPackageTimeInterval timeInterval = ");
+        ((StringBuilder)localObject).append(l1);
+        QLog.d("Q.stt_ShardSttRcv", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = new HashMap();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(l1);
+      localStringBuilder.append("");
+      ((HashMap)localObject).put("timeInterval", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(l1);
+      localStringBuilder.append("");
+      ((HashMap)localObject).put("ntimeInterval", localStringBuilder.toString());
+      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttShardSttReveivePartTimeInterval", true, 0L, 0L, (HashMap)localObject, null);
     }
-    long l1 = System.currentTimeMillis();
-    long l2 = this.jdField_a_of_type_Long;
-    this.jdField_a_of_type_Long = 0L;
-    l1 = (l1 - l2) / paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.stt_ShardSttRcv", 2, "PttSttReport reportPackageTimeInterval timeInterval = " + l1);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("timeInterval", l1 + "");
-    localHashMap.put("ntimeInterval", l1 + "");
-    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "PttShardSttReveivePartTimeInterval", true, 0L, 0L, localHashMap, null);
   }
   
   private void b()
@@ -122,375 +145,443 @@ public class ShardSttPushReceiver
   public int a(tencent.im.s2c.msgtype0x210.submsgtype0x3d.SttResultPush.MsgBody paramMsgBody)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_3
-    //   2: aload_0
-    //   3: getfield 30	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   6: astore 8
-    //   8: aload 8
-    //   10: monitorenter
-    //   11: aload_1
-    //   12: ifnonnull +10 -> 22
-    //   15: aload 8
-    //   17: monitorexit
-    //   18: sipush 4001
-    //   21: ireturn
-    //   22: aload_1
-    //   23: getfield 161	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$MsgBody:msg_ptt_shard_resp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp;
-    //   26: astore 9
-    //   28: aload 9
-    //   30: invokevirtual 166	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:has	()Z
-    //   33: ifne +31 -> 64
-    //   36: aload_0
-    //   37: invokespecial 168	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:c	()V
-    //   40: aload_0
-    //   41: getfield 171	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
-    //   44: iconst_4
-    //   45: sipush 2007
-    //   48: invokevirtual 176	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(II)V
-    //   51: aload 8
-    //   53: monitorexit
-    //   54: sipush 4001
-    //   57: ireturn
-    //   58: astore_1
-    //   59: aload 8
-    //   61: monitorexit
-    //   62: aload_1
-    //   63: athrow
-    //   64: aload 9
-    //   66: getfield 180	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:uint64_sessionid	Lcom/tencent/mobileqq/pb/PBUInt64Field;
-    //   69: invokevirtual 184	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
-    //   72: invokestatic 189	java/lang/Long:valueOf	(J)Ljava/lang/Long;
-    //   75: astore 11
-    //   77: aload 9
-    //   79: getfield 193	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:uint32_error_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   82: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   85: istore_2
-    //   86: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   89: ifeq +38 -> 127
-    //   92: ldc 63
-    //   94: iconst_2
-    //   95: new 65	java/lang/StringBuilder
-    //   98: dup
-    //   99: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   102: ldc 200
-    //   104: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   107: iload_2
-    //   108: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   111: ldc 202
-    //   113: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: aload 11
-    //   118: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   121: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   124: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   127: iload_2
-    //   128: ifeq +23 -> 151
-    //   131: aload_0
-    //   132: invokespecial 168	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:c	()V
-    //   135: aload_0
-    //   136: getfield 171	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
-    //   139: iconst_4
-    //   140: iload_2
-    //   141: invokevirtual 176	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(II)V
-    //   144: aload 8
-    //   146: monitorexit
-    //   147: sipush 4002
-    //   150: ireturn
-    //   151: aload_0
-    //   152: getfield 30	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   155: invokevirtual 208	java/util/concurrent/ConcurrentHashMap:size	()I
-    //   158: ifne +19 -> 177
-    //   161: aload_0
-    //   162: getfield 23	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Long	J
-    //   165: lconst_0
-    //   166: lcmp
-    //   167: ifne +10 -> 177
-    //   170: aload_0
-    //   171: invokestatic 117	java/lang/System:currentTimeMillis	()J
-    //   174: putfield 23	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Long	J
-    //   177: aload 9
-    //   179: getfield 211	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:uint32_total_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   182: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   185: istore 4
-    //   187: iload 4
+    //   0: aload_0
+    //   1: getfield 30	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   4: astore 7
+    //   6: aload 7
+    //   8: monitorenter
+    //   9: aload_1
+    //   10: ifnonnull +10 -> 20
+    //   13: aload 7
+    //   15: monitorexit
+    //   16: sipush 4001
+    //   19: ireturn
+    //   20: aload_1
+    //   21: getfield 159	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$MsgBody:msg_ptt_shard_resp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp;
+    //   24: astore 8
+    //   26: aload 8
+    //   28: invokevirtual 164	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:has	()Z
+    //   31: ifne +25 -> 56
+    //   34: aload_0
+    //   35: invokespecial 166	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:c	()V
+    //   38: aload_0
+    //   39: getfield 169	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
+    //   42: iconst_4
+    //   43: sipush 2007
+    //   46: invokevirtual 174	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(II)V
+    //   49: aload 7
+    //   51: monitorexit
+    //   52: sipush 4001
+    //   55: ireturn
+    //   56: aload 8
+    //   58: getfield 178	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:uint64_sessionid	Lcom/tencent/mobileqq/pb/PBUInt64Field;
+    //   61: invokevirtual 182	com/tencent/mobileqq/pb/PBUInt64Field:get	()J
+    //   64: invokestatic 187	java/lang/Long:valueOf	(J)Ljava/lang/Long;
+    //   67: astore 9
+    //   69: aload 8
+    //   71: getfield 191	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:uint32_error_code	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   74: invokevirtual 196	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   77: istore_2
+    //   78: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   81: ifeq +48 -> 129
+    //   84: new 62	java/lang/StringBuilder
+    //   87: dup
+    //   88: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   91: astore_1
+    //   92: aload_1
+    //   93: ldc 198
+    //   95: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   98: pop
+    //   99: aload_1
+    //   100: iload_2
+    //   101: invokevirtual 72	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   104: pop
+    //   105: aload_1
+    //   106: ldc 200
+    //   108: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   111: pop
+    //   112: aload_1
+    //   113: aload 9
+    //   115: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   118: pop
+    //   119: ldc 76
+    //   121: iconst_2
+    //   122: aload_1
+    //   123: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   126: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   129: iload_2
+    //   130: ifeq +23 -> 153
+    //   133: aload_0
+    //   134: invokespecial 166	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:c	()V
+    //   137: aload_0
+    //   138: getfield 169	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
+    //   141: iconst_4
+    //   142: iload_2
+    //   143: invokevirtual 174	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(II)V
+    //   146: aload 7
+    //   148: monitorexit
+    //   149: sipush 4002
+    //   152: ireturn
+    //   153: aload_0
+    //   154: getfield 30	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   157: invokevirtual 206	java/util/concurrent/ConcurrentHashMap:size	()I
+    //   160: ifne +19 -> 179
+    //   163: aload_0
+    //   164: getfield 23	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Long	J
+    //   167: lconst_0
+    //   168: lcmp
+    //   169: ifne +10 -> 179
+    //   172: aload_0
+    //   173: invokestatic 115	java/lang/System:currentTimeMillis	()J
+    //   176: putfield 23	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Long	J
+    //   179: aload 8
+    //   181: getfield 209	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:uint32_total_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   184: invokevirtual 196	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   187: istore_3
+    //   188: iload_3
     //   189: aload_0
     //   190: getfield 17	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Int	I
     //   193: if_icmpge +8 -> 201
-    //   196: aload 8
+    //   196: aload 7
     //   198: monitorexit
     //   199: iconst_0
     //   200: ireturn
     //   201: aload_0
     //   202: getfield 19	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:b	I
-    //   205: iload 4
-    //   207: if_icmpge +9 -> 216
-    //   210: aload_0
-    //   211: iload 4
-    //   213: putfield 19	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:b	I
-    //   216: aload_0
-    //   217: iload 4
-    //   219: invokespecial 213	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:a	(I)Lcom/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket;
-    //   222: astore 10
-    //   224: aload 9
-    //   226: getfield 217	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:all_text_rsp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp;
-    //   229: invokevirtual 220	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:has	()Z
-    //   232: ifeq +229 -> 461
-    //   235: aload 9
-    //   237: getfield 217	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:all_text_rsp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp;
-    //   240: astore_1
-    //   241: iconst_1
-    //   242: istore 7
-    //   244: aload_1
-    //   245: getfield 223	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:uint32_pos	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   248: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   251: istore_2
-    //   252: aload_1
-    //   253: getfield 226	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:uint32_len	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   256: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   259: istore 5
-    //   261: aload_1
-    //   262: getfield 229	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:uint32_total_len	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   265: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   268: istore 6
-    //   270: aload_0
-    //   271: aload 10
-    //   273: iload_2
-    //   274: iload 5
-    //   276: iload 6
-    //   278: iconst_1
-    //   279: aload_1
-    //   280: getfield 232	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:uint32_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
-    //   283: invokevirtual 198	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
-    //   286: ishl
-    //   287: aload_1
-    //   288: getfield 236	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:bytes_text	Lcom/tencent/mobileqq/pb/PBBytesField;
-    //   291: invokevirtual 241	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
-    //   294: invokevirtual 246	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
-    //   297: invokevirtual 249	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:a	(Lcom/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket;IIII[B)Lcom/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket;
-    //   300: pop
-    //   301: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   304: ifeq +108 -> 412
-    //   307: ldc 63
-    //   309: iconst_2
-    //   310: new 65	java/lang/StringBuilder
-    //   313: dup
-    //   314: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   317: ldc 251
-    //   319: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   322: aload 11
-    //   324: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   327: ldc 202
-    //   329: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   332: iload_2
-    //   333: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   336: ldc 202
-    //   338: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   341: iload 5
-    //   343: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   346: ldc 202
-    //   348: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   351: iload 6
-    //   353: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   356: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   359: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   362: ldc 63
-    //   364: iconst_2
-    //   365: new 65	java/lang/StringBuilder
-    //   368: dup
-    //   369: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   372: ldc 253
-    //   374: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   377: iload 4
-    //   379: invokevirtual 75	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   382: ldc 255
-    //   384: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   387: iload 7
-    //   389: invokevirtual 258	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   392: ldc_w 260
-    //   395: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   398: aload 10
-    //   400: getfield 87	com/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket:jdField_a_of_type_Boolean	Z
-    //   403: invokevirtual 258	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   406: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   409: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   412: aload 10
-    //   414: getfield 87	com/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket:jdField_a_of_type_Boolean	Z
-    //   417: ifeq +293 -> 710
-    //   420: iload 7
-    //   422: ifeq +117 -> 539
-    //   425: aload_0
-    //   426: getfield 17	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Int	I
-    //   429: istore_2
-    //   430: aload_0
-    //   431: iload 4
-    //   433: putfield 17	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Int	I
-    //   436: iload_2
-    //   437: iload 4
-    //   439: if_icmpge +100 -> 539
-    //   442: aload_0
-    //   443: getfield 30	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   446: iload_2
-    //   447: invokestatic 38	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   450: invokevirtual 263	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   453: pop
-    //   454: iload_2
-    //   455: iconst_1
-    //   456: iadd
-    //   457: istore_2
-    //   458: goto -22 -> 436
-    //   461: aload 9
-    //   463: getfield 266	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:cur_text_rsp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp;
-    //   466: invokevirtual 220	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:has	()Z
-    //   469: ifne +58 -> 527
-    //   472: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   475: ifeq +30 -> 505
-    //   478: ldc 63
-    //   480: iconst_2
-    //   481: new 65	java/lang/StringBuilder
-    //   484: dup
-    //   485: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   488: ldc_w 268
-    //   491: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   494: aload 11
-    //   496: invokevirtual 205	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   499: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   502: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   505: aload_0
-    //   506: invokespecial 168	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:c	()V
-    //   509: aload_0
-    //   510: getfield 171	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
-    //   513: iconst_4
-    //   514: sipush 2007
-    //   517: invokevirtual 176	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(II)V
-    //   520: aload 8
-    //   522: monitorexit
-    //   523: sipush 4001
-    //   526: ireturn
-    //   527: aload 9
-    //   529: getfield 266	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:cur_text_rsp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp;
-    //   532: astore_1
-    //   533: iconst_0
-    //   534: istore 7
-    //   536: goto -292 -> 244
-    //   539: aload_0
-    //   540: invokespecial 270	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:a	()Ljava/lang/String;
-    //   543: astore_1
-    //   544: aload_1
-    //   545: ifnull +150 -> 695
-    //   548: aload 9
-    //   550: getfield 274	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:bool_is_total_end	Lcom/tencent/mobileqq/pb/PBBoolField;
-    //   553: invokevirtual 278	com/tencent/mobileqq/pb/PBBoolField:get	()Z
-    //   556: istore 7
-    //   558: aload_0
-    //   559: getfield 171	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
-    //   562: aload_1
-    //   563: iload 7
-    //   565: invokevirtual 281	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(Ljava/lang/String;Z)V
-    //   568: iload_3
-    //   569: istore_2
-    //   570: iload 7
-    //   572: ifne +7 -> 579
-    //   575: sipush -10001
-    //   578: istore_2
-    //   579: aload_0
-    //   580: getfield 21	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Boolean	Z
-    //   583: ifne +12 -> 595
-    //   586: aload_0
-    //   587: iconst_1
-    //   588: putfield 21	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Boolean	Z
-    //   591: sipush -10002
-    //   594: istore_2
-    //   595: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   598: ifeq +68 -> 666
-    //   601: new 97	java/lang/String
-    //   604: dup
-    //   605: aload 10
-    //   607: getfield 100	com/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
-    //   610: invokevirtual 106	java/nio/ByteBuffer:array	()[B
-    //   613: invokespecial 109	java/lang/String:<init>	([B)V
-    //   616: astore 9
-    //   618: ldc 63
-    //   620: iconst_2
-    //   621: new 65	java/lang/StringBuilder
-    //   624: dup
-    //   625: invokespecial 66	java/lang/StringBuilder:<init>	()V
-    //   628: ldc_w 283
-    //   631: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   634: aload 9
-    //   636: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   639: ldc_w 285
-    //   642: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   645: iload 7
-    //   647: invokevirtual 258	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   650: ldc_w 287
-    //   653: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   656: aload_1
-    //   657: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   660: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   663: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   666: iload 7
-    //   668: ifeq +47 -> 715
-    //   671: aload_0
-    //   672: aload_0
-    //   673: getfield 19	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:b	I
-    //   676: invokespecial 289	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:a	(I)V
-    //   679: goto +36 -> 715
-    //   682: aload_0
-    //   683: getfield 171	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
-    //   686: iconst_1
-    //   687: invokevirtual 292	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(Z)V
-    //   690: aload 8
-    //   692: monitorexit
-    //   693: iload_2
-    //   694: ireturn
-    //   695: invokestatic 61	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   698: ifeq +12 -> 710
-    //   701: ldc 63
-    //   703: iconst_2
-    //   704: ldc_w 294
-    //   707: invokestatic 84	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   710: iconst_0
-    //   711: istore_2
-    //   712: goto -30 -> 682
-    //   715: goto -33 -> 682
+    //   205: iload_3
+    //   206: if_icmpge +8 -> 214
+    //   209: aload_0
+    //   210: iload_3
+    //   211: putfield 19	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:b	I
+    //   214: aload_0
+    //   215: iload_3
+    //   216: invokespecial 211	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:a	(I)Lcom/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket;
+    //   219: astore 10
+    //   221: aload 8
+    //   223: getfield 215	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:all_text_rsp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp;
+    //   226: invokevirtual 218	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:has	()Z
+    //   229: ifeq +15 -> 244
+    //   232: aload 8
+    //   234: getfield 215	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:all_text_rsp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp;
+    //   237: astore_1
+    //   238: iconst_1
+    //   239: istore 6
+    //   241: goto +83 -> 324
+    //   244: aload 8
+    //   246: getfield 221	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:cur_text_rsp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp;
+    //   249: invokevirtual 218	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:has	()Z
+    //   252: ifne +63 -> 315
+    //   255: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   258: ifeq +35 -> 293
+    //   261: new 62	java/lang/StringBuilder
+    //   264: dup
+    //   265: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   268: astore_1
+    //   269: aload_1
+    //   270: ldc 223
+    //   272: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   275: pop
+    //   276: aload_1
+    //   277: aload 9
+    //   279: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   282: pop
+    //   283: ldc 76
+    //   285: iconst_2
+    //   286: aload_1
+    //   287: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   290: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   293: aload_0
+    //   294: invokespecial 166	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:c	()V
+    //   297: aload_0
+    //   298: getfield 169	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
+    //   301: iconst_4
+    //   302: sipush 2007
+    //   305: invokevirtual 174	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(II)V
+    //   308: aload 7
+    //   310: monitorexit
+    //   311: sipush 4001
+    //   314: ireturn
+    //   315: aload 8
+    //   317: getfield 221	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:cur_text_rsp	Ltencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp;
+    //   320: astore_1
+    //   321: iconst_0
+    //   322: istore 6
+    //   324: aload_1
+    //   325: getfield 226	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:uint32_pos	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   328: invokevirtual 196	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   331: istore_2
+    //   332: aload_1
+    //   333: getfield 229	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:uint32_len	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   336: invokevirtual 196	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   339: istore 4
+    //   341: aload_1
+    //   342: getfield 232	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:uint32_total_len	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   345: invokevirtual 196	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   348: istore 5
+    //   350: aload_0
+    //   351: aload 10
+    //   353: iload_2
+    //   354: iload 4
+    //   356: iload 5
+    //   358: iconst_1
+    //   359: aload_1
+    //   360: getfield 235	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:uint32_seq	Lcom/tencent/mobileqq/pb/PBUInt32Field;
+    //   363: invokevirtual 196	com/tencent/mobileqq/pb/PBUInt32Field:get	()I
+    //   366: ishl
+    //   367: aload_1
+    //   368: getfield 239	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$textRsp:bytes_text	Lcom/tencent/mobileqq/pb/PBBytesField;
+    //   371: invokevirtual 244	com/tencent/mobileqq/pb/PBBytesField:get	()Lcom/tencent/mobileqq/pb/ByteStringMicro;
+    //   374: invokevirtual 249	com/tencent/mobileqq/pb/ByteStringMicro:toByteArray	()[B
+    //   377: invokevirtual 252	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:a	(Lcom/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket;IIII[B)Lcom/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket;
+    //   380: pop
+    //   381: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   384: ifeq +403 -> 787
+    //   387: new 62	java/lang/StringBuilder
+    //   390: dup
+    //   391: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   394: astore_1
+    //   395: aload_1
+    //   396: ldc 254
+    //   398: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   401: pop
+    //   402: aload_1
+    //   403: aload 9
+    //   405: invokevirtual 203	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   408: pop
+    //   409: aload_1
+    //   410: ldc 200
+    //   412: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   415: pop
+    //   416: aload_1
+    //   417: iload_2
+    //   418: invokevirtual 72	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   421: pop
+    //   422: aload_1
+    //   423: ldc 200
+    //   425: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   428: pop
+    //   429: aload_1
+    //   430: iload 4
+    //   432: invokevirtual 72	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   435: pop
+    //   436: aload_1
+    //   437: ldc 200
+    //   439: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   442: pop
+    //   443: aload_1
+    //   444: iload 5
+    //   446: invokevirtual 72	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   449: pop
+    //   450: ldc 76
+    //   452: iconst_2
+    //   453: aload_1
+    //   454: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   457: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   460: new 62	java/lang/StringBuilder
+    //   463: dup
+    //   464: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   467: astore_1
+    //   468: aload_1
+    //   469: ldc_w 256
+    //   472: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   475: pop
+    //   476: aload_1
+    //   477: iload_3
+    //   478: invokevirtual 72	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   481: pop
+    //   482: aload_1
+    //   483: ldc_w 258
+    //   486: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   489: pop
+    //   490: aload_1
+    //   491: iload 6
+    //   493: invokevirtual 261	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   496: pop
+    //   497: aload_1
+    //   498: ldc_w 263
+    //   501: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   504: pop
+    //   505: aload_1
+    //   506: aload 10
+    //   508: getfield 86	com/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket:jdField_a_of_type_Boolean	Z
+    //   511: invokevirtual 261	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   514: pop
+    //   515: ldc 76
+    //   517: iconst_2
+    //   518: aload_1
+    //   519: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   522: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   525: goto +3 -> 528
+    //   528: aload 10
+    //   530: getfield 86	com/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket:jdField_a_of_type_Boolean	Z
+    //   533: ifeq +268 -> 801
+    //   536: iload 6
+    //   538: ifeq +37 -> 575
+    //   541: aload_0
+    //   542: getfield 17	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Int	I
+    //   545: istore_2
+    //   546: aload_0
+    //   547: iload_3
+    //   548: putfield 17	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Int	I
+    //   551: iload_2
+    //   552: iload_3
+    //   553: if_icmpge +22 -> 575
+    //   556: aload_0
+    //   557: getfield 30	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   560: iload_2
+    //   561: invokestatic 38	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   564: invokevirtual 266	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   567: pop
+    //   568: iload_2
+    //   569: iconst_1
+    //   570: iadd
+    //   571: istore_2
+    //   572: goto -21 -> 551
+    //   575: aload_0
+    //   576: invokespecial 268	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:a	()Ljava/lang/String;
+    //   579: astore_1
+    //   580: aload_1
+    //   581: ifnull +163 -> 744
+    //   584: aload 8
+    //   586: getfield 272	tencent/im/s2c/msgtype0x210/submsgtype0x3d/SttResultPush$TransPttShardRsp:bool_is_total_end	Lcom/tencent/mobileqq/pb/PBBoolField;
+    //   589: invokevirtual 276	com/tencent/mobileqq/pb/PBBoolField:get	()Z
+    //   592: istore 6
+    //   594: aload_0
+    //   595: getfield 169	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
+    //   598: aload_1
+    //   599: iload 6
+    //   601: invokevirtual 279	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(Ljava/lang/String;Z)V
+    //   604: iload 6
+    //   606: ifne +184 -> 790
+    //   609: sipush -10001
+    //   612: istore_2
+    //   613: goto +3 -> 616
+    //   616: aload_0
+    //   617: getfield 21	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Boolean	Z
+    //   620: ifne +175 -> 795
+    //   623: aload_0
+    //   624: iconst_1
+    //   625: putfield 21	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_Boolean	Z
+    //   628: sipush -10002
+    //   631: istore_2
+    //   632: goto +3 -> 635
+    //   635: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   638: ifeq +90 -> 728
+    //   641: new 88	java/lang/String
+    //   644: dup
+    //   645: aload 10
+    //   647: getfield 91	com/tencent/mobileqq/stt/shard/BaseSttPushReceiver$SttPushPacket:jdField_a_of_type_JavaNioByteBuffer	Ljava/nio/ByteBuffer;
+    //   650: invokevirtual 97	java/nio/ByteBuffer:array	()[B
+    //   653: invokespecial 100	java/lang/String:<init>	([B)V
+    //   656: astore 8
+    //   658: new 62	java/lang/StringBuilder
+    //   661: dup
+    //   662: invokespecial 63	java/lang/StringBuilder:<init>	()V
+    //   665: astore 9
+    //   667: aload 9
+    //   669: ldc_w 281
+    //   672: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   675: pop
+    //   676: aload 9
+    //   678: aload 8
+    //   680: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   683: pop
+    //   684: aload 9
+    //   686: ldc_w 283
+    //   689: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   692: pop
+    //   693: aload 9
+    //   695: iload 6
+    //   697: invokevirtual 261	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   700: pop
+    //   701: aload 9
+    //   703: ldc_w 285
+    //   706: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   709: pop
+    //   710: aload 9
+    //   712: aload_1
+    //   713: invokevirtual 69	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   716: pop
+    //   717: ldc 76
+    //   719: iconst_2
+    //   720: aload 9
+    //   722: invokevirtual 79	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   725: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   728: iload 6
+    //   730: ifeq +68 -> 798
+    //   733: aload_0
+    //   734: aload_0
+    //   735: getfield 19	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:b	I
+    //   738: invokespecial 287	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:a	(I)V
+    //   741: goto +57 -> 798
+    //   744: invokestatic 60	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   747: ifeq +54 -> 801
+    //   750: ldc 76
+    //   752: iconst_2
+    //   753: ldc_w 289
+    //   756: invokestatic 83	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   759: goto +42 -> 801
+    //   762: aload_0
+    //   763: getfield 169	com/tencent/mobileqq/stt/shard/ShardSttPushReceiver:jdField_a_of_type_ComTencentMobileqqSttShardAIOSttResult	Lcom/tencent/mobileqq/stt/shard/AIOSttResult;
+    //   766: iconst_1
+    //   767: invokevirtual 292	com/tencent/mobileqq/stt/shard/AIOSttResult:a	(Z)V
+    //   770: aload 7
+    //   772: monitorexit
+    //   773: iload_2
+    //   774: ireturn
+    //   775: astore_1
+    //   776: aload 7
+    //   778: monitorexit
+    //   779: goto +5 -> 784
+    //   782: aload_1
+    //   783: athrow
+    //   784: goto -2 -> 782
+    //   787: goto -259 -> 528
+    //   790: iconst_0
+    //   791: istore_2
+    //   792: goto -176 -> 616
+    //   795: goto -160 -> 635
+    //   798: goto -36 -> 762
+    //   801: iconst_0
+    //   802: istore_2
+    //   803: goto -41 -> 762
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	718	0	this	ShardSttPushReceiver
-    //   0	718	1	paramMsgBody	tencent.im.s2c.msgtype0x210.submsgtype0x3d.SttResultPush.MsgBody
-    //   85	627	2	i	int
-    //   1	568	3	j	int
-    //   185	255	4	k	int
-    //   259	83	5	m	int
-    //   268	84	6	n	int
-    //   242	425	7	bool	boolean
-    //   6	685	8	localConcurrentHashMap	ConcurrentHashMap
-    //   222	384	10	localSttPushPacket	BaseSttPushReceiver.SttPushPacket
-    //   75	420	11	localLong	java.lang.Long
+    //   0	806	0	this	ShardSttPushReceiver
+    //   0	806	1	paramMsgBody	tencent.im.s2c.msgtype0x210.submsgtype0x3d.SttResultPush.MsgBody
+    //   77	726	2	i	int
+    //   187	367	3	j	int
+    //   339	92	4	k	int
+    //   348	97	5	m	int
+    //   239	490	6	bool	boolean
+    //   4	773	7	localConcurrentHashMap	ConcurrentHashMap
+    //   67	654	9	localObject2	Object
+    //   219	427	10	localSttPushPacket	BaseSttPushReceiver.SttPushPacket
     // Exception table:
     //   from	to	target	type
-    //   15	18	58	finally
-    //   22	54	58	finally
-    //   59	62	58	finally
-    //   64	127	58	finally
-    //   131	147	58	finally
-    //   151	177	58	finally
-    //   177	199	58	finally
-    //   201	216	58	finally
-    //   216	241	58	finally
-    //   244	412	58	finally
-    //   412	420	58	finally
-    //   425	436	58	finally
-    //   442	454	58	finally
-    //   461	505	58	finally
-    //   505	523	58	finally
-    //   527	533	58	finally
-    //   539	544	58	finally
-    //   548	568	58	finally
-    //   579	591	58	finally
-    //   595	666	58	finally
-    //   671	679	58	finally
-    //   682	693	58	finally
-    //   695	710	58	finally
+    //   13	16	775	finally
+    //   20	52	775	finally
+    //   56	129	775	finally
+    //   133	149	775	finally
+    //   153	179	775	finally
+    //   179	199	775	finally
+    //   201	214	775	finally
+    //   214	238	775	finally
+    //   244	293	775	finally
+    //   293	311	775	finally
+    //   315	321	775	finally
+    //   324	525	775	finally
+    //   528	536	775	finally
+    //   541	551	775	finally
+    //   556	568	775	finally
+    //   575	580	775	finally
+    //   584	604	775	finally
+    //   616	628	775	finally
+    //   635	728	775	finally
+    //   733	741	775	finally
+    //   744	759	775	finally
+    //   762	773	775	finally
+    //   776	779	775	finally
   }
   
   public void a()
@@ -504,7 +595,7 @@ public class ShardSttPushReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.stt.shard.ShardSttPushReceiver
  * JD-Core Version:    0.7.0.1
  */

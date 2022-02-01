@@ -1,7 +1,7 @@
 package com.tencent.widget;
 
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.struct.DislikeInfo;
+import com.tencent.mobileqq.kandian.repo.dislike.DislikeInfo;
 import java.util.ArrayList;
 
 public abstract interface KandianNegativeWindow$OnUninterestConfirmListener
@@ -10,7 +10,7 @@ public abstract interface KandianNegativeWindow$OnUninterestConfirmListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.KandianNegativeWindow.OnUninterestConfirmListener
  * JD-Core Version:    0.7.0.1
  */

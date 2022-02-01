@@ -22,85 +22,89 @@ final class VorbisUtil
   
   private static long mapType1QuantValues(long paramLong1, long paramLong2)
   {
-    return Math.floor(Math.pow(paramLong1, 1.0D / paramLong2));
+    double d1 = paramLong1;
+    double d2 = paramLong2;
+    Double.isNaN(d2);
+    return Math.floor(Math.pow(d1, 1.0D / d2));
   }
   
   private static VorbisUtil.CodeBook readBook(VorbisBitArray paramVorbisBitArray)
   {
-    int i = 0;
-    if (paramVorbisBitArray.readBits(24) != 5653314) {
-      throw new ParserException("expected code book to start with [0x56, 0x43, 0x42] at " + paramVorbisBitArray.getPosition());
-    }
-    int m = paramVorbisBitArray.readBits(16);
-    int n = paramVorbisBitArray.readBits(24);
-    long[] arrayOfLong = new long[n];
-    boolean bool1 = paramVorbisBitArray.readBit();
-    int j;
-    if (!bool1)
+    if (paramVorbisBitArray.readBits(24) == 5653314)
     {
-      boolean bool2 = paramVorbisBitArray.readBit();
-      if (i < arrayOfLong.length)
+      int m = paramVorbisBitArray.readBits(16);
+      int n = paramVorbisBitArray.readBits(24);
+      localObject = new long[n];
+      boolean bool1 = paramVorbisBitArray.readBit();
+      long l = 0L;
+      int i = 0;
+      if (!bool1)
       {
-        if (bool2) {
-          if (paramVorbisBitArray.readBit()) {
-            arrayOfLong[i] = (paramVorbisBitArray.readBits(5) + 1);
+        boolean bool2 = paramVorbisBitArray.readBit();
+        while (i < localObject.length)
+        {
+          if (bool2)
+          {
+            if (paramVorbisBitArray.readBit()) {
+              localObject[i] = (paramVorbisBitArray.readBits(5) + 1);
+            } else {
+              localObject[i] = 0L;
+            }
           }
-        }
-        for (;;)
-        {
+          else {
+            localObject[i] = (paramVorbisBitArray.readBits(5) + 1);
+          }
           i += 1;
-          break;
-          arrayOfLong[i] = 0L;
-          continue;
-          arrayOfLong[i] = (paramVorbisBitArray.readBits(5) + 1);
         }
       }
-    }
-    else
-    {
-      i = paramVorbisBitArray.readBits(5) + 1;
-      j = 0;
-      while (j < arrayOfLong.length)
+      int j = paramVorbisBitArray.readBits(5) + 1;
+      i = 0;
+      while (i < localObject.length)
       {
-        int i1 = paramVorbisBitArray.readBits(iLog(n - j));
+        int i1 = paramVorbisBitArray.readBits(iLog(n - i));
         int k = 0;
-        while ((k < i1) && (j < arrayOfLong.length))
+        while ((k < i1) && (i < localObject.length))
         {
-          arrayOfLong[j] = i;
+          localObject[i] = j;
+          i += 1;
           k += 1;
-          j += 1;
         }
-        i += 1;
+        j += 1;
       }
-    }
-    i = paramVorbisBitArray.readBits(4);
-    if (i > 2) {
-      throw new ParserException("lookup type greater than 2 not decodable: " + i);
-    }
-    long l;
-    if ((i == 1) || (i == 2))
-    {
-      paramVorbisBitArray.skipBits(32);
-      paramVorbisBitArray.skipBits(32);
-      j = paramVorbisBitArray.readBits(4);
-      paramVorbisBitArray.skipBits(1);
-      if (i != 1) {
-        break label339;
+      i = paramVorbisBitArray.readBits(4);
+      if (i <= 2)
+      {
+        if ((i == 1) || (i == 2))
+        {
+          paramVorbisBitArray.skipBits(32);
+          paramVorbisBitArray.skipBits(32);
+          j = paramVorbisBitArray.readBits(4);
+          paramVorbisBitArray.skipBits(1);
+          if (i == 1)
+          {
+            if (m != 0) {
+              l = mapType1QuantValues(n, m);
+            }
+          }
+          else {
+            l = n * m;
+          }
+          paramVorbisBitArray.skipBits((int)(l * (j + 1)));
+        }
+        return new VorbisUtil.CodeBook(m, n, (long[])localObject, i, bool1);
       }
-      if (m == 0) {
-        break label333;
-      }
-      l = mapType1QuantValues(n, m);
+      paramVorbisBitArray = new StringBuilder();
+      paramVorbisBitArray.append("lookup type greater than 2 not decodable: ");
+      paramVorbisBitArray.append(i);
+      throw new ParserException(paramVorbisBitArray.toString());
     }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("expected code book to start with [0x56, 0x43, 0x42] at ");
+    ((StringBuilder)localObject).append(paramVorbisBitArray.getPosition());
+    paramVorbisBitArray = new ParserException(((StringBuilder)localObject).toString());
     for (;;)
     {
-      paramVorbisBitArray.skipBits((int)(l * (j + 1)));
-      return new VorbisUtil.CodeBook(m, n, arrayOfLong, i, bool1);
-      label333:
-      l = 0L;
-      continue;
-      label339:
-      l = n * m;
+      throw paramVorbisBitArray;
     }
   }
   
@@ -111,71 +115,71 @@ final class VorbisUtil
     while (i < n + 1)
     {
       int j = paramVorbisBitArray.readBits(16);
-      int k;
-      switch (j)
+      if (j != 0)
       {
-      default: 
-        throw new ParserException("floor type greater than 1 not decodable: " + j);
-      case 0: 
-        paramVorbisBitArray.skipBits(8);
-        paramVorbisBitArray.skipBits(16);
-        paramVorbisBitArray.skipBits(16);
-        paramVorbisBitArray.skipBits(6);
-        paramVorbisBitArray.skipBits(8);
-        k = paramVorbisBitArray.readBits(4);
-        j = 0;
+        if (j == 1)
+        {
+          int i1 = paramVorbisBitArray.readBits(5);
+          int[] arrayOfInt1 = new int[i1];
+          j = 0;
+          for (k = -1; j < i1; k = m)
+          {
+            arrayOfInt1[j] = paramVorbisBitArray.readBits(4);
+            m = k;
+            if (arrayOfInt1[j] > k) {
+              m = arrayOfInt1[j];
+            }
+            j += 1;
+          }
+          int[] arrayOfInt2 = new int[k + 1];
+          j = 0;
+          while (j < arrayOfInt2.length)
+          {
+            arrayOfInt2[j] = (paramVorbisBitArray.readBits(3) + 1);
+            m = paramVorbisBitArray.readBits(2);
+            if (m > 0) {
+              paramVorbisBitArray.skipBits(8);
+            }
+            k = 0;
+            while (k < 1 << m)
+            {
+              paramVorbisBitArray.skipBits(8);
+              k += 1;
+            }
+            j += 1;
+          }
+          paramVorbisBitArray.skipBits(2);
+          int i2 = paramVorbisBitArray.readBits(4);
+          j = 0;
+          int m = 0;
+          k = 0;
+          while (j < i1)
+          {
+            m += arrayOfInt2[arrayOfInt1[j]];
+            while (k < m)
+            {
+              paramVorbisBitArray.skipBits(i2);
+              k += 1;
+            }
+            j += 1;
+          }
+        }
+        paramVorbisBitArray = new StringBuilder();
+        paramVorbisBitArray.append("floor type greater than 1 not decodable: ");
+        paramVorbisBitArray.append(j);
+        throw new ParserException(paramVorbisBitArray.toString());
       }
+      paramVorbisBitArray.skipBits(8);
+      paramVorbisBitArray.skipBits(16);
+      paramVorbisBitArray.skipBits(16);
+      paramVorbisBitArray.skipBits(6);
+      paramVorbisBitArray.skipBits(8);
+      int k = paramVorbisBitArray.readBits(4);
+      j = 0;
       while (j < k + 1)
       {
         paramVorbisBitArray.skipBits(8);
         j += 1;
-        continue;
-        int i1 = paramVorbisBitArray.readBits(5);
-        k = -1;
-        int[] arrayOfInt1 = new int[i1];
-        j = 0;
-        while (j < i1)
-        {
-          arrayOfInt1[j] = paramVorbisBitArray.readBits(4);
-          m = k;
-          if (arrayOfInt1[j] > k) {
-            m = arrayOfInt1[j];
-          }
-          j += 1;
-          k = m;
-        }
-        int[] arrayOfInt2 = new int[k + 1];
-        j = 0;
-        while (j < arrayOfInt2.length)
-        {
-          arrayOfInt2[j] = (paramVorbisBitArray.readBits(3) + 1);
-          m = paramVorbisBitArray.readBits(2);
-          if (m > 0) {
-            paramVorbisBitArray.skipBits(8);
-          }
-          k = 0;
-          while (k < 1 << m)
-          {
-            paramVorbisBitArray.skipBits(8);
-            k += 1;
-          }
-          j += 1;
-        }
-        paramVorbisBitArray.skipBits(2);
-        int i2 = paramVorbisBitArray.readBits(4);
-        k = 0;
-        j = 0;
-        int m = 0;
-        while (j < i1)
-        {
-          m += arrayOfInt2[arrayOfInt1[j]];
-          while (k < m)
-          {
-            paramVorbisBitArray.skipBits(i2);
-            k += 1;
-          }
-          j += 1;
-        }
       }
       i += 1;
     }
@@ -185,32 +189,37 @@ final class VorbisUtil
   {
     int m = paramVorbisBitArray.readBits(6);
     int i = 0;
-    if (i < m + 1)
+    while (i < m + 1)
     {
       int j = paramVorbisBitArray.readBits(16);
-      switch (j)
+      if (j != 0)
       {
-      default: 
-        Log.e("VorbisUtil", "mapping type other than 0 not supported: " + j);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mapping type other than 0 not supported: ");
+        localStringBuilder.append(j);
+        Log.e("VorbisUtil", localStringBuilder.toString());
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
-        if (paramVorbisBitArray.readBit()) {}
-        for (j = paramVorbisBitArray.readBits(4) + 1; paramVorbisBitArray.readBit(); j = 1)
+        if (paramVorbisBitArray.readBit()) {
+          j = paramVorbisBitArray.readBits(4) + 1;
+        } else {
+          j = 1;
+        }
+        if (paramVorbisBitArray.readBit())
         {
           int n = paramVorbisBitArray.readBits(8);
           k = 0;
           while (k < n + 1)
           {
-            paramVorbisBitArray.skipBits(iLog(paramInt - 1));
-            paramVorbisBitArray.skipBits(iLog(paramInt - 1));
+            int i1 = paramInt - 1;
+            paramVorbisBitArray.skipBits(iLog(i1));
+            paramVorbisBitArray.skipBits(iLog(i1));
             k += 1;
           }
         }
         if (paramVorbisBitArray.readBits(2) != 0) {
-          throw new ParserException("to reserved bits must be zero after mapping coupling steps");
+          break label225;
         }
         if (j > 1)
         {
@@ -230,6 +239,10 @@ final class VorbisUtil
           k += 1;
         }
       }
+      i += 1;
+      continue;
+      label225:
+      throw new ParserException("to reserved bits must be zero after mapping coupling steps");
     }
   }
   
@@ -250,53 +263,47 @@ final class VorbisUtil
   {
     int m = paramVorbisBitArray.readBits(6);
     int i = 0;
-    int n;
-    int[] arrayOfInt;
-    int j;
-    label80:
-    int i1;
-    if (i < m + 1)
-    {
-      if (paramVorbisBitArray.readBits(16) > 2) {
+    while (i < m + 1) {
+      if (paramVorbisBitArray.readBits(16) <= 2)
+      {
+        paramVorbisBitArray.skipBits(24);
+        paramVorbisBitArray.skipBits(24);
+        paramVorbisBitArray.skipBits(24);
+        int n = paramVorbisBitArray.readBits(6) + 1;
+        paramVorbisBitArray.skipBits(8);
+        int[] arrayOfInt = new int[n];
+        int j = 0;
+        int k;
+        while (j < n)
+        {
+          int i1 = paramVorbisBitArray.readBits(3);
+          if (paramVorbisBitArray.readBit()) {
+            k = paramVorbisBitArray.readBits(5);
+          } else {
+            k = 0;
+          }
+          arrayOfInt[j] = (k * 8 + i1);
+          j += 1;
+        }
+        j = 0;
+        while (j < n)
+        {
+          k = 0;
+          while (k < 8)
+          {
+            if ((arrayOfInt[j] & 1 << k) != 0) {
+              paramVorbisBitArray.skipBits(8);
+            }
+            k += 1;
+          }
+          j += 1;
+        }
+        i += 1;
+      }
+      else
+      {
         throw new ParserException("residueType greater than 2 is not decodable");
       }
-      paramVorbisBitArray.skipBits(24);
-      paramVorbisBitArray.skipBits(24);
-      paramVorbisBitArray.skipBits(24);
-      n = paramVorbisBitArray.readBits(6) + 1;
-      paramVorbisBitArray.skipBits(8);
-      arrayOfInt = new int[n];
-      j = 0;
-      if (j < n)
-      {
-        i1 = paramVorbisBitArray.readBits(3);
-        if (!paramVorbisBitArray.readBit()) {
-          break label179;
-        }
-      }
-    }
-    label179:
-    for (int k = paramVorbisBitArray.readBits(5);; k = 0)
-    {
-      arrayOfInt[j] = (k * 8 + i1);
-      j += 1;
-      break label80;
-      j = 0;
-      while (j < n)
-      {
-        k = 0;
-        while (k < 8)
-        {
-          if ((arrayOfInt[j] & 1 << k) != 0) {
-            paramVorbisBitArray.skipBits(8);
-          }
-          k += 1;
-        }
-        j += 1;
-      }
-      i += 1;
-      break;
-      return;
     }
   }
   
@@ -308,17 +315,21 @@ final class VorbisUtil
     int j = str.length();
     long l = paramParsableByteArray.readLittleEndianUnsignedInt();
     String[] arrayOfString = new String[(int)l];
-    j = j + 11 + 4;
+    j = 11 + j + 4;
     while (i < l)
     {
       arrayOfString[i] = paramParsableByteArray.readString((int)paramParsableByteArray.readLittleEndianUnsignedInt());
       j = j + 4 + arrayOfString[i].length();
       i += 1;
     }
-    if ((paramParsableByteArray.readUnsignedByte() & 0x1) == 0) {
-      throw new ParserException("framing bit expected to be set");
+    if ((paramParsableByteArray.readUnsignedByte() & 0x1) != 0) {
+      return new VorbisUtil.CommentHeader(str, arrayOfString, j + 1);
     }
-    return new VorbisUtil.CommentHeader(str, arrayOfString, j + 1);
+    paramParsableByteArray = new ParserException("framing bit expected to be set");
+    for (;;)
+    {
+      throw paramParsableByteArray;
+    }
   }
   
   public static VorbisUtil.VorbisIdHeader readVorbisIdentificationHeader(ParsableByteArray paramParsableByteArray)
@@ -333,10 +344,13 @@ final class VorbisUtil
     int i1 = paramParsableByteArray.readUnsignedByte();
     int n = (int)Math.pow(2.0D, i1 & 0xF);
     i1 = (int)Math.pow(2.0D, (i1 & 0xF0) >> 4);
-    if ((paramParsableByteArray.readUnsignedByte() & 0x1) > 0) {}
-    for (boolean bool = true;; bool = false) {
-      return new VorbisUtil.VorbisIdHeader(l1, i, l2, j, k, m, n, i1, bool, Arrays.copyOf(paramParsableByteArray.data, paramParsableByteArray.limit()));
+    boolean bool;
+    if ((paramParsableByteArray.readUnsignedByte() & 0x1) > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return new VorbisUtil.VorbisIdHeader(l1, i, l2, j, k, m, n, i1, bool, Arrays.copyOf(paramParsableByteArray.data, paramParsableByteArray.limit()));
   }
   
   public static VorbisUtil.Mode[] readVorbisModes(ParsableByteArray paramParsableByteArray, int paramInt)
@@ -354,50 +368,61 @@ final class VorbisUtil
     }
     k = localVorbisBitArray.readBits(6);
     i = j;
-    while (i < k + 1)
-    {
-      if (localVorbisBitArray.readBits(16) != 0) {
+    while (i < k + 1) {
+      if (localVorbisBitArray.readBits(16) == 0) {
+        i += 1;
+      } else {
         throw new ParserException("placeholder of time domain transforms not zeroed out");
       }
-      i += 1;
     }
     readFloors(localVorbisBitArray);
     readResidues(localVorbisBitArray);
     readMappings(paramInt, localVorbisBitArray);
     paramParsableByteArray = readModes(localVorbisBitArray);
-    if (!localVorbisBitArray.readBit()) {
-      throw new ParserException("framing bit after modes not set as expected");
+    if (localVorbisBitArray.readBit()) {
+      return paramParsableByteArray;
     }
-    return paramParsableByteArray;
+    paramParsableByteArray = new ParserException("framing bit after modes not set as expected");
+    for (;;)
+    {
+      throw paramParsableByteArray;
+    }
   }
   
   public static boolean verifyVorbisHeaderCapturePattern(int paramInt, ParsableByteArray paramParsableByteArray, boolean paramBoolean)
   {
-    if (paramParsableByteArray.bytesLeft() < 7) {
-      if (!paramBoolean) {}
-    }
-    do
+    if (paramParsableByteArray.bytesLeft() < 7)
     {
-      do
-      {
+      if (paramBoolean) {
         return false;
-        throw new ParserException("too short header: " + paramParsableByteArray.bytesLeft());
-        if (paramParsableByteArray.readUnsignedByte() == paramInt) {
-          break;
-        }
-      } while (paramBoolean);
-      throw new ParserException("expected header type " + Integer.toHexString(paramInt));
-      if ((paramParsableByteArray.readUnsignedByte() == 118) && (paramParsableByteArray.readUnsignedByte() == 111) && (paramParsableByteArray.readUnsignedByte() == 114) && (paramParsableByteArray.readUnsignedByte() == 98) && (paramParsableByteArray.readUnsignedByte() == 105) && (paramParsableByteArray.readUnsignedByte() == 115)) {
-        break;
       }
-    } while (paramBoolean);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("too short header: ");
+      localStringBuilder.append(paramParsableByteArray.bytesLeft());
+      throw new ParserException(localStringBuilder.toString());
+    }
+    if (paramParsableByteArray.readUnsignedByte() != paramInt)
+    {
+      if (paramBoolean) {
+        return false;
+      }
+      paramParsableByteArray = new StringBuilder();
+      paramParsableByteArray.append("expected header type ");
+      paramParsableByteArray.append(Integer.toHexString(paramInt));
+      throw new ParserException(paramParsableByteArray.toString());
+    }
+    if ((paramParsableByteArray.readUnsignedByte() == 118) && (paramParsableByteArray.readUnsignedByte() == 111) && (paramParsableByteArray.readUnsignedByte() == 114) && (paramParsableByteArray.readUnsignedByte() == 98) && (paramParsableByteArray.readUnsignedByte() == 105) && (paramParsableByteArray.readUnsignedByte() == 115)) {
+      return true;
+    }
+    if (paramBoolean) {
+      return false;
+    }
     throw new ParserException("expected characters 'vorbis'");
-    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.VorbisUtil
  * JD-Core Version:    0.7.0.1
  */

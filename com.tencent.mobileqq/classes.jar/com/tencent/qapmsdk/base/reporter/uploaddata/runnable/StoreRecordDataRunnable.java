@@ -31,10 +31,7 @@ public final class StoreRecordDataRunnable
   
   public void run()
   {
-    long l = 0L;
-    if (0L == 0L) {
-      l = System.currentTimeMillis();
-    }
+    long l = System.currentTimeMillis();
     Object localObject = BaseInfo.dbHelper;
     if (localObject != null)
     {
@@ -54,7 +51,7 @@ public final class StoreRecordDataRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.uploaddata.runnable.StoreRecordDataRunnable
  * JD-Core Version:    0.7.0.1
  */

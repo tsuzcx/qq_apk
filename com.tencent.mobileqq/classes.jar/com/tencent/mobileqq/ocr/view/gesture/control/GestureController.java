@@ -107,55 +107,55 @@ public class GestureController
   private void a()
   {
     GestureProxy.StateSource localStateSource = GestureProxy.StateSource.NONE;
-    if (d()) {}
-    for (localStateSource = GestureProxy.StateSource.ANIMATION;; localStateSource = GestureProxy.StateSource.USER) {
-      do
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$StateSource != localStateSource)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$StateSource = localStateSource;
-          if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$OnStateSourceChangeListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$OnStateSourceChangeListener.a(localStateSource);
-          }
-        }
-        return;
-      } while ((!this.jdField_c_of_type_Boolean) && (!this.jdField_d_of_type_Boolean) && (!this.e));
+    if (d()) {
+      localStateSource = GestureProxy.StateSource.ANIMATION;
+    } else if ((this.jdField_c_of_type_Boolean) || (this.jdField_d_of_type_Boolean) || (this.e)) {
+      localStateSource = GestureProxy.StateSource.USER;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$StateSource != localStateSource)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$StateSource = localStateSource;
+      GestureProxy.OnStateSourceChangeListener localOnStateSourceChangeListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureGestureProxy$OnStateSourceChangeListener;
+      if (localOnStateSourceChangeListener != null) {
+        localOnStateSourceChangeListener.a(localStateSource);
+      }
     }
   }
   
   private boolean a(State paramState, boolean paramBoolean)
   {
-    if (paramState == null) {}
-    for (;;)
-    {
+    if (paramState == null) {
       return false;
-      State localState = null;
-      if (paramBoolean) {
-        localState = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(paramState, this.jdField_d_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, false, false, true);
-      }
-      if (localState == null) {}
-      while (!paramState.equals(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState))
-      {
-        e();
-        this.i = paramBoolean;
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateState.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState);
-        this.jdField_b_of_type_ComTencentMobileqqOcrViewGestureStateState.a(paramState);
-        if ((!Float.isNaN(this.jdField_a_of_type_Float)) && (!Float.isNaN(this.jdField_b_of_type_Float)))
-        {
-          jdField_a_of_type_ArrayOfFloat[0] = this.jdField_a_of_type_Float;
-          jdField_a_of_type_ArrayOfFloat[1] = this.jdField_b_of_type_Float;
-          MathUtils.a(jdField_a_of_type_ArrayOfFloat, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_b_of_type_ComTencentMobileqqOcrViewGestureStateState);
-          this.jdField_c_of_type_Float = jdField_a_of_type_ArrayOfFloat[0];
-          this.jdField_d_of_type_Float = jdField_a_of_type_ArrayOfFloat[1];
-        }
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationStateScroller.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a());
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationStateScroller.a(0.0F, 1.0F);
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationAnimationEngine.a(2);
-        a();
-        return true;
-        paramState = localState;
-      }
     }
+    State localState = null;
+    if (paramBoolean) {
+      localState = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(paramState, this.jdField_d_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, false, false, true);
+    }
+    if (localState != null) {
+      paramState = localState;
+    }
+    if (paramState.equals(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState)) {
+      return false;
+    }
+    e();
+    this.i = paramBoolean;
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateState.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState);
+    this.jdField_b_of_type_ComTencentMobileqqOcrViewGestureStateState.a(paramState);
+    if ((!Float.isNaN(this.jdField_a_of_type_Float)) && (!Float.isNaN(this.jdField_b_of_type_Float)))
+    {
+      paramState = jdField_a_of_type_ArrayOfFloat;
+      paramState[0] = this.jdField_a_of_type_Float;
+      paramState[1] = this.jdField_b_of_type_Float;
+      MathUtils.a(paramState, this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_b_of_type_ComTencentMobileqqOcrViewGestureStateState);
+      paramState = jdField_a_of_type_ArrayOfFloat;
+      this.jdField_c_of_type_Float = paramState[0];
+      this.jdField_d_of_type_Float = paramState[1];
+    }
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationStateScroller.a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.a());
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationStateScroller.a(0.0F, 1.0F);
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationAnimationEngine.a(2);
+    a();
+    return true;
   }
   
   protected void a(MotionEvent paramMotionEvent)
@@ -166,8 +166,9 @@ public class GestureController
     if ((!c()) && (!this.i)) {
       a();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.a(paramMotionEvent);
+    OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+    if (localOnGestureListener != null) {
+      localOnGestureListener.a(paramMotionEvent);
     }
   }
   
@@ -175,8 +176,9 @@ public class GestureController
   {
     this.jdField_d_of_type_Boolean = false;
     this.g = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.a(paramScaleGestureDetector);
+    OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+    if (localOnGestureListener != null) {
+      localOnGestureListener.a(paramScaleGestureDetector);
     }
   }
   
@@ -203,74 +205,87 @@ public class GestureController
   {
     float f5 = this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.a();
     float f6 = this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.b();
-    float f3 = f5 + paramInt1;
+    float f3 = paramInt1 + f5;
     float f4 = paramInt2 + f6;
-    float f2 = f4;
-    float f1 = f3;
+    float f2 = f3;
+    float f1 = f4;
     if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.i())
     {
       this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateMoveBounds.a(f3, f4, jdField_a_of_type_AndroidGraphicsPointF);
-      f1 = jdField_a_of_type_AndroidGraphicsPointF.x;
-      f2 = jdField_a_of_type_AndroidGraphicsPointF.y;
+      f2 = jdField_a_of_type_AndroidGraphicsPointF.x;
+      f1 = jdField_a_of_type_AndroidGraphicsPointF.y;
     }
-    this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.b(f1, f2);
-    return (!State.a(f5, f1)) || (!State.a(f6, f2));
+    this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.b(f2, f1);
+    return (!State.a(f5, f2)) || (!State.a(f6, f1));
   }
   
   protected boolean a(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getActionMasked())
+    int j = paramMotionEvent.getActionMasked();
+    boolean bool = true;
+    if ((j != 0) && (j != 2))
     {
-    }
-    do
-    {
-      return false;
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState, jdField_a_of_type_AndroidGraphicsRectF);
-      if ((State.a(jdField_a_of_type_AndroidGraphicsRectF.width(), 0.0F) > 0) || (State.a(jdField_a_of_type_AndroidGraphicsRectF.height(), 0.0F) > 0)) {}
-      for (int j = 1; (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b()) && ((j != 0) || (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.i())); j = 0) {
-        return true;
+      if (j != 5) {
+        return false;
       }
-    } while ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d()) && (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e()));
-    return true;
+      if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d())
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e()) {
+          return true;
+        }
+        bool = false;
+      }
+      return bool;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState, jdField_a_of_type_AndroidGraphicsRectF);
+    if ((State.a(jdField_a_of_type_AndroidGraphicsRectF.width(), 0.0F) <= 0) && (State.a(jdField_a_of_type_AndroidGraphicsRectF.height(), 0.0F) <= 0)) {
+      j = 0;
+    } else {
+      j = 1;
+    }
+    return (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b()) && ((j != 0) || (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.i()));
   }
   
   protected boolean a(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b()) || (b())) {
-      return false;
-    }
-    if (!this.jdField_c_of_type_Boolean) {
-      if ((Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX()) <= this.jdField_a_of_type_Int) && (Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY()) <= this.jdField_a_of_type_Int)) {
-        break label117;
-      }
-    }
-    label117:
-    for (boolean bool = true;; bool = false)
+    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b())
     {
-      this.jdField_c_of_type_Boolean = bool;
-      if (this.jdField_c_of_type_Boolean) {
-        break;
+      if (b()) {
+        return false;
       }
-      if (!this.jdField_c_of_type_Boolean) {
-        break label140;
+      if (!this.jdField_c_of_type_Boolean)
+      {
+        boolean bool;
+        if ((Math.abs(paramMotionEvent2.getX() - paramMotionEvent1.getX()) <= this.jdField_a_of_type_Int) && (Math.abs(paramMotionEvent2.getY() - paramMotionEvent1.getY()) <= this.jdField_a_of_type_Int)) {
+          bool = false;
+        } else {
+          bool = true;
+        }
+        this.jdField_c_of_type_Boolean = bool;
+        if (this.jdField_c_of_type_Boolean) {
+          return false;
+        }
       }
-      if ((this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener == null) || (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2))) {
-        break label123;
+      if (this.jdField_c_of_type_Boolean)
+      {
+        OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+        if ((localOnGestureListener != null) && (localOnGestureListener.a(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2))) {
+          return true;
+        }
+        this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.a(-paramFloat1, -paramFloat2);
+        this.f = true;
       }
-      return true;
+      return this.jdField_c_of_type_Boolean;
     }
-    label123:
-    this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.a(-paramFloat1, -paramFloat2);
-    this.f = true;
-    label140:
-    return this.jdField_c_of_type_Boolean;
+    return false;
   }
   
   protected boolean a(ScaleGestureDetector paramScaleGestureDetector)
   {
     this.jdField_d_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d();
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.a(paramScaleGestureDetector);
+    OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+    if (localOnGestureListener != null) {
+      localOnGestureListener.a(paramScaleGestureDetector);
     }
     return this.jdField_d_of_type_Boolean;
   }
@@ -297,8 +312,9 @@ public class GestureController
     if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.j())
     {
       this.jdField_a_of_type_AndroidViewView.performLongClick();
-      if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.c(paramMotionEvent);
+      OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+      if (localOnGestureListener != null) {
+        localOnGestureListener.c(paramMotionEvent);
       }
     }
   }
@@ -313,52 +329,54 @@ public class GestureController
   
   public boolean b()
   {
-    return !this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationStateScroller.b();
+    return this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationStateScroller.b() ^ true;
   }
   
   protected boolean b(MotionEvent paramMotionEvent)
   {
     this.jdField_b_of_type_Boolean = false;
     d();
-    if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.b(paramMotionEvent);
+    OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+    if (localOnGestureListener != null) {
+      localOnGestureListener.b(paramMotionEvent);
     }
     return false;
   }
   
   protected boolean b(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b()) || (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c()) || (b())) {
-      return false;
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2))) {
+    if ((this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.b()) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.c()) && (!b()))
+    {
+      OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+      if ((localOnGestureListener != null) && (localOnGestureListener.b(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2))) {
+        return true;
+      }
+      d();
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateMoveBounds.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState).a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.a(), this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.b());
+      this.jdField_a_of_type_AndroidWidgetOverScroller.fling(Math.round(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.a()), Math.round(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.b()), a(paramFloat1 * 0.9F), a(paramFloat2 * 0.9F), -2147483648, 2147483647, -2147483648, 2147483647);
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationAnimationEngine.a(3);
+      a();
       return true;
     }
-    d();
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateMoveBounds.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState).a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.a(), this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.b());
-    this.jdField_a_of_type_AndroidWidgetOverScroller.fling(Math.round(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.a()), Math.round(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.b()), a(paramFloat1 * 0.9F), a(0.9F * paramFloat2), -2147483648, 2147483647, -2147483648, 2147483647);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureAnimationAnimationEngine.a(3);
-    a();
-    return true;
+    return false;
   }
   
   protected boolean b(ScaleGestureDetector paramScaleGestureDetector)
   {
-    boolean bool = true;
-    if ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d()) || (b())) {
-      bool = false;
-    }
-    do
+    if ((this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d()) && (!b()))
     {
-      return bool;
       float f1 = paramScaleGestureDetector.getScaleFactor();
       this.jdField_a_of_type_Float = paramScaleGestureDetector.getFocusX();
       this.jdField_b_of_type_Float = paramScaleGestureDetector.getFocusY();
       this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.a(f1, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
       this.f = true;
-    } while (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.b(paramScaleGestureDetector);
-    return true;
+      OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+      if (localOnGestureListener != null) {
+        localOnGestureListener.b(paramScaleGestureDetector);
+      }
+      return true;
+    }
+    return false;
   }
   
   protected boolean b(View paramView, MotionEvent paramMotionEvent)
@@ -372,14 +390,15 @@ public class GestureController
   
   protected boolean b(RotationGestureDetector paramRotationGestureDetector)
   {
-    if ((!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e()) || (b())) {
-      return false;
+    if ((this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e()) && (!b()))
+    {
+      this.jdField_a_of_type_Float = paramRotationGestureDetector.a();
+      this.jdField_b_of_type_Float = paramRotationGestureDetector.b();
+      this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.c(paramRotationGestureDetector.c(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
+      this.f = true;
+      return true;
     }
-    this.jdField_a_of_type_Float = paramRotationGestureDetector.a();
-    this.jdField_b_of_type_Float = paramRotationGestureDetector.b();
-    this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.c(paramRotationGestureDetector.c(), this.jdField_a_of_type_Float, this.jdField_b_of_type_Float);
-    this.f = true;
-    return true;
+    return false;
   }
   
   public void c()
@@ -393,7 +412,7 @@ public class GestureController
   
   public boolean c()
   {
-    return !this.jdField_a_of_type_AndroidWidgetOverScroller.isFinished();
+    return this.jdField_a_of_type_AndroidWidgetOverScroller.isFinished() ^ true;
   }
   
   protected boolean c(MotionEvent paramMotionEvent)
@@ -401,7 +420,8 @@ public class GestureController
     if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.g()) {
       this.jdField_a_of_type_AndroidViewView.performClick();
     }
-    return (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.b(paramMotionEvent));
+    OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+    return (localOnGestureListener != null) && (localOnGestureListener.b(paramMotionEvent));
   }
   
   protected boolean c(View paramView, MotionEvent paramMotionEvent)
@@ -409,7 +429,8 @@ public class GestureController
     MotionEvent localMotionEvent = MotionEvent.obtain(paramMotionEvent);
     localMotionEvent.offsetLocation(-paramView.getPaddingLeft(), -paramView.getPaddingTop());
     this.jdField_a_of_type_AndroidViewGestureDetector.setIsLongpressEnabled(paramView.isLongClickable());
-    boolean bool = this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(localMotionEvent);
+    boolean bool2 = this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(localMotionEvent);
+    boolean bool1 = bool2;
     if (paramMotionEvent.getPointerCount() > 1)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.d()) {
@@ -418,44 +439,42 @@ public class GestureController
       if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.e()) {
         this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureDetectorRotationGestureDetector.a(localMotionEvent);
       }
-      if ((bool) || (this.jdField_d_of_type_Boolean) || (this.e)) {
-        bool = true;
+      if ((!bool2) && (!this.jdField_d_of_type_Boolean) && (!this.e)) {
+        bool1 = false;
+      } else {
+        bool1 = true;
       }
     }
-    for (;;)
+    a();
+    if (this.f)
     {
-      a();
-      if (this.f)
-      {
-        this.f = false;
-        this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_d_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, true, true, false);
-        if (!this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.equals(this.jdField_d_of_type_ComTencentMobileqqOcrViewGestureStateState)) {
-          f();
-        }
+      this.f = false;
+      this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_d_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, true, true, false);
+      if (!this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState.equals(this.jdField_d_of_type_ComTencentMobileqqOcrViewGestureStateState)) {
+        f();
       }
-      if ((this.g) || (this.h))
-      {
-        this.g = false;
-        this.h = false;
-        a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_d_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, true, false, true), false);
-      }
-      if ((localMotionEvent.getActionMasked() == 1) || (localMotionEvent.getActionMasked() == 3))
-      {
-        a(localMotionEvent);
-        a();
-      }
-      if ((!this.jdField_b_of_type_Boolean) && (a(localMotionEvent)))
-      {
-        this.jdField_b_of_type_Boolean = true;
-        paramView = paramView.getParent();
-        if (paramView != null) {
-          paramView.requestDisallowInterceptTouchEvent(true);
-        }
-      }
-      localMotionEvent.recycle();
-      return bool;
-      bool = false;
     }
+    if ((this.g) || (this.h))
+    {
+      this.g = false;
+      this.h = false;
+      a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_d_of_type_ComTencentMobileqqOcrViewGestureStateState, this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, true, false, true), false);
+    }
+    if ((localMotionEvent.getActionMasked() == 1) || (localMotionEvent.getActionMasked() == 3))
+    {
+      a(localMotionEvent);
+      a();
+    }
+    if ((!this.jdField_b_of_type_Boolean) && (a(localMotionEvent)))
+    {
+      this.jdField_b_of_type_Boolean = true;
+      paramView = paramView.getParent();
+      if (paramView != null) {
+        paramView.requestDisallowInterceptTouchEvent(true);
+      }
+    }
+    localMotionEvent.recycle();
+    return bool1;
   }
   
   public void d()
@@ -477,7 +496,8 @@ public class GestureController
     if (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.g()) {
       this.jdField_a_of_type_AndroidViewView.performClick();
     }
-    return (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.c(paramMotionEvent));
+    OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+    return (localOnGestureListener != null) && (localOnGestureListener.c(paramMotionEvent));
   }
   
   public void e()
@@ -488,11 +508,17 @@ public class GestureController
   
   protected boolean e(MotionEvent paramMotionEvent)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.g()) {}
-    while ((paramMotionEvent.getActionMasked() != 1) || (this.jdField_d_of_type_Boolean)) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureSettings.g()) {
       return false;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener != null) && (this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener.a(paramMotionEvent))) {
+    if (paramMotionEvent.getActionMasked() != 1) {
+      return false;
+    }
+    if (this.jdField_d_of_type_Boolean) {
+      return false;
+    }
+    OnGestureListener localOnGestureListener = this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureControlOnGestureListener;
+    if ((localOnGestureListener != null) && (localOnGestureListener.a(paramMotionEvent))) {
       return true;
     }
     a(this.jdField_a_of_type_ComTencentMobileqqOcrViewGestureStateStateController.a(this.jdField_c_of_type_ComTencentMobileqqOcrViewGestureStateState, paramMotionEvent.getX(), paramMotionEvent.getY()));
@@ -519,7 +545,7 @@ public class GestureController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.gesture.control.GestureController
  * JD-Core Version:    0.7.0.1
  */

@@ -15,7 +15,10 @@ class ARScanEntryView$4
   
   public void a()
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResDownLoadComplete " + this.a.m);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAsyncFaceResDownLoadComplete ");
+    localStringBuilder.append(this.a.m);
+    QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
     if (!this.a.m) {
       return;
     }
@@ -39,7 +42,12 @@ class ARScanEntryView$4
   
   public void a(int paramInt)
   {
-    QLog.d("AREngine_ARScanEntryView", 1, "onAsyncFaceResUpdateProgress " + paramInt + ";" + this.a.m);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAsyncFaceResUpdateProgress ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(";");
+    localStringBuilder.append(this.a.m);
+    QLog.d("AREngine_ARScanEntryView", 1, localStringBuilder.toString());
     if (!this.a.m) {
       return;
     }
@@ -54,7 +62,7 @@ class ARScanEntryView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ARScanEntryView.4
  * JD-Core Version:    0.7.0.1
  */

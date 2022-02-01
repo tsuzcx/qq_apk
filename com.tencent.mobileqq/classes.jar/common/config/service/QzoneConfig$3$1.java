@@ -9,19 +9,22 @@ class QzoneConfig$3$1
   
   public void run()
   {
-    if ((this.val$intent.getAction().equals("mqq.intent.action.ACCOUNT_KICKED")) || (this.val$intent.getAction().equals("mqq.intent.action.FORCE_LOGOUT")) || (this.val$intent.getAction().equals("mqq.intent.action.LOGOUT"))) {
+    if ((!this.jdField_a_of_type_AndroidContentIntent.getAction().equals("mqq.intent.action.ACCOUNT_KICKED")) && (!this.jdField_a_of_type_AndroidContentIntent.getAction().equals("mqq.intent.action.FORCE_LOGOUT")) && (!this.jdField_a_of_type_AndroidContentIntent.getAction().equals("mqq.intent.action.LOGOUT")))
+    {
+      if ((this.jdField_a_of_type_AndroidContentIntent.getAction().equals("mqq.intent.action.ACCOUNT_CHANGED")) || (this.jdField_a_of_type_AndroidContentIntent.getAction().equals("mqq.intent.action.LOGIN")))
+      {
+        QzoneConfig.getInstance().clearConfigs();
+        QzoneConfig.getInstance().loadAllConfigs();
+      }
+    }
+    else {
       QzoneConfig.getInstance().clearConfigs();
     }
-    while ((!this.val$intent.getAction().equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!this.val$intent.getAction().equals("mqq.intent.action.LOGIN"))) {
-      return;
-    }
-    QzoneConfig.getInstance().clearConfigs();
-    QzoneConfig.getInstance().loadAllConfigs();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     common.config.service.QzoneConfig.3.1
  * JD-Core Version:    0.7.0.1
  */

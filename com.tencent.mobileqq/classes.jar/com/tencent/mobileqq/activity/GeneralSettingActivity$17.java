@@ -14,22 +14,17 @@ class GeneralSettingActivity$17
   {
     if (!((SimpleUIHandler)this.this$0.app.getBusinessHandler(BusinessHandlerFactory.SIMPLE_UI_HANDLER)).a(this.jdField_a_of_type_Boolean, this.jdField_a_of_type_Int, true))
     {
-      this.this$0.e(2131719138, 0);
-      GeneralSettingActivity localGeneralSettingActivity = this.this$0;
-      CompoundButton localCompoundButton = this.jdField_a_of_type_AndroidWidgetCompoundButton;
-      if (!this.b) {}
-      for (boolean bool = true;; bool = false)
-      {
-        localGeneralSettingActivity.a(localCompoundButton, bool);
-        return;
-      }
+      this.this$0.e(2131718856, 0);
+      this.this$0.a(this.jdField_a_of_type_AndroidWidgetCompoundButton, this.b ^ true);
+      return;
     }
-    GeneralSettingActivity.a(this.this$0, true, this.this$0.a);
+    GeneralSettingActivity localGeneralSettingActivity = this.this$0;
+    GeneralSettingActivity.a(localGeneralSettingActivity, true, localGeneralSettingActivity.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.17
  * JD-Core Version:    0.7.0.1
  */

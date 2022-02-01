@@ -10,23 +10,25 @@ class SonicSession$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return false;
-    case 1: 
-      paramMessage = (SonicServer)paramMessage.obj;
-      SonicSession.access$000(this.this$0, paramMessage);
+      if (i != 2) {
+        return false;
+      }
+      paramMessage = (String)paramMessage.obj;
+      SonicSession localSonicSession = this.this$0;
+      localSonicSession.doSaveSonicCache(localSonicSession.server, paramMessage);
       return true;
     }
-    paramMessage = (String)paramMessage.obj;
-    this.this$0.doSaveSonicCache(this.this$0.server, paramMessage);
+    paramMessage = (SonicServer)paramMessage.obj;
+    SonicSession.access$000(this.this$0, paramMessage);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSession.1
  * JD-Core Version:    0.7.0.1
  */

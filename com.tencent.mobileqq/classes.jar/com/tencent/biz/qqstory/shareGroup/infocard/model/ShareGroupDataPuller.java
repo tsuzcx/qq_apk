@@ -19,19 +19,19 @@ public class ShareGroupDataPuller
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public BatchNetHandler a(String paramString, List<String> paramList)
+  protected BatchNetHandler a(String paramString, List<String> paramList)
   {
     return new VidToShareGroupVideoInfoHandler(paramString, paramList);
   }
   
-  public INetPageLoader a()
+  protected INetPageLoader a()
   {
     return new ShareGroupDateListPageLoader(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.c);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.infocard.model.ShareGroupDataPuller
  * JD-Core Version:    0.7.0.1
  */

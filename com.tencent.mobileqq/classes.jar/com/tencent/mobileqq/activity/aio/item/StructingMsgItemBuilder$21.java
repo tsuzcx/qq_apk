@@ -14,29 +14,30 @@ class StructingMsgItemBuilder$21
   
   public void a(View paramView, long paramLong, int paramInt1, int paramInt2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.uniseq != paramLong) {
       return;
-      paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
-      if (paramInt1 != 1001) {
-        paramInt2 = 100;
+    }
+    paramView = (StructMsgForGeneralShare)this.jdField_a_of_type_ComTencentMobileqqDataMessageForStructing.structingMsg;
+    if (paramInt1 != 1001) {
+      paramInt2 = 100;
+    }
+    paramView.setProgress(paramInt2);
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131377967);
+    if ((paramView instanceof ProgressBar))
+    {
+      ((ProgressBar)paramView).setProgress(paramInt2);
+      if (paramInt2 == 100) {
+        paramInt1 = 8;
+      } else {
+        paramInt1 = 0;
       }
-      paramView.setProgress(paramInt2);
-      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.findViewById(2131378556);
-    } while (!(paramView instanceof ProgressBar));
-    ((ProgressBar)paramView).setProgress(paramInt2);
-    if (paramInt2 == 100) {}
-    for (paramInt1 = 8;; paramInt1 = 0)
-    {
       paramView.setVisibility(paramInt1);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.21
  * JD-Core Version:    0.7.0.1
  */

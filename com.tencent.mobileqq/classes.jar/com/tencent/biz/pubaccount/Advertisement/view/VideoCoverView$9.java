@@ -14,29 +14,31 @@ class VideoCoverView$9
   {
     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = true;
     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    if (this.a.jdField_a_of_type_Int == 5) {
+    if (this.a.jdField_a_of_type_Int == 5)
+    {
       this.a.d();
     }
-    for (;;)
+    else
     {
-      AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
-      return;
-      this.a.b(VideoCoverView.a(this.a));
+      VideoCoverView localVideoCoverView = this.a;
+      localVideoCoverView.b(VideoCoverView.a(localVideoCoverView));
     }
+    AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, true);
   }
   
   public void b()
   {
-    this.a.jdField_a_of_type_Int = 6;
+    VideoCoverView localVideoCoverView = this.a;
+    localVideoCoverView.jdField_a_of_type_Int = 6;
     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.a = false;
     com.tencent.biz.pubaccount.Advertisement.fragment.VideoCoverFragment.b = true;
-    this.a.g();
+    localVideoCoverView.g();
     AdvertisementStatistics.a().a(VideoCoverView.a(this.a).a.c, this.a.jdField_a_of_type_JavaLangString, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.view.VideoCoverView.9
  * JD-Core Version:    0.7.0.1
  */

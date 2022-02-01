@@ -22,17 +22,32 @@ public class MiniCard$BaseProfile
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("age").append("=").append(this.jdField_a_of_type_Int).append("|");
-    localStringBuilder.append("gender").append("=").append(this.jdField_b_of_type_Int).append("|");
-    localStringBuilder.append("place").append("=").append(this.jdField_a_of_type_JavaLangString).append("|");
-    localStringBuilder.append("addSrc").append("=").append(this.jdField_b_of_type_JavaLangString).append("|");
-    localStringBuilder.append("commFrdCnt").append("=").append(this.c).append("|");
+    localStringBuilder.append("age");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append("gender");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("|");
+    localStringBuilder.append("place");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("addSrc");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("|");
+    localStringBuilder.append("commFrdCnt");
+    localStringBuilder.append("=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("|");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.relationx.icebreaking.bean.MiniCard.BaseProfile
  * JD-Core Version:    0.7.0.1
  */

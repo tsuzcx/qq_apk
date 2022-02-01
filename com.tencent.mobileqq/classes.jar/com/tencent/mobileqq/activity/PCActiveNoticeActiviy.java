@@ -27,24 +27,29 @@ public class PCActiveNoticeActiviy
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559628);
-    if ((getIntent() != null) && (getIntent().getExtras() != null)) {}
-    for (this.jdField_a_of_type_JavaLangString = getIntent().getExtras().getString("uin"); TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString); this.jdField_a_of_type_JavaLangString = null)
+    super.setContentView(2131559505);
+    if ((getIntent() != null) && (getIntent().getExtras() != null)) {
+      this.jdField_a_of_type_JavaLangString = getIntent().getExtras().getString("uin");
+    } else {
+      this.jdField_a_of_type_JavaLangString = null;
+    }
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       finish();
       return false;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+    paramBundle = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if ((paramBundle != null) && (paramBundle.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
-    paramBundle = HardCodeUtil.a(2131707895);
+    paramBundle = HardCodeUtil.a(2131707918);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this, 230);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131559060);
-    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null).setMessage(getString(2131694732)).setPositiveButton(2131694731, new PCActiveNoticeActiviy.1(this));
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setContentView(2131558954);
+    this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTitle(null).setMessage(getString(2131694711)).setPositiveButton(2131694710, new PCActiveNoticeActiviy.1(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setTextContentDescription(paramBundle);
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.setOnKeyListener(new PCActiveNoticeActiviy.2(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -54,7 +59,8 @@ public class PCActiveNoticeActiviy
   
   public void finish()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {
+    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if ((localQQCustomDialog != null) && (localQQCustomDialog.isShowing())) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
     }
     this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
@@ -72,7 +78,7 @@ public class PCActiveNoticeActiviy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PCActiveNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

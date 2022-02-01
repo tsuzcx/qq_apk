@@ -10,7 +10,7 @@ public final class e_attribute_3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.e_attribute_3
  * JD-Core Version:    0.7.0.1
  */

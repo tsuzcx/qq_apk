@@ -11,8 +11,18 @@ public final class c
     if (ao)
     {
       Object localObject = java.lang.Thread.currentThread().getStackTrace()[3];
-      localObject = ((StackTraceElement)localObject).getFileName() + "(" + ((StackTraceElement)localObject).getLineNumber() + ") " + ((StackTraceElement)localObject).getMethodName();
-      Log.d(paramString1, (String)localObject + ": " + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((StackTraceElement)localObject).getFileName());
+      localStringBuilder.append("(");
+      localStringBuilder.append(((StackTraceElement)localObject).getLineNumber());
+      localStringBuilder.append(") ");
+      localStringBuilder.append(((StackTraceElement)localObject).getMethodName());
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      Log.d(paramString1, localStringBuilder.toString());
     }
   }
   
@@ -21,8 +31,18 @@ public final class c
     if (ao)
     {
       Object localObject = java.lang.Thread.currentThread().getStackTrace()[3];
-      localObject = ((StackTraceElement)localObject).getFileName() + "(" + ((StackTraceElement)localObject).getLineNumber() + ") " + ((StackTraceElement)localObject).getMethodName();
-      Log.e(paramString1, (String)localObject + ": " + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(((StackTraceElement)localObject).getFileName());
+      localStringBuilder.append("(");
+      localStringBuilder.append(((StackTraceElement)localObject).getLineNumber());
+      localStringBuilder.append(") ");
+      localStringBuilder.append(((StackTraceElement)localObject).getMethodName());
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      Log.e(paramString1, localStringBuilder.toString());
     }
   }
   

@@ -1,7 +1,8 @@
 package com.tencent.mobileqq.activity.springfestival.report;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.activity.qwallet.utils.QWalletTools;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.IQWalletApi;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -12,39 +13,33 @@ final class SpringHbMonitorReporter$5
   
   public void run()
   {
-    HashMap localHashMap;
     if (SpringHbMonitorReporter.a(this.jdField_a_of_type_JavaLangString))
     {
-      str = QWalletTools.c(this.jdField_a_of_type_JavaLangString);
-      if (!TextUtils.isEmpty(str))
+      Object localObject = ((IQWalletApi)QRoute.api(IQWalletApi.class)).getEncodeUrl(this.jdField_a_of_type_JavaLangString);
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        localHashMap = new HashMap();
-        localHashMap.put("ext1", str);
-        if (this.b != null) {
-          break label100;
+        HashMap localHashMap = new HashMap();
+        localHashMap.put("ext1", localObject);
+        String str = this.b;
+        localObject = str;
+        if (str == null) {
+          localObject = "";
         }
-        str = "";
-        localHashMap.put("ext2", str);
-        if (this.c != null) {
-          break label108;
+        localHashMap.put("ext2", localObject);
+        str = this.c;
+        localObject = str;
+        if (str == null) {
+          localObject = "";
         }
+        localHashMap.put("ext3", localObject);
+        SpringHbReporter.a(ReportConstant.Event.jdField_a_of_type_JavaLangString, 4, this.jdField_a_of_type_Int, localHashMap, ReportConstant.Res.a(4));
       }
-    }
-    label100:
-    label108:
-    for (String str = "";; str = this.c)
-    {
-      localHashMap.put("ext3", str);
-      SpringHbReporter.a(ReportConstant.Event.jdField_a_of_type_JavaLangString, 4, this.jdField_a_of_type_Int, localHashMap, ReportConstant.Res.a(4));
-      return;
-      str = this.b;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbMonitorReporter.5
  * JD-Core Version:    0.7.0.1
  */

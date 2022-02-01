@@ -10,8 +10,8 @@ import org.json.JSONObject;
 
 public class TroopShortcutBarConfig
 {
-  public static boolean a;
-  public static boolean b;
+  public static boolean a = false;
+  public static boolean b = false;
   public static int c = 1;
   public int a;
   public ArrayList<Integer> a;
@@ -29,166 +29,160 @@ public class TroopShortcutBarConfig
   
   public static TroopShortcutBarConfig a(QConfItem[] paramArrayOfQConfItem)
   {
-    boolean bool2 = true;
-    ArrayList localArrayList1 = new ArrayList();
-    ArrayList localArrayList2 = new ArrayList();
+    Object localObject1 = new ArrayList();
+    ArrayList localArrayList = new ArrayList();
+    boolean bool2 = false;
     int i4 = 0;
+    int i1 = 0;
     int i2 = 0;
     int i3 = 0;
-    int i1 = 0;
-    int n = 0;
-    if (i4 < paramArrayOfQConfItem.length)
+    int i = 0;
+    while (i4 < paramArrayOfQConfItem.length)
     {
-      Object localObject = paramArrayOfQConfItem[i4].a;
-      if (TextUtils.isEmpty((CharSequence)localObject)) {}
-      for (;;)
+      Object localObject2 = paramArrayOfQConfItem[i4].a;
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        i4 += 1;
-        break;
-        localArrayList1.clear();
-        localArrayList2.clear();
-        int i = i2;
-        int j = i3;
-        int k = i1;
-        int m = n;
+        ((ArrayList)localObject1).clear();
+        localArrayList.clear();
+        int j = i1;
+        int k = i2;
+        int m = i3;
+        int n = i;
         try
         {
-          localObject = new JSONObject((String)localObject);
-          i = i2;
-          j = i3;
-          k = i1;
-          m = n;
-          int i5 = ((JSONObject)localObject).optInt("globalOpen", 0);
-          i = i2;
-          j = i3;
-          k = i1;
-          m = i5;
-          int i6 = ((JSONObject)localObject).optInt("globalOpenStudyMode", 0);
-          i = i2;
-          j = i3;
+          localObject2 = new JSONObject((String)localObject2);
+          j = i1;
+          k = i2;
+          m = i3;
+          n = i;
+          int i5 = ((JSONObject)localObject2).optInt("globalOpen", 0);
+          j = i5;
+          k = i2;
+          m = i3;
+          n = i;
+          int i6 = ((JSONObject)localObject2).optInt("globalOpenStudyMode", 0);
+          j = i5;
           k = i6;
-          m = i5;
-          int i7 = ((JSONObject)localObject).optInt("groupShortcutBarSwitchWithoutAdmin", 0);
-          i = i2;
-          j = i7;
+          m = i3;
+          n = i;
+          int i7 = ((JSONObject)localObject2).optInt("groupShortcutBarSwitchWithoutAdmin", 0);
+          j = i5;
           k = i6;
-          m = i5;
-          int i8 = ((JSONObject)localObject).optInt("groupAppHotRecommendSwitch", 0);
-          i = i8;
-          j = i7;
+          m = i7;
+          n = i;
+          int i8 = ((JSONObject)localObject2).optInt("groupAppHotRecommendSwitch", 0);
+          j = i5;
           k = i6;
-          m = i5;
-          JSONArray localJSONArray = ((JSONObject)localObject).optJSONArray("enabledGroupTypes");
+          m = i7;
+          n = i8;
+          JSONArray localJSONArray = ((JSONObject)localObject2).optJSONArray("enabledGroupTypes");
           if (localJSONArray != null)
           {
-            i = i8;
-            j = i7;
+            j = i5;
             k = i6;
-            m = i5;
+            m = i7;
+            n = i8;
             if (localJSONArray.length() > 0)
             {
-              n = 0;
+              i = 0;
               for (;;)
               {
-                i = i8;
-                j = i7;
+                j = i5;
                 k = i6;
-                m = i5;
-                if (n >= localJSONArray.length()) {
+                m = i7;
+                n = i8;
+                if (i >= localJSONArray.length()) {
                   break;
                 }
-                i = i8;
-                j = i7;
+                j = i5;
                 k = i6;
-                m = i5;
-                localArrayList1.add(Integer.valueOf(localJSONArray.getInt(n)));
-                n += 1;
+                m = i7;
+                n = i8;
+                ((ArrayList)localObject1).add(Integer.valueOf(localJSONArray.getInt(i)));
+                i += 1;
               }
             }
           }
-          i = i8;
-          j = i7;
+          j = i5;
           k = i6;
-          m = i5;
-          localObject = ((JSONObject)localObject).optJSONArray("enabledGroupTypesStudyMode");
-          i2 = i8;
+          m = i7;
+          n = i8;
+          localObject2 = ((JSONObject)localObject2).optJSONArray("enabledGroupTypesStudyMode");
+          i1 = i5;
+          i2 = i6;
           i3 = i7;
-          i1 = i6;
-          n = i5;
-          if (localObject != null)
+          i = i8;
+          if (localObject2 != null)
           {
-            i2 = i8;
-            i3 = i7;
-            i1 = i6;
-            n = i5;
-            i = i8;
-            j = i7;
+            j = i5;
             k = i6;
-            m = i5;
-            if (((JSONArray)localObject).length() > 0)
+            m = i7;
+            n = i8;
+            i1 = i5;
+            i2 = i6;
+            i3 = i7;
+            i = i8;
+            if (((JSONArray)localObject2).length() > 0)
             {
               int i9 = 0;
               for (;;)
               {
-                i2 = i8;
-                i3 = i7;
-                i1 = i6;
-                n = i5;
-                i = i8;
-                j = i7;
+                j = i5;
                 k = i6;
-                m = i5;
-                if (i9 >= ((JSONArray)localObject).length()) {
+                m = i7;
+                n = i8;
+                i1 = i5;
+                i2 = i6;
+                i3 = i7;
+                i = i8;
+                if (i9 >= ((JSONArray)localObject2).length()) {
                   break;
                 }
-                i = i8;
-                j = i7;
+                j = i5;
                 k = i6;
-                m = i5;
-                localArrayList2.add(Integer.valueOf(((JSONArray)localObject).getInt(i9)));
+                m = i7;
+                n = i8;
+                localArrayList.add(Integer.valueOf(((JSONArray)localObject2).getInt(i9)));
                 i9 += 1;
               }
             }
           }
+          i4 += 1;
         }
         catch (JSONException localJSONException)
         {
           localJSONException.printStackTrace();
-          i2 = i;
-          i3 = j;
-          i1 = k;
-          n = m;
+          i = n;
+          i3 = m;
+          i2 = k;
+          i1 = j;
         }
       }
     }
     paramArrayOfQConfItem = new TroopShortcutBarConfig();
-    if (paramArrayOfQConfItem != null)
-    {
-      if (n != 1) {
-        break label591;
-      }
+    if (i1 == 1) {
       bool1 = true;
-      jdField_a_of_type_Boolean = bool1;
-      if (i1 != 1) {
-        break label597;
-      }
-    }
-    label591:
-    label597:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      jdField_b_of_type_Boolean = bool1;
-      paramArrayOfQConfItem.jdField_a_of_type_JavaUtilArrayList = localArrayList1;
-      paramArrayOfQConfItem.jdField_a_of_type_Int = i3;
-      paramArrayOfQConfItem.jdField_b_of_type_Int = i2;
-      paramArrayOfQConfItem.jdField_b_of_type_JavaUtilArrayList = localArrayList2;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopShortcutBarConfig", 2, "parse:" + paramArrayOfQConfItem.toString());
-      }
-      return paramArrayOfQConfItem;
+    } else {
       bool1 = false;
-      break;
     }
+    jdField_a_of_type_Boolean = bool1;
+    boolean bool1 = bool2;
+    if (i2 == 1) {
+      bool1 = true;
+    }
+    jdField_b_of_type_Boolean = bool1;
+    paramArrayOfQConfItem.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject1);
+    paramArrayOfQConfItem.jdField_a_of_type_Int = i3;
+    paramArrayOfQConfItem.jdField_b_of_type_Int = i;
+    paramArrayOfQConfItem.jdField_b_of_type_JavaUtilArrayList = localArrayList;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("parse:");
+      ((StringBuilder)localObject1).append(paramArrayOfQConfItem.toString());
+      QLog.d("TroopShortcutBarConfig", 2, ((StringBuilder)localObject1).toString());
+    }
+    return paramArrayOfQConfItem;
   }
   
   public boolean a()
@@ -198,29 +192,47 @@ public class TroopShortcutBarConfig
   
   public boolean a(int paramInt)
   {
-    return (true == jdField_a_of_type_Boolean) || (this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)));
+    if (true != jdField_a_of_type_Boolean) {
+      return this.jdField_a_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
+    }
+    return true;
   }
   
   public boolean b(int paramInt)
   {
-    return (true == jdField_b_of_type_Boolean) || (this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt)));
+    if (true != jdField_b_of_type_Boolean) {
+      return this.jdField_b_of_type_JavaUtilArrayList.contains(Integer.valueOf(paramInt));
+    }
+    return true;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("isGlobalOpen:").append(jdField_a_of_type_Boolean).append("\r\n");
-    localStringBuilder.append("isGlobalStudyModeOpen:").append(jdField_b_of_type_Boolean).append("\r\n");
-    localStringBuilder.append("mTroopShortCutBarSwitchList:").append(this.jdField_a_of_type_JavaUtilArrayList).append("\r\n");
-    localStringBuilder.append("mStudyModeTroopSwitchList:").append(this.jdField_b_of_type_JavaUtilArrayList).append("\r\n");
-    localStringBuilder.append("groupShortcutBarSwitchWithoutAdmin:").append(this.jdField_a_of_type_Int).append("\r\n");
-    localStringBuilder.append("groupAppHotRecommendSwitch:").append(this.jdField_b_of_type_Int).append("\r\n");
+    localStringBuilder.append("isGlobalOpen:");
+    localStringBuilder.append(jdField_a_of_type_Boolean);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("isGlobalStudyModeOpen:");
+    localStringBuilder.append(jdField_b_of_type_Boolean);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mTroopShortCutBarSwitchList:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilArrayList);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("mStudyModeTroopSwitchList:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaUtilArrayList);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("groupShortcutBarSwitchWithoutAdmin:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("\r\n");
+    localStringBuilder.append("groupAppHotRecommendSwitch:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("\r\n");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarConfig
  * JD-Core Version:    0.7.0.1
  */

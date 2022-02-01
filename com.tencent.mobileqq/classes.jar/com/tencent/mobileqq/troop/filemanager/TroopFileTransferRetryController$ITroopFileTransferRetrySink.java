@@ -2,13 +2,13 @@ package com.tencent.mobileqq.troop.filemanager;
 
 public abstract interface TroopFileTransferRetryController$ITroopFileTransferRetrySink
 {
-  public abstract long b();
+  public abstract long a();
   
-  public abstract void b(String paramString);
+  public abstract void a(String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.TroopFileTransferRetryController.ITroopFileTransferRetrySink
  * JD-Core Version:    0.7.0.1
  */

@@ -21,12 +21,27 @@ public class TMSDKFreeWifiInfo
   
   public String toString()
   {
-    return "[ssid:" + this.ssid + ",bssid:" + this.bssid + ",security:" + this.security + ",poi:" + this.poi + ",signalLevel:" + this.signalLevel + ",isBestWifi:" + this.isBestWiFi + ",recommendReason:" + this.recommendReason;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[ssid:");
+    localStringBuilder.append(this.ssid);
+    localStringBuilder.append(",bssid:");
+    localStringBuilder.append(this.bssid);
+    localStringBuilder.append(",security:");
+    localStringBuilder.append(this.security);
+    localStringBuilder.append(",poi:");
+    localStringBuilder.append(this.poi);
+    localStringBuilder.append(",signalLevel:");
+    localStringBuilder.append(this.signalLevel);
+    localStringBuilder.append(",isBestWifi:");
+    localStringBuilder.append(this.isBestWiFi);
+    localStringBuilder.append(",recommendReason:");
+    localStringBuilder.append(this.recommendReason);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.wifisdk.TMSDKFreeWifiInfo
  * JD-Core Version:    0.7.0.1
  */

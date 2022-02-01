@@ -1,6 +1,6 @@
 package com.tencent.hippy.qq.module;
 
-import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
+import com.tencent.mobileqq.qqgamepub.utils.GamePubAccountHelper;
 import com.tencent.mtt.hippy.common.HippyMap;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
@@ -19,86 +19,89 @@ class HippyQQHttpModule$1
   
   public void onResponse(HttpResponse paramHttpResponse, Map<String, String> paramMap)
   {
-    int i = 1;
-    QQGameHelper.a(this.val$request.url, System.currentTimeMillis());
-    if ((this.val$promise != null) && (this.val$promise.isCallback()))
+    GamePubAccountHelper.a(this.val$request.url, System.currentTimeMillis());
+    Object localObject = this.val$promise;
+    if ((localObject != null) && (((Promise)localObject).isCallback())) {}
+    for (;;)
     {
-      JSONObject localJSONObject;
-      for (;;)
+      try
       {
-        try
+        localJSONObject = new JSONObject();
+        i = 1;
+        localObject = "";
+        if ((paramHttpResponse != null) && (!"-1".equals(paramHttpResponse.statusCode)))
         {
-          localJSONObject = new JSONObject();
-          if ((paramHttpResponse == null) || ("-1".equals(paramHttpResponse.statusCode)))
-          {
-            localJSONObject.put("success", 0);
-            localJSONObject.put("errorText", "ERR_CONNECT_FAILED");
-            paramMap = "";
-            if (paramHttpResponse != null) {
-              paramMap = paramHttpResponse.errorMsg;
-            }
-            QLog.e(HippyQQHttpModule.TAG, 1, "connect failed and msg is " + paramMap);
-            paramHttpResponse = new HippyMap();
-            QQGameHelper.a(this.val$request.url, System.currentTimeMillis());
-            paramMap = QQGameHelper.a(this.val$request.url);
-            if (paramMap != null) {
-              localJSONObject.put("requestCostTime", paramMap);
-            }
-            paramHttpResponse.pushJSONObject(localJSONObject);
-            if (QLog.isColorLevel()) {
-              QLog.d("wenttt", 1, "retMap=" + paramHttpResponse.toString());
-            }
-            this.val$promise.resolve(paramHttpResponse);
-            QQGameHelper.a(this.val$request.url);
-            return;
-          }
           int j = Integer.parseInt(paramHttpResponse.statusCode);
           localJSONObject.put("code", j);
-          if ((j >= 200) && (j <= 299))
+          if ((j < 200) || (j > 299)) {
+            break label403;
+          }
+          localJSONObject.put("success", i);
+          byte[] arrayOfByte = paramHttpResponse.originalData;
+          if (arrayOfByte == null)
           {
-            localJSONObject.put("success", i);
-            if (paramHttpResponse.originalData != null) {
-              break;
-            }
             localJSONObject.put("data", null);
-            localJSONObject.put("errorText", HttpStatusText.getStatusText(paramHttpResponse.statusCode));
           }
           else
           {
-            i = 0;
+            arrayOfByte = paramHttpResponse.originalData;
+            if (paramMap != null) {
+              localObject = HippyQQHttpModule.getHeader(paramMap, "Content-Type");
+            }
+            paramMap = HippyQQHttpModule.readAsString(arrayOfByte, (String)localObject);
           }
         }
-        catch (JSONException paramHttpResponse)
-        {
-          ViolaLogUtils.e(HippyQQHttpModule.TAG, "JSONException e:" + paramHttpResponse.getMessage());
-          return;
-        }
       }
-      byte[] arrayOfByte = paramHttpResponse.originalData;
-      if (paramMap != null) {}
-      for (paramMap = HippyQQHttpModule.getHeader(paramMap, "Content-Type");; paramMap = "")
+      catch (JSONException paramHttpResponse)
       {
-        for (;;)
-        {
-          paramMap = HippyQQHttpModule.readAsString(arrayOfByte, paramMap);
-          try
-          {
-            localJSONObject.put("data", this.this$0.parseData(paramMap, "json"));
-          }
-          catch (JSONException paramMap)
-          {
-            localJSONObject.put("success", 0);
-            localJSONObject.put("code", -1);
-          }
-        }
-        break;
+        JSONObject localJSONObject;
+        paramMap = HippyQQHttpModule.TAG;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("JSONException e:");
+        ((StringBuilder)localObject).append(paramHttpResponse.getMessage());
+        ViolaLogUtils.e(paramMap, ((StringBuilder)localObject).toString());
       }
+      try
+      {
+        localJSONObject.put("data", this.this$0.parseData(paramMap, "json"));
+      }
+      catch (JSONException paramMap)
+      {
+        continue;
+      }
+      localJSONObject.put("success", 0);
+      localJSONObject.put("code", -1);
+      localJSONObject.put("errorText", HttpStatusText.getStatusText(paramHttpResponse.statusCode));
+      continue;
+      localJSONObject.put("success", 0);
+      localJSONObject.put("errorText", "ERR_CONNECT_FAILED");
+      if (paramHttpResponse != null) {
+        localObject = paramHttpResponse.errorMsg;
+      }
+      paramHttpResponse = HippyQQHttpModule.TAG;
+      paramMap = new StringBuilder();
+      paramMap.append("connect failed and msg is ");
+      paramMap.append((String)localObject);
+      QLog.e(paramHttpResponse, 1, paramMap.toString());
+      paramHttpResponse = new HippyMap();
+      GamePubAccountHelper.a(this.val$request.url, System.currentTimeMillis());
+      paramMap = GamePubAccountHelper.a(this.val$request.url);
+      if (paramMap != null) {
+        localJSONObject.put("requestCostTime", paramMap);
+      }
+      paramHttpResponse.pushJSONObject(localJSONObject);
+      this.val$promise.resolve(paramHttpResponse);
+      GamePubAccountHelper.a(this.val$request.url);
+      return;
+      return;
+      label403:
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.HippyQQHttpModule.1
  * JD-Core Version:    0.7.0.1
  */

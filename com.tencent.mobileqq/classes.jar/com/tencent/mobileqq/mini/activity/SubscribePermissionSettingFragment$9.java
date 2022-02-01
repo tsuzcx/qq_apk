@@ -15,27 +15,24 @@ class SubscribePermissionSettingFragment$9
   public void run()
   {
     INTERFACE.StSubscribeMessage localStSubscribeMessage = this.val$clickItem.getStSubscribeMessage();
-    PBInt32Field localPBInt32Field;
     if (localStSubscribeMessage != null)
     {
-      localPBInt32Field = localStSubscribeMessage.authState;
-      if (!this.val$isChecked) {
-        break label91;
+      PBInt32Field localPBInt32Field = localStSubscribeMessage.authState;
+      int i;
+      if (this.val$isChecked) {
+        i = 1;
+      } else {
+        i = 2;
       }
-    }
-    label91:
-    for (int i = 1;; i = 2)
-    {
       localPBInt32Field.set(i);
-      SubscribePermissionSettingFragment.access$000(this.this$0).set(this.val$position, new SubscribeItemModel.Builder(this.val$clickItem).setIsChecked(this.val$isChecked).setStSubscribeMessage(localStSubscribeMessage).build());
-      SubscribePermissionSettingFragment.access$800(this.this$0).setData(SubscribePermissionSettingFragment.access$000(this.this$0));
-      return;
     }
+    SubscribePermissionSettingFragment.access$000(this.this$0).set(this.val$position, new SubscribeItemModel.Builder(this.val$clickItem).setIsChecked(this.val$isChecked).setStSubscribeMessage(localStSubscribeMessage).build());
+    SubscribePermissionSettingFragment.access$800(this.this$0).setData(SubscribePermissionSettingFragment.access$000(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.SubscribePermissionSettingFragment.9
  * JD-Core Version:    0.7.0.1
  */

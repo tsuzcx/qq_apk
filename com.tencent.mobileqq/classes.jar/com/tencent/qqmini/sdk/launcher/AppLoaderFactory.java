@@ -74,14 +74,15 @@ public class AppLoaderFactory
   
   public static AppLoaderFactory g()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new AppLoaderFactory();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new AppLoaderFactory();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   private void prepareQMLog()
@@ -184,31 +185,33 @@ public class AppLoaderFactory
     }
     this.mContext = paramContext;
     prepareQMLog();
-    MiniAppDexLoader localMiniAppDexLoader = MiniAppDexLoader.g();
+    Object localObject = MiniAppDexLoader.g();
     boolean bool;
-    if (paramConfiguration != null)
-    {
+    if (paramConfiguration != null) {
       bool = paramConfiguration.dexLoaderEnable;
-      localMiniAppDexLoader.init(paramContext, bool, paramConfiguration.dexConfig);
-      MiniAppDexLoader.g().loadDex();
-      bindFields();
-      QMLog.d("minisdk-start", "packageName = " + this.mContext.getPackageName() + ", currentProcessName = " + getCurrentProcessName());
-      if (!isMainProcess()) {
-        break label138;
-      }
+    } else {
+      bool = true;
+    }
+    ((MiniAppDexLoader)localObject).init(paramContext, bool, paramConfiguration.dexConfig);
+    MiniAppDexLoader.g().loadDex();
+    bindFields();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("packageName = ");
+    ((StringBuilder)localObject).append(this.mContext.getPackageName());
+    ((StringBuilder)localObject).append(", currentProcessName = ");
+    ((StringBuilder)localObject).append(getCurrentProcessName());
+    QMLog.d("minisdk-start", ((StringBuilder)localObject).toString());
+    if (isMainProcess())
+    {
       QMLog.i("minisdk-start", "main process. init MiniServer");
       this.miniServer.init(paramContext, paramConfiguration);
     }
-    for (;;)
+    else
     {
-      this.appBrandProxy.init(paramContext);
-      return;
-      bool = true;
-      break;
-      label138:
       QMLog.i("minisdk-start", "sub process, init MiniAppEnv");
       this.miniAppEnv.init(paramContext, paramConfiguration);
     }
+    this.appBrandProxy.init(paramContext);
   }
   
   public boolean isMainProcess()
@@ -225,7 +228,7 @@ public class AppLoaderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.AppLoaderFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -38,23 +38,27 @@ public final class c
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bi, 0);
-    if (this.bj != null) {
-      paramJceOutputStream.write(this.bj, 1);
+    Object localObject = this.bj;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 1);
     }
-    if (this.bk != 0) {
-      paramJceOutputStream.write(this.bk, 2);
+    int i = this.bk;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.bl != null) {
-      paramJceOutputStream.write(this.bl, 3);
+    localObject = this.bl;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.bm != null) {
-      paramJceOutputStream.write(this.bm, 4);
+    localObject = this.bm;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Protocol.MConch.c
  * JD-Core Version:    0.7.0.1
  */

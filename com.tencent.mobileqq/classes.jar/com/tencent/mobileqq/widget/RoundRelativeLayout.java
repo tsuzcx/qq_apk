@@ -12,7 +12,6 @@ import android.graphics.PorterDuffXfermode;
 import android.graphics.RectF;
 import android.util.AttributeSet;
 import android.widget.RelativeLayout;
-import com.tencent.qphone.base.util.QLog;
 
 public class RoundRelativeLayout
   extends RelativeLayout
@@ -50,17 +49,18 @@ public class RoundRelativeLayout
   private void a(Canvas paramCanvas)
   {
     int i = 0;
-    if (i < this.jdField_a_of_type_ArrayOfFloat.length)
+    for (;;)
     {
-      if ((jdField_a_of_type_ArrayOfInt[(i / 2)] & this.b) != 0) {
-        this.jdField_a_of_type_ArrayOfFloat[i] = this.jdField_a_of_type_Int;
-      }
-      for (;;)
-      {
-        i += 1;
+      float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+      if (i >= arrayOfFloat.length) {
         break;
-        this.jdField_a_of_type_ArrayOfFloat[i] = 0.0F;
       }
+      if ((jdField_a_of_type_ArrayOfInt[(i / 2)] & this.b) != 0) {
+        arrayOfFloat[i] = this.jdField_a_of_type_Int;
+      } else {
+        arrayOfFloat[i] = 0.0F;
+      }
+      i += 1;
     }
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.jdField_a_of_type_ArrayOfFloat, Path.Direction.CW);
@@ -77,36 +77,80 @@ public class RoundRelativeLayout
     this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(new PorterDuffXfermode(PorterDuff.Mode.CLEAR));
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  /* Error */
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if ((this.jdField_a_of_type_Int == 0) || (this.b == 0))
-    {
-      super.dispatchDraw(paramCanvas);
-      return;
-    }
-    int i = getMeasuredWidth();
-    int j = getMeasuredHeight();
-    i = paramCanvas.saveLayer(0.0F, 0.0F, i, j, null, 31);
-    super.dispatchDraw(paramCanvas);
-    try
-    {
-      a(paramCanvas);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.i("RoundRelativeLayout", 1, "checkPathChanged", localException);
-      return;
-    }
-    finally
-    {
-      paramCanvas.restoreToCount(i);
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 35	com/tencent/mobileqq/widget/RoundRelativeLayout:jdField_a_of_type_Int	I
+    //   4: ifeq +81 -> 85
+    //   7: aload_0
+    //   8: getfield 22	com/tencent/mobileqq/widget/RoundRelativeLayout:b	I
+    //   11: ifne +6 -> 17
+    //   14: goto +71 -> 85
+    //   17: aload_0
+    //   18: invokevirtual 123	com/tencent/mobileqq/widget/RoundRelativeLayout:getMeasuredWidth	()I
+    //   21: istore_2
+    //   22: aload_0
+    //   23: invokevirtual 126	com/tencent/mobileqq/widget/RoundRelativeLayout:getMeasuredHeight	()I
+    //   26: istore_3
+    //   27: aload_1
+    //   28: fconst_0
+    //   29: fconst_0
+    //   30: iload_2
+    //   31: i2f
+    //   32: iload_3
+    //   33: i2f
+    //   34: aconst_null
+    //   35: bipush 31
+    //   37: invokevirtual 130	android/graphics/Canvas:saveLayer	(FFFFLandroid/graphics/Paint;I)I
+    //   40: istore_2
+    //   41: aload_0
+    //   42: aload_1
+    //   43: invokespecial 132	android/widget/RelativeLayout:dispatchDraw	(Landroid/graphics/Canvas;)V
+    //   46: aload_0
+    //   47: aload_1
+    //   48: invokespecial 134	com/tencent/mobileqq/widget/RoundRelativeLayout:a	(Landroid/graphics/Canvas;)V
+    //   51: aload_1
+    //   52: iload_2
+    //   53: invokevirtual 137	android/graphics/Canvas:restoreToCount	(I)V
+    //   56: return
+    //   57: astore 4
+    //   59: goto +18 -> 77
+    //   62: astore 4
+    //   64: ldc 139
+    //   66: iconst_1
+    //   67: ldc 141
+    //   69: aload 4
+    //   71: invokestatic 147	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   74: goto -23 -> 51
+    //   77: aload_1
+    //   78: iload_2
+    //   79: invokevirtual 137	android/graphics/Canvas:restoreToCount	(I)V
+    //   82: aload 4
+    //   84: athrow
+    //   85: aload_0
+    //   86: aload_1
+    //   87: invokespecial 132	android/widget/RelativeLayout:dispatchDraw	(Landroid/graphics/Canvas;)V
+    //   90: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	91	0	this	RoundRelativeLayout
+    //   0	91	1	paramCanvas	Canvas
+    //   21	58	2	i	int
+    //   26	7	3	j	int
+    //   57	1	4	localObject	java.lang.Object
+    //   62	21	4	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   46	51	57	finally
+    //   64	74	57	finally
+    //   46	51	62	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.RoundRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

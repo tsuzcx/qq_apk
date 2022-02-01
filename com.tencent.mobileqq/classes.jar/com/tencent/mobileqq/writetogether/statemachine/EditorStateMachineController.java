@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.writetogether.statemachine;
 
 import com.tencent.mobileqq.app.QBaseActivity;
-import com.tencent.mobileqq.troop.api.observer.TroopObserver;
+import com.tencent.mobileqq.troop.api.observer.TroopPushObserver;
 import com.tencent.mobileqq.writetogether.client.IScheduler;
 import com.tencent.mobileqq.writetogether.client.ISchedulerCallback;
 import com.tencent.mobileqq.writetogether.statemachine.core.StateMachine;
@@ -15,7 +15,7 @@ public class EditorStateMachineController
   implements ISchedulerCallback
 {
   private QBaseActivity jdField_a_of_type_ComTencentMobileqqAppQBaseActivity;
-  private TroopObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver = new EditorStateMachineController.1(this);
+  private TroopPushObserver jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver = new EditorStateMachineController.1(this);
   private IScheduler jdField_a_of_type_ComTencentMobileqqWritetogetherClientIScheduler;
   private StateMachine<EditorState> jdField_a_of_type_ComTencentMobileqqWritetogetherStatemachineCoreStateMachine;
   private DocRefresher jdField_a_of_type_ComTencentMobileqqWritetogetheruiDocRefresher;
@@ -28,7 +28,7 @@ public class EditorStateMachineController
     this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
     this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity = paramQBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiEditableModifier = paramEditableModifier;
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
   }
   
   public EditorState a()
@@ -62,32 +62,40 @@ public class EditorStateMachineController
   
   public void a(int paramInt, String paramString)
   {
-    switch (paramInt)
+    if (paramInt != -2)
     {
-    default: 
-      return;
-    case -1: 
+      if (paramInt != -1)
+      {
+        if (paramInt != 40401)
+        {
+          if (paramInt != 60010)
+          {
+            switch (paramInt)
+            {
+            default: 
+              return;
+            case 65021: 
+            case 65022: 
+            case 65023: 
+              a(EditorState.BLOCKED, paramString);
+              return;
+            case 65020: 
+              a(EditorState.GAG, paramString);
+              return;
+            }
+            a(EditorState.NOT_MEMBER, paramString);
+            return;
+          }
+          a(EditorState.ROOM_FULL);
+          return;
+        }
+        a(EditorState.OVER_SIZE);
+        return;
+      }
       a(EditorState.NET_ERR);
       return;
-    case 65019: 
-      a(EditorState.NOT_MEMBER, paramString);
-      return;
-    case 65021: 
-    case 65022: 
-    case 65023: 
-      a(EditorState.BLOCKED, paramString);
-      return;
-    case 65020: 
-      a(EditorState.GAG, paramString);
-      return;
-    case -2: 
-      a(EditorState.NET_AVAIL);
-      return;
-    case 40401: 
-      a(EditorState.OVER_SIZE);
-      return;
     }
-    a(EditorState.ROOM_FULL);
+    a(EditorState.NET_AVAIL);
   }
   
   public void a(EditorState paramEditorState)
@@ -114,7 +122,7 @@ public class EditorStateMachineController
   {
     if (paramInt == 1)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiDocRefresher.b();
+      this.jdField_a_of_type_ComTencentMobileqqWritetogetheruiDocRefresher.aU_();
       this.jdField_a_of_type_ComTencentMobileqqWritetogetherClientIScheduler.a(1, 60000);
     }
     return false;
@@ -122,12 +130,12 @@ public class EditorStateMachineController
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopPushObserver);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.statemachine.EditorStateMachineController
  * JD-Core Version:    0.7.0.1
  */

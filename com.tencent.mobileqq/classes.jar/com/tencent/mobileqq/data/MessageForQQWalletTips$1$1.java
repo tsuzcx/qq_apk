@@ -2,7 +2,7 @@ package com.tencent.mobileqq.data;
 
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.troop.handler.TroopMemberInfoHandler;
+import com.tencent.mobileqq.troop.api.handler.ITroopMemberCardHandler;
 import java.lang.ref.WeakReference;
 
 class MessageForQQWalletTips$1$1
@@ -16,12 +16,12 @@ class MessageForQQWalletTips$1$1
     if (localQQAppInterface == null) {
       return;
     }
-    ((TroopMemberInfoHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_INFO_HANDLER)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips$1.jdField_a_of_type_JavaLangString), Long.parseLong(this.jdField_a_of_type_JavaLangString));
+    ((ITroopMemberCardHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_MEMBER_CARD_HANDLER)).a(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqDataMessageForQQWalletTips$1.jdField_a_of_type_JavaLangString), Long.parseLong(this.jdField_a_of_type_JavaLangString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQQWalletTips.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -25,16 +25,18 @@ public class AvatarPendantAdapter$FaceGridAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.get(paramInt);
     }
     return null;
   }
@@ -48,385 +50,385 @@ public class AvatarPendantAdapter$FaceGridAdapter
   public android.view.View getView(int paramInt, android.view.View paramView, android.view.ViewGroup paramViewGroup)
   {
     // Byte code:
-    //   0: aload_0
-    //   1: getfield 22	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   4: astore 5
-    //   6: aload 5
-    //   8: ifnonnull +29 -> 37
-    //   11: aload_2
-    //   12: astore 5
-    //   14: aload_2
-    //   15: astore 6
-    //   17: aload 5
-    //   19: astore_2
-    //   20: invokestatic 61	com/tencent/qqlive/module/videoreport/collect/EventCollector:getInstance	()Lcom/tencent/qqlive/module/videoreport/collect/EventCollector;
-    //   23: iload_1
-    //   24: aload_2
-    //   25: aload_3
-    //   26: aload_0
-    //   27: iload_1
-    //   28: invokevirtual 63	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:getItemId	(I)J
-    //   31: invokevirtual 67	com/tencent/qqlive/module/videoreport/collect/EventCollector:onListGetView	(ILandroid/view/View;Landroid/view/ViewGroup;J)V
-    //   34: aload 6
-    //   36: areturn
-    //   37: aload_2
-    //   38: ifnonnull +501 -> 539
-    //   41: new 69	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder
-    //   44: dup
-    //   45: aload_0
-    //   46: invokespecial 72	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:<init>	(Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter;)V
-    //   49: astore 7
-    //   51: aload_0
-    //   52: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   55: getfield 77	com/tencent/mobileqq/adapter/AvatarPendantAdapter:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   58: invokestatic 83	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
-    //   61: ldc 84
-    //   63: aload_3
-    //   64: iconst_0
-    //   65: invokevirtual 88	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;Z)Landroid/view/View;
-    //   68: astore 5
-    //   70: aload 5
-    //   72: astore_2
-    //   73: aload_2
-    //   74: astore 5
-    //   76: aload 7
-    //   78: aload_2
-    //   79: ldc 89
-    //   81: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
-    //   84: checkcast 97	android/widget/RelativeLayout
-    //   87: putfield 100	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   90: aload_2
-    //   91: astore 5
-    //   93: aload 7
-    //   95: aload_2
-    //   96: ldc 101
-    //   98: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
-    //   101: checkcast 103	com/tencent/mobileqq/vas/avatar/VasAvatar
-    //   104: putfield 106	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar	Lcom/tencent/mobileqq/vas/avatar/VasAvatar;
-    //   107: aload_2
-    //   108: astore 5
-    //   110: aload 7
-    //   112: aload_2
-    //   113: ldc 107
-    //   115: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
-    //   118: checkcast 109	android/widget/ImageView
-    //   121: putfield 112	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   124: aload_2
-    //   125: astore 5
-    //   127: aload 7
-    //   129: aload_2
-    //   130: ldc 113
-    //   132: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
-    //   135: checkcast 115	android/widget/TextView
-    //   138: putfield 118	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   141: aload_2
-    //   142: astore 5
-    //   144: aload 7
-    //   146: aload_2
-    //   147: ldc 119
-    //   149: invokevirtual 95	android/view/View:findViewById	(I)Landroid/view/View;
-    //   152: checkcast 109	android/widget/ImageView
-    //   155: putfield 122	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:b	Landroid/widget/ImageView;
-    //   158: aload_2
-    //   159: astore 5
-    //   161: aload 7
-    //   163: getfield 100	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   166: invokevirtual 126	android/widget/RelativeLayout:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
-    //   169: astore 6
-    //   171: aload 6
-    //   173: ifnull +310 -> 483
-    //   176: aload_2
-    //   177: astore 5
-    //   179: aload 6
-    //   181: aload_0
-    //   182: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   185: getfield 129	com/tencent/mobileqq/adapter/AvatarPendantAdapter:h	I
-    //   188: putfield 134	android/view/ViewGroup$LayoutParams:width	I
-    //   191: aload_2
-    //   192: astore 5
-    //   194: aload 6
-    //   196: aload_0
-    //   197: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   200: getfield 129	com/tencent/mobileqq/adapter/AvatarPendantAdapter:h	I
-    //   203: putfield 137	android/view/ViewGroup$LayoutParams:height	I
-    //   206: aload_2
-    //   207: astore 5
-    //   209: aload 7
-    //   211: getfield 100	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   214: aload 6
-    //   216: invokevirtual 141	android/widget/RelativeLayout:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
-    //   219: aload_2
-    //   220: astore 5
-    //   222: aload_2
-    //   223: aload 7
-    //   225: invokevirtual 145	android/view/View:setTag	(Ljava/lang/Object;)V
-    //   228: aload 7
-    //   230: astore 6
-    //   232: aload_2
-    //   233: astore 5
-    //   235: aload_0
-    //   236: iload_1
-    //   237: invokevirtual 147	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:getItem	(I)Ljava/lang/Object;
-    //   240: checkcast 149	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo
-    //   243: astore 8
-    //   245: aload 8
-    //   247: ifnull +345 -> 592
-    //   250: aload_2
-    //   251: astore 5
-    //   253: aload 6
-    //   255: getfield 118	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
-    //   258: aload 8
-    //   260: getfield 152	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo:b	Ljava/lang/String;
-    //   263: invokevirtual 156	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
-    //   266: aload_2
-    //   267: astore 5
-    //   269: aload 8
-    //   271: getfield 157	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo:jdField_a_of_type_Int	I
-    //   274: istore 4
-    //   276: aload_2
-    //   277: astore 5
-    //   279: aload 6
-    //   281: getfield 106	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar	Lcom/tencent/mobileqq/vas/avatar/VasAvatar;
-    //   284: invokevirtual 161	com/tencent/mobileqq/vas/avatar/VasAvatar:getDrawable	()Landroid/graphics/drawable/Drawable;
-    //   287: astore 7
-    //   289: aload_2
-    //   290: astore 5
-    //   292: aload 7
-    //   294: instanceof 163
-    //   297: ifeq +289 -> 586
-    //   300: aload_2
-    //   301: astore 5
-    //   303: aload 7
-    //   305: checkcast 163	com/tencent/image/URLDrawable
-    //   308: invokevirtual 166	com/tencent/image/URLDrawable:getCurrDrawable	()Landroid/graphics/drawable/Drawable;
-    //   311: astore 7
-    //   313: aload_2
-    //   314: astore 5
-    //   316: new 168	com/tencent/mobileqq/vas/avatar/VasAvatarLoader
-    //   319: dup
-    //   320: iload 4
-    //   322: bipush 7
-    //   324: ldc 170
-    //   326: iconst_1
-    //   327: invokespecial 173	com/tencent/mobileqq/vas/avatar/VasAvatarLoader:<init>	(IILjava/lang/String;Z)V
-    //   330: astore 9
-    //   332: aload_2
-    //   333: astore 5
-    //   335: aload 9
-    //   337: aload 7
-    //   339: putfield 176	com/tencent/mobileqq/vas/avatar/VasAvatarLoader:a	Landroid/graphics/drawable/Drawable;
-    //   342: aload_2
-    //   343: astore 5
-    //   345: aload 6
-    //   347: getfield 106	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar	Lcom/tencent/mobileqq/vas/avatar/VasAvatar;
-    //   350: aconst_null
-    //   351: aload 9
-    //   353: invokevirtual 180	com/tencent/mobileqq/vas/avatar/VasAvatar:setLoader	(Lcom/tencent/mobileqq/vas/avatar/AvatarLayout;Lcom/tencent/mobileqq/vas/avatar/VasAvatarLoader;)V
-    //   356: aload_2
-    //   357: astore 5
-    //   359: aload 6
-    //   361: getfield 100	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
-    //   364: aload 8
-    //   366: invokevirtual 181	android/widget/RelativeLayout:setTag	(Ljava/lang/Object;)V
-    //   369: aload_2
-    //   370: astore 5
-    //   372: aload_0
-    //   373: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   376: ldc 183
-    //   378: iconst_0
-    //   379: invokestatic 189	cooperation/qzone/video/QzoneLiveVideoInterface:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   382: putfield 192	com/tencent/mobileqq/adapter/AvatarPendantAdapter:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   385: aload_2
-    //   386: astore 5
-    //   388: aload_0
-    //   389: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   392: aload_0
-    //   393: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   396: getfield 192	com/tencent/mobileqq/adapter/AvatarPendantAdapter:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   399: ldc 194
-    //   401: iconst_0
-    //   402: invokeinterface 200 3 0
-    //   407: putfield 203	com/tencent/mobileqq/adapter/AvatarPendantAdapter:o	I
-    //   410: aload_2
-    //   411: astore 5
-    //   413: aload_0
-    //   414: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   417: getfield 203	com/tencent/mobileqq/adapter/AvatarPendantAdapter:o	I
-    //   420: aload 8
-    //   422: getfield 157	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo:jdField_a_of_type_Int	I
-    //   425: if_icmpne +126 -> 551
-    //   428: aload_2
-    //   429: astore 5
-    //   431: aload_2
-    //   432: aload_0
-    //   433: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   436: getfield 77	com/tencent/mobileqq/adapter/AvatarPendantAdapter:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   439: invokevirtual 209	android/content/Context:getResources	()Landroid/content/res/Resources;
-    //   442: ldc 210
-    //   444: invokevirtual 215	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
-    //   447: invokevirtual 219	android/view/View:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   450: aload_2
-    //   451: astore 5
-    //   453: aload 8
-    //   455: getfield 157	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo:jdField_a_of_type_Int	I
-    //   458: aload_0
-    //   459: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   462: getfield 222	com/tencent/mobileqq/adapter/AvatarPendantAdapter:n	I
-    //   465: if_icmpne +100 -> 565
-    //   468: aload_2
-    //   469: astore 5
-    //   471: aload 6
-    //   473: getfield 112	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   476: iconst_0
-    //   477: invokevirtual 226	android/widget/ImageView:setVisibility	(I)V
-    //   480: goto +112 -> 592
-    //   483: aload_2
-    //   484: astore 5
-    //   486: invokestatic 232	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   489: ifeq +14 -> 503
-    //   492: aload_2
-    //   493: astore 5
-    //   495: ldc 234
-    //   497: iconst_2
-    //   498: ldc 236
-    //   500: invokestatic 240	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   503: aload_2
-    //   504: astore 5
-    //   506: new 131	android/view/ViewGroup$LayoutParams
-    //   509: dup
-    //   510: aload_0
-    //   511: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   514: getfield 129	com/tencent/mobileqq/adapter/AvatarPendantAdapter:h	I
-    //   517: aload_0
-    //   518: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
-    //   521: getfield 243	com/tencent/mobileqq/adapter/AvatarPendantAdapter:i	I
-    //   524: invokespecial 246	android/view/ViewGroup$LayoutParams:<init>	(II)V
-    //   527: astore 6
-    //   529: goto -323 -> 206
-    //   532: astore_2
-    //   533: aload 5
-    //   535: astore_2
-    //   536: goto +56 -> 592
-    //   539: aload_2
-    //   540: invokevirtual 250	android/view/View:getTag	()Ljava/lang/Object;
-    //   543: checkcast 69	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder
-    //   546: astore 6
-    //   548: goto -316 -> 232
+    //   0: aload_2
+    //   1: astore 5
+    //   3: aload_0
+    //   4: getfield 22	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   7: ifnonnull +9 -> 16
+    //   10: aload_2
+    //   11: astore 5
+    //   13: goto +560 -> 573
+    //   16: aload_2
+    //   17: ifnonnull +248 -> 265
+    //   20: aload_2
+    //   21: astore 5
+    //   23: new 57	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder
+    //   26: dup
+    //   27: aload_0
+    //   28: invokespecial 60	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:<init>	(Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter;)V
+    //   31: astore 7
+    //   33: aload_2
+    //   34: astore 5
+    //   36: aload_0
+    //   37: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   40: getfield 65	com/tencent/mobileqq/adapter/AvatarPendantAdapter:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   43: invokestatic 71	android/view/LayoutInflater:from	(Landroid/content/Context;)Landroid/view/LayoutInflater;
+    //   46: ldc 72
+    //   48: aload_3
+    //   49: iconst_0
+    //   50: invokevirtual 76	android/view/LayoutInflater:inflate	(ILandroid/view/ViewGroup;Z)Landroid/view/View;
+    //   53: astore_2
+    //   54: aload_2
+    //   55: astore 5
+    //   57: aload 7
+    //   59: aload_2
+    //   60: ldc 77
+    //   62: invokevirtual 83	android/view/View:findViewById	(I)Landroid/view/View;
+    //   65: checkcast 85	android/widget/RelativeLayout
+    //   68: putfield 88	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   71: aload_2
+    //   72: astore 5
+    //   74: aload 7
+    //   76: aload_2
+    //   77: ldc 89
+    //   79: invokevirtual 83	android/view/View:findViewById	(I)Landroid/view/View;
+    //   82: checkcast 91	com/tencent/mobileqq/vas/avatar/VasAvatar
+    //   85: putfield 94	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar	Lcom/tencent/mobileqq/vas/avatar/VasAvatar;
+    //   88: aload_2
+    //   89: astore 5
+    //   91: aload 7
+    //   93: aload_2
+    //   94: ldc 95
+    //   96: invokevirtual 83	android/view/View:findViewById	(I)Landroid/view/View;
+    //   99: checkcast 97	android/widget/ImageView
+    //   102: putfield 100	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   105: aload_2
+    //   106: astore 5
+    //   108: aload 7
+    //   110: aload_2
+    //   111: ldc 101
+    //   113: invokevirtual 83	android/view/View:findViewById	(I)Landroid/view/View;
+    //   116: checkcast 103	android/widget/TextView
+    //   119: putfield 106	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   122: aload_2
+    //   123: astore 5
+    //   125: aload 7
+    //   127: aload_2
+    //   128: ldc 107
+    //   130: invokevirtual 83	android/view/View:findViewById	(I)Landroid/view/View;
+    //   133: checkcast 97	android/widget/ImageView
+    //   136: putfield 110	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:b	Landroid/widget/ImageView;
+    //   139: aload_2
+    //   140: astore 5
+    //   142: aload 7
+    //   144: getfield 88	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   147: invokevirtual 114	android/widget/RelativeLayout:getLayoutParams	()Landroid/view/ViewGroup$LayoutParams;
+    //   150: astore 6
+    //   152: aload 6
+    //   154: ifnull +36 -> 190
+    //   157: aload_2
+    //   158: astore 5
+    //   160: aload 6
+    //   162: aload_0
+    //   163: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   166: getfield 117	com/tencent/mobileqq/adapter/AvatarPendantAdapter:h	I
+    //   169: putfield 122	android/view/ViewGroup$LayoutParams:width	I
+    //   172: aload_2
+    //   173: astore 5
+    //   175: aload 6
+    //   177: aload_0
+    //   178: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   181: getfield 117	com/tencent/mobileqq/adapter/AvatarPendantAdapter:h	I
+    //   184: putfield 125	android/view/ViewGroup$LayoutParams:height	I
+    //   187: goto +49 -> 236
+    //   190: aload_2
+    //   191: astore 5
+    //   193: invokestatic 131	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   196: ifeq +14 -> 210
+    //   199: aload_2
+    //   200: astore 5
+    //   202: ldc 133
+    //   204: iconst_2
+    //   205: ldc 135
+    //   207: invokestatic 139	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   210: aload_2
+    //   211: astore 5
+    //   213: new 119	android/view/ViewGroup$LayoutParams
+    //   216: dup
+    //   217: aload_0
+    //   218: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   221: getfield 117	com/tencent/mobileqq/adapter/AvatarPendantAdapter:h	I
+    //   224: aload_0
+    //   225: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   228: getfield 142	com/tencent/mobileqq/adapter/AvatarPendantAdapter:i	I
+    //   231: invokespecial 145	android/view/ViewGroup$LayoutParams:<init>	(II)V
+    //   234: astore 6
+    //   236: aload_2
+    //   237: astore 5
+    //   239: aload 7
+    //   241: getfield 88	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   244: aload 6
+    //   246: invokevirtual 149	android/widget/RelativeLayout:setLayoutParams	(Landroid/view/ViewGroup$LayoutParams;)V
+    //   249: aload_2
+    //   250: astore 5
+    //   252: aload_2
+    //   253: aload 7
+    //   255: invokevirtual 153	android/view/View:setTag	(Ljava/lang/Object;)V
+    //   258: aload 7
+    //   260: astore 6
+    //   262: goto +15 -> 277
+    //   265: aload_2
+    //   266: astore 5
+    //   268: aload_2
+    //   269: invokevirtual 157	android/view/View:getTag	()Ljava/lang/Object;
+    //   272: checkcast 57	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder
+    //   275: astore 6
+    //   277: aload_2
+    //   278: astore 5
+    //   280: aload_0
+    //   281: iload_1
+    //   282: invokevirtual 159	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:getItem	(I)Ljava/lang/Object;
+    //   285: checkcast 161	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo
+    //   288: astore 8
+    //   290: aload_2
+    //   291: astore 5
+    //   293: aload 8
+    //   295: ifnull +278 -> 573
+    //   298: aload_2
+    //   299: astore 5
+    //   301: aload 6
+    //   303: getfield 106	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetTextView	Landroid/widget/TextView;
+    //   306: aload 8
+    //   308: getfield 164	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo:b	Ljava/lang/String;
+    //   311: invokevirtual 168	android/widget/TextView:setText	(Ljava/lang/CharSequence;)V
+    //   314: aload_2
+    //   315: astore 5
+    //   317: aload 8
+    //   319: getfield 169	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo:jdField_a_of_type_Int	I
+    //   322: istore 4
+    //   324: aload_2
+    //   325: astore 5
+    //   327: aload 6
+    //   329: getfield 94	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar	Lcom/tencent/mobileqq/vas/avatar/VasAvatar;
+    //   332: invokevirtual 173	com/tencent/mobileqq/vas/avatar/VasAvatar:getDrawable	()Landroid/graphics/drawable/Drawable;
+    //   335: astore 7
+    //   337: aload_2
+    //   338: astore 5
+    //   340: aload 7
+    //   342: instanceof 175
+    //   345: ifeq +250 -> 595
+    //   348: aload_2
+    //   349: astore 5
+    //   351: aload 7
+    //   353: checkcast 175	com/tencent/image/URLDrawable
+    //   356: invokevirtual 178	com/tencent/image/URLDrawable:getCurrDrawable	()Landroid/graphics/drawable/Drawable;
+    //   359: astore 7
+    //   361: goto +3 -> 364
+    //   364: aload_2
+    //   365: astore 5
+    //   367: new 180	com/tencent/mobileqq/vas/avatar/VasAvatarLoader
+    //   370: dup
+    //   371: iload 4
+    //   373: bipush 7
+    //   375: ldc 182
+    //   377: iconst_1
+    //   378: invokespecial 185	com/tencent/mobileqq/vas/avatar/VasAvatarLoader:<init>	(IILjava/lang/String;Z)V
+    //   381: astore 9
+    //   383: aload_2
+    //   384: astore 5
+    //   386: aload 9
+    //   388: aload 7
+    //   390: putfield 188	com/tencent/mobileqq/vas/avatar/VasAvatarLoader:a	Landroid/graphics/drawable/Drawable;
+    //   393: aload_2
+    //   394: astore 5
+    //   396: aload 6
+    //   398: getfield 94	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_ComTencentMobileqqVasAvatarVasAvatar	Lcom/tencent/mobileqq/vas/avatar/VasAvatar;
+    //   401: aconst_null
+    //   402: aload 9
+    //   404: invokevirtual 192	com/tencent/mobileqq/vas/avatar/VasAvatar:setLoader	(Lcom/tencent/mobileqq/vas/avatar/AvatarLayout;Lcom/tencent/mobileqq/vas/avatar/VasAvatarLoader;)V
+    //   407: aload_2
+    //   408: astore 5
+    //   410: aload 6
+    //   412: getfield 88	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetRelativeLayout	Landroid/widget/RelativeLayout;
+    //   415: aload 8
+    //   417: invokevirtual 193	android/widget/RelativeLayout:setTag	(Ljava/lang/Object;)V
+    //   420: aload_2
+    //   421: astore 5
+    //   423: aload_0
+    //   424: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   427: invokestatic 199	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
+    //   430: ldc 201
+    //   432: iconst_0
+    //   433: invokevirtual 205	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
+    //   436: putfield 208	com/tencent/mobileqq/adapter/AvatarPendantAdapter:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
+    //   439: aload_2
+    //   440: astore 5
+    //   442: aload_0
+    //   443: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   446: aload_0
+    //   447: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   450: getfield 208	com/tencent/mobileqq/adapter/AvatarPendantAdapter:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
+    //   453: ldc 210
+    //   455: iconst_0
+    //   456: invokeinterface 216 3 0
+    //   461: putfield 219	com/tencent/mobileqq/adapter/AvatarPendantAdapter:o	I
+    //   464: aload_2
+    //   465: astore 5
+    //   467: aload_0
+    //   468: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   471: getfield 219	com/tencent/mobileqq/adapter/AvatarPendantAdapter:o	I
+    //   474: aload 8
+    //   476: getfield 169	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo:jdField_a_of_type_Int	I
+    //   479: if_icmpne +28 -> 507
+    //   482: aload_2
+    //   483: astore 5
+    //   485: aload_2
+    //   486: aload_0
+    //   487: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   490: getfield 65	com/tencent/mobileqq/adapter/AvatarPendantAdapter:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
+    //   493: invokevirtual 225	android/content/Context:getResources	()Landroid/content/res/Resources;
+    //   496: ldc 226
+    //   498: invokevirtual 231	android/content/res/Resources:getDrawable	(I)Landroid/graphics/drawable/Drawable;
+    //   501: invokevirtual 235	android/view/View:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   504: goto +11 -> 515
+    //   507: aload_2
+    //   508: astore 5
+    //   510: aload_2
+    //   511: aconst_null
+    //   512: invokevirtual 235	android/view/View:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
+    //   515: aload_2
+    //   516: astore 5
+    //   518: aload 8
+    //   520: getfield 169	com/tencent/mobileqq/vas/AvatarInPendantHeadportraitInfo:jdField_a_of_type_Int	I
+    //   523: aload_0
+    //   524: getfield 13	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:jdField_a_of_type_ComTencentMobileqqAdapterAvatarPendantAdapter	Lcom/tencent/mobileqq/adapter/AvatarPendantAdapter;
+    //   527: getfield 238	com/tencent/mobileqq/adapter/AvatarPendantAdapter:n	I
+    //   530: if_icmpne +21 -> 551
+    //   533: aload_2
+    //   534: astore 5
+    //   536: aload 6
+    //   538: getfield 100	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   541: iconst_0
+    //   542: invokevirtual 242	android/widget/ImageView:setVisibility	(I)V
+    //   545: aload_2
+    //   546: astore 5
+    //   548: goto +25 -> 573
     //   551: aload_2
     //   552: astore 5
-    //   554: aload_2
-    //   555: aconst_null
-    //   556: invokevirtual 219	android/view/View:setBackgroundDrawable	(Landroid/graphics/drawable/Drawable;)V
-    //   559: goto -109 -> 450
-    //   562: astore_2
-    //   563: aload_2
-    //   564: athrow
-    //   565: aload_2
-    //   566: astore 5
-    //   568: aload 6
-    //   570: getfield 112	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
-    //   573: bipush 8
-    //   575: invokevirtual 226	android/widget/ImageView:setVisibility	(I)V
-    //   578: goto +14 -> 592
-    //   581: astore 5
-    //   583: goto +9 -> 592
-    //   586: aconst_null
-    //   587: astore 7
-    //   589: goto -276 -> 313
-    //   592: aload_2
-    //   593: astore 5
-    //   595: aload 5
-    //   597: astore 6
-    //   599: goto -579 -> 20
+    //   554: aload 6
+    //   556: getfield 100	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter$GridFaceItemHolder:jdField_a_of_type_AndroidWidgetImageView	Landroid/widget/ImageView;
+    //   559: bipush 8
+    //   561: invokevirtual 242	android/widget/ImageView:setVisibility	(I)V
+    //   564: aload_2
+    //   565: astore 5
+    //   567: goto +6 -> 573
+    //   570: astore_2
+    //   571: aload_2
+    //   572: athrow
+    //   573: invokestatic 248	com/tencent/qqlive/module/videoreport/collect/EventCollector:getInstance	()Lcom/tencent/qqlive/module/videoreport/collect/EventCollector;
+    //   576: iload_1
+    //   577: aload 5
+    //   579: aload_3
+    //   580: aload_0
+    //   581: iload_1
+    //   582: invokevirtual 250	com/tencent/mobileqq/adapter/AvatarPendantAdapter$FaceGridAdapter:getItemId	(I)J
+    //   585: invokevirtual 254	com/tencent/qqlive/module/videoreport/collect/EventCollector:onListGetView	(ILandroid/view/View;Landroid/view/ViewGroup;J)V
+    //   588: aload 5
+    //   590: areturn
+    //   591: astore_2
+    //   592: goto -19 -> 573
+    //   595: aconst_null
+    //   596: astore 7
+    //   598: goto -234 -> 364
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	602	0	this	FaceGridAdapter
-    //   0	602	1	paramInt	int
-    //   0	602	2	paramView	android.view.View
-    //   0	602	3	paramViewGroup	android.view.ViewGroup
-    //   274	47	4	i	int
-    //   4	563	5	localObject1	Object
-    //   581	1	5	localThrowable	java.lang.Throwable
-    //   593	3	5	localView	android.view.View
-    //   15	583	6	localObject2	Object
-    //   49	539	7	localObject3	Object
-    //   243	211	8	localAvatarInPendantHeadportraitInfo	AvatarInPendantHeadportraitInfo
-    //   330	22	9	localVasAvatarLoader	com.tencent.mobileqq.vas.avatar.VasAvatarLoader
+    //   0	601	0	this	FaceGridAdapter
+    //   0	601	1	paramInt	int
+    //   0	601	2	paramView	android.view.View
+    //   0	601	3	paramViewGroup	android.view.ViewGroup
+    //   322	50	4	i	int
+    //   1	588	5	localView	android.view.View
+    //   150	405	6	localObject1	Object
+    //   31	566	7	localObject2	Object
+    //   288	231	8	localAvatarInPendantHeadportraitInfo	AvatarInPendantHeadportraitInfo
+    //   381	22	9	localVasAvatarLoader	com.tencent.mobileqq.vas.avatar.VasAvatarLoader
     // Exception table:
     //   from	to	target	type
-    //   76	90	532	java/lang/Throwable
-    //   93	107	532	java/lang/Throwable
-    //   110	124	532	java/lang/Throwable
-    //   127	141	532	java/lang/Throwable
-    //   144	158	532	java/lang/Throwable
-    //   161	171	532	java/lang/Throwable
-    //   179	191	532	java/lang/Throwable
-    //   194	206	532	java/lang/Throwable
-    //   209	219	532	java/lang/Throwable
-    //   222	228	532	java/lang/Throwable
-    //   235	245	532	java/lang/Throwable
-    //   253	266	532	java/lang/Throwable
-    //   269	276	532	java/lang/Throwable
-    //   279	289	532	java/lang/Throwable
-    //   292	300	532	java/lang/Throwable
-    //   303	313	532	java/lang/Throwable
-    //   316	332	532	java/lang/Throwable
-    //   335	342	532	java/lang/Throwable
-    //   345	356	532	java/lang/Throwable
-    //   359	369	532	java/lang/Throwable
-    //   372	385	532	java/lang/Throwable
-    //   388	410	532	java/lang/Throwable
-    //   413	428	532	java/lang/Throwable
-    //   431	450	532	java/lang/Throwable
-    //   453	468	532	java/lang/Throwable
-    //   471	480	532	java/lang/Throwable
-    //   486	492	532	java/lang/Throwable
-    //   495	503	532	java/lang/Throwable
-    //   506	529	532	java/lang/Throwable
-    //   554	559	532	java/lang/Throwable
-    //   568	578	532	java/lang/Throwable
-    //   0	6	562	finally
-    //   41	70	562	finally
-    //   76	90	562	finally
-    //   93	107	562	finally
-    //   110	124	562	finally
-    //   127	141	562	finally
-    //   144	158	562	finally
-    //   161	171	562	finally
-    //   179	191	562	finally
-    //   194	206	562	finally
-    //   209	219	562	finally
-    //   222	228	562	finally
-    //   235	245	562	finally
-    //   253	266	562	finally
-    //   269	276	562	finally
-    //   279	289	562	finally
-    //   292	300	562	finally
-    //   303	313	562	finally
-    //   316	332	562	finally
-    //   335	342	562	finally
-    //   345	356	562	finally
-    //   359	369	562	finally
-    //   372	385	562	finally
-    //   388	410	562	finally
-    //   413	428	562	finally
-    //   431	450	562	finally
-    //   453	468	562	finally
-    //   471	480	562	finally
-    //   486	492	562	finally
-    //   495	503	562	finally
-    //   506	529	562	finally
-    //   539	548	562	finally
-    //   554	559	562	finally
-    //   568	578	562	finally
-    //   0	6	581	java/lang/Throwable
-    //   41	70	581	java/lang/Throwable
-    //   539	548	581	java/lang/Throwable
+    //   3	10	570	finally
+    //   23	33	570	finally
+    //   36	54	570	finally
+    //   57	71	570	finally
+    //   74	88	570	finally
+    //   91	105	570	finally
+    //   108	122	570	finally
+    //   125	139	570	finally
+    //   142	152	570	finally
+    //   160	172	570	finally
+    //   175	187	570	finally
+    //   193	199	570	finally
+    //   202	210	570	finally
+    //   213	236	570	finally
+    //   239	249	570	finally
+    //   252	258	570	finally
+    //   268	277	570	finally
+    //   280	290	570	finally
+    //   301	314	570	finally
+    //   317	324	570	finally
+    //   327	337	570	finally
+    //   340	348	570	finally
+    //   351	361	570	finally
+    //   367	383	570	finally
+    //   386	393	570	finally
+    //   396	407	570	finally
+    //   410	420	570	finally
+    //   423	439	570	finally
+    //   442	464	570	finally
+    //   467	482	570	finally
+    //   485	504	570	finally
+    //   510	515	570	finally
+    //   518	533	570	finally
+    //   536	545	570	finally
+    //   554	564	570	finally
+    //   3	10	591	java/lang/Throwable
+    //   23	33	591	java/lang/Throwable
+    //   36	54	591	java/lang/Throwable
+    //   57	71	591	java/lang/Throwable
+    //   74	88	591	java/lang/Throwable
+    //   91	105	591	java/lang/Throwable
+    //   108	122	591	java/lang/Throwable
+    //   125	139	591	java/lang/Throwable
+    //   142	152	591	java/lang/Throwable
+    //   160	172	591	java/lang/Throwable
+    //   175	187	591	java/lang/Throwable
+    //   193	199	591	java/lang/Throwable
+    //   202	210	591	java/lang/Throwable
+    //   213	236	591	java/lang/Throwable
+    //   239	249	591	java/lang/Throwable
+    //   252	258	591	java/lang/Throwable
+    //   268	277	591	java/lang/Throwable
+    //   280	290	591	java/lang/Throwable
+    //   301	314	591	java/lang/Throwable
+    //   317	324	591	java/lang/Throwable
+    //   327	337	591	java/lang/Throwable
+    //   340	348	591	java/lang/Throwable
+    //   351	361	591	java/lang/Throwable
+    //   367	383	591	java/lang/Throwable
+    //   386	393	591	java/lang/Throwable
+    //   396	407	591	java/lang/Throwable
+    //   410	420	591	java/lang/Throwable
+    //   423	439	591	java/lang/Throwable
+    //   442	464	591	java/lang/Throwable
+    //   467	482	591	java/lang/Throwable
+    //   485	504	591	java/lang/Throwable
+    //   510	515	591	java/lang/Throwable
+    //   518	533	591	java/lang/Throwable
+    //   536	545	591	java/lang/Throwable
+    //   554	564	591	java/lang/Throwable
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.AvatarPendantAdapter.FaceGridAdapter
  * JD-Core Version:    0.7.0.1
  */

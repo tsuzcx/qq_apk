@@ -3,14 +3,21 @@ package com.tencent.mobileqq.config;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.ae.cmshow.config.AECMShowQConfigProcessor;
+import com.tencent.aelight.camera.aeeditor.manage.AEEditorEffectConfigProcessor;
+import com.tencent.aelight.camera.aioeditor.config.QIMDoodleConfigProcessor;
+import com.tencent.aelight.camera.aioeditor.config.QIMDynamicTextConfigProcessor;
+import com.tencent.aelight.camera.aioeditor.config.QIMFilterConfigProcessor;
+import com.tencent.aelight.camera.aioeditor.config.QIMMusicConfigProcessor;
+import com.tencent.aelight.camera.aioeditor.config.QIMPasterConfigProcessor;
+import com.tencent.aelight.camera.aioeditor.config.QIMTemplateConfigProcessor;
 import com.tencent.av.ManageConfig.AVTestforEncDecConfig;
 import com.tencent.av.ManageConfig.QAVConfig;
-import com.tencent.avgame.gamelogic.gameres.CJPreloadConfProcessor;
+import com.tencent.avgame.config.AvGameConfProcessor;
 import com.tencent.biz.pubaccount.conf.PaSubscribeRedDotProcessor;
 import com.tencent.biz.pubaccount.conf.PublicAccountCenterUrlConfProcessor;
 import com.tencent.biz.pubaccount.conf.PublicAccountConfProcessor;
 import com.tencent.biz.pubaccount.conf.ServiceAccountFolderConfProcessor;
-import com.tencent.biz.pubaccount.ecshopassit.conf.EcshopConfProcessor;
 import com.tencent.biz.pubaccount.qqnews.QQNewsConfigProcessor;
 import com.tencent.biz.pubaccount.weishi_new.config.WeSeeConfigProcessor;
 import com.tencent.biz.videostory.config.processor.VSEntranceProcessor;
@@ -19,7 +26,9 @@ import com.tencent.biz.videostory.config.processor.VSEntranceWidgetProcessor;
 import com.tencent.biz.videostory.config.processor.VSStickyNoteProcessor;
 import com.tencent.biz.videostory.config.processor.VSSubscribeProcessor;
 import com.tencent.biz.videostory.config.processor.VSWaterMarkProcessor;
+import com.tencent.comic.config.QQComicConfProcessor;
 import com.tencent.common.config.AppSetting;
+import com.tencent.gamecenter.wadl.config.FloatingPermissionConfProcessor;
 import com.tencent.mobileqq.activity.aio.anim.config.TroopDragonKingAnimEntryConfigProcessor;
 import com.tencent.mobileqq.activity.aio.ecommerce.ECommerceDataReportConfigProcessor;
 import com.tencent.mobileqq.activity.aio.panel.chatpanelbar.config.BaseChatPanelBarConfProcessor.C2CChatPanelBarConfProcessor;
@@ -28,18 +37,22 @@ import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecConfigProc
 import com.tencent.mobileqq.activity.aio.stickerrecommended.ad.AdEmoConfigProcessor;
 import com.tencent.mobileqq.activity.contacts.mayknow.ReportExposeConfigProcessor;
 import com.tencent.mobileqq.activity.miniaio.MiniMsgConfigProcessor;
+import com.tencent.mobileqq.activity.qqsettingme.config.QQSettingMeMenuConfigProcessor;
+import com.tencent.mobileqq.activity.recent.config.optpopbar.RecentOptPopBarSwitchProcessor;
 import com.tencent.mobileqq.activity.recent.guidebanner.NewerGuideBannerPreloadWebProcessConfigProcessor;
 import com.tencent.mobileqq.activity.recent.msgbox.TempMsgBoxConfigProcessor;
 import com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketPopBannerConfProcessor;
 import com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketPreloadConfProcessor;
-import com.tencent.mobileqq.activity.weather.config.WeatherConfigProcessor;
-import com.tencent.mobileqq.activity.weather.webpage.WeatherPreloadWebPageConfigProcessor;
 import com.tencent.mobileqq.apollo.config.ApolloConfProcessor;
 import com.tencent.mobileqq.apollo.config.ApolloGrayConfProcessor;
-import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.ark.config.processor.ArkAIDictConfigProcessor;
+import com.tencent.mobileqq.ark.config.processor.ArkAIKeyWordConfigProcessor;
+import com.tencent.mobileqq.ark.config.processor.ArkAIKeyWordSDKShareConfigProcessor;
+import com.tencent.mobileqq.ark.config.processor.ArkMsgAIDisableConfProcessor;
+import com.tencent.mobileqq.ark.config.processor.ArkPlatformConfProcessor;
 import com.tencent.mobileqq.bigbrother.TeleScreenConfig;
 import com.tencent.mobileqq.c2cshortcutbar.C2CShortcutBarConfProcessor;
-import com.tencent.mobileqq.colornote.ColorNoteConfigProcessor;
+import com.tencent.mobileqq.colornote.data.ColorNoteConfigProcessor;
 import com.tencent.mobileqq.colornote.data.ColorNoteRecentConfigProcessor;
 import com.tencent.mobileqq.comment.config.DanmuConfProcessor;
 import com.tencent.mobileqq.comment.config.ImmersiveConfProcessor;
@@ -47,18 +60,14 @@ import com.tencent.mobileqq.config.business.AEPituCameraConfigProcessor;
 import com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor;
 import com.tencent.mobileqq.config.business.AIORelatedEmotionConfProcessor;
 import com.tencent.mobileqq.config.business.AIOVideoPlayConfigProcessor;
+import com.tencent.mobileqq.config.business.AlbumConfProcessor;
 import com.tencent.mobileqq.config.business.AppletNotificationConfProcessor;
-import com.tencent.mobileqq.config.business.ArkConfProcessor.ArkAIDictConfigProcessor;
-import com.tencent.mobileqq.config.business.ArkConfProcessor.ArkAIKeyWordConfigProcessor;
-import com.tencent.mobileqq.config.business.ArkConfProcessor.ArkAIKeyWordSDKShareConfigProcessor;
-import com.tencent.mobileqq.config.business.ArkConfProcessor.ArkMsgAIDisableConfProcessor;
-import com.tencent.mobileqq.config.business.ArkConfProcessor.ArkPlatformConfProcessor;
-import com.tencent.mobileqq.config.business.AvGameConfProcessor;
 import com.tencent.mobileqq.config.business.AvGameLobbyConfProcessor;
 import com.tencent.mobileqq.config.business.BootOptimizeConfProcessor;
 import com.tencent.mobileqq.config.business.BroadcastConfProcessor;
 import com.tencent.mobileqq.config.business.BrowserOpenConfProcessor;
 import com.tencent.mobileqq.config.business.C2CLovePushGrayProcessor;
+import com.tencent.mobileqq.config.business.CJPreloadConfProcessor;
 import com.tencent.mobileqq.config.business.DarkModeConfigProcessor;
 import com.tencent.mobileqq.config.business.DeviceManageConfProcessor;
 import com.tencent.mobileqq.config.business.DonDisturbProcessor;
@@ -68,8 +77,6 @@ import com.tencent.mobileqq.config.business.EmoticonTabSortConfProcessor;
 import com.tencent.mobileqq.config.business.FavLocalEmoticonsProcessor;
 import com.tencent.mobileqq.config.business.FlashChatConfProcessor;
 import com.tencent.mobileqq.config.business.FriendIntimateRelationshipConfProcessor;
-import com.tencent.mobileqq.config.business.GameCenterEnterConfProcessor;
-import com.tencent.mobileqq.config.business.GameCenterMsgConfigProcessor;
 import com.tencent.mobileqq.config.business.GlobalSearchConfProcessor;
 import com.tencent.mobileqq.config.business.GroupIntimateRelationshipConfProcessor;
 import com.tencent.mobileqq.config.business.LocaleConfProcessor;
@@ -79,7 +86,6 @@ import com.tencent.mobileqq.config.business.MiniAppConfProcessor;
 import com.tencent.mobileqq.config.business.MsgTabCameraSwitchProcessor;
 import com.tencent.mobileqq.config.business.MultiChannelReportProcessor;
 import com.tencent.mobileqq.config.business.MutualMarkConfProcessor;
-import com.tencent.mobileqq.config.business.NewFriendContactGuideConfProcessor;
 import com.tencent.mobileqq.config.business.NotificationBannerConfProcessor;
 import com.tencent.mobileqq.config.business.OnlineAutoStatusConfProcessor;
 import com.tencent.mobileqq.config.business.OnlineStatusConfProcessor;
@@ -93,38 +99,24 @@ import com.tencent.mobileqq.config.business.PhotoListPanelConfProcessor;
 import com.tencent.mobileqq.config.business.PicCommonConfProcessor;
 import com.tencent.mobileqq.config.business.PicPreDownloadConfProcessor;
 import com.tencent.mobileqq.config.business.PicShareToWXConfigProcessor;
-import com.tencent.mobileqq.config.business.PreloadConfProcessor;
 import com.tencent.mobileqq.config.business.PttAutoChangeProcessor;
 import com.tencent.mobileqq.config.business.PttWithTextSwitchProcessor;
 import com.tencent.mobileqq.config.business.PushMsgBtnConfProcessor;
 import com.tencent.mobileqq.config.business.QAssistantConfigProcessor;
 import com.tencent.mobileqq.config.business.QConfLogProcessor;
 import com.tencent.mobileqq.config.business.QConfPushProcessor;
-import com.tencent.mobileqq.config.business.QIMDoodleConfigProcessor;
-import com.tencent.mobileqq.config.business.QIMDynamicTextConfigProcessor;
-import com.tencent.mobileqq.config.business.QIMFilterConfigProcessor;
-import com.tencent.mobileqq.config.business.QIMMusicConfigProcessor;
-import com.tencent.mobileqq.config.business.QIMPasterConfigProcessor;
-import com.tencent.mobileqq.config.business.QIMTemplateConfigProcessor;
 import com.tencent.mobileqq.config.business.QQAssistantConfigProcessor;
-import com.tencent.mobileqq.config.business.QQComicConfProcessor;
-import com.tencent.mobileqq.config.business.QQGameConfProcessor;
-import com.tencent.mobileqq.config.business.QQGamePreloadConfProcessor;
 import com.tencent.mobileqq.config.business.QQGameTeamConfProcessor;
 import com.tencent.mobileqq.config.business.QQShortVideoQuicNetProcessor;
 import com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor;
 import com.tencent.mobileqq.config.business.QrCodeDisplayConfProcessor;
 import com.tencent.mobileqq.config.business.QuickAuthorityConfProcessor;
 import com.tencent.mobileqq.config.business.QuickHeartbeatConfigProcessor;
-import com.tencent.mobileqq.config.business.ReadInjoySearchJumpurlConfProcessor;
-import com.tencent.mobileqq.config.business.ReadinjoyCommonConfProcessor;
-import com.tencent.mobileqq.config.business.ReadinjoyResetFunctionConfProcessor;
 import com.tencent.mobileqq.config.business.RedBagVideoResProcessor;
 import com.tencent.mobileqq.config.business.RelationVipGrayProcessor;
 import com.tencent.mobileqq.config.business.RichTitleConfProcessor;
 import com.tencent.mobileqq.config.business.RichmediaHttpsConfProcessor;
 import com.tencent.mobileqq.config.business.RichmediaIpv6ConifgProcessor;
-import com.tencent.mobileqq.config.business.ScannerQQCodeConfProcessor;
 import com.tencent.mobileqq.config.business.ScenesEmotionConfigProcessor;
 import com.tencent.mobileqq.config.business.SingTogetherConfProcessor;
 import com.tencent.mobileqq.config.business.SlideShowStoryConfig;
@@ -136,7 +128,6 @@ import com.tencent.mobileqq.config.business.TogetherEntryConfProcessor;
 import com.tencent.mobileqq.config.business.TroopAnonyRevokeConfProcessor;
 import com.tencent.mobileqq.config.business.TroopFoldMsgConfProcessor;
 import com.tencent.mobileqq.config.business.TroopMemRecommendConfProcessor;
-import com.tencent.mobileqq.config.business.TroopUrlConfProcessor;
 import com.tencent.mobileqq.config.business.WVPreloadPskeyConfProcessor;
 import com.tencent.mobileqq.config.business.WVSecurityConfProcessor;
 import com.tencent.mobileqq.config.business.WVStatisticsConfProcessor;
@@ -146,7 +137,6 @@ import com.tencent.mobileqq.config.business.WeiYunTipsBarConfigProcessor;
 import com.tencent.mobileqq.config.business.WeiyunCheckAlbumConfigProcessor;
 import com.tencent.mobileqq.config.business.avatar.DynamicAvatarConfProcessor;
 import com.tencent.mobileqq.config.business.dataline.QDatalineHttpsConfigProcessor;
-import com.tencent.mobileqq.config.business.extendfriend.ExtendFriendBannerProcessor;
 import com.tencent.mobileqq.config.business.newfriend.SysSuspiciousConfProcessor;
 import com.tencent.mobileqq.config.business.qfile.QFileApkCheckConfigProcessor;
 import com.tencent.mobileqq.config.business.qfile.QFileAppStorePromoteConfigProcessor;
@@ -162,43 +152,6 @@ import com.tencent.mobileqq.config.business.qfile.QFileFileReaderConfigProcessor
 import com.tencent.mobileqq.config.business.qfile.QFileIPv6ConfigProcessor;
 import com.tencent.mobileqq.config.business.qfile.QfileFileAssistantTipsConfigProcessor;
 import com.tencent.mobileqq.config.business.qflutter.QFlutterResConfigProcessor;
-import com.tencent.mobileqq.config.business.qvip.CustomOnlineStatusProcessor;
-import com.tencent.mobileqq.config.business.qvip.KingCardProcessor;
-import com.tencent.mobileqq.config.business.qvip.PushOpenNotificationProcessor;
-import com.tencent.mobileqq.config.business.qvip.QQFriendRelation2Processor;
-import com.tencent.mobileqq.config.business.qvip.QQLevelIconProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVIPPrettyTroopProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipAutoPttProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipBigClubSVIP9Processor;
-import com.tencent.mobileqq.config.business.qvip.QVipBigTroopExpiredProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipBubbleAnimationProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipColorNickProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipDiyTemplateProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipExtendIconProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipFeatureProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipFriendTag2Processor;
-import com.tencent.mobileqq.config.business.qvip.QVipFriendTagProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipGiftProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipKeywordsProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipPerfLevelProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipPersonalIconProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipPrettyAccountProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipProfileFootPrintProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipProfileMusicBoxProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipPubAccountProocessor;
-import com.tencent.mobileqq.config.business.qvip.QVipQidProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipRedNameCardProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipResourceProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipSDKProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipServiceAccountFolderProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipSimpleThemeProocessor;
-import com.tencent.mobileqq.config.business.qvip.QVipStickerProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipTroopFileProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipTroopNickProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipWatchWordProcessor;
-import com.tencent.mobileqq.config.business.qvip.SSOErrorInfoMapProcessor;
-import com.tencent.mobileqq.config.business.qvip.VasFontSwitchProcessor;
-import com.tencent.mobileqq.config.business.robot.TroopRobotConfProcessor;
 import com.tencent.mobileqq.config.business.search.SearchBusinessConfProcessor;
 import com.tencent.mobileqq.config.business.search.SearchHotWordConfProcessor;
 import com.tencent.mobileqq.config.business.search.SearchRichConfProcessor;
@@ -233,35 +186,52 @@ import com.tencent.mobileqq.config.business.tendoc.tds.TdsReaderConfigProcessor;
 import com.tencent.mobileqq.config.business.tendoc.tds.TdsReaderGrayConfigProcessor;
 import com.tencent.mobileqq.config.business.troop.SuspiciousTroopConfProcessor;
 import com.tencent.mobileqq.config.injectimpl.OldServletInjectorImpl;
-import com.tencent.mobileqq.config.safemode.SafeModeProcessor;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Content;
 import com.tencent.mobileqq.download.unite.config.DownloadConfigProcessor;
-import com.tencent.mobileqq.extendfriend.limitchat.LimitChatOnPlusConfProcessor;
+import com.tencent.mobileqq.ecshop.conf.EcshopConfProcessor;
+import com.tencent.mobileqq.gamecenter.config.GameCenterMsgConfigProcessor;
 import com.tencent.mobileqq.gamecenter.share.GameShareConfProcessor;
 import com.tencent.mobileqq.hotpic.HotPicConfProcessor;
 import com.tencent.mobileqq.inputstatus.InputStatusConfig;
 import com.tencent.mobileqq.intervideo.litelive_kandian.config.KandianLiveConfProcessor;
+import com.tencent.mobileqq.kandian.biz.common.ReadinjoyResetFunctionConfProcessor;
+import com.tencent.mobileqq.kandian.biz.config.ReadinjoyCommonConfProcessor;
+import com.tencent.mobileqq.kandian.biz.search.ReadInjoySearchJumpurlConfProcessor;
 import com.tencent.mobileqq.leba.config.LebaQzoneStyleProcessor;
 import com.tencent.mobileqq.leba.config.LebaRedTouchSwitchProcessor;
 import com.tencent.mobileqq.location.config.LocationEasterEggConfProcessor;
 import com.tencent.mobileqq.loginwelcome.WelcomeConfigProcessor;
+import com.tencent.mobileqq.manager.QSafeConfigProcessor;
+import com.tencent.mobileqq.minigame.publicaccount.config.MiniGamePAConfProcessor;
 import com.tencent.mobileqq.msgbackup.util.MsgBackupConfigProcessor;
 import com.tencent.mobileqq.multiaio.manager.MultiAIOEntranceConfigProcessor;
+import com.tencent.mobileqq.newfriend.config.NewFriendContactGuideConfProcessor;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.mobileqq.persistence.CommonFunctionPublishConfigProcessor;
 import com.tencent.mobileqq.pluspanel.AIOPanelIconConfigProcessor.C2CPanelConfigProcessor;
 import com.tencent.mobileqq.pluspanel.AIOPlusPanelAppInfoConfigProcessor;
 import com.tencent.mobileqq.pluspanel.AIOPlusPanelAppInfoOrderConfigProcessor;
 import com.tencent.mobileqq.pluspanel.AIOPlusPanelStudyModeAppInfoOrderConfigProcessor;
 import com.tencent.mobileqq.profilecard.bussiness.troop.fansinfo.TroopFansEntryConfigProcessor;
+import com.tencent.mobileqq.qqexpand.config.banner.ExpandBannerProcessor;
+import com.tencent.mobileqq.qqexpand.manager.config.LimitChatOnPlusConfProcessor;
+import com.tencent.mobileqq.qqgamepub.config.GameCenterEnterConfProcessor;
+import com.tencent.mobileqq.qqgamepub.config.QQGameConfProcessor;
+import com.tencent.mobileqq.qqgamepub.config.QQGamePreDownloadConfigProcessor;
+import com.tencent.mobileqq.qqgamepub.config.QQGamePreloadConfProcessor;
 import com.tencent.mobileqq.qroute.annotation.ConfigInject;
+import com.tencent.mobileqq.qrscan.config.ScannerQQCodeConfProcessor;
+import com.tencent.mobileqq.qwallet.config.PreloadConfProcessor;
 import com.tencent.mobileqq.relationx.friendclue.FriendClueConfigProcessor;
 import com.tencent.mobileqq.richmediabrowser.config.LiuHaiWhiteListConfProcessor;
 import com.tencent.mobileqq.screendetect.ScreenShotConfigProcessor;
+import com.tencent.mobileqq.search.config.SearchConfigProcessor;
+import com.tencent.mobileqq.search.config.SearchFunctionModuleProcessor;
 import com.tencent.mobileqq.settings.config.AllSettingConfigProcessor;
 import com.tencent.mobileqq.shortvideo.RedDotConfProcessor;
 import com.tencent.mobileqq.soload.config.SoLoaderConfProcessor;
@@ -270,31 +240,78 @@ import com.tencent.mobileqq.studymode.StudyModeConfigProcessor;
 import com.tencent.mobileqq.studymode.StudyModePushConfigProcessor;
 import com.tencent.mobileqq.studymode.StudyModeSwitchDialogConfigProcessor;
 import com.tencent.mobileqq.studyroom.config.StudyRoomConfProcessor;
+import com.tencent.mobileqq.teamwork.config.TencentDocDrawerConfigProcessor;
 import com.tencent.mobileqq.transfile.HighwayConfProcessor;
-import com.tencent.mobileqq.troop.associations.TroopAssociationsEntryConfigProcessor;
+import com.tencent.mobileqq.troop.association.TroopAssociationsEntryConfigProcessor;
 import com.tencent.mobileqq.troop.blocktroop.TroopBlockConfigProcessor;
+import com.tencent.mobileqq.troop.essence.TroopEssenceMsgEntryInCardConfigProcessor;
 import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgEntryConfigProcessor;
-import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgEntryInCardConfigProcessor;
 import com.tencent.mobileqq.troop.handler.TroopInfoHandlerConfigProcessor;
 import com.tencent.mobileqq.troop.homework.config.PublishHwkThirdPartyEntryConfigProcessor;
 import com.tencent.mobileqq.troop.honor.config.TroopHonorConfigProcessor;
 import com.tencent.mobileqq.troop.jointroopsecuritytips.JoinTroopSecurityTipsConfigProcessor;
-import com.tencent.mobileqq.troop.luckycharacter.TroopLuckyCharacterConfigProcess;
+import com.tencent.mobileqq.troop.luckycharacter.config.TroopLuckyCharacterConfigProcess;
+import com.tencent.mobileqq.troop.memberlevel.TroopMemberLevelMapConfigProcessor;
 import com.tencent.mobileqq.troop.recommend.TDCRecomTroopConfigProcessor;
+import com.tencent.mobileqq.troop.robot.TroopRobotConfProcessor;
 import com.tencent.mobileqq.troop.shortcutbar.TroopShortcutBarConfigProcessor;
-import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberLevelMapConfigProcessor;
 import com.tencent.mobileqq.troop.troopgame.TroopGameCardConfigProcessor;
+import com.tencent.mobileqq.troop.troopnotification.config.TroopNotificationConfigProcessor;
+import com.tencent.mobileqq.troop.troopnotification.config.TroopNotificationEntryConfigProcessor;
+import com.tencent.mobileqq.troop.troopurl.config.TroopUrlConfProcessor;
 import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.vashealth.VSHealthConfigProcessor;
+import com.tencent.mobileqq.utils.abtest.ExpMgrListProcessor;
+import com.tencent.mobileqq.vas.config.business.QVipHippyProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.CustomOnlineStatusProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.KingCardProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.PushOpenNotificationProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QQFriendRelation2Processor;
+import com.tencent.mobileqq.vas.config.business.qvip.QQLevelIconProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVIPPrettyTroopProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipAutoPttProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipBigClubSVIP9Processor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipBigTroopExpiredProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipBubbleAnimationProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipColorNickProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipDiyTemplateProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipExtendIconProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipFeatureProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipFriendTag2Processor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipFriendTagProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipGiftProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipKeywordsProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipPerfLevelProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipPersonalIconProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipPrettyAccountProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipProfileFootPrintProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipProfileMusicBoxProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipPubAccountProocessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipQidProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipRedNameCardProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipResourceProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSDKProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipServiceAccountFolderProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipSimpleThemeProocessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipStickerProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipTroopFileProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipTroopNickProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipWatchWordProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.SSOErrorInfoMapProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.VasFontSwitchProcessor;
+import com.tencent.mobileqq.vashealth.config.HealthConfigProcessor;
+import com.tencent.mobileqq.vashealth.config.HealthTimerConfigProcessor;
+import com.tencent.mobileqq.vashealth.config.StepConfigProcessor;
+import com.tencent.mobileqq.weather.config.WeatherConfigProcessor;
+import com.tencent.mobileqq.weather.webpage.WeatherPreloadWebPageConfigProcessor;
 import com.tencent.mobileqq.writetogetherconfig.WriteTogetherConfProcessor;
 import com.tencent.mobileqq.writetogetherconfig.WriteTogetherTemplateConfProcessor;
 import com.tencent.qphone.base.remote.SimpleAccount;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqperf.config.QConfigAPMProcessor;
+import com.tencent.qqperf.monitor.crash.safemode.SafeModeProcessor;
+import com.tencent.qqperf.monitor.file.ExternalDirOperationConfigProcessor;
 import com.tencent.qqperf.opt.suspendthread.LowEndPerfProcessor;
 import cooperation.ilive.config.IliveManagerConfProcessor;
-import dov.com.qq.im.ae.cmshow.config.AECMShowQConfigProcessor;
-import dov.com.qq.im.aeeditor.manage.AEEditorEffectConfigProcessor;
 import java.io.File;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Constructor;
@@ -308,13 +325,12 @@ import java.util.concurrent.ConcurrentHashMap;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
-import mqq.os.MqqHandler;
 
 public class QConfigManager
 {
   @ConfigInject(configPath="/Foundation/QQCommon/src/main/resources/Inject_config_old_servlet.yml", version=3)
   public static ArrayList<Class<? extends IOldServletInjector>> a;
-  @ConfigInject(configPath="/Foundation/QQCommon/src/main/resources/Inject_config_processor_map.yml", version=7)
+  @ConfigInject(configPath="/Foundation/QQCommon/src/main/resources/Inject_config_processor_map.yml", version=13)
   public static HashMap<String, Class<? extends IQConfigProcessor>> a;
   private static final Object[] jdField_a_of_type_ArrayOfJavaLangObject = new Object[16];
   private final Object jdField_a_of_type_JavaLangObject = new Object();
@@ -331,12 +347,30 @@ public class QConfigManager
   static
   {
     int i = 0;
-    while (i < jdField_a_of_type_ArrayOfJavaLangObject.length)
+    for (;;)
     {
-      jdField_a_of_type_ArrayOfJavaLangObject[i] = new Object();
+      Object[] arrayOfObject = jdField_a_of_type_ArrayOfJavaLangObject;
+      if (i >= arrayOfObject.length) {
+        break;
+      }
+      arrayOfObject[i] = new Object();
       i += 1;
     }
     jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    jdField_a_of_type_JavaUtilHashMap.put("743", QQSettingMeMenuConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("745", AlbumConfProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("744", RecentOptPopBarSwitchProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("742", ExpMgrListProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("741", MiniGamePAConfProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("740", TencentDocDrawerConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("739", QQGamePreDownloadConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("738", StepConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("737", FloatingPermissionConfProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("736", ExternalDirOperationConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("735", QAVConfig.class);
+    jdField_a_of_type_JavaUtilHashMap.put("734", QVipHippyProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("732", QSafeConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("730", CommonFunctionPublishConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("729", QQNewsConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("727", QVipBubbleAnimationProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("726", DynamicAvatarConfProcessor.class);
@@ -381,7 +415,7 @@ public class QConfigManager
     jdField_a_of_type_JavaUtilHashMap.put("675", OpenSdkIFrameProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("673", TroopBlockConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("672", AIOPicThumbSizeProcessor.class);
-    jdField_a_of_type_JavaUtilHashMap.put("671", VSHealthConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("671", HealthConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("670", C2CShortcutBarConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("669", JoinTroopSecurityTipsConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("668", TroopEssenceMsgEntryConfigProcessor.class);
@@ -449,7 +483,7 @@ public class QConfigManager
     jdField_a_of_type_JavaUtilHashMap.put("587", PhotoListPanelConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("586", ColorNoteRecentConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("585", WVPreloadPskeyConfProcessor.class);
-    jdField_a_of_type_JavaUtilHashMap.put("583", ExtendFriendBannerProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("583", ExpandBannerProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("581", LowEndPerfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("580", QVipPerfLevelProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("579", ImmersiveConfProcessor.class);
@@ -483,7 +517,6 @@ public class QConfigManager
     jdField_a_of_type_JavaUtilHashMap.put("546", QuickAuthorityConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("545", QQSysAndEmojiConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("544", TroopHonorConfigProcessor.class);
-    jdField_a_of_type_JavaUtilHashMap.put("543", QAVConfig.class);
     jdField_a_of_type_JavaUtilHashMap.put("542", QQLevelIconProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("541", KingCardProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("538", RichmediaIpv6ConifgProcessor.class);
@@ -598,7 +631,7 @@ public class QConfigManager
     jdField_a_of_type_JavaUtilHashMap.put("390", QConfPushProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("383", TencentDocDataLineTipsConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("382", QAVConfig.class);
-    jdField_a_of_type_JavaUtilHashMap.put("380", ArkConfProcessor.ArkPlatformConfProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("380", ArkPlatformConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("377", TencentDocImportFileInfoProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("370", QAVConfig.class);
     jdField_a_of_type_JavaUtilHashMap.put("368", ReadinjoyResetFunctionConfProcessor.class);
@@ -626,24 +659,26 @@ public class QConfigManager
     jdField_a_of_type_JavaUtilHashMap.put("287", QAVConfig.class);
     jdField_a_of_type_JavaUtilHashMap.put("276", QAVConfig.class);
     jdField_a_of_type_JavaUtilHashMap.put("270", QAVConfig.class);
+    jdField_a_of_type_JavaUtilHashMap.put("267", HealthTimerConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("263", QAVConfig.class);
     jdField_a_of_type_JavaUtilHashMap.put("261", TencentDocConvertConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("255", QConfigAPMProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("252", RedBagVideoResProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("251", PicCommonConfProcessor.class);
-    jdField_a_of_type_JavaUtilHashMap.put("250", ArkConfProcessor.ArkAIKeyWordSDKShareConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("250", ArkAIKeyWordSDKShareConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("249", QAVConfig.class);
     jdField_a_of_type_JavaUtilHashMap.put("216", QAVConfig.class);
     jdField_a_of_type_JavaUtilHashMap.put("207", WVWhiteListConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("192", QAVConfig.class);
+    jdField_a_of_type_JavaUtilHashMap.put("190", SearchFunctionModuleProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("189", QVipStickerProcessor.class);
-    jdField_a_of_type_JavaUtilHashMap.put("186", ArkConfProcessor.ArkAIKeyWordConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("186", ArkAIKeyWordConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("176", QAVConfig.class);
     jdField_a_of_type_JavaUtilHashMap.put("172", QAVConfig.class);
-    jdField_a_of_type_JavaUtilHashMap.put("170", ArkConfProcessor.ArkAIDictConfigProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("170", ArkAIDictConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("168", FlashChatConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("164", HotPicConfProcessor.class);
-    jdField_a_of_type_JavaUtilHashMap.put("159", ArkConfProcessor.ArkMsgAIDisableConfProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("159", ArkMsgAIDisableConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("158", WVSecurityConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("132", QAVConfig.class);
     jdField_a_of_type_JavaUtilHashMap.put("106", QAVConfig.class);
@@ -655,6 +690,7 @@ public class QConfigManager
     jdField_a_of_type_JavaUtilHashMap.put("70", PublicAccountCenterUrlConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("68", PreloadConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("67", ApolloConfProcessor.class);
+    jdField_a_of_type_JavaUtilHashMap.put("50", SearchConfigProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("35", PaSubscribeRedDotProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("32", PublicAccountConfProcessor.class);
     jdField_a_of_type_JavaUtilHashMap.put("26", QVipResourceProcessor.class);
@@ -667,28 +703,45 @@ public class QConfigManager
   private QConfigManager()
   {
     this.jdField_a_of_type_JavaUtilMap = new HashMap();
-    File localFile = MobileQQ.sMobileQQ.getFilesDir();
-    Object localObject = localFile;
-    if (localFile == null) {
-      localObject = MobileQQ.sMobileQQ.getCacheDir();
+    Object localObject2 = MobileQQ.sMobileQQ.getFilesDir();
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = MobileQQ.sMobileQQ.getCacheDir();
     }
-    if (localObject != null) {}
-    for (localObject = ((File)localObject).getParent();; localObject = File.separator + "data" + File.separator + "data" + File.separator + MobileQQ.sMobileQQ.getPackageName())
+    if (localObject1 != null)
     {
-      this.jdField_a_of_type_JavaLangString = ((String)localObject + File.separator + "qstore");
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfigManager", 2, "QConfigManager constructor, rootPath=" + this.jdField_a_of_type_JavaLangString);
-      }
-      return;
+      localObject1 = ((File)localObject1).getParent();
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append("data");
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append("data");
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append(MobileQQ.sMobileQQ.getPackageName());
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(File.separator);
+    ((StringBuilder)localObject2).append("qstore");
+    this.jdField_a_of_type_JavaLangString = ((StringBuilder)localObject2).toString();
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("QConfigManager constructor, rootPath=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("QConfigManager", 2, ((StringBuilder)localObject1).toString());
     }
   }
   
   private int a(IQConfigProcessor paramIQConfigProcessor, int paramInt, long paramLong)
   {
-    int i = a(paramLong).getInt(String.valueOf(paramInt), -1);
-    paramInt = i;
-    if (i == -1) {
-      paramInt = paramIQConfigProcessor.migrateOldVersion();
+    paramInt = a(paramLong).getInt(String.valueOf(paramInt), -1);
+    if (paramInt == -1) {
+      return paramIQConfigProcessor.migrateOldVersion();
     }
     return paramInt;
   }
@@ -700,27 +753,34 @@ public class QConfigManager
       int i = Integer.parseInt(paramFile.getName());
       return i;
     }
-    catch (NumberFormatException paramFile) {}
+    catch (NumberFormatException paramFile)
+    {
+      label10:
+      break label10;
+    }
     return -1024;
   }
   
   private long a(String paramString, boolean paramBoolean)
   {
-    long l2 = 0L;
-    long l1 = l2;
     if (paramBoolean) {}
     try
     {
-      l1 = Long.parseLong(paramString);
-      return l1;
+      long l = Long.parseLong(paramString);
+      return l;
     }
     catch (Exception localException)
     {
-      do
-      {
-        l1 = l2;
-      } while (!QLog.isColorLevel());
-      QLog.d("QConfigManager", 2, "Can not parse uin - " + paramString);
+      label11:
+      StringBuilder localStringBuilder;
+      break label11;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Can not parse uin - ");
+      localStringBuilder.append(paramString);
+      QLog.d("QConfigManager", 2, localStringBuilder.toString());
     }
     return 0L;
   }
@@ -735,7 +795,11 @@ public class QConfigManager
         localObject1 = localSharedPreferences2;
         if (localSharedPreferences2 == null)
         {
-          localObject1 = "conf_" + paramLong + "_sharepref";
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("conf_");
+          ((StringBuilder)localObject1).append(paramLong);
+          ((StringBuilder)localObject1).append("_sharepref");
+          localObject1 = ((StringBuilder)localObject1).toString();
           localSharedPreferences2 = MobileQQ.sMobileQQ.getSharedPreferences((String)localObject1, 4);
           localObject1 = localSharedPreferences2;
           if (localSharedPreferences2 != null)
@@ -752,125 +816,62 @@ public class QConfigManager
   
   public static IOldServletInjector a()
   {
-    if (jdField_a_of_type_JavaUtilArrayList.size() != 0) {}
-    for (;;)
-    {
+    if (jdField_a_of_type_JavaUtilArrayList.size() != 0) {
       try
       {
         IOldServletInjector localIOldServletInjector = (IOldServletInjector)((Class)jdField_a_of_type_JavaUtilArrayList.get(0)).newInstance();
         return localIOldServletInjector;
       }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        localIllegalAccessException.printStackTrace();
-        return new QConfigManager.1();
-      }
       catch (InstantiationException localInstantiationException)
       {
         localInstantiationException.printStackTrace();
-        continue;
       }
+      catch (IllegalAccessException localIllegalAccessException)
+      {
+        localIllegalAccessException.printStackTrace();
+      }
+    } else {
       QLog.i("QConfigManager", 2, "getOldServletInjector. mOldServletInjectors.size() = 0");
     }
+    return new BaseOldServletInjector();
   }
   
-  /* Error */
   private IQConfigProcessor a(String paramString)
   {
-    // Byte code:
-    //   0: getstatic 39	com/tencent/mobileqq/config/QConfigManager:jdField_a_of_type_JavaUtilHashMap	Ljava/util/HashMap;
-    //   3: aload_1
-    //   4: invokevirtual 1445	java/util/HashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   7: checkcast 1421	java/lang/Class
-    //   10: astore_2
-    //   11: aload_2
-    //   12: ifnonnull +38 -> 50
-    //   15: invokestatic 1328	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   18: ifeq +30 -> 48
-    //   21: ldc_w 1330
-    //   24: iconst_2
-    //   25: new 1307	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 1308	java/lang/StringBuilder:<init>	()V
-    //   32: ldc_w 1447
-    //   35: invokevirtual 1312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: aload_1
-    //   39: invokevirtual 1312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 1320	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokestatic 1335	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   48: aconst_null
-    //   49: areturn
-    //   50: aload_2
-    //   51: iconst_0
-    //   52: anewarray 1421	java/lang/Class
-    //   55: invokevirtual 1451	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   58: astore_2
-    //   59: aload_2
-    //   60: iconst_1
-    //   61: invokevirtual 1457	java/lang/reflect/Constructor:setAccessible	(Z)V
-    //   64: aload_2
-    //   65: iconst_0
-    //   66: anewarray 4	java/lang/Object
-    //   69: invokevirtual 1460	java/lang/reflect/Constructor:newInstance	([Ljava/lang/Object;)Ljava/lang/Object;
-    //   72: checkcast 1360	com/tencent/mobileqq/config/IQConfigProcessor
-    //   75: astore_2
-    //   76: aload_2
-    //   77: aload_1
-    //   78: invokestatic 1376	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   81: invokevirtual 1464	com/tencent/mobileqq/config/IQConfigProcessor:onProcessorConstructed	(I)V
-    //   84: aload_2
-    //   85: areturn
-    //   86: astore_1
-    //   87: aload_1
-    //   88: invokevirtual 1430	java/lang/IllegalAccessException:printStackTrace	()V
-    //   91: aload_2
-    //   92: areturn
-    //   93: astore_1
-    //   94: aconst_null
-    //   95: astore_2
-    //   96: aload_1
-    //   97: invokevirtual 1434	java/lang/InstantiationException:printStackTrace	()V
-    //   100: aload_2
-    //   101: areturn
-    //   102: astore_1
-    //   103: aconst_null
-    //   104: astore_2
-    //   105: aload_1
-    //   106: invokevirtual 1465	java/lang/NoSuchMethodException:printStackTrace	()V
-    //   109: aload_2
-    //   110: areturn
-    //   111: astore_1
-    //   112: aconst_null
-    //   113: astore_2
-    //   114: aload_1
-    //   115: invokevirtual 1466	java/lang/reflect/InvocationTargetException:printStackTrace	()V
-    //   118: aload_2
-    //   119: areturn
-    //   120: astore_1
-    //   121: goto -7 -> 114
-    //   124: astore_1
-    //   125: goto -20 -> 105
-    //   128: astore_1
-    //   129: goto -33 -> 96
-    //   132: astore_1
-    //   133: aconst_null
-    //   134: astore_2
-    //   135: goto -48 -> 87
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	138	0	this	QConfigManager
-    //   0	138	1	paramString	String
-    //   10	125	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   76	84	86	java/lang/IllegalAccessException
-    //   50	76	93	java/lang/InstantiationException
-    //   50	76	102	java/lang/NoSuchMethodException
-    //   50	76	111	java/lang/reflect/InvocationTargetException
-    //   76	84	120	java/lang/reflect/InvocationTargetException
-    //   76	84	124	java/lang/NoSuchMethodException
-    //   76	84	128	java/lang/InstantiationException
-    //   50	76	132	java/lang/IllegalAccessException
+    Object localObject = (Class)jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("genProcessor, clazz=null, type=");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("QConfigManager", 2, ((StringBuilder)localObject).toString());
+      }
+      return null;
+    }
+    try
+    {
+      localObject = ((Class)localObject).getDeclaredConstructor(new Class[0]);
+      ((Constructor)localObject).setAccessible(true);
+      localObject = (IQConfigProcessor)((Constructor)localObject).newInstance(new Object[0]);
+      try
+      {
+        ((IQConfigProcessor)localObject).onProcessorConstructed(Integer.parseInt(paramString));
+        return localObject;
+      }
+      catch (Exception localException2)
+      {
+        paramString = (String)localObject;
+        localObject = localException2;
+      }
+      localException1.printStackTrace();
+    }
+    catch (Exception localException1)
+    {
+      paramString = null;
+    }
+    return paramString;
   }
   
   public static QConfigManager a()
@@ -883,25 +884,29 @@ public class QConfigManager
     if (a(paramString1)) {
       return new File(paramString1, paramString2);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfigManager", 2, "mkdir dir failed, dir=" + paramString1);
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("mkdir dir failed, dir=");
+      paramString2.append(paramString1);
+      QLog.d("QConfigManager", 2, paramString2.toString());
     }
     return null;
   }
   
   private <T> T a(IQConfigProcessor<T> paramIQConfigProcessor, int paramInt)
   {
-    Object localObject2 = paramIQConfigProcessor.migrateOldOrDefaultContent(paramInt);
-    Object localObject1 = localObject2;
-    if (localObject2 == null) {
-      localObject1 = a(paramIQConfigProcessor.clazz());
+    Object localObject = paramIQConfigProcessor.migrateOldOrDefaultContent(paramInt);
+    if (localObject == null) {
+      return QConfigHelper.a(paramIQConfigProcessor.clazz());
     }
-    return localObject1;
+    return localObject;
   }
   
   private Object a(IQConfigProcessor paramIQConfigProcessor, long paramLong, int paramInt)
   {
     Object localObject2 = a(paramIQConfigProcessor.type());
+    Object localObject1;
     if (localObject2 != null)
     {
       int i = paramIQConfigProcessor.type();
@@ -912,18 +917,29 @@ public class QConfigManager
         String str1 = a(i, paramLong, j);
         String str2 = a(i, paramLong, paramInt);
         localObject1 = localObject2;
-        if (!TextUtils.equals(str2, str1)) {
-          FileUtils.a(str1, str2, false);
+        if (!TextUtils.equals(str2, str1))
+        {
+          FileUtils.copyDirectory(str1, str2, false);
+          localObject1 = localObject2;
         }
       }
     }
-    for (Object localObject1 = localObject2;; localObject1 = paramIQConfigProcessor.migrateOldOrDefaultContent(0))
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfigManager", 2, "loadNewConfigFailBackport, version=" + paramInt + ", type" + paramIQConfigProcessor.type() + ", conf=" + localObject1);
-      }
-      return localObject1;
+      localObject1 = paramIQConfigProcessor.migrateOldOrDefaultContent(0);
     }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("loadNewConfigFailBackport, version=");
+      ((StringBuilder)localObject2).append(paramInt);
+      ((StringBuilder)localObject2).append(", type");
+      ((StringBuilder)localObject2).append(paramIQConfigProcessor.type());
+      ((StringBuilder)localObject2).append(", conf=");
+      ((StringBuilder)localObject2).append(localObject1);
+      QLog.d("QConfigManager", 2, ((StringBuilder)localObject2).toString());
+    }
+    return localObject1;
   }
   
   private Object a(IQConfigProcessor paramIQConfigProcessor, QConfItem[] paramArrayOfQConfItem, int paramInt)
@@ -940,28 +956,19 @@ public class QConfigManager
     return null;
   }
   
-  public static <T> T a(Class<T> paramClass)
-  {
-    try
-    {
-      Object localObject = paramClass.getDeclaredConstructor(new Class[0]);
-      ((Constructor)localObject).setAccessible(true);
-      localObject = ((Constructor)localObject).newInstance(new Object[0]);
-      a(paramClass, localObject);
-      return localObject;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfigManager", 2, "newInstance failed, class=" + paramClass.getSimpleName(), localException);
-      }
-    }
-    return null;
-  }
-  
   private String a(int paramInt1, long paramLong, int paramInt2)
   {
-    return this.jdField_a_of_type_JavaLangString + File.separator + paramLong + File.separator + "conf" + File.separator + paramInt1 + File.separator + paramInt2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("conf");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramInt2);
+    return localStringBuilder.toString();
   }
   
   /* Error */
@@ -971,317 +978,358 @@ public class QConfigManager
     //   0: aconst_null
     //   1: astore 8
     //   3: aload_1
-    //   4: ifnonnull +30 -> 34
-    //   7: aload 8
-    //   9: astore 4
-    //   11: invokestatic 1328	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   14: ifeq +17 -> 31
-    //   17: ldc_w 1330
-    //   20: iconst_2
-    //   21: ldc_w 1561
-    //   24: invokestatic 1335	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   27: aload 8
-    //   29: astore 4
-    //   31: aload 4
-    //   33: areturn
-    //   34: aload_1
-    //   35: invokevirtual 1564	java/io/File:exists	()Z
-    //   38: ifeq +95 -> 133
-    //   41: aload_1
-    //   42: invokevirtual 1567	java/io/File:isFile	()Z
-    //   45: ifne +42 -> 87
-    //   48: aload 8
-    //   50: astore 4
-    //   52: invokestatic 1328	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   55: ifeq -24 -> 31
-    //   58: ldc_w 1330
-    //   61: iconst_2
-    //   62: new 1307	java/lang/StringBuilder
-    //   65: dup
-    //   66: invokespecial 1308	java/lang/StringBuilder:<init>	()V
-    //   69: ldc_w 1569
-    //   72: invokevirtual 1312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: aload_1
-    //   76: invokevirtual 1531	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 1320	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 1335	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   85: aconst_null
-    //   86: areturn
-    //   87: aload_1
-    //   88: invokevirtual 1572	java/io/File:canRead	()Z
-    //   91: ifne +81 -> 172
-    //   94: aload 8
-    //   96: astore 4
-    //   98: invokestatic 1328	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   101: ifeq -70 -> 31
-    //   104: ldc_w 1330
-    //   107: iconst_2
-    //   108: new 1307	java/lang/StringBuilder
-    //   111: dup
-    //   112: invokespecial 1308	java/lang/StringBuilder:<init>	()V
-    //   115: ldc_w 1574
-    //   118: invokevirtual 1312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: aload_1
-    //   122: invokevirtual 1531	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   125: invokevirtual 1320	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   128: invokestatic 1335	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: aconst_null
-    //   132: areturn
-    //   133: aload 8
-    //   135: astore 4
-    //   137: invokestatic 1328	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   140: ifeq -109 -> 31
-    //   143: ldc_w 1330
-    //   146: iconst_2
-    //   147: new 1307	java/lang/StringBuilder
-    //   150: dup
-    //   151: invokespecial 1308	java/lang/StringBuilder:<init>	()V
-    //   154: ldc_w 1576
-    //   157: invokevirtual 1312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   160: aload_1
-    //   161: invokevirtual 1531	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   164: invokevirtual 1320	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   167: invokestatic 1335	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   170: aconst_null
-    //   171: areturn
-    //   172: new 1578	java/io/FileInputStream
-    //   175: dup
-    //   176: aload_1
-    //   177: invokespecial 1581	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   180: astore 4
-    //   182: new 1583	java/io/InputStreamReader
-    //   185: dup
-    //   186: aload 4
-    //   188: ldc_w 1585
-    //   191: invokespecial 1588	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
-    //   194: astore_3
-    //   195: aload_3
-    //   196: astore 6
-    //   198: aload 4
-    //   200: astore 5
-    //   202: aload_1
-    //   203: invokevirtual 1592	java/io/File:length	()J
-    //   206: l2i
-    //   207: istore_2
-    //   208: iload_2
-    //   209: sipush 12288
-    //   212: if_icmple +196 -> 408
-    //   215: aload_3
-    //   216: astore 6
-    //   218: aload 4
-    //   220: astore 5
-    //   222: sipush 4096
-    //   225: newarray char
-    //   227: astore 7
-    //   229: aload_3
-    //   230: astore 6
-    //   232: aload 4
-    //   234: astore 5
-    //   236: new 1307	java/lang/StringBuilder
-    //   239: dup
-    //   240: sipush 12288
-    //   243: invokespecial 1594	java/lang/StringBuilder:<init>	(I)V
-    //   246: astore 9
-    //   248: aload_3
-    //   249: astore 6
-    //   251: aload 4
-    //   253: astore 5
-    //   255: aload_3
-    //   256: aload 7
-    //   258: invokevirtual 1598	java/io/InputStreamReader:read	([C)I
-    //   261: istore_2
-    //   262: iconst_m1
-    //   263: iload_2
-    //   264: if_icmpeq +101 -> 365
-    //   267: aload_3
-    //   268: astore 6
-    //   270: aload 4
-    //   272: astore 5
-    //   274: aload 9
-    //   276: aload 7
-    //   278: iconst_0
-    //   279: iload_2
-    //   280: invokevirtual 1601	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
-    //   283: pop
-    //   284: goto -36 -> 248
-    //   287: astore 7
-    //   289: aload_3
-    //   290: astore 6
-    //   292: aload 4
-    //   294: astore 5
-    //   296: invokestatic 1328	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   299: ifeq +39 -> 338
-    //   302: aload_3
-    //   303: astore 6
-    //   305: aload 4
-    //   307: astore 5
-    //   309: ldc_w 1330
-    //   312: iconst_2
-    //   313: new 1307	java/lang/StringBuilder
-    //   316: dup
-    //   317: invokespecial 1308	java/lang/StringBuilder:<init>	()V
-    //   320: ldc_w 1603
-    //   323: invokevirtual 1312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   326: aload_1
-    //   327: invokevirtual 1531	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   330: invokevirtual 1320	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   333: aload 7
-    //   335: invokestatic 1555	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   338: aload 4
-    //   340: ifnull +8 -> 348
-    //   343: aload 4
-    //   345: invokevirtual 1608	java/io/InputStream:close	()V
-    //   348: aload 8
-    //   350: astore 4
-    //   352: aload_3
-    //   353: ifnull -322 -> 31
-    //   356: aload_3
-    //   357: invokevirtual 1609	java/io/InputStreamReader:close	()V
-    //   360: aconst_null
-    //   361: areturn
-    //   362: astore_1
-    //   363: aconst_null
-    //   364: areturn
-    //   365: aload_3
-    //   366: astore 6
-    //   368: aload 4
-    //   370: astore 5
-    //   372: aload 9
-    //   374: invokevirtual 1320	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   377: astore 7
-    //   379: aload 7
-    //   381: astore_1
-    //   382: aload 4
-    //   384: ifnull +8 -> 392
-    //   387: aload 4
-    //   389: invokevirtual 1608	java/io/InputStream:close	()V
-    //   392: aload_1
-    //   393: astore 4
-    //   395: aload_3
-    //   396: ifnull -365 -> 31
-    //   399: aload_3
-    //   400: invokevirtual 1609	java/io/InputStreamReader:close	()V
-    //   403: aload_1
-    //   404: areturn
-    //   405: astore_3
-    //   406: aload_1
-    //   407: areturn
-    //   408: aload_3
-    //   409: astore 6
-    //   411: aload 4
-    //   413: astore 5
-    //   415: iload_2
-    //   416: newarray char
-    //   418: astore 7
+    //   4: ifnonnull +21 -> 25
+    //   7: invokestatic 1397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   10: ifeq +13 -> 23
+    //   13: ldc_w 1401
+    //   16: iconst_2
+    //   17: ldc_w 1611
+    //   20: invokestatic 1404	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   23: aconst_null
+    //   24: areturn
+    //   25: aload_1
+    //   26: invokevirtual 1614	java/io/File:exists	()Z
+    //   29: ifeq +510 -> 539
+    //   32: aload_1
+    //   33: invokevirtual 1617	java/io/File:isFile	()Z
+    //   36: ifne +44 -> 80
+    //   39: invokestatic 1397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   42: ifeq +36 -> 78
+    //   45: new 1371	java/lang/StringBuilder
+    //   48: dup
+    //   49: invokespecial 1372	java/lang/StringBuilder:<init>	()V
+    //   52: astore_3
+    //   53: aload_3
+    //   54: ldc_w 1619
+    //   57: invokevirtual 1379	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: pop
+    //   61: aload_3
+    //   62: aload_1
+    //   63: invokevirtual 1593	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   66: pop
+    //   67: ldc_w 1401
+    //   70: iconst_2
+    //   71: aload_3
+    //   72: invokevirtual 1387	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   75: invokestatic 1404	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   78: aconst_null
+    //   79: areturn
+    //   80: aload_1
+    //   81: invokevirtual 1622	java/io/File:canRead	()Z
+    //   84: ifne +44 -> 128
+    //   87: invokestatic 1397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   90: ifeq +36 -> 126
+    //   93: new 1371	java/lang/StringBuilder
+    //   96: dup
+    //   97: invokespecial 1372	java/lang/StringBuilder:<init>	()V
+    //   100: astore_3
+    //   101: aload_3
+    //   102: ldc_w 1624
+    //   105: invokevirtual 1379	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   108: pop
+    //   109: aload_3
+    //   110: aload_1
+    //   111: invokevirtual 1593	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   114: pop
+    //   115: ldc_w 1401
+    //   118: iconst_2
+    //   119: aload_3
+    //   120: invokevirtual 1387	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   123: invokestatic 1404	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   126: aconst_null
+    //   127: areturn
+    //   128: new 1626	java/io/FileInputStream
+    //   131: dup
+    //   132: aload_1
+    //   133: invokespecial 1629	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   136: astore_3
+    //   137: new 1631	java/io/InputStreamReader
+    //   140: dup
+    //   141: aload_3
+    //   142: ldc_w 1633
+    //   145: invokespecial 1636	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;Ljava/lang/String;)V
+    //   148: astore 7
+    //   150: aload_3
+    //   151: astore 4
+    //   153: aload 7
+    //   155: astore 5
+    //   157: aload_1
+    //   158: invokevirtual 1640	java/io/File:length	()J
+    //   161: l2i
+    //   162: istore_2
+    //   163: iload_2
+    //   164: sipush 12288
+    //   167: if_icmple +96 -> 263
+    //   170: aload_3
+    //   171: astore 4
+    //   173: aload 7
+    //   175: astore 5
+    //   177: sipush 4096
+    //   180: newarray char
+    //   182: astore 6
+    //   184: aload_3
+    //   185: astore 4
+    //   187: aload 7
+    //   189: astore 5
+    //   191: new 1371	java/lang/StringBuilder
+    //   194: dup
+    //   195: sipush 12288
+    //   198: invokespecial 1642	java/lang/StringBuilder:<init>	(I)V
+    //   201: astore 9
+    //   203: aload_3
+    //   204: astore 4
+    //   206: aload 7
+    //   208: astore 5
+    //   210: aload 7
+    //   212: aload 6
+    //   214: invokevirtual 1646	java/io/InputStreamReader:read	([C)I
+    //   217: istore_2
+    //   218: iconst_m1
+    //   219: iload_2
+    //   220: if_icmpeq +23 -> 243
+    //   223: aload_3
+    //   224: astore 4
+    //   226: aload 7
+    //   228: astore 5
+    //   230: aload 9
+    //   232: aload 6
+    //   234: iconst_0
+    //   235: iload_2
+    //   236: invokevirtual 1649	java/lang/StringBuilder:append	([CII)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: goto -37 -> 203
+    //   243: aload_3
+    //   244: astore 4
+    //   246: aload 7
+    //   248: astore 5
+    //   250: aload 9
+    //   252: invokevirtual 1387	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   255: astore 6
+    //   257: aload 6
+    //   259: astore_1
+    //   260: goto +44 -> 304
+    //   263: aload_3
+    //   264: astore 4
+    //   266: aload 7
+    //   268: astore 5
+    //   270: iload_2
+    //   271: newarray char
+    //   273: astore 6
+    //   275: aload_3
+    //   276: astore 4
+    //   278: aload 7
+    //   280: astore 5
+    //   282: new 1412	java/lang/String
+    //   285: dup
+    //   286: aload 6
+    //   288: iconst_0
+    //   289: aload 7
+    //   291: aload 6
+    //   293: invokevirtual 1646	java/io/InputStreamReader:read	([C)I
+    //   296: invokespecial 1652	java/lang/String:<init>	([CII)V
+    //   299: astore 6
+    //   301: aload 6
+    //   303: astore_1
+    //   304: aload_3
+    //   305: invokevirtual 1657	java/io/InputStream:close	()V
+    //   308: goto +8 -> 316
+    //   311: astore_3
+    //   312: aload_3
+    //   313: invokevirtual 1525	java/lang/Exception:printStackTrace	()V
+    //   316: aload_1
+    //   317: astore 4
+    //   319: aload 7
+    //   321: invokevirtual 1658	java/io/InputStreamReader:close	()V
+    //   324: aload_1
+    //   325: areturn
+    //   326: astore_1
+    //   327: aload_1
+    //   328: invokevirtual 1525	java/lang/Exception:printStackTrace	()V
+    //   331: aload 4
+    //   333: areturn
+    //   334: astore 4
+    //   336: aload_3
+    //   337: astore 6
+    //   339: aload 7
+    //   341: astore_3
+    //   342: aload 4
+    //   344: astore 7
+    //   346: goto +41 -> 387
+    //   349: astore_1
+    //   350: aconst_null
+    //   351: astore 5
+    //   353: goto +150 -> 503
+    //   356: astore 7
+    //   358: aconst_null
+    //   359: astore 4
+    //   361: aload_3
+    //   362: astore 6
+    //   364: aload 4
+    //   366: astore_3
+    //   367: goto +20 -> 387
+    //   370: astore_1
+    //   371: aconst_null
+    //   372: astore_3
+    //   373: aload_3
+    //   374: astore 5
+    //   376: goto +127 -> 503
+    //   379: astore 7
+    //   381: aconst_null
+    //   382: astore 6
+    //   384: aload 6
+    //   386: astore_3
+    //   387: aload 6
+    //   389: astore 4
+    //   391: aload_3
+    //   392: astore 5
+    //   394: invokestatic 1397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   397: ifeq +70 -> 467
+    //   400: aload 6
+    //   402: astore 4
+    //   404: aload_3
+    //   405: astore 5
+    //   407: new 1371	java/lang/StringBuilder
+    //   410: dup
+    //   411: invokespecial 1372	java/lang/StringBuilder:<init>	()V
+    //   414: astore 9
+    //   416: aload 6
+    //   418: astore 4
     //   420: aload_3
-    //   421: astore 6
-    //   423: aload 4
-    //   425: astore 5
-    //   427: new 1348	java/lang/String
-    //   430: dup
-    //   431: aload 7
-    //   433: iconst_0
-    //   434: aload_3
-    //   435: aload 7
-    //   437: invokevirtual 1598	java/io/InputStreamReader:read	([C)I
-    //   440: invokespecial 1612	java/lang/String:<init>	([CII)V
-    //   443: astore 7
-    //   445: aload 7
-    //   447: astore_1
-    //   448: goto -66 -> 382
-    //   451: astore_1
-    //   452: aconst_null
-    //   453: astore 6
-    //   455: aconst_null
-    //   456: astore 4
-    //   458: aload 4
-    //   460: ifnull +8 -> 468
-    //   463: aload 4
-    //   465: invokevirtual 1608	java/io/InputStream:close	()V
-    //   468: aload 6
-    //   470: ifnull +8 -> 478
-    //   473: aload 6
-    //   475: invokevirtual 1609	java/io/InputStreamReader:close	()V
-    //   478: aload_1
-    //   479: athrow
-    //   480: astore 4
-    //   482: goto -90 -> 392
-    //   485: astore_1
-    //   486: goto -138 -> 348
-    //   489: astore_3
-    //   490: goto -22 -> 468
-    //   493: astore_3
-    //   494: goto -16 -> 478
-    //   497: astore_1
-    //   498: aconst_null
-    //   499: astore 6
-    //   501: goto -43 -> 458
-    //   504: astore_1
-    //   505: aload 5
-    //   507: astore 4
-    //   509: goto -51 -> 458
-    //   512: astore 7
-    //   514: aconst_null
-    //   515: astore_3
-    //   516: aconst_null
-    //   517: astore 4
-    //   519: goto -230 -> 289
-    //   522: astore 7
-    //   524: aconst_null
-    //   525: astore_3
-    //   526: goto -237 -> 289
+    //   421: astore 5
+    //   423: aload 9
+    //   425: ldc_w 1660
+    //   428: invokevirtual 1379	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   431: pop
+    //   432: aload 6
+    //   434: astore 4
+    //   436: aload_3
+    //   437: astore 5
+    //   439: aload 9
+    //   441: aload_1
+    //   442: invokevirtual 1593	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   445: pop
+    //   446: aload 6
+    //   448: astore 4
+    //   450: aload_3
+    //   451: astore 5
+    //   453: ldc_w 1401
+    //   456: iconst_2
+    //   457: aload 9
+    //   459: invokevirtual 1387	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   462: aload 7
+    //   464: invokestatic 1663	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   467: aload 6
+    //   469: ifnull +16 -> 485
+    //   472: aload 6
+    //   474: invokevirtual 1657	java/io/InputStream:close	()V
+    //   477: goto +8 -> 485
+    //   480: astore_1
+    //   481: aload_1
+    //   482: invokevirtual 1525	java/lang/Exception:printStackTrace	()V
+    //   485: aload_3
+    //   486: ifnull +11 -> 497
+    //   489: aload 8
+    //   491: astore 4
+    //   493: aload_3
+    //   494: invokevirtual 1658	java/io/InputStreamReader:close	()V
+    //   497: aconst_null
+    //   498: areturn
+    //   499: astore_1
+    //   500: aload 4
+    //   502: astore_3
+    //   503: aload_3
+    //   504: ifnull +15 -> 519
+    //   507: aload_3
+    //   508: invokevirtual 1657	java/io/InputStream:close	()V
+    //   511: goto +8 -> 519
+    //   514: astore_3
+    //   515: aload_3
+    //   516: invokevirtual 1525	java/lang/Exception:printStackTrace	()V
+    //   519: aload 5
+    //   521: ifnull +16 -> 537
+    //   524: aload 5
+    //   526: invokevirtual 1658	java/io/InputStreamReader:close	()V
+    //   529: goto +8 -> 537
+    //   532: astore_3
+    //   533: aload_3
+    //   534: invokevirtual 1525	java/lang/Exception:printStackTrace	()V
+    //   537: aload_1
+    //   538: athrow
+    //   539: invokestatic 1397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   542: ifeq +36 -> 578
+    //   545: new 1371	java/lang/StringBuilder
+    //   548: dup
+    //   549: invokespecial 1372	java/lang/StringBuilder:<init>	()V
+    //   552: astore_3
+    //   553: aload_3
+    //   554: ldc_w 1665
+    //   557: invokevirtual 1379	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   560: pop
+    //   561: aload_3
+    //   562: aload_1
+    //   563: invokevirtual 1593	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   566: pop
+    //   567: ldc_w 1401
+    //   570: iconst_2
+    //   571: aload_3
+    //   572: invokevirtual 1387	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   575: invokestatic 1404	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   578: aconst_null
+    //   579: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	529	0	this	QConfigManager
-    //   0	529	1	paramFile	File
-    //   207	209	2	i	int
-    //   194	206	3	localInputStreamReader	java.io.InputStreamReader
-    //   405	30	3	localException1	Exception
-    //   489	1	3	localException2	Exception
-    //   493	1	3	localException3	Exception
-    //   515	11	3	localObject1	Object
-    //   9	455	4	localObject2	Object
-    //   480	1	4	localException4	Exception
-    //   507	11	4	localObject3	Object
-    //   200	306	5	localObject4	Object
-    //   196	304	6	localObject5	Object
-    //   227	50	7	arrayOfChar	char[]
-    //   287	47	7	localException5	Exception
-    //   377	69	7	localObject6	Object
-    //   512	1	7	localException6	Exception
-    //   522	1	7	localException7	Exception
-    //   1	348	8	localObject7	Object
-    //   246	127	9	localStringBuilder	java.lang.StringBuilder
+    //   0	580	0	this	QConfigManager
+    //   0	580	1	paramFile	File
+    //   162	109	2	i	int
+    //   52	253	3	localObject1	Object
+    //   311	26	3	localException1	Exception
+    //   341	167	3	localObject2	Object
+    //   514	2	3	localException2	Exception
+    //   532	2	3	localException3	Exception
+    //   552	20	3	localStringBuilder1	StringBuilder
+    //   151	181	4	localObject3	Object
+    //   334	9	4	localException4	Exception
+    //   359	142	4	localObject4	Object
+    //   155	370	5	localObject5	Object
+    //   182	291	6	localObject6	Object
+    //   148	197	7	localObject7	Object
+    //   356	1	7	localException5	Exception
+    //   379	84	7	localException6	Exception
+    //   1	489	8	localObject8	Object
+    //   201	257	9	localStringBuilder2	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   202	208	287	java/lang/Exception
-    //   222	229	287	java/lang/Exception
-    //   236	248	287	java/lang/Exception
-    //   255	262	287	java/lang/Exception
-    //   274	284	287	java/lang/Exception
-    //   372	379	287	java/lang/Exception
-    //   415	420	287	java/lang/Exception
-    //   427	445	287	java/lang/Exception
-    //   356	360	362	java/lang/Exception
-    //   399	403	405	java/lang/Exception
-    //   172	182	451	finally
-    //   387	392	480	java/lang/Exception
-    //   343	348	485	java/lang/Exception
-    //   463	468	489	java/lang/Exception
-    //   473	478	493	java/lang/Exception
-    //   182	195	497	finally
-    //   202	208	504	finally
-    //   222	229	504	finally
-    //   236	248	504	finally
-    //   255	262	504	finally
-    //   274	284	504	finally
-    //   296	302	504	finally
-    //   309	338	504	finally
-    //   372	379	504	finally
-    //   415	420	504	finally
-    //   427	445	504	finally
-    //   172	182	512	java/lang/Exception
-    //   182	195	522	java/lang/Exception
+    //   304	308	311	java/lang/Exception
+    //   319	324	326	java/lang/Exception
+    //   493	497	326	java/lang/Exception
+    //   157	163	334	java/lang/Exception
+    //   177	184	334	java/lang/Exception
+    //   191	203	334	java/lang/Exception
+    //   210	218	334	java/lang/Exception
+    //   230	240	334	java/lang/Exception
+    //   250	257	334	java/lang/Exception
+    //   270	275	334	java/lang/Exception
+    //   282	301	334	java/lang/Exception
+    //   137	150	349	finally
+    //   137	150	356	java/lang/Exception
+    //   128	137	370	finally
+    //   128	137	379	java/lang/Exception
+    //   472	477	480	java/lang/Exception
+    //   157	163	499	finally
+    //   177	184	499	finally
+    //   191	203	499	finally
+    //   210	218	499	finally
+    //   230	240	499	finally
+    //   250	257	499	finally
+    //   270	275	499	finally
+    //   282	301	499	finally
+    //   394	400	499	finally
+    //   407	416	499	finally
+    //   423	432	499	finally
+    //   439	446	499	finally
+    //   453	467	499	finally
+    //   507	511	514	java/lang/Exception
+    //   524	529	532	java/lang/Exception
   }
   
   private String a(String paramString)
@@ -1294,104 +1342,116 @@ public class QConfigManager
       }
       str = "9999";
     }
-    return this.jdField_a_of_type_JavaLangString + File.separator + str + File.separator + "conf" + File.separator + "cookie_new";
+    paramString = new StringBuilder();
+    paramString.append(this.jdField_a_of_type_JavaLangString);
+    paramString.append(File.separator);
+    paramString.append(str);
+    paramString.append(File.separator);
+    paramString.append("conf");
+    paramString.append(File.separator);
+    paramString.append("cookie_new");
+    return paramString.toString();
   }
   
-  private void a(IQConfigProcessor paramIQConfigProcessor, ConfigurationService.Config paramConfig, long paramLong, String paramString, int paramInt1, int paramInt2)
+  private void a(IQConfigProcessor paramIQConfigProcessor, ConfigurationService.Config paramConfig, long paramLong, String paramString, int paramInt)
   {
-    int i = paramConfig.msg_content_list.size();
-    if (i == 0) {
-      paramConfig = paramIQConfigProcessor.migrateOldOrDefaultContent(1);
-    }
-    label314:
-    for (;;)
+    int j = paramConfig.msg_content_list.size();
+    if (j == 0) {}
+    for (paramConfig = paramIQConfigProcessor.migrateOldOrDefaultContent(1);; paramConfig = a(paramIQConfigProcessor, paramLong, paramInt))
     {
-      if (i == 0) {}
-      for (boolean bool = true;; bool = false)
+      break;
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < j)
       {
-        a(paramIQConfigProcessor, paramConfig, paramInt2, paramLong, bool);
-        return;
-        ArrayList localArrayList = new ArrayList();
-        paramInt1 = 0;
-        if (paramInt1 < i)
-        {
-          ConfigurationService.Content localContent = (ConfigurationService.Content)paramConfig.msg_content_list.get(paramInt1);
-          Object localObject1;
-          if ((localContent != null) && (localContent.content.has()))
+        ConfigurationService.Content localContent = (ConfigurationService.Content)paramConfig.msg_content_list.get(i);
+        if ((localContent != null) && (localContent.content.has())) {
+          if (localContent.compress.get() == 1)
           {
-            if (localContent.compress.get() != 1) {
-              break label200;
-            }
-            localObject1 = QConfigUtil.a(localContent.content.get().toByteArray());
-            if (localObject1 == null) {
-              break label194;
-            }
-          }
-          for (;;)
-          {
-            try
-            {
-              localObject1 = new String((byte[])localObject1, "UTF-8");
-              if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-                localArrayList.add(new QConfItem(localContent.task_id.get(), (String)localObject1));
-              }
-              paramInt1 += 1;
-            }
-            catch (UnsupportedEncodingException localUnsupportedEncodingException)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("QConfigManager", 2, "decompile faild.");
-              }
-            }
-            label194:
-            localObject2 = null;
-            continue;
-            label200:
-            localObject2 = localContent.content.get().toStringUtf8();
+            localObject = QConfigHelper.a(localContent.content.get().toByteArray());
+            if (localObject == null) {}
           }
         }
-        Object localObject2 = new QConfItem[localArrayList.size()];
-        localArrayList.toArray((Object[])localObject2);
-        paramConfig = a(paramIQConfigProcessor, (QConfItem[])localObject2, paramInt2);
-        if (paramConfig != null)
+        try
         {
-          a(paramIQConfigProcessor, (QConfItem[])localObject2, paramLong, paramString);
-          if (!QLog.isColorLevel()) {
-            break label314;
-          }
-          QLog.d("QConfigManager", 2, "handleNewConfig, parse success, size=" + localObject2.length);
-          break;
+          localObject = new String((byte[])localObject, "UTF-8");
         }
-        paramConfig = a(paramIQConfigProcessor, paramLong, paramInt2);
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          label122:
+          boolean bool;
+          break label122;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QConfigManager", 2, "decompile faild.");
+        }
+        localObject = null;
+        break label157;
+        localObject = localContent.content.get().toStringUtf8();
+        label157:
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          localArrayList.add(new QConfItem(localContent.task_id.get(), (String)localObject));
+        }
+        i += 1;
+      }
+      Object localObject = new QConfItem[localArrayList.size()];
+      localArrayList.toArray((Object[])localObject);
+      paramConfig = a(paramIQConfigProcessor, (QConfItem[])localObject, paramInt);
+      if (paramConfig != null)
+      {
+        a(paramIQConfigProcessor, (QConfItem[])localObject, paramLong, paramString);
+        this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(paramIQConfigProcessor.type()), new QConfigManager.CacheItem(paramLong, paramInt, paramConfig));
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("handleNewConfig, parse success, size=");
+          paramString.append(localObject.length);
+          QLog.d("QConfigManager", 2, paramString.toString());
+        }
         break;
       }
     }
+    if (j == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    a(paramIQConfigProcessor, paramConfig, paramInt, paramLong, bool);
   }
   
   private void a(IQConfigProcessor paramIQConfigProcessor, Object paramObject, int paramInt, long paramLong, boolean paramBoolean)
   {
     if (paramObject != null)
     {
-      a(paramLong).edit().putInt(String.valueOf(paramIQConfigProcessor.type()), paramInt).putBoolean(paramIQConfigProcessor.type() + "_" + paramInt + "_defualt", paramBoolean).apply();
-      this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(paramIQConfigProcessor.type()), new QConfigManager.CacheItem(paramLong, paramInt, paramObject));
+      SharedPreferences.Editor localEditor = a(paramLong).edit().putInt(String.valueOf(paramIQConfigProcessor.type()), paramInt);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramIQConfigProcessor.type());
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("_defualt");
+      localEditor.putBoolean(localStringBuilder.toString(), paramBoolean).apply();
+      if (!paramIQConfigProcessor.isNeedReloadConf()) {
+        this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(paramIQConfigProcessor.type()), new QConfigManager.CacheItem(paramLong, paramInt, paramObject));
+      }
       paramIQConfigProcessor.onUpdate(paramObject);
     }
   }
   
   private void a(IQConfigProcessor paramIQConfigProcessor, QConfItem[] paramArrayOfQConfItem, long paramLong, String paramString)
   {
+    boolean bool = paramIQConfigProcessor.isNeedStoreLargeFile();
     int j = 0;
     int i = 0;
-    if (paramIQConfigProcessor.isNeedStoreLargeFile())
+    if (bool)
     {
       a(new File(paramString));
       j = paramArrayOfQConfItem.length;
       while (i < j)
       {
         paramIQConfigProcessor = paramArrayOfQConfItem[i];
-        localObject = a(paramString, String.valueOf(paramIQConfigProcessor.jdField_a_of_type_Int));
-        if (localObject != null) {
-          a(paramIQConfigProcessor.jdField_a_of_type_JavaLangString, (File)localObject);
+        localObject1 = a(paramString, String.valueOf(paramIQConfigProcessor.jdField_a_of_type_Int));
+        if (localObject1 != null) {
+          a(paramIQConfigProcessor.jdField_a_of_type_JavaLangString, (File)localObject1);
         }
         i += 1;
       }
@@ -1403,17 +1463,25 @@ public class QConfigManager
       return;
     }
     paramString = paramString.edit();
-    Object localObject = new HashSet();
+    Object localObject1 = new HashSet();
     int k = paramArrayOfQConfItem.length;
     i = j;
     while (i < k)
     {
-      QConfItem localQConfItem = paramArrayOfQConfItem[i];
-      ((Set)localObject).add(String.valueOf(localQConfItem.jdField_a_of_type_Int));
-      paramString.putString(paramIQConfigProcessor.type() + "_" + localQConfItem.jdField_a_of_type_Int, localQConfItem.jdField_a_of_type_JavaLangString);
+      localObject2 = paramArrayOfQConfItem[i];
+      ((Set)localObject1).add(String.valueOf(((QConfItem)localObject2).jdField_a_of_type_Int));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramIQConfigProcessor.type());
+      localStringBuilder.append("_");
+      localStringBuilder.append(((QConfItem)localObject2).jdField_a_of_type_Int);
+      paramString.putString(localStringBuilder.toString(), ((QConfItem)localObject2).jdField_a_of_type_JavaLangString);
       i += 1;
     }
-    a(paramLong).edit().putStringSet(paramIQConfigProcessor.type() + "_ids", (Set)localObject).apply();
+    paramArrayOfQConfItem = a(paramLong).edit();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramIQConfigProcessor.type());
+    ((StringBuilder)localObject2).append("_ids");
+    paramArrayOfQConfItem.putStringSet(((StringBuilder)localObject2).toString(), (Set)localObject1).apply();
     paramString.apply();
   }
   
@@ -1441,20 +1509,6 @@ public class QConfigManager
     }
   }
   
-  public static void a(Class paramClass, Object paramObject) {}
-  
-  private static void a(Exception paramException)
-  {
-    try
-    {
-      throw paramException;
-    }
-    catch (Exception paramException)
-    {
-      ThreadManager.getSubThreadHandler().post(new QConfigManager.2(paramException));
-    }
-  }
-  
   public static void a(String paramString)
   {
     Object localObject = paramString;
@@ -1467,52 +1521,58 @@ public class QConfigManager
       localObject = paramString;
       if (TextUtils.isEmpty(paramString))
       {
-        QLog.d("QConfigManager", 2, "getAllConfigs: uin=" + paramString);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getAllConfigs: uin=");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("QConfigManager", 2, ((StringBuilder)localObject).toString());
         localObject = paramString;
       }
     }
     QConfigServlet.jdField_a_of_type_JavaLangString = (String)localObject;
     paramString = new NewIntent(MobileQQ.sMobileQQ, QConfigServlet.class);
-    paramString.putExtra("k_cmd_type", a());
+    paramString.putParcelableArrayListExtra("k_cmd_type", QConfigHelper.a(a()));
     paramString.putExtra("key_uin", (String)localObject);
     paramString.putExtra("k_req_occasion", 0);
     paramString.putExtra("key_is_all_config", true);
     MobileQQ.sMobileQQ.waitAppRuntime(null).startServlet(paramString);
   }
   
-  public static void a(int[] paramArrayOfInt, String paramString)
+  public static void a(ArrayList<QConReqExtraInfo> paramArrayList)
   {
-    a(paramArrayOfInt, paramString, false);
+    a(paramArrayList, MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount());
   }
   
-  public static void a(int[] paramArrayOfInt, String paramString, boolean paramBoolean)
+  public static void a(ArrayList<QConReqExtraInfo> paramArrayList, String paramString)
   {
+    if (paramArrayList != null)
+    {
+      if (paramArrayList.isEmpty()) {
+        return;
+      }
+      a(paramArrayList, paramString, false);
+    }
+  }
+  
+  public static void a(ArrayList<QConReqExtraInfo> paramArrayList, String paramString, boolean paramBoolean)
+  {
+    boolean bool = paramBoolean;
     if (paramBoolean)
     {
-      int j = paramArrayOfInt.length;
-      int i = 0;
+      localObject = paramArrayList.iterator();
       for (;;)
       {
         bool = paramBoolean;
-        if (i >= j) {
+        if (!((Iterator)localObject).hasNext()) {
           break;
         }
-        int k = paramArrayOfInt[i];
-        bool = paramBoolean;
-        if (a().b(k))
+        QConReqExtraInfo localQConReqExtraInfo = (QConReqExtraInfo)((Iterator)localObject).next();
+        if ((a().a(localQConReqExtraInfo.jdField_a_of_type_Int)) && (a().a(localQConReqExtraInfo.jdField_a_of_type_Int).isAccountRelated()))
         {
-          bool = paramBoolean;
-          if (a().a(k).isAccountRelated())
-          {
-            QLog.d("QConfigManager", 2, "getConfig: processor.isAccountRelated, withoutLogin=true");
-            bool = false;
-          }
+          QLog.d("QConfigManager", 2, "getConfig: processor.isAccountRelated, withoutLogin=true");
+          paramBoolean = false;
         }
-        i += 1;
-        paramBoolean = bool;
       }
     }
-    boolean bool = paramBoolean;
     Object localObject = paramString;
     if (!bool)
     {
@@ -1533,7 +1593,7 @@ public class QConfigManager
     }
     QConfigServlet.jdField_a_of_type_JavaLangString = (String)localObject;
     paramString = new NewIntent(MobileQQ.sMobileQQ, QConfigServlet.class);
-    paramString.putExtra("k_cmd_type", paramArrayOfInt);
+    paramString.putParcelableArrayListExtra("k_cmd_type", paramArrayList);
     if (!TextUtils.isEmpty((CharSequence)localObject)) {
       paramString.putExtra("key_uin", (String)localObject);
     }
@@ -1543,10 +1603,20 @@ public class QConfigManager
     MobileQQ.sMobileQQ.waitAppRuntime(null).startServlet(paramString);
   }
   
+  public static void a(int[] paramArrayOfInt, String paramString)
+  {
+    a(paramArrayOfInt, paramString, false);
+  }
+  
+  public static void a(int[] paramArrayOfInt, String paramString, boolean paramBoolean)
+  {
+    a(QConfigHelper.a(paramArrayOfInt), paramString, paramBoolean);
+  }
+  
   protected static void a(int[] paramArrayOfInt, String paramString, byte[] paramArrayOfByte, int paramInt)
   {
     NewIntent localNewIntent = new NewIntent(MobileQQ.sMobileQQ, QConfigServlet.class);
-    localNewIntent.putExtra("k_cmd_type", paramArrayOfInt);
+    localNewIntent.putParcelableArrayListExtra("k_cmd_type", QConfigHelper.a(paramArrayOfInt));
     localNewIntent.putExtra("key_uin", paramString);
     localNewIntent.putExtra("key_is_page_req", true);
     if (paramArrayOfByte != null) {
@@ -1592,127 +1662,134 @@ public class QConfigManager
   private boolean a(String paramString, File paramFile)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 4
-    //   3: iconst_1
-    //   4: istore 5
-    //   6: aconst_null
-    //   7: astore 6
-    //   9: iload 5
-    //   11: istore_3
+    //   0: aload_2
+    //   1: invokevirtual 1614	java/io/File:exists	()Z
+    //   4: istore_3
+    //   5: iconst_0
+    //   6: istore 4
+    //   8: iload_3
+    //   9: ifne +59 -> 68
     //   12: aload_2
-    //   13: invokevirtual 1564	java/io/File:exists	()Z
-    //   16: ifne +11 -> 27
-    //   19: aload_2
-    //   20: invokevirtual 1901	java/io/File:createNewFile	()Z
-    //   23: pop
-    //   24: iload 5
-    //   26: istore_3
-    //   27: new 1903	java/io/FileOutputStream
-    //   30: dup
-    //   31: aload_2
-    //   32: iconst_0
-    //   33: invokespecial 1906	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   36: astore 7
-    //   38: aload 7
-    //   40: astore 6
-    //   42: aload 6
-    //   44: ifnull +17 -> 61
-    //   47: aload 6
-    //   49: aload_1
-    //   50: invokevirtual 1909	java/lang/String:getBytes	()[B
-    //   53: invokevirtual 1913	java/io/FileOutputStream:write	([B)V
-    //   56: aload 6
-    //   58: invokevirtual 1916	java/io/FileOutputStream:flush	()V
-    //   61: aload 6
-    //   63: ifnull +130 -> 193
-    //   66: aload 6
-    //   68: invokevirtual 1917	java/io/FileOutputStream:close	()V
-    //   71: iload_3
-    //   72: ireturn
-    //   73: astore 7
-    //   75: invokestatic 1328	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   78: ifeq +30 -> 108
-    //   81: ldc_w 1330
-    //   84: iconst_2
-    //   85: new 1307	java/lang/StringBuilder
-    //   88: dup
-    //   89: invokespecial 1308	java/lang/StringBuilder:<init>	()V
-    //   92: ldc_w 1919
-    //   95: invokevirtual 1312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: aload_2
-    //   99: invokevirtual 1531	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   102: invokevirtual 1320	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   105: invokestatic 1335	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   108: iconst_0
-    //   109: istore_3
-    //   110: goto -83 -> 27
-    //   113: astore 7
-    //   115: iconst_0
-    //   116: istore_3
-    //   117: goto -75 -> 42
-    //   120: astore_1
-    //   121: invokestatic 1328	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   124: ifeq +31 -> 155
-    //   127: ldc_w 1330
-    //   130: iconst_2
-    //   131: new 1307	java/lang/StringBuilder
-    //   134: dup
-    //   135: invokespecial 1308	java/lang/StringBuilder:<init>	()V
-    //   138: ldc_w 1921
-    //   141: invokevirtual 1312	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   144: aload_2
-    //   145: invokevirtual 1531	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   148: invokevirtual 1320	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   151: aload_1
-    //   152: invokestatic 1555	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   155: iload 4
-    //   157: istore_3
-    //   158: aload 6
-    //   160: ifnull -89 -> 71
-    //   163: aload 6
-    //   165: invokevirtual 1917	java/io/FileOutputStream:close	()V
-    //   168: iconst_0
-    //   169: ireturn
-    //   170: astore_1
-    //   171: iconst_0
-    //   172: ireturn
-    //   173: astore_1
-    //   174: aload 6
-    //   176: ifnull +8 -> 184
-    //   179: aload 6
-    //   181: invokevirtual 1917	java/io/FileOutputStream:close	()V
-    //   184: aload_1
-    //   185: athrow
-    //   186: astore_1
-    //   187: iconst_0
-    //   188: ireturn
-    //   189: astore_2
-    //   190: goto -6 -> 184
-    //   193: iload_3
-    //   194: ireturn
+    //   13: invokevirtual 1969	java/io/File:createNewFile	()Z
+    //   16: pop
+    //   17: goto +51 -> 68
+    //   20: invokestatic 1397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   23: ifeq +40 -> 63
+    //   26: new 1371	java/lang/StringBuilder
+    //   29: dup
+    //   30: invokespecial 1372	java/lang/StringBuilder:<init>	()V
+    //   33: astore 5
+    //   35: aload 5
+    //   37: ldc_w 1971
+    //   40: invokevirtual 1379	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   43: pop
+    //   44: aload 5
+    //   46: aload_2
+    //   47: invokevirtual 1593	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   50: pop
+    //   51: ldc_w 1401
+    //   54: iconst_2
+    //   55: aload 5
+    //   57: invokevirtual 1387	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   60: invokestatic 1404	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   63: iconst_0
+    //   64: istore_3
+    //   65: goto +5 -> 70
+    //   68: iconst_1
+    //   69: istore_3
+    //   70: new 1973	java/io/FileOutputStream
+    //   73: dup
+    //   74: aload_2
+    //   75: iconst_0
+    //   76: invokespecial 1976	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   79: astore 5
+    //   81: goto +8 -> 89
+    //   84: aconst_null
+    //   85: astore 5
+    //   87: iconst_0
+    //   88: istore_3
+    //   89: aload 5
+    //   91: ifnull +96 -> 187
+    //   94: aload 5
+    //   96: aload_1
+    //   97: invokevirtual 1979	java/lang/String:getBytes	()[B
+    //   100: invokevirtual 1983	java/io/FileOutputStream:write	([B)V
+    //   103: aload 5
+    //   105: invokevirtual 1986	java/io/FileOutputStream:flush	()V
+    //   108: goto +79 -> 187
+    //   111: astore_1
+    //   112: goto +63 -> 175
+    //   115: astore_1
+    //   116: invokestatic 1397	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   119: ifeq +41 -> 160
+    //   122: new 1371	java/lang/StringBuilder
+    //   125: dup
+    //   126: invokespecial 1372	java/lang/StringBuilder:<init>	()V
+    //   129: astore 6
+    //   131: aload 6
+    //   133: ldc_w 1988
+    //   136: invokevirtual 1379	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   139: pop
+    //   140: aload 6
+    //   142: aload_2
+    //   143: invokevirtual 1593	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   146: pop
+    //   147: ldc_w 1401
+    //   150: iconst_2
+    //   151: aload 6
+    //   153: invokevirtual 1387	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   156: aload_1
+    //   157: invokestatic 1663	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   160: iload 4
+    //   162: istore_3
+    //   163: aload 5
+    //   165: ifnull +32 -> 197
+    //   168: aload 5
+    //   170: invokevirtual 1989	java/io/FileOutputStream:close	()V
+    //   173: iconst_0
+    //   174: ireturn
+    //   175: aload 5
+    //   177: ifnull +8 -> 185
+    //   180: aload 5
+    //   182: invokevirtual 1989	java/io/FileOutputStream:close	()V
+    //   185: aload_1
+    //   186: athrow
+    //   187: aload 5
+    //   189: ifnull +8 -> 197
+    //   192: aload 5
+    //   194: invokevirtual 1989	java/io/FileOutputStream:close	()V
+    //   197: iload_3
+    //   198: ireturn
+    //   199: astore 5
+    //   201: goto -181 -> 20
+    //   204: astore 5
+    //   206: goto -122 -> 84
+    //   209: astore_1
+    //   210: iconst_0
+    //   211: ireturn
+    //   212: astore_2
+    //   213: goto -28 -> 185
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	195	0	this	QConfigManager
-    //   0	195	1	paramString	String
-    //   0	195	2	paramFile	File
-    //   11	183	3	bool1	boolean
-    //   1	155	4	bool2	boolean
-    //   4	21	5	bool3	boolean
-    //   7	173	6	localObject	Object
-    //   36	3	7	localFileOutputStream	java.io.FileOutputStream
-    //   73	1	7	localIOException	java.io.IOException
-    //   113	1	7	localFileNotFoundException	java.io.FileNotFoundException
+    //   0	216	0	this	QConfigManager
+    //   0	216	1	paramString	String
+    //   0	216	2	paramFile	File
+    //   4	194	3	bool1	boolean
+    //   6	155	4	bool2	boolean
+    //   33	160	5	localObject	Object
+    //   199	1	5	localIOException	java.io.IOException
+    //   204	1	5	localFileNotFoundException	java.io.FileNotFoundException
+    //   129	23	6	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   19	24	73	java/io/IOException
-    //   27	38	113	java/io/FileNotFoundException
-    //   47	61	120	java/io/IOException
-    //   163	168	170	java/io/IOException
-    //   47	61	173	finally
-    //   121	155	173	finally
-    //   66	71	186	java/io/IOException
-    //   179	184	189	java/io/IOException
+    //   94	108	111	finally
+    //   116	160	111	finally
+    //   94	108	115	java/io/IOException
+    //   12	17	199	java/io/IOException
+    //   70	81	204	java/io/FileNotFoundException
+    //   168	173	209	java/io/IOException
+    //   192	197	209	java/io/IOException
+    //   180	185	212	java/io/IOException
   }
   
   protected static int[] a()
@@ -1734,23 +1811,27 @@ public class QConfigManager
   private QConfItem[] a(int paramInt, long paramLong)
   {
     int i = a(paramInt, paramLong);
-    if (b(paramInt) == null) {}
-    File[] arrayOfFile;
-    do
-    {
+    if (b(paramInt) == null) {
       return null;
-      localObject = new File(a(paramInt, paramLong, i));
-      arrayOfFile = ((File)localObject).listFiles();
-    } while ((!((File)localObject).exists()) || (arrayOfFile == null) || (arrayOfFile.length == 0));
-    Object localObject = new QConfItem[arrayOfFile.length];
-    paramInt = 0;
-    while (paramInt < arrayOfFile.length)
-    {
-      File localFile = arrayOfFile[paramInt];
-      localObject[paramInt] = new QConfItem(a(localFile), a(localFile));
-      paramInt += 1;
     }
-    return localObject;
+    Object localObject = new File(a(paramInt, paramLong, i));
+    File[] arrayOfFile = ((File)localObject).listFiles();
+    if ((((File)localObject).exists()) && (arrayOfFile != null))
+    {
+      if (arrayOfFile.length == 0) {
+        return null;
+      }
+      localObject = new QConfItem[arrayOfFile.length];
+      paramInt = 0;
+      while (paramInt < arrayOfFile.length)
+      {
+        File localFile = arrayOfFile[paramInt];
+        localObject[paramInt] = new QConfItem(a(localFile), a(localFile));
+        paramInt += 1;
+      }
+      return localObject;
+    }
+    return null;
   }
   
   private SharedPreferences b(long paramLong)
@@ -1763,7 +1844,11 @@ public class QConfigManager
         localObject1 = localSharedPreferences2;
         if (localSharedPreferences2 == null)
         {
-          localObject1 = "conf_" + paramLong + "_upgrade_pref";
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("conf_");
+          ((StringBuilder)localObject1).append(paramLong);
+          ((StringBuilder)localObject1).append("_upgrade_pref");
+          localObject1 = ((StringBuilder)localObject1).toString();
           localSharedPreferences2 = MobileQQ.sMobileQQ.getSharedPreferences((String)localObject1, 4);
           localObject1 = localSharedPreferences2;
           if (localSharedPreferences2 != null)
@@ -1780,86 +1865,97 @@ public class QConfigManager
   
   private IQConfigProcessor b(int paramInt)
   {
-    IQConfigProcessor localIQConfigProcessor = a(paramInt);
-    if (localIQConfigProcessor == null) {}
-    return localIQConfigProcessor;
+    return a(paramInt);
   }
   
-  private void b(IQConfigProcessor paramIQConfigProcessor, ConfigurationService.Config paramConfig, long paramLong, String paramString, int paramInt1, int paramInt2)
+  private void b(IQConfigProcessor paramIQConfigProcessor, ConfigurationService.Config paramConfig, long paramLong, String paramString, int paramInt)
   {
-    if (paramConfig.content_list.isEmpty()) {
-      paramString = paramIQConfigProcessor.migrateOldOrDefaultContent(1);
-    }
-    for (;;)
+    if (paramConfig.content_list.isEmpty()) {}
+    for (paramString = paramIQConfigProcessor.migrateOldOrDefaultContent(1);; paramString = a(paramIQConfigProcessor, paramLong, paramInt))
     {
-      a(paramIQConfigProcessor, paramString, paramInt2, paramLong, paramConfig.content_list.isEmpty());
-      return;
-      int i = paramConfig.content_list.size();
-      QConfItem[] arrayOfQConfItem = new QConfItem[i];
-      paramInt1 = 0;
-      while (paramInt1 < i)
+      break;
+      int j = paramConfig.content_list.size();
+      QConfItem[] arrayOfQConfItem = new QConfItem[j];
+      int i = 0;
+      while (i < j)
       {
-        arrayOfQConfItem[paramInt1] = new QConfItem(paramInt1, (String)paramConfig.content_list.get(paramInt1));
-        paramInt1 += 1;
+        arrayOfQConfItem[i] = new QConfItem(i, (String)paramConfig.content_list.get(i));
+        i += 1;
       }
-      Object localObject = a(paramIQConfigProcessor, arrayOfQConfItem, paramInt2);
+      Object localObject = a(paramIQConfigProcessor, arrayOfQConfItem, paramInt);
       if (localObject != null)
       {
         a(paramIQConfigProcessor, arrayOfQConfItem, paramLong, paramString);
+        this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(paramIQConfigProcessor.type()), new QConfigManager.CacheItem(paramLong, paramInt, localObject));
         if (QLog.isColorLevel())
         {
-          QLog.d("QConfigManager", 2, "handleOldConfig, parse success, size=" + i);
-          paramString = localObject;
+          paramString = new StringBuilder();
+          paramString.append("handleOldConfig, parse success, size=");
+          paramString.append(j);
+          QLog.d("QConfigManager", 2, paramString.toString());
         }
+        paramString = localObject;
+        break;
       }
-      else
-      {
-        paramString = a(paramIQConfigProcessor, paramLong, paramInt2);
-        continue;
-      }
-      paramString = localObject;
     }
+    a(paramIQConfigProcessor, paramString, paramInt, paramLong, paramConfig.content_list.isEmpty());
   }
   
   private QConfItem[] b(int paramInt, long paramLong)
   {
     if (a(paramInt) == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfigManager", 2, "getConfigFromSp, type is not support, type=" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getConfigFromSp, type is not support, type=");
+        ((StringBuilder)localObject1).append(paramInt);
+        QLog.d("QConfigManager", 2, ((StringBuilder)localObject1).toString());
       }
       return null;
     }
-    Object localObject1 = a(paramLong);
-    SharedPreferences localSharedPreferences = c(paramLong);
-    if (localObject1 == null)
+    Object localObject2 = a(paramLong);
+    Object localObject1 = c(paramLong);
+    if (localObject2 == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QConfigManager", 2, "getVersionSp return null!");
       }
       return null;
     }
-    if (localSharedPreferences == null)
+    if (localObject1 == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("QConfigManager", 2, "getContentSp return null!");
       }
       return null;
     }
-    Object localObject2 = ((SharedPreferences)localObject1).getStringSet(paramInt + "_ids", null);
-    if ((localObject2 == null) || (((Set)localObject2).isEmpty())) {
-      return null;
-    }
-    localObject1 = new QConfItem[((Set)localObject2).size()];
-    localObject2 = ((Set)localObject2).iterator();
-    int i = 0;
-    while (((Iterator)localObject2).hasNext())
+    Object localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(paramInt);
+    ((StringBuilder)localObject3).append("_ids");
+    localObject3 = ((SharedPreferences)localObject2).getStringSet(((StringBuilder)localObject3).toString(), null);
+    if (localObject3 != null)
     {
-      String str = (String)((Iterator)localObject2).next();
-      localObject1[i] = new QConfItem(Integer.parseInt(str), localSharedPreferences.getString(paramInt + "_" + str, null));
-      i += 1;
+      if (((Set)localObject3).isEmpty()) {
+        return null;
+      }
+      localObject2 = new QConfItem[((Set)localObject3).size()];
+      int i = 0;
+      localObject3 = ((Set)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        String str = (String)((Iterator)localObject3).next();
+        int j = Integer.parseInt(str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append("_");
+        localStringBuilder.append(str);
+        localObject2[i] = new QConfItem(j, ((SharedPreferences)localObject1).getString(localStringBuilder.toString(), null));
+        i += 1;
+      }
+      return localObject2;
     }
-    return localObject1;
+    return null;
   }
   
   private SharedPreferences c(long paramLong)
@@ -1872,7 +1968,11 @@ public class QConfigManager
         localObject1 = localSharedPreferences2;
         if (localSharedPreferences2 == null)
         {
-          localObject1 = "conf_" + paramLong + "_content_sharepref";
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("conf_");
+          ((StringBuilder)localObject1).append(paramLong);
+          ((StringBuilder)localObject1).append("_content_sharepref");
+          localObject1 = ((StringBuilder)localObject1).toString();
           localSharedPreferences2 = MobileQQ.sMobileQQ.getSharedPreferences((String)localObject1, 4);
           localObject1 = localSharedPreferences2;
           if (localSharedPreferences2 != null)
@@ -1889,15 +1989,19 @@ public class QConfigManager
   
   public int a(int paramInt, long paramLong)
   {
-    IQConfigProcessor localIQConfigProcessor = a(paramInt);
-    if (localIQConfigProcessor == null)
+    Object localObject = a(paramInt);
+    if (localObject == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfigManager", 2, "getConfVersion, process is null, type=" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getConfVersion, process is null, type=");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("QConfigManager", 2, ((StringBuilder)localObject).toString());
       }
       return -1;
     }
-    return a(localIQConfigProcessor, paramInt, paramLong);
+    return a((IQConfigProcessor)localObject, paramInt, paramLong);
   }
   
   public int a(int paramInt, String paramString)
@@ -1905,8 +2009,12 @@ public class QConfigManager
     IQConfigProcessor localIQConfigProcessor = a(paramInt);
     if (localIQConfigProcessor == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfigManager", 2, "getConfVersion, process is null, type=" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("getConfVersion, process is null, type=");
+        paramString.append(paramInt);
+        QLog.d("QConfigManager", 2, paramString.toString());
       }
       return -1;
     }
@@ -1915,204 +2023,278 @@ public class QConfigManager
   
   public IQConfigProcessor a(int paramInt)
   {
-    IQConfigProcessor localIQConfigProcessor2 = (IQConfigProcessor)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    IQConfigProcessor localIQConfigProcessor1 = localIQConfigProcessor2;
-    if (localIQConfigProcessor2 == null) {}
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      localIQConfigProcessor2 = (IQConfigProcessor)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-      localIQConfigProcessor1 = localIQConfigProcessor2;
-      if (localIQConfigProcessor2 == null)
+    IQConfigProcessor localIQConfigProcessor3 = (IQConfigProcessor)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    IQConfigProcessor localIQConfigProcessor1 = localIQConfigProcessor3;
+    if (localIQConfigProcessor3 == null) {
+      synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        localIQConfigProcessor2 = a(String.valueOf(paramInt));
-        localIQConfigProcessor1 = localIQConfigProcessor2;
-        if (localIQConfigProcessor2 != null)
+        localIQConfigProcessor3 = (IQConfigProcessor)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+        localIQConfigProcessor1 = localIQConfigProcessor3;
+        if (localIQConfigProcessor3 == null)
         {
-          this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localIQConfigProcessor2);
-          localIQConfigProcessor1 = localIQConfigProcessor2;
+          localIQConfigProcessor3 = a(String.valueOf(paramInt));
+          localIQConfigProcessor1 = localIQConfigProcessor3;
+          if (localIQConfigProcessor3 != null)
+          {
+            this.jdField_b_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), localIQConfigProcessor3);
+            localIQConfigProcessor1 = localIQConfigProcessor3;
+          }
         }
       }
-      if ((localIQConfigProcessor1 == null) && (QLog.isColorLevel())) {
-        QLog.d("QConfigManager", 2, "getConfProcess, processor=null");
-      }
-      return localIQConfigProcessor1;
     }
+    if ((localIQConfigProcessor2 == null) && (QLog.isColorLevel())) {
+      QLog.d("QConfigManager", 2, "getConfProcess, processor=null");
+    }
+    return localIQConfigProcessor2;
   }
   
   public <T> T a(int paramInt)
   {
     IQConfigProcessor localIQConfigProcessor = b(paramInt);
-    if (localIQConfigProcessor == null) {
+    if (localIQConfigProcessor == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("QConfigManager", 2, new Object[] { "loadConObj: processor=null, type=", Integer.valueOf(paramInt) });
+      }
       return null;
     }
-    Object localObject1;
+    long l;
     if (localIQConfigProcessor.isAccountRelated())
     {
       localObject1 = MobileQQ.sMobileQQ.getFirstSimpleAccount();
-      if (localObject1 == null) {}
+      if (localObject1 != null)
+      {
+        l = a(((SimpleAccount)localObject1).getUin(), localIQConfigProcessor.isAccountRelated());
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("QConfigManager", 2, "Can not get an runtime.May be in a process of none appRuntime.");
+        }
+        return a(localIQConfigProcessor, 1);
+      }
     }
-    int i;
-    for (long l = a(((SimpleAccount)localObject1).getUin(), localIQConfigProcessor.isAccountRelated());; l = 0L)
+    else
     {
-      localObject1 = a(l);
-      i = ((SharedPreferences)localObject1).getInt(String.valueOf(paramInt), -1);
-      if (i != -1) {
-        break;
-      }
-      return a(localIQConfigProcessor, 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfigManager", 2, "Can not get an runtime.May be in a process of none appRuntime.");
-      }
-      return a(localIQConfigProcessor, 1);
+      l = 0L;
     }
-    ??? = (QConfigManager.CacheItem)this.jdField_c_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
-    if ((??? != null) && (((QConfigManager.CacheItem)???).jdField_a_of_type_Int == i) && (((QConfigManager.CacheItem)???).jdField_a_of_type_Long == l) && (((QConfigManager.CacheItem)???).jdField_a_of_type_JavaLangObject != null)) {
-      return ((QConfigManager.CacheItem)???).jdField_a_of_type_JavaLangObject;
-    }
-    if (((SharedPreferences)localObject1).getBoolean(localIQConfigProcessor.type() + "_" + i + "_defualt", false)) {
+    Object localObject1 = a(l);
+    int i = ((SharedPreferences)localObject1).getInt(String.valueOf(paramInt), -1);
+    if (i == -1) {
       return a(localIQConfigProcessor, 0);
     }
-    Object localObject3;
+    Object localObject3 = (QConfigManager.CacheItem)this.jdField_c_of_type_JavaUtilMap.get(Integer.valueOf(paramInt));
+    if ((localObject3 != null) && (((QConfigManager.CacheItem)localObject3).jdField_a_of_type_Int == i) && (((QConfigManager.CacheItem)localObject3).jdField_a_of_type_Long == l) && (((QConfigManager.CacheItem)localObject3).jdField_a_of_type_JavaLangObject != null)) {
+      return ((QConfigManager.CacheItem)localObject3).jdField_a_of_type_JavaLangObject;
+    }
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(localIQConfigProcessor.type());
+    ((StringBuilder)localObject3).append("_");
+    ((StringBuilder)localObject3).append(i);
+    ((StringBuilder)localObject3).append("_defualt");
+    if (((SharedPreferences)localObject1).getBoolean(((StringBuilder)localObject3).toString(), false)) {
+      return a(localIQConfigProcessor, 0);
+    }
+    localObject1 = jdField_a_of_type_ArrayOfJavaLangObject;
     for (;;)
     {
-      synchronized (jdField_a_of_type_ArrayOfJavaLangObject[(paramInt % jdField_a_of_type_ArrayOfJavaLangObject.length)])
+      synchronized (localObject1[(paramInt % localObject1.length)])
       {
-        if (localIQConfigProcessor.isNeedStoreLargeFile())
-        {
+        if (localIQConfigProcessor.isNeedStoreLargeFile()) {
           localObject1 = a(paramInt, l);
-          if (localObject1 != null) {
-            break;
+        } else {
+          localObject1 = b(paramInt, l);
+        }
+        if (localObject1 == null)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("QConfigManager", 2, new Object[] { "loadConObj: type:", Integer.valueOf(paramInt), " --> get data from file or sp return null" });
           }
-          localObject1 = a(localIQConfigProcessor.clazz());
+          localObject1 = QConfigHelper.a(localIQConfigProcessor.clazz());
+          return localObject1;
+        }
+        try
+        {
+          localObject3 = localIQConfigProcessor.onParsed((QConfItem[])localObject1);
+          if (localObject3 == null)
+          {
+            if (QLog.isColorLevel())
+            {
+              if ((localObject1.length != 0) && (localObject1[0] != null))
+              {
+                localObject3 = localObject1[0].jdField_a_of_type_JavaLangString;
+                QLog.d("QConfigManager", 2, new Object[] { "loadConObj: onParse return null, type=", Integer.valueOf(paramInt), " confs[0]:", localObject3 });
+              }
+            }
+            else
+            {
+              localObject3 = QConfigHelper.a(localIQConfigProcessor.clazz());
+              return localObject3;
+            }
+          }
+          else
+          {
+            this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new QConfigManager.CacheItem(l, i, localObject3));
+            return localObject3;
+          }
+        }
+        catch (Exception localException)
+        {
+          QConfigWatchDog.a().a(localIQConfigProcessor, (QConfItem[])localObject1, i, localException);
+          localObject1 = QConfigHelper.a(localIQConfigProcessor.clazz());
           return localObject1;
         }
       }
-      localObject3 = b(paramInt, l);
+      String str = "null";
     }
-    try
-    {
-      Object localObject5 = localIQConfigProcessor.onParsed((QConfItem[])localObject3);
-      this.jdField_c_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), new QConfigManager.CacheItem(l, i, localObject5));
-      return localObject5;
-    }
-    catch (Exception localException)
-    {
-      QConfigWatchDog.a().a(localIQConfigProcessor, (QConfItem[])localObject3, i, localException);
-      localObject3 = a(localIQConfigProcessor.clazz());
-    }
-    return localObject3;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    Object localObject = a(paramInt1);
-    long l2 = 0L;
-    long l1 = l2;
-    if (localObject != null)
+    Object localObject1 = a(paramInt1);
+    Object localObject2;
+    if ((localObject1 != null) && (((IQConfigProcessor)localObject1).isAccountRelated()))
     {
-      l1 = l2;
-      if (((IQConfigProcessor)localObject).isAccountRelated())
+      localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if (localObject2 != null)
       {
-        AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-        l1 = l2;
-        if (localAppRuntime != null) {
-          l1 = a(localAppRuntime.getAccount(), ((IQConfigProcessor)localObject).isAccountRelated());
-        }
+        l = a(((AppRuntime)localObject2).getAccount(), ((IQConfigProcessor)localObject1).isAccountRelated());
+        break label56;
       }
     }
-    localObject = a(l1);
-    int i = ((SharedPreferences)localObject).getInt(String.valueOf(paramInt1), -1);
+    long l = 0L;
+    label56:
+    localObject1 = a(l);
+    int i = ((SharedPreferences)localObject1).getInt(String.valueOf(paramInt1), -1);
     if ((i != -1) && (i != paramInt2))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfigManager", 2, "setConfVersion t=" + paramInt1 + " v=" + paramInt2);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("setConfVersion t=");
+        ((StringBuilder)localObject2).append(paramInt1);
+        ((StringBuilder)localObject2).append(" v=");
+        ((StringBuilder)localObject2).append(paramInt2);
+        QLog.d("QConfigManager", 2, ((StringBuilder)localObject2).toString());
       }
-      ((SharedPreferences)localObject).edit().putInt(String.valueOf(paramInt1), paramInt2).apply();
+      ((SharedPreferences)localObject1).edit().putInt(String.valueOf(paramInt1), paramInt2).apply();
     }
   }
   
-  public void a(int paramInt1, int paramInt2, ConfigurationService.Config paramConfig, String arg4)
+  public void a(int paramInt1, int paramInt2, ConfigurationService.Config paramConfig, String paramString)
   {
-    int i = b(paramInt1, Long.parseLong(???));
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfigManager", 2, "[OnReceive] t=" + paramInt1 + " old=" + i + ", new=" + paramInt2);
-    }
-    if (i == paramInt2) {}
-    IQConfigProcessor localIQConfigProcessor;
-    do
+    int i = b(paramInt1, Long.parseLong(paramString));
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        if (!QConfigJourney.a().a(paramInt1, paramInt2)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("QConfigManager", 2, "conf has been deleted by safemode, type=" + paramInt1 + ", version=" + paramInt2);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[OnReceive] t=");
+      ((StringBuilder)localObject1).append(paramInt1);
+      ((StringBuilder)localObject1).append(" old=");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(", new=");
+      ((StringBuilder)localObject1).append(paramInt2);
+      QLog.d("QConfigManager", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (i == paramInt2) {
       return;
-      localIQConfigProcessor = b(paramInt1);
-      if (localIQConfigProcessor != null) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("QConfigManager", 2, "Has not define an process," + paramInt1);
-    return;
-    if (QLog.isColorLevel()) {
-      QLog.d("QConfigManager", 2, "save config, ov=" + i + " to nv=" + paramInt2 + ", type=" + paramInt1);
     }
-    long l = a(???, localIQConfigProcessor.isAccountRelated());
-    String str = a(paramInt1, l, paramInt2);
-    synchronized (jdField_a_of_type_ArrayOfJavaLangObject[(paramInt1 % jdField_a_of_type_ArrayOfJavaLangObject.length)])
+    if (QConfigJourney.a().a(paramInt1, paramInt2))
     {
-      if ((localIQConfigProcessor.isNeedStoreLargeFile()) && (!a(str)))
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QConfigManager", 2, "create conf dir failed, dir=" + str);
+        paramConfig = new StringBuilder();
+        paramConfig.append("conf has been deleted by safemode, type=");
+        paramConfig.append(paramInt1);
+        paramConfig.append(", version=");
+        paramConfig.append(paramInt2);
+        QLog.d("QConfigManager", 2, paramConfig.toString());
+      }
+      return;
+    }
+    Object localObject1 = b(paramInt1);
+    if (localObject1 == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramConfig = new StringBuilder();
+        paramConfig.append("Has not define an process,");
+        paramConfig.append(paramInt1);
+        QLog.d("QConfigManager", 2, paramConfig.toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("save config, ov=");
+      ((StringBuilder)???).append(i);
+      ((StringBuilder)???).append(" to nv=");
+      ((StringBuilder)???).append(paramInt2);
+      ((StringBuilder)???).append(", type=");
+      ((StringBuilder)???).append(paramInt1);
+      QLog.d("QConfigManager", 2, ((StringBuilder)???).toString());
+    }
+    long l = a(paramString, ((IQConfigProcessor)localObject1).isAccountRelated());
+    paramString = a(paramInt1, l, paramInt2);
+    ??? = jdField_a_of_type_ArrayOfJavaLangObject;
+    synchronized (???[(paramInt1 % ???.length)])
+    {
+      if ((((IQConfigProcessor)localObject1).isNeedStoreLargeFile()) && (!a(paramString)))
+      {
+        if (QLog.isColorLevel())
+        {
+          paramConfig = new StringBuilder();
+          paramConfig.append("create conf dir failed, dir=");
+          paramConfig.append(paramString);
+          QLog.d("QConfigManager", 2, paramConfig.toString());
         }
         return;
       }
-    }
-    if (localIQConfigProcessor.isNeedCompressed()) {
-      a(localIQConfigProcessor, paramConfig, l, str, i, paramInt2);
-    }
-    for (;;)
-    {
-      QConfigJourney.a().a(paramInt1, l, localIQConfigProcessor.isNeedStoreLargeFile());
+      if (((IQConfigProcessor)localObject1).isNeedCompressed()) {
+        a((IQConfigProcessor)localObject1, paramConfig, l, paramString, paramInt2);
+      } else {
+        b((IQConfigProcessor)localObject1, paramConfig, l, paramString, paramInt2);
+      }
+      QConfigJourney.a().a(paramInt1, l, ((IQConfigProcessor)localObject1).isNeedStoreLargeFile());
       return;
-      b(localIQConfigProcessor, paramConfig, l, str, i, paramInt2);
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    IQConfigProcessor localIQConfigProcessor = b(paramInt);
-    if (localIQConfigProcessor == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QConfigManager", 2, "noReceive method has not define an process," + paramInt);
+    Object localObject = b(paramInt);
+    if (localObject == null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("noReceive method has not define an process,");
+        paramString.append(paramInt);
+        QLog.d("QConfigManager", 2, paramString.toString());
+      }
+      return;
+    }
+    try
+    {
+      ((IQConfigProcessor)localObject).onReqNoReceive();
+      b(paramInt, Long.parseLong(paramString));
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Handle noReceive operation exception, type=");
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.d("QConfigManager", 2, ((StringBuilder)localObject).toString(), paramString);
       }
     }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return;
-      try
-      {
-        localIQConfigProcessor.onReqNoReceive();
-        b(paramInt, Long.parseLong(paramString));
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("QConfigManager", 2, "noReceive config, type=" + paramInt);
-        return;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("QConfigManager", 2, "Handle noReceive operation exception, type=" + paramInt, paramString);
-          }
-        }
-      }
+      paramString = new StringBuilder();
+      paramString.append("noReceive config, type=");
+      paramString.append(paramInt);
+      QLog.d("QConfigManager", 2, paramString.toString());
     }
   }
   
@@ -2123,56 +2305,55 @@ public class QConfigManager
     while (i < j)
     {
       int k = paramArrayOfInt[i];
-      if (!b(k)) {
-        a(new IllegalStateException("QConfigManager has not support the config yet, type=" + k));
+      if (!a(k))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("QConfigManager has not support the config yet, type=");
+        ((StringBuilder)localObject).append(k);
+        QConfigHelper.a(new IllegalStateException(((StringBuilder)localObject).toString()));
       }
       i += 1;
     }
-    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    String str = localAppRuntime.getAccount();
+    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    String str = ((AppRuntime)localObject).getAccount();
     QConfigServlet.jdField_a_of_type_JavaLangString = str;
     NewIntent localNewIntent = new NewIntent(MobileQQ.sMobileQQ, QConfigServlet.class);
-    localNewIntent.putExtra("k_cmd_type", paramArrayOfInt);
+    localNewIntent.putParcelableArrayListExtra("k_cmd_type", QConfigHelper.a(paramArrayOfInt));
     localNewIntent.putExtra("key_uin", str);
-    localAppRuntime.startServlet(localNewIntent);
+    ((AppRuntime)localObject).startServlet(localNewIntent);
   }
   
   public boolean a(int paramInt)
   {
-    IQConfigProcessor localIQConfigProcessor = a(paramInt);
-    if (localIQConfigProcessor == null) {
-      return false;
-    }
-    return localIQConfigProcessor.isNeedCompressed();
+    return jdField_a_of_type_JavaUtilHashMap.containsKey(String.valueOf(paramInt));
   }
   
   public boolean a(String paramString, byte[] paramArrayOfByte)
   {
-    return FileUtils.a(paramArrayOfByte, a(paramString));
+    return FileUtils.writeFile(paramArrayOfByte, a(paramString));
   }
   
   public boolean a(AppRuntime paramAppRuntime, int paramInt)
   {
     IQConfigProcessor localIQConfigProcessor = a(paramInt);
-    if (localIQConfigProcessor == null) {}
-    do
+    if (localIQConfigProcessor == null) {
+      return false;
+    }
+    if (localIQConfigProcessor.isNeedUpgradeReset())
     {
-      do
-      {
-        do
-        {
-          return false;
-        } while (!localIQConfigProcessor.isNeedUpgradeReset());
-        paramAppRuntime = b(paramAppRuntime.getLongAccountUin());
-      } while (paramAppRuntime == null);
+      paramAppRuntime = b(paramAppRuntime.getLongAccountUin());
+      if (paramAppRuntime == null) {
+        return false;
+      }
       paramAppRuntime = paramAppRuntime.getString(String.valueOf(paramInt), "");
-    } while (TextUtils.equals(AppSetting.g(), paramAppRuntime));
-    return true;
+      return TextUtils.equals(AppSetting.g(), paramAppRuntime) ^ true;
+    }
+    return false;
   }
   
   public byte[] a(String paramString)
   {
-    return FileUtils.a(a(paramString));
+    return FileUtils.readFile(a(paramString));
   }
   
   public int b(int paramInt, long paramLong)
@@ -2188,21 +2369,10 @@ public class QConfigManager
     }
     return i;
   }
-  
-  public boolean b(int paramInt)
-  {
-    Iterator localIterator = jdField_a_of_type_JavaUtilHashMap.keySet().iterator();
-    while (localIterator.hasNext()) {
-      if (paramInt == Integer.parseInt((String)localIterator.next())) {
-        return true;
-      }
-    }
-    return false;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.QConfigManager
  * JD-Core Version:    0.7.0.1
  */

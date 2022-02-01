@@ -23,34 +23,34 @@ public class TopGestureLayout$TopGestureDetector
   
   public boolean onFling(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
   {
-    if ((this.this$0.isGestureIdle()) || (this.this$0.isGestureEnd())) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
-    if (this.this$0.hasGestureFlag(1)) {
-      if ((f1 < 0.0F) && (f2 < 0.5F) && (this.this$0.mOnFlingGesture != null))
-      {
-        this.this$0.setGestureFlag(-1);
-        if (!this.this$0.isInTwoFingerMode()) {
-          this.this$0.mOnFlingGesture.flingLToR();
-        }
-      }
-    }
-    for (;;)
+    if ((!this.this$0.isGestureIdle()) && (!this.this$0.isGestureEnd()))
     {
-      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      if ((this.this$0.hasGestureFlag(2)) && (f1 > 0.0F) && (f2 < 0.5F) && (this.this$0.mOnFlingGesture != null))
+      if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null))
       {
-        this.this$0.setGestureFlag(-1);
-        if (!this.this$0.isInTwoFingerMode()) {
-          this.this$0.mOnFlingGesture.flingRToL();
+        float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+        float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+        if (this.this$0.hasGestureFlag(1))
+        {
+          if ((f1 < 0.0F) && (f2 < 0.5F) && (this.this$0.mOnFlingGesture != null))
+          {
+            this.this$0.setGestureFlag(-1);
+            if (!this.this$0.isInTwoFingerMode()) {
+              this.this$0.mOnFlingGesture.flingLToR();
+            }
+          }
         }
+        else if ((this.this$0.hasGestureFlag(2)) && (f1 > 0.0F) && (f2 < 0.5F) && (this.this$0.mOnFlingGesture != null))
+        {
+          this.this$0.setGestureFlag(-1);
+          if (!this.this$0.isInTwoFingerMode()) {
+            this.this$0.mOnFlingGesture.flingRToL();
+          }
+        }
+        return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
       }
+      return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
+    return super.onFling(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
   
   public boolean onScroll(MotionEvent paramMotionEvent1, MotionEvent paramMotionEvent2, float paramFloat1, float paramFloat2)
@@ -58,46 +58,40 @@ public class TopGestureLayout$TopGestureDetector
     if (this.this$0.isGestureEnd()) {
       return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
     }
-    if ((paramMotionEvent1 == null) || (paramMotionEvent2 == null)) {
-      return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-    }
-    float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
-    float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
-    if (this.this$0.isGestureIdle())
+    if ((paramMotionEvent1 != null) && (paramMotionEvent2 != null))
     {
-      if (Math.abs(f1) > this.mTouchSlot) {
-        if ((paramFloat1 < 0.0F) && (f2 < 0.5F))
-        {
-          if (TopGestureLayout.access$000(this.this$0))
+      float f1 = paramMotionEvent1.getX() - paramMotionEvent2.getX();
+      float f2 = Math.abs((paramMotionEvent1.getY() - paramMotionEvent2.getY()) / f1);
+      if (this.this$0.isGestureIdle())
+      {
+        if (Math.abs(f1) > this.mTouchSlot) {
+          if ((paramFloat1 < 0.0F) && (f2 < 0.5F))
           {
-            this.this$0.setGestureFlag(1);
+            if (TopGestureLayout.access$000(this.this$0))
+            {
+              this.this$0.setGestureFlag(1);
+              return TopGestureLayout.access$100(this.this$0);
+            }
+          }
+          else if ((paramFloat1 > 0.0F) && (f2 < 0.5F) && (TopGestureLayout.access$200(this.this$0)))
+          {
+            this.this$0.setGestureFlag(2);
             return TopGestureLayout.access$100(this.this$0);
           }
         }
-        else if ((paramFloat1 > 0.0F) && (f2 < 0.5F) && (TopGestureLayout.access$200(this.this$0)))
-        {
-          this.this$0.setGestureFlag(2);
-          return TopGestureLayout.access$100(this.this$0);
+      }
+      else if (this.this$0.hasGestureFlag(1))
+      {
+        if ((paramFloat1 > 0.0F) || (f2 >= 0.5F)) {
+          this.this$0.setGestureFlag(-1);
         }
       }
-    }
-    else
-    {
-      if (!this.this$0.hasGestureFlag(1)) {
-        break label212;
-      }
-      if ((paramFloat1 > 0.0F) || (f2 >= 0.5F)) {
+      else if ((this.this$0.hasGestureFlag(2)) && ((paramFloat1 < 0.0F) || (f2 >= 0.5F))) {
         this.this$0.setGestureFlag(-1);
       }
-    }
-    for (;;)
-    {
       return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
-      label212:
-      if ((this.this$0.hasGestureFlag(2)) && ((paramFloat1 < 0.0F) || (f2 >= 0.5F))) {
-        this.this$0.setGestureFlag(-1);
-      }
     }
+    return super.onScroll(paramMotionEvent1, paramMotionEvent2, paramFloat1, paramFloat2);
   }
   
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
@@ -108,7 +102,7 @@ public class TopGestureLayout$TopGestureDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.TopGestureLayout.TopGestureDetector
  * JD-Core Version:    0.7.0.1
  */

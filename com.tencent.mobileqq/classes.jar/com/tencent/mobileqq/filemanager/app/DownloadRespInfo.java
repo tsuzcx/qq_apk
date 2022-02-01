@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.filemanager.app;
 
 import com.tencent.mobileqq.filemanager.discoperation.FileHttpUtils;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBInt32Field;
@@ -48,10 +48,9 @@ public class DownloadRespInfo
   public static void a(DownloadRespInfo paramDownloadRespInfo, cmd0x346.ApplyDownloadRsp paramApplyDownloadRsp, boolean paramBoolean, String paramString)
   {
     if (paramDownloadRespInfo == null) {
-      break label4;
+      return;
     }
-    label4:
-    while (paramApplyDownloadRsp == null) {
+    if (paramApplyDownloadRsp == null) {
       return;
     }
     if (paramApplyDownloadRsp.int32_ret_code.has()) {
@@ -60,34 +59,39 @@ public class DownloadRespInfo
     if (paramApplyDownloadRsp.str_ret_msg.has()) {
       paramDownloadRespInfo.jdField_a_of_type_JavaLangString = paramApplyDownloadRsp.str_ret_msg.get();
     }
-    cmd0x346.DownloadInfo localDownloadInfo;
     if (paramApplyDownloadRsp.msg_download_info.has())
     {
-      localDownloadInfo = (cmd0x346.DownloadInfo)paramApplyDownloadRsp.msg_download_info.get();
+      cmd0x346.DownloadInfo localDownloadInfo = (cmd0x346.DownloadInfo)paramApplyDownloadRsp.msg_download_info.get();
       if (localDownloadInfo.bytes_download_key.has()) {
         paramDownloadRespInfo.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = localDownloadInfo.bytes_download_key.get();
       }
-      if (!localDownloadInfo.str_download_ip.has()) {
-        break label534;
+      if (localDownloadInfo.str_download_ip.has()) {
+        paramDownloadRespInfo.jdField_b_of_type_JavaLangString = localDownloadInfo.str_download_ip.get();
+      } else if (localDownloadInfo.str_download_domain.has()) {
+        paramDownloadRespInfo.jdField_b_of_type_JavaLangString = localDownloadInfo.str_download_domain.get();
+      } else {
+        QLog.i("DownloadRespInfo", 1, "handleDownloadResp: has neither ip nor domain");
       }
-      paramDownloadRespInfo.jdField_b_of_type_JavaLangString = localDownloadInfo.str_download_ip.get();
-      label120:
       if (localDownloadInfo.uint32_port.has()) {
         paramDownloadRespInfo.jdField_a_of_type_Short = ((short)localDownloadInfo.uint32_port.get());
       }
-      if (!paramBoolean) {
-        break label571;
-      }
-      if (localDownloadInfo.bytes_media_platform_download_key.has())
+      if (paramBoolean)
       {
-        paramDownloadRespInfo.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = localDownloadInfo.bytes_media_platform_download_key.get();
-        paramDownloadRespInfo.c = String.format("/asn.com/qqdownloadftnv5?ver=0&filetype=4001&openid=%s&rkey=%s", new Object[] { paramString, HexUtil.bytes2HexStr(paramDownloadRespInfo.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro.toByteArray()) });
+        if (localDownloadInfo.bytes_media_platform_download_key.has())
+        {
+          paramDownloadRespInfo.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro = localDownloadInfo.bytes_media_platform_download_key.get();
+          paramDownloadRespInfo.c = String.format("/asn.com/qqdownloadftnv5?ver=0&filetype=4001&openid=%s&rkey=%s", new Object[] { paramString, HexUtil.bytes2HexStr(paramDownloadRespInfo.jdField_a_of_type_ComTencentMobileqqPbByteStringMicro.toByteArray()) });
+        }
       }
-    }
-    for (;;)
-    {
-      if (localDownloadInfo.str_cookie.has()) {
-        paramDownloadRespInfo.d = ("FTN5K=" + localDownloadInfo.str_cookie.get());
+      else if (localDownloadInfo.str_download_url.has()) {
+        paramDownloadRespInfo.c = localDownloadInfo.str_download_url.get();
+      }
+      if (localDownloadInfo.str_cookie.has())
+      {
+        paramString = new StringBuilder();
+        paramString.append("FTN5K=");
+        paramString.append(localDownloadInfo.str_cookie.get());
+        paramDownloadRespInfo.d = paramString.toString();
       }
       if ((localDownloadInfo.rpt_str_downloadip_list.has()) && (localDownloadInfo.rpt_str_downloadip_list.get().size() > 0)) {
         paramDownloadRespInfo.jdField_a_of_type_JavaUtilList = localDownloadInfo.rpt_str_downloadip_list.get();
@@ -104,38 +108,31 @@ public class DownloadRespInfo
       if ((localDownloadInfo.str_downloadipv6_list.has()) && (localDownloadInfo.str_downloadipv6_list.get().size() > 0)) {
         paramDownloadRespInfo.jdField_b_of_type_JavaUtilList = localDownloadInfo.str_downloadipv6_list.get();
       }
-      if (!paramApplyDownloadRsp.msg_file_info.has()) {
-        break;
-      }
+    }
+    if (paramApplyDownloadRsp.msg_file_info.has())
+    {
       paramApplyDownloadRsp = (cmd0x346.FileInfo)paramApplyDownloadRsp.msg_file_info.get();
       if (paramApplyDownloadRsp.str_file_name.has())
       {
         paramDownloadRespInfo.e = paramApplyDownloadRsp.str_file_name.get();
-        paramDownloadRespInfo.e = FileManagerUtil.a(paramDownloadRespInfo.e);
+        paramDownloadRespInfo.e = QQFileManagerUtil.e(paramDownloadRespInfo.e);
       }
       paramDownloadRespInfo.f = FileHttpUtils.a(paramApplyDownloadRsp.bytes_10m_md5.get().toByteArray());
-      QLog.i("DownloadRespInfo", 1, "file md5:" + paramDownloadRespInfo.f);
+      paramString = new StringBuilder();
+      paramString.append("file md5:");
+      paramString.append(paramDownloadRespInfo.f);
+      QLog.i("DownloadRespInfo", 1, paramString.toString());
       paramDownloadRespInfo.g = FileHttpUtils.a(paramApplyDownloadRsp.bytes_sha.get().toByteArray());
-      QLog.i("DownloadRespInfo", 1, "file sha:" + paramDownloadRespInfo.g);
-      return;
-      label534:
-      if (localDownloadInfo.str_download_domain.has())
-      {
-        paramDownloadRespInfo.jdField_b_of_type_JavaLangString = localDownloadInfo.str_download_domain.get();
-        break label120;
-      }
-      QLog.i("DownloadRespInfo", 1, "handleDownloadResp: has neither ip nor domain");
-      break label120;
-      label571:
-      if (localDownloadInfo.str_download_url.has()) {
-        paramDownloadRespInfo.c = localDownloadInfo.str_download_url.get();
-      }
+      paramApplyDownloadRsp = new StringBuilder();
+      paramApplyDownloadRsp.append("file sha:");
+      paramApplyDownloadRsp.append(paramDownloadRespInfo.g);
+      QLog.i("DownloadRespInfo", 1, paramApplyDownloadRsp.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.DownloadRespInfo
  * JD-Core Version:    0.7.0.1
  */

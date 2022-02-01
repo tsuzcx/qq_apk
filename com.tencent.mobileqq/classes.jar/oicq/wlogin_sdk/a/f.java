@@ -17,17 +17,16 @@ public class f
     byte[] arrayOfByte = new byte[this.d];
     util.int8_to_buf(arrayOfByte, 0, paramArrayOfByte1.length);
     System.arraycopy(paramArrayOfByte1, 0, arrayOfByte, 1, paramArrayOfByte1.length);
-    int i = paramArrayOfByte1.length + 1;
+    int i = 1 + paramArrayOfByte1.length;
     util.int16_to_buf(arrayOfByte, i, paramArrayOfByte2.length);
-    i += 2;
-    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i, paramArrayOfByte2.length);
+    System.arraycopy(paramArrayOfByte2, 0, arrayOfByte, i + 2, paramArrayOfByte2.length);
     i = paramArrayOfByte2.length;
     return a(arrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.a.f
  * JD-Core Version:    0.7.0.1
  */

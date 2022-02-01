@@ -12,7 +12,7 @@ public class DemoAppInfo
 {
   public int defaultDrawableID()
   {
-    return 2130845746;
+    return 2130845619;
   }
   
   public int getAppID()
@@ -25,14 +25,14 @@ public class DemoAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698881);
+    return BaseApplicationImpl.getContext().getString(2131698960);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.DemoAppInfo
  * JD-Core Version:    0.7.0.1
  */

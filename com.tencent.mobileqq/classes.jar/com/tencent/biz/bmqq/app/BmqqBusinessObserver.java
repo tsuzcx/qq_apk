@@ -10,9 +10,7 @@ public class BmqqBusinessObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 1001) {
       return;
     }
     a(paramBoolean, (BmqqUserSimpleInfo)paramObject);
@@ -20,7 +18,7 @@ public class BmqqBusinessObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.bmqq.app.BmqqBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

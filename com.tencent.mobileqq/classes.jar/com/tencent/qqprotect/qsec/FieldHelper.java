@@ -11,15 +11,11 @@ public class FieldHelper
       paramObject = paramObject.getClass().getField(paramString).get(paramObject);
       return paramObject;
     }
-    catch (NoSuchFieldException paramObject)
+    catch (IllegalAccessException|IllegalArgumentException|NoSuchFieldException paramObject)
     {
-      return null;
+      label15:
+      break label15;
     }
-    catch (IllegalArgumentException paramObject)
-    {
-      return null;
-    }
-    catch (IllegalAccessException paramObject) {}
     return null;
   }
   
@@ -40,23 +36,19 @@ public class FieldHelper
         paramObject = paramObject.getClass().getField(paramString).get(paramObject);
         i += 1;
       }
-      return null;
     }
-    catch (IllegalAccessException paramObject)
+    catch (IllegalAccessException|IllegalArgumentException|NoSuchFieldException paramObject)
     {
-      paramString = null;
-      return paramString;
+      label46:
+      break label46;
     }
-    catch (IllegalArgumentException paramObject)
-    {
-      return null;
-    }
-    catch (NoSuchFieldException paramObject) {}
+    paramString = null;
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.FieldHelper
  * JD-Core Version:    0.7.0.1
  */

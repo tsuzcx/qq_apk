@@ -36,8 +36,23 @@ class StartAppCheckHandler$3
       }
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.jdField_a_of_type_JavaLangString = this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.d;
       this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$CacheInfo.b = this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.c;
-      if (QLog.isColorLevel()) {
-        QLog.d("AppStartedHandler", 2, " " + this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.jdField_a_of_type_Long + " " + this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.jdField_a_of_type_Int + " " + this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.jdField_a_of_type_JavaLangString + " " + this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.b + " " + this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.c + " " + this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.d);
+      boolean bool = QLog.isColorLevel();
+      if (bool)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.jdField_a_of_type_Long);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.jdField_a_of_type_JavaLangString);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.b);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.c);
+        ((StringBuilder)localObject).append(" ");
+        ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.d);
+        QLog.d("AppStartedHandler", 2, ((StringBuilder)localObject).toString());
       }
       if ((this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.jdField_a_of_type_JavaLangString != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.b != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.c != null) && (this.this$0.jdField_a_of_type_ComTencentMobileqqAppStartAppCheckHandler$SendingAPP.d != null))
       {
@@ -67,7 +82,7 @@ class StartAppCheckHandler$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.StartAppCheckHandler.3
  * JD-Core Version:    0.7.0.1
  */

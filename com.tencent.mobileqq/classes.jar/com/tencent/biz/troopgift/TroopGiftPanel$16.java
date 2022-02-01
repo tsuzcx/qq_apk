@@ -21,20 +21,20 @@ class TroopGiftPanel$16
   public void a(int paramInt, String paramString)
   {
     super.a(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131715282), 0).b(this.a.getResources().getDimensionPixelSize(2131299166));
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131715205), 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
     TroopGiftPanel.a(true);
   }
   
   public void b(int paramInt, String paramString)
   {
     super.b(paramInt, paramString);
-    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131715249), 0).b(this.a.getResources().getDimensionPixelSize(2131299166));
+    QQToast.a(this.a.jdField_a_of_type_AndroidContentContext, HardCodeUtil.a(2131715172), 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
     TroopGiftPanel.a(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.16
  * JD-Core Version:    0.7.0.1
  */

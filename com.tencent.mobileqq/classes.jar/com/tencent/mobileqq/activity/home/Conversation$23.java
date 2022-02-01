@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.activity.home;
 
-import com.tencent.biz.pubaccount.api.IPublicAccountManager;
+import com.tencent.mobileqq.fpsreport.FPSSwipListView;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
 import com.tencent.mobileqq.qroute.QRoute;
 
 class Conversation$23
@@ -10,12 +11,12 @@ class Conversation$23
   
   public void run()
   {
-    ((IPublicAccountManager)QRoute.api(IPublicAccountManager.class)).reportRecentList(this.this$0.a());
+    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).calcVisibleItemCount(Conversation.a(this.this$0).getMeasuredHeight(), Conversation.a(this.this$0).getResources());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.23
  * JD-Core Version:    0.7.0.1
  */

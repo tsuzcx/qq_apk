@@ -22,25 +22,32 @@ public class OpacityAction
   
   protected void a(int paramInt, float paramFloat)
   {
-    this.a = ((int)(this.f + (this.g - this.f) * paramFloat));
-    if (this.g - this.f > 0) {
-      if (this.a >= this.g) {
-        this.a = this.g;
-      }
-    }
-    for (;;)
+    int i = this.f;
+    float f1 = i;
+    int j = this.g;
+    this.a = ((int)(f1 + (j - i) * paramFloat));
+    if (j - i > 0)
     {
-      super.a(paramInt, paramFloat);
-      return;
-      if (this.a <= this.g) {
-        this.a = this.g;
+      i = this.a;
+      j = this.g;
+      if (i >= j) {
+        this.a = j;
       }
     }
+    else
+    {
+      i = this.a;
+      j = this.g;
+      if (i <= j) {
+        this.a = j;
+      }
+    }
+    super.a(paramInt, paramFloat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.action.OpacityAction
  * JD-Core Version:    0.7.0.1
  */

@@ -23,14 +23,15 @@ public final class EnterReq
   
   public static EnterReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new EnterReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new EnterReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static EnterReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -54,12 +55,13 @@ public final class EnterReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.roomid;
     int i = j;
-    if (this.roomid != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.roomid);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
     j = i;
     if (!this.source.equals("")) {
@@ -73,9 +75,10 @@ public final class EnterReq
     if (!this.machine.equals("")) {
       j = i + CodedOutputByteBufferNano.computeStringSize(4, this.machine);
     }
+    l = this.openLiveType;
     i = j;
-    if (this.openLiveType != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(5, this.openLiveType);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(5, l);
     }
     return i;
   }
@@ -85,35 +88,51 @@ public final class EnterReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.roomid = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 18: 
-        this.source = paramCodedInputByteBufferNano.readString();
-        break;
-      case 26: 
-        this.programId = paramCodedInputByteBufferNano.readString();
-        break;
-      case 34: 
-        this.machine = paramCodedInputByteBufferNano.readString();
+      if (i == 0) {
         break;
       }
-      this.openLiveType = paramCodedInputByteBufferNano.readUInt64();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (i != 40)
+              {
+                if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                  return this;
+                }
+              }
+              else {
+                this.openLiveType = paramCodedInputByteBufferNano.readUInt64();
+              }
+            }
+            else {
+              this.machine = paramCodedInputByteBufferNano.readString();
+            }
+          }
+          else {
+            this.programId = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.source = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.roomid = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.roomid != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.roomid);
+    long l = this.roomid;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
     if (!this.source.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.source);
@@ -124,15 +143,16 @@ public final class EnterReq
     if (!this.machine.equals("")) {
       paramCodedOutputByteBufferNano.writeString(4, this.machine);
     }
-    if (this.openLiveType != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(5, this.openLiveType);
+    l = this.openLiveType;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(5, l);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.EnterReq
  * JD-Core Version:    0.7.0.1
  */

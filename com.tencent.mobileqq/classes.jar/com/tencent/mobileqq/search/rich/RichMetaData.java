@@ -13,34 +13,39 @@ public class RichMetaData
   
   public static String a(int paramInt, boolean paramBoolean1, String paramString, boolean paramBoolean2)
   {
-    int i = 1;
-    try
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("entry", paramInt);
-      if (paramBoolean1)
+      try
       {
-        paramInt = 1;
-        localJSONObject.put("match", paramInt);
-        localJSONObject.put("keyword", paramString);
-        if (!paramBoolean2) {
-          break label74;
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("entry", paramInt);
+        int i = 1;
+        if (paramBoolean1)
+        {
+          paramInt = 1;
+          ((JSONObject)localObject).put("match", paramInt);
+          ((JSONObject)localObject).put("keyword", paramString);
+          if (!paramBoolean2) {
+            break label118;
+          }
+          paramInt = i;
+          ((JSONObject)localObject).put("nightmode", paramInt);
+          paramString = ((JSONObject)localObject).toString();
+          return paramString;
         }
       }
-      label74:
-      for (paramInt = i;; paramInt = 0)
+      catch (JSONException paramString)
       {
-        localJSONObject.put("nightmode", paramInt);
-        paramString = localJSONObject.toString();
-        return paramString;
-        paramInt = 0;
-        break;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setLayout101ExtraData exception:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.e("RichMetaData", 2, ((StringBuilder)localObject).toString());
+        return null;
       }
-      return null;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("RichMetaData", 2, "setLayout101ExtraData exception:" + paramString);
+      paramInt = 0;
+      continue;
+      label118:
+      paramInt = 0;
     }
   }
   
@@ -59,10 +64,10 @@ public class RichMetaData
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("RichMetaData", 2, "convertMetaData exception : " + localJSONException);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("convertMetaData exception : ");
+      localStringBuilder.append(localJSONException);
+      QLog.e("RichMetaData", 2, localStringBuilder.toString());
     }
     return localJSONObject1.toString();
   }
@@ -89,7 +94,7 @@ public class RichMetaData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.RichMetaData
  * JD-Core Version:    0.7.0.1
  */

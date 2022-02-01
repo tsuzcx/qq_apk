@@ -25,20 +25,30 @@ public class ARDeviceController
   private int jdField_a_of_type_Int = 5;
   private ArEffectConfig jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
   private String jdField_a_of_type_JavaLangString = a(Build.MODEL);
-  private boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 1;
+  private boolean jdField_a_of_type_Boolean;
+  private int jdField_b_of_type_Int;
   private String jdField_b_of_type_JavaLangString;
-  private boolean jdField_b_of_type_Boolean = true;
+  private boolean jdField_b_of_type_Boolean;
   private int jdField_c_of_type_Int;
-  private boolean jdField_c_of_type_Boolean = true;
-  private int jdField_d_of_type_Int = 0;
-  private boolean jdField_d_of_type_Boolean = false;
-  private boolean e = true;
-  private boolean f = true;
-  private boolean g = false;
+  private boolean jdField_c_of_type_Boolean;
+  private int jdField_d_of_type_Int;
+  private boolean jdField_d_of_type_Boolean;
+  private boolean e;
+  private boolean f;
+  private boolean g;
   
   private ARDeviceController()
   {
+    boolean bool = true;
+    this.jdField_b_of_type_Int = 1;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = true;
+    this.jdField_d_of_type_Boolean = false;
+    this.e = true;
+    this.jdField_d_of_type_Int = 0;
+    this.f = true;
+    this.g = false;
     Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 4);
     this.jdField_b_of_type_JavaLangString = ((SharedPreferences)localObject1).getString("gpu_renderer", null);
     if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
@@ -60,25 +70,27 @@ public class ARDeviceController
       ((SharedPreferences)localObject1).edit().putInt("ar_load_so_crash_time", 0).commit();
       this.jdField_d_of_type_Int = 0;
     }
-    try
+    for (;;)
     {
-      localObject1 = ((ActivityManager)BaseApplicationImpl.getApplication().getSystemService("activity")).getDeviceConfigurationInfo();
-      if (localObject1 != null) {
-        if (((ConfigurationInfo)localObject1).reqGlEsVersion < 131072) {
-          break label270;
+      try
+      {
+        localObject1 = ((ActivityManager)BaseApplicationImpl.getApplication().getSystemService("activity")).getDeviceConfigurationInfo();
+        if (localObject1 != null)
+        {
+          if (((ConfigurationInfo)localObject1).reqGlEsVersion < 131072) {
+            break label279;
+          }
+          this.g = bool;
+          return;
         }
       }
-      label270:
-      for (boolean bool = true;; bool = false)
+      catch (Exception localException)
       {
-        this.g = bool;
-        return;
+        localException.printStackTrace();
       }
       return;
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
+      label279:
+      bool = false;
     }
   }
   
@@ -109,145 +121,154 @@ public class ARDeviceController
   private void a()
   {
     SharedPreferences localSharedPreferences = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
-    int i;
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig;
+    if (localObject != null)
     {
       this.jdField_a_of_type_Int = -1;
       this.jdField_b_of_type_Int = -1;
-      Iterator localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.a.iterator();
-      for (;;)
+      localObject = ((ArEffectConfig)localObject).a.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (a((String)((Iterator)localObject).next()).equals(this.jdField_a_of_type_JavaLangString))
+        {
+          this.jdField_a_of_type_Int = 5;
+          this.jdField_b_of_type_Int = 1;
+          i = 1;
+          break label92;
+        }
+      }
+      i = 0;
+      label92:
+      int j = i;
+      if (i == 0)
       {
-        if (localIterator.hasNext()) {
-          if (a((String)localIterator.next()).equals(this.jdField_a_of_type_JavaLangString))
-          {
-            this.jdField_a_of_type_Int = 5;
-            this.jdField_b_of_type_Int = 1;
-            i = 1;
-            int j = i;
-            if (i == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.c.iterator();
-              do
-              {
-                k = i;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-              } while (!a((String)localIterator.next()).equals(this.jdField_a_of_type_JavaLangString));
-              this.jdField_a_of_type_Boolean = true;
-              k = 1;
-              j = k;
-              if (k == 0)
-              {
-                this.jdField_a_of_type_Boolean = false;
-                j = k;
-              }
-            }
-            k = j;
-            ArDefaultSetting localArDefaultSetting;
-            if (j == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.e.iterator();
-              do
-              {
-                k = j;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-                localArDefaultSetting = (ArDefaultSetting)localIterator.next();
-              } while ((localArDefaultSetting.jdField_a_of_type_Int != 0) || (!a(localArDefaultSetting.jdField_a_of_type_JavaLangString).equals(this.jdField_a_of_type_JavaLangString)));
-              this.jdField_a_of_type_Int = localArDefaultSetting.jdField_c_of_type_Int;
-              this.jdField_b_of_type_Int = localArDefaultSetting.jdField_b_of_type_Int;
-              k = 1;
-            }
-            i = k;
-            if (k == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.b.iterator();
-              do
-              {
-                i = k;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-              } while (!a((String)localIterator.next()).equals(this.jdField_b_of_type_JavaLangString));
-              this.jdField_a_of_type_Int = 5;
-              this.jdField_b_of_type_Int = 1;
-              i = 1;
-            }
-            k = i;
-            if (i == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.d.iterator();
-              do
-              {
-                j = i;
-                if (!localIterator.hasNext()) {
-                  break;
-                }
-              } while (!a((String)localIterator.next()).equals(this.jdField_b_of_type_JavaLangString));
-              this.jdField_a_of_type_Boolean = true;
-              j = 1;
-              k = j;
-              if (j == 0)
-              {
-                this.jdField_a_of_type_Boolean = false;
-                k = j;
-              }
-            }
-            if (k == 0)
-            {
-              localIterator = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.e.iterator();
-              while (localIterator.hasNext())
-              {
-                localArDefaultSetting = (ArDefaultSetting)localIterator.next();
-                if ((localArDefaultSetting.jdField_a_of_type_Int == 1) && (a(localArDefaultSetting.jdField_a_of_type_JavaLangString).equals(this.jdField_b_of_type_JavaLangString)))
-                {
-                  this.jdField_a_of_type_Int = localArDefaultSetting.jdField_c_of_type_Int;
-                  this.jdField_b_of_type_Int = localArDefaultSetting.jdField_b_of_type_Int;
-                  i = 1;
-                }
-              }
-            }
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.c.iterator();
+        do
+        {
+          k = i;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
           }
+        } while (!a((String)((Iterator)localObject).next()).equals(this.jdField_a_of_type_JavaLangString));
+        this.jdField_a_of_type_Boolean = true;
+        k = 1;
+        j = k;
+        if (k == 0)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          j = k;
         }
       }
-    }
-    for (;;)
-    {
-      if ((i != 0) && (this.jdField_a_of_type_Int >= 1) && (this.jdField_a_of_type_Int <= 5) && (this.jdField_b_of_type_Int >= 0) && (this.jdField_b_of_type_Int <= 1))
+      int k = j;
+      ArDefaultSetting localArDefaultSetting;
+      if (j == 0)
       {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_c_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = true;
-        return;
-      }
-      this.jdField_a_of_type_Int = localSharedPreferences.getInt("ar_adjust_track_quality", -1);
-      if ((this.jdField_a_of_type_Int >= 1) && (this.jdField_a_of_type_Int <= 5))
-      {
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_b_of_type_Int = localSharedPreferences.getInt("ar_adjust_render_quality", -1);
-        if ((this.jdField_b_of_type_Int < 0) || (this.jdField_b_of_type_Int > 1)) {
-          break label608;
-        }
-      }
-      for (this.jdField_c_of_type_Boolean = false;; this.jdField_c_of_type_Boolean = true)
-      {
-        this.jdField_d_of_type_Boolean = true;
-        return;
-        this.jdField_b_of_type_Boolean = true;
-        this.jdField_a_of_type_Int = 5;
-        break;
-        label608:
-        this.jdField_b_of_type_Int = 1;
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.e.iterator();
+        do
+        {
+          k = j;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localArDefaultSetting = (ArDefaultSetting)((Iterator)localObject).next();
+        } while ((localArDefaultSetting.jdField_a_of_type_Int != 0) || (!a(localArDefaultSetting.jdField_a_of_type_JavaLangString).equals(this.jdField_a_of_type_JavaLangString)));
+        this.jdField_a_of_type_Int = localArDefaultSetting.jdField_c_of_type_Int;
+        this.jdField_b_of_type_Int = localArDefaultSetting.jdField_b_of_type_Int;
+        k = 1;
       }
       i = k;
-      continue;
-      i = 0;
-      break;
+      if (k == 0)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.b.iterator();
+        do
+        {
+          i = k;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+        } while (!a((String)((Iterator)localObject).next()).equals(this.jdField_b_of_type_JavaLangString));
+        this.jdField_a_of_type_Int = 5;
+        this.jdField_b_of_type_Int = 1;
+        i = 1;
+      }
+      j = i;
+      if (i == 0)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.d.iterator();
+        do
+        {
+          k = i;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+        } while (!a((String)((Iterator)localObject).next()).equals(this.jdField_b_of_type_JavaLangString));
+        this.jdField_a_of_type_Boolean = true;
+        k = 1;
+        j = k;
+        if (k == 0)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          j = k;
+        }
+      }
+      i = j;
+      if (j == 0)
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig.e.iterator();
+        do
+        {
+          i = j;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localArDefaultSetting = (ArDefaultSetting)((Iterator)localObject).next();
+        } while ((localArDefaultSetting.jdField_a_of_type_Int != 1) || (!a(localArDefaultSetting.jdField_a_of_type_JavaLangString).equals(this.jdField_b_of_type_JavaLangString)));
+        this.jdField_a_of_type_Int = localArDefaultSetting.jdField_c_of_type_Int;
+        this.jdField_b_of_type_Int = localArDefaultSetting.jdField_b_of_type_Int;
+        i = 1;
+      }
+    }
+    else
+    {
       i = 0;
     }
+    if (i != 0)
+    {
+      i = this.jdField_a_of_type_Int;
+      if ((i >= 1) && (i <= 5))
+      {
+        i = this.jdField_b_of_type_Int;
+        if ((i >= 0) && (i <= 1))
+        {
+          this.jdField_b_of_type_Boolean = false;
+          this.jdField_c_of_type_Boolean = false;
+          this.jdField_d_of_type_Boolean = true;
+          return;
+        }
+      }
+    }
+    this.jdField_a_of_type_Int = localSharedPreferences.getInt("ar_adjust_track_quality", -1);
+    int i = this.jdField_a_of_type_Int;
+    if ((i >= 1) && (i <= 5))
+    {
+      this.jdField_b_of_type_Boolean = false;
+    }
+    else
+    {
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_Int = 5;
+    }
+    this.jdField_b_of_type_Int = localSharedPreferences.getInt("ar_adjust_render_quality", -1);
+    i = this.jdField_b_of_type_Int;
+    if ((i >= 0) && (i <= 1))
+    {
+      this.jdField_c_of_type_Boolean = false;
+    }
+    else
+    {
+      this.jdField_b_of_type_Int = 1;
+      this.jdField_c_of_type_Boolean = true;
+    }
+    this.jdField_d_of_type_Boolean = true;
   }
   
   private void a(boolean paramBoolean, int paramInt)
@@ -270,26 +291,23 @@ public class ARDeviceController
   
   public void a(String paramString)
   {
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {}
-    do
-    {
+    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
       return;
-      this.jdField_b_of_type_JavaLangString = a(paramString);
-      SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
-      localEditor.putString("gpu_renderer", paramString);
-      SharedPreUtils.a(localEditor);
-      a(paramString);
-    } while (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig == null);
-    a();
+    }
+    this.jdField_b_of_type_JavaLangString = a(paramString);
+    SharedPreferences.Editor localEditor = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
+    localEditor.putString("gpu_renderer", paramString);
+    SharedPreUtils.a(localEditor);
+    a(paramString);
+    if (this.jdField_a_of_type_ComTencentMobileqqArAidlArEffectConfig != null) {
+      a();
+    }
   }
   
   public boolean a()
   {
-    boolean bool1 = false;
-    boolean bool2 = false;
     for (;;)
     {
-      int j;
       try
       {
         if (this.jdField_d_of_type_Int >= 5)
@@ -298,117 +316,125 @@ public class ARDeviceController
             QLog.d("ARDeviceController", 2, "isAREnable enable= false,failCode= 870888");
           }
           a(false, 870888);
-          return bool2;
+          return false;
         }
-        if (!this.f) {
-          break label320;
-        }
-        this.f = false;
-        this.jdField_d_of_type_Int += 1;
-        Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
-        SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
-        localEditor.putInt("ar_load_so_crash_time", this.jdField_d_of_type_Int);
-        localEditor.putString("ar_load_so_crash_version", AppSetting.f());
-        localEditor.putInt("ar_native_so_crash_version", ((SharedPreferences)localObject1).getInt("ar_native_so_version", 0));
-        SharedPreUtils.a(localEditor);
-        j = 1;
-        if (this.jdField_a_of_type_Boolean)
+        boolean bool2 = this.f;
+        boolean bool1 = true;
+        if (bool2)
         {
-          i = 870882;
+          this.f = false;
+          this.jdField_d_of_type_Int += 1;
+          Object localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0);
+          SharedPreferences.Editor localEditor = ((SharedPreferences)localObject1).edit();
+          localEditor.putInt("ar_load_so_crash_time", this.jdField_d_of_type_Int);
+          localEditor.putString("ar_load_so_crash_version", AppSetting.f());
+          localEditor.putInt("ar_native_so_crash_version", ((SharedPreferences)localObject1).getInt("ar_native_so_version", 0));
+          SharedPreUtils.a(localEditor);
+          j = 1;
+          if (this.jdField_a_of_type_Boolean)
+          {
+            bool1 = false;
+            i = 870882;
+          }
+          else if (Build.VERSION.SDK_INT < 14)
+          {
+            bool1 = false;
+            i = 870881;
+          }
+          else if (!this.g)
+          {
+            bool1 = false;
+            i = 870883;
+          }
+          else if (VcSystemInfo.getCpuArchitecture() < 3)
+          {
+            bool1 = false;
+            i = 870884;
+          }
+          else
+          {
+            if (OlympicUtil.a()) {
+              break label341;
+            }
+            bool1 = false;
+            i = 870886;
+          }
           a(bool1, i);
-          if (QLog.isColorLevel()) {
-            QLog.d("ARDeviceController", 2, "isAREnable enable= " + bool1 + ",failCode= " + i);
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("isAREnable enable= ");
+            ((StringBuilder)localObject1).append(bool1);
+            ((StringBuilder)localObject1).append(",failCode= ");
+            ((StringBuilder)localObject1).append(i);
+            QLog.d("ARDeviceController", 2, ((StringBuilder)localObject1).toString());
           }
-          bool2 = bool1;
-          if (j == 0) {
-            continue;
+          if (j != 0)
+          {
+            localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
+            ((SharedPreferences.Editor)localObject1).putInt("ar_load_so_crash_time", 0);
+            SharedPreUtils.a((SharedPreferences.Editor)localObject1);
+            this.jdField_d_of_type_Int = 0;
           }
-          localObject1 = BaseApplicationImpl.sApplication.getSharedPreferences("mobileQQ", 0).edit();
-          ((SharedPreferences.Editor)localObject1).putInt("ar_load_so_crash_time", 0);
-          SharedPreUtils.a((SharedPreferences.Editor)localObject1);
-          this.jdField_d_of_type_Int = 0;
-          bool2 = bool1;
-          continue;
-        }
-        if (Build.VERSION.SDK_INT >= 14) {
-          break label268;
+          return bool1;
         }
       }
       finally {}
-      int i = 870881;
+      int j = 0;
       continue;
-      label268:
-      if (!this.g)
-      {
-        i = 870883;
-      }
-      else if (VcSystemInfo.getCpuArchitecture() < 3)
-      {
-        i = 870884;
-      }
-      else
-      {
-        bool2 = OlympicUtil.a();
-        if (!bool2)
-        {
-          i = 870886;
-        }
-        else
-        {
-          bool1 = true;
-          i = 0;
-          continue;
-          label320:
-          j = 0;
-        }
-      }
+      label341:
+      int i = 0;
     }
   }
   
   public boolean b()
   {
+    int i = this.jdField_d_of_type_Int;
     boolean bool = false;
-    int i;
-    if (this.jdField_d_of_type_Int >= 5) {
+    if (i >= 5)
+    {
       i = 870888;
     }
-    for (;;)
+    else if (this.jdField_a_of_type_Boolean)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ARDeviceController", 2, "isSupportAr enable= " + bool + ",errorCode= " + i);
-      }
-      return bool;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        i = 870882;
-      }
-      else if (Build.VERSION.SDK_INT < 14)
-      {
-        i = 870881;
-      }
-      else if (!this.g)
-      {
-        i = 870883;
-      }
-      else if (VcSystemInfo.getCpuArchitecture() < 3)
-      {
-        i = 870884;
-      }
-      else if (!OlympicUtil.a())
-      {
-        i = 870886;
-      }
-      else
-      {
-        i = 0;
-        bool = true;
-      }
+      i = 870882;
     }
+    else if (Build.VERSION.SDK_INT < 14)
+    {
+      i = 870881;
+    }
+    else if (!this.g)
+    {
+      i = 870883;
+    }
+    else if (VcSystemInfo.getCpuArchitecture() < 3)
+    {
+      i = 870884;
+    }
+    else if (!OlympicUtil.a())
+    {
+      i = 870886;
+    }
+    else
+    {
+      i = 0;
+      bool = true;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isSupportAr enable= ");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(",errorCode= ");
+      localStringBuilder.append(i);
+      QLog.d("ARDeviceController", 2, localStringBuilder.toString());
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARDeviceController
  * JD-Core Version:    0.7.0.1
  */

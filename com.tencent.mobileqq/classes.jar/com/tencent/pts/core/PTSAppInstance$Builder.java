@@ -25,21 +25,26 @@ public class PTSAppInstance$Builder
   
   private void check()
   {
-    if (TextUtils.isEmpty(this.pageName))
-    {
-      if (PTSLog.isDebug()) {
+    if (TextUtils.isEmpty(this.pageName)) {
+      if (!PTSLog.isDebug())
+      {
+        this.pageName = "null";
+        PTSLog.e("PTSAppInstance", "[check] PTSAppInstance pageName is empty.");
+      }
+      else
+      {
         throw new IllegalStateException("PTSAppInstance pageName is empty.");
       }
-      this.pageName = "null";
-      PTSLog.e("PTSAppInstance", "[check] PTSAppInstance pageName is empty.");
     }
     if (TextUtils.isEmpty(this.frameTreeJson))
     {
-      if (PTSLog.isDebug()) {
-        throw new IllegalStateException("PTSAppInstance frameTreeJson is empty.");
+      if (!PTSLog.isDebug())
+      {
+        this.frameTreeJson = "{}";
+        PTSLog.e("PTSAppInstance", "[check] PTSAppInstance frameTreeJson is empty.");
+        return;
       }
-      this.frameTreeJson = "{}";
-      PTSLog.e("PTSAppInstance", "[check] PTSAppInstance frameTreeJson is empty.");
+      throw new IllegalStateException("PTSAppInstance frameTreeJson is empty.");
     }
   }
   
@@ -51,23 +56,24 @@ public class PTSAppInstance$Builder
       localObject = new PTSAppInstance.PTSJsAppInstance(null);
       PTSAppInstance.PTSJsAppInstance.access$300((PTSAppInstance.PTSJsAppInstance)localObject, this.ptsJSBridge);
     }
-    for (;;)
+    else
     {
-      PTSAppInstance.access$602((PTSAppInstance)localObject, this.context);
-      PTSAppInstance.access$702((PTSAppInstance)localObject, this.rootView);
-      PTSAppInstance.access$802((PTSAppInstance)localObject, this.rootNodeType);
-      PTSAppInstance.access$902((PTSAppInstance)localObject, this.pageName);
-      ((PTSAppInstance)localObject).itemData = this.itemData;
-      PTSAppInstance.access$1002((PTSAppInstance)localObject, this.frameTreeJson);
-      PTSAppInstance.access$1102((PTSAppInstance)localObject, this.pageJs);
-      PTSAppInstance.access$1202((PTSAppInstance)localObject, this.containerWidth);
-      check();
-      PTSAppInstance.access$1300((PTSAppInstance)localObject, this.rootNodeType);
-      return localObject;
       localObject = new PTSAppInstance.PTSLiteAppInstance(null);
-      PTSAppInstance.PTSLiteAppInstance.access$500((PTSAppInstance.PTSLiteAppInstance)localObject, this.liteItemViewManager);
-      PTSAppInstance.PTSLiteAppInstance.access$000((PTSAppInstance.PTSLiteAppInstance)localObject, this.liteEventListener);
+      PTSAppInstance.PTSLiteAppInstance localPTSLiteAppInstance = (PTSAppInstance.PTSLiteAppInstance)localObject;
+      PTSAppInstance.PTSLiteAppInstance.access$500(localPTSLiteAppInstance, this.liteItemViewManager);
+      PTSAppInstance.PTSLiteAppInstance.access$000(localPTSLiteAppInstance, this.liteEventListener);
     }
+    PTSAppInstance.access$602((PTSAppInstance)localObject, this.context);
+    PTSAppInstance.access$702((PTSAppInstance)localObject, this.rootView);
+    PTSAppInstance.access$802((PTSAppInstance)localObject, this.rootNodeType);
+    PTSAppInstance.access$902((PTSAppInstance)localObject, this.pageName);
+    ((PTSAppInstance)localObject).itemData = this.itemData;
+    PTSAppInstance.access$1002((PTSAppInstance)localObject, this.frameTreeJson);
+    PTSAppInstance.access$1102((PTSAppInstance)localObject, this.pageJs);
+    PTSAppInstance.access$1202((PTSAppInstance)localObject, this.containerWidth);
+    check();
+    PTSAppInstance.access$1300((PTSAppInstance)localObject, this.rootNodeType);
+    return localObject;
   }
   
   public Builder withContainerWidth(float paramFloat)
@@ -144,7 +150,7 @@ public class PTSAppInstance$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSAppInstance.Builder
  * JD-Core Version:    0.7.0.1
  */

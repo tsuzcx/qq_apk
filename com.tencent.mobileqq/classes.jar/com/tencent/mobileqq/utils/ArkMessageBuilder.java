@@ -35,7 +35,7 @@ public class ArkMessageBuilder
     if (TextUtils.isEmpty(str)) {
       localObject = localArkAppMessage.appDesc;
     }
-    localArkAppMessage.promptText = String.format(HardCodeUtil.a(2131700738), new Object[] { localObject });
+    localArkAppMessage.promptText = String.format(HardCodeUtil.a(2131700882), new Object[] { localObject });
     localArkAppMessage.metaList = QQCustomArkDialog.a(paramBundle, localArkAppMessage.appName);
     localArkAppMessage.config = a();
     paramBundle = MessageRecordFactory.a(paramQQAppInterface, paramString1, paramString2, paramInt, localArkAppMessage);
@@ -52,15 +52,12 @@ public class ArkMessageBuilder
       localJSONObject.put("forward", 1);
       localJSONObject.put("autosize", 1);
       localJSONObject.put("type", "normal");
-      return localJSONObject.toString();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QLog.e("ArkMessageBuilder", 1, "getConfigValue", localJSONException);
-      }
+      QLog.e("ArkMessageBuilder", 1, "getConfigValue", localJSONException);
     }
+    return localJSONObject.toString();
   }
   
   public static String a(int paramInt)
@@ -76,7 +73,7 @@ public class ArkMessageBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.ArkMessageBuilder
  * JD-Core Version:    0.7.0.1
  */

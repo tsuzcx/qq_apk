@@ -11,8 +11,9 @@ class Face2FaceAddFriendActivity$3
   
   public void onAnimationEnd(Animation paramAnimation)
   {
-    this.a.l = false;
-    this.a.a.setVisibility(8);
+    paramAnimation = this.a;
+    paramAnimation.l = false;
+    paramAnimation.a.setVisibility(8);
     this.a.e();
   }
   
@@ -22,7 +23,7 @@ class Face2FaceAddFriendActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.facetoface.Face2FaceAddFriendActivity.3
  * JD-Core Version:    0.7.0.1
  */

@@ -14,7 +14,7 @@ import java.util.List;
 
 public class StoryProfileListViewConfig
 {
-  public static int a;
+  public static int a = 1;
   public static int b = 2;
   public Activity a;
   public IMyStoryListView a;
@@ -22,11 +22,6 @@ public class StoryProfileListViewConfig
   private List<SegmentView> a;
   public int c;
   public int d;
-  
-  static
-  {
-    jdField_a_of_type_Int = 1;
-  }
   
   public StoryProfileListViewConfig(Activity paramActivity, int paramInt1, String paramString, int paramInt2, IMyStoryListView paramIMyStoryListView)
   {
@@ -53,7 +48,9 @@ public class StoryProfileListViewConfig
   {
     this.jdField_a_of_type_JavaUtilList.add(new MemoriesProfileSegment(this.jdField_a_of_type_AndroidAppActivity, this.d, this.jdField_a_of_type_JavaLangString));
     this.jdField_a_of_type_JavaUtilList.add(new MemoriesFeedSegment(this.jdField_a_of_type_AndroidAppActivity.getApplicationContext(), this.jdField_a_of_type_AndroidAppActivity, 12, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistViewIMyStoryListView, false));
-    this.jdField_a_of_type_JavaUtilList.add(new MemoriesFeedEmptySegment(this.jdField_a_of_type_AndroidAppActivity, "FeedSegment", this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131699771), 2130846959, 2130846960));
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    Activity localActivity = this.jdField_a_of_type_AndroidAppActivity;
+    localList.add(new MemoriesFeedEmptySegment(localActivity, "FeedSegment", localActivity.getResources().getString(2131699912), 2130846837, 2130846838));
   }
   
   private void b()
@@ -70,7 +67,7 @@ public class StoryProfileListViewConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.model.StoryProfileListViewConfig
  * JD-Core Version:    0.7.0.1
  */

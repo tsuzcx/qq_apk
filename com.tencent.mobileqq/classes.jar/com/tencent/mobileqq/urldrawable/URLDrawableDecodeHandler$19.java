@@ -1,7 +1,15 @@
 package com.tencent.mobileqq.urldrawable;
 
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
+import android.graphics.Bitmap.Config;
+import android.graphics.BitmapShader;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.LinearGradient;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
+import android.graphics.RectF;
+import android.graphics.Shader.TileMode;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
 
@@ -10,47 +18,29 @@ final class URLDrawableDecodeHandler$19
 {
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    Object localObject;
-    if (paramBitmap == null)
-    {
-      localObject = null;
-      return localObject;
+    if (paramBitmap == null) {
+      return null;
     }
-    paramDownloadParams = paramDownloadParams.tag;
-    if (((paramDownloadParams instanceof int[])) && (((int[])paramDownloadParams).length > 0)) {}
-    for (int i = ((int[])(int[])paramDownloadParams)[0];; i = 0)
-    {
-      int j;
-      int k;
-      boolean bool;
-      if (i != 0)
-      {
-        paramDownloadParams = new Matrix();
-        paramDownloadParams.postRotate(i);
-        j = paramBitmap.getWidth();
-        k = paramBitmap.getHeight();
-        if (i % 90 != 0) {
-          bool = true;
-        }
-      }
-      label84:
-      for (paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, j, k, paramDownloadParams, bool);; paramDownloadParams = paramBitmap)
-      {
-        localObject = paramDownloadParams;
-        if (paramDownloadParams == paramBitmap) {
-          break;
-        }
-        paramBitmap.recycle();
-        return paramDownloadParams;
-        bool = false;
-        break label84;
-      }
-    }
+    int i = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    paramDownloadParams = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+    RectF localRectF = new RectF(0.0F, 0.0F, i, j);
+    Canvas localCanvas = new Canvas(paramDownloadParams);
+    BitmapShader localBitmapShader = new BitmapShader(paramBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    Paint localPaint = new Paint();
+    localPaint.setStyle(Paint.Style.FILL);
+    localPaint.setAntiAlias(true);
+    localPaint.setShader(localBitmapShader);
+    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
+    localPaint.setShader(new LinearGradient(0.0F, 0.0F, 0.0F, j / 2, Color.parseColor("#80000000"), Color.parseColor("#00000000"), Shader.TileMode.CLAMP));
+    localCanvas.drawRoundRect(localRectF, 12.0F, 12.0F, localPaint);
+    paramBitmap.recycle();
+    return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.19
  * JD-Core Version:    0.7.0.1
  */

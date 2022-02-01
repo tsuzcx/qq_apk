@@ -11,14 +11,14 @@ final class b
   {
     synchronized (a.a(this.a))
     {
-      QWalletTools.a(this.a, a.b(this.a));
+      QWalletTools.saveObject(this.a, a.b(this.a));
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.apkg.b
  * JD-Core Version:    0.7.0.1
  */

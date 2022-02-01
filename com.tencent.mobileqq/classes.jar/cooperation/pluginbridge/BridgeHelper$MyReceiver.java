@@ -11,13 +11,23 @@ class BridgeHelper$MyReceiver
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramIntent = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("BridgeHelper", 2, "action:" + paramIntent);
-    }
-    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent))) {}
-    try
+    if (QLog.isColorLevel())
     {
-      paramContext.unregisterReceiver(BridgeHelper.a());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("action:");
+      localStringBuilder.append(paramIntent);
+      QLog.i("BridgeHelper", 2, localStringBuilder.toString());
+    }
+    if (("bridge.plugin.onresume.broadcast".equals(paramIntent)) || ("bridge.onresume.broadcast".equals(paramIntent)))
+    {
+      try
+      {
+        paramContext.unregisterReceiver(BridgeHelper.a());
+      }
+      catch (Exception paramIntent)
+      {
+        paramIntent.printStackTrace();
+      }
       BridgeHelper.a(null);
       if (BridgeHelper.a() != null)
       {
@@ -31,20 +41,12 @@ class BridgeHelper$MyReceiver
         }
         ((BridgePluginInstallActivity)paramContext).finish();
       }
-      return;
-    }
-    catch (Exception paramIntent)
-    {
-      for (;;)
-      {
-        paramIntent.printStackTrace();
-      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.pluginbridge.BridgeHelper.MyReceiver
  * JD-Core Version:    0.7.0.1
  */

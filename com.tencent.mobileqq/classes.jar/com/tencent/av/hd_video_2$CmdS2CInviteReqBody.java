@@ -14,7 +14,7 @@ public final class hd_video_2$CmdS2CInviteReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.hd_video_2.CmdS2CInviteReqBody
  * JD-Core Version:    0.7.0.1
  */

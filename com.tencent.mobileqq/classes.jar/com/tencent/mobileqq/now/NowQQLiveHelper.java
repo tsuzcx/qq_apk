@@ -2,6 +2,7 @@ package com.tencent.mobileqq.now;
 
 import android.content.Context;
 import com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderManager;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
@@ -13,7 +14,15 @@ import mqq.app.AppRuntime;
 
 public class NowQQLiveHelper
 {
-  private static final String a = BaseApplication.getContext().getFilesDir().getAbsolutePath() + "/testEnv/";
+  private static final String a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplication.getContext().getFilesDir().getAbsolutePath());
+    localStringBuilder.append("/testEnv/");
+    a = localStringBuilder.toString();
+  }
   
   public static int a()
   {
@@ -22,20 +31,23 @@ public class NowQQLiveHelper
       return 0;
     }
     localObject = (QQAppInterface)localObject;
-    if ((((QQAppInterface)localObject).getMessageFacade() == null) || (((QQAppInterface)localObject).getMessageFacade().a() == null)) {
-      return 0;
+    if (((QQAppInterface)localObject).getMessageFacade() != null)
+    {
+      if (((QQAppInterface)localObject).getMessageFacade().a() == null) {
+        return 0;
+      }
+      return ((QQAppInterface)localObject).getMessageFacade().a().a(NowQQLiveConstant.a, 1008);
     }
-    return ((QQAppInterface)localObject).getMessageFacade().a().a(NowQQLiveConstant.a, 1008);
+    return 0;
   }
   
   public static AppRuntime a()
   {
-    AppRuntime localAppRuntime = null;
     BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
     if (localBaseApplicationImpl != null) {
-      localAppRuntime = localBaseApplicationImpl.getRuntime();
+      return localBaseApplicationImpl.getRuntime();
     }
-    return localAppRuntime;
+    return null;
   }
   
   public static boolean a()
@@ -45,13 +57,17 @@ public class NowQQLiveHelper
       return false;
     }
     localObject = (QQAppInterface)localObject;
-    if ((((QQAppInterface)localObject).getMessageFacade() == null) || (((QQAppInterface)localObject).getMessageFacade().a() == null)) {
-      return false;
+    if (((QQAppInterface)localObject).getMessageFacade() != null)
+    {
+      if (((QQAppInterface)localObject).getMessageFacade().a() == null) {
+        return false;
+      }
+      ((QQAppInterface)localObject).getMessageFacade().a(NowQQLiveConstant.a, 1008, true, true);
+      RecentUtil.b((QQAppInterface)localObject, NowQQLiveConstant.a, 1008);
+      ServiceAccountFolderManager.a().a((AppInterface)localObject, NowQQLiveConstant.a);
+      return true;
     }
-    ((QQAppInterface)localObject).getMessageFacade().a(NowQQLiveConstant.a, 1008, true, true);
-    RecentUtil.b((QQAppInterface)localObject, NowQQLiveConstant.a, 1008);
-    ServiceAccountFolderManager.a().a((QQAppInterface)localObject, NowQQLiveConstant.a);
-    return true;
+    return false;
   }
   
   public static final boolean a(Context paramContext, String paramString, int paramInt)
@@ -67,7 +83,7 @@ public class NowQQLiveHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.NowQQLiveHelper
  * JD-Core Version:    0.7.0.1
  */

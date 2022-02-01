@@ -13,7 +13,7 @@ import com.tencent.qconn.protofile.appType.LoginSig;
 public final class GetAppInfoProto$GetAppinfoRequest
   extends MessageMicro<GetAppinfoRequest>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 64, 72, 80, 88, 98, 514, 522 }, new String[] { "client_id", "sdkp", "icons", "qqv", "os", "md5time", "signature", "need_ads", "app_type", "channel_source", "referer", "appUniqueIdentifier", "skey", "login_sig" }, new Object[] { Long.valueOf(0L), "", "", "", "", Long.valueOf(0L), "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(1), "", "", null }, GetAppinfoRequest.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField appUniqueIdentifier = PBField.initString("");
   public final PBEnumField app_type = PBField.initEnum(0);
   public final PBInt64Field channel_source = PBField.initInt64(0L);
@@ -28,10 +28,17 @@ public final class GetAppInfoProto$GetAppinfoRequest
   public final PBStringField sdkp = PBField.initString("");
   public final PBStringField signature = PBField.initString("");
   public final PBStringField skey = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 48, 58, 64, 72, 80, 88, 98, 514, 522 }, new String[] { "client_id", "sdkp", "icons", "qqv", "os", "md5time", "signature", "need_ads", "app_type", "channel_source", "referer", "appUniqueIdentifier", "skey", "login_sig" }, new Object[] { localLong, "", "", "", "", localLong, "", localInteger, localInteger, localLong, Integer.valueOf(1), "", "", null }, GetAppinfoRequest.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protofile.getappinfo.GetAppInfoProto.GetAppinfoRequest
  * JD-Core Version:    0.7.0.1
  */

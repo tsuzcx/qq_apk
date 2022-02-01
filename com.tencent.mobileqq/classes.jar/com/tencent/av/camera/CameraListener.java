@@ -1,7 +1,7 @@
 package com.tencent.av.camera;
 
 public abstract interface CameraListener
-  extends AndroidCamera.CameraPreviewCallback
+  extends CameraPreviewCallback
 {
   public abstract int a(long paramLong, boolean paramBoolean1, boolean paramBoolean2);
   
@@ -15,7 +15,7 @@ public abstract interface CameraListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.camera.CameraListener
  * JD-Core Version:    0.7.0.1
  */

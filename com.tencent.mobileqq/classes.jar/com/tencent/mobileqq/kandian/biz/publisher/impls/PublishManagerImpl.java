@@ -1,162 +1,129 @@
 package com.tencent.mobileqq.kandian.biz.publisher.impls;
 
-import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.decoupling.accesslayer.util.RIJQQAppInterfaceUtil;
-import com.tencent.biz.pubaccount.readinjoy.struct.UgcVideo;
-import com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.RIJUgcVideoPublishManager;
-import com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.RIJUgcVideoPublishManager.IReleaseCallback;
-import com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.RIJUgcVideoPublishManager.IVideoPublishCallback;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.content.Context;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.kandian.biz.publisher.common.PublisherUtils;
-import com.tencent.mobileqq.kandian.biz.publisher.report.PublisherReportUtils;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.kandian.base.utils.RIJQQAppInterfaceUtil;
+import com.tencent.mobileqq.kandian.biz.publisher.ktx.PublishArticleInfoExtKt;
+import com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils;
+import com.tencent.mobileqq.kandian.biz.ugc.RIJUgcUtils.IUploadActionCallback;
+import com.tencent.mobileqq.kandian.biz.ugc.api.IRIJUgcVideoPublishService;
+import com.tencent.mobileqq.kandian.biz.ugc.api.IRIJUgcVideoPublishService.IReleaseCallback;
+import com.tencent.mobileqq.kandian.biz.ugc.api.IRIJUgcVideoPublishService.IUploadVideoStatusCallback;
+import com.tencent.mobileqq.kandian.biz.ugc.api.IRIJUgcVideoPublishService.IVideoPublishCallback;
+import com.tencent.mobileqq.kandian.biz.ugc.entity.UgcVideo;
+import com.tencent.mobileqq.vip.CUKingCardUtils;
 import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig;
-import com.tencent.tkd.topicsdk.bean.LocationInfo;
+import com.tencent.tkd.topicsdk.bean.PreUploadVideoInfo;
 import com.tencent.tkd.topicsdk.bean.PublishArticleInfo;
 import com.tencent.tkd.topicsdk.bean.VideoInfo;
 import com.tencent.tkd.topicsdk.interfaces.IPublishManager;
+import com.tencent.tkd.topicsdk.interfaces.IPublishManager.ICheckResultCallBack;
 import com.tencent.tkd.topicsdk.interfaces.IPublishManager.IPublishListener;
+import com.tencent.tkd.topicsdk.interfaces.IPublishManager.IPublishStatusListener;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import kotlin.Lazy;
+import kotlin.LazyKt;
 import kotlin.Metadata;
-import kotlin.TypeCastException;
+import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
-import mqq.manager.Manager;
+import mqq.app.api.IRuntimeService;
 import org.jetbrains.annotations.NotNull;
-import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/impls/PublishManagerImpl;", "Lcom/tencent/tkd/topicsdk/interfaces/IPublishManager;", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/publishvideotask/RIJUgcVideoPublishManager$IReleaseCallback;", "()V", "articleInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "Lkotlin/collections/HashMap;", "listenerMap", "Lcom/tencent/tkd/topicsdk/interfaces/IPublishManager$IPublishListener;", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/publishvideotask/RIJUgcVideoPublishManager$IVideoPublishCallback;", "manager", "Lcom/tencent/biz/pubaccount/readinjoy/ugc/publishvideotask/RIJUgcVideoPublishManager;", "getManager", "()Lcom/tencent/biz/pubaccount/readinjoy/ugc/publishvideotask/RIJUgcVideoPublishManager;", "addPublishListener", "", "listener", "release", "removePublishListener", "startPublish", "globalPublisherConfig", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "publishArticleInfo", "toPublishArticleInfo", "Lcom/tencent/biz/pubaccount/readinjoy/struct/UgcVideo;", "toUgcVideo", "Companion", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/biz/publisher/impls/PublishManagerImpl;", "Lcom/tencent/tkd/topicsdk/interfaces/IPublishManager;", "Lcom/tencent/mobileqq/kandian/biz/ugc/api/IRIJUgcVideoPublishService$IReleaseCallback;", "()V", "articleInfoMap", "Ljava/util/HashMap;", "", "Lcom/tencent/tkd/topicsdk/bean/PublishArticleInfo;", "Lkotlin/collections/HashMap;", "listenerMap", "Lcom/tencent/tkd/topicsdk/interfaces/IPublishManager$IPublishListener;", "Lcom/tencent/mobileqq/kandian/biz/ugc/api/IRIJUgcVideoPublishService$IVideoPublishCallback;", "manager", "Lcom/tencent/mobileqq/kandian/biz/ugc/api/IRIJUgcVideoPublishService;", "getManager", "()Lcom/tencent/mobileqq/kandian/biz/ugc/api/IRIJUgcVideoPublishService;", "publishStatusListeners", "", "Lcom/tencent/tkd/topicsdk/interfaces/IPublishManager$IPublishStatusListener;", "ugcVideo", "Lcom/tencent/mobileqq/kandian/biz/ugc/entity/UgcVideo;", "uploadVideoStatusCallback", "com/tencent/mobileqq/kandian/biz/publisher/impls/PublishManagerImpl$uploadVideoStatusCallback$2$1", "getUploadVideoStatusCallback", "()Lcom/tencent/mobileqq/kandian/biz/publisher/impls/PublishManagerImpl$uploadVideoStatusCallback$2$1;", "uploadVideoStatusCallback$delegate", "Lkotlin/Lazy;", "addPublishListener", "", "listener", "pauseUploadVideo", "globalPublisherConfig", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "preUploadVideoInfo", "Lcom/tencent/tkd/topicsdk/bean/PreUploadVideoInfo;", "preUploadVideo", "isStart", "", "publishStatusListener", "release", "removePublishListener", "removePublishStatusListener", "showMobileNetworkDialog", "context", "Landroid/content/Context;", "fileSize", "", "callback", "Lcom/tencent/tkd/topicsdk/interfaces/IPublishManager$ICheckResultCallBack;", "startPublish", "publishArticleInfo", "updateUgcVideo", "toPublishArticleInfo", "kandian_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class PublishManagerImpl
-  implements RIJUgcVideoPublishManager.IReleaseCallback, IPublishManager
+  implements IRIJUgcVideoPublishService.IReleaseCallback, IPublishManager
 {
-  public static final PublishManagerImpl.Companion a;
-  private final HashMap<IPublishManager.IPublishListener, RIJUgcVideoPublishManager.IVideoPublishCallback> a;
+  private UgcVideo jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+  private final HashMap<IPublishManager.IPublishListener, IRIJUgcVideoPublishService.IVideoPublishCallback> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private final List<IPublishManager.IPublishStatusListener> jdField_a_of_type_JavaUtilList = (List)new ArrayList();
+  private final Lazy jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new PublishManagerImpl.uploadVideoStatusCallback.2(this));
   private final HashMap<String, PublishArticleInfo> b = new HashMap();
-  
-  static
-  {
-    jdField_a_of_type_ComTencentMobileqqKandianBizPublisherImplsPublishManagerImpl$Companion = new PublishManagerImpl.Companion(null);
-  }
   
   public PublishManagerImpl()
   {
-    this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
-    a().a((RIJUgcVideoPublishManager.IReleaseCallback)this);
+    a().addReleaseCallback((IRIJUgcVideoPublishService.IReleaseCallback)this);
   }
   
-  private final UgcVideo a(@NotNull PublishArticleInfo paramPublishArticleInfo)
+  private final PublishManagerImpl.uploadVideoStatusCallback.2.1 a()
   {
-    UgcVideo localUgcVideo = new UgcVideo();
-    localUgcVideo.seqId = paramPublishArticleInfo.getPublishId();
-    Object localObject1 = paramPublishArticleInfo.getVideoInfo();
-    if (localObject1 != null)
+    return (PublishManagerImpl.uploadVideoStatusCallback.2.1)this.jdField_a_of_type_KotlinLazy.getValue();
+  }
+  
+  private final IRIJUgcVideoPublishService a()
+  {
+    IRuntimeService localIRuntimeService = RIJQQAppInterfaceUtil.a().getRuntimeService(IRIJUgcVideoPublishService.class);
+    Intrinsics.checkExpressionValueIsNotNull(localIRuntimeService, "RIJQQAppInterfaceUtil.ge…blishService::class.java)");
+    return (IRIJUgcVideoPublishService)localIRuntimeService;
+  }
+  
+  private final UgcVideo a(PreUploadVideoInfo paramPreUploadVideoInfo)
+  {
+    UgcVideo localUgcVideo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+    if (localUgcVideo != null)
     {
-      localUgcVideo.filePath = ((VideoInfo)localObject1).getFilePath();
-      localUgcVideo.coverPath = ((VideoInfo)localObject1).getCoverPath();
-      localUgcVideo.coverWidth = ((VideoInfo)localObject1).getCoverWidth();
-      localUgcVideo.coverHeight = ((VideoInfo)localObject1).getCoverHeight();
-      localUgcVideo.duration = ((int)((VideoInfo)localObject1).getDuration() / 1000);
-      localUgcVideo.width = ((VideoInfo)localObject1).getWidth();
-      localUgcVideo.height = ((VideoInfo)localObject1).getHeight();
-      localUgcVideo.fileSize = ((VideoInfo)localObject1).getFileSize();
-      localUgcVideo.fileMd5 = ((VideoInfo)localObject1).getFileMd5();
-    }
-    localUgcVideo.insertTime = (System.currentTimeMillis() / 1000);
-    localUgcVideo.startUserWaitingTime = System.currentTimeMillis();
-    localUgcVideo.title = paramPublishArticleInfo.getContent();
-    localUgcVideo.columnId = paramPublishArticleInfo.getTopicId();
-    boolean bool;
-    if (!paramPublishArticleInfo.getAllowReprint())
-    {
-      bool = true;
-      localUgcVideo.reprintDisable = bool;
-      switch (paramPublishArticleInfo.getPrivacySetting())
+      if (localUgcVideo == null) {
+        Intrinsics.throwNpe();
+      }
+      if (!(Intrinsics.areEqual(localUgcVideo.seqId, paramPreUploadVideoInfo.getPublishId()) ^ true))
       {
-      default: 
-        i = UgcVideo.TYPE_PUBLIC;
-        label212:
-        localUgcVideo.publicType = i;
-        localUgcVideo.uploadType = 0;
-        localUgcVideo.fromForReport = -1;
-        if (((CharSequence)paramPublishArticleInfo.getScene()).length() <= 0) {
-          break;
+        localUgcVideo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+        if (localUgcVideo == null) {
+          Intrinsics.throwNpe();
         }
+        localUgcVideo.coverPath = paramPreUploadVideoInfo.getVideoInfo().getCoverPath();
+        localUgcVideo.coverWidth = paramPreUploadVideoInfo.getVideoInfo().getCoverWidth();
+        localUgcVideo.coverHeight = paramPreUploadVideoInfo.getVideoInfo().getCoverHeight();
+        return localUgcVideo;
       }
     }
-    for (int i = 1;; i = 0)
+    this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo = PublishArticleInfoExtKt.a(paramPreUploadVideoInfo);
+    paramPreUploadVideoInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+    if (paramPreUploadVideoInfo == null) {
+      Intrinsics.throwNpe();
+    }
+    return paramPreUploadVideoInfo;
+  }
+  
+  private final UgcVideo a(PublishArticleInfo paramPublishArticleInfo)
+  {
+    UgcVideo localUgcVideo1 = PublishArticleInfoExtKt.a(paramPublishArticleInfo);
+    UgcVideo localUgcVideo2 = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+    paramPublishArticleInfo = localUgcVideo1;
+    if (localUgcVideo2 != null)
     {
-      if (i != 0) {}
-      try
-      {
-        i = new JSONObject(paramPublishArticleInfo.getScene()).optInt("key_from", 0);
-        if (i == 4) {
-          localUgcVideo.uploadType = 1;
-        }
-        localUgcVideo.fromForReport = PublisherReportUtils.a.a(i);
+      if (localUgcVideo2 == null) {
+        Intrinsics.throwNpe();
       }
-      catch (Exception localException)
+      paramPublishArticleInfo = localUgcVideo1;
+      if (Intrinsics.areEqual(localUgcVideo2.seqId, localUgcVideo1.seqId))
       {
-        for (;;)
+        paramPublishArticleInfo = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+        if (paramPublishArticleInfo == null) {
+          Intrinsics.throwNpe();
+        }
+        paramPublishArticleInfo.insertTime = localUgcVideo1.insertTime;
+        paramPublishArticleInfo.title = localUgcVideo1.title;
+        paramPublishArticleInfo.columnId = localUgcVideo1.columnId;
+        paramPublishArticleInfo.reprintDisable = localUgcVideo1.reprintDisable;
+        paramPublishArticleInfo.publicType = localUgcVideo1.publicType;
+        paramPublishArticleInfo.uploadType = localUgcVideo1.uploadType;
+        paramPublishArticleInfo.address = localUgcVideo1.address;
+        paramPublishArticleInfo.setMultiTitleStruct(localUgcVideo1.getMultiTitleStruct());
+        paramPublishArticleInfo.kdCommunityId = localUgcVideo1.kdCommunityId;
+        paramPublishArticleInfo.needShowPublishToast = localUgcVideo1.needShowPublishToast;
+        localUgcVideo1 = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+        paramPublishArticleInfo = localUgcVideo1;
+        if (localUgcVideo1 == null)
         {
-          JSONObject localJSONObject;
-          QLog.e("PublishManagerImpl", 1, localException.getMessage());
-          continue;
-          localObject2 = ((LocationInfo)localObject3).getName();
-          continue;
-          localObject2 = null;
+          Intrinsics.throwNpe();
+          paramPublishArticleInfo = localUgcVideo1;
         }
-        Object localObject3 = (QQAppInterface)localObject2;
-        Object localObject2 = PublisherUtils.a;
-        localObject3 = ((QQAppInterface)localObject3).getCurrentUin();
-        Intrinsics.checkExpressionValueIsNotNull(localObject3, "app.currentUin");
-        localUgcVideo.setMultiTitleStruct(((PublisherUtils)localObject2).a((String)localObject3, false, paramPublishArticleInfo.getContentList()));
       }
-      localObject3 = paramPublishArticleInfo.getLocationInfo();
-      if (localObject3 == null) {
-        break label506;
-      }
-      localJSONObject = new JSONObject();
-      localJSONObject.put("latitude", ((LocationInfo)localObject3).getLatitude());
-      localJSONObject.put("longitude", ((LocationInfo)localObject3).getLongitude());
-      localJSONObject.put("is_user_selected", ((LocationInfo)localObject3).isUserSelect());
-      if (!TextUtils.isEmpty((CharSequence)((LocationInfo)localObject3).getName())) {
-        break label496;
-      }
-      localObject1 = ((LocationInfo)localObject3).getAddr();
-      localJSONObject.put("location_name", localObject1);
-      localJSONObject.put("area_id", ((LocationInfo)localObject3).getUid());
-      localObject1 = localJSONObject.toString();
-      localUgcVideo.address = ((String)localObject1);
-      localObject1 = BaseApplicationImpl.getApplication();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication()");
-      localObject1 = ((BaseApplicationImpl)localObject1).getRuntime();
-      if (localObject1 != null) {
-        break label512;
-      }
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.app.QQAppInterface");
-      bool = false;
-      break;
-      i = UgcVideo.TYPE_PUBLIC_AND_REMIND;
-      break label212;
-      i = UgcVideo.TYPE_PUBLIC;
-      break label212;
-      i = UgcVideo.TYPE_NO_PUBLIC;
-      break label212;
     }
-    label496:
-    label506:
-    return localUgcVideo;
-  }
-  
-  private final RIJUgcVideoPublishManager a()
-  {
-    Manager localManager = RIJQQAppInterfaceUtil.a().getManager(QQManagerFactory.RIJ_UGC_VIDEO_PUBLISH_MANAGER);
-    if (localManager == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.biz.pubaccount.readinjoy.ugc.publishvideotask.RIJUgcVideoPublishManager");
-    }
-    return (RIJUgcVideoPublishManager)localManager;
+    return paramPublishArticleInfo;
   }
   
   private final PublishArticleInfo a(@NotNull UgcVideo paramUgcVideo)
@@ -184,17 +151,16 @@ public final class PublishManagerImpl
       localObject = paramUgcVideo.rowkey;
       Intrinsics.checkExpressionValueIsNotNull(localObject, "ugcVideo.rowkey");
       localPublishArticleInfo.setContentId((String)localObject);
-      if (paramUgcVideo.status != UgcVideo.STATUS_FINISH) {
-        break label169;
+      boolean bool;
+      if (paramUgcVideo.status == UgcVideo.STATUS_FINISH) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label169:
-    for (boolean bool = true;; bool = false)
-    {
       localPublishArticleInfo.setPublishing(bool);
       return localPublishArticleInfo;
-      return null;
     }
+    return null;
   }
   
   public void a()
@@ -202,17 +168,71 @@ public final class PublishManagerImpl
     this.b.clear();
   }
   
+  public void a(@NotNull Context paramContext, long paramLong, @NotNull IPublishManager.ICheckResultCallBack paramICheckResultCallBack)
+  {
+    Intrinsics.checkParameterIsNotNull(paramContext, "context");
+    Intrinsics.checkParameterIsNotNull(paramICheckResultCallBack, "callback");
+    if (CUKingCardUtils.a() == 1)
+    {
+      paramICheckResultCallBack.a(true);
+      return;
+    }
+    RIJUgcUtils.a(paramContext, paramLong, (RIJUgcUtils.IUploadActionCallback)new PublishManagerImpl.showMobileNetworkDialog.1(paramICheckResultCallBack), null);
+  }
+  
+  public void a(@NotNull GlobalPublisherConfig paramGlobalPublisherConfig, @NotNull PreUploadVideoInfo paramPreUploadVideoInfo)
+  {
+    Intrinsics.checkParameterIsNotNull(paramGlobalPublisherConfig, "globalPublisherConfig");
+    Intrinsics.checkParameterIsNotNull(paramPreUploadVideoInfo, "preUploadVideoInfo");
+    paramGlobalPublisherConfig = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+    if (paramGlobalPublisherConfig != null)
+    {
+      if (paramGlobalPublisherConfig == null) {
+        Intrinsics.throwNpe();
+      }
+      if (Intrinsics.areEqual(paramGlobalPublisherConfig.seqId, paramPreUploadVideoInfo.getPublishId()))
+      {
+        a().pauseVideoTask(this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo);
+        paramGlobalPublisherConfig = this.jdField_a_of_type_ComTencentMobileqqKandianBizUgcEntityUgcVideo;
+        if (paramGlobalPublisherConfig == null) {
+          Intrinsics.throwNpe();
+        }
+        paramGlobalPublisherConfig.pauseBySwitchNet = false;
+      }
+    }
+  }
+  
+  public void a(@NotNull GlobalPublisherConfig paramGlobalPublisherConfig, @NotNull PreUploadVideoInfo paramPreUploadVideoInfo, boolean paramBoolean, @NotNull IPublishManager.IPublishStatusListener paramIPublishStatusListener)
+  {
+    Intrinsics.checkParameterIsNotNull(paramGlobalPublisherConfig, "globalPublisherConfig");
+    Intrinsics.checkParameterIsNotNull(paramPreUploadVideoInfo, "preUploadVideoInfo");
+    Intrinsics.checkParameterIsNotNull(paramIPublishStatusListener, "publishStatusListener");
+    if (!this.jdField_a_of_type_JavaUtilList.contains(paramIPublishStatusListener)) {
+      this.jdField_a_of_type_JavaUtilList.add(paramIPublishStatusListener);
+    }
+    a().preUploadVideoTask(a(paramPreUploadVideoInfo), paramBoolean, (IRIJUgcVideoPublishService.IUploadVideoStatusCallback)a());
+  }
+  
   public void a(@NotNull GlobalPublisherConfig paramGlobalPublisherConfig, @NotNull PublishArticleInfo paramPublishArticleInfo)
   {
     Intrinsics.checkParameterIsNotNull(paramGlobalPublisherConfig, "globalPublisherConfig");
     Intrinsics.checkParameterIsNotNull(paramPublishArticleInfo, "publishArticleInfo");
-    a().a(a(paramPublishArticleInfo), true);
+    this.jdField_a_of_type_JavaUtilList.clear();
+    a().addVideoTask(a(paramPublishArticleInfo), true);
     ((Map)this.b).put(paramPublishArticleInfo.getPublishId(), paramPublishArticleInfo);
+  }
+  
+  public void a(@NotNull IPublishManager.IPublishStatusListener paramIPublishStatusListener)
+  {
+    Intrinsics.checkParameterIsNotNull(paramIPublishStatusListener, "publishStatusListener");
+    if (this.jdField_a_of_type_JavaUtilList.contains(paramIPublishStatusListener)) {
+      this.jdField_a_of_type_JavaUtilList.remove(paramIPublishStatusListener);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.PublishManagerImpl
  * JD-Core Version:    0.7.0.1
  */

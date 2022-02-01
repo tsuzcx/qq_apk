@@ -21,13 +21,14 @@ public final class SubMsgType0x115$NotifyItem
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "uint32_ime", "uint32_timeout_s", "uint64_timestamp", "uint32_event_type", "uint32_interval", "bytes_wording" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, NotifyItem.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 50 }, new String[] { "uint32_ime", "uint32_timeout_s", "uint64_timestamp", "uint32_event_type", "uint32_interval", "bytes_wording" }, new Object[] { localInteger, localInteger, Long.valueOf(0L), localInteger, localInteger, localByteStringMicro }, NotifyItem.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.s2c.msgtype0x210.submsgtype0x115.SubMsgType0x115.NotifyItem
  * JD-Core Version:    0.7.0.1
  */

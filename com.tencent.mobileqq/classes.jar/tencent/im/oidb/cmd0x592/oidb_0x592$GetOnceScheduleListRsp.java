@@ -21,13 +21,14 @@ public final class oidb_0x592$GetOnceScheduleListRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "uint32_result", "bytes_error_msg", "uint32_get_direction", "uint64_end_time", "rpt_msg_result_list" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Long.valueOf(0L), null }, GetOnceScheduleListRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42 }, new String[] { "uint32_result", "bytes_error_msg", "uint32_get_direction", "uint64_end_time", "rpt_msg_result_list" }, new Object[] { localInteger, localByteStringMicro, localInteger, Long.valueOf(0L), null }, GetOnceScheduleListRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x592.oidb_0x592.GetOnceScheduleListRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -36,57 +36,75 @@ public class d$a
   
   public Field a(String paramString)
   {
-    Field localField = (Field)this.b.get(paramString);
-    Object localObject = localField;
-    if (localField == null) {
-      localObject = this.d;
-    }
-    while (localObject != null) {
-      try
-      {
-        localField = ((Class)localObject).getDeclaredField(paramString);
-        localObject = localField;
-        ((Field)localObject).setAccessible(true);
-        this.b.put(paramString, localObject);
-        return localObject;
+    Object localObject = (Field)this.b.get(paramString);
+    if (localObject == null)
+    {
+      for (localObject = this.d; localObject != null; localObject = ((Class)localObject).getSuperclass()) {
+        try
+        {
+          Field localField = ((Class)localObject).getDeclaredField(paramString);
+          localField.setAccessible(true);
+          this.b.put(paramString, localField);
+          return localField;
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
+          label52:
+          break label52;
+        }
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        localObject = ((Class)localObject).getSuperclass();
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("class: ");
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(", field: ");
+      ((StringBuilder)localObject).append(paramString);
+      throw new NoSuchFieldException(((StringBuilder)localObject).toString());
     }
-    throw new NoSuchFieldException("class: " + this.d + ", field: " + paramString);
+    else
+    {
+      return localObject;
+    }
   }
   
   @NonNull
   public Method a(String paramString, Class<?>... paramVarArgs)
   {
     d.c localc = new d.c(paramString, paramVarArgs);
-    Method localMethod = (Method)this.a.get(localc);
-    Object localObject = localMethod;
-    if (localMethod == null) {
-      localObject = this.d;
-    }
-    while (localObject != null) {
-      try
-      {
-        localMethod = ((Class)localObject).getDeclaredMethod(paramString, paramVarArgs);
-        localObject = localMethod;
-        ((Method)localObject).setAccessible(true);
-        this.a.put(localc, localObject);
-        return localObject;
+    Object localObject = (Method)this.a.get(localc);
+    if (localObject == null)
+    {
+      for (localObject = this.d; localObject != null; localObject = ((Class)localObject).getSuperclass()) {
+        try
+        {
+          Method localMethod = ((Class)localObject).getDeclaredMethod(paramString, paramVarArgs);
+          localMethod.setAccessible(true);
+          this.a.put(localc, localMethod);
+          return localMethod;
+        }
+        catch (NoSuchMethodException localNoSuchMethodException)
+        {
+          label70:
+          break label70;
+        }
       }
-      catch (NoSuchMethodException localNoSuchMethodException)
-      {
-        localObject = ((Class)localObject).getSuperclass();
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("class: ");
+      ((StringBuilder)localObject).append(this.d);
+      ((StringBuilder)localObject).append(", method: ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", args: ");
+      ((StringBuilder)localObject).append(Arrays.toString(paramVarArgs));
+      throw new NoSuchMethodException(((StringBuilder)localObject).toString());
     }
-    throw new NoSuchMethodException("class: " + this.d + ", method: " + paramString + ", args: " + Arrays.toString(paramVarArgs));
+    else
+    {
+      return localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.d.d.a
  * JD-Core Version:    0.7.0.1
  */

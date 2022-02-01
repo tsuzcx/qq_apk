@@ -105,53 +105,101 @@ class a
   
   public static void b(j paramj)
   {
-    boolean bool = true;
     a("reportAndClear");
     HashMap localHashMap = new HashMap(32);
-    localHashMap.put("system_boot_time", "" + d);
-    localHashMap.put("beginTime", "" + b);
-    localHashMap.put("endTime", "" + c);
-    localHashMap.put("noNetAlive", "" + g);
-    localHashMap.put("noNetExist", "" + h);
-    localHashMap.put("notConnectedAlive", "" + i);
-    localHashMap.put("notConnectedExist", "" + j);
-    localHashMap.put("offlineAlive", "" + k);
-    localHashMap.put("offlineExist", "" + l);
-    localHashMap.put("aliveTimeOff", "" + m);
-    localHashMap.put("existTimeOff", "" + n);
-    localHashMap.put("notExitTimeOff", "" + o);
-    localHashMap.put("lastAliveOf", "" + p);
-    localHashMap.put("jobschedulerAB", "" + k.g);
-    if ((d > 0L) && (b > 0L) && (c > 0L) && (e >= 0L) && (m >= 0L) && (c > b)) {
-      if (paramj != null)
-      {
-        if (c - b <= 0L) {
-          break label565;
-        }
-        paramj.a("msfAliveTime_new", bool, f, e, localHashMap, false, false);
-      }
-    }
-    for (;;)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(d);
+    localHashMap.put("system_boot_time", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(b);
+    localHashMap.put("beginTime", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(c);
+    localHashMap.put("endTime", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(g);
+    localHashMap.put("noNetAlive", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(h);
+    localHashMap.put("noNetExist", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(i);
+    localHashMap.put("notConnectedAlive", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(j);
+    localHashMap.put("notConnectedExist", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(k);
+    localHashMap.put("offlineAlive", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(l);
+    localHashMap.put("offlineExist", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(m);
+    localHashMap.put("aliveTimeOff", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(n);
+    localHashMap.put("existTimeOff", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(o);
+    localHashMap.put("notExitTimeOff", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(p);
+    localHashMap.put("lastAliveOf", localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(k.g);
+    localHashMap.put("jobschedulerAB", localStringBuilder.toString());
+    if (d > 0L)
     {
-      try
+      long l1 = b;
+      if (l1 > 0L)
       {
-        if ((MsfCore.sCore != null) && (MsfService.core.sender.b.l().c())) {
-          com.tencent.mobileqq.msf.core.c.a.a(MsfCore.sCore, "alive_rate", "", "", "", 1, "", String.valueOf(c - b), String.valueOf(n), "", "", "", "", "");
+        long l2 = c;
+        if ((l2 > 0L) && (e >= 0L) && (m >= 0L) && (l2 > l1))
+        {
+          if (paramj != null)
+          {
+            boolean bool;
+            if (l2 - l1 > 0L) {
+              bool = true;
+            } else {
+              bool = false;
+            }
+            paramj.a("msfAliveTime_new", bool, f, e, localHashMap, false, false);
+          }
+          try
+          {
+            if ((MsfCore.sCore == null) || (!MsfService.core.sender.b.l().c())) {
+              break label749;
+            }
+            com.tencent.mobileqq.msf.core.c.a.a(MsfCore.sCore, "alive_rate", "", "", "", 1, "", String.valueOf(c - b), String.valueOf(n), "", "", "", "", "");
+          }
+          catch (Exception paramj)
+          {
+            paramj.printStackTrace();
+          }
         }
-        b();
-        return;
-        label565:
-        bool = false;
-      }
-      catch (Exception paramj)
-      {
-        paramj.printStackTrace();
-        continue;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(k.c, 1, "report failed");
       }
     }
+    if (QLog.isColorLevel()) {
+      QLog.d(k.c, 1, "report failed");
+    }
+    label749:
+    b();
   }
   
   public static void c()
@@ -161,7 +209,7 @@ class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.a
  * JD-Core Version:    0.7.0.1
  */

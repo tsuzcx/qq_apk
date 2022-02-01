@@ -6,11 +6,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
-import com.tencent.common.galleryactivity.AbstractImageAdapter.URLImageView2;
+import com.tencent.common.galleryactivity.URLImageView2;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -53,10 +53,8 @@ class QzonePhotoPreviewActivity$VerticalPictureAdapter
       localLayoutParams1 = new AbsListView.LayoutParams(-1, -2);
     }
     QZLog.d("VerticalPictureAdapter", 1, new Object[] { "photoInfo.heightWeightProportion:", Float.valueOf(localPicInfoItem.jdField_a_of_type_Float) });
-    if (localPicInfoItem.jdField_a_of_type_Float != 0.0F)
-    {
-      float f = ViewUtils.a();
-      localLayoutParams1.height = ((int)(localPicInfoItem.jdField_a_of_type_Float * f));
+    if (localPicInfoItem.jdField_a_of_type_Float != 0.0F) {
+      localLayoutParams1.height = ((int)(ViewUtils.a() * localPicInfoItem.jdField_a_of_type_Float));
     }
     paramVerticalPictureHolder.a.setLayoutParams(localLayoutParams1);
     paramVerticalPictureHolder.a.setImageDrawable(null);
@@ -64,68 +62,68 @@ class QzonePhotoPreviewActivity$VerticalPictureAdapter
   
   private void b(QzonePhotoPreviewActivity.VerticalPictureAdapter.VerticalPictureHolder paramVerticalPictureHolder, int paramInt)
   {
-    Object localObject = (QzonePhotoPreviewActivity.PicInfoItem)getItem(paramInt);
-    if ((localObject == null) || (TextUtils.isEmpty(((QzonePhotoPreviewActivity.PicInfoItem)localObject).jdField_a_of_type_JavaLangString))) {
-      QZLog.e("VerticalPictureAdapter", "loadImageData: bigUrl is empty");
-    }
-    for (;;)
+    Object localObject1 = (QzonePhotoPreviewActivity.PicInfoItem)getItem(paramInt);
+    if ((localObject1 != null) && (!TextUtils.isEmpty(((QzonePhotoPreviewActivity.PicInfoItem)localObject1).jdField_a_of_type_JavaLangString)))
     {
-      return;
-      File localFile = new File(((QzonePhotoPreviewActivity.PicInfoItem)localObject).jdField_a_of_type_JavaLangString);
-      if (localFile.exists())
+      Object localObject2 = new File(((QzonePhotoPreviewActivity.PicInfoItem)localObject1).jdField_a_of_type_JavaLangString);
+      if (((File)localObject2).exists())
       {
-        localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        localURLDrawableOptions.mRequestWidth = ViewUtils.a();
-        float f = ViewUtils.a();
-        localURLDrawableOptions.mRequestHeight = ((int)(((QzonePhotoPreviewActivity.PicInfoItem)localObject).jdField_a_of_type_Float * f));
-        localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
+        URLDrawable.URLDrawableOptions localURLDrawableOptions2 = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions2.mRequestWidth = ViewUtils.a();
+        localURLDrawableOptions2.mRequestHeight = ((int)(ViewUtils.a() * ((QzonePhotoPreviewActivity.PicInfoItem)localObject1).jdField_a_of_type_Float));
+        localURLDrawableOptions2.mLoadingDrawable = URLDrawableHelperConstants.a;
+        localObject1 = null;
         try
         {
-          localObject = localFile.toURI().toURL();
-          if (localObject != null)
-          {
-            localObject = URLDrawable.getDrawable((URL)localObject, localURLDrawableOptions);
-            if (localObject != null) {
-              switch (((URLDrawable)localObject).getStatus())
-              {
-              default: 
-                ((URLDrawable)localObject).startDownload();
-              }
-            }
-            if (localObject != null)
-            {
-              paramVerticalPictureHolder.a.setImageDrawable((Drawable)localObject);
-              return;
-            }
-          }
+          localObject2 = ((File)localObject2).toURI().toURL();
+          localObject1 = localObject2;
         }
         catch (MalformedURLException localMalformedURLException)
         {
-          for (;;)
+          localMalformedURLException.printStackTrace();
+        }
+        if (localObject1 != null)
+        {
+          localObject1 = URLDrawable.getDrawable((URL)localObject1, localURLDrawableOptions2);
+          if (localObject1 != null)
           {
-            localMalformedURLException.printStackTrace();
-            localURLDrawable = null;
+            paramInt = ((URLDrawable)localObject1).getStatus();
+            if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3)) {
+              ((URLDrawable)localObject1).startDownload();
+            }
+          }
+          if (localObject1 != null) {
+            paramVerticalPictureHolder.a.setImageDrawable((Drawable)localObject1);
           }
         }
       }
+      else
+      {
+        URLDrawable.URLDrawableOptions localURLDrawableOptions1 = URLDrawable.URLDrawableOptions.obtain();
+        localURLDrawableOptions1.mRequestWidth = ViewUtils.a();
+        localURLDrawableOptions1.mRequestHeight = ((int)(ViewUtils.a() * ((QzonePhotoPreviewActivity.PicInfoItem)localObject1).jdField_a_of_type_Float));
+        localURLDrawableOptions1.mLoadingDrawable = URLDrawableHelperConstants.a;
+        localObject1 = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(((QzonePhotoPreviewActivity.PicInfoItem)localObject1).jdField_a_of_type_JavaLangString), localURLDrawableOptions1);
+        if (localObject1 == null) {
+          QLog.w("PEAK", 2, "drawable == null");
+        }
+        paramVerticalPictureHolder.a.setImageDrawable((Drawable)localObject1);
+      }
+      return;
     }
-    URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mRequestWidth = ViewUtils.a();
-    localURLDrawableOptions.mRequestHeight = ((int)(ViewUtils.a() * localURLDrawable.jdField_a_of_type_Float));
-    localURLDrawableOptions.mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-    URLDrawable localURLDrawable = URLDrawable.getDrawable(SharpPUtils.getWebpUrl(localURLDrawable.jdField_a_of_type_JavaLangString), localURLDrawableOptions);
-    if (localURLDrawable == null) {
-      QLog.w("PEAK", 2, "drawable == null");
-    }
-    paramVerticalPictureHolder.a.setImageDrawable(localURLDrawable);
+    QZLog.e("VerticalPictureAdapter", "loadImageData: bigUrl is empty");
   }
   
   public int getCount()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VerticalPictureAdapter", 2, "wywy getCount =" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("wywy getCount =");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size());
+        QLog.d("VerticalPictureAdapter", 2, localStringBuilder.toString());
       }
       return this.jdField_a_of_type_ComTencentMobileqqActivityPhotoQzonePhotoPreviewActivity.b.size();
     }
@@ -150,22 +148,24 @@ class QzonePhotoPreviewActivity$VerticalPictureAdapter
     QzonePhotoPreviewActivity.VerticalPictureAdapter.VerticalPictureHolder localVerticalPictureHolder = new QzonePhotoPreviewActivity.VerticalPictureAdapter.VerticalPictureHolder(this, null);
     if (paramView == null)
     {
-      localVerticalPictureHolder.a = new AbstractImageAdapter.URLImageView2(paramViewGroup.getContext());
+      localVerticalPictureHolder.a = new URLImageView2(paramViewGroup.getContext());
       localVerticalPictureHolder.a.setTag(localVerticalPictureHolder);
+      paramView = localVerticalPictureHolder;
     }
-    for (paramView = localVerticalPictureHolder;; paramView = (QzonePhotoPreviewActivity.VerticalPictureAdapter.VerticalPictureHolder)paramView.getTag())
+    else
     {
-      a(paramView, paramInt);
-      b(paramView, paramInt);
-      paramView = paramView.a;
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      paramView = (QzonePhotoPreviewActivity.VerticalPictureAdapter.VerticalPictureHolder)paramView.getTag();
     }
+    a(paramView, paramInt);
+    b(paramView, paramInt);
+    paramView = paramView.a;
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity.VerticalPictureAdapter
  * JD-Core Version:    0.7.0.1
  */

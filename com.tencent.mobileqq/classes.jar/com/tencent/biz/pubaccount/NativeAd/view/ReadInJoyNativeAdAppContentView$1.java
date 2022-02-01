@@ -37,7 +37,7 @@ class ReadInJoyNativeAdAppContentView$1
   
   public void onReceivedError(WebView paramWebView, int paramInt, String paramString1, String paramString2)
   {
-    paramWebView = this.a.findViewById(2131362869);
+    paramWebView = this.a.findViewById(2131362821);
     if ((paramWebView != null) && (ReadInJoyNativeAdAppContentView.a(this.a) != null))
     {
       ReadInJoyNativeAdAppContentView.a(this.a).setVisibility(8);
@@ -52,40 +52,40 @@ class ReadInJoyNativeAdAppContentView$1
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    GdtLog.b("AbsWebView", "shouldOverrideUrlLoading:" + paramString);
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {}
-    Object localObject;
-    do
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("shouldOverrideUrlLoading:");
+    ((StringBuilder)localObject).append(paramString);
+    GdtLog.b("AbsWebView", ((StringBuilder)localObject).toString());
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("jsbridge://"))) {
       return true;
-      localObject = ((CustomWebView)paramWebView).getPluginEngine();
-      if ((paramString.startsWith("file://")) || (paramString.startsWith("data:")) || (paramString.startsWith("http://")) || (paramString.startsWith("https://")))
-      {
-        if ((localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null))) {}
-        for (boolean bool = true;; bool = false) {
-          return bool;
-        }
-      }
+    }
+    localObject = ((CustomWebView)paramWebView).getPluginEngine();
+    if ((!paramString.startsWith("file://")) && (!paramString.startsWith("data:")) && (!paramString.startsWith("http://")) && (!paramString.startsWith("https://")))
+    {
       paramString = Uri.parse(paramString);
       localObject = paramString.getScheme();
-    } while (!AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue());
-    paramWebView = new Intent("android.intent.action.VIEW", paramString);
-    paramWebView.addFlags(268435456);
-    try
-    {
-      this.mContext.startActivity(paramWebView);
+      if (AuthorizeConfig.a().a(paramWebView.getUrl(), (String)localObject).booleanValue())
+      {
+        paramWebView = new Intent("android.intent.action.VIEW", paramString);
+        paramWebView.addFlags(268435456);
+        try
+        {
+          this.mContext.startActivity(paramWebView);
+          return true;
+        }
+        catch (ActivityNotFoundException paramWebView)
+        {
+          GdtLog.d("AbsWebView", paramWebView.toString());
+        }
+      }
       return true;
     }
-    catch (ActivityNotFoundException paramWebView)
-    {
-      GdtLog.d("AbsWebView", paramWebView.toString());
-    }
-    return true;
+    return (localObject != null) && (((WebViewPluginEngine)localObject).a(paramString, 16L, null));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppContentView.1
  * JD-Core Version:    0.7.0.1
  */

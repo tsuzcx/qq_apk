@@ -23,58 +23,54 @@ class ProfileQiqiLiveController$2
     new Bundle();
     String str = this.jdField_a_of_type_JavaLangString;
     Object localObject = str;
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       localObject = paramBundle.getByteArray("data");
-    }
-    try
-    {
-      paramBundle = new FastAuthorize.AuthorizeResponse();
-      paramBundle.mergeFrom((byte[])localObject);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
-      if ((paramBundle.ret.get().equals("0")) && (paramBundle.apk_name.has()))
+      try
       {
-        if (paramBundle.access_token.has())
+        paramBundle = new FastAuthorize.AuthorizeResponse();
+        paramBundle.mergeFrom((byte[])localObject);
+        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
+        if ((paramBundle.ret.get().equals("0")) && (paramBundle.apk_name.has()))
         {
-          localObject = paramBundle.access_token.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject);
+          if (paramBundle.access_token.has())
+          {
+            localObject = paramBundle.access_token.get();
+            this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$AT$", (CharSequence)localObject);
+          }
+          if (paramBundle.pay_token.has())
+          {
+            localObject = paramBundle.pay_token.get();
+            this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject);
+          }
+          if (paramBundle.openid.has())
+          {
+            localObject = paramBundle.openid.get();
+            this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject);
+          }
+          if (paramBundle.pfkey.has())
+          {
+            localObject = paramBundle.pfkey.get();
+            this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject);
+          }
+          if (paramBundle.encrykey.has())
+          {
+            localObject = paramBundle.encrykey.get();
+            this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject);
+          }
+          localObject = paramBundle.apk_name.get();
+          if (TextUtils.isEmpty((CharSequence)localObject)) {
+            return;
+          }
+          if (((String)localObject).contains(this.jdField_a_of_type_JavaLangString)) {}
         }
-        if (paramBundle.pay_token.has())
+        else
         {
-          localObject = paramBundle.pay_token.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$PT$", (CharSequence)localObject);
+          QLog.d(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.getClass().getSimpleName(), 4, "start without login state");
+          localObject = str;
         }
-        if (paramBundle.openid.has())
-        {
-          localObject = paramBundle.openid.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$OPID$", (CharSequence)localObject);
-        }
-        if (paramBundle.pfkey.has())
-        {
-          localObject = paramBundle.pfkey.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$PF$", (CharSequence)localObject);
-        }
-        if (paramBundle.encrykey.has())
-        {
-          localObject = paramBundle.encrykey.get();
-          this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString.replace("$ESK$", (CharSequence)localObject);
-        }
-        localObject = paramBundle.apk_name.get();
-        if (TextUtils.isEmpty((CharSequence)localObject)) {
-          return;
-        }
-        paramBundle = (Bundle)localObject;
-        if (((String)localObject).contains(this.jdField_a_of_type_JavaLangString)) {}
       }
-      else
-      {
-        QLog.d(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.getClass().getSimpleName(), 4, "start without login state");
-        paramBundle = str;
-      }
-      localObject = paramBundle;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException paramBundle)
       {
         localObject = str;
         if (QLog.isColorLevel())
@@ -84,22 +80,25 @@ class ProfileQiqiLiveController$2
         }
       }
     }
-    paramBundle = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
-    }
-    AppUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, paramBundle, this.jdField_a_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_MqqAppNewIntent != null)
+    for (;;)
     {
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_MqqAppNewIntent = null;
+      paramBundle = AppLaucherHelper.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel()) {
+        QLog.d(getClass().getSimpleName(), 2, "lauchApp now");
+      }
+      AppUtil.a(this.jdField_a_of_type_AndroidContentContext, (String)localObject, paramBundle, this.jdField_a_of_type_Int);
+      if (this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_MqqAppNewIntent != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
+        this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardProfileQiqiLiveController.jdField_a_of_type_MqqAppNewIntent = null;
+      }
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController.2
  * JD-Core Version:    0.7.0.1
  */

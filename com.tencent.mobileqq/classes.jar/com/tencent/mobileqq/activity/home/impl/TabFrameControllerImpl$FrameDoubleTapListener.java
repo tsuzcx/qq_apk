@@ -18,8 +18,13 @@ public class TabFrameControllerImpl$FrameDoubleTapListener
   
   public boolean onDoubleTap(MotionEvent paramMotionEvent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TabFrameControllerImpl", 2, "onDoubleTap() called with: e = [" + paramMotionEvent + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDoubleTap() called with: e = [");
+      localStringBuilder.append(paramMotionEvent);
+      localStringBuilder.append("]");
+      QLog.d("TabFrameControllerImpl", 2, localStringBuilder.toString());
     }
     this.a.b = SystemClock.uptimeMillis();
     TabFrameControllerImpl.dispatchOnDoubleTap(this.a);
@@ -38,7 +43,7 @@ public class TabFrameControllerImpl$FrameDoubleTapListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.impl.TabFrameControllerImpl.FrameDoubleTapListener
  * JD-Core Version:    0.7.0.1
  */

@@ -1,62 +1,22 @@
 package com.tencent.biz.common.offline;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.qphone.base.util.QLog;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
-import mqq.observer.BusinessObserver;
-import tencent.im.sso.offlinpkg.OfflinePkg.RspBody;
+import android.content.Context;
+import com.tencent.biz.common.offline.util.IOfflineDownloader;
+import java.util.HashMap;
 
 final class HtmlOffline$5
-  implements BusinessObserver
+  implements Runnable
 {
-  HtmlOffline$5(NewIntent paramNewIntent, AsyncBack paramAsyncBack, boolean paramBoolean1, boolean paramBoolean2, AppRuntime paramAppRuntime, boolean paramBoolean3) {}
+  HtmlOffline$5(Context paramContext, String paramString1, String paramString2, String paramString3, long paramLong, AsyncBack paramAsyncBack, HashMap paramHashMap) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    this.jdField_a_of_type_MqqAppNewIntent.setObserver(null);
-    if (QLog.isColorLevel()) {
-      QLog.d("HtmlCheckUpdate", 2, "-->offline:checkUpdate,onReceive:isSuccess=" + paramBoolean);
-    }
-    if (paramBoolean) {
-      try
-      {
-        paramBundle = paramBundle.getByteArray("data");
-        if (paramBundle == null) {
-          return;
-        }
-        OfflinePkg.RspBody localRspBody = new OfflinePkg.RspBody();
-        localRspBody.mergeFrom(paramBundle);
-        paramBundle = new String(localRspBody.str_offline_pkg.get().toByteArray(), "UTF-8");
-        if (this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack != null) {
-          this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.loaded(paramBundle, 0);
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          return;
-        }
-        if (this.b)
-        {
-          HtmlOffline.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack);
-          return;
-        }
-        HtmlOffline.c(paramBundle, this.jdField_a_of_type_MqqAppAppRuntime, this.c, null);
-        return;
-      }
-      catch (Exception paramBundle)
-      {
-        this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.loaded("{\"r\":-1}", 2);
-        return;
-      }
-    } else if (this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack != null) {
-      this.jdField_a_of_type_ComTencentBizCommonOfflineAsyncBack.loaded("{\"r\":-1}", 2);
-    }
+    HtmlOffline.a.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, this.b, this.c, new HtmlOffline.5.1(this), this.jdField_a_of_type_JavaUtilHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.offline.HtmlOffline.5
  * JD-Core Version:    0.7.0.1
  */

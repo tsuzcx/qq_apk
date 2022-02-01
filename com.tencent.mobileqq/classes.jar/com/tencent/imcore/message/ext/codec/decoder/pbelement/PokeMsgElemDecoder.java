@@ -9,7 +9,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.service.message.DecodeProtoPkgContext;
 import com.tencent.mobileqq.service.message.TempSessionInfo;
 import com.tencent.mobileqq.troop.data.MessageInfo;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -26,84 +26,88 @@ public class PokeMsgElemDecoder
     if (QLog.isColorLevel()) {
       paramStringBuilder.append("elemType:PokeMsg;\n");
     }
-    paramList = paramList.iterator();
+    paramStringBuilder = null;
+    Object localObject = paramList.iterator();
     do
     {
-      if (!paramList.hasNext()) {
+      paramList = paramStringBuilder;
+      if (!((Iterator)localObject).hasNext()) {
         break;
       }
-      paramStringBuilder = (im_msg_body.Elem)paramList.next();
-    } while (!paramStringBuilder.common_elem.has());
-    for (paramList = (im_msg_body.CommonElem)paramStringBuilder.common_elem.get();; paramList = null)
+      paramList = (im_msg_body.Elem)((Iterator)localObject).next();
+    } while (!paramList.common_elem.has());
+    paramList = (im_msg_body.CommonElem)paramList.common_elem.get();
+    if (paramList == null)
     {
-      if (paramList == null)
+      if (QLog.isColorLevel()) {
+        QLog.d("PokeMsg", 2, "decodePBMsgElems_PokeMsg null commomElem!");
+      }
+      return;
+    }
+    paramStringBuilder = new MessageForPoke();
+    paramStringBuilder.msgtype = -5012;
+    if (paramList.uint32_business_type.has()) {
+      paramStringBuilder.interactType = paramList.uint32_business_type.get();
+    }
+    if (paramList.bytes_pb_elem.has()) {
+      localObject = new hummer_commelem.MsgElemInfo_servtype2();
+    }
+    for (;;)
+    {
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("PokeMsg", 2, "decodePBMsgElems_PokeMsg null commomElem!");
+        ((hummer_commelem.MsgElemInfo_servtype2)localObject).mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
+        paramStringBuilder.msg = ((hummer_commelem.MsgElemInfo_servtype2)localObject).bytes_poke_summary.get().toStringUtf8();
+        paramStringBuilder.doubleHitState = ((hummer_commelem.MsgElemInfo_servtype2)localObject).uint32_double_hit.get();
+        if (!((hummer_commelem.MsgElemInfo_servtype2)localObject).uint32_vaspoke_id.has()) {
+          break label448;
         }
-        return;
+        i = ((hummer_commelem.MsgElemInfo_servtype2)localObject).uint32_vaspoke_id.get();
+        paramStringBuilder.subId = i;
+        if (((hummer_commelem.MsgElemInfo_servtype2)localObject).bytes_vaspoke_name.has()) {
+          paramList = ((hummer_commelem.MsgElemInfo_servtype2)localObject).bytes_vaspoke_name.get().toStringUtf8();
+        } else {
+          paramList = HardCodeUtil.a(2131706689);
+        }
+        paramStringBuilder.name = paramList;
+        if (!((hummer_commelem.MsgElemInfo_servtype2)localObject).bytes_vaspoke_minver.has()) {
+          break label454;
+        }
+        paramList = ((hummer_commelem.MsgElemInfo_servtype2)localObject).bytes_vaspoke_minver.get().toStringUtf8();
+        paramStringBuilder.minVersion = paramList;
+        paramStringBuilder.strength = ((hummer_commelem.MsgElemInfo_servtype2)localObject).uint32_poke_strength.get();
+        if (!((hummer_commelem.MsgElemInfo_servtype2)localObject).uint32_poke_flag.has()) {
+          break label460;
+        }
+        i = ((hummer_commelem.MsgElemInfo_servtype2)localObject).uint32_poke_flag.get();
+        paramStringBuilder.flag = i;
+        if (paramStringBuilder.interactType == 126) {
+          VasWebviewUtil.a("", "poke", "receive", "", 0, 0, 0, "", String.valueOf(paramStringBuilder.subId), "none", "", "", "", "", 0, 0, 0, 0);
+        }
       }
-      paramStringBuilder = new MessageForPoke();
-      paramStringBuilder.msgtype = -5012;
-      if (paramList.uint32_business_type.has()) {
-        paramStringBuilder.interactType = paramList.uint32_business_type.get();
-      }
-      hummer_commelem.MsgElemInfo_servtype2 localMsgElemInfo_servtype2;
-      if (paramList.bytes_pb_elem.has()) {
-        localMsgElemInfo_servtype2 = new hummer_commelem.MsgElemInfo_servtype2();
-      }
-      for (;;)
+      catch (Exception paramList)
       {
-        try
-        {
-          localMsgElemInfo_servtype2.mergeFrom(paramList.bytes_pb_elem.get().toByteArray());
-          paramStringBuilder.msg = localMsgElemInfo_servtype2.bytes_poke_summary.get().toStringUtf8();
-          paramStringBuilder.doubleHitState = localMsgElemInfo_servtype2.uint32_double_hit.get();
-          if (!localMsgElemInfo_servtype2.uint32_vaspoke_id.has()) {
-            continue;
-          }
-          i = localMsgElemInfo_servtype2.uint32_vaspoke_id.get();
-          paramStringBuilder.subId = i;
-          if (!localMsgElemInfo_servtype2.bytes_vaspoke_name.has()) {
-            continue;
-          }
-          paramList = localMsgElemInfo_servtype2.bytes_vaspoke_name.get().toStringUtf8();
-          paramStringBuilder.name = paramList;
-          if (!localMsgElemInfo_servtype2.bytes_vaspoke_minver.has()) {
-            continue;
-          }
-          paramList = localMsgElemInfo_servtype2.bytes_vaspoke_minver.get().toStringUtf8();
-          paramStringBuilder.minVersion = paramList;
-          paramStringBuilder.strength = localMsgElemInfo_servtype2.uint32_poke_strength.get();
-          if (!localMsgElemInfo_servtype2.uint32_poke_flag.has()) {
-            continue;
-          }
-          i = localMsgElemInfo_servtype2.uint32_poke_flag.get();
-          paramStringBuilder.flag = i;
-          if (paramStringBuilder.interactType == 126) {
-            VasWebviewUtil.reportCommercialDrainage("", "poke", "receive", "", 0, 0, 0, "", String.valueOf(paramStringBuilder.subId), "none", "", "", "", "", 0, 0, 0, 0);
-          }
-        }
-        catch (Exception paramList)
-        {
-          int i;
-          QLog.d("PokeMsg", 1, "decodePBMsgElems_PokeMsg exception!", paramList);
-          continue;
-        }
-        paramList1.add(paramStringBuilder);
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("PokeMsg", 2, "decodePbElems, common_elem type 2, interactType:" + paramStringBuilder.interactType + " ,doubleHitState:" + paramStringBuilder.doubleHitState);
-        return;
-        i = -1;
-        continue;
-        paramList = HardCodeUtil.a(2131706667);
-        continue;
-        paramList = "";
-        continue;
-        i = 0;
+        QLog.d("PokeMsg", 1, "decodePBMsgElems_PokeMsg exception!", paramList);
       }
+      paramList1.add(paramStringBuilder);
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("decodePbElems, common_elem type 2, interactType:");
+        paramList.append(paramStringBuilder.interactType);
+        paramList.append(" ,doubleHitState:");
+        paramList.append(paramStringBuilder.doubleHitState);
+        QLog.d("PokeMsg", 2, paramList.toString());
+      }
+      return;
+      label448:
+      int i = -1;
+      continue;
+      label454:
+      paramList = "";
+      continue;
+      label460:
+      i = 0;
     }
   }
   
@@ -125,7 +129,7 @@ public class PokeMsgElemDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.decoder.pbelement.PokeMsgElemDecoder
  * JD-Core Version:    0.7.0.1
  */

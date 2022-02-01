@@ -10,6 +10,7 @@ import com.huawei.hms.framework.common.ExecutorsUtils;
 import com.huawei.hms.framework.common.Logger;
 import java.util.LinkedHashMap;
 import java.util.concurrent.ExecutorService;
+import java.util.concurrent.RejectedExecutionException;
 
 public class HianalyticsHelper
 {
@@ -36,22 +37,25 @@ public class HianalyticsHelper
     }
     catch (Throwable localThrowable)
     {
-      Logger.w("HianalyticsHelper", "maybe you need add Hianalytics sdk");
-      this.hasHianalytics = false;
+      label34:
+      break label34;
     }
+    Logger.w("HianalyticsHelper", "maybe you need add Hianalytics sdk");
+    this.hasHianalytics = false;
   }
   
   public static HianalyticsHelper getInstance()
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new HianalyticsHelper();
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new HianalyticsHelper();
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   public ExecutorService getReportExecutor()
@@ -69,22 +73,31 @@ public class HianalyticsHelper
   
   public boolean isEnableReportNoSeed(Context paramContext)
   {
-    boolean bool = true;
-    if (!this.hasHianalytics) {}
-    while ((paramContext == null) || (Settings.Secure.getInt(paramContext.getContentResolver(), "user_experience_involved", -1) != 1)) {
-      return false;
+    if (!this.hasHianalytics) {
+      paramContext = "Hianalytics sdk need to be initialized";
     }
-    if (HiAnalytics.getInitFlag()) {
-      return true;
-    }
-    if (this.hInstance == null) {
-      this.hInstance = HiAnalyticsManager.getInstanceByTag(this.haTag);
-    }
-    if (this.hInstance != null) {}
     for (;;)
     {
-      return bool;
-      bool = false;
+      Logger.i("HianalyticsHelper", paramContext);
+      return false;
+      if (paramContext == null)
+      {
+        paramContext = "HianalyticsHelper context can't be null";
+      }
+      else
+      {
+        if (Settings.Secure.getInt(paramContext.getContentResolver(), "user_experience_involved", -1) == 1)
+        {
+          if (HiAnalytics.getInitFlag()) {
+            return true;
+          }
+          if (this.hInstance == null) {
+            this.hInstance = HiAnalyticsManager.getInstanceByTag(this.haTag);
+          }
+          return this.hInstance != null;
+        }
+        paramContext = "user experience involved needs to be opened";
+      }
     }
   }
   
@@ -95,21 +108,45 @@ public class HianalyticsHelper
   
   public void onEvent(LinkedHashMap<String, String> paramLinkedHashMap, String paramString)
   {
-    if (!this.hasHianalytics) {}
-    do
+    if (!this.hasHianalytics) {
+      return;
+    }
+    if (paramLinkedHashMap == null) {
+      return;
+    }
+    Logger.v("HianalyticsHelper", "data = %s", new Object[] { paramLinkedHashMap });
+    if (HiAnalytics.getInitFlag())
     {
-      do
-      {
-        return;
-      } while (paramLinkedHashMap == null);
-      Logger.v("HianalyticsHelper", "data = %s", new Object[] { paramLinkedHashMap });
-      if (HiAnalytics.getInitFlag())
-      {
-        HiAnalytics.onEvent(1, paramString, paramLinkedHashMap);
-        return;
-      }
-    } while (this.hInstance == null);
-    this.hInstance.onEvent(1, paramString, paramLinkedHashMap);
+      HiAnalytics.onEvent(1, paramString, paramLinkedHashMap);
+      return;
+    }
+    HiAnalyticsInstance localHiAnalyticsInstance = this.hInstance;
+    if (localHiAnalyticsInstance != null) {
+      localHiAnalyticsInstance.onEvent(1, paramString, paramLinkedHashMap);
+    }
+  }
+  
+  public void reportException(Throwable paramThrowable, String paramString)
+  {
+    String str = Thread.currentThread().getName();
+    try
+    {
+      this.reportExecutor.submit(new HianalyticsHelper.1(this, str, paramThrowable, paramString));
+      return;
+    }
+    catch (RejectedExecutionException paramThrowable)
+    {
+      break label45;
+    }
+    catch (Exception paramString)
+    {
+      label29:
+      break label29;
+    }
+    Logger.i("HianalyticsHelper", "reportException error!", new Object[] { paramThrowable });
+    return;
+    label45:
+    Logger.i("HianalyticsHelper", "reportException error RejectedExecutionException");
   }
   
   public void setHaTag(String paramString)
@@ -119,7 +156,7 @@ public class HianalyticsHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.common.hianalytics.HianalyticsHelper
  * JD-Core Version:    0.7.0.1
  */

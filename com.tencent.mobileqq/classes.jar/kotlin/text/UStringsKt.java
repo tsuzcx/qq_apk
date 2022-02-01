@@ -50,7 +50,7 @@ public final class UStringsKt
   @NotNull
   public static final String toString-olVBNx4(short paramShort, int paramInt)
   {
-    String str = Integer.toString(0xFFFF & paramShort, CharsKt.checkRadix(paramInt));
+    String str = Integer.toString(paramShort & 0xFFFF, CharsKt.checkRadix(paramInt));
     Intrinsics.checkExpressionValueIsNotNull(str, "java.lang.Integer.toStri…(this, checkRadix(radix))");
     return str;
   }
@@ -100,13 +100,12 @@ public final class UStringsKt
     if (paramString != null)
     {
       paramInt = paramString.unbox-impl();
-      if (UnsignedKt.uintCompare(paramInt, UInt.constructor-impl(255)) <= 0) {}
+      if (UnsignedKt.uintCompare(paramInt, UInt.constructor-impl(255)) > 0) {
+        return null;
+      }
+      return UByte.box-impl(UByte.constructor-impl((byte)paramInt));
     }
-    else
-    {
-      return null;
-    }
-    return UByte.box-impl(UByte.constructor-impl((byte)paramInt));
+    return null;
   }
   
   @ExperimentalUnsignedTypes
@@ -149,14 +148,15 @@ public final class UStringsKt
   @Nullable
   public static final UInt toUIntOrNull(@NotNull String paramString, int paramInt)
   {
-    int i = 1;
     Intrinsics.checkParameterIsNotNull(paramString, "$this$toUIntOrNull");
     CharsKt.checkRadix(paramInt);
     int n = paramString.length();
     if (n == 0) {
       return null;
     }
+    int k = 0;
     int j = paramString.charAt(0);
+    int i = 1;
     if (j < 48)
     {
       if ((n == 1) || (j != 43)) {
@@ -167,22 +167,21 @@ public final class UStringsKt
       i = 0;
     }
     int i1 = UInt.constructor-impl(paramInt);
-    int k = 0;
-    for (int m = 119304647; i < n; m = j)
+    int m = 119304647;
+    j = i;
+    while (j < n)
     {
-      int i2 = CharsKt.digitOf(paramString.charAt(i), paramInt);
+      int i2 = CharsKt.digitOf(paramString.charAt(j), paramInt);
       if (i2 < 0) {
         return null;
       }
-      j = m;
+      i = m;
       if (UnsignedKt.uintCompare(k, m) > 0) {
         if (m == 119304647)
         {
           m = UnsignedKt.uintDivide-J1ME1BU(-1, i1);
-          j = m;
-          if (UnsignedKt.uintCompare(k, m) > 0) {
-            return null;
-          }
+          i = m;
+          if (UnsignedKt.uintCompare(k, m) <= 0) {}
         }
         else
         {
@@ -194,7 +193,8 @@ public final class UStringsKt
       if (UnsignedKt.uintCompare(k, m) < 0) {
         return null;
       }
-      i += 1;
+      j += 1;
+      m = i;
     }
     return UInt.box-impl(k);
   }
@@ -245,30 +245,29 @@ public final class UStringsKt
     if (j == 0) {
       return null;
     }
-    int i = paramString.charAt(0);
-    long l4;
-    long l2;
-    if (i < 48)
-    {
-      if ((j == 1) || (i != 43)) {
-        return null;
+    int i = 0;
+    int k = paramString.charAt(0);
+    if (k < 48) {
+      if (j != 1)
+      {
+        if (k != 43) {
+          return null;
+        }
+        i = 1;
       }
-      i = 1;
-      l4 = ULong.constructor-impl(paramInt);
-      l2 = 0L;
-    }
-    long l1;
-    for (long l3 = 512409557603043100L;; l3 = l1)
-    {
-      if (i >= j) {
-        break label197;
-      }
-      int k = CharsKt.digitOf(paramString.charAt(i), paramInt);
-      if (k < 0)
+      else
       {
         return null;
-        i = 0;
-        break;
+      }
+    }
+    long l4 = ULong.constructor-impl(paramInt);
+    long l2 = 0L;
+    long l1;
+    for (long l3 = 512409557603043100L; i < j; l3 = l1)
+    {
+      k = CharsKt.digitOf(paramString.charAt(i), paramInt);
+      if (k < 0) {
+        return null;
       }
       l1 = l3;
       if (UnsignedKt.ulongCompare(l2, l3) > 0) {
@@ -276,9 +275,7 @@ public final class UStringsKt
         {
           l3 = UnsignedKt.ulongDivide-eb3DHEI(-1L, l4);
           l1 = l3;
-          if (UnsignedKt.ulongCompare(l2, l3) > 0) {
-            return null;
-          }
+          if (UnsignedKt.ulongCompare(l2, l3) <= 0) {}
         }
         else
         {
@@ -292,7 +289,6 @@ public final class UStringsKt
       }
       i += 1;
     }
-    label197:
     return ULong.box-impl(l2);
   }
   
@@ -341,18 +337,17 @@ public final class UStringsKt
     if (paramString != null)
     {
       paramInt = paramString.unbox-impl();
-      if (UnsignedKt.uintCompare(paramInt, UInt.constructor-impl(65535)) <= 0) {}
+      if (UnsignedKt.uintCompare(paramInt, UInt.constructor-impl(65535)) > 0) {
+        return null;
+      }
+      return UShort.box-impl(UShort.constructor-impl((short)paramInt));
     }
-    else
-    {
-      return null;
-    }
-    return UShort.box-impl(UShort.constructor-impl((short)paramInt));
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.UStringsKt
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,13 @@
 package com.tencent.mobileqq.systemmsg;
 
 import android.content.SharedPreferences;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseMessageHandler;
+import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.data.GroupSystemMsgOldData;
+import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -17,16 +19,16 @@ import tencent.mobileim.structmsg.structmsg.StructMsg;
 public class GroupSystemMsgController
 {
   private static volatile GroupSystemMsgController jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController;
+  private static final String jdField_b_of_type_JavaLangString = "com.tencent.mobileqq.systemmsg.GroupSystemMsgController";
   private int jdField_a_of_type_Int = -1;
   private long jdField_a_of_type_Long = -1L;
-  private MessageHandler jdField_a_of_type_ComTencentMobileqqAppMessageHandler = null;
+  private BaseMessageHandler jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler = null;
   private Object jdField_a_of_type_JavaLangObject = new Object();
   public String a;
   private HashMap<String, structmsg.StructMsg> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private structmsg.StructMsg jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = null;
   private boolean jdField_a_of_type_Boolean = false;
   private int jdField_b_of_type_Int = -1;
-  private final String jdField_b_of_type_JavaLangString = GroupSystemMsgController.class.getName();
   private HashMap<Long, Long> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   private boolean jdField_b_of_type_Boolean = false;
   private String c;
@@ -34,49 +36,40 @@ public class GroupSystemMsgController
   
   public static GroupSystemMsgController a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController == null) {
-        jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController = new GroupSystemMsgController();
+    if (jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController == null) {
+          jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController = new GroupSystemMsgController();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController;
   }
   
-  private int b(QQAppInterface paramQQAppInterface)
+  private int c(AppRuntime paramAppRuntime)
   {
-    int i = 0;
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      i = paramQQAppInterface.getInt("unread_Group_suspicious_msg", 0);
-    }
-    return i;
-  }
-  
-  private int b(AppRuntime paramAppRuntime)
-  {
-    int i = 0;
     paramAppRuntime = BaseApplication.getContext().getSharedPreferences(paramAppRuntime.getAccount(), 0);
     if (paramAppRuntime != null) {
-      i = paramAppRuntime.getInt("unread_Group_system_msg", 0);
+      return paramAppRuntime.getInt("unread_Group_system_msg", 0);
     }
-    return i;
+    return 0;
   }
   
-  public int a(QQAppInterface paramQQAppInterface)
+  private int d(AppRuntime paramAppRuntime)
   {
-    if (this.jdField_b_of_type_Int == -1) {
-      this.jdField_b_of_type_Int = b(paramQQAppInterface);
+    paramAppRuntime = paramAppRuntime.getApp().getSharedPreferences(paramAppRuntime.getCurrentAccountUin(), 0);
+    if (paramAppRuntime != null) {
+      return paramAppRuntime.getInt("unread_Group_suspicious_msg", 0);
     }
-    return this.jdField_b_of_type_Int;
+    return 0;
   }
   
   public int a(AppRuntime paramAppRuntime)
   {
     if (this.jdField_a_of_type_Int == -1) {
-      this.jdField_a_of_type_Int = b(paramAppRuntime);
+      this.jdField_a_of_type_Int = c(paramAppRuntime);
     }
     return this.jdField_a_of_type_Int;
   }
@@ -91,11 +84,11 @@ public class GroupSystemMsgController
     return this.jdField_a_of_type_JavaLangString;
   }
   
-  public String a(QQAppInterface paramQQAppInterface)
+  public String a(AppRuntime paramAppRuntime)
   {
-    paramQQAppInterface = paramQQAppInterface.getApp().getSharedPreferences(paramQQAppInterface.getCurrentAccountUin(), 0);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.getString("group_display", "");
+    paramAppRuntime = paramAppRuntime.getApp().getSharedPreferences(paramAppRuntime.getCurrentAccountUin(), 0);
+    if (paramAppRuntime != null) {
+      return paramAppRuntime.getString("group_display", "");
     }
     return "";
   }
@@ -107,17 +100,17 @@ public class GroupSystemMsgController
   
   public structmsg.StructMsg a(String paramString)
   {
-    structmsg.StructMsg localStructMsg = null;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      localStructMsg = (structmsg.StructMsg)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null) {
+      return (structmsg.StructMsg)localHashMap.get(paramString);
     }
-    return localStructMsg;
+    return null;
   }
   
   public void a()
   {
     this.jdField_a_of_type_Int = -1;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler = null;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler = null;
     try
     {
       jdField_a_of_type_ComTencentMobileqqSystemmsgGroupSystemMsgController = null;
@@ -131,9 +124,9 @@ public class GroupSystemMsgController
     this.jdField_a_of_type_Long = paramLong;
   }
   
-  public void a(long paramLong1, long paramLong2, QQAppInterface paramQQAppInterface)
+  public void a(long paramLong1, long paramLong2, AppRuntime paramAppRuntime)
   {
-    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    Object localObject1 = this.jdField_a_of_type_JavaLangObject;
     long l = 0L;
     try
     {
@@ -144,31 +137,39 @@ public class GroupSystemMsgController
         return;
       }
       this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(paramLong1), Long.valueOf(paramLong2));
-      if (QLog.isColorLevel()) {
-        QLog.i(this.jdField_b_of_type_JavaLangString, 2, "addSystemMsgOldData " + paramLong1 + " " + paramLong2);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = jdField_b_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("addSystemMsgOldData ");
+        localStringBuilder.append(paramLong1);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramLong2);
+        QLog.i((String)localObject2, 2, localStringBuilder.toString());
       }
-      paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-      if (paramQQAppInterface == null) {
+      paramAppRuntime = paramAppRuntime.getEntityManagerFactory().createEntityManager();
+      if (paramAppRuntime == null) {
         return;
       }
+      Object localObject2 = new GroupSystemMsgOldData();
+      ((GroupSystemMsgOldData)localObject2).uin = paramLong1;
+      ((GroupSystemMsgOldData)localObject2).msgtime = paramLong2;
+      paramAppRuntime.persistOrReplace((Entity)localObject2);
+      paramAppRuntime.close();
+      return;
     }
     finally {}
-    GroupSystemMsgOldData localGroupSystemMsgOldData = new GroupSystemMsgOldData();
-    localGroupSystemMsgOldData.uin = paramLong1;
-    localGroupSystemMsgOldData.msgtime = paramLong2;
-    paramQQAppInterface.persistOrReplace(localGroupSystemMsgOldData);
-    paramQQAppInterface.close();
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt)
+  public void a(AppInterface paramAppInterface, int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    paramQQAppInterface.execute(new GroupSystemMsgController.1(this, paramQQAppInterface, paramInt));
+    ThreadManagerV2.excute(new GroupSystemMsgController.1(this, paramAppInterface, paramInt), 128, null, false);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, String paramString)
+  public void a(AppInterface paramAppInterface, String paramString)
   {
-    paramQQAppInterface.execute(new GroupSystemMsgController.3(this, paramQQAppInterface, paramString));
+    ThreadManagerV2.excute(new GroupSystemMsgController.3(this, paramAppInterface, paramString), 128, null, false);
   }
   
   public void a(EntityManager paramEntityManager)
@@ -184,8 +185,15 @@ public class GroupSystemMsgController
       {
         GroupSystemMsgOldData localGroupSystemMsgOldData = (GroupSystemMsgOldData)((Iterator)localObject).next();
         this.jdField_b_of_type_JavaUtilHashMap.put(Long.valueOf(localGroupSystemMsgOldData.uin), Long.valueOf(localGroupSystemMsgOldData.msgtime));
-        if (QLog.isColorLevel()) {
-          QLog.i(this.jdField_b_of_type_JavaLangString, 2, "initSystemMsgOldData " + localGroupSystemMsgOldData.uin + " " + localGroupSystemMsgOldData.msgtime);
+        if (QLog.isColorLevel())
+        {
+          String str = jdField_b_of_type_JavaLangString;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("initSystemMsgOldData ");
+          localStringBuilder.append(localGroupSystemMsgOldData.uin);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(localGroupSystemMsgOldData.msgtime);
+          QLog.i(str, 2, localStringBuilder.toString());
         }
       }
     }
@@ -201,8 +209,13 @@ public class GroupSystemMsgController
   {
     if (this.jdField_a_of_type_JavaUtilHashMap != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_b_of_type_JavaLangString, 2, "putStructMsgToMap key=" + paramString);
+      if (QLog.isColorLevel())
+      {
+        String str = jdField_b_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("putStructMsgToMap key=");
+        localStringBuilder.append(paramString);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString, paramStructMsg);
     }
@@ -213,11 +226,19 @@ public class GroupSystemMsgController
     this.jdField_a_of_type_TencentMobileimStructmsgStructmsg$StructMsg = paramStructMsg;
   }
   
-  public void a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
+  public void a(boolean paramBoolean, AppInterface paramAppInterface)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    this.d = paramQQAppInterface.getCurrentAccountUin();
-    paramQQAppInterface.execute(new GroupSystemMsgController.4(this, paramQQAppInterface, paramBoolean));
+    this.d = paramAppInterface.getCurrentAccountUin();
+    ThreadManagerV2.excute(new GroupSystemMsgController.4(this, paramAppInterface, paramBoolean), 128, null, false);
+  }
+  
+  public int b(AppRuntime paramAppRuntime)
+  {
+    if (this.jdField_b_of_type_Int == -1) {
+      this.jdField_b_of_type_Int = d(paramAppRuntime);
+    }
+    return this.jdField_b_of_type_Int;
   }
   
   public String b()
@@ -227,15 +248,16 @@ public class GroupSystemMsgController
   
   public void b()
   {
-    if (this.jdField_a_of_type_JavaUtilHashMap != null) {
-      this.jdField_a_of_type_JavaUtilHashMap.clear();
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
-  public void b(QQAppInterface paramQQAppInterface, int paramInt)
+  public void b(AppInterface paramAppInterface, int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
-    paramQQAppInterface.execute(new GroupSystemMsgController.2(this, paramQQAppInterface, paramInt));
+    ThreadManagerV2.excute(new GroupSystemMsgController.2(this, paramAppInterface, paramInt), 128, null, false);
   }
   
   public void b(String paramString)
@@ -245,7 +267,7 @@ public class GroupSystemMsgController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.GroupSystemMsgController
  * JD-Core Version:    0.7.0.1
  */

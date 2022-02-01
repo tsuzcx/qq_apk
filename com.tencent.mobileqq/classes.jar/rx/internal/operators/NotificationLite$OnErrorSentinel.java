@@ -15,12 +15,15 @@ class NotificationLite$OnErrorSentinel
   
   public String toString()
   {
-    return "Notification=>Error:" + this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Notification=>Error:");
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.NotificationLite.OnErrorSentinel
  * JD-Core Version:    0.7.0.1
  */

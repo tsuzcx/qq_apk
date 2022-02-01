@@ -7,50 +7,60 @@ import android.text.TextUtils;
 import android.view.ViewGroup;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.troop.honor.util.TroopHonorUtils;
 import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberLevelEffectView;
-import com.tencent.mobileqq.troop.troopMemberLevel.TroopMemberRankItem;
+import com.tencent.mobileqq.troop.troopmemberlevel.TroopMemberRankItem;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory;
-import com.tencent.mobileqq.vas.apng.api.VasApngFactory.Options;
+import com.tencent.mobileqq.vas.apng.api.ApngOptions;
+import com.tencent.mobileqq.vas.apng.api.IVasApngFactory;
 import com.tencent.qphone.base.util.QLog;
 
 public class VasTroopHonorRichHandler
 {
   public void a(int paramInt, byte paramByte, TroopMemberRankItem paramTroopMemberRankItem)
   {
-    String str2;
-    String str1;
-    if (TroopHonorUtils.a(4, paramByte) == 1) {
+    Object localObject;
+    if (TroopHonorUtils.a(4, paramByte) == 1)
+    {
+      String str;
       switch (paramInt)
       {
       default: 
-        str2 = "#798CBF";
-        str1 = "#A9BEF2";
         paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_4.png";
-        paramTroopMemberRankItem.a = new int[] { Color.parseColor(str2), Color.parseColor(str1) };
+        str = "#798CBF";
+        localObject = "#A9BEF2";
+        break;
+      case 302: 
+        paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_3.png";
+        str = "#B766FF";
+        localObject = "#FF83D5";
+        break;
+      case 301: 
+        paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_2.png";
+        str = "#00BEDB";
+        localObject = "#0EE0CE";
+        break;
+      case 300: 
+        paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_1.png";
+        str = "#FF9000";
+        localObject = "#FFD325";
       }
+      paramTroopMemberRankItem.a = new int[] { Color.parseColor(str), Color.parseColor((String)localObject) };
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopHonor", 2, "honor_rich_handleRichLevel," + paramInt + " " + paramTroopMemberRankItem.b);
-      }
-      return;
-      str2 = "#FF9000";
-      str1 = "#FFD325";
-      paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_1.png";
-      break;
-      str2 = "#00BEDB";
-      str1 = "#0EE0CE";
-      paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_2.png";
-      break;
-      str2 = "#B766FF";
-      str1 = "#FF83D5";
-      paramTroopMemberRankItem.b = "https://static-res.qq.com/static-res/groupInteract/vas/a/4_1_3.png";
-      break;
       paramTroopMemberRankItem.b = null;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("honor_rich_handleRichLevel,");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramTroopMemberRankItem.b);
+      QLog.d("TroopHonor", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -58,10 +68,10 @@ public class VasTroopHonorRichHandler
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      VasApngFactory.Options localOptions = new VasApngFactory.Options();
-      localOptions.a(URLDrawableHelper.TRANSPARENT);
-      localOptions.a(new int[] { 0 });
-      paramString = VasApngFactory.a(paramString, localOptions);
+      ApngOptions localApngOptions = new ApngOptions();
+      localApngOptions.a(URLDrawableHelperConstants.a);
+      localApngOptions.a(new int[] { 0 });
+      paramString = ((IVasApngFactory)QRoute.api(IVasApngFactory.class)).getApngURLDrawable(paramString, localApngOptions);
       if (paramString != null)
       {
         paramContext = new TroopMemberLevelEffectView(paramContext);
@@ -76,7 +86,7 @@ public class VasTroopHonorRichHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troophonor.VasTroopHonorRichHandler
  * JD-Core Version:    0.7.0.1
  */

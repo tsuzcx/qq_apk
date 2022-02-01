@@ -73,14 +73,17 @@ public class ContentAccelerateRequest
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("ContentAccelerateRequest", "onResponse fail." + paramArrayOfByte);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("ContentAccelerateRequest", paramJSONObject.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.ContentAccelerateRequest
  * JD-Core Version:    0.7.0.1
  */

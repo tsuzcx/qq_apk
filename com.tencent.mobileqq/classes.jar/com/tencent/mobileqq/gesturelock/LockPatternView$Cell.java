@@ -47,12 +47,14 @@ public class LockPatternView$Cell
   
   private static void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 > 2)) {
-      throw new IllegalArgumentException("row must be in range 0-2");
-    }
-    if ((paramInt2 < 0) || (paramInt2 > 2)) {
+    if ((paramInt1 >= 0) && (paramInt1 <= 2))
+    {
+      if ((paramInt2 >= 0) && (paramInt2 <= 2)) {
+        return;
+      }
       throw new IllegalArgumentException("column must be in range 0-2");
     }
+    throw new IllegalArgumentException("row must be in range 0-2");
   }
   
   public int a()
@@ -67,12 +69,18 @@ public class LockPatternView$Cell
   
   public String toString()
   {
-    return "(row=" + this.jdField_a_of_type_Int + ",clmn=" + this.b + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("(row=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",clmn=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gesturelock.LockPatternView.Cell
  * JD-Core Version:    0.7.0.1
  */

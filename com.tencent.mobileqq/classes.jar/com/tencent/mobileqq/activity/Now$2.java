@@ -18,27 +18,31 @@ class Now$2
   
   public ImageView a()
   {
-    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      return this.a.jdField_a_of_type_AndroidWidgetImageView;
+    boolean bool;
+    if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtils.assertTrue(bool);
+    return this.a.jdField_a_of_type_AndroidWidgetImageView;
   }
   
   public TextView a()
   {
-    if (this.a.c != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.a(bool);
-      return this.a.c;
+    boolean bool;
+    if (this.a.c != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtils.assertTrue(bool);
+    return this.a.c;
   }
   
   public void a()
   {
-    this.a.b();
+    this.a.a();
   }
   
   public void a(String paramString)
@@ -58,27 +62,28 @@ class Now$2
   
   public void b()
   {
-    this.a.a(false);
+    this.a.c(false);
   }
   
   public void b(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    this.a.jdField_b_of_type_AndroidWidgetTextView.setVisibility(i);
   }
   
   public void c()
   {
-    this.a.a(true);
+    this.a.c(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.Now.2
  * JD-Core Version:    0.7.0.1
  */

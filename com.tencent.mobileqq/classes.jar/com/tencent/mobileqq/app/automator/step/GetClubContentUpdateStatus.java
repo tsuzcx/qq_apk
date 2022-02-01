@@ -19,40 +19,51 @@ import com.tencent.qphone.base.util.QLog;
 public class GetClubContentUpdateStatus
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQInitHandler", 2, "[GetClubContentUpdateStatus]system time" + System.currentTimeMillis() + ",last update time:");
-    }
-    ClubContentJsonTask.b(this.a.a);
-    VipGrayConfigHelper.a().a(this.a.a);
-    WebViewTitleStyleHelper.a().a(this.a.a);
-    ClubContentJsonTask.a(this.a.a);
-    SharedPreferences localSharedPreferences = this.a.a.getApp().getSharedPreferences("mobileQQ", 0);
-    long l = localSharedPreferences.getLong("last_pull_club_content_update_time", 0L);
-    if ((System.currentTimeMillis() - l > 43200000L) || (System.currentTimeMillis() < l))
+    if (QLog.isColorLevel())
     {
-      ClubContentUpdateHandler localClubContentUpdateHandler = (ClubContentUpdateHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.CLUBCONTENTUPDATE_HANDLER);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[GetClubContentUpdateStatus]system time");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      ((StringBuilder)localObject).append(",last update time:");
+      QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
+    }
+    ClubContentJsonTask.b(this.mAutomator.a);
+    VipGrayConfigHelper.a().a(this.mAutomator.a);
+    WebViewTitleStyleHelper.a().a(this.mAutomator.a);
+    ClubContentJsonTask.a(this.mAutomator.a);
+    Object localObject = this.mAutomator.a.getApp().getSharedPreferences("mobileQQ", 0);
+    long l = ((SharedPreferences)localObject).getLong("last_pull_club_content_update_time", 0L);
+    if ((System.currentTimeMillis() - l <= 43200000L) && (System.currentTimeMillis() >= l))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("system time");
+        ((StringBuilder)localObject).append(System.currentTimeMillis());
+        ((StringBuilder)localObject).append(",last update time:");
+        ((StringBuilder)localObject).append(l);
+        QLog.d("QQInitHandler", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    else
+    {
+      ClubContentUpdateHandler localClubContentUpdateHandler = (ClubContentUpdateHandler)this.mAutomator.a.getBusinessHandler(BusinessHandlerFactory.CLUBCONTENTUPDATE_HANDLER);
       if (localClubContentUpdateHandler != null)
       {
         localClubContentUpdateHandler.a();
-        localSharedPreferences.edit().putLong("last_pull_club_content_update_time", System.currentTimeMillis()).commit();
+        ((SharedPreferences)localObject).edit().putLong("last_pull_club_content_update_time", System.currentTimeMillis()).commit();
       }
     }
-    for (;;)
-    {
-      AioVipKeywordHelper.a().a(this.a.a.getApplication(), this.a.a.getCurrentAccountUin());
-      ((SonicTemplateUpdateManager)this.a.a.getManager(QQManagerFactory.SONIC_FILE_DISCARD_MANAGER)).a();
-      return 7;
-      if (QLog.isColorLevel()) {
-        QLog.d("QQInitHandler", 2, "system time" + System.currentTimeMillis() + ",last update time:" + l);
-      }
-    }
+    AioVipKeywordHelper.a().a(this.mAutomator.a.getApplication(), this.mAutomator.a.getCurrentAccountUin());
+    ((SonicTemplateUpdateManager)this.mAutomator.a.getManager(QQManagerFactory.SONIC_FILE_DISCARD_MANAGER)).a();
+    return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetClubContentUpdateStatus
  * JD-Core Version:    0.7.0.1
  */

@@ -60,9 +60,21 @@ public class Tracer
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
         Tracer.TraceData localTraceData = (Tracer.TraceData)localEntry.getValue();
-        if (localTraceData.count != 0) {
-          Log.d("VRTracer", "    " + (String)localEntry.getKey() + ": average = " + localTraceData.totalNano / localTraceData.count / 1000L + " us, total = " + localTraceData.totalNano / 1000L + " us, count = " + localTraceData.count);
-        } else {
+        if (localTraceData.count != 0)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("    ");
+          localStringBuilder.append((String)localEntry.getKey());
+          localStringBuilder.append(": average = ");
+          localStringBuilder.append(localTraceData.totalNano / localTraceData.count / 1000L);
+          localStringBuilder.append(" us, total = ");
+          localStringBuilder.append(localTraceData.totalNano / 1000L);
+          localStringBuilder.append(" us, count = ");
+          localStringBuilder.append(localTraceData.count);
+          Log.d("VRTracer", localStringBuilder.toString());
+        }
+        else
+        {
           Log.d("VRTracer", "    no data found");
         }
       }
@@ -71,7 +83,7 @@ public class Tracer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.trace.Tracer
  * JD-Core Version:    0.7.0.1
  */

@@ -12,23 +12,24 @@ class FriendProfileMoreInfoActivity$5
   {
     if ((this.a.a == 1) || (this.a.a == 2))
     {
-      if (paramBoolean) {
-        break label55;
+      if (!paramBoolean)
+      {
+        FriendProfileMoreInfoActivity.a(this.a);
+        QQToast.a(this.a, 2131691057, 0).b(this.a.getTitleBarHeight());
+        return;
       }
-      FriendProfileMoreInfoActivity.a(this.a);
-      QQToast.a(this.a, 2131691137, 0).b(this.a.getTitleBarHeight());
+      if (paramInt == 2)
+      {
+        FriendProfileMoreInfoActivity.a(this.a);
+        FriendProfileMoreInfoActivity localFriendProfileMoreInfoActivity = this.a;
+        FriendProfileMoreInfoActivity.a(localFriendProfileMoreInfoActivity, localFriendProfileMoreInfoActivity.a);
+      }
     }
-    label55:
-    while (paramInt != 2) {
-      return;
-    }
-    FriendProfileMoreInfoActivity.a(this.a);
-    FriendProfileMoreInfoActivity.a(this.a, this.a.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileMoreInfoActivity.5
  * JD-Core Version:    0.7.0.1
  */

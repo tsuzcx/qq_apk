@@ -13,44 +13,55 @@ class AIOMessageSpreadManager$1$1
   
   public void a(List<String> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      if (QLog.isDebugVersion())
-      {
-        if (paramList != null) {
-          break label34;
-        }
-        paramList = "lst is null";
-        QLog.i("AIOMessageSpreadManager", 1, paramList);
-      }
-    }
-    label34:
-    float f1;
-    float f2;
-    do
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      return;
-      while (!paramList.hasNext())
+      float f1 = (float)TencentDocTipsConfigProcessor.a().a();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
+        String str = (String)paramList.next();
+        float f2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_JavaLangString, str);
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("file[");
+          localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+          localStringBuilder.append("] and [");
+          localStringBuilder.append(str);
+          localStringBuilder.append("], precentage[");
+          localStringBuilder.append(f2);
+          localStringBuilder.append("]");
+          QLog.i("AIOMessageSpreadManager", 1, localStringBuilder.toString());
+        }
+        if (f2 - f1 > 0.0F)
+        {
+          str = TencentDocTipsConfigProcessor.a().a();
+          paramList = TencentDocTipsConfigProcessor.a().b();
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append("。");
+          localStringBuilder.append(paramList);
+          str = localStringBuilder.toString();
+          AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.a, str, paramList, "precent", null);
+        }
+      }
+      return;
+    }
+    if (QLog.isDebugVersion())
+    {
+      if (paramList == null) {
+        paramList = "lst is null";
+      } else {
         paramList = "lst.size() = 0";
-        break;
-        f1 = (float)TencentDocTipsConfigProcessor.a().a();
-        paramList = paramList.iterator();
       }
-      str = (String)paramList.next();
-      f2 = AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_JavaLangString, str);
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOMessageSpreadManager", 1, "file[" + this.jdField_a_of_type_JavaLangString + "] and [" + str + "], precentage[" + f2 + "]");
-      }
-    } while (f2 - f1 <= 0.0F);
-    String str = TencentDocTipsConfigProcessor.a().a();
-    paramList = TencentDocTipsConfigProcessor.a().b();
-    str = str + "。" + paramList;
-    AIOMessageSpreadManager.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.this$0, this.jdField_a_of_type_ComTencentMobileqqTeamworkSpreadAIOMessageSpreadManager$1.a, str, paramList, "precent", null);
+      QLog.i("AIOMessageSpreadManager", 1, paramList);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.AIOMessageSpreadManager.1.1
  * JD-Core Version:    0.7.0.1
  */

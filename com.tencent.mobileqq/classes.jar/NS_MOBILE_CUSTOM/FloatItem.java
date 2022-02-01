@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,9 +12,9 @@ public final class FloatItem
   extends JceStruct
 {
   static int cache_iProperty;
-  static int cache_iType = 0;
+  static int cache_iType;
   static Map<String, String> cache_mapExtInfo;
-  static ArrayList<FloatItemView> cache_vecView;
+  static ArrayList<FloatItemView> cache_vecView = new ArrayList();
   public int iAngleSpeed;
   public int iCount;
   public int iDirection;
@@ -37,8 +38,6 @@ public final class FloatItem
   
   static
   {
-    cache_iProperty = 0;
-    cache_vecView = new ArrayList();
     FloatItemView localFloatItemView = new FloatItemView();
     cache_vecView.add(localFloatItemView);
     cache_mapExtInfo = new HashMap();
@@ -100,8 +99,9 @@ public final class FloatItem
     paramJceOutputStream.write(this.strId, 0);
     paramJceOutputStream.write(this.iType, 1);
     paramJceOutputStream.write(this.iProperty, 2);
-    if (this.strFloatName != null) {
-      paramJceOutputStream.write(this.strFloatName, 3);
+    Object localObject = this.strFloatName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.iSpeed, 4);
     paramJceOutputStream.write(this.iMaxAngle, 5);
@@ -112,30 +112,36 @@ public final class FloatItem
     paramJceOutputStream.write(this.iMaxSize, 10);
     paramJceOutputStream.write(this.iMinSize, 11);
     paramJceOutputStream.write(this.iDirection, 12);
-    if (this.strDescription != null) {
-      paramJceOutputStream.write(this.strDescription, 13);
+    localObject = this.strDescription;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 13);
     }
-    if (this.strThumbUrl != null) {
-      paramJceOutputStream.write(this.strThumbUrl, 14);
+    localObject = this.strThumbUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 14);
     }
-    if (this.vecView != null) {
-      paramJceOutputStream.write(this.vecView, 15);
+    localObject = this.vecView;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 15);
     }
-    if (this.strTraceInfo != null) {
-      paramJceOutputStream.write(this.strTraceInfo, 16);
+    localObject = this.strTraceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 16);
     }
     paramJceOutputStream.write(this.iHasNewFlag, 17);
-    if (this.strDesignerInfo != null) {
-      paramJceOutputStream.write(this.strDesignerInfo, 18);
+    localObject = this.strDesignerInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.mapExtInfo != null) {
-      paramJceOutputStream.write(this.mapExtInfo, 19);
+    localObject = this.mapExtInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 19);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.FloatItem
  * JD-Core Version:    0.7.0.1
  */

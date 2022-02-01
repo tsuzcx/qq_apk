@@ -15,7 +15,7 @@ public final class oidb_0xe03$LBSInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe03.oidb_0xe03.LBSInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -45,20 +45,21 @@ public abstract class TimeAdapter
   public void c()
   {
     int i = a();
-    if (i == 0) {}
-    long l;
-    do
-    {
+    if (i == 0) {
       return;
-      l = a(i - 1);
-    } while (l <= this.jdField_a_of_type_Long + 180L);
-    this.jdField_a_of_type_Long = l;
-    this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i - 1)), Long.valueOf(this.jdField_a_of_type_Long));
+    }
+    i -= 1;
+    long l = a(i);
+    if (l > this.jdField_a_of_type_Long + 180L)
+    {
+      this.jdField_a_of_type_Long = l;
+      this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(b(i)), Long.valueOf(this.jdField_a_of_type_Long));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.TimeAdapter
  * JD-Core Version:    0.7.0.1
  */

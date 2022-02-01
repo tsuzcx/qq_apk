@@ -15,56 +15,62 @@ public final class ib
   
   public final void a(boolean paramBoolean)
   {
-    if (this.a == null) {
+    id localid = this.a;
+    if (localid == null) {
       return;
     }
-    this.a.a(paramBoolean);
+    localid.a(paramBoolean);
   }
   
   public final boolean a()
   {
-    if (this.a == null) {
+    id localid = this.a;
+    if (localid == null) {
       return false;
     }
-    return this.a.a();
+    return localid.a();
   }
   
   public final void b()
   {
-    if (this.a == null) {
+    id localid = this.a;
+    if (localid == null) {
       return;
     }
-    this.a.b();
+    localid.b();
   }
   
   public final void c()
   {
-    if (this.a == null) {
+    id localid = this.a;
+    if (localid == null) {
       return;
     }
-    this.a.c();
+    localid.c();
   }
   
   public final void d()
   {
-    if (this.a == null) {
+    id localid = this.a;
+    if (localid == null) {
       return;
     }
-    this.a.d();
+    localid.d();
   }
   
   public final void e()
   {
-    if (this.a == null) {
+    id localid = this.a;
+    if (localid == null) {
       return;
     }
-    this.a.e();
+    localid.e();
     this.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ib
  * JD-Core Version:    0.7.0.1
  */

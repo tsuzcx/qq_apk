@@ -23,28 +23,30 @@ public class TipsViewTimerRunnable
   
   private boolean a(AvTipsItemBase paramAvTipsItemBase, long paramLong)
   {
-    boolean bool = true;
-    if ((paramAvTipsItemBase == null) || (paramAvTipsItemBase.a())) {
-      bool = false;
-    }
-    for (;;)
+    int i = 0;
+    if (paramAvTipsItemBase != null)
     {
-      return bool;
-      if (SystemClock.elapsedRealtime() - paramLong >= paramAvTipsItemBase.c() * 1000) {}
-      for (int i = 1; i != 0; i = 0) {
+      if (paramAvTipsItemBase.a()) {
         return false;
       }
+      if (SystemClock.elapsedRealtime() - paramLong >= paramAvTipsItemBase.c() * 1000) {
+        i = 1;
+      }
+      return i ^ 0x1;
     }
+    return false;
   }
   
   private void c()
   {
-    if (this.jdField_a_of_type_ComTencentAvAppVideoAppInterface == null) {}
-    do
-    {
+    VideoAppInterface localVideoAppInterface = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface;
+    if (localVideoAppInterface == null) {
       return;
-      this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this);
-    } while (!this.jdField_a_of_type_Boolean);
+    }
+    localVideoAppInterface.a().removeCallbacks(this);
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().postDelayed(this, 1000L);
   }
   
@@ -116,31 +118,28 @@ public class TipsViewTimerRunnable
   
   public void run()
   {
-    boolean bool2 = true;
-    boolean bool1 = false;
+    boolean bool;
     if (a(this.jdField_a_of_type_ComTencentAvTipsDataAvTipsItemBase, this.jdField_a_of_type_Long))
     {
-      bool1 = true;
-      if (!a(this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase, this.jdField_b_of_type_Long)) {
-        break label55;
-      }
-      bool1 = bool2;
+      bool = true;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Boolean = bool1;
-      c();
-      return;
       a();
-      break;
-      label55:
+      bool = false;
+    }
+    if (a(this.jdField_b_of_type_ComTencentAvTipsDataAvTipsItemBase, this.jdField_b_of_type_Long)) {
+      bool = true;
+    } else {
       b();
     }
+    this.jdField_a_of_type_Boolean = bool;
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.tips.TipsViewTimerRunnable
  * JD-Core Version:    0.7.0.1
  */

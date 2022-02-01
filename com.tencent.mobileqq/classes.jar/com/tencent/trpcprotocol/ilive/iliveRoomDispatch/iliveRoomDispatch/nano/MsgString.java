@@ -32,40 +32,45 @@ public final class MsgString
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {}
+      if (i == 0) {
         break;
-      case 0: 
-        return this;
-      case 10: 
+      }
+      if (i != 10)
+      {
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          return this;
+        }
+      }
+      else {
         this.a = InternalNano.mergeMapEntry(paramCodedInputByteBufferNano, this.a, localMapFactory, 9, 9, null, 10, 18);
       }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    Map localMap = this.a;
     int i = j;
-    if (this.a != null) {
-      i = j + InternalNano.computeMapFieldSize(this.a, 1, 9, 9);
+    if (localMap != null) {
+      i = j + InternalNano.computeMapFieldSize(localMap, 1, 9, 9);
     }
     return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.a != null) {
-      InternalNano.serializeMapField(paramCodedOutputByteBufferNano, this.a, 1, 9, 9);
+    Map localMap = this.a;
+    if (localMap != null) {
+      InternalNano.serializeMapField(paramCodedOutputByteBufferNano, localMap, 1, 9, 9);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.MsgString
  * JD-Core Version:    0.7.0.1
  */

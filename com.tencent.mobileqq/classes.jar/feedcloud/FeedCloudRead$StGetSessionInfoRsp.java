@@ -20,15 +20,16 @@ public final class FeedCloudRead$StGetSessionInfoRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48 }, new String[] { "extInfo", "sessonID", "subSessonID", "transInfo", "expireTime", "sessionType" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0) }, StGetSessionInfoRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 48 }, new String[] { "extInfo", "sessonID", "subSessonID", "transInfo", "expireTime", "sessionType" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger }, StGetSessionInfoRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     feedcloud.FeedCloudRead.StGetSessionInfoRsp
  * JD-Core Version:    0.7.0.1
  */

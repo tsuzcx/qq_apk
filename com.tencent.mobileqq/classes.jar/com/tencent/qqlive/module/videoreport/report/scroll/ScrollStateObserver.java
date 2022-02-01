@@ -77,56 +77,66 @@ abstract class ScrollStateObserver
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ScrollStateObserver", "RecyclerView.onScrollStateChanged: newState = " + paramInt);
-    }
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
+    if (VideoReportInner.getInstance().isDebugMode())
     {
-      updateScrollingView(paramRecyclerView, bool);
-      if (paramInt == 0) {
-        onIdle(paramRecyclerView);
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RecyclerView.onScrollStateChanged: newState = ");
+      localStringBuilder.append(paramInt);
+      Log.d("ScrollStateObserver", localStringBuilder.toString());
+    }
+    boolean bool;
+    if (paramInt != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    updateScrollingView(paramRecyclerView, bool);
+    if (paramInt == 0) {
+      onIdle(paramRecyclerView);
     }
   }
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ScrollStateObserver", "AbsListView.onScrollStateChanged: scrollState = " + paramInt);
-    }
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
+    if (VideoReportInner.getInstance().isDebugMode())
     {
-      updateScrollingView(paramAbsListView, bool);
-      if (paramInt == 0) {
-        onIdle(paramAbsListView);
-      }
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("AbsListView.onScrollStateChanged: scrollState = ");
+      localStringBuilder.append(paramInt);
+      Log.d("ScrollStateObserver", localStringBuilder.toString());
+    }
+    boolean bool;
+    if (paramInt != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    updateScrollingView(paramAbsListView, bool);
+    if (paramInt == 0) {
+      onIdle(paramAbsListView);
     }
   }
   
   public void onViewVisited(View paramView)
   {
-    if ((paramView instanceof AbsListView)) {
-      inject((AbsListView)paramView);
-    }
-    do
+    if ((paramView instanceof AbsListView))
     {
+      inject((AbsListView)paramView);
       return;
-      if ((paramView instanceof RecyclerView))
-      {
-        inject((RecyclerView)paramView);
-        return;
-      }
-    } while (!(paramView instanceof ViewPager));
-    inject((ViewPager)paramView);
+    }
+    if ((paramView instanceof RecyclerView))
+    {
+      inject((RecyclerView)paramView);
+      return;
+    }
+    if ((paramView instanceof ViewPager)) {
+      inject((ViewPager)paramView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.scroll.ScrollStateObserver
  * JD-Core Version:    0.7.0.1
  */

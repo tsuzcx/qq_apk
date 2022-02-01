@@ -18,20 +18,20 @@ public class ShortVideoRealItemBuilder$Holder
   public MessageProgressView a;
   public ImageView b;
   public int e;
-  public int f;
   
   public ShortVideoRealItemBuilder$Holder(ShortVideoRealItemBuilder paramShortVideoRealItemBuilder) {}
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView;
+    if (localObject != null)
     {
-      long l = this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getCurPlayingPos();
+      long l = ((CropBubbleVideoView)localObject).getCurPlayingPos();
       if (l > 0L)
       {
-        MessageForShortVideo localMessageForShortVideo = AIOSingleReporter.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
-        if (localMessageForShortVideo != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a(localMessageForShortVideo, l);
+        localObject = AIOSingleReporter.a().a(Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.getId()));
+        if (localObject != null) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.a((MessageForShortVideo)localObject, l);
         }
       }
       this.jdField_a_of_type_ComTencentMobileqqVideoplatformViewCropBubbleVideoView.releasePlayer(true);
@@ -41,7 +41,7 @@ public class ShortVideoRealItemBuilder$Holder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

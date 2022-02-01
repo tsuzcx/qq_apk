@@ -11,14 +11,14 @@ class NotificationActivity$28
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    NotificationActivity.access$1100(this.a, "0X800B657");
-    ReportController.a(this.a.app, "dc00898", "", "", "0X800AA16", "0X800AA16", 0, 0, "", "", NotificationActivity.access$1200(this.a), "");
+    NotificationActivity.access$1200(this.a, "0X800B657");
+    ReportController.a(this.a.getAppRuntime(), "dc00898", "", "", "0X800AA16", "0X800AA16", 0, 0, "", "", NotificationActivity.access$1300(this.a), "");
     this.a.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotificationActivity.28
  * JD-Core Version:    0.7.0.1
  */

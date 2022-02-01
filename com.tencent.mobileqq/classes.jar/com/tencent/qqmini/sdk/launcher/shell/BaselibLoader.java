@@ -14,7 +14,8 @@ public abstract class BaselibLoader
   
   public boolean isBaseLibInit()
   {
-    return (this.mBaselibContent != null) && (this.mBaselibContent.isBaseLibInited());
+    BaselibLoader.BaselibContent localBaselibContent = this.mBaselibContent;
+    return (localBaselibContent != null) && (localBaselibContent.isBaseLibInited());
   }
   
   public abstract void loadBaselib(Context paramContext, BaselibLoader.OnLoadBaselibListener paramOnLoadBaselibListener);
@@ -28,7 +29,7 @@ public abstract class BaselibLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.shell.BaselibLoader
  * JD-Core Version:    0.7.0.1
  */

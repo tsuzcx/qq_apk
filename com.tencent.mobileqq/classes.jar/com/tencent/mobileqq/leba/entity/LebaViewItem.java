@@ -29,22 +29,38 @@ public class LebaViewItem
     if (paramList.isEmpty()) {
       return " print lebaData.isEmpty()";
     }
-    StringBuilder localStringBuilder = new StringBuilder(" print lebaData size = ").append(paramList.size());
+    StringBuilder localStringBuilder = new StringBuilder(" print lebaData size = ");
+    localStringBuilder.append(paramList.size());
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      LebaViewItem localLebaViewItem = (LebaViewItem)paramList.next();
-      if (localLebaViewItem == null)
+      Object localObject = (LebaViewItem)paramList.next();
+      if (localObject == null)
       {
         localStringBuilder.append("|item = null");
       }
       else
       {
-        localStringBuilder.append("|item = ").append(localLebaViewItem.jdField_a_of_type_Long).append("|").append(localLebaViewItem.jdField_a_of_type_JavaLangString).append("|").append(localLebaViewItem.jdField_b_of_type_JavaLangString).append("|").append(localLebaViewItem.jdField_a_of_type_Int).append("|").append(localLebaViewItem.jdField_a_of_type_Byte).append("|").append(localLebaViewItem.jdField_b_of_type_Long).append("|").append(localLebaViewItem.jdField_a_of_type_Boolean).append("|");
-        if (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo == null) {
+        localStringBuilder.append("|item = ");
+        localStringBuilder.append(((LebaViewItem)localObject).jdField_a_of_type_Long);
+        localStringBuilder.append("|");
+        localStringBuilder.append(((LebaViewItem)localObject).jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("|");
+        localStringBuilder.append(((LebaViewItem)localObject).jdField_b_of_type_JavaLangString);
+        localStringBuilder.append("|");
+        localStringBuilder.append(((LebaViewItem)localObject).jdField_a_of_type_Int);
+        localStringBuilder.append("|");
+        localStringBuilder.append(((LebaViewItem)localObject).jdField_a_of_type_Byte);
+        localStringBuilder.append("|");
+        localStringBuilder.append(((LebaViewItem)localObject).jdField_b_of_type_Long);
+        localStringBuilder.append("|");
+        localStringBuilder.append(((LebaViewItem)localObject).jdField_a_of_type_Boolean);
+        localStringBuilder.append("|");
+        localObject = ((LebaViewItem)localObject).jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo;
+        if (localObject == null) {
           localStringBuilder.append("info=null");
         } else {
-          localStringBuilder.append(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.toString());
+          localStringBuilder.append(((LebaPluginInfo)localObject).toString());
         }
       }
     }
@@ -68,7 +84,14 @@ public class LebaViewItem
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.cCanChangeState != 0);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      LebaPluginInfo localLebaPluginInfo = this.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo;
+      if ((localLebaPluginInfo != null) && (localLebaPluginInfo.cCanChangeState != 0)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean c()
@@ -78,24 +101,19 @@ public class LebaViewItem
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramObject == null) || (this.jdField_a_of_type_Long == 0L)) {
-      bool1 = false;
-    }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (this == paramObject);
-      if (!(paramObject instanceof LebaViewItem)) {
-        break;
+      long l = this.jdField_a_of_type_Long;
+      if (l == 0L) {
+        return false;
       }
-      paramObject = (LebaViewItem)paramObject;
-      bool1 = bool2;
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
+      if (this == paramObject) {
+        return true;
+      }
+      if (((paramObject instanceof LebaViewItem)) && (l == ((LebaViewItem)paramObject).jdField_a_of_type_Long)) {
+        return true;
+      }
+    }
     return false;
   }
   
@@ -106,7 +124,7 @@ public class LebaViewItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.entity.LebaViewItem
  * JD-Core Version:    0.7.0.1
  */

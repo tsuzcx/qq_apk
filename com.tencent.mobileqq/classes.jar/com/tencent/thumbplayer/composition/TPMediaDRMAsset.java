@@ -1,5 +1,6 @@
 package com.tencent.thumbplayer.composition;
 
+import com.tencent.thumbplayer.api.TPCommonEnum.TP_DRM_TYPE;
 import com.tencent.thumbplayer.api.composition.ITPMediaDRMAsset;
 import com.tencent.thumbplayer.utils.TPLogUtil;
 import java.io.IOException;
@@ -11,10 +12,11 @@ public class TPMediaDRMAsset
 {
   private static final String TAG = "TPMediaDRMAsset";
   private Map<String, String> mDrmPropertyMap;
+  @TPCommonEnum.TP_DRM_TYPE
   private int mDrmType;
   private String mPlayUrl;
   
-  public TPMediaDRMAsset(int paramInt, String paramString)
+  public TPMediaDRMAsset(@TPCommonEnum.TP_DRM_TYPE int paramInt, String paramString)
   {
     this.mPlayUrl = paramString;
     this.mDrmType = paramInt;
@@ -33,15 +35,23 @@ public class TPMediaDRMAsset
   
   public String getDrmProperty(String paramString1, String paramString2)
   {
-    if ((this.mDrmPropertyMap == null) || (this.mDrmPropertyMap.isEmpty())) {}
-    do
+    Object localObject = this.mDrmPropertyMap;
+    if (localObject != null)
     {
-      return paramString2;
-      paramString1 = (String)this.mDrmPropertyMap.get(paramString1);
-    } while (paramString1 == null);
-    return paramString1;
+      if (((Map)localObject).isEmpty()) {
+        return paramString2;
+      }
+      localObject = (String)this.mDrmPropertyMap.get(paramString1);
+      paramString1 = (String)localObject;
+      if (localObject == null) {
+        paramString1 = paramString2;
+      }
+      return paramString1;
+    }
+    return paramString2;
   }
   
+  @TPCommonEnum.TP_DRM_TYPE
   public int getDrmType()
   {
     return this.mDrmType;
@@ -76,14 +86,14 @@ public class TPMediaDRMAsset
     this.mDrmPropertyMap.put(paramString1, paramString2);
   }
   
-  public void setDrmType(int paramInt)
+  public void setDrmType(@TPCommonEnum.TP_DRM_TYPE int paramInt)
   {
     this.mDrmType = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.composition.TPMediaDRMAsset
  * JD-Core Version:    0.7.0.1
  */

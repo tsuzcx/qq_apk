@@ -1,36 +1,29 @@
 package com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport;
 
-import android.content.Context;
-import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.qimei.IAsyncQimeiListener;
+import com.tencent.beacon.qimei.Qimei;
 import com.tencent.falco.base.libapi.datareport.DataReportInterface.DataReportAdapter;
 import com.tencent.falco.base.libapi.log.LogInterface;
 
 class CustomDataReportService$6
-  implements Runnable
+  implements IAsyncQimeiListener
 {
-  CustomDataReportService$6(CustomDataReportService paramCustomDataReportService, Context paramContext) {}
+  CustomDataReportService$6(CustomDataReportService paramCustomDataReportService) {}
   
-  public void run()
+  public void onQimeiDispatch(Qimei paramQimei)
   {
-    try
-    {
-      UserAction.setLogAble(false, false);
-      UserAction.initUserAction(this.a);
-      UserAction.setAppKey(this.this$0.a.getAppKey());
-      UserAction.setAppVersion(this.this$0.a.getAppVersion());
-      UserAction.setChannelID(this.this$0.a.getChannelId());
-      CustomDataReportService.a(this.this$0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      this.this$0.a.getLog().printStackTrace(localException);
-    }
+    paramQimei = paramQimei.getQimeiOld();
+    LogInterface localLogInterface = this.a.a.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCreate end sync get qImei=");
+    localStringBuilder.append(paramQimei);
+    localLogInterface.i("DataReportService", localStringBuilder.toString(), new Object[0]);
+    this.a.a.onGetBeaconImei(paramQimei);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport.CustomDataReportService.6
  * JD-Core Version:    0.7.0.1
  */

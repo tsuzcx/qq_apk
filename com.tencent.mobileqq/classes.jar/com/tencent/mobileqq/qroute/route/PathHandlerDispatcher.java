@@ -12,11 +12,17 @@ class PathHandlerDispatcher
   
   static boolean isValidActivityPath(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {}
-    while ((!paramString.startsWith("/")) || (paramString.indexOf('/', 1) < 0)) {
-      return false;
+    if (paramString != null)
+    {
+      if (paramString.length() == 0) {
+        return false;
+      }
+      if (!paramString.startsWith("/")) {
+        return false;
+      }
+      return paramString.indexOf('/', 1) >= 0;
     }
-    return true;
+    return false;
   }
   
   protected void handleURI(URIRequest paramURIRequest, URIRequestCallback paramURIRequestCallback)
@@ -25,7 +31,10 @@ class PathHandlerDispatcher
     URIHandler localURIHandler = (URIHandler)this.pathHandlers.get(str);
     if (localURIHandler == null)
     {
-      Logger.warning("path not found. path is " + str);
+      paramURIRequest = new StringBuilder();
+      paramURIRequest.append("path not found. path is ");
+      paramURIRequest.append(str);
+      Logger.warning(paramURIRequest.toString());
       paramURIRequestCallback.onComplete(1001);
       return;
     }
@@ -34,16 +43,26 @@ class PathHandlerDispatcher
   
   public void register(String paramString, URIHandler paramURIHandler)
   {
-    if ((!isValidActivityPath(paramString)) && (paramURIHandler == null)) {
-      Logger.warning("register path invalid, path is " + paramString);
-    }
-    URIHandler localURIHandler;
-    do
+    if ((!isValidActivityPath(paramString)) && (paramURIHandler == null))
     {
+      paramURIHandler = new StringBuilder();
+      paramURIHandler.append("register path invalid, path is ");
+      paramURIHandler.append(paramString);
+      Logger.warning(paramURIHandler.toString());
       return;
-      localURIHandler = (URIHandler)this.pathHandlers.put(paramString, paramURIHandler);
-    } while ((localURIHandler == null) || (localURIHandler.toString().equals(paramURIHandler.toString())));
-    Logger.warning("register path already exists, path is " + paramString + " prev is " + localURIHandler.toString() + " current is " + paramURIHandler.toString());
+    }
+    URIHandler localURIHandler = (URIHandler)this.pathHandlers.put(paramString, paramURIHandler);
+    if ((localURIHandler != null) && (!localURIHandler.toString().equals(paramURIHandler.toString())))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("register path already exists, path is ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" prev is ");
+      localStringBuilder.append(localURIHandler.toString());
+      localStringBuilder.append(" current is ");
+      localStringBuilder.append(paramURIHandler.toString());
+      Logger.warning(localStringBuilder.toString());
+    }
   }
   
   public void register(String paramString, Class<? extends Activity> paramClass)
@@ -63,7 +82,7 @@ class PathHandlerDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qroute.route.PathHandlerDispatcher
  * JD-Core Version:    0.7.0.1
  */

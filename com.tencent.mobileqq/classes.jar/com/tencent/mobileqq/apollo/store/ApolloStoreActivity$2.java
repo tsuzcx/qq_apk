@@ -1,8 +1,7 @@
 package com.tencent.mobileqq.apollo.store;
 
 import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.utils.SavaImageUtil;
 
 class ApolloStoreActivity$2
   implements Runnable
@@ -11,14 +10,12 @@ class ApolloStoreActivity$2
   
   public void run()
   {
-    if (ApolloStoreActivity.a(this.this$0).a().getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
-    }
+    SavaImageUtil.a(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.2
  * JD-Core Version:    0.7.0.1
  */

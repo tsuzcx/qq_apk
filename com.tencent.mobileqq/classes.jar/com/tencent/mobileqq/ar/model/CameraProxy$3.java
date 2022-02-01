@@ -10,30 +10,39 @@ class CameraProxy$3
   
   public void run()
   {
-    if ((CameraProxy.a(this.this$0) != 3) || (CameraProxy.a(this.this$0) == null))
+    if ((CameraProxy.a(this.this$0) == 3) && (CameraProxy.a(this.this$0) != null))
     {
-      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + CameraProxy.a(this.this$0));
-      return;
-    }
-    if (CameraProxy.a(this.this$0)) {
+      if (CameraProxy.a(this.this$0)) {
+        CameraProxy.a(this.this$0).a();
+      }
+      CameraProxy.a(this.this$0, false);
       CameraProxy.a(this.this$0).a();
-    }
-    CameraProxy.a(this.this$0, false);
-    CameraProxy.a(this.this$0).a();
-    if (CameraProxy.a(this.this$0) != 3)
-    {
-      QLog.i("CameraProxy", 2, "cancel to close camera. next mCurCameraState = " + CameraProxy.a(this.this$0));
+      if (CameraProxy.a(this.this$0) != 3)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("cancel to close camera. next mCurCameraState = ");
+        localStringBuilder.append(CameraProxy.a(this.this$0));
+        QLog.i("CameraProxy", 2, localStringBuilder.toString());
+        return;
+      }
+      CameraProxy.a(this.this$0, 0);
+      CameraProxy.a(this.this$0, null);
+      CameraProxy.e(this.this$0, 0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("closeCamera successfully. mCurCameraState = ");
+      localStringBuilder.append(CameraProxy.a(this.this$0));
+      QLog.i("CameraProxy", 2, localStringBuilder.toString());
       return;
     }
-    CameraProxy.a(this.this$0, 0);
-    CameraProxy.a(this.this$0, null);
-    CameraProxy.e(this.this$0, 0);
-    QLog.i("CameraProxy", 2, "closeCamera successfully. mCurCameraState = " + CameraProxy.a(this.this$0));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancel to close camera. next mCurCameraState = ");
+    localStringBuilder.append(CameraProxy.a(this.this$0));
+    QLog.i("CameraProxy", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.CameraProxy.3
  * JD-Core Version:    0.7.0.1
  */

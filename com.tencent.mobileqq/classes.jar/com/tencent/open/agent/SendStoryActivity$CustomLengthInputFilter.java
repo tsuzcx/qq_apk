@@ -18,10 +18,11 @@ public class SendStoryActivity$CustomLengthInputFilter
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    paramInt3 = 0;
     paramSpanned = this.jdField_a_of_type_AndroidWidgetEditText.getEditableText();
     StringBuilder localStringBuilder = new StringBuilder(paramSpanned.toString());
-    Friend[] arrayOfFriend = (Friend[])paramSpanned.getSpans(0, paramSpanned.length(), Friend.class);
+    paramInt4 = paramSpanned.length();
+    paramInt3 = 0;
+    Friend[] arrayOfFriend = (Friend[])paramSpanned.getSpans(0, paramInt4, Friend.class);
     Arrays.sort(arrayOfFriend, new SendStoryActivity.CustomLengthInputFilter.1(this, paramSpanned));
     paramInt4 = arrayOfFriend.length;
     while (paramInt3 < paramInt4)
@@ -39,24 +40,26 @@ public class SendStoryActivity$CustomLengthInputFilter
       return null;
     }
     paramInt3 = paramInt1;
-    if (paramInt3 < paramInt2)
+    while (paramInt3 < paramInt2)
     {
       int j;
-      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3))) {
-        j = StringAddition.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
-      }
-      for (int i = 2;; i = 1)
+      int i;
+      if (Character.isHighSurrogate(paramCharSequence.charAt(paramInt3)))
       {
-        paramInt4 -= j;
-        if (paramInt4 < 0) {
-          break label257;
-        }
-        paramInt3 = i + paramInt3;
-        break;
-        j = StringAddition.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+        j = StringAddition.a(paramCharSequence.subSequence(paramInt3, paramInt3 + 2).toString());
+        i = 2;
       }
+      else
+      {
+        j = StringAddition.a(String.valueOf(paramCharSequence.charAt(paramInt3)));
+        i = 1;
+      }
+      paramInt4 -= j;
+      if (paramInt4 < 0) {
+        break;
+      }
+      paramInt3 += i;
     }
-    label257:
     if (paramInt3 == paramInt1) {
       return "";
     }
@@ -65,7 +68,7 @@ public class SendStoryActivity$CustomLengthInputFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.SendStoryActivity.CustomLengthInputFilter
  * JD-Core Version:    0.7.0.1
  */

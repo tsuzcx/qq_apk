@@ -5,11 +5,11 @@ import android.content.res.Resources;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
-import android.support.annotation.RawRes;
 import android.support.annotation.WorkerThread;
 import android.support.v4.util.MQLruCache;
 import android.util.JsonReader;
 import android.util.Log;
+import androidx.annotation.RawRes;
 import com.tencent.mobileqq.dinifly.model.FileCompositionLoader;
 import com.tencent.mobileqq.dinifly.model.JsonCompositionLoader;
 import java.io.InputStream;
@@ -128,7 +128,7 @@ public class LottieComposition$Factory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.LottieComposition.Factory
  * JD-Core Version:    0.7.0.1
  */

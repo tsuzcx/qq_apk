@@ -27,25 +27,20 @@ public class AdHttp$Params
     boolean bool;
     if ((this.url != null) && (!TextUtils.isEmpty(this.method))) {
       bool = true;
+    } else {
+      bool = false;
     }
-    while (TextUtils.equals(this.method, "POST")) {
-      if ((bool) && (this.requestData != null))
-      {
-        return true;
-        bool = false;
-      }
-      else
-      {
-        return false;
-      }
+    if (TextUtils.equals(this.method, "POST")) {
+      return (bool) && (this.requestData != null);
     }
     return bool;
   }
   
   public String getUrl()
   {
-    if (this.url != null) {
-      return this.url.toString();
+    URL localURL = this.url;
+    if (localURL != null) {
+      return localURL.toString();
     }
     return null;
   }
@@ -64,8 +59,14 @@ public class AdHttp$Params
     }
     catch (Throwable localThrowable)
     {
-      AdLog.e("AdHttp", "setUrl " + paramString);
+      label13:
+      StringBuilder localStringBuilder;
+      break label13;
     }
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setUrl ");
+    localStringBuilder.append(paramString);
+    AdLog.e("AdHttp", localStringBuilder.toString());
   }
 }
 

@@ -24,6 +24,7 @@ import com.tencent.mobileqq.intervideo.lite_now_biz.event.ChangeMicrophoneEvent;
 import com.tencent.mobileqq.intervideo.lite_now_biz.permission.RequestPermission;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
+import com.tencent.qphone.base.util.QLog;
 
 public class AudioMediaModule
   extends RoomBizModule
@@ -85,7 +86,7 @@ public class AudioMediaModule
   private void d()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.context, 230, "", HardCodeUtil.a(2131696354), HardCodeUtil.a(2131690800), HardCodeUtil.a(2131693566), new AudioMediaModule.5(this), new AudioMediaModule.6(this));
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = DialogUtil.a(this.context, 230, "", HardCodeUtil.a(2131696373), HardCodeUtil.a(2131690728), HardCodeUtil.a(2131693521), new AudioMediaModule.5(this), new AudioMediaModule.6(this));
     }
     if (!this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing()) {
       this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.show();
@@ -94,8 +95,9 @@ public class AudioMediaModule
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentIlivesdkAvplayerbuilderservice_interfaceAVPlayerBuilderServiceInterface != null) {
-      this.jdField_a_of_type_ComTencentIlivesdkAvplayerbuilderservice_interfaceAVPlayerBuilderServiceInterface.uninit();
+    AVPlayerBuilderServiceInterface localAVPlayerBuilderServiceInterface = this.jdField_a_of_type_ComTencentIlivesdkAvplayerbuilderservice_interfaceAVPlayerBuilderServiceInterface;
+    if (localAVPlayerBuilderServiceInterface != null) {
+      localAVPlayerBuilderServiceInterface.uninit();
     }
   }
   
@@ -128,12 +130,19 @@ public class AudioMediaModule
   public void onEnterRoom(boolean paramBoolean)
   {
     super.onEnterRoom(paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onEnterRoom isOutEnter=");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("AudioMediaModule", 1, localStringBuilder.toString());
+    }
     a(this.jdField_a_of_type_ComTencentIlivesdkRoomservice_interfaceRoomServiceInterface.getLiveInfo());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.module.AudioMediaModule
  * JD-Core Version:    0.7.0.1
  */

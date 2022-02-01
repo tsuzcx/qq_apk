@@ -14,8 +14,9 @@ class QfileLocalFilePicTabView$1
   {
     Object localObject = QfileLocalFilePicTabView.a(this.this$0);
     Map localMap = QfileLocalFilePicTabView.a(this.this$0, (ArrayList)localObject);
-    this.this$0.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
-    localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getSharedPreferences("LAST_CHOOSE_", 0);
+    QfileLocalFilePicTabView localQfileLocalFilePicTabView = this.this$0;
+    localQfileLocalFilePicTabView.jdField_a_of_type_JavaUtilArrayList = ((ArrayList)localObject);
+    localObject = localQfileLocalFilePicTabView.jdField_a_of_type_ComTencentMobileqqFilemanagerActivityBaseFileAssistantActivity.getSharedPreferences("LAST_CHOOSE_", 0);
     int i = ((SharedPreferences)localObject).getInt("GROUP", -1);
     int j = ((SharedPreferences)localObject).getInt("CHILD", -1);
     QfileLocalFilePicTabView.a(this.this$0, new QfileLocalFilePicTabView.1.1(this, localMap, i, j));
@@ -23,7 +24,7 @@ class QfileLocalFilePicTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.localfile.QfileLocalFilePicTabView.1
  * JD-Core Version:    0.7.0.1
  */

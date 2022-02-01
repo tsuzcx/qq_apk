@@ -11,24 +11,22 @@ public class AssertUtil
   
   public static void assertInValidAttributesBinding(String paramString)
   {
-    if (!isDebugVersion) {}
-    for (;;)
-    {
+    if (!isDebugVersion) {
       return;
-      if (assertUtil != null)
+    }
+    if (assertUtil != null)
+    {
+      String[] arrayOfString = attributesBlackList;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
-        String[] arrayOfString = attributesBlackList;
-        int j = arrayOfString.length;
-        int i = 0;
-        while (i < j)
+        if (TextUtils.equals(arrayOfString[i], paramString))
         {
-          if (TextUtils.equals(arrayOfString[i], paramString))
-          {
-            assertUtil.assertInValidAttributesBinding(paramString);
-            return;
-          }
-          i += 1;
+          assertUtil.assertInValidAttributesBinding(paramString);
+          return;
         }
+        i += 1;
       }
     }
   }
@@ -40,18 +38,19 @@ public class AssertUtil
   
   public static void registerAssertUtil(AssertUtil.IAssertUtil paramIAssertUtil)
   {
-    if (paramIAssertUtil != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      isDebugVersion = bool;
-      assertUtil = paramIAssertUtil;
-      return;
+    boolean bool;
+    if (paramIAssertUtil != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    isDebugVersion = bool;
+    assertUtil = paramIAssertUtil;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.utils.AssertUtil
  * JD-Core Version:    0.7.0.1
  */

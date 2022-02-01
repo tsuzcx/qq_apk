@@ -17,22 +17,23 @@ class VideoInfo$GenerateVideoPosterSegment$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.b(this.jdField_a_of_type_JavaLangString);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.e = 5;
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.g = -2147483646;
-    XMediaEditor localXMediaEditor = (XMediaEditor)VideoInfo.GenerateVideoPosterSegment.a(this.this$0).get();
-    if (localXMediaEditor != null)
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.a(this.jdField_a_of_type_JavaLangString);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo;
+    ((VideoInfo)localObject1).e = 5;
+    ((VideoInfo)localObject1).f = -2147483646;
+    localObject1 = (XMediaEditor)VideoInfo.GenerateVideoPosterSegment.a(this.this$0).get();
+    if (localObject1 != null)
     {
-      Object localObject = localXMediaEditor.findViewHolderForLayoutPosition(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.c);
-      if ((localObject instanceof VideoItem.VideoViewHolder))
+      Object localObject2 = ((XMediaEditor)localObject1).findViewHolderForLayoutPosition(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.c);
+      if ((localObject2 instanceof VideoItem.VideoViewHolder))
       {
-        localObject = (VideoItem.VideoViewHolder)localObject;
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject).a.getTag()))
+        localObject2 = (VideoItem.VideoViewHolder)localObject2;
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo.d.equals(((VideoItem.VideoViewHolder)localObject2).a.getTag()))
         {
           if (QLog.isColorLevel()) {
-            QLog.d("GenerateVideoPosterSegment", 2, new Object[] { "GeneratePoster before notify. vh hash=", Integer.valueOf(localObject.hashCode()) });
+            QLog.d("GenerateVideoPosterSegment", 2, new Object[] { "GeneratePoster before notify. vh hash=", Integer.valueOf(localObject2.hashCode()) });
           }
-          ((VideoItem)((XMediaEditorAdapter)localXMediaEditor.getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo, 0);
+          ((VideoItem)((XMediaEditorAdapter)((XMediaEditor)localObject1).getAdapter()).a.a(2)).a((ImageItem.ImageViewHolder)localObject2, this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelVideoInfo, 0);
         }
       }
     }
@@ -40,7 +41,7 @@ class VideoInfo$GenerateVideoPosterSegment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.VideoInfo.GenerateVideoPosterSegment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -44,18 +44,18 @@ public final class FilePathComponents
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof FilePathComponents))
       {
         paramObject = (FilePathComponents)paramObject;
-        if ((!Intrinsics.areEqual(this.root, paramObject.root)) || (!Intrinsics.areEqual(this.segments, paramObject.segments))) {}
+        if ((Intrinsics.areEqual(this.root, paramObject.root)) && (Intrinsics.areEqual(this.segments, paramObject.segments))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -85,17 +85,19 @@ public final class FilePathComponents
   
   public int hashCode()
   {
-    int j = 0;
     Object localObject = this.root;
-    if (localObject != null) {}
-    for (int i = localObject.hashCode();; i = 0)
-    {
-      localObject = this.segments;
-      if (localObject != null) {
-        j = localObject.hashCode();
-      }
-      return i * 31 + j;
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject.hashCode();
+    } else {
+      i = 0;
     }
+    localObject = this.segments;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    }
+    return i * 31 + j;
   }
   
   public final boolean isRooted()
@@ -108,24 +110,31 @@ public final class FilePathComponents
   @NotNull
   public final File subPath(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 > paramInt2) || (paramInt2 > getSize())) {
-      throw ((Throwable)new IllegalArgumentException());
+    if ((paramInt1 >= 0) && (paramInt1 <= paramInt2) && (paramInt2 <= getSize()))
+    {
+      Iterable localIterable = (Iterable)this.segments.subList(paramInt1, paramInt2);
+      String str = File.separator;
+      Intrinsics.checkExpressionValueIsNotNull(str, "File.separator");
+      return new File(CollectionsKt.joinToString$default(localIterable, (CharSequence)str, null, null, 0, null, null, 62, null));
     }
-    Iterable localIterable = (Iterable)this.segments.subList(paramInt1, paramInt2);
-    String str = File.separator;
-    Intrinsics.checkExpressionValueIsNotNull(str, "File.separator");
-    return new File(CollectionsKt.joinToString$default(localIterable, (CharSequence)str, null, null, 0, null, null, 62, null));
+    throw ((Throwable)new IllegalArgumentException());
   }
   
   @NotNull
   public String toString()
   {
-    return "FilePathComponents(root=" + this.root + ", segments=" + this.segments + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FilePathComponents(root=");
+    localStringBuilder.append(this.root);
+    localStringBuilder.append(", segments=");
+    localStringBuilder.append(this.segments);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.io.FilePathComponents
  * JD-Core Version:    0.7.0.1
  */

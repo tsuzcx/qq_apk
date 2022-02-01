@@ -20,8 +20,9 @@ public enum AdBrowser
   
   private static AdBrowserAdapter getAdapter()
   {
-    if (INSTANCE.adapter != null) {
-      return (AdBrowserAdapter)INSTANCE.adapter.get();
+    WeakReference localWeakReference = INSTANCE.adapter;
+    if (localWeakReference != null) {
+      return (AdBrowserAdapter)localWeakReference.get();
     }
     return null;
   }

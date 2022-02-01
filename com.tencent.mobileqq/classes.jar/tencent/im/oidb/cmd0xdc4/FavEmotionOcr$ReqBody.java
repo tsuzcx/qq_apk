@@ -22,13 +22,14 @@ public final class FavEmotionOcr$ReqBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50 }, new String[] { "uint32_src_term", "string_version", "uint32_cmd_type", "list_pic_info", "list_modify_req", "bytes_other" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), null, null, localByteStringMicro }, ReqBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 42, 50 }, new String[] { "uint32_src_term", "string_version", "uint32_cmd_type", "list_pic_info", "list_modify_req", "bytes_other" }, new Object[] { localInteger, "", localInteger, null, null, localByteStringMicro }, ReqBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xdc4.FavEmotionOcr.ReqBody
  * JD-Core Version:    0.7.0.1
  */

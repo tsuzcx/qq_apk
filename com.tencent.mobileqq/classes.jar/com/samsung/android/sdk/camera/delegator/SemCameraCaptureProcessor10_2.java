@@ -26,7 +26,7 @@ import java.util.List;
 public class SemCameraCaptureProcessor10_2
   extends AbstractSemCameraCaptureProcessor
 {
-  private static final String TAG = SemCameraCaptureProcessor10_2.class.getSimpleName();
+  private static final String TAG = "SemCameraCaptureProcessor10_2";
   private CameraCharacteristics mCharacteristics;
   private List<AbstractSemCameraCaptureProcessor.ProcessorParameter> mParameterList;
   private AbstractSemCameraCaptureProcessor.CaptureCallback mSDKCaptureCallback = null;
@@ -44,35 +44,37 @@ public class SemCameraCaptureProcessor10_2
     paramList = paramList.iterator();
     while (paramList.hasNext())
     {
-      AbstractSemCameraCaptureProcessor.CaptureParameter localCaptureParameter = (AbstractSemCameraCaptureProcessor.CaptureParameter)paramList.next();
-      localArrayList.add(new SemCameraCaptureProcessor.CaptureParameter(localCaptureParameter.getKey(), localCaptureParameter.getValue()));
+      localObject = (AbstractSemCameraCaptureProcessor.CaptureParameter)paramList.next();
+      localArrayList.add(new SemCameraCaptureProcessor.CaptureParameter(((AbstractSemCameraCaptureProcessor.CaptureParameter)localObject).getKey(), ((AbstractSemCameraCaptureProcessor.CaptureParameter)localObject).getValue()));
     }
-    Log.d(TAG, "getSemParameters: SemCaptureParametersSize: " + localArrayList.size());
+    paramList = TAG;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getSemParameters: SemCaptureParametersSize: ");
+    ((StringBuilder)localObject).append(localArrayList.size());
+    Log.d(paramList, ((StringBuilder)localObject).toString());
     return localArrayList;
   }
   
   private void setFaceDetectMode(CaptureRequest.Builder paramBuilder)
   {
-    int j = 0;
-    int k;
-    if (this.mCharacteristics != null)
+    Object localObject = this.mCharacteristics;
+    if (localObject != null)
     {
-      int[] arrayOfInt = (int[])this.mCharacteristics.get(CameraCharacteristics.STATISTICS_INFO_AVAILABLE_FACE_DETECT_MODES);
-      int n = arrayOfInt.length;
+      localObject = (int[])((CameraCharacteristics)localObject).get(CameraCharacteristics.STATISTICS_INFO_AVAILABLE_FACE_DETECT_MODES);
+      int n = localObject.length;
       int i = 0;
-      k = 0;
-      if (i < n)
+      int j = 0;
+      int k = 0;
+      while (i < n)
       {
-        int i1 = arrayOfInt[i];
+        int i1 = localObject[i];
         int m;
-        if (i1 == 2) {
+        if (i1 == 2)
+        {
           m = 1;
         }
-        for (;;)
+        else
         {
-          i += 1;
-          j = m;
-          break;
           m = j;
           if (i1 == 1)
           {
@@ -80,23 +82,25 @@ public class SemCameraCaptureProcessor10_2
             m = j;
           }
         }
+        i += 1;
+        j = m;
       }
-      if (j == 0) {
-        break label99;
+      if (j != 0)
+      {
+        paramBuilder.set(CaptureRequest.STATISTICS_FACE_DETECT_MODE, Integer.valueOf(2));
+        return;
       }
-      paramBuilder.set(CaptureRequest.STATISTICS_FACE_DETECT_MODE, Integer.valueOf(2));
+      if (k != 0) {
+        paramBuilder.set(CaptureRequest.STATISTICS_FACE_DETECT_MODE, Integer.valueOf(1));
+      }
     }
-    label99:
-    while (k == 0) {
-      return;
-    }
-    paramBuilder.set(CaptureRequest.STATISTICS_FACE_DETECT_MODE, Integer.valueOf(1));
   }
   
   public CaptureRequest buildCaptureRequest(CaptureRequest.Builder paramBuilder)
   {
-    if (this.mSemCameraCaptureProcessor != null) {
-      return this.mSemCameraCaptureProcessor.buildCaptureRequest(paramBuilder);
+    SemCameraCaptureProcessor localSemCameraCaptureProcessor = this.mSemCameraCaptureProcessor;
+    if (localSemCameraCaptureProcessor != null) {
+      return localSemCameraCaptureProcessor.buildCaptureRequest(paramBuilder);
     }
     return paramBuilder.build();
   }
@@ -104,8 +108,9 @@ public class SemCameraCaptureProcessor10_2
   public void capture(CameraCaptureSession paramCameraCaptureSession, CaptureResult paramCaptureResult, AbstractSemCameraCaptureProcessor.CaptureCallback paramCaptureCallback, Handler paramHandler, List<AbstractSemCameraCaptureProcessor.CaptureParameter> paramList)
   {
     this.mSDKCaptureCallback = paramCaptureCallback;
-    if (this.mSemCameraCaptureProcessor != null) {
-      this.mSemCameraCaptureProcessor.capture(paramCameraCaptureSession, new SemCameraCaptureProcessor.DynamicShotInfo(paramCaptureResult), this.mSemCaptureCallBack, paramHandler, getSemParameters(paramList));
+    paramCaptureCallback = this.mSemCameraCaptureProcessor;
+    if (paramCaptureCallback != null) {
+      paramCaptureCallback.capture(paramCameraCaptureSession, new SemCameraCaptureProcessor.DynamicShotInfo(paramCaptureResult), this.mSemCaptureCallBack, paramHandler, getSemParameters(paramList));
     }
   }
   
@@ -113,7 +118,13 @@ public class SemCameraCaptureProcessor10_2
   {
     if (this.mSemCameraCaptureProcessor != null)
     {
-      Log.i(TAG, "createSessionConfiguration: outputConfigurations " + paramList + "  stateCallback: " + paramStateCallback);
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createSessionConfiguration: outputConfigurations ");
+      localStringBuilder.append(paramList);
+      localStringBuilder.append("  stateCallback: ");
+      localStringBuilder.append(paramStateCallback);
+      Log.i(str, localStringBuilder.toString());
       return this.mSemCameraCaptureProcessor.createSessionConfiguration(paramList, paramStateCallback, paramHandler);
     }
     return null;
@@ -121,8 +132,9 @@ public class SemCameraCaptureProcessor10_2
   
   public CameraDevice.StateCallback createStateCallback(CameraDevice.StateCallback paramStateCallback, Handler paramHandler)
   {
-    if (this.mSemCameraCaptureProcessor != null) {
-      return this.mSemCameraCaptureProcessor.createStateCallback(paramStateCallback, paramHandler);
+    SemCameraCaptureProcessor localSemCameraCaptureProcessor = this.mSemCameraCaptureProcessor;
+    if (localSemCameraCaptureProcessor != null) {
+      return localSemCameraCaptureProcessor.createStateCallback(paramStateCallback, paramHandler);
     }
     return null;
   }
@@ -177,13 +189,14 @@ public class SemCameraCaptureProcessor10_2
   
   public <T> void setProcessorParameter(AbstractSemCameraCaptureProcessor.ProcessorParameter<T> paramProcessorParameter, T paramT)
   {
-    if (paramProcessorParameter == PARAMETER_ENABLE_FACE_BEAUTY) {
+    if (paramProcessorParameter == PARAMETER_ENABLE_FACE_BEAUTY)
+    {
       this.mSemCameraCaptureProcessor.setProcessorParameter(SemCameraCaptureProcessor.PARAMETER_ENABLE_FACE_BEAUTY, (Boolean)paramT);
-    }
-    while (paramProcessorParameter != PARAMETER_IMAGE_FORMAT) {
       return;
     }
-    this.mSemCameraCaptureProcessor.setProcessorParameter(SemCameraCaptureProcessor.PARAMETER_IMAGE_FORMAT, (Integer)paramT);
+    if (paramProcessorParameter == PARAMETER_IMAGE_FORMAT) {
+      this.mSemCameraCaptureProcessor.setProcessorParameter(SemCameraCaptureProcessor.PARAMETER_IMAGE_FORMAT, (Integer)paramT);
+    }
   }
 }
 

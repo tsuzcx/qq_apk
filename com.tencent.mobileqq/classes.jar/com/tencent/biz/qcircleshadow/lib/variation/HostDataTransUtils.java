@@ -3,6 +3,7 @@ package com.tencent.biz.qcircleshadow.lib.variation;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.util.Pair;
+import com.tencent.biz.qcircleshadow.handler.QCircleHandler;
 import com.tencent.biz.qcircleshadow.lib.listener.QCircleFaceBitmapListener;
 import com.tencent.biz.qcircleshadow.lib.listener.QCircleProfileCardChangeListener;
 import com.tencent.biz.qcircleshadow.local.QCircleCardObserver;
@@ -11,23 +12,28 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.FontSettingManager;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.avatar.api.IQQAvatarService;
+import com.tencent.mobileqq.friend.api.IFriendNameService;
 import com.tencent.mobileqq.mqq.api.IAccountRuntime;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.qcircle.api.data.QCircleRecentDataInterface;
+import com.tencent.mobileqq.qcircle.api.data.SerializableMap;
 import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
 import com.tencent.mobileqq.qcircle.tempapi.interfaces.QCircleMessageFacadeListener;
 import com.tencent.mobileqq.qcircle.tempapi.interfaces.QCircleVideoSdkInitListener;
+import com.tencent.mobileqq.qqvideoplatform.api.QQVideoPlaySDKManager;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.relation.api.IContactUtilsApi;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.studymode.api.IStudyModeManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.QQCustomArkDialogUtil;
+import cooperation.qzone.PlatformInfor;
+import cooperation.qzone.QUA;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
+import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 
 public class HostDataTransUtils
@@ -44,7 +50,9 @@ public class HostDataTransUtils
   
   public static void clearRedDotInfo()
   {
-    QCircleServiceImpl.getQQService().clearRedDotInfo();
+    if (QCircleHandler.a() != null) {
+      QCircleHandler.a().c();
+    }
   }
   
   public static String getA2(String paramString)
@@ -59,7 +67,7 @@ public class HostDataTransUtils
   
   public static String getAccountNickName(String paramString)
   {
-    return QCircleServiceImpl.getQQService().getAccountName(paramString);
+    return ((IFriendNameService)QCircleServiceImpl.getAppRunTime().getRuntimeService(IFriendNameService.class, "all")).getFriendNick(paramString);
   }
   
   public static Bundle getArkDialogZipArgs(String paramString1, String paramString2, String paramString3, String paramString4)
@@ -69,17 +77,17 @@ public class HostDataTransUtils
   
   public static String getBuddyName(String paramString, boolean paramBoolean)
   {
-    return QCircleServiceImpl.getQQService().getBuddyName(paramString);
+    return ((IContactUtilsApi)QRoute.api(IContactUtilsApi.class)).getBuddyName(paramString, paramBoolean);
   }
   
   public static String getDeviceInfo()
   {
-    return QCircleServiceImpl.getQZoneService().getDeviceInfo();
+    return PlatformInfor.g().getDeviceInfor();
   }
   
   public static String getFriendNickName(String paramString)
   {
-    return QCircleServiceImpl.getQQService().getFriendNick(paramString);
+    return ((IFriendNameService)QCircleServiceImpl.getAppRunTime().getRuntimeService(IFriendNameService.class, "all")).getFriendNick(paramString);
   }
   
   public static long getLongAccountUin()
@@ -99,7 +107,7 @@ public class HostDataTransUtils
   
   public static String getQUA3()
   {
-    return QCircleServiceImpl.getQZoneService().getQUA3();
+    return QUA.getQUA3();
   }
   
   public static void getUserFaceBitmap(String paramString, QCircleFaceBitmapListener paramQCircleFaceBitmapListener)
@@ -128,7 +136,7 @@ public class HostDataTransUtils
   
   public static void initVideoSdk(QCircleVideoSdkInitListener paramQCircleVideoSdkInitListener)
   {
-    QCircleServiceImpl.getQQService().initSDKAsync(paramQCircleVideoSdkInitListener);
+    QQVideoPlaySDKManager.a(MobileQQ.context, new HostDataTransUtils.2(paramQCircleVideoSdkInitListener));
   }
   
   public static boolean isStudyMode()
@@ -181,12 +189,14 @@ public class HostDataTransUtils
   
   public static Serializable wrapSerializableMap(HashMap paramHashMap)
   {
-    return ((IQQBaseService)QRoute.api(IQQBaseService.class)).wrapSerializableMap(paramHashMap);
+    SerializableMap localSerializableMap = new SerializableMap();
+    localSerializableMap.setMap(paramHashMap);
+    return localSerializableMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostDataTransUtils
  * JD-Core Version:    0.7.0.1
  */

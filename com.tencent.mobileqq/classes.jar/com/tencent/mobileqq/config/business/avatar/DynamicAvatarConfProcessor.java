@@ -26,53 +26,44 @@ public final class DynamicAvatarConfProcessor
   @Nullable
   public DynamicAvatarConfBean a(@Nullable QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (paramArrayOfQConfItem != null)
     {
-      if (paramArrayOfQConfItem.length != 0) {
-        break label134;
+      int i;
+      if (paramArrayOfQConfItem.length == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      if (i != 0) {
-        break label139;
-      }
-    }
-    label134:
-    label139:
-    for (int i = 1;; i = 0)
-    {
-      localObject1 = localObject2;
-      String str;
-      if (i != 0)
+      if ((i ^ 0x1) != 0)
       {
-        str = paramArrayOfQConfItem[0].a;
-        if (QLog.isColorLevel()) {
-          QLog.i("DynamicAvatarConfProcessor", 2, "DynamicAvatar.[onParsed] type=" + type() + ", content = " + str);
-        }
-        localObject1 = localObject2;
-        if (!TextUtils.isEmpty((CharSequence)str)) {
-          paramArrayOfQConfItem = (DynamicAvatarConfBean.DynamicAvatarConfig)null;
-        }
-      }
-      try
-      {
-        localObject1 = (DynamicAvatarConfBean.DynamicAvatarConfig)QStorage.a(str, DynamicAvatarConfBean.DynamicAvatarConfig.class);
-        paramArrayOfQConfItem = (QConfItem[])localObject1;
-      }
-      catch (QStorageInstantiateException localQStorageInstantiateException)
-      {
-        for (;;)
+        String str = paramArrayOfQConfItem[0].a;
+        if (QLog.isColorLevel())
         {
-          QLog.e("DynamicAvatarConfProcessor", 1, "readJsonOrXml failed", (Throwable)localQStorageInstantiateException);
+          paramArrayOfQConfItem = new StringBuilder();
+          paramArrayOfQConfItem.append("DynamicAvatar.[onParsed] type=");
+          paramArrayOfQConfItem.append(type());
+          paramArrayOfQConfItem.append(", content = ");
+          paramArrayOfQConfItem.append(str);
+          QLog.i("DynamicAvatarConfProcessor", 2, paramArrayOfQConfItem.toString());
+        }
+        if (!TextUtils.isEmpty((CharSequence)str))
+        {
+          paramArrayOfQConfItem = (DynamicAvatarConfBean.DynamicAvatarConfig)null;
+          try
+          {
+            DynamicAvatarConfBean.DynamicAvatarConfig localDynamicAvatarConfig = (DynamicAvatarConfBean.DynamicAvatarConfig)QStorage.a(str, DynamicAvatarConfBean.DynamicAvatarConfig.class);
+            paramArrayOfQConfItem = localDynamicAvatarConfig;
+          }
+          catch (QStorageInstantiateException localQStorageInstantiateException)
+          {
+            QLog.e("DynamicAvatarConfProcessor", 1, "readJsonOrXml failed", (Throwable)localQStorageInstantiateException);
+          }
+          Intrinsics.checkExpressionValueIsNotNull(str, "content");
+          return new DynamicAvatarConfBean(str, paramArrayOfQConfItem);
         }
       }
-      Intrinsics.checkExpressionValueIsNotNull(str, "content");
-      localObject1 = new DynamicAvatarConfBean(str, paramArrayOfQConfItem);
-      return localObject1;
-      i = 0;
-      break;
     }
+    return null;
   }
   
   public void a(@Nullable DynamicAvatarConfBean paramDynamicAvatarConfBean) {}
@@ -107,7 +98,7 @@ public final class DynamicAvatarConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.avatar.DynamicAvatarConfProcessor
  * JD-Core Version:    0.7.0.1
  */

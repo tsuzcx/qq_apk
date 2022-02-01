@@ -34,8 +34,14 @@ public class PromotionConfigInfo$ZipItem
       if (this.jdField_c_of_type_Int == 1) {
         return;
       }
-      if (this.jdField_c_of_type_Int == -1) {
-        QLog.w(PromotionConfigInfo.TAG, 1, "clearDownladFlag, ZipItem[" + this + "]");
+      if (this.jdField_c_of_type_Int == -1)
+      {
+        String str = PromotionConfigInfo.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("clearDownladFlag, ZipItem[");
+        localStringBuilder.append(this);
+        localStringBuilder.append("]");
+        QLog.w(str, 1, localStringBuilder.toString());
       }
       a(0);
       this.jdField_a_of_type_Long = 0L;
@@ -56,12 +62,33 @@ public class PromotionConfigInfo$ZipItem
   
   public String toString()
   {
-    return this.jdField_a_of_type_Int + ", id[" + this.e + "], index[" + this.jdField_a_of_type_Int + "], net_type[" + this.jdField_b_of_type_Int + "], url[" + this.jdField_a_of_type_JavaLangString + "], md5[" + this.jdField_b_of_type_JavaLangString + "], zipFilePath[" + this.jdField_c_of_type_JavaLangString + "], unzipDirPath[" + this.jdField_d_of_type_JavaLangString + "], callByPreDownload[" + this.jdField_a_of_type_Boolean + "], downloadType[" + this.jdField_c_of_type_Int + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", id[");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append("], index[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("], net_type[");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("], url[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("], md5[");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("], zipFilePath[");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("], unzipDirPath[");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("], callByPreDownload[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("], downloadType[");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionConfigInfo.ZipItem
  * JD-Core Version:    0.7.0.1
  */

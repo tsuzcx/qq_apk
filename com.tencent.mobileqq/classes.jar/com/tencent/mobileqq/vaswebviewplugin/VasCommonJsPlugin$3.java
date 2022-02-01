@@ -22,14 +22,18 @@ class VasCommonJsPlugin$3
     }
     catch (Exception paramDialogInterface)
     {
-      this.val$listener.a("Exception:" + paramDialogInterface.getMessage());
+      JsBridgeListener localJsBridgeListener = this.val$listener;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Exception:");
+      localStringBuilder.append(paramDialogInterface.getMessage());
+      localJsBridgeListener.a(localStringBuilder.toString());
       paramDialogInterface.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

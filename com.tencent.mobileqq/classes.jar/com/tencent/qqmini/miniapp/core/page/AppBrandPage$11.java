@@ -11,27 +11,25 @@ class AppBrandPage$11
   {
     if (AppBrandPage.access$300(this.this$0) != null)
     {
-      if (!this.val$type.equals("text")) {
-        break label41;
+      if (this.val$type.equals("text"))
+      {
+        AppBrandPage.access$300(this.this$0).setTabBarBadge(this.val$index, this.val$text);
+        return;
       }
-      AppBrandPage.access$300(this.this$0).setTabBarBadge(this.val$index, this.val$text);
-    }
-    label41:
-    do
-    {
-      return;
       if (this.val$type.equals("redDot"))
       {
         AppBrandPage.access$300(this.this$0).showTabBarRedDot(this.val$index);
         return;
       }
-    } while (!this.val$type.equals("none"));
-    AppBrandPage.access$300(this.this$0).hideBadge(this.val$index);
+      if (this.val$type.equals("none")) {
+        AppBrandPage.access$300(this.this$0).hideBadge(this.val$index);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.AppBrandPage.11
  * JD-Core Version:    0.7.0.1
  */

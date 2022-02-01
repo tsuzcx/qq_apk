@@ -54,7 +54,10 @@ public class TencentDocSelectAddDocsProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TencentDocSelectAddDocsProcessor", 1, "handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleTencentDocUniversalEntry FILE_SELECT_ADD_DOCS failed, resultCode:");
+    localStringBuilder.append(paramInt);
+    QLog.d("TencentDocSelectAddDocsProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -64,7 +67,7 @@ public class TencentDocSelectAddDocsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocSelectAddDocsProcessor
  * JD-Core Version:    0.7.0.1
  */

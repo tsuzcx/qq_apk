@@ -32,20 +32,23 @@ class AvatarPendantActivity$IconRunnable
     if ((this.b.get() != null) && (this.a.get() != null))
     {
       DownloaderInterface localDownloaderInterface = ((DownloaderFactory)((QQAppInterface)this.b.get()).getManager(QQManagerFactory.DOWNLOADER_FACTORY)).a(1);
-      if (localDownloaderInterface.a(AvatarPendantUtil.a) == null)
+      if (localDownloaderInterface.getTask(AvatarPendantUtil.a) == null)
       {
-        Object localObject = new File(AvatarPendantUtil.b + "/icon.zip");
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(AvatarPendantUtil.b);
+        ((StringBuilder)localObject).append("/icon.zip");
+        localObject = new File(((StringBuilder)localObject).toString());
         localObject = new DownloadTask(AvatarPendantUtil.a, (File)localObject);
         ((DownloadTask)localObject).p = false;
         Bundle localBundle = new Bundle();
-        localDownloaderInterface.a((DownloadTask)localObject, (DownloadListener)this.a.get(), localBundle);
+        localDownloaderInterface.startDownload((DownloadTask)localObject, (DownloadListener)this.a.get(), localBundle);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.pendant.AvatarPendantActivity.IconRunnable
  * JD-Core Version:    0.7.0.1
  */

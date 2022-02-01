@@ -8,8 +8,8 @@ import android.widget.RelativeLayout;
 public class AlphaClickableRelativeLayout
   extends RelativeLayout
 {
-  private boolean a;
-  private boolean b;
+  private boolean consumeDownEvent;
+  private boolean mEnable;
   
   public AlphaClickableRelativeLayout(Context paramContext)
   {
@@ -26,39 +26,43 @@ public class AlphaClickableRelativeLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void a(boolean paramBoolean)
-  {
-    this.a = paramBoolean;
-  }
-  
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.a) {
-      switch (paramMotionEvent.getAction())
-      {
-      }
-    }
-    for (;;)
+    if (this.mEnable)
     {
-      return super.dispatchTouchEvent(paramMotionEvent);
-      setAlpha(0.5F);
-      if (this.b)
+      int i = paramMotionEvent.getAction();
+      if (i != 0)
       {
-        super.dispatchTouchEvent(paramMotionEvent);
-        return true;
-        setAlpha(1.0F);
+        if ((i == 1) || (i == 3)) {
+          setAlpha(1.0F);
+        }
+      }
+      else
+      {
+        setAlpha(0.5F);
+        if (this.consumeDownEvent)
+        {
+          super.dispatchTouchEvent(paramMotionEvent);
+          return true;
+        }
       }
     }
+    return super.dispatchTouchEvent(paramMotionEvent);
+  }
+  
+  public void enableAlphaClick(boolean paramBoolean)
+  {
+    this.mEnable = paramBoolean;
   }
   
   public void setConsumeDownEvent(boolean paramBoolean)
   {
-    this.b = paramBoolean;
+    this.consumeDownEvent = paramBoolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AlphaClickableRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

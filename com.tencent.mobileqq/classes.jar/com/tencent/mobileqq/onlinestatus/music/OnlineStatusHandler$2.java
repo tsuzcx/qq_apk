@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.onlinestatus.music;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.widget.QQToast;
 
 class OnlineStatusHandler$2
@@ -15,7 +15,7 @@ class OnlineStatusHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.music.OnlineStatusHandler.2
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.qrcode.activity;
 
 import com.tencent.biz.qrcode.util.QRUtils;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.utils.TroopReportor;
 
 class QRDisplayActivity$15
   implements Runnable
@@ -10,25 +10,31 @@ class QRDisplayActivity$15
   
   public void run()
   {
-    String str = "temp_qrcode_share_" + this.this$0.jdField_c_of_type_JavaLangString + ".png";
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("temp_qrcode_share_");
+    ((StringBuilder)localObject).append(this.this$0.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(".png");
+    localObject = ((StringBuilder)localObject).toString();
     try
     {
-      str = QRUtils.a(this.this$0.getApplicationContext(), str, this.this$0.b);
-      this.this$0.runOnUiThread(new QRDisplayActivity.15.2(this, str));
+      localObject = QRUtils.a(this.this$0.getApplicationContext(), (String)localObject, this.this$0.b);
+      this.this$0.runOnUiThread(new QRDisplayActivity.15.2(this, (String)localObject));
       return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      if (this.this$0.jdField_c_of_type_Int == 2) {
-        TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.this$0.jdField_c_of_type_JavaLangString, String.valueOf(this.this$0.a), "1" });
-      }
-      this.this$0.runOnUiThread(new QRDisplayActivity.15.1(this));
+      label75:
+      break label75;
     }
+    if (this.this$0.jdField_c_of_type_Int == 2) {
+      TroopReportor.a("Grp_share", "grpData_admin", "qr_qzone", 0, 0, new String[] { this.this$0.jdField_c_of_type_JavaLangString, String.valueOf(this.this$0.a), "1" });
+    }
+    this.this$0.runOnUiThread(new QRDisplayActivity.15.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.15
  * JD-Core Version:    0.7.0.1
  */

@@ -70,7 +70,7 @@ public class VLottie
     return null;
   }
   
-  public View initComponentHostView(@NonNull Context paramContext)
+  protected View initComponentHostView(@NonNull Context paramContext)
   {
     paramContext = new VLottieView(paramContext);
     paramContext.loop(true);
@@ -136,7 +136,7 @@ public class VLottie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VLottie
  * JD-Core Version:    0.7.0.1
  */

@@ -12,34 +12,47 @@ class MultiAIOFragment$6
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "onPageSelected() called with: position = [" + paramInt + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPageSelected() called with: position = [");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.d("MultiAioFragment", 2, localStringBuilder.toString());
     }
   }
   
   public void b(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAioFragment", 2, "ViewPager onPageScrollStateChanged() called with: state = [" + paramInt + "]");
-    }
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
-    default: 
-      return;
-    case 0: 
-      MultiAIOFragment.a(this.a, MultiAIOFragment.a(this.a).a());
-      MultiAIOFragment.a(this.a).setViewPagerBusy(false);
-      return;
-    case 1: 
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ViewPager onPageScrollStateChanged() called with: state = [");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("MultiAioFragment", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        MultiAIOFragment.c(this.a);
+        return;
+      }
       MultiAIOFragment.c(this.a);
       return;
     }
-    MultiAIOFragment.c(this.a);
+    Object localObject = this.a;
+    MultiAIOFragment.a((MultiAIOFragment)localObject, MultiAIOFragment.a((MultiAIOFragment)localObject).a());
+    MultiAIOFragment.a(this.a).setViewPagerBusy(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.MultiAIOFragment.6
  * JD-Core Version:    0.7.0.1
  */

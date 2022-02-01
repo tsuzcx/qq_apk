@@ -15,14 +15,13 @@ class RecyclerView$RecyclerViewDataObserver
       RecyclerView.State.access$1802(this.this$0.mState, true);
       RecyclerView.access$4000(this.this$0);
     }
-    for (;;)
+    else
     {
-      if (!this.this$0.mAdapterHelper.hasPendingUpdates()) {
-        this.this$0.requestLayout();
-      }
-      return;
       RecyclerView.State.access$1802(this.this$0.mState, true);
       RecyclerView.access$4000(this.this$0);
+    }
+    if (!this.this$0.mAdapterHelper.hasPendingUpdates()) {
+      this.this$0.requestLayout();
     }
   }
   
@@ -62,7 +61,8 @@ class RecyclerView$RecyclerViewDataObserver
   {
     if ((RecyclerView.access$4100(this.this$0)) && (RecyclerView.access$4200(this.this$0)) && (RecyclerView.access$4300(this.this$0)))
     {
-      ViewCompat.postOnAnimation(this.this$0, RecyclerView.access$4400(this.this$0));
+      RecyclerView localRecyclerView = this.this$0;
+      ViewCompat.postOnAnimation(localRecyclerView, RecyclerView.access$4400(localRecyclerView));
       return;
     }
     RecyclerView.access$4502(this.this$0, true);

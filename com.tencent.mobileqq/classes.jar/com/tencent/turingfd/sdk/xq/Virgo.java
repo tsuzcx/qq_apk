@@ -1,30 +1,38 @@
 package com.tencent.turingfd.sdk.xq;
 
 public class Virgo
+  extends case
 {
-  public static final byte[] Wg = new byte[0];
-  public byte[] eh;
-  public int fg;
+  public int ec = 0;
   
-  public Virgo(int paramInt, byte[] paramArrayOfByte)
+  public void a(byte parambyte)
   {
-    this.fg = paramInt;
-    this.eh = paramArrayOfByte;
+    parambyte.b(this.ec, 0);
   }
   
-  public static Virgo f(int paramInt)
+  public void a(try paramtry)
   {
-    return new Virgo(paramInt, Wg);
+    this.ec = paramtry.a(this.ec, 0, false);
   }
   
-  public byte[] K()
+  public boolean equals(Object paramObject)
   {
-    return this.eh;
+    if (this == paramObject) {
+      return true;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof Virgo)) {
+      return false;
+    }
+    paramObject = (Virgo)paramObject;
+    return char.equals(this.ec, paramObject.ec);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Virgo
  * JD-Core Version:    0.7.0.1
  */

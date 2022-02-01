@@ -81,104 +81,97 @@ public final class NotificationCompat$WearableExtender
   public NotificationCompat$WearableExtender(Notification paramNotification)
   {
     paramNotification = NotificationCompat.getExtras(paramNotification);
-    NotificationCompat.Action[] arrayOfAction;
-    int i;
+    if (paramNotification != null) {
+      paramNotification = paramNotification.getBundle("android.wearable.EXTENSIONS");
+    } else {
+      paramNotification = null;
+    }
     if (paramNotification != null)
     {
-      paramNotification = paramNotification.getBundle("android.wearable.EXTENSIONS");
-      if (paramNotification == null) {
-        return;
+      Object localObject = paramNotification.getParcelableArrayList("actions");
+      if ((Build.VERSION.SDK_INT >= 16) && (localObject != null))
+      {
+        NotificationCompat.Action[] arrayOfAction = new NotificationCompat.Action[((ArrayList)localObject).size()];
+        int i = 0;
+        while (i < arrayOfAction.length)
+        {
+          if (Build.VERSION.SDK_INT >= 20) {
+            arrayOfAction[i] = NotificationCompat.getActionCompatFromAction((Notification.Action)((ArrayList)localObject).get(i));
+          } else if (Build.VERSION.SDK_INT >= 16) {
+            arrayOfAction[i] = NotificationCompatJellybean.getActionFromBundle((Bundle)((ArrayList)localObject).get(i));
+          }
+          i += 1;
+        }
+        Collections.addAll(this.mActions, arrayOfAction);
       }
-      localObject = paramNotification.getParcelableArrayList("actions");
-      if ((Build.VERSION.SDK_INT < 16) || (localObject == null)) {
-        break label184;
+      this.mFlags = paramNotification.getInt("flags", 1);
+      this.mDisplayIntent = ((PendingIntent)paramNotification.getParcelable("displayIntent"));
+      localObject = NotificationCompat.getNotificationArrayFromBundle(paramNotification, "pages");
+      if (localObject != null) {
+        Collections.addAll(this.mPages, (Object[])localObject);
       }
-      arrayOfAction = new NotificationCompat.Action[((ArrayList)localObject).size()];
-      i = 0;
-      label103:
-      if (i >= arrayOfAction.length) {
-        break label171;
-      }
-      if (Build.VERSION.SDK_INT < 20) {
-        break label145;
-      }
-      arrayOfAction[i] = NotificationCompat.getActionCompatFromAction((Notification.Action)((ArrayList)localObject).get(i));
+      this.mBackground = ((Bitmap)paramNotification.getParcelable("background"));
+      this.mContentIcon = paramNotification.getInt("contentIcon");
+      this.mContentIconGravity = paramNotification.getInt("contentIconGravity", 8388613);
+      this.mContentActionIndex = paramNotification.getInt("contentActionIndex", -1);
+      this.mCustomSizePreset = paramNotification.getInt("customSizePreset", 0);
+      this.mCustomContentHeight = paramNotification.getInt("customContentHeight");
+      this.mGravity = paramNotification.getInt("gravity", 80);
+      this.mHintScreenTimeout = paramNotification.getInt("hintScreenTimeout");
+      this.mDismissalId = paramNotification.getString("dismissalId");
+      this.mBridgeTag = paramNotification.getString("bridgeTag");
     }
-    for (;;)
-    {
-      i += 1;
-      break label103;
-      paramNotification = null;
-      break;
-      label145:
-      if (Build.VERSION.SDK_INT >= 16) {
-        arrayOfAction[i] = NotificationCompatJellybean.getActionFromBundle((Bundle)((ArrayList)localObject).get(i));
-      }
-    }
-    label171:
-    Collections.addAll(this.mActions, (NotificationCompat.Action[])arrayOfAction);
-    label184:
-    this.mFlags = paramNotification.getInt("flags", 1);
-    this.mDisplayIntent = ((PendingIntent)paramNotification.getParcelable("displayIntent"));
-    Object localObject = NotificationCompat.getNotificationArrayFromBundle(paramNotification, "pages");
-    if (localObject != null) {
-      Collections.addAll(this.mPages, (Object[])localObject);
-    }
-    this.mBackground = ((Bitmap)paramNotification.getParcelable("background"));
-    this.mContentIcon = paramNotification.getInt("contentIcon");
-    this.mContentIconGravity = paramNotification.getInt("contentIconGravity", 8388613);
-    this.mContentActionIndex = paramNotification.getInt("contentActionIndex", -1);
-    this.mCustomSizePreset = paramNotification.getInt("customSizePreset", 0);
-    this.mCustomContentHeight = paramNotification.getInt("customContentHeight");
-    this.mGravity = paramNotification.getInt("gravity", 80);
-    this.mHintScreenTimeout = paramNotification.getInt("hintScreenTimeout");
-    this.mDismissalId = paramNotification.getString("dismissalId");
-    this.mBridgeTag = paramNotification.getString("bridgeTag");
   }
   
   @RequiresApi(20)
   private static Notification.Action getActionFromActionCompat(NotificationCompat.Action paramAction)
   {
+    int i = Build.VERSION.SDK_INT;
+    int j = 0;
     Object localObject;
-    if (Build.VERSION.SDK_INT >= 23)
+    if (i >= 23)
     {
       localObject = paramAction.getIconCompat();
-      if (localObject == null)
-      {
+      if (localObject == null) {
         localObject = null;
-        localObject = new Notification.Action.Builder((Icon)localObject, paramAction.getTitle(), paramAction.getActionIntent());
-        label36:
-        if (paramAction.getExtras() == null) {
-          break label161;
-        }
+      } else {
+        localObject = ((IconCompat)localObject).toIcon();
       }
+      localObject = new Notification.Action.Builder((Icon)localObject, paramAction.getTitle(), paramAction.getActionIntent());
     }
-    label161:
-    for (Bundle localBundle = new Bundle(paramAction.getExtras());; localBundle = new Bundle())
+    else
     {
-      localBundle.putBoolean("android.support.allowGeneratedReplies", paramAction.getAllowGeneratedReplies());
-      if (Build.VERSION.SDK_INT >= 24) {
-        ((Notification.Action.Builder)localObject).setAllowGeneratedReplies(paramAction.getAllowGeneratedReplies());
+      localObject = paramAction.getIconCompat();
+      if ((localObject != null) && (((IconCompat)localObject).getType() == 2)) {
+        i = ((IconCompat)localObject).getResId();
+      } else {
+        i = 0;
       }
-      ((Notification.Action.Builder)localObject).addExtras(localBundle);
-      paramAction = paramAction.getRemoteInputs();
-      if (paramAction == null) {
-        break label173;
-      }
+      localObject = new Notification.Action.Builder(i, paramAction.getTitle(), paramAction.getActionIntent());
+    }
+    Bundle localBundle;
+    if (paramAction.getExtras() != null) {
+      localBundle = new Bundle(paramAction.getExtras());
+    } else {
+      localBundle = new Bundle();
+    }
+    localBundle.putBoolean("android.support.allowGeneratedReplies", paramAction.getAllowGeneratedReplies());
+    if (Build.VERSION.SDK_INT >= 24) {
+      ((Notification.Action.Builder)localObject).setAllowGeneratedReplies(paramAction.getAllowGeneratedReplies());
+    }
+    ((Notification.Action.Builder)localObject).addExtras(localBundle);
+    paramAction = paramAction.getRemoteInputs();
+    if (paramAction != null)
+    {
       paramAction = RemoteInput.fromCompat(paramAction);
-      int j = paramAction.length;
-      int i = 0;
-      while (i < j)
+      int k = paramAction.length;
+      i = j;
+      while (i < k)
       {
         ((Notification.Action.Builder)localObject).addRemoteInput(paramAction[i]);
         i += 1;
       }
-      localObject = ((IconCompat)localObject).toIcon();
-      break;
-      localObject = new Notification.Action.Builder(paramAction.getIcon(), paramAction.getTitle(), paramAction.getActionIntent());
-      break label36;
     }
-    label173:
     return ((Notification.Action.Builder)localObject).build();
   }
   
@@ -186,10 +179,10 @@ public final class NotificationCompat$WearableExtender
   {
     if (paramBoolean)
     {
-      this.mFlags |= paramInt;
+      this.mFlags = (paramInt | this.mFlags);
       return;
     }
-    this.mFlags &= (paramInt ^ 0xFFFFFFFF);
+    this.mFlags = ((paramInt ^ 0xFFFFFFFF) & this.mFlags);
   }
   
   public WearableExtender addAction(NotificationCompat.Action paramAction)
@@ -254,70 +247,82 @@ public final class NotificationCompat$WearableExtender
   public NotificationCompat.Builder extend(NotificationCompat.Builder paramBuilder)
   {
     Bundle localBundle = new Bundle();
-    if (!this.mActions.isEmpty())
-    {
-      if (Build.VERSION.SDK_INT < 16) {
-        break label379;
-      }
-      ArrayList localArrayList = new ArrayList(this.mActions.size());
-      Iterator localIterator = this.mActions.iterator();
-      while (localIterator.hasNext())
+    if (!this.mActions.isEmpty()) {
+      if (Build.VERSION.SDK_INT >= 16)
       {
-        NotificationCompat.Action localAction = (NotificationCompat.Action)localIterator.next();
-        if (Build.VERSION.SDK_INT >= 20) {
-          localArrayList.add(getActionFromActionCompat(localAction));
-        } else if (Build.VERSION.SDK_INT >= 16) {
-          localArrayList.add(NotificationCompatJellybean.getBundleForAction(localAction));
+        localObject = new ArrayList(this.mActions.size());
+        Iterator localIterator = this.mActions.iterator();
+        while (localIterator.hasNext())
+        {
+          NotificationCompat.Action localAction = (NotificationCompat.Action)localIterator.next();
+          if (Build.VERSION.SDK_INT >= 20) {
+            ((ArrayList)localObject).add(getActionFromActionCompat(localAction));
+          } else if (Build.VERSION.SDK_INT >= 16) {
+            ((ArrayList)localObject).add(NotificationCompatJellybean.getBundleForAction(localAction));
+          }
         }
+        localBundle.putParcelableArrayList("actions", (ArrayList)localObject);
       }
-      localBundle.putParcelableArrayList("actions", localArrayList);
+      else
+      {
+        localBundle.putParcelableArrayList("actions", null);
+      }
     }
-    for (;;)
+    int i = this.mFlags;
+    if (i != 1) {
+      localBundle.putInt("flags", i);
+    }
+    Object localObject = this.mDisplayIntent;
+    if (localObject != null) {
+      localBundle.putParcelable("displayIntent", (Parcelable)localObject);
+    }
+    if (!this.mPages.isEmpty())
     {
-      if (this.mFlags != 1) {
-        localBundle.putInt("flags", this.mFlags);
-      }
-      if (this.mDisplayIntent != null) {
-        localBundle.putParcelable("displayIntent", this.mDisplayIntent);
-      }
-      if (!this.mPages.isEmpty()) {
-        localBundle.putParcelableArray("pages", (Parcelable[])this.mPages.toArray(new Notification[this.mPages.size()]));
-      }
-      if (this.mBackground != null) {
-        localBundle.putParcelable("background", this.mBackground);
-      }
-      if (this.mContentIcon != 0) {
-        localBundle.putInt("contentIcon", this.mContentIcon);
-      }
-      if (this.mContentIconGravity != 8388613) {
-        localBundle.putInt("contentIconGravity", this.mContentIconGravity);
-      }
-      if (this.mContentActionIndex != -1) {
-        localBundle.putInt("contentActionIndex", this.mContentActionIndex);
-      }
-      if (this.mCustomSizePreset != 0) {
-        localBundle.putInt("customSizePreset", this.mCustomSizePreset);
-      }
-      if (this.mCustomContentHeight != 0) {
-        localBundle.putInt("customContentHeight", this.mCustomContentHeight);
-      }
-      if (this.mGravity != 80) {
-        localBundle.putInt("gravity", this.mGravity);
-      }
-      if (this.mHintScreenTimeout != 0) {
-        localBundle.putInt("hintScreenTimeout", this.mHintScreenTimeout);
-      }
-      if (this.mDismissalId != null) {
-        localBundle.putString("dismissalId", this.mDismissalId);
-      }
-      if (this.mBridgeTag != null) {
-        localBundle.putString("bridgeTag", this.mBridgeTag);
-      }
-      paramBuilder.getExtras().putBundle("android.wearable.EXTENSIONS", localBundle);
-      return paramBuilder;
-      label379:
-      localBundle.putParcelableArrayList("actions", null);
+      localObject = this.mPages;
+      localBundle.putParcelableArray("pages", (Parcelable[])((ArrayList)localObject).toArray(new Notification[((ArrayList)localObject).size()]));
     }
+    localObject = this.mBackground;
+    if (localObject != null) {
+      localBundle.putParcelable("background", (Parcelable)localObject);
+    }
+    i = this.mContentIcon;
+    if (i != 0) {
+      localBundle.putInt("contentIcon", i);
+    }
+    i = this.mContentIconGravity;
+    if (i != 8388613) {
+      localBundle.putInt("contentIconGravity", i);
+    }
+    i = this.mContentActionIndex;
+    if (i != -1) {
+      localBundle.putInt("contentActionIndex", i);
+    }
+    i = this.mCustomSizePreset;
+    if (i != 0) {
+      localBundle.putInt("customSizePreset", i);
+    }
+    i = this.mCustomContentHeight;
+    if (i != 0) {
+      localBundle.putInt("customContentHeight", i);
+    }
+    i = this.mGravity;
+    if (i != 80) {
+      localBundle.putInt("gravity", i);
+    }
+    i = this.mHintScreenTimeout;
+    if (i != 0) {
+      localBundle.putInt("hintScreenTimeout", i);
+    }
+    localObject = this.mDismissalId;
+    if (localObject != null) {
+      localBundle.putString("dismissalId", (String)localObject);
+    }
+    localObject = this.mBridgeTag;
+    if (localObject != null) {
+      localBundle.putString("bridgeTag", (String)localObject);
+    }
+    paramBuilder.getExtras().putBundle("android.wearable.EXTENSIONS", localBundle);
+    return paramBuilder;
   }
   
   public List<NotificationCompat.Action> getActions()
@@ -555,7 +560,7 @@ public final class NotificationCompat$WearableExtender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.WearableExtender
  * JD-Core Version:    0.7.0.1
  */

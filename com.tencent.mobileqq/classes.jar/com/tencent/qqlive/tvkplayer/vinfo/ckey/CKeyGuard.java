@@ -16,8 +16,9 @@ public class CKeyGuard
   
   static
   {
-    if (moduleUpdateInterface != null) {
-      bLoadSucc = moduleUpdateInterface.loadLibrary("ckguard");
+    ModuleUpdateInterface localModuleUpdateInterface = moduleUpdateInterface;
+    if (localModuleUpdateInterface != null) {
+      bLoadSucc = localModuleUpdateInterface.loadLibrary("ckguard");
     }
     mJarVersion = "V1.0.001";
     mSoVersion = "";
@@ -33,7 +34,11 @@ public class CKeyGuard
       paramContext = new String(sGuard(System.currentTimeMillis() / 1000L, VsGuidInfo.getInstance(paramContext).getAndroidId()));
       return paramContext;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label36:
+      break label36;
+    }
     return "";
   }
   
@@ -54,7 +59,11 @@ public class CKeyGuard
       String str = sVersion();
       return str;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label6:
+      break label6;
+    }
     return "";
   }
   
@@ -73,8 +82,10 @@ public class CKeyGuard
     }
     catch (Throwable paramContext)
     {
-      VsLog.error(TAG, new Object[] { "guard init catch" });
+      label40:
+      break label40;
     }
+    VsLog.error(TAG, new Object[] { "guard init catch" });
   }
   
   public static CKeyGuard instance()
@@ -115,7 +126,7 @@ public class CKeyGuard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.CKeyGuard
  * JD-Core Version:    0.7.0.1
  */

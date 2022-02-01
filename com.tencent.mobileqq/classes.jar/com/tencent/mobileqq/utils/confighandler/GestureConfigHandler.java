@@ -35,19 +35,16 @@ public class GestureConfigHandler
     SharedPreferences localSharedPreferences = getSP();
     if (TextUtils.isEmpty(paramString)) {
       localSharedPreferences.edit().remove("config");
-    }
-    for (;;)
-    {
-      localSharedPreferences.edit().putInt("ver", paramInt);
-      localSharedPreferences.edit().commit();
-      return;
+    } else {
       localSharedPreferences.edit().putString("config", paramString);
     }
+    localSharedPreferences.edit().putInt("ver", paramInt);
+    localSharedPreferences.edit().commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.confighandler.GestureConfigHandler
  * JD-Core Version:    0.7.0.1
  */

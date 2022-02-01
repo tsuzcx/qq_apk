@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:layout_gravity="center" android:id="@id/lhv" android:layout_width="77.0dip" android:layout_height="75.0dip"
-  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
-    <FrameLayout android:layout_gravity="center" android:id="@id/l8s" android:background="@drawable/hkq" android:padding="4.0dip" android:layout_width="75.0dip" android:layout_height="75.0dip">
-        <com.tencent.mobileqq.widget.RoundImageView android:layout_gravity="center" android:id="@id/l8v" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitXY" app:qwRadius="6.0dip" />
-        <ImageView android:layout_gravity="center" android:id="@id/l8x" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/gx_" android:scaleType="fitXY" />
-    </FrameLayout>
-    <ProgressBar android:layout_gravity="center" android:id="@id/l8w" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:indeterminateOnly="true" android:indeterminateDrawable="@drawable/al4" android:indeterminateBehavior="repeat" />
-</FrameLayout>

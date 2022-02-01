@@ -17,7 +17,7 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.qqaudio.audioplayer.AudioPlayerHelper.AudioPlayerParameter;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.mobileqq.utils.httputils.PkgTools;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.QLog;
@@ -35,221 +35,219 @@ public class VideoConfigServlet
 {
   private long a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    for (;;)
-    {
-      return 0L;
-      try
-      {
-        long l = Long.parseLong(paramString);
-        if (l >= 10000L) {
-          return l;
-        }
+    long l = 0L;
+    if (paramString != null) {
+      if (paramString.length() <= 0) {
+        return 0L;
       }
-      catch (NumberFormatException paramString) {}
     }
+    try
+    {
+      l = Long.parseLong(paramString);
+      if (l < 10000L) {
+        return 0L;
+      }
+      return l;
+    }
+    catch (NumberFormatException paramString) {}
     return 0L;
   }
   
   private void a(VideoCallMsg paramVideoCallMsg)
   {
-    boolean bool2 = true;
     if (paramVideoCallMsg == null)
     {
       AVLog.printAllUserLog("VideoConfigServlet", "handleVideoConfigMessage error videoMsg = null");
       return;
     }
-    int i;
-    int j;
     if ((paramVideoCallMsg != null) && (paramVideoCallMsg.vMsg != null))
     {
       int[] arrayOfInt = ConfigSystemImpl.a(paramVideoCallMsg.vMsg);
       if (arrayOfInt != null)
       {
-        i = arrayOfInt[0];
-        j = arrayOfInt[1];
-        if (arrayOfInt[2] != 1) {
-          break label212;
+        boolean bool2 = false;
+        int i = arrayOfInt[0];
+        int j = arrayOfInt[1];
+        if (arrayOfInt[2] == 1) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-        bool1 = true;
-        AudioHelper.a(0, new AudioPlayerHelper.AudioPlayerParameter(i, j, bool1));
+        QQAudioHelper.a(0, new AudioPlayerHelper.AudioPlayerParameter(i, j, bool1));
         i = arrayOfInt[3];
         j = arrayOfInt[4];
-        if (arrayOfInt[5] != 1) {
-          break label218;
+        if (arrayOfInt[5] == 1) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-        bool1 = true;
-        label97:
-        AudioHelper.a(1, new AudioPlayerHelper.AudioPlayerParameter(i, j, bool1));
+        QQAudioHelper.a(1, new AudioPlayerHelper.AudioPlayerParameter(i, j, bool1));
         i = arrayOfInt[6];
         j = arrayOfInt[7];
-        if (arrayOfInt[8] != 1) {
-          break label224;
+        if (arrayOfInt[8] == 1) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-        bool1 = true;
-        label136:
-        AudioHelper.a(2, new AudioPlayerHelper.AudioPlayerParameter(i, j, bool1));
+        QQAudioHelper.a(2, new AudioPlayerHelper.AudioPlayerParameter(i, j, bool1));
         i = arrayOfInt[9];
         j = arrayOfInt[10];
-        if (arrayOfInt[11] != 1) {
-          break label230;
+        boolean bool1 = bool2;
+        if (arrayOfInt[11] == 1) {
+          bool1 = true;
         }
+        QQAudioHelper.a(3, new AudioPlayerHelper.AudioPlayerParameter(i, j, bool1));
       }
     }
-    label212:
-    label218:
-    label224:
-    label230:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      AudioHelper.a(3, new AudioPlayerHelper.AudioPlayerParameter(i, j, bool1));
-      ConfigSystemImpl.a(String.valueOf(AppSetting.a()), getAppRuntime().getApplication(), paramVideoCallMsg.vMsg);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label97;
-      bool1 = false;
-      break label136;
-    }
+    ConfigSystemImpl.a(String.valueOf(AppSetting.a()), getAppRuntime().getApplication(), paramVideoCallMsg.vMsg);
   }
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    String str = paramFromServiceMsg.getServiceCmd();
-    if (paramIntent != null)
-    {
-      if (!"VideoCCSvc.Adaptation".equalsIgnoreCase(str)) {
-        break label85;
-      }
-      QLog.w("VideoConfigServlet", 1, "VideoConfigServlet, isSuccess[" + paramFromServiceMsg.isSuccess() + "]");
-      if (paramFromServiceMsg.isSuccess()) {
-        a((VideoCallMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "VideoCallMsg", new VideoCallMsg()));
-      }
-    }
-    label85:
-    do
-    {
-      do
+    Object localObject = paramFromServiceMsg.getServiceCmd();
+    if (paramIntent != null) {
+      if ("VideoCCSvc.Adaptation".equalsIgnoreCase((String)localObject))
       {
-        do
-        {
-          return;
-        } while (!"OidbSvc.0xa02".equalsIgnoreCase(str));
-        if (!paramFromServiceMsg.isSuccess()) {
-          break;
+        paramIntent = new StringBuilder();
+        paramIntent.append("VideoConfigServlet, isSuccess[");
+        paramIntent.append(paramFromServiceMsg.isSuccess());
+        paramIntent.append("]");
+        QLog.w("VideoConfigServlet", 1, paramIntent.toString());
+        if (paramFromServiceMsg.isSuccess()) {
+          a((VideoCallMsg)decodePacket(paramFromServiceMsg.getWupBuffer(), "VideoCallMsg", new VideoCallMsg()));
         }
-        try
-        {
-          int i = paramFromServiceMsg.getWupBuffer().length - 4;
-          paramIntent = new byte[i];
-          PkgTools.copyData(paramIntent, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
-          paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-          paramFromServiceMsg.mergeFrom(paramIntent);
-          if (paramFromServiceMsg.uint32_result.get() != 0)
+      }
+      else if ("OidbSvc.0xa02".equalsIgnoreCase((String)localObject))
+      {
+        if (paramFromServiceMsg.isSuccess()) {
+          try
           {
-            AVLog.printColorLog("VideoConfigServlet", "cmd0xa02 onReceive uint32_result = " + paramFromServiceMsg.uint32_result.get());
+            int i = paramFromServiceMsg.getWupBuffer().length - 4;
+            localObject = new byte[i];
+            PkgTools.copyData((byte[])localObject, 0, paramFromServiceMsg.getWupBuffer(), 4, i);
+            paramIntent = new oidb_sso.OIDBSSOPkg();
+            paramIntent.mergeFrom((byte[])localObject);
+            if (paramIntent.uint32_result.get() != 0)
+            {
+              paramFromServiceMsg = new StringBuilder();
+              paramFromServiceMsg.append("cmd0xa02 onReceive uint32_result = ");
+              paramFromServiceMsg.append(paramIntent.uint32_result.get());
+              AVLog.printColorLog("VideoConfigServlet", paramFromServiceMsg.toString());
+              return;
+            }
+            if (!paramIntent.bytes_bodybuffer.has()) {
+              return;
+            }
+            paramFromServiceMsg = new cmd0xa02.RspBody();
+            paramFromServiceMsg.mergeFrom(paramIntent.bytes_bodybuffer.get().toByteArray());
+            paramIntent = paramFromServiceMsg.rpt_tinyid2useracc_info.get();
+            paramFromServiceMsg = new StringBuilder();
+            paramFromServiceMsg.append("cmd0xa02 onReceive list = ");
+            paramFromServiceMsg.append(paramIntent.toString());
+            AVLog.printColorLog("VideoConfigServlet", paramFromServiceMsg.toString());
+            new ArrayList();
+            paramIntent = PstnUtils.a(paramIntent);
+            paramFromServiceMsg = (QQAppInterface)getAppRuntime();
+            if (paramFromServiceMsg == null) {
+              return;
+            }
+            paramFromServiceMsg.getAVNotifyCenter().b(paramIntent);
             return;
           }
+          catch (Exception paramIntent)
+          {
+            paramIntent.printStackTrace();
+            return;
+          }
+        } else {
+          AVLog.printColorLog("VideoConfigServlet", "cmd0xa02 onReceive not success!");
         }
-        catch (Exception paramIntent)
-        {
-          paramIntent.printStackTrace();
-          return;
-        }
-      } while (!paramFromServiceMsg.bytes_bodybuffer.has());
-      paramIntent = new cmd0xa02.RspBody();
-      paramIntent.mergeFrom(paramFromServiceMsg.bytes_bodybuffer.get().toByteArray());
-      paramIntent = paramIntent.rpt_tinyid2useracc_info.get();
-      AVLog.printColorLog("VideoConfigServlet", "cmd0xa02 onReceive list = " + paramIntent.toString());
-      new ArrayList();
-      paramIntent = PstnUtils.a(paramIntent);
-      paramFromServiceMsg = (QQAppInterface)getAppRuntime();
-    } while (paramFromServiceMsg == null);
-    paramFromServiceMsg.getAVNotifyCenter().b(paramIntent);
-    return;
-    AVLog.printColorLog("VideoConfigServlet", "cmd0xa02 onReceive not success!");
+      }
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     Object localObject1 = paramIntent.getExtras();
-    if (AudioHelper.e()) {
-      AudioHelper.a("VideoConfigServlet.onSend", (Bundle)localObject1, true);
+    if (QQAudioHelper.c()) {
+      QQAudioHelper.a("VideoConfigServlet.onSend", (Bundle)localObject1, true);
     }
-    if (localObject1 == null) {}
-    Object localObject2;
-    do
-    {
+    if (localObject1 == null) {
       return;
-      i = ((Bundle)localObject1).getInt("reqType", 0);
-      if (i == 8)
-      {
-        paramPacket.setServantName("MultiVideo");
-        paramPacket.setFuncName("MultiVideoMsg");
-        paramPacket.setSSOCommand("MultiVideo.c2s");
-        paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(true));
-        paramIntent = new MultiVideoMsg();
-        paramIntent.ver = ((Bundle)localObject1).getByte("ver");
-        paramIntent.type = ((Bundle)localObject1).getByte("type");
-        paramIntent.csCmd = ((Bundle)localObject1).getShort("cscmd");
-        paramIntent.from_uin = a(String.valueOf(((Bundle)localObject1).getLong("from_uin")));
-        localObject2 = new ArrayList();
-        ((ArrayList)localObject2).add(Long.valueOf(((Bundle)localObject1).getLong("toUin")));
-        paramIntent.to_uin = ((ArrayList)localObject2);
-        paramIntent.msg_time = ((Bundle)localObject1).getLong("msg_time");
-        paramIntent.msg_type = ((Bundle)localObject1).getLong("msg_type");
-        paramIntent.msg_seq = ((Bundle)localObject1).getLong("msg_seq");
-        paramIntent.msg_uid = ((Bundle)localObject1).getLong("msg_uid");
-        paramIntent.video_buff = ((Bundle)localObject1).getByteArray("vMsg");
-        paramPacket.addRequestPacket("MultiVideoMsg", paramIntent);
-        return;
-      }
-      if (i != 15) {
-        break;
-      }
+    }
+    int i = ((Bundle)localObject1).getInt("reqType", 0);
+    Object localObject2;
+    if (i == 8)
+    {
+      paramPacket.setServantName("MultiVideo");
+      paramPacket.setFuncName("MultiVideoMsg");
+      paramPacket.setSSOCommand("MultiVideo.c2s");
+      paramPacket.addAttribute("remind_slown_network", Boolean.valueOf(true));
+      paramIntent = new MultiVideoMsg();
+      paramIntent.ver = ((Bundle)localObject1).getByte("ver");
+      paramIntent.type = ((Bundle)localObject1).getByte("type");
+      paramIntent.csCmd = ((Bundle)localObject1).getShort("cscmd");
+      paramIntent.from_uin = a(String.valueOf(((Bundle)localObject1).getLong("from_uin")));
+      localObject2 = new ArrayList();
+      ((ArrayList)localObject2).add(Long.valueOf(((Bundle)localObject1).getLong("toUin")));
+      paramIntent.to_uin = ((ArrayList)localObject2);
+      paramIntent.msg_time = ((Bundle)localObject1).getLong("msg_time");
+      paramIntent.msg_type = ((Bundle)localObject1).getLong("msg_type");
+      paramIntent.msg_seq = ((Bundle)localObject1).getLong("msg_seq");
+      paramIntent.msg_uid = ((Bundle)localObject1).getLong("msg_uid");
+      paramIntent.video_buff = ((Bundle)localObject1).getByteArray("vMsg");
+      paramPacket.addRequestPacket("MultiVideoMsg", paramIntent);
+      return;
+    }
+    if (i == 15)
+    {
       paramIntent = new cmd0xa02.ReqBody();
       localObject1 = (ArrayList)((Bundle)localObject1).getSerializable("tinyid_list");
-    } while (((ArrayList)localObject1).size() <= 0);
-    int i = 0;
-    while (i < ((ArrayList)localObject1).size())
-    {
-      localObject2 = new cmd0xa02.TinyID();
-      ((cmd0xa02.TinyID)localObject2).uint64_tinyid.set(((Long)((ArrayList)localObject1).get(i)).longValue());
-      paramIntent.rpt_tinyid.add((MessageMicro)localObject2);
-      i += 1;
+      if (((ArrayList)localObject1).size() > 0)
+      {
+        i = 0;
+        while (i < ((ArrayList)localObject1).size())
+        {
+          localObject2 = new cmd0xa02.TinyID();
+          ((cmd0xa02.TinyID)localObject2).uint64_tinyid.set(((Long)((ArrayList)localObject1).get(i)).longValue());
+          paramIntent.rpt_tinyid.add((MessageMicro)localObject2);
+          i += 1;
+        }
+        localObject1 = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(2562);
+        ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
+        ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
+        paramIntent = ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray();
+        localObject1 = new byte[paramIntent.length + 4];
+        PkgTools.dWord2Byte((byte[])localObject1, 0, paramIntent.length + 4);
+        PkgTools.copyData((byte[])localObject1, 4, paramIntent, paramIntent.length);
+        paramPacket.setSSOCommand("OidbSvc.0xa02");
+        paramPacket.putSendData((byte[])localObject1);
+        AVLog.printColorLog("VideoConfigServlet", "cmd0xa02 onSend");
+      }
     }
-    localObject1 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_command.set(2562);
-    ((oidb_sso.OIDBSSOPkg)localObject1).uint32_service_type.set(0);
-    ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.set(ByteStringMicro.copyFrom(paramIntent.toByteArray()));
-    paramIntent = ((oidb_sso.OIDBSSOPkg)localObject1).toByteArray();
-    localObject1 = new byte[paramIntent.length + 4];
-    PkgTools.DWord2Byte((byte[])localObject1, 0, paramIntent.length + 4);
-    PkgTools.copyData((byte[])localObject1, 4, paramIntent, paramIntent.length);
-    paramPacket.setSSOCommand("OidbSvc.0xa02");
-    paramPacket.putSendData((byte[])localObject1);
-    AVLog.printColorLog("VideoConfigServlet", "cmd0xa02 onSend");
-    return;
-    paramPacket.setServantName("VideoSvc");
-    paramPacket.setFuncName("SendVideoMsg");
-    paramPacket.setSSOCommand("VideoCCSvc.Adaptation");
-    paramIntent = new VideoCallMsg();
-    paramIntent.ver = 1;
-    paramIntent.type = 1;
-    paramIntent.lUin = a(getAppRuntime().getAccount());
-    paramIntent.lPeerUin = 0L;
-    paramIntent.uDateTime = ((int)(System.currentTimeMillis() / 1000L));
-    paramIntent.cVerifyType = 0;
-    paramIntent.uSeqId = 0;
-    paramIntent.uSessionId = 0;
-    paramIntent.vMsg = ConfigSystemImpl.a(paramIntent.lUin, String.valueOf(AppSetting.a()), getAppRuntime().getApplication());
-    paramPacket.addRequestPacket("VideoCallMsg", paramIntent);
+    else
+    {
+      paramPacket.setServantName("VideoSvc");
+      paramPacket.setFuncName("SendVideoMsg");
+      paramPacket.setSSOCommand("VideoCCSvc.Adaptation");
+      paramIntent = new VideoCallMsg();
+      paramIntent.ver = 1;
+      paramIntent.type = 1;
+      paramIntent.lUin = a(getAppRuntime().getAccount());
+      paramIntent.lPeerUin = 0L;
+      paramIntent.uDateTime = ((int)(System.currentTimeMillis() / 1000L));
+      paramIntent.cVerifyType = 0;
+      paramIntent.uSeqId = 0;
+      paramIntent.uSessionId = 0;
+      paramIntent.vMsg = ConfigSystemImpl.a(paramIntent.lUin, String.valueOf(AppSetting.a()), getAppRuntime().getApplication());
+      paramPacket.addRequestPacket("VideoCallMsg", paramIntent);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.VideoConfigServlet
  * JD-Core Version:    0.7.0.1
  */

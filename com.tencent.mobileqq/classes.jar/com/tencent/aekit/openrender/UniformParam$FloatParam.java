@@ -25,7 +25,11 @@ public class UniformParam$FloatParam
   
   public String toString()
   {
-    return this.name + " = " + this.value;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(" = ");
+    localStringBuilder.append(this.value);
+    return localStringBuilder.toString();
   }
   
   public float value()

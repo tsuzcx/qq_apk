@@ -8,7 +8,7 @@ import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
 public class QQCustomContextMenuDialog
   extends QQCustomDialog
 {
-  private int jdField_a_of_type_Int = 2131559072;
+  private int jdField_a_of_type_Int = 2131558966;
   QQCustomMenu jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu;
   
   public QQCustomContextMenuDialog(Context paramContext, int paramInt)
@@ -23,22 +23,22 @@ public class QQCustomContextMenuDialog
   
   public void a(QQCustomMenu paramQQCustomMenu, DialogInterface.OnClickListener paramOnClickListener)
   {
-    if (paramQQCustomMenu == null) {}
-    do
-    {
+    if (paramQQCustomMenu == null) {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = paramQQCustomMenu;
-      String[] arrayOfString = new String[paramQQCustomMenu.a()];
-      int i = 0;
-      while (i < paramQQCustomMenu.a())
-      {
-        arrayOfString[i] = paramQQCustomMenu.a(i).a();
-        i += 1;
-      }
-      setItems(arrayOfString, paramOnClickListener);
-      paramQQCustomMenu = paramQQCustomMenu.a();
-    } while (paramQQCustomMenu == null);
-    setTitle(paramQQCustomMenu);
+    }
+    this.jdField_a_of_type_ComTencentMobileqqUtilsDialogutilsQQCustomMenu = paramQQCustomMenu;
+    String[] arrayOfString = new String[paramQQCustomMenu.a()];
+    int i = 0;
+    while (i < paramQQCustomMenu.a())
+    {
+      arrayOfString[i] = paramQQCustomMenu.a(i).a();
+      i += 1;
+    }
+    setItems(arrayOfString, paramOnClickListener);
+    paramQQCustomMenu = paramQQCustomMenu.a();
+    if (paramQQCustomMenu != null) {
+      setTitle(paramQQCustomMenu);
+    }
   }
   
   protected int customWhichToCallBack(int paramInt)
@@ -57,7 +57,7 @@ public class QQCustomContextMenuDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomContextMenuDialog
  * JD-Core Version:    0.7.0.1
  */

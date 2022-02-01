@@ -26,34 +26,40 @@ class CameraControl$1
       QLog.i(CameraControl.b, 2, "onJpegTaken");
     }
     NewFlowCameraReporter.a("inner pic taken");
+    String str = null;
     try
     {
       paramCamera = paramCamera.getParameters().getPictureSize();
-      if (paramCamera == null)
-      {
-        QLog.e(CameraControl.b, 1, "null picSize");
-        return;
-      }
     }
     catch (Exception paramCamera)
     {
-      do
-      {
-        for (;;)
-        {
-          paramCamera.printStackTrace();
-          paramCamera = null;
-        }
-        QLog.i(CameraControl.b, 1, "[onPictureTaken] picSize(" + paramCamera.width + "," + paramCamera.height + ") orientation=" + this.jdField_a_of_type_Int);
-      } while (paramArrayOfByte == null);
-      Camera2Support.a(1, paramCamera.height * paramCamera.width, System.currentTimeMillis() - this.jdField_a_of_type_Long);
-      this.jdField_a_of_type_AndroidOsHandler.post(new CameraControl.1.1(this, paramArrayOfByte, paramCamera));
+      paramCamera.printStackTrace();
+      paramCamera = str;
     }
+    if (paramCamera == null)
+    {
+      QLog.e(CameraControl.b, 1, "null picSize");
+      return;
+    }
+    str = CameraControl.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onPictureTaken] picSize(");
+    localStringBuilder.append(paramCamera.width);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramCamera.height);
+    localStringBuilder.append(") orientation=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    QLog.i(str, 1, localStringBuilder.toString());
+    if (paramArrayOfByte == null) {
+      return;
+    }
+    Camera2Support.a(1, paramCamera.height * paramCamera.width, System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    this.jdField_a_of_type_AndroidOsHandler.post(new CameraControl.1.1(this, paramArrayOfByte, paramCamera));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraControl.1
  * JD-Core Version:    0.7.0.1
  */

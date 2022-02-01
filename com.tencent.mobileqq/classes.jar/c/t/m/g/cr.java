@@ -24,23 +24,30 @@ public final class cr
   
   private void a(String paramString)
   {
-    if (co.c(paramString)) {}
-    do
-    {
+    if (co.c(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      paramString = paramString.getBytes("UTF-8");
+      byte[] arrayOfByte = cw.a(paramString, 3);
+      if (co.e())
       {
-        paramString = paramString.getBytes("UTF-8");
-        byte[] arrayOfByte = cw.a(paramString, 3);
-        if (co.e()) {
-          co.a("srcBytes.len=" + paramString.length + ",encBytes.len=" + arrayOfByte.length);
-        }
-        a(i(), arrayOfByte, new cr.1(this, arrayOfByte));
-        return;
+        StringBuilder localStringBuilder = new StringBuilder("srcBytes.len=");
+        localStringBuilder.append(paramString.length);
+        localStringBuilder.append(",encBytes.len=");
+        localStringBuilder.append(arrayOfByte.length);
+        co.a(localStringBuilder.toString());
       }
-      catch (Throwable paramString) {}
-    } while (!co.e());
-    co.a("uploadUT error.", paramString);
+      a(i(), arrayOfByte, new cr.1(this, arrayOfByte));
+      return;
+    }
+    catch (Throwable paramString)
+    {
+      if (co.e()) {
+        co.a("uploadUT error.", paramString);
+      }
+    }
   }
   
   private void a(String paramString, byte[] paramArrayOfByte, de paramde)
@@ -59,81 +66,80 @@ public final class cr
   
   private void h()
   {
-    int k = 0;
-    File[] arrayOfFile;
-    int i;
-    if ((this.d != null) && (this.d.exists()))
-    {
-      arrayOfFile = this.d.listFiles();
-      if ((arrayOfFile != null) && (arrayOfFile.length != 0)) {
-        break label52;
-      }
-      i = 1;
-      label41:
-      if (i == 0) {
-        break label57;
-      }
+    Object localObject1 = this.d;
+    if ((localObject1 != null) && (((File)localObject1).exists())) {
+      localObject1 = this.d.listFiles();
+    } else {
+      localObject1 = null;
     }
-    label288:
-    for (;;)
-    {
-      return;
-      arrayOfFile = null;
-      break;
-      label52:
+    int k = 0;
+    if ((localObject1 != null) && (localObject1.length != 0)) {
       i = 0;
-      break label41;
-      label57:
-      long l = System.currentTimeMillis();
-      dv.a locala = dv.a(dp.a());
-      int j = 0;
-      i = k;
-      for (;;)
+    } else {
+      i = 1;
+    }
+    if (i != 0) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    dv.a locala = dv.a(dp.a());
+    int j = 0;
+    int i = k;
+    while (i < localObject1.length)
+    {
+      File localFile = localObject1[i];
+      Object localObject2 = localFile.getName();
+      k = j;
+      if (localFile.exists())
       {
-        if (i >= arrayOfFile.length) {
-          break label288;
-        }
-        File localFile = arrayOfFile[i];
-        Object localObject = localFile.getName();
         k = j;
-        if (localFile.exists())
+        if (localFile.isFile())
         {
           k = j;
-          if (localFile.isFile())
+          if (((String)localObject2).startsWith("utr_"))
           {
-            k = j;
-            if (((String)localObject).startsWith("utr_"))
+            if (l - localFile.lastModified() > 1728000000L)
             {
-              if (l - localFile.lastModified() > 1728000000L)
+              if (co.e())
               {
-                if (co.e()) {
-                  co.a("del file:" + localFile.getName());
-                }
-                localFile.delete();
+                localObject2 = new StringBuilder("del file:");
+                ((StringBuilder)localObject2).append(localFile.getName());
+                co.a(((StringBuilder)localObject2).toString());
               }
-              localObject = co.a(localFile);
-              k = j + localObject.length;
-              if (co.e()) {
-                co.a("upload file:" + localFile.getName() + ",len=" + localObject.length + ",sum=" + k + ",netType=" + locala);
-              }
-              a(i(), (byte[])localObject, new cr.2(this, localFile));
-              if ((locala != dv.a.c) || (k >= 102400)) {
-                break;
-              }
+              localFile.delete();
+            }
+            localObject2 = co.a(localFile);
+            k = j + localObject2.length;
+            if (co.e())
+            {
+              StringBuilder localStringBuilder = new StringBuilder("upload file:");
+              localStringBuilder.append(localFile.getName());
+              localStringBuilder.append(",len=");
+              localStringBuilder.append(localObject2.length);
+              localStringBuilder.append(",sum=");
+              localStringBuilder.append(k);
+              localStringBuilder.append(",netType=");
+              localStringBuilder.append(locala);
+              co.a(localStringBuilder.toString());
+            }
+            a(i(), (byte[])localObject2, new cr.2(this, localFile));
+            if ((locala != dv.a.c) || (k >= 102400)) {
+              break;
             }
           }
         }
-        i += 1;
-        j = k;
       }
+      i += 1;
+      j = k;
     }
   }
   
   private static String i()
   {
     boolean bool = cu.h;
+    bool = cu.e;
     String str = "https://analytics.map.qq.com/tr?utr";
-    if (!cu.e) {
+    if (!bool) {
       str = "https://analytics.map.qq.com/tr?utr".replace("https:", "http:");
     }
     return str;
@@ -148,61 +154,57 @@ public final class cr
   
   public final void a(Location paramLocation)
   {
-    long l;
     synchronized (this.b)
     {
       if (!f()) {
         return;
       }
-      l = System.currentTimeMillis();
+      long l = System.currentTimeMillis();
       if (l - this.f[0] < 900L) {
         return;
       }
-    }
-    this.f[0] = l;
-    if (paramLocation != null) {}
-    for (;;)
-    {
-      try
+      this.f[0] = l;
+      if (paramLocation != null)
       {
-        boolean bool = "gps".equals(paramLocation.getProvider());
-        if (!bool) {
-          return;
-        }
-        bool = cu.h;
-        if (Build.VERSION.SDK_INT >= 18)
+        try
         {
-          bool = paramLocation.isFromMockProvider();
-          if (bool) {
-            return;
+          if (!"gps".equals(paramLocation.getProvider())) {
+            break label279;
+          }
+          boolean bool = cu.h;
+          if (Build.VERSION.SDK_INT >= 18)
+          {
+            bool = paramLocation.isFromMockProvider();
+            if (bool) {
+              return;
+            }
+          }
+          String str = String.format(Locale.ENGLISH, "%d,G,%d,0,%.6f,%.6f,%.1f,%.1f,%.1f,%.1f", new Object[] { Long.valueOf(l), Long.valueOf(paramLocation.getTime()), Double.valueOf(paramLocation.getLatitude()), Double.valueOf(paramLocation.getLongitude()), Double.valueOf(paramLocation.getAltitude()), Float.valueOf(paramLocation.getAccuracy()), Float.valueOf(paramLocation.getSpeed()), Float.valueOf(paramLocation.getBearing()) });
+          Handler localHandler = e();
+          if (localHandler != null)
+          {
+            if (localHandler == null) {
+              paramLocation = new Message();
+            } else {
+              paramLocation = localHandler.obtainMessage(1003);
+            }
+            paramLocation.what = 1003;
+            paramLocation.arg1 = 0;
+            paramLocation.arg2 = 0;
+            paramLocation.obj = str;
+            co.a(localHandler, paramLocation, 0L);
           }
         }
-        String str = String.format(Locale.ENGLISH, "%d,G,%d,0,%.6f,%.6f,%.1f,%.1f,%.1f,%.1f", new Object[] { Long.valueOf(l), Long.valueOf(paramLocation.getTime()), Double.valueOf(paramLocation.getLatitude()), Double.valueOf(paramLocation.getLongitude()), Double.valueOf(paramLocation.getAltitude()), Float.valueOf(paramLocation.getAccuracy()), Float.valueOf(paramLocation.getSpeed()), Float.valueOf(paramLocation.getBearing()) });
-        localHandler = e();
-        if (localHandler != null)
+        catch (Throwable paramLocation)
         {
-          if (localHandler != null) {
-            continue;
+          if (co.e()) {
+            co.a("set gps loc error.", paramLocation);
           }
-          paramLocation = new Message();
-          paramLocation.what = 1003;
-          paramLocation.arg1 = 0;
-          paramLocation.arg2 = 0;
-          paramLocation.obj = str;
-          co.a(localHandler, paramLocation, 0L);
         }
+        return;
       }
-      catch (Throwable paramLocation)
-      {
-        Handler localHandler;
-        if (!co.e()) {
-          continue;
-        }
-        co.a("set gps loc error.", paramLocation);
-        continue;
-      }
+      label279:
       return;
-      paramLocation = localHandler.obtainMessage(1003);
     }
   }
   
@@ -212,38 +214,71 @@ public final class cr
     {
     default: 
       return;
+    case 1004: 
+      a(1004, 1200000L);
+      h();
+      return;
     case 1003: 
       String str1 = (String)paramMessage.obj;
-      long l = System.currentTimeMillis();
-      StringBuilder localStringBuilder1;
-      String str2;
-      String str3;
-      StringBuilder localStringBuilder2;
-      StringBuilder localStringBuilder3;
+      long l1 = System.currentTimeMillis();
       if (this.c.length() == 0)
       {
-        localStringBuilder1 = this.c;
-        str2 = dz.g().replaceAll("[| _,]", "") + "_" + dz.f() + "_" + dz.h();
-        str3 = ((String)co.a(Build.MANUFACTURER, "")).replaceAll("[| _,]", "") + "_" + ((String)co.a(Build.MODEL, "")).replaceAll("[| _,]", "");
-        localStringBuilder2 = new StringBuilder();
-        localStringBuilder3 = localStringBuilder2.append("SYSTEM,").append(System.currentTimeMillis()).append(',').append(dz.c()).append(',');
-        if (cu.i != null) {
-          break label416;
+        StringBuilder localStringBuilder1 = this.c;
+        paramMessage = new StringBuilder();
+        paramMessage.append(dz.g().replaceAll("[| _,]", ""));
+        paramMessage.append("_");
+        paramMessage.append(dz.f());
+        paramMessage.append("_");
+        paramMessage.append(dz.h());
+        String str2 = paramMessage.toString();
+        paramMessage = new StringBuilder();
+        paramMessage.append(((String)co.a(Build.MANUFACTURER, "")).replaceAll("[| _,]", ""));
+        paramMessage.append("_");
+        paramMessage.append(((String)co.a(Build.MODEL, "")).replaceAll("[| _,]", ""));
+        String str3 = paramMessage.toString();
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("SYSTEM,");
+        localStringBuilder2.append(System.currentTimeMillis());
+        localStringBuilder2.append(',');
+        localStringBuilder2.append(dz.c());
+        localStringBuilder2.append(',');
+        if (cu.i == null) {
+          paramMessage = "";
+        } else {
+          paramMessage = dt.a(cu.i.c);
         }
-      }
-      for (paramMessage = "";; paramMessage = dt.a(cu.i.c))
-      {
-        localStringBuilder3.append(paramMessage).append(',').append(str2).append(',').append(str3).append(',').append(Build.VERSION.SDK_INT).append(',').append(cx.a()).append(',').append(cx.c()).append(',').append(cx.d().replaceAll(":", "").toLowerCase()).append(',').append(cx.b());
+        localStringBuilder2.append(paramMessage);
+        localStringBuilder2.append(',');
+        localStringBuilder2.append(str2);
+        localStringBuilder2.append(',');
+        localStringBuilder2.append(str3);
+        localStringBuilder2.append(',');
+        localStringBuilder2.append(Build.VERSION.SDK_INT);
+        localStringBuilder2.append(',');
+        localStringBuilder2.append(cx.a());
+        localStringBuilder2.append(',');
+        localStringBuilder2.append(cx.c());
+        localStringBuilder2.append(',');
+        localStringBuilder2.append(cx.d().replaceAll(":", "").toLowerCase());
+        localStringBuilder2.append(',');
+        localStringBuilder2.append(cx.b());
         localStringBuilder1.append(localStringBuilder2.toString());
-        this.e = l;
-        this.c.append('$').append(str1);
-        if ((this.c.length() < 15360L) && ((this.e == 0L) || (l - this.e < 300000L))) {
-          break;
-        }
+        this.e = l1;
+      }
+      paramMessage = this.c;
+      paramMessage.append('$');
+      paramMessage.append(str1);
+      if (this.c.length() < 15360L)
+      {
+        long l2 = this.e;
+        if ((l2 == 0L) || (l1 - l2 < 300000L)) {}
+      }
+      else
+      {
         a(this.c.toString());
         this.c.setLength(0);
-        return;
       }
+      return;
     case 1002: 
       paramMessage = e();
       if (paramMessage != null) {
@@ -252,14 +287,9 @@ public final class cr
       a(this.c.toString());
       g();
       return;
-    case 1001: 
-      label416:
-      g();
-      a(1004, 600000L);
-      return;
     }
-    a(1004, 1200000L);
-    h();
+    g();
+    a(1004, 600000L);
   }
   
   public final void b()
@@ -275,7 +305,7 @@ public final class cr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.cr
  * JD-Core Version:    0.7.0.1
  */

@@ -28,111 +28,132 @@ public class InterceptTouchRelativeLayout$FakeViewPager
   
   public int a(MotionEvent paramMotionEvent)
   {
+    int k = paramMotionEvent.getAction() & 0xFF;
     int i = 3;
-    int j = paramMotionEvent.getAction() & 0xFF;
-    if ((j == 3) || (j == 1))
+    if ((k != 3) && (k != 1))
     {
-      Log.v(this.jdField_a_of_type_JavaLangString, "Intercept done!");
-      i = this.jdField_a_of_type_Int;
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Int = -1;
-      return i;
-    }
-    if (j != 0)
-    {
-      if (this.jdField_a_of_type_Int != 0)
+      Object localObject;
+      if (k != 0)
       {
-        Log.v(this.jdField_a_of_type_JavaLangString, "Intercept returning true! " + this.jdField_a_of_type_Int);
-        return this.jdField_a_of_type_Int;
+        if (this.jdField_a_of_type_Int != 0)
+        {
+          paramMotionEvent = this.jdField_a_of_type_JavaLangString;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Intercept returning true! ");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          Log.v(paramMotionEvent, ((StringBuilder)localObject).toString());
+          return this.jdField_a_of_type_Int;
+        }
+        if (this.jdField_a_of_type_Boolean)
+        {
+          Log.v(this.jdField_a_of_type_JavaLangString, "Intercept returning false!");
+          return 0;
+        }
       }
-      if (this.jdField_a_of_type_Boolean)
+      float f1;
+      if (k != 0)
       {
-        Log.v(this.jdField_a_of_type_JavaLangString, "Intercept returning false!");
-        return 0;
+        int j = 2;
+        if (k == 2)
+        {
+          k = this.jdField_b_of_type_Int;
+          if (k != -1)
+          {
+            k = MotionEventCompat.findPointerIndex(paramMotionEvent, k);
+            f1 = MotionEventCompat.getX(paramMotionEvent, k);
+            float f3 = f1 - this.jdField_a_of_type_Float;
+            float f4 = Math.abs(f3);
+            float f2 = MotionEventCompat.getY(paramMotionEvent, k);
+            float f5 = f2 - this.jdField_b_of_type_Float;
+            float f6 = Math.abs(f5);
+            paramMotionEvent = this.jdField_a_of_type_JavaLangString;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("Moved x to ");
+            ((StringBuilder)localObject).append(f1);
+            ((StringBuilder)localObject).append(",");
+            ((StringBuilder)localObject).append(f2);
+            ((StringBuilder)localObject).append(" diff=");
+            ((StringBuilder)localObject).append(f4);
+            ((StringBuilder)localObject).append(",");
+            ((StringBuilder)localObject).append(f6);
+            ((StringBuilder)localObject).append(", mTouchSlop=");
+            ((StringBuilder)localObject).append(this.jdField_c_of_type_Int);
+            Log.v(paramMotionEvent, ((StringBuilder)localObject).toString());
+            if ((f4 > this.jdField_c_of_type_Int) && (f4 > f6))
+            {
+              Log.v(this.jdField_a_of_type_JavaLangString, "Starting drag horizontal !");
+              if (f3 <= 0.0F) {
+                i = 1;
+              }
+              this.jdField_a_of_type_Int = i;
+              if (f3 > 0.0F) {
+                f1 = this.jdField_c_of_type_Float + this.jdField_c_of_type_Int;
+              } else {
+                f1 = this.jdField_c_of_type_Float - this.jdField_c_of_type_Int;
+              }
+              this.jdField_a_of_type_Float = f1;
+              this.jdField_b_of_type_Float = f2;
+            }
+            else if ((f6 > this.jdField_c_of_type_Int) && (f6 > f4))
+            {
+              Log.v(this.jdField_a_of_type_JavaLangString, "Starting drag vertical !");
+              i = j;
+              if (f5 > 0.0F) {
+                i = 4;
+              }
+              this.jdField_a_of_type_Int = i;
+              this.jdField_a_of_type_Float = f1;
+              if (f5 > 0.0F) {
+                f1 = this.d + this.jdField_c_of_type_Int;
+              } else {
+                f1 = this.d - this.jdField_c_of_type_Int;
+              }
+              this.jdField_b_of_type_Float = f1;
+            }
+          }
+        }
       }
-    }
-    switch (j)
-    {
-    }
-    for (;;)
-    {
+      else
+      {
+        f1 = paramMotionEvent.getX();
+        this.jdField_c_of_type_Float = f1;
+        this.jdField_a_of_type_Float = f1;
+        f1 = paramMotionEvent.getY();
+        this.d = f1;
+        this.jdField_b_of_type_Float = f1;
+        this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
+        this.jdField_a_of_type_Boolean = false;
+        this.jdField_a_of_type_Int = 0;
+        localObject = this.jdField_a_of_type_AndroidViewMotionEvent;
+        if (localObject != null) {
+          ((MotionEvent)localObject).recycle();
+        }
+        this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
+        paramMotionEvent = this.jdField_a_of_type_JavaLangString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Down at ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Float);
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Float);
+        ((StringBuilder)localObject).append(" mIsBeingDragged=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject).append("mIsUnableToDrag=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+        Log.v(paramMotionEvent, ((StringBuilder)localObject).toString());
+      }
       return this.jdField_a_of_type_Int;
-      j = this.jdField_b_of_type_Int;
-      if (j != -1)
-      {
-        j = MotionEventCompat.findPointerIndex(paramMotionEvent, j);
-        float f1 = MotionEventCompat.getX(paramMotionEvent, j);
-        float f3 = f1 - this.jdField_a_of_type_Float;
-        float f4 = Math.abs(f3);
-        float f2 = MotionEventCompat.getY(paramMotionEvent, j);
-        float f5 = f2 - this.jdField_b_of_type_Float;
-        float f6 = Math.abs(f5);
-        Log.v(this.jdField_a_of_type_JavaLangString, "Moved x to " + f1 + "," + f2 + " diff=" + f4 + "," + f6 + ", mTouchSlop=" + this.jdField_c_of_type_Int);
-        if ((f4 > this.jdField_c_of_type_Int) && (f4 > f6))
-        {
-          Log.v(this.jdField_a_of_type_JavaLangString, "Starting drag horizontal !");
-          if (f3 > 0.0F)
-          {
-            label325:
-            this.jdField_a_of_type_Int = i;
-            if (f3 <= 0.0F) {
-              break label368;
-            }
-          }
-          label368:
-          for (f1 = this.jdField_c_of_type_Float + this.jdField_c_of_type_Int;; f1 = this.jdField_c_of_type_Float - this.jdField_c_of_type_Int)
-          {
-            this.jdField_a_of_type_Float = f1;
-            this.jdField_b_of_type_Float = f2;
-            break;
-            i = 1;
-            break label325;
-          }
-        }
-        if ((f6 > this.jdField_c_of_type_Int) && (f6 > f4))
-        {
-          Log.v(this.jdField_a_of_type_JavaLangString, "Starting drag vertical !");
-          if (f5 > 0.0F)
-          {
-            i = 4;
-            label421:
-            this.jdField_a_of_type_Int = i;
-            this.jdField_a_of_type_Float = f1;
-            if (f5 <= 0.0F) {
-              break label464;
-            }
-          }
-          label464:
-          for (f1 = this.d + this.jdField_c_of_type_Int;; f1 = this.d - this.jdField_c_of_type_Int)
-          {
-            this.jdField_b_of_type_Float = f1;
-            break;
-            i = 2;
-            break label421;
-          }
-          f1 = paramMotionEvent.getX();
-          this.jdField_c_of_type_Float = f1;
-          this.jdField_a_of_type_Float = f1;
-          f1 = paramMotionEvent.getY();
-          this.d = f1;
-          this.jdField_b_of_type_Float = f1;
-          this.jdField_b_of_type_Int = MotionEventCompat.getPointerId(paramMotionEvent, 0);
-          this.jdField_a_of_type_Boolean = false;
-          this.jdField_a_of_type_Int = 0;
-          if (this.jdField_a_of_type_AndroidViewMotionEvent != null) {
-            this.jdField_a_of_type_AndroidViewMotionEvent.recycle();
-          }
-          this.jdField_a_of_type_AndroidViewMotionEvent = MotionEvent.obtain(paramMotionEvent);
-          Log.v(this.jdField_a_of_type_JavaLangString, "Down at " + this.jdField_a_of_type_Float + "," + this.jdField_b_of_type_Float + " mIsBeingDragged=" + this.jdField_a_of_type_Int + "mIsUnableToDrag=" + this.jdField_a_of_type_Boolean);
-        }
-      }
     }
+    Log.v(this.jdField_a_of_type_JavaLangString, "Intercept done!");
+    i = this.jdField_a_of_type_Int;
+    this.jdField_a_of_type_Int = 0;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Int = -1;
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.InterceptTouchRelativeLayout.FakeViewPager
  * JD-Core Version:    0.7.0.1
  */

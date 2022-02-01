@@ -35,16 +35,10 @@ public class EntryConfigBean
   
   private int a(int paramInt, List<Integer> paramList)
   {
-    int j = 0;
-    int i = j;
-    if (paramList != null)
-    {
-      i = j;
-      if (paramList.size() > 0) {
-        i = ((Integer)paramList.get(Math.abs(paramInt) % paramList.size())).intValue() * 1000;
-      }
+    if ((paramList != null) && (paramList.size() > 0)) {
+      return ((Integer)paramList.get(Math.abs(paramInt) % paramList.size())).intValue() * 1000;
     }
-    return i;
+    return 0;
   }
   
   private void a()
@@ -83,34 +77,36 @@ public class EntryConfigBean
     if (paramJSONArray != null)
     {
       int i = 0;
-      if (i < paramJSONArray.length())
+      while (i < paramJSONArray.length())
       {
         Object localObject = paramJSONArray.opt(i);
-        JSONObject localJSONObject;
         if ((localObject instanceof JSONObject))
         {
-          localJSONObject = (JSONObject)localObject;
+          JSONObject localJSONObject = (JSONObject)localObject;
           int j = localJSONObject.optInt("Type");
           localObject = null;
-          switch (j)
+          if (j != 1)
           {
+            if (j != 2)
+            {
+              if (j == 3) {
+                localObject = new MiniGameActivityData();
+              }
+            }
+            else {
+              localObject = new OnGrabActivityData();
+            }
           }
-        }
-        for (;;)
-        {
+          else {
+            localObject = new PreGrabActivityData();
+          }
           if (localObject != null)
           {
             ((BaseActivityData)localObject).parseJson(localJSONObject);
             this.activities.add(localObject);
           }
-          i += 1;
-          break;
-          localObject = new PreGrabActivityData();
-          continue;
-          localObject = new OnGrabActivityData();
-          continue;
-          localObject = new MiniGameActivityData();
         }
+        i += 1;
       }
     }
   }
@@ -199,8 +195,10 @@ public class EntryConfigBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.activities.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder.append(((BaseActivityData)localIterator.next()).toSimpleString()).append("|");
+    while (localIterator.hasNext())
+    {
+      localStringBuilder.append(((BaseActivityData)localIterator.next()).toSimpleString());
+      localStringBuilder.append("|");
     }
     return localStringBuilder.toString();
   }
@@ -209,8 +207,10 @@ public class EntryConfigBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.msgTabBanners.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder.append(((MsgTabBannerData)localIterator.next()).toSimpleString()).append("|");
+    while (localIterator.hasNext())
+    {
+      localStringBuilder.append(((MsgTabBannerData)localIterator.next()).toSimpleString());
+      localStringBuilder.append("|");
     }
     return localStringBuilder.toString();
   }
@@ -219,8 +219,10 @@ public class EntryConfigBean
   {
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.popBanners.iterator();
-    while (localIterator.hasNext()) {
-      localStringBuilder.append(((PopBannerData)localIterator.next()).toSimpleString()).append("|");
+    while (localIterator.hasNext())
+    {
+      localStringBuilder.append(((PopBannerData)localIterator.next()).toSimpleString());
+      localStringBuilder.append("|");
     }
     return localStringBuilder.toString();
   }
@@ -249,123 +251,157 @@ public class EntryConfigBean
   
   public void parseJson(JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    for (;;)
-    {
+    if (paramJSONObject == null) {
       return;
-      try
+    }
+    try
+    {
+      this.commonData.parseJson(paramJSONObject.optJSONObject("Common"));
+      a(paramJSONObject.optJSONArray("ActivityList"));
+      b(paramJSONObject.optJSONArray("MsgTabBannerList"));
+      paramJSONObject = paramJSONObject.optJSONObject("htmloffline_check_configs");
+      if (paramJSONObject != null)
       {
-        this.commonData.parseJson(paramJSONObject.optJSONObject("Common"));
-        a(paramJSONObject.optJSONArray("ActivityList"));
-        b(paramJSONObject.optJSONArray("MsgTabBannerList"));
-        paramJSONObject = paramJSONObject.optJSONObject("htmloffline_check_configs");
-        if (paramJSONObject != null)
-        {
-          this.htmlOfflineCheckConfig = new HtmlOfflineCheckConfig();
-          this.htmlOfflineCheckConfig.parseJson(paramJSONObject);
-          return;
-        }
+        this.htmlOfflineCheckConfig = new HtmlOfflineCheckConfig();
+        this.htmlOfflineCheckConfig.parseJson(paramJSONObject);
+        return;
       }
-      catch (Throwable paramJSONObject)
-      {
-        QLog.d("shua2021_EntryConfig", 1, paramJSONObject.getMessage(), paramJSONObject);
-      }
+    }
+    catch (Throwable paramJSONObject)
+    {
+      QLog.d("shua2021_EntryConfig", 1, paramJSONObject.getMessage(), paramJSONObject);
     }
   }
   
   public void preHandleConfigs()
   {
+    int i = this.peakVersion;
     int j = 0;
-    QLog.d("shua2021_EntryConfig", 1, String.format("preHandleConfigs pVer=%d delayList=%s", new Object[] { Integer.valueOf(this.peakVersion), Arrays.toString(this.delayList.toArray()) }));
+    QLog.d("shua2021_EntryConfig", 1, String.format("preHandleConfigs pVer=%d delayList=%s", new Object[] { Integer.valueOf(i), Arrays.toString(this.delayList.toArray()) }));
     Collections.sort(this.popBanners, Const.a);
     Collections.sort(this.msgTabBanners, Const.a);
     Collections.sort(this.activities, Const.a);
     Iterator localIterator = this.popBanners.iterator();
-    int i = 0;
+    i = 0;
     Object localObject;
     int k;
-    if (localIterator.hasNext())
+    long l;
+    while (localIterator.hasNext())
     {
       localObject = (PopBannerData)localIterator.next();
-      if (!((PopBannerData)localObject).staggerPeakSwitch) {
-        break label418;
-      }
-      k = a(i, this.delayList);
-      if (k + ((PopBannerData)localObject).getTaskTime().begin < ((PopBannerData)localObject).getTaskTime().end)
+      if (((PopBannerData)localObject).staggerPeakSwitch)
       {
-        ((PopBannerData)localObject).peakDelayMs = k;
-        localObject = ((PopBannerData)localObject).getTaskTime();
-        ((TimeInfo)localObject).begin += k;
-      }
-      i += 1;
-    }
-    label415:
-    label418:
-    for (;;)
-    {
-      break;
-      localIterator = this.msgTabBanners.iterator();
-      i = 0;
-      if (localIterator.hasNext())
-      {
-        localObject = (MsgTabBannerData)localIterator.next();
-        if (!((MsgTabBannerData)localObject).staggerPeakSwitch) {
-          break label415;
-        }
         k = a(i, this.delayList);
-        if (k + ((MsgTabBannerData)localObject).getTaskTime().begin < ((MsgTabBannerData)localObject).getTaskTime().end)
+        l = k;
+        if (((PopBannerData)localObject).getTaskTime().begin + l < ((PopBannerData)localObject).getTaskTime().end)
         {
-          ((MsgTabBannerData)localObject).peakDelayMs = k;
-          localObject = ((MsgTabBannerData)localObject).getTaskTime();
-          ((TimeInfo)localObject).begin += k;
+          ((PopBannerData)localObject).peakDelayMs = k;
+          localObject = ((PopBannerData)localObject).getTaskTime();
+          ((TimeInfo)localObject).begin += l;
         }
         i += 1;
       }
-      for (;;)
+    }
+    localIterator = this.msgTabBanners.iterator();
+    i = 0;
+    while (localIterator.hasNext())
+    {
+      localObject = (MsgTabBannerData)localIterator.next();
+      if (((MsgTabBannerData)localObject).staggerPeakSwitch)
       {
-        break;
-        localIterator = this.activities.iterator();
-        i = j;
-        while (localIterator.hasNext())
+        k = a(i, this.delayList);
+        l = k;
+        if (((MsgTabBannerData)localObject).getTaskTime().begin + l < ((MsgTabBannerData)localObject).getTaskTime().end)
         {
-          localObject = (BaseActivityData)localIterator.next();
-          if (((BaseActivityData)localObject).staggerPeakSwitch)
+          ((MsgTabBannerData)localObject).peakDelayMs = k;
+          localObject = ((MsgTabBannerData)localObject).getTaskTime();
+          ((TimeInfo)localObject).begin += l;
+        }
+        i += 1;
+      }
+    }
+    localIterator = this.activities.iterator();
+    i = j;
+    while (localIterator.hasNext())
+    {
+      localObject = (BaseActivityData)localIterator.next();
+      if (((BaseActivityData)localObject).staggerPeakSwitch)
+      {
+        j = a(i, this.delayList);
+        l = j;
+        if (((BaseActivityData)localObject).getTaskTime().begin + l < ((BaseActivityData)localObject).getTaskTime().end)
+        {
+          ((BaseActivityData)localObject).peakDelayMs = j;
+          if (((BaseActivityData)localObject).scheduleTaskAfterPeak())
           {
-            j = a(i, this.delayList);
-            if (j + ((BaseActivityData)localObject).getTaskTime().begin < ((BaseActivityData)localObject).getTaskTime().end)
-            {
-              ((BaseActivityData)localObject).peakDelayMs = j;
-              if (((BaseActivityData)localObject).scheduleTaskAfterPeak())
-              {
-                TimeInfo localTimeInfo = ((BaseActivityData)localObject).getTaskTime();
-                localTimeInfo.begin += j;
-                ((BaseActivityData)localObject).updatePeakDelay(j);
-              }
-            }
-            i += 1;
+            TimeInfo localTimeInfo = ((BaseActivityData)localObject).getTaskTime();
+            localTimeInfo.begin += l;
+            ((BaseActivityData)localObject).updatePeakDelay(j);
           }
         }
-        return;
+        i += 1;
       }
     }
   }
   
   public String toSimpleString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("EntryConfigBean{version=").append(this.version).append(", peakVersion=").append(this.peakVersion).append(", taskId=").append(this.taskId).append(", delayList=").append(Arrays.toString(this.delayList.toArray())).append(", \ncommonData=").append(this.commonData.toSimpleString()).append(", \npopBanners=").append(getSimpleStringPopBanners()).append(", \nmsgTabBanners=").append(getSimpleStringMsgTabBanners()).append(", \nactivities=").append(getSimpleStringActivities()).append(", \nhtmlOfflineCheckConfig=");
-    if (this.htmlOfflineCheckConfig == null) {}
-    for (Object localObject = "null";; localObject = this.htmlOfflineCheckConfig) {
-      return localObject + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EntryConfigBean{version=");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(", peakVersion=");
+    localStringBuilder.append(this.peakVersion);
+    localStringBuilder.append(", taskId=");
+    localStringBuilder.append(this.taskId);
+    localStringBuilder.append(", delayList=");
+    localStringBuilder.append(Arrays.toString(this.delayList.toArray()));
+    localStringBuilder.append(", \ncommonData=");
+    localStringBuilder.append(this.commonData.toSimpleString());
+    localStringBuilder.append(", \npopBanners=");
+    localStringBuilder.append(getSimpleStringPopBanners());
+    localStringBuilder.append(", \nmsgTabBanners=");
+    localStringBuilder.append(getSimpleStringMsgTabBanners());
+    localStringBuilder.append(", \nactivities=");
+    localStringBuilder.append(getSimpleStringActivities());
+    localStringBuilder.append(", \nhtmlOfflineCheckConfig=");
+    HtmlOfflineCheckConfig localHtmlOfflineCheckConfig = this.htmlOfflineCheckConfig;
+    Object localObject = localHtmlOfflineCheckConfig;
+    if (localHtmlOfflineCheckConfig == null) {
+      localObject = "null";
     }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("EntryConfigBean{version=").append(this.version).append(", peakVersion=").append(this.peakVersion).append(", taskId=").append(this.taskId).append(", delayList=").append(Arrays.toString(this.delayList.toArray())).append(", \ncommonData=").append(this.commonData).append(", \npopBanners=").append(Arrays.toString(this.popBanners.toArray())).append(", \nmsgTabBanners=").append(Arrays.toString(this.msgTabBanners.toArray())).append(", \nactivities=").append(Arrays.toString(this.activities.toArray())).append(", \nhtmlOfflineCheckConfig=");
-    if (this.htmlOfflineCheckConfig == null) {}
-    for (Object localObject = "null";; localObject = this.htmlOfflineCheckConfig) {
-      return localObject + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EntryConfigBean{version=");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(", peakVersion=");
+    localStringBuilder.append(this.peakVersion);
+    localStringBuilder.append(", taskId=");
+    localStringBuilder.append(this.taskId);
+    localStringBuilder.append(", delayList=");
+    localStringBuilder.append(Arrays.toString(this.delayList.toArray()));
+    localStringBuilder.append(", \ncommonData=");
+    localStringBuilder.append(this.commonData);
+    localStringBuilder.append(", \npopBanners=");
+    localStringBuilder.append(Arrays.toString(this.popBanners.toArray()));
+    localStringBuilder.append(", \nmsgTabBanners=");
+    localStringBuilder.append(Arrays.toString(this.msgTabBanners.toArray()));
+    localStringBuilder.append(", \nactivities=");
+    localStringBuilder.append(Arrays.toString(this.activities.toArray()));
+    localStringBuilder.append(", \nhtmlOfflineCheckConfig=");
+    HtmlOfflineCheckConfig localHtmlOfflineCheckConfig = this.htmlOfflineCheckConfig;
+    Object localObject = localHtmlOfflineCheckConfig;
+    if (localHtmlOfflineCheckConfig == null) {
+      localObject = "null";
     }
+    localStringBuilder.append(localObject);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void validate()
@@ -377,7 +413,7 @@ public class EntryConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.entry.model.EntryConfigBean
  * JD-Core Version:    0.7.0.1
  */

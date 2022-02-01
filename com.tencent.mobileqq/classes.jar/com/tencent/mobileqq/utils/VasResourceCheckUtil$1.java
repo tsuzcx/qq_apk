@@ -8,6 +8,7 @@ import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
+import java.security.Key;
 import javax.crypto.Cipher;
 import javax.crypto.spec.IvParameterSpec;
 import javax.crypto.spec.SecretKeySpec;
@@ -24,18 +25,24 @@ final class VasResourceCheckUtil$1
     paramDownloadTask = new File(VasResourceCheckUtil.jdField_a_of_type_JavaLangString);
     if (paramDownloadTask.exists())
     {
-      paramDownloadTask = FileUtils.a(paramDownloadTask, -1);
-      if (!TextUtils.isEmpty(paramDownloadTask)) {}
+      paramDownloadTask = FileUtils.readFileToStringEx(paramDownloadTask, -1);
+      if (TextUtils.isEmpty(paramDownloadTask)) {
+        return;
+      }
       try
       {
         paramDownloadTask = Base64.decode(paramDownloadTask, 0);
-        SecretKeySpec localSecretKeySpec = new SecretKeySpec("xydata3456789012xydata3456789012".getBytes(), "AES");
+        localObject = new SecretKeySpec("xydata3456789012xydata3456789012".getBytes(), "AES");
         IvParameterSpec localIvParameterSpec = new IvParameterSpec("xydata3456789012".getBytes());
         Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS7Padding");
-        localCipher.init(2, localSecretKeySpec, localIvParameterSpec);
+        localCipher.init(2, (Key)localObject, localIvParameterSpec);
         paramDownloadTask = new JSONObject(new String(localCipher.doFinal(paramDownloadTask)));
-        if (QLog.isColorLevel()) {
-          QLog.d("VasResourceCheckUtil", 2, "decode json success, content = " + paramDownloadTask.toString());
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("decode json success, content = ");
+          ((StringBuilder)localObject).append(paramDownloadTask.toString());
+          QLog.d("VasResourceCheckUtil", 2, ((StringBuilder)localObject).toString());
         }
         VasResourceCheckUtil.a(this.a);
         VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(257));
@@ -43,7 +50,10 @@ final class VasResourceCheckUtil$1
       }
       catch (Exception paramDownloadTask)
       {
-        QLog.e("VasResourceCheckUtil", 1, "decode json fail: " + paramDownloadTask.getMessage());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("decode json fail: ");
+        ((StringBuilder)localObject).append(paramDownloadTask.getMessage());
+        QLog.e("VasResourceCheckUtil", 1, ((StringBuilder)localObject).toString());
         VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.sendMessage(VasResourceCheckUtil.jdField_a_of_type_AndroidOsHandler.obtainMessage(259));
         return;
       }
@@ -53,7 +63,7 @@ final class VasResourceCheckUtil$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VasResourceCheckUtil.1
  * JD-Core Version:    0.7.0.1
  */

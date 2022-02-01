@@ -238,101 +238,95 @@ public abstract class TestCase
   public void runBare()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: aload_0
-    //   3: invokevirtual 153	junit/framework/TestCase:setUp	()V
-    //   6: aload_0
-    //   7: invokevirtual 156	junit/framework/TestCase:runTest	()V
-    //   10: aload_0
-    //   11: invokevirtual 159	junit/framework/TestCase:tearDown	()V
-    //   14: aload_1
-    //   15: ifnull +46 -> 61
-    //   18: aload_1
-    //   19: athrow
-    //   20: astore_1
-    //   21: iconst_0
-    //   22: ifne +43 -> 65
-    //   25: goto -11 -> 14
+    //   0: aload_0
+    //   1: invokevirtual 153	junit/framework/TestCase:setUp	()V
+    //   4: aload_0
+    //   5: invokevirtual 156	junit/framework/TestCase:runTest	()V
+    //   8: aload_0
+    //   9: invokevirtual 159	junit/framework/TestCase:tearDown	()V
+    //   12: aconst_null
+    //   13: astore_1
+    //   14: goto +22 -> 36
+    //   17: astore_1
+    //   18: goto +18 -> 36
+    //   21: astore_1
+    //   22: aload_0
+    //   23: invokevirtual 159	junit/framework/TestCase:tearDown	()V
+    //   26: aload_1
+    //   27: athrow
     //   28: astore_1
     //   29: aload_0
     //   30: invokevirtual 159	junit/framework/TestCase:tearDown	()V
-    //   33: goto -19 -> 14
-    //   36: astore_2
-    //   37: aload_1
-    //   38: ifnonnull +24 -> 62
-    //   41: aload_2
-    //   42: astore_1
-    //   43: goto -29 -> 14
-    //   46: astore_1
-    //   47: aload_0
-    //   48: invokevirtual 159	junit/framework/TestCase:tearDown	()V
-    //   51: aload_1
-    //   52: athrow
-    //   53: astore_2
-    //   54: iconst_0
-    //   55: ifne -4 -> 51
-    //   58: goto -7 -> 51
-    //   61: return
-    //   62: goto -19 -> 43
-    //   65: aconst_null
-    //   66: astore_1
-    //   67: goto -42 -> 25
+    //   33: goto +3 -> 36
+    //   36: aload_1
+    //   37: ifnonnull +4 -> 41
+    //   40: return
+    //   41: aload_1
+    //   42: athrow
+    //   43: astore_2
+    //   44: goto -18 -> 26
+    //   47: astore_2
+    //   48: goto -12 -> 36
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	70	0	this	TestCase
-    //   1	18	1	localObject1	Object
-    //   20	1	1	localThrowable1	java.lang.Throwable
-    //   28	10	1	localThrowable2	java.lang.Throwable
-    //   42	1	1	localObject2	Object
-    //   46	6	1	localObject3	Object
-    //   66	1	1	localObject4	Object
-    //   36	6	2	localThrowable3	java.lang.Throwable
-    //   53	1	2	localThrowable4	java.lang.Throwable
+    //   0	51	0	this	TestCase
+    //   13	1	1	localObject1	Object
+    //   17	1	1	localThrowable1	java.lang.Throwable
+    //   21	6	1	localObject2	Object
+    //   28	14	1	localThrowable2	java.lang.Throwable
+    //   43	1	2	localThrowable3	java.lang.Throwable
+    //   47	1	2	localThrowable4	java.lang.Throwable
     // Exception table:
     //   from	to	target	type
-    //   10	14	20	java/lang/Throwable
-    //   6	10	28	java/lang/Throwable
-    //   29	33	36	java/lang/Throwable
-    //   6	10	46	finally
-    //   47	51	53	java/lang/Throwable
+    //   8	12	17	java/lang/Throwable
+    //   4	8	21	finally
+    //   4	8	28	java/lang/Throwable
+    //   22	26	43	java/lang/Throwable
+    //   29	33	47	java/lang/Throwable
   }
   
   protected void runTest()
   {
     assertNotNull("TestCase.fName cannot be null", this.fName);
+    Object localObject1 = null;
     try
     {
-      localMethod = getClass().getMethod(this.fName, (Class[])null);
-      if (!Modifier.isPublic(localMethod.getModifiers())) {
-        fail("Method \"" + this.fName + "\" should be public");
-      }
+      localObject2 = getClass().getMethod(this.fName, (Class[])null);
+      localObject1 = localObject2;
     }
     catch (NoSuchMethodException localNoSuchMethodException)
     {
-      for (;;)
-      {
-        try
-        {
-          Method localMethod;
-          localMethod.invoke(this, new Object[0]);
-          return;
-        }
-        catch (InvocationTargetException localInvocationTargetException)
-        {
-          Object localObject;
-          localInvocationTargetException.fillInStackTrace();
-          throw localInvocationTargetException.getTargetException();
-        }
-        catch (IllegalAccessException localIllegalAccessException)
-        {
-          localIllegalAccessException.fillInStackTrace();
-          throw localIllegalAccessException;
-        }
-        localNoSuchMethodException = localNoSuchMethodException;
-        fail("Method \"" + this.fName + "\" not found");
-        localObject = null;
-      }
+      Object localObject2;
+      label32:
+      break label32;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("Method \"");
+    ((StringBuilder)localObject2).append(this.fName);
+    ((StringBuilder)localObject2).append("\" not found");
+    fail(((StringBuilder)localObject2).toString());
+    if (!Modifier.isPublic(localObject1.getModifiers()))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Method \"");
+      ((StringBuilder)localObject2).append(this.fName);
+      ((StringBuilder)localObject2).append("\" should be public");
+      fail(((StringBuilder)localObject2).toString());
+    }
+    try
+    {
+      localObject1.invoke(this, new Object[0]);
+      return;
+    }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      localIllegalAccessException.fillInStackTrace();
+      throw localIllegalAccessException;
+    }
+    catch (InvocationTargetException localInvocationTargetException)
+    {
+      localInvocationTargetException.fillInStackTrace();
+      throw localInvocationTargetException.getTargetException();
     }
   }
   
@@ -347,12 +341,17 @@ public abstract class TestCase
   
   public String toString()
   {
-    return getName() + "(" + getClass().getName() + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getName());
+    localStringBuilder.append("(");
+    localStringBuilder.append(getClass().getName());
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     junit.framework.TestCase
  * JD-Core Version:    0.7.0.1
  */

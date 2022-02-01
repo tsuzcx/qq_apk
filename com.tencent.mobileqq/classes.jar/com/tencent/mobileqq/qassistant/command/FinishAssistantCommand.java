@@ -1,10 +1,11 @@
 package com.tencent.mobileqq.qassistant.command;
 
+import com.tencent.mobileqq.qassistant.api.IVoiceCommand;
 import com.tencent.mobileqq.qassistant.core.IBasePresenter;
 import com.tencent.mobileqq.qassistant.data.CommandInfo;
 
 public class FinishAssistantCommand
-  implements ICommand
+  implements IVoiceCommand
 {
   private IBasePresenter a;
   
@@ -15,14 +16,15 @@ public class FinishAssistantCommand
   
   public void a(CommandInfo paramCommandInfo)
   {
-    if (this.a != null) {
-      this.a.c(paramCommandInfo);
+    IBasePresenter localIBasePresenter = this.a;
+    if (localIBasePresenter != null) {
+      localIBasePresenter.c(paramCommandInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.command.FinishAssistantCommand
  * JD-Core Version:    0.7.0.1
  */

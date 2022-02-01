@@ -8,12 +8,20 @@ class EditLocalVideoMusicMixHelper$AudioInfo
   
   public String toString()
   {
-    return "AudioInfo{channelCount=" + this.a + ", sampleRate=" + this.b + ", bitRate=" + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AudioInfo{channelCount=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", sampleRate=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", bitRate=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoMusicMixHelper.AudioInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -18,10 +18,11 @@ public class CoverProvider
   
   public Bitmap getCover(int paramInt)
   {
-    if (this.mCoverCache != null)
+    Object localObject = this.mCoverCache;
+    if (localObject != null)
     {
-      Bitmap localBitmap = this.mCoverCache.getCover(paramInt);
-      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+      localObject = ((CoverCache)localObject).getCover(paramInt);
+      if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
         return this.mCoverCache.getCover(paramInt);
       }
     }
@@ -30,30 +31,54 @@ public class CoverProvider
   
   public void getCoverByIndexRange(int paramInt1, int paramInt2)
   {
-    Logger.d("CoverProvider", "getCoverByIndexRange: startIndex is " + paramInt1);
-    Logger.d("CoverProvider", "getCoverByIndexRange: endIndex is " + paramInt2);
-    if (this.mCoverGenerator != null) {
-      this.mCoverGenerator.generateCoverByIndexRange(paramInt1, paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getCoverByIndexRange: startIndex is ");
+    ((StringBuilder)localObject).append(paramInt1);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getCoverByIndexRange: endIndex is ");
+    ((StringBuilder)localObject).append(paramInt2);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = this.mCoverGenerator;
+    if (localObject != null) {
+      ((ICoverGenerator)localObject).generateCoverByIndexRange(paramInt1, paramInt2);
     }
   }
   
   public void getCoverByTimeRange(long paramLong1, long paramLong2)
   {
-    Logger.d("CoverProvider", "getCoverByTimeRange: startDurationMs is " + paramLong1);
-    Logger.d("CoverProvider", "getCoverByTimeRange: endDurationMs is " + paramLong2);
-    if (this.mCoverGenerator != null) {
-      this.mCoverGenerator.generateCoverByTimeRange(paramLong1, paramLong2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getCoverByTimeRange: startDurationMs is ");
+    ((StringBuilder)localObject).append(paramLong1);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getCoverByTimeRange: endDurationMs is ");
+    ((StringBuilder)localObject).append(paramLong2);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = this.mCoverGenerator;
+    if (localObject != null) {
+      ((ICoverGenerator)localObject).generateCoverByTimeRange(paramLong1, paramLong2);
     }
   }
   
   public void init(TAVSource paramTAVSource, long paramLong, int paramInt1, int paramInt2, int paramInt3)
   {
-    Logger.d("CoverProvider", "init: itemDurationMs is " + paramLong);
-    Logger.d("CoverProvider", "init: coverWidth is " + paramInt2);
-    Logger.d("CoverProvider", "init: coverHeight is " + paramInt3);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init: itemDurationMs is ");
+    ((StringBuilder)localObject).append(paramLong);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init: coverWidth is ");
+    ((StringBuilder)localObject).append(paramInt2);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init: coverHeight is ");
+    ((StringBuilder)localObject).append(paramInt3);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
     this.mCoverCache = new CoverCache();
-    if (this.mCoverListener != null) {
-      this.mCoverCache.setClipCoverListener(this.mCoverListener);
+    localObject = this.mCoverListener;
+    if (localObject != null) {
+      this.mCoverCache.setClipCoverListener((CoverListener)localObject);
     }
     this.mCoverGenerator = new TimelineCoverGenerator();
     this.mCoverGenerator.setCoverCache(this.mCoverCache);
@@ -63,12 +88,22 @@ public class CoverProvider
   
   public void init(TAVSource paramTAVSource, long paramLong, int paramInt1, int paramInt2, int paramInt3, ICoverGenerator paramICoverGenerator)
   {
-    Logger.d("CoverProvider", "init: itemDurationMs is " + paramLong);
-    Logger.d("CoverProvider", "init: coverWidth is " + paramInt2);
-    Logger.d("CoverProvider", "init: coverHeight is " + paramInt3);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init: itemDurationMs is ");
+    ((StringBuilder)localObject).append(paramLong);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init: coverWidth is ");
+    ((StringBuilder)localObject).append(paramInt2);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init: coverHeight is ");
+    ((StringBuilder)localObject).append(paramInt3);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
     this.mCoverCache = new CoverCache();
-    if (this.mCoverListener != null) {
-      this.mCoverCache.setClipCoverListener(this.mCoverListener);
+    localObject = this.mCoverListener;
+    if (localObject != null) {
+      this.mCoverCache.setClipCoverListener((CoverListener)localObject);
     }
     this.mCoverGenerator = paramICoverGenerator;
     this.mCoverGenerator.setCoverCache(this.mCoverCache);
@@ -77,12 +112,22 @@ public class CoverProvider
   
   public void init(TAVSource paramTAVSource, List<CMTime> paramList, int paramInt1, int paramInt2)
   {
-    Logger.d("CoverProvider", "init: generateTimeList is " + paramList);
-    Logger.d("CoverProvider", "init: coverWidth is " + paramInt1);
-    Logger.d("CoverProvider", "init: coverHeight is " + paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init: generateTimeList is ");
+    ((StringBuilder)localObject).append(paramList);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init: coverWidth is ");
+    ((StringBuilder)localObject).append(paramInt1);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("init: coverHeight is ");
+    ((StringBuilder)localObject).append(paramInt2);
+    Logger.d("CoverProvider", ((StringBuilder)localObject).toString());
     this.mCoverCache = new CoverCache();
-    if (this.mCoverListener != null) {
-      this.mCoverCache.setClipCoverListener(this.mCoverListener);
+    localObject = this.mCoverListener;
+    if (localObject != null) {
+      this.mCoverCache.setClipCoverListener((CoverListener)localObject);
     }
     this.mCoverGenerator = new EditCoverGenerator();
     this.mCoverGenerator.setCoverCache(this.mCoverCache);
@@ -91,21 +136,24 @@ public class CoverProvider
   
   public void pause()
   {
-    if (this.mCoverGenerator != null) {
-      this.mCoverGenerator.pause();
+    ICoverGenerator localICoverGenerator = this.mCoverGenerator;
+    if (localICoverGenerator != null) {
+      localICoverGenerator.pause();
     }
   }
   
   public void release()
   {
-    if (this.mCoverGenerator != null)
+    Object localObject = this.mCoverGenerator;
+    if (localObject != null)
     {
-      this.mCoverGenerator.release();
+      ((ICoverGenerator)localObject).release();
       this.mCoverGenerator = null;
     }
-    if (this.mCoverCache != null)
+    localObject = this.mCoverCache;
+    if (localObject != null)
     {
-      this.mCoverCache.release();
+      ((CoverCache)localObject).release();
       this.mCoverCache = null;
     }
     this.mCoverListener = null;
@@ -113,8 +161,9 @@ public class CoverProvider
   
   public void resume()
   {
-    if (this.mCoverGenerator != null) {
-      this.mCoverGenerator.resume();
+    ICoverGenerator localICoverGenerator = this.mCoverGenerator;
+    if (localICoverGenerator != null) {
+      localICoverGenerator.resume();
     }
   }
   
@@ -130,7 +179,7 @@ public class CoverProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.cover.CoverProvider
  * JD-Core Version:    0.7.0.1
  */

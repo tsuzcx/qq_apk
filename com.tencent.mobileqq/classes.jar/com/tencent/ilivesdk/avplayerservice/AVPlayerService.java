@@ -17,12 +17,12 @@ public abstract class AVPlayerService
   public static final int PLAYER_ERROR_CODE_NONE = 100;
   public static final int PLAYER_ERROR_CODE_OTHER = 400;
   public static final int PLAYER_ERROR_CODE_PARSER = 300;
-  public AVPlayerServiceAdapter adapter;
+  protected AVPlayerServiceAdapter adapter;
   protected Context appContext;
   protected AVPlayerNetworkReceiver avPlayerNetworkReceiver;
   protected AVPlayerPushMgr avPlayerPushMgr;
-  public AVPlayerPreloadAdapter mPreloadAdapter;
-  public PlayerStatusListener mStatusListener;
+  protected AVPlayerPreloadAdapter mPreloadAdapter;
+  protected PlayerStatusListener mStatusListener;
   
   public void init(Context paramContext, FrameLayout paramFrameLayout)
   {
@@ -71,7 +71,7 @@ public abstract class AVPlayerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.AVPlayerService
  * JD-Core Version:    0.7.0.1
  */

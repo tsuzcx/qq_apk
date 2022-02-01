@@ -21,11 +21,14 @@ public abstract class RecyclerView$SmoothScroller
   @Nullable
   public PointF computeScrollVectorForPosition(int paramInt)
   {
-    RecyclerView.LayoutManager localLayoutManager = getLayoutManager();
-    if ((localLayoutManager instanceof RecyclerView.SmoothScroller.ScrollVectorProvider)) {
-      return ((RecyclerView.SmoothScroller.ScrollVectorProvider)localLayoutManager).computeScrollVectorForPosition(paramInt);
+    Object localObject = getLayoutManager();
+    if ((localObject instanceof RecyclerView.SmoothScroller.ScrollVectorProvider)) {
+      return ((RecyclerView.SmoothScroller.ScrollVectorProvider)localObject).computeScrollVectorForPosition(paramInt);
     }
-    Log.w("RecyclerView", "You should override computeScrollVectorForPosition when the LayoutManager does not implement " + RecyclerView.SmoothScroller.ScrollVectorProvider.class.getCanonicalName());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("You should override computeScrollVectorForPosition when the LayoutManager does not implement ");
+    ((StringBuilder)localObject).append(RecyclerView.SmoothScroller.ScrollVectorProvider.class.getCanonicalName());
+    Log.w("RecyclerView", ((StringBuilder)localObject).toString());
     return null;
   }
   
@@ -86,38 +89,36 @@ public abstract class RecyclerView$SmoothScroller
     }
     if ((this.mPendingInitialRun) && (this.mTargetView == null) && (this.mLayoutManager != null))
     {
-      PointF localPointF = computeScrollVectorForPosition(this.mTargetPosition);
-      if ((localPointF != null) && ((localPointF.x != 0.0F) || (localPointF.y != 0.0F))) {
-        localRecyclerView.scrollStep((int)Math.signum(localPointF.x), (int)Math.signum(localPointF.y), null);
+      localObject = computeScrollVectorForPosition(this.mTargetPosition);
+      if ((localObject != null) && ((((PointF)localObject).x != 0.0F) || (((PointF)localObject).y != 0.0F))) {
+        localRecyclerView.scrollStep((int)Math.signum(((PointF)localObject).x), (int)Math.signum(((PointF)localObject).y), null);
       }
     }
     this.mPendingInitialRun = false;
-    if (this.mTargetView != null)
-    {
-      if (getChildPosition(this.mTargetView) != this.mTargetPosition) {
-        break label224;
-      }
-      onTargetFound(this.mTargetView, localRecyclerView.mState, this.mRecyclingAction);
-      this.mRecyclingAction.runIfNecessary(localRecyclerView);
-      stop();
-    }
-    for (;;)
-    {
-      if (this.mRunning)
+    Object localObject = this.mTargetView;
+    if (localObject != null) {
+      if (getChildPosition((View)localObject) == this.mTargetPosition)
       {
-        onSeekTargetStep(paramInt1, paramInt2, localRecyclerView.mState, this.mRecyclingAction);
-        boolean bool = this.mRecyclingAction.hasJumpTarget();
+        onTargetFound(this.mTargetView, localRecyclerView.mState, this.mRecyclingAction);
         this.mRecyclingAction.runIfNecessary(localRecyclerView);
-        if ((bool) && (this.mRunning))
-        {
-          this.mPendingInitialRun = true;
-          localRecyclerView.mViewFlinger.postOnAnimation();
-        }
+        stop();
       }
-      return;
-      label224:
-      Log.e("RecyclerView", "Passed over target position while smooth scrolling.");
-      this.mTargetView = null;
+      else
+      {
+        Log.e("RecyclerView", "Passed over target position while smooth scrolling.");
+        this.mTargetView = null;
+      }
+    }
+    if (this.mRunning)
+    {
+      onSeekTargetStep(paramInt1, paramInt2, localRecyclerView.mState, this.mRecyclingAction);
+      boolean bool = this.mRecyclingAction.hasJumpTarget();
+      this.mRecyclingAction.runIfNecessary(localRecyclerView);
+      if ((bool) && (this.mRunning))
+      {
+        this.mPendingInitialRun = true;
+        localRecyclerView.mViewFlinger.postOnAnimation();
+      }
     }
   }
   
@@ -144,21 +145,30 @@ public abstract class RecyclerView$SmoothScroller
   void start(RecyclerView paramRecyclerView, RecyclerView.LayoutManager paramLayoutManager)
   {
     paramRecyclerView.mViewFlinger.stop();
-    if (this.mStarted) {
-      Log.w("RecyclerView", "An instance of " + getClass().getSimpleName() + " was started more than once. Each instance of" + getClass().getSimpleName() + " is intended to only be used once. You should create a new instance for each use.");
+    if (this.mStarted)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("An instance of ");
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" was started more than once. Each instance of");
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append(" is intended to only be used once. You should create a new instance for each use.");
+      Log.w("RecyclerView", localStringBuilder.toString());
     }
     this.mRecyclerView = paramRecyclerView;
     this.mLayoutManager = paramLayoutManager;
-    if (this.mTargetPosition == -1) {
-      throw new IllegalArgumentException("Invalid target position");
+    if (this.mTargetPosition != -1)
+    {
+      this.mRecyclerView.mState.mTargetPosition = this.mTargetPosition;
+      this.mRunning = true;
+      this.mPendingInitialRun = true;
+      this.mTargetView = findViewByPosition(getTargetPosition());
+      onStart();
+      this.mRecyclerView.mViewFlinger.postOnAnimation();
+      this.mStarted = true;
+      return;
     }
-    this.mRecyclerView.mState.mTargetPosition = this.mTargetPosition;
-    this.mRunning = true;
-    this.mPendingInitialRun = true;
-    this.mTargetView = findViewByPosition(getTargetPosition());
-    onStart();
-    this.mRecyclerView.mViewFlinger.postOnAnimation();
-    this.mStarted = true;
+    throw new IllegalArgumentException("Invalid target position");
   }
   
   protected final void stop()
@@ -179,7 +189,7 @@ public abstract class RecyclerView$SmoothScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.SmoothScroller
  * JD-Core Version:    0.7.0.1
  */

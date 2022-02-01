@@ -10,12 +10,16 @@ class LoginUserPrivateHelper$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if ((paramInt == 1) && (this.a.a(LoginUserPrivateHelper.a(this.a)))) {}
+    if (paramInt == 1)
+    {
+      paramDialogInterface = this.a;
+      paramDialogInterface.a(LoginUserPrivateHelper.a(paramDialogInterface));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginUserPrivateHelper.1
  * JD-Core Version:    0.7.0.1
  */

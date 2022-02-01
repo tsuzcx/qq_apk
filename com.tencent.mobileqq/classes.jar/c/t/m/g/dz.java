@@ -30,28 +30,24 @@ public final class dz
   private static String a(Context paramContext)
   {
     if ((TextUtils.isEmpty(a)) || ("0123456789ABCDEF".equals(a))) {}
-    for (;;)
+    try
     {
-      try
-      {
-        paramContext = (TelephonyManager)paramContext.getSystemService("phone");
-        if (!i()) {
-          continue;
-        }
+      paramContext = (TelephonyManager)paramContext.getSystemService("phone");
+      if (i()) {
         paramContext = c(dp.a());
-        a = dx.a(paramContext, dx.a).toUpperCase(Locale.ENGLISH);
-      }
-      catch (Throwable paramContext)
-      {
-        continue;
-      }
-      return a(a);
-      if (Build.VERSION.SDK_INT >= 26) {
+      } else if (Build.VERSION.SDK_INT >= 26) {
         paramContext = paramContext.getImei();
       } else {
         paramContext = paramContext.getDeviceId();
       }
+      a = dx.a(paramContext, dx.a).toUpperCase(Locale.ENGLISH);
     }
+    catch (Throwable paramContext)
+    {
+      label83:
+      break label83;
+    }
+    return a(a);
   }
   
   private static String a(String paramString)
@@ -72,24 +68,20 @@ public final class dz
   @SuppressLint({"MissingPermission"})
   private static String b(Context paramContext)
   {
-    if (TextUtils.isEmpty(b))
-    {
-      if (!i()) {
-        break label27;
-      }
-      b = "0123456789ABCDEF";
+    if (TextUtils.isEmpty(b)) {
+      if (i()) {
+        b = "0123456789ABCDEF";
+      } else if (!"0123456789ABCDEF".equals(b)) {}
     }
-    for (;;)
+    try
     {
+      b = dx.a(((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId(), dx.b);
+      label55:
       return a(b);
-      label27:
-      if ("0123456789ABCDEF".equals(b)) {
-        try
-        {
-          b = dx.a(((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId(), dx.b);
-        }
-        catch (Throwable paramContext) {}
-      }
+    }
+    catch (Throwable paramContext)
+    {
+      break label55;
     }
   }
   
@@ -106,7 +98,11 @@ public final class dz
       paramContext = Settings.System.getString(paramContext.getContentResolver(), "android_id");
       return paramContext;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label12:
+      break label12;
+    }
     return "0123456789ABCDEF";
   }
   
@@ -124,7 +120,11 @@ public final class dz
       String str = Build.SERIAL;
       return str;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label31:
+      break label31;
+    }
     return "0123456789ABCDEF";
   }
   
@@ -136,43 +136,50 @@ public final class dz
       paramContext = paramContext.getPackageName();
       return paramContext;
     }
-    catch (Throwable paramContext) {}
+    catch (Throwable paramContext)
+    {
+      label7:
+      break label7;
+    }
     return "UNKNOWN";
   }
   
   public static String e()
   {
-    if ((TextUtils.isEmpty(c)) || ("0123456789ABCDEF".equals(c))) {
-      try
+    if ((TextUtils.isEmpty(c)) || ("0123456789ABCDEF".equals(c))) {}
+    try
+    {
+      Enumeration localEnumeration = NetworkInterface.getNetworkInterfaces();
+      while (localEnumeration.hasMoreElements())
       {
-        Enumeration localEnumeration = NetworkInterface.getNetworkInterfaces();
-        while (localEnumeration.hasMoreElements())
+        Object localObject = (NetworkInterface)localEnumeration.nextElement();
+        if ((localObject != null) && (((NetworkInterface)localObject).getName().equalsIgnoreCase("wlan0")))
         {
-          Object localObject = (NetworkInterface)localEnumeration.nextElement();
-          if ((localObject != null) && (((NetworkInterface)localObject).getName().equalsIgnoreCase("wlan0")))
+          localObject = ((NetworkInterface)localObject).getHardwareAddress();
+          if ((localObject != null) && (localObject.length != 0))
           {
-            localObject = ((NetworkInterface)localObject).getHardwareAddress();
-            if ((localObject != null) && (localObject.length != 0))
+            StringBuilder localStringBuilder = new StringBuilder();
+            int j = localObject.length;
+            int i = 0;
+            while (i < j)
             {
-              StringBuilder localStringBuilder = new StringBuilder();
-              int j = localObject.length;
-              int i = 0;
-              while (i < j)
-              {
-                localStringBuilder.append(String.format("%02X:", new Object[] { Byte.valueOf(localObject[i]) }));
-                i += 1;
-              }
-              if (localStringBuilder.length() > 0) {
-                localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-              }
-              c = localStringBuilder.toString();
+              localStringBuilder.append(String.format("%02X:", new Object[] { Byte.valueOf(localObject[i]) }));
+              i += 1;
             }
+            if (localStringBuilder.length() > 0) {
+              localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+            }
+            c = localStringBuilder.toString();
           }
         }
-        return a(c);
       }
-      catch (Throwable localThrowable) {}
     }
+    catch (Throwable localThrowable)
+    {
+      label155:
+      break label155;
+    }
+    return a(c);
   }
   
   public static String f()
@@ -199,7 +206,11 @@ public final class dz
       localObject = ((Context)localObject).getPackageManager().getPackageInfo(str, 16384).versionName;
       return localObject;
     }
-    catch (Throwable localThrowable) {}
+    catch (Throwable localThrowable)
+    {
+      label26:
+      break label26;
+    }
     return "unknown";
   }
   
@@ -210,7 +221,7 @@ public final class dz
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.dz
  * JD-Core Version:    0.7.0.1
  */

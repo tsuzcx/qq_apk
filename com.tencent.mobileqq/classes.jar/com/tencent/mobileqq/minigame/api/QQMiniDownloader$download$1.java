@@ -14,12 +14,22 @@ public final class QQMiniDownloader$download$1
   
   public void onDownloadCanceled(@Nullable String paramString)
   {
-    this.$listener.onFail("cancled " + paramString);
+    Downloader.Listener localListener = this.$listener;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancled ");
+    localStringBuilder.append(paramString);
+    localListener.onFail(localStringBuilder.toString());
   }
   
   public void onDownloadFailed(@Nullable String paramString, @Nullable DownloadResult paramDownloadResult)
   {
-    this.$listener.onFail("failed " + paramString + ' ' + paramDownloadResult);
+    Downloader.Listener localListener = this.$listener;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("failed ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(' ');
+    localStringBuilder.append(paramDownloadResult);
+    localListener.onFail(localStringBuilder.toString());
   }
   
   public void onDownloadProgress(@Nullable String paramString, long paramLong, float paramFloat)
@@ -34,7 +44,7 @@ public final class QQMiniDownloader$download$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.api.QQMiniDownloader.download.1
  * JD-Core Version:    0.7.0.1
  */

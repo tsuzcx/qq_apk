@@ -28,94 +28,95 @@ public class LocalizationPlugin
   
   public Locale resolveNativeLocale(List<Locale> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      localObject1 = null;
-    }
-    Object localObject2;
-    int i;
-    Object localObject3;
-    Object localObject4;
-    do
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
-      return localObject1;
-      if (Build.VERSION.SDK_INT < 26) {
-        break;
-      }
-      localObject1 = new ArrayList();
-      localObject2 = this.context.getResources().getConfiguration().getLocales();
-      int j = ((LocaleList)localObject2).size();
-      i = 0;
-      while (i < j)
+      Object localObject1;
+      Object localObject2;
+      int i;
+      Object localObject3;
+      Object localObject4;
+      if (Build.VERSION.SDK_INT >= 26)
       {
-        localObject3 = ((LocaleList)localObject2).get(i);
-        ((List)localObject1).add(new Locale.LanguageRange(((Locale)localObject3).toString().replace("_", "-")));
-        ((List)localObject1).add(new Locale.LanguageRange(((Locale)localObject3).getLanguage()));
-        localObject4 = new StringBuilder();
-        ((StringBuilder)localObject4).append(((Locale)localObject3).getLanguage());
-        ((StringBuilder)localObject4).append("-*");
-        ((List)localObject1).add(new Locale.LanguageRange(((StringBuilder)localObject4).toString()));
-        i += 1;
+        localObject1 = new ArrayList();
+        localObject2 = this.context.getResources().getConfiguration().getLocales();
+        int j = ((LocaleList)localObject2).size();
+        i = 0;
+        while (i < j)
+        {
+          localObject3 = ((LocaleList)localObject2).get(i);
+          ((List)localObject1).add(new Locale.LanguageRange(((Locale)localObject3).toString().replace("_", "-")));
+          ((List)localObject1).add(new Locale.LanguageRange(((Locale)localObject3).getLanguage()));
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(((Locale)localObject3).getLanguage());
+          ((StringBuilder)localObject4).append("-*");
+          ((List)localObject1).add(new Locale.LanguageRange(((StringBuilder)localObject4).toString()));
+          i += 1;
+        }
+        localObject1 = Locale.lookup((List)localObject1, paramList);
+        if (localObject1 == null) {}
       }
-      localObject2 = Locale.lookup((List)localObject1, paramList);
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    return (Locale)paramList.get(0);
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      localObject1 = this.context.getResources().getConfiguration().getLocales();
-      i = 0;
-      while (i < ((LocaleList)localObject1).size())
+      do
       {
-        localObject2 = ((LocaleList)localObject1).get(i);
-        localObject3 = paramList.iterator();
-        while (((Iterator)localObject3).hasNext())
+        return localObject1;
+        while (!((Iterator)localObject2).hasNext())
         {
-          localObject4 = (Locale)((Iterator)localObject3).next();
-          if (((Locale)localObject2).equals(localObject4)) {
-            return localObject4;
+          do
+          {
+            for (;;)
+            {
+              return (Locale)paramList.get(0);
+              if (Build.VERSION.SDK_INT < 24) {
+                break;
+              }
+              localObject1 = this.context.getResources().getConfiguration().getLocales();
+              i = 0;
+              while (i < ((LocaleList)localObject1).size())
+              {
+                localObject2 = ((LocaleList)localObject1).get(i);
+                localObject3 = paramList.iterator();
+                while (((Iterator)localObject3).hasNext())
+                {
+                  localObject4 = (Locale)((Iterator)localObject3).next();
+                  if (((Locale)localObject2).equals(localObject4)) {
+                    return localObject4;
+                  }
+                }
+                localObject3 = paramList.iterator();
+                while (((Iterator)localObject3).hasNext())
+                {
+                  localObject4 = (Locale)((Iterator)localObject3).next();
+                  if (((Locale)localObject2).getLanguage().equals(((Locale)localObject4).toLanguageTag())) {
+                    return localObject4;
+                  }
+                }
+                localObject3 = paramList.iterator();
+                while (((Iterator)localObject3).hasNext())
+                {
+                  localObject4 = (Locale)((Iterator)localObject3).next();
+                  if (((Locale)localObject2).getLanguage().equals(((Locale)localObject4).getLanguage())) {
+                    return localObject4;
+                  }
+                }
+                i += 1;
+              }
+            }
+            localObject1 = this.context.getResources().getConfiguration().locale;
+          } while (localObject1 == null);
+          localObject2 = paramList.iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            localObject3 = (Locale)((Iterator)localObject2).next();
+            if (((Locale)localObject1).equals(localObject3)) {
+              return localObject3;
+            }
           }
+          localObject2 = paramList.iterator();
         }
-        localObject3 = paramList.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (Locale)((Iterator)localObject3).next();
-          if (((Locale)localObject2).getLanguage().equals(((Locale)localObject4).toLanguageTag())) {
-            return localObject4;
-          }
-        }
-        localObject3 = paramList.iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (Locale)((Iterator)localObject3).next();
-          if (((Locale)localObject2).getLanguage().equals(((Locale)localObject4).getLanguage())) {
-            return localObject4;
-          }
-        }
-        i += 1;
-      }
-      return (Locale)paramList.get(0);
-    }
-    Object localObject1 = this.context.getResources().getConfiguration().locale;
-    if (localObject1 != null)
-    {
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
         localObject3 = (Locale)((Iterator)localObject2).next();
-        if (((Locale)localObject1).equals(localObject3)) {
-          return localObject3;
-        }
-      }
-      localObject2 = paramList.iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        localObject3 = (Locale)((Iterator)localObject2).next();
-        if (((Locale)localObject1).getLanguage().equals(((Locale)localObject3).toString())) {
-          return localObject3;
-        }
-      }
+      } while (!((Locale)localObject1).getLanguage().equals(((Locale)localObject3).toString()));
+      return localObject3;
     }
-    return (Locale)paramList.get(0);
+    return null;
   }
   
   public void sendLocalesToFlutter(@NonNull Configuration paramConfiguration)
@@ -138,7 +139,7 @@ public class LocalizationPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.localization.LocalizationPlugin
  * JD-Core Version:    0.7.0.1
  */

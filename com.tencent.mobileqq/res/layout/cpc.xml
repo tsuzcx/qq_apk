@@ -1,6 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:paddingBottom="6.0dip" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <TextView android:textSize="@dimen/aym" android:textColor="@color/bp" android:gravity="center" android:id="@id/omh" android:background="@drawable/ig0" android:paddingLeft="@dimen/mw" android:paddingRight="@dimen/mw" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    <ImageView android:layout_gravity="right" android:id="@id/omg" android:layout_width="wrap_content" android:layout_height="wrap_content" android:src="@drawable/ifb" />
+    <RelativeLayout android:layout_gravity="center_horizontal" android:id="@id/omr" android:clipChildren="false" android:clipToPadding="false" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="14.0dip" android:layout_marginRight="14.0dip" android:layout_marginBottom="13.0dip">
+        <ImageView android:id="@id/omt" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/bl3" android:scaleType="fitXY" android:layout_centerHorizontal="true" />
+        <ImageView android:id="@id/oms" android:visibility="gone" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/ij6" android:layout_centerHorizontal="true" />
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:id="@id/omu" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_below="@id/omt" android:layout_centerHorizontal="true" />
+    </RelativeLayout>
+    <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/old" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:drawableTop="@drawable/ij2" />
+    <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/on_" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:drawableTop="@drawable/ij8" />
+    <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/omq" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:text="打开微视" android:drawableTop="@drawable/ij4" />
+    <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_horizontal" android:id="@id/mvr" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginBottom="13.0dip" android:text="追剧" android:drawableTop="@drawable/ihz" />
+    <ViewStub android:layout_gravity="center_horizontal" android:id="@id/oot" android:layout="@layout/cp9" android:layout_width="42.0dip" android:layout_height="42.0dip" android:layout_marginLeft="11.0dip" android:layout_marginRight="11.0dip" android:layout_marginBottom="7.0dip" />
 </LinearLayout>

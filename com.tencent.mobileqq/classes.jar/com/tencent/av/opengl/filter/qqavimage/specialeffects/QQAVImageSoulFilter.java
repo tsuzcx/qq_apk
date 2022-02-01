@@ -39,7 +39,7 @@ public class QQAVImageSoulFilter
   
   public void setMusicScale(float paramFloat)
   {
-    setScale(1.0F + 0.3F * paramFloat);
+    setScale(paramFloat * 0.3F + 1.0F);
   }
   
   public void setScale(float paramFloat)
@@ -50,7 +50,7 @@ public class QQAVImageSoulFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.filter.qqavimage.specialeffects.QQAVImageSoulFilter
  * JD-Core Version:    0.7.0.1
  */

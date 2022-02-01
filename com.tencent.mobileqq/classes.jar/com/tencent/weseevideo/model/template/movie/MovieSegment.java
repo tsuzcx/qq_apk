@@ -30,21 +30,16 @@ public class MovieSegment
   
   public int compareTo(@NonNull MovieSegment paramMovieSegment)
   {
-    int j = 0;
-    int i;
     if (getTimeRange().getStart().smallThan(paramMovieSegment.getTimeRange().getStart())) {
-      i = -1;
+      return -1;
     }
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (getTimeRange().getStart().equalsTo(paramMovieSegment.getTimeRange().getStart()));
-      i = j;
-    } while (!getTimeRange().getStart().bigThan(paramMovieSegment.getTimeRange().getStart()));
-    return 1;
+    if (getTimeRange().getStart().equalsTo(paramMovieSegment.getTimeRange().getStart())) {
+      return 0;
+    }
+    if (getTimeRange().getStart().bigThan(paramMovieSegment.getTimeRange().getStart())) {
+      return 1;
+    }
+    return 0;
   }
   
   public CMTime getCorrectEndTime()
@@ -54,34 +49,33 @@ public class MovieSegment
   
   public CMTime getCorrectStartTime()
   {
-    if (this.mCorrectStartTime != null) {
-      return this.mCorrectStartTime;
+    CMTime localCMTime = this.mCorrectStartTime;
+    if (localCMTime != null) {
+      return localCMTime;
     }
     return getTimeRange().getStart();
   }
   
   public CMTimeRange getCorrectTimeRange()
   {
-    CMTime localCMTime1;
-    if (this.mCorrectStartTime == null)
-    {
+    CMTime localCMTime2 = this.mCorrectStartTime;
+    CMTime localCMTime1 = localCMTime2;
+    if (localCMTime2 == null) {
       localCMTime1 = this.mTimeRange.getStart();
-      if (this.mCorrectEndTime != null) {
-        break label52;
-      }
     }
-    label52:
-    for (CMTime localCMTime2 = this.mTimeRange.getEnd();; localCMTime2 = this.mCorrectEndTime.add(this.mEndingTime))
-    {
-      return new CMTimeRange(localCMTime1, localCMTime2.sub(localCMTime1));
-      localCMTime1 = this.mCorrectStartTime;
-      break;
+    localCMTime2 = this.mCorrectEndTime;
+    if (localCMTime2 == null) {
+      localCMTime2 = this.mTimeRange.getEnd();
+    } else {
+      localCMTime2 = localCMTime2.add(this.mEndingTime);
     }
+    return new CMTimeRange(localCMTime1, localCMTime2.sub(localCMTime1));
   }
   
   public List<TAVClip> getFullTavClips()
   {
-    if ((this.mEndingTime != null) && (this.mEndingTime.bigThan(CMTime.CMTimeZero)))
+    CMTime localCMTime = this.mEndingTime;
+    if ((localCMTime != null) && (localCMTime.bigThan(CMTime.CMTimeZero)))
     {
       if (this.tavClips == null) {
         this.tavClips = new ArrayList();
@@ -121,44 +115,49 @@ public class MovieSegment
   
   public CMTime getSourceDuration()
   {
-    CMTime localCMTime = CMTime.CMTimeZero;
-    List localList = separateSegmentByTimeEffects();
-    Object localObject = localCMTime;
-    if (localList != null)
+    CMTime localCMTime1 = CMTime.CMTimeZero;
+    Object localObject = separateSegmentByTimeEffects();
+    CMTime localCMTime2 = localCMTime1;
+    if (localObject != null)
     {
-      localObject = localCMTime;
-      if (!localList.isEmpty())
+      localCMTime2 = localCMTime1;
+      if (!((List)localObject).isEmpty())
       {
-        localObject = localList.iterator();
-        while (((Iterator)localObject).hasNext()) {
-          localCMTime = localCMTime.add(((TAVMovieTimeEffect)((Iterator)localObject).next()).getSourceTimeRange().getDuration());
+        localObject = ((List)localObject).iterator();
+        for (;;)
+        {
+          localCMTime2 = localCMTime1;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localCMTime1 = localCMTime1.add(((TAVMovieTimeEffect)((Iterator)localObject).next()).getSourceTimeRange().getDuration());
         }
-        localObject = localCMTime;
       }
     }
-    return localObject;
+    return localCMTime2;
   }
   
   public List<TAVClip> getTavClips()
   {
-    if ((this.tavClips == null) || (this.tavClips.isEmpty())) {
-      return this.tavClips;
-    }
-    if (this.mTimeRange != null)
+    if ((this.tavClips != null) && (!this.tavClips.isEmpty()))
     {
-      CMTime localCMTime = this.mTimeRange.getStart();
-      if (localCMTime.bigThan(CMTime.CMTimeZero))
+      if (this.mTimeRange != null)
       {
-        Object localObject = CloneUtil.cloneTAVClips(this.tavClips);
-        if (localObject != null)
+        CMTime localCMTime = this.mTimeRange.getStart();
+        if (localCMTime.bigThan(CMTime.CMTimeZero))
         {
+          Object localObject = CloneUtil.cloneTAVClips(this.tavClips);
+          if (localObject != null)
+          {
+            ((List)localObject).add(0, new TAVClip(new TAVEmptyResource(localCMTime)));
+            return localObject;
+          }
+          localObject = new ArrayList();
           ((List)localObject).add(0, new TAVClip(new TAVEmptyResource(localCMTime)));
           return localObject;
         }
-        localObject = new ArrayList();
-        ((List)localObject).add(0, new TAVClip(new TAVEmptyResource(localCMTime)));
-        return localObject;
       }
+      return this.tavClips;
     }
     return this.tavClips;
   }
@@ -195,38 +194,52 @@ public class MovieSegment
   
   public List<TAVMovieTimeEffect> separateSegmentByTimeEffects()
   {
-    if ((this.mTimeEffects == null) || (this.mTimeEffects.isEmpty())) {}
-    Object localObject3;
-    do
+    Object localObject3 = this.mTimeEffects;
+    Object localObject1 = null;
+    Object localObject2 = localObject1;
+    if (localObject3 != null)
     {
-      return null;
-      localObject3 = TAVMovieTimeEffectUtil.getNoOverlapTimeEffects(CloneUtil.cloneMovieTimeEffects(this.mTimeEffects));
-    } while ((localObject3 == null) || (((List)localObject3).isEmpty()));
-    ArrayList localArrayList = new ArrayList();
-    Object localObject2 = CMTime.CMTimeZero;
-    Object localObject1 = localObject2;
-    if (this.mTimeEffects != null)
-    {
-      localObject1 = localObject2;
-      if (!this.mTimeEffects.isEmpty()) {
-        localObject1 = ((TAVMovieTimeEffect)this.mTimeEffects.get(0)).getTimeRange().getStart();
+      if (this.mTimeEffects.isEmpty()) {
+        return null;
       }
-    }
-    localObject2 = ((List)localObject3).iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (TAVMovieTimeEffect)((Iterator)localObject2).next();
-      CMTime localCMTime = ((TAVMovieTimeEffect)localObject3).getTimeRange().getStart().sub((CMTime)localObject1);
-      if (localCMTime.getTimeUs() > 0L)
+      Object localObject4 = TAVMovieTimeEffectUtil.getNoOverlapTimeEffects(CloneUtil.cloneMovieTimeEffects(this.mTimeEffects));
+      localObject2 = localObject1;
+      if (localObject4 != null)
       {
-        TAVMovieTimeEffect localTAVMovieTimeEffect = new TAVMovieTimeEffect();
-        localTAVMovieTimeEffect.setTimeRange(new CMTimeRange((CMTime)localObject1, localCMTime));
-        localArrayList.add(localTAVMovieTimeEffect);
+        if (((List)localObject4).isEmpty()) {
+          return null;
+        }
+        localObject3 = new ArrayList();
+        localObject2 = CMTime.CMTimeZero;
+        localObject1 = localObject2;
+        if (this.mTimeEffects != null)
+        {
+          localObject1 = localObject2;
+          if (!this.mTimeEffects.isEmpty()) {
+            localObject1 = ((TAVMovieTimeEffect)this.mTimeEffects.get(0)).getTimeRange().getStart();
+          }
+        }
+        localObject4 = ((List)localObject4).iterator();
+        for (;;)
+        {
+          localObject2 = localObject3;
+          if (!((Iterator)localObject4).hasNext()) {
+            break;
+          }
+          localObject2 = (TAVMovieTimeEffect)((Iterator)localObject4).next();
+          CMTime localCMTime = ((TAVMovieTimeEffect)localObject2).getTimeRange().getStart().sub((CMTime)localObject1);
+          if (localCMTime.getTimeUs() > 0L)
+          {
+            TAVMovieTimeEffect localTAVMovieTimeEffect = new TAVMovieTimeEffect();
+            localTAVMovieTimeEffect.setTimeRange(new CMTimeRange((CMTime)localObject1, localCMTime));
+            ((List)localObject3).add(localTAVMovieTimeEffect);
+          }
+          ((List)localObject3).add(localObject2);
+          localObject1 = ((TAVMovieTimeEffect)localObject2).getTimeRange().getEnd();
+        }
       }
-      localArrayList.add(localObject3);
-      localObject1 = ((TAVMovieTimeEffect)localObject3).getTimeRange().getEnd();
     }
-    return localArrayList;
+    return localObject2;
   }
   
   public void setCorrectEndTime(CMTime paramCMTime)
@@ -272,7 +285,7 @@ public class MovieSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.movie.MovieSegment
  * JD-Core Version:    0.7.0.1
  */

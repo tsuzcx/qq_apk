@@ -1,8 +1,6 @@
 package com.tencent.biz.pubaccount.weishi_new.api;
 
 import android.app.Activity;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 
@@ -14,9 +12,9 @@ public abstract interface IWSMinePanel
   
   public abstract void reportProfileCardExposure(boolean paramBoolean, String paramString);
   
-  public abstract void reportProfilePageVisitEnter(ProfileCardInfo paramProfileCardInfo, QQAppInterface paramQQAppInterface);
+  public abstract void reportProfilePageVisitEnter(String paramString, boolean paramBoolean);
   
-  public abstract void reportProfilePageVisitExit(ProfileCardInfo paramProfileCardInfo, QQAppInterface paramQQAppInterface);
+  public abstract void reportProfilePageVisitExit(String paramString, boolean paramBoolean);
   
   public abstract void reportProfileSettingBtnClick(boolean paramBoolean);
   
@@ -30,7 +28,7 @@ public abstract interface IWSMinePanel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.api.IWSMinePanel
  * JD-Core Version:    0.7.0.1
  */

@@ -7,14 +7,15 @@ class ReaderEngine$1$1
   
   public void run()
   {
-    if (this.val$callBackListener != null) {
-      this.val$callBackListener.onCallBackAction(Integer.valueOf(16), Integer.valueOf(this.val$args), null);
+    ITbsReaderCallback localITbsReaderCallback = this.val$callBackListener;
+    if (localITbsReaderCallback != null) {
+      localITbsReaderCallback.onCallBackAction(Integer.valueOf(16), Integer.valueOf(this.val$args), null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.reader.ReaderEngine.1.1
  * JD-Core Version:    0.7.0.1
  */

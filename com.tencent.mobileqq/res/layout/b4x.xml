@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.doodle.DoodleView android:id="@id/a01" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.doodle.DoodleView android:id="@id/a01" android:layout_width="fill_parent" android:layout_height="fill_parent" />
     <RelativeLayout android:id="@id/ifo" android:paddingTop="11.0dip" android:paddingBottom="5.0dip" android:visibility="invisible" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentTop="true">
-        <dov.com.tencent.biz.qqstory.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/dxw" android:background="@null" android:src="@drawable/fi2" android:layout_centerInParent="true" style="@style/dn" />
+        <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.widget.ElasticImageView android:id="@id/dxw" android:background="@null" android:src="@drawable/fi2" android:layout_centerInParent="true" style="@style/dn" />
     </RelativeLayout>
 </RelativeLayout>

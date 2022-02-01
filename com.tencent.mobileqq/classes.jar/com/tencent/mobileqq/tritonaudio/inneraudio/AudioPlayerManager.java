@@ -97,79 +97,96 @@ public final class AudioPlayerManager
   
   private final void restoreVolume()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (this.mMaxVolume > 0)
-        {
-          f = 1.0F * this.mSavedVolume / this.mMaxVolume;
-          Object localObject = this.logger;
-          if (localObject != null) {
-            LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject, LogDelegate.Level.INFO, "[audio] AudioPlayerManager", "restoreVolume volume=" + f, null, 8, null);
-          }
-          localObject = this.mPlayerMap.values().iterator();
-          if (((Iterator)localObject).hasNext())
-          {
-            IAudioPlayer localIAudioPlayer = (IAudioPlayer)((Iterator)localObject).next();
-            LogDelegate localLogDelegate2;
-            try
-            {
-              Intrinsics.checkExpressionValueIsNotNull(localIAudioPlayer, "player");
-              localIAudioPlayer.setVolume(f);
-            }
-            catch (Throwable localThrowable2)
-            {
-              localLogDelegate2 = this.logger;
-            }
-            if (localLogDelegate2 == null) {
-              continue;
-            }
-            localLogDelegate2.printLog(LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", "mute error:", localThrowable2);
-            continue;
-          }
-          LogDelegate localLogDelegate1;
-          return;
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        localLogDelegate1 = this.logger;
-        if (localLogDelegate1 != null) {
-          localLogDelegate1.printLog(LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", "catching exception :pauseMusic error:", localThrowable1);
-        }
-      }
+      int i = this.mMaxVolume;
       float f = 1.0F;
+      if (i > 0) {
+        f = this.mSavedVolume * 1.0F / this.mMaxVolume;
+      }
+      Object localObject1 = this.logger;
+      Object localObject2;
+      Object localObject3;
+      if (localObject1 != null)
+      {
+        localObject2 = LogDelegate.Level.INFO;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("restoreVolume volume=");
+        ((StringBuilder)localObject3).append(f);
+        LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject1, (LogDelegate.Level)localObject2, "[audio] AudioPlayerManager", ((StringBuilder)localObject3).toString(), null, 8, null);
+      }
+      localObject1 = this.mPlayerMap.values().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (IAudioPlayer)((Iterator)localObject1).next();
+        try
+        {
+          Intrinsics.checkExpressionValueIsNotNull(localObject2, "player");
+          ((IAudioPlayer)localObject2).setVolume(f);
+        }
+        catch (Throwable localThrowable2)
+        {
+          localObject3 = this.logger;
+        }
+        if (localObject3 != null) {
+          ((LogDelegate)localObject3).printLog(LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", "mute error:", localThrowable2);
+        }
+      }
+      LogDelegate localLogDelegate;
+      return;
+    }
+    catch (Throwable localThrowable1)
+    {
+      localLogDelegate = this.logger;
+      if (localLogDelegate != null) {
+        localLogDelegate.printLog(LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", "catching exception :pauseMusic error:", localThrowable1);
+      }
     }
   }
   
   public final void createAudioContext(int paramInt, @NotNull IAudioStateChangeListener paramIAudioStateChangeListener)
   {
     Intrinsics.checkParameterIsNotNull(paramIAudioStateChangeListener, "listener");
-    IAudioPlayer localIAudioPlayer = (IAudioPlayer)this.mIdleQueue.poll();
+    Object localObject = (IAudioPlayer)this.mIdleQueue.poll();
     paramIAudioStateChangeListener = new AudioPlayerManager.InnerAudioStateChangeHandler(this, this, paramInt, paramIAudioStateChangeListener);
     ((Map)this.mStateChangeHandlerMap).put(Integer.valueOf(paramInt), paramIAudioStateChangeListener);
-    if (localIAudioPlayer == null)
+    StringBuilder localStringBuilder;
+    if (localObject == null)
     {
-      localIAudioPlayer = (IAudioPlayer)new InnerAudioPlayer(this.logger);
-      localIAudioPlayer.setAudioId(paramInt);
-      localIAudioPlayer.setStateChangeListener((IAudioStateChangeListener)paramIAudioStateChangeListener);
-      ((Map)this.mPlayerMap).put(Integer.valueOf(paramInt), localIAudioPlayer);
+      localObject = (IAudioPlayer)new InnerAudioPlayer(this.logger);
+      ((IAudioPlayer)localObject).setAudioId(paramInt);
+      ((IAudioPlayer)localObject).setStateChangeListener((IAudioStateChangeListener)paramIAudioStateChangeListener);
+      ((Map)this.mPlayerMap).put(Integer.valueOf(paramInt), localObject);
       paramIAudioStateChangeListener = this.logger;
-      if (paramIAudioStateChangeListener != null) {
-        LogDelegate.DefaultImpls.printLog$default(paramIAudioStateChangeListener, LogDelegate.Level.INFO, "[audio] AudioPlayerManager", "createAudioContext. audioId=" + paramInt + " total=" + this.mPlayerMap.size(), null, 8, null);
+      if (paramIAudioStateChangeListener != null)
+      {
+        localObject = LogDelegate.Level.INFO;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createAudioContext. audioId=");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" total=");
+        localStringBuilder.append(this.mPlayerMap.size());
+        LogDelegate.DefaultImpls.printLog$default(paramIAudioStateChangeListener, (LogDelegate.Level)localObject, "[audio] AudioPlayerManager", localStringBuilder.toString(), null, 8, null);
       }
     }
-    do
+    else
     {
-      return;
-      localIAudioPlayer.release();
-      localIAudioPlayer.setAudioId(paramInt);
-      localIAudioPlayer.setStateChangeListener((IAudioStateChangeListener)paramIAudioStateChangeListener);
-      ((Map)this.mPlayerMap).put(Integer.valueOf(paramInt), localIAudioPlayer);
+      ((IAudioPlayer)localObject).release();
+      ((IAudioPlayer)localObject).setAudioId(paramInt);
+      ((IAudioPlayer)localObject).setStateChangeListener((IAudioStateChangeListener)paramIAudioStateChangeListener);
+      ((Map)this.mPlayerMap).put(Integer.valueOf(paramInt), localObject);
       paramIAudioStateChangeListener = this.logger;
-    } while (paramIAudioStateChangeListener == null);
-    LogDelegate.DefaultImpls.printLog$default(paramIAudioStateChangeListener, LogDelegate.Level.INFO, "[audio] AudioPlayerManager", "createAudioContext reuse. audioId=" + paramInt + " total=" + this.mPlayerMap.size(), null, 8, null);
+      if (paramIAudioStateChangeListener != null)
+      {
+        localObject = LogDelegate.Level.INFO;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("createAudioContext reuse. audioId=");
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" total=");
+        localStringBuilder.append(this.mPlayerMap.size());
+        LogDelegate.DefaultImpls.printLog$default(paramIAudioStateChangeListener, (LogDelegate.Level)localObject, "[audio] AudioPlayerManager", localStringBuilder.toString(), null, 8, null);
+      }
+    }
   }
   
   public final void destroyAudioContext(int paramInt)
@@ -184,14 +201,15 @@ public final class AudioPlayerManager
   
   public final boolean execAudioFocus()
   {
-    boolean bool = false;
-    if (this.mIsMute)
+    boolean bool2 = this.mIsMute;
+    boolean bool1 = false;
+    if (bool2)
     {
       this.mIsMute = false;
       restoreVolume();
-      bool = true;
+      bool1 = true;
     }
-    return bool;
+    return bool1;
   }
   
   public final boolean getAutoplay(int paramInt)
@@ -294,14 +312,16 @@ public final class AudioPlayerManager
   public final void handleFocusLoss()
   {
     Object localObject = this.context.getSystemService("audio");
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.media.AudioManager");
+    if (localObject != null)
+    {
+      localObject = (AudioManager)localObject;
+      this.mSavedVolume = ((AudioManager)localObject).getStreamVolume(3);
+      this.mMaxVolume = ((AudioManager)localObject).getStreamMaxVolume(3);
+      this.mIsMute = true;
+      muteAll();
+      return;
     }
-    localObject = (AudioManager)localObject;
-    this.mSavedVolume = ((AudioManager)localObject).getStreamVolume(3);
-    this.mMaxVolume = ((AudioManager)localObject).getStreamMaxVolume(3);
-    this.mIsMute = true;
-    muteAll();
+    throw new TypeCastException("null cannot be cast to non-null type android.media.AudioManager");
   }
   
   public final void onDestroy()
@@ -312,17 +332,22 @@ public final class AudioPlayerManager
     synchronized (this.mLock)
     {
       this.mIsDestoryed = true;
-      Iterator localIterator = this.mPlayerMap.values().iterator();
-      if (localIterator.hasNext()) {
-        ((IAudioPlayer)localIterator.next()).release();
+      Object localObject2 = this.mPlayerMap.values().iterator();
+      while (((Iterator)localObject2).hasNext()) {
+        ((IAudioPlayer)((Iterator)localObject2).next()).release();
       }
+      this.mPlayerMap.clear();
+      this.mIdleQueue.clear();
+      localObject2 = Unit.INSTANCE;
+      ??? = this.logger;
+      if (??? != null) {
+        LogDelegate.DefaultImpls.printLog$default((LogDelegate)???, LogDelegate.Level.INFO, "[audio] AudioPlayerManager", "onDestroy", null, 8, null);
+      }
+      return;
     }
-    this.mPlayerMap.clear();
-    this.mIdleQueue.clear();
-    Unit localUnit = Unit.INSTANCE;
-    ??? = this.logger;
-    if (??? != null) {
-      LogDelegate.DefaultImpls.printLog$default((LogDelegate)???, LogDelegate.Level.INFO, "[audio] AudioPlayerManager", "onDestroy", null, 8, null);
+    for (;;)
+    {
+      throw localObject3;
     }
   }
   
@@ -377,17 +402,15 @@ public final class AudioPlayerManager
       {
         localIAudioPlayer.setNeedResume(false);
         localIAudioPlayer.pause();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
-      LogDelegate localLogDelegate;
-      do
-      {
-        localLogDelegate = this.logger;
-      } while (localLogDelegate == null);
-      localLogDelegate.printLog(LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", "pauseMusic fail!", localThrowable);
+      LogDelegate localLogDelegate = this.logger;
+      if (localLogDelegate != null) {
+        localLogDelegate.printLog(LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", "pauseMusic fail!", localThrowable);
+      }
     }
   }
   
@@ -460,67 +483,77 @@ public final class AudioPlayerManager
   
   public final int setMusicPath(int paramInt, @Nullable String paramString)
   {
-    String str = (String)null;
-    for (;;)
+    Object localObject1 = null;
+    Object localObject2 = (String)null;
+    try
     {
-      try
+      if (URLUtil.isNetworkUrl(paramString))
       {
-        boolean bool = URLUtil.isNetworkUrl(paramString);
-        Object localObject1;
-        Object localObject2;
-        if (bool)
-        {
-          localObject1 = paramString;
-          localObject2 = (AudioPlayerManager.InnerAudioStateChangeHandler)this.mStateChangeHandlerMap.get(Integer.valueOf(paramInt));
-          if (localObject2 != null) {
-            ((AudioPlayerManager.InnerAudioStateChangeHandler)localObject2).setPath(paramString, (String)localObject1);
-          }
-          paramString = (IAudioPlayer)this.mPlayerMap.get(Integer.valueOf(paramInt));
-          if (paramString != null) {
-            paramString.setAudioPath((String)localObject1);
-          }
-          return 0;
-        }
+        localObject1 = paramString;
+      }
+      else
+      {
         if (!TextUtils.isEmpty((CharSequence)paramString))
         {
           localObject1 = this.dataFileSystem;
           if (paramString == null) {
             Intrinsics.throwNpe();
           }
-          localObject2 = ((GameDataFileSystem)localObject1).getFile(paramString).getAbsolutePath();
-          if (!TextUtils.isEmpty((CharSequence)localObject2))
+          localObject1 = ((GameDataFileSystem)localObject1).getFile(paramString).getAbsolutePath();
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1))
+        {
+          localObject1 = new File((String)localObject1);
+          if (((File)localObject1).exists())
           {
-            localObject2 = new File((String)localObject2);
-            localObject1 = str;
-            if (((File)localObject2).exists()) {
-              localObject1 = ((File)localObject2).getPath();
-            }
-          }
-          else
-          {
-            LogDelegate localLogDelegate = this.logger;
-            localObject1 = str;
-            if (localLogDelegate != null)
-            {
-              LogDelegate.DefaultImpls.printLog$default(localLogDelegate, LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", "setMusicPath musicPath:" + paramString + ", localPath:" + (String)localObject2 + " file path empty error", null, 8, null);
-              localObject1 = str;
-            }
+            localObject1 = ((File)localObject1).getPath();
+            break label174;
           }
         }
         else
         {
-          localObject2 = null;
+          localObject3 = this.logger;
+          if (localObject3 != null)
+          {
+            localObject4 = LogDelegate.Level.ERROR;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("setMusicPath musicPath:");
+            localStringBuilder.append(paramString);
+            localStringBuilder.append(", localPath:");
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append(" file path empty error");
+            LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject3, (LogDelegate.Level)localObject4, "[audio] AudioPlayerManager", localStringBuilder.toString(), null, 8, null);
+          }
         }
+        localObject1 = localObject2;
       }
-      catch (Throwable localThrowable)
+      label174:
+      localObject2 = (AudioPlayerManager.InnerAudioStateChangeHandler)this.mStateChangeHandlerMap.get(Integer.valueOf(paramInt));
+      if (localObject2 != null) {
+        ((AudioPlayerManager.InnerAudioStateChangeHandler)localObject2).setPath(paramString, (String)localObject1);
+      }
+      paramString = (IAudioPlayer)this.mPlayerMap.get(Integer.valueOf(paramInt));
+      if (paramString != null) {
+        paramString.setAudioPath((String)localObject1);
+      }
+      return 0;
+    }
+    catch (Throwable localThrowable)
+    {
+      Object localObject3;
+      Object localObject4;
+      localObject2 = this.logger;
+      if (localObject2 != null)
       {
-        localObject2 = this.logger;
-        if (localObject2 != null) {
-          ((LogDelegate)localObject2).printLog(LogDelegate.Level.ERROR, "[audio] AudioPlayerManager", "setMusicPath " + paramString + " error ", localThrowable);
-        }
-        return -1;
+        localObject3 = LogDelegate.Level.ERROR;
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("setMusicPath ");
+        ((StringBuilder)localObject4).append(paramString);
+        ((StringBuilder)localObject4).append(" error ");
+        ((LogDelegate)localObject2).printLog((LogDelegate.Level)localObject3, "[audio] AudioPlayerManager", ((StringBuilder)localObject4).toString(), localThrowable);
       }
     }
+    return -1;
   }
   
   public final void setMusicSwitch(boolean paramBoolean) {}
@@ -560,7 +593,7 @@ public final class AudioPlayerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.inneraudio.AudioPlayerManager
  * JD-Core Version:    0.7.0.1
  */

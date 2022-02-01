@@ -13,29 +13,37 @@ import java.util.List;
 public class ZimuViewFilm
   extends ZimuView
 {
-  WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
+  WeakReference<ZimuView> jdField_a_of_type_JavaLangRefWeakReference;
   final int[] jdField_a_of_type_ArrayOfInt = { 44, 30 };
-  IZimuItemView.FontPara[] jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara = { new IZimuItemView.FontPara(Color.parseColor("#ffffff"), Color.parseColor("#000000"), 5), new IZimuItemView.FontPara(Color.parseColor("#fdeabd"), Color.parseColor("#000000"), 4) };
+  IZimuItemView.FontPara[] jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara;
   
   public ZimuViewFilm(long paramLong, VideoAppInterface paramVideoAppInterface, Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramLong, paramVideoAppInterface, paramContext, paramAttributeSet);
+    paramVideoAppInterface = new IZimuItemView.FontPara(Color.parseColor("#ffffff"), Color.parseColor("#000000"), 5);
+    int k = 0;
+    this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara = new IZimuItemView.FontPara[] { paramVideoAppInterface, new IZimuItemView.FontPara(Color.parseColor("#fdeabd"), Color.parseColor("#000000"), 4) };
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(this);
     float f = this.jdField_a_of_type_Float * 0.48F;
     int i = 0;
     int j;
     for (;;)
     {
+      paramVideoAppInterface = this.jdField_a_of_type_ArrayOfInt;
       j = k;
-      if (i >= this.jdField_a_of_type_ArrayOfInt.length) {
+      if (i >= paramVideoAppInterface.length) {
         break;
       }
-      paramVideoAppInterface = this.jdField_a_of_type_ArrayOfInt;
       paramVideoAppInterface[i] = ((int)(paramVideoAppInterface[i] * f));
       i += 1;
     }
-    while (j < this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara.length)
+    for (;;)
     {
-      paramVideoAppInterface = this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara[j];
+      paramVideoAppInterface = this.jdField_a_of_type_ArrayOfComTencentAvUiFunchatZimuIZimuItemView$FontPara;
+      if (j >= paramVideoAppInterface.length) {
+        break;
+      }
+      paramVideoAppInterface = paramVideoAppInterface[j];
       paramVideoAppInterface.jdField_a_of_type_Float *= f;
       j += 1;
     }
@@ -43,7 +51,7 @@ public class ZimuViewFilm
   
   public int a()
   {
-    return (int)getContext().getResources().getDimension(2131297783);
+    return (int)getContext().getResources().getDimension(2131297774);
   }
   
   public String a()
@@ -76,7 +84,7 @@ public class ZimuViewFilm
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewFilm
  * JD-Core Version:    0.7.0.1
  */

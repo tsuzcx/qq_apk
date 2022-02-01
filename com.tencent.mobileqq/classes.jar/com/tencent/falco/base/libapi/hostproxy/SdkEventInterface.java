@@ -9,6 +9,8 @@ public abstract interface SdkEventInterface
   
   public abstract void onChargeJump(HostChargeCallback paramHostChargeCallback);
   
+  public abstract void onCoreUILoaded();
+  
   public abstract void onCreateRoom();
   
   public abstract void onDestroyRoom();
@@ -21,6 +23,12 @@ public abstract interface SdkEventInterface
   
   public abstract void onFirstFrame();
   
+  public abstract void onLoginFail(String paramString, int paramInt);
+  
+  public abstract void onLoginSuccess(long paramLong, String paramString);
+  
+  public abstract void onStartEnterRoom(long paramLong);
+  
   public abstract void onStartLive();
   
   public abstract void onTransferWebViewAction(String paramString, Runnable paramRunnable, Map<String, String> paramMap);
@@ -29,7 +37,7 @@ public abstract interface SdkEventInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.libapi.hostproxy.SdkEventInterface
  * JD-Core Version:    0.7.0.1
  */

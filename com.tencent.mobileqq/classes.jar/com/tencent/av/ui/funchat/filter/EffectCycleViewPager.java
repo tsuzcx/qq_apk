@@ -2,12 +2,12 @@ package com.tencent.av.ui.funchat.filter;
 
 import android.annotation.TargetApi;
 import android.content.Context;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.util.AttributeSet;
 import android.util.SparseArray;
 import android.view.View;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 @TargetApi(9)
 public class EffectCycleViewPager
@@ -48,7 +48,7 @@ public class EffectCycleViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectCycleViewPager
  * JD-Core Version:    0.7.0.1
  */

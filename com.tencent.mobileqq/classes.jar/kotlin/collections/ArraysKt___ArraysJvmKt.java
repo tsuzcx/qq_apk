@@ -19,7 +19,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"asList", "", "T", "", "([Ljava/lang/Object;)Ljava/util/List;", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "", "binarySearch", "element", "comparator", "Ljava/util/Comparator;", "Lkotlin/Comparator;", "fromIndex", "toIndex", "([Ljava/lang/Object;Ljava/lang/Object;Ljava/util/Comparator;II)I", "([Ljava/lang/Object;Ljava/lang/Object;II)I", "contentDeepEquals", "other", "contentDeepEqualsInline", "([Ljava/lang/Object;[Ljava/lang/Object;)Z", "contentDeepHashCode", "contentDeepHashCodeInline", "([Ljava/lang/Object;)I", "contentDeepToString", "", "contentDeepToStringInline", "([Ljava/lang/Object;)Ljava/lang/String;", "contentEquals", "contentHashCode", "contentToString", "copyInto", "destination", "destinationOffset", "startIndex", "endIndex", "([Ljava/lang/Object;[Ljava/lang/Object;III)[Ljava/lang/Object;", "copyOf", "([Ljava/lang/Object;)[Ljava/lang/Object;", "newSize", "([Ljava/lang/Object;I)[Ljava/lang/Object;", "copyOfRange", "copyOfRangeInline", "([Ljava/lang/Object;II)[Ljava/lang/Object;", "copyOfRangeImpl", "elementAt", "index", "([Ljava/lang/Object;I)Ljava/lang/Object;", "fill", "", "([Ljava/lang/Object;Ljava/lang/Object;II)V", "filterIsInstance", "R", "klass", "Ljava/lang/Class;", "([Ljava/lang/Object;Ljava/lang/Class;)Ljava/util/List;", "filterIsInstanceTo", "C", "", "([Ljava/lang/Object;Ljava/util/Collection;Ljava/lang/Class;)Ljava/util/Collection;", "plus", "([Ljava/lang/Object;Ljava/lang/Object;)[Ljava/lang/Object;", "elements", "([Ljava/lang/Object;[Ljava/lang/Object;)[Ljava/lang/Object;", "", "([Ljava/lang/Object;Ljava/util/Collection;)[Ljava/lang/Object;", "plusElement", "sort", "([Ljava/lang/Object;)V", "", "([Ljava/lang/Comparable;)V", "([Ljava/lang/Object;II)V", "sortWith", "([Ljava/lang/Object;Ljava/util/Comparator;)V", "([Ljava/lang/Object;Ljava/util/Comparator;II)V", "toSortedSet", "Ljava/util/SortedSet;", "([Ljava/lang/Comparable;)Ljava/util/SortedSet;", "([Ljava/lang/Object;Ljava/util/Comparator;)Ljava/util/SortedSet;", "toTypedArray", "([Z)[Ljava/lang/Boolean;", "([B)[Ljava/lang/Byte;", "([C)[Ljava/lang/Character;", "([D)[Ljava/lang/Double;", "([F)[Ljava/lang/Float;", "([I)[Ljava/lang/Integer;", "([J)[Ljava/lang/Long;", "([S)[Ljava/lang/Short;", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/ArraysKt")
-public class ArraysKt___ArraysJvmKt
+class ArraysKt___ArraysJvmKt
   extends ArraysKt__ArraysKt
 {
   @NotNull
@@ -742,12 +742,18 @@ public class ArraysKt___ArraysJvmKt
     if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
       return ArraysKt.copyOfRange(paramArrayOfByte, paramInt1, paramInt2);
     }
-    if (paramInt2 > paramArrayOfByte.length) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfByte.length));
+    if (paramInt2 <= paramArrayOfByte.length)
+    {
+      paramArrayOfByte = Arrays.copyOfRange(paramArrayOfByte, paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfByte, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
+      return paramArrayOfByte;
     }
-    paramArrayOfByte = Arrays.copyOfRange(paramArrayOfByte, paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfByte, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-    return paramArrayOfByte;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfByte.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -757,12 +763,18 @@ public class ArraysKt___ArraysJvmKt
     if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
       return ArraysKt.copyOfRange(paramArrayOfChar, paramInt1, paramInt2);
     }
-    if (paramInt2 > paramArrayOfChar.length) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfChar.length));
+    if (paramInt2 <= paramArrayOfChar.length)
+    {
+      paramArrayOfChar = Arrays.copyOfRange(paramArrayOfChar, paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfChar, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
+      return paramArrayOfChar;
     }
-    paramArrayOfChar = Arrays.copyOfRange(paramArrayOfChar, paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfChar, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-    return paramArrayOfChar;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfChar.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -772,12 +784,18 @@ public class ArraysKt___ArraysJvmKt
     if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
       return ArraysKt.copyOfRange(paramArrayOfDouble, paramInt1, paramInt2);
     }
-    if (paramInt2 > paramArrayOfDouble.length) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfDouble.length));
+    if (paramInt2 <= paramArrayOfDouble.length)
+    {
+      paramArrayOfDouble = Arrays.copyOfRange(paramArrayOfDouble, paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfDouble, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
+      return paramArrayOfDouble;
     }
-    paramArrayOfDouble = Arrays.copyOfRange(paramArrayOfDouble, paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfDouble, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-    return paramArrayOfDouble;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfDouble.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -787,12 +805,18 @@ public class ArraysKt___ArraysJvmKt
     if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
       return ArraysKt.copyOfRange(paramArrayOfFloat, paramInt1, paramInt2);
     }
-    if (paramInt2 > paramArrayOfFloat.length) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfFloat.length));
+    if (paramInt2 <= paramArrayOfFloat.length)
+    {
+      paramArrayOfFloat = Arrays.copyOfRange(paramArrayOfFloat, paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfFloat, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
+      return paramArrayOfFloat;
     }
-    paramArrayOfFloat = Arrays.copyOfRange(paramArrayOfFloat, paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfFloat, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-    return paramArrayOfFloat;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfFloat.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -802,12 +826,18 @@ public class ArraysKt___ArraysJvmKt
     if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
       return ArraysKt.copyOfRange(paramArrayOfInt, paramInt1, paramInt2);
     }
-    if (paramInt2 > paramArrayOfInt.length) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfInt.length));
+    if (paramInt2 <= paramArrayOfInt.length)
+    {
+      paramArrayOfInt = Arrays.copyOfRange(paramArrayOfInt, paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfInt, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
+      return paramArrayOfInt;
     }
-    paramArrayOfInt = Arrays.copyOfRange(paramArrayOfInt, paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfInt, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-    return paramArrayOfInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfInt.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -817,12 +847,18 @@ public class ArraysKt___ArraysJvmKt
     if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
       return ArraysKt.copyOfRange(paramArrayOfLong, paramInt1, paramInt2);
     }
-    if (paramInt2 > paramArrayOfLong.length) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfLong.length));
+    if (paramInt2 <= paramArrayOfLong.length)
+    {
+      paramArrayOfLong = Arrays.copyOfRange(paramArrayOfLong, paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfLong, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
+      return paramArrayOfLong;
     }
-    paramArrayOfLong = Arrays.copyOfRange(paramArrayOfLong, paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfLong, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-    return paramArrayOfLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfLong.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -832,12 +868,18 @@ public class ArraysKt___ArraysJvmKt
     if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
       return ArraysKt.copyOfRange(paramArrayOfT, paramInt1, paramInt2);
     }
-    if (paramInt2 > paramArrayOfT.length) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfT.length));
+    if (paramInt2 <= paramArrayOfT.length)
+    {
+      paramArrayOfT = Arrays.copyOfRange(paramArrayOfT, paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfT, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
+      return paramArrayOfT;
     }
-    paramArrayOfT = Arrays.copyOfRange(paramArrayOfT, paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfT, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-    return paramArrayOfT;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfT.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -847,12 +889,18 @@ public class ArraysKt___ArraysJvmKt
     if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
       return ArraysKt.copyOfRange(paramArrayOfShort, paramInt1, paramInt2);
     }
-    if (paramInt2 > paramArrayOfShort.length) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfShort.length));
+    if (paramInt2 <= paramArrayOfShort.length)
+    {
+      paramArrayOfShort = Arrays.copyOfRange(paramArrayOfShort, paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfShort, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
+      return paramArrayOfShort;
     }
-    paramArrayOfShort = Arrays.copyOfRange(paramArrayOfShort, paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfShort, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-    return paramArrayOfShort;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfShort.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -862,12 +910,18 @@ public class ArraysKt___ArraysJvmKt
     if (PlatformImplementationsKt.apiVersionIsAtLeast(1, 3, 0)) {
       return ArraysKt.copyOfRange(paramArrayOfBoolean, paramInt1, paramInt2);
     }
-    if (paramInt2 > paramArrayOfBoolean.length) {
-      throw ((Throwable)new IndexOutOfBoundsException("toIndex: " + paramInt2 + ", size: " + paramArrayOfBoolean.length));
+    if (paramInt2 <= paramArrayOfBoolean.length)
+    {
+      paramArrayOfBoolean = Arrays.copyOfRange(paramArrayOfBoolean, paramInt1, paramInt2);
+      Intrinsics.checkExpressionValueIsNotNull(paramArrayOfBoolean, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
+      return paramArrayOfBoolean;
     }
-    paramArrayOfBoolean = Arrays.copyOfRange(paramArrayOfBoolean, paramInt1, paramInt2);
-    Intrinsics.checkExpressionValueIsNotNull(paramArrayOfBoolean, "java.util.Arrays.copyOfR…this, fromIndex, toIndex)");
-    return paramArrayOfBoolean;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("toIndex: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", size: ");
+    localStringBuilder.append(paramArrayOfBoolean.length);
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
   
   @InlineOnly
@@ -1467,10 +1521,12 @@ public class ArraysKt___ArraysJvmKt
   @InlineOnly
   private static final <T extends Comparable<? super T>> void sort(@NotNull T[] paramArrayOfT)
   {
-    if (paramArrayOfT == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
+    if (paramArrayOfT != null)
+    {
+      ArraysKt.sort((Object[])paramArrayOfT);
+      return;
     }
-    ArraysKt.sort((Object[])paramArrayOfT);
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.Array<kotlin.Any?>");
   }
   
   public static final <T> void sort(@NotNull T[] paramArrayOfT)
@@ -1593,8 +1649,8 @@ public class ArraysKt___ArraysJvmKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfBoolean, "$this$toTypedArray");
     Boolean[] arrayOfBoolean = new Boolean[paramArrayOfBoolean.length];
-    int i = 0;
     int j = paramArrayOfBoolean.length;
+    int i = 0;
     while (i < j)
     {
       arrayOfBoolean[i] = Boolean.valueOf(paramArrayOfBoolean[i]);
@@ -1608,8 +1664,8 @@ public class ArraysKt___ArraysJvmKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfByte, "$this$toTypedArray");
     Byte[] arrayOfByte = new Byte[paramArrayOfByte.length];
-    int i = 0;
     int j = paramArrayOfByte.length;
+    int i = 0;
     while (i < j)
     {
       arrayOfByte[i] = Byte.valueOf(paramArrayOfByte[i]);
@@ -1623,8 +1679,8 @@ public class ArraysKt___ArraysJvmKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfChar, "$this$toTypedArray");
     Character[] arrayOfCharacter = new Character[paramArrayOfChar.length];
-    int i = 0;
     int j = paramArrayOfChar.length;
+    int i = 0;
     while (i < j)
     {
       arrayOfCharacter[i] = Character.valueOf(paramArrayOfChar[i]);
@@ -1638,8 +1694,8 @@ public class ArraysKt___ArraysJvmKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfDouble, "$this$toTypedArray");
     Double[] arrayOfDouble = new Double[paramArrayOfDouble.length];
-    int i = 0;
     int j = paramArrayOfDouble.length;
+    int i = 0;
     while (i < j)
     {
       arrayOfDouble[i] = Double.valueOf(paramArrayOfDouble[i]);
@@ -1653,8 +1709,8 @@ public class ArraysKt___ArraysJvmKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfFloat, "$this$toTypedArray");
     Float[] arrayOfFloat = new Float[paramArrayOfFloat.length];
-    int i = 0;
     int j = paramArrayOfFloat.length;
+    int i = 0;
     while (i < j)
     {
       arrayOfFloat[i] = Float.valueOf(paramArrayOfFloat[i]);
@@ -1668,8 +1724,8 @@ public class ArraysKt___ArraysJvmKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfInt, "$this$toTypedArray");
     Integer[] arrayOfInteger = new Integer[paramArrayOfInt.length];
-    int i = 0;
     int j = paramArrayOfInt.length;
+    int i = 0;
     while (i < j)
     {
       arrayOfInteger[i] = Integer.valueOf(paramArrayOfInt[i]);
@@ -1683,8 +1739,8 @@ public class ArraysKt___ArraysJvmKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfLong, "$this$toTypedArray");
     Long[] arrayOfLong = new Long[paramArrayOfLong.length];
-    int i = 0;
     int j = paramArrayOfLong.length;
+    int i = 0;
     while (i < j)
     {
       arrayOfLong[i] = Long.valueOf(paramArrayOfLong[i]);
@@ -1698,8 +1754,8 @@ public class ArraysKt___ArraysJvmKt
   {
     Intrinsics.checkParameterIsNotNull(paramArrayOfShort, "$this$toTypedArray");
     Short[] arrayOfShort = new Short[paramArrayOfShort.length];
-    int i = 0;
     int j = paramArrayOfShort.length;
+    int i = 0;
     while (i < j)
     {
       arrayOfShort[i] = Short.valueOf(paramArrayOfShort[i]);
@@ -1710,7 +1766,7 @@ public class ArraysKt___ArraysJvmKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.ArraysKt___ArraysJvmKt
  * JD-Core Version:    0.7.0.1
  */

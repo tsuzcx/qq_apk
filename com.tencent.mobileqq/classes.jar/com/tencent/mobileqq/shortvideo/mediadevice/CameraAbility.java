@@ -14,73 +14,52 @@ import java.util.List;
 
 public class CameraAbility
 {
-  private static int jdField_a_of_type_Int;
+  private static int jdField_a_of_type_Int = 0;
   private static CameraAbility jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraAbility;
-  private static int b;
-  private static int c;
+  private static int b = -1;
+  private static int c = -1;
   private Camera.Parameters jdField_a_of_type_AndroidHardwareCamera$Parameters;
   
   static
   {
     int j = 0;
-    if (!CameraAbility.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
+    try
     {
-      jdField_a_of_type_Boolean = bool;
-      jdField_a_of_type_Int = 0;
-      b = -1;
-      c = -1;
-      for (;;)
+      long l = System.currentTimeMillis();
+      Object localObject = CameraUtils.b(BaseApplicationImpl.getContext());
+      if (((SharedPreferences)localObject).contains("local_sp_camera_num")) {
+        jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("local_sp_camera_num", 0);
+      } else {
+        jdField_a_of_type_Int = Camera.getNumberOfCameras();
+      }
+      int i = j;
+      if (QLog.isColorLevel())
       {
-        int i;
-        try
-        {
-          long l = System.currentTimeMillis();
-          Object localObject = CameraUtils.b(BaseApplicationImpl.getContext());
-          if (((SharedPreferences)localObject).contains("localsp_camera_num"))
-          {
-            jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("localsp_camera_num", 0);
-            i = j;
-            if (QLog.isColorLevel())
-            {
-              QLog.i("CameraAbility", 2, "getNumberOfCameras cost: " + (System.currentTimeMillis() - l));
-              i = j;
-            }
-            if (i < jdField_a_of_type_Int)
-            {
-              localObject = new Camera.CameraInfo();
-              Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
-              if (localObject == null) {
-                break label198;
-              }
-              if ((((Camera.CameraInfo)localObject).facing != 0) || (b != -1)) {
-                break label185;
-              }
-              b = i;
-              break label198;
-            }
-          }
-          else
-          {
-            jdField_a_of_type_Int = Camera.getNumberOfCameras();
-            continue;
-          }
-          return;
-        }
-        catch (RuntimeException localRuntimeException)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("CameraAbility", 2, "", localRuntimeException);
-          }
-          jdField_a_of_type_Int = 1;
-        }
-        label185:
-        if (1 == localRuntimeException.facing) {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getNumberOfCameras cost: ");
+        ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+        QLog.i("CameraAbility", 2, ((StringBuilder)localObject).toString());
+        i = j;
+      }
+      while (i < jdField_a_of_type_Int)
+      {
+        localObject = new Camera.CameraInfo();
+        Camera.getCameraInfo(i, (Camera.CameraInfo)localObject);
+        if ((((Camera.CameraInfo)localObject).facing == 0) && (b == -1)) {
+          b = i;
+        } else if (1 == ((Camera.CameraInfo)localObject).facing) {
           c = i;
         }
-        label198:
         i += 1;
       }
+      return;
+    }
+    catch (RuntimeException localRuntimeException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("CameraAbility", 2, "", localRuntimeException);
+      }
+      jdField_a_of_type_Int = 1;
     }
   }
   
@@ -91,15 +70,16 @@ public class CameraAbility
   
   public static CameraAbility a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraAbility == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraAbility == null) {
-        jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraAbility = new CameraAbility();
+    if (jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraAbility == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraAbility == null) {
+          jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraAbility = new CameraAbility();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraAbility;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqShortvideoMediadeviceCameraAbility;
   }
   
   public static boolean a()
@@ -127,31 +107,36 @@ public class CameraAbility
     if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
       throw new AssertionError();
     }
+    List<Camera.Size> localList1;
     try
     {
       List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPreviewSizes();
-      if ((localList != null) && (QLog.isColorLevel()))
-      {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          Camera.Size localSize = (Camera.Size)localIterator.next();
-          if (localSize != null) {
-            QLog.d("CameraAbility", 2, "[@] getPreviewSizes:w=" + localSize.width + ",h=" + localSize.height + " w/h=" + localSize.width / localSize.height);
-          }
-        }
-      }
     }
     catch (Exception localException)
     {
-      List<Camera.Size> localList1;
-      for (;;)
-      {
-        localException.printStackTrace();
-        localList1 = null;
-      }
-      return localList1;
+      localException.printStackTrace();
+      localList1 = null;
     }
+    if ((localList1 != null) && (QLog.isColorLevel()))
+    {
+      Iterator localIterator = localList1.iterator();
+      while (localIterator.hasNext())
+      {
+        Camera.Size localSize = (Camera.Size)localIterator.next();
+        if (localSize != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[@] getPreviewSizes:w=");
+          localStringBuilder.append(localSize.width);
+          localStringBuilder.append(",h=");
+          localStringBuilder.append(localSize.height);
+          localStringBuilder.append(" w/h=");
+          localStringBuilder.append(localSize.width / localSize.height);
+          QLog.d("CameraAbility", 2, localStringBuilder.toString());
+        }
+      }
+    }
+    return localList1;
   }
   
   public void a()
@@ -171,9 +156,7 @@ public class CameraAbility
         return false;
       }
       boolean bool = localList.contains(Integer.valueOf(paramInt));
-      if (bool) {
-        return true;
-      }
+      return bool;
     }
     catch (Exception localException) {}
     return false;
@@ -182,27 +165,19 @@ public class CameraAbility
   public boolean a(Camera paramCamera)
   {
     a();
-    if (paramCamera == null) {}
-    for (;;)
-    {
+    if (paramCamera == null) {
       return false;
-      try
-      {
-        this.jdField_a_of_type_AndroidHardwareCamera$Parameters = paramCamera.getParameters();
-        if (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null) {
-          continue;
-        }
-        return true;
-      }
-      catch (Exception paramCamera)
-      {
-        for (;;)
-        {
-          paramCamera.printStackTrace();
-          this.jdField_a_of_type_AndroidHardwareCamera$Parameters = null;
-        }
-      }
     }
+    try
+    {
+      this.jdField_a_of_type_AndroidHardwareCamera$Parameters = paramCamera.getParameters();
+    }
+    catch (Exception paramCamera)
+    {
+      paramCamera.printStackTrace();
+      this.jdField_a_of_type_AndroidHardwareCamera$Parameters = null;
+    }
+    return this.jdField_a_of_type_AndroidHardwareCamera$Parameters != null;
   }
   
   public boolean a(String paramString)
@@ -217,9 +192,7 @@ public class CameraAbility
         return false;
       }
       boolean bool = localList.contains(paramString);
-      if (bool) {
-        return true;
-      }
+      return bool;
     }
     catch (Exception paramString) {}
     return false;
@@ -230,31 +203,36 @@ public class CameraAbility
     if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
       throw new AssertionError();
     }
+    List<Camera.Size> localList1;
     try
     {
       List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPictureSizes();
-      if ((localList != null) && (QLog.isColorLevel()))
-      {
-        Iterator localIterator = localList.iterator();
-        while (localIterator.hasNext())
-        {
-          Camera.Size localSize = (Camera.Size)localIterator.next();
-          if (localSize != null) {
-            QLog.d("CameraAbility", 2, "[@] getPictureSizes:w=" + localSize.width + ",h=" + localSize.height + " w/h=" + localSize.width / localSize.height);
-          }
-        }
-      }
     }
     catch (Exception localException)
     {
-      List<Camera.Size> localList1;
-      for (;;)
-      {
-        localException.printStackTrace();
-        localList1 = null;
-      }
-      return localList1;
+      localException.printStackTrace();
+      localList1 = null;
     }
+    if ((localList1 != null) && (QLog.isColorLevel()))
+    {
+      Iterator localIterator = localList1.iterator();
+      while (localIterator.hasNext())
+      {
+        Camera.Size localSize = (Camera.Size)localIterator.next();
+        if (localSize != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[@] getPictureSizes:w=");
+          localStringBuilder.append(localSize.width);
+          localStringBuilder.append(",h=");
+          localStringBuilder.append(localSize.height);
+          localStringBuilder.append(" w/h=");
+          localStringBuilder.append(localSize.width / localSize.height);
+          QLog.d("CameraAbility", 2, localStringBuilder.toString());
+        }
+      }
+    }
+    return localList1;
   }
   
   public boolean b(String paramString)
@@ -271,7 +249,11 @@ public class CameraAbility
         return bool;
       }
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label55:
+      break label55;
+    }
     return false;
   }
   
@@ -286,7 +268,11 @@ public class CameraAbility
       List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedPreviewFpsRange();
       return localList;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label34:
+      break label34;
+    }
     return null;
   }
   
@@ -300,7 +286,11 @@ public class CameraAbility
       boolean bool = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.isZoomSupported();
       return bool;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label34:
+      break label34;
+    }
     return false;
   }
   
@@ -309,16 +299,18 @@ public class CameraAbility
     if ((!jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidHardwareCamera$Parameters == null)) {
       throw new AssertionError();
     }
+    boolean bool1 = false;
     try
     {
       List localList = this.jdField_a_of_type_AndroidHardwareCamera$Parameters.getSupportedFlashModes();
       if (localList == null) {
         return false;
       }
-      boolean bool = localList.contains("torch");
-      if (bool) {
-        return true;
+      boolean bool2 = localList.contains("torch");
+      if (bool2) {
+        bool1 = true;
       }
+      return bool1;
     }
     catch (Exception localException) {}
     return false;
@@ -326,7 +318,7 @@ public class CameraAbility
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.CameraAbility
  * JD-Core Version:    0.7.0.1
  */

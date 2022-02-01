@@ -1,22 +1,31 @@
 package com.tencent.tavcut.exporter;
 
 import android.content.Context;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory.Options;
+import android.media.ExifInterface;
+import android.opengl.EGLContext;
+import com.tencent.aekit.api.standard.filter.AEFilterManager;
 import com.tencent.tav.coremedia.CGSize;
+import com.tencent.tav.decoder.RenderContext;
 import com.tencent.tavcut.bean.CropConfig;
 import com.tencent.tavcut.bean.Size;
 import com.tencent.tavcut.util.BitmapUtil;
 import com.tencent.tavcut.util.Logger;
 import com.tencent.tavcut.util.Util;
+import com.tencent.weseevideo.composition.image.AssetImageGenerator.ImageGeneratorThread;
 import com.tencent.weseevideo.model.MediaModel;
 import com.tencent.weseevideo.model.effect.CropModel;
 import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.resource.MediaClipModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.resource.VideoResourceModel;
+import java.io.IOException;
 import java.util.List;
 import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class ImageExporter
 {
@@ -26,45 +35,86 @@ public class ImageExporter
   private ImageExportConfig imageExportConfig;
   private CountDownLatch mCountDownLatch;
   private List<MediaModel> mediaModels;
+  private List<String> mediaModelsMD5;
   
   private CGSize calculateRenderSize(MediaModel paramMediaModel, String paramString)
   {
-    MediaEffectModel localMediaEffectModel = paramMediaModel.getMediaEffectModel();
-    int k = ((MediaClipModel)paramMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().getWidth();
-    int m = ((MediaClipModel)paramMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().getHeight();
-    int i;
-    if ("1".equals(localMediaEffectModel.getParam("FRAME_PARAMS_KEY_IS_ON")))
-    {
-      i = Math.max(k, m);
-      return constrainRenderSize(i, i);
-    }
+    paramMediaModel.getMediaEffectModel();
+    int m = ((MediaClipModel)paramMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().getWidth();
+    int k = ((MediaClipModel)paramMediaModel.getMediaResourceModel().getVideos().get(0)).getResource().getHeight();
     int n = BitmapUtil.getImageRotation(paramString);
     int j;
+    int i;
     if (n != 90)
     {
-      i = m;
-      j = k;
+      j = m;
+      i = k;
       if (n != 270) {}
     }
     else
     {
-      j = m;
-      i = k;
+      i = m;
+      j = k;
     }
     paramMediaModel = paramMediaModel.getMediaEffectModel().getCropModel();
-    m = i;
-    k = j;
+    m = j;
+    k = i;
     if (paramMediaModel != null)
     {
-      m = i;
-      k = j;
+      m = j;
+      k = i;
       if (paramMediaModel.getCropConfig() != null)
       {
-        k = (int)(j * paramMediaModel.getCropConfig().getWidth());
-        m = (int)(i * paramMediaModel.getCropConfig().getHeight());
+        m = (int)(j * paramMediaModel.getCropConfig().getWidth());
+        k = (int)(i * paramMediaModel.getCropConfig().getHeight());
       }
     }
-    return constrainRenderSize(k, m);
+    return constrainRenderSize(m, k);
+  }
+  
+  private String cropSourcePath(LinkedBlockingDeque<String> paramLinkedBlockingDeque, int paramInt, MediaModel paramMediaModel, String paramString)
+  {
+    String str = (String)this.imageExportConfig.getOutputPaths().get(paramInt);
+    paramMediaModel = BitmapUtil.decodeBitmapWithCrop(paramString, paramMediaModel.getMediaEffectModel().getCropModel().getCropConfig());
+    try
+    {
+      if (!BitmapUtil.saveBitmap(paramMediaModel, this.imageExportConfig.getFormat(), this.imageExportConfig.getQuality(), str, new ExifInterface(paramString)))
+      {
+        paramString = new StringBuilder();
+        paramString.append("image save failed! output path = ");
+        paramString.append(str);
+        paramLinkedBlockingDeque.add(paramString.toString());
+      }
+    }
+    catch (IOException paramLinkedBlockingDeque)
+    {
+      Logger.e(paramLinkedBlockingDeque);
+    }
+    if (paramMediaModel != null) {
+      paramMediaModel.recycle();
+    }
+    return str;
+  }
+  
+  private boolean isNeedCrop(String paramString)
+  {
+    int k = BitmapUtil.getImageRotation(paramString);
+    BitmapFactory.Options localOptions = new BitmapFactory.Options();
+    localOptions.inJustDecodeBounds = true;
+    BitmapUtil.decodeFileWithBuffer(paramString, localOptions);
+    int j = localOptions.outWidth;
+    int i = localOptions.outHeight;
+    if ((k == 90) || (k == 270))
+    {
+      j = localOptions.outHeight;
+      i = localOptions.outWidth;
+    }
+    double d1 = j;
+    Double.isNaN(d1);
+    double d2 = i;
+    Double.isNaN(d2);
+    float f = (float)(d1 * 1.0D / d2);
+    return (f >= 1.333333F) || (f <= 0.5625F);
   }
   
   public void cancel()
@@ -75,41 +125,39 @@ public class ImageExporter
   protected CGSize constrainRenderSize(int paramInt1, int paramInt2)
   {
     CGSize localCGSize = new CGSize(paramInt1, paramInt2);
+    Object localObject = this.imageExportConfig;
     int i;
-    Size localSize;
-    if (this.imageExportConfig != null)
-    {
-      i = this.imageExportConfig.getMaxIntermediateRenderSize();
-      if (i != -1)
-      {
-        localSize = Util.constrainMaxSize(new Size(paramInt1, paramInt2), i);
-        localCGSize.width = localSize.getWidth();
-        localCGSize.height = localSize.getHeight();
-      }
-      if (this.imageExportConfig == null) {
-        break label185;
-      }
-    }
-    label185:
-    for (paramInt1 = this.imageExportConfig.getMinIntermediateRenderSize();; paramInt1 = -1)
-    {
-      if (paramInt1 != -1)
-      {
-        localSize = Util.constrainMinSize(new Size((int)localCGSize.width, (int)localCGSize.height), paramInt1);
-        localCGSize.width = localSize.getWidth();
-        localCGSize.height = localSize.getHeight();
-      }
-      Logger.i(this.TAG, String.format("targetRenderSize = %d * %d", new Object[] { Integer.valueOf((int)localCGSize.width), Integer.valueOf((int)localCGSize.height) }));
-      return localCGSize;
+    if (localObject != null) {
+      i = ((ImageExportConfig)localObject).getMaxIntermediateRenderSize();
+    } else {
       i = -1;
-      break;
     }
+    if (i != -1)
+    {
+      localObject = Util.constrainMaxSize(new Size(paramInt1, paramInt2), i);
+      localCGSize.width = ((Size)localObject).getWidth();
+      localCGSize.height = ((Size)localObject).getHeight();
+    }
+    localObject = this.imageExportConfig;
+    if (localObject != null) {
+      paramInt1 = ((ImageExportConfig)localObject).getMinIntermediateRenderSize();
+    } else {
+      paramInt1 = -1;
+    }
+    if (paramInt1 != -1)
+    {
+      localObject = Util.constrainMinSize(new Size((int)localCGSize.width, (int)localCGSize.height), paramInt1);
+      localCGSize.width = ((Size)localObject).getWidth();
+      localCGSize.height = ((Size)localObject).getHeight();
+    }
+    Logger.i(this.TAG, String.format("targetRenderSize = %d * %d", new Object[] { Integer.valueOf((int)localCGSize.width), Integer.valueOf((int)localCGSize.height) }));
+    return localCGSize;
   }
   
-  public void export(ImageExporter.ImageExportCallback paramImageExportCallback)
+  public void export(ImageExporter.ImageExportCallback paramImageExportCallback, EGLContext paramEGLContext, AssetImageGenerator.ImageGeneratorThread paramImageGeneratorThread, RenderContext paramRenderContext, AEFilterManager paramAEFilterManager)
   {
     ExecutorService localExecutorService = Executors.newSingleThreadExecutor();
-    localExecutorService.submit(new ImageExporter.1(this, paramImageExportCallback, localExecutorService));
+    localExecutorService.submit(new ImageExporter.1(this, paramImageExportCallback, localExecutorService, paramAEFilterManager, paramEGLContext, paramImageGeneratorThread, paramRenderContext));
   }
   
   public List<MediaModel> getMediaModels()
@@ -131,10 +179,15 @@ public class ImageExporter
   {
     this.mediaModels = paramList;
   }
+  
+  public void setMediaModelsMd5(List<String> paramList)
+  {
+    this.mediaModelsMD5 = paramList;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.exporter.ImageExporter
  * JD-Core Version:    0.7.0.1
  */

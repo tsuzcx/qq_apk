@@ -13,6 +13,7 @@ import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.IPreCreatePluginChecker;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
+import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebShareInterface;
@@ -73,38 +74,40 @@ public class ApolloGamePlugin
   
   private boolean a(String paramString)
   {
-    boolean bool2 = true;
-    if (this.jdField_a_of_type_Boolean) {
+    boolean bool1 = this.jdField_a_of_type_Boolean;
+    boolean bool2 = false;
+    if (bool1) {
       return false;
     }
-    boolean bool1;
+    bool1 = bool2;
     if (!TextUtils.isEmpty(paramString))
     {
       String str = a(paramString);
-      if ((!TextUtils.isEmpty(str)) && (str.endsWith(".js")))
-      {
+      if ((!TextUtils.isEmpty(str)) && (str.endsWith(".js"))) {
         bool1 = true;
-        if ((!bool1) && (!TextUtils.isEmpty(this.b)))
+      } else {
+        bool1 = false;
+      }
+      if ((!bool1) && (!TextUtils.isEmpty(this.b)))
+      {
+        str = this.b;
+        paramString = a(paramString);
+        str = a(str);
+        bool1 = bool2;
+        if (!TextUtils.isEmpty(paramString))
         {
-          str = this.b;
-          paramString = a(paramString);
-          str = a(str);
-          if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(str)) && (paramString.trim().equals(str.trim()))) {
+          bool1 = bool2;
+          if (!TextUtils.isEmpty(str))
+          {
             bool1 = bool2;
+            if (paramString.trim().equals(str.trim())) {
+              return true;
+            }
           }
         }
       }
     }
-    for (;;)
-    {
-      return bool1;
-      bool1 = false;
-      continue;
-      continue;
-      bool1 = false;
-      break;
-      bool1 = false;
-    }
+    return bool1;
   }
   
   private void b(String paramString)
@@ -116,38 +119,42 @@ public class ApolloGamePlugin
   
   public void a()
   {
-    if (this.mRuntime != null) {}
-    for (;;)
+    if (this.mRuntime == null) {
+      return;
+    }
+    Object localObject2 = null;
+    try
     {
-      try
+      WebUiBaseInterface localWebUiBaseInterface = this.mRuntime.a(this.mRuntime.a());
+      Object localObject1 = localObject2;
+      if (localWebUiBaseInterface != null)
       {
-        Object localObject1 = this.mRuntime.a(this.mRuntime.a());
-        if ((localObject1 != null) && ((localObject1 instanceof WebUiUtils.WebShareInterface)))
+        localObject1 = localObject2;
+        if ((localWebUiBaseInterface instanceof WebUiUtils.WebShareInterface)) {
+          localObject1 = (WebUiUtils.WebShareInterface)localWebUiBaseInterface;
+        }
+      }
+      if (localObject1 != null)
+      {
+        localObject1 = ((Share)((WebUiUtils.WebShareInterface)localObject1).getShare()).a();
+        if ((localObject1 != null) && (((QQProgressDialog)localObject1).isShowing()))
         {
-          localObject1 = (WebUiUtils.WebShareInterface)localObject1;
-          if (localObject1 != null)
-          {
-            localObject1 = ((Share)((WebUiUtils.WebShareInterface)localObject1).getShare()).a();
-            if ((localObject1 != null) && (((QQProgressDialog)localObject1).isShowing())) {
-              ((QQProgressDialog)localObject1).dismiss();
-            }
-          }
+          ((QQProgressDialog)localObject1).dismiss();
           return;
         }
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("ApolloGamePlugin", 1, localThrowable, new Object[0]);
-        return;
-      }
-      Object localObject2 = null;
+    }
+    catch (Throwable localThrowable)
+    {
+      QLog.e("[cmshow]ApolloGamePlugin", 1, localThrowable, new Object[0]);
     }
   }
   
   public void a(int paramInt, String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(paramInt, paramString1, paramString2);
+    ApolloJSContext localApolloJSContext = this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext;
+    if (localApolloJSContext != null) {
+      localApolloJSContext.a(paramInt, paramString1, paramString2);
     }
   }
   
@@ -165,22 +172,16 @@ public class ApolloGamePlugin
       if (this.mRuntime != null)
       {
         AppInterface localAppInterface = this.mRuntime.a();
-        if (localAppInterface != null) {
+        if (localAppInterface != null)
+        {
           localAppInterface.getApplication().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, paramString, "com.tencent.msg.permission.pushnotify", null);
+          return;
         }
       }
-      return;
     }
     catch (Throwable paramString)
     {
-      QLog.e("ApolloGamePlugin", 1, paramString, new Object[0]);
-    }
-  }
-  
-  public void a(String paramString1, String paramString2)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(0, paramString1, paramString2);
+      QLog.e("[cmshow]ApolloGamePlugin", 1, paramString, new Object[0]);
     }
   }
   
@@ -189,64 +190,71 @@ public class ApolloGamePlugin
     return 8L;
   }
   
-  public Object handleEvent(String paramString, long paramLong)
+  protected Object handleEvent(String paramString, long paramLong)
   {
-    if ((paramLong == 8L) && (a())) {}
+    if (paramLong == 8L) {
+      if (!a()) {
+        return null;
+      }
+    }
     for (;;)
     {
       boolean bool;
       try
       {
         bool = a(paramString);
-        if (!TextUtils.isEmpty(paramString))
+        if (TextUtils.isEmpty(paramString)) {
+          return null;
+        }
+        Object localObject = Uri.parse(paramString).getQueryParameter("_gameid");
+        if ((!TextUtils.isEmpty((CharSequence)localObject)) && (URLUtil.isNetworkUrl(paramString)))
         {
-          Object localObject = Uri.parse(paramString).getQueryParameter("_gameid");
-          if ((TextUtils.isEmpty((CharSequence)localObject)) || (!URLUtil.isNetworkUrl(paramString))) {
-            break label211;
-          }
-          if (TextUtils.isEmpty((CharSequence)localObject)) {
-            break label168;
-          }
-          if (((String)localObject).trim().equals(this.jdField_a_of_type_JavaLangString))
+          if (TextUtils.isEmpty((CharSequence)localObject))
           {
-            localObject = ApolloGameResManager.a().a(paramString, this.jdField_a_of_type_JavaLangString);
-            if (localObject == null)
-            {
-              b(HardCodeUtil.a(2131700439) + paramString);
-              if (!bool) {
-                break;
-              }
-              return new WebResourceResponse();
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131700602));
+            ((StringBuilder)localObject).append(paramString);
+            b(((StringBuilder)localObject).toString());
+            if (!bool) {
+              break;
             }
-            return ((ApolloGameResManager.ApolloGameRes)localObject).a();
+            return new WebResourceResponse();
           }
-          paramString = new WebResourceResponse();
+          if (!((String)localObject).trim().equals(this.jdField_a_of_type_JavaLangString)) {
+            return new WebResourceResponse();
+          }
+          localObject = ApolloGameResManager.a().a(paramString, this.jdField_a_of_type_JavaLangString);
+          if (localObject == null)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131700581));
+            ((StringBuilder)localObject).append(paramString);
+            b(((StringBuilder)localObject).toString());
+            if (!bool) {
+              break label241;
+            }
+            return new WebResourceResponse();
+          }
+          paramString = ((ApolloGameResManager.ApolloGameRes)localObject).a();
           return paramString;
         }
       }
       catch (Throwable paramString)
       {
-        QLog.e("ApolloGamePlugin", 1, paramString, new Object[0]);
+        QLog.e("[cmshow]ApolloGamePlugin", 1, paramString, new Object[0]);
       }
-      label168:
-      label211:
-      do
-      {
+      while (!bool) {
         return null;
-        b(HardCodeUtil.a(2131700460) + paramString);
-        if (bool)
-        {
-          paramString = new WebResourceResponse();
-          return paramString;
-        }
-        return null;
-      } while (!bool);
+      }
     }
+    return null;
+    label241:
     return null;
   }
   
-  public boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
+  protected boolean handleEvent(String paramString, long paramLong, Map<String, Object> paramMap)
   {
+    ApolloJSContext localApolloJSContext;
     if (8589934593L == paramLong)
     {
       if ((this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext == null) && (this.mRuntime != null))
@@ -254,67 +262,72 @@ public class ApolloGamePlugin
         this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext = new ApolloJSContext(this.jdField_a_of_type_JavaLangString);
         this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(this.mRuntime.a());
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
-        this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(this.jdField_a_of_type_Boolean);
+      localApolloJSContext = this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext;
+      if (localApolloJSContext != null) {
+        localApolloJSContext.a(this.jdField_a_of_type_Boolean);
       }
     }
-    for (;;)
+    else if (8589934594L == paramLong)
     {
-      return super.handleEvent(paramString, paramLong, paramMap);
-      if (8589934594L == paramLong)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
-          this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.b(this.jdField_a_of_type_Boolean);
-        } else {
-          QLog.e("ApolloGamePlugin", 1, "[handleEvent] jscontext is null");
-        }
+      localApolloJSContext = this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext;
+      if (localApolloJSContext != null) {
+        localApolloJSContext.b(this.jdField_a_of_type_Boolean);
+      } else {
+        QLog.e("[cmshow]ApolloGamePlugin", 1, "[handleEvent] jscontext is null");
       }
-      else if (8589934595L != paramLong) {}
     }
+    return super.handleEvent(paramString, paramLong, paramMap);
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = true;
-    if (paramString1 != null) {
-      for (;;)
+    if (paramString1 != null)
+    {
+      try
       {
-        try
+        if (!"apolloGame".equals(paramString2)) {
+          break label199;
+        }
+        if (paramString3 == null) {
+          return false;
+        }
+        Object localObject1 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+        if (localObject1 == null) {
+          return true;
+        }
+        Object localObject2;
+        if (QLog.isColorLevel())
         {
-          if ((!"apolloGame".equals(paramString2)) || (paramString3 == null)) {
-            break;
-          }
-          Object localObject = WebViewPlugin.getJsonFromJSBridge(paramString1);
-          if (localObject == null) {
-            break label188;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("ApolloGamePlugin", 2, "handleJsRequest JSON = " + ((JSONObject)localObject).toString() + " " + paramString3);
-          }
-          if (paramString3.equals("send"))
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("handleJsRequest JSON = ");
+          ((StringBuilder)localObject2).append(((JSONObject)localObject1).toString());
+          ((StringBuilder)localObject2).append(" ");
+          ((StringBuilder)localObject2).append(paramString3);
+          QLog.d("[cmshow]ApolloGamePlugin", 2, ((StringBuilder)localObject2).toString());
+        }
+        if (paramString3.equals("send")) {
+          if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null)
           {
-            if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext == null) {
-              continue;
-            }
-            String str = ((JSONObject)localObject).optString("cmd");
-            localObject = ((JSONObject)localObject).optString("dataStr");
+            localObject2 = ((JSONObject)localObject1).optString("cmd");
+            localObject1 = ((JSONObject)localObject1).optString("dataStr");
             if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
-              this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(str, (String)localObject);
+              this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a((String)localObject2, (String)localObject1);
             }
           }
+          else
+          {
+            QLog.e("[cmshow]ApolloGamePlugin", 1, "[handleJsRequest] jscontext null");
+          }
         }
-        catch (Throwable localThrowable)
-        {
-          QLog.e("ApolloGamePlugin", 1, localThrowable, new Object[] { "[handleJsRequest]" });
-          continue;
-        }
-        return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-        QLog.e("ApolloGamePlugin", 1, "[handleJsRequest] jscontext null");
       }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("[cmshow]ApolloGamePlugin", 1, localThrowable, new Object[] { "[handleJsRequest]" });
+      }
+      return super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
     }
-    bool = false;
-    label188:
-    return bool;
+    label199:
+    return false;
   }
   
   public boolean isNeedPreCreatePlugin(Intent paramIntent, String paramString1, String paramString2)
@@ -322,16 +335,17 @@ public class ApolloGamePlugin
     return paramString1.contains("apollo_bk");
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
     jdField_a_of_type_Int += 1;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.b();
+    ApolloJSContext localApolloJSContext = this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext;
+    if (localApolloJSContext != null) {
+      localApolloJSContext.a();
     }
     jdField_a_of_type_Int -= 1;
     if (jdField_a_of_type_Int == 0) {
@@ -342,44 +356,40 @@ public class ApolloGamePlugin
       if ((this.jdField_a_of_type_AndroidContentBroadcastReceiver != null) && (this.mRuntime != null)) {
         this.mRuntime.a().getApplication().unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
       }
-      super.onDestroy();
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.e("ApolloGamePlugin", 1, "[doDestroy] exception=", localException);
-      }
+      QLog.e("[cmshow]ApolloGamePlugin", 1, "[doDestroy] exception=", localException);
     }
+    super.onDestroy();
   }
   
-  public void onWebViewCreated(CustomWebView paramCustomWebView)
+  protected void onWebViewCreated(CustomWebView paramCustomWebView)
   {
     super.onWebViewCreated(paramCustomWebView);
     Intent localIntent = getInfoIntent();
-    if (localIntent != null)
+    if (localIntent == null)
     {
-      String str = localIntent.getStringExtra("game_busid");
-      if (!TextUtils.isEmpty(str))
-      {
-        a(str);
-        if ((this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext == null) && (paramCustomWebView != null))
-        {
-          this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext = new ApolloJSContext(str);
-          this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(this.mRuntime.a());
-          this.b = localIntent.getStringExtra("url");
-          this.jdField_a_of_type_Boolean = true;
-        }
-      }
+      QLog.e("[cmshow]ApolloGamePlugin", 1, "bus empty");
       return;
     }
-    QLog.e("ApolloGamePlugin", 1, "bus empty");
+    String str = localIntent.getStringExtra("game_busid");
+    if (TextUtils.isEmpty(str)) {
+      return;
+    }
+    a(str);
+    if ((this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext == null) && (paramCustomWebView != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext = new ApolloJSContext(str);
+      this.jdField_a_of_type_ComTencentMobileqqApolloGameApolloJSContext.a(this.mRuntime.a());
+      this.b = localIntent.getStringExtra("url");
+      this.jdField_a_of_type_Boolean = true;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloGamePlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -15,42 +15,52 @@ class PreloadServiceImpl$3
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!paramBoolean) {}
-    do
-    {
-      for (;;)
+    if (!paramBoolean) {
+      return;
+    }
+    if (paramInt == 3) {
+      try
       {
-        return;
-        if (paramInt == 3) {
-          try
-          {
-            paramBundle = (DownloadChooseRsp)paramBundle.getSerializable("rsp");
-            if (paramBundle != null) {
-              break label89;
-            }
-            if (QLog.isColorLevel())
-            {
-              QLog.d("PreloadService", 2, "download choose rsp is null:" + paramBundle);
-              return;
-            }
+        paramBundle = (DownloadChooseRsp)paramBundle.getSerializable("rsp");
+        if (paramBundle == null)
+        {
+          if (!QLog.isColorLevel()) {
+            return;
           }
-          catch (Throwable paramBundle) {}
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("download choose rsp is null:");
+          localStringBuilder.append(paramBundle);
+          QLog.d("PreloadService", 2, localStringBuilder.toString());
+          return;
+        }
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("download choose rsp:");
+          localStringBuilder.append(paramBundle.vecResInfo);
+          QLog.d("PreloadService", 2, localStringBuilder.toString());
+        }
+        PreloadServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadServiceImpl).update(paramBundle.vecResInfo);
+        ThreadManager.post(new PreloadServiceImpl.3.1(this), 5, null, true);
+        return;
+      }
+      catch (Throwable paramBundle)
+      {
+        StringBuilder localStringBuilder;
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("downloadBackControlModules onReceive exception:");
+          localStringBuilder.append(paramBundle);
+          QLog.d("PreloadService", 2, localStringBuilder.toString());
         }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("PreloadService", 2, "downloadBackControlModules onReceive exception:" + paramBundle);
-    return;
-    label89:
-    if (QLog.isColorLevel()) {
-      QLog.d("PreloadService", 2, "download choose rsp:" + paramBundle.vecResInfo);
-    }
-    PreloadServiceImpl.access$000(this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadImplPreloadServiceImpl).update(paramBundle.vecResInfo);
-    ThreadManager.post(new PreloadServiceImpl.3.1(this), 5, null, true);
+    } else {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceImpl.3
  * JD-Core Version:    0.7.0.1
  */

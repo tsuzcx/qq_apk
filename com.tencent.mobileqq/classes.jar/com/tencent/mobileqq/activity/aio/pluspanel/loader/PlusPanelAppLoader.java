@@ -15,7 +15,7 @@ import com.tencent.mobileqq.app.LocaleManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pluspanel.appinfo.AppInfoFactory;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
@@ -27,7 +27,7 @@ public abstract class PlusPanelAppLoader
   protected int a;
   public PlusPanelAppLoader.ScribbleResMgrShowConfig a;
   public PlusPanelAppLoader.ShortVideoRecordConfig a;
-  protected AppInfoFactory a;
+  protected final AppInfoFactory a;
   protected final List<PlusPanelAppInfo> a;
   final List<AppInfoFilter> b = new ArrayList();
   
@@ -36,8 +36,8 @@ public abstract class PlusPanelAppLoader
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     this.jdField_a_of_type_ComTencentMobileqqPluspanelAppinfoAppInfoFactory = new AppInfoFactory();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelLoaderPlusPanelAppLoader$ShortVideoRecordConfig = new PlusPanelAppLoader.DefaultShortVideoRecordConfig();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelLoaderPlusPanelAppLoader$ScribbleResMgrShowConfig = new PlusPanelAppLoader.DefaultScribbleResMgrShowConfig();
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelLoaderPlusPanelAppLoader$ShortVideoRecordConfig = new PlusPanelAppLoader.DefaultShortVideoRecordConfig(null);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioPluspanelLoaderPlusPanelAppLoader$ScribbleResMgrShowConfig = new PlusPanelAppLoader.DefaultScribbleResMgrShowConfig(null);
     a(new SharpAudioSupportFilter());
   }
   
@@ -72,11 +72,12 @@ public abstract class PlusPanelAppLoader
   private String b(PlusPanelAppInfo paramPlusPanelAppInfo)
   {
     String str = paramPlusPanelAppInfo.name;
-    switch (LocaleManager.a())
+    int i = LocaleManager.a();
+    if (i != 1033)
     {
-    default: 
-      return str;
-    case 2052: 
+      if (i != 2052) {
+        return str;
+      }
       return paramPlusPanelAppInfo.name;
     }
     return paramPlusPanelAppInfo.enName;
@@ -90,29 +91,31 @@ public abstract class PlusPanelAppLoader
   protected Drawable a(QQAppInterface paramQQAppInterface, PlusPanelAppInfo paramPlusPanelAppInfo)
   {
     Resources localResources = BaseApplicationImpl.getContext().getResources();
-    for (;;)
+    try
     {
-      try
-      {
-        URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-        if (paramPlusPanelAppInfo.defaultDrawableID() > 0)
-        {
-          i = paramPlusPanelAppInfo.defaultDrawableID();
-          localURLDrawableOptions.mFailedDrawable = localResources.getDrawable(i);
-          localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(i);
-          if (SimpleUIUtil.a()) {
-            return b(paramQQAppInterface, paramPlusPanelAppInfo, localURLDrawableOptions);
-          }
-          paramQQAppInterface = a(paramQQAppInterface, paramPlusPanelAppInfo, localURLDrawableOptions);
-          return paramQQAppInterface;
-        }
+      localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      if (paramPlusPanelAppInfo.defaultDrawableID() <= 0) {
+        break label88;
       }
-      catch (Exception paramQQAppInterface)
-      {
-        return localResources.getDrawable(2130843906);
-      }
-      int i = 2130843906;
+      i = paramPlusPanelAppInfo.defaultDrawableID();
     }
+    catch (Exception paramQQAppInterface)
+    {
+      for (;;)
+      {
+        URLDrawable.URLDrawableOptions localURLDrawableOptions;
+        continue;
+        int i = 2130843826;
+      }
+    }
+    localURLDrawableOptions.mFailedDrawable = localResources.getDrawable(i);
+    localURLDrawableOptions.mLoadingDrawable = localResources.getDrawable(i);
+    if (SimpleUIUtil.a()) {
+      return b(paramQQAppInterface, paramPlusPanelAppInfo, localURLDrawableOptions);
+    }
+    paramQQAppInterface = a(paramQQAppInterface, paramPlusPanelAppInfo, localURLDrawableOptions);
+    return paramQQAppInterface;
+    return localResources.getDrawable(2130843826);
   }
   
   protected Drawable a(QQAppInterface paramQQAppInterface, PlusPanelAppInfo paramPlusPanelAppInfo, URLDrawable.URLDrawableOptions paramURLDrawableOptions)
@@ -124,12 +127,9 @@ public abstract class PlusPanelAppLoader
       if (i > 0) {
         return BaseApplicationImpl.getContext().getResources().getDrawable(i);
       }
+      return BaseApplicationImpl.getContext().getResources().getDrawable(2130843826);
     }
-    else
-    {
-      return URLDrawable.getDrawable(paramQQAppInterface, paramURLDrawableOptions);
-    }
-    return BaseApplicationImpl.getContext().getResources().getDrawable(2130843906);
+    return URLDrawable.getDrawable(paramQQAppInterface, paramURLDrawableOptions);
   }
   
   public abstract PluginData a(BaseChatPie paramBaseChatPie, PlusPanelAppInfo paramPlusPanelAppInfo, int paramInt);
@@ -150,12 +150,11 @@ public abstract class PlusPanelAppLoader
   
   protected String a(PlusPanelAppInfo paramPlusPanelAppInfo)
   {
-    String str2 = b(paramPlusPanelAppInfo);
-    String str1 = str2;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = paramPlusPanelAppInfo.getTitle();
+    String str = b(paramPlusPanelAppInfo);
+    if (TextUtils.isEmpty(str)) {
+      return paramPlusPanelAppInfo.getTitle();
     }
-    return str1;
+    return str;
   }
   
   public List<PlusPanelAppInfo> a()
@@ -212,15 +211,11 @@ public abstract class PlusPanelAppLoader
   {
     int j = this.jdField_a_of_type_JavaUtilList.size();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      if (i < j)
+      if (((PlusPanelAppInfo)this.jdField_a_of_type_JavaUtilList.get(i)).getAppID() == paramInt)
       {
-        if (((PlusPanelAppInfo)this.jdField_a_of_type_JavaUtilList.get(i)).getAppID() == paramInt) {
-          this.jdField_a_of_type_JavaUtilList.remove(i);
-        }
-      }
-      else {
+        this.jdField_a_of_type_JavaUtilList.remove(i);
         return;
       }
       i += 1;
@@ -229,7 +224,7 @@ public abstract class PlusPanelAppLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.PlusPanelAppLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -12,27 +12,30 @@ class QZoneManagerImp$2
   
   public void run()
   {
+    long l = this.a.getLongAccountUin();
     boolean bool = true;
-    int i = LocalMultiProcConfig.getInt4Uin("qzone_feed_gray_mask", 1, this.a.getLongAccountUin());
-    QZoneManagerImp localQZoneManagerImp = this.this$0;
-    if ((i & 0x80) != 0) {}
-    for (;;)
-    {
-      localQZoneManagerImp.b(bool);
-      QZoneTitleTabManager.a(this.a.getCurrentAccountUin());
-      QZoneManagerImp.a(this.this$0);
-      QZoneManagerImp.a(this.this$0, QZoneManagerImp.b(this.this$0));
-      if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.QZoneManagerImp.", 2, "QZoneManagerImp init notifyQQTab type:" + Long.toBinaryString(QZoneManagerImp.a(this.this$0)));
-      }
-      return;
+    int i = LocalMultiProcConfig.getInt4Uin("qzone_feed_gray_mask", 1, l);
+    Object localObject = this.this$0;
+    if ((i & 0x80) == 0) {
       bool = false;
+    }
+    ((QZoneManagerImp)localObject).b(bool);
+    QZoneTitleTabManager.a(this.a.getCurrentAccountUin());
+    QZoneManagerImp.a(this.this$0);
+    localObject = this.this$0;
+    QZoneManagerImp.a((QZoneManagerImp)localObject, QZoneManagerImp.b((QZoneManagerImp)localObject));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QZoneManagerImp init notifyQQTab type:");
+      ((StringBuilder)localObject).append(Long.toBinaryString(QZoneManagerImp.a(this.this$0)));
+      QLog.d("UndealCount.QZoneManagerImp.", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneManagerImp.2
  * JD-Core Version:    0.7.0.1
  */

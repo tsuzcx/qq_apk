@@ -15,26 +15,24 @@ final class URLDrawableDecodeHandler$4
       QLog.d("URLDrawableDecodeHandler", 2, "AVATAR_WALL_RECT__DECODER");
     }
     if (paramBitmap == null) {
-      paramDownloadParams = null;
+      return null;
     }
-    Object localObject;
-    do
+    Object localObject = paramDownloadParams.tag;
+    paramDownloadParams = paramBitmap;
+    if ((localObject instanceof int[]))
     {
-      do
-      {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
+      localObject = (int[])localObject;
       paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    return ImageUtil.b(paramBitmap, paramDownloadParams[0], paramDownloadParams[1]);
+      if (localObject.length == 3) {
+        paramDownloadParams = ImageUtil.a(paramBitmap, localObject[0], localObject[1], localObject[2]);
+      }
+    }
+    return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.4
  * JD-Core Version:    0.7.0.1
  */

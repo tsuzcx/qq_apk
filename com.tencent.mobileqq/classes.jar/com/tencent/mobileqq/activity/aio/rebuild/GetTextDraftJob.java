@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.DraftTextInfo;
@@ -12,17 +12,16 @@ import mqq.os.MqqHandler;
 public class GetTextDraftJob
   implements Runnable
 {
-  private SessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+  private BaseSessionInfo jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo;
   private DraftTextManager jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager;
   private WeakReference<QQAppInterface> jdField_a_of_type_JavaLangRefWeakReference;
   private MqqHandler jdField_a_of_type_MqqOsMqqHandler;
   private WeakReference<BaseChatPie> b;
   
-  public GetTextDraftJob(MqqHandler paramMqqHandler, SessionInfo paramSessionInfo, DraftTextManager paramDraftTextManager, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
+  public GetTextDraftJob(MqqHandler paramMqqHandler, BaseSessionInfo paramBaseSessionInfo, QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie)
   {
     this.jdField_a_of_type_MqqOsMqqHandler = paramMqqHandler;
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
-    this.jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager = paramDraftTextManager;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo = paramBaseSessionInfo;
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
     this.b = new WeakReference(paramBaseChatPie);
   }
@@ -38,12 +37,10 @@ public class GetTextDraftJob
       QLog.e("Q.aio.BaseChatPie", 1, "AIO---GetTextDraftJob app == null");
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager == null)
-    {
-      QLog.e("Q.aio.BaseChatPie", 1, "AIO---GetTextDraftJob mDraftManager == null");
-      return;
+    if (this.jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager == null) {
+      this.jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager = DraftTextManager.a((QQAppInterface)localObject);
     }
-    localObject = this.jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager.b((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqManagersDraftTextManager.b((QQAppInterface)localObject, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseSessionInfo.jdField_a_of_type_Int);
     if ((localObject != null) && (((DraftTextInfo)localObject).sourceMsgText != null))
     {
       this.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new GetTextDraftJob.1(this, (DraftTextInfo)localObject), 500L);
@@ -54,7 +51,7 @@ public class GetTextDraftJob
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GetTextDraftJob
  * JD-Core Version:    0.7.0.1
  */

@@ -50,22 +50,22 @@ public class RecommendBannerEntryItemView
   
   protected void a(Context paramContext)
   {
-    inflate(paramContext, 2131558865, this);
+    inflate(paramContext, 2131558763, this);
     setMinimumHeight(DisplayUtil.a(paramContext, 213.0F));
     setPadding(DisplayUtil.a(paramContext, 6.0F), DisplayUtil.a(paramContext, 10.0F), DisplayUtil.a(paramContext, 6.0F), DisplayUtil.a(paramContext, 20.0F));
     setWillNotDraw(false);
     setLayerType(1, null);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363196));
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363135));
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.dpToPx(7.0F));
-    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363211));
+    this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView = ((RoundCornerImageView)findViewById(2131363150));
     this.jdField_b_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.setCorner(ImmersiveUtils.dpToPx(7.0F));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131372273));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131361949));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131373253));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131371862));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131361962));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372833));
     setOnClickListener(new RecommendBannerEntryItemView.1(this));
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     int i = getPaddingLeft();
     int j = getPaddingTop();
@@ -76,29 +76,29 @@ public class RecommendBannerEntryItemView
     Paint localPaint = new Paint();
     if (this.jdField_a_of_type_Boolean) {
       localPaint.setColor(-15263977);
-    }
-    for (;;)
-    {
-      if (!this.jdField_b_of_type_Boolean)
-      {
-        i2 = DisplayUtil.a(getContext(), 5.0F);
-        localPaint.setShadowLayer(DisplayUtil.a(getContext(), 15.0F), 0, i2, 436207616);
-      }
-      int i2 = DisplayUtil.a(getContext(), 6.0F);
-      paramCanvas.drawRoundRect(new RectF(i, j, k - m, n - i1), i2, i2, localPaint);
-      super.onDraw(paramCanvas);
-      return;
+    } else {
       localPaint.setColor(-1);
     }
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      i2 = DisplayUtil.a(getContext(), 5.0F);
+      localPaint.setShadowLayer(DisplayUtil.a(getContext(), 15.0F), 0, i2, 436207616);
+    }
+    int i2 = DisplayUtil.a(getContext(), 6.0F);
+    RectF localRectF = new RectF(i, j, k - m, n - i1);
+    float f = i2;
+    paramCanvas.drawRoundRect(localRectF, f, f, localPaint);
+    super.onDraw(paramCanvas);
   }
   
   public void setEntry(CertifiedAccountMeta.StEntry paramStEntry)
   {
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry = paramStEntry;
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry == null) {
+    paramStEntry = this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry;
+    if (paramStEntry == null) {
       return;
     }
-    if (this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover != null) {
+    if (paramStEntry.cover != null) {
       UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView, this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.cover.url.get(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getWidth(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDiscoverRoundCornerImageView.getHeight(), null, "");
     }
     this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StEntry.title.get());
@@ -122,7 +122,7 @@ public class RecommendBannerEntryItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerEntryItemView
  * JD-Core Version:    0.7.0.1
  */

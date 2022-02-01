@@ -19,22 +19,21 @@ class TextItemBuilder$1
   public void onClick(View paramView)
   {
     Object localObject = AIOUtils.a(paramView);
-    if (!(localObject instanceof MessageForText)) {
+    if (!(localObject instanceof MessageForText))
+    {
       if (QLog.isColorLevel()) {
         QLog.w("ChatItemBuilder", 2, "TextItemBuilder onClickListener: AIOUtils.getMessage(v) is not MessageForText");
       }
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       localObject = (MessageForText)localObject;
       if (!this.a.a())
       {
         if (((MessageForText)localObject).msgtype == -1003)
         {
           AIOUtils.o = true;
-          localObject = PkgTools.Decodecgi(((MessageForText)localObject).action);
+          localObject = PkgTools.decodeCgi(((MessageForText)localObject).action);
           localObject = JumpParser.a(this.a.a, paramView.getContext(), (String)localObject);
           if (localObject != null) {
             ((JumpAction)localObject).a();
@@ -45,11 +44,12 @@ class TextItemBuilder$1
         }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TextItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

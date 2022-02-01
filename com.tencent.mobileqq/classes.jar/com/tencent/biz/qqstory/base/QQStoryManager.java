@@ -89,7 +89,11 @@ public class QQStoryManager
     this.jdField_b_of_type_JavaUtilList = new ArrayList();
     this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap();
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidContentSharedPreferences = paramAppInterface.getApp().getSharedPreferences("QQStory_Config_SP_" + paramAppInterface.getAccount(), 4);
+    BaseApplication localBaseApplication = paramAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QQStory_Config_SP_");
+    localStringBuilder.append(paramAppInterface.getAccount());
+    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 4);
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramAppInterface.getEntityManagerFactory().createEntityManager();
     this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext = new QQStoryContext();
     this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext.a();
@@ -98,7 +102,7 @@ public class QQStoryManager
   
   public static String a()
   {
-    return HardCodeUtil.a(2131710907);
+    return HardCodeUtil.a(2131710884);
   }
   
   public static void c(String paramString) {}
@@ -120,41 +124,41 @@ public class QQStoryManager
   
   public QQStoryUserInfo a(String paramString)
   {
-    Object localObject;
     if (paramString == null) {
-      localObject = null;
+      return null;
     }
-    QQStoryUserInfo localQQStoryUserInfo;
-    do
-    {
-      do
-      {
-        return localObject;
-        localQQStoryUserInfo = (QQStoryUserInfo)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
-        localObject = localQQStoryUserInfo;
-      } while (localQQStoryUserInfo != null);
-      localQQStoryUserInfo = (QQStoryUserInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(QQStoryUserInfo.class, paramString);
-      localObject = localQQStoryUserInfo;
-    } while (localQQStoryUserInfo == null);
-    this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localQQStoryUserInfo);
+    QQStoryUserInfo localQQStoryUserInfo = (QQStoryUserInfo)this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+    if (localQQStoryUserInfo != null) {
+      return localQQStoryUserInfo;
+    }
+    localQQStoryUserInfo = (QQStoryUserInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(QQStoryUserInfo.class, paramString);
+    if (localQQStoryUserInfo != null) {
+      this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localQQStoryUserInfo);
+    }
     return localQQStoryUserInfo;
   }
   
   public List<QQStoryUserInfo> a(boolean paramBoolean)
   {
-    List localList = null;
-    if (paramBoolean) {
-      if (this.jdField_b_of_type_JavaUtilList.size() != 0) {
+    if (paramBoolean)
+    {
+      if (this.jdField_b_of_type_JavaUtilList.size() != 0)
+      {
         localList = this.jdField_b_of_type_JavaUtilList;
+        break label46;
       }
     }
-    while (localList != null)
+    else if (this.jdField_a_of_type_JavaUtilList.size() != 0)
+    {
+      localList = this.jdField_a_of_type_JavaUtilList;
+      break label46;
+    }
+    List localList = null;
+    label46:
+    if (localList != null)
     {
       Bosses.get().postJob(new QQStoryManager.1(this, "QQStoryManager", paramBoolean));
       return localList;
-      if (this.jdField_a_of_type_JavaUtilList.size() != 0) {
-        localList = this.jdField_a_of_type_JavaUtilList;
-      }
     }
     return b(paramBoolean);
   }
@@ -169,7 +173,7 @@ public class QQStoryManager
     this.g = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("sp_key_show_auto_post2discovery", true);
     this.h = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("sp_key_auto_post2discovery", false);
     this.i = this.jdField_a_of_type_AndroidContentSharedPreferences.getBoolean("sp_key_show_video_info", false);
-    b(SharedPreUtils.h(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
+    b(SharedPreUtils.f(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin()));
     this.jdField_a_of_type_ComTencentBizQqstoryConfigTextFilterConfig = new TextFilterConfig(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp(), this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
   }
   
@@ -185,7 +189,7 @@ public class QQStoryManager
   
   public void a(String paramString)
   {
-    boolean bool2 = true;
+    boolean bool2 = false;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     if (TextUtils.isEmpty(paramString)) {
@@ -196,29 +200,26 @@ public class QQStoryManager
       try
       {
         paramString = new JSONObject(paramString);
-        if (paramString.getInt("isHideQZone") != 1) {
-          break label85;
+        if (paramString.getInt("isHideQZone") == 1)
+        {
+          bool1 = true;
+          this.jdField_a_of_type_Boolean = bool1;
+          bool1 = bool2;
+          if (paramString.getInt("isHideStory") == 1) {
+            bool1 = true;
+          }
+          this.jdField_b_of_type_Boolean = bool1;
+          return;
         }
-        bool1 = true;
-        this.jdField_a_of_type_Boolean = bool1;
-        if (paramString.getInt("isHideStory") != 1) {
-          break label90;
+      }
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
         }
-        bool1 = bool2;
-        this.jdField_b_of_type_Boolean = bool1;
         return;
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("readQuickShotShareToStoryConfig", 2, paramString.getMessage());
-      return;
-      label85:
       boolean bool1 = false;
-      continue;
-      label90:
-      bool1 = false;
     }
   }
   
@@ -240,49 +241,48 @@ public class QQStoryManager
   
   public List<QQStoryUserInfo> b(boolean paramBoolean)
   {
-    Object localObject;
-    List localList;
+    Object localObject1;
+    if (paramBoolean) {
+      localObject1 = " isAllowed=? ";
+    } else {
+      localObject1 = " isInterested=? ";
+    }
+    List localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(QQStoryUserInfo.class, true, (String)localObject1, new String[] { "1" }, null, null, null, null);
     if (paramBoolean)
     {
-      localObject = " isAllowed=? ";
-      localList = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.query(QQStoryUserInfo.class, true, (String)localObject, new String[] { "1" }, null, null, null, null);
-      if (!paramBoolean) {
-        break label122;
-      }
       this.jdField_b_of_type_JavaUtilList = new ArrayList();
-      localObject = this.jdField_b_of_type_JavaUtilList;
+      localObject1 = this.jdField_b_of_type_JavaUtilList;
     }
-    for (;;)
+    else
     {
-      label54:
-      if (localList != null)
+      this.jdField_a_of_type_JavaUtilList = new ArrayList();
+      localObject1 = this.jdField_a_of_type_JavaUtilList;
+    }
+    if (localList != null)
+    {
+      Iterator localIterator = localList.iterator();
+      for (;;)
       {
-        Iterator localIterator = localList.iterator();
-        for (;;)
-        {
-          if (localIterator.hasNext())
-          {
-            QQStoryUserInfo localQQStoryUserInfo = (QQStoryUserInfo)localIterator.next();
-            ((List)localObject).add(localQQStoryUserInfo);
-            this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(localQQStoryUserInfo.uin, localQQStoryUserInfo);
-            continue;
-            localObject = " isInterested=? ";
-            break;
-            label122:
-            this.jdField_a_of_type_JavaUtilList = new ArrayList();
-            localObject = this.jdField_a_of_type_JavaUtilList;
-            break label54;
-          }
+        localObject2 = localList;
+        if (!localIterator.hasNext()) {
+          break;
         }
-        return localList;
+        localObject2 = (QQStoryUserInfo)localIterator.next();
+        ((List)localObject1).add(localObject2);
+        this.jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.put(((QQStoryUserInfo)localObject2).uin, localObject2);
       }
     }
-    return new ArrayList();
+    Object localObject2 = new ArrayList();
+    return localObject2;
   }
   
   public void b()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + "_pgc_media_has_subscribe", 0).edit().putBoolean("has_subscribe", true).commit();
+    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("_pgc_media_has_subscribe");
+    localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("has_subscribe", true).commit();
   }
   
   public void b(int paramInt)
@@ -292,7 +292,7 @@ public class QQStoryManager
   
   public void b(String paramString)
   {
-    boolean bool2 = true;
+    boolean bool2 = false;
     this.j = false;
     this.k = true;
     if (TextUtils.isEmpty(paramString)) {
@@ -303,29 +303,26 @@ public class QQStoryManager
       try
       {
         paramString = new JSONObject(paramString);
-        if (paramString.getInt("story_PGC_steaming") != 1) {
-          break label85;
+        if (paramString.getInt("story_PGC_steaming") == 1)
+        {
+          bool1 = true;
+          this.j = bool1;
+          bool1 = bool2;
+          if (paramString.getInt("story_friend_steaming") == 1) {
+            bool1 = true;
+          }
+          this.k = bool1;
+          return;
         }
-        bool1 = true;
-        this.j = bool1;
-        if (paramString.getInt("story_friend_steaming") != 1) {
-          break label90;
+      }
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("readStoryPlayerProxyConfig", 2, paramString.getMessage());
         }
-        bool1 = bool2;
-        this.k = bool1;
         return;
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("readStoryPlayerProxyConfig", 2, paramString.getMessage());
-      return;
-      label85:
       boolean bool1 = false;
-      continue;
-      label90:
-      bool1 = false;
     }
   }
   
@@ -342,7 +339,11 @@ public class QQStoryManager
   
   public void c()
   {
-    this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + "_pgc_v_has_subscribe", 0).edit().putBoolean("has_subscribe", true).commit();
+    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("_pgc_v_has_subscribe");
+    localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("has_subscribe", true).commit();
   }
   
   public void c(int paramInt)
@@ -403,7 +404,11 @@ public class QQStoryManager
   
   public boolean g()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + "_pgc_v_has_subscribe", 0).getBoolean("has_subscribe", false);
+    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("_pgc_v_has_subscribe");
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("has_subscribe", false);
   }
   
   public void h(boolean paramBoolean)
@@ -413,7 +418,11 @@ public class QQStoryManager
   
   public boolean h()
   {
-    return this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getSharedPreferences(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin() + "_pgc_media_has_subscribe", 0).getBoolean("has_subscribe", false);
+    BaseApplication localBaseApplication = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentCommonAppAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("_pgc_media_has_subscribe");
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("has_subscribe", false);
   }
   
   public void i(boolean paramBoolean)
@@ -424,15 +433,16 @@ public class QQStoryManager
   public void onDestroy()
   {
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.close();
-    if (this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext.c();
+    QQStoryContext localQQStoryContext = this.jdField_a_of_type_ComTencentBizQqstoryAppQQStoryContext;
+    if (localQQStoryContext != null) {
+      localQQStoryContext.c();
     }
     SuperManager.a().c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryManager
  * JD-Core Version:    0.7.0.1
  */

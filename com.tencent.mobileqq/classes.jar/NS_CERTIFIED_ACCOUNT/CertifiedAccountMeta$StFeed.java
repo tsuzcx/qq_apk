@@ -41,13 +41,14 @@ public final class CertifiedAccountMeta$StFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72, 82, 88, 98, 106, 114, 122, 128, 136, 146, 152, 162, 170, 176, 186, 194 }, new String[] { "id", "title", "subtitle", "poster", "cover", "video", "content", "type", "createTime", "likeInfo", "commentCount", "vecComment", "share", "visitorInfo", "images", "status", "pushStatus", "poiInfo", "feedLevel", "adBuffer", "goods", "feedAttr", "ext", "live" }, new Object[] { "", "", "", null, null, null, "", Integer.valueOf(0), Long.valueOf(0L), null, Integer.valueOf(0), null, null, null, null, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro, null, Long.valueOf(0L), "", null }, StFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 42, 50, 58, 64, 72, 82, 88, 98, 106, 114, 122, 128, 136, 146, 152, 162, 170, 176, 186, 194 }, new String[] { "id", "title", "subtitle", "poster", "cover", "video", "content", "type", "createTime", "likeInfo", "commentCount", "vecComment", "share", "visitorInfo", "images", "status", "pushStatus", "poiInfo", "feedLevel", "adBuffer", "goods", "feedAttr", "ext", "live" }, new Object[] { "", "", "", null, null, null, "", localInteger, Long.valueOf(0L), null, localInteger, null, null, null, null, localInteger, localInteger, null, localInteger, localByteStringMicro, null, Long.valueOf(0L), "", null }, StFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_CERTIFIED_ACCOUNT.CertifiedAccountMeta.StFeed
  * JD-Core Version:    0.7.0.1
  */

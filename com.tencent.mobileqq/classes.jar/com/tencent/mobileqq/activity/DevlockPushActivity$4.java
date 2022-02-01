@@ -16,21 +16,17 @@ class DevlockPushActivity$4
         this.this$0.a.dismiss();
         this.this$0.a.cancel();
       }
-      this.this$0.a = null;
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    this.this$0.a = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.DevlockPushActivity.4
  * JD-Core Version:    0.7.0.1
  */

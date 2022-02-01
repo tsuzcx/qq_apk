@@ -8,13 +8,13 @@ class PollWidgetUtils$WidgetWrapper$3
     if (PollWidgetUtils.WidgetWrapper.a(this.this$0))
     {
       PollWidgetUtils.WidgetWrapper.a(this.this$0, false);
-      this.this$0.a.f_(false);
+      this.this$0.a.b_(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.utils.PollWidgetUtils.WidgetWrapper.3
  * JD-Core Version:    0.7.0.1
  */

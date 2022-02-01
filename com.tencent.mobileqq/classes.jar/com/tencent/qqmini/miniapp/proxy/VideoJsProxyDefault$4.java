@@ -14,33 +14,40 @@ class VideoJsProxyDefault$4
   
   public void run()
   {
-    QMLog.i("VideoJsProxyImpl", "start copy from " + this.val$info.path);
-    String str = ((MiniAppFileManager)VideoJsProxyDefault.access$500(this.this$0).getManager(MiniAppFileManager.class)).getTmpPath(this.val$suffix);
-    if (str.contains(" "))
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("start copy from ");
+    ((StringBuilder)localObject1).append(this.val$info.path);
+    QMLog.i("VideoJsProxyImpl", ((StringBuilder)localObject1).toString());
+    localObject1 = ((MiniAppFileManager)VideoJsProxyDefault.access$500(this.this$0).getManager(MiniAppFileManager.class)).getTmpPath(this.val$suffix);
+    if (((String)localObject1).contains(" "))
     {
-      QMLog.w("VideoJsProxyImpl", "wrong copy path " + str);
-      str = ((MiniAppFileManager)VideoJsProxyDefault.access$500(this.this$0).getManager(MiniAppFileManager.class)).getWxFilePath(this.val$info.path);
-      VideoJsProxyDefault.access$600(this.this$0, str, this.val$info.fileSize, this.val$info, this.val$bridgeInfo);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("wrong copy path ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QMLog.w("VideoJsProxyImpl", ((StringBuilder)localObject2).toString());
+      localObject1 = ((MiniAppFileManager)VideoJsProxyDefault.access$500(this.this$0).getManager(MiniAppFileManager.class)).getWxFilePath(this.val$info.path);
+      VideoJsProxyDefault.access$600(this.this$0, (String)localObject1, this.val$info.fileSize, this.val$info, this.val$bridgeInfo);
       return;
     }
-    File localFile = new File(str);
-    if (localFile.exists()) {
-      localFile.delete();
+    Object localObject2 = new File((String)localObject1);
+    if (((File)localObject2).exists()) {
+      ((File)localObject2).delete();
     }
-    if (FileUtils.copyFile(new File(this.val$info.path), localFile))
+    if (FileUtils.copyFile(new File(this.val$info.path), (File)localObject2))
     {
-      this.val$info.path = str;
-      VideoJsProxyDefault.access$700(this.this$0, this.val$info, this.val$changeSize, this.val$bridgeInfo);
+      localObject2 = this.val$info;
+      ((LocalMediaInfo)localObject2).path = ((String)localObject1);
+      VideoJsProxyDefault.access$700(this.this$0, (LocalMediaInfo)localObject2, this.val$changeSize, this.val$bridgeInfo);
       return;
     }
     QMLog.w("VideoJsProxyImpl", "copy file failed");
-    str = ((MiniAppFileManager)VideoJsProxyDefault.access$500(this.this$0).getManager(MiniAppFileManager.class)).getWxFilePath(this.val$info.path);
-    VideoJsProxyDefault.access$600(this.this$0, str, this.val$info.fileSize, this.val$info, this.val$bridgeInfo);
+    localObject1 = ((MiniAppFileManager)VideoJsProxyDefault.access$500(this.this$0).getManager(MiniAppFileManager.class)).getWxFilePath(this.val$info.path);
+    VideoJsProxyDefault.access$600(this.this$0, (String)localObject1, this.val$info.fileSize, this.val$info, this.val$bridgeInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.proxy.VideoJsProxyDefault.4
  * JD-Core Version:    0.7.0.1
  */

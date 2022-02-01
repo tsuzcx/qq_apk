@@ -17,13 +17,14 @@ public final class oidb_0x8dd$NearbyAd
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_ad", "uint32_postion", "uint32_source" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, NearbyAd.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_ad", "uint32_postion", "uint32_source" }, new Object[] { localByteStringMicro, localInteger, localInteger }, NearbyAd.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x8dd.oidb_0x8dd.NearbyAd
  * JD-Core Version:    0.7.0.1
  */

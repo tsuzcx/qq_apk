@@ -52,9 +52,11 @@ public class MsgNodeShotView
   protected void a(String paramString)
   {
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130847003);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846881);
     }
-    UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView, paramString, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "msg_tab_thumb");
+    RoundBorderImageView localRoundBorderImageView = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    UIUtils.a(localRoundBorderImageView, paramString, localDrawable, localDrawable, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, "msg_tab_thumb");
   }
   
   public void c()
@@ -64,58 +66,61 @@ public class MsgNodeShotView
   
   public void d()
   {
-    Object localObject = ((MsgTabStoryNodeConfigManager)QQStoryContext.a().getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a();
-    if ((localObject != null) && (((MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig)localObject).a()))
+    Object localObject1 = ((MsgTabStoryNodeConfigManager)QQStoryContext.a().getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a();
+    if ((localObject1 != null) && (((MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig)localObject1).a()))
     {
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig = new MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig();
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.a((MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig)localObject);
-      SLog.c("Q.qqstory.config.takevideo", "bindData config=" + ((MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig)localObject).b + " id=" + ((MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig)localObject).d);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.a((MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig)localObject1);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("bindData config=");
+      ((StringBuilder)localObject2).append(((MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig)localObject1).b);
+      ((StringBuilder)localObject2).append(" id=");
+      ((StringBuilder)localObject2).append(((MsgTabStoryNodeConfigManager.MsgTabTakeVideoNodeConfig)localObject1).d);
+      SLog.c("Q.qqstory.config.takevideo", ((StringBuilder)localObject2).toString());
       setNodeName(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.b, false);
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130847003);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getContext().getResources().getDrawable(2130846881);
       }
-      localObject = URLDrawable.URLDrawableOptions.obtain();
+      localObject1 = URLDrawable.URLDrawableOptions.obtain();
       if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.a.endsWith(".gif"))
       {
-        ((URLDrawable.URLDrawableOptions)localObject).mMemoryCacheKeySuffix = "msg_tab_thumb";
-        ((URLDrawable.URLDrawableOptions)localObject).mPlayGifImage = true;
-        ((URLDrawable.URLDrawableOptions)localObject).mGifRoundCorner = UIUtils.a(getContext(), 3.0F);
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = this.jdField_a_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = this.jdField_b_of_type_Int;
-        ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-        localObject = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.a, (URLDrawable.URLDrawableOptions)localObject);
-        if ((((URLDrawable)localObject).getStatus() == 1) && (((URLDrawable)localObject).getCurrDrawable() != null))
-        {
-          SLog.a("Q.qqstory.msgTab.MsgNodeShotView", "setImageByURLDrawable() %s, %s, not start download!", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.a, localObject);
-          this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable((Drawable)localObject);
+        ((URLDrawable.URLDrawableOptions)localObject1).mMemoryCacheKeySuffix = "msg_tab_thumb";
+        ((URLDrawable.URLDrawableOptions)localObject1).mPlayGifImage = true;
+        ((URLDrawable.URLDrawableOptions)localObject1).mGifRoundCorner = UIUtils.a(getContext(), 3.0F);
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestHeight = this.jdField_a_of_type_Int;
+        ((URLDrawable.URLDrawableOptions)localObject1).mRequestWidth = this.jdField_b_of_type_Int;
+        localObject2 = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+        ((URLDrawable.URLDrawableOptions)localObject1).mLoadingDrawable = ((Drawable)localObject2);
+        ((URLDrawable.URLDrawableOptions)localObject1).mFailedDrawable = ((Drawable)localObject2);
+        localObject1 = URLDrawable.getDrawable(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.a, (URLDrawable.URLDrawableOptions)localObject1);
+        if ((((URLDrawable)localObject1).getStatus() == 1) && (((URLDrawable)localObject1).getCurrDrawable() != null)) {
+          SLog.a("Q.qqstory.msgTab.MsgNodeShotView", "setImageByURLDrawable() %s, %s, not start download!", this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.a, localObject1);
+        } else if ((((URLDrawable)localObject1).getStatus() != 3) && (((URLDrawable)localObject1).getStatus() != 2)) {
+          ((URLDrawable)localObject1).startDownload();
+        } else {
+          ((URLDrawable)localObject1).restartDownload();
         }
+        this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageDrawable((Drawable)localObject1);
+      }
+      else
+      {
+        a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.a);
       }
     }
-    for (;;)
+    else
     {
-      a(8);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
-      if ((((URLDrawable)localObject).getStatus() == 3) || (((URLDrawable)localObject).getStatus() == 2))
-      {
-        ((URLDrawable)localObject).restartDownload();
-        break;
-      }
-      ((URLDrawable)localObject).startDownload();
-      break;
-      a(this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig.a);
-      continue;
       SLog.b("Q.qqstory.msgTab.MsgNodeShotView", "normal info");
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130847003);
-      setNodeName(HardCodeUtil.a(2131706960), false);
+      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeRoundwithdashdemo2018ViewsRoundBorderImageView.setImageResource(2130846881);
+      setNodeName(HardCodeUtil.a(2131706982), false);
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeModelMsgTabStoryNodeConfigManager$MsgTabTakeVideoNodeConfig = null;
     }
+    a(8);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgNodeShotView
  * JD-Core Version:    0.7.0.1
  */

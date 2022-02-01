@@ -12,30 +12,29 @@ class QfileFavFileTabView$2
   
   public void onClick(View paramView)
   {
-    if ((paramView.getTag() instanceof QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)) {}
-    for (FavFileInfo localFavFileInfo = (FavFileInfo)((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)paramView.getTag()).a;; localFavFileInfo = null)
-    {
-      QfileFavFileTabView localQfileFavFileTabView;
-      if (localFavFileInfo != null)
-      {
-        localQfileFavFileTabView = this.a;
-        if (paramView.getId() != 2131366919) {
-          break label60;
-        }
-      }
-      label60:
-      for (boolean bool = true;; bool = false)
-      {
-        localQfileFavFileTabView.a(localFavFileInfo, bool);
-        EventCollector.getInstance().onViewClicked(paramView);
-        return;
-      }
+    FavFileInfo localFavFileInfo;
+    if ((paramView.getTag() instanceof QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)) {
+      localFavFileInfo = (FavFileInfo)((QfileFavFileBaseExpandableListAdapter.FavFileItemHolder)paramView.getTag()).a;
+    } else {
+      localFavFileInfo = null;
     }
+    if (localFavFileInfo != null)
+    {
+      QfileFavFileTabView localQfileFavFileTabView = this.a;
+      boolean bool;
+      if (paramView.getId() == 2131366781) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      localQfileFavFileTabView.a(localFavFileInfo, bool);
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileFavFileTabView.2
  * JD-Core Version:    0.7.0.1
  */

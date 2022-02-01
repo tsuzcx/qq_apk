@@ -10,11 +10,11 @@ public class SharedPreferencesProxyManager
 {
   private static final int LOCK_BUCKET_SIZE = 8;
   private static final String LOG_TAG = "SharedPreferencesProxyManager";
-  private static volatile SharedPreferencesProxyManager sInstance = null;
+  private static volatile SharedPreferencesProxyManager sInstance;
   static boolean sIsCrashing = false;
   static boolean sIsDebugVersion = false;
   static SharedPreferencesProxyManager.ISpLogCallback sLogCallback;
-  public static String sSystemSpExceptionMsg = null;
+  public static String sSystemSpExceptionMsg;
   SharedPreferencesProxyManager.IAdapter adapter;
   private WeakReference<Context> mBoundContext = null;
   private Map<String, SharedPreferences> mLocalSPs = new ConcurrentHashMap(5);
@@ -38,14 +38,18 @@ public class SharedPreferencesProxyManager
   
   private void printLog(boolean paramBoolean, String paramString1, String paramString2, Exception paramException)
   {
-    if (sLogCallback != null) {
-      sLogCallback.printLog(paramBoolean, paramString1, paramString2, paramException);
+    SharedPreferencesProxyManager.ISpLogCallback localISpLogCallback = sLogCallback;
+    if (localISpLogCallback != null) {
+      localISpLogCallback.printLog(paramBoolean, paramString1, paramString2, paramException);
     }
   }
   
   private SharedPreferencesProxyManager realInit(Context paramContext, SharedPreferencesProxyManager.IAdapter paramIAdapter)
   {
-    printLog(true, "SpManager", "init " + paramContext, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("init ");
+    localStringBuilder.append(paramContext);
+    printLog(true, "SpManager", localStringBuilder.toString(), null);
     this.adapter = paramIAdapter;
     if (paramContext == null)
     {
@@ -84,31 +88,28 @@ public class SharedPreferencesProxyManager
     if (paramString == null) {
       str = "null";
     }
-    Map localMap;
     if (((paramInt & 0x4) == 4) && (!Utils.sIsSameProcessAsCP)) {
-      localMap = this.mRemoteSPs;
+      paramString = this.mRemoteSPs;
+    } else {
+      paramString = this.mLocalSPs;
     }
-    for (;;)
+    Object localObject1 = (SharedPreferences)paramString.get(str);
+    if (localObject1 == null)
     {
-      SharedPreferences localSharedPreferences = (SharedPreferences)localMap.get(str);
-      paramString = localSharedPreferences;
-      int i;
-      if (localSharedPreferences == null) {
-        i = Math.abs(str.hashCode() % 8);
-      }
+      int i = Math.abs(str.hashCode() % 8);
       synchronized (this.mLocksBucket[i])
       {
-        localSharedPreferences = (SharedPreferences)localMap.get(str);
-        paramString = localSharedPreferences;
+        SharedPreferences localSharedPreferences = (SharedPreferences)paramString.get(str);
+        localObject1 = localSharedPreferences;
         if (localSharedPreferences == null)
         {
-          paramString = new SharedPreferencesProxy(this.mBoundContext, str, paramInt, paramBoolean);
-          localMap.put(str, paramString);
+          localObject1 = new SharedPreferencesProxy(this.mBoundContext, str, paramInt, paramBoolean);
+          paramString.put(str, localObject1);
         }
-        return paramString;
-        localMap = this.mLocalSPs;
+        return localObject1;
       }
     }
+    return localObject1;
   }
   
   public SharedPreferencesProxyManager init(Context paramContext, SharedPreferencesProxyManager.IAdapter paramIAdapter)
@@ -152,8 +153,9 @@ public class SharedPreferencesProxyManager
   
   void onModifySp(String paramString1, String paramString2, Object paramObject)
   {
-    if (sLogCallback != null) {
-      sLogCallback.onIllegalModify(paramString1, paramString2, paramObject);
+    SharedPreferencesProxyManager.ISpLogCallback localISpLogCallback = sLogCallback;
+    if (localISpLogCallback != null) {
+      localISpLogCallback.onIllegalModify(paramString1, paramString2, paramObject);
     }
   }
   
@@ -163,7 +165,7 @@ public class SharedPreferencesProxyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqq.shared_file_accessor.SharedPreferencesProxyManager
  * JD-Core Version:    0.7.0.1
  */

@@ -11,14 +11,14 @@ class VideoController$23
   
   public void run()
   {
-    if (this.this$0.a().P) {
+    if (this.this$0.a().E) {
       ((AudioManager)this.this$0.a.getSystemService("audio")).setSpeakerphoneOn(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.23
  * JD-Core Version:    0.7.0.1
  */

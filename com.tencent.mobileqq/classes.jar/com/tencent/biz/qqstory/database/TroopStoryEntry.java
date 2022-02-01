@@ -22,7 +22,12 @@ public class TroopStoryEntry
   
   public static String getQueryByPageSql(long paramLong)
   {
-    return "select * from " + TroopStoryEntry.class.getSimpleName() + " where troopId = " + paramLong;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("select * from ");
+    localStringBuilder.append(TroopStoryEntry.class.getSimpleName());
+    localStringBuilder.append(" where troopId = ");
+    localStringBuilder.append(paramLong);
+    return localStringBuilder.toString();
   }
   
   public void from(TroopStoryItemInfo paramTroopStoryItemInfo)
@@ -41,7 +46,7 @@ public class TroopStoryEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.TroopStoryEntry
  * JD-Core Version:    0.7.0.1
  */

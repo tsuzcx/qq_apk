@@ -20,13 +20,14 @@ public final class intimate_relation$IntimateParentChild
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 802 }, new String[] { "time", "source", "level", "chat_days", "birthdate", "buffer" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, IntimateParentChild.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 802 }, new String[] { "time", "source", "level", "chat_days", "birthdate", "buffer" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro }, IntimateParentChild.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.intimate_relation.intimate_relation.IntimateParentChild
  * JD-Core Version:    0.7.0.1
  */

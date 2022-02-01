@@ -28,7 +28,11 @@ public abstract class BaseProtocolCoder
       paramLong = new DataInputStream(new ByteArrayInputStream((byte[])localObject)).readLong();
       return paramLong;
     }
-    catch (IOException localIOException) {}
+    catch (IOException localIOException)
+    {
+      label58:
+      break label58;
+    }
     return 0L;
   }
   
@@ -48,7 +52,11 @@ public abstract class BaseProtocolCoder
       localUniPacket.decode(paramArrayOfByte);
       return localUniPacket.getByClass(paramString, paramT);
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label31:
+      break label31;
+    }
     return null;
   }
   
@@ -70,7 +78,7 @@ public abstract class BaseProtocolCoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.BaseProtocolCoder
  * JD-Core Version:    0.7.0.1
  */

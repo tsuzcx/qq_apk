@@ -13,56 +13,52 @@ class ChooseInterestTagActivity$14
   
   public void a(InterestTagInfo paramInterestTagInfo)
   {
-    ChooseInterestTagActivity.a(this.a, 0);
-    InputMethodUtil.b(ChooseInterestTagActivity.a(this.a));
-    boolean bool;
-    if (!TextUtils.isEmpty(ChooseInterestTagActivity.a(this.a)))
+    ChooseInterestTagActivity.access$2900(this.a, 0);
+    InputMethodUtil.b(ChooseInterestTagActivity.access$2700(this.a));
+    if (!TextUtils.isEmpty(ChooseInterestTagActivity.access$700(this.a)))
     {
-      ChooseInterestTagActivity.a(this.a).a(ChooseInterestTagActivity.a(this.a), true);
+      ChooseInterestTagActivity.access$1100(this.a).a(ChooseInterestTagActivity.access$1000(this.a), true);
       ChooseInterestTagActivity localChooseInterestTagActivity = this.a;
-      if (ChooseInterestTagActivity.b(this.a) != -1)
-      {
+      boolean bool;
+      if (ChooseInterestTagActivity.access$200(localChooseInterestTagActivity) != -1) {
         bool = true;
-        ChooseInterestTagActivity.a(localChooseInterestTagActivity, false, bool);
-        ChooseInterestTagActivity.a(this.a).setText("");
-        ChooseInterestTagActivity.a(this.a, "");
+      } else {
+        bool = false;
+      }
+      ChooseInterestTagActivity.access$1400(localChooseInterestTagActivity, false, bool);
+      ChooseInterestTagActivity.access$2700(this.a).setText("");
+      ChooseInterestTagActivity.access$702(this.a, "");
+    }
+    if (ChooseInterestTagActivity.access$3700(this.a, paramInterestTagInfo))
+    {
+      ChooseInterestTagActivity.access$2200(this.a).remove(paramInterestTagInfo);
+      ChooseInterestTagActivity.access$3400(this.a, paramInterestTagInfo);
+      return;
+    }
+    if (ChooseInterestTagActivity.access$2200(this.a).size() >= 8)
+    {
+      if (!ChooseInterestTagActivity.access$3800(this.a))
+      {
+        ChooseInterestTagActivity.access$1600(this.a, "最多只能添加8个标签哦");
+        ChooseInterestTagActivity.access$3802(this.a, true);
+        ChooseInterestTagActivity.access$400(this.a).postDelayed(new ChooseInterestTagActivity.14.1(this), 2800L);
       }
     }
     else
     {
-      if (!ChooseInterestTagActivity.a(this.a, paramInterestTagInfo)) {
-        break label132;
-      }
-      ChooseInterestTagActivity.a(this.a).remove(paramInterestTagInfo);
-      ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
+      ChooseInterestTagActivity.access$2200(this.a).add(paramInterestTagInfo);
+      ChooseInterestTagActivity.access$3900(this.a, paramInterestTagInfo);
     }
-    label132:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      if (ChooseInterestTagActivity.a(this.a).size() < 8) {
-        break label198;
-      }
-    } while (ChooseInterestTagActivity.d(this.a));
-    ChooseInterestTagActivity.a(this.a, "最多只能添加8个标签哦");
-    ChooseInterestTagActivity.b(this.a, true);
-    ChooseInterestTagActivity.a(this.a).postDelayed(new ChooseInterestTagActivity.14.1(this), 2800L);
-    return;
-    label198:
-    ChooseInterestTagActivity.a(this.a).add(paramInterestTagInfo);
-    ChooseInterestTagActivity.c(this.a, paramInterestTagInfo);
   }
   
   public boolean a(InterestTagInfo paramInterestTagInfo)
   {
-    return ChooseInterestTagActivity.a(this.a, paramInterestTagInfo);
+    return ChooseInterestTagActivity.access$3700(this.a, paramInterestTagInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14
  * JD-Core Version:    0.7.0.1
  */

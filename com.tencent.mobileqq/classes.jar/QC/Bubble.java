@@ -26,15 +26,16 @@ public final class Bubble
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strDiyJson != null) {
-      paramJceOutputStream.write(this.strDiyJson, 0);
+    String str = this.strDiyJson;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.deltype, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.Bubble
  * JD-Core Version:    0.7.0.1
  */

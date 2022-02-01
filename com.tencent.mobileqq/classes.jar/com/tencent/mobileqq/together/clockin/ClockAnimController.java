@@ -10,8 +10,12 @@ public class ClockAnimController
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClockAnimController", 0, "notifyAnimChanged : nEventId = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("notifyAnimChanged : nEventId = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("ClockAnimController", 0, localStringBuilder.toString());
     }
     if (paramInt == 1) {
       this.a = true;
@@ -25,15 +29,19 @@ public class ClockAnimController
   
   public boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ClockAnimController", 0, "isPlayAnim : isPlayAnim = " + this.a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isPlayAnim : isPlayAnim = ");
+      localStringBuilder.append(this.a);
+      QLog.d("ClockAnimController", 0, localStringBuilder.toString());
     }
     return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.ClockAnimController
  * JD-Core Version:    0.7.0.1
  */

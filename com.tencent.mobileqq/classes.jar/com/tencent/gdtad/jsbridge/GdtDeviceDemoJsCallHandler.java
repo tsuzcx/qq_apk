@@ -13,40 +13,38 @@ final class GdtDeviceDemoJsCallHandler
 {
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    if (paramGdtAdWebPlugin != null) {}
-    for (paramString = paramGdtAdWebPlugin.a(); (paramGdtAdWebPlugin == null) || (paramString == null); paramString = null)
-    {
-      GdtLog.d("GdtDeviceDemoJsCallHandler", "handleJsCallRequest error");
-      return true;
+    if (paramGdtAdWebPlugin != null) {
+      paramString = paramGdtAdWebPlugin.a();
+    } else {
+      paramString = null;
     }
-    for (;;)
-    {
+    if ((paramGdtAdWebPlugin != null) && (paramString != null)) {
       try
       {
         paramGdtAdWebPlugin = new JSONObject(paramVarArgs[0]).optString("process", "com.tencent.mobileqq:mini");
-        if (TextUtils.equals(paramGdtAdWebPlugin, "com.tencent.mobileqq"))
-        {
+        if (TextUtils.equals(paramGdtAdWebPlugin, "com.tencent.mobileqq")) {
           paramGdtAdWebPlugin = PublicFragmentActivity.class;
-          GdtDeviceDemoFragment.a(paramString, paramGdtAdWebPlugin);
-          return true;
+        } else if (TextUtils.equals(paramGdtAdWebPlugin, "com.tencent.mobileqq:tool")) {
+          paramGdtAdWebPlugin = PublicFragmentActivityForTool.class;
+        } else {
+          paramGdtAdWebPlugin = QQMiniManager.getPublicFragmentActivityForMiniClass();
         }
+        GdtDeviceDemoFragment.a(paramString, paramGdtAdWebPlugin);
+        return true;
       }
       catch (JSONException paramGdtAdWebPlugin)
       {
         GdtLog.d("GdtDeviceDemoJsCallHandler", "handleJsCallRequest error", paramGdtAdWebPlugin);
         return true;
       }
-      if (TextUtils.equals(paramGdtAdWebPlugin, "com.tencent.mobileqq:tool")) {
-        paramGdtAdWebPlugin = PublicFragmentActivityForTool.class;
-      } else {
-        paramGdtAdWebPlugin = QQMiniManager.getPublicFragmentActivityForMiniClass();
-      }
     }
+    GdtLog.d("GdtDeviceDemoJsCallHandler", "handleJsCallRequest error");
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtDeviceDemoJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

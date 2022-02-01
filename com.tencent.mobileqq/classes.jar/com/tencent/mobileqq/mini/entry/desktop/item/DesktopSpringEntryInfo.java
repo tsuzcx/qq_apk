@@ -13,12 +13,23 @@ public class DesktopSpringEntryInfo
   
   public String toString()
   {
-    return "DesktopSpringEntryInfo{bannerInfo=" + this.bannerInfo + ", tips='" + this.tips + '\'' + ", bannerWidth=" + this.bannerWidth + ", bannerHeight=" + this.bannerHeight + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DesktopSpringEntryInfo{bannerInfo=");
+    localStringBuilder.append(this.bannerInfo);
+    localStringBuilder.append(", tips='");
+    localStringBuilder.append(this.tips);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerWidth=");
+    localStringBuilder.append(this.bannerWidth);
+    localStringBuilder.append(", bannerHeight=");
+    localStringBuilder.append(this.bannerHeight);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopSpringEntryInfo
  * JD-Core Version:    0.7.0.1
  */

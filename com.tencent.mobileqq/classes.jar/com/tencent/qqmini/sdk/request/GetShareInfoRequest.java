@@ -42,77 +42,78 @@ public class GetShareInfoRequest
   
   public JSONObject getResponse(byte[] paramArrayOfByte, JSONObject paramJSONObject)
   {
-    boolean bool3 = false;
-    boolean bool1 = false;
     if (paramArrayOfByte == null) {
       return null;
     }
     MiniProgramShare.StAdaptShareInfoRsp localStAdaptShareInfoRsp = new MiniProgramShare.StAdaptShareInfoRsp();
-    label264:
-    label271:
+    long l;
+    int i;
+    boolean bool1;
+    boolean bool2;
+    try
+    {
+      localStAdaptShareInfoRsp.mergeFrom(paramArrayOfByte);
+      l = paramJSONObject.getLong("retCode");
+      paramJSONObject.getString("errMsg");
+      paramArrayOfByte = localStAdaptShareInfoRsp.extInfo;
+      i = 0;
+      if ((paramArrayOfByte == null) || (localStAdaptShareInfoRsp.extInfo.mapInfo == null)) {
+        break label255;
+      }
+      bool1 = false;
+      bool2 = bool1;
+      if (i >= localStAdaptShareInfoRsp.extInfo.mapInfo.size()) {
+        break label258;
+      }
+      paramArrayOfByte = (COMM.Entry)localStAdaptShareInfoRsp.extInfo.mapInfo.get(i);
+      bool2 = bool1;
+      if (!"needShareCallBack".equals(paramArrayOfByte.key.get())) {
+        break label244;
+      }
+      bool2 = bool1;
+      if (!"true".equals(paramArrayOfByte.value.get())) {
+        break label244;
+      }
+      bool2 = true;
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      label142:
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("GetShareInfoRequest", paramJSONObject.toString());
+      return null;
+    }
+    paramArrayOfByte = new JSONObject(localStAdaptShareInfoRsp.jsonData.get());
+    paramArrayOfByte.put("needShareCallBack", bool2);
+    return paramArrayOfByte;
     for (;;)
     {
-      long l;
-      boolean bool2;
-      int i;
-      try
-      {
-        localStAdaptShareInfoRsp.mergeFrom(paramArrayOfByte);
-        if (localStAdaptShareInfoRsp == null) {
-          break label238;
-        }
-        l = paramJSONObject.getLong("retCode");
-        paramJSONObject.getString("errMsg");
-        bool2 = bool3;
-        if (localStAdaptShareInfoRsp.extInfo == null) {
-          break label271;
-        }
-        bool2 = bool3;
-        if (localStAdaptShareInfoRsp.extInfo.mapInfo == null) {
-          break label271;
-        }
-        i = 0;
-        bool2 = bool1;
-        if (i >= localStAdaptShareInfoRsp.extInfo.mapInfo.size()) {
-          break label271;
-        }
-        paramArrayOfByte = (COMM.Entry)localStAdaptShareInfoRsp.extInfo.mapInfo.get(i);
-        if ((!"needShareCallBack".equals(paramArrayOfByte.key.get())) || (!"true".equals(paramArrayOfByte.value.get()))) {
-          break label264;
-        }
-        bool1 = true;
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        label148:
-        QMLog.d("GetShareInfoRequest", "onResponse fail." + paramArrayOfByte);
-        return null;
-      }
-      QMLog.e("GetShareInfoRequest", "onGetShareInfo isSuccess=false, retCode=" + l);
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("onGetShareInfo isSuccess=false, retCode=");
+      paramArrayOfByte.append(l);
+      QMLog.e("GetShareInfoRequest", paramArrayOfByte.toString());
       paramJSONObject.put("needShareCallBack", bool2);
       return paramJSONObject;
-      label238:
-      do
-      {
-        paramArrayOfByte = new JSONObject(localStAdaptShareInfoRsp.jsonData.get());
-        paramArrayOfByte.put("needShareCallBack", bool2);
-        return paramArrayOfByte;
-        paramJSONObject.put("retCode", -1);
-        paramJSONObject.put("errMsg", "数据解析错误");
-        QMLog.d("GetShareInfoRequest", "onResponse fail.webRsp = null");
-        return paramJSONObject;
-        i += 1;
-        break;
-        if (l == -100070004L) {
-          break label148;
+      label244:
+      i += 1;
+      bool1 = bool2;
+      break;
+      label255:
+      bool2 = false;
+      label258:
+      if (l != -100070004L) {
+        if (l != -1000710003L) {
+          break label142;
         }
-      } while (l != -1000710003L);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetShareInfoRequest
  * JD-Core Version:    0.7.0.1
  */

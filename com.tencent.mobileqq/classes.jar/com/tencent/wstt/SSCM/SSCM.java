@@ -48,137 +48,189 @@ public class SSCM
   
   public int a(Context paramContext, long paramLong)
   {
-    this.jdField_b_of_type_Int = NetworkUtil.a(BaseApplication.getContext());
-    if (!this.jdField_a_of_type_Boolean) {
-      switch (this.jdField_b_of_type_Int)
-      {
-      default: 
-        this.jdField_c_of_type_Int = 4096;
-      }
-    }
-    for (;;)
+    this.jdField_b_of_type_Int = NetworkUtil.getSystemNetwork(BaseApplication.getContext());
+    if (!this.jdField_a_of_type_Boolean)
     {
-      if (paramLong < 102400L) {
-        this.jdField_c_of_type_Int *= 4;
+      j = this.jdField_b_of_type_Int;
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (j != 3) {
+            this.jdField_c_of_type_Int = 4096;
+          } else {
+            this.jdField_c_of_type_Int = 16384;
+          }
+        }
+        else {
+          this.jdField_c_of_type_Int = 8192;
+        }
       }
-      if (paramLong - this.jdField_c_of_type_Int <= this.jdField_c_of_type_Int / 2) {
-        this.jdField_c_of_type_Int = ((int)paramLong);
+      else {
+        this.jdField_c_of_type_Int = 32768;
       }
-      return this.jdField_c_of_type_Int;
-      this.jdField_c_of_type_Int = 32768;
-      continue;
-      this.jdField_c_of_type_Int = 16384;
-      continue;
-      this.jdField_c_of_type_Int = 8192;
     }
+    if (paramLong < 102400L) {
+      this.jdField_c_of_type_Int *= 4;
+    }
+    int j = this.jdField_c_of_type_Int;
+    if (paramLong - j <= j / 2) {
+      this.jdField_c_of_type_Int = ((int)paramLong);
+    }
+    return this.jdField_c_of_type_Int;
   }
   
   public int a(Context paramContext, long paramLong1, long paramLong2, int paramInt)
   {
     this.jdField_a_of_type_Long = a();
-    if (paramLong1 < 102400L) {}
-    for (this.h = 1; true == this.jdField_b_of_type_Boolean; this.h = 2)
+    if (paramLong1 < 102400L) {
+      this.h = 1;
+    } else {
+      this.h = 2;
+    }
+    if (true == this.jdField_b_of_type_Boolean)
     {
       a();
       this.jdField_d_of_type_Int = a(paramContext, paramLong1);
       this.jdField_b_of_type_Boolean = false;
       return this.jdField_d_of_type_Int;
     }
-    this.jdField_c_of_type_Float = ((float)(this.jdField_d_of_type_Int / this.jdField_a_of_type_Double));
-    label144:
-    label176:
-    float f1;
-    if (0.0F == this.jdField_e_of_type_Float)
+    double d1 = this.jdField_d_of_type_Int;
+    double d2 = this.jdField_a_of_type_Double;
+    Double.isNaN(d1);
+    this.jdField_c_of_type_Float = ((float)(d1 / d2));
+    float f1 = this.jdField_e_of_type_Float;
+    if (0.0F == f1)
     {
       this.jdField_e_of_type_Float = this.jdField_c_of_type_Float;
-      if (this.jdField_a_of_type_Int != 2)
+    }
+    else
+    {
+      d1 = this.jdField_c_of_type_Float;
+      Double.isNaN(d1);
+      d2 = f1;
+      Double.isNaN(d2);
+      this.jdField_e_of_type_Float = ((float)(d1 * 0.8D + d2 * 0.2D));
+    }
+    if (this.jdField_a_of_type_Int != 2)
+    {
+      this.i += 1;
+      f1 = this.jdField_d_of_type_Float;
+      if (f1 == 0.0F)
       {
-        this.i += 1;
-        if (this.jdField_d_of_type_Float != 0.0F) {
-          break label278;
-        }
         this.jdField_a_of_type_Float = 1.0F;
         if (this.i == this.h) {
           this.jdField_b_of_type_Float = this.jdField_e_of_type_Float;
         }
       }
-      switch (this.jdField_a_of_type_Int)
+      else if (this.i == this.h)
       {
-      default: 
-        if (paramLong1 - paramLong2 - this.jdField_d_of_type_Int <= this.jdField_d_of_type_Int / 2) {
-          this.jdField_d_of_type_Int = ((int)(paramLong1 - paramLong2));
-        }
-        if (this.i == 0)
-        {
-          f1 = this.jdField_d_of_type_Float;
-          label219:
-          if ((paramInt <= 0) || ((this.jdField_d_of_type_Int >= 0) && (this.jdField_d_of_type_Int <= paramInt))) {
-            break label646;
-          }
-          this.jdField_d_of_type_Int = paramInt;
-        }
-        break;
+        d1 = (this.jdField_e_of_type_Float - f1) / this.jdField_b_of_type_Float;
+        d2 = this.jdField_d_of_type_Int - this.jdField_e_of_type_Int;
+        double d3 = this.jdField_c_of_type_Int;
+        Double.isNaN(d3);
+        Double.isNaN(d2);
+        d2 /= (d3 + 0.0D);
+        Double.isNaN(d1);
+        this.jdField_a_of_type_Float = ((float)(d1 / d2));
       }
     }
-    for (;;)
+    int j = this.jdField_a_of_type_Int;
+    if (j != 0)
     {
-      return this.jdField_d_of_type_Int;
-      this.jdField_e_of_type_Float = ((float)(0.8D * this.jdField_c_of_type_Float + 0.2D * this.jdField_e_of_type_Float));
-      break;
-      label278:
-      if (this.i != this.h) {
-        break label144;
+      if (j != 1)
+      {
+        if (j == 2)
+        {
+          d1 = Math.abs(this.jdField_e_of_type_Float - this.jdField_f_of_type_Float);
+          d2 = this.jdField_f_of_type_Float;
+          Double.isNaN(d2);
+          if (d1 > d2 * 0.2D) {
+            this.jdField_f_of_type_Int += 1;
+          } else {
+            this.jdField_f_of_type_Int = 0;
+          }
+          if (this.jdField_f_of_type_Int < this.jdField_g_of_type_Int)
+          {
+            this.jdField_a_of_type_Int = 2;
+          }
+          else
+          {
+            this.jdField_f_of_type_Int = 0;
+            this.jdField_a_of_type_Int = 0;
+            this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
+            this.jdField_d_of_type_Float = 0.0F;
+            this.jdField_e_of_type_Int = 0;
+            this.jdField_e_of_type_Float = 0.0F;
+            this.i = 0;
+          }
+        }
       }
-      this.jdField_a_of_type_Float = ((float)((this.jdField_e_of_type_Float - this.jdField_d_of_type_Float) / this.jdField_b_of_type_Float / ((this.jdField_d_of_type_Int - this.jdField_e_of_type_Int) / (this.jdField_c_of_type_Int + 0.0D))));
-      break label144;
-      if (this.i != this.h) {
-        break label176;
+      else if (this.i == this.h) {
+        if (this.jdField_a_of_type_Float < 0.09D)
+        {
+          this.jdField_a_of_type_Int = 2;
+          f1 = this.jdField_e_of_type_Float;
+          this.jdField_f_of_type_Float = f1;
+          this.jdField_d_of_type_Float = 0.0F;
+          this.jdField_e_of_type_Int = 0;
+          this.jdField_g_of_type_Float = f1;
+        }
+        else
+        {
+          this.jdField_a_of_type_Int = 1;
+          this.jdField_e_of_type_Int = this.jdField_d_of_type_Int;
+          d1 = this.jdField_e_of_type_Int;
+          Double.isNaN(d1);
+          this.jdField_d_of_type_Int = ((int)(d1 * 1.05D));
+          f1 = this.jdField_e_of_type_Float;
+          this.jdField_d_of_type_Float = f1;
+          this.jdField_g_of_type_Float = f1;
+          this.jdField_e_of_type_Float = 0.0F;
+          this.i = 0;
+        }
       }
+    }
+    else if (this.i == this.h)
+    {
       if (this.jdField_a_of_type_Float < 0.09D)
       {
         this.jdField_a_of_type_Int = 1;
-        this.jdField_d_of_type_Int = ((int)(1.05D * this.jdField_e_of_type_Int));
+        d1 = this.jdField_e_of_type_Int;
+        Double.isNaN(d1);
+        this.jdField_d_of_type_Int = ((int)(d1 * 1.05D));
       }
-      for (;;)
+      else
       {
-        this.jdField_e_of_type_Float = 0.0F;
-        this.i = 0;
-        break;
         this.jdField_a_of_type_Int = 0;
         this.jdField_e_of_type_Int = this.jdField_d_of_type_Int;
         this.jdField_d_of_type_Int = (this.jdField_e_of_type_Int * 2);
         this.jdField_d_of_type_Float = this.jdField_e_of_type_Float;
       }
-      if (this.i != this.h) {
-        break label176;
-      }
-      if (this.jdField_a_of_type_Float < 0.09D)
-      {
-        this.jdField_a_of_type_Int = 2;
-        this.jdField_f_of_type_Float = this.jdField_e_of_type_Float;
-        this.jdField_d_of_type_Float = 0.0F;
-        this.jdField_e_of_type_Int = 0;
-        this.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
-        break label176;
-      }
-      this.jdField_a_of_type_Int = 1;
-      this.jdField_e_of_type_Int = this.jdField_d_of_type_Int;
-      this.jdField_d_of_type_Int = ((int)(1.05D * this.jdField_e_of_type_Int));
-      this.jdField_d_of_type_Float = this.jdField_e_of_type_Float;
-      this.jdField_g_of_type_Float = this.jdField_e_of_type_Float;
       this.jdField_e_of_type_Float = 0.0F;
       this.i = 0;
-      break label176;
-      if (Math.abs(this.jdField_e_of_type_Float - this.jdField_f_of_type_Float) > 0.2D * this.jdField_f_of_type_Float) {}
-      for (this.jdField_f_of_type_Int += 1;; this.jdField_f_of_type_Int = 0)
+    }
+    paramLong1 -= paramLong2;
+    j = this.jdField_d_of_type_Int;
+    if (paramLong1 - j <= j / 2) {
+      this.jdField_d_of_type_Int = ((int)paramLong1);
+    }
+    if (this.i == 0) {
+      f1 = this.jdField_d_of_type_Float;
+    } else {
+      f1 = this.jdField_e_of_type_Float;
+    }
+    if (paramInt > 0)
+    {
+      j = this.jdField_d_of_type_Int;
+      if ((j < 0) || (j > paramInt))
       {
-        if (this.jdField_f_of_type_Int >= this.jdField_g_of_type_Int) {
-          break label596;
-        }
-        this.jdField_a_of_type_Int = 2;
-        break;
+        this.jdField_d_of_type_Int = paramInt;
+        break label793;
       }
-      label596:
+    }
+    if (this.jdField_d_of_type_Int < 0)
+    {
       this.jdField_f_of_type_Int = 0;
       this.jdField_a_of_type_Int = 0;
       this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
@@ -186,21 +238,9 @@ public class SSCM
       this.jdField_e_of_type_Int = 0;
       this.jdField_e_of_type_Float = 0.0F;
       this.i = 0;
-      break label176;
-      f1 = this.jdField_e_of_type_Float;
-      break label219;
-      label646:
-      if (this.jdField_d_of_type_Int < 0)
-      {
-        this.jdField_f_of_type_Int = 0;
-        this.jdField_a_of_type_Int = 0;
-        this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
-        this.jdField_d_of_type_Float = 0.0F;
-        this.jdField_e_of_type_Int = 0;
-        this.jdField_e_of_type_Float = 0.0F;
-        this.i = 0;
-      }
     }
+    label793:
+    return this.jdField_d_of_type_Int;
   }
   
   public void a()
@@ -228,13 +268,18 @@ public class SSCM
   public void b()
   {
     this.jdField_b_of_type_Long = b();
-    this.jdField_a_of_type_Double = ((this.jdField_b_of_type_Long - this.jdField_a_of_type_Long) / 1000.0D);
-    QLog.d("upload", 2, "sendFilePakage time:" + this.jdField_a_of_type_Double);
+    double d1 = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
+    Double.isNaN(d1);
+    this.jdField_a_of_type_Double = (d1 / 1000.0D);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendFilePakage time:");
+    localStringBuilder.append(this.jdField_a_of_type_Double);
+    QLog.d("upload", 2, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.wstt.SSCM.SSCM
  * JD-Core Version:    0.7.0.1
  */

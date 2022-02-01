@@ -19,8 +19,12 @@ final class TopicHelper$2
   {
     paramView = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
     paramView.putExtra("url", this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.b());
-    if (QLog.isColorLevel()) {
-      QLog.i("TopicHelper", 2, "mVideoData.topicInfo.getTopicJumpUrl() :" + this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.b());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mVideoData.topicInfo.getTopicJumpUrl() :");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqNearbyNowModelTopicInfo.b());
+      QLog.i("TopicHelper", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_AndroidContentContext.startActivity(paramView);
   }
@@ -34,7 +38,7 @@ final class TopicHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.TopicHelper.2
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity.springfestival.config;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.springfestival.report.SpringHbMonitorReporter;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -36,8 +37,12 @@ public abstract class SpringFestivalBaseConfProcessor<T>
   @NonNull
   public T migrateOldOrDefaultContent(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, "[migrateOldOrDefaultContent]" + type());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[migrateOldOrDefaultContent]");
+      localStringBuilder.append(type());
+      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, localStringBuilder.toString());
     }
     return null;
   }
@@ -50,20 +55,15 @@ public abstract class SpringFestivalBaseConfProcessor<T>
   @Nullable
   public T onParsed(QConfItem[] paramArrayOfQConfItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, "[onParsed]" + type());
-    }
-    QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0))
+    if (QLog.isColorLevel())
     {
-      if (localQQAppInterface != null)
-      {
-        SpringHbMonitorReporter.a(2, 3, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), localQQAppInterface.getCurrentAccountUin()), true, new String[] { "parse config fail!" });
-        return null;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[onParsed]");
+      ((StringBuilder)localObject).append(type());
+      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, ((StringBuilder)localObject).toString());
     }
-    else
-    {
+    Object localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length != 0)) {
       try
       {
         int i = paramArrayOfQConfItem[0].jdField_a_of_type_Int;
@@ -74,75 +74,90 @@ public abstract class SpringFestivalBaseConfProcessor<T>
       }
       catch (Exception paramArrayOfQConfItem)
       {
-        if (localQQAppInterface == null) {
-          break label234;
+        if (localObject != null)
+        {
+          if ((paramArrayOfQConfItem instanceof JSONException)) {
+            SpringHbMonitorReporter.a(2, 5, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
+          } else {
+            SpringHbMonitorReporter.a(2, 4, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
+          }
+          SpringHbMonitorReporter.a((AppInterface)localObject, 1, 1, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, SpringHbMonitorReporter.a(type()));
         }
-      }
-      if ((paramArrayOfQConfItem instanceof JSONException)) {
-        SpringHbMonitorReporter.a(2, 5, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), localQQAppInterface.getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
-      }
-      for (;;)
-      {
-        SpringHbMonitorReporter.a(localQQAppInterface, 1, 1, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), localQQAppInterface.getCurrentAccountUin()), false, SpringHbMonitorReporter.a(type()));
-        label234:
         throw new QConfigureException(paramArrayOfQConfItem.getMessage());
-        SpringHbMonitorReporter.a(2, 4, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), localQQAppInterface.getCurrentAccountUin()), true, new String[] { QLog.getStackTraceString(paramArrayOfQConfItem.getCause()) });
       }
+    }
+    if (localObject != null) {
+      SpringHbMonitorReporter.a(2, 3, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[] { "parse config fail!" });
     }
     return null;
   }
   
   public void onReqFailed(int paramInt)
   {
-    int i = 0;
-    int j = 1;
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, "[onReqNoReceive] failCode=" + paramInt + " type: " + type());
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[onReqNoReceive] failCode=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" type: ");
+      ((StringBuilder)localObject).append(type());
+      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, ((StringBuilder)localObject).toString());
     }
     for (;;)
     {
       try
       {
-        QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-        if (localQQAppInterface != null)
-        {
-          if (paramInt != -1) {
-            break label169;
-          }
-          i = 1;
-          break label169;
-          SpringHbMonitorReporter.a(2, i, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), localQQAppInterface.getCurrentAccountUin()), true, new String[0]);
-          if (paramInt != -1) {
-            SpringHbMonitorReporter.a(localQQAppInterface, 1, 1, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), localQQAppInterface.getCurrentAccountUin()), false, SpringHbMonitorReporter.a(type()));
-          }
+        localObject = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
+        if (localObject == null) {
+          break label162;
         }
-        return;
+        if (paramInt != -1) {
+          break label163;
+        }
+        i = 1;
       }
       catch (Exception localException)
       {
         localException.printStackTrace();
+      }
+      SpringHbMonitorReporter.a(2, i, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), true, new String[0]);
+      if (paramInt != -1)
+      {
+        SpringHbMonitorReporter.a((AppInterface)localObject, 1, 1, type(), SpringHbMonitorReporter.a(type()), QConfigManager.a().a(type(), ((QQAppInterface)localObject).getCurrentAccountUin()), false, SpringHbMonitorReporter.a(type()));
         return;
       }
-      i = 2;
-      continue;
-      label169:
+      label162:
+      return;
+      label163:
+      int i = 0;
       if (i != 0) {
-        i = j;
+        i = 1;
+      } else {
+        i = 2;
       }
     }
   }
   
   public void onReqNoReceive()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, "[onUpdate] onReqNoReceive = " + type());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onUpdate] onReqNoReceive = ");
+      localStringBuilder.append(type());
+      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
   public void onUpdate(T paramT)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, "[onUpdate] " + type());
+    if (QLog.isColorLevel())
+    {
+      paramT = new StringBuilder();
+      paramT.append("[onUpdate] ");
+      paramT.append(type());
+      QLog.i("shua2021_SpringFestivalBaseConfProcessor", 2, paramT.toString());
     }
     try
     {
@@ -163,7 +178,7 @@ public abstract class SpringFestivalBaseConfProcessor<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalBaseConfProcessor
  * JD-Core Version:    0.7.0.1
  */

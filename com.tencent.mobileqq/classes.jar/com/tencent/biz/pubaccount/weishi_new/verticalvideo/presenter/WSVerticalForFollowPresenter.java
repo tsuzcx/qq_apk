@@ -4,6 +4,7 @@ import UserGrowth.stSimpleMetaFeed;
 import android.content.Intent;
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.util.SparseIntArray;
+import com.tencent.biz.pubaccount.weishi_new.data.IFetchDataRspListener;
 import com.tencent.biz.pubaccount.weishi_new.data.WSFeedDataManager;
 import com.tencent.biz.pubaccount.weishi_new.event.WSItemExposeEvent;
 import com.tencent.biz.pubaccount.weishi_new.event.WSSimpleBaseEvent;
@@ -15,7 +16,6 @@ import com.tencent.biz.pubaccount.weishi_new.player.WSPlayerParam;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageAdapter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.View;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.IVerticalRspListener;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.AbsWSVideoItemView;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemVideoAreaController;
@@ -51,14 +51,19 @@ public class WSVerticalForFollowPresenter
     return localArrayList;
   }
   
-  private void a(boolean paramBoolean1, boolean paramBoolean2, IVerticalRspListener paramIVerticalRspListener, long paramLong)
+  private void a(boolean paramBoolean1, boolean paramBoolean2, IFetchDataRspListener<WSVerticalItemData> paramIFetchDataRspListener, long paramLong)
   {
-    WSFeedDataManager.a().a(paramBoolean2, paramBoolean1, "", 10, paramLong, new WSVerticalForFollowPresenter.1(this, paramIVerticalRspListener, paramBoolean1, paramBoolean2));
+    WSFeedDataManager.a().a(paramBoolean2, paramBoolean1, "", 10, paramLong, new WSVerticalForFollowPresenter.1(this, paramIFetchDataRspListener, paramBoolean1, paramBoolean2));
   }
   
   public int a(int paramInt)
   {
     return WSFeedDataManager.a().jdField_a_of_type_AndroidUtilSparseIntArray.get(paramInt) + 1;
+  }
+  
+  public WSPlayerParam a()
+  {
+    return WSFeedDataManager.a().a();
   }
   
   public List<WSVerticalItemData> a(ArrayList paramArrayList)
@@ -94,7 +99,7 @@ public class WSVerticalForFollowPresenter
     this.jdField_a_of_type_AndroidContentIntent.putExtra("key_from", paramViewHolder.a());
     this.jdField_a_of_type_AndroidContentIntent.putExtra("key_play_scene", paramViewHolder.b());
     paramViewHolder.a(8193, this.jdField_a_of_type_AndroidContentIntent);
-    paramViewHolder = new WSItemExposeEvent(((WSVerticalItemData)paramViewHolder.a().a(paramInt)).a());
+    paramViewHolder = new WSItemExposeEvent(a(paramInt));
     WSSimpleEventBus.a().a(paramViewHolder);
   }
   
@@ -107,15 +112,15 @@ public class WSVerticalForFollowPresenter
     return true;
   }
   
-  public boolean e()
+  public boolean b()
   {
-    return false;
+    return true;
   }
   
-  public void h()
+  public void g()
   {
     Object localObject = a();
-    if ((this.c) && (localObject != null))
+    if ((this.d) && (localObject != null))
     {
       WSLog.b("WSVerticalForFollowPresenter", "onPause() back to follow page");
       localObject = ((WSVerticalPageContract.View)localObject).a().a();
@@ -129,34 +134,40 @@ public class WSVerticalForFollowPresenter
       WSPlayerAudioControl.a().a(false);
       return;
     }
-    super.h();
+    super.g();
   }
   
-  public void i()
+  public void h()
   {
-    super.i();
+    super.h();
     Object localObject = a();
-    if (localObject == null) {}
-    do
+    if (localObject == null) {
+      return;
+    }
+    localObject = ((WSVerticalPageContract.View)localObject).a();
+    if (localObject != null)
     {
-      do
-      {
-        return;
-        localObject = ((WSVerticalPageContract.View)localObject).a();
-      } while (localObject == null);
       localObject = ((WSPlayerManager)localObject).a();
-    } while (localObject == null);
-    ((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate = null;
-    ((WSPlayerParam)localObject).jdField_a_of_type_AndroidViewViewGroup = null;
-    WSFeedDataManager.a().a((WSPlayerParam)localObject);
-    localObject = new WSVideoPlayEvent();
-    ((WSVideoPlayEvent)localObject).mCurrentPosition = this.jdField_a_of_type_Int;
-    WSSimpleEventBus.a().a((WSSimpleBaseEvent)localObject);
+      if (localObject == null) {
+        return;
+      }
+      ((WSPlayerParam)localObject).jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerIWSPlayerUIDelegate = null;
+      ((WSPlayerParam)localObject).jdField_a_of_type_AndroidViewViewGroup = null;
+      WSFeedDataManager.a().a((WSPlayerParam)localObject);
+      localObject = new WSVideoPlayEvent();
+      ((WSVideoPlayEvent)localObject).mCurrentPosition = this.jdField_a_of_type_Int;
+      WSSimpleEventBus.a().a((WSSimpleBaseEvent)localObject);
+    }
+  }
+  
+  public boolean j()
+  {
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.presenter.WSVerticalForFollowPresenter
  * JD-Core Version:    0.7.0.1
  */

@@ -73,14 +73,15 @@ public class RenderBuffer
       arrayOfInt[0] = this.b;
       GLES20.glDeleteRenderbuffers(1, arrayOfInt, 0);
     }
-    if (this.jdField_a_of_type_Int > 0) {
-      GlUtil.deleteTexture(this.jdField_a_of_type_Int);
+    int i = this.jdField_a_of_type_Int;
+    if (i > 0) {
+      GlUtil.deleteTexture(i);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.ttpic.RenderBuffer
  * JD-Core Version:    0.7.0.1
  */

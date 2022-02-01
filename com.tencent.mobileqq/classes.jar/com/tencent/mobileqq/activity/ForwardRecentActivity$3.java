@@ -21,53 +21,65 @@ class ForwardRecentActivity$3
   public void onChanged()
   {
     super.onChanged();
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardEntranceActivity", 2, "onChanged() called " + System.identityHashCode(this.a));
-    }
-    if (this.a.e == ForwardRecentActivity.g)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      localObject1 = ForwardRecentActivity.a(this.a);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onChanged() called ");
+      ((StringBuilder)localObject1).append(System.identityHashCode(this.a));
+      QLog.d("ForwardOption.ForwardEntranceActivity", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (this.a.mReq == 2)
+    {
+      localObject1 = ForwardRecentActivity.access$100(this.a);
       this.a.getIntent().putParcelableArrayListExtra("result_set", (ArrayList)localObject1);
       this.a.setResult(-1);
       this.a.finish();
-    }
-    while (this.a.e != ForwardRecentActivity.f) {
       return;
     }
-    Object localObject1 = ForwardRecentActivity.a(this.a).getAdapter();
-    int j = ((ListAdapter)localObject1).getCount();
-    String str = this.a.getIntent().getStringExtra("key_direct_show_uin");
-    int k = this.a.getIntent().getIntExtra("key_direct_show_uin_type", 0);
-    if ((6000 == k) && (TextUtils.equals(AppConstants.DATALINE_PC_UIN, str)) && (ForwardRecentActivity.a(this.a) != null))
+    if (this.a.mReq == 1)
     {
-      ForwardRecentActivity.a(this.a).callOnClick();
-      return;
-    }
-    int i = 0;
-    label197:
-    Object localObject2;
-    if (i < j)
-    {
-      localObject2 = ((ListAdapter)localObject1).getItem(i);
-      if ((localObject2 instanceof ForwardRecentListAdapter.DisplayData)) {
-        break label227;
+      localObject1 = ForwardRecentActivity.access$200(this.a).getAdapter();
+      int k = ((ListAdapter)localObject1).getCount();
+      String str = this.a.getIntent().getStringExtra("key_direct_show_uin");
+      Object localObject2 = this.a.getIntent();
+      int j = 0;
+      int m = ((Intent)localObject2).getIntExtra("key_direct_show_uin_type", 0);
+      int i = j;
+      if (6000 == m)
+      {
+        i = j;
+        if (TextUtils.equals(AppConstants.DATALINE_PC_UIN, str))
+        {
+          i = j;
+          if (ForwardRecentActivity.access$300(this.a) != null)
+          {
+            ForwardRecentActivity.access$300(this.a).callOnClick();
+            return;
+          }
+        }
+      }
+      while (i < k)
+      {
+        localObject2 = ((ListAdapter)localObject1).getItem(i);
+        if ((localObject2 instanceof ForwardRecentListAdapter.DisplayData))
+        {
+          localObject2 = (ForwardRecentListAdapter.DisplayData)localObject2;
+          if ((((ForwardRecentListAdapter.DisplayData)localObject2).a != null) && (TextUtils.equals(((ForwardRecentListAdapter.DisplayData)localObject2).a.uin, str)) && (m == ((ForwardRecentListAdapter.DisplayData)localObject2).a.getType()))
+          {
+            localObject1 = ((ListAdapter)localObject1).getView(i, null, ForwardRecentActivity.access$200(this.a));
+            this.a.onListViewItemClickedInDefaultStatus((View)localObject1);
+            return;
+          }
+        }
+        i += 1;
       }
     }
-    label227:
-    do
-    {
-      i += 1;
-      break label197;
-      break;
-      localObject2 = (ForwardRecentListAdapter.DisplayData)localObject2;
-    } while ((((ForwardRecentListAdapter.DisplayData)localObject2).a == null) || (!TextUtils.equals(((ForwardRecentListAdapter.DisplayData)localObject2).a.uin, str)) || (k != ((ForwardRecentListAdapter.DisplayData)localObject2).a.getType()));
-    localObject1 = ((ListAdapter)localObject1).getView(i, null, ForwardRecentActivity.a(this.a));
-    this.a.a((View)localObject1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardRecentActivity.3
  * JD-Core Version:    0.7.0.1
  */

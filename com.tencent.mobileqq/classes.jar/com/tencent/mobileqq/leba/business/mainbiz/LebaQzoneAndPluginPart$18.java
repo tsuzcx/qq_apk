@@ -1,22 +1,25 @@
 package com.tencent.mobileqq.leba.business.mainbiz;
 
-import com.tencent.mobileqq.extendfriend.network.ExtendFriendObserver;
+import com.tencent.mobileqq.qqexpand.network.ExpandObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class LebaQzoneAndPluginPart$18
-  extends ExtendFriendObserver
+  extends ExpandObserver
 {
   LebaQzoneAndPluginPart$18(LebaQzoneAndPluginPart paramLebaQzoneAndPluginPart) {}
   
-  public void onUpdateRedPoint(int paramInt)
+  protected void a(int paramInt)
   {
-    QLog.i("LebaBusinessPartImpl", 1, "ExtendFriendObserver onUpdateRedPoint " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ExpandObserver onUpdateRedPoint ");
+    localStringBuilder.append(paramInt);
+    QLog.i("LebaBusinessPartImpl", 1, localStringBuilder.toString());
     this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.18
  * JD-Core Version:    0.7.0.1
  */

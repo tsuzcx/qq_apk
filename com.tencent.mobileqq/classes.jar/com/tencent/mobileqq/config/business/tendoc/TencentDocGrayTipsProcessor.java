@@ -54,7 +54,10 @@ public class TencentDocGrayTipsProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TencentDocGrayTipsProcessor", 1, "TENCENT_DOC_GRAY_TIPS failed, resultCode:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TENCENT_DOC_GRAY_TIPS failed, resultCode:");
+    localStringBuilder.append(paramInt);
+    QLog.d("TencentDocGrayTipsProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -64,7 +67,7 @@ public class TencentDocGrayTipsProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocGrayTipsProcessor
  * JD-Core Version:    0.7.0.1
  */

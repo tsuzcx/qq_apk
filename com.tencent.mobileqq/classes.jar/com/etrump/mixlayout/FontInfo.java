@@ -30,12 +30,18 @@ public class FontInfo
   
   public String toString()
   {
-    return "[id=" + this.jdField_a_of_type_Int + ",path=" + this.jdField_a_of_type_JavaLangString + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[id=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",path=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.etrump.mixlayout.FontInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -17,22 +17,31 @@ public final class StatLogger
   
   private String a()
   {
-    StackTraceElement[] arrayOfStackTraceElement = Thread.currentThread().getStackTrace();
-    if (arrayOfStackTraceElement == null) {}
-    for (;;)
-    {
+    Object localObject2 = Thread.currentThread().getStackTrace();
+    if (localObject2 == null) {
       return null;
-      int j = arrayOfStackTraceElement.length;
-      int i = 0;
-      while (i < j)
-      {
-        StackTraceElement localStackTraceElement = arrayOfStackTraceElement[i];
-        if ((!localStackTraceElement.isNativeMethod()) && (!localStackTraceElement.getClassName().equals(Thread.class.getName())) && (!localStackTraceElement.getClassName().equals(getClass().getName()))) {
-          return "[" + Thread.currentThread().getName() + "(" + Thread.currentThread().getId() + "): " + localStackTraceElement.getFileName() + ":" + localStackTraceElement.getLineNumber() + "]";
-        }
-        i += 1;
-      }
     }
+    int j = localObject2.length;
+    int i = 0;
+    while (i < j)
+    {
+      Object localObject1 = localObject2[i];
+      if ((!localObject1.isNativeMethod()) && (!localObject1.getClassName().equals(Thread.class.getName())) && (!localObject1.getClassName().equals(getClass().getName())))
+      {
+        localObject2 = new StringBuilder("[");
+        ((StringBuilder)localObject2).append(Thread.currentThread().getName());
+        ((StringBuilder)localObject2).append("(");
+        ((StringBuilder)localObject2).append(Thread.currentThread().getId());
+        ((StringBuilder)localObject2).append("): ");
+        ((StringBuilder)localObject2).append(localObject1.getFileName());
+        ((StringBuilder)localObject2).append(":");
+        ((StringBuilder)localObject2).append(localObject1.getLineNumber());
+        ((StringBuilder)localObject2).append("]");
+        return ((StringBuilder)localObject2).toString();
+      }
+      i += 1;
+    }
+    return null;
   }
   
   public final void d(Object paramObject)
@@ -44,19 +53,22 @@ public final class StatLogger
   
   public final void debug(Object paramObject)
   {
-    String str;
     if (this.c <= 3)
     {
-      str = a();
-      if (str != null) {
-        break label32;
+      String str = a();
+      if (str == null)
+      {
+        paramObject = paramObject.toString();
       }
-    }
-    label32:
-    for (paramObject = paramObject.toString();; paramObject = str + " - " + paramObject)
-    {
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(" - ");
+        localStringBuilder.append(paramObject);
+        paramObject = localStringBuilder.toString();
+      }
       Log.d(this.a, paramObject);
-      return;
     }
   }
   
@@ -76,19 +88,22 @@ public final class StatLogger
   
   public final void error(Object paramObject)
   {
-    String str;
     if (this.c <= 6)
     {
-      str = a();
-      if (str != null) {
-        break label33;
+      String str = a();
+      if (str == null)
+      {
+        paramObject = paramObject.toString();
       }
-    }
-    label33:
-    for (paramObject = paramObject.toString();; paramObject = str + " - " + paramObject)
-    {
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(" - ");
+        localStringBuilder.append(paramObject);
+        paramObject = localStringBuilder.toString();
+      }
       Log.e(this.a, paramObject);
-      return;
     }
   }
   
@@ -113,19 +128,22 @@ public final class StatLogger
   
   public final void info(Object paramObject)
   {
-    String str;
     if (this.c <= 4)
     {
-      str = a();
-      if (str != null) {
-        break label32;
+      String str = a();
+      if (str == null)
+      {
+        paramObject = paramObject.toString();
       }
-    }
-    label32:
-    for (paramObject = paramObject.toString();; paramObject = str + " - " + paramObject)
-    {
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(" - ");
+        localStringBuilder.append(paramObject);
+        paramObject = localStringBuilder.toString();
+      }
       Log.i(this.a, paramObject);
-      return;
     }
   }
   
@@ -158,19 +176,22 @@ public final class StatLogger
   
   public final void verbose(Object paramObject)
   {
-    String str;
     if (this.c <= 2)
     {
-      str = a();
-      if (str != null) {
-        break label32;
+      String str = a();
+      if (str == null)
+      {
+        paramObject = paramObject.toString();
       }
-    }
-    label32:
-    for (paramObject = paramObject.toString();; paramObject = str + " - " + paramObject)
-    {
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(" - ");
+        localStringBuilder.append(paramObject);
+        paramObject = localStringBuilder.toString();
+      }
       Log.v(this.a, paramObject);
-      return;
     }
   }
   
@@ -183,19 +204,22 @@ public final class StatLogger
   
   public final void warn(Object paramObject)
   {
-    String str;
     if (this.c <= 5)
     {
-      str = a();
-      if (str != null) {
-        break label32;
+      String str = a();
+      if (str == null)
+      {
+        paramObject = paramObject.toString();
       }
-    }
-    label32:
-    for (paramObject = paramObject.toString();; paramObject = str + " - " + paramObject)
-    {
+      else
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(" - ");
+        localStringBuilder.append(paramObject);
+        paramObject = localStringBuilder.toString();
+      }
       Log.w(this.a, paramObject);
-      return;
     }
   }
 }

@@ -47,7 +47,7 @@ public class o
   public static int k = 0;
   private static final int l = 60000;
   private static final int m = 1000000;
-  private static final AtomicInteger n = new AtomicInteger(60000 + new Random().nextInt(100000));
+  private static final AtomicInteger n = new AtomicInteger(new Random().nextInt(100000) + 60000);
   private static String o = "";
   private static String p = "";
   private static int q;
@@ -64,7 +64,7 @@ public class o
     {
       int i1 = n.incrementAndGet();
       if (i1 > 1000000) {
-        n.set(60000 + new Random().nextInt(100000));
+        n.set(new Random().nextInt(100000) + 60000);
       }
       return i1;
     }
@@ -74,7 +74,10 @@ public class o
   public static long a(Context paramContext, String paramString)
   {
     paramContext = a(paramContext);
-    paramContext = new File(paramContext + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(paramString);
+    paramContext = new File(localStringBuilder.toString());
     if (paramContext.exists()) {
       return a(paramContext);
     }
@@ -85,98 +88,94 @@ public class o
   public static long a(File paramFile)
   {
     // Byte code:
-    //   0: ldc2_w 130
-    //   3: lstore_1
-    //   4: lload_1
-    //   5: lstore_3
-    //   6: aload_0
-    //   7: ifnull +12 -> 19
-    //   10: aload_0
-    //   11: invokevirtual 122	java/io/File:exists	()Z
-    //   14: ifne +7 -> 21
-    //   17: lload_1
-    //   18: lstore_3
-    //   19: lload_3
-    //   20: lreturn
-    //   21: new 133	java/io/FileInputStream
-    //   24: dup
-    //   25: aload_0
-    //   26: invokespecial 136	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   29: astore 5
-    //   31: aload 5
-    //   33: astore_0
-    //   34: aload 5
-    //   36: invokestatic 139	com/tencent/mobileqq/msf/core/o:a	(Ljava/io/InputStream;)J
-    //   39: lstore_3
-    //   40: lload_3
-    //   41: lstore_1
-    //   42: lload_1
-    //   43: lstore_3
-    //   44: aload 5
-    //   46: ifnull -27 -> 19
-    //   49: aload 5
-    //   51: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   54: lload_1
-    //   55: lreturn
-    //   56: astore_0
-    //   57: aload_0
-    //   58: invokevirtual 145	java/io/IOException:printStackTrace	()V
-    //   61: lload_1
-    //   62: lreturn
-    //   63: astore 6
-    //   65: aconst_null
-    //   66: astore 5
+    //   0: aload_0
+    //   1: ifnull +116 -> 117
+    //   4: aload_0
+    //   5: invokevirtual 122	java/io/File:exists	()Z
+    //   8: ifne +7 -> 15
+    //   11: ldc2_w 130
+    //   14: lreturn
+    //   15: aconst_null
+    //   16: astore 5
+    //   18: aconst_null
+    //   19: astore_3
+    //   20: new 133	java/io/FileInputStream
+    //   23: dup
+    //   24: aload_0
+    //   25: invokespecial 136	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   28: astore_0
+    //   29: aload_0
+    //   30: invokestatic 139	com/tencent/mobileqq/msf/core/o:a	(Ljava/io/InputStream;)J
+    //   33: lstore_1
+    //   34: aload_0
+    //   35: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   38: lload_1
+    //   39: lreturn
+    //   40: astore_0
+    //   41: aload_0
+    //   42: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   45: lload_1
+    //   46: lreturn
+    //   47: astore 4
+    //   49: aload_0
+    //   50: astore_3
+    //   51: aload 4
+    //   53: astore_0
+    //   54: goto +45 -> 99
+    //   57: astore 4
+    //   59: goto +12 -> 71
+    //   62: astore_0
+    //   63: goto +36 -> 99
+    //   66: astore 4
     //   68: aload 5
     //   70: astore_0
-    //   71: aload 6
-    //   73: invokevirtual 146	java/lang/Exception:printStackTrace	()V
-    //   76: lload_1
-    //   77: lstore_3
-    //   78: aload 5
-    //   80: ifnull -61 -> 19
-    //   83: aload 5
-    //   85: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   88: ldc2_w 130
-    //   91: lreturn
-    //   92: astore_0
-    //   93: goto -36 -> 57
-    //   96: astore 5
-    //   98: aconst_null
-    //   99: astore_0
-    //   100: aload_0
-    //   101: ifnull +7 -> 108
-    //   104: aload_0
-    //   105: invokevirtual 142	java/io/FileInputStream:close	()V
-    //   108: aload 5
-    //   110: athrow
-    //   111: astore_0
-    //   112: aload_0
-    //   113: invokevirtual 145	java/io/IOException:printStackTrace	()V
-    //   116: goto -8 -> 108
-    //   119: astore 5
-    //   121: goto -21 -> 100
-    //   124: astore 6
-    //   126: goto -58 -> 68
+    //   71: aload_0
+    //   72: astore_3
+    //   73: aload 4
+    //   75: invokevirtual 146	java/lang/Exception:printStackTrace	()V
+    //   78: aload_0
+    //   79: ifnull +16 -> 95
+    //   82: aload_0
+    //   83: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   86: ldc2_w 130
+    //   89: lreturn
+    //   90: astore_0
+    //   91: aload_0
+    //   92: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   95: ldc2_w 130
+    //   98: lreturn
+    //   99: aload_3
+    //   100: ifnull +15 -> 115
+    //   103: aload_3
+    //   104: invokevirtual 142	java/io/FileInputStream:close	()V
+    //   107: goto +8 -> 115
+    //   110: astore_3
+    //   111: aload_3
+    //   112: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   115: aload_0
+    //   116: athrow
+    //   117: ldc2_w 130
+    //   120: lreturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	129	0	paramFile	File
-    //   3	74	1	l1	long
-    //   5	73	3	l2	long
-    //   29	55	5	localFileInputStream	java.io.FileInputStream
-    //   96	13	5	localObject1	Object
-    //   119	1	5	localObject2	Object
-    //   63	9	6	localException1	Exception
-    //   124	1	6	localException2	Exception
+    //   0	121	0	paramFile	File
+    //   33	13	1	l1	long
+    //   19	85	3	localFile	File
+    //   110	2	3	localIOException	IOException
+    //   47	5	4	localObject1	Object
+    //   57	1	4	localException1	Exception
+    //   66	8	4	localException2	Exception
+    //   16	53	5	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   49	54	56	java/io/IOException
-    //   21	31	63	java/lang/Exception
-    //   83	88	92	java/io/IOException
-    //   21	31	96	finally
-    //   104	108	111	java/io/IOException
-    //   34	40	119	finally
-    //   71	76	119	finally
-    //   34	40	124	java/lang/Exception
+    //   34	38	40	java/io/IOException
+    //   29	34	47	finally
+    //   29	34	57	java/lang/Exception
+    //   20	29	62	finally
+    //   73	78	62	finally
+    //   20	29	66	java/lang/Exception
+    //   82	86	90	java/io/IOException
+    //   103	107	110	java/io/IOException
   }
   
   public static long a(InputStream paramInputStream)
@@ -210,27 +209,38 @@ public class o
   {
     try
     {
-      String str = paramContext.getFilesDir().getParent();
-      return str;
+      localObject = paramContext.getFilesDir().getParent();
+      return localObject;
     }
     catch (Exception localException)
     {
-      try
-      {
-        if ((paramContext instanceof ContextWrapper)) {}
-        Object localObject;
-        for (paramContext = ((ContextWrapper)paramContext).getBaseContext();; paramContext = ((Field)localObject).get(paramContext))
-        {
-          localObject = paramContext.getClass().getDeclaredMethod("getDataDirFile", new Class[0]);
-          ((Method)localObject).setAccessible(true);
-          return ((File)((Method)localObject).invoke(paramContext, new Object[0])).getAbsolutePath();
-          localObject = ContextWrapper.class.getDeclaredField("mBase");
-          ((Field)localObject).setAccessible(true);
-        }
-        return null;
-      }
-      catch (Throwable paramContext) {}
+      Object localObject;
+      label10:
+      label85:
+      break label10;
     }
+    try
+    {
+      if ((paramContext instanceof ContextWrapper))
+      {
+        paramContext = ((ContextWrapper)paramContext).getBaseContext();
+      }
+      else
+      {
+        localObject = ContextWrapper.class.getDeclaredField("mBase");
+        ((Field)localObject).setAccessible(true);
+        paramContext = ((Field)localObject).get(paramContext);
+      }
+      localObject = paramContext.getClass().getDeclaredMethod("getDataDirFile", new Class[0]);
+      ((Method)localObject).setAccessible(true);
+      paramContext = ((File)((Method)localObject).invoke(paramContext, new Object[0])).getAbsolutePath();
+      return paramContext;
+    }
+    catch (Throwable paramContext)
+    {
+      break label85;
+    }
+    return null;
   }
   
   /* Error */
@@ -240,182 +250,195 @@ public class o
     //   0: new 284	java/util/Properties
     //   3: dup
     //   4: invokespecial 285	java/util/Properties:<init>	()V
-    //   7: astore_3
-    //   8: aload_0
-    //   9: invokevirtual 122	java/io/File:exists	()Z
-    //   12: ifne +8 -> 20
-    //   15: aload_0
-    //   16: invokevirtual 288	java/io/File:createNewFile	()Z
-    //   19: pop
-    //   20: aload_1
-    //   21: invokeinterface 294 1 0
-    //   26: astore_1
-    //   27: aload_1
-    //   28: invokeinterface 299 1 0
-    //   33: ifeq +103 -> 136
-    //   36: aload_1
-    //   37: invokeinterface 303 1 0
-    //   42: checkcast 305	com/tencent/qphone/base/remote/SimpleAccount
-    //   45: astore_2
-    //   46: aload_3
-    //   47: aload_2
-    //   48: invokevirtual 306	com/tencent/qphone/base/remote/SimpleAccount:getUin	()Ljava/lang/String;
-    //   51: aload_2
-    //   52: invokevirtual 309	com/tencent/qphone/base/remote/SimpleAccount:toStoreString	()Ljava/lang/String;
-    //   55: invokevirtual 313	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   58: pop
-    //   59: goto -32 -> 27
-    //   62: astore_3
-    //   63: aconst_null
+    //   7: astore 5
+    //   9: aconst_null
+    //   10: astore 4
+    //   12: aconst_null
+    //   13: astore_3
+    //   14: aload_3
+    //   15: astore_2
+    //   16: aload_0
+    //   17: invokevirtual 122	java/io/File:exists	()Z
+    //   20: ifne +10 -> 30
+    //   23: aload_3
+    //   24: astore_2
+    //   25: aload_0
+    //   26: invokevirtual 288	java/io/File:createNewFile	()Z
+    //   29: pop
+    //   30: aload_3
+    //   31: astore_2
+    //   32: aload_1
+    //   33: invokeinterface 294 1 0
+    //   38: astore_1
+    //   39: aload_3
+    //   40: astore_2
+    //   41: aload_1
+    //   42: invokeinterface 299 1 0
+    //   47: ifeq +37 -> 84
+    //   50: aload_3
+    //   51: astore_2
+    //   52: aload_1
+    //   53: invokeinterface 303 1 0
+    //   58: checkcast 305	com/tencent/qphone/base/remote/SimpleAccount
+    //   61: astore 6
+    //   63: aload_3
     //   64: astore_2
-    //   65: aload_2
-    //   66: astore_1
-    //   67: invokestatic 318	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   70: ifeq +45 -> 115
-    //   73: aload_2
-    //   74: astore_1
-    //   75: ldc 8
-    //   77: iconst_2
-    //   78: new 106	java/lang/StringBuilder
-    //   81: dup
-    //   82: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   85: ldc_w 320
-    //   88: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: aload_0
-    //   92: invokevirtual 323	java/io/File:getName	()Ljava/lang/String;
-    //   95: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: ldc_w 325
-    //   101: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: aload_3
-    //   105: invokevirtual 328	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   108: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   111: aload_3
-    //   112: invokestatic 331	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   115: iconst_0
-    //   116: ifeq +11 -> 127
-    //   119: new 333	java/lang/NullPointerException
-    //   122: dup
-    //   123: invokespecial 334	java/lang/NullPointerException:<init>	()V
-    //   126: athrow
-    //   127: aload_2
-    //   128: ifnull +7 -> 135
-    //   131: aload_2
-    //   132: invokevirtual 337	java/io/FileOutputStream:close	()V
-    //   135: return
-    //   136: new 336	java/io/FileOutputStream
-    //   139: dup
-    //   140: aload_0
-    //   141: invokespecial 338	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   144: astore_2
-    //   145: aload_2
-    //   146: astore_1
-    //   147: aload_3
-    //   148: aload_2
-    //   149: ldc 67
-    //   151: invokevirtual 342	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
-    //   154: aload_2
-    //   155: astore_1
-    //   156: aload_2
-    //   157: invokevirtual 337	java/io/FileOutputStream:close	()V
-    //   160: aload_2
-    //   161: astore_1
-    //   162: ldc 8
-    //   164: iconst_1
-    //   165: new 106	java/lang/StringBuilder
-    //   168: dup
-    //   169: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   172: ldc_w 344
-    //   175: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   178: aload_0
-    //   179: invokevirtual 323	java/io/File:getName	()Ljava/lang/String;
-    //   182: invokevirtual 111	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   185: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   188: invokestatic 347	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   191: iconst_0
-    //   192: ifeq +11 -> 203
-    //   195: new 333	java/lang/NullPointerException
-    //   198: dup
-    //   199: invokespecial 334	java/lang/NullPointerException:<init>	()V
-    //   202: athrow
-    //   203: aload_2
-    //   204: ifnull -69 -> 135
-    //   207: aload_2
-    //   208: invokevirtual 337	java/io/FileOutputStream:close	()V
-    //   211: return
-    //   212: astore_0
-    //   213: aload_0
-    //   214: invokevirtual 145	java/io/IOException:printStackTrace	()V
-    //   217: return
-    //   218: astore_0
-    //   219: aconst_null
-    //   220: astore_1
-    //   221: iconst_0
-    //   222: ifeq +11 -> 233
-    //   225: new 333	java/lang/NullPointerException
-    //   228: dup
-    //   229: invokespecial 334	java/lang/NullPointerException:<init>	()V
-    //   232: athrow
+    //   65: aload 5
+    //   67: aload 6
+    //   69: invokevirtual 306	com/tencent/qphone/base/remote/SimpleAccount:getUin	()Ljava/lang/String;
+    //   72: aload 6
+    //   74: invokevirtual 309	com/tencent/qphone/base/remote/SimpleAccount:toStoreString	()Ljava/lang/String;
+    //   77: invokevirtual 313	java/util/Properties:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   80: pop
+    //   81: goto -42 -> 39
+    //   84: aload_3
+    //   85: astore_2
+    //   86: new 315	java/io/FileOutputStream
+    //   89: dup
+    //   90: aload_0
+    //   91: invokespecial 316	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   94: astore_1
+    //   95: aload 5
+    //   97: aload_1
+    //   98: ldc 67
+    //   100: invokevirtual 320	java/util/Properties:store	(Ljava/io/OutputStream;Ljava/lang/String;)V
+    //   103: aload_1
+    //   104: invokevirtual 321	java/io/FileOutputStream:close	()V
+    //   107: new 104	java/lang/StringBuilder
+    //   110: dup
+    //   111: invokespecial 105	java/lang/StringBuilder:<init>	()V
+    //   114: astore_2
+    //   115: aload_2
+    //   116: ldc_w 323
+    //   119: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: pop
+    //   123: aload_2
+    //   124: aload_0
+    //   125: invokevirtual 326	java/io/File:getName	()Ljava/lang/String;
+    //   128: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: pop
+    //   132: ldc 8
+    //   134: iconst_1
+    //   135: aload_2
+    //   136: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   139: invokestatic 331	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   142: aload_1
+    //   143: invokevirtual 321	java/io/FileOutputStream:close	()V
+    //   146: return
+    //   147: astore_0
+    //   148: aload_0
+    //   149: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   152: return
+    //   153: astore_0
+    //   154: aload_1
+    //   155: astore_2
+    //   156: goto +100 -> 256
+    //   159: astore_3
+    //   160: goto +11 -> 171
+    //   163: astore_0
+    //   164: goto +92 -> 256
+    //   167: astore_3
+    //   168: aload 4
+    //   170: astore_1
+    //   171: aload_1
+    //   172: astore_2
+    //   173: invokestatic 334	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   176: ifeq +71 -> 247
+    //   179: aload_1
+    //   180: astore_2
+    //   181: new 104	java/lang/StringBuilder
+    //   184: dup
+    //   185: invokespecial 105	java/lang/StringBuilder:<init>	()V
+    //   188: astore 4
+    //   190: aload_1
+    //   191: astore_2
+    //   192: aload 4
+    //   194: ldc_w 336
+    //   197: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   200: pop
+    //   201: aload_1
+    //   202: astore_2
+    //   203: aload 4
+    //   205: aload_0
+    //   206: invokevirtual 326	java/io/File:getName	()Ljava/lang/String;
+    //   209: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: pop
+    //   213: aload_1
+    //   214: astore_2
+    //   215: aload 4
+    //   217: ldc_w 338
+    //   220: invokevirtual 109	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   223: pop
+    //   224: aload_1
+    //   225: astore_2
+    //   226: aload 4
+    //   228: aload_3
+    //   229: invokevirtual 341	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   232: pop
     //   233: aload_1
-    //   234: ifnull +7 -> 241
-    //   237: aload_1
-    //   238: invokevirtual 337	java/io/FileOutputStream:close	()V
-    //   241: aload_0
-    //   242: athrow
-    //   243: astore_2
-    //   244: aload_2
-    //   245: invokevirtual 145	java/io/IOException:printStackTrace	()V
-    //   248: goto -15 -> 233
-    //   251: astore_1
-    //   252: aload_1
-    //   253: invokevirtual 145	java/io/IOException:printStackTrace	()V
-    //   256: goto -15 -> 241
-    //   259: astore_0
-    //   260: aload_0
-    //   261: invokevirtual 145	java/io/IOException:printStackTrace	()V
-    //   264: goto -137 -> 127
-    //   267: astore_0
-    //   268: goto -55 -> 213
-    //   271: astore_0
-    //   272: aload_0
-    //   273: invokevirtual 145	java/io/IOException:printStackTrace	()V
-    //   276: goto -73 -> 203
-    //   279: astore_0
-    //   280: goto -59 -> 221
-    //   283: astore_3
-    //   284: goto -219 -> 65
+    //   234: astore_2
+    //   235: ldc 8
+    //   237: iconst_2
+    //   238: aload 4
+    //   240: invokevirtual 115	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   243: aload_3
+    //   244: invokestatic 344	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   247: aload_1
+    //   248: ifnull +7 -> 255
+    //   251: aload_1
+    //   252: invokevirtual 321	java/io/FileOutputStream:close	()V
+    //   255: return
+    //   256: aload_2
+    //   257: ifnull +15 -> 272
+    //   260: aload_2
+    //   261: invokevirtual 321	java/io/FileOutputStream:close	()V
+    //   264: goto +8 -> 272
+    //   267: astore_1
+    //   268: aload_1
+    //   269: invokevirtual 145	java/io/IOException:printStackTrace	()V
+    //   272: goto +5 -> 277
+    //   275: aload_0
+    //   276: athrow
+    //   277: goto -2 -> 275
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	287	0	paramFile	File
-    //   0	287	1	paramList	List
-    //   45	163	2	localObject	Object
-    //   243	2	2	localIOException	IOException
-    //   7	40	3	localProperties	Properties
-    //   62	86	3	localException1	Exception
-    //   283	1	3	localException2	Exception
+    //   0	280	0	paramFile	File
+    //   0	280	1	paramList	List
+    //   15	246	2	localObject1	Object
+    //   13	72	3	localObject2	Object
+    //   159	1	3	localException1	Exception
+    //   167	77	3	localException2	Exception
+    //   10	229	4	localStringBuilder	StringBuilder
+    //   7	89	5	localProperties	Properties
+    //   61	12	6	localSimpleAccount	SimpleAccount
     // Exception table:
     //   from	to	target	type
-    //   8	20	62	java/lang/Exception
-    //   20	27	62	java/lang/Exception
-    //   27	59	62	java/lang/Exception
-    //   136	145	62	java/lang/Exception
-    //   207	211	212	java/io/IOException
-    //   8	20	218	finally
-    //   20	27	218	finally
-    //   27	59	218	finally
-    //   136	145	218	finally
-    //   225	233	243	java/io/IOException
-    //   237	241	251	java/io/IOException
-    //   119	127	259	java/io/IOException
-    //   131	135	267	java/io/IOException
-    //   195	203	271	java/io/IOException
-    //   67	73	279	finally
-    //   75	115	279	finally
-    //   147	154	279	finally
-    //   156	160	279	finally
-    //   162	191	279	finally
-    //   147	154	283	java/lang/Exception
-    //   156	160	283	java/lang/Exception
-    //   162	191	283	java/lang/Exception
+    //   142	146	147	java/io/IOException
+    //   251	255	147	java/io/IOException
+    //   95	142	153	finally
+    //   95	142	159	java/lang/Exception
+    //   16	23	163	finally
+    //   25	30	163	finally
+    //   32	39	163	finally
+    //   41	50	163	finally
+    //   52	63	163	finally
+    //   65	81	163	finally
+    //   86	95	163	finally
+    //   173	179	163	finally
+    //   181	190	163	finally
+    //   192	201	163	finally
+    //   203	213	163	finally
+    //   215	224	163	finally
+    //   226	233	163	finally
+    //   235	247	163	finally
+    //   16	23	167	java/lang/Exception
+    //   25	30	167	java/lang/Exception
+    //   32	39	167	java/lang/Exception
+    //   41	50	167	java/lang/Exception
+    //   52	63	167	java/lang/Exception
+    //   65	81	167	java/lang/Exception
+    //   86	95	167	java/lang/Exception
+    //   260	264	267	java/io/IOException
   }
   
   public static void a(String paramString)
@@ -451,30 +474,26 @@ public class o
   
   private static void a(String paramString, List paramList)
   {
-    int i1 = 1;
-    for (;;)
+    label61:
+    for (int i1 = 1;; i1 = 0)
     {
-      if (i1 != 0)
-      {
-        Iterator localIterator = paramList.iterator();
-        i1 = 0;
-        for (;;)
-        {
-          if (!localIterator.hasNext()) {
-            break label64;
-          }
-          if (((SimpleAccount)localIterator.next()).getUin().equals(paramString))
-          {
-            paramList.remove(i1);
-            i1 = 1;
-            break;
-          }
-          i1 += 1;
-        }
+      if (i1 == 0) {
+        return;
       }
-      return;
-      label64:
+      Iterator localIterator = paramList.iterator();
       i1 = 0;
+      for (;;)
+      {
+        if (!localIterator.hasNext()) {
+          break label61;
+        }
+        if (((SimpleAccount)localIterator.next()).getUin().equals(paramString))
+        {
+          paramList.remove(i1);
+          break;
+        }
+        i1 += 1;
+      }
     }
   }
   
@@ -485,7 +504,10 @@ public class o
     int i1 = 0;
     while (i1 < 12)
     {
-      str = str + String.valueOf(localRandom.nextInt(10));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(String.valueOf(localRandom.nextInt(10)));
+      str = localStringBuilder.toString();
       i1 += 1;
     }
     return str;
@@ -501,212 +523,243 @@ public class o
   
   public static void c()
   {
-    for (;;)
+    Object localObject8 = null;
+    try
     {
+      localObject1 = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
       try
       {
-        localObject1 = (TelephonyManager)BaseApplication.getContext().getSystemService("phone");
-      }
-      catch (Exception localException4)
-      {
-        Object localObject1;
-        Object localObject3;
-        Object localObject5;
-        Object localObject2 = null;
-        continue;
-        Object localObject4 = null;
-        continue;
-        localObject2 = null;
-        continue;
-      }
-      try
-      {
-        localObject3 = ((TelephonyManager)localObject1).getSubscriberId();
-        if (localObject3 != null)
+        Object localObject4 = ((TelephonyManager)localObject1).getSubscriberId();
+        if (localObject4 != null)
         {
-          t = (String)localObject3;
-          u = (String)localObject3;
+          t = (String)localObject4;
+          u = (String)localObject4;
         }
-        localObject3 = ((TelephonyManager)localObject1).getNetworkOperatorName();
-        if (localObject3 != null) {
-          w = (String)localObject3;
+        localObject4 = ((TelephonyManager)localObject1).getNetworkOperatorName();
+        if (localObject4 != null) {
+          w = (String)localObject4;
         }
         o = ((TelephonyManager)localObject1).getNetworkCountryIso();
         p = ((TelephonyManager)localObject1).getSimCountryIso();
-        localObject3 = ((TelephonyManager)localObject1).getCellLocation();
-        if (!(localObject3 instanceof CdmaCellLocation)) {
-          continue;
-        }
-        localObject3 = (CdmaCellLocation)((TelephonyManager)localObject1).getCellLocation();
-        localObject5 = localObject1;
-        if (localObject3 != null)
+        localObject4 = ((TelephonyManager)localObject1).getCellLocation();
+        if ((localObject4 instanceof CdmaCellLocation))
         {
-          q = ((CdmaCellLocation)localObject3).getBaseStationId();
-          localObject5 = localObject1;
+          localObject4 = (CdmaCellLocation)((TelephonyManager)localObject1).getCellLocation();
+          localObject7 = localObject1;
+          if (localObject4 != null)
+          {
+            q = ((CdmaCellLocation)localObject4).getBaseStationId();
+            localObject7 = localObject1;
+          }
+        }
+        else
+        {
+          localObject7 = localObject1;
+          if ((localObject4 instanceof GsmCellLocation))
+          {
+            localObject4 = (GsmCellLocation)((TelephonyManager)localObject1).getCellLocation();
+            localObject7 = localObject1;
+            if (localObject4 != null)
+            {
+              q = ((GsmCellLocation)localObject4).getCid();
+              localObject7 = localObject1;
+            }
+          }
         }
       }
-      catch (Exception localException3)
-      {
-        try
-        {
-          k = 0;
-          if (!new File(MsfCore.getIMEIPath()).exists()) {
-            continue;
-          }
-          localObject3 = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath()).getProperty("imei");
-          if (localObject3 != null)
-          {
-            localObject1 = localObject3;
-            if (((String)localObject3).length() != 0) {}
-          }
-          else
-          {
-            Thread.sleep(200L);
-            localObject1 = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath()).getProperty("imei", null);
-          }
-          k = 1;
-          localObject3 = localObject1;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("MSF.C.Util", 2, "read imei from file " + MsfCore.getIMEIPath() + ", imei:" + (String)localObject1);
-            localObject3 = localObject1;
-          }
-          localSharedPreferences = BaseApplication.getContext().getSharedPreferences("MSF.C.Util", 0);
-          if ((localObject3 != null) && (((String)localObject3).length() != 0)) {
-            continue;
-          }
-          localObject3 = localSharedPreferences.getString("sp_imei", null);
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.Util", 2, "read imei from sharepreference:" + (String)localObject3);
-          }
-          if (localObject3 != null)
-          {
-            i1 = ((String)localObject3).length();
-            if (i1 != 0) {
-              continue;
-            }
-          }
-          if (localObject5 == null) {
-            continue;
-          }
-        }
-        catch (Exception localException1)
-        {
-          QLog.d("MSF.C.Util", 1, "read sys imei error " + localException1, localException1);
-          continue;
-          k = 2;
-          continue;
-          k = 1;
-          continue;
-        }
-        try
-        {
-          if (Build.VERSION.SDK_INT > 28)
-          {
-            localObject1 = Settings.System.getString(BaseApplication.getContext().getContentResolver(), "android_id");
-            if ((localObject1 == null) || (((String)localObject1).length() <= 0)) {
-              continue;
-            }
-            k = 3;
-            localObject3 = localObject1;
-            if (QLog.isColorLevel())
-            {
-              QLog.d("MSF.C.Util", 2, "read sys imei:" + (String)localObject1);
-              localObject3 = localObject1;
-            }
-            a((String)localObject3);
-            localObject1 = localSharedPreferences.edit();
-            ((SharedPreferences.Editor)localObject1).putString("sp_imei", (String)localObject3);
-            ((SharedPreferences.Editor)localObject1).commit();
-            s = (String)localObject3;
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.C.Util", 1, "save imei:" + s + ",with order:" + k);
-            }
-            v = "testrevision";
-          }
-        }
-        catch (SecurityException localSecurityException)
-        {
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-        }
-        try
-        {
-          localObject1 = BaseApplication.getContext().getAssets().open("revision.txt");
-          try
-          {
-            localObject3 = new byte[64];
-            i1 = ((InputStream)localObject1).read((byte[])localObject3, 0, 64);
-            if (i1 != -1)
-            {
-              v = new String((byte[])localObject3, 0, i1);
-              if (QLog.isColorLevel()) {
-                QLog.d("MSF.C.Util", 2, "revision:" + v);
-              }
-            }
-            return;
-          }
-          catch (IOException localIOException)
-          {
-            QLog.d("MSF.C.Util", 1, "get revision IOException " + localIOException.getMessage());
-            return;
-          }
-          localObject5 = localObject1;
-          if (!(localObject3 instanceof GsmCellLocation)) {
-            continue;
-          }
-          localObject3 = (GsmCellLocation)((TelephonyManager)localObject1).getCellLocation();
-          localObject5 = localObject1;
-          if (localObject3 == null) {
-            continue;
-          }
-          q = ((GsmCellLocation)localObject3).getCid();
-          localObject5 = localObject1;
-        }
-        catch (Exception localException2)
-        {
-          QLog.d("MSF.C.Util", 1, "get revision error " + localException2.getMessage());
-          return;
-        }
-        localException3 = localException3;
-        QLog.d("MSF.C.Util", 1, "get imsi error " + localException3, localException3);
-        localObject5 = localObject1;
-        continue;
-        if (t.length() <= 5) {
-          continue;
-        }
-        t = t.substring(0, 5);
-        continue;
-        if (Build.VERSION.SDK_INT >= 26) {
-          continue;
-        }
-        localObject1 = localObject5.getDeviceId();
-        continue;
-        localObject1 = localObject5.getImei();
-      }
+      catch (Exception localException3) {}
+      localObject7 = new StringBuilder();
     }
-    if (t == null)
+    catch (Exception localException4)
     {
+      localObject1 = null;
+    }
+    ((StringBuilder)localObject7).append("get imsi error ");
+    ((StringBuilder)localObject7).append(localException4);
+    QLog.d("MSF.C.Util", 1, ((StringBuilder)localObject7).toString(), localException4);
+    Object localObject7 = localObject1;
+    Object localObject1 = t;
+    if (localObject1 == null) {
       t = "";
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.Util", 2, "imsi:" + t + " networkOperatorName:" + w);
-      }
+    } else if (((String)localObject1).length() > 5) {
+      t = t.substring(0, 5);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("imsi:");
+      ((StringBuilder)localObject1).append(t);
+      ((StringBuilder)localObject1).append(" networkOperatorName:");
+      ((StringBuilder)localObject1).append(w);
+      QLog.d("MSF.C.Util", 2, ((StringBuilder)localObject1).toString());
     }
     for (;;)
     {
-      SharedPreferences localSharedPreferences;
       int i1;
-      QLog.d("MSF.C.Util", 2, "read sys imei SecurityException=", localSecurityException);
-      break;
-      String str1 = m();
-      k = 4;
-      String str2 = str1;
-      if (QLog.isColorLevel())
+      try
       {
-        QLog.d("MSF.C.Util", 2, "load imei:" + str1);
-        str2 = str1;
+        k = 0;
+        if (!new File(MsfCore.getIMEIPath()).exists()) {
+          break label981;
+        }
+        localObject1 = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath()).getProperty("imei");
+        if (localObject1 != null) {
+          if (((String)localObject1).length() != 0) {
+            break label978;
+          }
+        }
+        Thread.sleep(200L);
+        localObject1 = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath()).getProperty("imei", null);
+        k = 1;
+        Object localObject5 = localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject5 = new StringBuilder();
+          ((StringBuilder)localObject5).append("read imei from file ");
+          ((StringBuilder)localObject5).append(MsfCore.getIMEIPath());
+          ((StringBuilder)localObject5).append(", imei:");
+          ((StringBuilder)localObject5).append((String)localObject1);
+          QLog.d("MSF.C.Util", 2, ((StringBuilder)localObject5).toString());
+          localObject5 = localObject1;
+        }
+        SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("MSF.C.Util", 0);
+        if ((localObject5 != null) && (((String)localObject5).length() != 0))
+        {
+          k = 1;
+          localObject1 = localObject5;
+        }
+        else
+        {
+          localObject1 = localSharedPreferences.getString("sp_imei", null);
+          if (QLog.isColorLevel())
+          {
+            localObject5 = new StringBuilder();
+            ((StringBuilder)localObject5).append("read imei from sharepreference:");
+            ((StringBuilder)localObject5).append((String)localObject1);
+            QLog.d("MSF.C.Util", 2, ((StringBuilder)localObject5).toString());
+          }
+          if (localObject1 != null)
+          {
+            i1 = ((String)localObject1).length();
+            if (i1 != 0) {}
+          }
+          else if (localObject7 != null)
+          {
+            try
+            {
+              if (Build.VERSION.SDK_INT > 28) {
+                localObject1 = Settings.System.getString(BaseApplication.getContext().getContentResolver(), "android_id");
+              } else if (Build.VERSION.SDK_INT < 26) {
+                localObject1 = ((TelephonyManager)localObject7).getDeviceId();
+              } else {
+                localObject1 = ((TelephonyManager)localObject7).getImei();
+              }
+            }
+            catch (SecurityException localSecurityException)
+            {
+              localObject1 = localObject8;
+              if (QLog.isColorLevel())
+              {
+                QLog.d("MSF.C.Util", 2, "read sys imei SecurityException=", localSecurityException);
+                localObject1 = localObject8;
+              }
+            }
+            if ((localObject1 != null) && (((String)localObject1).length() > 0))
+            {
+              k = 3;
+              localObject6 = localObject1;
+              if (!QLog.isColorLevel()) {
+                break label986;
+              }
+              localObject6 = new StringBuilder();
+              ((StringBuilder)localObject6).append("read sys imei:");
+              ((StringBuilder)localObject6).append((String)localObject1);
+              QLog.d("MSF.C.Util", 2, ((StringBuilder)localObject6).toString());
+              localObject6 = localObject1;
+              break label986;
+            }
+            localObject1 = m();
+            k = 4;
+            localObject6 = localObject1;
+            if (!QLog.isColorLevel()) {
+              break label986;
+            }
+            localObject6 = new StringBuilder();
+            ((StringBuilder)localObject6).append("load imei:");
+            ((StringBuilder)localObject6).append((String)localObject1);
+            QLog.d("MSF.C.Util", 2, ((StringBuilder)localObject6).toString());
+            localObject6 = localObject1;
+            break label986;
+          }
+          k = 2;
+          a((String)localObject1);
+        }
+        localObject6 = localSharedPreferences.edit();
+        ((SharedPreferences.Editor)localObject6).putString("sp_imei", (String)localObject1);
+        ((SharedPreferences.Editor)localObject6).commit();
+        s = (String)localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("save imei:");
+          ((StringBuilder)localObject1).append(s);
+          ((StringBuilder)localObject1).append(",with order:");
+          ((StringBuilder)localObject1).append(k);
+          QLog.d("MSF.C.Util", 1, ((StringBuilder)localObject1).toString());
+        }
       }
+      catch (Exception localException1)
+      {
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append("read sys imei error ");
+        ((StringBuilder)localObject6).append(localException1);
+        QLog.d("MSF.C.Util", 1, ((StringBuilder)localObject6).toString(), localException1);
+      }
+      v = "testrevision";
+      try
+      {
+        Object localObject2 = BaseApplication.getContext().getAssets().open("revision.txt");
+        try
+        {
+          localObject6 = new byte[64];
+          i1 = ((InputStream)localObject2).read((byte[])localObject6, 0, 64);
+          if (i1 != -1)
+          {
+            v = new String((byte[])localObject6, 0, i1);
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("revision:");
+              ((StringBuilder)localObject2).append(v);
+              QLog.d("MSF.C.Util", 2, ((StringBuilder)localObject2).toString());
+              return;
+            }
+          }
+        }
+        catch (IOException localIOException)
+        {
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append("get revision IOException ");
+          ((StringBuilder)localObject6).append(localIOException.getMessage());
+          QLog.d("MSF.C.Util", 1, ((StringBuilder)localObject6).toString());
+          return;
+        }
+        return;
+      }
+      catch (Exception localException2)
+      {
+        localObject6 = new StringBuilder();
+        ((StringBuilder)localObject6).append("get revision error ");
+        ((StringBuilder)localObject6).append(localException2.getMessage());
+        QLog.d("MSF.C.Util", 1, ((StringBuilder)localObject6).toString());
+      }
+      label978:
+      continue;
+      label981:
+      Object localObject6 = null;
+      continue;
+      label986:
+      Object localObject3 = localObject6;
     }
   }
   
@@ -757,61 +810,65 @@ public class o
   
   public static String m()
   {
-    String str1 = null;
     Object localObject = new File(MsfCore.getIMEIPath());
-    StringBuffer localStringBuffer;
-    String str2;
-    try
-    {
-      if (((File)localObject).exists()) {
-        str1 = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath()).getProperty("imei");
-      }
-      if (str1 != null)
-      {
-        i1 = str1.length();
-        if (i1 > 0) {
-          return str1;
-        }
-      }
-    }
-    catch (Exception localException1)
-    {
-      QLog.d("MSF.C.Util", 1, "load sys imei error", localException1);
-      localStringBuffer = new StringBuffer();
-      int i1 = 0;
-      while (i1 < 15)
-      {
-        localStringBuffer.append(new Random().nextInt(10));
-        i1 += 1;
-      }
-      str2 = localStringBuffer.toString();
-    }
     for (;;)
     {
       try
       {
-        if (!((File)localObject).exists()) {
-          ((File)localObject).createNewFile();
+        if (((File)localObject).exists())
+        {
+          String str1 = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath()).getProperty("imei");
+          if (str1 != null)
+          {
+            i1 = str1.length();
+            if (i1 > 0) {
+              return str1;
+            }
+          }
         }
-        if (!((File)localObject).exists()) {
+      }
+      catch (Exception localException1)
+      {
+        QLog.d("MSF.C.Util", 1, "load sys imei error", localException1);
+        localStringBuffer = new StringBuffer();
+        int i1 = 0;
+        if (i1 < 15)
+        {
+          localStringBuffer.append(new Random().nextInt(10));
+          i1 += 1;
           continue;
         }
-        localObject = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath());
-        ((Properties)localObject).put("imei", str2);
-        MsfSdkUtils.saveConfig(MsfCore.getIMEIPath(), (Properties)localObject);
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.Util", 2, "write imei " + str2);
+        String str2 = localStringBuffer.toString();
+        try
+        {
+          if (!((File)localObject).exists()) {
+            ((File)localObject).createNewFile();
+          }
+          if (((File)localObject).exists())
+          {
+            localObject = MsfSdkUtils.loadConfig(MsfCore.getIMEIPath());
+            ((Properties)localObject).put("imei", str2);
+            MsfSdkUtils.saveConfig(MsfCore.getIMEIPath(), (Properties)localObject);
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("write imei ");
+              ((StringBuilder)localObject).append(str2);
+              QLog.d("MSF.C.Util", 2, ((StringBuilder)localObject).toString());
+            }
+          }
+          else if (QLog.isColorLevel())
+          {
+            QLog.d("MSF.C.Util", 2, "can not create imei file");
+          }
         }
+        catch (Exception localException2)
+        {
+          QLog.d("MSF.C.Util", 1, "load imei error", localException2);
+        }
+        return localStringBuffer.toString();
       }
-      catch (Exception localException2)
-      {
-        QLog.d("MSF.C.Util", 1, "load imei error", localException2);
-        continue;
-      }
-      return localStringBuffer.toString();
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.Util", 2, "can not create imei file");
-      }
+      StringBuffer localStringBuffer = null;
     }
   }
   
@@ -819,32 +876,39 @@ public class o
   {
     try
     {
-      NetworkInterface localNetworkInterface;
-      InetAddress localInetAddress;
       do
       {
-        localObject = NetworkInterface.getNetworkInterfaces();
+        localObject3 = NetworkInterface.getNetworkInterfaces();
         Enumeration localEnumeration;
         while (!localEnumeration.hasMoreElements())
         {
           do
           {
-            if ((localObject == null) || (!((Enumeration)localObject).hasMoreElements())) {
+            if ((localObject3 == null) || (!((Enumeration)localObject3).hasMoreElements())) {
               break;
             }
-            localNetworkInterface = (NetworkInterface)((Enumeration)localObject).nextElement();
-          } while (localNetworkInterface == null);
-          localEnumeration = localNetworkInterface.getInetAddresses();
+            localObject1 = (NetworkInterface)((Enumeration)localObject3).nextElement();
+          } while (localObject1 == null);
+          localEnumeration = ((NetworkInterface)localObject1).getInetAddresses();
         }
-        localInetAddress = (InetAddress)localEnumeration.nextElement();
-      } while ((localInetAddress == null) || (localInetAddress.isLoopbackAddress()) || (localInetAddress.isAnyLocalAddress()) || (localInetAddress.isLinkLocalAddress()));
-      Object localObject = localNetworkInterface.getName() + ":" + localInetAddress.getHostAddress();
-      return localObject;
+        localObject2 = (InetAddress)localEnumeration.nextElement();
+      } while ((localObject2 == null) || (((InetAddress)localObject2).isLoopbackAddress()) || (((InetAddress)localObject2).isAnyLocalAddress()) || (((InetAddress)localObject2).isLinkLocalAddress()));
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(((NetworkInterface)localObject1).getName());
+      ((StringBuilder)localObject3).append(":");
+      ((StringBuilder)localObject3).append(((InetAddress)localObject2).getHostAddress());
+      Object localObject1 = ((StringBuilder)localObject3).toString();
+      return localObject1;
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("MSF.C.Util", 2, "getDeviceIp error " + localException.toString(), localException);
+      Object localObject2;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getDeviceIp error ");
+        ((StringBuilder)localObject2).append(localException.toString());
+        QLog.w("MSF.C.Util", 2, ((StringBuilder)localObject2).toString(), localException);
       }
     }
     return "0";
@@ -852,7 +916,7 @@ public class o
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.o
  * JD-Core Version:    0.7.0.1
  */

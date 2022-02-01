@@ -1,8 +1,9 @@
 package com.tencent.mobileqq.activity;
 
-import android.text.Editable;
-import android.widget.EditText;
+import android.text.TextUtils;
 import com.tencent.mobileqq.util.Utils;
+import com.tencent.mobileqq.widget.VerifyCodeView;
+import com.tencent.qphone.base.util.QLog;
 
 class RegisterVerifyCodeActivity$4
   implements Runnable
@@ -11,44 +12,27 @@ class RegisterVerifyCodeActivity$4
   
   public void run()
   {
-    int j = 0;
+    QLog.d("RegisterVerifyCodeActivity", 1, "identifying code auto-fill start");
     String str = Utils.a(this.a, this.b);
-    if ((str != null) && (str.length() == 6) && (RegisterVerifyCodeActivity.a(this.this$0) != null) && (!str.equals(RegisterVerifyCodeActivity.a(this.this$0))))
+    if ((str != null) && (str.length() == 6) && (RegisterVerifyCodeActivity.a(this.this$0) != null))
     {
-      RegisterVerifyCodeActivity.e(this.this$0, str);
-      i = 0;
-      if (i >= 6) {
-        break label160;
-      }
-      Editable localEditable = RegisterVerifyCodeActivity.a(this.this$0)[i].getText();
-      if ((localEditable == null) || (localEditable.toString().length() <= 0)) {}
-    }
-    label160:
-    for (int i = 0;; i = 1)
-    {
-      if (i != 0)
+      QLog.d("RegisterVerifyCodeActivity", 1, new Object[] { "get identifying code: ", str });
+      if (!str.equals(RegisterVerifyCodeActivity.a(this.this$0)))
       {
-        i = j;
-        for (;;)
-        {
-          if (i < 6)
-          {
-            RegisterVerifyCodeActivity.a(this.this$0)[i].setText(str.substring(i, i + 1));
-            i += 1;
-            continue;
-            i += 1;
-            break;
-          }
+        if (!TextUtils.isEmpty(RegisterVerifyCodeActivity.a(this.this$0).a())) {
+          return;
         }
-        RegisterVerifyCodeActivity.a(this.this$0)[5].setSelection(1);
+        RegisterVerifyCodeActivity.b(this.this$0, str);
+        RegisterVerifyCodeActivity.a(this.this$0).setCode(str);
       }
       return;
     }
+    QLog.e("RegisterVerifyCodeActivity", 1, "identifying code empty or invalid, auto-fill failed.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity.4
  * JD-Core Version:    0.7.0.1
  */

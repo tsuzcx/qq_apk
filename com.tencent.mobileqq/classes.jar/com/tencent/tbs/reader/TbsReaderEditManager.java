@@ -13,8 +13,9 @@ public class TbsReaderEditManager
   public void destroy()
   {
     super.destroy();
-    if (this.mReaderAdvAtom != null) {
-      this.mReaderAdvAtom.destory();
+    TbsReaderAdvAtom localTbsReaderAdvAtom = this.mReaderAdvAtom;
+    if (localTbsReaderAdvAtom != null) {
+      localTbsReaderAdvAtom.destory();
     }
     this.mReaderAdvAtom = null;
   }
@@ -38,7 +39,7 @@ public class TbsReaderEditManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.reader.TbsReaderEditManager
  * JD-Core Version:    0.7.0.1
  */

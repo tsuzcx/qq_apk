@@ -20,26 +20,40 @@ public class ZhituObserver
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
     paramInt = paramBundle.getInt("ErrorCode");
-    String str1 = paramBundle.getString("UniqueKey");
-    if (QLog.isColorLevel()) {
-      QLog.d("ZhituObserver", 2, ZhituManager.a(str1, "onReceive", "observer onReceive with code: " + paramInt));
+    Object localObject1 = paramBundle.getString("UniqueKey");
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("observer onReceive with code: ");
+      ((StringBuilder)localObject2).append(paramInt);
+      QLog.d("ZhituObserver", 2, ZhituManager.a((String)localObject1, "onReceive", ((StringBuilder)localObject2).toString()));
     }
-    String str2 = ZhituManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
-    if (!str2.equals(str1)) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ZhituObserver", 2, ZhituManager.a(str1, "onReceive", "response with " + str1 + " but the last one is " + str2 + ", skip."));
+    Object localObject2 = ZhituManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).a();
+    if (!((String)localObject2).equals(localObject1))
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("response with ");
+        paramBundle.append((String)localObject1);
+        paramBundle.append(" but the last one is ");
+        paramBundle.append((String)localObject2);
+        paramBundle.append(", skip.");
+        QLog.d("ZhituObserver", 2, ZhituManager.a((String)localObject1, "onReceive", paramBundle.toString()));
       }
-    }
-    while (this.a == null) {
       return;
     }
-    paramBundle = this.a.obtainMessage(2, paramBundle);
-    this.a.sendMessage(paramBundle);
+    localObject1 = this.a;
+    if (localObject1 != null)
+    {
+      paramBundle = ((Handler)localObject1).obtainMessage(2, paramBundle);
+      this.a.sendMessage(paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituObserver
  * JD-Core Version:    0.7.0.1
  */

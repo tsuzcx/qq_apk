@@ -19,12 +19,12 @@ public class FunnyFaceMessage$Bomb
       readExternal(paramObjectInput);
       return;
     }
-    catch (IOException paramObjectInput)
+    catch (ClassNotFoundException paramObjectInput)
     {
       paramObjectInput.printStackTrace();
       return;
     }
-    catch (ClassNotFoundException paramObjectInput)
+    catch (IOException paramObjectInput)
     {
       paramObjectInput.printStackTrace();
     }
@@ -42,7 +42,7 @@ public class FunnyFaceMessage$Bomb
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.FunnyFaceMessage.Bomb
  * JD-Core Version:    0.7.0.1
  */

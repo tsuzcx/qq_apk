@@ -6,22 +6,30 @@ import java.io.File;
 
 public class ApkgManager$RootPath
 {
-  private static String PATH_APKG_TISSUE_ROOT = null;
-  private static String PATH_GAMEPKG_ROOT = null;
-  private static String PATH_WXAPKG_ROOT = null;
+  private static String PATH_APKG_TISSUE_ROOT;
+  private static String PATH_GAMEPKG_ROOT;
+  private static String PATH_WXAPKG_ROOT;
   
   private static String getAppPkgRoot()
   {
-    if (PATH_WXAPKG_ROOT == null) {
-      PATH_WXAPKG_ROOT = getRoot() + "/mini/";
+    if (PATH_WXAPKG_ROOT == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getRoot());
+      localStringBuilder.append("/mini/");
+      PATH_WXAPKG_ROOT = localStringBuilder.toString();
     }
     return PATH_WXAPKG_ROOT;
   }
   
   private static String getGamePkgRoot()
   {
-    if (PATH_GAMEPKG_ROOT == null) {
-      PATH_GAMEPKG_ROOT = getRoot() + "/minigame/";
+    if (PATH_GAMEPKG_ROOT == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getRoot());
+      localStringBuilder.append("/minigame/");
+      PATH_GAMEPKG_ROOT = localStringBuilder.toString();
     }
     return PATH_GAMEPKG_ROOT;
   }
@@ -33,15 +41,19 @@ public class ApkgManager$RootPath
   
   private static String getTissuePkgRoot()
   {
-    if (PATH_APKG_TISSUE_ROOT == null) {
-      PATH_APKG_TISSUE_ROOT = getRoot() + "/mini_tissue/";
+    if (PATH_APKG_TISSUE_ROOT == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getRoot());
+      localStringBuilder.append("/mini_tissue/");
+      PATH_APKG_TISSUE_ROOT = localStringBuilder.toString();
     }
     return PATH_APKG_TISSUE_ROOT;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.ApkgManager.RootPath
  * JD-Core Version:    0.7.0.1
  */

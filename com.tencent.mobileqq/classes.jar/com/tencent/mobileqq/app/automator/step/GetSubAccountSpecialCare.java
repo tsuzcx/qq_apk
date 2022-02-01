@@ -2,27 +2,28 @@ package com.tencent.mobileqq.app.automator.step;
 
 import com.tencent.mobileqq.app.automator.AsyncStep;
 import com.tencent.mobileqq.app.automator.Automator;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.subaccount.api.ISubAccountControllUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class GetSubAccountSpecialCare
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
     if (QLog.isColorLevel()) {
       QLog.d("QQInitHandler", 2, "GetSubAccountSpecialCare step...");
     }
-    if ((this.b == 95) && ((SubAccountControll.b(this.a.a, true)) || (SubAccountControll.c(this.a.a, true)))) {
-      SubAccountControll.a(this.a.a, false);
+    if ((this.mStepId == 95) && ((((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).isThirdAccountDisplayFunc(this.mAutomator.a, true)) || (((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).isHeadIconLongClickFunc(this.mAutomator.a, true)))) {
+      ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).startGetThirdQQUnreadNum(this.mAutomator.a, false);
     }
-    SubAccountControll.b(this.a.a, true, null);
+    ((ISubAccountControllUtil)QRoute.api(ISubAccountControllUtil.class)).getSubAccountSpecialCareListFromService(this.mAutomator.a, true, null);
     return 7;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.GetSubAccountSpecialCare
  * JD-Core Version:    0.7.0.1
  */

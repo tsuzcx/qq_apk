@@ -10,14 +10,19 @@ final class MergeBitmapBlurUtil$2
   
   public void run()
   {
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (this.jdField_a_of_type_AndroidWidgetImageView != null)) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if (localBitmap != null)
+    {
+      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localImageView != null) {
+        localImageView.setImageBitmap(localBitmap);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.MergeBitmapBlurUtil.2
  * JD-Core Version:    0.7.0.1
  */

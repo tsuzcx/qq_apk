@@ -142,36 +142,34 @@ public class InputJsPlugin
   
   public KeyboardLayout getKeyboard()
   {
-    ViewGroup localViewGroup;
-    Object localObject;
-    if (this.mKeyboardLayout == null)
-    {
-      if ((this.mMiniAppContext == null) || (this.mMiniAppContext.getAttachedActivity() == null)) {
+    if (this.mKeyboardLayout == null) {
+      if ((this.mMiniAppContext != null) && (this.mMiniAppContext.getAttachedActivity() != null))
+      {
+        ViewGroup localViewGroup = (ViewGroup)this.mMiniAppContext.getAttachedActivity().findViewById(16908290);
+        new RelativeLayout(this.mMiniAppContext.getAttachedActivity());
+        this.mKeyboardLayout = new KeyboardLayout(this.mMiniAppContext.getAttachedActivity());
+        Object localObject;
+        if ((localViewGroup instanceof FrameLayout))
+        {
+          localObject = new FrameLayout.LayoutParams(-1, -2);
+          ((FrameLayout.LayoutParams)localObject).gravity = 80;
+          localViewGroup.addView(this.mKeyboardLayout, (ViewGroup.LayoutParams)localObject);
+        }
+        else if ((localViewGroup instanceof RelativeLayout))
+        {
+          localObject = new RelativeLayout.LayoutParams(-1, -2);
+          ((RelativeLayout.LayoutParams)localObject).addRule(12);
+          localViewGroup.addView(this.mKeyboardLayout, (ViewGroup.LayoutParams)localObject);
+        }
+        this.mSoftKeyboardStateHelper = new SoftKeyboardStateHelper(localViewGroup);
+        this.mSoftKeyboardStateHelper.addSoftKeyboardStateListener(this.mListener);
+      }
+      else
+      {
         return null;
       }
-      localViewGroup = (ViewGroup)this.mMiniAppContext.getAttachedActivity().findViewById(16908290);
-      new RelativeLayout(this.mMiniAppContext.getAttachedActivity());
-      this.mKeyboardLayout = new KeyboardLayout(this.mMiniAppContext.getAttachedActivity());
-      if (!(localViewGroup instanceof FrameLayout)) {
-        break label145;
-      }
-      localObject = new FrameLayout.LayoutParams(-1, -2);
-      ((FrameLayout.LayoutParams)localObject).gravity = 80;
-      localViewGroup.addView(this.mKeyboardLayout, (ViewGroup.LayoutParams)localObject);
     }
-    for (;;)
-    {
-      this.mSoftKeyboardStateHelper = new SoftKeyboardStateHelper(localViewGroup);
-      this.mSoftKeyboardStateHelper.addSoftKeyboardStateListener(this.mListener);
-      return this.mKeyboardLayout;
-      label145:
-      if ((localViewGroup instanceof RelativeLayout))
-      {
-        localObject = new RelativeLayout.LayoutParams(-1, -2);
-        ((RelativeLayout.LayoutParams)localObject).addRule(12);
-        localViewGroup.addView(this.mKeyboardLayout, (ViewGroup.LayoutParams)localObject);
-      }
-    }
+    return this.mKeyboardLayout;
   }
   
   @JsEvent({"hideKeyboard"})
@@ -182,15 +180,17 @@ public class InputJsPlugin
   
   public void hideKeyboardUI()
   {
-    if (this.mMiniAppContext != null) {}
-    for (Activity localActivity = this.mMiniAppContext.getAttachedActivity();; localActivity = null)
+    Activity localActivity;
+    if (this.mMiniAppContext != null) {
+      localActivity = this.mMiniAppContext.getAttachedActivity();
+    } else {
+      localActivity = null;
+    }
+    KeyboardLayout localKeyboardLayout = this.mKeyboardLayout;
+    if ((localKeyboardLayout != null) && (localKeyboardLayout.getVisibility() == 0) && (localActivity != null))
     {
-      if ((this.mKeyboardLayout != null) && (this.mKeyboardLayout.getVisibility() == 0) && (localActivity != null))
-      {
-        hideSoftInput(localActivity, this.mKeyboardLayout.getInputET());
-        this.mKeyboardLayout.setVisibility(8);
-      }
-      return;
+      hideSoftInput(localActivity, this.mKeyboardLayout.getInputET());
+      this.mKeyboardLayout.setVisibility(8);
     }
   }
   
@@ -233,7 +233,7 @@ public class InputJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InputJsPlugin
  * JD-Core Version:    0.7.0.1
  */

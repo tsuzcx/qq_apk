@@ -18,7 +18,7 @@ public class ADViewIndividuation
     this.jdField_a_of_type_Int = 0;
     this.i = 8;
     this.j = 18;
-    this.g = 2130847391;
+    this.g = 2130847260;
     this.h = this.g;
   }
   
@@ -28,7 +28,7 @@ public class ADViewIndividuation
     this.jdField_a_of_type_Int = 0;
     this.i = 4;
     this.j = 8;
-    this.g = 2130847391;
+    this.g = 2130847260;
     this.h = this.g;
   }
   
@@ -43,43 +43,43 @@ public class ADViewIndividuation
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
     localLayoutParams.addRule(8, 100000);
     localLayoutParams.addRule(7, 100000);
-    localLayoutParams.setMargins(0, 0, 0, (int)(6.0F * this.jdField_a_of_type_Float));
+    localLayoutParams.setMargins(0, 0, 0, (int)(this.jdField_a_of_type_Float * 6.0F));
     paramLinearLayout.setGravity(16);
-    paramLinearLayout.setPadding((int)(4.0F * this.jdField_a_of_type_Float), 0, (int)(2.0F * this.jdField_a_of_type_Float), 0);
+    paramLinearLayout.setPadding((int)(this.jdField_a_of_type_Float * 4.0F), 0, (int)(this.jdField_a_of_type_Float * 2.0F), 0);
     paramLinearLayout.setLayoutParams(localLayoutParams);
   }
   
   public void setNavVisible(int paramInt, boolean paramBoolean)
   {
-    if (paramInt == 0) {}
-    do
-    {
+    if (paramInt == 0) {
       return;
-      Object localObject = (ViewGroup)this.b.getChildAt(0);
+    }
+    Object localObject = (ViewGroup)this.b.getChildAt(0);
+    if (localObject != null)
+    {
+      localObject = (LinearLayout)((ViewGroup)localObject).getChildAt(1);
       if (localObject != null)
       {
-        localObject = (LinearLayout)((ViewGroup)localObject).getChildAt(1);
-        if (localObject != null)
-        {
-          if (paramInt > 0) {}
-          for (paramInt = 0;; paramInt = 8)
-          {
-            ((LinearLayout)localObject).setVisibility(paramInt);
-            if (!paramBoolean) {
-              break;
-            }
-            this.jdField_a_of_type_Int = 0;
-            return;
-          }
+        if (paramInt > 0) {
+          paramInt = 0;
+        } else {
+          paramInt = 8;
         }
+        ((LinearLayout)localObject).setVisibility(paramInt);
+        if (paramBoolean) {
+          this.jdField_a_of_type_Int = 0;
+        }
+        return;
       }
-    } while (!paramBoolean);
-    this.jdField_a_of_type_Int = paramInt;
+    }
+    if (paramBoolean) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ADViewIndividuation
  * JD-Core Version:    0.7.0.1
  */

@@ -18,10 +18,10 @@ public class ScriptIntrinsicColorMatrix
       RenderScriptThunker localRenderScriptThunker = (RenderScriptThunker)paramRenderScript;
       return ScriptIntrinsicColorMatrixThunker.create(paramRenderScript, paramElement);
     }
-    if (!paramElement.isCompatible(Element.U8_4(paramRenderScript))) {
-      throw new RSIllegalArgumentException("Unsuported element type.");
+    if (paramElement.isCompatible(Element.U8_4(paramRenderScript))) {
+      return new ScriptIntrinsicColorMatrix(paramRenderScript.nScriptIntrinsicCreate(2, paramElement.getID(paramRenderScript)), paramRenderScript);
     }
-    return new ScriptIntrinsicColorMatrix(paramRenderScript.nScriptIntrinsicCreate(2, paramElement.getID(paramRenderScript)), paramRenderScript);
+    throw new RSIllegalArgumentException("Unsuported element type.");
   }
   
   private void setMatrix()
@@ -100,7 +100,7 @@ public class ScriptIntrinsicColorMatrix
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v8.renderscript.ScriptIntrinsicColorMatrix
  * JD-Core Version:    0.7.0.1
  */

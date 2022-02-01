@@ -1,16 +1,19 @@
 package com.tencent.mobileqq.apollo.script;
 
-import com.tencent.mobileqq.apollo.ApolloRenderInterfaceImpl;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.IRenderCallback;
 import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
 import com.tencent.mobileqq.apollo.api.impl.SpriteScriptManagerImpl;
-import com.tencent.mobileqq.apollo.api.script.ISpriteTaskHandler;
-import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloActionHelperImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.cmshow.brickengine.apollo.IRenderCallback;
+import com.tencent.mobileqq.cmshow.engine.ICMShowEngine;
+import com.tencent.mobileqq.cmshow.engine.render.ICMShowView;
+import com.tencent.mobileqq.cmshow.engine.render.IRenderService;
+import com.tencent.mobileqq.cmshow.engine.script.IScriptService;
+import com.tencent.mobileqq.cmshow.engine.script.Script;
+import com.tencent.mobileqq.cmshow.engine.script.task.BackgroundPlayActionTask;
+import com.tencent.mobileqq.cmshow.engine.script.task.IScriptTaskBuilder;
+import com.tencent.mobileqq.cmshow.engine.script.task.ScriptTaskType;
 import com.tencent.qphone.base.util.QLog;
-import java.lang.ref.WeakReference;
 import java.util.List;
 import java.util.concurrent.ConcurrentLinkedQueue;
 import mqq.os.MqqHandler;
@@ -19,81 +22,93 @@ public class SpriteBackgroundManager
   implements IRenderCallback
 {
   private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
-  private Runnable jdField_a_of_type_JavaLangRunnable = new SpriteBackgroundManager.1(this);
+  private ICMShowEngine jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
   private String jdField_a_of_type_JavaLangString;
-  private WeakReference<ApolloTextureView> jdField_a_of_type_JavaLangRefWeakReference;
   private ConcurrentLinkedQueue jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue = new ConcurrentLinkedQueue();
   private volatile boolean jdField_a_of_type_Boolean = false;
-  private Runnable jdField_b_of_type_JavaLangRunnable = new SpriteBackgroundManager.2(this);
-  private volatile boolean jdField_b_of_type_Boolean = false;
   
-  public SpriteBackgroundManager(SpriteContext paramSpriteContext, ApolloTextureView paramApolloTextureView)
+  public SpriteBackgroundManager(SpriteContext paramSpriteContext, ICMShowEngine paramICMShowEngine)
   {
     this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramApolloTextureView);
+    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine = paramICMShowEngine;
   }
   
   private void a(int paramInt)
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView == null) {
+    if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine == null) {
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, new Object[] { "[execAction], ready to play, actionId:", Integer.valueOf(paramInt) });
+      QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, new Object[] { "[execAction], ready to play, actionId:", Integer.valueOf(paramInt) });
     }
-    String[] arrayOfString = ApolloActionHelperImpl.getBackgroundRscPath(paramInt);
-    this.jdField_a_of_type_JavaLangString = arrayOfString[1];
-    localApolloTextureView.getRenderImpl().a(1, null, paramInt, 0, arrayOfString[0], arrayOfString[1]);
+    IScriptService localIScriptService = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine.a();
+    BackgroundPlayActionTask localBackgroundPlayActionTask = (BackgroundPlayActionTask)localIScriptService.a().a(ScriptTaskType.BACKGROUND_PLAY_ACTION);
+    localBackgroundPlayActionTask.a(paramInt);
+    localIScriptService.a(new Script(localBackgroundPlayActionTask.a()));
+    this.jdField_a_of_type_JavaLangString = localBackgroundPlayActionTask.f();
   }
   
   private void b(int paramInt)
   {
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localApolloTextureView != null) && (localApolloTextureView.getVisibility() != paramInt)) {
-      ThreadManager.getUIHandler().post(new SpriteBackgroundManager.3(this, localApolloTextureView, paramInt));
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+    if (localObject == null)
+    {
+      QLog.e("[cmshow][scripted]SpriteBackgroundManager", 1, "[setBackgroundSurfaceVisibility] mCMShowEngine is null");
+      return;
     }
+    localObject = ((ICMShowEngine)localObject).a().a();
+    if (localObject == null)
+    {
+      QLog.e("[cmshow][scripted]SpriteBackgroundManager", 1, "[setBackgroundSurfaceVisibility] cmShowView is null");
+      return;
+    }
+    ThreadManager.getUIHandler().post(new SpriteBackgroundManager.1(this, (ICMShowView)localObject, paramInt));
   }
   
   public void a()
   {
-    if (((ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get() == null) || (this.jdField_a_of_type_JavaLangString == null)) {}
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, new Object[] { "removeBackgroundAction isRunning:", Boolean.valueOf(this.jdField_a_of_type_Boolean), ",actionName:", this.jdField_a_of_type_JavaLangString });
+      if (this.jdField_a_of_type_JavaLangString == null) {
+        return;
       }
-      if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty())) {
+      if (QLog.isColorLevel()) {
+        QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, new Object[] { "removeBackgroundAction isRunning:", Boolean.valueOf(this.jdField_a_of_type_Boolean), ",actionName:", this.jdField_a_of_type_JavaLangString });
+      }
+      ConcurrentLinkedQueue localConcurrentLinkedQueue = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+      if ((localConcurrentLinkedQueue != null) && (!localConcurrentLinkedQueue.isEmpty())) {
         this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
       }
-    } while (!this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_Boolean = false;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
   }
   
   public void a(int paramInt1, int paramInt2, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "[onCompleteRender]");
+      QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, "[onCompleteRender]");
     }
     this.jdField_a_of_type_Boolean = false;
-    if ((this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) && (!this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()))
+    paramString = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+    if ((paramString != null) && (!paramString.isEmpty()))
     {
       paramString = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
       if (paramString != null) {
         a(paramString.intValue());
       }
     }
-    while (this.jdField_a_of_type_Boolean) {
-      return;
+    else if (!this.jdField_a_of_type_Boolean)
+    {
+      b(8);
     }
-    b(8);
   }
   
   public void a(int paramInt, String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "[onStartRender]");
+      QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, "[onStartRender]");
     }
     this.jdField_a_of_type_Boolean = true;
     b(0);
@@ -101,58 +116,65 @@ public class SpriteBackgroundManager
   
   public void a(List<Integer> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0) || (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue == null)) {}
-    do
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      do
-      {
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue == null) {
         return;
-        if (this.jdField_a_of_type_Boolean) {
-          a();
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-        this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.addAll(paramList);
-      } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty());
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[execBackgroundListAction], actionList:");
+      localStringBuilder.append(paramList);
+      QLog.i("[cmshow][scripted]SpriteBackgroundManager", 1, localStringBuilder.toString());
+      if (this.jdField_a_of_type_Boolean) {
+        a();
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
+      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.addAll(paramList);
+      if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.isEmpty()) {
+        return;
+      }
       paramList = (Integer)this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.poll();
-    } while (paramList == null);
-    a(paramList.intValue());
+      if (paramList != null) {
+        a(paramList.intValue());
+      }
+    }
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext == null) || (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a() == null)) {}
-    SpriteScriptManagerImpl localSpriteScriptManagerImpl;
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
+    if (localObject != null)
     {
-      return;
+      if (((SpriteContext)localObject).a() == null) {
+        return;
+      }
       if (QLog.isColorLevel()) {
-        QLog.d("cmshow_scripted_SpriteBackgroundManager", 2, "[onSurfaceReady]");
+        QLog.d("[cmshow][scripted]SpriteBackgroundManager", 2, "[onSurfaceReady]");
       }
       this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.h(true);
-      localSpriteScriptManagerImpl = (SpriteScriptManagerImpl)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all");
-    } while ((!this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.c()) || (localSpriteScriptManagerImpl.getTaskHandler().a(null)));
-    e();
+      localObject = (SpriteScriptManagerImpl)this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().getRuntimeService(ISpriteScriptManager.class, "all");
+      if ((this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.c()) && (!((SpriteScriptManagerImpl)localObject).getTaskHandler().a(null))) {
+        e();
+      }
+    }
   }
   
   public void c()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    ApolloTextureView localApolloTextureView;
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_b_of_type_Boolean = true;
-      localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localApolloTextureView == null);
-    localApolloTextureView.queueEvent(this.jdField_a_of_type_JavaLangRunnable);
+    }
+    ICMShowEngine localICMShowEngine = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+    if (localICMShowEngine != null) {
+      localICMShowEngine.b();
+    }
   }
   
   public void d()
   {
-    this.jdField_b_of_type_Boolean = false;
-    ApolloTextureView localApolloTextureView = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localApolloTextureView != null) {
-      localApolloTextureView.queueEvent(this.jdField_b_of_type_JavaLangRunnable);
+    ICMShowEngine localICMShowEngine = this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+    if (localICMShowEngine != null) {
+      localICMShowEngine.a();
     }
   }
   
@@ -164,23 +186,16 @@ public class SpriteBackgroundManager
   
   public void f()
   {
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null) {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
-    }
-    Object localObject = (ApolloTextureView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject != null)
-    {
-      localObject = ((ApolloTextureView)localObject).getRenderImpl();
-      if (localObject != null) {
-        ((ApolloRenderInterfaceImpl)localObject).c();
-      }
+    ConcurrentLinkedQueue localConcurrentLinkedQueue = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+    if (localConcurrentLinkedQueue != null) {
+      localConcurrentLinkedQueue.clear();
     }
     this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteBackgroundManager
  * JD-Core Version:    0.7.0.1
  */

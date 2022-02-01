@@ -35,47 +35,60 @@ public class MessageForBirthdayNotice
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MessageForBirthdayNotice", 2, "MessageForBirthdayNotice doParse feedMsg:" + this.msg);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("MessageForBirthdayNotice doParse feedMsg:");
+        ((StringBuilder)localObject1).append(this.msg);
+        QLog.i("MessageForBirthdayNotice", 2, ((StringBuilder)localObject1).toString());
       }
       this.feedMsg = new JSONObject(this.msg);
       this.friendUin = this.feedMsg.optString("friendUin");
-      String str = this.feedMsg.optString("time");
+      Object localObject1 = this.feedMsg.optString("time");
       try
       {
-        long l = Long.parseLong(str);
-        Date localDate = new SimpleDateFormat("yyyyMMdd").parse(str);
+        long l = Long.parseLong((String)localObject1);
+        Date localDate = new SimpleDateFormat("yyyyMMdd").parse((String)localObject1);
         Calendar.getInstance().setTimeInMillis(l * 24L * 60L * 60L * 1000L);
         this.birthday = new SimpleDateFormat("M月d日").format(localDate);
-        this.icon = this.feedMsg.optString("icon");
-        this.blessing = this.feedMsg.optString("blessing");
-        this.doufu_link = this.feedMsg.optString("link");
-        this.background = this.feedMsg.optString("background");
-        return;
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          QLog.e("MessageForBirthdayNotice", 1, "exception getting time");
-          MonitorManager.a().a(19, 9, "解析日期错误 " + str + localException, false);
-        }
+        QLog.e("MessageForBirthdayNotice", 1, "exception getting time");
+        localObject3 = MonitorManager.a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("解析日期错误 ");
+        localStringBuilder.append((String)localObject1);
+        localStringBuilder.append(localException);
+        ((MonitorManager)localObject3).a(19, 9, localStringBuilder.toString(), false);
       }
+      this.icon = this.feedMsg.optString("icon");
+      this.blessing = this.feedMsg.optString("blessing");
+      this.doufu_link = this.feedMsg.optString("link");
+      this.background = this.feedMsg.optString("background");
       return;
     }
     catch (JSONException localJSONException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MessageForBirthdayNotice", 2, "convert msg to json failed,error msg is:" + localJSONException.getMessage(), localJSONException);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("convert msg to json failed,error msg is:");
+        ((StringBuilder)localObject2).append(localJSONException.getMessage());
+        QLog.d("MessageForBirthdayNotice", 2, ((StringBuilder)localObject2).toString(), localJSONException);
       }
-      MonitorManager.a().a(19, 4, " json 解析异常 " + localJSONException, false);
+      Object localObject2 = MonitorManager.a();
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(" json 解析异常 ");
+      ((StringBuilder)localObject3).append(localJSONException);
+      ((MonitorManager)localObject2).a(19, 4, ((StringBuilder)localObject3).toString(), false);
       this.isread = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForBirthdayNotice
  * JD-Core Version:    0.7.0.1
  */

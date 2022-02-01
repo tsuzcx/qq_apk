@@ -6,7 +6,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/Border;", "", "orientation", "", "st", "", "w", "", "c", "(ILjava/lang/String;FI)V", "getC", "()I", "setC", "(I)V", "getOrientation", "setOrientation", "getSt", "()Ljava/lang/String;", "setSt", "(Ljava/lang/String;)V", "getW", "()F", "setW", "(F)V", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/api/data/Border;", "", "orientation", "", "st", "", "w", "", "c", "(ILjava/lang/String;FI)V", "getC", "()I", "setC", "(I)V", "getOrientation", "setOrientation", "getSt", "()Ljava/lang/String;", "setSt", "(Ljava/lang/String;)V", "getW", "()F", "setW", "(F)V", "component1", "component2", "component3", "component4", "copy", "equals", "", "other", "hashCode", "toString", "XActionCore_release"}, k=1, mv={1, 1, 16})
 @Keep
 public final class Border
 {
@@ -54,18 +54,18 @@ public final class Border
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof Border))
       {
         paramObject = (Border)paramObject;
-        if ((this.orientation != paramObject.orientation) || (!Intrinsics.areEqual(this.st, paramObject.st)) || (Float.compare(this.w, paramObject.w) != 0) || (this.c != paramObject.c)) {}
+        if ((this.orientation == paramObject.orientation) && (Intrinsics.areEqual(this.st, paramObject.st)) && (Float.compare(this.w, paramObject.w) == 0) && (this.c == paramObject.c)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final int getC()
@@ -93,10 +93,13 @@ public final class Border
   {
     int j = this.orientation;
     String str = this.st;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0) {
-      return ((i + j * 31) * 31 + Float.floatToIntBits(this.w)) * 31 + this.c;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    return ((j * 31 + i) * 31 + Float.floatToIntBits(this.w)) * 31 + this.c;
   }
   
   public final void setC(int paramInt)
@@ -123,12 +126,22 @@ public final class Border
   @NotNull
   public String toString()
   {
-    return "Border(orientation=" + this.orientation + ", st=" + this.st + ", w=" + this.w + ", c=" + this.c + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Border(orientation=");
+    localStringBuilder.append(this.orientation);
+    localStringBuilder.append(", st=");
+    localStringBuilder.append(this.st);
+    localStringBuilder.append(", w=");
+    localStringBuilder.append(this.w);
+    localStringBuilder.append(", c=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.api.data.Border
  * JD-Core Version:    0.7.0.1
  */

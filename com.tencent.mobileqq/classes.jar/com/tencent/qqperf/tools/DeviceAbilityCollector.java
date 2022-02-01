@@ -1,272 +1,109 @@
 package com.tencent.qqperf.tools;
 
 import android.annotation.SuppressLint;
-import android.bluetooth.BluetoothAdapter;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.content.pm.PackageManager;
-import android.net.ConnectivityManager;
-import android.net.wifi.WifiInfo;
-import android.net.wifi.WifiManager;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.os.PowerManager;
-import android.text.TextUtils;
-import com.tencent.commonsdk.util.notification.QQNotificationManager;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.FileUtils.StorageInfo;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.qqperf.opt.vm.HackVmImpl;
-import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
-import mqq.app.MobileQQ;
 
 public class DeviceAbilityCollector
 {
   public static void a(Context paramContext)
   {
     SharedPreferences localSharedPreferences = paramContext.getSharedPreferences("sp_device_ability", 0);
-    if (Math.abs(System.currentTimeMillis() - localSharedPreferences.getLong("device_ability_report_time", 0L)) < 86400000L) {}
-    do
-    {
+    if (Math.abs(System.currentTimeMillis() - localSharedPreferences.getLong("device_ability_report_time", 0L)) < 86400000L) {
       return;
-      localSharedPreferences.edit().putLong("device_ability_report_time", System.currentTimeMillis()).commit();
-      try
-      {
-        b(paramContext);
-        c(paramContext);
-        return;
+    }
+    localSharedPreferences.edit().putLong("device_ability_report_time", System.currentTimeMillis()).commit();
+    try
+    {
+      b(paramContext);
+      c(paramContext);
+      return;
+    }
+    catch (Throwable paramContext)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("TAG", 2, "", paramContext);
       }
-      catch (Throwable paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.d("TAG", 2, "", paramContext);
+    }
   }
   
   @SuppressLint({"WrongConstant"})
   private static void b(Context paramContext)
   {
-    int m = 0;
-    Object localObject1 = BluetoothAdapter.getDefaultAdapter();
-    int i;
-    int k;
-    label37:
-    label59:
-    Object localObject2;
-    int n;
-    if ((localObject1 != null) && (((BluetoothAdapter)localObject1).isEnabled())) {
-      if (((BluetoothAdapter)localObject1).getScanMode() == 23)
-      {
-        i = 1;
-        k = i + 2;
-        if (paramContext.getPackageManager().hasSystemFeature("android.hardware.bluetooth_le"))
-        {
-          if (Build.VERSION.SDK_INT < 21) {
-            break label746;
-          }
-          i = 1;
-          m = i + 2;
-        }
-        localObject1 = (WifiManager)paramContext.getSystemService("wifi");
-        if ((localObject1 == null) || (!((WifiManager)localObject1).isWifiEnabled())) {
-          break label804;
-        }
-        localObject2 = ((WifiManager)localObject1).getConnectionInfo();
-        if ((localObject2 == null) || (((WifiInfo)localObject2).getIpAddress() == 0)) {
-          break label751;
-        }
-        i = 1;
-        n = i + 2;
-      }
-    }
-    label784:
-    label791:
-    label799:
-    label804:
-    label815:
-    for (;;)
-    {
-      int i1;
-      int j;
-      try
-      {
-        localObject2 = localObject1.getClass().getDeclaredMethod("isWifiApEnabled", new Class[0]);
-        ((Method)localObject2).setAccessible(true);
-        bool = ((Boolean)((Method)localObject2).invoke(localObject1, new Object[0])).booleanValue();
-        i1 = -1;
-        i = i1;
-        j = i1;
-        try
-        {
-          if (Build.VERSION.SDK_INT >= 23)
-          {
-            j = i1;
-            if (!((PowerManager)MobileQQ.getContext().getSystemService("power")).isIgnoringBatteryOptimizations("com.tencent.mobileqq")) {
-              continue;
-            }
-            i = 1;
-            break label815;
-          }
-          j = i;
-          if (Build.VERSION.SDK_INT < 24) {
-            break label799;
-          }
-          j = i;
-          i1 = ((ConnectivityManager)MobileQQ.getContext().getSystemService("connectivity")).getRestrictBackgroundStatus();
-          j = i1;
-        }
-        catch (Throwable localThrowable2)
-        {
-          int i2;
-          HashMap localHashMap;
-          label746:
-          label751:
-          i = j;
-          j = -1;
-          continue;
-          i1 = 0;
-          continue;
-          String str = "";
-          continue;
-          localObject2 = "0";
-          continue;
-          j = -1;
-          continue;
-        }
-        if (QQNotificationManager.getInstance().areNotificationsEnabled(MobileQQ.getContext()))
-        {
-          i1 = 1;
-          localObject1 = System.getProperty("java.vm.version");
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            break label784;
-          }
-          localObject1 = ((String)localObject1).substring(0, 1);
-          i2 = MsfSdkUtils.getAutoStartMode(MobileQQ.getContext());
-          if (QLog.isColorLevel())
-          {
-            localObject2 = new StringBuilder(30);
-            ((StringBuilder)localObject2).append("report:").append(k);
-            ((StringBuilder)localObject2).append(", ").append(m);
-            ((StringBuilder)localObject2).append(", ").append(n);
-            ((StringBuilder)localObject2).append(", ").append(bool);
-            ((StringBuilder)localObject2).append(", ").append(i);
-            ((StringBuilder)localObject2).append(", ").append(Build.MODEL);
-            ((StringBuilder)localObject2).append(", ").append(Build.MANUFACTURER);
-            ((StringBuilder)localObject2).append(", ").append(j);
-            ((StringBuilder)localObject2).append(", notify = ").append(i1);
-            ((StringBuilder)localObject2).append(", autoMode = ").append(i2);
-            QLog.d("DeviceAbilityCollector", 2, ((StringBuilder)localObject2).toString());
-          }
-          localHashMap = new HashMap(15);
-          localHashMap.put("btStatus", k + "");
-          localHashMap.put("btAbility", m + "");
-          localHashMap.put("wifiStatus", n + "");
-          if (!bool) {
-            break label791;
-          }
-          localObject2 = "1";
-          localHashMap.put("hsEnabled", localObject2);
-          localHashMap.put("osVersion", Build.VERSION.SDK_INT + "");
-          localHashMap.put("ignoreBat", String.valueOf(i));
-          localHashMap.put("model", Build.MODEL);
-          localHashMap.put("manufacture", Build.MANUFACTURER);
-          localHashMap.put("restrictBgStatus", String.valueOf(j));
-          localHashMap.put("notifyStatus", String.valueOf(i1));
-          localHashMap.put("maxMemory", String.valueOf(Runtime.getRuntime().maxMemory() / 1024L / 1024L));
-          localHashMap.put("orgMaxMemory", String.valueOf(HackVmImpl.a / 1024L / 1024L));
-          localHashMap.put("vm", localObject1);
-          localHashMap.put("autoMode", String.valueOf(i2));
-          StatisticCollector.getInstance(paramContext).collectPerformance("", "actDeviceAbility", true, 0L, 0L, localHashMap, "");
-          return;
-          i = 0;
-          break;
-          i = 0;
-          break label59;
-          i = 0;
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        boolean bool = false;
-        continue;
-        i = 0;
-        break label815;
-      }
-      n = 0;
-      continue;
-      k = 0;
-      break label37;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private static void c(Context paramContext)
   {
-    int i2 = (int)(FileUtils.b() / 1024.0F / 1024.0F);
-    int j = (int)(FileUtils.a() / 1024.0F / 1024.0F);
-    int i = -1000;
-    int n = -1;
-    int i1 = -1;
-    int m = i1;
-    int k = n;
-    Object localObject;
-    if (FileUtils.a())
+    int i2 = (int)(FileUtils.getTotalInnernalMemorySize() / 1024.0F / 1024.0F);
+    int i = (int)(FileUtils.getAvailableInnernalMemorySize() / 1024.0F / 1024.0F);
+    boolean bool = FileUtils.hasSDCardAndWritable();
+    int m = -1;
+    int j;
+    if (bool)
     {
-      k = (int)(FileUtils.b() / 1024.0F / 1024.0F);
-      j = (int)(FileUtils.a() / 1024.0F / 1024.0F);
-      if (Build.VERSION.SDK_INT < 9) {
-        break label377;
-      }
-      localObject = FileUtils.a(paramContext);
-      n = ((List)localObject).size();
-      localObject = ((List)localObject).iterator();
-      i = -1;
-      while (((Iterator)localObject).hasNext())
+      k = (int)(FileUtils.getTotalInnernalMemorySize() / 1024.0F / 1024.0F);
+      n = (int)(FileUtils.getAvailableInnernalMemorySize() / 1024.0F / 1024.0F);
+      i = n;
+      j = k;
+      if (Build.VERSION.SDK_INT >= 9)
       {
-        if (!((FileUtils.StorageInfo)((Iterator)localObject).next()).a) {
-          break label374;
+        localObject = FileUtils.listAvaliableExternalStorage(paramContext);
+        i1 = ((List)localObject).size();
+        localObject = ((List)localObject).iterator();
+        i = m;
+        while (((Iterator)localObject).hasNext()) {
+          if (((FileUtils.StorageInfo)((Iterator)localObject).next()).isRemoveable) {
+            i += 1;
+          }
         }
-        i += 1;
+        m = i;
+        i = n;
+        j = k;
+        k = m;
+        m = i1;
+        break label156;
       }
-      m = i;
-      i = k;
     }
-    for (k = n;; k = n)
+    else
     {
-      n = ProcessStats.a();
-      i1 = (int)(DeviceInfoUtil.c() / 1024L);
-      int i3 = (int)(DeviceInfoUtil.a() / 1024L / 1024L);
-      localObject = new HashMap(16);
-      ((HashMap)localObject).put("totalRom", String.valueOf(i2));
-      ((HashMap)localObject).put("avaiRom", String.valueOf(j));
-      ((HashMap)localObject).put("totalSD", String.valueOf(i));
-      ((HashMap)localObject).put("avaiSD", String.valueOf(-1000));
-      ((HashMap)localObject).put("extCount", String.valueOf(k));
-      ((HashMap)localObject).put("remoableExtCount", String.valueOf(m));
-      ((HashMap)localObject).put("osVersion", String.valueOf(Build.VERSION.SDK_INT));
-      ((HashMap)localObject).put("cpuCoreNum", String.valueOf(n));
-      ((HashMap)localObject).put("maxFrequency", String.valueOf(i1));
-      ((HashMap)localObject).put("cpu_abi", Build.CPU_ABI);
-      ((HashMap)localObject).put("cpu_abi2", Build.CPU_ABI2);
-      ((HashMap)localObject).put("ramSize", String.valueOf(i3));
-      StatisticCollector.getInstance(paramContext).collectPerformance("", "actStorageStats", true, 0L, 0L, (HashMap)localObject, "");
-      return;
-      label374:
-      break;
-      label377:
-      i = k;
-      m = i1;
+      j = -1000;
     }
+    int k = -1;
+    label156:
+    int n = ProcessStats.a();
+    int i1 = (int)(DeviceInfoUtil.c() / 1024L);
+    int i3 = (int)(DeviceInfoUtil.a() / 1024L / 1024L);
+    Object localObject = new HashMap(16);
+    ((HashMap)localObject).put("totalRom", String.valueOf(i2));
+    ((HashMap)localObject).put("avaiRom", String.valueOf(i));
+    ((HashMap)localObject).put("totalSD", String.valueOf(j));
+    ((HashMap)localObject).put("avaiSD", String.valueOf(-1000));
+    ((HashMap)localObject).put("extCount", String.valueOf(m));
+    ((HashMap)localObject).put("remoableExtCount", String.valueOf(k));
+    ((HashMap)localObject).put("osVersion", String.valueOf(Build.VERSION.SDK_INT));
+    ((HashMap)localObject).put("cpuCoreNum", String.valueOf(n));
+    ((HashMap)localObject).put("maxFrequency", String.valueOf(i1));
+    ((HashMap)localObject).put("cpu_abi", Build.CPU_ABI);
+    ((HashMap)localObject).put("cpu_abi2", Build.CPU_ABI2);
+    ((HashMap)localObject).put("ramSize", String.valueOf(i3));
+    StatisticCollector.getInstance(paramContext).collectPerformance("", "actStorageStats", true, 0L, 0L, (HashMap)localObject, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.tools.DeviceAbilityCollector
  * JD-Core Version:    0.7.0.1
  */

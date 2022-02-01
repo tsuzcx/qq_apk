@@ -5,12 +5,14 @@ import com.tencent.falco.base.libapi.channel.helper.PushReceiver;
 import com.tencent.falco.base.libapi.datareport.DataReportInterface;
 import com.tencent.falco.base.libapi.downloader.DownLoaderInterface;
 import com.tencent.falco.base.libapi.generalinfo.AppGeneralInfoService;
+import com.tencent.falco.base.libapi.hostproxy.HostProxyInterface;
 import com.tencent.falco.base.libapi.http.HttpInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.falco.base.libapi.login.LoginServiceInterface;
 import com.tencent.falco.base.libapi.network.NetworkStateInterface;
 import com.tencent.falco.base.libapi.toast.ToastInterface;
 import com.tencent.ilivesdk.beautyfilterservice_interface.BeautyFilterServiceInterface;
+import org.json.JSONObject;
 
 public abstract interface AVMediaServiceAdapter
 {
@@ -22,6 +24,8 @@ public abstract interface AVMediaServiceAdapter
   
   public abstract AppGeneralInfoService getAppInfo();
   
+  public abstract JSONObject getAvExtraConfig();
+  
   public abstract BeautyFilterServiceInterface getBeautyFilterService();
   
   public abstract ChannelInterface getChannel();
@@ -31,6 +35,8 @@ public abstract interface AVMediaServiceAdapter
   public abstract DataReportInterface getDataReporter();
   
   public abstract DownLoaderInterface getDownLoader();
+  
+  public abstract HostProxyInterface getHostProxyInterface();
   
   public abstract HttpInterface getHttp();
   
@@ -46,7 +52,7 @@ public abstract interface AVMediaServiceAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avmediaservice_interface.AVMediaServiceAdapter
  * JD-Core Version:    0.7.0.1
  */

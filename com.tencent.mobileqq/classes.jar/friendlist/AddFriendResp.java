@@ -7,10 +7,10 @@ import com.qq.taf.jce.JceStruct;
 public final class AddFriendResp
   extends JceStruct
 {
-  static int cache_adduinsetting = 0;
+  static int cache_adduinsetting;
   static byte[] cache_name;
   static byte[] cache_name1;
-  static int cache_result = 0;
+  static int cache_result;
   static byte[] cache_sig = (byte[])new byte[1];
   static byte[] cache_verify;
   public String ErrorString = "";
@@ -80,26 +80,31 @@ public final class AddFriendResp
     paramJceOutputStream.write(this.myfriendgroupid, 4);
     paramJceOutputStream.write(this.result, 6);
     paramJceOutputStream.write(this.errorCode, 7);
-    if (this.ErrorString != null) {
-      paramJceOutputStream.write(this.ErrorString, 8);
+    Object localObject = this.ErrorString;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.sig != null) {
-      paramJceOutputStream.write(this.sig, 9);
+    localObject = this.sig;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 9);
     }
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 10);
+    localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 10);
     }
-    if (this.name1 != null) {
-      paramJceOutputStream.write(this.name1, 11);
+    localObject = this.name1;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 11);
     }
-    if (this.verify != null) {
-      paramJceOutputStream.write(this.verify, 12);
+    localObject = this.verify;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 12);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.AddFriendResp
  * JD-Core Version:    0.7.0.1
  */

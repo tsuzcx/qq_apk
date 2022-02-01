@@ -21,21 +21,23 @@ class TroopNickRuleFragment$5
       return;
     }
     paramInt1 = paramCharSequence.length();
-    paramCharSequence = TroopNickRuleFragment.c - paramInt1 + "/" + TroopNickRuleFragment.c + "字";
+    paramCharSequence = new StringBuilder();
+    paramCharSequence.append(TroopNickRuleFragment.c - paramInt1);
+    paramCharSequence.append("/");
+    paramCharSequence.append(TroopNickRuleFragment.c);
+    paramCharSequence.append("字");
+    paramCharSequence = paramCharSequence.toString();
     if (paramInt1 >= TroopNickRuleFragment.c) {
-      this.a.a.setTextColor(this.a.getResources().getColor(2131166925));
-    }
-    for (;;)
-    {
-      this.a.a.setText(paramCharSequence);
-      return;
+      this.a.a.setTextColor(this.a.getResources().getColor(2131166941));
+    } else {
       this.a.a.setTextColor(ColorUtils.a("#878B99"));
     }
+    this.a.a.setText(paramCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopNickRuleFragment.5
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,6 @@ import android.util.DisplayMetrics;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnTouchListener;
-import android.view.animation.AnimationUtils;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
@@ -38,12 +37,13 @@ public class QQToast
   private QQToast.RightActionParams jdField_a_of_type_ComTencentMobileqqWidgetQQToast$RightActionParams = null;
   private CharSequence jdField_a_of_type_JavaLangCharSequence = null;
   boolean jdField_a_of_type_Boolean = false;
-  private int jdField_b_of_type_Int = 0;
+  private int jdField_b_of_type_Int;
   private int jdField_c_of_type_Int = 0;
   private boolean e = false;
   
   public QQToast(Context paramContext)
   {
+    this.b = 0;
     this.jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
     this.jdField_a_of_type_AndroidContentResResources = this.jdField_a_of_type_AndroidContentContext.getResources();
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext);
@@ -53,16 +53,16 @@ public class QQToast
   {
     switch (paramInt)
     {
-    case 0: 
-    case 3: 
-    case 6: 
     default: 
-      return 2130839417;
+      return 2130839273;
+    case 2: 
+    case 5: 
+      return 2130848044;
     case 1: 
     case 4: 
-      return 2130848172;
+      return 2130848043;
     }
-    return 2130848173;
+    return 2130839273;
   }
   
   public static QQToast a(Context paramContext, int paramInt1, int paramInt2)
@@ -97,30 +97,30 @@ public class QQToast
   
   private void a(Toast paramToast, LinearLayout paramLinearLayout, QQToast.RightActionParams paramRightActionParams)
   {
-    if ((paramRightActionParams.jdField_a_of_type_JavaLangString == null) || (paramRightActionParams.jdField_a_of_type_JavaLangString.isEmpty()))
+    if ((paramRightActionParams.jdField_a_of_type_JavaLangString != null) && (!paramRightActionParams.jdField_a_of_type_JavaLangString.isEmpty()))
     {
-      QLog.e("QQToast", 1, "addRightActionView params isNullOrEmpty");
+      Context localContext = paramLinearLayout.getContext();
+      Object localObject = new View(localContext);
+      LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
+      localLayoutParams.weight = 1.0F;
+      paramLinearLayout.addView((View)localObject, localLayoutParams);
+      localObject = new TextView(localContext);
+      ((TextView)localObject).setOnClickListener(new QQToast.2(this, paramRightActionParams, paramToast));
+      ((TextView)localObject).setText(paramRightActionParams.jdField_a_of_type_JavaLangString);
+      if (paramRightActionParams.jdField_a_of_type_Int == 0) {
+        paramRightActionParams.jdField_a_of_type_Int = localContext.getResources().getColor(2131165501);
+      }
+      ((TextView)localObject).setTextColor(paramRightActionParams.jdField_a_of_type_Int);
+      if (paramRightActionParams.b == 0) {
+        paramRightActionParams.b = 16;
+      }
+      ((TextView)localObject).setTextSize(1, paramRightActionParams.b);
+      paramToast = new LinearLayout.LayoutParams(-2, -2);
+      paramToast.rightMargin = QQUIDelegate.a(localContext, 22.0F);
+      paramLinearLayout.addView((View)localObject, paramToast);
       return;
     }
-    Context localContext = paramLinearLayout.getContext();
-    Object localObject = new View(localContext);
-    LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(0, -2);
-    localLayoutParams.weight = 1.0F;
-    paramLinearLayout.addView((View)localObject, localLayoutParams);
-    localObject = new TextView(localContext);
-    ((TextView)localObject).setOnClickListener(new QQToast.2(this, paramRightActionParams, paramToast));
-    ((TextView)localObject).setText(paramRightActionParams.jdField_a_of_type_JavaLangString);
-    if (paramRightActionParams.jdField_a_of_type_Int == 0) {
-      paramRightActionParams.jdField_a_of_type_Int = localContext.getResources().getColor(2131165525);
-    }
-    ((TextView)localObject).setTextColor(paramRightActionParams.jdField_a_of_type_Int);
-    if (paramRightActionParams.jdField_b_of_type_Int == 0) {
-      paramRightActionParams.jdField_b_of_type_Int = 16;
-    }
-    ((TextView)localObject).setTextSize(1, paramRightActionParams.jdField_b_of_type_Int);
-    paramToast = new LinearLayout.LayoutParams(-2, -2);
-    paramToast.rightMargin = QQUIDelegate.a(localContext, 22.0F);
-    paramLinearLayout.addView((View)localObject, paramToast);
+    QLog.e("QQToast", 1, "addRightActionView params isNullOrEmpty");
   }
   
   public static boolean a()
@@ -132,16 +132,16 @@ public class QQToast
   {
     switch (paramInt)
     {
-    case 0: 
-    case 3: 
-    case 6: 
     default: 
       return -15550475;
+    case 2: 
+    case 5: 
+      return -7745469;
     case 1: 
     case 4: 
       return -1;
     }
-    return -7745469;
+    return -15550475;
   }
   
   public static boolean b()
@@ -153,15 +153,15 @@ public class QQToast
   {
     switch (paramInt)
     {
-    case 0: 
     case 2: 
-    case 3: 
     case 5: 
-    case 6: 
     default: 
       return -16777216;
+    case 1: 
+    case 4: 
+      return -16578533;
     }
-    return -16578533;
+    return -16777216;
   }
   
   public static boolean c()
@@ -176,14 +176,26 @@ public class QQToast
       int i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("status_bar_height", "dimen", "android"));
       return i;
     }
-    catch (Exception localException) {}
-    return (int)(this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * 25.0F + 0.5D);
+    catch (Exception localException)
+    {
+      label22:
+      double d1;
+      break label22;
+    }
+    d1 = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * 25.0F;
+    Double.isNaN(d1);
+    return (int)(d1 + 0.5D);
   }
   
   public Toast a()
   {
-    if (c()) {}
-    for (Toast localToast = a(a()); (d) && (!jdField_c_of_type_Boolean); localToast = a(0)) {
+    Toast localToast;
+    if (c()) {
+      localToast = a(a());
+    } else {
+      localToast = a(0);
+    }
+    if ((d) && (!jdField_c_of_type_Boolean)) {
       return localToast;
     }
     localToast.show();
@@ -194,71 +206,67 @@ public class QQToast
   
   public Toast a(int paramInt)
   {
-    return a(paramInt, 2131561669, null);
+    return a(paramInt, 2131561517, null);
   }
   
   public Toast a(int paramInt1, int paramInt2, View.OnTouchListener paramOnTouchListener)
   {
     QQToast.ProtectedToast localProtectedToast = new QQToast.ProtectedToast(this.jdField_a_of_type_AndroidContentContext);
     View localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(paramInt2, null);
-    Object localObject = localView.findViewById(2131379611);
+    Object localObject1 = localView.findViewById(2131378958);
     if (Build.VERSION.SDK_INT >= 21) {
-      ((View)localObject).setElevation(6.0F);
+      ((View)localObject1).setElevation(6.0F);
     }
-    AnimationUtils.loadAnimation(this.jdField_a_of_type_AndroidContentContext, 2130772251);
-    localObject = (LinearLayout)localView.findViewById(2131379616);
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast$RightActionParams != null) {
-      a(localProtectedToast, (LinearLayout)localObject, this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast$RightActionParams);
+    localObject1 = (LinearLayout)localView.findViewById(2131378962);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQToast$RightActionParams;
+    if (localObject2 != null) {
+      a(localProtectedToast, (LinearLayout)localObject1, (QQToast.RightActionParams)localObject2);
     }
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
     {
-      localObject = (ImageView)localView.findViewById(2131379614);
-      ((ImageView)localObject).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-      ((ImageView)localObject).setColorFilter(b(this.jdField_b_of_type_Int), PorterDuff.Mode.MULTIPLY);
-      if (this.jdField_a_of_type_JavaLangCharSequence != null)
-      {
-        localObject = (TextView)localView.findViewById(2131379617);
-        ((TextView)localObject).setTextColor(c(this.jdField_b_of_type_Int));
-        ((TextView)localObject).setText(this.jdField_a_of_type_JavaLangCharSequence);
-        String str = this.jdField_a_of_type_JavaLangCharSequence.toString();
-        TextPaint localTextPaint = ((TextView)localObject).getPaint();
-        float f1 = localTextPaint.measureText(str);
-        DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics();
-        float f2 = localDisplayMetrics.densityDpi / 160 * 50;
-        f2 = localDisplayMetrics.widthPixels - f2;
-        if (f1 > f2) {
-          ((TextView)localObject).setTextSize(2, ((TextView)localObject).getTextSize() * 5.0F / 6.0F / localDisplayMetrics.density);
-        }
-        if (this.jdField_a_of_type_Boolean)
-        {
-          f1 = localTextPaint.measureText(str);
-          if (f1 > f2) {
-            ((TextView)localObject).setTextSize(2, ((TextView)localObject).getTextSize() * f2 / f1 / localDisplayMetrics.scaledDensity);
-          }
-        }
-      }
-      if (!b()) {
-        break label395;
-      }
-      localProtectedToast.setGravity(55, 0, 0);
+      localObject1 = (ImageView)localView.findViewById(2131378961);
+      ((ImageView)localObject1).setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      ((ImageView)localObject1).setColorFilter(b(this.b), PorterDuff.Mode.MULTIPLY);
     }
-    for (;;)
+    else
     {
-      localProtectedToast.setView(localView);
-      localProtectedToast.setDuration(this.jdField_c_of_type_Int);
-      if (b()) {
-        localView.setOnTouchListener(new QQToast.1(this, localProtectedToast, paramOnTouchListener));
+      ((ImageView)localView.findViewById(2131378961)).setVisibility(8);
+    }
+    if (this.jdField_a_of_type_JavaLangCharSequence != null)
+    {
+      localObject1 = (TextView)localView.findViewById(2131378963);
+      ((TextView)localObject1).setTextColor(c(this.b));
+      ((TextView)localObject1).setText(this.jdField_a_of_type_JavaLangCharSequence);
+      localObject2 = this.jdField_a_of_type_JavaLangCharSequence.toString();
+      TextPaint localTextPaint = ((TextView)localObject1).getPaint();
+      float f1 = localTextPaint.measureText((String)localObject2);
+      DisplayMetrics localDisplayMetrics = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics();
+      float f2 = localDisplayMetrics.densityDpi / 160 * 50;
+      f2 = localDisplayMetrics.widthPixels - f2;
+      if (f1 > f2) {
+        ((TextView)localObject1).setTextSize(2, ((TextView)localObject1).getTextSize() * 5.0F / 6.0F / localDisplayMetrics.density);
       }
-      return localProtectedToast;
-      ((ImageView)localView.findViewById(2131379614)).setVisibility(8);
-      break;
-      label395:
-      if (paramInt1 == 6316128) {
-        localProtectedToast.setGravity(55, 0, a());
-      } else {
-        localProtectedToast.setGravity(55, 0, b());
+      if (this.jdField_a_of_type_Boolean)
+      {
+        f1 = localTextPaint.measureText((String)localObject2);
+        if (f1 > f2) {
+          ((TextView)localObject1).setTextSize(2, ((TextView)localObject1).getTextSize() * f2 / f1 / localDisplayMetrics.scaledDensity);
+        }
       }
     }
+    if (b()) {
+      localProtectedToast.setGravity(55, 0, 0);
+    } else if (paramInt1 == 6316128) {
+      localProtectedToast.setGravity(55, 0, a());
+    } else {
+      localProtectedToast.setGravity(55, 0, b());
+    }
+    localProtectedToast.setView(localView);
+    localProtectedToast.setDuration(this.jdField_c_of_type_Int);
+    if (b()) {
+      localView.setOnTouchListener(new QQToast.1(this, localProtectedToast, paramOnTouchListener));
+    }
+    return localProtectedToast;
   }
   
   public void a()
@@ -281,8 +289,12 @@ public class QQToast
     paramIToastValidListener = new QQToast.ShowToastMessage(this, paramIToastValidListener);
     jdField_a_of_type_JavaUtilConcurrentBlockingQueue.add(paramIToastValidListener);
     jdField_a_of_type_ComTencentMobileqqWidgetQQToast$ToastHandler.sendEmptyMessage(1);
-    if (QLog.isColorLevel()) {
-      QLog.d("QQToast", 2, "current queue size is " + jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size());
+    if (QLog.isColorLevel())
+    {
+      paramIToastValidListener = new StringBuilder();
+      paramIToastValidListener.append("current queue size is ");
+      paramIToastValidListener.append(jdField_a_of_type_JavaUtilConcurrentBlockingQueue.size());
+      QLog.d("QQToast", 2, paramIToastValidListener.toString());
     }
   }
   
@@ -298,8 +310,15 @@ public class QQToast
       int i = Resources.getSystem().getDimensionPixelSize(Resources.getSystem().getIdentifier("navigation_bar_height", "dimen", "android"));
       return i;
     }
-    catch (Exception localException) {}
-    return (int)(this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * 44.0F + 0.5D);
+    catch (Exception localException)
+    {
+      label23:
+      double d1;
+      break label23;
+    }
+    d1 = this.jdField_a_of_type_AndroidContentResResources.getDisplayMetrics().density * 44.0F;
+    Double.isNaN(d1);
+    return (int)(d1 + 0.5D);
   }
   
   public Toast b(int paramInt)
@@ -328,7 +347,7 @@ public class QQToast
   
   public void b(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.b = paramInt;
   }
   
   public void c(int paramInt)
@@ -343,16 +362,18 @@ public class QQToast
   
   public boolean d()
   {
-    if (this.jdField_c_of_type_Int == 0) {}
-    for (long l = 2000L; (System.currentTimeMillis() - this.jdField_a_of_type_Long > l) || (this.e); l = 3500L) {
-      return false;
+    long l;
+    if (this.jdField_c_of_type_Int == 0) {
+      l = 2000L;
+    } else {
+      l = 3500L;
     }
-    return true;
+    return (System.currentTimeMillis() - this.jdField_a_of_type_Long <= l) && (!this.e);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQToast
  * JD-Core Version:    0.7.0.1
  */

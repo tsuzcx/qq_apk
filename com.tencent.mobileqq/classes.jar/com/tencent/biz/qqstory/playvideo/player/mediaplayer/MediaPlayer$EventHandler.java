@@ -18,68 +18,81 @@ class MediaPlayer$EventHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-    case 1: 
-    case 4: 
-    case 2: 
-    case 5: 
-      do
+      if (i != 2)
       {
-        do
+        if (i != 3)
         {
-          do
+          if (i != 4)
           {
+            if (i != 5)
+            {
+              if (i != 100)
+              {
+                if (i != 200) {
+                  return;
+                }
+                Log.d("Story-MediaPlayer", "onInfo");
+                if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener != null) {
+                  this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener.a_(this.a, paramMessage.arg1, paramMessage.arg2);
+                }
+                return;
+              }
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("Error (");
+              localStringBuilder.append(paramMessage.arg1);
+              localStringBuilder.append(",");
+              localStringBuilder.append(paramMessage.arg2);
+              localStringBuilder.append(")");
+              Log.e("Story-MediaPlayer", localStringBuilder.toString());
+              boolean bool;
+              if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener != null) {
+                bool = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener.a(this.a, paramMessage.arg1, paramMessage.arg2);
+              } else {
+                bool = false;
+              }
+              if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) && (!bool)) {
+                this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a);
+              }
+              this.a.c(false);
+              return;
+            }
+            Log.d("Story-MediaPlayer", "onVideoSizeChanged");
+            if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener != null) {
+              this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener.a(this.a, paramMessage.arg1, paramMessage.arg2);
+            }
             return;
-            Log.d("Story-MediaPlayer", "onPrepared");
-          } while (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener == null);
-          this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener.a_(this.a);
-          return;
+          }
           Log.d("Story-MediaPlayer", "onSeekComplete");
-        } while (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener == null);
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener.a(this.a);
-        return;
-        Log.d("Story-MediaPlayer", "onPlaybackComplete");
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a);
+          if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener != null) {
+            this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener.a(this.a);
+          }
+          return;
         }
-        this.a.c(false);
+        if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener != null) {
+          this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener.a(this.a, paramMessage.arg1);
+        }
+        this.a.e = paramMessage.arg1;
         return;
-        Log.d("Story-MediaPlayer", "onVideoSizeChanged");
-      } while (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener == null);
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnVideoSizeChangedListener.a(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-    case 100: 
-      Log.e("Story-MediaPlayer", "Error (" + paramMessage.arg1 + "," + paramMessage.arg2 + ")");
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener == null) {
-        break;
       }
-    }
-    for (boolean bool = this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnErrorListener.a(this.a, paramMessage.arg1, paramMessage.arg2);; bool = false)
-    {
-      if ((this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) && (!bool)) {
+      Log.d("Story-MediaPlayer", "onPlaybackComplete");
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener != null) {
         this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnCompletionListener.a(this.a);
       }
       this.a.c(false);
       return;
-      Log.d("Story-MediaPlayer", "onInfo");
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener == null) {
-        break;
-      }
-      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnInfoListener.a_(this.a, paramMessage.arg1, paramMessage.arg2);
-      return;
-      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener != null) {
-        this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnBufferingUpdateListener.a(this.a, paramMessage.arg1);
-      }
-      this.a.e = paramMessage.arg1;
-      return;
+    }
+    Log.d("Story-MediaPlayer", "onPrepared");
+    if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener != null) {
+      this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnPreparedListener.a_(this.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.EventHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -55,8 +55,9 @@ public class StoryItem
     if (this.user == null)
     {
       this.user = new QQUserUIItem();
-      this.user.uid = this.unionId;
-      this.user.nickName = "user";
+      QQUserUIItem localQQUserUIItem = this.user;
+      localQQUserUIItem.uid = this.unionId;
+      localQQUserUIItem.nickName = "user";
     }
     this.updateTime = paramStoryEntry.updateTime;
     this.cover = paramStoryEntry.coverUrl;
@@ -71,20 +72,28 @@ public class StoryItem
   {
     StringBuilder localStringBuilder = new StringBuilder();
     paramList = paramList.iterator();
-    while (paramList.hasNext()) {
-      localStringBuilder.append(((StoryItem)paramList.next()).key).append(",");
+    while (paramList.hasNext())
+    {
+      localStringBuilder.append(((StoryItem)paramList.next()).key);
+      localStringBuilder.append(",");
     }
     return localStringBuilder.toString();
   }
   
   public static String makeFriendKey(String paramString)
   {
-    return "fri." + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fri.");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static String makeRecentKey(String paramString)
   {
-    return "recent." + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("recent.");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public void convertFrom(int paramInt, qqstory_struct.StoryDes paramStoryDes)
@@ -100,53 +109,55 @@ public class StoryItem
       if (this.updateTime == 0L) {
         this.updateTime = System.currentTimeMillis();
       }
-      if (!paramStoryDes.storyCover.has()) {
-        break label321;
-      }
-      this.cover = paramStoryDes.storyCover.get().toStringUtf8();
-      label120:
-      if (!paramStoryDes.has_unwatched_video.has()) {
-        break label336;
-      }
-      this.unReadCount = paramStoryDes.has_unwatched_video.get();
-      label141:
-      if (!paramStoryDes.video_count.has()) {
-        break label351;
-      }
-      this.videoCount = paramStoryDes.video_count.get();
-      label162:
-      if (!paramStoryDes.live_video.has()) {
-        break label366;
-      }
-      this.liveVideo = LiveVideoEntry.convertFrom(this.user.uid, paramStoryDes.live_video);
-      label190:
-      if (paramInt != 1) {
-        break label381;
-      }
-      this.key = makeRecentKey(this.user.uid);
-      label209:
-      this.type = paramInt;
-      if (localObject != null) {
-        this.totalTime = ((StoryItem)localObject).totalTime;
-      }
-      if (!paramStoryDes.story_title.has()) {
-        break label402;
-      }
-      this.storyLabel = paramStoryDes.story_title.get().toStringUtf8();
-      label250:
-      if (!paramStoryDes.story_video_attr.has()) {
-        break label428;
-      }
-      paramStoryDes = paramStoryDes.story_video_attr.get().toStringUtf8();
-      if (TextUtils.isEmpty(paramStoryDes)) {}
     }
-    label321:
-    label336:
-    label351:
-    label366:
-    label381:
-    while (localObject == null)
+    else if (localObject != null)
     {
+      this.updateTime = ((StoryItem)localObject).updateTime;
+    }
+    else
+    {
+      this.updateTime = System.currentTimeMillis();
+    }
+    if (paramStoryDes.storyCover.has()) {
+      this.cover = paramStoryDes.storyCover.get().toStringUtf8();
+    } else if (localObject != null) {
+      this.cover = ((StoryItem)localObject).cover;
+    }
+    if (paramStoryDes.has_unwatched_video.has()) {
+      this.unReadCount = paramStoryDes.has_unwatched_video.get();
+    } else if (localObject != null) {
+      this.unReadCount = ((StoryItem)localObject).unReadCount;
+    }
+    if (paramStoryDes.video_count.has()) {
+      this.videoCount = paramStoryDes.video_count.get();
+    } else if (localObject != null) {
+      this.videoCount = ((StoryItem)localObject).videoCount;
+    }
+    if (paramStoryDes.live_video.has()) {
+      this.liveVideo = LiveVideoEntry.convertFrom(this.user.uid, paramStoryDes.live_video);
+    } else if (localObject != null) {
+      this.liveVideo = ((StoryItem)localObject).liveVideo;
+    }
+    if (paramInt == 1) {
+      this.key = makeRecentKey(this.user.uid);
+    } else if (paramInt == 0) {
+      this.key = makeFriendKey(this.user.uid);
+    }
+    this.type = paramInt;
+    if (localObject != null) {
+      this.totalTime = ((StoryItem)localObject).totalTime;
+    }
+    if (paramStoryDes.story_title.has()) {
+      this.storyLabel = paramStoryDes.story_title.get().toStringUtf8();
+    } else if (localObject != null) {
+      this.storyLabel = ((StoryItem)localObject).storyLabel;
+    }
+    if (paramStoryDes.story_video_attr.has())
+    {
+      paramStoryDes = paramStoryDes.story_video_attr.get().toStringUtf8();
+      if (TextUtils.isEmpty(paramStoryDes)) {
+        return;
+      }
       try
       {
         this.mDoodleText = new JSONObject(paramStoryDes).optString("video_doodle_text");
@@ -157,65 +168,29 @@ public class StoryItem
         SLog.b("Q.qqstory.home.StoryItem", "decode json fail", paramStoryDes);
         return;
       }
-      if (localObject != null)
-      {
-        this.updateTime = ((StoryItem)localObject).updateTime;
-        break;
-      }
-      this.updateTime = System.currentTimeMillis();
-      break;
-      if (localObject == null) {
-        break label120;
-      }
-      this.cover = ((StoryItem)localObject).cover;
-      break label120;
-      if (localObject == null) {
-        break label141;
-      }
-      this.unReadCount = ((StoryItem)localObject).unReadCount;
-      break label141;
-      if (localObject == null) {
-        break label162;
-      }
-      this.videoCount = ((StoryItem)localObject).videoCount;
-      break label162;
-      if (localObject == null) {
-        break label190;
-      }
-      this.liveVideo = ((StoryItem)localObject).liveVideo;
-      break label190;
-      if (paramInt != 0) {
-        break label209;
-      }
-      this.key = makeFriendKey(this.user.uid);
-      break label209;
-      if (localObject == null) {
-        break label250;
-      }
-      this.storyLabel = ((StoryItem)localObject).storyLabel;
-      break label250;
     }
-    label402:
-    label428:
-    this.mDoodleText = ((StoryItem)localObject).mDoodleText;
+    if (localObject != null) {
+      this.mDoodleText = ((StoryItem)localObject).mDoodleText;
+    }
   }
   
   public void copy(Object paramObject)
   {
     if ((paramObject instanceof StoryItem))
     {
-      this.key = ((StoryItem)paramObject).key;
-      this.type = ((StoryItem)paramObject).type;
-      this.user = ((StoryItem)paramObject).user;
-      this.updateTime = ((StoryItem)paramObject).updateTime;
-      this.cover = ((StoryItem)paramObject).cover;
-      this.totalTime = ((StoryItem)paramObject).totalTime;
-      this.unReadCount = ((StoryItem)paramObject).unReadCount;
-      this.videoCount = ((StoryItem)paramObject).videoCount;
-      this.liveVideo = ((StoryItem)paramObject).liveVideo;
-      this.mDoodleText = ((StoryItem)paramObject).mDoodleText;
-      this.unionId = ((StoryItem)paramObject).unionId;
-      this.seq = ((StoryItem)paramObject).seq;
+      paramObject = (StoryItem)paramObject;
+      this.key = paramObject.key;
+      this.type = paramObject.type;
+      this.user = paramObject.user;
+      this.updateTime = paramObject.updateTime;
+      this.cover = paramObject.cover;
+      this.totalTime = paramObject.totalTime;
+      this.unReadCount = paramObject.unReadCount;
+      this.videoCount = paramObject.videoCount;
+      this.liveVideo = paramObject.liveVideo;
+      this.mDoodleText = paramObject.mDoodleText;
+      this.unionId = paramObject.unionId;
+      this.seq = paramObject.seq;
     }
   }
   
@@ -253,10 +228,11 @@ public class StoryItem
   
   public String getTitle()
   {
-    if (this.user == null) {
+    QQUserUIItem localQQUserUIItem = this.user;
+    if (localQQUserUIItem == null) {
       return "";
     }
-    if (!TextUtils.isEmpty(this.user.remark)) {
+    if (!TextUtils.isEmpty(localQQUserUIItem.remark)) {
       return this.user.remark;
     }
     if (!TextUtils.isEmpty(this.user.nickName)) {
@@ -272,7 +248,7 @@ public class StoryItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.StoryItem
  * JD-Core Version:    0.7.0.1
  */

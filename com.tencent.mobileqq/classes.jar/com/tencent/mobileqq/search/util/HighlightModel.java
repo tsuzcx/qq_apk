@@ -4,11 +4,11 @@ import android.graphics.Color;
 import android.text.SpannableString;
 import android.text.TextUtils;
 import android.text.style.ForegroundColorSpan;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class HighlightModel
 {
@@ -31,10 +31,10 @@ public class HighlightModel
   
   public int a(String paramString1, String paramString2, int paramInt)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return -1;
+    if ((paramString1 != null) && (paramString2 != null)) {
+      return paramString1.toLowerCase().indexOf(paramString2.toLowerCase(), paramInt);
     }
-    return paramString1.toLowerCase().indexOf(paramString2.toLowerCase(), paramInt);
+    return -1;
   }
   
   public SpannableString a(CharSequence paramCharSequence)
@@ -44,111 +44,142 @@ public class HighlightModel
   
   public SpannableString a(CharSequence paramCharSequence, String paramString, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    Object localObject2;
-    if (TextUtils.isEmpty(paramCharSequence))
-    {
-      localObject2 = null;
-      return localObject2;
+    if (TextUtils.isEmpty(paramCharSequence)) {
+      return null;
     }
     Object localObject1 = new SpannableString(paramCharSequence);
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.size() <= 0)) {
-      return localObject1;
-    }
-    paramCharSequence = paramCharSequence.toString();
-    Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
-    this.jdField_a_of_type_Int = 0;
-    int i = 0;
-    int j = 0;
-    int m = 0;
-    String str;
-    int k;
-    int n;
-    for (;;)
+    Object localObject2 = this.jdField_a_of_type_JavaUtilList;
+    if (localObject2 != null)
     {
-      localObject2 = localObject1;
-      if (m >= arrayOfObject.length) {
-        break;
+      if (((List)localObject2).size() <= 0) {
+        return localObject1;
       }
-      str = (String)arrayOfObject[m];
-      if (str.length() <= 1)
+      localObject2 = paramCharSequence.toString();
+      Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilList.toArray();
+      this.jdField_a_of_type_Int = 0;
+      paramCharSequence = (CharSequence)localObject1;
+      int m = 0;
+      int i = 0;
+      int j = 0;
+      while (m < arrayOfObject.length)
       {
-        localObject2 = localObject1;
-        if (j != 0) {
-          break;
+        String str2 = (String)arrayOfObject[m];
+        if ((str2.length() <= 1) && (i != 0)) {
+          return paramCharSequence;
         }
-      }
-      k = 0;
-      n = a(paramCharSequence, str, k);
-      if (n != -1) {
-        break label146;
-      }
-      m += 1;
-    }
-    label146:
-    if ((paramBoolean3) && (n > 10) && (i == 0) && (!paramBoolean1))
-    {
-      localObject1 = "…" + paramCharSequence.substring(n - 6);
-      paramCharSequence = new SpannableString((CharSequence)localObject1);
-      i = 1;
-      n = 7;
-    }
-    for (;;)
-    {
-      int i1;
-      if (paramBoolean2)
-      {
-        k = ((String)localObject1).indexOf(" ");
-        i1 = ((String)localObject1).indexOf(" ", k);
-        if ((n < k) || (n > i1))
+        int n = 0;
+        int k = j;
+        Object localObject3 = paramCharSequence;
+        j = n;
+        int i1 = a((String)localObject2, str2, j);
+        if (i1 == -1)
         {
-          localObject2 = paramCharSequence;
-          k = n + 1;
-          paramCharSequence = (CharSequence)localObject1;
-          localObject1 = localObject2;
-          break;
+          m += 1;
+          j = k;
+          paramCharSequence = (CharSequence)localObject3;
         }
-      }
-      if (str.length() > 1)
-      {
-        j = 1;
-        i = 1;
-      }
-      for (;;)
-      {
-        try
+        else
         {
-          if (!TextUtils.isEmpty(paramString)) {
-            continue;
+          n = i1;
+          localObject1 = localObject3;
+          paramCharSequence = (CharSequence)localObject2;
+          j = k;
+          if (paramBoolean3)
+          {
+            n = i1;
+            localObject1 = localObject3;
+            paramCharSequence = (CharSequence)localObject2;
+            j = k;
+            if (i1 > 10)
+            {
+              n = i1;
+              localObject1 = localObject3;
+              paramCharSequence = (CharSequence)localObject2;
+              j = k;
+              if (k == 0)
+              {
+                n = i1;
+                localObject1 = localObject3;
+                paramCharSequence = (CharSequence)localObject2;
+                j = k;
+                if (!paramBoolean1)
+                {
+                  paramCharSequence = new StringBuilder();
+                  paramCharSequence.append("…");
+                  paramCharSequence.append(((String)localObject2).substring(i1 - 6));
+                  paramCharSequence = paramCharSequence.toString();
+                  n = 7;
+                  localObject1 = new SpannableString(paramCharSequence);
+                  j = 1;
+                }
+              }
+            }
           }
-          localObject2 = "#00a5e0";
-          k = Color.parseColor((String)localObject2);
-        }
-        catch (Exception localException)
-        {
-          k = Color.parseColor("#00a5e0");
-          continue;
-        }
-        i1 = k;
-        if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime()))
-        {
-          i1 = k;
-          if (TextUtils.isEmpty(paramString)) {
-            i1 = Color.parseColor("#004080");
+          if (paramBoolean2)
+          {
+            int i2 = paramCharSequence.indexOf(" ");
+            int i3 = paramCharSequence.indexOf(" ", i2);
+            i1 = i;
+            k = j;
+            if (n >= i2)
+            {
+              if (n <= i3) {
+                break label367;
+              }
+              k = j;
+              i1 = i;
+            }
+          }
+          for (;;)
+          {
+            j = n + 1;
+            localObject3 = localObject1;
+            localObject2 = paramCharSequence;
+            i = i1;
+            break;
+            label367:
+            if (str2.length() > 1)
+            {
+              i = 1;
+              j = 1;
+            }
+            try
+            {
+              if (!TextUtils.isEmpty(paramString)) {
+                break label504;
+              }
+              localObject2 = "#00a5e0";
+            }
+            catch (Exception localException)
+            {
+              for (;;)
+              {
+                continue;
+                String str1 = paramString;
+              }
+            }
+            k = Color.parseColor((String)localObject2);
+            break label413;
+            k = Color.parseColor("#00a5e0");
+            label413:
+            i1 = k;
+            if (ThemeUtil.isInNightMode(MobileQQ.sMobileQQ.peekAppRuntime()))
+            {
+              i1 = k;
+              if (TextUtils.isEmpty(paramString)) {
+                i1 = Color.parseColor("#004080");
+              }
+            }
+            ((SpannableString)localObject1).setSpan(new ForegroundColorSpan(i1), n, str2.length() + n, 34);
+            this.jdField_a_of_type_Int += 1;
+            i1 = i;
+            k = j;
           }
         }
-        paramCharSequence.setSpan(new ForegroundColorSpan(i1), n, str.length() + n, 34);
-        this.jdField_a_of_type_Int += 1;
-        localObject2 = paramCharSequence;
-        k = n + 1;
-        paramCharSequence = (CharSequence)localObject1;
-        localObject1 = localObject2;
-        break;
-        localObject2 = paramString;
       }
-      Object localObject3 = localObject1;
-      localObject1 = paramCharSequence;
-      paramCharSequence = localObject3;
+      return paramCharSequence;
     }
+    return localObject1;
   }
   
   public SpannableString a(CharSequence paramCharSequence, boolean paramBoolean)
@@ -168,7 +199,7 @@ public class HighlightModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.util.HighlightModel
  * JD-Core Version:    0.7.0.1
  */

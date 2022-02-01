@@ -8,7 +8,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
+import android.os.Handler;
+import android.os.Looper;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.LayoutManager;
 import android.text.TextUtils;
@@ -19,6 +20,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.PublicFragmentActivityForMini;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.mobileqq.mini.MiniAppInterface;
@@ -60,21 +62,20 @@ public class SubscribePermissionSettingFragment
   
   private void dismissProgressDialog()
   {
-    getActivity().runOnUiThread(new SubscribePermissionSettingFragment.4(this));
+    getBaseActivity().runOnUiThread(new SubscribePermissionSettingFragment.4(this));
   }
   
   private SubscribeItemModel getLongTermSubscribe(INTERFACE.StUserSettingInfo paramStUserSettingInfo)
   {
-    boolean bool = true;
     if (paramStUserSettingInfo.authState.get() != 0)
     {
       SubscribeItemModel.Builder localBuilder = new SubscribeItemModel.Builder().setViewType(SubscribeItemModel.SubscribeViewType.LONG_TERM_SUBSCRIBE).setContent(paramStUserSettingInfo.desc.get());
-      if (paramStUserSettingInfo.authState.get() == 1) {}
-      for (;;)
-      {
-        return localBuilder.setIsChecked(bool).build();
+      int i = paramStUserSettingInfo.authState.get();
+      boolean bool = true;
+      if (i != 1) {
         bool = false;
       }
+      return localBuilder.setIsChecked(bool).build();
     }
     return null;
   }
@@ -84,24 +85,20 @@ public class SubscribePermissionSettingFragment
     ArrayList localArrayList = new ArrayList();
     paramStUserSettingInfo = paramStUserSettingInfo.subItems.get();
     int i = 0;
-    if (i < paramStUserSettingInfo.size())
+    while (i < paramStUserSettingInfo.size())
     {
       INTERFACE.StSubscribeMessage localStSubscribeMessage = (INTERFACE.StSubscribeMessage)paramStUserSettingInfo.get(i);
-      SubscribeItemModel.Builder localBuilder;
       if (localStSubscribeMessage.authState.get() != 0)
       {
-        localBuilder = new SubscribeItemModel.Builder().setViewType(paramSubscribeViewType).setContent(localStSubscribeMessage.example.title.get());
-        if (localStSubscribeMessage.authState.get() != 1) {
-          break label124;
+        SubscribeItemModel.Builder localBuilder = new SubscribeItemModel.Builder().setViewType(paramSubscribeViewType).setContent(localStSubscribeMessage.example.title.get());
+        int j = localStSubscribeMessage.authState.get();
+        boolean bool = true;
+        if (j != 1) {
+          bool = false;
         }
-      }
-      label124:
-      for (boolean bool = true;; bool = false)
-      {
         localArrayList.add(localBuilder.setIsChecked(bool).setStSubscribeMessage(localStSubscribeMessage).build());
-        i += 1;
-        break;
       }
+      i += 1;
     }
     return localArrayList;
   }
@@ -114,74 +111,71 @@ public class SubscribePermissionSettingFragment
   private List<SubscribeItemModel> handleAuthList(boolean paramBoolean, JSONObject paramJSONObject)
   {
     ArrayList localArrayList1 = new ArrayList();
-    if ((!paramBoolean) || (paramJSONObject == null))
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      QLog.e("SubscribePermissionSettingFragment", 1, "getSetting-getAuthList failed");
-      return localArrayList1;
-    }
-    QLog.i("SubscribePermissionSettingFragment", 1, "getSetting-getAuthList suc, ret:" + paramJSONObject.toString());
-    paramJSONObject = paramJSONObject.opt("authList");
-    if (!(paramJSONObject instanceof byte[]))
-    {
-      QLog.e("SubscribePermissionSettingFragment", 1, "getSetting-getAuthList failed, obj type error");
-      return localArrayList1;
-    }
-    Object localObject = new INTERFACE.StGetAuthListRsp();
-    ArrayList localArrayList2;
-    ArrayList localArrayList3;
-    try
-    {
-      ((INTERFACE.StGetAuthListRsp)localObject).mergeFrom((byte[])paramJSONObject);
-      paramJSONObject = ((INTERFACE.StGetAuthListRsp)localObject).settings.get();
-      localObject = new ArrayList();
-      localArrayList2 = new ArrayList();
-      localArrayList3 = new ArrayList();
-      Iterator localIterator = paramJSONObject.iterator();
-      while (localIterator.hasNext())
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getSetting-getAuthList suc, ret:");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QLog.i("SubscribePermissionSettingFragment", 1, ((StringBuilder)localObject).toString());
+      paramJSONObject = paramJSONObject.opt("authList");
+      if (!(paramJSONObject instanceof byte[]))
       {
-        INTERFACE.StUserSettingInfo localStUserSettingInfo = (INTERFACE.StUserSettingInfo)localIterator.next();
-        if ("setting.appMsgSubscribed".equals(localStUserSettingInfo.settingItem.get()))
+        QLog.e("SubscribePermissionSettingFragment", 1, "getSetting-getAuthList failed, obj type error");
+        return localArrayList1;
+      }
+      localObject = new INTERFACE.StGetAuthListRsp();
+      try
+      {
+        ((INTERFACE.StGetAuthListRsp)localObject).mergeFrom((byte[])paramJSONObject);
+        paramJSONObject = ((INTERFACE.StGetAuthListRsp)localObject).settings.get();
+        localObject = new ArrayList();
+        ArrayList localArrayList2 = new ArrayList();
+        ArrayList localArrayList3 = new ArrayList();
+        Iterator localIterator = paramJSONObject.iterator();
+        while (localIterator.hasNext())
         {
-          SubscribeItemModel localSubscribeItemModel = getLongTermSubscribe(localStUserSettingInfo);
-          if (localSubscribeItemModel != null) {
-            ((List)localObject).add(localSubscribeItemModel);
+          INTERFACE.StUserSettingInfo localStUserSettingInfo = (INTERFACE.StUserSettingInfo)localIterator.next();
+          if ("setting.appMsgSubscribed".equals(localStUserSettingInfo.settingItem.get()))
+          {
+            SubscribeItemModel localSubscribeItemModel = getLongTermSubscribe(localStUserSettingInfo);
+            if (localSubscribeItemModel != null) {
+              ((List)localObject).add(localSubscribeItemModel);
+            }
+          }
+          if ("setting.onceMsgSubscribed".equals(localStUserSettingInfo.settingItem.get())) {
+            localArrayList2.addAll(getOneTimeSubscribeList(localStUserSettingInfo, SubscribeItemModel.SubscribeViewType.ONE_TIME_SUBSCRIBE));
+          }
+          if ("setting.sysMsgSubscribed".equals(localStUserSettingInfo.settingItem.get())) {
+            localArrayList3.addAll(getOneTimeSubscribeList(localStUserSettingInfo, SubscribeItemModel.SubscribeViewType.INTERACTIVE_SUBSCRIBE));
           }
         }
-        if ("setting.onceMsgSubscribed".equals(localStUserSettingInfo.settingItem.get())) {
-          localArrayList2.addAll(getOneTimeSubscribeList(localStUserSettingInfo, SubscribeItemModel.SubscribeViewType.ONE_TIME_SUBSCRIBE));
-        }
-        if ("setting.sysMsgSubscribed".equals(localStUserSettingInfo.settingItem.get()))
+        if (((List)localObject).size() > 0)
         {
-          localArrayList3.addAll(getOneTimeSubscribeList(localStUserSettingInfo, SubscribeItemModel.SubscribeViewType.INTERACTIVE_SUBSCRIBE));
-          continue;
-          return localArrayList1;
+          localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131694153)));
+          localArrayList1.addAll((Collection)localObject);
         }
+        if (localArrayList2.size() > 0)
+        {
+          localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131694151)));
+          localArrayList1.addAll(localArrayList2);
+        }
+        if (localArrayList3.size() > 0)
+        {
+          localArrayList1.add(getTitleSubscribeItemModel("允许多次发送以下消息"));
+          localArrayList1.addAll(localArrayList3);
+        }
+        this.authorizeCenter.updateAuthList(null, paramJSONObject);
+        this.authorizeCenter.setAuthorizeSynchronized();
+        return localArrayList1;
+      }
+      catch (InvalidProtocolBufferMicroException paramJSONObject)
+      {
+        QLog.e("SubscribePermissionSettingFragment", 1, "getSetting, InvalidProtocolBufferMicroException:", paramJSONObject);
+        return localArrayList1;
       }
     }
-    catch (InvalidProtocolBufferMicroException paramJSONObject)
-    {
-      QLog.e("SubscribePermissionSettingFragment", 1, "getSetting, InvalidProtocolBufferMicroException:", paramJSONObject);
-    }
-    for (;;)
-    {
-      if (((List)localObject).size() > 0)
-      {
-        localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131694189)));
-        localArrayList1.addAll((Collection)localObject);
-      }
-      if (localArrayList2.size() > 0)
-      {
-        localArrayList1.add(getTitleSubscribeItemModel(HardCodeUtil.a(2131694187)));
-        localArrayList1.addAll(localArrayList2);
-      }
-      if (localArrayList3.size() > 0)
-      {
-        localArrayList1.add(getTitleSubscribeItemModel("允许多次发送以下消息"));
-        localArrayList1.addAll(localArrayList3);
-      }
-      this.authorizeCenter.updateAuthList(null, paramJSONObject);
-      this.authorizeCenter.setAuthorizeSynchronized();
-    }
+    QLog.e("SubscribePermissionSettingFragment", 1, "getSetting-getAuthList failed");
+    return localArrayList1;
   }
   
   public static void launch(Context paramContext, String paramString)
@@ -202,14 +196,15 @@ public class SubscribePermissionSettingFragment
     ArrayList localArrayList = new ArrayList();
     INTERFACE.StSubscribeMessage localStSubscribeMessage = paramSubscribeItemModel.getStSubscribeMessage();
     PBInt32Field localPBInt32Field = localStSubscribeMessage.authState;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
-      localPBInt32Field.set(i);
-      localArrayList.add(localStSubscribeMessage);
-      this.authorizeCenter.updateOnceSubMsgSetting(paramString, paramBoolean, localArrayList, new SubscribePermissionSettingFragment.7(this, paramInt, paramBoolean, paramSubscribeItemModel));
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    localPBInt32Field.set(i);
+    localArrayList.add(localStSubscribeMessage);
+    this.authorizeCenter.updateOnceSubMsgSetting(paramString, paramBoolean, localArrayList, new SubscribePermissionSettingFragment.7(this, paramInt, paramBoolean, paramSubscribeItemModel));
   }
   
   private void requestAuthList()
@@ -220,17 +215,17 @@ public class SubscribePermissionSettingFragment
   
   private void setChecked(int paramInt, boolean paramBoolean, SubscribeItemModel paramSubscribeItemModel)
   {
-    getActivity().runOnUiThread(new SubscribePermissionSettingFragment.9(this, paramSubscribeItemModel, paramBoolean, paramInt));
+    new Handler(Looper.getMainLooper()).post(new SubscribePermissionSettingFragment.9(this, paramSubscribeItemModel, paramBoolean, paramInt));
   }
   
   private void showProgressDialog()
   {
-    getActivity().runOnUiThread(new SubscribePermissionSettingFragment.5(this));
+    getBaseActivity().runOnUiThread(new SubscribePermissionSettingFragment.5(this));
   }
   
   private void showSubscribeList(List<SubscribeItemModel> paramList)
   {
-    getActivity().runOnUiThread(new SubscribePermissionSettingFragment.6(this, paramList));
+    getBaseActivity().runOnUiThread(new SubscribePermissionSettingFragment.6(this, paramList));
   }
   
   public boolean needImmersive()
@@ -240,11 +235,11 @@ public class SubscribePermissionSettingFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559521, null);
+    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131559395, null);
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
-      paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
+      paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getBaseActivity()), 0, 0);
     }
     paramLayoutInflater.setBackgroundColor(Color.parseColor("#EFEFF4"));
     return paramLayoutInflater;
@@ -253,42 +248,47 @@ public class SubscribePermissionSettingFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    paramBundle = getActivity().getAppInterface();
+    paramBundle = getBaseActivity().getAppInterface();
     if ((paramBundle instanceof MiniAppInterface)) {
       this.miniAppInterface = ((MiniAppInterface)paramBundle);
     }
-    paramBundle = getActivity().getIntent();
+    paramBundle = getBaseActivity().getIntent();
     if (paramBundle == null)
     {
       QLog.e("SubscribePermissionSettingFragment", 1, "onViewCreated error! intent == null");
-      getActivity().finish();
+      getBaseActivity().finish();
       return;
     }
     this.appId = paramBundle.getStringExtra("EXTRA_APP_ID");
-    if ((TextUtils.isEmpty(this.appId)) || (this.miniAppInterface == null))
+    if ((!TextUtils.isEmpty(this.appId)) && (this.miniAppInterface != null))
     {
-      QLog.e("SubscribePermissionSettingFragment", 1, "onViewCreated error! appId: " + this.appId + " miniAppInterface: " + this.miniAppInterface);
-      getActivity().finish();
+      paramBundle = (TextView)paramView.findViewById(2131369202);
+      TextView localTextView = (TextView)paramView.findViewById(2131369249);
+      paramBundle.setText(HardCodeUtil.a(2131707931));
+      localTextView.setText(HardCodeUtil.a(2131707941));
+      paramBundle.setOnClickListener(this.onClickListener);
+      this.subscribeRecyclerView = ((RecyclerView)paramView.findViewById(2131378079));
+      this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
+      if (this.authorizeCenter == null)
+      {
+        QLog.e("SubscribePermissionSettingFragment", 1, "getAuthorizeCenter(appId), authorizeCenter is null?!");
+        return;
+      }
+      requestAuthList();
       return;
     }
-    paramBundle = (TextView)paramView.findViewById(2131369487);
-    TextView localTextView = (TextView)paramView.findViewById(2131369534);
-    paramBundle.setText(HardCodeUtil.a(2131707908));
-    localTextView.setText(HardCodeUtil.a(2131707922));
-    paramBundle.setOnClickListener(this.onClickListener);
-    this.subscribeRecyclerView = ((RecyclerView)paramView.findViewById(2131378684));
-    this.authorizeCenter = this.miniAppInterface.getAuthorizeCenter(this.appId);
-    if (this.authorizeCenter == null)
-    {
-      QLog.e("SubscribePermissionSettingFragment", 1, "getAuthorizeCenter(appId), authorizeCenter is null?!");
-      return;
-    }
-    requestAuthList();
+    paramView = new StringBuilder();
+    paramView.append("onViewCreated error! appId: ");
+    paramView.append(this.appId);
+    paramView.append(" miniAppInterface: ");
+    paramView.append(this.miniAppInterface);
+    QLog.e("SubscribePermissionSettingFragment", 1, paramView.toString());
+    getBaseActivity().finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.activity.SubscribePermissionSettingFragment
  * JD-Core Version:    0.7.0.1
  */

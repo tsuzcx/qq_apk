@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import java.util.List;
 
-public abstract interface IStickerRecLocalEmoticonHandleListener
+public abstract interface IStickerRecLocalEmoticonHandleListener<T>
 {
-  public abstract List<? extends IStickerRecEmoticon> a(String paramString, SessionInfo paramSessionInfo);
+  public abstract List<? extends IStickerRecEmoticon> a(String paramString, T paramT);
   
-  public abstract boolean a(QQAppInterface paramQQAppInterface, String paramString);
+  public abstract boolean a(BaseQQAppInterface paramBaseQQAppInterface, String paramString);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecLocalEmoticonHandleListener
  * JD-Core Version:    0.7.0.1
  */

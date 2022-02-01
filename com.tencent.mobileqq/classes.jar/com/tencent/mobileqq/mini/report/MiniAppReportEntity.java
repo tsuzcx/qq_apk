@@ -29,13 +29,22 @@ public class MiniAppReportEntity
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("launchId: ").append(this.launchId).append(", appId: ").append(this.appId).append(", subActionType: ").append(this.subActionType).append(", appType: ").append(this.appType).append(", verType: ").append(this.verType);
+    localStringBuilder.append("launchId: ");
+    localStringBuilder.append(this.launchId);
+    localStringBuilder.append(", appId: ");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append(", subActionType: ");
+    localStringBuilder.append(this.subActionType);
+    localStringBuilder.append(", appType: ");
+    localStringBuilder.append(this.appType);
+    localStringBuilder.append(", verType: ");
+    localStringBuilder.append(this.verType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppReportEntity
  * JD-Core Version:    0.7.0.1
  */

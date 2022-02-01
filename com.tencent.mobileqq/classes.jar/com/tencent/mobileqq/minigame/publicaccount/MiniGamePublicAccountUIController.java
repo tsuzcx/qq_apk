@@ -26,20 +26,22 @@ public class MiniGamePublicAccountUIController
   public MiniGamePublicAccountUIController(MiniGamePublicAccountWebFragment paramMiniGamePublicAccountWebFragment)
   {
     this.mFragment = paramMiniGamePublicAccountWebFragment;
-    if (MiniGamePublicAccountHelper.shouldUseWebStrategy2()) {}
-    for (int i = 2;; i = 1)
-    {
-      this.mUiStrategy = i;
-      QLog.d("MiniGamePublicAccountUIController", 1, "init, uiStrategy = " + this.mUiStrategy);
-      return;
+    int i;
+    if (MiniGamePublicAccountHelper.shouldUseWebStrategy2()) {
+      i = 2;
+    } else {
+      i = 1;
     }
+    this.mUiStrategy = i;
+    paramMiniGamePublicAccountWebFragment = new StringBuilder();
+    paramMiniGamePublicAccountWebFragment.append("init, uiStrategy = ");
+    paramMiniGamePublicAccountWebFragment.append(this.mUiStrategy);
+    QLog.d("MiniGamePublicAccountUIController", 1, paramMiniGamePublicAccountWebFragment.toString());
   }
   
   public BaseHeaderAdapter createAdapter(Activity paramActivity)
   {
-    switch (this.mUiStrategy)
-    {
-    default: 
+    if (this.mUiStrategy != 1) {
       return new WebUiStrategy2HeaderAdapter(paramActivity);
     }
     return new WebUiStrategy1HeaderAdapter(paramActivity);
@@ -48,33 +50,33 @@ public class MiniGamePublicAccountUIController
   public MiniGamePublicAccountViewPagerIndicator.IndicatorViewConfig getIndicatorViewConfig()
   {
     MiniGamePublicAccountViewPagerIndicator.IndicatorViewConfig localIndicatorViewConfig = new MiniGamePublicAccountViewPagerIndicator.IndicatorViewConfig();
-    switch (this.mUiStrategy)
+    if (this.mUiStrategy != 1)
     {
-    default: 
-      if (ThemeUtil.a(null, false, null)) {
+      if (ThemeUtil.isNowThemeIsNight(null, false, null))
+      {
         localIndicatorViewConfig.normalColor = Color.parseColor("#303030");
+        localIndicatorViewConfig.selectedColor = Color.parseColor("#0983FF");
       }
-      break;
-    }
-    for (localIndicatorViewConfig.selectedColor = Color.parseColor("#0983FF");; localIndicatorViewConfig.selectedColor = Color.parseColor("#3EAFFF"))
-    {
+      else
+      {
+        localIndicatorViewConfig.normalColor = Color.parseColor("#D0D8F2");
+        localIndicatorViewConfig.selectedColor = Color.parseColor("#3EAFFF");
+      }
       localIndicatorViewConfig.normalWidth = ViewUtils.b(14.0F);
       localIndicatorViewConfig.selectedWidth = ViewUtils.b(14.0F);
       return localIndicatorViewConfig;
-      localIndicatorViewConfig.normalColor = Color.parseColor("#D0D8F2");
-      localIndicatorViewConfig.selectedColor = Color.parseColor("#3857FF");
-      localIndicatorViewConfig.normalWidth = ViewUtils.b(14.0F);
-      localIndicatorViewConfig.selectedWidth = ViewUtils.b(32.0F);
-      return localIndicatorViewConfig;
-      localIndicatorViewConfig.normalColor = Color.parseColor("#D0D8F2");
     }
+    localIndicatorViewConfig.normalColor = Color.parseColor("#D0D8F2");
+    localIndicatorViewConfig.selectedColor = Color.parseColor("#3857FF");
+    localIndicatorViewConfig.normalWidth = ViewUtils.b(14.0F);
+    localIndicatorViewConfig.selectedWidth = ViewUtils.b(32.0F);
+    return localIndicatorViewConfig;
   }
   
   public void initGameCenter(Activity paramActivity, View paramView, MiniGamePublicAccountWebView paramMiniGamePublicAccountWebView)
   {
-    switch (this.mUiStrategy)
+    if (this.mUiStrategy != 1)
     {
-    default: 
       new WebUiStrategy2GameCenter().initView(paramActivity, paramView, paramMiniGamePublicAccountWebView);
       return;
     }
@@ -83,19 +85,18 @@ public class MiniGamePublicAccountUIController
   
   public void setupStrategy()
   {
-    switch (this.mUiStrategy)
-    {
+    Object localObject;
+    if (this.mUiStrategy != 1) {
+      localObject = new WebUiStrategy2();
+    } else {
+      localObject = new WebUiStrategy1();
     }
-    for (Object localObject = new WebUiStrategy2();; localObject = new WebUiStrategy1())
-    {
-      ((MiniGameUiStrategy)localObject).setup(this.mFragment);
-      return;
-    }
+    ((MiniGameUiStrategy)localObject).setup(this.mFragment);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.MiniGamePublicAccountUIController
  * JD-Core Version:    0.7.0.1
  */

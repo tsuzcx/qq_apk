@@ -10,97 +10,87 @@ public class ModelUtils
 {
   public static Object a(Map<String, Object> paramMap, Class<?> paramClass)
   {
-    Object localObject1 = null;
-    Object localObject2 = null;
-    int i = 0;
+    localObject1 = null;
     if (paramMap == null) {
-      return localObject2;
+      return null;
     }
-    localObject2 = localObject1;
-    for (;;)
+    try
     {
-      Field localField;
-      try
+      Object localObject2 = paramClass.newInstance();
+      localObject1 = localObject2;
+      Field[] arrayOfField = localObject2.getClass().getDeclaredFields();
+      localObject1 = localObject2;
+      int j = arrayOfField.length;
+      int i = 0;
+      for (;;)
       {
-        localObject1 = paramClass.newInstance();
-        localObject2 = localObject1;
-        Field[] arrayOfField = localObject1.getClass().getDeclaredFields();
-        localObject2 = localObject1;
-        int j = arrayOfField.length;
-        localObject2 = localObject1;
+        localObject1 = localObject2;
         if (i >= j) {
           break;
         }
-        localField = arrayOfField[i];
-        localObject2 = localObject1;
+        Field localField = arrayOfField[i];
+        localObject1 = localObject2;
         int k = localField.getModifiers();
-        localObject2 = localObject1;
-        if (Modifier.isStatic(k)) {
-          break label195;
-        }
-        localObject2 = localObject1;
-        if (Modifier.isFinal(k)) {
-          break label195;
-        }
-        localObject2 = localObject1;
-        localField.setAccessible(true);
-        localObject2 = localObject1;
-        if (paramMap.containsKey(localField.getName()))
+        localObject1 = localObject2;
+        if (!Modifier.isStatic(k))
         {
-          localObject2 = localObject1;
-          localField.set(localObject1, paramMap.get(localField.getName()));
+          localObject1 = localObject2;
+          if (!Modifier.isFinal(k))
+          {
+            localObject1 = localObject2;
+            localField.setAccessible(true);
+            localObject1 = localObject2;
+            if (paramMap.containsKey(localField.getName()))
+            {
+              localObject1 = localObject2;
+              localField.set(localObject2, paramMap.get(localField.getName()));
+            }
+            else
+            {
+              localObject1 = localObject2;
+              QLog.e("QFlutter.ModelUtils", 1, String.format("mapToObject, %s.%s is null", new Object[] { paramClass.getSimpleName(), localField.getName() }));
+            }
+          }
         }
+        i += 1;
       }
-      catch (Exception paramMap)
-      {
-        paramMap.printStackTrace();
-        return localObject2;
-      }
-      localObject2 = localObject1;
-      QLog.e("QFlutter.ModelUtils", 1, String.format("mapToObject, %s.%s is null", new Object[] { paramClass.getSimpleName(), localField.getName() }));
-      label195:
-      i += 1;
+      return localObject1;
+    }
+    catch (Exception paramMap)
+    {
+      paramMap.printStackTrace();
     }
   }
   
   public static Map a(Object paramObject)
   {
-    Object localObject;
     if (paramObject == null) {
-      localObject = null;
+      return null;
     }
-    for (;;)
+    localHashMap = new HashMap();
+    try
     {
-      return localObject;
-      localHashMap = new HashMap();
-      try
+      Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
+      int j = arrayOfField.length;
+      int i = 0;
+      while (i < j)
       {
-        Field[] arrayOfField = paramObject.getClass().getDeclaredFields();
-        int j = arrayOfField.length;
-        int i = 0;
-        for (;;)
-        {
-          localObject = localHashMap;
-          if (i >= j) {
-            break;
-          }
-          localObject = arrayOfField[i];
-          ((Field)localObject).setAccessible(true);
-          localHashMap.put(((Field)localObject).getName(), ((Field)localObject).get(paramObject));
-          i += 1;
-        }
-        return localHashMap;
+        Field localField = arrayOfField[i];
+        localField.setAccessible(true);
+        localHashMap.put(localField.getName(), localField.get(paramObject));
+        i += 1;
       }
-      catch (Exception paramObject)
-      {
-        paramObject.printStackTrace();
-      }
+      return localHashMap;
+    }
+    catch (Exception paramObject)
+    {
+      paramObject.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.utils.ModelUtils
  * JD-Core Version:    0.7.0.1
  */

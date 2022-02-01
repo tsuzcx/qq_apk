@@ -19,73 +19,88 @@ public class DownloadSDKConfigManager
   public static boolean canGotoNewAppListPage()
   {
     NewQqCenterConfig localNewQqCenterConfig = b.a().c();
-    if (localNewQqCenterConfig == null) {
+    if (localNewQqCenterConfig == null)
+    {
       ab.e("DownloadSDKConfigManager", "[canGotoNewDetailPage] cfg is empty!");
-    }
-    while (localNewQqCenterConfig.entranceSwitch != 1) {
       return true;
     }
-    return false;
+    return localNewQqCenterConfig.entranceSwitch != 1;
   }
   
   public static boolean canGotoNewDetailPage(String paramString)
   {
     Object localObject = b.a().c();
-    if ((localObject == null) || (((NewQqCenterConfig)localObject).enterOldViaList == null) || (TextUtils.isEmpty(paramString)))
+    if ((localObject != null) && (((NewQqCenterConfig)localObject).enterOldViaList != null) && (!TextUtils.isEmpty(paramString)))
     {
-      ab.e("DownloadSDKConfigManager", "[canGotoNewDetailPage] cfg is empty!");
-      return true;
-    }
-    if (((NewQqCenterConfig)localObject).detailSwitch == 0) {
-      return true;
-    }
-    if (((NewQqCenterConfig)localObject).detailSwitch == 1)
-    {
-      localObject = ((NewQqCenterConfig)localObject).enterOldViaList.iterator();
-      while (((Iterator)localObject).hasNext())
+      if (((NewQqCenterConfig)localObject).detailSwitch == 0) {
+        return true;
+      }
+      if (((NewQqCenterConfig)localObject).detailSwitch == 1)
       {
-        String str = (String)((Iterator)localObject).next();
-        if ((!TextUtils.isEmpty(str)) && (paramString.startsWith(str))) {
-          return false;
+        localObject = ((NewQqCenterConfig)localObject).enterOldViaList.iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          String str = (String)((Iterator)localObject).next();
+          if ((!TextUtils.isEmpty(str)) && (paramString.startsWith(str))) {
+            return false;
+          }
         }
       }
+      return true;
     }
+    ab.e("DownloadSDKConfigManager", "[canGotoNewDetailPage] cfg is empty!");
     return true;
   }
   
   public static String getPageUrl(String paramString)
   {
     NewQqCenterConfig localNewQqCenterConfig = b.a().c();
-    if ((localNewQqCenterConfig == null) || (localNewQqCenterConfig.appNewsUrlMap == null) || (TextUtils.isEmpty(paramString)))
-    {
-      ab.e("DownloadSDKConfigManager", "[getPageUrl] cfg is empty!");
-      return "";
+    if ((localNewQqCenterConfig != null) && (localNewQqCenterConfig.appNewsUrlMap != null) && (!TextUtils.isEmpty(paramString))) {
+      return (String)localNewQqCenterConfig.appNewsUrlMap.get(paramString);
     }
-    return (String)localNewQqCenterConfig.appNewsUrlMap.get(paramString);
+    ab.e("DownloadSDKConfigManager", "[getPageUrl] cfg is empty!");
+    return "";
   }
   
   public static boolean isDownloadUrlBlocked(Context paramContext, String paramString)
   {
     long l = System.currentTimeMillis();
     k.a().post(new c());
-    ab.c("DownloadSDKConfigManager", "<checkDownloadUrl>url is : " + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("<checkDownloadUrl>url is : ");
+    ((StringBuilder)localObject).append(paramString);
+    ab.c("DownloadSDKConfigManager", ((StringBuilder)localObject).toString());
     paramContext = b.a().a(paramContext);
-    if ((TextUtils.isEmpty(paramString)) || (paramContext == null) || (paramContext.size() == 0))
+    if ((!TextUtils.isEmpty(paramString)) && (paramContext != null) && (paramContext.size() != 0))
     {
-      ab.c("DownloadSDKConfigManager", "<checkDownloadUrl> blackList isEmpty or null,time cost = " + (System.currentTimeMillis() - l) + "ms");
+      localObject = paramContext.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        paramContext = (String)((Iterator)localObject).next();
+        if (paramString.contains(paramContext))
+        {
+          paramString = new StringBuilder();
+          paramString.append("<checkDownloadUrl> contains : ");
+          paramString.append(paramContext);
+          paramString.append(",time cost = ");
+          paramString.append(System.currentTimeMillis() - l);
+          paramString.append("ms");
+          ab.c("DownloadSDKConfigManager", paramString.toString());
+          return true;
+        }
+      }
+      paramContext = new StringBuilder();
+      paramContext.append("<checkDownloadUrl> non key word match return false ,time cost = ");
+      paramContext.append(System.currentTimeMillis() - l);
+      paramContext.append("ms");
+      ab.c("DownloadSDKConfigManager", paramContext.toString());
       return false;
     }
-    paramContext = paramContext.iterator();
-    while (paramContext.hasNext())
-    {
-      String str = (String)paramContext.next();
-      if (paramString.contains(str))
-      {
-        ab.c("DownloadSDKConfigManager", "<checkDownloadUrl> contains : " + str + ",time cost = " + (System.currentTimeMillis() - l) + "ms");
-        return true;
-      }
-    }
-    ab.c("DownloadSDKConfigManager", "<checkDownloadUrl> non key word match return false ,time cost = " + (System.currentTimeMillis() - l) + "ms");
+    paramContext = new StringBuilder();
+    paramContext.append("<checkDownloadUrl> blackList isEmpty or null,time cost = ");
+    paramContext.append(System.currentTimeMillis() - l);
+    paramContext.append("ms");
+    ab.c("DownloadSDKConfigManager", paramContext.toString());
     return false;
   }
   
@@ -96,7 +111,7 @@ public class DownloadSDKConfigManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.common.DownloadSDKConfigManager
  * JD-Core Version:    0.7.0.1
  */

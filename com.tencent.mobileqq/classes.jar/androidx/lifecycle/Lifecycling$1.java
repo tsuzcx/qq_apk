@@ -2,7 +2,7 @@ package androidx.lifecycle;
 
 import androidx.annotation.NonNull;
 
-final class Lifecycling$1
+class Lifecycling$1
   implements GenericLifecycleObserver
 {
   Lifecycling$1(LifecycleEventObserver paramLifecycleEventObserver) {}
@@ -14,7 +14,7 @@ final class Lifecycling$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.Lifecycling.1
  * JD-Core Version:    0.7.0.1
  */

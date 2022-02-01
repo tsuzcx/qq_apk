@@ -16,7 +16,7 @@ final class ImmLeaksCleaner
   private static final int NOT_INITIALIAZED = 0;
   private static Field sHField;
   private static Field sNextServedViewField;
-  private static int sReflectedFieldsInitialized = 0;
+  private static int sReflectedFieldsInitialized;
   private static Field sServedViewField;
   private Activity mActivity;
   
@@ -51,14 +51,14 @@ final class ImmLeaksCleaner
     //   1: getstatic 78	androidx/lifecycle/Lifecycle$Event:ON_DESTROY	Landroidx/lifecycle/Lifecycle$Event;
     //   4: if_acmpeq +4 -> 8
     //   7: return
-    //   8: getstatic 27	androidx/activity/ImmLeaksCleaner:sReflectedFieldsInitialized	I
+    //   8: getstatic 38	androidx/activity/ImmLeaksCleaner:sReflectedFieldsInitialized	I
     //   11: ifne +6 -> 17
     //   14: invokestatic 80	androidx/activity/ImmLeaksCleaner:initializeReflectiveFields	()V
-    //   17: getstatic 27	androidx/activity/ImmLeaksCleaner:sReflectedFieldsInitialized	I
+    //   17: getstatic 38	androidx/activity/ImmLeaksCleaner:sReflectedFieldsInitialized	I
     //   20: iconst_1
-    //   21: if_icmpne -14 -> 7
+    //   21: if_icmpne +88 -> 109
     //   24: aload_0
-    //   25: getfield 34	androidx/activity/ImmLeaksCleaner:mActivity	Landroid/app/Activity;
+    //   25: getfield 32	androidx/activity/ImmLeaksCleaner:mActivity	Landroid/app/Activity;
     //   28: ldc 82
     //   30: invokevirtual 88	android/app/Activity:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
     //   33: checkcast 40	android/view/inputmethod/InputMethodManager
@@ -68,80 +68,86 @@ final class ImmLeaksCleaner
     //   41: invokevirtual 92	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
     //   44: astore_1
     //   45: aload_1
-    //   46: ifnull -39 -> 7
-    //   49: aload_1
-    //   50: monitorenter
-    //   51: getstatic 50	androidx/activity/ImmLeaksCleaner:sServedViewField	Ljava/lang/reflect/Field;
-    //   54: aload_2
-    //   55: invokevirtual 92	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   58: checkcast 94	android/view/View
-    //   61: astore_3
-    //   62: aload_3
-    //   63: ifnonnull +19 -> 82
-    //   66: aload_1
-    //   67: monitorexit
-    //   68: return
-    //   69: astore_2
-    //   70: aload_1
-    //   71: monitorexit
-    //   72: aload_2
-    //   73: athrow
-    //   74: astore_2
-    //   75: aload_1
-    //   76: monitorexit
-    //   77: return
-    //   78: astore_2
-    //   79: aload_1
-    //   80: monitorexit
-    //   81: return
-    //   82: aload_3
-    //   83: invokevirtual 98	android/view/View:isAttachedToWindow	()Z
-    //   86: ifeq +6 -> 92
-    //   89: aload_1
-    //   90: monitorexit
-    //   91: return
-    //   92: getstatic 60	androidx/activity/ImmLeaksCleaner:sNextServedViewField	Ljava/lang/reflect/Field;
-    //   95: aload_2
-    //   96: aconst_null
-    //   97: invokevirtual 102	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
-    //   100: aload_1
-    //   101: monitorexit
-    //   102: aload_2
-    //   103: invokevirtual 105	android/view/inputmethod/InputMethodManager:isActive	()Z
-    //   106: pop
-    //   107: return
-    //   108: astore_2
-    //   109: aload_1
-    //   110: monitorexit
+    //   46: ifnonnull +4 -> 50
+    //   49: return
+    //   50: aload_1
+    //   51: monitorenter
+    //   52: getstatic 50	androidx/activity/ImmLeaksCleaner:sServedViewField	Ljava/lang/reflect/Field;
+    //   55: aload_2
+    //   56: invokevirtual 92	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   59: checkcast 94	android/view/View
+    //   62: astore_3
+    //   63: aload_3
+    //   64: ifnonnull +6 -> 70
+    //   67: aload_1
+    //   68: monitorexit
+    //   69: return
+    //   70: aload_3
+    //   71: invokevirtual 98	android/view/View:isAttachedToWindow	()Z
+    //   74: ifeq +6 -> 80
+    //   77: aload_1
+    //   78: monitorexit
+    //   79: return
+    //   80: getstatic 60	androidx/activity/ImmLeaksCleaner:sNextServedViewField	Ljava/lang/reflect/Field;
+    //   83: aload_2
+    //   84: aconst_null
+    //   85: invokevirtual 102	java/lang/reflect/Field:set	(Ljava/lang/Object;Ljava/lang/Object;)V
+    //   88: aload_1
+    //   89: monitorexit
+    //   90: aload_2
+    //   91: invokevirtual 105	android/view/inputmethod/InputMethodManager:isActive	()Z
+    //   94: pop
+    //   95: return
+    //   96: aload_1
+    //   97: monitorexit
+    //   98: return
+    //   99: aload_1
+    //   100: monitorexit
+    //   101: return
+    //   102: aload_1
+    //   103: monitorexit
+    //   104: return
+    //   105: aload_1
+    //   106: monitorexit
+    //   107: aload_2
+    //   108: athrow
+    //   109: return
+    //   110: astore_1
     //   111: return
-    //   112: astore_1
-    //   113: return
+    //   112: astore_2
+    //   113: goto -11 -> 102
+    //   116: astore_2
+    //   117: goto -18 -> 99
+    //   120: astore_2
+    //   121: goto -25 -> 96
+    //   124: astore_2
+    //   125: goto -20 -> 105
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	114	0	this	ImmLeaksCleaner
-    //   0	114	1	paramLifecycleOwner	androidx.lifecycle.LifecycleOwner
-    //   0	114	2	paramEvent	androidx.lifecycle.Lifecycle.Event
-    //   61	22	3	localView	android.view.View
+    //   0	128	0	this	ImmLeaksCleaner
+    //   0	128	1	paramLifecycleOwner	androidx.lifecycle.LifecycleOwner
+    //   0	128	2	paramEvent	androidx.lifecycle.Lifecycle.Event
+    //   62	9	3	localView	android.view.View
     // Exception table:
     //   from	to	target	type
-    //   51	62	69	finally
-    //   66	68	69	finally
-    //   70	72	69	finally
-    //   75	77	69	finally
-    //   79	81	69	finally
-    //   82	91	69	finally
-    //   92	100	69	finally
-    //   100	102	69	finally
-    //   109	111	69	finally
-    //   51	62	74	java/lang/IllegalAccessException
-    //   51	62	78	java/lang/ClassCastException
-    //   92	100	108	java/lang/IllegalAccessException
-    //   37	45	112	java/lang/IllegalAccessException
+    //   37	45	110	java/lang/IllegalAccessException
+    //   52	63	112	java/lang/IllegalAccessException
+    //   52	63	116	java/lang/ClassCastException
+    //   80	88	120	java/lang/IllegalAccessException
+    //   52	63	124	finally
+    //   67	69	124	finally
+    //   70	79	124	finally
+    //   80	88	124	finally
+    //   88	90	124	finally
+    //   96	98	124	finally
+    //   99	101	124	finally
+    //   102	104	124	finally
+    //   105	107	124	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.activity.ImmLeaksCleaner
  * JD-Core Version:    0.7.0.1
  */

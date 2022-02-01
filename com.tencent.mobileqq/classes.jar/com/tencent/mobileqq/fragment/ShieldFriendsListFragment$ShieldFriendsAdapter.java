@@ -59,22 +59,29 @@ public class ShieldFriendsListFragment$ShieldFriendsAdapter
   
   public void a(List<Friends> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilList = paramList;
+      notifyDataSetChanged();
     }
-    this.jdField_a_of_type_JavaUtilList = paramList;
-    notifyDataSetChanged();
   }
   
   public boolean a(String paramString)
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      return false;
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      if (((Friends)localIterator.next()).uin.equals(paramString)) {
-        return true;
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
+    {
+      if (((List)localObject).isEmpty()) {
+        return false;
+      }
+      localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (((Friends)((Iterator)localObject).next()).uin.equals(paramString)) {
+          return true;
+        }
       }
     }
     return false;
@@ -82,18 +89,20 @@ public class ShieldFriendsListFragment$ShieldFriendsAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaUtilList.size();
+    return localList.size();
   }
   
   public Object getItem(int paramInt)
   {
-    if (this.jdField_a_of_type_JavaUtilList == null) {
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList == null) {
       return null;
     }
-    return (Friends)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    return localList.get(paramInt);
   }
   
   public long getItemId(int paramInt)
@@ -103,100 +112,87 @@ public class ShieldFriendsListFragment$ShieldFriendsAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    ShieldFriendsListFragment.Holder localHolder;
+    View localView;
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561625, paramViewGroup, false);
-      localHolder = new ShieldFriendsListFragment.Holder();
-      localHolder.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131378013));
-      localHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378014));
-      localHolder.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)paramView.findViewById(2131378015));
-      localHolder.jdField_a_of_type_ComTencentWidgetSwitch.setTag(localHolder);
-      paramView.setTag(localHolder);
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561467, paramViewGroup, false);
+      paramView = new ShieldFriendsListFragment.Holder();
+      paramView.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)localView.findViewById(2131377437));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377438));
+      paramView.jdField_a_of_type_ComTencentWidgetSwitch = ((Switch)localView.findViewById(2131377439));
+      paramView.jdField_a_of_type_ComTencentWidgetSwitch.setTag(paramView);
+      localView.setTag(paramView);
     }
-    Object localObject;
-    for (;;)
+    else
     {
-      localObject = (Friends)getItem(paramInt);
-      if (localObject != null) {
-        break;
-      }
+      localObject = (ShieldFriendsListFragment.Holder)paramView.getTag();
+      localView = paramView;
+      paramView = (View)localObject;
+    }
+    Object localObject = (Friends)getItem(paramInt);
+    if (localObject == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("ShieldFriendsListActivity", 2, "friend == null,这种情况不应该出现的");
       }
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-      localHolder = (ShieldFriendsListFragment.Holder)paramView.getTag();
     }
-    localHolder.jdField_a_of_type_JavaLangString = ((Friends)localObject).uin;
-    localHolder.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
-    localHolder.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(((Friends)localObject).isShield());
-    localHolder.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
-    localHolder.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = this;
-    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, ((Friends)localObject).uin, 0);
-    if (localBitmap == null)
+    else
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(((Friends)localObject).uin, 1, true);
+      paramView.jdField_a_of_type_JavaLangString = ((Friends)localObject).uin;
+      paramView.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(null);
+      paramView.jdField_a_of_type_ComTencentWidgetSwitch.setChecked(((Friends)localObject).isShield());
+      paramView.jdField_a_of_type_ComTencentWidgetSwitch.setOnCheckedChangeListener(this);
+      paramView.jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener = this;
+      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, ((Friends)localObject).uin, 0);
+      if (localBitmap == null)
+      {
+        if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
+          this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(((Friends)localObject).uin, 1, true);
+        }
+        paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable((BitmapDrawable)ImageUtil.f());
       }
-      localHolder.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable((BitmapDrawable)ImageUtil.d());
-    }
-    for (;;)
-    {
+      else
+      {
+        paramView.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+      }
       localObject = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((Friends)localObject).uin, 0);
-      localHolder.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
-      break;
-      localHolder.jdField_a_of_type_ComTencentImageURLImageView.setBackgroundDrawable(new BitmapDrawable(localBitmap));
+      paramView.jdField_a_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-    int i;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = 1;
-      ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X8009DD1", "0X8009DD1", 0, i, "0", "0", "", "");
-      i = HttpUtil.getNetWorkType();
-      if (i != -1) {
-        break label165;
-      }
+    } else {
       i = 2;
     }
-    label165:
-    for (;;)
-    {
-      localObject = (ShieldFriendsListFragment.Holder)paramCompoundButton.getTag();
-      boolean bool;
-      if (i == 0)
-      {
-        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131696097, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299166));
-        paramCompoundButton.setOnCheckedChangeListener(null);
-        if (!paramBoolean)
-        {
-          bool = true;
-          label99:
-          paramCompoundButton.setChecked(bool);
-          paramCompoundButton.setOnCheckedChangeListener(((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
-        }
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-        return;
-        i = 2;
-        break;
-        bool = false;
-        break label99;
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).changeFriendShieldFlag(Long.valueOf(((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_JavaLangString).longValue(), paramBoolean);
-      }
+    ReportController.b((AppRuntime)localObject, "CliOper", "", "", "0X8009DD1", "0X8009DD1", 0, i, "0", "0", "", "");
+    int i = HttpUtil.getNetWorkType();
+    if (i == -1) {
+      i = 2;
     }
+    localObject = (ShieldFriendsListFragment.Holder)paramCompoundButton.getTag();
+    if (i == 0)
+    {
+      QQToast.a(this.jdField_a_of_type_AndroidContentContext, 1, 2131696114, 0).b(BaseApplication.getContext().getResources().getDimensionPixelSize(2131299168));
+      paramCompoundButton.setOnCheckedChangeListener(null);
+      paramCompoundButton.setChecked(paramBoolean ^ true);
+      paramCompoundButton.setOnCheckedChangeListener(((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_AndroidWidgetCompoundButton$OnCheckedChangeListener);
+    }
+    else
+    {
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).changeFriendShieldFlag(Long.valueOf(((ShieldFriendsListFragment.Holder)localObject).jdField_a_of_type_JavaLangString).longValue(), paramBoolean);
+    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.ShieldFriendsListFragment.ShieldFriendsAdapter
  * JD-Core Version:    0.7.0.1
  */

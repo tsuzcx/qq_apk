@@ -76,18 +76,18 @@ public final class FrameInfoModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof FrameInfoModel))
       {
         paramObject = (FrameInfoModel)paramObject;
-        if ((this.mWidth != paramObject.mWidth) || (this.mHeight != paramObject.mHeight) || (this.left != paramObject.left) || (this.top != paramObject.top) || (this.right != paramObject.right) || (this.bottom != paramObject.bottom)) {}
+        if ((this.mWidth == paramObject.mWidth) && (this.mHeight == paramObject.mHeight) && (this.left == paramObject.left) && (this.top == paramObject.top) && (this.right == paramObject.right) && (this.bottom == paramObject.bottom)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -98,12 +98,26 @@ public final class FrameInfoModel
   @NotNull
   public String toString()
   {
-    return "FrameInfoModel(mWidth=" + this.mWidth + ", mHeight=" + this.mHeight + ", left=" + this.left + ", top=" + this.top + ", right=" + this.right + ", bottom=" + this.bottom + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FrameInfoModel(mWidth=");
+    localStringBuilder.append(this.mWidth);
+    localStringBuilder.append(", mHeight=");
+    localStringBuilder.append(this.mHeight);
+    localStringBuilder.append(", left=");
+    localStringBuilder.append(this.left);
+    localStringBuilder.append(", top=");
+    localStringBuilder.append(this.top);
+    localStringBuilder.append(", right=");
+    localStringBuilder.append(this.right);
+    localStringBuilder.append(", bottom=");
+    localStringBuilder.append(this.bottom);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.extra.FrameInfoModel
  * JD-Core Version:    0.7.0.1
  */

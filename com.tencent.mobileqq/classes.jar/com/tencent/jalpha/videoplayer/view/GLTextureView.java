@@ -52,9 +52,10 @@ public class GLTextureView
   
   private void checkRenderThreadState()
   {
-    if (this.mGLThread != null) {
-      throw new IllegalStateException("setRenderer has already been called for this instance.");
+    if (this.mGLThread == null) {
+      return;
     }
+    throw new IllegalStateException("setRenderer has already been called for this instance.");
   }
   
   @SuppressLint({"UseValueOf"})
@@ -70,7 +71,11 @@ public class GLTextureView
     {
       throw paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label67:
+      break label67;
+    }
     return Integer.valueOf(paramInt);
   }
   
@@ -96,7 +101,10 @@ public class GLTextureView
     if (Build.VERSION.SDK_INT >= 14)
     {
       setAlpha(paramFloat);
-      Logger.d("GLTextureView", "TextureView setAlpha,alpha:" + paramFloat);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("TextureView setAlpha,alpha:");
+      localStringBuilder.append(paramFloat);
+      Logger.d("GLTextureView", localStringBuilder.toString());
     }
   }
   
@@ -130,31 +138,32 @@ public class GLTextureView
     return this.mGLThread.getRenderMode();
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
-    if ((this.mDetached) && (this.mRenderer != null)) {
-      if (this.mGLThread == null) {
-        break label74;
-      }
-    }
-    label74:
-    for (int i = this.mGLThread.getRenderMode();; i = 1)
+    if ((this.mDetached) && (this.mRenderer != null))
     {
+      GLTextureView.GLThread localGLThread = this.mGLThread;
+      int i;
+      if (localGLThread != null) {
+        i = localGLThread.getRenderMode();
+      } else {
+        i = 1;
+      }
       this.mGLThread = new GLTextureView.GLThread(this.mThisWeakRef);
       if (i != 1) {
         this.mGLThread.setRenderMode(i);
       }
       this.mGLThread.start();
-      this.mDetached = false;
-      return;
     }
+    this.mDetached = false;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
-    if (this.mGLThread != null) {
-      this.mGLThread.requestExitAndWait();
+    GLTextureView.GLThread localGLThread = this.mGLThread;
+    if (localGLThread != null) {
+      localGLThread.requestExitAndWait();
     }
     this.mDetached = true;
     super.onDetachedFromWindow();
@@ -179,7 +188,10 @@ public class GLTextureView
     long l = System.currentTimeMillis();
     surfaceCreated(paramSurfaceTexture);
     postDelayed(this.mCheckAlphaTask, 250L);
-    Logger.d("GLTextureView", " TextureView onSurfaceTextureAvailable surfaceCreated use:" + (System.currentTimeMillis() - l));
+    paramSurfaceTexture = new StringBuilder();
+    paramSurfaceTexture.append(" TextureView onSurfaceTextureAvailable surfaceCreated use:");
+    paramSurfaceTexture.append(System.currentTimeMillis() - l);
+    Logger.d("GLTextureView", paramSurfaceTexture.toString());
   }
   
   public boolean onSurfaceTextureDestroyed(SurfaceTexture paramSurfaceTexture)
@@ -197,7 +209,10 @@ public class GLTextureView
     long l = System.currentTimeMillis();
     Log.d("GLTextureView", "onSurfaceTextureSizeChanged");
     surfaceChanged(paramSurfaceTexture, 0, paramInt1, paramInt2);
-    Logger.d("GLTextureView", " TextureView onSurfaceTextureSizeChanged surfaceChanged use:" + (System.currentTimeMillis() - l));
+    paramSurfaceTexture = new StringBuilder();
+    paramSurfaceTexture.append(" TextureView onSurfaceTextureSizeChanged surfaceChanged use:");
+    paramSurfaceTexture.append(System.currentTimeMillis() - l);
+    Logger.d("GLTextureView", paramSurfaceTexture.toString());
   }
   
   public void onSurfaceTextureUpdated(SurfaceTexture paramSurfaceTexture) {}
@@ -297,7 +312,14 @@ public class GLTextureView
     if ((this.mSurfaceTextureAvailable) && (getViewAlpha() != 1.0F)) {
       setViewAlpha(1.0F);
     }
-    Logger.d("GLTextureView", " surfaceChanged, w:" + paramInt2 + ",h:" + paramInt3 + " use:" + (System.currentTimeMillis() - l));
+    paramSurfaceTexture = new StringBuilder();
+    paramSurfaceTexture.append(" surfaceChanged, w:");
+    paramSurfaceTexture.append(paramInt2);
+    paramSurfaceTexture.append(",h:");
+    paramSurfaceTexture.append(paramInt3);
+    paramSurfaceTexture.append(" use:");
+    paramSurfaceTexture.append(System.currentTimeMillis() - l);
+    Logger.d("GLTextureView", paramSurfaceTexture.toString());
   }
   
   public void surfaceCreated(SurfaceTexture paramSurfaceTexture)
@@ -312,7 +334,7 @@ public class GLTextureView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.jalpha.videoplayer.view.GLTextureView
  * JD-Core Version:    0.7.0.1
  */

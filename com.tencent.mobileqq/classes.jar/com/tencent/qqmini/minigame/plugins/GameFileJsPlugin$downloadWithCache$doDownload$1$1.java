@@ -23,10 +23,16 @@ public final class GameFileJsPlugin$downloadWithCache$doDownload$1$1
   {
     Intrinsics.checkParameterIsNotNull(paramString, "errorMsg");
     long l = System.currentTimeMillis() - this.$startMS;
-    QMLog.i(GameFileJsPlugin.access$getTAG$p(this.this$0.this$0), "doDownloadWithCache failed [timecost = " + l + "ms], url:" + this.$url);
+    String str = GameFileJsPlugin.access$getTAG$p(this.this$0.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doDownloadWithCache failed [timecost = ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("ms], url:");
+    localStringBuilder.append(this.$url);
+    QMLog.i(str, localStringBuilder.toString());
     this.this$0.$req.fail(paramString);
     paramString = this.this$0.this$0;
-    String str = this.$url;
+    str = this.$url;
     Intrinsics.checkExpressionValueIsNotNull(str, "url");
     GameFileJsPlugin.access$reportDownloadWithCache(paramString, l, paramInt, str);
   }
@@ -43,7 +49,15 @@ public final class GameFileJsPlugin$downloadWithCache$doDownload$1$1
     Intrinsics.checkParameterIsNotNull(paramString, "filePath");
     Intrinsics.checkParameterIsNotNull(paramDownloadResult, "result");
     long l = System.currentTimeMillis() - this.$startMS;
-    QMLog.i(GameFileJsPlugin.access$getTAG$p(this.this$0.this$0), "doDownloadWithCache success [timecost = " + l + "ms] url:" + this.$url + ", save to file:" + this.$tmpFilePath);
+    paramString = GameFileJsPlugin.access$getTAG$p(this.this$0.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doDownloadWithCache success [timecost = ");
+    localStringBuilder.append(l);
+    localStringBuilder.append("ms] url:");
+    localStringBuilder.append(this.$url);
+    localStringBuilder.append(", save to file:");
+    localStringBuilder.append(this.$tmpFilePath);
+    QMLog.i(paramString, localStringBuilder.toString());
     paramString = new JSONObject();
     try
     {
@@ -62,14 +76,18 @@ public final class GameFileJsPlugin$downloadWithCache$doDownload$1$1
     }
     catch (JSONException paramString)
     {
-      QMLog.i(GameFileJsPlugin.access$getTAG$p(this.this$0.this$0), "doDownloadWithCache exception, url:" + this.$url, (Throwable)paramString);
+      paramDownloadResult = GameFileJsPlugin.access$getTAG$p(this.this$0.this$0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doDownloadWithCache exception, url:");
+      localStringBuilder.append(this.$url);
+      QMLog.i(paramDownloadResult, localStringBuilder.toString(), (Throwable)paramString);
       this.this$0.$req.fail("download exception");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.GameFileJsPlugin.downloadWithCache.doDownload.1.1
  * JD-Core Version:    0.7.0.1
  */

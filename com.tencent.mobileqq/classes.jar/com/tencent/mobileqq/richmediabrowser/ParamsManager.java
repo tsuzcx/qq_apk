@@ -2,11 +2,7 @@ package com.tencent.mobileqq.richmediabrowser;
 
 import android.content.Intent;
 import android.graphics.Rect;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import cooperation.peak.PeakUtils;
-import mqq.app.AppRuntime;
 
 public class ParamsManager
 {
@@ -29,7 +25,8 @@ public class ParamsManager
   private boolean f = false;
   private boolean g;
   private boolean h = false;
-  private boolean i;
+  private boolean i = false;
+  private boolean j;
   
   private ParamsManager()
   {
@@ -67,49 +64,7 @@ public class ParamsManager
   
   public void a(Intent paramIntent)
   {
-    Bundle localBundle = paramIntent.getExtras();
-    this.jdField_d_of_type_Boolean = localBundle.getBoolean("IS_APP_SHARE_PIC", false);
-    this.jdField_e_of_type_Boolean = localBundle.getBoolean("extra.IS_APOLLO");
-    this.jdField_a_of_type_JavaLangString = localBundle.getString("extra.GROUP_UIN");
-    this.jdField_b_of_type_JavaLangString = localBundle.getString("extra.GROUP_CODE");
-    this.f = localBundle.getBoolean("extra.IS_FROM_MULTI_MSG");
-    this.jdField_a_of_type_Long = localBundle.getLong("key_multi_forward_seq", 0L);
-    this.jdField_b_of_type_Int = localBundle.getInt("forward_source_uin_type", -1);
-    this.jdField_c_of_type_JavaLangString = localBundle.getString("uin");
-    this.jdField_d_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    boolean bool;
-    if (TextUtils.isEmpty(localBundle.getString("babyq_video_type")))
-    {
-      bool = false;
-      this.g = bool;
-      this.jdField_a_of_type_Int = localBundle.getInt("extra.EXTRA_ENTRANCE");
-      if ((!this.jdField_e_of_type_Boolean) && (this.jdField_a_of_type_Int != 4) && (!localBundle.getBoolean("is_one_item"))) {
-        break label272;
-      }
-      bool = true;
-      label168:
-      this.h = bool;
-      if (!paramIntent.getBooleanExtra("extra.IS_FROM_CHAT_FILE_HISTORY", false)) {
-        break label277;
-      }
-    }
-    label272:
-    label277:
-    for (int j = 1;; j = 0)
-    {
-      this.jdField_c_of_type_Int = j;
-      this.jdField_d_of_type_Int = localBundle.getInt("extra.AIO_CURRENT_PANEL_STATE", -3321);
-      this.jdField_e_of_type_Int = localBundle.getInt("extra.MOBILE_QQ_PROCESS_ID", -2147483648);
-      this.i = localBundle.getBoolean("extra.IS_FROM_CHAT_FILE_HISTORY", false);
-      this.jdField_a_of_type_Boolean = localBundle.getBoolean("is_ReplyMsg_From_Same_Session", true);
-      this.jdField_c_of_type_Boolean = localBundle.getBoolean(PeakUtils.jdField_b_of_type_JavaLangString, true);
-      this.jdField_b_of_type_Boolean = localBundle.getBoolean(PeakUtils.jdField_a_of_type_JavaLangString);
-      return;
-      bool = true;
-      break;
-      bool = false;
-      break label168;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a(Rect paramRect)
@@ -119,7 +74,7 @@ public class ParamsManager
   
   public boolean a()
   {
-    return this.jdField_d_of_type_Boolean;
+    return this.i;
   }
   
   public int b()
@@ -134,7 +89,7 @@ public class ParamsManager
   
   public boolean b()
   {
-    return this.jdField_e_of_type_Boolean;
+    return this.jdField_d_of_type_Boolean;
   }
   
   public int c()
@@ -149,7 +104,7 @@ public class ParamsManager
   
   public boolean c()
   {
-    return this.f;
+    return this.jdField_e_of_type_Boolean;
   }
   
   public int d()
@@ -164,7 +119,7 @@ public class ParamsManager
   
   public boolean d()
   {
-    return this.g;
+    return this.f;
   }
   
   public int e()
@@ -179,7 +134,7 @@ public class ParamsManager
   
   public boolean f()
   {
-    return this.i;
+    return this.j;
   }
   
   public boolean g()
@@ -194,7 +149,7 @@ public class ParamsManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmediabrowser.ParamsManager
  * JD-Core Version:    0.7.0.1
  */

@@ -25,37 +25,45 @@ public class BaseUsingTimeReport
   private void f()
   {
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager = a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (!this.jdField_b_of_type_Boolean))
+    UsingTimeReportManager localUsingTimeReportManager = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
+    if ((localUsingTimeReportManager != null) && (!this.jdField_b_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.a(this);
+      localUsingTimeReportManager.a(this);
       this.jdField_b_of_type_Boolean = true;
     }
   }
   
   private void g()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager != null) && (this.jdField_b_of_type_Boolean))
+    UsingTimeReportManager localUsingTimeReportManager = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager;
+    if ((localUsingTimeReportManager != null) && (this.jdField_b_of_type_Boolean))
     {
-      this.jdField_a_of_type_ComTencentMobileqqTroopWidgetUsingTimeReportManager.b(this);
+      localUsingTimeReportManager.b(this);
       this.jdField_b_of_type_Boolean = false;
     }
   }
   
   private void h()
   {
-    if (!this.jdField_b_of_type_Boolean) {}
-    while (!this.jdField_a_of_type_Boolean) {
+    if (!this.jdField_b_of_type_Boolean) {
       return;
     }
-    this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
-    long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
-    if (QLog.isColorLevel()) {
-      QLog.i("BaseUsingTimeReport", 2, "stop,usingTime=" + l);
+    if (this.jdField_a_of_type_Boolean)
+    {
+      this.jdField_b_of_type_Long = SystemClock.uptimeMillis();
+      long l = this.jdField_b_of_type_Long - this.jdField_a_of_type_Long;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("stop,usingTime=");
+        localStringBuilder.append(l);
+        QLog.i("BaseUsingTimeReport", 2, localStringBuilder.toString());
+      }
+      if ((l > 0L) && (this.jdField_b_of_type_Boolean)) {
+        a(l);
+      }
+      this.jdField_a_of_type_Boolean = false;
     }
-    if ((l > 0L) && (this.jdField_b_of_type_Boolean)) {
-      a(l);
-    }
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public UsingTimeReportManager a()
@@ -66,17 +74,21 @@ public class BaseUsingTimeReport
   public void a()
   {
     f();
-    if (!this.jdField_b_of_type_Boolean) {}
-    do
+    if (!this.jdField_b_of_type_Boolean) {
+      return;
+    }
+    if (!this.jdField_a_of_type_Boolean)
     {
-      do
-      {
-        return;
-      } while (this.jdField_a_of_type_Boolean);
       this.jdField_a_of_type_Long = SystemClock.uptimeMillis();
       this.jdField_a_of_type_Boolean = true;
-    } while (!QLog.isColorLevel());
-    QLog.i("BaseUsingTimeReport", 2, "start(), mStartTime=" + this.jdField_a_of_type_Long);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("start(), mStartTime=");
+        localStringBuilder.append(this.jdField_a_of_type_Long);
+        QLog.i("BaseUsingTimeReport", 2, localStringBuilder.toString());
+      }
+    }
   }
   
   public void a(long paramLong) {}
@@ -104,7 +116,7 @@ public class BaseUsingTimeReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.BaseUsingTimeReport
  * JD-Core Version:    0.7.0.1
  */

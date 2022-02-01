@@ -23,20 +23,27 @@ public final class e
   
   public String toString()
   {
-    return "WiFiMapReq [lbsInfo=" + this.a + ", last_id=" + this.b + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WiFiMapReq [lbsInfo=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", last_id=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.a != null) {
-      paramJceOutputStream.write(this.a, 0);
+    LBSInfo localLBSInfo = this.a;
+    if (localLBSInfo != null) {
+      paramJceOutputStream.write(localLBSInfo, 0);
     }
     paramJceOutputStream.write(this.b, 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.msf.service.protocol.QQWiFi.e
  * JD-Core Version:    0.7.0.1
  */

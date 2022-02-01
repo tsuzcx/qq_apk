@@ -28,8 +28,12 @@ public class RichmediaIpv6ConifgProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-      if (QLog.isColorLevel()) {
-        QLog.d("RichmediaIpv6ConifgProcessor", 2, "onParsed, content:" + paramArrayOfQConfItem);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed, content:");
+        localStringBuilder.append(paramArrayOfQConfItem);
+        QLog.d("RichmediaIpv6ConifgProcessor", 2, localStringBuilder.toString());
       }
       return RichmediaIpv6ConifgBean.a(paramArrayOfQConfItem);
     }
@@ -85,7 +89,7 @@ public class RichmediaIpv6ConifgProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.RichmediaIpv6ConifgProcessor
  * JD-Core Version:    0.7.0.1
  */

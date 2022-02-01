@@ -31,12 +31,62 @@ public class ClockInData
   
   public String toString()
   {
-    return "ClockInData{troopUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", isHasClock=" + this.jdField_a_of_type_Boolean + ", needPlayClockAnim=" + this.jdField_b_of_type_Boolean + ", firstClockUin='" + this.jdField_b_of_type_JavaLangString + '\'' + ", firstClockDescText='" + this.c + '\'' + ", firstClockUserName='" + this.d + '\'' + ", noClockInBgLayerUrl='" + this.e + '\'' + ", noClockInLeftText='" + this.f + '\'' + ", noClockInRightText='" + this.g + '\'' + ", noClockInBtnText='" + this.h + '\'' + ", hasClockDescText='" + this.i + '\'' + ", selfClockTime=" + this.jdField_a_of_type_Long + ", clockRankDescText='" + this.j + '\'' + ", hasClockDaysText='" + this.k + '\'' + ", troopClockUrl='" + this.l + '\'' + ", scoreUrl='" + this.m + '\'' + ", hasClockBgUrl='" + this.n + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ClockInData{troopUin='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", isHasClock=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", needPlayClockAnim=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", firstClockUin='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", firstClockDescText='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", firstClockUserName='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", noClockInBgLayerUrl='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", noClockInLeftText='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", noClockInRightText='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", noClockInBtnText='");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hasClockDescText='");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", selfClockTime=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", clockRankDescText='");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hasClockDaysText='");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", troopClockUrl='");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", scoreUrl='");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", hasClockBgUrl='");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.ClockInData
  * JD-Core Version:    0.7.0.1
  */

@@ -20,13 +20,16 @@ public class TVKVideoInfoErrorCodeUtil
     sErrorCodeMap.put("SSLProtocolException", Integer.valueOf(20));
     sErrorCodeMap.put("SocketException", Integer.valueOf(21));
     sErrorCodeMap.put("SocketTimeoutException", Integer.valueOf(5));
-    sErrorCodeMap.put("XmlPullParserException", Integer.valueOf(15));
+    HashMap localHashMap = sErrorCodeMap;
+    Integer localInteger = Integer.valueOf(15);
+    localHashMap.put("XmlPullParserException", localInteger);
     sErrorCodeMap.put("UnknownHostException", Integer.valueOf(2));
-    sErrorCodeMap.put("UnsupportedEncodingException", Integer.valueOf(15));
+    sErrorCodeMap.put("UnsupportedEncodingException", localInteger);
   }
   
   public static int getErrCodeByThrowable(Throwable paramThrowable)
   {
+    int j = 1;
     if (paramThrowable == null) {
       return 1;
     }
@@ -34,19 +37,19 @@ public class TVKVideoInfoErrorCodeUtil
     Map.Entry localEntry;
     do
     {
+      i = j;
       if (!localIterator.hasNext()) {
         break;
       }
       localEntry = (Map.Entry)localIterator.next();
     } while (!paramThrowable.toString().contains((CharSequence)localEntry.getKey()));
-    for (int i = ((Integer)localEntry.getValue()).intValue();; i = 1) {
-      return i;
-    }
+    int i = ((Integer)localEntry.getValue()).intValue();
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.common.TVKVideoInfoErrorCodeUtil
  * JD-Core Version:    0.7.0.1
  */

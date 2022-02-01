@@ -10,6 +10,7 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import mqq.app.AppRuntime;
+import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
 import org.jetbrains.annotations.NotNull;
 
@@ -36,12 +37,17 @@ public class WSServiceExecutor<T extends JceStruct>
   
   private <E> void a(int paramInt, String paramString, ServiceCallback<T, E> paramServiceCallback)
   {
-    WSLog.d("[WSService][WSServiceExecutor]", "[callbackFailure]failCode:" + paramString + ", failMsg:" + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[callbackFailure]failCode:");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(", failMsg:");
+    ((StringBuilder)localObject).append(paramString);
+    WSLog.d("[WSService][WSServiceExecutor]", ((StringBuilder)localObject).toString());
     if (paramServiceCallback != null)
     {
-      WSServiceErrorInfo localWSServiceErrorInfo = new WSServiceErrorInfo(paramInt, paramString);
-      paramServiceCallback.a(localWSServiceErrorInfo);
-      ThreadManager.getUIHandler().post(new WSServiceExecutor.3(this, paramInt, paramString, paramServiceCallback, localWSServiceErrorInfo));
+      localObject = new WSServiceErrorInfo(paramInt, paramString);
+      paramServiceCallback.a((WSServiceErrorInfo)localObject);
+      ThreadManager.getUIHandler().post(new WSServiceExecutor.3(this, paramInt, paramString, paramServiceCallback, (WSServiceErrorInfo)localObject));
     }
   }
   
@@ -57,36 +63,47 @@ public class WSServiceExecutor<T extends JceStruct>
   
   <E> void a(ServiceCallback<T, E> paramServiceCallback)
   {
-    if (this.a == null)
+    Object localObject1 = this.a;
+    if (localObject1 == null)
     {
       a(1000004, "request is null", paramServiceCallback);
       return;
     }
-    this.a.getTimeRecord().b();
+    ((WSRequest)localObject1).getTimeRecord().b();
     this.a.setListener(a(paramServiceCallback));
     try
     {
-      WeishiIntent localWeishiIntent = new WeishiIntent(BaseApplication.getContext(), WSServlet.class);
-      localWeishiIntent.setWithouLogin(true);
-      localWeishiIntent.setObserver(this.a);
+      localObject2 = new WeishiIntent(BaseApplication.getContext(), WSServlet.class);
+      ((WeishiIntent)localObject2).setWithouLogin(true);
+      ((WeishiIntent)localObject2).setObserver(this.a);
       this.a.getClass();
-      localWeishiIntent.putExtra("timeout", 30000L);
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if (localAppRuntime != null)
+      ((WeishiIntent)localObject2).putExtra("timeout", 30000L);
+      localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+      if (localObject1 != null)
       {
-        localAppRuntime.startServlet(localWeishiIntent);
-        WSLog.e("[WSService][WSServiceExecutor]", "[execute]cmd=" + this.a.getReqUniKey() + ", pkgId=" + this.a.getRequestPkgId() + " submit to MSF, isLogin: " + localAppRuntime.isLogin());
+        ((AppRuntime)localObject1).startServlet((NewIntent)localObject2);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[execute]cmd=");
+        ((StringBuilder)localObject2).append(this.a.getReqUniKey());
+        ((StringBuilder)localObject2).append(", pkgId=");
+        ((StringBuilder)localObject2).append(this.a.getRequestPkgId());
+        ((StringBuilder)localObject2).append(" submit to MSF, isLogin: ");
+        ((StringBuilder)localObject2).append(((AppRuntime)localObject1).isLogin());
+        WSLog.e("[WSService][WSServiceExecutor]", ((StringBuilder)localObject2).toString());
         return;
       }
+      WSLog.d("[WSService][WSServiceExecutor]", "[execute]app is null");
+      a(2000000, "AppRuntime is null", paramServiceCallback);
+      return;
     }
     catch (Exception localException)
     {
-      WSLog.d("[WSService][WSServiceExecutor]", "[execute]occur exception. stack=" + localException.getLocalizedMessage());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[execute]occur exception. stack=");
+      ((StringBuilder)localObject2).append(localException.getLocalizedMessage());
+      WSLog.d("[WSService][WSServiceExecutor]", ((StringBuilder)localObject2).toString());
       a(2000001, "occur exception", paramServiceCallback);
-      return;
     }
-    WSLog.d("[WSService][WSServiceExecutor]", "[execute]app is null");
-    a(2000000, "AppRuntime is null", paramServiceCallback);
   }
   
   void a(WSRequest<T> paramWSRequest)
@@ -96,7 +113,7 @@ public class WSServiceExecutor<T extends JceStruct>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.common.WSServiceExecutor
  * JD-Core Version:    0.7.0.1
  */

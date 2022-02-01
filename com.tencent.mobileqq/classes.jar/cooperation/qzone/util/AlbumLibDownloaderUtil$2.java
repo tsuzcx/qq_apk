@@ -1,7 +1,8 @@
 package cooperation.qzone.util;
 
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQzoneModuleManageApi;
 import cooperation.qzone.networkedmodule.ModuleDownloadListener;
-import cooperation.qzone.networkedmodule.QzoneModuleManager;
 import java.io.File;
 
 class AlbumLibDownloaderUtil$2
@@ -17,23 +18,24 @@ class AlbumLibDownloaderUtil$2
   
   public void onDownloadSucceed(String paramString)
   {
-    if (!paramString.equals("pictureMarkerSo.zip")) {}
-    do
-    {
+    if (!paramString.equals("pictureMarkerSo.zip")) {
       return;
-      localObject = AlbumLibDownloaderUtil.mAlbumDir.getPath();
-      paramString = new File(QzoneModuleManager.getInstance().getModuleFilePath(paramString));
-    } while (!paramString.exists());
-    Object localObject = new File((String)localObject);
-    if (!((File)localObject).exists()) {
-      ((File)localObject).mkdirs();
     }
-    FileUtils.unzip(paramString, (File)localObject);
+    Object localObject = AlbumLibDownloaderUtil.mAlbumDir.getPath();
+    paramString = new File(((IQzoneModuleManageApi)QRoute.api(IQzoneModuleManageApi.class)).getModuleFilePath(paramString));
+    if (paramString.exists())
+    {
+      localObject = new File((String)localObject);
+      if (!((File)localObject).exists()) {
+        ((File)localObject).mkdirs();
+      }
+      FileUtils.unzip(paramString, (File)localObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.AlbumLibDownloaderUtil.2
  * JD-Core Version:    0.7.0.1
  */

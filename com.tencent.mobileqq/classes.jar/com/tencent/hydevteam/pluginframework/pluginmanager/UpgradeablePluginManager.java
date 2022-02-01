@@ -14,7 +14,7 @@ public class UpgradeablePluginManager
   implements PluginManager
 {
   private static final File e = new File("/data/local/tmp");
-  private static final String g = UpgradeablePluginManager.class.getSimpleName() + "没有初始化。请先用upgradeIfNeededThenInit方法。";
+  private static final String g;
   private static String[] h = { "com.tencent.hydevteam.common.annotation", "com.tencent.hydevteam.common.progress", "com.tencent.hydevteam.pluginframework.installedplugin", "com.tencent.hydevteam.pluginframework.pluginmanager", "com.tencent.qphone.base.util" };
   private File a;
   private File b;
@@ -24,11 +24,22 @@ public class UpgradeablePluginManager
   private final String i;
   private boolean j;
   
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(UpgradeablePluginManager.class.getSimpleName());
+    localStringBuilder.append("没有初始化。请先用upgradeIfNeededThenInit方法。");
+    g = localStringBuilder.toString();
+  }
+  
   public UpgradeablePluginManager(File paramFile, String paramString, boolean paramBoolean)
   {
     this.a = paramFile;
     this.i = paramString;
-    this.b = new File(this.a, "PluginManager_" + paramString);
+    paramFile = this.a;
+    StringBuilder localStringBuilder = new StringBuilder("PluginManager_");
+    localStringBuilder.append(paramString);
+    this.b = new File(paramFile, localStringBuilder.toString());
     this.f = new File(this.b, "pluginmanager1_4.apk");
     this.j = paramBoolean;
   }
@@ -36,10 +47,16 @@ public class UpgradeablePluginManager
   private String a(File arg1, File paramFile2, int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("使用").append(this.f.getAbsolutePath()).append(".");
+    localStringBuilder.append("使用");
+    localStringBuilder.append(this.f.getAbsolutePath());
+    localStringBuilder.append(".");
     Object localObject = h;
-    if ((paramFile2.exists()) && (!paramFile2.isDirectory())) {
-      throw new IOException(paramFile2.getAbsolutePath() + "已存在且不是目录");
+    if ((paramFile2.exists()) && (!paramFile2.isDirectory()))
+    {
+      ??? = new StringBuilder();
+      ???.append(paramFile2.getAbsolutePath());
+      ???.append("已存在且不是目录");
+      throw new IOException(???.toString());
     }
     if (paramInt == 1)
     {
@@ -57,68 +74,34 @@ public class UpgradeablePluginManager
     }
   }
   
-  /* Error */
   @API
   public final List<InstalledPlugin> getCachedLatestPlugin(String paramString)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 75	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:d	Ljava/lang/Object;
-    //   4: astore_3
-    //   5: aload_3
-    //   6: monitorenter
-    //   7: iconst_0
-    //   8: istore_2
-    //   9: aload_0
-    //   10: getfield 148	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:c	Lcom/tencent/hydevteam/pluginframework/pluginmanager/PluginManager;
-    //   13: astore 4
-    //   15: aload 4
-    //   17: ifnonnull +9 -> 26
-    //   20: iconst_1
-    //   21: istore_2
-    //   22: aload_0
-    //   23: invokevirtual 155	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:initWithoutUpgrade	()V
-    //   26: aload_0
-    //   27: getfield 148	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:c	Lcom/tencent/hydevteam/pluginframework/pluginmanager/PluginManager;
-    //   30: aload_1
-    //   31: invokeinterface 157 2 0
-    //   36: astore_1
-    //   37: iload_2
-    //   38: ifeq +8 -> 46
-    //   41: aload_0
-    //   42: aconst_null
-    //   43: putfield 148	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:c	Lcom/tencent/hydevteam/pluginframework/pluginmanager/PluginManager;
-    //   46: aload_3
-    //   47: monitorexit
-    //   48: aload_1
-    //   49: areturn
-    //   50: astore_1
-    //   51: aload_3
-    //   52: monitorexit
-    //   53: aconst_null
-    //   54: areturn
-    //   55: astore_1
-    //   56: aload_3
-    //   57: monitorexit
-    //   58: aload_1
-    //   59: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	60	0	this	UpgradeablePluginManager
-    //   0	60	1	paramString	String
-    //   8	30	2	k	int
-    //   4	53	3	localObject	Object
-    //   13	3	4	localPluginManager	PluginManager
-    // Exception table:
-    //   from	to	target	type
-    //   22	26	50	java/lang/Exception
-    //   9	15	55	finally
-    //   22	26	55	finally
-    //   26	37	55	finally
-    //   41	46	55	finally
-    //   46	48	55	finally
-    //   51	53	55	finally
-    //   56	58	55	finally
+    localObject = this.d;
+    int k = 0;
+    label29:
+    try
+    {
+      PluginManager localPluginManager = this.c;
+      if (localPluginManager == null) {
+        k = 1;
+      }
+    }
+    finally {}
+    try
+    {
+      initWithoutUpgrade();
+    }
+    catch (Exception paramString)
+    {
+      break label29;
+    }
+    return null;
+    paramString = this.c.getCachedLatestPlugin(paramString);
+    if (k != 0) {
+      this.c = null;
+    }
+    return paramString;
   }
   
   @API
@@ -138,18 +121,21 @@ public class UpgradeablePluginManager
   @API
   public void initWithoutUpgrade()
   {
-    File localFile2 = new File(e, "pluginmanager1_4.apk");
-    File localFile1;
-    if (localFile2.exists()) {
-      localFile1 = new File(this.b, "pluginmanager1_4_odex");
-    }
-    for (int k = 1;; k = -1)
+    File localFile1 = new File(e, "pluginmanager1_4.apk");
+    File localFile2;
+    int k;
+    if (localFile1.exists())
     {
-      a(localFile2, localFile1, k);
-      return;
-      localFile2 = this.f;
-      localFile1 = new File(localFile2.getParentFile(), "pluginmanager1_4_odex");
+      localFile2 = new File(this.b, "pluginmanager1_4_odex");
+      k = 1;
     }
+    else
+    {
+      localFile1 = this.f;
+      localFile2 = new File(localFile1.getParentFile(), "pluginmanager1_4_odex");
+      k = -1;
+    }
+    a(localFile1, localFile2, k);
   }
   
   @API
@@ -188,236 +174,261 @@ public class UpgradeablePluginManager
     //   0: new 37	java/lang/StringBuilder
     //   3: dup
     //   4: invokespecial 39	java/lang/StringBuilder:<init>	()V
-    //   7: astore 10
-    //   9: aconst_null
-    //   10: astore 9
-    //   12: new 27	java/io/File
-    //   15: dup
-    //   16: getstatic 35	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:e	Ljava/io/File;
-    //   19: ldc 89
-    //   21: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   24: astore 8
-    //   26: aload 8
-    //   28: invokevirtual 105	java/io/File:exists	()Z
-    //   31: istore 7
-    //   33: iload 7
-    //   35: ifeq +54 -> 89
-    //   38: new 27	java/io/File
-    //   41: dup
-    //   42: aload_0
-    //   43: getfield 87	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:b	Ljava/io/File;
-    //   46: ldc 169
-    //   48: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   51: astore_3
-    //   52: aload 10
-    //   54: aload 8
-    //   56: invokevirtual 99	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   59: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   62: ldc 188
-    //   64: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   67: pop
-    //   68: iconst_1
-    //   69: istore 4
-    //   71: aload 10
-    //   73: aload_0
-    //   74: aload 8
-    //   76: aload_3
-    //   77: iload 4
-    //   79: invokespecial 171	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:a	(Ljava/io/File;Ljava/io/File;I)Ljava/lang/String;
-    //   82: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: pop
-    //   86: iload 4
-    //   88: ireturn
-    //   89: aload_0
-    //   90: getfield 91	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:f	Ljava/io/File;
-    //   93: invokevirtual 192	java/io/File:lastModified	()J
-    //   96: lstore 5
-    //   98: lload 5
-    //   100: lconst_0
-    //   101: lcmp
-    //   102: ifeq +7 -> 109
-    //   105: ldc2_w 193
-    //   108: lstore_1
-    //   109: aload_0
-    //   110: getfield 93	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:j	Z
-    //   113: ifeq +166 -> 279
-    //   116: new 37	java/lang/StringBuilder
-    //   119: dup
-    //   120: ldc 196
-    //   122: invokespecial 82	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   125: aload_0
-    //   126: getfield 79	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:i	Ljava/lang/String;
-    //   129: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   132: ldc 198
-    //   134: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   140: astore 8
+    //   7: astore 12
+    //   9: new 27	java/io/File
+    //   12: dup
+    //   13: getstatic 35	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:e	Ljava/io/File;
+    //   16: ldc 89
+    //   18: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   21: astore 8
+    //   23: aload 8
+    //   25: invokevirtual 105	java/io/File:exists	()Z
+    //   28: istore 7
+    //   30: iload 7
+    //   32: ifeq +63 -> 95
+    //   35: new 27	java/io/File
+    //   38: dup
+    //   39: aload_0
+    //   40: getfield 87	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:b	Ljava/io/File;
+    //   43: ldc 169
+    //   45: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   48: astore 11
+    //   50: aload 12
+    //   52: aload 8
+    //   54: invokevirtual 99	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   57: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   60: pop
+    //   61: aload 12
+    //   63: ldc 188
+    //   65: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   68: pop
+    //   69: iconst_1
+    //   70: istore 4
+    //   72: aload 8
+    //   74: astore_3
+    //   75: aload 11
+    //   77: astore 8
+    //   79: goto +343 -> 422
+    //   82: astore 9
+    //   84: aload 8
+    //   86: astore 10
+    //   88: goto +308 -> 396
+    //   91: astore_3
+    //   92: goto +294 -> 386
+    //   95: aload_0
+    //   96: getfield 91	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:f	Ljava/io/File;
+    //   99: invokevirtual 192	java/io/File:lastModified	()J
+    //   102: lstore 5
+    //   104: lload 5
+    //   106: lconst_0
+    //   107: lcmp
+    //   108: ifeq +332 -> 440
+    //   111: ldc2_w 193
+    //   114: lstore_1
+    //   115: goto +3 -> 118
+    //   118: aload_0
+    //   119: getfield 93	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:j	Z
+    //   122: istore 7
+    //   124: iload 7
+    //   126: ifeq +42 -> 168
+    //   129: new 37	java/lang/StringBuilder
+    //   132: dup
+    //   133: ldc 196
+    //   135: invokespecial 82	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   138: astore 8
+    //   140: aload 8
     //   142: aload_0
-    //   143: getfield 91	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:f	Ljava/io/File;
-    //   146: astore 11
-    //   148: new 27	java/io/File
-    //   151: dup
-    //   152: aload_0
-    //   153: getfield 91	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:f	Ljava/io/File;
-    //   156: invokevirtual 175	java/io/File:getParentFile	()Ljava/io/File;
-    //   159: ldc 200
-    //   161: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   164: astore 12
-    //   166: new 202	com/tencent/hydevteam/pluginframework/pluginmanager/LengthHashURLConnectionDownloader
-    //   169: dup
-    //   170: invokespecial 203	com/tencent/hydevteam/pluginframework/pluginmanager/LengthHashURLConnectionDownloader:<init>	()V
-    //   173: new 205	com/tencent/hydevteam/pluginframework/pluginmanager/TargetDownloadInfo
-    //   176: dup
-    //   177: aload 8
-    //   179: ldc 207
-    //   181: lconst_0
-    //   182: invokespecial 210	com/tencent/hydevteam/pluginframework/pluginmanager/TargetDownloadInfo:<init>	(Ljava/lang/String;Ljava/lang/String;J)V
-    //   185: aload 11
-    //   187: aload 12
-    //   189: invokeinterface 214 4 0
-    //   194: astore 8
-    //   196: aload 10
-    //   198: ldc 216
-    //   200: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   203: lload 5
-    //   205: invokevirtual 219	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   208: ldc 221
-    //   210: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   213: pop
-    //   214: aload 8
-    //   216: lload_1
-    //   217: aload_3
-    //   218: invokeinterface 227 4 0
-    //   223: checkcast 27	java/io/File
-    //   226: astore_3
-    //   227: aload 10
-    //   229: ldc 229
-    //   231: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   234: pop
-    //   235: iconst_1
-    //   236: istore 4
-    //   238: aload_3
-    //   239: astore 8
-    //   241: new 27	java/io/File
-    //   244: dup
-    //   245: aload 8
-    //   247: invokevirtual 175	java/io/File:getParentFile	()Ljava/io/File;
-    //   250: ldc 169
-    //   252: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   255: astore_3
-    //   256: goto -185 -> 71
-    //   259: astore 9
-    //   261: aconst_null
-    //   262: astore_3
-    //   263: aload 10
-    //   265: aload 9
-    //   267: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   270: ldc 101
-    //   272: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   275: pop
-    //   276: goto -205 -> 71
-    //   279: new 37	java/lang/StringBuilder
-    //   282: dup
-    //   283: ldc 196
-    //   285: invokespecial 82	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
-    //   288: aload_0
-    //   289: getfield 79	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:i	Ljava/lang/String;
-    //   292: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   298: astore 8
-    //   300: goto -158 -> 142
-    //   303: astore 8
-    //   305: aload 9
-    //   307: astore_3
-    //   308: aload 10
-    //   310: aload 8
-    //   312: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   315: ldc 101
-    //   317: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   320: pop
-    //   321: aload_0
-    //   322: getfield 91	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:f	Ljava/io/File;
-    //   325: astore 8
-    //   327: iconst_0
-    //   328: istore 4
-    //   330: goto -89 -> 241
-    //   333: astore 9
-    //   335: aconst_null
-    //   336: astore 8
-    //   338: aconst_null
-    //   339: astore_3
-    //   340: iconst_m1
-    //   341: istore 4
-    //   343: goto -80 -> 263
-    //   346: astore 9
-    //   348: aconst_null
-    //   349: astore_3
-    //   350: iconst_m1
-    //   351: istore 4
-    //   353: goto -90 -> 263
-    //   356: astore 9
-    //   358: iconst_m1
-    //   359: istore 4
-    //   361: goto -98 -> 263
-    //   364: astore 9
-    //   366: aload_3
-    //   367: astore 8
-    //   369: aconst_null
-    //   370: astore_3
-    //   371: iconst_m1
-    //   372: istore 4
-    //   374: goto -111 -> 263
-    //   377: astore 9
-    //   379: iconst_0
-    //   380: istore 4
-    //   382: aload_3
-    //   383: astore 8
-    //   385: aconst_null
-    //   386: astore_3
-    //   387: goto -124 -> 263
-    //   390: astore 8
-    //   392: goto -84 -> 308
+    //   143: getfield 79	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:i	Ljava/lang/String;
+    //   146: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   149: pop
+    //   150: aload 8
+    //   152: ldc 198
+    //   154: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: pop
+    //   158: aload 8
+    //   160: invokevirtual 54	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   163: astore 8
+    //   165: goto +27 -> 192
+    //   168: new 37	java/lang/StringBuilder
+    //   171: dup
+    //   172: ldc 196
+    //   174: invokespecial 82	java/lang/StringBuilder:<init>	(Ljava/lang/String;)V
+    //   177: astore 8
+    //   179: aload 8
+    //   181: aload_0
+    //   182: getfield 79	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:i	Ljava/lang/String;
+    //   185: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   188: pop
+    //   189: goto -31 -> 158
+    //   192: aload_0
+    //   193: getfield 91	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:f	Ljava/io/File;
+    //   196: astore 9
+    //   198: new 27	java/io/File
+    //   201: dup
+    //   202: aload_0
+    //   203: getfield 91	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:f	Ljava/io/File;
+    //   206: invokevirtual 173	java/io/File:getParentFile	()Ljava/io/File;
+    //   209: ldc 200
+    //   211: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   214: astore 10
+    //   216: new 202	com/tencent/hydevteam/pluginframework/pluginmanager/LengthHashURLConnectionDownloader
+    //   219: dup
+    //   220: invokespecial 203	com/tencent/hydevteam/pluginframework/pluginmanager/LengthHashURLConnectionDownloader:<init>	()V
+    //   223: new 205	com/tencent/hydevteam/pluginframework/pluginmanager/TargetDownloadInfo
+    //   226: dup
+    //   227: aload 8
+    //   229: ldc 207
+    //   231: lconst_0
+    //   232: invokespecial 210	com/tencent/hydevteam/pluginframework/pluginmanager/TargetDownloadInfo:<init>	(Ljava/lang/String;Ljava/lang/String;J)V
+    //   235: aload 9
+    //   237: aload 10
+    //   239: invokeinterface 214 4 0
+    //   244: astore 8
+    //   246: aload 12
+    //   248: ldc 216
+    //   250: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   253: pop
+    //   254: aload 12
+    //   256: lload 5
+    //   258: invokevirtual 219	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   261: pop
+    //   262: aload 12
+    //   264: ldc 221
+    //   266: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   269: pop
+    //   270: aload 8
+    //   272: lload_1
+    //   273: aload_3
+    //   274: invokeinterface 227 4 0
+    //   279: checkcast 27	java/io/File
+    //   282: astore_3
+    //   283: aload 12
+    //   285: ldc 229
+    //   287: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   290: pop
+    //   291: iconst_1
+    //   292: istore 4
+    //   294: goto +40 -> 334
+    //   297: astore 8
+    //   299: goto +7 -> 306
+    //   302: astore 8
+    //   304: aconst_null
+    //   305: astore_3
+    //   306: aload 12
+    //   308: aload 8
+    //   310: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   313: pop
+    //   314: aload 12
+    //   316: ldc 101
+    //   318: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   321: pop
+    //   322: aload_0
+    //   323: getfield 91	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:f	Ljava/io/File;
+    //   326: astore 8
+    //   328: aload 8
+    //   330: astore_3
+    //   331: iconst_0
+    //   332: istore 4
+    //   334: new 27	java/io/File
+    //   337: dup
+    //   338: aload_3
+    //   339: invokevirtual 173	java/io/File:getParentFile	()Ljava/io/File;
+    //   342: ldc 169
+    //   344: invokespecial 85	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   347: astore 8
+    //   349: goto +73 -> 422
+    //   352: astore 9
+    //   354: aconst_null
+    //   355: astore 8
+    //   357: goto +49 -> 406
+    //   360: astore 9
+    //   362: aconst_null
+    //   363: astore 8
+    //   365: iconst_0
+    //   366: istore 4
+    //   368: goto +38 -> 406
+    //   371: astore 9
+    //   373: aload_3
+    //   374: astore 8
+    //   376: aload 9
+    //   378: astore_3
+    //   379: goto +7 -> 386
+    //   382: astore_3
+    //   383: aconst_null
+    //   384: astore 8
+    //   386: aconst_null
+    //   387: astore 11
+    //   389: aload 8
+    //   391: astore 10
+    //   393: aload_3
+    //   394: astore 9
+    //   396: iconst_m1
+    //   397: istore 4
+    //   399: aload 11
+    //   401: astore 8
+    //   403: aload 10
+    //   405: astore_3
+    //   406: aload 12
+    //   408: aload 9
+    //   410: invokevirtual 232	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   413: pop
+    //   414: aload 12
+    //   416: ldc 101
+    //   418: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   421: pop
+    //   422: aload 12
+    //   424: aload_0
+    //   425: aload_3
+    //   426: aload 8
+    //   428: iload 4
+    //   430: invokespecial 175	com/tencent/hydevteam/pluginframework/pluginmanager/UpgradeablePluginManager:a	(Ljava/io/File;Ljava/io/File;I)Ljava/lang/String;
+    //   433: invokevirtual 49	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   436: pop
+    //   437: iload 4
+    //   439: ireturn
+    //   440: goto -322 -> 118
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	395	0	this	UpgradeablePluginManager
-    //   0	395	1	paramLong	long
-    //   0	395	3	paramTimeUnit	java.util.concurrent.TimeUnit
-    //   69	312	4	k	int
-    //   96	108	5	l	long
-    //   31	3	7	bool	boolean
-    //   24	275	8	localObject1	Object
-    //   303	8	8	localException1	java.lang.Exception
-    //   325	59	8	localObject2	Object
-    //   390	1	8	localException2	java.lang.Exception
-    //   10	1	9	localObject3	Object
-    //   259	47	9	localException3	java.lang.Exception
-    //   333	1	9	localException4	java.lang.Exception
-    //   346	1	9	localException5	java.lang.Exception
-    //   356	1	9	localException6	java.lang.Exception
-    //   364	1	9	localException7	java.lang.Exception
-    //   377	1	9	localException8	java.lang.Exception
-    //   7	302	10	localStringBuilder	StringBuilder
-    //   146	40	11	localFile1	File
-    //   164	24	12	localFile2	File
+    //   0	443	0	this	UpgradeablePluginManager
+    //   0	443	1	paramLong	long
+    //   0	443	3	paramTimeUnit	java.util.concurrent.TimeUnit
+    //   70	368	4	k	int
+    //   102	155	5	l	long
+    //   28	97	7	bool	boolean
+    //   21	250	8	localObject1	Object
+    //   297	1	8	localException1	Exception
+    //   302	7	8	localException2	Exception
+    //   326	101	8	localObject2	Object
+    //   82	1	9	localException3	Exception
+    //   196	40	9	localFile1	File
+    //   352	1	9	localException4	Exception
+    //   360	1	9	localException5	Exception
+    //   371	6	9	localException6	Exception
+    //   394	15	9	localTimeUnit	java.util.concurrent.TimeUnit
+    //   86	318	10	localObject3	Object
+    //   48	352	11	localFile2	File
+    //   7	416	12	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   241	256	259	java/lang/Exception
-    //   214	227	303	java/lang/Exception
-    //   12	33	333	java/lang/Exception
-    //   89	98	333	java/lang/Exception
-    //   109	142	333	java/lang/Exception
-    //   142	214	333	java/lang/Exception
-    //   279	300	333	java/lang/Exception
-    //   38	52	346	java/lang/Exception
-    //   52	68	356	java/lang/Exception
-    //   308	321	364	java/lang/Exception
-    //   321	327	377	java/lang/Exception
-    //   227	235	390	java/lang/Exception
+    //   50	69	82	java/lang/Exception
+    //   35	50	91	java/lang/Exception
+    //   283	291	297	java/lang/Exception
+    //   270	283	302	java/lang/Exception
+    //   334	349	352	java/lang/Exception
+    //   322	328	360	java/lang/Exception
+    //   306	322	371	java/lang/Exception
+    //   9	30	382	java/lang/Exception
+    //   95	104	382	java/lang/Exception
+    //   118	124	382	java/lang/Exception
+    //   129	158	382	java/lang/Exception
+    //   158	165	382	java/lang/Exception
+    //   168	189	382	java/lang/Exception
+    //   192	270	382	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hydevteam.pluginframework.pluginmanager.UpgradeablePluginManager
  * JD-Core Version:    0.7.0.1
  */

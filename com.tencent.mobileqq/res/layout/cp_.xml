@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
+<RelativeLayout android:background="@color/ab3" android:paddingLeft="@dimen/mw" android:paddingTop="@dimen/n2" android:paddingRight="@dimen/mw" android:paddingBottom="@dimen/n2" android:layout_width="fill_parent" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <View android:id="@id/a4f" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-    <RelativeLayout android:id="@id/b8q" android:background="@drawable/bli" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_alignParentBottom="true">
-        <com.tencent.biz.pubaccount.weishi_new.follow.joinGroup.MaxHeightRecyclerView android:id="@id/ng2" android:scrollbars="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-        <View android:id="@id/bw1" android:background="#ffefeff0" android:layout_width="fill_parent" android:layout_height="5.0dip" android:layout_below="@id/ng2" />
-        <TextView android:textSize="18.0dip" android:textStyle="bold" android:textColor="@color/bp" android:gravity="center" android:id="@id/close" android:layout_width="fill_parent" android:layout_height="57.5dip" android:text="取消" android:layout_below="@id/bw1" android:layout_centerInParent="true" />
-    </RelativeLayout>
+    <TextView android:textSize="@dimen/ayn" android:textColor="@color/al3" android:id="@id/og0" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentLeft="true" android:layout_centerVertical="true" />
+    <TextView android:textSize="@dimen/ayn" android:textColor="@color/al3" android:gravity="center" android:id="@id/ofz" android:paddingLeft="@dimen/n3" android:paddingTop="@dimen/nh" android:paddingRight="@dimen/n3" android:paddingBottom="@dimen/nh" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
 </RelativeLayout>

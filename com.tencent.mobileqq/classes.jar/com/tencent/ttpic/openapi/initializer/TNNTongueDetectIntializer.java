@@ -54,20 +54,36 @@ public class TNNTongueDetectIntializer
   
   public boolean initTongue()
   {
-    boolean bool = loadAllSoFiles();
-    if (!bool) {}
-    int i;
-    do
-    {
+    boolean bool3 = loadAllSoFiles();
+    boolean bool2 = false;
+    if (!bool3) {
       return false;
-      i = this.tnnTongueDetect.init(FileUtils.genSeperateFileDir(getFinalResourcesDir()) + "tongueReg.onnx.opt.onnx" + ".rapidproto.wmc", FileUtils.genSeperateFileDir(getFinalResourcesDir()) + "tongueReg.onnx.opt.onnx" + ".rapidmodel.wmc", "ARM");
-    } while ((!bool) || (i != 0));
-    return true;
+    }
+    TNNTongue localTNNTongue = this.tnnTongueDetect;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(FileUtils.genSeperateFileDir(getFinalResourcesDir()));
+    ((StringBuilder)localObject).append("tongueReg.onnx.opt.onnx");
+    ((StringBuilder)localObject).append(".rapidproto.wmc");
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(FileUtils.genSeperateFileDir(getFinalResourcesDir()));
+    localStringBuilder.append("tongueReg.onnx.opt.onnx");
+    localStringBuilder.append(".rapidmodel.wmc");
+    int i = localTNNTongue.init((String)localObject, localStringBuilder.toString(), "ARM");
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (i == 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.TNNTongueDetectIntializer
  * JD-Core Version:    0.7.0.1
  */

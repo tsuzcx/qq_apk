@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import mqq.os.MqqHandler;
@@ -10,7 +9,7 @@ public class ExcitingTransferEngine
   implements IExcitingTransferEngineCallback
 {
   static String TAG = "ExcitingTransferEngine";
-  private static ExcitingTransferEngine s_instance = null;
+  private static ExcitingTransferEngine s_instance;
   private boolean mInited = false;
   private HashMap<Long, ExcitingTransferEngine.ExcitingRecvJobContent> mRecvJobs = new LinkedHashMap();
   private HashMap<Long, ExcitingTransferEngine.ExcitingSendJobContent> mSendJobs = new LinkedHashMap();
@@ -144,14 +143,24 @@ public class ExcitingTransferEngine
   
   public void cancelSendFile(long paramLong)
   {
-    ExcitingTransferUtil.Log.i(TAG, ExcitingTransferUtil.Log.USR, "cancelSendFile:" + paramLong);
+    String str = TAG;
+    int i = ExcitingTransferUtil.Log.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancelSendFile:");
+    localStringBuilder.append(paramLong);
+    ExcitingTransferUtil.Log.i(str, i, localStringBuilder.toString());
     delSendJobContent(paramLong);
     ExcitingTransferNative.cancelSendFile(paramLong);
   }
   
   public void detectLanChannel(ExcitingTransferUdpDetectInfo paramExcitingTransferUdpDetectInfo)
   {
-    ExcitingTransferUtil.Log.i(TAG, ExcitingTransferUtil.Log.USR, "detectLanChannel:" + paramExcitingTransferUdpDetectInfo.toString());
+    String str = TAG;
+    int i = ExcitingTransferUtil.Log.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("detectLanChannel:");
+    localStringBuilder.append(paramExcitingTransferUdpDetectInfo.toString());
+    ExcitingTransferUtil.Log.i(str, i, localStringBuilder.toString());
     ExcitingTransferNative.detectLanChannel(paramExcitingTransferUdpDetectInfo);
   }
   
@@ -206,14 +215,21 @@ public class ExcitingTransferEngine
   
   public void onSendComplete(long paramLong, int paramInt, ExcitingTransferUploadResultRp paramExcitingTransferUploadResultRp)
   {
-    ExcitingTransferEngine.ExcitingSendJobContent localExcitingSendJobContent = getSendJobContent(paramLong);
-    if (localExcitingSendJobContent == null) {
+    Object localObject = getSendJobContent(paramLong);
+    if (localObject == null) {
       return;
     }
-    if ((localExcitingSendJobContent.mExcSendInfo.mBusInfo.bUseMediaPlatform) && (paramInt == 0))
+    if ((((ExcitingTransferEngine.ExcitingSendJobContent)localObject).mExcSendInfo.mBusInfo.bUseMediaPlatform) && (paramInt == 0))
     {
       paramExcitingTransferUploadResultRp.mstrFileIdCrc = ExcitingTransferNative.getMediaFileIdCrc(paramLong);
-      QLog.i(TAG, 1, "excitingID[" + paramLong + "] onSendComplete success, bUseMediaPlatform:true, m_strFileIdCrc:" + paramExcitingTransferUploadResultRp.mstrFileIdCrc);
+      localObject = TAG;
+      int i = ExcitingTransferUtil.Log.USR;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("excitingID[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("] onSendComplete success, bUseMediaPlatform:true, m_strFileIdCrc:");
+      localStringBuilder.append(paramExcitingTransferUploadResultRp.mstrFileIdCrc);
+      ExcitingTransferUtil.Log.i((String)localObject, i, localStringBuilder.toString());
     }
     ThreadManager.getUIHandler().post(new ExcitingTransferEngine.2(this, paramLong, paramInt, paramExcitingTransferUploadResultRp));
   }
@@ -275,7 +291,12 @@ public class ExcitingTransferEngine
   @Deprecated
   public void setDownloadConfig(ExcitingTransferConfigInfo paramExcitingTransferConfigInfo)
   {
-    ExcitingTransferUtil.Log.i(TAG, ExcitingTransferUtil.Log.USR, "setDownloadConfig:" + paramExcitingTransferConfigInfo.toString());
+    String str = TAG;
+    int i = ExcitingTransferUtil.Log.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDownloadConfig:");
+    localStringBuilder.append(paramExcitingTransferConfigInfo.toString());
+    ExcitingTransferUtil.Log.i(str, i, localStringBuilder.toString());
     ExcitingTransferNative.setDownloadConfig(paramExcitingTransferConfigInfo);
   }
   
@@ -283,25 +304,48 @@ public class ExcitingTransferEngine
   
   public void setGlobalProxyInfo(int paramInt, String paramString1, short paramShort, String paramString2, String paramString3)
   {
-    ExcitingTransferUtil.Log.i(TAG, ExcitingTransferUtil.Log.USR, "setGlobalProxyInfo proxyType:" + paramInt + "strProxyip:" + paramString1 + "proxyport:" + paramShort + "strUsename:" + paramString2 + "strPassword:" + paramString3);
+    String str = TAG;
+    int i = ExcitingTransferUtil.Log.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setGlobalProxyInfo proxyType:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("strProxyip:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("proxyport:");
+    localStringBuilder.append(paramShort);
+    localStringBuilder.append("strUsename:");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("strPassword:");
+    localStringBuilder.append(paramString3);
+    ExcitingTransferUtil.Log.i(str, i, localStringBuilder.toString());
     ExcitingTransferNative.setGlobalProxyInfo(paramInt, paramString1, paramShort, paramString2, paramString3);
   }
   
   public void setRecvFileConfig(ExcitingTransferDownloadConfig paramExcitingTransferDownloadConfig)
   {
-    ExcitingTransferUtil.Log.i(TAG, ExcitingTransferUtil.Log.USR, "setRecvFileConfig:" + paramExcitingTransferDownloadConfig.toString());
+    String str = TAG;
+    int i = ExcitingTransferUtil.Log.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setRecvFileConfig:");
+    localStringBuilder.append(paramExcitingTransferDownloadConfig.toString());
+    ExcitingTransferUtil.Log.i(str, i, localStringBuilder.toString());
     ExcitingTransferNative.setRecvFileConfig(paramExcitingTransferDownloadConfig);
   }
   
   public void setSendFileConfig(ExcitingTransferUploadChnConfigInfo paramExcitingTransferUploadChnConfigInfo)
   {
-    ExcitingTransferUtil.Log.i(TAG, ExcitingTransferUtil.Log.USR, "setSendFileConfig:" + paramExcitingTransferUploadChnConfigInfo.toString());
+    String str = TAG;
+    int i = ExcitingTransferUtil.Log.USR;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setSendFileConfig:");
+    localStringBuilder.append(paramExcitingTransferUploadChnConfigInfo.toString());
+    ExcitingTransferUtil.Log.i(str, i, localStringBuilder.toString());
     ExcitingTransferNative.setSendFileConfig(paramExcitingTransferUploadChnConfigInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferEngine
  * JD-Core Version:    0.7.0.1
  */

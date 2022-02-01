@@ -33,14 +33,15 @@ public class FriendDataManager
   
   public static FriendDataManager a()
   {
-    if (jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager == null) {}
-    synchronized (jdField_a_of_type_ArrayOfByte)
-    {
-      if (jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager == null) {
-        jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager = new FriendDataManager();
+    if (jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager == null) {
+      synchronized (jdField_a_of_type_ArrayOfByte)
+      {
+        if (jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager == null) {
+          jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager = new FriendDataManager();
+        }
       }
-      return jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager;
     }
+    return jdField_a_of_type_ComTencentOpenAgentDatamodelFriendDataManager;
   }
   
   public int a()
@@ -115,57 +116,47 @@ public class FriendDataManager
   
   public void a(List<FriendGroup> paramList, int paramInt1, int paramInt2)
   {
-    label9:
-    String str2;
-    Iterator localIterator1;
-    if (paramList.size() <= 0)
-    {
+    if (paramList.size() <= 0) {
       return;
     }
-    else
+    this.jdField_a_of_type_Int = paramInt1;
+    this.jdField_b_of_type_Int = paramInt2;
+    this.jdField_a_of_type_JavaUtilList.clear();
+    this.jdField_b_of_type_JavaUtilList.clear();
+    this.c.clear();
+    String str2 = CommonDataAdapter.a().a().getResources().getString(2131690944);
+    Iterator localIterator1 = paramList.iterator();
+    while (localIterator1.hasNext())
     {
-      this.jdField_a_of_type_Int = paramInt1;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_a_of_type_JavaUtilList.clear();
-      this.jdField_b_of_type_JavaUtilList.clear();
-      this.c.clear();
-      str2 = CommonDataAdapter.a().a().getResources().getString(2131691024);
-      localIterator1 = paramList.iterator();
-    }
-    for (;;)
-    {
-      if (localIterator1.hasNext())
+      paramList = (FriendGroup)localIterator1.next();
+      if (str2.equals(paramList.jdField_a_of_type_JavaLangString))
       {
-        paramList = (FriendGroup)localIterator1.next();
-        if (str2.equals(paramList.jdField_a_of_type_JavaLangString)) {
-          this.jdField_b_of_type_JavaUtilList.addAll(paramList.jdField_a_of_type_JavaUtilList);
-        }
+        this.jdField_b_of_type_JavaUtilList.addAll(paramList.jdField_a_of_type_JavaUtilList);
       }
       else
       {
-        break label9;
-      }
-      this.jdField_a_of_type_JavaUtilList.add(paramList);
-      paramList = paramList.jdField_a_of_type_JavaUtilList;
-      if (paramList == null) {
-        break;
-      }
-      Iterator localIterator2 = paramList.iterator();
-      while (localIterator2.hasNext())
-      {
-        Friend localFriend = (Friend)localIterator2.next();
-        String str1 = localFriend.c;
-        if (str1 != null)
+        this.jdField_a_of_type_JavaUtilList.add(paramList);
+        paramList = paramList.jdField_a_of_type_JavaUtilList;
+        if (paramList != null)
         {
-          paramList = str1;
-          if (!"".equals(str1)) {}
+          Iterator localIterator2 = paramList.iterator();
+          while (localIterator2.hasNext())
+          {
+            Friend localFriend = (Friend)localIterator2.next();
+            String str1 = localFriend.c;
+            if (str1 != null)
+            {
+              paramList = str1;
+              if (!"".equals(str1)) {}
+            }
+            else
+            {
+              paramList = localFriend.b;
+            }
+            localFriend.f = ChnToSpell.a(paramList, 2);
+            localFriend.g = ChnToSpell.a(paramList, 1);
+          }
         }
-        else
-        {
-          paramList = localFriend.b;
-        }
-        localFriend.f = ChnToSpell.a(paramList, 2);
-        localFriend.g = ChnToSpell.a(paramList, 1);
       }
     }
   }
@@ -199,7 +190,7 @@ public class FriendDataManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.datamodel.FriendDataManager
  * JD-Core Version:    0.7.0.1
  */

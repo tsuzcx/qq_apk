@@ -1,15 +1,16 @@
 package com.tencent.mobileqq.activity.aio.audiopanel;
 
 import android.os.Build;
-import android.support.v4.view.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.receipt.ReceiptHelper;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
 
@@ -44,14 +45,18 @@ public class AudioPanelAdapter
   
   public void destroyItem(View paramView, int paramInt, Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return;
-      paramObject = (View)paramObject;
-      ((ViewGroup)paramView).removeView(paramObject);
-    } while (!QLog.isColorLevel());
-    QLog.d("AIOAudioPanel", 2, "AudioPanelAdapter.destroyItem() is called,position is:" + paramInt);
+    }
+    paramObject = (View)paramObject;
+    ((ViewGroup)paramView).removeView(paramObject);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("AudioPanelAdapter.destroyItem() is called,position is:");
+      paramView.append(paramInt);
+      QLog.d("AIOAudioPanel", 2, paramView.toString());
+    }
   }
   
   public int getCount()
@@ -64,98 +69,104 @@ public class AudioPanelAdapter
   
   public Object instantiateItem(View paramView, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOAudioPanel", 2, "AudioPanelAdapter.instantiateItem() is called,position is:" + paramInt);
-    }
-    FrameLayout localFrameLayout;
     Object localObject1;
-    Object localObject2;
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.F) || (paramInt == 1))
+    if (QLog.isColorLevel())
     {
-      localFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-      localFrameLayout.setId(1001);
-      localObject1 = (PressToSpeakPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131561063, null);
-      ((PressToSpeakPanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, this.d, this.e);
-      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131561060, null);
-      ((ListenPanel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, 1);
-      ((ListenPanel)localObject2).setNeedAudioData(true);
-      localFrameLayout.addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
-      localFrameLayout.addView((View)localObject2, new FrameLayout.LayoutParams(-1, -1));
-      ((PressToSpeakPanel)localObject1).a();
-      ((PressToSpeakPanel)localObject1).setVisibility(0);
-      ((ListenPanel)localObject2).setVisibility(8);
-      localObject2 = (ViewGroup)localFrameLayout.getParent();
-      if (localObject2 == null)
-      {
-        ((ViewGroup)paramView).addView(localFrameLayout);
-        localObject1 = localFrameLayout;
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("AudioPanelAdapter.instantiateItem() is called,position is:");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("AIOAudioPanel", 2, ((StringBuilder)localObject1).toString());
     }
-    do
+    Object localObject2;
+    Object localObject3;
+    if ((!((ReceiptHelper)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(118)).jdField_a_of_type_Boolean) && (paramInt != 1))
     {
-      do
+      if (paramInt == 0)
       {
-        do
-        {
-          return localObject1;
-          localObject1 = localFrameLayout;
-        } while (localObject2 == paramView);
-        ((ViewGroup)localObject2).removeView(localFrameLayout);
-        ((ViewGroup)paramView).addView(localFrameLayout);
-        return localFrameLayout;
-        if (paramInt != 0) {
-          break;
-        }
-        localFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-        localFrameLayout.setId(1000);
-        localObject1 = (PressToChangeVoicePanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131561062, null);
-        ((PressToChangeVoicePanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, this.d, this.e, this);
-        localFrameLayout.addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
-        if ((Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) && (Build.MODEL.toUpperCase().startsWith("HM NOTE"))) {}
-        for (;;)
-        {
-          ((PressToChangeVoicePanel)localObject1).f();
-          ((PressToChangeVoicePanel)localObject1).setVisibility(0);
-          localObject2 = (ViewGroup)localFrameLayout.getParent();
-          if (localObject2 != null) {
-            break;
-          }
-          ((ViewGroup)paramView).addView(localFrameLayout);
-          return localFrameLayout;
+        localObject1 = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+        ((FrameLayout)localObject1).setId(1000);
+        localObject2 = (PressToChangeVoicePanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560926, null);
+        ((PressToChangeVoicePanel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, (ViewGroup)localObject1, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, this.d, this.e, this);
+        ((FrameLayout)localObject1).addView((View)localObject2, new FrameLayout.LayoutParams(-1, -1));
+        if ((!Build.MANUFACTURER.equalsIgnoreCase("Xiaomi")) || (!Build.MODEL.toUpperCase().startsWith("HM NOTE"))) {
           ThreadManager.getSubThreadHandler().postDelayed(new AudioPanelAdapter.1(this), 100L);
         }
-        localObject1 = localFrameLayout;
-      } while (localObject2 == paramView);
-      ((ViewGroup)localObject2).removeView(localFrameLayout);
-      ((ViewGroup)paramView).addView(localFrameLayout);
-      return localFrameLayout;
-      if (paramInt != 2) {
-        break;
+        ((PressToChangeVoicePanel)localObject2).f();
+        ((PressToChangeVoicePanel)localObject2).setVisibility(0);
+        localObject2 = (ViewGroup)((FrameLayout)localObject1).getParent();
+        if (localObject2 == null)
+        {
+          ((ViewGroup)paramView).addView((View)localObject1);
+        }
+        else if (localObject2 != paramView)
+        {
+          ((ViewGroup)localObject2).removeView((View)localObject1);
+          ((ViewGroup)paramView).addView((View)localObject1);
+        }
+        return localObject1;
       }
-      localFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
-      localFrameLayout.setId(1002);
-      localObject1 = (RecordSoundPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131561066, null);
-      ((RecordSoundPanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, this.d, this.e);
-      localObject2 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131561060, null);
-      ((ListenPanel)localObject2).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, localFrameLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, 2);
-      ((ListenPanel)localObject2).setNeedAudioData(true);
-      localFrameLayout.addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
-      localFrameLayout.addView((View)localObject2, new FrameLayout.LayoutParams(-1, -1));
-      ((RecordSoundPanel)localObject1).a();
-      ((RecordSoundPanel)localObject1).setVisibility(0);
-      ((ListenPanel)localObject2).setVisibility(8);
-      localObject2 = (ViewGroup)localFrameLayout.getParent();
-      if (localObject2 == null)
+      if (paramInt == 2)
       {
-        ((ViewGroup)paramView).addView(localFrameLayout);
-        return localFrameLayout;
+        localObject2 = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+        ((FrameLayout)localObject2).setId(1002);
+        localObject1 = (RecordSoundPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560930, null);
+        ((RecordSoundPanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, (ViewGroup)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, this.d, this.e);
+        localObject3 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560924, null);
+        ((ListenPanel)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, (ViewGroup)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, 2);
+        ((ListenPanel)localObject3).setNeedAudioData(true);
+        ((FrameLayout)localObject2).addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
+        ((FrameLayout)localObject2).addView((View)localObject3, new FrameLayout.LayoutParams(-1, -1));
+        ((RecordSoundPanel)localObject1).a();
+        ((RecordSoundPanel)localObject1).setVisibility(0);
+        ((ListenPanel)localObject3).setVisibility(8);
+        localObject3 = (ViewGroup)((FrameLayout)localObject2).getParent();
+        if (localObject3 == null)
+        {
+          ((ViewGroup)paramView).addView((View)localObject2);
+          return localObject2;
+        }
+        localObject1 = localObject2;
+        if (localObject3 != paramView)
+        {
+          ((ViewGroup)localObject3).removeView((View)localObject2);
+          ((ViewGroup)paramView).addView((View)localObject2);
+          return localObject2;
+        }
       }
-      localObject1 = localFrameLayout;
-    } while (localObject2 == paramView);
-    ((ViewGroup)localObject2).removeView(localFrameLayout);
-    ((ViewGroup)paramView).addView(localFrameLayout);
-    return localFrameLayout;
-    return null;
+      else
+      {
+        return null;
+      }
+    }
+    else
+    {
+      localObject2 = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp());
+      ((FrameLayout)localObject2).setId(1001);
+      localObject1 = (PressToSpeakPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560927, null);
+      ((PressToSpeakPanel)localObject1).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, (ViewGroup)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, this.d, this.e);
+      localObject3 = (ListenPanel)LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()).inflate(2131560924, null);
+      ((ListenPanel)localObject3).a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie, (ViewGroup)localObject2, this.jdField_a_of_type_ComTencentMobileqqActivityAioAudiopanelAudioPanel, this.c, 1);
+      ((ListenPanel)localObject3).setNeedAudioData(true);
+      ((FrameLayout)localObject2).addView((View)localObject1, new FrameLayout.LayoutParams(-1, -1));
+      ((FrameLayout)localObject2).addView((View)localObject3, new FrameLayout.LayoutParams(-1, -1));
+      ((PressToSpeakPanel)localObject1).a();
+      ((PressToSpeakPanel)localObject1).setVisibility(0);
+      ((ListenPanel)localObject3).setVisibility(8);
+      localObject3 = (ViewGroup)((FrameLayout)localObject2).getParent();
+      if (localObject3 == null)
+      {
+        ((ViewGroup)paramView).addView((View)localObject2);
+        return localObject2;
+      }
+      localObject1 = localObject2;
+      if (localObject3 != paramView)
+      {
+        ((ViewGroup)localObject3).removeView((View)localObject2);
+        ((ViewGroup)paramView).addView((View)localObject2);
+        localObject1 = localObject2;
+      }
+    }
+    return localObject1;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -173,7 +184,7 @@ public class AudioPanelAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.audiopanel.AudioPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

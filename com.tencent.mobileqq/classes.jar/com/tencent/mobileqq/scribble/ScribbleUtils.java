@@ -13,237 +13,228 @@ public class ScribbleUtils
   public static java.lang.Boolean a(String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: aconst_null
-    //   3: astore 4
-    //   5: aconst_null
-    //   6: astore 5
-    //   8: aload_1
-    //   9: invokestatic 18	com/tencent/mobileqq/filemanager/util/FileUtil:a	(Ljava/lang/String;)Z
-    //   12: ifeq +8 -> 20
-    //   15: aload_1
-    //   16: invokestatic 21	com/tencent/mobileqq/filemanager/util/FileUtil:c	(Ljava/lang/String;)Z
-    //   19: pop
-    //   20: new 23	java/io/File
-    //   23: dup
-    //   24: aload_0
-    //   25: invokespecial 26	java/io/File:<init>	(Ljava/lang/String;)V
-    //   28: invokevirtual 30	java/io/File:exists	()Z
-    //   31: ifeq +148 -> 179
-    //   34: new 32	java/io/FileInputStream
-    //   37: dup
-    //   38: aload_0
-    //   39: invokespecial 33	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   42: astore_0
-    //   43: new 35	java/io/FileOutputStream
-    //   46: dup
-    //   47: aload_1
-    //   48: invokespecial 36	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   51: astore 4
-    //   53: sipush 1444
-    //   56: newarray byte
-    //   58: astore_1
-    //   59: aload_0
-    //   60: aload_1
-    //   61: invokevirtual 42	java/io/InputStream:read	([B)I
-    //   64: istore_3
-    //   65: iload_3
-    //   66: iconst_m1
-    //   67: if_icmpeq +69 -> 136
-    //   70: iload_2
-    //   71: iload_3
-    //   72: iadd
-    //   73: istore_2
-    //   74: getstatic 48	java/lang/System:out	Ljava/io/PrintStream;
-    //   77: iload_2
-    //   78: invokevirtual 54	java/io/PrintStream:println	(I)V
-    //   81: aload 4
-    //   83: aload_1
+    //   0: aload_1
+    //   1: invokestatic 19	com/tencent/mobileqq/utils/FileUtils:fileExists	(Ljava/lang/String;)Z
+    //   4: ifeq +8 -> 12
+    //   7: aload_1
+    //   8: invokestatic 22	com/tencent/mobileqq/utils/FileUtils:deleteFile	(Ljava/lang/String;)Z
+    //   11: pop
+    //   12: aconst_null
+    //   13: astore 4
+    //   15: aconst_null
+    //   16: astore 6
+    //   18: new 24	java/io/File
+    //   21: dup
+    //   22: aload_0
+    //   23: invokespecial 27	java/io/File:<init>	(Ljava/lang/String;)V
+    //   26: invokevirtual 31	java/io/File:exists	()Z
+    //   29: ifeq +114 -> 143
+    //   32: new 33	java/io/FileInputStream
+    //   35: dup
+    //   36: aload_0
+    //   37: invokespecial 34	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   40: astore 5
+    //   42: new 36	java/io/FileOutputStream
+    //   45: dup
+    //   46: aload_1
+    //   47: invokespecial 37	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   50: astore_1
+    //   51: sipush 1444
+    //   54: newarray byte
+    //   56: astore_0
+    //   57: iconst_0
+    //   58: istore_2
+    //   59: aload 5
+    //   61: aload_0
+    //   62: invokevirtual 43	java/io/InputStream:read	([B)I
+    //   65: istore_3
+    //   66: iload_3
+    //   67: iconst_m1
+    //   68: if_icmpeq +24 -> 92
+    //   71: iload_2
+    //   72: iload_3
+    //   73: iadd
+    //   74: istore_2
+    //   75: getstatic 49	java/lang/System:out	Ljava/io/PrintStream;
+    //   78: iload_2
+    //   79: invokevirtual 55	java/io/PrintStream:println	(I)V
+    //   82: aload_1
+    //   83: aload_0
     //   84: iconst_0
     //   85: iload_3
-    //   86: invokevirtual 58	java/io/FileOutputStream:write	([BII)V
+    //   86: invokevirtual 59	java/io/FileOutputStream:write	([BII)V
     //   89: goto -30 -> 59
-    //   92: astore 5
-    //   94: aload_0
-    //   95: astore_1
-    //   96: aload 5
-    //   98: astore_0
-    //   99: ldc 60
-    //   101: iconst_1
-    //   102: ldc 62
-    //   104: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   107: aload_0
-    //   108: invokevirtual 71	java/lang/Exception:printStackTrace	()V
-    //   111: iconst_0
-    //   112: invokestatic 77	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   115: astore_0
-    //   116: aload_1
-    //   117: ifnull +7 -> 124
-    //   120: aload_1
-    //   121: invokevirtual 80	java/io/InputStream:close	()V
-    //   124: aload 4
-    //   126: ifnull +8 -> 134
-    //   129: aload 4
-    //   131: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   134: aload_0
-    //   135: areturn
-    //   136: aload_0
-    //   137: invokevirtual 80	java/io/InputStream:close	()V
-    //   140: aload 4
-    //   142: invokevirtual 84	java/io/FileOutputStream:flush	()V
-    //   145: aload 4
-    //   147: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   150: iconst_0
-    //   151: ifeq +11 -> 162
-    //   154: new 86	java/lang/NullPointerException
-    //   157: dup
-    //   158: invokespecial 87	java/lang/NullPointerException:<init>	()V
-    //   161: athrow
-    //   162: iconst_0
-    //   163: ifeq +11 -> 174
-    //   166: new 86	java/lang/NullPointerException
-    //   169: dup
-    //   170: invokespecial 87	java/lang/NullPointerException:<init>	()V
-    //   173: athrow
-    //   174: iconst_1
-    //   175: invokestatic 77	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
-    //   178: areturn
-    //   179: ldc 60
-    //   181: iconst_1
-    //   182: ldc 89
-    //   184: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   187: goto -37 -> 150
-    //   190: astore_0
-    //   191: aconst_null
-    //   192: astore 5
-    //   194: aload 4
-    //   196: astore_1
-    //   197: aload 5
-    //   199: astore 4
-    //   201: aload_1
-    //   202: ifnull +7 -> 209
-    //   205: aload_1
-    //   206: invokevirtual 80	java/io/InputStream:close	()V
-    //   209: aload 4
-    //   211: ifnull +8 -> 219
-    //   214: aload 4
-    //   216: invokevirtual 81	java/io/FileOutputStream:close	()V
+    //   92: aload 5
+    //   94: invokevirtual 62	java/io/InputStream:close	()V
+    //   97: aload_1
+    //   98: invokevirtual 65	java/io/FileOutputStream:flush	()V
+    //   101: aload_1
+    //   102: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   105: goto +46 -> 151
+    //   108: astore_0
+    //   109: aload_1
+    //   110: astore 4
+    //   112: goto +12 -> 124
+    //   115: astore 4
+    //   117: goto +20 -> 137
+    //   120: astore_0
+    //   121: aconst_null
+    //   122: astore 4
+    //   124: aload 5
+    //   126: astore_1
+    //   127: aload_0
+    //   128: astore 5
+    //   130: goto +91 -> 221
+    //   133: astore 4
+    //   135: aconst_null
+    //   136: astore_1
+    //   137: aload 5
+    //   139: astore_0
+    //   140: goto +36 -> 176
+    //   143: ldc 68
+    //   145: iconst_1
+    //   146: ldc 70
+    //   148: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   151: iconst_1
+    //   152: invokestatic 82	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   155: areturn
+    //   156: astore 5
+    //   158: aconst_null
+    //   159: astore_0
+    //   160: aload 4
+    //   162: astore_1
+    //   163: aload_0
+    //   164: astore 4
+    //   166: goto +55 -> 221
+    //   169: astore 4
+    //   171: aconst_null
+    //   172: astore_1
+    //   173: aload 6
+    //   175: astore_0
+    //   176: ldc 68
+    //   178: iconst_1
+    //   179: ldc 84
+    //   181: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   184: aload 4
+    //   186: invokevirtual 87	java/lang/Exception:printStackTrace	()V
+    //   189: iconst_0
+    //   190: invokestatic 82	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   193: astore 4
+    //   195: aload_0
+    //   196: ifnull +7 -> 203
+    //   199: aload_0
+    //   200: invokevirtual 62	java/io/InputStream:close	()V
+    //   203: aload_1
+    //   204: ifnull +7 -> 211
+    //   207: aload_1
+    //   208: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   211: aload 4
+    //   213: areturn
+    //   214: astore 5
+    //   216: aload_1
+    //   217: astore 4
     //   219: aload_0
-    //   220: athrow
-    //   221: astore_1
-    //   222: goto -3 -> 219
-    //   225: astore 5
-    //   227: aconst_null
-    //   228: astore 4
-    //   230: aload_0
-    //   231: astore_1
-    //   232: aload 5
-    //   234: astore_0
-    //   235: goto -34 -> 201
-    //   238: astore 5
-    //   240: aload_0
-    //   241: astore_1
+    //   220: astore_1
+    //   221: aload_1
+    //   222: ifnull +7 -> 229
+    //   225: aload_1
+    //   226: invokevirtual 62	java/io/InputStream:close	()V
+    //   229: aload 4
+    //   231: ifnull +8 -> 239
+    //   234: aload 4
+    //   236: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   239: goto +6 -> 245
     //   242: aload 5
-    //   244: astore_0
-    //   245: goto -44 -> 201
+    //   244: athrow
+    //   245: goto -3 -> 242
     //   248: astore_0
-    //   249: goto -48 -> 201
-    //   252: astore_1
-    //   253: aload_0
-    //   254: areturn
-    //   255: astore_0
-    //   256: aconst_null
-    //   257: astore 4
-    //   259: aload 5
-    //   261: astore_1
-    //   262: goto -163 -> 99
-    //   265: astore 5
-    //   267: aconst_null
-    //   268: astore 4
-    //   270: aload_0
-    //   271: astore_1
-    //   272: aload 5
-    //   274: astore_0
-    //   275: goto -176 -> 99
-    //   278: astore_0
-    //   279: goto -105 -> 174
+    //   249: aload 4
+    //   251: areturn
+    //   252: astore_0
+    //   253: goto -14 -> 239
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	282	0	paramString1	String
-    //   0	282	1	paramString2	String
-    //   1	77	2	i	int
-    //   64	22	3	j	int
-    //   3	266	4	localObject1	Object
-    //   6	1	5	localObject2	Object
-    //   92	5	5	localException1	java.lang.Exception
-    //   192	6	5	localObject3	Object
-    //   225	8	5	localObject4	Object
-    //   238	22	5	localObject5	Object
-    //   265	8	5	localException2	java.lang.Exception
+    //   0	256	0	paramString1	String
+    //   0	256	1	paramString2	String
+    //   58	21	2	i	int
+    //   65	21	3	j	int
+    //   13	98	4	str1	String
+    //   115	1	4	localException1	java.lang.Exception
+    //   122	1	4	localObject1	Object
+    //   133	28	4	localException2	java.lang.Exception
+    //   164	1	4	str2	String
+    //   169	16	4	localException3	java.lang.Exception
+    //   193	57	4	localObject2	Object
+    //   40	98	5	localObject3	Object
+    //   156	1	5	localObject4	Object
+    //   214	29	5	localObject5	Object
+    //   16	158	6	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   53	59	92	java/lang/Exception
-    //   59	65	92	java/lang/Exception
-    //   74	89	92	java/lang/Exception
-    //   136	150	92	java/lang/Exception
-    //   20	43	190	finally
-    //   179	187	190	finally
-    //   205	209	221	java/lang/Exception
-    //   214	219	221	java/lang/Exception
-    //   43	53	225	finally
-    //   53	59	238	finally
-    //   59	65	238	finally
-    //   74	89	238	finally
-    //   136	150	238	finally
-    //   99	116	248	finally
-    //   120	124	252	java/lang/Exception
-    //   129	134	252	java/lang/Exception
-    //   20	43	255	java/lang/Exception
-    //   179	187	255	java/lang/Exception
-    //   43	53	265	java/lang/Exception
-    //   154	162	278	java/lang/Exception
-    //   166	174	278	java/lang/Exception
+    //   51	57	108	finally
+    //   59	66	108	finally
+    //   75	89	108	finally
+    //   92	105	108	finally
+    //   51	57	115	java/lang/Exception
+    //   59	66	115	java/lang/Exception
+    //   75	89	115	java/lang/Exception
+    //   92	105	115	java/lang/Exception
+    //   42	51	120	finally
+    //   42	51	133	java/lang/Exception
+    //   18	42	156	finally
+    //   143	151	156	finally
+    //   18	42	169	java/lang/Exception
+    //   143	151	169	java/lang/Exception
+    //   176	195	214	finally
+    //   199	203	248	java/lang/Exception
+    //   207	211	248	java/lang/Exception
+    //   225	229	252	java/lang/Exception
+    //   234	239	252	java/lang/Exception
   }
   
   public static String a(String paramString)
   {
+    localObject1 = "";
     try
     {
-      String str1 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
-      paramString = str1;
+      try
+      {
+        localObject2 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString));
+        paramString = (String)localObject2;
+      }
+      catch (OutOfMemoryError paramString)
+      {
+        paramString.printStackTrace();
+        paramString = (String)localObject1;
+      }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
-      {
-        paramString = new File(paramString);
-        if (!paramString.exists()) {
-          break;
-        }
-        try
-        {
-          String str2 = MD5FileUtil.a(paramString);
-          paramString = str2;
-          if (str2 == null) {
-            paramString = "";
-          }
-        }
-        catch (IOException paramString)
-        {
-          paramString = "";
-        }
-      }
+      Object localObject2;
+      label26:
+      break label26;
     }
-    catch (OutOfMemoryError paramString)
+    localObject2 = new File(paramString);
+    paramString = (String)localObject1;
+    if (((File)localObject2).exists()) {}
+    try
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
+      paramString = MD5FileUtil.a((File)localObject2);
+      if (paramString == null) {
         paramString = "";
       }
     }
-    QLog.i("ScribbleUtils", 1, "calcMD5 md5:" + paramString);
+    catch (IOException paramString)
+    {
+      for (;;)
+      {
+        paramString = (String)localObject1;
+      }
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("calcMD5 md5:");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.i("ScribbleUtils", 1, ((StringBuilder)localObject1).toString());
     return paramString;
   }
   
@@ -251,325 +242,274 @@ public class ScribbleUtils
   public static boolean a(String paramString1, int paramInt, String paramString2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 8
-    //   3: aconst_null
-    //   4: astore 7
-    //   6: iconst_1
-    //   7: istore 5
-    //   9: new 23	java/io/File
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 26	java/io/File:<init>	(Ljava/lang/String;)V
-    //   17: astore_0
-    //   18: aload_0
-    //   19: invokevirtual 30	java/io/File:exists	()Z
-    //   22: ifeq +418 -> 440
-    //   25: new 32	java/io/FileInputStream
-    //   28: dup
-    //   29: aload_0
-    //   30: invokespecial 136	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   33: astore 6
-    //   35: sipush 1024
-    //   38: newarray byte
-    //   40: astore_0
-    //   41: iconst_0
-    //   42: istore_3
-    //   43: iload_3
-    //   44: sipush 1024
-    //   47: iadd
-    //   48: iload_1
-    //   49: if_icmpge +19 -> 68
-    //   52: aload 6
-    //   54: aload_0
-    //   55: invokevirtual 137	java/io/FileInputStream:read	([B)I
-    //   58: pop
-    //   59: iload_3
-    //   60: sipush 1024
-    //   63: iadd
-    //   64: istore_3
-    //   65: goto -22 -> 43
-    //   68: iload_1
-    //   69: iload_3
-    //   70: isub
-    //   71: istore_1
-    //   72: iload_1
-    //   73: ifgt +64 -> 137
-    //   76: aload 6
-    //   78: ifnull +8 -> 86
-    //   81: aload 6
-    //   83: invokevirtual 138	java/io/FileInputStream:close	()V
-    //   86: iconst_0
-    //   87: ifeq +11 -> 98
-    //   90: new 86	java/lang/NullPointerException
-    //   93: dup
-    //   94: invokespecial 87	java/lang/NullPointerException:<init>	()V
-    //   97: athrow
-    //   98: iconst_0
-    //   99: ireturn
-    //   100: astore_0
-    //   101: aload_0
-    //   102: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   105: ldc 60
-    //   107: iconst_1
-    //   108: aload_0
-    //   109: iconst_0
-    //   110: anewarray 4	java/lang/Object
-    //   113: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   116: goto -30 -> 86
-    //   119: astore_0
-    //   120: aload_0
-    //   121: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   124: ldc 60
-    //   126: iconst_1
-    //   127: aload_0
-    //   128: iconst_0
-    //   129: anewarray 4	java/lang/Object
-    //   132: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   135: iconst_0
-    //   136: ireturn
-    //   137: aload 6
-    //   139: iload_1
-    //   140: newarray byte
-    //   142: invokevirtual 137	java/io/FileInputStream:read	([B)I
-    //   145: pop
-    //   146: new 23	java/io/File
-    //   149: dup
+    //   0: new 24	java/io/File
+    //   3: dup
+    //   4: aload_0
+    //   5: invokespecial 27	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_0
+    //   9: aload_0
+    //   10: invokevirtual 31	java/io/File:exists	()Z
+    //   13: ifeq +389 -> 402
+    //   16: aconst_null
+    //   17: astore 5
+    //   19: aconst_null
+    //   20: astore 6
+    //   22: new 33	java/io/FileInputStream
+    //   25: dup
+    //   26: aload_0
+    //   27: invokespecial 134	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   30: astore_0
+    //   31: sipush 1024
+    //   34: newarray byte
+    //   36: astore 6
+    //   38: iconst_0
+    //   39: istore_3
+    //   40: iload_3
+    //   41: sipush 1024
+    //   44: iadd
+    //   45: istore 4
+    //   47: iload 4
+    //   49: iload_1
+    //   50: if_icmpge +16 -> 66
+    //   53: aload_0
+    //   54: aload 6
+    //   56: invokevirtual 135	java/io/FileInputStream:read	([B)I
+    //   59: pop
+    //   60: iload 4
+    //   62: istore_3
+    //   63: goto -23 -> 40
+    //   66: iload_1
+    //   67: iload_3
+    //   68: isub
+    //   69: istore_1
+    //   70: iload_1
+    //   71: ifgt +27 -> 98
+    //   74: aload_0
+    //   75: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   78: iconst_0
+    //   79: ireturn
+    //   80: astore_0
+    //   81: aload_0
+    //   82: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   85: ldc 68
+    //   87: iconst_1
+    //   88: aload_0
+    //   89: iconst_0
+    //   90: anewarray 4	java/lang/Object
+    //   93: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   96: iconst_0
+    //   97: ireturn
+    //   98: aload_0
+    //   99: iload_1
+    //   100: newarray byte
+    //   102: invokevirtual 135	java/io/FileInputStream:read	([B)I
+    //   105: pop
+    //   106: new 24	java/io/File
+    //   109: dup
+    //   110: aload_2
+    //   111: invokespecial 27	java/io/File:<init>	(Ljava/lang/String;)V
+    //   114: astore_2
+    //   115: aload_2
+    //   116: invokevirtual 144	java/io/File:getParentFile	()Ljava/io/File;
+    //   119: invokevirtual 31	java/io/File:exists	()Z
+    //   122: ifne +11 -> 133
+    //   125: aload_2
+    //   126: invokevirtual 144	java/io/File:getParentFile	()Ljava/io/File;
+    //   129: invokevirtual 147	java/io/File:mkdirs	()Z
+    //   132: pop
+    //   133: new 36	java/io/FileOutputStream
+    //   136: dup
+    //   137: aload_2
+    //   138: invokespecial 148	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   141: astore 6
+    //   143: sipush 4096
+    //   146: newarray byte
+    //   148: astore_2
+    //   149: aload_0
     //   150: aload_2
-    //   151: invokespecial 26	java/io/File:<init>	(Ljava/lang/String;)V
-    //   154: astore_0
-    //   155: aload_0
-    //   156: invokevirtual 146	java/io/File:getParentFile	()Ljava/io/File;
-    //   159: invokevirtual 30	java/io/File:exists	()Z
-    //   162: ifne +11 -> 173
-    //   165: aload_0
-    //   166: invokevirtual 146	java/io/File:getParentFile	()Ljava/io/File;
-    //   169: invokevirtual 149	java/io/File:mkdirs	()Z
-    //   172: pop
-    //   173: new 35	java/io/FileOutputStream
-    //   176: dup
-    //   177: aload_0
-    //   178: invokespecial 150	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   181: astore_0
-    //   182: sipush 4096
-    //   185: newarray byte
-    //   187: astore_2
-    //   188: aload 6
-    //   190: aload_2
-    //   191: invokevirtual 137	java/io/FileInputStream:read	([B)I
-    //   194: istore_1
-    //   195: iload_1
-    //   196: iconst_m1
-    //   197: if_icmpeq +59 -> 256
-    //   200: aload_0
-    //   201: aload_2
-    //   202: iconst_0
-    //   203: iload_1
-    //   204: invokevirtual 58	java/io/FileOutputStream:write	([BII)V
-    //   207: goto -19 -> 188
-    //   210: astore 7
-    //   212: aload_0
-    //   213: astore_2
-    //   214: aload 6
-    //   216: astore_0
-    //   217: aload 7
-    //   219: astore 6
-    //   221: ldc 60
+    //   151: invokevirtual 135	java/io/FileInputStream:read	([B)I
+    //   154: istore_1
+    //   155: iload_1
+    //   156: iconst_m1
+    //   157: if_icmpeq +14 -> 171
+    //   160: aload 6
+    //   162: aload_2
+    //   163: iconst_0
+    //   164: iload_1
+    //   165: invokevirtual 59	java/io/FileOutputStream:write	([BII)V
+    //   168: goto -19 -> 149
+    //   171: aload 6
+    //   173: invokevirtual 65	java/io/FileOutputStream:flush	()V
+    //   176: aload_0
+    //   177: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   180: goto +19 -> 199
+    //   183: astore_0
+    //   184: aload_0
+    //   185: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   188: ldc 68
+    //   190: iconst_1
+    //   191: aload_0
+    //   192: iconst_0
+    //   193: anewarray 4	java/lang/Object
+    //   196: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   199: aload 6
+    //   201: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   204: goto +19 -> 223
+    //   207: astore_0
+    //   208: aload_0
+    //   209: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   212: ldc 68
+    //   214: iconst_1
+    //   215: aload_0
+    //   216: iconst_0
+    //   217: anewarray 4	java/lang/Object
+    //   220: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   223: iconst_1
-    //   224: ldc 152
-    //   226: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   229: aload 6
-    //   231: invokevirtual 71	java/lang/Exception:printStackTrace	()V
-    //   234: aload_0
-    //   235: ifnull +7 -> 242
-    //   238: aload_0
-    //   239: invokevirtual 138	java/io/FileInputStream:close	()V
-    //   242: aload_2
-    //   243: ifnull +205 -> 448
-    //   246: aload_2
-    //   247: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   250: iconst_0
-    //   251: istore 4
-    //   253: iload 4
-    //   255: ireturn
-    //   256: aload_0
-    //   257: invokevirtual 84	java/io/FileOutputStream:flush	()V
-    //   260: aload 6
-    //   262: ifnull +8 -> 270
-    //   265: aload 6
-    //   267: invokevirtual 138	java/io/FileInputStream:close	()V
-    //   270: iload 5
-    //   272: istore 4
-    //   274: aload_0
-    //   275: ifnull -22 -> 253
-    //   278: aload_0
-    //   279: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   282: iload 5
-    //   284: istore 4
-    //   286: goto -33 -> 253
-    //   289: astore_0
-    //   290: aload_0
-    //   291: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   294: ldc 60
-    //   296: iconst_1
-    //   297: aload_0
-    //   298: iconst_0
-    //   299: anewarray 4	java/lang/Object
-    //   302: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   305: iload 5
-    //   307: istore 4
-    //   309: goto -56 -> 253
-    //   312: astore_2
-    //   313: aload_2
-    //   314: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   317: ldc 60
-    //   319: iconst_1
-    //   320: aload_2
-    //   321: iconst_0
-    //   322: anewarray 4	java/lang/Object
-    //   325: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   328: goto -58 -> 270
-    //   331: astore_0
-    //   332: aload_0
-    //   333: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   336: ldc 60
-    //   338: iconst_1
-    //   339: aload_0
-    //   340: iconst_0
-    //   341: anewarray 4	java/lang/Object
-    //   344: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   347: goto -105 -> 242
-    //   350: astore_0
-    //   351: aload_0
-    //   352: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   355: ldc 60
-    //   357: iconst_1
-    //   358: aload_0
-    //   359: iconst_0
-    //   360: anewarray 4	java/lang/Object
-    //   363: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   366: iconst_0
-    //   367: istore 4
-    //   369: goto -116 -> 253
-    //   372: astore_0
-    //   373: aconst_null
-    //   374: astore 6
-    //   376: aload 8
-    //   378: astore_2
-    //   379: aload 6
-    //   381: ifnull +8 -> 389
-    //   384: aload 6
-    //   386: invokevirtual 138	java/io/FileInputStream:close	()V
-    //   389: aload_2
-    //   390: ifnull +7 -> 397
-    //   393: aload_2
-    //   394: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   397: aload_0
-    //   398: athrow
-    //   399: astore 6
-    //   401: aload 6
-    //   403: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   406: ldc 60
-    //   408: iconst_1
-    //   409: aload 6
-    //   411: iconst_0
-    //   412: anewarray 4	java/lang/Object
-    //   415: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   418: goto -29 -> 389
-    //   421: astore_2
-    //   422: aload_2
-    //   423: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   426: ldc 60
-    //   428: iconst_1
-    //   429: aload_2
-    //   430: iconst_0
-    //   431: anewarray 4	java/lang/Object
-    //   434: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   437: goto -40 -> 397
-    //   440: ldc 60
-    //   442: iconst_1
-    //   443: ldc 154
-    //   445: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   448: iconst_0
-    //   449: istore 4
-    //   451: goto -198 -> 253
-    //   454: astore_0
-    //   455: aload 8
-    //   457: astore_2
-    //   458: goto -79 -> 379
-    //   461: astore 7
-    //   463: aload_0
-    //   464: astore_2
-    //   465: aload 7
-    //   467: astore_0
-    //   468: goto -89 -> 379
-    //   471: astore 7
-    //   473: aload_0
-    //   474: astore 6
-    //   476: aload 7
-    //   478: astore_0
-    //   479: goto -100 -> 379
-    //   482: astore 6
-    //   484: aconst_null
-    //   485: astore_0
-    //   486: aload 7
-    //   488: astore_2
-    //   489: goto -268 -> 221
-    //   492: astore_2
-    //   493: aload 6
-    //   495: astore_0
-    //   496: aload_2
-    //   497: astore 6
-    //   499: aload 7
-    //   501: astore_2
-    //   502: goto -281 -> 221
+    //   224: ireturn
+    //   225: astore_2
+    //   226: aload 6
+    //   228: astore 5
+    //   230: goto +114 -> 344
+    //   233: astore 5
+    //   235: aload 6
+    //   237: astore_2
+    //   238: goto +11 -> 249
+    //   241: astore_2
+    //   242: goto +102 -> 344
+    //   245: astore 5
+    //   247: aconst_null
+    //   248: astore_2
+    //   249: aload_0
+    //   250: astore 6
+    //   252: aload_2
+    //   253: astore_0
+    //   254: goto +13 -> 267
+    //   257: astore_2
+    //   258: aconst_null
+    //   259: astore_0
+    //   260: goto +84 -> 344
+    //   263: astore 5
+    //   265: aconst_null
+    //   266: astore_0
+    //   267: ldc 68
+    //   269: iconst_1
+    //   270: ldc 150
+    //   272: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   275: aload 5
+    //   277: invokevirtual 87	java/lang/Exception:printStackTrace	()V
+    //   280: aload 6
+    //   282: ifnull +27 -> 309
+    //   285: aload 6
+    //   287: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   290: goto +19 -> 309
+    //   293: astore_2
+    //   294: aload_2
+    //   295: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   298: ldc 68
+    //   300: iconst_1
+    //   301: aload_2
+    //   302: iconst_0
+    //   303: anewarray 4	java/lang/Object
+    //   306: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   309: aload_0
+    //   310: ifnull +100 -> 410
+    //   313: aload_0
+    //   314: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   317: iconst_0
+    //   318: ireturn
+    //   319: astore_0
+    //   320: aload_0
+    //   321: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   324: ldc 68
+    //   326: iconst_1
+    //   327: aload_0
+    //   328: iconst_0
+    //   329: anewarray 4	java/lang/Object
+    //   332: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   335: iconst_0
+    //   336: ireturn
+    //   337: astore_2
+    //   338: aload_0
+    //   339: astore 5
+    //   341: aload 6
+    //   343: astore_0
+    //   344: aload_0
+    //   345: ifnull +26 -> 371
+    //   348: aload_0
+    //   349: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   352: goto +19 -> 371
+    //   355: astore_0
+    //   356: aload_0
+    //   357: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   360: ldc 68
+    //   362: iconst_1
+    //   363: aload_0
+    //   364: iconst_0
+    //   365: anewarray 4	java/lang/Object
+    //   368: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   371: aload 5
+    //   373: ifnull +27 -> 400
+    //   376: aload 5
+    //   378: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   381: goto +19 -> 400
+    //   384: astore_0
+    //   385: aload_0
+    //   386: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   389: ldc 68
+    //   391: iconst_1
+    //   392: aload_0
+    //   393: iconst_0
+    //   394: anewarray 4	java/lang/Object
+    //   397: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   400: aload_2
+    //   401: athrow
+    //   402: ldc 68
+    //   404: iconst_1
+    //   405: ldc 152
+    //   407: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   410: iconst_0
+    //   411: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	505	0	paramString1	String
-    //   0	505	1	paramInt	int
-    //   0	505	2	paramString2	String
-    //   42	29	3	i	int
-    //   251	199	4	bool1	boolean
-    //   7	299	5	bool2	boolean
-    //   33	352	6	localObject1	Object
-    //   399	11	6	localIOException	IOException
-    //   474	1	6	str1	String
-    //   482	12	6	localException1	java.lang.Exception
-    //   497	1	6	str2	String
-    //   4	1	7	localObject2	Object
-    //   210	8	7	localException2	java.lang.Exception
-    //   461	5	7	localObject3	Object
-    //   471	29	7	localObject4	Object
-    //   1	455	8	localObject5	Object
+    //   0	412	0	paramString1	String
+    //   0	412	1	paramInt	int
+    //   0	412	2	paramString2	String
+    //   39	30	3	i	int
+    //   45	16	4	j	int
+    //   17	212	5	localObject1	Object
+    //   233	1	5	localException1	java.lang.Exception
+    //   245	1	5	localException2	java.lang.Exception
+    //   263	13	5	localException3	java.lang.Exception
+    //   339	38	5	str	String
+    //   20	322	6	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   81	86	100	java/io/IOException
-    //   90	98	119	java/io/IOException
-    //   182	188	210	java/lang/Exception
-    //   188	195	210	java/lang/Exception
-    //   200	207	210	java/lang/Exception
-    //   256	260	210	java/lang/Exception
-    //   278	282	289	java/io/IOException
-    //   265	270	312	java/io/IOException
-    //   238	242	331	java/io/IOException
-    //   246	250	350	java/io/IOException
-    //   25	35	372	finally
-    //   384	389	399	java/io/IOException
-    //   393	397	421	java/io/IOException
-    //   35	41	454	finally
-    //   52	59	454	finally
-    //   137	173	454	finally
-    //   173	182	454	finally
-    //   182	188	461	finally
-    //   188	195	461	finally
-    //   200	207	461	finally
-    //   256	260	461	finally
-    //   221	234	471	finally
-    //   25	35	482	java/lang/Exception
-    //   35	41	492	java/lang/Exception
-    //   52	59	492	java/lang/Exception
-    //   137	173	492	java/lang/Exception
-    //   173	182	492	java/lang/Exception
+    //   74	78	80	java/io/IOException
+    //   176	180	183	java/io/IOException
+    //   199	204	207	java/io/IOException
+    //   143	149	225	finally
+    //   149	155	225	finally
+    //   160	168	225	finally
+    //   171	176	225	finally
+    //   143	149	233	java/lang/Exception
+    //   149	155	233	java/lang/Exception
+    //   160	168	233	java/lang/Exception
+    //   171	176	233	java/lang/Exception
+    //   31	38	241	finally
+    //   53	60	241	finally
+    //   98	133	241	finally
+    //   133	143	241	finally
+    //   31	38	245	java/lang/Exception
+    //   53	60	245	java/lang/Exception
+    //   98	133	245	java/lang/Exception
+    //   133	143	245	java/lang/Exception
+    //   22	31	257	finally
+    //   22	31	263	java/lang/Exception
+    //   285	290	293	java/io/IOException
+    //   313	317	319	java/io/IOException
+    //   267	280	337	finally
+    //   348	352	355	java/io/IOException
+    //   376	381	384	java/io/IOException
   }
   
   /* Error */
@@ -577,19 +517,19 @@ public class ScribbleUtils
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
+    //   1: astore 7
     //   3: aconst_null
     //   4: astore 5
     //   6: aconst_null
-    //   7: astore 7
+    //   7: astore 8
     //   9: aconst_null
-    //   10: astore 4
-    //   12: new 35	java/io/FileOutputStream
+    //   10: astore 6
+    //   12: new 36	java/io/FileOutputStream
     //   15: dup
     //   16: aload_2
-    //   17: invokespecial 36	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   17: invokespecial 37	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
     //   20: astore_2
-    //   21: aload 7
+    //   21: aload 8
     //   23: astore 5
     //   25: aload_2
     //   26: astore 4
@@ -598,269 +538,443 @@ public class ScribbleUtils
     //   30: iconst_0
     //   31: aload_0
     //   32: arraylength
-    //   33: invokevirtual 58	java/io/FileOutputStream:write	([BII)V
-    //   36: aload 7
+    //   33: invokevirtual 59	java/io/FileOutputStream:write	([BII)V
+    //   36: aload 8
     //   38: astore 5
     //   40: aload_2
     //   41: astore 4
-    //   43: new 32	java/io/FileInputStream
+    //   43: new 33	java/io/FileInputStream
     //   46: dup
     //   47: aload_1
-    //   48: invokespecial 33	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   48: invokespecial 34	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   51: astore_0
     //   52: sipush 4096
     //   55: newarray byte
     //   57: astore_1
     //   58: aload_0
     //   59: aload_1
-    //   60: invokevirtual 137	java/io/FileInputStream:read	([B)I
+    //   60: invokevirtual 135	java/io/FileInputStream:read	([B)I
     //   63: istore_3
     //   64: iload_3
     //   65: iconst_m1
-    //   66: if_icmpeq +53 -> 119
+    //   66: if_icmpeq +13 -> 79
     //   69: aload_2
     //   70: aload_1
     //   71: iconst_0
     //   72: iload_3
-    //   73: invokevirtual 58	java/io/FileOutputStream:write	([BII)V
+    //   73: invokevirtual 59	java/io/FileOutputStream:write	([BII)V
     //   76: goto -18 -> 58
-    //   79: astore 4
-    //   81: aload_2
-    //   82: astore_1
-    //   83: aload 4
-    //   85: astore_2
-    //   86: aload_2
-    //   87: invokevirtual 158	java/io/FileNotFoundException:printStackTrace	()V
-    //   90: ldc 60
-    //   92: iconst_1
-    //   93: aload_2
-    //   94: iconst_0
-    //   95: anewarray 4	java/lang/Object
-    //   98: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   101: aload_0
-    //   102: ifnull +7 -> 109
-    //   105: aload_0
-    //   106: invokevirtual 138	java/io/FileInputStream:close	()V
-    //   109: aload_1
-    //   110: ifnull +55 -> 165
-    //   113: aload_1
-    //   114: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   117: iconst_1
-    //   118: ireturn
-    //   119: aload_0
-    //   120: ifnull +7 -> 127
-    //   123: aload_0
-    //   124: invokevirtual 138	java/io/FileInputStream:close	()V
-    //   127: aload_2
-    //   128: ifnull +9 -> 137
-    //   131: aload_2
-    //   132: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   135: iconst_1
-    //   136: ireturn
-    //   137: ldc 60
-    //   139: iconst_1
-    //   140: ldc 160
-    //   142: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   145: iconst_0
-    //   146: ireturn
-    //   147: astore_0
-    //   148: aload_0
-    //   149: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   152: ldc 60
-    //   154: iconst_1
-    //   155: aload_0
-    //   156: iconst_0
-    //   157: anewarray 4	java/lang/Object
-    //   160: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   163: iconst_0
-    //   164: ireturn
-    //   165: ldc 60
-    //   167: iconst_1
-    //   168: ldc 160
-    //   170: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   173: iconst_0
-    //   174: ireturn
-    //   175: astore_0
-    //   176: aload_0
-    //   177: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   180: ldc 60
-    //   182: iconst_1
-    //   183: aload_0
-    //   184: iconst_0
-    //   185: anewarray 4	java/lang/Object
-    //   188: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   191: iconst_0
-    //   192: ireturn
-    //   193: astore_0
-    //   194: aconst_null
-    //   195: astore_2
-    //   196: aload 6
-    //   198: astore_1
-    //   199: aload_1
-    //   200: astore 5
-    //   202: aload_2
-    //   203: astore 4
-    //   205: aload_0
-    //   206: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   209: aload_1
-    //   210: astore 5
-    //   212: aload_2
-    //   213: astore 4
-    //   215: ldc 60
-    //   217: iconst_1
-    //   218: aload_0
+    //   79: aload_0
+    //   80: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   83: aload_2
+    //   84: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   87: iconst_1
+    //   88: ireturn
+    //   89: astore_0
+    //   90: aload_0
+    //   91: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   94: ldc 68
+    //   96: iconst_1
+    //   97: aload_0
+    //   98: iconst_0
+    //   99: anewarray 4	java/lang/Object
+    //   102: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   105: iconst_0
+    //   106: ireturn
+    //   107: aload_0
+    //   108: astore 5
+    //   110: goto +192 -> 302
+    //   113: astore_1
+    //   114: goto +32 -> 146
+    //   117: astore_1
+    //   118: goto +109 -> 227
+    //   121: astore_1
+    //   122: aload 6
+    //   124: astore_0
+    //   125: goto +21 -> 146
+    //   128: astore_1
+    //   129: aload 7
+    //   131: astore_0
+    //   132: goto +95 -> 227
+    //   135: aconst_null
+    //   136: astore_2
+    //   137: goto +165 -> 302
+    //   140: astore_1
+    //   141: aconst_null
+    //   142: astore_2
+    //   143: aload 6
+    //   145: astore_0
+    //   146: aload_0
+    //   147: astore 5
+    //   149: aload_2
+    //   150: astore 4
+    //   152: aload_1
+    //   153: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   156: aload_0
+    //   157: astore 5
+    //   159: aload_2
+    //   160: astore 4
+    //   162: ldc 68
+    //   164: iconst_1
+    //   165: aload_1
+    //   166: iconst_0
+    //   167: anewarray 4	java/lang/Object
+    //   170: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   173: aload_0
+    //   174: ifnull +10 -> 184
+    //   177: aload_0
+    //   178: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   181: goto +3 -> 184
+    //   184: aload_2
+    //   185: ifnull +9 -> 194
+    //   188: aload_2
+    //   189: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   192: iconst_1
+    //   193: ireturn
+    //   194: ldc 68
+    //   196: iconst_1
+    //   197: ldc 157
+    //   199: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   202: iconst_0
+    //   203: ireturn
+    //   204: aload_0
+    //   205: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   208: ldc 68
+    //   210: iconst_1
+    //   211: aload_0
+    //   212: iconst_0
+    //   213: anewarray 4	java/lang/Object
+    //   216: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
     //   219: iconst_0
-    //   220: anewarray 4	java/lang/Object
-    //   223: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   226: aload_1
-    //   227: ifnull +7 -> 234
-    //   230: aload_1
-    //   231: invokevirtual 138	java/io/FileInputStream:close	()V
-    //   234: aload_2
-    //   235: ifnull +9 -> 244
-    //   238: aload_2
-    //   239: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   242: iconst_1
-    //   243: ireturn
-    //   244: ldc 60
-    //   246: iconst_1
-    //   247: ldc 160
-    //   249: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   252: iconst_0
-    //   253: ireturn
-    //   254: astore_0
-    //   255: aload_0
-    //   256: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   259: ldc 60
-    //   261: iconst_1
-    //   262: aload_0
-    //   263: iconst_0
-    //   264: anewarray 4	java/lang/Object
-    //   267: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   270: iconst_0
-    //   271: ireturn
-    //   272: astore_0
-    //   273: aconst_null
-    //   274: astore_2
-    //   275: aload 5
-    //   277: astore_0
-    //   278: aload_0
-    //   279: ifnull +7 -> 286
-    //   282: aload_0
-    //   283: invokevirtual 138	java/io/FileInputStream:close	()V
-    //   286: aload_2
-    //   287: ifnull +9 -> 296
-    //   290: aload_2
-    //   291: invokevirtual 81	java/io/FileOutputStream:close	()V
-    //   294: iconst_1
-    //   295: ireturn
-    //   296: ldc 60
-    //   298: iconst_1
-    //   299: ldc 160
-    //   301: invokestatic 68	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   304: iconst_0
-    //   305: ireturn
-    //   306: astore_0
-    //   307: aload_0
-    //   308: invokevirtual 139	java/io/IOException:printStackTrace	()V
-    //   311: ldc 60
-    //   313: iconst_1
-    //   314: aload_0
-    //   315: iconst_0
-    //   316: anewarray 4	java/lang/Object
-    //   319: invokestatic 142	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   322: iconst_0
-    //   323: ireturn
-    //   324: astore_0
-    //   325: aload 5
-    //   327: astore_0
-    //   328: aload 4
-    //   330: astore_2
-    //   331: goto -53 -> 278
-    //   334: astore_1
-    //   335: goto -57 -> 278
-    //   338: astore_2
-    //   339: aload_1
-    //   340: astore_2
-    //   341: goto -63 -> 278
-    //   344: astore_0
-    //   345: aload 6
-    //   347: astore_1
-    //   348: goto -149 -> 199
-    //   351: astore 4
-    //   353: aload_0
-    //   354: astore_1
-    //   355: aload 4
-    //   357: astore_0
-    //   358: goto -159 -> 199
-    //   361: astore_2
-    //   362: aconst_null
-    //   363: astore_0
-    //   364: aload 4
-    //   366: astore_1
-    //   367: goto -281 -> 86
-    //   370: astore 4
-    //   372: aconst_null
-    //   373: astore_0
-    //   374: aload_2
-    //   375: astore_1
-    //   376: aload 4
-    //   378: astore_2
-    //   379: goto -293 -> 86
+    //   220: ireturn
+    //   221: astore_1
+    //   222: aconst_null
+    //   223: astore_2
+    //   224: aload 7
+    //   226: astore_0
+    //   227: aload_0
+    //   228: astore 5
+    //   230: aload_2
+    //   231: astore 4
+    //   233: aload_1
+    //   234: invokevirtual 158	java/io/FileNotFoundException:printStackTrace	()V
+    //   237: aload_0
+    //   238: astore 5
+    //   240: aload_2
+    //   241: astore 4
+    //   243: ldc 68
+    //   245: iconst_1
+    //   246: aload_1
+    //   247: iconst_0
+    //   248: anewarray 4	java/lang/Object
+    //   251: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   254: aload_0
+    //   255: ifnull +10 -> 265
+    //   258: aload_0
+    //   259: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   262: goto +3 -> 265
+    //   265: aload_2
+    //   266: ifnull +9 -> 275
+    //   269: aload_2
+    //   270: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   273: iconst_1
+    //   274: ireturn
+    //   275: ldc 68
+    //   277: iconst_1
+    //   278: ldc 157
+    //   280: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   283: iconst_0
+    //   284: ireturn
+    //   285: aload_0
+    //   286: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   289: ldc 68
+    //   291: iconst_1
+    //   292: aload_0
+    //   293: iconst_0
+    //   294: anewarray 4	java/lang/Object
+    //   297: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   300: iconst_0
+    //   301: ireturn
+    //   302: aload 5
+    //   304: ifnull +11 -> 315
+    //   307: aload 5
+    //   309: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   312: goto +3 -> 315
+    //   315: aload_2
+    //   316: ifnull +9 -> 325
+    //   319: aload_2
+    //   320: invokevirtual 66	java/io/FileOutputStream:close	()V
+    //   323: iconst_1
+    //   324: ireturn
+    //   325: ldc 68
+    //   327: iconst_1
+    //   328: ldc 157
+    //   330: invokestatic 76	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   333: iconst_0
+    //   334: ireturn
+    //   335: aload_0
+    //   336: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   339: ldc 68
+    //   341: iconst_1
+    //   342: aload_0
+    //   343: iconst_0
+    //   344: anewarray 4	java/lang/Object
+    //   347: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   350: iconst_0
+    //   351: ireturn
+    //   352: astore_0
+    //   353: goto -218 -> 135
+    //   356: astore_0
+    //   357: aload 4
+    //   359: astore_2
+    //   360: goto -58 -> 302
+    //   363: astore_1
+    //   364: goto -257 -> 107
+    //   367: astore_0
+    //   368: goto -164 -> 204
+    //   371: astore_0
+    //   372: goto -87 -> 285
+    //   375: astore_0
+    //   376: goto -41 -> 335
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	382	0	paramArrayOfByte	byte[]
-    //   0	382	1	paramString1	String
-    //   0	382	2	paramString2	String
+    //   0	379	0	paramArrayOfByte	byte[]
+    //   0	379	1	paramString1	String
+    //   0	379	2	paramString2	String
     //   63	10	3	i	int
-    //   10	32	4	str1	String
-    //   79	5	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   203	126	4	str2	String
-    //   351	14	4	localIOException	IOException
-    //   370	7	4	localFileNotFoundException2	java.io.FileNotFoundException
-    //   4	322	5	localObject1	Object
-    //   1	345	6	localObject2	Object
-    //   7	30	7	localObject3	Object
+    //   26	332	4	str	String
+    //   4	304	5	localObject1	Object
+    //   10	134	6	localObject2	Object
+    //   1	224	7	localObject3	Object
+    //   7	30	8	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   52	58	79	java/io/FileNotFoundException
-    //   58	64	79	java/io/FileNotFoundException
-    //   69	76	79	java/io/FileNotFoundException
-    //   123	127	147	java/io/IOException
-    //   131	135	147	java/io/IOException
-    //   137	145	147	java/io/IOException
-    //   105	109	175	java/io/IOException
-    //   113	117	175	java/io/IOException
-    //   165	173	175	java/io/IOException
-    //   12	21	193	java/io/IOException
-    //   230	234	254	java/io/IOException
-    //   238	242	254	java/io/IOException
-    //   244	252	254	java/io/IOException
-    //   12	21	272	finally
-    //   282	286	306	java/io/IOException
-    //   290	294	306	java/io/IOException
-    //   296	304	306	java/io/IOException
-    //   28	36	324	finally
-    //   43	52	324	finally
-    //   205	209	324	finally
-    //   215	226	324	finally
-    //   52	58	334	finally
-    //   58	64	334	finally
-    //   69	76	334	finally
-    //   86	101	338	finally
-    //   28	36	344	java/io/IOException
-    //   43	52	344	java/io/IOException
-    //   52	58	351	java/io/IOException
-    //   58	64	351	java/io/IOException
-    //   69	76	351	java/io/IOException
-    //   12	21	361	java/io/FileNotFoundException
-    //   28	36	370	java/io/FileNotFoundException
-    //   43	52	370	java/io/FileNotFoundException
+    //   79	87	89	java/io/IOException
+    //   52	58	113	java/io/IOException
+    //   58	64	113	java/io/IOException
+    //   69	76	113	java/io/IOException
+    //   52	58	117	java/io/FileNotFoundException
+    //   58	64	117	java/io/FileNotFoundException
+    //   69	76	117	java/io/FileNotFoundException
+    //   28	36	121	java/io/IOException
+    //   43	52	121	java/io/IOException
+    //   28	36	128	java/io/FileNotFoundException
+    //   43	52	128	java/io/FileNotFoundException
+    //   12	21	140	java/io/IOException
+    //   12	21	221	java/io/FileNotFoundException
+    //   12	21	352	finally
+    //   28	36	356	finally
+    //   43	52	356	finally
+    //   152	156	356	finally
+    //   162	173	356	finally
+    //   233	237	356	finally
+    //   243	254	356	finally
+    //   52	58	363	finally
+    //   58	64	363	finally
+    //   69	76	363	finally
+    //   177	181	367	java/io/IOException
+    //   188	192	367	java/io/IOException
+    //   194	202	367	java/io/IOException
+    //   258	262	371	java/io/IOException
+    //   269	273	371	java/io/IOException
+    //   275	283	371	java/io/IOException
+    //   307	312	375	java/io/IOException
+    //   319	323	375	java/io/IOException
+    //   325	333	375	java/io/IOException
+  }
+  
+  /* Error */
+  public static byte[] a(String paramString)
+  {
+    // Byte code:
+    //   0: new 160	java/io/ByteArrayOutputStream
+    //   3: dup
+    //   4: invokespecial 161	java/io/ByteArrayOutputStream:<init>	()V
+    //   7: astore_3
+    //   8: new 33	java/io/FileInputStream
+    //   11: dup
+    //   12: new 24	java/io/File
+    //   15: dup
+    //   16: aload_0
+    //   17: invokespecial 27	java/io/File:<init>	(Ljava/lang/String;)V
+    //   20: invokespecial 134	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   23: astore_2
+    //   24: aload_2
+    //   25: astore_0
+    //   26: sipush 1024
+    //   29: newarray byte
+    //   31: astore 4
+    //   33: aload_2
+    //   34: astore_0
+    //   35: aload_2
+    //   36: aload 4
+    //   38: invokevirtual 135	java/io/FileInputStream:read	([B)I
+    //   41: istore_1
+    //   42: iload_1
+    //   43: iconst_m1
+    //   44: if_icmpeq +16 -> 60
+    //   47: aload_2
+    //   48: astore_0
+    //   49: aload_3
+    //   50: aload 4
+    //   52: iconst_0
+    //   53: iload_1
+    //   54: invokevirtual 162	java/io/ByteArrayOutputStream:write	([BII)V
+    //   57: goto -24 -> 33
+    //   60: aload_2
+    //   61: astore_0
+    //   62: aload_3
+    //   63: invokevirtual 166	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   66: astore_3
+    //   67: aload_2
+    //   68: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   71: aload_3
+    //   72: areturn
+    //   73: astore_0
+    //   74: aload_0
+    //   75: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   78: ldc 68
+    //   80: iconst_1
+    //   81: aload_0
+    //   82: iconst_0
+    //   83: anewarray 4	java/lang/Object
+    //   86: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   89: aload_3
+    //   90: areturn
+    //   91: astore_3
+    //   92: goto +15 -> 107
+    //   95: astore_3
+    //   96: goto +61 -> 157
+    //   99: aconst_null
+    //   100: astore_0
+    //   101: goto +103 -> 204
+    //   104: astore_3
+    //   105: aconst_null
+    //   106: astore_2
+    //   107: aload_2
+    //   108: astore_0
+    //   109: aload_3
+    //   110: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   113: aload_2
+    //   114: astore_0
+    //   115: ldc 68
+    //   117: iconst_1
+    //   118: aload_3
+    //   119: iconst_0
+    //   120: anewarray 4	java/lang/Object
+    //   123: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   126: aload_2
+    //   127: ifnull +25 -> 152
+    //   130: aload_2
+    //   131: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   134: aconst_null
+    //   135: areturn
+    //   136: astore_0
+    //   137: aload_0
+    //   138: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   141: ldc 68
+    //   143: iconst_1
+    //   144: aload_0
+    //   145: iconst_0
+    //   146: anewarray 4	java/lang/Object
+    //   149: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   152: aconst_null
+    //   153: areturn
+    //   154: astore_3
+    //   155: aconst_null
+    //   156: astore_2
+    //   157: aload_2
+    //   158: astore_0
+    //   159: aload_3
+    //   160: invokevirtual 158	java/io/FileNotFoundException:printStackTrace	()V
+    //   163: aload_2
+    //   164: astore_0
+    //   165: ldc 68
+    //   167: iconst_1
+    //   168: aload_3
+    //   169: iconst_0
+    //   170: anewarray 4	java/lang/Object
+    //   173: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   176: aload_2
+    //   177: ifnull +25 -> 202
+    //   180: aload_2
+    //   181: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   184: aconst_null
+    //   185: areturn
+    //   186: astore_0
+    //   187: aload_0
+    //   188: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   191: ldc 68
+    //   193: iconst_1
+    //   194: aload_0
+    //   195: iconst_0
+    //   196: anewarray 4	java/lang/Object
+    //   199: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   202: aconst_null
+    //   203: areturn
+    //   204: aload_0
+    //   205: ifnull +25 -> 230
+    //   208: aload_0
+    //   209: invokevirtual 136	java/io/FileInputStream:close	()V
+    //   212: aconst_null
+    //   213: areturn
+    //   214: astore_0
+    //   215: aload_0
+    //   216: invokevirtual 137	java/io/IOException:printStackTrace	()V
+    //   219: ldc 68
+    //   221: iconst_1
+    //   222: aload_0
+    //   223: iconst_0
+    //   224: anewarray 4	java/lang/Object
+    //   227: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   230: aconst_null
+    //   231: areturn
+    //   232: astore_0
+    //   233: goto -134 -> 99
+    //   236: astore_2
+    //   237: goto -33 -> 204
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	240	0	paramString	String
+    //   41	13	1	i	int
+    //   23	158	2	localFileInputStream	java.io.FileInputStream
+    //   236	1	2	localObject1	Object
+    //   7	83	3	localObject2	Object
+    //   91	1	3	localIOException1	IOException
+    //   95	1	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   104	15	3	localIOException2	IOException
+    //   154	15	3	localFileNotFoundException2	java.io.FileNotFoundException
+    //   31	20	4	arrayOfByte	byte[]
+    // Exception table:
+    //   from	to	target	type
+    //   67	71	73	java/io/IOException
+    //   26	33	91	java/io/IOException
+    //   35	42	91	java/io/IOException
+    //   49	57	91	java/io/IOException
+    //   62	67	91	java/io/IOException
+    //   26	33	95	java/io/FileNotFoundException
+    //   35	42	95	java/io/FileNotFoundException
+    //   49	57	95	java/io/FileNotFoundException
+    //   62	67	95	java/io/FileNotFoundException
+    //   8	24	104	java/io/IOException
+    //   130	134	136	java/io/IOException
+    //   8	24	154	java/io/FileNotFoundException
+    //   180	184	186	java/io/IOException
+    //   208	212	214	java/io/IOException
+    //   8	24	232	finally
+    //   26	33	236	finally
+    //   35	42	236	finally
+    //   49	57	236	finally
+    //   62	67	236	finally
+    //   109	113	236	finally
+    //   115	126	236	finally
+    //   159	163	236	finally
+    //   165	176	236	finally
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.scribble.ScribbleUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -70,7 +70,7 @@ public class UIManagerModule
       paramInt = 0;
       while (paramInt < k)
       {
-        localDomManager.b(((Integer)paramHippyArray.getMap(paramInt).get("id")).intValue());
+        localDomManager.c(((Integer)paramHippyArray.getMap(paramInt).get("id")).intValue());
         paramInt += 1;
       }
     }
@@ -92,47 +92,43 @@ public class UIManagerModule
     {
       int n = paramHippyArray.size();
       int m = 0;
-      if (m < n)
+      while (m < n)
       {
         HippyMap localHippyMap = paramHippyArray.getMap(m);
         String str = (String)localHippyMap.get("optionType");
-        label88:
-        int k;
-        switch (str.hashCode())
+        int k = -1;
+        int i1 = str.hashCode();
+        if (i1 != -296104341)
         {
-        default: 
-          k = -1;
-          label90:
-          switch (k)
+          if (i1 != 1369040158)
           {
+            if ((i1 == 1764416077) && (str.equals("deleteNode"))) {
+              k = 2;
+            }
           }
-          break;
+          else if (str.equals("createNode")) {
+            k = 0;
+          }
         }
-        for (;;)
-        {
-          m += 1;
-          break;
-          if (!str.equals("createNode")) {
-            break label88;
-          }
-          k = 0;
-          break label90;
-          if (!str.equals("updateNode")) {
-            break label88;
-          }
+        else if (str.equals("updateNode")) {
           k = 1;
-          break label90;
-          if (!str.equals("deleteNode")) {
-            break label88;
-          }
-          k = 2;
-          break label90;
-          createNode(paramInt, (HippyArray)localHippyMap.get("param"));
-          continue;
-          updateNode(paramInt, (HippyArray)localHippyMap.get("param"));
-          continue;
-          deleteNode(paramInt, (HippyArray)localHippyMap.get("param"));
         }
+        if (k != 0)
+        {
+          if (k != 1)
+          {
+            if (k == 2) {
+              deleteNode(paramInt, (HippyArray)localHippyMap.get("param"));
+            }
+          }
+          else {
+            updateNode(paramInt, (HippyArray)localHippyMap.get("param"));
+          }
+        }
+        else {
+          createNode(paramInt, (HippyArray)localHippyMap.get("param"));
+        }
+        m += 1;
       }
     }
   }
@@ -140,11 +136,15 @@ public class UIManagerModule
   @HippyMethod(name="measureInWindow")
   public void measureInWindow(int paramInt, Promise paramPromise)
   {
-    DomManager localDomManager = this.mContext.getDomManager();
-    if (localDomManager != null) {
-      localDomManager.a(paramInt, paramPromise);
+    Object localObject = this.mContext.getDomManager();
+    if (localObject != null) {
+      ((DomManager)localObject).a(paramInt, paramPromise);
     }
-    LogUtils.d("UIManagerModule", paramInt + "" + paramPromise);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramPromise);
+    LogUtils.d("UIManagerModule", ((StringBuilder)localObject).toString());
   }
   
   @HippyMethod(name="startBatch")
@@ -176,7 +176,7 @@ public class UIManagerModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.uimanager.UIManagerModule
  * JD-Core Version:    0.7.0.1
  */

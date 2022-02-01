@@ -8,9 +8,10 @@ import android.os.Looper;
 import android.view.View;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
+import com.tencent.qzonehub.api.webview.IQzoneWebViewPluginHelper;
 import cooperation.qzone.util.QZLog;
-import cooperation.qzone.webviewplugin.QzonePersonalizeJsPlugin;
 
 public class BaseTranslucentController
 {
@@ -24,36 +25,36 @@ public class BaseTranslucentController
   
   public BaseTranslucentController(QQBrowserActivity paramQQBrowserActivity)
   {
-    QZLog.i("BaseTranslucentControll", "current controller = " + getClass().getName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("current controller = ");
+    localStringBuilder.append(getClass().getName());
+    QZLog.i("BaseTranslucentControll", localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity = paramQQBrowserActivity;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      try
+    }
+    try
+    {
+      QZLog.i("BaseTranslucentControll", "registerBroadcast");
+      IntentFilter localIntentFilter = new IntentFilter();
+      String[] arrayOfString = a();
+      if (arrayOfString != null)
       {
-        QZLog.i("BaseTranslucentControll", "registerBroadcast");
-        IntentFilter localIntentFilter = new IntentFilter();
-        String[] arrayOfString = a();
-        if (arrayOfString != null)
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
         {
-          int j = arrayOfString.length;
-          int i = 0;
-          while (i < j)
-          {
-            localIntentFilter.addAction(arrayOfString[i]);
-            i += 1;
-          }
+          localIntentFilter.addAction(arrayOfString[i]);
+          i += 1;
         }
-        boolean bool = this.jdField_a_of_type_Boolean;
-        if (bool) {
-          continue;
-        }
+      }
+      boolean bool = this.jdField_a_of_type_Boolean;
+      if (!bool) {
         try
         {
           this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter, "com.tencent.msg.permission.pushnotify", null);
@@ -65,12 +66,12 @@ public class BaseTranslucentController
           QZLog.e("BaseTranslucentControll", "regist receiver error:", localException1);
           return;
         }
-        return;
       }
-      catch (Exception localException2)
-      {
-        QZLog.e("BaseTranslucentControll", "registerBroadcast error", localException2);
-      }
+      return;
+    }
+    catch (Exception localException2)
+    {
+      QZLog.e("BaseTranslucentControll", "registerBroadcast error", localException2);
     }
   }
   
@@ -84,18 +85,14 @@ public class BaseTranslucentController
         try
         {
           this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.unregisterReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver);
-          this.jdField_a_of_type_Boolean = false;
-          return;
         }
         catch (Exception localException1)
         {
-          for (;;)
-          {
-            QZLog.e("BaseTranslucentControll", "unregisterReceiver error ", localException1);
-          }
+          QZLog.e("BaseTranslucentControll", "unregisterReceiver error ", localException1);
         }
+        this.jdField_a_of_type_Boolean = false;
+        return;
       }
-      return;
     }
     catch (Exception localException2)
     {
@@ -115,8 +112,10 @@ public class BaseTranslucentController
   
   protected void a(View paramView)
   {
+    int i;
     if (!this.b)
     {
+      i = 1;
       this.b = true;
       QZLog.i("BaseTranslucentControll", "setAlpha(1)");
       if (paramView != null) {
@@ -132,16 +131,15 @@ public class BaseTranslucentController
           paramView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.getCurrentWebViewFragment().getWebView();
           if (paramView != null)
           {
-            Object localObject = paramView.getTag(2131376352);
+            Object localObject = paramView.getTag(2131375865);
             if ((localObject == null) || (!((Boolean)localObject).booleanValue())) {
-              break label119;
+              break label132;
             }
-            i = 1;
-            paramView.setTag(2131376349, Boolean.TRUE);
+            paramView.setTag(2131375862, Boolean.TRUE);
             if (i != 0)
             {
               QZLog.i("BaseTranslucentControll", "tiantai jsReady true,notify webview.");
-              QzonePersonalizeJsPlugin.notifyWebviewStartAnimation(paramView);
+              ((IQzoneWebViewPluginHelper)QRoute.api(IQzoneWebViewPluginHelper.class)).notifyWebviewStartAnimation(paramView);
               return;
             }
             QZLog.i("BaseTranslucentControll", "tiantai jsReady false,not notify webview.");
@@ -154,14 +152,14 @@ public class BaseTranslucentController
         QZLog.e("BaseTranslucentControll", "notify webview qzRoofStartAnimation fail.", paramView);
       }
       return;
-      label119:
-      int i = 0;
+      label132:
+      i = 0;
     }
   }
   
   protected void a(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131365308);
+    View localView = this.jdField_a_of_type_ComTencentMobileqqActivityQQBrowserActivity.findViewById(2131365183);
     if (localView == null) {
       return;
     }
@@ -209,7 +207,7 @@ public class BaseTranslucentController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.webview.controller.BaseTranslucentController
  * JD-Core Version:    0.7.0.1
  */

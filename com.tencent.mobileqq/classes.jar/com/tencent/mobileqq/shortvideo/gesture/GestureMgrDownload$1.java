@@ -14,57 +14,59 @@ class GestureMgrDownload$1
   
   public void onReceive(Context arg1, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    for (;;)
+    if (paramIntent != null)
     {
-      return;
-      if (!"tencent.video.gesturemgr.notify".equals(paramIntent.getAction())) {
-        continue;
+      if (paramIntent.getAction() == null) {
+        return;
       }
-      int i = paramIntent.getIntExtra("Event_Progress", 0);
-      if ((i == 100) || (i < 0))
+      if ("tencent.video.gesturemgr.notify".equals(paramIntent.getAction()))
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
-        int j = this.a.jdField_a_of_type_Int;
-        this.a.jdField_a_of_type_Int = GestureUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
-        boolean bool;
-        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11))
+        int i = paramIntent.getIntExtra("Event_Progress", 0);
+        if ((i != 100) && (i >= 0))
         {
-          bool = true;
-          if (QLog.isColorLevel()) {
-            QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
+          if (QLog.isDevelopLevel()) {
+            QLog.d("QavGesture", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
           }
           paramIntent = new ArrayList();
+          synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
+          {
+            paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
+            ??? = paramIntent.iterator();
+            if (!???.hasNext()) {
+              return;
+            }
+            ((GestureMgr.GestureStatusListener)???.next()).a(i);
+          }
         }
+        this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo = DownloadInfo.get();
+        int j = this.a.jdField_a_of_type_Int;
+        ??? = this.a;
+        ???.jdField_a_of_type_Int = GestureUtil.a(???.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo);
+        boolean bool;
+        if ((i == 100) && (this.a.jdField_a_of_type_Int != 11)) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("QavGesture", 2, String.format("receive notify, lastStatus[%s], progress[%s], mStatusGesture[%s], data[%s]", new Object[] { Integer.valueOf(j), Integer.valueOf(i), Integer.valueOf(this.a.jdField_a_of_type_Int), this.a.jdField_a_of_type_ComTencentMobileqqShortvideoGestureDownloadInfo }));
+        }
+        paramIntent = new ArrayList();
         synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
         {
           paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
           ??? = paramIntent.iterator();
-          while (???.hasNext()) {
+          if (???.hasNext()) {
             ((GestureMgr.GestureStatusListener)???.next()).a(bool, this.a.b(), this.a.jdField_a_of_type_Int);
           }
-          bool = false;
         }
-      }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("QavGesture", 4, String.format("receive notify, progress[%s]", new Object[] { Integer.valueOf(i) }));
-      }
-      paramIntent = new ArrayList();
-      synchronized (this.a.jdField_a_of_type_JavaUtilArrayList)
-      {
-        paramIntent.addAll(this.a.jdField_a_of_type_JavaUtilArrayList);
-        ??? = paramIntent.iterator();
-        if (!???.hasNext()) {
-          continue;
-        }
-        ((GestureMgr.GestureStatusListener)???.next()).a(i);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.gesture.GestureMgrDownload.1
  * JD-Core Version:    0.7.0.1
  */

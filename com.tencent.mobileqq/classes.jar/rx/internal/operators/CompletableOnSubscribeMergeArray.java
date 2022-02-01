@@ -28,15 +28,12 @@ public final class CompletableOnSubscribeMergeArray
     Completable[] arrayOfCompletable = this.sources;
     int j = arrayOfCompletable.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
-      localCompletable = arrayOfCompletable[i];
-      if (!localCompositeSubscription.isUnsubscribed()) {}
-    }
-    while ((localAtomicInteger.decrementAndGet() != 0) || (!localAtomicBoolean.compareAndSet(false, true)))
-    {
-      Completable localCompletable;
-      return;
+      Completable localCompletable = arrayOfCompletable[i];
+      if (localCompositeSubscription.isUnsubscribed()) {
+        return;
+      }
       if (localCompletable == null)
       {
         localCompositeSubscription.unsubscribe();
@@ -50,14 +47,15 @@ public final class CompletableOnSubscribeMergeArray
       }
       localCompletable.subscribe(new CompletableOnSubscribeMergeArray.1(this, localCompositeSubscription, localAtomicBoolean, paramCompletableSubscriber, localAtomicInteger));
       i += 1;
-      break;
     }
-    paramCompletableSubscriber.onCompleted();
+    if ((localAtomicInteger.decrementAndGet() == 0) && (localAtomicBoolean.compareAndSet(false, true))) {
+      paramCompletableSubscriber.onCompleted();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeMergeArray
  * JD-Core Version:    0.7.0.1
  */

@@ -12,6 +12,6 @@
         </RelativeLayout>
     </FrameLayout>
     <FrameLayout android:id="@id/b9w" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_container" />
-    <com.tencent.mobileqq.nearby.anim.NearbyZanAnimLayout android:id="@id/d53" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_container" />
+    <com.tencent.mobileqq.widget.NearbyZanAnimLayout android:id="@id/d53" android:focusable="false" android:focusableInTouchMode="false" android:clickable="false" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/title_container" />
     <View android:id="@id/f_1" android:background="#77000000" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
 </RelativeLayout>

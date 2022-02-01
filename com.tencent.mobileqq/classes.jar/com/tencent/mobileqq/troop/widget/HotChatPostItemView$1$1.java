@@ -20,24 +20,23 @@ class HotChatPostItemView$1$1
     }
     try
     {
-      Pair localPair1 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.this$0.jdField_a_of_type_ComTencentImageURLDrawable), 1);
-      ThreadManager.getUIHandler().post(new HotChatPostItemView.1.1.1(this, localPair1));
-      return;
+      localPair = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.this$0.jdField_a_of_type_ComTencentImageURLDrawable), 1);
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      for (;;)
-      {
-        HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
-        HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
-        Pair localPair2 = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.this$0.jdField_a_of_type_ComTencentImageURLDrawable), 1);
-      }
+      Pair localPair;
+      label65:
+      break label65;
     }
+    HotChatPostItemView.jdField_a_of_type_JavaUtilQueue.clear();
+    HotChatPostItemView.jdField_a_of_type_JavaUtilHashMap.clear();
+    localPair = NearbyImgLoader.a().a(null, HotChatPostItemView.a(this.this$0.jdField_a_of_type_ComTencentImageURLDrawable), 1);
+    ThreadManager.getUIHandler().post(new HotChatPostItemView.1.1.1(this, localPair));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.HotChatPostItemView.1.1
  * JD-Core Version:    0.7.0.1
  */

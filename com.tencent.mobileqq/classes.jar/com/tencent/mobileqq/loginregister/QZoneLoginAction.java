@@ -24,13 +24,16 @@ public class QZoneLoginAction
       RecordManager.getInstance().setRecentActivityName(paramActivity);
       RecordTracer.a().step();
       long l2 = System.currentTimeMillis();
-      QLog.d("RecordTracer", 1, "fuction time = " + (l2 - l1));
+      paramActivity = new StringBuilder();
+      paramActivity.append("fuction time = ");
+      paramActivity.append(l2 - l1);
+      QLog.d("RecordTracer", 1, paramActivity.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.QZoneLoginAction
  * JD-Core Version:    0.7.0.1
  */

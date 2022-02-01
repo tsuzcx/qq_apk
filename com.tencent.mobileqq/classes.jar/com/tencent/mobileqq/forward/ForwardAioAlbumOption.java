@@ -31,7 +31,7 @@ public class ForwardAioAlbumOption
     while (paramList.hasNext())
     {
       RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
+      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() != 1003) && (localRecentUser.getType() != 10004) && (localRecentUser.getType() != 1008) && (localRecentUser.getType() != 1021) && ((localRecentUser.getType() != 1) || (!a(localRecentUser.uin))) && ((localRecentUser.getType() != 1006) || (a(ForwardAbility.ForwardAbilityType.h))) && (localRecentUser.getType() != 7000) && (localRecentUser.getType() != 6004) && (localRecentUser.getType() != 9501) && ((localRecentUser.getType() != 0) || (!CrmUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localRecentUser.uin, localRecentUser.getType()))) && (((localRecentUser.getType() != 1004) && (localRecentUser.getType() != 1000)) || (this.b))) {
         localArrayList.add(localRecentUser);
       }
     }
@@ -40,21 +40,13 @@ public class ForwardAioAlbumOption
   
   protected void a(Intent paramIntent)
   {
-    ArrayList localArrayList3 = null;
     ArrayList localArrayList4 = this.jdField_a_of_type_AndroidOsBundle.getParcelableArrayList("fileinfo_array");
+    localArrayList3 = null;
     ArrayList localArrayList1 = localArrayList3;
     if (localArrayList4 != null) {}
     try
     {
       localArrayList1 = (ArrayList)localArrayList4;
-      localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("android.intent.extra.STREAM");
-      localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
-      paramIntent.putExtra("dataline_forward_type", 101);
-      paramIntent.putExtra("sendMultiple", true);
-      if (localArrayList1 == null) {
-        paramIntent.putStringArrayListExtra("dataline_forward_pathlist", localArrayList3);
-      }
-      return;
     }
     catch (ClassCastException localClassCastException)
     {
@@ -63,24 +55,28 @@ public class ForwardAioAlbumOption
         ArrayList localArrayList2 = localArrayList3;
       }
     }
+    localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("android.intent.extra.STREAM");
+    localArrayList3 = (ArrayList)this.jdField_a_of_type_AndroidOsBundle.get("PhotoConst.PHOTO_PATHS");
+    paramIntent.putExtra("dataline_forward_type", 101);
+    paramIntent.putExtra("sendMultiple", true);
+    if (localArrayList1 == null) {
+      paramIntent.putStringArrayListExtra("dataline_forward_pathlist", localArrayList3);
+    }
   }
   
   protected void a(Drawable paramDrawable, boolean paramBoolean)
   {
-    URLDrawable localURLDrawable;
     if (paramBoolean)
     {
-      localURLDrawable = (URLDrawable)paramDrawable;
-      if (this.jdField_a_of_type_JavaLangString == null) {
-        break label33;
+      URLDrawable localURLDrawable = (URLDrawable)paramDrawable;
+      if (this.jdField_a_of_type_JavaLangString != null) {
+        URLDrawableHelper.decodeLocalImage(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
+      } else {
+        URLDrawableHelper.decodeLocalImage(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
       }
-      URLDrawableHelper.decodeLocalImage(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), false);
     }
-    while (paramDrawable == null)
-    {
+    if (paramDrawable == null) {
       return;
-      label33:
-      URLDrawableHelper.decodeLocalImage(localURLDrawable, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), true);
     }
     paramDrawable.setBounds(0, 0, jdField_a_of_type_Int, jdField_a_of_type_Int);
   }
@@ -103,7 +99,7 @@ public class ForwardAioAlbumOption
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardAioAlbumOption
  * JD-Core Version:    0.7.0.1
  */

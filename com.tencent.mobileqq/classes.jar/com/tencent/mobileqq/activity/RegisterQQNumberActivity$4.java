@@ -16,21 +16,17 @@ class RegisterQQNumberActivity$4
         RegisterQQNumberActivity.a(this.this$0).dismiss();
         RegisterQQNumberActivity.a(this.this$0).cancel();
       }
-      RegisterQQNumberActivity.a(this.this$0, null);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    RegisterQQNumberActivity.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity.4
  * JD-Core Version:    0.7.0.1
  */

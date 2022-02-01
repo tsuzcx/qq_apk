@@ -17,36 +17,48 @@ public final class jz
   public jz(pn parampn)
   {
     this.a = parampn;
-    on.c(QStorageManager.getStorageRootPath(this.a.ay) + "/tencentmapsdk/rastermap/unmainland");
-    on.c(QStorageManager.getInstance(this.a.ay).getDataDir().getPath() + "/rastermap/taiwan");
+    parampn = new StringBuilder();
+    parampn.append(QStorageManager.getStorageRootPath(this.a.ay));
+    parampn.append("/tencentmapsdk/rastermap/unmainland");
+    on.c(parampn.toString());
+    parampn = new StringBuilder();
+    parampn.append(QStorageManager.getInstance(this.a.ay).getDataDir().getPath());
+    parampn.append("/rastermap/taiwan");
+    on.c(parampn.toString());
   }
   
   public final void a()
   {
-    if (this.c != null) {
-      ((ka)this.c.getTileProvider()).a();
+    Object localObject = this.c;
+    if (localObject != null) {
+      ((ka)((TileOverlayOptions)localObject).getTileProvider()).a();
     }
-    if (this.b != null) {
-      this.b.reload();
+    localObject = this.b;
+    if (localObject != null) {
+      ((TileOverlay)localObject).reload();
     }
   }
   
   public final void b()
   {
-    if ((this.a == null) || (this.a.az == null) || (this.a.az.b == null) || (this.b == null)) {
-      return;
+    Object localObject = this.a;
+    if ((localObject != null) && (((pt)localObject).az != null) && (this.a.az.b != null))
+    {
+      if (this.b == null) {
+        return;
+      }
+      localObject = this.a.az;
+      lw locallw = ((pm)localObject).b;
+      locallw.d(((pm)localObject).e);
+      locallw.e(true);
+      this.b.remove();
+      this.b = null;
     }
-    pm localpm = this.a.az;
-    lw locallw = localpm.b;
-    locallw.d(localpm.e);
-    locallw.e(true);
-    this.b.remove();
-    this.b = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jz
  * JD-Core Version:    0.7.0.1
  */

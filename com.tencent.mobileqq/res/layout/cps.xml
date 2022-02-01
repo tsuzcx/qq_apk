@@ -1,7 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/ogp" android:background="@drawable/dyh" android:paddingLeft="2.0dip" android:paddingRight="7.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView android:id="@id/oh9" android:layout_width="36.0dip" android:layout_height="36.0dip" android:scaleType="centerCrop" />
-    <TextView android:textSize="15.0sp" android:textStyle="bold" android:textColor="@color/al3" android:ellipsize="end" android:id="@id/ohd" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="8.0dip" android:layout_marginRight="7.0dip" android:maxWidth="100.0dip" android:maxLines="1" />
-    <TextView android:textSize="14.0sp" android:textStyle="bold" android:textColor="@color/al3" android:gravity="center_vertical" android:id="@id/ohc" android:background="@drawable/dwi" android:paddingLeft="11.0dip" android:paddingRight="11.0dip" android:visibility="visible" android:layout_width="wrap_content" android:layout_height="27.0dip" android:text="关注" />
-</LinearLayout>
+    <com.tencent.mobileqq.kandian.base.view.widget.KandianUrlImageView android:id="@id/n87" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <LinearLayout android:orientation="horizontal" android:background="@drawable/e9_" android:layout_width="70.5dip" android:layout_height="23.0dip" android:layout_marginTop="8.0dip" android:layout_marginRight="8.0dip" android:layout_alignParentTop="true" android:layout_alignParentRight="true">
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:id="@id/nqp" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="广告" android:layout_weight="1.0" />
+        <LinearLayout android:orientation="horizontal" android:background="#4cffffff" android:layout_width="0.5dip" android:layout_height="fill_parent" android:layout_marginTop="6.0dip" android:layout_marginBottom="6.0dip" />
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:gravity="center" android:id="@id/o8w" android:layout_width="0.0dip" android:layout_height="fill_parent" android:text="3秒" android:maxLines="1" android:layout_weight="1.0" />
+    </LinearLayout>
+    <View android:background="@drawable/e95" android:layout_width="fill_parent" android:layout_height="62.0dip" android:layout_alignParentBottom="true" />
+    <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:layout_width="fill_parent" android:layout_height="33.0dip" android:layout_marginBottom="9.0dip" android:layout_alignParentBottom="true">
+        <com.tencent.mobileqq.kandian.base.view.widget.KanDianUrlRoundCornerImageView android:id="@id/krr" android:layout_width="33.0dip" android:layout_height="33.0dip" android:layout_marginLeft="16.0dip" android:layout_marginRight="8.0dip" />
+        <LinearLayout android:orientation="vertical" android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_marginRight="12.0dip" android:layout_weight="1.0">
+            <TextView android:textSize="14.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/l20" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="肯德基" android:maxLines="1" />
+            <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:ellipsize="end" android:id="@id/fz" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="TF Boys 送你新春金桶旺财祝福，新年新惊喜肯" android:maxLines="1" />
+        </LinearLayout>
+        <TextView android:textSize="11.0sp" android:textColor="#ffffffff" android:gravity="center" android:layout_gravity="center_vertical" android:id="@id/nqr" android:background="@drawable/e96" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="16.0dip" android:text="查看" />
+    </LinearLayout>
+</RelativeLayout>

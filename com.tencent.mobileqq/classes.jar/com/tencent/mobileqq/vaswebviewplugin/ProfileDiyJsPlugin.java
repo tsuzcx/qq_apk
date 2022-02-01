@@ -5,7 +5,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.VipProfileCardDiyActivity;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -24,51 +24,61 @@ public class ProfileDiyJsPlugin
     this.mPluginNameSpace = "diycard";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileDiyJsPlugin", 2, "handleJsRequest, url=" + paramString1 + ", pkgName=" + paramString2 + ", methodName=" + paramString3);
-    }
-    boolean bool1;
-    if ((paramString1 == null) || (!"diycard".equals(paramString2)) || (paramString3 == null)) {
-      bool1 = false;
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      return bool1;
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest, url=");
+      paramJsBridgeListener.append(paramString1);
+      paramJsBridgeListener.append(", pkgName=");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append(", methodName=");
+      paramJsBridgeListener.append(paramString3);
+      QLog.d("ProfileDiyJsPlugin", 2, paramJsBridgeListener.toString());
+    }
+    if ((paramString1 != null) && ("diycard".equals(paramString2)) && (paramString3 != null))
+    {
       try
       {
-        paramString2 = WebViewPlugin.getJsonFromJSBridge(paramString1);
-        bool1 = bool2;
-        if (paramString2 != null)
+        paramString1 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+        if (paramString1 == null) {
+          return true;
+        }
+        if (QLog.isColorLevel())
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("ProfileDiyJsPlugin", 2, "handleJsRequest JSON = " + paramString2.toString());
-          }
-          paramJsBridgeListener = paramString2.optString("callback");
-          bool1 = bool2;
-          if ("edit".equals(paramString3))
+          paramJsBridgeListener = new StringBuilder();
+          paramJsBridgeListener.append("handleJsRequest JSON = ");
+          paramJsBridgeListener.append(paramString1.toString());
+          QLog.d("ProfileDiyJsPlugin", 2, paramJsBridgeListener.toString());
+        }
+        paramJsBridgeListener = paramString1.optString("callback");
+        if ("edit".equals(paramString3))
+        {
+          if (QLog.isColorLevel())
           {
-            if (QLog.isColorLevel()) {
-              QLog.i("ProfileDiyJsPlugin", 2, "edit " + paramString2.toString());
-            }
-            long l = paramString2.optLong("id");
-            paramString1 = paramString2.optString("url");
-            paramString2 = paramString2.optString("defaultText");
-            paramString3 = new Intent(this.mRuntime.a(), VipProfileCardDiyActivity.class);
-            paramString3.putExtra("extra_from", 2);
-            paramString3.putExtra("extra_card_id", l);
-            paramString3.putExtra("extra_card_url", paramString1);
-            paramString3.putExtra("extra_card_text", paramString2);
-            paramString3.putExtra("extra_card_default_text", paramString2);
-            this.mRuntime.a().startActivity(paramString3);
-            bool1 = bool2;
-            if (!TextUtils.isEmpty(paramJsBridgeListener))
-            {
-              super.callJs(paramJsBridgeListener + "({'result':0});");
-              return true;
-            }
+            paramString2 = new StringBuilder();
+            paramString2.append("edit ");
+            paramString2.append(paramString1.toString());
+            QLog.i("ProfileDiyJsPlugin", 2, paramString2.toString());
+          }
+          long l = paramString1.optLong("id");
+          paramString2 = paramString1.optString("url");
+          paramString1 = paramString1.optString("defaultText");
+          paramString3 = new Intent(this.mRuntime.a(), VipProfileCardDiyActivity.class);
+          paramString3.putExtra("extra_from", 2);
+          paramString3.putExtra("extra_card_id", l);
+          paramString3.putExtra("extra_card_url", paramString2);
+          paramString3.putExtra("extra_card_text", paramString1);
+          paramString3.putExtra("extra_card_default_text", paramString1);
+          this.mRuntime.a().startActivity(paramString3);
+          if (!TextUtils.isEmpty(paramJsBridgeListener))
+          {
+            paramString1 = new StringBuilder();
+            paramString1.append(paramJsBridgeListener);
+            paramString1.append("({'result':0});");
+            super.callJs(paramString1.toString());
+            return true;
           }
         }
       }
@@ -76,11 +86,12 @@ public class ProfileDiyJsPlugin
       {
         QLog.e("ProfileDiyJsPlugin", 2, paramJsBridgeListener.getMessage(), paramJsBridgeListener);
       }
+      return true;
     }
-    return true;
+    return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     this.mReqBundle = new Bundle();
     super.onCreate();
@@ -96,16 +107,19 @@ public class ProfileDiyJsPlugin
       if (paramBundle != null) {
         paramBundle.setClassLoader(this.mRuntime.a().getClassLoader());
       }
-      if (QLog.isColorLevel()) {
-        QLog.i("ProfileDiyJsPlugin", 2, "response:" + str);
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("response:");
+        paramBundle.append(str);
+        QLog.i("ProfileDiyJsPlugin", 2, paramBundle.toString());
       }
-      if (str == null) {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ProfileDiyJsPlugin
  * JD-Core Version:    0.7.0.1
  */

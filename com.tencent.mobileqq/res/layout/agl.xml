@@ -4,7 +4,7 @@
     <include layout="@layout/adk" />
     <com.tencent.widget.ScrollView android:orientation="vertical" android:id="@id/root_layout" android:paddingTop="20.0dip" android:layout_width="fill_parent" android:layout_height="0.0dip" android:fillViewport="true" android:layout_weight="1.0">
         <LinearLayout android:orientation="vertical" android:paddingLeft="0.0dip" android:paddingRight="0.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content">
-            <com.tencent.mobileqq.activity.qwallet.widget.YellowTipsLayout android:id="@id/f7b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
+            <com.tencent.mobileqq.qwallet.widget.impl.YellowTipsLayout android:id="@id/f7b" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" />
             <LinearLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="wrap_content">
                 <LinearLayout android:gravity="center_horizontal" android:orientation="vertical" android:id="@id/a55" android:layout_width="fill_parent" android:layout_height="wrap_content">
                     <ImageView android:id="@id/jey" android:layout_width="70.0dip" android:layout_height="70.0dip" android:layout_marginTop="10.0dip" />

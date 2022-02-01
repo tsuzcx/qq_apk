@@ -73,28 +73,33 @@ public class RoundImageView
     }
     try
     {
-      if ((paramDrawable instanceof ColorDrawable)) {}
-      for (Bitmap localBitmap = Bitmap.createBitmap(1, 1, BITMAP_CONFIG);; localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), BITMAP_CONFIG))
-      {
-        Canvas localCanvas = new Canvas(localBitmap);
-        paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
-        paramDrawable.draw(localCanvas);
-        return localBitmap;
+      Bitmap localBitmap;
+      if ((paramDrawable instanceof ColorDrawable)) {
+        localBitmap = Bitmap.createBitmap(1, 1, BITMAP_CONFIG);
+      } else {
+        localBitmap = Bitmap.createBitmap(paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight(), BITMAP_CONFIG);
       }
-      return null;
+      Canvas localCanvas = new Canvas(localBitmap);
+      paramDrawable.setBounds(0, 0, localCanvas.getWidth(), localCanvas.getHeight());
+      paramDrawable.draw(localCanvas);
+      return localBitmap;
     }
     catch (OutOfMemoryError paramDrawable) {}
+    return null;
   }
   
   private void setup()
   {
-    if (!this.mReady) {
+    if (!this.mReady)
+    {
       this.mSetupPending = true;
-    }
-    while (this.mBitmap == null) {
       return;
     }
-    this.mBitmapShader = new BitmapShader(this.mBitmap, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
+    Object localObject = this.mBitmap;
+    if (localObject == null) {
+      return;
+    }
+    this.mBitmapShader = new BitmapShader((Bitmap)localObject, Shader.TileMode.CLAMP, Shader.TileMode.CLAMP);
     this.mBitmapPaint.setAntiAlias(true);
     this.mBitmapPaint.setShader(this.mBitmapShader);
     this.mBorderPaint.setStyle(Paint.Style.STROKE);
@@ -105,7 +110,9 @@ public class RoundImageView
     this.mBitmapWidth = this.mBitmap.getWidth();
     this.mBorderRect.set(0.0F, 0.0F, getWidth(), getHeight());
     this.mBorderRadius = Math.min((this.mBorderRect.height() - this.mBorderWidth) / 2.0F, (this.mBorderRect.width() - this.mBorderWidth) / 2.0F);
-    this.mDrawableRect.set(this.mBorderWidth, this.mBorderWidth, this.mBorderRect.width() - this.mBorderWidth, this.mBorderRect.height() - this.mBorderWidth);
+    localObject = this.mDrawableRect;
+    int i = this.mBorderWidth;
+    ((RectF)localObject).set(i, i, this.mBorderRect.width() - this.mBorderWidth, this.mBorderRect.height() - this.mBorderWidth);
     this.mDrawableRadius = Math.min(this.mDrawableRect.height() / 2.0F, this.mDrawableRect.width() / 2.0F);
     updateShaderMatrix();
     invalidate();
@@ -113,27 +120,29 @@ public class RoundImageView
   
   private void updateShaderMatrix()
   {
-    float f1 = 0.0F;
     this.mShaderMatrix.set(null);
-    float f3;
-    float f2;
-    if (this.mBitmapWidth * this.mDrawableRect.height() > this.mDrawableRect.width() * this.mBitmapHeight)
+    float f1 = this.mBitmapWidth;
+    float f2 = this.mDrawableRect.height();
+    float f4 = this.mDrawableRect.width();
+    float f5 = this.mBitmapHeight;
+    float f3 = 0.0F;
+    if (f1 * f2 > f4 * f5)
     {
-      f3 = this.mDrawableRect.height() / this.mBitmapHeight;
-      f2 = (this.mDrawableRect.width() - this.mBitmapWidth * f3) * 0.5F;
+      f1 = this.mDrawableRect.height() / this.mBitmapHeight;
+      f2 = (this.mDrawableRect.width() - this.mBitmapWidth * f1) * 0.5F;
     }
-    for (;;)
+    else
     {
-      this.mShaderMatrix.setScale(f3, f3);
-      this.mShaderMatrix.postTranslate((int)(f2 + 0.5F) + this.mBorderWidth, (int)(f1 + 0.5F) + this.mBorderWidth);
-      this.mBitmapShader.setLocalMatrix(this.mShaderMatrix);
-      return;
-      f3 = this.mDrawableRect.width() / this.mBitmapWidth;
-      f1 = this.mDrawableRect.height();
-      float f4 = this.mBitmapHeight;
+      f1 = this.mDrawableRect.width() / this.mBitmapWidth;
+      f3 = (this.mDrawableRect.height() - this.mBitmapHeight * f1) * 0.5F;
       f2 = 0.0F;
-      f1 = (f1 - f4 * f3) * 0.5F;
     }
+    this.mShaderMatrix.setScale(f1, f1);
+    Matrix localMatrix = this.mShaderMatrix;
+    int i = (int)(f2 + 0.5F);
+    int j = this.mBorderWidth;
+    localMatrix.postTranslate(i + j, (int)(f3 + 0.5F) + j);
+    this.mBitmapShader.setLocalMatrix(this.mShaderMatrix);
   }
   
   public int getBorderColor()
@@ -151,7 +160,7 @@ public class RoundImageView
     return SCALE_TYPE;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     if (getDrawable() == null) {
       return;
@@ -160,7 +169,7 @@ public class RoundImageView
     paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, this.mBorderRadius, this.mBorderPaint);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     setup();
@@ -208,14 +217,15 @@ public class RoundImageView
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
   {
-    if (paramScaleType != SCALE_TYPE) {
-      throw new IllegalArgumentException(String.format("ScaleType %s not supported.", new Object[] { paramScaleType }));
+    if (paramScaleType == SCALE_TYPE) {
+      return;
     }
+    throw new IllegalArgumentException(String.format("ScaleType %s not supported.", new Object[] { paramScaleType }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mini.ui.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

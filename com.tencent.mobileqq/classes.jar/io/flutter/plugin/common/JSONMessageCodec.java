@@ -13,24 +13,20 @@ public final class JSONMessageCodec
   public Object decodeMessage(ByteBuffer paramByteBuffer)
   {
     if (paramByteBuffer == null) {
-      paramByteBuffer = null;
+      return null;
     }
-    for (;;)
+    try
     {
-      return paramByteBuffer;
-      try
-      {
-        JSONTokener localJSONTokener = new JSONTokener(StringCodec.INSTANCE.decodeMessage(paramByteBuffer));
-        paramByteBuffer = localJSONTokener.nextValue();
-        if (!localJSONTokener.more()) {
-          continue;
-        }
-        throw new IllegalArgumentException("Invalid JSON");
+      paramByteBuffer = new JSONTokener(StringCodec.INSTANCE.decodeMessage(paramByteBuffer));
+      Object localObject = paramByteBuffer.nextValue();
+      if (!paramByteBuffer.more()) {
+        return localObject;
       }
-      catch (JSONException paramByteBuffer)
-      {
-        throw new IllegalArgumentException("Invalid JSON", paramByteBuffer);
-      }
+      throw new IllegalArgumentException("Invalid JSON");
+    }
+    catch (JSONException paramByteBuffer)
+    {
+      throw new IllegalArgumentException("Invalid JSON", paramByteBuffer);
     }
   }
   
@@ -39,16 +35,20 @@ public final class JSONMessageCodec
     if (paramObject == null) {
       return null;
     }
-    paramObject = JSONUtil.wrap(paramObject);
-    if ((paramObject instanceof String)) {
-      return StringCodec.INSTANCE.encodeMessage(JSONObject.quote((String)paramObject));
+    Object localObject = JSONUtil.wrap(paramObject);
+    if ((localObject instanceof String)) {
+      paramObject = StringCodec.INSTANCE;
     }
-    return StringCodec.INSTANCE.encodeMessage(paramObject.toString());
+    for (localObject = JSONObject.quote((String)localObject);; localObject = localObject.toString())
+    {
+      return paramObject.encodeMessage((String)localObject);
+      paramObject = StringCodec.INSTANCE;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.common.JSONMessageCodec
  * JD-Core Version:    0.7.0.1
  */

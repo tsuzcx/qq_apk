@@ -13,21 +13,19 @@ class HotVideoMongoliaRelativeLayout$2
   public void onClick(View paramView)
   {
     HotPicPageView.b = true;
-    if (this.a.a == null) {}
-    for (;;)
+    if (this.a.a != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       if (HotVideoMongoliaRelativeLayout.a(this.a) != null) {
         HotVideoMongoliaRelativeLayout.a(this.a).b(HotVideoMongoliaRelativeLayout.a(this.a));
       }
       QLog.d("HotVideoRelativeLayout", 2, "click round rect send view");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotVideoMongoliaRelativeLayout.2
  * JD-Core Version:    0.7.0.1
  */

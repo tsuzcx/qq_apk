@@ -9,34 +9,35 @@ public class ShaderHelper
   
   public static int compileShader(int paramInt, String paramString)
   {
-    int i = 0;
-    paramInt = GLES20.glCreateShader(paramInt);
-    if (paramInt != 0)
+    int i = GLES20.glCreateShader(paramInt);
+    paramInt = i;
+    if (i != 0)
     {
-      GLES20.glShaderSource(paramInt, paramString);
-      GLES20.glCompileShader(paramInt);
+      GLES20.glShaderSource(i, paramString);
+      GLES20.glCompileShader(i);
       paramString = new int[1];
-      GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
+      GLES20.glGetShaderiv(i, 35713, paramString, 0);
+      paramInt = i;
       if (paramString[0] == 0)
       {
-        LogUtil.e("VideoPlayer|ShaderHelper", "Error compiling shader: " + GLES20.glGetShaderInfoLog(paramInt));
-        GLES20.glDeleteShader(paramInt);
-        paramInt = i;
+        paramString = new StringBuilder();
+        paramString.append("Error compiling shader: ");
+        paramString.append(GLES20.glGetShaderInfoLog(i));
+        LogUtil.e("VideoPlayer|ShaderHelper", paramString.toString());
+        GLES20.glDeleteShader(i);
+        paramInt = 0;
       }
     }
-    for (;;)
-    {
-      if (paramInt == 0) {
-        LogUtil.e("VideoPlayer|ShaderHelper", "Error creating shader.");
-      }
-      return paramInt;
+    if (paramInt == 0) {
+      LogUtil.e("VideoPlayer|ShaderHelper", "Error creating shader.");
     }
+    return paramInt;
   }
   
   public static int createAndLinkProgram(int paramInt1, int paramInt2, String[] paramArrayOfString)
   {
-    int i = 0;
     int j = GLES20.glCreateProgram();
+    int i = j;
     if (j != 0)
     {
       GLES20.glAttachShader(j, paramInt1);
@@ -54,24 +55,30 @@ public class ShaderHelper
       GLES20.glLinkProgram(j);
       paramArrayOfString = new int[1];
       GLES20.glGetProgramiv(j, 35714, paramArrayOfString, 0);
+      i = j;
       if (paramArrayOfString[0] == 0)
       {
-        LogUtil.e("VideoPlayer|ShaderHelper", "Error compiling program: " + GLES20.glGetProgramInfoLog(j));
+        paramArrayOfString = new StringBuilder();
+        paramArrayOfString.append("Error compiling program: ");
+        paramArrayOfString.append(GLES20.glGetProgramInfoLog(j));
+        LogUtil.e("VideoPlayer|ShaderHelper", paramArrayOfString.toString());
         GLES20.glDeleteProgram(j);
+        i = 0;
       }
     }
-    for (paramInt1 = i;; paramInt1 = j)
+    if (i != 0) {
+      return i;
+    }
+    paramArrayOfString = new RuntimeException("Error creating program.");
+    for (;;)
     {
-      if (paramInt1 == 0) {
-        throw new RuntimeException("Error creating program.");
-      }
-      return paramInt1;
+      throw paramArrayOfString;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qq.effect.alphavideo.videoplayer.render.ShaderHelper
  * JD-Core Version:    0.7.0.1
  */

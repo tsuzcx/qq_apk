@@ -17,8 +17,8 @@ class FrameMetricsAggregator$FrameMetricsApi24Impl
 {
   private static final int NANOS_PER_MS = 1000000;
   private static final int NANOS_ROUNDING_VALUE = 500000;
-  private static Handler sHandler = null;
-  private static HandlerThread sHandlerThread = null;
+  private static Handler sHandler;
+  private static HandlerThread sHandlerThread;
   private ArrayList<WeakReference<Activity>> mActivities = new ArrayList();
   Window.OnFrameMetricsAvailableListener mListener = new FrameMetricsAggregator.FrameMetricsApi24Impl.1(this);
   SparseIntArray[] mMetrics = new SparseIntArray[9];
@@ -40,8 +40,9 @@ class FrameMetricsAggregator$FrameMetricsApi24Impl
     int i = 0;
     while (i <= 8)
     {
-      if ((this.mMetrics[i] == null) && ((this.mTrackingFlags & 1 << i) != 0)) {
-        this.mMetrics[i] = new SparseIntArray();
+      SparseIntArray[] arrayOfSparseIntArray = this.mMetrics;
+      if ((arrayOfSparseIntArray[i] == null) && ((this.mTrackingFlags & 1 << i) != 0)) {
+        arrayOfSparseIntArray[i] = new SparseIntArray();
       }
       i += 1;
     }
@@ -105,7 +106,7 @@ class FrameMetricsAggregator$FrameMetricsApi24Impl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.FrameMetricsAggregator.FrameMetricsApi24Impl
  * JD-Core Version:    0.7.0.1
  */

@@ -31,27 +31,23 @@ public class QzoneRecommedPhotoJsPlugin
   
   private void callJsBridge(String paramString, Bundle paramBundle, QzoneRecommedPhotoJsPlugin.OnCallJsBridge paramOnCallJsBridge)
   {
-    Bundle localBundle;
     if ((paramBundle != null) && (paramOnCallJsBridge != null))
     {
-      localBundle = getResultBundle(paramBundle, paramString);
-      if (localBundle != null) {
-        paramBundle = new JSONObject();
-      }
-    }
-    try
-    {
-      paramOnCallJsBridge.setData(paramBundle, localBundle);
-      if (paramString != null) {
-        this.parentPlugin.callJs(paramString, new String[] { paramBundle.toString() });
-      }
-      return;
-    }
-    catch (Throwable paramOnCallJsBridge)
-    {
-      for (;;)
+      Bundle localBundle = getResultBundle(paramBundle, paramString);
+      if (localBundle != null)
       {
-        QLog.e("QzoneRecommedPhotoJsPlugin", 1, "onCallJsBridge.setData error", paramOnCallJsBridge);
+        paramBundle = new JSONObject();
+        try
+        {
+          paramOnCallJsBridge.setData(paramBundle, localBundle);
+        }
+        catch (Throwable paramOnCallJsBridge)
+        {
+          QLog.e("QzoneRecommedPhotoJsPlugin", 1, "onCallJsBridge.setData error", paramOnCallJsBridge);
+        }
+        if (paramString != null) {
+          this.parentPlugin.callJs(paramString, new String[] { paramBundle.toString() });
+        }
       }
     }
   }
@@ -99,12 +95,10 @@ public class QzoneRecommedPhotoJsPlugin
         QLog.w("QzoneRecommedPhotoJsPlugin", 1, "onWebEvent error", paramBundle);
         errorCallBack(paramString);
       }
-    }
-    for (;;)
-    {
-      return null;
+    } else {
       errorCallBack(paramString);
     }
+    return null;
   }
   
   private void handleForwardToRecommedPhoto(String paramString)
@@ -143,8 +137,8 @@ public class QzoneRecommedPhotoJsPlugin
       {
         this.callbackMap.put("cmd.getRecommedPhoto", paramString);
         this.parentPlugin.mRuntime.a().getHandler(QzoneVideoTabJsPlugin.class).post(new QzoneRecommedPhotoJsPlugin.2(this));
+        return;
       }
-      return;
     }
     catch (Exception paramString)
     {
@@ -173,7 +167,10 @@ public class QzoneRecommedPhotoJsPlugin
     }
     catch (Exception paramString1)
     {
-      QLog.w("QzoneRecommedPhotoJsPlugin", 1, "handleRunnable error" + paramString2, paramString1);
+      paramRunnable = new StringBuilder();
+      paramRunnable.append("handleRunnable error");
+      paramRunnable.append(paramString2);
+      QLog.w("QzoneRecommedPhotoJsPlugin", 1, paramRunnable.toString(), paramString1);
     }
   }
   
@@ -267,18 +264,18 @@ public class QzoneRecommedPhotoJsPlugin
   
   public void onWebEvent(String paramString, Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    String str;
-    Object localObject1;
-    do
-    {
+    if (paramBundle == null) {
       return;
-      str = (String)this.callbackMap.get(paramString);
-      if (!"cmd.getRecommedPhoto".equals(paramString)) {
-        break;
-      }
+    }
+    String str = (String)this.callbackMap.get(paramString);
+    Object localObject1;
+    if ("cmd.getRecommedPhoto".equals(paramString))
+    {
       localObject1 = getResultBundle(paramBundle, str);
-    } while (localObject1 == null);
+      if (localObject1 == null) {
+        break label453;
+      }
+    }
     for (;;)
     {
       int i;
@@ -299,34 +296,37 @@ public class QzoneRecommedPhotoJsPlugin
           if (i < paramBundle.size())
           {
             Object localObject2 = new JSONObject();
-            ((JSONObject)localObject2).put("imageData", "data:image/jpg;base64," + getBase64((String)((ArrayList)localObject1).get(i)));
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("data:image/jpg;base64,");
+            localStringBuilder.append(getBase64((String)((ArrayList)localObject1).get(i)));
+            ((JSONObject)localObject2).put("imageData", localStringBuilder.toString());
             ((JSONObject)localObject2).put("type", paramBundle.get(i));
             localJSONArray.put(localObject2);
             if (((Integer)paramBundle.get(i)).intValue() != 3) {
-              break label444;
+              break label454;
             }
             localObject2 = new File((String)((ArrayList)localObject1).get(i));
             if (!((File)localObject2).exists()) {
-              break label444;
+              break label454;
             }
             ((File)localObject2).delete();
-            break label444;
+            break label454;
           }
           paramString.put("thumbInfos", localJSONArray);
           if (str == null) {
-            break;
+            break label453;
           }
           this.parentPlugin.callJs(str, new String[] { paramString.toString() });
           return;
         }
+        errorCallBack(str);
+        return;
       }
       catch (Throwable paramString)
       {
         QLog.w("QzoneRecommedPhotoJsPlugin", 1, "onWebEvent error", paramString);
         return;
       }
-      errorCallBack(str);
-      return;
       if ("cmd.getLocalPhotoSwitcher".equals(paramString))
       {
         callJsBridge(str, paramBundle, new QzoneRecommedPhotoJsPlugin.6(this));
@@ -337,19 +337,19 @@ public class QzoneRecommedPhotoJsPlugin
         callJsBridge(str, paramBundle, new QzoneRecommedPhotoJsPlugin.7(this));
         return;
       }
-      if (!"cmd.getEventVideoAlbumState".equals(paramString)) {
-        break;
+      if ("cmd.getEventVideoAlbumState".equals(paramString)) {
+        callJsBridge(str, paramBundle, new QzoneRecommedPhotoJsPlugin.8(this));
       }
-      callJsBridge(str, paramBundle, new QzoneRecommedPhotoJsPlugin.8(this));
+      label453:
       return;
-      label444:
+      label454:
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneRecommedPhotoJsPlugin
  * JD-Core Version:    0.7.0.1
  */

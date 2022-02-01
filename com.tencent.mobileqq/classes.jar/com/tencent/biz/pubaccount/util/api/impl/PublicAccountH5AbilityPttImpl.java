@@ -9,12 +9,14 @@ import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountH5AbilityPtt;
 import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.ptt.IQQRecorder;
+import com.tencent.mobileqq.ptt.IQQRecorder.OnQQRecorderListener;
+import com.tencent.mobileqq.ptt.IQQRecorderUtils;
 import com.tencent.mobileqq.qqaudio.QQAudioUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.transfile.FileMsg;
 import com.tencent.mobileqq.utils.DialogUtil;
-import com.tencent.mobileqq.utils.QQRecorder;
-import com.tencent.mobileqq.utils.QQRecorder.OnQQRecorderListener;
 import com.tencent.mobileqq.utils.RecordParams.RecorderParam;
 import com.tencent.mobileqq.utils.VoicePlayer;
 import com.tencent.mobileqq.utils.VoicePlayer.VoicePlayerListener;
@@ -28,14 +30,14 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class PublicAccountH5AbilityPttImpl
-  implements IPublicAccountH5AbilityPtt, QQRecorder.OnQQRecorderListener
+  implements IPublicAccountH5AbilityPtt, IQQRecorder.OnQQRecorderListener
 {
-  private static String fileNameForPtt;
-  private static int fileSizeForPtt;
+  private static String fileNameForPtt = "";
+  private static int fileSizeForPtt = 0;
   private static double mDuration = 0.0D;
-  private static String mLocalPathForPttDownload;
-  private static String mLocalPathForPttUpload;
-  private static String md5ForPtt;
+  private static String mLocalPathForPttDownload = "";
+  private static String mLocalPathForPttUpload = "";
+  private static String md5ForPtt = "";
   private static String serverIdForPtt = "";
   private int MAX_TIME = 60000;
   private String TAG = "PublicAccountH5AbilityForPtt";
@@ -44,19 +46,10 @@ public class PublicAccountH5AbilityPttImpl
   private Handler mHandler;
   private VoicePlayer.VoicePlayerListener mListener = new PublicAccountH5AbilityPttImpl.1(this);
   VoicePlayer mPlayer;
-  private QQRecorder mQQRecorder;
+  private IQQRecorder mQQRecorder;
   WebViewPlugin.PluginRuntime mRuntime;
   private FileOutputStream outputStream = null;
   private String uin;
-  
-  static
-  {
-    md5ForPtt = "";
-    fileNameForPtt = "";
-    fileSizeForPtt = 0;
-    mLocalPathForPttUpload = "";
-    mLocalPathForPttDownload = "";
-  }
   
   public PublicAccountH5AbilityPttImpl() {}
   
@@ -100,15 +93,15 @@ public class PublicAccountH5AbilityPttImpl
   public static int getTimeForPtt()
   {
     if (mDuration != 0.0D) {
-      return QQRecorder.a(mDuration);
+      return ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).msToSec(mDuration);
     }
     return 0;
   }
   
   private void showAbnormalRecordDlg()
   {
-    SpannableString localSpannableString = new SpannableString(this.activity.getString(2131698524));
-    DialogUtil.a(this.activity, HardCodeUtil.a(2131708785), localSpannableString, 0, 2131720056, null, null, new PublicAccountH5AbilityPttImpl.4(this)).show();
+    SpannableString localSpannableString = new SpannableString(this.activity.getString(2131698590));
+    DialogUtil.a(this.activity, HardCodeUtil.a(2131708791), localSpannableString, 0, 2131719788, null, null, new PublicAccountH5AbilityPttImpl.4(this)).show();
   }
   
   public void cancelPttRecorderAndPlayTask()
@@ -154,13 +147,12 @@ public class PublicAccountH5AbilityPttImpl
   
   public String getLocalIdForPTT()
   {
-    Object localObject1 = mLocalPathForPttUpload.split("/");
-    Object localObject2 = localObject1[(localObject1.length - 1)];
-    localObject1 = "";
-    if (localObject2.length() >= 21) {
-      localObject1 = localObject2.substring(0, localObject2.length() - 4);
+    Object localObject = mLocalPathForPttUpload.split("/");
+    localObject = localObject[(localObject.length - 1)];
+    if (((String)localObject).length() >= 21) {
+      return ((String)localObject).substring(0, ((String)localObject).length() - 4);
     }
-    return localObject1;
+    return "";
   }
   
   public String getLocalIdForPTTDownLoad(String paramString)
@@ -170,17 +162,21 @@ public class PublicAccountH5AbilityPttImpl
       str = mLocalPathForPttDownload;
     }
     paramString = str.split("/");
-    str = paramString[(paramString.length - 1)];
-    paramString = "";
-    if (str.length() >= 21) {
-      paramString = str.substring(0, str.length() - 4);
+    paramString = paramString[(paramString.length - 1)];
+    if (paramString.length() >= 21) {
+      return paramString.substring(0, paramString.length() - 4);
     }
-    return paramString;
+    return "";
   }
   
   public String getLocalPathFromIdForPtt(String paramString)
   {
-    return AppConstants.SDCARD_PATH + "c2bPTT/" + paramString + ".amr";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("c2bPTT/");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".amr");
+    return localStringBuilder.toString();
   }
   
   public void handleRecorderError(String paramString, RecordParams.RecorderParam paramRecorderParam)
@@ -196,17 +192,22 @@ public class PublicAccountH5AbilityPttImpl
   boolean isFolderExists(String paramString)
   {
     paramString = new File(paramString);
-    return (paramString.exists()) || (paramString.mkdirs());
+    if (!paramString.exists()) {
+      return paramString.mkdirs();
+    }
+    return true;
   }
   
   public boolean isPlaying()
   {
-    return (this.mPlayer != null) && (this.mPlayer.a() == 2);
+    VoicePlayer localVoicePlayer = this.mPlayer;
+    return (localVoicePlayer != null) && (localVoicePlayer.a() == 2);
   }
   
   public boolean isRecorderRecording()
   {
-    return (this.mQQRecorder != null) && (!this.mQQRecorder.b());
+    IQQRecorder localIQQRecorder = this.mQQRecorder;
+    return (localIQQRecorder != null) && (!localIQQRecorder.b());
   }
   
   public int onBeginReceiveData(String paramString, RecordParams.RecorderParam paramRecorderParam)
@@ -222,19 +223,15 @@ public class PublicAccountH5AbilityPttImpl
     {
       paramString.put("retCode", -1);
       paramString.put("msg", "onInitFailed");
-      if (this.mRuntime.a() != null) {
-        this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { paramString.toString() });
-      }
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
-      return;
     }
     catch (JSONException paramRecorderParam)
     {
-      for (;;)
-      {
-        paramRecorderParam.printStackTrace();
-      }
+      paramRecorderParam.printStackTrace();
     }
+    if (this.mRuntime.a() != null) {
+      this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { paramString.toString() });
+    }
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
   }
   
   public void onInitSuccess() {}
@@ -247,62 +244,62 @@ public class PublicAccountH5AbilityPttImpl
     {
       paramString.put("retCode", -1);
       paramString.put("msg", "onRecorderAbnormal");
-      if (this.mRuntime.a() != null) {
-        this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { paramString.toString() });
-      }
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
-      return;
     }
     catch (JSONException paramRecorderParam)
     {
-      for (;;)
-      {
-        paramRecorderParam.printStackTrace();
-      }
+      paramRecorderParam.printStackTrace();
     }
+    if (this.mRuntime.a() != null) {
+      this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { paramString.toString() });
+    }
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
   }
   
   public void onRecorderEnd(String paramString, RecordParams.RecorderParam paramRecorderParam, double paramDouble)
   {
     mDuration = paramDouble;
     paramString = new JSONObject();
-    for (;;)
+    try
     {
-      try
+      paramDouble = mDuration;
+      int i = this.MAX_TIME;
+      if (paramDouble == i)
       {
-        if (mDuration == this.MAX_TIME)
-        {
-          paramString.put("retCode", 0);
-          paramString.put("msg", HardCodeUtil.a(2131708765));
-          paramString.put("localId", getLocalIdForPTT());
-          if (this.mRuntime.a() != null) {
-            this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.voiceRecorderEndCallback, new String[] { paramString.toString() });
-          }
-          ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2B", "0X8005D2B", 0, 0, "1", "", "", "");
-          return;
+        paramString.put("retCode", 0);
+        paramString.put("msg", HardCodeUtil.a(2131708771));
+        paramString.put("localId", getLocalIdForPTT());
+        if (this.mRuntime.a() != null) {
+          this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.voiceRecorderEndCallback, new String[] { paramString.toString() });
         }
-        if (this.mFile.exists())
-        {
-          paramString.put("retCode", 0);
-          paramString.put("msg", HardCodeUtil.a(2131708731) + getLocalIdForPTT());
-          paramString.put("localId", getLocalIdForPTT());
-          ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, 0, "1", "", "", "");
-          if (this.mRuntime.a() == null) {
-            break;
-          }
-          this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStopCallback, new String[] { paramString.toString() });
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
+        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2B", "0X8005D2B", 0, 0, "1", "", "", "");
         return;
       }
-      paramString.put("retCode", -1);
-      paramString.put("msg", HardCodeUtil.a(2131708791));
-      paramString.put("localId", getLocalIdForPTT());
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, -1, "1", "", "", "");
+      if (this.mFile.exists())
+      {
+        paramString.put("retCode", 0);
+        paramRecorderParam = new StringBuilder();
+        paramRecorderParam.append(HardCodeUtil.a(2131708737));
+        paramRecorderParam.append(getLocalIdForPTT());
+        paramString.put("msg", paramRecorderParam.toString());
+        paramString.put("localId", getLocalIdForPTT());
+        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, 0, "1", "", "", "");
+      }
+      else
+      {
+        paramString.put("retCode", -1);
+        paramString.put("msg", HardCodeUtil.a(2131708797));
+        paramString.put("localId", getLocalIdForPTT());
+        ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D2A", "0X8005D2A", 0, -1, "1", "", "", "");
+      }
+      if (this.mRuntime.a() != null)
+      {
+        this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStopCallback, new String[] { paramString.toString() });
+        return;
+      }
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
@@ -313,19 +310,15 @@ public class PublicAccountH5AbilityPttImpl
     {
       paramString1.put("retCode", -1);
       paramString1.put("msg", "onRecorderError");
-      if (this.mRuntime.a() != null) {
-        this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { paramString1.toString() });
-      }
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
-      return;
     }
     catch (JSONException paramRecorderParam)
     {
-      for (;;)
-      {
-        paramRecorderParam.printStackTrace();
-      }
+      paramRecorderParam.printStackTrace();
     }
+    if (this.mRuntime.a() != null) {
+      this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { paramString1.toString() });
+    }
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
   }
   
   public void onRecorderNotReady(String paramString)
@@ -335,48 +328,50 @@ public class PublicAccountH5AbilityPttImpl
   
   public void onRecorderPrepare(String paramString, RecordParams.RecorderParam paramRecorderParam)
   {
-    if (isFolderExists(AppConstants.SDCARD_PATH + "c2bPTT/"))
+    paramRecorderParam = new StringBuilder();
+    paramRecorderParam.append(AppConstants.SDCARD_PATH);
+    paramRecorderParam.append("c2bPTT/");
+    if (isFolderExists(paramRecorderParam.toString()))
     {
       this.mFile = new File(paramString);
       if (this.mFile.exists()) {
         this.mFile.delete();
       }
-      try
-      {
-        this.outputStream = new FileOutputStream(this.mFile);
-        this.outputStream.write("#!AMR\n".getBytes());
-        return;
-      }
-      catch (FileNotFoundException paramString)
-      {
-        this.outputStream = null;
-        paramString.printStackTrace();
-        return;
-      }
-      catch (IOException paramString)
-      {
-        this.outputStream = null;
-        return;
-      }
     }
-    paramString = new JSONObject();
     try
     {
-      paramString.put("retCode", -1);
-      paramString.put("msg", "no sdCard");
-      if (this.mRuntime.a() != null) {
-        this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { paramString.toString() });
-      }
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      this.outputStream = new FileOutputStream(this.mFile);
+      this.outputStream.write("#!AMR\n".getBytes());
       return;
     }
-    catch (JSONException paramRecorderParam)
+    catch (FileNotFoundException paramString)
     {
-      for (;;)
+      this.outputStream = null;
+      paramString.printStackTrace();
+      return;
+      paramString = new JSONObject();
+      try
+      {
+        paramString.put("retCode", -1);
+        paramString.put("msg", "no sdCard");
+      }
+      catch (JSONException paramRecorderParam)
       {
         paramRecorderParam.printStackTrace();
       }
+      if (this.mRuntime.a() == null) {
+        break label180;
+      }
+      this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { paramString.toString() });
+      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, -1, "1", "", "", "");
+      return;
     }
+    catch (IOException paramString)
+    {
+      label93:
+      break label93;
+    }
+    this.outputStream = null;
   }
   
   public void onRecorderSilceEnd(String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, double paramDouble, RecordParams.RecorderParam paramRecorderParam)
@@ -398,52 +393,51 @@ public class PublicAccountH5AbilityPttImpl
     {
       localJSONObject.put("retCode", 0);
       localJSONObject.put("msg", "startRecord");
-      if (this.mRuntime.a() != null) {
-        this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { localJSONObject.toString() });
-      }
-      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, 0, "1", "", "", "");
-      handleRecorderStart();
-      return 0;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    if (this.mRuntime.a() != null) {
+      this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.recordStartCallback, new String[] { localJSONObject.toString() });
+    }
+    ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "0X8005D29", "0X8005D29", 0, 0, "1", "", "", "");
+    handleRecorderStart();
+    return 0;
   }
   
   public void onRecorderVolumeStateChanged(int paramInt) {}
   
   public void pauseVoice()
   {
-    if ((this.mPlayer != null) && (this.mPlayer.a() == 2)) {
-      this.mPlayer.e();
+    VoicePlayer localVoicePlayer = this.mPlayer;
+    if ((localVoicePlayer != null) && (localVoicePlayer.a() == 2)) {
+      this.mPlayer.d();
     }
   }
   
   public void playVoice(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      if ((this.mPlayer == null) || (this.mHandler == null) || ((this.mPlayer != null) && (this.mPlayer.a() != 3)))
-      {
-        this.mHandler = new Handler();
-        this.mPlayer = new VoicePlayer(paramString, this.mHandler);
-      }
-      this.mPlayer.a(this.activity);
+    }
+    VoicePlayer localVoicePlayer = this.mPlayer;
+    if ((localVoicePlayer == null) || (this.mHandler == null) || ((localVoicePlayer != null) && (localVoicePlayer.a() != 3)))
+    {
+      this.mHandler = new Handler();
+      this.mPlayer = new VoicePlayer(paramString, this.mHandler);
+    }
+    this.mPlayer.a(this.activity);
+    this.mPlayer.b();
+    this.mPlayer.a(this.mListener);
+    if (this.mPlayer.a() == 1)
+    {
       this.mPlayer.b();
-      this.mPlayer.a(this.mListener);
-      if (this.mPlayer.a() == 1)
-      {
-        this.mPlayer.b();
-        return;
-      }
-    } while (this.mPlayer.a() != 3);
-    this.mPlayer.d();
+      return;
+    }
+    if (this.mPlayer.a() == 3) {
+      this.mPlayer.c();
+    }
   }
   
   public void setLocalPathForPtt(String paramString)
@@ -459,9 +453,14 @@ public class PublicAccountH5AbilityPttImpl
   public void startRecord()
   {
     if (this.mQQRecorder == null) {
-      this.mQQRecorder = new QQRecorder(this.activity);
+      this.mQQRecorder = ((IQQRecorderUtils)QRoute.api(IQQRecorderUtils.class)).createQQRecorder(this.activity);
     }
-    mLocalPathForPttUpload = AppConstants.SDCARD_PATH + "c2bPTT/" + FileMsg.getTransFileDateTime() + ".amr";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("c2bPTT/");
+    localStringBuilder.append(FileMsg.getTransFileDateTime());
+    localStringBuilder.append(".amr");
+    mLocalPathForPttUpload = localStringBuilder.toString();
     QQAudioUtils.a(this.activity, true);
     this.mQQRecorder.a(this);
     this.mQQRecorder.b(mLocalPathForPttUpload);
@@ -469,9 +468,10 @@ public class PublicAccountH5AbilityPttImpl
   
   public void stopRecord()
   {
-    if (this.mQQRecorder != null)
+    IQQRecorder localIQQRecorder = this.mQQRecorder;
+    if (localIQQRecorder != null)
     {
-      this.mQQRecorder.c();
+      localIQQRecorder.c();
       this.mQQRecorder = null;
     }
     closeOutputStream();
@@ -480,36 +480,36 @@ public class PublicAccountH5AbilityPttImpl
   
   public void stopVoice()
   {
-    JSONObject localJSONObject;
-    if (this.mPlayer != null)
+    Object localObject = this.mPlayer;
+    if (localObject != null)
     {
-      this.mPlayer.f();
+      ((VoicePlayer)localObject).e();
       this.mPlayer = null;
       this.mHandler = null;
-      localJSONObject = new JSONObject();
-    }
-    try
-    {
-      localJSONObject.put("retCode", 0);
-      localJSONObject.put("msg", HardCodeUtil.a(2131708734) + getLocalIdForPTT() + HardCodeUtil.a(2131708802));
-      localJSONObject.put("localId", getLocalIdForPTT());
-      if (this.mRuntime.a() != null) {
-        this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.playEndCallback, new String[] { localJSONObject.toString() });
+      localObject = new JSONObject();
+      try
+      {
+        ((JSONObject)localObject).put("retCode", 0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131708740));
+        localStringBuilder.append(getLocalIdForPTT());
+        localStringBuilder.append(HardCodeUtil.a(2131708808));
+        ((JSONObject)localObject).put("msg", localStringBuilder.toString());
+        ((JSONObject)localObject).put("localId", getLocalIdForPTT());
       }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      catch (JSONException localJSONException)
       {
         localJSONException.printStackTrace();
+      }
+      if (this.mRuntime.a() != null) {
+        this.mRuntime.a().callJs(PublicAccountH5AbilityPluginImpl.playEndCallback, new String[] { ((JSONObject)localObject).toString() });
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPttImpl
  * JD-Core Version:    0.7.0.1
  */

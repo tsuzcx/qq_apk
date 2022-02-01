@@ -12,26 +12,30 @@ class JoinDiscussionActivity$2
 {
   JoinDiscussionActivity$2(JoinDiscussionActivity paramJoinDiscussionActivity) {}
   
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      paramString = ((FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.a.a + "");
+      paramString = (FriendsManager)this.a.app.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.a.a);
+      localStringBuilder.append("");
+      paramString = paramString.e(localStringBuilder.toString());
       if (paramString != null)
       {
         this.a.e = paramString.name;
         JoinDiscussionActivity.a(this.a);
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
     }
-    QLog.d("IphoneTitleBarActivity", 2, "get owner name failed");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.JoinDiscussionActivity.2
  * JD-Core Version:    0.7.0.1
  */

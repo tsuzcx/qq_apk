@@ -12,25 +12,39 @@ public class FileViewerFacade
 {
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, FileManagerEntity paramFileManagerEntity, IFileBrowser paramIFileBrowser)
   {
-    String str1 = paramFileManagerEntity.getFilePath();
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FileViewerFacade", 2, "open[" + str1 + "]");
-    }
-    if ((str1 != null) && (str1.lastIndexOf(".rename") > 0))
+    String str = paramFileManagerEntity.getFilePath();
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      String str3 = str1.replace(".rename", "");
-      String str2 = str3.substring(0, str3.lastIndexOf("."));
-      str3 = str3.substring(str3.lastIndexOf(".")).replaceAll("[0-9]*", "").replace("(", "").replace(")", "");
-      str2 = str2 + str3;
-      if (QLog.isColorLevel()) {
-        QLog.i("<FileAssistant>FileViewerFacade", 2, "file maybe renmaed,realName[" + str2 + "]");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("open[");
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("<FileAssistant>FileViewerFacade", 2, ((StringBuilder)localObject1).toString());
+    }
+    if ((str != null) && (str.lastIndexOf(".rename") > 0))
+    {
+      Object localObject2 = str.replace(".rename", "");
+      localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf("."));
+      localObject2 = ((String)localObject2).substring(((String)localObject2).lastIndexOf(".")).replaceAll("[0-9]*", "").replace("(", "").replace(")", "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append((String)localObject2);
+      localObject1 = localStringBuilder.toString();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("file maybe renmaed,realName[");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("]");
+        QLog.i("<FileAssistant>FileViewerFacade", 2, ((StringBuilder)localObject2).toString());
       }
-      FMDialogUtil.a(paramActivity, paramActivity.getString(2131692787), 2131692774, new FileViewerFacade.1(str2, str1, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIFileBrowser));
+      FMDialogUtil.a(paramActivity, paramActivity.getString(2131692745), 2131692732, new FileViewerFacade.1((String)localObject1, str, paramFileManagerEntity, paramQQAppInterface, paramActivity, paramIFileBrowser));
       return;
     }
     if ((paramFileManagerEntity.nFileType == 5) && ((paramFileManagerEntity.isZipInnerFile) || (paramFileManagerEntity.nOpType == 190)))
     {
-      FMDialogUtil.a(paramActivity, paramActivity.getString(2131692787), 2131692754, new FileViewerFacade.2(paramActivity, paramFileManagerEntity));
+      FMDialogUtil.a(paramActivity, paramActivity.getString(2131692745), 2131692711, new FileViewerFacade.2(paramActivity, paramFileManagerEntity));
       return;
     }
     FileManagerUtil.b(paramActivity, paramFileManagerEntity.getFilePath());
@@ -38,7 +52,7 @@ public class FileViewerFacade
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileviewer.base.FileViewerFacade
  * JD-Core Version:    0.7.0.1
  */

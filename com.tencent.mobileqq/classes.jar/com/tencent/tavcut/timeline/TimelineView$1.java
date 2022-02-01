@@ -11,25 +11,26 @@ class TimelineView$1
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    boolean bool = true;
     if (!TimelineView.access$000(this.this$0)) {
       return;
     }
-    Logger.d("TimelineView", "onScrollStateChanged: newState is " + paramInt);
-    switch (paramInt)
+    paramRecyclerView = new StringBuilder();
+    paramRecyclerView.append("onScrollStateChanged: newState is ");
+    paramRecyclerView.append(paramInt);
+    Logger.d("TimelineView", paramRecyclerView.toString());
+    boolean bool = false;
+    if (paramInt != 0)
     {
-    default: 
-      bool = false;
+      if (paramInt == 1) {
+        this.this$0.hasEditStartAndEnd = true;
+      }
     }
-    for (;;)
+    else
     {
-      TimelineView.access$200(this.this$0, bool);
-      return;
       TimelineView.access$100(this.this$0);
-      continue;
-      this.this$0.hasEditStartAndEnd = true;
-      bool = false;
+      bool = true;
     }
+    TimelineView.access$200(this.this$0, bool);
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
@@ -39,7 +40,7 @@ class TimelineView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.timeline.TimelineView.1
  * JD-Core Version:    0.7.0.1
  */

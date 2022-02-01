@@ -9,26 +9,26 @@ class QQARSession$27
   
   public void run()
   {
-    if ((this.this$0.a != 2) || (!QQARSession.a(this.this$0)))
+    if ((this.this$0.a == 2) && (QQARSession.a(this.this$0)))
     {
-      QLog.d("AREngine_QQARSession", 1, String.format("enterIntoCertainWorkStatus with error status so return", new Object[0]));
+      if (this.this$0.e())
+      {
+        this.this$0.n();
+        QQARSession.c(this.this$0, 0L);
+        QQARSession.a(this.this$0, null);
+        QQARSession.b(this.this$0, null);
+      }
+      this.this$0.a(5L);
+      QQARSession.d(this.this$0);
+      this.this$0.b = false;
       return;
     }
-    if (this.this$0.e())
-    {
-      this.this$0.n();
-      QQARSession.c(this.this$0, 0L);
-      QQARSession.a(this.this$0, null);
-      QQARSession.b(this.this$0, null);
-    }
-    this.this$0.a(5L);
-    QQARSession.d(this.this$0);
-    this.this$0.b = false;
+    QLog.d("AREngine_QQARSession", 1, String.format("enterIntoCertainWorkStatus with error status so return", new Object[0]));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.27
  * JD-Core Version:    0.7.0.1
  */

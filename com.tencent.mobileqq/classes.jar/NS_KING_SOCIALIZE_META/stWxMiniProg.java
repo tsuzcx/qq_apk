@@ -56,39 +56,47 @@ public final class stWxMiniProg
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.webpageUrl != null) {
-      paramJceOutputStream.write(this.webpageUrl, 0);
+    String str = this.webpageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.userName != null) {
-      paramJceOutputStream.write(this.userName, 1);
+    str = this.userName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.path != null) {
-      paramJceOutputStream.write(this.path, 2);
+    str = this.path;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.hdImageDataURL != null) {
-      paramJceOutputStream.write(this.hdImageDataURL, 3);
+    str = this.hdImageDataURL;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.withShareTicket, 4);
     paramJceOutputStream.write(this.miniProgramType, 5);
-    if (this.appid != null) {
-      paramJceOutputStream.write(this.appid, 6);
+    str = this.appid;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.videoUserName != null) {
-      paramJceOutputStream.write(this.videoUserName, 7);
+    str = this.videoUserName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
-    if (this.videoSource != null) {
-      paramJceOutputStream.write(this.videoSource, 8);
+    str = this.videoSource;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.videoCoverWidth, 9);
     paramJceOutputStream.write(this.videoCoverHeight, 10);
-    if (this.appThumbUrl != null) {
-      paramJceOutputStream.write(this.appThumbUrl, 11);
+    str = this.appThumbUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stWxMiniProg
  * JD-Core Version:    0.7.0.1
  */

@@ -1,50 +1,51 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.os.Bundle;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.EqqDetail;
-import com.tencent.mobileqq.mp.mobileqq_mp.GetEqqAccountDetailInfoResponse;
-import com.tencent.mobileqq.mp.mobileqq_mp.RetInfo;
-import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
-import com.tencent.mobileqq.pb.PBUInt32Field;
+import com.tencent.biz.pubaccount.api.IPublicAccountObserver.OnCallback;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.qphone.base.util.QLog;
-import mqq.observer.BusinessObserver;
-import mqq.os.MqqHandler;
 
 class BusinessCmrTmpChatPie$2
-  implements BusinessObserver
+  extends IPublicAccountObserver.OnCallback
 {
   BusinessCmrTmpChatPie$2(BusinessCmrTmpChatPie paramBusinessCmrTmpChatPie) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void onDownPublicAccount()
   {
     if (QLog.isColorLevel()) {
-      QLog.d("BusinessChatPie", 2, "success:" + String.valueOf(paramBoolean));
+      QLog.d("BusinessChatPie", 2, "onDownPublicAccount");
     }
-    mobileqq_mp.GetEqqAccountDetailInfoResponse localGetEqqAccountDetailInfoResponse;
+  }
+  
+  public void onFollowPublicAccount(int paramInt, Object paramObject)
+  {
+    if (paramInt == 0)
+    {
+      paramObject = this.a;
+      paramObject.c(paramObject.a.getIntent());
+    }
+  }
+  
+  public void onUnfollowPublicAccount(int paramInt, Object paramObject)
+  {
+    if (paramInt == 0)
+    {
+      paramObject = this.a;
+      paramObject.c(paramObject.a.getIntent());
+    }
+  }
+  
+  public void onUpdateUserFollowList(int paramInt, boolean paramBoolean)
+  {
     if (paramBoolean)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null) {
-        localGetEqqAccountDetailInfoResponse = new mobileqq_mp.GetEqqAccountDetailInfoResponse();
-      }
+      BusinessCmrTmpChatPie localBusinessCmrTmpChatPie = this.a;
+      localBusinessCmrTmpChatPie.c(localBusinessCmrTmpChatPie.a.getIntent());
     }
-    try
-    {
-      localGetEqqAccountDetailInfoResponse.mergeFrom(paramBundle);
-      if (((mobileqq_mp.RetInfo)localGetEqqAccountDetailInfoResponse.ret_info.get()).ret_code.get() == 0)
-      {
-        paramBundle = new EqqDetail(localGetEqqAccountDetailInfoResponse);
-        ThreadManager.getFileThreadHandler().post(new BusinessCmrTmpChatPie.2.1(this, paramBundle));
-      }
-      return;
-    }
-    catch (InvalidProtocolBufferMicroException paramBundle) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.BusinessCmrTmpChatPie.2
  * JD-Core Version:    0.7.0.1
  */

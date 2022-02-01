@@ -8,6 +8,7 @@ import java.util.HashMap;
 import java.util.concurrent.atomic.AtomicBoolean;
 
 public class HttpMsg
+  extends BaseHttpMsg
 {
   public static final String ACCEPT = "Accept";
   public static final String ACCEPT_ENCODING = "Accept-Encoding";
@@ -60,8 +61,6 @@ public class HttpMsg
   public static final String TYPE_MUL_PARTS = "multipart/form-data";
   public static final String TYPE_TEXT = "text/plain";
   public static final String TYPE_WBXML = "application/vnd.wap.wbxml";
-  public static final String TYPE_WML = "text/vnd.wap.wml";
-  public static final String TYPE_WMLC = "application/vnd.wap.wmlc";
   public static final String TYPE_XHTML = "application/vnd.wap.xhtml+xml";
   public static final String TYPE_XHTML2 = "application/xhtml+xml";
   public static final String USERRANGE = "User-Range";
@@ -135,25 +134,23 @@ public class HttpMsg
   public HttpMsg(String paramString, byte[] paramArrayOfByte, IHttpCommunicatorListener paramIHttpCommunicatorListener, boolean paramBoolean)
   {
     this.connectString = paramString;
-    if (paramString != null)
-    {
+    if (paramString != null) {
       this.realConnectString = paramString.substring(0, paramString.length());
-      this.processor = paramIHttpCommunicatorListener;
-      if (paramArrayOfByte != null) {
-        break label234;
-      }
+    } else {
+      this.realConnectString = null;
+    }
+    this.processor = paramIHttpCommunicatorListener;
+    if (paramArrayOfByte == null)
+    {
       this.sendData = null;
     }
-    for (;;)
+    else
     {
-      this.bVerifyPayment = paramBoolean;
-      return;
-      this.realConnectString = null;
-      break;
-      label234:
       this.sendData = new byte[paramArrayOfByte.length];
-      System.arraycopy(paramArrayOfByte, 0, this.sendData, 0, this.sendData.length);
+      paramString = this.sendData;
+      System.arraycopy(paramArrayOfByte, 0, paramString, 0, paramString.length);
     }
+    this.bVerifyPayment = paramBoolean;
   }
   
   public String getErrorString()
@@ -248,15 +245,18 @@ public class HttpMsg
   
   public boolean permitRetry()
   {
-    if ((this.responsePropertys.containsKey("X-RtFlag")) && ("0".equals(this.responsePropertys.get("X-RtFlag")))) {
+    if ((this.responsePropertys.containsKey("X-RtFlag")) && ("0".equals(this.responsePropertys.get("X-RtFlag"))))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("Q.richmedia.HttpMsg", 2, "permitRetry : X-RtFlag = 0");
       }
-    }
-    while ((this.errCode == 9048) || (this.errCode == 9057) || (this.errCode == 9020) || (this.errCode == 9022) || (this.errCode == 9366) || (this.errCode == 9058)) {
       return false;
     }
-    return true;
+    int i = this.errCode;
+    if ((i != 9048) && (i != 9057) && (i != 9020) && (i != 9022) && (i != 9366)) {
+      return i != 9058;
+    }
+    return false;
   }
   
   public void refresh()
@@ -272,8 +272,9 @@ public class HttpMsg
   {
     this.mIsCancel.set(false);
     this.mIsPreempted.set(false);
-    if (this.hasFinished != null) {
-      this.hasFinished.set(false);
+    AtomicBoolean localAtomicBoolean = this.hasFinished;
+    if (localAtomicBoolean != null) {
+      localAtomicBoolean.set(false);
     }
     this.mConn = null;
   }
@@ -337,10 +338,13 @@ public class HttpMsg
   
   public void setRequestProperty(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
+    if (paramString1 != null)
+    {
+      if (paramString2 == null) {
+        return;
+      }
+      this.requestPropertys.put(paramString1, paramString2);
     }
-    this.requestPropertys.put(paramString1, paramString2);
   }
   
   public void setResponseCode(int paramInt)
@@ -350,10 +354,13 @@ public class HttpMsg
   
   public void setResponseProperty(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
+    if (paramString1 != null)
+    {
+      if (paramString2 == null) {
+        return;
+      }
+      this.responsePropertys.put(paramString1, paramString2);
     }
-    this.responsePropertys.put(paramString1, paramString2);
   }
   
   public void setSendData(byte[] paramArrayOfByte)
@@ -369,7 +376,8 @@ public class HttpMsg
   public void setUrl(String paramString)
   {
     this.connectString = paramString;
-    this.realConnectString = this.connectString.substring(0, this.connectString.length());
+    paramString = this.connectString;
+    this.realConnectString = paramString.substring(0, paramString.length());
   }
   
   public void setViaWhiteShark(boolean paramBoolean)
@@ -379,7 +387,7 @@ public class HttpMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.httputils.HttpMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -26,31 +26,31 @@ public class OnlineStatusObserver
     {
     default: 
       return;
-    case 1: 
-      a(paramBoolean, (Bundle)paramObject);
-      return;
-    case 2: 
-      c(paramBoolean, (Bundle)paramObject);
-      return;
-    case 3: 
-      d(paramBoolean, (Bundle)paramObject);
-      return;
-    case 4: 
-      e(paramBoolean, (Bundle)paramObject);
-      return;
-    case 5: 
-      a(paramBoolean);
+    case 7: 
+      b(paramBoolean, (Bundle)paramObject);
       return;
     case 6: 
       b(paramBoolean);
       return;
+    case 5: 
+      a(paramBoolean);
+      return;
+    case 4: 
+      e(paramBoolean, (Bundle)paramObject);
+      return;
+    case 3: 
+      d(paramBoolean, (Bundle)paramObject);
+      return;
+    case 2: 
+      c(paramBoolean, (Bundle)paramObject);
+      return;
     }
-    b(paramBoolean, (Bundle)paramObject);
+    a(paramBoolean, (Bundle)paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -54,23 +54,32 @@ class SensorAPIJavaScript$9
     String str = SensorAPIJavaScript.jdField_a_of_type_ComTencentBizGameMSFToWebViewConnector.a(String.valueOf(paramInt));
     if (!TextUtils.isEmpty(str))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SensorApi", 2, "send data to appId=" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("send data to appId=");
+        localStringBuilder.append(paramInt);
+        QLog.d("SensorApi", 2, localStringBuilder.toString());
       }
       if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
         this.a.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
       }
       this.a.jdField_a_of_type_AndroidOsHandler.post(new SensorAPIJavaScript.9.1(this, str, paramString));
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("SensorApi", 2, "appId=" + paramInt + "'s callback is empty");
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("appId=");
+      paramString.append(paramInt);
+      paramString.append("'s callback is empty");
+      QLog.d("SensorApi", 2, paramString.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.game.SensorAPIJavaScript.9
  * JD-Core Version:    0.7.0.1
  */

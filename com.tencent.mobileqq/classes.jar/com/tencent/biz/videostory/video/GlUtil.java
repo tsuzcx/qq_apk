@@ -24,38 +24,37 @@ public class GlUtil
   
   public static Bitmap a(int paramInt1, int paramInt2, int paramInt3)
   {
+    Object localObject1 = null;
     try
     {
-      localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
-      Object localObject;
-      localOutOfMemoryError1.printStackTrace();
+      Bitmap localBitmap = Bitmap.createBitmap(paramInt2, paramInt3, Bitmap.Config.ARGB_8888);
+      localObject1 = localBitmap;
+      Object localObject2 = new int[1];
+      localObject1 = localBitmap;
+      GLES20.glGenFramebuffers(1, (int[])localObject2, 0);
+      localObject1 = localBitmap;
+      GLES20.glBindFramebuffer(36160, localObject2[0]);
+      localObject1 = localBitmap;
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+      localObject1 = localBitmap;
+      localObject2 = ByteBuffer.allocateDirect(paramInt2 * paramInt3 * 4);
+      localObject1 = localBitmap;
+      ((ByteBuffer)localObject2).order(ByteOrder.LITTLE_ENDIAN);
+      localObject1 = localBitmap;
+      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject2);
+      localObject1 = localBitmap;
+      ((ByteBuffer)localObject2).rewind();
+      localObject1 = localBitmap;
+      localBitmap.copyPixelsFromBuffer((Buffer)localObject2);
+      localObject1 = localBitmap;
+      GLES20.glBindFramebuffer(36160, 0);
+      return localBitmap;
     }
-    catch (OutOfMemoryError localOutOfMemoryError1)
+    catch (OutOfMemoryError localOutOfMemoryError)
     {
-      try
-      {
-        localObject = new int[1];
-        GLES20.glGenFramebuffers(1, (int[])localObject, 0);
-        GLES20.glBindFramebuffer(36160, localObject[0]);
-        GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-        localObject = ByteBuffer.allocateDirect(paramInt2 * paramInt3 * 4);
-        ((ByteBuffer)localObject).order(ByteOrder.LITTLE_ENDIAN);
-        GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, (Buffer)localObject);
-        ((ByteBuffer)localObject).rewind();
-        localBitmap.copyPixelsFromBuffer((Buffer)localObject);
-        GLES20.glBindFramebuffer(36160, 0);
-        return localBitmap;
-      }
-      catch (OutOfMemoryError localOutOfMemoryError2)
-      {
-        Bitmap localBitmap;
-        break label95;
-      }
-      localOutOfMemoryError1 = localOutOfMemoryError1;
-      localBitmap = null;
+      localOutOfMemoryError.printStackTrace();
     }
-    label95:
-    return localBitmap;
+    return localObject1;
   }
   
   public static void a(int paramInt)
@@ -65,7 +64,7 @@ public class GlUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.video.GlUtil
  * JD-Core Version:    0.7.0.1
  */

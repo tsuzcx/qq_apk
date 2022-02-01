@@ -62,11 +62,6 @@ public class StoryFailCommentCacher
     SLog.d("StoryFailCommentCacher", "update failed comments. size = %d.", new Object[] { Integer.valueOf(jdField_a_of_type_JavaUtilHashSet.size()) });
   }
   
-  public boolean a(String paramString)
-  {
-    return jdField_a_of_type_JavaUtilHashMap.containsKey(paramString);
-  }
-  
   public void b()
   {
     jdField_a_of_type_JavaUtilHashSet.clear();
@@ -76,7 +71,7 @@ public class StoryFailCommentCacher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.StoryFailCommentCacher
  * JD-Core Version:    0.7.0.1
  */

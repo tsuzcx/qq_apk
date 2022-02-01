@@ -30,13 +30,14 @@ public class MathUtils
     CGSize localCGSize = paramCGSize2.clone();
     float f1 = paramCGSize2.width / paramCGSize1.width;
     float f2 = paramCGSize2.height / paramCGSize1.height;
-    if (f2 > f1) {
-      paramCGSize1.width *= f2;
-    }
-    while (f1 <= f2) {
+    if (f2 > f1)
+    {
+      localCGSize.width = (f2 * paramCGSize1.width);
       return localCGSize;
     }
-    localCGSize.height = (f1 * paramCGSize1.height);
+    if (f1 > f2) {
+      localCGSize.height = (f1 * paramCGSize1.height);
+    }
     return localCGSize;
   }
   
@@ -45,13 +46,14 @@ public class MathUtils
     CGSize localCGSize = paramCGSize2.clone();
     float f1 = paramCGSize2.width / paramCGSize1.width;
     float f2 = paramCGSize2.height / paramCGSize1.height;
-    if (f2 > f1) {
-      paramCGSize1.width *= f2;
-    }
-    while (f1 <= f2) {
+    if (f2 > f1)
+    {
+      localCGSize.width = (f2 * paramCGSize1.width);
       return localCGSize;
     }
-    localCGSize.height = (f1 * paramCGSize1.height);
+    if (f1 > f2) {
+      localCGSize.height = (f1 * paramCGSize1.height);
+    }
     return localCGSize;
   }
   
@@ -60,13 +62,14 @@ public class MathUtils
     CGSize localCGSize = paramCGSize2.clone();
     float f1 = paramCGSize2.width / paramCGSize1.width;
     float f2 = paramCGSize2.height / paramCGSize1.height;
-    if (f2 < f1) {
-      localCGSize.width = Math.round(paramCGSize1.width * f2);
-    }
-    while (f1 >= f2) {
+    if (f2 < f1)
+    {
+      localCGSize.width = Math.round(f2 * paramCGSize1.width);
       return localCGSize;
     }
-    localCGSize.height = Math.round(f1 * paramCGSize1.height);
+    if (f1 < f2) {
+      localCGSize.height = Math.round(f1 * paramCGSize1.height);
+    }
     return localCGSize;
   }
   
@@ -82,7 +85,7 @@ public class MathUtils
     float f2 = paramCGRect2.size.height / paramCGRect1.size.height;
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(f1, f2);
-    localMatrix.postTranslate(paramCGRect2.origin.x - f1 * paramCGRect1.origin.x, paramCGRect2.origin.y - f2 * paramCGRect1.origin.y);
+    localMatrix.postTranslate(paramCGRect2.origin.x - paramCGRect1.origin.x * f1, paramCGRect2.origin.y - paramCGRect1.origin.y * f2);
     return localMatrix;
   }
   
@@ -93,7 +96,7 @@ public class MathUtils
     float f2 = paramCGRect2.size.height / paramCGRect1.size.height;
     Matrix localMatrix = new Matrix();
     localMatrix.postScale(f1, f2);
-    localMatrix.postTranslate(paramCGRect2.origin.x - f1 * paramCGRect1.origin.x, paramCGRect2.origin.y - f2 * paramCGRect1.origin.y);
+    localMatrix.postTranslate(paramCGRect2.origin.x - paramCGRect1.origin.x * f1, paramCGRect2.origin.y - paramCGRect1.origin.y * f2);
     return localMatrix;
   }
   
@@ -114,7 +117,7 @@ public class MathUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.utils.MathUtils
  * JD-Core Version:    0.7.0.1
  */

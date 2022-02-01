@@ -27,9 +27,10 @@ class BitmapDecoder$Decoder
   
   private Bitmap a(File paramFile)
   {
+    boolean bool = paramFile.exists();
     Bitmap localBitmap1 = null;
     Bitmap localBitmap2 = null;
-    if (paramFile.exists()) {
+    if (bool) {
       localBitmap2 = localBitmap1;
     }
     try
@@ -50,15 +51,16 @@ class BitmapDecoder$Decoder
   
   protected Bitmap a(Void... paramVarArgs)
   {
+    Object localObject2 = BitmapDecoder.a();
     Object localObject1 = null;
     paramVarArgs = null;
-    boolean bool2 = true;
-    Object localObject2 = BitmapDecoder.a();
     if (localObject2 != null)
     {
       localObject1 = new File((File)localObject2, this.jdField_a_of_type_JavaLangString);
+      boolean bool3 = ((File)localObject1).exists();
+      boolean bool2 = true;
       boolean bool1 = bool2;
-      if (!((File)localObject1).exists())
+      if (!bool3)
       {
         if (!TextUtils.isEmpty(this.b))
         {
@@ -82,36 +84,46 @@ class BitmapDecoder$Decoder
       if (bool1) {
         paramVarArgs = a((File)localObject1);
       }
-      if ((!bool1) || (paramVarArgs == null)) {
-        break label253;
+      if ((bool1) && (paramVarArgs != null))
+      {
+        BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder, 0L);
+        localObject1 = paramVarArgs;
       }
-      BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder, 0L);
-      localObject1 = paramVarArgs;
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.richstatus.img", 2, "decodeBitmap finish with " + localObject1 + ", " + BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder));
-      }
-      return localObject1;
-      label253:
-      localObject1 = paramVarArgs;
-      if (!TextUtils.isEmpty(this.c))
+      else
       {
         localObject1 = paramVarArgs;
-        if (BitmapDecoder.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) == 3L)
+        if (!TextUtils.isEmpty(this.c))
         {
-          BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder, SystemClock.uptimeMillis());
           localObject1 = paramVarArgs;
+          if (BitmapDecoder.b(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) == 3L)
+          {
+            BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder, SystemClock.uptimeMillis());
+            localObject1 = paramVarArgs;
+          }
         }
       }
     }
+    if (QLog.isColorLevel())
+    {
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("decodeBitmap finish with ");
+      paramVarArgs.append(localObject1);
+      paramVarArgs.append(", ");
+      paramVarArgs.append(BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder));
+      QLog.d("Q.richstatus.img", 2, paramVarArgs.toString());
+    }
+    return localObject1;
   }
   
   protected void a(Bitmap paramBitmap)
   {
-    if ((paramBitmap != null) && (GlobalImageCache.a != null)) {
-      GlobalImageCache.a.put(BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) + this.jdField_a_of_type_JavaLangString, paramBitmap, (byte)0);
+    if (paramBitmap != null)
+    {
+      MQLruCache localMQLruCache = GlobalImageCache.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder));
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localMQLruCache.put(localStringBuilder.toString(), paramBitmap, (byte)0);
     }
     BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder).remove(this.jdField_a_of_type_JavaLangString);
     if (BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) != null) {
@@ -122,7 +134,11 @@ class BitmapDecoder$Decoder
   protected void a(Bitmap... paramVarArgs)
   {
     paramVarArgs = paramVarArgs[0];
-    GlobalImageCache.a.put(BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) + this.b, paramVarArgs, (byte)0);
+    MQLruCache localMQLruCache = GlobalImageCache.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder));
+    localStringBuilder.append(this.b);
+    localMQLruCache.put(localStringBuilder.toString(), paramVarArgs, (byte)0);
     if (BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder) != null) {
       BitmapDecoder.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusBitmapDecoder).a(this.jdField_a_of_type_JavaLangString, this.c, paramVarArgs, 0);
     }
@@ -130,7 +146,7 @@ class BitmapDecoder$Decoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.BitmapDecoder.Decoder
  * JD-Core Version:    0.7.0.1
  */

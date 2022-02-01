@@ -11,38 +11,50 @@ public final class DataHolderCreator
 {
   public final DataHolder createFromParcel(Parcel paramParcel)
   {
-    Bundle localBundle = null;
-    int i = 0;
     int m = SafeParcelReader.validateObjectHeader(paramParcel);
-    int j = 0;
-    CursorWindow[] arrayOfCursorWindow = null;
-    String[] arrayOfString = null;
     int k = 0;
-    if ((i <= m) && (paramParcel.dataPosition() < m))
+    String[] arrayOfString = null;
+    Object localObject1 = arrayOfString;
+    Object localObject2 = localObject1;
+    int j = 0;
+    int i = 0;
+    while ((k <= m) && (paramParcel.dataPosition() < m))
     {
+      k += 1;
       int n = SafeParcelReader.readHeader(paramParcel);
-      switch (SafeParcelReader.getFieldId(n))
+      int i1 = SafeParcelReader.getFieldId(n);
+      if (i1 != 1000)
       {
-      default: 
-        SafeParcelReader.skipUnknownField(paramParcel, n);
+        if (i1 != 1)
+        {
+          if (i1 != 2)
+          {
+            if (i1 != 3)
+            {
+              if (i1 != 4) {
+                SafeParcelReader.skipUnknownField(paramParcel, n);
+              } else {
+                localObject2 = SafeParcelReader.createBundle(paramParcel, n);
+              }
+            }
+            else {
+              i = SafeParcelReader.readInt(paramParcel, n);
+            }
+          }
+          else {
+            localObject1 = (CursorWindow[])SafeParcelReader.createTypedArray(paramParcel, n, CursorWindow.CREATOR);
+          }
+        }
+        else {
+          arrayOfString = SafeParcelReader.createStringArray(paramParcel, n);
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
-        arrayOfString = SafeParcelReader.createStringArray(paramParcel, n);
-        continue;
-        arrayOfCursorWindow = (CursorWindow[])SafeParcelReader.createTypedArray(paramParcel, n, CursorWindow.CREATOR);
-        continue;
+      else {
         j = SafeParcelReader.readInt(paramParcel, n);
-        continue;
-        localBundle = SafeParcelReader.createBundle(paramParcel, n);
-        continue;
-        k = SafeParcelReader.readInt(paramParcel, n);
       }
     }
     SafeParcelReader.ensureAtEnd(paramParcel, m);
-    return new DataHolder(k, arrayOfString, arrayOfCursorWindow, j, localBundle);
+    return new DataHolder(j, arrayOfString, (CursorWindow[])localObject1, i, (Bundle)localObject2);
   }
   
   public final DataHolder[] newArray(int paramInt)
@@ -52,7 +64,7 @@ public final class DataHolderCreator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.data.DataHolderCreator
  * JD-Core Version:    0.7.0.1
  */

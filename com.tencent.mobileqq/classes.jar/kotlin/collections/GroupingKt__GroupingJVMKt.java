@@ -26,30 +26,32 @@ class GroupingKt__GroupingJVMKt
     Map localMap = (Map)new LinkedHashMap();
     Iterator localIterator = paramGrouping.sourceIterator();
     Object localObject1;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Object localObject2 = paramGrouping.keyOf(localIterator.next());
       localObject1 = localMap.get(localObject2);
-      if ((localObject1 == null) && (!localMap.containsKey(localObject2))) {}
-      for (int i = 1;; i = 0)
-      {
-        if (i != 0) {
-          localObject1 = new Ref.IntRef();
-        }
-        localObject1 = (Ref.IntRef)localObject1;
-        ((Ref.IntRef)localObject1).element += 1;
-        localMap.put(localObject2, localObject1);
-        break;
+      int i;
+      if ((localObject1 == null) && (!localMap.containsKey(localObject2))) {
+        i = 1;
+      } else {
+        i = 0;
       }
+      if (i != 0) {
+        localObject1 = new Ref.IntRef();
+      }
+      localObject1 = (Ref.IntRef)localObject1;
+      ((Ref.IntRef)localObject1).element += 1;
+      localMap.put(localObject2, localObject1);
     }
     paramGrouping = ((Iterable)localMap.entrySet()).iterator();
     while (paramGrouping.hasNext())
     {
       localObject1 = (Map.Entry)paramGrouping.next();
-      if (localObject1 == null) {
+      if (localObject1 != null) {
+        TypeIntrinsics.asMutableMapEntry(localObject1).setValue(Integer.valueOf(((Ref.IntRef)((Map.Entry)localObject1).getValue()).element));
+      } else {
         throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableMap.MutableEntry<K, R>");
       }
-      TypeIntrinsics.asMutableMapEntry(localObject1).setValue(Integer.valueOf(((Ref.IntRef)((Map.Entry)localObject1).getValue()).element));
     }
     return TypeIntrinsics.asMutableMap(localMap);
   }
@@ -62,20 +64,25 @@ class GroupingKt__GroupingJVMKt
     while (localIterator.hasNext())
     {
       Map.Entry localEntry = (Map.Entry)localIterator.next();
-      if (localEntry == null) {
+      if (localEntry != null) {
+        TypeIntrinsics.asMutableMapEntry(localEntry).setValue(paramFunction1.invoke(localEntry));
+      } else {
         throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableMap.MutableEntry<K, R>");
       }
-      TypeIntrinsics.asMutableMapEntry(localEntry).setValue(paramFunction1.invoke(localEntry));
     }
-    if (paramMap == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableMap<K, R>");
+    if (paramMap != null) {
+      return TypeIntrinsics.asMutableMap(paramMap);
     }
-    return TypeIntrinsics.asMutableMap(paramMap);
+    paramMap = new TypeCastException("null cannot be cast to non-null type kotlin.collections.MutableMap<K, R>");
+    for (;;)
+    {
+      throw paramMap;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.GroupingKt__GroupingJVMKt
  * JD-Core Version:    0.7.0.1
  */

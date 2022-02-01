@@ -30,60 +30,65 @@ public final class LocaleListCompat
   
   static Locale forLanguageTagCompat(String paramString)
   {
-    String[] arrayOfString;
     if (paramString.contains("-"))
     {
-      arrayOfString = paramString.split("-", -1);
-      if (arrayOfString.length > 2) {
-        return new Locale(arrayOfString[0], arrayOfString[1], arrayOfString[2]);
+      localObject = paramString.split("-", -1);
+      if (localObject.length > 2) {
+        return new Locale(localObject[0], localObject[1], localObject[2]);
       }
-      if (arrayOfString.length > 1) {
-        return new Locale(arrayOfString[0], arrayOfString[1]);
+      if (localObject.length > 1) {
+        return new Locale(localObject[0], localObject[1]);
       }
-      if (arrayOfString.length == 1) {
-        return new Locale(arrayOfString[0]);
-      }
-    }
-    else if (paramString.contains("_"))
-    {
-      arrayOfString = paramString.split("_", -1);
-      if (arrayOfString.length > 2) {
-        return new Locale(arrayOfString[0], arrayOfString[1], arrayOfString[2]);
-      }
-      if (arrayOfString.length > 1) {
-        return new Locale(arrayOfString[0], arrayOfString[1]);
-      }
-      if (arrayOfString.length == 1) {
-        return new Locale(arrayOfString[0]);
+      if (localObject.length == 1) {
+        return new Locale(localObject[0]);
       }
     }
     else
     {
-      return new Locale(paramString);
+      if (!paramString.contains("_")) {
+        break label194;
+      }
+      localObject = paramString.split("_", -1);
+      if (localObject.length > 2) {
+        return new Locale(localObject[0], localObject[1], localObject[2]);
+      }
+      if (localObject.length > 1) {
+        return new Locale(localObject[0], localObject[1]);
+      }
+      if (localObject.length == 1) {
+        return new Locale(localObject[0]);
+      }
     }
-    throw new IllegalArgumentException("Can not parse language tag: [" + paramString + "]");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Can not parse language tag: [");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append("]");
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+    label194:
+    return new Locale(paramString);
   }
   
   @NonNull
   public static LocaleListCompat forLanguageTags(@Nullable String paramString)
   {
-    if ((paramString == null) || (paramString.isEmpty())) {
-      return getEmptyLocaleList();
-    }
-    String[] arrayOfString = paramString.split(",", -1);
-    Locale[] arrayOfLocale = new Locale[arrayOfString.length];
-    int i = 0;
-    if (i < arrayOfLocale.length)
+    if ((paramString != null) && (!paramString.isEmpty()))
     {
-      if (Build.VERSION.SDK_INT >= 21) {}
-      for (paramString = Locale.forLanguageTag(arrayOfString[i]);; paramString = forLanguageTagCompat(arrayOfString[i]))
+      String[] arrayOfString = paramString.split(",", -1);
+      Locale[] arrayOfLocale = new Locale[arrayOfString.length];
+      int i = 0;
+      while (i < arrayOfLocale.length)
       {
+        if (Build.VERSION.SDK_INT >= 21) {
+          paramString = Locale.forLanguageTag(arrayOfString[i]);
+        } else {
+          paramString = forLanguageTagCompat(arrayOfString[i]);
+        }
         arrayOfLocale[i] = paramString;
         i += 1;
-        break;
       }
+      return create(arrayOfLocale);
     }
-    return create(arrayOfLocale);
+    return getEmptyLocaleList();
   }
   
   @NonNull
@@ -183,7 +188,7 @@ public final class LocaleListCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.os.LocaleListCompat
  * JD-Core Version:    0.7.0.1
  */

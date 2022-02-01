@@ -9,19 +9,24 @@ class OperatorBufferWithSize$BufferExact$1
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= required but it was " + paramLong);
-    }
-    if (paramLong != 0L)
+    if (paramLong >= 0L)
     {
-      paramLong = BackpressureUtils.multiplyCap(paramLong, this.this$0.count);
-      OperatorBufferWithSize.BufferExact.access$000(this.this$0, paramLong);
+      if (paramLong != 0L)
+      {
+        paramLong = BackpressureUtils.multiplyCap(paramLong, this.this$0.count);
+        OperatorBufferWithSize.BufferExact.access$000(this.this$0, paramLong);
+      }
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("n >= required but it was ");
+    localStringBuilder.append(paramLong);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorBufferWithSize.BufferExact.1
  * JD-Core Version:    0.7.0.1
  */

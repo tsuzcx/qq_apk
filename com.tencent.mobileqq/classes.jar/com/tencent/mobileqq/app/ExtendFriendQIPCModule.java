@@ -2,9 +2,9 @@ package com.tencent.mobileqq.app;
 
 import android.os.Bundle;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.extendfriend.ExtendFriendManager;
-import com.tencent.mobileqq.extendfriend.network.ExtendFriendHandler;
 import com.tencent.mobileqq.qipc.QIPCModule;
+import com.tencent.mobileqq.qqexpand.manager.IExpandManager;
+import com.tencent.mobileqq.qqexpand.network.IExpandHandler;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 
@@ -20,15 +20,16 @@ public class ExtendFriendQIPCModule
   
   public static ExtendFriendQIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new ExtendFriendQIPCModule("ExtendFriendQIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new ExtendFriendQIPCModule("ExtendFriendQIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
@@ -42,62 +43,73 @@ public class ExtendFriendQIPCModule
     if ("notifyCampusFriendCertificateResult".equals(paramString))
     {
       bool = paramBundle.getBoolean("key_result");
-      if (QLog.isColorLevel()) {
-        QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_CAMPUS_FRIEND_CERTIFICATE_RESULT ,result = " + bool);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("onCall ACTION_NOTIFY_CAMPUS_FRIEND_CERTIFICATE_RESULT ,result = ");
+        paramString.append(bool);
+        QLog.d("ExtendFriendQIPCModule", 2, paramString.toString());
       }
-      paramString = (ExtendFriendManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      paramString = (IExpandManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
       if (paramString != null)
       {
-        if (!bool) {
-          break label133;
+        if (bool) {
+          paramInt = 2;
+        } else {
+          paramInt = 3;
         }
-        paramInt = 2;
         paramString.a(paramInt, 1);
-        ((ExtendFriendHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
+        ((IExpandHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
+        return null;
       }
     }
-    for (;;)
+    else if ("notifyUploadSutudentIDResult".equals(paramString))
     {
-      return null;
-      label133:
-      paramInt = 3;
-      break;
-      if ("notifyUploadSutudentIDResult".equals(paramString))
+      bool = paramBundle.getBoolean("key_result");
+      paramString = (IExpandManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      if (bool)
       {
-        bool = paramBundle.getBoolean("key_result");
-        paramString = (ExtendFriendManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-        if (bool)
-        {
-          paramString.a(1, 2);
-          ((ExtendFriendHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT ,result = " + bool);
-        }
+        paramString.a(1, 2);
+        ((IExpandHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(20, true, new Object[] { Integer.valueOf(2) });
       }
-      else if ("notifyUpdateSchoolInfo".equals(paramString))
+      if (QLog.isColorLevel())
       {
-        paramString = paramBundle.getString("name", "");
-        paramInt = paramBundle.getInt("category", 0);
-        String str1 = paramBundle.getString("schoolid", "");
-        int i = paramBundle.getInt("idx", 0);
-        ExtendFriendManager localExtendFriendManager = (ExtendFriendManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
-        String str2 = localExtendFriendManager.i();
-        if (QLog.isColorLevel()) {
-          QLog.d("ExtendFriendQIPCModule", 2, "onCall ACTION_NOTIFY_SCHOOL_INFO_UPDATE ，schoolName = " + paramString + "，oldSchoolName = " + str2);
-        }
-        if (!paramString.equals(str2)) {
-          localExtendFriendManager.a(0, -1);
-        }
-        localExtendFriendManager.a(i, paramString, str1, paramInt);
-        ((ExtendFriendHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(22, true, paramBundle);
+        paramString = new StringBuilder();
+        paramString.append("onCall ACTION_NOTIFY_STUDENTID_UPLOAD_RESULT ,result = ");
+        paramString.append(bool);
+        QLog.d("ExtendFriendQIPCModule", 2, paramString.toString());
+        return null;
       }
     }
+    else if ("notifyUpdateSchoolInfo".equals(paramString))
+    {
+      paramString = paramBundle.getString("name", "");
+      paramInt = paramBundle.getInt("category", 0);
+      String str1 = paramBundle.getString("schoolid", "");
+      int i = paramBundle.getInt("idx", 0);
+      IExpandManager localIExpandManager = (IExpandManager)((QQAppInterface)localObject).getManager(QQManagerFactory.EXTEND_FRIEND_MANAGER);
+      String str2 = localIExpandManager.j();
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onCall ACTION_NOTIFY_SCHOOL_INFO_UPDATE ，schoolName = ");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("，oldSchoolName = ");
+        localStringBuilder.append(str2);
+        QLog.d("ExtendFriendQIPCModule", 2, localStringBuilder.toString());
+      }
+      if (!paramString.equals(str2)) {
+        localIExpandManager.a(0, -1);
+      }
+      localIExpandManager.a(i, paramString, str1, paramInt);
+      ((IExpandHandler)((QQAppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.EXTEND_FRIEND_HANDLER)).notifyUI(22, true, paramBundle);
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ExtendFriendQIPCModule
  * JD-Core Version:    0.7.0.1
  */

@@ -26,26 +26,21 @@ public final class HttpDate
   
   public static Date parse(String paramString)
   {
-    int i = 0;
-    Object localObject;
     if (paramString.length() == 0) {
-      localObject = null;
+      return null;
     }
-    ParsePosition localParsePosition;
-    do
-    {
+    ParsePosition localParsePosition = new ParsePosition(0);
+    Object localObject = ((DateFormat)STANDARD_DATE_FORMAT.get()).parse(paramString, localParsePosition);
+    if (localParsePosition.getIndex() == paramString.length()) {
       return localObject;
-      localParsePosition = new ParsePosition(0);
-      localObject = ((DateFormat)STANDARD_DATE_FORMAT.get()).parse(paramString, localParsePosition);
-    } while (localParsePosition.getIndex() == paramString.length());
-    for (;;)
+    }
+    int i;
+    synchronized (BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS)
     {
-      synchronized (BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS)
+      int j = BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS.length;
+      i = 0;
+      if (i < j)
       {
-        int j = BROWSER_COMPATIBLE_DATE_FORMAT_STRINGS.length;
-        if (i >= j) {
-          break;
-        }
         DateFormat localDateFormat = BROWSER_COMPATIBLE_DATE_FORMATS[i];
         localObject = localDateFormat;
         if (localDateFormat == null)
@@ -60,14 +55,16 @@ public final class HttpDate
           return localObject;
         }
       }
-      i += 1;
+      else
+      {
+        return null;
+      }
     }
-    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http.HttpDate
  * JD-Core Version:    0.7.0.1
  */

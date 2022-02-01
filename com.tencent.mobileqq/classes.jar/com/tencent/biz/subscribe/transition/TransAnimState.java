@@ -15,23 +15,29 @@ public class TransAnimState
   public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    if (this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimStateListener != null) {}
-    switch (paramInt)
+    ITransAnimStateListener localITransAnimStateListener = this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimStateListener;
+    if (localITransAnimStateListener != null)
     {
-    case 0: 
-    default: 
-      return;
-    case -1: 
-      this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimStateListener.n();
-      return;
-    case 1: 
-      this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimStateListener.l();
-      return;
-    case 2: 
-      this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimStateListener.k();
-      return;
+      if (paramInt != -1)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3) {
+              return;
+            }
+            localITransAnimStateListener.m();
+            return;
+          }
+          localITransAnimStateListener.k();
+          return;
+        }
+        localITransAnimStateListener.l();
+        return;
+      }
+      localITransAnimStateListener.n();
     }
-    this.jdField_a_of_type_ComTencentBizSubscribeTransitionInterITransAnimStateListener.m();
   }
   
   public void a(ITransAnimStateListener paramITransAnimStateListener)
@@ -52,7 +58,7 @@ public class TransAnimState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.transition.TransAnimState
  * JD-Core Version:    0.7.0.1
  */

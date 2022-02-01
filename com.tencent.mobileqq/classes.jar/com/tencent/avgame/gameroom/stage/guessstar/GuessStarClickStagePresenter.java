@@ -16,10 +16,10 @@ import com.tencent.avgame.gamelogic.data.TopicBase;
 import com.tencent.avgame.gameroom.IGameRoomPresenter;
 import com.tencent.avgame.gameroom.stage.IGameStagePresenter;
 import com.tencent.avgame.gameroom.stage.IStagePresenter;
-import com.tencent.avgame.qav.AVGameBusinessCtrl;
-import com.tencent.avgame.qav.AVGameMediaPlayerCtrl;
-import com.tencent.avgame.qav.AVGameMediaPlayerCtrl.PushDecodeMsg;
-import com.tencent.avgame.video.VideoRouter;
+import com.tencent.avgame.qav.IAVGameBusinessCtrl;
+import com.tencent.avgame.qav.IAVGameMediaPlayerCtrl;
+import com.tencent.avgame.qav.IAVGameMediaPlayerCtrl.PushDecodeMsg;
+import com.tencent.avgame.video.api.IVideoRouter;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -30,7 +30,7 @@ public class GuessStarClickStagePresenter
   Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   IStagePresenter jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
   GuessStarClickStageView jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView;
-  AVGameMediaPlayerCtrl.PushDecodeMsg jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$PushDecodeMsg;
+  IAVGameMediaPlayerCtrl.PushDecodeMsg jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl$PushDecodeMsg;
   boolean jdField_a_of_type_Boolean = false;
   
   public GuessStarClickStagePresenter(GuessStarClickStageView paramGuessStarClickStageView)
@@ -38,57 +38,59 @@ public class GuessStarClickStagePresenter
     this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView = paramGuessStarClickStageView;
   }
   
-  private void a(AVGameMediaPlayerCtrl.PushDecodeMsg paramPushDecodeMsg, boolean paramBoolean)
+  private void a(IAVGameMediaPlayerCtrl.PushDecodeMsg paramPushDecodeMsg, boolean paramBoolean)
   {
-    AVGameMediaPlayerCtrl localAVGameMediaPlayerCtrl2 = AVGameBusinessCtrl.b().a();
+    if (IAVGameBusinessCtrl.f()) {
+      return;
+    }
+    IAVGameMediaPlayerCtrl localIAVGameMediaPlayerCtrl2 = IAVGameBusinessCtrl.a().a();
     int i;
-    AVGameMediaPlayerCtrl localAVGameMediaPlayerCtrl1;
-    if ((GameEngine.a().f()) && (!GameEngine.a().g()))
-    {
+    if ((GameEngine.a().f()) && (!GameEngine.a().g())) {
       i = 1;
-      localAVGameMediaPlayerCtrl1 = localAVGameMediaPlayerCtrl2;
-      if (localAVGameMediaPlayerCtrl2 == null)
+    } else {
+      i = 0;
+    }
+    IAVGameMediaPlayerCtrl localIAVGameMediaPlayerCtrl1 = localIAVGameMediaPlayerCtrl2;
+    if (localIAVGameMediaPlayerCtrl2 == null)
+    {
+      localIAVGameMediaPlayerCtrl1 = localIAVGameMediaPlayerCtrl2;
+      if (i != 0) {
+        localIAVGameMediaPlayerCtrl1 = ((IVideoRouter)GameEngine.a().a(SurvivalAssistManager.b)).getAVGameMediaPlayerCtrl();
+      }
+    }
+    if (localIAVGameMediaPlayerCtrl1 != null)
+    {
+      if (paramPushDecodeMsg == null) {
+        return;
+      }
+      if (paramBoolean)
       {
-        localAVGameMediaPlayerCtrl1 = localAVGameMediaPlayerCtrl2;
-        if (i != 0) {
-          localAVGameMediaPlayerCtrl1 = ((VideoRouter)GameEngine.a().a(SurvivalAssistManager.b)).a();
+        localIAVGameMediaPlayerCtrl1.a(paramPushDecodeMsg);
+        if (QLog.isColorLevel()) {
+          QLog.i("GuessStarClickStagePresenter", 2, "changeVideoEndListener run ,registerPushDecideMsgListener");
         }
       }
-      if ((localAVGameMediaPlayerCtrl1 != null) && (paramPushDecodeMsg != null)) {
-        break label77;
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i("GuessStarClickStagePresenter", 2, "changeVideoEndListener run ,unRegisterPushDecideMsgListener");
+        }
+        localIAVGameMediaPlayerCtrl1.b(paramPushDecodeMsg);
       }
     }
-    label77:
-    do
-    {
-      return;
-      i = 0;
-      break;
-      if (!paramBoolean) {
-        break label102;
-      }
-      localAVGameMediaPlayerCtrl1.a(paramPushDecodeMsg);
-    } while (!QLog.isColorLevel());
-    QLog.i("GuessStarClickStagePresenter", 2, "changeVideoEndListener run ,registerPushDecideMsgListener");
-    return;
-    label102:
-    if (QLog.isColorLevel()) {
-      QLog.i("GuessStarClickStagePresenter", 2, "changeVideoEndListener run ,unRegisterPushDecideMsgListener");
-    }
-    localAVGameMediaPlayerCtrl1.b(paramPushDecodeMsg);
   }
   
   private void b(boolean paramBoolean)
   {
-    a(this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$PushDecodeMsg, paramBoolean);
+    a(this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl$PushDecodeMsg, paramBoolean);
     if (!paramBoolean) {
-      this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$PushDecodeMsg = null;
+      this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl$PushDecodeMsg = null;
     }
   }
   
   private void g(EngineData paramEngineData)
   {
-    this.jdField_a_of_type_ComTencentAvgameQavAVGameMediaPlayerCtrl$PushDecodeMsg = new GuessStarClickStagePresenter.2(this, paramEngineData);
+    this.jdField_a_of_type_ComTencentAvgameQavIAVGameMediaPlayerCtrl$PushDecodeMsg = new GuessStarClickStagePresenter.2(this, paramEngineData);
   }
   
   public IStagePresenter a()
@@ -102,23 +104,24 @@ public class GuessStarClickStagePresenter
     if (paramContext == null)
     {
       QLog.d("GuessStarClickStagePresenter", 1, "getGamePrepareBottomTip null gameItem");
-      paramEngineData = "";
+      return "";
     }
-    do
+    paramEngineData = paramContext.n;
+    paramContext = paramEngineData;
+    if (!TextUtils.isEmpty(paramEngineData))
     {
-      return paramEngineData;
-      paramEngineData = paramContext.n;
       paramContext = paramEngineData;
-      if (!TextUtils.isEmpty(paramEngineData))
-      {
-        paramContext = paramEngineData;
-        if (paramEngineData.contains("\\n")) {
-          paramContext = paramEngineData.replace("\\n", "\n");
-        }
+      if (paramEngineData.contains("\\n")) {
+        paramContext = paramEngineData.replace("\\n", "\n");
       }
-      paramEngineData = paramContext;
-    } while (!QLog.isColorLevel());
-    QLog.d("GuessStarClickStagePresenter", 2, "getGamePrepareBottomTip result = " + paramContext);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramEngineData = new StringBuilder();
+      paramEngineData.append("getGamePrepareBottomTip result = ");
+      paramEngineData.append(paramContext);
+      QLog.d("GuessStarClickStagePresenter", 2, paramEngineData.toString());
+    }
     return paramContext;
   }
   
@@ -137,7 +140,7 @@ public class GuessStarClickStagePresenter
       return "";
     }
     if ((localEngineData.f()) && (localEngineData.p() == 0)) {
-      return paramContext.getResources().getString(2131690415);
+      return paramContext.getResources().getString(2131690339);
     }
     return "";
   }
@@ -188,10 +191,20 @@ public class GuessStarClickStagePresenter
     a(paramEngineData.a());
     this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.b(false);
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().e(false);
-    String str = paramEngineData.e() + 1 + "/" + paramEngineData.f();
-    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.setTitleRight(str);
-    if (QLog.isColorLevel()) {
-      QLog.i("GuessStarClickStagePresenter", 2, "onRealStartGame topicDuration = " + paramEngineData.a().f() + ",statusPassedTime = " + paramEngineData.a().d());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramEngineData.e() + 1);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramEngineData.f());
+    localObject = ((StringBuilder)localObject).toString();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.setTitleRight((String)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onRealStartGame topicDuration = ");
+      ((StringBuilder)localObject).append(paramEngineData.a().f());
+      ((StringBuilder)localObject).append(",statusPassedTime = ");
+      ((StringBuilder)localObject).append(paramEngineData.a().d());
+      QLog.i("GuessStarClickStagePresenter", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().k(paramEngineData);
   }
@@ -207,24 +220,16 @@ public class GuessStarClickStagePresenter
       if (QLog.isColorLevel()) {
         QLog.i("GuessStarClickStagePresenter", 2, "onSwitchTopic restore");
       }
-      if (paramEngineData.a().d() > paramEngineData.a().f())
-      {
+      if (paramEngineData.a().d() > paramEngineData.a().f()) {
         this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a(this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.a(), paramEngineData.s() * 1000, paramEngineData.a().d() - paramEngineData.a().f());
-        this.jdField_a_of_type_Boolean = true;
-        ThreadManager.getSubThreadHandler().post(new GuessStarClickStagePresenter.1(this, paramEngineData));
+      } else {
+        this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.a().setVisibility(4);
       }
+      this.jdField_a_of_type_Boolean = true;
+      ThreadManager.getSubThreadHandler().post(new GuessStarClickStagePresenter.1(this, paramEngineData));
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("GuessStarClickStagePresenter", 2, "onSwitchTopic topicDuration = " + paramEngineData.a().f() + ",statusPassedTime = " + paramEngineData.a().d() + "getDurationForClickPanelShow = " + paramEngineData.s() * 1000);
-      }
-      String str = paramEngineData.e() + 1 + "/" + paramEngineData.f();
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.setTitleRight(str);
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().k(paramEngineData);
-      return;
-      this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.a().setVisibility(4);
-      break;
       b(false);
       g(paramEngineData);
       b(true);
@@ -232,6 +237,24 @@ public class GuessStarClickStagePresenter
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_Boolean = false;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSwitchTopic topicDuration = ");
+      ((StringBuilder)localObject).append(paramEngineData.a().f());
+      ((StringBuilder)localObject).append(",statusPassedTime = ");
+      ((StringBuilder)localObject).append(paramEngineData.a().d());
+      ((StringBuilder)localObject).append("getDurationForClickPanelShow = ");
+      ((StringBuilder)localObject).append(paramEngineData.s() * 1000);
+      QLog.i("GuessStarClickStagePresenter", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramEngineData.e() + 1);
+    ((StringBuilder)localObject).append("/");
+    ((StringBuilder)localObject).append(paramEngineData.f());
+    localObject = ((StringBuilder)localObject).toString();
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageGuessstarGuessStarClickStageView.setTitleRight((String)localObject);
+    this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a().k(paramEngineData);
   }
   
   public void d(EngineData paramEngineData)
@@ -258,7 +281,7 @@ public class GuessStarClickStagePresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guessstar.GuessStarClickStagePresenter
  * JD-Core Version:    0.7.0.1
  */

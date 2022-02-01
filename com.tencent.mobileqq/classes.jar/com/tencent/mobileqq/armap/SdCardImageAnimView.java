@@ -54,15 +54,22 @@ public class SdCardImageAnimView
   
   private void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache != null) && (this.c))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
+    if ((localObject != null) && (this.c))
     {
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a();
-      if (QLog.isColorLevel()) {
-        QLog.i("SdCardImageAnimView", 2, "bgUpdate cb=" + localBitmap + ", cbm=" + this.jdField_a_of_type_AndroidGraphicsBitmap);
-      }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != localBitmap)
+      localObject = ((FrameBmpCache)localObject).a();
+      if (QLog.isColorLevel())
       {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = localBitmap;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("bgUpdate cb=");
+        localStringBuilder.append(localObject);
+        localStringBuilder.append(", cbm=");
+        localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsBitmap);
+        QLog.i("SdCardImageAnimView", 2, localStringBuilder.toString());
+      }
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap != localObject)
+      {
+        this.jdField_a_of_type_AndroidGraphicsBitmap = ((Bitmap)localObject);
         setImageBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap);
       }
       int i = 32;
@@ -83,8 +90,9 @@ public class SdCardImageAnimView
   
   private void e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.c();
+    FrameBmpCache localFrameBmpCache = this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache;
+    if (localFrameBmpCache != null) {
+      localFrameBmpCache.c();
     }
     this.c = false;
     this.jdField_a_of_type_Boolean = false;
@@ -111,8 +119,9 @@ public class SdCardImageAnimView
   
   public void a(SdCardImageAnimView paramSdCardImageAnimView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener.a(this);
+    paramSdCardImageAnimView = this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache$EndListener;
+    if (paramSdCardImageAnimView != null) {
+      paramSdCardImageAnimView.a(this);
     }
   }
   
@@ -139,14 +148,14 @@ public class SdCardImageAnimView
   
   public void setAnimationData(ArrayList<String> paramArrayList, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramArrayList != null) && (paramArrayList.size() > 0)) {}
-    for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a(paramBoolean1);
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.b(paramBoolean2);
-      this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a(paramArrayList);
-      return;
+    if ((paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.jdField_b_of_type_Boolean = true;
+    } else {
+      this.jdField_b_of_type_Boolean = false;
     }
+    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a(paramBoolean1);
+    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.b(paramBoolean2);
+    this.jdField_a_of_type_ComTencentMobileqqArmapFrameBmpCache.a(paramArrayList);
   }
   
   public void setDefaultImg()
@@ -167,18 +176,19 @@ public class SdCardImageAnimView
   public void setVisibility(int paramInt)
   {
     super.setVisibility(paramInt);
-    if (paramInt != 0) {
+    if (paramInt != 0)
+    {
       this.d = a();
-    }
-    while (!this.d) {
       return;
     }
-    a();
+    if (this.d) {
+      a();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.SdCardImageAnimView
  * JD-Core Version:    0.7.0.1
  */

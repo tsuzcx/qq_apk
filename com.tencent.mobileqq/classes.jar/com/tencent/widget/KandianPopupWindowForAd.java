@@ -20,7 +20,7 @@ public class KandianPopupWindowForAd
     super.a();
     this.jdField_a_of_type_Boolean = false;
     if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131705960));
+      this.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131706012));
     }
     b();
   }
@@ -34,7 +34,7 @@ public class KandianPopupWindowForAd
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.KandianPopupWindowForAd
  * JD-Core Version:    0.7.0.1
  */

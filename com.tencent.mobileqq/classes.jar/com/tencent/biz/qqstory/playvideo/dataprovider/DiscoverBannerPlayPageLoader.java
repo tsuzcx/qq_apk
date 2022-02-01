@@ -82,29 +82,34 @@ public class DiscoverBannerPlayPageLoader
   
   public void a(@NonNull GetDiscoverBannerVideoRequest paramGetDiscoverBannerVideoRequest, @Nullable GetDiscoverBannerVideoResponse paramGetDiscoverBannerVideoResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if ((paramErrorMessage.isFail()) || (paramGetDiscoverBannerVideoResponse == null))
+    if ((!paramErrorMessage.isFail()) && (paramGetDiscoverBannerVideoResponse != null))
     {
-      SLog.a(this.jdField_a_of_type_JavaLangString, "get banner info back failed. bannerId =%s ", paramGetDiscoverBannerVideoRequest.b);
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, null, false);
-      return;
-    }
-    paramErrorMessage = (DiscoverManager)SuperManager.a(22);
-    paramErrorMessage.a(paramGetDiscoverBannerVideoRequest.b, paramGetDiscoverBannerVideoResponse);
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "saved banner info to db. bannerId = " + paramGetDiscoverBannerVideoRequest.b);
-    }
-    if ((paramGetDiscoverBannerVideoResponse.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int > 10))
-    {
+      paramErrorMessage = (DiscoverManager)SuperManager.a(22);
+      paramErrorMessage.a(paramGetDiscoverBannerVideoRequest.b, paramGetDiscoverBannerVideoResponse);
+      if (QLog.isColorLevel())
+      {
+        String str = this.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saved banner info to db. bannerId = ");
+        localStringBuilder.append(paramGetDiscoverBannerVideoRequest.b);
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      if ((!paramGetDiscoverBannerVideoResponse.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int <= 10))
+      {
+        a(paramGetDiscoverBannerVideoRequest.b, paramGetDiscoverBannerVideoResponse.jdField_a_of_type_JavaLangString);
+        return;
+      }
       a(paramErrorMessage.a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceDiscoverBannerPlayInfo.bannerId));
       return;
     }
-    a(paramGetDiscoverBannerVideoRequest.b, paramGetDiscoverBannerVideoResponse.jdField_a_of_type_JavaLangString);
+    SLog.a(this.jdField_a_of_type_JavaLangString, "get banner info back failed. bannerId =%s ", paramGetDiscoverBannerVideoRequest.b);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIGroupPageLoader$CallBack.a(paramErrorMessage, null, false);
   }
   
   public void a(String paramString1, String paramString2)
   {
     this.jdField_a_of_type_Int += 1;
-    AssertUtils.a(paramString1);
+    AssertUtils.checkNotEmpty(paramString1);
     GetDiscoverBannerVideoRequest localGetDiscoverBannerVideoRequest = new GetDiscoverBannerVideoRequest();
     localGetDiscoverBannerVideoRequest.b = paramString1;
     localGetDiscoverBannerVideoRequest.c = paramString2;
@@ -115,7 +120,7 @@ public class DiscoverBannerPlayPageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.dataprovider.DiscoverBannerPlayPageLoader
  * JD-Core Version:    0.7.0.1
  */

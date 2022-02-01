@@ -1,22 +1,21 @@
 package com.tencent.biz.qqstory.newshare.mode.base;
 
-import com.tencent.biz.qqstory.newshare.job.DownloadPic2FileJob;
-import com.tencent.biz.qqstory.newshare.model.ShareSinaData;
+import com.tencent.biz.qqstory.newshare.callback.OnPrepareShareListener;
+import com.tencent.biz.qqstory.newshare.model.ShareData;
 
 class ShareModeBase$18
-  extends DownloadPic2FileJob
+  implements Runnable
 {
-  ShareModeBase$18(ShareModeBase paramShareModeBase, ShareSinaData paramShareSinaData) {}
+  ShareModeBase$18(ShareModeBase paramShareModeBase, ShareData paramShareData) {}
   
-  public boolean b()
+  public void run()
   {
-    a("UploadImageJob_in_image_file_path", this.jdField_a_of_type_ComTencentBizQqstoryNewshareModelShareSinaData.d);
-    return true;
+    this.this$0.a.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.mode.base.ShareModeBase.18
  * JD-Core Version:    0.7.0.1
  */

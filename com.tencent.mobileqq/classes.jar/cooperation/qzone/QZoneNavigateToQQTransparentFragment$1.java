@@ -1,13 +1,13 @@
 package cooperation.qzone;
 
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendSendMsgHelper.ISendMsgInterface;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.qqexpand.chat.ISendMsgInterface;
 import com.tencent.qphone.base.util.QLog;
 
 class QZoneNavigateToQQTransparentFragment$1
-  implements ExtendFriendSendMsgHelper.ISendMsgInterface
+  implements ISendMsgInterface
 {
-  QZoneNavigateToQQTransparentFragment$1(QZoneNavigateToQQTransparentFragment paramQZoneNavigateToQQTransparentFragment, FragmentActivity paramFragmentActivity) {}
+  QZoneNavigateToQQTransparentFragment$1(QZoneNavigateToQQTransparentFragment paramQZoneNavigateToQQTransparentFragment, BaseActivity paramBaseActivity) {}
   
   public void enterAio(String paramString1, String paramString2)
   {
@@ -26,17 +26,18 @@ class QZoneNavigateToQQTransparentFragment$1
   
   public void showToast(int paramInt)
   {
-    if (this.val$activity == null)
+    BaseActivity localBaseActivity = this.val$activity;
+    if (localBaseActivity == null)
     {
       QLog.d("QZoneNavigateToQQTransparentFragment", 1, "sendMsgDirectly()-> showToast() activity is null just return");
       return;
     }
-    QZoneNavigateToQQTransparentFragment.access$100(this.val$activity, this.val$activity.getString(paramInt));
+    QZoneNavigateToQQTransparentFragment.access$100(localBaseActivity, localBaseActivity.getString(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneNavigateToQQTransparentFragment.1
  * JD-Core Version:    0.7.0.1
  */

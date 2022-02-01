@@ -26,41 +26,71 @@ public class MethodValidator
   private void validateTestMethods(Class<? extends Annotation> paramClass, boolean paramBoolean)
   {
     Iterator localIterator = this.testClass.getAnnotatedMethods(paramClass).iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       Method localMethod = (Method)localIterator.next();
-      if (Modifier.isStatic(localMethod.getModifiers()) != paramBoolean) {
-        if (!paramBoolean) {
-          break label338;
-        }
-      }
-      label338:
-      for (paramClass = "should";; paramClass = "should not")
+      Object localObject;
+      if (Modifier.isStatic(localMethod.getModifiers()) != paramBoolean)
       {
-        this.errors.add(new Exception("Method " + localMethod.getName() + "() " + paramClass + " be static"));
-        if (!Modifier.isPublic(localMethod.getDeclaringClass().getModifiers())) {
-          this.errors.add(new Exception("Class " + localMethod.getDeclaringClass().getName() + " should be public"));
+        if (paramBoolean) {
+          paramClass = "should";
+        } else {
+          paramClass = "should not";
         }
-        if (!Modifier.isPublic(localMethod.getModifiers())) {
-          this.errors.add(new Exception("Method " + localMethod.getName() + " should be public"));
-        }
-        if (localMethod.getReturnType() != Void.TYPE) {
-          this.errors.add(new Exception("Method " + localMethod.getName() + " should be void"));
-        }
-        if (localMethod.getParameterTypes().length == 0) {
-          break;
-        }
-        this.errors.add(new Exception("Method " + localMethod.getName() + " should have no parameters"));
-        break;
+        localObject = this.errors;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Method ");
+        localStringBuilder.append(localMethod.getName());
+        localStringBuilder.append("() ");
+        localStringBuilder.append(paramClass);
+        localStringBuilder.append(" be static");
+        ((List)localObject).add(new Exception(localStringBuilder.toString()));
+      }
+      if (!Modifier.isPublic(localMethod.getDeclaringClass().getModifiers()))
+      {
+        paramClass = this.errors;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Class ");
+        ((StringBuilder)localObject).append(localMethod.getDeclaringClass().getName());
+        ((StringBuilder)localObject).append(" should be public");
+        paramClass.add(new Exception(((StringBuilder)localObject).toString()));
+      }
+      if (!Modifier.isPublic(localMethod.getModifiers()))
+      {
+        paramClass = this.errors;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Method ");
+        ((StringBuilder)localObject).append(localMethod.getName());
+        ((StringBuilder)localObject).append(" should be public");
+        paramClass.add(new Exception(((StringBuilder)localObject).toString()));
+      }
+      if (localMethod.getReturnType() != Void.TYPE)
+      {
+        paramClass = this.errors;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Method ");
+        ((StringBuilder)localObject).append(localMethod.getName());
+        ((StringBuilder)localObject).append(" should be void");
+        paramClass.add(new Exception(((StringBuilder)localObject).toString()));
+      }
+      if (localMethod.getParameterTypes().length != 0)
+      {
+        paramClass = this.errors;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Method ");
+        ((StringBuilder)localObject).append(localMethod.getName());
+        ((StringBuilder)localObject).append(" should have no parameters");
+        paramClass.add(new Exception(((StringBuilder)localObject).toString()));
       }
     }
   }
   
   public void assertValid()
   {
-    if (!this.errors.isEmpty()) {
-      throw new InitializationError(this.errors);
+    if (this.errors.isEmpty()) {
+      return;
     }
+    throw new InitializationError(this.errors);
   }
   
   public void validateInstanceMethods()
@@ -102,7 +132,7 @@ public class MethodValidator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.internal.runners.MethodValidator
  * JD-Core Version:    0.7.0.1
  */

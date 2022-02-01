@@ -27,21 +27,17 @@ class b$b
     }
     catch (NullPointerException localNullPointerException)
     {
-      for (;;)
-      {
-        try
-        {
-          SSLContext.setDefault(SSLContext.getInstance("Default"));
-          Logger.INSTANCE.d(new String[] { "QAPM_Socket_HookUtils", "change default SSLContext success" });
-          return;
-        }
-        catch (Exception localException)
-        {
-          Logger.INSTANCE.exception("QAPM_Socket_HookUtils", "update default sslcontext failed!", localException);
-        }
-        localNullPointerException = localNullPointerException;
-        Logger.INSTANCE.exception("QAPM_Socket_HookUtils", "set socketfacotry provider failed!", localNullPointerException);
-      }
+      Logger.INSTANCE.exception("QAPM_Socket_HookUtils", "set socketfacotry provider failed!", localNullPointerException);
+    }
+    try
+    {
+      SSLContext.setDefault(SSLContext.getInstance("Default"));
+      Logger.INSTANCE.d(new String[] { "QAPM_Socket_HookUtils", "change default SSLContext success" });
+      return;
+    }
+    catch (Exception localException)
+    {
+      Logger.INSTANCE.exception("QAPM_Socket_HookUtils", "update default sslcontext failed!", localException);
     }
   }
   
@@ -54,18 +50,19 @@ class b$b
     }
     catch (IOException localIOException)
     {
+      label11:
       SocketImplFactory localSocketImplFactory;
-      do
-      {
-        localSocketImplFactory = (SocketImplFactory)d.a(Socket.class).a("factory").get(null);
-      } while ((localSocketImplFactory instanceof e));
+      break label11;
+    }
+    localSocketImplFactory = (SocketImplFactory)d.a(Socket.class).a("factory").get(null);
+    if (!(localSocketImplFactory instanceof e)) {
       d.a(Socket.class).a("factory").set(null, new e(localSocketImplFactory));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.d.b.b
  * JD-Core Version:    0.7.0.1
  */

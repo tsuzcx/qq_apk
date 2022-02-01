@@ -7,7 +7,7 @@ import com.tencent.mobileqq.data.ChatMessage;
 public class LongMsgTypeSupplier
   implements MessageTypeSupplier
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public int get(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
     if (paramChatMessage.msgtype != -1036) {
       return 17;
@@ -17,7 +17,7 @@ public class LongMsgTypeSupplier
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.typesupplier.LongMsgTypeSupplier
  * JD-Core Version:    0.7.0.1
  */

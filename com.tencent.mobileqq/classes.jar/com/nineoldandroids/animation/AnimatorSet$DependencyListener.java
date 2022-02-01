@@ -21,28 +21,32 @@ class AnimatorSet$DependencyListener
     if (this.mAnimatorSet.mTerminated) {
       return;
     }
+    Object localObject = null;
     int j = this.mNode.tmpDependencies.size();
     int i = 0;
     for (;;)
     {
-      if (i >= j) {}
-      AnimatorSet.Dependency localDependency;
-      for (paramAnimator = null;; paramAnimator = localDependency)
+      if (i >= j)
       {
-        this.mNode.tmpDependencies.remove(paramAnimator);
-        if (this.mNode.tmpDependencies.size() != 0) {
-          break;
-        }
-        this.mNode.animation.start();
-        AnimatorSet.access$2(this.mAnimatorSet).add(this.mNode.animation);
-        return;
-        localDependency = (AnimatorSet.Dependency)this.mNode.tmpDependencies.get(i);
+        paramAnimator = localObject;
+      }
+      else
+      {
+        AnimatorSet.Dependency localDependency = (AnimatorSet.Dependency)this.mNode.tmpDependencies.get(i);
         if ((localDependency.rule != this.mRule) || (localDependency.node.animation != paramAnimator)) {
-          break label136;
+          break label140;
         }
         paramAnimator.removeListener(this);
+        paramAnimator = localDependency;
       }
-      label136:
+      this.mNode.tmpDependencies.remove(paramAnimator);
+      if (this.mNode.tmpDependencies.size() == 0)
+      {
+        this.mNode.animation.start();
+        AnimatorSet.access$2(this.mAnimatorSet).add(this.mNode.animation);
+      }
+      return;
+      label140:
       i += 1;
     }
   }
@@ -67,7 +71,7 @@ class AnimatorSet$DependencyListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.animation.AnimatorSet.DependencyListener
  * JD-Core Version:    0.7.0.1
  */

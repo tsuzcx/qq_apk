@@ -28,17 +28,17 @@ public class MusicHorizontalSeekView
   protected boolean a;
   protected Paint b;
   protected Paint c;
-  protected int d = 0;
-  protected int e = 0;
-  protected int f = 0;
-  protected int g = 0;
-  protected int h = 0;
-  protected int i = 0;
-  protected int j = 0;
-  protected int k = 0;
-  protected int l = 0;
-  protected int m = 0;
-  protected int n = 0;
+  protected int d;
+  protected int e;
+  protected int f;
+  protected int g;
+  protected int h;
+  protected int i;
+  protected int j;
+  protected int k;
+  protected int l;
+  protected int m;
+  protected int n;
   
   static
   {
@@ -52,8 +52,20 @@ public class MusicHorizontalSeekView
   public MusicHorizontalSeekView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    int i1 = 0;
+    this.d = 0;
+    this.e = 0;
+    this.f = 0;
+    this.g = 0;
+    this.h = 0;
+    this.i = 0;
+    this.j = 0;
+    this.k = 0;
+    this.l = 0;
     this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener = null;
     this.jdField_a_of_type_AndroidGraphicsRect = null;
+    this.m = 0;
+    this.n = 0;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidGraphicsPaint = null;
     this.jdField_b_of_type_AndroidGraphicsPaint = null;
@@ -71,13 +83,13 @@ public class MusicHorizontalSeekView
     paramContext = paramContext.getResources();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165559));
+    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131165535));
     this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166508));
+    this.jdField_b_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166522));
     this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_c_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166510));
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(paramContext.getColor(2131166524));
     this.jdField_c_of_type_AndroidGraphicsPaint.setStrokeWidth(this.n);
     super.setOnTouchListener(this);
   }
@@ -91,13 +103,14 @@ public class MusicHorizontalSeekView
   
   public void a(int paramInt)
   {
-    this.h = (jdField_b_of_type_Int * paramInt / 1000);
+    this.h = (paramInt * jdField_b_of_type_Int / 1000);
     setPlayedPosition(-1);
   }
   
   protected void a(Canvas paramCanvas, int paramInt1, int paramInt2, int paramInt3, Paint paramPaint)
   {
-    paramCanvas.drawLine(paramInt1, paramInt2, paramInt1, paramInt3, paramPaint);
+    float f1 = paramInt1;
+    paramCanvas.drawLine(f1, paramInt2, f1, paramInt3, paramPaint);
   }
   
   public void draw(Canvas paramCanvas)
@@ -107,158 +120,181 @@ public class MusicHorizontalSeekView
     this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.n);
     int i2 = 0;
     int i1 = -1;
-    int i3;
-    int i4;
-    if (i2 < this.e)
+    while (i2 < this.e)
     {
-      i3 = this.j;
-      i4 = this.h;
-      i3 = (i2 + 1) * jdField_b_of_type_Int + (i3 - i4);
-      if ((i3 <= this.j + this.f) || (this.h != this.g)) {
-        break label189;
-      }
-    }
-    label189:
-    label194:
-    Paint localPaint;
-    for (;;)
-    {
-      if ((this.jdField_a_of_type_Boolean) || (this.i >= this.d))
-      {
-        this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
-        a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-        a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-        if (QLog.isColorLevel()) {}
-        return;
-        if (i3 < 0)
-        {
-          i2 += 1;
-          break;
-        }
-        if (i3 <= this.k)
-        {
-          localPaint = this.jdField_c_of_type_AndroidGraphicsPaint;
-          if ((this.jdField_a_of_type_Boolean) || (i3 <= this.jdField_a_of_type_AndroidGraphicsRect.left) || (i3 >= this.jdField_a_of_type_AndroidGraphicsRect.right)) {
-            break label498;
-          }
-          if (i1 != -1) {
-            break label495;
-          }
-          i1 = i2;
-          label254:
-          if ((i2 >= i1) && (i2 < this.i + i1)) {
-            localPaint = this.jdField_b_of_type_AndroidGraphicsPaint;
-          }
-        }
-      }
-    }
-    label495:
-    label498:
-    for (;;)
-    {
-      i4 = jdField_b_of_type_ArrayOfInt[(i2 % jdField_a_of_type_Int)];
-      int i5 = (this.l - i4) / 2;
-      a(paramCanvas, i3, i5, i5 + i4, localPaint);
-      break label194;
-      localPaint = this.jdField_a_of_type_AndroidGraphicsPaint;
-      continue;
-      if (this.i == -1)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
-        a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-        a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
+      int i3 = this.j;
+      int i6 = this.h;
+      int i4 = i2 + 1;
+      int i5 = i3 - i6 + jdField_b_of_type_Int * i4;
+      if ((i5 > i3 + this.f) && (i6 == this.g)) {
         break;
       }
-      this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
-      a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
-      a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
-      break;
-      break label254;
+      if (i5 >= 0)
+      {
+        if (i5 > this.k) {
+          break;
+        }
+        Paint localPaint2 = this.jdField_c_of_type_AndroidGraphicsPaint;
+        i3 = i1;
+        Paint localPaint1 = localPaint2;
+        if (!this.jdField_a_of_type_Boolean)
+        {
+          i3 = i1;
+          localPaint1 = localPaint2;
+          if (i5 > this.jdField_a_of_type_AndroidGraphicsRect.left)
+          {
+            i3 = i1;
+            localPaint1 = localPaint2;
+            if (i5 < this.jdField_a_of_type_AndroidGraphicsRect.right)
+            {
+              i3 = i1;
+              if (i1 == -1) {
+                i3 = i2;
+              }
+              if ((i2 >= i3) && (i2 < this.i + i3)) {
+                localPaint1 = this.jdField_b_of_type_AndroidGraphicsPaint;
+              } else {
+                localPaint1 = this.jdField_a_of_type_AndroidGraphicsPaint;
+              }
+            }
+          }
+        }
+        i1 = jdField_b_of_type_ArrayOfInt[(i2 % jdField_a_of_type_Int)];
+        i2 = (this.l - i1) / 2;
+        a(paramCanvas, i5, i2, i2 + i1, localPaint1);
+        i1 = i3;
+      }
+      i2 = i4;
     }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      i1 = this.i;
+      if (i1 < this.d)
+      {
+        if (i1 == -1)
+        {
+          this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
+          a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
+          a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
+          break label519;
+        }
+        this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
+        a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
+        this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
+        a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsPaint);
+        break label519;
+      }
+    }
+    this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.m);
+    a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
+    a(paramCanvas, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_b_of_type_AndroidGraphicsPaint);
+    label519:
+    QLog.isColorLevel();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     this.k = super.getMeasuredWidth();
     this.l = (jdField_c_of_type_Int + super.getPaddingTop() + super.getPaddingBottom());
     setMeasuredDimension(this.k, this.l);
     this.j = ((this.k - this.f) / 2);
-    paramInt1 = (this.l - jdField_c_of_type_Int) / 2;
-    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(this.j, paramInt1, this.j + this.d * jdField_b_of_type_Int, jdField_c_of_type_Int + paramInt1);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.a(this.j, this.f);
+    paramInt2 = this.l;
+    paramInt1 = jdField_c_of_type_Int;
+    paramInt2 = (paramInt2 - paramInt1) / 2;
+    int i1 = this.j;
+    this.jdField_a_of_type_AndroidGraphicsRect = new Rect(i1, paramInt2, this.d * jdField_b_of_type_Int + i1, paramInt1 + paramInt2);
+    MusicHorizontalSeekView.SeekListener localSeekListener = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener;
+    if (localSeekListener != null) {
+      localSeekListener.a(this.j, this.f);
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    boolean bool = true;
-    switch (paramMotionEvent.getAction())
+    int i1 = paramMotionEvent.getAction();
+    if (i1 != 0)
     {
-    }
-    for (;;)
-    {
-      bool = false;
-      float f1;
-      do
+      if (i1 != 1)
       {
-        return bool;
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_Float = paramMotionEvent.getX();
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.a(this.g, this.f, this.h);
-        break;
-        f1 = paramMotionEvent.getX();
-      } while (Math.abs(f1 - this.jdField_a_of_type_Float) < 2.0F);
-      this.jdField_a_of_type_Boolean = true;
-      this.h = ((int)(this.h + (this.jdField_a_of_type_Float - f1) / 2.0F));
-      if (f1 > this.jdField_a_of_type_Float)
-      {
-        if (this.h <= jdField_b_of_type_Int)
-        {
-          this.h = 0;
-          super.invalidate();
-          if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-            this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.b(this.g, this.f, this.h);
-          }
-          this.jdField_a_of_type_Float = f1;
+        if (i1 != 2) {
           return false;
         }
-      }
-      else if (this.h >= this.g - this.f)
-      {
-        this.h = (this.g - this.f);
+        float f1 = paramMotionEvent.getX();
+        if (Math.abs(f1 - this.jdField_a_of_type_Float) < 2.0F) {
+          return true;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        float f2 = this.h;
+        float f3 = this.jdField_a_of_type_Float;
+        this.h = ((int)(f2 + (f3 - f1) / 2.0F));
+        if (f1 > f3)
+        {
+          if (this.h <= jdField_b_of_type_Int)
+          {
+            this.h = 0;
+            super.invalidate();
+            paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener;
+            if (paramView != null) {
+              paramView.b(this.g, this.f, this.h);
+            }
+            this.jdField_a_of_type_Float = f1;
+            return false;
+          }
+        }
+        else
+        {
+          i1 = this.h;
+          int i2 = this.g;
+          int i3 = this.f;
+          if (i1 >= i2 - i3)
+          {
+            this.h = (i2 - i3);
+            super.invalidate();
+            paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener;
+            if (paramView != null) {
+              paramView.b(this.g, this.f, this.h);
+            }
+            this.jdField_a_of_type_Float = f1;
+            return false;
+          }
+        }
         super.invalidate();
-        if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-          this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.b(this.g, this.f, this.h);
+        paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener;
+        if (paramView != null) {
+          paramView.b(this.g, this.f, this.h);
         }
         this.jdField_a_of_type_Float = f1;
         return false;
       }
-      super.invalidate();
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.b(this.g, this.f, this.h);
-      }
-      this.jdField_a_of_type_Float = f1;
-      continue;
       this.jdField_a_of_type_Boolean = false;
       super.invalidate();
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener.c(this.g, this.f, this.h);
+      paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener;
+      if (paramView != null)
+      {
+        paramView.c(this.g, this.f, this.h);
+        return false;
       }
     }
+    else
+    {
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Float = paramMotionEvent.getX();
+      paramView = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoMusicMusicHorizontalSeekView$SeekListener;
+      if (paramView != null) {
+        paramView.a(this.g, this.f, this.h);
+      }
+    }
+    return false;
   }
   
   public void setDurations(int paramInt1, int paramInt2)
   {
     this.d = paramInt1;
     this.e = paramInt2;
-    this.f = (jdField_b_of_type_Int * this.d);
-    this.g = (jdField_b_of_type_Int * this.e);
+    paramInt1 = jdField_b_of_type_Int;
+    this.f = (this.d * paramInt1);
+    this.g = (paramInt1 * this.e);
   }
   
   public void setOnSeekListener(MusicHorizontalSeekView.SeekListener paramSeekListener)
@@ -274,7 +310,7 @@ public class MusicHorizontalSeekView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.music.MusicHorizontalSeekView
  * JD-Core Version:    0.7.0.1
  */

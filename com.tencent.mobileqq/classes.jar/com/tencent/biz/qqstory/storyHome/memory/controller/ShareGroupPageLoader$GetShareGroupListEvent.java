@@ -22,12 +22,26 @@ public class ShareGroupPageLoader$GetShareGroupListEvent
   
   public String toString()
   {
-    return "GetShareGroupListEvent{mShareGroupList=" + this.jdField_a_of_type_JavaUtilList.size() + ", mShareGroupTotalCount=" + this.jdField_a_of_type_Int + ", errorCode=" + this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode + ", isLocalData=" + this.b + ", isFirstPage=" + this.c + ", isEnd=" + this.jdField_a_of_type_Boolean + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetShareGroupListEvent{mShareGroupList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList.size());
+    localStringBuilder.append(", mShareGroupTotalCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", errorCode=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.errorCode);
+    localStringBuilder.append(", isLocalData=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", isFirstPage=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", isEnd=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.ShareGroupPageLoader.GetShareGroupListEvent
  * JD-Core Version:    0.7.0.1
  */

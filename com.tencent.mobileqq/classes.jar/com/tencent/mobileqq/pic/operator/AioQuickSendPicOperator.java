@@ -3,16 +3,15 @@ package com.tencent.mobileqq.pic.operator;
 import android.content.Intent;
 import android.text.TextUtils;
 import com.tencent.common.app.AppInterface;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager;
-import com.tencent.mobileqq.activity.aio.zhitu.ZhituManager;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecManager;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PicMessageExtraData;
 import com.tencent.mobileqq.pic.PicReq;
 import com.tencent.mobileqq.pic.PicUploadExtra;
 import com.tencent.mobileqq.pic.PicUploadInfo;
+import com.tencent.mobileqq.pic.api.IDep;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.qphone.base.util.BaseApplication;
 import java.util.HashSet;
@@ -67,20 +66,20 @@ public class AioQuickSendPicOperator
       localQuickSendObject.jdField_a_of_type_JavaLangString = paramIntent.getStringExtra("quick_send_original_md5");
       localQuickSendObject.jdField_a_of_type_Long = paramIntent.getLongExtra("quick_send_original_size", 0L);
       localQuickSendObject.b = paramIntent.getStringExtra("quick_send_thumb_md5");
-      localPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicOperatorAioQuickSendPicOperator$QuickSendObject = localQuickSendObject;
+      localPicUploadInfo.b = localQuickSendObject;
       localPicUploadInfo.r = paramIntent.getIntExtra("key_emotion_source_from", 0);
       localPicUploadInfo.k = paramIntent.getStringExtra("key_emotion_source_info");
       localPicUploadInfo.l = paramIntent.getStringExtra("key_emotion_source_weburl");
       localPicUploadInfo.m = paramIntent.getStringExtra("key_emotion_source_iconurl");
       localPicUploadInfo.n = paramIntent.getStringExtra("key_emotion_source_packagename");
       localPicUploadInfo.s = paramIntent.getIntExtra("key_emotion_source_epid", 0);
-      if (localPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra == null) {
-        localPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra = new PicUploadExtra();
+      if (localPicUploadInfo.a == null) {
+        localPicUploadInfo.a = new PicUploadExtra();
       }
-      localPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("quick_send_is_ad_emo", false);
-      localPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.c = paramIntent.getStringExtra("quick_send_ad_emo_jump_url");
-      localPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.d = paramIntent.getStringExtra("quick_send_ad_emo_desc_str");
-      localPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.b = paramIntent.getBooleanExtra("quick_send_is_emo_search", false);
+      localPicUploadInfo.a.jdField_a_of_type_Boolean = paramIntent.getBooleanExtra("quick_send_is_ad_emo", false);
+      localPicUploadInfo.a.c = paramIntent.getStringExtra("quick_send_ad_emo_jump_url");
+      localPicUploadInfo.a.d = paramIntent.getStringExtra("quick_send_ad_emo_desc_str");
+      localPicUploadInfo.a.b = paramIntent.getBooleanExtra("quick_send_is_emo_search", false);
     }
     return localPicUploadInfo;
   }
@@ -97,78 +96,80 @@ public class AioQuickSendPicOperator
   {
     super.a(paramMessageForPic, paramPicUploadInfo);
     int i = this.jdField_a_of_type_ComTencentMobileqqPicPicReq.b;
-    a(paramMessageForPic, paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicOperatorAioQuickSendPicOperator$QuickSendObject);
-    PicMessageExtraData localPicMessageExtraData = paramMessageForPic.picExtraData;
-    if (localPicMessageExtraData == null) {
-      localPicMessageExtraData = new PicMessageExtraData();
+    Object localObject1 = paramPicUploadInfo.b;
+    if ((localObject1 instanceof AioQuickSendPicOperator.QuickSendObject)) {
+      a(paramMessageForPic, (AioQuickSendPicOperator.QuickSendObject)localObject1);
     }
-    for (;;)
+    Object localObject2 = paramMessageForPic.picExtraData;
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new PicMessageExtraData();
+    }
+    if (i == 1042)
     {
-      if (i == 1042) {
-        if (paramPicUploadInfo.d())
-        {
-          localPicMessageExtraData.imageBizType = 13;
-          localPicMessageExtraData.textSummary = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691358);
-          paramMessageForPic.picExtraData = localPicMessageExtraData;
-        }
+      if (paramPicUploadInfo.d()) {
+        ((PicMessageExtraData)localObject1).imageBizType = 13;
+      } else {
+        ((PicMessageExtraData)localObject1).imageBizType = 2;
       }
-      label319:
-      label326:
-      do
-      {
-        do
-        {
-          return;
-          localPicMessageExtraData.imageBizType = 2;
-          break;
-          if (i == 1047)
-          {
-            if (paramPicUploadInfo.c())
-            {
-              localPicMessageExtraData.imageBizType = 9;
-              localPicMessageExtraData.setAdEmoJumpUrl(paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.c);
-              localPicMessageExtraData.setAdEmoDescStr(paramPicUploadInfo.jdField_a_of_type_ComTencentMobileqqPicPicUploadExtra.d);
-            }
-            for (;;)
-            {
-              paramPicUploadInfo = StickerRecManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
-              if (paramPicUploadInfo != null)
-              {
-                paramPicUploadInfo = paramPicUploadInfo.a();
-                if (!TextUtils.isEmpty(paramPicUploadInfo)) {
-                  localPicMessageExtraData.textSummary = ("[" + paramPicUploadInfo + "]");
-                }
-              }
-              paramMessageForPic.picExtraData = localPicMessageExtraData;
-              return;
-              localPicMessageExtraData.imageBizType = 7;
-            }
-          }
-          if (i == 1044)
-          {
-            localPicMessageExtraData.imageBizType = 3;
-            localPicMessageExtraData.textSummary = BaseApplicationImpl.getApplication().getString(2131691358);
-            paramMessageForPic.picExtraData = localPicMessageExtraData;
-            return;
-          }
-          if (i != 1049) {
-            break label326;
-          }
-          localPicMessageExtraData.imageBizType = 4;
-          paramPicUploadInfo = BaseApplicationImpl.getApplication().getRuntime();
-          if (!(paramPicUploadInfo instanceof AppInterface)) {
-            break label319;
-          }
-          paramPicUploadInfo = ZhituManager.a((AppInterface)paramPicUploadInfo).b();
-        } while (TextUtils.isEmpty(paramPicUploadInfo));
-        localPicMessageExtraData.textSummary = ("[" + paramPicUploadInfo + "]");
-        paramMessageForPic.picExtraData = localPicMessageExtraData;
-        return;
-      } while (i != 1054);
-      localPicMessageExtraData.imageBizType = 10;
-      localPicMessageExtraData.textSummary = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getString(2131691358);
-      paramMessageForPic.picExtraData = localPicMessageExtraData;
+      ((PicMessageExtraData)localObject1).textSummary = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131691279);
+      paramMessageForPic.picExtraData = ((PicMessageExtraData)localObject1);
       return;
+    }
+    if (i == 1047)
+    {
+      if (paramPicUploadInfo.c())
+      {
+        ((PicMessageExtraData)localObject1).imageBizType = 9;
+        ((PicMessageExtraData)localObject1).setAdEmoJumpUrl(paramPicUploadInfo.a.c);
+        ((PicMessageExtraData)localObject1).setAdEmoDescStr(paramPicUploadInfo.a.d);
+      }
+      else
+      {
+        ((PicMessageExtraData)localObject1).imageBizType = 7;
+      }
+      paramPicUploadInfo = ((IStickerRecManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getRuntimeService(IStickerRecManager.class, "")).getCurrentText();
+      if (!TextUtils.isEmpty(paramPicUploadInfo))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[");
+        ((StringBuilder)localObject2).append(paramPicUploadInfo);
+        ((StringBuilder)localObject2).append("]");
+        ((PicMessageExtraData)localObject1).textSummary = ((StringBuilder)localObject2).toString();
+      }
+      paramMessageForPic.picExtraData = ((PicMessageExtraData)localObject1);
+      return;
+    }
+    if (i == 1044)
+    {
+      ((PicMessageExtraData)localObject1).imageBizType = 3;
+      ((PicMessageExtraData)localObject1).textSummary = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131691279);
+      paramMessageForPic.picExtraData = ((PicMessageExtraData)localObject1);
+      return;
+    }
+    if (i == 1049)
+    {
+      ((PicMessageExtraData)localObject1).imageBizType = 4;
+      if ((this.jdField_a_of_type_ComTencentCommonAppAppInterface instanceof AppInterface))
+      {
+        paramPicUploadInfo = ((IDep)QRoute.api(IDep.class)).getZhituText();
+        if (TextUtils.isEmpty(paramPicUploadInfo)) {
+          return;
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("[");
+        ((StringBuilder)localObject2).append(paramPicUploadInfo);
+        ((StringBuilder)localObject2).append("]");
+        ((PicMessageExtraData)localObject1).textSummary = ((StringBuilder)localObject2).toString();
+      }
+      paramMessageForPic.picExtraData = ((PicMessageExtraData)localObject1);
+      return;
+    }
+    if (i == 1054)
+    {
+      ((PicMessageExtraData)localObject1).imageBizType = 10;
+      ((PicMessageExtraData)localObject1).textSummary = this.jdField_a_of_type_ComTencentCommonAppAppInterface.getApp().getString(2131691279);
+      paramMessageForPic.picExtraData = ((PicMessageExtraData)localObject1);
     }
   }
   
@@ -185,7 +186,7 @@ public class AioQuickSendPicOperator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.AioQuickSendPicOperator
  * JD-Core Version:    0.7.0.1
  */

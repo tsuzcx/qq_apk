@@ -37,39 +37,52 @@ public class OfficialRecommendListPageLoader
   
   public void a(@NonNull GetOfficialRecommendStoryListRequest paramGetOfficialRecommendStoryListRequest, @Nullable GetOfficialRecommendStoryListResponse paramGetOfficialRecommendStoryListResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    SLog.b(":OfficialRecommendListPageLoader", "OfficialRecommendListPageLoader onCmdRespond return :" + paramErrorMessage);
+    paramGetOfficialRecommendStoryListRequest = new StringBuilder();
+    paramGetOfficialRecommendStoryListRequest.append("OfficialRecommendListPageLoader onCmdRespond return :");
+    paramGetOfficialRecommendStoryListRequest.append(paramErrorMessage);
+    SLog.b(":OfficialRecommendListPageLoader", paramGetOfficialRecommendStoryListRequest.toString());
     paramGetOfficialRecommendStoryListRequest = new OfficialRecommendListPageLoader.GetOfficialRecommendListEvent(paramErrorMessage);
-    if ((paramGetOfficialRecommendStoryListResponse == null) || (paramErrorMessage.isFail()))
+    if ((paramGetOfficialRecommendStoryListResponse != null) && (!paramErrorMessage.isFail()))
     {
+      paramErrorMessage = (StoryManager)SuperManager.a(5);
+      ArrayList localArrayList = paramErrorMessage.a();
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("GetOfficialRecommendStoryListRequest: onCmdRespond markReadItems: ");
+        ((StringBuilder)localObject).append(localArrayList);
+        QLog.e(":OfficialRecommendListPageLoader", 2, ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("GetOfficialRecommendStoryListRequest: onCmdRespond response: ");
+        ((StringBuilder)localObject).append(paramGetOfficialRecommendStoryListResponse.a);
+        QLog.e(":OfficialRecommendListPageLoader", 2, ((StringBuilder)localObject).toString());
+      }
+      int i = 0;
+      while (i < paramGetOfficialRecommendStoryListResponse.a.size())
+      {
+        localObject = (RecommendItem)paramGetOfficialRecommendStoryListResponse.a.get(i);
+        Iterator localIterator = localArrayList.iterator();
+        while (localIterator.hasNext())
+        {
+          RecommendItem localRecommendItem = (RecommendItem)localIterator.next();
+          if (((RecommendItem)localObject).mID == localRecommendItem.mID) {
+            ((RecommendItem)localObject).mIsMarkRead = true;
+          }
+        }
+        i += 1;
+      }
+      paramErrorMessage.a(paramGetOfficialRecommendStoryListResponse.a);
+      paramGetOfficialRecommendStoryListRequest.jdField_a_of_type_JavaUtilList = paramGetOfficialRecommendStoryListResponse.a;
+      paramGetOfficialRecommendStoryListRequest.jdField_a_of_type_Boolean = true;
       StoryDispatcher.a().dispatch(paramGetOfficialRecommendStoryListRequest);
+      paramGetOfficialRecommendStoryListResponse = new StringBuilder();
+      paramGetOfficialRecommendStoryListResponse.append("dispatch OfficialRecommendListPageLoader onCmdRespond GetOfficialRecommendStoryListRequest result: ");
+      paramGetOfficialRecommendStoryListResponse.append(paramGetOfficialRecommendStoryListRequest);
+      SLog.b(":OfficialRecommendListPageLoader", paramGetOfficialRecommendStoryListResponse.toString());
       return;
     }
-    paramErrorMessage = (StoryManager)SuperManager.a(5);
-    ArrayList localArrayList = paramErrorMessage.a();
-    if (QLog.isColorLevel())
-    {
-      QLog.e(":OfficialRecommendListPageLoader", 2, "GetOfficialRecommendStoryListRequest: onCmdRespond markReadItems: " + localArrayList);
-      QLog.e(":OfficialRecommendListPageLoader", 2, "GetOfficialRecommendStoryListRequest: onCmdRespond response: " + paramGetOfficialRecommendStoryListResponse.a);
-    }
-    int i = 0;
-    while (i < paramGetOfficialRecommendStoryListResponse.a.size())
-    {
-      RecommendItem localRecommendItem1 = (RecommendItem)paramGetOfficialRecommendStoryListResponse.a.get(i);
-      Iterator localIterator = localArrayList.iterator();
-      while (localIterator.hasNext())
-      {
-        RecommendItem localRecommendItem2 = (RecommendItem)localIterator.next();
-        if (localRecommendItem1.mID == localRecommendItem2.mID) {
-          localRecommendItem1.mIsMarkRead = true;
-        }
-      }
-      i += 1;
-    }
-    paramErrorMessage.a(paramGetOfficialRecommendStoryListResponse.a);
-    paramGetOfficialRecommendStoryListRequest.jdField_a_of_type_JavaUtilList = paramGetOfficialRecommendStoryListResponse.a;
-    paramGetOfficialRecommendStoryListRequest.jdField_a_of_type_Boolean = true;
     StoryDispatcher.a().dispatch(paramGetOfficialRecommendStoryListRequest);
-    SLog.b(":OfficialRecommendListPageLoader", "dispatch OfficialRecommendListPageLoader onCmdRespond GetOfficialRecommendStoryListRequest result: " + paramGetOfficialRecommendStoryListRequest);
   }
   
   public void a(@Nullable TencentLocation paramTencentLocation, int paramInt)
@@ -95,7 +108,7 @@ public class OfficialRecommendListPageLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.OfficialRecommendListPageLoader
  * JD-Core Version:    0.7.0.1
  */

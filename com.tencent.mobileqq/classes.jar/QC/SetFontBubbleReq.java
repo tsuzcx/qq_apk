@@ -38,17 +38,19 @@ public final class SetFontBubbleReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.stLogin, 0);
-    if (this.stFontReq != null) {
-      paramJceOutputStream.write(this.stFontReq, 1);
+    Object localObject = this.stFontReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.stBubbleReq != null) {
-      paramJceOutputStream.write(this.stBubbleReq, 2);
+    localObject = this.stBubbleReq;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.SetFontBubbleReq
  * JD-Core Version:    0.7.0.1
  */

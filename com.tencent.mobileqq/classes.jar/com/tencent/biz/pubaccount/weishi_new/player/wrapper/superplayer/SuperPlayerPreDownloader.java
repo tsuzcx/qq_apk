@@ -17,8 +17,9 @@ public class SuperPlayerPreDownloader
   public SuperPlayerPreDownloader(ISPlayerPreDownloader paramISPlayerPreDownloader)
   {
     this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader = paramISPlayerPreDownloader;
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader != null) {
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader.setOnPreDownloadListener(this);
+    paramISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
+    if (paramISPlayerPreDownloader != null) {
+      paramISPlayerPreDownloader.setOnPreDownloadListener(this);
     }
   }
   
@@ -34,10 +35,13 @@ public class SuperPlayerPreDownloader
   public void a(AbsWSPlayerInfo<Object, SuperPlayerVideoInfo> paramAbsWSPlayerInfo)
   {
     ISPlayerPreDownloader localISPlayerPreDownloader = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerPreDownloader;
-    if ((localISPlayerPreDownloader == null) || (paramAbsWSPlayerInfo == null)) {
-      return;
+    if (localISPlayerPreDownloader != null)
+    {
+      if (paramAbsWSPlayerInfo == null) {
+        return;
+      }
+      localISPlayerPreDownloader.startPreDownload((SuperPlayerVideoInfo)paramAbsWSPlayerInfo.d(), paramAbsWSPlayerInfo.b, 2000L);
     }
-    localISPlayerPreDownloader.startPreDownload((SuperPlayerVideoInfo)paramAbsWSPlayerInfo.d(), paramAbsWSPlayerInfo.b, 2000L);
   }
   
   public void a(IWSPlayerPreDownloader.Listener paramListener)
@@ -72,17 +76,20 @@ public class SuperPlayerPreDownloader
   
   public void onPrepareSuccess(int paramInt)
   {
-    WSLog.b("SuperPlayerPreDownloader", "[SuperPlayerPreDownloader.java][onPrepareSuccess] taskId:" + paramInt);
-    IWSPlayerPreDownloader.Listener localListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener;
-    if (localListener == null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[SuperPlayerPreDownloader.java][onPrepareSuccess] taskId:");
+    ((StringBuilder)localObject).append(paramInt);
+    WSLog.b("SuperPlayerPreDownloader", ((StringBuilder)localObject).toString());
+    localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPlayerWrapperIWSPlayerPreDownloader$Listener;
+    if (localObject == null) {
       return;
     }
-    localListener.a("", "");
+    ((IWSPlayerPreDownloader.Listener)localObject).a("", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.superplayer.SuperPlayerPreDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,15 @@ class AVBaseReport$1
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    AVReportLog.i("AVReport", "report result code=" + paramInt, new Object[0]);
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("report result code=");
+    paramJSONObject.append(paramInt);
+    AVReportLog.i("AVBaseReport", paramJSONObject.toString(), new Object[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.impl.AVBaseReport.1
  * JD-Core Version:    0.7.0.1
  */

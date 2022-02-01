@@ -10,14 +10,9 @@ import eipc.EIPCResult;
 public class MediaFocusIpcClient
   extends QIPCModule
 {
-  public static boolean a;
+  public static boolean a = false;
   private String a;
   private boolean b = false;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-  }
   
   private MediaFocusIpcClient()
   {
@@ -48,10 +43,16 @@ public class MediaFocusIpcClient
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MediaFocusIpcClient", 2, "action = " + paramString + ", params = " + paramBundle);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("action = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", params = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      QLog.d("MediaFocusIpcClient", 2, ((StringBuilder)localObject).toString());
     }
-    Bundle localBundle = new Bundle();
+    Object localObject = new Bundle();
     if ("actionCheckItemExist".equals(paramString))
     {
       paramBundle.setClassLoader(getClass().getClassLoader());
@@ -60,16 +61,16 @@ public class MediaFocusIpcClient
       if (paramString != null) {
         bool = MediaFocusManager.a().a(paramString.a(), paramString.b());
       }
-      localBundle.putBoolean("isItemExist", bool);
-      localBundle.putBoolean("isConnected", this.b);
-      localBundle.putParcelable("focusItem", paramString);
+      ((Bundle)localObject).putBoolean("isItemExist", bool);
+      ((Bundle)localObject).putBoolean("isConnected", this.b);
+      ((Bundle)localObject).putParcelable("focusItem", paramString);
     }
-    return EIPCResult.createSuccessResult(localBundle);
+    return EIPCResult.createSuccessResult((Bundle)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusIpcClient
  * JD-Core Version:    0.7.0.1
  */

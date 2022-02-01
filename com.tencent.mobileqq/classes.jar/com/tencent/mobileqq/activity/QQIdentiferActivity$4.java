@@ -10,22 +10,25 @@ class QQIdentiferActivity$4
   
   public void a(float paramFloat)
   {
+    QQIdentiferActivity localQQIdentiferActivity;
     if (paramFloat < 0.0F)
     {
-      this.a.a(this.a.getString(2131694352));
+      localQQIdentiferActivity = this.a;
+      localQQIdentiferActivity.showTitleTips(localQQIdentiferActivity.getString(2131694317));
       return;
     }
     if (paramFloat > 175.0F)
     {
-      this.a.a(this.a.getString(2131694351));
+      localQQIdentiferActivity = this.a;
+      localQQIdentiferActivity.showTitleTips(localQQIdentiferActivity.getString(2131694316));
       return;
     }
-    QQIdentiferActivity.a(this.a).setText("");
+    QQIdentiferActivity.access$400(this.a).setText("");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQIdentiferActivity.4
  * JD-Core Version:    0.7.0.1
  */

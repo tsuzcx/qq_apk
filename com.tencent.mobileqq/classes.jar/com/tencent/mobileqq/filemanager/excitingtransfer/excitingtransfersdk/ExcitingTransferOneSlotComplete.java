@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk;
 
-import android.support.annotation.NonNull;
 import java.util.HashMap;
 
 public class ExcitingTransferOneSlotComplete
@@ -25,23 +24,42 @@ public class ExcitingTransferOneSlotComplete
     localHashMap.put("param_ConnectTimes", String.valueOf(this.mConnectTimes));
     localHashMap.put("param_TotalTimes", String.valueOf(this.mTotalTimes));
     localHashMap.put("param_DownloadedSize", String.valueOf(this.mDownloadedSize));
-    String str = "0";
-    if (this.mTotalTimes != 0L) {
-      str = String.valueOf((float)this.mDownloadedSize / (float)this.mTotalTimes);
+    long l = this.mTotalTimes;
+    String str;
+    if (l != 0L) {
+      str = String.valueOf((float)this.mDownloadedSize / (float)l);
+    } else {
+      str = "0";
     }
     localHashMap.put("param_speed", str);
     return localHashMap;
   }
   
-  @NonNull
   public String toString()
   {
-    return "m_strIp:" + this.mstrIp + " m_Port:" + this.mPort + " m_SubReason:" + this.mSubReason + " m_SrvRetCode:" + this.mSrvRetCode + " m_UserRetCode:" + this.mUserRetCode + " m_ConnectTimes:" + this.mConnectTimes + " m_TotalTimes:" + this.mTotalTimes + " m_DownloadedSize:" + this.mDownloadedSize;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("m_strIp:");
+    localStringBuilder.append(this.mstrIp);
+    localStringBuilder.append(" m_Port:");
+    localStringBuilder.append(this.mPort);
+    localStringBuilder.append(" m_SubReason:");
+    localStringBuilder.append(this.mSubReason);
+    localStringBuilder.append(" m_SrvRetCode:");
+    localStringBuilder.append(this.mSrvRetCode);
+    localStringBuilder.append(" m_UserRetCode:");
+    localStringBuilder.append(this.mUserRetCode);
+    localStringBuilder.append(" m_ConnectTimes:");
+    localStringBuilder.append(this.mConnectTimes);
+    localStringBuilder.append(" m_TotalTimes:");
+    localStringBuilder.append(this.mTotalTimes);
+    localStringBuilder.append(" m_DownloadedSize:");
+    localStringBuilder.append(this.mDownloadedSize);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.excitingtransfersdk.ExcitingTransferOneSlotComplete
  * JD-Core Version:    0.7.0.1
  */

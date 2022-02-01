@@ -8,7 +8,7 @@ class MainAssistObserver$11
 {
   MainAssistObserver$11(MainAssistObserver paramMainAssistObserver) {}
   
-  public void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
+  protected void a(boolean paramBoolean, UpgradeDetailWrapper paramUpgradeDetailWrapper)
   {
     MainAssistObserver.a(this.a, paramUpgradeDetailWrapper);
     this.a.e();
@@ -16,7 +16,7 @@ class MainAssistObserver$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.11
  * JD-Core Version:    0.7.0.1
  */

@@ -8,7 +8,7 @@ import com.tencent.mobileqq.activity.home.impl.FrameControllerUtil;
 import com.tencent.mobileqq.armap.ConversationActivePendantHolderBase;
 import com.tencent.mobileqq.mini.entry.desktop.MiniAppDesktopLayout;
 import com.tencent.mobileqq.mini.util.DisplayUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ARMapHongBaoListView;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -41,7 +41,9 @@ class MiniAppDesktop$3
       this.this$0.hideMiniAppEntry(-1);
       return;
     }
-    MiniAppDesktop.access$700(this.this$0, false);
+    paramAnimator = this.this$0;
+    int i = 0;
+    MiniAppDesktop.access$700(paramAnimator, false);
     if ((ThemeUtil.isDefaultTheme()) || (ThemeUtil.isGoldenTheme()) || (DisplayUtil.isWhiteModeTheme()) || (DisplayUtil.isSimpleThemeAndStatusBarOfWhite(ThemeUtil.getCurrentThemeId())))
     {
       paramAnimator = (Activity)MiniAppDesktop.access$800(this.this$0).get();
@@ -55,21 +57,19 @@ class MiniAppDesktop$3
       }
     }
     MiniAppDesktop.access$1000(this.this$0);
-    if (QzoneConfig.getInstance().getConfig("qqminiapp", "miniappbringtitlebartofront", 1) == 1) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        MiniAppDesktop.access$1100(this.this$0).bringToFront();
-      }
-      MiniAppDesktop.access$300(this.this$0).notifyMiniAppDataChanged();
-      QLog.d("MiniAppDesktop", 1, "[animation].animateOpen, onAnimationStart");
-      return;
+    if (QzoneConfig.getInstance().getConfig("qqminiapp", "miniappbringtitlebartofront", 1) == 1) {
+      i = 1;
     }
+    if (i != 0) {
+      MiniAppDesktop.access$1100(this.this$0).bringToFront();
+    }
+    MiniAppDesktop.access$300(this.this$0).notifyMiniAppDataChanged();
+    QLog.d("MiniAppDesktop", 1, "[animation].animateOpen, onAnimationStart");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppDesktop.3
  * JD-Core Version:    0.7.0.1
  */

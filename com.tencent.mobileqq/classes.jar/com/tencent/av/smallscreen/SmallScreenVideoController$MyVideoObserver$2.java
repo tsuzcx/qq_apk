@@ -14,66 +14,66 @@ class SmallScreenVideoController$MyVideoObserver$2
   
   public void run()
   {
-    Object localObject2 = null;
-    Object localObject1 = SharedPreUtils.a(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_AndroidContentContext);
-    if (!((SharedPreferences)localObject1).getBoolean("kick_out_self", false))
-    {
-      if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c != 1) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c != 2)) {
-        break label170;
-      }
-      if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
+    Object localObject = SharedPreUtils.a(this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_AndroidContentContext);
+    if (!((SharedPreferences)localObject).getBoolean("kick_out_self", false)) {
+      if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c != 1) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c != 2))
       {
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.b = this.jdField_a_of_type_Boolean;
-        this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.d();
-      }
-      if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null)
-      {
-        localObject1 = ((SharedPreferences)localObject1).edit();
-        ((SharedPreferences.Editor)localObject1).putInt("video_position", this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.h());
-        ((SharedPreferences.Editor)localObject1).commit();
-      }
-    }
-    label170:
-    label306:
-    do
-    {
-      for (;;)
-      {
-        return;
-        if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c != 3) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c != 4)) {
-          break;
-        }
-        if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_ComTencentAvVideoController == null)
+        if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c != 3) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c != 4))
         {
-          localObject1 = null;
-          if (localObject1 != null) {
-            break label297;
+          if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c == 0) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_Boolean) && ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.d == 1) || (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.d == 2)))
+          {
+            this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.b = this.jdField_a_of_type_Boolean;
+            this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.d();
           }
         }
-        for (localObject1 = localObject2;; localObject1 = String.valueOf(((SessionInfo)localObject1).g))
+        else
         {
-          if ((localObject1 == null) || (this.jdField_a_of_type_JavaLangString == null) || (!((String)localObject1).equals(this.jdField_a_of_type_JavaLangString))) {
-            break label306;
+          localObject = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_ComTencentAvVideoController;
+          String str = null;
+          if (localObject == null) {
+            localObject = null;
+          } else {
+            localObject = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_ComTencentAvVideoController.a();
           }
-          if (QLog.isColorLevel()) {
-            QLog.d("SmallScreenVideoController", 2, "[random room owner] onDestroyUI finish");
+          if (localObject == null) {
+            localObject = str;
+          } else {
+            localObject = String.valueOf(((SessionInfo)localObject).f);
           }
+          if (localObject != null)
+          {
+            str = this.jdField_a_of_type_JavaLangString;
+            if ((str != null) && (((String)localObject).equals(str)))
+            {
+              if (QLog.isColorLevel()) {
+                QLog.d("SmallScreenVideoController", 2, "[random room owner] onDestroyUI finish");
+              }
+              this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.b = this.jdField_a_of_type_Boolean;
+              this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.d();
+            }
+          }
+        }
+      }
+      else
+      {
+        if ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)))
+        {
           this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.b = this.jdField_a_of_type_Boolean;
           this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.d();
-          return;
-          localObject1 = this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_ComTencentAvVideoController.a();
-          break;
+        }
+        if (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI != null)
+        {
+          localObject = ((SharedPreferences)localObject).edit();
+          ((SharedPreferences.Editor)localObject).putInt("video_position", this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoLayerUI.h());
+          ((SharedPreferences.Editor)localObject).commit();
         }
       }
-    } while ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.c != 0) || (!this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.jdField_a_of_type_Boolean) || ((this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.d != 1) && (this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.d != 2)));
-    label297:
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.b = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_ComTencentAvSmallscreenSmallScreenVideoController$MyVideoObserver.a.d();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.smallscreen.SmallScreenVideoController.MyVideoObserver.2
  * JD-Core Version:    0.7.0.1
  */

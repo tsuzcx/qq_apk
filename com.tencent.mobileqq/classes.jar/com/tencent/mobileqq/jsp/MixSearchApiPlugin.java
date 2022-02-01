@@ -12,31 +12,38 @@ import org.json.JSONObject;
 public class MixSearchApiPlugin
   extends WebViewPlugin
 {
-  public static final String a = MixSearchApiPlugin.class.getSimpleName();
+  public static final String a = "MixSearchApiPlugin";
   
   public MixSearchApiPlugin()
   {
     this.mPluginNameSpace = "MixSearchWeb";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length == 0)) {
-      return false;
-    }
-    if (!"MixSearchWeb".equals(paramString2)) {
-      return false;
-    }
-    if (("setSearchBarWord".equals(paramString3)) && ((this.mRuntime.a() instanceof MixSearchWebFragment))) {
-      try
-      {
-        paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
-        ((MixSearchWebFragment)this.mRuntime.a()).a(paramJsBridgeListener.optString("searchWord"), paramJsBridgeListener.optString("placeholder"));
-        return true;
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)) && (paramVarArgs != null))
+    {
+      if (paramVarArgs.length == 0) {
+        return false;
       }
-      catch (JSONException paramJsBridgeListener)
-      {
-        QLog.e(a, 1, "handleJsRequest: e = " + paramJsBridgeListener);
+      if (!"MixSearchWeb".equals(paramString2)) {
+        return false;
+      }
+      if (("setSearchBarWord".equals(paramString3)) && ((this.mRuntime.a() instanceof MixSearchWebFragment))) {
+        try
+        {
+          paramJsBridgeListener = new JSONObject(paramVarArgs[0]);
+          ((MixSearchWebFragment)this.mRuntime.a()).a(paramJsBridgeListener.optString("searchWord"), paramJsBridgeListener.optString("placeholder"));
+          return true;
+        }
+        catch (JSONException paramJsBridgeListener)
+        {
+          paramString1 = a;
+          paramString2 = new StringBuilder();
+          paramString2.append("handleJsRequest: e = ");
+          paramString2.append(paramJsBridgeListener);
+          QLog.e(paramString1, 1, paramString2.toString());
+        }
       }
     }
     return false;
@@ -44,7 +51,7 @@ public class MixSearchApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.MixSearchApiPlugin
  * JD-Core Version:    0.7.0.1
  */

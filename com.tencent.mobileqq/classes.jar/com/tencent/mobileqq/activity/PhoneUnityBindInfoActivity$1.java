@@ -14,18 +14,19 @@ class PhoneUnityBindInfoActivity$1
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     QLog.d("PhoneUnityBindInfoActivity", 1, "bindMiBaoReceiver onReceive");
-    if (PhoneUnityBindInfoActivity.a(this.a) == 1) {
+    if (PhoneUnityBindInfoActivity.access$000(this.a) == 1)
+    {
       ReportController.b(this.a.app, "dc00898", "", "", "0X800B316", "0X800B316", 0, 0, "", "", "", "");
-    }
-    while (PhoneUnityBindInfoActivity.a(this.a) != 2) {
       return;
     }
-    ReportController.b(this.a.app, "dc00898", "", "", "0X800B326", "0X800B326", 0, 0, "", "", "", "");
+    if (PhoneUnityBindInfoActivity.access$000(this.a) == 2) {
+      ReportController.b(this.a.app, "dc00898", "", "", "0X800B326", "0X800B326", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity.1
  * JD-Core Version:    0.7.0.1
  */

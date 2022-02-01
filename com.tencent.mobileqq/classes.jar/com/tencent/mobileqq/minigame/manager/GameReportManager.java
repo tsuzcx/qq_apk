@@ -33,8 +33,8 @@ public class GameReportManager
       {
         this.jsError = true;
         MiniProgramReporter.getInstance().getReportHandler().post(new GameReportManager.1(this));
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -49,7 +49,7 @@ public class GameReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.manager.GameReportManager
  * JD-Core Version:    0.7.0.1
  */

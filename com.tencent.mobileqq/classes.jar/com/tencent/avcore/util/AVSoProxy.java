@@ -4,6 +4,10 @@ import android.content.Context;
 
 public abstract interface AVSoProxy
 {
+  public abstract String getAVMediaEngineSoDir();
+  
+  public abstract String getAVTraeSoDir();
+  
   public abstract String getAndroidCodecInfo();
   
   public abstract Context getContext();
@@ -18,7 +22,7 @@ public abstract interface AVSoProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.util.AVSoProxy
  * JD-Core Version:    0.7.0.1
  */

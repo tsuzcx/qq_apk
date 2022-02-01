@@ -35,18 +35,23 @@ class PayJsPlugin$9
     }
     try
     {
-      MiniAppMidasPay.StGamePayRsp localStGamePayRsp = (MiniAppMidasPay.StGamePayRsp)paramJSONObject.get("response");
+      Object localObject = (MiniAppMidasPay.StGamePayRsp)paramJSONObject.get("response");
       JSONObject localJSONObject1 = new JSONObject();
       JSONObject localJSONObject2 = new JSONObject();
       int i = paramJSONObject.getInt("resultCode");
       String str = paramJSONObject.getString("errMsg");
       JSONObject localJSONObject3 = new JSONObject(new HashMap());
-      localJSONObject2.put("attachInfo", localStGamePayRsp.extInfo.attachInfo.get());
+      localJSONObject2.put("attachInfo", ((MiniAppMidasPay.StGamePayRsp)localObject).extInfo.attachInfo.get());
       localJSONObject2.put("mapInfo", localJSONObject3);
       localJSONObject1.put("resultCode", i);
       localJSONObject1.put("resultMsg", str);
       localJSONObject1.put("extInfo", localJSONObject2);
-      QMLog.i("PayJsPlugin", "invokeMidasConsume receive isSuc= " + paramBoolean + " resObj=" + paramJSONObject.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("invokeMidasConsume receive isSuc= ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" resObj=");
+      ((StringBuilder)localObject).append(paramJSONObject.toString());
+      QMLog.i("PayJsPlugin", ((StringBuilder)localObject).toString());
       PayJsPlugin.access$1600(this.this$0, this.val$req, paramJSONObject);
       return;
     }
@@ -58,7 +63,7 @@ class PayJsPlugin$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PayJsPlugin.9
  * JD-Core Version:    0.7.0.1
  */

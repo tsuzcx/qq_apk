@@ -16,10 +16,32 @@ class LoginPhoneNumActivity$7
   {
     if (QLog.isColorLevel())
     {
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount appid=" + paramLong1 + " subAppid=" + paramLong2 + " countryCode=" + paramString1 + " mobile=" + PhoneCodeUtils.a(paramString2));
-      QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount msg=" + paramString3 + " msgCnt=" + paramInt1 + " timeLimit=" + paramInt2 + " ret=" + paramInt3);
-      if (paramErrMsg != null) {
-        QLog.d("LoginPhoneNumActivity", 2, "OnCheckSMSVerifyLoginAccount errMsg=" + paramErrMsg.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnCheckSMSVerifyLoginAccount appid=");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(" subAppid=");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(" countryCode=");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" mobile=");
+      localStringBuilder.append(PhoneCodeUtils.a(paramString2));
+      QLog.d("LoginPhoneNumActivity", 2, localStringBuilder.toString());
+      paramString1 = new StringBuilder();
+      paramString1.append("OnCheckSMSVerifyLoginAccount msg=");
+      paramString1.append(paramString3);
+      paramString1.append(" msgCnt=");
+      paramString1.append(paramInt1);
+      paramString1.append(" timeLimit=");
+      paramString1.append(paramInt2);
+      paramString1.append(" ret=");
+      paramString1.append(paramInt3);
+      QLog.d("LoginPhoneNumActivity", 2, paramString1.toString());
+      if (paramErrMsg != null)
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("OnCheckSMSVerifyLoginAccount errMsg=");
+        paramString1.append(paramErrMsg.getMessage());
+        QLog.d("LoginPhoneNumActivity", 2, paramString1.toString());
       }
     }
     this.a.closeDialog();
@@ -37,25 +59,23 @@ class LoginPhoneNumActivity$7
     }
     if (!TextUtils.isEmpty(paramString1))
     {
-      this.a.showDialog(this.a.getString(2131692060), paramString1);
-      if (!TextUtils.isEmpty(paramString1)) {
-        break label299;
-      }
-      paramString1 = this.a.getString(2131718552);
+      paramString2 = this.a;
+      paramString2.showDialog(paramString2.getString(2131691979), paramString1);
     }
-    label299:
-    for (;;)
+    else
     {
-      ReportController.a(LoginPhoneNumActivity.access$500(this.a), "dc00898", "", LoginPhoneNumActivity.access$600(this.a), "0X800B107", "0X800B107", LoginPhoneNumActivity.access$700(this.a), 0, "", "", paramString1, "");
-      return;
-      this.a.notifyToast(2131718552, 1);
-      break;
+      this.a.notifyToast(2131718220, 1);
     }
+    paramString2 = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      paramString2 = this.a.getString(2131718220);
+    }
+    ReportController.a(LoginPhoneNumActivity.access$400(this.a), "dc00898", "", LoginPhoneNumActivity.access$500(this.a), "0X800B107", "0X800B107", LoginPhoneNumActivity.access$600(this.a), 0, "", "", paramString2, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LoginPhoneNumActivity.7
  * JD-Core Version:    0.7.0.1
  */

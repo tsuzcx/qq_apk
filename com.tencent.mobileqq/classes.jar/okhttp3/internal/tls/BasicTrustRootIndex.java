@@ -36,11 +36,10 @@ public final class BasicTrustRootIndex
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == this) {}
-    while (((paramObject instanceof BasicTrustRootIndex)) && (((BasicTrustRootIndex)paramObject).subjectToCaCerts.equals(this.subjectToCaCerts))) {
+    if (paramObject == this) {
       return true;
     }
-    return false;
+    return ((paramObject instanceof BasicTrustRootIndex)) && (((BasicTrustRootIndex)paramObject).subjectToCaCerts.equals(this.subjectToCaCerts));
   }
   
   public X509Certificate findByIssuerAndSignature(X509Certificate paramX509Certificate)
@@ -51,18 +50,23 @@ public final class BasicTrustRootIndex
       return null;
     }
     localObject = ((Set)localObject).iterator();
-    while (((Iterator)localObject).hasNext())
+    for (;;)
     {
-      X509Certificate localX509Certificate = (X509Certificate)((Iterator)localObject).next();
-      PublicKey localPublicKey = localX509Certificate.getPublicKey();
+      X509Certificate localX509Certificate;
+      PublicKey localPublicKey;
+      if (((Iterator)localObject).hasNext())
+      {
+        localX509Certificate = (X509Certificate)((Iterator)localObject).next();
+        localPublicKey = localX509Certificate.getPublicKey();
+      }
       try
       {
         paramX509Certificate.verify(localPublicKey);
         return localX509Certificate;
       }
       catch (Exception localException) {}
+      return null;
     }
-    return null;
   }
   
   public int hashCode()
@@ -72,7 +76,7 @@ public final class BasicTrustRootIndex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.tls.BasicTrustRootIndex
  * JD-Core Version:    0.7.0.1
  */

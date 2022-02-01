@@ -1,59 +1,26 @@
 package com.tencent.mobileqq.config.splashlogo;
 
-import com.tencent.mobileqq.app.NearbyGrayTipsManager;
-import com.tencent.mobileqq.app.NearbyGrayTipsManager.GrayTipsConfig;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.mobileqq.utils.StringUtil;
-import com.tencent.qphone.base.util.QLog;
-import java.io.File;
-import oicq.wlogin_sdk.tools.MD5;
+import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
+import com.tencent.mobileqq.hotchat.api.IHotChatSCMng;
+import com.tencent.mobileqq.pb.PBInt32Field;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 class ConfigServlet$8
   implements Runnable
 {
-  ConfigServlet$8(ConfigServlet paramConfigServlet, QQAppInterface paramQQAppInterface, String paramString1, File paramFile, String paramString2, NearbyGrayTipsManager paramNearbyGrayTipsManager) {}
+  ConfigServlet$8(ConfigServlet paramConfigServlet, QQAppInterface paramQQAppInterface, ConfigurationService.Config paramConfig) {}
   
   public void run()
   {
-    try
-    {
-      if (HttpDownloadUtil.download(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaIoFile))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("nearby_aio_operation_gray_tips", 2, "file download succeed. url=" + this.jdField_a_of_type_JavaLangString);
-        }
-        Object localObject = MD5.getFileMD5(this.jdField_a_of_type_JavaIoFile);
-        if ((StringUtil.a(this.b)) || ((localObject != null) && (this.b.equals(((String)localObject).toLowerCase()))))
-        {
-          localObject = NearbyGrayTipsManager.a(this.jdField_a_of_type_JavaIoFile);
-          if (localObject != null)
-          {
-            this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a((NearbyGrayTipsManager.GrayTipsConfig)localObject);
-            this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.a((NearbyGrayTipsManager.GrayTipsConfig)localObject, true);
-            this.jdField_a_of_type_ComTencentMobileqqAppNearbyGrayTipsManager.b((NearbyGrayTipsManager.GrayTipsConfig)localObject, true);
-            NearbyGrayTipsManager.a((NearbyGrayTipsManager.GrayTipsConfig)localObject);
-          }
-          this.jdField_a_of_type_JavaIoFile.delete();
-        }
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d("nearby_aio_operation_gray_tips", 2, "file download failed. url=" + this.jdField_a_of_type_JavaLangString);
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("nearby_aio_operation_gray_tips", 2, "download file exp=", localException);
-      }
-    }
+    boolean bool = ((IHotChatSCMng)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.HOTCHAT_SCENE_CONFIG_MANAGER)).updateHotChatSceneConfig(this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config);
+    SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqConfigStructSplashprotoConfigurationService$Config.version.get(), bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.splashlogo.ConfigServlet.8
  * JD-Core Version:    0.7.0.1
  */

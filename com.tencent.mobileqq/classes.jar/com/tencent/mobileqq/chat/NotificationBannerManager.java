@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.commonsdk.util.notification.QQNotificationManager;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.NotificationGuideBannerProcessor;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -50,7 +51,7 @@ public class NotificationBannerManager
   
   private void b(BannerManager paramBannerManager, Message paramMessage)
   {
-    paramBannerManager.a(21, 2, paramMessage);
+    paramBannerManager.a(NotificationGuideBannerProcessor.a, 2, paramMessage);
     ReportController.a(this.a, "dc00898", "", "", "0X8009EDE", "0X8009EDE", 23, 0, "", "", "", "");
   }
   
@@ -68,7 +69,7 @@ public class NotificationBannerManager
   
   public void a(BannerManager paramBannerManager)
   {
-    paramBannerManager.a(21, 0, null);
+    paramBannerManager.a(NotificationGuideBannerProcessor.a, 0, null);
   }
   
   public void a(BannerManager paramBannerManager, Message paramMessage)
@@ -97,7 +98,7 @@ public class NotificationBannerManager
   {
     String str1 = NotificationBannerConfProcessor.a().a();
     String str2 = NotificationBannerConfProcessor.a().b();
-    paramTipsBar.setTipsIcon(this.a.getApp().getResources().getDrawable(2130841479));
+    paramTipsBar.setTipsIcon(this.a.getApp().getResources().getDrawable(2130841360));
     paramTipsBar.setTipsText(str1);
     paramTipsBar.a().setClickable(false);
     paramTipsBar.setButtonText(str2);
@@ -137,7 +138,7 @@ public class NotificationBannerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.chat.NotificationBannerManager
  * JD-Core Version:    0.7.0.1
  */

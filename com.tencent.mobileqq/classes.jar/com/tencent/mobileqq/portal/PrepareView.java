@@ -58,46 +58,42 @@ public class PrepareView
   
   private Bitmap a(int paramInt)
   {
-    int m = 0;
-    int k;
-    if (this.jdField_a_of_type_Int == 1) {
-      if (paramInt == 0) {
-        k = 2130845582;
+    int k = this.jdField_a_of_type_Int;
+    if (k == 1)
+    {
+      if (paramInt == 0)
+      {
+        paramInt = 2130845455;
+        break label64;
+      }
+      if (paramInt == 1)
+      {
+        paramInt = 2130845456;
+        break label64;
       }
     }
-    while (k != 0)
+    else if ((k == 2) || (k == 3))
     {
-      Drawable localDrawable = getResources().getDrawable(k);
-      if ((localDrawable instanceof SkinnableBitmapDrawable))
+      if (paramInt == 0)
       {
-        return ((SkinnableBitmapDrawable)localDrawable).getBitmap();
-        k = m;
-        if (paramInt == 1)
-        {
-          k = 2130845583;
-          continue;
-          if (this.jdField_a_of_type_Int != 2)
-          {
-            k = m;
-            if (this.jdField_a_of_type_Int != 3) {
-              break;
-            }
-          }
-          else if (paramInt == 0)
-          {
-            k = 2130845404;
-          }
-          else
-          {
-            k = m;
-            if (paramInt == 1) {
-              k = 2130845405;
-            }
-          }
-        }
+        paramInt = 2130845277;
+        break label64;
       }
-      else if ((localDrawable instanceof BitmapDrawable))
+      if (paramInt == 1)
       {
+        paramInt = 2130845278;
+        break label64;
+      }
+    }
+    paramInt = 0;
+    label64:
+    if (paramInt != 0)
+    {
+      Drawable localDrawable = getResources().getDrawable(paramInt);
+      if ((localDrawable instanceof SkinnableBitmapDrawable)) {
+        return ((SkinnableBitmapDrawable)localDrawable).getBitmap();
+      }
+      if ((localDrawable instanceof BitmapDrawable)) {
         return ((BitmapDrawable)localDrawable).getBitmap();
       }
     }
@@ -106,26 +102,36 @@ public class PrepareView
   
   public void a()
   {
-    if (this.jdField_a_of_type_Int < 0) {}
-    while (this.jdField_a_of_type_AndroidOsCountDownTimer == null) {
+    if (this.jdField_a_of_type_Int < 0) {
       return;
     }
-    this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
-    this.jdField_a_of_type_AndroidOsCountDownTimer = null;
+    CountDownTimer localCountDownTimer = this.jdField_a_of_type_AndroidOsCountDownTimer;
+    if (localCountDownTimer != null)
+    {
+      localCountDownTimer.cancel();
+      this.jdField_a_of_type_AndroidOsCountDownTimer = null;
+    }
   }
   
   public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PrepareView", 2, "startTimeDown time = " + paramLong + ",mMode = " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startTimeDown time = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append(",mMode = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      QLog.d("PrepareView", 2, ((StringBuilder)localObject).toString());
     }
     if (this.jdField_a_of_type_Int < 0) {
       return;
     }
     this.jdField_b_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-    if (this.jdField_a_of_type_AndroidOsCountDownTimer != null) {
-      this.jdField_a_of_type_AndroidOsCountDownTimer.cancel();
+    Object localObject = this.jdField_a_of_type_AndroidOsCountDownTimer;
+    if (localObject != null) {
+      ((CountDownTimer)localObject).cancel();
     }
     this.jdField_a_of_type_AndroidOsCountDownTimer = new PrepareView.1(this, paramLong, 1000L);
     this.jdField_a_of_type_AndroidOsCountDownTimer.start();
@@ -133,105 +139,102 @@ public class PrepareView
   
   public void a(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView != null)) {
-        break label53;
+    int k = this.jdField_a_of_type_Int;
+    if (k == 1)
+    {
+      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView != null)) {}
+    }
+    else if ((k == 2) || (k == 3))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView == null) {
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView == null) {
+        return;
       }
     }
-    for (;;)
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap == null) {
+      localBitmap = a(0);
+    }
+    if (localBitmap != null)
     {
-      return;
-      if (((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3)) || ((this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView != null) && (this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView != null)))
+      paramBitmap = this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView;
+      if (paramBitmap != null)
       {
-        label53:
-        Bitmap localBitmap = paramBitmap;
-        if (paramBitmap == null) {
-          localBitmap = a(0);
+        k = this.jdField_a_of_type_Int;
+        if (k == 3) {
+          paramBitmap.a(localBitmap);
+        } else if (k == 2) {
+          paramBitmap.setLogo(localBitmap);
         }
-        if (localBitmap == null) {
-          break;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView != null)
-        {
-          if (this.jdField_a_of_type_Int != 3) {
-            break label116;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView.a(localBitmap);
-        }
-        while ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Int == 1))
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-          return;
-          label116:
-          if (this.jdField_a_of_type_Int == 2) {
-            this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView.setLogo(localBitmap);
-          }
-        }
+      }
+      paramBitmap = this.jdField_a_of_type_AndroidWidgetImageView;
+      if ((paramBitmap != null) && (this.jdField_a_of_type_Int == 1)) {
+        paramBitmap.setImageBitmap(localBitmap);
       }
     }
   }
   
   public boolean a(int paramInt)
   {
-    boolean bool = false;
     a();
     removeAllViews();
     if (paramInt == 1)
     {
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561270, this, true);
-      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370833));
-      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131372117));
+      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561113, this, true);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370464));
+      this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131371699));
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131379351));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379347));
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379348));
-      this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379350));
-      this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366080));
-      this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379337));
-      this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379338));
-      this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131379339));
-      this.g = ((TextView)findViewById(2131379340));
-      this.h = ((TextView)findViewById(2131369187));
-      this.i = ((TextView)findViewById(2131369188));
-      this.j = ((TextView)findViewById(2131370409));
-      Object localObject = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getAssets(), "fonts/DS-DIGIB.TTF");
-      this.jdField_a_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_c_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_d_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_e_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.jdField_f_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
-      this.g.setTypeface((Typeface)localObject);
-      this.h.setTypeface((Typeface)localObject);
-      this.i.setTypeface((Typeface)localObject);
-      this.j.setTypeface((Typeface)localObject);
-      this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131370260));
-      this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131377062));
-      this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131381977));
-      this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365401));
-      localObject = (RelativeLayout.LayoutParams)this.jdField_f_of_type_AndroidWidgetImageView.getLayoutParams();
-      if (localObject != null)
-      {
-        ((RelativeLayout.LayoutParams)localObject).topMargin = AIOUtils.a(25.0F, getResources());
-        this.jdField_f_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if ((paramInt != 2) && (paramInt != 3)) {
+        return false;
       }
-      paramInt = AIOUtils.a(475.0F, getResources());
-      int k = AIOUtils.a(335.0F, getResources());
-      this.jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView = new ImageShakeAnimView(this.jdField_a_of_type_AndroidContentContext, paramInt, k, (getResources().getDisplayMetrics().widthPixels - paramInt) / 2, 0, Integer.valueOf(2130845532), true);
-      localObject = new RelativeLayout.LayoutParams(paramInt, k);
-      ((RelativeLayout.LayoutParams)localObject).addRule(14);
-      addView(this.jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView, 0, (ViewGroup.LayoutParams)localObject);
-      bool = true;
-      do
-      {
-        return bool;
-      } while ((paramInt != 2) && (paramInt != 3));
-      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561269, this, true);
-      this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView = ((ImageSwitchAnimView)findViewById(2131370833));
-      this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView = ((ImageAlphaSwitchView)findViewById(2131372117));
+      LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561112, this, true);
+      this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView = ((ImageSwitchAnimView)findViewById(2131370464));
+      this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView = ((ImageAlphaSwitchView)findViewById(2131371699));
     }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131378701));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378697));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378698));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378700));
+    this.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365997));
+    this.jdField_d_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378689));
+    this.jdField_e_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378690));
+    this.jdField_f_of_type_AndroidWidgetTextView = ((TextView)findViewById(2131378691));
+    this.g = ((TextView)findViewById(2131378692));
+    this.h = ((TextView)findViewById(2131368917));
+    this.i = ((TextView)findViewById(2131368918));
+    this.j = ((TextView)findViewById(2131370068));
+    Object localObject = Typeface.createFromAsset(this.jdField_a_of_type_AndroidContentContext.getAssets(), "fonts/DS-DIGIB.TTF");
+    this.jdField_a_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
+    this.jdField_b_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
+    this.jdField_c_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
+    this.jdField_d_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
+    this.jdField_e_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
+    this.jdField_f_of_type_AndroidWidgetTextView.setTypeface((Typeface)localObject);
+    this.g.setTypeface((Typeface)localObject);
+    this.h.setTypeface((Typeface)localObject);
+    this.i.setTypeface((Typeface)localObject);
+    this.j.setTypeface((Typeface)localObject);
+    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131369928));
+    this.jdField_d_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131376540));
+    this.jdField_e_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131381181));
+    this.jdField_f_of_type_AndroidWidgetImageView = ((ImageView)findViewById(2131365266));
+    localObject = (RelativeLayout.LayoutParams)this.jdField_f_of_type_AndroidWidgetImageView.getLayoutParams();
+    if (localObject != null)
+    {
+      ((RelativeLayout.LayoutParams)localObject).topMargin = AIOUtils.b(25.0F, getResources());
+      this.jdField_f_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+    }
+    paramInt = AIOUtils.b(475.0F, getResources());
+    int k = AIOUtils.b(335.0F, getResources());
+    this.jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView = new ImageShakeAnimView(this.jdField_a_of_type_AndroidContentContext, paramInt, k, (getResources().getDisplayMetrics().widthPixels - paramInt) / 2, 0, Integer.valueOf(2130845405), true);
+    localObject = new RelativeLayout.LayoutParams(paramInt, k);
+    ((RelativeLayout.LayoutParams)localObject).addRule(14);
+    addView(this.jdField_a_of_type_ComTencentMobileqqPortalImageShakeAnimView, 0, (ViewGroup.LayoutParams)localObject);
+    return true;
   }
   
   public void b()
@@ -241,52 +244,65 @@ public class PrepareView
   
   public void b(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_Int == 1) {
-      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView != null)) {
-        break label53;
+    int k = this.jdField_a_of_type_Int;
+    if (k == 1)
+    {
+      if ((this.jdField_a_of_type_AndroidWidgetImageView != null) && (this.jdField_b_of_type_AndroidWidgetImageView != null)) {}
+    }
+    else if ((k == 2) || (k == 3))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView == null) {
+        return;
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView == null) {
+        return;
       }
     }
-    for (;;)
+    Bitmap localBitmap = paramBitmap;
+    if (paramBitmap == null) {
+      localBitmap = a(1);
+    }
+    if (localBitmap != null)
     {
-      return;
-      if (((this.jdField_a_of_type_Int != 2) && (this.jdField_a_of_type_Int != 3)) || ((this.jdField_a_of_type_ComTencentMobileqqPortalImageSwitchAnimView != null) && (this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView != null)))
+      paramBitmap = this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView;
+      if (paramBitmap != null)
       {
-        label53:
-        Bitmap localBitmap = paramBitmap;
-        if (paramBitmap == null) {
-          localBitmap = a(1);
-        }
-        if (localBitmap == null) {
-          break;
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView != null)
+        k = this.jdField_a_of_type_Int;
+        if (k == 3)
         {
-          if (this.jdField_a_of_type_Int != 3) {
-            break label129;
-          }
-          this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setGravity(3);
+          paramBitmap.setGravity(3);
           this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.a(localBitmap);
         }
-        while ((this.jdField_b_of_type_AndroidWidgetImageView != null) && (this.jdField_a_of_type_Int == 1))
+        else if (k == 2)
         {
-          this.jdField_b_of_type_AndroidWidgetImageView.setImageBitmap(localBitmap);
-          return;
-          label129:
-          if (this.jdField_a_of_type_Int == 2)
+          paramBitmap.setGravity(17);
+          this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setImage(localBitmap);
+          k = localBitmap.getWidth();
+          int m = localBitmap.getHeight();
+          paramBitmap = this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.getLayoutParams();
+          int n = paramBitmap.width;
+          paramBitmap.width = ((int)(paramBitmap.height * (k * 1.0F / m)));
+          if (QLog.isColorLevel())
           {
-            this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setGravity(17);
-            this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setImage(localBitmap);
-            int k = localBitmap.getWidth();
-            int m = localBitmap.getHeight();
-            paramBitmap = this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.getLayoutParams();
-            int n = paramBitmap.width;
-            paramBitmap.width = ((int)(paramBitmap.height * (k * 1.0F / m)));
-            if (QLog.isColorLevel()) {
-              QLog.d("PrepareView", 2, "updateBusinessNameBitmap,bitmapWidth = " + k + ",bitmapHeight = " + m + ",lp.width = " + paramBitmap.width + ",lp.height = " + paramBitmap.height + ",originWidth = " + n);
-            }
-            this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setLayoutParams(paramBitmap);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("updateBusinessNameBitmap,bitmapWidth = ");
+            localStringBuilder.append(k);
+            localStringBuilder.append(",bitmapHeight = ");
+            localStringBuilder.append(m);
+            localStringBuilder.append(",lp.width = ");
+            localStringBuilder.append(paramBitmap.width);
+            localStringBuilder.append(",lp.height = ");
+            localStringBuilder.append(paramBitmap.height);
+            localStringBuilder.append(",originWidth = ");
+            localStringBuilder.append(n);
+            QLog.d("PrepareView", 2, localStringBuilder.toString());
           }
+          this.jdField_a_of_type_ComTencentMobileqqPortalImageAlphaSwitchView.setLayoutParams(paramBitmap);
         }
+      }
+      paramBitmap = this.jdField_b_of_type_AndroidWidgetImageView;
+      if ((paramBitmap != null) && (this.jdField_a_of_type_Int == 1)) {
+        paramBitmap.setImageBitmap(localBitmap);
       }
     }
   }
@@ -302,78 +318,58 @@ public class PrepareView
     try
     {
       paramBitmap2 = getBackground();
-      if ((paramBitmap2 == null) || (!(paramBitmap2 instanceof BitmapDrawable))) {
-        break label161;
+      if ((paramBitmap2 != null) && ((paramBitmap2 instanceof BitmapDrawable)) && (((BitmapDrawable)paramBitmap2).getBitmap() == paramBitmap1)) {
+        break label68;
       }
-      paramBitmap2 = ((BitmapDrawable)paramBitmap2).getBitmap();
-      if (paramBitmap2 != paramBitmap1) {
-        break label161;
-      }
+      super.setBackgroundDrawable(new BitmapDrawable(getResources(), paramBitmap1));
     }
     catch (Throwable paramBitmap1)
     {
-      label41:
-      break label41;
+      label68:
+      break label68;
     }
+    super.setBackgroundResource(2130845289);
     if (paramBitmap3 != null) {}
-    label161:
-    label190:
+    label187:
     try
     {
       paramBitmap1 = this.jdField_c_of_type_AndroidWidgetImageView.getDrawable();
-      if ((paramBitmap1 == null) || (!(paramBitmap1 instanceof BitmapDrawable))) {
-        break label190;
+      if ((paramBitmap1 != null) && ((paramBitmap1 instanceof BitmapDrawable)) && (((BitmapDrawable)paramBitmap1).getBitmap() == paramBitmap3)) {
+        break label126;
       }
-      paramBitmap1 = ((BitmapDrawable)paramBitmap1).getBitmap();
-      if (paramBitmap1 != paramBitmap3) {
-        break label190;
-      }
+      this.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap3);
     }
     catch (Throwable paramBitmap1)
     {
-      label77:
-      break label77;
+      label126:
+      break label126;
     }
+    this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845285);
     if (paramBitmap4 != null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        paramBitmap1 = this.jdField_d_of_type_AndroidWidgetImageView.getDrawable();
-        if ((paramBitmap1 == null) || (!(paramBitmap1 instanceof BitmapDrawable))) {
-          continue;
-        }
-        paramBitmap1 = ((BitmapDrawable)paramBitmap1).getBitmap();
-        if (paramBitmap1 != paramBitmap4) {
-          continue;
-        }
+      paramBitmap1 = this.jdField_d_of_type_AndroidWidgetImageView.getDrawable();
+      if ((paramBitmap1 != null) && ((paramBitmap1 instanceof BitmapDrawable)) && (((BitmapDrawable)paramBitmap1).getBitmap() == paramBitmap4)) {
+        break label187;
       }
-      catch (Throwable paramBitmap1)
-      {
-        continue;
-      }
-      if (paramBitmap5 == null) {
-        continue;
-      }
-      paramBitmap1 = this.jdField_e_of_type_AndroidWidgetImageView.getDrawable();
-      if ((paramBitmap1 != null) && ((paramBitmap1 instanceof BitmapDrawable)) && (((BitmapDrawable)paramBitmap1).getBitmap() == paramBitmap5)) {
-        break;
-      }
-      this.jdField_e_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap5);
-      return;
-      super.setBackgroundDrawable(new BitmapDrawable(getResources(), paramBitmap1));
-      break label41;
-      super.setBackgroundResource(2130845416);
-      break label41;
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap3);
-      break label77;
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130845412);
-      break label77;
       this.jdField_d_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap4);
-      continue;
-      this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130845413);
     }
-    this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130845540);
+    catch (Throwable paramBitmap1)
+    {
+      break label187;
+    }
+    this.jdField_d_of_type_AndroidWidgetImageView.setImageResource(2130845286);
+    if (paramBitmap5 != null)
+    {
+      paramBitmap1 = this.jdField_e_of_type_AndroidWidgetImageView.getDrawable();
+      if ((paramBitmap1 == null) || (!(paramBitmap1 instanceof BitmapDrawable)) || (((BitmapDrawable)paramBitmap1).getBitmap() != paramBitmap5)) {
+        this.jdField_e_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap5);
+      }
+    }
+    else
+    {
+      this.jdField_e_of_type_AndroidWidgetImageView.setImageResource(2130845413);
+    }
   }
   
   public void setLogo(Bitmap paramBitmap1, Bitmap paramBitmap2)
@@ -391,8 +387,14 @@ public class PrepareView
       while (k < paramList.size())
       {
         PortalManager.LogoConfig localLogoConfig = (PortalManager.LogoConfig)paramList.get(k);
-        if (localLogoConfig != null) {
-          QLog.d("PortalManager", 2, "prepareview, setLogoConfigList, index=" + k + ", p=" + localLogoConfig.toString());
+        if (localLogoConfig != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("prepareview, setLogoConfigList, index=");
+          localStringBuilder.append(k);
+          localStringBuilder.append(", p=");
+          localStringBuilder.append(localLogoConfig.toString());
+          QLog.d("PortalManager", 2, localStringBuilder.toString());
         }
         k += 1;
       }
@@ -401,16 +403,17 @@ public class PrepareView
   
   public void setMode(int paramInt)
   {
-    if (((paramInt != 1) && (paramInt != 2) && (paramInt != 3)) || (this.jdField_a_of_type_Int == paramInt)) {}
-    while (!a(paramInt)) {
+    if (((paramInt != 1) && (paramInt != 2) && (paramInt != 3)) || (this.jdField_a_of_type_Int == paramInt)) {
       return;
     }
-    this.jdField_a_of_type_Int = paramInt;
+    if (a(paramInt)) {
+      this.jdField_a_of_type_Int = paramInt;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PrepareView
  * JD-Core Version:    0.7.0.1
  */

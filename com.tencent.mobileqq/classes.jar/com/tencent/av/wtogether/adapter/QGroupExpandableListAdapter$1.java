@@ -14,23 +14,23 @@ class QGroupExpandableListAdapter$1
     super(paramInt1, paramInt2, paramArrayOfInt1, paramInt3, paramArrayOfInt2, paramArrayOfInt3, paramArrayOfInt4);
   }
   
-  public View a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  public void getRightMenuItemInfo(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
   {
-    paramSwipRightMenuItem = super.a(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
+    this.a.a(paramInt, paramArrayOfSwipRightMenuItem, paramObject);
+  }
+  
+  public View updateRightMenuItem(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem paramSwipRightMenuItem, View.OnClickListener paramOnClickListener)
+  {
+    paramSwipRightMenuItem = super.updateRightMenuItem(paramInt, paramObject, paramSwipRightMenuItem, paramOnClickListener);
     if ((paramSwipRightMenuItem instanceof SimpleTextView)) {
       paramSwipRightMenuItem.setTag(paramObject);
     }
     return paramSwipRightMenuItem;
   }
-  
-  public void a(int paramInt, Object paramObject, SwipRightMenuBuilder.SwipRightMenuItem[] paramArrayOfSwipRightMenuItem)
-  {
-    this.a.a(paramInt, paramArrayOfSwipRightMenuItem, paramObject);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.adapter.QGroupExpandableListAdapter.1
  * JD-Core Version:    0.7.0.1
  */

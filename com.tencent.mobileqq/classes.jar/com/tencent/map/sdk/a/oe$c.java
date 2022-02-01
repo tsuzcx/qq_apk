@@ -25,12 +25,21 @@ public final class oe$c
   
   public final String toString()
   {
-    return "Options{mCacheDirectory=" + this.a + ", mCacheName='" + this.b + '\'' + ", fileAccessStrategy=" + this.c + "} " + super.toString();
+    StringBuilder localStringBuilder = new StringBuilder("Options{mCacheDirectory=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", mCacheName='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fileAccessStrategy=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("} ");
+    localStringBuilder.append(super.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.oe.c
  * JD-Core Version:    0.7.0.1
  */

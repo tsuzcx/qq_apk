@@ -18,19 +18,14 @@ class TroopFileItemBuilder$2
     MessageForTroopFile localMessageForTroopFile = this.a.a(paramView);
     Activity localActivity = (Activity)paramView.getContext();
     Intent localIntent = new Intent();
-    if (localIntent == null) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localIntent.putExtra(TroopFileProxyActivity.a, localMessageForTroopFile.frienduin);
-      TroopFileProxyActivity.a(localActivity, localIntent, this.a.a.getCurrentAccountUin());
-    }
+    localIntent.putExtra(TroopFileProxyActivity.a, localMessageForTroopFile.frienduin);
+    TroopFileProxyActivity.a(localActivity, localIntent, this.a.a.getCurrentAccountUin());
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopFileItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

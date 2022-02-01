@@ -44,7 +44,7 @@ public class HippyTKDImageView
   public static final String EXTRA_REQUEST_USE_THUMBNAIL = "useThumbnail";
   public static final String EXTRA_REQUEST_VIEW_HEIGHT = "viewHeight";
   public static final String EXTRA_REQUEST_VIEW_WIDTH = "viewWidth";
-  private static final int FILE_DESCRIPTOR = "file://".length();
+  private static final int FILE_DESCRIPTOR = 7;
   public static final int MAX_RETRYCOUNTS = 2;
   public static final int NIGHT_MODE_MASK_COLOR = -2147483648;
   public static final long RETRY_INTERVAL = 2000L;
@@ -96,14 +96,15 @@ public class HippyTKDImageView
   
   private float getBlurRate(int paramInt1, int paramInt2, int paramInt3)
   {
-    float f2 = (float)Math.sqrt(paramInt3);
-    float f1 = f2;
-    if (f2 > paramInt1) {
-      f1 = paramInt1;
+    float f1 = (float)Math.sqrt(paramInt3);
+    float f2 = paramInt1;
+    if (f1 > f2) {
+      f1 = f2;
     }
+    float f3 = paramInt2;
     f2 = f1;
-    if (f1 > paramInt2) {
-      f2 = paramInt2;
+    if (f1 > f3) {
+      f2 = f3;
     }
     return f2;
   }
@@ -116,19 +117,18 @@ public class HippyTKDImageView
     try
     {
       int i = new ExifInterface(paramString).getAttributeInt("Orientation", 1);
-      switch (i)
+      if (i != 3)
       {
-      case 4: 
-      case 5: 
-      case 7: 
-      default: 
-        return 0;
-      case 3: 
-        return 180;
-      case 6: 
+        if (i != 6)
+        {
+          if (i != 8) {
+            return 0;
+          }
+          return 270;
+        }
         return 90;
       }
-      return 270;
+      return 180;
     }
     catch (Throwable paramString)
     {
@@ -148,7 +148,7 @@ public class HippyTKDImageView
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public Bitmap getBitmap()
+  protected Bitmap getBitmap()
   {
     if (this.mBlurRadius > 0) {
       return this.mBlurBitmap;
@@ -170,50 +170,51 @@ public class HippyTKDImageView
     return super.getContentDescription();
   }
   
-  public Object getFetchParam()
+  protected Object getFetchParam()
   {
-    int i = 0;
     Object localObject2 = super.getFetchParam();
     Object localObject1 = localObject2;
     if (localObject2 == null) {
       localObject1 = new HippyMap();
     }
-    int j;
     if ((localObject1 instanceof HippyMap))
     {
       localObject2 = (HippyMap)localObject1;
-      if ((this.mEnableLoadingImg) || (!this.mEnableCacheImg)) {
-        break label217;
+      if ((!this.mEnableLoadingImg) && (this.mEnableCacheImg)) {
+        ((HippyMap)localObject2).pushObject("RequestLevel", new Integer(2));
+      } else {
+        ((HippyMap)localObject2).pushObject("RequestLevel", new Integer(1));
       }
-      ((HippyMap)localObject2).pushObject("RequestLevel", new Integer(2));
       if (this.mUseThumbnail)
       {
-        RenderNode localRenderNode = this.mHippyContext.getRenderManager().getRenderNode(getId());
-        if (localRenderNode == null) {
-          break label235;
+        localObject3 = this.mHippyContext.getRenderManager().getRenderNode(getId());
+        int j = 0;
+        int i;
+        if (localObject3 != null)
+        {
+          j = ((RenderNode)localObject3).getWidth();
+          i = ((RenderNode)localObject3).getHeight();
         }
-        j = localRenderNode.getWidth();
-        i = localRenderNode.getHeight();
+        else
+        {
+          i = 0;
+        }
+        ((HippyMap)localObject2).pushObject("useThumbnail", Boolean.valueOf(true));
+        ((HippyMap)localObject2).pushObject("viewWidth", Integer.valueOf(j));
+        ((HippyMap)localObject2).pushObject("viewHeight", Integer.valueOf(i));
       }
-    }
-    for (;;)
-    {
-      ((HippyMap)localObject2).pushObject("useThumbnail", Boolean.valueOf(true));
-      ((HippyMap)localObject2).pushObject("viewWidth", Integer.valueOf(j));
-      ((HippyMap)localObject2).pushObject("viewHeight", Integer.valueOf(i));
       ((HippyMap)localObject2).pushObject("gifEnabled", Boolean.valueOf(this.mGifEnabled));
       ((HippyMap)localObject2).pushObject("reportdata", this.mSourceFrom);
-      ((HippyMap)localObject2).pushObject("businessname", "Hippy_" + this.mBusinessName);
-      if (this.mInitPropMap != null) {
-        ((HippyMap)localObject2).pushJSONObject(this.mInitPropMap.toJSONObject());
+      Object localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("Hippy_");
+      ((StringBuilder)localObject3).append(this.mBusinessName);
+      ((HippyMap)localObject2).pushObject("businessname", ((StringBuilder)localObject3).toString());
+      localObject3 = this.mInitPropMap;
+      if (localObject3 != null) {
+        ((HippyMap)localObject2).pushJSONObject(((HippyMap)localObject3).toJSONObject());
       }
-      return localObject1;
-      label217:
-      ((HippyMap)localObject2).pushObject("RequestLevel", new Integer(1));
-      break;
-      label235:
-      j = 0;
     }
+    return localObject1;
   }
   
   public String getSourceFrom()
@@ -221,51 +222,50 @@ public class HippyTKDImageView
     return this.mSourceFrom;
   }
   
-  public void handleGetImageFail(Throwable paramThrowable)
+  protected void handleGetImageFail(Throwable paramThrowable)
   {
     resetRetry();
     super.handleGetImageFail(paramThrowable);
     onGetImageFailed(this.mUrl, paramThrowable);
   }
   
-  public void handleGetImageStart()
+  protected void handleGetImageStart()
   {
     super.handleGetImageStart();
     this.mStartFetchTime = System.currentTimeMillis();
   }
   
-  public void handleGetImageSuccess()
+  protected void handleGetImageSuccess()
   {
     super.handleGetImageSuccess();
     resetRetry();
-    int j = 1;
-    int i = j;
-    if (this.mSourceDrawable != null)
+    Object localObject;
+    if ((this.mSourceDrawable != null) && ((this.mSourceDrawable.getExtraData() instanceof Map)))
     {
-      i = j;
-      if ((this.mSourceDrawable.getExtraData() instanceof Map))
+      localObject = ((Map)this.mSourceDrawable.getExtraData()).get("RequestLevel");
+      if ((localObject instanceof Integer))
       {
-        localObject = ((Map)this.mSourceDrawable.getExtraData()).get("RequestLevel");
-        i = j;
-        if ((localObject instanceof Integer)) {
-          i = ((Integer)localObject).intValue();
-        }
+        i = ((Integer)localObject).intValue();
+        break label70;
       }
     }
+    int i = 1;
+    label70:
     String str = this.mUrl;
-    if (this.mSourceDrawable != null) {}
-    for (Object localObject = this.mSourceDrawable.getBitmap();; localObject = null)
-    {
-      onGetImageSuccess(str, (Bitmap)localObject, System.currentTimeMillis() - this.mStartFetchTime, i);
-      return;
+    if (this.mSourceDrawable != null) {
+      localObject = this.mSourceDrawable.getBitmap();
+    } else {
+      localObject = null;
     }
+    onGetImageSuccess(str, (Bitmap)localObject, System.currentTimeMillis() - this.mStartFetchTime, i);
   }
   
   protected void handleNightModeMask()
   {
-    if (this.mTintColors != null)
+    HippyArray localHippyArray = this.mTintColors;
+    if (localHippyArray != null)
     {
-      super.setTintColor(HippyTKDSkinHandler.getColor(this.mTintColors));
+      super.setTintColor(HippyTKDSkinHandler.getColor(localHippyArray));
       return;
     }
     super.setTintColor(this.mTintColor);
@@ -298,7 +298,7 @@ public class HippyTKDImageView
     resetRetry();
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     if ((!this.mEnableLoadingImg) && (!this.mEnableCacheImg) && (this.mUrl != null) && (UrlUtils.isWebUrl(this.mUrl))) {
       onFetchImage(this.mUrl);
@@ -306,45 +306,41 @@ public class HippyTKDImageView
     super.onAttachedToWindow();
   }
   
-  public void onFetchImage(String paramString)
+  protected void onFetchImage(String paramString)
   {
     Drawable localDrawable = getBackground();
     this.mContentDrawable = null;
     this.mBGDrawable = null;
-    int i;
     if ((paramString != null) && ((UrlUtils.isWebUrl(paramString)) || (UrlUtils.isFileUrl(paramString))))
     {
-      i = ResourceUtil.getColor(2131167271);
-      if (this.mHippyTKDSkinHandler.getBackgroundColors() == null) {
-        break label147;
+      int i = ResourceUtil.getColor(2131167297);
+      if (this.mHippyTKDSkinHandler.getBackgroundColors() != null) {
+        i = HippyTKDSkinHandler.getColor(this.mHippyTKDSkinHandler.getBackgroundColors());
       }
-      i = HippyTKDSkinHandler.getColor(this.mHippyTKDSkinHandler.getBackgroundColors());
-    }
-    label147:
-    for (;;)
-    {
       if ((localDrawable instanceof CommonBackgroundDrawable))
       {
-        ((CommonBackgroundDrawable)localDrawable).setBackgroundColor(i);
-        setCustomBackgroundDrawable((CommonBackgroundDrawable)localDrawable);
+        paramString = (CommonBackgroundDrawable)localDrawable;
+        paramString.setBackgroundColor(i);
+        setCustomBackgroundDrawable(paramString);
       }
-      for (;;)
+      else if ((localDrawable instanceof LayerDrawable))
       {
-        setBackgroundColor(i);
-        return;
-        if (((localDrawable instanceof LayerDrawable)) && (((LayerDrawable)localDrawable).getNumberOfLayers() > 0))
+        paramString = (LayerDrawable)localDrawable;
+        if (paramString.getNumberOfLayers() > 0)
         {
-          paramString = ((LayerDrawable)localDrawable).getDrawable(0);
+          paramString = paramString.getDrawable(0);
           if ((paramString instanceof CommonBackgroundDrawable))
           {
-            ((CommonBackgroundDrawable)paramString).setBackgroundColor(i);
-            setCustomBackgroundDrawable((CommonBackgroundDrawable)paramString);
+            paramString = (CommonBackgroundDrawable)paramString;
+            paramString.setBackgroundColor(i);
+            setCustomBackgroundDrawable(paramString);
           }
         }
       }
-      resetContent();
+      setBackgroundColor(i);
       return;
     }
+    resetContent();
   }
   
   public void onGaussianBlurComplete(Bitmap paramBitmap, Map paramMap)
@@ -365,7 +361,7 @@ public class HippyTKDImageView
   
   public void onGetImageSuccess(String paramString, Bitmap paramBitmap, long paramLong, int paramInt) {}
   
-  public void onSetContent(String paramString)
+  protected void onSetContent(String paramString)
   {
     super.setBackgroundColor(0);
   }
@@ -376,7 +372,7 @@ public class HippyTKDImageView
     init();
   }
   
-  public void restoreBackgroundColorAfterSetContent()
+  protected void restoreBackgroundColorAfterSetContent()
   {
     if ((this.mBGDrawable != null) && (this.mHippyTKDSkinHandler.getBackgroundColors() == null)) {
       this.mBGDrawable.setBackgroundColor(0);
@@ -391,8 +387,12 @@ public class HippyTKDImageView
   public void setBlurRadius(int paramInt)
   {
     this.mBlurRadius = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.d("hippyImageView", 2, "setBlurRadius blurRadius:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setBlurRadius blurRadius:");
+      localStringBuilder.append(paramInt);
+      QLog.d("hippyImageView", 2, localStringBuilder.toString());
     }
   }
   
@@ -436,55 +436,52 @@ public class HippyTKDImageView
     this.mGifEnabled = paramBoolean;
   }
   
-  public void setIniProps(HippyMap paramHippyMap)
+  public void setInitProps(HippyMap paramHippyMap)
   {
-    super.setIniProps(paramHippyMap);
+    super.setInitProps(paramHippyMap);
     this.mInitPropMap = paramHippyMap;
   }
   
   public void setNightModeOption(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (boolean bool = paramHippyMap.getBoolean("enable");; bool = true)
-    {
-      this.mUseNightModeMask = bool;
-      handleNightModeMask();
-      return;
+    boolean bool;
+    if (paramHippyMap != null) {
+      bool = paramHippyMap.getBoolean("enable");
+    } else {
+      bool = true;
     }
+    this.mUseNightModeMask = bool;
+    handleNightModeMask();
   }
   
   public void setNoPicModeOption(HippyMap paramHippyMap)
   {
     boolean bool2 = true;
-    if (paramHippyMap != null)
-    {
+    if (paramHippyMap != null) {
       bool1 = paramHippyMap.getBoolean("enable");
-      this.mEnableNoPicMode = bool1;
-      bool1 = bool2;
-      if (!this.mEnableLoadingImg) {
-        if (this.mEnableNoPicMode) {
-          break label48;
-        }
+    } else {
+      bool1 = true;
+    }
+    this.mEnableNoPicMode = bool1;
+    boolean bool1 = bool2;
+    if (!this.mEnableLoadingImg) {
+      if (!this.mEnableNoPicMode) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
     }
-    label48:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.mEnableLoadingImg = bool1;
-      return;
-      bool1 = true;
-      break;
-    }
+    this.mEnableLoadingImg = bool1;
   }
   
   public void setReportData(HippyMap paramHippyMap)
   {
-    if (paramHippyMap != null) {}
-    for (paramHippyMap = paramHippyMap.getString("sourceFrom");; paramHippyMap = "")
-    {
-      this.mSourceFrom = paramHippyMap;
-      return;
+    if (paramHippyMap != null) {
+      paramHippyMap = paramHippyMap.getString("sourceFrom");
+    } else {
+      paramHippyMap = "";
     }
+    this.mSourceFrom = paramHippyMap;
   }
   
   public void setSources(HippyArray paramHippyArray)
@@ -514,24 +511,29 @@ public class HippyTKDImageView
   
   public void setpointsForCrop(HippyArray paramHippyArray)
   {
-    if ((paramHippyArray == null) || (paramHippyArray.size() < 4))
+    if ((paramHippyArray != null) && (paramHippyArray.size() >= 4))
     {
-      this.mFeedsNeedClip = false;
+      this.mFeedsClipPath.reset();
+      this.mFeedsClipPath.moveTo(PixelUtil.dp2px(paramHippyArray.getInt(0)), PixelUtil.dp2px(paramHippyArray.getInt(1)));
+      int i = 1;
+      for (;;)
+      {
+        int j = i * 2;
+        int k = j + 1;
+        if (k >= paramHippyArray.size()) {
+          break;
+        }
+        this.mFeedsClipPath.lineTo(PixelUtil.dp2px(paramHippyArray.getInt(j)), PixelUtil.dp2px(paramHippyArray.getInt(k)));
+        i += 1;
+      }
+      this.mFeedsClipPath.close();
+      this.mFeedsNeedClip = true;
       return;
     }
-    this.mFeedsClipPath.reset();
-    this.mFeedsClipPath.moveTo(PixelUtil.dp2px(paramHippyArray.getInt(0)), PixelUtil.dp2px(paramHippyArray.getInt(1)));
-    int i = 1;
-    while (i * 2 + 1 < paramHippyArray.size())
-    {
-      this.mFeedsClipPath.lineTo(PixelUtil.dp2px(paramHippyArray.getInt(i * 2)), PixelUtil.dp2px(paramHippyArray.getInt(i * 2 + 1)));
-      i += 1;
-    }
-    this.mFeedsClipPath.close();
-    this.mFeedsNeedClip = true;
+    this.mFeedsNeedClip = false;
   }
   
-  public boolean shouldFetchImage()
+  protected boolean shouldFetchImage()
   {
     if ((!this.mEnableLoadingImg) && (!this.mEnableCacheImg)) {
       return false;
@@ -539,87 +541,92 @@ public class HippyTKDImageView
     return super.shouldFetchImage();
   }
   
-  public boolean shouldSetContent()
+  protected boolean shouldSetContent()
   {
-    boolean bool = true;
-    Object localObject;
-    if (this.mSourceDrawable != null)
+    Object localObject = this.mSourceDrawable;
+    int i1 = 0;
+    if (localObject != null)
     {
       localObject = this.mSourceDrawable.getSource();
       if ((localObject != null) && (!((String)localObject).equals(this.mUrl)) && (isAttached())) {
-        bool = false;
+        return false;
       }
     }
-    do
+    if ((this.mBlurRadius > 0) && (this.mSourceDrawable != null) && (this.mSourceDrawable.getBitmap() != null))
     {
-      do
-      {
-        return bool;
-        if ((this.mBlurRadius <= 0) || (this.mSourceDrawable == null) || (this.mSourceDrawable.getBitmap() == null)) {
-          break;
-        }
-        localObject = getUrl() + "_" + this.mBlurRadius;
-      } while (((String)localObject).equals(this.mBlurBitmapKey));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(getUrl());
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(this.mBlurRadius);
+      localObject = ((StringBuilder)localObject).toString();
+      if (((String)localObject).equals(this.mBlurBitmapKey)) {
+        return true;
+      }
       this.mBlurBitmapKey = ((String)localObject);
       ThreadManagerV2.excute(new HippyTKDImageView.1(this), 16, null, false);
       return false;
-      if ((!this.mFitSystemRotation) || (this.mSourceDrawable == null) || (this.mSourceDrawable.getBitmap() == null)) {
-        break;
-      }
-      localObject = getUrl();
-    } while (((String)localObject).equals(this.mRotationBitmapKey));
-    this.mRotationBitmapKey = ((String)localObject);
-    if (this.mUrl.startsWith("file://")) {}
-    for (int i = getPicOrientation(this.mUrl.substring(7));; i = 0)
+    }
+    if ((this.mFitSystemRotation) && (this.mSourceDrawable != null) && (this.mSourceDrawable.getBitmap() != null))
     {
-      int j;
-      int k;
-      int m;
+      localObject = getUrl();
+      if (((String)localObject).equals(this.mRotationBitmapKey)) {
+        return true;
+      }
+      this.mRotationBitmapKey = ((String)localObject);
+      int i;
+      if (this.mUrl.startsWith("file://")) {
+        i = getPicOrientation(this.mUrl.substring(7));
+      } else {
+        i = 0;
+      }
       if (i != 0)
       {
         localObject = new Matrix();
-        j = this.mSourceDrawable.getBitmap().getWidth();
-        k = this.mSourceDrawable.getBitmap().getHeight();
-        if (i / 90 % 2 == 0) {
-          break label419;
+        int j = this.mSourceDrawable.getBitmap().getWidth();
+        int k = this.mSourceDrawable.getBitmap().getHeight();
+        int n;
+        int m;
+        if (i / 90 % 2 != 0)
+        {
+          n = j;
+          m = k;
         }
-        m = j;
-      }
-      for (int n = k;; n = j)
-      {
+        else
+        {
+          m = j;
+          n = k;
+        }
         RenderNode localRenderNode = this.mHippyContext.getRenderManager().getRenderNode(getId());
         int i2;
-        int i1;
         if (localRenderNode != null)
         {
-          i2 = localRenderNode.getWidth();
-          i1 = localRenderNode.getHeight();
+          i1 = localRenderNode.getWidth();
+          i2 = localRenderNode.getHeight();
         }
-        for (;;)
+        else
         {
-          if ((i2 > 0) && (i1 > 0))
-          {
-            m = Math.min(n / i2, m / i1);
-            if (m > 1) {
-              ((Matrix)localObject).postScale(1.0F / m, 1.0F / m);
-            }
-          }
-          ((Matrix)localObject).postRotate(i);
-          this.mRotationBitmap = Bitmap.createBitmap(this.mSourceDrawable.getBitmap(), 0, 0, j, k, (Matrix)localObject, true);
-          return true;
-          this.mRotationBitmap = this.mSourceDrawable.getBitmap();
-          return true;
-          return super.shouldSetContent();
-          i1 = 0;
           i2 = 0;
         }
-        label419:
-        m = k;
+        if ((i1 > 0) && (i2 > 0))
+        {
+          m = Math.min(m / i1, n / i2);
+          if (m > 1)
+          {
+            float f = 1.0F / m;
+            ((Matrix)localObject).postScale(f, f);
+          }
+        }
+        ((Matrix)localObject).postRotate(i);
+        this.mRotationBitmap = Bitmap.createBitmap(this.mSourceDrawable.getBitmap(), 0, 0, j, k, (Matrix)localObject, true);
+        return true;
       }
+      this.mRotationBitmap = this.mSourceDrawable.getBitmap();
+      return true;
     }
+    return super.shouldSetContent();
   }
   
-  public void updateContentDrawableProperty()
+  protected void updateContentDrawableProperty()
   {
     if (this.mFeedsNeedClip)
     {
@@ -631,7 +638,7 @@ public class HippyTKDImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.image.HippyTKDImageView
  * JD-Core Version:    0.7.0.1
  */

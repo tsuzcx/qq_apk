@@ -20,7 +20,11 @@ public class WSExpFileCacheUtils
   
   private static String a(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath() + "/file/weishi/ws_exp_data_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getApplication().getCacheDir().getAbsolutePath());
+    localStringBuilder.append("/file/weishi/ws_exp_data_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static boolean a(WSExpPolicyEntities paramWSExpPolicyEntities)
@@ -43,15 +47,15 @@ public class WSExpFileCacheUtils
   
   public static boolean b(WSExpPolicyEntities paramWSExpPolicyEntities)
   {
-    if ((paramWSExpPolicyEntities == null) || (paramWSExpPolicyEntities.a() == null)) {
-      return false;
+    if ((paramWSExpPolicyEntities != null) && (paramWSExpPolicyEntities.a() != null)) {
+      return WSFileUtils.a(paramWSExpPolicyEntities.a(), a(paramWSExpPolicyEntities.a()));
     }
-    return WSFileUtils.a(paramWSExpPolicyEntities.a(), a(paramWSExpPolicyEntities.a()));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.config.experiment.WSExpFileCacheUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -20,60 +20,51 @@ class ActivateFriendActivity$6
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
-      if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity) == null) {
-        ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, (ActivateFriendsManager)this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS));
-      }
-      if (NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity))
+      if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity) == null)
       {
-        paramView = ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity);
-        boolean bool;
-        if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity))
-        {
-          bool = true;
-          label92:
-          paramView.a(bool, true);
-          if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
-            break label220;
-          }
-          paramInt = 2;
-          label110:
-          LpReportInfo_dc00518.report(100, paramInt, paramInt);
-          if (!ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
-            break label225;
-          }
-        }
-        label220:
-        label225:
-        for (paramView = "QQnotice.aio.detail.seton";; paramView = "QQnotice.aio.detail.setoff")
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("ActivateFriends.MainActivity", 2, "do report: " + paramView);
-          }
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app, "P_CliOper", "QQnotice", "", "", paramView, 0, 0, "", "", "", "");
-          QQNotifyHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app, "remindpage_click", null, null, String.valueOf(1), String.valueOf(paramInt));
-          break;
-          bool = false;
-          break label92;
-          paramInt = 1;
-          break label110;
-        }
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity;
+        ActivateFriendActivity.a(paramView, (ActivateFriendsManager)paramView.app.getManager(QQManagerFactory.MGR_ACTVATE_FRIENDS));
       }
-      if ((!this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.isFinishing()) && (this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity != null)) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity, 1, this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.getResources().getString(2131694459), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.getTitleBarHeight());
+      if (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity))
+      {
+        ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity).a(ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity) ^ true, true);
+        if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
+          paramInt = 2;
+        } else {
+          paramInt = 1;
+        }
+        LpReportInfo_dc00518.report(100, paramInt, paramInt);
+        if (ActivateFriendActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity)) {
+          paramView = "QQnotice.aio.detail.seton";
+        } else {
+          paramView = "QQnotice.aio.detail.setoff";
+        }
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("do report: ");
+          localStringBuilder.append(paramView);
+          QLog.d("ActivateFriends.MainActivity", 2, localStringBuilder.toString());
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app, "P_CliOper", "QQnotice", "", "", paramView, 0, 0, "", "", "", "");
+        QQNotifyHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.app, "remindpage_click", null, null, String.valueOf(1), String.valueOf(paramInt));
+      }
+      else if (!this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.isFinishing())
+      {
+        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity;
+        if (paramView != null) {
+          QQToast.a(paramView, 1, paramView.getResources().getString(2131694424), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityActivateFriendActivateFriendActivity.getTitleBarHeight());
+        }
       }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -21,10 +21,10 @@ public class MiniAppRealTimeLogReporter
   
   private MiniAppRealTimeLogReporter.RealTimeLog findLogByPage(int paramInt)
   {
-    Object localObject;
-    if (this.allLogs != null)
+    Object localObject = this.allLogs;
+    if (localObject != null)
     {
-      localObject = this.allLogs.iterator();
+      localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext())
       {
         MiniAppRealTimeLogReporter.RealTimeLog localRealTimeLog = (MiniAppRealTimeLogReporter.RealTimeLog)((Iterator)localObject).next();
@@ -33,7 +33,8 @@ public class MiniAppRealTimeLogReporter
         }
       }
     }
-    if ((this.allLogs != null) && (this.allLogs.size() <= 10))
+    localObject = this.allLogs;
+    if ((localObject != null) && (((List)localObject).size() <= 10))
     {
       localObject = new MiniAppRealTimeLogReporter.RealTimeLog(this, paramInt);
       this.allLogs.add(localObject);
@@ -44,14 +45,15 @@ public class MiniAppRealTimeLogReporter
   
   public static MiniAppRealTimeLogReporter getInstance()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new MiniAppRealTimeLogReporter();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new MiniAppRealTimeLogReporter();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   private MiniAppRealTimeLogReporter.RealTimeLog getLogById(int paramInt)
@@ -92,7 +94,12 @@ public class MiniAppRealTimeLogReporter
     {
       i = localRealTimeLog.curLogContentSize;
       int j = paramString.length();
-      localRealTimeLog.logitems.add(new RealTimeLogItem(paramLong, paramInt2, "UserLog:fail Log Size " + (i + j - paramInt1) + " Exceed"));
+      paramJSONArray = localRealTimeLog.logitems;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("UserLog:fail Log Size ");
+      localStringBuilder.append(i + j - paramInt1);
+      localStringBuilder.append(" Exceed");
+      paramJSONArray.add(new RealTimeLogItem(paramLong, paramInt2, localStringBuilder.toString()));
     }
     localRealTimeLog.logitems.add(new RealTimeLogItem(paramLong, paramInt2, paramString));
     localRealTimeLog.curLogContentSize += paramString.length();
@@ -131,23 +138,29 @@ public class MiniAppRealTimeLogReporter
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramString);
-      int i = localJSONObject.getInt("page");
-      JSONArray localJSONArray = localJSONObject.getJSONArray("filterMsg");
-      String str = localJSONObject.getString("content");
-      boolean bool = report(i, localJSONArray, localJSONObject.getInt("level"), localJSONObject.getLong("time"), str);
+      localObject = new JSONObject(paramString);
+      int i = ((JSONObject)localObject).getInt("page");
+      JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("filterMsg");
+      String str = ((JSONObject)localObject).getString("content");
+      boolean bool = report(i, localJSONArray, ((JSONObject)localObject).getInt("level"), ((JSONObject)localObject).getLong("time"), str);
       return bool;
     }
     catch (Exception localException)
     {
-      QLog.e("[mini] MiniAppRealTimeLogReporter", 1, "MiniAppRealTimeLogReporter.report failed:" + paramString);
+      Object localObject;
+      label62:
+      break label62;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("MiniAppRealTimeLogReporter.report failed:");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.e("[mini] MiniAppRealTimeLogReporter", 1, ((StringBuilder)localObject).toString());
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.report.MiniAppRealTimeLogReporter
  * JD-Core Version:    0.7.0.1
  */

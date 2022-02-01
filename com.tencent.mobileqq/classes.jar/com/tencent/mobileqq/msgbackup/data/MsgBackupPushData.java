@@ -24,13 +24,16 @@ public class MsgBackupPushData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("--MsgBackupPushData--");
-    localStringBuilder.append(",sig:").append(this.jdField_a_of_type_JavaLangString).append(",bizType:").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",sig:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",bizType:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.data.MsgBackupPushData
  * JD-Core Version:    0.7.0.1
  */

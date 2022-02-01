@@ -16,20 +16,18 @@ final class ZimuViewMotion$MyHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 1) {
       return;
-      paramMessage = (ZimuViewMotion)this.a.get();
-    } while (paramMessage == null);
-    paramMessage.e();
+    }
+    paramMessage = (ZimuViewMotion)this.a.get();
+    if (paramMessage != null) {
+      paramMessage.e();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.zimu.ZimuViewMotion.MyHandler
  * JD-Core Version:    0.7.0.1
  */

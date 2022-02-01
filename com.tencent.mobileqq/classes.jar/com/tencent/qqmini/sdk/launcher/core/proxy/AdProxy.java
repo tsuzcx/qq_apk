@@ -11,28 +11,16 @@ public abstract class AdProxy
   public static String KEY_ACCOUNT = "key_account";
   public static String KEY_ADCOUNT = "key_ad_count";
   public static String KEY_AD_TYPE = "key_ad_type";
-  public static String KEY_APPID;
-  public static String KEY_ENTRY_PATH;
-  public static String KEY_GDT_COOKIE;
+  public static String KEY_APPID = "key_appid";
+  public static String KEY_ENTRY_PATH = "key_entry_path";
+  public static String KEY_GDT_COOKIE = "key_gdt_cookie";
   public static String KEY_MODE = "key_mode";
   public static String KEY_ORIENTATION = "key_orientation";
-  public static String KEY_POSID;
-  public static String KEY_REFER;
-  public static String KEY_REPORT_DATA;
-  public static String KEY_SHARE_RATE;
-  public static String KEY_VIA;
-  
-  static
-  {
-    KEY_GDT_COOKIE = "key_gdt_cookie";
-    KEY_ENTRY_PATH = "key_entry_path";
-    KEY_REPORT_DATA = "key_report_data";
-    KEY_REFER = "key_refer";
-    KEY_VIA = "key_via";
-    KEY_APPID = "key_appid";
-    KEY_SHARE_RATE = "key_share_rate";
-    KEY_POSID = "key_pos_id";
-  }
+  public static String KEY_POSID = "key_pos_id";
+  public static String KEY_REFER = "key_refer";
+  public static String KEY_REPORT_DATA = "key_report_data";
+  public static String KEY_SHARE_RATE = "key_share_rate";
+  public static String KEY_VIA = "key_via";
   
   public boolean adClick(Context paramContext, String paramString1, String paramString2)
   {
@@ -83,7 +71,7 @@ public abstract class AdProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.proxy.AdProxy
  * JD-Core Version:    0.7.0.1
  */

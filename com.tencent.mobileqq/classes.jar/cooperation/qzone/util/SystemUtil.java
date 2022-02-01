@@ -7,7 +7,6 @@ import android.content.res.Resources;
 import android.graphics.Rect;
 import android.os.Build;
 import android.os.Build.VERSION;
-import android.support.annotation.NonNull;
 import android.util.DisplayMetrics;
 import android.view.View;
 import android.view.Window;
@@ -19,18 +18,24 @@ public class SystemUtil
   private static final String ISMIUI = "1";
   public static final int OPPO_NOTCH_HEIGHT = 80;
   public static final int SHARP_NOTCH_HEIGHT = 121;
-  public static final String TAG = "[PhotoAlbum]" + SystemUtil.class.getSimpleName();
+  public static final String TAG;
   public static final int VIVO_NOTCH_HEIGHT = dp2px(27);
   public static int notchHeight = -1;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[PhotoAlbum]");
+    localStringBuilder.append(SystemUtil.class.getSimpleName());
+    TAG = localStringBuilder.toString();
+  }
   
   public static int dp2px(int paramInt)
   {
     DisplayMetrics localDisplayMetrics = BaseApplication.getContext().getResources().getDisplayMetrics();
-    float f = paramInt;
-    return (int)(localDisplayMetrics.density * f + 0.5F);
+    return (int)(paramInt * localDisplayMetrics.density + 0.5F);
   }
   
-  @NonNull
   public static Rect getDisplayCutoutSafeInsets(View paramView)
   {
     Rect localRect = new Rect();
@@ -83,52 +88,48 @@ public class SystemUtil
   
   public static int getNotchHeight(Context paramContext, Activity paramActivity)
   {
-    if (notchHeight != -1)
+    int i = notchHeight;
+    if (i != -1)
     {
-      QZLog.d(TAG, 1, new Object[] { "has notchHeight:", Integer.valueOf(notchHeight) });
+      QZLog.d(TAG, 1, new Object[] { "has notchHeight:", Integer.valueOf(i) });
       return notchHeight;
     }
     QZLog.d(TAG, 1, new Object[] { "Build.MODEL:", Build.MODEL });
-    if (hasNotchInVivo(paramContext)) {
+    if (hasNotchInVivo(paramContext))
+    {
       notchHeight = VIVO_NOTCH_HEIGHT;
     }
-    for (;;)
+    else if (hasNotchInOppo(paramContext))
     {
-      return notchHeight;
-      if (hasNotchInOppo(paramContext))
-      {
-        if (Build.VERSION.SDK_INT >= 28) {
-          getGoogleApi(paramActivity);
-        }
-        if ((notchHeight == 0) || (notchHeight == -1)) {
-          notchHeight = 80;
-        }
+      if (Build.VERSION.SDK_INT >= 28) {
+        getGoogleApi(paramActivity);
       }
-      else if (hasNotchInHuaWei(paramContext))
-      {
-        notchHeight = getNotchSizeInHuaWei(paramContext)[1];
+      i = notchHeight;
+      if ((i == 0) || (i == -1)) {
+        notchHeight = 80;
       }
-      else if ((hasNotchInXiaoMi(paramContext)) || (hasNotchInSmartisan(paramContext)) || (isSpecialDevices()))
-      {
-        notchHeight = getNotchSizeInStatusBar(paramContext);
-      }
-      else if (isSharpS2())
-      {
+    }
+    else if (hasNotchInHuaWei(paramContext))
+    {
+      notchHeight = getNotchSizeInHuaWei(paramContext)[1];
+    }
+    else if ((!hasNotchInXiaoMi(paramContext)) && (!hasNotchInSmartisan(paramContext)) && (!isSpecialDevices()))
+    {
+      if (isSharpS2()) {
         notchHeight = 121;
-      }
-      else if (isVivoSpecial())
-      {
+      } else if (isVivoSpecial()) {
         notchHeight = getNotchSizeInStatusBar(paramContext) + dp2px(20);
-      }
-      else if (isSamsungSpecial())
-      {
+      } else if (isSamsungSpecial()) {
         notchHeight = getNotchSizeInStatusBar(paramContext) + dp2px(10);
-      }
-      else
-      {
+      } else {
         getGoogleApi(paramActivity);
       }
     }
+    else
+    {
+      notchHeight = getNotchSizeInStatusBar(paramContext);
+    }
+    return notchHeight;
   }
   
   public static int[] getNotchSizeInHuaWei(Context paramContext)
@@ -147,34 +148,42 @@ public class SystemUtil
     }
     catch (ClassNotFoundException paramContext)
     {
-      paramContext = paramContext;
-      QZLog.e(TAG, "getNotchSize ClassNotFoundException");
-      return arrayOfInt;
+      for (;;)
+      {
+        paramContext = paramContext;
+      }
     }
     catch (NoSuchMethodException paramContext)
     {
-      paramContext = paramContext;
-      QZLog.e(TAG, "getNotchSize NoSuchMethodException");
-      return arrayOfInt;
+      for (;;)
+      {
+        paramContext = paramContext;
+      }
     }
     catch (Exception paramContext)
     {
-      paramContext = paramContext;
-      QZLog.e(TAG, "getNotchSize Exception");
-      return arrayOfInt;
+      for (;;)
+      {
+        paramContext = paramContext;
+      }
     }
     finally {}
+    QZLog.e(TAG, "getNotchSize Exception");
+    return arrayOfInt;
+    QZLog.e(TAG, "getNotchSize NoSuchMethodException");
+    return arrayOfInt;
+    QZLog.e(TAG, "getNotchSize ClassNotFoundException");
+    return arrayOfInt;
     return arrayOfInt;
   }
   
   private static int getNotchSizeInStatusBar(Context paramContext)
   {
-    int i = 0;
-    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getResources().getDimensionPixelSize(j);
+    int i = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
+    if (i > 0) {
+      return paramContext.getResources().getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
   
   public static String getReflectString(Context paramContext, String paramString1, String paramString2)
@@ -185,11 +194,11 @@ public class SystemUtil
       paramContext = (String)paramContext.getMethod("get", new Class[] { String.class, String.class }).invoke(paramContext, new Object[] { new String(paramString1), new String(paramString2) });
       return paramContext;
     }
-    catch (Exception paramContext)
+    catch (IllegalArgumentException|Exception paramContext)
     {
-      return paramString2;
+      label70:
+      break label70;
     }
-    catch (IllegalArgumentException paramContext) {}
     return paramString2;
   }
   
@@ -203,23 +212,32 @@ public class SystemUtil
     }
     catch (ClassNotFoundException paramContext)
     {
-      paramContext = paramContext;
-      QZLog.e(TAG, "hasNotchInScreen ClassNotFoundException");
-      return false;
+      for (;;)
+      {
+        paramContext = paramContext;
+      }
     }
     catch (NoSuchMethodException paramContext)
     {
-      paramContext = paramContext;
-      QZLog.e(TAG, "hasNotchInScreen NoSuchMethodException");
-      return false;
+      for (;;)
+      {
+        paramContext = paramContext;
+      }
     }
     catch (Exception paramContext)
     {
-      paramContext = paramContext;
-      QZLog.e(TAG, "hasNotchInScreen Exception");
-      return false;
+      for (;;)
+      {
+        paramContext = paramContext;
+      }
     }
     finally {}
+    QZLog.e(TAG, "hasNotchInScreen Exception");
+    return false;
+    QZLog.e(TAG, "hasNotchInScreen NoSuchMethodException");
+    return false;
+    QZLog.e(TAG, "hasNotchInScreen ClassNotFoundException");
+    return false;
     return false;
   }
   
@@ -290,9 +308,10 @@ public class SystemUtil
   
   private static boolean isSamsungSpecial()
   {
+    String str = Build.MODEL;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (Build.MODEL != null) {
+    if (str != null) {
       if (!Build.MODEL.equals("SM-G9750"))
       {
         bool1 = bool2;
@@ -318,9 +337,10 @@ public class SystemUtil
   
   private static boolean isVivoSpecial()
   {
+    String str = Build.MODEL;
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (Build.MODEL != null) {
+    if (str != null) {
       if (!Build.MODEL.equals("V1938CT"))
       {
         bool1 = bool2;
@@ -336,7 +356,7 @@ public class SystemUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.SystemUtil
  * JD-Core Version:    0.7.0.1
  */

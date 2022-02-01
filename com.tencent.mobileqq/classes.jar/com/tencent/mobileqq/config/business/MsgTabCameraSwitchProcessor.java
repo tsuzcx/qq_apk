@@ -35,8 +35,12 @@ public class MsgTabCameraSwitchProcessor
   
   public void a(MsgTabCameraConfBean paramMsgTabCameraConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onUpdate " + paramMsgTabCameraConfBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramMsgTabCameraConfBean.toString());
+      QLog.d("MsgTabCameraSwitchProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -67,8 +71,12 @@ public class MsgTabCameraSwitchProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgTabCameraSwitchProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.d("MsgTabCameraSwitchProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -86,7 +94,7 @@ public class MsgTabCameraSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MsgTabCameraSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

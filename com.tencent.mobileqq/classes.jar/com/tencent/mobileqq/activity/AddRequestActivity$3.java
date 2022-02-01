@@ -19,11 +19,16 @@ final class AddRequestActivity$3
   {
     if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
-      Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-      this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString));
+      Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+      this.jdField_a_of_type_AndroidAppActivity.startActivity(((Intent)localObject).putExtra("url", this.jdField_a_of_type_JavaLangString));
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800B757", "0X800B757", 0, 0, this.b, this.c, "", "");
-      if (QLog.isColorLevel()) {
-        QLog.d(this.d, 2, "setEntityInfo jumpurl:" + this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        localObject = this.d;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setEntityInfo jumpurl:");
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
       }
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -31,7 +36,7 @@ final class AddRequestActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddRequestActivity.3
  * JD-Core Version:    0.7.0.1
  */

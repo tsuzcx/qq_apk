@@ -28,20 +28,29 @@ class SonicSniSSLSocketFactory
   
   public static void verifyHostname(Socket paramSocket, String paramString)
   {
-    if (!(paramSocket instanceof SSLSocket)) {
-      throw new IllegalArgumentException("Attempt to verify non-SSL socket");
-    }
-    paramSocket = (SSLSocket)paramSocket;
-    paramSocket.startHandshake();
-    paramSocket = paramSocket.getSession();
-    if (paramSocket == null) {
+    if ((paramSocket instanceof SSLSocket))
+    {
+      paramSocket = (SSLSocket)paramSocket;
+      paramSocket.startHandshake();
+      paramSocket = paramSocket.getSession();
+      if (paramSocket != null)
+      {
+        if (HttpsURLConnection.getDefaultHostnameVerifier().verify(paramString, paramSocket)) {
+          return;
+        }
+        paramSocket = new StringBuilder();
+        paramSocket.append("sonic SSL error:Cannot verify hostname");
+        paramSocket.append(paramString);
+        paramSocket.append(")!");
+        SonicUtils.log("sonic_SonicSniSSLSocketFactory", 6, paramSocket.toString());
+        paramSocket = new StringBuilder();
+        paramSocket.append("Cannot verify hostname: ");
+        paramSocket.append(paramString);
+        throw new SSLPeerUnverifiedException(paramSocket.toString());
+      }
       throw new SSLException("Cannot verify SSL socket without session");
     }
-    if (!HttpsURLConnection.getDefaultHostnameVerifier().verify(paramString, paramSocket))
-    {
-      SonicUtils.log("sonic_SonicSniSSLSocketFactory", 6, "sonic SSL error:Cannot verify hostname" + paramString + ")!");
-      throw new SSLPeerUnverifiedException("Cannot verify hostname: " + paramString);
-    }
+    throw new IllegalArgumentException("Attempt to verify non-SSL socket");
   }
   
   public Socket createSocket()
@@ -93,7 +102,7 @@ class SonicSniSSLSocketFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSniSSLSocketFactory
  * JD-Core Version:    0.7.0.1
  */

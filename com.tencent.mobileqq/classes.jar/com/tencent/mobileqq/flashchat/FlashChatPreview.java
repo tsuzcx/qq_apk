@@ -29,19 +29,15 @@ public class FlashChatPreview
     int i = paramMotionEvent.getAction() & 0xFF;
     if (i == 0) {
       getParent().requestDisallowInterceptTouchEvent(true);
+    } else if ((i == 1) || (i == 3)) {
+      getParent().requestDisallowInterceptTouchEvent(false);
     }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      if ((i == 1) || (i == 3)) {
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
-    }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatPreview
  * JD-Core Version:    0.7.0.1
  */

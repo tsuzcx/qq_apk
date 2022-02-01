@@ -26,9 +26,10 @@ public class ExternalEmbeddedWidgetClient
   {
     this.widget = paramIEmbeddedWidget;
     this.mMiniAppContext = paramIMiniAppContext;
-    if (this.proxy != null)
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null)
     {
-      this.proxy.setMiniAppContext(paramIMiniAppContext, paramIEmbeddedWidget.getWidgetId());
+      localExternalElementProxy.setMiniAppContext(paramIMiniAppContext, paramIEmbeddedWidget.getWidgetId());
       this.proxy.onInit(paramString, paramMap, paramIEmbeddedWidget.getWidgetId());
     }
   }
@@ -45,182 +46,234 @@ public class ExternalEmbeddedWidgetClient
   
   public void handleInsertXWebExternalElement(JSONObject paramJSONObject, IJsService paramIJsService)
   {
-    if ((paramIJsService instanceof BrandPageWebview)) {}
-    for (int i = ((BrandPageWebview)paramIJsService).getWebViewId();; i = -1)
+    int i;
+    if ((paramIJsService instanceof BrandPageWebview)) {
+      i = ((BrandPageWebview)paramIJsService).getWebViewId();
+    } else {
+      i = -1;
+    }
+    if (paramJSONObject != null) {
+      this.mViewId = paramJSONObject.optInt("viewId", -1);
+    }
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null)
     {
-      if (paramJSONObject != null) {
-        this.mViewId = paramJSONObject.optInt("viewId", -1);
-      }
-      if (this.proxy != null)
-      {
-        this.proxy.setCurPageWebViewId(i, this.widget.getWidgetId());
-        this.proxy.setCallBackWebView(paramIJsService, this.widget.getWidgetId());
-        this.proxy.handleInsertXWebExternalElement(paramJSONObject, this.widget.getWidgetId());
-      }
-      return;
+      localExternalElementProxy.setCurPageWebViewId(i, this.widget.getWidgetId());
+      this.proxy.setCallBackWebView(paramIJsService, this.widget.getWidgetId());
+      this.proxy.handleInsertXWebExternalElement(paramJSONObject, this.widget.getWidgetId());
     }
   }
   
   public void handleOperateXWebExternalElement(JSONObject paramJSONObject, int paramInt, IJsService paramIJsService)
   {
-    if (this.proxy != null) {
-      this.proxy.handleOperateExternalElement(paramJSONObject, paramInt, paramIJsService, this.widget.getWidgetId());
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.handleOperateExternalElement(paramJSONObject, paramInt, paramIJsService, this.widget.getWidgetId());
     }
   }
   
   public void handleRemoveXWebExternalElement()
   {
-    if (this.proxy != null) {
-      this.proxy.handleRemoveExternalElement(this.widget.getWidgetId());
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.handleRemoveExternalElement(this.widget.getWidgetId());
     }
   }
   
   public void handleUpdateXWebExternalElement(JSONObject paramJSONObject)
   {
-    if (this.proxy != null) {
-      this.proxy.handleUpdateExternalElement(paramJSONObject, this.widget.getWidgetId());
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.handleUpdateExternalElement(paramJSONObject, this.widget.getWidgetId());
     }
   }
   
   public void nativeDestroy()
   {
-    QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.nativeDestroy " + this);
-    if (this.proxy != null) {
-      this.proxy.nativeDestroy(this.widget.getWidgetId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ExternalEmbeddedWidgetClient.nativeDestroy ");
+    ((StringBuilder)localObject).append(this);
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    localObject = this.proxy;
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).nativeDestroy(this.widget.getWidgetId());
     }
   }
   
   public void nativePause()
   {
-    QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.nativePause " + this);
-    if (this.proxy != null) {
-      this.proxy.nativePause(this.widget.getWidgetId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ExternalEmbeddedWidgetClient.nativePause ");
+    ((StringBuilder)localObject).append(this);
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    localObject = this.proxy;
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).nativePause(this.widget.getWidgetId());
     }
   }
   
   public void nativeResume()
   {
-    QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.nativeResume " + this);
-    if (this.proxy != null) {
-      this.proxy.nativeResume(this.widget.getWidgetId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ExternalEmbeddedWidgetClient.nativeResume ");
+    ((StringBuilder)localObject).append(this);
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    localObject = this.proxy;
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).nativeResume(this.widget.getWidgetId());
     }
   }
   
   public void onActive()
   {
     QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.onActive");
-    if (this.proxy != null) {
-      this.proxy.onActive(this.widget.getWidgetId());
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onActive(this.widget.getWidgetId());
     }
   }
   
   public void onDeactive()
   {
     QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.onDeactive");
-    if (this.proxy != null) {
-      this.proxy.onDeActive(this.widget.getWidgetId());
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onDeActive(this.widget.getWidgetId());
     }
   }
   
   public void onDestroy()
   {
     QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.onDestroy");
-    if (this.proxy != null) {
-      this.proxy.onDestroy(this.widget.getWidgetId());
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onDestroy(this.widget.getWidgetId());
     }
   }
   
   public void onRectChanged(Rect paramRect)
   {
-    QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.onRectChanged, rect:" + paramRect.toString() + "； size : " + (paramRect.right - paramRect.left) + "," + (paramRect.bottom - paramRect.top));
-    if (this.proxy != null) {
-      this.proxy.onRectChanged(paramRect, this.widget.getWidgetId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ExternalEmbeddedWidgetClient.onRectChanged, rect:");
+    ((StringBuilder)localObject).append(paramRect.toString());
+    ((StringBuilder)localObject).append("； size : ");
+    ((StringBuilder)localObject).append(paramRect.right - paramRect.left);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramRect.bottom - paramRect.top);
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    localObject = this.proxy;
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).onRectChanged(paramRect, this.widget.getWidgetId());
     }
   }
   
   public void onRequestRedraw()
   {
     QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.onRequestRedraw");
-    if (this.proxy != null) {
-      this.proxy.onRequestRedraw(this.widget.getWidgetId());
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onRequestRedraw(this.widget.getWidgetId());
     }
   }
   
   public void onSurfaceCreated(Surface paramSurface)
   {
-    QMLog.d("miniapp-embedded-external", "onSurfaceCreated: " + paramSurface);
-    if ((paramSurface == null) || (!paramSurface.isValid()))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onSurfaceCreated: ");
+    ((StringBuilder)localObject).append(paramSurface);
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    if ((paramSurface != null) && (paramSurface.isValid()))
     {
-      localStringBuilder = new StringBuilder().append("onSurfaceCreated isValid() : ");
-      if (paramSurface != null)
-      {
-        paramSurface = Boolean.valueOf(paramSurface.isValid());
-        QMLog.e("miniapp-embedded-external", paramSurface);
+      localObject = this.proxy;
+      if (localObject != null) {
+        ((ExternalElementProxy)localObject).onSurfaceCreated(paramSurface, this.widget.getWidgetId());
       }
+      return;
     }
-    while (this.proxy == null) {
-      for (;;)
-      {
-        StringBuilder localStringBuilder;
-        return;
-        paramSurface = null;
-      }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onSurfaceCreated isValid() : ");
+    if (paramSurface != null) {
+      paramSurface = Boolean.valueOf(paramSurface.isValid());
+    } else {
+      paramSurface = null;
     }
-    this.proxy.onSurfaceCreated(paramSurface, this.widget.getWidgetId());
+    ((StringBuilder)localObject).append(paramSurface);
+    QMLog.e("miniapp-embedded-external", ((StringBuilder)localObject).toString());
   }
   
   public void onSurfaceDestroyed(Surface paramSurface)
   {
     QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.onSurfaceDestroyed");
-    if (this.proxy != null) {
-      this.proxy.onSurfaceDestroyed(paramSurface, this.widget.getWidgetId());
+    ExternalElementProxy localExternalElementProxy = this.proxy;
+    if (localExternalElementProxy != null) {
+      localExternalElementProxy.onSurfaceDestroyed(paramSurface, this.widget.getWidgetId());
     }
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.onTouchEvent, rect:" + paramMotionEvent.toString());
-    if (this.proxy != null) {
-      return this.proxy.onTouchEvent(paramMotionEvent, this.widget.getWidgetId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ExternalEmbeddedWidgetClient.onTouchEvent, rect:");
+    ((StringBuilder)localObject).append(paramMotionEvent.toString());
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    localObject = this.proxy;
+    if (localObject != null) {
+      return ((ExternalElementProxy)localObject).onTouchEvent(paramMotionEvent, this.widget.getWidgetId());
     }
     return false;
   }
   
   public void onVisibilityChanged(boolean paramBoolean)
   {
-    QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.onVisibilityChanged ： " + paramBoolean);
-    if (this.proxy != null) {
-      this.proxy.onVisibilityChanged(paramBoolean, this.widget.getWidgetId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ExternalEmbeddedWidgetClient.onVisibilityChanged ： ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    localObject = this.proxy;
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).onVisibilityChanged(paramBoolean, this.widget.getWidgetId());
     }
   }
   
   public void webViewDestroy()
   {
-    QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.webViewDestroy " + this);
-    if (this.proxy != null) {
-      this.proxy.webViewDestroy(this.widget.getWidgetId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ExternalEmbeddedWidgetClient.webViewDestroy ");
+    ((StringBuilder)localObject).append(this);
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    localObject = this.proxy;
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).webViewDestroy(this.widget.getWidgetId());
     }
   }
   
   public void webViewPause()
   {
-    QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.webviewPause " + this);
-    if (this.proxy != null) {
-      this.proxy.webViewPause(this.widget.getWidgetId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ExternalEmbeddedWidgetClient.webviewPause ");
+    ((StringBuilder)localObject).append(this);
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    localObject = this.proxy;
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).webViewPause(this.widget.getWidgetId());
     }
   }
   
   public void webViewResume()
   {
-    QMLog.d("miniapp-embedded-external", "ExternalEmbeddedWidgetClient.webviewResume " + this);
-    if (this.proxy != null) {
-      this.proxy.webViewResume(this.widget.getWidgetId());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ExternalEmbeddedWidgetClient.webviewResume ");
+    ((StringBuilder)localObject).append(this);
+    QMLog.d("miniapp-embedded-external", ((StringBuilder)localObject).toString());
+    localObject = this.proxy;
+    if (localObject != null) {
+      ((ExternalElementProxy)localObject).webViewResume(this.widget.getWidgetId());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.ExternalEmbeddedWidgetClient
  * JD-Core Version:    0.7.0.1
  */

@@ -15,26 +15,44 @@ public class a
   
   public static boolean b(Character paramCharacter)
   {
-    if (paramCharacter == null) {}
-    int i;
-    do
-    {
+    boolean bool2 = false;
+    if (paramCharacter == null) {
       return false;
-      i = paramCharacter.charValue();
-    } while (((i < 48) || (i > 57)) && ((i < 97) || (i > 102)) && ((i < 65) || (i > 70)));
-    return true;
+    }
+    int i = paramCharacter.charValue();
+    boolean bool1;
+    if (((i < 48) || (i > 57)) && ((i < 97) || (i > 102)))
+    {
+      bool1 = bool2;
+      if (i >= 65)
+      {
+        bool1 = bool2;
+        if (i > 70) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public static boolean c(Character paramCharacter)
   {
-    if (paramCharacter == null) {}
-    int i;
-    do
-    {
+    boolean bool2 = false;
+    if (paramCharacter == null) {
       return false;
-      i = paramCharacter.charValue();
-    } while ((i < 48) || (i > 55));
-    return true;
+    }
+    int i = paramCharacter.charValue();
+    boolean bool1 = bool2;
+    if (i >= 48)
+    {
+      bool1 = bool2;
+      if (i <= 55) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public int a()
@@ -49,22 +67,23 @@ public class a
   
   public Character b()
   {
-    if (this.r != null)
+    Object localObject = this.r;
+    if (localObject != null)
     {
-      localObject = this.r;
       this.r = null;
       return localObject;
     }
-    if (this.q == null) {
+    localObject = this.q;
+    if (localObject == null) {
       return null;
     }
-    if (this.q.length() == 0) {
+    if (((String)localObject).length() == 0) {
       return null;
     }
     if (this.index >= this.q.length()) {
       return null;
     }
-    Object localObject = this.q;
+    localObject = this.q;
     int i = this.index;
     this.index = (i + 1);
     return Character.valueOf(((String)localObject).charAt(i));
@@ -73,69 +92,62 @@ public class a
   public Character c()
   {
     Character localCharacter = b();
-    if (localCharacter == null) {}
-    while (!b(localCharacter)) {
+    if (localCharacter == null) {
       return null;
     }
-    return localCharacter;
+    if (b(localCharacter)) {
+      return localCharacter;
+    }
+    return null;
   }
   
   public boolean c(char paramChar)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    if ((this.r != null) && (this.r.charValue() == paramChar)) {
-      bool1 = true;
+    Object localObject = this.r;
+    if ((localObject != null) && (((Character)localObject).charValue() == paramChar)) {
+      return true;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-          bool1 = bool3;
-        } while (this.q == null);
-        bool1 = bool3;
-      } while (this.q.length() == 0);
-      bool1 = bool3;
-    } while (this.index >= this.q.length());
-    if (this.q.charAt(this.index) == paramChar) {}
-    for (boolean bool1 = bool2;; bool1 = false) {
-      return bool1;
+    localObject = this.q;
+    if (localObject == null) {
+      return false;
     }
+    if (((String)localObject).length() == 0) {
+      return false;
+    }
+    if (this.index >= this.q.length()) {
+      return false;
+    }
+    return this.q.charAt(this.index) == paramChar;
   }
   
   public Character d()
   {
     Character localCharacter = b();
-    if (localCharacter == null) {}
-    while (!c(localCharacter)) {
+    if (localCharacter == null) {
       return null;
     }
-    return localCharacter;
+    if (c(localCharacter)) {
+      return localCharacter;
+    }
+    return null;
   }
   
   public Character e()
   {
-    Object localObject2 = null;
-    Object localObject1;
-    if (this.r != null) {
-      localObject1 = this.r;
+    Object localObject = this.r;
+    if (localObject != null) {
+      return localObject;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return localObject1;
-          localObject1 = localObject2;
-        } while (this.q == null);
-        localObject1 = localObject2;
-      } while (this.q.length() == 0);
-      localObject1 = localObject2;
-    } while (this.index >= this.q.length());
+    localObject = this.q;
+    if (localObject == null) {
+      return null;
+    }
+    if (((String)localObject).length() == 0) {
+      return null;
+    }
+    if (this.index >= this.q.length()) {
+      return null;
+    }
     return Character.valueOf(this.q.charAt(this.index));
   }
   
@@ -147,28 +159,31 @@ public class a
   
   protected String g()
   {
-    String str2 = this.q.substring(this.index);
-    String str1 = str2;
-    if (this.r != null) {
-      str1 = this.r + str2;
+    String str = this.q.substring(this.index);
+    Object localObject = str;
+    if (this.r != null)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.r);
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return localObject;
   }
   
   public boolean hasNext()
   {
-    if (this.r != null) {}
-    do
-    {
+    if (this.r != null) {
       return true;
-      if (this.q == null) {
-        return false;
-      }
-      if (this.q.length() == 0) {
-        return false;
-      }
-    } while (this.index < this.q.length());
-    return false;
+    }
+    String str = this.q;
+    if (str == null) {
+      return false;
+    }
+    if (str.length() == 0) {
+      return false;
+    }
+    return this.index < this.q.length();
   }
   
   public void reset()
@@ -179,7 +194,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.util.a
  * JD-Core Version:    0.7.0.1
  */

@@ -45,14 +45,15 @@ public class GameBuddyPlugin
       paramJSONObject = paramJSONObject.optJSONObject("data").optString("uid");
       localBundle = new Bundle();
       localBundle.putString("uin_value", paramJSONObject);
-      QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new GameBuddyPlugin.1(this, paramJSContext, str, paramJSONObject));
+      QIPCClientHelper.getInstance().callServer("module_game_buddy", "action_check_aio_type", localBundle, new GameBuddyPlugin.1(this, paramJSContext, str));
       return;
     }
+    return;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.GameBuddyPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -55,16 +55,18 @@ public class Loader<D>
   @MainThread
   public void deliverCancellation()
   {
-    if (this.mOnLoadCanceledListener != null) {
-      this.mOnLoadCanceledListener.onLoadCanceled(this);
+    Loader.OnLoadCanceledListener localOnLoadCanceledListener = this.mOnLoadCanceledListener;
+    if (localOnLoadCanceledListener != null) {
+      localOnLoadCanceledListener.onLoadCanceled(this);
     }
   }
   
   @MainThread
   public void deliverResult(@Nullable D paramD)
   {
-    if (this.mListener != null) {
-      this.mListener.onLoadComplete(this, paramD);
+    Loader.OnLoadCompleteListener localOnLoadCompleteListener = this.mListener;
+    if (localOnLoadCompleteListener != null) {
+      localOnLoadCompleteListener.onLoadComplete(this, paramD);
     }
   }
   
@@ -163,20 +165,24 @@ public class Loader<D>
   @MainThread
   public void registerListener(int paramInt, @NonNull Loader.OnLoadCompleteListener<D> paramOnLoadCompleteListener)
   {
-    if (this.mListener != null) {
-      throw new IllegalStateException("There is already a listener registered");
+    if (this.mListener == null)
+    {
+      this.mListener = paramOnLoadCompleteListener;
+      this.mId = paramInt;
+      return;
     }
-    this.mListener = paramOnLoadCompleteListener;
-    this.mId = paramInt;
+    throw new IllegalStateException("There is already a listener registered");
   }
   
   @MainThread
   public void registerOnLoadCanceledListener(@NonNull Loader.OnLoadCanceledListener<D> paramOnLoadCanceledListener)
   {
-    if (this.mOnLoadCanceledListener != null) {
-      throw new IllegalStateException("There is already a listener registered");
+    if (this.mOnLoadCanceledListener == null)
+    {
+      this.mOnLoadCanceledListener = paramOnLoadCanceledListener;
+      return;
     }
-    this.mOnLoadCanceledListener = paramOnLoadCanceledListener;
+    throw new IllegalStateException("There is already a listener registered");
   }
   
   @MainThread
@@ -234,30 +240,38 @@ public class Loader<D>
   @MainThread
   public void unregisterListener(@NonNull Loader.OnLoadCompleteListener<D> paramOnLoadCompleteListener)
   {
-    if (this.mListener == null) {
-      throw new IllegalStateException("No listener register");
-    }
-    if (this.mListener != paramOnLoadCompleteListener) {
+    Loader.OnLoadCompleteListener localOnLoadCompleteListener = this.mListener;
+    if (localOnLoadCompleteListener != null)
+    {
+      if (localOnLoadCompleteListener == paramOnLoadCompleteListener)
+      {
+        this.mListener = null;
+        return;
+      }
       throw new IllegalArgumentException("Attempting to unregister the wrong listener");
     }
-    this.mListener = null;
+    throw new IllegalStateException("No listener register");
   }
   
   @MainThread
   public void unregisterOnLoadCanceledListener(@NonNull Loader.OnLoadCanceledListener<D> paramOnLoadCanceledListener)
   {
-    if (this.mOnLoadCanceledListener == null) {
-      throw new IllegalStateException("No listener register");
-    }
-    if (this.mOnLoadCanceledListener != paramOnLoadCanceledListener) {
+    Loader.OnLoadCanceledListener localOnLoadCanceledListener = this.mOnLoadCanceledListener;
+    if (localOnLoadCanceledListener != null)
+    {
+      if (localOnLoadCanceledListener == paramOnLoadCanceledListener)
+      {
+        this.mOnLoadCanceledListener = null;
+        return;
+      }
       throw new IllegalArgumentException("Attempting to unregister the wrong listener");
     }
-    this.mOnLoadCanceledListener = null;
+    throw new IllegalStateException("No listener register");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.loader.content.Loader
  * JD-Core Version:    0.7.0.1
  */

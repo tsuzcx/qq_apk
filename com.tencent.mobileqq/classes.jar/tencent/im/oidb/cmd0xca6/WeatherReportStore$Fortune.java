@@ -14,7 +14,7 @@ public final class WeatherReportStore$Fortune
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xca6.WeatherReportStore.Fortune
  * JD-Core Version:    0.7.0.1
  */

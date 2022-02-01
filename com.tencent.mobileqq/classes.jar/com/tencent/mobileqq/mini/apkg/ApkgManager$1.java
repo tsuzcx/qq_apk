@@ -18,20 +18,25 @@ class ApkgManager$1
   
   public void onGetApkgInfo(ApkgInfo paramApkgInfo, int paramInt, String paramString)
   {
-    if ((paramInt == 0) && (paramApkgInfo != null)) {
-      ApkgManager.access$000(this.this$0, this.val$listener, 0, paramApkgInfo, "Apkg init succ :" + (System.currentTimeMillis() - this.val$startTime));
-    }
-    for (;;)
+    if ((paramInt == 0) && (paramApkgInfo != null))
     {
-      MiniReportManager.reportEventType(this.val$miniConfig, 13, null, null, null, 0);
-      return;
+      paramString = this.this$0;
+      ApkgManager.OnInitApkgListener localOnInitApkgListener = this.val$listener;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Apkg init succ :");
+      localStringBuilder.append(System.currentTimeMillis() - this.val$startTime);
+      ApkgManager.access$000(paramString, localOnInitApkgListener, 0, paramApkgInfo, localStringBuilder.toString());
+    }
+    else
+    {
       ApkgManager.access$000(this.this$0, this.val$listener, paramInt, null, paramString);
     }
+    MiniReportManager.reportEventType(this.val$miniConfig, 13, null, null, null, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.1
  * JD-Core Version:    0.7.0.1
  */

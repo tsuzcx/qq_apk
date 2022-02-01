@@ -12,14 +12,31 @@ public class AppMode
   public static final Parcelable.Creator<AppMode> CREATOR = new AppMode.1();
   public boolean authoritySilent;
   public boolean closeTopRightCapsule;
+  public boolean disableAddToMyApp;
+  public boolean disableAddToMyFavor;
+  public boolean disableShareToAIO;
+  public boolean disableShareToQZone;
+  public boolean disableShareToWeChat;
   public boolean hideAppSearch;
   public boolean interLoading;
   public boolean interMode;
   public boolean isAppStore;
   public boolean isLimitedAccess;
+  public boolean isPayForFriend;
   public boolean isWangKa;
   public boolean keepOffPullList;
   public boolean openNativeApi;
+  public boolean reloadWithFirstPageChange;
+  public boolean unlimitedApiRight;
+  public boolean useAppInfoWhenNavigate;
+  
+  public static final int booleanToInt(boolean paramBoolean)
+  {
+    if (paramBoolean) {
+      return 1;
+    }
+    return 0;
+  }
   
   public static AppMode from(INTERFACE.StAppMode paramStAppMode)
   {
@@ -36,8 +53,22 @@ public class AppMode
       localAppMode.isWangKa = paramStAppMode.isWangKa.get();
       localAppMode.interLoading = paramStAppMode.interLoading.get();
       localAppMode.isLimitedAccess = paramStAppMode.isLimitedAccess.get();
+      localAppMode.isPayForFriend = paramStAppMode.isPayForFriend.get();
+      localAppMode.useAppInfoWhenNavigate = paramStAppMode.useAppInfoWhenNavigate.get();
+      localAppMode.disableAddToMyApp = paramStAppMode.disableAddToMyApp.get();
+      localAppMode.disableAddToMyFavor = paramStAppMode.disableAddToMyFavor.get();
+      localAppMode.reloadWithFirstPageChange = paramStAppMode.reloadWithFirstPageChange.get();
+      localAppMode.unlimitedApiRight = paramStAppMode.unlimitedApiRight.get();
+      localAppMode.disableShareToAIO = paramStAppMode.disableShareToAIO.get();
+      localAppMode.disableShareToQZone = paramStAppMode.disableShareToQZone.get();
+      localAppMode.disableShareToWeChat = paramStAppMode.disableShareToWeChat.get();
     }
     return localAppMode;
+  }
+  
+  public static final boolean isEqOne(int paramInt)
+  {
+    return paramInt == 1;
   }
   
   public int describeContents()
@@ -47,100 +78,30 @@ public class AppMode
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
-    if (this.interMode)
-    {
-      paramInt = 1;
-      paramParcel.writeInt(paramInt);
-      if (!this.authoritySilent) {
-        break label148;
-      }
-      paramInt = 1;
-      label25:
-      paramParcel.writeInt(paramInt);
-      if (!this.keepOffPullList) {
-        break label153;
-      }
-      paramInt = 1;
-      label39:
-      paramParcel.writeInt(paramInt);
-      if (!this.closeTopRightCapsule) {
-        break label158;
-      }
-      paramInt = 1;
-      label53:
-      paramParcel.writeInt(paramInt);
-      if (!this.openNativeApi) {
-        break label163;
-      }
-      paramInt = 1;
-      label67:
-      paramParcel.writeInt(paramInt);
-      if (!this.hideAppSearch) {
-        break label168;
-      }
-      paramInt = 1;
-      label81:
-      paramParcel.writeInt(paramInt);
-      if (!this.isAppStore) {
-        break label173;
-      }
-      paramInt = 1;
-      label95:
-      paramParcel.writeInt(paramInt);
-      if (!this.isWangKa) {
-        break label178;
-      }
-      paramInt = 1;
-      label109:
-      paramParcel.writeInt(paramInt);
-      if (!this.interLoading) {
-        break label183;
-      }
-      paramInt = 1;
-      label123:
-      paramParcel.writeInt(paramInt);
-      if (!this.isLimitedAccess) {
-        break label188;
-      }
-    }
-    label148:
-    label153:
-    label158:
-    label163:
-    label168:
-    label173:
-    label178:
-    label183:
-    label188:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeInt(paramInt);
-      return;
-      paramInt = 0;
-      break;
-      paramInt = 0;
-      break label25;
-      paramInt = 0;
-      break label39;
-      paramInt = 0;
-      break label53;
-      paramInt = 0;
-      break label67;
-      paramInt = 0;
-      break label81;
-      paramInt = 0;
-      break label95;
-      paramInt = 0;
-      break label109;
-      paramInt = 0;
-      break label123;
-    }
+    paramParcel.writeInt(booleanToInt(this.interMode));
+    paramParcel.writeInt(booleanToInt(this.authoritySilent));
+    paramParcel.writeInt(booleanToInt(this.keepOffPullList));
+    paramParcel.writeInt(booleanToInt(this.closeTopRightCapsule));
+    paramParcel.writeInt(booleanToInt(this.openNativeApi));
+    paramParcel.writeInt(booleanToInt(this.hideAppSearch));
+    paramParcel.writeInt(booleanToInt(this.isAppStore));
+    paramParcel.writeInt(booleanToInt(this.isWangKa));
+    paramParcel.writeInt(booleanToInt(this.interLoading));
+    paramParcel.writeInt(booleanToInt(this.isLimitedAccess));
+    paramParcel.writeInt(booleanToInt(this.isPayForFriend));
+    paramParcel.writeInt(booleanToInt(this.useAppInfoWhenNavigate));
+    paramParcel.writeInt(booleanToInt(this.disableAddToMyApp));
+    paramParcel.writeInt(booleanToInt(this.disableAddToMyFavor));
+    paramParcel.writeInt(booleanToInt(this.reloadWithFirstPageChange));
+    paramParcel.writeInt(booleanToInt(this.unlimitedApiRight));
+    paramParcel.writeInt(booleanToInt(this.disableShareToAIO));
+    paramParcel.writeInt(booleanToInt(this.disableShareToQZone));
+    paramParcel.writeInt(booleanToInt(this.disableShareToWeChat));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.model.AppMode
  * JD-Core Version:    0.7.0.1
  */

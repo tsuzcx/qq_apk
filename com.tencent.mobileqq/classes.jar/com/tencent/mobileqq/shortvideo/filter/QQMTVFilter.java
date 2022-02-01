@@ -39,60 +39,78 @@ public class QQMTVFilter
   
   private void checkRenderBuffer(int paramInt1, int paramInt2)
   {
-    if ((this.mRenderFBO == null) || (this.mRenderFBO.getWidth() != paramInt1) || (this.mRenderFBO.getHeight() != paramInt2))
+    Object localObject = this.mRenderFBO;
+    if ((localObject == null) || (((RenderBuffer)localObject).getWidth() != paramInt1) || (this.mRenderFBO.getHeight() != paramInt2))
     {
       releaseRenderBuffer(this.mRenderFBO);
       this.mRenderFBO = new RenderBuffer(paramInt1, paramInt2, 33984);
-      SLog.d("QQMTVFilter", "create new renderfbo, width:" + paramInt1 + " height:" + paramInt2);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("create new renderfbo, width:");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" height:");
+      ((StringBuilder)localObject).append(paramInt2);
+      SLog.d("QQMTVFilter", ((StringBuilder)localObject).toString());
     }
   }
   
   private MTVBaseFilter createFilmFilter(FilterDesc paramFilterDesc)
   {
-    Object localObject;
     if (paramFilterDesc == null) {
-      localObject = null;
+      return null;
     }
-    FilmFilter localFilmFilter;
-    do
+    Object localObject = paramFilterDesc.getResFold(SdkContext.getInstance().getResources().getArtFilterResource().getFilterResPath());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("create film filter, res path:");
+    localStringBuilder.append((String)localObject);
+    SLog.d("QQMTVFilter", localStringBuilder.toString());
+    localObject = new FilmFilter((String)localObject);
+    if (paramFilterDesc.bundle != null)
     {
-      return localObject;
-      localObject = paramFilterDesc.getResFold(SdkContext.getInstance().getResources().getArtFilterResource().getFilterResPath());
-      SLog.d("QQMTVFilter", "create film filter, res path:" + (String)localObject);
-      localFilmFilter = new FilmFilter((String)localObject);
-      localObject = localFilmFilter;
-    } while (paramFilterDesc.bundle == null);
-    long l1 = paramFilterDesc.bundle.getLong("lSeed", 0L);
-    long l2 = paramFilterDesc.bundle.getLong("lZoomingTime", 1300L);
-    localFilmFilter.setSeed(l1);
-    localFilmFilter.setZoomingTime(l2);
-    SLog.d("QQMTVFilter", "create MTV1 filter, gaussiantime:" + l2 + " seed:" + l1 + " zoomingtime:" + l2);
-    return localFilmFilter;
+      long l1 = paramFilterDesc.bundle.getLong("lSeed", 0L);
+      long l2 = paramFilterDesc.bundle.getLong("lZoomingTime", 1300L);
+      ((FilmFilter)localObject).setSeed(l1);
+      ((FilmFilter)localObject).setZoomingTime(l2);
+      paramFilterDesc = new StringBuilder();
+      paramFilterDesc.append("create MTV1 filter, gaussiantime:");
+      paramFilterDesc.append(l2);
+      paramFilterDesc.append(" seed:");
+      paramFilterDesc.append(l1);
+      paramFilterDesc.append(" zoomingtime:");
+      paramFilterDesc.append(l2);
+      SLog.d("QQMTVFilter", paramFilterDesc.toString());
+    }
+    return localObject;
   }
   
   private MTVBaseFilter createMTV1Filter(FilterDesc paramFilterDesc)
   {
-    Object localObject;
     if (paramFilterDesc == null) {
-      localObject = null;
+      return null;
     }
-    MTV1Filter localMTV1Filter;
-    do
+    Object localObject = paramFilterDesc.getResFold(SdkContext.getInstance().getResources().getArtFilterResource().getFilterResPath());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("create MTV1 filter, res path:");
+    localStringBuilder.append((String)localObject);
+    SLog.d("QQMTVFilter", localStringBuilder.toString());
+    localObject = new MTV1Filter((String)localObject);
+    if (paramFilterDesc.bundle != null)
     {
-      return localObject;
-      localObject = paramFilterDesc.getResFold(SdkContext.getInstance().getResources().getArtFilterResource().getFilterResPath());
-      SLog.d("QQMTVFilter", "create MTV1 filter, res path:" + (String)localObject);
-      localMTV1Filter = new MTV1Filter((String)localObject);
-      localObject = localMTV1Filter;
-    } while (paramFilterDesc.bundle == null);
-    boolean bool1 = paramFilterDesc.bundle.getBoolean("bRevert", false);
-    long l = paramFilterDesc.bundle.getLong("lSeed", 0L);
-    boolean bool2 = paramFilterDesc.bundle.getBoolean("bShowEntrance", true);
-    SLog.d("QQMTVFilter", "create MTV1 filter, brevert:" + bool1 + " seed:" + l + " bshowentrance:" + bool2);
-    localMTV1Filter.revert(bool1);
-    localMTV1Filter.setSeed(l);
-    localMTV1Filter.setShowEntrance(bool2);
-    return localMTV1Filter;
+      boolean bool1 = paramFilterDesc.bundle.getBoolean("bRevert", false);
+      long l = paramFilterDesc.bundle.getLong("lSeed", 0L);
+      boolean bool2 = paramFilterDesc.bundle.getBoolean("bShowEntrance", true);
+      paramFilterDesc = new StringBuilder();
+      paramFilterDesc.append("create MTV1 filter, brevert:");
+      paramFilterDesc.append(bool1);
+      paramFilterDesc.append(" seed:");
+      paramFilterDesc.append(l);
+      paramFilterDesc.append(" bshowentrance:");
+      paramFilterDesc.append(bool2);
+      SLog.d("QQMTVFilter", paramFilterDesc.toString());
+      ((MTV1Filter)localObject).revert(bool1);
+      ((MTV1Filter)localObject).setSeed(l);
+      ((MTV1Filter)localObject).setShowEntrance(bool2);
+    }
+    return localObject;
   }
   
   private long getCurrentMs()
@@ -111,42 +129,55 @@ public class QQMTVFilter
   
   private MTVBaseFilter getMTVFilter(int paramInt1, int paramInt2)
   {
-    if ((this.mCurrentDesc == null) || (this.mCurrentDesc.id == -1)) {
-      return null;
-    }
-    if (this.mOldFilter != null)
+    Object localObject = this.mCurrentDesc;
+    if (localObject != null)
     {
-      SLog.d("QQMTVFilter", "destroy old filter.");
-      this.mOldFilter.onSurfaceDestroy();
-      this.mOldFilter = null;
-    }
-    if (this.mCurrentFilter == null)
-    {
-      SLog.d("QQMTVFilter", "create new filter, id:" + this.mCurrentDesc.id);
-      switch (this.mCurrentDesc.id)
+      if (((FilterDesc)localObject).id == -1) {
+        return null;
+      }
+      if (this.mOldFilter != null)
       {
+        SLog.d("QQMTVFilter", "destroy old filter.");
+        this.mOldFilter.onSurfaceDestroy();
+        this.mOldFilter = null;
       }
-    }
-    for (;;)
-    {
-      if (this.mCurrentFilter != null) {
-        this.mCurrentFilter.onSurfaceChange(paramInt1, paramInt2);
+      if (this.mCurrentFilter == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("create new filter, id:");
+        ((StringBuilder)localObject).append(this.mCurrentDesc.id);
+        SLog.d("QQMTVFilter", ((StringBuilder)localObject).toString());
+        int i = this.mCurrentDesc.id;
+        if (i != 1017)
+        {
+          if (i == 1018) {
+            this.mCurrentFilter = createFilmFilter(this.mCurrentDesc);
+          }
+        }
+        else {
+          this.mCurrentFilter = createMTV1Filter(this.mCurrentDesc);
+        }
+        localObject = this.mCurrentFilter;
+        if (localObject != null) {
+          ((MTVBaseFilter)localObject).onSurfaceChange(paramInt1, paramInt2);
+        }
+        this.mReset = true;
       }
-      this.mReset = true;
       return this.mCurrentFilter;
-      this.mCurrentFilter = createMTV1Filter(this.mCurrentDesc);
-      continue;
-      this.mCurrentFilter = createFilmFilter(this.mCurrentDesc);
     }
+    return null;
   }
   
   private boolean isMTVID(FilterDesc paramFilterDesc)
   {
-    if (paramFilterDesc == null) {}
-    while (QQAVImageFilterConstants.getFilterType(paramFilterDesc.id) != 4) {
+    boolean bool = false;
+    if (paramFilterDesc == null) {
       return false;
     }
-    return true;
+    if (QQAVImageFilterConstants.getFilterType(paramFilterDesc.id) == 4) {
+      bool = true;
+    }
+    return bool;
   }
   
   private void runOnDraw(Runnable paramRunnable)
@@ -162,16 +193,24 @@ public class QQMTVFilter
   {
     synchronized (this.mRunOnDraw)
     {
-      if (!this.mRunOnDraw.isEmpty()) {
+      while (!this.mRunOnDraw.isEmpty()) {
         ((Runnable)this.mRunOnDraw.removeFirst()).run();
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
   public void enable(boolean paramBoolean)
   {
     this.mEnabled = paramBoolean;
-    SLog.d("QQMTVFilter", "enable:" + this.mEnabled);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enable:");
+    localStringBuilder.append(this.mEnabled);
+    SLog.d("QQMTVFilter", localStringBuilder.toString());
   }
   
   public boolean isFilterWork()
@@ -196,59 +235,63 @@ public class QQMTVFilter
       this.mOutputTextureID = this.mInputTextureID;
       return;
     }
-    MTVBaseFilter localMTVBaseFilter = getMTVFilter(getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
-    if (localMTVBaseFilter == null)
+    Object localObject = getMTVFilter(getQQFilterRenderManager().getFilterWidth(), getQQFilterRenderManager().getFilterHeight());
+    if (localObject == null)
     {
       this.mWorking = false;
       this.mOutputTextureID = this.mInputTextureID;
       return;
     }
     long l2 = getCurrentMs();
+    QQSpecialAVFilter.MusicWaveformSupporter localMusicWaveformSupporter = this.mMusicWaveformSupporter;
     float f;
-    if (this.mMusicWaveformSupporter == null)
-    {
+    if (localMusicWaveformSupporter == null) {
       f = getQQFilterRenderManager().getBusinessOperation().getCurrentMusicGain();
-      if ((f <= 0.0F) || (f > 1.0F)) {
-        break label252;
-      }
+    } else {
+      f = localMusicWaveformSupporter.getCurrentMusicGain();
     }
-    for (;;)
-    {
-      this.mRenderFBO.recoverInitialTexId();
-      this.mRenderFBO.bind();
-      GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
-      GLES20.glClear(17664);
-      this.mRenderFBO.unbind();
-      localMTVBaseFilter.onDrawFrame(this.mInputTextureID, this.mRenderFBO, l2, f);
-      this.mOutputTextureID = this.mRenderFBO.getTexId();
-      this.mWorking = true;
-      SLog.d("QQMTVFilter", "QQMTVFilter onDrawFrame cost: " + (System.currentTimeMillis() - l1));
-      return;
-      f = this.mMusicWaveformSupporter.getCurrentMusicGain();
-      break;
-      label252:
+    if ((f <= 0.0F) || (f > 1.0F)) {
       f = 0.0F;
     }
+    this.mRenderFBO.recoverInitialTexId();
+    this.mRenderFBO.bind();
+    GLES20.glClearColor(0.0F, 0.0F, 0.0F, 0.0F);
+    GLES20.glClear(17664);
+    this.mRenderFBO.unbind();
+    ((MTVBaseFilter)localObject).onDrawFrame(this.mInputTextureID, this.mRenderFBO, l2, f);
+    this.mOutputTextureID = this.mRenderFBO.getTexId();
+    this.mWorking = true;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("QQMTVFilter onDrawFrame cost: ");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - l1);
+    SLog.d("QQMTVFilter", ((StringBuilder)localObject).toString());
   }
   
   public void onSurfaceChange(int paramInt1, int paramInt2)
   {
     super.onSurfaceChange(paramInt1, paramInt2);
-    SLog.d("QQMTVFilter", "onSurfaceChange, width:" + paramInt1 + " height:" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSurfaceChange, width:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" height:");
+    localStringBuilder.append(paramInt2);
+    SLog.d("QQMTVFilter", localStringBuilder.toString());
     setCurrentId(getQQFilterRenderManager().getBusinessOperation().getCurrentAVFilterIdByType(4));
   }
   
   public void onSurfaceDestroy()
   {
     SLog.d("QQMTVFilter", "onSurfaceDestroy");
-    if (this.mCurrentFilter != null)
+    MTVBaseFilter localMTVBaseFilter = this.mCurrentFilter;
+    if (localMTVBaseFilter != null)
     {
-      this.mCurrentFilter.onSurfaceDestroy();
+      localMTVBaseFilter.onSurfaceDestroy();
       this.mCurrentFilter = null;
     }
-    if (this.mOldFilter != null)
+    localMTVBaseFilter = this.mOldFilter;
+    if (localMTVBaseFilter != null)
     {
-      this.mOldFilter.onSurfaceDestroy();
+      localMTVBaseFilter.onSurfaceDestroy();
       this.mOldFilter = null;
     }
     this.mCurrentDesc = null;
@@ -282,17 +325,17 @@ public class QQMTVFilter
       }
       this.mWorking = true;
     }
-    for (;;)
+    else
     {
-      if (this.mCurrentFilter != null)
-      {
-        this.mOldFilter = this.mCurrentFilter;
-        this.mCurrentFilter = null;
-      }
-      return;
       this.mCurrentDesc = null;
       this.mWorking = false;
       SLog.d("QQMTVFilter", "setCurrentId, is not mtv ID.");
+    }
+    paramFilterDesc = this.mCurrentFilter;
+    if (paramFilterDesc != null)
+    {
+      this.mOldFilter = paramFilterDesc;
+      this.mCurrentFilter = null;
     }
   }
   
@@ -308,7 +351,7 @@ public class QQMTVFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQMTVFilter
  * JD-Core Version:    0.7.0.1
  */

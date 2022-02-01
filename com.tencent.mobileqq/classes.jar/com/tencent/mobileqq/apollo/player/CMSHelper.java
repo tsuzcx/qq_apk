@@ -2,9 +2,12 @@ package com.tencent.mobileqq.apollo.player;
 
 import android.os.Handler;
 import android.os.HandlerThread;
-import android.os.Looper;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.apollo.player.action.MODE;
+import com.tencent.mobileqq.apollo.player.manager.CMSBornPlayerManager;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.cmshow.engine.CMShowPlatform;
+import com.tencent.mobileqq.cmshow.engine.scene.Scene;
 import java.util.concurrent.BlockingQueue;
 import java.util.concurrent.Executor;
 import java.util.concurrent.LinkedBlockingQueue;
@@ -12,6 +15,7 @@ import java.util.concurrent.ThreadFactory;
 import java.util.concurrent.ThreadPoolExecutor;
 import java.util.concurrent.TimeUnit;
 import kotlin.Metadata;
+import kotlin.NoWhenBranchMatchedException;
 import kotlin.Unit;
 import kotlin.jvm.functions.Function0;
 import kotlin.jvm.internal.Intrinsics;
@@ -19,40 +23,69 @@ import kotlin.ranges.RangesKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/CMSHelper;", "", "()V", "ASYNC_POOL_MIN_COUNT", "", "asyncHandler", "Landroid/os/Handler;", "asyncThreadPool", "Ljava/util/concurrent/Executor;", "uiHandler", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "debug", "", "action", "Lkotlin/Function0;", "runOnAsyncHandler", "runOnAsyncThread", "runOnUiThread", "toast", "message", "", "iconType", "toActionStatus", "Lcom/tencent/mobileqq/apollo/player/CMSActionStatus;", "TF", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/CMSHelper;", "", "()V", "ASYNC_POOL_MIN_COUNT", "", "asyncHandler", "Landroid/os/Handler;", "asyncThreadPool", "Ljava/util/concurrent/Executor;", "app", "Lcom/tencent/mobileqq/app/QQAppInterface;", "onDestroy", "", "runOnAsyncHandler", "action", "Lkotlin/Function0;", "runOnAsyncThread", "setCanRecycleBornPlayer", "recycle", "", "toActionStatus", "Lcom/tencent/mobileqq/apollo/player/CMSActionStatus;", "toReportFeatureId", "Lcom/tencent/mobileqq/apollo/player/action/MODE;", "TF", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 public final class CMSHelper
 {
   private static final Handler jdField_a_of_type_AndroidOsHandler;
   public static final CMSHelper a;
   private static final Executor jdField_a_of_type_JavaUtilConcurrentExecutor;
-  private static final Handler b;
   
   static
   {
     jdField_a_of_type_ComTencentMobileqqApolloPlayerCMSHelper = new CMSHelper();
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     int i = RangesKt.coerceAtLeast(Runtime.getRuntime().availableProcessors(), 4);
     Object localObject = new ThreadPoolExecutor(i, i, 1L, TimeUnit.MINUTES, (BlockingQueue)new LinkedBlockingQueue(), (ThreadFactory)new CMSHelper.TF("CMS_AsyncThread", 9));
     ((ThreadPoolExecutor)localObject).allowCoreThreadTimeOut(true);
     jdField_a_of_type_JavaUtilConcurrentExecutor = (Executor)localObject;
     localObject = new HandlerThread("CMS_AsyncHandler");
     ((HandlerThread)localObject).start();
-    b = new Handler(((HandlerThread)localObject).getLooper());
+    jdField_a_of_type_AndroidOsHandler = new Handler(((HandlerThread)localObject).getLooper());
+  }
+  
+  public final int a(@NotNull MODE paramMODE)
+  {
+    Intrinsics.checkParameterIsNotNull(paramMODE, "$this$toReportFeatureId");
+    boolean bool = CMShowPlatform.a.b(Scene.MEME_PLAYER);
+    int i = CMSHelper.WhenMappings.a[paramMODE.ordinal()];
+    if (i != 1)
+    {
+      if (i != 2)
+      {
+        if (i == 3)
+        {
+          if (bool) {
+            return 157;
+          }
+          return 140;
+        }
+        throw new NoWhenBranchMatchedException();
+      }
+      if (bool) {
+        return 156;
+      }
+      return 135;
+    }
+    if (bool) {
+      return 155;
+    }
+    return 134;
   }
   
   @NotNull
   public final CMSActionStatus a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return CMSActionStatus.UNKNOWN;
-    case 1: 
-      return CMSActionStatus.START;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return CMSActionStatus.UNKNOWN;
+        }
+        return CMSActionStatus.INTERRUPT;
+      }
       return CMSActionStatus.COMPLETE;
     }
-    return CMSActionStatus.INTERRUPT;
+    return CMSActionStatus.START;
   }
   
   @Nullable
@@ -69,27 +102,31 @@ public final class CMSHelper
     return null;
   }
   
-  public final void a(@NotNull Function0<Unit> paramFunction0)
+  public final void a()
   {
-    Intrinsics.checkParameterIsNotNull(paramFunction0, "action");
-    jdField_a_of_type_AndroidOsHandler.post((Runnable)new CMSHelper.runOnUiThread.1(paramFunction0));
+    CMSBornPlayerManager.a.a();
   }
   
-  public final void b(@NotNull Function0<Unit> paramFunction0)
+  public final void a(@NotNull Function0<Unit> paramFunction0)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction0, "action");
     jdField_a_of_type_JavaUtilConcurrentExecutor.execute((Runnable)new CMSHelper.runOnAsyncThread.1(paramFunction0));
   }
   
-  public final void c(@NotNull Function0<Unit> paramFunction0)
+  public final void a(boolean paramBoolean)
+  {
+    CMSBornPlayerManager.a.a(paramBoolean);
+  }
+  
+  public final void b(@NotNull Function0<Unit> paramFunction0)
   {
     Intrinsics.checkParameterIsNotNull(paramFunction0, "action");
-    b.post((Runnable)new CMSHelper.runOnAsyncHandler.1(paramFunction0));
+    jdField_a_of_type_AndroidOsHandler.post((Runnable)new CMSHelper.runOnAsyncHandler.1(paramFunction0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.CMSHelper
  * JD-Core Version:    0.7.0.1
  */

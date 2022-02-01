@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.transfile.protohandler;
 
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.app.StatictisInfo;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoReq;
 import com.tencent.mobileqq.transfile.api.impl.ProtoReqManagerImpl.ProtoResp;
@@ -16,44 +16,46 @@ public abstract class PicDownHandler
   public void onProtoResp(ProtoReqManagerImpl.ProtoResp paramProtoResp, ProtoReqManagerImpl.ProtoReq paramProtoReq)
   {
     FromServiceMsg localFromServiceMsg = paramProtoResp.resp;
-    Object localObject = paramProtoResp.resp.getWupBuffer();
+    byte[] arrayOfByte = paramProtoResp.resp.getWupBuffer();
     RichProto.RichProtoReq localRichProtoReq = (RichProto.RichProtoReq)paramProtoReq.busiData;
     RichProto.RichProtoResp localRichProtoResp = localRichProtoReq.resp;
     StatictisInfo localStatictisInfo = paramProtoResp.statisInfo;
+    boolean bool;
     if (localFromServiceMsg.getResultCode() != 1000)
     {
       int i = localFromServiceMsg.getResultCode();
-      if ((i == 1002) || (i == 1013))
+      if ((i != 1002) && (i != 1013))
       {
-        localObject = MessageHandler.a(localFromServiceMsg);
-        paramProtoReq = localFromServiceMsg.getBusinessFailMsg();
-        paramProtoResp = paramProtoReq;
-        if (paramProtoReq == null) {
+        paramProtoReq = BaseMessageHandler.a(localFromServiceMsg);
+        paramProtoResp = localFromServiceMsg.getBusinessFailMsg();
+        if (paramProtoResp == null) {
           paramProtoResp = "";
         }
-        setResult(-1, 9311, (String)localObject, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
+        setResult(-1, 9044, paramProtoReq, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
       }
+      else
+      {
+        paramProtoReq = BaseMessageHandler.a(localFromServiceMsg);
+        paramProtoResp = localFromServiceMsg.getBusinessFailMsg();
+        if (paramProtoResp == null) {
+          paramProtoResp = "";
+        }
+        setResult(-1, 9311, paramProtoReq, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
+      }
+      bool = true;
     }
-    for (boolean bool = true;; bool = handleSucResponse(paramProtoResp, paramProtoReq, localFromServiceMsg, (byte[])localObject, localRichProtoReq, localRichProtoResp, localStatictisInfo))
+    else
     {
-      if (bool) {
-        RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
-      }
-      return;
-      localObject = MessageHandler.a(localFromServiceMsg);
-      paramProtoReq = localFromServiceMsg.getBusinessFailMsg();
-      paramProtoResp = paramProtoReq;
-      if (paramProtoReq == null) {
-        paramProtoResp = "";
-      }
-      setResult(-1, 9044, (String)localObject, paramProtoResp, localStatictisInfo, localRichProtoResp.resps);
-      break;
+      bool = handleSucResponse(paramProtoResp, paramProtoReq, localFromServiceMsg, arrayOfByte, localRichProtoReq, localRichProtoResp, localStatictisInfo);
+    }
+    if (bool) {
+      RichProtoProc.onBusiProtoResp(localRichProtoReq, localRichProtoResp);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.PicDownHandler
  * JD-Core Version:    0.7.0.1
  */

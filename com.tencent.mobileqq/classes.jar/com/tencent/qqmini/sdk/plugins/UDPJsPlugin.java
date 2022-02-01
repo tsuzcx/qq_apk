@@ -61,7 +61,11 @@ public class UDPJsPlugin
   
   private boolean getEnableDebug(String paramString)
   {
-    return StorageUtil.getPreference().getBoolean(paramString + "_debug", false);
+    SharedPreferences localSharedPreferences = StorageUtil.getPreference();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_debug");
+    return localSharedPreferences.getBoolean(localStringBuilder.toString(), false);
   }
   
   @Nullable
@@ -72,25 +76,32 @@ public class UDPJsPlugin
       InetAddress localInetAddress = InetAddress.getByName(paramString);
       return localInetAddress;
     }
-    catch (UnknownHostException localUnknownHostException)
-    {
-      QMLog.d("UDPPlugin", "getInetAddress address:" + paramString, localUnknownHostException);
-      return null;
-    }
     catch (SecurityException localSecurityException)
     {
-      for (;;)
-      {
-        QMLog.d("UDPPlugin", "getInetAddress address:" + paramString, localSecurityException);
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getInetAddress address:");
+      localStringBuilder.append(paramString);
+      QMLog.d("UDPPlugin", localStringBuilder.toString(), localSecurityException);
     }
+    catch (UnknownHostException localUnknownHostException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getInetAddress address:");
+      localStringBuilder.append(paramString);
+      QMLog.d("UDPPlugin", localStringBuilder.toString(), localUnknownHostException);
+    }
+    return null;
   }
   
   @Nullable
   private InetAddress getInetAddressByDomain(@NonNull String paramString, int paramInt, boolean paramBoolean)
   {
-    String str = paramString + ":" + paramInt;
-    if (DomainUtil.isDomainValid(getMiniAppInfo(), paramBoolean, str, 5)) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(paramInt);
+    localObject = ((StringBuilder)localObject).toString();
+    if (DomainUtil.isDomainValid(getMiniAppInfo(), paramBoolean, (String)localObject, 5)) {
       return getInetAddress(paramString);
     }
     return null;
@@ -100,86 +111,100 @@ public class UDPJsPlugin
   private InetAddress getInetAddressByIp(@NonNull String paramString, boolean paramBoolean)
   {
     InetAddress localInetAddress = getInetAddress(paramString);
-    if (localInetAddress == null) {}
-    do
+    if (localInetAddress == null) {
+      return null;
+    }
+    if (localInetAddress.isLoopbackAddress()) {
+      return null;
+    }
+    if (localInetAddress.isAnyLocalAddress()) {
+      return null;
+    }
+    if (localInetAddress.isMulticastAddress()) {
+      return null;
+    }
+    if (localInetAddress.isSiteLocalAddress()) {
+      return localInetAddress;
+    }
+    if (!paramBoolean)
     {
-      do
-      {
-        return null;
-      } while ((localInetAddress.isLoopbackAddress()) || (localInetAddress.isAnyLocalAddress()) || (localInetAddress.isMulticastAddress()));
-      if (localInetAddress.isSiteLocalAddress()) {
+      if (isUdpIpValid(paramString)) {
         return localInetAddress;
       }
-    } while ((!paramBoolean) && (!isUdpIpValid(paramString)));
+      return null;
+    }
     return localInetAddress;
   }
   
   private void performSend(IJsService paramIJsService, JSONObject paramJSONObject, UDPJsPlugin.UDPTask paramUDPTask)
   {
+    int k = paramJSONObject.optInt("port", -1);
+    boolean bool = paramJSONObject.isNull("message");
     Object localObject2 = null;
-    int n = paramJSONObject.optInt("port", -1);
-    if (!paramJSONObject.isNull("message")) {}
-    for (Object localObject1 = paramJSONObject.optString("message", null);; localObject1 = null)
+    if (!bool) {
+      localObject1 = paramJSONObject.optString("message", null);
+    } else {
+      localObject1 = null;
+    }
+    int i;
+    int j;
+    if (localObject1 != null)
     {
-      int i;
-      int j;
+      paramIJsService = ((String)localObject1).getBytes("UTF-8");
+      i = paramIJsService.length;
+      j = 0;
+    }
+    else
+    {
+      localObject1 = NativeBuffer.unpackNativeBuffer(paramIJsService, paramJSONObject, "message");
+      j = paramJSONObject.optInt("offset");
+      i = paramJSONObject.optInt("length", -1);
+      paramIJsService = localObject2;
       if (localObject1 != null)
       {
-        paramIJsService = ((String)localObject1).getBytes("UTF-8");
-        i = paramIJsService.length;
-        j = 0;
-      }
-      while (n < 0)
-      {
-        callbackError("invalid port", paramUDPTask.taskId);
-        return;
-        localObject1 = NativeBuffer.unpackNativeBuffer(paramIJsService, paramJSONObject, "message");
-        int k = paramJSONObject.optInt("offset");
-        int m = paramJSONObject.optInt("length", -1);
-        i = m;
-        j = k;
-        paramIJsService = localObject2;
-        if (localObject1 != null)
+        localObject1 = ((NativeBuffer)localObject1).buf;
+        paramIJsService = (IJsService)localObject1;
+        if (i == -1)
         {
-          localObject1 = ((NativeBuffer)localObject1).buf;
-          i = m;
-          j = k;
+          i = localObject1.length;
           paramIJsService = (IJsService)localObject1;
-          if (m == -1)
-          {
-            i = localObject1.length;
-            j = k;
-            paramIJsService = (IJsService)localObject1;
-          }
         }
       }
-      localObject1 = paramJSONObject.optString("address");
-      paramJSONObject = validAddress((String)localObject1, n, paramJSONObject.optBoolean("__skipDomainCheck__", false));
-      if (paramJSONObject == null)
-      {
-        paramIJsService = "invalid address :[" + (String)localObject1 + "]";
-        QMLog.d("UDPPlugin", paramIJsService);
-        callbackError(paramIJsService, paramUDPTask.taskId);
-        return;
-      }
-      if (paramIJsService == null)
-      {
-        callbackError("undefined message", paramUDPTask.taskId);
-        return;
-      }
-      if ((j < 0) || (j >= i))
-      {
-        callbackError("invalid offset", paramUDPTask.taskId);
-        return;
-      }
+    }
+    if (k < 0)
+    {
+      callbackError("invalid port", paramUDPTask.taskId);
+      return;
+    }
+    Object localObject1 = paramJSONObject.optString("address");
+    paramJSONObject = validAddress((String)localObject1, k, paramJSONObject.optBoolean("__skipDomainCheck__", false));
+    if (paramJSONObject == null)
+    {
+      paramIJsService = new StringBuilder();
+      paramIJsService.append("invalid address :[");
+      paramIJsService.append((String)localObject1);
+      paramIJsService.append("]");
+      paramIJsService = paramIJsService.toString();
+      QMLog.d("UDPPlugin", paramIJsService);
+      callbackError(paramIJsService, paramUDPTask.taskId);
+      return;
+    }
+    if (paramIJsService == null)
+    {
+      callbackError("undefined message", paramUDPTask.taskId);
+      return;
+    }
+    if ((j >= 0) && (j < i))
+    {
       if (i > paramIJsService.length)
       {
         callbackError("invalid length", paramUDPTask.taskId);
         return;
       }
-      paramUDPTask.send(paramIJsService, j, i, new InetSocketAddress(paramJSONObject, n));
+      paramUDPTask.send(paramIJsService, j, i, new InetSocketAddress(paramJSONObject, k));
       return;
     }
+    callbackError("invalid offset", paramUDPTask.taskId);
   }
   
   @JsEvent({"createUDPTask"})
@@ -202,29 +227,36 @@ public class UDPJsPlugin
   @VisibleForTesting
   public boolean isUdpIpValid(String paramString)
   {
-    MiniAppInfo localMiniAppInfo = getMiniAppInfo();
-    if (localMiniAppInfo == null) {
+    Object localObject = getMiniAppInfo();
+    if (localObject == null) {
       return false;
     }
-    if (localMiniAppInfo.skipDomainCheck == 1)
+    if (((MiniAppInfo)localObject).skipDomainCheck == 1)
     {
-      QMLog.d("[mini] http.udp", "udp ip检查 skip: " + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("udp ip检查 skip: ");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.d("[mini] http.udp", ((StringBuilder)localObject).toString());
       return true;
     }
-    if ((localMiniAppInfo.verType != 3) && (getEnableDebug(localMiniAppInfo.appId)))
+    if ((((MiniAppInfo)localObject).verType != 3) && (getEnableDebug(((MiniAppInfo)localObject).appId)))
     {
-      QMLog.d("[mini] http.udp", "debug opened and not online version, skip:" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("debug opened and not online version, skip:");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.d("[mini] http.udp", ((StringBuilder)localObject).toString());
       return true;
     }
-    if (this.mUdpIpWhiteSet == null) {}
-    try
-    {
-      if (this.mUdpIpWhiteSet == null) {
-        this.mUdpIpWhiteSet = new HashSet(localMiniAppInfo.udpIpList);
+    if (this.mUdpIpWhiteSet == null) {
+      try
+      {
+        if (this.mUdpIpWhiteSet == null) {
+          this.mUdpIpWhiteSet = new HashSet(((MiniAppInfo)localObject).udpIpList);
+        }
       }
-      return this.mUdpIpWhiteSet.contains(paramString);
+      finally {}
     }
-    finally {}
+    return this.mUdpIpWhiteSet.contains(paramString);
   }
   
   public void onDestroy()
@@ -277,15 +309,15 @@ public class UDPJsPlugin
     if (TextUtils.isEmpty(paramString)) {
       return null;
     }
-    if ((IPV4_ADDRESS_REGEX.matcher(paramString).matches()) || (IPV6_ADDRESS_REGEX.matcher(paramString).matches())) {
-      return getInetAddressByIp(paramString, paramBoolean);
+    if ((!IPV4_ADDRESS_REGEX.matcher(paramString).matches()) && (!IPV6_ADDRESS_REGEX.matcher(paramString).matches())) {
+      return getInetAddressByDomain(paramString, paramInt, paramBoolean);
     }
-    return getInetAddressByDomain(paramString, paramInt, paramBoolean);
+    return getInetAddressByIp(paramString, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.UDPJsPlugin
  * JD-Core Version:    0.7.0.1
  */

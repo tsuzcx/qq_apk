@@ -10,6 +10,7 @@ public final class qq_ad_get$QQAdGetRsp$AdInfo$AppInfo
   public String app_package_version;
   public String app_score;
   public int app_score_num = 0;
+  public String app_standard_info_url;
   public String channel_id;
   public String customized_invoke_url;
   public long download_num = 0L;

@@ -25,7 +25,7 @@ public class RobotResourcesManager
   
   public boolean a()
   {
-    return !TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString);
+    return TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString) ^ true;
   }
   
   public boolean a(String paramString)
@@ -37,15 +37,15 @@ public class RobotResourcesManager
   
   public boolean b(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      return false;
+    if ((!TextUtils.isEmpty(paramString)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+      return paramString.equals(this.jdField_a_of_type_JavaLangString);
     }
-    return paramString.equals(this.jdField_a_of_type_JavaLangString);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.robot.RobotResourcesManager
  * JD-Core Version:    0.7.0.1
  */

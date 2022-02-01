@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.loginregister;
 
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.model.PhoneContactManager;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import mqq.app.AppRuntime;
 
 class ContactImpl$1
@@ -11,12 +10,12 @@ class ContactImpl$1
   
   public void run()
   {
-    ((PhoneContactManager)this.a.getManager(QQManagerFactory.CONTACT_MANAGER)).c();
+    ((IPhoneContactService)this.a.getRuntimeService(IPhoneContactService.class, "")).uploadPhoneContact();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginregister.ContactImpl.1
  * JD-Core Version:    0.7.0.1
  */

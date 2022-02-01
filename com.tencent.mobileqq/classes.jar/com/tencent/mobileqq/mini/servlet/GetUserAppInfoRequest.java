@@ -24,16 +24,20 @@ public class GetUserAppInfoRequest
   
   public static INTERFACE.StGetUserAppInfoRsp onResponse(byte[] paramArrayOfByte)
   {
-    INTERFACE.StGetUserAppInfoRsp localStGetUserAppInfoRsp = new INTERFACE.StGetUserAppInfoRsp();
+    Object localObject = new INTERFACE.StGetUserAppInfoRsp();
     try
     {
-      localStGetUserAppInfoRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStGetUserAppInfoRsp;
+      ((INTERFACE.StGetUserAppInfoRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("GetUserAppInfoRequest", 2, "onResponse fail." + paramArrayOfByte);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onResponse fail.");
+        ((StringBuilder)localObject).append(paramArrayOfByte);
+        QLog.d("GetUserAppInfoRequest", 2, ((StringBuilder)localObject).toString());
       }
     }
     return null;
@@ -46,7 +50,7 @@ public class GetUserAppInfoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.GetUserAppInfoRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -37,7 +37,7 @@ public class MainActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
     sRef = new WeakReference(this);
@@ -48,17 +48,18 @@ public class MainActivity
     this.mOpenFlutterFragment.setOnClickListener(this);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (sRef != null)
+    WeakReference localWeakReference = sRef;
+    if (localWeakReference != null)
     {
-      sRef.clear();
+      localWeakReference.clear();
       sRef = null;
     }
   }
   
-  public void onResume()
+  protected void onResume()
   {
     super.onResume();
     StringBuilder localStringBuilder = new StringBuilder();
@@ -69,7 +70,7 @@ public class MainActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qflutter.MainActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,11 @@ public class ResEntry
   
   public ResEntry(int paramInt, String paramString)
   {
-    this.mUrlKey = (paramInt + " " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramString);
+    this.mUrlKey = localStringBuilder.toString();
   }
   
   private void clearForRecycle()
@@ -39,7 +43,11 @@ public class ResEntry
         ResEntry localResEntry = sPool;
         sPool = localResEntry.next;
         localResEntry.next = null;
-        localResEntry.mUrlKey = (paramInt + " " + paramString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramInt);
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramString);
+        localResEntry.mUrlKey = localStringBuilder.toString();
         localResEntry.type = paramInt;
         sPoolSize -= 1;
         return localResEntry;
@@ -65,7 +73,7 @@ public class ResEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.ResEntry
  * JD-Core Version:    0.7.0.1
  */

@@ -26,23 +26,29 @@ public class FileMultiMsgProcessor
   
   private void a(HashMap<String, ArrayList<MessageRecord>> paramHashMap)
   {
-    if ((paramHashMap == null) || (paramHashMap.isEmpty())) {
-      return;
-    }
-    Iterator localIterator = paramHashMap.keySet().iterator();
-    while (localIterator.hasNext())
+    if (paramHashMap != null)
     {
-      ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
-      int i = 0;
-      while (i < localArrayList.size())
+      if (paramHashMap.isEmpty()) {
+        return;
+      }
+      Iterator localIterator = paramHashMap.keySet().iterator();
+      while (localIterator.hasNext())
       {
-        MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
-        if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
+        ArrayList localArrayList = (ArrayList)paramHashMap.get((String)localIterator.next());
+        int i = 0;
+        while (i < localArrayList.size())
         {
-          String str = HardCodeUtil.a(2131692333) + localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName");
-          localArrayList.set(i, this.a.getProxyManager().a().a(localMessageRecord, str, true));
+          MessageRecord localMessageRecord = (MessageRecord)localArrayList.get(i);
+          if (((localMessageRecord instanceof MessageForFile)) || ((localMessageRecord instanceof MessageForTroopFile)))
+          {
+            Object localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(HardCodeUtil.a(2131692262));
+            ((StringBuilder)localObject).append(localMessageRecord.getExtInfoFromExtStr("_m_ForwardFileName"));
+            localObject = ((StringBuilder)localObject).toString();
+            localArrayList.set(i, this.a.getProxyManager().a().a(localMessageRecord, (String)localObject, true));
+          }
+          i += 1;
         }
-        i += 1;
       }
     }
   }
@@ -52,23 +58,26 @@ public class FileMultiMsgProcessor
     if (paramMultiMsgRequest == null) {
       return;
     }
-    if ((paramMultiMsgRequest.b == 8) || (paramMultiMsgRequest.b == 9)) {}
-    for (paramMultiMsgRequest = new ReplyMsgForwardRequest(this.a, paramMultiMsgRequest, paramHashMap, paramIMultiMsgRichUploadCallback);; paramMultiMsgRequest = new MultiMsgForwardRequest(this.a, paramMultiMsgRequest, paramHashMap, paramIMultiMsgRichUploadCallback))
+    if ((paramMultiMsgRequest.b != 8) && (paramMultiMsgRequest.b != 9))
     {
-      this.a.getFileManagerEngine().a().a(paramMultiMsgRequest, paramHashMap);
-      return;
       if (paramMultiMsgRequest.b == 2)
       {
         a(paramHashMap);
         paramIMultiMsgRichUploadCallback.a(0, 2, paramMultiMsgRequest);
         return;
       }
+      paramMultiMsgRequest = new MultiMsgForwardRequest(this.a, paramMultiMsgRequest, paramHashMap, paramIMultiMsgRichUploadCallback);
     }
+    else
+    {
+      paramMultiMsgRequest = new ReplyMsgForwardRequest(this.a, paramMultiMsgRequest, paramHashMap, paramIMultiMsgRichUploadCallback);
+    }
+    this.a.getFileManagerEngine().a().a(paramMultiMsgRequest, paramHashMap);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multimsg.FileMultiMsgProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -21,9 +21,12 @@ class f
     try
     {
       Object localObject1 = new URL(PostHttpRequest.REQUEST_SERVER_URL);
-      ab.c("PostHttpRequest", ">sendRequest serverUrl=" + localObject1);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(">sendRequest serverUrl=");
+      ((StringBuilder)localObject2).append(localObject1);
+      ab.c("PostHttpRequest", ((StringBuilder)localObject2).toString());
       localObject1 = (HttpsURLConnection)((URL)localObject1).openConnection();
-      Object localObject2 = d.a();
+      localObject2 = d.a();
       if (localObject2 != null)
       {
         ((HttpsURLConnection)localObject1).setSSLSocketFactory(((SSLContext)localObject2).getSocketFactory());
@@ -42,8 +45,11 @@ class f
       ((OutputStream)localObject2).write(this.a);
       ((OutputStream)localObject2).flush();
       ab.c("PostHttpRequest", ">sendRequest outputStream flush.");
-      i = ((HttpsURLConnection)localObject1).getResponseCode();
-      ab.c("PostHttpRequest", ">sendRequest rspCode:" + i);
+      int i = ((HttpsURLConnection)localObject1).getResponseCode();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(">sendRequest rspCode:");
+      ((StringBuilder)localObject2).append(i);
+      ab.c("PostHttpRequest", ((StringBuilder)localObject2).toString());
       if (i == 200)
       {
         localObject1 = ((HttpsURLConnection)localObject1).getInputStream();
@@ -52,32 +58,34 @@ class f
           localObject1 = c.a((InputStream)localObject1);
           if ((localObject1 != null) && (localObject1.length > 4))
           {
-            ab.c("PostHttpRequest", ">sendRequest data length:" + localObject1.length);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(">sendRequest data length:");
+            ((StringBuilder)localObject2).append(localObject1.length);
+            ab.c("PostHttpRequest", ((StringBuilder)localObject2).toString());
             this.b.onFinished(this.a, (byte[])localObject1, 0);
             return;
           }
-          ab.e("PostHttpRequest", ">sendRequest data:" + localObject1);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(">sendRequest data:");
+          ((StringBuilder)localObject2).append(localObject1);
+          ab.e("PostHttpRequest", ((StringBuilder)localObject2).toString());
           return;
         }
+        this.b.onFinished(this.a, null, 604);
+        ab.e("PostHttpRequest", ">sendRequest entity == null");
+        return;
       }
-    }
-    catch (ConnectTimeoutException localConnectTimeoutException)
-    {
-      ab.c("PostHttpRequest", "connect failed ConnectTimeoutException:", localConnectTimeoutException);
-      this.b.onFinished(this.a, null, 601);
-      return;
-      this.b.onFinished(this.a, null, 604);
-      ab.e("PostHttpRequest", ">sendRequest entity == null");
-      return;
-    }
-    catch (ConnectException localConnectException)
-    {
-      int i;
-      ab.c("PostHttpRequest", "connect failed ConnectException:", localConnectException);
-      this.b.onFinished(this.a, null, 1);
-      return;
-      ab.e("PostHttpRequest", ">sendRequest StatusCode not ok:" + i);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(">sendRequest StatusCode not ok:");
+      ((StringBuilder)localObject1).append(i);
+      ab.e("PostHttpRequest", ((StringBuilder)localObject1).toString());
       this.b.onFinished(this.a, null, i);
+      return;
+    }
+    catch (Throwable localThrowable)
+    {
+      ab.c("PostHttpRequest", "connect failed Throwable:", localThrowable);
+      this.b.onFinished(this.a, null, 604);
       return;
     }
     catch (SocketTimeoutException localSocketTimeoutException)
@@ -86,16 +94,22 @@ class f
       this.b.onFinished(this.a, null, 602);
       return;
     }
-    catch (Throwable localThrowable)
+    catch (ConnectException localConnectException)
     {
-      ab.c("PostHttpRequest", "connect failed Throwable:", localThrowable);
-      this.b.onFinished(this.a, null, 604);
+      ab.c("PostHttpRequest", "connect failed ConnectException:", localConnectException);
+      this.b.onFinished(this.a, null, 1);
+      return;
+    }
+    catch (ConnectTimeoutException localConnectTimeoutException)
+    {
+      ab.c("PostHttpRequest", "connect failed ConnectTimeoutException:", localConnectTimeoutException);
+      this.b.onFinished(this.a, null, 601);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.network.f
  * JD-Core Version:    0.7.0.1
  */

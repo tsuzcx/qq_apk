@@ -41,7 +41,15 @@ public class MediaPreviewInfo
   
   public String toString()
   {
-    return "type = " + this.jdField_a_of_type_Int + ", imageUrl = " + this.jdField_a_of_type_JavaLangString + ", videoUrl = " + this.b + ", videoLocalPath = " + this.c;
+    StringBuffer localStringBuffer = new StringBuffer("type = ");
+    localStringBuffer.append(this.jdField_a_of_type_Int);
+    localStringBuffer.append(", imageUrl = ");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append(", videoUrl = ");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append(", videoLocalPath = ");
+    localStringBuffer.append(this.c);
+    return localStringBuffer.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -54,7 +62,7 @@ public class MediaPreviewInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.MediaPreviewInfo
  * JD-Core Version:    0.7.0.1
  */

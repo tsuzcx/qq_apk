@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center" android:id="@id/noz" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<LinearLayout android:background="@drawable/skin_background_local_albums" android:layout_width="fill_parent" android:layout_height="fill_parent"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:layout_gravity="center_horizontal" android:id="@id/np1" android:layout_width="36.0dip" android:layout_height="36.0dip" android:src="@drawable/i6t" />
+    <com.tencent.widget.ReboundVLayout android:background="#ffffffff" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_above="@id/jss">
+        <com.tencent.widget.PhotoGridView android:id="@id/photo_list_gv" android:paddingLeft="@dimen/xv" android:paddingRight="@dimen/xv" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </com.tencent.widget.ReboundVLayout>
 </LinearLayout>

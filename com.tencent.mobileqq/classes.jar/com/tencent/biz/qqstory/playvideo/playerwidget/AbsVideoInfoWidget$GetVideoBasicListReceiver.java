@@ -20,21 +20,24 @@ public class AbsVideoInfoWidget$GetVideoBasicListReceiver
   
   public void a(@NonNull AbsVideoInfoWidget paramAbsVideoInfoWidget, @NonNull VidToBasicInfoHandler.GetVideoBasicInfoListEvent paramGetVideoBasicInfoListEvent)
   {
-    if ((paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null)) {}
-    String str;
-    StoryVideoItem localStoryVideoItem;
-    do
+    if (!paramGetVideoBasicInfoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail())
     {
-      do
-      {
+      if (paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList == null) {
         return;
-        while (paramAbsVideoInfoWidget.a == null) {}
-        str = paramAbsVideoInfoWidget.a.a;
+      }
+      if (paramAbsVideoInfoWidget.a != null)
+      {
+        String str = paramAbsVideoInfoWidget.a.a;
         paramGetVideoBasicInfoListEvent = paramGetVideoBasicInfoListEvent.jdField_a_of_type_JavaUtilList.iterator();
-      } while (!paramGetVideoBasicInfoListEvent.hasNext());
-      localStoryVideoItem = (StoryVideoItem)paramGetVideoBasicInfoListEvent.next();
-    } while ((!TextUtils.equals(str, localStoryVideoItem.mVid)) || (!localStoryVideoItem.isBasicInfoOK()));
-    paramAbsVideoInfoWidget.i();
+        while (paramGetVideoBasicInfoListEvent.hasNext())
+        {
+          StoryVideoItem localStoryVideoItem = (StoryVideoItem)paramGetVideoBasicInfoListEvent.next();
+          if ((TextUtils.equals(str, localStoryVideoItem.mVid)) && (localStoryVideoItem.isBasicInfoOK())) {
+            paramAbsVideoInfoWidget.i();
+          }
+        }
+      }
+    }
   }
   
   public Class acceptEventClass()
@@ -44,7 +47,7 @@ public class AbsVideoInfoWidget$GetVideoBasicListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.AbsVideoInfoWidget.GetVideoBasicListReceiver
  * JD-Core Version:    0.7.0.1
  */

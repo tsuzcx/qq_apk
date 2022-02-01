@@ -44,25 +44,40 @@ public class ChatItemAnimLayout
   
   private boolean a(ChatMessage paramChatMessage)
   {
-    if (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage == null) {}
-    do
-    {
+    ChatMessage localChatMessage = this.jdField_b_of_type_ComTencentMobileqqDataChatMessage;
+    boolean bool2 = false;
+    if (localChatMessage == null) {
       return false;
-      if (paramChatMessage == null) {
-        return true;
+    }
+    if (paramChatMessage == null) {
+      return true;
+    }
+    boolean bool1;
+    if ((localChatMessage != paramChatMessage) && ((paramChatMessage.msgseq == 0L) || (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage.msgseq != paramChatMessage.msgseq)) && ((paramChatMessage.msgUid == 0L) || (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage.msgUid != paramChatMessage.msgUid)))
+    {
+      bool1 = bool2;
+      if (paramChatMessage.uniseq != 0L)
+      {
+        bool1 = bool2;
+        if (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage.uniseq != paramChatMessage.uniseq) {}
       }
-    } while ((this.jdField_b_of_type_ComTencentMobileqqDataChatMessage != paramChatMessage) && ((paramChatMessage.msgseq == 0L) || (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage.msgseq != paramChatMessage.msgseq)) && ((paramChatMessage.msgUid == 0L) || (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage.msgUid != paramChatMessage.msgUid)) && ((paramChatMessage.uniseq == 0L) || (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage.uniseq != paramChatMessage.uniseq)));
-    return true;
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public void a(ChatMessage paramChatMessage)
   {
-    if ((this.jdField_b_of_type_ComTencentMobileqqDataChatMessage != null) && (this.jdField_b_of_type_ComTencentMobileqqDataChatMessage != paramChatMessage))
+    Object localObject = this.jdField_b_of_type_ComTencentMobileqqDataChatMessage;
+    if ((localObject != null) && (localObject != paramChatMessage))
     {
       this.h = 0.0F;
       this.aa = 255;
-      Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      localObject = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+      this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject);
       this.jdField_b_of_type_ComTencentMobileqqDataChatMessage = paramChatMessage;
     }
   }
@@ -92,14 +107,15 @@ public class ChatItemAnimLayout
     this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramChatMessage, 0L);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     float f1 = this.h;
     float f2 = this.g;
     float f3 = this.e;
-    float f4 = this.g;
-    setAlpha(((this.aa - this.Z) * this.f + this.Z) / 255.0F);
-    paramCanvas.translate((f1 - f2) * f3 + f4, 0.0F);
+    int i = this.aa;
+    int j = this.Z;
+    setAlpha(((i - j) * this.f + j) / 255.0F);
+    paramCanvas.translate((f1 - f2) * f3 + f2, 0.0F);
     try
     {
       super.dispatchDraw(paramCanvas);
@@ -120,7 +136,7 @@ public class ChatItemAnimLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ChatItemAnimLayout
  * JD-Core Version:    0.7.0.1
  */

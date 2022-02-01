@@ -11,12 +11,13 @@ class CustomLottieView$1
   
   public Bitmap fetchBitmap(LottieImageAsset paramLottieImageAsset)
   {
-    return CustomLottieView.a(this.a, this.a.getContext(), paramLottieImageAsset);
+    CustomLottieView localCustomLottieView = this.a;
+    return CustomLottieView.a(localCustomLottieView, localCustomLottieView.getContext(), paramLottieImageAsset);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.lottie.CustomLottieView.1
  * JD-Core Version:    0.7.0.1
  */

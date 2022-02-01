@@ -15,29 +15,39 @@ class DBFixManager$1
   {
     Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(DBFixManager.b, 0);
     String str = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-    if (((SharedPreferences)localObject).getBoolean(str + DBFixManager.d, false))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(DBFixManager.d);
+    if (((SharedPreferences)localObject).getBoolean(localStringBuilder.toString(), false))
     {
       this.this$0.a();
-      if ((((SharedPreferences)localObject).getInt(str + DBFixManager.e, 0) < DBFixManager.jdField_a_of_type_Int) && (DBFixManager.jdField_a_of_type_Boolean)) {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(DBFixManager.e);
+      if ((((SharedPreferences)localObject).getInt(localStringBuilder.toString(), 0) < DBFixManager.jdField_a_of_type_Int) && (DBFixManager.jdField_a_of_type_Boolean))
+      {
         this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.runOnUiThread(new DBFixManager.1.1(this));
+        return;
       }
+      QLog.d(DBFixManager.a(), 1, "DBFixDialogUI 1, max count, delete db");
+      this.this$0.b(false);
+      this.this$0.c();
+      localObject = ((SharedPreferences)localObject).edit();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(DBFixManager.d);
+      ((SharedPreferences.Editor)localObject).remove(localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(DBFixManager.e);
+      ((SharedPreferences.Editor)localObject).remove(localStringBuilder.toString());
+      ((SharedPreferences.Editor)localObject).apply();
     }
-    else
-    {
-      return;
-    }
-    QLog.d(DBFixManager.a(), 1, "DBFixDialogUI 1, max count, delete db");
-    this.this$0.b(false);
-    this.this$0.c();
-    localObject = ((SharedPreferences)localObject).edit();
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.d);
-    ((SharedPreferences.Editor)localObject).remove(str + DBFixManager.e);
-    ((SharedPreferences.Editor)localObject).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.database.corrupt.DBFixManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,17 +13,30 @@ import java.io.File;
 public class TAVCut
 {
   private static final String PAG_SO_NAME = "liblibpag.so";
-  private static final String TAG = TAVCut.class.getSimpleName();
+  private static final String TAG = "TAVCut";
   private static final String TAVKIT_SO_NAME = "libtav.so";
+  private static String frameEmptyResPath;
   private static boolean isDebug = false;
-  private static String lightBundleResPath = null;
+  private static String lightBundleResPath;
   
   public static String getLightBundleResPath()
   {
-    if (isDebug()) {
-      return Environment.getExternalStorageDirectory().getAbsolutePath() + "/light_assets/";
+    if (isDebug())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory().getAbsolutePath());
+      localStringBuilder.append("/light_assets/");
+      return localStringBuilder.toString();
     }
     return lightBundleResPath;
+  }
+  
+  public static String getPlaceHolderTemplatePath()
+  {
+    if (isDebug()) {
+      return "/sdcard/tavcut/frame/none";
+    }
+    return frameEmptyResPath;
   }
   
   public static void initTAVCut(Context paramContext, TAVCut.Callback paramCallback)
@@ -40,45 +53,61 @@ public class TAVCut
   {
     try
     {
-      if ((!TextUtils.isEmpty(paramString1)) && (!ResourceLoadUtil.loadSoSync(paramString1 + "libtav.so")))
+      if (!TextUtils.isEmpty(paramString1))
       {
-        Logger.e(TAG, "tavkit so init failed");
-        if (paramCallback != null)
+        paramContext = new StringBuilder();
+        paramContext.append(paramString1);
+        paramContext.append("libtav.so");
+        if (!ResourceLoadUtil.loadSoSync(paramContext.toString()))
         {
-          paramCallback.onDone(-1);
+          Logger.e(TAG, "tavkit so init failed");
+          if (paramCallback != null)
+          {
+            paramCallback.onDone(-1);
+            return;
+          }
+        }
+      }
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(paramString2);
+        paramContext.append("liblibpag.so");
+        if (!PAGSOLoadUtil.loadSoSync(paramContext.toString()))
+        {
+          Logger.e(TAG, "pag so init failed");
+          if (paramCallback != null)
+          {
+            paramCallback.onDone(-2);
+            return;
+          }
+        }
+      }
+      if (!TextUtils.isEmpty(paramString3))
+      {
+        AEStaticDetector.initDetector(paramString3);
+        lightBundleResPath = new File(paramString3).getParent();
+        paramContext = new StringBuilder();
+        paramContext.append(lightBundleResPath);
+        paramContext.append("/material/frame_empty");
+        frameEmptyResPath = paramContext.toString();
+        if ((TextUtils.isEmpty(lightBundleResPath)) && (paramCallback != null))
+        {
+          paramCallback.onDone(-3);
           return;
         }
       }
-      if ((!TextUtils.isEmpty(paramString2)) && (!PAGSOLoadUtil.loadSoSync(paramString2 + "liblibpag.so")))
+      if (paramCallback != null)
       {
-        Logger.e(TAG, "pag so init failed");
-        if (paramCallback != null)
-        {
-          paramCallback.onDone(-2);
-          return;
-        }
+        paramCallback.onDone(0);
+        return;
       }
     }
     catch (Exception paramContext)
     {
       Logger.e(paramContext);
-      if (paramCallback != null)
-      {
+      if (paramCallback != null) {
         paramCallback.onDone(-1);
-        return;
-        if (!TextUtils.isEmpty(paramString3))
-        {
-          AEStaticDetector.initDetector(paramString3);
-          lightBundleResPath = new File(paramString3).getParent();
-          if ((TextUtils.isEmpty(lightBundleResPath)) && (paramCallback != null))
-          {
-            paramCallback.onDone(-3);
-            return;
-          }
-        }
-        if (paramCallback != null) {
-          paramCallback.onDone(0);
-        }
       }
     }
   }
@@ -96,7 +125,7 @@ public class TAVCut
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.TAVCut
  * JD-Core Version:    0.7.0.1
  */

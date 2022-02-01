@@ -123,7 +123,7 @@ public class StoryPlayerLauncher
     Intent localIntent = new Intent(paramActivity, StoryPlayerActivity.class);
     localIntent.putExtra("story_data", paramData);
     paramActivity.startActivity(localIntent);
-    paramActivity.overridePendingTransition(2130771983, 2130771985);
+    paramActivity.overridePendingTransition(2130771995, 2130771997);
   }
   
   public static void b(Context paramContext, String paramString1, String paramString2, int paramInt)
@@ -133,21 +133,22 @@ public class StoryPlayerLauncher
     {
       paramString1 = new OpenPlayerBuilder(new VidListPlayInfo(paramString2, paramString1), paramInt).a();
       paramString2 = paramString1.mUIStyle;
-      if (localStoryVideoItem.mInteractStatus == 1) {}
-      for (paramInt = 1;; paramInt = 2)
-      {
-        paramString2.bottomWidgetShowFlag = paramInt;
-        paramString1.mUIStyle.mPlayerRepeatMode = 1;
-        a(paramContext, paramString1, null);
-        return;
+      if (localStoryVideoItem.mInteractStatus == 1) {
+        paramInt = 1;
+      } else {
+        paramInt = 2;
       }
+      paramString2.bottomWidgetShowFlag = paramInt;
+      paramString1.mUIStyle.mPlayerRepeatMode = 1;
+      a(paramContext, paramString1, null);
+      return;
     }
     PlayModeUtils.a(PlayModeUtils.a(), paramString1, new StoryPlayerLauncher.1(paramString2, paramString1, paramInt, paramContext));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerLauncher
  * JD-Core Version:    0.7.0.1
  */

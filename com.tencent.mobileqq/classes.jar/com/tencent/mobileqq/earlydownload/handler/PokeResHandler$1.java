@@ -2,9 +2,9 @@ package com.tencent.mobileqq.earlydownload.handler;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.item.PokeItemHelper;
+import com.tencent.mobileqq.activity.photo.album.QQAlbumUtils;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.tencent.mobileqq.richmedia.mediacodec.utils.MediaUtil;
 import java.io.IOException;
 
 class PokeResHandler$1
@@ -14,29 +14,26 @@ class PokeResHandler$1
   
   public void run()
   {
-    if (!TextUtils.isEmpty(this.a)) {}
-    try
-    {
-      FileUtils.a(this.a, false);
-      FileUtils.a(this.b, this.a, false);
-      MediaUtil.a(this.a);
-      PokeItemHelper.b(this.a);
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+    if (!TextUtils.isEmpty(this.a)) {
+      try
+      {
+        FileUtils.delete(this.a, false);
+        FileUtils.uncompressZip(this.b, this.a, false);
+        QQAlbumUtils.a(this.a);
+      }
+      catch (IOException localIOException)
       {
         if (QLog.isColorLevel()) {
           QLog.e("PokeResHandler_0625", 2, localIOException.toString());
         }
       }
     }
+    PokeItemHelper.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PokeResHandler.1
  * JD-Core Version:    0.7.0.1
  */

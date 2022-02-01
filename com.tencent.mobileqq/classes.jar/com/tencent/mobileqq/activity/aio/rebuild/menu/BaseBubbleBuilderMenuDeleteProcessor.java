@@ -27,27 +27,28 @@ public class BaseBubbleBuilderMenuDeleteProcessor
   
   public void a(QQCustomMenu paramQQCustomMenu, MessageRecord paramMessageRecord, Context paramContext, Bundle paramBundle)
   {
-    if (paramBundle != null) {}
-    for (boolean bool = paramBundle.getBoolean("isInvokeMenuShow", false);; bool = false)
-    {
-      if ((!bool) || ((paramMessageRecord != null) && (!paramMessageRecord.isSend()))) {
-        ChatActivityFacade.a(paramQQCustomMenu, paramContext, this.a.a);
-      }
-      if (paramBundle != null) {
-        paramBundle.putBoolean("isInvokeMenuShow", false);
-      }
-      return;
+    boolean bool;
+    if (paramBundle != null) {
+      bool = paramBundle.getBoolean("isInvokeMenuShow", false);
+    } else {
+      bool = false;
+    }
+    if ((!bool) || ((paramMessageRecord != null) && (!paramMessageRecord.isSend()))) {
+      ChatActivityFacade.a(paramQQCustomMenu, paramContext, this.a.a);
+    }
+    if (paramBundle != null) {
+      paramBundle.putBoolean("isInvokeMenuShow", false);
     }
   }
   
   public boolean a(int paramInt)
   {
-    return paramInt == 2131365636;
+    return paramInt == 2131365480;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.menu.BaseBubbleBuilderMenuDeleteProcessor
  * JD-Core Version:    0.7.0.1
  */

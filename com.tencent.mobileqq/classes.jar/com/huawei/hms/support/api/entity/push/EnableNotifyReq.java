@@ -7,9 +7,9 @@ public class EnableNotifyReq
   implements IMessageEntity
 {
   @Packed
-  private boolean enable;
+  public boolean enable;
   @Packed
-  private String packageName;
+  public String packageName;
   
   public String getPackageName()
   {
@@ -34,8 +34,11 @@ public class EnableNotifyReq
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("EnableNotifyReq{");
-    localStringBuilder.append("packageName='").append(this.packageName).append('\'');
-    localStringBuilder.append(", enable=").append(this.enable);
+    localStringBuilder.append("packageName='");
+    localStringBuilder.append(this.packageName);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", enable=");
+    localStringBuilder.append(this.enable);
     localStringBuilder.append('}');
     return localStringBuilder.toString();
   }

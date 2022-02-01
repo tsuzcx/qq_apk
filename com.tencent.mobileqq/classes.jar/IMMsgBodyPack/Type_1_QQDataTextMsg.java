@@ -31,14 +31,15 @@ public final class Type_1_QQDataTextMsg
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.msg_item != null) {
-      paramJceOutputStream.write(this.msg_item, 0);
+    ArrayList localArrayList = this.msg_item;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     IMMsgBodyPack.Type_1_QQDataTextMsg
  * JD-Core Version:    0.7.0.1
  */

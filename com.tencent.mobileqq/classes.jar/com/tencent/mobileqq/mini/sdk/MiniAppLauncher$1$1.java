@@ -11,18 +11,19 @@ class MiniAppLauncher$1$1
   
   public void run()
   {
-    if (this.val$ret != null)
+    Object localObject = this.val$ret;
+    if (localObject != null)
     {
-      String str = this.val$ret.optString("errMsg");
-      QQToast.a(BaseApplicationImpl.getContext(), 1, str, 0).a();
+      localObject = ((JSONObject)localObject).optString("errMsg");
+      QQToast.a(BaseApplicationImpl.getContext(), 1, (CharSequence)localObject, 0).a();
       return;
     }
-    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131694940, 0).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, 2131694930, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.MiniAppLauncher.1.1
  * JD-Core Version:    0.7.0.1
  */

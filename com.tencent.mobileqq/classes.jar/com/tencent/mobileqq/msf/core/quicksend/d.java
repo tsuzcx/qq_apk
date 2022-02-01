@@ -28,27 +28,27 @@ public class d
   
   private void a()
   {
-    if ((this.a != null) && (this.a.size() > 0))
+    Object localObject = this.a;
+    if ((localObject != null) && (((ConcurrentHashMap)localObject).size() > 0))
     {
-      Iterator localIterator = this.a.entrySet().iterator();
-      while (localIterator.hasNext())
+      localObject = this.a.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Map.Entry localEntry = (Map.Entry)localIterator.next();
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
         d.a locala = (d.a)localEntry.getValue();
         if (SystemClock.elapsedRealtime() - locala.d >= 1800000L)
         {
-          if (locala.f > 0L) {
-            if (locala.g <= 0L) {
-              break label121;
-            }
-          }
-          label121:
-          for (boolean bool = true;; bool = false)
+          if (locala.f > 0L)
           {
+            boolean bool;
+            if (locala.g > 0L) {
+              bool = true;
+            } else {
+              bool = false;
+            }
             a(locala, bool);
-            this.a.remove(localEntry.getKey());
-            break;
           }
+          this.a.remove(localEntry.getKey());
         }
       }
     }
@@ -60,10 +60,22 @@ public class d
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("uin", parama.a);
-      localHashMap.put("ssoSeq", "" + parama.b);
-      localHashMap.put("cmd", "" + parama.c);
-      localHashMap.put("normalCost", "" + (parama.e - parama.d));
-      localHashMap.put("quickCostTime", "" + (parama.g - parama.f));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.b);
+      localHashMap.put("ssoSeq", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.c);
+      localHashMap.put("cmd", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.e - parama.d);
+      localHashMap.put("normalCost", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(parama.g - parama.f);
+      localHashMap.put("quickCostTime", localStringBuilder.toString());
       if (MsfService.core.getStatReporter() != null) {
         MsfService.core.getStatReporter().a("dim.Msf.QuickSendEffect", paramBoolean, 0L, 0L, localHashMap, false, false);
       }
@@ -92,17 +104,15 @@ public class d
       if (paramFromServiceMsg.f > 0L)
       {
         paramFromServiceMsg.e = l;
-        if ((paramFromServiceMsg.g <= 0L) || (paramFromServiceMsg.g > paramFromServiceMsg.d)) {
-          break label103;
+        boolean bool;
+        if ((paramFromServiceMsg.g > 0L) && (paramFromServiceMsg.g <= paramFromServiceMsg.d)) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        a(paramFromServiceMsg, bool);
       }
-    }
-    label103:
-    for (boolean bool = true;; bool = false)
-    {
-      a(paramFromServiceMsg, bool);
       this.a.remove(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
-      return;
     }
   }
   
@@ -122,23 +132,21 @@ public class d
       if (paramFromServiceMsg.f > 0L)
       {
         paramFromServiceMsg.g = l;
+        boolean bool;
         if ((paramFromServiceMsg.e > 0L) && (paramFromServiceMsg.e <= paramFromServiceMsg.g)) {
-          break label103;
+          bool = false;
+        } else {
+          bool = true;
         }
+        a(paramFromServiceMsg, bool);
       }
-    }
-    label103:
-    for (boolean bool = true;; bool = false)
-    {
-      a(paramFromServiceMsg, bool);
       this.a.remove(Integer.valueOf(paramToServiceMsg.getRequestSsoSeq()));
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.quicksend.d
  * JD-Core Version:    0.7.0.1
  */

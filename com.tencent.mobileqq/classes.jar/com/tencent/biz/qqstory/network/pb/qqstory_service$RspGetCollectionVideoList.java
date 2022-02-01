@@ -22,13 +22,14 @@ public final class qqstory_service$RspGetCollectionVideoList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 56 }, new String[] { "result", "video_list", "is_end", "next_cookie", "video_info_list", "full_video_info_list", "interact_status" }, new Object[] { null, null, Integer.valueOf(0), localByteStringMicro, null, null, Integer.valueOf(0) }, RspGetCollectionVideoList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 50, 56 }, new String[] { "result", "video_list", "is_end", "next_cookie", "video_info_list", "full_video_info_list", "interact_status" }, new Object[] { null, null, localInteger, localByteStringMicro, null, null, localInteger }, RspGetCollectionVideoList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetCollectionVideoList
  * JD-Core Version:    0.7.0.1
  */

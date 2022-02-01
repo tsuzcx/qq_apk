@@ -16,17 +16,35 @@ public class DecodeRequest
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_b_of_type_JavaLangString = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_Int);
     this.c = a(this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-    this.d = (paramString + "_" + paramInt1 + "_" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    this.d = localStringBuilder.toString();
   }
   
   private static String a(int paramInt, String paramString)
   {
-    return "flutter_face_path_" + paramInt + "_" + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("flutter_face_path_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   private static String a(int paramInt1, String paramString, int paramInt2)
   {
-    return "flutter_face_bmp_" + paramInt1 + "_" + paramString + "_" + paramInt2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("flutter_face_bmp_");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt2);
+    return localStringBuilder.toString();
   }
   
   public static String[] a(int paramInt, String paramString)
@@ -41,12 +59,21 @@ public class DecodeRequest
   
   public String toString()
   {
-    return "DecodeRequest{faceType=" + this.jdField_a_of_type_Int + ", faceUin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", faceShape=" + this.jdField_b_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DecodeRequest{faceType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", faceUin='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", faceShape=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.DecodeRequest
  * JD-Core Version:    0.7.0.1
  */

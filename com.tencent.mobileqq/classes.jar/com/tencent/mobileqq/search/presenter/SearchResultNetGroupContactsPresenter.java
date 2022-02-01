@@ -1,9 +1,10 @@
 package com.tencent.mobileqq.search.presenter;
 
+import com.tencent.mobileqq.search.base.presenter.IPresenter;
+import com.tencent.mobileqq.search.base.view.ISearchResultGroupView;
+import com.tencent.mobileqq.search.base.view.SearchResultGroupView;
 import com.tencent.mobileqq.search.model.GroupNetSearchModelPeople;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
-import com.tencent.mobileqq.search.view.ISearchResultGroupView;
-import com.tencent.mobileqq.search.view.SearchResultGroupView;
 
 public class SearchResultNetGroupContactsPresenter
   implements IPresenter<ISearchResultGroupModel, ISearchResultGroupView>
@@ -16,7 +17,7 @@ public class SearchResultNetGroupContactsPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.SearchResultNetGroupContactsPresenter
  * JD-Core Version:    0.7.0.1
  */

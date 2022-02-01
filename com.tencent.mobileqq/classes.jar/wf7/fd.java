@@ -5,9 +5,9 @@ import android.content.Context;
 public class fd
   extends ec
 {
-  private static fd pL = null;
+  private static fd pL;
   private static Context pM;
-  private static fa pN = null;
+  private static fa pN;
   
   public static void a(boolean paramBoolean1, Context paramContext, fa paramfa, dp paramdp, boolean paramBoolean2, boolean paramBoolean3, String paramString)
   {
@@ -20,15 +20,16 @@ public class fd
   
   public static fd dD()
   {
-    if (pL == null) {}
-    try
-    {
-      if (pL == null) {
-        pL = new fd();
+    if (pL == null) {
+      try
+      {
+        if (pL == null) {
+          pL = new fd();
+        }
       }
-      return pL;
+      finally {}
     }
-    finally {}
+    return pL;
   }
   
   public static Context dE()
@@ -41,15 +42,11 @@ public class fd
     return pN;
   }
   
-  public static void x(boolean paramBoolean)
-  {
-    
-    if (paramBoolean) {}
-  }
+  public static void x(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.fd
  * JD-Core Version:    0.7.0.1
  */

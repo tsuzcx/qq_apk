@@ -29,10 +29,10 @@ import com.tencent.mobileqq.bigbrother.TeleScreen;
 import com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.Config;
 import com.tencent.mobileqq.cooperation.ApkUtils;
 import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.intervideo.Shadow;
-import com.tencent.mobileqq.intervideo.now.LogUploadUtil;
+import com.tencent.mobileqq.intervideo.impl.Shadow;
 import com.tencent.mobileqq.intervideo.now.NowDataReporter;
 import com.tencent.mobileqq.intervideo.now.NowQQConnectFragment;
+import com.tencent.mobileqq.intervideo.now.api.ILogUploadUtil;
 import com.tencent.mobileqq.intervideo.now.dynamic.strategy.IEnterRoomStrategy;
 import com.tencent.mobileqq.intervideo.now.dynamic.strategy.StrategyManager;
 import com.tencent.mobileqq.intervideo.yiqikan.IWatchTogetherRoomDelegate;
@@ -45,6 +45,7 @@ import com.tencent.mobileqq.litelivesdk.api.ILiveSDK;
 import com.tencent.mobileqq.litelivesdk.api.business.BusinessConfig;
 import com.tencent.mobileqq.litelivesdk.api.login.BizLoginRequest;
 import com.tencent.mobileqq.litelivesdk.utils.ProcessUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.PackageUtil;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -62,7 +63,7 @@ import mqq.manager.TicketManager;
 import oicq.wlogin_sdk.request.Ticket;
 
 public class DynamicNowManager
-  implements IWatchTogetherRoomDelegate, Manager
+  implements IDynamicNowManager, IWatchTogetherRoomDelegate, Manager
 {
   public static int a;
   static JumpCallback jdField_a_of_type_ComTencentMobileqqBigbrotherJumpCallback = new DynamicNowManager.11();
@@ -72,7 +73,7 @@ public class DynamicNowManager
   private LoginType jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginType = LoginType.QQConnect;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   private ILiveLoginTicketManager jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager;
-  protected NowEntry a;
+  private NowEntry jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicNowEntry;
   NowShadowImpl jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicNowShadowImpl;
   private IEnterRoomStrategy jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy;
   PushMessageDelegate jdField_a_of_type_ComTencentMobileqqIntervideoYiqikanPushMessageDelegate = new DynamicNowManager.12(this);
@@ -91,14 +92,17 @@ public class DynamicNowManager
   {
     try
     {
-      QLog.i("XProxy|NowProxy", 1, "DynamicNowManager create app = " + paramQQAppInterface);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DynamicNowManager create app = ");
+      localStringBuilder.append(paramQQAppInterface);
+      QLog.i("XProxy|NowProxy", 1, localStringBuilder.toString());
       this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
       this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager = new ILiveLoginTicketManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
       Shadow.a();
       PluginManagerInterfaceImpl.a().a(paramQQAppInterface);
       e();
       f();
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicNowEntry = new NowEntry(paramQQAppInterface);
+      a(new NowEntry(paramQQAppInterface));
       paramQQAppInterface = new IntentFilter();
       paramQQAppInterface.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
       paramQQAppInterface.addAction("mqq.intent.action.ACCOUNT_KICKED");
@@ -112,11 +116,10 @@ public class DynamicNowManager
   
   public static int a(String paramString)
   {
-    int i = 2;
-    if ((paramString.equals("1")) || (paramString.equals("2"))) {
-      i = 1;
+    if ((!paramString.equals("1")) && (!paramString.equals("2"))) {
+      return 2;
     }
-    return i;
+    return 1;
   }
   
   private Bundle a(Bundle paramBundle, NewTogetherRoomMessageData paramNewTogetherRoomMessageData)
@@ -145,99 +148,113 @@ public class DynamicNowManager
   
   private static void a(long paramLong, String paramString1, String paramString2)
   {
-    String str = paramString1;
+    Object localObject = paramString1;
     if (TextUtils.isEmpty(paramString1)) {
-      if (paramLong != 0L) {
-        break label195;
+      if (paramLong == 0L)
+      {
+        localObject = "https://now.qq.com/qq/play.html?_bid=2374&_wv=16778245&from=50320";
+      }
+      else
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("https://now.qq.com/h5/index.html?_bid=2336&_wv=16778245&from=50320&roomid=");
+        paramString1.append(paramLong);
+        localObject = paramString1.toString();
       }
     }
-    label195:
-    for (str = "https://now.qq.com/qq/play.html?_bid=2374&_wv=16778245&from=50320";; str = "https://now.qq.com/h5/index.html?_bid=2336&_wv=16778245&from=50320&roomid=" + paramLong)
-    {
-      long l = System.currentTimeMillis();
-      paramString1 = str + "&_t=" + l;
-      PluginManagerInterfaceImpl.a().a().a("", String.valueOf(paramLong), paramString2, paramString1);
-      paramString2 = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
-      paramString2.putExtra("hide_operation_bar", true);
-      paramString2.putExtra("url", paramString1);
-      paramString2.putExtra("op_type", "now_live");
-      paramString2.putExtra("key_isReadModeEnabled", true);
-      paramString2.setFlags(268435456);
-      paramString2.putExtra("insertPluginsArray", new String[] { "nowlive" });
-      QLog.i("XProxy|NowProxy", 1, "跳转web页面 URL = " + paramString1 + " time = " + l);
-      WebAccelerator.a(BaseApplicationImpl.getContext(), paramString2, paramString1);
-      return;
-    }
+    long l = System.currentTimeMillis();
+    paramString1 = new StringBuilder();
+    paramString1.append((String)localObject);
+    paramString1.append("&_t=");
+    paramString1.append(l);
+    paramString1 = paramString1.toString();
+    PluginManagerInterfaceImpl.a().a().a("", String.valueOf(paramLong), paramString2, paramString1);
+    paramString2 = new Intent(BaseApplicationImpl.getContext(), QQBrowserActivity.class);
+    paramString2.putExtra("hide_operation_bar", true);
+    paramString2.putExtra("url", paramString1);
+    paramString2.putExtra("op_type", "now_live");
+    paramString2.putExtra("key_isReadModeEnabled", true);
+    paramString2.setFlags(268435456);
+    paramString2.putExtra("insertPluginsArray", new String[] { "nowlive" });
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("跳转web页面 URL = ");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(" time = ");
+    ((StringBuilder)localObject).append(l);
+    QLog.i("XProxy|NowProxy", 1, ((StringBuilder)localObject).toString());
+    WebAccelerator.a(BaseApplicationImpl.getContext(), paramString2, paramString1);
   }
   
   private void a(WeakReference<Activity> paramWeakReference, Bundle paramBundle, long paramLong, String paramString)
   {
-    Object localObject1 = new StringBuilder().append("requestHostTicketByDoraemon call login onSuccess, timeconsume = ");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("requestHostTicketByDoraemon call login onSuccess, timeconsume = ");
     long l;
-    Object localObject2;
-    if (paramLong == 0L)
-    {
+    if (paramLong == 0L) {
       l = -1L;
-      QLog.i("DynamicNowManager", 1, l);
-      localObject1 = paramBundle.getString("fromid");
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(paramBundle);
-      if ((paramBundle.getBoolean("isFinishContainerAct")) && (paramWeakReference != null) && (paramWeakReference.get() != null)) {
-        ((Activity)paramWeakReference.get()).finish();
-      }
-      if (!this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a((String)localObject1)) {
-        break label389;
-      }
+    } else {
+      l = System.currentTimeMillis() - paramLong;
+    }
+    ((StringBuilder)localObject1).append(l);
+    QLog.i("DynamicNowManager", 1, ((StringBuilder)localObject1).toString());
+    String str = paramBundle.getString("fromid");
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(paramBundle);
+    if ((paramBundle.getBoolean("isFinishContainerAct")) && (paramWeakReference != null) && (paramWeakReference.get() != null)) {
+      ((Activity)paramWeakReference.get()).finish();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(str))
+    {
       e(paramBundle);
-      LiteLiveSDKFactory.a().a((String)localObject2, paramBundle.getString("mqqScheme") + "&toolProcessState=" + paramString + "&startEnterTime=" + System.currentTimeMillis());
+      ILiveSDK localILiveSDK = LiteLiveSDKFactory.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramBundle.getString("mqqScheme"));
+      localStringBuilder.append("&toolProcessState=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("&startEnterTime=");
+      localStringBuilder.append(System.currentTimeMillis());
+      boolean bool = "1014".equals(localObject2);
+      localObject1 = "";
+      if (bool) {
+        paramWeakReference = "&multiRoomMode=1";
+      } else {
+        paramWeakReference = "";
+      }
+      localStringBuilder.append(paramWeakReference);
+      localILiveSDK.a((String)localObject2, localStringBuilder.toString());
       localObject2 = new HashMap();
       ((Map)localObject2).put("appid", this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(paramBundle));
-      if (!this.b) {
-        break label357;
+      if (this.b) {
+        paramWeakReference = "1";
+      } else {
+        paramWeakReference = "0";
       }
-      paramWeakReference = "1";
-      label208:
       ((Map)localObject2).put("zt_int4", paramWeakReference);
       ((Map)localObject2).put("zt_int5", paramString);
       ((Map)localObject2).put("act_type", "doraemon_success");
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label364;
+      paramWeakReference = str;
+      if (TextUtils.isEmpty(str)) {
+        paramWeakReference = "";
       }
-      paramWeakReference = "";
-      label259:
       ((Map)localObject2).put("fromid", paramWeakReference);
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-        break label370;
+      paramBundle = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      paramWeakReference = (WeakReference<Activity>)localObject1;
+      if (paramBundle != null) {
+        paramWeakReference = paramBundle.getCurrentAccountUin();
       }
-      paramWeakReference = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      label286:
       ((Map)localObject2).put("userid", paramWeakReference);
-      if (paramLong != 0L) {
-        break label377;
+      if (paramLong == 0L) {
+        paramWeakReference = "-1";
+      } else {
+        paramWeakReference = String.valueOf(System.currentTimeMillis() - paramLong);
       }
-    }
-    label357:
-    label364:
-    label370:
-    label377:
-    for (paramWeakReference = "-1";; paramWeakReference = String.valueOf(System.currentTimeMillis() - paramLong))
-    {
       ((Map)localObject2).put("timelong", paramWeakReference);
       this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a("00000MEVUX3CBYO1", "doraemon_success#room_page#room", true, -1L, -1L, (Map)localObject2, true, true);
       return;
-      l = System.currentTimeMillis() - paramLong;
-      break;
-      paramWeakReference = "0";
-      break label208;
-      paramWeakReference = (WeakReference<Activity>)localObject1;
-      break label259;
-      paramWeakReference = "";
-      break label286;
     }
-    label389:
     paramBundle.putString("access_token", this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.b());
     paramBundle.putString("openid", this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a());
     g();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicNowEntry.b(paramBundle);
+    a().a(paramBundle);
   }
   
   public static boolean a()
@@ -247,7 +264,15 @@ public class DynamicNowManager
   
   private boolean a(int paramInt)
   {
-    return (paramInt == 0) || (paramInt == 1);
+    boolean bool = true;
+    if (paramInt != 0)
+    {
+      if (paramInt == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   private boolean a(String paramString)
@@ -257,13 +282,19 @@ public class DynamicNowManager
       QLog.i("XProxy|NowProxy", 1, "isTroopOwner  troopUin is null");
       return false;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localQQAppInterface != null)
     {
-      paramString = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
+      paramString = ((TroopManager)localQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(paramString);
       if (paramString != null)
       {
         boolean bool = paramString.isTroopOwner(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-        QLog.i("XProxy|NowProxy", 1, "isTroopOwner  selfuin is " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + ";isOwner=" + bool);
+        paramString = new StringBuilder();
+        paramString.append("isTroopOwner  selfuin is ");
+        paramString.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+        paramString.append(";isOwner=");
+        paramString.append(bool);
+        QLog.i("XProxy|NowProxy", 1, paramString.toString());
         return bool;
       }
     }
@@ -277,7 +308,7 @@ public class DynamicNowManager
   
   public static void d(Bundle paramBundle)
   {
-    if (a())
+    if (((IDynamicNowManagerApi)QRoute.api(IDynamicNowManagerApi.class)).isAppInstalled())
     {
       Intent localIntent = new Intent("android.intent.action.VIEW", Uri.parse("tnow://openpage/startlive?from=1"));
       if (paramBundle != null) {
@@ -333,15 +364,16 @@ public class DynamicNowManager
     if (LiteLiveSDKFactory.a().a())
     {
       BusinessConfig localBusinessConfig = LiteLiveSDKFactory.a().a();
-      if ((localBusinessConfig != null) && (localBusinessConfig.jdField_a_of_type_JavaLangString.equals(str))) {
+      if ((localBusinessConfig != null) && (localBusinessConfig.jdField_a_of_type_JavaLangString.equals(str)))
+      {
         QLog.e("DynamicNowManager", 1, "DynamicNowManager, initLiteSDK--------Already Init, will Return");
+        return;
       }
     }
-    do
-    {
+    QLog.i("DynamicNowManager", 1, "-----initLiteSDk-----");
+    if (!this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(paramBundle)) {
       return;
-      QLog.i("DynamicNowManager", 1, "-----initLiteSDk-----");
-    } while (!this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(paramBundle));
+    }
     LiteLiveSDKFactory.a().a(str, new DynamicNowManager.7(this, paramBundle));
     LiteLiveSDKFactory.a().a(str, new DynamicNowManager.8(this, paramBundle, str));
     paramBundle = this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(paramBundle, str);
@@ -351,17 +383,30 @@ public class DynamicNowManager
   private void g()
   {
     long l = System.currentTimeMillis() - this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong.get();
-    QLog.i("XProxy|NowProxy", 1, "login timeDiff: " + l);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("login timeDiff: ");
+    ((StringBuilder)localObject).append(l);
+    QLog.i("XProxy|NowProxy", 1, ((StringBuilder)localObject).toString());
     if ((this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) && (l >= 1800000L))
     {
-      LoginData localLoginData = new LoginData();
+      localObject = new LoginData();
       TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
       String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
       localTicketManager.getA2(str);
-      localLoginData.setLoginType(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginType);
-      localLoginData.setLoginAppid(16L);
-      a(str, new DynamicNowManager.9(this, localLoginData, localTicketManager, str));
+      ((LoginData)localObject).setLoginType(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginType);
+      ((LoginData)localObject).setLoginAppid(16L);
+      a(str, new DynamicNowManager.9(this, (LoginData)localObject, localTicketManager, str));
     }
+  }
+  
+  public NowDataReporter a()
+  {
+    return a().a;
+  }
+  
+  public NowEntry a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicNowEntry;
   }
   
   public PushMessageDelegate a()
@@ -376,83 +421,79 @@ public class DynamicNowManager
   
   public void a(Activity paramActivity, Bundle paramBundle)
   {
-    if ((paramActivity == null) || (paramBundle == null))
+    if ((paramActivity != null) && (paramBundle != null))
     {
-      QLog.e("XProxy|NowProxy", 1, "activity or bundle is null");
-      return;
-    }
-    long l2 = paramBundle.getLong("enter_ts");
-    long l1 = -1L;
-    if (l2 != 0L) {
-      l1 = System.currentTimeMillis() - l2;
-    }
-    QLog.i("DynamicNowManager", 1, "realEntry----clickToEnterRoomConume " + l1);
-    this.b = this.jdField_a_of_type_Boolean;
-    this.jdField_a_of_type_Boolean = false;
-    String str;
-    HashMap localHashMap;
-    if (ProcessUtil.a())
-    {
-      str = "0";
+      long l2 = paramBundle.getLong("enter_ts");
+      long l1 = -1L;
+      if (l2 != 0L) {
+        l1 = System.currentTimeMillis() - l2;
+      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("realEntry----clickToEnterRoomConume ");
+      ((StringBuilder)localObject1).append(l1);
+      QLog.i("DynamicNowManager", 1, ((StringBuilder)localObject1).toString());
+      this.b = this.jdField_a_of_type_Boolean;
+      this.jdField_a_of_type_Boolean = false;
+      boolean bool = ProcessUtil.a();
+      Object localObject2 = "0";
+      if (bool) {
+        localObject1 = "0";
+      } else {
+        localObject1 = "1";
+      }
       if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(paramBundle.getString("fromid")))
       {
         f(paramBundle);
-        localHashMap = new HashMap();
+        HashMap localHashMap = new HashMap();
         localHashMap.put("appid", this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(paramBundle));
         localHashMap.put("zt_int3", String.valueOf(l1));
-        if (!this.b) {
-          break label348;
+        if (this.b) {
+          localObject2 = "1";
         }
-        localObject = "1";
-        label176:
-        localHashMap.put("zt_int4", localObject);
-        localHashMap.put("zt_int5", str);
+        localHashMap.put("zt_int4", localObject2);
+        localHashMap.put("zt_int5", localObject1);
         localHashMap.put("act_type", "qq_start_sdk");
-        if (!TextUtils.isEmpty(paramBundle.getString("fromid"))) {
-          break label356;
+        bool = TextUtils.isEmpty(paramBundle.getString("fromid"));
+        String str = "";
+        if (bool) {
+          localObject2 = "";
+        } else {
+          localObject2 = paramBundle.getString("fromid");
         }
-        localObject = "";
-        label234:
-        localHashMap.put("fromid", localObject);
-        if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-          break label368;
+        localHashMap.put("fromid", localObject2);
+        QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+        localObject2 = str;
+        if (localQQAppInterface != null) {
+          localObject2 = localQQAppInterface.getCurrentAccountUin();
         }
+        localHashMap.put("userid", localObject2);
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a("00000MEVUX3CBYO1", "qq_start_sdk#room_page#room", true, -1L, -1L, localHashMap, true, true);
       }
-    }
-    label348:
-    label356:
-    label368:
-    for (Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();; localObject = "")
-    {
-      localHashMap.put("userid", localObject);
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a("00000MEVUX3CBYO1", "qq_start_sdk#room_page#room", true, -1L, -1L, localHashMap, true, true);
       paramBundle.putBoolean("is_cpu_64bit", false);
-      localObject = new WeakReference(paramActivity);
-      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a()) {
-        break label376;
+      localObject2 = new WeakReference(paramActivity);
+      if (!this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a())
+      {
+        a((WeakReference)localObject2, paramBundle, 0L, (String)localObject1);
+        return;
       }
-      a((WeakReference)localObject, paramBundle, 0L, str);
+      l1 = System.currentTimeMillis();
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a(paramActivity, new DynamicNowManager.5(this, l1, paramBundle, (String)localObject1, (WeakReference)localObject2));
       return;
-      str = "1";
-      break;
-      localObject = "0";
-      break label176;
-      localObject = paramBundle.getString("fromid");
-      break label234;
     }
-    label376:
-    l1 = System.currentTimeMillis();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a(paramActivity, new DynamicNowManager.5(this, l1, paramBundle, str, (WeakReference)localObject));
+    QLog.e("XProxy|NowProxy", 1, "activity or bundle is null");
   }
   
   public void a(Bundle paramBundle)
   {
-    QLog.i("XProxy|NowProxy", 1, "enter login_type = " + this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginType.ordinal());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enter login_type = ");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentIntervideoNowproxyCommonLoginLoginType.ordinal());
+    QLog.i("XProxy|NowProxy", 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = StrategyManager.a().a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a(paramBundle, new DynamicNowManager.3(this, paramBundle));
   }
   
-  public void a(Bundle paramBundle, DynamicNowManager.OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
+  public void a(Bundle paramBundle, OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy == null) {
       this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = StrategyManager.a().a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -514,23 +555,29 @@ public class DynamicNowManager
     a(localBundle, new DynamicNowManager.1(this, paramOnOpenCloseRoomCallback));
   }
   
-  public void a(String paramString, @NonNull DynamicNowManager.OnGetSkeyListener paramOnGetSkeyListener)
+  public void a(Object paramObject)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
-      paramOnGetSkeyListener.a(2, null);
-    }
-    do
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicNowEntry = ((NowEntry)paramObject);
+  }
+  
+  public void a(String paramString, @NonNull OnGetSkeyListener paramOnGetSkeyListener)
+  {
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject == null)
     {
+      paramOnGetSkeyListener.a(2, null);
       return;
-      TicketManager localTicketManager = (TicketManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2);
-      if (localTicketManager == null)
-      {
-        paramOnGetSkeyListener.a(2, null);
-        return;
-      }
-      paramString = localTicketManager.getSkey(paramString, 16L, new DynamicNowManager.10(this, paramOnGetSkeyListener));
-    } while ((paramString == null) || (paramString._sig == null) || (paramString._sig.length == 0));
-    paramOnGetSkeyListener.a(0, new String(paramString._sig));
+    }
+    localObject = (TicketManager)((QQAppInterface)localObject).getManager(2);
+    if (localObject == null)
+    {
+      paramOnGetSkeyListener.a(2, null);
+      return;
+    }
+    paramString = ((TicketManager)localObject).getSkey(paramString, 16L, new DynamicNowManager.10(this, paramOnGetSkeyListener));
+    if ((paramString != null) && (paramString._sig != null) && (paramString._sig.length != 0)) {
+      paramOnGetSkeyListener.a(0, new String(paramString._sig));
+    }
   }
   
   public void b()
@@ -547,24 +594,23 @@ public class DynamicNowManager
     this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = StrategyManager.a().a(paramBundle, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy.a("kandian_003"))
     {
-      if ((LiteLiveSDKFactory.a().a()) && (LiteLiveSDKFactory.a().a() != null)) {
+      if ((LiteLiveSDKFactory.a().a()) && (LiteLiveSDKFactory.a().a() != null))
+      {
         QLog.e("DynamicNowManager", 1, "DynamicNowManager, preloginLiteSDK--------Already Init, will Return");
+        return;
       }
+      QLog.i("DynamicNowManager", 1, "DynamicNowManager, preloginLiteSDK------will Start");
+      f(paramBundle);
+      if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a())
+      {
+        this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a(null, new DynamicNowManager.4(this, paramBundle));
+        return;
+      }
+      e(paramBundle);
     }
-    else {
-      return;
-    }
-    QLog.i("DynamicNowManager", 1, "DynamicNowManager, preloginLiteSDK------will Start");
-    f(paramBundle);
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a(null, new DynamicNowManager.4(this, paramBundle));
-      return;
-    }
-    e(paramBundle);
   }
   
-  public void b(Bundle paramBundle, DynamicNowManager.OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
+  public void b(Bundle paramBundle, OnOpenCloseRoomCallback paramOnOpenCloseRoomCallback)
   {
     paramBundle.putInt("ctrl_cmd", 1);
     NowLive.closeRoom(paramBundle, new DynamicNowManager.13(this, paramOnOpenCloseRoomCallback));
@@ -578,7 +624,7 @@ public class DynamicNowManager
   public void c()
   {
     if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null) {
-      LogUploadUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+      ((ILogUploadUtil)QRoute.api(ILogUploadUtil.class)).upload(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
     }
   }
   
@@ -586,20 +632,23 @@ public class DynamicNowManager
   {
     QLog.i("XProxy|NowProxy", 1, "invoke preload");
     g();
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicNowEntry.a(paramBundle);
   }
   
   public void onDestroy()
   {
-    QLog.i("XProxy|NowProxy", 1, "DynamicNowManager onDestroy mApp = " + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("DynamicNowManager onDestroy mApp = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    QLog.i("XProxy|NowProxy", 1, ((StringBuilder)localObject).toString());
     NowLive.killPluginProcess();
-    if (this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager.a();
+      ((ILiveLoginTicketManager)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicILiveLoginTicketManager = null;
     }
     ((WatchTogetherManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.WATCH_LIVE_TOGETHER)).a(1);
-    this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicNowEntry.a();
+    a().a();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = null;
     NowLive.setCustomizedLog(null);
     NowLive.setCustomChannel(null);
@@ -617,7 +666,7 @@ public class DynamicNowManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager
  * JD-Core Version:    0.7.0.1
  */

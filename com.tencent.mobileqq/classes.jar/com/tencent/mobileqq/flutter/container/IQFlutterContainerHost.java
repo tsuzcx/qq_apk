@@ -11,8 +11,6 @@ public abstract interface IQFlutterContainerHost
 {
   public abstract Activity a();
   
-  public abstract Context a();
-  
   public abstract Bundle a();
   
   public abstract View a();
@@ -21,11 +19,13 @@ public abstract interface IQFlutterContainerHost
   
   public abstract boolean a();
   
+  public abstract Context getContext();
+  
   public abstract Lifecycle getLifecycle();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.IQFlutterContainerHost
  * JD-Core Version:    0.7.0.1
  */

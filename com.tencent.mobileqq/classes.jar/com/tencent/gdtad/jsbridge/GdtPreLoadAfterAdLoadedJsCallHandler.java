@@ -1,6 +1,6 @@
 package com.tencent.gdtad.jsbridge;
 
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.aditem.GdtPreLoader;
 import com.tencent.gdtad.json.GdtJsonPbUtil;
@@ -13,39 +13,38 @@ public class GdtPreLoadAfterAdLoadedJsCallHandler
 {
   public boolean a(GdtAdWebPlugin paramGdtAdWebPlugin, String paramString, String... paramVarArgs)
   {
-    try
+    for (;;)
     {
-      paramVarArgs = new JSONObject(paramVarArgs[0]);
-      GdtLog.b("GdtPreLoaderJsCallHandler", paramVarArgs.toString());
-      paramVarArgs = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramVarArgs.getJSONObject("adInfo"))));
-      GdtPreLoader.a().a(paramVarArgs);
-      paramGdtAdWebPlugin.callJs(paramString, null);
-      if (paramGdtAdWebPlugin != null)
+      try
       {
-        paramString = paramGdtAdWebPlugin.a();
-        if (paramGdtAdWebPlugin == null) {
-          break label99;
+        paramVarArgs = new JSONObject(paramVarArgs[0]);
+        GdtLog.b("GdtPreLoaderJsCallHandler", paramVarArgs.toString());
+        GdtAd localGdtAd = new GdtAd((qq_ad_get.QQAdGetRsp.AdInfo)qq_ad_get.QQAdGetRsp.AdInfo.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGetRsp.AdInfo(), paramVarArgs.getJSONObject("adInfo"))));
+        GdtPreLoader.a().a(localGdtAd);
+        paramVarArgs = null;
+        paramGdtAdWebPlugin.callJs(paramString, null);
+        if (paramGdtAdWebPlugin != null)
+        {
+          paramString = paramGdtAdWebPlugin.a();
+          if (paramGdtAdWebPlugin != null) {
+            paramVarArgs = paramGdtAdWebPlugin.a();
+          }
+          AdAnalysisHelperForUtil.reportForJSBridgeInvoked(paramString, true, "preLoadAfterAdLoaded", paramVarArgs, localGdtAd);
+          return true;
         }
       }
-      label99:
-      for (paramGdtAdWebPlugin = paramGdtAdWebPlugin.a();; paramGdtAdWebPlugin = null)
+      catch (Throwable paramGdtAdWebPlugin)
       {
-        AdReporterForAnalysis.reportForJSBridgeInvoked(paramString, true, "preLoadAfterAdLoaded", paramGdtAdWebPlugin, paramVarArgs);
+        paramGdtAdWebPlugin.printStackTrace();
         return true;
-        paramString = null;
-        break;
       }
-      return true;
-    }
-    catch (Throwable paramGdtAdWebPlugin)
-    {
-      paramGdtAdWebPlugin.printStackTrace();
+      paramString = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtPreLoadAfterAdLoadedJsCallHandler
  * JD-Core Version:    0.7.0.1
  */

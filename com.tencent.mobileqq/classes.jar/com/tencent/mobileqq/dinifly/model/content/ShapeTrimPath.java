@@ -63,12 +63,20 @@ public class ShapeTrimPath
   
   public String toString()
   {
-    return "Trim Path: {start: " + this.start + ", end: " + this.end + ", offset: " + this.offset + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Trim Path: {start: ");
+    localStringBuilder.append(this.start);
+    localStringBuilder.append(", end: ");
+    localStringBuilder.append(this.end);
+    localStringBuilder.append(", offset: ");
+    localStringBuilder.append(this.offset);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.content.ShapeTrimPath
  * JD-Core Version:    0.7.0.1
  */

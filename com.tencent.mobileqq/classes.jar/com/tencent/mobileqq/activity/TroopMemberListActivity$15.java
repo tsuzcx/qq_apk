@@ -15,13 +15,13 @@ class TroopMemberListActivity$15
   
   public void onClick(View paramView)
   {
-    AssertUtils.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter);
-    AssertUtils.a(this.a.jdField_a_of_type_JavaUtilList);
+    AssertUtils.checkNotNull(this.a.mAdapter);
+    AssertUtils.checkNotNull(this.a.mListData);
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    while (i < this.a.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.a.mListData.size())
     {
-      localArrayList.add(((TroopMemberListActivity.ATroopMember)this.a.jdField_a_of_type_JavaUtilList.get(i)).a);
+      localArrayList.add(((TroopMemberListActivity.ATroopMember)this.a.mListData.get(i)).a);
       i += 1;
     }
     Intent localIntent = new Intent();
@@ -33,7 +33,7 @@ class TroopMemberListActivity$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.15
  * JD-Core Version:    0.7.0.1
  */

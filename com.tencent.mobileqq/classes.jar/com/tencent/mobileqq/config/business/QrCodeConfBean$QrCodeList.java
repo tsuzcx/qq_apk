@@ -23,7 +23,7 @@ public class QrCodeConfBean$QrCodeList
     this.jdField_b_of_type_JavaLangString = "";
   }
   
-  public QrCodeConfBean$QrCodeList(QrCodeList paramQrCodeList, String paramString)
+  public QrCodeConfBean$QrCodeList(QrCodeList paramQrCodeList, String paramString, int paramInt)
   {
     this.jdField_a_of_type_JavaLangString = "";
     this.jdField_a_of_type_Int = 0;
@@ -34,9 +34,9 @@ public class QrCodeConfBean$QrCodeList
       localQrCodeList = new QrCodeList();
     }
     this.jdField_a_of_type_Int = localQrCodeList.jdField_a_of_type_Int;
-    this.jdField_b_of_type_Int = localQrCodeList.jdField_b_of_type_Int;
     this.jdField_b_of_type_JavaLangString = localQrCodeList.jdField_b_of_type_JavaLangString;
     this.c = localQrCodeList.c;
+    this.jdField_b_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
@@ -57,12 +57,24 @@ public class QrCodeConfBean$QrCodeList
   
   public String toString()
   {
-    return "QrCodeList{bkgURL = " + this.jdField_a_of_type_JavaLangString + ", isStatusBarWhite = " + this.jdField_a_of_type_Int + ", isNavBarWhite = " + this.jdField_b_of_type_Int + ", logoColor = " + this.jdField_b_of_type_JavaLangString + ", needShowLogo = " + this.c + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QrCodeList{bkgURL = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", isStatusBarWhite = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", isNavBarWhite = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", logoColor = ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", needShowLogo = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QrCodeConfBean.QrCodeList
  * JD-Core Version:    0.7.0.1
  */

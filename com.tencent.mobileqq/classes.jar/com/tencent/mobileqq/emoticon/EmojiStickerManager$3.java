@@ -26,7 +26,9 @@ final class EmojiStickerManager$3
   
   protected Integer a(Void... paramVarArgs)
   {
-    if (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 1) {
+    int i = this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus();
+    Integer localInteger = Integer.valueOf(1);
+    if (i != 1) {
       this.jdField_a_of_type_ComTencentImageURLDrawable.downloadImediatly(false);
     }
     URLDrawable.removeMemoryCacheByUrl(this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString());
@@ -39,84 +41,82 @@ final class EmojiStickerManager$3
     }
     paramVarArgs = this.jdField_a_of_type_ComTencentImageURLDrawable.getURL().toString();
     if (!AbsDownloader.hasFile(paramVarArgs)) {
-      return Integer.valueOf(1);
+      return localInteger;
     }
     paramVarArgs = AbsDownloader.getFile(paramVarArgs);
-    if (paramVarArgs != null) {}
-    label296:
-    label307:
-    for (paramVarArgs = SecUtil.getFileMd5(paramVarArgs.getAbsolutePath());; paramVarArgs = null)
+    if (paramVarArgs != null) {
+      paramVarArgs = SecUtil.getFileMd5(paramVarArgs.getAbsolutePath());
+    } else {
+      paramVarArgs = null;
+    }
+    if (paramVarArgs != null)
     {
-      if ((paramVarArgs == null) || ("".equals(paramVarArgs))) {
-        return Integer.valueOf(1);
+      String str = "";
+      if ("".equals(paramVarArgs)) {
+        return localInteger;
       }
-      FileUtils.c(AppConstants.SDCARD_IMG_FAVORITE + ".nomedia");
-      String str2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      int i;
-      StringBuilder localStringBuilder;
-      if ((this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData != null) && (this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.isDiyDouTu()))
-      {
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(AppConstants.SDCARD_IMG_FAVORITE);
+      ((StringBuilder)localObject1).append(".nomedia");
+      FileUtils.createFileIfNotExits(((StringBuilder)localObject1).toString());
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData;
+      if ((localObject2 != null) && (((PicMessageExtraData)localObject2).isDiyDouTu())) {
         i = 1;
-        if (i == 0) {
-          break label307;
-        }
-        localStringBuilder = new StringBuilder().append("_diydoutu@");
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
-          break label296;
-        }
-        str1 = "0";
-      }
-      label217:
-      for (String str1 = str1;; str1 = "")
-      {
-        paramVarArgs = AppConstants.SDCARD_IMG_FAVORITE + DiySecureFileHelper.a(str2) + paramVarArgs + str1 + ".jpg";
-        try
-        {
-          this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(paramVarArgs);
-          return Integer.valueOf(EmojiStickerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramVarArgs, null, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
-        }
-        catch (IOException paramVarArgs)
-        {
-          paramVarArgs.printStackTrace();
-          QLog.d("EmojiStickerManager", 1, paramVarArgs, new Object[0]);
-          return Integer.valueOf(1);
-        }
+      } else {
         i = 0;
-        break;
-        str1 = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
-        break label217;
+      }
+      if (i != 0)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("_diydoutu@");
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId)) {
+          str = "0";
+        } else {
+          str = this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData.emojiId;
+        }
+        ((StringBuilder)localObject2).append(str);
+        str = ((StringBuilder)localObject2).toString();
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(AppConstants.SDCARD_IMG_FAVORITE);
+      ((StringBuilder)localObject2).append(DiySecureFileHelper.a((String)localObject1));
+      ((StringBuilder)localObject2).append(paramVarArgs);
+      ((StringBuilder)localObject2).append(str);
+      ((StringBuilder)localObject2).append(".jpg");
+      paramVarArgs = ((StringBuilder)localObject2).toString();
+      try
+      {
+        this.jdField_a_of_type_ComTencentImageURLDrawable.saveTo(paramVarArgs);
+        return Integer.valueOf(EmojiStickerManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramVarArgs, null, this.jdField_a_of_type_ComTencentMobileqqDataPicMessageExtraData));
+      }
+      catch (IOException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        QLog.d("EmojiStickerManager", 1, paramVarArgs, new Object[0]);
       }
     }
+    return localInteger;
   }
   
   protected void a(Integer paramInteger)
   {
-    int j = -1;
-    int i;
-    if (paramInteger.intValue() == 0) {
+    int j = paramInteger.intValue();
+    int i = -1;
+    if (j == 0) {
       i = 0;
+    } else if ((paramInteger.intValue() != 2) && (paramInteger.intValue() == 1)) {
+      i = -2;
     }
-    for (;;)
-    {
-      paramInteger = new Bundle();
-      paramInteger.putInt("result", i);
-      this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramInteger);
-      this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
-      return;
-      i = j;
-      if (paramInteger.intValue() != 2)
-      {
-        i = j;
-        if (paramInteger.intValue() == 1) {
-          i = -2;
-        }
-      }
-    }
+    paramInteger = new Bundle();
+    paramInteger.putInt("result", i);
+    this.jdField_a_of_type_AndroidOsBundle.putBundle("response", paramInteger);
+    this.jdField_a_of_type_ComTencentMobileqqEmosmWebMessengerService.a(this.jdField_a_of_type_AndroidOsBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticon.EmojiStickerManager.3
  * JD-Core Version:    0.7.0.1
  */

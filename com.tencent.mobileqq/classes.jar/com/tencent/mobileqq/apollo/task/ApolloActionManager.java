@@ -8,8 +8,7 @@ import java.util.concurrent.locks.ReentrantLock;
 @Deprecated
 public class ApolloActionManager
 {
-  private static volatile ApolloActionManager jdField_a_of_type_ComTencentMobileqqApolloTaskApolloActionManager = null;
-  public int a;
+  private static volatile ApolloActionManager jdField_a_of_type_ComTencentMobileqqApolloTaskApolloActionManager;
   public String a;
   public AtomicInteger a;
   private volatile ReentrantLock jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock;
@@ -17,7 +16,6 @@ public class ApolloActionManager
   public ApolloActionManager()
   {
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger = new AtomicInteger(0);
-    this.jdField_a_of_type_Int = 0;
   }
   
   public static ApolloActionManager a()
@@ -39,12 +37,12 @@ public class ApolloActionManager
     try
     {
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloActionManager", 2, "[getLock].");
+        QLog.d("[cmshow]ApolloActionManager", 2, "[getLock].");
       }
       if (this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock == null)
       {
         if (QLog.isColorLevel()) {
-          QLog.d("ApolloActionManager", 2, "create lock.");
+          QLog.d("[cmshow]ApolloActionManager", 2, "create lock.");
         }
         this.jdField_a_of_type_JavaUtilConcurrentLocksReentrantLock = new ReentrantLock();
       }
@@ -56,7 +54,7 @@ public class ApolloActionManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.task.ApolloActionManager
  * JD-Core Version:    0.7.0.1
  */

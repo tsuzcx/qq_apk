@@ -33,8 +33,9 @@ public final class UnReadSummaryInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.hasmore, 1);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 2);
+    String str = this.attach_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.req_num, 3);
     paramJceOutputStream.write(this.need_more_unread_msg, 4);
@@ -42,7 +43,7 @@ public final class UnReadSummaryInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QZONE_MQMSG.UnReadSummaryInfo
  * JD-Core Version:    0.7.0.1
  */

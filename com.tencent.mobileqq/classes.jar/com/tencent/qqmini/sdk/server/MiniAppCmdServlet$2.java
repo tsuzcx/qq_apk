@@ -14,16 +14,21 @@ class MiniAppCmdServlet$2
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
-    QMLog.e("MiniAppCmdServlet", "download v8rt failed: " + paramString);
-    if (this.val$callback != null) {}
-    try
-    {
-      this.val$callback.onCmdResult(false, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QMLog.e("MiniAppCmdServlet", "download v8rt failed,callback.onCmdResult exception ", paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download v8rt failed: ");
+    localStringBuilder.append(paramString);
+    QMLog.e("MiniAppCmdServlet", localStringBuilder.toString());
+    paramString = this.val$callback;
+    if (paramString != null) {
+      try
+      {
+        paramString.onCmdResult(false, null);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QMLog.e("MiniAppCmdServlet", "download v8rt failed,callback.onCmdResult exception ", paramString);
+      }
     }
   }
   
@@ -31,27 +36,41 @@ class MiniAppCmdServlet$2
   
   public void onDownloadProgress(float paramFloat, long paramLong1, long paramLong2)
   {
-    QMLog.i("MiniAppCmdServlet", "download v8rt succeed progress: " + paramFloat + " totalBytesWritten:" + paramLong1 + "  totalBytesExpectedToWrite:" + paramLong2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download v8rt succeed progress: ");
+    localStringBuilder.append(paramFloat);
+    localStringBuilder.append(" totalBytesWritten:");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append("  totalBytesExpectedToWrite:");
+    localStringBuilder.append(paramLong2);
+    QMLog.i("MiniAppCmdServlet", localStringBuilder.toString());
   }
   
   public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
   {
-    QMLog.e("MiniAppCmdServlet", "download v8rt succeed: " + paramString + " result:" + paramDownloadResult);
-    if (this.val$callback != null) {}
-    try
-    {
-      this.val$callback.onCmdResult(true, null);
-      return;
-    }
-    catch (Exception paramString)
-    {
-      QMLog.e("MiniAppCmdServlet", "download v8rt failed,callback.onCmdResult exception ", paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("download v8rt succeed: ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" result:");
+    localStringBuilder.append(paramDownloadResult);
+    QMLog.e("MiniAppCmdServlet", localStringBuilder.toString());
+    paramString = this.val$callback;
+    if (paramString != null) {
+      try
+      {
+        paramString.onCmdResult(true, null);
+        return;
+      }
+      catch (Exception paramString)
+      {
+        QMLog.e("MiniAppCmdServlet", "download v8rt failed,callback.onCmdResult exception ", paramString);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.MiniAppCmdServlet.2
  * JD-Core Version:    0.7.0.1
  */

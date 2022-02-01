@@ -30,14 +30,15 @@ public class ImageLoaderComponent
   
   private com.nostra13.universalimageloader.core.DisplayImageOptions convertDisplayImageOptions(com.tencent.falco.base.libapi.imageloader.DisplayImageOptions paramDisplayImageOptions)
   {
-    if ((paramDisplayImageOptions == null) || (this.context == null)) {
-      return null;
+    if ((paramDisplayImageOptions != null) && (this.context != null))
+    {
+      DisplayImageOptions.Builder localBuilder = new DisplayImageOptions.Builder().showImageOnLoading(paramDisplayImageOptions.getImageOnLoading()).showImageForEmptyUri(paramDisplayImageOptions.getImageForEmptyUri()).showImageOnFail(paramDisplayImageOptions.getImageOnFail()).showImageOnLoading(paramDisplayImageOptions.getImageOnLoading(this.context.getResources())).showImageForEmptyUri(paramDisplayImageOptions.getImageForEmptyUri(this.context.getResources())).showImageOnFail(paramDisplayImageOptions.getImageOnFail(this.context.getResources())).cacheInMemory(paramDisplayImageOptions.isCacheInMemory()).cacheOnDisk(paramDisplayImageOptions.isCacheOnDisk()).considerExifParams(paramDisplayImageOptions.isConsiderExifParams()).decodingOptions(paramDisplayImageOptions.getDecodingOptions()).postProcessor(new ImageLoaderComponent.1(this, paramDisplayImageOptions));
+      if (getBitmapDisplayer(paramDisplayImageOptions) != null) {
+        localBuilder.displayer(getBitmapDisplayer(paramDisplayImageOptions));
+      }
+      return localBuilder.build();
     }
-    DisplayImageOptions.Builder localBuilder = new DisplayImageOptions.Builder().showImageOnLoading(paramDisplayImageOptions.getImageOnLoading()).showImageForEmptyUri(paramDisplayImageOptions.getImageForEmptyUri()).showImageOnFail(paramDisplayImageOptions.getImageOnFail()).showImageOnLoading(paramDisplayImageOptions.getImageOnLoading(this.context.getResources())).showImageForEmptyUri(paramDisplayImageOptions.getImageForEmptyUri(this.context.getResources())).showImageOnFail(paramDisplayImageOptions.getImageOnFail(this.context.getResources())).cacheInMemory(paramDisplayImageOptions.isCacheInMemory()).cacheOnDisk(paramDisplayImageOptions.isCacheOnDisk()).considerExifParams(paramDisplayImageOptions.isConsiderExifParams()).decodingOptions(paramDisplayImageOptions.getDecodingOptions()).postProcessor(new ImageLoaderComponent.1(this, paramDisplayImageOptions));
-    if (getBitmapDisplayer(paramDisplayImageOptions) != null) {
-      localBuilder.displayer(getBitmapDisplayer(paramDisplayImageOptions));
-    }
-    return localBuilder.build();
+    return null;
   }
   
   private BitmapDisplayer getBitmapDisplayer(com.tencent.falco.base.libapi.imageloader.DisplayImageOptions paramDisplayImageOptions)
@@ -149,19 +150,15 @@ public class ImageLoaderComponent
     if (isLargeHeap(paramContext)) {
       i = ((ActivityManager)localObject).getLargeMemoryClass();
     }
-    for (;;)
-    {
-      i = i * 1048576 / 8;
-      localObject = null;
-      if (!TextUtils.isEmpty(this.cachePath)) {
-        localObject = new UnlimitedDiskCache(new File(this.cachePath));
-      }
-      ImageLoaderComponent.3 local3 = new ImageLoaderComponent.3(this, paramContext);
-      paramContext = new ImageLoaderConfiguration.Builder(paramContext).memoryCacheExtraOptions(800, 800).threadPoolSize(3).threadPriority(3).tasksProcessingOrder(QueueProcessingType.LIFO).diskCache((DiskCache)localObject).imageDownloader(local3).defaultDisplayImageOptions(com.nostra13.universalimageloader.core.DisplayImageOptions.createSimple()).memoryCache(new CustomizedLRUCache(i)).build();
-      ImageLoader.getInstance().init(paramContext);
-      ImageLoader.getInstance().setOnLoadingLogListener(new ImageLoaderComponent.4(this));
-      return;
+    i = i * 1048576 / 8;
+    localObject = null;
+    if (!TextUtils.isEmpty(this.cachePath)) {
+      localObject = new UnlimitedDiskCache(new File(this.cachePath));
     }
+    ImageLoaderComponent.3 local3 = new ImageLoaderComponent.3(this, paramContext);
+    paramContext = new ImageLoaderConfiguration.Builder(paramContext).memoryCacheExtraOptions(800, 800).threadPoolSize(3).threadPriority(3).tasksProcessingOrder(QueueProcessingType.LIFO).diskCache((DiskCache)localObject).imageDownloader(local3).defaultDisplayImageOptions(com.nostra13.universalimageloader.core.DisplayImageOptions.createSimple()).memoryCache(new CustomizedLRUCache(i)).build();
+    ImageLoader.getInstance().init(paramContext);
+    ImageLoader.getInstance().setOnLoadingLogListener(new ImageLoaderComponent.4(this));
   }
   
   public void onDestroy() {}
@@ -178,7 +175,7 @@ public class ImageLoaderComponent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.imageloader.ImageLoaderComponent
  * JD-Core Version:    0.7.0.1
  */

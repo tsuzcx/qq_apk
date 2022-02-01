@@ -19,21 +19,12 @@ public class YuvFboTexture
 {
   private static String jdField_a_of_type_JavaLangString;
   private static String b;
-  private static boolean e;
-  private static boolean f;
+  private static boolean e = false;
+  private static boolean f = false;
   public static int o = 480;
-  private static int p;
+  private static int p = 1;
   private FrameBufferCenterTexture jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture = null;
   private GLVideoView jdField_a_of_type_ComTencentAvUiGLVideoView;
-  
-  static
-  {
-    e = false;
-    f = false;
-    p = 1;
-    jdField_a_of_type_JavaLangString = null;
-    jdField_b_of_type_JavaLangString = null;
-  }
   
   public YuvFboTexture(Context paramContext, GLVideoView paramGLVideoView, String paramString, long paramLong)
   {
@@ -43,30 +34,28 @@ public class YuvFboTexture
   
   private static void a(Context paramContext)
   {
-    int i = 0;
-    if (e) {}
-    for (;;)
-    {
+    if (e) {
       return;
-      e = true;
-      if (jdField_a_of_type_JavaLangString == null) {
-        jdField_a_of_type_JavaLangString = DeviceInfoUtil.c();
-      }
-      paramContext = RendererConfig.a();
-      f = false;
-      if ((paramContext == null) || (paramContext.jdField_a_of_type_Int != 1)) {
-        continue;
-      }
+    }
+    e = true;
+    if (jdField_a_of_type_JavaLangString == null) {
+      jdField_a_of_type_JavaLangString = DeviceInfoUtil.c();
+    }
+    paramContext = RendererConfig.a();
+    f = false;
+    if ((paramContext != null) && (paramContext.jdField_a_of_type_Int == 1))
+    {
       o = paramContext.b;
       p = paramContext.c;
       jdField_b_of_type_JavaLangString = paramContext.jdField_a_of_type_JavaLangString;
-      try
+    }
+    try
+    {
+      if ((!TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(jdField_a_of_type_JavaLangString)))
       {
-        if ((TextUtils.isEmpty(jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))) {
-          continue;
-        }
         paramContext = jdField_b_of_type_JavaLangString.split("\\.");
         String[] arrayOfString = jdField_a_of_type_JavaLangString.split("\\.");
+        int i = 0;
         while ((i < 3) && (i < paramContext.length) && (i < arrayOfString.length))
         {
           if (Integer.valueOf(arrayOfString[i]).intValue() > Integer.valueOf(paramContext[i]).intValue())
@@ -84,54 +73,58 @@ public class YuvFboTexture
           }
           i += 1;
         }
-        return;
       }
-      catch (Exception paramContext) {}
+      return;
     }
+    catch (Exception paramContext) {}
   }
   
   public ShaderParameter[] a(GLCanvas paramGLCanvas)
   {
-    if (a() > b())
-    {
+    int i;
+    if (a() > b()) {
       i = a();
-      a(this.jdField_a_of_type_AndroidContentContext);
-      if ((!f) || (getImgWidth() > o) || (i <= ((GLES20Canvas)paramGLCanvas).c() / 3 * 2) || (getImgWidth() >= i) || (getImgWidth() == 0) || (this.jdField_a_of_type_ComTencentAvUiGLVideoView.a().size() != 0) || (VideoController.a().a().d != 2)) {
-        break label211;
-      }
+    } else {
+      i = b();
     }
-    label211:
-    for (int i = 1;; i = 0)
+    a(this.jdField_a_of_type_AndroidContentContext);
+    if ((f) && (getImgWidth() <= o) && (i > ((GLES20Canvas)paramGLCanvas).c() / 3 * 2) && (getImgWidth() < i) && (getImgWidth() != 0) && (this.jdField_a_of_type_ComTencentAvUiGLVideoView.a().size() == 0) && (VideoController.a().a().d == 2)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      if (i != 0)
-      {
-        if (this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture == null) {
-          this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture = FrameBufferCenterTexture.a();
-        }
-        super.a(paramGLCanvas);
-        if (super.a() != null) {
-          this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture.a(paramGLCanvas, getImgWidth(), getImgHeight(), ((GLES20Canvas)paramGLCanvas).c(), ((GLES20Canvas)paramGLCanvas).d(), a()[0], a()[1], a()[2], this.jdField_b_of_type_ArrayOfFloat, this.k, p);
-        }
-        return TextureProgramFactory.a(0).a();
-        i = b();
-        break;
+      if (this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture == null) {
+        this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture = FrameBufferCenterTexture.a();
       }
-      return super.a(paramGLCanvas);
+      super.a(paramGLCanvas);
+      if (super.a() != null)
+      {
+        FrameBufferCenterTexture localFrameBufferCenterTexture = this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture;
+        i = getImgWidth();
+        int j = getImgHeight();
+        GLES20Canvas localGLES20Canvas = (GLES20Canvas)paramGLCanvas;
+        localFrameBufferCenterTexture.a(paramGLCanvas, i, j, localGLES20Canvas.c(), localGLES20Canvas.d(), a()[0], a()[1], a()[2], this.jdField_b_of_type_ArrayOfFloat, this.k, p);
+      }
+      return TextureProgramFactory.a(0).a();
     }
+    return super.a(paramGLCanvas);
   }
   
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture.a();
+    FrameBufferCenterTexture localFrameBufferCenterTexture = this.jdField_a_of_type_ComTencentAvOpenglTextureFrameBufferCenterTexture;
+    if (localFrameBufferCenterTexture != null) {
+      localFrameBufferCenterTexture.a();
     }
     e = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.texture.YuvFboTexture
  * JD-Core Version:    0.7.0.1
  */

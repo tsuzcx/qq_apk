@@ -2,35 +2,25 @@ package com.tencent.mobileqq.onlinestatus;
 
 import android.content.Context;
 import android.content.res.Resources;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.Nullable;
 import android.text.TextPaint;
-import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.widget.ImageView.ScaleType;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.config.business.OnlineStatusBean;
-import com.tencent.mobileqq.data.Friends;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
-import com.tencent.widget.OnlineBatteryProducer;
-import mqq.app.AppRuntime.Status;
 
 public class OnlineStatusView
   extends LinearLayout
 {
-  int jdField_a_of_type_Int;
-  long jdField_a_of_type_Long;
+  int jdField_a_of_type_Int = 1;
   TextView jdField_a_of_type_AndroidWidgetTextView;
   URLImageView jdField_a_of_type_ComTencentImageURLImageView;
-  OnlineStatusBean jdField_a_of_type_ComTencentMobileqqConfigBusinessOnlineStatusBean;
-  OnlineBatteryProducer jdField_a_of_type_ComTencentWidgetOnlineBatteryProducer;
-  int jdField_b_of_type_Int = 1;
-  TextView jdField_b_of_type_AndroidWidgetTextView;
+  TextView b;
   
   public OnlineStatusView(Context paramContext)
   {
@@ -53,9 +43,9 @@ public class OnlineStatusView
   public int a()
   {
     CharSequence localCharSequence1 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
-    CharSequence localCharSequence2 = this.jdField_b_of_type_AndroidWidgetTextView.getText();
+    CharSequence localCharSequence2 = this.b.getText();
     int i = (int)this.jdField_a_of_type_AndroidWidgetTextView.getPaint().measureText(localCharSequence1, 0, localCharSequence1.length());
-    int j = (int)this.jdField_b_of_type_AndroidWidgetTextView.getPaint().measureText(localCharSequence2, 0, localCharSequence2.length());
+    int j = (int)this.b.getPaint().measureText(localCharSequence2, 0, localCharSequence2.length());
     int k = ViewUtils.a(2.0F);
     int m = ViewUtils.a(12.0F);
     if (QLog.isColorLevel()) {
@@ -64,12 +54,18 @@ public class OnlineStatusView
     return i + m + j + k;
   }
   
+  public TextView a()
+  {
+    return this.b;
+  }
+  
   public CharSequence a()
   {
     CharSequence localCharSequence1 = this.jdField_a_of_type_AndroidWidgetTextView.getText();
-    CharSequence localCharSequence2 = this.jdField_b_of_type_AndroidWidgetTextView.getText();
+    CharSequence localCharSequence2 = this.b.getText();
     StringBuilder localStringBuilder = new StringBuilder(10);
-    localStringBuilder.append(localCharSequence1).append(localCharSequence2);
+    localStringBuilder.append(localCharSequence1);
+    localStringBuilder.append(localCharSequence2);
     return localStringBuilder.toString();
   }
   
@@ -77,12 +73,12 @@ public class OnlineStatusView
   {
     setOrientation(0);
     setGravity(16);
-    float f = getResources().getDimensionPixelSize(2131296794);
+    float f = getResources().getDimensionPixelSize(2131296774);
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
     this.jdField_a_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
     this.jdField_a_of_type_AndroidWidgetTextView.setSingleLine(true);
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167117));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167142));
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, f);
     this.jdField_a_of_type_AndroidWidgetTextView.setText("[");
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(16);
@@ -97,82 +93,55 @@ public class OnlineStatusView
     localLayoutParams.leftMargin = ViewUtils.a(2.0F);
     localLayoutParams.rightMargin = ViewUtils.a(2.0F);
     addView(this.jdField_a_of_type_ComTencentImageURLImageView, localLayoutParams);
-    this.jdField_b_of_type_AndroidWidgetTextView = new TextView(getContext());
-    this.jdField_b_of_type_AndroidWidgetTextView.setDuplicateParentStateEnabled(false);
-    this.jdField_b_of_type_AndroidWidgetTextView.setIncludeFontPadding(false);
-    this.jdField_b_of_type_AndroidWidgetTextView.setSingleLine(true);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(getResources().getColor(2131167117));
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, f);
-    this.jdField_b_of_type_AndroidWidgetTextView.setGravity(16);
+    this.b = new TextView(getContext());
+    this.b.setDuplicateParentStateEnabled(false);
+    this.b.setIncludeFontPadding(false);
+    this.b.setSingleLine(true);
+    this.b.setTextColor(getResources().getColor(2131167142));
+    this.b.setTextSize(0, f);
+    this.b.setGravity(16);
     localLayoutParams = new LinearLayout.LayoutParams(-2, ViewUtils.a(19.0F));
     localLayoutParams.gravity = 16;
-    addView(this.jdField_b_of_type_AndroidWidgetTextView, localLayoutParams);
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessOnlineStatusBean = ((OnlineStatusBean)QConfigManager.a().a(578));
-    this.jdField_a_of_type_ComTencentWidgetOnlineBatteryProducer = new OnlineBatteryProducer();
+    addView(this.b, localLayoutParams);
   }
   
-  public boolean a(QQAppInterface paramQQAppInterface, Friends paramFriends)
+  public void setDescText(String paramString)
   {
-    this.jdField_a_of_type_Long = paramFriends.uExtOnlineStatus;
-    this.jdField_a_of_type_Int = paramFriends.getBatteryCapacity();
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineStatusView", 2, new Object[] { "setOnlineStatus extStatus:", Long.valueOf(this.jdField_a_of_type_Long), " battery:", Integer.valueOf(this.jdField_a_of_type_Int) });
-    }
-    boolean bool;
-    OnlineStatusItem localOnlineStatusItem;
-    if (!paramQQAppInterface.getCurrentUin().equals(paramFriends.uin))
+    if (this.jdField_a_of_type_Int == 2)
     {
-      bool = true;
-      localOnlineStatusItem = OnLineStatusHelper.a().a(AppRuntime.Status.online, this.jdField_a_of_type_Long, bool);
-      if ((localOnlineStatusItem.jdField_a_of_type_Int != 2) && ((this.jdField_a_of_type_Long != 1000L) || (this.jdField_a_of_type_Int > 0))) {
-        break label137;
-      }
-      QLog.d("OnlineStatusView", 2, "setOnlineStatus item is null");
-    }
-    label137:
-    do
-    {
-      return false;
-      bool = false;
-      break;
-      paramQQAppInterface = OnLineStatusHelper.a().b(paramQQAppInterface, localOnlineStatusItem, localOnlineStatusItem.jdField_a_of_type_MqqAppAppRuntime$Status, paramFriends, this.jdField_b_of_type_AndroidWidgetTextView, 2);
-    } while (((localOnlineStatusItem.jdField_a_of_type_Long == 1030L) && (TextUtils.isEmpty(paramQQAppInterface))) || ((localOnlineStatusItem.jdField_a_of_type_Long == 1040L) && (TextUtils.isEmpty(paramQQAppInterface))) || ((localOnlineStatusItem.jdField_a_of_type_Long == 40001L) && (TextUtils.isEmpty(paramQQAppInterface))));
-    if (OnlineStatusItem.a(this.jdField_a_of_type_Long))
-    {
-      paramFriends = this.jdField_a_of_type_ComTencentWidgetOnlineBatteryProducer.a(this.jdField_a_of_type_Int, 1);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramFriends);
-      if (this.jdField_b_of_type_Int != 2) {
-        break label312;
-      }
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramQQAppInterface + "]");
+      TextView localTextView = this.b;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      localTextView.setText(localStringBuilder.toString());
+      return;
     }
-    for (;;)
-    {
-      return true;
-      paramFriends = OnLineStatusHelper.a().a(localOnlineStatusItem, paramFriends);
-      this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramFriends);
-      break;
-      label312:
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(paramQQAppInterface);
-    }
+    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    this.b.setText(paramString);
+  }
+  
+  public void setIconDrawable(Drawable paramDrawable)
+  {
+    this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramDrawable);
   }
   
   public void setTextSize(int paramInt)
   {
-    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(0, paramInt);
-    this.jdField_b_of_type_AndroidWidgetTextView.setTextSize(0, paramInt);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    float f = paramInt;
+    localTextView.setTextSize(0, f);
+    this.b.setTextSize(0, f);
   }
   
   public void setViewStyle(int paramInt)
   {
-    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnlineStatusView
  * JD-Core Version:    0.7.0.1
  */

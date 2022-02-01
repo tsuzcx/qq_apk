@@ -4,11 +4,12 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class SQ_CLIENT_UPDATE_REQ
   extends JceStruct
 {
-  static int cache_triggerType = 0;
+  static int cache_triggerType;
   static ArrayList<UPDATE_INFO> cache_vModule;
   static ArrayList<UPDATE_INFO> cache_vPlugin = new ArrayList();
   public int apiLevel = 0;
@@ -51,25 +52,29 @@ public final class SQ_CLIENT_UPDATE_REQ
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.qua != null) {
-      paramJceOutputStream.write(this.qua, 0);
+    Object localObject = this.qua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.version != null) {
-      paramJceOutputStream.write(this.version, 1);
+    localObject = this.version;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.apiLevel, 2);
     paramJceOutputStream.write(this.triggerType, 3);
-    if (this.vPlugin != null) {
-      paramJceOutputStream.write(this.vPlugin, 4);
+    localObject = this.vPlugin;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.vModule != null) {
-      paramJceOutputStream.write(this.vModule, 5);
+    localObject = this.vModule;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.SQ_CLIENT_UPDATE_REQ
  * JD-Core Version:    0.7.0.1
  */

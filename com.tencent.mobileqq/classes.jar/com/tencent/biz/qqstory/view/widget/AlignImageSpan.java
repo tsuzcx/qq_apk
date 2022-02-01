@@ -26,95 +26,105 @@ public class AlignImageSpan
   
   private Drawable a()
   {
-    Object localObject = this.a;
-    Drawable localDrawable = null;
-    if (localObject != null) {
-      localDrawable = (Drawable)((WeakReference)localObject).get();
+    Object localObject1 = this.a;
+    if (localObject1 != null) {
+      localObject1 = (Drawable)((WeakReference)localObject1).get();
+    } else {
+      localObject1 = null;
     }
-    localObject = localDrawable;
-    if (localDrawable == null)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localObject = getDrawable();
-      this.a = new WeakReference(localObject);
+      localObject2 = getDrawable();
+      this.a = new WeakReference(localObject2);
     }
-    return localObject;
+    return localObject2;
   }
   
   public void draw(Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, Paint paramPaint)
   {
     paramCharSequence = getDrawable();
     paramPaint = paramCharSequence.getBounds();
+    paramInt1 = this.mVerticalAlignment;
     float f;
-    switch (this.mVerticalAlignment)
+    if (paramInt1 != 1)
     {
-    case 2: 
-    default: 
-      f = paramInt5 - paramPaint.height();
-    }
-    for (;;)
-    {
-      paramCanvas.save();
-      paramCanvas.translate(paramFloat, f);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      f = paramInt4 - paramPaint.height();
-      continue;
-      f = (paramInt5 - paramInt3 - paramPaint.height()) / 2 + paramInt3;
-      continue;
+      if (paramInt1 != 3)
+      {
+        if (paramInt1 != 4) {}
+        for (paramInt1 = paramInt5 - paramPaint.height();; paramInt1 = (paramInt5 - paramInt3 - paramPaint.height()) / 2 + paramInt3)
+        {
+          f = paramInt1;
+          break;
+        }
+      }
       f = paramInt3;
     }
+    else
+    {
+      f = paramInt4 - paramPaint.height();
+    }
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, f);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
   
   public int getSize(Paint paramPaint, CharSequence paramCharSequence, int paramInt1, int paramInt2, Paint.FontMetricsInt paramFontMetricsInt)
   {
     paramCharSequence = a().getBounds();
-    float f1;
-    float f2;
-    float f3;
-    float f4;
     if (paramFontMetricsInt != null)
     {
       paramPaint = paramPaint.getFontMetrics();
-      f1 = paramPaint.top - paramPaint.ascent;
-      f2 = paramPaint.bottom - paramPaint.descent;
-      f3 = paramPaint.descent;
-      f4 = paramPaint.ascent;
+      float f1 = paramPaint.top - paramPaint.ascent;
+      float f2 = paramPaint.bottom - paramPaint.descent;
+      float f3 = paramPaint.descent;
+      float f4 = paramPaint.ascent;
       paramInt1 = paramCharSequence.height();
-      switch (this.mVerticalAlignment)
+      paramInt2 = this.mVerticalAlignment;
+      if (paramInt2 != 1)
       {
-      case 2: 
-      default: 
-        f2 = paramPaint.descent - paramInt1;
-        paramFontMetricsInt.ascent = ((int)f2);
+        if (paramInt2 != 3)
+        {
+          if (paramInt2 != 4)
+          {
+            f2 = paramPaint.descent - paramInt1;
+            paramFontMetricsInt.ascent = ((int)f2);
+            paramFontMetricsInt.top = ((int)(f2 + f1));
+          }
+          else
+          {
+            f4 = paramPaint.descent - (f3 - f4) / 2.0F;
+            float f5 = paramInt1 / 2;
+            f3 = f4 - f5;
+            f4 += f5;
+            paramFontMetricsInt.ascent = ((int)f3);
+            paramFontMetricsInt.top = ((int)(f3 + f1));
+            paramFontMetricsInt.descent = ((int)f4);
+            paramFontMetricsInt.bottom = ((int)(f4 + f2));
+          }
+        }
+        else
+        {
+          f1 = paramInt1 + paramPaint.ascent;
+          paramFontMetricsInt.descent = ((int)f1);
+          paramFontMetricsInt.bottom = ((int)(f1 + f2));
+        }
+      }
+      else
+      {
+        paramInt1 = -paramInt1;
+        f2 = paramInt1;
+        paramFontMetricsInt.ascent = paramInt1;
         paramFontMetricsInt.top = ((int)(f2 + f1));
       }
     }
-    for (;;)
-    {
-      return paramCharSequence.right;
-      f4 = paramPaint.descent - (f3 - f4) / 2.0F;
-      f3 = f4 - paramInt1 / 2;
-      f4 += paramInt1 / 2;
-      paramFontMetricsInt.ascent = ((int)f3);
-      paramFontMetricsInt.top = ((int)(f1 + f3));
-      paramFontMetricsInt.descent = ((int)f4);
-      paramFontMetricsInt.bottom = ((int)(f4 + f2));
-      continue;
-      f2 = -paramInt1;
-      paramFontMetricsInt.ascent = (-paramInt1);
-      paramFontMetricsInt.top = ((int)(f2 + f1));
-      continue;
-      f1 = paramInt1;
-      f1 = paramPaint.ascent + f1;
-      paramFontMetricsInt.descent = ((int)f1);
-      paramFontMetricsInt.bottom = ((int)(f1 + f2));
-    }
+    return paramCharSequence.right;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.AlignImageSpan
  * JD-Core Version:    0.7.0.1
  */

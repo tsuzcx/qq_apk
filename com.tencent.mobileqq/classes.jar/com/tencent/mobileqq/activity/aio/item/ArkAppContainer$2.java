@@ -1,25 +1,26 @@
 package com.tencent.mobileqq.activity.aio.item;
 
-import android.content.Context;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.ark.open.ArkAppMgr.AppPathInfo;
+import com.tencent.qphone.base.util.QLog;
 
-final class ArkAppContainer$2
+class ArkAppContainer$2
   implements Runnable
 {
+  ArkAppContainer$2(ArkAppContainer paramArkAppContainer, ArkAppMgr.AppPathInfo paramAppPathInfo) {}
+  
   public void run()
   {
-    BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-    if (localBaseApplication == null) {
-      return;
+    this.this$0.a.getAppFromLocal = true;
+    this.this$0.a.endOfGetApp = System.currentTimeMillis();
+    if (QLog.isColorLevel()) {
+      QLog.i("ArkApp.ArkAppContainer", 2, String.format("getAppPathByNameFromLocal.in.wrapper: %h", new Object[] { this }));
     }
-    QQToast.a(localBaseApplication, localBaseApplication.getString(2131690252), 2000).a();
+    this.this$0.a(this.a.path, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkAppContainer.2
  * JD-Core Version:    0.7.0.1
  */

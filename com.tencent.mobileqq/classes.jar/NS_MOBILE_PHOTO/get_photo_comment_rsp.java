@@ -68,30 +68,36 @@ public final class get_photo_comment_rsp
     paramJceOutputStream.write(this.hasmore, 0);
     paramJceOutputStream.write(this.attach_info, 1);
     paramJceOutputStream.write(this.comment, 2);
-    if (this.like != null) {
-      paramJceOutputStream.write(this.like, 3);
+    Object localObject = this.like;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.visitor != null) {
-      paramJceOutputStream.write(this.visitor, 4);
+    localObject = this.visitor;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
     paramJceOutputStream.write(this.uin, 5);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 6);
+    localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.photoid != null) {
-      paramJceOutputStream.write(this.photoid, 7);
+    localObject = this.photoid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
-    if (this.topicid != null) {
-      paramJceOutputStream.write(this.topicid, 8);
+    localObject = this.topicid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.extend_info != null) {
-      paramJceOutputStream.write(this.extend_info, 9);
+    localObject = this.extend_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.get_photo_comment_rsp
  * JD-Core Version:    0.7.0.1
  */

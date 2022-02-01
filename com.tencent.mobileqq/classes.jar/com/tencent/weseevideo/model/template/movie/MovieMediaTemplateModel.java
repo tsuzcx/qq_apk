@@ -33,22 +33,46 @@ public class MovieMediaTemplateModel
   
   public void clearSegmentModels()
   {
-    if (this.movieSegmentModels != null) {
-      this.movieSegmentModels.clear();
+    ArrayList localArrayList = this.movieSegmentModels;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (MovieMediaTemplateModel)paramObject;
-    } while ((this.isAsset == paramObject.isAsset) && (this.isRedPacketTemplate == paramObject.isRedPacketTemplate) && (Utils.equals(this.filePath, paramObject.filePath)) && (Utils.equals(this.movieTemplateId, paramObject.movieTemplateId)) && (Utils.equals(this.movieTemplateCateId, paramObject.movieTemplateCateId)) && ((this.movieSegmentModels == paramObject.movieSegmentModels) || ((this.movieSegmentModels != null) && (this.movieSegmentModels.equals(paramObject.movieSegmentModels)))) && (Utils.equals(this.segmentInfo, paramObject.segmentInfo)) && (this.maxDuration != null) && (this.maxDuration.equalsTo(paramObject.maxDuration)) && ((this.movieStickerTextModels == paramObject.movieStickerTextModels) || ((this.movieStickerTextModels != null) && (this.movieStickerTextModels.equals(paramObject.movieStickerTextModels)))) && (this.minDuration != null) && (this.minDuration.equals(paramObject.minDuration)) && (Utils.equals(this.movieTemplateType, paramObject.movieTemplateType)));
+      if ((this.isAsset == paramObject.isAsset) && (this.isRedPacketTemplate == paramObject.isRedPacketTemplate) && (Utils.equals(this.filePath, paramObject.filePath)) && (Utils.equals(this.movieTemplateId, paramObject.movieTemplateId)) && (Utils.equals(this.movieTemplateCateId, paramObject.movieTemplateCateId)))
+      {
+        Object localObject = this.movieSegmentModels;
+        ArrayList localArrayList = paramObject.movieSegmentModels;
+        if (((localObject == localArrayList) || ((localObject != null) && (((ArrayList)localObject).equals(localArrayList)))) && (Utils.equals(this.segmentInfo, paramObject.segmentInfo)))
+        {
+          localObject = this.maxDuration;
+          if ((localObject != null) && (((CMTime)localObject).equalsTo(paramObject.maxDuration)))
+          {
+            localObject = this.movieStickerTextModels;
+            localArrayList = paramObject.movieStickerTextModels;
+            if ((localObject == localArrayList) || ((localObject != null) && (((ArrayList)localObject).equals(localArrayList))))
+            {
+              localObject = this.minDuration;
+              if ((localObject != null) && (((CMTime)localObject).equals(paramObject.minDuration)) && (Utils.equals(this.movieTemplateType, paramObject.movieTemplateType))) {
+                return true;
+              }
+            }
+          }
+        }
+      }
+      return false;
+    }
     return false;
   }
   
@@ -109,7 +133,8 @@ public class MovieMediaTemplateModel
   
   public boolean isContainSegments()
   {
-    return (this.movieSegmentModels != null) && (!this.movieSegmentModels.isEmpty());
+    ArrayList localArrayList = this.movieSegmentModels;
+    return (localArrayList != null) && (!localArrayList.isEmpty());
   }
   
   public boolean isEmpty()
@@ -184,12 +209,38 @@ public class MovieMediaTemplateModel
   
   public String toString()
   {
-    return "MovieMediaTemplateModel{isAsset=" + this.isAsset + ", filePath='" + this.filePath + '\'' + ", movieTemplateId='" + this.movieTemplateId + '\'' + ", movieTemplateCateId='" + this.movieTemplateCateId + '\'' + ", movieSegmentModels=" + this.movieSegmentModels + ", segmentInfo='" + this.segmentInfo + '\'' + ", maxDuration=" + this.maxDuration + ", isRedPacketTemplate=" + this.isRedPacketTemplate + ", movieStickerTextModels=" + this.movieStickerTextModels + ", movieTemplateType= " + this.movieTemplateType + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MovieMediaTemplateModel{isAsset=");
+    localStringBuilder.append(this.isAsset);
+    localStringBuilder.append(", filePath='");
+    localStringBuilder.append(this.filePath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", movieTemplateId='");
+    localStringBuilder.append(this.movieTemplateId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", movieTemplateCateId='");
+    localStringBuilder.append(this.movieTemplateCateId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", movieSegmentModels=");
+    localStringBuilder.append(this.movieSegmentModels);
+    localStringBuilder.append(", segmentInfo='");
+    localStringBuilder.append(this.segmentInfo);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", maxDuration=");
+    localStringBuilder.append(this.maxDuration);
+    localStringBuilder.append(", isRedPacketTemplate=");
+    localStringBuilder.append(this.isRedPacketTemplate);
+    localStringBuilder.append(", movieStickerTextModels=");
+    localStringBuilder.append(this.movieStickerTextModels);
+    localStringBuilder.append(", movieTemplateType= ");
+    localStringBuilder.append(this.movieTemplateType);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.movie.MovieMediaTemplateModel
  * JD-Core Version:    0.7.0.1
  */

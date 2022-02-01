@@ -55,14 +55,15 @@ public final class RespLastGameInfo
     paramJceOutputStream.write(this.bNative, 3);
     paramJceOutputStream.write(this.sLogoUrl, 4);
     paramJceOutputStream.write(this.stGameLogoInfo, 5);
-    if (this.sProfileUrl != null) {
-      paramJceOutputStream.write(this.sProfileUrl, 6);
+    String str = this.sProfileUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     GameCenter.RespLastGameInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -55,24 +55,24 @@ public class SurfaceRenderer
         LogUtils.a("SurfaceRenderer", String.format(Locale.getDefault(), "[%d] handleDraw() canvas is not valid, will try later", new Object[] { Long.valueOf(this.mTextureId) }));
         return;
       }
+      Canvas localCanvas = this.mSurface.lockCanvas(null);
+      if (localCanvas == null)
+      {
+        LogUtils.a("SurfaceRenderer", String.format(Locale.getDefault(), "[%d] handleDraw() canvas is null, will try later", new Object[] { Long.valueOf(this.mTextureId) }));
+        return;
+      }
+      if (this.mDrawCount % 120 == 0) {
+        LogUtils.a("SurfaceRenderer", String.format(Locale.getDefault(), "[%d] handleDraw() called canvasConsumer! %d", new Object[] { Long.valueOf(this.mTextureId), Integer.valueOf(this.mDrawCount) }));
+      }
+      this.mDrawCount += 1;
+      this.mCanvasConsumer.draw(localCanvas);
+      this.mSurface.unlockCanvasAndPost(localCanvas);
+      return;
     }
     catch (Exception localException)
     {
       LogUtils.b("SurfaceRenderer", String.format(Locale.getDefault(), "invalidate() error: %s", new Object[] { localException.getMessage() }));
-      return;
     }
-    Canvas localCanvas = this.mSurface.lockCanvas(null);
-    if (localCanvas == null)
-    {
-      LogUtils.a("SurfaceRenderer", String.format(Locale.getDefault(), "[%d] handleDraw() canvas is null, will try later", new Object[] { Long.valueOf(this.mTextureId) }));
-      return;
-    }
-    if (this.mDrawCount % 120 == 0) {
-      LogUtils.a("SurfaceRenderer", String.format(Locale.getDefault(), "[%d] handleDraw() called canvasConsumer! %d", new Object[] { Long.valueOf(this.mTextureId), Integer.valueOf(this.mDrawCount) }));
-    }
-    this.mDrawCount += 1;
-    this.mCanvasConsumer.draw(localCanvas);
-    this.mSurface.unlockCanvasAndPost(localCanvas);
   }
   
   public void unInit()
@@ -93,7 +93,7 @@ public class SurfaceRenderer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.support.common.SurfaceRenderer
  * JD-Core Version:    0.7.0.1
  */

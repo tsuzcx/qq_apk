@@ -18,8 +18,13 @@ class AdProxyImpl$SDKBannerAdView$4
       localObject = this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBannerAdView.a.getPosInfo();
       String str2 = AdProxyImpl.SDKBannerAdView.a(this.jdField_a_of_type_ComTencentQqminiProxyimplAdProxyImpl$SDKBannerAdView, (MiniAdPosInfo)localObject);
       localObject = str1;
-      if (!TextUtils.isEmpty(str2)) {
-        localObject = str1 + "&" + str2;
+      if (!TextUtils.isEmpty(str2))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str1);
+        ((StringBuilder)localObject).append("&");
+        ((StringBuilder)localObject).append(str2);
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
     AdProxyImpl.a((String)localObject);
@@ -27,7 +32,7 @@ class AdProxyImpl$SDKBannerAdView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKBannerAdView.4
  * JD-Core Version:    0.7.0.1
  */

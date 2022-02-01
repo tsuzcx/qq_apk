@@ -15,26 +15,29 @@ public class QCircleCardObserver
   
   public void a()
   {
-    if (this.a != null) {
-      this.a.clear();
+    ConcurrentHashMap localConcurrentHashMap = this.a;
+    if (localConcurrentHashMap != null) {
+      localConcurrentHashMap.clear();
     }
   }
   
   public void a(QCircleProfileCardChangeListener paramQCircleProfileCardChangeListener)
   {
-    if (this.a != null) {
-      this.a.put(Integer.valueOf(paramQCircleProfileCardChangeListener.hashCode()), new WeakReference(paramQCircleProfileCardChangeListener));
+    ConcurrentHashMap localConcurrentHashMap = this.a;
+    if (localConcurrentHashMap != null) {
+      localConcurrentHashMap.put(Integer.valueOf(paramQCircleProfileCardChangeListener.hashCode()), new WeakReference(paramQCircleProfileCardChangeListener));
     }
   }
   
   public void b(QCircleProfileCardChangeListener paramQCircleProfileCardChangeListener)
   {
-    if (this.a != null) {
-      this.a.remove(Integer.valueOf(paramQCircleProfileCardChangeListener.hashCode()));
+    ConcurrentHashMap localConcurrentHashMap = this.a;
+    if (localConcurrentHashMap != null) {
+      localConcurrentHashMap.remove(Integer.valueOf(paramQCircleProfileCardChangeListener.hashCode()));
     }
   }
   
-  public void onSetProfileDetail(boolean paramBoolean, int paramInt, Card paramCard)
+  protected void onSetProfileDetail(boolean paramBoolean, int paramInt, Card paramCard)
   {
     if (paramBoolean)
     {
@@ -57,7 +60,7 @@ public class QCircleCardObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCircleCardObserver
  * JD-Core Version:    0.7.0.1
  */

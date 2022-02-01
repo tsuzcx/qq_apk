@@ -1,19 +1,19 @@
 package com.tencent.mobileqq.flutter.ipc;
 
 import android.os.Bundle;
+import com.tencent.mobileqq.flutter.download.InstallCallback;
 import com.tencent.mobileqq.flutter.download.QFlutterInstaller;
-import com.tencent.mobileqq.flutter.download.QFlutterInstaller.InstallCallback;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class FlutterMainQIPCModule$1
-  implements QFlutterInstaller.InstallCallback
+  implements InstallCallback
 {
   FlutterMainQIPCModule$1(FlutterMainQIPCModule paramFlutterMainQIPCModule, String paramString1, String paramString2) {}
   
-  public void a(int paramInt) {}
+  public void onProgress(int paramInt) {}
   
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
+  public void onResult(boolean paramBoolean1, String paramString, boolean paramBoolean2, boolean paramBoolean3)
   {
     QLog.d("FlutterMainQIPCModule", 1, String.format("onResult, isSuccess: %s, installDir: %s, isEngineExist: %s, isAppExist: %s", new Object[] { Boolean.valueOf(paramBoolean1), paramString, Boolean.valueOf(paramBoolean2), Boolean.valueOf(paramBoolean3) }));
     Bundle localBundle = new Bundle();
@@ -27,7 +27,7 @@ class FlutterMainQIPCModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.ipc.FlutterMainQIPCModule.1
  * JD-Core Version:    0.7.0.1
  */

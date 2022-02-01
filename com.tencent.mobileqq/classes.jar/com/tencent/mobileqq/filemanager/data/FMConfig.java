@@ -5,48 +5,40 @@ import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.text.TextUtils;
 import com.tencent.common.app.business.BaseQQAppInterface;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
-import com.tencent.mobileqq.filemanager.tem.util.FileUtil;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl.PreViewDataHandler;
+import com.tencent.mobileqq.filemanager.util.QQFileUtil;
 import com.tencent.mobileqq.msf.sdk.SettingCloneUtil;
-import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.MessageCache;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.io.File;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Set;
-import javax.xml.parsers.SAXParser;
-import javax.xml.parsers.SAXParserFactory;
 import mqq.app.AppRuntime;
-import org.xml.sax.helpers.DefaultHandler;
 
 public class FMConfig
 {
-  public static boolean a;
+  public static boolean a = true;
   private static boolean b = false;
   private static boolean c = false;
   private static boolean d = true;
   private static boolean e = true;
   AppRuntime a;
   
-  static
+  public FMConfig(AppRuntime paramAppRuntime, QQFileManagerUtilImpl.PreViewDataHandler paramPreViewDataHandler, long paramLong)
   {
-    jdField_a_of_type_Boolean = true;
-  }
-  
-  public FMConfig(AppRuntime paramAppRuntime, DefaultHandler paramDefaultHandler, long paramLong)
-  {
-    this.jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
+    this.a = paramAppRuntime;
     paramAppRuntime = paramAppRuntime.getApplicationContext().getSharedPreferences("OfflineFileConfigV2", 0).edit();
     paramAppRuntime.clear();
-    Object localObject1 = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getMapResultFromPreViewDataHandler(paramDefaultHandler, "OnlinePreView");
+    Object localObject1 = (HashMap)paramPreViewDataHandler.a().get("OnlinePreView");
     Object localObject2 = ((HashMap)localObject1).keySet().iterator();
     Object localObject3;
     Object localObject4;
     Object localObject5;
-    String str1;
+    String str;
+    Object localObject6;
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (String)((Iterator)localObject2).next();
@@ -54,17 +46,21 @@ public class FMConfig
       localObject5 = ((HashMap)localObject4).keySet().iterator();
       while (((Iterator)localObject5).hasNext())
       {
-        str1 = (String)((Iterator)localObject5).next();
-        String str2 = String.valueOf(((HashMap)localObject4).get(str1));
-        paramAppRuntime.putString(("OnlinePreView" + (String)localObject3 + str1).toLowerCase(), str2);
+        str = (String)((Iterator)localObject5).next();
+        localObject6 = String.valueOf(((HashMap)localObject4).get(str));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("OnlinePreView");
+        localStringBuilder.append((String)localObject3);
+        localStringBuilder.append(str);
+        paramAppRuntime.putString(localStringBuilder.toString().toLowerCase(), (String)localObject6);
       }
     }
-    paramDefaultHandler = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getMapResultFromPreViewDataHandler(paramDefaultHandler, "OfflineConfig");
-    localObject1 = paramDefaultHandler.keySet().iterator();
+    paramPreViewDataHandler = (HashMap)paramPreViewDataHandler.a().get("OfflineConfig");
+    localObject1 = paramPreViewDataHandler.keySet().iterator();
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (String)((Iterator)localObject1).next();
-      localObject3 = paramDefaultHandler.get(localObject2);
+      localObject3 = paramPreViewDataHandler.get(localObject2);
       if ((localObject3 instanceof HashMap))
       {
         localObject3 = (HashMap)localObject3;
@@ -72,45 +68,57 @@ public class FMConfig
         while (((Iterator)localObject4).hasNext())
         {
           localObject5 = (String)((Iterator)localObject4).next();
-          str1 = String.valueOf(((HashMap)localObject3).get(localObject5));
-          paramAppRuntime.putString(("OfflineConfig" + (String)localObject2 + (String)localObject5).toLowerCase(), str1);
+          str = String.valueOf(((HashMap)localObject3).get(localObject5));
+          localObject6 = new StringBuilder();
+          ((StringBuilder)localObject6).append("OfflineConfig");
+          ((StringBuilder)localObject6).append((String)localObject2);
+          ((StringBuilder)localObject6).append((String)localObject5);
+          paramAppRuntime.putString(((StringBuilder)localObject6).toString().toLowerCase(), str);
         }
       }
       else if ((localObject3 instanceof String))
       {
-        paramAppRuntime.putString(("OfflineConfig" + (String)localObject2).toLowerCase(), (String)localObject3);
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("OfflineConfig");
+        ((StringBuilder)localObject4).append((String)localObject2);
+        paramAppRuntime.putString(((StringBuilder)localObject4).toString().toLowerCase(), (String)localObject3);
       }
     }
     paramAppRuntime.putLong("FileOnlinePreviewVersionKey", paramLong);
     long l = MessageCache.a();
     paramAppRuntime.putLong("FMConfigUpdateLastTime", l);
     paramAppRuntime.commit();
-    QLog.i("FMConfig<FileAssistant>", 1, "commit Config data, time[" + l + "], ver[" + paramLong + "]");
+    paramAppRuntime = new StringBuilder();
+    paramAppRuntime.append("commit Config data, time[");
+    paramAppRuntime.append(l);
+    paramAppRuntime.append("], ver[");
+    paramAppRuntime.append(paramLong);
+    paramAppRuntime.append("]");
+    QLog.i("FMConfig<FileAssistant>", 1, paramAppRuntime.toString());
   }
   
   public static int a()
   {
-    int i;
     try
     {
       i = Integer.parseInt(b(BaseApplication.getContext(), "TimAioCount"));
-      if ((i != 0) && (TextUtils.isEmpty(a()))) {
-        return 0;
-      }
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        i = 0;
-      }
+      int i;
+      label15:
+      break label15;
+    }
+    i = 0;
+    if ((i != 0) && (TextUtils.isEmpty(a()))) {
+      return 0;
     }
     return i;
   }
   
   public static long a()
   {
-    long l1 = Long.parseLong(((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHardCodeConfigByFileManagerUtil("OfflineConfigFlowSize"));
+    long l1 = Long.parseLong(QQFileManagerUtil.d("OfflineConfigFlowSize"));
     try
     {
       long l2 = Long.parseLong(b(BaseApplication.getContext(), "FlowSize"));
@@ -118,31 +126,31 @@ public class FMConfig
     }
     catch (Exception localException)
     {
-      label33:
-      break label33;
+      label23:
+      break label23;
     }
     return l1 * 1024L + 1L;
   }
   
   public static String a()
   {
-    Object localObject1 = "";
     try
     {
-      localObject2 = b(BaseApplication.getContext(), "TimGuideUrl");
-      localObject1 = localObject2;
+      str1 = b(BaseApplication.getContext(), "TimGuideUrl");
     }
     catch (Exception localException)
     {
-      Object localObject2;
-      label14:
-      break label14;
+      String str1;
+      label12:
+      String str2;
+      break label12;
     }
-    localObject2 = localObject1;
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-      localObject2 = "https://mma.qq.com/tim/timoffice/office.html";
+    str1 = "";
+    str2 = str1;
+    if (TextUtils.isEmpty(str1)) {
+      str2 = "https://mma.qq.com/tim/timoffice/office.html";
     }
-    return localObject2;
+    return str2;
   }
   
   public static String a(Context paramContext, String paramString)
@@ -151,68 +159,158 @@ public class FMConfig
     if ((paramContext != null) && (paramContext.length() > 0)) {
       return paramContext;
     }
-    return ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHardCodeConfigByFileManagerUtil(paramString);
+    return QQFileManagerUtilImpl.a(paramString);
   }
   
   public static String a(Context paramContext, String paramString1, String paramString2)
   {
-    return a(paramContext, "OnlinePreView", FileUtil.a(paramString1).replace(".", ""), paramString2);
+    return a(paramContext, "OnlinePreView", QQFileUtil.a(paramString1).replace(".", ""), paramString2);
   }
   
   public static String a(Context paramContext, String paramString1, String paramString2, String paramString3)
   {
-    return a(paramContext, paramString1 + paramString2 + paramString3);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(paramString3);
+    return a(paramContext, localStringBuilder.toString());
   }
   
+  /* Error */
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, String paramString, long paramLong)
   {
-    localFile = new File(paramBaseQQAppInterface.getApplicationContext().getFilesDir(), "FileOnlinePreviewConfigV2");
-    for (;;)
-    {
-      try
-      {
-        if (!HttpDownloadUtil.download(paramBaseQQAppInterface, paramString, localFile)) {
-          continue;
-        }
-        paramString = new DefaultHandler();
-      }
-      catch (Exception paramBaseQQAppInterface)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FMConfig<FileAssistant>", 2, "updateGuide with: " + QLog.getStackTraceString(paramBaseQQAppInterface));
-        return;
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FMConfig<FileAssistant>", 2, "updateGuide download xml failed: " + paramString);
-        continue;
-      }
-      finally
-      {
-        localFile.delete();
-      }
-      try
-      {
-        SAXParserFactory.newInstance().newSAXParser().parse(localFile, paramString);
-        new FMConfig(paramBaseQQAppInterface, paramString, paramLong);
-        localFile.delete();
-        return;
-      }
-      catch (Throwable paramBaseQQAppInterface)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FMConfig<FileAssistant>", 2, "updateGuide with: " + QLog.getStackTraceString(paramBaseQQAppInterface));
-      }
-    }
+    // Byte code:
+    //   0: new 221	java/io/File
+    //   3: dup
+    //   4: aload_0
+    //   5: invokevirtual 224	com/tencent/common/app/business/BaseQQAppInterface:getApplicationContext	()Landroid/content/Context;
+    //   8: invokevirtual 228	android/content/Context:getFilesDir	()Ljava/io/File;
+    //   11: ldc 230
+    //   13: invokespecial 233	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   16: astore 4
+    //   18: aload_0
+    //   19: aload_1
+    //   20: aload 4
+    //   22: invokestatic 239	com/tencent/mobileqq/utils/HttpDownloadUtil:download	(Lmqq/app/AppRuntime;Ljava/lang/String;Ljava/io/File;)Z
+    //   25: ifeq +82 -> 107
+    //   28: new 49	com/tencent/mobileqq/filemanager/util/QQFileManagerUtilImpl$PreViewDataHandler
+    //   31: dup
+    //   32: invokespecial 240	com/tencent/mobileqq/filemanager/util/QQFileManagerUtilImpl$PreViewDataHandler:<init>	()V
+    //   35: astore_1
+    //   36: invokestatic 246	javax/xml/parsers/SAXParserFactory:newInstance	()Ljavax/xml/parsers/SAXParserFactory;
+    //   39: invokevirtual 250	javax/xml/parsers/SAXParserFactory:newSAXParser	()Ljavax/xml/parsers/SAXParser;
+    //   42: aload 4
+    //   44: aload_1
+    //   45: invokevirtual 256	javax/xml/parsers/SAXParser:parse	(Ljava/io/File;Lorg/xml/sax/helpers/DefaultHandler;)V
+    //   48: new 2	com/tencent/mobileqq/filemanager/data/FMConfig
+    //   51: dup
+    //   52: aload_0
+    //   53: aload_1
+    //   54: lload_2
+    //   55: invokespecial 258	com/tencent/mobileqq/filemanager/data/FMConfig:<init>	(Lmqq/app/AppRuntime;Lcom/tencent/mobileqq/filemanager/util/QQFileManagerUtilImpl$PreViewDataHandler;J)V
+    //   58: pop
+    //   59: goto +135 -> 194
+    //   62: astore_0
+    //   63: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   66: ifeq +128 -> 194
+    //   69: new 88	java/lang/StringBuilder
+    //   72: dup
+    //   73: invokespecial 89	java/lang/StringBuilder:<init>	()V
+    //   76: astore_1
+    //   77: aload_1
+    //   78: ldc_w 263
+    //   81: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   84: pop
+    //   85: aload_1
+    //   86: aload_0
+    //   87: invokestatic 267	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   90: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   93: pop
+    //   94: ldc 133
+    //   96: iconst_2
+    //   97: aload_1
+    //   98: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   101: invokestatic 269	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   104: goto +90 -> 194
+    //   107: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   110: ifeq +84 -> 194
+    //   113: new 88	java/lang/StringBuilder
+    //   116: dup
+    //   117: invokespecial 89	java/lang/StringBuilder:<init>	()V
+    //   120: astore_0
+    //   121: aload_0
+    //   122: ldc_w 271
+    //   125: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   128: pop
+    //   129: aload_0
+    //   130: aload_1
+    //   131: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: pop
+    //   135: ldc 133
+    //   137: iconst_2
+    //   138: aload_0
+    //   139: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   142: invokestatic 269	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   145: goto +49 -> 194
+    //   148: astore_0
+    //   149: goto +52 -> 201
+    //   152: astore_0
+    //   153: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   156: ifeq +38 -> 194
+    //   159: new 88	java/lang/StringBuilder
+    //   162: dup
+    //   163: invokespecial 89	java/lang/StringBuilder:<init>	()V
+    //   166: astore_1
+    //   167: aload_1
+    //   168: ldc_w 263
+    //   171: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   174: pop
+    //   175: aload_1
+    //   176: aload_0
+    //   177: invokestatic 267	com/tencent/qphone/base/util/QLog:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   180: invokevirtual 93	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: pop
+    //   184: ldc 133
+    //   186: iconst_2
+    //   187: aload_1
+    //   188: invokevirtual 97	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   191: invokestatic 269	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   194: aload 4
+    //   196: invokevirtual 274	java/io/File:delete	()Z
+    //   199: pop
+    //   200: return
+    //   201: aload 4
+    //   203: invokevirtual 274	java/io/File:delete	()Z
+    //   206: pop
+    //   207: aload_0
+    //   208: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	209	0	paramBaseQQAppInterface	BaseQQAppInterface
+    //   0	209	1	paramString	String
+    //   0	209	2	paramLong	long
+    //   16	186	4	localFile	java.io.File
+    // Exception table:
+    //   from	to	target	type
+    //   36	59	62	java/lang/Throwable
+    //   18	36	148	finally
+    //   36	59	148	finally
+    //   63	104	148	finally
+    //   107	145	148	finally
+    //   153	194	148	finally
+    //   18	36	152	java/lang/Exception
+    //   36	59	152	java/lang/Exception
+    //   63	104	152	java/lang/Exception
+    //   107	145	152	java/lang/Exception
   }
   
   public static void a(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).edit().putBoolean("https_c2c_up", paramBoolean).apply();
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("https_c2c_up", paramBoolean).apply();
   }
   
   public static boolean a()
@@ -222,12 +320,16 @@ public class FMConfig
   
   public static boolean a(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).getBoolean("https_c2c_up", false);
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("https_c2c_up", false);
   }
   
   public static long b()
   {
-    long l1 = Long.parseLong(((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHardCodeConfigByFileManagerUtil("OfflineConfigFlowTime"));
+    long l1 = Long.parseLong(QQFileManagerUtil.d("OfflineConfigFlowTime"));
     try
     {
       long l2 = Long.parseLong(b(BaseApplication.getContext(), "FlowTime"));
@@ -235,8 +337,8 @@ public class FMConfig
     }
     catch (Exception localException)
     {
-      label35:
-      break label35;
+      label25:
+      break label25;
     }
     return l1 * 60L;
   }
@@ -248,7 +350,11 @@ public class FMConfig
   
   public static void b(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).edit().putBoolean("https_c2c_down", paramBoolean).apply();
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("https_c2c_down", paramBoolean).apply();
   }
   
   public static boolean b()
@@ -258,12 +364,16 @@ public class FMConfig
   
   public static boolean b(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).getBoolean("https_c2c_down", false);
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("https_c2c_down", false);
   }
   
   public static long c()
   {
-    long l1 = Long.parseLong(((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getHardCodeConfigByFileManagerUtil("OfflineConfigFtnThumbMaxSize"));
+    long l1 = Long.parseLong(QQFileManagerUtil.d("OfflineConfigFtnThumbMaxSize"));
     try
     {
       long l2 = Long.parseLong(b(BaseApplication.getContext(), "FtnThumbMaxSize"));
@@ -271,82 +381,134 @@ public class FMConfig
     }
     catch (Exception localException)
     {
-      label35:
-      break label35;
+      label25:
+      break label25;
     }
     return l1 * 1024L;
   }
   
   public static void c(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).edit().putBoolean("https_c2czip_down", paramBoolean).apply();
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("https_c2czip_down", paramBoolean).apply();
   }
   
   public static boolean c()
   {
-    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131713101), "qqsetting_auto_receive_pic_key", true);
-    QLog.i("FMConfig<FileAssistant>", 1, "PreloadThumb switch is[" + bool + "]");
+    boolean bool = SettingCloneUtil.readValue(BaseApplication.getContext(), null, BaseApplication.getContext().getString(2131713076), "qqsetting_auto_receive_pic_key", true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PreloadThumb switch is[");
+    localStringBuilder.append(bool);
+    localStringBuilder.append("]");
+    QLog.i("FMConfig<FileAssistant>", 1, localStringBuilder.toString());
     return bool;
   }
   
   public static boolean c(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).getBoolean("https_c2czip_down", false);
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("https_c2czip_down", false);
   }
   
   public static void d(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).edit().putBoolean("https_c2c_thumb", paramBoolean).apply();
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("https_c2c_thumb", paramBoolean).apply();
   }
   
   public static boolean d(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).getBoolean("https_c2c_thumb", false);
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("https_c2c_thumb", false);
   }
   
   public static void e(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).edit().putBoolean("https_disc_up", paramBoolean).apply();
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("https_disc_up", paramBoolean).apply();
   }
   
   public static boolean e(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).getBoolean("https_disc_up", false);
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("https_disc_up", false);
   }
   
   public static void f(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).edit().putBoolean("https_disc_down", paramBoolean).apply();
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("https_disc_down", paramBoolean).apply();
   }
   
   public static boolean f(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).getBoolean("https_disc_down", false);
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("https_disc_down", false);
   }
   
   public static void g(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).edit().putBoolean("https_disczip_down", paramBoolean).apply();
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("https_disczip_down", paramBoolean).apply();
   }
   
   public static boolean g(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).getBoolean("https_disczip_down", false);
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("https_disczip_down", false);
   }
   
   public static void h(BaseQQAppInterface paramBaseQQAppInterface, boolean paramBoolean)
   {
-    paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).edit().putBoolean("https_disc_thumb", paramBoolean).apply();
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    localContext.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("https_disc_thumb", paramBoolean).apply();
   }
   
   public static boolean h(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    return paramBaseQQAppInterface.getApplicationContext().getSharedPreferences("file_config_" + paramBaseQQAppInterface.getCurrentUin(), 0).getBoolean("https_disc_thumb", false);
+    Context localContext = paramBaseQQAppInterface.getApplicationContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("file_config_");
+    localStringBuilder.append(paramBaseQQAppInterface.getCurrentUin());
+    return localContext.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("https_disc_thumb", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FMConfig
  * JD-Core Version:    0.7.0.1
  */

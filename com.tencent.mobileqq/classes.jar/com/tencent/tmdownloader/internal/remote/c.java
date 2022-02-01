@@ -28,28 +28,27 @@ class c
         {
           localParcel1.writeInt(1);
           paramAppDetailReqParam.writeToParcel(localParcel1, 0);
-          if (paramIGetAppInfoCallback != null)
-          {
-            paramAppDetailReqParam = paramIGetAppInfoCallback.asBinder();
-            localParcel1.writeStrongBinder(paramAppDetailReqParam);
-            this.a.transact(16, localParcel1, localParcel2, 0);
-            localParcel2.readException();
-            int i = localParcel2.readInt();
-            return i;
-          }
         }
         else
         {
           localParcel1.writeInt(0);
-          continue;
         }
-        paramAppDetailReqParam = null;
+        if (paramIGetAppInfoCallback != null)
+        {
+          paramAppDetailReqParam = paramIGetAppInfoCallback.asBinder();
+          localParcel1.writeStrongBinder(paramAppDetailReqParam);
+          this.a.transact(16, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          int i = localParcel2.readInt();
+          return i;
+        }
       }
       finally
       {
         localParcel2.recycle();
         localParcel1.recycle();
       }
+      paramAppDetailReqParam = null;
     }
   }
   
@@ -153,25 +152,29 @@ class c
   
   public void a(String paramString, boolean paramBoolean)
   {
-    int i = 0;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
-    try
+    for (;;)
     {
-      localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
-      localParcel1.writeString(paramString);
-      if (paramBoolean) {
-        i = 1;
+      try
+      {
+        localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
+        localParcel1.writeString(paramString);
+        if (paramBoolean)
+        {
+          i = 1;
+          localParcel1.writeInt(i);
+          this.a.transact(10, localParcel1, localParcel2, 0);
+          localParcel2.readException();
+          return;
+        }
       }
-      localParcel1.writeInt(i);
-      this.a.transact(10, localParcel1, localParcel2, 0);
-      localParcel2.readException();
-      return;
-    }
-    finally
-    {
-      localParcel2.recycle();
-      localParcel1.recycle();
+      finally
+      {
+        localParcel2.recycle();
+        localParcel1.recycle();
+      }
+      int i = 0;
     }
   }
   
@@ -336,14 +339,15 @@ class c
   
   public boolean e(String paramString)
   {
-    boolean bool = false;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.tencent.tmdownloader.internal.remote.IRemoteOpInterface");
       localParcel1.writeString(paramString);
-      this.a.transact(15, localParcel1, localParcel2, 0);
+      paramString = this.a;
+      boolean bool = false;
+      paramString.transact(15, localParcel1, localParcel2, 0);
       localParcel2.readException();
       int i = localParcel2.readInt();
       if (i != 0) {
@@ -360,7 +364,7 @@ class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.remote.c
  * JD-Core Version:    0.7.0.1
  */

@@ -22,76 +22,82 @@ public class TriggerTimeUpdater
       return paramLong;
     }
     int i = 0;
-    if (i < this.mTriggerTimes.length) {
-      if (paramLong < this.mTriggerTimes[i]) {
-        paramLong = this.mTriggerTimes[i];
-      }
-    }
+    long l;
     for (;;)
     {
-      if (paramLong > 0L) {}
-      for (;;)
-      {
-        return paramLong;
-        i += 1;
+      long[] arrayOfLong = this.mTriggerTimes;
+      l = paramLong;
+      if (i >= arrayOfLong.length) {
         break;
-        paramLong = 0L;
       }
+      if (paramLong < arrayOfLong[i])
+      {
+        l = arrayOfLong[i];
+        break;
+      }
+      i += 1;
     }
+    if (l > 0L) {
+      return l;
+    }
+    return 0L;
   }
   
   private void initArrBySortSelect(long[] paramArrayOfLong)
   {
-    int i = 0;
-    if ((paramArrayOfLong == null) || (paramArrayOfLong.length == 0)) {}
-    for (;;)
+    if (paramArrayOfLong != null)
     {
-      return;
+      if (paramArrayOfLong.length == 0) {
+        return;
+      }
       this.mTriggerTimes = new long[paramArrayOfLong.length];
-      System.arraycopy(paramArrayOfLong, 0, this.mTriggerTimes, 0, paramArrayOfLong.length);
+      long[] arrayOfLong = this.mTriggerTimes;
+      int j = paramArrayOfLong.length;
+      int i = 0;
+      System.arraycopy(paramArrayOfLong, 0, arrayOfLong, 0, j);
       while (i < this.mTriggerTimes.length - 1)
       {
-        int j = i + 1;
-        while (j < this.mTriggerTimes.length)
+        j = i + 1;
+        int k = j;
+        for (;;)
         {
-          if (this.mTriggerTimes[j] < this.mTriggerTimes[i])
-          {
-            long l = this.mTriggerTimes[i];
-            this.mTriggerTimes[i] = this.mTriggerTimes[j];
-            this.mTriggerTimes[j] = l;
+          paramArrayOfLong = this.mTriggerTimes;
+          if (k >= paramArrayOfLong.length) {
+            break;
           }
-          j += 1;
+          if (paramArrayOfLong[k] < paramArrayOfLong[i])
+          {
+            long l = paramArrayOfLong[i];
+            paramArrayOfLong[i] = paramArrayOfLong[k];
+            paramArrayOfLong[k] = l;
+          }
+          k += 1;
         }
-        i += 1;
+        i = j;
       }
     }
   }
   
   private long updateTriggerTime(long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2)
   {
-    long l1;
-    long l2;
-    if (paramBoolean2)
-    {
-      l1 = this.DELAY_TIME;
-      if ((paramLong2 >= 0L) && (paramLong1 >= 0L)) {
-        break label44;
-      }
-      l2 = getMatchTriggerTime(-1L) + l1;
+    long l;
+    if (paramBoolean2) {
+      l = this.DELAY_TIME;
+    } else {
+      l = 0L;
     }
-    label44:
-    do
+    if ((paramLong2 >= 0L) && (paramLong1 >= 0L)) {
+      if (!paramBoolean1) {
+        if (paramLong1 < this.mPlayDuration + paramLong2) {
+          return paramLong2;
+        }
+      }
+    }
+    for (paramLong1 = getMatchTriggerTime(paramLong2 - l);; paramLong1 = getMatchTriggerTime(-1L))
     {
-      do
-      {
-        return l2;
-        l1 = 0L;
-        break;
-        l2 = paramLong2;
-      } while (paramBoolean1);
-      l2 = paramLong2;
-    } while (paramLong1 < this.mPlayDuration + paramLong2);
-    return getMatchTriggerTime(paramLong2 - l1) + l1;
+      return paramLong1 + l;
+      return paramLong2;
+    }
   }
   
   public long updateCurTriggerTime(long paramLong1, long paramLong2, boolean paramBoolean)
@@ -106,7 +112,7 @@ public class TriggerTimeUpdater
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.TriggerTimeUpdater
  * JD-Core Version:    0.7.0.1
  */

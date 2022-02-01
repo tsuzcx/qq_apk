@@ -24,45 +24,50 @@ public class ADVideoAppDownloadManager$LoadTask
         if (localADVideoAppDownloadManager == null) {
           return;
         }
-        l = System.currentTimeMillis();
+        long l = System.currentTimeMillis();
         this.jdField_a_of_type_Int += 1;
         ADVideoAppDownloadData localADVideoAppDownloadData = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdVideoADVideoAppDownloadData;
-        if (!localADVideoAppDownloadData.a()) {
-          break label192;
+        if (localADVideoAppDownloadData.a())
+        {
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("mLoadAppJob loader sucess!!! ");
+            localStringBuilder.append(localADVideoAppDownloadData.c);
+            QLog.d("ADVideoAppDownloadManager", 2, localStringBuilder.toString());
+          }
+          if ((ADVideoAppDownloadManager.a(localADVideoAppDownloadManager) != null) && (!TextUtils.isEmpty(ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d)) && (ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d.equals(localADVideoAppDownloadData.d))) {
+            localADVideoAppDownloadManager.a(localADVideoAppDownloadData);
+          }
+          ADVideoAppDownloadManager.a(localADVideoAppDownloadManager, true, System.currentTimeMillis() - l);
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("ADVideoAppDownloadManager", 2, "mLoadAppJob loader sucess!!! " + localADVideoAppDownloadData.c);
+        else
+        {
+          QLog.d("ADVideoAppDownloadManager", 1, "mLoadAppJob loader failed!!!");
+          ADVideoAppDownloadManager.a(localADVideoAppDownloadManager, false, System.currentTimeMillis() - l);
         }
-        if ((ADVideoAppDownloadManager.a(localADVideoAppDownloadManager) != null) && (!TextUtils.isEmpty(ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d)) && (ADVideoAppDownloadManager.a(localADVideoAppDownloadManager).d.equals(localADVideoAppDownloadData.d))) {
-          localADVideoAppDownloadManager.a(localADVideoAppDownloadData);
-        }
-        ADVideoAppDownloadManager.a(localADVideoAppDownloadManager, true, System.currentTimeMillis() - l);
       }
+      ADVideoAppDownloadManager localADVideoAppDownloadManager = (ADVideoAppDownloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+      if (localADVideoAppDownloadManager == null) {
+        break label221;
+      }
+      ADVideoAppDownloadManager.a(localADVideoAppDownloadManager, false);
+      return;
     }
     catch (Exception localException)
     {
-      ADVideoAppDownloadManager localADVideoAppDownloadManager;
-      long l;
-      while (QLog.isColorLevel())
-      {
-        QLog.d("ADVideoAppDownloadManager", 2, " mLoadAppJob exception");
-        return;
-        label192:
-        QLog.d("ADVideoAppDownloadManager", 1, "mLoadAppJob loader failed!!!");
-        ADVideoAppDownloadManager.a(localException, false, System.currentTimeMillis() - l);
-      }
+      label207:
+      label221:
+      break label207;
     }
-    localADVideoAppDownloadManager = (ADVideoAppDownloadManager)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localADVideoAppDownloadManager != null)
-    {
-      ADVideoAppDownloadManager.a(localADVideoAppDownloadManager, false);
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("ADVideoAppDownloadManager", 2, " mLoadAppJob exception");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.video.ADVideoAppDownloadManager.LoadTask
  * JD-Core Version:    0.7.0.1
  */

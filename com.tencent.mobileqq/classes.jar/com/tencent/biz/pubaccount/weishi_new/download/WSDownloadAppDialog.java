@@ -23,20 +23,19 @@ public class WSDownloadAppDialog
   
   public static void a()
   {
-    if (a != null)
+    Object localObject = a;
+    if (localObject != null)
     {
-      WSDownloadAppDialog localWSDownloadAppDialog = (WSDownloadAppDialog)a.get();
-      if (localWSDownloadAppDialog != null)
+      localObject = (WSDownloadAppDialog)((WeakReference)localObject).get();
+      if (localObject != null)
       {
         if (WeishiDownloadUtil.b()) {
           WSLog.c("WeishiDownloadUtil", "关闭qzone弹窗");
-        }
-        for (;;)
-        {
-          localWSDownloadAppDialog.dismiss();
-          return;
+        } else {
           WSLog.c("WeishiDownloadUtil", "关闭qq弹窗");
         }
+        ((WSDownloadAppDialog)localObject).dismiss();
+        return;
       }
       if (WeishiDownloadUtil.b())
       {
@@ -51,11 +50,14 @@ public class WSDownloadAppDialog
   
   public static void a(int paramInt, WSDownloadParams paramWSDownloadParams)
   {
-    if ((paramWSDownloadParams == null) || (paramWSDownloadParams.mStReportItem == null)) {
-      return;
+    if (paramWSDownloadParams != null)
+    {
+      if (paramWSDownloadParams.mStReportItem == null) {
+        return;
+      }
+      paramWSDownloadParams.mStReportItem.downloadscene = WeishiDownloadUtil.a(paramWSDownloadParams.mScene, paramWSDownloadParams.mLinkStrategyType, paramWSDownloadParams.mEventId);
+      UserActionReportPresenter.a(paramInt, paramWSDownloadParams.mStReportItem);
     }
-    paramWSDownloadParams.mStReportItem.downloadscene = WeishiDownloadUtil.a(paramWSDownloadParams.mScene, paramWSDownloadParams.mLinkStrategyType, paramWSDownloadParams.mEventId);
-    UserActionReportPresenter.a(paramInt, paramWSDownloadParams.mStReportItem);
   }
   
   public static void a(Activity paramActivity)
@@ -64,26 +66,26 @@ public class WSDownloadAppDialog
     {
       if (WeishiDownloadUtil.b()) {
         WSLog.d("WeishiDownloadUtil", "弹出qzone弹窗---");
-      }
-      for (;;)
-      {
-        if ((a == null) || (a.get() == null))
-        {
-          paramActivity = new WSDownloadAppDialog(paramActivity, 2131755842);
-          paramActivity.setTitle("正在下载腾讯微视APP");
-          paramActivity.setMessage("️⬆完成安装即可领取最高188红包⬆");
-          paramActivity.setPositiveButton(HardCodeUtil.a(2131716826), new WSDownloadAppDialog.1());
-          a = new WeakReference(paramActivity);
-        }
-        ((WSDownloadAppDialog)a.get()).show();
-        return;
+      } else {
         WSLog.d("WeishiDownloadUtil", "弹出qq弹窗");
       }
+      if ((a == null) || (a.get() == null))
+      {
+        paramActivity = new WSDownloadAppDialog(paramActivity, 2131756189);
+        paramActivity.setTitle("正在下载腾讯微视APP");
+        paramActivity.setMessage("️⬆完成安装即可领取最高188红包⬆");
+        paramActivity.setPositiveButton(HardCodeUtil.a(2131716476), new WSDownloadAppDialog.1());
+        a = new WeakReference(paramActivity);
+      }
+      ((WSDownloadAppDialog)a.get()).show();
       return;
     }
     catch (Exception paramActivity)
     {
-      WSLog.d("WeishiDownloadUtil", "showDownloadDialog error:" + paramActivity.getLocalizedMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showDownloadDialog error:");
+      localStringBuilder.append(paramActivity.getLocalizedMessage());
+      WSLog.d("WeishiDownloadUtil", localStringBuilder.toString());
     }
   }
   
@@ -106,7 +108,7 @@ public class WSDownloadAppDialog
   
   private void b()
   {
-    setContentView(2131559084);
+    setContentView(2131558978);
     setCanceledOnTouchOutside(true);
   }
   
@@ -117,11 +119,11 @@ public class WSDownloadAppDialog
       a(paramActivity, paramWSDownloadParams);
       return;
     }
-    WSDownloadAppDialog localWSDownloadAppDialog = new WSDownloadAppDialog(paramActivity, 2131755842);
-    localWSDownloadAppDialog.setTitle(HardCodeUtil.a(2131716829));
+    WSDownloadAppDialog localWSDownloadAppDialog = new WSDownloadAppDialog(paramActivity, 2131756189);
+    localWSDownloadAppDialog.setTitle(HardCodeUtil.a(2131716479));
     localWSDownloadAppDialog.setMessage("️⬆完成安装即可领取最高188红包⬆");
-    localWSDownloadAppDialog.setPositiveButton(HardCodeUtil.a(2131716825), new WSDownloadAppDialog.4(paramActivity, paramWSDownloadParams));
-    localWSDownloadAppDialog.setNegativeButton(HardCodeUtil.a(2131716827), new WSDownloadAppDialog.5(paramWSDownloadParams));
+    localWSDownloadAppDialog.setPositiveButton(HardCodeUtil.a(2131716475), new WSDownloadAppDialog.4(paramActivity, paramWSDownloadParams));
+    localWSDownloadAppDialog.setNegativeButton(HardCodeUtil.a(2131716477), new WSDownloadAppDialog.5(paramWSDownloadParams));
     localWSDownloadAppDialog.show();
     WSReportDc00898.a(paramWSDownloadParams.mScene, true, false);
     a(124, paramWSDownloadParams);
@@ -129,7 +131,7 @@ public class WSDownloadAppDialog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.download.WSDownloadAppDialog
  * JD-Core Version:    0.7.0.1
  */

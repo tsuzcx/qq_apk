@@ -3,8 +3,11 @@ package com.tencent.mobileqq.activity.home;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.app.ThreadManager;
-import mqq.os.MqqHandler;
+import android.os.Bundle;
+import android.os.Message;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.LoginDevicesBannerProcessor;
+import com.tencent.mobileqq.activity.recent.bannerprocessor.PCOnlineBannerProcessor;
+import com.tencent.mobileqq.banner.BannerManager;
 
 class Conversation$53
   extends BroadcastReceiver
@@ -13,15 +16,33 @@ class Conversation$53
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    paramContext = paramIntent.getAction();
-    if (("android.intent.action.TIME_SET".equals(paramContext)) || ("android.intent.action.TIMEZONE_CHANGED".equals(paramContext)) || ("android.intent.action.DATE_CHANGED".equals(paramContext))) {
-      ThreadManager.getSubThreadHandler().post(Conversation.a(this.a));
+    if ("login".equals(paramIntent.getStringExtra("status")))
+    {
+      paramContext = Message.obtain();
+      paramContext.what = 2002;
+      paramContext.getData().putString("pcLoginInfo", paramIntent.getStringExtra("loginInfo"));
+      this.a.a.b(LoginDevicesBannerProcessor.a, paramContext);
+      paramContext = Message.obtain();
+      paramContext.what = 2003;
+      paramContext.getData().putString("pcLoginInfo", paramIntent.getStringExtra("loginInfo"));
+      this.a.a.b(PCOnlineBannerProcessor.a, paramContext);
+      paramContext = Message.obtain();
+      paramContext.what = 2001;
+      paramContext.getData().putLong("loginDevAppid", paramIntent.getLongExtra("subappid", 1L));
+      this.a.a.b(LoginDevicesBannerProcessor.a, paramContext);
+      paramContext = Message.obtain();
+      paramContext.what = 2002;
+      paramContext.getData().putLong("loginAppType", paramIntent.getLongExtra("subappid", 1L));
+      this.a.a.b(PCOnlineBannerProcessor.a, paramContext);
+      this.a.a.a(LoginDevicesBannerProcessor.a, 2, null);
+      return;
     }
+    this.a.a.b(LoginDevicesBannerProcessor.a, 2000);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.53
  * JD-Core Version:    0.7.0.1
  */

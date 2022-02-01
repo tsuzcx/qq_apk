@@ -13,7 +13,8 @@ class PortraitImageview$4
     float f2 = this.this$0.a(f1, 0.0F, this.d, this.c);
     float f3 = this.this$0.a(f1, 0.0F, this.e, this.c);
     this.this$0.a(f2 - this.jdField_a_of_type_Float, f3 - this.b);
-    this.this$0.setImageMatrix(this.this$0.a());
+    PortraitImageview localPortraitImageview = this.this$0;
+    localPortraitImageview.setImageMatrix(localPortraitImageview.a());
     this.jdField_a_of_type_Float = f2;
     this.b = f3;
     if (f1 < this.c) {
@@ -23,7 +24,7 @@ class PortraitImageview$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PortraitImageview.4
  * JD-Core Version:    0.7.0.1
  */

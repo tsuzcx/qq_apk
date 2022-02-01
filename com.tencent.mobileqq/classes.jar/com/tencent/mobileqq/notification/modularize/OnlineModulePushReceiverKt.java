@@ -10,6 +10,7 @@ import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import com.tencent.mobileqq.app.utils.FriendsStatusUtil;
+import com.tencent.mobileqq.onlinestatus.api.IOnlineStatusService;
 import com.tencent.mobileqq.utils.ProcessUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -42,7 +43,14 @@ public final class OnlineModulePushReceiverKt
     while (((Iterator)localObject).hasNext())
     {
       ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next();
-      paramList.add("name: " + localRunningAppProcessInfo.processName + " imp: " + localRunningAppProcessInfo.importance + " pid: " + localRunningAppProcessInfo.pid);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("name: ");
+      localStringBuilder.append(localRunningAppProcessInfo.processName);
+      localStringBuilder.append(" imp: ");
+      localStringBuilder.append(localRunningAppProcessInfo.importance);
+      localStringBuilder.append(" pid: ");
+      localStringBuilder.append(localRunningAppProcessInfo.pid);
+      paramList.add(localStringBuilder.toString());
     }
     return CollectionsKt.joinToString$default((Iterable)paramList, null, null, null, 0, null, null, 63, null);
   }
@@ -80,56 +88,81 @@ public final class OnlineModulePushReceiverKt
     {
       paramQQAppInterface = BaseApplication.context;
       Object localObject1 = paramQQAppInterface.getSystemService("activity");
-      if (localObject1 == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.app.ActivityManager");
-      }
-      localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "procList");
-      Object localObject2 = (Iterable)localObject1;
-      localObject1 = (Collection)new ArrayList();
-      localObject2 = ((Iterable)localObject2).iterator();
-      while (((Iterator)localObject2).hasNext())
+      if (localObject1 != null)
       {
-        Object localObject3 = ((Iterator)localObject2).next();
-        ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localObject3;
-        if (ProcessUtil.a((Context)paramQQAppInterface, localRunningAppProcessInfo.processName)) {
-          ((Collection)localObject1).add(localObject3);
+        localObject1 = ((ActivityManager)localObject1).getRunningAppProcesses();
+        Intrinsics.checkExpressionValueIsNotNull(localObject1, "procList");
+        Object localObject2 = (Iterable)localObject1;
+        localObject1 = (Collection)new ArrayList();
+        localObject2 = ((Iterable)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          Object localObject3 = ((Iterator)localObject2).next();
+          ActivityManager.RunningAppProcessInfo localRunningAppProcessInfo = (ActivityManager.RunningAppProcessInfo)localObject3;
+          if (ProcessUtil.a((Context)paramQQAppInterface, localRunningAppProcessInfo.processName)) {
+            ((Collection)localObject1).add(localObject3);
+          }
         }
+        paramQQAppInterface = (List)localObject1;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("foreProcesses: ");
+          ((StringBuilder)localObject1).append(a(paramQQAppInterface));
+          QLog.d("OnlineModulePushReceiver", 2, new Object[] { "isAppBackground: called. ", ((StringBuilder)localObject1).toString() });
+        }
+        return paramQQAppInterface.isEmpty();
       }
-      paramQQAppInterface = (List)localObject1;
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineModulePushReceiver", 2, new Object[] { "isAppBackground: called. ", "foreProcesses: " + a(paramQQAppInterface) });
-      }
-      return paramQQAppInterface.isEmpty();
+      throw new TypeCastException("null cannot be cast to non-null type android.app.ActivityManager");
     }
     boolean bool = StoryMsgNotificationUtils.a(paramQQAppInterface);
-    if (QLog.isColorLevel()) {
-      QLog.d("OnlineModulePushReceiver", 2, new Object[] { "isAppBackground: kitkat called. ", "foreground: " + bool });
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("foreground: ");
+      paramQQAppInterface.append(bool);
+      QLog.d("OnlineModulePushReceiver", 2, new Object[] { "isAppBackground: kitkat called. ", paramQQAppInterface.toString() });
     }
-    return !bool;
+    return bool ^ true;
   }
   
   public static final boolean b(@NotNull QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = false;
     Intrinsics.checkParameterIsNotNull(paramQQAppInterface, "app");
     boolean bool3 = FriendsStatusUtil.a((Context)paramQQAppInterface.getApp());
-    if (paramQQAppInterface.getOnlineStatus() == AppRuntime.Status.dnd) {}
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("OnlineModulePushReceiver", 2, new Object[] { "needShieldPush: called. ", "canNotDisturb: " + bool3 + "  dndStatus: " + bool1 });
-      }
-      if ((bool3) || (bool1)) {
-        bool2 = true;
-      }
-      return bool2;
+    paramQQAppInterface = paramQQAppInterface.getRuntimeService(IOnlineStatusService.class);
+    Intrinsics.checkExpressionValueIsNotNull(paramQQAppInterface, "app.getRuntimeService(IO…tatusService::class.java)");
+    paramQQAppInterface = ((IOnlineStatusService)paramQQAppInterface).getOnlineStatus();
+    AppRuntime.Status localStatus = AppRuntime.Status.dnd;
+    boolean bool2 = true;
+    boolean bool1;
+    if (paramQQAppInterface == localStatus) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("canNotDisturb: ");
+      paramQQAppInterface.append(bool3);
+      paramQQAppInterface.append("  dndStatus: ");
+      paramQQAppInterface.append(bool1);
+      QLog.d("OnlineModulePushReceiver", 2, new Object[] { "needShieldPush: called. ", paramQQAppInterface.toString() });
+    }
+    if (!bool3)
+    {
+      if (bool1) {
+        return true;
+      }
+      bool2 = false;
+    }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.notification.modularize.OnlineModulePushReceiverKt
  * JD-Core Version:    0.7.0.1
  */

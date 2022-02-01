@@ -13,28 +13,33 @@ public class CompositionUtils
 {
   public static void removeTAVAspectEffect(TAVComposition paramTAVComposition)
   {
-    if (paramTAVComposition == null) {}
-    label23:
+    if (paramTAVComposition == null) {
+      return;
+    }
+    paramTAVComposition = paramTAVComposition.getVideoChannels();
+    if (CollectionUtil.isEmptyList(paramTAVComposition)) {
+      return;
+    }
+    paramTAVComposition = paramTAVComposition.iterator();
+    break label58;
+    label25:
     do
     {
-      return;
-      while (!paramTAVComposition.hasNext())
-      {
-        do
-        {
-          paramTAVComposition = paramTAVComposition.getVideoChannels();
-        } while (CollectionUtil.isEmptyList(paramTAVComposition));
-        paramTAVComposition = paramTAVComposition.iterator();
+      if (!paramTAVComposition.hasNext()) {
         break;
       }
       localObject1 = (List)paramTAVComposition.next();
     } while (CollectionUtil.isEmptyList((List)localObject1));
     Object localObject1 = ((List)localObject1).iterator();
-    while (((Iterator)localObject1).hasNext())
+    for (;;)
     {
+      label58:
+      if (!((Iterator)localObject1).hasNext()) {
+        break label25;
+      }
       Object localObject2 = (TAVClip)((Iterator)localObject1).next();
       if ((localObject2 == null) || (((TAVClip)localObject2).getVideoConfiguration() == null) || (((TAVClip)localObject2).getVideoConfiguration().getEffects() == null) || (((TAVClip)localObject2).getVideoConfiguration().getEffects().size() < 1)) {
-        break label23;
+        break;
       }
       localObject2 = ((TAVClip)localObject2).getVideoConfiguration().getEffects().iterator();
       while (((Iterator)localObject2).hasNext()) {
@@ -47,7 +52,7 @@ public class CompositionUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.util.CompositionUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -37,15 +37,12 @@ public class UpdateCollectionViewCountRequest
     try
     {
       localRspCollectionViewCount.mergeFrom(paramArrayOfByte);
-      return new UpdateCollectionViewCountResponse(this.b, localRspCollectionViewCount);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        SLog.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
-      }
+      SLog.d("Q.qqstory:UpdateCollectionViewCountRequest", paramArrayOfByte.toString());
     }
+    return new UpdateCollectionViewCountResponse(this.b, localRspCollectionViewCount);
   }
   
   public String a()
@@ -53,7 +50,7 @@ public class UpdateCollectionViewCountRequest
     return jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqCollectionViewCount localReqCollectionViewCount = new qqstory_service.ReqCollectionViewCount();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
@@ -67,12 +64,16 @@ public class UpdateCollectionViewCountRequest
   
   public String toString()
   {
-    return "UpdateCollectionViewCountRequest{mIdList=" + this.jdField_a_of_type_JavaUtilList + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UpdateCollectionViewCountRequest{mIdList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.UpdateCollectionViewCountRequest
  * JD-Core Version:    0.7.0.1
  */

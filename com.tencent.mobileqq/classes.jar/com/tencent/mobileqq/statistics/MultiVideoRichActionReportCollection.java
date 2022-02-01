@@ -5,40 +5,22 @@ import com.tencent.av.app.VideoAppInterface;
 
 public class MultiVideoRichActionReportCollection
 {
-  static int jdField_a_of_type_Int;
-  private static long jdField_a_of_type_Long;
-  static String jdField_a_of_type_JavaLangString;
-  static boolean jdField_a_of_type_Boolean;
-  public static int b;
-  private static long jdField_b_of_type_Long;
+  static int jdField_a_of_type_Int = 0;
+  private static long jdField_a_of_type_Long = 0L;
+  static String jdField_a_of_type_JavaLangString = "";
+  static boolean jdField_a_of_type_Boolean = false;
+  public static int b = 1;
+  private static long jdField_b_of_type_Long = 0L;
   private static String jdField_b_of_type_JavaLangString = "MultiVideoRichActionReportCollection";
-  public static int c;
-  private static long jdField_c_of_type_Long;
-  private static String jdField_c_of_type_JavaLangString;
-  public static int d;
-  private static long jdField_d_of_type_Long;
-  private static String jdField_d_of_type_JavaLangString;
+  public static int c = 2;
+  private static long jdField_c_of_type_Long = 0L;
+  private static String jdField_c_of_type_JavaLangString = "";
+  public static int d = 3;
+  private static long jdField_d_of_type_Long = 0L;
+  private static String jdField_d_of_type_JavaLangString = "";
   private static int jdField_e_of_type_Int = 0;
-  private static String jdField_e_of_type_JavaLangString;
-  private static String f;
-  
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_JavaLangString = "";
-    jdField_a_of_type_Int = 0;
-    jdField_b_of_type_Int = 1;
-    jdField_c_of_type_Int = 2;
-    jdField_d_of_type_Int = 3;
-    jdField_a_of_type_Long = 0L;
-    jdField_c_of_type_JavaLangString = "";
-    jdField_b_of_type_Long = 0L;
-    jdField_d_of_type_JavaLangString = "";
-    jdField_c_of_type_Long = 0L;
-    jdField_e_of_type_JavaLangString = "";
-    jdField_d_of_type_Long = 0L;
-    f = "";
-  }
+  private static String jdField_e_of_type_JavaLangString = "";
+  private static String f = "";
   
   public static void a(int paramInt, String paramString)
   {
@@ -47,25 +29,34 @@ public class MultiVideoRichActionReportCollection
     jdField_a_of_type_JavaLangString = paramString;
     jdField_a_of_type_Int = paramInt;
     jdField_a_of_type_JavaLangString = paramString;
-    if ((jdField_a_of_type_Int == 4) || (jdField_a_of_type_Int == 3)) {
+    paramInt = jdField_a_of_type_Int;
+    if ((paramInt != 4) && (paramInt != 3))
+    {
+      if ((paramInt == 2) || (paramInt == 1)) {
+        jdField_e_of_type_Int = jdField_c_of_type_Int;
+      }
+    }
+    else {
       jdField_e_of_type_Int = jdField_d_of_type_Int;
     }
-    while ((jdField_a_of_type_Int != 2) && (jdField_a_of_type_Int != 1)) {
-      return;
-    }
-    jdField_e_of_type_Int = jdField_c_of_type_Int;
   }
   
   public static void a(VideoAppInterface paramVideoAppInterface)
   {
-    int i = 0;
     if (paramVideoAppInterface != null) {
       i = paramVideoAppInterface.b("BEAUTY_SKIN");
+    } else {
+      i = 0;
     }
-    if (i > 0) {
-      d(i + "");
+    if (i > 0)
+    {
+      paramVideoAppInterface = new StringBuilder();
+      paramVideoAppInterface.append(i);
+      paramVideoAppInterface.append("");
+      c(paramVideoAppInterface.toString());
     }
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int)
+    int i = jdField_e_of_type_Int;
+    if (i == jdField_c_of_type_Int)
     {
       if (jdField_a_of_type_Long == 0L) {
         a("0X8007F32");
@@ -80,12 +71,8 @@ public class MultiVideoRichActionReportCollection
         a("0X8007E69");
       }
     }
-    do
+    else if (i == jdField_d_of_type_Int)
     {
-      do
-      {
-        return;
-      } while (jdField_e_of_type_Int != jdField_d_of_type_Int);
       if (jdField_a_of_type_Long == 0L) {
         a("0X8007F38");
       }
@@ -95,8 +82,10 @@ public class MultiVideoRichActionReportCollection
       if (jdField_c_of_type_Long == 0L) {
         a("0X8007F3C");
       }
-    } while (jdField_d_of_type_Long != 0L);
-    a("0X8007E65");
+      if (jdField_d_of_type_Long == 0L) {
+        a("0X8007E65");
+      }
+    }
   }
   
   public static void a(String paramString)
@@ -119,55 +108,31 @@ public class MultiVideoRichActionReportCollection
   
   public static void c(String paramString)
   {
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
-      a("0X8007F33", paramString);
+    int i = jdField_e_of_type_Int;
+    if (i == jdField_c_of_type_Int) {
+      a("0X8007F35", paramString);
+    } else if (i == jdField_d_of_type_Int) {
+      a("0X8007F3B", paramString);
     }
-    for (;;)
-    {
-      jdField_d_of_type_JavaLangString = paramString;
-      jdField_b_of_type_Long = System.currentTimeMillis();
-      return;
-      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
-        a("0X8007F39", paramString);
-      }
-    }
+    jdField_e_of_type_JavaLangString = paramString;
+    jdField_c_of_type_Long = System.currentTimeMillis();
   }
   
   public static void d(String paramString)
   {
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
-      a("0X8007F35", paramString);
-    }
-    for (;;)
-    {
-      jdField_e_of_type_JavaLangString = paramString;
-      jdField_c_of_type_Long = System.currentTimeMillis();
-      return;
-      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
-        a("0X8007F3B", paramString);
-      }
-    }
-  }
-  
-  public static void e(String paramString)
-  {
-    if (jdField_e_of_type_Int == jdField_c_of_type_Int) {
+    int i = jdField_e_of_type_Int;
+    if (i == jdField_c_of_type_Int) {
       a("0X8007E6A", paramString);
+    } else if (i == jdField_d_of_type_Int) {
+      a("0X8007E66", paramString);
     }
-    for (;;)
-    {
-      f = paramString;
-      jdField_d_of_type_Long = System.currentTimeMillis();
-      return;
-      if (jdField_e_of_type_Int == jdField_d_of_type_Int) {
-        a("0X8007E66", paramString);
-      }
-    }
+    f = paramString;
+    jdField_d_of_type_Long = System.currentTimeMillis();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.MultiVideoRichActionReportCollection
  * JD-Core Version:    0.7.0.1
  */

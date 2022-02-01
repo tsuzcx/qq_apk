@@ -38,61 +38,69 @@ public class FixedSizeBitmapView
   
   private void a()
   {
-    float f2 = 0.0F;
     int j = this.jdField_a_of_type_Int;
     int k = this.b;
-    if ((j <= 0) || (k <= 0)) {
-      return;
-    }
-    int m = getWidth() - getPaddingLeft() - getPaddingRight();
-    int n = getHeight() - getPaddingTop() - getPaddingBottom();
-    if (((j < 0) || (m == j)) && ((k < 0) || (n == k))) {}
-    for (int i = 1;; i = 0)
+    if (j > 0)
     {
+      if (k <= 0) {
+        return;
+      }
+      int m = getWidth() - getPaddingLeft() - getPaddingRight();
+      int n = getHeight() - getPaddingTop() - getPaddingBottom();
+      int i;
+      if (((j >= 0) && (m != j)) || ((k >= 0) && (n != k))) {
+        i = 0;
+      } else {
+        i = 1;
+      }
       this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
       if (i != 0) {
-        break;
-      }
-      if (ImageView.ScaleType.CENTER != this.jdField_a_of_type_AndroidWidgetImageView$ScaleType) {
-        break label152;
-      }
-      this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate((int)((m - j) * 0.5F + 0.5F), (int)((n - k) * 0.5F + 0.5F));
-      return;
-    }
-    label152:
-    float f3;
-    float f1;
-    if (ImageView.ScaleType.CENTER_CROP == this.jdField_a_of_type_AndroidWidgetImageView$ScaleType)
-    {
-      if (j * n > m * k)
-      {
-        f3 = n / k;
-        f2 = (m - j * f3) * 0.5F;
-      }
-      for (f1 = 0.0F;; f1 = (n - k * f3) * 0.5F)
-      {
-        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f3, f3);
-        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((int)(f2 + 0.5F), (int)(f1 + 0.5F));
         return;
-        f3 = m / j;
       }
-    }
-    if (ImageView.ScaleType.CENTER_INSIDE == this.jdField_a_of_type_AndroidWidgetImageView$ScaleType)
-    {
-      if ((j <= m) && (k <= n)) {}
-      for (f1 = 1.0F;; f1 = Math.min(m / j, n / k))
+      if (ImageView.ScaleType.CENTER == this.jdField_a_of_type_AndroidWidgetImageView$ScaleType)
       {
+        this.jdField_a_of_type_AndroidGraphicsMatrix.setTranslate((int)((m - j) * 0.5F + 0.5F), (int)((n - k) * 0.5F + 0.5F));
+        return;
+      }
+      float f3;
+      float f1;
+      float f2;
+      if (ImageView.ScaleType.CENTER_CROP == this.jdField_a_of_type_AndroidWidgetImageView$ScaleType)
+      {
+        f3 = 0.0F;
+        if (j * n > m * k)
+        {
+          f1 = n / k;
+          f3 = (m - j * f1) * 0.5F;
+          f2 = 0.0F;
+        }
+        else
+        {
+          f1 = m / j;
+          f2 = (n - k * f1) * 0.5F;
+        }
+        this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
+        this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate((int)(f3 + 0.5F), (int)(f2 + 0.5F));
+        return;
+      }
+      if (ImageView.ScaleType.CENTER_INSIDE == this.jdField_a_of_type_AndroidWidgetImageView$ScaleType)
+      {
+        if ((j <= m) && (k <= n)) {
+          f1 = 1.0F;
+        } else {
+          f1 = Math.min(m / j, n / k);
+        }
         f2 = (int)((m - j * f1) * 0.5F + 0.5F);
         f3 = (int)((n - k * f1) * 0.5F + 0.5F);
         this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(f1, f1);
         this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(f2, f3);
         return;
       }
+      this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(m / j, n / k);
     }
-    this.jdField_a_of_type_AndroidGraphicsMatrix.setScale(m / j, n / k);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
@@ -105,15 +113,16 @@ public class FixedSizeBitmapView
       a();
     }
     paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localDrawable != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, getWidth() - getPaddingLeft() - getPaddingRight(), getHeight() - getPaddingTop() - getPaddingBottom());
+      localDrawable.setBounds(0, 0, getWidth() - getPaddingLeft() - getPaddingRight(), getHeight() - getPaddingTop() - getPaddingBottom());
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
     paramCanvas.restoreToCount(i);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
   }
@@ -131,45 +140,45 @@ public class FixedSizeBitmapView
   {
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != paramBitmap)
     {
-      if (paramBitmap == null) {
-        break label63;
-      }
-      int i = paramBitmap.getWidth();
-      int j = paramBitmap.getHeight();
-      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-      if ((this.jdField_a_of_type_Int != i) || (this.b != j))
+      if (paramBitmap != null)
       {
-        this.jdField_a_of_type_Int = i;
-        this.b = j;
-        this.jdField_a_of_type_AndroidGraphicsMatrix = null;
+        int i = paramBitmap.getWidth();
+        int j = paramBitmap.getHeight();
+        this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+        if ((this.jdField_a_of_type_Int != i) || (this.b != j))
+        {
+          this.jdField_a_of_type_Int = i;
+          this.b = j;
+          this.jdField_a_of_type_AndroidGraphicsMatrix = null;
+        }
       }
-    }
-    for (;;)
-    {
+      else
+      {
+        this.b = -1;
+        this.jdField_a_of_type_Int = -1;
+      }
       invalidate();
-      return;
-      label63:
-      this.b = -1;
-      this.jdField_a_of_type_Int = -1;
     }
   }
   
   public void setScaleType(ImageView.ScaleType paramScaleType)
   {
-    if (paramScaleType == null) {
-      throw new NullPointerException();
-    }
-    if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType != paramScaleType)
+    if (paramScaleType != null)
     {
-      this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramScaleType;
-      this.jdField_a_of_type_AndroidGraphicsMatrix = null;
-      invalidate();
+      if (this.jdField_a_of_type_AndroidWidgetImageView$ScaleType != paramScaleType)
+      {
+        this.jdField_a_of_type_AndroidWidgetImageView$ScaleType = paramScaleType;
+        this.jdField_a_of_type_AndroidGraphicsMatrix = null;
+        invalidate();
+      }
+      return;
     }
+    throw new NullPointerException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.FixedSizeBitmapView
  * JD-Core Version:    0.7.0.1
  */

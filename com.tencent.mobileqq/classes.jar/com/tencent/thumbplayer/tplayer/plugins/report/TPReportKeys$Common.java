@@ -6,7 +6,6 @@ public final class TPReportKeys$Common
   public static final String COMMON_CDN_ID = "cdnid";
   public static final String COMMON_CDN_IP = "cdnip";
   public static final String COMMON_CDN_UIP = "cdnuip";
-  public static final String COMMON_CONFIG_ID = "confid";
   public static final String COMMON_DEVICE_NAME = "device";
   public static final String COMMON_DEVICE_RESOLUTION = "resolution";
   public static final String COMMON_DL_TYPE = "dltype";
@@ -28,6 +27,8 @@ public final class TPReportKeys$Common
   public static final String COMMON_PLAYER_VERSION = "playerver";
   public static final String COMMON_PLAY_NO = "playno";
   public static final String COMMON_PLAY_TYPE = "playtype";
+  public static final String COMMON_PROTO = "proto";
+  public static final String COMMON_PROTOVER = "protover";
   public static final String COMMON_QQ_OPEN_ID = "QQopenid";
   public static final String COMMON_SCENES_ID = "scenesid";
   public static final String COMMON_SEQ = "seq";
@@ -41,7 +42,7 @@ public final class TPReportKeys$Common
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.report.TPReportKeys.Common
  * JD-Core Version:    0.7.0.1
  */

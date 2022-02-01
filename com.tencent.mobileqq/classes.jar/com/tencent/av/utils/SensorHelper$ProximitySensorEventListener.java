@@ -26,159 +26,183 @@ class SensorHelper$ProximitySensorEventListener
   
   public void onSensorChanged(SensorEvent paramSensorEvent)
   {
-    if (paramSensorEvent.sensor.getType() != 8) {}
-    label81:
-    boolean bool1;
-    label119:
-    Object localObject;
-    label199:
-    do
+    if (paramSensorEvent.sensor.getType() != 8) {
+      return;
+    }
+    float f1 = this.jdField_b_of_type_Float;
+    paramSensorEvent = paramSensorEvent.values;
+    int k = 0;
+    float f2 = paramSensorEvent[0];
+    this.jdField_b_of_type_Float = f2;
+    if (this.jdField_a_of_type_Float > this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.b.getMaximumRange()) {
+      this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.b.getMaximumRange();
+    }
+    double d1 = f2;
+    int m = 1;
+    int i;
+    if ((d1 >= 0.0D) && (f2 < this.jdField_a_of_type_Float)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (this.jdField_a_of_type_Boolean)
     {
-      float f1;
-      float f2;
-      do
+      this.jdField_a_of_type_Boolean = false;
+      if (i != 0)
       {
-        do
+        paramSensorEvent = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper;
+        paramSensorEvent.jdField_a_of_type_Int = 3;
+        SensorHelper.a(paramSensorEvent, i ^ 0x1);
+        this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsSensorReport.d();
+      }
+    }
+    if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.b == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController == null) {
+      return;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController.a();
+    if (localObject == null) {
+      return;
+    }
+    long l = System.currentTimeMillis();
+    boolean bool = SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper);
+    SensorHelper.d(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper, i ^ 0x1);
+    if (SensorHelper.f(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper) != SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper))
+    {
+      if (3 == this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Int) {
+        this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsSensorReport.e();
+      }
+      this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Int = 0;
+    }
+    if ((l - this.jdField_a_of_type_Long > 1000L) || (bool != SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper)) || (this.jdField_b_of_type_Boolean != ((SessionInfo)localObject).E) || (this.c != this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean) || (this.d != SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper)))
+    {
+      if (QLog.isDevelopLevel())
+      {
+        paramSensorEvent = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onSensorChanged distance[");
+        localStringBuilder.append(f1);
+        localStringBuilder.append("->");
+        localStringBuilder.append(f2);
+        localStringBuilder.append("], mlongDistense[");
+        localStringBuilder.append(SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper));
+        localStringBuilder.append("], lastlongDistense[");
+        localStringBuilder.append(bool);
+        localStringBuilder.append("], mIsMoving[");
+        localStringBuilder.append(this.d);
+        localStringBuilder.append("->");
+        localStringBuilder.append(SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper));
+        localStringBuilder.append("], mSensorSet[");
+        localStringBuilder.append(this.c);
+        localStringBuilder.append("->");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean);
+        localStringBuilder.append("], isSpeakerOn[");
+        localStringBuilder.append(this.jdField_b_of_type_Boolean);
+        localStringBuilder.append("->");
+        localStringBuilder.append(((SessionInfo)localObject).E);
+        localStringBuilder.append("]");
+        QLog.d(paramSensorEvent, 4, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_Long = l;
+    }
+    this.jdField_b_of_type_Boolean = ((SessionInfo)localObject).E;
+    this.c = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean;
+    this.d = SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper);
+    int j;
+    if ((i != 0) && (SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper)))
+    {
+      paramSensorEvent = ((SessionInfo)localObject).a;
+      if ((((SessionInfo)localObject).E) && (paramSensorEvent != null))
+      {
+        i = 0;
+        while (i < paramSensorEvent.length)
         {
-          return;
-          f1 = this.jdField_b_of_type_Float;
-          f2 = paramSensorEvent.values[0];
-          this.jdField_b_of_type_Float = f2;
-          if (this.jdField_a_of_type_Float > this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.b.getMaximumRange()) {
-            this.jdField_a_of_type_Float = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.b.getMaximumRange();
+          j = k;
+          if (paramSensorEvent[i].equals("DEVICE_WIRED_HEADSET")) {
+            break label678;
           }
-          if ((f2 < 0.0D) || (f2 >= this.jdField_a_of_type_Float)) {
+          if (paramSensorEvent[i].equals("DEVICE_BLUETOOTH_HEADSET"))
+          {
+            j = k;
+            break label678;
+          }
+          i += 1;
+        }
+        j = 1;
+        label678:
+        if (!SmallScreenUtils.f(BaseApplicationImpl.getApplication()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString, 2, "is App on background , Not execute sensor pressHandFreeBtn !!!");
+          }
+          return;
+        }
+        if ((j != 0) && (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.c))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramSensorEvent = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("1.setSensors pressHandFreeBtn, current mSensorSet = ");
+            ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean);
+            QLog.d(paramSensorEvent, 2, ((StringBuilder)localObject).toString());
+          }
+          if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper != null) {
+            this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper.d();
+          }
+          paramSensorEvent = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper;
+          paramSensorEvent.jdField_a_of_type_Boolean = true;
+          DataReport.j(paramSensorEvent.jdField_a_of_type_ComTencentAvVideoController);
+        }
+      }
+    }
+    else if ((this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean) && (i == 0))
+    {
+      paramSensorEvent = null;
+      if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController != null) {
+        paramSensorEvent = ((SessionInfo)localObject).a;
+      }
+      if (paramSensorEvent != null)
+      {
+        i = 0;
+        for (;;)
+        {
+          j = m;
+          if (i >= paramSensorEvent.length) {
+            break label904;
+          }
+          if ((paramSensorEvent[i].equals("DEVICE_WIRED_HEADSET")) || (paramSensorEvent[i].equals("DEVICE_BLUETOOTH_HEADSET"))) {
             break;
           }
-          i = 1;
-          if (this.jdField_a_of_type_Boolean)
-          {
-            this.jdField_a_of_type_Boolean = false;
-            if (i != 0)
-            {
-              this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Int = 3;
-              paramSensorEvent = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper;
-              if (i != 0) {
-                break label615;
-              }
-              bool1 = true;
-              SensorHelper.a(paramSensorEvent, bool1);
-              this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsSensorReport.d();
-            }
-          }
-        } while ((this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.b == null) || (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController == null));
-        paramSensorEvent = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController.a();
-      } while (paramSensorEvent == null);
-      long l = System.currentTimeMillis();
-      boolean bool2 = SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper);
-      localObject = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper;
-      if (i != 0) {
-        break label621;
-      }
-      bool1 = true;
-      SensorHelper.d((SensorHelper)localObject, bool1);
-      if (SensorHelper.f(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper) != SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper))
-      {
-        if (3 == this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Int) {
-          this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsSensorReport.e();
-        }
-        this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Int = 0;
-      }
-      if ((l - this.jdField_a_of_type_Long > 1000L) || (bool2 != SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper)) || (this.jdField_b_of_type_Boolean != paramSensorEvent.P) || (this.c != this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean) || (this.d != SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper)))
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString, 4, "onSensorChanged distance[" + f1 + "->" + f2 + "], mlongDistense[" + SensorHelper.a(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper) + "], lastlongDistense[" + bool2 + "], mIsMoving[" + this.d + "->" + SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper) + "], mSensorSet[" + this.c + "->" + this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean + "], isSpeakerOn[" + this.jdField_b_of_type_Boolean + "->" + paramSensorEvent.P + "]");
-        }
-        this.jdField_a_of_type_Long = l;
-      }
-      this.jdField_b_of_type_Boolean = paramSensorEvent.P;
-      this.c = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean;
-      this.d = SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper);
-      if ((i == 0) || (!SensorHelper.b(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper))) {
-        break label732;
-      }
-      localObject = paramSensorEvent.a;
-    } while ((!paramSensorEvent.P) || (localObject == null));
-    int i = 0;
-    label543:
-    if (i < localObject.length) {
-      if ((!localObject[i].equals("DEVICE_WIREDHEADSET")) && (!localObject[i].equals("DEVICE_BLUETOOTHHEADSET"))) {}
-    }
-    for (i = 0;; i = 1)
-    {
-      if (!SmallScreenUtils.f(BaseApplicationImpl.getApplication()))
-      {
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString, 2, "is App on background , Not execute sensor pressHandFreeBtn !!!");
-        return;
-        i = 0;
-        break label81;
-        label615:
-        bool1 = false;
-        break label119;
-        label621:
-        bool1 = false;
-        break label199;
-        i += 1;
-        break label543;
-      }
-      if ((i == 0) || (!this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.c)) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString, 2, "1.setSensors pressHandFreeBtn, current mSensorSet = " + this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean);
-      }
-      if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper != null) {
-        this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper.d();
-      }
-      this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean = true;
-      DataReport.j(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController);
-      return;
-      label732:
-      if ((!this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean) || (i != 0)) {
-        break;
-      }
-      if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController != null) {}
-      for (paramSensorEvent = paramSensorEvent.a;; paramSensorEvent = null)
-      {
-        if (paramSensorEvent != null)
-        {
-          i = 0;
-          if (i >= paramSensorEvent.length) {
-            break label908;
-          }
-          if ((!paramSensorEvent[i].equals("DEVICE_WIREDHEADSET")) && (!paramSensorEvent[i].equals("DEVICE_BLUETOOTHHEADSET"))) {
-            break label899;
-          }
-        }
-        label899:
-        label908:
-        for (i = 0;; i = 1)
-        {
-          if ((i != 0) && (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.c))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString, 2, "2.setSensors pressHandFreeBtn, current mSensorSet = " + this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean);
-            }
-            if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper != null) {
-              this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper.d();
-            }
-            DataReport.j(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController);
-          }
-          this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean = false;
-          return;
           i += 1;
-          break;
+        }
+        j = 0;
+        label904:
+        if ((j != 0) && (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.c))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramSensorEvent = this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_JavaLangString;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("2.setSensors pressHandFreeBtn, current mSensorSet = ");
+            ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean);
+            QLog.d(paramSensorEvent, 2, ((StringBuilder)localObject).toString());
+          }
+          if (this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper != null) {
+            this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvUtilsTraeHelper.d();
+          }
+          DataReport.j(this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_ComTencentAvVideoController);
         }
       }
+      this.jdField_a_of_type_ComTencentAvUtilsSensorHelper.jdField_a_of_type_Boolean = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.SensorHelper.ProximitySensorEventListener
  * JD-Core Version:    0.7.0.1
  */

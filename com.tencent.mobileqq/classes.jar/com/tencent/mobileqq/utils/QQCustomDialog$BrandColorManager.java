@@ -12,18 +12,17 @@ class QQCustomDialog$BrandColorManager
   
   private void a()
   {
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_Int != 0))
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if ((localObject != null) && (this.jdField_a_of_type_Int != 0))
     {
-      Drawable localDrawable = this.jdField_a_of_type_AndroidViewView.getBackground().mutate();
-      if ((localDrawable instanceof GradientDrawable)) {
-        ((GradientDrawable)localDrawable).setColor(this.jdField_a_of_type_Int);
+      localObject = ((View)localObject).getBackground().mutate();
+      if ((localObject instanceof GradientDrawable))
+      {
+        ((GradientDrawable)localObject).setColor(this.jdField_a_of_type_Int);
+        return;
       }
+      QLog.w("BrandColorManager", 4, "set band border-color fail");
     }
-    else
-    {
-      return;
-    }
-    QLog.w("BrandColorManager", 4, "set band border-color fail");
   }
   
   void a(View paramView)
@@ -34,7 +33,7 @@ class QQCustomDialog$BrandColorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomDialog.BrandColorManager
  * JD-Core Version:    0.7.0.1
  */

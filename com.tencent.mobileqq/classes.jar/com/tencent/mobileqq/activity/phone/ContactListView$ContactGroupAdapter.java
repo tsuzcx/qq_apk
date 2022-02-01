@@ -16,27 +16,31 @@ class ContactListView$ContactGroupAdapter
   
   public int a()
   {
-    return 2131559667;
+    return 2131559545;
   }
   
   public void a(View paramView, int paramInt)
   {
-    if ((this.a.a == null) || (this.a.a.isEmpty()) || (paramInt < 0) || (paramInt >= this.a.a.size())) {}
-    PhoneContact localPhoneContact1;
-    do
+    if ((this.a.a != null) && (!this.a.a.isEmpty()) && (paramInt >= 0))
     {
-      return;
+      if (paramInt >= this.a.a.size()) {
+        return;
+      }
       PhoneContact localPhoneContact2 = (PhoneContact)this.a.a.get(paramInt);
-      localPhoneContact1 = localPhoneContact2;
+      PhoneContact localPhoneContact1 = localPhoneContact2;
       if (localPhoneContact2 == null)
       {
+        paramInt += 1;
         localPhoneContact1 = localPhoneContact2;
-        if (paramInt + 1 < this.a.a.size()) {
-          localPhoneContact1 = (PhoneContact)this.a.a.get(paramInt + 1);
+        if (paramInt < this.a.a.size()) {
+          localPhoneContact1 = (PhoneContact)this.a.a.get(paramInt);
         }
       }
-    } while (localPhoneContact1 == null);
-    ((TextView)paramView).setText(localPhoneContact1.pinyinFirst);
+      if (localPhoneContact1 == null) {
+        return;
+      }
+      ((TextView)paramView).setText(localPhoneContact1.pinyinFirst);
+    }
   }
   
   public boolean a(int paramInt)
@@ -64,11 +68,19 @@ class ContactListView$ContactGroupAdapter
   
   public int getItemViewType(int paramInt)
   {
-    if ((this.a.a == null) || (this.a.a.isEmpty())) {}
-    while (this.a.a.get(paramInt) == null) {
-      return 1;
+    ArrayList localArrayList = this.a.a;
+    int i = 1;
+    if (localArrayList != null)
+    {
+      if (this.a.a.isEmpty()) {
+        return 1;
+      }
+      if (this.a.a.get(paramInt) == null) {
+        return 1;
+      }
+      i = 0;
     }
-    return 0;
+    return i;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
@@ -82,10 +94,8 @@ class ContactListView$ContactGroupAdapter
       }
       a(localView, paramInt);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localView = paramView;
       if (paramView == null)
       {
@@ -95,6 +105,8 @@ class ContactListView$ContactGroupAdapter
       paramView = (PhoneContact)this.a.a.get(paramInt);
       this.a.a(localView, paramView, false);
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public int getViewTypeCount()
@@ -104,7 +116,7 @@ class ContactListView$ContactGroupAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.ContactListView.ContactGroupAdapter
  * JD-Core Version:    0.7.0.1
  */

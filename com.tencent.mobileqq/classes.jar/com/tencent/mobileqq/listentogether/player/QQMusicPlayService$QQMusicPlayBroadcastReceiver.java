@@ -15,24 +15,35 @@ class QQMusicPlayService$QQMusicPlayBroadcastReceiver
   {
     if (paramIntent != null)
     {
-      QLog.d("QQMusicPlay.QQMusicPlayService", 1, "QQMusicPlayBroadcastReceiver onReceive,action:" + paramIntent.getAction());
+      paramContext = new StringBuilder();
+      paramContext.append("QQMusicPlayBroadcastReceiver onReceive,action:");
+      paramContext.append(paramIntent.getAction());
+      QLog.d("QQMusicPlay.QQMusicPlayService", 1, paramContext.toString());
       paramContext = paramIntent.getAction();
-      if ((paramContext != null) && ((paramContext.equals("com.tencent.mobileqq.intent.logout")) || (paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) || (paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) || (paramContext.equals("mqq.intent.action.FORCE_LOGOUT")) || (paramContext.equals("mqq.intent.action.EXIT_" + BaseApplicationImpl.getApplication().getPackageName())) || (paramContext.equals("mqq.intent.action.LOGOUT")) || (paramContext.equals("QQMusicPlay_exit_action"))))
-      {
-        if (QQMusicPlayService.a(this.a) == null) {
-          break label150;
+      if (paramContext != null) {
+        if ((!paramContext.equals("com.tencent.mobileqq.intent.logout")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_CHANGED")) && (!paramContext.equals("mqq.intent.action.ACCOUNT_KICKED")) && (!paramContext.equals("mqq.intent.action.FORCE_LOGOUT")))
+        {
+          paramIntent = new StringBuilder();
+          paramIntent.append("mqq.intent.action.EXIT_");
+          paramIntent.append(BaseApplicationImpl.getApplication().getPackageName());
+          if ((!paramContext.equals(paramIntent.toString())) && (!paramContext.equals("mqq.intent.action.LOGOUT")) && (!paramContext.equals("QQMusicPlay_exit_action"))) {}
         }
-        QQMusicPlayService.a(this.a).sendEmptyMessage(11);
+        else
+        {
+          if (QQMusicPlayService.a(this.a) != null)
+          {
+            QQMusicPlayService.a(this.a).sendEmptyMessage(11);
+            return;
+          }
+          this.a.stopSelf();
+        }
       }
     }
-    return;
-    label150:
-    this.a.stopSelf();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayService.QQMusicPlayBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

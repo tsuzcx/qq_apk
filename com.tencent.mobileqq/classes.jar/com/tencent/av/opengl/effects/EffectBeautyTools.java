@@ -7,8 +7,7 @@ import android.text.TextUtils;
 import com.tencent.av.AVLog;
 import com.tencent.av.AVNetEngine;
 import com.tencent.av.AVPathUtil;
-import com.tencent.av.business.manager.EffectConfigBase;
-import com.tencent.av.opengl.config.BeautyConfigParser;
+import com.tencent.av.utils.QAVConfigUtils;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
@@ -19,100 +18,80 @@ import org.json.JSONObject;
 
 public class EffectBeautyTools
 {
-  private static float jdField_a_of_type_Float = -1.0F;
-  private static int jdField_a_of_type_Int;
-  private static final String jdField_a_of_type_JavaLangString = AVPathUtil.i() + "SKINCOLOR" + File.separator;
+  private static final String a;
   
   static
   {
-    jdField_a_of_type_Int = 0;
-  }
-  
-  public static float a()
-  {
-    if (jdField_a_of_type_Float != -1.0F) {
-      return jdField_a_of_type_Float;
-    }
-    for (;;)
-    {
-      try
-      {
-        BeautyConfigParser localBeautyConfigParser = BeautyConfigParser.a();
-        if (localBeautyConfigParser == null) {
-          continue;
-        }
-        jdField_a_of_type_Float = localBeautyConfigParser.a();
-        AVLog.printColorLog("EffectBeautyTools", "mBeautyRatio:" + jdField_a_of_type_Float);
-      }
-      catch (Exception localException)
-      {
-        AVLog.printColorLog("EffectBeautyTools", "getNewBeautyRatio Exception:" + localException);
-        jdField_a_of_type_Float = 1.0F;
-        continue;
-      }
-      return jdField_a_of_type_Float;
-      jdField_a_of_type_Float = 1.0F;
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AVPathUtil.l());
+    localStringBuilder.append("SKINCOLOR");
+    localStringBuilder.append(File.separator);
+    a = localStringBuilder.toString();
   }
   
   private static EffectBeautyTools.SkinColorFilterDesc a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString))
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject2 = null;
+    Object localObject1 = null;
+    if (bool)
     {
       AVLog.printColorLog("EffectBeautyTools", "parseConfig|content is empty.");
       return null;
     }
-    for (;;)
+    try
     {
+      JSONObject localJSONObject = new JSONObject(paramString).getJSONObject("skinColorFilter");
       try
       {
-        localJSONObject = new JSONObject(paramString).getJSONObject("skinColorFilter");
-      }
-      catch (JSONException localJSONException3)
-      {
-        JSONObject localJSONObject;
-        int i;
-        String str1;
-        String str2;
-        localSkinColorFilterDesc = null;
-        continue;
-      }
-      try
-      {
-        i = Integer.valueOf(localJSONObject.getString("filterid")).intValue();
-        str1 = localJSONObject.getString("resurl");
-        str2 = localJSONObject.getString("md5");
-        localSkinColorFilterDesc = new EffectBeautyTools.SkinColorFilterDesc(i, str1, str2);
+        int i = Integer.valueOf(localJSONObject.getString("filterid")).intValue();
+        String str1 = localJSONObject.getString("resurl");
+        String str2 = localJSONObject.getString("md5");
+        localObject2 = new EffectBeautyTools.SkinColorFilterDesc(i, str1, str2);
         try
         {
-          AVLog.printColorLog("EffectBeautyTools", "parseConfig:" + i + "|" + str1 + "|" + str2);
-          return localSkinColorFilterDesc;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("parseConfig:");
+          ((StringBuilder)localObject1).append(i);
+          ((StringBuilder)localObject1).append("|");
+          ((StringBuilder)localObject1).append(str1);
+          ((StringBuilder)localObject1).append("|");
+          ((StringBuilder)localObject1).append(str2);
+          AVLog.printColorLog("EffectBeautyTools", ((StringBuilder)localObject1).toString());
+          return localObject2;
         }
-        catch (JSONException localJSONException1) {}
+        catch (JSONException localJSONException2)
+        {
+          localObject1 = localObject2;
+        }
+        localObject2 = localObject1;
       }
-      catch (JSONException localJSONException4)
-      {
-        localSkinColorFilterDesc = null;
-        continue;
-      }
-      try
-      {
-        localJSONException1.printStackTrace();
-        AVLog.printColorLog("EffectBeautyTools", "parseConfig failed. info = " + localJSONObject);
-        return localSkinColorFilterDesc;
-      }
-      catch (JSONException localJSONException2)
-      {
-        localJSONException2.printStackTrace();
-        AVLog.printColorLog("EffectBeautyTools", "parseConfig|parse failed.context = " + paramString);
-        return localSkinColorFilterDesc;
-      }
+      catch (JSONException localJSONException3) {}
+      localJSONException3.printStackTrace();
+      localObject2 = localObject1;
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localObject2 = localObject1;
+      localStringBuilder2.append("parseConfig failed. info = ");
+      localObject2 = localObject1;
+      localStringBuilder2.append(localJSONObject);
+      localObject2 = localObject1;
+      AVLog.printColorLog("EffectBeautyTools", localStringBuilder2.toString());
+      return localObject1;
     }
+    catch (JSONException localJSONException1)
+    {
+      localJSONException1.printStackTrace();
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("parseConfig|parse failed.context = ");
+      localStringBuilder1.append(paramString);
+      AVLog.printColorLog("EffectBeautyTools", localStringBuilder1.toString());
+    }
+    return localObject2;
   }
   
   private static void a()
   {
-    SharedPreferences.Editor localEditor = EffectConfigBase.a(180, EffectConfigBase.c).edit();
+    SharedPreferences.Editor localEditor = QAVConfigUtils.a(180, QAVConfigUtils.b).edit();
     localEditor.putInt("qav_effect_beauty_config_first_launch", 1);
     localEditor.commit();
   }
@@ -121,25 +100,34 @@ public class EffectBeautyTools
   {
     try
     {
-      if (b())
+      if (a())
       {
         a();
-        if (new File(jdField_a_of_type_JavaLangString).exists()) {
-          FileUtils.a(jdField_a_of_type_JavaLangString);
+        if (new File(a).exists()) {
+          FileUtils.deleteDirectory(a);
         }
       }
-      paramContext = a(EffectConfigBase.b(180, EffectConfigBase.c));
-      if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.jdField_a_of_type_JavaLangString)))
+      paramContext = a(QAVConfigUtils.a(180, QAVConfigUtils.b));
+      if ((paramContext != null) && (!TextUtils.isEmpty(paramContext.a)))
       {
-        Object localObject = new File(jdField_a_of_type_JavaLangString + "params.json");
-        AVLog.printColorLog("EffectBeautyTools", "preDownloadResource :" + ((File)localObject).exists());
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(a);
+        ((StringBuilder)localObject).append("params.json");
+        localObject = new File(((StringBuilder)localObject).toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("preDownloadResource :");
+        localStringBuilder.append(((File)localObject).exists());
+        AVLog.printColorLog("EffectBeautyTools", localStringBuilder.toString());
         if (!((File)localObject).exists())
         {
           localObject = new HttpNetReq();
           ((HttpNetReq)localObject).mCallback = new EffectBeautyTools.MyHttpListener();
-          ((HttpNetReq)localObject).mReqUrl = paramContext.jdField_a_of_type_JavaLangString;
+          ((HttpNetReq)localObject).mReqUrl = paramContext.a;
           ((HttpNetReq)localObject).mHttpMethod = 0;
-          ((HttpNetReq)localObject).mOutPath = (AVPathUtil.i() + "skin_color.zip");
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(AVPathUtil.l());
+          localStringBuilder.append("skin_color.zip");
+          ((HttpNetReq)localObject).mOutPath = localStringBuilder.toString();
           ((HttpNetReq)localObject).setUserData(paramContext);
           AVNetEngine.a().sendReq((NetReq)localObject);
         }
@@ -151,8 +139,8 @@ public class EffectBeautyTools
   
   public static void a(Context paramContext, String paramString, int paramInt, boolean paramBoolean)
   {
-    a(paramContext, paramString, EffectConfigBase.b(180, EffectConfigBase.c));
-    EffectConfigBase.a(180, EffectConfigBase.c, paramInt, paramString);
+    a(paramContext, paramString, QAVConfigUtils.a(180, QAVConfigUtils.b));
+    QAVConfigUtils.a(180, QAVConfigUtils.b, paramInt, paramString);
     if (paramBoolean) {
       a(paramContext);
     }
@@ -160,75 +148,45 @@ public class EffectBeautyTools
   
   private static void a(Context paramContext, String paramString1, String paramString2)
   {
+    boolean bool = TextUtils.isEmpty(paramString1);
     Object localObject = null;
-    if (!TextUtils.isEmpty(paramString1)) {}
-    for (paramContext = a(paramString1);; paramContext = null)
+    if (!bool) {
+      paramContext = a(paramString1);
+    } else {
+      paramContext = null;
+    }
+    paramString1 = localObject;
+    if (!TextUtils.isEmpty(paramString2)) {
+      paramString1 = a(paramString2);
+    }
+    if (paramContext == null)
     {
-      paramString1 = localObject;
-      if (!TextUtils.isEmpty(paramString2)) {
-        paramString1 = a(paramString2);
-      }
-      if (paramContext == null) {
-        FileUtils.a(jdField_a_of_type_JavaLangString);
-      }
-      while ((paramString1 == null) || (paramContext.b.equals(paramString1.b))) {
-        return;
-      }
-      FileUtils.a(jdField_a_of_type_JavaLangString);
+      FileUtils.deleteDirectory(a);
       return;
     }
-  }
-  
-  public static boolean a()
-  {
-    if (jdField_a_of_type_Int != 0) {
-      return jdField_a_of_type_Int == 2;
-    }
-    for (;;)
-    {
-      try
-      {
-        BeautyConfigParser localBeautyConfigParser = BeautyConfigParser.a();
-        if ((localBeautyConfigParser == null) || (!localBeautyConfigParser.a()) || (!c())) {
-          continue;
-        }
-        jdField_a_of_type_Int = 2;
-        AVLog.printColorLog("EffectBeautyTools", "mIsSupportFlag:" + jdField_a_of_type_Int);
-      }
-      catch (Exception localException)
-      {
-        AVLog.printColorLog("EffectBeautyTools", "isSupportNewBeauty Exception:" + localException);
-        jdField_a_of_type_Int = 1;
-        continue;
-      }
-      if (jdField_a_of_type_Int == 2) {
-        break;
-      }
-      return false;
-      jdField_a_of_type_Int = 1;
+    if ((paramString1 != null) && (!paramContext.b.equals(paramString1.b))) {
+      FileUtils.deleteDirectory(a);
     }
   }
   
-  private static boolean b()
+  private static boolean a()
   {
+    Object localObject = QAVConfigUtils.a(180, QAVConfigUtils.b);
     boolean bool = false;
-    int i = EffectConfigBase.a(180, EffectConfigBase.c).getInt("qav_effect_beauty_config_first_launch", 0);
-    AVLog.printColorLog("EffectBeautyTools", "getIsFirstLauncher:" + i);
+    int i = ((SharedPreferences)localObject).getInt("qav_effect_beauty_config_first_launch", 0);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getIsFirstLauncher:");
+    ((StringBuilder)localObject).append(i);
+    AVLog.printColorLog("EffectBeautyTools", ((StringBuilder)localObject).toString());
     if (i == 0) {
       bool = true;
     }
     return bool;
   }
-  
-  private static boolean c()
-  {
-    int i = EffectConfigBase.c(180, EffectConfigBase.c);
-    return (new File(jdField_a_of_type_JavaLangString + "params.json").exists()) && (i != 0);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.EffectBeautyTools
  * JD-Core Version:    0.7.0.1
  */

@@ -18,37 +18,29 @@ class NowVideoController$3
       return;
     }
     int i = this.a;
-    label16:
-    Object localObject;
-    if (i <= this.b)
+    while (i <= this.b)
     {
-      localObject = NowVideoController.a(this.this$0).getChildAt(i - this.a);
-      if (localObject != null) {
-        break label52;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label16;
-      break;
-      label52:
-      localObject = (PAVideoView)((View)localObject).findViewById(2131378571);
-      if ((localObject != null) && (((PAVideoView)localObject).jdField_j_of_type_Int == 4))
+      Object localObject = NowVideoController.a(this.this$0).getChildAt(i - this.a);
+      if (localObject != null)
       {
-        ((PAVideoView)localObject).getGlobalVisibleRect(NowVideoController.a());
-        if ((((PAVideoView)localObject).getHeight() == NowVideoController.a().height()) && (NetworkUtil.h(((PAVideoView)localObject).getContext())) && (EcShopAssistantManager.a) && (NowVideoController.a().top > 0) && (!((PAVideoView)localObject).jdField_j_of_type_Boolean)) {
-          ((PAVideoView)localObject).f();
-        } else {
-          ((PAVideoView)localObject).e();
+        localObject = (PAVideoView)((View)localObject).findViewById(2131377982);
+        if ((localObject != null) && (((PAVideoView)localObject).jdField_j_of_type_Int == 4))
+        {
+          ((PAVideoView)localObject).getGlobalVisibleRect(NowVideoController.a());
+          if ((((PAVideoView)localObject).getHeight() == NowVideoController.a().height()) && (NetworkUtil.isWifiConnected(((PAVideoView)localObject).getContext())) && (EcShopAssistantManager.a) && (NowVideoController.a().top > 0) && (!((PAVideoView)localObject).jdField_j_of_type_Boolean)) {
+            ((PAVideoView)localObject).f();
+          } else {
+            ((PAVideoView)localObject).e();
+          }
         }
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.now.NowVideoController.3
  * JD-Core Version:    0.7.0.1
  */

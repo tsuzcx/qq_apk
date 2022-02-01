@@ -10,14 +10,20 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class topic_info$TopicModuleFeedsCookie
   extends MessageMicro<TopicModuleFeedsCookie>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 120 }, new String[] { "info", "source", "live_rowkeys" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0) }, TopicModuleFeedsCookie.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatMessageField<topic_info.SyncCookie> info = PBField.initRepeatMessage(topic_info.SyncCookie.class);
   public final PBRepeatField<Integer> live_rowkeys = PBField.initRepeat(PBUInt32Field.__repeatHelper__);
   public final PBUInt32Field source = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 120 }, new String[] { "info", "source", "live_rowkeys" }, new Object[] { null, localInteger, localInteger }, TopicModuleFeedsCookie.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.kandian.ugc.topic_info.TopicModuleFeedsCookie
  * JD-Core Version:    0.7.0.1
  */

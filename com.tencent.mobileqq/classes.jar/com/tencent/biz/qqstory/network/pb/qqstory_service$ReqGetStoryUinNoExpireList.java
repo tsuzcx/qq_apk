@@ -18,13 +18,14 @@ public final class qqstory_service$ReqGetStoryUinNoExpireList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "start_cookie", "count", "req_type", "req_list_type" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ReqGetStoryUinNoExpireList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32 }, new String[] { "start_cookie", "count", "req_type", "req_list_type" }, new Object[] { localByteStringMicro, localInteger, localInteger, localInteger }, ReqGetStoryUinNoExpireList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqGetStoryUinNoExpireList
  * JD-Core Version:    0.7.0.1
  */

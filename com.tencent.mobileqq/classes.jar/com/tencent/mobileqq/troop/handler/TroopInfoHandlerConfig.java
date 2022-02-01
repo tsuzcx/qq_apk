@@ -14,63 +14,53 @@ public class TroopInfoHandlerConfig
   
   public static TroopInfoHandlerConfig a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopInfoHandlerConfig", 2, "content : " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("content : ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("TroopInfoHandlerConfig", 2, ((StringBuilder)localObject).toString());
     }
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    ArrayList localArrayList;
-    TroopInfoHandlerConfig localTroopInfoHandlerConfig;
-    for (;;)
+    Object localObject = new ArrayList();
+    try
     {
-      return paramString;
-      localArrayList = new ArrayList();
-      try
+      paramString = new JSONObject(paramString).getJSONArray("FieldsFor88d");
+      if ((paramString != null) && (paramString.length() > 0))
       {
-        paramString = new JSONObject(paramString).getJSONArray("FieldsFor88d");
-        if ((paramString != null) && (paramString.length() > 0))
+        int i = 0;
+        while (i < paramString.length())
         {
-          int i = 0;
-          while (i < paramString.length())
-          {
-            localArrayList.add(paramString.getString(i));
-            i += 1;
-          }
+          ((List)localObject).add(paramString.getString(i));
+          i += 1;
         }
-        if (!QLog.isColorLevel()) {}
       }
-      catch (JSONException paramString)
+      StringBuilder localStringBuilder;
+      return paramString;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
+      paramString = new TroopInfoHandlerConfig();
+      paramString.a = ((List)localObject);
+      if (QLog.isColorLevel())
       {
-        paramString.printStackTrace();
-        localTroopInfoHandlerConfig = new TroopInfoHandlerConfig();
-        localTroopInfoHandlerConfig.a = localArrayList;
-        paramString = localTroopInfoHandlerConfig;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("tempGrayList.size : ");
+        localStringBuilder.append(((List)localObject).size());
+        QLog.d("TroopInfoHandlerConfig", 2, localStringBuilder.toString());
       }
     }
-    QLog.d("TroopInfoHandlerConfig", 2, "tempGrayList.size : " + localArrayList.size());
-    return localTroopInfoHandlerConfig;
   }
   
   public boolean a(String paramString)
   {
-    boolean bool = true;
-    if ((TextUtils.isEmpty(paramString)) || (this.a == null)) {
-      if (QLog.isColorLevel())
-      {
-        paramString = new StringBuilder().append("isInFieldsList is null ? ");
-        if (this.a != null) {
-          break label58;
-        }
-        QLog.d("TroopInfoHandlerConfig", 2, bool);
-      }
-    }
-    for (;;)
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = true;
+    if ((!bool2) && (this.a != null))
     {
-      return false;
-      label58:
-      bool = false;
-      break;
       int i = 0;
       while (i < this.a.size())
       {
@@ -79,12 +69,24 @@ public class TroopInfoHandlerConfig
         }
         i += 1;
       }
+      return false;
     }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("isInFieldsList is null ? ");
+      if (this.a != null) {
+        bool1 = false;
+      }
+      paramString.append(bool1);
+      QLog.d("TroopInfoHandlerConfig", 2, paramString.toString());
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.handler.TroopInfoHandlerConfig
  * JD-Core Version:    0.7.0.1
  */

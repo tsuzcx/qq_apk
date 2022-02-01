@@ -48,23 +48,27 @@ public final class mobile_visit_hb_callback_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.hb_type, 1);
-    if (this.hb_id != null) {
-      paramJceOutputStream.write(this.hb_id, 2);
+    Object localObject = this.hb_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.comment != null) {
-      paramJceOutputStream.write(this.comment, 3);
+    localObject = this.comment;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.client_key != null) {
-      paramJceOutputStream.write(this.client_key, 4);
+    localObject = this.client_key;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.trans_info != null) {
-      paramJceOutputStream.write(this.trans_info, 5);
+    localObject = this.trans_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_visit_hb_callback_req
  * JD-Core Version:    0.7.0.1
  */

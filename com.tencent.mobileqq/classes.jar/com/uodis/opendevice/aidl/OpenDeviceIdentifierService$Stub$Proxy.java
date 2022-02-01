@@ -34,13 +34,14 @@ class OpenDeviceIdentifierService$Stub$Proxy
   
   public boolean a()
   {
-    boolean bool = false;
     Parcel localParcel1 = Parcel.obtain();
     Parcel localParcel2 = Parcel.obtain();
     try
     {
       localParcel1.writeInterfaceToken("com.uodis.opendevice.aidl.OpenDeviceIdentifierService");
-      this.a.transact(2, localParcel1, localParcel2, 0);
+      IBinder localIBinder = this.a;
+      boolean bool = false;
+      localIBinder.transact(2, localParcel1, localParcel2, 0);
       localParcel2.readException();
       int i = localParcel2.readInt();
       if (i != 0) {
@@ -62,7 +63,7 @@ class OpenDeviceIdentifierService$Stub$Proxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.uodis.opendevice.aidl.OpenDeviceIdentifierService.Stub.Proxy
  * JD-Core Version:    0.7.0.1
  */

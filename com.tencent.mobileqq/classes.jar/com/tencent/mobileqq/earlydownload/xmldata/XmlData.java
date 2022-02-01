@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.earlydownload.xmldata;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.earlydownload.EarlyDataFactory;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager;
+import com.tencent.mobileqq.earlydownload.api.IEarlyDownloadService;
 import com.tencent.mobileqq.earlydownload.handler.EarlyHandler;
 import com.tencent.mobileqq.persistence.Entity;
 import java.lang.reflect.Field;
@@ -56,13 +55,13 @@ public abstract class XmlData
   public long tStart;
   public long totalSize;
   
-  public static String packageNameOf(QQAppInterface paramQQAppInterface, String paramString)
+  public static String packageNameOf(AppInterface paramAppInterface, String paramString)
   {
-    paramQQAppInterface = ((EarlyDownloadManager)paramQQAppInterface.getManager(QQManagerFactory.EARLY_DOWNLOAD_MANAGER)).a(paramString);
-    if ((paramQQAppInterface == null) || (paramQQAppInterface.a() == null)) {
-      return "(null)";
+    paramAppInterface = ((IEarlyDownloadService)paramAppInterface.getRuntimeService(IEarlyDownloadService.class, "")).getEarlyHandler(paramString);
+    if ((paramAppInterface != null) && (paramAppInterface.a() != null)) {
+      return paramAppInterface.a().strPkgName;
     }
-    return paramQQAppInterface.a().strPkgName;
+    return "(null)";
   }
   
   public abstract String getSharedPreferencesName();
@@ -72,81 +71,89 @@ public abstract class XmlData
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    for (Class localClass = getClass(); localClass != Entity.class; localClass = localClass.getSuperclass())
+    Class localClass = getClass();
+    for (;;)
     {
-      Field[] arrayOfField = localClass.getDeclaredFields();
-      int j = arrayOfField.length;
-      int i = 0;
-      if (i < j)
+      int i;
+      label32:
+      Object localObject;
+      String str;
+      if (localClass != Entity.class)
       {
-        Object localObject = arrayOfField[i];
-        if (Modifier.isStatic(((Field)localObject).getModifiers())) {}
-        for (;;)
+        Field[] arrayOfField = localClass.getDeclaredFields();
+        int j = arrayOfField.length;
+        i = 0;
+        if (i < j)
         {
-          i += 1;
-          break;
-          if (((Field)localObject).isAnnotationPresent(saveInSP.class))
+          localObject = arrayOfField[i];
+          if ((!Modifier.isStatic(((Field)localObject).getModifiers())) && (((Field)localObject).isAnnotationPresent(saveInSP.class)))
           {
             if (!((Field)localObject).isAccessible()) {
               ((Field)localObject).setAccessible(true);
             }
-            String str = ((Field)localObject).getName();
-            try
-            {
-              localObject = ((Field)localObject).get(this);
-              localStringBuilder.append(',');
-              localStringBuilder.append(str);
-              localStringBuilder.append('=');
-              localStringBuilder.append(localObject);
-            }
-            catch (Exception localException) {}
+            str = ((Field)localObject).getName();
           }
         }
       }
+      try
+      {
+        localObject = ((Field)localObject).get(this);
+        localStringBuilder.append(',');
+        localStringBuilder.append(str);
+        localStringBuilder.append('=');
+        localStringBuilder.append(localObject);
+        label128:
+        i += 1;
+        break label32;
+        localClass = localClass.getSuperclass();
+        continue;
+        return localStringBuilder.toString();
+      }
+      catch (Exception localException)
+      {
+        break label128;
+      }
     }
-    return localStringBuilder.toString();
   }
   
   public void updateServerInfo(XmlData paramXmlData)
   {
-    if (paramXmlData == null) {}
-    Field[] arrayOfField;
-    do
-    {
+    if (paramXmlData == null) {
       return;
-      arrayOfField = EarlyDataFactory.a(paramXmlData.getClass());
-    } while ((arrayOfField == null) || (arrayOfField.length == 0));
-    int j = arrayOfField.length;
-    int i = 0;
-    while (i < j)
+    }
+    Field[] arrayOfField = EarlyDataFactory.a(paramXmlData.getClass());
+    if (arrayOfField != null)
     {
-      Field localField = arrayOfField[i];
-      if ((localField.isAnnotationPresent(saveInSP.class)) && (((saveInSP)localField.getAnnotation(saveInSP.class)).a())) {}
-      try
+      if (arrayOfField.length == 0) {
+        return;
+      }
+      int j = arrayOfField.length;
+      int i = 0;
+      while (i < j)
       {
-        localField.set(this, localField.get(paramXmlData));
+        Field localField = arrayOfField[i];
+        if ((localField.isAnnotationPresent(saveInSP.class)) && (((saveInSP)localField.getAnnotation(saveInSP.class)).a())) {
+          try
+          {
+            localField.set(this, localField.get(paramXmlData));
+          }
+          catch (IllegalAccessException localIllegalAccessException)
+          {
+            localIllegalAccessException.printStackTrace();
+          }
+          catch (IllegalArgumentException localIllegalArgumentException)
+          {
+            localIllegalArgumentException.printStackTrace();
+          }
+        }
         i += 1;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        for (;;)
-        {
-          localIllegalArgumentException.printStackTrace();
-        }
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        for (;;)
-        {
-          localIllegalAccessException.printStackTrace();
-        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.xmldata.XmlData
  * JD-Core Version:    0.7.0.1
  */

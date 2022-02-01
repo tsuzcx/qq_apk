@@ -19,8 +19,13 @@ class UniformDownloadActivity$10
       paramString1 = UniformDownloadActivity.a(this.a);
       UniformDownloadActivity.a(this.a, paramString1);
       paramString1 = UniformDownloadActivity.a(this.a, paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "tmastUrl=" + paramString1);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = UniformDownloadActivity.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("tmastUrl=");
+        localStringBuilder.append(paramString1);
+        QLog.d(paramString2, 2, localStringBuilder.toString());
       }
       UniformDownloadActivity.a(this.a, paramString1);
       this.a.finish();
@@ -30,8 +35,13 @@ class UniformDownloadActivity$10
   
   public void onDownloadCancel(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadCancel " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      String str = UniformDownloadActivity.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadCancel ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
     {
@@ -42,8 +52,13 @@ class UniformDownloadActivity$10
   
   public void onDownloadError(DownloadInfo paramDownloadInfo, int paramInt1, String paramString, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadError " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      paramString = UniformDownloadActivity.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadError ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d(paramString, 2, localStringBuilder.toString());
     }
     if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898")))
     {
@@ -54,8 +69,13 @@ class UniformDownloadActivity$10
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadFinish " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      String str = UniformDownloadActivity.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadFinish ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     ReportController.b(null, "dc00898", "", "", "0X8008F88", "0X8008F88", 1, 0, "", "", "", "");
     this.a.runOnUiThread(new UniformDownloadActivity.10.4(this));
@@ -63,8 +83,13 @@ class UniformDownloadActivity$10
   
   public void onDownloadPause(DownloadInfo paramDownloadInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(UniformDownloadActivity.a, 2, "onDownloadPause " + paramDownloadInfo.e);
+    if (QLog.isColorLevel())
+    {
+      String str = UniformDownloadActivity.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadPause ");
+      localStringBuilder.append(paramDownloadInfo.e);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if ((paramDownloadInfo != null) && (paramDownloadInfo.c.equals("1101070898"))) {
       this.a.runOnUiThread(new UniformDownloadActivity.10.3(this));
@@ -77,8 +102,13 @@ class UniformDownloadActivity$10
     while (paramList.hasNext())
     {
       DownloadInfo localDownloadInfo = (DownloadInfo)paramList.next();
-      if (QLog.isColorLevel()) {
-        QLog.d(UniformDownloadActivity.a, 2, "onDownloadUpdate " + localDownloadInfo.e);
+      if (QLog.isColorLevel())
+      {
+        String str = UniformDownloadActivity.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onDownloadUpdate ");
+        localStringBuilder.append(localDownloadInfo.e);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
       if ((localDownloadInfo != null) && (localDownloadInfo.c.equals("1101070898"))) {
         this.a.runOnUiThread(new UniformDownloadActivity.10.2(this, localDownloadInfo));
@@ -97,7 +127,7 @@ class UniformDownloadActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.UniformDownloadActivity.10
  * JD-Core Version:    0.7.0.1
  */

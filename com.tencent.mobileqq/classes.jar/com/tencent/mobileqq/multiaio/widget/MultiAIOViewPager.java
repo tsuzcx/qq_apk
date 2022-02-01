@@ -44,19 +44,18 @@ public class MultiAIOViewPager
   private boolean g()
   {
     int i = 0;
-    if (i < getChildCount())
+    while (i < getChildCount())
     {
       View localView = getChildAt(i);
       Object localObject = localView.getTag();
-      if ((localObject == null) || (!(localObject instanceof Integer))) {}
-      int j;
-      do
+      if ((localObject != null) && ((localObject instanceof Integer)))
       {
-        i += 1;
-        break;
-        j = ((Integer)localObject).intValue();
-      } while ((localView.getScaleX() != 1.0F) || (j == a()));
-      return false;
+        int j = ((Integer)localObject).intValue();
+        if ((localView.getScaleX() == 1.0F) && (j != a())) {
+          return false;
+        }
+      }
+      i += 1;
     }
     return true;
   }
@@ -70,19 +69,35 @@ public class MultiAIOViewPager
   public void b(float paramFloat)
   {
     this.c = ((int)(this.jdField_a_of_type_Int * paramFloat));
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOViewPager", 2, "updateMaxVelocity() called with: mMaximumVelocity = [" + this.c + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updateMaxVelocity() called with: mMaximumVelocity = [");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("]");
+      QLog.d("MultiAIOViewPager", 2, localStringBuilder.toString());
     }
   }
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
     boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOViewPager", 2, "dispatchTouchEvent() called with: ev = [" + paramMotionEvent + "], handled " + bool);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("dispatchTouchEvent() called with: ev = [");
+      ((StringBuilder)localObject).append(paramMotionEvent);
+      ((StringBuilder)localObject).append("], handled ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.d("MultiAIOViewPager", 2, ((StringBuilder)localObject).toString());
     }
-    if ((bool) && (this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer.b(this, paramMotionEvent);
+    if (bool)
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetTouchEventConsumer;
+      if (localObject != null) {
+        ((TouchEventConsumer)localObject).b(this, paramMotionEvent);
+      }
     }
     return bool;
   }
@@ -90,40 +105,47 @@ public class MultiAIOViewPager
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.b();
+    paramCanvas = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+    if (paramCanvas != null) {
+      paramCanvas.b();
     }
   }
   
-  public boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
+  protected boolean drawChild(Canvas paramCanvas, View paramView, long paramLong)
   {
     return super.drawChild(paramCanvas, paramView, paramLong);
   }
   
   public void g()
   {
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a();
+    FPSCalculator localFPSCalculator = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+    if (localFPSCalculator != null) {
+      localFPSCalculator.a();
     }
   }
   
-  public int getChildDrawingOrder(int paramInt1, int paramInt2)
+  protected int getChildDrawingOrder(int paramInt1, int paramInt2)
   {
-    int i;
     try
     {
-      i = super.getChildDrawingOrder(paramInt1, paramInt2);
-      if ((i < 0) || (i >= paramInt1)) {
-        throw new IndexOutOfBoundsException("childCount = " + paramInt1 + ", childDrawingOrder = " + i + ", try fix it");
+      int i = super.getChildDrawingOrder(paramInt1, paramInt2);
+      if ((i >= 0) && (i < paramInt1)) {
+        return i;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("childCount = ");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", childDrawingOrder = ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", try fix it");
+      throw new IndexOutOfBoundsException(localStringBuilder.toString());
     }
     catch (Exception localException)
     {
       QLog.e("MultiAIOViewPager", 1, "getChildDrawingOrder: ", localException);
       super.d();
-      return paramInt2;
     }
-    return i;
+    return paramInt2;
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
@@ -131,8 +153,14 @@ public class MultiAIOViewPager
     try
     {
       boolean bool = super.onInterceptTouchEvent(paramMotionEvent);
-      if (QLog.isColorLevel()) {
-        QLog.d("MultiAIOViewPager", 2, "onInterceptTouchEvent() called with: ev = [" + paramMotionEvent + "], handled = " + bool);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onInterceptTouchEvent() called with: ev = [");
+        ((StringBuilder)localObject).append(paramMotionEvent);
+        ((StringBuilder)localObject).append("], handled = ");
+        ((StringBuilder)localObject).append(bool);
+        QLog.d("MultiAIOViewPager", 2, ((StringBuilder)localObject).toString());
       }
       if (this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager$IdleListener != null) {
         this.jdField_a_of_type_ComTencentMobileqqMultiaioWidgetMultiAIOViewPager$IdleListener.a(bool);
@@ -141,58 +169,52 @@ public class MultiAIOViewPager
     }
     catch (IllegalArgumentException localIllegalArgumentException)
     {
+      Object localObject;
       paramMotionEvent = getContext();
-      if (!(paramMotionEvent instanceof Activity)) {
-        break label152;
-      }
-    }
-    Activity localActivity = (Activity)paramMotionEvent;
-    paramMotionEvent = "onInterceptTouchEvent: Dispatching touch event activity.isFinish = " + localActivity.isFinishing();
-    if (Build.VERSION.SDK_INT >= 17) {
-      paramMotionEvent = paramMotionEvent + ", isDestroyed = " + localActivity.isDestroyed();
-    }
-    for (;;)
-    {
-      QLog.e("MultiAIOViewPager", 1, paramMotionEvent, localIllegalArgumentException);
-      label152:
-      return true;
-    }
-  }
-  
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
-  {
-    boolean bool2 = true;
-    int i = getChildCount();
-    boolean bool1 = e();
-    Object localObject = a();
-    if ((localObject instanceof MultiAIOPagerAdapter))
-    {
-      localObject = (MultiAIOPagerAdapter)localObject;
-      boolean bool3 = ((MultiAIOPagerAdapter)localObject).a();
-      ((MultiAIOPagerAdapter)localObject).a(false);
-      if (bool3) {
-        bool1 = true;
-      }
-    }
-    for (;;)
-    {
-      super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      if (this.d != i) {
-        bool1 = true;
-      }
-      if (!g()) {}
-      for (paramBoolean = bool2;; paramBoolean = bool1)
+      if ((paramMotionEvent instanceof Activity))
       {
-        if (paramBoolean) {
-          super.a(getScrollX());
+        Activity localActivity = (Activity)paramMotionEvent;
+        paramMotionEvent = new StringBuilder();
+        paramMotionEvent.append("onInterceptTouchEvent: Dispatching touch event activity.isFinish = ");
+        paramMotionEvent.append(localActivity.isFinishing());
+        localObject = paramMotionEvent.toString();
+        paramMotionEvent = (MotionEvent)localObject;
+        if (Build.VERSION.SDK_INT >= 17)
+        {
+          paramMotionEvent = new StringBuilder();
+          paramMotionEvent.append((String)localObject);
+          paramMotionEvent.append(", isDestroyed = ");
+          paramMotionEvent.append(localActivity.isDestroyed());
+          paramMotionEvent = paramMotionEvent.toString();
         }
-        this.d = i;
-        return;
+        QLog.e("MultiAIOViewPager", 1, paramMotionEvent, localIllegalArgumentException);
       }
     }
+    return true;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  {
+    int i = getChildCount();
+    boolean bool2 = e();
+    a();
+    super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
+    paramInt1 = this.d;
+    boolean bool1 = true;
+    paramBoolean = bool2;
+    if (paramInt1 != i) {
+      paramBoolean = true;
+    }
+    if (!g()) {
+      paramBoolean = bool1;
+    }
+    if (paramBoolean) {
+      super.a(getScrollX());
+    }
+    this.d = i;
+  }
+  
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -201,8 +223,14 @@ public class MultiAIOViewPager
   {
     this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
     boolean bool = super.onTouchEvent(paramMotionEvent);
-    if (QLog.isColorLevel()) {
-      QLog.d("MultiAIOViewPager", 2, "onTouchEvent() called with: ev = [" + paramMotionEvent + "], handled " + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onTouchEvent() called with: ev = [");
+      localStringBuilder.append(paramMotionEvent);
+      localStringBuilder.append("], handled ");
+      localStringBuilder.append(bool);
+      QLog.d("MultiAIOViewPager", 2, localStringBuilder.toString());
     }
     return bool;
   }
@@ -237,7 +265,7 @@ public class MultiAIOViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOViewPager
  * JD-Core Version:    0.7.0.1
  */

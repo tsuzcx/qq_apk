@@ -13,16 +13,20 @@ import androidx.annotation.RequiresApi;
 import com.tencent.av.opengl.ui.GLRootView;
 import com.tencent.av.ui.funchat.record.QavRecordDpc;
 import com.tencent.av.ui.funchat.record.QavVideoAudioRecorder;
+import com.tencent.avgame.config.data.AvGameConfBean.RecordParam;
 import com.tencent.avgame.gamelogic.GameEngine;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.GameRecordInfo;
 import com.tencent.avgame.gameroom.stage.IStagePresenter;
 import com.tencent.avgame.gameroom.video.AVGameVideoLayer;
-import com.tencent.avgame.util.AVGameUtils;
-import com.tencent.avgame.util.AvGameConfBean.RecordParam;
+import com.tencent.avgame.qav.videorecord.GameImageData;
+import com.tencent.avgame.qav.videorecord.GameVideoDarkCoverFilter;
+import com.tencent.avgame.qav.videorecord.GameVideoImageFilter;
+import com.tencent.avgame.qav.videorecord.SimpleGameRoomStatusListener;
+import com.tencent.avgame.util.AVGameUtil;
 import com.tencent.avgame.util.RecordUtils;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.richmedia.mediacodec.encoder.EncodeConfig;
+import com.tencent.mobileqq.videocodec.mediacodec.encoder.EncodeConfig;
 import com.tencent.qav.log.AVLog;
 import java.io.File;
 import java.nio.Buffer;
@@ -40,21 +44,21 @@ public class GuessVideoGameRecordCtrl
   private QavVideoAudioRecorder jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = null;
   private IStagePresenter jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
   private AVGameVideoLayer jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer;
-  private volatile GameImageData jdField_a_of_type_ComTencentAvgameVideorecordGameImageData;
-  private GameVideoDarkCoverFilter jdField_a_of_type_ComTencentAvgameVideorecordGameVideoDarkCoverFilter;
-  private GameVideoImageFilter jdField_a_of_type_ComTencentAvgameVideorecordGameVideoImageFilter;
-  private SimpleGameRoomStatusListener jdField_a_of_type_ComTencentAvgameVideorecordSimpleGameRoomStatusListener = new GuessVideoGameRecordCtrl.1(this);
+  private volatile GameImageData jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData;
+  private GameVideoDarkCoverFilter jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoDarkCoverFilter;
+  private GameVideoImageFilter jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter;
+  private SimpleGameRoomStatusListener jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener = new GuessVideoGameRecordCtrl.1(this);
   private Object jdField_a_of_type_JavaLangObject = new Object();
   private volatile int jdField_b_of_type_Int;
   private volatile long jdField_b_of_type_Long;
-  private volatile GameImageData jdField_b_of_type_ComTencentAvgameVideorecordGameImageData;
-  private GameVideoImageFilter jdField_b_of_type_ComTencentAvgameVideorecordGameVideoImageFilter;
+  private volatile GameImageData jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData;
+  private GameVideoImageFilter jdField_b_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter;
   private Object jdField_b_of_type_JavaLangObject = new Object();
   private volatile String jdField_b_of_type_JavaLangString = null;
   private volatile boolean jdField_b_of_type_Boolean = false;
   private volatile int jdField_c_of_type_Int;
   private long jdField_c_of_type_Long = 10000L;
-  private GameVideoImageFilter jdField_c_of_type_ComTencentAvgameVideorecordGameVideoImageFilter;
+  private GameVideoImageFilter jdField_c_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter;
   private volatile String jdField_c_of_type_JavaLangString = null;
   private volatile boolean jdField_c_of_type_Boolean = false;
   private volatile int jdField_d_of_type_Int;
@@ -71,18 +75,19 @@ public class GuessVideoGameRecordCtrl
   {
     super(paramContext);
     this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer = paramAVGameVideoLayer;
-    this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoImageFilter = new GameVideoImageFilter();
-    this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoDarkCoverFilter = new GameVideoDarkCoverFilter();
-    this.jdField_b_of_type_ComTencentAvgameVideorecordGameVideoImageFilter = new GameVideoImageFilter();
-    this.jdField_c_of_type_ComTencentAvgameVideorecordGameVideoImageFilter = new GameVideoImageFilter();
+    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter = new GameVideoImageFilter();
+    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoDarkCoverFilter = new GameVideoDarkCoverFilter();
+    this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter = new GameVideoImageFilter();
+    this.jdField_c_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter = new GameVideoImageFilter();
     this.jdField_a_of_type_AndroidOsHandler = new Handler(this);
     paramContext = RecordUtils.c();
     if (paramContext != null)
     {
       this.jdField_c_of_type_Long = (paramContext.jdField_b_of_type_Int * 1000);
       this.jdField_d_of_type_Long = (paramContext.jdField_c_of_type_Int * 1000);
-      if (this.jdField_c_of_type_Long > 1000L) {
-        this.jdField_c_of_type_Long -= 1000L;
+      long l = this.jdField_c_of_type_Long;
+      if (l > 1000L) {
+        this.jdField_c_of_type_Long = (l - 1000L);
       }
     }
   }
@@ -100,7 +105,7 @@ public class GuessVideoGameRecordCtrl
   
   private void q()
   {
-    GameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameVideorecordSimpleGameRoomStatusListener);
+    GameEngine.a().b(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
     this.f = false;
     this.jdField_a_of_type_Long = 0L;
@@ -114,8 +119,9 @@ public class GuessVideoGameRecordCtrl
       k();
     }
     q();
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder != null) {
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.b();
+    QavVideoAudioRecorder localQavVideoAudioRecorder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
+    if (localQavVideoAudioRecorder != null) {
+      localQavVideoAudioRecorder.b();
     }
     this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer = null;
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter = null;
@@ -128,51 +134,59 @@ public class GuessVideoGameRecordCtrl
   
   public void a(int paramInt1, int paramInt2, float[] paramArrayOfFloat1, float[] paramArrayOfFloat2, long paramLong)
   {
-    int k = 1;
-    int j;
-    if ((d()) && (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder != null))
+    if (d())
     {
-      boolean bool = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a();
-      if (!bool) {
-        AVLog.c(this.jdField_a_of_type_JavaLangString, "videoFrameAvailable check audio not ready");
+      QavVideoAudioRecorder localQavVideoAudioRecorder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
+      if (localQavVideoAudioRecorder != null)
+      {
+        boolean bool = localQavVideoAudioRecorder.a();
+        if (!bool) {
+          AVLog.c(this.jdField_a_of_type_JavaLangString, "videoFrameAvailable check audio not ready");
+        }
+        int j;
+        if ((!this.f) && (!bool)) {
+          j = 0;
+        } else {
+          j = 1;
+        }
+        if (j == 0)
+        {
+          if (this.jdField_a_of_type_Long <= 0L) {
+            this.jdField_a_of_type_Long = System.currentTimeMillis();
+          }
+          if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 1000L)
+          {
+            this.f = true;
+            AVLog.c(this.jdField_a_of_type_JavaLangString, "videoFrameAvailable check timeout");
+            j = 1;
+          }
+          else
+          {
+            AVLog.c(this.jdField_a_of_type_JavaLangString, "videoFrameAvailable checking");
+          }
+        }
+        else
+        {
+          this.f = true;
+        }
+        if (j != 0) {
+          this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
+        }
       }
-      if ((!this.f) && (!bool)) {
-        break label129;
-      }
-      j = 1;
-      if (j != 0) {
-        break label147;
-      }
-      if (this.jdField_a_of_type_Long <= 0L) {
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-      }
-      if (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 1000L) {
-        break label135;
-      }
-      this.f = true;
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "videoFrameAvailable check timeout");
-      j = k;
-    }
-    for (;;)
-    {
-      if (j != 0) {
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a(paramInt1, paramInt2, paramArrayOfFloat1, paramArrayOfFloat2, paramLong);
-      }
-      return;
-      label129:
-      j = 0;
-      break;
-      label135:
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "videoFrameAvailable checking");
-      continue;
-      label147:
-      this.f = true;
     }
   }
   
   public void a(int paramInt, Throwable paramThrowable)
   {
-    AVLog.a(this.jdField_a_of_type_JavaLangString, "onEncodeError " + this.jdField_b_of_type_JavaLangString + " " + paramInt + " " + paramThrowable);
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEncodeError ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(paramThrowable);
+    AVLog.a(str, localStringBuilder.toString());
     this.i = true;
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
     this.jdField_a_of_type_AndroidOsHandler.postDelayed(new GuessVideoGameRecordCtrl.3(this), 50L);
@@ -180,39 +194,44 @@ public class GuessVideoGameRecordCtrl
   
   public void a(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    localObject = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("setDrawGameTopicTextureData ");
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDrawGameTopicTextureData ");
     boolean bool;
-    if (paramBitmap != null)
-    {
+    if (paramBitmap != null) {
       bool = true;
-      AVLog.c((String)localObject, bool + " w:" + paramInt1 + " h:" + paramInt2 + " l:" + paramInt3 + " t:" + paramInt4);
-      localObject = this.jdField_a_of_type_JavaLangObject;
-      if (paramBitmap == null) {
-        break label177;
-      }
-    }
-    for (;;)
-    {
-      label177:
-      try
-      {
-        if (this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData == null) {
-          this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData = new GameImageData();
-        }
-        this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-        this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData.jdField_a_of_type_Int = paramInt1;
-        this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData.jdField_b_of_type_Int = paramInt2;
-        this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData.jdField_c_of_type_Int = paramInt3;
-        this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData.jdField_d_of_type_Int = paramInt4;
-        this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.a(paramBitmap, paramInt1, paramInt2, paramInt3, paramInt4);
-        return;
-      }
-      finally {}
+    } else {
       bool = false;
-      break;
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData = null;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append(" w:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" h:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" l:");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(" t:");
+    localStringBuilder.append(paramInt4);
+    AVLog.c((String)localObject, localStringBuilder.toString());
+    localObject = this.jdField_a_of_type_JavaLangObject;
+    if (paramBitmap != null) {}
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData == null) {
+        this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData = new GameImageData();
+      }
+      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_a_of_type_Int = paramInt1;
+      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_b_of_type_Int = paramInt2;
+      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_c_of_type_Int = paramInt3;
+      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_d_of_type_Int = paramInt4;
+      break label197;
+      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData = null;
+      label197:
+      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.a(paramBitmap, paramInt1, paramInt2, paramInt3, paramInt4);
+      return;
+    }
+    finally {}
   }
   
   public void a(View paramView)
@@ -229,7 +248,11 @@ public class GuessVideoGameRecordCtrl
     if (k())
     {
       paramBoolean = d();
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "onAnswerViewShow " + paramBoolean);
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAnswerViewShow ");
+      localStringBuilder.append(paramBoolean);
+      AVLog.c(str, localStringBuilder.toString());
       if ((paramBoolean) && (paramView != null))
       {
         if (!paramView.isDrawingCacheEnabled()) {
@@ -248,65 +271,84 @@ public class GuessVideoGameRecordCtrl
   
   public void a(String paramString)
   {
-    boolean bool1 = false;
-    AVLog.c(this.jdField_a_of_type_JavaLangString, "onEncodeFinish " + this.jdField_b_of_type_JavaLangString + " " + this.jdField_c_of_type_JavaLangString);
-    if (this.i) {
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEncodeFinish ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(" ");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    AVLog.c((String)localObject, localStringBuilder.toString());
+    if (this.i)
+    {
+      boolean bool1 = false;
       this.i = false;
-    }
-    try
-    {
-      boolean bool2 = new File(paramString).delete();
-      bool1 = bool2;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
+      try
+      {
+        boolean bool2 = new File(paramString).delete();
+        bool1 = bool2;
+      }
+      catch (Exception paramString)
       {
         AVLog.a(this.jdField_a_of_type_JavaLangString, "onEncodeFinish", paramString);
       }
+      this.jdField_b_of_type_JavaLangString = null;
+      paramString = this.jdField_a_of_type_JavaLangString;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onEncodeFinish delete=");
+      ((StringBuilder)localObject).append(bool1);
+      AVLog.c(paramString, ((StringBuilder)localObject).toString());
     }
-    this.jdField_b_of_type_JavaLangString = null;
-    AVLog.c(this.jdField_a_of_type_JavaLangString, "onEncodeFinish delete=" + bool1);
     GameEngine.a().a().a(this.jdField_b_of_type_JavaLangString, this.jdField_c_of_type_JavaLangString, this.jdField_b_of_type_Long);
   }
   
   public void a(boolean paramBoolean)
   {
     this.h = paramBoolean;
-    AVLog.c(this.jdField_a_of_type_JavaLangString, "enableDrawDefaultBg " + paramBoolean);
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enableDrawDefaultBg ");
+    localStringBuilder.append(paramBoolean);
+    AVLog.c((String)localObject, localStringBuilder.toString());
     if (paramBoolean)
     {
       if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = AVGameUtils.a("avgame_actfallback@2x.png");
+        this.jdField_a_of_type_AndroidGraphicsBitmap = AVGameUtil.a("avgame_actfallback@2x.png");
       }
-      this.jdField_c_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, 0, 0);
-      if ((this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer != null) && (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a() != null)) {
+      this.jdField_c_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, 0, 0);
+      localObject = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer;
+      if ((localObject != null) && (((AVGameVideoLayer)localObject).a() != null)) {
         this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a().requestRender();
       }
-      return;
     }
-    this.jdField_c_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.a(null, 0, 0, 0, 0);
+    else
+    {
+      this.jdField_c_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.a(null, 0, 0, 0, 0);
+    }
   }
   
   public void a(boolean paramBoolean, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
     this.g = paramBoolean;
-    this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoDarkCoverFilter.a(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
+    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoDarkCoverFilter.a(paramFloat1, paramFloat2, paramFloat3, paramFloat4);
   }
   
   public void a(byte[] paramArrayOfByte)
   {
-    if ((d()) && (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder != null) && (paramArrayOfByte != null)) {
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a(paramArrayOfByte, SystemClock.elapsedRealtimeNanos() / 1000L);
+    if (d())
+    {
+      QavVideoAudioRecorder localQavVideoAudioRecorder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
+      if ((localQavVideoAudioRecorder != null) && (paramArrayOfByte != null)) {
+        localQavVideoAudioRecorder.a(paramArrayOfByte, SystemClock.elapsedRealtimeNanos() / 1000L);
+      }
     }
   }
   
   public int[] a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.a(paramInt1, paramInt2);
-    this.jdField_b_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.a(paramInt1, paramInt2);
-    this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoDarkCoverFilter.a(paramInt1, paramInt2);
-    this.jdField_c_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.a(paramInt1, paramInt2);
+    this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.a(paramInt1, paramInt2);
+    this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoDarkCoverFilter.a(paramInt1, paramInt2);
+    this.jdField_c_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.a(paramInt1, paramInt2);
     this.jdField_d_of_type_Int = paramInt1;
     this.jdField_e_of_type_Int = paramInt2;
     this.jdField_c_of_type_JavaLangString = c();
@@ -319,97 +361,123 @@ public class GuessVideoGameRecordCtrl
       this.jdField_d_of_type_Boolean = true;
       return new int[] { 0, 0 };
     }
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder == null) {}
-    int j;
-    try
-    {
-      if (a()) {
-        this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = new QavVideoAudioRecorder();
-      }
-      if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder == null)
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder == null) {
+      try
       {
-        this.jdField_a_of_type_Boolean = false;
-        this.jdField_d_of_type_Boolean = true;
-        return new int[] { 0, 0 };
+        if (a()) {
+          this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = new QavVideoAudioRecorder();
+        }
       }
-    }
-    catch (OutOfMemoryError localOutOfMemoryError)
-    {
-      for (;;)
+      catch (OutOfMemoryError localOutOfMemoryError)
       {
         this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder = null;
-        AVLog.a(this.jdField_a_of_type_JavaLangString, "oom " + localOutOfMemoryError);
-      }
-      this.jdField_b_of_type_JavaLangString = b();
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "doNeedStartRecord path=" + this.jdField_b_of_type_JavaLangString + ", w=" + paramInt1 + ", h=" + paramInt2 + ", rh=" + paramInt2);
-      j = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.f;
-      if (paramInt1 <= j) {
-        break label460;
+        localObject2 = this.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("oom ");
+        localStringBuilder.append(localOutOfMemoryError);
+        AVLog.a((String)localObject2, localStringBuilder.toString());
       }
     }
-    paramInt2 = (int)(1.0F * j / paramInt1 * paramInt2);
-    AVLog.c(this.jdField_a_of_type_JavaLangString, "doNeedStartRecord calc size, maxWidth=" + j + ", realWidth=" + j + ", realHeight=" + paramInt2);
-    paramInt1 = j;
-    label460:
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder == null)
     {
-      if (paramInt2 % 2 == 1) {
-        paramInt2 += 1;
-      }
-      for (;;)
-      {
-        AVLog.c(this.jdField_a_of_type_JavaLangString, "doNeedStartRecord rW=" + paramInt1 + ", rH=" + paramInt2);
-        this.jdField_b_of_type_Int = paramInt1;
-        this.jdField_c_of_type_Int = paramInt2;
-        EncodeConfig localEncodeConfig = new EncodeConfig(this.jdField_b_of_type_JavaLangString, paramInt1, paramInt2, 5120000, 1, false, 0);
-        localEncodeConfig.a(EGL14.eglGetCurrentContext());
-        if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder != null) {
-          this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a(localEncodeConfig, this);
-        }
-        for (;;)
-        {
-          return new int[] { paramInt1, paramInt2 };
-          a(5, null);
-        }
-      }
+      this.jdField_a_of_type_Boolean = false;
+      this.jdField_d_of_type_Boolean = true;
+      return new int[] { 0, 0 };
     }
+    this.jdField_b_of_type_JavaLangString = b();
+    Object localObject1 = this.jdField_a_of_type_JavaLangString;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("doNeedStartRecord path=");
+    ((StringBuilder)localObject2).append(this.jdField_b_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append(", w=");
+    ((StringBuilder)localObject2).append(paramInt1);
+    ((StringBuilder)localObject2).append(", h=");
+    ((StringBuilder)localObject2).append(paramInt2);
+    ((StringBuilder)localObject2).append(", rh=");
+    ((StringBuilder)localObject2).append(paramInt2);
+    AVLog.c((String)localObject1, ((StringBuilder)localObject2).toString());
+    int m = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavRecordDpc.f;
+    int k = paramInt1;
+    int j = paramInt2;
+    if (paramInt1 > m)
+    {
+      float f1 = m * 1.0F / paramInt1;
+      j = (int)(paramInt2 * f1);
+      localObject1 = this.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("doNeedStartRecord calc size, maxWidth=");
+      ((StringBuilder)localObject2).append(m);
+      ((StringBuilder)localObject2).append(", realWidth=");
+      ((StringBuilder)localObject2).append(m);
+      ((StringBuilder)localObject2).append(", realHeight=");
+      ((StringBuilder)localObject2).append(j);
+      AVLog.c((String)localObject1, ((StringBuilder)localObject2).toString());
+      k = m;
+    }
+    paramInt1 = j;
+    if (j % 2 == 1) {
+      paramInt1 = j + 1;
+    }
+    localObject1 = this.jdField_a_of_type_JavaLangString;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("doNeedStartRecord rW=");
+    ((StringBuilder)localObject2).append(k);
+    ((StringBuilder)localObject2).append(", rH=");
+    ((StringBuilder)localObject2).append(paramInt1);
+    AVLog.c((String)localObject1, ((StringBuilder)localObject2).toString());
+    this.jdField_b_of_type_Int = k;
+    this.jdField_c_of_type_Int = paramInt1;
+    localObject1 = new EncodeConfig(this.jdField_b_of_type_JavaLangString, k, paramInt1, 5120000, 1, false, 0);
+    ((EncodeConfig)localObject1).a(EGL14.eglGetCurrentContext());
+    localObject2 = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
+    if (localObject2 != null) {
+      ((QavVideoAudioRecorder)localObject2).a((EncodeConfig)localObject1, this);
+    } else {
+      a(5, null);
+    }
+    return new int[] { k, paramInt1 };
   }
   
   public void b(Bitmap paramBitmap, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    localObject = this.jdField_a_of_type_JavaLangString;
-    StringBuilder localStringBuilder = new StringBuilder().append("setDrawGameAnswerTextureData ");
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setDrawGameAnswerTextureData ");
     boolean bool;
-    if (paramBitmap != null)
-    {
+    if (paramBitmap != null) {
       bool = true;
-      AVLog.c((String)localObject, bool + " w:" + paramInt1 + " h:" + paramInt2 + " l:" + paramInt3 + " t:" + paramInt4);
-      localObject = this.jdField_b_of_type_JavaLangObject;
-      if (paramBitmap == null) {
-        break label178;
-      }
-    }
-    for (;;)
-    {
-      label178:
-      try
-      {
-        if (this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData == null) {
-          this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData = new GameImageData();
-        }
-        this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-        this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData.jdField_a_of_type_Int = paramInt1;
-        this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData.jdField_b_of_type_Int = paramInt2;
-        this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData.jdField_c_of_type_Int = paramInt3;
-        this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData.jdField_d_of_type_Int = paramInt4;
-        this.jdField_b_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.a(paramBitmap, paramInt1, paramInt2, paramInt3, paramInt4);
-        return;
-      }
-      finally {}
+    } else {
       bool = false;
-      break;
-      this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData = null;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append(" w:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" h:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(" l:");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(" t:");
+    localStringBuilder.append(paramInt4);
+    AVLog.c((String)localObject, localStringBuilder.toString());
+    localObject = this.jdField_b_of_type_JavaLangObject;
+    if (paramBitmap != null) {}
+    try
+    {
+      if (this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData == null) {
+        this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData = new GameImageData();
+      }
+      this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_b_of_type_Int = paramInt2;
+      this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_c_of_type_Int = paramInt3;
+      this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_d_of_type_Int = paramInt4;
+      break label198;
+      this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData = null;
+      label198:
+      this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.a(paramBitmap, paramInt1, paramInt2, paramInt3, paramInt4);
+      return;
+    }
+    finally {}
   }
   
   public void b(View paramView)
@@ -417,7 +485,11 @@ public class GuessVideoGameRecordCtrl
     if (k())
     {
       boolean bool = d();
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "onTopicViewSwitch " + bool);
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onTopicViewSwitch ");
+      localStringBuilder.append(bool);
+      AVLog.c(str, localStringBuilder.toString());
       if (paramView != null)
       {
         if (!paramView.isDrawingCacheEnabled()) {
@@ -430,7 +502,11 @@ public class GuessVideoGameRecordCtrl
   
   public void b(String paramString)
   {
-    AVLog.c(this.jdField_a_of_type_JavaLangString, "onPushVideoFirstFrame " + paramString);
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPushVideoFirstFrame ");
+    localStringBuilder.append(paramString);
+    AVLog.c(str, localStringBuilder.toString());
     this.jdField_e_of_type_Boolean = false;
     if (d()) {
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
@@ -442,32 +518,42 @@ public class GuessVideoGameRecordCtrl
     AVLog.c(this.jdField_a_of_type_JavaLangString, "onActivityStart ");
     if ((k()) && (l()))
     {
-      GameRecordInfo localGameRecordInfo = GameEngine.a().a().a();
+      Object localObject1 = GameEngine.a().a().a();
       boolean bool2 = false;
       boolean bool1 = bool2;
-      if (localGameRecordInfo != null)
+      if (localObject1 != null)
       {
         bool1 = bool2;
-        if (localGameRecordInfo.startGameTimeMills > 0L)
+        if (((GameRecordInfo)localObject1).startGameTimeMills > 0L)
         {
-          this.jdField_b_of_type_Long = localGameRecordInfo.startGameTimeMills;
-          this.jdField_b_of_type_JavaLangString = localGameRecordInfo.videoFilePath;
-          this.jdField_c_of_type_JavaLangString = localGameRecordInfo.photoFilePath;
+          this.jdField_b_of_type_Long = ((GameRecordInfo)localObject1).startGameTimeMills;
+          this.jdField_b_of_type_JavaLangString = ((GameRecordInfo)localObject1).videoFilePath;
+          this.jdField_c_of_type_JavaLangString = ((GameRecordInfo)localObject1).photoFilePath;
           bool1 = bool2;
-          if (localGameRecordInfo.photoFilePath != null)
+          if (((GameRecordInfo)localObject1).photoFilePath != null)
           {
             bool1 = bool2;
-            if (new File(localGameRecordInfo.photoFilePath).exists()) {
+            if (new File(((GameRecordInfo)localObject1).photoFilePath).exists()) {
               bool1 = true;
             }
           }
         }
       }
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "onActivityStart " + localGameRecordInfo + " " + bool1);
+      Object localObject2 = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityStart ");
+      localStringBuilder.append(localObject1);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(bool1);
+      AVLog.c((String)localObject2, localStringBuilder.toString());
       if (!bool1)
       {
         long l = this.jdField_c_of_type_Long - (System.currentTimeMillis() - this.jdField_b_of_type_Long);
-        AVLog.c(this.jdField_a_of_type_JavaLangString, "onActivityStart remainTime:" + l);
+        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("onActivityStart remainTime:");
+        ((StringBuilder)localObject2).append(l);
+        AVLog.c((String)localObject1, ((StringBuilder)localObject2).toString());
         l = Math.max(l, 1000L);
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, l);
       }
@@ -479,7 +565,11 @@ public class GuessVideoGameRecordCtrl
     if (k())
     {
       boolean bool = d();
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "onAnswerViewDismiss " + bool);
+      paramView = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAnswerViewDismiss ");
+      localStringBuilder.append(bool);
+      AVLog.c(paramView, localStringBuilder.toString());
       if (bool)
       {
         b(null, 0, 0, 0, 0);
@@ -490,7 +580,11 @@ public class GuessVideoGameRecordCtrl
   
   public void c(String paramString)
   {
-    AVLog.c(this.jdField_a_of_type_JavaLangString, "onPushVideoFrameEnd " + paramString);
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPushVideoFrameEnd ");
+    localStringBuilder.append(paramString);
+    AVLog.c(str, localStringBuilder.toString());
     this.jdField_e_of_type_Boolean = true;
     if (d()) {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 50L);
@@ -512,36 +606,37 @@ public class GuessVideoGameRecordCtrl
     if (k())
     {
       boolean bool = d();
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "onGameOver " + bool);
+      ??? = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGameOver ");
+      localStringBuilder.append(bool);
+      AVLog.c((String)???, localStringBuilder.toString());
       this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData = null;
+        this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData = null;
+        synchronized (this.jdField_a_of_type_JavaLangObject)
+        {
+          this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData = null;
+          return;
+        }
       }
-    }
-    synchronized (this.jdField_a_of_type_JavaLangObject)
-    {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData = null;
-      return;
-      localObject2 = finally;
-      throw localObject2;
     }
   }
   
   public boolean e()
   {
-    boolean bool = false;
     if (super.e())
     {
       q();
-      GameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameVideorecordSimpleGameRoomStatusListener);
+      GameEngine.a().a(this.jdField_a_of_type_ComTencentAvgameQavVideorecordSimpleGameRoomStatusListener);
       this.jdField_b_of_type_JavaLangString = null;
       this.jdField_c_of_type_JavaLangString = null;
       this.i = false;
-      bool = true;
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public void f()
@@ -550,7 +645,15 @@ public class GuessVideoGameRecordCtrl
     {
       boolean bool = d();
       GameRecordInfo localGameRecordInfo = GameEngine.a().a().a();
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "onGameStart " + bool + " " + this.jdField_b_of_type_Long + " " + localGameRecordInfo);
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGameStart ");
+      localStringBuilder.append(bool);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(this.jdField_b_of_type_Long);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(localGameRecordInfo);
+      AVLog.c(str, localStringBuilder.toString());
       if (localGameRecordInfo.startGameTimeMills == 0L)
       {
         this.jdField_b_of_type_Long = System.currentTimeMillis();
@@ -580,57 +683,78 @@ public class GuessVideoGameRecordCtrl
   
   public boolean handleMessage(Message paramMessage)
   {
+    StringBuilder localStringBuilder;
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
+    default: 
+      return true;
+    case 6: 
+      if ((d()) && (this.jdField_e_of_type_Boolean))
       {
-        do
+        AVLog.c(this.jdField_a_of_type_JavaLangString, "render no call .");
+        paramMessage = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer;
+        if ((paramMessage != null) && (paramMessage.a() != null))
         {
+          this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a().requestRender();
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 50L);
           return true;
-          AVLog.c(this.jdField_a_of_type_JavaLangString, "start record come.");
-          if (d()) {
-            k();
-          }
-          this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-          if (e()) {
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, this.jdField_d_of_type_Long);
-          }
-          for (;;)
-          {
-            this.jdField_c_of_type_Boolean = true;
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 200L);
-            AVLog.c(this.jdField_a_of_type_JavaLangString, "start record come videoEnding " + this.jdField_e_of_type_Boolean);
-            if (!this.jdField_e_of_type_Boolean) {
-              break;
-            }
-            this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 10L);
-            return true;
-            this.jdField_d_of_type_Boolean = true;
-          }
-          AVLog.c(this.jdField_a_of_type_JavaLangString, "end record come." + d());
-        } while (!d());
+        }
+      }
+      else
+      {
+        this.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
+        return true;
+      }
+      break;
+    case 5: 
+      if (d())
+      {
+        a(false);
+        return true;
+      }
+      break;
+    case 4: 
+      this.jdField_c_of_type_Boolean = false;
+      return true;
+    case 3: 
+      AVLog.c(this.jdField_a_of_type_JavaLangString, "destroy");
+      r();
+      return true;
+    case 2: 
+      paramMessage = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("end record come.");
+      localStringBuilder.append(d());
+      AVLog.c(paramMessage, localStringBuilder.toString());
+      if (d())
+      {
         k();
         return true;
-        AVLog.c(this.jdField_a_of_type_JavaLangString, "destroy");
-        r();
-        return true;
-        this.jdField_c_of_type_Boolean = false;
-        return true;
-      } while (!d());
-      a(false);
-      return true;
-      if ((!d()) || (!this.jdField_e_of_type_Boolean)) {
-        break;
       }
-      AVLog.c(this.jdField_a_of_type_JavaLangString, "render no call .");
-    } while ((this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer == null) || (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a() == null));
-    this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameVideoLayer.a().requestRender();
-    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 50L);
-    return true;
-    this.jdField_a_of_type_AndroidOsHandler.removeMessages(6);
+      break;
+    case 1: 
+      AVLog.c(this.jdField_a_of_type_JavaLangString, "start record come.");
+      if (d()) {
+        k();
+      }
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
+      if (e()) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(2, this.jdField_d_of_type_Long);
+      } else {
+        this.jdField_d_of_type_Boolean = true;
+      }
+      this.jdField_c_of_type_Boolean = true;
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(4, 200L);
+      paramMessage = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start record come videoEnding ");
+      localStringBuilder.append(this.jdField_e_of_type_Boolean);
+      AVLog.c(paramMessage, localStringBuilder.toString());
+      if (this.jdField_e_of_type_Boolean) {
+        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(6, 10L);
+      }
+      break;
+    }
     return true;
   }
   
@@ -640,7 +764,7 @@ public class GuessVideoGameRecordCtrl
     {
       synchronized (this.jdField_a_of_type_JavaLangObject)
       {
-        if ((this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData != null) && (this.jdField_a_of_type_ComTencentAvgameVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap != null))
+        if ((this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData != null) && (this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap != null))
         {
           bool = true;
           return bool;
@@ -652,7 +776,11 @@ public class GuessVideoGameRecordCtrl
   
   public void j()
   {
-    AVLog.c(this.jdField_a_of_type_JavaLangString, "onEncodeRealStart " + this.jdField_b_of_type_JavaLangString);
+    String str = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEncodeRealStart ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    AVLog.c(str, localStringBuilder.toString());
   }
   
   public boolean j()
@@ -661,7 +789,7 @@ public class GuessVideoGameRecordCtrl
     {
       synchronized (this.jdField_b_of_type_JavaLangObject)
       {
-        if ((this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData != null) && (this.jdField_b_of_type_ComTencentAvgameVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap != null))
+        if ((this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData != null) && (this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameImageData.jdField_a_of_type_AndroidGraphicsBitmap != null))
         {
           bool = true;
           return bool;
@@ -674,8 +802,9 @@ public class GuessVideoGameRecordCtrl
   public void k()
   {
     super.k();
-    if (this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder != null) {
-      this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder.a();
+    QavVideoAudioRecorder localQavVideoAudioRecorder = this.jdField_a_of_type_ComTencentAvUiFunchatRecordQavVideoAudioRecorder;
+    if (localQavVideoAudioRecorder != null) {
+      localQavVideoAudioRecorder.a();
     }
     q();
   }
@@ -690,27 +819,28 @@ public class GuessVideoGameRecordCtrl
   
   public void m()
   {
-    if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean)) {
-      this.jdField_b_of_type_Boolean = true;
-    }
-    try
+    if ((!this.jdField_b_of_type_Boolean) && (!this.jdField_c_of_type_Boolean))
     {
-      Object localObject = IntBuffer.allocate(this.jdField_d_of_type_Int * this.jdField_e_of_type_Int);
-      GLES20.glReadPixels(0, 0, this.jdField_d_of_type_Int, this.jdField_d_of_type_Int, 6408, 5121, (Buffer)localObject);
-      localObject = ((IntBuffer)localObject).array();
-      ThreadManager.getSubThreadHandler().post(new GuessVideoGameRecordCtrl.2(this, (int[])localObject));
+      this.jdField_b_of_type_Boolean = true;
+      try
+      {
+        Object localObject = IntBuffer.allocate(this.jdField_d_of_type_Int * this.jdField_e_of_type_Int);
+        GLES20.glReadPixels(0, 0, this.jdField_d_of_type_Int, this.jdField_d_of_type_Int, 6408, 5121, (Buffer)localObject);
+        localObject = ((IntBuffer)localObject).array();
+        ThreadManager.getSubThreadHandler().post(new GuessVideoGameRecordCtrl.2(this, (int[])localObject));
+      }
+      catch (Throwable localThrowable)
+      {
+        String str = this.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkFirstFramePhoto ");
+        localStringBuilder.append(localThrowable);
+        AVLog.c(str, localStringBuilder.toString());
+      }
       if (this.jdField_d_of_type_Boolean)
       {
         AVLog.c(this.jdField_a_of_type_JavaLangString, "checkFirstFramePhoto record first photo done");
         this.jdField_d_of_type_Boolean = false;
-      }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        AVLog.c(this.jdField_a_of_type_JavaLangString, "checkFirstFramePhoto " + localThrowable);
       }
     }
   }
@@ -718,38 +848,42 @@ public class GuessVideoGameRecordCtrl
   public void n()
   {
     if (h()) {
-      this.jdField_c_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.h();
+      this.jdField_c_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.h();
     }
     if (i()) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.h();
+      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.h();
     }
     if (g()) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoDarkCoverFilter.h();
+      this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoDarkCoverFilter.h();
     }
     if (j()) {
-      this.jdField_b_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.h();
+      this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter.h();
     }
   }
   
   public void p()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoImageFilter != null) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.d();
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter;
+    if (localObject != null) {
+      ((GameVideoImageFilter)localObject).d();
     }
-    if (this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoDarkCoverFilter != null) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGameVideoDarkCoverFilter.d();
+    localObject = this.jdField_a_of_type_ComTencentAvgameQavVideorecordGameVideoDarkCoverFilter;
+    if (localObject != null) {
+      ((GameVideoDarkCoverFilter)localObject).d();
     }
-    if (this.jdField_b_of_type_ComTencentAvgameVideorecordGameVideoImageFilter != null) {
-      this.jdField_b_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.d();
+    localObject = this.jdField_b_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter;
+    if (localObject != null) {
+      ((GameVideoImageFilter)localObject).d();
     }
-    if (this.jdField_c_of_type_ComTencentAvgameVideorecordGameVideoImageFilter != null) {
-      this.jdField_c_of_type_ComTencentAvgameVideorecordGameVideoImageFilter.d();
+    localObject = this.jdField_c_of_type_ComTencentAvgameQavVideorecordGameVideoImageFilter;
+    if (localObject != null) {
+      ((GameVideoImageFilter)localObject).d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GuessVideoGameRecordCtrl
  * JD-Core Version:    0.7.0.1
  */

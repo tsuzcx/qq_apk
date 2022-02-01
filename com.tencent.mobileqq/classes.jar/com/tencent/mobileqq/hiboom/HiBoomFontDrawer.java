@@ -23,7 +23,6 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Vector;
 import java.util.concurrent.atomic.AtomicBoolean;
-import javax.annotation.Nonnull;
 import mqq.os.MqqHandler;
 
 public class HiBoomFontDrawer
@@ -41,7 +40,7 @@ public class HiBoomFontDrawer
   public int c;
   public AtomicBoolean c;
   
-  HiBoomFontDrawer(int paramInt, @Nonnull HiBoomFont.HiBoomFontDownloader paramHiBoomFontDownloader)
+  HiBoomFontDrawer(int paramInt, HiBoomFont.HiBoomFontDownloader paramHiBoomFontDownloader)
   {
     this.jdField_c_of_type_Int = -1;
     this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean = new AtomicBoolean(false);
@@ -57,322 +56,333 @@ public class HiBoomFontDrawer
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
-    //   2: new 58	java/io/BufferedInputStream
-    //   5: dup
-    //   6: new 60	java/io/FileInputStream
-    //   9: dup
-    //   10: aload_0
-    //   11: invokespecial 63	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   14: invokespecial 66	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   17: astore_1
-    //   18: aload_1
-    //   19: astore_0
+    //   1: astore_2
+    //   2: aconst_null
+    //   3: astore_3
+    //   4: new 56	java/io/BufferedInputStream
+    //   7: dup
+    //   8: new 58	java/io/FileInputStream
+    //   11: dup
+    //   12: aload_0
+    //   13: invokespecial 61	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   16: invokespecial 64	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   19: astore_1
     //   20: aload_1
-    //   21: invokestatic 72	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
-    //   24: astore_2
-    //   25: aload_2
-    //   26: astore_0
-    //   27: aload_1
-    //   28: ifnull +9 -> 37
-    //   31: aload_1
-    //   32: invokevirtual 75	java/io/BufferedInputStream:close	()V
-    //   35: aload_2
-    //   36: astore_0
-    //   37: aload_0
-    //   38: areturn
-    //   39: astore_0
-    //   40: ldc 77
-    //   42: iconst_1
-    //   43: ldc 79
+    //   21: astore_0
+    //   22: aload_1
+    //   23: invokestatic 70	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;)Landroid/graphics/Bitmap;
+    //   26: astore_2
+    //   27: aload_2
+    //   28: astore_0
+    //   29: aload_1
+    //   30: invokevirtual 73	java/io/BufferedInputStream:close	()V
+    //   33: aload_2
+    //   34: areturn
+    //   35: astore_1
+    //   36: ldc 75
+    //   38: iconst_1
+    //   39: ldc 77
+    //   41: aload_1
+    //   42: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
     //   45: aload_0
-    //   46: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   49: aload_2
-    //   50: areturn
+    //   46: areturn
+    //   47: astore_2
+    //   48: goto +16 -> 64
     //   51: astore_2
-    //   52: aconst_null
-    //   53: astore_1
-    //   54: aload_1
+    //   52: goto +38 -> 90
     //   55: astore_0
-    //   56: ldc 77
-    //   58: iconst_1
-    //   59: ldc 79
-    //   61: aload_2
-    //   62: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   65: aload_3
-    //   66: astore_0
-    //   67: aload_1
-    //   68: ifnull -31 -> 37
-    //   71: aload_1
-    //   72: invokevirtual 75	java/io/BufferedInputStream:close	()V
-    //   75: aconst_null
-    //   76: areturn
-    //   77: astore_0
-    //   78: ldc 77
-    //   80: iconst_1
-    //   81: ldc 79
-    //   83: aload_0
-    //   84: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   87: aconst_null
-    //   88: areturn
-    //   89: astore_2
-    //   90: aconst_null
-    //   91: astore_1
-    //   92: aload_1
-    //   93: astore_0
-    //   94: ldc 77
-    //   96: iconst_1
-    //   97: ldc 79
-    //   99: aload_2
-    //   100: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   103: aload_3
-    //   104: astore_0
-    //   105: aload_1
-    //   106: ifnull -69 -> 37
-    //   109: aload_1
-    //   110: invokevirtual 75	java/io/BufferedInputStream:close	()V
-    //   113: aconst_null
-    //   114: areturn
-    //   115: astore_0
-    //   116: ldc 77
-    //   118: iconst_1
-    //   119: ldc 79
-    //   121: aload_0
-    //   122: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   125: aconst_null
-    //   126: areturn
-    //   127: astore_1
-    //   128: aconst_null
-    //   129: astore_0
-    //   130: aload_0
-    //   131: ifnull +7 -> 138
-    //   134: aload_0
-    //   135: invokevirtual 75	java/io/BufferedInputStream:close	()V
-    //   138: aload_1
-    //   139: athrow
-    //   140: astore_0
-    //   141: ldc 77
-    //   143: iconst_1
-    //   144: ldc 79
-    //   146: aload_0
-    //   147: invokestatic 85	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   150: goto -12 -> 138
-    //   153: astore_1
-    //   154: goto -24 -> 130
-    //   157: astore_2
-    //   158: goto -66 -> 92
-    //   161: astore_2
-    //   162: goto -108 -> 54
+    //   56: aload_2
+    //   57: astore_1
+    //   58: goto +60 -> 118
+    //   61: astore_2
+    //   62: aconst_null
+    //   63: astore_1
+    //   64: aload_1
+    //   65: astore_0
+    //   66: ldc 75
+    //   68: iconst_1
+    //   69: ldc 77
+    //   71: aload_2
+    //   72: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   75: aload_1
+    //   76: ifnull +35 -> 111
+    //   79: aload_3
+    //   80: astore_0
+    //   81: aload_1
+    //   82: invokevirtual 73	java/io/BufferedInputStream:close	()V
+    //   85: aconst_null
+    //   86: areturn
+    //   87: astore_2
+    //   88: aconst_null
+    //   89: astore_1
+    //   90: aload_1
+    //   91: astore_0
+    //   92: ldc 75
+    //   94: iconst_1
+    //   95: ldc 77
+    //   97: aload_2
+    //   98: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   101: aload_1
+    //   102: ifnull +9 -> 111
+    //   105: aload_3
+    //   106: astore_0
+    //   107: aload_1
+    //   108: invokevirtual 73	java/io/BufferedInputStream:close	()V
+    //   111: aconst_null
+    //   112: areturn
+    //   113: astore_2
+    //   114: aload_0
+    //   115: astore_1
+    //   116: aload_2
+    //   117: astore_0
+    //   118: aload_1
+    //   119: ifnull +20 -> 139
+    //   122: aload_1
+    //   123: invokevirtual 73	java/io/BufferedInputStream:close	()V
+    //   126: goto +13 -> 139
+    //   129: astore_1
+    //   130: ldc 75
+    //   132: iconst_1
+    //   133: ldc 77
+    //   135: aload_1
+    //   136: invokestatic 83	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   139: aload_0
+    //   140: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	165	0	paramString	String
-    //   17	93	1	localBufferedInputStream	java.io.BufferedInputStream
-    //   127	12	1	localObject1	Object
-    //   153	1	1	localObject2	Object
-    //   24	26	2	localBitmap	Bitmap
-    //   51	11	2	localException1	Exception
-    //   89	11	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   157	1	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
-    //   161	1	2	localException2	Exception
-    //   1	103	3	localObject3	Object
+    //   0	141	0	paramString	String
+    //   19	11	1	localBufferedInputStream	java.io.BufferedInputStream
+    //   35	7	1	localIOException1	java.io.IOException
+    //   57	66	1	localObject1	Object
+    //   129	7	1	localIOException2	java.io.IOException
+    //   1	33	2	localBitmap	Bitmap
+    //   47	1	2	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   51	6	2	localException1	Exception
+    //   61	11	2	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   87	11	2	localException2	Exception
+    //   113	4	2	localObject2	Object
+    //   3	103	3	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   31	35	39	java/io/IOException
-    //   2	18	51	java/lang/Exception
-    //   71	75	77	java/io/IOException
-    //   2	18	89	java/lang/OutOfMemoryError
-    //   109	113	115	java/io/IOException
-    //   2	18	127	finally
-    //   134	138	140	java/io/IOException
-    //   20	25	153	finally
-    //   56	65	153	finally
-    //   94	103	153	finally
-    //   20	25	157	java/lang/OutOfMemoryError
-    //   20	25	161	java/lang/Exception
+    //   29	33	35	java/io/IOException
+    //   81	85	35	java/io/IOException
+    //   107	111	35	java/io/IOException
+    //   22	27	47	java/lang/OutOfMemoryError
+    //   22	27	51	java/lang/Exception
+    //   4	20	55	finally
+    //   4	20	61	java/lang/OutOfMemoryError
+    //   4	20	87	java/lang/Exception
+    //   22	27	113	finally
+    //   66	75	113	finally
+    //   92	101	113	finally
+    //   122	126	129	java/io/IOException
   }
   
   private void a(Canvas paramCanvas, String paramString, int paramInt1, int paramInt2, HiBoomInfo.HiBoomInfoStyle paramHiBoomInfoStyle, HiBoomInfo.HiBoomInfoStyleWord paramHiBoomInfoStyleWord, float paramFloat)
   {
     int i;
-    Paint localPaint;
-    Bitmap localBitmap;
-    Canvas localCanvas;
-    Object localObject2;
-    Object localObject1;
-    if (paramInt1 > paramInt2)
-    {
+    if (paramInt1 > paramInt2) {
       i = paramInt1;
-      localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      localPaint.setDither(true);
-      localPaint.setFilterBitmap(true);
-      localPaint.setTextSize(i);
-      localPaint.setColor(-16777216);
-      if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
-        localPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-      }
-      localBitmap = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
-      localCanvas = new Canvas(localBitmap);
-      localObject2 = null;
-      localObject1 = paramHiBoomInfoStyleWord.jdField_b_of_type_ArrayOfInt;
-      if ((localObject1 != null) && (localObject1[3] != 0)) {
-        break label972;
-      }
-      if (!TextUtils.isEmpty(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString)) {
-        break label872;
-      }
-      localObject1 = localObject2;
-      if (!TextUtils.isEmpty(paramHiBoomInfoStyle.d))
+    } else {
+      i = paramInt2;
+    }
+    Paint localPaint = new Paint();
+    localPaint.setAntiAlias(true);
+    localPaint.setDither(true);
+    localPaint.setFilterBitmap(true);
+    float f1 = i;
+    localPaint.setTextSize(f1);
+    localPaint.setColor(-16777216);
+    Object localObject1 = this.jdField_a_of_type_AndroidGraphicsTypeface;
+    if (localObject1 != null) {
+      localPaint.setTypeface((Typeface)localObject1);
+    }
+    Bitmap localBitmap2 = Bitmap.createBitmap(i, i, Bitmap.Config.ARGB_8888);
+    Canvas localCanvas = new Canvas(localBitmap2);
+    localObject1 = paramHiBoomInfoStyleWord.jdField_b_of_type_ArrayOfInt;
+    label409:
+    label631:
+    Object localObject2;
+    if ((localObject1 != null) && (localObject1[3] != 0))
+    {
+      paramHiBoomInfoStyle = new StringBuilder();
+      paramHiBoomInfoStyle.append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+      paramHiBoomInfoStyle.append(this.jdField_b_of_type_Int);
+      paramHiBoomInfoStyle.append(File.separator);
+      paramHiBoomInfoStyle.append("images/");
+      paramHiBoomInfoStyle.append(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString);
+      paramHiBoomInfoStyle = paramHiBoomInfoStyle.toString();
+      paramHiBoomInfoStyle = (Bitmap)GlobalImageCache.a.get(paramHiBoomInfoStyle);
+      if (paramHiBoomInfoStyle != null)
       {
-        if ((!paramHiBoomInfoStyle.d.startsWith("#")) || (paramHiBoomInfoStyle.d.length() != 9)) {
-          break label818;
-        }
-        localPaint.setColor(Color.parseColor(paramHiBoomInfoStyle.d));
-        localObject1 = localObject2;
-      }
-      label182:
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label1301;
-      }
-      localPaint.setColor(-16777216);
-      localObject1 = (Bitmap)GlobalImageCache.a.get(localObject1);
-      paramHiBoomInfoStyle = (HiBoomInfo.HiBoomInfoStyle)localObject1;
-      if (localObject1 != null)
-      {
-        if (((Bitmap)localObject1).getWidth() == i)
+        int k = paramHiBoomInfoStyle.getWidth();
+        int j = paramHiBoomInfoStyle.getHeight();
+        if (localObject1[3] == -1)
         {
-          paramHiBoomInfoStyle = (HiBoomInfo.HiBoomInfoStyle)localObject1;
-          if (((Bitmap)localObject1).getHeight() == i) {}
+          double d1 = Math.random();
+          double d2 = k - paramInt1;
+          Double.isNaN(d2);
+          k = (int)(d2 * d1);
+          d1 = Math.random();
+          d2 = j - paramInt2;
+          Double.isNaN(d2);
+          paramHiBoomInfoStyle = Bitmap.createBitmap(paramHiBoomInfoStyle, k, (int)(d1 * d2), paramInt1, paramInt2);
+        }
+        else
+        {
+          paramHiBoomInfoStyle = Bitmap.createBitmap(paramHiBoomInfoStyle, localObject1[0], localObject1[1], localObject1[2], localObject1[3]);
+        }
+        if (paramHiBoomInfoStyle != null)
+        {
+          if ((paramHiBoomInfoStyle.getWidth() == i) && (paramHiBoomInfoStyle.getHeight() == i)) {
+            break label409;
+          }
+          localObject1 = new Matrix();
+          ((Matrix)localObject1).setScale(f1 / paramHiBoomInfoStyle.getWidth(), f1 / paramHiBoomInfoStyle.getHeight());
+          paramHiBoomInfoStyle = Bitmap.createBitmap(paramHiBoomInfoStyle, 0, 0, paramHiBoomInfoStyle.getWidth(), paramHiBoomInfoStyle.getHeight(), (Matrix)localObject1, false);
+          localPaint.setShader(new BitmapShader(paramHiBoomInfoStyle, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR));
+          localObject1 = "images/";
+        }
+        else
+        {
+          localObject1 = "images/";
+        }
+      }
+      else
+      {
+        break label860;
+      }
+    }
+    else
+    {
+      if (TextUtils.isEmpty(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString))
+      {
+        if (!TextUtils.isEmpty(paramHiBoomInfoStyle.d)) {
+          if ((paramHiBoomInfoStyle.d.startsWith("#")) && (paramHiBoomInfoStyle.d.length() == 9))
+          {
+            localPaint.setColor(Color.parseColor(paramHiBoomInfoStyle.d));
+          }
+          else
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+            ((StringBuilder)localObject1).append(this.jdField_b_of_type_Int);
+            ((StringBuilder)localObject1).append(File.separator);
+            ((StringBuilder)localObject1).append("images/");
+            ((StringBuilder)localObject1).append(paramHiBoomInfoStyle.d);
+            paramHiBoomInfoStyle = ((StringBuilder)localObject1).toString();
+            break label700;
+          }
+        }
+      }
+      else
+      {
+        if ((!paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString.startsWith("#")) || (paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString.length() != 9)) {
+          break label631;
+        }
+        localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString));
+      }
+      paramHiBoomInfoStyle = null;
+      break label700;
+      paramHiBoomInfoStyle = new StringBuilder();
+      paramHiBoomInfoStyle.append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+      paramHiBoomInfoStyle.append(this.jdField_b_of_type_Int);
+      paramHiBoomInfoStyle.append(File.separator);
+      paramHiBoomInfoStyle.append("images/");
+      paramHiBoomInfoStyle.append(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString);
+      paramHiBoomInfoStyle = paramHiBoomInfoStyle.toString();
+      label700:
+      localObject2 = "images/";
+      if (TextUtils.isEmpty(paramHiBoomInfoStyle)) {
+        break label860;
+      }
+      localPaint.setColor(-16777216);
+      Bitmap localBitmap1 = (Bitmap)GlobalImageCache.a.get(paramHiBoomInfoStyle);
+      localObject1 = localObject2;
+      paramHiBoomInfoStyle = localBitmap1;
+      if (localBitmap1 != null)
+      {
+        if ((localBitmap1.getWidth() == i) && (localBitmap1.getHeight() == i))
+        {
+          paramHiBoomInfoStyle = localBitmap1;
         }
         else
         {
           paramHiBoomInfoStyle = new Matrix();
-          paramHiBoomInfoStyle.setScale(i / ((Bitmap)localObject1).getWidth(), i / ((Bitmap)localObject1).getHeight());
-          paramHiBoomInfoStyle = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), paramHiBoomInfoStyle, false);
+          paramHiBoomInfoStyle.setScale(f1 / localBitmap1.getWidth(), f1 / localBitmap1.getHeight());
+          paramHiBoomInfoStyle = Bitmap.createBitmap(localBitmap1, 0, 0, localBitmap1.getWidth(), localBitmap1.getHeight(), paramHiBoomInfoStyle, false);
         }
         localPaint.setShader(new BitmapShader(paramHiBoomInfoStyle, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR));
+        localObject1 = localObject2;
+        break label867;
       }
     }
-    for (;;)
+    break label867;
+    label860:
+    localObject1 = "images/";
+    paramHiBoomInfoStyle = null;
+    label867:
+    localCanvas.drawColor(Color.parseColor(paramHiBoomInfoStyleWord.jdField_c_of_type_JavaLangString));
+    float f2 = f1 / 2.0F;
+    localCanvas.drawText(paramString, 0.0F, (int)(f2 - (localPaint.descent() + localPaint.ascent()) / 2.0F), localPaint);
+    localCanvas.save();
+    if (paramHiBoomInfoStyle != null) {
+      paramHiBoomInfoStyle.recycle();
+    }
+    if ((paramHiBoomInfoStyleWord.jdField_c_of_type_Int > 0) && (!TextUtils.isEmpty(paramHiBoomInfoStyleWord.d)))
     {
-      localCanvas.drawColor(Color.parseColor(paramHiBoomInfoStyleWord.jdField_c_of_type_JavaLangString));
-      localCanvas.drawText(paramString, 0.0F, (int)(i / 2.0F - (localPaint.descent() + localPaint.ascent()) / 2.0F), localPaint);
+      paramHiBoomInfoStyle = null;
+      localPaint.setShader(null);
+      localPaint.setStyle(Paint.Style.STROKE);
+      localPaint.setStrokeJoin(Paint.Join.ROUND);
+      localPaint.setStrokeCap(Paint.Cap.ROUND);
+      localPaint.setStrokeWidth(paramHiBoomInfoStyleWord.jdField_c_of_type_Int * paramFloat);
+      if ((paramHiBoomInfoStyleWord.d.startsWith("#")) && (paramHiBoomInfoStyleWord.d.length() == 9))
+      {
+        localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.d));
+        localObject1 = null;
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+        ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject2).append(File.separator);
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(paramHiBoomInfoStyleWord.d);
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localPaint.setColor(-16777216);
+        paramHiBoomInfoStyle = (Bitmap)GlobalImageCache.a.get(localObject1);
+        if (paramHiBoomInfoStyle != null)
+        {
+          if ((paramHiBoomInfoStyle.getWidth() == i) && (paramHiBoomInfoStyle.getHeight() == i)) {
+            break label1223;
+          }
+          localObject1 = new Matrix();
+          ((Matrix)localObject1).setScale(f1 / paramHiBoomInfoStyle.getWidth(), f1 / paramHiBoomInfoStyle.getHeight());
+          paramHiBoomInfoStyle = Bitmap.createBitmap(paramHiBoomInfoStyle, 0, 0, paramHiBoomInfoStyle.getWidth(), paramHiBoomInfoStyle.getHeight(), (Matrix)localObject1, false);
+          label1223:
+          localPaint.setShader(new BitmapShader(paramHiBoomInfoStyle, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR));
+        }
+      }
+      localCanvas.drawText(paramString, 0.0F, (int)(f2 - (localPaint.descent() + localPaint.ascent()) / 2.0F), localPaint);
       localCanvas.save();
       if (paramHiBoomInfoStyle != null) {
         paramHiBoomInfoStyle.recycle();
       }
-      if (paramHiBoomInfoStyleWord.jdField_c_of_type_Int > 0)
-      {
-        paramHiBoomInfoStyle = null;
-        if (!TextUtils.isEmpty(paramHiBoomInfoStyleWord.d))
-        {
-          localPaint.setShader(null);
-          localPaint.setStyle(Paint.Style.STROKE);
-          localPaint.setStrokeJoin(Paint.Join.ROUND);
-          localPaint.setStrokeCap(Paint.Cap.ROUND);
-          localPaint.setStrokeWidth(paramHiBoomInfoStyleWord.jdField_c_of_type_Int * paramFloat);
-          if ((!paramHiBoomInfoStyleWord.d.startsWith("#")) || (paramHiBoomInfoStyleWord.d.length() != 9)) {
-            break label1241;
-          }
-          localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.d));
-          label485:
-          if (TextUtils.isEmpty(paramHiBoomInfoStyle)) {
-            break label1295;
-          }
-          localPaint.setColor(-16777216);
-          localObject1 = (Bitmap)GlobalImageCache.a.get(paramHiBoomInfoStyle);
-          paramHiBoomInfoStyle = (HiBoomInfo.HiBoomInfoStyle)localObject1;
-          if (localObject1 != null)
-          {
-            if (((Bitmap)localObject1).getWidth() == i)
-            {
-              paramHiBoomInfoStyle = (HiBoomInfo.HiBoomInfoStyle)localObject1;
-              if (((Bitmap)localObject1).getHeight() == i) {}
-            }
-            else
-            {
-              paramHiBoomInfoStyle = new Matrix();
-              paramHiBoomInfoStyle.setScale(i / ((Bitmap)localObject1).getWidth(), i / ((Bitmap)localObject1).getHeight());
-              paramHiBoomInfoStyle = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), paramHiBoomInfoStyle, false);
-            }
-            localPaint.setShader(new BitmapShader(paramHiBoomInfoStyle, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR));
-          }
-        }
-      }
-      for (;;)
-      {
-        localCanvas.drawText(paramString, 0.0F, (int)(i / 2.0F - (localPaint.descent() + localPaint.ascent()) / 2.0F), localPaint);
-        localCanvas.save();
-        if (paramHiBoomInfoStyle != null) {
-          paramHiBoomInfoStyle.recycle();
-        }
-        paramString = new Matrix();
-        if ((localBitmap.getWidth() != paramInt1) || (localBitmap.getHeight() != paramInt2)) {
-          paramString.postScale(paramInt1 / localBitmap.getWidth(), paramInt2 / localBitmap.getHeight());
-        }
-        paramString.postTranslate(paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[0] * paramFloat - paramInt1 / 2, paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[1] * paramFloat - paramInt2 / 2);
-        paramString.postRotate(paramHiBoomInfoStyleWord.jdField_b_of_type_Int, paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[0] * paramFloat, paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[1] * paramFloat);
-        paramCanvas.drawBitmap(localBitmap, paramString, localPaint);
-        paramCanvas.save();
-        localBitmap.recycle();
-        return;
-        i = paramInt2;
-        break;
-        label818:
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramHiBoomInfoStyle.d;
-        break label182;
-        label872:
-        if ((paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString.startsWith("#")) && (paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString.length() == 9))
-        {
-          localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString));
-          localObject1 = localObject2;
-          break label182;
-        }
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString;
-        break label182;
-        label972:
-        paramHiBoomInfoStyle = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString;
-        paramHiBoomInfoStyle = (Bitmap)GlobalImageCache.a.get(paramHiBoomInfoStyle);
-        if (paramHiBoomInfoStyle == null) {
-          break label1301;
-        }
-        int k = paramHiBoomInfoStyle.getWidth();
-        int j = paramHiBoomInfoStyle.getHeight();
-        double d;
-        if (localObject1[3] == -1)
-        {
-          k = (int)(Math.random() * (k - paramInt1));
-          d = Math.random();
-        }
-        for (localObject1 = Bitmap.createBitmap(paramHiBoomInfoStyle, k, (int)((j - paramInt2) * d), paramInt1, paramInt2);; localObject1 = Bitmap.createBitmap(paramHiBoomInfoStyle, localObject1[0], localObject1[1], localObject1[2], localObject1[3]))
-        {
-          paramHiBoomInfoStyle = (HiBoomInfo.HiBoomInfoStyle)localObject1;
-          if (localObject1 == null) {
-            break;
-          }
-          if (((Bitmap)localObject1).getWidth() == i)
-          {
-            paramHiBoomInfoStyle = (HiBoomInfo.HiBoomInfoStyle)localObject1;
-            if (((Bitmap)localObject1).getHeight() == i) {}
-          }
-          else
-          {
-            paramHiBoomInfoStyle = new Matrix();
-            paramHiBoomInfoStyle.setScale(i / ((Bitmap)localObject1).getWidth(), i / ((Bitmap)localObject1).getHeight());
-            paramHiBoomInfoStyle = Bitmap.createBitmap((Bitmap)localObject1, 0, 0, ((Bitmap)localObject1).getWidth(), ((Bitmap)localObject1).getHeight(), paramHiBoomInfoStyle, false);
-          }
-          localPaint.setShader(new BitmapShader(paramHiBoomInfoStyle, Shader.TileMode.REPEAT, Shader.TileMode.MIRROR));
-          break;
-        }
-        label1241:
-        paramHiBoomInfoStyle = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramHiBoomInfoStyleWord.d;
-        break label485;
-        label1295:
-        paramHiBoomInfoStyle = null;
-      }
-      label1301:
-      paramHiBoomInfoStyle = null;
     }
+    paramString = new Matrix();
+    if ((localBitmap2.getWidth() != paramInt1) || (localBitmap2.getHeight() != paramInt2)) {
+      paramString.postScale(paramInt1 / localBitmap2.getWidth(), paramInt2 / localBitmap2.getHeight());
+    }
+    paramString.postTranslate(paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[0] * paramFloat - paramInt1 / 2, paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[1] * paramFloat - paramInt2 / 2);
+    paramString.postRotate(paramHiBoomInfoStyleWord.jdField_b_of_type_Int, paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[0] * paramFloat, paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[1] * paramFloat);
+    paramCanvas.drawBitmap(localBitmap2, paramString, localPaint);
+    paramCanvas.save();
+    localBitmap2.recycle();
   }
   
   private void a(List<String> paramList)
@@ -382,27 +392,36 @@ public class HiBoomFontDrawer
   
   private boolean a(String paramString)
   {
-    int i;
-    if ((!TextUtils.isEmpty(paramString)) && (!paramString.startsWith("#")))
+    boolean bool3 = TextUtils.isEmpty(paramString);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!bool3)
     {
-      paramString = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + paramString;
-      i = 0;
-      if (i >= this.jdField_a_of_type_JavaUtilVector.size()) {
-        break label99;
-      }
-      if (!paramString.equals(this.jdField_a_of_type_JavaUtilVector.get(i))) {
-        break label92;
+      bool1 = bool2;
+      if (!paramString.startsWith("#"))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append("images/");
+        localStringBuilder.append(paramString);
+        paramString = localStringBuilder.toString();
+        int i = 0;
+        while (i < this.jdField_a_of_type_JavaUtilVector.size())
+        {
+          if (paramString.equals(this.jdField_a_of_type_JavaUtilVector.get(i))) {
+            return false;
+          }
+          i += 1;
+        }
+        bool1 = bool2;
+        if (GlobalImageCache.a.get(paramString) == null) {
+          bool1 = true;
+        }
       }
     }
-    label92:
-    label99:
-    while (GlobalImageCache.a.get(paramString) != null)
-    {
-      return false;
-      i += 1;
-      break;
-    }
-    return true;
+    return bool1;
   }
   
   private void b()
@@ -412,61 +431,59 @@ public class HiBoomFontDrawer
   
   private void b(Canvas paramCanvas, String paramString, int paramInt1, int paramInt2, HiBoomInfo.HiBoomInfoStyle paramHiBoomInfoStyle, HiBoomInfo.HiBoomInfoStyleWord paramHiBoomInfoStyleWord, float paramFloat)
   {
-    Paint localPaint;
-    float f1;
-    float f2;
-    if (paramInt1 > paramInt2)
+    if (paramInt1 <= paramInt2) {
+      paramInt1 = paramInt2;
+    }
+    Paint localPaint = new Paint();
+    localPaint.setAntiAlias(true);
+    localPaint.setDither(true);
+    localPaint.setFilterBitmap(true);
+    float f4 = paramInt1;
+    localPaint.setTextSize(f4);
+    float f5 = paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[0] * paramFloat;
+    float f1 = paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[1] * paramFloat;
+    localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.jdField_c_of_type_JavaLangString));
+    float f2 = paramInt1 / 2;
+    float f3 = f5 - f2;
+    paramCanvas.drawRect(f3, f1 - f2, f5 + f2, f1 + f2, localPaint);
+    paramCanvas.save();
+    Typeface localTypeface = this.jdField_a_of_type_AndroidGraphicsTypeface;
+    if (localTypeface != null) {
+      localPaint.setTypeface(localTypeface);
+    }
+    if (TextUtils.isEmpty(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString))
     {
-      localPaint = new Paint();
-      localPaint.setAntiAlias(true);
-      localPaint.setDither(true);
-      localPaint.setFilterBitmap(true);
-      localPaint.setTextSize(paramInt1);
-      f1 = paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[0] * paramFloat;
-      f2 = paramHiBoomInfoStyleWord.jdField_c_of_type_ArrayOfInt[1] * paramFloat;
-      localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.jdField_c_of_type_JavaLangString));
-      paramCanvas.drawRect(f1 - paramInt1 / 2, f2 - paramInt1 / 2, f1 + paramInt1 / 2, f2 + paramInt1 / 2, localPaint);
-      paramCanvas.save();
-      if (this.jdField_a_of_type_AndroidGraphicsTypeface != null) {
-        localPaint.setTypeface(this.jdField_a_of_type_AndroidGraphicsTypeface);
-      }
-      if (!TextUtils.isEmpty(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString)) {
-        break label396;
-      }
       if ((!TextUtils.isEmpty(paramHiBoomInfoStyle.d)) && (paramHiBoomInfoStyle.d.startsWith("#")) && (paramHiBoomInfoStyle.d.length() == 9)) {
         localPaint.setColor(Color.parseColor(paramHiBoomInfoStyle.d));
       }
     }
-    for (;;)
+    else if ((paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString.startsWith("#")) && (paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString.length() == 9)) {
+      localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString));
+    }
+    f4 /= 2.0F;
+    paramCanvas.drawText(paramString, f3, f4 - (localPaint.descent() + localPaint.ascent()) / 2.0F - f2 + f1, localPaint);
+    paramCanvas.save();
+    if ((paramHiBoomInfoStyleWord.jdField_c_of_type_Int > 0) && (!TextUtils.isEmpty(paramHiBoomInfoStyleWord.d)))
     {
-      paramCanvas.drawText(paramString, f1 - paramInt1 / 2, paramInt1 / 2.0F - (localPaint.descent() + localPaint.ascent()) / 2.0F - paramInt1 / 2 + f2, localPaint);
+      localPaint.setShader(null);
+      localPaint.setStyle(Paint.Style.STROKE);
+      localPaint.setStrokeJoin(Paint.Join.ROUND);
+      localPaint.setStrokeCap(Paint.Cap.ROUND);
+      localPaint.setStrokeWidth(paramHiBoomInfoStyleWord.jdField_c_of_type_Int * paramFloat);
+      if ((paramHiBoomInfoStyleWord.d.startsWith("#")) && (paramHiBoomInfoStyleWord.d.length() == 9)) {
+        localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.d));
+      }
+      paramCanvas.drawText(paramString, f3, f1 + (f4 - (localPaint.descent() + localPaint.ascent()) / 2.0F - f2), localPaint);
       paramCanvas.save();
-      if ((paramHiBoomInfoStyleWord.jdField_c_of_type_Int > 0) && (!TextUtils.isEmpty(paramHiBoomInfoStyleWord.d)))
-      {
-        localPaint.setShader(null);
-        localPaint.setStyle(Paint.Style.STROKE);
-        localPaint.setStrokeJoin(Paint.Join.ROUND);
-        localPaint.setStrokeCap(Paint.Cap.ROUND);
-        localPaint.setStrokeWidth(paramHiBoomInfoStyleWord.jdField_c_of_type_Int * paramFloat);
-        if ((paramHiBoomInfoStyleWord.d.startsWith("#")) && (paramHiBoomInfoStyleWord.d.length() == 9)) {
-          localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.d));
-        }
-        paramCanvas.drawText(paramString, f1 - paramInt1 / 2, paramInt1 / 2.0F - (localPaint.descent() + localPaint.ascent()) / 2.0F - paramInt1 / 2 + f2, localPaint);
-        paramCanvas.save();
-      }
-      return;
-      paramInt1 = paramInt2;
-      break;
-      label396:
-      if ((paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString.startsWith("#")) && (paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString.length() == 9)) {
-        localPaint.setColor(Color.parseColor(paramHiBoomInfoStyleWord.jdField_b_of_type_JavaLangString));
-      }
     }
   }
   
   public int a(boolean paramBoolean)
   {
-    Object localObject = new File(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Int);
+    localObject = new File(((StringBuilder)localObject).toString());
     if ((((File)localObject).exists()) && (((File)localObject).isDirectory()))
     {
       localObject = ((File)localObject).list();
@@ -515,110 +532,135 @@ public class HiBoomFontDrawer
   
   void a(String paramString, int paramInt, Canvas paramCanvas)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new Exception("text is null!");
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo == null) {
-      throw new Exception("please init font first!");
-    }
-    Object localObject2 = null;
-    int i = paramString.length();
-    Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo.jdField_a_of_type_JavaUtilList.iterator();
-    Object localObject1;
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      localObject1 = localObject2;
-      if (!((Iterator)localObject3).hasNext()) {
-        break;
-      }
-      localObject1 = (HiBoomInfo.HiBoomInfoStyle)((Iterator)localObject3).next();
-    } while (((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_Int != i);
-    if (localObject1 == null) {
-      throw new Exception("hiboomStyle error!");
-    }
-    int j;
-    label241:
-    float f1;
-    if (localObject1.jdField_a_of_type_ArrayOfInt[0] >= localObject1.jdField_a_of_type_ArrayOfInt[1])
-    {
-      j = localObject1.jdField_a_of_type_ArrayOfInt[1] * paramInt / localObject1.jdField_a_of_type_ArrayOfInt[0];
-      i = paramInt;
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo != null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
-      }
-      if (!TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString))
-      {
-        if ((!((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString.startsWith("#")) || (((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString.length() != 9)) {
-          break label553;
-        }
-        paramCanvas.drawColor(Color.parseColor(((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString));
-      }
-      f1 = i / localObject1.jdField_a_of_type_ArrayOfInt[0];
-      paramInt = 0;
-      label257:
-      if (paramInt >= ((HiBoomInfo.HiBoomInfoStyle)localObject1).b.size()) {
-        break label737;
-      }
-      localObject2 = (HiBoomInfo.HiBoomInfoStyleWord)((HiBoomInfo.HiBoomInfoStyle)localObject1).b.get(paramInt);
-      i = (int)(localObject2.jdField_a_of_type_ArrayOfInt[0] * f1);
-      j = (int)(localObject2.jdField_a_of_type_ArrayOfInt[1] * f1);
-      if ((localObject2.jdField_a_of_type_ArrayOfInt[0] != localObject2.jdField_a_of_type_ArrayOfInt[1]) || (((!TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyleWord)localObject2).jdField_b_of_type_JavaLangString)) || (TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyle)localObject1).d)) || (!((HiBoomInfo.HiBoomInfoStyle)localObject1).d.startsWith("#")) || (((HiBoomInfo.HiBoomInfoStyle)localObject1).d.length() != 9)) && ((TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyleWord)localObject2).jdField_b_of_type_JavaLangString)) || (!((HiBoomInfo.HiBoomInfoStyleWord)localObject2).jdField_b_of_type_JavaLangString.startsWith("#")) || (((HiBoomInfo.HiBoomInfoStyleWord)localObject2).jdField_b_of_type_JavaLangString.length() != 9) || ((((HiBoomInfo.HiBoomInfoStyleWord)localObject2).jdField_c_of_type_Int > 0) && ((((HiBoomInfo.HiBoomInfoStyleWord)localObject2).jdField_c_of_type_Int <= 0) || (TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyleWord)localObject2).d)) || (!((HiBoomInfo.HiBoomInfoStyleWord)localObject2).d.startsWith("#")) || (((HiBoomInfo.HiBoomInfoStyleWord)localObject2).d.length() != 9))) || (((HiBoomInfo.HiBoomInfoStyleWord)localObject2).jdField_b_of_type_Int != 0)))) {
-        break label691;
-      }
-      b(paramCanvas, paramString.charAt(((HiBoomInfo.HiBoomInfoStyleWord)localObject2).jdField_a_of_type_Int) + "", i, j, (HiBoomInfo.HiBoomInfoStyle)localObject1, (HiBoomInfo.HiBoomInfoStyleWord)localObject2, f1);
-    }
-    for (;;)
-    {
-      paramInt += 1;
-      break label257;
-      i = localObject1.jdField_a_of_type_ArrayOfInt[0] * paramInt / localObject1.jdField_a_of_type_ArrayOfInt[1];
-      j = paramInt;
-      break;
-      label553:
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString;
-      localObject2 = (Bitmap)GlobalImageCache.a.get(localObject2);
-      if (localObject2 == null) {
-        break label241;
-      }
-      localObject3 = new Matrix();
-      if ((((Bitmap)localObject2).getWidth() != i) || (((Bitmap)localObject2).getHeight() != j)) {
-        ((Matrix)localObject3).setScale(i / ((Bitmap)localObject2).getWidth(), j / ((Bitmap)localObject2).getHeight());
-      }
-      paramCanvas.drawBitmap((Bitmap)localObject2, (Matrix)localObject3, this.jdField_a_of_type_AndroidGraphicsPaint);
-      break label241;
-      label691:
-      a(paramCanvas, paramString.charAt(((HiBoomInfo.HiBoomInfoStyleWord)localObject2).jdField_a_of_type_Int) + "", i, j, (HiBoomInfo.HiBoomInfoStyle)localObject1, (HiBoomInfo.HiBoomInfoStyleWord)localObject2, f1);
-    }
-    label737:
-    if (((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_JavaUtilList != null)
-    {
-      paramString = ((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_JavaUtilList.iterator();
-      while (paramString.hasNext())
-      {
-        localObject1 = (HiBoomInfo.HiBoomInfoStyleImage)paramString.next();
-        if (!TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyleImage)localObject1).jdField_a_of_type_JavaLangString))
+        int i = paramString.length();
+        Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo.jdField_a_of_type_JavaUtilList.iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((HiBoomInfo.HiBoomInfoStyleImage)localObject1).jdField_a_of_type_JavaLangString;
-          localObject2 = (Bitmap)GlobalImageCache.a.get(localObject2);
-          localObject3 = new Matrix();
-          float f2 = localObject1.jdField_a_of_type_ArrayOfInt[0] * f1;
-          float f3 = localObject1.jdField_a_of_type_ArrayOfInt[1] * f1;
-          if (localObject2 != null)
-          {
-            if ((((Bitmap)localObject2).getWidth() != f2) || (((Bitmap)localObject2).getHeight() != f3)) {
-              ((Matrix)localObject3).postScale(f2 / ((Bitmap)localObject2).getWidth(), f3 / ((Bitmap)localObject2).getHeight());
-            }
-            ((Matrix)localObject3).postTranslate(localObject1.jdField_b_of_type_ArrayOfInt[0] * f1 - f2 / 2.0F, localObject1.jdField_b_of_type_ArrayOfInt[1] * f1 - f3 / 2.0F);
-            ((Matrix)localObject3).postRotate(((HiBoomInfo.HiBoomInfoStyleImage)localObject1).jdField_a_of_type_Int, localObject1.jdField_b_of_type_ArrayOfInt[0] * f1, localObject1.jdField_b_of_type_ArrayOfInt[1] * f1);
-            paramCanvas.drawBitmap((Bitmap)localObject2, (Matrix)localObject3, this.jdField_a_of_type_AndroidGraphicsPaint);
-            paramCanvas.save();
+          localObject1 = (HiBoomInfo.HiBoomInfoStyle)((Iterator)localObject2).next();
+          if (((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_Int == i) {
+            break label72;
           }
         }
+        Object localObject1 = null;
+        label72:
+        if (localObject1 != null)
+        {
+          int j;
+          if (localObject1.jdField_a_of_type_ArrayOfInt[0] >= localObject1.jdField_a_of_type_ArrayOfInt[1])
+          {
+            i = localObject1.jdField_a_of_type_ArrayOfInt[1] * paramInt / localObject1.jdField_a_of_type_ArrayOfInt[0];
+          }
+          else
+          {
+            j = localObject1.jdField_a_of_type_ArrayOfInt[0] * paramInt / localObject1.jdField_a_of_type_ArrayOfInt[1];
+            i = paramInt;
+            paramInt = j;
+          }
+          if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+          {
+            this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
+            this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+            this.jdField_a_of_type_AndroidGraphicsPaint.setDither(true);
+            this.jdField_a_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+          }
+          boolean bool = TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString);
+          localObject2 = "#";
+          Object localObject3;
+          Object localObject4;
+          if (!bool) {
+            if ((((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString.startsWith("#")) && (((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString.length() == 9))
+            {
+              paramCanvas.drawColor(Color.parseColor(((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString));
+            }
+            else
+            {
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+              ((StringBuilder)localObject3).append(this.jdField_b_of_type_Int);
+              ((StringBuilder)localObject3).append(File.separator);
+              ((StringBuilder)localObject3).append("images/");
+              ((StringBuilder)localObject3).append(((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString);
+              localObject3 = ((StringBuilder)localObject3).toString();
+              localObject3 = (Bitmap)GlobalImageCache.a.get(localObject3);
+              if (localObject3 != null)
+              {
+                localObject4 = new Matrix();
+                if ((((Bitmap)localObject3).getWidth() != paramInt) || (((Bitmap)localObject3).getHeight() != i)) {
+                  ((Matrix)localObject4).setScale(paramInt / ((Bitmap)localObject3).getWidth(), i / ((Bitmap)localObject3).getHeight());
+                }
+                paramCanvas.drawBitmap((Bitmap)localObject3, (Matrix)localObject4, this.jdField_a_of_type_AndroidGraphicsPaint);
+              }
+            }
+          }
+          float f1 = paramInt / localObject1.jdField_a_of_type_ArrayOfInt[0];
+          paramInt = 0;
+          while (paramInt < ((HiBoomInfo.HiBoomInfoStyle)localObject1).b.size())
+          {
+            localObject3 = (HiBoomInfo.HiBoomInfoStyleWord)((HiBoomInfo.HiBoomInfoStyle)localObject1).b.get(paramInt);
+            i = (int)(localObject3.jdField_a_of_type_ArrayOfInt[0] * f1);
+            j = (int)(localObject3.jdField_a_of_type_ArrayOfInt[1] * f1);
+            if ((localObject3.jdField_a_of_type_ArrayOfInt[0] == localObject3.jdField_a_of_type_ArrayOfInt[1]) && (((TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_b_of_type_JavaLangString)) && (!TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyle)localObject1).d)) && (((HiBoomInfo.HiBoomInfoStyle)localObject1).d.startsWith((String)localObject2)) && (((HiBoomInfo.HiBoomInfoStyle)localObject1).d.length() == 9)) || ((!TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_b_of_type_JavaLangString)) && (((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_b_of_type_JavaLangString.startsWith((String)localObject2)) && (((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_b_of_type_JavaLangString.length() == 9) && ((((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_c_of_type_Int <= 0) || ((((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_c_of_type_Int > 0) && (!TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).d)) && (((HiBoomInfo.HiBoomInfoStyleWord)localObject3).d.startsWith((String)localObject2)) && (((HiBoomInfo.HiBoomInfoStyleWord)localObject3).d.length() == 9))) && (((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_b_of_type_Int == 0))))
+            {
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append(paramString.charAt(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_a_of_type_Int));
+              ((StringBuilder)localObject4).append("");
+              b(paramCanvas, ((StringBuilder)localObject4).toString(), i, j, (HiBoomInfo.HiBoomInfoStyle)localObject1, (HiBoomInfo.HiBoomInfoStyleWord)localObject3, f1);
+            }
+            else
+            {
+              localObject4 = new StringBuilder();
+              ((StringBuilder)localObject4).append(paramString.charAt(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_a_of_type_Int));
+              ((StringBuilder)localObject4).append("");
+              a(paramCanvas, ((StringBuilder)localObject4).toString(), i, j, (HiBoomInfo.HiBoomInfoStyle)localObject1, (HiBoomInfo.HiBoomInfoStyleWord)localObject3, f1);
+            }
+            paramInt += 1;
+          }
+          if (((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_JavaUtilList != null)
+          {
+            paramString = ((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_JavaUtilList.iterator();
+            while (paramString.hasNext())
+            {
+              localObject1 = (HiBoomInfo.HiBoomInfoStyleImage)paramString.next();
+              if (!TextUtils.isEmpty(((HiBoomInfo.HiBoomInfoStyleImage)localObject1).jdField_a_of_type_JavaLangString))
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+                ((StringBuilder)localObject2).append(this.jdField_b_of_type_Int);
+                ((StringBuilder)localObject2).append(File.separator);
+                ((StringBuilder)localObject2).append("images/");
+                ((StringBuilder)localObject2).append(((HiBoomInfo.HiBoomInfoStyleImage)localObject1).jdField_a_of_type_JavaLangString);
+                localObject2 = ((StringBuilder)localObject2).toString();
+                localObject2 = (Bitmap)GlobalImageCache.a.get(localObject2);
+                localObject3 = new Matrix();
+                float f2 = localObject1.jdField_a_of_type_ArrayOfInt[0] * f1;
+                float f3 = localObject1.jdField_a_of_type_ArrayOfInt[1] * f1;
+                if (localObject2 != null)
+                {
+                  if ((((Bitmap)localObject2).getWidth() != f2) || (((Bitmap)localObject2).getHeight() != f3)) {
+                    ((Matrix)localObject3).postScale(f2 / ((Bitmap)localObject2).getWidth(), f3 / ((Bitmap)localObject2).getHeight());
+                  }
+                  ((Matrix)localObject3).postTranslate(localObject1.jdField_b_of_type_ArrayOfInt[0] * f1 - f2 / 2.0F, localObject1.jdField_b_of_type_ArrayOfInt[1] * f1 - f3 / 2.0F);
+                  ((Matrix)localObject3).postRotate(((HiBoomInfo.HiBoomInfoStyleImage)localObject1).jdField_a_of_type_Int, localObject1.jdField_b_of_type_ArrayOfInt[0] * f1, localObject1.jdField_b_of_type_ArrayOfInt[1] * f1);
+                  paramCanvas.drawBitmap((Bitmap)localObject2, (Matrix)localObject3, this.jdField_a_of_type_AndroidGraphicsPaint);
+                  paramCanvas.save();
+                }
+              }
+            }
+          }
+          return;
+        }
+        throw new Exception("hiboomStyle error!");
       }
+      throw new Exception("please init font first!");
+    }
+    paramString = new Exception("text is null!");
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -634,76 +676,111 @@ public class HiBoomFontDrawer
   boolean a(int paramInt)
   {
     ArrayList localArrayList = null;
+    try
+    {
+      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo.jdField_a_of_type_JavaUtilList.iterator();
+      int i;
+      do
+      {
+        localObject1 = localArrayList;
+        if (!((Iterator)localObject3).hasNext()) {
+          break;
+        }
+        localObject1 = (HiBoomInfo.HiBoomInfoStyle)((Iterator)localObject3).next();
+        i = ((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_Int;
+      } while (i != paramInt);
+      if (localObject1 == null) {
+        return false;
+      }
+      localArrayList = new ArrayList();
+      if (a(((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString))
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+        ((StringBuilder)localObject3).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject3).append(File.separator);
+        ((StringBuilder)localObject3).append("images/");
+        ((StringBuilder)localObject3).append(((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString);
+        localArrayList.add(((StringBuilder)localObject3).toString());
+      }
+      if (a(((HiBoomInfo.HiBoomInfoStyle)localObject1).d))
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+        ((StringBuilder)localObject3).append(this.jdField_b_of_type_Int);
+        ((StringBuilder)localObject3).append(File.separator);
+        ((StringBuilder)localObject3).append("images/");
+        ((StringBuilder)localObject3).append(((HiBoomInfo.HiBoomInfoStyle)localObject1).d);
+        localArrayList.add(((StringBuilder)localObject3).toString());
+      }
+      localObject3 = ((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_JavaUtilList.iterator();
+      Object localObject4;
+      while (((Iterator)localObject3).hasNext())
+      {
+        localObject4 = (HiBoomInfo.HiBoomInfoStyleImage)((Iterator)localObject3).next();
+        if (a(((HiBoomInfo.HiBoomInfoStyleImage)localObject4).jdField_a_of_type_JavaLangString))
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+          localStringBuilder.append(this.jdField_b_of_type_Int);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append("images/");
+          localStringBuilder.append(((HiBoomInfo.HiBoomInfoStyleImage)localObject4).jdField_a_of_type_JavaLangString);
+          localArrayList.add(localStringBuilder.toString());
+        }
+      }
+      Object localObject1 = ((HiBoomInfo.HiBoomInfoStyle)localObject1).b.iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject3 = (HiBoomInfo.HiBoomInfoStyleWord)((Iterator)localObject1).next();
+        if (a(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_c_of_type_JavaLangString))
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+          ((StringBuilder)localObject4).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject4).append(File.separator);
+          ((StringBuilder)localObject4).append("images/");
+          ((StringBuilder)localObject4).append(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_c_of_type_JavaLangString);
+          localArrayList.add(((StringBuilder)localObject4).toString());
+        }
+        if (a(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_b_of_type_JavaLangString))
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+          ((StringBuilder)localObject4).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject4).append(File.separator);
+          ((StringBuilder)localObject4).append("images/");
+          ((StringBuilder)localObject4).append(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_b_of_type_JavaLangString);
+          localArrayList.add(((StringBuilder)localObject4).toString());
+        }
+        if (a(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).d))
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a());
+          ((StringBuilder)localObject4).append(this.jdField_b_of_type_Int);
+          ((StringBuilder)localObject4).append(File.separator);
+          ((StringBuilder)localObject4).append("images/");
+          ((StringBuilder)localObject4).append(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).d);
+          localArrayList.add(((StringBuilder)localObject4).toString());
+        }
+      }
+      paramInt = localArrayList.size();
+      if (paramInt == 0) {
+        return true;
+      }
+      a(localArrayList);
+      return false;
+    }
+    finally {}
     for (;;)
     {
-      Object localObject3;
-      boolean bool;
-      try
-      {
-        localObject3 = this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomInfo.jdField_a_of_type_JavaUtilList.iterator();
-        Object localObject1 = localArrayList;
-        if (((Iterator)localObject3).hasNext())
-        {
-          localObject1 = (HiBoomInfo.HiBoomInfoStyle)((Iterator)localObject3).next();
-          int i = ((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_Int;
-          if (i != paramInt) {
-            continue;
-          }
-        }
-        if (localObject1 == null)
-        {
-          bool = false;
-          return bool;
-        }
-        localArrayList = new ArrayList();
-        if (a(((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString)) {
-          localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_c_of_type_JavaLangString);
-        }
-        if (a(((HiBoomInfo.HiBoomInfoStyle)localObject1).d)) {
-          localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((HiBoomInfo.HiBoomInfoStyle)localObject1).d);
-        }
-        localObject3 = ((HiBoomInfo.HiBoomInfoStyle)localObject1).jdField_a_of_type_JavaUtilList.iterator();
-        if (((Iterator)localObject3).hasNext())
-        {
-          HiBoomInfo.HiBoomInfoStyleImage localHiBoomInfoStyleImage = (HiBoomInfo.HiBoomInfoStyleImage)((Iterator)localObject3).next();
-          if (!a(localHiBoomInfoStyleImage.jdField_a_of_type_JavaLangString)) {
-            continue;
-          }
-          localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + localHiBoomInfoStyleImage.jdField_a_of_type_JavaLangString);
-          continue;
-        }
-        localIterator = localObject2.b.iterator();
-      }
-      finally {}
-      Iterator localIterator;
-      while (localIterator.hasNext())
-      {
-        localObject3 = (HiBoomInfo.HiBoomInfoStyleWord)localIterator.next();
-        if (a(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_c_of_type_JavaLangString)) {
-          localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_c_of_type_JavaLangString);
-        }
-        if (a(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_b_of_type_JavaLangString)) {
-          localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((HiBoomInfo.HiBoomInfoStyleWord)localObject3).jdField_b_of_type_JavaLangString);
-        }
-        if (a(((HiBoomInfo.HiBoomInfoStyleWord)localObject3).d)) {
-          localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqHiboomHiBoomFont$HiBoomFontDownloader.a() + this.jdField_b_of_type_Int + File.separator + "images/" + ((HiBoomInfo.HiBoomInfoStyleWord)localObject3).d);
-        }
-      }
-      if (localArrayList.size() == 0)
-      {
-        bool = true;
-      }
-      else
-      {
-        a(localArrayList);
-        bool = false;
-      }
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomFontDrawer
  * JD-Core Version:    0.7.0.1
  */

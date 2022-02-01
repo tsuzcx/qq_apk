@@ -16,55 +16,43 @@ public class DeprecatedLogicProcessor
 {
   private void a(QQAppInterface paramQQAppInterface, List<RecentUser> paramList)
   {
-    Object localObject1 = null;
     Iterator localIterator = paramList.iterator();
-    Object localObject4 = null;
     Object localObject3 = null;
-    Object localObject2;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
     while (localIterator.hasNext())
     {
-      localObject2 = (RecentUser)localIterator.next();
-      if (localObject2 == null) {
-        break label229;
-      }
-      if ((localObject3 == null) && (AppConstants.SYSTEM_MSG_UIN.equals(((RecentUser)localObject2).uin)))
-      {
-        localObject3 = localObject2;
-      }
-      else if ((localObject4 == null) && ((AppConstants.RECOMMEND_CONTACT_UIN.equals(((RecentUser)localObject2).uin)) || (4000 == ((RecentUser)localObject2).getType())))
-      {
-        if ((((RecentUser)localObject2).msg == null) && (((RecentUser)localObject2).msgData != null)) {
-          ((RecentUser)localObject2).doParse();
+      RecentUser localRecentUser = (RecentUser)localIterator.next();
+      if (localRecentUser != null) {
+        if ((localObject3 == null) && (AppConstants.SYSTEM_MSG_UIN.equals(localRecentUser.uin)))
+        {
+          localObject3 = localRecentUser;
         }
-        if ((((RecentUser)localObject2).msg != null) && (!(((RecentUser)localObject2).msg instanceof String))) {
-          localObject4 = localObject2;
+        else if ((localObject1 == null) && ((AppConstants.RECOMMEND_CONTACT_UIN.equals(localRecentUser.uin)) || (4000 == localRecentUser.getType())))
+        {
+          if ((localRecentUser.msg == null) && (localRecentUser.msgData != null)) {
+            localRecentUser.doParse();
+          }
+          if ((localRecentUser.msg != null) && (!(localRecentUser.msg instanceof String))) {
+            localObject1 = localRecentUser;
+          }
         }
-      }
-      else
-      {
-        if ((localObject1 != null) || (!AppConstants.QZONE_PHOTO_ASSISTANT_UIN.equals(((RecentUser)localObject2).uin))) {
-          break label229;
+        else if ((localObject2 == null) && (AppConstants.QZONE_PHOTO_ASSISTANT_UIN.equals(localRecentUser.uin)))
+        {
+          localObject2 = localRecentUser;
         }
       }
     }
-    for (;;)
+    if (localObject3 != null) {
+      paramList.remove(localObject3);
+    }
+    if (localObject2 != null) {
+      paramList.remove(localObject2);
+    }
+    if (localObject1 != null)
     {
-      localObject1 = localObject2;
-      break;
-      if (localObject3 != null) {
-        paramList.remove(localObject3);
-      }
-      if (localObject1 != null) {
-        paramList.remove(localObject1);
-      }
-      if (localObject4 != null)
-      {
-        paramList.remove(localObject4);
-        paramQQAppInterface.execute(new DeprecatedLogicProcessor.1(this, paramQQAppInterface, localObject4.getId()));
-      }
-      return;
-      label229:
-      localObject2 = localObject1;
+      paramList.remove(localObject1);
+      paramQQAppInterface.execute(new DeprecatedLogicProcessor.1(this, paramQQAppInterface, localObject1.getId()));
     }
   }
   
@@ -72,7 +60,13 @@ public class DeprecatedLogicProcessor
   {
     if (((paramBaseQQAppInterface instanceof QQAppInterface)) && (MsgHelper.a((QQAppInterface)paramBaseQQAppInterface, paramRecentUser.uin, paramRecentUser.getType())))
     {
-      QLog.d(this.a, 1, "find save invalid user:" + paramRecentUser.uin + " type:" + paramRecentUser.getType(), new RuntimeException("invalid user"));
+      paramBaseQQAppInterface = this.a;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("find save invalid user:");
+      localStringBuilder.append(paramRecentUser.uin);
+      localStringBuilder.append(" type:");
+      localStringBuilder.append(paramRecentUser.getType());
+      QLog.d(paramBaseQQAppInterface, 1, localStringBuilder.toString(), new RuntimeException("invalid user"));
       MsgHelper.a(paramRecentUser.uin);
     }
     return paramRecentUser;
@@ -93,7 +87,7 @@ public class DeprecatedLogicProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.cache.DeprecatedLogicProcessor
  * JD-Core Version:    0.7.0.1
  */

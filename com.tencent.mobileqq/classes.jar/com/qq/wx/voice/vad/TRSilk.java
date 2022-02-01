@@ -13,30 +13,43 @@ public class TRSilk
   public static final int TRSILK_ERROR_UN_INIT = -102;
   public static int defaultBitRate = 24000;
   public static int defaultSampleRate = 16000;
-  private byte[] a = new byte[MAX_FRAME_SIZE * 100];
-  private byte[] b = new byte[MAX_FRAME_SIZE * 100];
-  private boolean c = false;
-  private boolean d = false;
-  private TRSilkNative e = new TRSilkNative();
+  private byte[] a;
+  private byte[] b;
+  private boolean c;
+  private boolean d;
+  private TRSilkNative e;
+  
+  public TRSilk()
+  {
+    int i = MAX_FRAME_SIZE;
+    this.a = new byte[i * 100];
+    this.b = new byte[i * 100];
+    this.c = false;
+    this.d = false;
+    this.e = new TRSilkNative();
+  }
   
   public byte[] silkDecode(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (!this.d) {
-      throw new TRSilkException(-102);
-    }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+    if (this.d)
+    {
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+      {
+        paramInt1 = this.e.nativeTRSilkDecode(paramArrayOfByte, paramInt1, paramInt2, this.b);
+        if (paramInt1 == 0) {
+          return null;
+        }
+        if (paramInt1 >= 0)
+        {
+          paramArrayOfByte = new byte[paramInt1];
+          System.arraycopy(this.b, 0, paramArrayOfByte, 0, paramInt1);
+          return paramArrayOfByte;
+        }
+        throw new TRSilkException(paramInt1);
+      }
       throw new TRSilkException(-104);
     }
-    paramInt1 = this.e.nativeTRSilkDecode(paramArrayOfByte, paramInt1, paramInt2, this.b);
-    if (paramInt1 == 0) {
-      return null;
-    }
-    if (paramInt1 < 0) {
-      throw new TRSilkException(paramInt1);
-    }
-    paramArrayOfByte = new byte[paramInt1];
-    System.arraycopy(this.b, 0, paramArrayOfByte, 0, paramInt1);
-    return paramArrayOfByte;
+    throw new TRSilkException(-102);
   }
   
   public int silkDecodeInit()
@@ -47,16 +60,13 @@ public class TRSilk
   public int silkDecodeInit(int paramInt1, int paramInt2)
   {
     if (this.d) {
-      paramInt1 = -103;
+      return -103;
     }
-    do
-    {
-      return paramInt1;
-      paramInt2 = this.e.nativeTRSilkDecodeInit(paramInt1, paramInt2);
-      paramInt1 = paramInt2;
-    } while (paramInt2 != 0);
-    this.d = true;
-    return paramInt2;
+    paramInt1 = this.e.nativeTRSilkDecodeInit(paramInt1, paramInt2);
+    if (paramInt1 == 0) {
+      this.d = true;
+    }
+    return paramInt1;
   }
   
   public int silkDecodeRelease()
@@ -70,22 +80,25 @@ public class TRSilk
   
   public byte[] silkEncode(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    if (!this.c) {
-      throw new TRSilkException(-102);
-    }
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
+    if (this.c)
+    {
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
+      {
+        paramInt1 = this.e.nativeTRSilkEncode(paramArrayOfByte, paramInt1, paramInt2, this.a);
+        if (paramInt1 == 0) {
+          return null;
+        }
+        if (paramInt1 >= 0)
+        {
+          paramArrayOfByte = new byte[paramInt1];
+          System.arraycopy(this.a, 0, paramArrayOfByte, 0, paramInt1);
+          return paramArrayOfByte;
+        }
+        throw new TRSilkException(paramInt1);
+      }
       throw new TRSilkException(-104);
     }
-    paramInt1 = this.e.nativeTRSilkEncode(paramArrayOfByte, paramInt1, paramInt2, this.a);
-    if (paramInt1 == 0) {
-      return null;
-    }
-    if (paramInt1 < 0) {
-      throw new TRSilkException(paramInt1);
-    }
-    paramArrayOfByte = new byte[paramInt1];
-    System.arraycopy(this.a, 0, paramArrayOfByte, 0, paramInt1);
-    return paramArrayOfByte;
+    throw new TRSilkException(-102);
   }
   
   public int silkInit()
@@ -96,16 +109,13 @@ public class TRSilk
   public int silkInit(int paramInt1, int paramInt2)
   {
     if (this.c) {
-      paramInt1 = -103;
+      return -103;
     }
-    do
-    {
-      return paramInt1;
-      paramInt2 = this.e.nativeTRSilkInit(paramInt1, paramInt2);
-      paramInt1 = paramInt2;
-    } while (paramInt2 != 0);
-    this.c = true;
-    return paramInt2;
+    paramInt1 = this.e.nativeTRSilkInit(paramInt1, paramInt2);
+    if (paramInt1 == 0) {
+      this.c = true;
+    }
+    return paramInt1;
   }
   
   public int silkRelease()

@@ -33,8 +33,8 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.DisplayUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -149,15 +149,19 @@ public class TroopEntranceBar
           }
         }
       }
-      return;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      QLog.d(".troop.troop_pubaccount", 2, "publicAccount uin format exception. sessionInfo.curFriendUin is not long. value is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
-      d();
-      e();
-      paramQQAppInterface.getMsgHandler().b(this.jdField_b_of_type_JavaUtilList);
+      label226:
+      break label226;
     }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("publicAccount uin format exception. sessionInfo.curFriendUin is not long. value is ");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    QLog.d(".troop.troop_pubaccount", 2, ((StringBuilder)localObject1).toString());
+    d();
+    e();
+    paramQQAppInterface.getMsgHandler().b(this.jdField_b_of_type_JavaUtilList);
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext, Observer paramObserver, SessionInfo paramSessionInfo, RelativeLayout paramRelativeLayout, ChatAdapter1 paramChatAdapter1, ChatXListView paramChatXListView)
@@ -166,8 +170,9 @@ public class TroopEntranceBar
     this.jdField_a_of_type_AndroidContentContext = paramContext;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramSessionInfo;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = paramRelativeLayout;
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131374581);
+    paramSessionInfo = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (paramSessionInfo != null) {
+      this.jdField_a_of_type_AndroidViewView = paramSessionInfo.findViewById(2131374119);
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramChatAdapter1;
     this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramChatXListView;
@@ -176,54 +181,54 @@ public class TroopEntranceBar
     addObserver(paramObserver);
     paramQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqAvatarObserverAvatarObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder = ((IQQAvatarService)paramQQAppInterface.getRuntimeService(IQQAvatarService.class, "")).getInstance(paramQQAppInterface);
-    this.d = paramContext.getResources().getColor(2131166264);
-    this.e = paramContext.getResources().getColor(2131166265);
+    this.d = paramContext.getResources().getColor(2131166275);
+    this.e = paramContext.getResources().getColor(2131166276);
     this.jdField_a_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), this.d);
     this.jdField_b_of_type_AndroidGraphicsLightingColorFilter = new LightingColorFilter(Color.argb(255, 0, 0, 0), this.e);
   }
   
   public void b()
   {
-    if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (this.jdField_a_of_type_Boolean)) {
-      return;
-    }
-    if (this.jdField_c_of_type_AndroidViewView == null) {
-      this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560718, null);
-    }
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_c_of_type_AndroidViewView) == -1)
+    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
-      localObject = new RelativeLayout.LayoutParams(-2, -2);
-      ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-      ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131374581);
-      ((RelativeLayout.LayoutParams)localObject).addRule(11);
-      ((RelativeLayout.LayoutParams)localObject).height = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 41.0F);
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
-    }
-    if (this.jdField_b_of_type_AndroidViewView == null) {
-      this.jdField_b_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131379814);
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379817));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379815));
-    Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
-    ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
-    ((LinearLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
-    int i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
-    ((LinearLayout.LayoutParams)localObject).height = i;
-    ((LinearLayout.LayoutParams)localObject).width = i;
-    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
-    if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130851168);
-    }
-    for (;;)
-    {
-      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843914);
+      if (this.jdField_a_of_type_Boolean) {
+        return;
+      }
+      if (this.jdField_c_of_type_AndroidViewView == null) {
+        this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560606, null);
+      }
+      if (this.jdField_a_of_type_AndroidWidgetRelativeLayout.indexOfChild(this.jdField_c_of_type_AndroidViewView) == -1)
+      {
+        localObject = new RelativeLayout.LayoutParams(-2, -2);
+        ((RelativeLayout.LayoutParams)localObject).topMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
+        ((RelativeLayout.LayoutParams)localObject).addRule(3, 2131374119);
+        ((RelativeLayout.LayoutParams)localObject).addRule(11);
+        ((RelativeLayout.LayoutParams)localObject).height = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 41.0F);
+        this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, (ViewGroup.LayoutParams)localObject);
+      }
+      if (this.jdField_b_of_type_AndroidViewView == null) {
+        this.jdField_b_of_type_AndroidViewView = this.jdField_c_of_type_AndroidViewView.findViewById(2131379143);
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379146));
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379144));
+      Object localObject = (LinearLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
+      ((LinearLayout.LayoutParams)localObject).leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 4.0F);
+      ((LinearLayout.LayoutParams)localObject).rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 5.0F);
+      int i = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 18.0F);
+      ((LinearLayout.LayoutParams)localObject).height = i;
+      ((LinearLayout.LayoutParams)localObject).width = i;
+      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams((ViewGroup.LayoutParams)localObject);
+      if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
+        this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130851084);
+      } else {
+        this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130851085);
+      }
+      this.jdField_c_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843834);
       this.jdField_b_of_type_AndroidViewView.setOnClickListener(this);
       this.jdField_a_of_type_Boolean = true;
       c();
       this.jdField_c_of_type_AndroidViewView.setVisibility(8);
       ThreadManager.post(new TroopEntranceBar.1(this), 8, null, true);
-      return;
-      this.jdField_b_of_type_AndroidViewView.setBackgroundResource(2130851169);
     }
   }
   
@@ -232,14 +237,14 @@ public class TroopEntranceBar
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379816);
+    ImageView localImageView = (ImageView)this.jdField_b_of_type_AndroidViewView.findViewById(2131379145);
     localImageView.setVisibility(0);
     LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)localImageView.getLayoutParams();
     localLayoutParams.height = -2;
     localLayoutParams.width = -2;
     localLayoutParams.leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 3.0F);
     localLayoutParams.rightMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 8.0F);
-    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843915);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130843835);
     localLayoutParams.leftMargin = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 11.0F);
     if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = localDrawable.getConstantState().newDrawable(this.jdField_a_of_type_AndroidContentContext.getResources()).mutate();
@@ -252,50 +257,55 @@ public class TroopEntranceBar
     }
     this.jdField_b_of_type_AndroidGraphicsDrawableDrawable.setColorFilter(this.jdField_a_of_type_AndroidGraphicsLightingColorFilter);
     this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_b_of_type_AndroidGraphicsDrawableDrawable);
-    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697676);
+    this.jdField_a_of_type_AndroidWidgetTextView.setText(2131697682);
   }
   
   public void d()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-    for (long l = 0L; localIterator.hasNext(); l = ((Integer)localIterator.next()).intValue() + l) {}
+    for (long l = 0L; localIterator.hasNext(); l += ((Integer)localIterator.next()).intValue()) {}
     this.jdField_a_of_type_Long = l;
   }
   
   public void e()
   {
-    String str1;
-    QQAppInterface localQQAppInterface;
-    if (this.jdField_b_of_type_Int <= 0)
+    int i = this.jdField_b_of_type_Int;
+    String str;
+    if (i <= 0)
     {
       this.jdField_c_of_type_Int = 0;
-      str1 = "entry_none";
-      localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) {
-        break label128;
-      }
+      str = "entry_none";
     }
-    label128:
-    for (String str2 = "";; str2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)
+    for (;;)
     {
-      ReportController.b(localQQAppInterface, "P_CliOper", "Grp_public", "", "oper", str1, 0, 0, "", "", "", str2);
-      return;
-      if (this.jdField_b_of_type_Int == 1)
+      break;
+      if (i == 1)
       {
-        if (this.jdField_a_of_type_Long <= 0L) {}
-        for (this.jdField_c_of_type_Int = 3;; this.jdField_c_of_type_Int = 1)
-        {
-          str1 = "entry_one";
-          break;
+        if (this.jdField_a_of_type_Long <= 0L) {
+          this.jdField_c_of_type_Int = 3;
+        } else {
+          this.jdField_c_of_type_Int = 1;
         }
+        str = "entry_one";
       }
-      if (this.jdField_a_of_type_Long <= 0L) {}
-      for (this.jdField_c_of_type_Int = 4;; this.jdField_c_of_type_Int = 2)
+      else
       {
-        str1 = "entry_more";
-        break;
+        if (this.jdField_a_of_type_Long <= 0L) {
+          this.jdField_c_of_type_Int = 4;
+        } else {
+          this.jdField_c_of_type_Int = 2;
+        }
+        str = "entry_more";
       }
     }
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = ((SessionInfo)localObject).a;
+    }
+    ReportController.b(localQQAppInterface, "P_CliOper", "Grp_public", "", "oper", str, 0, 0, "", "", "", (String)localObject);
   }
   
   public void f()
@@ -318,12 +328,16 @@ public class TroopEntranceBar
           }
         }
       }
-      return;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      QLog.d(".troop.troop_pubaccount", 2, "publicAccount uin format exception. sessionInfo.curFriendUin is not long. value is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      label108:
+      break label108;
     }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("publicAccount uin format exception. sessionInfo.curFriendUin is not long. value is ");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+    QLog.d(".troop.troop_pubaccount", 2, ((StringBuilder)localObject1).toString());
   }
   
   public void onClick(View paramView)
@@ -334,7 +348,7 @@ public class TroopEntranceBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopEntranceBar
  * JD-Core Version:    0.7.0.1
  */

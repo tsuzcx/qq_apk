@@ -18,19 +18,31 @@ class ApkgManager$5
   
   public void onDownloadCanceled(String paramString)
   {
-    if (this.val$listener != null)
+    Object localObject = this.val$listener;
+    if (localObject != null)
     {
-      this.val$listener.onInitApkgInfo(1, this.val$apkgInfo, null);
-      QLog.d("ApkgManager", 1, "onDownloadCanceled() called with: s = [" + paramString + "]");
+      ((ApkgManager.OnInitApkgListener)localObject).onInitApkgInfo(1, this.val$apkgInfo, null);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadCanceled() called with: s = [");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("ApkgManager", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    if (this.val$listener != null)
+    Object localObject = this.val$listener;
+    if (localObject != null)
     {
-      this.val$listener.onInitApkgInfo(2, this.val$apkgInfo, HardCodeUtil.a(2131700368));
-      QLog.d("ApkgManager", 1, "onDownloadFailed() called with: s = [" + paramString + "], downloadResult = [" + paramDownloadResult + "]");
+      ((ApkgManager.OnInitApkgListener)localObject).onInitApkgInfo(2, this.val$apkgInfo, HardCodeUtil.a(2131700510));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadFailed() called with: s = [");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("], downloadResult = [");
+      ((StringBuilder)localObject).append(paramDownloadResult);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("ApkgManager", 1, ((StringBuilder)localObject).toString());
     }
     int i;
     if (paramDownloadResult.getStatus().exception2Code != 0) {
@@ -38,45 +50,58 @@ class ApkgManager$5
     }
     for (;;)
     {
-      MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 614, this.val$url, null, null, i, "0", paramDownloadResult.getProcess().duration, null);
-      return;
+      break;
       if (paramDownloadResult.getStatus().httpStatus > 0) {
         i = paramDownloadResult.getStatus().httpStatus;
       } else {
         i = -99999;
       }
     }
+    MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 614, this.val$url, null, null, i, "0", paramDownloadResult.getProcess().duration, null);
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat) {}
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    if ((paramDownloadResult != null) && (paramDownloadResult.getContent() != null)) {}
-    for (long l = paramDownloadResult.getContent().length;; l = -1L)
+    long l;
+    if ((paramDownloadResult != null) && (paramDownloadResult.getContent() != null)) {
+      l = paramDownloadResult.getContent().length;
+    } else {
+      l = -1L;
+    }
+    MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 614, this.val$url, String.valueOf(l), null, 0, "0", paramDownloadResult.getProcess().duration, null);
+    MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 615, this.val$url, null, null, 0, "0", 0L, null);
+    paramString = ApkgManager.getApkgFolderPath(this.val$apkgInfo.appConfig.config);
+    boolean bool = WxapkgUnpacker.unpackSync(new File(this.val$savePath).getAbsolutePath(), paramString, ApkgManager.access$100(this.this$0));
+    paramDownloadResult = new StringBuilder();
+    paramDownloadResult.append("downloadSubPack | getResPath :hasUnpack=");
+    paramDownloadResult.append(bool);
+    paramDownloadResult.append("; folderPath=");
+    paramDownloadResult.append(paramString);
+    paramDownloadResult.append("; subRoot=");
+    paramDownloadResult.append(ApkgManager.access$100(this.this$0));
+    QLog.d("ApkgManager", 1, paramDownloadResult.toString());
+    MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 616, this.val$url, null, null, 0, "0", 0L, null);
+    if (bool)
     {
-      MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 614, this.val$url, String.valueOf(l), null, 0, "0", paramDownloadResult.getProcess().duration, null);
-      MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 615, this.val$url, null, null, 0, "0", 0L, null);
-      paramString = ApkgManager.getApkgFolderPath(this.val$apkgInfo.appConfig.config);
-      boolean bool = WxapkgUnpacker.unpackSync(new File(this.val$savePath).getAbsolutePath(), paramString, ApkgManager.access$100(this.this$0));
-      QLog.d("ApkgManager", 1, "downloadSubPack | getResPath :hasUnpack=" + bool + "; folderPath=" + paramString + "; subRoot=" + ApkgManager.access$100(this.this$0));
-      MiniReportManager.reportEventType(this.val$apkgInfo.appConfig, 616, this.val$url, null, null, 0, "0", 0L, null);
-      if (bool) {
-        if (this.val$listener != null) {
-          this.val$listener.onInitApkgInfo(0, this.val$apkgInfo, null);
-        }
+      paramString = this.val$listener;
+      if (paramString != null) {
+        paramString.onInitApkgInfo(0, this.val$apkgInfo, null);
       }
-      while (this.val$listener == null) {
-        return;
+    }
+    else
+    {
+      paramString = this.val$listener;
+      if (paramString != null) {
+        paramString.onInitApkgInfo(3, this.val$apkgInfo, HardCodeUtil.a(2131700511));
       }
-      this.val$listener.onInitApkgInfo(3, this.val$apkgInfo, HardCodeUtil.a(2131700369));
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.ApkgManager.5
  * JD-Core Version:    0.7.0.1
  */

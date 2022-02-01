@@ -9,33 +9,36 @@ class ARMarkerResourceManager$5
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.f();
+    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback;
+    if (localARMarkerResourceCallback != null) {
+      localARMarkerResourceCallback.f();
     }
   }
   
   public void a(int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.c(paramInt);
+    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback;
+    if (localARMarkerResourceCallback != null) {
+      localARMarkerResourceCallback.c(paramInt);
     }
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {}
+    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback;
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback != null) {
-      this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
+    ARMarkerResourceManager.ARMarkerResourceCallback localARMarkerResourceCallback = this.jdField_a_of_type_ComTencentMobileqqArArengineARMarkerResourceManager$ARMarkerResourceCallback;
+    if (localARMarkerResourceCallback != null) {
+      localARMarkerResourceCallback.c(paramBoolean, this.jdField_a_of_type_ComTencentMobileqqArAidlArCloudConfigInfo);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARMarkerResourceManager.5
  * JD-Core Version:    0.7.0.1
  */

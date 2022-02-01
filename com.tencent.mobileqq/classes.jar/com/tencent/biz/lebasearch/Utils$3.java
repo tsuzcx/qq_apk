@@ -16,8 +16,9 @@ final class Utils$3
   {
     if (this.jdField_a_of_type_Int == 1)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaILebaHelperService != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaILebaHelperService.updateAppSetting(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+      paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqLebaILebaHelperService;
+      if (paramDialogInterface != null) {
+        paramDialogInterface.updateAppSetting(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, true, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
       }
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
       paramDialogInterface = (ILebaHelperService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ILebaHelperService.class, "multi");
@@ -25,8 +26,9 @@ final class Utils$3
       paramDialogInterface.netSetPluginState(String.valueOf(this.jdField_a_of_type_Long), true, l);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaILebaHelperService != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaILebaHelperService.updateAppSetting(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqLebaILebaHelperService;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.updateAppSetting(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_Long, false, NetConnInfoCenter.getServerTimeMillis(), -9223372036854775808L);
     }
     this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     paramDialogInterface = (ILebaHelperService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(ILebaHelperService.class, "multi");
@@ -36,7 +38,7 @@ final class Utils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.lebasearch.Utils.3
  * JD-Core Version:    0.7.0.1
  */

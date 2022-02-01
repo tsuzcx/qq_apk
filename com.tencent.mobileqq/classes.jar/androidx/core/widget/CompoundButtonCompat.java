@@ -22,30 +22,30 @@ public final class CompoundButtonCompat
     if (Build.VERSION.SDK_INT >= 23) {
       return paramCompoundButton.getButtonDrawable();
     }
-    if (!sButtonDrawableFieldFetched) {}
-    try
+    if (!sButtonDrawableFieldFetched)
     {
-      sButtonDrawableField = CompoundButton.class.getDeclaredField("mButtonDrawable");
-      sButtonDrawableField.setAccessible(true);
-      sButtonDrawableFieldFetched = true;
-      if (sButtonDrawableField == null) {}
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
+      try
       {
-        try
-        {
-          paramCompoundButton = (Drawable)sButtonDrawableField.get(paramCompoundButton);
-          return paramCompoundButton;
-        }
-        catch (IllegalAccessException paramCompoundButton)
-        {
-          Log.i("CompoundButtonCompat", "Failed to get button drawable via reflection", paramCompoundButton);
-          sButtonDrawableField = null;
-        }
-        localNoSuchFieldException = localNoSuchFieldException;
+        sButtonDrawableField = CompoundButton.class.getDeclaredField("mButtonDrawable");
+        sButtonDrawableField.setAccessible(true);
+      }
+      catch (NoSuchFieldException localNoSuchFieldException)
+      {
         Log.i("CompoundButtonCompat", "Failed to retrieve mButtonDrawable field", localNoSuchFieldException);
+      }
+      sButtonDrawableFieldFetched = true;
+    }
+    Field localField = sButtonDrawableField;
+    if (localField != null) {
+      try
+      {
+        paramCompoundButton = (Drawable)localField.get(paramCompoundButton);
+        return paramCompoundButton;
+      }
+      catch (IllegalAccessException paramCompoundButton)
+      {
+        Log.i("CompoundButtonCompat", "Failed to get button drawable via reflection", paramCompoundButton);
+        sButtonDrawableField = null;
       }
     }
     return null;
@@ -77,29 +77,31 @@ public final class CompoundButtonCompat
   
   public static void setButtonTintList(@NonNull CompoundButton paramCompoundButton, @Nullable ColorStateList paramColorStateList)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       paramCompoundButton.setButtonTintList(paramColorStateList);
-    }
-    while (!(paramCompoundButton instanceof TintableCompoundButton)) {
       return;
     }
-    ((TintableCompoundButton)paramCompoundButton).setSupportButtonTintList(paramColorStateList);
+    if ((paramCompoundButton instanceof TintableCompoundButton)) {
+      ((TintableCompoundButton)paramCompoundButton).setSupportButtonTintList(paramColorStateList);
+    }
   }
   
   public static void setButtonTintMode(@NonNull CompoundButton paramCompoundButton, @Nullable PorterDuff.Mode paramMode)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
+    if (Build.VERSION.SDK_INT >= 21)
+    {
       paramCompoundButton.setButtonTintMode(paramMode);
-    }
-    while (!(paramCompoundButton instanceof TintableCompoundButton)) {
       return;
     }
-    ((TintableCompoundButton)paramCompoundButton).setSupportButtonTintMode(paramMode);
+    if ((paramCompoundButton instanceof TintableCompoundButton)) {
+      ((TintableCompoundButton)paramCompoundButton).setSupportButtonTintMode(paramMode);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.CompoundButtonCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -9,7 +9,6 @@ import android.graphics.Rect;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.RecyclerView.AdapterDataObserver;
 import android.support.v7.widget.RecyclerView.State;
@@ -21,6 +20,7 @@ import com.tencent.biz.subscribe.baseUI.ExtraTypeInfo;
 import com.tencent.biz.subscribe.part.block.base.BaseListViewAdapter;
 import com.tencent.biz.subscribe.part.block.base.LoadInfo;
 import com.tencent.biz.subscribe.part.block.base.NestScrollRecyclerView;
+import com.tencent.mobileqq.app.BaseFragment;
 import java.util.ArrayList;
 import javax.annotation.Nullable;
 
@@ -28,7 +28,7 @@ public abstract class MultiViewBlock<E>
   extends BaseListViewAdapter<E>
   implements Application.ActivityLifecycleCallbacks, BlockMerger.ShareDataChangeListener
 {
-  private static final String jdField_a_of_type_JavaLangString = MultiViewBlock.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "MultiViewBlock";
   private int jdField_a_of_type_Int;
   private Bundle jdField_a_of_type_AndroidOsBundle;
   private final Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
@@ -49,9 +49,10 @@ public abstract class MultiViewBlock<E>
   
   private void c(LoadInfo paramLoadInfo)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$onLoadDataDelegate != null)
+    MultiViewBlock.onLoadDataDelegate localonLoadDataDelegate = this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$onLoadDataDelegate;
+    if (localonLoadDataDelegate != null)
     {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$onLoadDataDelegate.a(paramLoadInfo, this);
+      localonLoadDataDelegate.a(paramLoadInfo, this);
       return;
     }
     a(paramLoadInfo);
@@ -64,15 +65,15 @@ public abstract class MultiViewBlock<E>
     return 1;
   }
   
-  public Activity a()
+  protected Activity a()
   {
     if ((a() != null) && (a().a() != null)) {
-      return a().a().getActivity();
+      return a().a().getBaseActivity();
     }
     return null;
   }
   
-  public Context a()
+  protected Context a()
   {
     return a();
   }
@@ -85,14 +86,6 @@ public abstract class MultiViewBlock<E>
   public Handler a()
   {
     return this.jdField_a_of_type_AndroidOsHandler;
-  }
-  
-  public Fragment a()
-  {
-    if (a() != null) {
-      return a().a();
-    }
-    return null;
   }
   
   protected FrameLayout a(@Nullable View paramView)
@@ -123,8 +116,9 @@ public abstract class MultiViewBlock<E>
   
   public BlockMerger.ShareData a(String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger != null) {
-      return this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger.a(paramString);
+    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    if (localBlockMerger != null) {
+      return localBlockMerger.a(paramString);
     }
     return null;
   }
@@ -140,6 +134,14 @@ public abstract class MultiViewBlock<E>
   }
   
   public NestScrollRecyclerView a()
+  {
+    if (a() != null) {
+      return a().a();
+    }
+    return null;
+  }
+  
+  public BaseFragment a()
   {
     if (a() != null) {
       return a().a();
@@ -195,9 +197,10 @@ public abstract class MultiViewBlock<E>
   
   public void b(LoadInfo paramLoadInfo)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$onLoadDataDelegate != null)
+    MultiViewBlock.onLoadDataDelegate localonLoadDataDelegate = this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$onLoadDataDelegate;
+    if (localonLoadDataDelegate != null)
     {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$onLoadDataDelegate.a(paramLoadInfo, this);
+      localonLoadDataDelegate.a(paramLoadInfo, this);
       return;
     }
     c(paramLoadInfo);
@@ -205,8 +208,9 @@ public abstract class MultiViewBlock<E>
   
   public void b(String paramString, BlockMerger.ShareData paramShareData)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger.a(paramString, paramShareData);
+    BlockMerger localBlockMerger = this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger;
+    if (localBlockMerger != null) {
+      localBlockMerger.a(paramString, paramShareData);
     }
   }
   
@@ -254,9 +258,10 @@ public abstract class MultiViewBlock<E>
   
   public boolean f()
   {
+    BlockMerger localBlockMerger = a();
     boolean bool2 = false;
     boolean bool1 = bool2;
-    if (a() != null)
+    if (localBlockMerger != null)
     {
       bool1 = bool2;
       if (b().size() > 0)
@@ -276,9 +281,10 @@ public abstract class MultiViewBlock<E>
   {
     this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.a(2);
     this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo.a(null);
-    if (this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$onLoadDataDelegate != null)
+    MultiViewBlock.onLoadDataDelegate localonLoadDataDelegate = this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$onLoadDataDelegate;
+    if (localonLoadDataDelegate != null)
     {
-      this.jdField_a_of_type_ComTencentBizSubscribePartBlockMultiViewBlock$onLoadDataDelegate.a(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo, this);
+      localonLoadDataDelegate.a(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo, this);
       return;
     }
     c(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBaseLoadInfo);
@@ -338,7 +344,7 @@ public abstract class MultiViewBlock<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.part.block.MultiViewBlock
  * JD-Core Version:    0.7.0.1
  */

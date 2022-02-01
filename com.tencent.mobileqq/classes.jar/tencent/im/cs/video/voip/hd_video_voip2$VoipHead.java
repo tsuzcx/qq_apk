@@ -64,13 +64,15 @@ public final class hd_video_voip2$VoipHead
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 64, 176 }, new String[] { "uint64_uin", "uint64_seq", "uint32_cmd", "uint32_error_no", "bytes_build_ver", "uint32_term_type", "uint32_app_type", "uint32_biz_id", "int32_sub_service_type" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, VoipHead.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 64, 176 }, new String[] { "uint64_uin", "uint64_seq", "uint32_cmd", "uint32_error_no", "bytes_build_ver", "uint32_term_type", "uint32_app_type", "uint32_biz_id", "int32_sub_service_type" }, new Object[] { localLong, localLong, localInteger, localInteger, localByteStringMicro, localInteger, localInteger, localInteger, localInteger }, VoipHead.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.video.voip.hd_video_voip2.VoipHead
  * JD-Core Version:    0.7.0.1
  */

@@ -60,32 +60,36 @@ public class TroopNameHelper
     int i = 0;
     for (;;)
     {
-      if (i < paramArrayList.size()) {
-        localStringBuffer.append((String)paramArrayList.get(i)).append("、");
-      }
-      try
+      if (i < paramArrayList.size())
       {
-        int j = localStringBuffer.toString().getBytes("utf-8").length;
-        if (j > 48)
+        localStringBuffer.append((String)paramArrayList.get(i));
+        localStringBuffer.append("、");
+        try
         {
-          if (localStringBuffer.toString().endsWith("、")) {
-            localStringBuffer.delete(localStringBuffer.length() - 1, localStringBuffer.length());
+          int j = localStringBuffer.toString().getBytes("utf-8").length;
+          if (j > 48) {
+            break label81;
           }
-          return localStringBuffer.toString();
+        }
+        catch (Exception localException)
+        {
+          QLog.e("TroopNameHelper", 1, "get length failed!", localException);
+          i += 1;
         }
       }
-      catch (Exception localException)
-      {
-        QLog.e("TroopNameHelper", 1, "get length failed!", localException);
-        i += 1;
-      }
     }
+    label81:
+    if (localStringBuffer.toString().endsWith("、")) {
+      localStringBuffer.delete(localStringBuffer.length() - 1, localStringBuffer.length());
+    }
+    return localStringBuffer.toString();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_MqqAppAppRuntime instanceof AppInterface)) {
-      ((AppInterface)this.jdField_a_of_type_MqqAppAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
+    AppRuntime localAppRuntime = this.jdField_a_of_type_MqqAppAppRuntime;
+    if ((localAppRuntime instanceof AppInterface)) {
+      ((AppInterface)localAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopApiObserverTroopObserver);
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.clear();
     this.b.clear();
@@ -101,14 +105,13 @@ public class TroopNameHelper
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    TroopInfo localTroopInfo;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      localTroopInfo = ((ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(paramString);
-    } while ((localTroopInfo == null) || (localTroopInfo.hasSetTroopName()));
-    a(paramString, null);
+    }
+    TroopInfo localTroopInfo = ((ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(paramString);
+    if ((localTroopInfo != null) && (!localTroopInfo.hasSetTroopName())) {
+      a(paramString, null);
+    }
   }
   
   protected void a(String paramString, long paramLong)
@@ -134,11 +137,11 @@ public class TroopNameHelper
     {
       a(localGenTroopNameTask);
       this.b.remove(paramString);
-    }
-    while (!paramBoolean) {
       return;
     }
-    a(paramString);
+    if (paramBoolean) {
+      a(paramString);
+    }
   }
   
   protected void a(boolean paramBoolean, long paramLong, int paramInt, List<oidb_0x899.memberlist> paramList, String paramString)
@@ -146,42 +149,53 @@ public class TroopNameHelper
     if (QLog.isColorLevel())
     {
       localObject = new StringBuilder(150);
-      ((StringBuilder)localObject).append("onOIDB0X899_0_Ret").append("| isSuccess = ").append(paramBoolean).append("| troopuin = ").append(paramLong).append("| nFlag = ").append(paramInt).append("| strErorMsg = ").append(paramString);
+      ((StringBuilder)localObject).append("onOIDB0X899_0_Ret");
+      ((StringBuilder)localObject).append("| isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append("| troopuin = ");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("| nFlag = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("| strErorMsg = ");
+      ((StringBuilder)localObject).append(paramString);
       QLog.i("TroopNameHelper", 2, ((StringBuilder)localObject).toString());
     }
     paramString = String.valueOf(paramLong);
     Object localObject = (ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "");
-    TroopInfo localTroopInfo;
     if ((paramInt == 1) && (paramBoolean) && (this.b.containsKey(paramString)))
     {
-      localTroopInfo = ((ITroopInfoService)localObject).findTroopInfo(paramString);
-      if (localTroopInfo != null) {}
-    }
-    else
-    {
-      return;
-    }
-    if (paramList == null) {}
-    for (paramInt = 0;; paramInt = paramList.size())
-    {
+      TroopInfo localTroopInfo = ((ITroopInfoService)localObject).findTroopInfo(paramString);
+      if (localTroopInfo == null) {
+        return;
+      }
+      if (paramList == null) {
+        paramInt = 0;
+      } else {
+        paramInt = paramList.size();
+      }
       if (paramInt == 1)
       {
         paramList = (oidb_0x899.memberlist)paramList.get(0);
-        if ((paramList == null) || (!paramList.uint64_member_uin.has())) {
-          break;
+        if (paramList != null)
+        {
+          if (!paramList.uint64_member_uin.has()) {
+            return;
+          }
+          paramList = String.valueOf(paramList.uint64_member_uin.get());
+          if ((paramList != null) && (!"".equals(paramList.trim()))) {
+            localTroopInfo.troopowneruin = paramList.trim();
+          }
         }
-        paramList = String.valueOf(paramList.uint64_member_uin.get());
-        if ((paramList != null) && (!"".equals(paramList.trim()))) {
-          localTroopInfo.troopowneruin = paramList.trim();
+        else
+        {
+          return;
         }
       }
       ((ITroopInfoService)localObject).saveTroopInfo(localTroopInfo);
       paramList = (TroopNameHelper.GenTroopNameTask)this.b.get(paramString);
-      if ((paramList == null) || (paramList.a)) {
-        break;
+      if ((paramList != null) && (!paramList.a)) {
+        a(paramList);
       }
-      a(paramList);
-      return;
     }
   }
   
@@ -197,7 +211,7 @@ public class TroopNameHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.utils.TroopNameHelper
  * JD-Core Version:    0.7.0.1
  */

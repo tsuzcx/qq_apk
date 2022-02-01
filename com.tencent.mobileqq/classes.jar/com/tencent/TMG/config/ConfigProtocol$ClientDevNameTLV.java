@@ -35,10 +35,7 @@ public class ConfigProtocol$ClientDevNameTLV
     }
     catch (UnsupportedEncodingException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
     setLength(s);
   }

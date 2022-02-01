@@ -8,7 +8,7 @@ public class HostNetworkUtils
 {
   public static int getConnRetryTimes(int paramInt)
   {
-    return NetworkUtil.a(paramInt);
+    return NetworkUtil.getConnRetryTimes(paramInt);
   }
   
   public static boolean is4G()
@@ -23,17 +23,17 @@ public class HostNetworkUtils
   
   public static boolean isNetworkAvailable()
   {
-    return NetworkUtil.g(MobileQQ.sMobileQQ);
+    return NetworkUtil.isNetworkAvailable(MobileQQ.sMobileQQ);
   }
   
   public static boolean isWifi()
   {
-    return NetworkUtil.h(MobileQQ.sMobileQQ);
+    return NetworkUtil.isWifiConnected(MobileQQ.sMobileQQ);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.variation.HostNetworkUtils
  * JD-Core Version:    0.7.0.1
  */

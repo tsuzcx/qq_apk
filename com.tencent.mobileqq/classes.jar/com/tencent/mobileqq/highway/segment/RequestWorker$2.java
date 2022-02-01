@@ -16,14 +16,21 @@ class RequestWorker$2
       return;
     }
     RequestWorker.access$100(this.this$0, this.val$heartBreak);
-    BdhLogUtil.LogEvent("N", "OnConnIdle: SendHeartBreak : " + this.val$heartBreak.dumpBaseInfo() + " size:" + this.this$0.mCurrentRequests + " delay:" + this.val$delay);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnConnIdle: SendHeartBreak : ");
+    localStringBuilder.append(this.val$heartBreak.dumpBaseInfo());
+    localStringBuilder.append(" size:");
+    localStringBuilder.append(this.this$0.mCurrentRequests);
+    localStringBuilder.append(" delay:");
+    localStringBuilder.append(this.val$delay);
+    BdhLogUtil.LogEvent("N", localStringBuilder.toString());
     this.this$0.engine.mConnManager.heartBreaks.remove(Integer.valueOf(this.val$connId));
     this.this$0.engine.mConnManager.wakeupConnectionToWrite(this.this$0.mCurrentRequests, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestWorker.2
  * JD-Core Version:    0.7.0.1
  */

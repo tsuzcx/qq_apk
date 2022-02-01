@@ -15,19 +15,21 @@ class MessageForGrayTips$HightlightClickableSpan$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (NetworkUtil.d(MessageForGrayTips.HightlightClickableSpan.access$100(this.a)))
+    if (NetworkUtil.isNetSupport(MessageForGrayTips.HightlightClickableSpan.access$100(this.a)))
     {
       paramDialogInterface.dismiss();
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), MessageForGrayTips.HightlightClickableSpan.access$200(this.a).mMsgActionData);
-      MessageForGrayTips.HightlightClickableSpan.access$300(this.a, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(this.a).get(), this.a.frienduin);
+      paramDialogInterface = this.a;
+      MessageForGrayTips.HightlightClickableSpan.access$300(paramDialogInterface, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(paramDialogInterface).get(), MessageForGrayTips.HightlightClickableSpan.access$200(this.a).mMsgActionData);
+      paramDialogInterface = this.a;
+      MessageForGrayTips.HightlightClickableSpan.access$300(paramDialogInterface, (QQAppInterface)MessageForGrayTips.HightlightClickableSpan.access$000(paramDialogInterface).get(), this.a.frienduin);
       return;
     }
-    QQToast.a(BaseApplication.getContext(), 1, 2131691543, 0).a();
+    QQToast.a(BaseApplication.getContext(), 1, 2131691464, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForGrayTips.HightlightClickableSpan.4
  * JD-Core Version:    0.7.0.1
  */

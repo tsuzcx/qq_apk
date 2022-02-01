@@ -27,32 +27,32 @@ public class QZoneMsgObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (!onDataValid(paramBoolean, paramBundle)) {}
-    do
-    {
+    if (!onDataValid(paramBoolean, paramBundle)) {
       return;
-      if (paramInt == 0)
-      {
-        onPreloadMsg(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 1)
-      {
-        onReFreshMsg(paramBoolean, paramBundle);
-        return;
-      }
-      if (paramInt == 2)
-      {
-        onLoadMoreMsg(paramBoolean, paramBundle);
-        return;
-      }
-    } while (paramInt != 100);
-    onLikeFeed(paramBoolean, paramBundle);
+    }
+    if (paramInt == 0)
+    {
+      onPreloadMsg(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 1)
+    {
+      onReFreshMsg(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 2)
+    {
+      onLoadMoreMsg(paramBoolean, paramBundle);
+      return;
+    }
+    if (paramInt == 100) {
+      onLikeFeed(paramBoolean, paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.QZoneMsgObserver
  * JD-Core Version:    0.7.0.1
  */

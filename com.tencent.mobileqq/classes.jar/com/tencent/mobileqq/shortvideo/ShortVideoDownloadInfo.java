@@ -24,62 +24,83 @@ public class ShortVideoDownloadInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nShortVideoDownloadInfo");
-    localStringBuilder.append("\n |-").append("md5:").append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n |-").append("uuid:").append(this.a);
-    localStringBuilder.append("\n |-").append("fileType:").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append("\n |-").append("format:").append(this.d);
-    localStringBuilder.append("\n |-").append("mRequestType:").append(this.f);
-    localStringBuilder.append("\n |-").append("mSceneType:").append(this.g);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("md5:");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("uuid:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("fileType:");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("format:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("mRequestType:");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append("\n |-");
+    localStringBuilder.append("mSceneType:");
+    localStringBuilder.append(this.g);
     return localStringBuilder.toString();
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (paramInt2 == 0) {
-      if ((paramInt1 == 0) || (paramInt1 == 1008)) {
+    if (paramInt2 == 0)
+    {
+      if ((paramInt1 != 0) && (paramInt1 != 1008))
+      {
+        if (paramInt1 == 3000)
+        {
+          this.jdField_e_of_type_Int = 1005;
+          return;
+        }
+        if (paramInt1 == 1) {
+          this.jdField_e_of_type_Int = 1003;
+        }
+      }
+      else
+      {
         this.jdField_e_of_type_Int = 1001;
       }
     }
-    do
-    {
-      do
+    else if (1 == paramInt2) {
+      if ((paramInt1 != 0) && (paramInt1 != 1008))
       {
-        do
+        if (paramInt1 == 3000)
         {
+          this.jdField_e_of_type_Int = 1006;
           return;
-          if (paramInt1 == 3000)
-          {
-            this.jdField_e_of_type_Int = 1005;
-            return;
-          }
-        } while (paramInt1 != 1);
-        this.jdField_e_of_type_Int = 1003;
-        return;
-      } while (1 != paramInt2);
-      if ((paramInt1 == 0) || (paramInt1 == 1008))
+        }
+        if (paramInt1 == 1) {
+          this.jdField_e_of_type_Int = 1004;
+        }
+      }
+      else
       {
         this.jdField_e_of_type_Int = 1002;
-        return;
       }
-      if (paramInt1 == 3000)
-      {
-        this.jdField_e_of_type_Int = 1006;
-        return;
-      }
-    } while (paramInt1 != 1);
-    this.jdField_e_of_type_Int = 1004;
+    }
   }
   
   public boolean a()
   {
+    StringBuilder localStringBuilder;
     if (TextUtils.isEmpty(this.a))
     {
-      a("ShortVideoDownloadInfo.check", "uuid invaid:" + this.a);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uuid invaid:");
+      localStringBuilder.append(this.a);
+      a("ShortVideoDownloadInfo.check", localStringBuilder.toString());
       return false;
     }
     if (this.jdField_b_of_type_JavaLangString == null)
     {
-      a("ShortVideoDownloadInfo", "selfUin invalid,selfUin:" + this.jdField_b_of_type_JavaLangString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("selfUin invalid,selfUin:");
+      localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+      a("ShortVideoDownloadInfo", localStringBuilder.toString());
       return false;
     }
     return super.a();
@@ -95,7 +116,7 @@ public class ShortVideoDownloadInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoDownloadInfo
  * JD-Core Version:    0.7.0.1
  */

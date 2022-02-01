@@ -4,7 +4,8 @@ import android.app.Dialog;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.nearby.NearbySPUtil;
+import com.tencent.mobileqq.nearby.api.INearbySPUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class LbsBaseActivity$6
@@ -14,16 +15,18 @@ class LbsBaseActivity$6
   
   public void onClick(View paramView)
   {
-    NearbySPUtil.a(this.a.getAppInterface().getAccount(), true);
-    if ((LbsBaseActivity.b(this.a) != null) && (LbsBaseActivity.b(this.a).isShowing())) {
-      this.a.a(LbsBaseActivity.b(this.a));
+    ((INearbySPUtil)QRoute.api(INearbySPUtil.class)).setObtainLocAllowed(this.a.getAppInterface().getAccount(), true);
+    if ((LbsBaseActivity.access$300(this.a) != null) && (LbsBaseActivity.access$300(this.a).isShowing()))
+    {
+      LbsBaseActivity localLbsBaseActivity = this.a;
+      localLbsBaseActivity.dialogDismiss(LbsBaseActivity.access$300(localLbsBaseActivity));
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.LbsBaseActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -44,24 +44,36 @@ public final class Utils
   
   private static final ScriptFile decorate(@NotNull ScriptFile paramScriptFile, boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((paramScriptFile instanceof ScriptFile.Path))
+    boolean bool = paramScriptFile instanceof ScriptFile.Path;
+    ScriptFile.Path localPath = null;
+    ScriptFile.Content localContent = null;
+    if (bool)
     {
-      localObject = (ScriptFile.Path)paramScriptFile;
-      paramString1 = paramString1 + paramString2;
-      if (paramBoolean) {}
-      for (paramScriptFile = ((ScriptFile.Path)paramScriptFile).getCodeCache();; paramScriptFile = null) {
-        return (ScriptFile)ScriptFile.Path.copy$default((ScriptFile.Path)localObject, paramString1, null, paramScriptFile, 2, null);
+      localPath = (ScriptFile.Path)paramScriptFile;
+      paramScriptFile = new StringBuilder();
+      paramScriptFile.append(paramString1);
+      paramScriptFile.append(paramString2);
+      paramString1 = paramScriptFile.toString();
+      paramScriptFile = localContent;
+      if (paramBoolean) {
+        paramScriptFile = localPath.getCodeCache();
       }
+      return (ScriptFile)ScriptFile.Path.copy$default(localPath, paramString1, null, paramScriptFile, 2, null);
     }
-    if (paramScriptFile == null) {
-      throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.triton.script.ScriptFile.Content");
+    if (paramScriptFile != null)
+    {
+      localContent = (ScriptFile.Content)paramScriptFile;
+      paramScriptFile = new StringBuilder();
+      paramScriptFile.append(paramString1);
+      paramScriptFile.append(paramString2);
+      paramString1 = paramScriptFile.toString();
+      paramScriptFile = localPath;
+      if (paramBoolean) {
+        paramScriptFile = localContent.getCodeCache();
+      }
+      return (ScriptFile)ScriptFile.Content.copy$default(localContent, paramString1, null, paramScriptFile, 2, null);
     }
-    Object localObject = (ScriptFile.Content)paramScriptFile;
-    paramString1 = paramString1 + paramString2;
-    if (paramBoolean) {}
-    for (paramScriptFile = ((ScriptFile.Content)localObject).getCodeCache();; paramScriptFile = null) {
-      return (ScriptFile)ScriptFile.Content.copy$default((ScriptFile.Content)localObject, paramString1, null, paramScriptFile, 2, null);
-    }
+    throw new TypeCastException("null cannot be cast to non-null type com.tencent.mobileqq.triton.script.ScriptFile.Content");
   }
   
   @NotNull
@@ -75,9 +87,14 @@ public final class Utils
   public static final void initAssertNotNullptr(long paramLong, @NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "name");
-    if (paramLong == 0L) {
-      throw ((Throwable)new TritonInitException("pointer " + paramString + " is nullptr", ErrorCodes.NATIVE_FUNCTION_CALL, null, 4, null));
+    if (paramLong != 0L) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pointer ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" is nullptr");
+    throw ((Throwable)new TritonInitException(localStringBuilder.toString(), ErrorCodes.NATIVE_FUNCTION_CALL, null, 4, null));
   }
   
   public static final <T> T jniCall(@NotNull Function0<? extends T> paramFunction0)
@@ -88,7 +105,11 @@ public final class Utils
       Object localObject = paramFunction0.invoke();
       return localObject;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError) {}
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      label15:
+      break label15;
+    }
     return paramFunction0.invoke();
   }
   
@@ -118,17 +139,15 @@ public final class Utils
       return (TritonException)paramThrowable;
     }
     String str = paramThrowable.getMessage();
-    if (str != null) {}
-    for (;;)
-    {
-      return new TritonException(str, paramErrorCodes, paramThrowable);
+    if (str == null) {
       str = "";
     }
+    return new TritonException(str, paramErrorCodes, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.utils.Utils
  * JD-Core Version:    0.7.0.1
  */

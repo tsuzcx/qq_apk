@@ -5,11 +5,10 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 class SwiftBrowserTBSHandler$5
   implements Runnable
 {
-  SwiftBrowserTBSHandler$5(SwiftBrowserTBSHandler paramSwiftBrowserTBSHandler) {}
-  
   public void run()
   {
-    this.this$0.a(MsfSdkUtils.insertMtype("Web", this.this$0.jdField_a_of_type_JavaLangString), 0);
+    ??? = this.this$0;
+    ((SwiftBrowserTBSHandler)???).a(MsfSdkUtils.insertMtype("Web", ((SwiftBrowserTBSHandler)???).jdField_a_of_type_JavaLangString), 0);
     synchronized (this.this$0.jdField_a_of_type_JavaLangObject)
     {
       this.this$0.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(true);
@@ -20,7 +19,7 @@ class SwiftBrowserTBSHandler$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.5
  * JD-Core Version:    0.7.0.1
  */

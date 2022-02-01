@@ -6,5 +6,5 @@
         <TextView android:textSize="@dimen/j1" android:textColor="@color/skin_black" android:layout_gravity="center_vertical" android:id="@id/jjq" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:text="@null" />
     </LinearLayout>
     <com.tencent.biz.widgets.GridViewForScrollView android:id="@id/cx8" android:layout_width="fill_parent" android:layout_height="wrap_content" android:listSelector="@null" android:numColumns="2" android:layout_below="@id/ea_" />
-    <com.tencent.mobileqq.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="#ff777777" android:gravity="center" android:id="@id/jnp" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:text="@string/c7w" android:layout_below="@id/cx8" />
+    <com.tencent.mobileqq.search.base.widget.RightArrowTextView android:textSize="14.0dip" android:textColor="#ff777777" android:gravity="center" android:id="@id/jnp" android:background="@drawable/jj" android:layout_width="fill_parent" android:layout_height="@dimen/j2" android:text="@string/c7w" android:layout_below="@id/cx8" />
 </merge>

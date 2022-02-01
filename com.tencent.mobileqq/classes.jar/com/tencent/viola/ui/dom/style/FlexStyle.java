@@ -43,12 +43,16 @@ public class FlexStyle
     this.margin = paramFlexStyle.margin;
     this.padding = paramFlexStyle.padding;
     this.border = paramFlexStyle.border;
-    this.position[1] = paramFlexStyle.position[1];
-    this.position[3] = paramFlexStyle.position[3];
-    this.position[0] = paramFlexStyle.position[0];
-    this.position[2] = paramFlexStyle.position[2];
-    this.dimensions[0] = paramFlexStyle.dimensions[0];
-    this.dimensions[1] = paramFlexStyle.dimensions[1];
+    float[] arrayOfFloat1 = this.position;
+    float[] arrayOfFloat2 = paramFlexStyle.position;
+    arrayOfFloat1[1] = arrayOfFloat2[1];
+    arrayOfFloat1[3] = arrayOfFloat2[3];
+    arrayOfFloat1[0] = arrayOfFloat2[0];
+    arrayOfFloat1[2] = arrayOfFloat2[2];
+    arrayOfFloat1 = this.dimensions;
+    arrayOfFloat2 = paramFlexStyle.dimensions;
+    arrayOfFloat1[0] = arrayOfFloat2[0];
+    arrayOfFloat1[1] = arrayOfFloat2[1];
     this.minWidth = paramFlexStyle.minWidth;
     this.minHeight = paramFlexStyle.minHeight;
     this.maxWidth = paramFlexStyle.maxWidth;
@@ -82,12 +86,58 @@ public class FlexStyle
   
   public String toString()
   {
-    return "direction =" + this.direction + "\nflexDirection =" + this.flexDirection + "\njustifyContent=" + this.justifyContent + "\nalignContent =" + this.alignContent + "\nalignItems =" + this.alignItems + "\nalignSelf =" + this.alignSelf + "\npositionType =" + this.positionType + "\nflexWrap =" + this.flexWrap + "\nflex =" + this.flex + "\nmargin =" + this.margin + "\npadding =" + this.padding + "\nborder =" + this.border + "\nposition[POSITION_TOP] =" + this.position[1] + "\nposition[POSITION_BOTTOM] =" + this.position[3] + "\nposition[POSITION_LEFT] =" + this.position[0] + "\nposition[POSITION_RIGHT] =" + this.position[2] + "\nposition[DIMENSION_WIDTH] =" + this.position[0] + "\nposition[DIMENSION_HEIGHT] =" + this.position[1] + "\nminWidth =" + this.minWidth + "\nminHeight =" + this.minHeight + "\nmaxWidth =" + this.maxWidth + "\nmaxHeight =" + this.maxHeight + "\n";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("direction =");
+    localStringBuilder.append(this.direction);
+    localStringBuilder.append("\nflexDirection =");
+    localStringBuilder.append(this.flexDirection);
+    localStringBuilder.append("\njustifyContent=");
+    localStringBuilder.append(this.justifyContent);
+    localStringBuilder.append("\nalignContent =");
+    localStringBuilder.append(this.alignContent);
+    localStringBuilder.append("\nalignItems =");
+    localStringBuilder.append(this.alignItems);
+    localStringBuilder.append("\nalignSelf =");
+    localStringBuilder.append(this.alignSelf);
+    localStringBuilder.append("\npositionType =");
+    localStringBuilder.append(this.positionType);
+    localStringBuilder.append("\nflexWrap =");
+    localStringBuilder.append(this.flexWrap);
+    localStringBuilder.append("\nflex =");
+    localStringBuilder.append(this.flex);
+    localStringBuilder.append("\nmargin =");
+    localStringBuilder.append(this.margin);
+    localStringBuilder.append("\npadding =");
+    localStringBuilder.append(this.padding);
+    localStringBuilder.append("\nborder =");
+    localStringBuilder.append(this.border);
+    localStringBuilder.append("\nposition[POSITION_TOP] =");
+    localStringBuilder.append(this.position[1]);
+    localStringBuilder.append("\nposition[POSITION_BOTTOM] =");
+    localStringBuilder.append(this.position[3]);
+    localStringBuilder.append("\nposition[POSITION_LEFT] =");
+    localStringBuilder.append(this.position[0]);
+    localStringBuilder.append("\nposition[POSITION_RIGHT] =");
+    localStringBuilder.append(this.position[2]);
+    localStringBuilder.append("\nposition[DIMENSION_WIDTH] =");
+    localStringBuilder.append(this.position[0]);
+    localStringBuilder.append("\nposition[DIMENSION_HEIGHT] =");
+    localStringBuilder.append(this.position[1]);
+    localStringBuilder.append("\nminWidth =");
+    localStringBuilder.append(this.minWidth);
+    localStringBuilder.append("\nminHeight =");
+    localStringBuilder.append(this.minHeight);
+    localStringBuilder.append("\nmaxWidth =");
+    localStringBuilder.append(this.maxWidth);
+    localStringBuilder.append("\nmaxHeight =");
+    localStringBuilder.append(this.maxHeight);
+    localStringBuilder.append("\n");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.style.FlexStyle
  * JD-Core Version:    0.7.0.1
  */

@@ -10,15 +10,15 @@ class VideoController$44
   public void run()
   {
     SessionInfo localSessionInfo = this.this$0.a.c(this.jdField_a_of_type_JavaLangString);
-    if ((!this.this$0.d) && (localSessionInfo != null) && (localSessionInfo.j != 21) && (localSessionInfo.j != 1011)) {
-      this.this$0.a(this.jdField_a_of_type_JavaLangString, localSessionInfo.f, false, false, true);
+    if ((!this.this$0.d) && (localSessionInfo != null) && (localSessionInfo.k != 21) && (localSessionInfo.k != 1011)) {
+      this.this$0.a(this.jdField_a_of_type_JavaLangString, localSessionInfo.e, false, false, true);
     }
     this.this$0.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_JavaLangString, this.c, this.jdField_a_of_type_Boolean, false, this.jdField_b_of_type_Boolean, this.jdField_b_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.44
  * JD-Core Version:    0.7.0.1
  */

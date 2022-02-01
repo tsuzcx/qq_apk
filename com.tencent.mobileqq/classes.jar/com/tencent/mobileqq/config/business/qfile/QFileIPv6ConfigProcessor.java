@@ -9,10 +9,9 @@ import androidx.annotation.Nullable;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
 import com.tencent.mobileqq.filemanager.app.QFileConfigManager;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QFileIPv6ConfigProcessor
@@ -21,7 +20,11 @@ public class QFileIPv6ConfigProcessor
   @NonNull
   public QFileIPv6ConfigBean a(int paramInt)
   {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent: type[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QFileIPv6ConfigProcessor", 1, localStringBuilder.toString());
     return new QFileIPv6ConfigBean();
   }
   
@@ -37,31 +40,36 @@ public class QFileIPv6ConfigProcessor
   
   public void a(QFileIPv6ConfigBean paramQFileIPv6ConfigBean)
   {
-    if (paramQFileIPv6ConfigBean == null) {
-      QLog.i("QFileIPv6ConfigProcessor", 1, "FileIPv6Config onUpdate: newConf is null.");
-    }
-    do
+    if (paramQFileIPv6ConfigBean == null)
     {
+      QLog.i("QFileIPv6ConfigProcessor", 1, "FileIPv6Config onUpdate: newConf is null.");
       return;
-      QLog.i("QFileIPv6ConfigProcessor", 1, "FileIPv6Config onUpdate");
-      localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getApp();
-    } while (localObject == null);
-    Object localObject = ((BaseQQAppInterface)localObject).getApplicationContext().getSharedPreferences("file_config_" + ((BaseQQAppInterface)localObject).getCurrentUin(), 0).edit();
-    ((SharedPreferences.Editor)localObject).putBoolean("ipv6_all_switch", paramQFileIPv6ConfigBean.jdField_a_of_type_Boolean);
-    ((SharedPreferences.Editor)localObject).putBoolean("ipv6_c2c_switch", paramQFileIPv6ConfigBean.b);
-    ((SharedPreferences.Editor)localObject).putBoolean("ipv6_group_switch", paramQFileIPv6ConfigBean.c);
-    ((SharedPreferences.Editor)localObject).putBoolean("ipv6_disc_switch", paramQFileIPv6ConfigBean.d);
-    ((SharedPreferences.Editor)localObject).putBoolean("ipv6_dataline_switch", paramQFileIPv6ConfigBean.e);
-    ((SharedPreferences.Editor)localObject).putInt("ipv6_strategy", paramQFileIPv6ConfigBean.jdField_a_of_type_Int);
-    ((SharedPreferences.Editor)localObject).apply();
-    localObject = new Bundle();
-    ((Bundle)localObject).putBoolean("ipv6_all_switch", paramQFileIPv6ConfigBean.jdField_a_of_type_Boolean);
-    ((Bundle)localObject).putBoolean("ipv6_c2c_switch", paramQFileIPv6ConfigBean.b);
-    ((Bundle)localObject).putBoolean("ipv6_group_switch", paramQFileIPv6ConfigBean.c);
-    ((Bundle)localObject).putBoolean("ipv6_disc_switch", paramQFileIPv6ConfigBean.d);
-    ((Bundle)localObject).putBoolean("ipv6_dataline_switch", paramQFileIPv6ConfigBean.e);
-    ((Bundle)localObject).putInt("ipv6_strategy", paramQFileIPv6ConfigBean.jdField_a_of_type_Int);
-    QFileConfigManager.a().b((Bundle)localObject);
+    }
+    QLog.i("QFileIPv6ConfigProcessor", 1, "FileIPv6Config onUpdate");
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    if (localBaseQQAppInterface != null)
+    {
+      Object localObject = localBaseQQAppInterface.getApplicationContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file_config_");
+      localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
+      localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putBoolean("ipv6_all_switch", paramQFileIPv6ConfigBean.jdField_a_of_type_Boolean);
+      ((SharedPreferences.Editor)localObject).putBoolean("ipv6_c2c_switch", paramQFileIPv6ConfigBean.b);
+      ((SharedPreferences.Editor)localObject).putBoolean("ipv6_group_switch", paramQFileIPv6ConfigBean.c);
+      ((SharedPreferences.Editor)localObject).putBoolean("ipv6_disc_switch", paramQFileIPv6ConfigBean.d);
+      ((SharedPreferences.Editor)localObject).putBoolean("ipv6_dataline_switch", paramQFileIPv6ConfigBean.e);
+      ((SharedPreferences.Editor)localObject).putInt("ipv6_strategy", paramQFileIPv6ConfigBean.jdField_a_of_type_Int);
+      ((SharedPreferences.Editor)localObject).apply();
+      localObject = new Bundle();
+      ((Bundle)localObject).putBoolean("ipv6_all_switch", paramQFileIPv6ConfigBean.jdField_a_of_type_Boolean);
+      ((Bundle)localObject).putBoolean("ipv6_c2c_switch", paramQFileIPv6ConfigBean.b);
+      ((Bundle)localObject).putBoolean("ipv6_group_switch", paramQFileIPv6ConfigBean.c);
+      ((Bundle)localObject).putBoolean("ipv6_disc_switch", paramQFileIPv6ConfigBean.d);
+      ((Bundle)localObject).putBoolean("ipv6_dataline_switch", paramQFileIPv6ConfigBean.e);
+      ((Bundle)localObject).putInt("ipv6_strategy", paramQFileIPv6ConfigBean.jdField_a_of_type_Int);
+      QFileConfigManager.a(localBaseQQAppInterface).b((Bundle)localObject);
+    }
   }
   
   public Class<QFileIPv6ConfigBean> clazz()
@@ -86,7 +94,11 @@ public class QFileIPv6ConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("QFileIPv6ConfigProcessor", 1, "onReqFailed: failCode[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: failCode[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QFileIPv6ConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -96,7 +108,7 @@ public class QFileIPv6ConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileIPv6ConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

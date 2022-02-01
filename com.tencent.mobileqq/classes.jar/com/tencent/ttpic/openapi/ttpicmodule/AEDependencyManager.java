@@ -23,13 +23,14 @@ public class AEDependencyManager
   
   public int getUnloadedDependenciesCount()
   {
-    if (this.materialDependencies == null) {
+    Object localObject = this.materialDependencies;
+    if (localObject == null) {
       return this.notLoadedDependencies.size();
     }
-    Iterator localIterator = this.materialDependencies.iterator();
-    while (localIterator.hasNext())
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      String str = (String)localIterator.next();
+      String str = (String)((Iterator)localObject).next();
       if (!isDependencyLoaded(str)) {
         this.notLoadedDependencies.add(str);
       }
@@ -68,7 +69,7 @@ public class AEDependencyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.ttpicmodule.AEDependencyManager
  * JD-Core Version:    0.7.0.1
  */

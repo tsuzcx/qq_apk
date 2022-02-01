@@ -13,14 +13,18 @@ final class TPScreenRefreshRateDetector$2
     if (paramInt == 0) {
       TPScreenRefreshRateDetector.access$300().sendEmptyMessage(10001);
     }
-    TPNativeLog.printLog(2, TPScreenRefreshRateDetector.access$100(), "onDisplayChanged displayId:" + paramInt);
+    String str = TPScreenRefreshRateDetector.access$100();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDisplayChanged displayId:");
+    localStringBuilder.append(paramInt);
+    TPNativeLog.printLog(2, str, localStringBuilder.toString());
   }
   
   public void onDisplayRemoved(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.common.TPScreenRefreshRateDetector.2
  * JD-Core Version:    0.7.0.1
  */

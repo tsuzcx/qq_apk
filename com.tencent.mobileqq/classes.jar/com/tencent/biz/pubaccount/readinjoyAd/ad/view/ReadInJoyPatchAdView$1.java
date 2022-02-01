@@ -15,30 +15,38 @@ class ReadInJoyPatchAdView$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInJoyPatchAdView", 2, "mUIHandler handleMessage() msg.what = " + paramMessage.what);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mUIHandler handleMessage() msg.what = ");
+      localStringBuilder.append(paramMessage.what);
+      QLog.d("ReadInJoyPatchAdView", 2, localStringBuilder.toString());
     }
     switch (paramMessage.what)
     {
-    }
-    do
-    {
+    default: 
+    case 1203: 
+      if (this.a.a != null)
+      {
+        this.a.a.b(ReadInJoyPatchAdView.a(this.a), ReadInJoyPatchAdView.a(this.a));
+        return;
+      }
+      break;
+    case 1202: 
+      ReadInJoyPatchAdView.a(this.a);
       return;
+    case 1201: 
       int i = 0;
       if ((paramMessage.obj instanceof Integer)) {
         i = ((Integer)paramMessage.obj).intValue();
       }
       ReadInJoyPatchAdView.a(this.a, i);
-      return;
-      ReadInJoyPatchAdView.a(this.a);
-      return;
-    } while (this.a.a == null);
-    this.a.a.b(ReadInJoyPatchAdView.a(this.a), ReadInJoyPatchAdView.a(this.a));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyPatchAdView.1
  * JD-Core Version:    0.7.0.1
  */

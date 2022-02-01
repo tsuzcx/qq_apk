@@ -45,12 +45,16 @@ public class DesktopPopularModuleInfo
   
   public String toString()
   {
-    return this.title + "_" + this.mModuleType;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.title);
+    localStringBuilder.append("_");
+    localStringBuilder.append(this.mModuleType);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopPopularModuleInfo
  * JD-Core Version:    0.7.0.1
  */

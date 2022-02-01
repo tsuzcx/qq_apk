@@ -15,13 +15,16 @@ class AIOGalleryScene$8$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US) + ".mp4";
+    paramDialogInterface = new StringBuilder();
+    paramDialogInterface.append(this.jdField_a_of_type_JavaIoFile.getParentFile().getName().toLowerCase(Locale.US));
+    paramDialogInterface.append(".mp4");
+    paramDialogInterface = paramDialogInterface.toString();
     ThreadManager.getFileThreadHandler().post(new ShortVideoUtils.VideoFileSaveRunnable(this.jdField_a_of_type_JavaIoFile.getAbsolutePath(), this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$8.a.a, paramDialogInterface, true));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.8.1
  * JD-Core Version:    0.7.0.1
  */

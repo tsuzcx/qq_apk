@@ -24,15 +24,16 @@ public class LaunchFromWX$Req
   
   public boolean checkArgs()
   {
-    if ((this.messageAction != null) && (this.messageAction.length() > 2048))
+    String str = this.messageAction;
+    if ((str != null) && (str.length() > 2048)) {}
+    for (str = "checkArgs fail, messageAction is too long";; str = "checkArgs fail, messageExt is too long")
     {
-      Log.e("MicroMsg.SDK.LaunchFromWX.Req", "checkArgs fail, messageAction is too long");
+      Log.e("MicroMsg.SDK.LaunchFromWX.Req", str);
       return false;
-    }
-    if ((this.messageExt != null) && (this.messageExt.length() > 2048))
-    {
-      Log.e("MicroMsg.SDK.LaunchFromWX.Req", "checkArgs fail, messageExt is too long");
-      return false;
+      str = this.messageExt;
+      if ((str == null) || (str.length() <= 2048)) {
+        break;
+      }
     }
     return true;
   }
@@ -62,7 +63,7 @@ public class LaunchFromWX$Req
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.opensdk.modelmsg.LaunchFromWX.Req
  * JD-Core Version:    0.7.0.1
  */

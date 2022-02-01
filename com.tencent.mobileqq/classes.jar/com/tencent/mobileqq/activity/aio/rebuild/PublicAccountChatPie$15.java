@@ -1,29 +1,29 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.os.Handler;
-import android.view.animation.Animation;
-import android.view.animation.Animation.AnimationListener;
-import android.widget.RelativeLayout;
+import android.animation.Animator;
+import com.tencent.mobileqq.bubble.ChatXListView;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class PublicAccountChatPie$15
-  implements Animation.AnimationListener
+  extends D8SafeAnimatorListener
 {
   PublicAccountChatPie$15(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void onAnimationEnd(Animation paramAnimation)
+  public void onAnimationCancel(Animator paramAnimator) {}
+  
+  public void onAnimationEnd(Animator paramAnimator)
   {
-    this.a.n = 5;
-    PublicAccountChatPie.c(this.a).post(new PublicAccountChatPie.15.1(this));
-    this.a.a.sendEmptyMessage(1);
+    this.a.a.removeHeaderView(PublicAccountChatPie.a(this.a));
+    PublicAccountChatPie.a(this.a, true);
   }
   
-  public void onAnimationRepeat(Animation paramAnimation) {}
+  public void onAnimationRepeat(Animator paramAnimator) {}
   
-  public void onAnimationStart(Animation paramAnimation) {}
+  public void onAnimationStart(Animator paramAnimator) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.15
  * JD-Core Version:    0.7.0.1
  */

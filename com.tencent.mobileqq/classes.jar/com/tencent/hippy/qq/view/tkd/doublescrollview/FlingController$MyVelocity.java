@@ -15,7 +15,9 @@ public class FlingController$MyVelocity
     if (l1 == 0L) {
       return 0;
     }
-    return (int)((l2 - l3) * 1000L / l1 * 1.2D);
+    double d = (l2 - l3) * 1000L / l1;
+    Double.isNaN(d);
+    return (int)(d * 1.2D);
   }
   
   public void refreash()
@@ -32,7 +34,7 @@ public class FlingController$MyVelocity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.doublescrollview.FlingController.MyVelocity
  * JD-Core Version:    0.7.0.1
  */

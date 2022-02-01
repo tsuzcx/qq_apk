@@ -51,13 +51,11 @@ public class BookShelfJsPlugin
         return true;
       }
       Toast.makeText(this.mMiniAppContext.getAttachedActivity(), "书架暂未发布，敬请期待", 0).show();
+      return false;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QMLog.e("BookShelfJsPlugin", "handleUpdateBookshelf exception: ", localThrowable);
-      }
+      QMLog.e("BookShelfJsPlugin", "handleUpdateBookshelf exception: ", localThrowable);
     }
     return false;
   }
@@ -77,21 +75,26 @@ public class BookShelfJsPlugin
     {
       ((MiniCustomDialog)localObject1).getDialogImage().setVisibility(0);
       ((MiniCustomDialog)localObject1).getDialogImage().setImageDrawable((Drawable)localObject2);
-      ((MiniCustomDialog)localObject1).setCanceledOnTouchOutside(false);
-      ((MiniCustomDialog)localObject1).show();
-      localObject2 = this.mMiniAppContext.getMiniAppInfo();
-      if (localObject2 == null) {
-        break label207;
-      }
     }
-    label207:
-    for (localObject1 = "" + ((MiniAppInfo)localObject2).getReportType();; localObject1 = "0")
+    else
     {
-      SDKMiniProgramLpReportDC04239.reportForSDK((MiniAppInfo)localObject2, (String)localObject1, null, "bookshelf_enter", "toast_enter", "expo", "");
-      return;
       ((MiniCustomDialog)localObject1).getDialogImage().setVisibility(8);
-      break;
     }
+    ((MiniCustomDialog)localObject1).setCanceledOnTouchOutside(false);
+    ((MiniCustomDialog)localObject1).show();
+    localObject2 = this.mMiniAppContext.getMiniAppInfo();
+    if (localObject2 != null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append(((MiniAppInfo)localObject2).getReportType());
+      localObject1 = ((StringBuilder)localObject1).toString();
+    }
+    else
+    {
+      localObject1 = "0";
+    }
+    SDKMiniProgramLpReportDC04239.reportForSDK((MiniAppInfo)localObject2, (String)localObject1, null, "bookshelf_enter", "toast_enter", "expo", "");
   }
   
   @JsEvent({"insertBookshelf"})
@@ -134,13 +137,16 @@ public class BookShelfJsPlugin
         MiniAppInfo localMiniAppInfo = this.mMiniAppContext.getMiniAppInfo();
         if (localMiniAppInfo != null)
         {
-          String str1 = "" + localMiniAppInfo.getReportType();
-          SDKMiniProgramLpReportDC04239.reportForSDK(localMiniAppInfo, str1, null, "bookshelf_enter", "cp_enter", "click", "");
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("");
+          ((StringBuilder)localObject).append(localMiniAppInfo.getReportType());
+          localObject = ((StringBuilder)localObject).toString();
+          SDKMiniProgramLpReportDC04239.reportForSDK(localMiniAppInfo, (String)localObject, null, "bookshelf_enter", "cp_enter", "click", "");
           if (jumpToBookShelfApp()) {
             return paramRequestEvent.ok();
           }
-          str1 = paramRequestEvent.fail();
-          return str1;
+          localObject = paramRequestEvent.fail();
+          return localObject;
         }
       }
       catch (Throwable localThrowable)
@@ -148,7 +154,7 @@ public class BookShelfJsPlugin
         QMLog.e("BookShelfJsPlugin", "handleUpdateBookshelf exception: ", localThrowable);
         return paramRequestEvent.fail();
       }
-      String str2 = "0";
+      String str = "0";
     }
   }
   
@@ -208,7 +214,7 @@ public class BookShelfJsPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BookShelfJsPlugin
  * JD-Core Version:    0.7.0.1
  */

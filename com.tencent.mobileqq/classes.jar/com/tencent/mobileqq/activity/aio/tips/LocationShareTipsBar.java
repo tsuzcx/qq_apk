@@ -26,7 +26,7 @@ import com.tencent.mobileqq.avatar.listener.DecodeTaskCompletionListener;
 import com.tencent.mobileqq.location.LocationShareServiceHolder;
 import com.tencent.mobileqq.location.api.ILocationShareService;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQBlurView;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -37,7 +37,7 @@ import java.util.List;
 public class LocationShareTipsBar
   implements View.OnClickListener, TipsBarTask, DecodeTaskCompletionListener
 {
-  private static long jdField_a_of_type_Long = 0L;
+  private static long jdField_a_of_type_Long;
   private ViewGroup jdField_a_of_type_AndroidViewViewGroup;
   private BaseChatPie jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
   private IFaceDecoder jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
@@ -60,9 +60,10 @@ public class LocationShareTipsBar
   {
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374588));
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView = ((QQBlurView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374126));
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.c);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView);
+      QQBlurView localQQBlurView = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      localQQBlurView.b(localQQBlurView);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b(0);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(8.0F);
       this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.a(4);
@@ -80,7 +81,7 @@ public class LocationShareTipsBar
   
   private void a(String paramString, ImageView paramImageView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity != BaseActivity.sTopActivity) {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity != BaseActivity.sTopActivity) {
       return;
     }
     Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.getBitmapFromCache(1, paramString);
@@ -102,13 +103,16 @@ public class LocationShareTipsBar
       paramTextView.post(new LocationShareTipsBar.2(paramString1, paramString2, paramTextView));
       return;
     }
-    String str = paramString1 + paramString2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(paramString2);
+    localObject = ((StringBuilder)localObject).toString();
     float f2 = paramTextView.getWidth();
     float f1 = paramTextView.getPaint().measureText(paramString1);
     float f3 = paramTextView.getPaint().measureText(paramString2);
     if (f1 + f3 <= f2)
     {
-      paramTextView.setText(str);
+      paramTextView.setText((CharSequence)localObject);
       return;
     }
     float f4 = paramTextView.getPaint().measureText("...");
@@ -117,48 +121,59 @@ public class LocationShareTipsBar
       paramString1 = paramString1.substring(0, paramString1.length() - 1);
       f1 = paramTextView.getPaint().measureText(paramString1);
     }
-    paramTextView.setText(paramString1 + "..." + paramString2);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("...");
+    ((StringBuilder)localObject).append(paramString2);
+    paramTextView.setText(((StringBuilder)localObject).toString());
   }
   
   private void b()
   {
-    View localView = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374594);
-    ImageView localImageView = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374587);
+    Object localObject2 = this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374132);
+    Object localObject1 = (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374125);
     if (ThemeImageWrapper.isNightMode())
     {
-      localView.setBackgroundColor(Color.parseColor("#1F1F1F"));
-      localImageView.setImageResource(2130839601);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(8);
+      ((View)localObject2).setBackgroundColor(Color.parseColor("#1F1F1F"));
+      ((ImageView)localObject1).setImageResource(2130839459);
+      localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      if (localObject1 != null) {
+        ((QQBlurView)localObject1).setVisibility(8);
       }
-      return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.setVisibility(0);
+    else
+    {
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView;
+      if (localObject2 != null) {
+        ((QQBlurView)localObject2).setVisibility(0);
+      }
+      ((ImageView)localObject1).setImageResource(2130839458);
     }
-    localImageView.setImageResource(2130839600);
   }
   
   private void b(boolean paramBoolean, String paramString, int paramInt, List<String> paramList)
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
     if (this.jdField_a_of_type_AndroidViewViewGroup == null)
     {
-      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)View.inflate((Context)localObject, 2131561083, null));
+      this.jdField_a_of_type_AndroidViewViewGroup = ((ViewGroup)View.inflate((Context)localObject1, 2131560947, null));
       this.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(this);
     }
     this.jdField_a_of_type_AndroidViewViewGroup.setClickable(true);
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374590).setVisibility(8);
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374591).setVisibility(8);
-    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374592).setVisibility(8);
-    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374589);
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374128).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374129).setVisibility(8);
+    this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374130).setVisibility(8);
+    TextView localTextView = (TextView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374127);
     if (ThemeUtil.isInNightMode(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface)) {
       localTextView.setTextColor(Color.parseColor("#A8A8A8"));
     }
     a();
     if (paramBoolean)
     {
-      paramString = "你" + ((Activity)localObject).getString(2131696029);
+      paramString = new StringBuilder();
+      paramString.append("你");
+      paramString.append(((Activity)localObject1).getString(2131696044));
+      paramString = paramString.toString();
       localTextView.setText(paramString);
       if (!this.jdField_a_of_type_Boolean)
       {
@@ -166,32 +181,41 @@ public class LocationShareTipsBar
         this.jdField_a_of_type_Boolean = true;
       }
       a(this.jdField_a_of_type_AndroidViewViewGroup, paramString);
-      if ((paramList.size() > 0) && (!TextUtils.isEmpty((CharSequence)paramList.get(0)))) {
-        a((String)paramList.get(0), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374590));
-      }
-      if ((paramList.size() > 1) && (!TextUtils.isEmpty((CharSequence)paramList.get(1)))) {
-        a((String)paramList.get(1), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374591));
-      }
-      if ((paramList.size() > 2) && (!TextUtils.isEmpty((CharSequence)paramList.get(2)))) {
-        a((String)paramList.get(2), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374592));
-      }
-      this.jdField_a_of_type_AndroidViewViewGroup.addOnAttachStateChangeListener(new LocationShareTipsBar.3(this));
-      b();
-      return;
     }
-    if (paramInt == 1) {}
-    for (localObject = ((Activity)localObject).getString(2131696029);; localObject = String.format(((Activity)localObject).getString(2131696028), new Object[] { Integer.valueOf(paramInt) }))
+    else
     {
-      String str = paramString + (String)localObject;
-      a(paramString, (String)localObject, localTextView);
+      if (paramInt == 1) {
+        localObject1 = ((Activity)localObject1).getString(2131696044);
+      } else {
+        localObject1 = String.format(((Activity)localObject1).getString(2131696043), new Object[] { Integer.valueOf(paramInt) });
+      }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      a(paramString, (String)localObject1, localTextView);
       if (!this.jdField_a_of_type_Boolean)
       {
         ReportController.b(null, "CliOper", "", "", "0X800A767", "0X800A767", 2, 0, "", "0", "0", "");
         this.jdField_a_of_type_Boolean = true;
       }
-      a(this.jdField_a_of_type_AndroidViewViewGroup, str + " 点击加入位置共享");
-      break;
+      paramString = this.jdField_a_of_type_AndroidViewViewGroup;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(" 点击加入位置共享");
+      a(paramString, ((StringBuilder)localObject1).toString());
     }
+    if ((paramList.size() > 0) && (!TextUtils.isEmpty((CharSequence)paramList.get(0)))) {
+      a((String)paramList.get(0), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374128));
+    }
+    if ((paramList.size() > 1) && (!TextUtils.isEmpty((CharSequence)paramList.get(1)))) {
+      a((String)paramList.get(1), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374129));
+    }
+    if ((paramList.size() > 2) && (!TextUtils.isEmpty((CharSequence)paramList.get(2)))) {
+      a((String)paramList.get(2), (ImageView)this.jdField_a_of_type_AndroidViewViewGroup.findViewById(2131374130));
+    }
+    this.jdField_a_of_type_AndroidViewViewGroup.addOnAttachStateChangeListener(new LocationShareTipsBar.3(this));
+    b();
   }
   
   public int a()
@@ -206,18 +230,19 @@ public class LocationShareTipsBar
   
   public void a(int paramInt, Object... paramVarArgs)
   {
-    if (paramInt == 1000) {
+    if (paramInt == 1000)
+    {
       if (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null)
       {
         ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
         ThreadManager.getUIHandlerV2().postDelayed(this.jdField_a_of_type_JavaLangRunnable, 0L);
       }
     }
-    while ((paramInt != 1003) || (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView == null)) {
-      return;
+    else if ((paramInt == 1003) && (this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView != null))
+    {
+      ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b();
     }
-    ThreadManager.getUIHandlerV2().removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetQQBlurView.b();
   }
   
   public void a(boolean paramBoolean, String paramString, int paramInt, List<String> paramList)
@@ -237,11 +262,8 @@ public class LocationShareTipsBar
   
   public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - jdField_a_of_type_Long < 1000L) {}
-    for (;;)
+    if (System.currentTimeMillis() - jdField_a_of_type_Long >= 1000L)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       if (QLog.isColorLevel()) {
         QLog.d("LocationShareTipsBar", 2, new Object[] { "onClick: invoked. ", " v: ", paramView });
       }
@@ -249,6 +271,7 @@ public class LocationShareTipsBar
       LocationShareServiceHolder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).launchShareUi(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 3);
       ReportController.b(null, "CliOper", "", "", "0X800A768", "0X800A768", 0, 0, "", "0", "0", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -263,7 +286,7 @@ public class LocationShareTipsBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.LocationShareTipsBar
  * JD-Core Version:    0.7.0.1
  */

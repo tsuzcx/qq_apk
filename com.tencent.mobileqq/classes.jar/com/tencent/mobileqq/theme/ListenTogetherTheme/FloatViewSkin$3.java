@@ -20,8 +20,14 @@ class FloatViewSkin$3
     {
       FloatViewSkin.a(this.a, true);
       this.a.a(paramString1);
-      if (QLog.isColorLevel()) {
-        QLog.i("FloatViewSkin", 2, "onCompleted: mSkinRootPath" + this.a.jdField_a_of_type_JavaLangString + " mIsUserSkin=" + this.a.jdField_a_of_type_Boolean);
+      if (QLog.isColorLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("onCompleted: mSkinRootPath");
+        paramString1.append(this.a.jdField_a_of_type_JavaLangString);
+        paramString1.append(" mIsUserSkin=");
+        paramString1.append(this.a.jdField_a_of_type_Boolean);
+        QLog.i("FloatViewSkin", 2, paramString1.toString());
       }
       if (this.a.jdField_a_of_type_Boolean) {
         ThreadManagerV2.getUIHandlerV2().post(new FloatViewSkin.3.1(this));
@@ -33,7 +39,7 @@ class FloatViewSkin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.FloatViewSkin.3
  * JD-Core Version:    0.7.0.1
  */

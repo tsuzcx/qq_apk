@@ -18,7 +18,11 @@ public class HotPicConfProcessor
       HotPicManager localHotPicManager = HotPicManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime());
       return localHotPicManager;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label15:
+      break label15;
+    }
     return null;
   }
   
@@ -26,8 +30,12 @@ public class HotPicConfProcessor
   public HotPicConfBean a(int paramInt)
   {
     HotPicConfBean localHotPicConfBean = new HotPicConfBean();
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicConfProcessor", 2, "migrateOldOrDefaultContent " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("migrateOldOrDefaultContent ");
+      localStringBuilder.append(paramInt);
+      QLog.d("HotPicConfProcessor", 2, localStringBuilder.toString());
     }
     return localHotPicConfBean;
   }
@@ -38,8 +46,12 @@ public class HotPicConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       HotPicConfBean localHotPicConfBean = HotPicConfBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("HotPicConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("HotPicConfProcessor", 2, localStringBuilder.toString());
       }
       return localHotPicConfBean;
     }
@@ -80,8 +92,12 @@ public class HotPicConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("HotPicConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.d("HotPicConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -92,7 +108,7 @@ public class HotPicConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicConfProcessor
  * JD-Core Version:    0.7.0.1
  */

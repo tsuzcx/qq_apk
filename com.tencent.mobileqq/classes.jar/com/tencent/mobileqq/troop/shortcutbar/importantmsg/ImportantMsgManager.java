@@ -33,7 +33,7 @@ public class ImportantMsgManager
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
     this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver = new ImportantMsgManager.1(this, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
+    this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver = new ImportantMsgManager.1(this);
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.addObserver(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver);
   }
   
@@ -56,7 +56,10 @@ public class ImportantMsgManager
   {
     if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Long.valueOf(paramLong)))
     {
-      QLog.i("ImportantMsgManager", 1, "handlerRspImportantMsg mImportantDataMap notcontains troopUin:" + paramLong);
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("handlerRspImportantMsg mImportantDataMap notcontains troopUin:");
+      paramArrayList.append(paramLong);
+      QLog.i("ImportantMsgManager", 1, paramArrayList.toString());
       return;
     }
     paramList = (ImportantMsgItem)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(paramLong));
@@ -64,7 +67,12 @@ public class ImportantMsgManager
       paramList.addMsgInfos(paramArrayList);
     }
     paramList.updateMaxMsgSeq();
-    QLog.i("ImportantMsgManager", 1, "handlerRspImportantMsg reciveMaxSeq:" + paramList.maxImportantMsgSeq + " registerProxy lastSeq:" + a(paramLong));
+    paramArrayList = new StringBuilder();
+    paramArrayList.append("handlerRspImportantMsg reciveMaxSeq:");
+    paramArrayList.append(paramList.maxImportantMsgSeq);
+    paramArrayList.append(" registerProxy lastSeq:");
+    paramArrayList.append(a(paramLong));
+    QLog.i("ImportantMsgManager", 1, paramArrayList.toString());
     a(paramList.clone());
     a(paramLong);
   }
@@ -86,43 +94,45 @@ public class ImportantMsgManager
   private boolean a(long paramLong1, long paramLong2)
   {
     int i = a(paramLong1);
-    QLog.i("ImportantMsgManager", 2, "needReqImportantMsg lastMsgSeq svr: " + i + " localMsgSeq:" + paramLong2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("needReqImportantMsg lastMsgSeq svr: ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" localMsgSeq:");
+    localStringBuilder.append(paramLong2);
+    QLog.i("ImportantMsgManager", 2, localStringBuilder.toString());
     return i > paramLong2;
   }
   
   private boolean a(Entity paramEntity)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen())
+    boolean bool2 = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.isOpen();
+    boolean bool1 = false;
+    if (bool2)
     {
-      if (paramEntity.getStatus() != 1000) {
-        break label48;
+      if (paramEntity.getStatus() == 1000)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
+        if (paramEntity.getStatus() == 1001) {
+          bool1 = true;
+        }
+        return bool1;
       }
-      this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
-      bool1 = bool2;
-      if (paramEntity.getStatus() == 1001) {
-        bool1 = true;
+      if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002)) {
+        return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
       }
     }
-    label48:
-    do
-    {
-      return bool1;
-      if (paramEntity.getStatus() == 1001) {
-        break;
-      }
-      bool1 = bool2;
-    } while (paramEntity.getStatus() != 1002);
-    return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
+    return false;
   }
   
   private void b(long paramLong, ArrayList<ImportantMsgItem.MsgInfo> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return;
+    if (paramArrayList != null)
+    {
+      if (paramArrayList.isEmpty()) {
+        return;
+      }
+      a(paramLong, new ImportantMsgManager.7(this, paramArrayList));
     }
-    a(paramLong, new ImportantMsgManager.7(this, paramArrayList));
   }
   
   public int a(long paramLong)
@@ -147,7 +157,10 @@ public class ImportantMsgManager
     }
     catch (Exception localException)
     {
-      QLog.e("ImportantMsgManager", 1, "readEntity exception + " + localException.getMessage(), localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readEntity exception + ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("ImportantMsgManager", 1, localStringBuilder.toString(), localException);
       localImportantMsgItem.troopUin = paramLong;
     }
     return localImportantMsgItem;
@@ -197,30 +210,34 @@ public class ImportantMsgManager
   
   public void a(ImportantMsgItem paramImportantMsgItem)
   {
-    if (paramImportantMsgItem == null) {}
-    TroopShortcutBarHandler localTroopShortcutBarHandler;
-    do
-    {
+    if (paramImportantMsgItem == null) {
       return;
-      localTroopShortcutBarHandler = (TroopShortcutBarHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
-    } while ((localTroopShortcutBarHandler == null) || (!a(paramImportantMsgItem.troopUin, paramImportantMsgItem.maxImportantMsgSeq)));
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = paramImportantMsgItem.getMsgInfoList().iterator();
-    do
+    }
+    TroopShortcutBarHandler localTroopShortcutBarHandler = (TroopShortcutBarHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_SHORTCUTBAR_HANDLE);
+    if (localTroopShortcutBarHandler == null) {
+      return;
+    }
+    if (a(paramImportantMsgItem.troopUin, paramImportantMsgItem.maxImportantMsgSeq))
     {
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localArrayList.add(Long.valueOf(((ImportantMsgItem.MsgInfo)localIterator.next()).msgSeq));
-    } while (localArrayList.size() < 20);
-    localTroopShortcutBarHandler.a(paramImportantMsgItem.troopUin, localArrayList);
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = paramImportantMsgItem.getMsgInfoList().iterator();
+      do
+      {
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localArrayList.add(Long.valueOf(((ImportantMsgItem.MsgInfo)localIterator.next()).msgSeq));
+      } while (localArrayList.size() < 20);
+      localTroopShortcutBarHandler.a(paramImportantMsgItem.troopUin, localArrayList);
+    }
   }
   
   public void onDestroy()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver != null)
+    TroopShortcutBarObserver localTroopShortcutBarObserver = this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver;
+    if (localTroopShortcutBarObserver != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver);
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localTroopShortcutBarObserver);
       this.jdField_a_of_type_ComTencentMobileqqTroopShortcutbarTroopShortcutBarObserver = null;
     }
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.clear();
@@ -230,7 +247,7 @@ public class ImportantMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.shortcutbar.importantmsg.ImportantMsgManager
  * JD-Core Version:    0.7.0.1
  */

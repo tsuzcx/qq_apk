@@ -44,26 +44,26 @@ public abstract class BaseViewHolder<T extends IBaseData>
       this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseData = paramIBaseData;
       a(paramViewHolderContext, this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseData, paramInt);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Int = paramInt;
-      return;
       this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseData = null;
       a(paramViewHolderContext, null, paramInt);
     }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener != null) {
-      this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener.a(paramView, this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseData, this.jdField_a_of_type_Int);
+    BaseViewHolder.OnClickListener localOnClickListener = this.jdField_a_of_type_ComTencentAvgameGamelobbyRvBaseViewHolder$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.a(paramView, this.jdField_a_of_type_ComTencentAvgameGamelobbyDataIBaseData, this.jdField_a_of_type_Int);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gamelobby.rv.BaseViewHolder
  * JD-Core Version:    0.7.0.1
  */

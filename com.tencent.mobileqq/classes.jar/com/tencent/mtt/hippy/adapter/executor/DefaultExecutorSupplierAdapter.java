@@ -31,33 +31,35 @@ public class DefaultExecutorSupplierAdapter
   
   public Executor getBackgroundTaskExecutor()
   {
-    if (this.mBackgroundTaskExecutor == null) {}
-    try
-    {
-      if (this.mBackgroundTaskExecutor == null) {
-        this.mBackgroundTaskExecutor = Executors.newSingleThreadExecutor();
+    if (this.mBackgroundTaskExecutor == null) {
+      try
+      {
+        if (this.mBackgroundTaskExecutor == null) {
+          this.mBackgroundTaskExecutor = Executors.newSingleThreadExecutor();
+        }
       }
-      return this.mBackgroundTaskExecutor;
+      finally {}
     }
-    finally {}
+    return this.mBackgroundTaskExecutor;
   }
   
   public Executor getDBExecutor()
   {
-    if (this.mDBExecutor == null) {}
-    try
-    {
-      if (this.mDBExecutor == null) {
-        this.mDBExecutor = Executors.newSingleThreadExecutor();
+    if (this.mDBExecutor == null) {
+      try
+      {
+        if (this.mDBExecutor == null) {
+          this.mDBExecutor = Executors.newSingleThreadExecutor();
+        }
       }
-      return this.mDBExecutor;
+      finally {}
     }
-    finally {}
+    return this.mDBExecutor;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.executor.DefaultExecutorSupplierAdapter
  * JD-Core Version:    0.7.0.1
  */

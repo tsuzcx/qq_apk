@@ -55,31 +55,32 @@ public abstract class BaseSearchResultAdapter
       this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.requestDecodeFace(paramString, paramInt, true);
     }
     if (paramInt == 1) {
-      return ImageUtil.c();
+      return ImageUtil.f();
     }
     if (paramInt == 101) {
-      return ImageUtil.b();
-    }
-    if (paramInt == 4) {
-      return ImageUtil.a();
-    }
-    if (paramInt == 11) {
       return ImageUtil.e();
     }
+    if (paramInt == 4) {
+      return ImageUtil.d();
+    }
+    if (paramInt == 11) {
+      return ImageUtil.b();
+    }
     if (paramInt == 110) {
-      return ImageUtil.g();
+      return ImageUtil.i();
     }
     if (paramInt == 111) {
-      return ImageUtil.h();
+      return ImageUtil.j();
     }
-    return ImageUtil.c();
+    return ImageUtil.f();
   }
   
   public void a()
   {
-    if (this.b != null)
+    List localList = this.b;
+    if (localList != null)
     {
-      this.b.clear();
+      localList.clear();
       notifyDataSetChanged();
     }
   }
@@ -89,8 +90,9 @@ public abstract class BaseSearchResultAdapter
     this.b.clear();
     this.b.addAll(paramList);
     paramList.clear();
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface$SearchResultCallBack != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface$SearchResultCallBack.a(paramInt);
+    paramList = this.jdField_a_of_type_ComTencentMobileqqSearchSearchAdapterInterface$SearchResultCallBack;
+    if (paramList != null) {
+      paramList.a(paramInt);
     }
     notifyDataSetChanged();
   }
@@ -108,26 +110,30 @@ public abstract class BaseSearchResultAdapter
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask.cancel(true);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask;
+    if (localObject != null) {
+      ((SearchTask)localObject).cancel(true);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.destory();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder;
+    if (localObject != null) {
+      ((IFaceDecoder)localObject).destory();
     }
     this.jdField_a_of_type_ComTencentWidgetXListView = null;
   }
   
   public int getCount()
   {
-    if (this.b != null) {
-      return this.b.size();
+    List localList = this.b;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
   
   public Object getItem(int paramInt)
   {
-    if ((this.b != null) && (paramInt < this.b.size())) {
+    List localList = this.b;
+    if ((localList != null) && (paramInt < localList.size())) {
       return this.b.get(paramInt);
     }
     return null;
@@ -135,30 +141,28 @@ public abstract class BaseSearchResultAdapter
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
   {
-    int i;
-    if ((!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) && ((this.jdField_a_of_type_Int == 0) || (this.jdField_a_of_type_Int == 1)))
+    if (!this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing())
     {
-      i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      paramInt1 = 0;
-    }
-    for (;;)
-    {
-      if (paramInt1 < i)
+      paramInt1 = this.jdField_a_of_type_Int;
+      if ((paramInt1 == 0) || (paramInt1 == 1))
       {
-        Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1).getTag();
-        if ((localObject != null) && ((localObject instanceof BaseSearchResultAdapter.ViewHolder)))
+        int i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+        paramInt1 = 0;
+        while (paramInt1 < i)
         {
-          localObject = (BaseSearchResultAdapter.ViewHolder)localObject;
-          if ((localObject != null) && (!TextUtils.isEmpty(((BaseSearchResultAdapter.ViewHolder)localObject).jdField_a_of_type_JavaLangString)) && (((BaseSearchResultAdapter.ViewHolder)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) && (paramInt2 == ((BaseSearchResultAdapter.ViewHolder)localObject).jdField_a_of_type_Int)) {
-            ((BaseSearchResultAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+          Object localObject = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt1).getTag();
+          if ((localObject != null) && ((localObject instanceof BaseSearchResultAdapter.ViewHolder)))
+          {
+            localObject = (BaseSearchResultAdapter.ViewHolder)localObject;
+            if ((localObject != null) && (!TextUtils.isEmpty(((BaseSearchResultAdapter.ViewHolder)localObject).jdField_a_of_type_JavaLangString)) && (((BaseSearchResultAdapter.ViewHolder)localObject).jdField_a_of_type_JavaLangString.equals(paramString)) && (paramInt2 == ((BaseSearchResultAdapter.ViewHolder)localObject).jdField_a_of_type_Int))
+            {
+              ((BaseSearchResultAdapter.ViewHolder)localObject).jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(paramBitmap);
+              return;
+            }
           }
+          paramInt1 += 1;
         }
       }
-      else
-      {
-        return;
-      }
-      paramInt1 += 1;
     }
   }
   
@@ -166,39 +170,38 @@ public abstract class BaseSearchResultAdapter
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_ComTencentWidgetXListView == null) {
       return;
-      this.jdField_a_of_type_Int = paramInt;
-      if ((paramInt != 0) && (paramInt != 1)) {
-        break;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
-        this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
-      }
-      int i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramAbsListView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt).getTag();
-        if ((paramAbsListView != null) && ((paramAbsListView instanceof BaseSearchResultAdapter.ViewHolder)))
-        {
-          paramAbsListView = (BaseSearchResultAdapter.ViewHolder)paramAbsListView;
-          if (a(paramAbsListView)) {
-            paramAbsListView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramAbsListView.jdField_a_of_type_JavaLangString, paramAbsListView.jdField_a_of_type_Int));
-          }
-        }
-        paramInt += 1;
-      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
-    this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
+    this.jdField_a_of_type_Int = paramInt;
+    if ((paramInt != 0) && (paramInt != 1))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.cancelPendingRequests();
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.pause();
+      return;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.isPausing()) {
+      this.jdField_a_of_type_ComTencentMobileqqAppFaceIFaceDecoder.resume();
+    }
+    int i = this.jdField_a_of_type_ComTencentWidgetXListView.getChildCount();
+    paramInt = 0;
+    while (paramInt < i)
+    {
+      paramAbsListView = this.jdField_a_of_type_ComTencentWidgetXListView.getChildAt(paramInt).getTag();
+      if ((paramAbsListView != null) && ((paramAbsListView instanceof BaseSearchResultAdapter.ViewHolder)))
+      {
+        paramAbsListView = (BaseSearchResultAdapter.ViewHolder)paramAbsListView;
+        if (a(paramAbsListView)) {
+          paramAbsListView.jdField_a_of_type_AndroidWidgetImageView.setImageBitmap(a(paramAbsListView.jdField_a_of_type_JavaLangString, paramAbsListView.jdField_a_of_type_Int));
+        }
+      }
+      paramInt += 1;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.BaseSearchResultAdapter
  * JD-Core Version:    0.7.0.1
  */

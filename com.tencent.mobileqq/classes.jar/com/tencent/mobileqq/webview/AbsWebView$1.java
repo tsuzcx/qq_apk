@@ -17,7 +17,10 @@ class AbsWebView$1
       if (QLog.isColorLevel())
       {
         long l2 = SystemClock.uptimeMillis();
-        QLog.d("AbsWebView", 2, "initPluginEngine cost= " + (l2 - l1));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("initPluginEngine cost= ");
+        localStringBuilder.append(l2 - l1);
+        QLog.d("AbsWebView", 2, localStringBuilder.toString());
       }
     }
     Thread.yield();
@@ -25,7 +28,7 @@ class AbsWebView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.AbsWebView.1
  * JD-Core Version:    0.7.0.1
  */

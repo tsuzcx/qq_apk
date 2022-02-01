@@ -12,7 +12,11 @@ final class TroopRedTouchHandler$4
   
   public void run()
   {
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin() + "RedTouchExManager_GetTime", 0);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("RedTouchExManager_GetTime");
+    localObject = ((MobileQQ)localObject).getSharedPreferences(localStringBuilder.toString(), 0);
     if (localObject != null)
     {
       localObject = ((SharedPreferences)localObject).edit();
@@ -24,7 +28,7 @@ final class TroopRedTouchHandler$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.TroopRedpoint.TroopRedTouchHandler.4
  * JD-Core Version:    0.7.0.1
  */

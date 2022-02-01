@@ -17,52 +17,56 @@ public class KingCardJsPlugin
   @VasWebviewJsPluginV2.JsbridgeSubscribe(method="openKingCardActivation")
   public void openKingCardActivation(VasWebviewJsPluginV2.JsData paramJsData)
   {
-    int i = 1;
-    try
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      if (TMSManager.a().a(this.mRuntime.a())) {}
-      for (;;)
+      try
       {
-        localJSONObject.put("result", i);
-        super.callJs(paramJsData.callbackId, new String[] { localJSONObject.toString() });
-        return;
-        i = 0;
+        JSONObject localJSONObject = new JSONObject();
+        if (TMSManager.a().a(this.mRuntime.a()))
+        {
+          i = 1;
+          localJSONObject.put("result", i);
+          super.callJs(paramJsData.callbackId, new String[] { localJSONObject.toString() });
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      super.callJsOnError(paramJsData.callbackId, localException.getMessage());
+      catch (Exception localException)
+      {
+        super.callJsOnError(paramJsData.callbackId, localException.getMessage());
+        return;
+      }
+      int i = 0;
     }
   }
   
   @VasWebviewJsPluginV2.JsbridgeSubscribe(args="callback", method="supportKingCardActivation")
   public void supportKingCardActivation(String paramString)
   {
-    int i = 1;
-    try
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject();
-      if (TMSManager.a().c()) {}
-      for (;;)
+      try
       {
-        localJSONObject.put("result", i);
-        super.callJs(paramString, new String[] { localJSONObject.toString() });
-        return;
-        i = 0;
+        JSONObject localJSONObject = new JSONObject();
+        if (TMSManager.a().c())
+        {
+          i = 1;
+          localJSONObject.put("result", i);
+          super.callJs(paramString, new String[] { localJSONObject.toString() });
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      super.callJsOnError(paramString, localException.getMessage());
+      catch (Exception localException)
+      {
+        super.callJsOnError(paramString, localException.getMessage());
+        return;
+      }
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.KingCardJsPlugin
  * JD-Core Version:    0.7.0.1
  */

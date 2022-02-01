@@ -11,7 +11,7 @@ public class VideoView
     super(paramContext);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     setMeasuredDimension(paramInt1, paramInt2);
   }
@@ -23,7 +23,7 @@ public class VideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.VideoView
  * JD-Core Version:    0.7.0.1
  */

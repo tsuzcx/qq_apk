@@ -63,16 +63,17 @@ public class TopPanelPresenter
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$View != null)
+    TopPanelContract.View localView = this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$View;
+    if (localView != null)
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$View.setPresenter(null);
+      localView.setPresenter(null);
       this.jdField_a_of_type_ComTencentBizSubscribeAccount_folderTop_pannelTopPanelContract$View = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.top_pannel.TopPanelPresenter
  * JD-Core Version:    0.7.0.1
  */

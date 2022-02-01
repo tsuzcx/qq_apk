@@ -16,41 +16,48 @@ public class NoticeReceiver
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    String str2;
     if (paramIntent != null)
     {
-      str2 = paramIntent.getStringExtra("processName");
-      if ((!TextUtils.isEmpty(str2)) && (str2.equalsIgnoreCase(Common.r()))) {
-        break label32;
+      String str2 = paramIntent.getStringExtra("processName");
+      if (!TextUtils.isEmpty(str2))
+      {
+        if (!str2.equalsIgnoreCase(Common.r())) {
+          return;
+        }
+        String str1 = paramIntent.getAction();
+        Object localObject = (NoticeParam)paramIntent.getParcelableExtra("noticeParam");
+        if (localObject == null) {
+          return;
+        }
+        paramIntent = str2.replace(":", ".");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(IntentFactory.e);
+        localStringBuilder.append(".");
+        localStringBuilder.append(paramIntent);
+        if (localStringBuilder.toString().equals(str1))
+        {
+          AppUtil.a(paramContext, ((NoticeParam)localObject).d);
+          return;
+        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("processName :");
+        localStringBuilder.append(str2);
+        localStringBuilder.append(" | formatStr:");
+        localStringBuilder.append(paramIntent);
+        LogUtility.b("NoticeReceiver", localStringBuilder.toString());
+        str2 = ((NoticeParam)localObject).d;
+        localObject = ((NoticeParam)localObject).e;
+        if ((TextUtils.isEmpty(str2)) && (TextUtils.isEmpty((CharSequence)localObject))) {
+          return;
+        }
+        ThreadManager.executeOnSubThread(new NoticeReceiver.1(this, (String)localObject, paramIntent, str1, paramContext));
       }
     }
-    label32:
-    String str1;
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        str1 = paramIntent.getAction();
-        localObject = (NoticeParam)paramIntent.getParcelableExtra("noticeParam");
-      } while (localObject == null);
-      paramIntent = str2.replace(":", ".");
-      if ((IntentFactory.e + "." + paramIntent).equals(str1))
-      {
-        AppUtil.a(paramContext, ((NoticeParam)localObject).d);
-        return;
-      }
-      LogUtility.b("NoticeReceiver", "processName :" + str2 + " | formatStr:" + paramIntent);
-      str2 = ((NoticeParam)localObject).d;
-      localObject = ((NoticeParam)localObject).e;
-    } while ((TextUtils.isEmpty(str2)) && (TextUtils.isEmpty((CharSequence)localObject)));
-    ThreadManager.executeOnSubThread(new NoticeReceiver.1(this, (String)localObject, paramIntent, str1, paramContext));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.notice.NoticeReceiver
  * JD-Core Version:    0.7.0.1
  */

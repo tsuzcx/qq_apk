@@ -4,12 +4,13 @@ import OnlinePushPack.MsgInfo;
 import OnlinePushPack.SvcReqPushMsg;
 import android.os.Bundle;
 import android.util.Pair;
-import com.tencent.mobileqq.app.MessageHandler;
-import com.tencent.mobileqq.app.MessageHandlerUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.app.message.ProcessorObserver;
 import com.tencent.mobileqq.data.MessageRecord;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.service.MobileQQService;
+import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.utils.SendMessageHandler;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.remote.ToServiceMsg;
@@ -18,7 +19,6 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lmsf.msgcomm.msg_comm.Msg;>;
 import java.util.Set;
 import msf.msgcomm.msg_comm.Msg;
 import msf.msgcomm.msg_comm.MsgHead;
@@ -26,63 +26,146 @@ import msf.msgsvc.msg_svc.PbMsgReadedReportReq;
 
 public abstract class BaseMessageProcessor
 {
-  protected QQMessageFacade a;
-  public MessageHandler a;
-  public QQAppInterface a;
-  private List<ProcessorObserver> a;
+  public static int a = 1;
+  private static BaseMessageProcessor.Callback jdField_a_of_type_ComTencentImcoreMessageBaseMessageProcessor$Callback;
+  public static int b = 2;
+  public static int c = 3;
+  public static int d = 4;
+  public static int e = 5;
+  public static int f = 6;
+  public static int g = 1;
+  public static int h = 2;
+  public static int i = 3;
+  public static int j = 1;
+  public static int k = 2;
+  public static int l = 3;
+  public static int m = -1;
+  public static int n = -2;
+  public static int o = 1;
+  public static int p = 2;
+  protected AppInterface a;
+  protected BaseMessageHandler a;
+  protected IMessageFacade a;
+  private List<ProcessorObserver> jdField_a_of_type_JavaUtilList = new ArrayList();
   
-  public BaseMessageProcessor(QQAppInterface paramQQAppInterface, MessageHandler paramMessageHandler)
+  static {}
+  
+  public BaseMessageProcessor(AppInterface paramAppInterface, BaseMessageHandler paramBaseMessageHandler)
   {
-    this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler = paramMessageHandler;
-    this.jdField_a_of_type_ComTencentImcoreMessageQQMessageFacade = paramQQAppInterface.getMessageFacade();
+    this.jdField_a_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler = paramBaseMessageHandler;
+    if (paramAppInterface.isLogin()) {
+      this.jdField_a_of_type_ComTencentMobileqqMsgApiIMessageFacade = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, ""));
+    }
+  }
+  
+  private MessageCache a()
+  {
+    return jdField_a_of_type_ComTencentImcoreMessageBaseMessageProcessor$Callback.a(this);
+  }
+  
+  private Boolean a(List<msg_comm.Msg> paramList, Boolean paramBoolean, StringBuilder paramStringBuilder, Set<String> paramSet, msg_comm.Msg paramMsg)
+  {
+    if (!paramMsg.msg_head.has()) {
+      return paramBoolean;
+    }
+    String str = a(paramMsg);
+    if (paramSet.contains(str))
+    {
+      paramList = Boolean.valueOf(true);
+      paramBoolean = paramList;
+      if (QLog.isColorLevel())
+      {
+        paramStringBuilder.append("< duplicatedMsg:");
+        paramStringBuilder.append(str);
+        paramStringBuilder.append(" >");
+        return paramList;
+      }
+    }
+    else
+    {
+      paramSet.add(str);
+      paramList.add(paramMsg);
+    }
+    return paramBoolean;
+  }
+  
+  public static void a(BaseMessageProcessor.Callback paramCallback)
+  {
+    jdField_a_of_type_ComTencentImcoreMessageBaseMessageProcessor$Callback = paramCallback;
+  }
+  
+  private void a(SendMessageHandler paramSendMessageHandler)
+  {
+    int i1 = 0;
+    while (i1 < 3)
+    {
+      long l1;
+      if (i1 == 0) {
+        l1 = 480000L;
+      } else {
+        l1 = (3 - i1) * 480000 / 3 - i1 * 2000;
+      }
+      paramSendMessageHandler.a(480000 * i1 / 3, l1, "period");
+      i1 += 1;
+    }
+  }
+  
+  private void a(boolean paramBoolean1, boolean paramBoolean2, BaseMessageProcessor.RequestBuilder paramRequestBuilder, long paramLong1, long paramLong2, SendMessageHandler paramSendMessageHandler)
+  {
+    int i1 = 0;
+    while (i1 < 9)
+    {
+      paramSendMessageHandler.a(new BaseMessageProcessor.1(this, paramRequestBuilder, paramLong1, paramLong2, paramBoolean1, paramBoolean2));
+      i1 += 1;
+    }
+  }
+  
+  private boolean a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, BaseMessageProcessor.RequestBuilder paramRequestBuilder, long paramLong)
+  {
+    if (!paramBoolean1)
+    {
+      paramRequestBuilder = paramRequestBuilder.a();
+      if (paramRequestBuilder == null) {
+        return true;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("processRequest cmd=");
+        localStringBuilder.append(paramRequestBuilder.getServiceCmd());
+        localStringBuilder.append(",reqSeq=");
+        localStringBuilder.append(paramLong);
+        QLog.d("Q.msg.BaseMessageProcessor", 2, localStringBuilder.toString());
+      }
+      a(paramRequestBuilder, paramLong, paramBoolean2, paramBoolean3);
+      return true;
+    }
+    return false;
   }
   
   protected Pair<Boolean, StringBuilder> a(List<msg_comm.Msg> paramList1, List<msg_comm.Msg> paramList2)
   {
-    if ((paramList1 == null) || (paramList1.size() == 0)) {
-      return new Pair(Boolean.valueOf(false), null);
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    HashSet localHashSet = new HashSet();
-    Iterator localIterator = paramList1.iterator();
-    paramList1 = Boolean.valueOf(false);
-    while (localIterator.hasNext())
+    Boolean localBoolean = Boolean.valueOf(false);
+    if ((paramList1 != null) && (paramList1.size() != 0))
     {
-      Object localObject = (msg_comm.Msg)localIterator.next();
-      if (((msg_comm.Msg)localObject).msg_head.has())
-      {
-        String str = a((msg_comm.Msg)localObject);
-        if (localHashSet.contains(str))
-        {
-          localObject = Boolean.valueOf(true);
-          paramList1 = (List<msg_comm.Msg>)localObject;
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder.append("< duplicatedMsg:").append(str).append(" >");
-            paramList1 = (List<msg_comm.Msg>)localObject;
-          }
-        }
-        for (;;)
-        {
-          break;
-          localHashSet.add(str);
-          paramList2.add(localObject);
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      HashSet localHashSet = new HashSet();
+      Iterator localIterator = paramList1.iterator();
+      for (paramList1 = localBoolean; localIterator.hasNext(); paramList1 = a(paramList2, paramList1, localStringBuilder, localHashSet, (msg_comm.Msg)localIterator.next())) {}
+      return new Pair(paramList1, localStringBuilder);
     }
-    return new Pair(paramList1, localStringBuilder);
+    return new Pair(localBoolean, null);
+  }
+  
+  public AppInterface a()
+  {
+    return this.jdField_a_of_type_ComTencentCommonAppAppInterface;
   }
   
   public OnLinePushParamReturnMsg a(int paramInt, MsgInfo paramMsgInfo, SvcReqPushMsg paramSvcReqPushMsg)
   {
     return null;
-  }
-  
-  public QQAppInterface a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
   }
   
   protected String a(msg_comm.Msg paramMsg)
@@ -97,9 +180,14 @@ public abstract class BaseMessageProcessor
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((ProcessorObserver)localIterator.next()).b(paramInt, paramBoolean, paramObject);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramObject;
     }
   }
   
@@ -122,11 +210,13 @@ public abstract class BaseMessageProcessor
       if (paramBoolean2) {
         paramToServiceMsg.setNeedRemindSlowNetwork(true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.sendPbReq(paramToServiceMsg);
+      this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.sendPbReq(paramToServiceMsg);
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.send(paramToServiceMsg);
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.send(paramToServiceMsg);
   }
+  
+  public void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject) {}
   
   protected void a(String paramString, int paramInt) {}
   
@@ -137,21 +227,31 @@ public abstract class BaseMessageProcessor
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((ProcessorObserver)localIterator.next()).a(getClass().getSimpleName(), paramString, paramBoolean1, paramInt, paramBoolean2, paramBoolean3);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
   public void a(String paramString, boolean paramBoolean1, List<MessageRecord> arg3, boolean paramBoolean2, boolean paramBoolean3)
   {
-    int i = MsgProxyUtils.a(???, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgCache());
+    int i1 = MsgProxyUtils.a(???, a());
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
-        ((ProcessorObserver)localIterator.next()).a(getClass().getSimpleName(), paramString, paramBoolean1, i, paramBoolean2, paramBoolean3);
+      while (localIterator.hasNext()) {
+        ((ProcessorObserver)localIterator.next()).a(getClass().getSimpleName(), paramString, paramBoolean1, i1, paramBoolean2, paramBoolean3);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -163,7 +263,7 @@ public abstract class BaseMessageProcessor
       while (paramList.hasNext())
       {
         MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-        if (!MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord, paramBoolean)) {
+        if (!a(localMessageRecord, paramBoolean)) {
           paramArrayList.add(localMessageRecord);
         }
       }
@@ -180,59 +280,26 @@ public abstract class BaseMessageProcessor
   
   protected void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, BaseMessageProcessor.RequestBuilder paramRequestBuilder)
   {
-    int i;
+    long l1 = paramLong;
     if (paramLong == 0L)
     {
-      i = MobileQQService.seq;
-      MobileQQService.seq = i + 1;
-      paramLong = i;
+      int i1 = MobileQQService.seq;
+      MobileQQService.seq = i1 + 1;
+      l1 = i1;
     }
-    for (;;)
-    {
-      long l = System.currentTimeMillis();
-      if (!paramBoolean1)
-      {
-        paramRequestBuilder = paramRequestBuilder.a();
-        if (paramRequestBuilder == null) {
-          return;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.BaseMessageProcessor", 2, "processRequest cmd=" + paramRequestBuilder.getServiceCmd() + ",reqSeq=" + paramLong);
-        }
-        a(paramRequestBuilder, paramLong, paramBoolean2, paramBoolean3);
-        return;
-      }
-      SendMessageHandler localSendMessageHandler = new SendMessageHandler();
-      this.jdField_a_of_type_ComTencentMobileqqAppMessageHandler.a(paramLong, localSendMessageHandler);
-      i = 0;
-      while (i < 9)
-      {
-        localSendMessageHandler.a(new BaseMessageProcessor.1(this, paramRequestBuilder, paramLong, l, paramBoolean2, paramBoolean3));
-        i += 1;
-      }
-      i = 0;
-      label168:
-      if (i < 3) {
-        if (i != 0) {
-          break label223;
-        }
-      }
-      label223:
-      for (paramLong = 480000L;; paramLong = (3 - i) * 480000 / 3 - i * 2000)
-      {
-        l = 480000 * i / 3;
-        localSendMessageHandler.getClass();
-        localSendMessageHandler.a(l, paramLong, "period");
-        i += 1;
-        break label168;
-        break;
-      }
+    paramLong = System.currentTimeMillis();
+    if (a(paramBoolean1, paramBoolean2, paramBoolean3, paramRequestBuilder, l1)) {
+      return;
     }
+    SendMessageHandler localSendMessageHandler = new SendMessageHandler();
+    this.jdField_a_of_type_ComTencentMobileqqAppBaseMessageHandler.a(l1, localSendMessageHandler);
+    a(paramBoolean2, paramBoolean3, paramRequestBuilder, l1, paramLong, localSendMessageHandler);
+    a(localSendMessageHandler);
   }
   
   protected boolean a(MessageRecord paramMessageRecord, boolean paramBoolean)
   {
-    return MessageHandlerUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageRecord, paramBoolean);
+    return jdField_a_of_type_ComTencentImcoreMessageBaseMessageProcessor$Callback.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, paramMessageRecord, paramBoolean);
   }
   
   public void b(int paramInt, ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg) {}
@@ -242,15 +309,20 @@ public abstract class BaseMessageProcessor
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((ProcessorObserver)localIterator.next()).c(paramInt, paramBoolean, paramObject);
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageProcessor
  * JD-Core Version:    0.7.0.1
  */

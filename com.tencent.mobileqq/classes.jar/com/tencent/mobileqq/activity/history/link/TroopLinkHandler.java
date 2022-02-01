@@ -63,8 +63,12 @@ public class TroopLinkHandler
     try
     {
       paramNetResp = new JSONObject(new String(paramNetResp.mRespData));
-      if (QLog.isColorLevel()) {
-        QLog.i("TroopLinkHandler", 2, "resolveResponse: invoked.  json: " + paramNetResp);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("resolveResponse: invoked.  json: ");
+        localStringBuilder.append(paramNetResp);
+        QLog.i("TroopLinkHandler", 2, localStringBuilder.toString());
       }
       a(true, a(paramNetResp));
       a(paramNetResp);
@@ -85,11 +89,20 @@ public class TroopLinkHandler
     localHttpNetReq.mPrioty = 0;
     localHttpNetReq.mCallback = this;
     String str = ((TicketManagerImpl)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(2)).getSkey(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
-    paramString = String.format("bkn=%s&gc=%s&seq=%s&n=%s&noui=1", new Object[] { Integer.valueOf(TroopUtils.b(str)), paramString, Long.valueOf(paramLong), Integer.valueOf(200) });
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopLinkHandler", 2, "send: invoked.  postData: " + paramString);
+    paramString = String.format("bkn=%s&gc=%s&seq=%s&n=%s&noui=1", new Object[] { Integer.valueOf(TroopUtils.a(str)), paramString, Long.valueOf(paramLong), Integer.valueOf(200) });
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("send: invoked.  postData: ");
+      localStringBuilder.append(paramString);
+      QLog.i("TroopLinkHandler", 2, localStringBuilder.toString());
     }
-    str = "uin=" + this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin() + ";skey=" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uin=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin());
+    localStringBuilder.append(";skey=");
+    localStringBuilder.append(str);
+    str = localStringBuilder.toString();
     localHttpNetReq.mSendData = paramString.getBytes();
     localHttpNetReq.mReqProperties = new HashMap();
     localHttpNetReq.mReqProperties.put("Cookie", str);
@@ -129,8 +142,12 @@ public class TroopLinkHandler
       a(paramNetResp);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopLinkHandler", 2, "onResp: invoked.  resp: " + paramNetResp);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResp: invoked.  resp: ");
+      localStringBuilder.append(paramNetResp);
+      QLog.i("TroopLinkHandler", 2, localStringBuilder.toString());
     }
     a(false, new ArrayList());
   }
@@ -139,7 +156,7 @@ public class TroopLinkHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.TroopLinkHandler
  * JD-Core Version:    0.7.0.1
  */

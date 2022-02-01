@@ -47,16 +47,22 @@ public class BannerInfo
   
   public boolean a()
   {
-    if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))) {}
-    while (((this.jdField_a_of_type_Int == 2) && (TextUtils.isEmpty(this.c))) || ((this.jdField_a_of_type_Int == 1) && ((TextUtils.isEmpty(this.f)) || (TextUtils.isEmpty(this.j))))) {
-      return false;
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      if (TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        return false;
+      }
+      if ((this.jdField_a_of_type_Int == 2) && (TextUtils.isEmpty(this.c))) {
+        return false;
+      }
+      return (this.jdField_a_of_type_Int != 1) || ((!TextUtils.isEmpty(this.f)) && (!TextUtils.isEmpty(this.j)));
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.data.BannerInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,29 +1,24 @@
 package com.tencent.mobileqq.activity.home;
 
 import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.upgrade.UpgradeTIMManager;
-import com.tencent.mobileqq.upgrade.UpgradeTIMWrapper;
-import mqq.app.AppRuntime;
+import android.content.DialogInterface.OnDismissListener;
 
 class Conversation$12
-  implements DialogInterface.OnClickListener
+  implements DialogInterface.OnDismissListener
 {
-  Conversation$12(Conversation paramConversation, UpgradeTIMWrapper paramUpgradeTIMWrapper) {}
+  Conversation$12(Conversation paramConversation) {}
   
-  public void onClick(DialogInterface paramDialogInterface, int paramInt)
+  public void onDismiss(DialogInterface paramDialogInterface)
   {
-    Conversation.a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation, null);
-    ((UpgradeTIMManager)this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a.getManager(QQManagerFactory.TIM_UPGRADE_DOWNLOAD_MANAGER)).a(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a(), this.jdField_a_of_type_ComTencentMobileqqUpgradeUpgradeTIMWrapper.c);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a, "CliOper", "", "", "0X800815D", "0X800815D", 0, 0, "", "", "", "");
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityHomeConversation.a, "CliOper", "", "", "0X8008657", "0X8008657", 0, 0, "", "", "", "");
+    if (paramDialogInterface == Conversation.a(this.a)) {
+      Conversation.a(this.a, null);
+    }
+    this.a.a(1134057, 50L, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.12
  * JD-Core Version:    0.7.0.1
  */

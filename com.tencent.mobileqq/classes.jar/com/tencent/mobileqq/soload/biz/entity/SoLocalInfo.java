@@ -7,32 +7,51 @@ import com.tencent.qphone.base.util.QLog;
 
 public class SoLocalInfo
 {
-  public long a;
-  public String a;
-  public String b;
-  public String c;
-  public String d;
-  public String e;
-  public String f;
+  private static final String TAG = "SoLoadWidget.SoLocalInfo";
+  public String mRFileFolder;
+  public String mRFileUrl;
+  public long mSoCRC = -1L;
+  public String mSoName;
+  public String mSoPath;
+  public String mSoVer;
+  public String mUrl;
   
-  public SoLocalInfo()
-  {
-    this.jdField_a_of_type_Long = -1L;
-  }
+  public SoLocalInfo() {}
   
   public SoLocalInfo(String paramString1, String paramString2, String paramString3, long paramLong, String paramString4, String paramString5, String paramString6)
   {
-    this.jdField_a_of_type_Long = -1L;
-    this.jdField_a_of_type_JavaLangString = paramString1;
-    this.b = paramString2;
-    this.c = paramString3;
-    this.jdField_a_of_type_Long = paramLong;
-    this.d = paramString4;
-    this.e = paramString5;
-    this.f = paramString6;
+    this.mSoVer = paramString1;
+    this.mSoName = paramString2;
+    this.mSoPath = paramString3;
+    this.mSoCRC = paramLong;
+    this.mUrl = paramString4;
+    this.mRFileUrl = paramString5;
+    this.mRFileFolder = paramString6;
   }
   
-  private static long a(String paramString)
+  public static SoLocalInfo createSoLocalInfo(String paramString)
+  {
+    SoLocalInfo localSoLocalInfo = new SoLocalInfo();
+    try
+    {
+      paramString = Uri.parse(paramString);
+      localSoLocalInfo.mSoVer = paramString.getQueryParameter("ver");
+      localSoLocalInfo.mSoName = paramString.getQueryParameter("name");
+      localSoLocalInfo.mSoPath = paramString.getQueryParameter("path");
+      localSoLocalInfo.mSoCRC = parseCRC(paramString.getQueryParameter("crc"));
+      localSoLocalInfo.mUrl = paramString.getQueryParameter("url");
+      localSoLocalInfo.mRFileUrl = paramString.getQueryParameter("rUrl");
+      localSoLocalInfo.mRFileFolder = paramString.getQueryParameter("rPath");
+      return localSoLocalInfo;
+    }
+    catch (Throwable paramString)
+    {
+      QLog.e("SoLoadWidget.SoLocalInfo", 1, paramString, new Object[0]);
+    }
+    return localSoLocalInfo;
+  }
+  
+  private static long parseCRC(String paramString)
   {
     try
     {
@@ -49,38 +68,30 @@ public class SoLocalInfo
     return -1L;
   }
   
-  public static SoLocalInfo a(String paramString)
-  {
-    SoLocalInfo localSoLocalInfo = new SoLocalInfo();
-    try
-    {
-      paramString = Uri.parse(paramString);
-      localSoLocalInfo.jdField_a_of_type_JavaLangString = paramString.getQueryParameter("ver");
-      localSoLocalInfo.b = paramString.getQueryParameter("name");
-      localSoLocalInfo.c = paramString.getQueryParameter("path");
-      localSoLocalInfo.jdField_a_of_type_Long = a(paramString.getQueryParameter("crc"));
-      localSoLocalInfo.d = paramString.getQueryParameter("url");
-      localSoLocalInfo.e = paramString.getQueryParameter("rUrl");
-      localSoLocalInfo.f = paramString.getQueryParameter("rPath");
-      return localSoLocalInfo;
-    }
-    catch (Throwable paramString)
-    {
-      QLog.e("SoLoadWidget.SoLocalInfo", 1, paramString, new Object[0]);
-    }
-    return localSoLocalInfo;
-  }
-  
-  public String a()
+  public String encode()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("?").append("ver=").append(this.jdField_a_of_type_JavaLangString).append("&name=").append(this.b).append("&path=").append(SoDataUtil.a(this.c)).append("&crc=").append(this.jdField_a_of_type_Long).append("&url=").append(SoDataUtil.a(this.d)).append("&rUrl=").append(SoDataUtil.a(this.e)).append("&rPath=").append(SoDataUtil.a(this.f));
+    localStringBuilder.append("?");
+    localStringBuilder.append("ver=");
+    localStringBuilder.append(this.mSoVer);
+    localStringBuilder.append("&name=");
+    localStringBuilder.append(this.mSoName);
+    localStringBuilder.append("&path=");
+    localStringBuilder.append(SoDataUtil.a(this.mSoPath));
+    localStringBuilder.append("&crc=");
+    localStringBuilder.append(this.mSoCRC);
+    localStringBuilder.append("&url=");
+    localStringBuilder.append(SoDataUtil.a(this.mUrl));
+    localStringBuilder.append("&rUrl=");
+    localStringBuilder.append(SoDataUtil.a(this.mRFileUrl));
+    localStringBuilder.append("&rPath=");
+    localStringBuilder.append(SoDataUtil.a(this.mRFileFolder));
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.biz.entity.SoLocalInfo
  * JD-Core Version:    0.7.0.1
  */

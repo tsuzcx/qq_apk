@@ -24,7 +24,13 @@ public class GdtVideoImaxFragment$MyResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    GdtLog.a("GdtVideoImaxFragment", "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceiveResult() called with: resultCode = [");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], resultData = [");
+    localStringBuilder.append(paramBundle);
+    localStringBuilder.append("]");
+    GdtLog.a("GdtVideoImaxFragment", localStringBuilder.toString());
     paramBundle = (GdtVideoImaxFragment)this.a.get();
     if ((paramBundle != null) && (paramInt == 1)) {
       GdtVideoImaxFragment.b(paramBundle);
@@ -33,7 +39,7 @@ public class GdtVideoImaxFragment$MyResultReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxFragment.MyResultReceiver
  * JD-Core Version:    0.7.0.1
  */

@@ -21,8 +21,10 @@ final class TVKPreloader$9
   protected Object a(@NonNull JobContext paramJobContext, @Nullable Void... paramVarArgs)
   {
     paramJobContext = this.jdField_a_of_type_ComTencentBizQqstoryBaseVideoServerInfoManager.a();
-    if (!TextUtils.isEmpty(paramJobContext)) {
-      this.jdField_a_of_type_ArrayOfJavaLangString[0] = URLUtil.a(this.jdField_a_of_type_ArrayOfJavaLangString[0], "authkey", paramJobContext);
+    if (!TextUtils.isEmpty(paramJobContext))
+    {
+      paramVarArgs = this.jdField_a_of_type_ArrayOfJavaLangString;
+      paramVarArgs[0] = URLUtil.a(paramVarArgs[0], "authkey", paramJobContext);
     }
     TVKPreloader.a(this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_ICacheMgr, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, this.jdField_a_of_type_ArrayOfJavaLangString[0], this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoTVKPreloader$PreloadItem);
     return null;
@@ -30,7 +32,7 @@ final class TVKPreloader$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.TVKPreloader.9
  * JD-Core Version:    0.7.0.1
  */

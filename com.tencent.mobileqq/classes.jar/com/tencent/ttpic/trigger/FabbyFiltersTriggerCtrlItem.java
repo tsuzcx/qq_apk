@@ -19,11 +19,12 @@ public class FabbyFiltersTriggerCtrlItem
   
   public boolean isCurrentTriggered(int paramInt)
   {
-    if (this.triggerCtrlMap != null)
+    Object localObject = this.triggerCtrlMap;
+    if (localObject != null)
     {
-      TriggerCtrlItem localTriggerCtrlItem = (TriggerCtrlItem)this.triggerCtrlMap.get(Integer.valueOf(paramInt));
-      if (localTriggerCtrlItem != null) {
-        return localTriggerCtrlItem.isTriggered();
+      localObject = (TriggerCtrlItem)((HashMap)localObject).get(Integer.valueOf(paramInt));
+      if (localObject != null) {
+        return ((TriggerCtrlItem)localObject).isTriggered();
       }
     }
     return false;
@@ -36,7 +37,7 @@ public class FabbyFiltersTriggerCtrlItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.trigger.FabbyFiltersTriggerCtrlItem
  * JD-Core Version:    0.7.0.1
  */

@@ -17,7 +17,7 @@ import mqq.app.AppRuntime;
 public class StoryConfigManager
   extends ConfigManager
 {
-  public static String a;
+  public static String a = "key_get_video_source_tag_config_time";
   public static String b;
   public static String c = "key_last_get_config_time";
   private long a;
@@ -26,7 +26,6 @@ public class StoryConfigManager
   
   static
   {
-    jdField_a_of_type_JavaLangString = "key_get_video_source_tag_config_time";
     jdField_b_of_type_JavaLangString = a(-128);
   }
   
@@ -40,7 +39,10 @@ public class StoryConfigManager
   
   public static String a(int paramInt)
   {
-    return "qqstory_config_version_of_type__" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qqstory_config_version_of_type__");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static String b()
@@ -53,19 +55,14 @@ public class StoryConfigManager
     return ((Integer)((StoryConfigManager)SuperManager.a(10)).b("int_upload_video_size_limit", Integer.valueOf(5120))).intValue() * 1024;
   }
   
+  public static void c(String paramString)
+  {
+    ((StoryConfigManager)SuperManager.a(10)).b("key_take_video_node_config", paramString);
+  }
+  
   public static void c(boolean paramBoolean)
   {
-    SLog.a("Q.qqstory.config.StoryConfigManager", "setShowSyncToQzone :%s", Boolean.valueOf(paramBoolean));
-    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      localStoryConfigManager.b("integer_show_sync_to_qzone_btn", Integer.valueOf(i));
-      if (!paramBoolean) {
-        localStoryConfigManager.b("integer_enable_sync_to_qzone", Integer.valueOf(-1));
-      }
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static boolean c()
@@ -80,31 +77,17 @@ public class StoryConfigManager
   
   public static String d()
   {
-    return (String)((StoryConfigManager)SuperManager.a(10)).c("follow_capture_config", "");
+    return (String)((StoryConfigManager)SuperManager.a(10)).b("key_take_video_node_config", "");
   }
   
-  public static void d()
+  public static void d(String paramString)
   {
-    ((StoryConfigManager)SuperManager.a(10)).c("follow_capture_config");
+    ((StoryConfigManager)SuperManager.a(10)).b("key_story_album_config", paramString);
   }
   
   public static void d(boolean paramBoolean)
   {
-    SLog.a("Q.qqstory.config.StoryConfigManager", "setSyncToQzoneDefaultValue :%s", Boolean.valueOf(paramBoolean));
-    StoryConfigManager localStoryConfigManager = (StoryConfigManager)SuperManager.a(10);
-    if (((Integer)localStoryConfigManager.b("integer_enable_sync_to_qzone", Integer.valueOf(-1))).intValue() == -1)
-    {
-      SLog.b("Q.qqstory.config.StoryConfigManager", "setSyncToQzoneDefaultValue work");
-      if (!paramBoolean) {
-        break label64;
-      }
-    }
-    label64:
-    for (int i = 1;; i = 0)
-    {
-      localStoryConfigManager.b("integer_enable_sync_to_qzone", Integer.valueOf(i));
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge Z and I\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public static boolean d()
@@ -117,12 +100,12 @@ public class StoryConfigManager
   
   public static String e()
   {
-    return (String)((StoryConfigManager)SuperManager.a(10)).b("key_take_video_node_config", "");
+    return (String)((StoryConfigManager)SuperManager.a(10)).b("key_story_album_config", "");
   }
   
   public static void e(String paramString)
   {
-    ((StoryConfigManager)SuperManager.a(10)).c("follow_capture_config", paramString);
+    ((StoryConfigManager)SuperManager.a(10)).b("key_story_home_album_entra_confg", paramString);
   }
   
   public static void e(boolean paramBoolean)
@@ -132,52 +115,22 @@ public class StoryConfigManager
   
   public static boolean e()
   {
-    return false;
+    return ((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_take_video_node_config_clicked", Boolean.valueOf(false))).booleanValue();
   }
   
   public static String f()
   {
-    return (String)((StoryConfigManager)SuperManager.a(10)).b("key_story_album_config", "");
+    return (String)((StoryConfigManager)SuperManager.a(10)).b("key_story_home_album_entra_confg", "");
   }
   
   public static void f(String paramString)
   {
-    ((StoryConfigManager)SuperManager.a(10)).b("key_take_video_node_config", paramString);
-  }
-  
-  public static void f(boolean paramBoolean)
-  {
-    ((StoryConfigManager)SuperManager.a(10)).b("key_qa_entrance", Boolean.valueOf(paramBoolean));
-  }
-  
-  public static boolean f()
-  {
-    return ((Boolean)((StoryConfigManager)SuperManager.a(10)).b("key_take_video_node_config_clicked", Boolean.valueOf(false))).booleanValue();
+    ((StoryConfigManager)SuperManager.a(10)).c("thumbnail_config", paramString);
   }
   
   public static String g()
   {
-    return (String)((StoryConfigManager)SuperManager.a(10)).b("key_story_home_album_entra_confg", "");
-  }
-  
-  public static void g(String paramString)
-  {
-    ((StoryConfigManager)SuperManager.a(10)).b("key_story_album_config", paramString);
-  }
-  
-  public static String h()
-  {
     return (String)((StoryConfigManager)SuperManager.a(10)).c("thumbnail_config", "");
-  }
-  
-  public static void h(String paramString)
-  {
-    ((StoryConfigManager)SuperManager.a(10)).b("key_story_home_album_entra_confg", paramString);
-  }
-  
-  public static void i(String paramString)
-  {
-    ((StoryConfigManager)SuperManager.a(10)).c("thumbnail_config", paramString);
   }
   
   public int a()
@@ -198,6 +151,11 @@ public class StoryConfigManager
   public void a(long paramLong)
   {
     this.jdField_b_of_type_Long = paramLong;
+  }
+  
+  public void a(String paramString)
+  {
+    b("qqstory_retry_proto_list", paramString);
   }
   
   public void a(boolean paramBoolean)
@@ -227,7 +185,11 @@ public class StoryConfigManager
   
   public <V> V b(@NonNull String paramString, @NonNull V paramV)
   {
-    return super.a(paramString + "_" + b(), paramV);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(b());
+    return super.a(localStringBuilder.toString(), paramV);
   }
   
   public void b(long paramLong)
@@ -237,12 +199,16 @@ public class StoryConfigManager
   
   public void b(String paramString)
   {
-    b("qqstory_retry_proto_list", paramString);
+    b("key_video_source_tag_info_config", paramString);
   }
   
   public <V> void b(@NonNull String paramString, @NonNull V paramV)
   {
-    super.a(paramString + "_" + b(), paramV);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(b());
+    super.a(localStringBuilder.toString(), paramV);
   }
   
   public void b(boolean paramBoolean)
@@ -276,7 +242,7 @@ public class StoryConfigManager
     int i = ((Integer)b("qqstory_black_status_last_update_time", Integer.valueOf(0))).intValue();
     int j = ((Integer)b("qqstory_black_status_update_interval", Integer.valueOf(14400))).intValue();
     long l = NetConnInfoCenter.getServerTime();
-    if (l > j + i)
+    if (l > i + j)
     {
       GetBlackStatusRequest localGetBlackStatusRequest = new GetBlackStatusRequest();
       localGetBlackStatusRequest.jdField_b_of_type_JavaLangString = QQStoryContext.a().b();
@@ -289,11 +255,6 @@ public class StoryConfigManager
     c(jdField_a_of_type_JavaLangString, Long.valueOf(paramLong));
   }
   
-  public <V> void c(@NonNull String paramString)
-  {
-    super.a(paramString);
-  }
-  
   public <V> void c(@NonNull String paramString, @NonNull V paramV)
   {
     super.a(paramString, paramV);
@@ -303,15 +264,10 @@ public class StoryConfigManager
   {
     return ((Long)c(jdField_a_of_type_JavaLangString, Long.valueOf(0L))).longValue();
   }
-  
-  public void d(String paramString)
-  {
-    b("key_video_source_tag_info_config", paramString);
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.StoryConfigManager
  * JD-Core Version:    0.7.0.1
  */

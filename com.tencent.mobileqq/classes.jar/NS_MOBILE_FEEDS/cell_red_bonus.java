@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class cell_red_bonus
   extends JceStruct
@@ -53,18 +54,20 @@ public final class cell_red_bonus
     paramJceOutputStream.write(this.payTotalAccount, 1);
     paramJceOutputStream.write(this.isPayed, 2);
     paramJceOutputStream.write(this.payMoney, 3);
-    if (this.payMans != null) {
-      paramJceOutputStream.write(this.payMans, 4);
+    Object localObject = this.payMans;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
-    if (this.actionUrl != null) {
-      paramJceOutputStream.write(this.actionUrl, 5);
+    localObject = this.actionUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.payMenNum, 6);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_red_bonus
  * JD-Core Version:    0.7.0.1
  */

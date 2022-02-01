@@ -44,132 +44,160 @@ public class MsgBoxUtil
   
   public static String a(String paramString)
   {
-    if (paramString == null)
-    {
-      paramString = "";
-      return paramString;
+    if (paramString == null) {
+      return "";
     }
-    for (;;)
+    try
     {
-      for (;;)
+      localObject4 = new JSONObject(paramString);
+      localObject2 = ((JSONObject)localObject4).optString("content");
+      localObject3 = localObject2;
+    }
+    catch (JSONException localJSONException1)
+    {
+      Object localObject4;
+      Object localObject2;
+      Object localObject3;
+      Object localObject1;
+      int i;
+      label279:
+      String str;
+      label447:
+      label450:
+      break label450;
+    }
+    try
+    {
+      if (((JSONObject)localObject4).has("audio_list"))
       {
-        Object localObject3;
-        Object localObject4;
-        int i;
-        try
-        {
-          localObject5 = new JSONObject(paramString);
-          localObject3 = ((JSONObject)localObject5).optString("content");
-          localObject4 = localObject3;
+        localObject1 = localObject2;
+        localObject3 = localObject2;
+        if (((JSONObject)localObject4).optJSONArray("audio_list").length() <= 0) {
+          break label496;
         }
-        catch (JSONException localJSONException1)
-        {
-          Object localObject5;
-          Object localObject1;
-          String str;
-          localObject4 = paramString;
-        }
-        try
-        {
-          if (((JSONObject)localObject5).has("audio_list"))
-          {
-            localObject1 = localObject3;
-            localObject4 = localObject3;
-            if (((JSONObject)localObject5).optJSONArray("audio_list").length() > 0)
-            {
-              localObject4 = localObject3;
-              localObject1 = (String)localObject3 + HardCodeUtil.a(2131706954);
-            }
-            localObject3 = a.matcher((CharSequence)localObject1);
-            paramString = (String)localObject1;
-            if (!((Matcher)localObject3).find()) {
-              break;
-            }
-            paramString = ((Matcher)localObject3).group(1);
-            localObject1 = ((String)localObject1).replace(((Matcher)localObject3).group(0), paramString);
-            continue;
-          }
-          localObject4 = localObject3;
-          if (((JSONObject)localObject5).has("video_list"))
-          {
-            localObject1 = localObject3;
-            localObject4 = localObject3;
-            if (((JSONObject)localObject5).optJSONArray("video_list").length() > 0)
-            {
-              localObject4 = localObject3;
-              localObject1 = (String)localObject3 + HardCodeUtil.a(2131706955);
-            }
-          }
-          else
-          {
-            localObject4 = localObject3;
-            if (((JSONObject)localObject5).has("pic_list"))
-            {
-              localObject1 = localObject3;
-              localObject4 = localObject3;
-              if (((JSONObject)localObject5).optJSONArray("pic_list").length() > 0)
-              {
-                localObject4 = localObject3;
-                localObject1 = (String)localObject3 + HardCodeUtil.a(2131706953);
-              }
-            }
-            else
-            {
-              localObject1 = localObject3;
-              localObject4 = localObject3;
-              if (((JSONObject)localObject5).has("post_array"))
-              {
-                localObject4 = localObject3;
-                localObject5 = ((JSONObject)localObject5).optJSONArray("post_array");
-                i = 0;
-              }
-            }
-          }
-        }
-        catch (JSONException localJSONException2)
-        {
-          label406:
-          Object localObject2;
-          break label406;
-          i += 1;
-          localObject3 = localJSONException2;
-        }
+        localObject3 = localObject2;
+        localObject1 = new StringBuilder();
+        localObject3 = localObject2;
+        ((StringBuilder)localObject1).append((String)localObject2);
+        localObject3 = localObject2;
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706976));
+        localObject3 = localObject2;
+        localObject1 = ((StringBuilder)localObject1).toString();
+        break label496;
       }
-      localObject1 = localObject3;
-      localObject4 = localObject3;
-      if (i < ((JSONArray)localObject5).length())
+      localObject3 = localObject2;
+      if (((JSONObject)localObject4).has("video_list"))
       {
-        localObject4 = localObject3;
-        str = ((JSONArray)localObject5).optJSONObject(i).optString("type");
-        localObject4 = localObject3;
-        if (TextUtils.isEmpty(str))
-        {
-          localObject1 = localObject3;
-          break label450;
+        localObject1 = localObject2;
+        localObject3 = localObject2;
+        if (((JSONObject)localObject4).optJSONArray("video_list").length() <= 0) {
+          break label496;
         }
-        localObject4 = localObject3;
+        localObject3 = localObject2;
+        localObject1 = new StringBuilder();
+        localObject3 = localObject2;
+        ((StringBuilder)localObject1).append((String)localObject2);
+        localObject3 = localObject2;
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706977));
+        localObject3 = localObject2;
+        localObject1 = ((StringBuilder)localObject1).toString();
+        break label496;
+      }
+      localObject3 = localObject2;
+      if (((JSONObject)localObject4).has("pic_list"))
+      {
+        localObject1 = localObject2;
+        localObject3 = localObject2;
+        if (((JSONObject)localObject4).optJSONArray("pic_list").length() <= 0) {
+          break label496;
+        }
+        localObject3 = localObject2;
+        localObject1 = new StringBuilder();
+        localObject3 = localObject2;
+        ((StringBuilder)localObject1).append((String)localObject2);
+        localObject3 = localObject2;
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706975));
+        localObject3 = localObject2;
+        localObject1 = ((StringBuilder)localObject1).toString();
+        break label496;
+      }
+      localObject1 = localObject2;
+      localObject3 = localObject2;
+      if (!((JSONObject)localObject4).has("post_array")) {
+        break label496;
+      }
+      localObject3 = localObject2;
+      localObject4 = ((JSONObject)localObject4).optJSONArray("post_array");
+      i = 0;
+      localObject1 = localObject2;
+      localObject3 = localObject2;
+      if (i >= ((JSONArray)localObject4).length()) {
+        break label496;
+      }
+      localObject3 = localObject2;
+      str = ((JSONArray)localObject4).optJSONObject(i).optString("type");
+      localObject3 = localObject2;
+      if (TextUtils.isEmpty(str))
+      {
+        localObject1 = localObject2;
+      }
+      else
+      {
+        localObject3 = localObject2;
         if (str.equals("qqmusic"))
         {
-          localObject4 = localObject3;
-          localObject1 = (String)localObject3 + HardCodeUtil.a(2131706951);
-          break label450;
+          localObject3 = localObject2;
+          localObject1 = new StringBuilder();
+          localObject3 = localObject2;
+          ((StringBuilder)localObject1).append((String)localObject2);
+          localObject3 = localObject2;
+          ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706973));
+          localObject3 = localObject2;
+          localObject1 = ((StringBuilder)localObject1).toString();
         }
-        localObject4 = localObject3;
-        localObject1 = localObject3;
-        if (!str.equals("audio")) {
-          break label450;
-        }
-        localObject4 = localObject3;
-        localObject1 = (String)localObject3 + HardCodeUtil.a(2131706952);
-        break label450;
-        localObject2 = localObject4;
-        if (QLog.isColorLevel())
+        else
         {
-          QLog.e("Q..msgbox.util", 2, "getTribeJsonContent content:" + paramString);
-          localObject2 = localObject4;
+          localObject1 = localObject2;
+          localObject3 = localObject2;
+          if (str.equals("audio"))
+          {
+            localObject3 = localObject2;
+            localObject1 = new StringBuilder();
+            localObject3 = localObject2;
+            ((StringBuilder)localObject1).append((String)localObject2);
+            localObject3 = localObject2;
+            ((StringBuilder)localObject1).append(HardCodeUtil.a(2131706974));
+            localObject3 = localObject2;
+            localObject1 = ((StringBuilder)localObject1).toString();
+          }
         }
       }
+      i += 1;
+      localObject2 = localObject1;
+      break label279;
     }
+    catch (JSONException localJSONException2)
+    {
+      break label447;
+    }
+    localObject3 = paramString;
+    localObject1 = localObject3;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getTribeJsonContent content:");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.e("Q..msgbox.util", 2, ((StringBuilder)localObject1).toString());
+      localObject1 = localObject3;
+    }
+    label496:
+    paramString = a.matcher((CharSequence)localObject1);
+    while (paramString.find())
+    {
+      localObject2 = paramString.group(1);
+      localObject1 = ((String)localObject1).replace(paramString.group(0), (CharSequence)localObject2);
+    }
+    return localObject1;
   }
   
   public static boolean a()
@@ -184,16 +212,17 @@ public class MsgBoxUtil
   
   public static boolean a(int paramInt, String paramString)
   {
-    return (paramInt == -2053) && (!paramString.equals(String.valueOf(1822701914L + AppConstants.NOW_LIVE_TIP_UIN_BASE))) && (!paramString.equals("1822701914"));
+    return (paramInt == -2053) && (!paramString.equals(String.valueOf(AppConstants.NOW_LIVE_TIP_UIN_BASE + 1822701914L))) && (!paramString.equals("1822701914"));
   }
   
   public static boolean a(Message paramMessage, QQAppInterface paramQQAppInterface)
   {
-    MessageRecord localMessageRecord = null;
     if (paramMessage.msgtype == -2011) {
-      localMessageRecord = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.NEARBY_LBS_HELLO_UIN, 1001, paramMessage.uniseq);
+      paramQQAppInterface = paramQQAppInterface.getMessageProxy(1001).a(AppConstants.NEARBY_LBS_HELLO_UIN, 1001, paramMessage.uniseq);
+    } else {
+      paramQQAppInterface = null;
     }
-    return a(paramMessage.istroop, paramMessage.msgtype, a(localMessageRecord), paramMessage.senderuin);
+    return a(paramMessage.istroop, paramMessage.msgtype, a(paramQQAppInterface), paramMessage.senderuin);
   }
   
   public static boolean a(MessageRecord paramMessageRecord)
@@ -204,79 +233,117 @@ public class MsgBoxUtil
     if ((paramMessageRecord instanceof MessageForStructing))
     {
       MessageForStructing localMessageForStructing = (MessageForStructing)paramMessageRecord;
-      if ((localMessageForStructing.structingMsg == null) || (localMessageForStructing.structingMsg.mMsgServiceID != 98)) {}
+      if ((localMessageForStructing.structingMsg != null) && (localMessageForStructing.structingMsg.mMsgServiceID == 98))
+      {
+        i = 1;
+        break label44;
+      }
     }
-    for (int i = 1;; i = 0) {
-      return (i != 0) || (paramMessageRecord.msgtype == -2070);
+    int i = 0;
+    label44:
+    if (i == 0) {
+      return paramMessageRecord.msgtype == -2070;
     }
+    return true;
   }
   
   public static String b(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      str1 = "";
+      return "";
     }
-    do
-    {
-      return str1;
-      str1 = paramString;
-    } while (paramString.indexOf("/") == -1);
+    if (paramString.indexOf("/") == -1) {
+      return paramString;
+    }
     int i = 0;
-    String str1 = paramString;
+    String str = paramString;
     for (;;)
     {
       try
       {
-        if (i >= EmotcationConstants.SYS_EMOTICON_SYMBOL.length) {
-          break label277;
+        j = EmotcationConstants.SYS_EMOTICON_SYMBOL.length;
+        if (i >= j) {
+          break label371;
         }
-        str1 = paramString;
-        str2 = paramString;
-        if (paramString.indexOf('\024' + EmotcationConstants.SYS_EMOTICON_SYMBOL[i]) == -1) {
-          break label268;
+        str = paramString;
+        localStringBuilder = new StringBuilder();
+        str = paramString;
+        localStringBuilder.append('\024');
+        str = paramString;
+        localStringBuilder.append(EmotcationConstants.SYS_EMOTICON_SYMBOL[i]);
+        str = paramString;
+        localObject = paramString;
+        if (paramString.indexOf(localStringBuilder.toString()) == -1) {
+          break label361;
         }
-        str1 = paramString;
-        str2 = paramString.replace('\024' + EmotcationConstants.SYS_EMOTICON_SYMBOL[i], "\024" + (char)i);
+        str = paramString;
+        localObject = new StringBuilder();
+        str = paramString;
+        ((StringBuilder)localObject).append('\024');
+        str = paramString;
+        ((StringBuilder)localObject).append(EmotcationConstants.SYS_EMOTICON_SYMBOL[i]);
+        str = paramString;
+        localObject = ((StringBuilder)localObject).toString();
+        str = paramString;
+        localStringBuilder = new StringBuilder();
+        str = paramString;
+        localStringBuilder.append("\024");
+        str = paramString;
+        localStringBuilder.append((char)i);
+        str = paramString;
+        localObject = paramString.replace((CharSequence)localObject, localStringBuilder.toString());
       }
       catch (Exception paramString)
       {
+        StringBuilder localStringBuilder;
         paramString.printStackTrace();
+        localObject = str;
         if (!QLog.isColorLevel()) {
+          break label358;
+        }
+        paramString = new StringBuilder();
+        paramString.append("TextUtils:");
+        int j = str.length();
+        i = 200;
+        if (j > 200) {
           continue;
         }
-        paramString = new StringBuilder().append("TextUtils:");
-        if (str1.length() <= 200) {
-          break label258;
-        }
-        i = 200;
-        QLog.e("Q..msgbox.util", 2, str1.substring(0, i));
-        str2 = str1;
+        i = str.length() - 1;
+        paramString.append(str.substring(0, i));
+        QLog.e("Q..msgbox.util", 2, paramString.toString());
+        localObject = str;
       }
-      str1 = paramString;
-      String str2 = paramString;
+      str = paramString;
+      Object localObject = paramString;
       if (i < EmotcationConstants.SYS_EMOTICON_SYMBOL.length)
       {
-        str2 = paramString;
-        str1 = paramString;
+        localObject = paramString;
+        str = paramString;
         if (paramString.indexOf(EmotcationConstants.SYS_EMOTICON_SYMBOL[i]) != -1)
         {
-          str1 = paramString;
-          str2 = paramString.replace(EmotcationConstants.SYS_EMOTICON_SYMBOL[i], "\024" + (char)i);
+          str = paramString;
+          localObject = EmotcationConstants.SYS_EMOTICON_SYMBOL[i];
+          str = paramString;
+          localStringBuilder = new StringBuilder();
+          str = paramString;
+          localStringBuilder.append("\024");
+          str = paramString;
+          localStringBuilder.append((char)i);
+          str = paramString;
+          localObject = paramString.replace((CharSequence)localObject, localStringBuilder.toString());
         }
         i += 1;
-        paramString = str2;
+        paramString = (String)localObject;
       }
       else
       {
-        return str2;
-        label258:
-        i = str1.length() - 1;
-        continue;
-        label268:
+        label358:
+        return localObject;
+        label361:
         i += 1;
-        paramString = str2;
+        paramString = (String)localObject;
         break;
-        label277:
+        label371:
         i = 0;
       }
     }
@@ -289,7 +356,7 @@ public class MsgBoxUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dating.MsgBoxUtil
  * JD-Core Version:    0.7.0.1
  */

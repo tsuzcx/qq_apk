@@ -54,8 +54,10 @@ final class FlutterActivityAndFragmentDelegate
   
   private void doInitialFlutterViewRun()
   {
-    if (this.host.getCachedEngineId() != null) {}
-    while (this.flutterEngine.getDartExecutor().isExecutingDart()) {
+    if (this.host.getCachedEngineId() != null) {
+      return;
+    }
+    if (this.flutterEngine.getDartExecutor().isExecutingDart()) {
       return;
     }
     Object localObject = new StringBuilder();
@@ -102,26 +104,27 @@ final class FlutterActivityAndFragmentDelegate
   
   void onActivityCreated(@Nullable Bundle paramBundle)
   {
-    Object localObject1 = null;
     Log.v("FlutterActivityAndFragmentDelegate", "onActivityCreated. Giving framework and plugins an opportunity to restore state.");
     ensureAlive();
+    byte[] arrayOfByte = null;
+    Object localObject;
     if (paramBundle != null)
     {
-      localObject1 = paramBundle.getBundle("plugins");
-      paramBundle = paramBundle.getByteArray("framework");
+      localObject = paramBundle.getBundle("plugins");
+      arrayOfByte = paramBundle.getByteArray("framework");
+      paramBundle = (Bundle)localObject;
+      localObject = arrayOfByte;
     }
-    for (;;)
+    else
     {
-      if (this.host.shouldRestoreAndSaveState()) {
-        this.flutterEngine.getRestorationChannel().setRestorationData(paramBundle);
-      }
-      if (this.host.shouldAttachEngineToActivity()) {
-        this.flutterEngine.getActivityControlSurface().onRestoreInstanceState((Bundle)localObject1);
-      }
-      return;
-      Object localObject2 = null;
-      paramBundle = (Bundle)localObject1;
-      localObject1 = localObject2;
+      localObject = null;
+      paramBundle = arrayOfByte;
+    }
+    if (this.host.shouldRestoreAndSaveState()) {
+      this.flutterEngine.getRestorationChannel().setRestorationData((byte[])localObject);
+    }
+    if (this.host.shouldAttachEngineToActivity()) {
+      this.flutterEngine.getActivityControlSurface().onRestoreInstanceState(paramBundle);
     }
   }
   
@@ -150,7 +153,8 @@ final class FlutterActivityAndFragmentDelegate
     if (this.flutterEngine == null) {
       setupFlutterEngine();
     }
-    this.platformPlugin = this.host.providePlatformPlugin(this.host.getActivity(), this.flutterEngine);
+    paramContext = this.host;
+    this.platformPlugin = paramContext.providePlatformPlugin(paramContext.getActivity(), this.flutterEngine);
     if (this.host.shouldAttachEngineToActivity())
     {
       Log.v("FlutterActivityAndFragmentDelegate", "Attaching FlutterEngine to the Activity that owns this Fragment.");
@@ -176,40 +180,43 @@ final class FlutterActivityAndFragmentDelegate
   {
     Log.v("FlutterActivityAndFragmentDelegate", "Creating FlutterView.");
     ensureAlive();
-    boolean bool;
     if (this.host.getRenderMode() == RenderMode.surface)
     {
       paramLayoutInflater = this.host.getActivity();
-      if (this.host.getTransparencyMode() == TransparencyMode.transparent)
-      {
+      boolean bool;
+      if (this.host.getTransparencyMode() == TransparencyMode.transparent) {
         bool = true;
-        paramLayoutInflater = new FlutterSurfaceView(paramLayoutInflater, bool);
-        this.host.onFlutterSurfaceViewCreated(paramLayoutInflater);
-        this.flutterView = new FlutterView(this.host.getActivity(), paramLayoutInflater);
-        label96:
-        this.flutterView.addOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
-        this.flutterSplashView = new FlutterSplashView(this.host.getContext());
-        if (Build.VERSION.SDK_INT < 17) {
-          break label246;
-        }
-        this.flutterSplashView.setId(View.generateViewId());
+      } else {
+        bool = false;
       }
+      paramLayoutInflater = new FlutterSurfaceView(paramLayoutInflater, bool);
+      this.host.onFlutterSurfaceViewCreated(paramLayoutInflater);
+      this.flutterView = new FlutterView(this.host.getActivity(), paramLayoutInflater);
     }
-    for (;;)
+    else
     {
-      this.flutterSplashView.displayFlutterViewWithSplash(this.flutterView, this.host.provideSplashScreen());
-      Log.v("FlutterActivityAndFragmentDelegate", "Attaching FlutterEngine to FlutterView.");
-      this.flutterView.attachToFlutterEngine(this.flutterEngine);
-      return this.flutterSplashView;
-      bool = false;
-      break;
       paramLayoutInflater = new FlutterTextureView(this.host.getActivity());
       this.host.onFlutterTextureViewCreated(paramLayoutInflater);
       this.flutterView = new FlutterView(this.host.getActivity(), paramLayoutInflater);
-      break label96;
-      label246:
-      this.flutterSplashView.setId(486947586);
     }
+    this.flutterView.addOnFirstFrameRenderedListener(this.flutterUiDisplayListener);
+    this.flutterSplashView = new FlutterSplashView(this.host.getContext());
+    int i;
+    if (Build.VERSION.SDK_INT >= 17)
+    {
+      paramLayoutInflater = this.flutterSplashView;
+      i = View.generateViewId();
+    }
+    else
+    {
+      paramLayoutInflater = this.flutterSplashView;
+      i = 486947586;
+    }
+    paramLayoutInflater.setId(i);
+    this.flutterSplashView.displayFlutterViewWithSplash(this.flutterView, this.host.provideSplashScreen());
+    Log.v("FlutterActivityAndFragmentDelegate", "Attaching FlutterEngine to FlutterView.");
+    this.flutterView.attachToFlutterEngine(this.flutterEngine);
+    return this.flutterSplashView;
   }
   
   void onDestroyView()
@@ -228,30 +235,26 @@ final class FlutterActivityAndFragmentDelegate
     if (this.host.shouldAttachEngineToActivity())
     {
       Log.v("FlutterActivityAndFragmentDelegate", "Detaching FlutterEngine from the Activity that owns this Fragment.");
-      if (!this.host.getActivity().isChangingConfigurations()) {
-        break label153;
+      if (this.host.getActivity().isChangingConfigurations()) {
+        this.flutterEngine.getActivityControlSurface().detachFromActivityForConfigChanges();
+      } else {
+        this.flutterEngine.getActivityControlSurface().detachFromActivity();
       }
-      this.flutterEngine.getActivityControlSurface().detachFromActivityForConfigChanges();
     }
-    for (;;)
+    PlatformPlugin localPlatformPlugin = this.platformPlugin;
+    if (localPlatformPlugin != null)
     {
-      if (this.platformPlugin != null)
-      {
-        this.platformPlugin.destroy();
-        this.platformPlugin = null;
+      localPlatformPlugin.destroy();
+      this.platformPlugin = null;
+    }
+    this.flutterEngine.getLifecycleChannel().appIsDetached();
+    if (this.host.shouldDestroyEngineWithHost())
+    {
+      this.flutterEngine.destroy();
+      if (this.host.getCachedEngineId() != null) {
+        FlutterEngineCache.getInstance().remove(this.host.getCachedEngineId());
       }
-      this.flutterEngine.getLifecycleChannel().appIsDetached();
-      if (this.host.shouldDestroyEngineWithHost())
-      {
-        this.flutterEngine.destroy();
-        if (this.host.getCachedEngineId() != null) {
-          FlutterEngineCache.getInstance().remove(this.host.getCachedEngineId());
-        }
-        this.flutterEngine = null;
-      }
-      return;
-      label153:
-      this.flutterEngine.getActivityControlSurface().detachFromActivity();
+      this.flutterEngine = null;
     }
   }
   
@@ -288,12 +291,15 @@ final class FlutterActivityAndFragmentDelegate
     ensureAlive();
     if (this.flutterEngine != null)
     {
-      if (this.platformPlugin != null) {
-        this.platformPlugin.updateSystemUiOverlays();
+      PlatformPlugin localPlatformPlugin = this.platformPlugin;
+      if (localPlatformPlugin != null) {
+        localPlatformPlugin.updateSystemUiOverlays();
       }
-      return;
     }
-    Log.w("FlutterActivityAndFragmentDelegate", "onPostResume() invoked before FlutterFragment was attached to an Activity.");
+    else
+    {
+      Log.w("FlutterActivityAndFragmentDelegate", "onPostResume() invoked before FlutterFragment was attached to an Activity.");
+    }
   }
   
   void onRequestPermissionsResult(int paramInt, @NonNull String[] paramArrayOfString, @NonNull int[] paramArrayOfInt)
@@ -354,20 +360,23 @@ final class FlutterActivityAndFragmentDelegate
   void onTrimMemory(int paramInt)
   {
     ensureAlive();
-    if (this.flutterEngine != null)
+    Object localObject = this.flutterEngine;
+    if (localObject != null)
     {
-      this.flutterEngine.getDartExecutor().notifyLowMemoryWarning();
+      ((FlutterEngine)localObject).getDartExecutor().notifyLowMemoryWarning();
       if (paramInt == 10)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("Forwarding onTrimMemory() to FlutterEngine. Level: ");
-        localStringBuilder.append(paramInt);
-        Log.v("FlutterActivityAndFragmentDelegate", localStringBuilder.toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Forwarding onTrimMemory() to FlutterEngine. Level: ");
+        ((StringBuilder)localObject).append(paramInt);
+        Log.v("FlutterActivityAndFragmentDelegate", ((StringBuilder)localObject).toString());
         this.flutterEngine.getSystemChannel().sendMemoryPressureWarning();
       }
-      return;
     }
-    Log.w("FlutterActivityAndFragmentDelegate", "onTrimMemory() invoked before FlutterFragment was attached to an Activity.");
+    else
+    {
+      Log.w("FlutterActivityAndFragmentDelegate", "onTrimMemory() invoked before FlutterFragment was attached to an Activity.");
+    }
   }
   
   void onUserLeaveHint()
@@ -394,21 +403,22 @@ final class FlutterActivityAndFragmentDelegate
   void setupFlutterEngine()
   {
     Log.v("FlutterActivityAndFragmentDelegate", "Setting up FlutterEngine.");
-    String str = this.host.getCachedEngineId();
-    if (str != null)
+    Object localObject = this.host.getCachedEngineId();
+    if (localObject != null)
     {
-      this.flutterEngine = FlutterEngineCache.getInstance().get(str);
+      this.flutterEngine = FlutterEngineCache.getInstance().get((String)localObject);
       this.isFlutterEngineFromHost = true;
       if (this.flutterEngine != null) {
         return;
       }
       StringBuilder localStringBuilder = new StringBuilder();
       localStringBuilder.append("The requested cached FlutterEngine did not exist in the FlutterEngineCache: '");
-      localStringBuilder.append(str);
+      localStringBuilder.append((String)localObject);
       localStringBuilder.append("'");
       throw new IllegalStateException(localStringBuilder.toString());
     }
-    this.flutterEngine = this.host.provideFlutterEngine(this.host.getContext());
+    localObject = this.host;
+    this.flutterEngine = ((FlutterActivityAndFragmentDelegate.Host)localObject).provideFlutterEngine(((FlutterActivityAndFragmentDelegate.Host)localObject).getContext());
     if (this.flutterEngine != null)
     {
       this.isFlutterEngineFromHost = true;
@@ -421,7 +431,7 @@ final class FlutterActivityAndFragmentDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterActivityAndFragmentDelegate
  * JD-Core Version:    0.7.0.1
  */

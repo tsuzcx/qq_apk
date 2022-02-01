@@ -39,24 +39,21 @@ public class MiniSDKImpl
   
   private ILaunchManager getLaunchManager()
   {
-    IMiniServiceManager localIMiniServiceManager;
     if (this.mLaunchManager == null)
     {
-      localIMiniServiceManager = AppLoaderFactory.g().getMiniServiceManager();
-      if (localIMiniServiceManager == null) {}
-    }
-    try
-    {
-      this.mLaunchManager = ((ILaunchManager)localIMiniServiceManager.getService("LAUNCH_SERVICE"));
-      return this.mLaunchManager;
-    }
-    catch (RemoteException localRemoteException)
-    {
-      for (;;)
-      {
-        QMLog.e("minisdk-start_MiniSDKImpl", "Failed to getLaunchManager", localRemoteException);
+      IMiniServiceManager localIMiniServiceManager = AppLoaderFactory.g().getMiniServiceManager();
+      if (localIMiniServiceManager != null) {
+        try
+        {
+          this.mLaunchManager = ((ILaunchManager)localIMiniServiceManager.getService("LAUNCH_SERVICE"));
+        }
+        catch (RemoteException localRemoteException)
+        {
+          QMLog.e("minisdk-start_MiniSDKImpl", "Failed to getLaunchManager", localRemoteException);
+        }
       }
     }
+    return this.mLaunchManager;
   }
   
   private static boolean isConfigurationValid(Configuration paramConfiguration)
@@ -66,24 +63,25 @@ public class MiniSDKImpl
   
   public void init(Context paramContext)
   {
-    if (paramContext == null) {
-      QMLog.e("minisdk-start_MiniSDKImpl", "Failed to init MiniSDK. context is null");
-    }
-    while (this.mContext != null) {
-      return;
-    }
-    try
+    if (paramContext == null)
     {
-      if (this.mContext == null)
-      {
-        QMLog.i("minisdk-start_MiniSDKImpl", "MiniSDK init context.");
-        this.mConfiguration = createConfiguration(paramContext);
-        AppLoaderFactory.g().init(paramContext, this.mConfiguration);
-        this.mContext = paramContext;
-      }
+      QMLog.e("minisdk-start_MiniSDKImpl", "Failed to init MiniSDK. context is null");
       return;
     }
-    finally {}
+    if (this.mContext == null) {
+      try
+      {
+        if (this.mContext == null)
+        {
+          QMLog.i("minisdk-start_MiniSDKImpl", "MiniSDK init context.");
+          this.mConfiguration = createConfiguration(paramContext);
+          AppLoaderFactory.g().init(paramContext, this.mConfiguration);
+          this.mContext = paramContext;
+        }
+        return;
+      }
+      finally {}
+    }
   }
   
   public void notifyPeriodicCacheUpdate(MiniAppInfo paramMiniAppInfo)
@@ -132,13 +130,20 @@ public class MiniSDKImpl
       paramArrayOfByte = ((MiniCodeProxy)AppLoaderFactory.g().getProxyManager().get(MiniCodeProxy.class)).decode(paramArrayOfByte, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, paramInt7);
       return paramArrayOfByte;
     }
-    catch (Throwable paramArrayOfByte) {}
+    catch (Throwable paramArrayOfByte)
+    {
+      label37:
+      break label37;
+    }
     return "scanMiniCode error";
   }
   
   public void startMiniApp(Activity paramActivity, MiniAppInfo paramMiniAppInfo, Bundle paramBundle, ResultReceiver paramResultReceiver)
   {
-    QMLog.i("minisdk-start_MiniSDKImpl", "startMiniApp miniappInfo:" + paramMiniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("startMiniApp miniappInfo:");
+    localStringBuilder.append(paramMiniAppInfo);
+    QMLog.i("minisdk-start_MiniSDKImpl", localStringBuilder.toString());
     if (AppLoaderFactory.g().isMainProcess())
     {
       AppLoaderFactory.g().getMiniServer().startMiniApp(paramActivity, paramMiniAppInfo, paramBundle, paramResultReceiver);
@@ -149,7 +154,10 @@ public class MiniSDKImpl
   
   public void stopAllMiniApp()
   {
-    QMLog.i("minisdk-start_MiniSDKImpl", "stopAllMiniApp. pName=" + AppLoaderFactory.g().getCurrentProcessName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopAllMiniApp. pName=");
+    localStringBuilder.append(AppLoaderFactory.g().getCurrentProcessName());
+    QMLog.i("minisdk-start_MiniSDKImpl", localStringBuilder.toString());
     try
     {
       getLaunchManager().stopAllMiniApp();
@@ -163,7 +171,12 @@ public class MiniSDKImpl
   
   public void stopMiniApp(MiniAppInfo paramMiniAppInfo)
   {
-    QMLog.i("minisdk-start_MiniSDKImpl", "stopMiniApp. pName=" + AppLoaderFactory.g().getCurrentProcessName() + " miniAppInfo:" + paramMiniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stopMiniApp. pName=");
+    localStringBuilder.append(AppLoaderFactory.g().getCurrentProcessName());
+    localStringBuilder.append(" miniAppInfo:");
+    localStringBuilder.append(paramMiniAppInfo);
+    QMLog.i("minisdk-start_MiniSDKImpl", localStringBuilder.toString());
     try
     {
       getLaunchManager().stopMiniApp(paramMiniAppInfo);
@@ -177,7 +190,7 @@ public class MiniSDKImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.MiniSDKImpl
  * JD-Core Version:    0.7.0.1
  */

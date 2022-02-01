@@ -15,57 +15,52 @@ class BaseJsPluginEngine$1
   public void onDismiss(DialogInterface paramDialogInterface)
   {
     paramDialogInterface = (AuthDialog)paramDialogInterface;
-    Object localObject = paramDialogInterface.getData();
+    Object localObject2 = paramDialogInterface.getData();
     boolean bool2 = paramDialogInterface.isConfirm();
     boolean bool3 = paramDialogInterface.isRefuse();
-    boolean bool1;
-    boolean bool4;
-    boolean bool5;
-    boolean bool6;
-    byte[] arrayOfByte;
-    INTERFACE.StGetUserSettingRsp localStGetUserSettingRsp;
-    if (localObject != null)
+    if (localObject2 != null)
     {
-      bool1 = ((Bundle)localObject).getBoolean("key_once_sub_cb_maintain");
-      if ("requestSubscribeSystemMessage".equals(((Bundle)localObject).getString("key_event_name"))) {
+      boolean bool1 = ((Bundle)localObject2).getBoolean("key_once_sub_cb_maintain");
+      if ("requestSubscribeSystemMessage".equals(((Bundle)localObject2).getString("key_event_name"))) {
         bool1 = true;
       }
-      bool4 = ((Bundle)localObject).getBoolean("key_once_sub_cb1");
-      bool5 = ((Bundle)localObject).getBoolean("key_once_sub_cb2");
-      bool6 = ((Bundle)localObject).getBoolean("key_once_sub_cb3");
-      arrayOfByte = ((Bundle)localObject).getByteArray("key_once_sub_rsp_data");
-      localStGetUserSettingRsp = new INTERFACE.StGetUserSettingRsp();
-      if (arrayOfByte == null) {}
-    }
-    try
-    {
-      localStGetUserSettingRsp.mergeFrom(arrayOfByte);
-      if (localStGetUserSettingRsp.setting != null)
-      {
-        localObject = ((Bundle)localObject).getString("key_setting_item");
-        BaseJsPluginEngine.access$000(this.this$0, (String)localObject, bool1, bool4, bool5, bool6, bool2, bool3, localStGetUserSettingRsp);
-        if (!bool2) {
-          break label193;
+      boolean bool4 = ((Bundle)localObject2).getBoolean("key_once_sub_cb1");
+      boolean bool5 = ((Bundle)localObject2).getBoolean("key_once_sub_cb2");
+      boolean bool6 = ((Bundle)localObject2).getBoolean("key_once_sub_cb3");
+      byte[] arrayOfByte = ((Bundle)localObject2).getByteArray("key_once_sub_rsp_data");
+      Object localObject1 = new INTERFACE.StGetUserSettingRsp();
+      if (arrayOfByte != null) {
+        try
+        {
+          ((INTERFACE.StGetUserSettingRsp)localObject1).mergeFrom(arrayOfByte);
         }
-        paramDialogInterface.reportAuthDialogClickTo4239();
+        catch (Throwable localThrowable)
+        {
+          QMLog.e("JsPluginEngine[AuthGuard]", "onceSubDismissListner - rsp.mergeFrom(onceSubRspByteArr) get a Throwable", localThrowable);
+        }
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      if (((INTERFACE.StGetUserSettingRsp)localObject1).setting != null)
       {
-        QMLog.e("JsPluginEngine[AuthGuard]", "onceSubDismissListner - rsp.mergeFrom(onceSubRspByteArr) get a Throwable", localThrowable);
-        continue;
-        this.this$0.onceSubMsgCallbackFail(BaseJsPluginEngine.access$100(this.this$0), "Request list fail", 10002);
+        localObject2 = ((Bundle)localObject2).getString("key_setting_item");
+        BaseJsPluginEngine.access$000(this.this$0, (String)localObject2, bool1, bool4, bool5, bool6, bool2, bool3, (INTERFACE.StGetUserSettingRsp)localObject1);
       }
-      label193:
-      paramDialogInterface.reportAuthDialogCancelTo4239();
+      else
+      {
+        localObject1 = this.this$0;
+        ((BaseJsPluginEngine)localObject1).onceSubMsgCallbackFail(BaseJsPluginEngine.access$100((BaseJsPluginEngine)localObject1), "Request list fail", 10002);
+      }
     }
+    if (bool2)
+    {
+      paramDialogInterface.reportAuthDialogClickTo4239();
+      return;
+    }
+    paramDialogInterface.reportAuthDialogCancelTo4239();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.engine.BaseJsPluginEngine.1
  * JD-Core Version:    0.7.0.1
  */

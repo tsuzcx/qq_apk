@@ -17,31 +17,21 @@ public class TagUtil
 {
   public static int a(CharSequence paramCharSequence)
   {
-    int j = 0;
-    int i;
-    label18:
-    int k;
-    if ((paramCharSequence instanceof Spannable))
-    {
+    if ((paramCharSequence instanceof Spannable)) {
       paramCharSequence = paramCharSequence.toString();
-      i = 0;
-      if (j >= paramCharSequence.length()) {
-        return i;
-      }
-      k = paramCharSequence.codePointAt(j);
-      if ((k < 32) || (k > 126)) {
-        break label63;
-      }
-      i += 1;
-    }
-    for (;;)
-    {
-      j += 1;
-      break label18;
+    } else {
       paramCharSequence = (String)paramCharSequence;
-      break;
-      label63:
-      if (k >= 65535)
+    }
+    int j = 0;
+    int i = 0;
+    while (j < paramCharSequence.length())
+    {
+      int k = paramCharSequence.codePointAt(j);
+      if ((k >= 32) && (k <= 126))
+      {
+        i += 1;
+      }
+      else if (k >= 65535)
       {
         i += 1;
         j += 1;
@@ -50,24 +40,29 @@ public class TagUtil
       {
         i += 2;
       }
+      j += 1;
     }
     return i;
   }
   
   public static int a(Random paramRandom, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    default: 
-      return 0;
-    case -1: 
-      return a(paramRandom, 18, 24);
-    case 0: 
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2) {
+            return 0;
+          }
+          return a(paramRandom, 40, 48);
+        }
+        return a(paramRandom, 30, 40);
+      }
       return a(paramRandom, 22, 30);
-    case 1: 
-      return a(paramRandom, 30, 40);
     }
-    return a(paramRandom, 40, 48);
+    return a(paramRandom, 18, 24);
   }
   
   public static int a(Random paramRandom, int paramInt1, int paramInt2)
@@ -88,333 +83,269 @@ public class TagUtil
   
   public static void a(List<Tag> paramList, ProfilePersonalityLabelInfo paramProfilePersonalityLabelInfo, float paramFloat)
   {
-    if ((paramProfilePersonalityLabelInfo == null) || (paramProfilePersonalityLabelInfo.personalityLabelInfos == null) || (paramProfilePersonalityLabelInfo.personalityLabelInfos.size() <= 0)) {
-      return;
-    }
-    ArrayList localArrayList = new ArrayList(paramProfilePersonalityLabelInfo.getSize());
-    int i = 0;
-    while (i < paramProfilePersonalityLabelInfo.personalityLabelInfos.size())
+    Object localObject2 = paramProfilePersonalityLabelInfo;
+    if ((localObject2 != null) && (((ProfilePersonalityLabelInfo)localObject2).personalityLabelInfos != null))
     {
-      localArrayList.add(new Pair(Long.valueOf(((PersonalityLabelInfo)paramProfilePersonalityLabelInfo.personalityLabelInfos.get(i)).id), ((PersonalityLabelInfo)paramProfilePersonalityLabelInfo.personalityLabelInfos.get(i)).text));
-      i += 1;
-    }
-    Collections.sort(localArrayList, new TagUtil.TextLengthComparator());
-    int i5 = paramProfilePersonalityLabelInfo.getSize();
-    long l2;
-    label161:
-    long l1;
-    label191:
-    Object localObject1;
-    int j;
-    int m;
-    int n;
-    int k;
-    int i3;
-    label217:
-    Object localObject2;
-    if (!TextUtils.isEmpty(paramProfilePersonalityLabelInfo.getLatestThumbUrl()))
-    {
-      i = 1;
-      if (i == 0) {
-        break label283;
+      if (((ProfilePersonalityLabelInfo)localObject2).personalityLabelInfos.size() <= 0) {
+        return;
       }
-      l2 = ((PersonalityLabelInfo)paramProfilePersonalityLabelInfo.personalityLabelInfos.get(0)).id;
-      if (i == 0) {
-        break label299;
-      }
-      if (paramProfilePersonalityLabelInfo.getSize() <= 1) {
-        break label291;
-      }
-      l1 = ((PersonalityLabelInfo)paramProfilePersonalityLabelInfo.personalityLabelInfos.get(1)).id;
-      localObject1 = new Random();
-      j = 0;
-      m = 0;
-      i = 0;
-      n = 0;
-      k = 0;
-      i3 = 0;
-      if (i3 >= localArrayList.size()) {
-        break label995;
-      }
-      localObject2 = paramProfilePersonalityLabelInfo.getLabelById(((Long)((Pair)localArrayList.get(i3)).first).longValue());
-      if (localObject2 != null) {
-        break label320;
-      }
-    }
-    for (int i1 = n;; i1 = n)
-    {
-      label265:
-      i3 += 1;
-      n = i1;
-      break label217;
-      i = 0;
-      break;
-      label283:
-      l2 = -1L;
-      break label161;
-      label291:
-      l1 = -1L;
-      break label191;
-      label299:
-      l1 = ((PersonalityLabelInfo)paramProfilePersonalityLabelInfo.personalityLabelInfos.get(0)).id;
-      break label191;
-      label320:
-      if (!TextUtils.isEmpty(((PersonalityLabelInfo)localObject2).text)) {
-        break label338;
-      }
-    }
-    label338:
-    String str = ((PersonalityLabelInfo)localObject2).text.trim();
-    Tag localTag = new Tag();
-    localTag.jdField_a_of_type_JavaLangCharSequence = str;
-    boolean bool = a(str);
-    label398:
-    int i4;
-    label420:
-    int i2;
-    label544:
-    label561:
-    int i6;
-    if (l2 == ((PersonalityLabelInfo)localObject2).id)
-    {
-      localTag.jdField_b_of_type_Int = ((PersonalityLabelInfo)localObject2).bgColor;
-      localTag.jdField_e_of_type_Int = 2;
-      localTag.jdField_a_of_type_Int = ((PersonalityLabelInfo)localObject2).fgColor;
-      if (localTag.jdField_e_of_type_Int != 2) {
-        break label886;
-      }
-      i4 = 1;
-      if ((!(str instanceof Spannable)) && (bool) && ((i4 == 0) || (str.length() <= 4)))
+      Object localObject1 = new ArrayList(paramProfilePersonalityLabelInfo.getSize());
+      int i1 = 0;
+      int i = 0;
+      while (i < ((ProfilePersonalityLabelInfo)localObject2).personalityLabelInfos.size())
       {
-        i2 = n;
-        if (i4 == 0)
+        ((List)localObject1).add(new Pair(Long.valueOf(((PersonalityLabelInfo)((ProfilePersonalityLabelInfo)localObject2).personalityLabelInfos.get(i)).id), ((PersonalityLabelInfo)((ProfilePersonalityLabelInfo)localObject2).personalityLabelInfos.get(i)).text));
+        i += 1;
+      }
+      Collections.sort((List)localObject1, new TagUtil.TextLengthComparator());
+      int i5 = paramProfilePersonalityLabelInfo.getSize();
+      boolean bool1 = TextUtils.isEmpty(paramProfilePersonalityLabelInfo.getLatestThumbUrl()) ^ true;
+      long l1 = -1L;
+      long l2;
+      if (bool1) {
+        l2 = ((PersonalityLabelInfo)((ProfilePersonalityLabelInfo)localObject2).personalityLabelInfos.get(0)).id;
+      } else {
+        l2 = -1L;
+      }
+      if (bool1)
+      {
+        if (paramProfilePersonalityLabelInfo.getSize() > 1) {
+          l1 = ((PersonalityLabelInfo)((ProfilePersonalityLabelInfo)localObject2).personalityLabelInfos.get(1)).id;
+        }
+      }
+      else {
+        l1 = ((PersonalityLabelInfo)((ProfilePersonalityLabelInfo)localObject2).personalityLabelInfos.get(0)).id;
+      }
+      localObject2 = new Random();
+      int i4 = 0;
+      int n = 0;
+      int k = 0;
+      int i2 = 0;
+      int m = 0;
+      bool1 = i1;
+      Tag localTag;
+      while (i4 < ((List)localObject1).size())
+      {
+        Object localObject3 = paramProfilePersonalityLabelInfo.getLabelById(((Long)((Pair)((List)localObject1).get(i4)).first).longValue());
+        if ((localObject3 == null) || (!TextUtils.isEmpty(((PersonalityLabelInfo)localObject3).text)))
         {
-          i2 = n;
-          if (str.length() <= 6) {}
-        }
-      }
-      else
-      {
-        localTag.jdField_b_of_type_Boolean = true;
-        localTag.jdField_e_of_type_Boolean = true;
-        i2 = n + 1;
-      }
-      i1 = i2;
-      n = i;
-      if (!localTag.jdField_e_of_type_Boolean)
-      {
-        if ((i5 > 1) && (i < 2) && (i != i5 - 1) && (str.length() <= 6)) {
-          break label892;
-        }
-        localTag.jdField_b_of_type_Boolean = true;
-        if (localTag.jdField_b_of_type_Boolean) {
-          break label905;
-        }
-        n = i + 1;
-        i1 = i2;
-      }
-      a(localTag);
-      i6 = a(str);
-      if (i4 == 0) {
-        break label934;
-      }
-      if (i6 > 6) {
-        break label917;
-      }
-      i = 2;
-      label587:
-      i2 = i;
-      if (i == 2)
-      {
-        i2 = i;
-        if (j >= 3) {
-          i2 = 1;
-        }
-      }
-      i = i2;
-      if (i5 <= 1) {
-        i = 2;
-      }
-      i2 = j;
-      if (i == 2) {
-        i2 = j + 1;
-      }
-      j = i;
-      if (i5 <= 3)
-      {
-        j = i;
-        if (i == 0)
-        {
-          j = i;
-          if (m < 2) {
-            j = 1;
-          }
-        }
-      }
-      i = j;
-      if (m + i2 < 2)
-      {
-        i = j;
-        if (j == 0) {
-          i = 1;
-        }
-      }
-      if (m < 4) {
-        break label1280;
-      }
-      if (m < 6) {
-        break label963;
-      }
-      i = -1;
-    }
-    label1280:
-    for (;;)
-    {
-      label698:
-      if (i > 0) {}
-      for (j = m + 1;; j = m)
-      {
-        m = a((Random)localObject1, i);
-        if ((i5 <= 3) && (i6 < 8) && (k < 2)) {
-          m = 48;
-        }
-        for (;;)
-        {
-          if (m == 48) {
-            k += 1;
-          }
-          for (;;)
+          String str = ((PersonalityLabelInfo)localObject3).text.trim();
+          localTag = new Tag();
+          localTag.jdField_a_of_type_JavaLangCharSequence = str;
+          boolean bool3 = a(str);
+          if (l2 == ((PersonalityLabelInfo)localObject3).id)
           {
-            localTag.jdField_a_of_type_Float = (m * paramFloat);
-            localTag.jdField_a_of_type_AndroidTextTextPaint.setTextSize(localTag.jdField_a_of_type_Float);
-            if (QLog.isColorLevel()) {
-              QLog.i("TagUtil", 2, "getTags " + localTag.jdField_a_of_type_JavaLangCharSequence + " sizeLevel:" + i + " size:" + localTag.jdField_a_of_type_Float / paramFloat);
-            }
-            paramList.add(localTag);
-            m = j;
-            j = i2;
-            i = n;
-            break label265;
-            if (l1 != ((PersonalityLabelInfo)localObject2).id) {
-              break label398;
-            }
+            localTag.jdField_b_of_type_Int = ((PersonalityLabelInfo)localObject3).bgColor;
+            localTag.jdField_e_of_type_Int = 2;
+          }
+          else if (l1 == ((PersonalityLabelInfo)localObject3).id)
+          {
             localTag.d = true;
             localTag.jdField_a_of_type_AndroidTextTextPaint.setFakeBoldText(true);
-            break label398;
-            label886:
-            i4 = 0;
-            break label420;
-            label892:
-            localTag.jdField_b_of_type_Boolean = ((Random)localObject1).nextBoolean();
-            break label544;
-            label905:
-            i1 = i2 + 1;
-            n = i;
-            break label561;
-            label917:
-            if (i6 <= 8)
-            {
-              i = 1;
-              break label587;
-            }
-            i = 0;
-            break label587;
-            label934:
-            if (i6 <= 8)
-            {
-              i = 2;
-              break label587;
-            }
-            if (i6 <= 12)
-            {
-              i = 1;
-              break label587;
-            }
-            i = 0;
-            break label587;
-            label963:
-            if (i6 >= 10)
-            {
-              i = -1;
-              break label698;
-            }
-            if ((i6 < 8) || (!((Random)localObject1).nextBoolean())) {
-              break label1280;
-            }
-            i = -1;
-            break label698;
-            label995:
-            if (n == 0)
-            {
-              paramProfilePersonalityLabelInfo = (Tag)paramList.get(0);
-              paramProfilePersonalityLabelInfo.jdField_b_of_type_Boolean = true;
-              a(paramProfilePersonalityLabelInfo);
-            }
-            if ((i == 0) && (i5 > 1))
-            {
-              j = 0;
-              label1033:
-              if (j < paramList.size())
-              {
-                paramProfilePersonalityLabelInfo = (Tag)paramList.get(j);
-                if ((!paramProfilePersonalityLabelInfo.jdField_e_of_type_Boolean) && (paramProfilePersonalityLabelInfo.jdField_a_of_type_JavaLangCharSequence.length() <= 4))
-                {
-                  paramProfilePersonalityLabelInfo.jdField_b_of_type_Boolean = false;
-                  if (!a(paramProfilePersonalityLabelInfo.jdField_a_of_type_JavaLangCharSequence))
-                  {
-                    paramProfilePersonalityLabelInfo.jdField_c_of_type_Int = 0;
-                    label1096:
-                    i += 1;
-                  }
-                }
-              }
-            }
-            for (;;)
-            {
-              if (i > 1) {
-                break label1265;
-              }
-              j = 0;
-              label1108:
-              if (j < i5)
-              {
-                paramProfilePersonalityLabelInfo = (Tag)paramList.get(j);
-                localObject1 = (String)((Pair)localArrayList.get(j)).second;
-                if (!paramProfilePersonalityLabelInfo.jdField_b_of_type_Boolean) {
-                  break label1261;
-                }
-                if (a((String)localObject1)) {
-                  break label1188;
-                }
-              }
-              label1188:
-              label1261:
-              for (;;)
-              {
-                j += 1;
-                break label1108;
-                break;
-                paramProfilePersonalityLabelInfo.jdField_c_of_type_Int = 4;
-                break label1096;
-                j += 1;
-                break label1033;
-                localObject2 = new Tag();
-                ((Tag)localObject2).jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject1);
-                ((Tag)localObject2).jdField_c_of_type_Boolean = true;
-                ((Tag)localObject2).jdField_b_of_type_Boolean = false;
-                ((Tag)localObject2).jdField_a_of_type_Float = paramProfilePersonalityLabelInfo.jdField_a_of_type_Float;
-                ((Tag)localObject2).jdField_a_of_type_AndroidTextTextPaint.setTextSize(paramProfilePersonalityLabelInfo.jdField_a_of_type_Float);
-                paramList.add(localObject2);
-                k = i + 1;
-                i = k;
-                if (k >= 2) {
-                  return;
-                }
-              }
-            }
-            label1265:
-            break;
           }
+          localTag.jdField_a_of_type_Int = ((PersonalityLabelInfo)localObject3).fgColor;
+          if (localTag.jdField_e_of_type_Int == 2) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+          if ((!(str instanceof Spannable)) && (bool3) && ((!bool2) || (str.length() <= 4)) && ((bool2) || (str.length() <= 6)))
+          {
+            i3 = n;
+          }
+          else
+          {
+            localTag.jdField_b_of_type_Boolean = true;
+            localTag.jdField_e_of_type_Boolean = true;
+            i3 = n + 1;
+          }
+          n = i3;
+          i1 = k;
+          if (!localTag.jdField_e_of_type_Boolean)
+          {
+            if ((i5 > 1) && (k < 2) && (k != i5 - 1) && (str.length() <= 6)) {
+              localTag.jdField_b_of_type_Boolean = ((Random)localObject2).nextBoolean();
+            } else {
+              localTag.jdField_b_of_type_Boolean = true;
+            }
+            if (!localTag.jdField_b_of_type_Boolean)
+            {
+              i1 = k + 1;
+              n = i3;
+            }
+            else
+            {
+              n = i3 + 1;
+              i1 = k;
+            }
+          }
+          a(localTag);
+          int i6 = a(str);
+          if (bool2)
+          {
+            if (i6 > 6)
+            {
+              if (i6 > 8) {
+                break label682;
+              }
+              break label676;
+            }
+          }
+          else {
+            if (i6 > 8) {
+              break label669;
+            }
+          }
+          k = 2;
+          break label685;
+          label669:
+          if (i6 <= 12) {
+            label676:
+            k = 1;
+          } else {
+            label682:
+            k = 0;
+          }
+          label685:
+          int i3 = k;
+          if (k == 2)
+          {
+            i3 = k;
+            if (i2 >= 3) {
+              i3 = 1;
+            }
+          }
+          if (i5 <= 1) {
+            i3 = 2;
+          }
+          k = i2;
+          if (i3 == 2) {
+            k = i2 + 1;
+          }
+          i2 = i3;
+          if (i5 <= 3)
+          {
+            i2 = i3;
+            if (i3 == 0)
+            {
+              i2 = i3;
+              if (m < 2) {
+                i2 = 1;
+              }
+            }
+          }
+          i3 = i2;
+          if (m + k < 2)
+          {
+            i3 = i2;
+            if (i2 == 0) {
+              i3 = 1;
+            }
+          }
+          i2 = -1;
+          if (m >= 4) {
+            if (m >= 6) {
+              i3 = i2;
+            } else if (i6 >= 10) {
+              i3 = i2;
+            } else if ((i6 >= 8) && (((Random)localObject2).nextBoolean())) {
+              i3 = i2;
+            }
+          }
+          i2 = m;
+          if (i3 > 0) {
+            i2 = m + 1;
+          }
+          m = a((Random)localObject2, i3);
+          if ((i5 <= 3) && (i6 < 8) && (bool1 < true)) {
+            m = 48;
+          }
+          boolean bool2 = bool1;
+          bool1 = bool2;
+          if (m == 48) {
+            j = bool2 + true;
+          }
+          localTag.jdField_a_of_type_Float = (m * paramFloat);
+          localTag.jdField_a_of_type_AndroidTextTextPaint.setTextSize(localTag.jdField_a_of_type_Float);
+          if (QLog.isColorLevel())
+          {
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("getTags ");
+            ((StringBuilder)localObject3).append(localTag.jdField_a_of_type_JavaLangCharSequence);
+            ((StringBuilder)localObject3).append(" sizeLevel:");
+            ((StringBuilder)localObject3).append(i3);
+            ((StringBuilder)localObject3).append(" size:");
+            ((StringBuilder)localObject3).append(localTag.jdField_a_of_type_Float / paramFloat);
+            QLog.i("TagUtil", 2, ((StringBuilder)localObject3).toString());
+          }
+          paramList.add(localTag);
+          m = i2;
+          i2 = k;
+          k = i1;
+        }
+        i4 += 1;
+      }
+      paramProfilePersonalityLabelInfo = (ProfilePersonalityLabelInfo)localObject1;
+      if (n == 0)
+      {
+        localObject1 = (Tag)paramList.get(0);
+        ((Tag)localObject1).jdField_b_of_type_Boolean = true;
+        a((Tag)localObject1);
+      }
+      int j = k;
+      if (k == 0)
+      {
+        j = k;
+        if (i5 > 1)
+        {
+          m = 0;
+          for (;;)
+          {
+            j = k;
+            if (m >= paramList.size()) {
+              break;
+            }
+            localObject1 = (Tag)paramList.get(m);
+            if ((!((Tag)localObject1).jdField_e_of_type_Boolean) && (((Tag)localObject1).jdField_a_of_type_JavaLangCharSequence.length() <= 4))
+            {
+              ((Tag)localObject1).jdField_b_of_type_Boolean = false;
+              if (!a(((Tag)localObject1).jdField_a_of_type_JavaLangCharSequence)) {
+                ((Tag)localObject1).jdField_c_of_type_Int = 0;
+              } else {
+                ((Tag)localObject1).jdField_c_of_type_Int = 4;
+              }
+              j = k + 1;
+              break;
+            }
+            m += 1;
+          }
+        }
+      }
+      if (j <= 1)
+      {
+        m = 0;
+        k = j;
+        j = m;
+        while (j < i5)
+        {
+          localObject1 = (Tag)paramList.get(j);
+          localObject2 = (String)((Pair)paramProfilePersonalityLabelInfo.get(j)).second;
+          if ((((Tag)localObject1).jdField_b_of_type_Boolean) && (a((String)localObject2)))
+          {
+            localTag = new Tag();
+            localTag.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject2);
+            localTag.jdField_c_of_type_Boolean = true;
+            localTag.jdField_b_of_type_Boolean = false;
+            localTag.jdField_a_of_type_Float = ((Tag)localObject1).jdField_a_of_type_Float;
+            localTag.jdField_a_of_type_AndroidTextTextPaint.setTextSize(((Tag)localObject1).jdField_a_of_type_Float);
+            paramList.add(localTag);
+            m = k + 1;
+            k = m;
+            if (m >= 2) {
+              return;
+            }
+          }
+          j += 1;
         }
       }
     }
@@ -429,7 +360,9 @@ public class TagUtil
   {
     String str = paramCharSequence.toString();
     StringBuilder localStringBuilder = new StringBuilder(1024);
-    localStringBuilder.append("text:").append(str).append(" ");
+    localStringBuilder.append("text:");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" ");
     int i = 0;
     while (i < paramCharSequence.length())
     {
@@ -440,7 +373,10 @@ public class TagUtil
       }
       else
       {
-        localStringBuilder.append("index:").append(i).append(" unicode:").append(j);
+        localStringBuilder.append("index:");
+        localStringBuilder.append(i);
+        localStringBuilder.append(" unicode:");
+        localStringBuilder.append(j);
         return false;
       }
     }
@@ -454,7 +390,7 @@ public class TagUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.TagUtil
  * JD-Core Version:    0.7.0.1
  */

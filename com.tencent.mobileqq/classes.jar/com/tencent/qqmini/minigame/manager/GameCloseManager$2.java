@@ -11,14 +11,15 @@ final class GameCloseManager$2
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     paramDialogInterface.dismiss();
-    if (this.val$onLeaveGameClickListener != null) {
-      this.val$onLeaveGameClickListener.onClick(paramDialogInterface, paramInt);
+    DialogInterface.OnClickListener localOnClickListener = this.val$onLeaveGameClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramDialogInterface, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.GameCloseManager.2
  * JD-Core Version:    0.7.0.1
  */

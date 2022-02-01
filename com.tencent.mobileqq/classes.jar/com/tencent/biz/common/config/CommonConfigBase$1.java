@@ -15,35 +15,48 @@ class CommonConfigBase$1
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    if (paramDownloadTask.a == 0) {
+    Object localObject;
+    if (paramDownloadTask.a == 0)
+    {
       paramDownloadTask = paramDownloadTask.a().getString("file_path");
-    }
-    while (!QLog.isColorLevel()) {
       try
       {
-        File localFile = new File(paramDownloadTask);
-        String str = FileUtils.b(localFile);
-        if (QLog.isColorLevel()) {
-          QLog.d("CommonConfigBase", 2, "onDone() content =  " + str + ", filePath = " + paramDownloadTask);
+        localObject = new File(paramDownloadTask);
+        String str = FileUtils.readFileToString((File)localObject);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("onDone() content =  ");
+          localStringBuilder.append(str);
+          localStringBuilder.append(", filePath = ");
+          localStringBuilder.append(paramDownloadTask);
+          QLog.d("CommonConfigBase", 2, localStringBuilder.toString());
         }
-        localFile.delete();
+        ((File)localObject).delete();
         this.a.b(str);
         this.a.a(str);
         return;
       }
       catch (IOException paramDownloadTask)
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(paramDownloadTask));
-        return;
+        if (!QLog.isColorLevel()) {
+          return;
+        }
       }
+      QLog.d("CommonConfigBase", 2, QLog.getStackTraceString(paramDownloadTask));
     }
-    QLog.d("CommonConfigBase", 2, "onError(), errorCode = " + paramDownloadTask.a);
+    else if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onError(), errorCode = ");
+      ((StringBuilder)localObject).append(paramDownloadTask.a);
+      QLog.d("CommonConfigBase", 2, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.config.CommonConfigBase.1
  * JD-Core Version:    0.7.0.1
  */

@@ -9,12 +9,19 @@ class DataLineMsgProxy$1
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.execSQL("create index if not exists " + this.jdField_a_of_type_JavaLangString + "_index ON " + this.jdField_a_of_type_JavaLangString + "(groupId, msgId)");
+    EntityManager localEntityManager = this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("create index if not exists ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("_index ON ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("(groupId, msgId)");
+    localEntityManager.execSQL(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.DataLineMsgProxy.1
  * JD-Core Version:    0.7.0.1
  */

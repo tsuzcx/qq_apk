@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.qphone.base.util.BaseApplication;
 import java.util.concurrent.atomic.AtomicInteger;
 
 class SwiftBrowserOfflineHandler$1
@@ -13,19 +13,20 @@ class SwiftBrowserOfflineHandler$1
   {
     this.this$0.b();
     long l = System.currentTimeMillis();
-    if (SwiftBrowserOfflineHandler.c.get() == 3) {}
-    for (boolean bool = HtmlOffline.a(BaseApplicationImpl.getApplication().getApplicationContext(), this.a, new SwiftBrowserOfflineHandler.1.1(this, l));; bool = false)
-    {
-      if (!bool) {
-        this.this$0.a();
-      }
-      return;
+    boolean bool;
+    if (SwiftBrowserOfflineHandler.c.get() == 3) {
+      bool = HtmlOffline.a(BaseApplication.getContext().getApplicationContext(), this.a, new SwiftBrowserOfflineHandler.1.1(this, l));
+    } else {
+      bool = false;
+    }
+    if (!bool) {
+      this.this$0.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserOfflineHandler.1
  * JD-Core Version:    0.7.0.1
  */

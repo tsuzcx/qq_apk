@@ -53,7 +53,7 @@ public class QFlutterFaceLoader
   private Bitmap a(int paramInt)
   {
     if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.c();
+      this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.f();
     }
     return this.jdField_a_of_type_AndroidGraphicsBitmap;
   }
@@ -86,21 +86,24 @@ public class QFlutterFaceLoader
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.qqface", 2, String.format("sendFaceRequest, uinList: %s, faceType: %s", new Object[] { paramArrayList, Integer.valueOf(paramInt) }));
     }
-    if ((paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return;
-    }
-    Object localObject = paramArrayList.iterator();
-    while (((Iterator)localObject).hasNext())
+    if (paramArrayList != null)
     {
-      String str = (String)((Iterator)localObject).next();
-      c(paramInt, str);
-      b(paramInt, str);
+      if (paramArrayList.isEmpty()) {
+        return;
+      }
+      Object localObject = paramArrayList.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        String str = (String)((Iterator)localObject).next();
+        c(paramInt, str);
+        b(paramInt, str);
+      }
+      localObject = new Intent("com.tencent.qqhead.getheadreq");
+      ((Intent)localObject).setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
+      ((Intent)localObject).putExtra("faceType", paramInt);
+      ((Intent)localObject).putStringArrayListExtra("uinList", paramArrayList);
+      this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject, "com.tencent.qqhead.permission.getheadresp");
     }
-    localObject = new Intent("com.tencent.qqhead.getheadreq");
-    ((Intent)localObject).setPackage(this.jdField_a_of_type_AndroidContentContext.getPackageName());
-    ((Intent)localObject).putExtra("faceType", paramInt);
-    ((Intent)localObject).putStringArrayListExtra("uinList", paramArrayList);
-    this.jdField_a_of_type_AndroidContentContext.sendBroadcast((Intent)localObject, "com.tencent.qqhead.permission.getheadresp");
   }
   
   private void a(List<DecodeRequest> paramList)
@@ -108,10 +111,11 @@ public class QFlutterFaceLoader
     if (QLog.isColorLevel()) {
       QLog.d("QFlutter.qqface", 2, "decodeFaceBitmap");
     }
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    for (;;)
+    if (paramList != null)
     {
-      return;
+      if (paramList.isEmpty()) {
+        return;
+      }
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -120,8 +124,12 @@ public class QFlutterFaceLoader
         Bitmap localBitmap = DecodeUtils.a(str, localDecodeRequest.jdField_b_of_type_Int, this.jdField_a_of_type_Float);
         if (localBitmap != null)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("QFlutter.qqface", 2, "decodeFaceBitmap addCache " + localDecodeRequest.jdField_b_of_type_JavaLangString);
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("decodeFaceBitmap addCache ");
+            localStringBuilder.append(localDecodeRequest.jdField_b_of_type_JavaLangString);
+            QLog.d("QFlutter.qqface", 2, localStringBuilder.toString());
           }
           this.jdField_a_of_type_AndroidSupportV4UtilMQLruCache.put(localDecodeRequest.jdField_b_of_type_JavaLangString, localBitmap);
           a(localDecodeRequest, localBitmap, str);
@@ -199,8 +207,12 @@ public class QFlutterFaceLoader
   
   public Pair<Bitmap, Boolean> a(DecodeRequest paramDecodeRequest)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QFlutter.qqface", 2, "getBitmap: " + paramDecodeRequest);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getBitmap: ");
+      ((StringBuilder)localObject1).append(paramDecodeRequest);
+      QLog.d("QFlutter.qqface", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject1 = paramDecodeRequest.jdField_b_of_type_JavaLangString;
     String str = paramDecodeRequest.c;
@@ -208,15 +220,25 @@ public class QFlutterFaceLoader
     str = (String)this.jdField_b_of_type_AndroidSupportV4UtilMQLruCache.get(str);
     if (localObject2 != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.qqface", 2, "faceKey: " + (String)localObject1 + " use bitmap cache");
+      if (QLog.isColorLevel())
+      {
+        paramDecodeRequest = new StringBuilder();
+        paramDecodeRequest.append("faceKey: ");
+        paramDecodeRequest.append((String)localObject1);
+        paramDecodeRequest.append(" use bitmap cache");
+        QLog.d("QFlutter.qqface", 2, paramDecodeRequest.toString());
       }
       return new Pair(localObject2, Boolean.valueOf(false));
     }
-    if (FileUtil.a(str))
+    if (FileUtil.b(str))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.qqface", 2, "faceKey: " + (String)localObject1 + " use path cache");
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("faceKey: ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" use path cache");
+        QLog.d("QFlutter.qqface", 2, ((StringBuilder)localObject2).toString());
       }
       localObject1 = new ArrayList();
       ((ArrayList)localObject1).add(paramDecodeRequest);
@@ -224,11 +246,15 @@ public class QFlutterFaceLoader
       ((Message)localObject2).obj = localObject1;
       this.jdField_a_of_type_AndroidOsHandler.sendMessage((Message)localObject2);
     }
-    for (;;)
+    else
     {
-      return new Pair(a(paramDecodeRequest.jdField_b_of_type_Int), Boolean.valueOf(true));
-      if (QLog.isColorLevel()) {
-        QLog.d("QFlutter.qqface", 2, "faceKey: " + (String)localObject1 + " request");
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("faceKey: ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(" request");
+        QLog.d("QFlutter.qqface", 2, ((StringBuilder)localObject2).toString());
       }
       if ((!a(paramDecodeRequest)) || (!b(paramDecodeRequest)))
       {
@@ -237,6 +263,7 @@ public class QFlutterFaceLoader
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 50L);
       }
     }
+    return new Pair(a(paramDecodeRequest.jdField_b_of_type_Int), Boolean.valueOf(true));
   }
   
   public void a()
@@ -274,7 +301,7 @@ public class QFlutterFaceLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.qqface.QFlutterFaceLoader
  * JD-Core Version:    0.7.0.1
  */

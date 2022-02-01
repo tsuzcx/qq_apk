@@ -11,35 +11,36 @@ final class AsyncTimeout$Watchdog
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
+      for (;;)
       {
         try
         {
           AsyncTimeout localAsyncTimeout = AsyncTimeout.awaitTimeout();
-          if (localAsyncTimeout != null) {
-            break label27;
+          if (localAsyncTimeout == null) {}
+          if (localAsyncTimeout == AsyncTimeout.head)
+          {
+            AsyncTimeout.head = null;
+            return;
           }
-          continue;
+          localAsyncTimeout.timedOut();
         }
-        finally {}
-        continue;
+        finally
+        {
+          for (;;)
+          {
+            throw localObject;
+          }
+        }
       }
-      catch (InterruptedException localInterruptedException) {}
-      label27:
-      if (localInterruptedException == AsyncTimeout.head)
-      {
-        AsyncTimeout.head = null;
-        return;
-      }
-      localInterruptedException.timedOut();
     }
+    catch (InterruptedException localInterruptedException) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.AsyncTimeout.Watchdog
  * JD-Core Version:    0.7.0.1
  */

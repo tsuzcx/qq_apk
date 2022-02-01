@@ -37,33 +37,50 @@ public class QZoneLayoutTemplateBase
   public void addView(View paramView)
   {
     super.addView(paramView);
-    paramView.setPadding(this.d, this.d, this.d, this.d);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    int i = this.d;
+    paramView.setPadding(i, i, i, i);
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localDrawable != null)
     {
-      paramView.setBackgroundDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      paramView.setBackgroundDrawable(localDrawable);
       return;
     }
     paramView.setBackgroundColor(this.e);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     paramInt1 = getChildCount();
-    if (paramInt1 > 0) {
-      getChildAt(0).layout(0, 0, this.b, this.b);
+    View localView;
+    if (paramInt1 > 0)
+    {
+      localView = getChildAt(0);
+      paramInt2 = this.b;
+      localView.layout(0, 0, paramInt2, paramInt2);
     }
-    if (paramInt1 > 1) {
-      getChildAt(1).layout(this.b + this.c, 0, this.b * 2 + this.c, this.b);
+    if (paramInt1 > 1)
+    {
+      localView = getChildAt(1);
+      paramInt2 = this.b;
+      paramInt3 = this.c;
+      localView.layout(paramInt2 + paramInt3, 0, paramInt2 * 2 + paramInt3, paramInt2);
     }
-    if (paramInt1 > 2) {
-      getChildAt(2).layout(this.b * 2 + this.c * 2, 0, this.b * 3 + this.c * 2, this.b);
+    if (paramInt1 > 2)
+    {
+      localView = getChildAt(2);
+      paramInt2 = this.b;
+      paramInt3 = this.c;
+      localView.layout(paramInt2 * 2 + paramInt3 * 2, 0, paramInt2 * 3 + paramInt3 * 2, paramInt2);
     }
-    if (paramInt1 > 3) {
-      getChildAt(3).layout(this.b * 3 + this.c * 3, 0, this.jdField_a_of_type_Int, this.b);
+    if (paramInt1 > 3)
+    {
+      localView = getChildAt(3);
+      paramInt1 = this.b;
+      localView.layout(paramInt1 * 3 + this.c * 3, 0, this.jdField_a_of_type_Int, paramInt1);
     }
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
     this.b = ((this.jdField_a_of_type_Int - this.c * 3) / 4);
@@ -100,7 +117,7 @@ public class QZoneLayoutTemplateBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.diy.template.QZoneLayoutTemplateBase
  * JD-Core Version:    0.7.0.1
  */

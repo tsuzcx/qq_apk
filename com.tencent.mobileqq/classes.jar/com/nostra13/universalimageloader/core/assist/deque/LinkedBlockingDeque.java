@@ -32,10 +32,12 @@ public class LinkedBlockingDeque<E>
   
   public LinkedBlockingDeque(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException();
+    if (paramInt > 0)
+    {
+      this.capacity = paramInt;
+      return;
     }
-    this.capacity = paramInt;
+    throw new IllegalArgumentException();
   }
   
   public LinkedBlockingDeque(Collection<? extends E> paramCollection)
@@ -43,29 +45,33 @@ public class LinkedBlockingDeque<E>
     this(2147483647);
     ReentrantLock localReentrantLock = this.lock;
     localReentrantLock.lock();
-    for (;;)
+    try
     {
-      Object localObject;
-      try
+      paramCollection = paramCollection.iterator();
+      while (paramCollection.hasNext())
       {
-        paramCollection = paramCollection.iterator();
-        if (!paramCollection.hasNext()) {
-          break;
+        Object localObject = paramCollection.next();
+        if (localObject != null)
+        {
+          if (!linkLast(new LinkedBlockingDeque.Node(localObject))) {
+            throw new IllegalStateException("Deque full");
+          }
         }
-        localObject = paramCollection.next();
-        if (localObject == null) {
+        else {
           throw new NullPointerException();
         }
       }
-      finally
-      {
-        localReentrantLock.unlock();
-      }
-      if (!linkLast(new LinkedBlockingDeque.Node(localObject))) {
-        throw new IllegalStateException("Deque full");
-      }
+      localReentrantLock.unlock();
+      return;
     }
-    localReentrantLock.unlock();
+    finally
+    {
+      localReentrantLock.unlock();
+    }
+    for (;;)
+    {
+      throw paramCollection;
+    }
   }
   
   private boolean linkFirst(LinkedBlockingDeque.Node<E> paramNode)
@@ -78,14 +84,12 @@ public class LinkedBlockingDeque<E>
     this.first = paramNode;
     if (this.last == null) {
       this.last = paramNode;
-    }
-    for (;;)
-    {
-      this.count += 1;
-      this.notEmpty.signal();
-      return true;
+    } else {
       localNode.prev = paramNode;
     }
+    this.count += 1;
+    this.notEmpty.signal();
+    return true;
   }
   
   private boolean linkLast(LinkedBlockingDeque.Node<E> paramNode)
@@ -98,14 +102,12 @@ public class LinkedBlockingDeque<E>
     this.last = paramNode;
     if (this.first == null) {
       this.first = paramNode;
-    }
-    for (;;)
-    {
-      this.count += 1;
-      this.notEmpty.signal();
-      return true;
+    } else {
       localNode.next = paramNode;
     }
+    this.count += 1;
+    this.notEmpty.signal();
+    return true;
   }
   
   private void readObject(ObjectInputStream paramObjectInputStream)
@@ -137,14 +139,12 @@ public class LinkedBlockingDeque<E>
     this.first = localNode2;
     if (localNode2 == null) {
       this.last = null;
-    }
-    for (;;)
-    {
-      this.count -= 1;
-      this.notFull.signal();
-      return localObject;
+    } else {
       localNode2.prev = null;
     }
+    this.count -= 1;
+    this.notFull.signal();
+    return localObject;
   }
   
   private E unlinkLast()
@@ -160,14 +160,12 @@ public class LinkedBlockingDeque<E>
     this.last = localNode2;
     if (localNode2 == null) {
       this.first = null;
-    }
-    for (;;)
-    {
-      this.count -= 1;
-      this.notFull.signal();
-      return localObject;
+    } else {
       localNode2.next = null;
     }
+    this.count -= 1;
+    this.notFull.signal();
+    return localObject;
   }
   
   private void writeObject(ObjectOutputStream paramObjectOutputStream)
@@ -181,11 +179,16 @@ public class LinkedBlockingDeque<E>
         paramObjectOutputStream.writeObject(localNode.item);
       }
       paramObjectOutputStream.writeObject(null);
+      localReentrantLock.unlock();
       return;
     }
     finally
     {
       localReentrantLock.unlock();
+    }
+    for (;;)
+    {
+      throw paramObjectOutputStream;
     }
   }
   
@@ -197,16 +200,18 @@ public class LinkedBlockingDeque<E>
   
   public void addFirst(E paramE)
   {
-    if (!offerFirst(paramE)) {
-      throw new IllegalStateException("Deque full");
+    if (offerFirst(paramE)) {
+      return;
     }
+    throw new IllegalStateException("Deque full");
   }
   
   public void addLast(E paramE)
   {
-    if (!offerLast(paramE)) {
-      throw new IllegalStateException("Deque full");
+    if (offerLast(paramE)) {
+      return;
     }
+    throw new IllegalStateException("Deque full");
   }
   
   public void clear()
@@ -227,11 +232,16 @@ public class LinkedBlockingDeque<E>
       this.first = null;
       this.count = 0;
       this.notFull.signalAll();
+      localReentrantLock.unlock();
       return;
     }
     finally
     {
       localReentrantLock.unlock();
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -247,15 +257,22 @@ public class LinkedBlockingDeque<E>
       for (LinkedBlockingDeque.Node localNode = this.first; localNode != null; localNode = localNode.next)
       {
         boolean bool = paramObject.equals(localNode.item);
-        if (bool) {
+        if (bool)
+        {
+          localReentrantLock.unlock();
           return true;
         }
       }
+      localReentrantLock.unlock();
       return false;
     }
     finally
     {
       localReentrantLock.unlock();
+    }
+    for (;;)
+    {
+      throw paramObject;
     }
   }
   
@@ -271,29 +288,35 @@ public class LinkedBlockingDeque<E>
   
   public int drainTo(Collection<? super E> paramCollection, int paramInt)
   {
-    if (paramCollection == null) {
-      throw new NullPointerException();
-    }
-    if (paramCollection == this) {
+    if (paramCollection != null)
+    {
+      if (paramCollection != this)
+      {
+        ReentrantLock localReentrantLock = this.lock;
+        localReentrantLock.lock();
+        try
+        {
+          int i = Math.min(paramInt, this.count);
+          paramInt = 0;
+          while (paramInt < i)
+          {
+            paramCollection.add(this.first.item);
+            unlinkFirst();
+            paramInt += 1;
+          }
+          return i;
+        }
+        finally
+        {
+          localReentrantLock.unlock();
+        }
+      }
       throw new IllegalArgumentException();
     }
-    ReentrantLock localReentrantLock = this.lock;
-    localReentrantLock.lock();
-    try
+    paramCollection = new NullPointerException();
+    for (;;)
     {
-      int i = Math.min(paramInt, this.count);
-      paramInt = 0;
-      while (paramInt < i)
-      {
-        paramCollection.add(this.first.item);
-        unlinkFirst();
-        paramInt += 1;
-      }
-      return i;
-    }
-    finally
-    {
-      localReentrantLock.unlock();
+      throw paramCollection;
     }
   }
   
@@ -305,19 +328,19 @@ public class LinkedBlockingDeque<E>
   public E getFirst()
   {
     Object localObject = peekFirst();
-    if (localObject == null) {
-      throw new NoSuchElementException();
+    if (localObject != null) {
+      return localObject;
     }
-    return localObject;
+    throw new NoSuchElementException();
   }
   
   public E getLast()
   {
     Object localObject = peekLast();
-    if (localObject == null) {
-      throw new NoSuchElementException();
+    if (localObject != null) {
+      return localObject;
     }
-    return localObject;
+    throw new NoSuchElementException();
   }
   
   public Iterator<E> iterator()
@@ -337,99 +360,107 @@ public class LinkedBlockingDeque<E>
   
   public boolean offerFirst(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException();
-    }
-    LinkedBlockingDeque.Node localNode = new LinkedBlockingDeque.Node(paramE);
-    paramE = this.lock;
-    paramE.lock();
-    try
+    if (paramE != null)
     {
-      boolean bool = linkFirst(localNode);
-      return bool;
+      LinkedBlockingDeque.Node localNode = new LinkedBlockingDeque.Node(paramE);
+      paramE = this.lock;
+      paramE.lock();
+      try
+      {
+        boolean bool = linkFirst(localNode);
+        return bool;
+      }
+      finally
+      {
+        paramE.unlock();
+      }
     }
-    finally
-    {
-      paramE.unlock();
-    }
+    throw new NullPointerException();
   }
   
   public boolean offerFirst(E paramE, long paramLong, TimeUnit paramTimeUnit)
   {
-    if (paramE == null) {
-      throw new NullPointerException();
-    }
-    paramE = new LinkedBlockingDeque.Node(paramE);
-    paramLong = paramTimeUnit.toNanos(paramLong);
-    paramTimeUnit = this.lock;
-    paramTimeUnit.lockInterruptibly();
-    try
+    if (paramE != null)
     {
-      for (;;)
+      paramE = new LinkedBlockingDeque.Node(paramE);
+      paramLong = paramTimeUnit.toNanos(paramLong);
+      paramTimeUnit = this.lock;
+      paramTimeUnit.lockInterruptibly();
+      try
       {
         boolean bool = linkFirst(paramE);
-        if (bool) {
+        if (!bool) {
+          if (paramLong > 0L) {}
+        }
+        for (bool = false;; bool = true)
+        {
+          return bool;
+          paramLong = this.notFull.awaitNanos(paramLong);
           break;
         }
-        if (paramLong <= 0L) {
-          return false;
-        }
-        paramLong = this.notFull.awaitNanos(paramLong);
+        paramE = new NullPointerException();
       }
-      return true;
+      finally
+      {
+        paramTimeUnit.unlock();
+      }
     }
-    finally
+    for (;;)
     {
-      paramTimeUnit.unlock();
+      throw paramE;
     }
   }
   
   public boolean offerLast(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException();
-    }
-    LinkedBlockingDeque.Node localNode = new LinkedBlockingDeque.Node(paramE);
-    paramE = this.lock;
-    paramE.lock();
-    try
+    if (paramE != null)
     {
-      boolean bool = linkLast(localNode);
-      return bool;
+      LinkedBlockingDeque.Node localNode = new LinkedBlockingDeque.Node(paramE);
+      paramE = this.lock;
+      paramE.lock();
+      try
+      {
+        boolean bool = linkLast(localNode);
+        return bool;
+      }
+      finally
+      {
+        paramE.unlock();
+      }
     }
-    finally
-    {
-      paramE.unlock();
-    }
+    throw new NullPointerException();
   }
   
   public boolean offerLast(E paramE, long paramLong, TimeUnit paramTimeUnit)
   {
-    if (paramE == null) {
-      throw new NullPointerException();
-    }
-    paramE = new LinkedBlockingDeque.Node(paramE);
-    paramLong = paramTimeUnit.toNanos(paramLong);
-    paramTimeUnit = this.lock;
-    paramTimeUnit.lockInterruptibly();
-    try
+    if (paramE != null)
     {
-      for (;;)
+      paramE = new LinkedBlockingDeque.Node(paramE);
+      paramLong = paramTimeUnit.toNanos(paramLong);
+      paramTimeUnit = this.lock;
+      paramTimeUnit.lockInterruptibly();
+      try
       {
         boolean bool = linkLast(paramE);
-        if (bool) {
+        if (!bool) {
+          if (paramLong > 0L) {}
+        }
+        for (bool = false;; bool = true)
+        {
+          return bool;
+          paramLong = this.notFull.awaitNanos(paramLong);
           break;
         }
-        if (paramLong <= 0L) {
-          return false;
-        }
-        paramLong = this.notFull.awaitNanos(paramLong);
+        paramE = new NullPointerException();
       }
-      return true;
+      finally
+      {
+        paramTimeUnit.unlock();
+      }
     }
-    finally
+    for (;;)
     {
-      paramTimeUnit.unlock();
+      throw paramE;
     }
   }
   
@@ -438,88 +469,44 @@ public class LinkedBlockingDeque<E>
     return peekFirst();
   }
   
-  /* Error */
   public E peekFirst()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 39	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   4: astore_2
-    //   5: aload_2
-    //   6: invokevirtual 55	java/util/concurrent/locks/ReentrantLock:lock	()V
-    //   9: aload_0
-    //   10: getfield 100	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque:first	Lcom/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node;
-    //   13: astore_1
-    //   14: aload_1
-    //   15: ifnonnull +11 -> 26
-    //   18: aconst_null
-    //   19: astore_1
-    //   20: aload_2
-    //   21: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   24: aload_1
-    //   25: areturn
-    //   26: aload_0
-    //   27: getfield 100	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque:first	Lcom/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node;
-    //   30: getfield 131	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node:item	Ljava/lang/Object;
-    //   33: astore_1
-    //   34: goto -14 -> 20
-    //   37: astore_1
-    //   38: aload_2
-    //   39: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   42: aload_1
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	44	0	this	LinkedBlockingDeque
-    //   13	21	1	localObject1	Object
-    //   37	6	1	localObject2	Object
-    //   4	35	2	localReentrantLock	ReentrantLock
-    // Exception table:
-    //   from	to	target	type
-    //   9	14	37	finally
-    //   26	34	37	finally
+    ReentrantLock localReentrantLock = this.lock;
+    localReentrantLock.lock();
+    try
+    {
+      Object localObject1;
+      if (this.first == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = this.first.item;
+      }
+      return localObject1;
+    }
+    finally
+    {
+      localReentrantLock.unlock();
+    }
   }
   
-  /* Error */
   public E peekLast()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 39	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   4: astore_2
-    //   5: aload_2
-    //   6: invokevirtual 55	java/util/concurrent/locks/ReentrantLock:lock	()V
-    //   9: aload_0
-    //   10: getfield 104	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque:last	Lcom/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node;
-    //   13: astore_1
-    //   14: aload_1
-    //   15: ifnonnull +11 -> 26
-    //   18: aconst_null
-    //   19: astore_1
-    //   20: aload_2
-    //   21: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   24: aload_1
-    //   25: areturn
-    //   26: aload_0
-    //   27: getfield 104	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque:last	Lcom/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node;
-    //   30: getfield 131	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node:item	Ljava/lang/Object;
-    //   33: astore_1
-    //   34: goto -14 -> 20
-    //   37: astore_1
-    //   38: aload_2
-    //   39: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   42: aload_1
-    //   43: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	44	0	this	LinkedBlockingDeque
-    //   13	21	1	localObject1	Object
-    //   37	6	1	localObject2	Object
-    //   4	35	2	localReentrantLock	ReentrantLock
-    // Exception table:
-    //   from	to	target	type
-    //   9	14	37	finally
-    //   26	34	37	finally
+    ReentrantLock localReentrantLock = this.lock;
+    localReentrantLock.lock();
+    try
+    {
+      Object localObject1;
+      if (this.last == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = this.last.item;
+      }
+      return localObject1;
+    }
+    finally
+    {
+      localReentrantLock.unlock();
+    }
   }
   
   public E poll()
@@ -561,16 +548,23 @@ public class LinkedBlockingDeque<E>
         if (localObject1 != null) {
           break;
         }
-        if (paramLong <= 0L) {
+        if (paramLong <= 0L)
+        {
+          paramTimeUnit.unlock();
           return null;
         }
         paramLong = this.notEmpty.awaitNanos(paramLong);
       }
+      paramTimeUnit.unlock();
       return localObject1;
     }
     finally
     {
       paramTimeUnit.unlock();
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -603,16 +597,23 @@ public class LinkedBlockingDeque<E>
         if (localObject1 != null) {
           break;
         }
-        if (paramLong <= 0L) {
+        if (paramLong <= 0L)
+        {
+          paramTimeUnit.unlock();
           return null;
         }
         paramLong = this.notEmpty.awaitNanos(paramLong);
       }
+      paramTimeUnit.unlock();
       return localObject1;
     }
     finally
     {
       paramTimeUnit.unlock();
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -633,43 +634,53 @@ public class LinkedBlockingDeque<E>
   
   public void putFirst(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException();
-    }
-    LinkedBlockingDeque.Node localNode = new LinkedBlockingDeque.Node(paramE);
-    paramE = this.lock;
-    paramE.lock();
-    try
+    if (paramE != null)
     {
-      if (!linkFirst(localNode)) {
-        this.notFull.await();
+      LinkedBlockingDeque.Node localNode = new LinkedBlockingDeque.Node(paramE);
+      paramE = this.lock;
+      paramE.lock();
+      try
+      {
+        while (!linkFirst(localNode)) {
+          this.notFull.await();
+        }
+        return;
       }
-      return;
+      finally
+      {
+        paramE.unlock();
+      }
     }
-    finally
+    paramE = new NullPointerException();
+    for (;;)
     {
-      paramE.unlock();
+      throw paramE;
     }
   }
   
   public void putLast(E paramE)
   {
-    if (paramE == null) {
-      throw new NullPointerException();
-    }
-    LinkedBlockingDeque.Node localNode = new LinkedBlockingDeque.Node(paramE);
-    paramE = this.lock;
-    paramE.lock();
-    try
+    if (paramE != null)
     {
-      if (!linkLast(localNode)) {
-        this.notFull.await();
+      LinkedBlockingDeque.Node localNode = new LinkedBlockingDeque.Node(paramE);
+      paramE = this.lock;
+      paramE.lock();
+      try
+      {
+        while (!linkLast(localNode)) {
+          this.notFull.await();
+        }
+        return;
       }
-      return;
+      finally
+      {
+        paramE.unlock();
+      }
     }
-    finally
+    paramE = new NullPointerException();
+    for (;;)
     {
-      paramE.unlock();
+      throw paramE;
     }
   }
   
@@ -702,10 +713,10 @@ public class LinkedBlockingDeque<E>
   public E removeFirst()
   {
     Object localObject = pollFirst();
-    if (localObject == null) {
-      throw new NoSuchElementException();
+    if (localObject != null) {
+      return localObject;
     }
-    return localObject;
+    throw new NoSuchElementException();
   }
   
   public boolean removeFirstOccurrence(Object paramObject)
@@ -721,24 +732,30 @@ public class LinkedBlockingDeque<E>
         if (paramObject.equals(localNode.item))
         {
           unlink(localNode);
+          localReentrantLock.unlock();
           return true;
         }
       }
+      localReentrantLock.unlock();
       return false;
     }
     finally
     {
       localReentrantLock.unlock();
     }
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public E removeLast()
   {
     Object localObject = pollLast();
-    if (localObject == null) {
-      throw new NoSuchElementException();
+    if (localObject != null) {
+      return localObject;
     }
-    return localObject;
+    throw new NoSuchElementException();
   }
   
   public boolean removeLastOccurrence(Object paramObject)
@@ -754,14 +771,20 @@ public class LinkedBlockingDeque<E>
         if (paramObject.equals(localNode.item))
         {
           unlink(localNode);
+          localReentrantLock.unlock();
           return true;
         }
       }
+      localReentrantLock.unlock();
       return false;
     }
     finally
     {
       localReentrantLock.unlock();
+    }
+    for (;;)
+    {
+      throw paramObject;
     }
   }
   
@@ -791,20 +814,26 @@ public class LinkedBlockingDeque<E>
     localReentrantLock.lock();
     try
     {
+      Object localObject1;
       for (;;)
       {
-        Object localObject = unlinkFirst();
-        if (localObject != null) {
+        localObject1 = unlinkFirst();
+        if (localObject1 != null) {
           break;
         }
         this.notEmpty.await();
       }
+      localReentrantLock.unlock();
+      return localObject1;
     }
     finally
     {
       localReentrantLock.unlock();
     }
-    return ?;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public E takeLast()
@@ -813,20 +842,26 @@ public class LinkedBlockingDeque<E>
     localReentrantLock.lock();
     try
     {
+      Object localObject1;
       for (;;)
       {
-        Object localObject = unlinkLast();
-        if (localObject != null) {
+        localObject1 = unlinkLast();
+        if (localObject1 != null) {
           break;
         }
         this.notEmpty.await();
       }
+      localReentrantLock.unlock();
+      return localObject1;
     }
     finally
     {
       localReentrantLock.unlock();
     }
-    return ?;
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public Object[] toArray()
@@ -844,11 +879,16 @@ public class LinkedBlockingDeque<E>
         localNode = localNode.next;
         i += 1;
       }
+      localReentrantLock.unlock();
       return arrayOfObject;
     }
     finally
     {
       localReentrantLock.unlock();
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -873,97 +913,59 @@ public class LinkedBlockingDeque<E>
       if (localObject.length > i) {
         localObject[i] = null;
       }
+      localReentrantLock.unlock();
       return localObject;
     }
     finally
     {
       localReentrantLock.unlock();
     }
+    for (;;)
+    {
+      throw paramArrayOfT;
+    }
   }
   
-  /* Error */
-  public java.lang.String toString()
+  public String toString()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 39	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque:lock	Ljava/util/concurrent/locks/ReentrantLock;
-    //   4: astore 4
-    //   6: aload 4
-    //   8: invokevirtual 55	java/util/concurrent/locks/ReentrantLock:lock	()V
-    //   11: aload_0
-    //   12: getfield 100	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque:first	Lcom/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node;
-    //   15: astore_1
-    //   16: aload_1
-    //   17: ifnonnull +12 -> 29
-    //   20: aload 4
-    //   22: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   25: ldc_w 295
-    //   28: areturn
-    //   29: new 297	java/lang/StringBuilder
-    //   32: dup
-    //   33: invokespecial 298	java/lang/StringBuilder:<init>	()V
-    //   36: astore 5
-    //   38: aload 5
-    //   40: bipush 91
-    //   42: invokevirtual 302	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   45: pop
-    //   46: aload_1
-    //   47: getfield 131	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node:item	Ljava/lang/Object;
-    //   50: astore_3
-    //   51: aload_3
-    //   52: astore_2
-    //   53: aload_3
-    //   54: aload_0
-    //   55: if_acmpne +7 -> 62
-    //   58: ldc_w 304
-    //   61: astore_2
-    //   62: aload 5
-    //   64: aload_2
-    //   65: invokevirtual 307	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   68: pop
-    //   69: aload_1
-    //   70: getfield 102	com/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node:next	Lcom/nostra13/universalimageloader/core/assist/deque/LinkedBlockingDeque$Node;
-    //   73: astore_1
-    //   74: aload_1
-    //   75: ifnonnull +21 -> 96
-    //   78: aload 5
-    //   80: bipush 93
-    //   82: invokevirtual 302	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   85: invokevirtual 309	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   88: astore_1
-    //   89: aload 4
-    //   91: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   94: aload_1
-    //   95: areturn
-    //   96: aload 5
-    //   98: bipush 44
-    //   100: invokevirtual 302	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   103: bipush 32
-    //   105: invokevirtual 302	java/lang/StringBuilder:append	(C)Ljava/lang/StringBuilder;
-    //   108: pop
-    //   109: goto -63 -> 46
-    //   112: astore_1
-    //   113: aload 4
-    //   115: invokevirtual 77	java/util/concurrent/locks/ReentrantLock:unlock	()V
-    //   118: aload_1
-    //   119: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	120	0	this	LinkedBlockingDeque
-    //   15	80	1	localObject1	Object
-    //   112	7	1	localObject2	Object
-    //   52	13	2	localObject3	Object
-    //   50	4	3	localObject4	Object
-    //   4	110	4	localReentrantLock	ReentrantLock
-    //   36	61	5	localStringBuilder	java.lang.StringBuilder
-    // Exception table:
-    //   from	to	target	type
-    //   11	16	112	finally
-    //   29	46	112	finally
-    //   46	51	112	finally
-    //   62	74	112	finally
-    //   78	89	112	finally
-    //   96	109	112	finally
+    ReentrantLock localReentrantLock = this.lock;
+    localReentrantLock.lock();
+    try
+    {
+      Object localObject1 = this.first;
+      if (localObject1 == null)
+      {
+        localReentrantLock.unlock();
+        return "[]";
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append('[');
+      for (;;)
+      {
+        Object localObject4 = ((LinkedBlockingDeque.Node)localObject1).item;
+        Object localObject3 = localObject4;
+        if (localObject4 == this) {
+          localObject3 = "(this Collection)";
+        }
+        localStringBuilder.append(localObject3);
+        localObject1 = ((LinkedBlockingDeque.Node)localObject1).next;
+        if (localObject1 == null)
+        {
+          localStringBuilder.append(']');
+          localObject1 = localStringBuilder.toString();
+          localReentrantLock.unlock();
+          return localObject1;
+        }
+        localStringBuilder.append(',');
+        localStringBuilder.append(' ');
+      }
+      throw localObject2;
+    }
+    finally
+    {
+      localReentrantLock.unlock();
+    }
+    for (;;) {}
   }
   
   void unlink(LinkedBlockingDeque.Node<E> paramNode)
@@ -989,7 +991,7 @@ public class LinkedBlockingDeque<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.assist.deque.LinkedBlockingDeque
  * JD-Core Version:    0.7.0.1
  */

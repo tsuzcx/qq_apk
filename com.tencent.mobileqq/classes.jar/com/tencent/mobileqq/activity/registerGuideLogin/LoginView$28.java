@@ -19,7 +19,8 @@ class LoginView$28
   
   public void onFocusChange(View paramView, boolean paramBoolean)
   {
-    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView) {
+    if (paramView == this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView)
+    {
       if (true == paramBoolean)
       {
         this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.length());
@@ -30,44 +31,45 @@ class LoginView$28
           this.a.b.setVisibility(0);
         }
         this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setSelection(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().length());
-        if (!GuideHandler.a(GuideHandler.a)) {}
+        if (GuideHandler.a(GuideHandler.a)) {
+          return;
+        }
+        if ((LoginView.a(this.a).isActive(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView)) && (QLog.isColorLevel())) {
+          QLog.d("InputMethodRelativeLayout", 2, "isActive(mAutoTextAccount)");
+        }
+        this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint("");
+        return;
       }
-    }
-    while (paramView != this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText)
-    {
-      return;
-      if ((LoginView.a(this.a).isActive(this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView)) && (QLog.isColorLevel())) {
-        QLog.d("InputMethodRelativeLayout", 2, "isActive(mAutoTextAccount)");
-      }
-      this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint("");
-      return;
       if ((this.a.b != null) && (this.a.b.isShown())) {
         this.a.b.setVisibility(8);
       }
-      paramView = new SpannableString(HardCodeUtil.a(2131707548));
+      paramView = new SpannableString(HardCodeUtil.a(2131707573));
       paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
       this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.setHint(paramView);
       return;
     }
-    if (paramBoolean)
+    if (paramView == this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().length());
-      this.a.c.setVisibility(0);
-      if (LoginView.a(this.a).isActive(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText)) {
-        LoginView.a(this.a).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText, 2);
+      if (paramBoolean)
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setSelection(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().length());
+        this.a.c.setVisibility(0);
+        if (LoginView.a(this.a).isActive(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText)) {
+          LoginView.a(this.a).showSoftInput(this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText, 2);
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setHint("");
+        return;
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setHint("");
-      return;
+      this.a.c.setVisibility(8);
+      paramView = new SpannableString(HardCodeUtil.a(2131699827));
+      paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
+      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setHint(paramView);
     }
-    this.a.c.setVisibility(8);
-    paramView = new SpannableString(HardCodeUtil.a(2131699694));
-    paramView.setSpan(new AbsoluteSizeSpan(17, true), 0, paramView.length(), 33);
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.setHint(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.28
  * JD-Core Version:    0.7.0.1
  */

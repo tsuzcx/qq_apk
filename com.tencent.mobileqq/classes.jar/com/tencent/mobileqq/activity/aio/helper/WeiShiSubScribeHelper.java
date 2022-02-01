@@ -31,28 +31,30 @@ public class WeiShiSubScribeHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 14, 8, 6, 11 };
+    return new int[] { 15, 9, 7, 12 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 7)
     {
-    default: 
-      return;
-    case 6: 
-      SubscribePlayerManager.a().a();
-      return;
-    case 11: 
+      if (paramInt != 12)
+      {
+        if (paramInt != 15) {
+          return;
+        }
+        SubscribePlayerManager.a().c();
+        return;
+      }
       SubscribePlayerManager.a().b();
       return;
     }
-    SubscribePlayerManager.a().c();
+    SubscribePlayerManager.a().a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.WeiShiSubScribeHelper
  * JD-Core Version:    0.7.0.1
  */

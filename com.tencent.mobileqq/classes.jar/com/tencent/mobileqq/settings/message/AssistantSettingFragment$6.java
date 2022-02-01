@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.settings.message;
 
 import android.os.Build.VERSION;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.qqfloatingwindow.impl.FloatingScreenPermission;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.qqfloatingwindow.IQQFloatingPermission;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -16,24 +17,25 @@ class AssistantSettingFragment$6
   
   public void onClick(View paramView)
   {
-    if ((Build.VERSION.SDK_INT < 23) || (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.RECORD_AUDIO") == 0)) {}
-    for (int i = 1;; i = 0)
-    {
-      boolean bool = FloatingScreenPermission.checkPermission(BaseApplicationImpl.getContext());
-      if (i == 0) {
-        this.a.getActivity().requestPermissions(new AssistantSettingFragment.6.1(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
-      }
-      if (!bool) {
-        FloatingScreenPermission.requestPermission(this.a.getActivity());
-      }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    int i;
+    if ((Build.VERSION.SDK_INT >= 23) && (BaseApplicationImpl.getContext().checkSelfPermission("android.permission.RECORD_AUDIO") != 0)) {
+      i = 0;
+    } else {
+      i = 1;
     }
+    boolean bool = ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).checkPermission(BaseApplicationImpl.getContext());
+    if (i == 0) {
+      this.a.getBaseActivity().requestPermissions(new AssistantSettingFragment.6.1(this), 1, new String[] { "android.permission.RECORD_AUDIO" });
+    }
+    if (!bool) {
+      ((IQQFloatingPermission)QRoute.api(IQQFloatingPermission.class)).requestPermission(this.a.getBaseActivity());
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.AssistantSettingFragment.6
  * JD-Core Version:    0.7.0.1
  */

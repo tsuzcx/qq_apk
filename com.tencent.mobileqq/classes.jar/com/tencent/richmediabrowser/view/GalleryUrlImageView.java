@@ -39,22 +39,19 @@ public class GalleryUrlImageView
     int i = paramInt4;
     paramInt4 = paramInt3;
     paramInt3 = j;
-    if ((paramInt4 > paramInt2) || (i > paramInt1))
+    while ((paramInt4 > paramInt2) || (i > paramInt1))
     {
       j = Math.round(paramInt4 / paramInt2);
       int k = Math.round(i / paramInt1);
-      if (j > k) {}
-      for (;;)
-      {
-        if (j < 2) {
-          return paramInt3;
-        }
-        i /= 2;
-        paramInt4 /= 2;
-        paramInt3 *= 2;
-        break;
+      if (j <= k) {
         j = k;
       }
+      if (j < 2) {
+        break;
+      }
+      i /= 2;
+      paramInt4 /= 2;
+      paramInt3 *= 2;
     }
     return paramInt3;
   }
@@ -109,37 +106,43 @@ public class GalleryUrlImageView
   {
     super.onLoadFialed(paramURLDrawable, paramThrowable);
     paramURLDrawable = paramURLDrawable.getURL().getRef();
-    if (((paramURLDrawable == null) || (!paramURLDrawable.equals("DISPLAY"))) && (this.imageListener != null)) {
-      this.imageListener.onLoadSuccessed(this.mPosition, false);
+    if ((paramURLDrawable == null) || (!paramURLDrawable.equals("DISPLAY")))
+    {
+      paramURLDrawable = this.imageListener;
+      if (paramURLDrawable != null) {
+        paramURLDrawable.onLoadSuccessed(this.mPosition, false);
+      }
     }
   }
   
   @TargetApi(11)
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    String str = paramURLDrawable.getURL().getRef();
-    if ((str != null) && (str.equals("NOSAMPLE")))
+    Object localObject = paramURLDrawable.getURL().getRef();
+    if ((localObject != null) && (((String)localObject).equals("NOSAMPLE")))
     {
       this.ignoreLayout = true;
       super.onLoadSuccessed(paramURLDrawable);
       this.ignoreLayout = false;
-      if (this.imageListener != null) {
-        this.imageListener.onLoadSuccessed(this.mPosition, true);
+      localObject = this.imageListener;
+      if (localObject != null) {
+        ((IGalleryImageListener)localObject).onLoadSuccessed(this.mPosition, true);
       }
     }
-    for (;;)
+    else
     {
-      if (this.imageListener != null) {
-        this.imageListener.onLoadDrawable(this.mPosition, paramURLDrawable);
-      }
-      return;
       super.onLoadSuccessed(paramURLDrawable);
-      if (((str == null) || (!str.equals("DISPLAY"))) && (this.imageListener != null)) {
-        this.imageListener.onLoadSuccessed(this.mPosition, true);
+      if ((localObject == null) || (!((String)localObject).equals("DISPLAY")))
+      {
+        localObject = this.imageListener;
+        if (localObject != null) {
+          ((IGalleryImageListener)localObject).onLoadSuccessed(this.mPosition, true);
+        }
       }
-      if ((this.mImageInfo != null) && (this.mImageInfo.orientation == -2)) {
-        this.mImageInfo.orientation = paramURLDrawable.getExifOrientation();
-      }
+    }
+    localObject = this.imageListener;
+    if (localObject != null) {
+      ((IGalleryImageListener)localObject).onLoadDrawable(this.mPosition, paramURLDrawable);
     }
   }
   
@@ -175,7 +178,7 @@ public class GalleryUrlImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.view.GalleryUrlImageView
  * JD-Core Version:    0.7.0.1
  */

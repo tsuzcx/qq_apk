@@ -27,7 +27,6 @@ public final class ReplaySubject<T>
   
   private boolean caughtUp(SubjectSubscriptionManager.SubjectObserver<? super T> paramSubjectObserver)
   {
-    boolean bool = true;
     if (!paramSubjectObserver.caughtUp)
     {
       if (this.state.replayObserver(paramSubjectObserver))
@@ -35,9 +34,9 @@ public final class ReplaySubject<T>
         paramSubjectObserver.caughtUp = true;
         paramSubjectObserver.index(null);
       }
-      bool = false;
+      return false;
     }
-    return bool;
+    return true;
   }
   
   public static <T> ReplaySubject<T> create()
@@ -125,7 +124,7 @@ public final class ReplaySubject<T>
   @Beta
   public boolean hasAnyValue()
   {
-    return !this.state.isEmpty();
+    return this.state.isEmpty() ^ true;
   }
   
   @Beta
@@ -177,17 +176,14 @@ public final class ReplaySubject<T>
     if (this.ssm.active)
     {
       this.state.error(paramThrowable);
+      Object localObject1 = null;
       SubjectSubscriptionManager.SubjectObserver[] arrayOfSubjectObserver = this.ssm.terminate(NotificationLite.instance().error(paramThrowable));
       int j = arrayOfSubjectObserver.length;
       int i = 0;
-      Object localObject2;
-      for (Object localObject1 = null;; localObject1 = localObject2)
+      while (i < j)
       {
-        if (i >= j) {
-          break label123;
-        }
         SubjectSubscriptionManager.SubjectObserver localSubjectObserver = arrayOfSubjectObserver[i];
-        localObject2 = localObject1;
+        Object localObject2 = localObject1;
         try
         {
           if (caughtUp(localSubjectObserver))
@@ -198,18 +194,15 @@ public final class ReplaySubject<T>
         }
         catch (Throwable localThrowable)
         {
-          for (;;)
-          {
-            localObject2 = localObject1;
-            if (localObject1 == null) {
-              localObject2 = new ArrayList();
-            }
-            ((List)localObject2).add(localThrowable);
+          localObject2 = localObject1;
+          if (localObject1 == null) {
+            localObject2 = new ArrayList();
           }
+          ((List)localObject2).add(localThrowable);
         }
         i += 1;
+        localObject1 = localObject2;
       }
-      label123:
       Exceptions.throwIfAny(localObject1);
     }
   }
@@ -246,7 +239,7 @@ public final class ReplaySubject<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.subjects.ReplaySubject
  * JD-Core Version:    0.7.0.1
  */

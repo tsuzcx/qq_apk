@@ -23,12 +23,21 @@ public class CompetitionThreadInfo
   
   public String toString()
   {
-    return "CompetitionThreadInfo{threadId=" + this.jdField_a_of_type_Long + ", threadName='" + this.jdField_a_of_type_JavaLangString + '\'' + ", enterTime=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CompetitionThreadInfo{threadId=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", threadName='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", enterTime=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.db.CompetitionThreadInfo
  * JD-Core Version:    0.7.0.1
  */

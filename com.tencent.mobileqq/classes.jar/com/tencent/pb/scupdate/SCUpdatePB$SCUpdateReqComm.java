@@ -26,15 +26,17 @@ public final class SCUpdatePB$SCUpdateReqComm
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 56, 64, 72 }, new String[] { "plat", "qver", "osrelease", "network", "from", "cookie", "appid", "uid", "force" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0) }, SCUpdateReqComm.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 48, 56, 64, 72 }, new String[] { "plat", "qver", "osrelease", "network", "from", "cookie", "appid", "uid", "force" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localLong, localInteger, localLong, localInteger }, SCUpdateReqComm.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.scupdate.SCUpdatePB.SCUpdateReqComm
  * JD-Core Version:    0.7.0.1
  */

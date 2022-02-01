@@ -14,56 +14,64 @@ class DeviceTipActivity$FloatViewTouchListener
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
-      DeviceTipActivity.c(this.a);
-      continue;
-      int i = (int)paramMotionEvent.getRawX() - this.a.jdField_b_of_type_Int;
-      if (i > 2)
+      if (i != 1)
       {
-        this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
-        this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+        if (i != 2) {
+          return true;
+        }
+        i = (int)paramMotionEvent.getRawX() - this.a.jdField_b_of_type_Int;
+        if (i > 2)
+        {
+          this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(4);
+          this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+        }
+        paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+        paramView.left += i;
+        paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
+        paramView.right += i;
+        if (this.a.jdField_a_of_type_AndroidGraphicsRect.right >= this.a.d)
+        {
+          this.a.jdField_a_of_type_AndroidGraphicsRect.right = this.a.d;
+          this.a.jdField_a_of_type_AndroidGraphicsRect.left = (this.a.jdField_a_of_type_AndroidGraphicsRect.right - this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+        }
+        if (this.a.jdField_a_of_type_AndroidGraphicsRect.left <= this.a.e)
+        {
+          this.a.jdField_a_of_type_AndroidGraphicsRect.left = this.a.e;
+          this.a.jdField_a_of_type_AndroidGraphicsRect.right = (this.a.jdField_a_of_type_AndroidGraphicsRect.left + this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
+        }
+        this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_a_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left - this.a.e, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
+        this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+        return true;
       }
-      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
-      paramView.left += i;
-      paramView = this.a.jdField_a_of_type_AndroidGraphicsRect;
-      paramView.right = (i + paramView.right);
-      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right >= this.a.d)
-      {
-        this.a.jdField_a_of_type_AndroidGraphicsRect.right = this.a.d;
-        this.a.jdField_a_of_type_AndroidGraphicsRect.left = (this.a.jdField_a_of_type_AndroidGraphicsRect.right - this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
-      }
-      if (this.a.jdField_a_of_type_AndroidGraphicsRect.left <= this.a.e)
-      {
-        this.a.jdField_a_of_type_AndroidGraphicsRect.left = this.a.e;
-        this.a.jdField_a_of_type_AndroidGraphicsRect.right = (this.a.jdField_a_of_type_AndroidGraphicsRect.left + this.a.jdField_a_of_type_AndroidWidgetImageView.getWidth());
-      }
-      this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_a_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
-      this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_a_of_type_AndroidGraphicsRect.left - this.a.e, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
-      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
-      continue;
       if (this.a.jdField_a_of_type_AndroidGraphicsRect.right == this.a.d)
       {
         this.a.b();
+        return true;
       }
-      else if (this.a.jdField_a_of_type_AndroidGraphicsRect.right < this.a.d)
+      if (this.a.jdField_a_of_type_AndroidGraphicsRect.right < this.a.d)
       {
         this.a.jdField_a_of_type_AndroidWidgetImageView.layout(this.a.jdField_b_of_type_AndroidGraphicsRect.left, this.a.jdField_b_of_type_AndroidGraphicsRect.top, this.a.jdField_b_of_type_AndroidGraphicsRect.right, this.a.jdField_b_of_type_AndroidGraphicsRect.bottom);
         this.a.jdField_c_of_type_AndroidWidgetImageView.layout(this.a.jdField_c_of_type_AndroidGraphicsRect.left, this.a.jdField_c_of_type_AndroidGraphicsRect.top, this.a.jdField_c_of_type_AndroidGraphicsRect.right, this.a.jdField_c_of_type_AndroidGraphicsRect.bottom);
         this.a.jdField_a_of_type_ComTencentAvWidgetShimmerShimmerTextView.setVisibility(0);
         this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+        return true;
       }
     }
+    else
+    {
+      this.a.jdField_b_of_type_Int = ((int)paramMotionEvent.getRawX());
+      DeviceTipActivity.c(this.a);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.activities.DeviceTipActivity.FloatViewTouchListener
  * JD-Core Version:    0.7.0.1
  */

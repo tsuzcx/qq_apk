@@ -1,39 +1,40 @@
 package com.tencent.mobileqq.app.parser;
 
 import android.content.Context;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
 
 public class TroopTogetherParser
   extends JumpParserBase
 {
-  public JumpActionBase a(QQAppInterface paramQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
+  public JumpAction a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, String paramString, JumpParserResult paramJumpParserResult)
   {
-    paramQQAppInterface = new TroopTogetherAction(paramQQAppInterface, paramContext);
-    paramQQAppInterface.a = paramString;
-    paramQQAppInterface.b = "trooptogether";
-    paramQQAppInterface.c = "open";
+    paramBaseQQAppInterface = new TroopTogetherAction((QQAppInterface)paramBaseQQAppInterface, paramContext);
+    paramBaseQQAppInterface.a = paramString;
+    paramBaseQQAppInterface.b = "trooptogether";
+    paramBaseQQAppInterface.c = "open";
     paramContext = paramString.split("\\?");
-    if (paramContext.length != 2) {}
-    for (;;)
-    {
-      return paramQQAppInterface;
-      paramContext = paramContext[1].split("&");
-      int j = paramContext.length;
-      int i = 0;
-      while (i < j)
-      {
-        paramString = paramContext[i].split("=");
-        if (paramString.length == 2) {
-          paramQQAppInterface.a(paramString[0], paramString[1]);
-        }
-        i += 1;
-      }
+    if (paramContext.length != 2) {
+      return paramBaseQQAppInterface;
     }
+    paramContext = paramContext[1].split("&");
+    int j = paramContext.length;
+    int i = 0;
+    while (i < j)
+    {
+      paramString = paramContext[i].split("=");
+      if (paramString.length == 2) {
+        paramBaseQQAppInterface.a(paramString[0], paramString[1]);
+      }
+      i += 1;
+    }
+    return paramBaseQQAppInterface;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.TroopTogetherParser
  * JD-Core Version:    0.7.0.1
  */

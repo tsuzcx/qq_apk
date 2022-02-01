@@ -28,14 +28,15 @@ public final class Appconf$AppConfResponse
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66, 122, 162, 178 }, new String[] { "AppName", "Wordings", "Mode", "ColorSeq", "Session", "Ret", "ErrMsg", "Debug", "ActionSeq", "protocols", "select_data" }, new Object[] { "", null, Integer.valueOf(0), localByteStringMicro1, "", Integer.valueOf(0), "", "", localByteStringMicro2, null, "" }, AppConfResponse.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 42, 48, 58, 66, 122, 162, 178 }, new String[] { "AppName", "Wordings", "Mode", "ColorSeq", "Session", "Ret", "ErrMsg", "Debug", "ActionSeq", "protocols", "select_data" }, new Object[] { "", null, localInteger, localByteStringMicro1, "", localInteger, "", "", localByteStringMicro2, null, "" }, AppConfResponse.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     face.qqlogin.Appconf.AppConfResponse
  * JD-Core Version:    0.7.0.1
  */

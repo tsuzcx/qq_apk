@@ -4,7 +4,6 @@ import NS_COMM.COMM.StCommonExt;
 import NS_MINI_INTERFACE.INTERFACE.StGetUserAppInfoReq;
 import NS_MINI_INTERFACE.INTERFACE.StGetUserAppInfoRsp;
 import com.tencent.mobileqq.pb.PBRepeatField;
-import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.util.List;
 import org.json.JSONObject;
 
@@ -42,19 +41,14 @@ public class GetUserAppInfoRequest
   {
     INTERFACE.StGetUserAppInfoRsp localStGetUserAppInfoRsp = new INTERFACE.StGetUserAppInfoRsp();
     localStGetUserAppInfoRsp.mergeFrom(paramArrayOfByte);
-    if (localStGetUserAppInfoRsp != null)
-    {
-      paramJSONObject.put("response", localStGetUserAppInfoRsp);
-      paramJSONObject.put("resultCode", 0);
-      return paramJSONObject;
-    }
-    QMLog.d("GetUserAppInfoRequest", "onResponse fail.rsp = null");
-    return null;
+    paramJSONObject.put("response", localStGetUserAppInfoRsp);
+    paramJSONObject.put("resultCode", 0);
+    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetUserAppInfoRequest
  * JD-Core Version:    0.7.0.1
  */

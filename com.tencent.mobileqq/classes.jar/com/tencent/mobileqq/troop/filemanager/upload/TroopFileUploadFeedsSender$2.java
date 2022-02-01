@@ -16,40 +16,54 @@ class TroopFileUploadFeedsSender$2
 {
   TroopFileUploadFeedsSender$2(TroopFileUploadFeedsSender paramTroopFileUploadFeedsSender) {}
   
-  public void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
+  protected void a(boolean paramBoolean, int paramInt, group_file_common.FileInfo paramFileInfo)
   {
-    if ((!paramBoolean) || (paramFileInfo == null)) {}
-    Object localObject2;
-    Object localObject1;
-    do
+    if (paramBoolean)
     {
-      do
+      if (paramFileInfo == null) {
+        return;
+      }
+      Object localObject2 = paramFileInfo.str_file_id.get();
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        return;
+      }
+      Object localObject1 = localObject2;
+      if (!((String)localObject2).startsWith("/"))
       {
-        do
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("/");
+        ((StringBuilder)localObject1).append((String)localObject2);
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      if (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath)) {
+        return;
+      }
+      paramInt = TroopFileTransferUtil.Log.a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("[");
+      ((StringBuilder)localObject2).append(this.a.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append("] onGetOneFileResult. bus_id:");
+      ((StringBuilder)localObject2).append(paramFileInfo.uint32_bus_id.get());
+      ((StringBuilder)localObject2).append(" dead_time:");
+      ((StringBuilder)localObject2).append(paramFileInfo.uint32_dead_time.get());
+      TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", paramInt, ((StringBuilder)localObject2).toString());
+      localObject2 = TroopFileTransferUtil.a(this.a.jdField_a_of_type_Long);
+      if (localObject2 != null)
+      {
+        localObject1 = ((TroopFileManager)localObject2).a((String)localObject1);
+        if (localObject1 != null)
         {
-          do
-          {
-            return;
-            localObject2 = paramFileInfo.str_file_id.get();
-          } while (TextUtils.isEmpty((CharSequence)localObject2));
-          localObject1 = localObject2;
-          if (!((String)localObject2).startsWith("/")) {
-            localObject1 = "/" + (String)localObject2;
-          }
-        } while (!((String)localObject1).equalsIgnoreCase(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.FilePath));
-        TroopFileTransferUtil.Log.c("TroopFileUploadFeedsSender", TroopFileTransferUtil.Log.a, "[" + this.a.jdField_a_of_type_JavaLangString + "] onGetOneFileResult. bus_id:" + paramFileInfo.uint32_bus_id.get() + " dead_time:" + paramFileInfo.uint32_dead_time.get());
-        localObject2 = TroopFileTransferUtil.a(this.a.e);
-      } while (localObject2 == null);
-      localObject1 = ((TroopFileManager)localObject2).a((String)localObject1);
-    } while (localObject1 == null);
-    ((TroopFileInfo)localObject1).a = paramFileInfo.uint32_bus_id.get();
-    ((TroopFileInfo)localObject1).c = paramFileInfo.uint32_dead_time.get();
-    ((TroopFileManager)localObject2).d((TroopFileInfo)localObject1);
+          ((TroopFileInfo)localObject1).a = paramFileInfo.uint32_bus_id.get();
+          ((TroopFileInfo)localObject1).c = paramFileInfo.uint32_dead_time.get();
+          ((TroopFileManager)localObject2).d((TroopFileInfo)localObject1);
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.upload.TroopFileUploadFeedsSender.2
  * JD-Core Version:    0.7.0.1
  */

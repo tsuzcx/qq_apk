@@ -27,20 +27,23 @@ public class WebUiStrategy2GameCenter
   
   private void extendBtn()
   {
-    if ((this.mGameCenterBtn == null) || (this.mIsExtendStatus)) {
-      return;
-    }
-    this.mIsExtendStatus = true;
-    if (this.mExtendAnimation == null)
+    if (this.mGameCenterBtn != null)
     {
-      this.mExtendAnimation = new TranslateAnimation(1.0F, 1.675439F, 1.0F, 1.0F);
-      this.mExtendAnimation.setDuration(300L);
-      this.mExtendAnimation.setFillAfter(true);
-      this.mExtendAnimation.setAnimationListener(new WebUiStrategy2GameCenter.2(this));
+      if (this.mIsExtendStatus) {
+        return;
+      }
+      this.mIsExtendStatus = true;
+      if (this.mExtendAnimation == null)
+      {
+        this.mExtendAnimation = new TranslateAnimation(1.0F, 1.675439F, 1.0F, 1.0F);
+        this.mExtendAnimation.setDuration(300L);
+        this.mExtendAnimation.setFillAfter(true);
+        this.mExtendAnimation.setAnimationListener(new WebUiStrategy2GameCenter.2(this));
+      }
+      this.mGameCenterBtn.clearAnimation();
+      this.mGameCenterBtn.startAnimation(this.mExtendAnimation);
+      UiThreadUtil.a(this.mShrinkRunnable, 10000L);
     }
-    this.mGameCenterBtn.clearAnimation();
-    this.mGameCenterBtn.startAnimation(this.mExtendAnimation);
-    UiThreadUtil.a(this.mShrinkRunnable, 10000L);
   }
   
   private void gotoGameCenter(Activity paramActivity)
@@ -52,25 +55,28 @@ public class WebUiStrategy2GameCenter
   
   private void shrinkBtn()
   {
-    if ((this.mGameCenterBtn == null) || (!this.mIsExtendStatus)) {
-      return;
-    }
-    this.mIsExtendStatus = false;
-    UiThreadUtil.b(this.mShrinkRunnable);
-    if (this.mShrinkAnimation == null)
+    if (this.mGameCenterBtn != null)
     {
-      this.mShrinkAnimation = new TranslateAnimation(1.0F, 0.3245614F, 1.0F, 1.0F);
-      this.mShrinkAnimation.setDuration(300L);
-      this.mShrinkAnimation.setFillAfter(true);
-      this.mShrinkAnimation.setAnimationListener(new WebUiStrategy2GameCenter.3(this));
+      if (!this.mIsExtendStatus) {
+        return;
+      }
+      this.mIsExtendStatus = false;
+      UiThreadUtil.b(this.mShrinkRunnable);
+      if (this.mShrinkAnimation == null)
+      {
+        this.mShrinkAnimation = new TranslateAnimation(1.0F, 0.3245614F, 1.0F, 1.0F);
+        this.mShrinkAnimation.setDuration(300L);
+        this.mShrinkAnimation.setFillAfter(true);
+        this.mShrinkAnimation.setAnimationListener(new WebUiStrategy2GameCenter.3(this));
+      }
+      this.mGameCenterBtn.clearAnimation();
+      this.mGameCenterBtn.startAnimation(this.mShrinkAnimation);
     }
-    this.mGameCenterBtn.clearAnimation();
-    this.mGameCenterBtn.startAnimation(this.mShrinkAnimation);
   }
   
   public void initView(Activity paramActivity, View paramView, MiniGamePublicAccountWebView paramMiniGamePublicAccountWebView)
   {
-    this.mGameCenterBtn = ((URLImageView)paramView.findViewById(2063794180));
+    this.mGameCenterBtn = ((URLImageView)paramView.findViewById(2030239750));
     this.mGameCenterBtn.setVisibility(0);
     this.mGameCenterBtn.setBackgroundURL(GameWnsUtils.getMiniGamePublicAccountGameStoreButtonUrl());
     this.mGameCenterBtn.setOnClickListener(new WebUiStrategy2GameCenter.1(this, paramActivity));
@@ -84,7 +90,7 @@ public class WebUiStrategy2GameCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.gamecenter.WebUiStrategy2GameCenter
  * JD-Core Version:    0.7.0.1
  */

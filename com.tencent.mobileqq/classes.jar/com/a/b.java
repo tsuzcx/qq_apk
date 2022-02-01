@@ -8,12 +8,12 @@ public final class b
   
   public b(String paramString1, String paramString2)
   {
-    if (paramString1 == null) {}
-    for (this.a = "key";; this.a = paramString1)
-    {
-      this.b = paramString2;
-      return;
+    String str = paramString1;
+    if (paramString1 == null) {
+      str = "key";
     }
+    this.a = str;
+    this.b = paramString2;
   }
   
   public final String a()
@@ -38,7 +38,7 @@ public final class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.a.b
  * JD-Core Version:    0.7.0.1
  */

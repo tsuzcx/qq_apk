@@ -33,51 +33,48 @@ class VipUtils$VipTouchListener
     if (this.jdField_a_of_type_Boolean) {
       return false;
     }
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      if (Build.VERSION.SDK_INT >= 16)
+      if (i != 1)
       {
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
-      }
-      else
-      {
-        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
-        continue;
+        if (i != 3) {
+          return true;
+        }
         if (Build.VERSION.SDK_INT >= 16)
         {
           this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+          return true;
         }
-        else
-        {
-          this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          continue;
-          if (Build.VERSION.SDK_INT >= 16) {
-            this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
-          }
-          for (;;)
-          {
-            if (!this.b) {
-              break label192;
-            }
-            VipUtils.b(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F0D", "0X8009F0D", 0, 0, "", "", "", "");
-            break;
-            this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
-          }
-          label192:
-          VipUtils.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
-        }
+        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+        return true;
       }
+      if (Build.VERSION.SDK_INT >= 16) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(255);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(255);
+      }
+      if (this.b)
+      {
+        VipUtils.b(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X8009F0D", "0X8009F0D", 0, 0, "", "", "", "");
+        return true;
+      }
+      VipUtils.a(paramView, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString);
+      return true;
     }
+    if (Build.VERSION.SDK_INT >= 16)
+    {
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageAlpha(127);
+      return true;
+    }
+    this.jdField_a_of_type_AndroidWidgetImageView.setAlpha(127);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.VipTouchListener
  * JD-Core Version:    0.7.0.1
  */

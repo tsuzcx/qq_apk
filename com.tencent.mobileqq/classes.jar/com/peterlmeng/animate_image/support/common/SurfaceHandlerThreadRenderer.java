@@ -74,41 +74,45 @@ public class SurfaceHandlerThreadRenderer
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return false;
-    case 3: 
-      handleDraw();
-    }
-    for (;;)
-    {
-      return true;
+      if (i != 2)
+      {
+        if (i != 3) {
+          return false;
+        }
+        handleDraw();
+        return true;
+      }
       handleUnInit();
-      continue;
-      handleInit();
+      return true;
     }
+    handleInit();
+    return true;
   }
   
   public void init(ICanvasConsumer paramICanvasConsumer)
   {
     this.mCanvasConsumer = paramICanvasConsumer;
-    if (this.mHandler == null)
+    paramICanvasConsumer = this.mHandler;
+    if (paramICanvasConsumer == null)
     {
       this.mCachedMessage.add(Integer.valueOf(1));
       return;
     }
-    this.mHandler.obtainMessage(1).sendToTarget();
+    paramICanvasConsumer.obtainMessage(1).sendToTarget();
   }
   
   public void invalidate()
   {
-    if (this.mHandler == null)
+    Handler localHandler = this.mHandler;
+    if (localHandler == null)
     {
       this.mCachedMessage.add(Integer.valueOf(3));
       return;
     }
-    this.mHandler.obtainMessage(3).sendToTarget();
+    localHandler.obtainMessage(3).sendToTarget();
   }
   
   protected void onLooperPrepared()
@@ -123,17 +127,18 @@ public class SurfaceHandlerThreadRenderer
   
   public void unInit()
   {
-    if (this.mHandler == null)
+    Handler localHandler = this.mHandler;
+    if (localHandler == null)
     {
       this.mCachedMessage.add(Integer.valueOf(2));
       return;
     }
-    this.mHandler.obtainMessage(2).sendToTarget();
+    localHandler.obtainMessage(2).sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.support.common.SurfaceHandlerThreadRenderer
  * JD-Core Version:    0.7.0.1
  */

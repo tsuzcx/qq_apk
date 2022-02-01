@@ -49,11 +49,6 @@ public final class NotificationCompat$BubbleMetadata
     return localBuilder.build();
   }
   
-  private void setFlags(int paramInt)
-  {
-    this.mFlags = paramInt;
-  }
-  
   @Nullable
   @RequiresApi(29)
   public static Notification.BubbleMetadata toPlatform(@Nullable BubbleMetadata paramBubbleMetadata)
@@ -113,7 +108,7 @@ public final class NotificationCompat$BubbleMetadata
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.BubbleMetadata
  * JD-Core Version:    0.7.0.1
  */

@@ -1,42 +1,50 @@
 package com.tencent.mobileqq.search.presenter;
 
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.troop.TroopNotifyHelper;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
 import com.tencent.mobileqq.search.model.GroupBaseNetSearchModelItem;
+import com.tencent.mobileqq.troop.api.observer.TroopMngObserver;
+import com.tencent.mobileqq.troop.utils.TroopNotifyHelper;
 import com.tencent.qphone.base.util.QLog;
 
 class ActiveEntitySearchResultPresenter$1
-  extends TroopBusinessObserver
+  extends TroopMngObserver
 {
   ActiveEntitySearchResultPresenter$1(ActiveEntitySearchResultPresenter paramActiveEntitySearchResultPresenter) {}
   
-  public void onQueryJoinTroopWhetherHighRisk(boolean paramBoolean, String paramString, int paramInt)
+  public void a(boolean paramBoolean, String paramString, int paramInt)
   {
-    if ((ActiveEntitySearchResultPresenter.a(this.a) == null) || (!ActiveEntitySearchResultPresenter.a(this.a).b.equals(paramString))) {
-      ActiveEntitySearchResultPresenter.a(this.a).removeObserver(ActiveEntitySearchResultPresenter.a(this.a));
-    }
-    do
+    if ((ActiveEntitySearchResultPresenter.a(this.a) != null) && (ActiveEntitySearchResultPresenter.a(this.a).b.equals(paramString)))
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, "onQueryJoinTroopCanNoVerify result:" + paramBoolean + "highRiskTroop" + paramInt);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("onQueryJoinTroopCanNoVerify result:");
+        paramString.append(paramBoolean);
+        paramString.append("highRiskTroop");
+        paramString.append(paramInt);
+        QLog.d("Q.uniteSearch.ActiveEntitySearchResultPresenter", 2, paramString.toString());
       }
       ActiveEntitySearchResultPresenter.a(this.a).removeObserver(ActiveEntitySearchResultPresenter.a(this.a));
-    } while (ActiveEntitySearchResultPresenter.a(this.a) == null);
-    if ((paramBoolean) && (paramInt != 0))
-    {
-      TroopNotifyHelper.a(ActiveEntitySearchResultPresenter.a(this.a).getContext(), ActiveEntitySearchResultPresenter.a(this.a), new Object[] { ActiveEntitySearchResultPresenter.a(this.a), ActiveEntitySearchResultPresenter.a(this.a) });
+      if (ActiveEntitySearchResultPresenter.a(this.a) != null)
+      {
+        if ((paramBoolean) && (paramInt != 0))
+        {
+          TroopNotifyHelper.a(ActiveEntitySearchResultPresenter.a(this.a).getContext(), ActiveEntitySearchResultPresenter.a(this.a), new Object[] { ActiveEntitySearchResultPresenter.a(this.a), ActiveEntitySearchResultPresenter.a(this.a) });
+          return;
+        }
+        paramString = this.a;
+        ActiveEntitySearchResultPresenter.a(paramString, ActiveEntitySearchResultPresenter.a(paramString).getContext(), ActiveEntitySearchResultPresenter.a(this.a));
+        ActiveEntitySearchResultPresenter.a(this.a);
+      }
       return;
     }
-    ActiveEntitySearchResultPresenter.a(this.a, ActiveEntitySearchResultPresenter.a(this.a).getContext(), ActiveEntitySearchResultPresenter.a(this.a));
-    ActiveEntitySearchResultPresenter.a(this.a);
+    ActiveEntitySearchResultPresenter.a(this.a).removeObserver(ActiveEntitySearchResultPresenter.a(this.a));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.ActiveEntitySearchResultPresenter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,7 +18,7 @@ import javax.crypto.spec.SecretKeySpec;
 
 public final class AesCbc
 {
-  private static final String TAG = AesCbc.class.getSimpleName();
+  private static final String TAG = "AesCbc";
   private static final String f = "security:";
   private static final String g = "AES/CBC/PKCS5Padding";
   private static final String h = "AES";
@@ -33,41 +33,52 @@ public final class AesCbc
     }
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString.substring(6, 12));
-      localStringBuilder.append(paramString.substring(16, 26));
-      localStringBuilder.append(paramString.substring(32, 48));
-      paramString = localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString.substring(6, 12));
+      ((StringBuilder)localObject).append(paramString.substring(16, 26));
+      ((StringBuilder)localObject).append(paramString.substring(32, 48));
+      paramString = ((StringBuilder)localObject).toString();
       return paramString;
     }
     catch (Exception paramString)
     {
-      b.f(TAG, "getIv exception : " + paramString.getMessage());
+      Object localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getIv exception : ");
+      localStringBuilder.append(paramString.getMessage());
+      b.f((String)localObject, localStringBuilder.toString());
     }
     return "";
   }
   
   private static String a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return "";
-    }
-    try
+    if (!TextUtils.isEmpty(paramString1))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString2.substring(0, 6));
-      localStringBuilder.append(paramString1.substring(0, 6));
-      localStringBuilder.append(paramString2.substring(6, 10));
-      localStringBuilder.append(paramString1.substring(6, 16));
-      localStringBuilder.append(paramString2.substring(10, 16));
-      localStringBuilder.append(paramString1.substring(16));
-      localStringBuilder.append(paramString2.substring(16));
-      paramString1 = localStringBuilder.toString();
-      return paramString1;
-    }
-    catch (Exception paramString1)
-    {
-      b.f(TAG, "mix exception: " + paramString1.getMessage());
+      if (TextUtils.isEmpty(paramString2)) {
+        return "";
+      }
+      try
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString2.substring(0, 6));
+        localStringBuilder.append(paramString1.substring(0, 6));
+        localStringBuilder.append(paramString2.substring(6, 10));
+        localStringBuilder.append(paramString1.substring(6, 16));
+        localStringBuilder.append(paramString2.substring(10, 16));
+        localStringBuilder.append(paramString1.substring(16));
+        localStringBuilder.append(paramString2.substring(16));
+        paramString1 = localStringBuilder.toString();
+        return paramString1;
+      }
+      catch (Exception paramString1)
+      {
+        paramString2 = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mix exception: ");
+        localStringBuilder.append(paramString1.getMessage());
+        b.f(paramString2, localStringBuilder.toString());
+      }
     }
     return "";
   }
@@ -86,7 +97,11 @@ public final class AesCbc
     }
     catch (UnsupportedEncodingException paramString)
     {
-      b.f(TAG, " cbc encrypt data error" + paramString.getMessage());
+      paramArrayOfByte1 = TAG;
+      paramArrayOfByte2 = new StringBuilder();
+      paramArrayOfByte2.append(" cbc encrypt data error");
+      paramArrayOfByte2.append(paramString.getMessage());
+      b.f(paramArrayOfByte1, paramArrayOfByte2.toString());
     }
     return new byte[0];
   }
@@ -113,17 +128,21 @@ public final class AesCbc
     }
     try
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramString.substring(0, 6));
-      localStringBuilder.append(paramString.substring(12, 16));
-      localStringBuilder.append(paramString.substring(26, 32));
-      localStringBuilder.append(paramString.substring(48));
-      paramString = localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString.substring(0, 6));
+      ((StringBuilder)localObject).append(paramString.substring(12, 16));
+      ((StringBuilder)localObject).append(paramString.substring(26, 32));
+      ((StringBuilder)localObject).append(paramString.substring(48));
+      paramString = ((StringBuilder)localObject).toString();
       return paramString;
     }
     catch (Exception paramString)
     {
-      b.f(TAG, "get encryptword exception : " + paramString.getMessage());
+      Object localObject = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get encryptword exception : ");
+      localStringBuilder.append(paramString.getMessage());
+      b.f((String)localObject, localStringBuilder.toString());
     }
     return "";
   }
@@ -143,32 +162,33 @@ public final class AesCbc
     if (paramString.indexOf("security:") == -1) {
       return "";
     }
-    return paramString.substring("security:".length());
+    return paramString.substring(9);
   }
   
   static byte[] c(byte[] paramArrayOfByte)
   {
+    Object localObject;
     try
     {
-      String str = new String(paramArrayOfByte, "UTF-8");
-      if (!str.startsWith("security:")) {
-        return new byte[0];
-      }
+      String str1 = new String(paramArrayOfByte, "UTF-8");
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      Object localObject;
-      for (;;)
-      {
-        b.f(TAG, "stripCryptHead: exception : " + localUnsupportedEncodingException.getMessage());
-        localObject = "";
-      }
-      if (paramArrayOfByte.length > "security:".length())
-      {
-        localObject = new byte[paramArrayOfByte.length - "security:".length()];
-        System.arraycopy(paramArrayOfByte, "security:".length(), localObject, 0, localObject.length);
-        return localObject;
-      }
+      String str2 = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stripCryptHead: exception : ");
+      localStringBuilder.append(localUnsupportedEncodingException.getMessage());
+      b.f(str2, localStringBuilder.toString());
+      localObject = "";
+    }
+    if (!((String)localObject).startsWith("security:")) {
+      return new byte[0];
+    }
+    if (paramArrayOfByte.length > 9)
+    {
+      localObject = new byte[paramArrayOfByte.length - 9];
+      System.arraycopy(paramArrayOfByte, 9, localObject, 0, localObject.length);
+      return localObject;
     }
     return new byte[0];
   }
@@ -183,311 +203,343 @@ public final class AesCbc
   
   public static String decrypt(String paramString1, String paramString2)
   {
-    b.d(TAG, "a c de begin");
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      b.f(TAG, "content or key is null");
-      return "";
+      paramString2 = HexUtil.hexStr2ByteArray(paramString2);
+      if (paramString2.length < 16)
+      {
+        b.f(TAG, "key length is not right");
+        return "";
+      }
+      return decrypt(paramString1, paramString2);
     }
-    paramString2 = HexUtil.hexStr2ByteArray(paramString2);
-    if (paramString2.length < 16)
-    {
-      b.f(TAG, "key length is not right");
-      return "";
-    }
-    return decrypt(paramString1, paramString2);
+    b.f(TAG, "content or key is null");
+    return "";
   }
   
   public static String decrypt(String paramString1, String paramString2, String paramString3)
   {
-    b.d(TAG, "a c de begin 3");
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      b.f(TAG, "cbc decrypt param is not right");
-      return "";
-    }
-    paramString2 = HexUtil.hexStr2ByteArray(paramString2);
-    paramString3 = HexUtil.hexStr2ByteArray(paramString3);
-    if ((paramString2.length < 16) || (paramString3.length < 16))
-    {
+      paramString2 = HexUtil.hexStr2ByteArray(paramString2);
+      paramString3 = HexUtil.hexStr2ByteArray(paramString3);
+      if ((paramString2.length >= 16) && (paramString3.length >= 16)) {
+        return decrypt(paramString1, paramString2, paramString3);
+      }
       b.f(TAG, "key length or ivParameter is not right");
       return "";
     }
-    return decrypt(paramString1, paramString2, paramString3);
+    b.f(TAG, "cbc decrypt param is not right");
+    return "";
   }
   
   public static String decrypt(String paramString, byte[] paramArrayOfByte)
   {
-    b.d(TAG, "a c de begin 2");
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null) || (paramArrayOfByte.length < 16)) {
-      return "";
-    }
-    String str = a(paramString);
-    paramString = b(paramString);
-    if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(paramString)))
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayOfByte != null))
     {
+      if (paramArrayOfByte.length < 16) {
+        return "";
+      }
+      String str = a(paramString);
+      paramString = b(paramString);
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(paramString))) {
+        return decrypt(paramString, paramArrayOfByte, HexUtil.hexStr2ByteArray(str));
+      }
       b.f(TAG, "ivParameter or encrypedWord is null");
-      return "";
     }
-    return decrypt(paramString, paramArrayOfByte, HexUtil.hexStr2ByteArray(str));
+    return "";
   }
   
   public static String decrypt(String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    b.d(TAG, "a c de begin 4");
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte1 == null) || (paramArrayOfByte1.length < 16) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length < 16))
-    {
-      b.f(TAG, "cbc decrypt param is not right");
-      return "";
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayOfByte1 != null) && (paramArrayOfByte1.length >= 16) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length >= 16)) {
+      try
+      {
+        paramString = new String(decrypt(HexUtil.hexStr2ByteArray(paramString), paramArrayOfByte1, paramArrayOfByte2), "UTF-8");
+        return paramString;
+      }
+      catch (UnsupportedEncodingException paramString)
+      {
+        paramArrayOfByte1 = TAG;
+        paramArrayOfByte2 = new StringBuilder();
+        paramArrayOfByte2.append(" cbc decrypt data error");
+        paramArrayOfByte2.append(paramString.getMessage());
+        b.f(paramArrayOfByte1, paramArrayOfByte2.toString());
+        return "";
+      }
     }
-    try
-    {
-      paramString = new String(decrypt(HexUtil.hexStr2ByteArray(paramString), paramArrayOfByte1, paramArrayOfByte2), "UTF-8");
-      return paramString;
-    }
-    catch (UnsupportedEncodingException paramString)
-    {
-      b.f(TAG, " cbc decrypt data error" + paramString.getMessage());
-    }
+    b.f(TAG, "cbc decrypt param is not right");
     return "";
   }
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    b.d(TAG, "a c de begin 6");
     byte[] arrayOfByte = a(paramArrayOfByte1);
     return decrypt(b(paramArrayOfByte1), paramArrayOfByte2, arrayOfByte);
   }
   
   public static byte[] decrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    b.d(TAG, "a c de begin 5");
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length < 16) || (paramArrayOfByte3 == null) || (paramArrayOfByte3.length < 16))
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length >= 16) && (paramArrayOfByte3 != null) && (paramArrayOfByte3.length >= 16))
     {
-      b.f(TAG, "cbc decrypt param is not right");
+      paramArrayOfByte2 = new SecretKeySpec(paramArrayOfByte2, "AES");
+      try
+      {
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        localCipher.init(2, paramArrayOfByte2, new IvParameterSpec(paramArrayOfByte3));
+        paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+        return paramArrayOfByte1;
+      }
+      catch (BadPaddingException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("BadPaddingException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (IllegalBlockSizeException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("IllegalBlockSizeException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (InvalidAlgorithmParameterException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("InvalidAlgorithmParameterException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (InvalidKeyException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("InvalidKeyException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (NoSuchPaddingException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("NoSuchPaddingException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (NoSuchAlgorithmException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("NoSuchAlgorithmException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
       return new byte[0];
     }
-    paramArrayOfByte2 = new SecretKeySpec(paramArrayOfByte2, "AES");
-    try
-    {
-      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-      localCipher.init(2, paramArrayOfByte2, new IvParameterSpec(paramArrayOfByte3));
-      paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
-      return paramArrayOfByte1;
-    }
-    catch (NoSuchAlgorithmException paramArrayOfByte1)
-    {
-      b.f(TAG, "NoSuchAlgorithmException: " + paramArrayOfByte1.getMessage());
-      return new byte[0];
-    }
-    catch (NoSuchPaddingException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "NoSuchPaddingException: " + paramArrayOfByte1.getMessage());
-      }
-    }
-    catch (InvalidKeyException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "InvalidKeyException: " + paramArrayOfByte1.getMessage());
-      }
-    }
-    catch (InvalidAlgorithmParameterException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "InvalidAlgorithmParameterException: " + paramArrayOfByte1.getMessage());
-      }
-    }
-    catch (IllegalBlockSizeException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "IllegalBlockSizeException: " + paramArrayOfByte1.getMessage());
-      }
-    }
-    catch (BadPaddingException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "BadPaddingException: " + paramArrayOfByte1.getMessage());
-      }
-    }
+    b.f(TAG, "cbc decrypt param is not right");
+    return new byte[0];
   }
   
   public static String decryptWithCryptHead(String paramString, byte[] paramArrayOfByte)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null) || (paramArrayOfByte.length < 16)) {
-      return "";
-    }
-    paramString = c(paramString);
-    if ("".equals(paramString)) {
-      return "";
-    }
-    int m = paramString.indexOf(':');
-    if (m >= 0)
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayOfByte != null))
     {
-      byte[] arrayOfByte = HexUtil.hexStr2ByteArray(paramString.substring(0, m));
-      return decrypt(HexUtil.byteArray2HexStr(HexUtil.hexStr2ByteArray(paramString.substring(m + 1))), paramArrayOfByte, arrayOfByte);
+      if (paramArrayOfByte.length < 16) {
+        return "";
+      }
+      paramString = c(paramString);
+      if ("".equals(paramString)) {
+        return "";
+      }
+      int m = paramString.indexOf(':');
+      if (m >= 0)
+      {
+        byte[] arrayOfByte = HexUtil.hexStr2ByteArray(paramString.substring(0, m));
+        return decrypt(HexUtil.byteArray2HexStr(HexUtil.hexStr2ByteArray(paramString.substring(m + 1))), paramArrayOfByte, arrayOfByte);
+      }
+      b.f(TAG, " cbc cipherText data missing colon");
     }
-    b.f(TAG, " cbc cipherText data missing colon");
     return "";
   }
   
   public static String decryptWithCryptHead(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length < 16)) {
-      return "";
-    }
-    paramArrayOfByte1 = c(paramArrayOfByte1);
-    if (paramArrayOfByte1.length == 0) {
-      return "";
-    }
-    int m = d(paramArrayOfByte1);
-    if (m >= 0)
+    try
     {
-      byte[] arrayOfByte1 = Arrays.copyOf(paramArrayOfByte1, m);
-      int n = paramArrayOfByte1.length - arrayOfByte1.length - ":".length();
-      byte[] arrayOfByte2 = new byte[n];
-      System.arraycopy(paramArrayOfByte1, m + 1, arrayOfByte2, 0, n);
-      return decrypt(HexUtil.byteArray2HexStr(arrayOfByte2), paramArrayOfByte2, arrayOfByte1);
+      paramArrayOfByte1 = new String(decryptWithCryptHeadReturnByte(paramArrayOfByte1, paramArrayOfByte2), "UTF-8");
+      return paramArrayOfByte1;
     }
-    b.f(TAG, " cbc cipherText data missing colon");
+    catch (UnsupportedEncodingException paramArrayOfByte1)
+    {
+      label17:
+      break label17;
+    }
+    b.f(TAG, "decryptWithCryptHead UnsupportedEncodingException ");
     return "";
+  }
+  
+  public static byte[] decryptWithCryptHeadReturnByte(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
+  {
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length >= 16))
+    {
+      paramArrayOfByte1 = c(paramArrayOfByte1);
+      if (paramArrayOfByte1.length == 0) {
+        return new byte[0];
+      }
+      int m = d(paramArrayOfByte1);
+      if (m >= 0)
+      {
+        byte[] arrayOfByte1 = Arrays.copyOf(paramArrayOfByte1, m);
+        int n = paramArrayOfByte1.length - arrayOfByte1.length - 1;
+        byte[] arrayOfByte2 = new byte[n];
+        System.arraycopy(paramArrayOfByte1, m + 1, arrayOfByte2, 0, n);
+        return decrypt(arrayOfByte2, paramArrayOfByte2, arrayOfByte1);
+      }
+      b.f(TAG, " cbc cipherText data missing colon");
+      return new byte[0];
+    }
+    return new byte[0];
   }
   
   public static String encrypt(String paramString1, String paramString2)
   {
-    b.d(TAG, "a c en begin");
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      b.f(TAG, "cbc encrypt param is not right");
-      return "";
+      paramString2 = HexUtil.hexStr2ByteArray(paramString2);
+      if (paramString2.length < 16)
+      {
+        b.f(TAG, "key length is not right");
+        return "";
+      }
+      return encrypt(paramString1, paramString2);
     }
-    paramString2 = HexUtil.hexStr2ByteArray(paramString2);
-    if (paramString2.length < 16)
-    {
-      b.f(TAG, "key length is not right");
-      return "";
-    }
-    return encrypt(paramString1, paramString2);
+    b.f(TAG, "cbc encrypt param is not right");
+    return "";
   }
   
   public static String encrypt(String paramString1, String paramString2, String paramString3)
   {
-    b.d(TAG, "a c en begin 3");
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString3)))
     {
-      b.f(TAG, "cbc encrypt param is not right");
-      return "";
-    }
-    paramString2 = HexUtil.hexStr2ByteArray(paramString2);
-    paramString3 = HexUtil.hexStr2ByteArray(paramString3);
-    if ((paramString2.length < 16) || (paramString3.length < 16))
-    {
+      paramString2 = HexUtil.hexStr2ByteArray(paramString2);
+      paramString3 = HexUtil.hexStr2ByteArray(paramString3);
+      if ((paramString2.length >= 16) && (paramString3.length >= 16)) {
+        return encrypt(paramString1, paramString2, paramString3);
+      }
       b.f(TAG, "key length or ivParameter length is not right");
       return "";
     }
-    return encrypt(paramString1, paramString2, paramString3);
+    b.f(TAG, "cbc encrypt param is not right");
+    return "";
   }
   
   public static String encrypt(String paramString, byte[] paramArrayOfByte)
   {
-    b.d(TAG, "a c en begin 2");
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null) || (paramArrayOfByte.length < 16))
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayOfByte != null) && (paramArrayOfByte.length >= 16))
     {
-      b.f(TAG, "cbc encrypt param is not right");
+      byte[] arrayOfByte = EncryptUtil.generateSecureRandom(16);
+      paramString = a(paramString, paramArrayOfByte, arrayOfByte);
+      if (paramString != null)
+      {
+        if (paramString.length == 0) {
+          return "";
+        }
+        return a(HexUtil.byteArray2HexStr(arrayOfByte), HexUtil.byteArray2HexStr(paramString));
+      }
       return "";
     }
-    byte[] arrayOfByte = EncryptUtil.generateSecureRandom(16);
-    paramString = a(paramString, paramArrayOfByte, arrayOfByte);
-    if ((paramString == null) || (paramString.length == 0)) {
-      return "";
-    }
-    return a(HexUtil.byteArray2HexStr(arrayOfByte), HexUtil.byteArray2HexStr(paramString));
+    b.f(TAG, "cbc encrypt param is not right");
+    return "";
   }
   
   public static String encrypt(String paramString, byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    b.d(TAG, "a c en begin 4");
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte1 == null) || (paramArrayOfByte1.length < 16) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length < 16))
-    {
-      b.f(TAG, "cbc encrypt param is not right");
-      return "";
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayOfByte1 != null) && (paramArrayOfByte1.length >= 16) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length >= 16)) {
+      return HexUtil.byteArray2HexStr(a(paramString, paramArrayOfByte1, paramArrayOfByte2));
     }
-    return HexUtil.byteArray2HexStr(a(paramString, paramArrayOfByte1, paramArrayOfByte2));
+    b.f(TAG, "cbc encrypt param is not right");
+    return "";
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2)
   {
-    b.d(TAG, "a c en begin 6");
     byte[] arrayOfByte = EncryptUtil.generateSecureRandom(16);
     return a(arrayOfByte, encrypt(paramArrayOfByte1, paramArrayOfByte2, arrayOfByte));
   }
   
   public static byte[] encrypt(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, byte[] paramArrayOfByte3)
   {
-    b.d(TAG, "a c en begin 5");
-    if ((paramArrayOfByte1 == null) || (paramArrayOfByte1.length == 0) || (paramArrayOfByte2 == null) || (paramArrayOfByte2.length < 16) || (paramArrayOfByte3 == null) || (paramArrayOfByte3.length < 16))
+    if ((paramArrayOfByte1 != null) && (paramArrayOfByte1.length != 0) && (paramArrayOfByte2 != null) && (paramArrayOfByte2.length >= 16) && (paramArrayOfByte3 != null) && (paramArrayOfByte3.length >= 16))
     {
-      b.f(TAG, "cbc encrypt param is not right");
+      paramArrayOfByte2 = new SecretKeySpec(paramArrayOfByte2, "AES");
+      try
+      {
+        Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
+        localCipher.init(1, paramArrayOfByte2, new IvParameterSpec(paramArrayOfByte3));
+        paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
+        return paramArrayOfByte1;
+      }
+      catch (BadPaddingException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("BadPaddingException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (IllegalBlockSizeException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("IllegalBlockSizeException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (InvalidAlgorithmParameterException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("InvalidAlgorithmParameterException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (InvalidKeyException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("InvalidKeyException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (NoSuchPaddingException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("NoSuchPaddingException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
+      catch (NoSuchAlgorithmException paramArrayOfByte1)
+      {
+        paramArrayOfByte2 = TAG;
+        paramArrayOfByte3 = new StringBuilder();
+        paramArrayOfByte3.append("NoSuchAlgorithmException: ");
+        paramArrayOfByte3.append(paramArrayOfByte1.getMessage());
+        b.f(paramArrayOfByte2, paramArrayOfByte3.toString());
+      }
       return new byte[0];
     }
-    paramArrayOfByte2 = new SecretKeySpec(paramArrayOfByte2, "AES");
-    try
-    {
-      Cipher localCipher = Cipher.getInstance("AES/CBC/PKCS5Padding");
-      localCipher.init(1, paramArrayOfByte2, new IvParameterSpec(paramArrayOfByte3));
-      paramArrayOfByte1 = localCipher.doFinal(paramArrayOfByte1);
-      return paramArrayOfByte1;
-    }
-    catch (NoSuchAlgorithmException paramArrayOfByte1)
-    {
-      b.f(TAG, "NoSuchAlgorithmException: " + paramArrayOfByte1.getMessage());
-      return new byte[0];
-    }
-    catch (NoSuchPaddingException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "NoSuchPaddingException: " + paramArrayOfByte1.getMessage());
-      }
-    }
-    catch (InvalidKeyException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "InvalidKeyException: " + paramArrayOfByte1.getMessage());
-      }
-    }
-    catch (InvalidAlgorithmParameterException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "InvalidAlgorithmParameterException: " + paramArrayOfByte1.getMessage());
-      }
-    }
-    catch (IllegalBlockSizeException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "IllegalBlockSizeException: " + paramArrayOfByte1.getMessage());
-      }
-    }
-    catch (BadPaddingException paramArrayOfByte1)
-    {
-      for (;;)
-      {
-        b.f(TAG, "BadPaddingException: " + paramArrayOfByte1.getMessage());
-      }
-    }
+    b.f(TAG, "cbc encrypt param is not right");
+    return new byte[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.encrypt.aes.AesCbc
  * JD-Core Version:    0.7.0.1
  */

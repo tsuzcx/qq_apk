@@ -26,9 +26,18 @@ public class AIOSttResult
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_Int = -1;
-    this.jdField_b_of_type_Int = paramInt1;
-    this.c = paramInt2;
+    try
+    {
+      this.jdField_a_of_type_Int = -1;
+      this.jdField_b_of_type_Int = paramInt1;
+      this.c = paramInt2;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public void a(String paramString, boolean paramBoolean)
@@ -46,7 +55,12 @@ public class AIOSttResult
       }
       return;
     }
-    finally {}
+    finally
+    {
+      label36:
+      break label36;
+    }
+    throw paramString;
   }
   
   public void a(boolean paramBoolean)
@@ -66,7 +80,16 @@ public class AIOSttResult
   
   public void b()
   {
-    this.jdField_a_of_type_Int = 2;
+    try
+    {
+      this.jdField_a_of_type_Int = 2;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
   
   public int c()
@@ -76,12 +99,21 @@ public class AIOSttResult
   
   public void c()
   {
-    this.jdField_a_of_type_Int = 4;
+    try
+    {
+      this.jdField_a_of_type_Int = 4;
+      return;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.stt.shard.AIOSttResult
  * JD-Core Version:    0.7.0.1
  */

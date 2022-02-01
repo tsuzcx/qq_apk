@@ -50,100 +50,112 @@ public class ShareGroupFeedProfileSegment
       SLog.e("Q.qqstory.detail.ShareGroupFeedProfileSegment", "bind share group view failed because it's invalidate date.");
       return paramBaseViewHolder.a();
     }
-    RelativeLayout localRelativeLayout1 = (RelativeLayout)paramBaseViewHolder.a(2131374952);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131368306);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131372265);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131374978);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131374979);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131381687);
-    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131378675);
-    RelativeLayout localRelativeLayout2 = (RelativeLayout)paramBaseViewHolder.a(2131374977);
-    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131381409);
-    localRelativeLayout1.setOnClickListener(this);
+    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131374484);
+    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131368058);
+    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371854);
+    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131374510);
+    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131374511);
+    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131380921);
+    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131378070);
+    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131374509);
+    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131380668);
+    ((RelativeLayout)localObject).setOnClickListener(this);
     localImageView.setImageDrawable(StoryDepends.StoryShareGroup.a(localShareGroupItem.headerUnionIdList));
     if (!TextUtils.isEmpty(localShareGroupItem.getName()))
     {
       localTextView1.setText(localShareGroupItem.getName());
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.f()) {
-        a(localTextView2, localTextView3);
-      }
-      if (!localShareGroupItem.isPublic()) {
-        break label277;
-      }
-      localStoryUserBadgeView.setImageResource(2130847156);
     }
-    for (;;)
+    else
     {
-      localStoryUserBadgeView.setOnClickListener(null);
-      localStoryUserBadgeView.setVisibility(0);
-      a(localTextView4, 0, null);
-      a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(), paramBaseViewHolder);
-      a(paramInt, paramBaseViewHolder, localRelativeLayout2, localStoryHomeHorizontalListView);
-      return paramBaseViewHolder.a();
-      localTextView1.setText(HardCodeUtil.a(2131713882) + QQStoryConstant.a);
-      break;
-      label277:
-      localStoryUserBadgeView.setImageResource(2130847155);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131713810));
+      ((StringBuilder)localObject).append(QQStoryConstant.a);
+      localTextView1.setText(((StringBuilder)localObject).toString());
     }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.f()) {
+      a(localTextView2, localTextView3);
+    }
+    if (localShareGroupItem.isPublic()) {
+      localStoryUserBadgeView.setImageResource(2130847031);
+    } else {
+      localStoryUserBadgeView.setImageResource(2130847030);
+    }
+    localStoryUserBadgeView.setOnClickListener(null);
+    localStoryUserBadgeView.setVisibility(0);
+    a(localTextView4, 0, null);
+    a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(), paramBaseViewHolder);
+    a(paramInt, paramBaseViewHolder, localRelativeLayout, localStoryHomeHorizontalListView);
+    return paramBaseViewHolder.a();
   }
   
   private void a(TextView paramTextView1, TextView paramTextView2)
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem == null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a() == null)) {
-      return;
-    }
-    Object localObject = FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a());
-    CharSequence localCharSequence = localObject[0];
-    localObject = localObject[1];
-    if (TextUtils.isEmpty(localCharSequence)) {
-      paramTextView1.setVisibility(8);
-    }
-    while (TextUtils.isEmpty((CharSequence)localObject))
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null)
     {
-      paramTextView2.setVisibility(8);
-      return;
-      paramTextView1.setVisibility(0);
-      paramTextView1.setText(localCharSequence);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a() == null) {
+        return;
+      }
+      Object localObject = FeedSegment.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a());
+      CharSequence localCharSequence = localObject[0];
+      localObject = localObject[1];
+      if (TextUtils.isEmpty(localCharSequence))
+      {
+        paramTextView1.setVisibility(8);
+      }
+      else
+      {
+        paramTextView1.setVisibility(0);
+        paramTextView1.setText(localCharSequence);
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject))
+      {
+        paramTextView2.setVisibility(8);
+        return;
+      }
+      paramTextView2.setVisibility(0);
+      paramTextView2.setText((CharSequence)localObject);
     }
-    paramTextView2.setVisibility(0);
-    paramTextView2.setText((CharSequence)localObject);
   }
   
   private View b(int paramInt, BaseViewHolder paramBaseViewHolder)
   {
-    ShareGroupFeedItem localShareGroupFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a();
-    if ((localShareGroupFeedItem == null) || (localShareGroupFeedItem.getOwner() == null))
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a();
+    if ((localObject1 != null) && (((ShareGroupFeedItem)localObject1).getOwner() != null))
     {
-      SLog.e("Q.qqstory.detail.ShareGroupFeedProfileSegment", "bind share group view failed because it's invalidate date.");
-      return paramBaseViewHolder.a();
-    }
-    Object localObject = (RelativeLayout)paramBaseViewHolder.a(2131374952);
-    ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131368306);
-    TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131372265);
-    TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131374978);
-    TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131374979);
-    StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131381687);
-    TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131378675);
-    RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131374977);
-    StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131381409);
-    ((RelativeLayout)localObject).setOnClickListener(this);
-    localObject = ImageUtil.d();
-    localImageView.setImageDrawable(FaceDrawable.getFaceDrawable(QQStoryContext.a(), 4, String.valueOf(localShareGroupFeedItem.getOwner().groupUin), 3, (Drawable)localObject, (Drawable)localObject));
-    if (!TextUtils.isEmpty(localShareGroupFeedItem.getOwner().getName())) {
-      localTextView1.setText(localShareGroupFeedItem.getOwner().getName());
-    }
-    for (;;)
-    {
+      Object localObject2 = (RelativeLayout)paramBaseViewHolder.a(2131374484);
+      ImageView localImageView = (ImageView)paramBaseViewHolder.a(2131368058);
+      TextView localTextView1 = (TextView)paramBaseViewHolder.a(2131371854);
+      TextView localTextView2 = (TextView)paramBaseViewHolder.a(2131374510);
+      TextView localTextView3 = (TextView)paramBaseViewHolder.a(2131374511);
+      StoryUserBadgeView localStoryUserBadgeView = (StoryUserBadgeView)paramBaseViewHolder.a(2131380921);
+      TextView localTextView4 = (TextView)paramBaseViewHolder.a(2131378070);
+      RelativeLayout localRelativeLayout = (RelativeLayout)paramBaseViewHolder.a(2131374509);
+      StoryHomeHorizontalListView localStoryHomeHorizontalListView = (StoryHomeHorizontalListView)paramBaseViewHolder.a(2131380668);
+      ((RelativeLayout)localObject2).setOnClickListener(this);
+      localObject2 = ImageUtil.f();
+      localImageView.setImageDrawable(FaceDrawable.getFaceDrawable(QQStoryContext.a(), 4, String.valueOf(((ShareGroupFeedItem)localObject1).getOwner().groupUin), 3, (Drawable)localObject2, (Drawable)localObject2));
+      if (!TextUtils.isEmpty(((ShareGroupFeedItem)localObject1).getOwner().getName()))
+      {
+        localTextView1.setText(((ShareGroupFeedItem)localObject1).getOwner().getName());
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(HardCodeUtil.a(2131713817));
+        ((StringBuilder)localObject1).append(QQStoryConstant.a);
+        localTextView1.setText(((StringBuilder)localObject1).toString());
+      }
       a(localTextView2, localTextView3);
-      localStoryUserBadgeView.setImageResource(2130847154);
+      localStoryUserBadgeView.setImageResource(2130847029);
       localStoryUserBadgeView.setOnClickListener(this);
       localStoryUserBadgeView.setVisibility(0);
-      a(localTextView4, 2, HardCodeUtil.a(2131713871));
+      a(localTextView4, 2, HardCodeUtil.a(2131713799));
       a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a(), paramBaseViewHolder);
       a(paramInt, paramBaseViewHolder, localRelativeLayout, localStoryHomeHorizontalListView);
       return paramBaseViewHolder.a();
-      localTextView1.setText(HardCodeUtil.a(2131713889) + QQStoryConstant.a);
     }
+    SLog.e("Q.qqstory.detail.ShareGroupFeedProfileSegment", "bind share group view failed because it's invalidate date.");
+    return paramBaseViewHolder.a();
   }
   
   private boolean b()
@@ -178,48 +190,50 @@ public class ShareGroupFeedProfileSegment
   protected void a(int paramInt)
   {
     super.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().isSubscribe()) {}
-    for (int i = 3; !(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner() instanceof ShareGroupItem); i = 4) {
+    int i;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner().isSubscribe()) {
+      i = 3;
+    } else {
+      i = 4;
+    }
+    if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner() instanceof ShareGroupItem)) {
       return;
     }
     ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a.getOwner();
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-      return;
-    case 2: 
-      QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, localShareGroupItem.shareGroupId, String.valueOf(localShareGroupItem.groupUin), i, PlayModeUtils.a(this.jdField_a_of_type_Int, this.b));
+      if (paramInt != 3) {
+        return;
+      }
+      QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, 2, localShareGroupItem.shareGroupId, null, i, PlayModeUtils.a(this.jdField_a_of_type_Int, this.b));
       return;
     }
-    QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, 2, localShareGroupItem.shareGroupId, null, i, PlayModeUtils.a(this.jdField_a_of_type_Int, this.b));
+    QQStoryShareGroupProfileActivity.a(this.jdField_a_of_type_AndroidContentContext, 1, localShareGroupItem.shareGroupId, String.valueOf(localShareGroupItem.groupUin), i, PlayModeUtils.a(this.jdField_a_of_type_Int, this.b));
   }
   
   public void onClick(View paramView)
   {
     super.onClick(paramView);
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131378070)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.f())
-      {
-        ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().getOwner();
-        if (localShareGroupItem.isSubscribe())
-        {
-          new AddVideoController(PlayModeUtils.a()).a(this.jdField_a_of_type_AndroidContentContext, localShareGroupItem.type, localShareGroupItem.shareGroupId, localShareGroupItem.name, localShareGroupItem.groupUin, 20003, 2);
-          continue;
-          QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, HardCodeUtil.a(2131713861), 0).a();
-        }
+      if (i == 2131380921) {
+        QQToast.a(this.jdField_a_of_type_AndroidContentContext, 0, HardCodeUtil.a(2131713789), 0).a();
       }
     }
+    else if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.f())
+    {
+      ShareGroupItem localShareGroupItem = (ShareGroupItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a().getOwner();
+      if (localShareGroupItem.isSubscribe()) {
+        new AddVideoController(PlayModeUtils.a()).a(this.jdField_a_of_type_AndroidContentContext, localShareGroupItem.type, localShareGroupItem.shareGroupId, localShareGroupItem.name, localShareGroupItem.groupUin, 20003, 2);
+      }
+    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.segment.ShareGroupFeedProfileSegment
  * JD-Core Version:    0.7.0.1
  */

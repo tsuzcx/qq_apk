@@ -52,7 +52,7 @@ class StoryPlayerImpl$StoryPlayerContextImpl
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoEntranceOpenPlayerBuilder$Data = paramData;
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$StartInfo = new IDataProvider.StartInfo(paramStartInfo);
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetPlayerStrategy = PlayerStrategy.a(this);
-      this.jdField_a_of_type_Boolean = TVK_SDKMgr.isInstalled(paramUi.a());
+      this.jdField_a_of_type_Boolean = TVK_SDKMgr.isInstalled(paramUi.getContext());
       SLog.d("Q.qqstory.playernew.StoryPlayerImpl", "isUseTVKVideoView %s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) });
       return;
     }
@@ -209,7 +209,7 @@ class StoryPlayerImpl$StoryPlayerContextImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerImpl.StoryPlayerContextImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class LBSShare$LocationResp
   extends MessageMicro<LocationResp>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 56 }, new String[] { "ec", "poilist", "mylbs", "next", "is_foreign", "search_id", "is_ark" }, new Object[] { Integer.valueOf(0), null, null, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0) }, LocationResp.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field ec = PBField.initUInt32(0);
   public final PBUInt32Field is_ark = PBField.initUInt32(0);
   public final PBUInt32Field is_foreign = PBField.initUInt32(0);
@@ -18,10 +18,16 @@ public final class LBSShare$LocationResp
   public final PBUInt32Field next = PBField.initUInt32(0);
   public final PBRepeatMessageField<LBSShare.POI> poilist = PBField.initRepeatMessage(LBSShare.POI.class);
   public final PBStringField search_id = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 40, 50, 56 }, new String[] { "ec", "poilist", "mylbs", "next", "is_foreign", "search_id", "is_ark" }, new Object[] { localInteger, null, null, localInteger, localInteger, "", localInteger }, LocationResp.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.proto.lbsshare.LBSShare.LocationResp
  * JD-Core Version:    0.7.0.1
  */

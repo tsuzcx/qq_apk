@@ -34,27 +34,26 @@ public class ReadInJoyVideoAdHighLightBar
   
   private void a()
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560174, this);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368430));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)getContext().getSystemService("layout_inflater")).inflate(2131560061, this);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368181));
   }
   
   public void setText(String paramString)
   {
     if (this.jdField_a_of_type_AndroidWidgetTextView != null)
     {
-      if (!TextUtils.isEmpty(paramString)) {
+      if (!TextUtils.isEmpty(paramString))
+      {
         this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+        return;
       }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText("查看详情");
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setText("查看详情");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyVideoAdHighLightBar
  * JD-Core Version:    0.7.0.1
  */

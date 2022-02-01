@@ -74,13 +74,14 @@ final class ThreadedInputConnectionProxyAdapterView
   public InputConnection onCreateInputConnection(EditorInfo paramEditorInfo)
   {
     this.triggerDelayed = false;
-    if (this.isLocked) {}
-    for (paramEditorInfo = this.cachedConnection;; paramEditorInfo = this.targetView.onCreateInputConnection(paramEditorInfo))
-    {
-      this.triggerDelayed = true;
-      this.cachedConnection = paramEditorInfo;
-      return paramEditorInfo;
+    if (this.isLocked) {
+      paramEditorInfo = this.cachedConnection;
+    } else {
+      paramEditorInfo = this.targetView.onCreateInputConnection(paramEditorInfo);
     }
+    this.triggerDelayed = true;
+    this.cachedConnection = paramEditorInfo;
+    return paramEditorInfo;
   }
   
   void setLocked(boolean paramBoolean)
@@ -90,7 +91,7 @@ final class ThreadedInputConnectionProxyAdapterView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugins.webviewflutter.ThreadedInputConnectionProxyAdapterView
  * JD-Core Version:    0.7.0.1
  */

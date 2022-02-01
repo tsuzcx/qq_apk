@@ -14,210 +14,252 @@ public class DeviceSupportUtil
   private static final String TAG = "DeviceSupportUtil";
   private static boolean inited = false;
   
-  /* Error */
   private static void init()
-  {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 14	org/light/DeviceSupportUtil:inited	Z
-    //   6: istore_0
-    //   7: iload_0
-    //   8: ifeq +7 -> 15
-    //   11: ldc 2
-    //   13: monitorexit
-    //   14: return
-    //   15: ldc 23
-    //   17: invokestatic 29	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
-    //   20: ldc 31
-    //   22: iconst_0
-    //   23: anewarray 25	java/lang/Class
-    //   26: invokevirtual 35	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   29: aconst_null
-    //   30: aconst_null
-    //   31: checkcast 37	[Ljava/lang/Object;
-    //   34: invokevirtual 43	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   37: checkcast 45	android/app/Application
-    //   40: invokevirtual 49	android/app/Application:getApplicationContext	()Landroid/content/Context;
-    //   43: astore_1
-    //   44: invokestatic 55	org/light/device/DeviceInstance:getInstance	()Lorg/light/device/DeviceInstance;
-    //   47: aload_1
-    //   48: ldc 57
-    //   50: invokevirtual 61	org/light/device/DeviceInstance:initSettings	(Landroid/content/Context;Ljava/lang/String;)V
-    //   53: iconst_1
-    //   54: invokestatic 66	org/light/gles/GLCapabilities:init	(Z)V
-    //   57: invokestatic 71	org/light/device/GpuScopeAttrs:getInstance	()Lorg/light/device/GpuScopeAttrs;
-    //   60: invokevirtual 75	org/light/device/GpuScopeAttrs:getDeviceModel	()Lorg/light/device/GpuScopeAttrs$GpuBean$DeviceModel;
-    //   63: ifnonnull +30 -> 93
-    //   66: invokestatic 71	org/light/device/GpuScopeAttrs:getInstance	()Lorg/light/device/GpuScopeAttrs;
-    //   69: invokevirtual 79	org/light/device/GpuScopeAttrs:getGPuModel	()Lorg/light/device/GpuScopeAttrs$GpuBean$GpuModel;
-    //   72: ifnonnull +21 -> 93
-    //   75: invokestatic 71	org/light/device/GpuScopeAttrs:getInstance	()Lorg/light/device/GpuScopeAttrs;
-    //   78: aload_1
-    //   79: invokestatic 55	org/light/device/DeviceInstance:getInstance	()Lorg/light/device/DeviceInstance;
-    //   82: invokevirtual 83	org/light/device/DeviceInstance:getDeviceName	()Ljava/lang/String;
-    //   85: invokestatic 86	org/light/gles/GLCapabilities:getGPUInfo	()Ljava/lang/String;
-    //   88: ldc 57
-    //   90: invokevirtual 89	org/light/device/GpuScopeAttrs:init	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
-    //   93: iconst_1
-    //   94: putstatic 14	org/light/DeviceSupportUtil:inited	Z
-    //   97: goto -86 -> 11
-    //   100: astore_1
-    //   101: ldc 8
-    //   103: new 91	java/lang/StringBuilder
-    //   106: dup
-    //   107: invokespecial 92	java/lang/StringBuilder:<init>	()V
-    //   110: ldc 94
-    //   112: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   115: aload_1
-    //   116: invokevirtual 101	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   119: invokevirtual 98	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   122: invokevirtual 104	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   125: invokestatic 110	org/light/utils/LightLogUtil:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   128: goto -117 -> 11
-    //   131: astore_1
-    //   132: ldc 2
-    //   134: monitorexit
-    //   135: aload_1
-    //   136: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   6	2	0	bool	boolean
-    //   43	36	1	localContext	Context
-    //   100	16	1	localException	Exception
-    //   131	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   15	93	100	java/lang/Exception
-    //   93	97	100	java/lang/Exception
-    //   3	7	131	finally
-    //   15	93	131	finally
-    //   93	97	131	finally
-    //   101	128	131	finally
-  }
-  
-  public static void init(String paramString)
   {
     try
     {
-      Context localContext = ((Application)Class.forName("android.app.ActivityThread").getMethod("currentApplication", new Class[0]).invoke(null, (Object[])null)).getApplicationContext();
-      DeviceInstance.getInstance().initSettings(localContext, paramString);
-      GLCapabilities.init(true);
-      GpuScopeAttrs.getInstance().init(localContext, DeviceInstance.getInstance().getDeviceName(), GLCapabilities.getGPUInfo(), paramString);
-      inited = true;
-      return;
-    }
-    catch (Exception paramString)
-    {
-      for (;;)
-      {
-        LightLogUtil.w("DeviceSupportUtil", "init failed: " + paramString.getMessage());
+      boolean bool = inited;
+      if (bool) {
+        return;
       }
+      try
+      {
+        Context localContext = ((Application)Class.forName("android.app.ActivityThread").getMethod("currentApplication", new Class[0]).invoke(null, (Object[])null)).getApplicationContext();
+        DeviceInstance.getInstance().initSettings(localContext, "");
+        GLCapabilities.init(true);
+        if ((GpuScopeAttrs.getInstance().getDeviceModel() == null) && (GpuScopeAttrs.getInstance().getGPuModel() == null)) {
+          GpuScopeAttrs.getInstance().init(localContext, DeviceInstance.getInstance().getDeviceName(), GLCapabilities.getGPUInfo(), "");
+        }
+        inited = true;
+      }
+      catch (Exception localException)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("init failed: ");
+        localStringBuilder.append(localException.getMessage());
+        LightLogUtil.w("DeviceSupportUtil", localStringBuilder.toString());
+      }
+      return;
     }
     finally {}
   }
   
+  /* Error */
+  public static void init(String paramString)
+  {
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc 24
+    //   5: invokestatic 30	java/lang/Class:forName	(Ljava/lang/String;)Ljava/lang/Class;
+    //   8: ldc 32
+    //   10: iconst_0
+    //   11: anewarray 26	java/lang/Class
+    //   14: invokevirtual 36	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
+    //   17: aconst_null
+    //   18: aconst_null
+    //   19: checkcast 38	[Ljava/lang/Object;
+    //   22: invokevirtual 44	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
+    //   25: checkcast 46	android/app/Application
+    //   28: invokevirtual 50	android/app/Application:getApplicationContext	()Landroid/content/Context;
+    //   31: astore_1
+    //   32: invokestatic 56	org/light/device/DeviceInstance:getInstance	()Lorg/light/device/DeviceInstance;
+    //   35: aload_1
+    //   36: aload_0
+    //   37: invokevirtual 62	org/light/device/DeviceInstance:initSettings	(Landroid/content/Context;Ljava/lang/String;)V
+    //   40: iconst_1
+    //   41: invokestatic 67	org/light/gles/GLCapabilities:init	(Z)V
+    //   44: invokestatic 72	org/light/device/GpuScopeAttrs:getInstance	()Lorg/light/device/GpuScopeAttrs;
+    //   47: aload_1
+    //   48: invokestatic 56	org/light/device/DeviceInstance:getInstance	()Lorg/light/device/DeviceInstance;
+    //   51: invokevirtual 84	org/light/device/DeviceInstance:getDeviceName	()Ljava/lang/String;
+    //   54: invokestatic 87	org/light/gles/GLCapabilities:getGPUInfo	()Ljava/lang/String;
+    //   57: aload_0
+    //   58: invokevirtual 90	org/light/device/GpuScopeAttrs:init	(Landroid/content/Context;Ljava/lang/String;Ljava/lang/String;Ljava/lang/String;)V
+    //   61: new 92	java/lang/StringBuilder
+    //   64: dup
+    //   65: invokespecial 93	java/lang/StringBuilder:<init>	()V
+    //   68: astore_0
+    //   69: aload_0
+    //   70: ldc 114
+    //   72: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   75: pop
+    //   76: aload_0
+    //   77: invokestatic 56	org/light/device/DeviceInstance:getInstance	()Lorg/light/device/DeviceInstance;
+    //   80: invokevirtual 84	org/light/device/DeviceInstance:getDeviceName	()Ljava/lang/String;
+    //   83: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: ldc 8
+    //   89: aload_0
+    //   90: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   93: invokestatic 117	org/light/utils/LightLogUtil:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   96: iconst_1
+    //   97: putstatic 22	org/light/DeviceSupportUtil:inited	Z
+    //   100: goto +41 -> 141
+    //   103: astore_0
+    //   104: goto +41 -> 145
+    //   107: astore_0
+    //   108: new 92	java/lang/StringBuilder
+    //   111: dup
+    //   112: invokespecial 93	java/lang/StringBuilder:<init>	()V
+    //   115: astore_1
+    //   116: aload_1
+    //   117: ldc 95
+    //   119: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   122: pop
+    //   123: aload_1
+    //   124: aload_0
+    //   125: invokevirtual 102	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   128: invokevirtual 99	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   131: pop
+    //   132: ldc 8
+    //   134: aload_1
+    //   135: invokevirtual 105	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   138: invokestatic 111	org/light/utils/LightLogUtil:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   141: ldc 2
+    //   143: monitorexit
+    //   144: return
+    //   145: ldc 2
+    //   147: monitorexit
+    //   148: aload_0
+    //   149: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	150	0	paramString	String
+    //   31	104	1	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   3	100	103	finally
+    //   108	141	103	finally
+    //   3	100	107	java/lang/Exception
+  }
+  
   public static boolean isAbilityDeviceSupport(String paramString)
   {
-    boolean bool1 = true;
-    boolean bool2 = true;
     if (!inited) {
       init();
     }
     int i = -1;
-    label178:
-    label207:
-    StringBuilder localStringBuilder;
-    switch (paramString.hashCode())
+    int j = paramString.hashCode();
+    boolean bool2 = true;
+    switch (j)
     {
     default: 
-      switch (i)
-      {
-      default: 
-        bool1 = bool2;
-        LightLogUtil.w("DeviceSupportUtil", "isAbilityDeviceSupport - key \"" + paramString + "\" not found");
-      case 4: 
-      case 5: 
-      case 6: 
-      case 7: 
-      case 8: 
-      case 9: 
-        localStringBuilder = new StringBuilder().append("isAbilityDeviceSupport - ").append(paramString).append(" ");
-        if (!bool1) {}
-        break;
+      break;
+    case 1946725565: 
+      if (paramString.equals("shareGLContextError")) {
+        i = 13;
+      }
+      break;
+    case 1266327981: 
+      if (paramString.equals("JavaScript")) {
+        i = 6;
+      }
+      break;
+    case 926728984: 
+      if (paramString.equals("3d.kapu")) {
+        i = 0;
+      }
+      break;
+    case 728654733: 
+      if (paramString.equals("ai.catFace")) {
+        i = 10;
+      }
+      break;
+    case 3018567: 
+      if (paramString.equals("ai.gender")) {
+        i = 11;
+      }
+      break;
+    case 3112: 
+      if (paramString.equals("ai")) {
+        i = 1;
+      }
+      break;
+    case -29632972: 
+      if (paramString.equals("ai.face3d")) {
+        i = 2;
+      }
+      break;
+    case -577373154: 
+      if (paramString.equals("ai.expression")) {
+        i = 12;
+      }
+      break;
+    case -1054883928: 
+      if (paramString.equals("ai.body")) {
+        i = 9;
+      }
+      break;
+    case -1419497458: 
+      if (paramString.equals("ai.gan")) {
+        i = 4;
+      }
+      break;
+    case -1847539473: 
+      if (paramString.equals("ai.segmentHair")) {
+        i = 8;
+      }
+      break;
+    case -1848308053: 
+      if (paramString.equals("ai.segment.gpu")) {
+        i = 5;
+      }
+      break;
+    case -1926713261: 
+      if (paramString.equals("OpenCL")) {
+        i = 3;
+      }
+      break;
+    case -2147478675: 
+      if (paramString.equals("ai.segment")) {
+        i = 7;
       }
       break;
     }
-    for (paramString = "true";; paramString = "false")
+    boolean bool1 = bool2;
+    switch (i)
     {
-      LightLogUtil.d("DeviceSupportUtil", paramString);
-      return bool1;
-      if (!paramString.equals("3d.kapu")) {
-        break;
-      }
-      i = 0;
+    default: 
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isAbilityDeviceSupport - key \"");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("\" not found");
+      LightLogUtil.w("DeviceSupportUtil", localStringBuilder.toString());
+      bool1 = bool2;
       break;
-      if (!paramString.equals("ai")) {
-        break;
-      }
-      i = 1;
-      break;
-      if (!paramString.equals("ai.face3d")) {
-        break;
-      }
-      i = 2;
-      break;
-      if (!paramString.equals("ai.segment.gpu")) {
-        break;
-      }
-      i = 3;
-      break;
-      if (!paramString.equals("ai.segment")) {
-        break;
-      }
-      i = 4;
-      break;
-      if (!paramString.equals("ai.segmentHair")) {
-        break;
-      }
-      i = 5;
-      break;
-      if (!paramString.equals("ai.body")) {
-        break;
-      }
-      i = 6;
-      break;
-      if (!paramString.equals("ai.catFace")) {
-        break;
-      }
-      i = 7;
-      break;
-      if (!paramString.equals("ai.gender")) {
-        break;
-      }
-      i = 8;
-      break;
-      if (!paramString.equals("ai.expression")) {
-        break;
-      }
-      i = 9;
-      break;
-      if (!paramString.equals("shareGLContextError")) {
-        break;
-      }
-      i = 10;
-      break;
-      bool1 = supportKapu();
-      break label207;
-      bool1 = supportAiAbility();
-      break label207;
-      bool1 = supportAceEngine();
-      break label207;
-      bool1 = supportGPUSegment();
-      break label207;
+    case 13: 
       bool1 = isShareGLContextError();
-      break label178;
+      break;
+    case 6: 
+      bool1 = supportJavaScript();
+      break;
+    case 3: 
+    case 4: 
+    case 5: 
+      bool1 = supportOpenCL();
+      break;
+    case 2: 
+      bool1 = supportAceEngine();
+      break;
+    case 1: 
+      bool1 = supportAiAbility();
+      break;
+    case 0: 
+      bool1 = supportKapu();
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("isAbilityDeviceSupport - ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" ");
+    if (bool1) {
+      paramString = "true";
+    } else {
+      paramString = "false";
+    }
+    localStringBuilder.append(paramString);
+    LightLogUtil.d("DeviceSupportUtil", localStringBuilder.toString());
+    return bool1;
   }
   
   public static boolean isMaterialDeviceSupport(String paramString)
@@ -241,19 +283,24 @@ public class DeviceSupportUtil
     return GLCapabilities.isDeviceSupportAiAbility();
   }
   
-  private static boolean supportGPUSegment()
+  private static boolean supportJavaScript()
   {
-    return (ApiHelper.hasMarshmallow()) && (GLCapabilities.isDeviceSupportGPUSegment());
+    return ApiHelper.hasLollipop();
   }
   
   private static boolean supportKapu()
   {
     return (supportAceEngine()) && (GLCapabilities.isDeviceSupportKapu());
   }
+  
+  private static boolean supportOpenCL()
+  {
+    return (ApiHelper.hasMarshmallow()) && (GLCapabilities.isDeviceSupportOpenCL());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.DeviceSupportUtil
  * JD-Core Version:    0.7.0.1
  */

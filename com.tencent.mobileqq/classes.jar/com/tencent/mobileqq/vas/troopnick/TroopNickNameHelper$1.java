@@ -10,14 +10,15 @@ final class TroopNickNameHelper$1
   
   public void a(Rect paramRect)
   {
-    if (this.a != null) {
-      this.a.setPadding(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
+    TextView localTextView = this.a;
+    if (localTextView != null) {
+      localTextView.setPadding(paramRect.left, paramRect.top, paramRect.right, paramRect.bottom);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickNameHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -16,7 +16,7 @@ public class ArkTopGestureLayout
     super(paramContext);
   }
   
-  public void init(Context paramContext)
+  protected void init(Context paramContext)
   {
     this.gestureListener = new ArkTopGestureLayout.ArkEdgeTopGestureDetector(this, paramContext);
     this.mTopGestureDetector = new StickerDismissGestureDetector(this, paramContext, this.gestureListener);
@@ -25,20 +25,21 @@ public class ArkTopGestureLayout
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    boolean bool = false;
-    if (paramMotionEvent.getX() <= this.a / 100.0F * (float)DeviceInfoUtil.i()) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        bool = super.onInterceptTouchEvent(paramMotionEvent);
-      }
-      return bool;
+    int i;
+    if (paramMotionEvent.getX() <= this.a / 100.0F * (float)DeviceInfoUtil.i()) {
+      i = 1;
+    } else {
+      i = 0;
     }
+    if (i != 0) {
+      return super.onInterceptTouchEvent(paramMotionEvent);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.ArkTopGestureLayout
  * JD-Core Version:    0.7.0.1
  */

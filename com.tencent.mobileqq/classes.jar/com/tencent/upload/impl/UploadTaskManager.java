@@ -16,7 +16,6 @@ import com.tencent.upload.uinterface.data.BatchControlTask;
 import com.tencent.upload.utils.Const.FileType;
 import com.tencent.upload.utils.Const.UploadRetCode;
 import com.tencent.upload.utils.UploadLog;
-import com.tencent.upload.utils.pool.PriorityThreadPoolExecutor;
 import com.tencent.upload.utils.pool.ThreadPool;
 import com.tencent.upload.utils.pool.UploadThreadManager;
 import java.util.ArrayList;
@@ -26,6 +25,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.ThreadPoolExecutor;
 
 public class UploadTaskManager
   implements SessionPool.PoolStateListener, TaskStateListener
@@ -59,28 +59,42 @@ public class UploadTaskManager
   
   private boolean checkCondition(AbstractUploadTask paramAbstractUploadTask)
   {
-    boolean bool = paramAbstractUploadTask.onVerifyUploadFile();
+    boolean bool3 = paramAbstractUploadTask.onVerifyUploadFile();
     Const.FileType localFileType = getTaskType(paramAbstractUploadTask);
     SessionPool localSessionPool = (SessionPool)this.mSessionPools.get(localFileType);
-    StringBuilder localStringBuilder = new StringBuilder().append("getSessionPool pool:");
-    if (localSessionPool != null) {}
-    for (paramAbstractUploadTask = Integer.valueOf(localSessionPool.hashCode());; paramAbstractUploadTask = "null")
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getSessionPool pool:");
+    if (localSessionPool != null) {
+      paramAbstractUploadTask = Integer.valueOf(localSessionPool.hashCode());
+    } else {
+      paramAbstractUploadTask = "null";
+    }
+    localStringBuilder.append(paramAbstractUploadTask);
+    UploadLog.d("UploadTaskManager", localStringBuilder.toString());
+    boolean bool2 = false;
+    if (localSessionPool == null)
     {
-      UploadLog.d("UploadTaskManager", paramAbstractUploadTask);
-      if (localSessionPool != null) {
-        break;
-      }
       paramAbstractUploadTask = new SessionPool(localFileType);
       paramAbstractUploadTask.registerListener(this);
       paramAbstractUploadTask.init();
       this.mSessionPools.put(localFileType, paramAbstractUploadTask);
       return false;
     }
-    UploadLog.d("UploadTaskManager", "ret:" + bool + " pool is ready:" + localSessionPool.isReady());
-    if ((bool) && (localSessionPool.isReady())) {}
-    for (bool = true;; bool = false) {
-      return bool;
+    paramAbstractUploadTask = new StringBuilder();
+    paramAbstractUploadTask.append("ret:");
+    paramAbstractUploadTask.append(bool3);
+    paramAbstractUploadTask.append(" pool is ready:");
+    paramAbstractUploadTask.append(localSessionPool.isReady());
+    UploadLog.d("UploadTaskManager", paramAbstractUploadTask.toString());
+    boolean bool1 = bool2;
+    if (bool3)
+    {
+      bool1 = bool2;
+      if (localSessionPool.isReady()) {
+        bool1 = true;
+      }
     }
+    return bool1;
   }
   
   private boolean checkEmpty()
@@ -115,63 +129,84 @@ public class UploadTaskManager
   private void clearAllLogTask()
   {
     UploadLog.d("UploadTaskManager", "clearAllLogTask !");
-    AbstractUploadTask localAbstractUploadTask;
     synchronized (this.mTaskList)
     {
-      Iterator localIterator1 = this.mTaskList.iterator();
-      while (localIterator1.hasNext())
+      Iterator localIterator = this.mTaskList.iterator();
+      AbstractUploadTask localAbstractUploadTask;
+      while (localIterator.hasNext())
       {
-        localAbstractUploadTask = (AbstractUploadTask)localIterator1.next();
+        localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
         if (localAbstractUploadTask.getFileType() == Const.FileType.Log) {
           this.mTaskList.remove(localAbstractUploadTask);
         }
       }
-    }
-    synchronized (this.mRunningList)
-    {
-      Iterator localIterator2 = this.mRunningList.iterator();
-      while (localIterator2.hasNext())
+      synchronized (this.mRunningList)
       {
-        localAbstractUploadTask = (AbstractUploadTask)localIterator2.next();
-        if (localAbstractUploadTask.getFileType() == Const.FileType.Log) {
-          localAbstractUploadTask.onError(Const.UploadRetCode.SERVER_DISCONNECT.getCode(), Const.UploadRetCode.SERVER_DISCONNECT.getDesc());
+        localIterator = this.mRunningList.iterator();
+        while (localIterator.hasNext())
+        {
+          localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
+          if (localAbstractUploadTask.getFileType() == Const.FileType.Log) {
+            localAbstractUploadTask.onError(Const.UploadRetCode.SERVER_DISCONNECT.getCode(), Const.UploadRetCode.SERVER_DISCONNECT.getDesc());
+          }
         }
+        return;
       }
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   private void dumpAllTasksState()
   {
-    StringBuilder localStringBuilder = new StringBuilder("pending:").append(this.mTaskList.size());
+    StringBuilder localStringBuilder1 = new StringBuilder("pending:");
+    localStringBuilder1.append(this.mTaskList.size());
     Iterator localIterator = this.mTaskList.iterator();
     AbstractUploadTask localAbstractUploadTask;
+    StringBuilder localStringBuilder2;
     while (localIterator.hasNext())
     {
       localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
-      localStringBuilder.append(" [" + localAbstractUploadTask.flowId + " state:" + localAbstractUploadTask.getTaskState() + "]");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" [");
+      localStringBuilder2.append(localAbstractUploadTask.flowId);
+      localStringBuilder2.append(" state:");
+      localStringBuilder2.append(localAbstractUploadTask.getTaskState());
+      localStringBuilder2.append("]");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    UploadLog.d("UploadTaskManager", localStringBuilder.toString());
-    localStringBuilder.setLength(0);
-    localStringBuilder.append("running:").append(this.mRunningList.size());
+    UploadLog.d("UploadTaskManager", localStringBuilder1.toString());
+    localStringBuilder1.setLength(0);
+    localStringBuilder1.append("running:");
+    localStringBuilder1.append(this.mRunningList.size());
     localIterator = this.mRunningList.iterator();
     while (localIterator.hasNext())
     {
       localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
-      localStringBuilder.append(" [" + localAbstractUploadTask.flowId + " state:" + localAbstractUploadTask.getTaskState() + "]");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" [");
+      localStringBuilder2.append(localAbstractUploadTask.flowId);
+      localStringBuilder2.append(" state:");
+      localStringBuilder2.append(localAbstractUploadTask.getTaskState());
+      localStringBuilder2.append("]");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    UploadLog.d("UploadTaskManager", localStringBuilder.toString());
+    UploadLog.d("UploadTaskManager", localStringBuilder1.toString());
   }
   
   private AbstractUploadTask getTask()
   {
+    int i = this.mTaskList.size();
     ??? = null;
-    if (this.mTaskList.size() <= 0) {
+    if (i <= 0) {
       return null;
     }
-    Object localObject1;
     synchronized (this.mTaskList)
     {
       Iterator localIterator = this.mTaskList.iterator();
+      Object localObject1;
       do
       {
         localObject1 = ???;
@@ -181,25 +216,34 @@ public class UploadTaskManager
         localObject1 = (AbstractUploadTask)localIterator.next();
       } while (((AbstractUploadTask)localObject1).getTaskState() != TaskState.WAITING);
       this.mTaskList.remove(localObject1);
-      if (localObject1 == null) {}
+      if (localObject1 != null) {
+        synchronized (this.mRunningList)
+        {
+          this.mRunningList.add(localObject1);
+          ((AbstractUploadTask)localObject1).bindHandler(this.mHandler);
+        }
+      }
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("getTask, move task from pending to running, taskId:");
+      if (localAbstractUploadTask != null)
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(localAbstractUploadTask.getTaskId());
+        ((StringBuilder)???).append(" taskType:");
+        ((StringBuilder)???).append(localAbstractUploadTask.getClass().getSimpleName());
+        ??? = ((StringBuilder)???).toString();
+      }
+      else
+      {
+        ??? = "";
+      }
+      ((StringBuilder)???).append((String)???);
+      UploadLog.d("UploadTaskManager", ((StringBuilder)???).toString());
+      return localAbstractUploadTask;
     }
     for (;;)
     {
-      synchronized (this.mRunningList)
-      {
-        this.mRunningList.add(localObject1);
-        ((AbstractUploadTask)localObject1).bindHandler(this.mHandler);
-        ??? = new StringBuilder().append("getTask, move task from pending to running, taskId:");
-        if (localObject1 != null)
-        {
-          ??? = ((AbstractUploadTask)localObject1).getTaskId() + " taskType:" + localObject1.getClass().getSimpleName();
-          UploadLog.d("UploadTaskManager", (String)???);
-          return localObject1;
-          localObject2 = finally;
-          throw localObject2;
-        }
-      }
-      ??? = "";
+      throw localObject2;
     }
   }
   
@@ -228,52 +272,78 @@ public class UploadTaskManager
   private void next()
   {
     boolean bool = UploadConfiguration.isNetworkAvailable();
-    UploadLog.i("UploadTaskManager", "next --- Pending:" + this.mTaskList.size() + ", Running:" + this.mRunningList.size() + ", network:" + bool);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("next --- Pending:");
+    ((StringBuilder)localObject).append(this.mTaskList.size());
+    ((StringBuilder)localObject).append(", Running:");
+    ((StringBuilder)localObject).append(this.mRunningList.size());
+    ((StringBuilder)localObject).append(", network:");
+    ((StringBuilder)localObject).append(bool);
+    UploadLog.i("UploadTaskManager", ((StringBuilder)localObject).toString());
     dumpAllTasksState();
     if (!bool) {
       return;
     }
     if (this.mRunningList.size() >= this.mMaxDispatchNum)
     {
-      UploadLog.d("UploadTaskManager", "channel is full now! mMaxDispatchNum:" + this.mMaxDispatchNum + " thread pool:" + UploadThreadManager.getInstance().toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("channel is full now! mMaxDispatchNum:");
+      ((StringBuilder)localObject).append(this.mMaxDispatchNum);
+      ((StringBuilder)localObject).append(" thread pool:");
+      ((StringBuilder)localObject).append(UploadThreadManager.getInstance().toString());
+      UploadLog.d("UploadTaskManager", ((StringBuilder)localObject).toString());
       return;
     }
-    Object localObject = getTask();
+    localObject = getTask();
     if ((localObject != null) && (checkCondition((AbstractUploadTask)localObject)))
     {
       runTask((AbstractUploadTask)localObject);
       return;
     }
-    if (localObject == null) {
+    if (localObject == null)
+    {
       UploadLog.d("UploadTaskManager", "getTask return null!");
     }
-    for (;;)
+    else
     {
-      dumpAllTasksState();
-      UploadLog.i("UploadTaskManager", "next end ---");
-      return;
       ((AbstractUploadTask)localObject).setState(TaskState.PAUSE);
       localObject = (SessionPool)this.mSessionPools.get(getTaskType((AbstractUploadTask)localObject));
       if ((localObject != null) && (!((SessionPool)localObject).isReady()))
       {
-        UploadLog.d("UploadTaskManager", "getSessionPool: " + localObject.hashCode() + " is not ready, reset it");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSessionPool: ");
+        localStringBuilder.append(localObject.hashCode());
+        localStringBuilder.append(" is not ready, reset it");
+        UploadLog.d("UploadTaskManager", localStringBuilder.toString());
         ((SessionPool)localObject).reset();
       }
     }
+    dumpAllTasksState();
+    UploadLog.i("UploadTaskManager", "next end ---");
   }
   
   private void recovery(Const.FileType paramFileType)
   {
-    UploadLog.d("UploadTaskManager", "recovery -- mRunningList:" + this.mRunningList.size());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("recovery -- mRunningList:");
+    ((StringBuilder)localObject).append(this.mRunningList.size());
+    UploadLog.d("UploadTaskManager", ((StringBuilder)localObject).toString());
     if (this.mRunningList.size() > 0)
     {
-      Iterator localIterator = this.mRunningList.iterator();
-      while (localIterator.hasNext())
+      localObject = this.mRunningList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        AbstractUploadTask localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
+        AbstractUploadTask localAbstractUploadTask = (AbstractUploadTask)((Iterator)localObject).next();
         if ((getTaskType(localAbstractUploadTask) == paramFileType) && ((localAbstractUploadTask.getTaskState() == TaskState.FAILED) || (localAbstractUploadTask.getTaskState() == TaskState.CONNECTING) || (localAbstractUploadTask.getTaskState() == TaskState.PAUSE)))
         {
-          UploadLog.d("UploadTaskManager", "recovery taskId:" + localAbstractUploadTask.getTaskId() + " state:" + localAbstractUploadTask.getTaskState() + ", path:" + localAbstractUploadTask.getFilePath());
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("recovery taskId:");
+          localStringBuilder.append(localAbstractUploadTask.getTaskId());
+          localStringBuilder.append(" state:");
+          localStringBuilder.append(localAbstractUploadTask.getTaskState());
+          localStringBuilder.append(", path:");
+          localStringBuilder.append(localAbstractUploadTask.getFilePath());
+          UploadLog.d("UploadTaskManager", localStringBuilder.toString());
           localAbstractUploadTask.resetTask();
           runTask(localAbstractUploadTask);
         }
@@ -284,14 +354,21 @@ public class UploadTaskManager
   
   private void runTask(AbstractUploadTask paramAbstractUploadTask)
   {
-    UploadLog.d("UploadTaskManager", "runTask -- [" + paramAbstractUploadTask.getClass().getSimpleName() + "], flowId:" + paramAbstractUploadTask.flowId + ", path:" + paramAbstractUploadTask.getFilePath());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("runTask -- [");
+    ((StringBuilder)localObject).append(paramAbstractUploadTask.getClass().getSimpleName());
+    ((StringBuilder)localObject).append("], flowId:");
+    ((StringBuilder)localObject).append(paramAbstractUploadTask.flowId);
+    ((StringBuilder)localObject).append(", path:");
+    ((StringBuilder)localObject).append(paramAbstractUploadTask.getFilePath());
+    UploadLog.d("UploadTaskManager", ((StringBuilder)localObject).toString());
     CacheUtil.setCachedSessionId(paramAbstractUploadTask);
-    PriorityThreadPoolExecutor localPriorityThreadPoolExecutor = this.mThreadPool.getExecutor();
+    localObject = this.mThreadPool.getExecutor();
     SessionPool localSessionPool = getSessionPool(paramAbstractUploadTask);
     if (localSessionPool != null) {
       localSessionPool.removeCloseTimer();
     }
-    paramAbstractUploadTask.bindThreadPool(localPriorityThreadPoolExecutor);
+    paramAbstractUploadTask.bindThreadPool((ThreadPoolExecutor)localObject);
     paramAbstractUploadTask.bindSessionPool(localSessionPool);
     paramAbstractUploadTask.setTaskId(paramAbstractUploadTask.flowId);
     paramAbstractUploadTask.start();
@@ -299,24 +376,29 @@ public class UploadTaskManager
   
   public void allIpFailed(SessionPool paramSessionPool)
   {
-    if (paramSessionPool == null) {}
-    for (;;)
-    {
+    if (paramSessionPool == null) {
       return;
-      if (paramSessionPool.getPoolType() == Const.FileType.Log)
-      {
-        this.bStopAllLogTask = true;
-        clearAllLogTask();
-        return;
-      }
-      Iterator localIterator = this.mRunningList.iterator();
-      while (localIterator.hasNext())
-      {
-        AbstractUploadTask localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
-        UploadLog.d("UploadTaskManager", "allIpFailed getTaskType(task):" + getTaskType(localAbstractUploadTask) + " pool.getPoolType():" + paramSessionPool.getPoolType() + " task.getFileType():" + localAbstractUploadTask.getFileType());
-        if ((getTaskType(localAbstractUploadTask) == paramSessionPool.getPoolType()) || ((localAbstractUploadTask instanceof BatchControlTask))) {
-          localAbstractUploadTask.onError(Const.UploadRetCode.ALL_IP_FAILED.getCode(), Const.UploadRetCode.ALL_IP_FAILED.getDesc());
-        }
+    }
+    if (paramSessionPool.getPoolType() == Const.FileType.Log)
+    {
+      this.bStopAllLogTask = true;
+      clearAllLogTask();
+      return;
+    }
+    Iterator localIterator = this.mRunningList.iterator();
+    while (localIterator.hasNext())
+    {
+      AbstractUploadTask localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("allIpFailed getTaskType(task):");
+      localStringBuilder.append(getTaskType(localAbstractUploadTask));
+      localStringBuilder.append(" pool.getPoolType():");
+      localStringBuilder.append(paramSessionPool.getPoolType());
+      localStringBuilder.append(" task.getFileType():");
+      localStringBuilder.append(localAbstractUploadTask.getFileType());
+      UploadLog.d("UploadTaskManager", localStringBuilder.toString());
+      if ((getTaskType(localAbstractUploadTask) == paramSessionPool.getPoolType()) || ((localAbstractUploadTask instanceof BatchControlTask))) {
+        localAbstractUploadTask.onError(Const.UploadRetCode.ALL_IP_FAILED.getCode(), Const.UploadRetCode.ALL_IP_FAILED.getDesc());
       }
     }
   }
@@ -343,32 +425,38 @@ public class UploadTaskManager
   public int getRemainTaskSize()
   {
     dumpAllTasksState();
-    if ((this.mTaskList != null) && (this.mRunningList != null))
+    Object localObject = this.mTaskList;
+    int k = 0;
+    int i = 0;
+    int j = k;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mTaskList.iterator();
-      int i = 0;
-      AbstractUploadTask localAbstractUploadTask;
-      while (localIterator.hasNext())
+      j = k;
+      if (this.mRunningList != null)
       {
-        localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
-        if ((localAbstractUploadTask.getTaskState().getCode() != TaskState.CANCEL.getCode()) && (localAbstractUploadTask.getTaskState().getCode() != TaskState.FAILED.getCode()) && (localAbstractUploadTask.getTaskState().getCode() != TaskState.SUCCEED.getCode())) {
-          i += 1;
+        localObject = ((LinkedBlockingQueue)localObject).iterator();
+        AbstractUploadTask localAbstractUploadTask;
+        while (((Iterator)localObject).hasNext())
+        {
+          localAbstractUploadTask = (AbstractUploadTask)((Iterator)localObject).next();
+          if ((localAbstractUploadTask.getTaskState().getCode() != TaskState.CANCEL.getCode()) && (localAbstractUploadTask.getTaskState().getCode() != TaskState.FAILED.getCode()) && (localAbstractUploadTask.getTaskState().getCode() != TaskState.SUCCEED.getCode())) {
+            i += 1;
+          }
         }
-      }
-      localIterator = this.mRunningList.iterator();
-      for (;;)
-      {
-        j = i;
-        if (!localIterator.hasNext()) {
-          break;
-        }
-        localAbstractUploadTask = (AbstractUploadTask)localIterator.next();
-        if ((localAbstractUploadTask.getTaskState().getCode() != TaskState.CANCEL.getCode()) && (localAbstractUploadTask.getTaskState().getCode() != TaskState.FAILED.getCode()) && (localAbstractUploadTask.getTaskState().getCode() != TaskState.SUCCEED.getCode())) {
-          i += 1;
+        localObject = this.mRunningList.iterator();
+        for (;;)
+        {
+          j = i;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localAbstractUploadTask = (AbstractUploadTask)((Iterator)localObject).next();
+          if ((localAbstractUploadTask.getTaskState().getCode() != TaskState.CANCEL.getCode()) && (localAbstractUploadTask.getTaskState().getCode() != TaskState.FAILED.getCode()) && (localAbstractUploadTask.getTaskState().getCode() != TaskState.SUCCEED.getCode())) {
+            i += 1;
+          }
         }
       }
     }
-    int j = 0;
     return j;
   }
   
@@ -408,7 +496,10 @@ public class UploadTaskManager
   
   public void onSessionPoolRestore(Const.FileType paramFileType)
   {
-    UploadLog.w("UploadTaskManager", "onSessionPoolRestore type: " + paramFileType);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSessionPoolRestore type: ");
+    localStringBuilder.append(paramFileType);
+    UploadLog.w("UploadTaskManager", localStringBuilder.toString());
     this.mHandler.postDelayed(new UploadTaskManager.5(this, paramFileType), 500L);
   }
   
@@ -416,35 +507,55 @@ public class UploadTaskManager
   {
     if ((paramBaseTask instanceof AbstractUploadTask))
     {
-      UploadLog.d("UploadTaskManager", "taskId:" + paramBaseTask.getTaskId() + " onTaskFinished state: " + paramBaseTask.getTaskState() + " ret:" + paramInt + " msg:" + ???);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("taskId:");
+      localStringBuilder.append(paramBaseTask.getTaskId());
+      localStringBuilder.append(" onTaskFinished state: ");
+      localStringBuilder.append(paramBaseTask.getTaskState());
+      localStringBuilder.append(" ret:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" msg:");
+      localStringBuilder.append(???);
+      UploadLog.d("UploadTaskManager", localStringBuilder.toString());
       if (paramBaseTask.getTaskState() == TaskState.SUCCEED) {
         synchronized (this.mRunningList)
         {
           this.mRunningList.remove(paramBaseTask);
-          UploadLog.d("UploadTaskManager", "remove -- flowid:" + ((AbstractUploadTask)paramBaseTask).flowId);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("remove -- flowid:");
+          localStringBuilder.append(((AbstractUploadTask)paramBaseTask).flowId);
+          UploadLog.d("UploadTaskManager", localStringBuilder.toString());
           if (!checkEmpty()) {
             next();
           }
           return;
         }
       }
-      if ((paramBaseTask.getTaskState() != TaskState.FAILED) && (paramBaseTask.getTaskState() != TaskState.CANCEL)) {}
+      if ((paramBaseTask.getTaskState() == TaskState.FAILED) || (paramBaseTask.getTaskState() == TaskState.CANCEL)) {
+        synchronized (this.mRunningList)
+        {
+          this.mRunningList.remove(paramBaseTask);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("remove -- flowid:");
+          localStringBuilder.append(((AbstractUploadTask)paramBaseTask).flowId);
+          UploadLog.d("UploadTaskManager", localStringBuilder.toString());
+          if ((paramBaseTask.getFileType() == Const.FileType.Log) && (paramInt == Const.UploadRetCode.SERVER_DISCONNECT.getCode()))
+          {
+            this.bStopAllLogTask = true;
+            clearAllLogTask();
+          }
+        }
+      }
     }
-    synchronized (this.mRunningList)
+    if (paramInt == Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode())
     {
-      this.mRunningList.remove(paramBaseTask);
-      UploadLog.d("UploadTaskManager", "remove -- flowid:" + ((AbstractUploadTask)paramBaseTask).flowId);
-      if ((paramBaseTask.getFileType() == Const.FileType.Log) && (paramInt == Const.UploadRetCode.SERVER_DISCONNECT.getCode()))
-      {
-        this.bStopAllLogTask = true;
-        clearAllLogTask();
-      }
-      if (paramInt == Const.UploadRetCode.NETWORK_NOT_AVAILABLE.getCode())
-      {
-        UploadLog.w("UploadTaskManager", "taskId:" + paramBaseTask.getTaskId() + " post next() delay 500ms");
-        this.mHandler.postAtTime(new UploadTaskManager.2(this), 500L);
-        return;
-      }
+      ??? = new StringBuilder();
+      ???.append("taskId:");
+      ???.append(paramBaseTask.getTaskId());
+      ???.append(" post next() delay 500ms");
+      UploadLog.w("UploadTaskManager", ???.toString());
+      this.mHandler.postAtTime(new UploadTaskManager.2(this), 500L);
+      return;
     }
     next();
   }
@@ -455,11 +566,14 @@ public class UploadTaskManager
   {
     if ((SessionPool)this.mSessionPools.get(paramFileType) == null)
     {
-      UploadLog.d("UploadTaskManager", "prepare pool == null need create new, type:" + paramFileType);
-      SessionPool localSessionPool = new SessionPool(paramFileType);
-      localSessionPool.registerListener(this);
-      localSessionPool.init();
-      this.mSessionPools.put(paramFileType, localSessionPool);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("prepare pool == null need create new, type:");
+      ((StringBuilder)localObject).append(paramFileType);
+      UploadLog.d("UploadTaskManager", ((StringBuilder)localObject).toString());
+      localObject = new SessionPool(paramFileType);
+      ((SessionPool)localObject).registerListener(this);
+      ((SessionPool)localObject).init();
+      this.mSessionPools.put(paramFileType, localObject);
     }
   }
   
@@ -499,13 +613,13 @@ public class UploadTaskManager
         prepare(getTaskType(paramAbstractUploadTask));
         return false;
       }
+      return this.mHandler.post(new UploadTaskManager.1(this));
     }
-    return this.mHandler.post(new UploadTaskManager.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.impl.UploadTaskManager
  * JD-Core Version:    0.7.0.1
  */

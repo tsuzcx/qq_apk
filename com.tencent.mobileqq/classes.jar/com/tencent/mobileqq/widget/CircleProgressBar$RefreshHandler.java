@@ -10,22 +10,20 @@ class CircleProgressBar$RefreshHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    do
-    {
+    if (paramMessage.what != 10000) {
       return;
-      paramMessage = this.a;
-      paramMessage.i += 3;
-      this.a.postInvalidate();
-    } while (!this.a.a);
-    sendEmptyMessageDelayed(10000, 50L);
+    }
+    paramMessage = this.a;
+    paramMessage.i += 3;
+    this.a.postInvalidate();
+    if (this.a.a) {
+      sendEmptyMessageDelayed(10000, 50L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CircleProgressBar.RefreshHandler
  * JD-Core Version:    0.7.0.1
  */

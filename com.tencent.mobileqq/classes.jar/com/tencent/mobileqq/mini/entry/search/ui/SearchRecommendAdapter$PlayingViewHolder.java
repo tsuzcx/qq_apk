@@ -25,10 +25,10 @@ class SearchRecommendAdapter$PlayingViewHolder
   public SearchRecommendAdapter$PlayingViewHolder(View paramView)
   {
     super(paramView);
-    this.icon = ((ImageView)paramView.findViewById(2131371600));
-    this.ranking = ((ImageView)paramView.findViewById(2131371602));
-    this.name = ((TextView)paramView.findViewById(2131371604));
-    this.category = ((TextView)paramView.findViewById(2131371605));
+    this.icon = ((ImageView)paramView.findViewById(2131371220));
+    this.ranking = ((ImageView)paramView.findViewById(2131371222));
+    this.name = ((TextView)paramView.findViewById(2131371224));
+    this.category = ((TextView)paramView.findViewById(2131371225));
   }
   
   public void update(SearchInfo paramSearchInfo, Activity paramActivity, int paramInt)
@@ -38,34 +38,34 @@ class SearchRecommendAdapter$PlayingViewHolder
     this.name.setText(((MiniAppInfo)localObject).name);
     this.category.setText(paramSearchInfo.getCategoryDesc());
     paramInt = paramSearchInfo.getPosition();
-    if ((paramInt > 2) || (paramSearchInfo.getType() == 4)) {
-      this.ranking.setVisibility(8);
-    }
-    for (;;)
+    if ((paramInt <= 2) && (paramSearchInfo.getType() != 4))
     {
-      this.itemView.setOnClickListener(new SearchRecommendAdapter.PlayingViewHolder.1(this, paramActivity, (MiniAppInfo)localObject, paramSearchInfo));
-      paramActivity = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
-      localObject = new MiniAppConfig((MiniAppInfo)localObject);
-      ((MiniAppConfig)localObject).launchParam.scene = 3024;
-      if (paramSearchInfo.getType() == 4) {
-        ((MiniAppConfig)localObject).launchParam.scene = 3029;
-      }
-      paramActivity.addSearchItemAndCheckReport(new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject, "desktop", "expo"));
-      return;
       this.ranking.setVisibility(0);
       if (paramInt == 0) {
-        this.ranking.setImageResource(2130841186);
+        this.ranking.setImageResource(2130841062);
       } else if (paramInt == 1) {
-        this.ranking.setImageResource(2130841187);
+        this.ranking.setImageResource(2130841063);
       } else if (paramInt == 2) {
-        this.ranking.setImageResource(2130841188);
+        this.ranking.setImageResource(2130841064);
       }
     }
+    else
+    {
+      this.ranking.setVisibility(8);
+    }
+    this.itemView.setOnClickListener(new SearchRecommendAdapter.PlayingViewHolder.1(this, paramActivity, (MiniAppInfo)localObject, paramSearchInfo));
+    paramActivity = (MiniAppExposureManager)MiniAppUtils.getAppInterface().getManager(QQManagerFactory.MINI_APP_EXPOSURE_MANAGER);
+    localObject = new MiniAppConfig((MiniAppInfo)localObject);
+    ((MiniAppConfig)localObject).launchParam.scene = 3024;
+    if (paramSearchInfo.getType() == 4) {
+      ((MiniAppConfig)localObject).launchParam.scene = 3029;
+    }
+    paramActivity.addSearchItemAndCheckReport(new MiniAppExposureManager.MiniAppModuleExposureData((MiniAppConfig)localObject, "desktop", "expo"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchRecommendAdapter.PlayingViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -22,15 +22,18 @@ public class MsgTabNodeClickRequest
   
   public BaseResponse a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspMsgTabNodeWatched localRspMsgTabNodeWatched = new qqstory_service.RspMsgTabNodeWatched();
+    Object localObject = new qqstory_service.RspMsgTabNodeWatched();
     try
     {
-      localRspMsgTabNodeWatched.mergeFrom(paramArrayOfByte);
-      return new MsgTabNodeClickRequest.MsgTabNodeWatchedResponse(localRspMsgTabNodeWatched);
+      ((qqstory_service.RspMsgTabNodeWatched)localObject).mergeFrom(paramArrayOfByte);
+      return new MsgTabNodeClickRequest.MsgTabNodeWatchedResponse((qqstory_service.RspMsgTabNodeWatched)localObject);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory.msgTab:ReqMsgTabNodeClick", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory.msgTab:ReqMsgTabNodeClick", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -40,7 +43,7 @@ public class MsgTabNodeClickRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqMsgTabNodeWatched localReqMsgTabNodeWatched = new qqstory_service.ReqMsgTabNodeWatched();
     localReqMsgTabNodeWatched.unionID.set(ByteStringMicro.copyFromUtf8(this.jdField_b_of_type_JavaLangString));
@@ -52,7 +55,7 @@ public class MsgTabNodeClickRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabNodeClickRequest
  * JD-Core Version:    0.7.0.1
  */

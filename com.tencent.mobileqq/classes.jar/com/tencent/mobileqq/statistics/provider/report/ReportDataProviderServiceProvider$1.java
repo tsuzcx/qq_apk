@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.statistics.provider.report;
 
-import com.tencent.biz.pubaccount.readinjoy.config.handlers.RIJNewReportChannelConfigHandler;
-import com.tencent.biz.pubaccount.readinjoy.data.RIJNewReporter;
-import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.bridge.report.service.IReportDataProviderService;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
+import com.tencent.mobileqq.kandian.glue.report.api.IRIJNewReport;
 import com.tencent.mobileqq.login.LoginConstants;
+import com.tencent.mobileqq.qqsec.api.FrozenConstants;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.statistics.ReportController.BusinessDataReporter;
 import com.tencent.mobileqq.statistics.ReportControllerImpl;
@@ -20,20 +21,21 @@ class ReportDataProviderServiceProvider$1
   
   public ReportController.BusinessDataReporter a()
   {
-    return new RIJNewReporter();
+    return ((IRIJNewReport)QRoute.api(IRIJNewReport.class)).createNewReport();
   }
   
   public ReportController a(AppRuntime paramAppRuntime)
   {
-    if (ReportDataProviderServiceProvider.a(this.a) == null) {}
-    try
-    {
-      if (ReportDataProviderServiceProvider.a(this.a) == null) {
-        ReportDataProviderServiceProvider.a(this.a, ReportControllerImpl.a(paramAppRuntime));
+    if (ReportDataProviderServiceProvider.a(this.a) == null) {
+      try
+      {
+        if (ReportDataProviderServiceProvider.a(this.a) == null) {
+          ReportDataProviderServiceProvider.a(this.a, ReportControllerImpl.a(paramAppRuntime));
+        }
       }
-      return ReportDataProviderServiceProvider.a(this.a);
+      finally {}
     }
-    finally {}
+    return ReportDataProviderServiceProvider.a(this.a);
   }
   
   public String a(AppRuntime paramAppRuntime, ServerConfigManager.ConfigType paramConfigType, String paramString)
@@ -46,13 +48,13 @@ class ReportDataProviderServiceProvider$1
   
   public List<String> a()
   {
-    return NotificationActivity.REPORT_TVALUE_NOTIFICATION_LOGIN_TVALUES;
+    return FrozenConstants.a;
   }
   
   public boolean a(String paramString)
   {
     if ("dc01160".equals(paramString)) {
-      return RIJNewReportChannelConfigHandler.a();
+      return ((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).isEnableUseNewReportChannel();
     }
     return false;
   }
@@ -64,7 +66,7 @@ class ReportDataProviderServiceProvider$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.provider.report.ReportDataProviderServiceProvider.1
  * JD-Core Version:    0.7.0.1
  */

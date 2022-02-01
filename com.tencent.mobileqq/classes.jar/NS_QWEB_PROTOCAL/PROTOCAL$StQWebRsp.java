@@ -22,14 +22,15 @@ public final class PROTOCAL$StQWebRsp
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42 }, new String[] { "Seq", "retCode", "errMsg", "busiBuff", "Extinfo" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, null }, StQWebRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42 }, new String[] { "Seq", "retCode", "errMsg", "busiBuff", "Extinfo" }, new Object[] { localLong, localLong, localByteStringMicro1, localByteStringMicro2, null }, StQWebRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp
  * JD-Core Version:    0.7.0.1
  */

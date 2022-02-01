@@ -16,45 +16,58 @@ class FileJsPlugin$10
   
   public String run()
   {
-    int i = 0;
     long l = System.currentTimeMillis();
-    if ((TextUtils.isEmpty(this.val$dirPath)) || (this.val$reqParamObj.isNull("dirPath")))
+    Object localObject1;
+    Object localObject2;
+    JSONArray localJSONArray;
+    if ((!TextUtils.isEmpty(this.val$dirPath)) && (!this.val$reqParamObj.isNull("dirPath")))
     {
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
-      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "invalid path");
-    }
-    String str = ((MiniAppFileManager)FileJsPlugin.access$4600(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$dirPath);
-    if (TextUtils.isEmpty(str))
-    {
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
-      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "no such file or directory, open " + this.val$dirPath);
-    }
-    if (!new File(str).isDirectory())
-    {
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, str);
-      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "not a directory " + this.val$dirPath);
-    }
-    File[] arrayOfFile = new File(str).listFiles();
-    JSONObject localJSONObject = new JSONObject();
-    JSONArray localJSONArray = new JSONArray();
-    if (arrayOfFile != null)
-    {
-      int j = arrayOfFile.length;
-      while (i < j)
+      localObject1 = ((MiniAppFileManager)FileJsPlugin.access$4600(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(this.val$dirPath);
+      if (TextUtils.isEmpty((CharSequence)localObject1))
       {
-        File localFile = arrayOfFile[i];
-        if (localFile != null) {
-          localJSONArray.put(localFile.getName());
+        FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
+        localObject1 = this.this$0;
+        localObject2 = this.val$req;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("no such file or directory, open ");
+        ((StringBuilder)localObject3).append(this.val$dirPath);
+        return FileJsPlugin.access$1000((FileJsPlugin)localObject1, (RequestEvent)localObject2, null, ((StringBuilder)localObject3).toString());
+      }
+      if (!new File((String)localObject1).isDirectory())
+      {
+        FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, (String)localObject1);
+        localObject1 = this.this$0;
+        localObject2 = this.val$req;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("not a directory ");
+        ((StringBuilder)localObject3).append(this.val$dirPath);
+        return FileJsPlugin.access$1000((FileJsPlugin)localObject1, (RequestEvent)localObject2, null, ((StringBuilder)localObject3).toString());
+      }
+      Object localObject3 = new File((String)localObject1).listFiles();
+      localObject2 = new JSONObject();
+      localJSONArray = new JSONArray();
+      if (localObject3 != null)
+      {
+        int j = localObject3.length;
+        int i = 0;
+        while (i < j)
+        {
+          Object localObject4 = localObject3[i];
+          if (localObject4 != null) {
+            localJSONArray.put(localObject4.getName());
+          }
+          i += 1;
         }
-        i += 1;
       }
     }
     try
     {
-      localJSONObject.put("files", localJSONArray);
+      ((JSONObject)localObject2).put("files", localJSONArray);
       label317:
-      FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l, str);
-      return FileJsPlugin.access$1100(this.this$0, this.val$req, localJSONObject);
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, true, this.val$startMS, l, (String)localObject1);
+      return FileJsPlugin.access$1100(this.this$0, this.val$req, (JSONObject)localObject2);
+      FileJsPlugin.access$900(this.this$0, this.val$req.event, false, this.val$startMS, l, this.val$dirPath);
+      return FileJsPlugin.access$1000(this.this$0, this.val$req, null, "invalid path");
     }
     catch (JSONException localJSONException)
     {
@@ -64,7 +77,7 @@ class FileJsPlugin$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.FileJsPlugin.10
  * JD-Core Version:    0.7.0.1
  */

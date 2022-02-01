@@ -10,31 +10,37 @@ class Gson$FutureTypeAdapter<T>
   
   public T read(JsonReader paramJsonReader)
   {
-    if (this.delegate == null) {
-      throw new IllegalStateException();
+    TypeAdapter localTypeAdapter = this.delegate;
+    if (localTypeAdapter != null) {
+      return localTypeAdapter.read(paramJsonReader);
     }
-    return this.delegate.read(paramJsonReader);
+    throw new IllegalStateException();
   }
   
   public void setDelegate(TypeAdapter<T> paramTypeAdapter)
   {
-    if (this.delegate != null) {
-      throw new AssertionError();
+    if (this.delegate == null)
+    {
+      this.delegate = paramTypeAdapter;
+      return;
     }
-    this.delegate = paramTypeAdapter;
+    throw new AssertionError();
   }
   
   public void write(JsonWriter paramJsonWriter, T paramT)
   {
-    if (this.delegate == null) {
-      throw new IllegalStateException();
+    TypeAdapter localTypeAdapter = this.delegate;
+    if (localTypeAdapter != null)
+    {
+      localTypeAdapter.write(paramJsonWriter, paramT);
+      return;
     }
-    this.delegate.write(paramJsonWriter, paramT);
+    throw new IllegalStateException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.Gson.FutureTypeAdapter
  * JD-Core Version:    0.7.0.1
  */

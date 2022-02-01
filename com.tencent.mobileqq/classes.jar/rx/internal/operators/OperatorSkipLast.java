@@ -10,10 +10,12 @@ public class OperatorSkipLast<T>
   
   public OperatorSkipLast(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IndexOutOfBoundsException("count could not be negative");
+    if (paramInt >= 0)
+    {
+      this.count = paramInt;
+      return;
     }
-    this.count = paramInt;
+    throw new IndexOutOfBoundsException("count could not be negative");
   }
   
   public Subscriber<? super T> call(Subscriber<? super T> paramSubscriber)
@@ -23,7 +25,7 @@ public class OperatorSkipLast<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorSkipLast
  * JD-Core Version:    0.7.0.1
  */

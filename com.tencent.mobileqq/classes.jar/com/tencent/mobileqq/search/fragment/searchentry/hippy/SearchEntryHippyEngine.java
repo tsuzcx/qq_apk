@@ -10,16 +10,16 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.hippy.qq.app.HippyQQEngine.HippyQQEngineListener;
-import com.tencent.hippy.qq.app.TKDApiProvider;
-import com.tencent.hippy.qq.module.tkd.TKDAccountModule;
-import com.tencent.hippy.qq.module.tkd.TKDAccountModule.AccountInfo;
 import com.tencent.hippy.qq.view.tkd.listview.ResourceUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.search.SearchEntryConfigManager;
+import com.tencent.mobileqq.kandian.biz.hippy.api.ITKDHippyBridge;
+import com.tencent.mobileqq.kandian.biz.hippy.entity.AccountInfo;
+import com.tencent.mobileqq.kandian.biz.viola.view.ViolaFragment;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler;
 import com.tencent.mobileqq.search.fragment.searchentry.nativemethod.RequestHistoryDataMethod;
 import com.tencent.mtt.hippy.common.HippyMap;
@@ -41,32 +41,35 @@ public class SearchEntryHippyEngine
   {
     super(paramViolaFragment, "search", paramViolaFragment.getUrl());
     this.hotwordHandler = paramSearchHotwordHandler;
-    this.providers.add(new TKDApiProvider());
+    this.providers.add(((ITKDHippyBridge)QRoute.api(ITKDHippyBridge.class)).getTKDApiProvider());
     setJsBundleType("react");
     setComponentName("SearchPageView");
     setDebugMode(isHippyDebug());
     setPropsMap(getStartPageInitPropMap(paramViolaFragment.getContentView()));
     setViewCreator(new SearchHippyViewCreator());
-    initHippy(paramViolaFragment.getContentView(), new JSONObject(), false, paramHippyQQEngineListener);
+    initHippyInContainer((ViewGroup)paramViolaFragment.getContentView().findViewById(2131380915), new JSONObject(), false, paramHippyQQEngineListener);
   }
   
   @NotNull
   private HippyMap getStartPageInitPropMap(ViewGroup paramViewGroup)
   {
-    this.VIEW_ID = (System.currentTimeMillis() + "");
-    HippyMap localHippyMap1 = new HippyMap();
-    localHippyMap1.pushString("viewID", this.VIEW_ID);
-    localHippyMap1.pushString("history", RequestHistoryDataMethod.getHistoryListStr());
-    localHippyMap1.pushString("guid", TKDAccountModule.getCurAccountInfo().qqNum);
-    localHippyMap1.pushString("type", "homePage");
-    localHippyMap1.pushString("hint", ResourceUtil.getString(2131718908));
-    localHippyMap1.pushString("data", SearchHippyEventEmitter.mapToJsonStr(SearchHotwordHandler.getHotwordDataMap(this.hotwordHandler, null)));
-    HippyMap localHippyMap2 = new HippyMap();
-    localHippyMap2.pushInt("skinMode", 0);
-    localHippyMap2.pushBoolean("isFullScreen", false);
-    localHippyMap2.pushInt("orientation", paramViewGroup.getContext().getResources().getConfiguration().orientation);
-    localHippyMap1.pushMap("qbConfig", localHippyMap2);
-    return localHippyMap1;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append("");
+    this.VIEW_ID = ((StringBuilder)localObject).toString();
+    localObject = new HippyMap();
+    ((HippyMap)localObject).pushString("viewID", this.VIEW_ID);
+    ((HippyMap)localObject).pushString("history", RequestHistoryDataMethod.getHistoryListStr());
+    ((HippyMap)localObject).pushString("guid", ((ITKDHippyBridge)QRoute.api(ITKDHippyBridge.class)).getCurAccountInfo().qqNum);
+    ((HippyMap)localObject).pushString("type", "homePage");
+    ((HippyMap)localObject).pushString("hint", ResourceUtil.getString(2131718624));
+    ((HippyMap)localObject).pushString("data", SearchHippyEventEmitter.mapToJsonStr(SearchHotwordHandler.getHotwordDataMap(this.hotwordHandler, null)));
+    HippyMap localHippyMap = new HippyMap();
+    localHippyMap.pushInt("skinMode", 0);
+    localHippyMap.pushBoolean("isFullScreen", false);
+    localHippyMap.pushInt("orientation", paramViewGroup.getContext().getResources().getConfiguration().orientation);
+    ((HippyMap)localObject).pushMap("qbConfig", localHippyMap);
+    return localObject;
   }
   
   public static boolean isHippyDebug()
@@ -76,21 +79,23 @@ public class SearchEntryHippyEngine
   
   public static boolean isHippyOn()
   {
-    boolean bool = false;
     if (iscmdHippyOn()) {
       return true;
     }
     AladdinConfig localAladdinConfig = Aladdin.getConfig(313);
-    if (localAladdinConfig != null) {
-      if (localAladdinConfig.getIntegerFromString("SearchPage_HippySwitch", -1) != 1) {}
-    }
-    for (bool = true;; bool = false)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localAladdinConfig != null)
     {
-      if (!bool) {
-        SearchEntryConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
+      bool1 = bool2;
+      if (localAladdinConfig.getIntegerFromString("SearchPage_HippySwitch", -1) == 1) {
+        bool1 = true;
       }
-      return bool;
     }
+    if (!bool1) {
+      SearchEntryConfigManager.a((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime(), true);
+    }
+    return bool1;
   }
   
   public static boolean iscmdHippyOn()
@@ -110,7 +115,7 @@ public class SearchEntryHippyEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchEntryHippyEngine
  * JD-Core Version:    0.7.0.1
  */

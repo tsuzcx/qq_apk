@@ -135,12 +135,47 @@ public class MonitorHttpInfo
   
   public String toString()
   {
-    return "MonitorHttpInfo{host='" + this.host + '\'' + ", url='" + this.url + '\'' + ", method='" + this.method + '\'' + ", port='" + this.port + '\'' + ", type='" + this.type + '\'' + ", requestBuffer=" + Arrays.toString(this.requestBuffer).substring(0, 100) + ", responseCode='" + this.responseCode + '\'' + ", mimeType='" + this.mimeType + '\'' + ", responseLength='" + this.responseLength + '\'' + ", responseHeaderGuessInfo=" + this.responseHeaderGuessInfo + ", responseBodyHex='" + this.responseBodyHex + '\'' + ", fileType=" + this.fileType + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MonitorHttpInfo{host='");
+    localStringBuilder.append(this.host);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", method='");
+    localStringBuilder.append(this.method);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", port='");
+    localStringBuilder.append(this.port);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type='");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", requestBuffer=");
+    localStringBuilder.append(Arrays.toString(this.requestBuffer).substring(0, 100));
+    localStringBuilder.append(", responseCode='");
+    localStringBuilder.append(this.responseCode);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mimeType='");
+    localStringBuilder.append(this.mimeType);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", responseLength='");
+    localStringBuilder.append(this.responseLength);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", responseHeaderGuessInfo=");
+    localStringBuilder.append(this.responseHeaderGuessInfo);
+    localStringBuilder.append(", responseBodyHex='");
+    localStringBuilder.append(this.responseBodyHex);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fileType=");
+    localStringBuilder.append(this.fileType);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.utils.MonitorHttpInfo
  * JD-Core Version:    0.7.0.1
  */

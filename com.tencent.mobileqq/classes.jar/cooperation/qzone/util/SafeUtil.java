@@ -21,21 +21,29 @@ public class SafeUtil
       int i = Integer.parseInt(paramString);
       return i;
     }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      log("toInt convert error:" + paramString);
-      return 0;
-    }
     catch (Exception paramString)
     {
-      log("toInt convert error:" + paramString.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("toInt convert error:");
+      localStringBuilder.append(paramString.getMessage());
+      log(localStringBuilder.toString());
+      return 0;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("toInt convert error:");
+      localStringBuilder.append(paramString);
+      log(localStringBuilder.toString());
+      return 0;
     }
-    return 0;
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label41:
+      break label41;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.SafeUtil
  * JD-Core Version:    0.7.0.1
  */

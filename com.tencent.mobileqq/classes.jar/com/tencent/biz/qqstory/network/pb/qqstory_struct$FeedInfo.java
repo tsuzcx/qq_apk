@@ -26,15 +26,16 @@ public final class qqstory_struct$FeedInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 48, 58, 64, 72, 80, 88 }, new String[] { "user", "date", "feed_attr", "feed_video_info_list", "next_cookie", "seq", "feed_id", "is_end", "pull_type", "video_total", "share_to_discover" }, new Object[] { null, Integer.valueOf(0), localByteStringMicro1, null, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, FeedInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 26, 34, 42, 48, 58, 64, 72, 80, 88 }, new String[] { "user", "date", "feed_attr", "feed_video_info_list", "next_cookie", "seq", "feed_id", "is_end", "pull_type", "video_total", "share_to_discover" }, new Object[] { null, localInteger, localByteStringMicro1, null, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger, localInteger, localInteger, localInteger }, FeedInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.FeedInfo
  * JD-Core Version:    0.7.0.1
  */

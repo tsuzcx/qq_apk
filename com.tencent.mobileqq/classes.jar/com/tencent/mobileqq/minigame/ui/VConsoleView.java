@@ -35,9 +35,9 @@ public class VConsoleView
   
   private void initUI()
   {
-    LayoutInflater.from(getContext()).inflate(2131559531, this);
-    this.vConsoleGap = ((ImageView)findViewById(2131371635));
-    this.vConsoleWebView = ((WebView)findViewById(2131371632));
+    LayoutInflater.from(getContext()).inflate(2131559407, this);
+    this.vConsoleGap = ((ImageView)findViewById(2131371260));
+    this.vConsoleWebView = ((WebView)findViewById(2131371252));
     this.vConsoleWebView.getSettings().setJavaScriptEnabled(true);
     if (Build.VERSION.SDK_INT >= 11)
     {
@@ -49,7 +49,7 @@ public class VConsoleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.ui.VConsoleView
  * JD-Core Version:    0.7.0.1
  */

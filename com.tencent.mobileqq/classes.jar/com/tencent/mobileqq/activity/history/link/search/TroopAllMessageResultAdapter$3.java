@@ -18,8 +18,8 @@ class TroopAllMessageResultAdapter$3
 {
   public void run()
   {
-    int j = 0;
     Object localObject = TroopAllMessageResultAdapter.h(this.this$0).getMessageFacade().a(this.jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.l(this.this$0).jdField_a_of_type_JavaLangString, TroopAllMessageResultAdapter.m(this.this$0).jdField_a_of_type_Int, TroopAllMessageResultAdapter.n(this.this$0).d);
+    int j = 0;
     int i;
     MessageRecord localMessageRecord;
     if ((localObject != null) && (((ChatHistorySearchData)localObject).mSearchData1 != null) && (!((ChatHistorySearchData)localObject).mSearchData1.isEmpty()))
@@ -54,8 +54,12 @@ class TroopAllMessageResultAdapter$3
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LinkMessageResultAdapter", 2, "localCacheMsgs size: " + this.this$0.jdField_a_of_type_JavaUtilList.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("localCacheMsgs size: ");
+      ((StringBuilder)localObject).append(this.this$0.jdField_a_of_type_JavaUtilList.size());
+      QLog.d("LinkMessageResultAdapter", 2, ((StringBuilder)localObject).toString());
     }
     localObject = new HashMap();
     ((HashMap)localObject).put("keyword", this.jdField_a_of_type_JavaLangString);
@@ -65,7 +69,7 @@ class TroopAllMessageResultAdapter$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.link.search.TroopAllMessageResultAdapter.3
  * JD-Core Version:    0.7.0.1
  */

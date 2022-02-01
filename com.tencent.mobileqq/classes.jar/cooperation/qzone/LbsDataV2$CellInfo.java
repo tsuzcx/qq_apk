@@ -41,7 +41,23 @@ public class LbsDataV2$CellInfo
   
   public String toString()
   {
-    return "CellInfo [mcc=" + this.mcc + ", mnc=" + this.mnc + ", lac=" + this.lac + ", cellId=" + this.cellId + ", rssi=" + this.rssi + ", stationLat=" + this.stationLat + ", stationLon=" + this.stationLon + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CellInfo [mcc=");
+    localStringBuilder.append(this.mcc);
+    localStringBuilder.append(", mnc=");
+    localStringBuilder.append(this.mnc);
+    localStringBuilder.append(", lac=");
+    localStringBuilder.append(this.lac);
+    localStringBuilder.append(", cellId=");
+    localStringBuilder.append(this.cellId);
+    localStringBuilder.append(", rssi=");
+    localStringBuilder.append(this.rssi);
+    localStringBuilder.append(", stationLat=");
+    localStringBuilder.append(this.stationLat);
+    localStringBuilder.append(", stationLon=");
+    localStringBuilder.append(this.stationLon);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -57,7 +73,7 @@ public class LbsDataV2$CellInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.CellInfo
  * JD-Core Version:    0.7.0.1
  */

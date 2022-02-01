@@ -11,11 +11,14 @@ public class PriorityQueue
   public static final int PRIORITY_LOW = 202;
   public static final int PRIORITY_NOMRAL = 201;
   public static final int PRIORITY_NUMBER = 3;
-  public int mInQueueMsgNums = 0;
-  private ArrayList<LinkedList<HttpMsg>> mSendQueues = new ArrayList();
+  public int mInQueueMsgNums;
+  private ArrayList<LinkedList<HttpMsg>> mSendQueues;
   
   public PriorityQueue()
   {
+    int i = 0;
+    this.mInQueueMsgNums = 0;
+    this.mSendQueues = new ArrayList();
     while (i < 3)
     {
       this.mSendQueues.add(new LinkedList());
@@ -25,15 +28,15 @@ public class PriorityQueue
   
   public void addMsg(HttpMsg paramHttpMsg)
   {
-    if (paramHttpMsg == null) {}
-    int i;
-    do
-    {
+    if (paramHttpMsg == null) {
       return;
-      i = paramHttpMsg.getPriority() - 200;
-    } while ((i < 0) || (i >= this.mSendQueues.size()));
-    ((LinkedList)this.mSendQueues.get(i)).add(paramHttpMsg);
-    this.mInQueueMsgNums += 1;
+    }
+    int i = paramHttpMsg.getPriority() - 200;
+    if ((i >= 0) && (i < this.mSendQueues.size()))
+    {
+      ((LinkedList)this.mSendQueues.get(i)).add(paramHttpMsg);
+      this.mInQueueMsgNums += 1;
+    }
   }
   
   public void clearMsgs()
@@ -92,29 +95,22 @@ public class PriorityQueue
   
   public boolean removeHttpMsg(HttpMsg paramHttpMsg)
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < this.mSendQueues.size())
     {
-      boolean bool1 = bool2;
-      if (i < this.mSendQueues.size())
+      if (((LinkedList)this.mSendQueues.get(i)).remove(paramHttpMsg))
       {
-        if (((LinkedList)this.mSendQueues.get(i)).remove(paramHttpMsg))
-        {
-          this.mInQueueMsgNums -= 1;
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+        this.mInQueueMsgNums -= 1;
+        return true;
       }
       i += 1;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.PriorityQueue
  * JD-Core Version:    0.7.0.1
  */

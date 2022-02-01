@@ -13,7 +13,7 @@ public class FaceDetectInitializer
   extends Feature
 {
   private static final ModelInfo[] COMMON_MODEL = { new ModelInfo(true, "facedetect/detector", "net1_18.rpnmodel"), new ModelInfo(true, "facedetect/detector", "net1_18_bin.rpnproto"), new ModelInfo(true, "facedetect/detector", "net2_36.rpnmodel"), new ModelInfo(true, "facedetect/detector", "net2_36_bin.rpnproto"), new ModelInfo(true, "facedetect/poseest", "meshBasis.bin"), new ModelInfo(true, "facedetect/poseest", "rotBasis.bin") };
-  private static final String TAG = FaceDetectInitializer.class.getSimpleName();
+  private static final String TAG = "FaceDetectInitializer";
   private static final ModelInfo[] VIDEO_FACE_DET_MODEL = { new ModelInfo(true, "facedetect/align", "align.stb"), new ModelInfo(true, "facedetect/align", "align.rpdm"), new ModelInfo(true, "facedetect/align", "align_bin.rpdc"), new ModelInfo(true, "facedetect/align", "eye.rpdm"), new ModelInfo(true, "facedetect/align", "eye_bin.rpdc"), new ModelInfo(true, "facedetect/align", "eyebrow.rpdm"), new ModelInfo(true, "facedetect/align", "eyebrow_bin.rpdc"), new ModelInfo(true, "facedetect/align", "mouth.rpdm"), new ModelInfo(true, "facedetect/align", "mouth_bin.rpdc"), new ModelInfo(true, "facedetect/align", "refine1.rmd"), new ModelInfo(true, "facedetect/align", "refine2.rmd") };
   private static final SharedLibraryInfo[] sharedLibraries4Video = { new SharedLibraryInfo("c++_shared"), new SharedLibraryInfo("opencv_world"), new SharedLibraryInfo("YTFaceTrackPro"), new SharedLibraryInfo("CameraFaceJNI") };
   private boolean initPicDetect = false;
@@ -25,55 +25,101 @@ public class FaceDetectInitializer
   {
     String str = getFinalResourcesDir();
     printMD5s(str);
-    LogUtils.i(TAG, "initCommon, modelDir = " + str);
+    Object localObject = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initCommon, modelDir = ");
+    localStringBuilder.append(str);
+    LogUtils.i((String)localObject, localStringBuilder.toString());
     int i = initCommon(str);
-    LogUtils.i(TAG, "[FaceDetector] [Global] initCommon, ret = " + i);
+    localObject = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[FaceDetector] [Global] initCommon, ret = ");
+    localStringBuilder.append(i);
+    LogUtils.i((String)localObject, localStringBuilder.toString());
     if (i != 0)
     {
-      LogUtils.e(TAG, "[FaceDetector] [Global] initCommon failed, ret = " + i);
+      str = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[FaceDetector] [Global] initCommon failed, ret = ");
+      ((StringBuilder)localObject).append(i);
+      LogUtils.e(str, ((StringBuilder)localObject).toString());
       return i;
     }
     if (!this.initPicDetect)
     {
       i = initCameraFaceTrack(str);
-      LogUtils.i(TAG, "[FaceDetector] [Global] initCameraFaceTrack, result = " + i);
+      str = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[FaceDetector] [Global] initCameraFaceTrack, result = ");
+      ((StringBuilder)localObject).append(i);
+      LogUtils.i(str, ((StringBuilder)localObject).toString());
     }
-    for (;;)
+    else
     {
-      YTFaceDetectorBase.INSTANCE.nativeSetRefine(false);
-      return i;
       i = initPictureFaceTrack(str);
-      LogUtils.i(TAG, "[FaceDetector] [Global] initPictureFaceTrack, result = " + i);
+      str = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[FaceDetector] [Global] initPictureFaceTrack, result = ");
+      ((StringBuilder)localObject).append(i);
+      LogUtils.i(str, ((StringBuilder)localObject).toString());
     }
+    YTFaceDetectorBase.INSTANCE.nativeSetRefine(false);
+    return i;
   }
   
   private void printMD5s(String paramString)
   {
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    Object localObject1 = COMMON_MODEL;
+    int k = localObject1.length;
     int j = 0;
-    StringBuilder localStringBuilder = new StringBuilder();
-    ModelInfo[] arrayOfModelInfo = COMMON_MODEL;
-    int k = arrayOfModelInfo.length;
     int i = 0;
-    ModelInfo localModelInfo;
-    String str;
+    Object localObject2;
+    Object localObject3;
+    StringBuilder localStringBuilder2;
     while (i < k)
     {
-      localModelInfo = arrayOfModelInfo[i];
-      str = FileUtils.getMD5(FileUtils.genSeperateFileDir(paramString) + File.separator + localModelInfo.fileName, "aekit");
-      localStringBuilder.append(" " + localModelInfo.fileName + " = " + str + ",\n");
+      localObject2 = localObject1[i];
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(FileUtils.genSeperateFileDir(paramString));
+      ((StringBuilder)localObject3).append(File.separator);
+      ((StringBuilder)localObject3).append(localObject2.fileName);
+      localObject3 = FileUtils.getMD5(((StringBuilder)localObject3).toString(), "aekit");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" ");
+      localStringBuilder2.append(localObject2.fileName);
+      localStringBuilder2.append(" = ");
+      localStringBuilder2.append((String)localObject3);
+      localStringBuilder2.append(",\n");
+      localStringBuilder1.append(localStringBuilder2.toString());
       i += 1;
     }
-    arrayOfModelInfo = VIDEO_FACE_DET_MODEL;
-    k = arrayOfModelInfo.length;
+    localObject1 = VIDEO_FACE_DET_MODEL;
+    k = localObject1.length;
     i = j;
     while (i < k)
     {
-      localModelInfo = arrayOfModelInfo[i];
-      str = FileUtils.getMD5(FileUtils.genSeperateFileDir(paramString) + File.separator + localModelInfo.fileName, "aekit");
-      localStringBuilder.append(" " + localModelInfo.fileName + " = " + str + ",\n");
+      localObject2 = localObject1[i];
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append(FileUtils.genSeperateFileDir(paramString));
+      ((StringBuilder)localObject3).append(File.separator);
+      ((StringBuilder)localObject3).append(localObject2.fileName);
+      localObject3 = FileUtils.getMD5(((StringBuilder)localObject3).toString(), "aekit");
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" ");
+      localStringBuilder2.append(localObject2.fileName);
+      localStringBuilder2.append(" = ");
+      localStringBuilder2.append((String)localObject3);
+      localStringBuilder2.append(",\n");
+      localStringBuilder1.append(localStringBuilder2.toString());
       i += 1;
     }
-    LogUtils.i(TAG, "printMD5s : [" + localStringBuilder + "]");
+    paramString = TAG;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("printMD5s : [");
+    ((StringBuilder)localObject1).append(localStringBuilder1);
+    ((StringBuilder)localObject1).append("]");
+    LogUtils.i(paramString, ((StringBuilder)localObject1).toString());
   }
   
   protected boolean destroyImpl()
@@ -113,10 +159,18 @@ public class FaceDetectInitializer
       return 0;
     }
     int i = YTFaceDetectorBase.INSTANCE.nativeInitCameraFaceTrack(FileUtils.genSeperateFileDir(paramString));
-    LogUtils.i(TAG, "nativeInitCameraFaceTrack, ret = " + i);
+    paramString = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("nativeInitCameraFaceTrack, ret = ");
+    localStringBuilder.append(i);
+    LogUtils.i(paramString, localStringBuilder.toString());
     if (i != 0)
     {
-      LogUtils.e(TAG, "[FaceDetector] [Global] nativeInitCameraFaceTrack failed, ret = " + -1002);
+      paramString = TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[FaceDetector] [Global] nativeInitCameraFaceTrack failed, ret = ");
+      localStringBuilder.append(-1002);
+      LogUtils.e(paramString, localStringBuilder.toString());
       return -1002;
     }
     this.isCameraFaceTrackInited = true;
@@ -133,12 +187,28 @@ public class FaceDetectInitializer
     if ((!FeatureManager.Features.YT_COMMON.isFunctionReady()) && (!FeatureManager.Features.YT_COMMON.init())) {
       return 2;
     }
-    int i = YTFaceDetectorBase.INSTANCE.nativeInitCommon(paramString + File.separator);
-    LogUtils.i(TAG, "nativeInitCommon, ret = " + i);
+    Object localObject = YTFaceDetectorBase.INSTANCE;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    int i = ((YTFaceDetectorBase)localObject).nativeInitCommon(localStringBuilder.toString());
+    paramString = TAG;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("nativeInitCommon, ret = ");
+    ((StringBuilder)localObject).append(i);
+    LogUtils.i(paramString, ((StringBuilder)localObject).toString());
     if (i != 0)
     {
-      LogUtils.e(TAG, "nativeInitCommon failed, ret = " + -1001);
-      LogUtils.e(TAG, "[FaceDetector] [Global] nativeInitCommon failed, ret = " + -1001);
+      paramString = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("nativeInitCommon failed, ret = ");
+      ((StringBuilder)localObject).append(-1001);
+      LogUtils.e(paramString, ((StringBuilder)localObject).toString());
+      paramString = TAG;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[FaceDetector] [Global] nativeInitCommon failed, ret = ");
+      ((StringBuilder)localObject).append(-1001);
+      LogUtils.e(paramString, ((StringBuilder)localObject).toString());
       return -1001;
     }
     this.isCommonInited = true;
@@ -147,15 +217,16 @@ public class FaceDetectInitializer
   
   protected boolean initImpl()
   {
-    if (!loadAllSoFiles()) {}
-    for (;;)
-    {
+    if (!loadAllSoFiles()) {
       return false;
-      if (initFaceDetect() == 0) {}
-      for (int i = 1; i != 0; i = 0) {
-        return true;
-      }
     }
+    int i;
+    if (initFaceDetect() == 0) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    return i != 0;
   }
   
   public int initPictureFaceTrack(String paramString)
@@ -166,7 +237,11 @@ public class FaceDetectInitializer
       return 0;
     }
     int i = YTFaceDetectorBase.INSTANCE.nativeInitPictureFaceTrack(FileUtils.genSeperateFileDir(paramString));
-    LogUtils.i(TAG, "nativeInitPictureFaceTrack, ret = " + i);
+    paramString = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("nativeInitPictureFaceTrack, ret = ");
+    localStringBuilder.append(i);
+    LogUtils.i(paramString, localStringBuilder.toString());
     if (i != 0)
     {
       LogUtils.e(TAG, "[FaceDetector] [Global] initPicFaceDetectModel failed");
@@ -193,7 +268,7 @@ public class FaceDetectInitializer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.initializer.FaceDetectInitializer
  * JD-Core Version:    0.7.0.1
  */

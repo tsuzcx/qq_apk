@@ -26,8 +26,9 @@ class NeuQuant
     paramInt1 = 0;
     while (paramInt1 < 256)
     {
-      this.jdField_a_of_type_Array2dOfInt[paramInt1] = new int[4];
-      paramArrayOfByte = this.jdField_a_of_type_Array2dOfInt[paramInt1];
+      paramArrayOfByte = this.jdField_a_of_type_Array2dOfInt;
+      paramArrayOfByte[paramInt1] = new int[4];
+      paramArrayOfByte = paramArrayOfByte[paramInt1];
       paramInt2 = (paramInt1 << 12) / 256;
       paramArrayOfByte[2] = paramInt2;
       paramArrayOfByte[1] = paramInt2;
@@ -40,260 +41,247 @@ class NeuQuant
   
   public int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int k = this.jdField_a_of_type_ArrayOfInt[paramInt2];
-    int m = k - 1;
-    int j = 1000;
-    int i = -1;
-    int n;
-    int[] arrayOfInt;
-    int i1;
-    if ((k < 256) || (m >= 0))
-    {
-      n = k;
-      if (k >= 256) {
-        break label407;
-      }
-      arrayOfInt = this.jdField_a_of_type_Array2dOfInt[k];
-      i1 = arrayOfInt[1] - paramInt2;
-      if (i1 >= j)
-      {
-        n = 256;
-        k = i;
-        i = n;
-      }
-    }
+    int i2 = this.jdField_a_of_type_ArrayOfInt[paramInt2];
+    int i = i2 - 1;
+    int j = -1;
+    int k = 1000;
     for (;;)
     {
-      n = m;
-      if (m >= 0)
+      if ((i2 >= 256) && (i < 0)) {
+        return j;
+      }
+      int m = i2;
+      int i1 = j;
+      int n = k;
+      int[] arrayOfInt;
+      int i3;
+      if (i2 < 256)
       {
-        arrayOfInt = this.jdField_a_of_type_Array2dOfInt[m];
-        i1 = paramInt2 - arrayOfInt[1];
-        if (i1 >= j)
+        arrayOfInt = this.jdField_a_of_type_Array2dOfInt[i2];
+        n = arrayOfInt[1] - paramInt2;
+        if (n >= k)
         {
-          n = -1;
-          m = k;
-          k = i;
-          i = m;
+          m = 256;
+          i1 = j;
+          n = k;
+        }
+        else
+        {
+          i2 += 1;
           m = n;
-          break;
-          k += 1;
+          if (n < 0) {
+            m = -n;
+          }
+          i1 = arrayOfInt[0] - paramInt1;
           n = i1;
           if (i1 < 0) {
             n = -i1;
           }
-          i2 = arrayOfInt[0] - paramInt1;
-          i1 = i2;
-          if (i2 < 0) {
-            i1 = -i2;
-          }
-          i2 = i1 + n;
+          i3 = m + n;
+          m = i2;
+          i1 = j;
           n = k;
-          if (i2 >= j) {
-            break label407;
-          }
-          i1 = arrayOfInt[2] - paramInt3;
-          n = i1;
-          if (i1 < 0) {
-            n = -i1;
-          }
-          i1 = i2 + n;
-          n = k;
-          if (i1 >= j) {
-            break label407;
-          }
-          j = arrayOfInt[3];
-          i = k;
-          k = j;
-          j = i1;
-          continue;
-        }
-        m -= 1;
-        n = i1;
-        if (i1 < 0) {
-          n = -i1;
-        }
-        int i2 = arrayOfInt[0] - paramInt1;
-        i1 = i2;
-        if (i2 < 0) {
-          i1 = -i2;
-        }
-        i2 = i1 + n;
-        n = m;
-        if (i2 < j)
-        {
-          i1 = arrayOfInt[2] - paramInt3;
-          n = i1;
-          if (i1 < 0) {
-            n = -i1;
-          }
-          i1 = n + i2;
-          n = m;
-          if (i1 < j)
+          if (i3 < k)
           {
-            j = arrayOfInt[3];
-            n = i1;
-            k = i;
-            i = j;
-            j = n;
-            break;
-            return i;
+            n = arrayOfInt[2] - paramInt3;
+            m = n;
+            if (n < 0) {
+              m = -n;
+            }
+            i3 += m;
+            m = i2;
+            i1 = j;
+            n = k;
+            if (i3 < k)
+            {
+              i1 = arrayOfInt[3];
+              n = i3;
+              m = i2;
+            }
           }
         }
       }
-      m = k;
-      k = i;
-      i = m;
-      m = n;
-      break;
-      label407:
-      k = i;
-      i = n;
+      i2 = m;
+      j = i1;
+      k = n;
+      if (i >= 0)
+      {
+        arrayOfInt = this.jdField_a_of_type_Array2dOfInt[i];
+        j = paramInt2 - arrayOfInt[1];
+        if (j >= n)
+        {
+          i = -1;
+          i2 = m;
+          j = i1;
+          k = n;
+        }
+        else
+        {
+          i3 = i - 1;
+          i = j;
+          if (j < 0) {
+            i = -j;
+          }
+          k = arrayOfInt[0] - paramInt1;
+          j = k;
+          if (k < 0) {
+            j = -k;
+          }
+          int i4 = i + j;
+          i2 = m;
+          i = i3;
+          j = i1;
+          k = n;
+          if (i4 < n)
+          {
+            j = arrayOfInt[2] - paramInt3;
+            i = j;
+            if (j < 0) {
+              i = -j;
+            }
+            i4 = i + i4;
+            i2 = m;
+            i = i3;
+            j = i1;
+            k = n;
+            if (i4 < n)
+            {
+              j = arrayOfInt[3];
+              k = i4;
+              i2 = m;
+              i = i3;
+            }
+          }
+        }
+      }
     }
   }
   
   public void a()
   {
     int i = 0;
-    int k = 0;
     int j = 0;
-    if (i < 256)
+    int m;
+    for (int i1 = 0; i < 256; i1 = m)
     {
       int[] arrayOfInt1 = this.jdField_a_of_type_Array2dOfInt[i];
-      int m = arrayOfInt1[1];
+      int k = arrayOfInt1[1];
       int n = i + 1;
-      int i1 = i;
-      while (n < 256)
+      m = i;
+      int i2 = n;
+      int i3 = m;
+      m = i2;
+      while (m < 256)
       {
-        arrayOfInt2 = this.jdField_a_of_type_Array2dOfInt[n];
-        int i2 = m;
-        if (arrayOfInt2[1] < m)
+        arrayOfInt2 = this.jdField_a_of_type_Array2dOfInt[m];
+        i2 = k;
+        if (arrayOfInt2[1] < k)
         {
           i2 = arrayOfInt2[1];
-          i1 = n;
+          i3 = m;
         }
-        n += 1;
-        m = i2;
+        m += 1;
+        k = i2;
       }
-      int[] arrayOfInt2 = this.jdField_a_of_type_Array2dOfInt[i1];
-      if (i != i1)
+      int[] arrayOfInt2 = this.jdField_a_of_type_Array2dOfInt[i3];
+      if (i != i3)
       {
-        n = arrayOfInt2[0];
+        m = arrayOfInt2[0];
         arrayOfInt2[0] = arrayOfInt1[0];
-        arrayOfInt1[0] = n;
-        n = arrayOfInt2[1];
+        arrayOfInt1[0] = m;
+        m = arrayOfInt2[1];
         arrayOfInt2[1] = arrayOfInt1[1];
-        arrayOfInt1[1] = n;
-        n = arrayOfInt2[2];
+        arrayOfInt1[1] = m;
+        m = arrayOfInt2[2];
         arrayOfInt2[2] = arrayOfInt1[2];
-        arrayOfInt1[2] = n;
-        n = arrayOfInt2[3];
+        arrayOfInt1[2] = m;
+        m = arrayOfInt2[3];
         arrayOfInt2[3] = arrayOfInt1[3];
-        arrayOfInt1[3] = n;
+        arrayOfInt1[3] = m;
       }
-      if (m == j) {
-        break label277;
-      }
-      this.jdField_a_of_type_ArrayOfInt[j] = (k + i >> 1);
-      j += 1;
-      while (j < m)
+      i2 = j;
+      m = i1;
+      if (k != j)
       {
-        this.jdField_a_of_type_ArrayOfInt[j] = i;
-        j += 1;
+        this.jdField_a_of_type_ArrayOfInt[j] = (i1 + i >> 1);
+        for (;;)
+        {
+          j += 1;
+          if (j >= k) {
+            break;
+          }
+          this.jdField_a_of_type_ArrayOfInt[j] = i;
+        }
+        m = i;
+        i2 = k;
       }
-      j = m;
-      k = i;
+      i = n;
+      j = i2;
     }
-    label277:
-    for (;;)
+    this.jdField_a_of_type_ArrayOfInt[j] = (i1 + 255 >> 1);
+    i = j + 1;
+    while (i < 256)
     {
+      this.jdField_a_of_type_ArrayOfInt[i] = 255;
       i += 1;
-      break;
-      this.jdField_a_of_type_ArrayOfInt[j] = (k + 255 >> 1);
-      i = j + 1;
-      while (i < 256)
-      {
-        this.jdField_a_of_type_ArrayOfInt[i] = 255;
-        i += 1;
-      }
-      return;
     }
   }
   
   protected void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    int k = paramInt2 - paramInt1;
-    if (k < -1) {
-      k = -1;
+    int i = paramInt2 - paramInt1;
+    int j = -1;
+    if (i < -1) {
+      i = j;
     }
-    for (;;)
+    j = paramInt2 + paramInt1;
+    paramInt1 = 256;
+    if (j > 256) {
+      j = paramInt1;
+    }
+    paramInt1 = paramInt2 + 1;
+    paramInt2 -= 1;
+    int m;
+    for (int k = 1;; k = m)
     {
-      paramInt1 = paramInt2 + paramInt1;
-      int m = paramInt1;
-      if (paramInt1 > 256) {
-        m = 256;
+      if ((paramInt1 >= j) && (paramInt2 <= i)) {
+        return;
       }
-      int j = paramInt2 - 1;
-      paramInt1 = 1;
-      int i = paramInt2 + 1;
-      paramInt2 = paramInt1;
-      paramInt1 = i;
-      Object localObject;
-      int n;
-      if ((paramInt1 < m) || (j > k))
+      Object localObject = this.d;
+      m = k + 1;
+      int n = localObject[k];
+      if (paramInt1 < j)
       {
-        localObject = this.d;
-        i = paramInt2 + 1;
-        n = localObject[paramInt2];
-        if (paramInt1 >= m) {
-          break label313;
-        }
         localObject = this.jdField_a_of_type_Array2dOfInt;
-        paramInt2 = paramInt1 + 1;
+        k = paramInt1 + 1;
         localObject = localObject[paramInt1];
-      }
-      label307:
-      label313:
-      for (;;)
-      {
         try
         {
           localObject[0] -= (localObject[0] - paramInt3) * n / 262144;
           localObject[1] -= (localObject[1] - paramInt4) * n / 262144;
           localObject[2] -= (localObject[2] - paramInt5) * n / 262144;
-          paramInt1 = paramInt2;
-          if (j <= k) {
-            break label307;
-          }
-          localObject = this.jdField_a_of_type_Array2dOfInt;
-          paramInt2 = j - 1;
-          localObject = localObject[j];
+          paramInt1 = k;
         }
         catch (Exception localException1)
         {
-          try
-          {
-            localObject[0] -= (localObject[0] - paramInt3) * n / 262144;
-            localObject[1] -= (localObject[1] - paramInt4) * n / 262144;
-            localObject[2] -= n * (localObject[2] - paramInt5) / 262144;
-            j = paramInt2;
-            paramInt2 = i;
-          }
-          catch (Exception localException2)
-          {
-            TLog.d("NeuQuant", localException2.toString());
-            j = paramInt2;
-            paramInt2 = i;
-          }
-          localException1 = localException1;
           TLog.d("NeuQuant", localException1.toString());
-          paramInt1 = paramInt2;
-          continue;
+          paramInt1 = k;
         }
-        break;
-        return;
-        paramInt2 = i;
-        break;
+      }
+      if (paramInt2 > i)
+      {
+        int[] arrayOfInt = this.jdField_a_of_type_Array2dOfInt[paramInt2];
+        try
+        {
+          arrayOfInt[0] -= (arrayOfInt[0] - paramInt3) * n / 262144;
+          arrayOfInt[1] -= (arrayOfInt[1] - paramInt4) * n / 262144;
+          arrayOfInt[2] -= n * (arrayOfInt[2] - paramInt5) / 262144;
+        }
+        catch (Exception localException2)
+        {
+          TLog.d("NeuQuant", localException2.toString());
+        }
+        paramInt2 -= 1;
       }
     }
   }
@@ -314,31 +302,29 @@ class NeuQuant
     {
       int k = arrayOfInt[i];
       int m = j + 1;
-      arrayOfByte[j] = ((byte)this.jdField_a_of_type_Array2dOfInt[k][0]);
-      int n = m + 1;
-      arrayOfByte[m] = ((byte)this.jdField_a_of_type_Array2dOfInt[k][1]);
-      j = n + 1;
-      arrayOfByte[n] = ((byte)this.jdField_a_of_type_Array2dOfInt[k][2]);
+      int[][] arrayOfInt1 = this.jdField_a_of_type_Array2dOfInt;
+      arrayOfByte[j] = ((byte)arrayOfInt1[k][0]);
+      j = m + 1;
+      arrayOfByte[m] = ((byte)arrayOfInt1[k][1]);
+      arrayOfByte[j] = ((byte)arrayOfInt1[k][2]);
       i += 1;
+      j += 1;
     }
     return arrayOfByte;
   }
   
   protected int b(int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 2147483647;
-    int k = -1;
-    int i = 0;
     int n = -1;
+    int i = 0;
+    int k = -1;
     int m = 2147483647;
-    int[] arrayOfInt;
     int i2;
-    int i1;
-    if (i < 256)
+    for (int j = 2147483647; i < 256; j = i2)
     {
       arrayOfInt = this.jdField_a_of_type_Array2dOfInt[i];
       i2 = arrayOfInt[0] - paramInt1;
-      i1 = i2;
+      int i1 = i2;
       if (i2 < 0) {
         i1 = -i2;
       }
@@ -352,42 +338,33 @@ class NeuQuant
       if (i4 < 0) {
         i3 = -i4;
       }
-      i2 = i2 + i1 + i3;
-      if (i2 >= m) {
-        break label273;
-      }
-      m = i;
-    }
-    for (n = i2;; n = i1)
-    {
-      i1 = i2 - (this.jdField_b_of_type_ArrayOfInt[i] >> 12);
-      if (i1 < j)
-      {
-        j = i1;
-        k = i;
-      }
-      for (;;)
-      {
-        i1 = this.jdField_c_of_type_ArrayOfInt[i] >> 10;
-        arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
-        arrayOfInt[i] -= i1;
-        arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
-        arrayOfInt[i] = ((i1 << 10) + arrayOfInt[i]);
-        i += 1;
-        i1 = n;
-        n = m;
-        m = i1;
-        break;
-        arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
-        arrayOfInt[n] += 64;
-        arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
-        arrayOfInt[n] -= 65536;
-        return k;
-      }
-      label273:
+      i2 = i1 + i2 + i3;
       i1 = m;
-      m = n;
+      if (i2 < m)
+      {
+        n = i;
+        i1 = i2;
+      }
+      m = i2 - (this.jdField_b_of_type_ArrayOfInt[i] >> 12);
+      i2 = j;
+      if (m < j)
+      {
+        k = i;
+        i2 = m;
+      }
+      arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
+      j = arrayOfInt[i] >> 10;
+      arrayOfInt[i] -= j;
+      arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
+      arrayOfInt[i] += (j << 10);
+      i += 1;
+      m = i1;
     }
+    int[] arrayOfInt = this.jdField_c_of_type_ArrayOfInt;
+    arrayOfInt[n] += 64;
+    arrayOfInt = this.jdField_b_of_type_ArrayOfInt;
+    arrayOfInt[n] -= 65536;
+    return k;
   }
   
   public void b()
@@ -395,102 +372,81 @@ class NeuQuant
     if (this.jdField_b_of_type_Int < 1509) {
       this.jdField_c_of_type_Int = 1;
     }
-    this.jdField_a_of_type_Int = ((this.jdField_c_of_type_Int - 1) / 3 + 30);
+    int i = this.jdField_c_of_type_Int;
+    this.jdField_a_of_type_Int = ((i - 1) / 3 + 30);
     byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-    int i4 = this.jdField_b_of_type_Int;
-    int i5 = this.jdField_b_of_type_Int / (this.jdField_c_of_type_Int * 3);
-    int k = i5 / 100;
-    int i = 0;
+    int i7 = this.jdField_b_of_type_Int;
+    int i8 = i7 / (i * 3);
+    int i1 = i8 / 100;
+    i = 0;
     while (i < 32)
     {
-      this.d[i] = ((1024 - i * i) * 256 / 1024 * 1024);
+      this.d[i] = (1024 * ((1024 - i * i) * 256 / 1024));
       i += 1;
     }
-    int m;
-    int i2;
-    int n;
-    int i1;
-    label132:
-    int i3;
-    if (this.jdField_b_of_type_Int < 1509)
-    {
+    i = this.jdField_b_of_type_Int;
+    if (i < 1509) {
       i = 3;
-      m = 0;
-      i2 = 32;
-      n = 2048;
-      int j = 0;
-      i1 = 1024;
-      if (m >= i5) {
-        break label415;
-      }
-      i3 = (arrayOfByte[(j + 0)] & 0xFF) << 4;
-      int i6 = (arrayOfByte[(j + 1)] & 0xFF) << 4;
-      int i7 = (arrayOfByte[(j + 2)] & 0xFF) << 4;
-      int i8 = b(i3, i6, i7);
-      b(i1, i8, i3, i6, i7);
-      if (i2 != 0) {
-        a(i2, i8, i3, i6, i7);
-      }
-      j += i;
-      if (j < i4) {
-        break label441;
-      }
-      j -= this.jdField_b_of_type_Int;
+    } else if (i % 499 != 0) {
+      i = 1497;
+    } else if (i % 491 != 0) {
+      i = 1473;
+    } else if (i % 487 != 0) {
+      i = 1461;
+    } else {
+      i = 1509;
     }
-    label415:
-    label441:
-    for (;;)
+    int i3 = 0;
+    int i4 = 0;
+    int m = 1024;
+    int n = 32;
+    int k = 2048;
+    while (i3 < i8)
     {
-      i3 = m + 1;
-      if (k == 0) {
-        k = 1;
+      int j = (arrayOfByte[(i4 + 0)] & 0xFF) << 4;
+      int i2 = (arrayOfByte[(i4 + 1)] & 0xFF) << 4;
+      int i5 = (arrayOfByte[(i4 + 2)] & 0xFF) << 4;
+      int i6 = b(j, i2, i5);
+      b(m, i6, j, i2, i5);
+      if (n != 0) {
+        a(n, i6, j, i2, i5);
       }
-      for (;;)
+      i2 = i4 + i;
+      j = i2;
+      if (i2 >= i7) {
+        j = i2 - this.jdField_b_of_type_Int;
+      }
+      i5 = i3 + 1;
+      i2 = i1;
+      if (i1 == 0) {
+        i2 = 1;
+      }
+      i3 = i5;
+      i4 = j;
+      i1 = i2;
+      if (i5 % i2 == 0)
       {
-        if (i3 % k == 0)
-        {
-          i1 -= i1 / this.jdField_a_of_type_Int;
-          i2 = n - n / 30;
-          n = i2 >> 6;
-          m = n;
-          if (n <= 1) {
-            m = 0;
-          }
-          n = 0;
-          for (;;)
-          {
-            if (n < m)
-            {
-              this.d[n] = ((m * m - n * n) * 256 / (m * m) * i1);
-              n += 1;
-              continue;
-              if (this.jdField_b_of_type_Int % 499 != 0)
-              {
-                i = 1497;
-                break;
-              }
-              if (this.jdField_b_of_type_Int % 491 != 0)
-              {
-                i = 1473;
-                break;
-              }
-              if (this.jdField_b_of_type_Int % 487 != 0)
-              {
-                i = 1461;
-                break;
-              }
-              i = 1509;
-              break;
-              return;
-            }
-          }
-          n = i2;
-          i2 = m;
-          m = i3;
-          break label132;
+        n = m - m / this.jdField_a_of_type_Int;
+        i6 = k - k / 30;
+        m = i6 >> 6;
+        k = m;
+        if (m <= 1) {
+          k = 0;
         }
-        m = i3;
-        break label132;
+        m = 0;
+        while (m < k)
+        {
+          int[] arrayOfInt = this.d;
+          i1 = k * k;
+          arrayOfInt[m] = ((i1 - m * m) * 256 / i1 * n);
+          m += 1;
+        }
+        i3 = i5;
+        i4 = j;
+        m = n;
+        n = k;
+        i1 = i2;
+        k = i6;
       }
     }
   }
@@ -500,7 +456,7 @@ class NeuQuant
     int[] arrayOfInt = this.jdField_a_of_type_Array2dOfInt[paramInt2];
     arrayOfInt[0] -= (arrayOfInt[0] - paramInt3) * paramInt1 / 1024;
     arrayOfInt[1] -= (arrayOfInt[1] - paramInt4) * paramInt1 / 1024;
-    arrayOfInt[2] -= (arrayOfInt[2] - paramInt5) * paramInt1 / 1024;
+    arrayOfInt[2] -= paramInt1 * (arrayOfInt[2] - paramInt5) / 1024;
   }
   
   public byte[] b()
@@ -516,20 +472,21 @@ class NeuQuant
     int i = 0;
     while (i < 256)
     {
-      int[] arrayOfInt = this.jdField_a_of_type_Array2dOfInt[i];
-      arrayOfInt[0] >>= 4;
-      arrayOfInt = this.jdField_a_of_type_Array2dOfInt[i];
-      arrayOfInt[1] >>= 4;
-      arrayOfInt = this.jdField_a_of_type_Array2dOfInt[i];
-      arrayOfInt[2] >>= 4;
-      this.jdField_a_of_type_Array2dOfInt[i][3] = i;
+      int[][] arrayOfInt = this.jdField_a_of_type_Array2dOfInt;
+      int[] arrayOfInt1 = arrayOfInt[i];
+      arrayOfInt1[0] >>= 4;
+      arrayOfInt1 = arrayOfInt[i];
+      arrayOfInt1[1] >>= 4;
+      arrayOfInt1 = arrayOfInt[i];
+      arrayOfInt1[2] >>= 4;
+      arrayOfInt[i][3] = i;
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.NeuQuant
  * JD-Core Version:    0.7.0.1
  */

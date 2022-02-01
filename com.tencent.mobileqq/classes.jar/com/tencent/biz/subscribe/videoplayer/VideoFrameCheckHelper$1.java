@@ -13,26 +13,34 @@ class VideoFrameCheckHelper$1
   public void run()
   {
     QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame");
-    if (System.currentTimeMillis() - VideoFrameCheckHelper.a(this.this$0) >= 4000L) {}
-    for (boolean bool = true; (this.a.get() == null) || (this.b.get() == null); bool = false)
+    boolean bool;
+    if (System.currentTimeMillis() - VideoFrameCheckHelper.a(this.this$0) >= 4000L) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    if ((this.a.get() != null) && (this.b.get() != null))
     {
-      QLog.d("VideoFrameCheckHelper", 1, "reference recycled");
+      if ((VideoFrameCheckHelper.a(this.this$0, (TextureView)this.b.get())) && (!bool))
+      {
+        VideoFrameCheckHelper.a(this.this$0, (TextureView)this.b.get(), (VideoFrameCheckHelper.DarkFrameCheckListener)this.a.get());
+        QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame again");
+        return;
+      }
+      VideoFrameCheckHelper.a(this.this$0).post(new VideoFrameCheckHelper.1.1(this, bool));
+      VideoFrameCheckHelper.b(this.this$0).removeCallbacksAndMessages(null);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doCheckCurrentFrame stop isReachMaxTime:");
+      localStringBuilder.append(bool);
+      QLog.d("VideoFrameCheckHelper", 1, localStringBuilder.toString());
       return;
     }
-    if ((VideoFrameCheckHelper.a(this.this$0, (TextureView)this.b.get())) && (!bool))
-    {
-      VideoFrameCheckHelper.a(this.this$0, (TextureView)this.b.get(), (VideoFrameCheckHelper.DarkFrameCheckListener)this.a.get());
-      QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame again");
-      return;
-    }
-    VideoFrameCheckHelper.a(this.this$0).post(new VideoFrameCheckHelper.1.1(this, bool));
-    VideoFrameCheckHelper.b(this.this$0).removeCallbacksAndMessages(null);
-    QLog.d("VideoFrameCheckHelper", 1, "doCheckCurrentFrame stop isReachMaxTime:" + bool);
+    QLog.d("VideoFrameCheckHelper", 1, "reference recycled");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoFrameCheckHelper.1
  * JD-Core Version:    0.7.0.1
  */

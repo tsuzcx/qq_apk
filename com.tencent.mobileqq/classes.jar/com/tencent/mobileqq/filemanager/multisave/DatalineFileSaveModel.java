@@ -28,8 +28,13 @@ public class DatalineFileSaveModel
     int i = this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.deviceType;
     long l = this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.associatedId;
     DataLineMsgRecord localDataLineMsgRecord = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(i).a(l);
-    if (localDataLineMsgRecord == null) {
-      QLog.i("DatalineFileSaveModel<QFile>", 1, "getSourceDatalineFile：do not find sessionId[" + l + "]");
+    if (localDataLineMsgRecord == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSourceDatalineFile：do not find sessionId[");
+      localStringBuilder.append(l);
+      localStringBuilder.append("]");
+      QLog.i("DatalineFileSaveModel<QFile>", 1, localStringBuilder.toString());
     }
     return localDataLineMsgRecord;
   }
@@ -74,7 +79,10 @@ public class DatalineFileSaveModel
   
   public String b()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.frienduin + this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.uniseq;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.frienduin);
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForDLFile.uniseq);
+    return localStringBuilder.toString();
   }
   
   public boolean b()
@@ -98,7 +106,7 @@ public class DatalineFileSaveModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.multisave.DatalineFileSaveModel
  * JD-Core Version:    0.7.0.1
  */

@@ -32,17 +32,19 @@ public final class o
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.bH, 0);
-    if (this.bI != null) {
-      paramJceOutputStream.write(this.bI, 1);
+    byte[] arrayOfByte = this.bI;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
-    if (this.status != 0) {
-      paramJceOutputStream.write(this.status, 2);
+    int i = this.status;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.o
  * JD-Core Version:    0.7.0.1
  */

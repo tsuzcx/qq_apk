@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_0xeac$DigestMsg
   extends MessageMicro<DigestMsg>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112 }, new String[] { "group_code", "msg_seq", "msg_random", "msg_content", "text_size", "pic_size", "video_size", "sender_uin", "sender_time", "add_digest_uin", "add_digest_time", "start_time", "latest_msg_seq", "op_type" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, DigestMsg.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field add_digest_time = PBField.initUInt32(0);
   public final PBUInt64Field add_digest_uin = PBField.initUInt64(0L);
   public final PBUInt64Field group_code = PBField.initUInt64(0L);
@@ -25,10 +25,17 @@ public final class oidb_0xeac$DigestMsg
   public final PBUInt32Field start_time = PBField.initUInt32(0);
   public final PBUInt64Field text_size = PBField.initUInt64(0L);
   public final PBUInt64Field video_size = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 48, 56, 64, 72, 80, 88, 96, 104, 112 }, new String[] { "group_code", "msg_seq", "msg_random", "msg_content", "text_size", "pic_size", "video_size", "sender_uin", "sender_time", "add_digest_uin", "add_digest_time", "start_time", "latest_msg_seq", "op_type" }, new Object[] { localLong, localInteger, localInteger, null, localLong, localLong, localLong, localLong, localInteger, localLong, localInteger, localInteger, localInteger, localInteger }, DigestMsg.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xeac.oidb_0xeac.DigestMsg
  * JD-Core Version:    0.7.0.1
  */

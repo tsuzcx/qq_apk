@@ -7,20 +7,6 @@ import mqq.app.AppRuntime.Status;
 
 public class AutoReplyUtil
 {
-  public static int a(AppRuntime.Status paramStatus)
-  {
-    if (paramStatus == AppRuntime.Status.away) {
-      return 1;
-    }
-    if (paramStatus == AppRuntime.Status.busy) {
-      return 2;
-    }
-    if (paramStatus == AppRuntime.Status.dnd) {
-      return 3;
-    }
-    return -1;
-  }
-  
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
   {
     if (QLog.isColorLevel()) {
@@ -39,7 +25,7 @@ public class AutoReplyUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.chat.autoreply.AutoReplyUtil
  * JD-Core Version:    0.7.0.1
  */

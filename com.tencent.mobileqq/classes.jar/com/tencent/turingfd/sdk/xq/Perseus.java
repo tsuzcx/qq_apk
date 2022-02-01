@@ -7,127 +7,105 @@ import java.util.List;
 public class Perseus
   extends case
 {
-  public static Octans ad;
-  public static List<Integer> bd;
-  public static List<Integer> ic = new ArrayList();
-  public String cd = "";
-  public String dd = "";
-  public Octans ed = null;
-  public List<Integer> gd = null;
-  public int hd = 0;
-  public String mb = "";
-  public int pb = 0;
-  public int qb = 0;
-  public int rb = 0;
-  public int sb = 0;
-  public String tb = "";
-  public List<Integer> tc = null;
-  public String ub = "";
-  public int uc = 0;
-  public int vb = 0;
-  public boolean vc = false;
-  public int wc = 0;
-  public int xc = 0;
-  public int zc = 0;
+  public static Apricot Ma = new Apricot();
+  public static String Na = new String();
+  public static byte[] Oa = new byte[1];
+  public static List<String> Pa;
+  public static List<String> Qa;
+  public static List<String> Ra;
+  public Apricot Sa = null;
+  public String Ta = null;
+  public String Ua = "";
+  public String Va = "";
+  public int Wa = 0;
+  public byte[] Xa = null;
+  public List<String> Ya = null;
+  public String Za = "";
+  public List<String> _a = null;
+  public List<String> ab = null;
   
   static
   {
-    ic.add(Integer.valueOf(0));
-    ad = new Octans();
-    bd = new ArrayList();
-    bd.add(Integer.valueOf(0));
+    Oa[0] = 0;
+    Pa = new ArrayList();
+    String str = new String();
+    Pa.add(str);
+    Qa = new ArrayList();
+    Qa.add("");
+    Ra = new ArrayList();
+    Ra.add("");
   }
   
   public void a(byte parambyte)
   {
-    parambyte.a(this.pb, 0);
-    parambyte.a(this.qb, 1);
-    parambyte.a(this.rb, 2);
-    parambyte.a(this.sb, 3);
-    Object localObject = this.tc;
+    parambyte.a(this.Sa, 0);
+    Object localObject = this.Ta;
     if (localObject != null) {
-      parambyte.a((Collection)localObject, 4);
+      parambyte.b((String)localObject, 1);
     }
-    parambyte.a(this.uc, 5);
-    parambyte.a(this.vc, 6);
-    parambyte.a(this.wc, 7);
-    parambyte.a(this.xc, 8);
-    localObject = this.tb;
+    localObject = this.Ua;
     if (localObject != null) {
-      parambyte.b((String)localObject, 9);
+      parambyte.b((String)localObject, 2);
     }
-    localObject = this.ub;
+    localObject = this.Va;
     if (localObject != null) {
-      parambyte.b((String)localObject, 10);
+      parambyte.b((String)localObject, 3);
     }
-    parambyte.a(this.vb, 11);
-    localObject = this.mb;
+    parambyte.b(this.Wa, 4);
+    localObject = this.Xa;
     if (localObject != null) {
-      parambyte.b((String)localObject, 12);
+      parambyte.a((byte[])localObject, 5);
     }
-    localObject = this.cd;
+    localObject = this.Ya;
     if (localObject != null) {
-      parambyte.b((String)localObject, 13);
+      parambyte.a((Collection)localObject, 6);
     }
-    localObject = this.dd;
+    localObject = this.Za;
     if (localObject != null) {
-      parambyte.b((String)localObject, 14);
+      parambyte.b((String)localObject, 7);
     }
-    parambyte.a(this.zc, 15);
-    localObject = this.ed;
+    localObject = this._a;
     if (localObject != null) {
-      parambyte.a((case)localObject, 16);
+      parambyte.a((Collection)localObject, 8);
     }
-    localObject = this.gd;
+    localObject = this.ab;
     if (localObject != null) {
-      parambyte.a((Collection)localObject, 17);
+      parambyte.a((Collection)localObject, 9);
     }
-    parambyte.a(this.hd, 18);
   }
   
   public void a(try paramtry)
   {
-    this.pb = paramtry.a(this.pb, 0, true);
-    this.qb = paramtry.a(this.qb, 1, false);
-    this.rb = paramtry.a(this.rb, 2, false);
-    this.sb = paramtry.a(this.sb, 3, false);
-    this.tc = ((List)paramtry.a(ic, 4, false));
-    this.uc = paramtry.a(this.uc, 5, false);
-    this.vc = paramtry.a(this.vc, 6, false);
-    this.wc = paramtry.a(this.wc, 7, false);
-    this.xc = paramtry.a(this.xc, 8, false);
-    this.tb = paramtry.a(9, false);
-    this.ub = paramtry.a(10, false);
-    this.vb = paramtry.a(this.vb, 11, false);
-    this.mb = paramtry.a(12, false);
-    this.cd = paramtry.a(13, false);
-    this.dd = paramtry.a(14, false);
-    this.zc = paramtry.a(this.zc, 15, false);
-    this.ed = ((Octans)paramtry.a(ad, 16, false));
-    this.gd = ((List)paramtry.a(bd, 17, false));
-    this.hd = paramtry.a(this.hd, 18, false);
+    this.Sa = ((Apricot)paramtry.a(Ma, 0, true));
+    this.Ta = paramtry.a(Na, 1, false);
+    this.Ua = paramtry.a(2, false);
+    this.Va = paramtry.a(3, false);
+    this.Wa = paramtry.a(this.Wa, 4, false);
+    this.Xa = paramtry.a(Oa, 5, false);
+    this.Ya = ((List)paramtry.a(Pa, 6, false));
+    this.Za = paramtry.a(7, false);
+    this._a = ((List)paramtry.a(Qa, 8, false));
+    this.ab = ((List)paramtry.a(Ra, 9, false));
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (paramObject == null) {
-        return false;
-      }
-      if (!(paramObject instanceof Perseus)) {
-        return false;
-      }
-      paramObject = (Perseus)paramObject;
-    } while ((char.equals(this.pb, paramObject.pb)) && (char.equals(this.qb, paramObject.qb)) && (char.equals(this.rb, paramObject.rb)) && (char.equals(this.sb, paramObject.sb)) && (char.equals(this.tc, paramObject.tc)) && (char.equals(this.uc, paramObject.uc)) && (char.a(this.vc, paramObject.vc)) && (char.equals(this.wc, paramObject.wc)) && (char.equals(this.xc, paramObject.xc)) && (char.equals(this.tb, paramObject.tb)) && (char.equals(this.ub, paramObject.ub)) && (char.equals(this.vb, paramObject.vb)) && (char.equals(this.mb, paramObject.mb)) && (char.equals(this.cd, paramObject.cd)) && (char.equals(this.dd, paramObject.dd)) && (char.equals(this.zc, paramObject.zc)) && (char.equals(this.ed, paramObject.ed)) && (char.equals(this.gd, paramObject.gd)) && (char.equals(this.hd, paramObject.hd)));
-    return false;
+    }
+    if (paramObject == null) {
+      return false;
+    }
+    if (!(paramObject instanceof Perseus)) {
+      return false;
+    }
+    paramObject = (Perseus)paramObject;
+    return (char.equals(this.Sa, paramObject.Sa)) && (char.equals(this.Ta, paramObject.Ta)) && (char.equals(this.Ua, paramObject.Ua)) && (char.equals(this.Va, paramObject.Va)) && (char.equals(this.Wa, paramObject.Wa)) && (char.equals(this.Xa, paramObject.Xa)) && (char.equals(this.Ya, paramObject.Ya)) && (char.equals(this.Za, paramObject.Za)) && (char.equals(this._a, paramObject._a)) && (char.equals(this.ab, paramObject.ab));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Perseus
  * JD-Core Version:    0.7.0.1
  */

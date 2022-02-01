@@ -10,24 +10,19 @@ public class DynamicAvatarInfo
   
   public static DynamicAvatarInfo a(oidb_0x74b.RspBody paramRspBody)
   {
-    Object localObject;
     if (paramRspBody == null) {
-      localObject = null;
+      return null;
     }
-    DynamicAvatarInfo localDynamicAvatarInfo;
-    do
-    {
-      return localObject;
-      localDynamicAvatarInfo = new DynamicAvatarInfo();
-      localObject = localDynamicAvatarInfo;
-    } while (!paramRspBody.rpt_msg_uin_head_list.has());
-    localDynamicAvatarInfo.a = DynamicAvatarInfo.OneUinHeadInfo.a(paramRspBody.rpt_msg_uin_head_list.get());
+    DynamicAvatarInfo localDynamicAvatarInfo = new DynamicAvatarInfo();
+    if (paramRspBody.rpt_msg_uin_head_list.has()) {
+      localDynamicAvatarInfo.a = DynamicAvatarInfo.OneUinHeadInfo.a(paramRspBody.rpt_msg_uin_head_list.get());
+    }
     return localDynamicAvatarInfo;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarInfo
  * JD-Core Version:    0.7.0.1
  */

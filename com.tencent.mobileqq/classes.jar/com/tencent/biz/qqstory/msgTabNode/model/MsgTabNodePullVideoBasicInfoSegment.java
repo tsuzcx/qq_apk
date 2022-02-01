@@ -27,33 +27,34 @@ public class MsgTabNodePullVideoBasicInfoSegment
   
   protected void a(JobContext paramJobContext, List<MsgTabVideoData> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty()))
+    if ((paramList != null) && (!paramList.isEmpty()))
     {
       if (QLog.isColorLevel()) {
-        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
+        QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
       }
-      notifyResult(paramList);
+      paramJobContext = new ArrayList();
+      Object localObject = paramList.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        paramJobContext.add(((MsgTabVideoData)((Iterator)localObject).next()).b);
+      }
+      paramJobContext = new BatchGetVideoInfo(paramJobContext);
+      localObject = this.a;
+      if (localObject != null) {
+        paramJobContext.a = ((BatchGetVideoInfo.VideoLocalCacheFilter)localObject);
+      }
+      paramJobContext.a(new MsgTabNodePullVideoBasicInfoSegment.2(this, paramList));
+      paramJobContext.b();
       return;
     }
     if (QLog.isColorLevel()) {
-      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "pull video info start");
+      QLog.i("Q.qqstory.msgTab.jobPullBasicInfo", 2, "list empty");
     }
-    paramJobContext = new ArrayList();
-    Iterator localIterator = paramList.iterator();
-    while (localIterator.hasNext()) {
-      paramJobContext.add(((MsgTabVideoData)localIterator.next()).b);
-    }
-    paramJobContext = new BatchGetVideoInfo(paramJobContext);
-    if (this.a != null) {
-      paramJobContext.a = this.a;
-    }
-    paramJobContext.a(new MsgTabNodePullVideoBasicInfoSegment.2(this, paramList));
-    paramJobContext.b();
+    notifyResult(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodePullVideoBasicInfoSegment
  * JD-Core Version:    0.7.0.1
  */

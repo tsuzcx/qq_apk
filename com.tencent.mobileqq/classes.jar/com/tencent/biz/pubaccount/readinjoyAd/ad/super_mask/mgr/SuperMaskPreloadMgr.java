@@ -7,15 +7,21 @@ import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.SuperMaskStepUt
 import com.tencent.mobileqq.app.ThreadManagerV2;
 import kotlin.Metadata;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskPreloadMgr;", "", "()V", "checkPreloadIfNeed", "", "preloadSuperMaskRes", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/biz/pubaccount/readinjoyAd/ad/super_mask/mgr/SuperMaskPreloadMgr;", "", "()V", "checkPreloadIfNeed", "", "preloadSuperMaskRes", "", "kandian_ad_feature_impl_release"}, k=1, mv={1, 1, 16})
 public final class SuperMaskPreloadMgr
 {
   public static final SuperMaskPreloadMgr a = new SuperMaskPreloadMgr();
   
   private final boolean a()
   {
-    boolean bool = SuperMaskStepUtil.a.a("[PRELOAD]", new SuperMaskStep[] { (SuperMaskStep)new AladdinCheckStep(), (SuperMaskStep)new PreloadIntervalCheckStep() });
-    return (SuperMaskConfigMgr.a.a() == 1) || (bool);
+    SuperMaskStepUtil localSuperMaskStepUtil = SuperMaskStepUtil.a;
+    SuperMaskStep localSuperMaskStep = (SuperMaskStep)new AladdinCheckStep();
+    boolean bool1 = false;
+    boolean bool2 = localSuperMaskStepUtil.a("[PRELOAD]", new SuperMaskStep[] { localSuperMaskStep, (SuperMaskStep)new PreloadIntervalCheckStep() });
+    if ((SuperMaskConfigMgr.a.a() == 1) || (bool2)) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public final void a()
@@ -28,7 +34,7 @@ public final class SuperMaskPreloadMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskPreloadMgr
  * JD-Core Version:    0.7.0.1
  */

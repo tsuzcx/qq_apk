@@ -37,20 +37,20 @@ public class TagFlowLayout
   {
     int j = getChildCount();
     int i = 0;
-    if ((i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount()) && (i < j))
+    while ((i < this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount()) && (i < j))
     {
       int k = this.jdField_a_of_type_AndroidWidgetBaseAdapter.getItemViewType(i);
       View localView = getChildAt(i);
-      if ((k == ((Integer)localView.getTag(2131375097)).intValue()) && (k == 0)) {
+      if ((k == ((Integer)localView.getTag(2131374617)).intValue()) && (k == 0))
+      {
         this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, localView, this);
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         addView(this.jdField_a_of_type_AndroidWidgetBaseAdapter.getView(i, null, this), i, new ViewGroup.MarginLayoutParams(-2, -2));
         removeView(localView);
       }
+      i += 1;
     }
     if (j > this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount()) {
       removeViews(i, j - this.jdField_a_of_type_AndroidWidgetBaseAdapter.getCount());
@@ -69,135 +69,129 @@ public class TagFlowLayout
     return (RelativeLayout.LayoutParams)new ViewGroup.MarginLayoutParams(getContext(), paramAttributeSet);
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     SLog.b("attach", "attach");
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     SLog.b("detach", "detach");
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     TraceUtils.traceBegin("TagFlowLayout.onLayout");
     int j = getWidth();
-    paramInt3 = 0;
-    paramInt2 = 0;
     int k = getChildCount();
     paramInt4 = 0;
-    if (paramInt4 < k)
+    paramInt2 = 0;
+    for (paramInt3 = 0; paramInt4 < k; paramInt3 = paramInt1)
     {
       View localView = getChildAt(paramInt4);
-      if (localView.getVisibility() == 8) {
-        paramInt1 = paramInt2;
-      }
-      for (;;)
+      if (localView.getVisibility() == 8)
       {
-        paramInt4 += 1;
-        paramInt2 = paramInt1;
-        break;
+        paramInt1 = paramInt3;
+      }
+      else
+      {
         int m = localView.getMeasuredWidth();
         int n = localView.getMeasuredHeight();
         ViewGroup.MarginLayoutParams localMarginLayoutParams = (ViewGroup.MarginLayoutParams)localView.getLayoutParams();
-        paramInt1 = paramInt2;
-        int i = paramInt3;
-        if (localMarginLayoutParams.leftMargin + paramInt3 + m + localMarginLayoutParams.rightMargin > j)
+        paramInt1 = paramInt3;
+        int i = paramInt2;
+        if (localMarginLayoutParams.leftMargin + paramInt2 + m + localMarginLayoutParams.rightMargin > j)
         {
-          paramInt1 = paramInt2 + (localMarginLayoutParams.topMargin + n + localMarginLayoutParams.bottomMargin);
+          paramInt1 = paramInt3 + (localMarginLayoutParams.topMargin + n + localMarginLayoutParams.bottomMargin);
           i = 0;
         }
         paramInt2 = localMarginLayoutParams.leftMargin + i;
         paramInt3 = localMarginLayoutParams.topMargin + paramInt1;
         localView.layout(paramInt2, paramInt3, paramInt2 + m, n + paramInt3);
-        paramInt2 = localMarginLayoutParams.leftMargin;
-        paramInt3 = i + (localMarginLayoutParams.rightMargin + (paramInt2 + m));
+        paramInt2 = i + (localMarginLayoutParams.leftMargin + m + localMarginLayoutParams.rightMargin);
       }
+      paramInt4 += 1;
     }
     TraceUtils.traceEnd();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     TraceUtils.traceBegin("TagFlowLayout.onMeasure");
     super.onMeasure(paramInt1, paramInt2);
-    int i6 = View.MeasureSpec.getSize(paramInt1);
-    int i5 = View.MeasureSpec.getSize(paramInt2);
-    int i8 = View.MeasureSpec.getMode(paramInt1);
-    int i7 = View.MeasureSpec.getMode(paramInt2);
+    int i4 = View.MeasureSpec.getSize(paramInt1);
+    int k = View.MeasureSpec.getSize(paramInt2);
+    int i7 = View.MeasureSpec.getMode(paramInt1);
+    int i6 = View.MeasureSpec.getMode(paramInt2);
+    int i8 = getChildCount();
+    int i3 = 0;
     int j = 0;
-    int i = 0;
-    int k = 0;
+    int n = 0;
     int m = 0;
-    int i9 = getChildCount();
-    int i4 = 0;
-    while (i4 < i9)
+    int i2;
+    for (int i = 0; i3 < i8; i = i2)
     {
-      Object localObject = getChildAt(i4);
-      int n;
+      Object localObject = getChildAt(i3);
       if (((View)localObject).getVisibility() == 8)
       {
-        n = m;
-        m = k;
-        k = n;
-        i4 += 1;
-        n = m;
-        m = k;
-        k = n;
+        i2 = i;
       }
       else
       {
         measureChild((View)localObject, paramInt1, paramInt2);
-        int i1 = ((View)localObject).getMeasuredWidth();
-        n = ((View)localObject).getMeasuredHeight();
+        i2 = ((View)localObject).getMeasuredWidth();
+        int i1 = ((View)localObject).getMeasuredHeight();
         localObject = (ViewGroup.MarginLayoutParams)((View)localObject).getLayoutParams();
-        i1 = i1 + ((ViewGroup.MarginLayoutParams)localObject).leftMargin + ((ViewGroup.MarginLayoutParams)localObject).rightMargin;
-        int i2 = ((ViewGroup.MarginLayoutParams)localObject).topMargin;
-        n = ((ViewGroup.MarginLayoutParams)localObject).bottomMargin + (n + i2);
-        int i3;
-        if (k + i1 > i6)
+        i2 = i2 + ((ViewGroup.MarginLayoutParams)localObject).leftMargin + ((ViewGroup.MarginLayoutParams)localObject).rightMargin;
+        int i5 = i1 + ((ViewGroup.MarginLayoutParams)localObject).topMargin + ((ViewGroup.MarginLayoutParams)localObject).bottomMargin;
+        i1 = n + i2;
+        if (i1 > i4)
         {
-          i3 = Math.max(k, i1);
-          i2 = i + n;
+          j = Math.max(n, i2);
+          i1 = i + i5;
+          n = i2;
+          m = i5;
         }
-        for (;;)
+        else
         {
-          k = n;
-          m = i1;
-          i = i2;
-          j = i3;
-          if (i4 != i9 - 1) {
-            break;
-          }
-          j = Math.max(i1, i3);
-          i = i2 + n;
-          k = n;
-          m = i1;
-          break;
-          n = Math.max(m, n);
-          i1 = k + i1;
-          i2 = i;
-          i3 = j;
+          m = Math.max(m, i5);
+          n = i1;
+          i1 = i;
         }
+        i = j;
+        i2 = i1;
+        if (i3 == i8 - 1)
+        {
+          i = Math.max(n, j);
+          i2 = i1 + m;
+        }
+        j = i;
       }
-    }
-    if (i8 == 1073741824) {
-      j = i6;
+      i3 += 1;
     }
     if (i7 == 1073741824) {
-      i = i5;
+      paramInt1 = i4;
+    } else {
+      paramInt1 = j;
     }
-    setMeasuredDimension(j, i);
+    if (i6 == 1073741824) {
+      i = k;
+    }
+    setMeasuredDimension(paramInt1, i);
     TraceUtils.traceEnd();
   }
   
   public void setAdapter(BaseAdapter paramBaseAdapter)
   {
-    if ((this.jdField_a_of_type_AndroidWidgetBaseAdapter != null) && (this.jdField_a_of_type_AndroidDatabaseDataSetObserver != null)) {
-      this.jdField_a_of_type_AndroidWidgetBaseAdapter.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+    BaseAdapter localBaseAdapter = this.jdField_a_of_type_AndroidWidgetBaseAdapter;
+    if (localBaseAdapter != null)
+    {
+      DataSetObserver localDataSetObserver = this.jdField_a_of_type_AndroidDatabaseDataSetObserver;
+      if (localDataSetObserver != null) {
+        localBaseAdapter.unregisterDataSetObserver(localDataSetObserver);
+      }
     }
     removeAllViews();
     this.jdField_a_of_type_AndroidWidgetBaseAdapter = paramBaseAdapter;
@@ -211,7 +205,7 @@ public class TagFlowLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.tag.TagFlowLayout
  * JD-Core Version:    0.7.0.1
  */

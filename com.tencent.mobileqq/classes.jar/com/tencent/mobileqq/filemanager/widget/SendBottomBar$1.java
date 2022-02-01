@@ -2,8 +2,10 @@ package com.tencent.mobileqq.filemanager.widget;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
+import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.util.IClickListenerVer51;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class SendBottomBar$1
@@ -17,19 +19,16 @@ class SendBottomBar$1
       SendBottomBar.a(this.a).a();
     }
     if (SendBottomBar.a(this.a)) {
-      FileManagerUtil.b(SendBottomBar.a(this.a));
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).previewFavImageFile(SendBottomBar.a(this.a));
+    } else {
+      ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).previewImage(SendBottomBar.a(this.a), SendBottomBar.a(this.a), SendBottomBar.a(this.a).g());
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      FileManagerUtil.a(SendBottomBar.a(this.a));
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.1
  * JD-Core Version:    0.7.0.1
  */

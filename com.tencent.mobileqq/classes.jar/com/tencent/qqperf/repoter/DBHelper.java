@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DBHelper
   extends SQLiteOpenHelper
 {
-  private static DBHelper a = null;
+  private static DBHelper a;
   
   private DBHelper(Context paramContext)
   {
@@ -16,15 +16,16 @@ public class DBHelper
   
   public static DBHelper a(Context paramContext)
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new DBHelper(paramContext);
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new DBHelper(paramContext);
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)
@@ -46,7 +47,7 @@ public class DBHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.repoter.DBHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,13 @@ class AVVoiceRecog$1
   
   public void run()
   {
-    AVVoiceRecog.a(this.this$0, this.this$0.a, this.this$0.b);
+    AVVoiceRecog localAVVoiceRecog = this.this$0;
+    AVVoiceRecog.a(localAVVoiceRecog, localAVVoiceRecog.a, this.this$0.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.recog.AVVoiceRecog.1
  * JD-Core Version:    0.7.0.1
  */

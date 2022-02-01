@@ -12,12 +12,12 @@ class QZoneSharePictureJsPlugin$6
   
   public void run()
   {
-    QQToast.a(this.val$runtime.a().getContext(), HardCodeUtil.a(2131712309), 0).a();
+    QQToast.a(this.val$runtime.a().getContext(), HardCodeUtil.a(2131712284), 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

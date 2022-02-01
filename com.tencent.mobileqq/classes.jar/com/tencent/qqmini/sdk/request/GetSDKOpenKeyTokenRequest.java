@@ -44,24 +44,22 @@ public class GetSDKOpenKeyTokenRequest
     try
     {
       localStGetSDKOpenKeyTokenRsp.mergeFrom(paramArrayOfByte);
-      if (localStGetSDKOpenKeyTokenRsp != null)
-      {
-        paramJSONObject.put("token", localStGetSDKOpenKeyTokenRsp.token.get());
-        return paramJSONObject;
-      }
+      paramJSONObject.put("token", localStGetSDKOpenKeyTokenRsp.token.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("GetSDKOpenKeyTokenRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("GetSDKOpenKeyTokenRequest", paramJSONObject.toString());
     }
-    QMLog.d("GetSDKOpenKeyTokenRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetSDKOpenKeyTokenRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -37,22 +37,27 @@ public class QzoneResumeTransfer$CacheFileAttribute
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (!(paramObject instanceof CacheFileAttribute))) {
-        break;
-      }
+    }
+    if ((paramObject != null) && ((paramObject instanceof CacheFileAttribute)))
+    {
       paramObject = (CacheFileAttribute)paramObject;
-    } while ((TextUtils.equals(this.ContentType, paramObject.ContentType)) && (TextUtils.equals(this.LastModifyTime, paramObject.LastModifyTime)) && (TextUtils.equals(this.ContentEncoding, paramObject.ContentEncoding)));
-    return false;
+      return (TextUtils.equals(this.ContentType, paramObject.ContentType)) && (TextUtils.equals(this.LastModifyTime, paramObject.LastModifyTime)) && (TextUtils.equals(this.ContentEncoding, paramObject.ContentEncoding));
+    }
     return false;
   }
   
   public String toString()
   {
-    return "CacheFileAttr --- ContentType:" + this.ContentType + " LastModify:" + this.LastModifyTime + " ContentEncoding:" + this.ContentEncoding;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CacheFileAttr --- ContentType:");
+    localStringBuilder.append(this.ContentType);
+    localStringBuilder.append(" LastModify:");
+    localStringBuilder.append(this.LastModifyTime);
+    localStringBuilder.append(" ContentEncoding:");
+    localStringBuilder.append(this.ContentEncoding);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -67,7 +72,7 @@ public class QzoneResumeTransfer$CacheFileAttribute
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.impl.strategy.QzoneResumeTransfer.CacheFileAttribute
  * JD-Core Version:    0.7.0.1
  */

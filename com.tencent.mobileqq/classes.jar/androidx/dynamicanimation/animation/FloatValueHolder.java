@@ -2,21 +2,28 @@ package androidx.dynamicanimation.animation;
 
 public final class FloatValueHolder
 {
-  private float a = 0.0F;
+  private float mValue = 0.0F;
   
-  public float a()
+  public FloatValueHolder() {}
+  
+  public FloatValueHolder(float paramFloat)
   {
-    return this.a;
+    setValue(paramFloat);
   }
   
-  public void a(float paramFloat)
+  public float getValue()
   {
-    this.a = paramFloat;
+    return this.mValue;
+  }
+  
+  public void setValue(float paramFloat)
+  {
+    this.mValue = paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.dynamicanimation.animation.FloatValueHolder
  * JD-Core Version:    0.7.0.1
  */

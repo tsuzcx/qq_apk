@@ -5,7 +5,6 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class NearbyProfileDisplayTribePanel$8
   implements View.OnClickListener
@@ -15,22 +14,23 @@ class NearbyProfileDisplayTribePanel$8
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a, QQBrowserActivity.class);
-    StringBuilder localStringBuilder = new StringBuilder().append(this.jdField_a_of_type_JavaLangString).append("&from=");
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a;
-    if (NearbyPeopleProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.j)) {}
-    for (localObject = "1";; localObject = "2")
-    {
-      localIntent.putExtra("url", (String)localObject);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
-      this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.startActivity(localIntent);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&from=");
+    if (NearbyProfileCardUtils.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.from)) {
+      paramView = "1";
+    } else {
+      paramView = "2";
     }
+    localStringBuilder.append(paramView);
+    localIntent.putExtra("url", localStringBuilder.toString());
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.app, "dc00899", "grp_lbs", "", "data_card", "clk_focus", 0, 0, "", "", "", "");
+    this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileDisplayTribePanel.a.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileDisplayTribePanel.8
  * JD-Core Version:    0.7.0.1
  */

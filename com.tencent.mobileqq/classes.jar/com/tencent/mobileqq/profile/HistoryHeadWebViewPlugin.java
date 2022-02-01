@@ -7,7 +7,7 @@ import android.text.TextUtils;
 import com.tencent.biz.common.util.Util;
 import com.tencent.mobileqq.activity.FriendProfilePicBrowserActivity;
 import com.tencent.mobileqq.emosm.DataFactory;
-import com.tencent.mobileqq.nearby.picbrowser.PicInfo;
+import com.tencent.mobileqq.picbrowser.PicInfo;
 import com.tencent.mobileqq.pluginsdk.BasePluginActivity;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
@@ -57,79 +57,94 @@ public class HistoryHeadWebViewPlugin
   
   protected void a(String paramString)
   {
-    int k = 0;
-    int j = 100;
-    try
+    for (;;)
     {
-      paramString = new JSONObject(paramString);
-      this.jdField_a_of_type_JavaLangString = paramString.optString("setName");
-      this.b = paramString.optString("delName");
-      Object localObject3 = paramString.optJSONArray("imageIDs");
-      Object localObject2 = paramString.optJSONArray("str_fileids");
-      int m = paramString.optInt("index");
-      String str = paramString.optString("srcID");
-      int n = paramString.optInt("fromType");
-      boolean bool = paramString.optBoolean("isNotShowIndex", true);
-      if (this.mRuntime.a() == null) {
-        return;
-      }
-      if (this.mRuntime.a() != null)
+      try
       {
-        Object localObject1 = this.mRuntime.a();
-        if (localObject1 != null)
+        paramString = new JSONObject(paramString);
+        this.jdField_a_of_type_JavaLangString = paramString.optString("setName");
+        this.b = paramString.optString("delName");
+        localObject3 = paramString.optJSONArray("imageIDs");
+        Object localObject2 = paramString.optJSONArray("str_fileids");
+        k = paramString.optInt("index");
+        str = paramString.optString("srcID");
+        m = paramString.optInt("fromType");
+        bool = paramString.optBoolean("isNotShowIndex", true);
+        if (this.mRuntime.a() == null) {
+          return;
+        }
+        if (this.mRuntime.a() == null) {
+          return;
+        }
+        localObject1 = this.mRuntime.a();
+        if (localObject1 == null) {
+          return;
+        }
+        paramString = (String)localObject1;
+        if ((localObject1 instanceof BasePluginActivity)) {
+          paramString = ((BasePluginActivity)localObject1).getOutActivity();
+        }
+        localObject1 = new ArrayList();
+        int j = 0;
+        int n;
+        if (localObject3 != null)
         {
-          paramString = (String)localObject1;
-          if ((localObject1 instanceof BasePluginActivity)) {
-            paramString = ((BasePluginActivity)localObject1).getOutActivity();
-          }
-          localObject1 = new ArrayList();
-          int i1;
-          int i;
-          if (localObject3 != null)
+          n = ((JSONArray)localObject3).length();
+          i = 0;
+          if (i < n)
           {
-            i1 = ((JSONArray)localObject3).length();
-            i = 0;
-            while (i < i1)
-            {
-              PicInfo localPicInfo = new PicInfo();
-              localPicInfo.jdField_a_of_type_JavaLangString = ((JSONArray)localObject3).get(i).toString();
-              localPicInfo.g = "type_history_head_pic";
-              ((ArrayList)localObject1).add(localPicInfo);
-              i += 1;
-            }
-          }
-          localObject3 = new ArrayList();
-          if (localObject2 != null)
-          {
-            i1 = ((JSONArray)localObject2).length();
-            i = k;
-            while (i < i1)
-            {
-              ((ArrayList)localObject3).add(((JSONArray)localObject2).get(i).toString());
-              i += 1;
-            }
-          }
-          localObject2 = this.mRuntime.a();
-          if ((paramString instanceof WebViewPluginContainer)) {
-            i = ((WebViewPluginContainer)paramString).switchRequestCode(this, (byte)100);
-          }
-          for (;;)
-          {
-            a(paramString, m, n, (ArrayList)localObject1, (ArrayList)localObject3, bool, str, i);
-            return;
-            i = j;
-            if (localObject2 != null) {
-              i = ((WebViewProvider)localObject2).switchRequestCode(this, (byte)100);
-            }
+            PicInfo localPicInfo = new PicInfo();
+            localPicInfo.jdField_a_of_type_JavaLangString = ((JSONArray)localObject3).get(i).toString();
+            localPicInfo.g = "type_history_head_pic";
+            ((ArrayList)localObject1).add(localPicInfo);
+            i += 1;
+            continue;
           }
         }
+        localObject3 = new ArrayList();
+        if (localObject2 != null)
+        {
+          n = ((JSONArray)localObject2).length();
+          i = j;
+          if (i < n)
+          {
+            ((ArrayList)localObject3).add(((JSONArray)localObject2).get(i).toString());
+            i += 1;
+            continue;
+          }
+        }
+        localObject2 = this.mRuntime.a();
+        if ((paramString instanceof WebViewPluginContainer))
+        {
+          i = ((WebViewPluginContainer)paramString).switchRequestCode(this, (byte)100);
+        }
+        else
+        {
+          if (localObject2 == null) {
+            break label336;
+          }
+          i = ((WebViewProvider)localObject2).switchRequestCode(this, (byte)100);
+        }
       }
+      catch (JSONException paramString)
+      {
+        Object localObject3;
+        int k;
+        String str;
+        int m;
+        boolean bool;
+        Object localObject1;
+        return;
+      }
+      a(paramString, k, m, (ArrayList)localObject1, (ArrayList)localObject3, bool, str, i);
       return;
+      continue;
+      label336:
+      int i = 100;
     }
-    catch (JSONException paramString) {}
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (("historyhead".equals(paramString2)) && ("showPicture".equals(paramString3)) && (paramVarArgs.length == 1)) {
       a(paramVarArgs[0]);
@@ -139,34 +154,33 @@ public class HistoryHeadWebViewPlugin
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    if ((paramByte != 100) || (paramInt != -1) || (this.mRuntime.a() == null)) {}
-    label21:
-    do
+    if ((paramByte == 100) && (paramInt == -1))
     {
-      do
-      {
-        do
-        {
-          break label21;
-          do
-          {
-            return;
-          } while (paramIntent == null);
-          if ((!paramIntent.hasExtra("setHead_fileid")) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-            break;
-          }
-          paramIntent = paramIntent.getStringExtra("setHead_fileid");
-        } while (TextUtils.isEmpty(paramIntent));
-        callJs(this.jdField_a_of_type_JavaLangString, new String[] { Util.a(paramIntent) });
+      if (this.mRuntime.a() == null) {
         return;
-      } while ((!paramIntent.hasExtra("delHead_fileid")) || (TextUtils.isEmpty(this.b)));
-      paramIntent = paramIntent.getStringExtra("delHead_fileid");
-    } while (TextUtils.isEmpty(paramIntent));
-    callJs(this.b, new String[] { Util.a(paramIntent) });
-    this.jdField_a_of_type_Boolean = true;
+      }
+      if (paramIntent != null) {
+        if ((paramIntent.hasExtra("setHead_fileid")) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+        {
+          paramIntent = paramIntent.getStringExtra("setHead_fileid");
+          if (!TextUtils.isEmpty(paramIntent)) {
+            callJs(this.jdField_a_of_type_JavaLangString, new String[] { Util.a(paramIntent) });
+          }
+        }
+        else if ((paramIntent.hasExtra("delHead_fileid")) && (!TextUtils.isEmpty(this.b)))
+        {
+          paramIntent = paramIntent.getStringExtra("delHead_fileid");
+          if (!TextUtils.isEmpty(paramIntent))
+          {
+            callJs(this.b, new String[] { Util.a(paramIntent) });
+            this.jdField_a_of_type_Boolean = true;
+          }
+        }
+      }
+    }
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     if (this.jdField_a_of_type_Boolean)
     {
@@ -179,7 +193,7 @@ public class HistoryHeadWebViewPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.HistoryHeadWebViewPlugin
  * JD-Core Version:    0.7.0.1
  */

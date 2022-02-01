@@ -5,7 +5,7 @@ import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousExtInfo;
 import com.tencent.imcore.message.MsgProxyUtils;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
@@ -18,6 +18,7 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.service.message.MessageConstants;
 import com.tencent.mobileqq.troop.utils.TroopBusinessUtil;
 import com.tencent.mobileqq.troop.utils.TroopBusinessUtil.TroopBusinessMessage;
+import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
 public class ReplyMsgUtils
@@ -25,6 +26,19 @@ public class ReplyMsgUtils
   public static MessageForReplyText.SourceMsgInfo a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage, int paramInt, long paramLong, String paramString)
   {
     if (paramChatMessage == null) {
+      return null;
+    }
+    long l;
+    try
+    {
+      l = Long.parseLong(paramChatMessage.senderuin);
+    }
+    catch (Exception paramQQAppInterface)
+    {
+      QLog.d("ReplyMsgUtils", 1, "generateSourceInfo sender uin exception:", paramQQAppInterface);
+      l = 0L;
+    }
+    if (l <= 0L) {
       return null;
     }
     paramQQAppInterface = new MessageForReplyText.SourceMsgInfo();
@@ -37,62 +51,62 @@ public class ReplyMsgUtils
     paramQQAppInterface.mType = paramInt;
     paramQQAppInterface.mAtInfoStr = paramChatMessage.getExtInfoFromExtStr(MessageConstants.i);
     Object localObject = AnonymousChatHelper.a(paramChatMessage);
-    if (!TextUtils.isEmpty(((AnonymousChatHelper.AnonymousExtInfo)localObject).b)) {
+    if (!TextUtils.isEmpty(((AnonymousChatHelper.AnonymousExtInfo)localObject).b))
+    {
       paramQQAppInterface.mAnonymousNickName = ((AnonymousChatHelper.AnonymousExtInfo)localObject).b;
     }
-    for (;;)
+    else if ((paramQQAppInterface.mSourceMsgSenderUin == 50000000L) || (paramQQAppInterface.mSourceMsgSenderUin == 1000000L))
     {
-      if (((paramChatMessage instanceof MessageForFile)) && (paramQQAppInterface.mSourceMsgSenderUin == 0L) && (paramChatMessage.issend != 1) && (!TextUtils.isEmpty(paramChatMessage.frienduin))) {
-        paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.frienduin);
+      localObject = TroopBusinessUtil.a(paramChatMessage);
+      if (localObject != null) {
+        paramQQAppInterface.mAnonymousNickName = ((TroopBusinessUtil.TroopBusinessMessage)localObject).c;
       }
-      paramQQAppInterface.mSourceMsgToUin = paramLong;
-      paramQQAppInterface.mSourceMsgTroopName = paramString;
-      try
+    }
+    if (((paramChatMessage instanceof MessageForFile)) && (paramQQAppInterface.mSourceMsgSenderUin == 0L) && (paramChatMessage.issend != 1) && (!TextUtils.isEmpty(paramChatMessage.frienduin))) {
+      paramQQAppInterface.mSourceMsgSenderUin = Long.parseLong(paramChatMessage.frienduin);
+    }
+    paramQQAppInterface.mSourceMsgToUin = paramLong;
+    paramQQAppInterface.mSourceMsgTroopName = paramString;
+    try
+    {
+      if ((paramChatMessage instanceof MessageForMixedMsg))
       {
-        if (!(paramChatMessage instanceof MessageForMixedMsg)) {
-          break;
-        }
         paramQQAppInterface.mSourceMsgText = MessageForMixedMsg.getReplySummary(paramChatMessage);
         return paramQQAppInterface;
       }
-      catch (Exception paramChatMessage)
+      if ((paramChatMessage instanceof MessageForStructing))
       {
-        paramQQAppInterface.mSourceMsgText = "";
+        paramQQAppInterface.mSourceMsgText = MessageForStructing.getReplySummary(paramChatMessage);
         return paramQQAppInterface;
       }
-      if ((paramQQAppInterface.mSourceMsgSenderUin == 50000000L) || (paramQQAppInterface.mSourceMsgSenderUin == 1000000L))
+      if ((paramChatMessage instanceof MessageForArkApp))
       {
-        localObject = TroopBusinessUtil.a(paramChatMessage);
-        if (localObject != null) {
-          paramQQAppInterface.mAnonymousNickName = ((TroopBusinessUtil.TroopBusinessMessage)localObject).c;
-        }
+        paramQQAppInterface.mSourceMsgText = MessageForArkApp.getReplySummary(paramChatMessage);
+        return paramQQAppInterface;
       }
-    }
-    if ((paramChatMessage instanceof MessageForStructing))
-    {
-      paramQQAppInterface.mSourceMsgText = MessageForStructing.getReplySummary(paramChatMessage);
+      paramQQAppInterface.mSourceMsgText = paramChatMessage.getSummaryMsg();
       return paramQQAppInterface;
     }
-    if ((paramChatMessage instanceof MessageForArkApp))
+    catch (Exception paramChatMessage)
     {
-      paramQQAppInterface.mSourceMsgText = MessageForArkApp.getReplySummary(paramChatMessage);
-      return paramQQAppInterface;
+      label302:
+      break label302;
     }
-    paramQQAppInterface.mSourceMsgText = paramChatMessage.getSummaryMsg();
+    paramQQAppInterface.mSourceMsgText = "";
     return paramQQAppInterface;
   }
   
-  public static MessageRecord a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  public static MessageRecord a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
   {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgSeq, 0L);
+    paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgSeq, 0L);
     if ((paramQQAppInterface != null) && (paramQQAppInterface.size() > 0))
     {
       int i = 0;
       while (i < paramQQAppInterface.size())
       {
-        paramSessionInfo = (MessageRecord)paramQQAppInterface.get(i);
-        if ((!MsgProxyUtils.a(paramSessionInfo)) && (!(paramSessionInfo instanceof MessageForSafeGrayTips))) {
-          return paramSessionInfo;
+        paramBaseSessionInfo = (MessageRecord)paramQQAppInterface.get(i);
+        if ((!MsgProxyUtils.a(paramBaseSessionInfo)) && (!(paramBaseSessionInfo instanceof MessageForSafeGrayTips))) {
+          return paramBaseSessionInfo;
         }
         i += 1;
       }
@@ -118,22 +132,22 @@ public class ReplyMsgUtils
     return null;
   }
   
-  public static MessageRecord b(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  public static MessageRecord b(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
   {
-    return a(paramQQAppInterface, paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgTime, paramSourceMsgInfo.origUid);
+    return a(paramQQAppInterface, paramBaseSessionInfo.jdField_a_of_type_JavaLangString, paramBaseSessionInfo.jdField_a_of_type_Int, paramSourceMsgInfo.mSourceMsgTime, paramSourceMsgInfo.origUid);
   }
   
-  public static MessageRecord c(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
+  public static MessageRecord c(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
   {
-    if (paramSessionInfo.jdField_a_of_type_Int == 0) {
-      return b(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
+    if (paramBaseSessionInfo.jdField_a_of_type_Int == 0) {
+      return b(paramQQAppInterface, paramBaseSessionInfo, paramSourceMsgInfo);
     }
-    return a(paramQQAppInterface, paramSessionInfo, paramSourceMsgInfo);
+    return a(paramQQAppInterface, paramBaseSessionInfo, paramSourceMsgInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.reply.ReplyMsgUtils
  * JD-Core Version:    0.7.0.1
  */

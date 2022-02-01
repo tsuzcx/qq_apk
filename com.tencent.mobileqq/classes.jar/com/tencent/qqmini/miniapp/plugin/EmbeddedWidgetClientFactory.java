@@ -19,20 +19,18 @@ public class EmbeddedWidgetClientFactory
   
   private boolean doEventByWidgetId(String paramString, IMiniAppContext paramIMiniAppContext, int paramInt, JSONObject paramJSONObject, long paramLong, IJsService paramIJsService)
   {
-    if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(Long.valueOf(paramLong))))
+    Object localObject = this.embeddedWidgetClientHolderMap;
+    if ((localObject != null) && (((ConcurrentHashMap)localObject).containsKey(Long.valueOf(paramLong))))
     {
-      EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(Long.valueOf(paramLong));
-      if (localEmbeddedWidgetClientHolder != null)
+      localObject = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(Long.valueOf(paramLong));
+      if (localObject != null)
       {
-        localEmbeddedWidgetClientHolder.handleEmbeddedWidgetEvent(paramString, paramIMiniAppContext, paramJSONObject, paramInt, paramIJsService);
+        ((EmbeddedWidgetClientHolder)localObject).handleEmbeddedWidgetEvent(paramString, paramIMiniAppContext, paramJSONObject, paramInt, paramIJsService);
         return true;
       }
-    }
-    else
-    {
-      QMLog.e("miniapp-embedded", "doEventByWidgetId x5WidgetId is not exist");
       return false;
     }
+    QMLog.e("miniapp-embedded", "doEventByWidgetId x5WidgetId is not exist");
     return false;
   }
   
@@ -40,7 +38,12 @@ public class EmbeddedWidgetClientFactory
   {
     try
     {
-      QMLog.i("miniapp-embedded", "createWidgetClient, tagName:" + paramString + ", attributes:" + paramMap.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createWidgetClient, tagName:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", attributes:");
+      localStringBuilder.append(paramMap.toString());
+      QMLog.i("miniapp-embedded", localStringBuilder.toString());
       if (paramString.equalsIgnoreCase("VIDEO"))
       {
         paramString = new EmbeddedWidgetClientHolder(paramString, paramMap, paramIEmbeddedWidget);
@@ -62,12 +65,16 @@ public class EmbeddedWidgetClientFactory
   
   public boolean handleEmbeddedWidgetDestory(long paramLong)
   {
-    if ((this.embeddedWidgetClientHolderMap != null) && (this.embeddedWidgetClientHolderMap.containsKey(Long.valueOf(paramLong))))
+    Object localObject = this.embeddedWidgetClientHolderMap;
+    if ((localObject != null) && (((ConcurrentHashMap)localObject).containsKey(Long.valueOf(paramLong))))
     {
-      QMLog.d("miniapp-embedded", "embeddedWidgetClientHolderMap remove " + paramLong);
-      EmbeddedWidgetClientHolder localEmbeddedWidgetClientHolder = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(Long.valueOf(paramLong));
-      if (localEmbeddedWidgetClientHolder != null) {
-        this.mappingTableMap.remove(Integer.valueOf(localEmbeddedWidgetClientHolder.getViewId()));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("embeddedWidgetClientHolderMap remove ");
+      ((StringBuilder)localObject).append(paramLong);
+      QMLog.d("miniapp-embedded", ((StringBuilder)localObject).toString());
+      localObject = (EmbeddedWidgetClientHolder)this.embeddedWidgetClientHolderMap.get(Long.valueOf(paramLong));
+      if (localObject != null) {
+        this.mappingTableMap.remove(Integer.valueOf(((EmbeddedWidgetClientHolder)localObject).getViewId()));
       }
       this.embeddedWidgetClientHolderMap.remove(Long.valueOf(paramLong));
     }
@@ -78,7 +85,12 @@ public class EmbeddedWidgetClientFactory
   {
     try
     {
-      QMLog.e("miniapp-embedded", "handleEmbeddedWidgetEvent event : " + paramString1 + "; jsonParams : " + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleEmbeddedWidgetEvent event : ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("; jsonParams : ");
+      localStringBuilder.append(paramString2);
+      QMLog.e("miniapp-embedded", localStringBuilder.toString());
       paramString2 = new JSONObject(paramString2);
       int i = paramString2.optInt("viewId", -1);
       long l = paramString2.optLong("x5WidgetId", -1L);
@@ -136,7 +148,7 @@ public class EmbeddedWidgetClientFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.EmbeddedWidgetClientFactory
  * JD-Core Version:    0.7.0.1
  */

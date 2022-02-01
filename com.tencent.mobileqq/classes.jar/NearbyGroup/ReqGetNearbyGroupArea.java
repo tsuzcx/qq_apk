@@ -14,16 +14,6 @@ public final class ReqGetNearbyGroupArea
   public int iLon = 0;
   public int iRadius = 0;
   
-  static
-  {
-    if (!ReqGetNearbyGroupArea.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public ReqGetNearbyGroupArea() {}
   
   public ReqGetNearbyGroupArea(int paramInt1, int paramInt2, int paramInt3)
@@ -40,18 +30,17 @@ public final class ReqGetNearbyGroupArea
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -72,13 +61,24 @@ public final class ReqGetNearbyGroupArea
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (ReqGetNearbyGroupArea)paramObject;
-    } while ((!JceUtil.equals(this.iLat, paramObject.iLat)) || (!JceUtil.equals(this.iLon, paramObject.iLon)) || (!JceUtil.equals(this.iRadius, paramObject.iRadius)));
-    return true;
+    }
+    paramObject = (ReqGetNearbyGroupArea)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.iLat, paramObject.iLat))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.iLon, paramObject.iLon))
+      {
+        bool1 = bool2;
+        if (JceUtil.equals(this.iRadius, paramObject.iRadius)) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -145,7 +145,7 @@ public final class ReqGetNearbyGroupArea
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NearbyGroup.ReqGetNearbyGroupArea
  * JD-Core Version:    0.7.0.1
  */

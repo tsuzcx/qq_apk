@@ -7,7 +7,6 @@ import com.tencent.mobileqq.vip.DownloaderInterface;
 import java.io.File;
 import kotlin.Metadata;
 import mqq.app.AppRuntime;
-import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @QAPI(process={"all"})
@@ -15,16 +14,16 @@ import org.jetbrains.annotations.Nullable;
 public abstract interface IDownloaderFactory
   extends QRouteApi
 {
-  public abstract int download(@NotNull DownloadTask paramDownloadTask, @NotNull AppRuntime paramAppRuntime);
+  public abstract int download(@Nullable DownloadTask paramDownloadTask, @Nullable AppRuntime paramAppRuntime);
   
-  @NotNull
+  @Nullable
   public abstract DownloaderInterface getDownloader(int paramInt);
   
   public abstract boolean unzipResource(@Nullable File paramFile1, @Nullable File paramFile2, boolean paramBoolean);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.download.api.IDownloaderFactory
  * JD-Core Version:    0.7.0.1
  */

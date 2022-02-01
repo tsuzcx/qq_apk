@@ -14,10 +14,11 @@ class SubscribeVideoDetailFragment$3
   {
     try
     {
-      if (QQPlayerService.a()) {
-        QQPlayerService.c(this.a.getActivity());
+      if (QQPlayerService.a())
+      {
+        QQPlayerService.c(this.a.getBaseActivity());
+        return;
       }
-      return;
     }
     catch (Exception paramISuperPlayer)
     {
@@ -30,7 +31,7 @@ class SubscribeVideoDetailFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.fragments.SubscribeVideoDetailFragment.3
  * JD-Core Version:    0.7.0.1
  */

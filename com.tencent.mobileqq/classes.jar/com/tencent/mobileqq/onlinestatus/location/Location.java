@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.onlinestatus.location;
 
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.onlinestatus.auto.Constant;
 import com.tencent.tencentmap.mapsdk.maps.model.LatLng;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
-import org.jetbrains.annotations.NotNull;
 
 public class Location
 {
@@ -27,15 +27,25 @@ public class Location
     return System.currentTimeMillis() - this.jdField_a_of_type_Long >= Constant.N;
   }
   
-  @NotNull
+  @NonNull
   public String toString()
   {
-    return "Location{latLng=" + this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng + ", provider='" + this.jdField_a_of_type_JavaLangString + ", accuracy=" + this.jdField_a_of_type_Float + ", time=" + new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)) + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Location{latLng=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentTencentmapMapsdkMapsModelLatLng);
+    localStringBuilder.append(", provider='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", accuracy=");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(", time=");
+    localStringBuilder.append(new SimpleDateFormat("HH:mm:ss", Locale.getDefault()).format(new Date(this.jdField_a_of_type_Long)));
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.location.Location
  * JD-Core Version:    0.7.0.1
  */

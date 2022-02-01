@@ -28,7 +28,10 @@ public class ShaderUtil
     GLES20.glCompileShader(paramInt);
     paramString = new int[1];
     GLES20.glGetShaderiv(paramInt, 35713, paramString, 0);
-    QZLog.e("ShaderUtil", "glGetShaderiv: " + GLES20.glGetShaderInfoLog(paramInt));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glGetShaderiv: ");
+    localStringBuilder.append(GLES20.glGetShaderInfoLog(paramInt));
+    QZLog.e("ShaderUtil", localStringBuilder.toString());
     if (paramString[0] == 0)
     {
       GLES20.glDeleteShader(paramInt);
@@ -61,7 +64,10 @@ public class ShaderUtil
     GLES20.glLinkProgram(i);
     int[] arrayOfInt = new int[1];
     GLES20.glGetProgramiv(i, 35714, arrayOfInt, 0);
-    QZLog.e("ShaderUtil", "glGetShaderiv: " + GLES20.glGetShaderInfoLog(i));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glGetShaderiv: ");
+    localStringBuilder.append(GLES20.glGetShaderInfoLog(i));
+    QZLog.e("ShaderUtil", localStringBuilder.toString());
     if (arrayOfInt[0] == 0)
     {
       GLES20.glDeleteProgram(i);
@@ -73,7 +79,7 @@ public class ShaderUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.panorama.util.ShaderUtil
  * JD-Core Version:    0.7.0.1
  */

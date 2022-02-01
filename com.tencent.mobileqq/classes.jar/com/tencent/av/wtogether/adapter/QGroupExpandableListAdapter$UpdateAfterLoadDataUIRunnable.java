@@ -1,8 +1,6 @@
 package com.tencent.av.wtogether.adapter;
 
 import com.tencent.mobileqq.adapter.TroopListAdapter2;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.CommonlyUsedTroopCompator;
-import com.tencent.mobileqq.adapter.TroopListAdapter2.TroopListItemWithMask;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
@@ -11,6 +9,8 @@ import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.data.troop.CommonlyUsedTroop;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.troop.adapter.contact.CommonlyUsedTroopCompator;
+import com.tencent.mobileqq.troop.adapter.contact.TroopListItemWithMask;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -29,8 +29,14 @@ class QGroupExpandableListAdapter$UpdateAfterLoadDataUIRunnable
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QGroupListAdapter", 2, "load data troopListInfo.size: " + this.jdField_a_of_type_JavaUtilArrayList.size() + " discussions.size:" + this.jdField_a_of_type_JavaUtilList.size());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("load data troopListInfo.size: ");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilArrayList.size());
+      ((StringBuilder)localObject1).append(" discussions.size:");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+      QLog.d("QGroupListAdapter", 2, ((StringBuilder)localObject1).toString());
     }
     this.this$0.jdField_a_of_type_JavaUtilList.clear();
     this.this$0.c.clear();
@@ -42,46 +48,42 @@ class QGroupExpandableListAdapter$UpdateAfterLoadDataUIRunnable
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.a();
     if (QLog.isColorLevel())
     {
-      localObject2 = new StringBuilder().append("getCommonlyUsedTroopList troops size= ");
-      if (localObject1 != null)
-      {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getCommonlyUsedTroopList troops size= ");
+      if (localObject1 != null) {
         i = ((List)localObject1).size();
-        QLog.d("QGroupListAdapter", 2, i);
+      } else {
+        i = 0;
       }
-    }
-    else
-    {
-      if (localObject1 == null) {
-        break label327;
-      }
-      Collections.sort((List)localObject1, new TroopListAdapter2.CommonlyUsedTroopCompator());
-      localObject1 = ((List)localObject1).iterator();
+      ((StringBuilder)localObject2).append(i);
+      QLog.d("QGroupListAdapter", 2, ((StringBuilder)localObject2).toString());
     }
     Object localObject3;
-    for (;;)
+    if (localObject1 != null)
     {
-      if (!((Iterator)localObject1).hasNext()) {
-        break label327;
-      }
-      localObject2 = (CommonlyUsedTroop)((Iterator)localObject1).next();
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(((CommonlyUsedTroop)localObject2).troopUin);
-      if (localObject3 != null)
+      Collections.sort((List)localObject1, new CommonlyUsedTroopCompator());
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy);
-        this.this$0.b.add(localObject3);
-        continue;
-        i = 0;
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("QGroupListAdapter", 2, "findTroopInfo troopInfo==null item.troopUin:" + ((CommonlyUsedTroop)localObject2).troopUin);
+        localObject2 = (CommonlyUsedTroop)((Iterator)localObject1).next();
+        localObject3 = this.jdField_a_of_type_ComTencentMobileqqAppTroopManager.b(((CommonlyUsedTroop)localObject2).troopUin);
+        if (localObject3 != null)
+        {
+          this.this$0.a((TroopInfo)localObject3, this.jdField_a_of_type_ComTencentMobileqqAppProxyRecentUserProxy);
+          this.this$0.b.add(localObject3);
+        }
+        else if (QLog.isColorLevel())
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("findTroopInfo troopInfo==null item.troopUin:");
+          ((StringBuilder)localObject3).append(((CommonlyUsedTroop)localObject2).troopUin);
+          QLog.d("QGroupListAdapter", 2, ((StringBuilder)localObject3).toString());
+        }
       }
     }
-    label327:
     int i = this.this$0.b.size();
     localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
     Object localObject2 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    label602:
     while (((Iterator)localObject2).hasNext())
     {
       localObject3 = (TroopInfo)((Iterator)localObject2).next();
@@ -89,30 +91,27 @@ class QGroupExpandableListAdapter$UpdateAfterLoadDataUIRunnable
       int j = TroopListAdapter2.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getTroopMask(((TroopInfo)localObject3).troopuin));
       if (((TroopInfo)localObject3).isQidianPrivateTroop())
       {
-        this.this$0.g.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
+        this.this$0.g.add(new TroopListItemWithMask(j, (Entity)localObject3));
       }
       else
       {
-        if (((((TroopInfo)localObject3).dwAdditionalFlag & 1L) == 1L) || ((((TroopInfo)localObject3).troopowneruin != null) && (((TroopInfo)localObject3).troopowneruin.equals(localObject1)))) {
-          this.this$0.c.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
-        }
-        for (;;)
+        if (((((TroopInfo)localObject3).dwAdditionalFlag & 1L) != 1L) && ((((TroopInfo)localObject3).troopowneruin == null) || (!((TroopInfo)localObject3).troopowneruin.equals(localObject1))))
         {
-          if (((TroopInfo)localObject3).hasSetTroopName()) {
-            break label602;
-          }
-          this.this$0.f.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
-          break;
           if ((((TroopInfo)localObject3).dwCmdUinUinFlag & 1L) == 1L) {
-            this.this$0.d.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
+            this.this$0.d.add(new TroopListItemWithMask(j, (Entity)localObject3));
           } else {
-            this.this$0.e.add(new TroopListAdapter2.TroopListItemWithMask(j, (Entity)localObject3));
+            this.this$0.e.add(new TroopListItemWithMask(j, (Entity)localObject3));
           }
+        }
+        else {
+          this.this$0.c.add(new TroopListItemWithMask(j, (Entity)localObject3));
+        }
+        if (!((TroopInfo)localObject3).hasSetTroopName()) {
+          this.this$0.f.add(new TroopListItemWithMask(j, (Entity)localObject3));
         }
       }
     }
     localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
-    label790:
     while (((Iterator)localObject1).hasNext())
     {
       localObject2 = (DiscussionInfo)((Iterator)localObject1).next();
@@ -122,27 +121,29 @@ class QGroupExpandableListAdapter$UpdateAfterLoadDataUIRunnable
         this.this$0.b.add(localObject2);
       }
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin().equals(((DiscussionInfo)localObject2).ownerUin)) {
-        this.this$0.c.add(new TroopListAdapter2.TroopListItemWithMask(1, (Entity)localObject2));
+        this.this$0.c.add(new TroopListItemWithMask(1, (Entity)localObject2));
+      } else {
+        this.this$0.e.add(new TroopListItemWithMask(1, (Entity)localObject2));
       }
-      for (;;)
-      {
-        if (((DiscussionInfo)localObject2).hasRenamed()) {
-          break label790;
-        }
-        this.this$0.f.add(new TroopListAdapter2.TroopListItemWithMask(1, (Entity)localObject2));
-        break;
-        this.this$0.e.add(new TroopListAdapter2.TroopListItemWithMask(1, (Entity)localObject2));
+      if (!((DiscussionInfo)localObject2).hasRenamed()) {
+        this.this$0.f.add(new TroopListItemWithMask(1, (Entity)localObject2));
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QGroupListAdapter", 2, "mSetTopTroopList size1= " + i + " size2:" + this.this$0.b.size());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("mSetTopTroopList size1= ");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(" size2:");
+      ((StringBuilder)localObject1).append(this.this$0.b.size());
+      QLog.d("QGroupListAdapter", 2, ((StringBuilder)localObject1).toString());
     }
     QGroupExpandableListAdapter.b(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.adapter.QGroupExpandableListAdapter.UpdateAfterLoadDataUIRunnable
  * JD-Core Version:    0.7.0.1
  */

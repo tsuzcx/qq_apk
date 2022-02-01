@@ -23,28 +23,27 @@ public class ProgressTracer
   
   public static void print(int paramInt, String paramString)
   {
-    if (ImageManagerEnv.g().openProgressTracer()) {}
-    switch (paramInt)
+    if (ImageManagerEnv.g().openProgressTracer())
     {
-    default: 
-      ImageManagerEnv.getLogger().e("IProgress", new Object[] { Long.valueOf(System.currentTimeMillis()), " : ", Integer.valueOf(paramInt), "error function call, please check" });
-      return;
-    case 1: 
-    case 2: 
-    case 3: 
-    case 4: 
-    case 6: 
-    case 7: 
-    case 8: 
-    case 9: 
+      if ((paramInt != 1) && (paramInt != 2) && (paramInt != 3) && (paramInt != 4)) {
+        switch (paramInt)
+        {
+        default: 
+          switch (paramInt)
+          {
+          default: 
+            ImageManagerEnv.getLogger().e("IProgress", new Object[] { Long.valueOf(System.currentTimeMillis()), " : ", Integer.valueOf(paramInt), "error function call, please check" });
+            return;
+          case 1003: 
+            ImageManagerEnv.getLogger().w("IProgress", new Object[] { Long.valueOf(System.currentTimeMillis()), " : ", Integer.valueOf(paramInt), " : ", paramString });
+            return;
+          }
+          ImageManagerEnv.getLogger().e("IProgress", new Object[] { Long.valueOf(System.currentTimeMillis()), " : ", Integer.valueOf(paramInt), " : ", paramString });
+          return;
+        }
+      }
       ImageManagerEnv.getLogger().i("IProgress", new Object[] { Long.valueOf(System.currentTimeMillis()), " : ", Integer.valueOf(paramInt), " : ", paramString });
-      return;
-    case 1001: 
-    case 1002: 
-      ImageManagerEnv.getLogger().e("IProgress", new Object[] { Long.valueOf(System.currentTimeMillis()), " : ", Integer.valueOf(paramInt), " : ", paramString });
-      return;
     }
-    ImageManagerEnv.getLogger().w("IProgress", new Object[] { Long.valueOf(System.currentTimeMillis()), " : ", Integer.valueOf(paramInt), " : ", paramString });
   }
   
   public static void printI(Object... paramVarArgs)
@@ -56,7 +55,7 @@ public class ProgressTracer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.ProgressTracer
  * JD-Core Version:    0.7.0.1
  */

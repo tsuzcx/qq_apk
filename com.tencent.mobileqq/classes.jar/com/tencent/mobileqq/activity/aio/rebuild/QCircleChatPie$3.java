@@ -16,38 +16,51 @@ class QCircleChatPie$3
   
   public void run()
   {
-    List localList = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, null, 500);
-    if (localList != null) {
-      QCircleChatPie.a(this.this$0, localList.size());
+    Object localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, null, 500);
+    if (localObject != null) {
+      QCircleChatPie.a(this.this$0, ((List)localObject).size());
     }
-    if ((localList != null) && (localList.size() > 0))
+    if ((localObject != null) && (((List)localObject).size() > 0))
     {
-      QCircleChatPie.b(this.this$0, (MessageRecord)localList.get(0));
-      QCircleChatPie.a(this.this$0, (MessageRecord)localList.get(localList.size() - 1));
+      QCircleChatPie.b(this.this$0, (MessageRecord)((List)localObject).get(0));
+      QCircleChatPie.a(this.this$0, (MessageRecord)((List)localObject).get(((List)localObject).size() - 1));
     }
-    if ((QCircleChatUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, localList)) && (!TextUtils.isEmpty(QCircleChatPie.a(this.this$0))))
+    StringBuilder localStringBuilder;
+    if ((QCircleChatUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, (List)localObject)) && (!TextUtils.isEmpty(QCircleChatPie.a(this.this$0))))
     {
-      QCircleChatPie.a(this.this$0, QCircleChatUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, QCircleChatPie.a(this.this$0), QCircleChatPie.a(this.this$0)));
-      QLog.d(this.this$0.b, 2, "showFuelTips:" + QCircleChatPie.a(this.this$0));
+      localObject = this.this$0;
+      QCircleChatPie.a((QCircleChatPie)localObject, QCircleChatUtil.a(((QCircleChatPie)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, QCircleChatPie.a(this.this$0), QCircleChatPie.a(this.this$0)));
+      localObject = this.this$0.b;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showFuelTips:");
+      localStringBuilder.append(QCircleChatPie.a(this.this$0));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    QCircleChatPie.a(this.this$0, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
+    localObject = this.this$0;
+    QCircleChatPie.a((QCircleChatPie)localObject, ((QCircleChatPie)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
     if (!QCircleChatUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))
     {
       QLog.d(this.this$0.b, 2, "showIceBreakMessage");
-      QCircleChatPie.a(this.this$0, QCircleChatUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, QCircleChatPie.a(this.this$0), QCircleChatPie.b(this.this$0)));
+      localObject = this.this$0;
+      QCircleChatPie.a((QCircleChatPie)localObject, QCircleChatUtil.a(((QCircleChatPie)localObject).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, QCircleChatPie.a(this.this$0), QCircleChatPie.b(this.this$0)));
       if (QCircleChatPie.a(this.this$0) != null) {
         QCircleChatUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.this$0.b, 2, "mAllMsgCount " + QCircleChatPie.b(this.this$0));
+    if (QLog.isColorLevel())
+    {
+      localObject = this.this$0.b;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mAllMsgCount ");
+      localStringBuilder.append(QCircleChatPie.b(this.this$0));
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
-    this.this$0.g(65536);
+    this.this$0.e(65536);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.QCircleChatPie.3
  * JD-Core Version:    0.7.0.1
  */

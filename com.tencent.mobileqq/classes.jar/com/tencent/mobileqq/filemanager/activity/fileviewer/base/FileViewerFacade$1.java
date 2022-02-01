@@ -18,29 +18,36 @@ final class FileViewerFacade$1
   
   public void a()
   {
-    Object localObject = FileManagerUtil.b(this.jdField_a_of_type_JavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.i("<FileAssistant>FileViewerFacade", 2, "file maybe resoved ,recreateFilePath[" + this.jdField_a_of_type_JavaLangString + "]");
-    }
-    FileUtils.c(this.b, (String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = FileManagerUtil.a((String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath((String)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.nFileType = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
-    FileManagerEntity localFileManagerEntity = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.b);
-    if (localFileManagerEntity != null)
+    Object localObject1 = FileManagerUtil.b(this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
     {
-      localFileManagerEntity.setFilePath((String)localObject);
-      localFileManagerEntity.fileName = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(localFileManagerEntity);
-      localObject = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity.TroopUin);
-      if (localObject != null) {
-        ((TroopFileTransferManager)localObject).a(localFileManagerEntity.strTroopFileID, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("file maybe resoved ,recreateFilePath[");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append("]");
+      QLog.i("<FileAssistant>FileViewerFacade", 2, ((StringBuilder)localObject2).toString());
+    }
+    FileUtils.rename(this.b, (String)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName = FileManagerUtil.a((String)localObject1);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.setFilePath((String)localObject1);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity;
+    ((FileManagerEntity)localObject2).nFileType = FileManagerUtil.a(((FileManagerEntity)localObject2).getFilePath());
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c(this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity);
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(this.b);
+    if (localObject2 != null)
+    {
+      ((FileManagerEntity)localObject2).setFilePath((String)localObject1);
+      ((FileManagerEntity)localObject2).fileName = this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName;
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().c((FileManagerEntity)localObject2);
+      localObject1 = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, ((FileManagerEntity)localObject2).TroopUin);
+      if (localObject1 != null) {
+        ((TroopFileTransferManager)localObject1).a(((FileManagerEntity)localObject2).strTroopFileID, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.fileName);
       }
     }
     FileManagerUtil.b(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFileManagerEntity.getFilePath());
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a();
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser;
+    if (localObject1 != null) {
+      ((IFileBrowser)localObject1).a();
     }
   }
   
@@ -48,7 +55,7 @@ final class FileViewerFacade$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.fileviewer.base.FileViewerFacade.1
  * JD-Core Version:    0.7.0.1
  */

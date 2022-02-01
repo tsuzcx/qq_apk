@@ -30,6 +30,11 @@ public class TroopInfoUIUtil
     return localBundle;
   }
   
+  public static Bundle a(String paramString, int paramInt)
+  {
+    return a(paramString, "", paramInt);
+  }
+  
   public static Bundle a(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
   {
     Bundle localBundle = new Bundle();
@@ -55,7 +60,7 @@ public class TroopInfoUIUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopInfoUIUtil
  * JD-Core Version:    0.7.0.1
  */

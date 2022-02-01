@@ -26,10 +26,10 @@ public abstract class AbstractSavedStateViewModelFactory
   public final <T extends ViewModel> T create(@NonNull Class<T> paramClass)
   {
     String str = paramClass.getCanonicalName();
-    if (str == null) {
-      throw new IllegalArgumentException("Local and anonymous classes can not be ViewModels");
+    if (str != null) {
+      return create(str, paramClass);
     }
-    return create(str, paramClass);
+    throw new IllegalArgumentException("Local and anonymous classes can not be ViewModels");
   }
   
   @NonNull
@@ -52,7 +52,7 @@ public abstract class AbstractSavedStateViewModelFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.AbstractSavedStateViewModelFactory
  * JD-Core Version:    0.7.0.1
  */

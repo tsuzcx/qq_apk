@@ -3,45 +3,57 @@ package com.tencent.mobileqq.imaxad;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
 import android.graphics.Rect;
-import android.text.TextUtils;
 import android.view.View;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.recent.RecentBaseData;
-import com.tencent.mobileqq.activity.recent.data.RecentItemImaxADData;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Map;
+import mqq.app.MobileQQ;
 
 public class ImaxAdUtil
 {
   public static String a(String paramString1, String paramString2)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_del_" + paramString1, 4).getString(paramString2, "");
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imax_ad_item_del_");
+    localStringBuilder.append(paramString1);
+    return localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 4).getString(paramString2, "");
   }
   
   public static Map<String, ?> a(String paramString)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString, 4).getAll();
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imax_ad_item_data_");
+    localStringBuilder.append(paramString);
+    return localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 4).getAll();
   }
   
   public static void a(String paramString)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString, 4).edit().clear().apply();
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imax_ad_item_data_");
+    localStringBuilder.append(paramString);
+    localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 4).edit().clear().apply();
   }
   
   public static void a(String paramString1, String paramString2)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_del_" + paramString1, 4).edit().remove(paramString2).apply();
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imax_ad_item_del_");
+    localStringBuilder.append(paramString1);
+    localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 4).edit().remove(paramString2).apply();
   }
   
   public static void a(String paramString1, String paramString2, String paramString3)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_del_" + paramString1, 4).edit().putString(paramString2, paramString3).apply();
-  }
-  
-  public static boolean a(int paramInt, RecentBaseData paramRecentBaseData)
-  {
-    return (paramInt == 10005) && ((paramRecentBaseData instanceof RecentItemImaxADData)) && (!TextUtils.isEmpty(((RecentItemImaxADData)paramRecentBaseData).mHeaderUrl));
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imax_ad_item_del_");
+    localStringBuilder.append(paramString1);
+    localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 4).edit().putString(paramString2, paramString3).apply();
   }
   
   public static boolean a(View paramView)
@@ -68,213 +80,210 @@ public class ImaxAdUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 6
+    //   1: astore 5
     //   3: aload_0
-    //   4: ifnull +8 -> 12
+    //   4: ifnull +237 -> 241
     //   7: aload_0
     //   8: arraylength
-    //   9: ifne +16 -> 25
-    //   12: ldc 117
-    //   14: iconst_1
-    //   15: ldc 119
-    //   17: invokestatic 125	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   20: aload 6
-    //   22: astore_2
-    //   23: aload_2
-    //   24: areturn
-    //   25: new 127	java/io/ByteArrayOutputStream
-    //   28: dup
-    //   29: invokespecial 128	java/io/ByteArrayOutputStream:<init>	()V
-    //   32: astore_1
-    //   33: new 130	java/io/ByteArrayInputStream
-    //   36: dup
-    //   37: aload_0
-    //   38: iconst_0
-    //   39: aload_0
-    //   40: arraylength
-    //   41: invokespecial 133	java/io/ByteArrayInputStream:<init>	([BII)V
-    //   44: astore 5
-    //   46: aload 5
-    //   48: astore_3
-    //   49: aload_1
-    //   50: astore_2
-    //   51: new 135	java/util/zip/GZIPInputStream
-    //   54: dup
-    //   55: aload 5
-    //   57: aload_0
-    //   58: arraylength
-    //   59: invokespecial 138	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   62: astore 4
-    //   64: aload 5
-    //   66: astore_3
-    //   67: aload_1
-    //   68: astore_2
-    //   69: aload_0
-    //   70: arraylength
-    //   71: iconst_5
-    //   72: imul
-    //   73: newarray byte
-    //   75: astore_0
-    //   76: aload 5
-    //   78: astore_3
-    //   79: aload_1
-    //   80: astore_2
-    //   81: aload_1
-    //   82: aload_0
-    //   83: iconst_0
-    //   84: aload 4
-    //   86: aload_0
-    //   87: invokevirtual 142	java/util/zip/GZIPInputStream:read	([B)I
-    //   90: invokevirtual 145	java/io/ByteArrayOutputStream:write	([BII)V
-    //   93: aload 5
-    //   95: astore_3
-    //   96: aload_1
-    //   97: astore_2
-    //   98: aload 4
-    //   100: invokevirtual 148	java/util/zip/GZIPInputStream:close	()V
-    //   103: aload 5
-    //   105: astore_3
-    //   106: aload_1
-    //   107: astore_2
-    //   108: aload_1
-    //   109: invokevirtual 152	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   112: astore_0
-    //   113: aload 5
-    //   115: ifnull +8 -> 123
-    //   118: aload 5
-    //   120: invokevirtual 153	java/io/ByteArrayInputStream:close	()V
-    //   123: aload_0
-    //   124: astore_2
-    //   125: aload_1
-    //   126: ifnull -103 -> 23
-    //   129: aload_1
-    //   130: invokevirtual 154	java/io/ByteArrayOutputStream:close	()V
-    //   133: aload_0
-    //   134: areturn
-    //   135: astore_1
-    //   136: ldc 117
-    //   138: iconst_1
-    //   139: ldc 156
-    //   141: aload_1
-    //   142: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   145: aload_0
-    //   146: areturn
-    //   147: astore 4
-    //   149: aconst_null
-    //   150: astore_0
-    //   151: aconst_null
-    //   152: astore_1
-    //   153: aload_0
-    //   154: astore_3
-    //   155: aload_1
-    //   156: astore_2
-    //   157: ldc 117
-    //   159: iconst_1
-    //   160: ldc 161
-    //   162: aload 4
-    //   164: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   167: aload_0
-    //   168: ifnull +7 -> 175
-    //   171: aload_0
-    //   172: invokevirtual 153	java/io/ByteArrayInputStream:close	()V
-    //   175: aload 6
-    //   177: astore_2
-    //   178: aload_1
-    //   179: ifnull -156 -> 23
-    //   182: aload_1
-    //   183: invokevirtual 154	java/io/ByteArrayOutputStream:close	()V
-    //   186: aconst_null
-    //   187: areturn
-    //   188: astore_0
-    //   189: ldc 117
-    //   191: iconst_1
-    //   192: ldc 156
-    //   194: aload_0
-    //   195: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   198: aconst_null
-    //   199: areturn
-    //   200: astore_0
-    //   201: aconst_null
-    //   202: astore_3
+    //   9: ifne +6 -> 15
+    //   12: goto +229 -> 241
+    //   15: new 104	java/io/ByteArrayOutputStream
+    //   18: dup
+    //   19: invokespecial 105	java/io/ByteArrayOutputStream:<init>	()V
+    //   22: astore_1
+    //   23: new 107	java/io/ByteArrayInputStream
+    //   26: dup
+    //   27: aload_0
+    //   28: iconst_0
+    //   29: aload_0
+    //   30: arraylength
+    //   31: invokespecial 110	java/io/ByteArrayInputStream:<init>	([BII)V
+    //   34: astore 4
+    //   36: aload_1
+    //   37: astore_2
+    //   38: aload 4
+    //   40: astore_3
+    //   41: new 112	java/util/zip/GZIPInputStream
+    //   44: dup
+    //   45: aload 4
+    //   47: aload_0
+    //   48: arraylength
+    //   49: invokespecial 115	java/util/zip/GZIPInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   52: astore 6
+    //   54: aload_1
+    //   55: astore_2
+    //   56: aload 4
+    //   58: astore_3
+    //   59: aload_0
+    //   60: arraylength
+    //   61: iconst_5
+    //   62: imul
+    //   63: newarray byte
+    //   65: astore_0
+    //   66: aload_1
+    //   67: astore_2
+    //   68: aload 4
+    //   70: astore_3
+    //   71: aload_1
+    //   72: aload_0
+    //   73: iconst_0
+    //   74: aload 6
+    //   76: aload_0
+    //   77: invokevirtual 119	java/util/zip/GZIPInputStream:read	([B)I
+    //   80: invokevirtual 122	java/io/ByteArrayOutputStream:write	([BII)V
+    //   83: aload_1
+    //   84: astore_2
+    //   85: aload 4
+    //   87: astore_3
+    //   88: aload 6
+    //   90: invokevirtual 125	java/util/zip/GZIPInputStream:close	()V
+    //   93: aload_1
+    //   94: astore_2
+    //   95: aload 4
+    //   97: astore_3
+    //   98: aload_1
+    //   99: invokevirtual 129	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   102: astore_0
+    //   103: aload_0
+    //   104: astore_2
+    //   105: aload 4
+    //   107: invokevirtual 130	java/io/ByteArrayInputStream:close	()V
+    //   110: aload_0
+    //   111: astore_2
+    //   112: aload_1
+    //   113: invokevirtual 131	java/io/ByteArrayOutputStream:close	()V
+    //   116: aload_0
+    //   117: areturn
+    //   118: astore_0
+    //   119: ldc 133
+    //   121: iconst_1
+    //   122: ldc 135
+    //   124: aload_0
+    //   125: invokestatic 141	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   128: aload_2
+    //   129: areturn
+    //   130: astore_2
+    //   131: aload 4
+    //   133: astore_0
+    //   134: aload_2
+    //   135: astore 4
+    //   137: goto +30 -> 167
+    //   140: astore_0
+    //   141: aconst_null
+    //   142: astore_3
+    //   143: goto +65 -> 208
+    //   146: astore 4
+    //   148: aconst_null
+    //   149: astore_0
+    //   150: goto +17 -> 167
+    //   153: astore_0
+    //   154: aconst_null
+    //   155: astore_1
+    //   156: aload_1
+    //   157: astore_3
+    //   158: goto +50 -> 208
+    //   161: astore 4
+    //   163: aconst_null
+    //   164: astore_1
+    //   165: aload_1
+    //   166: astore_0
+    //   167: aload_1
+    //   168: astore_2
+    //   169: aload_0
+    //   170: astore_3
+    //   171: ldc 133
+    //   173: iconst_1
+    //   174: ldc 143
+    //   176: aload 4
+    //   178: invokestatic 141	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   181: aload_0
+    //   182: ifnull +10 -> 192
+    //   185: aload 5
+    //   187: astore_2
+    //   188: aload_0
+    //   189: invokevirtual 130	java/io/ByteArrayInputStream:close	()V
+    //   192: aload_1
+    //   193: ifnull +10 -> 203
+    //   196: aload 5
+    //   198: astore_2
+    //   199: aload_1
+    //   200: invokevirtual 131	java/io/ByteArrayOutputStream:close	()V
     //   203: aconst_null
-    //   204: astore_1
-    //   205: aload_3
-    //   206: ifnull +7 -> 213
-    //   209: aload_3
-    //   210: invokevirtual 153	java/io/ByteArrayInputStream:close	()V
-    //   213: aload_1
-    //   214: ifnull +7 -> 221
-    //   217: aload_1
-    //   218: invokevirtual 154	java/io/ByteArrayOutputStream:close	()V
-    //   221: aload_0
-    //   222: athrow
-    //   223: astore_1
-    //   224: ldc 117
-    //   226: iconst_1
-    //   227: ldc 156
-    //   229: aload_1
-    //   230: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   233: goto -12 -> 221
-    //   236: astore_0
-    //   237: aconst_null
-    //   238: astore_3
-    //   239: goto -34 -> 205
-    //   242: astore_0
-    //   243: aload_2
-    //   244: astore_1
-    //   245: goto -40 -> 205
-    //   248: astore 4
-    //   250: aconst_null
-    //   251: astore_0
-    //   252: goto -99 -> 153
-    //   255: astore 4
-    //   257: aload 5
-    //   259: astore_0
-    //   260: goto -107 -> 153
+    //   204: areturn
+    //   205: astore_0
+    //   206: aload_2
+    //   207: astore_1
+    //   208: aload_3
+    //   209: ifnull +10 -> 219
+    //   212: aload_3
+    //   213: invokevirtual 130	java/io/ByteArrayInputStream:close	()V
+    //   216: goto +3 -> 219
+    //   219: aload_1
+    //   220: ifnull +19 -> 239
+    //   223: aload_1
+    //   224: invokevirtual 131	java/io/ByteArrayOutputStream:close	()V
+    //   227: goto +12 -> 239
+    //   230: ldc 133
+    //   232: iconst_1
+    //   233: ldc 135
+    //   235: aload_1
+    //   236: invokestatic 141	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   239: aload_0
+    //   240: athrow
+    //   241: ldc 133
+    //   243: iconst_1
+    //   244: ldc 145
+    //   246: invokestatic 148	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   249: aconst_null
+    //   250: areturn
+    //   251: astore_1
+    //   252: goto -22 -> 230
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	263	0	paramArrayOfByte	byte[]
-    //   32	98	1	localByteArrayOutputStream	java.io.ByteArrayOutputStream
-    //   135	7	1	localIOException1	java.io.IOException
-    //   152	66	1	localObject1	Object
-    //   223	7	1	localIOException2	java.io.IOException
-    //   244	1	1	localObject2	Object
-    //   22	222	2	localObject3	Object
-    //   48	191	3	localObject4	Object
-    //   62	37	4	localGZIPInputStream	java.util.zip.GZIPInputStream
-    //   147	16	4	localException1	java.lang.Exception
-    //   248	1	4	localException2	java.lang.Exception
-    //   255	1	4	localException3	java.lang.Exception
-    //   44	214	5	localByteArrayInputStream	java.io.ByteArrayInputStream
-    //   1	175	6	localObject5	Object
+    //   0	255	0	paramArrayOfByte	byte[]
+    //   22	214	1	localObject1	Object
+    //   251	1	1	localIOException	java.io.IOException
+    //   37	92	2	localObject2	Object
+    //   130	5	2	localException1	java.lang.Exception
+    //   168	39	2	localObject3	Object
+    //   40	173	3	localObject4	Object
+    //   34	102	4	localObject5	Object
+    //   146	1	4	localException2	java.lang.Exception
+    //   161	16	4	localException3	java.lang.Exception
+    //   1	196	5	localObject6	Object
+    //   52	37	6	localGZIPInputStream	java.util.zip.GZIPInputStream
     // Exception table:
     //   from	to	target	type
-    //   118	123	135	java/io/IOException
-    //   129	133	135	java/io/IOException
-    //   25	33	147	java/lang/Exception
-    //   171	175	188	java/io/IOException
-    //   182	186	188	java/io/IOException
-    //   25	33	200	finally
-    //   209	213	223	java/io/IOException
-    //   217	221	223	java/io/IOException
-    //   33	46	236	finally
-    //   51	64	242	finally
-    //   69	76	242	finally
-    //   81	93	242	finally
-    //   98	103	242	finally
-    //   108	113	242	finally
-    //   157	167	242	finally
-    //   33	46	248	java/lang/Exception
-    //   51	64	255	java/lang/Exception
-    //   69	76	255	java/lang/Exception
-    //   81	93	255	java/lang/Exception
-    //   98	103	255	java/lang/Exception
-    //   108	113	255	java/lang/Exception
+    //   105	110	118	java/io/IOException
+    //   112	116	118	java/io/IOException
+    //   188	192	118	java/io/IOException
+    //   199	203	118	java/io/IOException
+    //   41	54	130	java/lang/Exception
+    //   59	66	130	java/lang/Exception
+    //   71	83	130	java/lang/Exception
+    //   88	93	130	java/lang/Exception
+    //   98	103	130	java/lang/Exception
+    //   23	36	140	finally
+    //   23	36	146	java/lang/Exception
+    //   15	23	153	finally
+    //   15	23	161	java/lang/Exception
+    //   41	54	205	finally
+    //   59	66	205	finally
+    //   71	83	205	finally
+    //   88	93	205	finally
+    //   98	103	205	finally
+    //   171	181	205	finally
+    //   212	216	251	java/io/IOException
+    //   223	227	251	java/io/IOException
   }
   
   public static String b(String paramString1, String paramString2)
   {
-    return BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString1, 4).getString(paramString2, "");
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imax_ad_item_data_");
+    localStringBuilder.append(paramString1);
+    return localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 4).getString(paramString2, "");
   }
   
   public static void b(String paramString)
@@ -286,17 +295,25 @@ public class ImaxAdUtil
   
   public static void b(String paramString1, String paramString2)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString1, 4).edit().remove(paramString2).apply();
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imax_ad_item_data_");
+    localStringBuilder.append(paramString1);
+    localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 4).edit().remove(paramString2).apply();
   }
   
   public static void b(String paramString1, String paramString2, String paramString3)
   {
-    BaseApplicationImpl.getApplication().getSharedPreferences("imax_ad_item_data_" + paramString1, 4).edit().putString(paramString2, paramString3).apply();
+    MobileQQ localMobileQQ = MobileQQ.sMobileQQ;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("imax_ad_item_data_");
+    localStringBuilder.append(paramString1);
+    localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 4).edit().putString(paramString2, paramString3).apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdUtil
  * JD-Core Version:    0.7.0.1
  */

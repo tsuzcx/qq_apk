@@ -1,6 +1,5 @@
 package com.tencent.sveffects;
 
-import com.tencent.mobileqq.richmedia.capture.data.CaptureVideoFilterManager;
 import com.tencent.mobileqq.shortvideo.resource.BeautyResource;
 
 public class SvEffectSdkInitor$QQBeautyResource
@@ -8,12 +7,12 @@ public class SvEffectSdkInitor$QQBeautyResource
 {
   public String getBeautyFilePath()
   {
-    return CaptureVideoFilterManager.c;
+    return SvEffectSdkInitor.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sveffects.SvEffectSdkInitor.QQBeautyResource
  * JD-Core Version:    0.7.0.1
  */

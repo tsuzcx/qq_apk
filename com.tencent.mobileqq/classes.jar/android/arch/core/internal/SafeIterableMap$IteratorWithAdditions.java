@@ -14,64 +14,54 @@ class SafeIterableMap$IteratorWithAdditions
   
   public boolean hasNext()
   {
-    boolean bool2 = false;
-    if (this.mBeforeStart)
-    {
-      if (SafeIterableMap.access$100(this.this$0) != null) {
-        return true;
-      }
+    if (this.mBeforeStart) {
+      return SafeIterableMap.access$100(this.this$0) != null;
     }
-    else
-    {
-      boolean bool1 = bool2;
-      if (this.mCurrent != null)
-      {
-        bool1 = bool2;
-        if (this.mCurrent.mNext != null) {
-          bool1 = true;
-        }
-      }
-      return bool1;
-    }
-    return false;
+    SafeIterableMap.Entry localEntry = this.mCurrent;
+    return (localEntry != null) && (localEntry.mNext != null);
   }
   
   public Map.Entry<K, V> next()
   {
+    SafeIterableMap.Entry localEntry;
     if (this.mBeforeStart)
     {
       this.mBeforeStart = false;
-      this.mCurrent = SafeIterableMap.access$100(this.this$0);
-      return this.mCurrent;
+      localEntry = SafeIterableMap.access$100(this.this$0);
     }
-    if (this.mCurrent != null) {}
-    for (SafeIterableMap.Entry localEntry = this.mCurrent.mNext;; localEntry = null)
+    for (;;)
     {
       this.mCurrent = localEntry;
       break;
+      localEntry = this.mCurrent;
+      if (localEntry != null) {
+        localEntry = localEntry.mNext;
+      } else {
+        localEntry = null;
+      }
     }
+    return this.mCurrent;
   }
   
   public void supportRemove(@NonNull SafeIterableMap.Entry<K, V> paramEntry)
   {
-    if (paramEntry == this.mCurrent)
+    SafeIterableMap.Entry localEntry = this.mCurrent;
+    if (paramEntry == localEntry)
     {
-      this.mCurrent = this.mCurrent.mPrevious;
-      if (this.mCurrent != null) {
-        break label34;
+      this.mCurrent = localEntry.mPrevious;
+      boolean bool;
+      if (this.mCurrent == null) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label34:
-    for (boolean bool = true;; bool = false)
-    {
       this.mBeforeStart = bool;
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.core.internal.SafeIterableMap.IteratorWithAdditions
  * JD-Core Version:    0.7.0.1
  */

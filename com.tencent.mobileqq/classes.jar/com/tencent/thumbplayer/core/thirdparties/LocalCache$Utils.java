@@ -61,18 +61,36 @@ class LocalCache$Utils
   private static byte[] copyOfRange(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     int i = paramInt2 - paramInt1;
-    if (i < 0) {
-      throw new IllegalArgumentException(paramInt1 + " > " + paramInt2);
+    if (i >= 0)
+    {
+      byte[] arrayOfByte = new byte[i];
+      System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, Math.min(paramArrayOfByte.length - paramInt1, i));
+      return arrayOfByte;
     }
-    byte[] arrayOfByte = new byte[i];
-    System.arraycopy(paramArrayOfByte, paramInt1, arrayOfByte, 0, Math.min(paramArrayOfByte.length - paramInt1, i));
-    return arrayOfByte;
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append(paramInt1);
+    paramArrayOfByte.append(" > ");
+    paramArrayOfByte.append(paramInt2);
+    throw new IllegalArgumentException(paramArrayOfByte.toString());
   }
   
   private static String createDateInfo(int paramInt)
   {
-    for (String str = System.currentTimeMillis() + ""; str.length() < 13; str = "0" + str) {}
-    return str + "-" + paramInt + ' ';
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(System.currentTimeMillis());
+    ((StringBuilder)localObject).append("");
+    for (localObject = ((StringBuilder)localObject).toString(); ((String)localObject).length() < 13; localObject = localStringBuilder.toString())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("0");
+      localStringBuilder.append((String)localObject);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("-");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(' ');
+    return localStringBuilder.toString();
   }
   
   private static Bitmap drawable2Bitmap(Drawable paramDrawable)
@@ -82,15 +100,16 @@ class LocalCache$Utils
     }
     int i = paramDrawable.getIntrinsicWidth();
     int j = paramDrawable.getIntrinsicHeight();
-    if (paramDrawable.getOpacity() != -1) {}
-    for (Object localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Canvas localCanvas = new Canvas((Bitmap)localObject);
-      paramDrawable.setBounds(0, 0, i, j);
-      paramDrawable.draw(localCanvas);
-      return localObject;
+    if (paramDrawable.getOpacity() != -1) {
+      localObject = Bitmap.Config.ARGB_8888;
+    } else {
+      localObject = Bitmap.Config.RGB_565;
     }
+    Object localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+    Canvas localCanvas = new Canvas((Bitmap)localObject);
+    paramDrawable.setBounds(0, 0, i, j);
+    paramDrawable.draw(localCanvas);
+    return localObject;
   }
   
   private static String[] getDateInfoFromDate(byte[] paramArrayOfByte)
@@ -127,23 +146,17 @@ class LocalCache$Utils
   private static boolean isDue(byte[] paramArrayOfByte)
   {
     String[] arrayOfString = getDateInfoFromDate(paramArrayOfByte);
-    if ((arrayOfString != null) && (arrayOfString.length == 2))
-    {
+    if ((arrayOfString != null) && (arrayOfString.length == 2)) {
       for (paramArrayOfByte = arrayOfString[0]; paramArrayOfByte.startsWith("0"); paramArrayOfByte = paramArrayOfByte.substring(1, paramArrayOfByte.length())) {}
-      try
-      {
-        long l1 = Long.valueOf(paramArrayOfByte).longValue();
-        long l2 = Long.valueOf(arrayOfString[1]).longValue();
-        long l3 = System.currentTimeMillis();
-        if (l3 > l1 + l2 * 1000L) {
-          return true;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        return false;
-      }
     }
+    try
+    {
+      long l1 = Long.valueOf(paramArrayOfByte).longValue();
+      long l2 = Long.valueOf(arrayOfString[1]).longValue();
+      long l3 = System.currentTimeMillis();
+      return l3 > l1 + l2 * 1000L;
+    }
+    catch (Exception paramArrayOfByte) {}
     return false;
   }
   
@@ -158,12 +171,15 @@ class LocalCache$Utils
   
   private static String newStringWithDateInfo(int paramInt, String paramString)
   {
-    return createDateInfo(paramInt) + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(createDateInfo(paramInt));
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.thirdparties.LocalCache.Utils
  * JD-Core Version:    0.7.0.1
  */

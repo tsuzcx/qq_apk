@@ -28,7 +28,19 @@ class ComparableRange<T extends Comparable<? super T>>
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof ComparableRange)) && (((isEmpty()) && (((ComparableRange)paramObject).isEmpty())) || ((Intrinsics.areEqual(getStart(), ((ComparableRange)paramObject).getStart())) && (Intrinsics.areEqual(getEndInclusive(), ((ComparableRange)paramObject).getEndInclusive()))));
+    if ((paramObject instanceof ComparableRange)) {
+      if ((!isEmpty()) || (!((ComparableRange)paramObject).isEmpty()))
+      {
+        Comparable localComparable = getStart();
+        paramObject = (ComparableRange)paramObject;
+        if ((!Intrinsics.areEqual(localComparable, paramObject.getStart())) || (!Intrinsics.areEqual(getEndInclusive(), paramObject.getEndInclusive()))) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   @NotNull
@@ -59,12 +71,16 @@ class ComparableRange<T extends Comparable<? super T>>
   @NotNull
   public String toString()
   {
-    return getStart() + ".." + getEndInclusive();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getStart());
+    localStringBuilder.append("..");
+    localStringBuilder.append(getEndInclusive());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ranges.ComparableRange
  * JD-Core Version:    0.7.0.1
  */

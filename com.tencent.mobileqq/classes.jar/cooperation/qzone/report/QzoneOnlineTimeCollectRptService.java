@@ -2,16 +2,14 @@ package cooperation.qzone.report;
 
 import NS_MOBILE_FEEDS.mobile_online_report_item;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQzoneReq;
 import common.config.service.QzoneConfig;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.util.ArrayList;
 import java.util.Iterator;
-import mqq.app.AppRuntime;
-import mqq.app.NewIntent;
 import mqq.os.MqqHandler;
 
 public class QzoneOnlineTimeCollectRptService
@@ -34,7 +32,6 @@ public class QzoneOnlineTimeCollectRptService
   private static final String TAG = "QzoneOnlineTimeCollectRptService";
   private static QzoneOnlineTimeCollectRptService mInstance;
   int RetryTimes = 0;
-  QQAppInterface app;
   private volatile boolean isForeground = false;
   private ArrayList<mobile_online_report_item> mBackupItems = new ArrayList();
   private int mDelay = 10000;
@@ -76,39 +73,82 @@ public class QzoneOnlineTimeCollectRptService
   
   private void initData()
   {
-    if (this.mUin == 0L) {
+    long l1 = this.mUin;
+    if (l1 == 0L) {
       return;
     }
-    long l1 = this.mUin;
-    String str = LocalMultiProcConfig.getString(this.mKeyOnlineSp + "_" + l1, "");
-    Object localObject2 = LocalMultiProcConfig.getString(this.mKeyOnlineUpdateSp + "_" + l1, "");
-    long l2 = LocalMultiProcConfig.getLong("key_sp_qzone_crash_time_" + l1, 0L);
-    QLog.d("QzoneOnlineTimeCollectRptService", 1, "sp:" + this.mKeyOnlineSp + " lost time:" + (String)localObject2 + " sp:" + this.mKeyOnlineUpdateSp + " crash time:" + l2);
-    Object localObject1;
-    if (!TextUtils.isEmpty((CharSequence)localObject2))
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.mKeyOnlineSp);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(l1);
+    Object localObject2 = LocalMultiProcConfig.getString(((StringBuilder)localObject1).toString(), "");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.mKeyOnlineUpdateSp);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(l1);
+    Object localObject3 = LocalMultiProcConfig.getString(((StringBuilder)localObject1).toString(), "");
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("key_sp_qzone_crash_time_");
+    ((StringBuilder)localObject1).append(l1);
+    long l2 = LocalMultiProcConfig.getLong(((StringBuilder)localObject1).toString(), 0L);
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("sp:");
+    ((StringBuilder)localObject1).append(this.mKeyOnlineSp);
+    ((StringBuilder)localObject1).append(" lost time:");
+    ((StringBuilder)localObject1).append((String)localObject3);
+    ((StringBuilder)localObject1).append(" sp:");
+    ((StringBuilder)localObject1).append(this.mKeyOnlineUpdateSp);
+    ((StringBuilder)localObject1).append(" crash time:");
+    ((StringBuilder)localObject1).append(l2);
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = localObject2;
+    if (!TextUtils.isEmpty((CharSequence)localObject3))
     {
-      localObject1 = localObject2;
+      localObject1 = localObject3;
       if (l2 != 0L)
       {
-        localObject1 = localObject2;
-        if (this.mKeyOnlineSp.equals("QZonlinetime")) {
-          localObject1 = ((String)localObject2).substring(0, ((String)localObject2).lastIndexOf(";")) + ";" + l2;
+        localObject1 = localObject3;
+        if (this.mKeyOnlineSp.equals("QZonlinetime"))
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(((String)localObject3).substring(0, ((String)localObject3).lastIndexOf(";")));
+          ((StringBuilder)localObject1).append(";");
+          ((StringBuilder)localObject1).append(l2);
+          localObject1 = ((StringBuilder)localObject1).toString();
         }
       }
-      localObject2 = localObject1;
-      if (!TextUtils.isEmpty(str)) {
-        localObject2 = str + ";" + (String)localObject1;
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append(";");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        localObject1 = ((StringBuilder)localObject3).toString();
       }
-      LocalMultiProcConfig.putString(this.mKeyOnlineSp + "_" + l1, (String)localObject2);
-      LocalMultiProcConfig.putString(this.mKeyOnlineUpdateSp + "_" + l1, "");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.mKeyOnlineSp);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(l1);
+      LocalMultiProcConfig.putString(((StringBuilder)localObject2).toString(), (String)localObject1);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(this.mKeyOnlineUpdateSp);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append(l1);
+      LocalMultiProcConfig.putString(((StringBuilder)localObject2).toString(), "");
     }
-    for (;;)
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("key_sp_qzone_crash_time_");
+    ((StringBuilder)localObject2).append(l1);
+    LocalMultiProcConfig.putLong(((StringBuilder)localObject2).toString(), 0L);
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("s:");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QLog.d("QzoneOnlineTimeCollectRptService", 1, ((StringBuilder)localObject2).toString());
+    localObject1 = ((String)localObject1).split(";");
+    if (localObject1 != null)
     {
-      LocalMultiProcConfig.putLong("key_sp_qzone_crash_time_" + l1, 0L);
-      QLog.d("QzoneOnlineTimeCollectRptService", 1, "s:" + (String)localObject2);
-      localObject1 = ((String)localObject2).split(";");
-      if ((localObject1 == null) || (localObject1.length <= 1)) {
-        break;
+      if (localObject1.length <= 1) {
+        return;
       }
       int i = 0;
       try
@@ -119,36 +159,39 @@ public class QzoneOnlineTimeCollectRptService
           this.mReportItems.add(localObject2);
           i += 2;
         }
-        localObject2 = str;
       }
       catch (Exception localException)
       {
-        QLog.e("QzoneOnlineTimeCollectRptService", 1, "e:" + localException.toString());
-        if ((this.mReportItems.size() >= 1) && (this.mReportItems.get(0) != null)) {
-          this.mLastReportTime = ((mobile_online_report_item)this.mReportItems.get(0)).uptime;
-        }
-        checkToReport();
-        return;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("e:");
+        ((StringBuilder)localObject2).append(localException.toString());
+        QLog.e("QzoneOnlineTimeCollectRptService", 1, ((StringBuilder)localObject2).toString());
       }
+      if ((this.mReportItems.size() >= 1) && (this.mReportItems.get(0) != null)) {
+        this.mLastReportTime = ((mobile_online_report_item)this.mReportItems.get(0)).uptime;
+      }
+      checkToReport();
     }
   }
   
   private boolean isNeedToReport()
   {
-    boolean bool1 = false;
-    boolean bool2 = true;
     QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
-    if (this.mLastReportTime != 0L)
+    long l = this.mLastReportTime;
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if (l != 0L)
     {
       if ((System.currentTimeMillis() / 1000L - this.mLastReportTime > localQzoneConfig.getConfig("ClientReport", "OnlineReportInterval", 3600)) || (this.mReportItems.size() >= localQzoneConfig.getConfig("ClientReport", "OnlineReportFrequency", 1))) {
         bool1 = true;
       }
       return bool1;
     }
-    if (this.mReportItems.size() >= localQzoneConfig.getConfig("ClientReport", "OnlineReportFrequency", 1)) {}
-    for (bool1 = bool2;; bool1 = false) {
-      return bool1;
+    bool1 = bool2;
+    if (this.mReportItems.size() >= localQzoneConfig.getConfig("ClientReport", "OnlineReportFrequency", 1)) {
+      bool1 = true;
     }
+    return bool1;
   }
   
   private void report(ArrayList<mobile_online_report_item> paramArrayList)
@@ -157,9 +200,7 @@ public class QzoneOnlineTimeCollectRptService
     {
       this.mLastReportTime = System.currentTimeMillis();
       paramArrayList = new ArrayList(paramArrayList);
-      NewIntent localNewIntent = new NewIntent(BaseApplicationImpl.getContext(), QzoneOnlineTimeServlet.class);
-      localNewIntent.putExtra("list", paramArrayList);
-      BaseApplicationImpl.getApplication().getRuntime().startServlet(localNewIntent);
+      ((IQzoneReq)QRoute.api(IQzoneReq.class)).sentOnlineTimeServlet(paramArrayList);
       return;
     }
     QLog.e("QzoneOnlineTimeCollectRptService", 1, "There is no record to report!");
@@ -167,32 +208,52 @@ public class QzoneOnlineTimeCollectRptService
   
   private void saveData()
   {
-    if ((this.mReportItems != null) && (this.mReportItems.size() != 0))
+    Object localObject1 = this.mReportItems;
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() != 0))
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      Iterator localIterator = this.mReportItems.iterator();
-      while (localIterator.hasNext())
+      localObject1 = new StringBuilder();
+      Object localObject2 = this.mReportItems.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        mobile_online_report_item localmobile_online_report_item = (mobile_online_report_item)localIterator.next();
-        if (localmobile_online_report_item != null) {
-          localStringBuilder.append(localmobile_online_report_item.uptime + ";" + localmobile_online_report_item.downtime + ";");
+        mobile_online_report_item localmobile_online_report_item = (mobile_online_report_item)((Iterator)localObject2).next();
+        if (localmobile_online_report_item != null)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localmobile_online_report_item.uptime);
+          localStringBuilder.append(";");
+          localStringBuilder.append(localmobile_online_report_item.downtime);
+          localStringBuilder.append(";");
+          ((StringBuilder)localObject1).append(localStringBuilder.toString());
         }
       }
-      if (localStringBuilder.length() == 0) {
-        break label252;
+      if (((StringBuilder)localObject1).length() != 0)
+      {
+        ((StringBuilder)localObject1).deleteCharAt(((StringBuilder)localObject1).length() - 1);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(this.mKeyOnlineSp);
+        ((StringBuilder)localObject2).append("_");
+        ((StringBuilder)localObject2).append(this.mUin);
+        LocalMultiProcConfig.putString(((StringBuilder)localObject2).toString(), ((StringBuilder)localObject1).toString());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("saveData mReportItems size:");
+        ((StringBuilder)localObject2).append(this.mReportItems.size());
+        ((StringBuilder)localObject2).append(" mLastReportTime:");
+        ((StringBuilder)localObject2).append(this.mLastReportTime);
+        ((StringBuilder)localObject2).append(" re:");
+        ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+        QLog.d("QzoneOnlineTimeCollectRptService", 1, ((StringBuilder)localObject2).toString());
+        this.mReportItems.clear();
       }
-      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-      LocalMultiProcConfig.putString(this.mKeyOnlineSp + "_" + this.mUin, localStringBuilder.toString());
-      QLog.d("QzoneOnlineTimeCollectRptService", 1, "saveData mReportItems size:" + this.mReportItems.size() + " mLastReportTime:" + this.mLastReportTime + " re:" + localStringBuilder.toString());
-      this.mReportItems.clear();
+      else
+      {
+        QLog.w("QzoneOnlineTimeCollectRptService", 1, "re length:0");
+      }
     }
-    for (;;)
-    {
-      LocalMultiProcConfig.putString(this.mKeyOnlineUpdateSp + "_" + this.mUin, "");
-      return;
-      label252:
-      QLog.w("QzoneOnlineTimeCollectRptService", 1, "re length:0");
-    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.mKeyOnlineUpdateSp);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(this.mUin);
+    LocalMultiProcConfig.putString(((StringBuilder)localObject1).toString(), "");
   }
   
   public void addRecord(mobile_online_report_item parammobile_online_report_item)
@@ -203,56 +264,24 @@ public class QzoneOnlineTimeCollectRptService
     checkToReport();
   }
   
-  /* Error */
   public void beginRecord()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 358	cooperation/qzone/report/QzoneOnlineTimeCollectRptService:mRecord	LNS_MOBILE_FEEDS/mobile_online_report_item;
-    //   6: ifnonnull +31 -> 37
-    //   9: aload_0
-    //   10: new 227	NS_MOBILE_FEEDS/mobile_online_report_item
-    //   13: dup
-    //   14: invokespecial 359	NS_MOBILE_FEEDS/mobile_online_report_item:<init>	()V
-    //   17: putfield 358	cooperation/qzone/report/QzoneOnlineTimeCollectRptService:mRecord	LNS_MOBILE_FEEDS/mobile_online_report_item;
-    //   20: aload_0
-    //   21: getfield 358	cooperation/qzone/report/QzoneOnlineTimeCollectRptService:mRecord	LNS_MOBILE_FEEDS/mobile_online_report_item;
-    //   24: invokestatic 265	java/lang/System:currentTimeMillis	()J
-    //   27: ldc2_w 266
-    //   30: ldiv
-    //   31: putfield 252	NS_MOBILE_FEEDS/mobile_online_report_item:uptime	J
-    //   34: aload_0
-    //   35: monitorexit
-    //   36: return
-    //   37: aload_0
-    //   38: getfield 358	cooperation/qzone/report/QzoneOnlineTimeCollectRptService:mRecord	LNS_MOBILE_FEEDS/mobile_online_report_item;
-    //   41: lconst_0
-    //   42: putfield 333	NS_MOBILE_FEEDS/mobile_online_report_item:downtime	J
-    //   45: aload_0
-    //   46: getfield 358	cooperation/qzone/report/QzoneOnlineTimeCollectRptService:mRecord	LNS_MOBILE_FEEDS/mobile_online_report_item;
-    //   49: lconst_0
-    //   50: putfield 362	NS_MOBILE_FEEDS/mobile_online_report_item:loginuin	J
-    //   53: aload_0
-    //   54: getfield 358	cooperation/qzone/report/QzoneOnlineTimeCollectRptService:mRecord	LNS_MOBILE_FEEDS/mobile_online_report_item;
-    //   57: lconst_0
-    //   58: putfield 252	NS_MOBILE_FEEDS/mobile_online_report_item:uptime	J
-    //   61: goto -41 -> 20
-    //   64: astore_1
-    //   65: aload_0
-    //   66: monitorexit
-    //   67: aload_1
-    //   68: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	69	0	this	QzoneOnlineTimeCollectRptService
-    //   64	4	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	20	64	finally
-    //   20	34	64	finally
-    //   37	61	64	finally
+    try
+    {
+      if (this.mRecord == null)
+      {
+        this.mRecord = new mobile_online_report_item();
+      }
+      else
+      {
+        this.mRecord.downtime = 0L;
+        this.mRecord.loginuin = 0L;
+        this.mRecord.uptime = 0L;
+      }
+      this.mRecord.uptime = (System.currentTimeMillis() / 1000L);
+      return;
+    }
+    finally {}
   }
   
   public void beginTrace(int paramInt)
@@ -292,84 +321,128 @@ public class QzoneOnlineTimeCollectRptService
   
   public void onTaskResponse(int paramInt)
   {
+    Object localObject;
     if (paramInt != 1000)
     {
-      QLog.w("QzoneOnlineTimeCollectRptService", 1, "QzoneOnlineTimeCollectRptService report failure resultCode:" + paramInt + " RetryTimes:" + this.RetryTimes);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("QzoneOnlineTimeCollectRptService report failure resultCode:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" RetryTimes:");
+      ((StringBuilder)localObject).append(this.RetryTimes);
+      QLog.w("QzoneOnlineTimeCollectRptService", 1, ((StringBuilder)localObject).toString());
       if (this.RetryTimes < 2)
       {
         report(this.mBackupItems);
         this.RetryTimes += 1;
       }
-      return;
     }
-    QLog.d("QzoneOnlineTimeCollectRptService", 1, "QzoneOnlineTimeCollectRptService task succeed!");
-    this.RetryTimes = 0;
-    if ((this.mBackupItems != null) && (this.mBackupItems.size() > 0))
+    else
     {
+      QLog.d("QzoneOnlineTimeCollectRptService", 1, "QzoneOnlineTimeCollectRptService task succeed!");
       paramInt = 0;
-      while (paramInt < this.mBackupItems.size())
+      this.RetryTimes = 0;
+      localObject = this.mBackupItems;
+      if ((localObject != null) && (((ArrayList)localObject).size() > 0))
       {
-        QLog.d("QzoneOnlineTimeCollectRptService", 1, "sp:" + this.mKeyOnlineSp + " report uptime:" + ((mobile_online_report_item)this.mBackupItems.get(paramInt)).uptime + " downtime:" + ((mobile_online_report_item)this.mBackupItems.get(paramInt)).downtime);
-        paramInt += 1;
+        while (paramInt < this.mBackupItems.size())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("sp:");
+          ((StringBuilder)localObject).append(this.mKeyOnlineSp);
+          ((StringBuilder)localObject).append(" report uptime:");
+          ((StringBuilder)localObject).append(((mobile_online_report_item)this.mBackupItems.get(paramInt)).uptime);
+          ((StringBuilder)localObject).append(" downtime:");
+          ((StringBuilder)localObject).append(((mobile_online_report_item)this.mBackupItems.get(paramInt)).downtime);
+          QLog.d("QzoneOnlineTimeCollectRptService", 1, ((StringBuilder)localObject).toString());
+          paramInt += 1;
+        }
+        this.mBackupItems.clear();
       }
-      this.mBackupItems.clear();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mKeyOnlineSp);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(this.mUin);
+      LocalMultiProcConfig.putString(((StringBuilder)localObject).toString(), "");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mKeyOnlineUpdateSp);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(this.mUin);
+      LocalMultiProcConfig.putString(((StringBuilder)localObject).toString(), "");
     }
-    LocalMultiProcConfig.putString(this.mKeyOnlineSp + "_" + this.mUin, "");
-    LocalMultiProcConfig.putString(this.mKeyOnlineUpdateSp + "_" + this.mUin, "");
   }
   
   public void setType(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 2: 
-    default: 
-      return;
-    case 0: 
-      this.mKeyOnlineSp = "QZonlinetime";
-      this.mKeyOnlineUpdateSp = "QZonlinetimeLastRecord";
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            return;
+          }
+          this.mKeyOnlineSp = "QZonlinetime_video";
+          this.mKeyOnlineUpdateSp = "QZonlinetimeLastRecord_video";
+          return;
+        }
+        this.mKeyOnlineSp = "QZonlinetime_picture";
+        this.mKeyOnlineUpdateSp = "QZonlinetimeLastRecord_picture";
+        return;
+      }
       this.mKeyOnlineSp = "QZonlinetime_web";
       this.mKeyOnlineUpdateSp = "QZonlinetimeLastRecord_web";
       return;
-    case 3: 
-      this.mKeyOnlineSp = "QZonlinetime_picture";
-      this.mKeyOnlineUpdateSp = "QZonlinetimeLastRecord_picture";
-      return;
     }
-    this.mKeyOnlineSp = "QZonlinetime_video";
-    this.mKeyOnlineUpdateSp = "QZonlinetimeLastRecord_video";
+    this.mKeyOnlineSp = "QZonlinetime";
+    this.mKeyOnlineUpdateSp = "QZonlinetimeLastRecord";
   }
   
   public void updateRecord()
   {
-    mobile_online_report_item localmobile_online_report_item;
-    if (this.mRecord != null)
+    Object localObject = this.mRecord;
+    if (localObject != null)
     {
-      if (this.mRecord.uptime <= 0L) {
-        break label185;
+      if (((mobile_online_report_item)localObject).uptime > 0L)
+      {
+        this.mRecord.downtime = (System.currentTimeMillis() / 1000L);
+        if (this.mRecord.uptime == this.mRecord.downtime)
+        {
+          localObject = this.mRecord;
+          ((mobile_online_report_item)localObject).downtime += 1L;
+        }
       }
-      this.mRecord.downtime = (System.currentTimeMillis() / 1000L);
-      if (this.mRecord.uptime == this.mRecord.downtime) {
-        localmobile_online_report_item = this.mRecord;
+      else
+      {
+        this.mRecord.uptime = (System.currentTimeMillis() / 1000L);
+        localObject = this.mRecord;
+        ((mobile_online_report_item)localObject).downtime = (((mobile_online_report_item)localObject).uptime + 1L);
       }
-    }
-    for (localmobile_online_report_item.downtime += 1L;; this.mRecord.downtime = (this.mRecord.uptime + 1L))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("QzoneOnlineTimeCollectRptService", 2, "update sp:" + this.mKeyOnlineUpdateSp + " last time:" + this.mRecord.downtime);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("update sp:");
+        ((StringBuilder)localObject).append(this.mKeyOnlineUpdateSp);
+        ((StringBuilder)localObject).append(" last time:");
+        ((StringBuilder)localObject).append(this.mRecord.downtime);
+        QLog.d("QzoneOnlineTimeCollectRptService", 2, ((StringBuilder)localObject).toString());
       }
-      LocalMultiProcConfig.putString(this.mKeyOnlineUpdateSp + "_" + this.mUin, this.mRecord.uptime + ";" + this.mRecord.downtime);
-      return;
-      label185:
-      this.mRecord.uptime = (System.currentTimeMillis() / 1000L);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mKeyOnlineUpdateSp);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(this.mUin);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.mRecord.uptime);
+      localStringBuilder.append(";");
+      localStringBuilder.append(this.mRecord.downtime);
+      LocalMultiProcConfig.putString((String)localObject, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.QzoneOnlineTimeCollectRptService
  * JD-Core Version:    0.7.0.1
  */

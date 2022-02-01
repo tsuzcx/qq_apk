@@ -14,6 +14,7 @@ import com.tencent.mtt.hippy.uimanager.RenderNode;
 import com.tencent.mtt.hippy.uimanager.e;
 import com.tencent.mtt.supportui.views.recyclerview.RecyclerViewBase.Recycler;
 import com.tencent.mtt.supportui.views.recyclerview.RecyclerViewItem;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 @HippyController(name="ListView")
 public class HippyListViewController
@@ -21,19 +22,19 @@ public class HippyListViewController
 {
   public static final String CLASS_NAME = "ListView";
   
-  public void addView(ViewGroup paramViewGroup, View paramView, int paramInt) {}
+  protected void addView(ViewGroup paramViewGroup, View paramView, int paramInt) {}
   
   public RenderNode createRenderNode(int paramInt, HippyMap paramHippyMap, String paramString, HippyRootView paramHippyRootView, ControllerManager paramControllerManager, boolean paramBoolean)
   {
     return new e(paramInt, paramHippyMap, paramString, paramHippyRootView, paramControllerManager, paramBoolean);
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyListView(paramContext, 1);
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     if ((paramHippyMap != null) && (paramHippyMap.containsKey("horizontal"))) {
       return new HippyListView(paramContext, 0);
@@ -41,7 +42,7 @@ public class HippyListViewController
     return new HippyListView(paramContext, 1);
   }
   
-  public void deleteChild(ViewGroup paramViewGroup, View paramView, int paramInt)
+  protected void deleteChild(ViewGroup paramViewGroup, View paramView, int paramInt)
   {
     if ((paramView instanceof RecyclerViewItem)) {
       ((RecyclerViewItem)paramView).removeAllViews();
@@ -54,37 +55,44 @@ public class HippyListViewController
   public void dispatchFunction(HippyListView paramHippyListView, String paramString, HippyArray paramHippyArray)
   {
     super.dispatchFunction(paramHippyListView, paramString, paramHippyArray);
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != -1101593308)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if (i != -716578934)
       {
-      default: 
-        return;
-        if (paramString.equals("scrollToIndex"))
+        if ((i == 2055128589) && (paramString.equals("scrollToTop")))
         {
-          i = 0;
-          continue;
-          if (paramString.equals("scrollToContentOffset"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("scrollToTop")) {
-              i = 2;
-            }
-          }
+          i = 2;
+          break label85;
         }
-        break;
+      }
+      else if (paramString.equals("scrollToIndex"))
+      {
+        i = 0;
+        break label85;
       }
     }
+    else if (paramString.equals("scrollToContentOffset"))
+    {
+      i = 1;
+      break label85;
+    }
+    i = -1;
+    label85:
+    if (i != 0)
+    {
+      if (i != 1)
+      {
+        if (i != 2) {
+          return;
+        }
+        paramHippyListView.scrollToTop(null);
+        return;
+      }
+      paramHippyListView.scrollToContentOffset(paramHippyArray.getDouble(0), paramHippyArray.getDouble(1), paramHippyArray.getBoolean(2), paramHippyArray.getInt(3));
+      return;
+    }
     paramHippyListView.scrollToIndex(paramHippyArray.getInt(0), paramHippyArray.getInt(1), paramHippyArray.getBoolean(2), paramHippyArray.getInt(3));
-    return;
-    paramHippyListView.scrollToContentOffset(paramHippyArray.getDouble(0), paramHippyArray.getDouble(1), paramHippyArray.getBoolean(2), paramHippyArray.getInt(3));
-    return;
-    paramHippyListView.scrollToTop(null);
   }
   
   public View getChildAt(HippyListView paramHippyListView, int paramInt)
@@ -103,6 +111,20 @@ public class HippyListViewController
     paramHippyListView.setListData();
   }
   
+  public void onViewDestroy(HippyListView paramHippyListView)
+  {
+    super.onViewDestroy(paramHippyListView);
+    if ((paramHippyListView != null) && (paramHippyListView.mListScrollListeners != null)) {
+      paramHippyListView.mListScrollListeners.clear();
+    }
+  }
+  
+  @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="exposureEventEnabled")
+  public void setExposureEventEnable(HippyListView paramHippyListView, boolean paramBoolean)
+  {
+    paramHippyListView.setExposureEventEnable(paramBoolean);
+  }
+  
   @HippyControllerProps(defaultBoolean=false, defaultType="boolean", name="onMomentumScrollBegin")
   public void setMomentumScrollBeginEventEnable(HippyListView paramHippyListView, boolean paramBoolean)
   {
@@ -119,6 +141,12 @@ public class HippyListViewController
   public void setOnScrollEventEnable(HippyListView paramHippyListView, boolean paramBoolean)
   {
     paramHippyListView.setOnScrollEventEnable(paramBoolean);
+  }
+  
+  @HippyControllerProps(defaultBoolean=true, defaultType="boolean", name="overScrollEnabled")
+  public void setOverScrollEnabled(HippyListView paramHippyListView, boolean paramBoolean)
+  {
+    paramHippyListView.setOverScrollEnabled(paramBoolean);
   }
   
   @HippyControllerProps(name="preloadItemNumber")
@@ -162,7 +190,7 @@ public class HippyListViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.list.HippyListViewController
  * JD-Core Version:    0.7.0.1
  */

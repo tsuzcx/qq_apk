@@ -2,11 +2,11 @@ package com.tencent.mobileqq.filemanager.fileviewer.model;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.content.res.Resources;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.ThreadManagerV2;
-import com.tencent.mobileqq.ar.codeEngine.MiniCodeController;
 import com.tencent.mobileqq.colornote.IServiceInfo;
-import com.tencent.mobileqq.filemanager.activity.FilePreviewActivity.ControlerCallback;
+import com.tencent.mobileqq.filemanager.core.ControlerCallback;
 import com.tencent.mobileqq.filemanager.core.FilePreViewControllerBase;
 import com.tencent.mobileqq.filemanager.fileviewer.IFileBrowser;
 import com.tencent.mobileqq.filemanager.fileviewer.colornote.DefaultFileColorNoteServiceInfo;
@@ -14,10 +14,10 @@ import com.tencent.mobileqq.filemanager.fileviewer.controller.IDownloadControlle
 import com.tencent.mobileqq.filemanager.fileviewer.controller.IThumbController;
 import com.tencent.mobileqq.filemanager.fileviewer.controller.IUploadController;
 import com.tencent.mobileqq.filemanager.fileviewer.data.BaseVideoBiz;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.QFileUtils;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtil;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkFileImportInfo;
+import com.tencent.mobileqq.teamwork.bean.TeamWorkFileImportInfo;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.ShareActionSheetBuilder.ActionSheetItem;
 import com.tencent.qphone.base.util.QLog;
@@ -29,18 +29,17 @@ import java.util.List;
 public abstract class FileBrowserModelBase
 {
   protected int a;
-  public Activity a;
-  public Bundle a;
-  private MiniCodeController a;
-  protected FilePreviewActivity.ControlerCallback a;
+  protected Activity a;
+  protected Bundle a;
+  protected ControlerCallback a;
   protected FilePreViewControllerBase a;
-  public IFileBrowser a;
+  protected IFileBrowser a;
   protected IDownloadController a;
   protected IThumbController a;
   protected IUploadController a;
   protected FileBrowserModelBase.OnMMApkSafeCheckListener a;
-  public FileBrowserModelBase.OnThumbEventListener a;
-  public FileBrowserModelBase.OnTransEventListener a;
+  protected FileBrowserModelBase.OnThumbEventListener a;
+  protected FileBrowserModelBase.OnTransEventListener a;
   protected FileBrowserModelBase.OnZipEventListener a;
   protected ArrayList<ShareActionSheetBuilder.ActionSheetItem> a;
   protected HashMap<String, ArrayList<ShareActionSheetBuilder.ActionSheetItem>> a;
@@ -58,28 +57,30 @@ public abstract class FileBrowserModelBase
   
   public int a()
   {
-    int i = 3;
-    int j = e();
-    if ((d() == 3) && (FileManagerUtil.c(d())) && (b() != 16))
+    int i = e();
+    if ((d() == 3) && (QQFileManagerUtil.b(d())) && (b() != 16))
     {
-      switch (j)
+      if (i != 0)
       {
-      case 3: 
-      default: 
-        i = 1;
-      case 5: 
-        return i;
-      case 1: 
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 4) {
+              if (i == 5) {}
+            }
+            while (!h())
+            {
+              return 1;
+              return 3;
+            }
+            return 5;
+          }
+          return 2;
+        }
         return 4;
-      case 2: 
-        return 2;
-      case 0: 
-        return 6;
       }
-      if (h()) {
-        return 5;
-      }
-      return 1;
+      return 6;
     }
     if (QLog.isColorLevel()) {
       QLog.i("FileBrowserModelBase", 2, "getCreateFileType error : this is a local file, but is invalid, may be can not find file path");
@@ -163,26 +164,26 @@ public abstract class FileBrowserModelBase
   
   public void a(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    if (paramList == null) {}
-    Object localObject;
-    do
-    {
-      do
+    if (paramList == null) {
+      return;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap == null) {
+      this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+    }
+    Object localObject = e();
+    if (FileUtils.fileExistsAndNotEmpty((String)localObject)) {
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject))
       {
-        return;
-        if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-          this.jdField_a_of_type_JavaUtilHashMap = new HashMap();
+        localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
+        if ((localObject != null) && (!((ArrayList)localObject).isEmpty())) {
+          paramList.addAll((Collection)localObject);
         }
-        localObject = e();
-      } while (!FileUtils.b((String)localObject));
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(localObject)) {
-        break;
       }
-      localObject = (ArrayList)this.jdField_a_of_type_JavaUtilHashMap.get(localObject);
-    } while ((localObject == null) || (((ArrayList)localObject).isEmpty()));
-    paramList.addAll((Collection)localObject);
-    return;
-    QFileUtils.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, new FileBrowserModelBase.1(this, (String)localObject));
+      else
+      {
+        QFileUtils.a(this.jdField_a_of_type_AndroidAppActivity, (String)localObject, new FileBrowserModelBase.1(this, (String)localObject));
+      }
+    }
   }
   
   public abstract void a(boolean paramBoolean);
@@ -195,7 +196,7 @@ public abstract class FileBrowserModelBase
   public boolean a(FileBrowserModelBase.OnPreviewVideoOnlineListener paramOnPreviewVideoOnlineListener)
   {
     if (paramOnPreviewVideoOnlineListener != null) {
-      paramOnPreviewVideoOnlineListener.av_();
+      paramOnPreviewVideoOnlineListener.an_();
     }
     return false;
   }
@@ -214,7 +215,8 @@ public abstract class FileBrowserModelBase
   
   public void b(List<ShareActionSheetBuilder.ActionSheetItem> paramList)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (!this.jdField_a_of_type_JavaUtilArrayList.isEmpty())) {
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (!localArrayList.isEmpty())) {
       paramList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
     }
     this.jdField_a_of_type_JavaUtilArrayList = null;
@@ -226,15 +228,32 @@ public abstract class FileBrowserModelBase
   
   public int c()
   {
-    if (this.jdField_a_of_type_Int < 0) {
-      return 0;
+    int j = this.jdField_a_of_type_Int;
+    int i = j;
+    if (j < 0) {
+      i = 0;
     }
-    return this.jdField_a_of_type_Int;
+    return i;
   }
   
   public abstract long c();
   
   public abstract String c();
+  
+  public void c()
+  {
+    b();
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener = null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener = null;
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener = null;
+    }
+    o();
+  }
   
   public abstract void c(int paramInt);
   
@@ -245,8 +264,6 @@ public abstract class FileBrowserModelBase
   public abstract long d();
   
   public abstract String d();
-  
-  protected abstract void d();
   
   public abstract void d(int paramInt);
   
@@ -259,7 +276,7 @@ public abstract class FileBrowserModelBase
     return "";
   }
   
-  public abstract void e();
+  protected abstract void e();
   
   public void e(int paramInt)
   {
@@ -276,21 +293,25 @@ public abstract class FileBrowserModelBase
   
   protected void f(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 52)
     {
-    default: 
-      return;
-    case 118: 
+      if (paramInt != 118)
+      {
+        if (paramInt != 55)
+        {
+          if (paramInt != 56) {
+            return;
+          }
+          ReportController.b(null, "dc00898", "", "", "0X800ADBF", "0X800ADBF", 0, 0, "", "", "", "");
+          return;
+        }
+        ReportController.b(null, "dc00898", "", "", "0X800ADBE", "0X800ADBE", 0, 0, "", "", "", "");
+        return;
+      }
       ReportController.b(null, "dc00898", "", "", "0X800ADBC", "0X800ADBC", 0, 0, "", "", "", "");
       return;
-    case 52: 
-      ReportController.b(null, "dc00898", "", "", "0X800ADBD", "0X800ADBD", 0, 0, "", "", "", "");
-      return;
-    case 55: 
-      ReportController.b(null, "dc00898", "", "", "0X800ADBE", "0X800ADBE", 0, 0, "", "", "", "");
-      return;
     }
-    ReportController.b(null, "dc00898", "", "", "0X800ADBF", "0X800ADBF", 0, 0, "", "", "", "");
+    ReportController.b(null, "dc00898", "", "", "0X800ADBD", "0X800ADBD", 0, 0, "", "", "", "");
   }
   
   public abstract boolean f();
@@ -307,6 +328,8 @@ public abstract class FileBrowserModelBase
   
   public abstract String h();
   
+  public abstract void h();
+  
   public abstract boolean h();
   
   public abstract int i();
@@ -314,12 +337,6 @@ public abstract class FileBrowserModelBase
   public String i()
   {
     return null;
-  }
-  
-  public void i()
-  {
-    a();
-    m();
   }
   
   public abstract boolean i();
@@ -336,15 +353,8 @@ public abstract class FileBrowserModelBase
   
   public void j()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener = null;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener = null;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener = null;
-    }
+    a();
+    n();
   }
   
   public abstract boolean j();
@@ -359,9 +369,8 @@ public abstract class FileBrowserModelBase
     return "";
   }
   
-  public void k_()
+  public void k()
   {
-    b();
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnTransEventListener = null;
     }
@@ -371,7 +380,6 @@ public abstract class FileBrowserModelBase
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener != null) {
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnZipEventListener = null;
     }
-    n();
   }
   
   public int l()
@@ -384,8 +392,6 @@ public abstract class FileBrowserModelBase
     return "";
   }
   
-  public void l() {}
-  
   public boolean l()
   {
     return this.b != 12;
@@ -393,10 +399,7 @@ public abstract class FileBrowserModelBase
   
   public int m()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerIFileBrowser.a();
-    }
-    return 0;
+    return this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168);
   }
   
   public String m()
@@ -404,13 +407,7 @@ public abstract class FileBrowserModelBase
     return "";
   }
   
-  protected void m()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController != null) {
-      return;
-    }
-    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.3(this));
-  }
+  public void m() {}
   
   public String n()
   {
@@ -419,15 +416,17 @@ public abstract class FileBrowserModelBase
   
   protected void n()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqArCodeEngineMiniCodeController == null) {
-      return;
-    }
-    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.4(this));
+    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.3(this));
   }
   
   public String o()
   {
     return "";
+  }
+  
+  protected void o()
+  {
+    ThreadManagerV2.executeOnSubThread(new FileBrowserModelBase.4(this));
   }
   
   public String p()
@@ -437,7 +436,7 @@ public abstract class FileBrowserModelBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.FileBrowserModelBase
  * JD-Core Version:    0.7.0.1
  */

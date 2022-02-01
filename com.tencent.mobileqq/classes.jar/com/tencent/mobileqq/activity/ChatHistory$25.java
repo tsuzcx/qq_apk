@@ -21,7 +21,7 @@ class ChatHistory$25
   
   public void a(AudioPlayerBase paramAudioPlayerBase, int paramInt)
   {
-    this.a.b(2131694936);
+    this.a.b(2131694926);
     this.a.setVolumeControlStream(3);
     this.a.jdField_a_of_type_AndroidHardwareSensorManager.unregisterListener(this.a);
   }
@@ -37,7 +37,7 @@ class ChatHistory$25
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistory.25
  * JD-Core Version:    0.7.0.1
  */

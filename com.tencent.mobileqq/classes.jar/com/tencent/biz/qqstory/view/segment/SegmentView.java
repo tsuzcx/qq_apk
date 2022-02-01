@@ -10,7 +10,7 @@ import com.tencent.biz.qqstory.utils.AssertUtils;
 
 public abstract class SegmentView<T>
 {
-  public Context a;
+  protected Context a;
   private SegmentList jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
   private SegmentManager jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager;
   protected boolean a;
@@ -21,9 +21,11 @@ public abstract class SegmentView<T>
     this.jdField_a_of_type_AndroidContentContext = paramContext;
   }
   
-  public void R_() {}
+  protected void M_() {}
   
-  protected void T_() {}
+  public void P_() {}
+  
+  protected void R_() {}
   
   public abstract int a();
   
@@ -36,23 +38,24 @@ public abstract class SegmentView<T>
   
   public BaseViewHolder a(int paramInt)
   {
-    SegmentList localSegmentList = a();
-    if (localSegmentList == null)
+    Object localObject = a();
+    int i = 0;
+    if (localObject == null)
     {
-      AssertUtils.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("segment:");
+      ((StringBuilder)localObject).append(a());
+      ((StringBuilder)localObject).append(" have not attach to listView. It can not check isOnScreen.");
+      AssertUtils.fail(((StringBuilder)localObject).toString(), new Object[0]);
       return null;
     }
-    int i = 0;
-    if (i < localSegmentList.getChildCount())
+    while (i < ((SegmentList)localObject).getChildCount())
     {
-      BaseViewHolder localBaseViewHolder = (BaseViewHolder)localSegmentList.getChildAt(i).getTag();
-      if (localBaseViewHolder == null) {}
-      while ((!localBaseViewHolder.a.equals(a())) || (localBaseViewHolder.b != paramInt))
-      {
-        i += 1;
-        break;
+      BaseViewHolder localBaseViewHolder = (BaseViewHolder)((SegmentList)localObject).getChildAt(i).getTag();
+      if ((localBaseViewHolder != null) && (localBaseViewHolder.a.equals(a())) && (localBaseViewHolder.b == paramInt)) {
+        return localBaseViewHolder;
       }
-      return localBaseViewHolder;
+      i += 1;
     }
     return null;
   }
@@ -82,26 +85,32 @@ public abstract class SegmentView<T>
   public boolean a(BaseViewHolder paramBaseViewHolder)
   {
     SegmentList localSegmentList = a();
-    if (localSegmentList == null) {
-      AssertUtils.a("segment:" + a() + " have not attach to listView. It can not check isOnScreen.", new Object[0]);
-    }
-    int i;
-    int j;
-    int k;
-    do
+    if (localSegmentList == null)
     {
-      do
-      {
-        return false;
-      } while (paramBaseViewHolder == null);
-      i = localSegmentList.getFirstVisiblePosition();
-      j = localSegmentList.getLastVisiblePosition();
-      k = paramBaseViewHolder.c;
-    } while ((k < i) || (k > j));
-    return true;
+      paramBaseViewHolder = new StringBuilder();
+      paramBaseViewHolder.append("segment:");
+      paramBaseViewHolder.append(a());
+      paramBaseViewHolder.append(" have not attach to listView. It can not check isOnScreen.");
+      AssertUtils.fail(paramBaseViewHolder.toString(), new Object[0]);
+      return false;
+    }
+    if (paramBaseViewHolder == null) {
+      return false;
+    }
+    int i = localSegmentList.getFirstVisiblePosition();
+    int j = localSegmentList.getLastVisiblePosition();
+    int k = paramBaseViewHolder.c;
+    return (k >= i) && (k <= j);
   }
   
   public void a_(BaseViewHolder paramBaseViewHolder) {}
+  
+  public void a_(boolean paramBoolean)
+  {
+    if (paramBoolean != this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Boolean = paramBoolean;
+    }
+  }
   
   protected boolean a_(boolean paramBoolean)
   {
@@ -123,10 +132,11 @@ public abstract class SegmentView<T>
   
   public final void c(boolean paramBoolean)
   {
-    
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager != null)
+    AssertUtils.mainThreadCheck();
+    SegmentManager localSegmentManager = this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager;
+    if (localSegmentManager != null)
     {
-      this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.a(a(), paramBoolean);
+      localSegmentManager.a(a(), paramBoolean);
       this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.notifyDataSetChanged();
     }
     InfoPrinter.b("Q.qqstory.home.position", new Object[] { "notifyDataSetChanged ", Boolean.valueOf(paramBoolean) });
@@ -153,12 +163,13 @@ public abstract class SegmentView<T>
     a().setSelection(paramInt);
   }
   
-  public boolean d()
+  protected boolean d()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList == null) {
+    SegmentList localSegmentList = this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList;
+    if (localSegmentList == null) {
       return false;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentList.a(a());
+    localSegmentList.a(a());
     return true;
   }
   
@@ -167,30 +178,22 @@ public abstract class SegmentView<T>
     return 1;
   }
   
-  protected void e() {}
-  
-  public void e_(boolean paramBoolean)
-  {
-    if (paramBoolean != this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_Boolean = paramBoolean;
-    }
-  }
-  
-  public void i_(int paramInt) {}
+  public void f_(int paramInt) {}
   
   public void k() {}
   
-  public void m()
+  protected void m()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager == null) {
+    SegmentManager localSegmentManager = this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager;
+    if (localSegmentManager == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryViewSegmentSegmentManager.notifyDataSetChanged();
+    localSegmentManager.notifyDataSetChanged();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.segment.SegmentView
  * JD-Core Version:    0.7.0.1
  */

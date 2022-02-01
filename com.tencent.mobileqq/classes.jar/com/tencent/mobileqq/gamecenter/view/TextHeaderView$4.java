@@ -8,9 +8,10 @@ import android.view.View.OnClickListener;
 import com.tencent.gamecenter.appointment.GameCenterUtils;
 import com.tencent.gamecenter.wadl.api.IQQGameReportService;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.apollo.process.CmGameUtil;
-import com.tencent.mobileqq.gamecenter.util.QQGameHelper;
-import com.tencent.mobileqq.gamecenter.web.QQGameMsgInfo;
+import com.tencent.mobileqq.apollo.game.api.ICmGameHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGameHelper;
+import com.tencent.mobileqq.qqgamepub.api.IQQGamePreDownloadService;
+import com.tencent.mobileqq.qqgamepub.data.QQGameMsgInfo;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.HashMap;
@@ -25,35 +26,37 @@ class TextHeaderView$4
   {
     if (!TextUtils.isEmpty(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
     {
-      Object localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
-      ((Intent)localObject).putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
-      localObject = new HashMap();
-      ((Map)localObject).put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId);
-      ((Map)localObject).put(Integer.valueOf(3), this.jdField_a_of_type_Int + "");
+      if (!((IQQGamePreDownloadService)QRoute.api(IQQGamePreDownloadService.class)).interceptJumpHippy(TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView)))
+      {
+        localObject = new Intent(this.jdField_a_of_type_AndroidContentContext, QQBrowserActivity.class);
+        ((Intent)localObject).putExtra("url", TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+        this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject);
+      }
+      Object localObject = new HashMap();
+      ((Map)localObject).put(Integer.valueOf(2), this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append("");
+      ((Map)localObject).put(Integer.valueOf(3), localStringBuilder.toString());
       ((Map)localObject).put(Integer.valueOf(4), "20");
       ((Map)localObject).put(Integer.valueOf(24), this.jdField_a_of_type_JavaLangString);
-      GameCenterUtils.a(CmGameUtil.a(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.gameAppId, "76901", "1", "160", (Map)localObject);
-      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).reportGamePubAccountMsgStatus(3, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
-    }
-    try
-    {
-      QQGameHelper.a(118, this.jdField_a_of_type_ComTencentMobileqqGamecenterWebQQGameMsgInfo, this.jdField_a_of_type_Int);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      GameCenterUtils.a(((ICmGameHelper)QRoute.api(ICmGameHelper.class)).getAppInterface(), "769", "205019", this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.gameAppId, "76901", "1", "160", (Map)localObject);
+      ((IQQGameReportService)QRoute.api(IQQGameReportService.class)).reportGamePubAccountMsgStatus(3, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo.paMsgid, TextHeaderView.a(this.jdField_a_of_type_ComTencentMobileqqGamecenterViewTextHeaderView));
+      try
+      {
+        ((IQQGameHelper)QRoute.api(IQQGameHelper.class)).publicAccountTianshuReport(118, this.jdField_a_of_type_ComTencentMobileqqQqgamepubDataQQGameMsgInfo, this.jdField_a_of_type_Int);
+      }
+      catch (Throwable localThrowable)
       {
         localThrowable.printStackTrace();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gamecenter.view.TextHeaderView.4
  * JD-Core Version:    0.7.0.1
  */

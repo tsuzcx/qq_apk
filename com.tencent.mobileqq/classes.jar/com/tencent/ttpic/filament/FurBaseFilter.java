@@ -15,7 +15,7 @@ public abstract class FurBaseFilter
   extends VideoFilterBase
 {
   private static final boolean DEBUG = true;
-  private static final String TAG = FurBaseFilter.class.getSimpleName();
+  private static final String TAG = "FurBaseFilter";
   
   public FurBaseFilter(ShaderCreateFactory.PROGRAM_TYPE paramPROGRAM_TYPE)
   {
@@ -27,43 +27,47 @@ public abstract class FurBaseFilter
     initAttribParams();
     addAttribParam(new AttributeParam("normal", paramFurConfig.normal, 3));
     Matrix.perspectiveM(new float[16], 0, 45.0F, 1.333333F, 0.1F, 500.0F);
-    float[] arrayOfFloat1 = MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F);
-    Object localObject = new float[16];
-    Matrix.setIdentityM((float[])localObject, 0);
-    Matrix.translateM((float[])localObject, 0, 0.0F, 0.0F, paramFurConfig.g_fZoom);
-    float[] arrayOfFloat2 = new float[16];
-    Matrix.setIdentityM(arrayOfFloat2, 0);
-    Matrix.rotateM(arrayOfFloat2, 0, paramFurConfig.g_fSpinY, 0.0F, 1.0F, 0.0F);
-    Matrix.multiplyMM(paramFurConfig.matWorld, 0, (float[])localObject, 0, arrayOfFloat2, 0);
-    Matrix.multiplyMM(paramFurConfig.worldViewProjMat, 0, arrayOfFloat1, 0, paramFurConfig.matWorld, 0);
-    localObject = new float[16];
-    arrayOfFloat1 = new float[16];
+    float[] arrayOfFloat = MatrixUtil.getMVPMatrix(6.0F, 4.0F, 10.0F);
+    Object localObject1 = new float[16];
+    Matrix.setIdentityM((float[])localObject1, 0);
+    Matrix.translateM((float[])localObject1, 0, 0.0F, 0.0F, paramFurConfig.g_fZoom);
+    Object localObject2 = new float[16];
+    Matrix.setIdentityM((float[])localObject2, 0);
+    Matrix.rotateM((float[])localObject2, 0, paramFurConfig.g_fSpinY, 0.0F, 1.0F, 0.0F);
+    Matrix.multiplyMM(paramFurConfig.matWorld, 0, (float[])localObject1, 0, (float[])localObject2, 0);
+    Matrix.multiplyMM(paramFurConfig.worldViewProjMat, 0, arrayOfFloat, 0, paramFurConfig.matWorld, 0);
+    localObject1 = new float[16];
+    arrayOfFloat = new float[16];
     int j = 0;
     int i = 0;
-    while (i < 4)
+    while (j < 4)
     {
-      localObject[(i * 4)] = getAttribParam("normal").vertices[j];
-      localObject[(i * 4 + 1)] = getAttribParam("normal").vertices[(j + 1)];
-      localObject[(i * 4 + 2)] = getAttribParam("normal").vertices[(j + 2)];
-      localObject[(i * 4 + 3)] = 1.0F;
-      Matrix.multiplyMV(arrayOfFloat1, i * 4, paramFurConfig.matWorld, 0, (float[])localObject, i * 4);
-      j += 3;
-      i += 1;
+      int k = j * 4;
+      localObject1[k] = getAttribParam("normal").vertices[i];
+      localObject1[(k + 1)] = getAttribParam("normal").vertices[(i + 1)];
+      localObject1[(k + 2)] = getAttribParam("normal").vertices[(i + 2)];
+      localObject1[(k + 3)] = 1.0F;
+      Matrix.multiplyMV(arrayOfFloat, k, paramFurConfig.matWorld, 0, (float[])localObject1, k);
+      j += 1;
+      i += 3;
     }
-    localObject = new StringBuilder("[resultVec] \n");
+    localObject1 = new StringBuilder("[resultVec] \n");
     i = 0;
     while (i < 4)
     {
       j = 0;
       while (j < 4)
       {
-        ((StringBuilder)localObject).append(arrayOfFloat1[(i * 4 + j)] + ", ");
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(arrayOfFloat[(i * 4 + j)]);
+        ((StringBuilder)localObject2).append(", ");
+        ((StringBuilder)localObject1).append(((StringBuilder)localObject2).toString());
         j += 1;
       }
-      ((StringBuilder)localObject).append('\n');
+      ((StringBuilder)localObject1).append('\n');
       i += 1;
     }
-    Log.d(TAG, ((StringBuilder)localObject).toString());
+    Log.d(TAG, ((StringBuilder)localObject1).toString());
     addParam(new UniformParam.FloatParam("FurLength", 0.0F));
     addParam(new UniformParam.FloatParam("Layer", 0.0F));
     addParam(new UniformParam.FloatParam("UVScale", 1.0F));
@@ -74,7 +78,7 @@ public abstract class FurBaseFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filament.FurBaseFilter
  * JD-Core Version:    0.7.0.1
  */

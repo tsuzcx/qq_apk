@@ -77,20 +77,23 @@ class CropEffectNode$CropEffectFilter
   
   public void release()
   {
-    if (this.cropFilter != null) {
-      this.cropFilter.release();
+    Object localObject = this.cropFilter;
+    if (localObject != null) {
+      ((CropEffectNode.CropFilter)localObject).release();
     }
-    if (this.cachedSourceTextureInfo != null) {
-      this.cachedSourceTextureInfo.release();
+    localObject = this.cachedSourceTextureInfo;
+    if (localObject != null) {
+      ((TextureInfo)localObject).release();
     }
-    if (this.cachedCropOutputTextureInfo != null) {
-      this.cachedCropOutputTextureInfo.release();
+    localObject = this.cachedCropOutputTextureInfo;
+    if (localObject != null) {
+      ((TextureInfo)localObject).release();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.CropEffectNode.CropEffectFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import android.app.Activity;
-import android.support.v4.view.PagerAdapter;
+import androidx.viewpager.widget.PagerAdapter;
 import com.tencent.biz.qqstory.base.StoryDispatcher;
 import com.tencent.biz.qqstory.playvideo.TVKPreloader;
 import com.tencent.biz.qqstory.playvideo.player.IVideoView;
@@ -24,39 +24,37 @@ class StoryPlayerGroupHolder$4
     if ((paramInt >= 0) && (paramInt < paramStoryPlayerGroupHolder.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.getCount()))
     {
       Object localObject = paramStoryPlayerGroupHolder.a(paramInt);
-      if (localObject == null) {
-        break label156;
-      }
-      localObject = (VideoViewVideoHolder)((VideoHolderBase)localObject).a(VideoViewVideoHolder.class);
-      if ((localObject != null) && (!((VideoViewVideoHolder)localObject).c()))
+      if (localObject != null)
       {
-        if (((VideoViewVideoHolder)localObject).jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData != null) {
-          paramStoryPlayerGroupHolder = ((VideoViewVideoHolder)localObject).jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.jdField_a_of_type_JavaLangString;
-        }
-        while ((paramStoryPlayerGroupHolder != null) && (!paramStoryPlayerGroupHolder.startsWith("Loading"))) {
-          if (paramBoolean)
-          {
-            SLog.a(this.a.jdField_a_of_type_JavaLangString, "pre-prepared video %s. vid = %s", paramString, paramStoryPlayerGroupHolder);
-            ((VideoViewVideoHolder)localObject).a(8, "pre-prepared");
-            return true;
+        localObject = (VideoViewVideoHolder)((VideoHolderBase)localObject).a(VideoViewVideoHolder.class);
+        if ((localObject != null) && (!((VideoViewVideoHolder)localObject).c()))
+        {
+          if (((VideoViewVideoHolder)localObject).jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData != null) {
+            paramStoryPlayerGroupHolder = ((VideoViewVideoHolder)localObject).jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.jdField_a_of_type_JavaLangString;
+          } else {
             paramStoryPlayerGroupHolder = null;
           }
-          else
+          if ((paramStoryPlayerGroupHolder != null) && (!paramStoryPlayerGroupHolder.startsWith("Loading")))
           {
+            if (paramBoolean)
+            {
+              SLog.a(this.a.jdField_a_of_type_JavaLangString, "pre-prepared video %s. vid = %s", paramString, paramStoryPlayerGroupHolder);
+              ((VideoViewVideoHolder)localObject).a(8, "pre-prepared");
+              return true;
+            }
             SLog.a(this.a.jdField_a_of_type_JavaLangString, "pre-load video %s. vid = %s", paramString, paramStoryPlayerGroupHolder);
             TVKPreloader.a(paramStoryPlayerGroupHolder, true);
             return true;
           }
+          SLog.a(this.a.jdField_a_of_type_JavaLangString, "pre-prepared-load video %s failed. vid = %s", paramString, paramStoryPlayerGroupHolder);
         }
-        SLog.a(this.a.jdField_a_of_type_JavaLangString, "pre-prepared-load video %s failed. vid = %s", paramString, paramStoryPlayerGroupHolder);
+      }
+      else
+      {
+        SLog.a(this.a.jdField_a_of_type_JavaLangString, "pre-prepared-load video %s failed. group=%d, video=%d", paramString, Integer.valueOf(paramStoryPlayerGroupHolder.jdField_a_of_type_Int), Integer.valueOf(paramInt));
       }
     }
-    for (;;)
-    {
-      return false;
-      label156:
-      SLog.a(this.a.jdField_a_of_type_JavaLangString, "pre-prepared-load video %s failed. group=%d, video=%d", paramString, Integer.valueOf(paramStoryPlayerGroupHolder.jdField_a_of_type_Int), Integer.valueOf(paramInt));
-    }
+    return false;
   }
   
   public void a(VideoViewVideoHolder paramVideoViewVideoHolder, IVideoView paramIVideoView)
@@ -72,7 +70,8 @@ class StoryPlayerGroupHolder$4
       paramVideoViewVideoHolder = (StoryPlayerGroupAdapter)this.a.a().a();
       if (paramVideoViewVideoHolder != null)
       {
-        a(this.a, this.a.b + 1, true, "[↓]");
+        paramString2 = this.a;
+        a(paramString2, paramString2.b + 1, true, "[↓]");
         paramVideoViewVideoHolder = paramVideoViewVideoHolder.a.values().iterator();
         while (paramVideoViewVideoHolder.hasNext())
         {
@@ -96,74 +95,70 @@ class StoryPlayerGroupHolder$4
   public boolean a(VideoViewVideoHolder paramVideoViewVideoHolder, IVideoView paramIVideoView, boolean paramBoolean)
   {
     SLog.d(this.a.jdField_a_of_type_JavaLangString, "onCompletion, current item = %d, repeat = %s, repeatMode=%d", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c()), Boolean.valueOf(paramBoolean), Integer.valueOf(StoryPlayerGroupHolder.b(this.a)) });
-    int i;
-    if (((StoryPlayerGroupHolder.b(this.a) & 0x1) == 1) || (paramBoolean))
+    if (((StoryPlayerGroupHolder.b(this.a) & 0x1) != 1) && (!paramBoolean))
     {
-      paramVideoViewVideoHolder.f();
-      paramVideoViewVideoHolder.a(10, true, "repeat video");
-      i = 0;
-    }
-    for (;;)
-    {
-      if (i != 0)
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c() < this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.getCount() - 1)
       {
-        SLog.d(this.a.jdField_a_of_type_JavaLangString, "onCompletion, current item = %d, finish", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c()) });
-        StoryReportor.a("play_video", "auto_quit", 0, 0, new String[0]);
-        this.a.a().finish();
+        this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setCurrentItem(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c() + 1, true);
       }
-      do
+      else if ((StoryPlayerGroupHolder.b(this.a) & 0x2) == 2)
       {
-        return true;
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c() < this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.getCount() - 1)
+        if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.getCount() == 1)
         {
-          this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setCurrentItem(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c() + 1, true);
-          i = 0;
-          break;
-        }
-        if ((StoryPlayerGroupHolder.b(this.a) & 0x2) == 2)
-        {
-          if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.getCount() == 1)
-          {
-            paramVideoViewVideoHolder.f();
-            paramVideoViewVideoHolder.a(10, true, "repeat feed");
-            i = 0;
-            break;
-          }
-          this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setCurrentItem(0, true);
-          i = 0;
-          break;
-        }
-        if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c() != this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.getCount() - 1) {
-          break label440;
-        }
-      } while ((StoryPlayerGroupHolder.a(this.a) != null) && (StoryPlayerGroupHolder.a(this.a).a(paramVideoViewVideoHolder, paramIVideoView, false)));
-      if (this.a.d())
-      {
-        paramVideoViewVideoHolder = (LoadingMoreWidget)this.a.b(LoadingMoreWidget.class);
-        if (paramVideoViewVideoHolder != null) {
-          paramVideoViewVideoHolder.d();
-        }
-        SLog.b(this.a.jdField_a_of_type_JavaLangString + "Q.qqstory.weishi", "onCompletion, showLoadingMoreWidget");
-        i = 0;
-      }
-      else
-      {
-        paramVideoViewVideoHolder = this.a.a();
-        if (paramVideoViewVideoHolder.c() < paramVideoViewVideoHolder.a().getCount() - 1)
-        {
-          paramVideoViewVideoHolder.setEnableScrollDirection(true, true, false, false);
-          paramVideoViewVideoHolder.setCurrentItem(paramVideoViewVideoHolder.c() + 1, true);
-          i = 0;
+          paramVideoViewVideoHolder.f();
+          paramVideoViewVideoHolder.a(10, true, "repeat feed");
         }
         else
         {
-          i = 1;
-          continue;
-          label440:
-          i = 1;
+          this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.setCurrentItem(0, true);
         }
       }
+      else
+      {
+        if (this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c() == this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerGroupHolder$StoryPlayerVideoAdapter.getCount() - 1)
+        {
+          if ((StoryPlayerGroupHolder.a(this.a) != null) && (StoryPlayerGroupHolder.a(this.a).a(paramVideoViewVideoHolder, paramIVideoView, false))) {
+            return true;
+          }
+          if (this.a.d())
+          {
+            paramVideoViewVideoHolder = (LoadingMoreWidget)this.a.b(LoadingMoreWidget.class);
+            if (paramVideoViewVideoHolder != null) {
+              paramVideoViewVideoHolder.d();
+            }
+            paramVideoViewVideoHolder = new StringBuilder();
+            paramVideoViewVideoHolder.append(this.a.jdField_a_of_type_JavaLangString);
+            paramVideoViewVideoHolder.append("Q.qqstory.weishi");
+            SLog.b(paramVideoViewVideoHolder.toString(), "onCompletion, showLoadingMoreWidget");
+            break label371;
+          }
+          paramVideoViewVideoHolder = this.a.a();
+          if (paramVideoViewVideoHolder.c() < paramVideoViewVideoHolder.a().getCount() - 1)
+          {
+            paramVideoViewVideoHolder.setEnableScrollDirection(true, true, false, false);
+            paramVideoViewVideoHolder.setCurrentItem(paramVideoViewVideoHolder.c() + 1, true);
+            break label371;
+          }
+        }
+        i = 1;
+        break label374;
+      }
     }
+    else
+    {
+      paramVideoViewVideoHolder.f();
+      paramVideoViewVideoHolder.a(10, true, "repeat video");
+    }
+    label371:
+    int i = 0;
+    label374:
+    if (i != 0)
+    {
+      SLog.d(this.a.jdField_a_of_type_JavaLangString, "onCompletion, current item = %d, finish", new Object[] { Integer.valueOf(this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetXViewPager.c()) });
+      StoryReportor.a("play_video", "auto_quit", 0, 0, new String[0]);
+      this.a.a().finish();
+    }
+    return true;
   }
   
   public void b(VideoViewVideoHolder paramVideoViewVideoHolder, IVideoView paramIVideoView)
@@ -179,11 +174,12 @@ class StoryPlayerGroupHolder$4
       paramIVideoView = (StoryPlayerGroupAdapter)this.a.a().a();
       if (paramIVideoView != null)
       {
-        a(this.a, this.a.b + 1, true, "[↓]");
+        StoryPlayerGroupHolder localStoryPlayerGroupHolder = this.a;
+        a(localStoryPlayerGroupHolder, localStoryPlayerGroupHolder.b + 1, true, "[↓]");
         paramIVideoView = paramIVideoView.a.values().iterator();
         while (paramIVideoView.hasNext())
         {
-          StoryPlayerGroupHolder localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)paramIVideoView.next();
+          localStoryPlayerGroupHolder = (StoryPlayerGroupHolder)paramIVideoView.next();
           if (localStoryPlayerGroupHolder != this.a) {
             if (localStoryPlayerGroupHolder.jdField_a_of_type_Int < this.a.jdField_a_of_type_Int) {
               a(localStoryPlayerGroupHolder, localStoryPlayerGroupHolder.b, false, "[←]");
@@ -192,7 +188,8 @@ class StoryPlayerGroupHolder$4
             }
           }
         }
-        a(this.a, this.a.b - 1, false, "[↑]");
+        paramIVideoView = this.a;
+        a(paramIVideoView, paramIVideoView.b - 1, false, "[↑]");
       }
       paramIVideoView = this.a.jdField_a_of_type_JavaUtilList;
       int i = paramIVideoView.size();
@@ -210,7 +207,7 @@ class StoryPlayerGroupHolder$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.StoryPlayerGroupHolder.4
  * JD-Core Version:    0.7.0.1
  */

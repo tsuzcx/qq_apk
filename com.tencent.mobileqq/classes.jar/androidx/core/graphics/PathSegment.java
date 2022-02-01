@@ -21,16 +21,14 @@ public final class PathSegment
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof PathSegment)) {
-        return false;
-      }
-      paramObject = (PathSegment)paramObject;
-    } while ((Float.compare(this.mStartFraction, paramObject.mStartFraction) == 0) && (Float.compare(this.mEndFraction, paramObject.mEndFraction) == 0) && (this.mStart.equals(paramObject.mStart)) && (this.mEnd.equals(paramObject.mEnd)));
-    return false;
+    }
+    if (!(paramObject instanceof PathSegment)) {
+      return false;
+    }
+    paramObject = (PathSegment)paramObject;
+    return (Float.compare(this.mStartFraction, paramObject.mStartFraction) == 0) && (Float.compare(this.mEndFraction, paramObject.mEndFraction) == 0) && (this.mStart.equals(paramObject.mStart)) && (this.mEnd.equals(paramObject.mEnd));
   }
   
   @NonNull
@@ -57,27 +55,41 @@ public final class PathSegment
   
   public int hashCode()
   {
-    int j = 0;
     int k = this.mStart.hashCode();
-    if (this.mStartFraction != 0.0F) {}
-    for (int i = Float.floatToIntBits(this.mStartFraction);; i = 0)
-    {
-      int m = this.mEnd.hashCode();
-      if (this.mEndFraction != 0.0F) {
-        j = Float.floatToIntBits(this.mEndFraction);
-      }
-      return ((i + k * 31) * 31 + m) * 31 + j;
+    float f = this.mStartFraction;
+    int j = 0;
+    int i;
+    if (f != 0.0F) {
+      i = Float.floatToIntBits(f);
+    } else {
+      i = 0;
     }
+    int m = this.mEnd.hashCode();
+    f = this.mEndFraction;
+    if (f != 0.0F) {
+      j = Float.floatToIntBits(f);
+    }
+    return ((k * 31 + i) * 31 + m) * 31 + j;
   }
   
   public String toString()
   {
-    return "PathSegment{start=" + this.mStart + ", startFraction=" + this.mStartFraction + ", end=" + this.mEnd + ", endFraction=" + this.mEndFraction + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PathSegment{start=");
+    localStringBuilder.append(this.mStart);
+    localStringBuilder.append(", startFraction=");
+    localStringBuilder.append(this.mStartFraction);
+    localStringBuilder.append(", end=");
+    localStringBuilder.append(this.mEnd);
+    localStringBuilder.append(", endFraction=");
+    localStringBuilder.append(this.mEndFraction);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.PathSegment
  * JD-Core Version:    0.7.0.1
  */

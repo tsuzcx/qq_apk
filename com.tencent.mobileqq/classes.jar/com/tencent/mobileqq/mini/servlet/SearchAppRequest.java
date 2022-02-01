@@ -25,15 +25,18 @@ public class SearchAppRequest
   
   public static MiniAppSearch.StSearchAppRsp onResponse(byte[] paramArrayOfByte)
   {
-    MiniAppSearch.StSearchAppRsp localStSearchAppRsp = new MiniAppSearch.StSearchAppRsp();
+    Object localObject = new MiniAppSearch.StSearchAppRsp();
     try
     {
-      localStSearchAppRsp.mergeFrom(decode(paramArrayOfByte));
-      return localStSearchAppRsp;
+      ((MiniAppSearch.StSearchAppRsp)localObject).mergeFrom(decode(paramArrayOfByte));
+      return localObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QLog.e("SearchAppRequest", 2, "onResponse fail." + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse fail.");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      QLog.e("SearchAppRequest", 2, ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -45,7 +48,7 @@ public class SearchAppRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.SearchAppRequest
  * JD-Core Version:    0.7.0.1
  */

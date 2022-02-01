@@ -52,68 +52,77 @@ public final class QflutterQtoastPlugin
     Intrinsics.checkParameterIsNotNull(paramMethodCall, "call");
     Intrinsics.checkParameterIsNotNull(paramResult, "result");
     Object localObject = paramMethodCall.method;
-    if (localObject == null) {}
-    label180:
-    do
+    if (localObject != null)
     {
-      do
+      int i = ((String)localObject).hashCode();
+      if (i != -1867169789)
       {
-        int i;
-        do
+        if (i != 3529469)
         {
-          paramResult.notImplemented();
-          return;
-          i = ((String)localObject).hashCode();
-          if (i == -1867169789) {
-            break label180;
+          if ((i != 96784904) || (!((String)localObject).equals("error"))) {
+            break label226;
           }
-          if (i == 3529469) {
-            break;
+          paramMethodCall = paramMethodCall.arguments;
+          if (paramMethodCall != null)
+          {
+            paramMethodCall = (String)paramMethodCall;
+            localObject = sToast;
+            if (localObject != null) {
+              ((QFlutterToast)localObject).error(paramMethodCall);
+            }
           }
-        } while ((i != 96784904) || (!((String)localObject).equals("error")));
-        paramMethodCall = paramMethodCall.arguments;
-        if (paramMethodCall != null)
-        {
-          paramMethodCall = (String)paramMethodCall;
-          localObject = sToast;
-          if (localObject != null) {
-            ((QFlutterToast)localObject).error(paramMethodCall);
+          else
+          {
+            throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
           }
-          paramResult.success(Integer.valueOf(0));
-          return;
         }
-        throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
-      } while (!((String)localObject).equals("show"));
-      paramMethodCall = paramMethodCall.arguments;
-      if (paramMethodCall != null)
+        else
+        {
+          if (!((String)localObject).equals("show")) {
+            break label226;
+          }
+          paramMethodCall = paramMethodCall.arguments;
+          if (paramMethodCall != null)
+          {
+            paramMethodCall = (String)paramMethodCall;
+            localObject = sToast;
+            if (localObject != null) {
+              ((QFlutterToast)localObject).show(paramMethodCall);
+            }
+          }
+          else
+          {
+            throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
+          }
+        }
+      }
+      else
       {
+        if (!((String)localObject).equals("success")) {
+          break label226;
+        }
+        paramMethodCall = paramMethodCall.arguments;
+        if (paramMethodCall == null) {
+          break label216;
+        }
         paramMethodCall = (String)paramMethodCall;
         localObject = sToast;
         if (localObject != null) {
-          ((QFlutterToast)localObject).show(paramMethodCall);
+          ((QFlutterToast)localObject).success(paramMethodCall);
         }
-        paramResult.success(Integer.valueOf(0));
-        return;
-      }
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
-    } while (!((String)localObject).equals("success"));
-    paramMethodCall = paramMethodCall.arguments;
-    if (paramMethodCall != null)
-    {
-      paramMethodCall = (String)paramMethodCall;
-      localObject = sToast;
-      if (localObject != null) {
-        ((QFlutterToast)localObject).success(paramMethodCall);
       }
       paramResult.success(Integer.valueOf(0));
       return;
+      label216:
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
     }
-    throw new TypeCastException("null cannot be cast to non-null type kotlin.String");
+    label226:
+    paramResult.notImplemented();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qflutter_qtoast.QflutterQtoastPlugin
  * JD-Core Version:    0.7.0.1
  */

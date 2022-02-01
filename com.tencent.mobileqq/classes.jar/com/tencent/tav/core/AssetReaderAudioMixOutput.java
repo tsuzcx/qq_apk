@@ -3,6 +3,7 @@ package com.tencent.tav.core;
 import android.support.annotation.Nullable;
 import com.tencent.tav.asset.AssetTrack;
 import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.AudioInfo;
 import java.util.ArrayList;
@@ -46,8 +47,9 @@ public class AssetReaderAudioMixOutput
   
   void release()
   {
-    if (this.audioCompositionDecoderTrack != null) {
-      this.audioCompositionDecoderTrack.release();
+    AudioCompositionDecoderTrack localAudioCompositionDecoderTrack = this.audioCompositionDecoderTrack;
+    if (localAudioCompositionDecoderTrack != null) {
+      localAudioCompositionDecoderTrack.release();
     }
   }
   
@@ -60,8 +62,9 @@ public class AssetReaderAudioMixOutput
   
   public void setAudioMix(AudioMix paramAudioMix)
   {
-    if (this.audioCompositionDecoderTrack != null) {
-      this.audioCompositionDecoderTrack.setAudioMix(paramAudioMix);
+    AudioCompositionDecoderTrack localAudioCompositionDecoderTrack = this.audioCompositionDecoderTrack;
+    if (localAudioCompositionDecoderTrack != null) {
+      localAudioCompositionDecoderTrack.setAudioMix(paramAudioMix);
     }
   }
   
@@ -69,14 +72,30 @@ public class AssetReaderAudioMixOutput
   {
     if ((this.audioCompositionDecoderTrack != null) && (!this.decoderStarted))
     {
-      this.audioCompositionDecoderTrack.start(null, paramAssetReader.getTimeRange());
+      if (paramAssetReader.getTimeRange() != null)
+      {
+        paramIContextCreate = paramAssetReader.getTimeRange().getStart();
+        if (paramIContextCreate.equals(CMTime.CMTimeZero))
+        {
+          this.audioCompositionDecoderTrack.start(null, paramAssetReader.getTimeRange());
+        }
+        else
+        {
+          this.audioCompositionDecoderTrack.start(null);
+          this.audioCompositionDecoderTrack.seekTo(paramIContextCreate, false, false);
+        }
+      }
+      else
+      {
+        this.audioCompositionDecoderTrack.start(null);
+      }
       this.decoderStarted = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AssetReaderAudioMixOutput
  * JD-Core Version:    0.7.0.1
  */

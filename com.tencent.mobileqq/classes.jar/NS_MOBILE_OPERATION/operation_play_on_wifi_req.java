@@ -34,15 +34,16 @@ public final class operation_play_on_wifi_req
   {
     paramJceOutputStream.write(this.uFeedsUin, 0);
     paramJceOutputStream.write(this.uTime, 1);
-    if (this.strFeedUgcKey != null) {
-      paramJceOutputStream.write(this.strFeedUgcKey, 2);
+    String str = this.strFeedUgcKey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.isSetPlayOnWifi, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_play_on_wifi_req
  * JD-Core Version:    0.7.0.1
  */

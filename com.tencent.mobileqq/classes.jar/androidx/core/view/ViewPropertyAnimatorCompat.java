@@ -196,15 +196,14 @@ public final class ViewPropertyAnimatorCompat
     View localView = (View)this.mView.get();
     if (localView != null)
     {
-      if (Build.VERSION.SDK_INT >= 16) {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
         setListenerInternal(localView, paramViewPropertyAnimatorListener);
+        return this;
       }
+      localView.setTag(2113929216, paramViewPropertyAnimatorListener);
+      setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
     }
-    else {
-      return this;
-    }
-    localView.setTag(2113929216, paramViewPropertyAnimatorListener);
-    setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
     return this;
   }
   
@@ -298,15 +297,14 @@ public final class ViewPropertyAnimatorCompat
     View localView = (View)this.mView.get();
     if (localView != null)
     {
-      if (Build.VERSION.SDK_INT >= 16) {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
         localView.animate().withEndAction(paramRunnable);
+        return this;
       }
+      setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
+      this.mEndAction = paramRunnable;
     }
-    else {
-      return this;
-    }
-    setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
-    this.mEndAction = paramRunnable;
     return this;
   }
   
@@ -316,15 +314,14 @@ public final class ViewPropertyAnimatorCompat
     View localView = (View)this.mView.get();
     if (localView != null)
     {
-      if (Build.VERSION.SDK_INT >= 16) {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
         localView.animate().withLayer();
+        return this;
       }
+      this.mOldLayerType = localView.getLayerType();
+      setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
     }
-    else {
-      return this;
-    }
-    this.mOldLayerType = localView.getLayerType();
-    setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
     return this;
   }
   
@@ -333,15 +330,14 @@ public final class ViewPropertyAnimatorCompat
     View localView = (View)this.mView.get();
     if (localView != null)
     {
-      if (Build.VERSION.SDK_INT >= 16) {
+      if (Build.VERSION.SDK_INT >= 16)
+      {
         localView.animate().withStartAction(paramRunnable);
+        return this;
       }
+      setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
+      this.mStartAction = paramRunnable;
     }
-    else {
-      return this;
-    }
-    setListenerInternal(localView, new ViewPropertyAnimatorCompat.ViewPropertyAnimatorListenerApi14(this));
-    this.mStartAction = paramRunnable;
     return this;
   }
   
@@ -401,7 +397,7 @@ public final class ViewPropertyAnimatorCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewPropertyAnimatorCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -90,32 +90,31 @@ public class a
   
   public void a()
   {
-    if ((this.d == null) || (!this.d.hasArray())) {
-      return;
-    }
-    try
+    ??? = this.d;
+    if (??? != null)
     {
-      synchronized (this.d)
+      if (!???.hasArray()) {
+        return;
+      }
+      try
       {
-        i = this.a.read(this.d.array(), 0, this.d.capacity());
-        if (i <= 0)
+        synchronized (this.d)
         {
-          this.d.limit(0);
-          return;
+          i = this.a.read(this.d.array(), 0, this.d.capacity());
         }
       }
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      catch (IOException localIOException)
       {
         Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMCountingInputStream", localIOException.toString() });
         int i = 0;
-        continue;
-        if (i < this.d.capacity()) {
+        if (i <= 0) {
+          this.d.limit(0);
+        } else if (i < this.d.capacity()) {
           this.d.limit(i);
         }
+        return;
       }
+      throw localIOException;
     }
   }
   
@@ -126,9 +125,11 @@ public class a
   
   public int available()
   {
-    int i = 0;
+    int i;
     if (this.e) {
       i = this.d.remaining();
+    } else {
+      i = 0;
     }
     try
     {
@@ -144,8 +145,9 @@ public class a
   
   public String b()
   {
-    if (this.d != null) {
-      synchronized (this.d)
+    ByteBuffer localByteBuffer = this.d;
+    if (localByteBuffer != null) {
+      try
       {
         Object localObject1 = new byte[this.d.limit()];
         int i = 0;
@@ -157,6 +159,7 @@ public class a
         localObject1 = new String((byte[])localObject1);
         return localObject1;
       }
+      finally {}
     }
     return "";
   }
@@ -196,46 +199,50 @@ public class a
   
   public int read()
   {
-    if (this.e) {}
     int i;
-    synchronized (this.d)
-    {
-      if (a(1L))
+    if (this.e) {
+      synchronized (this.d)
       {
-        i = c();
-        if (i >= 0) {
-          this.b += 1L;
-        }
-        return i;
-      }
-      try
-      {
-        i = this.a.read();
-        if (i >= 0)
+        if (a(1L))
         {
-          this.b += 1L;
+          i = c();
+          if (i >= 0) {
+            this.b += 1L;
+          }
           return i;
         }
       }
-      catch (IOException localIOException)
-      {
-        a(localIOException);
-        throw localIOException;
-      }
     }
-    e();
-    return i;
+    try
+    {
+      i = this.a.read();
+      if (i >= 0)
+      {
+        this.b += 1L;
+        return i;
+      }
+      e();
+      return i;
+    }
+    catch (IOException localIOException)
+    {
+      a(localIOException);
+      throw localIOException;
+    }
   }
   
   public int read(byte[] paramArrayOfByte)
   {
     int i = paramArrayOfByte.length;
-    ByteBuffer localByteBuffer;
-    int j;
+    Object localObject;
+    long l;
     if (this.e)
     {
-      localByteBuffer = this.d;
-      long l = i;
+      localObject = this.d;
+      l = i;
+    }
+    for (;;)
+    {
       try
       {
         if (a(l))
@@ -248,21 +255,23 @@ public class a
           }
           throw new IOException("readBufferBytes failed");
         }
-      }
-      finally {}
-      j = this.d.remaining();
-      if (j > 0)
-      {
+        j = this.d.remaining();
+        if (j <= 0) {
+          break label249;
+        }
         j = a(paramArrayOfByte, 0, j);
-        if (j < 0) {
+        if (j >= 0)
+        {
+          i -= j;
+          this.b += j;
+        }
+        else
+        {
           throw new IOException("partial read from buffer failed");
         }
-        i -= j;
-        this.b += j;
       }
-    }
-    for (;;)
-    {
+      finally {}
+      int j = 0;
       try
       {
         i = this.a.read(paramArrayOfByte, j, i);
@@ -276,31 +285,34 @@ public class a
           e();
           return i;
         }
+        return j;
       }
       catch (IOException paramArrayOfByte)
       {
         Logger.INSTANCE.e(new String[] { "QAPM_Impl_QAPMCountingInputStream", paramArrayOfByte.toString() });
-        System.out.println("NOTIFY STREAM ERROR: " + paramArrayOfByte);
+        localObject = System.out;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("NOTIFY STREAM ERROR: ");
+        localStringBuilder.append(paramArrayOfByte);
+        ((PrintStream)localObject).println(localStringBuilder.toString());
         paramArrayOfByte.printStackTrace();
         a(paramArrayOfByte);
         throw paramArrayOfByte;
       }
-      return j;
-      j = 0;
-      break;
+      label249:
       j = 0;
     }
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
+    boolean bool = this.e;
     int i = 0;
     int k = 0;
     int j = paramInt2;
-    ByteBuffer localByteBuffer;
-    if (this.e)
+    if (bool)
     {
-      localByteBuffer = this.d;
+      ByteBuffer localByteBuffer = this.d;
       long l = paramInt2;
       try
       {
@@ -314,20 +326,24 @@ public class a
           }
           throw new IOException("readBufferBytes failed");
         }
+        int m = this.d.remaining();
+        i = k;
+        j = paramInt2;
+        if (m > 0)
+        {
+          i = a(paramArrayOfByte, paramInt1, m);
+          if (i >= 0)
+          {
+            j = paramInt2 - i;
+            this.b += i;
+          }
+          else
+          {
+            throw new IOException("partial read from buffer failed");
+          }
+        }
       }
       finally {}
-      int m = this.d.remaining();
-      i = k;
-      j = paramInt2;
-      if (m > 0)
-      {
-        i = a(paramArrayOfByte, paramInt1, m);
-        if (i < 0) {
-          throw new IOException("partial read from buffer failed");
-        }
-        j = paramInt2 - i;
-        this.b += i;
-      }
     }
     try
     {
@@ -342,13 +358,13 @@ public class a
         e();
         return paramInt1;
       }
+      return i;
     }
     catch (IOException paramArrayOfByte)
     {
       a(paramArrayOfByte);
       throw paramArrayOfByte;
     }
-    return i;
   }
   
   public void reset()
@@ -371,38 +387,39 @@ public class a
   public long skip(long paramLong)
   {
     long l = paramLong;
-    if (this.e) {}
-    synchronized (this.d)
-    {
-      if (a(paramLong))
+    if (this.e) {
+      synchronized (this.d)
       {
-        this.d.position((int)paramLong);
-        this.b += paramLong;
-        return paramLong;
-      }
-      l = paramLong - this.d.remaining();
-      if (l > 0L)
-      {
-        this.d.position(this.d.remaining());
-        try
+        if (a(paramLong))
         {
-          paramLong = this.a.skip(l);
+          this.d.position((int)paramLong);
           this.b += paramLong;
           return paramLong;
         }
-        catch (IOException localIOException)
-        {
-          a(localIOException);
-          throw localIOException;
+        l = paramLong - this.d.remaining();
+        if (l > 0L) {
+          this.d.position(this.d.remaining());
+        } else {
+          throw new IOException("partial read from buffer (skip) failed");
         }
       }
-      throw new IOException("partial read from buffer (skip) failed");
+    }
+    try
+    {
+      paramLong = this.a.skip(l);
+      this.b += paramLong;
+      return paramLong;
+    }
+    catch (IOException localIOException)
+    {
+      a(localIOException);
+      throw localIOException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.b.a
  * JD-Core Version:    0.7.0.1
  */

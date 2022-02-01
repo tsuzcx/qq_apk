@@ -39,14 +39,15 @@ public final class PushVoteIncreaseInfo
   {
     paramJceOutputStream.write(this.iIncrement, 0);
     paramJceOutputStream.write(this.lTime, 1);
-    if (this.vVoterList != null) {
-      paramJceOutputStream.write(this.vVoterList, 2);
+    ArrayList localArrayList = this.vVoterList;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.PushVoteIncreaseInfo
  * JD-Core Version:    0.7.0.1
  */

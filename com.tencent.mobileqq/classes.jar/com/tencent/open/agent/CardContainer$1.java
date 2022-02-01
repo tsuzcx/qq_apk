@@ -1,39 +1,26 @@
 package com.tencent.open.agent;
 
-import android.os.Handler;
-import android.os.Looper;
-import android.os.Message;
-import com.tencent.mobileqq.widget.AnyScaleTypeImageView;
-import com.tencent.qphone.base.util.QLog;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.widget.RelativeLayout.LayoutParams;
 
 class CardContainer$1
-  extends Handler
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  CardContainer$1(CardContainer paramCardContainer, Looper paramLooper)
-  {
-    super(paramLooper);
-  }
+  CardContainer$1(CardContainer paramCardContainer) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("CardContainer", 2, "-->handleMessage MSG_UPDATE");
-      }
-      CardContainer.a(this.a);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetAnyScaleTypeImageView.setImageDrawable(this.a.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-    }
+    int i = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    paramValueAnimator = (RelativeLayout.LayoutParams)this.a.a.getLayoutParams();
+    paramValueAnimator.topMargin = i;
+    this.a.a.setLayoutParams(paramValueAnimator);
+    this.a.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.CardContainer.1
  * JD-Core Version:    0.7.0.1
  */

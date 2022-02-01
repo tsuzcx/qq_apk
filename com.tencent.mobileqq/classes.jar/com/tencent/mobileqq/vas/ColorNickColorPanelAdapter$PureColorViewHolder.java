@@ -19,7 +19,7 @@ public class ColorNickColorPanelAdapter$PureColorViewHolder
   public ColorNickColorPanelAdapter$PureColorViewHolder(View paramView, ColorNickColorPanelAdapter.OnColorSelectListener paramOnColorSelectListener, ColorNickColorPanelAdapter.PureColorAdapter paramPureColorAdapter, ColorNickColorPanelAdapter paramColorNickColorPanelAdapter)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131364952));
+    this.jdField_a_of_type_ComTencentWidgetHorizontalListView = ((HorizontalListView)paramView.findViewById(2131364836));
     this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter = paramPureColorAdapter;
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqVasColorNickColorPanelAdapter$PureColorAdapter);
     this.jdField_a_of_type_ComTencentWidgetHorizontalListView.setOnItemClickListener(this);
@@ -41,7 +41,7 @@ public class ColorNickColorPanelAdapter$PureColorViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.ColorNickColorPanelAdapter.PureColorViewHolder
  * JD-Core Version:    0.7.0.1
  */

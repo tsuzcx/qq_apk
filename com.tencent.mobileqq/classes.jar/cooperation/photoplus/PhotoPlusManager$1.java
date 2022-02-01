@@ -23,34 +23,48 @@ class PhotoPlusManager$1
     PhotoPlusManager.a(this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager).remove(this.jdField_a_of_type_JavaLangString);
     if (paramDownloadTask.a() == 3)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] download finished " + this.b);
+      if (QLog.isColorLevel())
+      {
+        paramDownloadTask = new StringBuilder();
+        paramDownloadTask.append("[onDone] download finished ");
+        paramDownloadTask.append(this.b);
+        QLog.d("PhotoPlusManager", 2, paramDownloadTask.toString());
       }
-      if (TextUtils.isEmpty(this.c)) {
+      if (TextUtils.isEmpty(this.c))
+      {
         this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
+        return;
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
       paramDownloadTask = PortalUtils.a(this.jdField_a_of_type_JavaLangString);
       if (this.c.equalsIgnoreCase(paramDownloadTask))
       {
         this.jdField_a_of_type_CooperationPhotoplusPhotoPlusManager.a(this.jdField_a_of_type_JavaLangString);
         return;
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("PhotoPlusManager", 2, "[onDone] checkMd5 failed: " + this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        paramDownloadTask = new StringBuilder();
+        paramDownloadTask.append("[onDone] checkMd5 failed: ");
+        paramDownloadTask.append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("PhotoPlusManager", 2, paramDownloadTask.toString());
       }
-      FileUtils.e(this.jdField_a_of_type_JavaLangString);
+      FileUtils.deleteFile(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    QLog.d("PhotoPlusManager", 2, "[onDone] downloadFile failed: " + paramDownloadTask.b + " code=" + paramDownloadTask.a);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onDone] downloadFile failed: ");
+      localStringBuilder.append(paramDownloadTask.b);
+      localStringBuilder.append(" code=");
+      localStringBuilder.append(paramDownloadTask.a);
+      QLog.d("PhotoPlusManager", 2, localStringBuilder.toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.photoplus.PhotoPlusManager.1
  * JD-Core Version:    0.7.0.1
  */

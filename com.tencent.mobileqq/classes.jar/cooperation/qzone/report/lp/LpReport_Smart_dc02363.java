@@ -21,26 +21,32 @@ public class LpReport_Smart_dc02363
   
   public String getSimpleInfo()
   {
-    return "dc02363:batch_id:," + this.batch_id;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc02363:batch_id:,");
+    localStringBuilder.append(this.batch_id);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
   {
     HashMap localHashMap = new HashMap();
-    if (this.uin <= 1000L) {}
-    for (String str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();; str = String.valueOf(this.uin))
-    {
-      localHashMap.put("uin", str);
-      LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
-      localHashMap.put("batch_id", String.valueOf(this.batch_id));
-      LpReportUtils.safePut(localHashMap, "msg", this.msg);
-      return localHashMap;
+    long l = this.uin;
+    String str;
+    if (l <= 1000L) {
+      str = ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getAccount();
+    } else {
+      str = String.valueOf(l);
     }
+    localHashMap.put("uin", str);
+    LpReportUtils.safePut(localHashMap, "qua", ((ILpReportUtils)QRoute.api(ILpReportUtils.class)).getQUA3());
+    localHashMap.put("batch_id", String.valueOf(this.batch_id));
+    LpReportUtils.safePut(localHashMap, "msg", this.msg);
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReport_Smart_dc02363
  * JD-Core Version:    0.7.0.1
  */

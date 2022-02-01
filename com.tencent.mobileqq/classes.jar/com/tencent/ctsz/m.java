@@ -9,22 +9,23 @@ import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.ims.signature.SignatureReport;
 import com.tencent.ims.signature.SignatureResult;
-import com.tencent.mobileqq.activity.NotificationActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
-import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mqpsdk.INetTransportProvider.INetTransportCodec;
 import com.tencent.mqpsdk.INetTransportProvider.INetTransportEventListener;
 import com.tencent.msfmqpsdkbridge.MSFNetTransportProvider;
 import com.tencent.qphone.base.util.BaseApplication;
-import com.tencent.qphone.base.util.QLog;
-import com.tencent.usq.u;
-import mqq.app.MobileQQ;
+import java.io.File;
+import java.util.Enumeration;
+import java.util.HashSet;
+import java.util.Set;
+import java.util.jar.JarEntry;
+import java.util.jar.JarFile;
 
 public class m
   implements INetTransportProvider.INetTransportEventListener
@@ -84,143 +85,60 @@ public class m
   
   private void a(String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      String str1 = a(new byte[] { 87, 95, 84, 108, 70, 65, 95 });
+      String str2 = a(new byte[] { 87, 95, 84, 108, 65, 81, 70, 71, 71, 92, 93 });
+      String str3 = a(new byte[] { 87, 95, 84, 108, 95, 81, 70, 71, 71, 92, 93 });
+      String str4 = a(new byte[] { 87, 95, 84, 108, 80, 92, 93, 71, 86, 93, 71 });
+      String str5 = a(new byte[] { 87, 95, 84, 108, 71, 90, 71, 95, 86 });
+      BaseActivity localBaseActivity = BaseActivity.sTopActivity;
+      Intent localIntent = new Intent();
+      localIntent.putExtra("type", 9);
+      Bundle localBundle = new Bundle();
+      localBundle.putString(str5, paramString1);
+      localBundle.putString(str4, paramString2);
+      localBundle.putString(str3, paramString3);
+      localBundle.putString(str2, paramString4);
+      localBundle.putString(str1, paramString5);
+      localIntent.putExtras(localBundle);
+      localIntent.setFlags(872415232);
+      RouteUtils.a(localBaseActivity, localIntent, "/base/notification");
     }
-    String str1 = a(new byte[] { 87, 95, 84, 108, 70, 65, 95 });
-    String str2 = a(new byte[] { 87, 95, 84, 108, 65, 81, 70, 71, 71, 92, 93 });
-    String str3 = a(new byte[] { 87, 95, 84, 108, 95, 81, 70, 71, 71, 92, 93 });
-    String str4 = a(new byte[] { 87, 95, 84, 108, 80, 92, 93, 71, 86, 93, 71 });
-    String str5 = a(new byte[] { 87, 95, 84, 108, 71, 90, 71, 95, 86 });
-    BaseActivity localBaseActivity = BaseActivity.sTopActivity;
-    Intent localIntent = new Intent(localBaseActivity, NotificationActivity.class);
-    localIntent.putExtra("type", 9);
-    Bundle localBundle = new Bundle();
-    localBundle.putString(str5, paramString1);
-    localBundle.putString(str4, paramString2);
-    localBundle.putString(str3, paramString3);
-    localBundle.putString(str2, paramString4);
-    localBundle.putString(str1, paramString5);
-    localIntent.putExtras(localBundle);
-    localIntent.setFlags(872415232);
-    localBaseActivity.startActivity(localIntent);
   }
   
-  /* Error */
   private boolean a(Context paramContext)
   {
-    // Byte code:
-    //   0: new 229	java/util/jar/JarFile
-    //   3: dup
-    //   4: new 231	java/io/File
-    //   7: dup
-    //   8: aload_1
-    //   9: invokevirtual 102	android/content/Context:getApplicationContext	()Landroid/content/Context;
-    //   12: invokevirtual 106	android/content/Context:getApplicationInfo	()Landroid/content/pm/ApplicationInfo;
-    //   15: getfield 111	android/content/pm/ApplicationInfo:sourceDir	Ljava/lang/String;
-    //   18: invokespecial 234	java/io/File:<init>	(Ljava/lang/String;)V
-    //   21: invokespecial 237	java/util/jar/JarFile:<init>	(Ljava/io/File;)V
-    //   24: invokevirtual 241	java/util/jar/JarFile:entries	()Ljava/util/Enumeration;
-    //   27: astore_1
-    //   28: new 243	java/util/HashSet
-    //   31: dup
-    //   32: invokespecial 244	java/util/HashSet:<init>	()V
-    //   35: astore_2
-    //   36: aload_1
-    //   37: invokeinterface 249 1 0
-    //   42: ifeq +45 -> 87
-    //   45: aload_1
-    //   46: invokeinterface 253 1 0
-    //   51: checkcast 255	java/util/jar/JarEntry
-    //   54: invokevirtual 259	java/util/jar/JarEntry:getName	()Ljava/lang/String;
-    //   57: astore_3
-    //   58: aload_2
-    //   59: aload_3
-    //   60: invokeinterface 265 2 0
-    //   65: iconst_1
-    //   66: if_icmpne +5 -> 71
-    //   69: iconst_1
-    //   70: ireturn
-    //   71: aload_2
-    //   72: aload_3
-    //   73: invokeinterface 268 2 0
-    //   78: pop
-    //   79: goto -43 -> 36
-    //   82: astore_1
-    //   83: aload_1
-    //   84: invokevirtual 271	java/lang/Exception:printStackTrace	()V
-    //   87: iconst_0
-    //   88: ireturn
-    //   89: astore_1
-    //   90: aload_1
-    //   91: invokevirtual 272	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   94: goto -7 -> 87
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	97	0	this	m
-    //   0	97	1	paramContext	Context
-    //   35	37	2	localHashSet	java.util.HashSet
-    //   57	16	3	str	String
-    // Exception table:
-    //   from	to	target	type
-    //   0	36	82	java/lang/Exception
-    //   36	69	82	java/lang/Exception
-    //   71	79	82	java/lang/Exception
-    //   0	36	89	java/lang/OutOfMemoryError
-    //   36	69	89	java/lang/OutOfMemoryError
-    //   71	79	89	java/lang/OutOfMemoryError
+    try
+    {
+      paramContext = new JarFile(new File(paramContext.getApplicationContext().getApplicationInfo().sourceDir)).entries();
+      HashSet localHashSet = new HashSet();
+      while (paramContext.hasMoreElements())
+      {
+        String str = ((JarEntry)paramContext.nextElement()).getName();
+        if (localHashSet.contains(str) == true) {
+          return true;
+        }
+        localHashSet.add(str);
+      }
+      return false;
+    }
+    catch (OutOfMemoryError paramContext)
+    {
+      paramContext.printStackTrace();
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
-    do
-    {
-      do
-      {
-        return;
-        localObject1 = BaseApplication.getContext();
-      } while (localObject1 == null);
-      localObject2 = ((Context)localObject1).getSharedPreferences(this.e, 0).edit();
-      ((SharedPreferences.Editor)localObject2).remove(this.b);
-      ((SharedPreferences.Editor)localObject2).remove(this.c);
-      localObject3 = u.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getApplicationInfo().sourceDir);
-    } while ((localObject3 == null) || (((String)localObject3).length() == 0));
-    ((SharedPreferences.Editor)localObject2).putString(this.d, (String)localObject3);
-    ((SharedPreferences.Editor)localObject2).commit();
-    if (a((Context)localObject1)) {}
-    for (int i = 1;; i = 0)
-    {
-      String str1 = u.a((Context)localObject1);
-      String str2 = a((Context)localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("sct", 2, (String)localObject3);
-      }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getPackageName();
-      localObject1 = localObject2;
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        localObject1 = this.jdField_a_of_type_JavaLangString;
-      }
-      localObject2 = new signature.SignatureReport();
-      ((signature.SignatureReport)localObject2).u64_uin.set(Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()));
-      ((signature.SignatureReport)localObject2).u32_client_type.set(0);
-      ((signature.SignatureReport)localObject2).u32_is_repack.set(i);
-      ((signature.SignatureReport)localObject2).str_packname.set((String)localObject1);
-      ((signature.SignatureReport)localObject2).str_version.set(str2);
-      ((signature.SignatureReport)localObject2).str_md5.set((String)localObject3);
-      ((signature.SignatureReport)localObject2).str_signature.set(str1);
-      localObject2 = ((signature.SignatureReport)localObject2).toByteArray();
-      localObject3 = this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFNetTransportProvider.getCodec(this.g);
-      localObject1 = localObject2;
-      if (localObject3 != null) {
-        localObject1 = ((INetTransportProvider.INetTransportCodec)localObject3).encode(localObject2);
-      }
-      this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFNetTransportProvider.send(localObject1);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a()
@@ -235,84 +153,83 @@ public class m
   
   public void a(Object paramObject1, Object paramObject2)
   {
-    if (this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFNetTransportProvider == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramObject1 = this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFNetTransportProvider.getCodec("sig_check");
-      } while (paramObject1 == null);
-      paramObject1 = (byte[])paramObject1.decode(paramObject2);
-    } while (paramObject1 == null);
+    paramObject1 = this.jdField_a_of_type_ComTencentMsfmqpsdkbridgeMSFNetTransportProvider;
+    if (paramObject1 == null) {
+      return;
+    }
+    paramObject1 = paramObject1.getCodec("sig_check");
+    if (paramObject1 == null) {
+      return;
+    }
+    paramObject1 = (byte[])paramObject1.decode(paramObject2);
+    if (paramObject1 == null) {
+      return;
+    }
     signature.SignatureResult localSignatureResult = new signature.SignatureResult();
     try
     {
       localSignatureResult.mergeFrom(paramObject1);
-      paramObject1 = "";
-      paramObject2 = "";
-      str1 = "";
-      str2 = "";
-      str3 = "";
-      int i = 604800;
-      if (localSignatureResult.u32_check_result.has())
-      {
-        j = localSignatureResult.u32_check_result.get();
-        if (localSignatureResult.str_title.has()) {
-          paramObject1 = localSignatureResult.str_title.get();
-        }
-        if (localSignatureResult.str_content.has()) {
-          paramObject2 = localSignatureResult.str_content.get();
-        }
-        if (localSignatureResult.str_left_button.has()) {
-          str1 = localSignatureResult.str_left_button.get();
-        }
-        if (localSignatureResult.str_right_button.has()) {
-          str2 = localSignatureResult.str_right_button.get();
-        }
-        if (localSignatureResult.str_url.has()) {
-          str3 = localSignatureResult.str_url.get();
-        }
-        if (localSignatureResult.u32_cache_time.has()) {
-          i = localSignatureResult.u32_cache_time.get();
-        }
-        switch (j)
-        {
-        default: 
-        case 0: 
-        case 1: 
-        case 3: 
-          if (j == 0)
-          {
-            j = 1;
-            a(j, i);
-            return;
-          }
-          break;
-        }
-      }
     }
     catch (Exception paramObject1)
     {
-      for (;;)
+      paramObject1.printStackTrace();
+    }
+    int i = -1;
+    int j = 604800;
+    if (localSignatureResult.u32_check_result.has()) {
+      i = localSignatureResult.u32_check_result.get();
+    }
+    boolean bool = localSignatureResult.str_title.has();
+    String str3 = "";
+    if (bool) {
+      paramObject1 = localSignatureResult.str_title.get();
+    } else {
+      paramObject1 = "";
+    }
+    if (localSignatureResult.str_content.has()) {
+      paramObject2 = localSignatureResult.str_content.get();
+    } else {
+      paramObject2 = "";
+    }
+    String str1;
+    if (localSignatureResult.str_left_button.has()) {
+      str1 = localSignatureResult.str_left_button.get();
+    } else {
+      str1 = "";
+    }
+    String str2;
+    if (localSignatureResult.str_right_button.has()) {
+      str2 = localSignatureResult.str_right_button.get();
+    } else {
+      str2 = "";
+    }
+    if (localSignatureResult.str_url.has()) {
+      str3 = localSignatureResult.str_url.get();
+    }
+    if (localSignatureResult.u32_cache_time.has()) {
+      j = localSignatureResult.u32_cache_time.get();
+    }
+    int k = 1;
+    if ((i != 0) && (i != 1)) {
+      if (i != 2)
       {
-        String str1;
-        String str2;
-        String str3;
-        paramObject1.printStackTrace();
-        continue;
+        if (i == 3) {}
+      }
+      else {
         a(paramObject1, paramObject2, str1, str2, str3);
-        continue;
-        int j = 0;
-        continue;
-        j = -1;
       }
     }
+    if (i == 0) {
+      i = k;
+    } else {
+      i = 0;
+    }
+    a(i, j);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ctsz.m
  * JD-Core Version:    0.7.0.1
  */

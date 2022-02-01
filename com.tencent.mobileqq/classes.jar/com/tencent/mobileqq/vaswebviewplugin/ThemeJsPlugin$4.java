@@ -9,21 +9,20 @@ class ThemeJsPlugin$4
   
   public void callback(int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt != 1) && (paramInt != 2))
     {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.this$0.gotoDownload(2, this.val$id, this.val$version, this.val$isVoiceTheme, this.val$callbackId);
+      if ((paramInt != 3) && (paramInt != 4)) {
+        return;
+      }
+      this.this$0.gotoDownload(-2, this.val$id, this.val$version, this.val$isVoiceTheme, this.val$callbackId);
       return;
     }
-    this.this$0.gotoDownload(-2, this.val$id, this.val$version, this.val$isVoiceTheme, this.val$callbackId);
+    this.this$0.gotoDownload(2, this.val$id, this.val$version, this.val$isVoiceTheme, this.val$callbackId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.ThemeJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

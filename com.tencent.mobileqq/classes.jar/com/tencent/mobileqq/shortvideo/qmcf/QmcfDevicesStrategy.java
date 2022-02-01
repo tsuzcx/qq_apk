@@ -6,10 +6,11 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
+import com.tencent.aelight.camera.util.api.IMediaCodecDPC;
 import com.tencent.av.opengl.effects.EffectsRenderController;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.opencl.OpenclInfoManager;
-import com.tencent.mobileqq.shortvideo.util.MediaCodecDPC;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.io.File;
@@ -42,38 +43,19 @@ public class QmcfDevicesStrategy
     e = 0;
   }
   
-  /* Error */
   public static int a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 57	com/tencent/mobileqq/shortvideo/qmcf/QmcfDevicesStrategy:jdField_b_of_type_Int	I
-    //   6: iconst_m1
-    //   7: if_icmple +12 -> 19
-    //   10: getstatic 57	com/tencent/mobileqq/shortvideo/qmcf/QmcfDevicesStrategy:jdField_b_of_type_Int	I
-    //   13: istore_0
-    //   14: ldc 2
-    //   16: monitorexit
-    //   17: iload_0
-    //   18: ireturn
-    //   19: invokestatic 77	com/tencent/mobileqq/shortvideo/qmcf/QmcfDevicesStrategy:a	()Ljava/lang/String;
-    //   22: invokestatic 80	com/tencent/mobileqq/shortvideo/qmcf/QmcfDevicesStrategy:a	(Ljava/lang/String;)I
-    //   25: istore_0
-    //   26: goto -12 -> 14
-    //   29: astore_1
-    //   30: ldc 2
-    //   32: monitorexit
-    //   33: aload_1
-    //   34: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   13	13	0	i	int
-    //   29	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	14	29	finally
-    //   19	26	29	finally
+    try
+    {
+      if (jdField_b_of_type_Int > -1)
+      {
+        i = jdField_b_of_type_Int;
+        return i;
+      }
+      int i = a(a());
+      return i;
+    }
+    finally {}
   }
   
   public static int a(Context paramContext)
@@ -83,8 +65,9 @@ public class QmcfDevicesStrategy
   
   public static int a(String paramString)
   {
-    if (jdField_b_of_type_Int > -1) {
-      return jdField_b_of_type_Int;
+    int i = jdField_b_of_type_Int;
+    if (i > -1) {
+      return i;
     }
     if (Build.VERSION.SDK_INT < 21)
     {
@@ -92,11 +75,14 @@ public class QmcfDevicesStrategy
       QLog.d("QmcfDevicesStrategy", 1, String.format("not support because of version:%d ", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) }));
       return jdField_b_of_type_Int;
     }
-    int i = MediaCodecDPC.a();
+    i = ((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).getQmcfDPCFrameType();
     if (i != -1)
     {
       jdField_b_of_type_Int = i;
-      QLog.d("QmcfDevicesStrategy", 1, "DPCInfo:" + i);
+      paramString = new StringBuilder();
+      paramString.append("DPCInfo:");
+      paramString.append(i);
+      QLog.d("QmcfDevicesStrategy", 1, paramString.toString());
       return jdField_b_of_type_Int;
     }
     jdField_b_of_type_Int = 0;
@@ -111,12 +97,12 @@ public class QmcfDevicesStrategy
       QLog.d("QmcfDevicesStrategy", 1, "not support because of nexus");
       return jdField_b_of_type_Int;
     }
-    String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
-    int j = arrayOfString.length;
+    Object localObject = jdField_b_of_type_ArrayOfJavaLangString;
+    int j = localObject.length;
     i = 0;
     while (i < j)
     {
-      String str = arrayOfString[i];
+      String str = localObject[i];
       if (Build.MODEL.equalsIgnoreCase(str))
       {
         jdField_b_of_type_Int = 4;
@@ -139,12 +125,18 @@ public class QmcfDevicesStrategy
     if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
       jdField_a_of_type_JavaLangString = new OpenclInfoManager().a();
-      QLog.d("QmcfDevicesStrategy", 1, "GPUInfo:" + jdField_a_of_type_JavaLangString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GPUInfo:");
+      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+      QLog.d("QmcfDevicesStrategy", 1, ((StringBuilder)localObject).toString());
     }
     if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (jdField_a_of_type_JavaLangString.startsWith("err")))
     {
       jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 4).getString("gl_renderer", "");
-      QLog.i("QmcfDevicesStrategy", 1, "getGLRendererInfo:" + jdField_a_of_type_JavaLangString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getGLRendererInfo:");
+      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+      QLog.i("QmcfDevicesStrategy", 1, ((StringBuilder)localObject).toString());
       if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
       {
         jdField_b_of_type_Int = -2;
@@ -152,8 +144,9 @@ public class QmcfDevicesStrategy
       }
     }
     jdField_b_of_type_Int = c(paramString);
-    if (jdField_b_of_type_Int == 0) {
-      QLog.d("QmcfDevicesStrategy", 1, String.format("not support gpu[%s] type[%s]", new Object[] { jdField_a_of_type_JavaLangString, Integer.valueOf(jdField_b_of_type_Int) }));
+    i = jdField_b_of_type_Int;
+    if (i == 0) {
+      QLog.d("QmcfDevicesStrategy", 1, String.format("not support gpu[%s] type[%s]", new Object[] { jdField_a_of_type_JavaLangString, Integer.valueOf(i) }));
     }
     return jdField_b_of_type_Int;
   }
@@ -163,7 +156,7 @@ public class QmcfDevicesStrategy
     String str2 = BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 0).getString("cfg_content", "");
     String str1 = str2;
     if (TextUtils.isEmpty(str2)) {
-      str1 = FileUtils.d("qmcf_rule_config.xml");
+      str1 = FileUtils.readStringFromAsset("qmcf_rule_config.xml");
     }
     return str1;
   }
@@ -188,126 +181,120 @@ public class QmcfDevicesStrategy
         ((SharedPreferences.Editor)localObject).putInt("gl_renderer_flag", 1);
         ((SharedPreferences.Editor)localObject).commit();
         f = 1;
-        QLog.i("QmcfDevicesStrategy", 1, "saveGLRendererInfo:" + paramString);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("saveGLRendererInfo:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.i("QmcfDevicesStrategy", 1, ((StringBuilder)localObject).toString());
       }
     }
   }
   
   private static void a(String paramString1, String paramString2)
   {
-    if ("large".equals(paramString1)) {
-      a(paramString2, true);
-    }
-    do
+    if ("large".equals(paramString1))
     {
+      a(paramString2, true);
       return;
-      if ("less".equals(paramString1))
-      {
-        a(paramString2, false);
-        return;
-      }
-      if ("between".equals(paramString1))
-      {
-        b(paramString2);
-        return;
-      }
-    } while (!"enum".equals(paramString1));
-    c(paramString2);
+    }
+    if ("less".equals(paramString1))
+    {
+      a(paramString2, false);
+      return;
+    }
+    if ("between".equals(paramString1))
+    {
+      b(paramString2);
+      return;
+    }
+    if ("enum".equals(paramString1)) {
+      c(paramString2);
+    }
   }
   
   private static void a(String paramString, boolean paramBoolean)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
     String[] arrayOfString1 = paramString.split(";");
-    label407:
-    label413:
     for (;;)
     {
-      int j;
       int i;
-      boolean bool1;
-      String[] arrayOfString2;
-      int k;
-      int m;
       try
       {
-        if (!jdField_a_of_type_JavaLangString.contains("Mali")) {
-          break label230;
-        }
-        j = arrayOfString1.length;
-        i = 0;
-        bool1 = bool3;
-        if (i < j)
-        {
-          arrayOfString2 = arrayOfString1[i].split("#");
-          if (arrayOfString2.length != 2) {
-            break label183;
-          }
-          paramString = arrayOfString2[0];
-          if (!jdField_a_of_type_JavaLangString.contains(paramString)) {
-            break label413;
-          }
-          paramString = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(jdField_a_of_type_JavaLangString);
-          k = arrayOfString2.length;
-          bool1 = paramString.find();
-          if (!bool1) {
-            break label413;
-          }
-        }
-        bool1 = bool3;
-      }
-      catch (Exception paramString)
-      {
-        try
-        {
-          k = Integer.parseInt(paramString.group((k - 1) * 2));
-          m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
-          if (paramBoolean)
-          {
-            bool1 = bool2;
-            if (k >= m) {}
-          }
-          else
-          {
-            if ((paramBoolean) || (k > m)) {
-              break label407;
-            }
-            bool1 = bool2;
-          }
-          a(bool1);
-          return;
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-        }
-        paramString = paramString;
-        paramString.printStackTrace();
-        return;
-      }
-      label183:
-      if (arrayOfString2.length == 3)
-      {
-        paramString = arrayOfString2[0] + arrayOfString2[1];
-        continue;
-        label230:
-        bool1 = bool3;
-        if (jdField_a_of_type_JavaLangString.contains("Adreno"))
+        boolean bool1 = jdField_a_of_type_JavaLangString.contains("Mali");
+        boolean bool2 = false;
+        int j;
+        String[] arrayOfString2;
+        int k;
+        int m;
+        if (bool1)
         {
           j = arrayOfString1.length;
           i = 0;
-          for (;;)
+          bool1 = bool2;
+          if (i < j)
           {
-            for (;;)
+            arrayOfString2 = arrayOfString1[i].split("#");
+            if (arrayOfString2.length == 2)
             {
-              bool1 = bool3;
-              if (i >= j) {
-                break;
+              paramString = arrayOfString2[0];
+            }
+            else
+            {
+              bool1 = bool2;
+              if (arrayOfString2.length != 3) {
+                continue;
               }
+              paramString = new StringBuilder();
+              paramString.append(arrayOfString2[0]);
+              paramString.append(arrayOfString2[1]);
+              paramString = paramString.toString();
+            }
+            if (!jdField_a_of_type_JavaLangString.contains(paramString)) {
+              break label413;
+            }
+            paramString = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(jdField_a_of_type_JavaLangString);
+            k = arrayOfString2.length;
+            bool1 = paramString.find();
+            if (!bool1) {
+              break label413;
+            }
+            try
+            {
+              k = Integer.parseInt(paramString.group((k - 1) * 2));
+              m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
+              if ((!paramBoolean) || (k < m))
+              {
+                bool1 = bool2;
+                if (!paramBoolean)
+                {
+                  bool1 = bool2;
+                  if (k > m) {}
+                }
+              }
+              else
+              {
+                bool1 = true;
+              }
+            }
+            catch (Exception paramString)
+            {
+              paramString.printStackTrace();
+              break label413;
+            }
+          }
+        }
+        else
+        {
+          bool1 = bool2;
+          if (jdField_a_of_type_JavaLangString.contains("Adreno"))
+          {
+            j = arrayOfString1.length;
+            i = 0;
+            bool1 = bool2;
+            if (i < j)
+            {
               arrayOfString2 = arrayOfString1[i].split("#");
               paramString = "0";
               Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(jdField_a_of_type_JavaLangString);
@@ -317,40 +304,46 @@ public class QmcfDevicesStrategy
               if ((arrayOfString2.length != 2) || (!paramString.substring(0, 1).equals(arrayOfString2[0])))
               {
                 k = arrayOfString2.length;
-                if (k != 1) {}
+                if (k != 1) {
+                  break label420;
+                }
               }
-              else
+              try
               {
-                try
+                k = Integer.parseInt(paramString);
+                m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
+                if ((paramBoolean) && (k >= m)) {
+                  continue;
+                }
+                bool1 = bool2;
+                if (!paramBoolean)
                 {
-                  k = Integer.parseInt(paramString);
-                  m = Integer.parseInt(arrayOfString2[(arrayOfString2.length - 1)]);
-                  if ((!paramBoolean) || (k < m))
-                  {
-                    bool1 = bool3;
-                    if (paramBoolean) {
-                      break;
-                    }
-                    bool1 = bool3;
-                    if (k > m) {
-                      break;
-                    }
+                  bool1 = bool2;
+                  if (k <= m) {
+                    continue;
                   }
-                  bool1 = true;
                 }
-                catch (Exception paramString)
-                {
-                  paramString.printStackTrace();
-                }
+                a(bool1);
+              }
+              catch (Exception paramString)
+              {
+                paramString.printStackTrace();
               }
             }
-            i += 1;
           }
-          bool1 = false;
-          continue;
-          i += 1;
         }
+        return;
       }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      label413:
+      i += 1;
+      continue;
+      label420:
+      i += 1;
     }
   }
   
@@ -379,15 +372,15 @@ public class QmcfDevicesStrategy
   
   private static void a(boolean paramBoolean)
   {
-    if ("white".equals(jdField_b_of_type_JavaLangString)) {
+    if ("white".equals(jdField_b_of_type_JavaLangString))
+    {
       if (paramBoolean) {
         jdField_a_of_type_Int = e;
       }
     }
-    while ((!"black".equals(jdField_b_of_type_JavaLangString)) || (paramBoolean)) {
-      return;
+    else if (("black".equals(jdField_b_of_type_JavaLangString)) && (!paramBoolean)) {
+      jdField_a_of_type_Int = e;
     }
-    jdField_a_of_type_Int = e;
   }
   
   public static boolean a()
@@ -400,29 +393,28 @@ public class QmcfDevicesStrategy
     try
     {
       a(paramContext);
-      paramContext = paramContext.getSharedPreferences("qmcf_gpu_config", 0).edit();
-      paramContext.putString("cfg_content", paramString);
-      paramContext.putInt("cfg_version", paramInt);
-      return paramContext.commit();
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("QmcfDevicesStrategy", 2, "setQmcfMobileSupport err!", localException);
-        }
+      if (QLog.isColorLevel()) {
+        QLog.d("QmcfDevicesStrategy", 2, "setQmcfMobileSupport err!", localException);
       }
     }
+    paramContext = paramContext.getSharedPreferences("qmcf_gpu_config", 0).edit();
+    paramContext.putString("cfg_content", paramString);
+    paramContext.putInt("cfg_version", paramInt);
+    return paramContext.commit();
   }
   
   public static int b()
   {
-    int j = 0;
-    if (jdField_c_of_type_Int > -1) {
-      return jdField_c_of_type_Int;
+    int i = jdField_c_of_type_Int;
+    if (i > -1) {
+      return i;
     }
-    if (Build.VERSION.SDK_INT < 21)
+    i = Build.VERSION.SDK_INT;
+    int j = 0;
+    if (i < 21)
     {
       jdField_c_of_type_Int = 0;
       QLog.d("QmcfDevicesStrategy", 1, String.format("not support because of version:%d ", new Object[] { Integer.valueOf(Build.VERSION.SDK_INT) }));
@@ -434,64 +426,69 @@ public class QmcfDevicesStrategy
       QLog.d("QmcfDevicesStrategy", 1, String.format("not support because of low-end devices", new Object[0]));
       return jdField_c_of_type_Int;
     }
-    int i = MediaCodecDPC.a();
+    i = ((IMediaCodecDPC)QRoute.api(IMediaCodecDPC.class)).getQmcfDPCFrameType();
+    Object localObject;
     if (i != -1)
     {
       jdField_c_of_type_Int = i;
-      QLog.d("QmcfDevicesStrategy", 1, "DPCInfo:" + i);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DPCInfo:");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("QmcfDevicesStrategy", 1, ((StringBuilder)localObject).toString());
       return jdField_c_of_type_Int;
     }
     jdField_c_of_type_Int = 0;
-    if ((Build.MODEL.contains("Pixel")) || (Build.MODEL.contains("Nexus")))
+    if ((!Build.MODEL.contains("Pixel")) && (!Build.MODEL.contains("Nexus")))
     {
-      jdField_c_of_type_Int = 4;
-      return jdField_c_of_type_Int;
-    }
-    String[] arrayOfString = jdField_b_of_type_ArrayOfJavaLangString;
-    int k = arrayOfString.length;
-    i = 0;
-    String str;
-    while (i < k)
-    {
-      str = arrayOfString[i];
-      if (Build.MODEL.equalsIgnoreCase(str))
+      localObject = jdField_b_of_type_ArrayOfJavaLangString;
+      int k = localObject.length;
+      i = 0;
+      String str;
+      while (i < k)
       {
-        jdField_c_of_type_Int = 4;
-        QLog.d("QmcfDevicesStrategy", 1, "support because of GLSO rule");
+        str = localObject[i];
+        if (Build.MODEL.equalsIgnoreCase(str))
+        {
+          jdField_c_of_type_Int = 4;
+          QLog.d("QmcfDevicesStrategy", 1, "support because of GLSO rule");
+          return jdField_c_of_type_Int;
+        }
+        i += 1;
+      }
+      localObject = jdField_c_of_type_ArrayOfJavaLangString;
+      k = localObject.length;
+      i = j;
+      while (i < k)
+      {
+        str = localObject[i];
+        if (Build.MODEL.equalsIgnoreCase(str))
+        {
+          jdField_c_of_type_Int = 4;
+          QLog.d("QmcfDevicesStrategy", 1, "support because of GLSO rule loose");
+          return jdField_c_of_type_Int;
+        }
+        i += 1;
+      }
+      boolean bool1 = new File("/system/vendor/lib/egl/libGLES_mali.so").exists();
+      boolean bool2 = new File("/system/lib/egl/libGLES_mali.so").exists();
+      if ((!bool1) && (!bool2))
+      {
+        jdField_c_of_type_Int = 3;
         return jdField_c_of_type_Int;
       }
-      i += 1;
-    }
-    arrayOfString = jdField_c_of_type_ArrayOfJavaLangString;
-    k = arrayOfString.length;
-    i = j;
-    while (i < k)
-    {
-      str = arrayOfString[i];
-      if (Build.MODEL.equalsIgnoreCase(str))
-      {
-        jdField_c_of_type_Int = 4;
-        QLog.d("QmcfDevicesStrategy", 1, "support because of GLSO rule loose");
-        return jdField_c_of_type_Int;
-      }
-      i += 1;
-    }
-    boolean bool1 = new File("/system/vendor/lib/egl/libGLES_mali.so").exists();
-    boolean bool2 = new File("/system/lib/egl/libGLES_mali.so").exists();
-    if ((bool1) || (bool2))
-    {
       jdField_c_of_type_Int = 4;
       QLog.d("QmcfDevicesStrategy", 1, "support because of mali type");
       return jdField_c_of_type_Int;
     }
-    jdField_c_of_type_Int = 3;
+    jdField_c_of_type_Int = 4;
     return jdField_c_of_type_Int;
   }
   
   public static int b(String paramString)
   {
-    if (d > -1) {
-      return d;
+    int i = d;
+    if (i > -1) {
+      return i;
     }
     if (Build.VERSION.SDK_INT < 21)
     {
@@ -510,15 +507,22 @@ public class QmcfDevicesStrategy
         return d;
       }
     }
+    StringBuilder localStringBuilder;
     if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
     {
       jdField_a_of_type_JavaLangString = new OpenclInfoManager().a();
-      QLog.d("QmcfDevicesStrategy", 1, "GPUInfo:" + jdField_a_of_type_JavaLangString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GPUInfo:");
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      QLog.d("QmcfDevicesStrategy", 1, localStringBuilder.toString());
     }
     if ((TextUtils.isEmpty(jdField_a_of_type_JavaLangString)) || (jdField_a_of_type_JavaLangString.startsWith("err")))
     {
       jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getSharedPreferences("qmcf_gpu_config", 4).getString("gl_renderer", "");
-      QLog.i("QmcfDevicesStrategy", 1, "getGLRendererInfo:" + jdField_a_of_type_JavaLangString);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getGLRendererInfo:");
+      localStringBuilder.append(jdField_a_of_type_JavaLangString);
+      QLog.i("QmcfDevicesStrategy", 1, localStringBuilder.toString());
       if (TextUtils.isEmpty(jdField_a_of_type_JavaLangString))
       {
         d = 4;
@@ -531,109 +535,105 @@ public class QmcfDevicesStrategy
   
   private static void b(String paramString)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
     String[] arrayOfString = paramString.split(";");
     for (;;)
     {
-      int j;
       int i;
-      boolean bool1;
-      Object localObject;
-      int k;
-      int m;
-      int n;
       try
       {
-        if (jdField_a_of_type_JavaLangString.contains("Mali"))
+        boolean bool1 = jdField_a_of_type_JavaLangString.contains("Mali");
+        boolean bool2 = false;
+        int j;
+        Object localObject;
+        int k;
+        int m;
+        int n;
+        if (bool1)
         {
           j = arrayOfString.length;
           i = 0;
-          bool1 = bool3;
+          bool1 = bool2;
           if (i < j)
           {
             paramString = arrayOfString[i].split("#");
-            bool1 = bool3;
+            bool1 = bool2;
             if (paramString.length == 4)
             {
-              localObject = paramString[0] + paramString[1];
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append(paramString[0]);
+              ((StringBuilder)localObject).append(paramString[1]);
+              localObject = ((StringBuilder)localObject).toString();
               if (!jdField_a_of_type_JavaLangString.contains((CharSequence)localObject)) {
-                break label377;
+                break label385;
               }
               localObject = Pattern.compile("(G|T|\\-)(\\d+)(.+MP(\\d+))?").matcher(jdField_a_of_type_JavaLangString);
               bool1 = ((Matcher)localObject).find();
               if (!bool1) {
-                break label377;
+                break label385;
+              }
+              try
+              {
+                k = Integer.parseInt(((Matcher)localObject).group(4));
+                m = Integer.parseInt(paramString[2]);
+                n = Integer.parseInt(paramString[3]);
+                bool1 = bool2;
+                if (k > n) {
+                  continue;
+                }
+                bool1 = bool2;
+                if (k < m) {
+                  continue;
+                }
+                bool1 = true;
+              }
+              catch (Exception paramString)
+              {
+                paramString.printStackTrace();
+                break label385;
               }
             }
           }
         }
-        bool1 = bool3;
-      }
-      catch (Exception paramString)
-      {
-        try
+        else
         {
-          k = Integer.parseInt(((Matcher)localObject).group(4));
-          m = Integer.parseInt(paramString[2]);
-          n = Integer.parseInt(paramString[3]);
-          if ((k > n) || (k < m)) {
-            break label371;
-          }
           bool1 = bool2;
-          a(bool1);
-          return;
-        }
-        catch (Exception paramString)
-        {
-          paramString.printStackTrace();
-        }
-        paramString = paramString;
-        paramString.printStackTrace();
-        return;
-      }
-      if (jdField_a_of_type_JavaLangString.contains("Adreno"))
-      {
-        j = arrayOfString.length;
-        i = 0;
-        for (;;)
-        {
-          for (;;)
+          if (jdField_a_of_type_JavaLangString.contains("Adreno"))
           {
-            bool1 = bool3;
-            if (i >= j) {
-              break;
-            }
-            localObject = arrayOfString[i].split("#");
-            paramString = "0";
-            Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(jdField_a_of_type_JavaLangString);
-            if (localMatcher.find()) {
-              paramString = localMatcher.group(1);
-            }
-            if ((localObject.length != 3) || (!paramString.substring(0, 1).equals(localObject[0])))
+            j = arrayOfString.length;
+            i = 0;
+            bool1 = bool2;
+            if (i < j)
             {
-              k = localObject.length;
-              if (k != 2) {}
-            }
-            else
-            {
+              localObject = arrayOfString[i].split("#");
+              paramString = "0";
+              Matcher localMatcher = Pattern.compile("Adreno.*(\\d{3,4})").matcher(jdField_a_of_type_JavaLangString);
+              if (localMatcher.find()) {
+                paramString = localMatcher.group(1);
+              }
+              if ((localObject.length != 3) || (!paramString.substring(0, 1).equals(localObject[0])))
+              {
+                k = localObject.length;
+                if (k != 2) {
+                  break label392;
+                }
+              }
               try
               {
                 k = Integer.parseInt(paramString);
                 m = Integer.parseInt(localObject[(localObject.length - 2)]);
                 n = Integer.parseInt(localObject[(localObject.length - 1)]);
-                bool1 = bool3;
-                if (k > n) {
-                  break;
+                bool1 = bool2;
+                if (k <= n)
+                {
+                  bool1 = bool2;
+                  if (k >= m) {
+                    continue;
+                  }
                 }
-                bool1 = bool3;
-                if (k < m) {
-                  break;
-                }
-                bool1 = true;
+                a(bool1);
               }
               catch (Exception paramString)
               {
@@ -641,14 +641,19 @@ public class QmcfDevicesStrategy
               }
             }
           }
-          i += 1;
         }
-        label371:
-        bool1 = false;
-        continue;
-        label377:
-        i += 1;
+        return;
       }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+        return;
+      }
+      label385:
+      i += 1;
+      continue;
+      label392:
+      i += 1;
     }
   }
   
@@ -677,51 +682,45 @@ public class QmcfDevicesStrategy
   
   private static int c(String paramString)
   {
-    int m = 0;
-    for (;;)
+    try
     {
-      int i;
-      try
+      paramString = new JSONObject(paramString);
+      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+      int k = arrayOfString.length;
+      int i = 0;
+      int j = 0;
+      while (i < k)
       {
-        paramString = new JSONObject(paramString);
-        String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-        int n = arrayOfString.length;
-        i = 0;
-        int j = 0;
-        int k = m;
-        if (i < n)
+        Object localObject = arrayOfString[i];
+        j += 1;
+        if ((!jdField_c_of_type_JavaLangString.contains((CharSequence)localObject)) && (paramString.has((String)localObject)))
         {
-          Object localObject = arrayOfString[i];
-          j += 1;
-          if ((!jdField_c_of_type_JavaLangString.contains((CharSequence)localObject)) && (paramString.has((String)localObject)))
+          localObject = paramString.getJSONObject((String)localObject);
+          e = j;
+          a((JSONObject)localObject);
+          if (jdField_a_of_type_Int > 0)
           {
-            localObject = paramString.getJSONObject((String)localObject);
-            e = j;
-            a((JSONObject)localObject);
-            if (jdField_a_of_type_Int > 0)
-            {
-              QLog.d("QmcfDevicesStrategy", 1, "support because of config: " + jdField_a_of_type_Int);
-              k = jdField_a_of_type_Int;
-            }
+            paramString = new StringBuilder();
+            paramString.append("support because of config: ");
+            paramString.append(jdField_a_of_type_Int);
+            QLog.d("QmcfDevicesStrategy", 1, paramString.toString());
+            i = jdField_a_of_type_Int;
+            return i;
           }
         }
-        else
-        {
-          return k;
-        }
+        i += 1;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        return 4;
-      }
-      i += 1;
+      return 0;
     }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return 4;
   }
   
   private static void c(String paramString)
   {
-    boolean bool2 = false;
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
@@ -732,26 +731,26 @@ public class QmcfDevicesStrategy
       try
       {
         int j = paramString.length;
+        boolean bool2 = false;
         i = 0;
         boolean bool1 = bool2;
         if (i < j)
         {
           CharSequence localCharSequence = paramString[i];
-          if (jdField_a_of_type_JavaLangString.contains(localCharSequence)) {
-            bool1 = true;
+          if (!jdField_a_of_type_JavaLangString.contains(localCharSequence)) {
+            break label64;
           }
+          bool1 = true;
         }
-        else
-        {
-          a(bool1);
-          return;
-        }
+        a(bool1);
+        return;
       }
       catch (Exception paramString)
       {
         paramString.printStackTrace();
         return;
       }
+      label64:
       i += 1;
     }
   }
@@ -779,7 +778,7 @@ public class QmcfDevicesStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.qmcf.QmcfDevicesStrategy
  * JD-Core Version:    0.7.0.1
  */

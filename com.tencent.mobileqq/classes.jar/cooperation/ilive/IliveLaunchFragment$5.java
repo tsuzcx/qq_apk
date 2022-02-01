@@ -13,7 +13,10 @@ class IliveLaunchFragment$5
   
   public void onLoad(boolean paramBoolean)
   {
-    QLog.e("IliveLaunchActivity", 1, "initVideoSDK loadSo = " + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initVideoSDK loadSo = ");
+    localStringBuilder.append(paramBoolean);
+    QLog.e("IliveLaunchActivity", 1, localStringBuilder.toString());
     ElapseStat.b("IliveLaunch initVideoSDK");
     if (paramBoolean)
     {
@@ -26,7 +29,7 @@ class IliveLaunchFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IliveLaunchFragment.5
  * JD-Core Version:    0.7.0.1
  */

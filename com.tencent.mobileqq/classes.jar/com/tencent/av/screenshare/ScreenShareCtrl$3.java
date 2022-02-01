@@ -15,26 +15,30 @@ class ScreenShareCtrl$3
   
   public void run()
   {
-    if ((this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) || (this.jdField_a_of_type_ComTencentAvUiAVActivity.isDestroyed())) {
-      if (QLog.isColorLevel()) {
-        QLog.i("AVShare", 2, "stopShareScreen, activity finish");
-      }
-    }
-    SessionInfo localSessionInfo;
-    do
+    if ((!this.jdField_a_of_type_ComTencentAvUiAVActivity.isFinishing()) && (!this.jdField_a_of_type_ComTencentAvUiAVActivity.isDestroyed()))
     {
-      return;
-      localSessionInfo = ScreenShareCtrl.a(this.this$0).a();
-      if ((localSessionInfo.r()) && (!localSessionInfo.f()) && (TextUtils.equals(this.jdField_a_of_type_ComTencentAvAppSessionInfo.c, localSessionInfo.c))) {
-        QQToast.a(BaseApplicationImpl.getApplication(), 0, 2131695836, 1).a();
+      SessionInfo localSessionInfo = ScreenShareCtrl.a(this.this$0).a();
+      if ((localSessionInfo.p()) && (!localSessionInfo.e()) && (TextUtils.equals(this.jdField_a_of_type_ComTencentAvAppSessionInfo.b, localSessionInfo.b))) {
+        QQToast.a(BaseApplicationImpl.getApplication(), 0, 2131695850, 1).a();
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("AVShare", 2, "stopShareScreen, session[" + localSessionInfo + "]");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("stopShareScreen, session[");
+        localStringBuilder.append(localSessionInfo);
+        localStringBuilder.append("]");
+        QLog.i("AVShare", 2, localStringBuilder.toString());
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("AVShare", 2, "stopShareScreen, activity finish");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.screenshare.ScreenShareCtrl.3
  * JD-Core Version:    0.7.0.1
  */

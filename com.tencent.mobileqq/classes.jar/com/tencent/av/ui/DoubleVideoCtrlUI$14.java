@@ -9,12 +9,12 @@ class DoubleVideoCtrlUI$14
   
   public void run()
   {
-    TraeHelper.a().a(this.a, this.this$0.a, 2131230736, null, 0, null);
+    TraeHelper.a().a(this.a, this.this$0.a, 2131230740, null, 0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.14
  * JD-Core Version:    0.7.0.1
  */

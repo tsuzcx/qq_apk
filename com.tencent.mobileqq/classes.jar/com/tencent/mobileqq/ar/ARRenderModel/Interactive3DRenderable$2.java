@@ -5,13 +5,14 @@ class Interactive3DRenderable$2
 {
   public void run()
   {
-    this.this$0.a = true;
-    this.this$0.f();
+    Interactive3DRenderable localInteractive3DRenderable = this.this$0;
+    localInteractive3DRenderable.a = true;
+    localInteractive3DRenderable.f();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARRenderModel.Interactive3DRenderable.2
  * JD-Core Version:    0.7.0.1
  */

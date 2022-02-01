@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/fhs" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/efs" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_centerHorizontal="true" android:layout_centerVertical="true">
-        <com.tencent.biz.qqstory.view.widget.QQStoryLoadingView android:id="@id/ef8" android:visibility="visible" android:layout_width="55.0dip" android:layout_height="55.0dip" android:layout_centerHorizontal="true" android:layout_centerVertical="true" />
-        <TextView android:textSize="14.0sp" android:textColor="@color/al3" android:id="@id/eft" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="4.0dip" android:text="@string/j6c" android:shadowColor="#7f000000" android:shadowDx="0.0" android:shadowDy="0.0" android:shadowRadius="4.0" android:layout_below="@id/ef8" android:layout_centerHorizontal="true" />
-    </RelativeLayout>
-    <dov.com.tencent.mobileqq.activity.richmedia.VideoFilterViewPager android:id="@id/ce_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_alignParentTop="true" />
-</RelativeLayout>

@@ -26,23 +26,25 @@ public class AlphaClickableButton
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (isEnabled()) {
-      switch (paramMotionEvent.getAction())
+    if (isEnabled())
+    {
+      int i = paramMotionEvent.getAction();
+      if (i != 0)
       {
+        if ((i == 1) || (i == 3)) {
+          setAlpha(1.0F);
+        }
+      }
+      else {
+        setAlpha(0.5F);
       }
     }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      setAlpha(0.5F);
-      continue;
-      setAlpha(1.0F);
-    }
+    return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AlphaClickableButton
  * JD-Core Version:    0.7.0.1
  */

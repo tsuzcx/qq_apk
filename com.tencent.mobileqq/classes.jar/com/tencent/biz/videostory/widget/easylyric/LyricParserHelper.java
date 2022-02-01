@@ -18,57 +18,62 @@ public class LyricParserHelper
   
   public Lyric a(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       return null;
-      if ("LRC".equals(paramString2.toUpperCase())) {
-        return this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricParser.a(paramString1);
-      }
-    } while (!"QRC".equals(paramString2.toUpperCase()));
-    return this.b.a(paramString1);
+    }
+    if ("LRC".equals(paramString2.toUpperCase())) {
+      return this.jdField_a_of_type_ComTencentBizVideostoryWidgetEasylyricILyricParser.a(paramString1);
+    }
+    if ("QRC".equals(paramString2.toUpperCase())) {
+      return this.b.a(paramString1);
+    }
+    return null;
   }
   
   public Sentence a(Lyric paramLyric, long paramLong)
   {
-    Object localObject;
-    if (paramLyric == null)
-    {
-      localObject = null;
-      return localObject;
+    Object localObject = null;
+    if (paramLyric == null) {
+      return null;
     }
     List localList = paramLyric.a();
     if (localList == null) {
       return null;
     }
-    int j = localList.size();
-    if (j < 1) {
+    int k = localList.size();
+    if (k < 1) {
       return null;
     }
     int i = 0;
-    label43:
-    if (i < j - 1)
+    int m;
+    Sentence localSentence;
+    do
     {
-      paramLyric = (Sentence)localList.get(i);
-      localObject = (Sentence)localList.get(i + 1);
-      if ((paramLong < paramLyric.a) || (((Sentence)localObject).a < paramLong)) {}
+      int j;
+      do
+      {
+        m = k - 1;
+        paramLyric = (Lyric)localObject;
+        if (i >= m) {
+          break;
+        }
+        paramLyric = (Sentence)localList.get(i);
+        j = i + 1;
+        localSentence = (Sentence)localList.get(j);
+        i = j;
+      } while (paramLong < paramLyric.a);
+      i = j;
+    } while (localSentence.a < paramLong);
+    localObject = paramLyric;
+    if (paramLyric == null) {
+      localObject = (Sentence)localList.get(m);
     }
-    for (;;)
-    {
-      localObject = paramLyric;
-      if (paramLyric != null) {
-        break;
-      }
-      return (Sentence)localList.get(j - 1);
-      i += 1;
-      break label43;
-      paramLyric = null;
-    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.LyricParserHelper
  * JD-Core Version:    0.7.0.1
  */

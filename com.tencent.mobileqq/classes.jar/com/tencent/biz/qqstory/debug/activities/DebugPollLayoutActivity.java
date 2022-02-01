@@ -31,14 +31,14 @@ public class DebugPollLayoutActivity
   protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131558447);
+    setContentView(2131558475);
     paramBundle = PollWidgetUtils.a(this, 1, 1, null);
-    ((FrameLayout)findViewById(2131365255)).addView(paramBundle.a());
+    ((FrameLayout)findViewById(2131365132)).addView(paramBundle.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.debug.activities.DebugPollLayoutActivity
  * JD-Core Version:    0.7.0.1
  */

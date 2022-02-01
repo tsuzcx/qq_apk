@@ -46,19 +46,23 @@ public class CountryActivity
   {
     paramView = (CountryActivity.ItemViewHolder)paramView.getTag();
     paramView.jdField_a_of_type_AndroidWidgetTextView.setText(paramCountryCode.b);
-    paramView.b.setText("+" + paramCountryCode.c);
+    TextView localTextView = paramView.b;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("+");
+    localStringBuilder.append(paramCountryCode.c);
+    localTextView.setText(localStringBuilder.toString());
     paramView.jdField_a_of_type_ComTencentMobileqqUtilsPhoneCodeUtils$CountryCode = paramCountryCode;
   }
   
   private static View b(ViewGroup paramViewGroup, LayoutInflater paramLayoutInflater, boolean paramBoolean)
   {
-    paramViewGroup = paramLayoutInflater.inflate(2131559668, paramViewGroup, false);
+    paramViewGroup = paramLayoutInflater.inflate(2131559546, paramViewGroup, false);
     if (paramBoolean) {
       paramViewGroup.setPadding(paramViewGroup.getPaddingLeft(), paramViewGroup.getPaddingTop(), (int)DisplayUtils.a(BaseApplicationImpl.sApplication, 40.0F), paramViewGroup.getPaddingBottom());
     }
     paramLayoutInflater = new CountryActivity.ItemViewHolder(null);
-    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365410));
-    paramLayoutInflater.b = ((TextView)paramViewGroup.findViewById(2131365409));
+    paramLayoutInflater.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131365275));
+    paramLayoutInflater.b = ((TextView)paramViewGroup.findViewById(2131365274));
     paramViewGroup.setTag(paramLayoutInflater);
     return paramViewGroup;
   }
@@ -68,27 +72,16 @@ public class CountryActivity
     paramView = (CountryActivity.ItemViewHolder)paramView.getTag();
     if (paramView.jdField_a_of_type_ComTencentMobileqqUtilsPhoneCodeUtils$CountryCode != null)
     {
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchDialog != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchDialog.isShowing()) && (!super.isFinishing())) {
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchDialog;
+      if ((localObject != null) && (((CountryActivity.SearchDialog)localObject).isShowing()) && (!super.isFinishing())) {
         this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchDialog.dismiss();
       }
-      Intent localIntent = new Intent();
-      localIntent.putExtra("k_name", paramView.jdField_a_of_type_ComTencentMobileqqUtilsPhoneCodeUtils$CountryCode.b);
-      localIntent.putExtra("k_code", paramView.jdField_a_of_type_ComTencentMobileqqUtilsPhoneCodeUtils$CountryCode.c);
-      setResult(-1, localIntent);
+      localObject = new Intent();
+      ((Intent)localObject).putExtra("k_name", paramView.jdField_a_of_type_ComTencentMobileqqUtilsPhoneCodeUtils$CountryCode.b);
+      ((Intent)localObject).putExtra("k_code", paramView.jdField_a_of_type_ComTencentMobileqqUtilsPhoneCodeUtils$CountryCode.c);
+      setResult(-1, (Intent)localObject);
       finish();
     }
-  }
-  
-  public void a(String paramString)
-  {
-    if ("$".equals(paramString))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(0);
-      return;
-    }
-    PinnedDividerListView localPinnedDividerListView = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
-    int i = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getHeaderViewsCount();
-    localPinnedDividerListView.setSelection(((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString)).intValue() + i);
   }
   
   @Override
@@ -100,10 +93,10 @@ public class CountryActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131559666);
+    setContentView(2131559544);
     String[] arrayOfString = getResources().getStringArray(2130968653);
     Object localObject = PhoneCodeUtils.a(AssetsUtil.a(this, "internationalCode.json"));
     paramBundle = (Bundle)localObject;
@@ -117,15 +110,15 @@ public class CountryActivity
       paramBundle = this.jdField_a_of_type_JavaUtilLinkedHashMap;
     }
     this.jdField_a_of_type_JavaUtilLinkedHashMap = paramBundle;
-    setTitle(HardCodeUtil.a(2131702647));
-    this.leftView.setText(2131690778);
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131377159);
+    setTitle(HardCodeUtil.a(2131702780));
+    this.leftView.setText(2131690706);
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376636);
     this.b = ((View)this.jdField_a_of_type_AndroidViewView.getParent());
-    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131365411));
-    this.c = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2131562951, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView = ((PinnedDividerListView)findViewById(2131365276));
+    this.c = ((LayoutInflater)getSystemService("layout_inflater")).inflate(2131562770, this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView, false);
     this.c.setPadding(0, 0, 40, 0);
-    this.c.findViewById(2131363942).setVisibility(8);
-    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131366452));
+    this.c.findViewById(2131363868).setVisibility(8);
+    this.jdField_a_of_type_AndroidWidgetEditText = ((EditText)this.c.findViewById(2131366333));
     this.jdField_a_of_type_AndroidWidgetEditText.setFocusableInTouchMode(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setCursorVisible(false);
     this.jdField_a_of_type_AndroidWidgetEditText.setOnClickListener(this);
@@ -133,7 +126,7 @@ public class CountryActivity
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.addHeaderView(this.c);
     this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$CountryAdapter = new CountryActivity.CountryAdapter(this, null);
     this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$CountryAdapter);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131369038));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView = ((IndexView)findViewById(2131368760));
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setIndex(arrayOfString, true);
     this.jdField_a_of_type_ComTencentMobileqqWidgetIndexView.setOnIndexChangedListener(this);
     return true;
@@ -146,22 +139,22 @@ public class CountryActivity
       this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchDialog = new CountryActivity.SearchDialog(this, this);
       this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchDialog.setCanceledOnTouchOutside(true);
       int i = this.jdField_a_of_type_AndroidViewView.getHeight();
-      TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, -i);
+      float f = -i;
+      TranslateAnimation localTranslateAnimation1 = new TranslateAnimation(0.0F, 0.0F, 0.0F, f);
       localTranslateAnimation1.setDuration(300L);
       localTranslateAnimation1.setFillAfter(true);
       localTranslateAnimation1.setAnimationListener(new CountryActivity.1(this));
-      TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, -i, 0.0F);
+      TranslateAnimation localTranslateAnimation2 = new TranslateAnimation(0.0F, 0.0F, f, 0.0F);
       localTranslateAnimation2.setDuration(300L);
       localTranslateAnimation2.setAnimationListener(new CountryActivity.2(this, i));
       this.jdField_a_of_type_ComTencentMobileqqActivityPhoneCountryActivity$SearchDialog.setOnDismissListener(new CountryActivity.3(this, i, localTranslateAnimation2));
       this.b.startAnimation(localTranslateAnimation1);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       a(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   @Override
@@ -170,10 +163,21 @@ public class CountryActivity
     super.onConfigurationChanged(paramConfiguration);
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
+  
+  public void onIndexChanged(String paramString)
+  {
+    if ("$".equals(paramString))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.setSelection(0);
+      return;
+    }
+    PinnedDividerListView localPinnedDividerListView = this.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView;
+    localPinnedDividerListView.setSelection(localPinnedDividerListView.getHeaderViewsCount() + ((Integer)this.jdField_a_of_type_JavaUtilLinkedHashMap.get(paramString)).intValue());
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.CountryActivity
  * JD-Core Version:    0.7.0.1
  */

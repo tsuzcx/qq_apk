@@ -32,7 +32,8 @@ public class StyleChildFaceOffFilter
     this.itemFacePoints = paramList;
     initParams();
     setCoordNum(690);
-    GlUtil.glGenTextures(this.texture.length, this.texture, 0);
+    paramList = this.texture;
+    GlUtil.glGenTextures(paramList.length, paramList, 0);
   }
   
   private void initFaceTexCoords()
@@ -74,7 +75,8 @@ public class StyleChildFaceOffFilter
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    GlUtil.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GlUtil.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void initAttribParams()
@@ -103,23 +105,32 @@ public class StyleChildFaceOffFilter
   
   public void updateParam(List<PointF> paramList, int paramInt)
   {
-    Object localObject = null;
     try
     {
       paramList = VideoMaterial.copyList(paramList);
-      if (paramList != null) {
-        setPositions(FaceOffUtil.initFaceNoseLastPositions(FaceOffUtil.getFullCoordsForNoseAndOutline(paramList), (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-      }
-      addParam(new UniformParam.TextureParam("inputImageTexture3", paramInt, 33987));
-      return;
     }
     catch (Exception paramList)
     {
-      for (;;)
-      {
-        paramList = localObject;
-      }
+      label8:
+      double d1;
+      double d2;
+      int i;
+      break label8;
     }
+    paramList = null;
+    if (paramList != null)
+    {
+      paramList = FaceOffUtil.getFullCoordsForNoseAndOutline(paramList);
+      d1 = this.width;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      i = (int)(d1 * d2);
+      d1 = this.height;
+      d2 = this.mFaceDetScale;
+      Double.isNaN(d1);
+      setPositions(FaceOffUtil.initFaceNoseLastPositions(paramList, i, (int)(d1 * d2), this.faceVertices));
+    }
+    addParam(new UniformParam.TextureParam("inputImageTexture3", paramInt, 33987));
   }
   
   public void updatePreview(Object paramObject)
@@ -135,7 +146,7 @@ public class StyleChildFaceOffFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StyleChildFaceOffFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,12 @@ class GdtQQHippyDemoFragment$1
   
   public void onError(int paramInt, String paramString)
   {
-    GdtLog.d("GdtQQHippyDemoFragment", "initHippy onError:" + paramInt + ",msg:" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initHippy onError:");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",msg:");
+    localStringBuilder.append(paramString);
+    GdtLog.d("GdtQQHippyDemoFragment", localStringBuilder.toString());
   }
   
   public void onSuccess()
@@ -20,7 +25,7 @@ class GdtQQHippyDemoFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtQQHippyDemoFragment.1
  * JD-Core Version:    0.7.0.1
  */

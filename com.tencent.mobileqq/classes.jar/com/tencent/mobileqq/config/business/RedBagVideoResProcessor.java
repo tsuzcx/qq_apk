@@ -22,33 +22,44 @@ public class RedBagVideoResProcessor
   public RedBagVideoResProcessor.RedBagVideoResConfigBean a(int paramInt)
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    String str = SharedPreUtils.n(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
-    return new RedBagVideoResProcessor.RedBagVideoResConfigBean(SharedPreUtils.o(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
+    String str = SharedPreUtils.j(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin());
+    return new RedBagVideoResProcessor.RedBagVideoResConfigBean(SharedPreUtils.k(localQQAppInterface.getApp(), localQQAppInterface.getCurrentAccountUin()), str);
   }
   
   @Nullable
   public RedBagVideoResProcessor.RedBagVideoResConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length == 0)) {
-      return null;
-    }
-    paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-    if (QLog.isColorLevel()) {
-      QLog.d("RedBagVideoResProcessor", 2, "handleVideoRedbagConfig onParsed, content:" + paramArrayOfQConfItem);
-    }
-    try
+    if (paramArrayOfQConfItem != null)
     {
-      paramArrayOfQConfItem = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfQConfItem.getBytes("utf-8")));
-      NodeList localNodeList = paramArrayOfQConfItem.getElementsByTagName("video_redbag_config");
-      if ((localNodeList != null) && (localNodeList.getLength() > 0))
-      {
-        paramArrayOfQConfItem = new RedBagVideoResProcessor.RedBagVideoResConfigBean(paramArrayOfQConfItem.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfQConfItem.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
-        return paramArrayOfQConfItem;
+      if (paramArrayOfQConfItem.length == 0) {
+        return null;
       }
-    }
-    catch (Exception paramArrayOfQConfItem)
-    {
-      QLog.e("RedBagVideoResProcessor", 1, "handleVideoRedbagConfig failed" + paramArrayOfQConfItem);
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleVideoRedbagConfig onParsed, content:");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem);
+        QLog.d("RedBagVideoResProcessor", 2, ((StringBuilder)localObject).toString());
+      }
+      try
+      {
+        paramArrayOfQConfItem = DocumentBuilderFactory.newInstance().newDocumentBuilder().parse(new ByteArrayInputStream(paramArrayOfQConfItem.getBytes("utf-8")));
+        localObject = paramArrayOfQConfItem.getElementsByTagName("video_redbag_config");
+        if ((localObject != null) && (((NodeList)localObject).getLength() > 0))
+        {
+          paramArrayOfQConfItem = new RedBagVideoResProcessor.RedBagVideoResConfigBean(paramArrayOfQConfItem.getElementsByTagName("resUrl").item(0).getFirstChild().getNodeValue(), paramArrayOfQConfItem.getElementsByTagName("resMd5").item(0).getFirstChild().getNodeValue());
+          return paramArrayOfQConfItem;
+        }
+      }
+      catch (Exception paramArrayOfQConfItem)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleVideoRedbagConfig failed");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem);
+        QLog.e("RedBagVideoResProcessor", 1, ((StringBuilder)localObject).toString());
+      }
     }
     return null;
   }
@@ -78,7 +89,7 @@ public class RedBagVideoResProcessor
   public int migrateOldVersion()
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-    return SharedPreUtils.ao(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin());
+    return SharedPreUtils.aj(localQQAppInterface.getApp(), localQQAppInterface.getCurrentUin());
   }
   
   public void onReqFailed(int paramInt)
@@ -95,7 +106,7 @@ public class RedBagVideoResProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.RedBagVideoResProcessor
  * JD-Core Version:    0.7.0.1
  */

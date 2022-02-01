@@ -37,14 +37,15 @@ public final class GroupVoiceInfo
   {
     paramJceOutputStream.write(this.groupCode, 0);
     paramJceOutputStream.write(this.fileId, 1);
-    if (this.fileMd5 != null) {
-      paramJceOutputStream.write(this.fileMd5, 2);
+    byte[] arrayOfByte = this.fileMd5;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GroupVoiceInfo
  * JD-Core Version:    0.7.0.1
  */

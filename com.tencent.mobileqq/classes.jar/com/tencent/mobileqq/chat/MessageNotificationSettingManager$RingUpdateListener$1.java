@@ -10,16 +10,17 @@ class MessageNotificationSettingManager$RingUpdateListener$1
   public void run()
   {
     MessageNotificationSettingManager localMessageNotificationSettingManager = (MessageNotificationSettingManager)this.this$0.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localMessageNotificationSettingManager == null) {}
-    while (MessageNotificationSettingManager.a(localMessageNotificationSettingManager) == null) {
+    if (localMessageNotificationSettingManager == null) {
       return;
     }
-    MessageNotificationSettingManager.a(localMessageNotificationSettingManager).a(this.this$0.jdField_a_of_type_Int);
+    if (MessageNotificationSettingManager.a(localMessageNotificationSettingManager) != null) {
+      MessageNotificationSettingManager.a(localMessageNotificationSettingManager).a(this.this$0.jdField_a_of_type_Int);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.chat.MessageNotificationSettingManager.RingUpdateListener.1
  * JD-Core Version:    0.7.0.1
  */

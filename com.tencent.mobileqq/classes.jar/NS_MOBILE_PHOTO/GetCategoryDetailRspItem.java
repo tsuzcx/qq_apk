@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetCategoryDetailRspItem
   extends JceStruct
@@ -52,17 +53,21 @@ public final class GetCategoryDetailRspItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.photos != null) {
-      paramJceOutputStream.write(this.photos, 0);
+    Object localObject = this.photos;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.attr != null) {
-      paramJceOutputStream.write(this.attr, 1);
+    localObject = this.attr;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 1);
     }
-    if (this.recommend != null) {
-      paramJceOutputStream.write(this.recommend, 2);
+    localObject = this.recommend;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
-    if (this.face_shows != null) {
-      paramJceOutputStream.write(this.face_shows, 3);
+    localObject = this.face_shows;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.ret, 4);
     paramJceOutputStream.write(this.is_recommend_appoint, 5);
@@ -70,7 +75,7 @@ public final class GetCategoryDetailRspItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_PHOTO.GetCategoryDetailRspItem
  * JD-Core Version:    0.7.0.1
  */

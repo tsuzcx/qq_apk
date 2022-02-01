@@ -23,7 +23,12 @@ public class DefaultLoadingView
   
   private void a()
   {
-    addView(this.view);
+    addView(this.a);
+  }
+  
+  protected int a()
+  {
+    return 2131561611;
   }
   
   public void a(WebView paramWebView)
@@ -35,15 +40,10 @@ public class DefaultLoadingView
   {
     paramWebView.removeView(this);
   }
-  
-  protected int getLayoutId()
-  {
-    return 2131561752;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.library.DefaultLoadingView
  * JD-Core Version:    0.7.0.1
  */

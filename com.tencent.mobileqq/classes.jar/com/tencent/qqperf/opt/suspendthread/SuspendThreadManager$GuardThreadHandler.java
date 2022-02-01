@@ -48,34 +48,38 @@ class SuspendThreadManager$GuardThreadHandler
   
   private void a(String paramString, boolean paramBoolean)
   {
+    StringBuilder localStringBuilder;
     if (paramBoolean)
     {
-      QLog.d("TSManager", 1, paramString + ",createCheckFile");
-      if (!paramBoolean) {
-        break label80;
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",createCheckFile");
+      QLog.d("TSManager", 1, localStringBuilder.toString());
     }
-    for (;;)
+    else
     {
-      try
-      {
-        if (!this.jdField_a_of_type_JavaIoFile.exists()) {
-          this.jdField_a_of_type_JavaIoFile.createNewFile();
-        }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",deleteCheckFile");
+      QLog.d("TSManager", 1, localStringBuilder.toString());
+    }
+    if (paramBoolean) {}
+    try
+    {
+      if (this.jdField_a_of_type_JavaIoFile.exists()) {
         return;
       }
-      catch (IOException paramString)
-      {
-        label80:
-        QLog.e("TSManager", 1, "createOrDelSuspendCheckFile failed", paramString);
-      }
-      QLog.d("TSManager", 1, paramString + ",deleteCheckFile");
-      break;
-      if (this.jdField_a_of_type_JavaIoFile.exists())
-      {
-        this.jdField_a_of_type_JavaIoFile.delete();
-        return;
-      }
+      this.jdField_a_of_type_JavaIoFile.createNewFile();
+      return;
+    }
+    catch (IOException paramString)
+    {
+      QLog.e("TSManager", 1, "createOrDelSuspendCheckFile failed", paramString);
+    }
+    if (this.jdField_a_of_type_JavaIoFile.exists())
+    {
+      this.jdField_a_of_type_JavaIoFile.delete();
+      return;
     }
   }
   
@@ -96,8 +100,8 @@ class SuspendThreadManager$GuardThreadHandler
       {
         e();
         SuspendThreadManager.a(this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager, paramBoolean);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -128,19 +132,33 @@ class SuspendThreadManager$GuardThreadHandler
   
   private void d()
   {
-    try
+    for (;;)
     {
-      System.loadLibrary("threadsuspend");
-      this.jdField_a_of_type_AndroidContentSharedPreferences = MobileQQ.getContext().getSharedPreferences("suspend_thread_pref_file", 0);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
-      this.jdField_a_of_type_JavaIoFile = new File(MobileQQ.getContext().getFilesDir().getPath() + File.separator + "suspend_check_file");
-      this.jdField_d_of_type_Boolean = DeviceOptSwitch.g;
-      this.e = DeviceOptSwitch.h;
-      boolean bool1;
-      if ((Build.VERSION.SDK_INT <= 23) && (DeviceOptSwitch.f))
+      try
       {
-        SuspendThreadManager.jdField_a_of_type_Int |= 0x1;
-        bool1 = true;
+        System.loadLibrary("threadsuspend");
+        this.jdField_a_of_type_AndroidContentSharedPreferences = MobileQQ.getContext().getSharedPreferences("suspend_thread_pref_file", 0);
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor = this.jdField_a_of_type_AndroidContentSharedPreferences.edit();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(MobileQQ.getContext().getFilesDir().getPath());
+        localStringBuilder.append(File.separator);
+        localStringBuilder.append("suspend_check_file");
+        this.jdField_a_of_type_JavaIoFile = new File(localStringBuilder.toString());
+        this.jdField_d_of_type_Boolean = DeviceOptSwitch.g;
+        this.e = DeviceOptSwitch.h;
+        if ((Build.VERSION.SDK_INT <= 23) && (DeviceOptSwitch.f))
+        {
+          SuspendThreadManager.jdField_a_of_type_Int |= 0x1;
+          bool1 = true;
+        }
+        else
+        {
+          if (Build.VERSION.SDK_INT < 24) {
+            break label711;
+          }
+          SuspendThreadManager.jdField_a_of_type_Int |= 0x2;
+          break label711;
+        }
         this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("suspendCrashCount", 0);
         if (this.jdField_b_of_type_Int > SuspendThreadManager.b())
         {
@@ -156,25 +174,26 @@ class SuspendThreadManager$GuardThreadHandler
           l();
         }
         b();
-        if (this.jdField_a_of_type_Int <= SuspendThreadManager.c()) {
-          break label690;
+        if (this.jdField_a_of_type_Int > SuspendThreadManager.c())
+        {
+          SuspendThreadManager.jdField_a_of_type_Int |= 0x10;
+          bool1 = false;
         }
-        SuspendThreadManager.jdField_a_of_type_Int |= 0x10;
-        bool1 = false;
-      }
-      for (;;)
-      {
-        QLog.d("TSManager", 1, "mCurrentNotResumeCount = " + this.jdField_a_of_type_Int + ",mCurrentCrashCount = " + this.jdField_b_of_type_Int + ",tempInitedSuccessful = " + bool1);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mCurrentNotResumeCount = ");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(",mCurrentCrashCount = ");
+        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append(",tempInitedSuccessful = ");
+        localStringBuilder.append(bool1);
+        QLog.d("TSManager", 1, localStringBuilder.toString());
         if (bool1)
         {
           Process.setThreadPriority(-2);
           if (Math.random() >= 0.1000000014901161D) {
-            break label659;
+            break label716;
           }
-        }
-        label659:
-        for (boolean bool2 = true;; bool2 = false)
-        {
+          bool2 = true;
           this.jdField_c_of_type_Boolean = bool2;
           SuspendThreadManager.a(SuspendThreadManager.a());
           this.jdField_a_of_type_JavaLangThread = Looper.getMainLooper().getThread();
@@ -191,23 +210,23 @@ class SuspendThreadManager$GuardThreadHandler
           SuspendThreadManager.b().add(this.jdField_b_of_type_JavaLangThread);
           SuspendThreadManager.b().add(this.jdField_a_of_type_AndroidOsHandlerThread);
           c();
-          SuspendThreadManager.b(bool1);
-          QLog.d("TSManager", 1, new Object[] { "init finished:", "mNativeApiSupportValue = ", Integer.valueOf(this.jdField_d_of_type_Int), ",sGuardThreadNativeAddr = ", Integer.valueOf(SuspendThreadManager.d()), ",sMainThreadNativeAddr = ", Integer.valueOf(SuspendThreadManager.e()), ",mFetchMainStackThisTime = ", Boolean.valueOf(this.jdField_c_of_type_Boolean), ",bDalvikVm = ", Boolean.valueOf(SuspendThreadManager.b()), ",sInitedSuccessful = ", Boolean.valueOf(SuspendThreadManager.c()), ",bIsFakeSuspendUser = ", Boolean.valueOf(this.jdField_d_of_type_Boolean), ",bSuspendWhiteListThreadOnly = ", Boolean.valueOf(this.e) });
-          return;
-          if (Build.VERSION.SDK_INT >= 24) {
-            SuspendThreadManager.jdField_a_of_type_Int |= 0x2;
-          }
-          bool1 = false;
-          break;
         }
+        SuspendThreadManager.b(bool1);
+        QLog.d("TSManager", 1, new Object[] { "init finished:", "mNativeApiSupportValue = ", Integer.valueOf(this.jdField_d_of_type_Int), ",sGuardThreadNativeAddr = ", Integer.valueOf(SuspendThreadManager.d()), ",sMainThreadNativeAddr = ", Integer.valueOf(SuspendThreadManager.e()), ",mFetchMainStackThisTime = ", Boolean.valueOf(this.jdField_c_of_type_Boolean), ",bDalvikVm = ", Boolean.valueOf(SuspendThreadManager.b()), ",sInitedSuccessful = ", Boolean.valueOf(SuspendThreadManager.c()), ",bIsFakeSuspendUser = ", Boolean.valueOf(this.jdField_d_of_type_Boolean), ",bSuspendWhiteListThreadOnly = ", Boolean.valueOf(this.e) });
+        return;
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("TSManager", 1, "libthreadsuspend load failed !!!", localThrowable);
-      SuspendThreadManager.b(false);
-      SuspendThreadManager.jdField_a_of_type_Int |= 0x20;
-      return;
+      catch (Throwable localThrowable)
+      {
+        QLog.e("TSManager", 1, "libthreadsuspend load failed !!!", localThrowable);
+        SuspendThreadManager.b(false);
+        SuspendThreadManager.jdField_a_of_type_Int |= 0x20;
+        return;
+      }
+      label711:
+      boolean bool1 = false;
+      continue;
+      label716:
+      boolean bool2 = false;
     }
   }
   
@@ -259,73 +278,41 @@ class SuspendThreadManager$GuardThreadHandler
     {
       ??? = this.jdField_a_of_type_JavaLangThread.getState();
       this.jdField_c_of_type_Int += 1;
-      if (??? != Thread.State.BLOCKED) {
-        break label224;
-      }
-      if ((!this.jdField_b_of_type_Boolean) && (!SuspendThreadManager.b()) && (!SuspendThreadManager.a().isEmpty())) {
-        break label134;
-      }
-      if (this.jdField_c_of_type_Boolean)
+      Object localObject3;
+      if (??? == Thread.State.BLOCKED)
       {
-        ??? = SuspendThreadManager.a(this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager, this.jdField_a_of_type_JavaLangThread, "Blocked");
-        if (this.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null)
+        if ((!this.jdField_b_of_type_Boolean) && (!SuspendThreadManager.b()) && (!SuspendThreadManager.a().isEmpty()))
         {
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString("main_thread_stack", (String)???);
-          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+          int i = SuspendThreadManager.a(SuspendThreadManager.a(), SuspendThreadManager.e());
+          Thread localThread1 = (Thread)SuspendThreadManager.a().get(Integer.valueOf(i));
+          if ((localThread1 != null) && (SuspendThreadManager.a().contains(localThread1)))
+          {
+            i = SuspendThreadManager.a(SuspendThreadManager.a(), localThread1, SuspendThreadManager.d());
+            if ((1 == i) || (2 == i)) {
+              synchronized (SuspendThreadManager.a())
+              {
+                SuspendThreadManager.a().remove(localThread1);
+              }
+            }
+          }
+          this.jdField_b_of_type_Boolean = true;
         }
-      }
-      g();
-    }
-    label134:
-    label320:
-    for (;;)
-    {
-      if (!SuspendThreadManager.a().isEmpty()) {
-        h();
-      }
-      return;
-      int i = SuspendThreadManager.a(SuspendThreadManager.a(), SuspendThreadManager.e());
-      Thread localThread1 = (Thread)SuspendThreadManager.a().get(Integer.valueOf(i));
-      if ((localThread1 != null) && (SuspendThreadManager.a().contains(localThread1)))
-      {
-        i = SuspendThreadManager.a(SuspendThreadManager.a(), localThread1, SuspendThreadManager.d());
-        if ((1 != i) && (2 != i)) {}
-      }
-      synchronized (SuspendThreadManager.a())
-      {
-        SuspendThreadManager.a().remove(localThread1);
-        this.jdField_b_of_type_Boolean = true;
-      }
-      label224:
-      if ((??? == Thread.State.WAITING) || (??? == Thread.State.TIMED_WAITING))
-      {
-        if (this.jdField_a_of_type_Boolean)
+        else
         {
-          SuspendThreadManager localSuspendThreadManager;
-          Thread localThread2;
           if (this.jdField_c_of_type_Boolean)
           {
-            localSuspendThreadManager = this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager;
-            localThread2 = this.jdField_a_of_type_JavaLangThread;
-            if (??? != Thread.State.WAITING) {
-              break label320;
-            }
-          }
-          for (??? = "Waiting";; ??? = "TimedWaiting")
-          {
-            ??? = SuspendThreadManager.a(localSuspendThreadManager, localThread2, (String)???);
-            if (this.jdField_a_of_type_AndroidContentSharedPreferences$Editor != null)
+            ??? = SuspendThreadManager.a(this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager, this.jdField_a_of_type_JavaLangThread, "Blocked");
+            localObject3 = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+            if (localObject3 != null)
             {
-              this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putString("main_thread_stack", (String)???);
+              ((SharedPreferences.Editor)localObject3).putString("main_thread_stack", (String)???);
               this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
             }
-            g();
-            break;
           }
+          g();
         }
-        this.jdField_a_of_type_Boolean = true;
       }
-      else
+      else if ((??? != Thread.State.WAITING) && (??? != Thread.State.TIMED_WAITING))
       {
         this.jdField_a_of_type_Boolean = false;
         this.jdField_b_of_type_Boolean = false;
@@ -335,6 +322,34 @@ class SuspendThreadManager$GuardThreadHandler
           this.jdField_c_of_type_Int = 0;
         }
       }
+      else if (this.jdField_a_of_type_Boolean)
+      {
+        if (this.jdField_c_of_type_Boolean)
+        {
+          localObject3 = this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager;
+          Thread localThread2 = this.jdField_a_of_type_JavaLangThread;
+          if (??? == Thread.State.WAITING) {
+            ??? = "Waiting";
+          } else {
+            ??? = "TimedWaiting";
+          }
+          ??? = SuspendThreadManager.a((SuspendThreadManager)localObject3, localThread2, (String)???);
+          localObject3 = this.jdField_a_of_type_AndroidContentSharedPreferences$Editor;
+          if (localObject3 != null)
+          {
+            ((SharedPreferences.Editor)localObject3).putString("main_thread_stack", (String)???);
+            this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
+          }
+        }
+        g();
+      }
+      else
+      {
+        this.jdField_a_of_type_Boolean = true;
+      }
+    }
+    if (!SuspendThreadManager.a().isEmpty()) {
+      h();
     }
   }
   
@@ -360,45 +375,40 @@ class SuspendThreadManager$GuardThreadHandler
       localHashMap.put("report_time", String.valueOf(System.currentTimeMillis()));
       localHashMap.put("suspend_error_count", String.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("suspend_error_count", 0)));
       localHashMap.put("resume_error_count", String.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("resume_error_count", 0)));
-      if (!this.jdField_d_of_type_Boolean) {
-        break label421;
+      boolean bool = this.jdField_d_of_type_Boolean;
+      String str2 = "1";
+      if (bool) {
+        str1 = "1";
+      } else {
+        str1 = "-1";
       }
-      localObject = "1";
-      localHashMap.put("fake_suspend", localObject);
-      if (!this.e) {
-        break label428;
+      localHashMap.put("fake_suspend", str1);
+      if (this.e) {
+        str1 = str2;
+      } else {
+        str1 = "-1";
       }
+      localHashMap.put("white_list_only", str1);
     }
-    label421:
-    label428:
-    for (Object localObject = "1";; localObject = "-1")
+    try
     {
-      localHashMap.put("white_list_only", localObject);
-      localObject = "";
-      try
-      {
-        String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-        localObject = str;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.e("TSManager", 1, "getAccount faild ！！！");
-        }
-      }
-      localHashMap.put("qq_num", localObject);
-      StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance((String)localObject, "suspendThreadMonitor", true, this.jdField_d_of_type_Int, 0L, localHashMap, null);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("last_report_time", l);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("normal_resume_count", 0);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("timeout_resume_count", 0);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("suspend_error_count", 0);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("resume_error_count", 0);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-      return;
-      localObject = "-1";
-      break;
+      str1 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
     }
+    catch (Throwable localThrowable)
+    {
+      label330:
+      break label330;
+    }
+    QLog.e("TSManager", 1, "getAccount faild ！！！");
+    String str1 = "";
+    localHashMap.put("qq_num", str1);
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(str1, "suspendThreadMonitor", true, this.jdField_d_of_type_Int, 0L, localHashMap, null);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putLong("last_report_time", l);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("normal_resume_count", 0);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("timeout_resume_count", 0);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("suspend_error_count", 0);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("resume_error_count", 0);
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
   }
   
   private void l()
@@ -406,37 +416,33 @@ class SuspendThreadManager$GuardThreadHandler
     HashMap localHashMap = new HashMap(10);
     localHashMap.put("not_resume_count", String.valueOf(this.jdField_a_of_type_Int));
     localHashMap.put("not_resume_time", String.valueOf(System.currentTimeMillis()));
-    if (this.jdField_d_of_type_Boolean)
-    {
-      localObject = "1";
-      localHashMap.put("fake_suspend", localObject);
-      if (!this.e) {
-        break label131;
-      }
+    boolean bool = this.jdField_d_of_type_Boolean;
+    String str2 = "1";
+    if (bool) {
+      str1 = "1";
+    } else {
+      str1 = "-1";
     }
-    label131:
-    for (Object localObject = "1";; localObject = "-1")
-    {
-      localHashMap.put("white_list_only", localObject);
-      localObject = "";
-      try
-      {
-        String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-        localObject = str;
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.e("TSManager", 1, "getAccount faild ！！！");
-        }
-      }
-      localHashMap.put("qq_num", localObject);
-      StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance((String)localObject, "suspendThreadNotResume", true, 0L, 0L, localHashMap, null);
-      return;
-      localObject = "-1";
-      break;
+    localHashMap.put("fake_suspend", str1);
+    if (this.e) {
+      str1 = str2;
+    } else {
+      str1 = "-1";
     }
+    localHashMap.put("white_list_only", str1);
+    try
+    {
+      str1 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
+    }
+    catch (Throwable localThrowable)
+    {
+      label116:
+      break label116;
+    }
+    QLog.e("TSManager", 1, "getAccount faild ！！！");
+    String str1 = "";
+    localHashMap.put("qq_num", str1);
+    StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(str1, "suspendThreadNotResume", true, 0L, 0L, localHashMap, null);
   }
   
   public void a()
@@ -448,50 +454,84 @@ class SuspendThreadManager$GuardThreadHandler
   
   public void a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    for (;;)
-    {
-      if (SuspendThreadManager.d())
+      if (paramInt != 2)
       {
-        paramInt = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("resume_error_count", 0);
-        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("resume_error_count", paramInt + 1);
-        SuspendThreadManager.c(false);
+        if (paramInt == 3)
+        {
+          paramInt = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("watchdog_resume_count", 0);
+          this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("watchdog_resume_count", paramInt + 1);
+          this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$WatchdogHandler.b();
+          if (SuspendThreadManager.f() == 1)
+          {
+            a("afterResumeThread Watchdog", false);
+            SuspendThreadManager.a(0);
+          }
+        }
       }
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
-      return;
+      else
+      {
+        paramInt = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("timeout_resume_count", 0);
+        this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("timeout_resume_count", paramInt + 1);
+        this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$WatchdogHandler.b();
+        a("afterResumeThread Timeout", false);
+      }
+    }
+    else
+    {
       paramInt = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("normal_resume_count", 0);
       this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("normal_resume_count", paramInt + 1);
       this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$WatchdogHandler.b();
       a("afterResumeThread Normal", false);
-      continue;
-      paramInt = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("timeout_resume_count", 0);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("timeout_resume_count", paramInt + 1);
-      this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$WatchdogHandler.b();
-      a("afterResumeThread Timeout", false);
-      continue;
-      paramInt = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("watchdog_resume_count", 0);
-      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("watchdog_resume_count", paramInt + 1);
-      this.jdField_a_of_type_ComTencentQqperfOptSuspendthreadSuspendThreadManager$WatchdogHandler.b();
-      if (SuspendThreadManager.f() == 1)
-      {
-        a("afterResumeThread Watchdog", false);
-        SuspendThreadManager.a(0);
-      }
     }
+    if (SuspendThreadManager.d())
+    {
+      paramInt = this.jdField_a_of_type_AndroidContentSharedPreferences.getInt("resume_error_count", 0);
+      this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.putInt("resume_error_count", paramInt + 1);
+      SuspendThreadManager.c(false);
+    }
+    this.jdField_a_of_type_AndroidContentSharedPreferences$Editor.commit();
   }
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      d();
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5) {
+              return;
+            }
+            if (!this.jdField_d_of_type_Boolean)
+            {
+              j();
+              return;
+            }
+            a("fake afterResumeThread Watchdog", false);
+            return;
+          }
+          if (!this.jdField_d_of_type_Boolean)
+          {
+            i();
+            return;
+          }
+          a("fake afterResumeThread Timeout", false);
+          return;
+        }
+        if (!this.jdField_d_of_type_Boolean)
+        {
+          f();
+          return;
+        }
+        a("fake afterResumeThread Normal", false);
+        return;
+      }
       if (!this.jdField_d_of_type_Boolean)
       {
         a(this.e);
@@ -499,34 +539,13 @@ class SuspendThreadManager$GuardThreadHandler
       }
       a("fake preSuspendThread", true);
       return;
-    case 3: 
-      if (!this.jdField_d_of_type_Boolean)
-      {
-        f();
-        return;
-      }
-      a("fake afterResumeThread Normal", false);
-      return;
-    case 4: 
-      if (!this.jdField_d_of_type_Boolean)
-      {
-        i();
-        return;
-      }
-      a("fake afterResumeThread Timeout", false);
-      return;
     }
-    if (!this.jdField_d_of_type_Boolean)
-    {
-      j();
-      return;
-    }
-    a("fake afterResumeThread Watchdog", false);
+    d();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.opt.suspendthread.SuspendThreadManager.GuardThreadHandler
  * JD-Core Version:    0.7.0.1
  */

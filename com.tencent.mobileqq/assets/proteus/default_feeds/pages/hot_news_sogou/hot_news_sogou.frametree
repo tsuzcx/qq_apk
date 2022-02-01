@@ -25,7 +25,7 @@
             "children": [
                 {
                     "tag": "view",
-                    "content": "\n\n  \n  \n\n  \n  \n\n  \n  \n\n  ",
+                    "content": "\n\n  \n  \n\n  \n  \n    \n  \n\n  \n  \n\n  ",
                     "attributes": {
                         "viewID": "2",
                         "class": "warp"
@@ -33,18 +33,25 @@
                     "styles": {
                         "display": "flex",
                         "box-sizing": "border-box",
-                        "margin": "0rpx 24rpx",
-                        "margin-top": "0rpx",
+                        "width": "750rpx",
+                        "margin": "16rpx 24rpx",
+                        "margin-top": "16rpx",
                         "margin-right": "24rpx",
-                        "margin-bottom": "0rpx",
+                        "margin-bottom": "16rpx",
                         "margin-left": "24rpx",
+                        "padding": "10rpx 20rpx",
+                        "padding-top": "10rpx",
+                        "padding-right": "20rpx",
+                        "padding-bottom": "10rpx",
+                        "padding-left": "20rpx",
                         "flex-direction": "column",
-                        "border-radius": "16rpx"
+                        "border-radius": "16rpx",
+                        "background-color": "rgb(255, 239, 225)"
                     },
                     "children": [
                         {
                             "tag": "view",
-                            "content": "\n    \n  ",
+                            "content": "\n    \n    \n  ",
                             "attributes": {
                                 "viewID": "3",
                                 "class": "banner",
@@ -57,34 +64,69 @@
                             "styles": {
                                 "display": "flex",
                                 "box-sizing": "border-box",
-                                "height": "100rpx",
-                                "align-items": "center",
-                                "padding-left": "5rpx",
-                                "background-color": "rgb(1, 16, 70)",
-                                "border-radius": "16rpx 16rpx 0rpx 0rpx"
+                                "align-items": "center"
                             },
                             "children": [
                                 {
                                     "tag": "img",
                                     "content": "",
                                     "attributes": {
-                                        "viewID": "6",
+                                        "viewID": "5",
                                         "class": "banner-image",
                                         "mode": "scaletoFill",
-                                        "src": "https://pub.idqqimg.com/pc/misc/files/20201210/6616844b3e08425a876556ab5d5661e8.png"
+                                        "src": "http://pub.idqqimg.com/pc/misc/files/20210125/d8190e6ecd0144569ac37cbbba69774b.png"
                                     },
                                     "styles": {
                                         "height": "70rpx",
                                         "width": "210rpx",
-                                        "margin-left": "10rpx"
+                                        "margin-left": "0rpx"
                                     },
                                     "children": []
+                                },
+                                {
+                                    "tag": "view",
+                                    "content": "\n      \n      \n    ",
+                                    "attributes": {
+                                        "viewID": "6",
+                                        "class": "read-more-wrap"
+                                    },
+                                    "styles": {
+                                        "display": "flex",
+                                        "box-sizing": "border-box",
+                                        "margin-left": "auto",
+                                        "width": "128rpx",
+                                        "height": "40rpx",
+                                        "border-radius": "20rpx",
+                                        "background-color": "rgb(254, 94, 67)",
+                                        "flex-direction": "row",
+                                        "align-items": "center",
+                                        "justify-content": "center"
+                                    },
+                                    "children": [
+                                        {
+                                            "tag": "text",
+                                            "content": "查看更多",
+                                            "attributes": {
+                                                "viewID": "8",
+                                                "class": "read-more"
+                                            },
+                                            "styles": {
+                                                "box-sizing": "border-box",
+                                                "display": "-webkit-box",
+                                                "overflow": "hidden",
+                                                "font-size": "12px",
+                                                "color": "rgb(238, 238, 238)",
+                                                "margin-bottom": "1rpx"
+                                            },
+                                            "children": []
+                                        }
+                                    ]
                                 }
                             ]
                         },
                         {
                             "tag": "view",
-                            "content": "\n\n    \n\n    \n \n  ",
+                            "content": "\n      \n\n      \n  \n    ",
                             "attributes": {
                                 "viewID": "4",
                                 "class": "list",
@@ -99,7 +141,7 @@
                             "children": [
                                 {
                                     "tag": "view",
-                                    "content": "\n\n      \n      \n\n      \n      \n\n      \n      \n\n    ",
+                                    "content": "\n\n        \n        \n\n        \n        \n\n        \n        \n\n      ",
                                     "attributes": {
                                         "viewID": "7",
                                         "class": "news",
@@ -112,21 +154,22 @@
                                     "styles": {
                                         "display": "flex",
                                         "box-sizing": "border-box",
-                                        "height": "110rpx",
-                                        "padding": "15rpx 10rpx",
-                                        "padding-top": "15rpx",
-                                        "padding-right": "10rpx",
-                                        "padding-bottom": "15rpx",
-                                        "padding-left": "10rpx",
+                                        "height": "auto",
+                                        "padding": "10rpx 0rpx",
+                                        "padding-top": "10rpx",
+                                        "padding-right": "0rpx",
+                                        "padding-bottom": "10rpx",
+                                        "padding-left": "0rpx",
                                         "flex-direction": "row",
-                                        "background-color": "rgb(243, 243, 243)"
+                                        "align-items": "center",
+                                        "justify-content": "center"
                                     },
                                     "children": [
                                         {
                                             "tag": "view",
-                                            "content": "\n        \n      ",
+                                            "content": "\n          \n        ",
                                             "attributes": {
-                                                "viewID": "11",
+                                                "viewID": "9",
                                                 "class": "left"
                                             },
                                             "styles": {
@@ -138,18 +181,18 @@
                                                     "tag": "text",
                                                     "content": "{{news.index}}",
                                                     "attributes": {
-                                                        "viewID": "14",
+                                                        "viewID": "12",
                                                         "class": "index"
                                                     },
                                                     "styles": {
                                                         "box-sizing": "border-box",
                                                         "display": "-webkit-box",
                                                         "overflow": "hidden",
-                                                        "width": "30rpx",
+                                                        "width": "24rpx",
                                                         "height": "36rpx",
-                                                        "color": "rgb(255, 121, 3)",
-                                                        "font-size": "16px",
-                                                        "font-weight": "bold"
+                                                        "margin-left": "24rpx",
+                                                        "color": "rgb(102, 102, 102)",
+                                                        "font-size": "13px"
                                                     },
                                                     "children": []
                                                 }
@@ -157,24 +200,23 @@
                                         },
                                         {
                                             "tag": "view",
-                                            "content": "\n        \n        \n      ",
+                                            "content": "\n          \n          \n        ",
                                             "attributes": {
-                                                "viewID": "12",
+                                                "viewID": "10",
                                                 "class": "middle"
                                             },
                                             "styles": {
                                                 "display": "flex",
                                                 "box-sizing": "border-box",
                                                 "margin-left": "5rpx",
-                                                "flex-direction": "column",
-                                                "width": "460rpx"
+                                                "flex-direction": "column"
                                             },
                                             "children": [
                                                 {
                                                     "tag": "view",
-                                                    "content": "\n          \n          \n        ",
+                                                    "content": "\n            \n            \n          ",
                                                     "attributes": {
-                                                        "viewID": "15",
+                                                        "viewID": "13",
                                                         "class": "middle-top"
                                                     },
                                                     "styles": {
@@ -187,7 +229,7 @@
                                                             "tag": "text",
                                                             "content": "{{news.title}}",
                                                             "attributes": {
-                                                                "viewID": "18",
+                                                                "viewID": "15",
                                                                 "class": "title"
                                                             },
                                                             "styles": {
@@ -195,15 +237,15 @@
                                                                 "display": "-webkit-box",
                                                                 "overflow": "hidden",
                                                                 "font-size": "15px",
-                                                                "font-weight": "bold"
+                                                                "-webkit-line-clamp": "1"
                                                             },
                                                             "children": []
                                                         },
                                                         {
                                                             "tag": "view",
-                                                            "content": "\n            \n          ",
+                                                            "content": "\n              \n            ",
                                                             "attributes": {
-                                                                "viewID": "19",
+                                                                "viewID": "16",
                                                                 "class": "tag-bkg",
                                                                 "wx:if": "{{news.tag}}"
                                                             },
@@ -223,7 +265,7 @@
                                                                     "tag": "text",
                                                                     "content": "{{news.tag}}",
                                                                     "attributes": {
-                                                                        "viewID": "22",
+                                                                        "viewID": "18",
                                                                         "class": "tag"
                                                                     },
                                                                     "styles": {
@@ -238,31 +280,14 @@
                                                             ]
                                                         }
                                                     ]
-                                                },
-                                                {
-                                                    "tag": "text",
-                                                    "content": "{{news.brief}}",
-                                                    "attributes": {
-                                                        "viewID": "16",
-                                                        "class": "brief"
-                                                    },
-                                                    "styles": {
-                                                        "box-sizing": "border-box",
-                                                        "display": "-webkit-box",
-                                                        "overflow": "hidden",
-                                                        "font-size": "13px",
-                                                        "color": "rgb(153, 153, 153)",
-                                                        "margin-top": "6rpx"
-                                                    },
-                                                    "children": []
                                                 }
                                             ]
                                         },
                                         {
                                             "tag": "view",
-                                            "content": "\n        \n      ",
+                                            "content": "\n          \n        ",
                                             "attributes": {
-                                                "viewID": "13",
+                                                "viewID": "11",
                                                 "class": "right"
                                             },
                                             "styles": {
@@ -273,9 +298,9 @@
                                             "children": [
                                                 {
                                                     "tag": "view",
-                                                    "content": "\n          \n          \n        ",
+                                                    "content": "\n            \n            \n          ",
                                                     "attributes": {
-                                                        "viewID": "17",
+                                                        "viewID": "14",
                                                         "class": "right-top"
                                                     },
                                                     "styles": {
@@ -286,34 +311,18 @@
                                                     },
                                                     "children": [
                                                         {
-                                                            "tag": "text",
-                                                            "content": "{{news.search_count}}",
-                                                            "attributes": {
-                                                                "viewID": "20",
-                                                                "class": "search-count"
-                                                            },
-                                                            "styles": {
-                                                                "box-sizing": "border-box",
-                                                                "display": "-webkit-box",
-                                                                "overflow": "hidden",
-                                                                "margin-left": "auto",
-                                                                "font-size": "12px",
-                                                                "color": "rgb(153, 153, 153)"
-                                                            },
-                                                            "children": []
-                                                        },
-                                                        {
                                                             "tag": "img",
                                                             "content": "",
                                                             "attributes": {
-                                                                "viewID": "21",
+                                                                "viewID": "17",
                                                                 "class": "detail-icon",
                                                                 "mode": "scaletoFill",
                                                                 "src": "https://pub.idqqimg.com/pc/misc/files/20201209/71c9896274e949588cda0762a1c8b955.png"
                                                             },
                                                             "styles": {
                                                                 "height": "24rpx",
-                                                                "width": "24rpx"
+                                                                "width": "24rpx",
+                                                                "margin-left": "20rpx"
                                                             },
                                                             "children": []
                                                         }
@@ -322,81 +331,6 @@
                                             ]
                                         }
                                     ]
-                                },
-                                {
-                                    "tag": "view",
-                                    "content": "",
-                                    "attributes": {
-                                        "viewID": "8",
-                                        "class": "seperator"
-                                    },
-                                    "styles": {
-                                        "display": "flex",
-                                        "box-sizing": "border-box",
-                                        "background-color": "rgb(229, 229, 229)",
-                                        "height": "2rpx"
-                                    },
-                                    "children": []
-                                }
-                            ]
-                        },
-                        {
-                            "tag": "view",
-                            "content": "\n    \n    \n  ",
-                            "attributes": {
-                                "viewID": "5",
-                                "class": "footer",
-                                "pts:on-tap": "{{$RIJArticle.rowKey}}",
-                                "pts:on-exposure": "{{$RIJArticle.rowKey}}",
-                                "data-event-type": "allInOneJump",
-                                "data-jump-url": "{{read_more_url}}",
-                                "data-feeds_type": "6536"
-                            },
-                            "styles": {
-                                "display": "flex",
-                                "box-sizing": "border-box",
-                                "height": "60rpx",
-                                "align-items": "center",
-                                "padding": "0rpx 10rpx",
-                                "padding-top": "0rpx",
-                                "padding-right": "10rpx",
-                                "padding-bottom": "0rpx",
-                                "padding-left": "10rpx",
-                                "background-color": "rgb(1, 16, 70)",
-                                "border-radius": "0rpx 0rpx 16rpx 16rpx"
-                            },
-                            "children": [
-                                {
-                                    "tag": "text",
-                                    "content": "查看更多",
-                                    "attributes": {
-                                        "viewID": "9",
-                                        "class": "read-more"
-                                    },
-                                    "styles": {
-                                        "box-sizing": "border-box",
-                                        "display": "-webkit-box",
-                                        "overflow": "hidden",
-                                        "margin-left": "auto",
-                                        "font-size": "12px",
-                                        "color": "rgb(238, 238, 238)"
-                                    },
-                                    "children": []
-                                },
-                                {
-                                    "tag": "img",
-                                    "content": "",
-                                    "attributes": {
-                                        "viewID": "10",
-                                        "class": "detail-icon",
-                                        "mode": "scaletoFill",
-                                        "src": "https://pub.idqqimg.com/pc/misc/files/20201209/71c9896274e949588cda0762a1c8b955.png"
-                                    },
-                                    "styles": {
-                                        "height": "24rpx",
-                                        "width": "24rpx"
-                                    },
-                                    "children": []
                                 }
                             ]
                         }

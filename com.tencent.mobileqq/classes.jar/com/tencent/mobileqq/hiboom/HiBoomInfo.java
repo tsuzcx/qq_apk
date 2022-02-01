@@ -42,431 +42,430 @@ public class HiBoomInfo
     //   50: aload_0
     //   51: ldc 42
     //   53: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   56: astore 4
-    //   58: aload_3
-    //   59: new 48	java/util/LinkedList
-    //   62: dup
-    //   63: invokespecial 49	java/util/LinkedList:<init>	()V
-    //   66: putfield 51	com/tencent/mobileqq/hiboom/HiBoomInfo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   69: aload_3
-    //   70: astore_0
-    //   71: aload 4
-    //   73: ifnull +725 -> 798
-    //   76: iconst_0
-    //   77: istore_1
-    //   78: aload_3
-    //   79: astore_0
-    //   80: iload_1
-    //   81: aload 4
-    //   83: invokevirtual 57	org/json/JSONArray:length	()I
-    //   86: if_icmpge +712 -> 798
-    //   89: aload 4
-    //   91: iload_1
-    //   92: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   95: astore 5
-    //   97: new 63	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle
-    //   100: dup
-    //   101: invokespecial 64	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:<init>	()V
-    //   104: astore_0
-    //   105: aload_0
-    //   106: aload 5
-    //   108: ldc 66
-    //   110: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   113: putfield 73	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_Int	I
-    //   116: aload_0
-    //   117: aload 5
-    //   119: ldc 75
-    //   121: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   124: putfield 76	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   127: aload_0
-    //   128: aload 5
-    //   130: ldc 78
-    //   132: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   135: putfield 79	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   138: aload_0
-    //   139: aload 5
-    //   141: ldc 81
-    //   143: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   146: putfield 82	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   149: aload_0
-    //   150: aload 5
-    //   152: ldc 84
-    //   154: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   157: putfield 87	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:d	Ljava/lang/String;
-    //   160: aload 5
-    //   162: ldc 89
-    //   164: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   167: astore 6
-    //   169: aload_0
-    //   170: iconst_2
-    //   171: newarray int
-    //   173: putfield 92	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_ArrayOfInt	[I
-    //   176: aload 6
-    //   178: ifnull +36 -> 214
-    //   181: aload 6
-    //   183: invokevirtual 57	org/json/JSONArray:length	()I
-    //   186: iconst_2
-    //   187: if_icmpne +27 -> 214
-    //   190: aload_0
+    //   56: astore_0
+    //   57: aload_3
+    //   58: new 48	java/util/LinkedList
+    //   61: dup
+    //   62: invokespecial 49	java/util/LinkedList:<init>	()V
+    //   65: putfield 51	com/tencent/mobileqq/hiboom/HiBoomInfo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   68: aload_0
+    //   69: ifnull +732 -> 801
+    //   72: iconst_0
+    //   73: istore_1
+    //   74: iload_1
+    //   75: aload_0
+    //   76: invokevirtual 57	org/json/JSONArray:length	()I
+    //   79: if_icmpge +722 -> 801
+    //   82: aload_0
+    //   83: iload_1
+    //   84: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   87: astore 5
+    //   89: new 63	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle
+    //   92: dup
+    //   93: invokespecial 64	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:<init>	()V
+    //   96: astore 4
+    //   98: aload 4
+    //   100: aload 5
+    //   102: ldc 66
+    //   104: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   107: putfield 73	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_Int	I
+    //   110: aload 4
+    //   112: aload 5
+    //   114: ldc 75
+    //   116: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   119: putfield 76	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   122: aload 4
+    //   124: aload 5
+    //   126: ldc 78
+    //   128: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   131: putfield 79	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   134: aload 4
+    //   136: aload 5
+    //   138: ldc 81
+    //   140: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   143: putfield 82	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   146: aload 4
+    //   148: aload 5
+    //   150: ldc 84
+    //   152: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   155: putfield 87	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:d	Ljava/lang/String;
+    //   158: aload 5
+    //   160: ldc 89
+    //   162: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   165: astore 6
+    //   167: aload 4
+    //   169: iconst_2
+    //   170: newarray int
+    //   172: putfield 92	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_ArrayOfInt	[I
+    //   175: aload 6
+    //   177: ifnull +38 -> 215
+    //   180: aload 6
+    //   182: invokevirtual 57	org/json/JSONArray:length	()I
+    //   185: iconst_2
+    //   186: if_icmpne +29 -> 215
+    //   189: aload 4
     //   191: getfield 92	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_ArrayOfInt	[I
     //   194: iconst_0
     //   195: aload 6
     //   197: iconst_0
     //   198: invokevirtual 96	org/json/JSONArray:getInt	(I)I
     //   201: iastore
-    //   202: aload_0
-    //   203: getfield 92	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_ArrayOfInt	[I
-    //   206: iconst_1
-    //   207: aload 6
-    //   209: iconst_1
-    //   210: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   213: iastore
-    //   214: aload_0
-    //   215: new 48	java/util/LinkedList
-    //   218: dup
-    //   219: invokespecial 49	java/util/LinkedList:<init>	()V
-    //   222: putfield 97	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   225: aload 5
-    //   227: ldc 99
-    //   229: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   232: astore 6
-    //   234: aload 6
-    //   236: ifnull +188 -> 424
-    //   239: iconst_0
-    //   240: istore_2
-    //   241: iload_2
-    //   242: aload 6
-    //   244: invokevirtual 57	org/json/JSONArray:length	()I
-    //   247: if_icmpge +177 -> 424
-    //   250: aload 6
-    //   252: iload_2
-    //   253: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   256: astore 8
-    //   258: new 101	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage
-    //   261: dup
-    //   262: invokespecial 102	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:<init>	()V
-    //   265: astore 7
-    //   267: aload 7
-    //   269: aload 8
-    //   271: ldc 104
-    //   273: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   276: putfield 105	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   279: aload 7
-    //   281: aload 8
-    //   283: ldc 107
-    //   285: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   288: putfield 108	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_Int	I
-    //   291: aload 7
-    //   293: iconst_2
-    //   294: newarray int
-    //   296: putfield 110	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_b_of_type_ArrayOfInt	[I
-    //   299: aload 8
-    //   301: ldc 112
-    //   303: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   306: astore 9
-    //   308: aload 9
-    //   310: ifnull +38 -> 348
-    //   313: aload 9
-    //   315: invokevirtual 57	org/json/JSONArray:length	()I
-    //   318: iconst_2
-    //   319: if_icmpne +29 -> 348
-    //   322: aload 7
-    //   324: getfield 110	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_b_of_type_ArrayOfInt	[I
-    //   327: iconst_0
-    //   328: aload 9
-    //   330: iconst_0
-    //   331: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   334: iastore
-    //   335: aload 7
-    //   337: getfield 110	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_b_of_type_ArrayOfInt	[I
-    //   340: iconst_1
-    //   341: aload 9
-    //   343: iconst_1
-    //   344: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   347: iastore
-    //   348: aload 7
-    //   350: iconst_2
-    //   351: newarray int
-    //   353: putfield 113	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_ArrayOfInt	[I
-    //   356: aload 8
-    //   358: ldc 115
-    //   360: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   363: astore 8
-    //   365: aload 8
-    //   367: ifnull +38 -> 405
-    //   370: aload 8
-    //   372: invokevirtual 57	org/json/JSONArray:length	()I
-    //   375: iconst_2
-    //   376: if_icmpne +29 -> 405
-    //   379: aload 7
-    //   381: getfield 113	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_ArrayOfInt	[I
-    //   384: iconst_0
-    //   385: aload 8
-    //   387: iconst_0
-    //   388: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   391: iastore
-    //   392: aload 7
-    //   394: getfield 113	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_ArrayOfInt	[I
-    //   397: iconst_1
-    //   398: aload 8
-    //   400: iconst_1
-    //   401: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   404: iastore
-    //   405: aload_0
-    //   406: getfield 97	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   409: aload 7
-    //   411: invokeinterface 121 2 0
-    //   416: pop
-    //   417: iload_2
-    //   418: iconst_1
-    //   419: iadd
-    //   420: istore_2
-    //   421: goto -180 -> 241
-    //   424: aload_0
-    //   425: new 48	java/util/LinkedList
-    //   428: dup
-    //   429: invokespecial 49	java/util/LinkedList:<init>	()V
-    //   432: putfield 123	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   435: aload 5
-    //   437: ldc 125
-    //   439: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   442: astore 5
-    //   444: aload 5
-    //   446: ifnull +331 -> 777
-    //   449: iconst_0
-    //   450: istore_2
-    //   451: iload_2
-    //   452: aload 5
-    //   454: invokevirtual 57	org/json/JSONArray:length	()I
-    //   457: if_icmpge +320 -> 777
-    //   460: aload 5
-    //   462: iload_2
-    //   463: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
-    //   466: astore 7
-    //   468: new 127	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord
-    //   471: dup
-    //   472: invokespecial 128	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:<init>	()V
-    //   475: astore 6
-    //   477: aload 6
-    //   479: aload 7
-    //   481: ldc 130
-    //   483: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   486: putfield 131	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_JavaLangString	Ljava/lang/String;
-    //   489: aload 6
-    //   491: aload 7
-    //   493: ldc 133
-    //   495: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   498: putfield 134	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_Int	I
-    //   501: aload 6
-    //   503: aload 7
-    //   505: ldc 136
-    //   507: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   510: putfield 138	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_Int	I
-    //   513: aload 6
-    //   515: aload 7
-    //   517: ldc 140
-    //   519: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   522: putfield 141	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:d	Ljava/lang/String;
-    //   525: aload 6
-    //   527: aload 7
-    //   529: ldc 143
-    //   531: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
-    //   534: putfield 145	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_Int	I
-    //   537: aload 6
-    //   539: aload 7
-    //   541: ldc 147
-    //   543: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   546: putfield 148	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   549: aload 6
-    //   551: aload 7
-    //   553: ldc 150
-    //   555: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
-    //   558: putfield 151	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   561: aload 6
-    //   563: iconst_2
-    //   564: newarray int
-    //   566: putfield 153	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_ArrayOfInt	[I
-    //   569: aload 7
-    //   571: ldc 155
-    //   573: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   576: astore 8
-    //   578: aload 8
-    //   580: ifnull +38 -> 618
-    //   583: aload 8
-    //   585: invokevirtual 57	org/json/JSONArray:length	()I
-    //   588: iconst_2
-    //   589: if_icmpne +29 -> 618
-    //   592: aload 6
-    //   594: getfield 153	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_ArrayOfInt	[I
-    //   597: iconst_0
-    //   598: aload 8
-    //   600: iconst_0
-    //   601: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   604: iastore
-    //   605: aload 6
-    //   607: getfield 153	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_ArrayOfInt	[I
-    //   610: iconst_1
-    //   611: aload 8
-    //   613: iconst_1
-    //   614: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   617: iastore
-    //   618: aload 6
-    //   620: iconst_2
-    //   621: newarray int
-    //   623: putfield 156	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_ArrayOfInt	[I
-    //   626: aload 7
-    //   628: ldc 158
-    //   630: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   633: astore 8
-    //   635: aload 8
-    //   637: ifnull +38 -> 675
-    //   640: aload 8
-    //   642: invokevirtual 57	org/json/JSONArray:length	()I
-    //   645: iconst_2
-    //   646: if_icmpne +29 -> 675
-    //   649: aload 6
-    //   651: getfield 156	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_ArrayOfInt	[I
-    //   654: iconst_0
-    //   655: aload 8
-    //   657: iconst_0
-    //   658: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   661: iastore
-    //   662: aload 6
-    //   664: getfield 156	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_ArrayOfInt	[I
-    //   667: iconst_1
-    //   668: aload 8
-    //   670: iconst_1
-    //   671: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   674: iastore
-    //   675: aload 7
-    //   677: ldc 160
-    //   679: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
-    //   682: astore 7
-    //   684: aload 7
-    //   686: ifnull +72 -> 758
-    //   689: aload 7
-    //   691: invokevirtual 57	org/json/JSONArray:length	()I
-    //   694: iconst_4
-    //   695: if_icmpne +63 -> 758
-    //   698: aload 6
-    //   700: iconst_4
-    //   701: newarray int
-    //   703: putfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
-    //   706: aload 6
-    //   708: getfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
-    //   711: iconst_0
-    //   712: aload 7
-    //   714: iconst_0
-    //   715: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   718: iastore
-    //   719: aload 6
-    //   721: getfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
-    //   724: iconst_1
-    //   725: aload 7
-    //   727: iconst_1
-    //   728: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   731: iastore
-    //   732: aload 6
-    //   734: getfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
-    //   737: iconst_2
-    //   738: aload 7
-    //   740: iconst_2
-    //   741: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   744: iastore
-    //   745: aload 6
-    //   747: getfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
-    //   750: iconst_3
-    //   751: aload 7
-    //   753: iconst_3
-    //   754: invokevirtual 96	org/json/JSONArray:getInt	(I)I
-    //   757: iastore
-    //   758: aload_0
-    //   759: getfield 123	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_b_of_type_JavaUtilList	Ljava/util/List;
-    //   762: aload 6
-    //   764: invokeinterface 121 2 0
-    //   769: pop
-    //   770: iload_2
-    //   771: iconst_1
-    //   772: iadd
-    //   773: istore_2
-    //   774: goto -323 -> 451
-    //   777: aload_3
-    //   778: getfield 51	com/tencent/mobileqq/hiboom/HiBoomInfo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
-    //   781: aload_0
-    //   782: invokeinterface 121 2 0
-    //   787: pop
-    //   788: iload_1
-    //   789: iconst_1
-    //   790: iadd
-    //   791: istore_1
-    //   792: goto -714 -> 78
-    //   795: astore_0
-    //   796: aconst_null
-    //   797: astore_0
-    //   798: ldc 2
-    //   800: monitorexit
-    //   801: aload_0
-    //   802: areturn
-    //   803: astore_0
-    //   804: ldc 2
-    //   806: monitorexit
-    //   807: aload_0
-    //   808: athrow
+    //   202: aload 4
+    //   204: getfield 92	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_ArrayOfInt	[I
+    //   207: iconst_1
+    //   208: aload 6
+    //   210: iconst_1
+    //   211: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   214: iastore
+    //   215: aload 4
+    //   217: new 48	java/util/LinkedList
+    //   220: dup
+    //   221: invokespecial 49	java/util/LinkedList:<init>	()V
+    //   224: putfield 97	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   227: aload 5
+    //   229: ldc 99
+    //   231: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   234: astore 6
+    //   236: aload 6
+    //   238: ifnull +189 -> 427
+    //   241: iconst_0
+    //   242: istore_2
+    //   243: iload_2
+    //   244: aload 6
+    //   246: invokevirtual 57	org/json/JSONArray:length	()I
+    //   249: if_icmpge +178 -> 427
+    //   252: aload 6
+    //   254: iload_2
+    //   255: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   258: astore 8
+    //   260: new 101	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage
+    //   263: dup
+    //   264: invokespecial 102	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:<init>	()V
+    //   267: astore 7
+    //   269: aload 7
+    //   271: aload 8
+    //   273: ldc 104
+    //   275: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   278: putfield 105	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   281: aload 7
+    //   283: aload 8
+    //   285: ldc 107
+    //   287: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   290: putfield 108	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_Int	I
+    //   293: aload 7
+    //   295: iconst_2
+    //   296: newarray int
+    //   298: putfield 110	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_b_of_type_ArrayOfInt	[I
+    //   301: aload 8
+    //   303: ldc 112
+    //   305: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   308: astore 9
+    //   310: aload 9
+    //   312: ifnull +38 -> 350
+    //   315: aload 9
+    //   317: invokevirtual 57	org/json/JSONArray:length	()I
+    //   320: iconst_2
+    //   321: if_icmpne +29 -> 350
+    //   324: aload 7
+    //   326: getfield 110	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_b_of_type_ArrayOfInt	[I
+    //   329: iconst_0
+    //   330: aload 9
+    //   332: iconst_0
+    //   333: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   336: iastore
+    //   337: aload 7
+    //   339: getfield 110	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_b_of_type_ArrayOfInt	[I
+    //   342: iconst_1
+    //   343: aload 9
+    //   345: iconst_1
+    //   346: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   349: iastore
+    //   350: aload 7
+    //   352: iconst_2
+    //   353: newarray int
+    //   355: putfield 113	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_ArrayOfInt	[I
+    //   358: aload 8
+    //   360: ldc 115
+    //   362: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   365: astore 8
+    //   367: aload 8
+    //   369: ifnull +38 -> 407
+    //   372: aload 8
+    //   374: invokevirtual 57	org/json/JSONArray:length	()I
+    //   377: iconst_2
+    //   378: if_icmpne +29 -> 407
+    //   381: aload 7
+    //   383: getfield 113	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_ArrayOfInt	[I
+    //   386: iconst_0
+    //   387: aload 8
+    //   389: iconst_0
+    //   390: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   393: iastore
+    //   394: aload 7
+    //   396: getfield 113	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleImage:jdField_a_of_type_ArrayOfInt	[I
+    //   399: iconst_1
+    //   400: aload 8
+    //   402: iconst_1
+    //   403: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   406: iastore
+    //   407: aload 4
+    //   409: getfield 97	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   412: aload 7
+    //   414: invokeinterface 121 2 0
+    //   419: pop
+    //   420: iload_2
+    //   421: iconst_1
+    //   422: iadd
+    //   423: istore_2
+    //   424: goto -181 -> 243
+    //   427: aload 4
+    //   429: new 48	java/util/LinkedList
+    //   432: dup
+    //   433: invokespecial 49	java/util/LinkedList:<init>	()V
+    //   436: putfield 123	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   439: aload 5
+    //   441: ldc 125
+    //   443: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   446: astore 5
+    //   448: aload 5
+    //   450: ifnull +332 -> 782
+    //   453: iconst_0
+    //   454: istore_2
+    //   455: iload_2
+    //   456: aload 5
+    //   458: invokevirtual 57	org/json/JSONArray:length	()I
+    //   461: if_icmpge +321 -> 782
+    //   464: aload 5
+    //   466: iload_2
+    //   467: invokevirtual 61	org/json/JSONArray:getJSONObject	(I)Lorg/json/JSONObject;
+    //   470: astore 7
+    //   472: new 127	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord
+    //   475: dup
+    //   476: invokespecial 128	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:<init>	()V
+    //   479: astore 6
+    //   481: aload 6
+    //   483: aload 7
+    //   485: ldc 130
+    //   487: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   490: putfield 131	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_JavaLangString	Ljava/lang/String;
+    //   493: aload 6
+    //   495: aload 7
+    //   497: ldc 133
+    //   499: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   502: putfield 134	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_Int	I
+    //   505: aload 6
+    //   507: aload 7
+    //   509: ldc 136
+    //   511: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   514: putfield 138	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_Int	I
+    //   517: aload 6
+    //   519: aload 7
+    //   521: ldc 140
+    //   523: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   526: putfield 141	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:d	Ljava/lang/String;
+    //   529: aload 6
+    //   531: aload 7
+    //   533: ldc 143
+    //   535: invokevirtual 70	org/json/JSONObject:optInt	(Ljava/lang/String;)I
+    //   538: putfield 145	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_Int	I
+    //   541: aload 6
+    //   543: aload 7
+    //   545: ldc 147
+    //   547: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   550: putfield 148	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   553: aload 6
+    //   555: aload 7
+    //   557: ldc 150
+    //   559: invokevirtual 30	org/json/JSONObject:optString	(Ljava/lang/String;)Ljava/lang/String;
+    //   562: putfield 151	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_JavaLangString	Ljava/lang/String;
+    //   565: aload 6
+    //   567: iconst_2
+    //   568: newarray int
+    //   570: putfield 153	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_ArrayOfInt	[I
+    //   573: aload 7
+    //   575: ldc 155
+    //   577: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   580: astore 8
+    //   582: aload 8
+    //   584: ifnull +38 -> 622
+    //   587: aload 8
+    //   589: invokevirtual 57	org/json/JSONArray:length	()I
+    //   592: iconst_2
+    //   593: if_icmpne +29 -> 622
+    //   596: aload 6
+    //   598: getfield 153	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_ArrayOfInt	[I
+    //   601: iconst_0
+    //   602: aload 8
+    //   604: iconst_0
+    //   605: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   608: iastore
+    //   609: aload 6
+    //   611: getfield 153	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_c_of_type_ArrayOfInt	[I
+    //   614: iconst_1
+    //   615: aload 8
+    //   617: iconst_1
+    //   618: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   621: iastore
+    //   622: aload 6
+    //   624: iconst_2
+    //   625: newarray int
+    //   627: putfield 156	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_ArrayOfInt	[I
+    //   630: aload 7
+    //   632: ldc 158
+    //   634: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   637: astore 8
+    //   639: aload 8
+    //   641: ifnull +38 -> 679
+    //   644: aload 8
+    //   646: invokevirtual 57	org/json/JSONArray:length	()I
+    //   649: iconst_2
+    //   650: if_icmpne +29 -> 679
+    //   653: aload 6
+    //   655: getfield 156	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_ArrayOfInt	[I
+    //   658: iconst_0
+    //   659: aload 8
+    //   661: iconst_0
+    //   662: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   665: iastore
+    //   666: aload 6
+    //   668: getfield 156	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_a_of_type_ArrayOfInt	[I
+    //   671: iconst_1
+    //   672: aload 8
+    //   674: iconst_1
+    //   675: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   678: iastore
+    //   679: aload 7
+    //   681: ldc 160
+    //   683: invokevirtual 46	org/json/JSONObject:optJSONArray	(Ljava/lang/String;)Lorg/json/JSONArray;
+    //   686: astore 7
+    //   688: aload 7
+    //   690: ifnull +72 -> 762
+    //   693: aload 7
+    //   695: invokevirtual 57	org/json/JSONArray:length	()I
+    //   698: iconst_4
+    //   699: if_icmpne +63 -> 762
+    //   702: aload 6
+    //   704: iconst_4
+    //   705: newarray int
+    //   707: putfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
+    //   710: aload 6
+    //   712: getfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
+    //   715: iconst_0
+    //   716: aload 7
+    //   718: iconst_0
+    //   719: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   722: iastore
+    //   723: aload 6
+    //   725: getfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
+    //   728: iconst_1
+    //   729: aload 7
+    //   731: iconst_1
+    //   732: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   735: iastore
+    //   736: aload 6
+    //   738: getfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
+    //   741: iconst_2
+    //   742: aload 7
+    //   744: iconst_2
+    //   745: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   748: iastore
+    //   749: aload 6
+    //   751: getfield 161	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyleWord:jdField_b_of_type_ArrayOfInt	[I
+    //   754: iconst_3
+    //   755: aload 7
+    //   757: iconst_3
+    //   758: invokevirtual 96	org/json/JSONArray:getInt	(I)I
+    //   761: iastore
+    //   762: aload 4
+    //   764: getfield 123	com/tencent/mobileqq/hiboom/HiBoomInfo$HiBoomInfoStyle:jdField_b_of_type_JavaUtilList	Ljava/util/List;
+    //   767: aload 6
+    //   769: invokeinterface 121 2 0
+    //   774: pop
+    //   775: iload_2
+    //   776: iconst_1
+    //   777: iadd
+    //   778: istore_2
+    //   779: goto -324 -> 455
+    //   782: aload_3
+    //   783: getfield 51	com/tencent/mobileqq/hiboom/HiBoomInfo:jdField_a_of_type_JavaUtilList	Ljava/util/List;
+    //   786: aload 4
+    //   788: invokeinterface 121 2 0
+    //   793: pop
+    //   794: iload_1
+    //   795: iconst_1
+    //   796: iadd
+    //   797: istore_1
+    //   798: goto -724 -> 74
+    //   801: ldc 2
+    //   803: monitorexit
+    //   804: aload_3
+    //   805: areturn
+    //   806: astore_0
+    //   807: ldc 2
+    //   809: monitorexit
+    //   810: aload_0
+    //   811: athrow
+    //   812: ldc 2
+    //   814: monitorexit
+    //   815: aconst_null
+    //   816: areturn
+    //   817: astore_0
+    //   818: goto -6 -> 812
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	809	0	paramString	String
-    //   77	715	1	i	int
-    //   240	534	2	j	int
-    //   10	768	3	localHiBoomInfo	HiBoomInfo
-    //   56	34	4	localJSONArray1	org.json.JSONArray
-    //   95	366	5	localObject1	Object
-    //   167	596	6	localObject2	Object
-    //   265	487	7	localObject3	Object
-    //   256	413	8	localObject4	Object
-    //   306	36	9	localJSONArray2	org.json.JSONArray
+    //   0	821	0	paramString	String
+    //   73	725	1	i	int
+    //   242	537	2	j	int
+    //   10	795	3	localHiBoomInfo	HiBoomInfo
+    //   96	691	4	localHiBoomInfoStyle	HiBoomInfo.HiBoomInfoStyle
+    //   87	378	5	localObject1	Object
+    //   165	603	6	localObject2	Object
+    //   267	489	7	localObject3	Object
+    //   258	415	8	localObject4	Object
+    //   308	36	9	localJSONArray	org.json.JSONArray
     // Exception table:
     //   from	to	target	type
-    //   3	69	795	java/lang/Exception
-    //   80	176	795	java/lang/Exception
-    //   181	214	795	java/lang/Exception
-    //   214	234	795	java/lang/Exception
-    //   241	308	795	java/lang/Exception
-    //   313	348	795	java/lang/Exception
-    //   348	365	795	java/lang/Exception
-    //   370	405	795	java/lang/Exception
-    //   405	417	795	java/lang/Exception
-    //   424	444	795	java/lang/Exception
-    //   451	578	795	java/lang/Exception
-    //   583	618	795	java/lang/Exception
-    //   618	635	795	java/lang/Exception
-    //   640	675	795	java/lang/Exception
-    //   675	684	795	java/lang/Exception
-    //   689	758	795	java/lang/Exception
-    //   758	770	795	java/lang/Exception
-    //   777	788	795	java/lang/Exception
-    //   3	69	803	finally
-    //   80	176	803	finally
-    //   181	214	803	finally
-    //   214	234	803	finally
-    //   241	308	803	finally
-    //   313	348	803	finally
-    //   348	365	803	finally
-    //   370	405	803	finally
-    //   405	417	803	finally
-    //   424	444	803	finally
-    //   451	578	803	finally
-    //   583	618	803	finally
-    //   618	635	803	finally
-    //   640	675	803	finally
-    //   675	684	803	finally
-    //   689	758	803	finally
-    //   758	770	803	finally
-    //   777	788	803	finally
+    //   3	68	806	finally
+    //   74	175	806	finally
+    //   180	215	806	finally
+    //   215	236	806	finally
+    //   243	310	806	finally
+    //   315	350	806	finally
+    //   350	367	806	finally
+    //   372	407	806	finally
+    //   407	420	806	finally
+    //   427	448	806	finally
+    //   455	582	806	finally
+    //   587	622	806	finally
+    //   622	639	806	finally
+    //   644	679	806	finally
+    //   679	688	806	finally
+    //   693	762	806	finally
+    //   762	775	806	finally
+    //   782	794	806	finally
+    //   3	68	817	java/lang/Exception
+    //   74	175	817	java/lang/Exception
+    //   180	215	817	java/lang/Exception
+    //   215	236	817	java/lang/Exception
+    //   243	310	817	java/lang/Exception
+    //   315	350	817	java/lang/Exception
+    //   350	367	817	java/lang/Exception
+    //   372	407	817	java/lang/Exception
+    //   407	420	817	java/lang/Exception
+    //   427	448	817	java/lang/Exception
+    //   455	582	817	java/lang/Exception
+    //   587	622	817	java/lang/Exception
+    //   622	639	817	java/lang/Exception
+    //   644	679	817	java/lang/Exception
+    //   679	688	817	java/lang/Exception
+    //   693	762	817	java/lang/Exception
+    //   762	775	817	java/lang/Exception
+    //   782	794	817	java/lang/Exception
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.HiBoomInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -50,26 +50,26 @@ public class NativeViewAction
       QMLog.d("NativeViewAction", "Page is invalid");
       return null;
     }
+    boolean bool = false;
     paramBaseRuntime = (AppBrandPageContainer)paramBaseRuntime;
-    boolean bool;
-    switch (this.action)
+    int i = this.action;
+    if (i != 1)
     {
-    default: 
-      QMLog.e("NativeViewAction", "Unknown action");
-      bool = false;
+      if (i != 2) {
+        QMLog.e("NativeViewAction", "Unknown action");
+      } else {
+        bool = paramBaseRuntime.removeNativeView(this.nativeView);
+      }
     }
-    for (;;)
-    {
-      return Boolean.valueOf(bool);
+    else {
       bool = paramBaseRuntime.addNativeView(this.nativeView, this.layoutParams);
-      continue;
-      bool = paramBaseRuntime.removeNativeView(this.nativeView);
     }
+    return Boolean.valueOf(bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.action.NativeViewAction
  * JD-Core Version:    0.7.0.1
  */

@@ -9,19 +9,23 @@ class LyricViewController$1
   
   public void a(int paramInt)
   {
-    this.a.a = true;
-    this.a.c(paramInt);
+    LyricViewController localLyricViewController = this.a;
+    localLyricViewController.a = true;
+    localLyricViewController.c(paramInt);
   }
   
   public void b(int paramInt)
   {
-    Log.d("ModuleController", "onScrollStop -> top:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onScrollStop -> top:");
+    localStringBuilder.append(paramInt);
+    Log.d("ModuleController", localStringBuilder.toString());
     this.a.b(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.lyric.widget.LyricViewController.1
  * JD-Core Version:    0.7.0.1
  */

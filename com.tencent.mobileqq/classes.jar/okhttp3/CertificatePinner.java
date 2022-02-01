@@ -32,10 +32,14 @@ public final class CertificatePinner
   
   public static String pin(Certificate paramCertificate)
   {
-    if (!(paramCertificate instanceof X509Certificate)) {
-      throw new IllegalArgumentException("Certificate pinning requires X509 certificates");
+    if ((paramCertificate instanceof X509Certificate))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sha256/");
+      localStringBuilder.append(sha256((X509Certificate)paramCertificate).base64());
+      return localStringBuilder.toString();
     }
-    return "sha256/" + sha256((X509Certificate)paramCertificate).base64();
+    throw new IllegalArgumentException("Certificate pinning requires X509 certificates");
   }
   
   static ByteString sha1(X509Certificate paramX509Certificate)
@@ -54,77 +58,89 @@ public final class CertificatePinner
     if (localList.isEmpty()) {
       return;
     }
+    Object localObject1 = this.certificateChainCleaner;
     Object localObject3 = paramList;
-    if (this.certificateChainCleaner != null) {
-      localObject3 = this.certificateChainCleaner.clean(paramList, paramString);
+    if (localObject1 != null) {
+      localObject3 = ((CertificateChainCleaner)localObject1).clean(paramList, paramString);
     }
-    int k = ((List)localObject3).size();
+    int m = ((List)localObject3).size();
+    int k = 0;
     int i = 0;
-    Object localObject1;
-    for (;;)
+    while (i < m)
     {
-      if (i >= k) {
-        break label244;
-      }
       X509Certificate localX509Certificate = (X509Certificate)((List)localObject3).get(i);
-      int m = localList.size();
-      j = 0;
-      paramList = null;
+      int n = localList.size();
       localObject1 = null;
-      if (j < m)
+      paramList = (List<Certificate>)localObject1;
+      j = 0;
+      while (j < n)
       {
         CertificatePinner.Pin localPin = (CertificatePinner.Pin)localList.get(j);
         Object localObject2;
         if (localPin.hashAlgorithm.equals("sha256/"))
         {
-          localObject2 = paramList;
-          if (paramList == null) {
-            localObject2 = sha256(localX509Certificate);
-          }
-          if (localPin.hash.equals(localObject2)) {
-            break;
-          }
-          paramList = (List<Certificate>)localObject2;
-        }
-        do
-        {
-          j += 1;
-          break;
-          if (!localPin.hashAlgorithm.equals("sha1/")) {
-            break label206;
-          }
           localObject2 = localObject1;
           if (localObject1 == null) {
-            localObject2 = sha1(localX509Certificate);
+            localObject2 = sha256(localX509Certificate);
           }
           localObject1 = localObject2;
-        } while (!localPin.hash.equals(localObject2));
-        return;
-        label206:
-        throw new AssertionError("unsupported hashAlgorithm: " + localPin.hashAlgorithm);
+          if (!localPin.hash.equals(localObject2)) {}
+        }
+        else
+        {
+          if (!localPin.hashAlgorithm.equals("sha1/")) {
+            break label213;
+          }
+          localObject2 = paramList;
+          if (paramList == null) {
+            localObject2 = sha1(localX509Certificate);
+          }
+          paramList = (List<Certificate>)localObject2;
+          if (localPin.hash.equals(localObject2)) {
+            return;
+          }
+        }
+        j += 1;
+        continue;
+        label213:
+        paramString = new StringBuilder();
+        paramString.append("unsupported hashAlgorithm: ");
+        paramString.append(localPin.hashAlgorithm);
+        throw new AssertionError(paramString.toString());
       }
       i += 1;
     }
-    label244:
-    paramList = new StringBuilder().append("Certificate pinning failure!").append("\n  Peer certificate chain:");
+    paramList = new StringBuilder();
+    paramList.append("Certificate pinning failure!");
+    paramList.append("\n  Peer certificate chain:");
     int j = ((List)localObject3).size();
     i = 0;
     while (i < j)
     {
       localObject1 = (X509Certificate)((List)localObject3).get(i);
-      paramList.append("\n    ").append(pin((Certificate)localObject1)).append(": ").append(((X509Certificate)localObject1).getSubjectDN().getName());
+      paramList.append("\n    ");
+      paramList.append(pin((Certificate)localObject1));
+      paramList.append(": ");
+      paramList.append(((X509Certificate)localObject1).getSubjectDN().getName());
       i += 1;
     }
-    paramList.append("\n  Pinned certificates for ").append(paramString).append(":");
+    paramList.append("\n  Pinned certificates for ");
+    paramList.append(paramString);
+    paramList.append(":");
     j = localList.size();
-    i = 0;
+    i = k;
     while (i < j)
     {
       paramString = (CertificatePinner.Pin)localList.get(i);
-      paramList.append("\n    ").append(paramString);
+      paramList.append("\n    ");
+      paramList.append(paramString);
       i += 1;
     }
-    throw new SSLPeerUnverifiedException(paramList.toString());
+    paramString = new SSLPeerUnverifiedException(paramList.toString());
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void check(String paramString, Certificate... paramVarArgs)
@@ -137,10 +153,15 @@ public final class CertificatePinner
     if (paramObject == this) {
       return true;
     }
-    if (((paramObject instanceof CertificatePinner)) && (Util.equal(this.certificateChainCleaner, ((CertificatePinner)paramObject).certificateChainCleaner)) && (this.pins.equals(((CertificatePinner)paramObject).pins))) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if ((paramObject instanceof CertificatePinner))
+    {
+      CertificateChainCleaner localCertificateChainCleaner = this.certificateChainCleaner;
+      paramObject = (CertificatePinner)paramObject;
+      if ((Util.equal(localCertificateChainCleaner, paramObject.certificateChainCleaner)) && (this.pins.equals(paramObject.pins))) {
+        return true;
+      }
     }
+    return false;
   }
   
   List<CertificatePinner.Pin> findMatchingPins(String paramString)
@@ -165,10 +186,14 @@ public final class CertificatePinner
   
   public int hashCode()
   {
-    if (this.certificateChainCleaner != null) {}
-    for (int i = this.certificateChainCleaner.hashCode();; i = 0) {
-      return i * 31 + this.pins.hashCode();
+    CertificateChainCleaner localCertificateChainCleaner = this.certificateChainCleaner;
+    int i;
+    if (localCertificateChainCleaner != null) {
+      i = localCertificateChainCleaner.hashCode();
+    } else {
+      i = 0;
     }
+    return i * 31 + this.pins.hashCode();
   }
   
   CertificatePinner withCertificateChainCleaner(@Nullable CertificateChainCleaner paramCertificateChainCleaner)
@@ -181,7 +206,7 @@ public final class CertificatePinner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.CertificatePinner
  * JD-Core Version:    0.7.0.1
  */

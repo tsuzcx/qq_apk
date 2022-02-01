@@ -20,22 +20,22 @@ public class FlashChatObserver
     {
     default: 
       return;
-    case 967: 
-      b(paramBoolean, paramBundle);
-      return;
-    case 968: 
-      a(paramBoolean, paramBundle);
+    case 970: 
+      a();
       return;
     case 969: 
       b();
       return;
+    case 968: 
+      a(paramBoolean, paramBundle);
+      return;
     }
-    a();
+    b(paramBoolean, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flashchat.FlashChatObserver
  * JD-Core Version:    0.7.0.1
  */

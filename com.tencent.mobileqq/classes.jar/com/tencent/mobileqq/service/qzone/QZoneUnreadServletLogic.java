@@ -26,13 +26,14 @@ import android.util.Base64;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
-import com.tencent.mobileqq.app.MessageHandler;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.model.QZoneManager;
 import com.tencent.mobileqq.observer.QZoneObserver;
 import com.tencent.mobileqq.qipc.QIPCServerHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.servlet.QZoneManagerImp;
 import com.tencent.mobileqq.servlet.QZoneNotifyServlet;
 import com.tencent.mobileqq.statistics.StatisticCollector;
@@ -42,8 +43,8 @@ import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.IQzoneMixApi;
 import cooperation.qzone.LocalMultiProcConfig;
-import cooperation.qzone.QZoneVipInfoManager;
 import cooperation.qzone.UndealCount.QZoneCountInfo;
 import cooperation.qzone.UndealCount.QZoneCountUserInfo;
 import cooperation.qzone.remote.logic.RemoteHandleManager;
@@ -53,8 +54,7 @@ import cooperation.qzone.thread.QzoneHandlerThreadFactory;
 import cooperation.qzone.util.JceUtils;
 import cooperation.qzone.util.PhotoUtils;
 import cooperation.qzone.util.QZLog;
-import cooperation.qzone.util.QZoneDistributedAppCtrl;
-import cooperation.qzone.util.QZoneDistributedAppCtrl.Control;
+import cooperation.vip.manager.QZoneVipInfoManager;
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.ArrayList;
@@ -71,25 +71,24 @@ import org.json.JSONTokener;
 
 public class QZoneUnreadServletLogic
 {
-  private static String a;
-  public static HashMap<Integer, HashMap<Integer, QZoneCountInfo>> a;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = "key_personalization_undeal_Count";
-    jdField_a_of_type_JavaUtilHashMap = new HashMap();
-  }
+  public static HashMap<Integer, HashMap<Integer, QZoneCountInfo>> a = new HashMap();
   
   public static int a(long paramLong)
   {
     int i = LocalMultiProcConfig.getInt4Uin("cancellation_status", 0, paramLong);
-    QLog.d("UndealCount.QZoneUnreadServletLogic", 1, "getCancellationStatus:" + i);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCancellationStatus:");
+    localStringBuilder.append(i);
+    QLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
     return i;
   }
   
   public static String a(String paramString)
   {
-    return LocalMultiProcConfig.getString("ACTPAGE_ATTACH" + paramString, "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ACTPAGE_ATTACH");
+    localStringBuilder.append(paramString);
+    return LocalMultiProcConfig.getString(localStringBuilder.toString(), "");
   }
   
   public static List<Integer> a(Map<Integer, QZoneCountInfo> paramMap)
@@ -118,19 +117,33 @@ public class QZoneUnreadServletLogic
   
   public static Map<Integer, String> a(long paramLong)
   {
-    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "getExtendInfo uin:" + paramLong + " extend_info:" + LocalMultiProcConfig.getString(new StringBuilder().append("EXTEND_INFO").append(paramLong).toString(), ""));
-    Map localMap = QzoneMapUtil.a(LocalMultiProcConfig.getString("EXTEND_INFO" + paramLong, ""));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getExtendInfo uin:");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" extend_info:");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EXTEND_INFO");
+    localStringBuilder.append(paramLong);
+    ((StringBuilder)localObject).append(LocalMultiProcConfig.getString(localStringBuilder.toString(), ""));
+    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject).toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("EXTEND_INFO");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = QzoneMapUtil.a(LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), ""));
     if (a(paramLong)) {
-      localMap.put(Integer.valueOf(1003), "0");
+      ((Map)localObject).put(Integer.valueOf(1003), "0");
     }
-    return localMap;
+    return localObject;
   }
   
   public static Map<Long, Long> a(Long paramLong)
   {
     localHashMap = new HashMap();
     paramLong = LocalMultiProcConfig.getString4Uin("getMapLastGetTime", "", paramLong.longValue());
-    QLog.i("UndealCount.QZoneUnreadServletLogic", 1, "getUdealCountLastGetTime: " + paramLong);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getUdealCountLastGetTime: ");
+    ((StringBuilder)localObject).append(paramLong);
+    QLog.i("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject).toString());
     if (!TextUtils.isEmpty(paramLong))
     {
       paramLong = new JSONTokener(paramLong);
@@ -140,8 +153,8 @@ public class QZoneUnreadServletLogic
         int i = 0;
         while (i < paramLong.length())
         {
-          JSONObject localJSONObject = paramLong.getJSONObject(i);
-          localHashMap.put(Long.valueOf(localJSONObject.getLong("key")), Long.valueOf(localJSONObject.getLong("value")));
+          localObject = paramLong.getJSONObject(i);
+          localHashMap.put(Long.valueOf(((JSONObject)localObject).getLong("key")), Long.valueOf(((JSONObject)localObject).getLong("value")));
           i += 1;
         }
         return localHashMap;
@@ -155,25 +168,35 @@ public class QZoneUnreadServletLogic
   
   public static Map<String, byte[]> a(String paramString)
   {
-    localHashMap = new HashMap();
-    String str1 = LocalMultiProcConfig.getString("MAPAUTOTRANS_DATA" + paramString, "");
-    if (!"".equals(str1)) {
-      try
+    HashMap localHashMap = new HashMap();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("MAPAUTOTRANS_DATA");
+    ((StringBuilder)localObject1).append(paramString);
+    localObject1 = LocalMultiProcConfig.getString(((StringBuilder)localObject1).toString(), "");
+    if (!"".equals(localObject1)) {}
+    try
+    {
+      localObject2 = new JSONObject((String)localObject1);
+      Iterator localIterator = ((JSONObject)localObject2).keys();
+      while (localIterator.hasNext())
       {
-        JSONObject localJSONObject = new JSONObject(str1);
-        Iterator localIterator = localJSONObject.keys();
-        while (localIterator.hasNext())
-        {
-          String str2 = (String)localIterator.next();
-          localHashMap.put(str2, Base64.decode(localJSONObject.getString(str2), 2));
-        }
-        return localHashMap;
-      }
-      catch (JSONException localJSONException)
-      {
-        QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "getMapAutoTransData failed: " + paramString + " jsonString = " + str1);
+        String str = (String)localIterator.next();
+        localHashMap.put(str, Base64.decode(((JSONObject)localObject2).getString(str), 2));
       }
     }
+    catch (JSONException localJSONException)
+    {
+      Object localObject2;
+      label107:
+      break label107;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getMapAutoTransData failed: ");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(" jsonString = ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject2).toString());
+    return localHashMap;
   }
   
   public static void a(int paramInt1, int paramInt2, QQAppInterface paramQQAppInterface)
@@ -191,7 +214,10 @@ public class QZoneUnreadServletLogic
   
   public static void a(int paramInt, long paramLong)
   {
-    QLog.d("UndealCount.QZoneUnreadServletLogic", 1, "handleCancellationStatus status:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleCancellationStatus status:");
+    localStringBuilder.append(paramInt);
+    QLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
     LocalMultiProcConfig.putInt4Uin("cancellation_status", paramInt, paramLong);
   }
   
@@ -203,8 +229,12 @@ public class QZoneUnreadServletLogic
       if (paramQQAppInterface != null)
       {
         LocalMultiProcConfig.putInt4Uin("qzone_plus_live_show", paramInt, Long.valueOf(paramQQAppInterface).longValue());
-        if (QLog.isColorLevel()) {
-          QLog.e("UndealCount.QZoneUnreadServletLogic", 2, "saveFriendPlusLiveStatus:" + paramInt);
+        if (QLog.isColorLevel())
+        {
+          paramQQAppInterface = new StringBuilder();
+          paramQQAppInterface.append("saveFriendPlusLiveStatus:");
+          paramQQAppInterface.append(paramInt);
+          QLog.e("UndealCount.QZoneUnreadServletLogic", 2, paramQQAppInterface.toString());
         }
       }
     }
@@ -219,7 +249,12 @@ public class QZoneUnreadServletLogic
       {
         LocalMultiProcConfig.putInt4Uin("creditlevel", paramInt, Long.valueOf(paramQQAppInterface).longValue());
         LocalMultiProcConfig.putString4Uin("creditmessage", paramString, Long.valueOf(paramQQAppInterface).longValue());
-        QLog.e("UndealCount.QZoneUnreadServletLogic", 1, "creditlevel:" + paramInt + " message:" + paramString);
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("creditlevel:");
+        paramQQAppInterface.append(paramInt);
+        paramQQAppInterface.append(" message:");
+        paramQQAppInterface.append(paramString);
+        QLog.e("UndealCount.QZoneUnreadServletLogic", 1, paramQQAppInterface.toString());
       }
     }
   }
@@ -230,22 +265,25 @@ public class QZoneUnreadServletLogic
     {
       paramQQAppInterface = paramQQAppInterface.getAccount();
       if (paramQQAppInterface != null) {
-        LocalMultiProcConfig.putInt4Uin("qzone_jinyan", (int)(0x8000 & paramLong), Long.valueOf(paramQQAppInterface).longValue());
+        LocalMultiProcConfig.putInt4Uin("qzone_jinyan", (int)(paramLong & 0x8000), Long.valueOf(paramQQAppInterface).longValue());
       }
     }
   }
   
   private static void a(count_info paramcount_info)
   {
-    if ((paramcount_info == null) || (paramcount_info.vecUinList == null)) {
-      return;
+    if (paramcount_info != null)
+    {
+      if (paramcount_info.vecUinList == null) {
+        return;
+      }
+      QLog.i("UndealCount.QZoneUnreadServletLogic", 1, "recv Qzone Unread Push: Feed实时更新未读");
+      Intent localIntent = new Intent("com.qzone.push_feed_unread");
+      if (paramcount_info != null) {
+        localIntent.putExtra("feeds_unread", paramcount_info);
+      }
+      BaseApplication.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
     }
-    QLog.i("UndealCount.QZoneUnreadServletLogic", 1, "recv Qzone Unread Push: Feed实时更新未读");
-    Intent localIntent = new Intent("com.qzone.push_feed_unread");
-    if (paramcount_info != null) {
-      localIntent.putExtra("feeds_unread", paramcount_info);
-    }
-    BaseApplication.getContext().sendBroadcast(localIntent, "com.tencent.msg.permission.pushnotify");
   }
   
   public static void a(mobile_count_rsp_new parammobile_count_rsp_new)
@@ -253,12 +291,17 @@ public class QZoneUnreadServletLogic
     if ((parammobile_count_rsp_new != null) && (parammobile_count_rsp_new.vec_soft_infos != null) && (parammobile_count_rsp_new.vec_soft_infos.size() != 0))
     {
       long l = System.currentTimeMillis();
-      QLog.w("UndealCount.QZoneUnreadServletLogic", 1, "get FeedSoft command, " + parammobile_count_rsp_new.snnComment.iStatus + "timestamp " + l);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get FeedSoft command, ");
+      ((StringBuilder)localObject).append(parammobile_count_rsp_new.snnComment.iStatus);
+      ((StringBuilder)localObject).append("timestamp ");
+      ((StringBuilder)localObject).append(l);
+      QLog.w("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject).toString());
       parammobile_count_rsp_new = parammobile_count_rsp_new.vec_soft_infos;
-      JceOutputStream localJceOutputStream = new JceOutputStream();
-      localJceOutputStream.setServerEncoding("utf8");
-      localJceOutputStream.write(parammobile_count_rsp_new, 1);
-      LocalMultiProcConfig.putString("qzone_soft_infos", Base64Util.encodeToString(localJceOutputStream.toByteArray(), 0));
+      localObject = new JceOutputStream();
+      ((JceOutputStream)localObject).setServerEncoding("utf8");
+      ((JceOutputStream)localObject).write(parammobile_count_rsp_new, 1);
+      LocalMultiProcConfig.putString("qzone_soft_infos", Base64Util.encodeToString(((JceOutputStream)localObject).toByteArray(), 0));
     }
   }
   
@@ -267,16 +310,17 @@ public class QZoneUnreadServletLogic
     if ((parammobile_count_rsp_new != null) && (parammobile_count_rsp_new.extendinfo != null) && (parammobile_count_rsp_new.extendinfo.containsKey(Integer.valueOf(1010))))
     {
       parammobile_count_rsp_new = (String)parammobile_count_rsp_new.extendinfo.get(Integer.valueOf(1010));
-      QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "handleRenZhenghaoInfo certified_puin:" + parammobile_count_rsp_new);
-      if (!TextUtils.isEmpty(parammobile_count_rsp_new)) {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleRenZhenghaoInfo certified_puin:");
+      localStringBuilder.append(parammobile_count_rsp_new);
+      QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
+      if (!TextUtils.isEmpty(parammobile_count_rsp_new))
+      {
         LocalMultiProcConfig.putString4Uin("certified_puin", parammobile_count_rsp_new, paramLong);
+        return;
       }
+      LocalMultiProcConfig.putString4Uin("certified_puin", "0", paramLong);
     }
-    else
-    {
-      return;
-    }
-    LocalMultiProcConfig.putString4Uin("certified_puin", "0", paramLong);
   }
   
   public static void a(mobile_count_rsp_new parammobile_count_rsp_new, QbossGateWayRsp paramQbossGateWayRsp, QQAppInterface paramQQAppInterface)
@@ -285,89 +329,104 @@ public class QZoneUnreadServletLogic
     {
       LocalMultiProcConfig.putString4Uin("friendheadmenudata", "", paramQQAppInterface.getLongAccountUin());
       QLog.w("UndealCount.QZoneUnreadServletLogic", 1, "handleHeadMenuData:clearAll");
-    }
-    label52:
-    label204:
-    do
-    {
-      do
-      {
-        do
-        {
-          break label52;
-          do
-          {
-            return;
-          } while ((paramQbossGateWayRsp.mapAdv == null) || (paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2586)) == null));
-          parammobile_count_rsp_new = (ArrayList)paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2586));
-          if (parammobile_count_rsp_new.size() <= 0) {
-            break label204;
-          }
-          parammobile_count_rsp_new = ((tAdvDesc)parammobile_count_rsp_new.get(0)).res_data;
-          if (TextUtils.isEmpty(parammobile_count_rsp_new)) {
-            break;
-          }
-          paramQbossGateWayRsp = LocalMultiProcConfig.getString4Uin("friendheadmenudata", "", paramQQAppInterface.getLongAccountUin());
-          if (!parammobile_count_rsp_new.equals(paramQbossGateWayRsp)) {
-            LocalMultiProcConfig.putString4Uin("friendheadmenudata", parammobile_count_rsp_new, paramQQAppInterface.getLongAccountUin());
-          }
-        } while (!QLog.isColorLevel());
-        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "headDropMenuUrl:" + paramQbossGateWayRsp);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "headDropMenuUrl: null");
       return;
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "advDescs.size() = 0");
+    }
+    if ((paramQbossGateWayRsp.mapAdv != null) && (paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2586)) != null))
+    {
+      parammobile_count_rsp_new = (ArrayList)paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2586));
+      if (parammobile_count_rsp_new.size() > 0)
+      {
+        paramQbossGateWayRsp = ((tAdvDesc)parammobile_count_rsp_new.get(0)).res_data;
+        if (!TextUtils.isEmpty(paramQbossGateWayRsp))
+        {
+          parammobile_count_rsp_new = LocalMultiProcConfig.getString4Uin("friendheadmenudata", "", paramQQAppInterface.getLongAccountUin());
+          if (!paramQbossGateWayRsp.equals(parammobile_count_rsp_new)) {
+            LocalMultiProcConfig.putString4Uin("friendheadmenudata", paramQbossGateWayRsp, paramQQAppInterface.getLongAccountUin());
+          }
+          if (QLog.isColorLevel())
+          {
+            paramQbossGateWayRsp = new StringBuilder();
+            paramQbossGateWayRsp.append("headDropMenuUrl:");
+            paramQbossGateWayRsp.append(parammobile_count_rsp_new);
+            QLog.i("UndealCount.QZoneUnreadServletLogic", 2, paramQbossGateWayRsp.toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "headDropMenuUrl: null");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "advDescs.size() = 0");
+      }
+    }
   }
   
   public static void a(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
   {
-    if (parammobile_count_rsp_new == null) {}
-    while ((parammobile_count_rsp_new.stMasterInfo == null) || (paramQQAppInterface == null)) {
+    if (parammobile_count_rsp_new == null) {
       return;
     }
-    a(parammobile_count_rsp_new.stMasterInfo.iLevel, parammobile_count_rsp_new.stMasterInfo.strMessage, paramQQAppInterface);
-    a(parammobile_count_rsp_new.stMasterInfo.host_unimbitmap, paramQQAppInterface);
+    if (parammobile_count_rsp_new.stMasterInfo != null)
+    {
+      if (paramQQAppInterface == null) {
+        return;
+      }
+      a(parammobile_count_rsp_new.stMasterInfo.iLevel, parammobile_count_rsp_new.stMasterInfo.strMessage, paramQQAppInterface);
+      a(parammobile_count_rsp_new.stMasterInfo.host_unimbitmap, paramQQAppInterface);
+    }
   }
   
   private static void a(mobile_count_rsp_new parammobile_count_rsp_new, QZoneNotifyServlet paramQZoneNotifyServlet)
   {
-    if (parammobile_count_rsp_new == null) {}
-    do
+    if (parammobile_count_rsp_new == null) {
+      return;
+    }
+    if (paramQZoneNotifyServlet == null) {
+      return;
+    }
+    if (parammobile_count_rsp_new.iNextTimeout > 0)
     {
-      do
+      paramQZoneNotifyServlet.a = (parammobile_count_rsp_new.iNextTimeout * 1000L);
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          return;
-        } while (paramQZoneNotifyServlet == null);
-        if (parammobile_count_rsp_new.iNextTimeout > 0)
-        {
-          paramQZoneNotifyServlet.a = (parammobile_count_rsp_new.iNextTimeout * 1000L);
-          if (QLog.isColorLevel()) {
-            QLog.d("UndealCount.QZoneUnreadServletLogic", 2, "onReceive getFeedInterval:" + paramQZoneNotifyServlet.a);
-          }
-        }
-      } while (parammobile_count_rsp_new.switchTimeout <= 0);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onReceive getFeedInterval:");
+        localStringBuilder.append(paramQZoneNotifyServlet.a);
+        QLog.d("UndealCount.QZoneUnreadServletLogic", 2, localStringBuilder.toString());
+      }
+    }
+    if (parammobile_count_rsp_new.switchTimeout > 0)
+    {
       paramQZoneNotifyServlet.b = (parammobile_count_rsp_new.switchTimeout * 1000);
-    } while (!QLog.isColorLevel());
-    QLog.d("UndealCount.QZoneUnreadServletLogic", 2, "onReceive getActiveAppInterval:" + paramQZoneNotifyServlet.b);
+      if (QLog.isColorLevel())
+      {
+        parammobile_count_rsp_new = new StringBuilder();
+        parammobile_count_rsp_new.append("onReceive getActiveAppInterval:");
+        parammobile_count_rsp_new.append(paramQZoneNotifyServlet.b);
+        QLog.d("UndealCount.QZoneUnreadServletLogic", 2, parammobile_count_rsp_new.toString());
+      }
+    }
   }
   
   public static void a(Intent paramIntent, FromServiceMsg paramFromServiceMsg, QQAppInterface paramQQAppInterface, QZoneNotifyServlet paramQZoneNotifyServlet)
   {
     paramIntent = paramFromServiceMsg.getWupBuffer();
-    if (paramIntent == null) {}
-    do
-    {
-      do
-      {
-        return;
-        paramFromServiceMsg = QZoneFeedCountPackeger.a(paramIntent, paramQQAppInterface, "getUndealCount");
-      } while ((paramFromServiceMsg == null) || (!(paramFromServiceMsg instanceof mobile_count_rsp_new)));
-      paramFromServiceMsg = (mobile_count_rsp_new)paramFromServiceMsg;
-    } while (paramFromServiceMsg == null);
+    if (paramIntent == null) {
+      return;
+    }
+    paramFromServiceMsg = QZoneFeedCountPackeger.a(paramIntent, paramQQAppInterface, "getUndealCount");
+    if (paramFromServiceMsg == null) {
+      return;
+    }
+    if (!(paramFromServiceMsg instanceof mobile_count_rsp_new)) {
+      return;
+    }
+    paramFromServiceMsg = (mobile_count_rsp_new)paramFromServiceMsg;
+    if (paramFromServiceMsg == null) {
+      return;
+    }
     if (QLog.isDevelopLevel()) {
       QLog.d("UndealCount.QZoneUnreadServletLogic", 4, "onResponseCMD_STRING_GET_UNDEAL_COUNT rsp has data");
     }
@@ -419,25 +478,25 @@ public class QZoneUnreadServletLogic
   
   public static void a(QQAppInterface paramQQAppInterface, int paramInt, Long paramLong)
   {
-    if (paramQQAppInterface == null) {}
-    HashMap localHashMap;
-    do
-    {
-      do
-      {
-        return;
-        paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
-      } while ((paramQQAppInterface == null) || (!(paramQQAppInterface instanceof QZoneManagerImp)));
-      localHashMap = (HashMap)jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(paramInt));
-      jdField_a_of_type_JavaUtilHashMap.remove(Integer.valueOf(paramInt));
-    } while ((localHashMap == null) || (localHashMap.isEmpty()));
-    if ((paramLong.longValue() != -1L) && (localHashMap.get(Integer.valueOf(1)) != null))
-    {
-      QZoneCountInfo localQZoneCountInfo = (QZoneCountInfo)localHashMap.get(Integer.valueOf(1));
-      localQZoneCountInfo.uCount = paramLong.longValue();
-      localHashMap.put(Integer.valueOf(1), localQZoneCountInfo);
+    if (paramQQAppInterface == null) {
+      return;
     }
-    ((QZoneManagerImp)paramQQAppInterface).a(localHashMap);
+    paramQQAppInterface = paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
+    if ((paramQQAppInterface != null) && ((paramQQAppInterface instanceof QZoneManagerImp)))
+    {
+      HashMap localHashMap = (HashMap)a.get(Integer.valueOf(paramInt));
+      a.remove(Integer.valueOf(paramInt));
+      if ((localHashMap != null) && (!localHashMap.isEmpty()))
+      {
+        if ((paramLong.longValue() != -1L) && (localHashMap.get(Integer.valueOf(1)) != null))
+        {
+          QZoneCountInfo localQZoneCountInfo = (QZoneCountInfo)localHashMap.get(Integer.valueOf(1));
+          localQZoneCountInfo.uCount = paramLong.longValue();
+          localHashMap.put(Integer.valueOf(1), localQZoneCountInfo);
+        }
+        ((QZoneManagerImp)paramQQAppInterface).a(localHashMap);
+      }
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Intent paramIntent, FromServiceMsg paramFromServiceMsg, QZoneNotifyServlet paramQZoneNotifyServlet)
@@ -450,7 +509,12 @@ public class QZoneUnreadServletLogic
     }
     if (paramQQAppInterface != null)
     {
-      paramIntent = "|resultcode: " + paramFromServiceMsg.getResultCode() + "|reason: " + MessageHandler.a(paramFromServiceMsg);
+      paramIntent = new StringBuilder();
+      paramIntent.append("|resultcode: ");
+      paramIntent.append(paramFromServiceMsg.getResultCode());
+      paramIntent.append("|reason: ");
+      paramIntent.append(BaseMessageHandler.a(paramFromServiceMsg));
+      paramIntent = paramIntent.toString();
       paramFromServiceMsg = new HashMap();
       paramFromServiceMsg.put("param_FailCode", String.valueOf(9311));
       paramFromServiceMsg.put("param_errorDesc", paramIntent);
@@ -468,7 +532,10 @@ public class QZoneUnreadServletLogic
     }
     if (paramQQAppInterface != null)
     {
-      paramArrayOfByte = "|wufbuf: " + HexUtil.bytes2HexStr(paramArrayOfByte);
+      paramQZoneNotifyServlet = new StringBuilder();
+      paramQZoneNotifyServlet.append("|wufbuf: ");
+      paramQZoneNotifyServlet.append(HexUtil.bytes2HexStr(paramArrayOfByte));
+      paramArrayOfByte = paramQZoneNotifyServlet.toString();
       paramQZoneNotifyServlet = new HashMap();
       paramQZoneNotifyServlet.put("param_FailCode", String.valueOf(9045));
       paramQZoneNotifyServlet.put("param_errorDesc", paramArrayOfByte);
@@ -485,36 +552,43 @@ public class QZoneUnreadServletLogic
       paramQQAppInterface = paramQQAppInterface.getAccount();
       if (paramQQAppInterface != null)
       {
-        if (TextUtils.isEmpty(paramString)) {
-          break label35;
+        if (!TextUtils.isEmpty(paramString))
+        {
+          LocalMultiProcConfig.putString4Uin("qzone_redpocket_guide_comment_icon_url", paramString, Long.valueOf(paramQQAppInterface).longValue());
+          return;
         }
-        LocalMultiProcConfig.putString4Uin("qzone_redpocket_guide_comment_icon_url", paramString, Long.valueOf(paramQQAppInterface).longValue());
+        LocalMultiProcConfig.putString4Uin("qzone_redpocket_guide_comment_icon_url", "", Long.valueOf(paramQQAppInterface).longValue());
       }
     }
-    return;
-    label35:
-    LocalMultiProcConfig.putString4Uin("qzone_redpocket_guide_comment_icon_url", "", Long.valueOf(paramQQAppInterface).longValue());
   }
   
   private static void a(String paramString, QZoneNotifyServlet paramQZoneNotifyServlet)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (paramQZoneNotifyServlet == null) {
+    if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("sqDyncFeedsJson", paramString);
-    paramQZoneNotifyServlet.notifyObserver(null, 1003, true, localBundle, QZoneObserver.class);
+    if (paramQZoneNotifyServlet != null)
+    {
+      Bundle localBundle = new Bundle();
+      localBundle.putString("sqDyncFeedsJson", paramString);
+      paramQZoneNotifyServlet.notifyObserver(null, 1003, true, localBundle, QZoneObserver.class);
+    }
   }
   
   public static void a(String paramString1, String paramString2)
   {
     if (!TextUtils.isEmpty(paramString2))
     {
-      LocalMultiProcConfig.putString("ACTPAGE_ATTACH" + paramString1, paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ACTPAGE_ATTACH");
+      localStringBuilder.append(paramString1);
+      LocalMultiProcConfig.putString(localStringBuilder.toString(), paramString2);
       return;
     }
-    LocalMultiProcConfig.putString("ACTPAGE_ATTACH" + paramString1, "");
+    paramString2 = new StringBuilder();
+    paramString2.append("ACTPAGE_ATTACH");
+    paramString2.append(paramString1);
+    LocalMultiProcConfig.putString(paramString2.toString(), "");
   }
   
   public static void a(String paramString, ArrayList<String> paramArrayList)
@@ -522,29 +596,58 @@ public class QZoneUnreadServletLogic
     if (paramArrayList != null)
     {
       paramArrayList = StringUtil.a(paramArrayList, ",");
-      QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "setKuolieHotTags uin:" + paramString + " kuolieHotTags:" + paramArrayList);
-      LocalMultiProcConfig.putString("KUOLIE_HOTTAGS" + paramString, paramArrayList);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setKuolieHotTags uin:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" kuolieHotTags:");
+      localStringBuilder.append(paramArrayList);
+      QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("KUOLIE_HOTTAGS");
+      localStringBuilder.append(paramString);
+      LocalMultiProcConfig.putString(localStringBuilder.toString(), paramArrayList);
       return;
     }
-    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "setKuolieHotTags uin:" + paramString + " kuolieHotTags: empty");
-    LocalMultiProcConfig.putString("KUOLIE_HOTTAGS" + paramString, "");
+    paramArrayList = new StringBuilder();
+    paramArrayList.append("setKuolieHotTags uin:");
+    paramArrayList.append(paramString);
+    paramArrayList.append(" kuolieHotTags: empty");
+    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, paramArrayList.toString());
+    paramArrayList = new StringBuilder();
+    paramArrayList.append("KUOLIE_HOTTAGS");
+    paramArrayList.append(paramString);
+    LocalMultiProcConfig.putString(paramArrayList.toString(), "");
   }
   
   public static void a(String paramString, Map<Integer, String> paramMap)
   {
     paramMap = QzoneMapUtil.a(paramMap);
-    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "setExtendInfo uin:" + paramString + " extend_info:" + paramMap);
-    LocalMultiProcConfig.putString("EXTEND_INFO" + paramString, paramMap);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setExtendInfo uin:");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" extend_info:");
+    localStringBuilder.append(paramMap);
+    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EXTEND_INFO");
+    localStringBuilder.append(paramString);
+    LocalMultiProcConfig.putString(localStringBuilder.toString(), paramMap);
   }
   
   public static void a(String paramString, byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte != null)
     {
-      LocalMultiProcConfig.putString("BANNER_INFO" + paramString, Base64.encodeToString(paramArrayOfByte, 2));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("BANNER_INFO");
+      localStringBuilder.append(paramString);
+      LocalMultiProcConfig.putString(localStringBuilder.toString(), Base64.encodeToString(paramArrayOfByte, 2));
       return;
     }
-    LocalMultiProcConfig.putString("BANNER_INFO" + paramString, "");
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("BANNER_INFO");
+    paramArrayOfByte.append(paramString);
+    LocalMultiProcConfig.putString(paramArrayOfByte.toString(), "");
   }
   
   public static void a(ArrayList<operat_data> paramArrayList, String paramString)
@@ -562,16 +665,21 @@ public class QZoneUnreadServletLogic
         {
           if (QLog.isDevelopLevel())
           {
-            QLog.d("UndealCount.QZoneUnreadServletLogic", 4, "QZoneFeedCountPackeger operat_data cmd: " + localoperat_data.cmd);
-            QLog.d("UndealCount.QZoneUnreadServletLogic", 4, "QZoneFeedCountPackeger operat_data desc: " + localoperat_data.desc);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("QZoneFeedCountPackeger operat_data cmd: ");
+            ((StringBuilder)localObject).append(localoperat_data.cmd);
+            QLog.d("UndealCount.QZoneUnreadServletLogic", 4, ((StringBuilder)localObject).toString());
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("QZoneFeedCountPackeger operat_data desc: ");
+            ((StringBuilder)localObject).append(localoperat_data.desc);
+            QLog.d("UndealCount.QZoneUnreadServletLogic", 4, ((StringBuilder)localObject).toString());
           }
-          QZoneDistributedAppCtrl.Control localControl = new QZoneDistributedAppCtrl.Control();
-          localControl.cmd = localoperat_data.cmd;
+          Object localObject = new HashMap();
           if ((localoperat_data.mapExt != null) && (localoperat_data.mapExt.size() > 0)) {
-            localControl.data.putAll(localoperat_data.mapExt);
+            ((Map)localObject).putAll(localoperat_data.mapExt);
           }
-          localControl.data.put("key_desc", localoperat_data.desc);
-          QZoneDistributedAppCtrl.getInstance(paramString).submitCtrl(localControl);
+          ((Map)localObject).put("key_desc", localoperat_data.desc);
+          ((IQzoneMixApi)QRoute.api(IQzoneMixApi.class)).execCtrlCommand(paramString, localoperat_data.cmd, (Map)localObject);
         }
       }
     }
@@ -579,12 +687,12 @@ public class QZoneUnreadServletLogic
   
   public static void a(Map<Long, Long> paramMap, Long paramLong)
   {
-    if ((paramMap == null) || (paramMap.size() == 0)) {}
-    JSONArray localJSONArray;
-    do
+    if (paramMap != null)
     {
-      return;
-      localJSONArray = new JSONArray();
+      if (paramMap.size() == 0) {
+        return;
+      }
+      JSONArray localJSONArray = new JSONArray();
       paramMap = paramMap.entrySet().iterator();
       while (paramMap.hasNext())
       {
@@ -602,10 +710,16 @@ public class QZoneUnreadServletLogic
           return;
         }
       }
-    } while (localJSONArray.length() <= 0);
-    paramMap = localJSONArray.toString();
-    LocalMultiProcConfig.putString4Uin("getMapLastGetTime", paramMap, paramLong.longValue());
-    QLog.i("UndealCount.QZoneUnreadServletLogic", 1, "setUdealCountLastGetTime: " + paramMap);
+      if (localJSONArray.length() > 0)
+      {
+        paramMap = localJSONArray.toString();
+        LocalMultiProcConfig.putString4Uin("getMapLastGetTime", paramMap, paramLong.longValue());
+        paramLong = new StringBuilder();
+        paramLong.append("setUdealCountLastGetTime: ");
+        paramLong.append(paramMap);
+        QLog.i("UndealCount.QZoneUnreadServletLogic", 1, paramLong.toString());
+      }
+    }
   }
   
   private static void a(JSONArray paramJSONArray, JSONObject paramJSONObject)
@@ -623,23 +737,36 @@ public class QZoneUnreadServletLogic
       try
       {
         JSONObject localJSONObject = paramJSONArray.getJSONObject(i);
-        if (localJSONObject.optString("priority", "0").equalsIgnoreCase(paramJSONObject.optString("priority", "0")))
-        {
-          QLog.d("UndealCount.QZoneUnreadServletLogic", 1, "find one,oldData:" + localJSONObject.toString() + " ,newData:" + paramJSONObject.toString());
-          paramJSONArray.put(i, paramJSONObject);
-          if (i == j)
-          {
-            paramJSONArray.put(paramJSONObject);
-            QLog.d("UndealCount.QZoneUnreadServletLogic", 2, "add newData:" + paramJSONObject.toString());
-          }
-          return;
+        if (!localJSONObject.optString("priority", "0").equalsIgnoreCase(paramJSONObject.optString("priority", "0"))) {
+          break label179;
         }
-        i += 1;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("find one,oldData:");
+        localStringBuilder.append(localJSONObject.toString());
+        localStringBuilder.append(" ,newData:");
+        localStringBuilder.append(paramJSONObject.toString());
+        QLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
+        paramJSONArray.put(i, paramJSONObject);
+        if (i != j) {
+          break label178;
+        }
+        paramJSONArray.put(paramJSONObject);
+        paramJSONArray = new StringBuilder();
+        paramJSONArray.append("add newData:");
+        paramJSONArray.append(paramJSONObject.toString());
+        QLog.d("UndealCount.QZoneUnreadServletLogic", 2, paramJSONArray.toString());
+        return;
       }
       catch (Throwable paramJSONArray)
       {
-        QLog.e("UndealCount.QZoneUnreadServletLogic", 1, "updateSurpriseData error:", paramJSONArray);
+        label168:
+        break label168;
       }
+      QLog.e("UndealCount.QZoneUnreadServletLogic", 1, "updateSurpriseData error:", paramJSONArray);
+      label178:
+      return;
+      label179:
+      i += 1;
     }
   }
   
@@ -647,117 +774,95 @@ public class QZoneUnreadServletLogic
   {
     HashMap localHashMap = new HashMap();
     boolean bool = a(parammobile_count_rsp_new, localHashMap, paramQQAppInterface);
-    int i = 0;
+    int i;
     if (bool) {
       i = RemoteHandleManager.getInstance().getSender().pregetPassiveFeeds(paramQQAppInterface.getLongAccountUin());
+    } else {
+      i = 0;
     }
-    if (localHashMap == null) {}
-    do
+    if (localHashMap.size() != 0)
     {
-      return;
-      if (localHashMap.size() == 0) {
-        break label130;
+      if (!bool)
+      {
+        if (paramQQAppInterface == null) {
+          return;
+        }
+        paramArrayOfByte = paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
+        if ((paramArrayOfByte != null) && ((paramArrayOfByte instanceof QZoneManagerImp)))
+        {
+          ((QZoneManagerImp)paramArrayOfByte).a(localHashMap);
+          if (QLog.isColorLevel()) {
+            QLog.d("Q.lebanew", 2, "qzone redtypeinfo:recive undealcount rsp");
+          }
+        }
       }
-      if (bool) {
-        break;
+      else
+      {
+        a.put(Integer.valueOf(i), localHashMap);
       }
-    } while (paramQQAppInterface == null);
-    paramArrayOfByte = paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
-    if ((paramArrayOfByte != null) && ((paramArrayOfByte instanceof QZoneManagerImp)))
-    {
-      ((QZoneManagerImp)paramArrayOfByte).a(localHashMap);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.lebanew", 2, "qzone redtypeinfo:recive undealcount rsp");
-      }
-    }
-    for (;;)
-    {
       a(paramQQAppInterface);
       return;
-      jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), localHashMap);
     }
-    label130:
     a(paramQQAppInterface, paramArrayOfByte, paramQZoneNotifyServlet);
   }
   
   public static boolean a(int paramInt, String paramString)
   {
-    boolean bool2 = true;
-    boolean bool3 = false;
-    boolean bool1 = bool3;
-    QZoneUnreadServletLogic.WMDConfig localWMDConfig;
-    if (Build.VERSION.SDK_INT >= 21)
+    int i = Build.VERSION.SDK_INT;
+    boolean bool = false;
+    if (i >= 21)
     {
-      localWMDConfig = new QZoneUnreadServletLogic.WMDConfig();
-      bool1 = bool3;
+      QZoneUnreadServletLogic.WMDConfig localWMDConfig = new QZoneUnreadServletLogic.WMDConfig();
       if (localWMDConfig.a())
       {
-        if (paramInt != 2) {
-          break label58;
+        if (paramInt == 2)
+        {
+          if (localWMDConfig.jdField_a_of_type_Int > 0) {
+            bool = true;
+          }
+          return bool;
         }
-        if (localWMDConfig.jdField_a_of_type_Int <= 0) {
-          break label53;
+        if (localWMDConfig.b > 0) {
+          return !localWMDConfig.a(paramString);
         }
-        bool1 = bool2;
       }
     }
-    label53:
-    label58:
-    do
-    {
-      do
-      {
-        for (;;)
-        {
-          return bool1;
-          bool1 = false;
-        }
-        bool1 = bool3;
-      } while (localWMDConfig.b <= 0);
-      bool1 = bool3;
-    } while (localWMDConfig.a(paramString));
-    return true;
+    return false;
   }
   
   private static boolean a(long paramLong)
   {
     Object localObject = LocalMultiProcConfig.getString4Uin("qzone_dual_warm_comment_info", "", paramLong);
-    if (TextUtils.isEmpty((CharSequence)localObject)) {
+    boolean bool1 = TextUtils.isEmpty((CharSequence)localObject);
+    boolean bool2 = true;
+    if (bool1) {
       return true;
     }
     try
     {
       localObject = (stNuanNuanComment)b(stNuanNuanComment.class, Base64Util.decode((String)localObject, 0));
-      if ((localObject != null) && (((stNuanNuanComment)localObject).vcOtherComments != null))
+      bool1 = bool2;
+      if (localObject != null)
       {
-        int i = ((stNuanNuanComment)localObject).vcOtherComments.size();
-        if (i > 0) {
-          break label68;
+        bool1 = bool2;
+        if (((stNuanNuanComment)localObject).vcOtherComments != null)
+        {
+          int i = ((stNuanNuanComment)localObject).vcOtherComments.size();
+          if (i <= 0) {
+            return true;
+          }
+          bool1 = false;
         }
       }
-      label68:
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-      return true;
+      return bool1;
     }
     catch (Throwable localThrowable) {}
+    return true;
   }
   
-  private static boolean a(entrance_cfg paramentrance_cfg1, entrance_cfg paramentrance_cfg2)
+  public static boolean a(entrance_cfg paramentrance_cfg1, entrance_cfg paramentrance_cfg2)
   {
-    if ((paramentrance_cfg1 == null) && (paramentrance_cfg2 == null)) {}
-    do
-    {
-      return true;
-      if (paramentrance_cfg1 == null) {
-        return false;
-      }
-      if (paramentrance_cfg2 == null) {
-        return false;
-      }
-    } while ((paramentrance_cfg1.iEntranceId == paramentrance_cfg2.iEntranceId) && (TextUtils.equals(paramentrance_cfg1.sEntranceAction, paramentrance_cfg2.sEntranceAction)) && (TextUtils.equals(paramentrance_cfg1.sEntranceName, paramentrance_cfg2.sEntranceName)) && (TextUtils.equals(paramentrance_cfg1.sEntranceIcon, paramentrance_cfg2.sEntranceIcon)) && (TextUtils.equals(paramentrance_cfg1.sQbossEntranceIcon, paramentrance_cfg2.sQbossEntranceIcon)));
-    return false;
+    return (paramentrance_cfg1.iEntranceId == paramentrance_cfg2.iEntranceId) && (TextUtils.equals(paramentrance_cfg1.sEntranceAction, paramentrance_cfg2.sEntranceAction)) && (TextUtils.equals(paramentrance_cfg1.sEntranceName, paramentrance_cfg2.sEntranceName)) && (TextUtils.equals(paramentrance_cfg1.sEntranceIcon, paramentrance_cfg2.sEntranceIcon)) && (TextUtils.equals(paramentrance_cfg1.sQbossEntranceIcon, paramentrance_cfg2.sQbossEntranceIcon)) && (paramentrance_cfg1.isCanNotShowOnTeenagerMod == paramentrance_cfg2.isCanNotShowOnTeenagerMod);
   }
   
   public static boolean a(mobile_count_rsp_new parammobile_count_rsp_new, HashMap<Integer, QZoneCountInfo> paramHashMap, QQAppInterface paramQQAppInterface)
@@ -765,134 +870,160 @@ public class QZoneUnreadServletLogic
     if (QLog.isDevelopLevel()) {
       QLog.d("UndealCount.QZoneUnreadServletLogic", 4, "onResponse");
     }
-    boolean bool3 = false;
-    boolean bool1 = false;
-    boolean bool2;
     if (parammobile_count_rsp_new == null) {
-      bool2 = bool1;
+      return false;
     }
-    int i;
-    do
+    if ((parammobile_count_rsp_new.extendinfo != null) && (paramQQAppInterface != null)) {
+      a(paramQQAppInterface.getCurrentUin(), parammobile_count_rsp_new.extendinfo);
+    }
+    if ((parammobile_count_rsp_new.mapTransData != null) && (paramQQAppInterface != null) && (parammobile_count_rsp_new.mapTransData.containsKey("unreadCountBanner"))) {
+      a(paramQQAppInterface.getCurrentUin(), (byte[])parammobile_count_rsp_new.mapTransData.get("unreadCountBanner"));
+    }
+    if ((parammobile_count_rsp_new.mapTransData != null) && (paramQQAppInterface != null) && (parammobile_count_rsp_new.mapTransData.containsKey("frdBirthRecom"))) {
+      b(paramQQAppInterface.getCurrentUin(), (byte[])parammobile_count_rsp_new.mapTransData.get("frdBirthRecom"));
+    }
+    if (parammobile_count_rsp_new.mapAutoTransData != null) {
+      b(paramQQAppInterface.getCurrentUin(), parammobile_count_rsp_new.mapAutoTransData);
+    }
+    if (parammobile_count_rsp_new.stMapCountInfo == null) {
+      return false;
+    }
+    if (parammobile_count_rsp_new.stMapCountInfo.size() == 0) {
+      return false;
+    }
+    if (paramHashMap == null) {
+      return false;
+    }
+    int i = 1;
+    boolean bool1 = false;
+    while (i < 1014)
     {
-      do
+      count_info localcount_info = (count_info)parammobile_count_rsp_new.stMapCountInfo.get(Integer.valueOf(i));
+      if (localcount_info != null)
       {
-        do
+        QZoneCountInfo localQZoneCountInfo = new QZoneCountInfo();
+        boolean bool2 = bool1;
+        if (localcount_info.stCount != null)
         {
-          do
+          localQZoneCountInfo.uCount = localcount_info.stCount.uCount;
+          localQZoneCountInfo.iControl = localcount_info.stCount.iControl;
+          if (QLog.isDevelopLevel())
           {
-            return bool2;
-            if ((parammobile_count_rsp_new.extendinfo != null) && (paramQQAppInterface != null)) {
-              a(paramQQAppInterface.getCurrentUin(), parammobile_count_rsp_new.extendinfo);
-            }
-            if ((parammobile_count_rsp_new.mapTransData != null) && (paramQQAppInterface != null) && (parammobile_count_rsp_new.mapTransData.containsKey("unreadCountBanner"))) {
-              a(paramQQAppInterface.getCurrentUin(), (byte[])parammobile_count_rsp_new.mapTransData.get("unreadCountBanner"));
-            }
-            if ((parammobile_count_rsp_new.mapTransData != null) && (paramQQAppInterface != null) && (parammobile_count_rsp_new.mapTransData.containsKey("frdBirthRecom"))) {
-              b(paramQQAppInterface.getCurrentUin(), (byte[])parammobile_count_rsp_new.mapTransData.get("frdBirthRecom"));
-            }
-            if (parammobile_count_rsp_new.mapAutoTransData != null) {
-              b(paramQQAppInterface.getCurrentUin(), parammobile_count_rsp_new.mapAutoTransData);
-            }
-            bool2 = bool1;
-          } while (parammobile_count_rsp_new.stMapCountInfo == null);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onResponse unread cout: ");
+            ((StringBuilder)localObject).append(localcount_info.stCount.uCount);
+            ((StringBuilder)localObject).append("unread type: ");
+            ((StringBuilder)localObject).append(i);
+            QLog.d("UndealCount.QZoneUnreadServletLogic", 4, ((StringBuilder)localObject).toString());
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("qzone redtypeinfo:onResponse unread cout: ");
+            ((StringBuilder)localObject).append(localcount_info.stCount.uCount);
+            ((StringBuilder)localObject).append("unread type: ");
+            ((StringBuilder)localObject).append(i);
+            QLog.d("Q.lebanew", 2, ((StringBuilder)localObject).toString());
+          }
           bool2 = bool1;
-        } while (parammobile_count_rsp_new.stMapCountInfo.size() == 0);
-        bool2 = bool1;
-      } while (paramHashMap == null);
-      i = 1;
-      bool1 = bool3;
-      bool2 = bool1;
-    } while (i >= 1014);
-    count_info localcount_info = (count_info)parammobile_count_rsp_new.stMapCountInfo.get(Integer.valueOf(i));
-    if (localcount_info != null)
-    {
-      QZoneCountInfo localQZoneCountInfo = new QZoneCountInfo();
-      if (localcount_info.stCount != null)
-      {
-        localQZoneCountInfo.uCount = localcount_info.stCount.uCount;
-        localQZoneCountInfo.iControl = localcount_info.stCount.iControl;
-        if (QLog.isDevelopLevel())
-        {
-          QLog.d("UndealCount.QZoneUnreadServletLogic", 4, "onResponse unread cout: " + localcount_info.stCount.uCount + "unread type: " + i);
-          QLog.d("Q.lebanew", 2, "qzone redtypeinfo:onResponse unread cout: " + localcount_info.stCount.uCount + "unread type: " + i);
-        }
-        if ((i == 1) && (localQZoneCountInfo.uCount > 0L) && (paramQQAppInterface != null) && (parammobile_count_rsp_new.isPreLoad == 1) && (!TextUtils.isEmpty(parammobile_count_rsp_new.undealCountTime)) && (!LocalMultiProcConfig.getString4Uin("qzone_passive_undealtime", "", paramQQAppInterface.getLongAccountUin()).equals(parammobile_count_rsp_new.undealCountTime)))
-        {
-          bool1 = true;
-          label441:
-          QZoneCountUserInfo localQZoneCountUserInfo = null;
-          Object localObject = localQZoneCountUserInfo;
-          if (parammobile_count_rsp_new.mapTransData != null)
+          if (i == 1)
           {
-            byte[] arrayOfByte = (byte[])parammobile_count_rsp_new.mapTransData.get("PassiveFeedsPush");
-            localObject = localQZoneCountUserInfo;
-            if (arrayOfByte != null) {
-              localObject = (PassiveFeedsPush)JceUtils.decodeWup(PassiveFeedsPush.class, arrayOfByte);
-            }
-          }
-          if ((localcount_info.vecUinList != null) && (localcount_info.vecUinList.size() > 0))
-          {
-            int j = 0;
-            while (j < localcount_info.vecUinList.size())
+            bool2 = bool1;
+            if (localQZoneCountInfo.uCount > 0L)
             {
-              localQZoneCountUserInfo = new QZoneCountUserInfo();
-              localQZoneCountUserInfo.uin = ((feed_host_info)localcount_info.vecUinList.get(j)).uUin;
-              if (((feed_host_info)localcount_info.vecUinList.get(j)).OpuinYellowInfo != null)
+              bool2 = bool1;
+              if (paramQQAppInterface != null)
               {
-                localQZoneCountUserInfo.iYellowType = ((feed_host_info)localcount_info.vecUinList.get(j)).OpuinYellowInfo.iYellowType;
-                localQZoneCountUserInfo.iYellowLevel = ((feed_host_info)localcount_info.vecUinList.get(j)).OpuinYellowInfo.iYellowLevel;
-                localQZoneCountUserInfo.isAnnualVip = ((feed_host_info)localcount_info.vecUinList.get(j)).OpuinYellowInfo.isAnnualVip;
+                bool2 = bool1;
+                if (parammobile_count_rsp_new.isPreLoad == 1)
+                {
+                  bool2 = bool1;
+                  if (!TextUtils.isEmpty(parammobile_count_rsp_new.undealCountTime))
+                  {
+                    bool2 = bool1;
+                    if (!LocalMultiProcConfig.getString4Uin("qzone_passive_undealtime", "", paramQQAppInterface.getLongAccountUin()).equals(parammobile_count_rsp_new.undealCountTime)) {
+                      bool2 = true;
+                    }
+                  }
+                }
               }
-              localQZoneCountUserInfo.vec_feedInfos = ((feed_host_info)localcount_info.vecUinList.get(j)).vec_feedInfos;
-              localQZoneCountUserInfo.nickName = ((feed_host_info)localcount_info.vecUinList.get(j)).nickname;
-              if ((localObject != null) && (((PassiveFeedsPush)localObject).stBubbleSkin != null) && (localQZoneCountUserInfo.uin == ((PassiveFeedsPush)localObject).stBubbleSkin.lUin)) {
-                localQZoneCountUserInfo.pushData = ((PassiveFeedsPush)localObject);
-              }
-              localQZoneCountInfo.friendList.add(localQZoneCountUserInfo);
-              j += 1;
-            }
-            localQZoneCountInfo.friendMsg = ((feed_host_info)localcount_info.vecUinList.get(0)).actiondesc;
-            if (QLog.isDevelopLevel()) {
-              QLog.d("UndealCount.QZoneUnreadServletLogic", 4, "onResponse unread list first uin: " + ((feed_host_info)localcount_info.vecUinList.get(0)).uUin + ",actiondesc: " + ((feed_host_info)localcount_info.vecUinList.get(0)).actiondesc);
             }
           }
-          localQZoneCountInfo.trace_info = localcount_info.trace_info;
-          localQZoneCountInfo.countId = localcount_info.iSubCountID;
-          localQZoneCountInfo.actPageAttach = localcount_info.actPageAttach;
-          localQZoneCountInfo.strShowMsg = localcount_info.strShowMsg;
-          localQZoneCountInfo.reportValue = localcount_info.strReportValue;
-          localQZoneCountInfo.iconUrl = localcount_info.strIconUrl;
-          localQZoneCountInfo.cTime = localcount_info.cTime;
-          paramHashMap.put(Integer.valueOf(i), localQZoneCountInfo);
         }
+        QZoneCountUserInfo localQZoneCountUserInfo = null;
+        Object localObject = localQZoneCountUserInfo;
+        if (parammobile_count_rsp_new.mapTransData != null)
+        {
+          byte[] arrayOfByte = (byte[])parammobile_count_rsp_new.mapTransData.get("PassiveFeedsPush");
+          localObject = localQZoneCountUserInfo;
+          if (arrayOfByte != null) {
+            localObject = (PassiveFeedsPush)JceUtils.decodeWup(PassiveFeedsPush.class, arrayOfByte);
+          }
+        }
+        if ((localcount_info.vecUinList != null) && (localcount_info.vecUinList.size() > 0))
+        {
+          int j = 0;
+          while (j < localcount_info.vecUinList.size())
+          {
+            localQZoneCountUserInfo = new QZoneCountUserInfo();
+            localQZoneCountUserInfo.uin = ((feed_host_info)localcount_info.vecUinList.get(j)).uUin;
+            if (((feed_host_info)localcount_info.vecUinList.get(j)).OpuinYellowInfo != null)
+            {
+              localQZoneCountUserInfo.iYellowType = ((feed_host_info)localcount_info.vecUinList.get(j)).OpuinYellowInfo.iYellowType;
+              localQZoneCountUserInfo.iYellowLevel = ((feed_host_info)localcount_info.vecUinList.get(j)).OpuinYellowInfo.iYellowLevel;
+              localQZoneCountUserInfo.isAnnualVip = ((feed_host_info)localcount_info.vecUinList.get(j)).OpuinYellowInfo.isAnnualVip;
+            }
+            localQZoneCountUserInfo.vec_feedInfos = ((feed_host_info)localcount_info.vecUinList.get(j)).vec_feedInfos;
+            localQZoneCountUserInfo.nickName = ((feed_host_info)localcount_info.vecUinList.get(j)).nickname;
+            if ((localObject != null) && (((PassiveFeedsPush)localObject).stBubbleSkin != null) && (localQZoneCountUserInfo.uin == ((PassiveFeedsPush)localObject).stBubbleSkin.lUin)) {
+              localQZoneCountUserInfo.pushData = ((PassiveFeedsPush)localObject);
+            }
+            localQZoneCountInfo.friendList.add(localQZoneCountUserInfo);
+            j += 1;
+          }
+          j = i;
+          localQZoneCountInfo.friendMsg = ((feed_host_info)localcount_info.vecUinList.get(0)).actiondesc;
+          i = j;
+          if (QLog.isDevelopLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("onResponse unread list first uin: ");
+            ((StringBuilder)localObject).append(((feed_host_info)localcount_info.vecUinList.get(0)).uUin);
+            ((StringBuilder)localObject).append(",actiondesc: ");
+            ((StringBuilder)localObject).append(((feed_host_info)localcount_info.vecUinList.get(0)).actiondesc);
+            QLog.d("UndealCount.QZoneUnreadServletLogic", 4, ((StringBuilder)localObject).toString());
+            i = j;
+          }
+        }
+        localQZoneCountInfo.trace_info = localcount_info.trace_info;
+        localQZoneCountInfo.countId = localcount_info.iSubCountID;
+        localQZoneCountInfo.actPageAttach = localcount_info.actPageAttach;
+        localQZoneCountInfo.strShowMsg = localcount_info.strShowMsg;
+        localQZoneCountInfo.reportValue = localcount_info.strReportValue;
+        localQZoneCountInfo.iconUrl = localcount_info.strIconUrl;
+        localQZoneCountInfo.cTime = localcount_info.cTime;
+        paramHashMap.put(Integer.valueOf(i), localQZoneCountInfo);
+        bool1 = bool2;
       }
-    }
-    for (;;)
-    {
       i += 1;
-      break;
-      break label441;
     }
+    return bool1;
   }
   
   private static boolean a(ArrayList<entrance_cfg> paramArrayList, entrance_cfg paramentrance_cfg)
   {
-    if (paramArrayList == null) {}
-    for (;;)
-    {
+    if (paramArrayList == null) {
       return false;
-      if (paramentrance_cfg != null)
-      {
-        int i = 0;
-        while (i < paramArrayList.size())
-        {
-          if (a(paramentrance_cfg, (entrance_cfg)paramArrayList.get(i))) {
-            return true;
-          }
-          i += 1;
-        }
-      }
     }
+    if (paramentrance_cfg == null) {
+      return false;
+    }
+    int i = 0;
+    while (i < paramArrayList.size())
+    {
+      if (b(paramentrance_cfg, (entrance_cfg)paramArrayList.get(i))) {
+        return true;
+      }
+      i += 1;
+    }
+    return false;
   }
   
   public static byte[] a(long paramLong, String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, Map<Integer, count_info> paramMap, String paramString2, Map<Long, Long> paramMap1)
@@ -914,15 +1045,26 @@ public class QZoneUnreadServletLogic
   
   public static byte[] a(String paramString)
   {
-    return Base64.decode(LocalMultiProcConfig.getString("BANNER_INFO" + paramString, ""), 2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BANNER_INFO");
+    localStringBuilder.append(paramString);
+    return Base64.decode(LocalMultiProcConfig.getString(localStringBuilder.toString(), ""), 2);
   }
   
   public static String[] a(long paramLong)
   {
-    String str = LocalMultiProcConfig.getString("KUOLIE_HOTTAGS" + paramLong, "");
-    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "getKuolieHotTags uin:" + paramLong + " getKuolieHotTags:" + str);
-    if (!TextUtils.isEmpty(str)) {
-      return str.split(",");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("KUOLIE_HOTTAGS");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getKuolieHotTags uin:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" getKuolieHotTags:");
+    localStringBuilder.append((String)localObject);
+    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, localStringBuilder.toString());
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {
+      return ((String)localObject).split(",");
     }
     return null;
   }
@@ -949,11 +1091,15 @@ public class QZoneUnreadServletLogic
   
   public static Map<Integer, Long> b(long paramLong)
   {
-    Map localMap = b(LocalMultiProcConfig.getString("CTIME_MAP" + paramLong, ""));
-    if (!localMap.containsKey(Integer.valueOf(0))) {
-      localMap.put(Integer.valueOf(0), Long.valueOf(0L));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("CTIME_MAP");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = b(LocalMultiProcConfig.getString(((StringBuilder)localObject).toString(), ""));
+    Integer localInteger = Integer.valueOf(0);
+    if (!((Map)localObject).containsKey(localInteger)) {
+      ((Map)localObject).put(localInteger, Long.valueOf(0L));
     }
-    return localMap;
+    return localObject;
   }
   
   public static Map<Integer, Long> b(String paramString)
@@ -965,37 +1111,30 @@ public class QZoneUnreadServletLogic
     paramString = paramString.split("&");
     int j = paramString.length;
     int i = 0;
-    label30:
-    String[] arrayOfString;
-    if (i < j)
+    while (i < j)
     {
-      arrayOfString = paramString[i].split("=");
+      String[] arrayOfString = paramString[i].split("=");
       if (arrayOfString.length == 2) {
-        break label60;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label30;
-      break;
-      try
-      {
-        label60:
-        localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), Long.valueOf(URLDecoder.decode(arrayOfString[1], "UTF-8")));
-      }
-      catch (UnsupportedEncodingException localUnsupportedEncodingException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
+        try
+        {
+          localHashMap.put(Integer.valueOf(URLDecoder.decode(arrayOfString[0], "UTF-8")), Long.valueOf(URLDecoder.decode(arrayOfString[1], "UTF-8")));
         }
-        QLog.d("UndealCount.QZoneUnreadServletLogic", 2, localUnsupportedEncodingException.toString());
+        catch (Throwable localThrowable)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("UndealCount.QZoneUnreadServletLogic", 2, localThrowable.toString());
+          }
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          if (QLog.isColorLevel()) {
+            QLog.d("UndealCount.QZoneUnreadServletLogic", 2, localUnsupportedEncodingException.toString());
+          }
+        }
       }
-      catch (Throwable localThrowable) {}
-      if (QLog.isColorLevel()) {
-        QLog.d("UndealCount.QZoneUnreadServletLogic", 2, localThrowable.toString());
-      }
+      i += 1;
     }
+    return localHashMap;
   }
   
   public static void b(int paramInt, QQAppInterface paramQQAppInterface)
@@ -1008,17 +1147,18 @@ public class QZoneUnreadServletLogic
         LocalMultiProcConfig.putInt4Uin("qzone_feed_gray_mask", paramInt, Long.valueOf(str).longValue());
         PhotoUtils.clearNewPicRuleMapCache();
         paramQQAppInterface = (QZoneManager)paramQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
-        if ((paramInt & 0x80) == 0) {
-          break label85;
+        boolean bool;
+        if ((paramInt & 0x80) != 0) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        paramQQAppInterface.b(bool);
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("saveGrayOperate: ");
+        paramQQAppInterface.append(paramInt);
+        QLog.d("UndealCount.QZoneUnreadServletLogic", 2, paramQQAppInterface.toString());
       }
-    }
-    label85:
-    for (boolean bool = true;; bool = false)
-    {
-      paramQQAppInterface.b(bool);
-      QLog.d("UndealCount.QZoneUnreadServletLogic", 2, "saveGrayOperate: " + paramInt);
-      return;
     }
   }
   
@@ -1029,41 +1169,49 @@ public class QZoneUnreadServletLogic
   
   public static void b(mobile_count_rsp_new parammobile_count_rsp_new, long paramLong)
   {
-    if (parammobile_count_rsp_new == null) {}
-    for (;;)
-    {
+    if (parammobile_count_rsp_new == null) {
       return;
-      try
+    }
+    try
+    {
+      Object localObject = parammobile_count_rsp_new.snnComment;
+      long l;
+      if ((localObject != null) && (parammobile_count_rsp_new.snnComment.iStatus != 0) && (paramLong != -1L))
       {
-        long l;
-        Object localObject;
-        if ((parammobile_count_rsp_new.snnComment != null) && (parammobile_count_rsp_new.snnComment.iStatus != 0) && (paramLong != -1L))
-        {
-          l = System.currentTimeMillis();
-          QLog.w("UndealCount.QZoneUnreadServletLogic", 1, "get dualwarm normal comment command, " + parammobile_count_rsp_new.snnComment.iStatus + "timestamp " + l);
-          localObject = parammobile_count_rsp_new.snnComment;
-          JceOutputStream localJceOutputStream = new JceOutputStream();
-          localJceOutputStream.setServerEncoding("utf8");
-          ((stNuanNuanComment)localObject).writeTo(localJceOutputStream);
-          LocalMultiProcConfig.putString4Uin("qzone_dual_warm_comment_info", Base64Util.encodeToString(localJceOutputStream.toByteArray(), 0), paramLong);
-          LocalMultiProcConfig.putLong4Uin("qzone_dual_warm_comment_update_time", l, paramLong);
-        }
-        if ((parammobile_count_rsp_new.sContentOpComment != null) && (parammobile_count_rsp_new.sContentOpComment.iStatus != 0) && (paramLong != -1L))
-        {
-          l = System.currentTimeMillis();
-          QLog.w("UndealCount.QZoneUnreadServletLogic", 1, "get dualwarm operation comment command, " + parammobile_count_rsp_new.sContentOpComment.iStatus + "timestamp " + l);
-          parammobile_count_rsp_new = parammobile_count_rsp_new.sContentOpComment;
-          localObject = new JceOutputStream();
-          ((JceOutputStream)localObject).setServerEncoding("utf8");
-          parammobile_count_rsp_new.writeTo((JceOutputStream)localObject);
-          LocalMultiProcConfig.putString4Uin("qzone_dual_warm_operation_comment_info", Base64Util.encodeToString(((JceOutputStream)localObject).toByteArray(), 0), paramLong);
-          return;
-        }
+        l = System.currentTimeMillis();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("get dualwarm normal comment command, ");
+        ((StringBuilder)localObject).append(parammobile_count_rsp_new.snnComment.iStatus);
+        ((StringBuilder)localObject).append("timestamp ");
+        ((StringBuilder)localObject).append(l);
+        QLog.w("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject).toString());
+        localObject = parammobile_count_rsp_new.snnComment;
+        JceOutputStream localJceOutputStream = new JceOutputStream();
+        localJceOutputStream.setServerEncoding("utf8");
+        ((stNuanNuanComment)localObject).writeTo(localJceOutputStream);
+        LocalMultiProcConfig.putString4Uin("qzone_dual_warm_comment_info", Base64Util.encodeToString(localJceOutputStream.toByteArray(), 0), paramLong);
+        LocalMultiProcConfig.putLong4Uin("qzone_dual_warm_comment_update_time", l, paramLong);
       }
-      catch (Exception parammobile_count_rsp_new)
+      if ((parammobile_count_rsp_new.sContentOpComment != null) && (parammobile_count_rsp_new.sContentOpComment.iStatus != 0) && (paramLong != -1L))
       {
-        QLog.e("UndealCount.QZoneUnreadServletLogic", 100, "save dual warm data failed", parammobile_count_rsp_new);
+        l = System.currentTimeMillis();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("get dualwarm operation comment command, ");
+        ((StringBuilder)localObject).append(parammobile_count_rsp_new.sContentOpComment.iStatus);
+        ((StringBuilder)localObject).append("timestamp ");
+        ((StringBuilder)localObject).append(l);
+        QLog.w("UndealCount.QZoneUnreadServletLogic", 1, ((StringBuilder)localObject).toString());
+        parammobile_count_rsp_new = parammobile_count_rsp_new.sContentOpComment;
+        localObject = new JceOutputStream();
+        ((JceOutputStream)localObject).setServerEncoding("utf8");
+        parammobile_count_rsp_new.writeTo((JceOutputStream)localObject);
+        LocalMultiProcConfig.putString4Uin("qzone_dual_warm_operation_comment_info", Base64Util.encodeToString(((JceOutputStream)localObject).toByteArray(), 0), paramLong);
+        return;
       }
+    }
+    catch (Exception parammobile_count_rsp_new)
+    {
+      QLog.e("UndealCount.QZoneUnreadServletLogic", 100, "save dual warm data failed", parammobile_count_rsp_new);
     }
   }
   
@@ -1073,39 +1221,37 @@ public class QZoneUnreadServletLogic
     {
       LocalMultiProcConfig.putString4Uin("friendplusmenudata", "", paramQQAppInterface.getLongAccountUin());
       QLog.w("UndealCount.QZoneUnreadServletLogic", 1, "handlePlusMenuData:clearAll");
+      return;
     }
-    label52:
-    label202:
-    do
+    if ((paramQbossGateWayRsp.mapAdv != null) && (paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2585)) != null))
     {
-      do
+      parammobile_count_rsp_new = (ArrayList)paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2585));
+      if (parammobile_count_rsp_new.size() > 0)
       {
-        do
+        parammobile_count_rsp_new = ((tAdvDesc)parammobile_count_rsp_new.get(0)).res_data;
+        if (!TextUtils.isEmpty(parammobile_count_rsp_new))
         {
-          break label52;
-          do
-          {
-            return;
-          } while ((paramQbossGateWayRsp.mapAdv == null) || (paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2585)) == null));
-          parammobile_count_rsp_new = (ArrayList)paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2585));
-          if (parammobile_count_rsp_new.size() <= 0) {
-            break label202;
-          }
-          parammobile_count_rsp_new = ((tAdvDesc)parammobile_count_rsp_new.get(0)).res_data;
-          if (TextUtils.isEmpty(parammobile_count_rsp_new)) {
-            break;
-          }
           if (!parammobile_count_rsp_new.equals(LocalMultiProcConfig.getString4Uin("friendplusmenudata", "", paramQQAppInterface.getLongAccountUin()))) {
             LocalMultiProcConfig.putString4Uin("friendplusmenudata", parammobile_count_rsp_new, paramQQAppInterface.getLongAccountUin());
           }
-        } while (!QLog.isColorLevel());
-        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "plusMenuData:" + parammobile_count_rsp_new);
-        return;
-      } while (!QLog.isColorLevel());
-      QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "plusMenuData: null");
-      return;
-    } while (!QLog.isColorLevel());
-    QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "handlePlusMenuData advDescs.size() = 0");
+          if (QLog.isColorLevel())
+          {
+            paramQbossGateWayRsp = new StringBuilder();
+            paramQbossGateWayRsp.append("plusMenuData:");
+            paramQbossGateWayRsp.append(parammobile_count_rsp_new);
+            QLog.i("UndealCount.QZoneUnreadServletLogic", 2, paramQbossGateWayRsp.toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "plusMenuData: null");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "handlePlusMenuData advDescs.size() = 0");
+      }
+    }
   }
   
   public static void b(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
@@ -1125,80 +1271,112 @@ public class QZoneUnreadServletLogic
   
   public static void b(String paramString, Map<String, byte[]> paramMap)
   {
-    if ((paramMap == null) || (paramMap.size() == 0))
+    Object localObject;
+    if ((paramMap != null) && (paramMap.size() != 0))
     {
-      LocalMultiProcConfig.putString("MAPAUTOTRANS_DATA" + paramString, "");
-      return;
-    }
-    HashMap localHashMap = new HashMap();
-    paramMap = paramMap.entrySet().iterator();
-    while (paramMap.hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)paramMap.next();
-      String str = Base64.encodeToString((byte[])localEntry.getValue(), 2);
-      localHashMap.put(localEntry.getKey(), str);
+      localObject = new HashMap();
+      paramMap = paramMap.entrySet().iterator();
+      while (paramMap.hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)paramMap.next();
+        String str = Base64.encodeToString((byte[])localEntry.getValue(), 2);
+        ((Map)localObject).put(localEntry.getKey(), str);
+      }
     }
     try
     {
-      paramMap = new JSONObject(localHashMap);
-      LocalMultiProcConfig.putString("MAPAUTOTRANS_DATA" + paramString, paramMap.toString());
+      paramMap = new JSONObject((Map)localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("MAPAUTOTRANS_DATA");
+      ((StringBuilder)localObject).append(paramString);
+      LocalMultiProcConfig.putString(((StringBuilder)localObject).toString(), paramMap.toString());
       return;
     }
     catch (Exception paramString)
     {
-      QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "setMapAutoTransData failed, null keys exist in the map");
+      label130:
+      break label130;
     }
+    QZLog.d("UndealCount.QZoneUnreadServletLogic", 1, "setMapAutoTransData failed, null keys exist in the map");
+    return;
+    paramMap = new StringBuilder();
+    paramMap.append("MAPAUTOTRANS_DATA");
+    paramMap.append(paramString);
+    LocalMultiProcConfig.putString(paramMap.toString(), "");
   }
   
   public static void b(String paramString, byte[] paramArrayOfByte)
   {
     if (paramArrayOfByte != null)
     {
-      LocalMultiProcConfig.putString("BIRTHRECOM_INFO" + paramString, Base64.encodeToString(paramArrayOfByte, 2));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("BIRTHRECOM_INFO");
+      localStringBuilder.append(paramString);
+      LocalMultiProcConfig.putString(localStringBuilder.toString(), Base64.encodeToString(paramArrayOfByte, 2));
       return;
     }
-    LocalMultiProcConfig.putString("BIRTHRECOM_INFO" + paramString, "");
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("BIRTHRECOM_INFO");
+    paramArrayOfByte.append(paramString);
+    LocalMultiProcConfig.putString(paramArrayOfByte.toString(), "");
+  }
+  
+  private static boolean b(entrance_cfg paramentrance_cfg1, entrance_cfg paramentrance_cfg2)
+  {
+    if ((paramentrance_cfg1 == null) && (paramentrance_cfg2 == null)) {
+      return true;
+    }
+    if (paramentrance_cfg1 == null) {
+      return false;
+    }
+    if (paramentrance_cfg2 == null) {
+      return false;
+    }
+    return a(paramentrance_cfg1, paramentrance_cfg2);
   }
   
   private static boolean b(ArrayList<entrance_cfg> paramArrayList1, ArrayList<entrance_cfg> paramArrayList2)
   {
-    boolean bool = true;
-    if (paramArrayList1 == null) {}
-    int j;
-    label82:
-    for (;;)
-    {
+    boolean bool = false;
+    if (paramArrayList1 == null) {
       return false;
-      if ((paramArrayList2 != null) && (paramArrayList1.size() == paramArrayList2.size()) && (paramArrayList1.size() != 0))
-      {
-        int i = 1;
-        j = 0;
-        if (j >= paramArrayList1.size()) {
-          break;
-        }
-        entrance_cfg localentrance_cfg = (entrance_cfg)paramArrayList1.get(j);
-        if ((i != 0) && (a(paramArrayList2, localentrance_cfg))) {}
-        for (i = 1;; i = 0)
-        {
-          if (i == 0) {
-            break label82;
-          }
-          j += 1;
-          break;
-        }
-      }
     }
-    if (j == paramArrayList1.size()) {}
-    for (;;)
+    if (paramArrayList2 == null) {
+      return false;
+    }
+    if (paramArrayList1.size() != paramArrayList2.size()) {
+      return false;
+    }
+    if (paramArrayList1.size() == 0) {
+      return false;
+    }
+    int j = 0;
+    int i = 1;
+    while (j < paramArrayList1.size())
     {
-      return bool;
-      bool = false;
+      entrance_cfg localentrance_cfg = (entrance_cfg)paramArrayList1.get(j);
+      if ((i != 0) && (a(paramArrayList2, localentrance_cfg))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if (i == 0) {
+        return false;
+      }
+      j += 1;
     }
+    if (j == paramArrayList1.size()) {
+      bool = true;
+    }
+    return bool;
   }
   
   public static byte[] b(String paramString)
   {
-    return Base64.decode(LocalMultiProcConfig.getString("BIRTHRECOM_INFO" + paramString, ""), 2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BIRTHRECOM_INFO");
+    localStringBuilder.append(paramString);
+    return Base64.decode(LocalMultiProcConfig.getString(localStringBuilder.toString(), ""), 2);
   }
   
   public static void c(int paramInt, QQAppInterface paramQQAppInterface)
@@ -1218,16 +1396,24 @@ public class QZoneUnreadServletLogic
     {
       LocalMultiProcConfig.putString4Uin("surprise_config", "", paramQQAppInterface.getLongAccountUin());
       QLog.w("UndealCount.QZoneUnreadServletLogic", 1, "handleSurpriseData:clearAll");
-    }
-    while ((paramQbossGateWayRsp.mapAdv == null) || (paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2595)) == null)) {
       return;
     }
-    parammobile_count_rsp_new = LocalMultiProcConfig.getString4Uin("surprise_config", "", paramQQAppInterface.getLongAccountUin());
-    if (TextUtils.isEmpty(parammobile_count_rsp_new)) {
-      parammobile_count_rsp_new = new JSONArray();
-    }
-    for (;;)
+    if ((paramQbossGateWayRsp.mapAdv != null) && (paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2595)) != null))
     {
+      parammobile_count_rsp_new = LocalMultiProcConfig.getString4Uin("surprise_config", "", paramQQAppInterface.getLongAccountUin());
+      if (TextUtils.isEmpty(parammobile_count_rsp_new)) {
+        parammobile_count_rsp_new = new JSONArray();
+      } else {
+        try
+        {
+          parammobile_count_rsp_new = new JSONArray(parammobile_count_rsp_new);
+        }
+        catch (Exception localException)
+        {
+          parammobile_count_rsp_new = new JSONArray();
+          QLog.e("UndealCount.QZoneUnreadServletLogic", 1, "parse local advDesc.res_data error,catch an exception", localException);
+        }
+      }
       paramQbossGateWayRsp = ((ArrayList)paramQbossGateWayRsp.mapAdv.get(Integer.valueOf(2595))).iterator();
       while (paramQbossGateWayRsp.hasNext())
       {
@@ -1243,18 +1429,12 @@ public class QZoneUnreadServletLogic
           }
         }
       }
-      try
-      {
-        parammobile_count_rsp_new = new JSONArray(parammobile_count_rsp_new);
-      }
-      catch (Exception localException)
-      {
-        parammobile_count_rsp_new = new JSONArray();
-        QLog.e("UndealCount.QZoneUnreadServletLogic", 1, "parse local advDesc.res_data error,catch an exception", localException);
-      }
+      LocalMultiProcConfig.putString4Uin("surprise_config", parammobile_count_rsp_new.toString(), paramQQAppInterface.getLongAccountUin());
+      paramQbossGateWayRsp = new StringBuilder();
+      paramQbossGateWayRsp.append("all configs:");
+      paramQbossGateWayRsp.append(parammobile_count_rsp_new.toString());
+      QLog.d("UndealCount.QZoneUnreadServletLogic", 2, paramQbossGateWayRsp.toString());
     }
-    LocalMultiProcConfig.putString4Uin("surprise_config", parammobile_count_rsp_new.toString(), paramQQAppInterface.getLongAccountUin());
-    QLog.d("UndealCount.QZoneUnreadServletLogic", 2, "all configs:" + parammobile_count_rsp_new.toString());
   }
   
   public static void c(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
@@ -1263,73 +1443,79 @@ public class QZoneUnreadServletLogic
       return;
     }
     QbossGateWayRsp localQbossGateWayRsp = new QbossGateWayRsp();
-    Object localObject;
-    boolean bool;
     if (parammobile_count_rsp_new.mapTransData != null)
     {
-      localObject = (byte[])parammobile_count_rsp_new.mapTransData.get("QbossAdv");
-      StringBuilder localStringBuilder = new StringBuilder().append("handleSurpriseData:rsp.mapTransData != null,data == null ? ");
-      if (localObject == null)
-      {
+      Object localObject = (byte[])parammobile_count_rsp_new.mapTransData.get("QbossAdv");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleSurpriseData:rsp.mapTransData != null,data == null ? ");
+      boolean bool;
+      if (localObject == null) {
         bool = true;
-        QLog.d("UndealCount.QZoneUnreadServletLogic", 4, bool);
-        if (localObject == null) {}
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        localObject = new JceInputStream((byte[])localObject);
-        ((JceInputStream)localObject).setServerEncoding("utf-8");
-        localQbossGateWayRsp.readFrom((JceInputStream)localObject);
-        c(parammobile_count_rsp_new, localQbossGateWayRsp, paramQQAppInterface);
-        a(parammobile_count_rsp_new, localQbossGateWayRsp, paramQQAppInterface);
-        b(parammobile_count_rsp_new, localQbossGateWayRsp, paramQQAppInterface);
-        return;
+      } else {
         bool = false;
       }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("UndealCount.QZoneUnreadServletLogic", 1, "handleSurpriseData error:", localThrowable);
-        continue;
+      localStringBuilder.append(bool);
+      QLog.d("UndealCount.QZoneUnreadServletLogic", 4, localStringBuilder.toString());
+      if (localObject != null) {
+        try
+        {
+          localObject = new JceInputStream((byte[])localObject);
+          ((JceInputStream)localObject).setServerEncoding("utf-8");
+          localQbossGateWayRsp.readFrom((JceInputStream)localObject);
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.e("UndealCount.QZoneUnreadServletLogic", 1, "handleSurpriseData error:", localThrowable);
+        }
       }
+    }
+    else
+    {
       QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "handleSurpriseData rsp.mapTransData: null");
     }
+    c(parammobile_count_rsp_new, localQbossGateWayRsp, paramQQAppInterface);
+    a(parammobile_count_rsp_new, localQbossGateWayRsp, paramQQAppInterface);
+    b(parammobile_count_rsp_new, localQbossGateWayRsp, paramQQAppInterface);
   }
   
   private static void d(int paramInt, QQAppInterface paramQQAppInterface)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("saveHasUserArchieveMemoryFlag:");
-      if (paramInt != 0) {
-        break label71;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveHasUserArchieveMemoryFlag:");
+      String str;
+      if (paramInt == 0) {
+        str = "未使用过记忆封存";
+      } else {
+        str = "已经使用过记忆封存";
       }
+      localStringBuilder.append(str);
+      QLog.d("ArchiveMemorySettingGuide", 2, localStringBuilder.toString());
     }
-    label71:
-    for (String str = "未使用过记忆封存";; str = "已经使用过记忆封存")
+    if (paramQQAppInterface != null)
     {
-      QLog.d("ArchiveMemorySettingGuide", 2, str);
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface = paramQQAppInterface.getAccount();
-        if (paramQQAppInterface != null) {
-          LocalMultiProcConfig.putInt4Uin("qzone_memory_seal_key", paramInt, Long.valueOf(paramQQAppInterface).longValue());
-        }
+      paramQQAppInterface = paramQQAppInterface.getAccount();
+      if (paramQQAppInterface != null) {
+        LocalMultiProcConfig.putInt4Uin("qzone_memory_seal_key", paramInt, Long.valueOf(paramQQAppInterface).longValue());
       }
-      return;
     }
   }
   
   private static void d(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
   {
-    if (parammobile_count_rsp_new == null) {}
-    while ((parammobile_count_rsp_new.stYellowInfo == null) || (paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface.getCurrentAccountUin()))) {
+    if (parammobile_count_rsp_new == null) {
       return;
     }
-    QZoneVipInfoManager.getInstance().updateVipInfo(parammobile_count_rsp_new.stYellowInfo.iYellowType, parammobile_count_rsp_new.stYellowInfo.iYellowLevel, parammobile_count_rsp_new.stYellowInfo.isAnnualVip, parammobile_count_rsp_new.stuStarInfo, parammobile_count_rsp_new.stuCombineDiamondInfo);
+    if (parammobile_count_rsp_new.stYellowInfo != null)
+    {
+      if (paramQQAppInterface == null) {
+        return;
+      }
+      if (!TextUtils.isEmpty(paramQQAppInterface.getCurrentAccountUin())) {
+        QZoneVipInfoManager.a().a(parammobile_count_rsp_new.stYellowInfo.iYellowType, parammobile_count_rsp_new.stYellowInfo.iYellowLevel, parammobile_count_rsp_new.stYellowInfo.isAnnualVip, parammobile_count_rsp_new.stuStarInfo, parammobile_count_rsp_new.stuCombineDiamondInfo);
+      }
+    }
   }
   
   private static void e(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
@@ -1339,18 +1525,29 @@ public class QZoneUnreadServletLogic
   
   private static void f(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
   {
-    if (parammobile_count_rsp_new == null) {}
-    do
+    if (parammobile_count_rsp_new == null) {
+      return;
+    }
+    LocalMultiProcConfig.putInt4Uin("navigator_bar_style", parammobile_count_rsp_new.isShowNewStyles, paramQQAppInterface.getLongAccountUin());
+    if (parammobile_count_rsp_new.mapEntranceCfg == null) {
+      return;
+    }
+    if (parammobile_count_rsp_new.mapEntranceCfg.size() == 0) {
+      return;
+    }
+    parammobile_count_rsp_new = (ArrayList)parammobile_count_rsp_new.mapEntranceCfg.get(Integer.valueOf(2));
+    if (parammobile_count_rsp_new == null) {
+      return;
+    }
+    if (parammobile_count_rsp_new.size() == 0) {
+      return;
+    }
+    if (QLog.isDevelopLevel())
     {
-      do
-      {
-        return;
-        LocalMultiProcConfig.putInt4Uin("navigator_bar_style", parammobile_count_rsp_new.isShowNewStyles, paramQQAppInterface.getLongAccountUin());
-      } while ((parammobile_count_rsp_new.mapEntranceCfg == null) || (parammobile_count_rsp_new.mapEntranceCfg.size() == 0));
-      parammobile_count_rsp_new = (ArrayList)parammobile_count_rsp_new.mapEntranceCfg.get(Integer.valueOf(2));
-    } while ((parammobile_count_rsp_new == null) || (parammobile_count_rsp_new.size() == 0));
-    if (QLog.isDevelopLevel()) {
-      QLog.d("UndealCount.QZoneUnreadServletLogic", 4, "handleNavigatorBarInfo rsp entracesize is:" + parammobile_count_rsp_new.size());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleNavigatorBarInfo rsp entracesize is:");
+      localStringBuilder.append(parammobile_count_rsp_new.size());
+      QLog.d("UndealCount.QZoneUnreadServletLogic", 4, localStringBuilder.toString());
     }
     ThreadManager.post(new QZoneUnreadServletLogic.1(paramQQAppInterface, parammobile_count_rsp_new), 8, null, false);
   }
@@ -1358,24 +1555,30 @@ public class QZoneUnreadServletLogic
   private static void g(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
   {
     parammobile_count_rsp_new = parammobile_count_rsp_new.plusRecom;
-    if (parammobile_count_rsp_new == null) {
+    if (parammobile_count_rsp_new == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "plusRecom null");
       }
-    }
-    do
-    {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "plusRecom.status=" + parammobile_count_rsp_new.status + "  plusRecom.strMinProgramJson=" + parammobile_count_rsp_new.strMinProgramJson);
-      }
-      if (parammobile_count_rsp_new.status == -1)
-      {
-        LocalMultiProcConfig.putString4Uin("friendplusmenurecom", "", paramQQAppInterface.getLongAccountUin());
-        return;
-      }
-    } while (parammobile_count_rsp_new.status != 1);
-    LocalMultiProcConfig.putString4Uin("friendplusmenurecom", parammobile_count_rsp_new.strMinProgramJson, paramQQAppInterface.getLongAccountUin());
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("plusRecom.status=");
+      localStringBuilder.append(parammobile_count_rsp_new.status);
+      localStringBuilder.append("  plusRecom.strMinProgramJson=");
+      localStringBuilder.append(parammobile_count_rsp_new.strMinProgramJson);
+      QLog.i("UndealCount.QZoneUnreadServletLogic", 2, localStringBuilder.toString());
+    }
+    if (parammobile_count_rsp_new.status == -1)
+    {
+      LocalMultiProcConfig.putString4Uin("friendplusmenurecom", "", paramQQAppInterface.getLongAccountUin());
+      return;
+    }
+    if (parammobile_count_rsp_new.status == 1) {
+      LocalMultiProcConfig.putString4Uin("friendplusmenurecom", parammobile_count_rsp_new.strMinProgramJson, paramQQAppInterface.getLongAccountUin());
+    }
   }
   
   private static void h(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
@@ -1383,15 +1586,13 @@ public class QZoneUnreadServletLogic
     if ((parammobile_count_rsp_new != null) && (parammobile_count_rsp_new.stMapCountInfo != null) && (parammobile_count_rsp_new.stMapCountInfo.containsKey(Integer.valueOf(1009))) && (paramQQAppInterface != null))
     {
       parammobile_count_rsp_new = (count_info)parammobile_count_rsp_new.stMapCountInfo.get(Integer.valueOf(1009));
-      if ((parammobile_count_rsp_new != null) && (parammobile_count_rsp_new.stCount != null) && (parammobile_count_rsp_new.stCount.uCount > 0L)) {
+      if ((parammobile_count_rsp_new != null) && (parammobile_count_rsp_new.stCount != null) && (parammobile_count_rsp_new.stCount.uCount > 0L))
+      {
         LocalMultiProcConfig.putLong4Uin("need_show_story_tips", 1L, paramQQAppInterface.getLongAccountUin());
+        return;
       }
+      LocalMultiProcConfig.putLong4Uin("need_show_story_tips", 0L, paramQQAppInterface.getLongAccountUin());
     }
-    else
-    {
-      return;
-    }
-    LocalMultiProcConfig.putLong4Uin("need_show_story_tips", 0L, paramQQAppInterface.getLongAccountUin());
   }
   
   private static void i(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
@@ -1402,7 +1603,7 @@ public class QZoneUnreadServletLogic
       if (QLog.isColorLevel()) {
         QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "saveMoreEntranceResConfig updateConfig");
       }
-      localObject = new OperEntranceInfo();
+      Object localObject = new OperEntranceInfo();
       JceUtils.decodeWup((JceStruct)localObject, parammobile_count_rsp_new);
       localObject = ((OperEntranceInfo)localObject).resTable.entrySet().iterator();
       while (((Iterator)localObject).hasNext()) {
@@ -1412,13 +1613,11 @@ public class QZoneUnreadServletLogic
       paramQQAppInterface = new Bundle();
       paramQQAppInterface.putByteArray("data", parammobile_count_rsp_new);
       QIPCServerHelper.getInstance().callClient("com.tencent.mobileqq:qzone", "PlusMenuDecorates", "updateConfig", paramQQAppInterface, null);
-    }
-    while (!QLog.isColorLevel())
-    {
-      Object localObject;
       return;
     }
-    QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "saveMoreEntranceResConfig no Config update");
+    if (QLog.isColorLevel()) {
+      QLog.i("UndealCount.QZoneUnreadServletLogic", 2, "saveMoreEntranceResConfig no Config update");
+    }
   }
   
   private static void j(mobile_count_rsp_new parammobile_count_rsp_new, QQAppInterface paramQQAppInterface)
@@ -1434,7 +1633,7 @@ public class QZoneUnreadServletLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic
  * JD-Core Version:    0.7.0.1
  */

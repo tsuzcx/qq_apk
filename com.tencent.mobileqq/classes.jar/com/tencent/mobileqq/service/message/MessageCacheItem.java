@@ -49,27 +49,36 @@ public class MessageCacheItem
   
   public long a(int paramInt, String paramString)
   {
-    if ((paramInt < 0) || (paramInt > 3) || (TextUtils.isEmpty(paramString))) {
-      return 0L;
+    if ((paramInt >= 0) && (paramInt <= 3))
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return 0L;
+      }
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
+        return 0L;
+      }
+      ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+      if (!localConcurrentHashMap.containsKey(paramString)) {
+        localConcurrentHashMap.put(paramString, Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(a(paramInt, paramString), 0L)));
+      }
+      return ((Long)localConcurrentHashMap.get(paramString)).longValue();
     }
-    if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
-      return 0L;
-    }
-    ConcurrentHashMap localConcurrentHashMap = (ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
-    if (!localConcurrentHashMap.containsKey(paramString)) {
-      localConcurrentHashMap.put(paramString, Long.valueOf(this.jdField_a_of_type_AndroidContentSharedPreferences.getLong(a(paramInt, paramString), 0L)));
-    }
-    return ((Long)localConcurrentHashMap.get(paramString)).longValue();
+    return 0L;
   }
   
   public String a(int paramInt, String paramString)
   {
-    if ((paramInt < 0) || (paramInt > 3) || (TextUtils.isEmpty(paramString))) {
-      return "";
+    if ((paramInt >= 0) && (paramInt <= 3) && (!TextUtils.isEmpty(paramString)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder(50);
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append("_");
+      localStringBuilder.append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramString);
+      return localStringBuilder.toString();
     }
-    StringBuilder localStringBuilder = new StringBuilder(50);
-    localStringBuilder.append(this.jdField_a_of_type_JavaLangString).append("_").append(jdField_a_of_type_ArrayOfJavaLangString[paramInt]).append("_").append(paramString);
-    return localStringBuilder.toString();
+    return "";
   }
   
   public void a()
@@ -84,29 +93,31 @@ public class MessageCacheItem
   
   public void a(int paramInt1, String paramString, long paramLong, int paramInt2)
   {
-    if ((paramInt1 < 0) || (paramInt1 > 3) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    long l1;
-    if (paramInt2 == 1) {
-      l1 = Math.max(paramLong, a(paramInt1, paramString));
-    }
-    for (;;)
+    if ((paramInt1 >= 0) && (paramInt1 <= 3))
     {
-      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).put(paramString, Long.valueOf(l1));
-      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() == null) {
-        break;
+      if (TextUtils.isEmpty(paramString)) {
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong(a(paramInt1, paramString), l1);
-      return;
-      l1 = paramLong;
-      if (paramInt2 == 2)
+      long l1;
+      if (paramInt2 == 1)
       {
-        long l2 = a(paramInt1, paramString);
+        l1 = Math.max(paramLong, a(paramInt1, paramString));
+      }
+      else
+      {
         l1 = paramLong;
-        if (l2 != 0L) {
-          l1 = Math.min(paramLong, l2);
+        if (paramInt2 == 2)
+        {
+          long l2 = a(paramInt1, paramString);
+          l1 = paramLong;
+          if (l2 != 0L) {
+            l1 = Math.min(paramLong, l2);
+          }
         }
+      }
+      ((ConcurrentHashMap)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).put(paramString, Long.valueOf(l1));
+      if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin() != null) {
+        this.jdField_a_of_type_ComTencentMobileqqServiceMessageMessageCache$AsyncEditor.putLong(a(paramInt1, paramString), l1);
       }
     }
   }
@@ -130,7 +141,7 @@ public class MessageCacheItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageCacheItem
  * JD-Core Version:    0.7.0.1
  */

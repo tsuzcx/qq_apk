@@ -15,8 +15,13 @@ class AppUIProxy$5
   
   public void run()
   {
-    if (this.this$0.mCurrRuntimeLoader != null) {}
-    for (BaseRuntime localBaseRuntime = this.this$0.mCurrRuntimeLoader.getRuntime(); (localBaseRuntime != null) && (localBaseRuntime.getPage() != null); localBaseRuntime = null)
+    BaseRuntime localBaseRuntime;
+    if (this.this$0.mCurrRuntimeLoader != null) {
+      localBaseRuntime = this.this$0.mCurrRuntimeLoader.getRuntime();
+    } else {
+      localBaseRuntime = null;
+    }
+    if ((localBaseRuntime != null) && (localBaseRuntime.getPage() != null))
     {
       Object localObject = localBaseRuntime.getPage().getCapsuleButton();
       if ((localObject instanceof CapsuleButton))
@@ -24,14 +29,16 @@ class AppUIProxy$5
         localObject = ((CapsuleButton)localObject).getMoreView();
         ((KingCardProxy)ProxyManager.get(KingCardProxy.class)).showKingCardTips(localBaseRuntime, (ImageView)localObject);
       }
-      return;
     }
-    QMLog.i("minisdk-start_UIProxy", "page is null");
+    else
+    {
+      QMLog.i("minisdk-start_UIProxy", "page is null");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppUIProxy.5
  * JD-Core Version:    0.7.0.1
  */

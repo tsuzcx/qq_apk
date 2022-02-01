@@ -13,12 +13,12 @@ class EmotionSearchPanel$3
     float f = ((Float)paramValueAnimator.getAnimatedValue()).floatValue();
     int i = (int)(this.this$0.exitWidth - EmotionSearchPanel.access$200(this.this$0) * f);
     EmotionSearchPanel.access$300(this.this$0, i);
-    EmotionSearchPanel.access$400(this.this$0, (int)((1.0F - f) * this.val$startPos));
+    EmotionSearchPanel.access$400(this.this$0, (int)(this.val$startPos * (1.0F - f)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmotionSearchPanel.3
  * JD-Core Version:    0.7.0.1
  */

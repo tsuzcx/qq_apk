@@ -54,7 +54,7 @@ public class PrinterItemMsgRecord
     return null;
   }
   
-  public Class<? extends Entity> getClassForTable()
+  protected Class<? extends Entity> getClassForTable()
   {
     return PrinterItemMsgRecord.class;
   }
@@ -64,11 +64,11 @@ public class PrinterItemMsgRecord
     return "mr_dataline_printer";
   }
   
-  public void postRead() {}
+  protected void postRead() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.PrinterItemMsgRecord
  * JD-Core Version:    0.7.0.1
  */

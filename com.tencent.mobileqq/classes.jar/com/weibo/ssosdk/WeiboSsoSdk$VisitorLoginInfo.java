@@ -9,24 +9,28 @@ public final class WeiboSsoSdk$VisitorLoginInfo
   
   static VisitorLoginInfo parseJson(String paramString)
   {
-    VisitorLoginInfo localVisitorLoginInfo = new VisitorLoginInfo();
-    JSONObject localJSONObject;
+    Object localObject = new VisitorLoginInfo();
     try
     {
       paramString = new JSONObject(paramString);
       String str = paramString.optString("retcode", "");
-      localJSONObject = paramString.getJSONObject("data");
-      if ((!str.equals("20000000")) || (localJSONObject == null)) {
-        throw new Exception("error： " + str + " msg:" + paramString.optString("msg", ""));
+      JSONObject localJSONObject = paramString.getJSONObject("data");
+      if ((str.equals("20000000")) && (localJSONObject != null))
+      {
+        ((VisitorLoginInfo)localObject).mAid = localJSONObject.optString("aid", "");
+        ((VisitorLoginInfo)localObject).mSubCookie = localJSONObject.optString("sub", "");
+        return localObject;
       }
+      localObject = new StringBuilder("error： ");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(" msg:");
+      ((StringBuilder)localObject).append(paramString.optString("msg", ""));
+      throw new Exception(((StringBuilder)localObject).toString());
     }
     catch (Exception paramString)
     {
       throw paramString;
     }
-    localVisitorLoginInfo.mAid = localJSONObject.optString("aid", "");
-    localVisitorLoginInfo.mSubCookie = localJSONObject.optString("sub", "");
-    return localVisitorLoginInfo;
   }
   
   final VisitorLoginInfo cloneAidInfo()
@@ -49,7 +53,7 @@ public final class WeiboSsoSdk$VisitorLoginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.weibo.ssosdk.WeiboSsoSdk.VisitorLoginInfo
  * JD-Core Version:    0.7.0.1
  */

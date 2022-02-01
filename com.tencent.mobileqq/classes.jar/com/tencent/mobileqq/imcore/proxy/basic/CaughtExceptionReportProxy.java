@@ -8,8 +8,9 @@ public class CaughtExceptionReportProxy
   
   public static void e(@NonNull Throwable paramThrowable, @NonNull String paramString)
   {
-    if (proxy != null) {
-      proxy.e(paramThrowable, paramString);
+    CaughtExceptionReportProxy.Proxy localProxy = proxy;
+    if (localProxy != null) {
+      localProxy.e(paramThrowable, paramString);
     }
   }
   
@@ -20,7 +21,7 @@ public class CaughtExceptionReportProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imcore.proxy.basic.CaughtExceptionReportProxy
  * JD-Core Version:    0.7.0.1
  */

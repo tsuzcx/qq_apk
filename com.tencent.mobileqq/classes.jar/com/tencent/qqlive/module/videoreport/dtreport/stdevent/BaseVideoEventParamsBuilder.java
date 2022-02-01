@@ -29,33 +29,29 @@ abstract class BaseVideoEventParamsBuilder<T>
     putSingleParam(localHashMap, "video_static_duration", Long.valueOf(this.mVideoStaticDuration));
     putSingleParam(localHashMap, "video_width", this.mVideoWidth);
     putSingleParam(localHashMap, "video_height", this.mVideoHeight);
-    Object localObject;
-    if (this.mIsVertical == null) {
+    Object localObject = this.mIsVertical;
+    if (localObject == null) {
       localObject = null;
+    } else if (((Boolean)localObject).booleanValue()) {
+      localObject = "1";
+    } else {
+      localObject = "0";
     }
-    for (;;)
-    {
-      putSingleParam(localHashMap, "is_vertical", localObject);
-      putSingleParam(localHashMap, "play_sessionid", this.mPlaySessionId);
-      putSingleParam(localHashMap, "play_type", this.mPlayType);
-      putSingleParam(localHashMap, "play_loop_type", this.mPlayLoopType);
-      onBuild(localHashMap);
-      return localHashMap;
-      if (this.mIsVertical.booleanValue()) {
-        localObject = "1";
-      } else {
-        localObject = "0";
-      }
-    }
+    putSingleParam(localHashMap, "is_vertical", localObject);
+    putSingleParam(localHashMap, "play_sessionid", this.mPlaySessionId);
+    putSingleParam(localHashMap, "play_type", this.mPlayType);
+    putSingleParam(localHashMap, "play_loop_type", this.mPlayLoopType);
+    onBuild(localHashMap);
+    return localHashMap;
   }
   
   final BaseEventParamsBuilder.CheckResult checkValidity()
   {
-    boolean bool = true;
-    int i = 0;
     StringBuilder localStringBuilder = new StringBuilder();
     String[] arrayOfString = new String[2];
+    int i = 0;
     arrayOfString[0] = "PlaySessionId";
+    boolean bool = true;
     arrayOfString[1] = "VideoContentId";
     String str1 = this.mPlaySessionId;
     String str2 = this.mVideoContentId;
@@ -101,7 +97,7 @@ abstract class BaseVideoEventParamsBuilder<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.stdevent.BaseVideoEventParamsBuilder
  * JD-Core Version:    0.7.0.1
  */

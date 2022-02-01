@@ -10,18 +10,18 @@ final class QCirclePluginInitHelper$1
   public void run()
   {
     Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if (localObject == null) {}
-    do
-    {
+    if (localObject == null) {
       return;
-      localObject = (IWebProcessManagerService)((AppRuntime)localObject).getRuntimeService(IWebProcessManagerService.class, "all");
-    } while (localObject == null);
-    ((IWebProcessManagerService)localObject).startWebProcess(-1, null);
+    }
+    localObject = (IWebProcessManagerService)((AppRuntime)localObject).getRuntimeService(IWebProcessManagerService.class, "all");
+    if (localObject != null) {
+      ((IWebProcessManagerService)localObject).startWebProcess(-1, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCirclePluginInitHelper.1
  * JD-Core Version:    0.7.0.1
  */

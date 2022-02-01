@@ -18,7 +18,7 @@ public class MessageRecordCursorCallback
   public Object a(AppRuntime paramAppRuntime, String paramString, int paramInt)
   {
     if (paramInt == 3000) {
-      return ContactUtils.d((QQAppInterface)paramAppRuntime, paramString);
+      return ContactUtils.a((QQAppInterface)paramAppRuntime, paramString);
     }
     if (paramInt == 1) {
       return ((TroopManager)paramAppRuntime.getManager(QQManagerFactory.TROOP_MANAGER)).a(paramString);
@@ -33,7 +33,7 @@ public class MessageRecordCursorCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.MessageRecordCursorCallback
  * JD-Core Version:    0.7.0.1
  */

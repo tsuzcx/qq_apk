@@ -25,20 +25,24 @@ public class WindowSurface
   
   public void recreate(EglCore paramEglCore)
   {
-    if (this.mSurface == null) {
-      throw new RuntimeException("not yet implemented for SurfaceTexture");
+    Surface localSurface = this.mSurface;
+    if (localSurface != null)
+    {
+      this.mEglCore = paramEglCore;
+      createWindowSurface(localSurface);
+      return;
     }
-    this.mEglCore = paramEglCore;
-    createWindowSurface(this.mSurface);
+    throw new RuntimeException("not yet implemented for SurfaceTexture");
   }
   
   public void release()
   {
     releaseEglSurface();
-    if (this.mSurface != null)
+    Surface localSurface = this.mSurface;
+    if (localSurface != null)
     {
       if (this.mReleaseSurface) {
-        this.mSurface.release();
+        localSurface.release();
       }
       this.mSurface = null;
     }
@@ -46,7 +50,7 @@ public class WindowSurface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.gles.WindowSurface
  * JD-Core Version:    0.7.0.1
  */

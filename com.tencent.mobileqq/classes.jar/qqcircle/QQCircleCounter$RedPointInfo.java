@@ -34,13 +34,15 @@ public final class QQCircleCounter$RedPointInfo
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 50, 56, 66, 72, 82, 170, 178, 186, 194, 202, 210 }, new String[] { "appid", "redType", "redTotalNum", "rptRedInfo", "pushTime", "extend", "lastVisitTime", "transInfo", "tabType", "redJumpInfo", "allPushInfo", "outLayerInfo", "qqProfileInfo", "groupInfo", "smallRedInfoExt", "pymkRedInfo" }, new Object[] { "", Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(0), "", Long.valueOf(0L), localByteStringMicro, Integer.valueOf(1), null, null, null, null, null, null, null }, RedPointInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 50, 56, 66, 72, 82, 170, 178, 186, 194, 202, 210 }, new String[] { "appid", "redType", "redTotalNum", "rptRedInfo", "pushTime", "extend", "lastVisitTime", "transInfo", "tabType", "redJumpInfo", "allPushInfo", "outLayerInfo", "qqProfileInfo", "groupInfo", "smallRedInfoExt", "pymkRedInfo" }, new Object[] { "", localInteger2, localInteger1, null, localInteger1, "", Long.valueOf(0L), localByteStringMicro, localInteger2, null, null, null, null, null, null, null }, RedPointInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleCounter.RedPointInfo
  * JD-Core Version:    0.7.0.1
  */

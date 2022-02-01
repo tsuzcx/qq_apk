@@ -24,40 +24,51 @@ class SessionPool$WorkThreadHandler
   {
     switch (paramMessage.what)
     {
-    }
-    do
-    {
-      do
+    default: 
+    case 110001: 
+      if (SessionPool.access$200())
       {
-        do
+        UploadLog.d("SessionPool", "receive msg MSG_REBUILD_SESSIONS hasNetwork:true");
+        paramMessage = this.mRef;
+        if ((paramMessage != null) && (paramMessage.get() != null))
         {
+          paramMessage = (SessionPool)this.mRef.get();
+          if ((SessionPool.access$300(paramMessage).size() == 0) && (SessionPool.access$400(paramMessage).size() == 0)) {
+            paramMessage.reset();
+          }
+          this.n = 1;
+        }
+      }
+      else
+      {
+        paramMessage = new StringBuilder();
+        paramMessage.append("receive msg MSG_REBUILD_SESSIONS n == ");
+        paramMessage.append(this.n);
+        UploadLog.d("SessionPool", paramMessage.toString());
+        if (this.n <= 6)
+        {
+          paramMessage = obtainMessage(110001);
+          int i = this.n;
+          this.n = (i + 1);
+          sendMessageDelayed(paramMessage, (1 << i) * 1000);
           return;
-        } while ((this.mRef == null) || (this.mRef.get() == null));
+        }
+      }
+      break;
+    case 110000: 
+      paramMessage = this.mRef;
+      if ((paramMessage != null) && (paramMessage.get() != null))
+      {
         UploadLog.d("SessionPool", "receive msg MSG_CLOSE_POOL");
         ((SessionPool)this.mRef.get()).close();
-        return;
-        if (!SessionPool.access$200()) {
-          break;
-        }
-        UploadLog.d("SessionPool", "receive msg MSG_REBUILD_SESSIONS hasNetwork:true");
-      } while ((this.mRef == null) || (this.mRef.get() == null));
-      paramMessage = (SessionPool)this.mRef.get();
-      if ((SessionPool.access$300(paramMessage).size() == 0) && (SessionPool.access$400(paramMessage).size() == 0)) {
-        paramMessage.reset();
       }
-      this.n = 1;
-      return;
-      UploadLog.d("SessionPool", "receive msg MSG_REBUILD_SESSIONS n == " + this.n);
-    } while (this.n > 6);
-    paramMessage = obtainMessage(110001);
-    int i = this.n;
-    this.n = (i + 1);
-    sendMessageDelayed(paramMessage, (1 << i) * 1000);
+      break;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.network.session.SessionPool.WorkThreadHandler
  * JD-Core Version:    0.7.0.1
  */

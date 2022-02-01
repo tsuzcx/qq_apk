@@ -76,104 +76,117 @@ public class WakeLockMonitor
   
   private final void writeReport(boolean paramBoolean)
   {
-    HashMap localHashMap2 = this.fg30MinMap;
-    long l2 = 0L;
-    long l1 = 0L;
+    localHashMap2 = this.fg30MinMap;
     if (paramBoolean) {}
+    try
+    {
+      localHashMap1 = this.fg30MinMap;
+      break label28;
+      localHashMap1 = this.bg5MinMap;
+      label28:
+      if (localHashMap1.isEmpty()) {
+        break label528;
+      }
+      localObject2 = localHashMap1.values().iterator();
+      l4 = 0L;
+      l2 = l4;
+      i = 0;
+      boolean bool = ((Iterator)localObject2).hasNext();
+      j = 1;
+      if (!bool) {
+        break label208;
+      }
+      localObject3 = (WakeLockMonitor.ReportEntity)((Iterator)localObject2).next();
+      k = i + ((WakeLockMonitor.ReportEntity)localObject3).useList.size();
+      if ((((WakeLockMonitor.ReportEntity)localObject3).flag & 0x1) <= 0) {
+        break label546;
+      }
+    }
+    finally
+    {
+      for (;;)
+      {
+        HashMap localHashMap1;
+        long l4;
+        long l2;
+        int i;
+        int k;
+        long l3;
+        long l1;
+        Object localObject4;
+        for (;;)
+        {
+          throw localObject1;
+        }
+        int j = 0;
+        continue;
+        Object localObject2 = "bg5WlCount";
+        continue;
+        continue;
+        localObject2 = "bg5WlUse";
+        continue;
+        Object localObject3 = "0";
+      }
+    }
+    localObject3 = ((WakeLockMonitor.ReportEntity)localObject3).useList.iterator();
+    l3 = l2;
+    l1 = l4;
     for (;;)
     {
-      int i;
-      int k;
-      try
+      i = k;
+      l4 = l1;
+      l2 = l3;
+      if (!((Iterator)localObject3).hasNext()) {
+        break;
+      }
+      localObject4 = (Pair)((Iterator)localObject3).next();
+      l2 = l1 + ((Long)((Pair)localObject4).second).longValue();
+      l1 = l2;
+      if (j != 0)
       {
-        HashMap localHashMap1 = this.fg30MinMap;
-        if (localHashMap1.isEmpty()) {
-          break label491;
-        }
-        localObject2 = localHashMap1.values().iterator();
-        i = 0;
-        if (((Iterator)localObject2).hasNext())
-        {
-          localObject3 = (WakeLockMonitor.ReportEntity)((Iterator)localObject2).next();
-          k = ((WakeLockMonitor.ReportEntity)localObject3).useList.size();
-          if ((((WakeLockMonitor.ReportEntity)localObject3).flag & 0x1) <= 0) {
-            break label498;
-          }
-          j = 1;
-          localObject3 = ((WakeLockMonitor.ReportEntity)localObject3).useList.iterator();
-          if (!((Iterator)localObject3).hasNext()) {
-            break label503;
-          }
-          localObject4 = (Pair)((Iterator)localObject3).next();
-          l2 += ((Long)((Pair)localObject4).second).longValue();
-          if (j == 0) {
-            break label495;
-          }
-          l1 = ((Long)((Pair)localObject4).second).longValue() + l1;
-          break label495;
-          localHashMap1 = this.bg5MinMap;
-          continue;
-        }
-        if (!paramBoolean) {
-          break label514;
-        }
-        localObject2 = "fg30WlCount";
-        writeReportLog(new String[] { localObject2, "|", String.valueOf(i), "|", String.valueOf(l2), "|", String.valueOf(l1) });
-        Object localObject4 = localHashMap1.keySet().iterator();
-        if (!((Iterator)localObject4).hasNext()) {
-          break label486;
-        }
+        l3 += ((Long)((Pair)localObject4).second).longValue();
+        l1 = l2;
+      }
+    }
+    label208:
+    if (paramBoolean)
+    {
+      localObject2 = "fg30WlCount";
+      writeReportLog(new String[] { localObject2, "|", String.valueOf(i), "|", String.valueOf(l4), "|", String.valueOf(l2) });
+      localObject4 = localHashMap1.keySet().iterator();
+      while (((Iterator)localObject4).hasNext())
+      {
         String str = (String)((Iterator)localObject4).next();
         localObject3 = (WakeLockMonitor.ReportEntity)localHashMap1.get(str);
         StringBuilder localStringBuilder = ThreadTool.getReuseStringBuilder();
         localObject2 = ((WakeLockMonitor.ReportEntity)localObject3).useList.iterator();
         i = 0;
-        Object localObject5;
         if (((Iterator)localObject2).hasNext())
         {
           localObject5 = (Pair)((Iterator)localObject2).next();
-          localStringBuilder.append(((Pair)localObject5).first).append(",").append(((Pair)localObject5).second);
+          localStringBuilder.append(((Pair)localObject5).first);
+          localStringBuilder.append(",");
+          localStringBuilder.append(((Pair)localObject5).second);
           i += 1;
           if (i >= ((WakeLockMonitor.ReportEntity)localObject3).useList.size()) {
-            break label511;
+            break label558;
           }
           localStringBuilder.append("#");
-          break label511;
+          break label558;
         }
-        if (paramBoolean)
-        {
-          localObject2 = "fg30WlUse";
-          localObject5 = ((WakeLockMonitor.ReportEntity)localObject3).tag.replace("|", "_");
-          if ((((WakeLockMonitor.ReportEntity)localObject3).flag & 0x1) <= 0) {
-            break label521;
-          }
-          localObject3 = "1";
-          writeReportLog(new String[] { localObject2, "|", localObject5, "|", localObject3, "|", str, "|", localStringBuilder.toString() });
-          continue;
+        if (!paramBoolean) {
+          break label561;
         }
-        localObject2 = "bg5WlUse";
+        localObject2 = "fg30WlUse";
+        Object localObject5 = ((WakeLockMonitor.ReportEntity)localObject3).tag.replace("|", "_");
+        if ((((WakeLockMonitor.ReportEntity)localObject3).flag & 0x1) <= 0) {
+          break label568;
+        }
+        localObject3 = "1";
+        writeReportLog(new String[] { localObject2, "|", localObject5, "|", localObject3, "|", str, "|", localStringBuilder.toString() });
       }
-      finally {}
-      continue;
-      label486:
-      localObject1.clear();
-      label491:
+      localHashMap1.clear();
       return;
-      label495:
-      continue;
-      label498:
-      int j = 0;
-      continue;
-      label503:
-      i += k;
-      continue;
-      label511:
-      continue;
-      label514:
-      Object localObject2 = "bg5WlCount";
-      continue;
-      label521:
-      Object localObject3 = "0";
     }
   }
   
@@ -202,10 +215,21 @@ public class WakeLockMonitor
         {
           doReport(paramMessage, 5);
           writeCommonLog(new String[] { "wl_alm", "|", paramMessage.uuid, "|0|0" });
-          onUsageAlarm(4, 1, 0, "Acquire " + paramMessage.tag + " too long time", "CallStack: " + paramMessage.createStack);
-          return false;
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Acquire ");
+          ((StringBuilder)localObject).append(paramMessage.tag);
+          ((StringBuilder)localObject).append(" too long time");
+          localObject = ((StringBuilder)localObject).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("CallStack: ");
+          localStringBuilder.append(paramMessage.createStack);
+          onUsageAlarm(4, 1, 0, (String)localObject, localStringBuilder.toString());
         }
-        Logger.INSTANCE.i(new String[] { "QAPM_battery_WakeLock", "wake lock is lost ?" });
+        else
+        {
+          Logger.INSTANCE.i(new String[] { "QAPM_battery_WakeLock", "wake lock is lost ?" });
+        }
+        return false;
       }
     }
     return false;
@@ -230,157 +254,161 @@ public class WakeLockMonitor
         return;
       }
     }
-    Object localObject2;
-    Object localObject3;
-    label289:
-    label322:
     long l;
-    label517:
-    label632:
-    do
+    int i;
+    label1282:
+    label1290:
+    label1297:
+    label1300:
+    label1303:
+    label1309:
+    label1316:
+    label1319:
+    synchronized (this.map)
     {
-      for (;;)
+      if ("newWakeLock".equals(???))
       {
-        synchronized (this.map)
+        paramObject1 = new WakeLockMonitor.WakeLockEntity(this);
+        paramObject1.levelAndFlags = ((Integer)paramArrayOfObject[0]).intValue();
+        paramObject1.tag = ((String)paramArrayOfObject[1]);
+        paramObject1.createStack = getAppStack().toString();
+        paramObject1.uuid = String.valueOf(paramObject1.hashCode());
+        paramArrayOfObject = new WeakReference((PowerManager.WakeLock)paramObject2);
+        this.map.put(paramArrayOfObject, paramObject1);
+        writeCommonLog(new String[] { ???, "|", paramObject1.uuid, "|", String.valueOf(paramObject1.levelAndFlags), "|", paramObject1.tag, "|", paramObject1.createStack });
+      }
+      else
+      {
+        Iterator localIterator;
+        Object localObject2;
+        Object localObject1;
+        if ("acquire".equals(???))
         {
-          if ("newWakeLock".equals(???))
+          paramObject2 = getAppStack().toString();
+          localIterator = this.map.keySet().iterator();
+          if (localIterator.hasNext())
           {
-            paramObject1 = new WakeLockMonitor.WakeLockEntity(this);
-            paramObject1.levelAndFlags = ((Integer)paramArrayOfObject[0]).intValue();
-            paramObject1.tag = ((String)paramArrayOfObject[1]);
-            paramObject1.createStack = getAppStack().toString();
-            paramObject1.uuid = String.valueOf(paramObject1.hashCode());
-            paramArrayOfObject = new WeakReference((PowerManager.WakeLock)paramObject2);
-            this.map.put(paramArrayOfObject, paramObject1);
-            writeCommonLog(new String[] { ???, "|", paramObject1.uuid, "|", String.valueOf(paramObject1.levelAndFlags), "|", paramObject1.tag, "|", paramObject1.createStack });
-            return;
-          }
-        }
-        if (!"acquire".equals(???)) {
-          break;
-        }
-        paramObject2 = getAppStack().toString();
-        localIterator = this.map.keySet().iterator();
-        while (localIterator.hasNext())
-        {
-          localObject2 = (WeakReference)localIterator.next();
-          localObject3 = (WakeLockMonitor.WakeLockEntity)this.map.get(localObject2);
-          if (((WeakReference)localObject2).get() == paramObject1)
-          {
-            if (paramArrayOfObject == null) {
-              break label1174;
-            }
-            Object localObject4;
-            if (paramArrayOfObject.length == 0)
+            localObject2 = (WeakReference)localIterator.next();
+            localObject1 = (WakeLockMonitor.WakeLockEntity)this.map.get(localObject2);
+            if (((WeakReference)localObject2).get() == paramObject1)
             {
-              break label1174;
-              localObject4 = ((WakeLockMonitor.WakeLockEntity)localObject3).getCallStackIndex(paramObject2);
-              String str = ((WakeLockMonitor.WakeLockEntity)localObject3).uuid;
-              if (!((Boolean)((Pair)localObject4).first).booleanValue()) {
-                break label1182;
+              if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
+                break label1282;
+              }
+              l = ((Long)paramArrayOfObject[0]).longValue();
+              Object localObject3 = ((WakeLockMonitor.WakeLockEntity)localObject1).getCallStackIndex(paramObject2);
+              String str = ((WakeLockMonitor.WakeLockEntity)localObject1).uuid;
+              if (!((Boolean)((Pair)localObject3).first).booleanValue()) {
+                break label1290;
               }
               ??? = paramObject2;
-              Object localObject1;
-              writeCommonLog(new String[] { "wl_usg", "|", str, "|0|", ???, "|", String.valueOf(((Pair)localObject4).second), "|", String.valueOf(localObject1) });
-              ??? = ((WakeLockMonitor.WakeLockEntity)localObject3).onAcquire((PowerManager.WakeLock)paramObject1, paramObject2, localObject1);
-              if (!((Boolean)???.first).booleanValue()) {
-                break label517;
-              }
-              localObject4 = this.subHandler.obtainMessage(1);
-              ((Message)localObject4).obj = localObject2;
-              this.subHandler.sendMessageDelayed((Message)localObject4, this.maxAcquireTime);
-            }
-            for (;;)
-            {
-              if (???.second == null) {
-                break label632;
-              }
-              onUsageAlarm(4, 0, 0, "Acquire " + ((WakeLockMonitor.WakeLockEntity)localObject3).tag + " too frequently", HighFrequencyDetector.getDescription((List)???.second));
-              break;
-              l = ((Long)paramArrayOfObject[0]).longValue();
-              break label289;
-              if (l >= this.maxAcquireTime)
+              writeCommonLog(new String[] { "wl_usg", "|", str, "|0|", ???, "|", String.valueOf(((Pair)localObject3).second), "|", String.valueOf(l) });
+              ??? = ((WakeLockMonitor.WakeLockEntity)localObject1).onAcquire((PowerManager.WakeLock)paramObject1, paramObject2, l);
+              if (((Boolean)???.first).booleanValue())
               {
-                writeCommonLog(new String[] { "wl_alm", "|", ((WakeLockMonitor.WakeLockEntity)localObject3).uuid, "|0|", String.valueOf(((Pair)localObject4).second) });
-                onUsageAlarm(4, 1, 0, "Acquire " + ((WakeLockMonitor.WakeLockEntity)localObject3).tag + " too long time", "CallStack: " + ((WakeLockMonitor.WakeLockEntity)localObject3).createStack);
+                localObject3 = this.subHandler.obtainMessage(1);
+                ((Message)localObject3).obj = localObject2;
+                this.subHandler.sendMessageDelayed((Message)localObject3, this.maxAcquireTime);
+                break label1297;
               }
+              if (l < this.maxAcquireTime) {
+                break label1297;
+              }
+              writeCommonLog(new String[] { "wl_alm", "|", ((WakeLockMonitor.WakeLockEntity)localObject1).uuid, "|0|", String.valueOf(((Pair)localObject3).second) });
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("Acquire ");
+              ((StringBuilder)localObject2).append(((WakeLockMonitor.WakeLockEntity)localObject1).tag);
+              ((StringBuilder)localObject2).append(" too long time");
+              localObject2 = ((StringBuilder)localObject2).toString();
+              localObject3 = new StringBuilder();
+              ((StringBuilder)localObject3).append("CallStack: ");
+              ((StringBuilder)localObject3).append(((WakeLockMonitor.WakeLockEntity)localObject1).createStack);
+              onUsageAlarm(4, 1, 0, (String)localObject2, ((StringBuilder)localObject3).toString());
+              if (???.second == null) {
+                break label1300;
+              }
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("Acquire ");
+              ((StringBuilder)localObject2).append(((WakeLockMonitor.WakeLockEntity)localObject1).tag);
+              ((StringBuilder)localObject2).append(" too frequently");
+              onUsageAlarm(4, 0, 0, ((StringBuilder)localObject2).toString(), HighFrequencyDetector.getDescription((List)???.second));
+              break label1300;
             }
-          }
-          else if (((WeakReference)localObject2).get() == null)
-          {
-            if (((WakeLockMonitor.WakeLockEntity)localObject3).isHeld())
+            if (((WeakReference)localObject2).get() != null) {
+              break label1300;
+            }
+            if (((WakeLockMonitor.WakeLockEntity)localObject1).isHeld())
             {
-              onUsageAlarm(4, 2, 1, "WakeLock " + ((WakeLockMonitor.WakeLockEntity)localObject3).tag + " not release", "CreateStack: " + ((WakeLockMonitor.WakeLockEntity)localObject3).createStack);
-              writeCommonLog(new String[] { "wl_alm", "|", ((WakeLockMonitor.WakeLockEntity)localObject3).uuid, "|1" });
-              doReport((WakeLockMonitor.WakeLockEntity)localObject3, 4);
+              ??? = new StringBuilder();
+              ???.append("WakeLock ");
+              ???.append(((WakeLockMonitor.WakeLockEntity)localObject1).tag);
+              ???.append(" not release");
+              ??? = ???.toString();
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("CreateStack: ");
+              ((StringBuilder)localObject2).append(((WakeLockMonitor.WakeLockEntity)localObject1).createStack);
+              onUsageAlarm(4, 2, 1, ???, ((StringBuilder)localObject2).toString());
+              writeCommonLog(new String[] { "wl_alm", "|", ((WakeLockMonitor.WakeLockEntity)localObject1).uuid, "|1" });
+              doReport((WakeLockMonitor.WakeLockEntity)localObject1, 4);
             }
-            ((WakeLockMonitor.WakeLockEntity)localObject3).destroy();
+            ((WakeLockMonitor.WakeLockEntity)localObject1).destroy();
+            localIterator.remove();
+            break label1300;
+          }
+        }
+        else if ("release".equals(???))
+        {
+          paramObject2 = getAppStack().toString();
+          localIterator = this.map.keySet().iterator();
+          while (localIterator.hasNext())
+          {
+            localObject1 = (WeakReference)localIterator.next();
+            ??? = (WakeLockMonitor.WakeLockEntity)this.map.get(localObject1);
+            if (((WeakReference)localObject1).get() == paramObject1)
+            {
+              if ((paramArrayOfObject == null) || (paramArrayOfObject.length == 0)) {
+                break label1303;
+              }
+              i = ((Integer)paramArrayOfObject[0]).intValue();
+              localObject2 = ???.onRelease((PowerManager.WakeLock)paramObject1, i);
+              if (((Boolean)((Pair)localObject2).first).booleanValue())
+              {
+                this.subHandler.removeMessages(1, localObject1);
+                writeCommonLog(new String[] { "wl_tm", "|", ???.uuid, "|", String.valueOf(((Pair)localObject2).second) });
+                doReport(???, 3);
+              }
+              localObject1 = ???.getCallStackIndex(paramObject2);
+              localObject2 = ???.uuid;
+              if (!((Boolean)((Pair)localObject1).first).booleanValue()) {
+                break label1309;
+              }
+              ??? = paramObject2;
+              writeCommonLog(new String[] { "wl_usg", "|", localObject2, "|1|", ???, "|", String.valueOf(((Pair)localObject1).second), "|", String.valueOf(i) });
+              break label1319;
+            }
+            if (((WeakReference)localObject1).get() != null) {
+              break label1319;
+            }
+            if (!???.isHeld()) {
+              break label1316;
+            }
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("WakeLock ");
+            ((StringBuilder)localObject1).append(???.tag);
+            ((StringBuilder)localObject1).append(" not release");
+            localObject1 = ((StringBuilder)localObject1).toString();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("CreateStack: ");
+            ((StringBuilder)localObject2).append(???.createStack);
+            onUsageAlarm(4, 2, 1, (String)localObject1, ((StringBuilder)localObject2).toString());
+            writeCommonLog(new String[] { "wl_alm", "|", ???.uuid, "|1" });
+            doReport(???, 4);
+            ???.destroy();
             localIterator.remove();
           }
         }
       }
-    } while (!"release".equals(???));
-    paramObject2 = getAppStack().toString();
-    Iterator localIterator = this.map.keySet().iterator();
-    label796:
-    label852:
-    int i;
-    if (localIterator.hasNext())
-    {
-      localObject2 = (WeakReference)localIterator.next();
-      ??? = (WakeLockMonitor.WakeLockEntity)this.map.get(localObject2);
-      if (((WeakReference)localObject2).get() == paramObject1)
-      {
-        if (paramArrayOfObject == null) {
-          break label1189;
-        }
-        if (paramArrayOfObject.length == 0)
-        {
-          break label1189;
-          localObject3 = ???.onRelease((PowerManager.WakeLock)paramObject1, i);
-          if (((Boolean)((Pair)localObject3).first).booleanValue())
-          {
-            this.subHandler.removeMessages(1, localObject2);
-            writeCommonLog(new String[] { "wl_tm", "|", ???.uuid, "|", String.valueOf(((Pair)localObject3).second) });
-            doReport(???, 3);
-          }
-          localObject2 = ???.getCallStackIndex(paramObject2);
-          localObject3 = ???.uuid;
-          if (!((Boolean)((Pair)localObject2).first).booleanValue()) {
-            break label1195;
-          }
-        }
-      }
-    }
-    label1174:
-    label1182:
-    label1189:
-    label1195:
-    for (??? = paramObject2;; ??? = "")
-    {
-      writeCommonLog(new String[] { "wl_usg", "|", localObject3, "|1|", ???, "|", String.valueOf(((Pair)localObject2).second), "|", String.valueOf(i) });
-      break label796;
-      i = ((Integer)paramArrayOfObject[0]).intValue();
-      break label852;
-      if (((WeakReference)localObject2).get() != null) {
-        break label796;
-      }
-      if (???.isHeld())
-      {
-        onUsageAlarm(4, 2, 1, "WakeLock " + ???.tag + " not release", "CreateStack: " + ???.createStack);
-        writeCommonLog(new String[] { "wl_alm", "|", ???.uuid, "|1" });
-        doReport(???, 4);
-      }
-      ???.destroy();
-      localIterator.remove();
-      break label796;
-      break;
-      l = -1L;
-      break label289;
-      ??? = "";
-      break label322;
-      i = -1;
-      break label852;
+      return;
     }
   }
   
@@ -390,48 +418,67 @@ public class WakeLockMonitor
     if ((this.isRunning) && ((i == 3) || (i == 4) || (i == 5)))
     {
       Logger.INSTANCE.i(new String[] { "QAPM_battery_WakeLock", "WakeLock.onOtherProcReport:action=", String.valueOf(i), ", tag=", paramBundle.getString("key_tag"), ", stack=", paramBundle.getString("key_stack"), ", time=", String.valueOf(paramBundle.getLong("key_time")) });
-      String str = paramBundle.getString("key_stack");
+      Object localObject4 = paramBundle.getString("key_stack");
+      Object localObject2;
+      Object localObject1;
       if (i == 3) {
         synchronized (this.fg30MinMap)
         {
-          WakeLockMonitor.ReportEntity localReportEntity2;
-          WakeLockMonitor.ReportEntity localReportEntity1;
           if (this.isBeforeRun30Min)
           {
-            localReportEntity2 = (WakeLockMonitor.ReportEntity)this.fg30MinMap.get(str);
-            localReportEntity1 = localReportEntity2;
-            if (localReportEntity2 == null)
+            localObject2 = (WakeLockMonitor.ReportEntity)this.fg30MinMap.get(localObject4);
+            localObject1 = localObject2;
+            if (localObject2 == null)
             {
-              localReportEntity1 = new WakeLockMonitor.ReportEntity(this, null);
-              localReportEntity1.flag = paramBundle.getInt("key_flag");
-              localReportEntity1.tag = paramBundle.getString("key_tag");
-              this.fg30MinMap.put(str, localReportEntity1);
+              localObject1 = new WakeLockMonitor.ReportEntity(this, null);
+              ((WakeLockMonitor.ReportEntity)localObject1).flag = paramBundle.getInt("key_flag");
+              ((WakeLockMonitor.ReportEntity)localObject1).tag = paramBundle.getString("key_tag");
+              this.fg30MinMap.put(localObject4, localObject1);
             }
-            localReportEntity1.useList.add(new Pair(Long.valueOf(System.currentTimeMillis()), Long.valueOf(paramBundle.getLong("key_time"))));
+            ((WakeLockMonitor.ReportEntity)localObject1).useList.add(new Pair(Long.valueOf(System.currentTimeMillis()), Long.valueOf(paramBundle.getLong("key_time"))));
           }
           if ((this.isAppBackground) && (this.isInFirstBg5min))
           {
-            localReportEntity2 = (WakeLockMonitor.ReportEntity)this.bg5MinMap.get(str);
-            localReportEntity1 = localReportEntity2;
-            if (localReportEntity2 == null)
+            localObject2 = (WakeLockMonitor.ReportEntity)this.bg5MinMap.get(localObject4);
+            localObject1 = localObject2;
+            if (localObject2 == null)
             {
-              localReportEntity1 = new WakeLockMonitor.ReportEntity(this, null);
-              localReportEntity1.flag = paramBundle.getInt("key_flag");
-              localReportEntity1.tag = paramBundle.getString("key_tag");
-              this.bg5MinMap.put(str, localReportEntity1);
+              localObject1 = new WakeLockMonitor.ReportEntity(this, null);
+              ((WakeLockMonitor.ReportEntity)localObject1).flag = paramBundle.getInt("key_flag");
+              ((WakeLockMonitor.ReportEntity)localObject1).tag = paramBundle.getString("key_tag");
+              this.bg5MinMap.put(localObject4, localObject1);
             }
-            localReportEntity1.useList.add(new Pair(Long.valueOf(System.currentTimeMillis()), Long.valueOf(paramBundle.getLong("key_time"))));
+            ((WakeLockMonitor.ReportEntity)localObject1).useList.add(new Pair(Long.valueOf(System.currentTimeMillis()), Long.valueOf(paramBundle.getLong("key_time"))));
           }
           return;
         }
       }
       if (i == 4)
       {
-        writeReportLog(new String[] { "wlNotRelease", "|", paramBundle.getString("key_stack"), "|", paramBundle.getString("key_tag"), "|", paramBundle.getInt("key_flag") + "", "|", paramBundle.getLong("key_time") + "" });
+        localObject1 = paramBundle.getString("key_stack");
+        localObject2 = paramBundle.getString("key_tag");
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(paramBundle.getInt("key_flag"));
+        ((StringBuilder)???).append("");
+        ??? = ((StringBuilder)???).toString();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(paramBundle.getLong("key_time"));
+        ((StringBuilder)localObject4).append("");
+        writeReportLog(new String[] { "wlNotRelease", "|", localObject1, "|", localObject2, "|", ???, "|", ((StringBuilder)localObject4).toString() });
         return;
       }
-      if (i == 5) {
-        writeReportLog(new String[] { "wlTimeout", "|", paramBundle.getString("key_stack"), "|", paramBundle.getString("key_tag"), "|", paramBundle.getInt("key_flag") + "", "|", paramBundle.getLong("key_time") + "" });
+      if (i == 5)
+      {
+        localObject1 = paramBundle.getString("key_stack");
+        localObject2 = paramBundle.getString("key_tag");
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append(paramBundle.getInt("key_flag"));
+        ((StringBuilder)???).append("");
+        ??? = ((StringBuilder)???).toString();
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(paramBundle.getLong("key_time"));
+        ((StringBuilder)localObject4).append("");
+        writeReportLog(new String[] { "wlTimeout", "|", localObject1, "|", localObject2, "|", ???, "|", ((StringBuilder)localObject4).toString() });
       }
     }
   }
@@ -456,7 +503,7 @@ public class WakeLockMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.monitor.WakeLockMonitor
  * JD-Core Version:    0.7.0.1
  */

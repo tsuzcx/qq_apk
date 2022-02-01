@@ -1,25 +1,23 @@
 package com.tencent.mobileqq.apollo.script;
 
-import com.tencent.mobileqq.apollo.api.IApolloManagerService;
+import com.google.gson.Gson;
 import com.tencent.mobileqq.apollo.api.ISpriteScriptManager;
-import com.tencent.mobileqq.apollo.api.data.IApolloDaoManagerService;
-import com.tencent.mobileqq.apollo.api.data.impl.ApolloDaoManagerServiceImpl;
-import com.tencent.mobileqq.apollo.api.impl.ApolloManagerServiceImpl;
-import com.tencent.mobileqq.apollo.api.model.ApolloActionData;
-import com.tencent.mobileqq.apollo.api.model.ApolloSlaveInfo;
-import com.tencent.mobileqq.apollo.api.model.MessageForApollo;
-import com.tencent.mobileqq.apollo.api.script.ISpriteBridge;
-import com.tencent.mobileqq.apollo.api.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.api.uitls.impl.ApolloUtilImpl;
+import com.tencent.mobileqq.apollo.model.ApolloActionData;
+import com.tencent.mobileqq.apollo.model.ApolloSlaveActionInfo;
+import com.tencent.mobileqq.apollo.model.ApolloSlaveInfo;
+import com.tencent.mobileqq.apollo.model.MessageForApollo;
+import com.tencent.mobileqq.apollo.model.ScriptResult;
+import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
+import com.tencent.mobileqq.apollo.persistence.api.impl.ApolloDaoManagerServiceImpl;
+import com.tencent.mobileqq.apollo.res.api.IApolloResManager;
+import com.tencent.mobileqq.apollo.res.api.impl.ApolloResManagerImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.util.JSONUtils;
-import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.cmshow.engine.util.CMResUtil;
 import com.tencent.qphone.base.util.QLog;
+import java.util.List;
 import mqq.os.MqqHandler;
-import org.json.JSONArray;
-import org.json.JSONObject;
 
 public class SpriteActionMessage
 {
@@ -32,189 +30,188 @@ public class SpriteActionMessage
   
   private void a(int paramInt, boolean paramBoolean)
   {
-    ThreadManager.getUIHandler().post(new SpriteActionMessage.1(this, paramInt, paramBoolean));
+    ThreadManager.getUIHandler().post(new SpriteActionMessage.2(this, paramInt, paramBoolean));
   }
   
   private void a(ApolloActionData paramApolloActionData)
   {
-    if (paramApolloActionData == null) {
-      QLog.e("cmshow_scripted_SpriteActionMessage", 1, "[tiggerAction] actionData is null,return.");
-    }
-    SpriteTaskParam localSpriteTaskParam;
-    do
+    if (paramApolloActionData == null)
     {
+      QLog.e("[cmshow][scripted]SpriteActionMessage", 1, "[tiggerAction] actionData is null,return.");
       return;
-      localSpriteTaskParam = new SpriteTaskParam();
-      localSpriteTaskParam.f = paramApolloActionData.actionId;
-      localSpriteTaskParam.jdField_c_of_type_Int = 0;
-      localSpriteTaskParam.g = 3;
-      localSpriteTaskParam.e = paramApolloActionData.personNum;
-      localSpriteTaskParam.jdField_a_of_type_Long = -10000L;
-      localSpriteTaskParam.jdField_a_of_type_Boolean = true;
-      localSpriteTaskParam.b = false;
-      localSpriteTaskParam.jdField_c_of_type_JavaLangString = paramApolloActionData.bubbleText;
-    } while ((this.a == null) || (this.a.a() == null));
-    localSpriteTaskParam.jdField_a_of_type_JavaLangString = String.valueOf(this.a.a().getCurrentAccountUin());
-    ((ISpriteScriptManager)this.a.a().getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteBridge().b(localSpriteTaskParam);
+    }
+    Object localObject = this.a;
+    if (localObject != null)
+    {
+      if (((SpriteContext)localObject).a() == null) {
+        return;
+      }
+      localObject = new SpriteTaskParam();
+      ((SpriteTaskParam)localObject).f = paramApolloActionData.actionId;
+      ((SpriteTaskParam)localObject).jdField_c_of_type_Int = 0;
+      ((SpriteTaskParam)localObject).g = 3;
+      ((SpriteTaskParam)localObject).e = paramApolloActionData.personNum;
+      ((SpriteTaskParam)localObject).jdField_a_of_type_Long = -10000L;
+      ((SpriteTaskParam)localObject).jdField_a_of_type_Boolean = true;
+      ((SpriteTaskParam)localObject).b = false;
+      ((SpriteTaskParam)localObject).jdField_c_of_type_JavaLangString = paramApolloActionData.bubbleText;
+      ((SpriteTaskParam)localObject).jdField_a_of_type_JavaLangString = String.valueOf(this.a.a().getCurrentAccountUin());
+      ((ISpriteScriptManager)this.a.a().getRuntimeService(ISpriteScriptManager.class, "all")).getSpriteBridge().b((SpriteTaskParam)localObject);
+    }
+  }
+  
+  private void a(QQAppInterface paramQQAppInterface, int paramInt, boolean paramBoolean)
+  {
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   private void a(String paramString)
   {
-    SpriteActionScript localSpriteActionScript;
-    if ((this.a != null) && (this.a.a() != null))
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      localSpriteActionScript = SpriteUtil.a(this.a.a());
-      if (localSpriteActionScript != null) {}
+      if (((SpriteContext)localObject).a() == null) {
+        return;
+      }
+      localObject = SpriteUtil.a(this.a.a());
+      if (localObject == null) {
+        return;
+      }
+      ((SpriteActionScript)localObject).b("", paramString);
     }
-    else
-    {
-      return;
-    }
-    localSpriteActionScript.a("", paramString);
   }
   
   public void a() {}
   
   public void a(int paramInt)
   {
-    if ((this.a == null) || (this.a.a() == null)) {
-      return;
-    }
-    QQAppInterface localQQAppInterface = this.a.a();
-    ApolloActionData localApolloActionData = ((ApolloDaoManagerServiceImpl)localQQAppInterface.getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(paramInt);
-    String str = HardCodeUtil.a(2131714197);
-    if (localApolloActionData == null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      a(str);
-      return;
+      if (((SpriteContext)localObject).a() == null) {
+        return;
+      }
+      localObject = this.a.a();
+      ApolloActionData localApolloActionData = ((ApolloDaoManagerServiceImpl)((QQAppInterface)localObject).getRuntimeService(IApolloDaoManagerService.class, "all")).findActionById(paramInt);
+      String str = HardCodeUtil.a(2131714126);
+      if (localApolloActionData == null)
+      {
+        a(str);
+        return;
+      }
+      localApolloActionData.bubbleText = str;
+      if (!CMResUtil.a(paramInt, localApolloActionData.personNum))
+      {
+        ((ApolloResManagerImpl)((QQAppInterface)localObject).getRuntimeService(IApolloResManager.class, "all")).downloadApolloRes(localApolloActionData, 4, null);
+        a(str);
+        return;
+      }
+      a(localApolloActionData);
     }
-    localApolloActionData.bubbleText = str;
-    if (!ApolloUtilImpl.isActionResDone(paramInt, localApolloActionData.personNum))
-    {
-      ((ApolloManagerServiceImpl)localQQAppInterface.getRuntimeService(IApolloManagerService.class, "all")).downloadApolloRes(localApolloActionData, 4, null);
-      a(str);
-      return;
-    }
-    a(localApolloActionData);
   }
   
   public boolean a(MessageForApollo paramMessageForApollo)
   {
-    int k = 2;
-    int j = 0;
-    if ((paramMessageForApollo.actionType != 5) || (this.a == null) || (this.a.a() == null)) {
-      return true;
-    }
-    QQAppInterface localQQAppInterface = this.a.a();
-    String str1 = paramMessageForApollo.extendJson;
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteActionMessage", 2, new Object[] { "rep data:", str1 });
-    }
-    for (;;)
+    int i = paramMessageForApollo.actionType;
+    boolean bool1 = true;
+    boolean bool4 = true;
+    boolean bool2 = bool1;
+    if (i == 5)
     {
-      int i;
-      boolean bool1;
-      boolean bool2;
-      try
+      Object localObject1 = this.a;
+      bool2 = bool1;
+      if (localObject1 != null)
       {
-        paramMessageForApollo = new JSONObject(paramMessageForApollo.extendJson);
-        if (!paramMessageForApollo.has("data")) {
-          break label337;
+        if (((SpriteContext)localObject1).a() == null) {
+          return true;
         }
-        String str2 = localQQAppInterface.getCurrentAccountUin();
-        JSONObject localJSONObject = paramMessageForApollo.getJSONObject("data");
-        JSONArray localJSONArray = localJSONObject.getJSONArray("slaveInfoList");
-        Object localObject = null;
-        str1 = null;
-        paramMessageForApollo = localObject;
-        if (localJSONArray != null)
+        QQAppInterface localQQAppInterface = this.a.a();
+        localObject1 = paramMessageForApollo.extendJson;
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow][scripted]SpriteActionMessage", 2, new Object[] { "rep data:", localObject1 });
+        }
+        Object localObject2 = new Gson();
+        localObject1 = null;
+        try
         {
-          paramMessageForApollo = localObject;
-          if (localJSONArray.length() > 0)
+          paramMessageForApollo = (ScriptResult)((Gson)localObject2).fromJson(paramMessageForApollo.extendJson, new SpriteActionMessage.1(this).getType());
+        }
+        catch (Exception paramMessageForApollo)
+        {
+          QLog.e("[cmshow][scripted]SpriteActionMessage", 1, "[handleSendMsg] Exception", paramMessageForApollo);
+          paramMessageForApollo = null;
+        }
+        int j;
+        label273:
+        boolean bool3;
+        if ((paramMessageForApollo != null) && (paramMessageForApollo.data != null))
+        {
+          localObject2 = (ApolloSlaveActionInfo)paramMessageForApollo.data;
+          paramMessageForApollo = (MessageForApollo)localObject1;
+          if (localObject2 != null)
           {
-            i = 0;
-            paramMessageForApollo = str1;
-            if (i < localJSONArray.length())
+            paramMessageForApollo = (MessageForApollo)localObject1;
+            if (((ApolloSlaveActionInfo)localObject2).slaveInfoList != null)
             {
-              paramMessageForApollo = (ApolloSlaveInfo)JSONUtils.a(localJSONArray.getJSONObject(i), ApolloSlaveInfo.class);
-              if ((paramMessageForApollo == null) || (!str2.equals(String.valueOf(paramMessageForApollo.uin)))) {
-                continue;
+              paramMessageForApollo = (MessageForApollo)localObject1;
+              if (((ApolloSlaveActionInfo)localObject2).slaveInfoList.size() > 0)
+              {
+                paramMessageForApollo = (MessageForApollo)localObject1;
+                if (localQQAppInterface.getCurrentAccountUin().equals(String.valueOf(((ApolloSlaveInfo)((ApolloSlaveActionInfo)localObject2).slaveInfoList.get(0)).uin))) {
+                  paramMessageForApollo = (ApolloSlaveInfo)((ApolloSlaveActionInfo)localObject2).slaveInfoList.get(0);
+                }
               }
             }
           }
-        }
-        if (paramMessageForApollo == null) {
-          break label329;
-        }
-        i = paramMessageForApollo.slaveTotal;
-        if (paramMessageForApollo.isCaptured == 1)
-        {
-          bool1 = true;
-          int m = localJSONObject.optInt("defaultActId");
-          a(i, bool1);
-          if ((bool1) || (i != 0)) {
-            break label323;
+          if (paramMessageForApollo != null)
+          {
+            j = paramMessageForApollo.slaveTotal;
+            i = j;
+            if (paramMessageForApollo.isCaptured == 1)
+            {
+              bool1 = true;
+              i = j;
+              break label273;
+            }
           }
-          a(m);
-          bool2 = false;
-          break label348;
-          VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "clickslaveaction", j, i, new String[0]);
-          return bool2;
-          i += 1;
-          continue;
+          else
+          {
+            i = 0;
+          }
+          bool1 = false;
+          a(i, bool1);
+          bool2 = bool4;
+          j = i;
+          bool3 = bool1;
+          if (!bool1)
+          {
+            bool2 = bool4;
+            j = i;
+            bool3 = bool1;
+            if (i == 0)
+            {
+              a(((ApolloSlaveActionInfo)localObject2).defaultActId);
+              bool2 = false;
+              j = i;
+              bool3 = bool1;
+            }
+          }
         }
-        bool1 = false;
-        continue;
-        if (i > 0) {
-          i = k;
-        } else {
-          i = 3;
+        else
+        {
+          j = 0;
+          bool3 = false;
+          bool2 = bool4;
         }
-      }
-      catch (Exception paramMessageForApollo)
-      {
-        QLog.i("cmshow_scripted_SpriteActionMessage", 1, "[handleSendMsg] Exception", paramMessageForApollo);
-        return true;
-      }
-      if (i == 0)
-      {
-        i = 0;
-      }
-      else
-      {
-        i = 1;
-        break label360;
-        label323:
-        bool2 = true;
-        break label348;
-        label329:
-        bool1 = false;
-        i = 0;
-        continue;
-        label337:
-        bool1 = false;
-        i = 0;
-        bool2 = true;
-        break label360;
-        label348:
-        if (!bool1) {
-          continue;
-        }
-        if (i < 5) {
-          continue;
-        }
-        i = 1;
-      }
-      label360:
-      if (bool1) {
-        j = 1;
+        a(localQQAppInterface, j, bool3);
       }
     }
+    return bool2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteActionMessage
  * JD-Core Version:    0.7.0.1
  */

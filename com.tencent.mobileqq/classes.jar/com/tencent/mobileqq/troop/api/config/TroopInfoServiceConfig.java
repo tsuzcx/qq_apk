@@ -42,34 +42,37 @@ public class TroopInfoServiceConfig
   
   public static void a(String paramString)
   {
-    if (b != null)
+    Object localObject = b;
+    if (localObject != null)
     {
-      Iterator localIterator = b.iterator();
-      while (localIterator.hasNext()) {
-        ((AbsTroopInfoServiceProcessor)localIterator.next()).a(paramString);
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((AbsTroopInfoServiceProcessor)((Iterator)localObject).next()).a(paramString);
       }
     }
   }
   
   public static void a(String paramString, boolean paramBoolean)
   {
-    if (b != null)
+    Object localObject = b;
+    if (localObject != null)
     {
-      Iterator localIterator = b.iterator();
-      while (localIterator.hasNext()) {
-        ((AbsTroopInfoServiceProcessor)localIterator.next()).a(paramString, paramBoolean);
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((AbsTroopInfoServiceProcessor)((Iterator)localObject).next()).a(paramString, paramBoolean);
       }
     }
   }
   
   private static void b()
   {
-    if (jdField_a_of_type_JavaUtilArrayList != null)
+    Object localObject = jdField_a_of_type_JavaUtilArrayList;
+    if (localObject != null)
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (localIterator.hasNext())
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Class localClass = (Class)localIterator.next();
+        Class localClass = (Class)((Iterator)localObject).next();
         try
         {
           b.add(localClass.newInstance());
@@ -84,7 +87,7 @@ public class TroopInfoServiceConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.api.config.TroopInfoServiceConfig
  * JD-Core Version:    0.7.0.1
  */

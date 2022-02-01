@@ -31,77 +31,71 @@ public class Base64
       b[i] = ((byte)(i - 48 + 52));
       i += 1;
     }
-    b[43] = 62;
-    b[47] = 63;
+    byte[] arrayOfByte = b;
+    arrayOfByte[43] = 62;
+    arrayOfByte[47] = 63;
   }
   
   public static String a(String paramString)
   {
+    String str = null;
     if (paramString != null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        paramString = new String(a(paramString.getBytes("UTF-8")), "UTF-8");
-        return paramString;
-      }
-      catch (Exception paramString)
-      {
-        return null;
-      }
-      paramString = null;
+      str = new String(a(paramString.getBytes("UTF-8")), "UTF-8");
+      return str;
     }
+    catch (Exception paramString) {}
+    return null;
   }
   
   private static boolean a(byte paramByte)
   {
-    if (paramByte == 61) {}
-    do
-    {
+    if (paramByte == 61) {
       return true;
-      if ((paramByte < 0) || (paramByte >= 128)) {
+    }
+    if (paramByte >= 0)
+    {
+      if (paramByte >= 128) {
         return false;
       }
-    } while (b[paramByte] != -1);
+      return b[paramByte] != -1;
+    }
     return false;
   }
   
   public static byte[] a(String paramString)
   {
-    int i = 0;
     if (paramString == null) {
       return null;
     }
     String str = b(paramString);
     if (str.charAt(str.length() - 2) == '=') {
       paramString = new byte[(str.length() / 4 - 1) * 3 + 1];
+    } else if (str.charAt(str.length() - 1) == '=') {
+      paramString = new byte[(str.length() / 4 - 1) * 3 + 2];
+    } else {
+      paramString = new byte[str.length() / 4 * 3];
     }
-    for (;;)
+    int j = 0;
+    int i = 0;
+    while (j < str.length() - 4)
     {
-      j = 0;
-      while (j < str.length() - 4)
-      {
-        k = b[str.charAt(j)];
-        m = b[str.charAt(j + 1)];
-        int n = b[str.charAt(j + 2)];
-        int i1 = b[str.charAt(j + 3)];
-        paramString[i] = ((byte)(k << 2 | m >> 4));
-        paramString[(i + 1)] = ((byte)(m << 4 | n >> 2));
-        paramString[(i + 2)] = ((byte)(n << 6 | i1));
-        j += 4;
-        i += 3;
-      }
-      if (str.charAt(str.length() - 1) == '=') {
-        paramString = new byte[(str.length() / 4 - 1) * 3 + 2];
-      } else {
-        paramString = new byte[str.length() / 4 * 3];
-      }
+      k = b[str.charAt(j)];
+      m = b[str.charAt(j + 1)];
+      int n = b[str.charAt(j + 2)];
+      int i1 = b[str.charAt(j + 3)];
+      paramString[i] = ((byte)(k << 2 | m >> 4));
+      paramString[(i + 1)] = ((byte)(m << 4 | n >> 2));
+      paramString[(i + 2)] = ((byte)(n << 6 | i1));
+      j += 4;
+      i += 3;
     }
     if (str.charAt(str.length() - 2) == '=')
     {
       i = b[str.charAt(str.length() - 4)];
       j = b[str.charAt(str.length() - 3)];
-      paramString[(paramString.length - 1)] = ((byte)(i << 2 | j >> 4));
+      paramString[(paramString.length - 1)] = ((byte)(j >> 4 | i << 2));
       return paramString;
     }
     if (str.charAt(str.length() - 1) == '=')
@@ -110,61 +104,70 @@ public class Base64
       j = b[str.charAt(str.length() - 3)];
       k = b[str.charAt(str.length() - 2)];
       paramString[(paramString.length - 2)] = ((byte)(i << 2 | j >> 4));
-      paramString[(paramString.length - 1)] = ((byte)(j << 4 | k >> 2));
+      paramString[(paramString.length - 1)] = ((byte)(k >> 2 | j << 4));
       return paramString;
     }
     i = b[str.charAt(str.length() - 4)];
-    int j = b[str.charAt(str.length() - 3)];
+    j = b[str.charAt(str.length() - 3)];
     int k = b[str.charAt(str.length() - 2)];
     int m = b[str.charAt(str.length() - 1)];
     paramString[(paramString.length - 3)] = ((byte)(i << 2 | j >> 4));
     paramString[(paramString.length - 2)] = ((byte)(j << 4 | k >> 2));
-    paramString[(paramString.length - 1)] = ((byte)(k << 6 | m));
+    paramString[(paramString.length - 1)] = ((byte)(m | k << 6));
     return paramString;
   }
   
   public static byte[] a(byte[] paramArrayOfByte)
   {
-    int i = 0;
     int k = paramArrayOfByte.length % 3;
-    if (k == 0) {}
-    for (byte[] arrayOfByte = new byte[paramArrayOfByte.length * 4 / 3];; arrayOfByte = new byte[(paramArrayOfByte.length / 3 + 1) * 4])
+    byte[] arrayOfByte1;
+    if (k == 0) {
+      arrayOfByte1 = new byte[paramArrayOfByte.length * 4 / 3];
+    } else {
+      arrayOfByte1 = new byte[(paramArrayOfByte.length / 3 + 1) * 4];
+    }
+    int m = paramArrayOfByte.length;
+    int j = 0;
+    int i = 0;
+    while (j < m - k)
     {
-      int m = paramArrayOfByte.length;
-      j = 0;
-      while (j < m - k)
+      int n = paramArrayOfByte[j] & 0xFF;
+      int i1 = paramArrayOfByte[(j + 1)] & 0xFF;
+      int i2 = paramArrayOfByte[(j + 2)] & 0xFF;
+      byte[] arrayOfByte2 = a;
+      arrayOfByte1[i] = arrayOfByte2[(n >>> 2 & 0x3F)];
+      arrayOfByte1[(i + 1)] = arrayOfByte2[((n << 4 | i1 >>> 4) & 0x3F)];
+      arrayOfByte1[(i + 2)] = arrayOfByte2[((i1 << 2 | i2 >>> 6) & 0x3F)];
+      arrayOfByte1[(i + 3)] = arrayOfByte2[(i2 & 0x3F)];
+      j += 3;
+      i += 4;
+    }
+    if (k != 0)
+    {
+      if (k != 1)
       {
-        int n = paramArrayOfByte[j] & 0xFF;
-        int i1 = paramArrayOfByte[(j + 1)] & 0xFF;
-        int i2 = paramArrayOfByte[(j + 2)] & 0xFF;
-        arrayOfByte[i] = a[(n >>> 2 & 0x3F)];
-        arrayOfByte[(i + 1)] = a[((n << 4 | i1 >>> 4) & 0x3F)];
-        arrayOfByte[(i + 2)] = a[((i1 << 2 | i2 >>> 6) & 0x3F)];
-        arrayOfByte[(i + 3)] = a[(i2 & 0x3F)];
-        j += 3;
-        i += 4;
+        if (k != 2) {
+          return arrayOfByte1;
+        }
+        i = paramArrayOfByte[(paramArrayOfByte.length - 2)] & 0xFF;
+        j = paramArrayOfByte[(paramArrayOfByte.length - 1)] & 0xFF;
+        k = arrayOfByte1.length;
+        paramArrayOfByte = a;
+        arrayOfByte1[(k - 4)] = paramArrayOfByte[(i >>> 2 & 0x3F)];
+        arrayOfByte1[(arrayOfByte1.length - 3)] = paramArrayOfByte[((i << 4 | j >>> 4) & 0x3F)];
+        arrayOfByte1[(arrayOfByte1.length - 2)] = paramArrayOfByte[(j << 2 & 0x3F)];
+        arrayOfByte1[(arrayOfByte1.length - 1)] = 61;
+        return arrayOfByte1;
       }
-    }
-    switch (k)
-    {
-    case 0: 
-    default: 
-      return arrayOfByte;
-    case 1: 
       i = paramArrayOfByte[(paramArrayOfByte.length - 1)] & 0xFF;
-      arrayOfByte[(arrayOfByte.length - 4)] = a[(i >>> 2 & 0x3F)];
-      arrayOfByte[(arrayOfByte.length - 3)] = a[(i << 4 & 0x3F)];
-      arrayOfByte[(arrayOfByte.length - 2)] = 61;
-      arrayOfByte[(arrayOfByte.length - 1)] = 61;
-      return arrayOfByte;
+      j = arrayOfByte1.length;
+      paramArrayOfByte = a;
+      arrayOfByte1[(j - 4)] = paramArrayOfByte[(i >>> 2 & 0x3F)];
+      arrayOfByte1[(arrayOfByte1.length - 3)] = paramArrayOfByte[(i << 4 & 0x3F)];
+      arrayOfByte1[(arrayOfByte1.length - 2)] = 61;
+      arrayOfByte1[(arrayOfByte1.length - 1)] = 61;
     }
-    i = paramArrayOfByte[(paramArrayOfByte.length - 2)] & 0xFF;
-    int j = paramArrayOfByte[(paramArrayOfByte.length - 1)] & 0xFF;
-    arrayOfByte[(arrayOfByte.length - 4)] = a[(i >>> 2 & 0x3F)];
-    arrayOfByte[(arrayOfByte.length - 3)] = a[((i << 4 | j >>> 4) & 0x3F)];
-    arrayOfByte[(arrayOfByte.length - 2)] = a[(j << 2 & 0x3F)];
-    arrayOfByte[(arrayOfByte.length - 1)] = 61;
-    return arrayOfByte;
+    return arrayOfByte1;
   }
   
   private static String b(String paramString)
@@ -181,84 +184,10 @@ public class Base64
     }
     return localStringBuffer.toString();
   }
-  
-  public static byte[] b(byte[] paramArrayOfByte)
-  {
-    int i = 0;
-    byte[] arrayOfByte = c(paramArrayOfByte);
-    if (arrayOfByte[(arrayOfByte.length - 2)] == 61) {
-      paramArrayOfByte = new byte[(arrayOfByte.length / 4 - 1) * 3 + 1];
-    }
-    for (;;)
-    {
-      j = 0;
-      while (j < arrayOfByte.length - 4)
-      {
-        k = b[arrayOfByte[j]];
-        m = b[arrayOfByte[(j + 1)]];
-        int n = b[arrayOfByte[(j + 2)]];
-        int i1 = b[arrayOfByte[(j + 3)]];
-        paramArrayOfByte[i] = ((byte)(k << 2 | m >> 4));
-        paramArrayOfByte[(i + 1)] = ((byte)(m << 4 | n >> 2));
-        paramArrayOfByte[(i + 2)] = ((byte)(n << 6 | i1));
-        j += 4;
-        i += 3;
-      }
-      if (arrayOfByte[(arrayOfByte.length - 1)] == 61) {
-        paramArrayOfByte = new byte[(arrayOfByte.length / 4 - 1) * 3 + 2];
-      } else {
-        paramArrayOfByte = new byte[arrayOfByte.length / 4 * 3];
-      }
-    }
-    if (arrayOfByte[(arrayOfByte.length - 2)] == 61)
-    {
-      i = b[arrayOfByte[(arrayOfByte.length - 4)]];
-      j = b[arrayOfByte[(arrayOfByte.length - 3)]];
-      paramArrayOfByte[(paramArrayOfByte.length - 1)] = ((byte)(i << 2 | j >> 4));
-      return paramArrayOfByte;
-    }
-    if (arrayOfByte[(arrayOfByte.length - 1)] == 61)
-    {
-      i = b[arrayOfByte[(arrayOfByte.length - 4)]];
-      j = b[arrayOfByte[(arrayOfByte.length - 3)]];
-      k = b[arrayOfByte[(arrayOfByte.length - 2)]];
-      paramArrayOfByte[(paramArrayOfByte.length - 2)] = ((byte)(i << 2 | j >> 4));
-      paramArrayOfByte[(paramArrayOfByte.length - 1)] = ((byte)(j << 4 | k >> 2));
-      return paramArrayOfByte;
-    }
-    i = b[arrayOfByte[(arrayOfByte.length - 4)]];
-    int j = b[arrayOfByte[(arrayOfByte.length - 3)]];
-    int k = b[arrayOfByte[(arrayOfByte.length - 2)]];
-    int m = b[arrayOfByte[(arrayOfByte.length - 1)]];
-    paramArrayOfByte[(paramArrayOfByte.length - 3)] = ((byte)(i << 2 | j >> 4));
-    paramArrayOfByte[(paramArrayOfByte.length - 2)] = ((byte)(j << 4 | k >> 2));
-    paramArrayOfByte[(paramArrayOfByte.length - 1)] = ((byte)(k << 6 | m));
-    return paramArrayOfByte;
-  }
-  
-  private static byte[] c(byte[] paramArrayOfByte)
-  {
-    byte[] arrayOfByte = new byte[paramArrayOfByte.length];
-    int i = 0;
-    int k;
-    for (int j = 0; i < paramArrayOfByte.length; j = k)
-    {
-      k = j;
-      if (a(paramArrayOfByte[i]))
-      {
-        arrayOfByte[j] = paramArrayOfByte[i];
-        k = j + 1;
-      }
-      i += 1;
-    }
-    paramArrayOfByte = new byte[j];
-    System.arraycopy(arrayOfByte, 0, paramArrayOfByte, 0, j);
-    return paramArrayOfByte;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicpendant.Base64
  * JD-Core Version:    0.7.0.1
  */

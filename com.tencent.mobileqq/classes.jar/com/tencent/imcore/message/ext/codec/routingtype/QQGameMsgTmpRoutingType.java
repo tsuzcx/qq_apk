@@ -1,9 +1,10 @@
 package com.tencent.imcore.message.ext.codec.routingtype;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.imcore.message.core.codec.RoutingType;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.gamecenter.message.TinyIdCache;
+import com.tencent.mobileqq.msg.api.IMessageFacade;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -14,7 +15,7 @@ import msf.msgsvc.msg_svc.CommTmp;
 import msf.msgsvc.msg_svc.RoutingHead;
 
 public class QQGameMsgTmpRoutingType
-  implements RoutingType
+  implements RoutingType<AppInterface>
 {
   public int a()
   {
@@ -26,16 +27,16 @@ public class QQGameMsgTmpRoutingType
     return false;
   }
   
-  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
+  public boolean a(msg_svc.RoutingHead paramRoutingHead, MessageRecord paramMessageRecord, AppInterface paramAppInterface)
   {
     msg_svc.CommTmp localCommTmp = new msg_svc.CommTmp();
     localCommTmp.c2c_type.set(1);
     localCommTmp.svr_type.set(164);
-    byte[] arrayOfByte = paramQQAppInterface.getMsgCache().d(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
+    byte[] arrayOfByte = ((MessageCache)paramAppInterface.getMsgCache()).c(paramMessageRecord.frienduin, paramMessageRecord.selfuin);
     if (arrayOfByte != null) {
       localCommTmp.sig.set(ByteStringMicro.copyFrom(arrayOfByte));
     }
-    paramMessageRecord = paramQQAppInterface.getTinyIdCache().a(paramMessageRecord.frienduin);
+    paramMessageRecord = ((IMessageFacade)paramAppInterface.getRuntimeService(IMessageFacade.class, "")).getTinyIdCache().a(paramMessageRecord.frienduin);
     long l1 = 0L;
     try
     {
@@ -44,10 +45,7 @@ public class QQGameMsgTmpRoutingType
     }
     catch (NumberFormatException paramMessageRecord)
     {
-      for (;;)
-      {
-        QLog.d("QQGameMsgTmpRoutingType", 1, paramMessageRecord, new Object[0]);
-      }
+      QLog.d("QQGameMsgTmpRoutingType", 1, paramMessageRecord, new Object[0]);
     }
     localCommTmp.to_uin.set(l1);
     paramRoutingHead.comm_tmp.set(localCommTmp);
@@ -61,7 +59,7 @@ public class QQGameMsgTmpRoutingType
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.routingtype.QQGameMsgTmpRoutingType
  * JD-Core Version:    0.7.0.1
  */

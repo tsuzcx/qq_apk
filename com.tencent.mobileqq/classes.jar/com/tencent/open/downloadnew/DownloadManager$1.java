@@ -9,7 +9,8 @@ class DownloadManager$1
   {
     if (!this.this$0.a)
     {
-      if (!MyAppApi.a().b()) {
+      MyAppApi.a();
+      if (!MyAppApi.b()) {
         this.this$0.a(true);
       }
       this.this$0.a = true;
@@ -18,7 +19,7 @@ class DownloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,21 +20,15 @@ public class SpringFestivalRedpacketPopBannerConfProcessor
   
   protected SpringFestivalRedpacketPopBannerConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramArrayOfQConfItem != null)
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      localObject1 = localObject2;
-      if (paramArrayOfQConfItem.length > 0)
-      {
-        paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
-        if (QLog.isColorLevel()) {
-          QLog.i("shua2021_SpringFestivalRedpacketPopBannerConfProcessor", 2, String.format("onParsed %s", new Object[] { paramArrayOfQConfItem }));
-        }
-        localObject1 = SpringFestivalRedpacketPopBannerConfBean.a(paramArrayOfQConfItem);
+      paramArrayOfQConfItem = paramArrayOfQConfItem[0].a;
+      if (QLog.isColorLevel()) {
+        QLog.i("shua2021_SpringFestivalRedpacketPopBannerConfProcessor", 2, String.format("onParsed %s", new Object[] { paramArrayOfQConfItem }));
       }
+      return SpringFestivalRedpacketPopBannerConfBean.a(paramArrayOfQConfItem);
     }
-    return localObject1;
+    return null;
   }
   
   public void a(SpringFestivalRedpacketPopBannerConfBean paramSpringFestivalRedpacketPopBannerConfBean)
@@ -92,7 +86,7 @@ public class SpringFestivalRedpacketPopBannerConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.config.SpringFestivalRedpacketPopBannerConfProcessor
  * JD-Core Version:    0.7.0.1
  */

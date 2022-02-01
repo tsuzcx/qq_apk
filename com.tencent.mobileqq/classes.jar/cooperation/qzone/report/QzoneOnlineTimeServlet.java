@@ -15,33 +15,40 @@ public class QzoneOnlineTimeServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (paramFromServiceMsg != null) {
+    if (paramFromServiceMsg != null)
+    {
       QzoneOnlineTimeCollectRptService.getInstance().onTaskResponse(paramFromServiceMsg.getResultCode());
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.d("QzoneOnlineTimeServlet", 2, "fromServiceMsg==msg");
+    if (QLog.isColorLevel()) {
+      QLog.d("QzoneOnlineTimeServlet", 2, "fromServiceMsg==msg");
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
   {
     paramIntent = paramIntent.getSerializableExtra("list");
-    QLog.d("QzoneOnlineTimeServlet", 1, "uin:" + getAppRuntime().getLongAccountUin());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("uin:");
+    ((StringBuilder)localObject).append(getAppRuntime().getLongAccountUin());
+    QLog.d("QzoneOnlineTimeServlet", 1, ((StringBuilder)localObject).toString());
     QzoneOnlineTimeCollectReportRequest localQzoneOnlineTimeCollectReportRequest = new QzoneOnlineTimeCollectReportRequest(getAppRuntime().getLongAccountUin(), (ArrayList)paramIntent);
-    byte[] arrayOfByte = localQzoneOnlineTimeCollectReportRequest.encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
+    localObject = localQzoneOnlineTimeCollectReportRequest.encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null) {
       paramIntent = new byte[4];
     }
     paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + localQzoneOnlineTimeCollectReportRequest.uniKey());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SQQzoneSvc.");
+    ((StringBuilder)localObject).append(localQzoneOnlineTimeCollectReportRequest.uniKey());
+    paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
     paramPacket.putSendData(paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.QzoneOnlineTimeServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -37,17 +37,15 @@ class FollowedRecommendBannerModel$1
           }
         }
         FollowedRecommendBannerModel.a(this.a, (COMM.StCommonExt)paramStGetRecommendUserListRsp.extInfo.get());
-        if (paramStGetRecommendUserListRsp.isFinish.get() != 1) {
-          break label158;
+        int i = paramStGetRecommendUserListRsp.isFinish.get();
+        paramBoolean = true;
+        if (i != 1) {
+          paramBoolean = false;
         }
-      }
-      label158:
-      for (paramBoolean = true;; paramBoolean = false)
-      {
         ThreadManager.getUIHandler().post(new FollowedRecommendBannerModel.1.1(this, paramBaseRequest, paramBoolean));
-        VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(0L, System.currentTimeMillis() - FollowedRecommendBannerModel.a(this.a)));
-        return;
       }
+      VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(0L, System.currentTimeMillis() - FollowedRecommendBannerModel.a(this.a)));
+      return;
     }
     SLog.c("FollowedRecommendBanner", "sendRequest GetRecommendUserList error");
     VSReporter.a("subscribe_personal_detail_page_request", VSReporter.a(paramLong, System.currentTimeMillis() - FollowedRecommendBannerModel.a(this.a)));
@@ -55,7 +53,7 @@ class FollowedRecommendBannerModel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.FollowedRecommendBannerModel.1
  * JD-Core Version:    0.7.0.1
  */

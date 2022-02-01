@@ -51,7 +51,10 @@ public class TogetherEntryBean
         }
       }
       Collections.sort(localTogetherEntryBean.jdField_a_of_type_JavaUtilArrayList, new TogetherEntryBean.1());
-      QLog.d("TogetherEntryConfProcessor", 2, "confBean = " + localTogetherEntryBean.toString());
+      paramString = new StringBuilder();
+      paramString.append("confBean = ");
+      paramString.append(localTogetherEntryBean.toString());
+      QLog.d("TogetherEntryConfProcessor", 2, paramString.toString());
       return localTogetherEntryBean;
     }
     catch (Exception paramString)
@@ -70,7 +73,7 @@ public class TogetherEntryBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TogetherEntryBean
  * JD-Core Version:    0.7.0.1
  */

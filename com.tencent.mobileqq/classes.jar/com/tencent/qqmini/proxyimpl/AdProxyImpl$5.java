@@ -13,13 +13,21 @@ class AdProxyImpl$5
   
   public void onDownloadCanceled(String paramString)
   {
-    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " canceled");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("processSelectAdWithUncachedAd download url= ");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" canceled");
+    QLog.d("MiniLoadingAdManager", 1, localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(null, -1L, null);
   }
   
   public void onDownloadFailed(String paramString, DownloadResult paramDownloadResult)
   {
-    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " failed");
+    paramDownloadResult = new StringBuilder();
+    paramDownloadResult.append("processSelectAdWithUncachedAd download url= ");
+    paramDownloadResult.append(paramString);
+    paramDownloadResult.append(" failed");
+    QLog.d("MiniLoadingAdManager", 1, paramDownloadResult.toString());
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(null, -1L, null);
   }
   
@@ -27,13 +35,17 @@ class AdProxyImpl$5
   
   public void onDownloadSucceed(String paramString, DownloadResult paramDownloadResult)
   {
-    QLog.d("MiniLoadingAdManager", 1, "processSelectAdWithUncachedAd download url= " + paramString + " succeed");
+    paramDownloadResult = new StringBuilder();
+    paramDownloadResult.append("processSelectAdWithUncachedAd download url= ");
+    paramDownloadResult.append(paramString);
+    paramDownloadResult.append(" succeed");
+    QLog.d("MiniLoadingAdManager", 1, paramDownloadResult.toString());
     this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$ILoadingAdListener.onDownloadAdEnd(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqMiniManagerMiniLoadingAdManager$CachedAdInfo.filePath);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.5
  * JD-Core Version:    0.7.0.1
  */

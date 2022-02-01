@@ -17,17 +17,18 @@ class SignatureHistoryFragment$3
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence != null) && (TextUtils.getQQTextCharCount(String.valueOf(this.jdField_a_of_type_JavaLangCharSequence), 3) > 50))
+    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+    if ((localCharSequence != null) && (TextUtils.getQQTextCharCount(String.valueOf(localCharSequence), 3) > 50))
     {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getActivity(), 1, 2131690324, 0).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment.getBaseActivity(), 1, 2131690245, 0).a();
       paramEditable.delete(this.jdField_a_of_type_Int, this.b);
     }
-    if ((paramEditable == null) || (paramEditable.length() == 0))
+    if ((paramEditable != null) && (paramEditable.length() != 0))
     {
-      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
+      SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
       return;
     }
-    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(true);
+    SignatureHistoryFragment.a(this.jdField_a_of_type_ComTencentMobileqqRichstatusSignatureHistoryFragment).setEnabled(false);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -41,7 +42,7 @@ class SignatureHistoryFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.SignatureHistoryFragment.3
  * JD-Core Version:    0.7.0.1
  */

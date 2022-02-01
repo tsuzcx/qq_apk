@@ -20,11 +20,13 @@ public class FloatingScreenParams$FloatingBuilder
     localFloatingScreenParams.setShapeType(this.shapeType);
     FloatingScreenParams.access$100(localFloatingScreenParams, this.canMove);
     FloatingScreenParams.access$200(localFloatingScreenParams, this.canZoom);
-    if (this.floatingCenterX != -2147483648) {
-      localFloatingScreenParams.setFloatingCenterX(this.floatingCenterX);
+    int i = this.floatingCenterX;
+    if (i != -2147483648) {
+      localFloatingScreenParams.setFloatingCenterX(i);
     }
-    if (this.floatingCenterY != -2147483648) {
-      localFloatingScreenParams.setFloatingCenterY(this.floatingCenterY);
+    i = this.floatingCenterY;
+    if (i != -2147483648) {
+      localFloatingScreenParams.setFloatingCenterY(i);
     }
     return localFloatingScreenParams;
   }
@@ -58,10 +60,13 @@ public class FloatingScreenParams$FloatingBuilder
   @Deprecated
   public FloatingBuilder setIsHorizontal(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2) {
-      return setShapeType(i);
+    int i;
+    if (paramBoolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    return setShapeType(i);
   }
   
   public FloatingBuilder setRatio(float paramFloat)
@@ -83,7 +88,7 @@ public class FloatingScreenParams$FloatingBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqfloatingwindow.FloatingScreenParams.FloatingBuilder
  * JD-Core Version:    0.7.0.1
  */

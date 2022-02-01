@@ -11,10 +11,10 @@ import java.util.Locale;
 
 public class TbsLogClient
 {
-  static TbsLogClient a = null;
-  static File c = null;
-  static String d = null;
-  static byte[] e = null;
+  static TbsLogClient a;
+  static File c;
+  static String d;
+  static byte[] e;
   private static boolean i = true;
   TextView b;
   private SimpleDateFormat f = null;
@@ -31,40 +31,43 @@ public class TbsLogClient
     }
     catch (Exception paramContext)
     {
-      this.f = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS");
+      label50:
+      break label50;
     }
+    this.f = new SimpleDateFormat("yyyy-MM-dd_HH:mm:ss.SSS");
   }
   
   private void a()
   {
     try
     {
-      if (c == null) {
+      if (c == null)
+      {
+        String str;
         if (Environment.getExternalStorageState().equals("mounted"))
         {
-          String str = FileUtil.a(this.g, 6);
-          if (str == null)
-          {
-            c = null;
-            return;
-          }
-          c = new File(str, "tbslog.txt");
-          d = LogFileUtils.createKey();
-          e = LogFileUtils.createHeaderText(c.getName(), d);
+          str = FileUtil.a(this.g, 6);
+          if (str != null) {}
+        }
+        else
+        {
+          c = null;
           return;
         }
+        c = new File(str, "tbslog.txt");
+        d = LogFileUtils.createKey();
+        e = LogFileUtils.createHeaderText(c.getName(), d);
+        return;
       }
-    }
-    catch (SecurityException localSecurityException)
-    {
-      localSecurityException.printStackTrace();
-      return;
-      c = null;
-      return;
     }
     catch (NullPointerException localNullPointerException)
     {
       localNullPointerException.printStackTrace();
+      return;
+    }
+    catch (SecurityException localSecurityException)
+    {
+      localSecurityException.printStackTrace();
     }
   }
   
@@ -86,8 +89,9 @@ public class TbsLogClient
   
   public void showLog(String paramString)
   {
-    if (this.b != null) {
-      this.b.post(new TbsLogClient.a(this, paramString));
+    TextView localTextView = this.b;
+    if (localTextView != null) {
+      localTextView.post(new TbsLogClient.a(this, paramString));
     }
   }
   
@@ -100,14 +104,22 @@ public class TbsLogClient
     try
     {
       String str = this.f.format(Long.valueOf(System.currentTimeMillis()));
-      this.h.append(str).append(" pid=").append(Process.myPid()).append(" tid=").append(Process.myTid()).append(paramString).append("\n");
+      StringBuffer localStringBuffer = this.h;
+      localStringBuffer.append(str);
+      localStringBuffer.append(" pid=");
+      localStringBuffer.append(Process.myPid());
+      localStringBuffer.append(" tid=");
+      localStringBuffer.append(Process.myTid());
+      localStringBuffer.append(paramString);
+      localStringBuffer.append("\n");
       if ((Thread.currentThread() != Looper.getMainLooper().getThread()) || (i)) {
         writeLogToDisk();
       }
-      if (this.h.length() > 524288) {
+      if (this.h.length() > 524288)
+      {
         this.h.delete(0, this.h.length());
+        return;
       }
-      return;
     }
     catch (Exception paramString)
     {
@@ -124,8 +136,8 @@ public class TbsLogClient
       {
         LogFileUtils.writeDataToStorage(c, d, e, this.h.toString(), true);
         this.h.delete(0, this.h.length());
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -135,7 +147,7 @@ public class TbsLogClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.TbsLogClient
  * JD-Core Version:    0.7.0.1
  */

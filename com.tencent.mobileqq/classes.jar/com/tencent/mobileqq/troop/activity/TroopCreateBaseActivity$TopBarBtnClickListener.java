@@ -22,39 +22,34 @@ public class TroopCreateBaseActivity$TopBarBtnClickListener
   
   public void onClick(View paramView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-      if (this.jdField_a_of_type_Int == 0) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
-      break;
-      if (this.jdField_a_of_type_Int == 1)
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
+        int i = this.jdField_a_of_type_Int;
+        if (i == 0) {
+          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.b();
+        } else if (i == 1) {
+          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.c();
+        } else if (i == 2) {
+          this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
+        }
       }
-      else if (this.jdField_a_of_type_Int == 2)
+      else
       {
-        this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.d();
-        continue;
         CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a;
         if (localCustomWebView != null) {
           localCustomWebView.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "" });
         }
       }
+      this.jdField_a_of_type_ComTencentMobileqqTroopActivityTroopCreateBaseActivity.a(this.jdField_a_of_type_Int);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopCreateBaseActivity.TopBarBtnClickListener
  * JD-Core Version:    0.7.0.1
  */

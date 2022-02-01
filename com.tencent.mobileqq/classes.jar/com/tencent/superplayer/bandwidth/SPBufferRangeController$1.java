@@ -9,12 +9,17 @@ class SPBufferRangeController$1
   
   public void run()
   {
-    this.val$player.setBusinessDownloadStrategy(this.val$buffferRange[0], this.val$buffferRange[1], this.val$emergencyTimeForPreplay, this.val$emergencyTimeForPreplay);
+    ISuperPlayer localISuperPlayer = this.val$player;
+    int[] arrayOfInt = this.val$buffferRange;
+    int i = arrayOfInt[0];
+    int j = arrayOfInt[1];
+    int k = this.val$emergencyTimeForPreplay;
+    localISuperPlayer.setBusinessDownloadStrategy(i, j, k, k);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.SPBufferRangeController.1
  * JD-Core Version:    0.7.0.1
  */

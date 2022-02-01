@@ -28,7 +28,7 @@ final class BottomSelectorLayout$onAttachedToWindow$3
     {
       paramPanelType = this.this$0.getContext();
       Intrinsics.checkExpressionValueIsNotNull(paramPanelType, "context");
-      paramPanelType = paramPanelType.getResources().getString(R.string.G);
+      paramPanelType = paramPanelType.getResources().getString(R.string.B);
       Intrinsics.checkExpressionValueIsNotNull(paramPanelType, "context.resources.getStr…a_photo_item_disable_tip)");
       TopicSDKHelperKt.a(paramPanelType, false, null, 6, null);
     }
@@ -36,7 +36,7 @@ final class BottomSelectorLayout$onAttachedToWindow$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.onAttachedToWindow.3
  * JD-Core Version:    0.7.0.1
  */

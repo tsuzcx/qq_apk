@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -53,30 +54,36 @@ public final class FunnySpaceAction
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ID != null) {
-      paramJceOutputStream.write(this.ID, 0);
+    Object localObject = this.ID;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.Type, 1);
-    if (this.Name != null) {
-      paramJceOutputStream.write(this.Name, 2);
+    localObject = this.Name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.LikeKey != null) {
-      paramJceOutputStream.write(this.LikeKey, 3);
+    localObject = this.LikeKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.Url != null) {
-      paramJceOutputStream.write(this.Url, 4);
+    localObject = this.Url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.ExtendInfo != null) {
-      paramJceOutputStream.write(this.ExtendInfo, 5);
+    localObject = this.ExtendInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
-    if (this.ComboIndexList != null) {
-      paramJceOutputStream.write(this.ComboIndexList, 6);
+    localObject = this.ComboIndexList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.FunnySpaceAction
  * JD-Core Version:    0.7.0.1
  */

@@ -20,20 +20,28 @@ public class MultiVideoDecoder
 {
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    if ((paramDecodeProtoPkgContext.d) || (!VideoConstants.a)) {
-      return;
+    if (!paramDecodeProtoPkgContext.d)
+    {
+      if (!VideoConstants.a) {
+        return;
+      }
+      long l = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
+      paramList = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+      if (QLog.isColorLevel())
+      {
+        paramDecodeProtoPkgContext = new StringBuilder();
+        paramDecodeProtoPkgContext.append("decodeC2CMsgPkg_MultiVideo, msg[");
+        paramDecodeProtoPkgContext.append(l);
+        paramDecodeProtoPkgContext.append("]");
+        QLog.d("AVMsg", 2, paramDecodeProtoPkgContext.toString());
+      }
+      paramMessageHandler.a.getGAudioHandler().a(paramList, paramMsg);
     }
-    long l = ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get();
-    paramList = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-    if (QLog.isColorLevel()) {
-      QLog.d("AVMsg", 2, "decodeC2CMsgPkg_MultiVideo, msg[" + l + "]");
-    }
-    paramMessageHandler.a.getGAudioHandler().a(paramList, paramMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.MultiVideoDecoder
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class MsgTabStoryNodeDelegate$StoryVideoPublishStatusEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.StoryVideoPublishStatusEventReceiver
  * JD-Core Version:    0.7.0.1
  */

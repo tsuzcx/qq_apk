@@ -27,7 +27,11 @@ public class VoiceRecogManager
   
   public static SharedPreferences a(AppInterface paramAppInterface)
   {
-    return paramAppInterface.getApp().getSharedPreferences(paramAppInterface.getCurrentAccountUin() + "qav_voicerecog", 0);
+    BaseApplication localBaseApplication = paramAppInterface.getApp();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramAppInterface.getCurrentAccountUin());
+    localStringBuilder.append("qav_voicerecog");
+    return localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
   }
   
   public static EffectFaceManager.BlessingTips a(VideoAppInterface paramVideoAppInterface)
@@ -60,61 +64,63 @@ public class VoiceRecogManager
     return ((EffectSupportManager)paramVideoAppInterface.a(5)).a(3, "normal");
   }
   
-  public void a() {}
+  protected void a() {}
   
-  public void a(long paramLong, int paramInt, String paramString1, String paramString2)
+  protected void a(long paramLong, int paramInt, String paramString1, String paramString2)
   {
-    if (1 == paramInt) {
+    if (1 == paramInt)
+    {
       b();
-    }
-    while (3 != paramInt) {
       return;
     }
-    c();
+    if (3 == paramInt) {
+      c();
+    }
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  protected void a(String paramString, boolean paramBoolean)
   {
     super.a(paramString, paramBoolean);
   }
   
-  public boolean a(String paramString)
+  protected boolean a(String paramString)
   {
     return false;
   }
   
   void b()
   {
-    if (!a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {}
-    SessionInfo localSessionInfo;
-    EffectFaceManager.BlessingTips localBlessingTips;
-    do
-    {
-      do
-      {
-        return;
-        localSessionInfo = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
-      } while (localSessionInfo == null);
-      localBlessingTips = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
-    } while (localBlessingTips == null);
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null) {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (!a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface)) {
+      return;
     }
-    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = new VoiceRecogTips(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localSessionInfo.d, localBlessingTips);
+    SessionInfo localSessionInfo = this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().a();
+    if (localSessionInfo == null) {
+      return;
+    }
+    EffectFaceManager.BlessingTips localBlessingTips = a(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    if (localBlessingTips == null) {
+      return;
+    }
+    VoiceRecogTips localVoiceRecogTips = this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips;
+    if (localVoiceRecogTips != null) {
+      localVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+    }
+    this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = new VoiceRecogTips(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, localSessionInfo.c, localBlessingTips);
   }
   
   void c()
   {
-    if (this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips != null)
+    VoiceRecogTips localVoiceRecogTips = this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips;
+    if (localVoiceRecogTips != null)
     {
-      this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
+      localVoiceRecogTips.b(this.jdField_a_of_type_ComTencentAvAppVideoAppInterface);
       this.jdField_a_of_type_ComTencentAvBusinessManagerVoiceRecogVoiceRecogTips = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.voiceRecog.VoiceRecogManager
  * JD-Core Version:    0.7.0.1
  */

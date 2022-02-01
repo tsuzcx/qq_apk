@@ -22,20 +22,23 @@ class FragmentTransitionCompat21$3
   
   public void onTransitionStart(Transition paramTransition)
   {
-    if (this.val$enterTransition != null) {
-      this.this$0.replaceTargets(this.val$enterTransition, this.val$enteringViews, null);
+    paramTransition = this.val$enterTransition;
+    if (paramTransition != null) {
+      this.this$0.replaceTargets(paramTransition, this.val$enteringViews, null);
     }
-    if (this.val$exitTransition != null) {
-      this.this$0.replaceTargets(this.val$exitTransition, this.val$exitingViews, null);
+    paramTransition = this.val$exitTransition;
+    if (paramTransition != null) {
+      this.this$0.replaceTargets(paramTransition, this.val$exitingViews, null);
     }
-    if (this.val$sharedElementTransition != null) {
-      this.this$0.replaceTargets(this.val$sharedElementTransition, this.val$sharedElementsIn, null);
+    paramTransition = this.val$sharedElementTransition;
+    if (paramTransition != null) {
+      this.this$0.replaceTargets(paramTransition, this.val$sharedElementsIn, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentTransitionCompat21.3
  * JD-Core Version:    0.7.0.1
  */

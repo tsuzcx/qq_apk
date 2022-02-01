@@ -2,41 +2,52 @@ package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
 import android.view.View;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.utils.ContactUtils;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.subaccount.api.ISubAccountApi.FriendListObserverCallback;
+import com.tencent.mobileqq.utils.api.IContactUtils;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.SingleLineTextView;
 
 class AssociatedAccountManageActivity$8
-  extends FriendListObserver
+  implements ISubAccountApi.FriendListObserverCallback
 {
   AssociatedAccountManageActivity$8(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  public void a(String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AssociatedAccountManage", 2, "onUpdateFriendInfo  uin = " + paramString + " isSuccess = " + paramBoolean);
-    }
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString))) {}
-    View localView;
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      return;
-      localView = AssociatedAccountManageActivity.a(this.a, paramString, 0);
-      if (localView != null)
-      {
-        ((SingleLineTextView)localView.findViewById(2131372115)).setText(ContactUtils.h(this.a.app, paramString));
-        this.a.a(paramString, localView);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onUpdateFriendInfo  uin = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" isSuccess = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("AssociatedAccountManage", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramBoolean)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return;
       }
-      localView = AssociatedAccountManageActivity.a(this.a, paramString, 1);
-    } while (localView == null);
-    ((SingleLineTextView)localView.findViewById(2131372115)).setText(ContactUtils.h(this.a.app, paramString));
-    this.a.a(paramString, localView);
+      localObject = AssociatedAccountManageActivity.access$1500(this.a, paramString, 0);
+      if (localObject != null)
+      {
+        ((SingleLineTextView)((View)localObject).findViewById(2131371697)).setText(((IContactUtils)QRoute.api(IContactUtils.class)).getAccountNickName(this.a.app, paramString));
+        this.a.updateFace(paramString, (View)localObject);
+      }
+      localObject = AssociatedAccountManageActivity.access$1500(this.a, paramString, 1);
+      if (localObject != null)
+      {
+        ((SingleLineTextView)((View)localObject).findViewById(2131371697)).setText(((IContactUtils)QRoute.api(IContactUtils.class)).getAccountNickName(this.a.app, paramString));
+        this.a.updateFace(paramString, (View)localObject);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.8
  * JD-Core Version:    0.7.0.1
  */

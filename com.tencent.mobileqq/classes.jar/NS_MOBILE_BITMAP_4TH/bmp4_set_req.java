@@ -31,15 +31,16 @@ public final class bmp4_set_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uin, 0);
-    if (this.map_kv != null) {
-      paramJceOutputStream.write(this.map_kv, 1);
+    bmp4_values localbmp4_values = this.map_kv;
+    if (localbmp4_values != null) {
+      paramJceOutputStream.write(localbmp4_values, 1);
     }
     paramJceOutputStream.write(this.bitmap_id, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_BITMAP_4TH.bmp4_set_req
  * JD-Core Version:    0.7.0.1
  */

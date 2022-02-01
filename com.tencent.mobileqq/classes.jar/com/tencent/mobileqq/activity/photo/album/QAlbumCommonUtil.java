@@ -10,12 +10,12 @@ public class QAlbumCommonUtil
     if (paramFloat == 0.0F) {
       return 0;
     }
-    return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramResources.getDisplayMetrics().density + 0.5F);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.QAlbumCommonUtil
  * JD-Core Version:    0.7.0.1
  */

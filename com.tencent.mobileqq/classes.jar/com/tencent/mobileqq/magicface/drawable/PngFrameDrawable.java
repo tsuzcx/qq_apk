@@ -22,12 +22,12 @@ public class PngFrameDrawable
   private PngFrameDrawable(PngFrameDrawable.PngFrameState paramPngFrameState, Resources paramResources)
   {
     this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState = paramPngFrameState;
-    if (paramResources != null) {}
-    for (this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;; this.jdField_a_of_type_Int = paramPngFrameState.d)
-    {
-      a();
-      return;
+    if (paramResources != null) {
+      this.jdField_a_of_type_Int = paramResources.getDisplayMetrics().densityDpi;
+    } else {
+      this.jdField_a_of_type_Int = paramPngFrameState.d;
     }
+    a();
   }
   
   public PngFrameDrawable(PngPlayParam paramPngPlayParam, Resources paramResources)
@@ -44,13 +44,13 @@ public class PngFrameDrawable
     localPngGifTaskParam.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawableIRedrawNotify = this;
     localPngGifTaskParam.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_b_of_type_Int;
     localPngGifTaskParam.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_Int;
-    if (!this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_Boolean) {}
-    for (localPngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString = null;; localPngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_ArrayOfJavaLangString)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine = new PngGifEngine();
-      this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine.a(localPngGifTaskParam);
-      return;
+    if (!this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_Boolean) {
+      localPngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString = null;
+    } else {
+      localPngGifTaskParam.jdField_a_of_type_ArrayOfJavaLangString = this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_ArrayOfJavaLangString;
     }
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine = new PngGifEngine();
+    this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngGifEngine.a(localPngGifTaskParam);
   }
   
   public Bitmap a()
@@ -71,13 +71,18 @@ public class PngFrameDrawable
   
   public void a(Bitmap paramBitmap)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameDrawable", 2, "func onBitmapReady,bitmap:" + paramBitmap);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("func onBitmapReady,bitmap:");
+      ((StringBuilder)localObject).append(paramBitmap);
+      QLog.d("PngFrameDrawable", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBitmap == null) {
       return;
     }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
@@ -86,15 +91,21 @@ public class PngFrameDrawable
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled());
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    return (localBitmap != null) && (!localBitmap.isRecycled());
   }
   
   public void draw(Canvas paramCanvas)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PngFrameDrawable", 2, "func draw,bitmap:" + this.jdField_a_of_type_AndroidGraphicsBitmap);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("func draw,bitmap:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_AndroidGraphicsBitmap);
+      QLog.d("PngFrameDrawable", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, getBounds(), this.jdField_a_of_type_ComTencentMobileqqMagicfaceDrawablePngFrameDrawable$PngFrameState.jdField_a_of_type_AndroidGraphicsPaint);
     }
   }
@@ -126,7 +137,7 @@ public class PngFrameDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.magicface.drawable.PngFrameDrawable
  * JD-Core Version:    0.7.0.1
  */

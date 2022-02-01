@@ -52,16 +52,25 @@ public class LoginImpl
     if (!TextUtils.isEmpty(this.customExtData)) {
       return this.customExtData;
     }
-    switch (LoginImpl.3.$SwitchMap$com$tencent$falco$base$libapi$login$LoginType[this.mLoginType.ordinal()])
+    int i = LoginImpl.3.$SwitchMap$com$tencent$falco$base$libapi$login$LoginType[this.mLoginType.ordinal()];
+    if (i != 1)
     {
-    default: 
-      return "";
-    case 1: 
-      return "0:" + this.appId;
-    case 2: 
-      return "1:" + this.appId;
+      if (i != 2)
+      {
+        if (i != 3) {
+          return "";
+        }
+        return "sp_live_platform_guest";
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("1:");
+      localStringBuilder.append(this.appId);
+      return localStringBuilder.toString();
     }
-    return "sp_live_platform_guest";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("0:");
+    localStringBuilder.append(this.appId);
+    return localStringBuilder.toString();
   }
   
   public LoginInfo getLoginInfo()
@@ -76,30 +85,60 @@ public class LoginImpl
   
   public void handleLoginError(LoginCallback paramLoginCallback, int paramInt, Exception paramException, String paramString)
   {
-    this.loginServiceAdapter.getLog().e("LoginImpl", "doLogin with Exception : " + paramString, new Object[0]);
+    LogInterface localLogInterface = this.loginServiceAdapter.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doLogin with Exception : ");
+    localStringBuilder.append(paramString);
+    localLogInterface.e("LoginImpl", localStringBuilder.toString(), new Object[0]);
     handleCallback(paramLoginCallback, paramInt, paramString, null);
     paramException.printStackTrace();
   }
   
   public void refreshLogin(LoginCallback paramLoginCallback)
   {
-    long l1 = 7200L;
-    if ((this.lastLoginTime == 0L) || (this.a2ExpireTime == 0L))
+    if (this.lastLoginTime != 0L)
     {
-      this.loginServiceAdapter.getLog().e("LoginImpl", "refreshLogin-> fail, lastLoginTime=" + this.lastLoginTime + ", a2ExpireTime=" + this.a2ExpireTime, new Object[0]);
-      return;
+      long l1 = this.a2ExpireTime;
+      if (l1 != 0L)
+      {
+        if (l1 <= 7200L) {
+          l1 = 7200L;
+        }
+        long l2 = TimeUtil.getCurrentMillis() / 1000L;
+        long l3 = this.lastLoginTime;
+        if ((l2 - l3 > 3600L) && (l1 - (l2 - l3) < 604800L))
+        {
+          localObject = this.loginServiceAdapter.getLog();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("refreshLogin-> start refreshLogin, lastLoginTime=");
+          localStringBuilder.append(this.lastLoginTime);
+          localStringBuilder.append(", a2ExpireTime=");
+          localStringBuilder.append(this.a2ExpireTime);
+          localStringBuilder.append(", miniRefreshTime=");
+          localStringBuilder.append(l1);
+          ((LogInterface)localObject).i("LoginImpl", localStringBuilder.toString(), new Object[0]);
+          doLogin(paramLoginCallback);
+          return;
+        }
+        paramLoginCallback = this.loginServiceAdapter.getLog();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("refreshLogin-> Don't need to refreshLogin, lastLoginTime=");
+        ((StringBuilder)localObject).append(this.lastLoginTime);
+        ((StringBuilder)localObject).append(", a2ExpireTime=");
+        ((StringBuilder)localObject).append(this.a2ExpireTime);
+        ((StringBuilder)localObject).append(", miniRefreshTime=");
+        ((StringBuilder)localObject).append(l1);
+        paramLoginCallback.i("LoginImpl", ((StringBuilder)localObject).toString(), new Object[0]);
+        return;
+      }
     }
-    if (this.a2ExpireTime > 7200L) {
-      l1 = this.a2ExpireTime;
-    }
-    long l2 = TimeUtil.getCurrentMillis() / 1000L;
-    if ((l2 - this.lastLoginTime > 3600L) && (l1 - (l2 - this.lastLoginTime) < 604800L))
-    {
-      this.loginServiceAdapter.getLog().i("LoginImpl", "refreshLogin-> start refreshLogin, lastLoginTime=" + this.lastLoginTime + ", a2ExpireTime=" + this.a2ExpireTime + ", miniRefreshTime=" + l1, new Object[0]);
-      doLogin(paramLoginCallback);
-      return;
-    }
-    this.loginServiceAdapter.getLog().i("LoginImpl", "refreshLogin-> Don't need to refreshLogin, lastLoginTime=" + this.lastLoginTime + ", a2ExpireTime=" + this.a2ExpireTime + ", miniRefreshTime=" + l1, new Object[0]);
+    paramLoginCallback = this.loginServiceAdapter.getLog();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("refreshLogin-> fail, lastLoginTime=");
+    ((StringBuilder)localObject).append(this.lastLoginTime);
+    ((StringBuilder)localObject).append(", a2ExpireTime=");
+    ((StringBuilder)localObject).append(this.a2ExpireTime);
+    paramLoginCallback.e("LoginImpl", ((StringBuilder)localObject).toString(), new Object[0]);
   }
   
   /* Error */
@@ -111,7 +150,7 @@ public class LoginImpl
     //   4: astore_1
     //   5: aload_1
     //   6: instanceof 220
-    //   9: ifeq +366 -> 375
+    //   9: ifeq +361 -> 370
     //   12: aload_1
     //   13: checkcast 220	javax/net/ssl/HttpsURLConnection
     //   16: astore_1
@@ -201,7 +240,7 @@ public class LoginImpl
     //   189: istore_3
     //   190: iload_3
     //   191: sipush 200
-    //   194: if_icmpne +102 -> 296
+    //   194: if_icmpne +69 -> 263
     //   197: new 325	java/io/BufferedInputStream
     //   200: dup
     //   201: aload_1
@@ -218,151 +257,175 @@ public class LoginImpl
     //   225: istore_3
     //   226: iload_3
     //   227: iconst_m1
-    //   228: if_icmpeq +45 -> 273
+    //   228: if_icmpeq +12 -> 240
     //   231: aload 4
     //   233: iload_3
     //   234: invokevirtual 341	java/io/ByteArrayOutputStream:write	(I)V
     //   237: goto -16 -> 221
-    //   240: astore_2
-    //   241: new 160	java/lang/Exception
-    //   244: dup
-    //   245: ldc_w 343
-    //   248: aload_2
-    //   249: invokespecial 346	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   252: athrow
-    //   253: astore_2
-    //   254: aload_1
-    //   255: invokevirtual 349	javax/net/ssl/HttpsURLConnection:disconnect	()V
-    //   258: aload_2
-    //   259: athrow
-    //   260: astore_1
-    //   261: new 160	java/lang/Exception
-    //   264: dup
-    //   265: ldc_w 351
-    //   268: aload_1
-    //   269: invokespecial 346	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   272: athrow
-    //   273: aload 4
-    //   275: invokevirtual 354	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   278: astore 5
-    //   280: aload_2
-    //   281: invokevirtual 355	java/io/BufferedInputStream:close	()V
-    //   284: aload 4
-    //   286: invokevirtual 356	java/io/ByteArrayOutputStream:close	()V
-    //   289: aload_1
-    //   290: invokevirtual 349	javax/net/ssl/HttpsURLConnection:disconnect	()V
-    //   293: aload 5
-    //   295: areturn
-    //   296: new 160	java/lang/Exception
-    //   299: dup
-    //   300: new 98	java/lang/StringBuilder
-    //   303: dup
-    //   304: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   307: ldc_w 358
-    //   310: invokevirtual 105	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   313: iload_3
-    //   314: invokevirtual 361	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   317: invokevirtual 110	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   320: invokespecial 363	java/lang/Exception:<init>	(Ljava/lang/String;)V
-    //   323: athrow
-    //   324: astore_2
-    //   325: new 160	java/lang/Exception
-    //   328: dup
-    //   329: ldc_w 365
-    //   332: aload_2
-    //   333: invokespecial 346	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   336: athrow
-    //   337: astore_2
-    //   338: new 210	java/net/SocketTimeoutException
-    //   341: dup
-    //   342: ldc_w 367
-    //   345: invokespecial 368	java/net/SocketTimeoutException:<init>	(Ljava/lang/String;)V
-    //   348: athrow
-    //   349: astore_2
-    //   350: new 160	java/lang/Exception
-    //   353: dup
-    //   354: ldc_w 370
-    //   357: aload_2
-    //   358: invokespecial 346	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   361: athrow
-    //   362: astore_2
-    //   363: new 160	java/lang/Exception
-    //   366: dup
-    //   367: ldc_w 372
-    //   370: aload_2
-    //   371: invokespecial 346	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   374: athrow
-    //   375: new 374	java/lang/IllegalStateException
-    //   378: dup
-    //   379: ldc_w 376
-    //   382: invokespecial 377	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
-    //   385: athrow
+    //   240: aload 4
+    //   242: invokevirtual 344	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   245: astore 5
+    //   247: aload_2
+    //   248: invokevirtual 345	java/io/BufferedInputStream:close	()V
+    //   251: aload 4
+    //   253: invokevirtual 346	java/io/ByteArrayOutputStream:close	()V
+    //   256: aload_1
+    //   257: invokevirtual 349	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   260: aload 5
+    //   262: areturn
+    //   263: new 100	java/lang/StringBuilder
+    //   266: dup
+    //   267: invokespecial 101	java/lang/StringBuilder:<init>	()V
+    //   270: astore_2
+    //   271: aload_2
+    //   272: ldc_w 351
+    //   275: invokevirtual 107	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   278: pop
+    //   279: aload_2
+    //   280: iload_3
+    //   281: invokevirtual 354	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: new 160	java/lang/Exception
+    //   288: dup
+    //   289: aload_2
+    //   290: invokevirtual 112	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   293: invokespecial 356	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   296: athrow
+    //   297: astore_2
+    //   298: goto +66 -> 364
+    //   301: astore_2
+    //   302: new 160	java/lang/Exception
+    //   305: dup
+    //   306: ldc_w 358
+    //   309: aload_2
+    //   310: invokespecial 361	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   313: athrow
+    //   314: astore_2
+    //   315: new 160	java/lang/Exception
+    //   318: dup
+    //   319: ldc_w 363
+    //   322: aload_2
+    //   323: invokespecial 361	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   326: athrow
+    //   327: new 210	java/net/SocketTimeoutException
+    //   330: dup
+    //   331: ldc_w 365
+    //   334: invokespecial 366	java/net/SocketTimeoutException:<init>	(Ljava/lang/String;)V
+    //   337: athrow
+    //   338: astore_2
+    //   339: new 160	java/lang/Exception
+    //   342: dup
+    //   343: ldc_w 368
+    //   346: aload_2
+    //   347: invokespecial 361	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   350: athrow
+    //   351: astore_2
+    //   352: new 160	java/lang/Exception
+    //   355: dup
+    //   356: ldc_w 370
+    //   359: aload_2
+    //   360: invokespecial 361	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   363: athrow
+    //   364: aload_1
+    //   365: invokevirtual 349	javax/net/ssl/HttpsURLConnection:disconnect	()V
+    //   368: aload_2
+    //   369: athrow
+    //   370: new 372	java/lang/IllegalStateException
+    //   373: dup
+    //   374: ldc_w 374
+    //   377: invokespecial 375	java/lang/IllegalStateException:<init>	(Ljava/lang/String;)V
+    //   380: athrow
+    //   381: astore_1
+    //   382: new 160	java/lang/Exception
+    //   385: dup
+    //   386: ldc_w 377
+    //   389: aload_1
+    //   390: invokespecial 361	java/lang/Exception:<init>	(Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   393: astore_1
+    //   394: goto +5 -> 399
+    //   397: aload_1
+    //   398: athrow
+    //   399: goto -2 -> 397
+    //   402: astore_2
+    //   403: goto -76 -> 327
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	386	0	this	LoginImpl
-    //   0	386	1	paramURL	java.net.URL
-    //   0	386	2	paramArrayOfByte	byte[]
-    //   189	125	3	i	int
-    //   151	134	4	localObject	Object
-    //   278	16	5	arrayOfByte	byte[]
+    //   0	406	0	this	LoginImpl
+    //   0	406	1	paramURL	java.net.URL
+    //   0	406	2	paramArrayOfByte	byte[]
+    //   189	92	3	i	int
+    //   151	101	4	localObject	Object
+    //   245	16	5	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   175	190	240	java/security/NoSuchAlgorithmException
-    //   197	221	240	java/security/NoSuchAlgorithmException
-    //   221	226	240	java/security/NoSuchAlgorithmException
-    //   231	237	240	java/security/NoSuchAlgorithmException
-    //   273	289	240	java/security/NoSuchAlgorithmException
-    //   296	324	240	java/security/NoSuchAlgorithmException
-    //   175	190	253	finally
-    //   197	221	253	finally
-    //   221	226	253	finally
-    //   231	237	253	finally
-    //   241	253	253	finally
-    //   273	289	253	finally
-    //   296	324	253	finally
-    //   325	337	253	finally
-    //   338	349	253	finally
-    //   350	362	253	finally
-    //   363	375	253	finally
-    //   0	5	260	java/io/IOException
-    //   175	190	324	java/security/KeyManagementException
-    //   197	221	324	java/security/KeyManagementException
-    //   221	226	324	java/security/KeyManagementException
-    //   231	237	324	java/security/KeyManagementException
-    //   273	289	324	java/security/KeyManagementException
-    //   296	324	324	java/security/KeyManagementException
-    //   175	190	337	java/net/SocketTimeoutException
-    //   197	221	337	java/net/SocketTimeoutException
-    //   221	226	337	java/net/SocketTimeoutException
-    //   231	237	337	java/net/SocketTimeoutException
-    //   273	289	337	java/net/SocketTimeoutException
-    //   296	324	337	java/net/SocketTimeoutException
-    //   175	190	349	java/io/IOException
-    //   197	221	349	java/io/IOException
-    //   221	226	349	java/io/IOException
-    //   231	237	349	java/io/IOException
-    //   273	289	349	java/io/IOException
-    //   296	324	349	java/io/IOException
-    //   175	190	362	org/json/JSONException
-    //   197	221	362	org/json/JSONException
-    //   221	226	362	org/json/JSONException
-    //   231	237	362	org/json/JSONException
-    //   273	289	362	org/json/JSONException
-    //   296	324	362	org/json/JSONException
+    //   175	190	297	finally
+    //   197	221	297	finally
+    //   221	226	297	finally
+    //   231	237	297	finally
+    //   240	256	297	finally
+    //   263	297	297	finally
+    //   302	314	297	finally
+    //   315	327	297	finally
+    //   327	338	297	finally
+    //   339	351	297	finally
+    //   352	364	297	finally
+    //   175	190	301	org/json/JSONException
+    //   197	221	301	org/json/JSONException
+    //   221	226	301	org/json/JSONException
+    //   231	237	301	org/json/JSONException
+    //   240	256	301	org/json/JSONException
+    //   263	297	301	org/json/JSONException
+    //   175	190	314	java/io/IOException
+    //   197	221	314	java/io/IOException
+    //   221	226	314	java/io/IOException
+    //   231	237	314	java/io/IOException
+    //   240	256	314	java/io/IOException
+    //   263	297	314	java/io/IOException
+    //   175	190	338	java/security/KeyManagementException
+    //   197	221	338	java/security/KeyManagementException
+    //   221	226	338	java/security/KeyManagementException
+    //   231	237	338	java/security/KeyManagementException
+    //   240	256	338	java/security/KeyManagementException
+    //   263	297	338	java/security/KeyManagementException
+    //   175	190	351	java/security/NoSuchAlgorithmException
+    //   197	221	351	java/security/NoSuchAlgorithmException
+    //   221	226	351	java/security/NoSuchAlgorithmException
+    //   231	237	351	java/security/NoSuchAlgorithmException
+    //   240	256	351	java/security/NoSuchAlgorithmException
+    //   263	297	351	java/security/NoSuchAlgorithmException
+    //   0	5	381	java/io/IOException
+    //   175	190	402	java/net/SocketTimeoutException
+    //   197	221	402	java/net/SocketTimeoutException
+    //   221	226	402	java/net/SocketTimeoutException
+    //   231	237	402	java/net/SocketTimeoutException
+    //   240	256	402	java/net/SocketTimeoutException
+    //   263	297	402	java/net/SocketTimeoutException
   }
   
   public void setAuthTicket(String paramString1, String paramString2)
   {
-    this.loginServiceAdapter.getLog().i("LoginImpl", "setAuthTicket-> accountId=" + paramString1, new Object[0]);
-    if (!TextUtils.equals(this.accountId, paramString1)) {
-      this.loginServiceAdapter.getLog().e("LoginImpl", "setAuthTicket-> Id has changed, oldId=" + this.accountId + ", newId=" + paramString1, new Object[0]);
+    Object localObject = this.loginServiceAdapter.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setAuthTicket-> accountId=");
+    localStringBuilder.append(paramString1);
+    ((LogInterface)localObject).i("LoginImpl", localStringBuilder.toString(), new Object[0]);
+    if (!TextUtils.equals(this.accountId, paramString1))
+    {
+      localObject = this.loginServiceAdapter.getLog();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setAuthTicket-> Id has changed, oldId=");
+      localStringBuilder.append(this.accountId);
+      localStringBuilder.append(", newId=");
+      localStringBuilder.append(paramString1);
+      ((LogInterface)localObject).e("LoginImpl", localStringBuilder.toString(), new Object[0]);
     }
     this.accountId = paramString1;
     this.authKey = paramString2;
-    if (this.loginInfo != null)
+    localObject = this.loginInfo;
+    if (localObject != null)
     {
-      this.loginInfo.openId = paramString1;
-      this.loginInfo.access_token = paramString2;
+      ((LoginInfo)localObject).openId = paramString1;
+      ((LoginInfo)localObject).access_token = paramString2;
     }
   }
   
@@ -382,7 +445,7 @@ public class LoginImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.loginservice.LoginImpl
  * JD-Core Version:    0.7.0.1
  */

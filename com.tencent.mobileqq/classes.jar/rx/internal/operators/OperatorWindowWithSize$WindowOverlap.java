@@ -44,7 +44,7 @@ final class OperatorWindowWithSize$WindowOverlap<T>
     this.cancel = Subscriptions.create(this);
     add(this.cancel);
     request(0L);
-    this.queue = new SpscLinkedArrayQueue((paramInt2 - 1 + paramInt1) / paramInt2);
+    this.queue = new SpscLinkedArrayQueue((paramInt1 + (paramInt2 - 1)) / paramInt2);
   }
   
   public void call()
@@ -93,46 +93,37 @@ final class OperatorWindowWithSize$WindowOverlap<T>
     Subscriber localSubscriber = this.actual;
     Queue localQueue = this.queue;
     int i = 1;
-    label29:
-    long l2 = this.requested.get();
-    for (long l1 = 0L;; l1 = 1L + l1)
+    int j;
+    do
     {
-      boolean bool2;
-      Subject localSubject;
-      if (l1 != l2)
+      long l2 = this.requested.get();
+      for (long l1 = 0L; l1 != l2; l1 += 1L)
       {
-        bool2 = this.done;
-        localSubject = (Subject)localQueue.poll();
-        if (localSubject != null) {
-          break label162;
+        boolean bool2 = this.done;
+        Subject localSubject = (Subject)localQueue.poll();
+        boolean bool1;
+        if (localSubject == null) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-      }
-      label162:
-      for (boolean bool1 = true;; bool1 = false)
-      {
         if (checkTerminated(bool2, bool1, localSubscriber, localQueue)) {
-          break label166;
+          return;
         }
-        if (!bool1) {
-          break label168;
-        }
-        if ((l1 == l2) && (checkTerminated(this.done, localQueue.isEmpty(), localSubscriber, localQueue))) {
+        if (bool1) {
           break;
         }
-        if ((l1 != 0L) && (l2 != 9223372036854775807L)) {
-          this.requested.addAndGet(-l1);
-        }
-        i = localAtomicInteger.addAndGet(-i);
-        if (i == 0) {
-          break;
-        }
-        break label29;
+        localSubscriber.onNext(localSubject);
       }
-      label166:
-      break;
-      label168:
-      localSubscriber.onNext(localSubject);
-    }
+      if ((l1 == l2) && (checkTerminated(this.done, localQueue.isEmpty(), localSubscriber, localQueue))) {
+        return;
+      }
+      if ((l1 != 0L) && (l2 != 9223372036854775807L)) {
+        this.requested.addAndGet(-l1);
+      }
+      j = localAtomicInteger.addAndGet(-i);
+      i = j;
+    } while (j != 0);
   }
   
   public void onCompleted()
@@ -183,22 +174,22 @@ final class OperatorWindowWithSize$WindowOverlap<T>
         paramT.onCompleted();
       }
     }
-    for (;;)
+    else
     {
-      i += 1;
-      if (i != this.skip) {
-        break;
-      }
+      this.produced = j;
+    }
+    i += 1;
+    if (i == this.skip)
+    {
       this.index = 0;
       return;
-      this.produced = j;
     }
     this.index = i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorWindowWithSize.WindowOverlap
  * JD-Core Version:    0.7.0.1
  */

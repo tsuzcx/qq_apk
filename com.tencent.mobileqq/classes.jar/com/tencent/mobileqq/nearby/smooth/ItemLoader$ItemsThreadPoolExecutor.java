@@ -8,17 +8,18 @@ final class ItemLoader$ItemsThreadPoolExecutor<Params, Result>
 {
   public Future<?> submit(Runnable paramRunnable)
   {
-    if (paramRunnable == null) {
-      throw new NullPointerException();
+    if (paramRunnable != null)
+    {
+      paramRunnable = new ItemLoader.LoadItemFutureTask((ItemLoader.LoadItemRunnable)paramRunnable);
+      execute(paramRunnable);
+      return paramRunnable;
     }
-    paramRunnable = new ItemLoader.LoadItemFutureTask((ItemLoader.LoadItemRunnable)paramRunnable);
-    execute(paramRunnable);
-    return paramRunnable;
+    throw new NullPointerException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.smooth.ItemLoader.ItemsThreadPoolExecutor
  * JD-Core Version:    0.7.0.1
  */

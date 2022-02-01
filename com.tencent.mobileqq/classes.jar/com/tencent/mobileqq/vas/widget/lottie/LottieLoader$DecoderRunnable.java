@@ -12,7 +12,8 @@ class LottieLoader$DecoderRunnable
   
   public void run()
   {
-    if ((this.mLottieAnimRef != null) && (this.mLottieAnimRef.get() != null)) {
+    WeakReference localWeakReference = this.mLottieAnimRef;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       LottieLoader.access$200((LottieLoader)this.mLottieAnimRef.get(), this.mZipUrl, this.mLocalFilePath, this.mAutoPlay);
     }
   }
@@ -27,7 +28,7 @@ class LottieLoader$DecoderRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.widget.lottie.LottieLoader.DecoderRunnable
  * JD-Core Version:    0.7.0.1
  */

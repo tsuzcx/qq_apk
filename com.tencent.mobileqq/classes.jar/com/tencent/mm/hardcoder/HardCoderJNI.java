@@ -79,8 +79,20 @@ public class HardCoderJNI
   
   public static void onData(int paramInt1, long paramLong, int paramInt2, int paramInt3, int paramInt4, byte[] paramArrayOfByte)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("HardCoder.JNI", 2, "onData callbackType:" + paramInt1 + " timestamp:" + paramLong + " errCode:" + paramInt2 + " funcid:" + paramInt3 + " dataType:" + paramInt4);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onData callbackType:");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(" timestamp:");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" errCode:");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(" funcid:");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(" dataType:");
+      localStringBuilder.append(paramInt4);
+      QLog.i("HardCoder.JNI", 2, localStringBuilder.toString());
     }
     if (paramInt2 == -20001) {
       HardCoderManager.a().a();
@@ -89,16 +101,14 @@ public class HardCoderJNI
     try
     {
       paramArrayOfByte = new String(paramArrayOfByte);
-      callback.a(paramArrayOfByte);
-      return;
     }
     catch (Throwable paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte = "";
-      }
+      label136:
+      break label136;
     }
+    paramArrayOfByte = "";
+    callback.a(paramArrayOfByte);
   }
   
   public static native int registerANRCallback(int paramInt, long paramLong);
@@ -142,7 +152,7 @@ public class HardCoderJNI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.hardcoder.HardCoderJNI
  * JD-Core Version:    0.7.0.1
  */

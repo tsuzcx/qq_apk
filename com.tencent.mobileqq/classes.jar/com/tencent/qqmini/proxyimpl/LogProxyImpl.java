@@ -10,25 +10,28 @@ public class LogProxyImpl
 {
   public void log(int paramInt, String paramString1, String paramString2, Throwable paramThrowable)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    case 3: 
-    default: 
-      if (paramThrowable == null)
+      if (paramInt != 4)
       {
-        QLog.i(paramString1, 1, paramString2);
+        if (paramInt != 5)
+        {
+          if (paramThrowable == null)
+          {
+            QLog.i(paramString1, 1, paramString2);
+            return;
+          }
+          QLog.i(paramString1, 1, paramString2, paramThrowable);
+          return;
+        }
+        if (paramThrowable == null)
+        {
+          QLog.e(paramString1, 1, paramString2);
+          return;
+        }
+        QLog.e(paramString1, 1, paramString2, paramThrowable);
         return;
       }
-      break;
-    case 2: 
-      if (paramThrowable == null)
-      {
-        QLog.d(paramString1, 1, paramString2);
-        return;
-      }
-      QLog.d(paramString1, 1, paramString2, paramThrowable);
-      return;
-    case 4: 
       if (paramThrowable == null)
       {
         QLog.w(paramString1, 1, paramString2);
@@ -36,21 +39,18 @@ public class LogProxyImpl
       }
       QLog.w(paramString1, 1, paramString2, paramThrowable);
       return;
-    case 5: 
-      if (paramThrowable == null)
-      {
-        QLog.e(paramString1, 1, paramString2);
-        return;
-      }
-      QLog.e(paramString1, 1, paramString2, paramThrowable);
+    }
+    if (paramThrowable == null)
+    {
+      QLog.d(paramString1, 1, paramString2);
       return;
     }
-    QLog.i(paramString1, 1, paramString2, paramThrowable);
+    QLog.d(paramString1, 1, paramString2, paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.LogProxyImpl
  * JD-Core Version:    0.7.0.1
  */

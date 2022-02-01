@@ -20,35 +20,37 @@ final class OpusReader
   
   private long getPacketDurationUs(byte[] paramArrayOfByte)
   {
-    int i = paramArrayOfByte[0] & 0xFF;
+    int k = paramArrayOfByte[0] & 0xFF;
+    int m = k & 0x3;
+    int i = 2;
     int j;
-    int k;
-    switch (i & 0x3)
+    if (m != 0)
     {
-    default: 
-      j = paramArrayOfByte[1] & 0x3F;
-      i >>= 3;
-      k = i & 0x3;
-      if (i >= 16) {
-        i = 2500 << k;
+      j = i;
+      if (m != 1)
+      {
+        j = i;
+        if (m != 2) {
+          j = paramArrayOfByte[1] & 0x3F;
+        }
       }
-      break;
     }
-    for (;;)
+    else
     {
-      return i * j;
       j = 1;
-      break;
-      j = 2;
-      break;
-      if (i >= 12) {
-        i = 10000 << (k & 0x1);
-      } else if (k == 3) {
-        i = 60000;
-      } else {
-        i = 10000 << k;
-      }
     }
+    i = k >> 3;
+    k = i & 0x3;
+    if (i >= 16) {
+      i = 2500 << k;
+    } else if (i >= 12) {
+      i = 10000 << (k & 0x1);
+    } else if (k == 3) {
+      i = 60000;
+    } else {
+      i = 10000 << k;
+    }
+    return j * i;
   }
   
   private void putNativeOrderLong(List<byte[]> paramList, int paramInt)
@@ -59,12 +61,14 @@ final class OpusReader
   
   public static boolean verifyBitstreamType(ParsableByteArray paramParsableByteArray)
   {
-    if (paramParsableByteArray.bytesLeft() < OPUS_SIGNATURE.length) {
+    int i = paramParsableByteArray.bytesLeft();
+    byte[] arrayOfByte1 = OPUS_SIGNATURE;
+    if (i < arrayOfByte1.length) {
       return false;
     }
-    byte[] arrayOfByte = new byte[OPUS_SIGNATURE.length];
-    paramParsableByteArray.readBytes(arrayOfByte, 0, OPUS_SIGNATURE.length);
-    return Arrays.equals(arrayOfByte, OPUS_SIGNATURE);
+    byte[] arrayOfByte2 = new byte[arrayOfByte1.length];
+    paramParsableByteArray.readBytes(arrayOfByte2, 0, arrayOfByte1.length);
+    return Arrays.equals(arrayOfByte2, OPUS_SIGNATURE);
   }
   
   protected long preparePayload(ParsableByteArray paramParsableByteArray)
@@ -74,7 +78,9 @@ final class OpusReader
   
   protected boolean readHeaders(ParsableByteArray paramParsableByteArray, long paramLong, StreamReader.SetupData paramSetupData)
   {
-    if (!this.headerRead)
+    boolean bool2 = this.headerRead;
+    boolean bool1 = true;
+    if (!bool2)
     {
       paramParsableByteArray = Arrays.copyOf(paramParsableByteArray.data, paramParsableByteArray.limit());
       int i = paramParsableByteArray[9];
@@ -88,12 +94,11 @@ final class OpusReader
       this.headerRead = true;
       return true;
     }
-    if (paramParsableByteArray.readInt() == OPUS_CODE) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramParsableByteArray.setPosition(0);
-      return bool;
+    if (paramParsableByteArray.readInt() != OPUS_CODE) {
+      bool1 = false;
     }
+    paramParsableByteArray.setPosition(0);
+    return bool1;
   }
   
   protected void reset(boolean paramBoolean)
@@ -106,7 +111,7 @@ final class OpusReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.OpusReader
  * JD-Core Version:    0.7.0.1
  */

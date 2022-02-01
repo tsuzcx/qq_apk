@@ -78,25 +78,35 @@ public class StickerDisplacementBlurFilter
     this.veticalFilter.addParam(new UniformParam.FloatParam("texelHeightOffset", 1.5F / paramFloat2));
     int j = Math.min(paramPTFaceAttr.getAllFacePoints().size(), 3);
     this.veticalFilter.addParam(new UniformParam.IntParam("faceCount", j));
-    int k = (int)(paramFloat1 * paramPTFaceAttr.getFaceDetectScale());
-    int m = (int)(paramFloat2 * paramPTFaceAttr.getFaceDetectScale());
+    double d1 = paramFloat1;
+    double d2 = paramPTFaceAttr.getFaceDetectScale();
+    Double.isNaN(d1);
+    int k = (int)(d1 * d2);
+    d1 = paramFloat2;
+    d2 = paramPTFaceAttr.getFaceDetectScale();
+    Double.isNaN(d1);
+    int m = (int)(d1 * d2);
     int i = 0;
     while (i < j)
     {
       List localList = (List)paramPTFaceAttr.getAllFacePoints().get(i);
-      paramFloat2 = (float)Math.atan2(((PointF)localList.get(53)).y - ((PointF)localList.get(43)).y, ((PointF)localList.get(53)).x - ((PointF)localList.get(43)).x);
-      paramFloat1 = (float)Math.cos(paramFloat2);
-      paramFloat2 = (float)Math.sin(paramFloat2);
+      d1 = (float)Math.atan2(((PointF)localList.get(53)).y - ((PointF)localList.get(43)).y, ((PointF)localList.get(53)).x - ((PointF)localList.get(43)).x);
+      paramFloat1 = (float)Math.cos(d1);
+      paramFloat2 = (float)Math.sin(d1);
       this.cos_t[i] = paramFloat1;
       this.sin_t[i] = paramFloat2;
-      this.leftEyeSize[(i * 2)] = AlgoUtils.getDistance((PointF)localList.get(39), (PointF)localList.get(35));
-      this.leftEyeSize[(i * 2 + 1)] = AlgoUtils.getDistance((PointF)localList.get(41), (PointF)localList.get(37));
-      this.leftEyeCenter[(i * 2)] = ((PointF)localList.get(43)).x;
-      this.leftEyeCenter[(i * 2 + 1)] = ((PointF)localList.get(43)).y;
-      this.rightEyeSize[(i * 2)] = AlgoUtils.getDistance((PointF)localList.get(45), (PointF)localList.get(49));
-      this.rightEyeSize[(i * 2 + 1)] = AlgoUtils.getDistance((PointF)localList.get(51), (PointF)localList.get(47));
-      this.rightEyeCenter[(i * 2)] = ((PointF)localList.get(53)).x;
-      this.rightEyeCenter[(i * 2 + 1)] = ((PointF)localList.get(53)).y;
+      float[] arrayOfFloat = this.leftEyeSize;
+      int n = i * 2;
+      arrayOfFloat[n] = AlgoUtils.getDistance((PointF)localList.get(39), (PointF)localList.get(35));
+      arrayOfFloat = this.leftEyeSize;
+      int i1 = n + 1;
+      arrayOfFloat[i1] = AlgoUtils.getDistance((PointF)localList.get(41), (PointF)localList.get(37));
+      this.leftEyeCenter[n] = ((PointF)localList.get(43)).x;
+      this.leftEyeCenter[i1] = ((PointF)localList.get(43)).y;
+      this.rightEyeSize[n] = AlgoUtils.getDistance((PointF)localList.get(45), (PointF)localList.get(49));
+      this.rightEyeSize[i1] = AlgoUtils.getDistance((PointF)localList.get(51), (PointF)localList.get(47));
+      this.rightEyeCenter[n] = ((PointF)localList.get(53)).x;
+      this.rightEyeCenter[i1] = ((PointF)localList.get(53)).y;
       i += 1;
     }
     this.veticalFilter.addParam(new UniformParam.Float1sParam("sin_t", this.sin_t));
@@ -110,7 +120,7 @@ public class StickerDisplacementBlurFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.StickerDisplacementBlurFilter
  * JD-Core Version:    0.7.0.1
  */

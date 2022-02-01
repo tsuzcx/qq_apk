@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.core.msglist;
 
 import androidx.annotation.NonNull;
 import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
@@ -22,27 +22,21 @@ public class BaseMsgLoader
   
   public List<ChatMessage> a(@NonNull AIOContext paramAIOContext, boolean paramBoolean)
   {
-    List localList = paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L, paramBoolean);
+    List localList = paramAIOContext.a().getMessageFacade().a(paramAIOContext.a().jdField_a_of_type_JavaLangString, paramAIOContext.a().jdField_a_of_type_Int, -1L, paramBoolean);
     if (!a()) {
       return localList;
     }
     Iterator localIterator = this.a.iterator();
-    if (localIterator.hasNext())
-    {
-      if (!((IMsgLoader)localIterator.next()).a(paramAIOContext, paramBoolean, localList)) {
-        break label128;
+    while (localIterator.hasNext()) {
+      if (((IMsgLoader)localIterator.next()).a(paramAIOContext, paramBoolean, localList))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("BaseMsgLoader", 2, "aioList cache update, re get aioList from cache");
+        }
+        localList = paramAIOContext.a().getMessageFacade().a(paramAIOContext.a().jdField_a_of_type_JavaLangString, paramAIOContext.a().jdField_a_of_type_Int, -1L, paramBoolean);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("BaseMsgLoader", 2, "aioList cache update, re get aioList from cache");
-      }
-      localList = paramAIOContext.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, paramAIOContext.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, -1L, paramBoolean);
     }
-    label128:
-    for (;;)
-    {
-      break;
-      return localList;
-    }
+    return localList;
   }
   
   public void a(@NonNull AIOContext paramAIOContext)
@@ -62,7 +56,7 @@ public class BaseMsgLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.msglist.BaseMsgLoader
  * JD-Core Version:    0.7.0.1
  */

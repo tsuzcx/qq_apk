@@ -21,19 +21,18 @@ class LiteMutiPicViewerActivity$1
   
   public void a()
   {
-    Object localObject1 = null;
     LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).setPaused(false);
     if ((LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).getGroupType() == -2000) && (!LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).isSingle())) {
       DataLineReportUtil.p(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
     }
     Iterator localIterator = LiteMutiPicViewerActivity.a(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity).values().iterator();
     Object localObject2 = null;
+    Object localObject1 = null;
     while (localIterator.hasNext())
     {
       DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)localIterator.next();
-      DLFileInfo localDLFileInfo = DatalineFilesAdapter.a(localDataLineMsgRecord);
-      Object localObject3;
-      if (localDLFileInfo.a == 1)
+      Object localObject3 = DatalineFilesAdapter.a(localDataLineMsgRecord);
+      if (((DLFileInfo)localObject3).a == 1)
       {
         localObject3 = localObject2;
         if (localObject2 == null) {
@@ -42,35 +41,24 @@ class LiteMutiPicViewerActivity$1
         ((ArrayList)localObject3).add(localDataLineMsgRecord);
         localObject2 = localObject3;
       }
-      else
+      else if ((((DLFileInfo)localObject3).a == 4) || (((DLFileInfo)localObject3).a == 2))
       {
-        if (localDLFileInfo.a != 4)
-        {
-          localObject3 = localObject1;
-          if (localDLFileInfo.a != 2) {}
-        }
-        else if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null))
-        {
-          if (!DataLineMsgSet.isSingle(localDataLineMsgRecord)) {
-            break label269;
+        if ((localDataLineMsgRecord.fileMsgStatus == 1L) && (localDataLineMsgRecord.strMoloKey != null)) {
+          if (DataLineMsgSet.isSingle(localDataLineMsgRecord)) {
+            DataLineReportUtil.d(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
+          } else {
+            DataLineReportUtil.e(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
           }
-          DataLineReportUtil.d(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
         }
-        for (;;)
-        {
-          localObject3 = localObject1;
-          if (localObject1 == null) {
-            localObject3 = new ArrayList();
-          }
-          ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
-          int i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
-          localDataLineMsgRecord.fileMsgStatus = 0L;
-          this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
-          localObject1 = localObject3;
-          break;
-          label269:
-          DataLineReportUtil.e(this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app);
+        localObject3 = localObject1;
+        if (localObject1 == null) {
+          localObject3 = new ArrayList();
         }
+        ((List)localObject3).add(Long.valueOf(localDataLineMsgRecord.sessionid));
+        int i = DataLineMsgRecord.getDevTypeBySeId(localDataLineMsgRecord.sessionid);
+        localDataLineMsgRecord.fileMsgStatus = 0L;
+        this.jdField_a_of_type_ComDatalineActivitiesLiteMutiPicViewerActivity.app.getMessageFacade().a(i).d(localDataLineMsgRecord.msgId);
+        localObject1 = localObject3;
       }
     }
     if ((localObject2 != null) && (localObject2.size() > 0)) {
@@ -86,7 +74,7 @@ class LiteMutiPicViewerActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.activities.LiteMutiPicViewerActivity.1
  * JD-Core Version:    0.7.0.1
  */

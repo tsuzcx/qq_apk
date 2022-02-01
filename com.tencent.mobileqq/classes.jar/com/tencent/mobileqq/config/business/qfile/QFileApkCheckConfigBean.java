@@ -13,12 +13,16 @@ public class QFileApkCheckConfigBean
   
   public void a(String paramString)
   {
-    QLog.i("QFileApkCheckConfigBean", 1, "configID:663 onParse apkcheckConfig:" + paramString);
-    String str = "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("configID:663 onParse apkcheckConfig:");
+    localStringBuilder.append(paramString);
+    QLog.i("QFileApkCheckConfigBean", 1, localStringBuilder.toString());
     if (!TextUtils.isEmpty(paramString)) {
-      str = paramString.toLowerCase();
+      paramString = paramString.toLowerCase();
+    } else {
+      paramString = "";
     }
-    if (TextUtils.isEmpty(str))
+    if (TextUtils.isEmpty(paramString))
     {
       QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is empty, configID:663 use default value");
       this.a = false;
@@ -26,31 +30,30 @@ public class QFileApkCheckConfigBean
     }
     try
     {
-      paramString = new JSONObject(str).getJSONObject("apkcheckconfig");
-      if (paramString == null) {
-        break label118;
-      }
-      if (paramString.has("enable"))
+      paramString = new JSONObject(paramString).getJSONObject("apkcheckconfig");
+      if (paramString != null)
       {
-        this.a = paramString.getBoolean("enable");
+        if (paramString.has("enable"))
+        {
+          this.a = paramString.getBoolean("enable");
+          return;
+        }
+        this.a = false;
         return;
       }
+      QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is no enable. use default value");
+      this.a = false;
+      return;
     }
     catch (JSONException paramString)
     {
       QLog.e("QFileApkCheckConfigBean", 1, paramString, new Object[0]);
-      return;
     }
-    this.a = false;
-    return;
-    label118:
-    QLog.w("QFileApkCheckConfigBean", 1, "apkcheckConfig is no enable. use default value");
-    this.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QFileApkCheckConfigBean
  * JD-Core Version:    0.7.0.1
  */

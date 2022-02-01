@@ -104,17 +104,16 @@ public class BaseImageDownloader
     {
     default: 
       return getStreamFromOtherSource(paramString, paramObject);
-    case 1: 
-    case 2: 
-      return getStreamFromNetwork(paramString, paramObject);
-    case 3: 
-      return getStreamFromFile(paramString, paramObject);
-    case 4: 
-      return getStreamFromContent(paramString, paramObject);
+    case 6: 
+      return getStreamFromDrawable(paramString, paramObject);
     case 5: 
       return getStreamFromAssets(paramString, paramObject);
+    case 4: 
+      return getStreamFromContent(paramString, paramObject);
+    case 3: 
+      return getStreamFromFile(paramString, paramObject);
     }
-    return getStreamFromDrawable(paramString, paramObject);
+    return getStreamFromNetwork(paramString, paramObject);
   }
   
   protected InputStream getStreamFromAssets(String paramString, Object paramObject)
@@ -171,18 +170,23 @@ public class BaseImageDownloader
     try
     {
       paramObject = paramString.getInputStream();
-      if (!shouldBeProcessed(paramString))
-      {
-        IoUtils.closeSilently(paramObject);
-        throw new IOException("Image request failed with response code " + paramString.getResponseCode());
+      if (shouldBeProcessed(paramString)) {
+        return new ContentLengthInputStream(new BufferedInputStream(paramObject, 32768), paramString.getContentLength());
       }
+      IoUtils.closeSilently(paramObject);
+      paramObject = new StringBuilder();
+      paramObject.append("Image request failed with response code ");
+      paramObject.append(paramString.getResponseCode());
+      throw new IOException(paramObject.toString());
     }
     catch (IOException paramObject)
     {
       IoUtils.readAndCloseStream(paramString.getErrorStream());
+    }
+    for (;;)
+    {
       throw paramObject;
     }
-    return new ContentLengthInputStream(new BufferedInputStream(paramObject, 32768), paramString.getContentLength());
   }
   
   protected InputStream getStreamFromOtherSource(String paramString, Object paramObject)
@@ -197,7 +201,7 @@ public class BaseImageDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.download.BaseImageDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -12,9 +12,7 @@ public class WVAuthModule
 {
   public boolean a(int paramInt, String paramString, JSONObject paramJSONObject, @NonNull APICallback paramAPICallback)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 3) {
       return false;
     }
     DoraemonUtil.a(paramAPICallback, APIParam.a);
@@ -23,7 +21,7 @@ public class WVAuthModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webviewModule.WVAuthModule
  * JD-Core Version:    0.7.0.1
  */

@@ -53,18 +53,20 @@ public final class qun_quote_photo_from_qzone_req
     paramJceOutputStream.write(this.albumid, 1);
     paramJceOutputStream.write(this.fromUin, 2);
     paramJceOutputStream.write(this.photo_list, 3);
-    if (this.desc != null) {
-      paramJceOutputStream.write(this.desc, 4);
+    String str = this.desc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.batchid, 5);
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 6);
+    str = this.clientkey;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_QUN.qun_quote_photo_from_qzone_req
  * JD-Core Version:    0.7.0.1
  */

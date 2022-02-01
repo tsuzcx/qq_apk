@@ -32,50 +32,59 @@ class DownloaderGetCodeClient$2
     DownloaderGetCodeClient.a(this.a).put(DownloaderGetCodeClient.a(this.a, paramEIPCResult, i), Boolean.valueOf(false));
     String str1 = ((Bundle)localObject1).getString("Code");
     boolean bool = ((Bundle)localObject1).getBoolean("IsSuccess");
-    LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback pkgName|" + paramEIPCResult + " versionCode|" + i + " isSuc|" + bool + " code|" + str1);
-    for (;;)
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("EIPCResultCallback onCallback pkgName|");
+    ((StringBuilder)localObject1).append(paramEIPCResult);
+    ((StringBuilder)localObject1).append(" versionCode|");
+    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(" isSuc|");
+    ((StringBuilder)localObject1).append(bool);
+    ((StringBuilder)localObject1).append(" code|");
+    ((StringBuilder)localObject1).append(str1);
+    LogUtility.c("DownloaderGetCodeClient", ((StringBuilder)localObject1).toString());
+    try
     {
-      ApkGetCodeListener localApkGetCodeListener;
-      Bundle localBundle;
-      try
+      localObject1 = DownloaderGetCodeClient.a(this.a, paramEIPCResult, i);
+      String str2 = (String)DownloaderGetCodeClient.a(this.a).get(localObject1);
+      Object localObject2 = (List)DownloaderGetCodeClient.b(this.a).get(localObject1);
+      if (localObject2 != null)
       {
-        localObject1 = DownloaderGetCodeClient.a(this.a, paramEIPCResult, i);
-        String str2 = (String)DownloaderGetCodeClient.a(this.a).get(localObject1);
-        Object localObject2 = (List)DownloaderGetCodeClient.b(this.a).get(localObject1);
-        if (localObject2 == null) {
-          break label315;
-        }
         localObject2 = ((List)localObject2).iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
-        localApkGetCodeListener = (ApkGetCodeListener)((Iterator)localObject2).next();
-        if (localApkGetCodeListener == null) {
-          continue;
-        }
-        localBundle = new Bundle();
-        if (TextUtils.isEmpty(str2))
+        while (((Iterator)localObject2).hasNext())
         {
-          localApkGetCodeListener.a(paramEIPCResult, i, str1, bool, localBundle);
-          continue;
+          ApkGetCodeListener localApkGetCodeListener = (ApkGetCodeListener)((Iterator)localObject2).next();
+          if (localApkGetCodeListener != null)
+          {
+            Bundle localBundle = new Bundle();
+            if (TextUtils.isEmpty(str2))
+            {
+              localApkGetCodeListener.a(paramEIPCResult, i, str1, bool, localBundle);
+            }
+            else
+            {
+              localBundle.putString(DownloadConstants.a, str2);
+              localApkGetCodeListener.a(paramEIPCResult, i, str1, bool, localBundle);
+            }
+          }
         }
-        localBundle.putString(DownloadConstants.a, str2);
+        DownloaderGetCodeClient.b(this.a).remove(localObject1);
       }
-      finally {}
-      localApkGetCodeListener.a(paramEIPCResult, i, str1, bool, localBundle);
+      else
+      {
+        LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
+      }
+      return;
     }
-    DownloaderGetCodeClient.b(this.a).remove(localObject1);
+    finally {}
     for (;;)
     {
-      return;
-      label315:
-      LogUtility.c("DownloaderGetCodeClient", "EIPCResultCallback onCallback getCodeListener is null");
+      throw paramEIPCResult;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloaderGetCodeClient.2
  * JD-Core Version:    0.7.0.1
  */

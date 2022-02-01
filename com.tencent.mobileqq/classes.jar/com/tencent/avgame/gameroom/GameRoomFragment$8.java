@@ -11,17 +11,17 @@ class GameRoomFragment$8
   
   public void run()
   {
-    if ((GameEngine.a().e()) || (GameRoomFragment.b(this.this$0)))
+    if ((!GameEngine.a().e()) && (!GameRoomFragment.b(this.this$0)))
     {
-      GameRoomFragment.a(this.this$0).setVisibility(8);
+      GameRoomFragment.b(this.this$0, this.a);
       return;
     }
-    GameRoomFragment.b(this.this$0, this.a);
+    GameRoomFragment.a(this.this$0).setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.GameRoomFragment.8
  * JD-Core Version:    0.7.0.1
  */

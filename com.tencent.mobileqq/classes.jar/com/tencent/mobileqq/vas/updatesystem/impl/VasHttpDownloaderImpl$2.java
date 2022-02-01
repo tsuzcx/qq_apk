@@ -12,32 +12,30 @@ class VasHttpDownloaderImpl$2
   
   public void onDone(DownloadTask paramDownloadTask)
   {
-    int j = 0;
-    if ((VasHttpDownloaderImpl.a(this.a) == null) || (paramDownloadTask == null)) {
-      return;
-    }
-    Object localObject;
-    String str;
-    if ((paramDownloadTask.a() == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0))
+    if (VasHttpDownloaderImpl.a(this.a) != null)
     {
-      i = 1;
-      localObject = paramDownloadTask.a();
+      if (paramDownloadTask == null) {
+        return;
+      }
+      int i = paramDownloadTask.a();
+      int j = 0;
+      if ((i == 3) && (paramDownloadTask.jdField_a_of_type_Int == 0)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      Object localObject = paramDownloadTask.a();
       if ((localObject != null) && (((Bundle)localObject).getString("from") != null) && (((Bundle)localObject).getString("from").contains("silent_download"))) {
         VasHttpDownloaderImpl.a(this.a, paramDownloadTask.c, paramDownloadTask.jdField_a_of_type_Long);
       }
       localObject = VasHttpDownloaderImpl.a(this.a);
-      str = paramDownloadTask.jdField_a_of_type_JavaLangString;
-      if (i == 0) {
-        break label130;
+      String str = paramDownloadTask.jdField_a_of_type_JavaLangString;
+      if (i != 0) {
+        i = j;
+      } else {
+        i = 8;
       }
-    }
-    label130:
-    for (int i = j;; i = 8)
-    {
       ((IDownloadListener)localObject).onCompleted(str, i, paramDownloadTask.jdField_a_of_type_Int, paramDownloadTask.jdField_b_of_type_JavaLangString);
-      return;
-      i = 0;
-      break;
     }
   }
   
@@ -61,7 +59,7 @@ class VasHttpDownloaderImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasHttpDownloaderImpl.2
  * JD-Core Version:    0.7.0.1
  */

@@ -44,15 +44,18 @@ public class GestureDetectManager
         paramString2.write(arrayOfByte, 0, i);
       }
       paramString2.close();
+      paramString1.close();
+      return true;
     }
     catch (IOException paramString1)
     {
       paramString1.printStackTrace();
-      Log.e("MainActivity", "[copyFileFromAssets] IOException " + paramString1.toString());
-      return false;
+      paramString2 = new StringBuilder();
+      paramString2.append("[copyFileFromAssets] IOException ");
+      paramString2.append(paramString1.toString());
+      Log.e("MainActivity", paramString2.toString());
     }
-    paramString1.close();
-    return true;
+    return false;
   }
   
   public static GestureDetectManager getInstance()
@@ -84,56 +87,49 @@ public class GestureDetectManager
   
   private boolean innerLoadSo()
   {
-    bool = true;
     try
     {
       if (!SdkContext.getInstance().getResources().getGestureResource().isGestureEnable()) {
         return false;
       }
       String str = SdkContext.getInstance().getResources().getGestureResource().getSoPathDir();
-      System.load(str + "libAVGesture4Android.so");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("libAVGesture4Android.so");
+      System.load(localStringBuilder.toString());
+      return true;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        SLog.e("GestureDetectManager", String.format("System.load Exception[%s]", new Object[] { localThrowable.getClass().getName() }), localThrowable);
-        bool = false;
-      }
+      SLog.e("GestureDetectManager", String.format("System.load Exception[%s]", new Object[] { localThrowable.getClass().getName() }), localThrowable);
     }
-    return bool;
+    return false;
   }
   
   public boolean LoadSDK()
   {
+    boolean bool2 = this.bSoLoaded;
     boolean bool1 = true;
-    boolean bool2 = true;
-    if ((this.bSoLoaded) && (this.bModelLoaded)) {
-      return bool2;
+    if ((bool2) && (this.bModelLoaded)) {
+      return true;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        if (!this.bSoLoaded) {
-          this.bSoLoaded = innerLoadSo();
-        }
-        if (!this.bModelLoaded) {
-          this.bModelLoaded = innerLoadModel();
-        }
-        if ((this.bSoLoaded) && (this.bModelLoaded))
-        {
-          bool2 = bool1;
-          if (!bool1) {
-            break;
-          }
-          GestureMgrRecognize.getInstance().setModelLoadStatus(2);
-          return bool1;
-        }
+      if (!this.bSoLoaded) {
+        this.bSoLoaded = innerLoadSo();
       }
-      finally {}
-      bool1 = false;
+      if (!this.bModelLoaded) {
+        this.bModelLoaded = innerLoadModel();
+      }
+      if ((!this.bSoLoaded) || (!this.bModelLoaded)) {
+        bool1 = false;
+      }
+      if (bool1) {
+        GestureMgrRecognize.getInstance().setModelLoadStatus(2);
+      }
+      return bool1;
     }
+    finally {}
   }
   
   public void ResetModel()
@@ -158,7 +154,7 @@ public class GestureDetectManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.facedancegame.GestureDetectManager
  * JD-Core Version:    0.7.0.1
  */

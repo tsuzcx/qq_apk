@@ -17,7 +17,7 @@ class TroopSignVideoView$SignVideoSprite
     super(paramSpriteGLView, paramContext, paramBoolean);
   }
   
-  public void a(int paramInt1, int paramInt2)
+  protected void a(int paramInt1, int paramInt2)
   {
     if (TroopSignVideoView.a(this.this$0) == 0) {
       TroopSignVideoView.a(this.this$0, paramInt2);
@@ -27,47 +27,22 @@ class TroopSignVideoView$SignVideoSprite
   
   public String b()
   {
-    return GLUtil.a(this.this$0.getContext(), "troop" + File.separator + "shaders" + File.separator + "FragmentShaderVideoForTroopSign.glsl");
+    Context localContext = this.this$0.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("troop");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("shaders");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("FragmentShaderVideoForTroopSign.glsl");
+    return GLUtil.a(localContext, localStringBuilder.toString());
   }
   
-  public void b(int paramInt1, int paramInt2)
+  protected void b(int paramInt1, int paramInt2)
   {
-    if (this.e == null) {
-      return;
-    }
-    a(paramInt1, paramInt2);
-    GLES20.glEnableVertexAttribArray(this.j);
-    GLES20.glVertexAttribPointer(this.j, 2, 5126, false, 0, this.e);
-    GLES20.glBindTexture(3553, this.a[0]);
-    GLES20.glUniform1i(this.g, 0);
-    GLES20.glEnableVertexAttribArray(this.h);
-    GLES20.glVertexAttribPointer(this.h, 4, 5126, false, 0, this.c);
-    if (this.jdField_f_of_type_Boolean)
-    {
-      GLES20.glUniform1i(this.l, 1);
-      GLES20.glEnableVertexAttribArray(this.i);
-      GLES20.glVertexAttribPointer(this.i, 4, 5126, false, 0, this.d);
-      paramInt2 = this.p;
-      if (!TroopSignVideoView.a(this.this$0)) {
-        break label205;
-      }
-    }
-    label205:
-    for (paramInt1 = 1;; paramInt1 = 0)
-    {
-      GLES20.glUniform1i(paramInt2, paramInt1);
-      GLES20.glUniformMatrix4fv(this.k, 1, false, this.jdField_f_of_type_ArrayOfFloat, 0);
-      GLES20.glDrawElements(4, jdField_b_of_type_ArrayOfShort.length, 5123, this.jdField_b_of_type_JavaNioShortBuffer);
-      GLES20.glDisableVertexAttribArray(this.j);
-      GLES20.glDisableVertexAttribArray(this.h);
-      GLES20.glDisableVertexAttribArray(this.i);
-      return;
-      GLES20.glUniform1i(this.l, 0);
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
-  public void i()
+  protected void i()
   {
     super.i();
     this.p = GLES20.glGetUniformLocation(this.m, "v_isShowCover");
@@ -75,7 +50,7 @@ class TroopSignVideoView$SignVideoSprite
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopSignVideoView.SignVideoSprite
  * JD-Core Version:    0.7.0.1
  */

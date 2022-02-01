@@ -21,40 +21,35 @@ public class StateMachine<T, E>
   {
     Object localObject1 = new ArrayList(this.mEvents);
     if (((List)localObject1).size() <= 0) {
-      label21:
       return;
-    } else {
-      localObject1 = ((List)localObject1).iterator();
     }
-    label182:
-    for (;;)
+    localObject1 = ((List)localObject1).iterator();
+    label185:
+    while (((Iterator)localObject1).hasNext())
     {
-      if (!((Iterator)localObject1).hasNext()) {
-        break label21;
-      }
       Object localObject2 = ((Iterator)localObject1).next();
-      if (localObject2 == null) {
-        break;
-      }
-      Iterator localIterator = this.mStateTransferMap.entrySet().iterator();
-      for (;;)
+      if (localObject2 != null)
       {
-        if (!localIterator.hasNext()) {
-          break label182;
-        }
-        Object localObject3 = (Map.Entry)localIterator.next();
-        Object localObject4 = (StateMachine.State)((Map.Entry)localObject3).getKey();
-        if (this.mCurrState == localObject4)
+        Iterator localIterator = this.mStateTransferMap.entrySet().iterator();
+        for (;;)
         {
-          localObject3 = ((List)((Map.Entry)localObject3).getValue()).iterator();
-          if (((Iterator)localObject3).hasNext())
+          if (!localIterator.hasNext()) {
+            break label185;
+          }
+          Object localObject3 = (Map.Entry)localIterator.next();
+          Object localObject4 = (StateMachine.State)((Map.Entry)localObject3).getKey();
+          if (this.mCurrState == localObject4)
           {
-            localObject4 = (StateMachine.StateTransfer)((Iterator)localObject3).next();
-            if ((localObject4 == null) || (!localObject2.equals(StateMachine.StateTransfer.access$100((StateMachine.StateTransfer)localObject4)))) {
-              break;
+            localObject3 = ((List)((Map.Entry)localObject3).getValue()).iterator();
+            if (((Iterator)localObject3).hasNext())
+            {
+              localObject4 = (StateMachine.StateTransfer)((Iterator)localObject3).next();
+              if ((localObject4 == null) || (!localObject2.equals(StateMachine.StateTransfer.access$100((StateMachine.StateTransfer)localObject4)))) {
+                break;
+              }
+              setCurrState(StateMachine.StateTransfer.access$200((StateMachine.StateTransfer)localObject4));
+              this.mEvents.remove(localObject2);
             }
-            setCurrState(StateMachine.StateTransfer.access$200((StateMachine.StateTransfer)localObject4));
-            this.mEvents.remove(localObject2);
           }
         }
       }
@@ -79,55 +74,55 @@ public class StateMachine<T, E>
   
   public void addStateTransfer(StateMachine<T, E>.StateTransfer<E> paramStateMachine)
   {
-    if ((paramStateMachine == null) || (StateMachine.StateTransfer.access$000(paramStateMachine) == null)) {
-      return;
-    }
-    List localList = (List)this.mStateTransferMap.get(paramStateMachine.from());
-    Object localObject = localList;
-    if (localList == null)
+    if (paramStateMachine != null)
     {
-      localObject = new ArrayList();
-      this.mStateTransferMap.put(StateMachine.StateTransfer.access$000(paramStateMachine), localObject);
+      if (StateMachine.StateTransfer.access$000(paramStateMachine) == null) {
+        return;
+      }
+      List localList = (List)this.mStateTransferMap.get(paramStateMachine.from());
+      Object localObject = localList;
+      if (localList == null)
+      {
+        localObject = new ArrayList();
+        this.mStateTransferMap.put(StateMachine.StateTransfer.access$000(paramStateMachine), localObject);
+      }
+      ((List)localObject).add(paramStateMachine);
     }
-    ((List)localObject).add(paramStateMachine);
   }
   
   public void appendEvent(E paramE)
   {
-    if ((paramE == null) || (this.mCurrState == null)) {}
-    label156:
-    label157:
-    for (;;)
+    if (paramE != null)
     {
-      return;
-      Iterator localIterator = this.mStateTransferMap.entrySet().iterator();
+      if (this.mCurrState == null) {
+        return;
+      }
       int i = 0;
-      if (localIterator.hasNext())
+      Iterator localIterator = this.mStateTransferMap.entrySet().iterator();
+      for (;;)
       {
+        if (!localIterator.hasNext()) {
+          break label140;
+        }
         Object localObject1 = (Map.Entry)localIterator.next();
         Object localObject2 = (StateMachine.State)((Map.Entry)localObject1).getKey();
-        if (this.mCurrState != localObject2) {
-          break label156;
-        }
-        localObject1 = ((List)((Map.Entry)localObject1).getValue()).iterator();
-        while (((Iterator)localObject1).hasNext())
+        if (this.mCurrState == localObject2)
         {
-          localObject2 = (StateMachine.StateTransfer)((Iterator)localObject1).next();
-          if ((localObject2 != null) && (paramE.equals(StateMachine.StateTransfer.access$100((StateMachine.StateTransfer)localObject2))))
+          localObject1 = ((List)((Map.Entry)localObject1).getValue()).iterator();
+          if (((Iterator)localObject1).hasNext())
           {
+            localObject2 = (StateMachine.StateTransfer)((Iterator)localObject1).next();
+            if ((localObject2 == null) || (!paramE.equals(StateMachine.StateTransfer.access$100((StateMachine.StateTransfer)localObject2)))) {
+              break;
+            }
             setCurrState(StateMachine.StateTransfer.access$200((StateMachine.StateTransfer)localObject2));
             i = 1;
           }
         }
       }
-      for (;;)
-      {
-        break;
-        if (i != 0) {
-          break label157;
-        }
+      label140:
+      if (i == 0) {
         this.mEvents.add(paramE);
-        return;
       }
     }
   }
@@ -149,8 +144,13 @@ public class StateMachine<T, E>
           paramState2.onStateChanged();
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramState1;
+    }
   }
   
   public boolean removeStateChangeListener(StateMachine.OnStateChangeListener paramOnStateChangeListener)
@@ -169,16 +169,16 @@ public class StateMachine<T, E>
   
   public void sendEvent(E paramE)
   {
-    if ((paramE == null) || (this.mCurrState == null)) {}
-    label128:
-    for (;;)
+    if (paramE != null)
     {
-      return;
+      if (this.mCurrState == null) {
+        return;
+      }
       Iterator localIterator = this.mStateTransferMap.entrySet().iterator();
       for (;;)
       {
         if (!localIterator.hasNext()) {
-          break label128;
+          return;
         }
         Object localObject1 = (Map.Entry)localIterator.next();
         Object localObject2 = (StateMachine.State)((Map.Entry)localObject1).getKey();
@@ -201,27 +201,38 @@ public class StateMachine<T, E>
   public void setCurrState(StateMachine.State paramState)
   {
     StateMachine.State localState = getCurrState();
-    if ((paramState == null) || (paramState == this.mCurrState)) {
-      return;
-    }
-    StringBuilder localStringBuilder = new StringBuilder().append(getClass().getSimpleName()).append("(").append(this).append(") change state from ");
-    if (this.mCurrState != null) {}
-    for (Object localObject = this.mCurrState.id;; localObject = "N/A")
+    if (paramState != null)
     {
-      QMLog.i("StateMachine", localObject + " to " + paramState.id);
+      if (paramState == this.mCurrState) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getClass().getSimpleName());
+      localStringBuilder.append("(");
+      localStringBuilder.append(this);
+      localStringBuilder.append(") change state from ");
+      Object localObject = this.mCurrState;
+      if (localObject != null) {
+        localObject = ((StateMachine.State)localObject).id;
+      } else {
+        localObject = "N/A";
+      }
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(" to ");
+      localStringBuilder.append(paramState.id);
+      QMLog.i("StateMachine", localStringBuilder.toString());
       this.mCurrState = paramState;
       if (paramState != localState) {
         notifyStateChange(localState, paramState);
       }
       this.mCurrState.onStart();
       autoConsumeCacheEvents();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.fsm.StateMachine
  * JD-Core Version:    0.7.0.1
  */

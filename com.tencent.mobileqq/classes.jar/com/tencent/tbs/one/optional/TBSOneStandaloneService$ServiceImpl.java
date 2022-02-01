@@ -42,7 +42,7 @@ public abstract class TBSOneStandaloneService$ServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.optional.TBSOneStandaloneService.ServiceImpl
  * JD-Core Version:    0.7.0.1
  */

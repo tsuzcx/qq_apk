@@ -19,36 +19,31 @@ public class QQMusicConst
   public static void a(Context paramContext, String paramString)
   {
     long l = 0L;
-    for (;;)
+    try
     {
+      URL localURL = new URL(paramString);
       try
       {
-        localObject = new URL(paramString);
-      }
-      catch (MalformedURLException localMalformedURLException)
-      {
-        Object localObject;
-        int i;
-        QLog.e("QQMusicConst", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
-        continue;
-      }
-      try
-      {
-        i = ((URL)localObject).openConnection().getContentLength();
+        int i = localURL.openConnection().getContentLength();
         l = i;
       }
       catch (IOException localIOException)
       {
         QLog.e("QQMusicConst", 1, "music player activity url IOException ", localIOException);
       }
+      localBundle = new Bundle();
     }
-    localObject = new Bundle();
-    ((Bundle)localObject).putString("big_brother_source_key", "biz_src_qqmusic");
-    ((Bundle)localObject).putLong("_filesize_from_dlg", l);
-    ((Bundle)localObject).putString("_filename_from_dlg", paramContext.getResources().getString(2131694609));
-    ((Bundle)localObject).putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
-    ((Bundle)localObject).putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
-    ((IUniformDownloadMgr)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IUniformDownloadMgr.class, "")).startDownload(paramString, (Bundle)localObject);
+    catch (MalformedURLException localMalformedURLException)
+    {
+      QLog.e("QQMusicConst", 1, "music player activity url io MalformedURLException ", localMalformedURLException);
+    }
+    Bundle localBundle;
+    localBundle.putString("big_brother_source_key", "biz_src_qqmusic");
+    localBundle.putLong("_filesize_from_dlg", l);
+    localBundle.putString("_filename_from_dlg", paramContext.getResources().getString(2131694577));
+    localBundle.putString("FILE_MIME_TYPE", "application/vnd.android.package-archive");
+    localBundle.putString("DOWNLOAD_BIG_BROTHER_SOURCE", "biz_src_qqmusic");
+    ((IUniformDownloadMgr)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IUniformDownloadMgr.class, "")).startDownload(paramString, localBundle);
   }
   
   public static boolean a(Context paramContext)
@@ -64,13 +59,17 @@ public class QQMusicConst
       paramContext.getPackageInfo(paramString, 1);
       return true;
     }
-    catch (PackageManager.NameNotFoundException paramContext) {}
+    catch (PackageManager.NameNotFoundException paramContext)
+    {
+      label14:
+      break label14;
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.QQMusicConst
  * JD-Core Version:    0.7.0.1
  */

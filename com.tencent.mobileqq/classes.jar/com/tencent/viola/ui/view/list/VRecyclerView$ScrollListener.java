@@ -12,10 +12,9 @@ class VRecyclerView$ScrollListener
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    int k = 0;
+    int k = 2;
     int i;
     VRecyclerView localVRecyclerView;
-    int j;
     if (paramInt == 0)
     {
       boolean bool = VRecyclerView.access$300(this.this$0);
@@ -24,7 +23,9 @@ class VRecyclerView$ScrollListener
       if ((this.this$0.getAdapter() != null) && (i != -1) && (i == this.this$0.getAdapter().getItemCount() - 1) && (!VRecyclerView.access$400(this.this$0)) && (VRecyclerView.access$500(this.this$0) != null))
       {
         VRecyclerView.access$402(this.this$0, true);
-        VRecyclerView.access$500(this.this$0).onLoadMore(this.this$0, 0, VRecyclerView.access$600(this.this$0));
+        paramRecyclerView = VRecyclerView.access$500(this.this$0);
+        localVRecyclerView = this.this$0;
+        paramRecyclerView.onLoadMore(localVRecyclerView, 0, VRecyclerView.access$600(localVRecyclerView));
         ViolaLogUtils.d("VRecyclerView", "hit load more in onScrollStateChanged");
       }
       VRecyclerView.access$700(this.this$0, false);
@@ -32,56 +33,42 @@ class VRecyclerView$ScrollListener
       {
         paramRecyclerView = VRecyclerView.access$500(this.this$0);
         localVRecyclerView = this.this$0;
-        if (bool)
-        {
+        if (bool) {
           i = 0;
-          if (!bool) {
-            break label296;
-          }
+        } else {
+          i = VRecyclerView.access$800(localVRecyclerView);
+        }
+        int j;
+        if (bool) {
           j = VRecyclerView.access$600(this.this$0);
-          label179:
-          paramRecyclerView.onScrollEnd(localVRecyclerView, i, j);
+        } else {
+          j = 0;
         }
+        paramRecyclerView.onScrollEnd(localVRecyclerView, i, j);
       }
-      else
+      if ((VRecyclerView.access$900(this.this$0) != null) && (!VRecyclerView.access$900(this.this$0).isSnapping()))
       {
-        if ((VRecyclerView.access$900(this.this$0) != null) && (!VRecyclerView.access$900(this.this$0).isSnapping()))
-        {
-          this.this$0.calculateItemPreState();
-          VRecyclerView.access$1002(this.this$0, 0);
-        }
-        VRecyclerView.access$1102(this.this$0, false);
-        label238:
-        if (VRecyclerView.access$500(this.this$0) != null)
-        {
-          paramRecyclerView = VRecyclerView.access$500(this.this$0);
-          localVRecyclerView = this.this$0;
-          if (this.this$0.canChildPullDown()) {
-            break label324;
-          }
-          i = 1;
-        }
+        this.this$0.calculateItemPreState();
+        VRecyclerView.access$1002(this.this$0, 0);
       }
+      VRecyclerView.access$1102(this.this$0, false);
     }
-    for (;;)
+    else if ((paramInt == 2) || (paramInt == 1))
     {
-      paramRecyclerView.onScrollStateChanged(localVRecyclerView, paramInt, i);
-      return;
-      i = VRecyclerView.access$800(this.this$0);
-      break;
-      label296:
-      j = 0;
-      break label179;
-      if ((paramInt != 2) && (paramInt != 1)) {
-        break label238;
-      }
       VRecyclerView.access$1102(this.this$0, true);
-      break label238;
-      label324:
-      i = k;
-      if (!this.this$0.canChildPullUp()) {
-        i = 2;
+    }
+    if (VRecyclerView.access$500(this.this$0) != null)
+    {
+      paramRecyclerView = VRecyclerView.access$500(this.this$0);
+      localVRecyclerView = this.this$0;
+      if (!localVRecyclerView.canChildPullDown()) {
+        i = 1;
+      } else if (!this.this$0.canChildPullUp()) {
+        i = k;
+      } else {
+        i = 0;
       }
+      paramRecyclerView.onScrollStateChanged(localVRecyclerView, paramInt, i);
     }
   }
   
@@ -93,7 +80,7 @@ class VRecyclerView$ScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.list.VRecyclerView.ScrollListener
  * JD-Core Version:    0.7.0.1
  */

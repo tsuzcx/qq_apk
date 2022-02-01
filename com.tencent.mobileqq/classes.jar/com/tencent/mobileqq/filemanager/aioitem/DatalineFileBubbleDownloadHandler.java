@@ -29,127 +29,125 @@ public class DatalineFileBubbleDownloadHandler
   
   private DataLineMsgRecord a(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    long l;
-    do
-    {
+    if (paramChatMessage == null) {
       return null;
-      paramChatMessage = (MessageForDLFile)paramChatMessage;
-      int i = paramChatMessage.deviceType;
-      l = paramChatMessage.associatedId;
-      paramChatMessage = this.a.getMessageFacade().a(i);
-    } while (paramChatMessage == null);
+    }
+    paramChatMessage = (MessageForDLFile)paramChatMessage;
+    int i = paramChatMessage.deviceType;
+    long l = paramChatMessage.associatedId;
+    paramChatMessage = this.a.getMessageFacade().a(i);
+    if (paramChatMessage == null) {
+      return null;
+    }
     return paramChatMessage.a(l);
   }
   
   protected CircleFileStateView a(BaseBubbleBuilder.ViewHolder paramViewHolder)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return null;
     }
-    return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      return ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a;
+    }
+    return null;
   }
   
   protected void a(View paramView, BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage, int paramInt)
   {
-    if (paramChatMessage == null) {}
-    do
+    if (paramChatMessage == null) {
+      return;
+    }
+    paramView = new StringBuilder();
+    paramView.append("handleDownloadClick: type[");
+    paramView.append(paramInt);
+    paramView.append("]");
+    QLog.i("OfflineFileBubbleDownloadHandler", 1, paramView.toString());
+    if (paramInt == -1) {
+      return;
+    }
+    paramView = a(paramChatMessage);
+    if (paramView == null) {
+      return;
+    }
+    paramViewHolder = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
+    if (paramInt == 0)
     {
-      do
-      {
-        do
-        {
-          return;
-          QLog.i("OfflineFileBubbleDownloadHandler", 1, "handleDownloadClick: type[" + paramInt + "]");
-        } while (paramInt == -1);
-        paramView = a(paramChatMessage);
-      } while (paramView == null);
-      paramViewHolder = (DataLineHandler)this.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER);
-      if (paramInt == 0)
-      {
-        paramViewHolder.a(paramView.groupId, paramView.sessionid, false);
-        return;
-      }
-    } while (paramInt != 1);
-    paramChatMessage = new ArrayList();
-    paramChatMessage.add(Long.valueOf(paramView.sessionid));
-    paramViewHolder.a(paramChatMessage);
+      paramViewHolder.a(paramView.groupId, paramView.sessionid, false);
+      return;
+    }
+    if (paramInt == 1)
+    {
+      paramChatMessage = new ArrayList();
+      paramChatMessage.add(Long.valueOf(paramView.sessionid));
+      paramViewHolder.a(paramChatMessage);
+    }
   }
   
   protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, CircleFileStateView paramCircleFileStateView)
   {
-    if (paramViewHolder == null) {}
-    while (!(paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+    if (paramViewHolder == null) {
       return;
     }
-    ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramCircleFileStateView;
+    if ((paramViewHolder instanceof QFileItemBuilder.QFileBaseHolder)) {
+      ((QFileItemBuilder.QFileBaseHolder)paramViewHolder).a = paramCircleFileStateView;
+    }
   }
   
   protected boolean a(ChatMessage paramChatMessage)
   {
-    boolean bool2 = true;
-    if (paramChatMessage == null) {}
-    int i;
-    do
+    boolean bool1 = false;
+    boolean bool2 = false;
+    if (paramChatMessage == null) {
+      return false;
+    }
+    paramChatMessage = a(paramChatMessage);
+    if (paramChatMessage == null) {
+      return false;
+    }
+    int i = FileManagerUtil.a(paramChatMessage.filename);
+    if (i != 0)
     {
-      do
-      {
+      if (i == 2) {
         return false;
-        paramChatMessage = a(paramChatMessage);
-      } while (paramChatMessage == null);
-      i = FileManagerUtil.a(paramChatMessage.filename);
-    } while ((i == 0) || (i == 2));
-    boolean bool1;
-    if (paramChatMessage.fileMsgStatus == 2L) {
-      bool1 = true;
-    }
-    for (;;)
-    {
-      if (bool1) {
-        if (!FileUtil.b(paramChatMessage.path)) {
-          bool1 = bool2;
-        }
       }
-      for (;;)
+      if (paramChatMessage.fileMsgStatus == 2L) {}
+      while ((paramChatMessage.fileMsgStatus == 1L) || (!paramChatMessage.issuc))
       {
-        return bool1;
-        if (paramChatMessage.fileMsgStatus == 1L)
-        {
-          bool1 = true;
-          break;
-        }
-        if (paramChatMessage.issuc) {
-          break label102;
-        }
-        bool1 = true;
+        bool2 = true;
         break;
-        bool1 = false;
       }
-      label102:
-      bool1 = false;
+      bool1 = bool2;
+      if (bool2) {
+        bool1 = FileUtil.a(paramChatMessage.path) ^ true;
+      }
     }
+    return bool1;
   }
   
   protected boolean b(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    int i;
-    do
+    if (paramChatMessage == null) {
+      return false;
+    }
+    paramChatMessage = a(paramChatMessage);
+    if (paramChatMessage == null) {
+      return false;
+    }
+    int i = FileManagerUtil.a(paramChatMessage.filename);
+    if (i != 0)
     {
-      do
-      {
+      if (i == 2) {
         return false;
-        paramChatMessage = a(paramChatMessage);
-      } while (paramChatMessage == null);
-      i = FileManagerUtil.a(paramChatMessage.filename);
-    } while ((i == 0) || (i == 2) || (!paramChatMessage.bIsTransfering));
-    return true;
+      }
+      return paramChatMessage.bIsTransfering;
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.DatalineFileBubbleDownloadHandler
  * JD-Core Version:    0.7.0.1
  */

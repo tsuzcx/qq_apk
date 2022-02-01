@@ -18,8 +18,9 @@ final class CommandUtils$3
   public void a(String paramString)
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      localArrayList.addAll(this.jdField_a_of_type_JavaUtilList);
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      localArrayList.addAll(localList);
     }
     if (paramString != null) {
       localArrayList.add(paramString);
@@ -34,7 +35,7 @@ final class CommandUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.util.CommandUtils.3
  * JD-Core Version:    0.7.0.1
  */

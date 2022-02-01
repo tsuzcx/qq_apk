@@ -31,26 +31,31 @@ class GrayTipsItemBuilder$SpecialCareTipClickableSpan
   {
     paramView = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     Context localContext = (Context)this.b.get();
-    if ((paramView == null) || (localContext == null)) {}
-    while (!(localContext instanceof Activity)) {
-      return;
-    }
-    if (!NetworkUtil.d(localContext))
+    if (paramView != null)
     {
-      QQToast.a(localContext, 2131692257, 0).b(localContext.getResources().getDimensionPixelSize(2131299166));
-      return;
+      if (localContext == null) {
+        return;
+      }
+      if ((localContext instanceof Activity))
+      {
+        if (!NetworkUtil.isNetSupport(localContext))
+        {
+          QQToast.a(localContext, 2131692183, 0).b(localContext.getResources().getDimensionPixelSize(2131299168));
+          return;
+        }
+        Intent localIntent = new Intent(localContext, QQSpecialCareSettingActivity.class);
+        localIntent.putExtra("key_friend_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a.a);
+        localContext.startActivity(localIntent);
+        VipUtils.a(paramView, "Vip_SpecialRemind", "0X8005057", "0X8005057", 0, 1, new String[0]);
+      }
     }
-    Intent localIntent = new Intent(localContext, QQSpecialCareSettingActivity.class);
-    localIntent.putExtra("key_friend_uin", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemGrayTipsItemBuilder.a.a);
-    localContext.startActivity(localIntent);
-    VipUtils.a(paramView, "Vip_SpecialRemind", "0X8005057", "0X8005057", 0, 1, new String[0]);
   }
   
   public void updateDrawState(TextPaint paramTextPaint) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.GrayTipsItemBuilder.SpecialCareTipClickableSpan
  * JD-Core Version:    0.7.0.1
  */

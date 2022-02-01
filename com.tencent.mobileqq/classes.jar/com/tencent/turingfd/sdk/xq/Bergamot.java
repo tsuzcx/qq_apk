@@ -1,52 +1,32 @@
 package com.tencent.turingfd.sdk.xq;
 
-import android.os.Environment;
-import android.text.TextUtils;
-import android.util.Log;
-import java.io.File;
-
-public class Bergamot
+public final class Bergamot
+  extends case
 {
-  public static final float<Bergamot> zg = new Banana();
+  public String dc = "";
+  public String rd = "";
   
-  public static Bergamot getInstance()
+  public void a(byte parambyte)
   {
-    return (Bergamot)zg.get();
-  }
-  
-  public void a(Throwable paramThrowable)
-  {
-    f("2", Log.getStackTraceString(paramThrowable));
-  }
-  
-  public final void f(String paramString1, String paramString2)
-  {
-    paramString1 = o(paramString1);
-    if (TextUtils.isEmpty(paramString1)) {}
-    while (new File(paramString1).exists()) {
-      return;
+    String str = this.dc;
+    if (str != null) {
+      parambyte.b(str, 0);
     }
-    new Bennet(this, paramString1, paramString2).start();
+    str = this.rd;
+    if (str != null) {
+      parambyte.b(str, 1);
+    }
   }
   
-  public final String o(String paramString)
+  public void a(try paramtry)
   {
-    try
-    {
-      Object localObject = Environment.getExternalStorageDirectory().getAbsolutePath();
-      localObject = new File(File.separator + ".turingdebug");
-      if (!((File)localObject).exists()) {
-        ((File)localObject).mkdirs();
-      }
-      return ((File)localObject).getAbsolutePath() + File.separator + paramString;
-    }
-    catch (Throwable paramString) {}
-    return "";
+    this.dc = paramtry.a(0, false);
+    this.rd = paramtry.a(1, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.turingfd.sdk.xq.Bergamot
  * JD-Core Version:    0.7.0.1
  */

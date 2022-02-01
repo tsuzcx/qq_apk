@@ -33,45 +33,40 @@ public class ItemUpdateVerPtr
       localJSONObject.put("nLastRunTime", paramItemUpdateVerPtr.mLastRunTime);
       localJSONObject.put("nRunCount", paramItemUpdateVerPtr.mRunCount);
       localJSONObject.put("appVersion", paramItemUpdateVerPtr.mAppVersion);
-      return localJSONObject.toString();
     }
     catch (Exception paramItemUpdateVerPtr)
     {
-      for (;;)
-      {
-        paramItemUpdateVerPtr.printStackTrace();
-        VasUpdateWrapper.getLog().e("VasUpdate_ItemUpdateVerPtr", "node ItemUpdate error ", paramItemUpdateVerPtr);
-      }
+      paramItemUpdateVerPtr.printStackTrace();
+      VasUpdateWrapper.getLog().e("VasUpdate_ItemUpdateVerPtr", "node ItemUpdate error ", paramItemUpdateVerPtr);
     }
+    return localJSONObject.toString();
   }
   
   public static ItemUpdateVerPtr parseJsonToItemUpdateVerPrt(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
-      {
-        ItemUpdateVerPtr localItemUpdateVerPtr = new ItemUpdateVerPtr();
-        paramString = new JSONObject(paramString);
-        if (paramString.opt("nodeList") == null)
-        {
-          localItemUpdateVerPtr.mItemId = paramString.optString("itemId");
-          localItemUpdateVerPtr.mSrcMd5 = paramString.optString("srcMd5");
-          localItemUpdateVerPtr.mDstMd5 = paramString.optString("dstMd5");
-          localItemUpdateVerPtr.mFrom = paramString.optString("from");
-          localItemUpdateVerPtr.mLastRunTime = paramString.optLong("nLastRunTime");
-          localItemUpdateVerPtr.mRunCount = paramString.optInt("nRunCount");
-          localItemUpdateVerPtr.mAppVersion = paramString.optString("appVersion");
-          return localItemUpdateVerPtr;
-        }
+    }
+    try
+    {
+      ItemUpdateVerPtr localItemUpdateVerPtr = new ItemUpdateVerPtr();
+      paramString = new JSONObject(paramString);
+      if (paramString.opt("nodeList") != null) {
+        return null;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-        VasUpdateWrapper.getLog().e("VasUpdate_ItemUpdateVerPtr", "node ItemUpdate error ", paramString);
-      }
+      localItemUpdateVerPtr.mItemId = paramString.optString("itemId");
+      localItemUpdateVerPtr.mSrcMd5 = paramString.optString("srcMd5");
+      localItemUpdateVerPtr.mDstMd5 = paramString.optString("dstMd5");
+      localItemUpdateVerPtr.mFrom = paramString.optString("from");
+      localItemUpdateVerPtr.mLastRunTime = paramString.optLong("nLastRunTime");
+      localItemUpdateVerPtr.mRunCount = paramString.optInt("nRunCount");
+      localItemUpdateVerPtr.mAppVersion = paramString.optString("appVersion");
+      return localItemUpdateVerPtr;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+      VasUpdateWrapper.getLog().e("VasUpdate_ItemUpdateVerPtr", "node ItemUpdate error ", paramString);
     }
     return null;
   }
@@ -79,23 +74,39 @@ public class ItemUpdateVerPtr
   public boolean checkItemIsCurrentVersion()
   {
     String str = VasUpdateWrapper.getCommonManager().getAppVersion();
-    VasUpdateWrapper.getLog().e("VasUpdate_ItemUpdateVerPtr", "checkItemIsCurrentVersion itemId = " + this.mItemId + " localVersion = " + str + " itemVersion = " + this.mAppVersion);
-    if (TextUtils.isEmpty(this.mAppVersion)) {}
-    while ((str == null) || (str.compareTo(this.mAppVersion) >= 0)) {
+    IVasLog localIVasLog = VasUpdateWrapper.getLog();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("checkItemIsCurrentVersion itemId = ");
+    localStringBuilder.append(this.mItemId);
+    localStringBuilder.append(" localVersion = ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" itemVersion = ");
+    localStringBuilder.append(this.mAppVersion);
+    localIVasLog.e("VasUpdate_ItemUpdateVerPtr", localStringBuilder.toString());
+    if (TextUtils.isEmpty(this.mAppVersion)) {
       return true;
     }
-    return false;
+    return (str == null) || (str.compareTo(this.mAppVersion) >= 0);
   }
   
   @NonNull
   public String toString()
   {
-    return " itemId = " + this.mItemId + " mLastRunTime = " + this.mLastRunTime + " count = " + this.mRunCount + " from = " + this.mFrom;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" itemId = ");
+    localStringBuilder.append(this.mItemId);
+    localStringBuilder.append(" mLastRunTime = ");
+    localStringBuilder.append(this.mLastRunTime);
+    localStringBuilder.append(" count = ");
+    localStringBuilder.append(this.mRunCount);
+    localStringBuilder.append(" from = ");
+    localStringBuilder.append(this.mFrom);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.entity.db.ItemUpdateVerPtr
  * JD-Core Version:    0.7.0.1
  */

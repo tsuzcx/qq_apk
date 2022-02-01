@@ -1,29 +1,37 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.os.Bundle;
 import com.tencent.mobileqq.app.FrameHelperActivity;
-import com.tencent.mobileqq.onlinestatus.OnlineStatusObserver;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime.Status;
+import mqq.observer.AccountObserver;
 
 class Conversation$61
-  extends OnlineStatusObserver
+  extends AccountObserver
 {
   Conversation$61(Conversation paramConversation) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  protected void onOnlineStatusChanged(boolean paramBoolean1, AppRuntime.Status paramStatus, long paramLong1, boolean paramBoolean2, boolean paramBoolean3, long paramLong2, boolean paramBoolean4)
   {
     if (this.a.a != null)
     {
       if (QLog.isColorLevel()) {
-        QLog.d("Q.recent", 2, new Object[] { "onSetOnlineStatus, isSuccess", Boolean.valueOf(paramBoolean) });
+        QLog.d("Q.recent", 2, String.format("onOnlineStatusChanged, currentStatus = %s", new Object[] { paramStatus }));
       }
-      this.a.a.a("OnlineStatusObserver.onSetOnlineStatus");
+      this.a.a.a("AccountObserver.onOnlineStatusChanged");
     }
+  }
+  
+  protected void onOnlineStatusPush(AppRuntime.Status paramStatus, long paramLong)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("Q.recent", 2, String.format("onOnlineStatusPush, currentStatus = %s , extOnlineStatus = %d", new Object[] { paramStatus, Long.valueOf(paramLong) }));
+    }
+    this.a.a.a("AccountObserver.onOnlineStatusPush");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.61
  * JD-Core Version:    0.7.0.1
  */

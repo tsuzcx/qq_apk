@@ -42,15 +42,17 @@ public final class PackData$Pack
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 66, 72, 80, 90, 96, 104, 114, 122, 128, 136, 144, 152, 162, 168, 176, 184, 192, 200 }, new String[] { "pack_id", "state", "type", "ctime", "money", "business", "signature", "url", "peer_uin", "etime", "peer_nick", "expired", "locked", "order", "peer_face", "uin", "group_type", "group_id", "promotion_id", "user_ip", "user_apn", "empty", "appid", "provider_dead", "mtime" }, new Object[] { localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, "", Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro3, Boolean.valueOf(false), Boolean.valueOf(false), "", "", Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0), Boolean.valueOf(false), Integer.valueOf(0) }, Pack.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 40, 48, 58, 66, 72, 80, 90, 96, 104, 114, 122, 128, 136, 144, 152, 162, 168, 176, 184, 192, 200 }, new String[] { "pack_id", "state", "type", "ctime", "money", "business", "signature", "url", "peer_uin", "etime", "peer_nick", "expired", "locked", "order", "peer_face", "uin", "group_type", "group_id", "promotion_id", "user_ip", "user_apn", "empty", "appid", "provider_dead", "mtime" }, new Object[] { localByteStringMicro1, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro2, "", Long.valueOf(0L), localInteger, localByteStringMicro3, localBoolean, localBoolean, "", "", Long.valueOf(0L), localInteger, localInteger, localInteger, "", localInteger, localBoolean, localInteger, localBoolean, localInteger }, Pack.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.new_year_2014.PackData.Pack
  * JD-Core Version:    0.7.0.1
  */

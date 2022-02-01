@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.app.Activity;
-import com.tencent.mobileqq.webview.swift.WebUiBaseInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebTitleBarInterface;
+import com.tencent.mobileqq.webviewplugin.WebUiUtils.WebViewProviderInterface;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class MQPSecJsPlugin$2
@@ -17,21 +17,18 @@ class MQPSecJsPlugin$2
     {
       if ((MQPSecJsPlugin.access$100(this.this$0) == null) && (!this.this$0.activity.isFinishing()))
       {
-        WebUiBaseInterface localWebUiBaseInterface = this.this$0.mRuntime.a(this.this$0.mRuntime.a());
-        if ((localWebUiBaseInterface != null) && ((localWebUiBaseInterface instanceof WebUiUtils.WebTitleBarInterface)))
+        WebUiUtils.WebViewProviderInterface localWebViewProviderInterface = this.this$0.mRuntime.a();
+        if ((localWebViewProviderInterface != null) && (localWebViewProviderInterface.getWebTitleBarInterface() != null))
         {
-          MQPSecJsPlugin.access$102(this.this$0, new QQProgressDialog(this.this$0.activity, ((WebUiUtils.WebTitleBarInterface)localWebUiBaseInterface).getTitleBarHeight()));
+          MQPSecJsPlugin.access$102(this.this$0, new QQProgressDialog(this.this$0.activity, localWebViewProviderInterface.getWebTitleBarInterface().a()));
           MQPSecJsPlugin.access$100(this.this$0).setCancelable(false);
-          MQPSecJsPlugin.access$100(this.this$0).c(2131694694);
+          MQPSecJsPlugin.access$100(this.this$0).c(2131694668);
         }
       }
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
     if ((MQPSecJsPlugin.access$100(this.this$0) != null) && (!MQPSecJsPlugin.access$100(this.this$0).isShowing())) {
       MQPSecJsPlugin.access$100(this.this$0).show();
@@ -40,7 +37,7 @@ class MQPSecJsPlugin$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.MQPSecJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

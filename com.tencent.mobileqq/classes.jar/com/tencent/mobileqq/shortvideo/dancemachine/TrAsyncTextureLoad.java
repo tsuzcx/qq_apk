@@ -20,24 +20,31 @@ public class TrAsyncTextureLoad
   
   public static TrAsyncTextureLoad getInstance()
   {
-    if (INSTANCE == null) {}
-    try
-    {
-      if (INSTANCE == null) {
-        INSTANCE = new TrAsyncTextureLoad();
+    if (INSTANCE == null) {
+      try
+      {
+        if (INSTANCE == null) {
+          INSTANCE = new TrAsyncTextureLoad();
+        }
       }
-      return INSTANCE;
+      finally {}
     }
-    finally {}
+    return INSTANCE;
   }
   
   public void asyncLoadBoyTexture()
   {
-    boolean bool = false;
-    if (this.eglHandlerThread != null) {
-      bool = this.eglHandlerThread.isInitSuccess();
+    Object localObject = this.eglHandlerThread;
+    boolean bool;
+    if (localObject != null) {
+      bool = ((EglHandlerThread)localObject).isInitSuccess();
+    } else {
+      bool = false;
     }
-    DanceLog.printFrameQueue("GLFrameImage", "asyncLoadBoyTexture initSuccess=" + bool);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("asyncLoadBoyTexture initSuccess=");
+    ((StringBuilder)localObject).append(bool);
+    DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)localObject).toString());
     if (bool) {
       this.eglHandlerThread.getHandler().post(new TrAsyncTextureLoad.1(this));
     }
@@ -45,18 +52,24 @@ public class TrAsyncTextureLoad
   
   void notifyGLThreadUpdateTextureCache(HashMap<String, GLImage> paramHashMap)
   {
-    if ((paramHashMap != null) && (paramHashMap.size() > 0)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      DanceLog.printFrameQueue("GLFrameImage", "notifyGLThreadUpdateTextureCache needDo=" + bool + " itemSize=" + paramHashMap.size());
-      if (bool) {
-        synchronized (this.mLock)
-        {
-          this.needUpdateCache.add(paramHashMap);
-          return;
-        }
+    boolean bool;
+    if ((paramHashMap != null) && (paramHashMap.size() > 0)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("notifyGLThreadUpdateTextureCache needDo=");
+    ((StringBuilder)???).append(bool);
+    ((StringBuilder)???).append(" itemSize=");
+    ((StringBuilder)???).append(paramHashMap.size());
+    DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)???).toString());
+    if (bool) {
+      synchronized (this.mLock)
+      {
+        this.needUpdateCache.add(paramHashMap);
+        return;
       }
-      return;
     }
   }
   
@@ -74,9 +87,10 @@ public class TrAsyncTextureLoad
   
   public void onSurfaceDestroy()
   {
-    if (this.eglHandlerThread != null)
+    EglHandlerThread localEglHandlerThread = this.eglHandlerThread;
+    if (localEglHandlerThread != null)
     {
-      this.eglHandlerThread.quitSafely();
+      localEglHandlerThread.quitSafely();
       this.eglHandlerThread = null;
     }
   }
@@ -85,67 +99,74 @@ public class TrAsyncTextureLoad
   {
     DanceLog.printFrameQueue("GLFrameImage", "processInterrupt");
     int i = this.needUpdateCache.size();
-    DanceLog.printFrameQueue("GLFrameImage", "processInterrupt unsafeSize=" + i);
-    if (i > 0)
-    {
-      for (;;)
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("processInterrupt unsafeSize=");
+    ((StringBuilder)???).append(i);
+    DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)???).toString());
+    if (i > 0) {
+      synchronized (this.mLock)
       {
-        HashMap localHashMap;
-        synchronized (this.mLock)
+        if (this.needUpdateCache.size() > 0)
         {
-          if (this.needUpdateCache.size() <= 0) {
-            break;
-          }
           Iterator localIterator1 = this.needUpdateCache.iterator();
-          if (!localIterator1.hasNext()) {
-            break;
-          }
-          localHashMap = (HashMap)localIterator1.next();
-          Iterator localIterator2 = localHashMap.keySet().iterator();
-          if (localIterator2.hasNext())
+          while (localIterator1.hasNext())
           {
-            GLImage localGLImage = (GLImage)localHashMap.get((String)localIterator2.next());
-            if (localGLImage == null) {
-              continue;
+            HashMap localHashMap = (HashMap)localIterator1.next();
+            Iterator localIterator2 = localHashMap.keySet().iterator();
+            while (localIterator2.hasNext())
+            {
+              GLImage localGLImage = (GLImage)localHashMap.get((String)localIterator2.next());
+              if (localGLImage != null) {
+                localGLImage.release();
+              }
             }
-            localGLImage.release();
+            localHashMap.clear();
           }
         }
-        localHashMap.clear();
+        this.needUpdateCache.clear();
+        return;
       }
-      this.needUpdateCache.clear();
     }
   }
   
   public void updateGLFrameImageCache()
   {
     int i = this.needUpdateCache.size();
-    DanceLog.printFrameQueue("GLFrameImage", "updateGLFrameImageCache unsafeSize=" + i);
-    if (i > 0)
-    {
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("updateGLFrameImageCache unsafeSize=");
+    ((StringBuilder)???).append(i);
+    DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)???).toString());
+    if (i > 0) {
       synchronized (this.mLock)
       {
         i = this.needUpdateCache.size();
-        DanceLog.printFrameQueue("GLFrameImage", "updateGLFrameImageCache safeSize=" + i);
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("updateGLFrameImageCache safeSize=");
+        ((StringBuilder)localObject2).append(i);
+        DanceLog.printFrameQueue("GLFrameImage", ((StringBuilder)localObject2).toString());
         if (i > 0)
         {
-          Iterator localIterator = this.needUpdateCache.iterator();
-          if (localIterator.hasNext())
+          localObject2 = this.needUpdateCache.iterator();
+          while (((Iterator)localObject2).hasNext())
           {
-            HashMap localHashMap = (HashMap)localIterator.next();
-            DanceLog.printFrameQueue("GLFrameImage", "updateGLFrameImageCache itemSize=" + localHashMap.size());
+            HashMap localHashMap = (HashMap)((Iterator)localObject2).next();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("updateGLFrameImageCache itemSize=");
+            localStringBuilder.append(localHashMap.size());
+            DanceLog.printFrameQueue("GLFrameImage", localStringBuilder.toString());
             GLFrameImage.updateGLFrameImageCache(localHashMap);
             localHashMap.clear();
           }
         }
+        this.needUpdateCache.clear();
+        return;
       }
-      this.needUpdateCache.clear();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.TrAsyncTextureLoad
  * JD-Core Version:    0.7.0.1
  */

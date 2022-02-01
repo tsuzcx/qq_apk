@@ -35,7 +35,19 @@ public final class stLinkConfig
   
   public String toString()
   {
-    return "stLinkConfig {openCallWeishi=" + this.openCallWeishi + ", openDownloadWeishi=" + this.openDownloadWeishi + ", callCount=" + this.callCount + ", downloadCount=" + this.downloadCount + ", isOpenVideoPage=" + this.isOpenVideoPage + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("stLinkConfig {openCallWeishi=");
+    localStringBuilder.append(this.openCallWeishi);
+    localStringBuilder.append(", openDownloadWeishi=");
+    localStringBuilder.append(this.openDownloadWeishi);
+    localStringBuilder.append(", callCount=");
+    localStringBuilder.append(this.callCount);
+    localStringBuilder.append(", downloadCount=");
+    localStringBuilder.append(this.downloadCount);
+    localStringBuilder.append(", isOpenVideoPage=");
+    localStringBuilder.append(this.isOpenVideoPage);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -49,7 +61,7 @@ public final class stLinkConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stLinkConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -20,18 +20,20 @@ public class AuthorizeConfigServlet
       return;
     }
     Bundle localBundle = paramIntent.getExtras();
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (byte[] arrayOfByte = WupUtil.b(paramFromServiceMsg.getWupBuffer());; arrayOfByte = null)
+    byte[] arrayOfByte = null;
+    if (paramFromServiceMsg.isSuccess())
     {
-      localBundle.putByteArray("data", arrayOfByte);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("MSFServlet", 2, "onReceive exit");
-      return;
+      arrayOfByte = WupUtil.b(paramFromServiceMsg.getWupBuffer());
+    }
+    else
+    {
       localBundle.putString("data_error_msg", paramFromServiceMsg.getBusinessFailMsg());
       localBundle.putInt("data_error_code", paramFromServiceMsg.getBusinessFailCode());
+    }
+    localBundle.putByteArray("data", arrayOfByte);
+    notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), localBundle, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("MSFServlet", 2, "onReceive exit");
     }
   }
   
@@ -42,16 +44,23 @@ public class AuthorizeConfigServlet
     }
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
     paramPacket.setSSOCommand(paramIntent.getStringExtra("cmd"));
-    paramPacket.putSendData(WupUtil.a(arrayOfByte));
-    paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+    if ((arrayOfByte != null) && (WupUtil.a(arrayOfByte) != null))
+    {
+      paramPacket.putSendData(WupUtil.a(arrayOfByte));
+      paramPacket.setTimeout(paramIntent.getLongExtra("timeout", 30000L));
+      if (QLog.isColorLevel()) {
+        QLog.i("MSFServlet", 2, "onSend exit");
+      }
+      return;
+    }
     if (QLog.isColorLevel()) {
-      QLog.i("MSFServlet", 2, "onSend exit");
+      QLog.d("MSFServlet", 2, new Object[] { "onSend data is null:", arrayOfByte });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfigServlet
  * JD-Core Version:    0.7.0.1
  */

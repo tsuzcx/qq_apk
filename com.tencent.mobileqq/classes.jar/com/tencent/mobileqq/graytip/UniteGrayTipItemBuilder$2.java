@@ -9,7 +9,7 @@ import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager;
 import com.tencent.mobileqq.emoticon.EmojiStickerManager.StickerDoubleClickListener;
 import com.tencent.mobileqq.vas.IndividuationUrlHelper;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 
 class UniteGrayTipItemBuilder$2
   implements EmojiStickerManager.StickerDoubleClickListener
@@ -24,21 +24,15 @@ class UniteGrayTipItemBuilder$2
     {
       localViewParent = localViewParent.getParent();
       if ((localViewParent instanceof ChatXListView)) {
-        EmojiStickerManager.k = ((ChatXListView)localViewParent).getPositionForView(paramView);
+        EmojiStickerManager.h = ((ChatXListView)localViewParent).getPositionForView(paramView);
       }
     }
     paramView = new Intent(this.a.a.getApp(), QQBrowserActivity.class);
     paramView.setFlags(268435456);
+    int i = 1;
     paramView.putExtra("vasUsePreWebview", true);
-    VasWebviewUtil.openQQBrowserWithoutAD(this.a.a.getApp(), str, -1L, paramView, false, -1);
-    int i;
-    if (EmojiStickerManager.a().a == 0) {
-      i = 1;
-    }
-    for (;;)
-    {
-      VasWebviewUtil.reportCommercialDrainage(this.a.a.getCurrentUin(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-      return;
+    VasWebviewUtil.b(this.a.a.getApp(), str, -1L, paramView, false, -1);
+    if (EmojiStickerManager.a().a != 0) {
       if (EmojiStickerManager.a().a == 1) {
         i = 2;
       } else if (EmojiStickerManager.a().a == 3000) {
@@ -47,11 +41,12 @@ class UniteGrayTipItemBuilder$2
         i = -1;
       }
     }
+    VasWebviewUtil.a(this.a.a.getCurrentUin(), "Stick", "ClickDetail", String.valueOf(i), 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.graytip.UniteGrayTipItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

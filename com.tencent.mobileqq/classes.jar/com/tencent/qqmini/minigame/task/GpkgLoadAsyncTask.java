@@ -43,32 +43,50 @@ public class GpkgLoadAsyncTask
   
   private void loadGpkgByMiniAppInfo(MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo == null) || (paramMiniAppInfo.appId == null))
+    if ((paramMiniAppInfo != null) && (paramMiniAppInfo.appId != null))
     {
-      QMLog.e("GpkgLoadAsyncTask", "[Gpkg] loadGpkgByConfig failed " + paramMiniAppInfo);
-      onTaskFailed(2002, "配置错误");
+      if ((this.miniGamePkg != null) && (paramMiniAppInfo.appId.equals(this.miniGamePkg.appId)))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[Gpkg] loadGpkgByConfig appid ");
+        ((StringBuilder)localObject).append(paramMiniAppInfo.appId);
+        ((StringBuilder)localObject).append(" has loaded.");
+        QMLog.i("GpkgLoadAsyncTask", ((StringBuilder)localObject).toString());
+        onTaskSucceed();
+        return;
+      }
+      localObject = this.mLoadingAppId;
+      if ((localObject != null) && (((String)localObject).equals(paramMiniAppInfo.appId)))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[Gpkg] loadGpkgByConfig appid ");
+        ((StringBuilder)localObject).append(paramMiniAppInfo.appId);
+        ((StringBuilder)localObject).append(" is loading.");
+        QMLog.i("GpkgLoadAsyncTask", ((StringBuilder)localObject).toString());
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[Gpkg] start loadGpkgByConfig appid:");
+      ((StringBuilder)localObject).append(paramMiniAppInfo.appId);
+      QMLog.i("GpkgLoadAsyncTask", ((StringBuilder)localObject).toString());
+      this.mLoadingAppId = paramMiniAppInfo.appId;
+      this.miniGamePkg = null;
+      GpkgManager.getGpkgInfoByConfig(paramMiniAppInfo, new GpkgLoadAsyncTask.1(this, System.currentTimeMillis()));
       return;
     }
-    if ((this.miniGamePkg != null) && (paramMiniAppInfo.appId.equals(this.miniGamePkg.appId)))
-    {
-      QMLog.i("GpkgLoadAsyncTask", "[Gpkg] loadGpkgByConfig appid " + paramMiniAppInfo.appId + " has loaded.");
-      onTaskSucceed();
-      return;
-    }
-    if ((this.mLoadingAppId != null) && (this.mLoadingAppId.equals(paramMiniAppInfo.appId)))
-    {
-      QMLog.i("GpkgLoadAsyncTask", "[Gpkg] loadGpkgByConfig appid " + paramMiniAppInfo.appId + " is loading.");
-      return;
-    }
-    QMLog.i("GpkgLoadAsyncTask", "[Gpkg] start loadGpkgByConfig appid:" + paramMiniAppInfo.appId);
-    this.mLoadingAppId = paramMiniAppInfo.appId;
-    this.miniGamePkg = null;
-    GpkgManager.getGpkgInfoByConfig(paramMiniAppInfo, new GpkgLoadAsyncTask.1(this, System.currentTimeMillis()));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[Gpkg] loadGpkgByConfig failed ");
+    ((StringBuilder)localObject).append(paramMiniAppInfo);
+    QMLog.e("GpkgLoadAsyncTask", ((StringBuilder)localObject).toString());
+    onTaskFailed(2002, "配置错误");
   }
   
   public void executeAsync()
   {
-    QMLog.i("GpkgLoadAsyncTask", "executeAsync(). " + this.miniAppInfo);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("executeAsync(). ");
+    localStringBuilder.append(this.miniAppInfo);
+    QMLog.i("GpkgLoadAsyncTask", localStringBuilder.toString());
     loadGpkgByMiniAppInfo(this.miniAppInfo);
   }
   
@@ -83,57 +101,58 @@ public class GpkgLoadAsyncTask
   }
   
   @Nullable
-  public List<TaskExecutionStatics> getSubTaskExecutionStatics()
+  protected List<TaskExecutionStatics> getSubTaskExecutionStatics()
   {
-    if (this.mGpkgInitResult == null) {
-      this.mGpkgInitResult = new GpkgManager.Info();
-    }
-    for (int i = 1;; i = 0)
+    Object localObject1 = this.mGpkgInitResult;
+    int j = 1;
+    int i;
+    if (localObject1 == null)
     {
-      if (this.mGpkgInitResult.plugin == null) {
-        this.mGpkgInitResult.plugin = new GpkgManager.Info();
-      }
-      for (int j = 1;; j = 0)
-      {
-        long l = this.mGpkgInitResult.plugin.timeCostMs;
-        Object localObject;
-        label109:
-        ArrayList localArrayList;
-        if (j != 0)
-        {
-          localObject = TaskExecutionStatics.Status.CACHED;
-          if (this.mGpkgInitResult.plugin.message == null) {
-            break label220;
-          }
-          str = "|| " + this.mGpkgInitResult.plugin.message;
-          localObject = new TaskExecutionStatics("DownloadPlugin", 0L, l, (TaskExecutionStatics.Status)localObject, str, getStaticsFormDownload(this.mGpkgInitResult.plugin));
-          localArrayList = getStaticsFormDownload(this.mGpkgInitResult);
-          localArrayList.add(localObject);
-          l = this.mGpkgInitResult.timeCostMs;
-          if (i == 0) {
-            break label227;
-          }
-          localObject = TaskExecutionStatics.Status.CACHED;
-          label172:
-          if (this.mGpkgInitResult.message == null) {
-            break label235;
-          }
-        }
-        label220:
-        label227:
-        label235:
-        for (String str = this.mGpkgInitResult.message;; str = "")
-        {
-          return Collections.singletonList(new TaskExecutionStatics("DownloadGpkg", 0L, l, (TaskExecutionStatics.Status)localObject, str, localArrayList));
-          localObject = TaskExecutionStatics.Status.SUCCESS;
-          break;
-          str = "";
-          break label109;
-          localObject = TaskExecutionStatics.Status.SUCCESS;
-          break label172;
-        }
-      }
+      this.mGpkgInitResult = new GpkgManager.Info();
+      i = 1;
     }
+    else
+    {
+      i = 0;
+    }
+    if (this.mGpkgInitResult.plugin == null) {
+      this.mGpkgInitResult.plugin = new GpkgManager.Info();
+    } else {
+      j = 0;
+    }
+    long l = this.mGpkgInitResult.plugin.timeCostMs;
+    if (j != 0) {
+      localObject1 = TaskExecutionStatics.Status.CACHED;
+    } else {
+      localObject1 = TaskExecutionStatics.Status.SUCCESS;
+    }
+    Object localObject2 = this.mGpkgInitResult.plugin.message;
+    String str = "";
+    if (localObject2 != null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("|| ");
+      ((StringBuilder)localObject2).append(this.mGpkgInitResult.plugin.message);
+      localObject2 = ((StringBuilder)localObject2).toString();
+    }
+    else
+    {
+      localObject2 = "";
+    }
+    localObject1 = new TaskExecutionStatics("DownloadPlugin", 0L, l, (TaskExecutionStatics.Status)localObject1, (String)localObject2, getStaticsFormDownload(this.mGpkgInitResult.plugin));
+    ArrayList localArrayList = getStaticsFormDownload(this.mGpkgInitResult);
+    localArrayList.add(localObject1);
+    l = this.mGpkgInitResult.timeCostMs;
+    if (i != 0) {
+      localObject1 = TaskExecutionStatics.Status.CACHED;
+    } else {
+      localObject1 = TaskExecutionStatics.Status.SUCCESS;
+    }
+    localObject2 = str;
+    if (this.mGpkgInitResult.message != null) {
+      localObject2 = this.mGpkgInitResult.message;
+    }
+    return Collections.singletonList(new TaskExecutionStatics("DownloadGpkg", 0L, l, (TaskExecutionStatics.Status)localObject1, (String)localObject2, localArrayList));
   }
   
   public long getTotalRunDurationMs()
@@ -143,7 +162,11 @@ public class GpkgLoadAsyncTask
   
   public void reset()
   {
-    QMLog.i("GpkgLoadAsyncTask", "[Gpkg]" + this + " reset ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Gpkg]");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" reset ");
+    QMLog.i("GpkgLoadAsyncTask", localStringBuilder.toString());
     super.reset();
     this.miniGamePkg = null;
     this.mLoadingAppId = null;
@@ -156,7 +179,7 @@ public class GpkgLoadAsyncTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.task.GpkgLoadAsyncTask
  * JD-Core Version:    0.7.0.1
  */

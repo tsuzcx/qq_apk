@@ -7,7 +7,7 @@ import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditorAdapter;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.model.EditItemInfoBase;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo;
-import com.tencent.mobileqq.troop.utils.TroopTechReportUtils;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.mobileqq.widget.MessageProgressView;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -22,9 +22,9 @@ class VideoItem$1
   public void a(ImageInfo paramImageInfo)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem onNext. info position=", Integer.valueOf(paramImageInfo.c), ", old status=", Integer.valueOf(paramImageInfo.g), ", result=", paramImageInfo });
+      QLog.d("VideoItem", 2, new Object[] { "VideoItem onNext. info position=", Integer.valueOf(paramImageInfo.c), ", old status=", Integer.valueOf(paramImageInfo.f), ", result=", paramImageInfo });
     }
-    paramImageInfo.g = 3;
+    paramImageInfo.f = 3;
     paramImageInfo.e = 100;
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_JavaUtilMap.remove(paramImageInfo);
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor != null)
@@ -45,16 +45,16 @@ class VideoItem$1
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a((RecyclerView.ViewHolder)localObject, true);
       }
     }
-    TroopTechReportUtils.a("hw_entry_upload", "upload_video", "1", "", String.valueOf(System.currentTimeMillis() - paramImageInfo.a), "");
+    TroopReportor.a("hw_entry_upload", "upload_video", "1", "", String.valueOf(System.currentTimeMillis() - paramImageInfo.a), "");
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.a(0, false);
   }
   
   public void onError(@NonNull Error paramError)
   {
     if (QLog.isColorLevel()) {
-      QLog.d("VideoItem", 2, new Object[] { "VideoItem onError. info position=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.c), ", info old status=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.g) });
+      QLog.d("VideoItem", 2, new Object[] { "VideoItem onError. info position=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.c), ", info old status=", Integer.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.f) });
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.g = 2;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.f = 2;
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_JavaUtilMap.remove(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo);
     QLog.d("VideoItem", 1, paramError, new Object[0]);
     paramError = paramError.getMessage();
@@ -70,14 +70,14 @@ class VideoItem$1
           if ("200".equals(paramError))
           {
             QLog.d("VideoItem", 1, "VideoItem onError. upload size exceed.");
-            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext(), HardCodeUtil.a(2131716116), 0).a();
+            QQToast.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorXMediaEditor.getContext(), HardCodeUtil.a(2131716039), 0).a();
             this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiEditItemBase$OnEditItemListener.a((RecyclerView.ViewHolder)localObject);
           }
         }
       }
     }
     if (!paramError.startsWith("c_")) {
-      TroopTechReportUtils.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.a), "");
+      TroopReportor.a("hw_entry_upload", "upload_video", "2", paramError, String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.a), "");
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo.d.equals(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.jdField_a_of_type_JavaLangString)) {
       this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorUiVideoItem.a(0, false);
@@ -86,7 +86,7 @@ class VideoItem$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.ui.VideoItem.1
  * JD-Core Version:    0.7.0.1
  */

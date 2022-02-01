@@ -2,7 +2,7 @@ package com.tencent.tkd.topicsdk.videoprocess.videocapture;
 
 import android.graphics.Bitmap;
 import android.os.AsyncTask;
-import com.tencent.tkd.topicsdk.common.BitmapUtils;
+import com.tencent.tkd.topicsdk.common.CompressUtils;
 import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
 import kotlin.Metadata;
 import kotlin.jvm.functions.Function0;
@@ -29,7 +29,13 @@ public final class SavePicTask
   protected Boolean a(@NotNull Void... paramVarArgs)
   {
     Intrinsics.checkParameterIsNotNull(paramVarArgs, "voids");
-    return Boolean.valueOf(BitmapUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString));
+    boolean bool;
+    if (CompressUtils.a(this.jdField_a_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_JavaLangString, null, 0, 12, null) == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    return Boolean.valueOf(bool);
   }
   
   public final void a()
@@ -37,26 +43,27 @@ public final class SavePicTask
     ThreadManagerKt.c((Function0)new SavePicTask.startDownload.1(this));
   }
   
+  public final void a(@Nullable SavePicTask.DownloadListener paramDownloadListener)
+  {
+    this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureSavePicTask$DownloadListener = paramDownloadListener;
+  }
+  
   protected void a(boolean paramBoolean)
   {
     super.onPostExecute(Boolean.valueOf(paramBoolean));
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureSavePicTask$DownloadListener == null) {}
-    SavePicTask.DownloadListener localDownloadListener;
-    do
-    {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-        localDownloadListener = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureSavePicTask$DownloadListener;
-      } while (localDownloadListener == null);
-      localDownloadListener.a(0L);
+    SavePicTask.DownloadListener localDownloadListener = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureSavePicTask$DownloadListener;
+    if (localDownloadListener == null) {
       return;
-      localDownloadListener = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessVideocaptureSavePicTask$DownloadListener;
-    } while (localDownloadListener == null);
-    localDownloadListener.a(0);
+    }
+    if (paramBoolean)
+    {
+      if (localDownloadListener != null) {
+        localDownloadListener.a(0L);
+      }
+    }
+    else if (localDownloadListener != null) {
+      localDownloadListener.b(0L);
+    }
   }
   
   protected void onPreExecute()
@@ -70,7 +77,7 @@ public final class SavePicTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.videocapture.SavePicTask
  * JD-Core Version:    0.7.0.1
  */

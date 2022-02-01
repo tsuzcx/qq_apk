@@ -129,12 +129,32 @@ public class OpenSdkParams
   
   public String toString()
   {
-    return "OpenSdkParams{mUid=" + this.mUid + ", mSelfUid=" + this.mSelfUid + ", mRoomId=" + this.mRoomId + ", mLiveType=" + this.mLiveType + ", mRenderViewContainer=" + this.mRenderViewContainer + ", mCoverBmp=" + this.mCoverBmp + ", mSwitchRoom=" + this.mSwitchRoom + ", mCurrentRoles='" + this.mCurrentRoles + '\'' + ", authEncryptionType=" + this.authEncryptionType + '}';
+    StringBuilder localStringBuilder = new StringBuilder("OpenSdkParams{mUid=");
+    localStringBuilder.append(this.mUid);
+    localStringBuilder.append(", mSelfUid=");
+    localStringBuilder.append(this.mSelfUid);
+    localStringBuilder.append(", mRoomId=");
+    localStringBuilder.append(this.mRoomId);
+    localStringBuilder.append(", mLiveType=");
+    localStringBuilder.append(this.mLiveType);
+    localStringBuilder.append(", mRenderViewContainer=");
+    localStringBuilder.append(this.mRenderViewContainer);
+    localStringBuilder.append(", mCoverBmp=");
+    localStringBuilder.append(this.mCoverBmp);
+    localStringBuilder.append(", mSwitchRoom=");
+    localStringBuilder.append(this.mSwitchRoom);
+    localStringBuilder.append(", mCurrentRoles='");
+    localStringBuilder.append(this.mCurrentRoles);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", authEncryptionType=");
+    localStringBuilder.append(this.authEncryptionType);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.opensdk.params.OpenSdkParams
  * JD-Core Version:    0.7.0.1
  */

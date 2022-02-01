@@ -101,142 +101,147 @@ class FastScroller
   
   private int getThumbPositionForListPosition(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 0;
     if ((this.mSectionIndexer == null) || (this.mListAdapter == null)) {
       getSectionsFromIndexer();
     }
-    if ((this.mSectionIndexer == null) || (!this.mMatchDragPosition)) {
-      paramInt1 = (this.mList.getHeight() - this.mThumbH) * paramInt1 / (paramInt3 - paramInt2);
-    }
-    int j;
-    do
+    if ((this.mSectionIndexer != null) && (this.mMatchDragPosition))
     {
+      int j = this.mListOffset;
+      int k = paramInt1 - j;
+      if (k < 0) {
+        return 0;
+      }
+      int m = this.mList.getHeight() - this.mThumbH;
+      paramInt1 = this.mSectionIndexer.getSectionForPosition(k);
+      int i = this.mSectionIndexer.getPositionForSection(paramInt1);
+      int n = this.mSectionIndexer.getPositionForSection(paramInt1 + 1);
+      int i1 = this.mSections.length;
+      View localView = this.mList.getChildAt(0);
+      if (localView == null) {
+        f = 0.0F;
+      } else {
+        f = k + (this.mList.getPaddingTop() - localView.getTop()) / localView.getHeight();
+      }
+      float f = (f - i) / (n - i);
+      i = (int)((paramInt1 + f) / i1 * m);
+      paramInt1 = i;
+      if (k > 0)
+      {
+        paramInt1 = i;
+        if (k + paramInt2 == paramInt3 - j)
+        {
+          localView = this.mList.getChildAt(paramInt2 - 1);
+          f = (this.mList.getHeight() - this.mList.getPaddingBottom() - localView.getTop()) / localView.getHeight();
+          paramInt1 = (int)(i + (m - i) * f);
+        }
+      }
       return paramInt1;
-      j = paramInt1 - this.mListOffset;
-      paramInt1 = i;
-    } while (j < 0);
-    int k = this.mListOffset;
-    int m = this.mList.getHeight() - this.mThumbH;
-    paramInt1 = this.mSectionIndexer.getSectionForPosition(j);
-    i = this.mSectionIndexer.getPositionForSection(paramInt1);
-    int n = this.mSectionIndexer.getPositionForSection(paramInt1 + 1);
-    int i1 = this.mSections.length;
-    View localView = this.mList.getChildAt(0);
-    if (localView == null) {}
-    for (float f1 = 0.0F;; f1 = (this.mList.getPaddingTop() - localView.getTop()) / localView.getHeight() + f1)
-    {
-      i = (int)(((f1 - i) / (n - i) + paramInt1) / i1 * m);
-      paramInt1 = i;
-      if (j <= 0) {
-        break;
-      }
-      paramInt1 = i;
-      if (j + paramInt2 != paramInt3 - k) {
-        break;
-      }
-      localView = this.mList.getChildAt(paramInt2 - 1);
-      f1 = (this.mList.getHeight() - this.mList.getPaddingBottom() - localView.getTop()) / localView.getHeight();
-      float f2 = i;
-      return (int)((m - i) * f1 + f2);
-      f1 = j;
     }
+    return (this.mList.getHeight() - this.mThumbH) * paramInt1 / (paramInt3 - paramInt2);
   }
   
   @TargetApi(11)
   private void init(Context paramContext)
   {
-    boolean bool = true;
-    int i = 0;
     TypedArray localTypedArray = paramContext.getTheme().obtainStyledAttributes(ATTRS);
-    for (;;)
+    boolean bool = true;
+    try
     {
-      try
-      {
-        useThumbDrawable(paramContext, localTypedArray.getDrawable(1));
-        this.mTrackDrawable = localTypedArray.getDrawable(2);
-        this.mOverlayDrawableLeft = localTypedArray.getDrawable(3);
-        this.mOverlayDrawableRight = localTypedArray.getDrawable(4);
-        this.mOverlayPosition = localTypedArray.getInt(5, 0);
-        this.mScrollCompleted = true;
-        getSectionsFromIndexer();
-        this.mOverlaySize = paramContext.getResources().getDimensionPixelSize(2131297028);
-        this.mOverlayPos = new RectF();
-        this.mScrollFade = new FastScroller.ScrollFade(this);
-        this.mPaint = new Paint();
-        this.mPaint.setAntiAlias(true);
-        this.mPaint.setTextAlign(Paint.Align.CENTER);
-        this.mPaint.setTextSize(this.mOverlaySize / 2);
-        int j = localTypedArray.getColorStateList(0).getDefaultColor();
-        this.mPaint.setColor(j);
-        this.mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
-        if ((this.mList.getWidth() > 0) && (this.mList.getHeight() > 0)) {
-          onSizeChanged(this.mList.getWidth(), this.mList.getHeight(), 0, 0);
-        }
-        this.mState = 0;
-        refreshDrawableState();
-        localTypedArray.recycle();
-        this.mScaledTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
-        if (paramContext.getApplicationInfo().targetSdkVersion >= 11)
-        {
-          this.mMatchDragPosition = bool;
-          if (VersionUtils.e()) {
-            i = this.mList.getVerticalScrollbarPosition();
-          }
-          setScrollbarPosition(i);
-          return;
-        }
+      useThumbDrawable(paramContext, localTypedArray.getDrawable(1));
+      this.mTrackDrawable = localTypedArray.getDrawable(2);
+      this.mOverlayDrawableLeft = localTypedArray.getDrawable(3);
+      this.mOverlayDrawableRight = localTypedArray.getDrawable(4);
+      int i = 0;
+      this.mOverlayPosition = localTypedArray.getInt(5, 0);
+      this.mScrollCompleted = true;
+      getSectionsFromIndexer();
+      this.mOverlaySize = paramContext.getResources().getDimensionPixelSize(2131297010);
+      this.mOverlayPos = new RectF();
+      this.mScrollFade = new FastScroller.ScrollFade(this);
+      this.mPaint = new Paint();
+      this.mPaint.setAntiAlias(true);
+      this.mPaint.setTextAlign(Paint.Align.CENTER);
+      this.mPaint.setTextSize(this.mOverlaySize / 2);
+      int j = localTypedArray.getColorStateList(0).getDefaultColor();
+      this.mPaint.setColor(j);
+      this.mPaint.setStyle(Paint.Style.FILL_AND_STROKE);
+      if ((this.mList.getWidth() > 0) && (this.mList.getHeight() > 0)) {
+        onSizeChanged(this.mList.getWidth(), this.mList.getHeight(), 0, 0);
       }
-      finally
-      {
-        localTypedArray.recycle();
+      this.mState = 0;
+      refreshDrawableState();
+      localTypedArray.recycle();
+      this.mScaledTouchSlop = ViewConfiguration.get(paramContext).getScaledTouchSlop();
+      if (paramContext.getApplicationInfo().targetSdkVersion < 11) {
+        bool = false;
       }
-      bool = false;
+      this.mMatchDragPosition = bool;
+      if (VersionUtils.e()) {
+        i = this.mList.getVerticalScrollbarPosition();
+      }
+      setScrollbarPosition(i);
+      return;
+    }
+    finally
+    {
+      localTypedArray.recycle();
     }
   }
   
   private void refreshDrawableState()
   {
-    if (this.mState == 3) {}
-    for (int[] arrayOfInt = PRESSED_STATES;; arrayOfInt = DEFAULT_STATES)
-    {
-      if ((this.mThumbDrawable != null) && (this.mThumbDrawable.isStateful())) {
-        this.mThumbDrawable.setState(arrayOfInt);
-      }
-      if ((this.mTrackDrawable != null) && (this.mTrackDrawable.isStateful())) {
-        this.mTrackDrawable.setState(arrayOfInt);
-      }
-      return;
+    int[] arrayOfInt;
+    if (this.mState == 3) {
+      arrayOfInt = PRESSED_STATES;
+    } else {
+      arrayOfInt = DEFAULT_STATES;
+    }
+    Drawable localDrawable = this.mThumbDrawable;
+    if ((localDrawable != null) && (localDrawable.isStateful())) {
+      this.mThumbDrawable.setState(arrayOfInt);
+    }
+    localDrawable = this.mTrackDrawable;
+    if ((localDrawable != null) && (localDrawable.isStateful())) {
+      this.mTrackDrawable.setState(arrayOfInt);
     }
   }
   
   private void resetThumbPos()
   {
     int i = this.mList.getWidth();
-    switch (this.mPosition)
-    {
+    int j = this.mPosition;
+    if (j != 0) {
+      if (j != 1)
+      {
+        if (j != 2) {
+          break label69;
+        }
+      }
+      else
+      {
+        this.mThumbDrawable.setBounds(0, 0, this.mThumbW, this.mThumbH);
+        break label69;
+      }
     }
-    for (;;)
-    {
-      this.mThumbDrawable.setAlpha(208);
-      return;
-      this.mThumbDrawable.setBounds(i - this.mThumbW, 0, i, this.mThumbH);
-      continue;
-      this.mThumbDrawable.setBounds(0, 0, this.mThumbW, this.mThumbH);
-    }
+    this.mThumbDrawable.setBounds(i - this.mThumbW, 0, i, this.mThumbH);
+    label69:
+    this.mThumbDrawable.setAlpha(208);
   }
   
   private void useThumbDrawable(Context paramContext, Drawable paramDrawable)
   {
     this.mThumbDrawable = paramDrawable;
-    if ((paramDrawable instanceof NinePatchDrawable)) {
-      this.mThumbW = paramContext.getResources().getDimensionPixelSize(2131297030);
-    }
-    for (this.mThumbH = paramContext.getResources().getDimensionPixelSize(2131297029);; this.mThumbH = paramDrawable.getIntrinsicHeight())
+    if ((paramDrawable instanceof NinePatchDrawable))
     {
-      this.mChangedBounds = true;
-      return;
-      this.mThumbW = paramDrawable.getIntrinsicWidth();
+      this.mThumbW = paramContext.getResources().getDimensionPixelSize(2131297012);
+      this.mThumbH = paramContext.getResources().getDimensionPixelSize(2131297011);
     }
+    else
+    {
+      this.mThumbW = paramDrawable.getIntrinsicWidth();
+      this.mThumbH = paramDrawable.getIntrinsicHeight();
+    }
+    this.mChangedBounds = true;
   }
   
   void beginDrag()
@@ -245,9 +250,10 @@ class FastScroller
     if ((this.mListAdapter == null) && (this.mList != null)) {
       getSectionsFromIndexer();
     }
-    if (this.mList != null)
+    AbsListView localAbsListView = this.mList;
+    if (localAbsListView != null)
     {
-      this.mList.requestDisallowInterceptTouchEvent(true);
+      localAbsListView.requestDisallowInterceptTouchEvent(true);
       this.mList.reportScrollStateChange(1);
       cancelFling();
     }
@@ -261,100 +267,110 @@ class FastScroller
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.mState == 0) {}
-    int k;
-    int m;
-    int i;
-    do
-    {
+    if (this.mState == 0) {
       return;
-      k = this.mThumbY;
-      m = this.mList.getWidth();
-      Object localObject1 = this.mScrollFade;
-      i = -1;
-      int j;
-      if (this.mState == 4)
-      {
-        j = ((FastScroller.ScrollFade)localObject1).getAlpha();
-        if (j < 104) {
-          this.mThumbDrawable.setAlpha(j * 2);
-        }
+    }
+    int k = this.mThumbY;
+    int m = this.mList.getWidth();
+    Object localObject1 = this.mScrollFade;
+    int i = -1;
+    int j;
+    int n;
+    if (this.mState == 4)
+    {
+      j = ((FastScroller.ScrollFade)localObject1).getAlpha();
+      if (j < 104) {
+        this.mThumbDrawable.setAlpha(j * 2);
       }
-      switch (this.mPosition)
-      {
-      default: 
-        i = 0;
-        this.mThumbDrawable.setBounds(i, 0, this.mThumbW + i, this.mThumbH);
-        this.mChangedBounds = true;
-        i = j;
-        if (this.mTrackDrawable != null)
+      i = this.mPosition;
+      if (i != 0) {
+        if (i != 1)
         {
-          localObject1 = this.mThumbDrawable.getBounds();
-          int i1 = ((Rect)localObject1).left;
-          j = (((Rect)localObject1).bottom - ((Rect)localObject1).top) / 2;
-          int n = this.mTrackDrawable.getIntrinsicWidth();
-          i1 = i1 + this.mThumbW / 2 - n / 2;
-          this.mTrackDrawable.setBounds(i1, j, n + i1, this.mList.getHeight() - j);
-          this.mTrackDrawable.draw(paramCanvas);
-        }
-        paramCanvas.translate(0.0F, k);
-        this.mThumbDrawable.draw(paramCanvas);
-        paramCanvas.translate(0.0F, -k);
-        if ((this.mState != 3) || (!this.mDrawOverlay)) {
-          continue;
-        }
-        if (this.mOverlayPosition == 1) {
-          switch (this.mPosition)
+          if (i != 2)
           {
+            i = 0;
+            break label127;
           }
         }
-        break;
+        else
+        {
+          i = this.mThumbW;
+          n = -i;
+          i = i * j / 208 + n;
+          break label127;
+        }
       }
-      for (i = Math.max(0, this.mThumbDrawable.getBounds().left - this.mThumbW - this.mOverlaySize);; i = Math.min(this.mThumbDrawable.getBounds().right + this.mThumbW, this.mList.getWidth() - this.mOverlaySize))
+      i = m - this.mThumbW * j / 208;
+      label127:
+      this.mThumbDrawable.setBounds(i, 0, this.mThumbW + i, this.mThumbH);
+      this.mChangedBounds = true;
+      i = j;
+    }
+    if (this.mTrackDrawable != null)
+    {
+      localObject1 = this.mThumbDrawable.getBounds();
+      int i1 = ((Rect)localObject1).left;
+      j = (((Rect)localObject1).bottom - ((Rect)localObject1).top) / 2;
+      n = this.mTrackDrawable.getIntrinsicWidth();
+      i1 = i1 + this.mThumbW / 2 - n / 2;
+      this.mTrackDrawable.setBounds(i1, j, n + i1, this.mList.getHeight() - j);
+      this.mTrackDrawable.draw(paramCanvas);
+    }
+    paramCanvas.translate(0.0F, k);
+    this.mThumbDrawable.draw(paramCanvas);
+    paramCanvas.translate(0.0F, -k);
+    if ((this.mState == 3) && (this.mDrawOverlay))
+    {
+      if (this.mOverlayPosition == 1)
       {
-        j = Math.max(0, Math.min((this.mThumbH - this.mOverlaySize) / 2 + k, this.mList.getHeight() - this.mOverlaySize));
+        if (this.mPosition != 1) {
+          i = Math.max(0, this.mThumbDrawable.getBounds().left - this.mThumbW - this.mOverlaySize);
+        } else {
+          i = Math.min(this.mThumbDrawable.getBounds().right + this.mThumbW, this.mList.getWidth() - this.mOverlaySize);
+        }
+        j = Math.max(0, Math.min(k + (this.mThumbH - this.mOverlaySize) / 2, this.mList.getHeight() - this.mOverlaySize));
         localObject1 = this.mOverlayPos;
         ((RectF)localObject1).left = i;
         ((RectF)localObject1).right = (((RectF)localObject1).left + this.mOverlaySize);
         ((RectF)localObject1).top = j;
         ((RectF)localObject1).bottom = (((RectF)localObject1).top + this.mOverlaySize);
-        if (this.mOverlayDrawable != null) {
-          this.mOverlayDrawable.setBounds((int)((RectF)localObject1).left, (int)((RectF)localObject1).top, (int)((RectF)localObject1).right, (int)((RectF)localObject1).bottom);
+        localObject2 = this.mOverlayDrawable;
+        if (localObject2 != null) {
+          ((Drawable)localObject2).setBounds((int)((RectF)localObject1).left, (int)((RectF)localObject1).top, (int)((RectF)localObject1).right, (int)((RectF)localObject1).bottom);
         }
-        if (this.mOverlayDrawable != null) {
-          this.mOverlayDrawable.draw(paramCanvas);
-        }
-        localObject1 = this.mPaint;
-        float f1 = ((Paint)localObject1).descent();
-        RectF localRectF = this.mOverlayPos;
-        Object localObject2 = this.mTmpRect;
-        if (this.mOverlayDrawable != null) {
-          this.mOverlayDrawable.getPadding((Rect)localObject2);
-        }
-        i = (((Rect)localObject2).right - ((Rect)localObject2).left) / 2;
-        j = (((Rect)localObject2).bottom - ((Rect)localObject2).top) / 2;
-        localObject2 = this.mSectionText;
-        float f2 = (int)(localRectF.left + localRectF.right) / 2 - i;
-        float f3 = localRectF.bottom;
-        paramCanvas.drawText((String)localObject2, f2, (int)(localRectF.top + f3) / 2 + this.mOverlaySize / 4 - f1 - j, (Paint)localObject1);
-        return;
-        i = m - this.mThumbW * j / 208;
-        break;
-        i = -this.mThumbW + this.mThumbW * j / 208;
-        break;
       }
-    } while (this.mState != 4);
-    if (i == 0)
-    {
-      setState(0);
+      localObject1 = this.mOverlayDrawable;
+      if (localObject1 != null) {
+        ((Drawable)localObject1).draw(paramCanvas);
+      }
+      localObject1 = this.mPaint;
+      float f = ((Paint)localObject1).descent();
+      Object localObject2 = this.mOverlayPos;
+      Rect localRect = this.mTmpRect;
+      Drawable localDrawable = this.mOverlayDrawable;
+      if (localDrawable != null) {
+        localDrawable.getPadding(localRect);
+      }
+      i = (localRect.right - localRect.left) / 2;
+      j = (localRect.bottom - localRect.top) / 2;
+      paramCanvas.drawText(this.mSectionText, (int)(((RectF)localObject2).left + ((RectF)localObject2).right) / 2 - i, (int)(((RectF)localObject2).bottom + ((RectF)localObject2).top) / 2 + this.mOverlaySize / 4 - f - j, (Paint)localObject1);
       return;
     }
-    if (this.mTrackDrawable != null)
+    if (this.mState == 4)
     {
-      this.mList.invalidate(m - this.mThumbW, 0, m, this.mList.getHeight());
-      return;
+      if (i == 0)
+      {
+        setState(0);
+        return;
+      }
+      if (this.mTrackDrawable != null)
+      {
+        paramCanvas = this.mList;
+        paramCanvas.invalidate(m - this.mThumbW, 0, m, paramCanvas.getHeight());
+        return;
+      }
+      this.mList.invalidate(m - this.mThumbW, k, m, this.mThumbH + k);
     }
-    this.mList.invalidate(m - this.mThumbW, k, m, this.mThumbH + k);
   }
   
   SectionIndexer getSectionIndexer()
@@ -377,8 +393,9 @@ class FastScroller
     Object localObject1 = localObject2;
     if ((localObject2 instanceof HeaderViewListAdapter))
     {
-      this.mListOffset = ((HeaderViewListAdapter)localObject2).getHeadersCount();
-      localObject1 = ((HeaderViewListAdapter)localObject2).getWrappedAdapter();
+      localObject1 = (HeaderViewListAdapter)localObject2;
+      this.mListOffset = ((HeaderViewListAdapter)localObject1).getHeadersCount();
+      localObject1 = ((HeaderViewListAdapter)localObject1).getWrappedAdapter();
     }
     if ((localObject1 instanceof ExpandableListConnector))
     {
@@ -390,20 +407,20 @@ class FastScroller
         this.mSections = this.mSectionIndexer.getSections();
       }
     }
-    do
+    else if ((localObject1 instanceof SectionIndexer))
     {
-      return;
-      if (!(localObject1 instanceof SectionIndexer)) {
-        break;
-      }
       this.mListAdapter = ((BaseAdapter)localObject1);
       this.mSectionIndexer = ((SectionIndexer)localObject1);
       this.mSections = this.mSectionIndexer.getSections();
-    } while (this.mSections != null);
-    this.mSections = new String[] { " " };
-    return;
-    this.mListAdapter = ((BaseAdapter)localObject1);
-    this.mSections = new String[] { " " };
+      if (this.mSections == null) {
+        this.mSections = new String[] { " " };
+      }
+    }
+    else
+    {
+      this.mListAdapter = ((BaseAdapter)localObject1);
+      this.mSections = new String[] { " " };
+    }
   }
   
   public int getState()
@@ -423,27 +440,39 @@ class FastScroller
   
   boolean isPointInside(float paramFloat1, float paramFloat2)
   {
-    int i;
-    switch (this.mPosition)
+    int i = this.mPosition;
+    boolean bool2 = false;
+    if (i != 1) {
+      if (paramFloat1 <= this.mList.getWidth() - this.mThumbW) {}
+    }
+    for (;;)
     {
-    default: 
-      if (paramFloat1 > this.mList.getWidth() - this.mThumbW) {
-        i = 1;
-      }
+      i = 1;
       break;
-    }
-    while ((i != 0) && ((this.mTrackDrawable != null) || ((paramFloat2 >= this.mThumbY) && (paramFloat2 <= this.mThumbY + this.mThumbH))))
-    {
-      return true;
-      i = 0;
-      continue;
-      if (paramFloat1 < this.mThumbW) {
-        i = 1;
-      } else {
+      do
+      {
         i = 0;
+        break;
+      } while (paramFloat1 >= this.mThumbW);
+    }
+    boolean bool1 = bool2;
+    if (i != 0) {
+      if (this.mTrackDrawable == null)
+      {
+        i = this.mThumbY;
+        bool1 = bool2;
+        if (paramFloat2 >= i)
+        {
+          bool1 = bool2;
+          if (paramFloat2 > i + this.mThumbH) {}
+        }
+      }
+      else
+      {
+        bool1 = true;
       }
     }
-    return false;
+    return bool1;
   }
   
   boolean isVisible()
@@ -453,25 +482,24 @@ class FastScroller
   
   boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction() & 0xFF)
+    int i = paramMotionEvent.getAction() & 0xFF;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if ((this.mState > 0) && (isPointInside(paramMotionEvent.getX(), paramMotionEvent.getY())))
-      {
-        if (!this.mList.isInScrollingContainer())
-        {
-          beginDrag();
-          return true;
-        }
-        this.mInitialTouchY = paramMotionEvent.getY();
-        startPendingDrag();
-        continue;
+      if ((i == 1) || (i == 3)) {
         cancelPendingDrag();
       }
     }
+    else if ((this.mState > 0) && (isPointInside(paramMotionEvent.getX(), paramMotionEvent.getY())))
+    {
+      if (!this.mList.isInScrollingContainer())
+      {
+        beginDrag();
+        return true;
+      }
+      this.mInitialTouchY = paramMotionEvent.getY();
+      startPendingDrag();
+    }
+    return false;
   }
   
   void onItemCountChanged(int paramInt1, int paramInt2)
@@ -483,54 +511,48 @@ class FastScroller
   
   void onScroll(AbsListView paramAbsListView, int paramInt1, int paramInt2, int paramInt3)
   {
-    boolean bool;
     if ((this.mItemCount != paramInt3) && (paramInt2 > 0))
     {
       this.mItemCount = paramInt3;
-      if (this.mItemCount / paramInt2 >= MIN_PAGES)
-      {
+      boolean bool;
+      if (this.mItemCount / paramInt2 >= MIN_PAGES) {
         bool = true;
-        this.mLongList = bool;
+      } else {
+        bool = false;
       }
+      this.mLongList = bool;
     }
-    else
+    if (this.mAlwaysShow) {
+      this.mLongList = true;
+    }
+    if (!this.mLongList)
     {
-      if (this.mAlwaysShow) {
-        this.mLongList = true;
-      }
-      if (this.mLongList) {
-        break label78;
-      }
       if (this.mState != 0) {
         setState(0);
       }
+      return;
     }
-    label78:
-    do
+    if ((paramInt3 - paramInt2 > 0) && (this.mState != 3))
     {
-      do
+      this.mThumbY = getThumbPositionForListPosition(paramInt1, paramInt2, paramInt3);
+      if (this.mChangedBounds)
       {
-        do
-        {
-          return;
-          bool = false;
-          break;
-          if ((paramInt3 - paramInt2 > 0) && (this.mState != 3))
-          {
-            this.mThumbY = getThumbPositionForListPosition(paramInt1, paramInt2, paramInt3);
-            if (this.mChangedBounds)
-            {
-              resetThumbPos();
-              this.mChangedBounds = false;
-            }
-          }
-          this.mScrollCompleted = true;
-        } while (paramInt1 == this.mVisibleItem);
-        this.mVisibleItem = paramInt1;
-      } while (this.mState == 3);
+        resetThumbPos();
+        this.mChangedBounds = false;
+      }
+    }
+    this.mScrollCompleted = true;
+    if (paramInt1 == this.mVisibleItem) {
+      return;
+    }
+    this.mVisibleItem = paramInt1;
+    if (this.mState != 3)
+    {
       setState(2);
-    } while (this.mAlwaysShow);
-    this.mHandler.postDelayed(this.mScrollFade, 1500L);
+      if (!this.mAlwaysShow) {
+        this.mHandler.postDelayed(this.mScrollFade, 1500L);
+      }
+    }
   }
   
   public void onSectionsChanged()
@@ -540,79 +562,84 @@ class FastScroller
   
   void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mThumbDrawable != null) {
-      switch (this.mPosition)
-      {
-      default: 
-        this.mThumbDrawable.setBounds(paramInt1 - this.mThumbW, 0, paramInt1, this.mThumbH);
+    Object localObject = this.mThumbDrawable;
+    if (localObject != null) {
+      if (this.mPosition != 1) {
+        ((Drawable)localObject).setBounds(paramInt1 - this.mThumbW, 0, paramInt1, this.mThumbH);
+      } else {
+        ((Drawable)localObject).setBounds(0, 0, this.mThumbW, this.mThumbH);
       }
     }
-    for (;;)
+    if (this.mOverlayPosition == 0)
     {
-      if (this.mOverlayPosition == 0)
-      {
-        RectF localRectF = this.mOverlayPos;
-        localRectF.left = ((paramInt1 - this.mOverlaySize) / 2);
-        localRectF.right = (localRectF.left + this.mOverlaySize);
-        localRectF.top = (paramInt2 / 10);
-        localRectF.bottom = (localRectF.top + this.mOverlaySize);
-        if (this.mOverlayDrawable != null) {
-          this.mOverlayDrawable.setBounds((int)localRectF.left, (int)localRectF.top, (int)localRectF.right, (int)localRectF.bottom);
-        }
+      localObject = this.mOverlayPos;
+      ((RectF)localObject).left = ((paramInt1 - this.mOverlaySize) / 2);
+      ((RectF)localObject).right = (((RectF)localObject).left + this.mOverlaySize);
+      ((RectF)localObject).top = (paramInt2 / 10);
+      ((RectF)localObject).bottom = (((RectF)localObject).top + this.mOverlaySize);
+      Drawable localDrawable = this.mOverlayDrawable;
+      if (localDrawable != null) {
+        localDrawable.setBounds((int)((RectF)localObject).left, (int)((RectF)localObject).top, (int)((RectF)localObject).right, (int)((RectF)localObject).bottom);
       }
-      return;
-      this.mThumbDrawable.setBounds(0, 0, this.mThumbW, this.mThumbH);
     }
   }
   
   boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
+    int j = this.mState;
     int i = 0;
-    if (this.mState == 0) {}
-    int j;
-    int k;
-    label221:
-    do
-    {
-      do
-      {
-        return false;
-        j = paramMotionEvent.getAction();
-        if (j != 0) {
-          break;
-        }
-      } while (!isPointInside(paramMotionEvent.getX(), paramMotionEvent.getY()));
-      if (!this.mList.isInScrollingContainer())
-      {
-        beginDrag();
-        return true;
-      }
-      this.mInitialTouchY = paramMotionEvent.getY();
-      startPendingDrag();
+    if (j == 0) {
       return false;
+    }
+    j = paramMotionEvent.getAction();
+    if (j == 0)
+    {
+      if (isPointInside(paramMotionEvent.getX(), paramMotionEvent.getY()))
+      {
+        if (!this.mList.isInScrollingContainer())
+        {
+          beginDrag();
+          return true;
+        }
+        this.mInitialTouchY = paramMotionEvent.getY();
+        startPendingDrag();
+        return false;
+      }
+    }
+    else
+    {
+      int k;
+      int m;
       if (j == 1)
       {
         if (this.mPendingDrag)
         {
           beginDrag();
           k = this.mList.getHeight();
-          j = (int)paramMotionEvent.getY() - this.mThumbH + 10;
-          if (j >= 0) {
-            break label221;
+          i = (int)paramMotionEvent.getY();
+          m = this.mThumbH;
+          j = i - m + 10;
+          if (j < 0)
+          {
+            i = 0;
           }
-          i = 0;
-        }
-        for (;;)
-        {
+          else
+          {
+            i = j;
+            if (j + m > k) {
+              i = k - m;
+            }
+          }
           this.mThumbY = i;
           scrollTo(this.mThumbY / (k - this.mThumbH));
           cancelPendingDrag();
-          if (this.mState != 3) {
-            break;
-          }
-          if (this.mList != null)
+        }
+        if (this.mState == 3)
+        {
+          paramMotionEvent = this.mList;
+          if (paramMotionEvent != null)
           {
-            this.mList.requestDisallowInterceptTouchEvent(false);
+            paramMotionEvent.requestDisallowInterceptTouchEvent(false);
             this.mList.reportScrollStateChange(0);
             setState(2);
           }
@@ -621,219 +648,210 @@ class FastScroller
           if (!this.mAlwaysShow) {
             paramMotionEvent.postDelayed(this.mScrollFade, 1000L);
           }
-          if (this.mList != null) {
-            this.mList.invalidate();
+          paramMotionEvent = this.mList;
+          if (paramMotionEvent != null) {
+            paramMotionEvent.invalidate();
           }
           return true;
-          i = j;
-          if (this.mThumbH + j > k) {
-            i = k - this.mThumbH;
+        }
+      }
+      else if (j == 2)
+      {
+        AbsListView localAbsListView;
+        if ((this.mPendingDrag) && (Math.abs(paramMotionEvent.getY() - this.mInitialTouchY) > this.mScaledTouchSlop))
+        {
+          setState(3);
+          if ((this.mListAdapter == null) && (this.mList != null)) {
+            getSectionsFromIndexer();
+          }
+          localAbsListView = this.mList;
+          if (localAbsListView != null)
+          {
+            localAbsListView.requestDisallowInterceptTouchEvent(true);
+            this.mList.reportScrollStateChange(1);
+            cancelFling();
+            cancelPendingDrag();
           }
         }
-      }
-      if (j != 2) {
-        break;
-      }
-      if ((this.mPendingDrag) && (Math.abs(paramMotionEvent.getY() - this.mInitialTouchY) > this.mScaledTouchSlop))
-      {
-        setState(3);
-        if ((this.mListAdapter == null) && (this.mList != null)) {
-          getSectionsFromIndexer();
-        }
-        if (this.mList != null)
+        if (this.mState == 3)
         {
-          this.mList.requestDisallowInterceptTouchEvent(true);
-          this.mList.reportScrollStateChange(1);
-          cancelFling();
-          cancelPendingDrag();
+          localAbsListView = this.mList;
+          if (localAbsListView != null) {
+            j = localAbsListView.getHeight();
+          } else {
+            j = 0;
+          }
+          k = (int)paramMotionEvent.getY();
+          m = this.mThumbH;
+          k = k - m + 10;
+          if (k >= 0) {
+            if (k + m > j) {
+              i = j - m;
+            } else {
+              i = k;
+            }
+          }
+          if (Math.abs(this.mThumbY - i) < 2) {
+            return true;
+          }
+          this.mThumbY = i;
+          if (this.mScrollCompleted) {
+            scrollTo(this.mThumbY / (j - this.mThumbH));
+          }
+          return true;
         }
       }
-    } while (this.mState != 3);
-    if (this.mList != null)
-    {
-      j = this.mList.getHeight();
-      label355:
-      k = (int)paramMotionEvent.getY() - this.mThumbH + 10;
-      if (k >= 0) {
-        break label395;
-      }
-    }
-    for (;;)
-    {
-      if (Math.abs(this.mThumbY - i) < 2)
+      else if (j == 3)
       {
-        return true;
-        j = 0;
-        break label355;
-        label395:
-        if (this.mThumbH + k <= j) {
-          break label458;
-        }
-        i = j - this.mThumbH;
-        continue;
+        cancelPendingDrag();
       }
-      this.mThumbY = i;
-      if (this.mScrollCompleted) {
-        scrollTo(this.mThumbY / (j - this.mThumbH));
-      }
-      return true;
-      if (j != 3) {
-        break;
-      }
-      cancelPendingDrag();
-      return false;
-      label458:
-      i = k;
     }
+    return false;
   }
   
   void scrollTo(float paramFloat)
   {
     int i3 = this.mList.getCount();
+    boolean bool2 = false;
     this.mScrollCompleted = false;
-    float f1 = 1.0F / i3 / 8.0F;
+    float f2 = i3;
+    float f1 = 1.0F / f2 / 8.0F;
     Object[] arrayOfObject = this.mSections;
-    int i4;
     int j;
     int i;
-    int k;
-    int i1;
+    label236:
+    label248:
+    Object localObject;
     if ((arrayOfObject != null) && (arrayOfObject.length > 1))
     {
-      i4 = arrayOfObject.length;
-      j = (int)(i4 * paramFloat);
+      int i5 = arrayOfObject.length;
+      float f3 = i5;
+      j = (int)(paramFloat * f3);
       i = j;
-      if (j >= i4) {
-        i = i4 - 1;
+      if (j >= i5) {
+        i = i5 - 1;
       }
-      k = this.mSectionIndexer.getPositionForSection(i);
-      i1 = i + 1;
-      if (i >= i4 - 1) {
-        break label622;
+      j = this.mSectionIndexer.getPositionForSection(i);
+      int i4 = i + 1;
+      int i1;
+      if (i < i5 - 1) {
+        i1 = this.mSectionIndexer.getPositionForSection(i4);
+      } else {
+        i1 = i3;
       }
-    }
-    label587:
-    label590:
-    label593:
-    label622:
-    for (int n = this.mSectionIndexer.getPositionForSection(i + 1);; n = i3)
-    {
       int m;
-      if (n == k)
+      int k;
+      if (i1 == j)
       {
-        j = k;
         m = i;
-        if (m > 0)
-        {
-          m -= 1;
-          j = this.mSectionIndexer.getPositionForSection(m);
-          if (j != k)
-          {
-            k = j;
-            j = m;
-          }
-        }
-      }
-      for (;;)
-      {
-        int i2 = i1 + 1;
-        for (;;)
-        {
-          if ((i2 < i4) && (this.mSectionIndexer.getPositionForSection(i2) == n))
-          {
-            i2 += 1;
-            i1 += 1;
-            continue;
-            if (m != 0) {
-              break label593;
-            }
-            i2 = 0;
-            m = i;
-            k = j;
-            j = i2;
-            break;
-          }
-        }
-        float f2 = m / i4;
-        float f3 = i1 / i4;
-        if ((m == i) && (paramFloat - f2 < f1))
-        {
-          i = k;
-          if (i <= i3 - 1) {
-            break label590;
-          }
-          i = i3 - 1;
-        }
-        for (;;)
-        {
-          Object localObject;
-          if ((this.mList instanceof ExpandableListView))
-          {
-            localObject = (ExpandableListView)this.mList;
-            ((ExpandableListView)localObject).setSelectionFromTop(((ExpandableListView)localObject).getFlatListPosition(ExpandableListView.getPackedPositionForGroup(i + this.mListOffset)), 0);
-          }
-          boolean bool;
-          for (;;)
-          {
-            if (j >= 0)
-            {
-              localObject = arrayOfObject[j].toString();
-              this.mSectionText = ((String)localObject);
-              if (((((String)localObject).length() != 1) || (((String)localObject).charAt(0) != ' ')) && (j < arrayOfObject.length))
-              {
-                bool = true;
-                label379:
-                this.mDrawOverlay = bool;
-                return;
-                i = (int)((n - k) * (paramFloat - f2) / (f3 - f2)) + k;
-                break;
-                if ((this.mList instanceof ListView))
-                {
-                  ((ListView)this.mList).setSelectionFromTop(i + this.mListOffset, 0);
-                  continue;
-                }
-                this.mList.setSelection(i + this.mListOffset);
-                continue;
-                i = (int)(i3 * paramFloat);
-                if (i <= i3 - 1) {
-                  break label587;
-                }
-                i = i3 - 1;
-              }
-            }
-          }
-          for (;;)
-          {
-            if ((this.mList instanceof ExpandableListView))
-            {
-              localObject = (ExpandableListView)this.mList;
-              ((ExpandableListView)localObject).setSelectionFromTop(((ExpandableListView)localObject).getFlatListPosition(ExpandableListView.getPackedPositionForGroup(i + this.mListOffset)), 0);
-            }
-            for (;;)
-            {
-              j = -1;
-              break;
-              if ((this.mList instanceof ListView)) {
-                ((ListView)this.mList).setSelectionFromTop(i + this.mListOffset, 0);
-              } else {
-                this.mList.setSelection(i + this.mListOffset);
-              }
-            }
-            bool = false;
-            break label379;
-            this.mDrawOverlay = false;
-            return;
-          }
-        }
-        break;
         k = j;
+        while (m > 0)
+        {
+          i2 = m - 1;
+          n = this.mSectionIndexer.getPositionForSection(i2);
+          if (n != j)
+          {
+            j = i2;
+            k = n;
+            break label236;
+          }
+          m = i2;
+          k = n;
+          if (i2 == 0)
+          {
+            m = i;
+            j = 0;
+            k = n;
+            break label248;
+          }
+        }
         j = i;
+        m = j;
+      }
+      else
+      {
         m = i;
-        continue;
-        m = i;
-        j = i;
+        k = j;
+        j = m;
+        n = j;
+        m = j;
+        j = n;
+      }
+      int i2 = i4 + 1;
+      int n = i4;
+      while ((i2 < i5) && (this.mSectionIndexer.getPositionForSection(i2) == i1))
+      {
+        i2 += 1;
+        n += 1;
+      }
+      f2 = m / f3;
+      f3 = n / f3;
+      if ((m != i) || (paramFloat - f2 >= f1)) {
+        k += (int)((i1 - k) * (paramFloat - f2) / (f3 - f2));
+      }
+      i = i3 - 1;
+      if (k > i) {
+        k = i;
+      }
+      localObject = this.mList;
+      if ((localObject instanceof ExpandableListView))
+      {
+        localObject = (ExpandableListView)localObject;
+        ((ExpandableListView)localObject).setSelectionFromTop(((ExpandableListView)localObject).getFlatListPosition(ExpandableListView.getPackedPositionForGroup(k + this.mListOffset)), 0);
+      }
+      else if ((localObject instanceof ListView))
+      {
+        ((ListView)localObject).setSelectionFromTop(k + this.mListOffset, 0);
+      }
+      else
+      {
+        ((AbsListView)localObject).setSelection(k + this.mListOffset);
       }
     }
+    else
+    {
+      i = (int)(f2 * paramFloat);
+      j = i3 - 1;
+      if (i > j) {
+        i = j;
+      }
+      localObject = this.mList;
+      if ((localObject instanceof ExpandableListView))
+      {
+        localObject = (ExpandableListView)localObject;
+        ((ExpandableListView)localObject).setSelectionFromTop(((ExpandableListView)localObject).getFlatListPosition(ExpandableListView.getPackedPositionForGroup(i + this.mListOffset)), 0);
+      }
+      else if ((localObject instanceof ListView))
+      {
+        ((ListView)localObject).setSelectionFromTop(i + this.mListOffset, 0);
+      }
+      else
+      {
+        ((AbsListView)localObject).setSelection(i + this.mListOffset);
+      }
+      j = -1;
+    }
+    if (j >= 0)
+    {
+      localObject = arrayOfObject[j].toString();
+      this.mSectionText = ((String)localObject);
+      boolean bool1;
+      if (((String)localObject).length() == 1)
+      {
+        bool1 = bool2;
+        if (((String)localObject).charAt(0) == ' ') {}
+      }
+      else
+      {
+        bool1 = bool2;
+        if (j < arrayOfObject.length) {
+          bool1 = true;
+        }
+      }
+      this.mDrawOverlay = bool1;
+      return;
+    }
+    this.mDrawOverlay = false;
   }
   
   public void setAlwaysShow(boolean paramBoolean)
@@ -843,19 +861,18 @@ class FastScroller
     {
       this.mHandler.removeCallbacks(this.mScrollFade);
       setState(2);
-    }
-    while (this.mState != 2) {
       return;
     }
-    this.mHandler.postDelayed(this.mScrollFade, 1500L);
+    if (this.mState == 2) {
+      this.mHandler.postDelayed(this.mScrollFade, 1500L);
+    }
   }
   
   public void setScrollbarPosition(int paramInt)
   {
     this.mPosition = paramInt;
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
       this.mOverlayDrawable = this.mOverlayDrawableRight;
       return;
     }
@@ -864,25 +881,36 @@ class FastScroller
   
   public void setState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      this.mState = paramInt;
-      refreshDrawableState();
-      return;
-      this.mHandler.removeCallbacks(this.mScrollFade);
-      this.mList.invalidate();
-      continue;
-      if (this.mState != 2) {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4) {
+            break label112;
+          }
+          int i = this.mList.getWidth();
+          AbsListView localAbsListView = this.mList;
+          int j = this.mThumbW;
+          int k = this.mThumbY;
+          localAbsListView.invalidate(i - j, k, i, this.mThumbH + k);
+          break label112;
+        }
+      }
+      else if (this.mState != 2) {
         resetThumbPos();
       }
       this.mHandler.removeCallbacks(this.mScrollFade);
-      continue;
-      int i = this.mList.getWidth();
-      this.mList.invalidate(i - this.mThumbW, this.mThumbY, i, this.mThumbY + this.mThumbH);
     }
+    else
+    {
+      this.mHandler.removeCallbacks(this.mScrollFade);
+      this.mList.invalidate();
+    }
+    label112:
+    this.mState = paramInt;
+    refreshDrawableState();
   }
   
   void startPendingDrag()
@@ -898,7 +926,7 @@ class FastScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.FastScroller
  * JD-Core Version:    0.7.0.1
  */

@@ -35,14 +35,15 @@ public final class s_qzone_reward_data
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.show_entry, 0);
-    if (this.vec_nodes != null) {
-      paramJceOutputStream.write(this.vec_nodes, 1);
+    ArrayList localArrayList = this.vec_nodes;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.s_qzone_reward_data
  * JD-Core Version:    0.7.0.1
  */

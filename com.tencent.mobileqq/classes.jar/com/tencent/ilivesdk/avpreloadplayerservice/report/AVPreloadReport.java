@@ -45,64 +45,124 @@ public class AVPreloadReport
     this.jdField_a_of_type_JavaUtilMap.put("guid", this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_f_of_type_JavaLangString);
     this.jdField_a_of_type_JavaUtilMap.put("anchorid", this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_g_of_type_JavaLangString);
     this.jdField_a_of_type_JavaUtilMap.put("playtime", a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Long));
-    this.jdField_a_of_type_JavaUtilMap.put("clipstarttime", "" + a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_Long));
-    this.jdField_a_of_type_JavaUtilMap.put("clipfinishtime", "" + a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_c_of_type_Long));
-    this.jdField_a_of_type_JavaUtilMap.put("playstoptime", "" + a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_Long));
-    this.jdField_a_of_type_JavaUtilMap.put("snapshot", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_e_of_type_Long);
-    this.jdField_a_of_type_JavaUtilMap.put("firstframe", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_f_of_type_Long);
-    this.jdField_a_of_type_JavaUtilMap.put("clipduration", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_g_of_type_Long);
-    this.jdField_a_of_type_JavaUtilMap.put("clipsize", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_h_of_type_Long);
-    this.jdField_a_of_type_JavaUtilMap.put("mediainfo", this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Int + "x" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_Int + "@" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_c_of_type_Int + "@" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_i_of_type_Long);
+    Object localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_Long));
+    ((Map)localObject1).put("clipstarttime", ((StringBuilder)localObject2).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_c_of_type_Long));
+    ((Map)localObject1).put("clipfinishtime", ((StringBuilder)localObject2).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(a(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_Long));
+    ((Map)localObject1).put("playstoptime", ((StringBuilder)localObject2).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_e_of_type_Long);
+    ((Map)localObject1).put("snapshot", ((StringBuilder)localObject2).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_f_of_type_Long);
+    ((Map)localObject1).put("firstframe", ((StringBuilder)localObject2).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_g_of_type_Long);
+    ((Map)localObject1).put("clipduration", ((StringBuilder)localObject2).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_h_of_type_Long);
+    ((Map)localObject1).put("clipsize", ((StringBuilder)localObject2).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Int);
+    ((StringBuilder)localObject2).append("x");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_Int);
+    ((StringBuilder)localObject2).append("@");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_c_of_type_Int);
+    ((StringBuilder)localObject2).append("@");
+    ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_i_of_type_Long);
+    ((Map)localObject1).put("mediainfo", ((StringBuilder)localObject2).toString());
     this.jdField_a_of_type_JavaUtilMap.put("url", this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_j_of_type_JavaLangString);
-    Map localMap = this.jdField_a_of_type_JavaUtilMap;
-    if (this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Boolean)
-    {
-      str = "0";
-      localMap.put("ismiss", str);
-      localMap = this.jdField_a_of_type_JavaUtilMap;
-      if (!this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_Boolean) {
-        break label1094;
-      }
-      str = "1";
-      label672:
-      localMap.put("chaseframe", str);
-      this.jdField_a_of_type_JavaUtilMap.put("errorcode", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_Int);
-      this.jdField_a_of_type_JavaUtilMap.put("eventid", this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_k_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaUtilMap.put("netspeed", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_j_of_type_Long);
-      this.jdField_a_of_type_JavaUtilMap.put("cpurate", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Float);
-      this.jdField_a_of_type_JavaUtilMap.put("memorysize", "" + a());
-      this.jdField_a_of_type_JavaUtilMap.put("framegaptime", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_k_of_type_Long);
-      localMap = this.jdField_a_of_type_JavaUtilMap;
-      if (!this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_c_of_type_Boolean) {
-        break label1100;
-      }
-      str = "1";
-      label901:
-      localMap.put("isplayconnect", str);
-      this.jdField_a_of_type_JavaUtilMap.put("taskid", this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_l_of_type_JavaLangString);
-      this.jdField_a_of_type_JavaUtilMap.put("showsnapshottime", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_l_of_type_Long);
-      this.jdField_a_of_type_JavaUtilMap.put("avgnetspeed", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.m);
-      this.jdField_a_of_type_JavaUtilMap.put("osversion", Build.VERSION.RELEASE);
-      this.jdField_a_of_type_JavaUtilMap.put("devicememorysize", "" + this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.n);
-      localMap = this.jdField_a_of_type_JavaUtilMap;
-      if (!this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_Boolean) {
-        break label1106;
-      }
+    Object localObject3 = this.jdField_a_of_type_JavaUtilMap;
+    boolean bool = this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Boolean;
+    localObject2 = "0";
+    if (bool) {
+      localObject1 = "0";
+    } else {
+      localObject1 = "1";
     }
-    label1094:
-    label1100:
-    label1106:
-    for (String str = "1";; str = "0")
-    {
-      localMap.put("isswitchroom", str);
-      return;
-      str = "1";
-      break;
-      str = "0";
-      break label672;
-      str = "0";
-      break label901;
+    ((Map)localObject3).put("ismiss", localObject1);
+    localObject3 = this.jdField_a_of_type_JavaUtilMap;
+    if (this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_b_of_type_Boolean) {
+      localObject1 = "1";
+    } else {
+      localObject1 = "0";
     }
+    ((Map)localObject3).put("chaseframe", localObject1);
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_Int);
+    ((Map)localObject1).put("errorcode", ((StringBuilder)localObject3).toString());
+    this.jdField_a_of_type_JavaUtilMap.put("eventid", this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_k_of_type_JavaLangString);
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_j_of_type_Long);
+    ((Map)localObject1).put("netspeed", ((StringBuilder)localObject3).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_a_of_type_Float);
+    ((Map)localObject1).put("cpurate", ((StringBuilder)localObject3).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(a());
+    ((Map)localObject1).put("memorysize", ((StringBuilder)localObject3).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_k_of_type_Long);
+    ((Map)localObject1).put("framegaptime", ((StringBuilder)localObject3).toString());
+    localObject3 = this.jdField_a_of_type_JavaUtilMap;
+    if (this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_c_of_type_Boolean) {
+      localObject1 = "1";
+    } else {
+      localObject1 = "0";
+    }
+    ((Map)localObject3).put("isplayconnect", localObject1);
+    this.jdField_a_of_type_JavaUtilMap.put("taskid", this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_l_of_type_JavaLangString);
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_l_of_type_Long);
+    ((Map)localObject1).put("showsnapshottime", ((StringBuilder)localObject3).toString());
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.m);
+    ((Map)localObject1).put("avgnetspeed", ((StringBuilder)localObject3).toString());
+    this.jdField_a_of_type_JavaUtilMap.put("osversion", Build.VERSION.RELEASE);
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("");
+    ((StringBuilder)localObject3).append(this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.n);
+    ((Map)localObject1).put("devicememorysize", ((StringBuilder)localObject3).toString());
+    localObject3 = this.jdField_a_of_type_JavaUtilMap;
+    localObject1 = localObject2;
+    if (this.jdField_a_of_type_ComTencentIlivesdkAvpreloadplayerserviceReportAVPreloadReport$ReportData.jdField_d_of_type_Boolean) {
+      localObject1 = "1";
+    }
+    ((Map)localObject3).put("isswitchroom", localObject1);
   }
   
   public void a(AVPreloadReport.ReportData paramReportData)
@@ -112,7 +172,7 @@ public class AVPreloadReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avpreloadplayerservice.report.AVPreloadReport
  * JD-Core Version:    0.7.0.1
  */

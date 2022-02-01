@@ -14,7 +14,7 @@ final class DataTransferManagerKt$sam$com_tencent_tkd_weibo_data_IDataTransfer_T
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.data.DataTransferManagerKt.sam.com_tencent_tkd_weibo_data_IDataTransfer_TopicCallback.0
  * JD-Core Version:    0.7.0.1
  */

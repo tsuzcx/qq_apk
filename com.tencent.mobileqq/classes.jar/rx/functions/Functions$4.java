@@ -7,15 +7,15 @@ final class Functions$4
   
   public R call(Object... paramVarArgs)
   {
-    if (paramVarArgs.length != 3) {
-      throw new RuntimeException("Func3 expecting 3 arguments.");
+    if (paramVarArgs.length == 3) {
+      return this.val$f.call(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
     }
-    return this.val$f.call(paramVarArgs[0], paramVarArgs[1], paramVarArgs[2]);
+    throw new RuntimeException("Func3 expecting 3 arguments.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.functions.Functions.4
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,10 @@
 package com.tencent.mobileqq.pic;
 
+import android.os.SystemClock;
 import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.api.URLDrawableDepWrap;
+import com.tencent.mobileqq.statistics.StatisticCollector;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -27,9 +30,24 @@ public class URLDrawableDepWrapInit
     paramURLDrawableDepWrap.mReport = new URLDrawableDepWrapInit.6();
   }
   
+  protected static void a(Long paramLong)
+  {
+    if (SystemClock.uptimeMillis() % 100L == 0L) {
+      StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(null, "AioPicDispatchWait", true, paramLong.longValue(), 0L, null, null);
+    }
+  }
+  
+  protected static void a(Object[] paramArrayOfObject)
+  {
+    if (paramArrayOfObject.length == 2)
+    {
+      String str = (String)paramArrayOfObject[0];
+      paramArrayOfObject = (Exception)paramArrayOfObject[1];
+    }
+  }
+  
   private static String b(Exception paramException, boolean paramBoolean)
   {
-    int k = 0;
     if (paramException == null) {
       return "";
     }
@@ -37,53 +55,50 @@ public class URLDrawableDepWrapInit
     paramException = paramException.getStackTrace();
     ArrayList localArrayList = new ArrayList(8);
     int m = paramException.length;
-    int i = 0;
-    Object localObject;
-    int j;
-    if (i < m)
+    int j = 0;
+    int i;
+    for (int k = 0; j < m; k = i)
     {
-      localObject = paramException[i];
+      Object localObject = paramException[j];
       String str = localObject.getClassName();
-      j = k;
+      i = k;
       if (!str.contains("URLDrawable"))
       {
-        j = k;
+        i = k;
         if (!str.startsWith("android."))
         {
-          j = k;
+          i = k;
           if (!str.startsWith("java."))
           {
-            j = k;
-            if (!str.startsWith("com.android."))
-            {
-              if (!str.startsWith("dalvik.")) {
-                break label134;
+            i = k;
+            if (!str.startsWith("com.android.")) {
+              if (str.startsWith("dalvik."))
+              {
+                i = k;
               }
-              j = k;
+              else
+              {
+                k += 1;
+                if (k >= 8) {
+                  break;
+                }
+                localArrayList.add(localObject.toString());
+                localStringBuffer.append(localObject.toString());
+                localStringBuffer.append(",");
+                i = k;
+                if (paramBoolean)
+                {
+                  localStringBuffer.append("\n");
+                  i = k;
+                }
+              }
             }
           }
         }
       }
+      j += 1;
     }
-    for (;;)
-    {
-      i += 1;
-      k = j;
-      break;
-      label134:
-      k += 1;
-      if (k >= 8) {
-        return localStringBuffer.toString();
-      }
-      localArrayList.add(localObject.toString());
-      localStringBuffer.append(localObject.toString()).append(",");
-      j = k;
-      if (paramBoolean)
-      {
-        localStringBuffer.append("\n");
-        j = k;
-      }
-    }
+    return localStringBuffer.toString();
   }
   
   private static String b(String paramString, int paramInt)
@@ -94,27 +109,37 @@ public class URLDrawableDepWrapInit
     paramString = paramString.split(",");
     StringBuilder localStringBuilder = new StringBuilder(128);
     int i = 0;
-    if ((i < paramString.length) && (i < paramInt))
+    while ((i < paramString.length) && (i < paramInt))
     {
       int j = paramString[i].indexOf("(");
-      if (j > 0) {
-        localStringBuilder.append(paramString[i].substring(0, j)).append("()").append(",");
-      }
-      for (;;)
+      if (j > 0)
       {
-        i += 1;
-        break;
-        localStringBuilder.append(paramString[i]).append(",");
+        localStringBuilder.append(paramString[i].substring(0, j));
+        localStringBuilder.append("()");
+        localStringBuilder.append(",");
       }
+      else
+      {
+        localStringBuilder.append(paramString[i]);
+        localStringBuilder.append(",");
+      }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
   
   private static void b(Exception paramException, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, long paramLong) {}
+  
+  protected static void b(Long paramLong)
+  {
+    if (SystemClock.uptimeMillis() % 100L == 0L) {
+      StatisticCollector.getInstance(BaseApplicationImpl.sApplication).collectPerformance(null, "AioPicDownloadWait", true, paramLong.longValue(), 0L, null, null);
+    }
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.URLDrawableDepWrapInit
  * JD-Core Version:    0.7.0.1
  */

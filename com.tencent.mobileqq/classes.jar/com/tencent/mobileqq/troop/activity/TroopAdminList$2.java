@@ -9,7 +9,7 @@ class TroopAdminList$2
 {
   TroopAdminList$2(TroopAdminList paramTroopAdminList) {}
   
-  public void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
+  protected void onUpdateFriendInfoFinished(ArrayList paramArrayList, boolean paramBoolean)
   {
     if (QLog.isColorLevel()) {
       QLog.i("TroopAdminList", 2, "onUpdateFriendInfoFinished ");
@@ -19,7 +19,7 @@ class TroopAdminList$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAdminList.2
  * JD-Core Version:    0.7.0.1
  */

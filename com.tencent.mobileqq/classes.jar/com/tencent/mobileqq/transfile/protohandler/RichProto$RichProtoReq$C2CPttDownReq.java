@@ -20,15 +20,18 @@ public class RichProto$RichProtoReq$C2CPttDownReq
     localStringBuilder.append(this.storageSource);
     localStringBuilder.append(" isSelfSend:");
     localStringBuilder.append(this.isSelfSend);
-    localStringBuilder.append(" voiceType:").append(this.voiceType);
-    localStringBuilder.append(" busiType:").append(this.busiType);
-    localStringBuilder.append(" downType:").append(this.downType);
+    localStringBuilder.append(" voiceType:");
+    localStringBuilder.append(this.voiceType);
+    localStringBuilder.append(" busiType:");
+    localStringBuilder.append(this.busiType);
+    localStringBuilder.append(" downType:");
+    localStringBuilder.append(this.downType);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoReq.C2CPttDownReq
  * JD-Core Version:    0.7.0.1
  */

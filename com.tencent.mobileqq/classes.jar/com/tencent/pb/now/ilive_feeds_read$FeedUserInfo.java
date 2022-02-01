@@ -24,13 +24,14 @@ public final class ilive_feeds_read$FeedUserInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48 }, new String[] { "uin", "nick", "url", "medal_infos", "user_gender", "age" }, new Object[] { Long.valueOf(0L), "", localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0) }, FeedUserInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48 }, new String[] { "uin", "nick", "url", "medal_infos", "user_gender", "age" }, new Object[] { Long.valueOf(0L), "", localByteStringMicro, null, localInteger, localInteger }, FeedUserInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.FeedUserInfo
  * JD-Core Version:    0.7.0.1
  */

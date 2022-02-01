@@ -27,14 +27,16 @@ public class PTFilter
   public static PTFilter createById(int paramInt1, int paramInt2)
   {
     PTFilter localPTFilter = new PTFilter();
-    if (FilterEnum.isImageFilter(paramInt1)) {}
-    for (localPTFilter.mFilter = ImageFilterFactory.createFilter(paramInt1);; localPTFilter.mFilter = PtuFilterFactory.createFilter(paramInt1))
-    {
-      localPTFilter.mFilter.needFlipBlend = true;
-      localPTFilter.mFilter.setSrcFilterIndex(-1);
-      localPTFilter.mFilter.setEffectIndex(paramInt2);
-      return localPTFilter;
+    if (FilterEnum.isImageFilter(paramInt1)) {
+      localPTFilter.mFilter = ImageFilterFactory.createFilter(paramInt1);
+    } else {
+      localPTFilter.mFilter = PtuFilterFactory.createFilter(paramInt1);
     }
+    BaseFilter localBaseFilter = localPTFilter.mFilter;
+    localBaseFilter.needFlipBlend = true;
+    localBaseFilter.setSrcFilterIndex(-1);
+    localPTFilter.mFilter.setEffectIndex(paramInt2);
+    return localPTFilter;
   }
   
   public static PTFilter createByLut(String paramString)
@@ -46,11 +48,12 @@ public class PTFilter
       localBitmap1 = TTPicFilterFactoryLocal.getBitmapFromEncryptedFile(paramString);
     }
     localPTFilter.mFilter = TTPicFilterFactoryLocal.lutFilterWithBitmap(localBitmap1);
-    if (localPTFilter.mFilter == null) {
+    paramString = localPTFilter.mFilter;
+    if (paramString == null) {
       return null;
     }
-    localPTFilter.mFilter.needFlipBlend = true;
-    localPTFilter.mFilter.setSrcFilterIndex(-1);
+    paramString.needFlipBlend = true;
+    paramString.setSrcFilterIndex(-1);
     localPTFilter.mFilterFrame = new Frame();
     return localPTFilter;
   }
@@ -73,8 +76,9 @@ public class PTFilter
       paramString.setMatrix(paramArrayOfFloat);
     }
     localPTFilter.mFilter = paramString;
-    localPTFilter.mFilter.needFlipBlend = true;
-    localPTFilter.mFilter.setSrcFilterIndex(-1);
+    paramString = localPTFilter.mFilter;
+    paramString.needFlipBlend = true;
+    paramString.setSrcFilterIndex(-1);
     localPTFilter.mFilterFrame = new Frame();
     return localPTFilter;
   }
@@ -132,7 +136,7 @@ public class PTFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.PTFilter
  * JD-Core Version:    0.7.0.1
  */

@@ -32,70 +32,82 @@ public class FlingGestureHandler
   
   protected void a()
   {
-    if (!a()) {}
-    ViewGroup localViewGroup;
-    do
+    if (!a()) {
+      return;
+    }
+    Object localObject3 = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject3 == null) {
+      return;
+    }
+    Object localObject1 = a((Activity)localObject3);
+    Object localObject2;
+    if (this.mTopLayout == null)
     {
-      do
+      this.jdField_a_of_type_AndroidViewView = ((ViewGroup)localObject1).getChildAt(0);
+      localObject2 = this.jdField_a_of_type_AndroidViewView;
+      if (localObject2 == null) {
+        return;
+      }
+      this.mTopLayout = new TopGestureLayout((Context)localObject3);
+      localObject3 = this.mTopLayout;
+      ((TopGestureLayout)localObject3).setOnFlingGesture(this);
+      ((ViewGroup)localObject1).addView((View)localObject3);
+      ((ViewGroup)((View)localObject2).getParent()).removeView((View)localObject2);
+      ((TopGestureLayout)localObject3).addView((View)localObject2);
+      return;
+    }
+    if (!b())
+    {
+      localObject2 = this.mTopLayout;
+      if ((localObject2 != null) && (((TopGestureLayout)localObject2).getParent() != null)) {
+        ((ViewGroup)this.mTopLayout.getParent()).removeView(this.mTopLayout);
+      }
+      ((ViewGroup)localObject1).addView(this.mTopLayout);
+      localObject1 = this.jdField_a_of_type_AndroidViewView;
+      if ((localObject1 != null) && (((View)localObject1).getParent() != null)) {
+        ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
+      }
+      try
       {
-        do
-        {
-          return;
-          localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-        } while (localObject == null);
-        localViewGroup = a((Activity)localObject);
-        if (this.mTopLayout != null) {
-          break;
-        }
-        this.jdField_a_of_type_AndroidViewView = localViewGroup.getChildAt(0);
-      } while (this.jdField_a_of_type_AndroidViewView == null);
-      View localView = this.jdField_a_of_type_AndroidViewView;
-      this.mTopLayout = new TopGestureLayout((Context)localObject);
-      Object localObject = this.mTopLayout;
-      ((TopGestureLayout)localObject).setOnFlingGesture(this);
-      localViewGroup.addView((View)localObject);
-      ((ViewGroup)localView.getParent()).removeView(localView);
-      ((TopGestureLayout)localObject).addView(localView);
-      return;
-    } while (b());
-    if ((this.mTopLayout != null) && (this.mTopLayout.getParent() != null)) {
-      ((ViewGroup)this.mTopLayout.getParent()).removeView(this.mTopLayout);
-    }
-    localViewGroup.addView(this.mTopLayout);
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() != null)) {
-      ((ViewGroup)this.jdField_a_of_type_AndroidViewView.getParent()).removeView(this.jdField_a_of_type_AndroidViewView);
-    }
-    try
-    {
-      this.mTopLayout.addView(this.jdField_a_of_type_AndroidViewView);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("FlingGestureHandler", 1, localException, new Object[0]);
+        this.mTopLayout.addView(this.jdField_a_of_type_AndroidViewView);
+        return;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("FlingGestureHandler", 1, localException, new Object[0]);
+      }
     }
   }
   
   protected void b()
   {
     Object localObject = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null) {}
-    do
+    if (localObject == null) {
+      return;
+    }
+    localObject = a((Activity)localObject);
+    if ((b()) && (this.mTopLayout.getParent().equals(localObject)))
     {
-      do
-      {
-        return;
-        localObject = a((Activity)localObject);
-      } while ((!b()) || (!this.mTopLayout.getParent().equals(localObject)));
       ((ViewGroup)localObject).removeView(this.mTopLayout);
-    } while (!this.jdField_a_of_type_AndroidViewView.getParent().equals(this.mTopLayout));
-    this.mTopLayout.removeView(this.jdField_a_of_type_AndroidViewView);
-    ((ViewGroup)localObject).addView(this.jdField_a_of_type_AndroidViewView);
+      if (this.jdField_a_of_type_AndroidViewView.getParent().equals(this.mTopLayout))
+      {
+        this.mTopLayout.removeView(this.jdField_a_of_type_AndroidViewView);
+        ((ViewGroup)localObject).addView(this.jdField_a_of_type_AndroidViewView);
+      }
+    }
   }
   
   protected boolean b()
   {
-    return (this.mTopLayout != null) && (this.mTopLayout.getParent() != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getParent() == this.mTopLayout);
+    Object localObject = this.mTopLayout;
+    if ((localObject != null) && (((TopGestureLayout)localObject).getParent() != null))
+    {
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if ((localObject != null) && (((View)localObject).getParent() == this.mTopLayout)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void flingLToR()
@@ -110,13 +122,13 @@ public class FlingGestureHandler
   
   public void setTopLayout(TopGestureLayout paramTopGestureLayout)
   {
-    if ((!a()) && (paramTopGestureLayout == null)) {}
-    Activity localActivity;
-    do
-    {
+    if ((!a()) && (paramTopGestureLayout == null)) {
       return;
-      localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localActivity == null);
+    }
+    Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localActivity == null) {
+      return;
+    }
     if (b())
     {
       b();
@@ -133,7 +145,7 @@ public class FlingGestureHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.fling.FlingGestureHandler
  * JD-Core Version:    0.7.0.1
  */

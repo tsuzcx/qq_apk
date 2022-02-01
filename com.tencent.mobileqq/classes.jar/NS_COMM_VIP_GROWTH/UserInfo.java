@@ -3,17 +3,28 @@ package NS_COMM_VIP_GROWTH;
 import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
+import java.util.ArrayList;
+import java.util.Collection;
 
 public final class UserInfo
   extends JceStruct
 {
-  static int cache_iUserType = 0;
+  static int cache_iUserType;
+  static int cache_stPayWay;
+  static ArrayList<DouScoreInfo> cache_vecDouScoreInfos;
+  static ArrayList<Integer> cache_vecKeepDays = new ArrayList();
+  public int iAddExpScore = 0;
   public int iEverSSuperVip = 0;
   public int iEverSuperVip = 0;
   public int iEverVip = 0;
   public int iEverYearVip = 0;
+  public int iIconType = 2;
+  public int iIsUseVipIcon = 0;
+  public int iKeepDays = 0;
   public int iLevel = 0;
   public int iMaxScore = 0;
+  public int iRankId = 0;
+  public int iRenewal = 0;
   public int iSSuperVip = 0;
   public int iScore = 0;
   public int iSpeed = 0;
@@ -21,10 +32,14 @@ public final class UserInfo
   public int iUserType = 0;
   public int iVip = 0;
   public int iYearVip = 0;
+  public int stPayWay = 0;
   public String strSSuperVipRenewal = "";
   public String strSuperVipRenewal = "";
   public String strUid = "";
   public String strVipRenewal = "";
+  public long uiDouScoreExpTime = 0L;
+  public long uiDouTimes = 0L;
+  public long uiExpScoreExpireTime = 0L;
   public long uiLastCalcTime = 0L;
   public long uiSSuperVipCloseTime = 0L;
   public long uiSSuperVipOpenTime = 0L;
@@ -34,10 +49,21 @@ public final class UserInfo
   public long uiVipOpenTime = 0L;
   public long uiYearVipCloseTime = 0L;
   public long uiYearVipOpenTime = 0L;
+  public ArrayList<DouScoreInfo> vecDouScoreInfos = null;
+  public ArrayList<Integer> vecKeepDays = null;
+  
+  static
+  {
+    cache_vecKeepDays.add(Integer.valueOf(0));
+    cache_stPayWay = 0;
+    cache_vecDouScoreInfos = new ArrayList();
+    DouScoreInfo localDouScoreInfo = new DouScoreInfo();
+    cache_vecDouScoreInfos.add(localDouScoreInfo);
+  }
   
   public UserInfo() {}
   
-  public UserInfo(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, int paramInt12, int paramInt13, long paramLong8, long paramLong9, String paramString2, String paramString3, String paramString4)
+  public UserInfo(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9, int paramInt10, int paramInt11, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6, long paramLong7, int paramInt12, int paramInt13, long paramLong8, long paramLong9, String paramString2, String paramString3, String paramString4, int paramInt14, int paramInt15, int paramInt16, int paramInt17, long paramLong10, long paramLong11, int paramInt18, long paramLong12, ArrayList<Integer> paramArrayList, int paramInt19, int paramInt20, ArrayList<DouScoreInfo> paramArrayList1)
   {
     this.strUid = paramString1;
     this.iUserType = paramInt1;
@@ -65,6 +91,18 @@ public final class UserInfo
     this.strVipRenewal = paramString2;
     this.strSuperVipRenewal = paramString3;
     this.strSSuperVipRenewal = paramString4;
+    this.iIsUseVipIcon = paramInt14;
+    this.iRankId = paramInt15;
+    this.iRenewal = paramInt16;
+    this.iIconType = paramInt17;
+    this.uiDouScoreExpTime = paramLong10;
+    this.uiDouTimes = paramLong11;
+    this.iAddExpScore = paramInt18;
+    this.uiExpScoreExpireTime = paramLong12;
+    this.vecKeepDays = paramArrayList;
+    this.iKeepDays = paramInt19;
+    this.stPayWay = paramInt20;
+    this.vecDouScoreInfos = paramArrayList1;
   }
   
   public void readFrom(JceInputStream paramJceInputStream)
@@ -95,12 +133,25 @@ public final class UserInfo
     this.strVipRenewal = paramJceInputStream.readString(23, false);
     this.strSuperVipRenewal = paramJceInputStream.readString(24, false);
     this.strSSuperVipRenewal = paramJceInputStream.readString(25, false);
+    this.iIsUseVipIcon = paramJceInputStream.read(this.iIsUseVipIcon, 26, false);
+    this.iRankId = paramJceInputStream.read(this.iRankId, 27, false);
+    this.iRenewal = paramJceInputStream.read(this.iRenewal, 28, false);
+    this.iIconType = paramJceInputStream.read(this.iIconType, 29, false);
+    this.uiDouScoreExpTime = paramJceInputStream.read(this.uiDouScoreExpTime, 30, false);
+    this.uiDouTimes = paramJceInputStream.read(this.uiDouTimes, 31, false);
+    this.iAddExpScore = paramJceInputStream.read(this.iAddExpScore, 32, false);
+    this.uiExpScoreExpireTime = paramJceInputStream.read(this.uiExpScoreExpireTime, 33, false);
+    this.vecKeepDays = ((ArrayList)paramJceInputStream.read(cache_vecKeepDays, 34, false));
+    this.iKeepDays = paramJceInputStream.read(this.iKeepDays, 35, false);
+    this.stPayWay = paramJceInputStream.read(this.stPayWay, 36, false);
+    this.vecDouScoreInfos = ((ArrayList)paramJceInputStream.read(cache_vecDouScoreInfos, 37, false));
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strUid != null) {
-      paramJceOutputStream.write(this.strUid, 0);
+    Object localObject = this.strUid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.iUserType, 1);
     paramJceOutputStream.write(this.iVip, 2);
@@ -124,20 +175,41 @@ public final class UserInfo
     paramJceOutputStream.write(this.iEverSSuperVip, 20);
     paramJceOutputStream.write(this.uiSSuperVipOpenTime, 21);
     paramJceOutputStream.write(this.uiSSuperVipCloseTime, 22);
-    if (this.strVipRenewal != null) {
-      paramJceOutputStream.write(this.strVipRenewal, 23);
+    localObject = this.strVipRenewal;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 23);
     }
-    if (this.strSuperVipRenewal != null) {
-      paramJceOutputStream.write(this.strSuperVipRenewal, 24);
+    localObject = this.strSuperVipRenewal;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 24);
     }
-    if (this.strSSuperVipRenewal != null) {
-      paramJceOutputStream.write(this.strSSuperVipRenewal, 25);
+    localObject = this.strSSuperVipRenewal;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 25);
+    }
+    paramJceOutputStream.write(this.iIsUseVipIcon, 26);
+    paramJceOutputStream.write(this.iRankId, 27);
+    paramJceOutputStream.write(this.iRenewal, 28);
+    paramJceOutputStream.write(this.iIconType, 29);
+    paramJceOutputStream.write(this.uiDouScoreExpTime, 30);
+    paramJceOutputStream.write(this.uiDouTimes, 31);
+    paramJceOutputStream.write(this.iAddExpScore, 32);
+    paramJceOutputStream.write(this.uiExpScoreExpireTime, 33);
+    localObject = this.vecKeepDays;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 34);
+    }
+    paramJceOutputStream.write(this.iKeepDays, 35);
+    paramJceOutputStream.write(this.stPayWay, 36);
+    localObject = this.vecDouScoreInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 37);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_COMM_VIP_GROWTH.UserInfo
  * JD-Core Version:    0.7.0.1
  */

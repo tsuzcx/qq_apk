@@ -11,12 +11,13 @@ class RaffleJsPlugin$15
   public void run()
   {
     ThreadManager.getUIHandler().removeCallbacks(this.this$0.showLoadingRunnable);
-    RaffleJsPlugin.access$100(this.this$0, RaffleJsPlugin.access$3500(this.this$0));
+    RaffleJsPlugin localRaffleJsPlugin = this.this$0;
+    RaffleJsPlugin.access$100(localRaffleJsPlugin, RaffleJsPlugin.access$3500(localRaffleJsPlugin));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.RaffleJsPlugin.15
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.activity.fling.FlingGestureHandler;
-import com.tencent.mobileqq.widget.ParticipleView;
+import com.tencent.mobileqq.widget.participle.ParticipleView;
 import java.lang.ref.WeakReference;
 
 final class TextPreviewActivity$CustomFlingHandler
@@ -18,27 +18,27 @@ final class TextPreviewActivity$CustomFlingHandler
   public void flingLToR()
   {
     TextPreviewActivity localTextPreviewActivity = (TextPreviewActivity)this.b.get();
-    int i;
-    if (localTextPreviewActivity != null) {
-      if ((localTextPreviewActivity.a != null) && (localTextPreviewActivity.a.getVisibility() == 0)) {
-        i = 1;
+    int j = 0;
+    int i = j;
+    if (localTextPreviewActivity != null)
+    {
+      i = j;
+      if (localTextPreviewActivity.a != null)
+      {
+        i = j;
+        if (localTextPreviewActivity.a.getVisibility() == 0) {
+          i = 1;
+        }
       }
     }
-    for (;;)
-    {
-      if (i == 0) {
-        super.flingLToR();
-      }
-      return;
-      i = 0;
-      continue;
-      i = 0;
+    if (i == 0) {
+      super.flingLToR();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewActivity.CustomFlingHandler
  * JD-Core Version:    0.7.0.1
  */

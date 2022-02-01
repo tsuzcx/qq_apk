@@ -17,7 +17,21 @@ public class WebServiceSSO
   
   public WebServiceSSO(int paramInt1, int paramInt2, String paramString1, long paramLong, String paramString2, int paramInt3)
   {
-    this.jdField_a_of_type_JavaLangString = ("?SdkAppId=" + paramInt1 + "&AccountType=" + paramInt2 + "&AppIdAt3rd=" + paramString1 + "&Identifier=" + paramLong + "&UserSig=" + paramString2 + "&Apn=" + paramInt3 + "&ContentType=binary");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("?SdkAppId=");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append("&AccountType=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append("&AppIdAt3rd=");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("&Identifier=");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("&UserSig=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("&Apn=");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append("&ContentType=binary");
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_Okhttp3ConnectionPool = new ConnectionPool(5, 20L, TimeUnit.SECONDS);
     this.jdField_a_of_type_Okhttp3Dispatcher = new Dispatcher();
     this.jdField_a_of_type_Okhttp3Dispatcher.setMaxRequests(20);
@@ -47,7 +61,7 @@ public class WebServiceSSO
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.netchannel.websso.WebServiceSSO
  * JD-Core Version:    0.7.0.1
  */

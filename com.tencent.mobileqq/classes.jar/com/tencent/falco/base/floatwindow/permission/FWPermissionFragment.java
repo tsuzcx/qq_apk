@@ -23,8 +23,9 @@ public final class FWPermissionFragment
   
   public void _$_clearFindViewByIdCache()
   {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    HashMap localHashMap = this._$_findViewCache;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
@@ -39,15 +40,11 @@ public final class FWPermissionFragment
     {
       localView1 = getView();
       if (localView1 == null) {
-        localView1 = null;
+        return null;
       }
+      localView1 = localView1.findViewById(paramInt);
+      this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     }
-    else
-    {
-      return localView1;
-    }
-    localView1 = localView1.findViewById(paramInt);
-    this._$_findViewCache.put(Integer.valueOf(paramInt), localView1);
     return localView1;
   }
   
@@ -67,7 +64,7 @@ public final class FWPermissionFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.FWPermissionFragment
  * JD-Core Version:    0.7.0.1
  */

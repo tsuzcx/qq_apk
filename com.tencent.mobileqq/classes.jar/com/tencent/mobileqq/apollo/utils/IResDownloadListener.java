@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.apollo.utils;
 
-import com.tencent.mobileqq.apollo.api.model.ApolloActionData;
+import com.tencent.mobileqq.apollo.model.ApolloActionData;
 
 public class IResDownloadListener
 {
@@ -14,7 +14,7 @@ public class IResDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.utils.IResDownloadListener
  * JD-Core Version:    0.7.0.1
  */

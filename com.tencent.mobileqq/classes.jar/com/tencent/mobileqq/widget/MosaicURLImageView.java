@@ -28,19 +28,21 @@ public class MosaicURLImageView
   
   public void draw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null)
     {
-      this.a.a(paramCanvas);
+      localMosaicEffect.a(paramCanvas);
       return;
     }
     super.draw(paramCanvas);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.a != null)
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null)
     {
-      this.a.b(paramCanvas);
+      localMosaicEffect.b(paramCanvas);
       return;
     }
     super.onDraw(paramCanvas);
@@ -48,12 +50,14 @@ public class MosaicURLImageView
   
   public void setMosaicEffect(MosaicEffect paramMosaicEffect)
   {
-    if (this.a != null) {
-      this.a.a(null);
+    MosaicEffect localMosaicEffect = this.a;
+    if (localMosaicEffect != null) {
+      localMosaicEffect.a(null);
     }
     this.a = paramMosaicEffect;
-    if (this.a != null) {
-      this.a.a(this);
+    paramMosaicEffect = this.a;
+    if (paramMosaicEffect != null) {
+      paramMosaicEffect.a(this);
     }
     invalidate();
   }
@@ -70,7 +74,7 @@ public class MosaicURLImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.MosaicURLImageView
  * JD-Core Version:    0.7.0.1
  */

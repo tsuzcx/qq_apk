@@ -25,7 +25,81 @@ final class H264Reader$SampleReader$SliceHeaderData
   
   private boolean isFirstVclNalUnitOfPicture(SliceHeaderData paramSliceHeaderData)
   {
-    return (this.isComplete) && ((!paramSliceHeaderData.isComplete) || (this.frameNum != paramSliceHeaderData.frameNum) || (this.picParameterSetId != paramSliceHeaderData.picParameterSetId) || (this.fieldPicFlag != paramSliceHeaderData.fieldPicFlag) || ((this.bottomFieldFlagPresent) && (paramSliceHeaderData.bottomFieldFlagPresent) && (this.bottomFieldFlag != paramSliceHeaderData.bottomFieldFlag)) || ((this.nalRefIdc != paramSliceHeaderData.nalRefIdc) && ((this.nalRefIdc == 0) || (paramSliceHeaderData.nalRefIdc == 0))) || ((this.spsData.picOrderCountType == 0) && (paramSliceHeaderData.spsData.picOrderCountType == 0) && ((this.picOrderCntLsb != paramSliceHeaderData.picOrderCntLsb) || (this.deltaPicOrderCntBottom != paramSliceHeaderData.deltaPicOrderCntBottom))) || ((this.spsData.picOrderCountType == 1) && (paramSliceHeaderData.spsData.picOrderCountType == 1) && ((this.deltaPicOrderCnt0 != paramSliceHeaderData.deltaPicOrderCnt0) || (this.deltaPicOrderCnt1 != paramSliceHeaderData.deltaPicOrderCnt1))) || (this.idrPicFlag != paramSliceHeaderData.idrPicFlag) || ((this.idrPicFlag) && (paramSliceHeaderData.idrPicFlag) && (this.idrPicId != paramSliceHeaderData.idrPicId)));
+    boolean bool1 = this.isComplete;
+    boolean bool2 = true;
+    if (bool1)
+    {
+      bool1 = bool2;
+      if (!paramSliceHeaderData.isComplete) {
+        break label281;
+      }
+      bool1 = bool2;
+      if (this.frameNum != paramSliceHeaderData.frameNum) {
+        break label281;
+      }
+      bool1 = bool2;
+      if (this.picParameterSetId != paramSliceHeaderData.picParameterSetId) {
+        break label281;
+      }
+      bool1 = bool2;
+      if (this.fieldPicFlag != paramSliceHeaderData.fieldPicFlag) {
+        break label281;
+      }
+      if ((this.bottomFieldFlagPresent) && (paramSliceHeaderData.bottomFieldFlagPresent))
+      {
+        bool1 = bool2;
+        if (this.bottomFieldFlag != paramSliceHeaderData.bottomFieldFlag) {
+          break label281;
+        }
+      }
+      int i = this.nalRefIdc;
+      int j = paramSliceHeaderData.nalRefIdc;
+      if (i != j)
+      {
+        bool1 = bool2;
+        if (i == 0) {
+          break label281;
+        }
+        bool1 = bool2;
+        if (j == 0) {
+          break label281;
+        }
+      }
+      if ((this.spsData.picOrderCountType == 0) && (paramSliceHeaderData.spsData.picOrderCountType == 0))
+      {
+        bool1 = bool2;
+        if (this.picOrderCntLsb != paramSliceHeaderData.picOrderCntLsb) {
+          break label281;
+        }
+        bool1 = bool2;
+        if (this.deltaPicOrderCntBottom != paramSliceHeaderData.deltaPicOrderCntBottom) {
+          break label281;
+        }
+      }
+      if ((this.spsData.picOrderCountType == 1) && (paramSliceHeaderData.spsData.picOrderCountType == 1))
+      {
+        bool1 = bool2;
+        if (this.deltaPicOrderCnt0 != paramSliceHeaderData.deltaPicOrderCnt0) {
+          break label281;
+        }
+        bool1 = bool2;
+        if (this.deltaPicOrderCnt1 != paramSliceHeaderData.deltaPicOrderCnt1) {
+          break label281;
+        }
+      }
+      boolean bool3 = this.idrPicFlag;
+      boolean bool4 = paramSliceHeaderData.idrPicFlag;
+      bool1 = bool2;
+      if (bool3 != bool4) {
+        break label281;
+      }
+      if ((bool3) && (bool4) && (this.idrPicId != paramSliceHeaderData.idrPicId)) {
+        return true;
+      }
+    }
+    bool1 = false;
+    label281:
+    return bool1;
   }
   
   public void clear()
@@ -36,7 +110,14 @@ final class H264Reader$SampleReader$SliceHeaderData
   
   public boolean isISlice()
   {
-    return (this.hasSliceType) && ((this.sliceType == 7) || (this.sliceType == 2));
+    if (this.hasSliceType)
+    {
+      int i = this.sliceType;
+      if ((i == 7) || (i == 2)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void setAll(NalUnitUtil.SpsData paramSpsData, int paramInt1, int paramInt2, int paramInt3, int paramInt4, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4, int paramInt5, int paramInt6, int paramInt7, int paramInt8, int paramInt9)
@@ -67,7 +148,7 @@ final class H264Reader$SampleReader$SliceHeaderData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.H264Reader.SampleReader.SliceHeaderData
  * JD-Core Version:    0.7.0.1
  */

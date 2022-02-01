@@ -23,34 +23,39 @@ class ItemTouchHelper$ItemTouchHelperGestureListener
   
   public void onLongPress(MotionEvent paramMotionEvent)
   {
-    if (!this.mShouldReactToLongPress) {}
-    Object localObject;
-    do
+    if (!this.mShouldReactToLongPress) {
+      return;
+    }
+    Object localObject = this.this$0.findChildView(paramMotionEvent);
+    if (localObject != null)
     {
-      do
+      localObject = this.this$0.mRecyclerView.getChildViewHolder((View)localObject);
+      if (localObject != null)
       {
-        do
-        {
+        if (!this.this$0.mCallback.hasDragFlag(this.this$0.mRecyclerView, (RecyclerView.ViewHolder)localObject)) {
           return;
-          localObject = this.this$0.findChildView(paramMotionEvent);
-        } while (localObject == null);
-        localObject = this.this$0.mRecyclerView.getChildViewHolder((View)localObject);
-      } while ((localObject == null) || (!this.this$0.mCallback.hasDragFlag(this.this$0.mRecyclerView, (RecyclerView.ViewHolder)localObject)) || (paramMotionEvent.getPointerId(0) != this.this$0.mActivePointerId));
-      int i = paramMotionEvent.findPointerIndex(this.this$0.mActivePointerId);
-      float f1 = paramMotionEvent.getX(i);
-      float f2 = paramMotionEvent.getY(i);
-      this.this$0.mInitialTouchX = f1;
-      this.this$0.mInitialTouchY = f2;
-      paramMotionEvent = this.this$0;
-      this.this$0.mDy = 0.0F;
-      paramMotionEvent.mDx = 0.0F;
-    } while (!this.this$0.mCallback.isLongPressDragEnabled());
-    this.this$0.select((RecyclerView.ViewHolder)localObject, 2);
+        }
+        if (paramMotionEvent.getPointerId(0) == this.this$0.mActivePointerId)
+        {
+          int i = paramMotionEvent.findPointerIndex(this.this$0.mActivePointerId);
+          float f1 = paramMotionEvent.getX(i);
+          float f2 = paramMotionEvent.getY(i);
+          paramMotionEvent = this.this$0;
+          paramMotionEvent.mInitialTouchX = f1;
+          paramMotionEvent.mInitialTouchY = f2;
+          paramMotionEvent.mDy = 0.0F;
+          paramMotionEvent.mDx = 0.0F;
+          if (paramMotionEvent.mCallback.isLongPressDragEnabled()) {
+            this.this$0.select((RecyclerView.ViewHolder)localObject, 2);
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.ItemTouchHelper.ItemTouchHelperGestureListener
  * JD-Core Version:    0.7.0.1
  */

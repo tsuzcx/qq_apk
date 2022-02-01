@@ -23,35 +23,39 @@ public class AutoFitTextView
   
   private void a(String paramString, int paramInt)
   {
-    if ((paramString == null) || (paramInt <= 0)) {
-      return;
-    }
-    if (this.jdField_a_of_type_Float == 0.0F) {
-      this.jdField_a_of_type_Float = getTextSize();
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView$OnGetMaxWidthCallback != null) {}
-    float f1;
-    for (paramInt = this.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView$OnGetMaxWidthCallback.a();; paramInt = getWidth())
+    if (paramString != null)
     {
+      if (paramInt <= 0) {
+        return;
+      }
+      if (this.jdField_a_of_type_Float == 0.0F) {
+        this.jdField_a_of_type_Float = getTextSize();
+      }
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqWidgetAutoFitTextView$OnGetMaxWidthCallback;
+      if (localObject != null) {
+        paramInt = ((AutoFitTextView.OnGetMaxWidthCallback)localObject).a();
+      } else {
+        paramInt = getWidth();
+      }
       int i = getPaddingLeft();
       int j = getPaddingRight();
       int k = getCompoundDrawablePadding();
-      Rect localRect = new Rect();
+      localObject = new Rect();
       this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(this.jdField_a_of_type_Float);
-      this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(paramString, 0, paramString.length(), localRect);
-      float f2 = localRect.width();
-      f1 = this.jdField_a_of_type_Float;
-      while (f2 > paramInt - i - j - k)
+      this.jdField_a_of_type_AndroidGraphicsPaint.getTextBounds(paramString, 0, paramString.length(), (Rect)localObject);
+      float f1 = ((Rect)localObject).width();
+      float f2 = this.jdField_a_of_type_Float;
+      while (f1 > paramInt - i - j - k)
       {
-        f1 -= 1.0F;
-        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(f1);
-        f2 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString);
+        f2 -= 1.0F;
+        this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(f2);
+        f1 = this.jdField_a_of_type_AndroidGraphicsPaint.measureText(paramString);
       }
+      setTextSize(0, f2);
     }
-    setTextSize(0, f1);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     a(getText().toString(), getWidth());
@@ -64,7 +68,7 @@ public class AutoFitTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.AutoFitTextView
  * JD-Core Version:    0.7.0.1
  */

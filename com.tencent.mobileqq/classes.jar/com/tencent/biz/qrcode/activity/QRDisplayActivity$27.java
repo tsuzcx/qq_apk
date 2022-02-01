@@ -21,22 +21,20 @@ class QRDisplayActivity$27
         QLog.d("QRDisplayActivity", 4, "enter longclick");
       }
     }
-    do
+    else if (QRDisplayActivity.a(this.a) != null)
     {
-      do
-      {
-        return;
-      } while (QRDisplayActivity.a(this.a) == null);
       QRDisplayActivity.c(this.a);
-    } while (!QLog.isColorLevel());
-    QLog.d("QRDisplayActivity", 4, "enter longclickstop");
+      if (QLog.isColorLevel()) {
+        QLog.d("QRDisplayActivity", 4, "enter longclickstop");
+      }
+    }
   }
   
   public void onTick(long paramLong) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRDisplayActivity.27
  * JD-Core Version:    0.7.0.1
  */

@@ -26,15 +26,18 @@ class VideoListPageLoader$1
       {
         VideoListPageLoader.a(this.this$0, localGetVideoListEvent);
         SLog.a("Q.qqstory.home.data:VideoListPageLoader", "dispatch video list return from cache: %s", localGetVideoListEvent);
-        return;
       }
-      SLog.d("Q.qqstory.home.data:VideoListPageLoader", "load cache data later than load from network");
+      else
+      {
+        SLog.d("Q.qqstory.home.data:VideoListPageLoader", "load cache data later than load from network");
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.VideoListPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ import com.huawei.hms.support.log.HMSLog;
 
 public abstract class AbstractDialog
 {
-  private Activity a;
-  private AlertDialog b;
-  private AbstractDialog.Callback c;
+  public Activity a;
+  public AlertDialog b;
+  public AbstractDialog.Callback c;
   
-  private static int a(Context paramContext)
+  public static int a(Context paramContext)
   {
     if (paramContext == null) {
       return 0;
@@ -24,38 +24,42 @@ public abstract class AbstractDialog
   
   public void cancel()
   {
-    if (this.b != null) {
-      this.b.cancel();
+    AlertDialog localAlertDialog = this.b;
+    if (localAlertDialog != null) {
+      localAlertDialog.cancel();
     }
   }
   
   public void dismiss()
   {
-    if (this.b != null) {
-      this.b.dismiss();
+    AlertDialog localAlertDialog = this.b;
+    if (localAlertDialog != null) {
+      localAlertDialog.dismiss();
     }
   }
   
-  protected void fireCancel()
+  public void fireCancel()
   {
-    if (this.c != null) {
-      this.c.onCancel(this);
+    AbstractDialog.Callback localCallback = this.c;
+    if (localCallback != null) {
+      localCallback.onCancel(this);
     }
   }
   
-  protected void fireDoWork()
+  public void fireDoWork()
   {
-    if (this.c != null) {
-      this.c.onDoWork(this);
+    AbstractDialog.Callback localCallback = this.c;
+    if (localCallback != null) {
+      localCallback.onDoWork(this);
     }
   }
   
-  protected Activity getActivity()
+  public Activity getActivity()
   {
     return this.a;
   }
   
-  protected int getDialogThemeId()
+  public int getDialogThemeId()
   {
     if ((a(this.a) != 0) && (Build.VERSION.SDK_INT >= 16)) {
       return 0;
@@ -63,7 +67,7 @@ public abstract class AbstractDialog
     return 3;
   }
   
-  protected AlertDialog onCreateDialog(Activity paramActivity)
+  public AlertDialog onCreateDialog(Activity paramActivity)
   {
     AlertDialog.Builder localBuilder = new AlertDialog.Builder(getActivity(), getDialogThemeId());
     String str = onGetTitleString(paramActivity);
@@ -76,34 +80,36 @@ public abstract class AbstractDialog
     }
     str = onGetPositiveButtonString(paramActivity);
     if (str != null) {
-      localBuilder.setPositiveButton(str, new AbstractDialog.1(this));
+      localBuilder.setPositiveButton(str, new AbstractDialog.a(this));
     }
     paramActivity = onGetNegativeButtonString(paramActivity);
     if (paramActivity != null) {
-      localBuilder.setNegativeButton(paramActivity, new AbstractDialog.2(this));
+      localBuilder.setNegativeButton(paramActivity, new AbstractDialog.b(this));
     }
     return localBuilder.create();
   }
   
-  protected abstract String onGetMessageString(Context paramContext);
+  public abstract String onGetMessageString(Context paramContext);
   
-  protected abstract String onGetNegativeButtonString(Context paramContext);
+  public abstract String onGetNegativeButtonString(Context paramContext);
   
-  protected abstract String onGetPositiveButtonString(Context paramContext);
+  public abstract String onGetPositiveButtonString(Context paramContext);
   
-  protected abstract String onGetTitleString(Context paramContext);
+  public abstract String onGetTitleString(Context paramContext);
   
   public void setMessage(CharSequence paramCharSequence)
   {
-    if (this.b != null) {
-      this.b.setMessage(paramCharSequence);
+    AlertDialog localAlertDialog = this.b;
+    if (localAlertDialog != null) {
+      localAlertDialog.setMessage(paramCharSequence);
     }
   }
   
   public void setTitle(CharSequence paramCharSequence)
   {
-    if (this.b != null) {
-      this.b.setTitle(paramCharSequence);
+    AlertDialog localAlertDialog = this.b;
+    if (localAlertDialog != null) {
+      localAlertDialog.setTitle(paramCharSequence);
     }
   }
   
@@ -111,21 +117,22 @@ public abstract class AbstractDialog
   {
     this.a = paramActivity;
     this.c = paramCallback;
-    if ((this.a == null) || (this.a.isFinishing()))
+    paramActivity = this.a;
+    if ((paramActivity != null) && (!paramActivity.isFinishing()))
     {
-      HMSLog.e("AbstractDialog", "In show, The activity is null or finishing.");
+      this.b = onCreateDialog(this.a);
+      this.b.setCanceledOnTouchOutside(false);
+      this.b.setOnCancelListener(new AbstractDialog.c(this));
+      this.b.setOnKeyListener(new AbstractDialog.d(this));
+      this.b.show();
       return;
     }
-    this.b = onCreateDialog(this.a);
-    this.b.setCanceledOnTouchOutside(false);
-    this.b.setOnCancelListener(new AbstractDialog.3(this));
-    this.b.setOnKeyListener(new AbstractDialog.4(this));
-    this.b.show();
+    HMSLog.e("AbstractDialog", "In show, The activity is null or finishing.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.ui.AbstractDialog
  * JD-Core Version:    0.7.0.1
  */

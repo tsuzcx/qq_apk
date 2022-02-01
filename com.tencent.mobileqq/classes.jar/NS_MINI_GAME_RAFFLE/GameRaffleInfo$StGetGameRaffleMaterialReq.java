@@ -14,7 +14,7 @@ public final class GameRaffleInfo$StGetGameRaffleMaterialReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_GAME_RAFFLE.GameRaffleInfo.StGetGameRaffleMaterialReq
  * JD-Core Version:    0.7.0.1
  */

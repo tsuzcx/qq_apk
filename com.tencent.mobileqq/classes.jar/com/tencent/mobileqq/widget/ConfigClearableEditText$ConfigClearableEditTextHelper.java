@@ -18,7 +18,7 @@ class ConfigClearableEditText$ConfigClearableEditTextHelper
     super(paramView);
   }
   
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
     if ((ConfigClearableEditText.a(this.a)) && (paramFloat1 > ConfigClearableEditText.a(this.a))) {
       return 0;
@@ -26,33 +26,37 @@ class ConfigClearableEditText$ConfigClearableEditTextHelper
     return -1;
   }
   
-  public void getVisibleVirtualViews(List<Integer> paramList)
+  protected void getVisibleVirtualViews(List<Integer> paramList)
   {
     if (ConfigClearableEditText.a(this.a)) {
       paramList.add(Integer.valueOf(0));
     }
   }
   
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  protected boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ConfigClearableEditTextHelper", 2, "onPerformActionForVirtualView virtualViewId:" + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onPerformActionForVirtualView virtualViewId:");
+      paramBundle.append(paramInt1);
+      QLog.d("ConfigClearableEditTextHelper", 2, paramBundle.toString());
     }
     return false;
   }
   
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
   {
     if (paramInt == 0) {
-      paramAccessibilityEvent.setContentDescription(QQUIDelegate.a(2131701997));
+      paramAccessibilityEvent.setContentDescription(QQUIDelegate.a(2131702137));
     }
   }
   
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  protected void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
     if (paramInt == 0)
     {
-      paramAccessibilityNodeInfoCompat.setContentDescription(QQUIDelegate.a(2131701997));
+      paramAccessibilityNodeInfoCompat.setContentDescription(QQUIDelegate.a(2131702137));
       paramAccessibilityNodeInfoCompat.addAction(16);
       paramInt = ConfigClearableEditText.a(this.a);
       paramAccessibilityNodeInfoCompat.setBoundsInParent(new Rect(paramInt, this.a.getPaddingTop(), this.a.a.getIntrinsicWidth() + paramInt, this.a.getHeight() - this.a.getPaddingBottom()));
@@ -61,7 +65,7 @@ class ConfigClearableEditText$ConfigClearableEditTextHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ConfigClearableEditText.ConfigClearableEditTextHelper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,0 @@
-package com.tencent.av.share;
-
-public abstract interface ShareChat$FromChannel {}
-
-
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.av.share.ShareChat.FromChannel
- * JD-Core Version:    0.7.0.1
- */

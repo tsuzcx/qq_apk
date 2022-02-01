@@ -104,101 +104,99 @@ final class HlsSampleStreamWrapper
   
   private void buildTracks()
   {
-    int n = this.sampleQueues.length;
-    int k = 0;
-    int m = -1;
+    int i2 = this.sampleQueues.length;
     int j = 0;
+    int m = 0;
     Object localObject;
-    int i;
-    if (k < n)
+    for (int n = -1;; n = k)
     {
-      localObject = this.sampleQueues[k].getUpstreamFormat().sampleMimeType;
-      if (MimeTypes.isVideo((String)localObject))
-      {
-        i = 3;
-        label44:
-        if (i <= j) {
-          break label94;
-        }
-        j = k;
+      i = 3;
+      if (j >= i2) {
+        break;
       }
-    }
-    for (;;)
-    {
-      k += 1;
-      m = j;
-      j = i;
-      break;
-      if (MimeTypes.isAudio((String)localObject))
-      {
-        i = 2;
-        break label44;
-      }
-      if (MimeTypes.isText((String)localObject))
-      {
-        i = 1;
-        break label44;
-      }
-      i = 0;
-      break label44;
-      label94:
-      if ((i == j) && (m != -1))
-      {
-        m = -1;
-        i = j;
-        j = m;
-        continue;
-        TrackGroup localTrackGroup = this.chunkSource.getTrackGroup();
-        int i1 = localTrackGroup.length;
-        this.primaryTrackGroupIndex = -1;
-        this.trackGroupToSampleQueueIndex = new int[n];
-        i = 0;
-        while (i < n)
-        {
-          this.trackGroupToSampleQueueIndex[i] = i;
-          i += 1;
+      localObject = this.sampleQueues[j].getUpstreamFormat().sampleMimeType;
+      if (!MimeTypes.isVideo((String)localObject)) {
+        if (MimeTypes.isAudio((String)localObject)) {
+          i = 2;
+        } else if (MimeTypes.isText((String)localObject)) {
+          i = 1;
+        } else {
+          i = 0;
         }
-        TrackGroup[] arrayOfTrackGroup = new TrackGroup[n];
-        i = 0;
-        while (i < n)
-        {
-          Format localFormat = this.sampleQueues[i].getUpstreamFormat();
-          if (i == m)
-          {
-            localObject = new Format[i1];
-            k = 0;
-            while (k < i1)
-            {
-              localObject[k] = deriveFormat(localTrackGroup.getFormat(k), localFormat, true);
-              k += 1;
-            }
-            arrayOfTrackGroup[i] = new TrackGroup((Format[])localObject);
-            this.primaryTrackGroupIndex = i;
-            i += 1;
-          }
-          else
-          {
-            if ((j == 3) && (MimeTypes.isAudio(localFormat.sampleMimeType))) {}
-            for (localObject = this.muxedAudioFormat;; localObject = null)
-            {
-              arrayOfTrackGroup[i] = new TrackGroup(new Format[] { deriveFormat((Format)localObject, localFormat, false) });
-              break;
-            }
-          }
-        }
-        this.trackGroups = new TrackGroupArray(arrayOfTrackGroup);
+      }
+      int i1;
+      if (i > m)
+      {
+        k = j;
+        i1 = i;
       }
       else
       {
-        i = j;
-        j = m;
+        i1 = m;
+        k = n;
+        if (i == m)
+        {
+          i1 = m;
+          k = n;
+          if (n != -1)
+          {
+            k = -1;
+            i1 = m;
+          }
+        }
       }
+      j += 1;
+      m = i1;
     }
+    TrackGroup localTrackGroup = this.chunkSource.getTrackGroup();
+    int k = localTrackGroup.length;
+    this.primaryTrackGroupIndex = -1;
+    this.trackGroupToSampleQueueIndex = new int[i2];
+    int i = 0;
+    while (i < i2)
+    {
+      this.trackGroupToSampleQueueIndex[i] = i;
+      i += 1;
+    }
+    TrackGroup[] arrayOfTrackGroup = new TrackGroup[i2];
+    i = 0;
+    while (i < i2)
+    {
+      Format localFormat = this.sampleQueues[i].getUpstreamFormat();
+      if (i == n)
+      {
+        localObject = new Format[k];
+        j = 0;
+        while (j < k)
+        {
+          localObject[j] = deriveFormat(localTrackGroup.getFormat(j), localFormat, true);
+          j += 1;
+        }
+        arrayOfTrackGroup[i] = new TrackGroup((Format[])localObject);
+        this.primaryTrackGroupIndex = i;
+      }
+      else
+      {
+        if ((m == 3) && (MimeTypes.isAudio(localFormat.sampleMimeType))) {
+          localObject = this.muxedAudioFormat;
+        } else {
+          localObject = null;
+        }
+        arrayOfTrackGroup[i] = new TrackGroup(new Format[] { deriveFormat((Format)localObject, localFormat, false) });
+      }
+      i += 1;
+    }
+    this.trackGroups = new TrackGroupArray(arrayOfTrackGroup);
   }
   
   private static DummyTrackOutput createDummyTrackOutput(int paramInt1, int paramInt2)
   {
-    Log.w("HlsSampleStreamWrapper", "Unmapped track with id " + paramInt1 + " of type " + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unmapped track with id ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(" of type ");
+    localStringBuilder.append(paramInt2);
+    Log.w("HlsSampleStreamWrapper", localStringBuilder.toString());
     return new DummyTrackOutput();
   }
   
@@ -207,18 +205,20 @@ final class HlsSampleStreamWrapper
     if (paramFormat1 == null) {
       return paramFormat2;
     }
-    if (paramBoolean) {}
-    for (int i = paramFormat1.bitrate;; i = -1)
-    {
-      int j = MimeTypes.getTrackType(paramFormat2.sampleMimeType);
-      String str3 = Util.getCodecsOfType(paramFormat1.codecs, j);
-      String str2 = MimeTypes.getMediaMimeType(str3);
-      String str1 = str2;
-      if (str2 == null) {
-        str1 = paramFormat2.sampleMimeType;
-      }
-      return paramFormat2.copyWithContainerInfo(paramFormat1.id, str1, str3, i, paramFormat1.width, paramFormat1.height, paramFormat1.selectionFlags, paramFormat1.language);
+    int i;
+    if (paramBoolean) {
+      i = paramFormat1.bitrate;
+    } else {
+      i = -1;
     }
+    int j = MimeTypes.getTrackType(paramFormat2.sampleMimeType);
+    String str3 = Util.getCodecsOfType(paramFormat1.codecs, j);
+    String str2 = MimeTypes.getMediaMimeType(str3);
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = paramFormat2.sampleMimeType;
+    }
+    return paramFormat2.copyWithContainerInfo(paramFormat1.id, str1, str3, i, paramFormat1.width, paramFormat1.height, paramFormat1.selectionFlags, paramFormat1.language);
   }
   
   private boolean finishedReadingChunk(HlsMediaChunk paramHlsMediaChunk)
@@ -242,22 +242,21 @@ final class HlsSampleStreamWrapper
     String str2 = paramFormat2.sampleMimeType;
     int i = MimeTypes.getTrackType(str1);
     if (i != 3) {
-      if (i != MimeTypes.getTrackType(str2)) {}
+      return i == MimeTypes.getTrackType(str2);
     }
-    do
-    {
-      return true;
+    if (!Util.areEqual(str1, str2)) {
       return false;
-      if (!Util.areEqual(str1, str2)) {
-        return false;
-      }
-    } while (((!"application/cea-608".equals(str1)) && (!"application/cea-708".equals(str1))) || (paramFormat1.accessibilityChannel == paramFormat2.accessibilityChannel));
-    return false;
+    }
+    if ((!"application/cea-608".equals(str1)) && (!"application/cea-708".equals(str1))) {
+      return true;
+    }
+    return paramFormat1.accessibilityChannel == paramFormat2.accessibilityChannel;
   }
   
   private HlsMediaChunk getLastMediaChunk()
   {
-    return (HlsMediaChunk)this.mediaChunks.get(this.mediaChunks.size() - 1);
+    ArrayList localArrayList = this.mediaChunks;
+    return (HlsMediaChunk)localArrayList.get(localArrayList.size() - 1);
   }
   
   private static boolean isMediaChunk(Chunk paramChunk)
@@ -276,54 +275,52 @@ final class HlsSampleStreamWrapper
     this.trackGroupToSampleQueueIndex = new int[k];
     Arrays.fill(this.trackGroupToSampleQueueIndex, -1);
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       int j = 0;
       for (;;)
       {
-        if (j < this.sampleQueues.length)
-        {
-          if (formatsMatch(this.sampleQueues[j].getUpstreamFormat(), this.trackGroups.get(i).getFormat(0))) {
-            this.trackGroupToSampleQueueIndex[i] = j;
-          }
+        SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
+        if (j >= arrayOfSampleQueue.length) {
+          break;
         }
-        else
+        if (formatsMatch(arrayOfSampleQueue[j].getUpstreamFormat(), this.trackGroups.get(i).getFormat(0)))
         {
-          i += 1;
+          this.trackGroupToSampleQueueIndex[i] = j;
           break;
         }
         j += 1;
       }
+      i += 1;
     }
   }
   
   private void maybeFinishPrepare()
   {
-    if ((this.released) || (this.trackGroupToSampleQueueIndex != null) || (!this.sampleQueuesBuilt)) {
-      return;
-    }
-    SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
-    int j = arrayOfSampleQueue.length;
-    int i = 0;
-    for (;;)
+    if ((!this.released) && (this.trackGroupToSampleQueueIndex == null))
     {
-      if (i >= j) {
-        break label53;
+      if (!this.sampleQueuesBuilt) {
+        return;
       }
-      if (arrayOfSampleQueue[i].getUpstreamFormat() == null) {
-        break;
+      SampleQueue[] arrayOfSampleQueue = this.sampleQueues;
+      int j = arrayOfSampleQueue.length;
+      int i = 0;
+      while (i < j)
+      {
+        if (arrayOfSampleQueue[i].getUpstreamFormat() == null) {
+          return;
+        }
+        i += 1;
       }
-      i += 1;
+      if (this.trackGroups != null)
+      {
+        mapSampleQueuesToMatchTrackGroups();
+        return;
+      }
+      buildTracks();
+      this.prepared = true;
+      this.callback.onPrepared();
     }
-    label53:
-    if (this.trackGroups != null)
-    {
-      mapSampleQueuesToMatchTrackGroups();
-      return;
-    }
-    buildTracks();
-    this.prepared = true;
-    this.callback.onPrepared();
   }
   
   private void onTracksEnded()
@@ -349,12 +346,18 @@ final class HlsSampleStreamWrapper
   {
     int k = this.sampleQueues.length;
     int i = 0;
-    while (i < k)
+    for (;;)
     {
+      int j = 1;
+      if (i >= k) {
+        break;
+      }
       SampleQueue localSampleQueue = this.sampleQueues[i];
       localSampleQueue.rewind();
-      if (localSampleQueue.advanceTo(paramLong, true, false) != -1) {}
-      for (int j = 1; (j == 0) && ((this.sampleQueueIsAudioVideoFlags[i] != 0) || (!this.haveAudioVideoSampleQueues)); j = 0) {
+      if (localSampleQueue.advanceTo(paramLong, true, false) == -1) {
+        j = 0;
+      }
+      if ((j == 0) && ((this.sampleQueueIsAudioVideoFlags[i] != 0) || (!this.haveAudioVideoSampleQueues))) {
         return false;
       }
       i += 1;
@@ -364,58 +367,69 @@ final class HlsSampleStreamWrapper
   
   public int bindSampleQueueToSampleStream(int paramInt)
   {
-    if (!isMappingFinished()) {}
-    do
-    {
+    if (!isMappingFinished()) {
       return -1;
-      paramInt = this.trackGroupToSampleQueueIndex[paramInt];
-    } while ((paramInt == -1) || (this.sampleQueuesEnabledStates[paramInt] != 0));
-    this.sampleQueuesEnabledStates[paramInt] = true;
+    }
+    paramInt = this.trackGroupToSampleQueueIndex[paramInt];
+    if (paramInt == -1) {
+      return -1;
+    }
+    boolean[] arrayOfBoolean = this.sampleQueuesEnabledStates;
+    if (arrayOfBoolean[paramInt] != 0) {
+      return -1;
+    }
+    arrayOfBoolean[paramInt] = true;
     return paramInt;
   }
   
   public boolean continueLoading(long paramLong)
   {
-    if ((this.loadingFinished) || (this.loader.isLoading())) {
-      return false;
-    }
-    Object localObject1;
-    if (isPendingReset()) {
-      localObject1 = null;
-    }
-    Object localObject2;
-    for (long l = this.pendingResetPositionUs;; l = ((HlsMediaChunk)localObject1).endTimeUs)
+    if (!this.loadingFinished)
     {
+      if (this.loader.isLoading()) {
+        return false;
+      }
+      long l;
+      if (isPendingReset())
+      {
+        localObject1 = null;
+        l = this.pendingResetPositionUs;
+      }
+      else
+      {
+        localObject1 = getLastMediaChunk();
+        l = ((HlsMediaChunk)localObject1).endTimeUs;
+      }
       this.chunkSource.getNextChunk((HlsMediaChunk)localObject1, paramLong, l, this.nextChunkHolder);
       boolean bool = this.nextChunkHolder.endOfStream;
-      localObject1 = this.nextChunkHolder.chunk;
-      localObject2 = this.nextChunkHolder.playlist;
+      Object localObject1 = this.nextChunkHolder.chunk;
+      Object localObject2 = this.nextChunkHolder.playlist;
       this.nextChunkHolder.clear();
-      if (!bool) {
-        break;
+      if (bool)
+      {
+        this.pendingResetPositionUs = -9223372036854775807L;
+        this.loadingFinished = true;
+        return true;
       }
-      this.pendingResetPositionUs = -9223372036854775807L;
-      this.loadingFinished = true;
+      if (localObject1 == null)
+      {
+        if (localObject2 != null) {
+          this.callback.onPlaylistRefreshRequired((HlsMasterPlaylist.HlsUrl)localObject2);
+        }
+        return false;
+      }
+      if (isMediaChunk((Chunk)localObject1))
+      {
+        this.pendingResetPositionUs = -9223372036854775807L;
+        localObject2 = (HlsMediaChunk)localObject1;
+        ((HlsMediaChunk)localObject2).init(this);
+        this.mediaChunks.add(localObject2);
+      }
+      paramLong = this.loader.startLoading((Loader.Loadable)localObject1, this, this.minLoadableRetryCount);
+      this.eventDispatcher.loadStarted(((Chunk)localObject1).dataSpec, ((Chunk)localObject1).type, this.trackType, ((Chunk)localObject1).trackFormat, ((Chunk)localObject1).trackSelectionReason, ((Chunk)localObject1).trackSelectionData, ((Chunk)localObject1).startTimeUs, ((Chunk)localObject1).endTimeUs, paramLong);
       return true;
-      localObject1 = getLastMediaChunk();
     }
-    if (localObject1 == null)
-    {
-      if (localObject2 != null) {
-        this.callback.onPlaylistRefreshRequired((HlsMasterPlaylist.HlsUrl)localObject2);
-      }
-      return false;
-    }
-    if (isMediaChunk((Chunk)localObject1))
-    {
-      this.pendingResetPositionUs = -9223372036854775807L;
-      localObject2 = (HlsMediaChunk)localObject1;
-      ((HlsMediaChunk)localObject2).init(this);
-      this.mediaChunks.add(localObject2);
-    }
-    paramLong = this.loader.startLoading((Loader.Loadable)localObject1, this, this.minLoadableRetryCount);
-    this.eventDispatcher.loadStarted(((Chunk)localObject1).dataSpec, ((Chunk)localObject1).type, this.trackType, ((Chunk)localObject1).trackFormat, ((Chunk)localObject1).trackSelectionReason, ((Chunk)localObject1).trackSelectionData, ((Chunk)localObject1).startTimeUs, ((Chunk)localObject1).endTimeUs, paramLong);
-    return true;
+    return false;
   }
   
   public void continuePreparing()
@@ -427,17 +441,15 @@ final class HlsSampleStreamWrapper
   
   public void discardBuffer(long paramLong, boolean paramBoolean)
   {
-    if (!this.sampleQueuesBuilt) {}
-    for (;;)
-    {
+    if (!this.sampleQueuesBuilt) {
       return;
-      int j = this.sampleQueues.length;
-      int i = 0;
-      while (i < j)
-      {
-        this.sampleQueues[i].discardTo(paramLong, paramBoolean, this.sampleQueuesEnabledStates[i]);
-        i += 1;
-      }
+    }
+    int j = this.sampleQueues.length;
+    int i = 0;
+    while (i < j)
+    {
+      this.sampleQueues[i].discardTo(paramLong, paramBoolean, this.sampleQueuesEnabledStates[i]);
+      i += 1;
     }
   }
   
@@ -449,32 +461,32 @@ final class HlsSampleStreamWrapper
   
   public long getBufferedPositionUs()
   {
-    long l2;
-    if (this.loadingFinished)
-    {
-      l2 = -9223372036854775808L;
-      return l2;
+    if (this.loadingFinished) {
+      return -9223372036854775808L;
     }
     if (isPendingReset()) {
       return this.pendingResetPositionUs;
     }
-    long l1 = this.lastSeekPositionUs;
+    long l2 = this.lastSeekPositionUs;
     Object localObject = getLastMediaChunk();
-    if (((HlsMediaChunk)localObject).isLoadCompleted())
-    {
-      label46:
-      if (localObject == null) {
-        break label151;
+    if (!((HlsMediaChunk)localObject).isLoadCompleted()) {
+      if (this.mediaChunks.size() > 1)
+      {
+        localObject = this.mediaChunks;
+        localObject = (HlsMediaChunk)((ArrayList)localObject).get(((ArrayList)localObject).size() - 2);
       }
-      l1 = Math.max(l1, ((HlsMediaChunk)localObject).endTimeUs);
+      else
+      {
+        localObject = null;
+      }
     }
-    label151:
-    for (;;)
+    long l1 = l2;
+    if (localObject != null) {
+      l1 = Math.max(l2, ((HlsMediaChunk)localObject).endTimeUs);
+    }
+    l2 = l1;
+    if (this.sampleQueuesBuilt)
     {
-      l2 = l1;
-      if (!this.sampleQueuesBuilt) {
-        break;
-      }
       localObject = this.sampleQueues;
       int j = localObject.length;
       int i = 0;
@@ -487,14 +499,8 @@ final class HlsSampleStreamWrapper
         l1 = Math.max(l1, localObject[i].getLargestQueuedTimestampUs());
         i += 1;
       }
-      if (this.mediaChunks.size() > 1)
-      {
-        localObject = (HlsMediaChunk)this.mediaChunks.get(this.mediaChunks.size() - 2);
-        break label46;
-      }
-      localObject = null;
-      break label46;
     }
+    return l2;
   }
   
   public long getNextLoadPositionUs()
@@ -591,48 +597,47 @@ final class HlsSampleStreamWrapper
   {
     long l = paramChunk.bytesLoaded();
     boolean bool3 = isMediaChunk(paramChunk);
+    boolean bool2 = true;
     boolean bool1;
-    if ((!bool3) || (l == 0L))
-    {
+    if ((bool3) && (l != 0L)) {
+      bool1 = false;
+    } else {
       bool1 = true;
-      boolean bool2 = false;
-      if (this.chunkSource.onChunkLoadError(paramChunk, bool1, paramIOException))
-      {
-        if (bool3)
-        {
-          if ((HlsMediaChunk)this.mediaChunks.remove(this.mediaChunks.size() - 1) != paramChunk) {
-            break label181;
-          }
-          bool1 = true;
-          label76:
-          Assertions.checkState(bool1);
-          if (this.mediaChunks.isEmpty()) {
-            this.pendingResetPositionUs = this.lastSeekPositionUs;
-          }
-        }
-        bool2 = true;
-      }
-      this.eventDispatcher.loadError(paramChunk.dataSpec, paramChunk.type, this.trackType, paramChunk.trackFormat, paramChunk.trackSelectionReason, paramChunk.trackSelectionData, paramChunk.startTimeUs, paramChunk.endTimeUs, paramLong1, paramLong2, paramChunk.bytesLoaded(), paramIOException, bool2);
-      if (!bool2) {
-        break label200;
-      }
-      if (this.prepared) {
-        break label187;
-      }
-      continueLoading(this.lastSeekPositionUs);
     }
-    for (;;)
+    if (this.chunkSource.onChunkLoadError(paramChunk, bool1, paramIOException))
     {
-      return 2;
-      bool1 = false;
-      break;
-      label181:
-      bool1 = false;
-      break label76;
-      label187:
-      this.callback.onContinueLoadingRequested(this);
+      bool1 = bool2;
+      if (bool3)
+      {
+        ArrayList localArrayList = this.mediaChunks;
+        if ((HlsMediaChunk)localArrayList.remove(localArrayList.size() - 1) == paramChunk) {
+          bool1 = true;
+        } else {
+          bool1 = false;
+        }
+        Assertions.checkState(bool1);
+        bool1 = bool2;
+        if (this.mediaChunks.isEmpty())
+        {
+          this.pendingResetPositionUs = this.lastSeekPositionUs;
+          bool1 = bool2;
+        }
+      }
     }
-    label200:
+    else
+    {
+      bool1 = false;
+    }
+    this.eventDispatcher.loadError(paramChunk.dataSpec, paramChunk.type, this.trackType, paramChunk.trackFormat, paramChunk.trackSelectionReason, paramChunk.trackSelectionData, paramChunk.startTimeUs, paramChunk.endTimeUs, paramLong1, paramLong2, paramChunk.bytesLoaded(), paramIOException, bool1);
+    if (bool1)
+    {
+      if (!this.prepared) {
+        continueLoading(this.lastSeekPositionUs);
+      } else {
+        this.callback.onContinueLoadingRequested(this);
+      }
+      return 2;
+    }
     return 0;
   }
   
@@ -716,18 +721,18 @@ final class HlsSampleStreamWrapper
     this.mediaChunks.clear();
     if (this.loader.isLoading()) {
       this.loader.cancelLoading();
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       resetSampleQueues();
     }
+    return true;
   }
   
   public boolean selectTracks(TrackSelection[] paramArrayOfTrackSelection, boolean[] paramArrayOfBoolean1, SampleStream[] paramArrayOfSampleStream, boolean[] paramArrayOfBoolean2, long paramLong, boolean paramBoolean)
   {
     Assertions.checkState(this.prepared);
-    int j = this.enabledTrackGroupCount;
+    int m = this.enabledTrackGroupCount;
+    int j = 0;
+    int k = 0;
     int i = 0;
     while (i < paramArrayOfTrackSelection.length)
     {
@@ -740,145 +745,125 @@ final class HlsSampleStreamWrapper
       i += 1;
     }
     boolean bool1;
-    label98:
-    TrackSelection localTrackSelection;
-    label113:
-    Object localObject;
-    if (!paramBoolean)
+    if ((!paramBoolean) && (this.seenFirstTrackSelection ? m != 0 : paramLong == this.lastSeekPositionUs)) {
+      bool1 = false;
+    } else {
+      bool1 = true;
+    }
+    TrackSelection localTrackSelection = this.chunkSource.getTrackSelection();
+    paramArrayOfBoolean1 = localTrackSelection;
+    i = 0;
+    boolean bool2;
+    while (i < paramArrayOfTrackSelection.length)
     {
-      if (this.seenFirstTrackSelection) {
-        if (j != 0) {
-          break label293;
+      Object localObject = paramArrayOfBoolean1;
+      bool2 = bool1;
+      if (paramArrayOfSampleStream[i] == null)
+      {
+        localObject = paramArrayOfBoolean1;
+        bool2 = bool1;
+        if (paramArrayOfTrackSelection[i] != null)
+        {
+          this.enabledTrackGroupCount += 1;
+          localObject = paramArrayOfTrackSelection[i];
+          m = this.trackGroups.indexOf(((TrackSelection)localObject).getTrackGroup());
+          if (m == this.primaryTrackGroupIndex)
+          {
+            this.chunkSource.selectTracks((TrackSelection)localObject);
+            paramArrayOfBoolean1 = (boolean[])localObject;
+          }
+          paramArrayOfSampleStream[i] = new HlsSampleStream(this, m);
+          paramArrayOfBoolean2[i] = true;
+          localObject = paramArrayOfBoolean1;
+          bool2 = bool1;
+          if (this.sampleQueuesBuilt)
+          {
+            localObject = paramArrayOfBoolean1;
+            bool2 = bool1;
+            if (!bool1)
+            {
+              localObject = this.sampleQueues[this.trackGroupToSampleQueueIndex[m]];
+              ((SampleQueue)localObject).rewind();
+              if ((((SampleQueue)localObject).advanceTo(paramLong, true, true) == -1) && (((SampleQueue)localObject).getReadIndex() != 0))
+              {
+                bool2 = true;
+                localObject = paramArrayOfBoolean1;
+              }
+              else
+              {
+                bool2 = false;
+                localObject = paramArrayOfBoolean1;
+              }
+            }
+          }
         }
+      }
+      i += 1;
+      paramArrayOfBoolean1 = (boolean[])localObject;
+      bool1 = bool2;
+    }
+    if (this.enabledTrackGroupCount == 0)
+    {
+      this.chunkSource.reset();
+      this.downstreamTrackFormat = null;
+      this.mediaChunks.clear();
+      if (this.loader.isLoading())
+      {
+        if (this.sampleQueuesBuilt)
+        {
+          paramArrayOfTrackSelection = this.sampleQueues;
+          j = paramArrayOfTrackSelection.length;
+          i = k;
+          while (i < j)
+          {
+            paramArrayOfTrackSelection[i].discardToEnd();
+            i += 1;
+          }
+        }
+        this.loader.cancelLoading();
+        bool2 = bool1;
+      }
+      else
+      {
+        resetSampleQueues();
+        bool2 = bool1;
       }
     }
     else
     {
-      bool1 = true;
-      localTrackSelection = this.chunkSource.getTrackSelection();
-      i = 0;
-      paramArrayOfBoolean1 = localTrackSelection;
-      if (i >= paramArrayOfTrackSelection.length) {
-        break label305;
-      }
-      localObject = paramArrayOfBoolean1;
-      if (paramArrayOfSampleStream[i] != null) {
-        break label598;
-      }
-      localObject = paramArrayOfBoolean1;
-      if (paramArrayOfTrackSelection[i] == null) {
-        break label598;
-      }
-      this.enabledTrackGroupCount += 1;
-      localObject = paramArrayOfTrackSelection[i];
-      j = this.trackGroups.indexOf(((TrackSelection)localObject).getTrackGroup());
-      if (j == this.primaryTrackGroupIndex)
+      if ((!this.mediaChunks.isEmpty()) && (!Util.areEqual(paramArrayOfBoolean1, localTrackSelection)))
       {
-        this.chunkSource.selectTracks((TrackSelection)localObject);
-        paramArrayOfBoolean1 = (boolean[])localObject;
-      }
-      paramArrayOfSampleStream[i] = new HlsSampleStream(this, j);
-      paramArrayOfBoolean2[i] = true;
-      localObject = paramArrayOfBoolean1;
-      if (!this.sampleQueuesBuilt) {
-        break label598;
-      }
-      localObject = paramArrayOfBoolean1;
-      if (bool1) {
-        break label598;
-      }
-      localObject = this.sampleQueues[this.trackGroupToSampleQueueIndex[j]];
-      ((SampleQueue)localObject).rewind();
-      if ((((SampleQueue)localObject).advanceTo(paramLong, true, true) != -1) || (((SampleQueue)localObject).getReadIndex() == 0)) {
-        break label299;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      i += 1;
-      break label113;
-      if (paramLong != this.lastSeekPositionUs) {
-        break;
-      }
-      label293:
-      bool1 = false;
-      break label98;
-      label299:
-      bool1 = false;
-      continue;
-      label305:
-      if (this.enabledTrackGroupCount == 0)
-      {
-        this.chunkSource.reset();
-        this.downstreamTrackFormat = null;
-        this.mediaChunks.clear();
-        if (this.loader.isLoading())
+        if (!this.seenFirstTrackSelection)
         {
-          if (this.sampleQueuesBuilt)
-          {
-            paramArrayOfTrackSelection = this.sampleQueues;
-            j = paramArrayOfTrackSelection.length;
-            i = 0;
-            while (i < j)
-            {
-              paramArrayOfTrackSelection[i].discardToEnd();
-              i += 1;
-            }
+          long l = 0L;
+          if (paramLong < 0L) {
+            l = -paramLong;
           }
-          this.loader.cancelLoading();
-        }
-        for (;;)
-        {
-          this.seenFirstTrackSelection = true;
-          return bool1;
-          resetSampleQueues();
-        }
-      }
-      boolean bool2 = bool1;
-      boolean bool3 = paramBoolean;
-      long l;
-      if (!this.mediaChunks.isEmpty())
-      {
-        bool2 = bool1;
-        bool3 = paramBoolean;
-        if (!Util.areEqual(paramArrayOfBoolean1, localTrackSelection))
-        {
-          i = 0;
-          if (this.seenFirstTrackSelection) {
-            break label592;
-          }
-          if (paramLong >= 0L) {
-            break label586;
-          }
-          l = -paramLong;
-          label462:
           paramArrayOfBoolean1.updateSelectedTrack(paramLong, l, -9223372036854775807L);
-          j = this.chunkSource.getTrackGroup().indexOf(getLastMediaChunk().trackFormat);
-          if (paramArrayOfBoolean1.getSelectedIndexInTrackGroup() == j) {}
+          i = this.chunkSource.getTrackGroup().indexOf(getLastMediaChunk().trackFormat);
+          if (paramArrayOfBoolean1.getSelectedIndexInTrackGroup() == i)
+          {
+            i = 0;
+            break label546;
+          }
         }
-      }
-      label586:
-      label592:
-      for (i = 1;; i = 1)
-      {
-        bool2 = bool1;
-        bool3 = paramBoolean;
+        i = 1;
+        label546:
         if (i != 0)
         {
-          bool3 = true;
-          bool2 = true;
           this.pendingResetUpstreamFormats = true;
+          paramBoolean = true;
+          bool1 = true;
         }
-        bool1 = bool2;
-        if (!bool2) {
-          break;
-        }
-        seekToUs(paramLong, bool3);
-        i = 0;
+      }
+      bool2 = bool1;
+      if (bool1)
+      {
+        seekToUs(paramLong, paramBoolean);
+        i = j;
         for (;;)
         {
-          bool1 = bool2;
+          bool2 = bool1;
           if (i >= paramArrayOfSampleStream.length) {
             break;
           }
@@ -887,12 +872,10 @@ final class HlsSampleStreamWrapper
           }
           i += 1;
         }
-        l = 0L;
-        break label462;
       }
-      label598:
-      paramArrayOfBoolean1 = (boolean[])localObject;
     }
+    this.seenFirstTrackSelection = true;
+    return bool2;
   }
   
   public void setIsTimestampMaster(boolean paramBoolean)
@@ -915,36 +898,41 @@ final class HlsSampleStreamWrapper
   
   public int skipData(int paramInt, long paramLong)
   {
-    if (isPendingReset()) {}
-    do
-    {
+    if (isPendingReset()) {
       return 0;
-      SampleQueue localSampleQueue = this.sampleQueues[paramInt];
-      if ((this.loadingFinished) && (paramLong > localSampleQueue.getLargestQueuedTimestampUs())) {
-        return localSampleQueue.advanceToEnd();
-      }
-      paramInt = localSampleQueue.advanceTo(paramLong, true, true);
-    } while (paramInt == -1);
+    }
+    SampleQueue localSampleQueue = this.sampleQueues[paramInt];
+    if ((this.loadingFinished) && (paramLong > localSampleQueue.getLargestQueuedTimestampUs())) {
+      return localSampleQueue.advanceToEnd();
+    }
+    int i = localSampleQueue.advanceTo(paramLong, true, true);
+    paramInt = i;
+    if (i == -1) {
+      paramInt = 0;
+    }
     return paramInt;
   }
   
   public TrackOutput track(int paramInt1, int paramInt2)
   {
-    int j = this.sampleQueues.length;
+    Object localObject1 = this.sampleQueues;
+    int j = localObject1.length;
+    int k = 0;
     if (paramInt2 == 1)
     {
-      if (this.audioSampleQueueIndex != -1)
+      i = this.audioSampleQueueIndex;
+      if (i != -1)
       {
         if (this.audioSampleQueueMappingDone)
         {
-          if (this.sampleQueueTrackIds[this.audioSampleQueueIndex] == paramInt1) {
-            return this.sampleQueues[this.audioSampleQueueIndex];
+          if (this.sampleQueueTrackIds[i] == paramInt1) {
+            return localObject1[i];
           }
           return createDummyTrackOutput(paramInt1, paramInt2);
         }
         this.audioSampleQueueMappingDone = true;
-        this.sampleQueueTrackIds[this.audioSampleQueueIndex] = paramInt1;
-        return this.sampleQueues[this.audioSampleQueueIndex];
+        this.sampleQueueTrackIds[i] = paramInt1;
+        return localObject1[i];
       }
       if (this.tracksEnded) {
         return createDummyTrackOutput(paramInt1, paramInt2);
@@ -952,18 +940,19 @@ final class HlsSampleStreamWrapper
     }
     else if (paramInt2 == 2)
     {
-      if (this.videoSampleQueueIndex != -1)
+      i = this.videoSampleQueueIndex;
+      if (i != -1)
       {
         if (this.videoSampleQueueMappingDone)
         {
-          if (this.sampleQueueTrackIds[this.videoSampleQueueIndex] == paramInt1) {
-            return this.sampleQueues[this.videoSampleQueueIndex];
+          if (this.sampleQueueTrackIds[i] == paramInt1) {
+            return localObject1[i];
           }
           return createDummyTrackOutput(paramInt1, paramInt2);
         }
         this.videoSampleQueueMappingDone = true;
-        this.sampleQueueTrackIds[this.videoSampleQueueIndex] = paramInt1;
-        return this.sampleQueues[this.videoSampleQueueIndex];
+        this.sampleQueueTrackIds[i] = paramInt1;
+        return localObject1[i];
       }
       if (this.tracksEnded) {
         return createDummyTrackOutput(paramInt1, paramInt2);
@@ -971,7 +960,7 @@ final class HlsSampleStreamWrapper
     }
     else
     {
-      int i = 0;
+      i = 0;
       while (i < j)
       {
         if (this.sampleQueueTrackIds[i] == paramInt1) {
@@ -983,40 +972,34 @@ final class HlsSampleStreamWrapper
         return createDummyTrackOutput(paramInt1, paramInt2);
       }
     }
-    SampleQueue localSampleQueue = new SampleQueue(this.allocator);
-    localSampleQueue.setSampleOffsetUs(this.sampleOffsetUs);
-    localSampleQueue.setUpstreamFormatChangeListener(this);
-    this.sampleQueueTrackIds = Arrays.copyOf(this.sampleQueueTrackIds, j + 1);
+    localObject1 = new SampleQueue(this.allocator);
+    ((SampleQueue)localObject1).setSampleOffsetUs(this.sampleOffsetUs);
+    ((SampleQueue)localObject1).setUpstreamFormatChangeListener(this);
+    Object localObject2 = this.sampleQueueTrackIds;
+    int i = j + 1;
+    this.sampleQueueTrackIds = Arrays.copyOf((int[])localObject2, i);
     this.sampleQueueTrackIds[j] = paramInt1;
-    this.sampleQueues = ((SampleQueue[])Arrays.copyOf(this.sampleQueues, j + 1));
-    this.sampleQueues[j] = localSampleQueue;
-    this.sampleQueueIsAudioVideoFlags = Arrays.copyOf(this.sampleQueueIsAudioVideoFlags, j + 1);
-    boolean[] arrayOfBoolean = this.sampleQueueIsAudioVideoFlags;
-    int k;
-    if ((paramInt2 == 1) || (paramInt2 == 2))
-    {
+    this.sampleQueues = ((SampleQueue[])Arrays.copyOf(this.sampleQueues, i));
+    this.sampleQueues[j] = localObject1;
+    this.sampleQueueIsAudioVideoFlags = Arrays.copyOf(this.sampleQueueIsAudioVideoFlags, i);
+    localObject2 = this.sampleQueueIsAudioVideoFlags;
+    if ((paramInt2 == 1) || (paramInt2 == 2)) {
       k = 1;
-      arrayOfBoolean[j] = k;
-      this.haveAudioVideoSampleQueues |= this.sampleQueueIsAudioVideoFlags[j];
-      if (paramInt2 != 1) {
-        break label401;
-      }
+    }
+    localObject2[j] = k;
+    this.haveAudioVideoSampleQueues |= this.sampleQueueIsAudioVideoFlags[j];
+    if (paramInt2 == 1)
+    {
       this.audioSampleQueueMappingDone = true;
       this.audioSampleQueueIndex = j;
     }
-    for (;;)
+    else if (paramInt2 == 2)
     {
-      this.sampleQueuesEnabledStates = Arrays.copyOf(this.sampleQueuesEnabledStates, j + 1);
-      return localSampleQueue;
-      k = 0;
-      break;
-      label401:
-      if (paramInt2 == 2)
-      {
-        this.videoSampleQueueMappingDone = true;
-        this.videoSampleQueueIndex = j;
-      }
+      this.videoSampleQueueMappingDone = true;
+      this.videoSampleQueueIndex = j;
     }
+    this.sampleQueuesEnabledStates = Arrays.copyOf(this.sampleQueuesEnabledStates, i);
+    return localObject1;
   }
   
   public void unbindSampleQueue(int paramInt)
@@ -1028,7 +1011,7 @@ final class HlsSampleStreamWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.hls.HlsSampleStreamWrapper
  * JD-Core Version:    0.7.0.1
  */

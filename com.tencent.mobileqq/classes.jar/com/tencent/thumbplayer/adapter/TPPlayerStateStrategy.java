@@ -48,17 +48,128 @@ public class TPPlayerStateStrategy
   
   private static boolean validCallGetPosition(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7));
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (!paramTPPlayerState.is(1))
+    {
+      bool1 = bool2;
+      if (!paramTPPlayerState.is(2))
+      {
+        bool1 = bool2;
+        if (!paramTPPlayerState.is(3))
+        {
+          bool1 = bool2;
+          if (!paramTPPlayerState.is(4))
+          {
+            bool1 = bool2;
+            if (!paramTPPlayerState.is(5))
+            {
+              bool1 = bool2;
+              if (!paramTPPlayerState.is(6))
+              {
+                bool1 = bool2;
+                if (!paramTPPlayerState.is(8))
+                {
+                  bool1 = bool2;
+                  if (!paramTPPlayerState.is(9))
+                  {
+                    if (paramTPPlayerState.is(7)) {
+                      return true;
+                    }
+                    bool1 = false;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private static boolean validCallGetStatus(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7));
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (!paramTPPlayerState.is(1))
+    {
+      bool1 = bool2;
+      if (!paramTPPlayerState.is(2))
+      {
+        bool1 = bool2;
+        if (!paramTPPlayerState.is(3))
+        {
+          bool1 = bool2;
+          if (!paramTPPlayerState.is(4))
+          {
+            bool1 = bool2;
+            if (!paramTPPlayerState.is(5))
+            {
+              bool1 = bool2;
+              if (!paramTPPlayerState.is(6))
+              {
+                bool1 = bool2;
+                if (!paramTPPlayerState.is(8))
+                {
+                  bool1 = bool2;
+                  if (!paramTPPlayerState.is(9))
+                  {
+                    if (paramTPPlayerState.is(7)) {
+                      return true;
+                    }
+                    bool1 = false;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private static boolean validCallGetVideoSize(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7));
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (!paramTPPlayerState.is(1))
+    {
+      bool1 = bool2;
+      if (!paramTPPlayerState.is(2))
+      {
+        bool1 = bool2;
+        if (!paramTPPlayerState.is(3))
+        {
+          bool1 = bool2;
+          if (!paramTPPlayerState.is(4))
+          {
+            bool1 = bool2;
+            if (!paramTPPlayerState.is(5))
+            {
+              bool1 = bool2;
+              if (!paramTPPlayerState.is(6))
+              {
+                bool1 = bool2;
+                if (!paramTPPlayerState.is(8))
+                {
+                  bool1 = bool2;
+                  if (!paramTPPlayerState.is(9))
+                  {
+                    if (paramTPPlayerState.is(7)) {
+                      return true;
+                    }
+                    bool1 = false;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private static boolean validCallPause(TPPlayerState paramTPPlayerState)
@@ -73,12 +184,94 @@ public class TPPlayerStateStrategy
   
   private static boolean validCallRelease(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(10));
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (!paramTPPlayerState.is(1))
+    {
+      bool1 = bool2;
+      if (!paramTPPlayerState.is(2))
+      {
+        bool1 = bool2;
+        if (!paramTPPlayerState.is(3))
+        {
+          bool1 = bool2;
+          if (!paramTPPlayerState.is(4))
+          {
+            bool1 = bool2;
+            if (!paramTPPlayerState.is(5))
+            {
+              bool1 = bool2;
+              if (!paramTPPlayerState.is(6))
+              {
+                bool1 = bool2;
+                if (!paramTPPlayerState.is(8))
+                {
+                  bool1 = bool2;
+                  if (!paramTPPlayerState.is(9))
+                  {
+                    bool1 = bool2;
+                    if (!paramTPPlayerState.is(7))
+                    {
+                      if (paramTPPlayerState.is(10)) {
+                        return true;
+                      }
+                      bool1 = false;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private static boolean validCallReset(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(10));
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (!paramTPPlayerState.is(1))
+    {
+      bool1 = bool2;
+      if (!paramTPPlayerState.is(2))
+      {
+        bool1 = bool2;
+        if (!paramTPPlayerState.is(3))
+        {
+          bool1 = bool2;
+          if (!paramTPPlayerState.is(4))
+          {
+            bool1 = bool2;
+            if (!paramTPPlayerState.is(5))
+            {
+              bool1 = bool2;
+              if (!paramTPPlayerState.is(6))
+              {
+                bool1 = bool2;
+                if (!paramTPPlayerState.is(8))
+                {
+                  bool1 = bool2;
+                  if (!paramTPPlayerState.is(9))
+                  {
+                    bool1 = bool2;
+                    if (!paramTPPlayerState.is(7))
+                    {
+                      if (paramTPPlayerState.is(10)) {
+                        return true;
+                      }
+                      bool1 = false;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private static boolean validCallSeek(TPPlayerState paramTPPlayerState)
@@ -98,7 +291,44 @@ public class TPPlayerStateStrategy
   
   private static boolean validCallSetParams(TPPlayerState paramTPPlayerState)
   {
-    return (paramTPPlayerState.is(1)) || (paramTPPlayerState.is(2)) || (paramTPPlayerState.is(3)) || (paramTPPlayerState.is(4)) || (paramTPPlayerState.is(5)) || (paramTPPlayerState.is(6)) || (paramTPPlayerState.is(7)) || (paramTPPlayerState.is(8)) || (paramTPPlayerState.is(9));
+    boolean bool2 = true;
+    boolean bool1 = bool2;
+    if (!paramTPPlayerState.is(1))
+    {
+      bool1 = bool2;
+      if (!paramTPPlayerState.is(2))
+      {
+        bool1 = bool2;
+        if (!paramTPPlayerState.is(3))
+        {
+          bool1 = bool2;
+          if (!paramTPPlayerState.is(4))
+          {
+            bool1 = bool2;
+            if (!paramTPPlayerState.is(5))
+            {
+              bool1 = bool2;
+              if (!paramTPPlayerState.is(6))
+              {
+                bool1 = bool2;
+                if (!paramTPPlayerState.is(7))
+                {
+                  bool1 = bool2;
+                  if (!paramTPPlayerState.is(8))
+                  {
+                    if (paramTPPlayerState.is(9)) {
+                      return true;
+                    }
+                    bool1 = false;
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   private static boolean validCallSetSurface(TPPlayerState paramTPPlayerState)
@@ -240,7 +470,7 @@ public class TPPlayerStateStrategy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.TPPlayerStateStrategy
  * JD-Core Version:    0.7.0.1
  */

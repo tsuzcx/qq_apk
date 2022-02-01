@@ -22,15 +22,16 @@ public final class feeds_inner_define$ThemeMsgInfo
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58 }, new String[] { "opt_uint64_fromuin", "opt_uint64_time", "opt_uint64_modtime", "opt_uint32_cmmntid", "opt_bytes_feedsid", "opt_bytes_reserve", "opt_bytes_msg" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, ThemeMsgInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 50, 58 }, new String[] { "opt_uint64_fromuin", "opt_uint64_time", "opt_uint64_modtime", "opt_uint32_cmmntid", "opt_bytes_feedsid", "opt_bytes_reserve", "opt_bytes_msg" }, new Object[] { localLong, localLong, localLong, Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, ThemeMsgInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.trunk.feeds_inner_define.feeds_inner_define.ThemeMsgInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -24,13 +24,16 @@ public class MetricSdkInit$BeaconReporterImpl
   public void report(MetricsLogBean paramMetricsLogBean)
   {
     HashMap localHashMap = new HashMap();
-    localHashMap.put("monitor", this.jdField_a_of_type_ComGoogleGsonGson.toJson(paramMetricsLogBean) + ";");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_ComGoogleGsonGson.toJson(paramMetricsLogBean));
+    localStringBuilder.append(";");
+    localHashMap.put("monitor", localStringBuilder.toString());
     this.jdField_a_of_type_ComTencentMobileqqStatisticsStatisticCollector.collectPerformance(this.jdField_a_of_type_JavaLangString, "rqd_tfm_metrics", true, 0L, 0L, localHashMap, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.MetricSdkInit.BeaconReporterImpl
  * JD-Core Version:    0.7.0.1
  */

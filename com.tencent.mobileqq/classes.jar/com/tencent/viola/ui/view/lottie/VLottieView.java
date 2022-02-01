@@ -22,8 +22,9 @@ public class VLottieView
   
   public void addAnimatorListener(Animator.AnimatorListener paramAnimatorListener)
   {
-    if (this.vLottieViewProxy != null) {
-      this.vLottieViewProxy.v_addAnimatorListener(paramAnimatorListener);
+    IVLottieViewProxy localIVLottieViewProxy = this.vLottieViewProxy;
+    if (localIVLottieViewProxy != null) {
+      localIVLottieViewProxy.v_addAnimatorListener(paramAnimatorListener);
     }
   }
   
@@ -34,58 +35,65 @@ public class VLottieView
   
   public void cancelAnimation()
   {
-    if (this.vLottieViewProxy != null) {
-      this.vLottieViewProxy.v_cancelAnimation();
+    IVLottieViewProxy localIVLottieViewProxy = this.vLottieViewProxy;
+    if (localIVLottieViewProxy != null) {
+      localIVLottieViewProxy.v_cancelAnimation();
     }
   }
   
   public VLottie getComponent()
   {
-    if (this.mWeakReference != null) {
-      return (VLottie)this.mWeakReference.get();
+    WeakReference localWeakReference = this.mWeakReference;
+    if (localWeakReference != null) {
+      return (VLottie)localWeakReference.get();
     }
     return null;
   }
   
   public View getRealView()
   {
-    if ((this.vLottieViewProxy != null) && ((this.vLottieViewProxy instanceof View))) {
-      return (View)this.vLottieViewProxy;
+    IVLottieViewProxy localIVLottieViewProxy = this.vLottieViewProxy;
+    if ((localIVLottieViewProxy != null) && ((localIVLottieViewProxy instanceof View))) {
+      return (View)localIVLottieViewProxy;
     }
     return new View(getContext());
   }
   
   public void loop(boolean paramBoolean)
   {
-    if (this.vLottieViewProxy != null) {
-      this.vLottieViewProxy.v_loop(paramBoolean);
+    IVLottieViewProxy localIVLottieViewProxy = this.vLottieViewProxy;
+    if (localIVLottieViewProxy != null) {
+      localIVLottieViewProxy.v_loop(paramBoolean);
     }
   }
   
   public void pauseAnimation()
   {
-    if (this.vLottieViewProxy != null) {
-      this.vLottieViewProxy.v_pauseAnimation();
+    IVLottieViewProxy localIVLottieViewProxy = this.vLottieViewProxy;
+    if (localIVLottieViewProxy != null) {
+      localIVLottieViewProxy.v_pauseAnimation();
     }
   }
   
   public void playAnimation()
   {
-    if (this.vLottieViewProxy != null) {
-      this.vLottieViewProxy.v_playAnimation();
+    IVLottieViewProxy localIVLottieViewProxy = this.vLottieViewProxy;
+    if (localIVLottieViewProxy != null) {
+      localIVLottieViewProxy.v_playAnimation();
     }
   }
   
   public void resumeAnimation()
   {
-    if (this.vLottieViewProxy != null) {
-      this.vLottieViewProxy.v_resumeAnimation();
+    IVLottieViewProxy localIVLottieViewProxy = this.vLottieViewProxy;
+    if (localIVLottieViewProxy != null) {
+      localIVLottieViewProxy.v_resumeAnimation();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.view.lottie.VLottieView
  * JD-Core Version:    0.7.0.1
  */

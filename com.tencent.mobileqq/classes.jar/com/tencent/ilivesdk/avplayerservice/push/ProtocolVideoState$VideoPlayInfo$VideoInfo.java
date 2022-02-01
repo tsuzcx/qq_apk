@@ -48,13 +48,14 @@ public final class ProtocolVideoState$VideoPlayInfo$VideoInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 66, 74, 80, 88, 96, 104, 112, 120, 128 }, new String[] { "VideoChanel", "StageUin", "PushUin", "LiveType", "LivingInfo", "BuffingFlag", "UpdateTime", "uuid", "GameCircleLivingInfo", "videoSvrInnerIP", "videoSvrOuterIP", "PushOnStageTime", "StageUserType", "SetSourceFlag", "AlreadyTransFlag", "VideoStartTime" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), Integer.valueOf(0), null, Integer.valueOf(1), Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, VideoInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 42, 48, 56, 66, 74, 80, 88, 96, 104, 112, 120, 128 }, new String[] { "VideoChanel", "StageUin", "PushUin", "LiveType", "LivingInfo", "BuffingFlag", "UpdateTime", "uuid", "GameCircleLivingInfo", "videoSvrInnerIP", "videoSvrOuterIP", "PushOnStageTime", "StageUserType", "SetSourceFlag", "AlreadyTransFlag", "VideoStartTime" }, new Object[] { localInteger, Long.valueOf(0L), Long.valueOf(0L), localInteger, null, Integer.valueOf(1), localInteger, localByteStringMicro, null, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger }, VideoInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.avplayerservice.push.ProtocolVideoState.VideoPlayInfo.VideoInfo
  * JD-Core Version:    0.7.0.1
  */

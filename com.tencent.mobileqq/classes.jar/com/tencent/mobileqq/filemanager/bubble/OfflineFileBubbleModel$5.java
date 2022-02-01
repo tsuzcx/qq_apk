@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.filemanager.bubble;
 
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.wifi.FreeWifiDialogListener;
+import com.tencent.mobileqq.wifi.FreeWifiHelper.FreeWifiDialogListener;
 
 class OfflineFileBubbleModel$5
-  implements FreeWifiDialogListener
+  implements FreeWifiHelper.FreeWifiDialogListener
 {
   OfflineFileBubbleModel$5(OfflineFileBubbleModel paramOfflineFileBubbleModel) {}
   
@@ -15,7 +15,7 @@ class OfflineFileBubbleModel$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.OfflineFileBubbleModel.5
  * JD-Core Version:    0.7.0.1
  */

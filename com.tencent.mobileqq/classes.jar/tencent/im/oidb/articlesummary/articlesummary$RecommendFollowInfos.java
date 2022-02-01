@@ -22,15 +22,16 @@ public final class articlesummary$RecommendFollowInfos
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58 }, new String[] { "uint32_show_full_card", "rpt_recommend_account_info", "bytes_account_next_cookie", "uint32_card_style", "bytes_card_title", "bytes_jump_url", "rpt_group_recommend_account" }, new Object[] { Integer.valueOf(0), null, localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, null }, RecommendFollowInfos.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 32, 42, 50, 58 }, new String[] { "uint32_show_full_card", "rpt_recommend_account_info", "bytes_account_next_cookie", "uint32_card_style", "bytes_card_title", "bytes_jump_url", "rpt_group_recommend_account" }, new Object[] { localInteger, null, localByteStringMicro1, localInteger, localByteStringMicro2, localByteStringMicro3, null }, RecommendFollowInfos.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.articlesummary.articlesummary.RecommendFollowInfos
  * JD-Core Version:    0.7.0.1
  */

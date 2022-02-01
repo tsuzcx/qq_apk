@@ -16,36 +16,38 @@ class FriendListOpenFrame$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int j = paramMessage.what;
+    int i = 0;
+    if (j != 1)
     {
-    }
-    for (;;)
-    {
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
-      return;
-      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
-      return;
-      String str = paramMessage.getData().getString("url");
-      paramMessage = (Bitmap)paramMessage.obj;
-      int j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount();
-      int i = 0;
-      while (i < j)
+      if (j != 2)
       {
-        FriendListOpenFrame.ViewHolder localViewHolder = (FriendListOpenFrame.ViewHolder)this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(i).getTag();
-        if ((localViewHolder != null) && (str.equals(localViewHolder.b)))
-        {
-          localViewHolder.a.setImageBitmap(paramMessage);
+        if (j != 3) {
           return;
         }
-        i += 1;
+        String str = paramMessage.getData().getString("url");
+        paramMessage = (Bitmap)paramMessage.obj;
+        j = this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildCount();
+        while (i < j)
+        {
+          FriendListOpenFrame.ViewHolder localViewHolder = (FriendListOpenFrame.ViewHolder)this.a.jdField_a_of_type_ComTencentMobileqqWidgetPinnedDividerListView.getChildAt(i).getTag();
+          if ((localViewHolder != null) && (str.equals(localViewHolder.b)))
+          {
+            localViewHolder.a.setImageBitmap(paramMessage);
+            return;
+          }
+          i += 1;
+        }
       }
+      this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 0, 0);
+      return;
     }
+    this.a.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(0, 0, 40, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.FriendListOpenFrame.1
  * JD-Core Version:    0.7.0.1
  */

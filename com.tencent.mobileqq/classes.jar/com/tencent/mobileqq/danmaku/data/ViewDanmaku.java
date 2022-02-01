@@ -32,11 +32,12 @@ public class ViewDanmaku
   
   public ClickResult a(TouchPoint paramTouchPoint)
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      View localView = this.a.a(paramTouchPoint);
-      if (localView != null) {
-        DanmakuDependImp.a().a().a().post(new ViewDanmaku.1(this, localView));
+      localObject = ((ViewDanmakuRender.ViewHolder)localObject).a(paramTouchPoint);
+      if (localObject != null) {
+        DanmakuDependImp.a().a().a().post(new ViewDanmaku.1(this, (View)localObject));
       }
     }
     return super.a(paramTouchPoint);
@@ -65,7 +66,7 @@ public class ViewDanmaku
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.data.ViewDanmaku
  * JD-Core Version:    0.7.0.1
  */

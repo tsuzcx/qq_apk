@@ -89,7 +89,7 @@ public class ArkAndroidHttpClientStub
       if (this.mIsCompleted) {
         return;
       }
-      ENV.logI("ArkApp.AndroidHTTP", "OnTimeout");
+      Logger.logI("ArkApp.AndroidHTTP", "OnTimeout");
       this.mIsTimeout = true;
       return;
     }
@@ -105,29 +105,37 @@ public class ArkAndroidHttpClientStub
   
   private static void closeStream(InputStream paramInputStream)
   {
-    if (paramInputStream != null) {}
-    try
-    {
-      paramInputStream.close();
-      return;
-    }
-    catch (Exception paramInputStream)
-    {
-      ENV.logI("ArkApp.AndroidHTTP", "closeStream fail, err=" + paramInputStream.getMessage());
+    if (paramInputStream != null) {
+      try
+      {
+        paramInputStream.close();
+        return;
+      }
+      catch (Exception paramInputStream)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("closeStream fail, err=");
+        localStringBuilder.append(paramInputStream.getMessage());
+        Logger.logI("ArkApp.AndroidHTTP", localStringBuilder.toString());
+      }
     }
   }
   
   private static void closeStream(OutputStream paramOutputStream)
   {
-    if (paramOutputStream != null) {}
-    try
-    {
-      paramOutputStream.close();
-      return;
-    }
-    catch (Exception paramOutputStream)
-    {
-      ENV.logI("ArkApp.AndroidHTTP", "closeStream fail, err=" + paramOutputStream.getMessage());
+    if (paramOutputStream != null) {
+      try
+      {
+        paramOutputStream.close();
+        return;
+      }
+      catch (Exception paramOutputStream)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("closeStream fail, err=");
+        localStringBuilder.append(paramOutputStream.getMessage());
+        Logger.logI("ArkApp.AndroidHTTP", localStringBuilder.toString());
+      }
     }
   }
   
@@ -137,7 +145,7 @@ public class ArkAndroidHttpClientStub
   {
     Iterator localIterator = paramFormData.formData.keySet().iterator();
     String str;
-    for (long l1 = 0L; localIterator.hasNext(); l1 = formDataToBytes(str, (String)paramFormData.formData.get(str)).length + l1) {
+    for (long l1 = 0L; localIterator.hasNext(); l1 += formDataToBytes(str, (String)paramFormData.formData.get(str)).length) {
       str = (String)localIterator.next();
     }
     long l2 = l1;
@@ -147,12 +155,11 @@ public class ArkAndroidHttpClientStub
       if (!TextUtils.isEmpty(paramFormData.filePath))
       {
         l2 = getFileLength(paramFormData.filePath);
-        ENV.logD("ArkApp.AndroidHTTP", String.format("length of form file %s is %d", new Object[] { paramFormData.filePath, Long.valueOf(l2) }));
-        long l3 = formFileBegin(paramFormData.fileName, paramFormData.filePath).length;
-        l2 = FORM_DATA_END_BYTES.length + (l2 + (l1 + l3));
+        Logger.logD("ArkApp.AndroidHTTP", String.format("length of form file %s is %d", new Object[] { paramFormData.filePath, Long.valueOf(l2) }));
+        l2 = l1 + formFileBegin(paramFormData.fileName, paramFormData.filePath).length + l2 + FORM_DATA_END_BYTES.length;
       }
     }
-    return formTailer().length + l2;
+    return l2 + formTailer().length;
   }
   
   private static HttpURLConnection createConnection(String paramString1, String paramString2, int paramInt)
@@ -161,23 +168,32 @@ public class ArkAndroidHttpClientStub
     {
       if (!TextUtils.isEmpty(paramString1))
       {
-        URL localURL = new URL(paramString1);
-        if ((!TextUtils.isEmpty(paramString2)) && (paramInt > 0)) {
-          paramString2 = new InetSocketAddress(paramString2, paramInt);
-        }
-        for (paramString2 = (HttpURLConnection)localURL.openConnection(new Proxy(Proxy.Type.HTTP, paramString2));; paramString2 = (HttpURLConnection)localURL.openConnection())
+        Object localObject = new URL(paramString1);
+        if ((!TextUtils.isEmpty(paramString2)) && (paramInt > 0))
         {
-          ENV.logI("ArkApp.AndroidHTTP", "createConnection, url=" + paramString1);
-          return paramString2;
+          paramString2 = new InetSocketAddress(paramString2, paramInt);
+          paramString2 = (HttpURLConnection)((URL)localObject).openConnection(new Proxy(Proxy.Type.HTTP, paramString2));
         }
+        else
+        {
+          paramString2 = (HttpURLConnection)((URL)localObject).openConnection();
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("createConnection, url=");
+        ((StringBuilder)localObject).append(paramString1);
+        Logger.logI("ArkApp.AndroidHTTP", ((StringBuilder)localObject).toString());
+        return paramString2;
       }
-      return null;
     }
     catch (Exception paramString1)
     {
-      ENV.logE("ArkApp.AndroidHTTP", "createConnection fail, error: " + paramString1.getMessage());
+      paramString2 = new StringBuilder();
+      paramString2.append("createConnection fail, error: ");
+      paramString2.append(paramString1.getMessage());
+      Logger.logE("ArkApp.AndroidHTTP", paramString2.toString());
       paramString1.printStackTrace();
     }
+    return null;
   }
   
   private static byte[] formDataToBytes(String paramString1, String paramString2)
@@ -212,47 +228,50 @@ public class ArkAndroidHttpClientStub
   
   private static String getFileName(String paramString)
   {
-    String str;
     if (TextUtils.isEmpty(paramString)) {
-      str = "";
+      return "";
     }
-    int i;
-    do
-    {
-      return str;
-      i = Math.max(paramString.lastIndexOf('/'), paramString.lastIndexOf('\\'));
-      str = paramString;
-    } while (i < 0);
-    return paramString.substring(i + 1);
+    int i = Math.max(paramString.lastIndexOf('/'), paramString.lastIndexOf('\\'));
+    String str = paramString;
+    if (i >= 0) {
+      str = paramString.substring(i + 1);
+    }
+    return str;
   }
   
   private static String getRedirectedURL(HttpURLConnection paramHttpURLConnection, String paramString)
   {
     try
     {
-      String str1 = paramHttpURLConnection.getHeaderField("Location");
+      localObject1 = paramHttpURLConnection.getHeaderField("Location");
       paramHttpURLConnection = new URL(paramString);
-      String str2 = paramHttpURLConnection.getProtocol() + "://";
-      paramHttpURLConnection = paramString;
-      if (!TextUtils.isEmpty(str1))
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramHttpURLConnection.getProtocol());
+      ((StringBuilder)localObject2).append("://");
+      localObject2 = ((StringBuilder)localObject2).toString();
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
       {
-        paramHttpURLConnection = str1;
-        if (!str2.equalsIgnoreCase("http://"))
+        paramHttpURLConnection = (HttpURLConnection)localObject1;
+        if (!((String)localObject2).equalsIgnoreCase("http://"))
         {
-          paramHttpURLConnection = str1;
-          if (!str2.equalsIgnoreCase("https://"))
+          paramHttpURLConnection = (HttpURLConnection)localObject1;
+          if (!((String)localObject2).equalsIgnoreCase("https://"))
           {
             paramHttpURLConnection = Uri.parse(paramString).buildUpon();
-            paramHttpURLConnection.appendEncodedPath(str1);
+            paramHttpURLConnection.appendEncodedPath((String)localObject1);
             paramHttpURLConnection = paramHttpURLConnection.toString();
           }
         }
+        return paramHttpURLConnection;
       }
-      return paramHttpURLConnection;
+      return paramString;
     }
     catch (Exception paramHttpURLConnection)
     {
-      ENV.logE("ArkApp.AndroidHTTP", "getRedirectedURL, fail, err=" + paramHttpURLConnection.getMessage());
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getRedirectedURL, fail, err=");
+      ((StringBuilder)localObject1).append(paramHttpURLConnection.getMessage());
+      Logger.logE("ArkApp.AndroidHTTP", ((StringBuilder)localObject1).toString());
     }
     return paramString;
   }
@@ -265,186 +284,335 @@ public class ArkAndroidHttpClientStub
   private void httpExecuteTask(String paramString1, int paramInt1, byte[] paramArrayOfByte, int paramInt2, ArkAndroidHttpClientStub.FormData paramFormData, String paramString2, long paramLong)
   {
     long l = System.currentTimeMillis();
-    ENV.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, start, url=%s", new Object[] { paramString1 }));
+    Logger.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, start, url=%s", new Object[] { paramString1 }));
     TimerTask localTimerTask = setTimer(this.m_option.timeoutInterval);
     int j = 0;
     int i = paramInt2;
-    Object localObject = paramArrayOfByte;
+    byte[] arrayOfByte = paramArrayOfByte;
     paramInt2 = j;
-    paramArrayOfByte = paramFormData;
-    paramFormData = (ArkAndroidHttpClientStub.FormData)localObject;
-    localObject = null;
-    HttpURLConnection localHttpURLConnection;
-    int k;
-    if (paramInt2 < 3)
+    while (paramInt2 < 3)
     {
-      localHttpURLConnection = createConnection(paramString1, this.mProxyHost, this.mProxyPort);
-      ENV.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, send request, url=%s", new Object[] { paramString1 }));
-      j = sendRequest(localHttpURLConnection, this.m_option, paramInt1, paramFormData, i, paramArrayOfByte);
-      k = needRedirect(j);
+      Object localObject = createConnection(paramString1, this.mProxyHost, this.mProxyPort);
+      Logger.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, send request, url=%s", new Object[] { paramString1 }));
+      ArkAndroidHttpClientStub.RequestOption localRequestOption = this.m_option;
+      paramArrayOfByte = (byte[])localObject;
+      j = sendRequest((HttpURLConnection)localObject, localRequestOption, paramInt1, arrayOfByte, i, paramFormData);
+      int k = needRedirect(j);
       if (k == 0) {
-        paramArrayOfByte = localHttpURLConnection;
+        break label258;
       }
-    }
-    for (;;)
-    {
-      this.mDownloadFilePath = paramString2;
-      this.mHttpURLConnection = paramArrayOfByte;
-      ENV.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, write response, url=%s", new Object[] { paramString1 }));
-      writeResponse(paramString1, localTimerTask, paramLong, paramString2);
-      ENV.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, end, time=%d ms, url=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramString1 }));
-      return;
-      if (k == 1)
+      for (;;)
       {
-        paramFormData = null;
-        i = 0;
-        paramArrayOfByte = null;
-      }
-      localObject = getRedirectedURL(localHttpURLConnection, paramString1);
-      if (TextUtils.isEmpty((CharSequence)localObject))
-      {
-        ENV.logE("ArkApp.AndroidHTTP", "invalid redirect response, url=" + (String)localObject);
-        paramArrayOfByte = localHttpURLConnection;
+        if (k == 1)
+        {
+          arrayOfByte = null;
+          paramFormData = arrayOfByte;
+          i = 0;
+        }
+        localObject = getRedirectedURL(paramArrayOfByte, paramString1);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          break;
+        }
+        paramString1 = new StringBuilder();
+        paramString1.append("invalid redirect response, url=");
+        paramString1.append((String)localObject);
+        Logger.logE("ArkApp.AndroidHTTP", paramString1.toString());
         paramString1 = (String)localObject;
       }
-      else
-      {
-        closeStream(localHttpURLConnection);
-        ENV.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, redirect, status-code=%d, type=%d, url=%s->%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramString1, localObject }));
-        paramInt2 += 1;
-        paramString1 = (String)localObject;
-        break;
-        paramArrayOfByte = (byte[])localObject;
-      }
+      closeStream(paramArrayOfByte);
+      Logger.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, redirect, status-code=%d, type=%d, url=%s->%s", new Object[] { Integer.valueOf(j), Integer.valueOf(k), paramString1, localObject }));
+      paramInt2 += 1;
+      paramString1 = (String)localObject;
     }
+    paramArrayOfByte = null;
+    label258:
+    this.mDownloadFilePath = paramString2;
+    this.mHttpURLConnection = paramArrayOfByte;
+    Logger.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, write response, url=%s", new Object[] { paramString1 }));
+    writeResponse(paramString1, localTimerTask, paramLong, paramString2);
+    Logger.logI("ArkApp.AndroidHTTP", String.format("httpExecuteTask, end, time=%d ms, url=%s", new Object[] { Long.valueOf(System.currentTimeMillis() - l), paramString1 }));
   }
   
   private int needRedirect(int paramInt)
   {
-    if ((paramInt == 307) || (paramInt == 308)) {
-      return 2;
-    }
-    if ((paramInt == 301) || (paramInt == 302) || (paramInt == 303)) {
-      return 1;
-    }
-    return 0;
-  }
-  
-  private static int sendRequest(HttpURLConnection paramHttpURLConnection, ArkAndroidHttpClientStub.RequestOption paramRequestOption, int paramInt1, byte[] paramArrayOfByte, int paramInt2, ArkAndroidHttpClientStub.FormData paramFormData)
-  {
-    int j = 1;
-    Object localObject3 = null;
-    Object localObject4 = null;
-    Object localObject5 = null;
-    int i = j;
-    if (paramFormData == null)
+    if ((paramInt != 307) && (paramInt != 308))
     {
-      if ((paramArrayOfByte == null) || (paramInt2 <= 0)) {
-        break label380;
-      }
-      i = j;
-    }
-    label303:
-    label380:
-    for (;;)
-    {
-      Object localObject2 = localObject3;
-      Object localObject1 = localObject4;
-      try
-      {
-        setConnectionOptions(paramHttpURLConnection, paramRequestOption, paramInt1);
-        if (i != 0)
-        {
-          localObject2 = localObject3;
-          localObject1 = localObject4;
-          paramHttpURLConnection.setDoOutput(true);
-          localObject2 = localObject3;
-          localObject1 = localObject4;
-          paramHttpURLConnection.setUseCaches(false);
-          localObject2 = localObject3;
-          localObject1 = localObject4;
-          paramHttpURLConnection.setRequestMethod("POST");
-          if (paramFormData != null)
-          {
-            localObject2 = localObject3;
-            localObject1 = localObject4;
-            paramHttpURLConnection.setRequestProperty("Content-Type", String.format("multipart/form-data; boundary=%s", new Object[] { "89F92C5F19802901C764BDA13DEC3F3CB820E0FD68D2E2D1F03FC95DE692FFB4" }));
-            localObject2 = localObject3;
-            localObject1 = localObject4;
-            paramHttpURLConnection.setRequestProperty("Content-Length", Long.toString(computeFormDataLength(paramFormData)));
-          }
-        }
-        localObject2 = localObject3;
-        localObject1 = localObject4;
-        ENV.logI("ArkApp.AndroidHTTP", "sendRequest, connect begin");
-        localObject2 = localObject3;
-        localObject1 = localObject4;
-        paramHttpURLConnection.connect();
-        localObject2 = localObject3;
-        localObject1 = localObject4;
-        ENV.logI("ArkApp.AndroidHTTP", "sendRequest, connect end");
-        paramRequestOption = localObject5;
-        if (i != 0)
-        {
-          localObject2 = localObject3;
-          localObject1 = localObject4;
-          ENV.logI("ArkApp.AndroidHTTP", "sendRequest, send request begin");
-          localObject2 = localObject3;
-          localObject1 = localObject4;
-          paramRequestOption = paramHttpURLConnection.getOutputStream();
-          if (paramFormData == null) {
-            break label303;
-          }
-          localObject2 = paramRequestOption;
-          localObject1 = paramRequestOption;
-          writeFormData(paramRequestOption, paramFormData);
-        }
-        for (;;)
-        {
-          localObject2 = paramRequestOption;
-          localObject1 = paramRequestOption;
-          paramRequestOption.flush();
-          localObject2 = paramRequestOption;
-          localObject1 = paramRequestOption;
-          ENV.logI("ArkApp.AndroidHTTP", "sendRequest, send request end");
-          localObject2 = paramRequestOption;
-          localObject1 = paramRequestOption;
-          paramInt1 = paramHttpURLConnection.getResponseCode();
-          closeStream(paramRequestOption);
-          return paramInt1;
-          if ((paramArrayOfByte != null) && (paramInt2 > 0))
-          {
-            localObject2 = paramRequestOption;
-            localObject1 = paramRequestOption;
-            paramRequestOption.write(paramArrayOfByte, 0, paramInt2);
-          }
-        }
-        i = 0;
-      }
-      catch (Exception paramHttpURLConnection)
-      {
-        localObject1 = localObject2;
-        ENV.logE("ArkApp.AndroidHTTP", "sendRequest, exception=" + paramHttpURLConnection.getMessage());
+      if ((paramInt != 301) && (paramInt != 302) && (paramInt != 303)) {
         return 0;
       }
-      finally
-      {
-        closeStream((OutputStream)localObject1);
-      }
+      return 1;
     }
+    return 2;
+  }
+  
+  /* Error */
+  private static int sendRequest(HttpURLConnection paramHttpURLConnection, ArkAndroidHttpClientStub.RequestOption paramRequestOption, int paramInt1, byte[] paramArrayOfByte, int paramInt2, ArkAndroidHttpClientStub.FormData paramFormData)
+  {
+    // Byte code:
+    //   0: aload 5
+    //   2: ifnonnull +21 -> 23
+    //   5: aload_3
+    //   6: ifnull +11 -> 17
+    //   9: iload 4
+    //   11: ifle +6 -> 17
+    //   14: goto +9 -> 23
+    //   17: iconst_0
+    //   18: istore 6
+    //   20: goto +6 -> 26
+    //   23: iconst_1
+    //   24: istore 6
+    //   26: aconst_null
+    //   27: astore 9
+    //   29: aconst_null
+    //   30: astore 10
+    //   32: aconst_null
+    //   33: astore 11
+    //   35: aload 9
+    //   37: astore 7
+    //   39: aload 10
+    //   41: astore 8
+    //   43: aload_0
+    //   44: aload_1
+    //   45: iload_2
+    //   46: invokestatic 456	com/tencent/ark/ArkAndroidHttpClientStub:setConnectionOptions	(Ljava/net/HttpURLConnection;Lcom/tencent/ark/ArkAndroidHttpClientStub$RequestOption;I)V
+    //   49: iload 6
+    //   51: ifeq +102 -> 153
+    //   54: aload 9
+    //   56: astore 7
+    //   58: aload 10
+    //   60: astore 8
+    //   62: aload_0
+    //   63: iconst_1
+    //   64: invokevirtual 460	java/net/HttpURLConnection:setDoOutput	(Z)V
+    //   67: aload 9
+    //   69: astore 7
+    //   71: aload 10
+    //   73: astore 8
+    //   75: aload_0
+    //   76: iconst_0
+    //   77: invokevirtual 463	java/net/HttpURLConnection:setUseCaches	(Z)V
+    //   80: aload 9
+    //   82: astore 7
+    //   84: aload 10
+    //   86: astore 8
+    //   88: aload_0
+    //   89: ldc_w 465
+    //   92: invokevirtual 468	java/net/HttpURLConnection:setRequestMethod	(Ljava/lang/String;)V
+    //   95: aload 5
+    //   97: ifnull +56 -> 153
+    //   100: aload 9
+    //   102: astore 7
+    //   104: aload 10
+    //   106: astore 8
+    //   108: aload_0
+    //   109: ldc_w 470
+    //   112: ldc_w 472
+    //   115: iconst_1
+    //   116: anewarray 4	java/lang/Object
+    //   119: dup
+    //   120: iconst_0
+    //   121: ldc 56
+    //   123: aastore
+    //   124: invokestatic 248	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   127: invokevirtual 475	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   130: aload 9
+    //   132: astore 7
+    //   134: aload 10
+    //   136: astore 8
+    //   138: aload_0
+    //   139: ldc_w 477
+    //   142: aload 5
+    //   144: invokestatic 479	com/tencent/ark/ArkAndroidHttpClientStub:computeFormDataLength	(Lcom/tencent/ark/ArkAndroidHttpClientStub$FormData;)J
+    //   147: invokestatic 482	java/lang/Long:toString	(J)Ljava/lang/String;
+    //   150: invokevirtual 475	java/net/HttpURLConnection:setRequestProperty	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: aload 9
+    //   155: astore 7
+    //   157: aload 10
+    //   159: astore 8
+    //   161: ldc 63
+    //   163: ldc_w 484
+    //   166: invokestatic 131	com/tencent/ark/Logger:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   169: aload 9
+    //   171: astore 7
+    //   173: aload 10
+    //   175: astore 8
+    //   177: aload_0
+    //   178: invokevirtual 487	java/net/HttpURLConnection:connect	()V
+    //   181: aload 9
+    //   183: astore 7
+    //   185: aload 10
+    //   187: astore 8
+    //   189: ldc 63
+    //   191: ldc_w 489
+    //   194: invokestatic 131	com/tencent/ark/Logger:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   197: aload 11
+    //   199: astore_1
+    //   200: iload 6
+    //   202: ifeq +99 -> 301
+    //   205: aload 9
+    //   207: astore 7
+    //   209: aload 10
+    //   211: astore 8
+    //   213: ldc 63
+    //   215: ldc_w 491
+    //   218: invokestatic 131	com/tencent/ark/Logger:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   221: aload 9
+    //   223: astore 7
+    //   225: aload 10
+    //   227: astore 8
+    //   229: aload_0
+    //   230: invokevirtual 495	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   233: astore_1
+    //   234: aload 5
+    //   236: ifnull +18 -> 254
+    //   239: aload_1
+    //   240: astore 7
+    //   242: aload_1
+    //   243: astore 8
+    //   245: aload_1
+    //   246: aload 5
+    //   248: invokestatic 499	com/tencent/ark/ArkAndroidHttpClientStub:writeFormData	(Ljava/io/OutputStream;Lcom/tencent/ark/ArkAndroidHttpClientStub$FormData;)V
+    //   251: goto +26 -> 277
+    //   254: aload_3
+    //   255: ifnull +22 -> 277
+    //   258: iload 4
+    //   260: ifle +17 -> 277
+    //   263: aload_1
+    //   264: astore 7
+    //   266: aload_1
+    //   267: astore 8
+    //   269: aload_1
+    //   270: aload_3
+    //   271: iconst_0
+    //   272: iload 4
+    //   274: invokevirtual 503	java/io/OutputStream:write	([BII)V
+    //   277: aload_1
+    //   278: astore 7
+    //   280: aload_1
+    //   281: astore 8
+    //   283: aload_1
+    //   284: invokevirtual 506	java/io/OutputStream:flush	()V
+    //   287: aload_1
+    //   288: astore 7
+    //   290: aload_1
+    //   291: astore 8
+    //   293: ldc 63
+    //   295: ldc_w 508
+    //   298: invokestatic 131	com/tencent/ark/Logger:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   301: aload_1
+    //   302: astore 7
+    //   304: aload_1
+    //   305: astore 8
+    //   307: aload_0
+    //   308: invokevirtual 512	java/net/HttpURLConnection:getResponseCode	()I
+    //   311: istore_2
+    //   312: aload_1
+    //   313: invokestatic 514	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/OutputStream;)V
+    //   316: iload_2
+    //   317: ireturn
+    //   318: astore_0
+    //   319: goto +61 -> 380
+    //   322: astore_0
+    //   323: aload 8
+    //   325: astore 7
+    //   327: new 162	java/lang/StringBuilder
+    //   330: dup
+    //   331: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   334: astore_1
+    //   335: aload 8
+    //   337: astore 7
+    //   339: aload_1
+    //   340: ldc_w 516
+    //   343: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   346: pop
+    //   347: aload 8
+    //   349: astore 7
+    //   351: aload_1
+    //   352: aload_0
+    //   353: invokevirtual 173	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   356: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   359: pop
+    //   360: aload 8
+    //   362: astore 7
+    //   364: ldc 63
+    //   366: aload_1
+    //   367: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   370: invokestatic 297	com/tencent/ark/Logger:logE	(Ljava/lang/String;Ljava/lang/String;)V
+    //   373: aload 8
+    //   375: invokestatic 514	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/OutputStream;)V
+    //   378: iconst_0
+    //   379: ireturn
+    //   380: aload 7
+    //   382: invokestatic 514	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/OutputStream;)V
+    //   385: aload_0
+    //   386: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	387	0	paramHttpURLConnection	HttpURLConnection
+    //   0	387	1	paramRequestOption	ArkAndroidHttpClientStub.RequestOption
+    //   0	387	2	paramInt1	int
+    //   0	387	3	paramArrayOfByte	byte[]
+    //   0	387	4	paramInt2	int
+    //   0	387	5	paramFormData	ArkAndroidHttpClientStub.FormData
+    //   18	183	6	i	int
+    //   37	344	7	localObject1	Object
+    //   41	333	8	localObject2	Object
+    //   27	195	9	localObject3	Object
+    //   30	196	10	localObject4	Object
+    //   33	165	11	localObject5	Object
+    // Exception table:
+    //   from	to	target	type
+    //   43	49	318	finally
+    //   62	67	318	finally
+    //   75	80	318	finally
+    //   88	95	318	finally
+    //   108	130	318	finally
+    //   138	153	318	finally
+    //   161	169	318	finally
+    //   177	181	318	finally
+    //   189	197	318	finally
+    //   213	221	318	finally
+    //   229	234	318	finally
+    //   245	251	318	finally
+    //   269	277	318	finally
+    //   283	287	318	finally
+    //   293	301	318	finally
+    //   307	312	318	finally
+    //   327	335	318	finally
+    //   339	347	318	finally
+    //   351	360	318	finally
+    //   364	373	318	finally
+    //   43	49	322	java/lang/Exception
+    //   62	67	322	java/lang/Exception
+    //   75	80	322	java/lang/Exception
+    //   88	95	322	java/lang/Exception
+    //   108	130	322	java/lang/Exception
+    //   138	153	322	java/lang/Exception
+    //   161	169	322	java/lang/Exception
+    //   177	181	322	java/lang/Exception
+    //   189	197	322	java/lang/Exception
+    //   213	221	322	java/lang/Exception
+    //   229	234	322	java/lang/Exception
+    //   245	251	322	java/lang/Exception
+    //   269	277	322	java/lang/Exception
+    //   283	287	322	java/lang/Exception
+    //   293	301	322	java/lang/Exception
+    //   307	312	322	java/lang/Exception
   }
   
   private static void setConnectionOptions(HttpURLConnection paramHttpURLConnection, ArkAndroidHttpClientStub.RequestOption paramRequestOption, int paramInt)
   {
-    if (paramRequestOption.timeoutInterval == 0) {}
-    for (int i = 15000;; i = paramRequestOption.timeoutInterval)
+    int i;
+    if (paramRequestOption.timeoutInterval == 0) {
+      i = 15000;
+    } else {
+      i = paramRequestOption.timeoutInterval;
+    }
+    paramHttpURLConnection.setConnectTimeout(i);
+    paramHttpURLConnection.setReadTimeout(i);
+    paramHttpURLConnection.setInstanceFollowRedirects(true);
+    if (paramRequestOption != null)
     {
-      paramHttpURLConnection.setConnectTimeout(i);
-      paramHttpURLConnection.setReadTimeout(i);
-      paramHttpURLConnection.setInstanceFollowRedirects(true);
-      if (paramRequestOption == null) {
-        return;
-      }
       if (!TextUtils.isEmpty(paramRequestOption.cookie)) {
         paramHttpURLConnection.setRequestProperty("Cookie", paramRequestOption.cookie);
       }
@@ -456,14 +624,14 @@ public class ArkAndroidHttpClientStub
           paramHttpURLConnection.addRequestProperty(localHeader.name, localHeader.value);
         }
       }
-    }
-    if (paramInt != 0)
-    {
-      paramRequestOption = timeStampToString(paramInt);
-      if (!TextUtils.isEmpty(paramRequestOption))
+      if (paramInt != 0)
       {
-        paramHttpURLConnection.setRequestProperty("If-Modified-Since", paramRequestOption);
-        ENV.logD("ArkApp.AndroidHTTP", String.format("lastModify is %s(%d)", new Object[] { paramRequestOption, Integer.valueOf(paramInt) }));
+        paramRequestOption = timeStampToString(paramInt);
+        if (!TextUtils.isEmpty(paramRequestOption))
+        {
+          paramHttpURLConnection.setRequestProperty("If-Modified-Since", paramRequestOption);
+          Logger.logD("ArkApp.AndroidHTTP", String.format("lastModify is %s(%d)", new Object[] { paramRequestOption, Integer.valueOf(paramInt) }));
+        }
       }
     }
   }
@@ -489,31 +657,32 @@ public class ArkAndroidHttpClientStub
   
   private static String timeStampToString(int paramInt)
   {
-    if (paramInt == 0) {}
-    for (;;)
-    {
+    if (paramInt == 0) {
       return null;
-      Object localObject1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-      Object localObject2 = ((SimpleDateFormat)localObject1).format(Long.valueOf(paramInt * 1000L));
-      if (TextUtils.isEmpty((CharSequence)localObject2)) {
-        return "";
+    }
+    Object localObject1 = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    Object localObject2 = ((SimpleDateFormat)localObject1).format(Long.valueOf(paramInt * 1000L));
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      return "";
+    }
+    try
+    {
+      localObject1 = ((SimpleDateFormat)localObject1).parse((String)localObject2);
+      if (localObject1 == null) {
+        return null;
       }
-      try
-      {
-        localObject1 = ((SimpleDateFormat)localObject1).parse((String)localObject2);
-        if (localObject1 != null)
-        {
-          localObject2 = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);
-          ((DateFormat)localObject2).setTimeZone(TimeZone.getTimeZone("GMT"));
-          localObject1 = ((DateFormat)localObject2).format((Date)localObject1);
-          return localObject1;
-        }
-      }
-      catch (Exception localException)
-      {
-        ENV.logE("ArkApp.AndroidHTTP", "timeStampToString is fail and errormsg is  " + localException.getMessage());
-        localException.printStackTrace();
-      }
+      localObject2 = new SimpleDateFormat("EEE, d MMM yyyy HH:mm:ss z", Locale.ENGLISH);
+      ((DateFormat)localObject2).setTimeZone(TimeZone.getTimeZone("GMT"));
+      localObject1 = ((DateFormat)localObject2).format((Date)localObject1);
+      return localObject1;
+    }
+    catch (Exception localException)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("timeStampToString is fail and errormsg is  ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      Logger.logE("ArkApp.AndroidHTTP", ((StringBuilder)localObject2).toString());
+      localException.printStackTrace();
     }
     return null;
   }
@@ -532,386 +701,534 @@ public class ArkAndroidHttpClientStub
       paramOutputStream.write(formFileBegin(paramFormData.fileName, paramFormData.filePath));
       localObject1 = new FileInputStream(paramFormData.filePath);
       localObject2 = new byte[32768];
-    }
-    int i;
-    for (long l = 0L;; l += i)
-    {
-      i = ((FileInputStream)localObject1).read((byte[])localObject2);
-      if (i == -1)
+      int i;
+      for (long l = 0L;; l += i)
       {
-        ENV.logD("ArkApp.AndroidHTTP", String.format("writeFormData, file=%s, length=%d", new Object[] { paramFormData.filePath, Long.valueOf(l) }));
-        paramOutputStream.write(FORM_DATA_END_BYTES);
-        paramOutputStream.write(formTailer());
-        return;
+        i = ((FileInputStream)localObject1).read((byte[])localObject2);
+        if (i == -1)
+        {
+          Logger.logD("ArkApp.AndroidHTTP", String.format("writeFormData, file=%s, length=%d", new Object[] { paramFormData.filePath, Long.valueOf(l) }));
+          paramOutputStream.write(FORM_DATA_END_BYTES);
+          break;
+        }
+        paramOutputStream.write((byte[])localObject2, 0, i);
       }
-      paramOutputStream.write((byte[])localObject2, 0, i);
     }
+    paramOutputStream.write(formTailer());
   }
   
   /* Error */
   private void writeResponse(String paramString1, TimerTask paramTimerTask, long paramLong, String paramString2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 10
-    //   3: aload 5
-    //   5: invokestatic 227	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   8: ifne +117 -> 125
-    //   11: new 628	java/io/FileOutputStream
-    //   14: dup
-    //   15: aload 5
-    //   17: invokespecial 629	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
-    //   20: astore 5
-    //   22: aload_0
-    //   23: getfield 429	com/tencent/ark/ArkAndroidHttpClientStub:mHttpURLConnection	Ljava/net/HttpURLConnection;
-    //   26: ifnonnull +123 -> 149
-    //   29: getstatic 97	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   32: ldc 63
-    //   34: ldc_w 631
-    //   37: invokevirtual 295	com/tencent/ark/ArkEnvironmentManager:logE	(Ljava/lang/String;Ljava/lang/String;)V
-    //   40: new 153	java/lang/Exception
-    //   43: dup
-    //   44: ldc_w 633
-    //   47: invokespecial 634	java/lang/Exception:<init>	(Ljava/lang/String;)V
-    //   50: athrow
-    //   51: astore 8
-    //   53: aload 10
-    //   55: astore 9
-    //   57: getstatic 97	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   60: ldc 63
-    //   62: new 160	java/lang/StringBuilder
-    //   65: dup
-    //   66: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   69: ldc_w 636
-    //   72: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: aload_1
-    //   76: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   79: ldc_w 638
-    //   82: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   85: aload 8
-    //   87: invokevirtual 639	java/net/UnknownHostException:getMessage	()Ljava/lang/String;
-    //   90: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   93: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   96: invokevirtual 295	com/tencent/ark/ArkEnvironmentManager:logE	(Ljava/lang/String;Ljava/lang/String;)V
-    //   99: aload_2
-    //   100: invokestatic 641	com/tencent/ark/ArkAndroidHttpClientStub:cancelTimer	(Ljava/util/TimerTask;)V
-    //   103: aload_0
-    //   104: invokespecial 643	com/tencent/ark/ArkAndroidHttpClientStub:setFlagComplete	()V
-    //   107: aload_0
-    //   108: lload_3
-    //   109: bipush 22
-    //   111: invokevirtual 647	com/tencent/ark/ArkAndroidHttpClientStub:OnRequestComplete	(JI)V
-    //   114: aload 9
-    //   116: invokestatic 649	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/InputStream;)V
-    //   119: aload 5
-    //   121: invokestatic 508	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/OutputStream;)V
-    //   124: return
-    //   125: new 651	java/io/ByteArrayOutputStream
-    //   128: dup
-    //   129: invokespecial 652	java/io/ByteArrayOutputStream:<init>	()V
-    //   132: astore 5
-    //   134: goto -112 -> 22
-    //   137: astore 8
-    //   139: aconst_null
-    //   140: astore 5
-    //   142: aload 10
-    //   144: astore 9
-    //   146: goto -89 -> 57
-    //   149: new 654	java/io/BufferedInputStream
-    //   152: dup
-    //   153: aload_0
-    //   154: getfield 429	com/tencent/ark/ArkAndroidHttpClientStub:mHttpURLConnection	Ljava/net/HttpURLConnection;
-    //   157: invokevirtual 658	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   160: invokespecial 660	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   163: astore 9
-    //   165: aload 5
-    //   167: astore 10
-    //   169: aload 9
-    //   171: astore 8
-    //   173: ldc 37
-    //   175: newarray byte
-    //   177: astore 11
-    //   179: iconst_0
-    //   180: istore 6
-    //   182: aload 5
-    //   184: astore 10
-    //   186: aload 9
-    //   188: astore 8
-    //   190: aload_0
-    //   191: getfield 662	com/tencent/ark/ArkAndroidHttpClientStub:mIsCanceled	Z
-    //   194: ifeq +147 -> 341
-    //   197: aload 5
-    //   199: astore 10
-    //   201: aload 9
-    //   203: astore 8
-    //   205: getstatic 97	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   208: ldc 63
-    //   210: new 160	java/lang/StringBuilder
-    //   213: dup
-    //   214: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   217: ldc_w 664
-    //   220: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   223: aload_1
-    //   224: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   227: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   230: invokevirtual 129	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   233: aload 5
-    //   235: astore 10
-    //   237: aload 9
-    //   239: astore 8
-    //   241: aload 5
-    //   243: instanceof 651
-    //   246: ifeq +23 -> 269
-    //   249: aload 5
-    //   251: astore 10
-    //   253: aload 9
-    //   255: astore 8
-    //   257: aload_0
-    //   258: aload 5
-    //   260: checkcast 651	java/io/ByteArrayOutputStream
-    //   263: invokevirtual 667	java/io/ByteArrayOutputStream:toByteArray	()[B
-    //   266: putfield 669	com/tencent/ark/ArkAndroidHttpClientStub:mResponseBody	[B
-    //   269: aload 5
-    //   271: astore 10
-    //   273: aload 9
-    //   275: astore 8
-    //   277: getstatic 97	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   280: ldc 63
-    //   282: new 160	java/lang/StringBuilder
-    //   285: dup
-    //   286: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   289: ldc_w 671
-    //   292: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: iload 6
-    //   297: invokevirtual 674	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   300: ldc_w 676
-    //   303: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   306: aload_1
-    //   307: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   310: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   313: invokevirtual 129	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   316: aload_2
-    //   317: invokestatic 641	com/tencent/ark/ArkAndroidHttpClientStub:cancelTimer	(Ljava/util/TimerTask;)V
-    //   320: aload_0
-    //   321: invokespecial 643	com/tencent/ark/ArkAndroidHttpClientStub:setFlagComplete	()V
-    //   324: aload_0
-    //   325: lload_3
-    //   326: iconst_0
-    //   327: invokevirtual 647	com/tencent/ark/ArkAndroidHttpClientStub:OnRequestComplete	(JI)V
-    //   330: aload 9
-    //   332: invokestatic 649	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/InputStream;)V
-    //   335: aload 5
-    //   337: invokestatic 508	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/OutputStream;)V
-    //   340: return
-    //   341: aload 5
-    //   343: astore 10
-    //   345: aload 9
-    //   347: astore 8
-    //   349: aload_0
-    //   350: getfield 131	com/tencent/ark/ArkAndroidHttpClientStub:mIsTimeout	Z
-    //   353: ifeq +42 -> 395
-    //   356: aload 5
-    //   358: astore 10
-    //   360: aload 9
-    //   362: astore 8
-    //   364: getstatic 97	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   367: ldc 63
-    //   369: new 160	java/lang/StringBuilder
-    //   372: dup
-    //   373: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   376: ldc_w 678
-    //   379: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   382: aload_1
-    //   383: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   386: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   389: invokevirtual 129	com/tencent/ark/ArkEnvironmentManager:logI	(Ljava/lang/String;Ljava/lang/String;)V
-    //   392: goto -159 -> 233
-    //   395: aload 5
-    //   397: astore 10
-    //   399: aload 9
-    //   401: astore 8
-    //   403: aload 9
-    //   405: aload 11
-    //   407: invokevirtual 679	java/io/InputStream:read	([B)I
-    //   410: istore 7
-    //   412: iload 7
-    //   414: iconst_m1
-    //   415: if_icmpeq -182 -> 233
-    //   418: aload 5
-    //   420: astore 10
-    //   422: aload 9
-    //   424: astore 8
-    //   426: aload 5
-    //   428: aload 11
-    //   430: iconst_0
-    //   431: iload 7
-    //   433: invokevirtual 512	java/io/OutputStream:write	([BII)V
-    //   436: iload 7
-    //   438: iload 6
-    //   440: iadd
-    //   441: istore 6
-    //   443: goto -261 -> 182
-    //   446: astore 11
-    //   448: aconst_null
-    //   449: astore 12
-    //   451: aconst_null
-    //   452: astore 5
-    //   454: aload 12
-    //   456: astore 10
-    //   458: aload 5
-    //   460: astore 8
-    //   462: getstatic 97	com/tencent/ark/ArkAndroidHttpClientStub:ENV	Lcom/tencent/ark/ArkEnvironmentManager;
-    //   465: ldc 63
-    //   467: new 160	java/lang/StringBuilder
-    //   470: dup
-    //   471: invokespecial 161	java/lang/StringBuilder:<init>	()V
-    //   474: ldc_w 636
-    //   477: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   480: aload_1
-    //   481: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   484: ldc_w 638
-    //   487: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   490: aload 11
-    //   492: invokevirtual 171	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   495: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   498: invokevirtual 174	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   501: invokevirtual 295	com/tencent/ark/ArkEnvironmentManager:logE	(Ljava/lang/String;Ljava/lang/String;)V
-    //   504: aload_2
-    //   505: invokestatic 641	com/tencent/ark/ArkAndroidHttpClientStub:cancelTimer	(Ljava/util/TimerTask;)V
-    //   508: aload_0
-    //   509: invokespecial 643	com/tencent/ark/ArkAndroidHttpClientStub:setFlagComplete	()V
-    //   512: aload_0
-    //   513: lload_3
-    //   514: iconst_5
-    //   515: invokevirtual 647	com/tencent/ark/ArkAndroidHttpClientStub:OnRequestComplete	(JI)V
-    //   518: aload 5
-    //   520: invokestatic 649	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/InputStream;)V
-    //   523: aload 12
-    //   525: invokestatic 508	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/OutputStream;)V
-    //   528: return
-    //   529: astore_1
-    //   530: aconst_null
-    //   531: astore 5
-    //   533: aconst_null
-    //   534: astore 8
-    //   536: aload_2
-    //   537: invokestatic 641	com/tencent/ark/ArkAndroidHttpClientStub:cancelTimer	(Ljava/util/TimerTask;)V
-    //   540: aload_0
-    //   541: invokespecial 643	com/tencent/ark/ArkAndroidHttpClientStub:setFlagComplete	()V
-    //   544: aload_0
-    //   545: lload_3
-    //   546: iconst_0
-    //   547: invokevirtual 647	com/tencent/ark/ArkAndroidHttpClientStub:OnRequestComplete	(JI)V
-    //   550: aload 8
-    //   552: invokestatic 649	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/InputStream;)V
+    //   0: aload 5
+    //   2: invokestatic 229	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   5: ifne +17 -> 22
+    //   8: new 630	java/io/FileOutputStream
+    //   11: dup
+    //   12: aload 5
+    //   14: invokespecial 631	java/io/FileOutputStream:<init>	(Ljava/lang/String;)V
+    //   17: astore 5
+    //   19: goto +12 -> 31
+    //   22: new 633	java/io/ByteArrayOutputStream
+    //   25: dup
+    //   26: invokespecial 634	java/io/ByteArrayOutputStream:<init>	()V
+    //   29: astore 5
+    //   31: aload_0
+    //   32: getfield 444	com/tencent/ark/ArkAndroidHttpClientStub:mHttpURLConnection	Ljava/net/HttpURLConnection;
+    //   35: ifnull +420 -> 455
+    //   38: new 636	java/io/BufferedInputStream
+    //   41: dup
+    //   42: aload_0
+    //   43: getfield 444	com/tencent/ark/ArkAndroidHttpClientStub:mHttpURLConnection	Ljava/net/HttpURLConnection;
+    //   46: invokevirtual 640	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   49: invokespecial 642	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   52: astore 8
+    //   54: aload 8
+    //   56: astore 9
+    //   58: aload 5
+    //   60: astore 10
+    //   62: ldc 37
+    //   64: newarray byte
+    //   66: astore 11
+    //   68: iconst_0
+    //   69: istore 6
+    //   71: aload 8
+    //   73: astore 9
+    //   75: aload 5
+    //   77: astore 10
+    //   79: aload_0
+    //   80: getfield 644	com/tencent/ark/ArkAndroidHttpClientStub:mIsCanceled	Z
+    //   83: ifeq +73 -> 156
+    //   86: aload 8
+    //   88: astore 9
+    //   90: aload 5
+    //   92: astore 10
+    //   94: new 162	java/lang/StringBuilder
+    //   97: dup
+    //   98: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   101: astore 11
+    //   103: aload 8
+    //   105: astore 9
+    //   107: aload 5
+    //   109: astore 10
+    //   111: aload 11
+    //   113: ldc_w 646
+    //   116: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   119: pop
+    //   120: aload 8
+    //   122: astore 9
+    //   124: aload 5
+    //   126: astore 10
+    //   128: aload 11
+    //   130: aload_1
+    //   131: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   134: pop
+    //   135: aload 8
+    //   137: astore 9
+    //   139: aload 5
+    //   141: astore 10
+    //   143: ldc 63
+    //   145: aload 11
+    //   147: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   150: invokestatic 131	com/tencent/ark/Logger:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   153: goto +111 -> 264
+    //   156: aload 8
+    //   158: astore 9
+    //   160: aload 5
+    //   162: astore 10
+    //   164: aload_0
+    //   165: getfield 133	com/tencent/ark/ArkAndroidHttpClientStub:mIsTimeout	Z
+    //   168: ifeq +73 -> 241
+    //   171: aload 8
+    //   173: astore 9
+    //   175: aload 5
+    //   177: astore 10
+    //   179: new 162	java/lang/StringBuilder
+    //   182: dup
+    //   183: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   186: astore 11
+    //   188: aload 8
+    //   190: astore 9
+    //   192: aload 5
+    //   194: astore 10
+    //   196: aload 11
+    //   198: ldc_w 648
+    //   201: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   204: pop
+    //   205: aload 8
+    //   207: astore 9
+    //   209: aload 5
+    //   211: astore 10
+    //   213: aload 11
+    //   215: aload_1
+    //   216: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   219: pop
+    //   220: aload 8
+    //   222: astore 9
+    //   224: aload 5
+    //   226: astore 10
+    //   228: ldc 63
+    //   230: aload 11
+    //   232: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   235: invokestatic 131	com/tencent/ark/Logger:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   238: goto +26 -> 264
+    //   241: aload 8
+    //   243: astore 9
+    //   245: aload 5
+    //   247: astore 10
+    //   249: aload 8
+    //   251: aload 11
+    //   253: invokevirtual 649	java/io/InputStream:read	([B)I
+    //   256: istore 7
+    //   258: iload 7
+    //   260: iconst_m1
+    //   261: if_icmpne +156 -> 417
+    //   264: aload 8
+    //   266: astore 9
+    //   268: aload 5
+    //   270: astore 10
+    //   272: aload 5
+    //   274: instanceof 633
+    //   277: ifeq +23 -> 300
+    //   280: aload 8
+    //   282: astore 9
+    //   284: aload 5
+    //   286: astore 10
+    //   288: aload_0
+    //   289: aload 5
+    //   291: checkcast 633	java/io/ByteArrayOutputStream
+    //   294: invokevirtual 652	java/io/ByteArrayOutputStream:toByteArray	()[B
+    //   297: putfield 654	com/tencent/ark/ArkAndroidHttpClientStub:mResponseBody	[B
+    //   300: aload 8
+    //   302: astore 9
+    //   304: aload 5
+    //   306: astore 10
+    //   308: new 162	java/lang/StringBuilder
+    //   311: dup
+    //   312: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   315: astore 11
+    //   317: aload 8
+    //   319: astore 9
+    //   321: aload 5
+    //   323: astore 10
+    //   325: aload 11
+    //   327: ldc_w 656
+    //   330: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   333: pop
+    //   334: aload 8
+    //   336: astore 9
+    //   338: aload 5
+    //   340: astore 10
+    //   342: aload 11
+    //   344: iload 6
+    //   346: invokevirtual 659	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   349: pop
+    //   350: aload 8
+    //   352: astore 9
+    //   354: aload 5
+    //   356: astore 10
+    //   358: aload 11
+    //   360: ldc_w 661
+    //   363: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   366: pop
+    //   367: aload 8
+    //   369: astore 9
+    //   371: aload 5
+    //   373: astore 10
+    //   375: aload 11
+    //   377: aload_1
+    //   378: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   381: pop
+    //   382: aload 8
+    //   384: astore 9
+    //   386: aload 5
+    //   388: astore 10
+    //   390: ldc 63
+    //   392: aload 11
+    //   394: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   397: invokestatic 131	com/tencent/ark/Logger:logI	(Ljava/lang/String;Ljava/lang/String;)V
+    //   400: aload_2
+    //   401: invokestatic 663	com/tencent/ark/ArkAndroidHttpClientStub:cancelTimer	(Ljava/util/TimerTask;)V
+    //   404: aload_0
+    //   405: invokespecial 665	com/tencent/ark/ArkAndroidHttpClientStub:setFlagComplete	()V
+    //   408: aload_0
+    //   409: lload_3
+    //   410: iconst_0
+    //   411: invokevirtual 669	com/tencent/ark/ArkAndroidHttpClientStub:OnRequestComplete	(JI)V
+    //   414: goto +334 -> 748
+    //   417: aload 8
+    //   419: astore 9
+    //   421: aload 5
+    //   423: astore 10
+    //   425: aload 5
+    //   427: aload 11
+    //   429: iconst_0
+    //   430: iload 7
+    //   432: invokevirtual 503	java/io/OutputStream:write	([BII)V
+    //   435: iload 6
+    //   437: iload 7
+    //   439: iadd
+    //   440: istore 6
+    //   442: goto -371 -> 71
+    //   445: astore 11
+    //   447: goto +70 -> 517
+    //   450: astore 11
+    //   452: goto +174 -> 626
+    //   455: ldc 63
+    //   457: ldc_w 671
+    //   460: invokestatic 297	com/tencent/ark/Logger:logE	(Ljava/lang/String;Ljava/lang/String;)V
+    //   463: new 155	java/lang/Exception
+    //   466: dup
+    //   467: ldc_w 673
+    //   470: invokespecial 674	java/lang/Exception:<init>	(Ljava/lang/String;)V
+    //   473: athrow
+    //   474: astore_1
+    //   475: aconst_null
+    //   476: astore 9
+    //   478: goto +286 -> 764
+    //   481: astore 11
+    //   483: aconst_null
+    //   484: astore 8
+    //   486: goto +31 -> 517
+    //   489: astore 11
+    //   491: aconst_null
+    //   492: astore 8
+    //   494: goto +132 -> 626
+    //   497: astore_1
+    //   498: aconst_null
+    //   499: astore 5
+    //   501: aload 5
+    //   503: astore 9
+    //   505: goto +259 -> 764
+    //   508: astore 11
+    //   510: aconst_null
+    //   511: astore 8
+    //   513: aload 8
+    //   515: astore 5
+    //   517: aload 8
+    //   519: astore 9
+    //   521: aload 5
+    //   523: astore 10
+    //   525: new 162	java/lang/StringBuilder
+    //   528: dup
+    //   529: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   532: astore 12
+    //   534: aload 8
+    //   536: astore 9
+    //   538: aload 5
+    //   540: astore 10
+    //   542: aload 12
+    //   544: ldc_w 676
+    //   547: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   550: pop
+    //   551: aload 8
+    //   553: astore 9
     //   555: aload 5
-    //   557: invokestatic 508	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/OutputStream;)V
-    //   560: aload_1
-    //   561: athrow
-    //   562: astore_1
-    //   563: aconst_null
-    //   564: astore 8
-    //   566: goto -30 -> 536
-    //   569: astore_1
-    //   570: aload 10
-    //   572: astore 5
-    //   574: goto -38 -> 536
-    //   577: astore_1
-    //   578: aload 9
-    //   580: astore 8
-    //   582: goto -46 -> 536
-    //   585: astore 11
-    //   587: aconst_null
-    //   588: astore 8
-    //   590: aload 5
-    //   592: astore 12
-    //   594: aload 8
-    //   596: astore 5
-    //   598: goto -144 -> 454
-    //   601: astore 11
-    //   603: aload 5
-    //   605: astore 12
-    //   607: aload 9
-    //   609: astore 5
-    //   611: goto -157 -> 454
-    //   614: astore 8
-    //   616: goto -559 -> 57
+    //   557: astore 10
+    //   559: aload 12
+    //   561: aload_1
+    //   562: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   565: pop
+    //   566: aload 8
+    //   568: astore 9
+    //   570: aload 5
+    //   572: astore 10
+    //   574: aload 12
+    //   576: ldc_w 678
+    //   579: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   582: pop
+    //   583: aload 8
+    //   585: astore 9
+    //   587: aload 5
+    //   589: astore 10
+    //   591: aload 12
+    //   593: aload 11
+    //   595: invokevirtual 173	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   598: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   601: pop
+    //   602: aload 8
+    //   604: astore 9
+    //   606: aload 5
+    //   608: astore 10
+    //   610: ldc 63
+    //   612: aload 12
+    //   614: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   617: invokestatic 297	com/tencent/ark/Logger:logE	(Ljava/lang/String;Ljava/lang/String;)V
+    //   620: iconst_5
+    //   621: istore 6
+    //   623: goto +110 -> 733
+    //   626: aload 8
+    //   628: astore 9
+    //   630: aload 5
+    //   632: astore 10
+    //   634: new 162	java/lang/StringBuilder
+    //   637: dup
+    //   638: invokespecial 163	java/lang/StringBuilder:<init>	()V
+    //   641: astore 12
+    //   643: aload 8
+    //   645: astore 9
+    //   647: aload 5
+    //   649: astore 10
+    //   651: aload 12
+    //   653: ldc_w 676
+    //   656: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   659: pop
+    //   660: aload 8
+    //   662: astore 9
+    //   664: aload 5
+    //   666: astore 10
+    //   668: aload 12
+    //   670: aload_1
+    //   671: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   674: pop
+    //   675: aload 8
+    //   677: astore 9
+    //   679: aload 5
+    //   681: astore 10
+    //   683: aload 12
+    //   685: ldc_w 678
+    //   688: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   691: pop
+    //   692: aload 8
+    //   694: astore 9
+    //   696: aload 5
+    //   698: astore 10
+    //   700: aload 12
+    //   702: aload 11
+    //   704: invokevirtual 679	java/net/UnknownHostException:getMessage	()Ljava/lang/String;
+    //   707: invokevirtual 169	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   710: pop
+    //   711: aload 8
+    //   713: astore 9
+    //   715: aload 5
+    //   717: astore 10
+    //   719: ldc 63
+    //   721: aload 12
+    //   723: invokevirtual 176	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   726: invokestatic 297	com/tencent/ark/Logger:logE	(Ljava/lang/String;Ljava/lang/String;)V
+    //   729: bipush 22
+    //   731: istore 6
+    //   733: aload_2
+    //   734: invokestatic 663	com/tencent/ark/ArkAndroidHttpClientStub:cancelTimer	(Ljava/util/TimerTask;)V
+    //   737: aload_0
+    //   738: invokespecial 665	com/tencent/ark/ArkAndroidHttpClientStub:setFlagComplete	()V
+    //   741: aload_0
+    //   742: lload_3
+    //   743: iload 6
+    //   745: invokevirtual 669	com/tencent/ark/ArkAndroidHttpClientStub:OnRequestComplete	(JI)V
+    //   748: aload 8
+    //   750: invokestatic 681	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/InputStream;)V
+    //   753: aload 5
+    //   755: invokestatic 514	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/OutputStream;)V
+    //   758: return
+    //   759: astore_1
+    //   760: aload 10
+    //   762: astore 5
+    //   764: aload_2
+    //   765: invokestatic 663	com/tencent/ark/ArkAndroidHttpClientStub:cancelTimer	(Ljava/util/TimerTask;)V
+    //   768: aload_0
+    //   769: invokespecial 665	com/tencent/ark/ArkAndroidHttpClientStub:setFlagComplete	()V
+    //   772: aload_0
+    //   773: lload_3
+    //   774: iconst_0
+    //   775: invokevirtual 669	com/tencent/ark/ArkAndroidHttpClientStub:OnRequestComplete	(JI)V
+    //   778: aload 9
+    //   780: invokestatic 681	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/InputStream;)V
+    //   783: aload 5
+    //   785: invokestatic 514	com/tencent/ark/ArkAndroidHttpClientStub:closeStream	(Ljava/io/OutputStream;)V
+    //   788: goto +5 -> 793
+    //   791: aload_1
+    //   792: athrow
+    //   793: goto -2 -> 791
+    //   796: astore 11
+    //   798: aconst_null
+    //   799: astore 8
+    //   801: aload 8
+    //   803: astore 5
+    //   805: goto -179 -> 626
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	619	0	this	ArkAndroidHttpClientStub
-    //   0	619	1	paramString1	String
-    //   0	619	2	paramTimerTask	TimerTask
-    //   0	619	3	paramLong	long
-    //   0	619	5	paramString2	String
-    //   180	262	6	i	int
-    //   410	31	7	j	int
-    //   51	35	8	localUnknownHostException1	java.net.UnknownHostException
-    //   137	1	8	localUnknownHostException2	java.net.UnknownHostException
-    //   171	424	8	localObject1	Object
-    //   614	1	8	localUnknownHostException3	java.net.UnknownHostException
-    //   55	553	9	localObject2	Object
-    //   1	570	10	localObject3	Object
-    //   177	252	11	arrayOfByte	byte[]
-    //   446	45	11	localException1	Exception
-    //   585	1	11	localException2	Exception
-    //   601	1	11	localException3	Exception
-    //   449	157	12	localObject4	Object
+    //   0	808	0	this	ArkAndroidHttpClientStub
+    //   0	808	1	paramString1	String
+    //   0	808	2	paramTimerTask	TimerTask
+    //   0	808	3	paramLong	long
+    //   0	808	5	paramString2	String
+    //   69	675	6	i	int
+    //   256	184	7	j	int
+    //   52	750	8	localBufferedInputStream	java.io.BufferedInputStream
+    //   56	723	9	localObject1	Object
+    //   60	701	10	str	String
+    //   66	362	11	localObject2	Object
+    //   445	1	11	localException1	Exception
+    //   450	1	11	localUnknownHostException1	java.net.UnknownHostException
+    //   481	1	11	localException2	Exception
+    //   489	1	11	localUnknownHostException2	java.net.UnknownHostException
+    //   508	195	11	localException3	Exception
+    //   796	1	11	localUnknownHostException3	java.net.UnknownHostException
+    //   532	190	12	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   22	51	51	java/net/UnknownHostException
-    //   149	165	51	java/net/UnknownHostException
-    //   3	22	137	java/net/UnknownHostException
-    //   125	134	137	java/net/UnknownHostException
-    //   3	22	446	java/lang/Exception
-    //   125	134	446	java/lang/Exception
-    //   3	22	529	finally
-    //   125	134	529	finally
-    //   22	51	562	finally
-    //   149	165	562	finally
-    //   173	179	569	finally
-    //   190	197	569	finally
-    //   205	233	569	finally
-    //   241	249	569	finally
-    //   257	269	569	finally
-    //   277	316	569	finally
-    //   349	356	569	finally
-    //   364	392	569	finally
-    //   403	412	569	finally
-    //   426	436	569	finally
-    //   462	504	569	finally
-    //   57	99	577	finally
-    //   22	51	585	java/lang/Exception
-    //   149	165	585	java/lang/Exception
-    //   173	179	601	java/lang/Exception
-    //   190	197	601	java/lang/Exception
-    //   205	233	601	java/lang/Exception
-    //   241	249	601	java/lang/Exception
-    //   257	269	601	java/lang/Exception
-    //   277	316	601	java/lang/Exception
-    //   349	356	601	java/lang/Exception
-    //   364	392	601	java/lang/Exception
-    //   403	412	601	java/lang/Exception
-    //   426	436	601	java/lang/Exception
-    //   173	179	614	java/net/UnknownHostException
-    //   190	197	614	java/net/UnknownHostException
-    //   205	233	614	java/net/UnknownHostException
-    //   241	249	614	java/net/UnknownHostException
-    //   257	269	614	java/net/UnknownHostException
-    //   277	316	614	java/net/UnknownHostException
-    //   349	356	614	java/net/UnknownHostException
-    //   364	392	614	java/net/UnknownHostException
-    //   403	412	614	java/net/UnknownHostException
-    //   426	436	614	java/net/UnknownHostException
+    //   62	68	445	java/lang/Exception
+    //   79	86	445	java/lang/Exception
+    //   94	103	445	java/lang/Exception
+    //   111	120	445	java/lang/Exception
+    //   128	135	445	java/lang/Exception
+    //   143	153	445	java/lang/Exception
+    //   164	171	445	java/lang/Exception
+    //   179	188	445	java/lang/Exception
+    //   196	205	445	java/lang/Exception
+    //   213	220	445	java/lang/Exception
+    //   228	238	445	java/lang/Exception
+    //   249	258	445	java/lang/Exception
+    //   272	280	445	java/lang/Exception
+    //   288	300	445	java/lang/Exception
+    //   308	317	445	java/lang/Exception
+    //   325	334	445	java/lang/Exception
+    //   342	350	445	java/lang/Exception
+    //   358	367	445	java/lang/Exception
+    //   375	382	445	java/lang/Exception
+    //   390	400	445	java/lang/Exception
+    //   425	435	445	java/lang/Exception
+    //   62	68	450	java/net/UnknownHostException
+    //   79	86	450	java/net/UnknownHostException
+    //   94	103	450	java/net/UnknownHostException
+    //   111	120	450	java/net/UnknownHostException
+    //   128	135	450	java/net/UnknownHostException
+    //   143	153	450	java/net/UnknownHostException
+    //   164	171	450	java/net/UnknownHostException
+    //   179	188	450	java/net/UnknownHostException
+    //   196	205	450	java/net/UnknownHostException
+    //   213	220	450	java/net/UnknownHostException
+    //   228	238	450	java/net/UnknownHostException
+    //   249	258	450	java/net/UnknownHostException
+    //   272	280	450	java/net/UnknownHostException
+    //   288	300	450	java/net/UnknownHostException
+    //   308	317	450	java/net/UnknownHostException
+    //   325	334	450	java/net/UnknownHostException
+    //   342	350	450	java/net/UnknownHostException
+    //   358	367	450	java/net/UnknownHostException
+    //   375	382	450	java/net/UnknownHostException
+    //   390	400	450	java/net/UnknownHostException
+    //   425	435	450	java/net/UnknownHostException
+    //   31	54	474	finally
+    //   455	474	474	finally
+    //   31	54	481	java/lang/Exception
+    //   455	474	481	java/lang/Exception
+    //   31	54	489	java/net/UnknownHostException
+    //   455	474	489	java/net/UnknownHostException
+    //   0	19	497	finally
+    //   22	31	497	finally
+    //   0	19	508	java/lang/Exception
+    //   22	31	508	java/lang/Exception
+    //   62	68	759	finally
+    //   79	86	759	finally
+    //   94	103	759	finally
+    //   111	120	759	finally
+    //   128	135	759	finally
+    //   143	153	759	finally
+    //   164	171	759	finally
+    //   179	188	759	finally
+    //   196	205	759	finally
+    //   213	220	759	finally
+    //   228	238	759	finally
+    //   249	258	759	finally
+    //   272	280	759	finally
+    //   288	300	759	finally
+    //   308	317	759	finally
+    //   325	334	759	finally
+    //   342	350	759	finally
+    //   358	367	759	finally
+    //   375	382	759	finally
+    //   390	400	759	finally
+    //   425	435	759	finally
+    //   525	534	759	finally
+    //   542	551	759	finally
+    //   559	566	759	finally
+    //   574	583	759	finally
+    //   591	602	759	finally
+    //   610	620	759	finally
+    //   634	643	759	finally
+    //   651	660	759	finally
+    //   668	675	759	finally
+    //   683	692	759	finally
+    //   700	711	759	finally
+    //   719	729	759	finally
+    //   0	19	796	java/net/UnknownHostException
+    //   22	31	796	java/net/UnknownHostException
   }
   
   public void AddCookie(String paramString)
   {
-    if (!TextUtils.isEmpty(paramString)) {}
-    for (this.m_option.cookie = paramString;; this.m_option.cookie = "")
-    {
-      ENV.logI("ArkApp.AndroidHTTP", "AddCookie, cookie=" + this.m_option.cookie);
-      return;
+    if (!TextUtils.isEmpty(paramString)) {
+      this.m_option.cookie = paramString;
+    } else {
+      this.m_option.cookie = "";
     }
+    paramString = new StringBuilder();
+    paramString.append("AddCookie, cookie=");
+    paramString.append(this.m_option.cookie);
+    Logger.logI("ArkApp.AndroidHTTP", paramString.toString());
   }
   
   public void AddCustomHeader(String paramString1, String paramString2)
@@ -924,7 +1241,12 @@ public class ArkAndroidHttpClientStub
       str = "";
     }
     this.m_option.customHeader.add(new ArkAndroidHttpClientStub.Header(paramString1, str));
-    ENV.logD("ArkApp.AndroidHTTP", "AddCustomHeader, " + paramString1 + "=" + str);
+    paramString2 = new StringBuilder();
+    paramString2.append("AddCustomHeader, ");
+    paramString2.append(paramString1);
+    paramString2.append("=");
+    paramString2.append(str);
+    Logger.logD("ArkApp.AndroidHTTP", paramString2.toString());
   }
   
   public void AddFormData(String paramString1, String paramString2)
@@ -944,14 +1266,18 @@ public class ArkAndroidHttpClientStub
   
   public void AddFormFile(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
+    if (!TextUtils.isEmpty(paramString1))
+    {
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
+      if (this.mFormData == null) {
+        this.mFormData = new ArkAndroidHttpClientStub.FormData(null);
+      }
+      ArkAndroidHttpClientStub.FormData localFormData = this.mFormData;
+      localFormData.fileName = paramString1;
+      localFormData.filePath = paramString2;
     }
-    if (this.mFormData == null) {
-      this.mFormData = new ArkAndroidHttpClientStub.FormData(null);
-    }
-    this.mFormData.fileName = paramString1;
-    this.mFormData.filePath = paramString2;
   }
   
   public void Cancel()
@@ -961,7 +1287,7 @@ public class ArkAndroidHttpClientStub
       if (this.mIsCompleted) {
         return;
       }
-      ENV.logI("ArkApp.AndroidHTTP", "Cancel");
+      Logger.logI("ArkApp.AndroidHTTP", "Cancel");
       this.mIsCanceled = true;
       return;
     }
@@ -972,7 +1298,7 @@ public class ArkAndroidHttpClientStub
   {
     if (TextUtils.isEmpty(paramString))
     {
-      ENV.logE("ArkApp.AndroidHTTP", "DownloadToBuffer, url is empty");
+      Logger.logE("ArkApp.AndroidHTTP", "DownloadToBuffer, url is empty");
       return -1;
     }
     httpAsynTask(paramString, paramInt, null, 0, null, null, paramLong);
@@ -981,13 +1307,13 @@ public class ArkAndroidHttpClientStub
   
   public int DownloadToFile(String paramString1, String paramString2, int paramInt, long paramLong)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      ENV.logE("ArkApp.AndroidHTTP", "DownloadToFile, url or filepath is empty");
-      return -1;
+      httpAsynTask(paramString1, paramInt, null, 0, null, paramString2, paramLong);
+      return 0;
     }
-    httpAsynTask(paramString1, paramInt, null, 0, null, paramString2, paramLong);
-    return 0;
+    Logger.logE("ArkApp.AndroidHTTP", "DownloadToFile, url or filepath is empty");
+    return -1;
   }
   
   public String[] GetAllResponseHeaders()
@@ -1019,16 +1345,22 @@ public class ArkAndroidHttpClientStub
   {
     if (this.mResponseBody == null)
     {
-      ENV.logI("ArkApp.AndroidHTTP", "GetDownloadBuffer, responseBody is null");
+      Logger.logI("ArkApp.AndroidHTTP", "GetDownloadBuffer, responseBody is null");
       return null;
     }
-    ENV.logD("ArkApp.AndroidHTTP", "GetDownloadBuffer, length=" + this.mResponseBody.length);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetDownloadBuffer, length=");
+    localStringBuilder.append(this.mResponseBody.length);
+    Logger.logD("ArkApp.AndroidHTTP", localStringBuilder.toString());
     return this.mResponseBody;
   }
   
   public String GetDownloadFilePath()
   {
-    ENV.logD("ArkApp.AndroidHTTP", "GetDownloadFilePath, path=" + this.mDownloadFilePath);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetDownloadFilePath, path=");
+    localStringBuilder.append(this.mDownloadFilePath);
+    Logger.logD("ArkApp.AndroidHTTP", localStringBuilder.toString());
     return this.mDownloadFilePath;
   }
   
@@ -1036,10 +1368,13 @@ public class ArkAndroidHttpClientStub
   {
     if (this.mHttpURLConnection == null)
     {
-      ENV.logE("ArkApp.AndroidHTTP", "FinalURL is empty");
+      Logger.logE("ArkApp.AndroidHTTP", "FinalURL is empty");
       return "";
     }
-    ENV.logD("ArkApp.AndroidHTTP", "FinalURL=" + this.mHttpURLConnection.getURL().toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FinalURL=");
+    localStringBuilder.append(this.mHttpURLConnection.getURL().toString());
+    Logger.logD("ArkApp.AndroidHTTP", localStringBuilder.toString());
     return this.mHttpURLConnection.getURL().toString();
   }
   
@@ -1047,7 +1382,10 @@ public class ArkAndroidHttpClientStub
   {
     if (this.mHttpURLConnection != null)
     {
-      ENV.logD("ArkApp.AndroidHTTP", "LastModifyTime=" + (int)(this.mHttpURLConnection.getLastModified() / 1000L));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LastModifyTime=");
+      localStringBuilder.append((int)(this.mHttpURLConnection.getLastModified() / 1000L));
+      Logger.logD("ArkApp.AndroidHTTP", localStringBuilder.toString());
       return (int)(this.mHttpURLConnection.getLastModified() / 1000L);
     }
     return 0;
@@ -1055,106 +1393,114 @@ public class ArkAndroidHttpClientStub
   
   public int GetMaxAge()
   {
+    Object localObject1 = GetResponseHeader("Cache-Control", true);
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject1);
     int j = 0;
-    String str = GetResponseHeader("Cache-Control", true);
-    if (TextUtils.isEmpty(str)) {
+    if (bool) {
       return 0;
     }
-    Object localObject = str.toLowerCase();
+    Object localObject2 = ((String)localObject1).toLowerCase();
     int i = j;
-    if (((String)localObject).contains("max-age="))
+    if (((String)localObject2).contains("max-age="))
     {
-      localObject = Pattern.compile("max-age=[0-9]*").matcher((CharSequence)localObject);
+      localObject2 = Pattern.compile("max-age=[0-9]*").matcher((CharSequence)localObject2);
       i = j;
-      if (((Matcher)localObject).find()) {
-        localObject = ((Matcher)localObject).group(0);
+      if (((Matcher)localObject2).find()) {
+        localObject2 = ((Matcher)localObject2).group(0);
       }
     }
     try
     {
-      i = Integer.parseInt(((String)localObject).replace("max-age=", ""));
-      ENV.logD("ArkApp.AndroidHTTP", "GetMaxAge, max-age=" + i);
-      return i;
+      i = Integer.parseInt(((String)localObject2).replace("max-age=", ""));
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        ENV.logI("ArkApp.AndroidHTTP", "GetMaxAge, invalid max-age, " + str);
-        i = j;
-      }
+      label93:
+      break label93;
     }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("GetMaxAge, invalid max-age, ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    Logger.logI("ArkApp.AndroidHTTP", ((StringBuilder)localObject2).toString());
+    i = j;
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("GetMaxAge, max-age=");
+    ((StringBuilder)localObject1).append(i);
+    Logger.logD("ArkApp.AndroidHTTP", ((StringBuilder)localObject1).toString());
+    return i;
   }
   
   public String GetResponseHeader(String paramString, boolean paramBoolean)
   {
-    String str2 = null;
-    String str1 = null;
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject1 = null;
+    Object localObject3 = null;
+    if (bool) {
       return null;
     }
-    if (this.mHttpURLConnection != null) {
-      str1 = str2;
-    }
-    try
-    {
-      str2 = this.mHttpURLConnection.getHeaderField(paramString);
-      str1 = str2;
-      if (str2 != null)
+    Object localObject2 = this.mHttpURLConnection;
+    if (localObject2 != null) {
+      try
       {
-        str1 = str2;
-        if (paramBoolean)
-        {
-          str1 = str2;
-          str2 = str2.trim();
-          str1 = str2;
+        localObject1 = ((HttpURLConnection)localObject2).getHeaderField(paramString);
+        if ((localObject1 != null) && (paramBoolean)) {
+          try
+          {
+            localObject2 = ((String)localObject1).trim();
+            localObject1 = localObject2;
+          }
+          catch (Exception localException1) {}
         }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException2)
       {
-        ENV.logW("ArkApp.AndroidHTTP", String.format("GetResponseHeader, exception=%s", new Object[] { localException.toString() }));
+        localObject1 = localObject3;
+        Logger.logW("ArkApp.AndroidHTTP", String.format("GetResponseHeader, exception=%s", new Object[] { localException2.toString() }));
       }
     }
-    ENV.logD("ArkApp.AndroidHTTP", String.format("GetResponseHeader, %s=%s", new Object[] { paramString, str1 }));
-    return str1;
+    Logger.logD("ArkApp.AndroidHTTP", String.format("GetResponseHeader, %s=%s", new Object[] { paramString, localObject1 }));
+    return localObject1;
   }
   
   public String[] GetResponseHeaders(String paramString, boolean paramBoolean)
   {
     if (TextUtils.isEmpty(paramString))
     {
-      ENV.logW("ArkApp.AndroidHTTP", "GetResponseHeaders, name is empty");
+      Logger.logW("ArkApp.AndroidHTTP", "GetResponseHeaders, name is empty");
       return null;
     }
-    if (this.mHttpURLConnection == null)
+    Object localObject1 = this.mHttpURLConnection;
+    if (localObject1 == null)
     {
-      ENV.logW("ArkApp.AndroidHTTP", "GetResponseHeaders, mHttpURLConnection is null");
+      Logger.logW("ArkApp.AndroidHTTP", "GetResponseHeaders, mHttpURLConnection is null");
       return null;
     }
-    Object localObject = this.mHttpURLConnection.getHeaderFields();
-    if (localObject != null)
+    localObject1 = ((HttpURLConnection)localObject1).getHeaderFields();
+    if (localObject1 != null)
     {
-      localObject = (List)((Map)localObject).get(paramString);
-      if (localObject != null)
+      Object localObject2 = (List)((Map)localObject1).get(paramString);
+      if (localObject2 != null)
       {
-        paramString = (String)localObject;
         if (paramBoolean)
         {
-          paramString = new ArrayList();
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext()) {
-            paramString.add(((String)((Iterator)localObject).next()).trim());
+          localObject1 = new ArrayList();
+          localObject2 = ((List)localObject2).iterator();
+          for (;;)
+          {
+            paramString = (String)localObject1;
+            if (!((Iterator)localObject2).hasNext()) {
+              break;
+            }
+            ((ArrayList)localObject1).add(((String)((Iterator)localObject2).next()).trim());
           }
         }
-        localObject = new String[paramString.size()];
-        paramString.toArray((Object[])localObject);
-        return localObject;
+        paramString = (String)localObject2;
+        localObject1 = new String[paramString.size()];
+        paramString.toArray((Object[])localObject1);
+        return localObject1;
       }
     }
-    ENV.logI("ArkApp.AndroidHTTP", String.format("GetResponseHeaders, header not found, name=%s", new Object[] { paramString }));
+    Logger.logI("ArkApp.AndroidHTTP", String.format("GetResponseHeaders, header not found, name=%s", new Object[] { paramString }));
     return null;
   }
   
@@ -1167,80 +1513,81 @@ public class ArkAndroidHttpClientStub
       if (this.mHttpURLConnection != null) {
         i = this.mHttpURLConnection.getResponseCode();
       }
-      ENV.logD("ArkApp.AndroidHTTP", "StatusCode=" + i);
-      return i;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ENV.logE("ArkApp.AndroidHTTP", "GetStatusCode is fail and errormsg=" + localException.getMessage());
-        localException.printStackTrace();
-        i = j;
-      }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("GetStatusCode is fail and errormsg=");
+      localStringBuilder2.append(localException.getMessage());
+      Logger.logE("ArkApp.AndroidHTTP", localStringBuilder2.toString());
+      localException.printStackTrace();
+      i = j;
     }
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("StatusCode=");
+    localStringBuilder1.append(i);
+    Logger.logD("ArkApp.AndroidHTTP", localStringBuilder1.toString());
+    return i;
   }
   
   native void OnComplete(long paramLong, int paramInt);
   
   public void OnRequestComplete(long paramLong, int paramInt)
   {
-    int j = 2;
-    int i;
-    if (this.mIsCanceled) {
-      i = 9;
-    }
-    for (;;)
+    if (this.mIsCanceled)
     {
-      ENV.logI("ArkApp.AndroidHTTP", "OnRequestComplete, errorcode=" + i);
-      OnComplete(paramLong, i);
-      return;
-      if (this.mIsTimeout)
+      paramInt = 9;
+    }
+    else if (this.mIsTimeout)
+    {
+      paramInt = 21;
+    }
+    else
+    {
+      if (this.mIsCompleted)
       {
-        i = 21;
-      }
-      else
-      {
-        i = j;
-        if (this.mIsCompleted) {
-          if (paramInt != 0)
+        if (paramInt != 0) {
+          break label88;
+        }
+        paramInt = GetStatusCode();
+        if (paramInt != 0)
+        {
+          if ((paramInt != 200) && (paramInt != 206))
           {
-            i = paramInt;
-          }
-          else
-          {
-            i = j;
-            switch (GetStatusCode())
+            if (paramInt != 304)
             {
-            case 0: 
-            default: 
-              i = 8;
-              break;
-            case 200: 
-            case 206: 
-              i = 0;
-              break;
-            case 304: 
-              i = 1;
+              paramInt = 8;
+              break label88;
             }
+            paramInt = 1;
+            break label88;
           }
+          paramInt = 0;
+          break label88;
         }
       }
+      paramInt = 2;
     }
+    label88:
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnRequestComplete, errorcode=");
+    localStringBuilder.append(paramInt);
+    Logger.logI("ArkApp.AndroidHTTP", localStringBuilder.toString());
+    OnComplete(paramLong, paramInt);
   }
   
   public int PostForm(String paramString1, String paramString2, long paramLong)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (this.mFormData == null))
+    if ((!TextUtils.isEmpty(paramString1)) && (this.mFormData != null))
     {
-      ENV.logE("ArkApp.AndroidHTTP", "PostForm, invalid arguments");
-      return -1;
+      Logger.logI("ArkApp.AndroidHTTP", String.format("PostForm, URL=%s, file-path=%s", new Object[] { paramString1, paramString2 }));
+      ArkAndroidHttpClientStub.FormData localFormData = this.mFormData;
+      this.mFormData = null;
+      httpAsynTask(paramString1, 0, null, 0, localFormData, paramString2, paramLong);
+      return 0;
     }
-    ENV.logI("ArkApp.AndroidHTTP", String.format("PostForm, URL=%s, file-path=%s", new Object[] { paramString1, paramString2 }));
-    ArkAndroidHttpClientStub.FormData localFormData = this.mFormData;
-    this.mFormData = null;
-    httpAsynTask(paramString1, 0, null, 0, localFormData, paramString2, paramLong);
-    return 0;
+    Logger.logE("ArkApp.AndroidHTTP", "PostForm, invalid arguments");
+    return -1;
   }
   
   public void SetHeader(String paramString1, String paramString2)
@@ -1251,36 +1598,39 @@ public class ArkAndroidHttpClientStub
   public void SetTimeout(int paramInt)
   {
     this.m_option.timeoutInterval = paramInt;
-    ENV.logI("ArkApp.AndroidHTTP", "SetTimeout, timeout=" + this.m_option.timeoutInterval);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SetTimeout, timeout=");
+    localStringBuilder.append(this.m_option.timeoutInterval);
+    Logger.logI("ArkApp.AndroidHTTP", localStringBuilder.toString());
   }
   
   public int UploadBuffer(String paramString, byte[] paramArrayOfByte, int paramInt, long paramLong)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramArrayOfByte == null))
+    if ((!TextUtils.isEmpty(paramString)) && (paramArrayOfByte != null))
     {
-      ENV.logE("ArkApp.AndroidHTTP", "UploadBuffer, invalid arguments");
-      return -1;
+      httpAsynTask(paramString, 0, paramArrayOfByte, paramInt, null, null, paramLong);
+      return 0;
     }
-    httpAsynTask(paramString, 0, paramArrayOfByte, paramInt, null, null, paramLong);
-    return 0;
+    Logger.logE("ArkApp.AndroidHTTP", "UploadBuffer, invalid arguments");
+    return -1;
   }
   
   public int UploadBufferToFile(String paramString1, byte[] paramArrayOfByte, int paramInt, String paramString2, long paramLong)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (paramArrayOfByte == null) || (TextUtils.isEmpty(paramString2)))
+    if ((!TextUtils.isEmpty(paramString1)) && (paramArrayOfByte != null) && (!TextUtils.isEmpty(paramString2)))
     {
-      ENV.logE("ArkApp.AndroidHTTP", String.format("UploadBufferToFile, invalid arguments, url=%s", new Object[] { paramString1 }));
-      return -1;
+      httpAsynTask(paramString1, 0, paramArrayOfByte, paramInt, null, paramString2, paramLong);
+      return 0;
     }
-    httpAsynTask(paramString1, 0, paramArrayOfByte, paramInt, null, paramString2, paramLong);
-    return 0;
+    Logger.logE("ArkApp.AndroidHTTP", String.format("UploadBufferToFile, invalid arguments, url=%s", new Object[] { paramString1 }));
+    return -1;
   }
   
   public void setProxyParam(String paramString, int paramInt)
   {
     this.mProxyHost = paramString;
     this.mProxyPort = paramInt;
-    ENV.logD("ArkApp.AndroidHTTP", String.format("set proxy %s:%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
+    Logger.logD("ArkApp.AndroidHTTP", String.format("set proxy %s:%d", new Object[] { paramString, Integer.valueOf(paramInt) }));
   }
 }
 

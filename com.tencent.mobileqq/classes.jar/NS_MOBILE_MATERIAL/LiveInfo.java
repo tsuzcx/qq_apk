@@ -32,11 +32,13 @@ public final class LiveInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strAuthorUin != null) {
-      paramJceOutputStream.write(this.strAuthorUin, 0);
+    String str = this.strAuthorUin;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.strRoomId != null) {
-      paramJceOutputStream.write(this.strRoomId, 1);
+    str = this.strRoomId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.iRecording, 2);
     paramJceOutputStream.write(this.iRelativeTime, 3);
@@ -44,7 +46,7 @@ public final class LiveInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.LiveInfo
  * JD-Core Version:    0.7.0.1
  */

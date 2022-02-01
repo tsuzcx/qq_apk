@@ -3,7 +3,7 @@ package tencent.media_relation;
 public final class media_relation {}
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.media_relation.media_relation
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.profilecard.moment;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager.Callback;
+import com.tencent.mobileqq.nearby.now.protocol.INowShortVideoProtoManager.Callback;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.PBBytesField;
@@ -12,22 +12,17 @@ import com.tencent.qphone.base.util.QLog;
 import tencent.im.oidb.cmd0xada.oidb_0xada.RspBody;
 
 final class NearbyMomentProtocol$5
-  implements NowShortVideoProtoManager.Callback
+  implements INowShortVideoProtoManager.Callback
 {
   NearbyMomentProtocol$5(NearbyMomentProtocol.LikeCallback paramLikeCallback) {}
   
   public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    bool3 = true;
-    boolean bool2 = true;
-    int j = 0;
-    int k = 0;
-    i = 0;
-    if ((paramInt == 0) && (paramArrayOfByte != null)) {
-      paramBundle = new oidb_0xada.RspBody();
-    }
-    for (;;)
+    boolean bool2 = false;
+    boolean bool1 = false;
+    if ((paramInt == 0) && (paramArrayOfByte != null))
     {
+      paramBundle = new oidb_0xada.RspBody();
       try
       {
         paramBundle.mergeFrom(paramArrayOfByte);
@@ -35,57 +30,64 @@ final class NearbyMomentProtocol$5
         {
           paramArrayOfByte = new ilive_feeds_like.FeedsLikeRsp();
           paramArrayOfByte.mergeFrom(paramBundle.busi_buf.get().toByteArray());
-          if (paramArrayOfByte.ret.has())
+          boolean bool3 = paramArrayOfByte.ret.has();
+          if (bool3)
           {
             paramInt = paramArrayOfByte.ret.get();
-            if (paramInt == 0) {
-              i = k;
+            if (paramInt == 0)
+            {
+              try
+              {
+                paramInt = paramArrayOfByte.total.get();
+                try
+                {
+                  if (QLog.isColorLevel())
+                  {
+                    paramArrayOfByte = new StringBuilder();
+                    paramArrayOfByte.append("like success, total:   ");
+                    paramArrayOfByte.append(paramInt);
+                    QLog.i("NearbyMomentProtocol", 2, paramArrayOfByte.toString());
+                  }
+                  bool1 = true;
+                }
+                catch (InvalidProtocolBufferMicroException paramArrayOfByte) {}
+                bool1 = true;
+              }
+              catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+              {
+                paramInt = 0;
+              }
+              break label219;
             }
           }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("like error, ret=");
+          localStringBuilder.append(paramArrayOfByte.ret.get());
+          localStringBuilder.append(",err_msg=");
+          localStringBuilder.append(paramBundle.err_msg.get());
+          QLog.i("NearbyMomentProtocol", 1, localStringBuilder.toString());
         }
       }
       catch (InvalidProtocolBufferMicroException paramArrayOfByte)
       {
-        bool1 = false;
-        paramInt = j;
+        paramInt = 0;
+        label219:
+        paramArrayOfByte.printStackTrace();
+        break label232;
       }
-      try
-      {
-        j = paramArrayOfByte.total.get();
-        paramInt = j;
-        bool1 = bool2;
-        i = j;
-        if (QLog.isColorLevel())
-        {
-          i = j;
-          QLog.i("NearbyMomentProtocol", 2, "like success, total:   " + j);
-          bool1 = bool2;
-          paramInt = j;
-        }
-        if (this.a != null) {
-          this.a.a(bool1, paramInt);
-        }
-        return;
-      }
-      catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-      {
-        for (;;)
-        {
-          paramInt = i;
-          bool1 = bool3;
-        }
-      }
-      QLog.i("NearbyMomentProtocol", 1, "like error, ret=" + paramArrayOfByte.ret.get() + ",err_msg=" + paramBundle.err_msg.get());
-      bool1 = false;
-      paramInt = i;
-      continue;
-      paramArrayOfByte.printStackTrace();
+    }
+    paramInt = 0;
+    bool1 = bool2;
+    label232:
+    paramArrayOfByte = this.a;
+    if (paramArrayOfByte != null) {
+      paramArrayOfByte.a(bool1, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentProtocol.5
  * JD-Core Version:    0.7.0.1
  */

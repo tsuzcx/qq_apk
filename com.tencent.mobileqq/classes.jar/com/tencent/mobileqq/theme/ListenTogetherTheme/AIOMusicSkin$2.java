@@ -9,14 +9,16 @@ class AIOMusicSkin$2
   
   public void run()
   {
-    if (AIOMusicSkin.a(this.this$0) != null) {
-      AIOMusicSkin.a(this.this$0, AIOMusicSkin.a(this.this$0).a, AIOMusicSkin.a(this.this$0));
+    if (AIOMusicSkin.a(this.this$0) != null)
+    {
+      AIOMusicSkin localAIOMusicSkin = this.this$0;
+      AIOMusicSkin.a(localAIOMusicSkin, AIOMusicSkin.a(localAIOMusicSkin).a, AIOMusicSkin.a(this.this$0));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.theme.ListenTogetherTheme.AIOMusicSkin.2
  * JD-Core Version:    0.7.0.1
  */

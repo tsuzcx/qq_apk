@@ -13,7 +13,14 @@ public class TestUpdateBusinessV2
   private String a(String paramString)
   {
     BaseApplication localBaseApplication = MobileQQ.getContext();
-    return localBaseApplication.getFilesDir() + File.separator + "test_dir" + File.separator + paramString + ".zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localBaseApplication.getFilesDir());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("test_dir");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
   }
   
   public long getBid()
@@ -36,7 +43,7 @@ public class TestUpdateBusinessV2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.business.TestUpdateBusinessV2
  * JD-Core Version:    0.7.0.1
  */

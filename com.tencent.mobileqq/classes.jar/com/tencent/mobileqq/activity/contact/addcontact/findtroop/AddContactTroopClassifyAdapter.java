@@ -12,7 +12,7 @@ import android.widget.TextView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.List;
@@ -47,55 +47,59 @@ public class AddContactTroopClassifyAdapter
       localURLDrawable.setAutoDownload(true);
       localURLDrawable.startDownload(true);
     }
-    String str = "#F5F6FA";
-    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167197);
-    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167040);
+    int i = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167222);
+    int j = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131167063);
+    String str;
     if (ThemeUtil.isInNightMode(BaseApplicationImpl.getApplication().getRuntime())) {
       str = "#282828";
+    } else {
+      str = "#F5F6FA";
     }
-    if (paramAddContactFindTroopClassifyInfo.jdField_a_of_type_Boolean) {
+    if (paramAddContactFindTroopClassifyInfo.jdField_a_of_type_Boolean)
+    {
       paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(i);
     }
-    for (;;)
+    else
     {
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramAddContactFindTroopClassifyInfo.jdField_a_of_type_JavaLangString);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setUnselectedColor(str);
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelectedColor(paramAddContactFindTroopClassifyInfo.e);
-      paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(paramAddContactFindTroopClassifyInfo.jdField_a_of_type_Boolean);
-      ReportController.b(null, "dc00899", "Grp_find_new", "", "grptab", "main_tag_exp", 0, 0, "", paramAddContactFindTroopClassifyInfo.jdField_a_of_type_JavaLangString, "", "");
-      return;
       paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setTextColor(j);
       localObject = localURLDrawable;
     }
+    paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramAddContactFindTroopClassifyInfo.jdField_a_of_type_JavaLangString);
+    paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+    paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setUnselectedColor(str);
+    paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelectedColor(paramAddContactFindTroopClassifyInfo.e);
+    paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopBubbleLayout.setSelected(paramAddContactFindTroopClassifyInfo.jdField_a_of_type_Boolean);
+    ReportController.b(null, "dc00899", "Grp_find_new", "", "grptab", "main_tag_exp", 0, 0, "", paramAddContactFindTroopClassifyInfo.jdField_a_of_type_JavaLangString, "", "");
   }
   
   public AddContactTroopClassifyAdapter.ViewHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    return new AddContactTroopClassifyAdapter.ViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559970, null));
+    return new AddContactTroopClassifyAdapter.ViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559841, null));
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("ac_ft.AddContactTroopClassifyAdapter", 2, "bubbleLayout  clicked  position = " + paramInt);
-    }
-    AddContactFindTroopClassifyInfo localAddContactFindTroopClassifyInfo = (AddContactFindTroopClassifyInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-    localAddContactFindTroopClassifyInfo.jdField_a_of_type_Boolean = true;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopClassifyInfo == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopClassifyInfo = localAddContactFindTroopClassifyInfo;
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      notifyDataSetChanged();
-      ReportController.b(null, "dc00899", "Grp_find_new", "", "grptab", "main_tag_clk", 0, 0, "", localAddContactFindTroopClassifyInfo.jdField_a_of_type_JavaLangString, "", "");
-      return;
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopClassifyInfo != localAddContactFindTroopClassifyInfo)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopClassifyInfo.jdField_a_of_type_Boolean = false;
-        this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopClassifyInfo = localAddContactFindTroopClassifyInfo;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("bubbleLayout  clicked  position = ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("ac_ft.AddContactTroopClassifyAdapter", 2, ((StringBuilder)localObject).toString());
     }
+    Object localObject = (AddContactFindTroopClassifyInfo)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    ((AddContactFindTroopClassifyInfo)localObject).jdField_a_of_type_Boolean = true;
+    AddContactFindTroopClassifyInfo localAddContactFindTroopClassifyInfo = this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopClassifyInfo;
+    if (localAddContactFindTroopClassifyInfo == null)
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopClassifyInfo = ((AddContactFindTroopClassifyInfo)localObject);
+    }
+    else if (localAddContactFindTroopClassifyInfo != localObject)
+    {
+      localAddContactFindTroopClassifyInfo.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityContactAddcontactFindtroopAddContactFindTroopClassifyInfo = ((AddContactFindTroopClassifyInfo)localObject);
+    }
+    notifyDataSetChanged();
+    ReportController.b(null, "dc00899", "Grp_find_new", "", "grptab", "main_tag_clk", 0, 0, "", ((AddContactFindTroopClassifyInfo)localObject).jdField_a_of_type_JavaLangString, "", "");
   }
   
   public void a(AddContactTroopClassifyAdapter.ViewHolder paramViewHolder, int paramInt)
@@ -107,15 +111,16 @@ public class AddContactTroopClassifyAdapter
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.findtroop.AddContactTroopClassifyAdapter
  * JD-Core Version:    0.7.0.1
  */

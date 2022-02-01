@@ -46,62 +46,58 @@ public class GetReactiveFriendListRequest
   public JSONObject getResponse(byte[] paramArrayOfByte, JSONObject paramJSONObject)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
     for (;;)
     {
-      return paramArrayOfByte;
+      int i;
       try
       {
         Object localObject = new CloudStorage.StGetReactiveFriendListRsp();
         ((CloudStorage.StGetReactiveFriendListRsp)localObject).mergeFrom(paramArrayOfByte);
-        localObject = ((CloudStorage.StGetReactiveFriendListRsp)localObject).list.get();
-        paramArrayOfByte = paramJSONObject;
-        if (localObject != null)
+        paramArrayOfByte = ((CloudStorage.StGetReactiveFriendListRsp)localObject).list.get();
+        if ((paramArrayOfByte != null) && (paramArrayOfByte.size() > 0))
         {
-          paramArrayOfByte = paramJSONObject;
-          if (((List)localObject).size() > 0)
-          {
-            paramArrayOfByte = new JSONArray();
-            int i = 0;
-            for (;;)
+          localObject = new JSONArray();
+          i = 0;
+          int j = paramArrayOfByte.size();
+          if (i < j) {
+            try
             {
-              int j = ((List)localObject).size();
-              if (i < j) {
-                try
-                {
-                  JSONObject localJSONObject = new JSONObject();
-                  localJSONObject.putOpt("avatarUrl", ((CloudStorage.FriendInfo)((List)localObject).get(i)).avatarUrl.get());
-                  localJSONObject.putOpt("nickname", ((CloudStorage.FriendInfo)((List)localObject).get(i)).nickname.get());
-                  localJSONObject.putOpt("openid", ((CloudStorage.FriendInfo)((List)localObject).get(i)).openid.get());
-                  paramArrayOfByte.put(localJSONObject);
-                  i += 1;
-                }
-                catch (Throwable localThrowable)
-                {
-                  for (;;)
-                  {
-                    QMLog.i("GetReactiveFriendListRequest", "", localThrowable);
-                  }
-                }
-              }
+              JSONObject localJSONObject = new JSONObject();
+              localJSONObject.putOpt("avatarUrl", ((CloudStorage.FriendInfo)paramArrayOfByte.get(i)).avatarUrl.get());
+              localJSONObject.putOpt("nickname", ((CloudStorage.FriendInfo)paramArrayOfByte.get(i)).nickname.get());
+              localJSONObject.putOpt("openid", ((CloudStorage.FriendInfo)paramArrayOfByte.get(i)).openid.get());
+              ((JSONArray)localObject).put(localJSONObject);
             }
-            paramJSONObject.putOpt("key_result_data", paramArrayOfByte);
+            catch (Throwable localThrowable)
+            {
+              QMLog.i("GetReactiveFriendListRequest", "", localThrowable);
+            }
+          } else {
+            paramJSONObject.putOpt("key_result_data", localObject);
           }
+        }
+        else
+        {
+          return paramJSONObject;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        QMLog.e("GetReactiveFriendListRequest", "onResponse fail." + paramArrayOfByte);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("onResponse fail.");
+        paramJSONObject.append(paramArrayOfByte);
+        QMLog.e("GetReactiveFriendListRequest", paramJSONObject.toString());
         return null;
       }
+      i += 1;
     }
-    return paramJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetReactiveFriendListRequest
  * JD-Core Version:    0.7.0.1
  */

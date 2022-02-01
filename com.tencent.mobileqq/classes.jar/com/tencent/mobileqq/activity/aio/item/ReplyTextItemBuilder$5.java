@@ -1,120 +1,269 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.content.Context;
-import android.os.Bundle;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.imcore.message.UinTypeUtil;
-import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.HasSourceMessage;
-import com.tencent.mobileqq.data.MessageForMixedMsg;
-import com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo;
-import com.tencent.mobileqq.data.MessageForText;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.utils.NetworkUtil;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.atomic.AtomicInteger;
-import mqq.os.MqqHandler;
 
 final class ReplyTextItemBuilder$5
   implements Runnable
 {
   ReplyTextItemBuilder$5(MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface, ReplyTextItemBuilder.SourceMessagePulledCallBack paramSourceMessagePulledCallBack, Context paramContext, ChatThumbView paramChatThumbView) {}
   
+  /* Error */
   public void run()
   {
-    int i = 0;
-    Object localObject1;
-    Object localObject4;
-    boolean bool;
-    if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof HasSourceMessage))
-    {
-      localObject1 = (HasSourceMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord;
-      localObject4 = ((HasSourceMessage)localObject1).getSourceMsgInfo();
-      bool = ((HasSourceMessage)localObject1).getHasPulledSourceMsg();
-    }
-    for (;;)
-    {
-      if (localObject4 == null) {
-        return;
-      }
-      if (0 == 0) {}
-      label452:
-      Object localObject3;
-      for (localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().c(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq);; localObject3 = null)
-      {
-        Object localObject5;
-        if ((localObject1 == null) && (!bool) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin != null))
-        {
-          if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord instanceof HasSourceMessage)) {
-            ((HasSourceMessage)this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord).setPulledSourceMsg();
-          }
-          Bundle localBundle = new Bundle();
-          QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-          localObject5 = new ArrayList();
-          int j = localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.addAndGet(1);
-          localBundle.putInt("counter", j);
-          localBundle.putBoolean("success", false);
-          localQQMessageFacade.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(Integer.valueOf(j), localObject5);
-          this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMsgHandler().a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq, true, localBundle, 0);
-          localQQMessageFacade.b.put(UinTypeUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.frienduin, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop), Boolean.valueOf(false));
-          if (!NetworkUtil.g(BaseApplication.getContext())) {}
-        }
-        label458:
-        label468:
-        for (;;)
-        {
-          try
-          {
-            localObject5.wait(35000L);
-            if ((((List)localObject5).size() <= 0) || (i >= ((List)localObject5).size())) {
-              break label468;
-            }
-            if (((MessageRecord)((List)localObject5).get(i)).shmsgseq == ((MessageForReplyText.SourceMsgInfo)localObject4).mSourceMsgSeq)
-            {
-              localObject1 = (MessageRecord)((List)localObject5).get(i);
-              if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.istroop == 0) || ((!(localObject1 instanceof MessageForText)) && (!(localObject1 instanceof MessageForMixedMsg))) || (!((MessageRecord)localObject1).isLongMsg())) {
-                break label458;
-              }
-              localObject5 = new StringBuilder();
-              localObject4 = ReplyTextItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqDataMessageRecord, (MessageRecord)localObject1, (StringBuilder)localObject5);
-              if (localObject4 == null) {
-                break label458;
-              }
-              if (localObject5 == null) {
-                break label452;
-              }
-              localObject1 = ((StringBuilder)localObject5).toString();
-              ThreadManager.getUIHandler().post(new ReplyTextItemBuilder.5.1(this, (MessageRecord)localObject4, (String)localObject1));
-              return;
-            }
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-            continue;
-          }
-          finally {}
-          i += 1;
-          continue;
-          localObject3 = null;
-          continue;
-          localObject4 = localObject3;
-          localObject3 = null;
-        }
-      }
-      bool = false;
-      localObject4 = null;
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   4: astore 4
+    //   6: aload 4
+    //   8: instanceof 33
+    //   11: istore_3
+    //   12: aconst_null
+    //   13: astore 6
+    //   15: iconst_0
+    //   16: istore_1
+    //   17: iload_3
+    //   18: ifeq +30 -> 48
+    //   21: aload 4
+    //   23: checkcast 33	com/tencent/mobileqq/data/HasSourceMessage
+    //   26: astore 4
+    //   28: aload 4
+    //   30: invokeinterface 37 1 0
+    //   35: astore 5
+    //   37: aload 4
+    //   39: invokeinterface 41 1 0
+    //   44: istore_3
+    //   45: goto +8 -> 53
+    //   48: aconst_null
+    //   49: astore 5
+    //   51: iconst_0
+    //   52: istore_3
+    //   53: aload 5
+    //   55: ifnonnull +4 -> 59
+    //   58: return
+    //   59: aload_0
+    //   60: getfield 18	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   63: invokevirtual 47	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   66: aload_0
+    //   67: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   70: getfield 53	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   73: aload_0
+    //   74: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   77: getfield 57	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   80: aload 5
+    //   82: getfield 63	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:mSourceMsgSeq	J
+    //   85: invokevirtual 69	com/tencent/imcore/message/QQMessageFacade:c	(Ljava/lang/String;IJ)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   88: astore 7
+    //   90: aload 7
+    //   92: astore 4
+    //   94: aload 7
+    //   96: ifnonnull +301 -> 397
+    //   99: aload 7
+    //   101: astore 4
+    //   103: iload_3
+    //   104: ifne +293 -> 397
+    //   107: aload 7
+    //   109: astore 4
+    //   111: aload_0
+    //   112: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   115: getfield 53	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   118: ifnull +279 -> 397
+    //   121: aload_0
+    //   122: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   125: astore 4
+    //   127: aload 4
+    //   129: instanceof 33
+    //   132: ifeq +13 -> 145
+    //   135: aload 4
+    //   137: checkcast 33	com/tencent/mobileqq/data/HasSourceMessage
+    //   140: invokeinterface 72 1 0
+    //   145: new 74	android/os/Bundle
+    //   148: dup
+    //   149: invokespecial 75	android/os/Bundle:<init>	()V
+    //   152: astore 4
+    //   154: aload_0
+    //   155: getfield 18	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   158: invokevirtual 47	com/tencent/mobileqq/app/QQAppInterface:getMessageFacade	()Lcom/tencent/imcore/message/QQMessageFacade;
+    //   161: astore 9
+    //   163: new 77	java/util/ArrayList
+    //   166: dup
+    //   167: invokespecial 78	java/util/ArrayList:<init>	()V
+    //   170: astore 8
+    //   172: aload 9
+    //   174: getfield 81	com/tencent/imcore/message/QQMessageFacade:jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger	Ljava/util/concurrent/atomic/AtomicInteger;
+    //   177: iconst_1
+    //   178: invokevirtual 87	java/util/concurrent/atomic/AtomicInteger:addAndGet	(I)I
+    //   181: istore_2
+    //   182: aload 4
+    //   184: ldc 89
+    //   186: iload_2
+    //   187: invokevirtual 93	android/os/Bundle:putInt	(Ljava/lang/String;I)V
+    //   190: aload 4
+    //   192: ldc 95
+    //   194: iconst_0
+    //   195: invokevirtual 99	android/os/Bundle:putBoolean	(Ljava/lang/String;Z)V
+    //   198: aload 9
+    //   200: getfield 102	com/tencent/imcore/message/QQMessageFacade:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   203: iload_2
+    //   204: invokestatic 108	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   207: aload 8
+    //   209: invokevirtual 114	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   212: pop
+    //   213: aload_0
+    //   214: getfield 18	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   217: invokevirtual 118	com/tencent/mobileqq/app/QQAppInterface:getMsgHandler	()Lcom/tencent/mobileqq/app/MessageHandler;
+    //   220: aload_0
+    //   221: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   224: getfield 53	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   227: aload 5
+    //   229: getfield 63	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:mSourceMsgSeq	J
+    //   232: aload 5
+    //   234: getfield 63	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:mSourceMsgSeq	J
+    //   237: iconst_1
+    //   238: aload 4
+    //   240: iconst_0
+    //   241: invokevirtual 123	com/tencent/mobileqq/app/MessageHandler:a	(Ljava/lang/String;JJZLandroid/os/Bundle;I)Z
+    //   244: pop
+    //   245: aload 9
+    //   247: getfield 126	com/tencent/imcore/message/QQMessageFacade:b	Ljava/util/concurrent/ConcurrentHashMap;
+    //   250: aload_0
+    //   251: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   254: getfield 53	com/tencent/mobileqq/data/MessageRecord:frienduin	Ljava/lang/String;
+    //   257: aload_0
+    //   258: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   261: getfield 57	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   264: invokestatic 131	com/tencent/imcore/message/UinTypeUtil:a	(Ljava/lang/String;I)Ljava/lang/String;
+    //   267: iconst_0
+    //   268: invokestatic 136	java/lang/Boolean:valueOf	(Z)Ljava/lang/Boolean;
+    //   271: invokevirtual 114	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   274: pop
+    //   275: invokestatic 142	com/tencent/qphone/base/util/BaseApplication:getContext	()Lcom/tencent/qphone/base/util/BaseApplication;
+    //   278: invokestatic 148	com/tencent/mobileqq/utils/NetworkUtil:isNetworkAvailable	(Landroid/content/Context;)Z
+    //   281: ifeq +41 -> 322
+    //   284: aload 8
+    //   286: monitorenter
+    //   287: aload 8
+    //   289: ldc2_w 149
+    //   292: invokevirtual 154	java/lang/Object:wait	(J)V
+    //   295: goto +15 -> 310
+    //   298: astore 4
+    //   300: goto +16 -> 316
+    //   303: astore 4
+    //   305: aload 4
+    //   307: invokevirtual 157	java/lang/InterruptedException:printStackTrace	()V
+    //   310: aload 8
+    //   312: monitorexit
+    //   313: goto +9 -> 322
+    //   316: aload 8
+    //   318: monitorexit
+    //   319: aload 4
+    //   321: athrow
+    //   322: aload 7
+    //   324: astore 4
+    //   326: aload 8
+    //   328: invokeinterface 163 1 0
+    //   333: ifle +64 -> 397
+    //   336: aload 7
+    //   338: astore 4
+    //   340: iload_1
+    //   341: aload 8
+    //   343: invokeinterface 163 1 0
+    //   348: if_icmpge +49 -> 397
+    //   351: aload 8
+    //   353: iload_1
+    //   354: invokeinterface 167 2 0
+    //   359: checkcast 49	com/tencent/mobileqq/data/MessageRecord
+    //   362: getfield 170	com/tencent/mobileqq/data/MessageRecord:shmsgseq	J
+    //   365: aload 5
+    //   367: getfield 63	com/tencent/mobileqq/data/MessageForReplyText$SourceMsgInfo:mSourceMsgSeq	J
+    //   370: lcmp
+    //   371: ifne +19 -> 390
+    //   374: aload 8
+    //   376: iload_1
+    //   377: invokeinterface 167 2 0
+    //   382: checkcast 49	com/tencent/mobileqq/data/MessageRecord
+    //   385: astore 4
+    //   387: goto +10 -> 397
+    //   390: iload_1
+    //   391: iconst_1
+    //   392: iadd
+    //   393: istore_1
+    //   394: goto -58 -> 336
+    //   397: aload_0
+    //   398: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   401: getfield 57	com/tencent/mobileqq/data/MessageRecord:istroop	I
+    //   404: ifeq +76 -> 480
+    //   407: aload 4
+    //   409: instanceof 172
+    //   412: ifne +11 -> 423
+    //   415: aload 4
+    //   417: instanceof 174
+    //   420: ifeq +60 -> 480
+    //   423: aload 4
+    //   425: invokevirtual 177	com/tencent/mobileqq/data/MessageRecord:isLongMsg	()Z
+    //   428: ifeq +52 -> 480
+    //   431: new 179	java/lang/StringBuilder
+    //   434: dup
+    //   435: invokespecial 180	java/lang/StringBuilder:<init>	()V
+    //   438: astore 7
+    //   440: aload_0
+    //   441: getfield 18	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqAppQQAppInterface	Lcom/tencent/mobileqq/app/QQAppInterface;
+    //   444: aload_0
+    //   445: getfield 16	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5:jdField_a_of_type_ComTencentMobileqqDataMessageRecord	Lcom/tencent/mobileqq/data/MessageRecord;
+    //   448: aload 4
+    //   450: aload 7
+    //   452: invokestatic 185	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder:a	(Lcom/tencent/mobileqq/app/QQAppInterface;Lcom/tencent/mobileqq/data/MessageRecord;Lcom/tencent/mobileqq/data/MessageRecord;Ljava/lang/StringBuilder;)Lcom/tencent/mobileqq/data/MessageRecord;
+    //   455: astore 5
+    //   457: aload 5
+    //   459: ifnull +21 -> 480
+    //   462: aload 7
+    //   464: invokevirtual 189	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   467: astore 6
+    //   469: aload 5
+    //   471: astore 4
+    //   473: aload 6
+    //   475: astore 5
+    //   477: goto +7 -> 484
+    //   480: aload 6
+    //   482: astore 5
+    //   484: invokestatic 195	com/tencent/mobileqq/app/ThreadManager:getUIHandler	()Lmqq/os/MqqHandler;
+    //   487: new 197	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5$1
+    //   490: dup
+    //   491: aload_0
+    //   492: aload 4
+    //   494: aload 5
+    //   496: invokespecial 200	com/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5$1:<init>	(Lcom/tencent/mobileqq/activity/aio/item/ReplyTextItemBuilder$5;Lcom/tencent/mobileqq/data/MessageRecord;Ljava/lang/String;)V
+    //   499: invokevirtual 206	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
+    //   502: pop
+    //   503: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	504	0	this	5
+    //   16	378	1	i	int
+    //   181	23	2	j	int
+    //   11	93	3	bool	boolean
+    //   4	235	4	localObject1	Object
+    //   298	1	4	localObject2	Object
+    //   303	17	4	localInterruptedException	java.lang.InterruptedException
+    //   324	169	4	localObject3	Object
+    //   35	460	5	localObject4	Object
+    //   13	468	6	str	java.lang.String
+    //   88	375	7	localObject5	Object
+    //   170	205	8	localArrayList	java.util.ArrayList
+    //   161	85	9	localQQMessageFacade	com.tencent.imcore.message.QQMessageFacade
+    // Exception table:
+    //   from	to	target	type
+    //   287	295	298	finally
+    //   305	310	298	finally
+    //   310	313	298	finally
+    //   316	319	298	finally
+    //   287	295	303	java/lang/InterruptedException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

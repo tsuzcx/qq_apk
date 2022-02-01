@@ -12,7 +12,7 @@ import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.shortvideo.util.ScreenUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 
 public class AIOSignViewHolder
   extends BaseSignViewHolder
@@ -30,8 +30,8 @@ public class AIOSignViewHolder
   {
     super(paramContext, paramAppInterface, paramView, paramString);
     this.e = 2;
-    this.i = 2130846436;
-    VasWebviewUtil.reportCommercialDrainage(paramAppInterface.getCurrentAccountUin(), "signature_aio", "show", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+    this.i = 2130846312;
+    VasWebviewUtil.a(paramAppInterface.getCurrentAccountUin(), "signature_aio", "show", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
   }
   
   protected int a()
@@ -51,23 +51,23 @@ public class AIOSignViewHolder
   
   protected void a()
   {
-    this.h = AIOUtils.a(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    this.h = AIOUtils.b(16.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     super.a();
     this.jdField_a_of_type_AndroidWidgetTextView = new TextView(this.jdField_a_of_type_AndroidContentContext);
-    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166484);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_AndroidContentContext.getResources().getColor(2131166495);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(1, 12.0F);
     this.jdField_a_of_type_AndroidWidgetTextView.setGravity(17);
-    int i = AIOUtils.a(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int i = AIOUtils.b(36.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
     Object localObject = new FrameLayout.LayoutParams(-1, i);
     this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView, (ViewGroup.LayoutParams)localObject);
-    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setYOffset(i + AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+    this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.setYOffset(i + AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
     i = (int)(ScreenUtil.SCREEN_WIDTH * 0.11F);
     this.jdField_a_of_type_ComTencentMobileqqRichstatusSignBoxShadowLayout.a(i);
     localObject = (ViewGroup.MarginLayoutParams)this.b.getLayoutParams();
     localObject = (ViewGroup.MarginLayoutParams)this.jdField_a_of_type_ComEtrumpMixlayoutETTextView.getLayoutParams();
-    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-    ((ViewGroup.MarginLayoutParams)localObject).topMargin = AIOUtils.a(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    ((ViewGroup.MarginLayoutParams)localObject).bottomMargin = AIOUtils.b(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    ((ViewGroup.MarginLayoutParams)localObject).topMargin = AIOUtils.b(12.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
   }
   
   protected boolean a()
@@ -77,7 +77,7 @@ public class AIOSignViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.AIOSignViewHolder
  * JD-Core Version:    0.7.0.1
  */

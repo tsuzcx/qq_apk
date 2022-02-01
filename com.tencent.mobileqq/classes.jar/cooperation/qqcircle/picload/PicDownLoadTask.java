@@ -27,7 +27,9 @@ public class PicDownLoadTask
   
   private void doRealDownLoad(long paramLong)
   {
-    QCirclePicDownLoader.g().downLoad(this.mOption, new PicDownLoadTask.1(this, this.mOption, paramLong));
+    QCirclePicDownLoader localQCirclePicDownLoader = QCirclePicDownLoader.g();
+    Option localOption = this.mOption;
+    localQCirclePicDownLoader.downLoad(localOption, new PicDownLoadTask.1(this, localOption, paramLong));
   }
   
   private List<FeedCloudCommon.Entry> getDownLoadSpeed(Option paramOption, double paramDouble, int paramInt)
@@ -40,14 +42,29 @@ public class PicDownLoadTask
       if (paramDouble > -1.0D)
       {
         d1 = d2;
-        if (FileUtils.a(paramOption.getLocalPath()))
+        if (FileUtils.fileExists(paramOption.getLocalPath()))
         {
           d1 = d2;
           if (paramOption.getPicType() != 3)
           {
-            long l = FileUtils.a(paramOption.getLocalPath()) / 1024L;
-            d1 = new BigDecimal(l / paramDouble).setScale(2, 4).doubleValue();
-            RFLog.d("QCircleFeedPicLoader", RFLog.USR, "seq = " + paramOption.getSeq() + " cacheKey = " + paramOption.getCacheKey() + " timeCost:" + paramDouble + " fileSize:" + l + " qCirclePic download speed: " + d1 + "kb/s");
+            long l = FileUtils.getFileSizes(paramOption.getLocalPath()) / 1024L;
+            d1 = l;
+            Double.isNaN(d1);
+            d1 = new BigDecimal(d1 / paramDouble).setScale(2, 4).doubleValue();
+            paramInt = RFLog.USR;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("seq = ");
+            localStringBuilder.append(paramOption.getSeq());
+            localStringBuilder.append(" cacheKey = ");
+            localStringBuilder.append(paramOption.getCacheKey());
+            localStringBuilder.append(" timeCost:");
+            localStringBuilder.append(paramDouble);
+            localStringBuilder.append(" fileSize:");
+            localStringBuilder.append(l);
+            localStringBuilder.append(" qCirclePic download speed: ");
+            localStringBuilder.append(d1);
+            localStringBuilder.append("kb/s");
+            RFLog.d("QCircleFeedPicLoader", paramInt, localStringBuilder.toString());
           }
         }
       }
@@ -62,8 +79,9 @@ public class PicDownLoadTask
     if (this.mStatus != 6)
     {
       this.mStatus = 4;
-      if (this.mListener != null) {
-        this.mListener.onStateChang(4, this.mOption);
+      QCirclePicStateListener localQCirclePicStateListener = this.mListener;
+      if (localQCirclePicStateListener != null) {
+        localQCirclePicStateListener.onStateChang(4, this.mOption);
       }
     }
   }
@@ -75,17 +93,18 @@ public class PicDownLoadTask
   
   protected void reportDownloadResult(Option paramOption, int paramInt)
   {
-    if (paramOption != null) {
-      if (paramOption.mDownLoadStartTime == null) {
-        break label93;
-      }
-    }
-    label93:
-    for (double d = (float)(System.currentTimeMillis() - paramOption.mDownLoadStartTime.longValue()) / 1000.0F;; d = -1.0D)
+    if (paramOption != null)
     {
+      double d = -1.0D;
+      if (paramOption.mDownLoadStartTime != null) {
+        d = (float)(System.currentTimeMillis() - paramOption.mDownLoadStartTime.longValue()) / 1000.0F;
+      }
       List localList = getDownLoadSpeed(paramOption, d, paramInt);
-      QCircleQualityReporter.reportImageQualityEvent("image_download_ret", String.valueOf(d), String.valueOf(paramInt), paramOption.getUrl() + "  iP:" + paramOption.getIP(), paramOption.getPicType(), new List[] { localList });
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramOption.getUrl());
+      localStringBuilder.append("  iP:");
+      localStringBuilder.append(paramOption.getIP());
+      QCircleQualityReporter.reportImageQualityEvent("image_download_ret", String.valueOf(d), String.valueOf(paramInt), localStringBuilder.toString(), paramOption.getPicType(), new List[] { localList });
     }
   }
   
@@ -95,18 +114,39 @@ public class PicDownLoadTask
       return;
     }
     long l = System.currentTimeMillis();
-    RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + this.mOption.getSeq() + " cacheKey = " + this.mOption.getCacheKey() + " download start cost in queue: " + (l - this.mOption.mDownLoadStartTime.longValue()) + " ifFromPreload:" + this.mOption.isFromPreload());
-    if (FileUtils.a(QCircleFeedPicLoader.g().getPicLocalPath(this.mOption)))
+    int i = RFLog.USR;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("seq = ");
+    ((StringBuilder)localObject).append(this.mOption.getSeq());
+    ((StringBuilder)localObject).append(" cacheKey = ");
+    ((StringBuilder)localObject).append(this.mOption.getCacheKey());
+    ((StringBuilder)localObject).append(" download start cost in queue: ");
+    ((StringBuilder)localObject).append(l - this.mOption.mDownLoadStartTime.longValue());
+    ((StringBuilder)localObject).append(" ifFromPreload:");
+    ((StringBuilder)localObject).append(this.mOption.isFromPreload());
+    RFLog.i("QCircleFeedPicLoader", i, ((StringBuilder)localObject).toString());
+    if (FileUtils.fileExists(QCircleFeedPicLoader.g().getPicLocalPath(this.mOption)))
     {
       if (this.mOption.isPreDecode()) {
         QCircleFeedPicLoader.g().decodeFile(this.mOption, this.mListener);
       }
-      RFLog.i("QCircleFeedPicLoader", RFLog.USR, "seq = " + this.mOption.getSeq() + " cacheKey = " + this.mOption.getCacheKey() + " return in downLoad file exist " + (l - this.mOption.mDownLoadStartTime.longValue()) + " ifFromPreload:" + this.mOption.isFromPreload());
+      i = RFLog.USR;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("seq = ");
+      ((StringBuilder)localObject).append(this.mOption.getSeq());
+      ((StringBuilder)localObject).append(" cacheKey = ");
+      ((StringBuilder)localObject).append(this.mOption.getCacheKey());
+      ((StringBuilder)localObject).append(" return in downLoad file exist ");
+      ((StringBuilder)localObject).append(l - this.mOption.mDownLoadStartTime.longValue());
+      ((StringBuilder)localObject).append(" ifFromPreload:");
+      ((StringBuilder)localObject).append(this.mOption.isFromPreload());
+      RFLog.i("QCircleFeedPicLoader", i, ((StringBuilder)localObject).toString());
       return;
     }
     this.mStatus = 2;
-    if (this.mListener != null) {
-      this.mListener.onStateChang(this.mStatus, this.mOption);
+    localObject = this.mListener;
+    if (localObject != null) {
+      ((QCirclePicStateListener)localObject).onStateChang(this.mStatus, this.mOption);
     }
     doRealDownLoad(l);
   }
@@ -118,7 +158,7 @@ public class PicDownLoadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.picload.PicDownLoadTask
  * JD-Core Version:    0.7.0.1
  */

@@ -33,13 +33,12 @@ public final class YUVTexture
   {
     super(null, 0, 0);
     Looper localLooper = Looper.myLooper();
-    if (localLooper != null) {
+    if (localLooper != null)
+    {
       this.mEventHandler = new YUVTexture.EventHandler(this, localLooper);
     }
-    for (;;)
+    else
     {
-      init(Utils.getGLVersion(paramContext), new WeakReference(this));
-      return;
       localLooper = Looper.getMainLooper();
       if (localLooper != null) {
         this.mEventHandler = new YUVTexture.EventHandler(this, localLooper);
@@ -47,6 +46,7 @@ public final class YUVTexture
         this.mEventHandler = null;
       }
     }
+    init(Utils.getGLVersion(paramContext), new WeakReference(this));
   }
   
   static void onNativeNotify(Object paramObject1, int paramInt, Object paramObject2)
@@ -54,15 +54,11 @@ public final class YUVTexture
     paramObject1 = (WeakReference)paramObject1;
     if (paramObject1.get() != null)
     {
-      if (paramInt != 0) {
-        break label30;
+      if (paramInt == 0)
+      {
+        ((YUVTexture)paramObject1.get()).notifyupdateui(0, 0, paramObject2);
+        return;
       }
-      ((YUVTexture)paramObject1.get()).notifyupdateui(0, 0, paramObject2);
-    }
-    label30:
-    do
-    {
-      return;
       if (paramInt == 2)
       {
         ((YUVTexture)paramObject1.get()).notifyupdateui(2, 0, paramObject2);
@@ -73,8 +69,10 @@ public final class YUVTexture
         ((YUVTexture)paramObject1.get()).notifyupdateui(1, 0, paramObject2);
         return;
       }
-    } while (paramInt != 3);
-    ((YUVTexture)paramObject1.get()).notifyupdateui(3, 0, paramObject2);
+      if (paramInt == 3) {
+        ((YUVTexture)paramObject1.get()).notifyupdateui(3, 0, paramObject2);
+      }
+    }
   }
   
   public native boolean canRender();
@@ -125,20 +123,21 @@ public final class YUVTexture
   
   public void notifyupdateui(int paramInt1, int paramInt2, Object paramObject)
   {
-    if (this.mEventHandler != null)
+    YUVTexture.EventHandler localEventHandler = this.mEventHandler;
+    if (localEventHandler != null)
     {
-      paramObject = this.mEventHandler.obtainMessage(paramInt1, 0, 0, paramObject);
-      if (paramInt2 == 0) {
+      paramObject = localEventHandler.obtainMessage(paramInt1, 0, 0, paramObject);
+      if (paramInt2 == 0)
+      {
         this.mEventHandler.sendMessage(paramObject);
+        return;
       }
-    }
-    while (!QLog.isColorLevel())
-    {
-      return;
       this.mEventHandler.sendMessageDelayed(paramObject, paramInt2);
       return;
     }
-    QLog.e(TAG, 0, "notifyupdateui|mEventHandler == null");
+    if (QLog.isColorLevel()) {
+      QLog.e(TAG, 0, "notifyupdateui|mEventHandler == null");
+    }
   }
   
   public boolean onBind(GLCanvas paramGLCanvas)

@@ -23,13 +23,14 @@ class AbstractList$IteratorImpl
   
   public E next()
   {
-    if (!hasNext()) {
-      throw ((Throwable)new NoSuchElementException());
+    if (hasNext())
+    {
+      AbstractList localAbstractList = this.this$0;
+      int i = this.index;
+      this.index = (i + 1);
+      return localAbstractList.get(i);
     }
-    AbstractList localAbstractList = this.this$0;
-    int i = this.index;
-    this.index = (i + 1);
-    return localAbstractList.get(i);
+    throw ((Throwable)new NoSuchElementException());
   }
   
   public void remove()
@@ -44,7 +45,7 @@ class AbstractList$IteratorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.AbstractList.IteratorImpl
  * JD-Core Version:    0.7.0.1
  */

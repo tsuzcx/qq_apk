@@ -21,27 +21,26 @@ class QQNotifySettingBaseFragment$1
       if (QLog.isColorLevel()) {
         QLog.d(QQNotifySettingBaseFragment.a(), 2, "acs msg succ");
       }
-      if (!paramBoolean) {
-        break label114;
+      if (paramBoolean)
+      {
+        paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
+        QQNotifySettingBaseFragment localQQNotifySettingBaseFragment = this.a;
+        QQNotifySettingBaseFragment.a(localQQNotifySettingBaseFragment, QQNotifySettingBaseFragment.a(localQQNotifySettingBaseFragment, paramBundle));
+        if (paramBundle != null)
+        {
+          QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
+          return;
+        }
+        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
+        return;
       }
-      paramBundle = (AcsGetMsgRsp)paramBundle.getSerializable("rsp");
-      if (paramBundle != null) {
-        QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.1(this, paramBundle));
-      }
+      this.a.a();
     }
-    else
-    {
-      return;
-    }
-    QQNotifySettingBaseFragment.a(this.a).post(new QQNotifySettingBaseFragment.1.2(this));
-    return;
-    label114:
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifySettingBaseFragment.1
  * JD-Core Version:    0.7.0.1
  */

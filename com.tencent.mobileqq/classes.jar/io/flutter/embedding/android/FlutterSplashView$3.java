@@ -7,13 +7,15 @@ class FlutterSplashView$3
   
   public void run()
   {
-    this.this$0.removeView(FlutterSplashView.access$300(this.this$0));
-    FlutterSplashView.access$402(this.this$0, FlutterSplashView.access$500(this.this$0));
+    FlutterSplashView localFlutterSplashView = this.this$0;
+    localFlutterSplashView.removeView(FlutterSplashView.access$300(localFlutterSplashView));
+    localFlutterSplashView = this.this$0;
+    FlutterSplashView.access$402(localFlutterSplashView, FlutterSplashView.access$500(localFlutterSplashView));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSplashView.3
  * JD-Core Version:    0.7.0.1
  */

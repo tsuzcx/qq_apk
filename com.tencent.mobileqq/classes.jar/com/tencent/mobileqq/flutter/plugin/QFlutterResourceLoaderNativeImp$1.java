@@ -16,20 +16,24 @@ class QFlutterResourceLoaderNativeImp$1
   {
     long l = System.currentTimeMillis();
     this.jdField_a_of_type_JavaUtilArrayList.clear();
-    Iterator localIterator = QFlutterResourceLoaderNativeImp.c.keySet().iterator();
-    while (localIterator.hasNext())
+    Object localObject = QFlutterResourceLoaderNativeImp.c.keySet().iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      String str = (String)localIterator.next();
+      String str = (String)((Iterator)localObject).next();
       this.jdField_a_of_type_JavaUtilArrayList.add(this.jdField_a_of_type_AndroidContentResResources.getColorStateList(((Integer)QFlutterResourceLoaderNativeImp.c.get(str)).intValue()));
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("QFlutterResourceLoaderNativeImp", 0, "init and preCache colors cost:" + (System.currentTimeMillis() - l));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("init and preCache colors cost:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.i("QFlutterResourceLoaderNativeImp", 0, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.plugin.QFlutterResourceLoaderNativeImp.1
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,6 @@ import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.ConfessMsgBubbleBgExecutor;
 import com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.GameMsgBubbleBgExecutor;
-import com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.LimitChatMsgBubbleBgExecutor;
 import com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.QimMsgBubbleBgExecutor;
 import com.tencent.mobileqq.activity.aio.rebuild.bubblebghandlerexecutor.SimpleUIMsgBubbleBgExecutor;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -24,7 +23,7 @@ public class ChatLayoutBubbleBgExecutorImpl
   public static final int e;
   public static final int f;
   public static final int g;
-  private static int h = 0;
+  private static int h;
   private ChatLayoutBubbleBgExecutor jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor;
   private List<ChatLayoutBubbleBgExecutor> jdField_a_of_type_JavaUtilList;
   private ChatLayoutBubbleBgExecutor b;
@@ -76,7 +75,6 @@ public class ChatLayoutBubbleBgExecutorImpl
       this.jdField_a_of_type_JavaUtilList.add(new SimpleUIMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext));
       this.jdField_a_of_type_JavaUtilList.add(new ConfessMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext));
       this.jdField_a_of_type_JavaUtilList.add(new QimMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext));
-      this.jdField_a_of_type_JavaUtilList.add(new LimitChatMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext));
       this.jdField_a_of_type_JavaUtilList.add(new GameMsgBubbleBgExecutor(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_AndroidContentContext));
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor = null;
@@ -105,8 +103,9 @@ public class ChatLayoutBubbleBgExecutorImpl
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor.a();
+    ChatLayoutBubbleBgExecutor localChatLayoutBubbleBgExecutor = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreuiMsglistBubblebghandlerexecutorChatLayoutBubbleBgExecutor;
+    if (localChatLayoutBubbleBgExecutor != null) {
+      return localChatLayoutBubbleBgExecutor.a();
     }
     return h;
   }
@@ -126,7 +125,7 @@ public class ChatLayoutBubbleBgExecutorImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.bubblebghandlerexecutor.ChatLayoutBubbleBgExecutorImpl
  * JD-Core Version:    0.7.0.1
  */

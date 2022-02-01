@@ -2,8 +2,8 @@ package com.tencent.av.wtogether.view;
 
 import com.tencent.av.wtogether.handler.WatchTogetherHandler;
 import com.tencent.av.wtogether.observer.WatchTogetherObserver;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.troop.filemanager.data.TroopFileSearchItemData;
 import java.util.List;
@@ -29,7 +29,7 @@ class QGroupAVFileListContentView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.QGroupAVFileListContentView.2
  * JD-Core Version:    0.7.0.1
  */

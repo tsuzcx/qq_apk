@@ -33,17 +33,23 @@ public class BaseQRUtil
       localObject = ((SharedPreferences)localObject).edit();
       ((SharedPreferences.Editor)localObject).putString(paramString, paramContext);
       ((SharedPreferences.Editor)localObject).commit();
-      if (QLog.isColorLevel()) {
-        QLog.d("QRUtils", 2, "lookup address: " + paramString + ", ip: " + paramContext);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("lookup address: ");
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append(", ip: ");
+        ((StringBuilder)localObject).append(paramContext);
+        QLog.d("QRUtils", 2, ((StringBuilder)localObject).toString());
+        return;
       }
-      return;
     }
-    catch (UnknownHostException paramContext)
+    catch (Throwable paramContext)
     {
       paramContext.printStackTrace();
       return;
     }
-    catch (Throwable paramContext)
+    catch (UnknownHostException paramContext)
     {
       paramContext.printStackTrace();
     }
@@ -51,7 +57,7 @@ public class BaseQRUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.BaseQRUtil
  * JD-Core Version:    0.7.0.1
  */

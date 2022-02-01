@@ -14,7 +14,14 @@ class ImaxAdVideoPreloadManager$PreloadCallback
   {
     synchronized (ImaxAdVideoPreloadManager.a(this.a))
     {
-      ImaxAdUtil.b("onPreLoadFailed vid:" + paramString1 + ", i:" + paramInt + ", callbackMsg:" + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPreLoadFailed vid:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", i:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", callbackMsg:");
+      localStringBuilder.append(paramString2);
+      ImaxAdUtil.b(localStringBuilder.toString());
       ImaxAdVideoPreloadManager.b(this.a, ImaxAdVideoPreloadManager.a(this.a));
       return;
     }
@@ -24,7 +31,12 @@ class ImaxAdVideoPreloadManager$PreloadCallback
   {
     synchronized (ImaxAdVideoPreloadManager.a(this.a))
     {
-      ImaxAdUtil.b("onPreLoadSucess vid:" + paramString1 + ", detail:" + paramString2);
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onPreLoadSucess vid:");
+      ((StringBuilder)localObject2).append(paramString1);
+      ((StringBuilder)localObject2).append(", detail:");
+      ((StringBuilder)localObject2).append(paramString2);
+      ImaxAdUtil.b(((StringBuilder)localObject2).toString());
       try
       {
         paramString2 = new JSONObject(paramString2);
@@ -33,11 +45,14 @@ class ImaxAdVideoPreloadManager$PreloadCallback
         if ((l1 > 0L) && (l2 > 0L) && (l2 >= l1))
         {
           paramString2 = ImaxAdVideoPreloadManager.a(paramString1);
-          ImaxAdUtil.b("onPreLoadSucess path:" + paramString2);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("onPreLoadSucess path:");
+          ((StringBuilder)localObject2).append(paramString2);
+          ImaxAdUtil.b(((StringBuilder)localObject2).toString());
           ImaxAdVideoPreloadManager.a(this.a, paramString1);
-          File localFile = new File(ImaxAdVideoPreloadManager.b(paramString1));
-          if (localFile.exists()) {
-            localFile.renameTo(new File(paramString2));
+          localObject2 = new File(ImaxAdVideoPreloadManager.b(paramString1));
+          if (((File)localObject2).exists()) {
+            ((File)localObject2).renameTo(new File(paramString2));
           }
           ImaxAdVideoPreloadManager.b(this.a, paramString1);
           ImaxAdVideoPreloadManager.b(this.a, ImaxAdVideoPreloadManager.a(this.a));
@@ -46,10 +61,7 @@ class ImaxAdVideoPreloadManager$PreloadCallback
       }
       catch (Exception paramString1)
       {
-        for (;;)
-        {
-          QLog.d("ImaxAdvertisement", 1, "onPreLoadSucess", paramString1);
-        }
+        QLog.d("ImaxAdvertisement", 1, "onPreLoadSucess", paramString1);
       }
       return;
     }
@@ -57,7 +69,7 @@ class ImaxAdVideoPreloadManager$PreloadCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdVideoPreloadManager.PreloadCallback
  * JD-Core Version:    0.7.0.1
  */

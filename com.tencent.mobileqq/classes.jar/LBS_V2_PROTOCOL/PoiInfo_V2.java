@@ -87,34 +87,41 @@ public final class PoiInfo_V2
     paramJceOutputStream.write(this.stGps, 6);
     paramJceOutputStream.write(this.iDistance, 7);
     paramJceOutputStream.write(this.iHotValue, 8);
-    if (this.strPhone != null) {
-      paramJceOutputStream.write(this.strPhone, 9);
+    String str = this.strPhone;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.strCountry != null) {
-      paramJceOutputStream.write(this.strCountry, 10);
+    str = this.strCountry;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.strProvince != null) {
-      paramJceOutputStream.write(this.strProvince, 11);
+    str = this.strProvince;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.strCity != null) {
-      paramJceOutputStream.write(this.strCity, 12);
+    str = this.strCity;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
     paramJceOutputStream.write(this.iPoiNum, 13);
     paramJceOutputStream.write(this.iPoiOrderType, 14);
-    if (this.strDefaultName != null) {
-      paramJceOutputStream.write(this.strDefaultName, 15);
+    str = this.strDefaultName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 15);
     }
-    if (this.strDistrict != null) {
-      paramJceOutputStream.write(this.strDistrict, 16);
+    str = this.strDistrict;
+    if (str != null) {
+      paramJceOutputStream.write(str, 16);
     }
-    if (this.strDianPingId != null) {
-      paramJceOutputStream.write(this.strDianPingId, 17);
+    str = this.strDianPingId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 17);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.PoiInfo_V2
  * JD-Core Version:    0.7.0.1
  */

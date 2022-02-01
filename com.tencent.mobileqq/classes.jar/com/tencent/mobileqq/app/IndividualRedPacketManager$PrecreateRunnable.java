@@ -33,94 +33,129 @@ public class IndividualRedPacketManager$PrecreateRunnable
   {
     Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
     IndividualRedPacketManager localIndividualRedPacketManager = (IndividualRedPacketManager)this.b.get();
-    if ((localObject == null) || (localIndividualRedPacketManager == null) || (localIndividualRedPacketManager.c.get())) {
-      QLog.d(IndividualRedPacketManager.b(), 1, "preCreatePersonalFontImg return!");
-    }
-    while (localIndividualRedPacketManager.b().getBoolean("font_precreate_finish", false)) {
+    if ((localObject != null) && (localIndividualRedPacketManager != null) && (!localIndividualRedPacketManager.c.get()))
+    {
+      if (localIndividualRedPacketManager.b().getBoolean("font_precreate_finish", false)) {
+        return;
+      }
+      QLog.d(IndividualRedPacketManager.b(), 1, "preCreatePersonalFontImg start!");
+      int i = localIndividualRedPacketManager.b().getInt("font_precreate_index", 0);
+      localObject = localIndividualRedPacketManager.a.obtainMessage();
+      ((Message)localObject).what = i;
+      localIndividualRedPacketManager.a.sendMessage((Message)localObject);
       return;
     }
-    QLog.d(IndividualRedPacketManager.b(), 1, "preCreatePersonalFontImg start!");
-    int i = localIndividualRedPacketManager.b().getInt("font_precreate_index", 0);
-    localObject = localIndividualRedPacketManager.a.obtainMessage();
-    ((Message)localObject).what = i;
-    localIndividualRedPacketManager.a.sendMessage((Message)localObject);
+    QLog.d(IndividualRedPacketManager.b(), 1, "preCreatePersonalFontImg return!");
   }
   
   void a(int paramInt)
   {
-    Object localObject2 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    IndividualRedPacketManager localIndividualRedPacketManager = (IndividualRedPacketManager)this.b.get();
-    if ((localObject2 == null) || (localIndividualRedPacketManager == null)) {}
-    Object localObject1;
-    do
+    Object localObject3 = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    Object localObject2 = (IndividualRedPacketManager)this.b.get();
+    if (localObject3 != null)
     {
-      return;
-      str = this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.a();
+      if (localObject2 == null) {
+        return;
+      }
+      String str = this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.a();
+      Object localObject1;
       if (paramInt >= str.length())
       {
         localObject1 = new File(IndividualRedPacketManager.a(4)).listFiles();
-        localObject2 = localIndividualRedPacketManager.b().edit();
+        localObject3 = ((IndividualRedPacketManager)localObject2).b().edit();
         if ((localObject1 != null) && (localObject1.length >= str.length())) {
-          ((SharedPreferences.Editor)localObject2).putBoolean("font_precreate_finish", true);
+          ((SharedPreferences.Editor)localObject3).putBoolean("font_precreate_finish", true);
+        } else {
+          ((SharedPreferences.Editor)localObject3).putInt("font_precreate_index", 0);
         }
-        for (;;)
-        {
-          paramInt = localIndividualRedPacketManager.b().getInt("font_precreate_count", 0);
-          ((SharedPreferences.Editor)localObject2).putInt("font_precreate_count", paramInt + 1);
-          ((SharedPreferences.Editor)localObject2).commit();
-          QLog.d(IndividualRedPacketManager.b(), 1, "preCreatePersonalFontImg create count = " + paramInt);
-          return;
-          ((SharedPreferences.Editor)localObject2).putInt("font_precreate_index", 0);
-        }
+        paramInt = ((IndividualRedPacketManager)localObject2).b().getInt("font_precreate_count", 0);
+        ((SharedPreferences.Editor)localObject3).putInt("font_precreate_count", paramInt + 1);
+        ((SharedPreferences.Editor)localObject3).commit();
+        localObject1 = IndividualRedPacketManager.b();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("preCreatePersonalFontImg create count = ");
+        ((StringBuilder)localObject2).append(paramInt);
+        QLog.d((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+        return;
       }
-      localObject1 = "0";
-      if (localIndividualRedPacketManager.a()) {
+      if (((IndividualRedPacketManager)localObject2).a()) {
         localObject1 = "1";
+      } else {
+        localObject1 = "0";
       }
-    } while ((localIndividualRedPacketManager.e.get()) || (Thread.currentThread().isInterrupted()));
-    String str = str.substring(paramInt, paramInt + 1);
-    if (new File(IndividualRedPacketManager.a("", str, 4, 0, 0)).exists())
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e(IndividualRedPacketManager.b(), 2, "preCreatePersonalFontImg exists : " + str + " address = " + IndividualRedPacketManager.a("", str, 4, 0, 0));
+      if (!((IndividualRedPacketManager)localObject2).e.get())
+      {
+        if (Thread.currentThread().isInterrupted()) {
+          return;
+        }
+        int i = paramInt + 1;
+        str = str.substring(paramInt, i);
+        if (new File(IndividualRedPacketManager.a("", str, 4, 0, 0)).exists())
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = IndividualRedPacketManager.b();
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("preCreatePersonalFontImg exists : ");
+            ((StringBuilder)localObject3).append(str);
+            ((StringBuilder)localObject3).append(" address = ");
+            ((StringBuilder)localObject3).append(IndividualRedPacketManager.a("", str, 4, 0, 0));
+            QLog.e((String)localObject1, 2, ((StringBuilder)localObject3).toString());
+          }
+          ((IndividualRedPacketManager)localObject2).b().edit().putInt("font_precreate_index", i).commit();
+          localObject1 = ((IndividualRedPacketManager)localObject2).a.obtainMessage();
+          ((Message)localObject1).what = i;
+          ((IndividualRedPacketManager)localObject2).a.sendMessageDelayed((Message)localObject1, 500L);
+          return;
+        }
+        long l1 = System.currentTimeMillis();
+        Object localObject4 = ((IndividualRedPacketManager)localObject2).a(str, true);
+        long l2;
+        if (localObject4 != null)
+        {
+          this.jdField_a_of_type_Int = 0;
+          l2 = System.currentTimeMillis();
+          ((IndividualRedPacketManager)localObject2).b().edit().putInt("font_precreate_index", i).commit();
+          if (paramInt % 100 == 0) {
+            ReportController.b((AppRuntime)localObject3, "CliOper", "", "", "0X8006132", "0X8006132", 0, 0, (String)localObject1, "1", String.valueOf(l2 - l1), str);
+          }
+          if (!((Bitmap)localObject4).isRecycled()) {
+            ((Bitmap)localObject4).recycle();
+          }
+        }
+        else
+        {
+          l2 = System.currentTimeMillis();
+          if (QLog.isColorLevel())
+          {
+            localObject4 = IndividualRedPacketManager.b();
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("preCreatePersonalFontImg ");
+            localStringBuilder.append(str);
+            localStringBuilder.append("fail");
+            QLog.d((String)localObject4, 2, localStringBuilder.toString());
+          }
+          if (paramInt % 100 == 0) {
+            ReportController.b((AppRuntime)localObject3, "CliOper", "", "", "0X8006132", "0X8006132", 0, 0, (String)localObject1, "0", String.valueOf(l2 - l1), str);
+          }
+          this.jdField_a_of_type_Int += 1;
+          if (this.jdField_a_of_type_Int >= this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.b)
+          {
+            localObject1 = IndividualRedPacketManager.b();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("preCreatePersonalFontImg fail count = ");
+            ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+            ((StringBuilder)localObject2).append(" max failcount = ");
+            ((StringBuilder)localObject2).append(this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.b);
+            QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+            return;
+          }
+        }
+        localObject1 = ((IndividualRedPacketManager)localObject2).a.obtainMessage();
+        ((Message)localObject1).what = i;
+        ((IndividualRedPacketManager)localObject2).a.sendMessageDelayed((Message)localObject1, 5000L);
       }
-      localIndividualRedPacketManager.b().edit().putInt("font_precreate_index", paramInt + 1).commit();
-      localObject1 = localIndividualRedPacketManager.a.obtainMessage();
-      ((Message)localObject1).what = (paramInt + 1);
-      localIndividualRedPacketManager.a.sendMessageDelayed((Message)localObject1, 500L);
-      return;
     }
-    long l1 = System.currentTimeMillis();
-    Bitmap localBitmap = localIndividualRedPacketManager.a(str, true);
-    long l2;
-    if (localBitmap != null)
-    {
-      this.jdField_a_of_type_Int = 0;
-      l2 = System.currentTimeMillis();
-      localIndividualRedPacketManager.b().edit().putInt("font_precreate_index", paramInt + 1).commit();
-      if (paramInt % 100 == 0) {
-        ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X8006132", "0X8006132", 0, 0, (String)localObject1, "1", String.valueOf(l2 - l1), str);
-      }
-      if (!localBitmap.isRecycled()) {
-        localBitmap.recycle();
-      }
-    }
-    do
-    {
-      localObject1 = localIndividualRedPacketManager.a.obtainMessage();
-      ((Message)localObject1).what = (paramInt + 1);
-      localIndividualRedPacketManager.a.sendMessageDelayed((Message)localObject1, 5000L);
-      return;
-      l2 = System.currentTimeMillis();
-      if (QLog.isColorLevel()) {
-        QLog.d(IndividualRedPacketManager.b(), 2, "preCreatePersonalFontImg " + str + "fail");
-      }
-      if (paramInt % 100 == 0) {
-        ReportController.b((AppRuntime)localObject2, "CliOper", "", "", "0X8006132", "0X8006132", 0, 0, (String)localObject1, "0", String.valueOf(l2 - l1), str);
-      }
-      this.jdField_a_of_type_Int += 1;
-    } while (this.jdField_a_of_type_Int < this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.b);
-    QLog.e(IndividualRedPacketManager.b(), 1, "preCreatePersonalFontImg fail count = " + this.jdField_a_of_type_Int + " max failcount = " + this.jdField_a_of_type_ComTencentMobileqqVasIndividualRedPacketResDownloader$Char300Info.b);
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -131,7 +166,7 @@ public class IndividualRedPacketManager$PrecreateRunnable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.IndividualRedPacketManager.PrecreateRunnable
  * JD-Core Version:    0.7.0.1
  */

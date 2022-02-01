@@ -14,7 +14,7 @@ public class TriggerStateItem
   public static final int OLD_VERSION = 1;
   private static final String STATE_IDLE = "idle";
   private static final long STATE_TIME = 1000L;
-  private static final String TAG = TriggerStateItem.class.getSimpleName();
+  private static final String TAG = "TriggerStateItem";
   private int mCurrentState = 0;
   private long mDelayTime;
   private boolean mIsStateValid = false;
@@ -37,53 +37,53 @@ public class TriggerStateItem
   
   private void addItemToStateGraph(MaterialStateEdgeItem paramMaterialStateEdgeItem, List<TriggerActionItem> paramList)
   {
-    int j;
-    int i;
-    Object localObject;
-    if ((paramList != null) && (paramMaterialStateEdgeItem != null)) {
-      if (this.mStateMap.containsKey(paramMaterialStateEdgeItem.startState))
-      {
-        j = ((Integer)this.mStateMap.get(paramMaterialStateEdgeItem.startState)).intValue();
-        i = 0;
-        localObject = null;
-        if (i >= paramList.size()) {
-          break label145;
-        }
-        TriggerActionItem localTriggerActionItem = (TriggerActionItem)paramList.get(i);
-        if ((paramMaterialStateEdgeItem.action == null) || (!paramMaterialStateEdgeItem.action.equals(localTriggerActionItem.id))) {
-          break label254;
-        }
-        localObject = localTriggerActionItem;
-      }
-    }
-    label145:
-    label219:
-    label254:
-    for (;;)
+    if ((paramList != null) && (paramMaterialStateEdgeItem != null))
     {
-      i += 1;
-      break;
-      Log.e(TAG, "startState = " + paramMaterialStateEdgeItem.startState + " is wrong!");
-      this.mIsStateValid = false;
-      return;
-      if (localObject != null)
+      boolean bool = this.mStateMap.containsKey(paramMaterialStateEdgeItem.startState);
+      int i = 0;
+      if (bool)
       {
-        paramList = new TriggerStateEdge();
-        paramList.state = paramMaterialStateEdgeItem.endState;
-        paramList.value = localObject;
-        if (!this.mStateItemGraph.containsKey(Integer.valueOf(j))) {
-          break label219;
+        int j = ((Integer)this.mStateMap.get(paramMaterialStateEdgeItem.startState)).intValue();
+        Object localObject2;
+        for (localObject1 = null; i < paramList.size(); localObject1 = localObject2)
+        {
+          TriggerActionItem localTriggerActionItem = (TriggerActionItem)paramList.get(i);
+          localObject2 = localObject1;
+          if (paramMaterialStateEdgeItem.action != null)
+          {
+            localObject2 = localObject1;
+            if (paramMaterialStateEdgeItem.action.equals(localTriggerActionItem.id)) {
+              localObject2 = localTriggerActionItem;
+            }
+          }
+          i += 1;
         }
-        ((List)this.mStateItemGraph.get(Integer.valueOf(j))).add(paramList);
-      }
-      for (;;)
-      {
+        if (localObject1 != null)
+        {
+          paramList = new TriggerStateEdge();
+          paramList.state = paramMaterialStateEdgeItem.endState;
+          paramList.value = ((TriggerActionItem)localObject1);
+          if (this.mStateItemGraph.containsKey(Integer.valueOf(j)))
+          {
+            ((List)this.mStateItemGraph.get(Integer.valueOf(j))).add(paramList);
+          }
+          else
+          {
+            paramMaterialStateEdgeItem = new ArrayList();
+            paramMaterialStateEdgeItem.add(paramList);
+            this.mStateItemGraph.put(Integer.valueOf(j), paramMaterialStateEdgeItem);
+          }
+        }
         this.mIsStateValid = true;
         return;
-        paramMaterialStateEdgeItem = new ArrayList();
-        paramMaterialStateEdgeItem.add(paramList);
-        this.mStateItemGraph.put(Integer.valueOf(j), paramMaterialStateEdgeItem);
       }
+      paramList = TAG;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("startState = ");
+      ((StringBuilder)localObject1).append(paramMaterialStateEdgeItem.startState);
+      ((StringBuilder)localObject1).append(" is wrong!");
+      Log.e(paramList, ((StringBuilder)localObject1).toString());
+      this.mIsStateValid = false;
     }
   }
   
@@ -118,16 +118,28 @@ public class TriggerStateItem
       {
         MaterialStateEdgeItem localMaterialStateEdgeItem = (MaterialStateEdgeItem)paramList.get(k);
         int j = i;
+        String str;
+        StringBuilder localStringBuilder;
         if (!this.mStateMap.containsKey(localMaterialStateEdgeItem.startState))
         {
-          Log.i(TAG, localMaterialStateEdgeItem.startState + " = " + i);
+          str = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localMaterialStateEdgeItem.startState);
+          localStringBuilder.append(" = ");
+          localStringBuilder.append(i);
+          Log.i(str, localStringBuilder.toString());
           this.mStateMap.put(localMaterialStateEdgeItem.startState, Integer.valueOf(i));
           j = i + 1;
         }
         i = j;
         if (!this.mStateMap.containsKey(localMaterialStateEdgeItem.endState))
         {
-          Log.i(TAG, localMaterialStateEdgeItem.endState + " = " + j);
+          str = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(localMaterialStateEdgeItem.endState);
+          localStringBuilder.append(" = ");
+          localStringBuilder.append(j);
+          Log.i(str, localStringBuilder.toString());
           this.mStateMap.put(localMaterialStateEdgeItem.endState, Integer.valueOf(j));
           i = j + 1;
         }
@@ -151,10 +163,17 @@ public class TriggerStateItem
   
   private boolean isTooShortToChangeState()
   {
-    if (this.mStateVersion == 1) {
-      return System.currentTimeMillis() - this.mLastUpdateStateTime < 1000L;
+    int i = this.mStateVersion;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (i == 1)
+    {
+      bool1 = bool2;
+      if (System.currentTimeMillis() - this.mLastUpdateStateTime < 1000L) {
+        bool1 = true;
+      }
     }
-    return false;
+    return bool1;
   }
   
   private void resetAllDelayTime()
@@ -172,7 +191,13 @@ public class TriggerStateItem
     this.mLastUpdateStateTime = System.currentTimeMillis();
     updateRamdonValue();
     this.mNeedToUpdate = false;
-    Log.i(TAG, "after delay CurState = " + this.mCurrentState + " mRandomValue = " + this.mRandomValue);
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("after delay CurState = ");
+    localStringBuilder.append(this.mCurrentState);
+    localStringBuilder.append(" mRandomValue = ");
+    localStringBuilder.append(this.mRandomValue);
+    Log.i(str, localStringBuilder.toString());
   }
   
   private void updateRamdonValue()
@@ -188,11 +213,13 @@ public class TriggerStateItem
   
   public void clear()
   {
-    if (this.mStateMap != null) {
-      this.mStateMap.clear();
+    Map localMap = this.mStateMap;
+    if (localMap != null) {
+      localMap.clear();
     }
-    if (this.mStateItemGraph != null) {
-      this.mStateItemGraph.clear();
+    localMap = this.mStateItemGraph;
+    if (localMap != null) {
+      localMap.clear();
     }
     resetAllDelayTime();
     this.mIsStateValid = false;
@@ -201,25 +228,37 @@ public class TriggerStateItem
   
   public void forceUpdateState(String paramString)
   {
-    if ((this.mStateMap != null) && (this.mStateMap.containsKey(paramString)))
+    Object localObject = this.mStateMap;
+    if ((localObject != null) && (((Map)localObject).containsKey(paramString)))
     {
       this.mCurrentState = ((Integer)this.mStateMap.get(paramString)).intValue();
-      if (this.mStateItemGraph != null)
+      paramString = this.mStateItemGraph;
+      if (paramString != null)
       {
-        paramString = (List)this.mStateItemGraph.get(Integer.valueOf(this.mCurrentState));
+        paramString = (List)paramString.get(Integer.valueOf(this.mCurrentState));
         if (paramString != null)
         {
           paramString = paramString.iterator();
           while (paramString.hasNext())
           {
-            TriggerStateEdge localTriggerStateEdge = (TriggerStateEdge)paramString.next();
-            if (isMatch(localTriggerStateEdge.value))
+            localObject = (TriggerStateEdge)paramString.next();
+            if (isMatch(((TriggerStateEdge)localObject).value))
             {
-              this.mNextTriggerType = getTriggerTypeFromAction(localTriggerStateEdge.value);
-              this.mNextState = ((Integer)this.mStateMap.get(localTriggerStateEdge.state)).intValue();
-              updateTriggerExpressionDelay(localTriggerStateEdge.value);
+              this.mNextTriggerType = getTriggerTypeFromAction(((TriggerStateEdge)localObject).value);
+              this.mNextState = ((Integer)this.mStateMap.get(((TriggerStateEdge)localObject).state)).intValue();
+              updateTriggerExpressionDelay(((TriggerStateEdge)localObject).value);
               this.mNeedToUpdate = true;
-              Log.i(TAG, " begin change delay isInDelayTime() = " + isInDelayTime() + " DelayTime = " + this.mDelayTime + " CurState = " + this.mCurrentState + " -> " + this.mNextState);
+              localObject = TAG;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append(" begin change delay isInDelayTime() = ");
+              localStringBuilder.append(isInDelayTime());
+              localStringBuilder.append(" DelayTime = ");
+              localStringBuilder.append(this.mDelayTime);
+              localStringBuilder.append(" CurState = ");
+              localStringBuilder.append(this.mCurrentState);
+              localStringBuilder.append(" -> ");
+              localStringBuilder.append(this.mNextState);
+              Log.i((String)localObject, localStringBuilder.toString());
             }
           }
         }
@@ -229,7 +268,9 @@ public class TriggerStateItem
   
   public double getRandomValue()
   {
-    return this.mRandomValue / 100.0D;
+    double d = this.mRandomValue;
+    Double.isNaN(d);
+    return d / 100.0D;
   }
   
   public int getTriggetType()
@@ -241,7 +282,8 @@ public class TriggerStateItem
   {
     initStateMap(paramList);
     initStateGraph(paramList, paramList1);
-    if ((this.mStateMap != null) && (this.mStateMap.containsKey("idle")) && (this.mIsStateValid))
+    paramList = this.mStateMap;
+    if ((paramList != null) && (paramList.containsKey("idle")) && (this.mIsStateValid))
     {
       int i = ((Integer)this.mStateMap.get("idle")).intValue();
       this.mNextState = i;
@@ -259,7 +301,8 @@ public class TriggerStateItem
       while (paramArrayList.hasNext())
       {
         String str = (String)paramArrayList.next();
-        if ((this.mStateMap != null) && (this.mStateMap.containsKey(str)) && (((Integer)this.mStateMap.get(str)).intValue() == this.mCurrentState)) {
+        Map localMap = this.mStateMap;
+        if ((localMap != null) && (localMap.containsKey(str)) && (((Integer)this.mStateMap.get(str)).intValue() == this.mCurrentState)) {
           return true;
         }
       }
@@ -274,7 +317,8 @@ public class TriggerStateItem
   
   public void reset()
   {
-    if ((this.mStateMap != null) && (this.mStateMap.containsKey("idle")) && (this.mIsStateValid))
+    Map localMap = this.mStateMap;
+    if ((localMap != null) && (localMap.containsKey("idle")) && (this.mIsStateValid))
     {
       int i = ((Integer)this.mStateMap.get("idle")).intValue();
       this.mNextState = i;
@@ -293,31 +337,43 @@ public class TriggerStateItem
   
   public void updateState()
   {
-    if ((isInDelayTime()) || (isTooShortToChangeState())) {}
-    for (;;)
+    if (!isInDelayTime())
     {
-      return;
+      if (isTooShortToChangeState()) {
+        return;
+      }
       if (this.mNeedToUpdate)
       {
         update();
         return;
       }
-      if (this.mStateItemGraph != null)
+      Object localObject1 = this.mStateItemGraph;
+      if (localObject1 != null)
       {
-        Object localObject = (List)this.mStateItemGraph.get(Integer.valueOf(this.mCurrentState));
-        if (localObject != null)
+        localObject1 = (List)((Map)localObject1).get(Integer.valueOf(this.mCurrentState));
+        if (localObject1 != null)
         {
-          localObject = ((List)localObject).iterator();
-          while (((Iterator)localObject).hasNext())
+          localObject1 = ((List)localObject1).iterator();
+          while (((Iterator)localObject1).hasNext())
           {
-            TriggerStateEdge localTriggerStateEdge = (TriggerStateEdge)((Iterator)localObject).next();
-            if (isMatch(localTriggerStateEdge.value))
+            Object localObject2 = (TriggerStateEdge)((Iterator)localObject1).next();
+            if (isMatch(((TriggerStateEdge)localObject2).value))
             {
-              this.mNextTriggerType = getTriggerTypeFromAction(localTriggerStateEdge.value);
-              this.mNextState = ((Integer)this.mStateMap.get(localTriggerStateEdge.state)).intValue();
-              updateTriggerExpressionDelay(localTriggerStateEdge.value);
+              this.mNextTriggerType = getTriggerTypeFromAction(((TriggerStateEdge)localObject2).value);
+              this.mNextState = ((Integer)this.mStateMap.get(((TriggerStateEdge)localObject2).state)).intValue();
+              updateTriggerExpressionDelay(((TriggerStateEdge)localObject2).value);
               this.mNeedToUpdate = true;
-              Log.i(TAG, " begin change delay isInDelayTime() = " + isInDelayTime() + " DelayTime = " + this.mDelayTime + " CurState = " + this.mCurrentState + " -> " + this.mNextState);
+              localObject2 = TAG;
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append(" begin change delay isInDelayTime() = ");
+              localStringBuilder.append(isInDelayTime());
+              localStringBuilder.append(" DelayTime = ");
+              localStringBuilder.append(this.mDelayTime);
+              localStringBuilder.append(" CurState = ");
+              localStringBuilder.append(this.mCurrentState);
+              localStringBuilder.append(" -> ");
+              localStringBuilder.append(this.mNextState);
+              Log.i((String)localObject2, localStringBuilder.toString());
             }
           }
         }
@@ -327,7 +383,7 @@ public class TriggerStateItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.TriggerStateItem
  * JD-Core Version:    0.7.0.1
  */

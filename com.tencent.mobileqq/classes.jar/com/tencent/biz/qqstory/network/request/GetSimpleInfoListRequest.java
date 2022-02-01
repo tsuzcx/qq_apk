@@ -46,15 +46,16 @@ public class GetSimpleInfoListRequest
     return StoryApi.a("StorySvc.get_date_video_list");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqSimpleInfoList localReqSimpleInfoList = new qqstory_service.ReqSimpleInfoList();
     ArrayList localArrayList = new ArrayList();
-    if (this.jdField_a_of_type_JavaUtilList != null)
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(ByteStringMicro.copyFromUtf8((String)localIterator.next()));
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add(ByteStringMicro.copyFromUtf8((String)((Iterator)localObject).next()));
       }
     }
     localReqSimpleInfoList.vid_list.addAll(localArrayList);
@@ -63,12 +64,17 @@ public class GetSimpleInfoListRequest
   
   public String toString()
   {
-    return "GetSimpleInfoListResponse{vidList='" + this.jdField_a_of_type_JavaUtilList + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetSimpleInfoListResponse{vidList='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetSimpleInfoListRequest
  * JD-Core Version:    0.7.0.1
  */

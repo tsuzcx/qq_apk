@@ -7,25 +7,22 @@ class ViewPager$4$1
   
   public void run()
   {
-    ViewPager.OnPageReadyListener localOnPageReadyListener;
     if (this.this$1.this$0.mOnPageReadyListener != null)
     {
-      localOnPageReadyListener = this.this$1.this$0.mOnPageReadyListener;
-      if (!this.this$1.this$0.isGallery()) {
-        break label56;
+      ViewPager.OnPageReadyListener localOnPageReadyListener = this.this$1.this$0.mOnPageReadyListener;
+      int i;
+      if (this.this$1.this$0.isGallery()) {
+        i = this.this$1.this$0.mCurrentScreen;
+      } else {
+        i = this.this$1.this$0.mCurItem;
       }
-    }
-    label56:
-    for (int i = this.this$1.this$0.mCurrentScreen;; i = this.this$1.this$0.mCurItem)
-    {
       localOnPageReadyListener.onPageReady(i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.viewpager.ViewPager.4.1
  * JD-Core Version:    0.7.0.1
  */

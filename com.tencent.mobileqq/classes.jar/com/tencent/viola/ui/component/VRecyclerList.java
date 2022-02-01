@@ -89,101 +89,113 @@ public class VRecyclerList
   
   private void calAndSetContentSize()
   {
-    int j = 0;
     DomObject localDomObject1 = getDomObject();
-    if (localDomObject1 == null) {}
-    boolean bool;
-    int k;
-    int i;
-    DomObject localDomObject2;
-    do
-    {
+    if (localDomObject1 == null) {
       return;
-      int m = localDomObject1.getDomChildCount();
-      bool = isVertical();
-      k = 0;
-      i = 0;
-      if (k >= m) {
-        break;
+    }
+    int m = localDomObject1.getDomChildCount();
+    boolean bool = isVertical();
+    int k = 0;
+    int i = 0;
+    int j = 0;
+    while (k < m)
+    {
+      DomObject localDomObject2 = localDomObject1.getChild(k);
+      if (localDomObject2 == null) {
+        return;
       }
-      localDomObject2 = localDomObject1.getChild(k);
-    } while (localDomObject2 == null);
-    if (bool) {
-      i = (int)(i + localDomObject2.getLayoutHeight());
-    }
-    for (;;)
-    {
+      if (bool) {
+        j = (int)(j + localDomObject2.getLayoutHeight());
+      } else {
+        i = (int)(i + localDomObject2.getLayoutWidth());
+      }
       k += 1;
-      break;
-      j = (int)(j + localDomObject2.getLayoutWidth());
     }
     if (bool) {
-      j = (int)localDomObject1.getLayoutWidth();
+      i = (int)localDomObject1.getLayoutWidth();
+    } else {
+      j = (int)localDomObject1.getLayoutHeight();
     }
-    for (;;)
-    {
-      super.setContentWidth(j);
-      super.setContentHeight(i);
-      return;
-      i = (int)localDomObject1.getLayoutHeight();
-    }
+    super.setContentWidth(i);
+    super.setContentHeight(j);
   }
   
   private float calFinalDistance(float paramFloat, int paramInt1, int paramInt2, String paramString, int paramInt3, int paramInt4)
   {
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != -1364013995)
     {
+      if (i != 100571)
+      {
+        if ((i == 109757538) && (paramString.equals("start")))
+        {
+          i = 0;
+          break label82;
+        }
+      }
+      else if (paramString.equals("end"))
+      {
+        i = 2;
+        break label82;
+      }
+    }
+    else if (paramString.equals("center"))
+    {
+      i = 1;
+      break label82;
+    }
+    i = -1;
+    label82:
+    float f;
+    if (i != 0) {
+      if (i != 1)
+      {
+        if (i != 2) {
+          return 0.0F;
+        }
+        paramFloat = Math.abs(paramFloat) - Math.abs(paramInt1) + paramInt2 - paramInt3;
+        f = paramInt4;
+      }
     }
     for (;;)
     {
-      switch (i)
-      {
-      default: 
-        return 0.0F;
-        if (paramString.equals("start"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("center"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("end")) {
-              i = 2;
-            }
-          }
-        }
-        break;
-      }
+      return paramFloat + f;
+      paramFloat = Math.abs(paramFloat) - Math.abs(paramInt1) + paramInt2 - paramInt3 * 0.5F;
+      f = paramInt4 * 0.5F;
+      continue;
+      paramFloat = Math.abs(paramFloat) - Math.abs(paramInt1);
+      f = paramInt2;
     }
-    return Math.abs(paramFloat) - Math.abs(paramInt1) + paramInt2;
-    return Math.abs(paramFloat) - Math.abs(paramInt1) + paramInt2 - paramInt3 * 0.5F + paramInt4 * 0.5F;
-    return Math.abs(paramFloat) - Math.abs(paramInt1) + paramInt2 - paramInt3 + paramInt4;
   }
   
   private float compatWithPagerSnap(float paramFloat)
   {
     VRecyclerView localVRecyclerView = (VRecyclerView)getHostView();
-    if (localVRecyclerView == null) {}
-    while ((localVRecyclerView.getFirstVisibleItemPosition() != 0) || (!this.mSnapOffsetUsable)) {
+    if (localVRecyclerView == null) {
       return paramFloat;
     }
-    return paramFloat + localVRecyclerView.getSnapOffset();
+    float f = paramFloat;
+    if (localVRecyclerView.getFirstVisibleItemPosition() == 0)
+    {
+      f = paramFloat;
+      if (this.mSnapOffsetUsable) {
+        f = paramFloat + localVRecyclerView.getSnapOffset();
+      }
+    }
+    return f;
   }
   
   private void createRealParentView()
   {
     if ((this.mRealParentView == null) && ((getContext() != null) || ((getInstance() != null) && (getInstance().getActivity() != null))))
     {
-      if (getContext() != null) {
+      if (getContext() != null)
+      {
         this.mRealParentView = new VRefreshViewGroup(getContext());
+        return;
       }
+      this.mRealParentView = new VRefreshViewGroup(getInstance().getActivity());
     }
-    else {
-      return;
-    }
-    this.mRealParentView = new VRefreshViewGroup(getInstance().getActivity());
   }
   
   private VRecyclerView createRecyclerView(Context paramContext)
@@ -192,17 +204,23 @@ public class VRecyclerList
     {
       int i = paramContext.getResources().getIdentifier("viola_recycler_list", "layout", paramContext.getPackageName());
       VRecyclerView localVRecyclerView2 = (VRecyclerView)LayoutInflater.from(paramContext).inflate(i, null);
-      VRecyclerView localVRecyclerView1 = localVRecyclerView2;
-      if (localVRecyclerView2 == null) {
-        localVRecyclerView1 = createRecyclerViewOnFallback(paramContext);
+      localVRecyclerView1 = localVRecyclerView2;
+      if (localVRecyclerView2 != null) {
+        break label59;
       }
+      localVRecyclerView1 = createRecyclerViewOnFallback(paramContext);
       return localVRecyclerView1;
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.d("VRecyclerList", "inflate recyclerView error!");
+      VRecyclerView localVRecyclerView1;
+      label46:
+      label59:
+      break label46;
     }
-    return createRecyclerViewOnFallback(paramContext);
+    ViolaLogUtils.d("VRecyclerList", "inflate recyclerView error!");
+    localVRecyclerView1 = createRecyclerViewOnFallback(paramContext);
+    return localVRecyclerView1;
   }
   
   private VRecyclerView createRecyclerViewOnFallback(Context paramContext)
@@ -212,40 +230,42 @@ public class VRecyclerList
   
   private float cutDistanceWhenExistKdRefresh(float paramFloat)
   {
-    if ((this.mDomObj == null) && (this.mDomObj.getDomChildCount() <= 0)) {}
-    DomObject localDomObject;
-    do
-    {
+    if ((this.mDomObj == null) && (this.mDomObj.getDomChildCount() <= 0)) {
       return paramFloat;
-      localDomObject = this.mDomObj.getChild(0);
-    } while ((localDomObject == null) || (!"kdrefresh".equals(localDomObject.getType())));
-    return paramFloat - localDomObject.getLayoutHeight() - localDomObject.getMarginVertical();
+    }
+    DomObject localDomObject = this.mDomObj.getChild(0);
+    if (localDomObject == null) {
+      return paramFloat;
+    }
+    float f = paramFloat;
+    if ("kdrefresh".equals(localDomObject.getType())) {
+      f = paramFloat - localDomObject.getLayoutHeight() - localDomObject.getMarginVertical();
+    }
+    return f;
   }
   
   private void dealChildMarginWith(DomObject paramDomObject, FrameLayout.LayoutParams paramLayoutParams)
   {
-    if (!isVertical()) {}
-    int i;
-    do
+    if (!isVertical()) {
+      return;
+    }
+    int i = getDomObject().indexOf(paramDomObject);
+    if (!this.isCaluteSnapOffset)
     {
-      do
-      {
-        return;
-        i = getDomObject().indexOf(paramDomObject);
-        if (!this.isCaluteSnapOffset)
-        {
-          if (getDomObject().getAttributes().containsKey("stickyOffset")) {
-            this.mSnapOffset = ((int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("stickyOffset"), 750));
-          }
-          if (getDomObject().getAttributes().containsKey("stickyOffsetUsable")) {
-            this.mSnapOffsetUsable = ((Boolean)getDomObject().getAttributes().get("stickyOffsetUsable")).booleanValue();
-          }
-          this.isCaluteSnapOffset = true;
-        }
-      } while ((this.mSnapOffset == 0) || (!this.mSnapOffsetUsable));
+      if (getDomObject().getAttributes().containsKey("stickyOffset")) {
+        this.mSnapOffset = ((int)FlexConvertUtils.converPxByViewportToRealPx(getDomObject().getAttributes().get("stickyOffset"), 750));
+      }
+      if (getDomObject().getAttributes().containsKey("stickyOffsetUsable")) {
+        this.mSnapOffsetUsable = ((Boolean)getDomObject().getAttributes().get("stickyOffsetUsable")).booleanValue();
+      }
+      this.isCaluteSnapOffset = true;
+    }
+    int j = this.mSnapOffset;
+    if ((j != 0) && (this.mSnapOffsetUsable))
+    {
       if (i == 0)
       {
-        paramLayoutParams.setMargins(0, this.mSnapOffset, 0, 0);
+        paramLayoutParams.setMargins(0, j, 0, 0);
         return;
       }
       if ((i == 1) && (((VRecyclerViewAdapter)((VRecyclerView)getHostView()).getAdapter()).isRecycleHasHeader()))
@@ -258,8 +278,10 @@ public class VRecyclerList
         paramLayoutParams.setMargins(0, 0, 0, FlexConvertUtils.getScreenHeight() - this.mSnapOffset * 4);
         return;
       }
-    } while ((i != getDomObject().getChildCount() - 2) || (!((VRecyclerViewAdapter)((VRecyclerView)getHostView()).getAdapter()).isRecycleHasFooter()));
-    paramLayoutParams.setMargins(0, 0, 0, FlexConvertUtils.getScreenHeight() - this.mSnapOffset * 4);
+      if ((i == getDomObject().getChildCount() - 2) && (((VRecyclerViewAdapter)((VRecyclerView)getHostView()).getAdapter()).isRecycleHasFooter())) {
+        paramLayoutParams.setMargins(0, 0, 0, FlexConvertUtils.getScreenHeight() - this.mSnapOffset * 4);
+      }
+    }
   }
   
   private RecyclerView.LayoutManager findLayoutManager(Context paramContext, RecyclerView paramRecyclerView)
@@ -290,25 +312,49 @@ public class VRecyclerList
     return new LinearLayoutManager(paramContext);
   }
   
+  private void initContentOffsetIfNeed(VRecyclerView paramVRecyclerView)
+  {
+    float f = FlexConvertUtils.getFloatByViewport(this.mDomObj.getAttributes().get("initContentOffset"), this.mDomObj.getViewPortWidth());
+    if (f == 0.0F) {
+      return;
+    }
+    paramVRecyclerView.addOnLayoutChangeListener(new VRecyclerList.1(this, paramVRecyclerView, f));
+  }
+  
   private JSONObject listFireBaseInfo(int paramInt1, int paramInt2)
   {
     JSONObject localJSONObject1 = new JSONObject();
+    Object localObject = new JSONObject();
     JSONObject localJSONObject2 = new JSONObject();
-    JSONObject localJSONObject3 = new JSONObject();
     try
     {
-      localJSONObject2.put("width", FlexConvertUtils.px2dip(getContentWidth()) + "dp");
-      localJSONObject2.put("height", FlexConvertUtils.px2dip(getContentHeight()) + "dp");
-      localJSONObject1.put("contentSize", localJSONObject2);
-      localJSONObject3.put("x", FlexConvertUtils.px2dip(paramInt1) + "dp");
-      localJSONObject3.put("y", FlexConvertUtils.px2dip(paramInt2) + "dp");
-      localJSONObject1.put("contentOffset", localJSONObject3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getContentWidth()));
+      localStringBuilder.append("dp");
+      ((JSONObject)localObject).put("width", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(getContentHeight()));
+      localStringBuilder.append("dp");
+      ((JSONObject)localObject).put("height", localStringBuilder.toString());
+      localJSONObject1.put("contentSize", localObject);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(FlexConvertUtils.px2dip(paramInt1));
+      ((StringBuilder)localObject).append("dp");
+      localJSONObject2.put("x", ((StringBuilder)localObject).toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(FlexConvertUtils.px2dip(paramInt2));
+      ((StringBuilder)localObject).append("dp");
+      localJSONObject2.put("y", ((StringBuilder)localObject).toString());
+      localJSONObject1.put("contentOffset", localJSONObject2);
       localJSONObject1.put("frame", getFrameInfo());
       return localJSONObject1;
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("VRecyclerList", "listFireBaseInfo error :" + localException.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("listFireBaseInfo error :");
+      ((StringBuilder)localObject).append(localException.getMessage());
+      ViolaLogUtils.e("VRecyclerList", ((StringBuilder)localObject).toString());
     }
     return localJSONObject1;
   }
@@ -331,260 +377,226 @@ public class VRecyclerList
     {
       float f1 = getInstance().getMatchWindowsX();
       float f2 = getInstance().getMatchWindowsY();
-      localJSONObject.put("pageX", FlexConvertUtils.px2dip(paramFloat1 - f1) + "dp");
-      localJSONObject.put("pageY", FlexConvertUtils.px2dip(paramFloat2 - f2) + "dp");
-      label114:
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(paramFloat1 - f1));
+      localStringBuilder.append("dp");
+      localJSONObject.put("pageX", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(FlexConvertUtils.px2dip(paramFloat2 - f2));
+      localStringBuilder.append("dp");
+      localJSONObject.put("pageY", localStringBuilder.toString());
+      label134:
       fireEvent(paramString, getFireEventArgs(paramString), localJSONObject);
       return;
     }
     catch (JSONException localJSONException)
     {
-      break label114;
+      break label134;
     }
   }
   
   private void scrollByDistance(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mOrientation == 0)
+    int j = this.mOrientation;
+    int i = 0;
+    if (j == 0)
     {
       paramInt2 = Math.abs(paramInt4) - Math.abs(paramInt1);
-      paramInt1 = 0;
+      paramInt1 = i;
     }
-    while (paramInt3 > 0)
+    else
+    {
+      paramInt1 = Math.abs(paramInt4) - Math.abs(paramInt2);
+      paramInt2 = 0;
+    }
+    if (paramInt3 > 0)
     {
       ((VRecyclerView)getHostView()).smoothScrollBy(paramInt2, paramInt1);
       return;
-      paramInt1 = Math.abs(paramInt4) - Math.abs(paramInt2);
-      paramInt2 = 0;
     }
     ((VRecyclerView)getHostView()).scrollBy(paramInt2, paramInt1);
   }
   
   private void scrollByRef(String paramString1, int paramInt1, int paramInt2, int paramInt3, int paramInt4, String paramString2)
   {
-    int i = 1;
-    float f2 = 0.0F;
     String str = getInstance().getInstanceId();
     DomObject localDomObject = ViolaUtils.findDomObject(str, paramString1);
     if (localDomObject == null) {
       return;
     }
-    if (this.mOrientation == 1)
-    {
-      if (i == 0) {
-        break label114;
-      }
-      f2 = calFinalDistance(compatWithPagerSnap(cutDistanceWhenExistKdRefresh(ViolaUtils.getLayoutYInList(str, paramString1))), paramInt3, paramInt1, paramString2, ((VRecyclerView)getHostView()).getHeight(), (int)localDomObject.getLayoutHeight());
+    int j = this.mOrientation;
+    int i = 1;
+    if (j != 1) {
+      i = 0;
     }
-    label114:
-    for (float f1 = 0.0F;; f1 = calFinalDistance(cutDistanceWhenExistKdRefresh(ViolaUtils.getLayoutXInList(str, paramString1)), paramInt2, paramInt1, paramString2, ((VRecyclerView)getHostView()).getWidth(), (int)localDomObject.getLayoutWidth()))
+    float f2 = 0.0F;
+    float f1;
+    if (i != 0)
     {
-      if (paramInt4 <= 0) {
-        break label153;
-      }
+      f2 = calFinalDistance(compatWithPagerSnap(cutDistanceWhenExistKdRefresh(ViolaUtils.getLayoutYInList(str, paramString1))), paramInt3, paramInt1, paramString2, ((VRecyclerView)getHostView()).getHeight(), (int)localDomObject.getLayoutHeight());
+      f1 = 0.0F;
+    }
+    else
+    {
+      f1 = calFinalDistance(cutDistanceWhenExistKdRefresh(ViolaUtils.getLayoutXInList(str, paramString1)), paramInt2, paramInt1, paramString2, ((VRecyclerView)getHostView()).getWidth(), (int)localDomObject.getLayoutWidth());
+    }
+    if (paramInt4 > 0)
+    {
       ((VRecyclerView)getHostView()).smoothScrollBy((int)f1, (int)f2);
       return;
-      i = 0;
-      break;
     }
-    label153:
     ((VRecyclerView)getHostView()).scrollBy((int)f1, (int)f2);
   }
   
   private void setContentView(VRefreshContentView.ContentViewProvider paramContentViewProvider)
   {
-    if (this.mRealParentView == null) {
+    VRefreshViewGroup localVRefreshViewGroup = this.mRealParentView;
+    if (localVRefreshViewGroup == null) {
       return;
     }
-    this.mRealParentView.addInFirst(((VRecyclerView)getHostView()).getRefreshMoveOberver());
+    localVRefreshViewGroup.addInFirst(((VRecyclerView)getHostView()).getRefreshMoveOberver());
     this.mRealParentView.setContentViewProvider(paramContentViewProvider);
   }
   
   private void setFooterView(VFooterLayout paramVFooterLayout)
   {
-    if (this.mRealParentView == null) {}
-    do
-    {
+    VRefreshViewGroup localVRefreshViewGroup = this.mRealParentView;
+    if (localVRefreshViewGroup == null) {
       return;
-      this.mRealParentView.setFooterView(paramVFooterLayout);
-    } while (!isCompatMode());
-    paramVFooterLayout.setListener((VListCompat)getCompator());
+    }
+    localVRefreshViewGroup.setFooterView(paramVFooterLayout);
+    if (isCompatMode()) {
+      paramVFooterLayout.setListener((VListCompat)getCompator());
+    }
   }
   
   private void setHeadView(VRefreshLayout paramVRefreshLayout)
   {
-    if (this.mRealParentView == null) {}
-    do
-    {
+    VRefreshViewGroup localVRefreshViewGroup = this.mRealParentView;
+    if (localVRefreshViewGroup == null) {
       return;
-      this.mRealParentView.add(paramVRefreshLayout.getRefreshMoveOberver());
-      this.mRealParentView.setHeaderView(paramVRefreshLayout);
-    } while (!isCompatMode());
-    paramVRefreshLayout.addOnHeaderStateChangeListener((VListCompat)getCompator());
+    }
+    localVRefreshViewGroup.add(paramVRefreshLayout.getRefreshMoveOberver());
+    this.mRealParentView.setHeaderView(paramVRefreshLayout);
+    if (isCompatMode()) {
+      paramVRefreshLayout.addOnHeaderStateChangeListener((VListCompat)getCompator());
+    }
   }
   
   private void setReadParentOverFlow(boolean paramBoolean)
   {
-    boolean bool2 = true;
-    Object localObject;
-    boolean bool1;
-    if (this.mRealParentView != null)
+    VRefreshViewGroup localVRefreshViewGroup = this.mRealParentView;
+    if (localVRefreshViewGroup != null)
     {
-      localObject = this.mRealParentView;
-      if (paramBoolean) {
-        break label95;
-      }
-      bool1 = true;
-      ((VRefreshViewGroup)localObject).setClipToPadding(bool1);
-      localObject = this.mRealParentView;
-      if (paramBoolean) {
-        break label100;
-      }
-      bool1 = true;
-      label39:
-      ((VRefreshViewGroup)localObject).setClipChildren(bool1);
+      localVRefreshViewGroup.setClipToPadding(paramBoolean ^ true);
+      this.mRealParentView.setClipChildren(paramBoolean ^ true);
       if (this.mHost != null)
       {
-        localObject = (VRecyclerView)this.mHost;
-        if (paramBoolean) {
-          break label105;
-        }
-        bool1 = true;
-        label67:
-        ((VRecyclerView)localObject).setClipToPadding(bool1);
-        localObject = (VRecyclerView)this.mHost;
-        if (paramBoolean) {
-          break label110;
-        }
+        ((VRecyclerView)this.mHost).setClipToPadding(paramBoolean ^ true);
+        ((VRecyclerView)this.mHost).setClipChildren(paramBoolean ^ true);
       }
-    }
-    label95:
-    label100:
-    label105:
-    label110:
-    for (paramBoolean = bool2;; paramBoolean = false)
-    {
-      ((VRecyclerView)localObject).setClipChildren(paramBoolean);
-      return;
-      bool1 = false;
-      break;
-      bool1 = false;
-      break label39;
-      bool1 = false;
-      break label67;
     }
   }
   
   private void tryScrollEvent(VRecyclerView paramVRecyclerView, int paramInt1, int paramInt2)
   {
-    if (paramVRecyclerView == null) {}
-    for (;;)
-    {
+    if (paramVRecyclerView == null) {
       return;
-      int m = paramVRecyclerView.getChildCount();
-      int i = 0;
-      while (i < m)
+    }
+    int m = paramVRecyclerView.getChildCount();
+    int i = 0;
+    while (i < m)
+    {
+      Object localObject1 = paramVRecyclerView.getChildViewHolder(paramVRecyclerView.getChildAt(i));
+      if ((localObject1 instanceof VRecyclerViewAdapter.VH))
       {
-        Object localObject1 = paramVRecyclerView.getChildViewHolder(paramVRecyclerView.getChildAt(i));
-        if ((localObject1 instanceof VRecyclerViewAdapter.VH))
+        localObject1 = (VRecyclerViewAdapter.VH)localObject1;
+        if ((((VRecyclerViewAdapter.VH)localObject1).mVCell != null) && ((((VRecyclerViewAdapter.VH)localObject1).mVCell.getDomObject() instanceof DomObjectCell)))
         {
-          localObject1 = (VRecyclerViewAdapter.VH)localObject1;
-          if ((((VRecyclerViewAdapter.VH)localObject1).mVCell != null) && ((((VRecyclerViewAdapter.VH)localObject1).mVCell.getDomObject() instanceof DomObjectCell)))
+          Object localObject2 = ((DomObjectCell)((VRecyclerViewAdapter.VH)localObject1).mVCell.getDomObject()).getScrollEventList();
+          localObject1 = getInstance().getInstanceId();
+          if (localObject2 != null)
           {
-            Object localObject2 = ((DomObjectCell)((VRecyclerViewAdapter.VH)localObject1).mVCell.getDomObject()).getScrollEventList();
-            localObject1 = getInstance().getInstanceId();
-            if (localObject2 != null)
+            localObject2 = ((List)localObject2).iterator();
+            while (((Iterator)localObject2).hasNext())
             {
-              localObject2 = ((List)localObject2).iterator();
-              while (((Iterator)localObject2).hasNext())
+              VComponent localVComponent = ViolaUtils.findComponent((String)localObject1, (String)((Iterator)localObject2).next());
+              if (localVComponent != null)
               {
-                VComponent localVComponent = ViolaUtils.findComponent((String)localObject1, (String)((Iterator)localObject2).next());
-                if (localVComponent != null)
-                {
-                  boolean bool;
-                  label152:
-                  int j;
-                  if (this.mOrientation == 1)
-                  {
-                    bool = true;
-                    if (!bool) {
-                      break label192;
-                    }
-                    j = paramInt2;
-                    label160:
-                    if (!bool) {
-                      break label198;
-                    }
-                  }
-                  label192:
-                  label198:
-                  for (int k = paramVRecyclerView.getContentOffsetY();; k = paramVRecyclerView.getContentOffsetX())
-                  {
-                    localVComponent.onScroll(paramVRecyclerView, bool, j, k);
-                    break;
-                    bool = false;
-                    break label152;
-                    j = paramInt1;
-                    break label160;
-                  }
+                int j = this.mOrientation;
+                boolean bool = true;
+                if (j != 1) {
+                  bool = false;
                 }
+                if (bool) {
+                  j = paramInt2;
+                } else {
+                  j = paramInt1;
+                }
+                int k;
+                if (bool) {
+                  k = paramVRecyclerView.getContentOffsetY();
+                } else {
+                  k = paramVRecyclerView.getContentOffsetX();
+                }
+                localVComponent.onScroll(paramVRecyclerView, bool, j, k);
               }
             }
           }
         }
-        i += 1;
       }
+      i += 1;
     }
   }
   
   public void addEvent(String paramString)
   {
-    int i = -1;
     switch (paramString.hashCode())
     {
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        super.addEvent(paramString);
-        return;
-        if (paramString.equals("loadMore"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("touchDown"))
-          {
-            i = 1;
-            continue;
-            if (paramString.equals("touchUp"))
-            {
-              i = 2;
-              continue;
-              if (paramString.equals("scroll"))
-              {
-                i = 3;
-                continue;
-                if (paramString.equals("scrollEnd"))
-                {
-                  i = 4;
-                  continue;
-                  if (paramString.equals("dragBegin"))
-                  {
-                    i = 5;
-                    continue;
-                    if (paramString.equals("dragEnd")) {
-                      i = 6;
-                    }
-                  }
-                }
-              }
-            }
-          }
-        }
-        break;
+    default: 
+      break;
+    case 1912497927: 
+      if (paramString.equals("dragEnd")) {
+        i = 6;
       }
+      break;
+    case 1845399899: 
+      if (paramString.equals("loadMore")) {
+        i = 0;
+      }
+      break;
+    case 417766094: 
+      if (paramString.equals("scrollEnd")) {
+        i = 4;
+      }
+      break;
+    case 363315329: 
+      if (paramString.equals("touchDown")) {
+        i = 1;
+      }
+      break;
+    case -338527275: 
+      if (paramString.equals("dragBegin")) {
+        i = 5;
+      }
+      break;
+    case -907680051: 
+      if (paramString.equals("scroll")) {
+        i = 3;
+      }
+      break;
+    case -1134815686: 
+      if (paramString.equals("touchUp")) {
+        i = 2;
+      }
+      break;
+    }
+    int i = -1;
+    switch (i)
+    {
+    default: 
+      super.addEvent(paramString);
+      return;
     }
     this.mAppendEvents.add(paramString);
   }
@@ -630,7 +642,7 @@ public class VRecyclerList
     }
   }
   
-  public <T extends VComponentCompat> T createCompator()
+  protected <T extends VComponentCompat> T createCompator()
   {
     return new VListCompat(this, this.mDomObj);
   }
@@ -641,26 +653,26 @@ public class VRecyclerList
     this.mHost = initComponentHostView(this.mContext);
     updateLifeCycle("created");
     int j = getChildCount();
-    if (j == 0) {
+    if (j == 0)
+    {
       setContentView((VRefreshContentView.ContentViewProvider)getHostView());
     }
-    for (;;)
+    else
     {
-      if (j == 0) {
-        calAndSetContentSize();
-      }
-      if ((this.mHost != null) && (!this.mIsOverFlow) && (!this.mIsSetInset))
-      {
-        ((VRecyclerView)this.mHost).setClipToPadding(true);
-        ((VRecyclerView)this.mHost).setClipChildren(true);
-      }
-      return;
       int i = 0;
       while (i < j)
       {
         createChildViewAt(i);
         i += 1;
       }
+    }
+    if (j == 0) {
+      calAndSetContentSize();
+    }
+    if ((this.mHost != null) && (!this.mIsOverFlow) && (!this.mIsSetInset))
+    {
+      ((VRecyclerView)this.mHost).setClipToPadding(true);
+      ((VRecyclerView)this.mHost).setClipChildren(true);
     }
   }
   
@@ -680,16 +692,22 @@ public class VRecyclerList
     if ((getInstance() != null) && (!TextUtils.isEmpty(getRef())) && (getRef().equals(getInstance().getMasterListRef()))) {
       getInstance().setMasterListRef(null);
     }
-    if (this.mRealParentView != null) {
-      this.mRealParentView.onDestroy();
+    Object localObject = this.mRealParentView;
+    if (localObject != null) {
+      ((VRefreshViewGroup)localObject).onDestroy();
     }
-    if ((this.mOrientation == 0) && (mHorizontalRecycledViewPool != null))
+    if (this.mOrientation == 0)
     {
-      mHorizontalRecycledViewPool.clear();
-      mHorizontalRecycledViewPool = null;
+      localObject = mHorizontalRecycledViewPool;
+      if (localObject != null)
+      {
+        ((RecyclerView.RecycledViewPool)localObject).clear();
+        mHorizontalRecycledViewPool = null;
+      }
     }
-    if (this.mDefaultRecycleItemAnimator != null) {
-      this.mDefaultRecycleItemAnimator.destroy();
+    localObject = this.mDefaultRecycleItemAnimator;
+    if (localObject != null) {
+      ((DefaultRecycleItemAnimator)localObject).destroy();
     }
   }
   
@@ -741,7 +759,8 @@ public class VRecyclerList
     localVRecyclerView.setItemAnimator(null);
     initWaterFall(localVRecyclerView);
     localVRecyclerView.setLayoutManager(findLayoutManager(paramContext, localVRecyclerView));
-    if (this.mOrientation == 0)
+    int i = this.mOrientation;
+    if (i == 0)
     {
       if (mHorizontalRecycledViewPool == null) {
         mHorizontalRecycledViewPool = new RecyclerView.RecycledViewPool();
@@ -750,17 +769,16 @@ public class VRecyclerList
       OverScrollHelper.setUpOverScroll(localVRecyclerView, 1, localVRecyclerView);
       localVRecyclerView.setHorizontalScrollBarEnabled(false);
     }
-    for (;;)
+    else if (i == 1)
     {
-      localVRecyclerView.setAdapter(this.mAdapter);
-      if ((getInstance() != null) && (TextUtils.isEmpty(getInstance().getMasterListRef()))) {
-        getInstance().setMasterListRef(getRef());
-      }
-      return localVRecyclerView;
-      if (this.mOrientation == 1) {
-        localVRecyclerView.setItemViewCacheSize(3);
-      }
+      localVRecyclerView.setItemViewCacheSize(3);
     }
+    localVRecyclerView.setAdapter(this.mAdapter);
+    if ((getInstance() != null) && (TextUtils.isEmpty(getInstance().getMasterListRef()))) {
+      getInstance().setMasterListRef(getRef());
+    }
+    initContentOffsetIfNeed(localVRecyclerView);
+    return localVRecyclerView;
   }
   
   public void initWaterFall(RecyclerView paramRecyclerView)
@@ -811,24 +829,28 @@ public class VRecyclerList
   {
     if ((paramVCell != null) && (paramVCell.getHostView() != null) && (paramVCell.getDomObject() != null) && (((VFrameLayout)paramVCell.getHostView()).getParent() != null))
     {
-      DomObject localDomObject = paramVCell.getDomObject();
+      Object localObject = paramVCell.getDomObject();
       try
       {
-        if ((((DomObjectCell)localDomObject).isRegisterDidAppear()) && (getHostView() != null) && (((VRecyclerView)getHostView()).indexOfChild((View)((VFrameLayout)paramVCell.getHostView()).getParent()) != -1))
+        if ((((DomObjectCell)localObject).isRegisterDidAppear()) && (getHostView() != null) && (((VRecyclerView)getHostView()).indexOfChild((View)((VFrameLayout)paramVCell.getHostView()).getParent()) != -1))
         {
           VRecyclerView localVRecyclerView = (VRecyclerView)getHostView();
-          if (ViolaUtils.isRefresh(getDomObject().getChild(0))) {}
-          for (int i = getDomObject().getChildPosition(localDomObject) - 1;; i = getDomObject().getChildPosition(localDomObject))
-          {
-            localVRecyclerView.traverseDomObjectCell(i, (View)((VFrameLayout)paramVCell.getHostView()).getParent(), true, true);
-            return;
+          int i;
+          if (ViolaUtils.isRefresh(getDomObject().getChild(0))) {
+            i = getDomObject().getChildPosition((DomObject)localObject) - 1;
+          } else {
+            i = getDomObject().getChildPosition((DomObject)localObject);
           }
+          localVRecyclerView.traverseDomObjectCell(i, (View)((VFrameLayout)paramVCell.getHostView()).getParent(), true, true);
+          return;
         }
-        return;
       }
       catch (Exception paramVCell)
       {
-        ViolaLogUtils.e("VRecyclerList", "judgeIfNeedAppearEvent error:" + paramVCell.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("judgeIfNeedAppearEvent error:");
+        ((StringBuilder)localObject).append(paramVCell.getMessage());
+        ViolaLogUtils.e("VRecyclerList", ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -836,7 +858,7 @@ public class VRecyclerList
   @JSMethod(uiThread=false)
   public void loadMoreFinish(Object paramObject)
   {
-    ViolaSDKManager.getInstance().postOnUiThreadDelay(new VRecyclerList.1(this), 300L);
+    ViolaSDKManager.getInstance().postOnUiThreadDelay(new VRecyclerList.2(this), 300L);
   }
   
   public void notifyChange(int paramInt, String paramString)
@@ -858,10 +880,14 @@ public class VRecyclerList
   
   public void onActivityDestroy()
   {
-    if ((this.mOrientation == 0) && (mHorizontalRecycledViewPool != null))
+    if (this.mOrientation == 0)
     {
-      mHorizontalRecycledViewPool.clear();
-      mHorizontalRecycledViewPool = null;
+      RecyclerView.RecycledViewPool localRecycledViewPool = mHorizontalRecycledViewPool;
+      if (localRecycledViewPool != null)
+      {
+        localRecycledViewPool.clear();
+        mHorizontalRecycledViewPool = null;
+      }
     }
   }
   
@@ -875,62 +901,71 @@ public class VRecyclerList
   
   public void onCellAppear(VRecyclerViewAdapter.VH paramVH)
   {
-    if ((paramVH == null) || (paramVH.mVCell == null) || (paramVH.mVCell.getDomObject() == null)) {
-      return;
-    }
-    DomObject localDomObject = paramVH.mVCell.getDomObject();
-    if ((!this.mCellAppearSet.contains(localDomObject.getRef())) && (localDomObject.getEvents().contains("appear")))
+    if ((paramVH != null) && (paramVH.mVCell != null))
     {
-      customFireEvent("appear", localDomObject.getRef());
-      this.mCellAppearSet.add(localDomObject.getRef());
-      ViolaLogUtils.d("VRecyclerList", "appear position: " + paramVH.position + ", ref: " + localDomObject.getRef());
-    }
-    for (;;)
-    {
+      if (paramVH.mVCell.getDomObject() == null) {
+        return;
+      }
+      Object localObject = paramVH.mVCell.getDomObject();
+      if ((!this.mCellAppearSet.contains(((DomObject)localObject).getRef())) && (((DomObject)localObject).getEvents().contains("appear")))
+      {
+        customFireEvent("appear", ((DomObject)localObject).getRef());
+        this.mCellAppearSet.add(((DomObject)localObject).getRef());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("appear position: ");
+        localStringBuilder.append(paramVH.position);
+        localStringBuilder.append(", ref: ");
+        localStringBuilder.append(((DomObject)localObject).getRef());
+        ViolaLogUtils.d("VRecyclerList", localStringBuilder.toString());
+      }
       try
       {
-        if ((((DomObjectCell)localDomObject).isRegisterDidAppear()) && (getHostView() != null))
-        {
+        if ((((DomObjectCell)localObject).isRegisterDidAppear()) && (getHostView() != null)) {
           if ((this.mOrientation != 0) && (paramVH.itemView.getY() == 0.0F)) {
             ((VRecyclerView)getHostView()).traverseDomObjectCell(paramVH.position, paramVH.mVCell.getDomObject().getLayoutY() - this.mRealParentView.getHeaderViewHeight(), true, false);
+          } else if ((this.mOrientation == 0) && (paramVH.itemView.getX() == 0.0F)) {
+            ((VRecyclerView)getHostView()).traverseDomObjectCell(paramVH.position, paramVH.mVCell.getDomObject().getLayoutX() - this.mRealParentView.getHeaderViewWidth(), true, false);
           }
         }
-        else
+        if (this.mOrientation == 1)
         {
-          if (this.mOrientation != 1) {
-            break;
-          }
           tryScrollEvent((VRecyclerView)getHostView(), 0, 0);
           return;
         }
       }
       catch (Exception paramVH)
       {
-        ViolaLogUtils.e("VRecyclerList", "onCellAppear error:" + paramVH.getMessage());
-        return;
-      }
-      if ((this.mOrientation == 0) && (paramVH.itemView.getX() == 0.0F)) {
-        ((VRecyclerView)getHostView()).traverseDomObjectCell(paramVH.position, paramVH.mVCell.getDomObject().getLayoutX() - this.mRealParentView.getHeaderViewWidth(), true, false);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onCellAppear error:");
+        ((StringBuilder)localObject).append(paramVH.getMessage());
+        ViolaLogUtils.e("VRecyclerList", ((StringBuilder)localObject).toString());
       }
     }
   }
   
   public void onCellDisappear(VRecyclerViewAdapter.VH paramVH)
   {
-    if ((paramVH == null) || (paramVH.mVCell == null) || (paramVH.mVCell.getDomObject() == null)) {}
-    DomObject localDomObject;
-    do
+    if ((paramVH != null) && (paramVH.mVCell != null))
     {
-      return;
-      localDomObject = paramVH.mVCell.getDomObject();
+      if (paramVH.mVCell.getDomObject() == null) {
+        return;
+      }
+      DomObject localDomObject = paramVH.mVCell.getDomObject();
       this.mCellAppearSet.remove(localDomObject.getRef());
       if (localDomObject.getEvents().contains("disappear"))
       {
         customFireEvent("disappear", localDomObject.getRef());
-        ViolaLogUtils.d("VRecyclerList", "disAppear position: " + paramVH.position + ", ref: " + localDomObject.getRef());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("disAppear position: ");
+        localStringBuilder.append(paramVH.position);
+        localStringBuilder.append(", ref: ");
+        localStringBuilder.append(localDomObject.getRef());
+        ViolaLogUtils.d("VRecyclerList", localStringBuilder.toString());
       }
-    } while ((getInstance() == null) || (getHostView() == null));
-    ((DomObjectCell)localDomObject).resetComponentState(getInstance().getInstanceId(), ((VRecyclerView)getHostView()).isScrollDown());
+      if ((getInstance() != null) && (getHostView() != null)) {
+        ((DomObjectCell)localDomObject).resetComponentState(getInstance().getInstanceId(), ((VRecyclerView)getHostView()).isScrollDown());
+      }
+    }
   }
   
   public void onDispatchTouchEvent(int paramInt1, MotionEvent paramMotionEvent, int paramInt2)
@@ -947,23 +982,17 @@ public class VRecyclerList
   
   public void onScroll(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    boolean bool = true;
-    ViolaInstance.ViolaPageListener localViolaPageListener;
-    String str;
     if ((getInstance() != null) && (getInstance().getViolaPageListener() != null))
     {
-      localViolaPageListener = getInstance().getViolaPageListener();
-      str = getRef();
-      if (this.mOrientation != 1) {
-        break label62;
+      ViolaInstance.ViolaPageListener localViolaPageListener = getInstance().getViolaPageListener();
+      String str = getRef();
+      boolean bool;
+      if (this.mOrientation == 1) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    for (;;)
-    {
       localViolaPageListener.onScroll(str, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, bool);
-      return;
-      label62:
-      bool = false;
     }
   }
   
@@ -976,18 +1005,13 @@ public class VRecyclerList
     if (isCompatMode())
     {
       paramVRecyclerView = (VListCompat)getCompator();
-      if (!paramBoolean) {
-        break label59;
+      if (paramBoolean) {
+        paramVRecyclerView.onOverScroll(paramInt1, paramInt2);
+      } else {
+        paramVRecyclerView.onScroll();
       }
-      paramVRecyclerView.onOverScroll(paramInt1, paramInt2);
     }
-    for (;;)
-    {
-      listFireScrollEvent("scroll", paramInt1, paramInt2);
-      return;
-      label59:
-      paramVRecyclerView.onScroll();
-    }
+    listFireScrollEvent("scroll", paramInt1, paramInt2);
   }
   
   public void onScrollEnd(VRecyclerView paramVRecyclerView, int paramInt1, int paramInt2)
@@ -1000,24 +1024,23 @@ public class VRecyclerList
     if (isCompatMode()) {
       ((VListCompat)getCompator()).onScrollStateChanged(paramInt1);
     }
-    String str;
-    if ((getInstance() != null) && (getInstance().getViolaPageListener() != null) && (this.mOrientation == 1))
+    if ((getInstance() != null) && (getInstance().getViolaPageListener() != null))
     {
-      paramVRecyclerView = getInstance().getViolaPageListener();
-      str = getRef();
-      if (this.mOrientation != 1) {
-        break label102;
+      int i = this.mOrientation;
+      boolean bool = true;
+      if (i == 1)
+      {
+        paramVRecyclerView = getInstance().getViolaPageListener();
+        String str = getRef();
+        if (this.mOrientation != 1) {
+          bool = false;
+        }
+        paramVRecyclerView.onScrollStateChanged(str, paramInt1, paramInt2, bool);
       }
     }
-    label102:
-    for (boolean bool = true;; bool = false)
-    {
-      paramVRecyclerView.onScrollStateChanged(str, paramInt1, paramInt2, bool);
-      paramVRecyclerView = ViolaSDKManager.getInstance().getReportDelegate();
-      if (paramVRecyclerView != null) {
-        paramVRecyclerView.dropFrameMonitor(paramInt1, ViolaEnvironment.LIST_KANDIAN_VIOLA);
-      }
-      return;
+    paramVRecyclerView = ViolaSDKManager.getInstance().getReportDelegate();
+    if (paramVRecyclerView != null) {
+      paramVRecyclerView.dropFrameMonitor(paramInt1, ViolaEnvironment.LIST_KANDIAN_VIOLA);
     }
   }
   
@@ -1050,13 +1073,16 @@ public class VRecyclerList
   
   public void remove(VComponent paramVComponent, boolean paramBoolean)
   {
-    if ((paramVComponent == null) || (this.mChildren == null) || (this.mChildren.size() == 0)) {}
-    do
+    if ((paramVComponent != null) && (this.mChildren != null))
     {
-      return;
+      if (this.mChildren.size() == 0) {
+        return;
+      }
       this.mChildren.remove(paramVComponent);
-    } while (!paramBoolean);
-    paramVComponent.destroy();
+      if (paramBoolean) {
+        paramVComponent.destroy();
+      }
+    }
   }
   
   public void scrollByDistance(int paramInt)
@@ -1071,7 +1097,9 @@ public class VRecyclerList
   @JSMethod(uiThread=true)
   public void scrollToPosition(JSONObject paramJSONObject, String paramString)
   {
-    if (paramJSONObject != null) {
+    if (paramJSONObject != null) {}
+    for (;;)
+    {
       try
       {
         int j = paramJSONObject.optInt("duration", 200);
@@ -1086,10 +1114,10 @@ public class VRecyclerList
         if (!TextUtils.isEmpty(paramJSONObject.optString("ref")))
         {
           String str = paramJSONObject.getString("ref");
-          int i = 0;
-          if (!TextUtils.isEmpty(paramJSONObject.optString("offset"))) {
-            i = (int)FlexConvertUtils.converPxByViewportToRealPx(paramJSONObject.getString("offset"), getDomObject().getViewPortWidth());
+          if (TextUtils.isEmpty(paramJSONObject.optString("offset"))) {
+            break label212;
           }
+          i = (int)FlexConvertUtils.converPxByViewportToRealPx(paramJSONObject.getString("offset"), getDomObject().getViewPortWidth());
           scrollByRef(str, i, m, k, j, paramJSONObject.optString("align", "start"));
           scrollToPositionFire(paramString, j);
           return;
@@ -1097,14 +1125,20 @@ public class VRecyclerList
       }
       catch (Exception paramJSONObject)
       {
-        ViolaLogUtils.e("VRecyclerList", "scrollToPosition error:" + paramJSONObject.getMessage());
+        paramString = new StringBuilder();
+        paramString.append("scrollToPosition error:");
+        paramString.append(paramJSONObject.getMessage());
+        ViolaLogUtils.e("VRecyclerList", paramString.toString());
       }
+      return;
+      label212:
+      int i = 0;
     }
   }
   
   public void scrollToPositionFire(String paramString, int paramInt)
   {
-    ViolaSDKManager.getInstance().postOnUiThreadDelay(new VRecyclerList.2(this, paramString), paramInt + 200);
+    ViolaSDKManager.getInstance().postOnUiThreadDelay(new VRecyclerList.3(this, paramString), paramInt + 200);
   }
   
   public void scrollToTop()
@@ -1118,22 +1152,20 @@ public class VRecyclerList
   public void scrollToTop(Boolean paramBoolean)
   {
     boolean bool;
-    if (paramBoolean == null)
-    {
+    if (paramBoolean == null) {
       bool = false;
-      if (this.mRealParentView == null) {
-        break label31;
-      }
-      this.mRealParentView.scrollerToTop(false, bool);
-    }
-    label31:
-    while (getHostView() == null)
-    {
-      return;
+    } else {
       bool = paramBoolean.booleanValue();
-      break;
     }
-    ((VRecyclerView)getHostView()).scrollToTop(bool);
+    paramBoolean = this.mRealParentView;
+    if (paramBoolean != null)
+    {
+      paramBoolean.scrollerToTop(false, bool);
+      return;
+    }
+    if (getHostView() != null) {
+      ((VRecyclerView)getHostView()).scrollToTop(bool);
+    }
   }
   
   @VComponentProp(name="bounceDistance")
@@ -1142,15 +1174,17 @@ public class VRecyclerList
   @VComponentProp(name="bouncesEnable")
   public void setBouncesEnable(Boolean paramBoolean)
   {
-    if (paramBoolean == null) {}
-    for (boolean bool = false;; bool = paramBoolean.booleanValue())
+    boolean bool;
+    if (paramBoolean == null) {
+      bool = false;
+    } else {
+      bool = paramBoolean.booleanValue();
+    }
+    paramBoolean = this.mRealParentView;
+    if (paramBoolean != null)
     {
-      if (this.mRealParentView != null)
-      {
-        this.mRealParentView.setAllowHeaderSliding(bool);
-        this.mRealParentView.setAllowFooterSliding(bool);
-      }
-      return;
+      paramBoolean.setAllowHeaderSliding(bool);
+      this.mRealParentView.setAllowFooterSliding(bool);
     }
   }
   
@@ -1164,35 +1198,50 @@ public class VRecyclerList
       paramVRecyclerView = new FrameLayout.LayoutParams(paramInt1, paramInt2);
       paramVRecyclerView.setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
     }
-    for (;;)
+    else if ((((VRecyclerView)this.mHost).getParent() instanceof VRefreshViewGroup))
     {
-      if (paramVRecyclerView != null) {
-        ((VRecyclerView)this.mHost).setLayoutParams(paramVRecyclerView);
-      }
-      calAndSetContentSize();
-      return;
-      if ((((VRecyclerView)this.mHost).getParent() instanceof VRefreshViewGroup))
+      Object localObject;
+      if (((VRefreshViewGroup)((VRecyclerView)this.mHost).getParent()).getLayoutParams() == null)
       {
-        Object localObject;
-        if (((VRefreshViewGroup)((VRecyclerView)this.mHost).getParent()).getLayoutParams() == null)
-        {
-          localObject = new FrameLayout.LayoutParams(paramInt1, paramInt2);
-          ((FrameLayout.LayoutParams)localObject).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
-          ((VRefreshViewGroup)((VRecyclerView)this.mHost).getParent()).setViewGroupLayoutParams((ViewGroup.LayoutParams)localObject);
-        }
-        for (;;)
-        {
-          paramVRecyclerView = this.mParent.getChildLayoutParams(this, paramVRecyclerView, paramInt1, paramInt2, 0, 0, 0, 0);
-          break;
-          localObject = ((VRefreshViewGroup)((VRecyclerView)this.mHost).getParent()).getLayoutParams();
-          ((ViewGroup.LayoutParams)localObject).height = paramInt2;
-          ((ViewGroup.LayoutParams)localObject).width = paramInt1;
-          if ((localObject instanceof ViewGroup.MarginLayoutParams)) {
-            ((ViewGroup.MarginLayoutParams)localObject).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
-          }
+        localObject = new FrameLayout.LayoutParams(paramInt1, paramInt2);
+        ((FrameLayout.LayoutParams)localObject).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
+        ((VRefreshViewGroup)((VRecyclerView)this.mHost).getParent()).setViewGroupLayoutParams((ViewGroup.LayoutParams)localObject);
+      }
+      else
+      {
+        localObject = ((VRefreshViewGroup)((VRecyclerView)this.mHost).getParent()).getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).height = paramInt2;
+        ((ViewGroup.LayoutParams)localObject).width = paramInt1;
+        if ((localObject instanceof ViewGroup.MarginLayoutParams)) {
+          ((ViewGroup.MarginLayoutParams)localObject).setMargins(paramInt3, paramInt5, paramInt4, paramInt6);
         }
       }
+      paramVRecyclerView = this.mParent.getChildLayoutParams(this, paramVRecyclerView, paramInt1, paramInt2, 0, 0, 0, 0);
+    }
+    else
+    {
       paramVRecyclerView = this.mParent.getChildLayoutParams(this, paramVRecyclerView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6);
+    }
+    if (paramVRecyclerView != null) {
+      ((VRecyclerView)this.mHost).setLayoutParams(paramVRecyclerView);
+    }
+    calAndSetContentSize();
+  }
+  
+  @VComponentProp(name="setIsCompatibleLeftPan")
+  public void setIsCompatibleLeftPan(Boolean paramBoolean)
+  {
+    VRefreshViewGroup localVRefreshViewGroup = this.mRealParentView;
+    if (localVRefreshViewGroup != null) {
+      localVRefreshViewGroup.setIsCompatibleLeftPan(paramBoolean.booleanValue());
+    }
+  }
+  
+  @VComponentProp(name="keepPosition")
+  public void setKeepPosition(float paramFloat)
+  {
+    if ((int)ViolaUtils.getFloat(Float.valueOf(paramFloat), Float.valueOf(0.0F)) <= 0) {
+      VRecyclerList.RVUpdateOps.access$002(this.updateOps, null);
     }
   }
   
@@ -1217,7 +1266,12 @@ public class VRecyclerList
       }
       catch (Exception localException)
       {
-        ViolaLogUtils.e("VRecyclerList", "setPreloadDistance error! value is " + paramObject + " error message is:" + localException.getMessage());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setPreloadDistance error! value is ");
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(" error message is:");
+        localStringBuilder.append(localException.getMessage());
+        ViolaLogUtils.e("VRecyclerList", localStringBuilder.toString());
         return;
       }
     }
@@ -1226,62 +1280,68 @@ public class VRecyclerList
   
   public boolean setProperty(String paramString, Object paramObject)
   {
-    boolean bool2 = true;
-    int i;
     if (ViolaUtils.getString(paramObject, null) != null)
     {
-      i = -1;
-      switch (paramString.hashCode())
+      int i = -1;
+      int j = paramString.hashCode();
+      if (j != 529642498)
       {
-      default: 
-        switch (i)
+        if (j != 1043840622)
         {
+          if ((j == 1287124693) && (paramString.equals("backgroundColor"))) {
+            i = 1;
+          }
         }
-        break;
+        else if (paramString.equals("adsorptionOffsetIndex")) {
+          i = 2;
+        }
       }
-    }
-    String str;
-    do
-    {
-      boolean bool1 = super.setProperty(paramString, paramObject);
-      do
+      else if (paramString.equals("overflow")) {
+        i = 0;
+      }
+      if (i != 0)
       {
-        do
+        if (i != 1)
         {
-          return bool1;
-          if (!paramString.equals("overflow")) {
-            break;
+          if (i != 2) {
+            break label245;
           }
-          i = 0;
-          break;
-          if (!paramString.equals("backgroundColor")) {
-            break;
+        }
+        else
+        {
+          String str = ViolaUtils.getString(paramObject, null);
+          if (!TextUtils.isEmpty(str))
+          {
+            if ((this.mRealParentView != null) && (!str.equals("transparent")))
+            {
+              i = ViolaUtils.getColor(str);
+              this.mRealParentView.setBackgroundColor(i);
+            }
+            return super.setProperty(paramString, paramObject);
           }
-          i = 1;
-          break;
-          paramString = ViolaUtils.getString(paramObject, null);
-          bool1 = bool2;
-        } while (TextUtils.isEmpty(paramString));
-        bool1 = bool2;
-      } while (this.mIsSetInset);
-      if (paramString.equals("visible")) {
-        this.mIsOverFlow = true;
-      }
-      for (;;)
-      {
-        setReadParentOverFlow(this.mIsOverFlow);
+        }
+        i = ViolaUtils.getInt(paramObject, 0);
+        if (getHostView() != null) {
+          ((VRecyclerView)getHostView()).setPlaceHeaderCount(i);
+        }
         return true;
-        if (paramString.equals("hidden")) {
-          this.mIsOverFlow = false;
-        }
       }
-      str = ViolaUtils.getString(paramObject, null);
-    } while (TextUtils.isEmpty(str));
-    if ((this.mRealParentView != null) && (!str.equals("transparent")))
-    {
-      i = ViolaUtils.getColor(str);
-      this.mRealParentView.setBackgroundColor(i);
+      else
+      {
+        paramString = ViolaUtils.getString(paramObject, null);
+        if ((!TextUtils.isEmpty(paramString)) && (!this.mIsSetInset))
+        {
+          if (paramString.equals("visible")) {
+            this.mIsOverFlow = true;
+          } else if (paramString.equals("hidden")) {
+            this.mIsOverFlow = false;
+          }
+          setReadParentOverFlow(this.mIsOverFlow);
+        }
+        return true;
+      }
     }
+    label245:
     return super.setProperty(paramString, paramObject);
   }
   
@@ -1290,14 +1350,13 @@ public class VRecyclerList
   {
     if (paramBoolean != null)
     {
-      if (this.mOrientation == 1) {
+      if (this.mOrientation == 1)
+      {
         ((VRecyclerView)getHostView()).setVerticalScrollBarEnabled(paramBoolean.booleanValue());
+        return;
       }
+      ((VRecyclerView)getHostView()).setHorizontalScrollBarEnabled(paramBoolean.booleanValue());
     }
-    else {
-      return;
-    }
-    ((VRecyclerView)getHostView()).setHorizontalScrollBarEnabled(paramBoolean.booleanValue());
   }
   
   @VComponentProp(name="scrollMinOffset")
@@ -1307,23 +1366,27 @@ public class VRecyclerList
       return;
     }
     String str = paramObject.toString().trim();
-    if (str.endsWith("dp")) {}
-    for (;;)
-    {
+    boolean bool = str.endsWith("dp");
+    int i = 0;
+    if (bool) {
       try
       {
-        i = FlexConvertUtils.dip2px(Integer.valueOf(str.substring(0, str.indexOf("dp"))).intValue());
-        ((VRecyclerView)getHostView()).setScrollMinOffset(i);
-        return;
+        int j = FlexConvertUtils.dip2px(Integer.valueOf(str.substring(0, str.indexOf("dp"))).intValue());
+        i = j;
       }
       catch (Exception localException)
       {
-        ViolaLogUtils.e("VRecyclerList", "setPreloadDistance error! value is " + paramObject + " error message is:" + localException.getMessage());
-        i = 0;
-        continue;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setPreloadDistance error! value is ");
+        localStringBuilder.append(paramObject);
+        localStringBuilder.append(" error message is:");
+        localStringBuilder.append(localException.getMessage());
+        ViolaLogUtils.e("VRecyclerList", localStringBuilder.toString());
       }
-      int i = Integer.valueOf(localException).intValue();
+    } else {
+      i = Integer.valueOf(localException).intValue();
     }
+    ((VRecyclerView)getHostView()).setScrollMinOffset(i);
   }
   
   @JSMethod(uiThread=true)
@@ -1361,7 +1424,7 @@ public class VRecyclerList
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VRecyclerList
  * JD-Core Version:    0.7.0.1
  */

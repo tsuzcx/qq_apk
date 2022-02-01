@@ -11,37 +11,36 @@ class ComputableLiveData$2
   @WorkerThread
   public void run()
   {
-    Object localObject1;
-    if (ComputableLiveData.access$100(this.this$0).compareAndSet(false, true)) {
-      localObject1 = null;
-    }
-    for (int i = 0;; i = 0) {
-      try
+    int i;
+    do
+    {
+      if (ComputableLiveData.access$100(this.this$0).compareAndSet(false, true))
       {
-        while (ComputableLiveData.access$200(this.this$0).compareAndSet(true, false))
+        Object localObject1 = null;
+        i = 0;
+        try
         {
-          localObject1 = this.this$0.compute();
-          i = 1;
+          while (ComputableLiveData.access$200(this.this$0).compareAndSet(true, false))
+          {
+            localObject1 = this.this$0.compute();
+            i = 1;
+          }
+          if (i != 0) {
+            ComputableLiveData.access$300(this.this$0).postValue(localObject1);
+          }
         }
-        if (i != 0) {
-          ComputableLiveData.access$300(this.this$0).postValue(localObject1);
+        finally
+        {
+          ComputableLiveData.access$100(this.this$0).set(false);
         }
-        ComputableLiveData.access$100(this.this$0).set(false);
-        if ((i != 0) && (ComputableLiveData.access$200(this.this$0).get())) {
-          break;
-        }
-        return;
       }
-      finally
-      {
-        ComputableLiveData.access$100(this.this$0).set(false);
-      }
-    }
+      i = 0;
+    } while ((i != 0) && (ComputableLiveData.access$200(this.this$0).get()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.arch.lifecycle.ComputableLiveData.2
  * JD-Core Version:    0.7.0.1
  */

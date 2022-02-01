@@ -7,7 +7,6 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 import java.util.List;
-import java.util.List<Lcom.tencent.mobileqq.activity.aio.doodle.PathData.PointData;>;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -35,22 +34,32 @@ public class HalfAlgorithm
   
   private void a(List<PathDrawer.PathSegment> paramList1, List<PathDrawer.PathSegment> paramList2)
   {
-    if ((paramList2 == null) || (paramList1 == null) || (paramList2.size() == 0)) {
-      return;
-    }
-    long l;
-    if (paramList1.size() > 0) {
-      l = ((PathDrawer.PathSegment)paramList1.get(paramList1.size() - 1)).a();
-    }
-    for (int i = ((PathDrawer.PathSegment)paramList1.get(paramList1.size() - 1)).a();; i = 0)
+    if ((paramList2 != null) && (paramList1 != null))
     {
+      if (paramList2.size() == 0) {
+        return;
+      }
+      long l = -1L;
+      int i;
+      if (paramList1.size() > 0)
+      {
+        l = ((PathDrawer.PathSegment)paramList1.get(paramList1.size() - 1)).a();
+        i = ((PathDrawer.PathSegment)paramList1.get(paramList1.size() - 1)).a();
+      }
+      else
+      {
+        i = 0;
+      }
       if (((PathDrawer.PathSegment)paramList2.get(0)).a() == l)
       {
-        QLog.d("DoodleAlgorithm", 2, "addjust time and seg :" + l);
-        Iterator localIterator = paramList2.iterator();
-        while (localIterator.hasNext())
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("addjust time and seg :");
+        ((StringBuilder)localObject).append(l);
+        QLog.d("DoodleAlgorithm", 2, ((StringBuilder)localObject).toString());
+        localObject = paramList2.iterator();
+        while (((Iterator)localObject).hasNext())
         {
-          PathDrawer.PathSegment localPathSegment = (PathDrawer.PathSegment)localIterator.next();
+          PathDrawer.PathSegment localPathSegment = (PathDrawer.PathSegment)((Iterator)localObject).next();
           if (localPathSegment.a() != l) {
             break;
           }
@@ -58,8 +67,6 @@ public class HalfAlgorithm
         }
       }
       paramList1.addAll(paramList2);
-      return;
-      l = -1L;
     }
   }
   
@@ -72,14 +79,15 @@ public class HalfAlgorithm
   
   public void a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong, Path paramPath, List<PathDrawer.PathSegment> paramList)
   {
-    if (paramPath == null) {}
-    do
-    {
+    if (paramPath == null) {
       return;
-      paramPath.reset();
-      paramPath.moveTo(paramFloat1, paramFloat2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
-    } while (paramList == null);
+    }
+    paramPath.reset();
+    paramPath.moveTo(paramFloat1, paramFloat2);
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioDoodlePointSet.a(paramFloat1, paramFloat2, paramFloat3, paramLong);
+    if (paramList == null) {
+      return;
+    }
     paramList.clear();
     a();
   }
@@ -89,8 +97,14 @@ public class HalfAlgorithm
     if (this.jdField_a_of_type_JavaUtilMap == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("DoodleAlgorithm", 2, "onResult :" + paramInt + " : " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("onResult :");
+      ((StringBuilder)???).append(paramInt);
+      ((StringBuilder)???).append(" : ");
+      ((StringBuilder)???).append(this.jdField_a_of_type_Int);
+      QLog.d("DoodleAlgorithm", 2, ((StringBuilder)???).toString());
     }
     if (((!paramBoolean) || (paramList == null) || (paramPath == null)) && (QLog.isColorLevel())) {
       QLog.d("DoodleAlgorithm", 2, "onResult error!!");
@@ -132,169 +146,203 @@ public class HalfAlgorithm
         this.jdField_a_of_type_JavaUtilList = null;
         return;
       }
-      QLog.d("DoodleAlgorithm", 2, "finish segment == 0:" + System.currentTimeMillis());
+      paramPath = new StringBuilder();
+      paramPath.append("finish segment == 0:");
+      paramPath.append(System.currentTimeMillis());
+      QLog.d("DoodleAlgorithm", 2, paramPath.toString());
       return;
     }
-    QLog.d("DoodleAlgorithm", 2, "finish failed:" + System.currentTimeMillis());
+    paramPath = new StringBuilder();
+    paramPath.append("finish failed:");
+    paramPath.append(System.currentTimeMillis());
+    QLog.d("DoodleAlgorithm", 2, paramPath.toString());
   }
   
   public void a(List<PathData.PointData> paramList, Path paramPath, List<PathDrawer.PathSegment> paramList1)
   {
-    if ((paramList == null) || (paramList.size() == 0) || (paramPath == null) || (paramList1 == null)) {
-      return;
-    }
-    QLog.d("DoodleAlgorithm", 2, "patchPath begin:");
-    paramList = paramList.iterator();
-    int i = 1;
-    if (paramList.hasNext())
+    if ((paramList != null) && (paramList.size() != 0) && (paramPath != null))
     {
-      PathData.PointData localPointData = (PathData.PointData)paramList.next();
-      if (i != 0)
-      {
-        a(localPointData.a(), localPointData.b(), localPointData.c(), localPointData.a(), paramPath, null);
-        i = 0;
+      if (paramList1 == null) {
+        return;
       }
-      for (;;)
+      QLog.d("DoodleAlgorithm", 2, "patchPath begin:");
+      paramList = paramList.iterator();
+      int i = 1;
+      while (paramList.hasNext())
       {
-        break;
-        b(localPointData.a(), localPointData.b(), localPointData.c(), localPointData.a(), paramPath, null);
+        PathData.PointData localPointData = (PathData.PointData)paramList.next();
+        if (i != 0)
+        {
+          i = 0;
+          a(localPointData.a(), localPointData.b(), localPointData.c(), localPointData.a(), paramPath, null);
+        }
+        else
+        {
+          b(localPointData.a(), localPointData.b(), localPointData.c(), localPointData.a(), paramPath, null);
+        }
       }
+      a(paramPath, null);
+      a(paramList1, paramPath);
+      paramList = new StringBuilder();
+      paramList.append("patchpath end:");
+      paramList.append(paramList1.size());
+      QLog.d("DoodleAlgorithm", 2, paramList.toString());
     }
-    a(paramPath, null);
-    a(paramList1, paramPath);
-    QLog.d("DoodleAlgorithm", 2, "patchpath end:" + paramList1.size());
   }
   
   public void a(List<PathData.PointData> arg1, Path paramPath, List<PathDrawer.PathSegment> paramList1, int paramInt)
   {
-    if ((??? == null) || (???.size() == 0) || (paramPath == null) || (paramList1 == null)) {}
-    int i;
-    label86:
-    do
+    if ((??? != null) && (???.size() != 0) && (paramPath != null))
     {
-      return;
-      QLog.d("DoodleAlgorithm", 2, "transPath begin:" + System.currentTimeMillis());
-      if (???.size() > paramInt)
-      {
+      if (paramList1 == null) {
+        return;
+      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("transPath begin:");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis());
+      QLog.d("DoodleAlgorithm", 2, ((StringBuilder)localObject1).toString());
+      int i;
+      if (???.size() > paramInt) {
         i = 1;
-        if (i != 0) {
-          break;
-        }
+      } else {
+        i = 0;
+      }
+      if (i == 0)
+      {
         QLog.d("DoodleAlgorithm", 2, "transPath begin singlethread begin");
         ??? = ???.iterator();
         paramInt = 1;
-        if (!???.hasNext()) {
-          break label178;
-        }
-        localObject1 = (PathData.PointData)???.next();
-        if (paramInt == 0) {
-          break label149;
-        }
-        a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a(), paramPath, paramList1);
-        paramInt = 0;
-      }
-      for (;;)
-      {
-        break label86;
-        i = 0;
-        break;
-        b(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a(), paramPath, paramList1);
-      }
-      a(paramPath, paramList1);
-      QLog.d("DoodleAlgorithm", 2, "before merge:" + paramList1.size());
-      a(paramList1, 0);
-    } while (!QLog.isColorLevel());
-    label149:
-    label178:
-    QLog.d("DoodleAlgorithm", 2, "after merge:" + paramList1.size());
-    return;
-    Object localObject1 = null;
-    paramPath.reset();
-    if (paramList1 != null) {
-      paramList1.clear();
-    }
-    this.jdField_a_of_type_Int = 0;
-    if (this.jdField_a_of_type_JavaUtilMap == null) {
-      this.jdField_a_of_type_JavaUtilMap = new TreeMap();
-    }
-    this.jdField_a_of_type_JavaUtilMap.clear();
-    QLog.d("DoodleAlgorithm", 2, "transPath begin multithread begin");
-    Object localObject2 = ???.iterator();
-    ??? = (List<PathData.PointData>)localObject1;
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject1 = (PathData.PointData)((Iterator)localObject2).next();
-      if (??? == null)
-      {
-        ??? = new SubPathInfo();
-        ???.a(paramInt);
-        ???.a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a());
-        paramPath.moveTo(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b());
-      }
-      else if (???.a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a()))
-      {
-        localObject1 = ???.a();
-        i = this.jdField_a_of_type_Int + 1;
-        this.jdField_a_of_type_Int = i;
-        ThreadManager.post(new HalfAlgorithm.TransPathJob(this, i, (List)localObject1, this), 8, null, true);
-      }
-    }
-    ???.a();
-    paramInt = this.jdField_a_of_type_Int + 1;
-    this.jdField_a_of_type_Int = paramInt;
-    ThreadManager.post(new HalfAlgorithm.TransPathJob(this, paramInt, ???.jdField_a_of_type_JavaUtilList, this), 8, null, true);
-    synchronized (this.jdField_a_of_type_JavaUtilMap)
-    {
-      QLog.d("DoodleAlgorithm", 2, "tranpath wait:" + this.jdField_a_of_type_Int + " - " + this.jdField_a_of_type_JavaUtilMap.size());
-      paramInt = this.jdField_a_of_type_JavaUtilMap.size();
-      i = this.jdField_a_of_type_Int;
-      if (paramInt >= i) {}
-    }
-    try
-    {
-      this.jdField_a_of_type_JavaUtilMap.wait(60000L);
-      if (this.jdField_a_of_type_JavaUtilMap.size() == this.jdField_a_of_type_Int)
-      {
-        localObject1 = this.jdField_a_of_type_JavaUtilMap.values().iterator();
-        while (((Iterator)localObject1).hasNext())
+        while (???.hasNext())
         {
-          localObject2 = (ResultInfo)((Iterator)localObject1).next();
-          if (((ResultInfo)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
-            paramPath.addPath(((ResultInfo)localObject2).jdField_a_of_type_AndroidGraphicsPath);
-          }
-          if (((ResultInfo)localObject2).jdField_a_of_type_JavaUtilList != null)
+          localObject1 = (PathData.PointData)???.next();
+          if (paramInt != 0)
           {
-            a(paramList1, ((ResultInfo)localObject2).jdField_a_of_type_JavaUtilList);
-            continue;
-            paramPath = finally;
-            throw paramPath;
+            a(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a(), paramPath, paramList1);
+            paramInt = 0;
+          }
+          else
+          {
+            b(((PathData.PointData)localObject1).a(), ((PathData.PointData)localObject1).b(), ((PathData.PointData)localObject1).c(), ((PathData.PointData)localObject1).a(), paramPath, paramList1);
           }
         }
+        a(paramPath, paramList1);
+        ??? = new StringBuilder();
+        ???.append("before merge:");
+        ???.append(paramList1.size());
+        QLog.d("DoodleAlgorithm", 2, ???.toString());
+        a(paramList1, 0);
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          ???.append("after merge:");
+          ???.append(paramList1.size());
+          QLog.d("DoodleAlgorithm", 2, ???.toString());
+        }
+        return;
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      paramPath.reset();
+      if (paramList1 != null) {
+        paramList1.clear();
+      }
+      this.jdField_a_of_type_Int = 0;
+      if (this.jdField_a_of_type_JavaUtilMap == null) {
+        this.jdField_a_of_type_JavaUtilMap = new TreeMap();
+      }
+      this.jdField_a_of_type_JavaUtilMap.clear();
+      QLog.d("DoodleAlgorithm", 2, "transPath begin multithread begin");
+      localObject1 = ???.iterator();
+      ??? = null;
+      Object localObject2;
+      while (((Iterator)localObject1).hasNext())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("DoodleAlgorithm", 2, "transPath exception:" + localException);
+        localObject2 = (PathData.PointData)((Iterator)localObject1).next();
+        if (??? == null)
+        {
+          ??? = new SubPathInfo();
+          ???.a(paramInt);
+          ???.a(((PathData.PointData)localObject2).a(), ((PathData.PointData)localObject2).b(), ((PathData.PointData)localObject2).c(), ((PathData.PointData)localObject2).a());
+          paramPath.moveTo(((PathData.PointData)localObject2).a(), ((PathData.PointData)localObject2).b());
+        }
+        else if (???.a(((PathData.PointData)localObject2).a(), ((PathData.PointData)localObject2).b(), ((PathData.PointData)localObject2).c(), ((PathData.PointData)localObject2).a()))
+        {
+          localObject2 = ???.a();
+          i = this.jdField_a_of_type_Int + 1;
+          this.jdField_a_of_type_Int = i;
+          ThreadManager.post(new HalfAlgorithm.TransPathJob(this, i, (List)localObject2, this), 8, null, true);
         }
       }
-      QLog.d("DoodleAlgorithm", 2, "transPath end :" + this.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_JavaUtilMap = null;
-      this.jdField_a_of_type_Int = 0;
-      QLog.d("DoodleAlgorithm", 2, "before merge:" + paramList1.size());
-      a(paramList1, 0);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("DoodleAlgorithm", 2, "transPath end:" + paramList1.size());
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("DoodleAlgorithm", 2, "transPath end with error:" + this.jdField_a_of_type_JavaUtilMap.size() + " ---" + this.jdField_a_of_type_Int);
+      ???.a();
+      paramInt = this.jdField_a_of_type_Int + 1;
+      this.jdField_a_of_type_Int = paramInt;
+      ThreadManager.post(new HalfAlgorithm.TransPathJob(this, paramInt, ???.jdField_a_of_type_JavaUtilList, this), 8, null, true);
+      synchronized (this.jdField_a_of_type_JavaUtilMap)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("tranpath wait:");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+        ((StringBuilder)localObject1).append(" - ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilMap.size());
+        QLog.d("DoodleAlgorithm", 2, ((StringBuilder)localObject1).toString());
+        paramInt = this.jdField_a_of_type_JavaUtilMap.size();
+        i = this.jdField_a_of_type_Int;
+        if (paramInt < i) {
+          try
+          {
+            this.jdField_a_of_type_JavaUtilMap.wait(60000L);
+          }
+          catch (Exception localException)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("transPath exception:");
+              ((StringBuilder)localObject2).append(localException);
+              QLog.d("DoodleAlgorithm", 2, ((StringBuilder)localObject2).toString());
+            }
+          }
+        }
+        if (this.jdField_a_of_type_JavaUtilMap.size() == this.jdField_a_of_type_Int)
+        {
+          Iterator localIterator = this.jdField_a_of_type_JavaUtilMap.values().iterator();
+          while (localIterator.hasNext())
+          {
+            localObject2 = (ResultInfo)localIterator.next();
+            if (((ResultInfo)localObject2).jdField_a_of_type_AndroidGraphicsPath != null) {
+              paramPath.addPath(((ResultInfo)localObject2).jdField_a_of_type_AndroidGraphicsPath);
+            }
+            if (((ResultInfo)localObject2).jdField_a_of_type_JavaUtilList != null) {
+              a(paramList1, ((ResultInfo)localObject2).jdField_a_of_type_JavaUtilList);
+            }
+          }
+          paramPath = new StringBuilder();
+          paramPath.append("transPath end :");
+          paramPath.append(this.jdField_a_of_type_Int);
+          QLog.d("DoodleAlgorithm", 2, paramPath.toString());
+        }
+        else if (QLog.isColorLevel())
+        {
+          paramPath = new StringBuilder();
+          paramPath.append("transPath end with error:");
+          paramPath.append(this.jdField_a_of_type_JavaUtilMap.size());
+          paramPath.append(" ---");
+          paramPath.append(this.jdField_a_of_type_Int);
+          QLog.d("DoodleAlgorithm", 2, paramPath.toString());
+        }
+        this.jdField_a_of_type_JavaUtilMap = null;
+        this.jdField_a_of_type_Int = 0;
+        ??? = new StringBuilder();
+        ???.append("before merge:");
+        ???.append(paramList1.size());
+        QLog.d("DoodleAlgorithm", 2, ???.toString());
+        a(paramList1, 0);
+        if (QLog.isColorLevel())
+        {
+          ??? = new StringBuilder();
+          ???.append("transPath end:");
+          ???.append(paramList1.size());
+          QLog.d("DoodleAlgorithm", 2, ???.toString());
+        }
+        return;
       }
     }
   }
@@ -321,15 +369,21 @@ public class HalfAlgorithm
         a(paramList, this.jdField_a_of_type_JavaUtilList);
         return;
       }
-      QLog.d("DoodleAlgorithm", 2, "addpoint segment == 0:" + System.currentTimeMillis());
+      paramPath = new StringBuilder();
+      paramPath.append("addpoint segment == 0:");
+      paramPath.append(System.currentTimeMillis());
+      QLog.d("DoodleAlgorithm", 2, paramPath.toString());
       return;
     }
-    QLog.d("DoodleAlgorithm", 2, "addpoint failed:" + System.currentTimeMillis());
+    paramPath = new StringBuilder();
+    paramPath.append("addpoint failed:");
+    paramPath.append(System.currentTimeMillis());
+    QLog.d("DoodleAlgorithm", 2, paramPath.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.HalfAlgorithm
  * JD-Core Version:    0.7.0.1
  */

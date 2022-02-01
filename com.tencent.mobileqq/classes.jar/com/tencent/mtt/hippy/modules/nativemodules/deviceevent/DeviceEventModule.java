@@ -35,23 +35,16 @@ public class DeviceEventModule
   
   public boolean onBackPressed(HippyEngine.BackPressHandler paramBackPressHandler)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (this.b)
     {
       this.a = paramBackPressHandler;
-      bool1 = bool2;
-      if (this.mContext != null)
+      if ((this.mContext != null) && (this.mContext.getModuleManager().getJavaScriptModule(EventDispatcher.class) != null))
       {
-        bool1 = bool2;
-        if (this.mContext.getModuleManager().getJavaScriptModule(EventDispatcher.class) != null)
-        {
-          ((EventDispatcher)this.mContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("hardwareBackPress", null);
-          bool1 = true;
-        }
+        ((EventDispatcher)this.mContext.getModuleManager().getJavaScriptModule(EventDispatcher.class)).receiveNativeEvent("hardwareBackPress", null);
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   @HippyMethod(name="setListenBackPress")
@@ -62,7 +55,7 @@ public class DeviceEventModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.deviceevent.DeviceEventModule
  * JD-Core Version:    0.7.0.1
  */

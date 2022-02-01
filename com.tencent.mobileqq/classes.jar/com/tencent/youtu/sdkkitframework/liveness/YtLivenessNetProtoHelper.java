@@ -19,7 +19,7 @@ import org.json.JSONObject;
 
 public class YtLivenessNetProtoHelper
 {
-  private static final String TAG = YtLivenessNetProtoHelper.class.getSimpleName();
+  private static final String TAG = "YtLivenessNetProtoHelper";
   
   public static String makeActionLiveReq(YtLivenessNetProtoHelper.ActionLiveReqData paramActionLiveReqData)
   {
@@ -128,67 +128,78 @@ public class YtLivenessNetProtoHelper
   
   public static String makeLipReadReq(YtLivenessNetProtoHelper.LipReadReqData paramLipReadReqData)
   {
-    int j = 0;
     YtLivenessNetProtoHelper.PersonLiveReq localPersonLiveReq = new YtLivenessNetProtoHelper.PersonLiveReq();
     localPersonLiveReq.app_id = paramLipReadReqData.baseInfo.appId;
     localPersonLiveReq.business_name = paramLipReadReqData.baseInfo.businessId;
     localPersonLiveReq.person_id = paramLipReadReqData.baseInfo.personId;
     localPersonLiveReq.livedata = new YtLivenessNetProtoHelper.PersonLive();
-    Object localObject = new YtLivenessNetProtoHelper.Version();
-    ((YtLivenessNetProtoHelper.Version)localObject).sdk_version = YtSDKKitFramework.getInstance().version();
-    ((YtLivenessNetProtoHelper.Version)localObject).ftrack_sdk_version = YTFaceTracker.getVersion();
-    ((YtLivenessNetProtoHelper.Version)localObject).freflect_sdk_version = "3.6.8";
-    localObject = ((YtLivenessNetProtoHelper.Version)localObject).makeVersion();
-    localPersonLiveReq.livedata.select_data = new YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData(paramLipReadReqData.baseInfo.lux, 0, "", (String)localObject, "");
+    Object localObject1 = new YtLivenessNetProtoHelper.Version();
+    ((YtLivenessNetProtoHelper.Version)localObject1).sdk_version = YtSDKKitFramework.getInstance().version();
+    ((YtLivenessNetProtoHelper.Version)localObject1).ftrack_sdk_version = YTFaceTracker.getVersion();
+    ((YtLivenessNetProtoHelper.Version)localObject1).freflect_sdk_version = "3.6.8";
+    localObject1 = ((YtLivenessNetProtoHelper.Version)localObject1).makeVersion();
+    localPersonLiveReq.livedata.select_data = new YtLivenessNetProtoHelper.LiveStyleRequester.SeleceData(paramLipReadReqData.baseInfo.lux, 0, "", (String)localObject1, "");
     localPersonLiveReq.livedata.frames = new ArrayList();
-    localObject = new YtLivenessNetProtoHelper.FaceFrame();
-    ((YtLivenessNetProtoHelper.FaceFrame)localObject).image = paramLipReadReqData.liveImage;
-    ((YtLivenessNetProtoHelper.FaceFrame)localObject).x_coordinates = new ArrayList();
-    ((YtLivenessNetProtoHelper.FaceFrame)localObject).y_coordinates = new ArrayList();
+    localObject1 = new YtLivenessNetProtoHelper.FaceFrame();
+    ((YtLivenessNetProtoHelper.FaceFrame)localObject1).image = paramLipReadReqData.liveImage;
+    ((YtLivenessNetProtoHelper.FaceFrame)localObject1).x_coordinates = new ArrayList();
+    ((YtLivenessNetProtoHelper.FaceFrame)localObject1).y_coordinates = new ArrayList();
+    int j = 0;
     int i = 0;
+    Object localObject2;
+    Object localObject3;
+    int k;
     while (i < 5)
     {
-      ((YtLivenessNetProtoHelper.FaceFrame)localObject).x_coordinates.add(Float.valueOf(paramLipReadReqData.liveFivePoint[(i * 2)]));
-      ((YtLivenessNetProtoHelper.FaceFrame)localObject).y_coordinates.add(Float.valueOf(paramLipReadReqData.liveFivePoint[(i * 2 + 1)]));
+      localObject2 = ((YtLivenessNetProtoHelper.FaceFrame)localObject1).x_coordinates;
+      localObject3 = paramLipReadReqData.liveFivePoint;
+      k = i * 2;
+      ((ArrayList)localObject2).add(Float.valueOf(localObject3[k]));
+      ((YtLivenessNetProtoHelper.FaceFrame)localObject1).y_coordinates.add(Float.valueOf(paramLipReadReqData.liveFivePoint[(k + 1)]));
       i += 1;
     }
-    localPersonLiveReq.livedata.frames.add(localObject);
+    localPersonLiveReq.livedata.frames.add(localObject1);
     try
     {
-      localObject = new JSONObject(paramLipReadReqData.faceExtraInfo);
-      YtLivenessNetProtoHelper.FaceFrame localFaceFrame = new YtLivenessNetProtoHelper.FaceFrame();
-      localFaceFrame.image = ((JSONObject)localObject).getString("openmouth_img");
-      localFaceFrame.x_coordinates = new ArrayList();
-      localFaceFrame.y_coordinates = new ArrayList();
-      JSONArray localJSONArray = ((JSONObject)localObject).getJSONArray("openmouth_5pts");
+      localObject1 = new JSONObject(paramLipReadReqData.faceExtraInfo);
+      localObject2 = new YtLivenessNetProtoHelper.FaceFrame();
+      ((YtLivenessNetProtoHelper.FaceFrame)localObject2).image = ((JSONObject)localObject1).getString("openmouth_img");
+      ((YtLivenessNetProtoHelper.FaceFrame)localObject2).x_coordinates = new ArrayList();
+      ((YtLivenessNetProtoHelper.FaceFrame)localObject2).y_coordinates = new ArrayList();
+      localObject3 = ((JSONObject)localObject1).getJSONArray("openmouth_5pts");
       i = 0;
       while (i < 5)
       {
-        localFaceFrame.x_coordinates.add(Float.valueOf((float)localJSONArray.optDouble(i * 2)));
-        localFaceFrame.y_coordinates.add(Float.valueOf((float)localJSONArray.optDouble(i * 2 + 1)));
+        ArrayList localArrayList = ((YtLivenessNetProtoHelper.FaceFrame)localObject2).x_coordinates;
+        k = i * 2;
+        localArrayList.add(Float.valueOf((float)((JSONArray)localObject3).optDouble(k)));
+        ((YtLivenessNetProtoHelper.FaceFrame)localObject2).y_coordinates.add(Float.valueOf((float)((JSONArray)localObject3).optDouble(k + 1)));
         i += 1;
       }
-      localPersonLiveReq.livedata.frames.add(localFaceFrame);
-      localFaceFrame = new YtLivenessNetProtoHelper.FaceFrame();
-      localFaceFrame.image = ((JSONObject)localObject).getString("closeeye_img");
-      localFaceFrame.x_coordinates = new ArrayList();
-      localFaceFrame.y_coordinates = new ArrayList();
-      localObject = ((JSONObject)localObject).getJSONArray("closeeye_5pts");
+      localPersonLiveReq.livedata.frames.add(localObject2);
+      localObject2 = new YtLivenessNetProtoHelper.FaceFrame();
+      ((YtLivenessNetProtoHelper.FaceFrame)localObject2).image = ((JSONObject)localObject1).getString("closeeye_img");
+      ((YtLivenessNetProtoHelper.FaceFrame)localObject2).x_coordinates = new ArrayList();
+      ((YtLivenessNetProtoHelper.FaceFrame)localObject2).y_coordinates = new ArrayList();
+      localObject1 = ((JSONObject)localObject1).getJSONArray("closeeye_5pts");
       i = j;
       while (i < 5)
       {
-        localFaceFrame.x_coordinates.add(Float.valueOf((float)((JSONArray)localObject).optDouble(i * 2)));
-        localFaceFrame.y_coordinates.add(Float.valueOf((float)((JSONArray)localObject).optDouble(i * 2 + 1)));
+        localObject3 = ((YtLivenessNetProtoHelper.FaceFrame)localObject2).x_coordinates;
+        j = i * 2;
+        ((ArrayList)localObject3).add(Float.valueOf((float)((JSONArray)localObject1).optDouble(j)));
+        ((YtLivenessNetProtoHelper.FaceFrame)localObject2).y_coordinates.add(Float.valueOf((float)((JSONArray)localObject1).optDouble(j + 1)));
         i += 1;
       }
-      localPersonLiveReq.livedata.frames.add(localFaceFrame);
+      localPersonLiveReq.livedata.frames.add(localObject2);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        YtLogger.e(TAG, "Failed parse extra face list " + localException.getLocalizedMessage());
-      }
+      localObject2 = TAG;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("Failed parse extra face list ");
+      ((StringBuilder)localObject3).append(localException.getLocalizedMessage());
+      YtLogger.e((String)localObject2, ((StringBuilder)localObject3).toString());
     }
     localPersonLiveReq.livedata.validate_data = paramLipReadReqData.validate_data;
     localPersonLiveReq.livedata.voice = paramLipReadReqData.voice;
@@ -279,7 +290,7 @@ public class YtLivenessNetProtoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.sdkkitframework.liveness.YtLivenessNetProtoHelper
  * JD-Core Version:    0.7.0.1
  */

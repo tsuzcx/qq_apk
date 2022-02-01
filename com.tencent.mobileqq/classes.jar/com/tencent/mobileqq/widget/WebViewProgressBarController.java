@@ -61,33 +61,40 @@ public class WebViewProgressBarController
     this.e = this.d;
     this.jdField_b_of_type_Int = 255;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(0);
+    WebViewProgressBar localWebViewProgressBar = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
+    if (localWebViewProgressBar != null) {
+      localWebViewProgressBar.setVisibility(0);
     }
     e();
   }
   
   public void a(byte paramByte)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      switch (paramByte)
+    }
+    if (paramByte != 0)
+    {
+      if (paramByte != 1)
       {
-      default: 
+        if (paramByte != 2) {
+          return;
+        }
+        paramByte = this.jdField_a_of_type_Byte;
+        if ((paramByte == 0) || (paramByte == 1)) {
+          c();
+        }
+        this.jdField_a_of_type_Byte = 2;
         return;
       }
-    } while (this.jdField_a_of_type_Byte == 0);
+      b();
+      return;
+    }
+    if (this.jdField_a_of_type_Byte == 0) {
+      return;
+    }
     this.jdField_a_of_type_Byte = 0;
     a();
-    return;
-    b();
-    return;
-    if ((this.jdField_a_of_type_Byte == 0) || (this.jdField_a_of_type_Byte == 1)) {
-      c();
-    }
-    this.jdField_a_of_type_Byte = 2;
   }
   
   public void a(int paramInt)
@@ -102,15 +109,17 @@ public class WebViewProgressBarController
   
   public void a(boolean paramBoolean)
   {
-    if (paramBoolean == this.jdField_a_of_type_Boolean) {}
-    while (paramBoolean) {
+    if (paramBoolean == this.jdField_a_of_type_Boolean) {
       return;
     }
-    if (this.jdField_a_of_type_Byte != 2) {
-      a((byte)2);
+    if (!paramBoolean)
+    {
+      if (this.jdField_a_of_type_Byte != 2) {
+        a((byte)2);
+      }
+      this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
+      this.jdField_a_of_type_Boolean = false;
     }
-    this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.setVisibility(8);
-    this.jdField_a_of_type_Boolean = false;
   }
   
   public byte b()
@@ -139,14 +148,17 @@ public class WebViewProgressBarController
     this.jdField_a_of_type_Long = System.currentTimeMillis();
     this.jdField_b_of_type_Byte = 5;
     this.c = 0.1333333F;
-    if (this.jdField_b_of_type_Float <= 60.0F) {
-      this.c = ((40.0F + (60.0F - this.jdField_b_of_type_Float) * 0.5F) / 300.0F);
-    }
-    for (this.jdField_a_of_type_Float = 0.8166667F;; this.jdField_a_of_type_Float = (245.0F * this.c / (100.0F - this.jdField_b_of_type_Float)))
+    float f = this.jdField_b_of_type_Float;
+    if (f <= 60.0F)
     {
-      e();
-      return;
+      this.c = (((60.0F - f) * 0.5F + 40.0F) / 300.0F);
+      this.jdField_a_of_type_Float = 0.8166667F;
     }
+    else
+    {
+      this.jdField_a_of_type_Float = (this.c * 245.0F / (100.0F - f));
+    }
+    e();
   }
   
   public void d()
@@ -160,113 +172,135 @@ public class WebViewProgressBarController
   
   public void e()
   {
-    long l1;
     if (this.jdField_b_of_type_Byte != 6)
     {
-      l1 = System.currentTimeMillis();
-      if (this.jdField_b_of_type_Float < 100.0F) {
-        break label66;
-      }
-      d();
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(200);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(200, 20L);
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar.invalidate();
-      }
-      return;
-      label66:
-      long l2;
-      float f;
-      switch (this.jdField_b_of_type_Byte)
+      long l1 = System.currentTimeMillis();
+      float f1 = this.jdField_b_of_type_Float;
+      if (f1 >= 100.0F)
       {
-      default: 
-        break;
-      case 0: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 20.0F)
+        d();
+      }
+      else
+      {
+        int i = this.jdField_b_of_type_Byte;
+        long l2;
+        float f2;
+        float f3;
+        if (i != 0)
         {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 1;
-          this.c /= 5.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 1: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 98.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 4;
-          this.jdField_b_of_type_Float = 98.0F;
-          this.c = 0.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 2: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 80.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 3;
-          this.c /= 20.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 3: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        f = this.jdField_b_of_type_Float;
-        this.jdField_b_of_type_Float = ((float)l2 * this.c + f);
-        this.jdField_a_of_type_Long = l1;
-        if (this.jdField_b_of_type_Float >= 98.0F)
-        {
-          this.jdField_a_of_type_Long = l1;
-          this.jdField_b_of_type_Byte = 4;
-          this.c = 0.0F;
-        }
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        break;
-      case 5: 
-        l2 = a(l1 - this.jdField_a_of_type_Long);
-        this.jdField_b_of_type_Float += (float)l2 * this.c;
-        this.jdField_a_of_type_Long = l1;
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
-        if (this.jdField_b_of_type_Boolean)
-        {
-          if (this.e >= this.jdField_a_of_type_Int) {
-            this.e = this.jdField_a_of_type_Int;
+          if (i != 1)
+          {
+            if (i != 2)
+            {
+              if (i != 3)
+              {
+                if (i != 4)
+                {
+                  if (i == 5)
+                  {
+                    l2 = a(l1 - this.jdField_a_of_type_Long);
+                    f1 = this.jdField_b_of_type_Float;
+                    f2 = (float)l2;
+                    this.jdField_b_of_type_Float = (f1 + this.c * f2);
+                    this.jdField_a_of_type_Long = l1;
+                    i = this.jdField_a_of_type_Int;
+                    this.e = (i * this.jdField_b_of_type_Float / 100.0F);
+                    if (this.jdField_b_of_type_Boolean)
+                    {
+                      if (this.e >= i) {
+                        this.e = i;
+                      }
+                    }
+                    else
+                    {
+                      this.jdField_b_of_type_Int -= (int)(f2 * this.jdField_a_of_type_Float);
+                      if (this.jdField_b_of_type_Int <= 0)
+                      {
+                        d();
+                        this.jdField_b_of_type_Int = 0;
+                      }
+                    }
+                  }
+                }
+                else {
+                  this.e = (this.jdField_a_of_type_Int * f1 / 100.0F);
+                }
+              }
+              else
+              {
+                l2 = a(l1 - this.jdField_a_of_type_Long);
+                this.jdField_b_of_type_Float += (float)l2 * this.c;
+                this.jdField_a_of_type_Long = l1;
+                if (this.jdField_b_of_type_Float >= 98.0F)
+                {
+                  this.jdField_a_of_type_Long = l1;
+                  this.jdField_b_of_type_Byte = 4;
+                  this.c = 0.0F;
+                }
+                this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+              }
+            }
+            else
+            {
+              l2 = a(l1 - this.jdField_a_of_type_Long);
+              f1 = this.jdField_b_of_type_Float;
+              f2 = (float)l2;
+              f3 = this.c;
+              this.jdField_b_of_type_Float = (f1 + f2 * f3);
+              this.jdField_a_of_type_Long = l1;
+              if (this.jdField_b_of_type_Float >= 80.0F)
+              {
+                this.jdField_a_of_type_Long = l1;
+                this.jdField_b_of_type_Byte = 3;
+                this.c = (f3 / 20.0F);
+              }
+              this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
+            }
+          }
+          else
+          {
+            l2 = a(l1 - this.jdField_a_of_type_Long);
+            this.jdField_b_of_type_Float += (float)l2 * this.c;
+            this.jdField_a_of_type_Long = l1;
+            if (this.jdField_b_of_type_Float >= 98.0F)
+            {
+              this.jdField_a_of_type_Long = l1;
+              this.jdField_b_of_type_Byte = 4;
+              this.jdField_b_of_type_Float = 98.0F;
+              this.c = 0.0F;
+            }
+            this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
           }
         }
         else
         {
-          this.jdField_b_of_type_Int -= (int)((float)l2 * this.jdField_a_of_type_Float);
-          if (this.jdField_b_of_type_Int <= 0)
+          l2 = a(l1 - this.jdField_a_of_type_Long);
+          f1 = this.jdField_b_of_type_Float;
+          f2 = (float)l2;
+          f3 = this.c;
+          this.jdField_b_of_type_Float = (f1 + f2 * f3);
+          this.jdField_a_of_type_Long = l1;
+          if (this.jdField_b_of_type_Float >= 20.0F)
           {
-            d();
-            this.jdField_b_of_type_Int = 0;
+            this.jdField_a_of_type_Long = l1;
+            this.jdField_b_of_type_Byte = 1;
+            this.c = (f3 / 5.0F);
           }
+          this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
         }
-        break;
-      case 4: 
-        this.e = (this.jdField_a_of_type_Int * this.jdField_b_of_type_Float / 100.0F);
       }
+      this.jdField_a_of_type_AndroidOsHandler.removeMessages(200);
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(200, 20L);
+    }
+    WebViewProgressBar localWebViewProgressBar = this.jdField_a_of_type_ComTencentMobileqqWidgetWebViewProgressBar;
+    if (localWebViewProgressBar != null) {
+      localWebViewProgressBar.invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.WebViewProgressBarController
  * JD-Core Version:    0.7.0.1
  */

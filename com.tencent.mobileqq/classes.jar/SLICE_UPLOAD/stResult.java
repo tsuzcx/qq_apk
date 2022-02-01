@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class stResult
   extends JceStruct
 {
-  static int cache_flag = 0;
+  static int cache_flag;
   public int flag = 0;
   public String msg = "";
   public int ret = 0;
@@ -32,14 +32,15 @@ public final class stResult
   {
     paramJceOutputStream.write(this.ret, 1);
     paramJceOutputStream.write(this.flag, 2);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 3);
+    String str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SLICE_UPLOAD.stResult
  * JD-Core Version:    0.7.0.1
  */

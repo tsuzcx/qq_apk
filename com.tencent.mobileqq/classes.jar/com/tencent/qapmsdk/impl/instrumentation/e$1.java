@@ -44,31 +44,29 @@ class e$1
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        long l1;
-        long l2;
-      }
+      label35:
+      long l2;
+      long l1;
+      long l3;
+      break label35;
     }
-    l1 = paramc.a();
+    l2 = paramc.a();
+    l1 = l2;
     if (i != 206)
     {
-      l2 = e.a(this.b).getContentLength();
-      if (l2 >= 0L) {
-        l1 = l2;
-      }
-      for (;;)
-      {
-        this.a.d(l1);
-        e.a(this.b, this.a);
-        return;
+      l3 = e.a(this.b).getContentLength();
+      l1 = l2;
+      if (l3 >= 0L) {
+        l1 = l3;
       }
     }
+    this.a.d(l1);
+    e.a(this.b, this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.e.1
  * JD-Core Version:    0.7.0.1
  */

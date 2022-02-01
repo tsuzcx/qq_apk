@@ -17,28 +17,34 @@ public class FloatViewBuilderFactory
   
   public BaseFloatViewBuilder a(int paramInt, HeartAnimator paramHeartAnimator)
   {
-    switch (paramInt)
-    {
-    default: 
-      if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder == null) {
-        this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130846200, paramHeartAnimator);
+    if (paramInt != 1) {
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder == null) {
+            this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130846076, paramHeartAnimator);
+          }
+          return this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder;
+        }
       }
-      return this.jdField_a_of_type_ComTencentMobileqqHotchatUiBaseFloatViewBuilder;
-    case 2: 
-      if (this.c == null) {
-        this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842789, paramHeartAnimator);
+      else
+      {
+        if (this.c == null) {
+          this.c = new PayLikeFloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130842689, paramHeartAnimator);
+        }
+        return this.c;
       }
-      return this.c;
     }
     if (this.b == null) {
-      this.b = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130846204, paramHeartAnimator);
+      this.b = new FloatViewBuilder(this.jdField_a_of_type_AndroidContentContext, 2130846080, paramHeartAnimator);
     }
     return this.b;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotchat.ui.FloatViewBuilderFactory
  * JD-Core Version:    0.7.0.1
  */

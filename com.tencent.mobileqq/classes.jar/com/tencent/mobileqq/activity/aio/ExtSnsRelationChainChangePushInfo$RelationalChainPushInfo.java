@@ -36,8 +36,9 @@ public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo
   
   public int a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null) {
-      return (int)this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.b;
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo localMutualMarkPushInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo;
+    if (localMutualMarkPushInfo != null) {
+      return (int)localMutualMarkPushInfo.b;
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimatePushInfo != null) && (IntimateUtil.a(this.jdField_a_of_type_Int))) {
       return this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimatePushInfo.jdField_a_of_type_Int;
@@ -47,8 +48,9 @@ public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo != null) {
-      return (int)this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo.h;
+    ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo.MutualMarkPushInfo localMutualMarkPushInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo;
+    if (localMutualMarkPushInfo != null) {
+      return (int)localMutualMarkPushInfo.h;
     }
     return 0;
   }
@@ -58,16 +60,28 @@ public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("ExtSnsRelationalChainPushInfo{");
-    localStringBuilder.append("relation_type:").append(this.jdField_a_of_type_Int).append(", ");
-    localStringBuilder.append("mutualMarkInfo:").append(this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo).append(", ");
-    localStringBuilder.append("intimateInfo:").append(this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimatePushInfo).append(", ");
+    localStringBuilder.append("relation_type:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("mutualMarkInfo:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$MutualMarkPushInfo);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("intimateInfo:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityAioExtSnsRelationChainChangePushInfo$RelationalChainPushInfo$IntimatePushInfo);
+    localStringBuilder.append(", ");
     localStringBuilder.append("relationIconFlag:");
-    if ((this.jdField_a_of_type_ArrayOfByte != null) && (this.jdField_a_of_type_ArrayOfByte.length > 0))
+    byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+    if ((arrayOfByte != null) && (arrayOfByte.length > 0))
     {
       int i = 0;
-      while ((i < this.jdField_a_of_type_ArrayOfByte.length) && (i < 10))
+      for (;;)
       {
-        localStringBuilder.append(this.jdField_a_of_type_ArrayOfByte[0]).append(" ");
+        arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
+        if ((i >= arrayOfByte.length) || (i >= 10)) {
+          break;
+        }
+        localStringBuilder.append(arrayOfByte[i]);
+        localStringBuilder.append(" ");
         i += 1;
       }
     }
@@ -78,7 +92,7 @@ public class ExtSnsRelationChainChangePushInfo$RelationalChainPushInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.ExtSnsRelationChainChangePushInfo.RelationalChainPushInfo
  * JD-Core Version:    0.7.0.1
  */

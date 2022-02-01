@@ -20,36 +20,20 @@ public class GetEmojiPackInfoListRequest
   public final int d;
   public final int e;
   
-  public GetEmojiPackInfoListRequest(String paramString, int paramInt)
-  {
-    this(paramString, paramInt, 0, 0);
-  }
-  
-  public GetEmojiPackInfoListRequest(String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if (paramString == null) {
-      throw new IllegalArgumentException("mCookie should not be null");
-    }
-    if (paramInt1 <= 0) {
-      throw new IllegalArgumentException("mCount should not be less than 0 : " + paramInt1);
-    }
-    this.a = paramString;
-    this.c = paramInt1;
-    this.d = paramInt2;
-    this.e = paramInt3;
-  }
-  
   public BaseResponse a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspGetEmoticonPackList localRspGetEmoticonPackList = new qqstory_service.RspGetEmoticonPackList();
+    Object localObject = new qqstory_service.RspGetEmoticonPackList();
     try
     {
-      localRspGetEmoticonPackList.mergeFrom(paramArrayOfByte);
-      return new GetEmojiPackInfoListResponse(localRspGetEmoticonPackList, paramArrayOfByte, System.currentTimeMillis());
+      ((qqstory_service.RspGetEmoticonPackList)localObject).mergeFrom(paramArrayOfByte);
+      return new GetEmojiPackInfoListResponse((qqstory_service.RspGetEmoticonPackList)localObject, paramArrayOfByte, System.currentTimeMillis());
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.e("GetEmojiPackInfoListRequest", "GetEmojiPackInfoListRequest error : " + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("GetEmojiPackInfoListRequest error : ");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.e("GetEmojiPackInfoListRequest", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -59,7 +43,7 @@ public class GetEmojiPackInfoListRequest
     return StoryApi.a("StorySvc.video_emoticon_get");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqGetEmoticonPackList localReqGetEmoticonPackList = new qqstory_service.ReqGetEmoticonPackList();
     localReqGetEmoticonPackList.start_cookie.set(ByteStringMicro.copyFromUtf8(this.a));
@@ -69,12 +53,23 @@ public class GetEmojiPackInfoListRequest
   
   public String toString()
   {
-    return "GetEmojiPackInfoListRequest{mCookie='" + this.a + '\'' + ", mCount=" + this.c + ", latitude=" + this.d + ", longitude=" + this.e + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetEmojiPackInfoListRequest{mCookie='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mCount=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", latitude=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", longitude=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetEmojiPackInfoListRequest
  * JD-Core Version:    0.7.0.1
  */

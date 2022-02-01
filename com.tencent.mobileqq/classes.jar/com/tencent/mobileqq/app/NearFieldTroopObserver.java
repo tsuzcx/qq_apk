@@ -20,47 +20,62 @@ public class NearFieldTroopObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 2)
       {
-        return;
-        if ((paramBoolean) && (paramObject != null))
+        if (paramInt != 3)
         {
-          paramObject = (Object[])paramObject;
-          a((nearfield_group.BusiRespHead)paramObject[0], (List)paramObject[1]);
-          return;
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            if ((paramBoolean) && (paramObject != null)) {
+              a((Face2FaceUserProfile)((Object[])(Object[])paramObject)[0]);
+            }
+          }
+          else if ((paramBoolean) && (paramObject != null))
+          {
+            a((Face2FaceGroupProfile)((Object[])(Object[])paramObject)[0]);
+          }
         }
-        a(null, null);
-        return;
+        else
+        {
+          if ((paramBoolean) && (paramObject != null))
+          {
+            paramObject = (Object[])paramObject;
+            a((nearfield_group.BusiRespHead)paramObject[0], (String)paramObject[1]);
+            return;
+          }
+          a(null, "");
+        }
+      }
+      else
+      {
         if ((paramBoolean) && (paramObject != null))
         {
           a((nearfield_group.BusiRespHead)((Object[])(Object[])paramObject)[0]);
           return;
         }
         a(null);
+      }
+    }
+    else
+    {
+      if ((paramBoolean) && (paramObject != null))
+      {
+        paramObject = (Object[])paramObject;
+        a((nearfield_group.BusiRespHead)paramObject[0], (List)paramObject[1]);
         return;
-        if ((paramBoolean) && (paramObject != null))
-        {
-          paramObject = (Object[])paramObject;
-          a((nearfield_group.BusiRespHead)paramObject[0], (String)paramObject[1]);
-          return;
-        }
-        a(null, "");
-        return;
-      } while ((!paramBoolean) || (paramObject == null));
-      a((Face2FaceGroupProfile)((Object[])(Object[])paramObject)[0]);
-      return;
-    } while ((!paramBoolean) || (paramObject == null));
-    a((Face2FaceUserProfile)((Object[])(Object[])paramObject)[0]);
+      }
+      a(null, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearFieldTroopObserver
  * JD-Core Version:    0.7.0.1
  */

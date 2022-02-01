@@ -26,8 +26,12 @@ public class VerticalSearchConfProcessor
     }
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VerticalSearchConfProcessor", 2, "onParsed " + paramArrayOfQConfItem.length);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem.length);
+        QLog.d("VerticalSearchConfProcessor", 2, localStringBuilder.toString());
       }
       return VerticalSearchConfBean.a(paramArrayOfQConfItem[0]);
     }
@@ -36,19 +40,17 @@ public class VerticalSearchConfProcessor
   
   public void a(VerticalSearchConfBean paramVerticalSearchConfBean)
   {
-    StringBuilder localStringBuilder;
     if (QLog.isColorLevel())
     {
-      localStringBuilder = new StringBuilder().append("onUpdate ");
-      if (paramVerticalSearchConfBean == null) {
-        break label43;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      if (paramVerticalSearchConfBean != null) {
+        paramVerticalSearchConfBean = paramVerticalSearchConfBean.toString();
+      } else {
+        paramVerticalSearchConfBean = " empty";
       }
-    }
-    label43:
-    for (paramVerticalSearchConfBean = paramVerticalSearchConfBean.toString();; paramVerticalSearchConfBean = " empty")
-    {
-      QLog.d("VerticalSearchConfProcessor", 2, paramVerticalSearchConfBean);
-      return;
+      localStringBuilder.append(paramVerticalSearchConfBean);
+      QLog.d("VerticalSearchConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -74,8 +76,12 @@ public class VerticalSearchConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("VerticalSearchConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.e("VerticalSearchConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -86,7 +92,7 @@ public class VerticalSearchConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.search.VerticalSearchConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -16,29 +16,27 @@ class g
     if (SDKReportManager2.access$200(this.a) != null)
     {
       o.c();
-      if (!b.b()) {
-        break label67;
+      if (b.b())
+      {
+        ab.c("SDKReportManager2", ">>onNetworkChanged connect");
+        if (!SDKReportManager2.access$200(this.a).hasMessages(2)) {
+          SDKReportManager2.access$200(this.a).sendEmptyMessage(2);
+        }
       }
-      ab.c("SDKReportManager2", ">>onNetworkChanged connect");
-      if (!SDKReportManager2.access$200(this.a).hasMessages(2)) {
-        SDKReportManager2.access$200(this.a).sendEmptyMessage(2);
-      }
-    }
-    for (;;)
-    {
-      ab.c("SDKReportManager2", ">>onNetworkChanged exit");
-      return;
-      label67:
-      ab.c("SDKReportManager2", ">>onNetworkChanged unconnect");
-      if (SDKReportManager2.access$200(this.a).hasMessages(2)) {
-        SDKReportManager2.access$200(this.a).removeMessages(2);
+      else
+      {
+        ab.c("SDKReportManager2", ">>onNetworkChanged unconnect");
+        if (SDKReportManager2.access$200(this.a).hasMessages(2)) {
+          SDKReportManager2.access$200(this.a).removeMessages(2);
+        }
       }
     }
+    ab.c("SDKReportManager2", ">>onNetworkChanged exit");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.st.g
  * JD-Core Version:    0.7.0.1
  */

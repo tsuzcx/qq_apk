@@ -6,6 +6,7 @@ import android.view.View;
 import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.ad.tangram.util.AdUIUtils;
+import com.tencent.ark.ArkViewImplement.LoadCallback;
 import com.tencent.ark.open.ArkAppInfo.Size;
 import com.tencent.ark.open.ArkView;
 import com.tencent.gdtad.aditem.GdtAd;
@@ -13,7 +14,6 @@ import com.tencent.gdtad.aditem.GdtHandler.Options;
 import com.tencent.gdtad.api.GdtAdView;
 import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.gdtad.log.GdtLog;
-import com.tencent.gdtad.statistics.GdtReporterForAnalysis;
 import java.lang.ref.WeakReference;
 import org.json.JSONObject;
 
@@ -31,89 +31,103 @@ final class GdtInterstitialView
   {
     WeakReference localWeakReference1 = new WeakReference(paramContext);
     WeakReference localWeakReference2 = new WeakReference(paramGdtInterstitialStatus);
+    ArkView localArkView = null;
+    Object localObject1;
     if (paramGdtInterstitialParams != null) {
-      paramGdtInterstitialStatus = paramGdtInterstitialParams.a();
+      localObject1 = paramGdtInterstitialParams.a();
+    } else {
+      localObject1 = null;
     }
-    for (;;)
+    paramGdtInterstitialStatus = localArkView;
+    try
     {
-      try
-      {
-        localGdtArkApp = GdtInterstitialManager.a().a();
-        str = a(paramContext, paramGdtInterstitialParams);
-        GdtLog.b("GdtInterstitialView", String.format("load appName:%s view:%s minver:%s", new Object[] { localGdtArkApp.a, localGdtArkApp.b, localGdtArkApp.c }));
-        l = System.currentTimeMillis();
-        paramContext = new ArkView(paramContext, null);
-        if (paramGdtInterstitialParams == null) {}
-      }
-      catch (Throwable paramGdtInterstitialStatus)
-      {
-        GdtArkApp localGdtArkApp;
-        String str;
-        long l;
-        paramContext = null;
-      }
-      try
-      {
-        if ((paramGdtInterstitialParams.c >= 0) && (paramGdtInterstitialParams.d >= 0))
+      Object localObject2 = GdtInterstitialManager.a().a();
+      paramGdtInterstitialStatus = localArkView;
+      String str1 = a(paramContext, paramGdtInterstitialParams);
+      paramGdtInterstitialStatus = localArkView;
+      GdtLog.b("GdtInterstitialView", String.format("load appName:%s view:%s minver:%s", new Object[] { ((GdtArkApp)localObject2).a, ((GdtArkApp)localObject2).b, ((GdtArkApp)localObject2).c }));
+      paramGdtInterstitialStatus = localArkView;
+      long l = System.currentTimeMillis();
+      paramGdtInterstitialStatus = localArkView;
+      localArkView = new ArkView(paramContext, null);
+      if (paramGdtInterstitialParams != null) {
+        try
         {
-          ArkAppInfo.Size localSize = new ArkAppInfo.Size(paramGdtInterstitialParams.c, paramGdtInterstitialParams.d);
-          paramContext.setSize(localSize, localSize, localSize);
+          if ((paramGdtInterstitialParams.b >= 0) && (paramGdtInterstitialParams.c >= 0))
+          {
+            paramContext = new ArkAppInfo.Size(paramGdtInterstitialParams.b, paramGdtInterstitialParams.c);
+            localArkView.setSize(paramContext, paramContext, paramContext);
+          }
         }
-        paramContext.setBorderType(0);
-        paramContext.load(localGdtArkApp.a, localGdtArkApp.b, localGdtArkApp.c, str, null, new GdtInterstitialView.1(l, paramGdtInterstitialStatus, localWeakReference2, localWeakReference1, paramGdtInterstitialParams));
-        if (localWeakReference2.get() != null) {
-          GdtReporterForAnalysis.a((Context)localWeakReference1.get(), paramGdtInterstitialParams, (GdtInterstitialStatus)localWeakReference2.get());
+        catch (Throwable paramContext)
+        {
+          paramGdtInterstitialStatus = localArkView;
+          break label252;
         }
-        return paramContext;
       }
-      catch (Throwable paramGdtInterstitialStatus)
+      try
       {
-        break label222;
+        localArkView.setBorderType(0);
+        String str2 = ((GdtArkApp)localObject2).a;
+        String str3 = ((GdtArkApp)localObject2).b;
+        localObject2 = ((GdtArkApp)localObject2).c;
+        localObject1 = new GdtInterstitialView.1(l, (String)localObject1, localWeakReference2, localWeakReference1, paramGdtInterstitialParams);
+        paramContext = localArkView;
+        paramGdtInterstitialStatus = paramContext;
+        localArkView.load(str2, str3, (String)localObject2, str1, null, (ArkViewImplement.LoadCallback)localObject1);
       }
-      paramGdtInterstitialStatus = null;
-      continue;
-      label222:
-      AdLog.e("GdtInterstitialView", "createView", paramGdtInterstitialStatus);
+      catch (Throwable paramContext)
+      {
+        paramGdtInterstitialStatus = localArkView;
+      }
+      AdLog.e("GdtInterstitialView", "createView", paramContext);
     }
+    catch (Throwable paramContext) {}
+    label252:
+    paramContext = paramGdtInterstitialStatus;
+    if (localWeakReference2.get() != null) {
+      GdtAnalysisHelperForInterstitial.a((Context)localWeakReference1.get(), paramGdtInterstitialParams, (GdtInterstitialStatus)localWeakReference2.get());
+    }
+    return paramContext;
   }
   
   private static String a(Context paramContext, GdtInterstitialParams paramGdtInterstitialParams)
   {
-    if ((paramGdtInterstitialParams == null) || (!paramGdtInterstitialParams.b()))
+    if ((paramGdtInterstitialParams != null) && (paramGdtInterstitialParams.b()))
     {
-      GdtLog.d("GdtInterstitialView", "getMetaData error");
-      return null;
-    }
-    String str;
-    if (paramGdtInterstitialParams.b == 1) {
-      str = "vertical";
-    }
-    for (;;)
-    {
-      if (TextUtils.isEmpty(str))
+      String str;
+      int i;
+      if (paramGdtInterstitialParams.jdField_a_of_type_Int == 1)
       {
-        GdtLog.d("GdtInterstitialView", "getMetaData error");
-        return null;
-        if ((paramGdtInterstitialParams.b == 0) || (paramGdtInterstitialParams.b == 8)) {
-          str = "horizontal";
-        }
+        str = "vertical";
+        i = 1;
+      }
+      else if ((paramGdtInterstitialParams.jdField_a_of_type_Int != 0) && (paramGdtInterstitialParams.jdField_a_of_type_Int != 8))
+      {
+        str = null;
+        i = -2147483648;
       }
       else
       {
-        int i = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.c);
-        int j = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.d);
-        GdtLog.b("GdtInterstitialView", String.format("getMetaData width:%d height:%d ptWidth:%d ptHeight:%d", new Object[] { Integer.valueOf(paramGdtInterstitialParams.c), Integer.valueOf(paramGdtInterstitialParams.d), Integer.valueOf(i), Integer.valueOf(j) }));
+        str = "horizontal";
+        i = 0;
+      }
+      if ((!TextUtils.isEmpty(str)) && (i != -2147483648))
+      {
+        int j = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.b);
+        int k = AdUIUtils.px2dp(paramContext, paramGdtInterstitialParams.c);
+        GdtLog.b("GdtInterstitialView", String.format("getMetaData width:%d height:%d ptWidth:%d ptHeight:%d", new Object[] { Integer.valueOf(paramGdtInterstitialParams.b), Integer.valueOf(paramGdtInterstitialParams.c), Integer.valueOf(j), Integer.valueOf(k) }));
         try
         {
           paramContext = new JSONObject();
-          paramContext.put("style", paramGdtInterstitialParams.jdField_a_of_type_Int);
+          paramContext.put("style", i);
           paramContext.put("screenType", str);
           paramGdtInterstitialParams = GdtJsonPbUtil.a(paramGdtInterstitialParams.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.info);
           if ((paramGdtInterstitialParams != null) && (!JSONObject.NULL.equals(paramGdtInterstitialParams))) {
             paramContext.put("adInfo", paramGdtInterstitialParams);
           }
-          paramContext.put("viewWidth", i);
-          paramContext.put("viewHeight", j);
+          paramContext.put("viewWidth", j);
+          paramContext.put("viewHeight", k);
           paramGdtInterstitialParams = new JSONObject();
           paramGdtInterstitialParams.put("gdt", paramContext);
           paramContext = paramGdtInterstitialParams.toString();
@@ -125,8 +139,11 @@ final class GdtInterstitialView
           return null;
         }
       }
-      str = null;
+      GdtLog.d("GdtInterstitialView", "getMetaData error");
+      return null;
     }
+    GdtLog.d("GdtInterstitialView", "getMetaData error");
+    return null;
   }
   
   private static void b(int paramInt1, int paramInt2, String paramString)
@@ -142,30 +159,33 @@ final class GdtInterstitialView
   public void a(Context paramContext)
   {
     GdtLog.b("GdtInterstitialView", "pause");
-    if (this.a != null) {
-      this.a.onPause();
+    paramContext = this.a;
+    if (paramContext != null) {
+      paramContext.onPause();
     }
   }
   
   public void b(Context paramContext)
   {
     GdtLog.b("GdtInterstitialView", "resume");
-    if (this.a != null) {
-      this.a.onResume();
+    paramContext = this.a;
+    if (paramContext != null) {
+      paramContext.onResume();
     }
   }
   
   public void c(Context paramContext)
   {
     GdtLog.b("GdtInterstitialView", "destroy");
-    if (this.a != null) {
-      this.a.onDestroy();
+    paramContext = this.a;
+    if (paramContext != null) {
+      paramContext.onDestroy();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialView
  * JD-Core Version:    0.7.0.1
  */

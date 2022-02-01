@@ -25,9 +25,14 @@ final class SDKMiniProgramLpReportDC04239$16
         str = SDKMiniProgramLpReportDC04239.access$900(str, MiniProgramReportHelper.getLaunchIdFromMainProcess(this.val$miniAppConfig));
         long l = ((SharedPreferences)localObject).getLong(str, 0L);
         ((SharedPreferences)localObject).edit().putLong(str, this.val$addDuration + l).apply();
-        QMLog.i("MiniProgramLpReportDC04239", "recordDuration: " + (l + this.val$addDuration) + " key: " + str);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("recordDuration: ");
+        ((StringBuilder)localObject).append(l + this.val$addDuration);
+        ((StringBuilder)localObject).append(" key: ");
+        ((StringBuilder)localObject).append(str);
+        QMLog.i("MiniProgramLpReportDC04239", ((StringBuilder)localObject).toString());
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -37,7 +42,7 @@ final class SDKMiniProgramLpReportDC04239$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.16
  * JD-Core Version:    0.7.0.1
  */

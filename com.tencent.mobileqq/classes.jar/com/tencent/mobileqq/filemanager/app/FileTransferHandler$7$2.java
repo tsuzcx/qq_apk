@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.filemanager.app;
 
-import com.tencent.mobileqq.filemanager.data.FMTransC2CMsgInfo;
+import com.tencent.mobileqq.filemanager.proto.FMTransC2CMsgInfo;
 
 class FileTransferHandler$7$2
   implements Runnable
@@ -9,12 +9,12 @@ class FileTransferHandler$7$2
   
   public void run()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler$7.this$0.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler$7.a, 529, 4, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqFilemanagerDataFMTransC2CMsgInfo);
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler$7.this$0.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppFileTransferHandler$7.a, 529, 4, this.jdField_a_of_type_ArrayOfByte, this.jdField_a_of_type_ComTencentMobileqqFilemanagerProtoFMTransC2CMsgInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FileTransferHandler.7.2
  * JD-Core Version:    0.7.0.1
  */

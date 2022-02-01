@@ -29,16 +29,17 @@ public class BmqqBusinessHandler
       notifyUI(1001, false, null);
       return;
     }
-    int i = ((Bundle)paramObject).getInt("result");
-    paramToServiceMsg = (BmqqUserSimpleInfo)((Bundle)paramObject).getParcelable("info");
+    paramToServiceMsg = (Bundle)paramObject;
+    int i = paramToServiceMsg.getInt("result");
+    paramToServiceMsg = (BmqqUserSimpleInfo)paramToServiceMsg.getParcelable("info");
     boolean bool1 = bool2;
     if (i == 0)
     {
       bool1 = bool2;
       if (paramToServiceMsg != null)
       {
-        ((QidianManager)this.appRuntime.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramToServiceMsg);
         bool1 = true;
+        ((QidianManager)this.appRuntime.getManager(QQManagerFactory.QIDIAN_MANAGER)).a(paramToServiceMsg);
       }
     }
     notifyUI(1001, bool1, paramToServiceMsg);
@@ -56,7 +57,7 @@ public class BmqqBusinessHandler
     send(localToServiceMsg);
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return BmqqBusinessObserver.class;
   }
@@ -70,7 +71,7 @@ public class BmqqBusinessHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.bmqq.app.BmqqBusinessHandler
  * JD-Core Version:    0.7.0.1
  */

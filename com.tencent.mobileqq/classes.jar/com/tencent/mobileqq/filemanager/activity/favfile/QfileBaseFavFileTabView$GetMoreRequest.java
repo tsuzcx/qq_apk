@@ -10,11 +10,22 @@ class QfileBaseFavFileTabView$GetMoreRequest
   int e = 0;
   int f = 0;
   
-  QfileBaseFavFileTabView$GetMoreRequest(QfileBaseFavFileTabView paramQfileBaseFavFileTabView) {}
-  
   String a()
   {
-    return " startCount:" + this.jdField_a_of_type_Int + " targetCount:" + this.b + " ReqSeq:" + this.c + " continueCount:" + this.d + " mNoNewDataCount:" + this.e + " mLastRecordSize:" + this.f;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" startCount:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" targetCount:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(" ReqSeq:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(" continueCount:");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(" mNoNewDataCount:");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(" mLastRecordSize:");
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
   }
   
   void a()
@@ -54,7 +65,7 @@ class QfileBaseFavFileTabView$GetMoreRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.favfile.QfileBaseFavFileTabView.GetMoreRequest
  * JD-Core Version:    0.7.0.1
  */

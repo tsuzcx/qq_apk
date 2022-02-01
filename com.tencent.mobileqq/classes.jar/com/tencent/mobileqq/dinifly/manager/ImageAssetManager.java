@@ -33,8 +33,16 @@ public class ImageAssetManager
   public ImageAssetManager(Drawable.Callback paramCallback, String paramString, ImageAssetDelegate paramImageAssetDelegate, Map<String, LottieImageAsset> paramMap)
   {
     this.imagesFolder = paramString;
-    if ((!TextUtils.isEmpty(paramString)) && (this.imagesFolder.charAt(this.imagesFolder.length() - 1) != '/')) {
-      this.imagesFolder += '/';
+    if (!TextUtils.isEmpty(paramString))
+    {
+      paramString = this.imagesFolder;
+      if (paramString.charAt(paramString.length() - 1) != '/')
+      {
+        paramString = new StringBuilder();
+        paramString.append(this.imagesFolder);
+        paramString.append('/');
+        this.imagesFolder = paramString.toString();
+      }
     }
     if (!(paramCallback instanceof View))
     {
@@ -62,27 +70,24 @@ public class ImageAssetManager
   {
     Object localObject1 = (LottieImageAsset)this.imageAssets.get(paramString);
     if (localObject1 == null) {
-      localObject1 = null;
+      return null;
     }
-    do
+    Object localObject2 = ((LottieImageAsset)localObject1).getBitmap();
+    if (localObject2 != null) {
+      return localObject2;
+    }
+    if (this.delegate != null)
     {
-      return localObject1;
-      localObject2 = ((LottieImageAsset)localObject1).getBitmap();
-      if (localObject2 != null) {
-        return localObject2;
-      }
-      if (this.delegate == null) {
-        break;
-      }
       if (((LottieImageAsset)localObject1).hasCache()) {
         return this.delegate.fetchBitmap((LottieImageAsset)localObject1);
       }
-      localObject2 = this.delegate.fetchBitmap((LottieImageAsset)localObject1);
-      localObject1 = localObject2;
-    } while (localObject2 == null);
-    putBitmap(paramString, (Bitmap)localObject2);
-    return localObject2;
-    Object localObject2 = ((LottieImageAsset)localObject1).getFileName();
+      localObject1 = this.delegate.fetchBitmap((LottieImageAsset)localObject1);
+      if (localObject1 != null) {
+        putBitmap(paramString, (Bitmap)localObject1);
+      }
+      return localObject1;
+    }
+    localObject2 = ((LottieImageAsset)localObject1).getFileName();
     localObject1 = new BitmapFactory.Options();
     ((BitmapFactory.Options)localObject1).inScaled = true;
     ((BitmapFactory.Options)localObject1).inDensity = 320;
@@ -100,30 +105,33 @@ public class ImageAssetManager
     }
     try
     {
-      if (TextUtils.isEmpty(this.imagesFolder)) {
-        throw new IllegalStateException("You must set an images folder before loading an image. Set it with LottieComposition#setImagesFolder or LottieDrawable#setImagesFolder");
+      if (!TextUtils.isEmpty(this.imagesFolder))
+      {
+        AssetManager localAssetManager = this.context.getAssets();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.imagesFolder);
+        localStringBuilder.append((String)localObject2);
+        localObject2 = localAssetManager.open(localStringBuilder.toString());
+        localObject1 = BitmapFactory.decodeStream((InputStream)localObject2, null, (BitmapFactory.Options)localObject1);
+        if (localObject2 != null) {
+          try
+          {
+            ((InputStream)localObject2).close();
+          }
+          catch (IOException localIOException)
+          {
+            localIOException.printStackTrace();
+          }
+        }
+        return putBitmap(paramString, (Bitmap)localObject1);
       }
+      throw new IllegalStateException("You must set an images folder before loading an image. Set it with LottieComposition#setImagesFolder or LottieDrawable#setImagesFolder");
     }
     catch (IOException paramString)
     {
       Log.w("LOTTIE", "Unable to open asset.", paramString);
-      return null;
     }
-    localObject2 = this.context.getAssets().open(this.imagesFolder + (String)localObject2);
-    localObject1 = BitmapFactory.decodeStream((InputStream)localObject2, null, (BitmapFactory.Options)localObject1);
-    if (localObject2 != null) {}
-    try
-    {
-      ((InputStream)localObject2).close();
-      return putBitmap(paramString, (Bitmap)localObject1);
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
-      {
-        localIOException.printStackTrace();
-      }
-    }
+    return null;
   }
   
   public boolean hasSameContext(Context paramContext)
@@ -166,7 +174,7 @@ public class ImageAssetManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.manager.ImageAssetManager
  * JD-Core Version:    0.7.0.1
  */

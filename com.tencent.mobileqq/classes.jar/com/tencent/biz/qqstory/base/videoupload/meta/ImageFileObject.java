@@ -46,33 +46,30 @@ public class ImageFileObject
     if ((!localFile2.exists()) || (localFile2.length() == 0L)) {
       SLog.e("Q.qqstory.publish.upload:ImageFileObject", "file not exit %s", new Object[] { this.jdField_a_of_type_JavaLangString });
     }
-    Object localObject;
-    if ((this.jdField_a_of_type_Boolean) && (PngQuantUtils.a())) {
-      localObject = null;
-    }
-    try
+    if ((this.jdField_a_of_type_Boolean) && (PngQuantUtils.a()))
     {
-      File localFile1 = File.createTempFile("temp", "png", localFile2.getParentFile());
-      localObject = localFile1;
-    }
-    catch (IOException localIOException)
-    {
-      for (;;)
+      Object localObject = null;
+      try
+      {
+        File localFile1 = File.createTempFile("temp", "png", localFile2.getParentFile());
+        localObject = localFile1;
+      }
+      catch (IOException localIOException)
       {
         SLog.b("Q.qqstory.publish.upload:ImageFileObject", "create file", localIOException);
       }
-    }
-    if (PngQuantUtils.a(localFile2, localObject))
-    {
-      localFile2.delete();
-      localObject.renameTo(localFile2);
+      if (PngQuantUtils.a(localFile2, localObject))
+      {
+        localFile2.delete();
+        localObject.renameTo(localFile2);
+      }
     }
     c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.videoupload.meta.ImageFileObject
  * JD-Core Version:    0.7.0.1
  */

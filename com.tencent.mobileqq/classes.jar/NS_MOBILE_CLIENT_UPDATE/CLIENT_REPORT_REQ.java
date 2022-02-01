@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -51,20 +52,23 @@ public final class CLIENT_REPORT_REQ
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.type, 0);
-    if (this.info != null) {
-      paramJceOutputStream.write(this.info, 1);
+    Object localObject = this.info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.extra_info != null) {
-      paramJceOutputStream.write(this.extra_info, 2);
+    localObject = this.extra_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.multi_info != null) {
-      paramJceOutputStream.write(this.multi_info, 3);
+    localObject = this.multi_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CLIENT_UPDATE.CLIENT_REPORT_REQ
  * JD-Core Version:    0.7.0.1
  */

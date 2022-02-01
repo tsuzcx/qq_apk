@@ -17,21 +17,37 @@ public class Mustache$Accumulator
   
   protected static void requireNoNewlines(String paramString, int paramInt)
   {
-    if ((paramString.indexOf('\n') != -1) || (paramString.indexOf('\r') != -1)) {
-      throw new MustacheParseException("Invalid tag name: contains newline '" + paramString + "'", paramInt);
+    if ((paramString.indexOf('\n') == -1) && (paramString.indexOf('\r') == -1)) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Invalid tag name: contains newline '");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("'");
+    throw new MustacheParseException(localStringBuilder.toString(), paramInt);
   }
   
   protected static void requireSameName(String paramString1, String paramString2, int paramInt)
   {
-    if (!paramString1.equals(paramString2)) {
-      throw new MustacheParseException("Section close tag with mismatched open tag '" + paramString2 + "' != '" + paramString1 + "'", paramInt);
+    if (paramString1.equals(paramString2)) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Section close tag with mismatched open tag '");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("' != '");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("'");
+    throw new MustacheParseException(localStringBuilder.toString(), paramInt);
   }
   
   protected Accumulator addCloseSectionSegment(String paramString, int paramInt)
   {
-    throw new MustacheParseException("Section close tag with no open tag '" + paramString + "'", paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Section close tag with no open tag '");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("'");
+    throw new MustacheParseException(localStringBuilder.toString(), paramInt);
   }
   
   public void addFauxSegment()
@@ -44,57 +60,64 @@ public class Mustache$Accumulator
     String str1 = paramStringBuilder.toString().trim();
     String str2 = str1.substring(1).trim();
     paramStringBuilder.setLength(0);
-    switch (str1.charAt(0))
+    int i = str1.charAt(0);
+    if (i != 33)
     {
-    default: 
-      requireNoNewlines(str1, paramInt);
-      this._segs.add(new Mustache.VariableSegment(str1, paramInt, this._comp.formatter, this._comp.escaper));
-      return this;
-    case '#': 
+      if (i != 35)
+      {
+        if (i != 38)
+        {
+          if (i != 47)
+          {
+            if (i != 62)
+            {
+              if (i != 94)
+              {
+                requireNoNewlines(str1, paramInt);
+                this._segs.add(new Mustache.VariableSegment(str1, paramInt, this._comp.formatter, this._comp.escaper));
+                return this;
+              }
+              requireNoNewlines(str1, paramInt);
+              return new Mustache.Accumulator.2(this, this._comp, false, str2, paramInt, this);
+            }
+            this._segs.add(new Mustache.IncludedTemplateSegment(this._comp, str2));
+            return this;
+          }
+          requireNoNewlines(str1, paramInt);
+          return addCloseSectionSegment(str2, paramInt);
+        }
+        requireNoNewlines(str1, paramInt);
+        this._segs.add(new Mustache.VariableSegment(str2, paramInt, this._comp.formatter, Escapers.NONE));
+        return this;
+      }
       requireNoNewlines(str1, paramInt);
       return new Mustache.Accumulator.1(this, this._comp, false, str2, paramInt, this);
-    case '>': 
-      this._segs.add(new Mustache.IncludedTemplateSegment(this._comp, str2));
-      return this;
-    case '^': 
-      requireNoNewlines(str1, paramInt);
-      return new Mustache.Accumulator.2(this, this._comp, false, str2, paramInt, this);
-    case '/': 
-      requireNoNewlines(str1, paramInt);
-      return addCloseSectionSegment(str2, paramInt);
-    case '!': 
-      this._segs.add(new Mustache.FauxSegment());
-      return this;
     }
-    requireNoNewlines(str1, paramInt);
-    this._segs.add(new Mustache.VariableSegment(str2, paramInt, this._comp.formatter, Escapers.NONE));
+    this._segs.add(new Mustache.FauxSegment());
     return this;
   }
   
   public void addTextSegment(StringBuilder paramStringBuilder)
   {
-    List localList;
-    String str;
     if (paramStringBuilder.length() > 0)
     {
-      localList = this._segs;
-      str = paramStringBuilder.toString();
-      if ((!this._segs.isEmpty()) || (!this._topLevel)) {
-        break label62;
+      List localList = this._segs;
+      String str = paramStringBuilder.toString();
+      boolean bool;
+      if ((this._segs.isEmpty()) && (this._topLevel)) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label62:
-    for (boolean bool = true;; bool = false)
-    {
       localList.add(new Mustache.StringSegment(str, bool));
       paramStringBuilder.setLength(0);
-      return;
     }
   }
   
   public Template.Segment[] finish()
   {
-    return (Template.Segment[])this._segs.toArray(new Template.Segment[this._segs.size()]);
+    List localList = this._segs;
+    return (Template.Segment[])localList.toArray(new Template.Segment[localList.size()]);
   }
 }
 

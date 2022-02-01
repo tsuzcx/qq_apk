@@ -20,15 +20,12 @@ public class GetProfileYearNodeListRequest
     try
     {
       localRspProfileYearNodeList.mergeFrom(paramArrayOfByte);
-      return new GetProfileYearNodeListRequest.GetProfileYearNodeListResponse(localRspProfileYearNodeList);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetProfileYearNodeListRequest.GetProfileYearNodeListResponse(localRspProfileYearNodeList);
   }
   
   public String a()
@@ -36,7 +33,7 @@ public class GetProfileYearNodeListRequest
     return StoryApi.a("StorySvc.get_profile_year_node_info");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqProfileYearNodeList localReqProfileYearNodeList = new qqstory_service.ReqProfileYearNodeList();
     localReqProfileYearNodeList.union_id.set(ByteStringMicro.copyFromUtf8(this.a));
@@ -45,7 +42,7 @@ public class GetProfileYearNodeListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetProfileYearNodeListRequest
  * JD-Core Version:    0.7.0.1
  */

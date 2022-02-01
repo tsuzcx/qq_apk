@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.view.widget;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 
 class SlideTabViewPager$1
   implements ViewPager.OnPageChangeListener
@@ -17,14 +17,16 @@ class SlideTabViewPager$1
     {
       LinearLayout.LayoutParams localLayoutParams = (LinearLayout.LayoutParams)SlideTabViewPager.a(this.a).getLayoutParams();
       SlideTabViewPager localSlideTabViewPager = this.a;
-      paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-      SlideTabViewPager.a(localSlideTabViewPager, localLayoutParams.leftMargin + paramInt2);
+      SlideTabViewPager.a(localSlideTabViewPager, SlideTabViewPager.b(localSlideTabViewPager).getWidth() + localLayoutParams.leftMargin);
     }
-    paramInt2 = (int)(SlideTabViewPager.a(this.a, 12.5F) + SlideTabViewPager.a(this.a) * (paramInt1 + paramFloat));
-    SlideTabViewPager.a(this.a).setOffset(paramInt2);
-    paramInt2 = SlideTabViewPager.b(this.a).getWidth();
-    int i = SlideTabViewPager.a(this.a).getWidth();
-    paramInt1 = (int)(paramInt2 + (i - paramInt2) * (paramInt1 + paramFloat));
+    float f1 = SlideTabViewPager.a(this.a, 12.5F);
+    float f2 = SlideTabViewPager.a(this.a);
+    paramFloat = paramInt1 + paramFloat;
+    paramInt1 = (int)(f1 + f2 * paramFloat);
+    SlideTabViewPager.a(this.a).setOffset(paramInt1);
+    paramInt1 = SlideTabViewPager.b(this.a).getWidth();
+    paramInt2 = SlideTabViewPager.a(this.a).getWidth();
+    paramInt1 = (int)(paramInt1 + (paramInt2 - paramInt1) * paramFloat);
     SlideTabViewPager.a(this.a).setBlockWidth(paramInt1);
   }
   
@@ -38,7 +40,7 @@ class SlideTabViewPager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.widget.SlideTabViewPager.1
  * JD-Core Version:    0.7.0.1
  */

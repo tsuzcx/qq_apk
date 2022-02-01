@@ -18,16 +18,18 @@ public final class AdIPCManager$Params
   
   public String getAction()
   {
-    if (this.bundle != null) {
-      return this.bundle.getString("IPC_ACTION");
+    Bundle localBundle = this.bundle;
+    if (localBundle != null) {
+      return localBundle.getString("IPC_ACTION");
     }
     return null;
   }
   
   public String getToProcessName()
   {
-    if (this.bundle != null) {
-      return this.bundle.getString("IPC_TO_PROCESS_NAME");
+    Bundle localBundle = this.bundle;
+    if (localBundle != null) {
+      return localBundle.getString("IPC_TO_PROCESS_NAME");
     }
     return null;
   }

@@ -8,10 +8,11 @@ class NearbyIconDecoder$2
 {
   public void a(List<String> paramList1, List<String> paramList2)
   {
-    if ((paramList1 == null) || (paramList2 == null) || (paramList1.size() == 0) || (paramList1.size() != paramList2.size())) {}
-    for (;;)
+    if ((paramList1 != null) && (paramList2 != null) && (paramList1.size() != 0))
     {
-      return;
+      if (paramList1.size() != paramList2.size()) {
+        return;
+      }
       int i = 0;
       while (i < paramList1.size())
       {
@@ -23,7 +24,7 @@ class NearbyIconDecoder$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyIconDecoder.2
  * JD-Core Version:    0.7.0.1
  */

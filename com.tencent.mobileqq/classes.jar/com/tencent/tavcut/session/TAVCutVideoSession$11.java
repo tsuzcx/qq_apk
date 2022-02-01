@@ -31,31 +31,31 @@ class TAVCutVideoSession$11
     this.this$0.renderChainManagers.put(0, paramVideoRenderChainManager);
     this.this$0.tavCompositions.put(0, paramVideoRenderChainManager.getComposition());
     TAVComposition localTAVComposition = paramVideoRenderChainManager.getComposition();
-    if (this.this$0.sessionConfig != null) {}
-    for (paramMediaBuilderOutput = this.this$0.sessionConfig.getRenderLayoutMode();; paramMediaBuilderOutput = null)
+    if (this.this$0.sessionConfig != null) {
+      paramMediaBuilderOutput = this.this$0.sessionConfig.getRenderLayoutMode();
+    } else {
+      paramMediaBuilderOutput = null;
+    }
+    localTAVComposition.setRenderLayoutMode(paramMediaBuilderOutput);
+    if (this.this$0.getPlayer() != null)
     {
-      localTAVComposition.setRenderLayoutMode(paramMediaBuilderOutput);
-      if (this.this$0.getPlayer() != null)
-      {
-        this.this$0.getPlayer().setPlayRange(new CMTimeRange(CMTime.CMTimeZero, paramVideoRenderChainManager.getComposition().getDuration()));
-        this.this$0.getPlayer().updateComposition(paramVideoRenderChainManager.getComposition(), this.val$autoPlay);
-      }
-      if ((this.val$stickerController != null) && (this.this$0.tavCutVideoView != null))
-      {
-        this.this$0.tavCutVideoView.adjustStickerContainer(new Size((int)localCGSize.width, (int)localCGSize.height));
-        this.val$stickerController.setStickerContainer(this.this$0.tavCutVideoView.getStickerContainer());
-      }
-      if (this.val$onRenderChain == null) {
-        break;
-      }
-      this.val$onRenderChain.run();
-      return;
+      this.this$0.getPlayer().setPlayRange(new CMTimeRange(CMTime.CMTimeZero, paramVideoRenderChainManager.getComposition().getDuration()));
+      this.this$0.getPlayer().updateComposition(paramVideoRenderChainManager.getComposition(), this.val$autoPlay);
+    }
+    if ((this.val$stickerController != null) && (this.this$0.tavCutVideoView != null))
+    {
+      this.this$0.tavCutVideoView.adjustStickerContainer(new Size((int)localCGSize.width, (int)localCGSize.height));
+      this.val$stickerController.setStickerContainer(this.this$0.tavCutVideoView.getStickerContainer());
+    }
+    paramVideoRenderChainManager = this.val$onRenderChain;
+    if (paramVideoRenderChainManager != null) {
+      paramVideoRenderChainManager.run();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutVideoSession.11
  * JD-Core Version:    0.7.0.1
  */

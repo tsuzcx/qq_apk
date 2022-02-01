@@ -19,49 +19,60 @@ class VideoChatRoomUIContoller$ChatRoomMsgObserver
   public void a(int paramInt, ChatRoomInfo paramChatRoomInfo)
   {
     int i;
-    VideoChatRoomUIContoller localVideoChatRoomUIContoller;
-    if ((paramInt & 0x4) == 4)
-    {
+    if ((paramInt & 0x4) == 4) {
       i = 1;
-      if (QLog.isDevelopLevel()) {
-        QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomMsgUpdate, flag[" + paramInt + "], room[" + paramChatRoomInfo + "]");
-      }
-      localVideoChatRoomUIContoller = (VideoChatRoomUIContoller)this.a.get();
-      if (localVideoChatRoomUIContoller != null) {
-        break label77;
-      }
-    }
-    label77:
-    do
-    {
-      return;
+    } else {
       i = 0;
-      break;
-      if (localVideoChatRoomUIContoller.a())
-      {
-        VideoChatRoomUIContoller.a(localVideoChatRoomUIContoller, paramChatRoomInfo);
-        return;
-      }
-    } while (i == 0);
-    VideoChatRoomUIContoller.a(localVideoChatRoomUIContoller, 0);
+    }
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onChatRoomMsgUpdate, flag[");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], room[");
+      ((StringBuilder)localObject).append(paramChatRoomInfo);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("VideoChatRoomUIContoller", 4, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (VideoChatRoomUIContoller)this.a.get();
+    if (localObject == null) {
+      return;
+    }
+    if (((VideoChatRoomUIContoller)localObject).a())
+    {
+      VideoChatRoomUIContoller.a((VideoChatRoomUIContoller)localObject, paramChatRoomInfo);
+      return;
+    }
+    if (i != 0) {
+      VideoChatRoomUIContoller.a((VideoChatRoomUIContoller)localObject, 0);
+    }
   }
   
   public void a(ChatRoomMsg paramChatRoomMsg)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.i("VideoChatRoomUIContoller", 4, "onChatRoomSendMsgResult, msg[" + paramChatRoomMsg + "]");
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onChatRoomSendMsgResult, msg[");
+      ((StringBuilder)localObject).append(paramChatRoomMsg);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("VideoChatRoomUIContoller", 4, ((StringBuilder)localObject).toString());
     }
-    VideoChatRoomUIContoller localVideoChatRoomUIContoller = (VideoChatRoomUIContoller)this.a.get();
-    if ((paramChatRoomMsg == null) || (localVideoChatRoomUIContoller == null)) {}
-    while (!localVideoChatRoomUIContoller.a()) {
-      return;
+    Object localObject = (VideoChatRoomUIContoller)this.a.get();
+    if (paramChatRoomMsg != null)
+    {
+      if (localObject == null) {
+        return;
+      }
+      if (((VideoChatRoomUIContoller)localObject).a()) {
+        VideoChatRoomUIContoller.a((VideoChatRoomUIContoller)localObject, paramChatRoomMsg.a);
+      }
     }
-    VideoChatRoomUIContoller.a(localVideoChatRoomUIContoller, paramChatRoomMsg.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.VideoChatRoomUIContoller.ChatRoomMsgObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -1,16 +1,16 @@
 package com.tencent.mobileqq.activity.history;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 public class ChatHistoryPicVideoViewController
   extends ChatHistoryCommonViewController
 {
-  public static final int[] a = { 2131690884 };
-  public static final int[] b = { 2131364622 };
+  public static final int[] a = { 2131690813 };
+  public static final int[] b = { 2131364509 };
   
-  public ChatHistoryPicVideoViewController(FragmentActivity paramFragmentActivity)
+  public ChatHistoryPicVideoViewController(BaseActivity paramBaseActivity)
   {
-    super(paramFragmentActivity);
+    super(paramBaseActivity);
   }
   
   protected int[] a()
@@ -25,7 +25,7 @@ public class ChatHistoryPicVideoViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryPicVideoViewController
  * JD-Core Version:    0.7.0.1
  */

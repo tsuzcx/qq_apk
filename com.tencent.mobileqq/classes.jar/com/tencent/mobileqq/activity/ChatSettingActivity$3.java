@@ -1,13 +1,13 @@
 package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.nearby.profilecard.MiniCardManager.IGetMiniCardCallback;
+import com.tencent.mobileqq.nearby.profilecard.IGetMiniCardCallback;
 import com.tencent.nowsummarycard.NowSummaryCard.MiniCard;
 import java.util.List;
 import mqq.os.MqqHandler;
 
 class ChatSettingActivity$3
-  implements MiniCardManager.IGetMiniCardCallback
+  implements IGetMiniCardCallback
 {
   ChatSettingActivity$3(ChatSettingActivity paramChatSettingActivity) {}
   
@@ -20,7 +20,7 @@ class ChatSettingActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.3
  * JD-Core Version:    0.7.0.1
  */

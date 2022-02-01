@@ -44,14 +44,15 @@ public final class BGMusic
     paramJceOutputStream.write(this.green_diamond_flag, 1);
     paramJceOutputStream.write(this.music_can_play, 2);
     paramJceOutputStream.write(this.all_music_nums, 3);
-    if (this.all_music_list != null) {
-      paramJceOutputStream.write(this.all_music_list, 4);
+    ArrayList localArrayList = this.all_music_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_BG_VOICE_LOGIC_APP.BGMusic
  * JD-Core Version:    0.7.0.1
  */

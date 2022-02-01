@@ -30,7 +30,7 @@
                         {
                             "name":"div",
                             "attrs":{
-                                "style":"font-size:18px;line-height:25px;width:351rpx;color:#242424;-webkit-line-clamp:2;"
+                                "style":"font-size:16px;color:#242424;-webkit-line-clamp:2;"
                             },
                             "truncationAttrs":{
                                 "color":"#40A0FF"

@@ -16,30 +16,31 @@ class SubMsgPermissionSettingFragment$2
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (SubMsgPermissionSettingFragment.access$000(this.this$0)) {
+    if (SubMsgPermissionSettingFragment.access$000(this.this$0))
+    {
       SubMsgPermissionSettingFragment.access$002(this.this$0, false);
     }
-    while (!(paramCompoundButton.getTag() instanceof INTERFACE.StSubscribeMessage))
+    else if ((paramCompoundButton.getTag() instanceof INTERFACE.StSubscribeMessage))
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-    }
-    INTERFACE.StSubscribeMessage localStSubscribeMessage = (INTERFACE.StSubscribeMessage)paramCompoundButton.getTag();
-    Object localObject = localStSubscribeMessage.authState;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 2)
-    {
+      INTERFACE.StSubscribeMessage localStSubscribeMessage = (INTERFACE.StSubscribeMessage)paramCompoundButton.getTag();
+      Object localObject = localStSubscribeMessage.authState;
+      int i;
+      if (paramBoolean) {
+        i = 1;
+      } else {
+        i = 2;
+      }
       ((PBInt32Field)localObject).set(i);
       localObject = new ArrayList();
       ((ArrayList)localObject).add(localStSubscribeMessage);
       this.this$0.authState.updateOnceSubMsgSetting(null, paramBoolean, (List)localObject, new SubMsgPermissionSettingFragment.2.1(this, localStSubscribeMessage, paramBoolean, paramCompoundButton));
-      break;
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubMsgPermissionSettingFragment.2
  * JD-Core Version:    0.7.0.1
  */

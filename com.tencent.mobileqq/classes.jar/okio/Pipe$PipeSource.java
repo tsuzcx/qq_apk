@@ -21,21 +21,25 @@ final class Pipe$PipeSource
   {
     synchronized (this.this$0.buffer)
     {
-      if (this.this$0.sourceClosed) {
-        throw new IllegalStateException("closed");
+      if (!this.this$0.sourceClosed)
+      {
+        while (this.this$0.buffer.size() == 0L)
+        {
+          if (this.this$0.sinkClosed) {
+            return -1L;
+          }
+          this.timeout.waitUntilNotified(this.this$0.buffer);
+        }
+        paramLong = this.this$0.buffer.read(paramBuffer, paramLong);
+        this.this$0.buffer.notifyAll();
+        return paramLong;
       }
+      throw new IllegalStateException("closed");
     }
-    do
+    for (;;)
     {
-      this.timeout.waitUntilNotified(this.this$0.buffer);
-      if (this.this$0.buffer.size() != 0L) {
-        break;
-      }
-    } while (!this.this$0.sinkClosed);
-    return -1L;
-    paramLong = this.this$0.buffer.read(paramBuffer, paramLong);
-    this.this$0.buffer.notifyAll();
-    return paramLong;
+      throw paramBuffer;
+    }
   }
   
   public Timeout timeout()
@@ -45,7 +49,7 @@ final class Pipe$PipeSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okio.Pipe.PipeSource
  * JD-Core Version:    0.7.0.1
  */

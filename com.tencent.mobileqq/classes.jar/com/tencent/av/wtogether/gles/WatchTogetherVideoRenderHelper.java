@@ -43,58 +43,67 @@ public class WatchTogetherVideoRenderHelper
   public WatchTogetherVideoRenderHelper(boolean paramBoolean)
   {
     this.f = paramBoolean;
-    StringBuilder localStringBuilder = new StringBuilder().append("WatchTogetherVideoRenderHelper");
-    if (this.f) {}
-    for (String str = "Floating-window";; str = "Full-screen")
-    {
-      this.jdField_a_of_type_JavaLangString = str;
-      return;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WatchTogetherVideoRenderHelper");
+    String str;
+    if (this.f) {
+      str = "Floating-window";
+    } else {
+      str = "Full-screen";
     }
+    localStringBuilder.append(str);
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   private void a(Runnable paramRunnable)
   {
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference != null) && (localWeakReference.get() != null)) {
       ((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).queueEvent(paramRunnable);
     }
   }
   
   private void c(int paramInt1, int paramInt2)
   {
-    int j = 0;
-    QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onSizeChanged");
-    if ((this.jdField_a_of_type_Int != paramInt1) || (this.jdField_b_of_type_Int != paramInt2)) {}
-    for (int i = 1;; i = 0)
+    String str = this.jdField_a_of_type_JavaLangString;
+    int j = 1;
+    QLog.d(str, 1, "onSizeChanged");
+    int i;
+    if ((this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if ((i != 0) || (!this.jdField_b_of_type_Boolean))
     {
-      if ((i != 0) || (!this.jdField_b_of_type_Boolean))
-      {
-        this.jdField_a_of_type_Int = paramInt1;
-        this.jdField_b_of_type_Int = paramInt2;
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-      }
-      if (i == 0)
-      {
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt2;
+      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+    }
+    paramInt1 = j;
+    if (i == 0) {
+      if (!this.jdField_b_of_type_Boolean) {
         paramInt1 = j;
-        if (this.jdField_b_of_type_Boolean) {}
+      } else {
+        paramInt1 = 0;
       }
-      else
-      {
-        paramInt1 = 1;
-      }
-      if (paramInt1 != 0) {
-        this.jdField_c_of_type_Int = -1;
-      }
-      return;
+    }
+    if (paramInt1 != 0) {
+      this.jdField_c_of_type_Int = -1;
     }
   }
   
   private boolean c()
   {
-    if ((this.jdField_d_of_type_Boolean) && (this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    if (this.jdField_d_of_type_Boolean)
     {
-      ((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).requestRender();
-      QLog.d(this.jdField_a_of_type_JavaLangString, 1, "run requestGLRender");
-      return true;
+      WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ((localWeakReference != null) && (localWeakReference.get() != null))
+      {
+        ((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).requestRender();
+        QLog.d(this.jdField_a_of_type_JavaLangString, 1, "run requestGLRender");
+        return true;
+      }
     }
     return false;
   }
@@ -110,25 +119,25 @@ public class WatchTogetherVideoRenderHelper
   public void a()
   {
     QLog.d(this.jdField_a_of_type_JavaLangString, 1, "onSurfaceDestroy");
-    if ((this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder != null) && (Build.VERSION.SDK_INT >= 16)) {}
-    synchronized (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder)
-    {
-      if (this.jdField_b_of_type_Boolean)
+    if ((this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder != null) && (Build.VERSION.SDK_INT >= 16)) {
+      synchronized (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder)
       {
-        this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.c();
-        this.jdField_b_of_type_Boolean = false;
+        if (this.jdField_b_of_type_Boolean)
+        {
+          this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.c();
+          this.jdField_b_of_type_Boolean = false;
+        }
+        this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.d();
+        this.jdField_c_of_type_Int = -1;
       }
-      this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.d();
-      this.jdField_c_of_type_Int = -1;
-      d();
-      this.jdField_d_of_type_Boolean = false;
-      this.jdField_e_of_type_Boolean = true;
-      this.jdField_c_of_type_Boolean = false;
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
-      this.jdField_a_of_type_Int = -1;
-      this.jdField_b_of_type_Int = -1;
-      return;
     }
+    d();
+    this.jdField_d_of_type_Boolean = false;
+    this.jdField_e_of_type_Boolean = true;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
+    this.jdField_a_of_type_Int = -1;
+    this.jdField_b_of_type_Int = -1;
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -170,17 +179,21 @@ public class WatchTogetherVideoRenderHelper
   
   public void b(int paramInt1, int paramInt2)
   {
-    int j = 1;
-    if ((this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder != null) && (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.a())) {}
-    for (int i = 1;; i = 0)
-    {
-      this.jdField_d_of_type_Boolean = true;
-      if ((this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder != null) && (this.jdField_c_of_type_Boolean) && (i != 0)) {
-        break;
-      }
-      return;
+    ??? = this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder;
+    int i;
+    if ((??? != null) && (???.a())) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    c(paramInt1, paramInt2);
+    this.jdField_d_of_type_Boolean = true;
+    if ((this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder != null) && (this.jdField_c_of_type_Boolean))
+    {
+      if (i == 0) {
+        return;
+      }
+      c(paramInt1, paramInt2);
+    }
     for (;;)
     {
       synchronized (this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder)
@@ -194,33 +207,36 @@ public class WatchTogetherVideoRenderHelper
           this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.a();
           this.jdField_a_of_type_ComTencentAvWtogetherGlesWatchTogetherSurfaceTextureHolder.a(this.jdField_a_of_type_ArrayOfFloat);
         }
-        int k = AIOUtils.a(64.0F, ((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
-        int m = WTogetherUtil.a(((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getContext());
+        int j = AIOUtils.b(64.0F, ((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getResources());
+        int k = WTogetherUtil.a(((GLSurfaceView)this.jdField_a_of_type_JavaLangRefWeakReference.get()).getContext());
+        int m = WTogetherUtil.a();
         int n = WTogetherUtil.a();
-        int i1 = WTogetherUtil.a();
-        if (paramInt1 < paramInt2)
-        {
-          i = j;
-          if (i == 0) {
-            break label277;
-          }
-          GLES20.glViewport(0, paramInt2 - (m + k + n), paramInt1, i1);
-          this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateFitCenterMvpMatrix(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramInt1, i1);
-          this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
-          if (i != 0) {
-            GLES20.glViewport(0, 0, paramInt1, paramInt2);
-          }
-          this.jdField_b_of_type_Boolean = true;
-          this.jdField_e_of_type_Boolean = false;
-          this.jdField_a_of_type_Boolean = false;
-          return;
+        if (paramInt1 >= paramInt2) {
+          break label301;
         }
+        i = 1;
+        if (i != 0)
+        {
+          GLES20.glViewport(0, paramInt2 - (j + k + m), paramInt1, n);
+          this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateFitCenterMvpMatrix(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramInt1, n);
+        }
+        else
+        {
+          GLES20.glViewport(0, 0, paramInt1, paramInt2);
+          this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateFitCenterMvpMatrix(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramInt1, paramInt2);
+        }
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.jdField_c_of_type_Int, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
+        if (i != 0) {
+          GLES20.glViewport(0, 0, paramInt1, paramInt2);
+        }
+        this.jdField_b_of_type_Boolean = true;
+        this.jdField_e_of_type_Boolean = false;
+        this.jdField_a_of_type_Boolean = false;
+        return;
       }
+      return;
+      label301:
       i = 0;
-      continue;
-      label277:
-      GLES20.glViewport(0, 0, paramInt1, paramInt2);
-      this.jdField_b_of_type_ArrayOfFloat = GPUBaseFilter.caculateFitCenterMvpMatrix(this.jdField_d_of_type_Int, this.jdField_e_of_type_Int, paramInt1, paramInt2);
     }
   }
   
@@ -250,18 +266,31 @@ public class WatchTogetherVideoRenderHelper
     }
     catch (Exception paramGL10)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, "WL_DEBUG onDrawFrame e = " + paramGL10);
-      StackTraceElement[] arrayOfStackTraceElement = paramGL10.getStackTrace();
-      paramGL10 = "";
-      int j = arrayOfStackTraceElement.length;
-      int i = 0;
-      while (i < j)
+      if (QLog.isColorLevel())
       {
-        paramGL10 = paramGL10 + "WL_DEBUG onDrawFrame ste[" + i + "]" + arrayOfStackTraceElement[i].toString() + "\n";
-        i += 1;
+        Object localObject = this.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("WL_DEBUG onDrawFrame e = ");
+        localStringBuilder.append(paramGL10);
+        QLog.e((String)localObject, 2, localStringBuilder.toString());
+        localObject = paramGL10.getStackTrace();
+        int j = localObject.length;
+        int i = 0;
+        paramGL10 = "";
+        while (i < j)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramGL10);
+          localStringBuilder.append("WL_DEBUG onDrawFrame ste[");
+          localStringBuilder.append(i);
+          localStringBuilder.append("]");
+          localStringBuilder.append(localObject[i].toString());
+          localStringBuilder.append("\n");
+          paramGL10 = localStringBuilder.toString();
+          i += 1;
+        }
+        QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramGL10);
       }
-      QLog.e(this.jdField_a_of_type_JavaLangString, 2, paramGL10);
     }
   }
   
@@ -278,7 +307,7 @@ public class WatchTogetherVideoRenderHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.gles.WatchTogetherVideoRenderHelper
  * JD-Core Version:    0.7.0.1
  */

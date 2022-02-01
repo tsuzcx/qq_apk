@@ -9,11 +9,15 @@ import java.io.File;
 
 public class TAVAutomaticTemplateParse
 {
-  private static final String TAG = TAVAutomaticTemplateParse.class.getCanonicalName();
+  private static final String TAG = "com.tencent.autotemplate.TAVAutomaticTemplateParse";
   
   public static TAVAutomaticTemplate parseAutomaticTemplate(@NonNull Context paramContext, @NonNull String paramString1, @NonNull String paramString2)
   {
-    paramString2 = (TAVAutomaticTemplate)JsonUtils.parseObjectFromFile(paramContext, paramString1 + File.separator + paramString2, TAVAutomaticTemplate.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    paramString2 = (TAVAutomaticTemplate)JsonUtils.parseObjectFromFile(paramContext, localStringBuilder.toString(), TAVAutomaticTemplate.class);
     if (paramString2 != null)
     {
       paramString2.setContext(paramContext);
@@ -31,14 +35,22 @@ public class TAVAutomaticTemplateParse
   
   public static TAVAutomaticTemplate parseAutomaticTemplate(@NonNull String paramString1, @NonNull String paramString2)
   {
-    paramString2 = (TAVAutomaticTemplate)JsonUtils.parseObjectFromFile(null, paramString1 + "/" + paramString2, TAVAutomaticTemplate.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString2);
+    paramString2 = (TAVAutomaticTemplate)JsonUtils.parseObjectFromFile(null, localStringBuilder.toString(), TAVAutomaticTemplate.class);
     paramString2.setTemplateDir(paramString1);
     return paramString2;
   }
   
   public static TAVRhythmAutomaticTemplate parseRhythmAutomaticTemplate(@Nullable Context paramContext, @NonNull String paramString1, @NonNull String paramString2)
   {
-    paramContext = (TAVRhythmAutomaticTemplate)JsonUtils.parseObjectFromFile(paramContext, paramString1 + "/" + paramString2, TAVRhythmAutomaticTemplate.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString2);
+    paramContext = (TAVRhythmAutomaticTemplate)JsonUtils.parseObjectFromFile(paramContext, localStringBuilder.toString(), TAVRhythmAutomaticTemplate.class);
     if (paramContext == null) {
       return null;
     }
@@ -53,7 +65,11 @@ public class TAVAutomaticTemplateParse
   
   public static TAVRhythmAutomaticTemplate parseRhythmAutomaticTemplate(@NonNull String paramString1, @NonNull String paramString2)
   {
-    paramString2 = (TAVRhythmAutomaticTemplate)JsonUtils.parseObjectFromFile(null, paramString1 + "/" + paramString2, TAVRhythmAutomaticTemplate.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("/");
+    localStringBuilder.append(paramString2);
+    paramString2 = (TAVRhythmAutomaticTemplate)JsonUtils.parseObjectFromFile(null, localStringBuilder.toString(), TAVRhythmAutomaticTemplate.class);
     if (paramString2 == null) {
       return null;
     }

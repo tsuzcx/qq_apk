@@ -43,9 +43,14 @@ public class NativeImage
   
   public void loadImage(String paramString)
   {
-    LogUtil.QLog.d("NativeImage_TMTEST", 2, "loadImage: path is " + paramString);
-    if ((paramString != null) && (!paramString.equals("-1"))) {
-      this.mNative.setImageDrawable(DrawableUtil.getDrawable(this.mNative.getContext(), paramString, null, null));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("loadImage: path is ");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtil.QLog.d("NativeImage_TMTEST", 2, ((StringBuilder)localObject).toString());
+    if ((paramString != null) && (!paramString.equals("-1")))
+    {
+      localObject = this.mNative;
+      ((NativeImageImp)localObject).setImageDrawable(DrawableUtil.getDrawable(((NativeImageImp)localObject).getContext(), paramString, null, null));
     }
   }
   
@@ -88,7 +93,7 @@ public class NativeImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.view.image.NativeImage
  * JD-Core Version:    0.7.0.1
  */

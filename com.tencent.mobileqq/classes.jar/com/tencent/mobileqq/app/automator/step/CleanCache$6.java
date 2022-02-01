@@ -10,12 +10,12 @@ class CleanCache$6
   
   public boolean accept(File paramFile, String paramString)
   {
-    return !paramString.contains("CrashInfoSummary.txt");
+    return paramString.contains("CrashInfoSummary.txt") ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.CleanCache.6
  * JD-Core Version:    0.7.0.1
  */

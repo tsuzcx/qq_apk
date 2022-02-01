@@ -277,11 +277,15 @@ public class FileManagerEntity
   
   public boolean equals(Object paramObject)
   {
-    if (!(paramObject instanceof FileManagerEntity)) {}
-    while (((FileManagerEntity)paramObject).nSessionId != this.nSessionId) {
+    boolean bool2 = paramObject instanceof FileManagerEntity;
+    boolean bool1 = false;
+    if (!bool2) {
       return false;
     }
-    return true;
+    if (((FileManagerEntity)paramObject).nSessionId == this.nSessionId) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public int getCloudType()
@@ -301,38 +305,56 @@ public class FileManagerEntity
   
   public boolean isFromProcessingBuddyForward2DatalineItem()
   {
-    return (this.nOpType == 29) && ((this.status == 2) || (this.status == 0));
+    if (this.nOpType == 29)
+    {
+      int i = this.status;
+      if ((i == 2) || (i == 0)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean isFromProcessingForward2DatalineItem()
   {
-    return (this.nOpType == 31) && ((this.status == 2) || (this.status == 0));
+    if (this.nOpType == 31)
+    {
+      int i = this.status;
+      if ((i == 2) || (i == 0)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public boolean isFromProcessingForward2c2cOrDiscItem()
   {
-    return ((this.nOpType == 24) || (this.nOpType == 25)) && ((this.status == 2) || (this.status == 0));
+    int i = this.nOpType;
+    if ((i == 24) || (i == 25)) {
+      i = this.status;
+    }
+    return (i == 2) || (i == 0);
   }
   
   public boolean isSend()
   {
-    return (this.nOpType == 0) || (this.nOpType == 3) || (this.nOpType == 4) || (this.nOpType == 6) || (this.nOpType == 7) || (this.nOpType == 20) || (this.nOpType == 21) || (this.nOpType == 22) || (this.nOpType == 24) || (this.nOpType == 25) || (this.nOpType == 26) || (this.nOpType == 27) || (this.nOpType == 28) || (this.nOpType == 29) || (this.nOpType == 31) || (this.nOpType == 51) || (this.nOpType == 32);
+    int i = this.nOpType;
+    return (i == 0) || (i == 3) || (i == 4) || (i == 6) || (i == 7) || (i == 20) || (i == 21) || (i == 22) || (i == 24) || (i == 25) || (i == 26) || (i == 27) || (i == 28) || (i == 29) || (i == 31) || (i == 51) || (i == 32);
   }
   
   public boolean sendCloudUnsuccessful()
   {
-    if (this.status == 16) {}
-    do
-    {
+    int i = this.status;
+    if (i == 16) {
       return true;
-      if (this.status == 1) {
-        return false;
-      }
-      if (!isSend()) {
-        return false;
-      }
-    } while (this.status != -1);
-    return false;
+    }
+    if (i == 1) {
+      return false;
+    }
+    if (!isSend()) {
+      return false;
+    }
+    return this.status != -1;
   }
   
   public void setCloudType(int paramInt)
@@ -361,7 +383,7 @@ public class FileManagerEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.FileManagerEntity
  * JD-Core Version:    0.7.0.1
  */

@@ -7,11 +7,21 @@ import java.io.File;
 
 public class hc
 {
-  public static final String TAG = hc.class.getSimpleName();
-  public static String sF = "tencent" + File.separator + "apdl" + File.separator;
+  public static final String TAG = "hc";
+  public static String sF;
   private Context mContext;
   private hc.a sE;
   private IThreadPool sd;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tencent");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("apdl");
+    localStringBuilder.append(File.separator);
+    sF = localStringBuilder.toString();
+  }
   
   public hc(Context paramContext, IThreadPool paramIThreadPool)
   {
@@ -38,7 +48,7 @@ public class hc
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.hc
  * JD-Core Version:    0.7.0.1
  */

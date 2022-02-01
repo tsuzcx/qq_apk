@@ -5,7 +5,7 @@ import android.content.Context;
 import android.os.Handler;
 import android.os.Looper;
 import android.text.SpannableString;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.utils.DialogUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
 import com.tencent.qphone.base.util.QLog;
@@ -16,7 +16,7 @@ public class FMDialogUtil
   {
     Object localObject = paramContext;
     if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
+      localObject = QBaseActivity.sTopActivity;
     }
     if (localObject == null)
     {
@@ -32,7 +32,7 @@ public class FMDialogUtil
   {
     Object localObject = paramContext;
     if (paramContext == null) {
-      localObject = BaseActivity.sTopActivity;
+      localObject = QBaseActivity.sTopActivity;
     }
     if (localObject == null)
     {
@@ -49,26 +49,27 @@ public class FMDialogUtil
     FMDialogUtil.1 local1 = new FMDialogUtil.1(paramFMDialogInterface);
     paramFMDialogInterface = new FMDialogUtil.2(paramFMDialogInterface);
     Looper localLooper = Looper.getMainLooper();
-    if (Thread.currentThread() != localLooper.getThread()) {}
-    do
+    if (Thread.currentThread() != localLooper.getThread())
     {
       new Handler(localLooper).post(new FMDialogUtil.3(paramContext, paramCharSequence, paramString, local1, paramFMDialogInterface));
-      do
-      {
-        return;
-      } while (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing()));
-      if ((paramCharSequence instanceof String))
-      {
-        DialogUtil.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692335, 2131692339, local1, paramFMDialogInterface).show();
-        return;
-      }
-    } while (!(paramCharSequence instanceof SpannableString));
-    DialogUtil.a(paramContext, 230, paramString, paramCharSequence, 2131692335, 2131692339, local1, paramFMDialogInterface).show();
+      return;
+    }
+    if (((paramContext instanceof Activity)) && (((Activity)paramContext).isFinishing())) {
+      return;
+    }
+    if ((paramCharSequence instanceof String))
+    {
+      DialogUtil.a(paramContext, 230, paramString, (String)paramCharSequence, 2131692263, 2131692267, local1, paramFMDialogInterface).show();
+      return;
+    }
+    if ((paramCharSequence instanceof SpannableString)) {
+      DialogUtil.a(paramContext, 230, paramString, paramCharSequence, 2131692263, 2131692267, local1, paramFMDialogInterface).show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FMDialogUtil
  * JD-Core Version:    0.7.0.1
  */

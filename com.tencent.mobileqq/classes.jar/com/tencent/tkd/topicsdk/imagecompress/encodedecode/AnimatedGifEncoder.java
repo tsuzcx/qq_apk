@@ -37,66 +37,65 @@ public class AnimatedGifEncoder
   
   private int a(int paramInt)
   {
-    int n = 0;
     if (this.jdField_c_of_type_ArrayOfByte == null) {
-      i1 = -1;
+      return -1;
     }
-    int i2;
-    int i3;
-    int i4;
-    int m;
-    int i5;
-    do
+    int i4 = Color.red(paramInt);
+    int i5 = Color.green(paramInt);
+    int i6 = Color.blue(paramInt);
+    int i7 = this.jdField_c_of_type_ArrayOfByte.length;
+    int i1 = 0;
+    int m = 0;
+    int n;
+    for (paramInt = 16777216; i1 < i7; paramInt = n)
     {
-      return i1;
-      i2 = Color.red(paramInt);
-      i3 = Color.green(paramInt);
-      i4 = Color.blue(paramInt);
-      m = 16777216;
-      i5 = this.jdField_c_of_type_ArrayOfByte.length;
-      paramInt = 0;
-      i1 = paramInt;
-    } while (n >= i5);
-    byte[] arrayOfByte = this.jdField_c_of_type_ArrayOfByte;
-    int i1 = n + 1;
-    n = i2 - (arrayOfByte[n] & 0xFF);
-    arrayOfByte = this.jdField_c_of_type_ArrayOfByte;
-    int i6 = i1 + 1;
-    i1 = i3 - (arrayOfByte[i1] & 0xFF);
-    int i7 = i4 - (this.jdField_c_of_type_ArrayOfByte[i6] & 0xFF);
-    n = n * n + i1 * i1 + i7 * i7;
-    i1 = i6 / 3;
-    if ((this.jdField_a_of_type_ArrayOfBoolean[i1] != 0) && (n < m))
-    {
-      m = i1;
-      paramInt = n;
-    }
-    for (;;)
-    {
+      byte[] arrayOfByte = this.jdField_c_of_type_ArrayOfByte;
+      int i2 = i1 + 1;
+      n = i4 - (arrayOfByte[i1] & 0xFF);
+      int i8 = i2 + 1;
+      i1 = i5 - (arrayOfByte[i2] & 0xFF);
+      i2 = i6 - (arrayOfByte[i8] & 0xFF);
+      int i3 = n * n + i1 * i1 + i2 * i2;
+      i2 = i8 / 3;
       i1 = m;
-      n = i6 + 1;
-      m = paramInt;
-      paramInt = i1;
-      break;
       n = paramInt;
-      paramInt = m;
-      m = n;
+      if (this.jdField_a_of_type_ArrayOfBoolean[i2] != 0)
+      {
+        i1 = m;
+        n = paramInt;
+        if (i3 < paramInt)
+        {
+          n = i3;
+          i1 = i2;
+        }
+      }
+      paramInt = i8 + 1;
+      m = i1;
+      i1 = paramInt;
     }
+    return m;
   }
   
   private void a()
   {
-    int n = this.jdField_a_of_type_ArrayOfByte.length;
+    Object localObject = this.jdField_a_of_type_ArrayOfByte;
+    int n = localObject.length;
     int i2 = n / 3;
     this.jdField_b_of_type_ArrayOfByte = new byte[i2];
-    NeuQuant localNeuQuant = new NeuQuant(this.jdField_a_of_type_ArrayOfByte, n, this.k);
-    this.jdField_c_of_type_ArrayOfByte = localNeuQuant.b();
+    localObject = new NeuQuant((byte[])localObject, n, this.k);
+    this.jdField_c_of_type_ArrayOfByte = ((NeuQuant)localObject).b();
     n = 0;
-    while (n < this.jdField_c_of_type_ArrayOfByte.length)
+    byte[] arrayOfByte;
+    for (;;)
     {
-      int m = this.jdField_c_of_type_ArrayOfByte[n];
-      this.jdField_c_of_type_ArrayOfByte[n] = this.jdField_c_of_type_ArrayOfByte[(n + 2)];
-      this.jdField_c_of_type_ArrayOfByte[(n + 2)] = m;
+      arrayOfByte = this.jdField_c_of_type_ArrayOfByte;
+      if (n >= arrayOfByte.length) {
+        break;
+      }
+      int m = arrayOfByte[n];
+      i1 = n + 2;
+      arrayOfByte[n] = arrayOfByte[i1];
+      arrayOfByte[i1] = m;
       this.jdField_a_of_type_ArrayOfBoolean[(n / 3)] = false;
       n += 3;
     }
@@ -104,29 +103,28 @@ public class AnimatedGifEncoder
     int i1 = 0;
     while (n < i2)
     {
-      byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      int i5 = i1 + 1;
-      int i3 = arrayOfByte[i1];
       arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      int i4 = i5 + 1;
-      i5 = arrayOfByte[i5];
-      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      i1 = i4 + 1;
-      i3 = localNeuQuant.a(i3 & 0xFF, i5 & 0xFF, arrayOfByte[i4] & 0xFF);
+      int i3 = i1 + 1;
+      int i4 = arrayOfByte[i1];
+      i1 = i3 + 1;
+      i3 = ((NeuQuant)localObject).a(i4 & 0xFF, arrayOfByte[i3] & 0xFF, arrayOfByte[i1] & 0xFF);
       this.jdField_a_of_type_ArrayOfBoolean[i3] = true;
       this.jdField_b_of_type_ArrayOfByte[n] = ((byte)i3);
       n += 1;
+      i1 += 1;
     }
     this.jdField_a_of_type_ArrayOfByte = null;
     this.h = 8;
     this.i = 7;
-    if (this.jdField_a_of_type_JavaLangInteger != null) {
-      this.jdField_e_of_type_Int = a(this.jdField_a_of_type_JavaLangInteger.intValue());
-    }
-    while (!this.jdField_e_of_type_Boolean) {
+    localObject = this.jdField_a_of_type_JavaLangInteger;
+    if (localObject != null)
+    {
+      this.jdField_e_of_type_Int = a(((Integer)localObject).intValue());
       return;
     }
-    this.jdField_e_of_type_Int = a(0);
+    if (this.jdField_e_of_type_Boolean) {
+      this.jdField_e_of_type_Int = a(0);
+    }
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -147,7 +145,6 @@ public class AnimatedGifEncoder
   
   private void b()
   {
-    boolean bool = false;
     int m = this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
     int n = this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight();
     if ((m != this.jdField_a_of_type_Int) || (n != this.jdField_b_of_type_Int))
@@ -159,6 +156,7 @@ public class AnimatedGifEncoder
     Object localObject = new int[m * n];
     this.jdField_a_of_type_AndroidGraphicsBitmap.getPixels((int[])localObject, 0, m, 0, 0, m, n);
     this.jdField_a_of_type_ArrayOfByte = new byte[localObject.length * 3];
+    boolean bool = false;
     this.jdField_e_of_type_Boolean = false;
     int i3 = localObject.length;
     m = 0;
@@ -174,22 +172,29 @@ public class AnimatedGifEncoder
       byte[] arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
       i2 = n + 1;
       arrayOfByte[n] = ((byte)(i4 & 0xFF));
-      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      int i5 = i2 + 1;
+      n = i2 + 1;
       arrayOfByte[i2] = ((byte)(i4 >> 8 & 0xFF));
-      arrayOfByte = this.jdField_a_of_type_ArrayOfByte;
-      n = i5 + 1;
-      arrayOfByte[i5] = ((byte)(i4 >> 16 & 0xFF));
+      arrayOfByte[n] = ((byte)(i4 >> 16 & 0xFF));
       m += 1;
+      n += 1;
       i2 = i1;
     }
-    double d1 = i2 * 100 / localObject.length;
+    double d1 = i2 * 100;
+    double d2 = localObject.length;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    d1 /= d2;
     if (d1 > 4.0D) {
       bool = true;
     }
     this.jdField_e_of_type_Boolean = bool;
-    if (Log.isLoggable("AnimatedGifEncoder", 3)) {
-      Log.d("AnimatedGifEncoder", "got pixels for frame with " + d1 + "% transparent pixels");
+    if (Log.isLoggable("AnimatedGifEncoder", 3))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("got pixels for frame with ");
+      ((StringBuilder)localObject).append(d1);
+      ((StringBuilder)localObject).append("% transparent pixels");
+      Log.d("AnimatedGifEncoder", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -213,26 +218,26 @@ public class AnimatedGifEncoder
     this.jdField_a_of_type_JavaIoOutputStream.write(33);
     this.jdField_a_of_type_JavaIoOutputStream.write(249);
     this.jdField_a_of_type_JavaIoOutputStream.write(4);
-    int m;
     int n;
+    int m;
     if ((this.jdField_a_of_type_JavaLangInteger == null) && (!this.jdField_e_of_type_Boolean))
     {
-      m = 0;
       n = 0;
+      m = 0;
     }
-    for (;;)
+    else
     {
-      if (this.j >= 0) {
-        m = this.j & 0x7;
-      }
-      this.jdField_a_of_type_JavaIoOutputStream.write(m << 2 | 0x0 | 0x0 | n);
-      c(this.g);
-      this.jdField_a_of_type_JavaIoOutputStream.write(this.jdField_e_of_type_Int);
-      this.jdField_a_of_type_JavaIoOutputStream.write(0);
-      return;
       n = 1;
       m = 2;
     }
+    int i1 = this.j;
+    if (i1 >= 0) {
+      m = i1 & 0x7;
+    }
+    this.jdField_a_of_type_JavaIoOutputStream.write(n | m << 2 | 0x0 | 0x0);
+    c(this.g);
+    this.jdField_a_of_type_JavaIoOutputStream.write(this.jdField_e_of_type_Int);
+    this.jdField_a_of_type_JavaIoOutputStream.write(0);
   }
   
   private void c(int paramInt)
@@ -264,7 +269,9 @@ public class AnimatedGifEncoder
   
   private void f()
   {
-    this.jdField_a_of_type_JavaIoOutputStream.write(this.jdField_c_of_type_ArrayOfByte, 0, this.jdField_c_of_type_ArrayOfByte.length);
+    OutputStream localOutputStream = this.jdField_a_of_type_JavaIoOutputStream;
+    byte[] arrayOfByte = this.jdField_c_of_type_ArrayOfByte;
+    localOutputStream.write(arrayOfByte, 0, arrayOfByte.length);
     int n = this.jdField_c_of_type_ArrayOfByte.length;
     int m = 0;
     while (m < 768 - n)
@@ -301,11 +308,11 @@ public class AnimatedGifEncoder
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        boolean bool = false;
-      }
+      boolean bool;
+      label49:
+      break label49;
     }
+    bool = false;
     this.jdField_e_of_type_Int = 0;
     this.jdField_a_of_type_JavaIoOutputStream = null;
     this.jdField_a_of_type_AndroidGraphicsBitmap = null;
@@ -324,63 +331,64 @@ public class AnimatedGifEncoder
   
   public boolean a(@Nullable Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
-    if ((paramBitmap == null) || (!this.jdField_a_of_type_Boolean)) {
-      return false;
+    boolean bool = false;
+    if (paramBitmap != null) {
+      if (!this.jdField_a_of_type_Boolean) {
+        return false;
+      }
     }
     try
     {
       if (this.jdField_d_of_type_Boolean) {
         a(this.jdField_c_of_type_Int, this.jdField_d_of_type_Int);
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
-        b();
-        a();
-        if (this.jdField_c_of_type_Boolean)
-        {
-          d();
-          f();
-          if (this.f >= 0) {
-            e();
-          }
-        }
-        c();
-        b(paramInt1, paramInt2);
-        if (!this.jdField_c_of_type_Boolean) {
-          f();
-        }
-        g();
-        this.jdField_c_of_type_Boolean = false;
-        return true;
+      } else {
         a(paramBitmap.getWidth(), paramBitmap.getHeight());
       }
-      return false;
+      this.jdField_a_of_type_AndroidGraphicsBitmap = paramBitmap;
+      b();
+      a();
+      if (this.jdField_c_of_type_Boolean)
+      {
+        d();
+        f();
+        if (this.f >= 0) {
+          e();
+        }
+      }
+      c();
+      b(paramInt1, paramInt2);
+      if (!this.jdField_c_of_type_Boolean) {
+        f();
+      }
+      g();
+      this.jdField_c_of_type_Boolean = false;
+      bool = true;
+      return bool;
     }
     catch (IOException paramBitmap) {}
+    return false;
   }
   
   public boolean a(@Nullable OutputStream paramOutputStream)
   {
+    boolean bool = false;
     if (paramOutputStream == null) {
       return false;
     }
-    boolean bool = true;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_a_of_type_JavaIoOutputStream = paramOutputStream;
     try
     {
       a("GIF89a");
-      this.jdField_a_of_type_Boolean = bool;
-      return bool;
+      bool = true;
     }
     catch (IOException paramOutputStream)
     {
-      for (;;)
-      {
-        bool = false;
-      }
+      label26:
+      break label26;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    return bool;
   }
   
   public void b(int paramInt)
@@ -392,7 +400,7 @@ public class AnimatedGifEncoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.imagecompress.encodedecode.AnimatedGifEncoder
  * JD-Core Version:    0.7.0.1
  */

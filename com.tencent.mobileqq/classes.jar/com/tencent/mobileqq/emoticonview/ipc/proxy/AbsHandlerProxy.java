@@ -1,24 +1,23 @@
 package com.tencent.mobileqq.emoticonview.ipc.proxy;
 
-import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 
-public class AbsHandlerProxy<T extends BusinessHandler>
+public class AbsHandlerProxy<T>
 {
   protected T businessHandler;
-  protected QQAppInterface mApp;
+  protected BaseQQAppInterface mApp;
   
-  public AbsHandlerProxy(QQAppInterface paramQQAppInterface, String paramString)
+  public AbsHandlerProxy(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    this.mApp = paramQQAppInterface;
+    this.mApp = paramBaseQQAppInterface;
     if (this.mApp != null) {
-      this.businessHandler = paramQQAppInterface.getBusinessHandler(paramString);
+      this.businessHandler = paramBaseQQAppInterface.getBusinessHandler(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.proxy.AbsHandlerProxy
  * JD-Core Version:    0.7.0.1
  */

@@ -44,8 +44,10 @@ class TAVStickerEditView$TavStickerTouchListener
       this.this$0.stickerEventListener.onTouchBegin(this.this$0.sticker, paramMotionEvent);
     }
     this.downPoint.set(paramMotionEvent.getX(), paramMotionEvent.getY());
-    this.this$0.positionX = this.this$0.getPositionX();
-    this.this$0.positionY = this.this$0.getPositionY();
+    paramMotionEvent = this.this$0;
+    paramMotionEvent.positionX = paramMotionEvent.getPositionX();
+    paramMotionEvent = this.this$0;
+    paramMotionEvent.positionY = paramMotionEvent.getPositionY();
     this.lastDownRotate = this.this$0.rotate;
     this.lastDownScale = this.this$0.scale;
     this.isClickSticker = true;
@@ -62,7 +64,8 @@ class TAVStickerEditView$TavStickerTouchListener
   {
     float f2 = paramMotionEvent.getX();
     float f1 = paramMotionEvent.getY();
-    if (2 == paramMotionEvent.getPointerCount()) {
+    if (2 == paramMotionEvent.getPointerCount())
+    {
       if (TAVStickerEditViewEventType.isHandleDoubleZoomRotate(this.this$0.eventType))
       {
         TLog.d(TAVStickerEditView.TAG, "双指缩放旋转");
@@ -70,38 +73,44 @@ class TAVStickerEditView$TavStickerTouchListener
         onHandleScaleAndRotate(paramMotionEvent.getX(1) - paramMotionEvent.getX(0), paramMotionEvent.getY(1) - paramMotionEvent.getY(0));
       }
     }
-    for (;;)
+    else if (1 == paramMotionEvent.getPointerCount())
     {
-      if (this.operationMode != TAVStickerOperationMode.OP_NONE) {
-        this.this$0.adjustLocation(this.operationMode);
+      if ((Math.abs(f2 - this.downPoint.x) > 16.0F) || (Math.abs(f1 - this.downPoint.y) > 16.0F)) {
+        this.isClickSticker = false;
       }
-      return;
-      if (1 == paramMotionEvent.getPointerCount())
+      if (this.operationMode == TAVStickerOperationMode.OP_SINGLE_ZOOM_ROTATE)
       {
-        if ((Math.abs(f2 - this.downPoint.x) > 16.0F) || (Math.abs(f1 - this.downPoint.y) > 16.0F)) {
-          this.isClickSticker = false;
-        }
-        if (this.operationMode == TAVStickerOperationMode.OP_SINGLE_ZOOM_ROTATE)
+        if (TAVStickerEditViewEventType.isHandleSingleZoomRotate(this.this$0.eventType))
         {
-          if (TAVStickerEditViewEventType.isHandleSingleZoomRotate(this.this$0.eventType))
-          {
-            TLog.d(TAVStickerEditView.TAG, "单指缩放旋转");
-            onHandleScaleAndRotate(this.centerPoint.x - paramMotionEvent.getX(), this.centerPoint.y - paramMotionEvent.getY());
-          }
-        }
-        else if (TAVStickerEditViewEventType.isHandleDrag(this.this$0.eventType))
-        {
-          TLog.d(TAVStickerEditView.TAG, "单指移动");
-          if (!this.isClickSticker) {
-            this.operationMode = TAVStickerOperationMode.OP_DRAG;
-          }
-          f2 = f2 + this.this$0.positionX - this.downPoint.x;
-          f1 = f1 + this.this$0.positionY - this.downPoint.y;
-          paramMotionEvent = this.this$0.positionInterceptor(f2, f1);
-          TLog.d(TAVStickerEditView.TAG, "handleActionMove -> curPositionX : " + f2 + ", realX : " + paramMotionEvent.x + ", curPositionY : " + f1 + ", realY : " + paramMotionEvent.y);
-          this.this$0.setPosition(paramMotionEvent.x, paramMotionEvent.y);
+          TLog.d(TAVStickerEditView.TAG, "单指缩放旋转");
+          onHandleScaleAndRotate(this.centerPoint.x - paramMotionEvent.getX(), this.centerPoint.y - paramMotionEvent.getY());
         }
       }
+      else if (TAVStickerEditViewEventType.isHandleDrag(this.this$0.eventType))
+      {
+        TLog.d(TAVStickerEditView.TAG, "单指移动");
+        if (!this.isClickSticker) {
+          this.operationMode = TAVStickerOperationMode.OP_DRAG;
+        }
+        f2 = this.this$0.positionX + f2 - this.downPoint.x;
+        f1 = this.this$0.positionY + f1 - this.downPoint.y;
+        paramMotionEvent = this.this$0.positionInterceptor(f2, f1);
+        String str = TAVStickerEditView.TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleActionMove -> curPositionX : ");
+        localStringBuilder.append(f2);
+        localStringBuilder.append(", realX : ");
+        localStringBuilder.append(paramMotionEvent.x);
+        localStringBuilder.append(", curPositionY : ");
+        localStringBuilder.append(f1);
+        localStringBuilder.append(", realY : ");
+        localStringBuilder.append(paramMotionEvent.y);
+        TLog.d(str, localStringBuilder.toString());
+        this.this$0.setPosition(paramMotionEvent.x, paramMotionEvent.y);
+      }
+    }
+    if (this.operationMode != TAVStickerOperationMode.OP_NONE) {
+      this.this$0.adjustLocation(this.operationMode);
     }
   }
   
@@ -116,17 +125,20 @@ class TAVStickerEditView$TavStickerTouchListener
   private void handleActionPointerUp(MotionEvent paramMotionEvent)
   {
     this.operationMode = TAVStickerOperationMode.OP_NONE;
-    this.this$0.positionX = this.this$0.getPositionX();
-    this.this$0.positionY = this.this$0.getPositionY();
+    TAVStickerEditView localTAVStickerEditView = this.this$0;
+    localTAVStickerEditView.positionX = localTAVStickerEditView.getPositionX();
+    localTAVStickerEditView = this.this$0;
+    localTAVStickerEditView.positionY = localTAVStickerEditView.getPositionY();
     this.lastDownRotate = this.this$0.rotate;
     this.lastDownScale = this.this$0.scale;
-    if (paramMotionEvent.getPointerId(this.actionIndex) == 0) {
+    if (paramMotionEvent.getPointerId(this.actionIndex) == 0)
+    {
       this.downPoint.set(paramMotionEvent.getX(1), paramMotionEvent.getY(1));
-    }
-    while (1 != paramMotionEvent.getPointerId(this.actionIndex)) {
       return;
     }
-    this.downPoint.set(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
+    if (1 == paramMotionEvent.getPointerId(this.actionIndex)) {
+      this.downPoint.set(paramMotionEvent.getX(0), paramMotionEvent.getY(0));
+    }
   }
   
   private void handleActionUp(MotionEvent paramMotionEvent)
@@ -161,32 +173,19 @@ class TAVStickerEditView$TavStickerTouchListener
     return paramFloat;
   }
   
-  private boolean isTouchInSticker(MotionEvent paramMotionEvent)
+  private void isTouchInSticker(MotionEvent paramMotionEvent)
   {
-    boolean bool2 = false;
-    if ((paramMotionEvent.getAction() & 0xFF) == 0)
+    int i = paramMotionEvent.getAction();
+    boolean bool = true;
+    if (((i & 0xFF) == 0) || (1 == (paramMotionEvent.getAction() & 0xFF)))
     {
       float f1 = paramMotionEvent.getX();
       float f2 = paramMotionEvent.getY();
       this.isTouchInStickerRect = TAVStickerUtil.inQuadrangle(this.this$0.vertexPoints[0], this.this$0.vertexPoints[1], this.this$0.vertexPoints[2], this.this$0.vertexPoints[3], new PointF(f1, f2));
       if ((this.this$0.singleZoomRotateRect == null) || (!this.this$0.singleZoomRotateRect.contains(f1, f2))) {
-        break label134;
+        bool = false;
       }
-    }
-    label134:
-    for (boolean bool1 = true;; bool1 = false)
-    {
-      this.isTouchInSingleZoomRotateRect = bool1;
-      if (!this.isTouchInStickerRect)
-      {
-        bool1 = bool2;
-        if (!this.isTouchInSingleZoomRotateRect) {}
-      }
-      else
-      {
-        bool1 = true;
-      }
-      return bool1;
+      this.isTouchInSingleZoomRotateRect = bool;
     }
   }
   
@@ -195,65 +194,83 @@ class TAVStickerEditView$TavStickerTouchListener
     this.isClickSticker = false;
     float f2 = TAVStickerUtil.getRotation(paramFloat1, paramFloat2) - this.twoPointDownRotate + this.lastDownRotate;
     float f1;
-    if (f2 < 0.0F) {
+    if (f2 < 0.0F)
+    {
       f1 = f2 + 360.0F;
     }
-    for (;;)
+    else
     {
-      f2 = this.this$0.rotateInterceptor(f1);
-      TLog.d(TAVStickerEditView.TAG, "onHandleScaleAndRotate -> rotation : " + f1 + ", displayRotation : " + f2);
-      this.this$0.setRotate(f2);
-      if (this.twoPointDownDistance > 0.0F)
-      {
-        paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
-        paramFloat2 = this.lastDownScale;
-        paramFloat1 = handleScaleLimit(paramFloat1 / this.twoPointDownDistance * paramFloat2);
-        paramFloat2 = this.this$0.scaleInterceptor(paramFloat1);
-        TLog.d(TAVStickerEditView.TAG, "onHandleScaleAndRotate -> curScale : " + paramFloat1 + ", displayScale : " + paramFloat2);
-        this.this$0.setScale(paramFloat2);
-      }
-      return;
       f1 = f2;
       if (f2 > 360.0F) {
         f1 = f2 - 360.0F;
       }
+    }
+    f2 = this.this$0.rotateInterceptor(f1);
+    String str = TAVStickerEditView.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onHandleScaleAndRotate -> rotation : ");
+    localStringBuilder.append(f1);
+    localStringBuilder.append(", displayRotation : ");
+    localStringBuilder.append(f2);
+    TLog.d(str, localStringBuilder.toString());
+    this.this$0.setRotate(f2);
+    if (this.twoPointDownDistance > 0.0F)
+    {
+      paramFloat1 = (float)Math.sqrt(paramFloat1 * paramFloat1 + paramFloat2 * paramFloat2);
+      paramFloat1 = handleScaleLimit(this.lastDownScale * (paramFloat1 / this.twoPointDownDistance));
+      paramFloat2 = this.this$0.scaleInterceptor(paramFloat1);
+      str = TAVStickerEditView.TAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onHandleScaleAndRotate -> curScale : ");
+      localStringBuilder.append(paramFloat1);
+      localStringBuilder.append(", displayScale : ");
+      localStringBuilder.append(paramFloat2);
+      TLog.d(str, localStringBuilder.toString());
+      this.this$0.setScale(paramFloat2);
     }
   }
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
     this.actionIndex = paramMotionEvent.getActionIndex();
-    if ((!this.this$0.sticker.isEditable()) || (this.this$0.eventType == 0)) {
-      return false;
-    }
-    if (isTouchInSticker(paramMotionEvent))
+    if ((this.this$0.sticker.isEditable()) && (this.this$0.eventType != 0))
     {
+      isTouchInSticker(paramMotionEvent);
       this.this$0.bringToFront();
       this.this$0.setMode(TAVStickerMode.ACTIVE);
-      switch (paramMotionEvent.getAction() & 0xFF)
+      int i = paramMotionEvent.getAction() & 0xFF;
+      if (i != 0)
       {
-      }
-      for (;;)
-      {
-        return true;
-        handleActionDown(paramMotionEvent);
-        continue;
-        handleActionPointerDown(paramMotionEvent);
-        continue;
-        handleActionMove(paramMotionEvent);
-        continue;
-        handleActionPointerUp(paramMotionEvent);
-        continue;
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 5)
+            {
+              if (i != 6) {
+                return true;
+              }
+              handleActionPointerUp(paramMotionEvent);
+              return true;
+            }
+            handleActionPointerDown(paramMotionEvent);
+            return true;
+          }
+          handleActionMove(paramMotionEvent);
+          return true;
+        }
         handleActionUp(paramMotionEvent);
+        return true;
       }
+      handleActionDown(paramMotionEvent);
+      return true;
     }
-    TLog.d(TAVStickerEditView.TAG, "onTouch -> not touch in sticker rect.");
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavsticker.core.TAVStickerEditView.TavStickerTouchListener
  * JD-Core Version:    0.7.0.1
  */

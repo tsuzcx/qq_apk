@@ -8,8 +8,8 @@ import android.view.MotionEvent;
 import android.view.View;
 import android.widget.ImageView;
 import com.tencent.mobileqq.app.AppConstants;
-import com.tencent.mobileqq.search.fragment.BaseSearchFragment;
-import com.tencent.mobileqq.search.fragment.ContactSearchFragment;
+import com.tencent.mobileqq.search.base.fragment.BaseSearchFragment;
+import com.tencent.mobileqq.search.business.contact.fragment.ContactSearchFragment;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
@@ -75,12 +75,11 @@ public class ContactSearchComponentActivity
     int j = getIntent().getIntExtra("contactSearchSource", 197437);
     String str = getIntent().getStringExtra("specifiedTroopUin");
     ArrayList localArrayList = new ArrayList();
-    if ((i == 7) || (i == 6) || (i == 23))
-    {
-      localArrayList.add(AppConstants.BABY_Q_UIN);
-      return ContactSearchFragment.a(i, j, str, localArrayList, null, false, 0, getIntent().getLongExtra("contactSearchResultFilterType", -1L));
+    if ((i != 7) && (i != 6) && (i != 23)) {
+      return super.a();
     }
-    return super.a();
+    localArrayList.add(AppConstants.BABY_Q_UIN);
+    return ContactSearchFragment.a(i, j, str, localArrayList, null, false, 0, getIntent().getLongExtra("contactSearchResultFilterType", -1L));
   }
   
   @Override
@@ -92,11 +91,11 @@ public class ContactSearchComponentActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-    findViewById(2131377608).setOnTouchListener(new ContactSearchComponentActivity.1(this));
+    findViewById(2131377051).setOnTouchListener(new ContactSearchComponentActivity.1(this));
     return true;
   }
   
@@ -115,7 +114,7 @@ public class ContactSearchComponentActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.activity.ContactSearchComponentActivity
  * JD-Core Version:    0.7.0.1
  */

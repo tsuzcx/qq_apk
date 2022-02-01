@@ -10,6 +10,7 @@ import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.util.HashMap;
 
 public class MediaUtils$LoadVideoImageTask
@@ -26,64 +27,62 @@ public class MediaUtils$LoadVideoImageTask
   
   protected File doInBackground(String... paramVarArgs)
   {
-    MediaMetadataRetriever localMediaMetadataRetriever;
-    Bitmap localBitmap;
     try
     {
-      localMediaMetadataRetriever = new MediaMetadataRetriever();
+      localObject1 = new MediaMetadataRetriever();
       paramVarArgs = paramVarArgs[0];
-      if ((paramVarArgs.startsWith("http")) || (paramVarArgs.startsWith("https"))) {
-        localMediaMetadataRetriever.setDataSource(paramVarArgs, new HashMap());
+      if ((!paramVarArgs.startsWith("http")) && (!paramVarArgs.startsWith("https"))) {
+        ((MediaMetadataRetriever)localObject1).setDataSource(paramVarArgs);
+      } else {
+        ((MediaMetadataRetriever)localObject1).setDataSource(paramVarArgs, new HashMap());
       }
-      for (;;)
-      {
-        localBitmap = localMediaMetadataRetriever.getFrameAtTime();
-        if (this.miniAppContext != null) {
-          break;
-        }
+      Bitmap localBitmap = ((MediaMetadataRetriever)localObject1).getFrameAtTime();
+      if (this.miniAppContext == null) {
         return null;
-        localMediaMetadataRetriever.setDataSource(paramVarArgs);
       }
-      localFile = new File(((MiniAppFileManager)this.miniAppContext.getManager(MiniAppFileManager.class)).getTmpPath("jpg"));
+      File localFile = new File(((MiniAppFileManager)this.miniAppContext.getManager(MiniAppFileManager.class)).getTmpPath("jpg"));
+      if (localFile.exists()) {
+        localFile.delete();
+      }
+      try
+      {
+        localObject2 = new FileOutputStream(localFile);
+        localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, (OutputStream)localObject2);
+        ((FileOutputStream)localObject2).flush();
+        ((FileOutputStream)localObject2).close();
+      }
+      catch (Exception localException)
+      {
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("doInBackground: ");
+        ((StringBuilder)localObject2).append(paramVarArgs);
+        Log.i("MediaUtils", ((StringBuilder)localObject2).toString(), localException);
+      }
+      ((MediaMetadataRetriever)localObject1).release();
+      return localFile;
     }
     catch (Exception paramVarArgs)
     {
-      QMLog.e("MediaUtils", "getImageForVideo error." + paramVarArgs);
-      return null;
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getImageForVideo error.");
+      ((StringBuilder)localObject1).append(paramVarArgs);
+      QMLog.e("MediaUtils", ((StringBuilder)localObject1).toString());
     }
-    File localFile;
-    if (localFile.exists()) {
-      localFile.delete();
-    }
-    try
-    {
-      FileOutputStream localFileOutputStream = new FileOutputStream(localFile);
-      localBitmap.compress(Bitmap.CompressFormat.JPEG, 90, localFileOutputStream);
-      localFileOutputStream.flush();
-      localFileOutputStream.close();
-      localMediaMetadataRetriever.release();
-      return localFile;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        Log.i("MediaUtils", "doInBackground: " + paramVarArgs, localException);
-      }
-    }
+    return null;
   }
   
   protected void onPostExecute(File paramFile)
   {
     super.onPostExecute(paramFile);
-    if (this.listener != null) {
-      this.listener.onLoadImage(paramFile);
+    MediaUtils.OnLoadVideoImageListener localOnLoadVideoImageListener = this.listener;
+    if (localOnLoadVideoImageListener != null) {
+      localOnLoadVideoImageListener.onLoadImage(paramFile);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.media.MediaUtils.LoadVideoImageTask
  * JD-Core Version:    0.7.0.1
  */

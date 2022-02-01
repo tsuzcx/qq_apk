@@ -16,12 +16,18 @@ public final class Utils$decorateSubPackage$1
   public ScriptFile getScript(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "name");
-    return Utils.access$decorate(this.$this_decorateSubPackage.getScript(paramString), this.$enableCodeCache, "/game_sub_package/" + this.$subPackageName + '/', paramString);
+    ScriptFile localScriptFile = this.$this_decorateSubPackage.getScript(paramString);
+    boolean bool = this.$enableCodeCache;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("/game_sub_package/");
+    localStringBuilder.append(this.$subPackageName);
+    localStringBuilder.append('/');
+    return Utils.access$decorate(localScriptFile, bool, localStringBuilder.toString(), paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.utils.Utils.decorateSubPackage.1
  * JD-Core Version:    0.7.0.1
  */

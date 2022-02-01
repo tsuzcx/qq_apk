@@ -18,20 +18,26 @@ public class QZonePushAckServlet
       return;
     }
     long l = paramIntent.getLongExtra("timestamp", 0L);
-    byte[] arrayOfByte = new QZoneMsfPushAckRequest(paramIntent.getLongExtra("hostuin", 0L), l, paramIntent.getStringExtra("refer"), paramIntent.getLongExtra("flag", 0L), paramIntent.getStringExtra("mark")).encode();
-    paramIntent = arrayOfByte;
-    if (arrayOfByte == null) {
+    Object localObject = new QZoneMsfPushAckRequest(paramIntent.getLongExtra("hostuin", 0L), l, paramIntent.getStringExtra("refer"), paramIntent.getLongExtra("flag", 0L), paramIntent.getStringExtra("mark")).encode();
+    paramIntent = (Intent)localObject;
+    if (localObject == null) {
       paramIntent = new byte[4];
     }
     paramPacket.setTimeout(60000L);
-    paramPacket.setSSOCommand("SQQzoneSvc." + "wns.pushrsp");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SQQzoneSvc.");
+    ((StringBuilder)localObject).append("wns.pushrsp");
+    paramPacket.setSSOCommand(((StringBuilder)localObject).toString());
     paramPacket.putSendData(paramIntent);
-    QLog.d("MessageSvc.WNSQzone.Push", 2, "发送push ack 时间:" + l);
+    paramIntent = new StringBuilder();
+    paramIntent.append("发送push ack 时间:");
+    paramIntent.append(l);
+    QLog.d("MessageSvc.WNSQzone.Push", 2, paramIntent.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZonePushAckServlet
  * JD-Core Version:    0.7.0.1
  */

@@ -22,8 +22,9 @@ public class BatchGetPoiListRequest
   
   public int a()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
@@ -53,27 +54,33 @@ public class BatchGetPoiListRequest
     this.jdField_a_of_type_JavaUtilList = paramList;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
-    if ((this.jdField_a_of_type_JavaUtilList == null) || (this.jdField_a_of_type_JavaUtilList.isEmpty())) {
-      throw new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    Object localObject = this.jdField_a_of_type_JavaUtilList;
+    if ((localObject != null) && (!((List)localObject).isEmpty()))
+    {
+      if ((QLog.isDebugVersion()) && (this.jdField_a_of_type_JavaUtilList.size() > 100)) {
+        throw new QQStoryCmdHandler.IllegalUinException("over LIMIT_MX data to send LIMIT_MX=100");
+      }
+      localObject = new qqstory_service.ReqBatchGetPOIList();
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+      while (localIterator.hasNext()) {
+        localArrayList.add(((GeoHashUtils.Gps)localIterator.next()).a());
+      }
+      ((qqstory_service.ReqBatchGetPOIList)localObject).gps.addAll(localArrayList);
+      return ((qqstory_service.ReqBatchGetPOIList)localObject).toByteArray();
     }
-    if ((QLog.isDebugVersion()) && (this.jdField_a_of_type_JavaUtilList.size() > 100)) {
-      throw new QQStoryCmdHandler.IllegalUinException("over LIMIT_MX data to send LIMIT_MX=100");
+    localObject = new QQStoryCmdHandler.IllegalUinException("req gps list is null");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
-    qqstory_service.ReqBatchGetPOIList localReqBatchGetPOIList = new qqstory_service.ReqBatchGetPOIList();
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext()) {
-      localArrayList.add(((GeoHashUtils.Gps)localIterator.next()).a());
-    }
-    localReqBatchGetPOIList.gps.addAll(localArrayList);
-    return localReqBatchGetPOIList.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.network.BatchGetPoiListRequest
  * JD-Core Version:    0.7.0.1
  */

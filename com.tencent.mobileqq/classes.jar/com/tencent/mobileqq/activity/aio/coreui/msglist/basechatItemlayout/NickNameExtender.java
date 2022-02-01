@@ -12,10 +12,10 @@ import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.config.business.qvip.QVipRedNameCardConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipRedNameCardProcessor;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipRedNameCardConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipRedNameCardProcessor;
 import com.tencent.mobileqq.widget.ColorNickTextView;
 import com.tencent.mobileqq.widget.MosaicEffect;
 
@@ -34,7 +34,7 @@ public class NickNameExtender
     if (this.a == null)
     {
       this.a = new ColorNickTextView(this.mContext);
-      this.a.setId(2131364651);
+      this.a.setId(2131364538);
       this.a.setGravity(48);
       this.a.setTextSize(2, 12.0F);
       this.a.setIncludeFontPadding(false);
@@ -47,7 +47,7 @@ public class NickNameExtender
     }
   }
   
-  public NickNameExtenderViewBasicAbility getBasicAbility()
+  public BaseChatItemLayoutViewBasicAbility getBasicAbility()
   {
     if (this.ability == null) {
       this.ability = new NickNameExtender.1(this, this.a);
@@ -61,60 +61,48 @@ public class NickNameExtender
     return this.a;
   }
   
-  public void updateView(NickNameLayoutProcessor.NickNameLayoutData paramNickNameLayoutData)
+  public void updateView(NickNameChatItemLayoutProcessor.NickNameLayoutData paramNickNameLayoutData)
   {
     this.a.setText(paramNickNameLayoutData.jdField_a_of_type_JavaLangCharSequence);
     this.a.setTag(paramNickNameLayoutData.jdField_a_of_type_JavaLangCharSequence);
     if (paramNickNameLayoutData.jdField_a_of_type_AndroidContentResColorStateList != null) {
       this.a.setTextColor(paramNickNameLayoutData.jdField_a_of_type_AndroidContentResColorStateList);
     }
-    boolean bool;
     if ((QVipRedNameCardProcessor.c().a) && (!SimpleUIUtil.a()))
     {
-      bool = ((FriendsManager)BaseActivity.sTopActivity.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c;
-      if ((paramNickNameLayoutData.c == 0) || (paramNickNameLayoutData.c == -100)) {
-        break label177;
+      boolean bool = ((FriendsManager)BaseActivity.sTopActivity.app.getManager(QQManagerFactory.FRIENDS_MANAGER)).c;
+      if ((paramNickNameLayoutData.c != 0) && (paramNickNameLayoutData.c != -100))
+      {
+        if (bool) {
+          this.a.setTextColor(this.mContext.getResources().getColor(2131167202));
+        } else {
+          this.a.setTextColor(this.mContext.getResources().getColor(2131167063));
+        }
       }
-      if (!bool) {
-        break label155;
+      else
+      {
+        int i = VipUtils.a(paramNickNameLayoutData.jdField_a_of_type_Int);
+        if ((i != 1) && (i != 2) && (i != 3) && (i != 4)) {
+          this.a.setTextColor(this.mContext.getResources().getColor(2131167063));
+        } else if (bool) {
+          this.a.setTextColor(this.mContext.getResources().getColor(2131167202));
+        } else {
+          this.a.setTextColor(this.mContext.getResources().getColor(2131167063));
+        }
       }
-      this.a.setTextColor(this.mContext.getResources().getColor(2131167177));
     }
-    for (;;)
+    paramNickNameLayoutData = AIOLongShotHelper.a();
+    if ((paramNickNameLayoutData != null) && (paramNickNameLayoutData.a()) && (paramNickNameLayoutData.b()))
     {
-      paramNickNameLayoutData = AIOLongShotHelper.a();
-      if ((paramNickNameLayoutData == null) || (!paramNickNameLayoutData.a()) || (!paramNickNameLayoutData.b())) {
-        break;
-      }
       ((ColorNickTextView)this.a).setMosaicEffect(new MosaicEffect(10));
       return;
-      label155:
-      this.a.setTextColor(this.mContext.getResources().getColor(2131167040));
-      continue;
-      label177:
-      switch (VipUtils.a(paramNickNameLayoutData.jdField_a_of_type_Int))
-      {
-      default: 
-        this.a.setTextColor(this.mContext.getResources().getColor(2131167040));
-        break;
-      case 1: 
-      case 2: 
-      case 3: 
-      case 4: 
-        if (bool) {
-          this.a.setTextColor(this.mContext.getResources().getColor(2131167177));
-        } else {
-          this.a.setTextColor(this.mContext.getResources().getColor(2131167040));
-        }
-        break;
-      }
     }
     ((ColorNickTextView)this.a).setMosaicEffect(null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtender
  * JD-Core Version:    0.7.0.1
  */

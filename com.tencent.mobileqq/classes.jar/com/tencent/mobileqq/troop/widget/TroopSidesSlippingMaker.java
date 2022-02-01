@@ -61,35 +61,36 @@ public class TroopSidesSlippingMaker
   
   private int a(int paramInt1, int paramInt2)
   {
-    int i = 300;
     if (paramInt1 > 0) {
-      i = (int)(Math.abs(paramInt2) / paramInt1 * 300.0F) + 50;
+      return (int)(Math.abs(paramInt2) / paramInt1 * 300.0F) + 50;
     }
-    return i;
+    return 300;
   }
   
   private void a(int paramInt1, int paramInt2, View paramView, int paramInt3)
   {
     paramInt2 = this.f;
-    paramInt1 = paramView.getScrollX() - (paramInt1 - paramInt2);
-    if (paramInt1 > paramInt3) {}
-    for (;;)
+    paramInt2 = paramView.getScrollX() - (paramInt1 - paramInt2);
+    if (paramInt2 > paramInt3)
     {
-      if (!this.jdField_a_of_type_Boolean)
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener.a(true);
-        }
-        this.jdField_a_of_type_Boolean = true;
-      }
-      paramView.scrollTo(paramInt3, 0);
-      return;
-      if (paramInt1 < 0) {
-        paramInt3 = 0;
-      } else {
-        paramInt3 = paramInt1;
+      paramInt1 = paramInt3;
+    }
+    else
+    {
+      paramInt1 = paramInt2;
+      if (paramInt2 < 0) {
+        paramInt1 = 0;
       }
     }
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      TroopSidesSlippingMaker.SlidingListener localSlidingListener = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      if (localSlidingListener != null) {
+        localSlidingListener.a(true);
+      }
+      this.jdField_a_of_type_Boolean = true;
+    }
+    paramView.scrollTo(paramInt1, 0);
   }
   
   private void a(MotionEvent paramMotionEvent)
@@ -102,27 +103,29 @@ public class TroopSidesSlippingMaker
   
   private void a(View paramView)
   {
-    if (paramView != null) {}
-    for (int i = paramView.getScrollX();; i = 0)
+    int i;
+    if (paramView != null) {
+      i = paramView.getScrollX();
+    } else {
+      i = 0;
+    }
+    if (i != 0)
     {
-      if (i != 0) {
-        if (!(paramView.getTag(-3) instanceof Integer)) {
-          break label104;
-        }
+      int j;
+      if ((paramView.getTag(-3) instanceof Integer)) {
+        j = ((Integer)paramView.getTag(-3)).intValue();
+      } else {
+        j = 0;
       }
-      label104:
-      for (int j = ((Integer)paramView.getTag(-3)).intValue();; j = 0)
-      {
-        if ((this.jdField_c_of_type_AndroidViewView != paramView) && (this.jdField_c_of_type_AndroidViewView != null)) {
-          this.jdField_c_of_type_AndroidViewView.scrollTo(0, 0);
-        }
-        d();
-        this.jdField_c_of_type_AndroidViewView = paramView;
-        int k = -i;
-        this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-        return;
+      View localView = this.jdField_c_of_type_AndroidViewView;
+      if ((localView != paramView) && (localView != null)) {
+        localView.scrollTo(0, 0);
       }
+      d();
+      this.jdField_c_of_type_AndroidViewView = paramView;
+      int k = -i;
+      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(i, 0, k, 0, a(j, k));
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
     }
   }
   
@@ -133,17 +136,17 @@ public class TroopSidesSlippingMaker
   
   private boolean a(float paramFloat1, float paramFloat2)
   {
-    if ((paramFloat1 > this.jdField_a_of_type_Int) || (paramFloat2 > this.jdField_a_of_type_Int))
+    int i = this.jdField_a_of_type_Int;
+    if ((paramFloat1 <= i) && (paramFloat2 <= i)) {
+      return false;
+    }
+    if ((paramFloat1 > this.jdField_a_of_type_Int) && (paramFloat2 / paramFloat1 < 0.6F))
     {
-      if ((paramFloat1 > this.jdField_a_of_type_Int) && (paramFloat2 / paramFloat1 < 0.6F))
-      {
-        this.jdField_a_of_type_Byte = 1;
-        return true;
-      }
-      this.jdField_a_of_type_Byte = 2;
+      this.jdField_a_of_type_Byte = 1;
       return true;
     }
-    return false;
+    this.jdField_a_of_type_Byte = 2;
+    return true;
   }
   
   private boolean a(View paramView)
@@ -156,37 +159,39 @@ public class TroopSidesSlippingMaker
     if (paramView == null) {
       return;
     }
-    int j = paramView.getScrollX();
-    int i = this.jdField_c_of_type_Int;
-    if ((i == 0) && ((paramView.getTag(-3) instanceof Integer))) {
-      i = ((Integer)paramView.getTag(-3)).intValue();
-    }
-    for (;;)
+    int k = paramView.getScrollX();
+    int j = this.jdField_c_of_type_Int;
+    int i = j;
+    if (j == 0)
     {
-      if (j != i)
-      {
-        if ((this.jdField_c_of_type_AndroidViewView != paramView) && (this.jdField_c_of_type_AndroidViewView != null)) {
-          this.jdField_c_of_type_AndroidViewView.scrollTo(0, 0);
-        }
-        d();
-        this.jdField_c_of_type_AndroidViewView = paramView;
-        int k = i - j;
-        this.jdField_a_of_type_AndroidWidgetScroller.startScroll(j, 0, k, 0, a(i, k));
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+      i = j;
+      if ((paramView.getTag(-3) instanceof Integer)) {
+        i = ((Integer)paramView.getTag(-3)).intValue();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener.a(paramView);
+    }
+    if (k != i)
+    {
+      localObject = this.jdField_c_of_type_AndroidViewView;
+      if ((localObject != paramView) && (localObject != null)) {
+        ((View)localObject).scrollTo(0, 0);
       }
-      if ((!AppSetting.d) || (!(paramView instanceof LinearLayout))) {
-        break;
-      }
+      d();
+      this.jdField_c_of_type_AndroidViewView = paramView;
+      j = i - k;
+      this.jdField_a_of_type_AndroidWidgetScroller.startScroll(k, 0, j, 0, a(i, j));
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+    if (localObject != null) {
+      ((TroopSidesSlippingMaker.SlidingListener)localObject).a(paramView);
+    }
+    if ((AppSetting.d) && ((paramView instanceof LinearLayout)))
+    {
       paramView = (LinearLayout)paramView;
       paramView = paramView.getChildAt(paramView.getChildCount() - 1);
-      if (paramView == null) {
-        break;
+      if (paramView != null) {
+        paramView.sendAccessibilityEvent(8);
       }
-      paramView.sendAccessibilityEvent(8);
-      return;
     }
   }
   
@@ -194,12 +199,13 @@ public class TroopSidesSlippingMaker
   {
     int i = a();
     int j = this.jdField_b_of_type_AndroidViewView.getScrollX();
-    if (i > this.jdField_b_of_type_Int)
+    int k = this.jdField_b_of_type_Int;
+    if (i > k)
     {
       a(this.jdField_b_of_type_AndroidViewView);
       return;
     }
-    if (i < -this.jdField_b_of_type_Int)
+    if (i < -k)
     {
       b(this.jdField_b_of_type_AndroidViewView);
       return;
@@ -236,38 +242,32 @@ public class TroopSidesSlippingMaker
   
   private void e()
   {
-    if (this.jdField_a_of_type_AndroidViewVelocityTracker != null)
+    VelocityTracker localVelocityTracker = this.jdField_a_of_type_AndroidViewVelocityTracker;
+    if (localVelocityTracker != null)
     {
-      this.jdField_a_of_type_AndroidViewVelocityTracker.recycle();
+      localVelocityTracker.recycle();
       this.jdField_a_of_type_AndroidViewVelocityTracker = null;
     }
   }
   
   public void a()
   {
-    int i;
-    int j;
     if (!a(this.jdField_b_of_type_AndroidViewView))
     {
-      i = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() - this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount();
-      j = this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition();
-    }
-    for (;;)
-    {
-      if (i <= j)
+      int i = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition() - this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount();
+      int j = this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition();
+      while (i <= j)
       {
         View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
-        if (a(localView)) {
+        if (a(localView))
+        {
           this.jdField_b_of_type_AndroidViewView = localView;
+          break;
         }
+        i += 1;
       }
-      else
-      {
-        a(this.jdField_b_of_type_AndroidViewView);
-        return;
-      }
-      i += 1;
     }
+    a(this.jdField_b_of_type_AndroidViewView);
   }
   
   public void a(TroopSidesSlippingMaker.SlidingListener paramSlidingListener)
@@ -277,65 +277,75 @@ public class TroopSidesSlippingMaker
   
   public boolean a(MotionEvent paramMotionEvent)
   {
-    boolean bool2;
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      bool2 = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.a(paramMotionEvent);
-      return bool2;
+    if (!this.jdField_b_of_type_Boolean) {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.a(paramMotionEvent);
     }
     int j = (int)(paramMotionEvent.getX() + 0.5F);
     int i = (int)(paramMotionEvent.getY() + 0.5F);
     int k = paramMotionEvent.getAction();
-    label80:
-    boolean bool1;
-    switch (k)
-    {
-    default: 
-      bool1 = false;
-      label83:
-      if ((k == 0) && (this.jdField_c_of_type_Boolean))
-      {
-        if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener != null) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener.a(true);
-        }
-        d();
-      }
-      break;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (bool1) {
-        break;
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.a(paramMotionEvent);
-      this.jdField_a_of_type_Byte = 0;
-      this.d = j;
-      this.f = j;
-      this.e = i;
-      this.g = i;
-      this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView;
-      this.jdField_c_of_type_Boolean = a(this.jdField_a_of_type_AndroidViewView);
-      int m;
-      int n;
-      if (!this.jdField_c_of_type_Boolean)
-      {
-        m = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition();
-        n = this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount();
-        i = this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition();
-      }
-      for (;;)
-      {
-        if (i >= m - n)
+    if (k != 0) {
+      if (k != 1) {
+        if (k != 2)
         {
-          View localView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
-          this.jdField_c_of_type_Boolean = a(localView);
-          if (this.jdField_c_of_type_Boolean) {
-            this.jdField_a_of_type_AndroidViewView = localView;
+          if (k != 3) {
+            break label164;
           }
         }
         else
         {
+          if ((this.jdField_c_of_type_Int > 0) && (this.jdField_a_of_type_Byte == 0)) {
+            a(Math.abs(j - this.d), Math.abs(i - this.e));
+          }
+          if ((this.jdField_a_of_type_Byte != 1) || (j >= this.d)) {
+            break label164;
+          }
+        }
+      }
+    }
+    boolean bool1;
+    label164:
+    Object localObject;
+    for (;;)
+    {
+      bool1 = true;
+      break;
+      if (this.jdField_c_of_type_Boolean) {
+        a(this.jdField_a_of_type_AndroidViewView);
+      }
+      this.d = -1;
+      this.f = -1;
+      this.e = -1;
+      this.g = -1;
+      do
+      {
+        do
+        {
+          bool1 = false;
+          break;
+          this.jdField_a_of_type_Byte = 0;
+          this.d = j;
+          this.f = j;
+          this.e = i;
+          this.g = i;
+          this.jdField_a_of_type_AndroidViewView = this.jdField_b_of_type_AndroidViewView;
+          this.jdField_c_of_type_Boolean = a(this.jdField_a_of_type_AndroidViewView);
+          if (!this.jdField_c_of_type_Boolean)
+          {
+            int m = this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition();
+            int n = this.jdField_a_of_type_ComTencentWidgetListView.getHeaderViewsCount();
+            i = this.jdField_a_of_type_ComTencentWidgetListView.getLastVisiblePosition();
+            while (i >= m - n)
+            {
+              localObject = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i);
+              this.jdField_c_of_type_Boolean = a((View)localObject);
+              if (this.jdField_c_of_type_Boolean)
+              {
+                this.jdField_a_of_type_AndroidViewView = ((View)localObject);
+                break;
+              }
+              i -= 1;
+            }
+          }
           this.jdField_c_of_type_Int = 0;
           this.jdField_b_of_type_AndroidViewView = null;
           i = this.e;
@@ -345,47 +355,39 @@ public class TroopSidesSlippingMaker
           i = this.jdField_a_of_type_ComTencentWidgetListView.pointToPosition(this.d, i);
           if (i >= 0)
           {
-            this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentWidgetListView.getChildAt(i - this.jdField_a_of_type_ComTencentWidgetListView.getFirstVisiblePosition());
-            if ((this.jdField_b_of_type_AndroidViewView != null) && ((this.jdField_b_of_type_AndroidViewView.getTag(-3) instanceof Integer))) {
+            localObject = this.jdField_a_of_type_ComTencentWidgetListView;
+            this.jdField_b_of_type_AndroidViewView = ((ListView)localObject).getChildAt(i - ((ListView)localObject).getFirstVisiblePosition());
+            localObject = this.jdField_b_of_type_AndroidViewView;
+            if ((localObject != null) && ((((View)localObject).getTag(-3) instanceof Integer))) {
               this.jdField_c_of_type_Int = ((Integer)this.jdField_b_of_type_AndroidViewView.getTag(-3)).intValue();
             }
           }
-          if ((!this.jdField_c_of_type_Boolean) || ((this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView) && (!a(j)))) {
-            break label412;
-          }
-          bool1 = true;
+        } while (!this.jdField_c_of_type_Boolean);
+        if (this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) {
           break;
         }
-        i -= 1;
+      } while (!a(j));
+    }
+    if ((k == 0) && (this.jdField_c_of_type_Boolean))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      if (localObject != null) {
+        ((TroopSidesSlippingMaker.SlidingListener)localObject).a(true);
       }
-      label412:
-      bool1 = false;
-      break label83;
-      if ((this.jdField_c_of_type_Int > 0) && (this.jdField_a_of_type_Byte == 0)) {
-        a(Math.abs(j - this.d), Math.abs(i - this.e));
-      }
-      if (this.jdField_a_of_type_Byte != 1) {
-        break label80;
-      }
-      if (j < this.d)
-      {
-        bool1 = true;
-        break label83;
-      }
-      bool1 = false;
-      break label83;
-      if (this.jdField_c_of_type_Boolean) {
-        a(this.jdField_a_of_type_AndroidViewView);
-      }
-      this.d = -1;
-      this.f = -1;
-      this.e = -1;
-      this.g = -1;
-      break label80;
-      if (((k == 1) || (k == 3)) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener.a(false);
+      d();
+    }
+    else if ((k == 1) || (k == 3))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      if (localObject != null) {
+        ((TroopSidesSlippingMaker.SlidingListener)localObject).a(false);
       }
     }
+    boolean bool2 = bool1;
+    if (!bool1) {
+      bool2 = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.a(paramMotionEvent);
+    }
+    return bool2;
   }
   
   public void b()
@@ -396,178 +398,201 @@ public class TroopSidesSlippingMaker
   
   public boolean b(MotionEvent paramMotionEvent)
   {
-    boolean bool2;
-    if (!this.jdField_b_of_type_Boolean)
-    {
-      bool2 = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.b(paramMotionEvent);
-      return bool2;
+    if (!this.jdField_b_of_type_Boolean) {
+      return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.b(paramMotionEvent);
     }
     a(paramMotionEvent);
     int i = (int)(paramMotionEvent.getX() + 0.5F);
     int j = (int)(paramMotionEvent.getY() + 0.5F);
     int k = paramMotionEvent.getAction();
     boolean bool1;
-    switch (k)
+    label268:
+    label271:
+    label285:
+    label288:
+    Object localObject;
+    if (k != 0)
     {
-    default: 
-      bool1 = false;
-    case 0: 
-    case 2: 
-      for (;;)
+      if (k != 1)
       {
-        if ((k == 0) && (this.jdField_c_of_type_Boolean))
+        if (k != 2)
         {
-          if (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener != null) {
-            this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener.a(true);
-          }
-          label116:
-          bool2 = bool1;
-          if (bool1) {
-            break;
-          }
-          return this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.b(paramMotionEvent);
-          if ((this.jdField_c_of_type_Boolean) && ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))) {}
-          for (bool2 = true;; bool2 = false)
-          {
-            bool1 = bool2;
-            if (!this.jdField_c_of_type_Boolean) {
-              break;
-            }
-            bool1 = bool2;
-            if (this.jdField_a_of_type_AndroidViewView == this.jdField_b_of_type_AndroidViewView) {
-              break;
-            }
-            a(this.jdField_a_of_type_AndroidViewView);
-            bool1 = bool2;
-            break;
-          }
-          if (this.jdField_c_of_type_Boolean) {
-            if ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))
-            {
-              bool2 = true;
-              label243:
-              bool1 = bool2;
-              if (this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView)
-              {
-                if (this.jdField_a_of_type_Byte == 0)
-                {
-                  bool1 = bool2;
-                  if (!a(Math.abs(i - this.d), Math.abs(j - this.e))) {
-                    continue;
-                  }
-                }
-                bool1 = bool2;
-                if (this.jdField_a_of_type_Byte == 1)
-                {
-                  a(i, j, this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
-                  bool1 = true;
-                }
-              }
-            }
-          }
-        }
-      }
-    }
-    for (;;)
-    {
-      this.f = i;
-      this.g = j;
-      break;
-      bool2 = false;
-      break label243;
-      if (this.jdField_c_of_type_Int == 0)
-      {
-        bool1 = false;
-      }
-      else
-      {
-        if ((this.jdField_a_of_type_Byte == 0) && (!a(Math.abs(i - this.d), Math.abs(j - this.e))))
-        {
-          bool1 = false;
-          break;
-        }
-        if (this.jdField_a_of_type_Byte == 1)
-        {
-          a(i, j, this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
-          bool1 = true;
-          continue;
-          if (this.jdField_c_of_type_Boolean) {
-            if ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))
-            {
-              bool2 = true;
-              label455:
-              bool1 = bool2;
-              if (this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView)
-              {
-                if (this.jdField_a_of_type_Byte != 1) {
-                  break label518;
-                }
-                c();
-                bool1 = true;
-              }
-            }
-          }
-          for (;;)
-          {
-            e();
-            this.d = -1;
-            this.f = -1;
-            this.e = -1;
-            this.g = -1;
-            break;
-            bool2 = false;
-            break label455;
-            label518:
-            a(this.jdField_b_of_type_AndroidViewView);
-            bool1 = bool2;
-            continue;
-            if (this.jdField_c_of_type_Int == 0)
-            {
-              bool1 = false;
-            }
-            else
-            {
-              if (this.jdField_a_of_type_Byte == 1)
-              {
-                c();
-                bool1 = true;
-                continue;
-                if (((k != 1) && (k != 3)) || (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener == null)) {
-                  break label116;
-                }
-                this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener.a(false);
-                this.jdField_a_of_type_Boolean = false;
-                break label116;
-              }
-              bool1 = false;
-            }
+          if (k == 3) {
+            break label288;
           }
         }
         else
         {
-          bool1 = false;
+          if (this.jdField_c_of_type_Boolean)
+          {
+            if ((this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView) && (!a(i))) {
+              bool1 = false;
+            } else {
+              bool1 = true;
+            }
+            bool2 = bool1;
+            if (this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) {
+              break label271;
+            }
+            if ((this.jdField_a_of_type_Byte == 0) && (!a(Math.abs(i - this.d), Math.abs(j - this.e)))) {
+              break label285;
+            }
+            bool2 = bool1;
+            if (this.jdField_a_of_type_Byte != 1) {
+              break label271;
+            }
+            a(i, j, this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
+            break label268;
+          }
+          if (this.jdField_c_of_type_Int != 0) {}
+        }
+        do
+        {
+          bool2 = false;
+          break;
+          if ((this.jdField_a_of_type_Byte == 0) && (!a(Math.abs(i - this.d), Math.abs(j - this.e))))
+          {
+            bool1 = false;
+            break label508;
+          }
+        } while (this.jdField_a_of_type_Byte != 1);
+        a(i, j, this.jdField_b_of_type_AndroidViewView, this.jdField_c_of_type_Int);
+        bool2 = true;
+        this.f = i;
+        this.g = j;
+        bool1 = bool2;
+        break label508;
+      }
+      if (this.jdField_c_of_type_Boolean)
+      {
+        if ((this.jdField_b_of_type_AndroidViewView == this.jdField_a_of_type_AndroidViewView) && (!a(i))) {
+          bool2 = false;
+        } else {
+          bool2 = true;
+        }
+        localObject = this.jdField_b_of_type_AndroidViewView;
+        bool1 = bool2;
+        if (localObject != this.jdField_a_of_type_AndroidViewView) {
+          break label405;
+        }
+        if (this.jdField_a_of_type_Byte == 1)
+        {
+          c();
+        }
+        else
+        {
+          a((View)localObject);
+          bool1 = bool2;
+          break label405;
+        }
+      }
+      else
+      {
+        if ((this.jdField_c_of_type_Int == 0) || (this.jdField_a_of_type_Byte != 1)) {
+          break label402;
+        }
+        c();
+      }
+      bool1 = true;
+      break label405;
+      label402:
+      bool1 = false;
+      label405:
+      e();
+      this.d = -1;
+      this.f = -1;
+      this.e = -1;
+      this.g = -1;
+    }
+    else
+    {
+      if ((this.jdField_c_of_type_Boolean) && ((this.jdField_b_of_type_AndroidViewView != this.jdField_a_of_type_AndroidViewView) || (a(i)))) {
+        bool2 = true;
+      } else {
+        bool2 = false;
+      }
+      bool1 = bool2;
+      if (this.jdField_c_of_type_Boolean)
+      {
+        localObject = this.jdField_a_of_type_AndroidViewView;
+        bool1 = bool2;
+        if (localObject != this.jdField_b_of_type_AndroidViewView)
+        {
+          a((View)localObject);
+          bool1 = bool2;
         }
       }
     }
+    label508:
+    if ((k == 0) && (this.jdField_c_of_type_Boolean))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      if (localObject != null) {
+        ((TroopSidesSlippingMaker.SlidingListener)localObject).a(true);
+      }
+    }
+    else if ((k == 1) || (k == 3))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SlidingListener;
+      if (localObject != null)
+      {
+        ((TroopSidesSlippingMaker.SlidingListener)localObject).a(false);
+        this.jdField_a_of_type_Boolean = false;
+      }
+    }
+    boolean bool2 = bool1;
+    if (!bool1) {
+      bool2 = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopSidesSlippingMaker$SuperTouchListener.b(paramMotionEvent);
+    }
+    return bool2;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    boolean bool = true;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    boolean bool;
+    float f1;
+    if (i != 0)
     {
-    default: 
-      bool = false;
-    case 2: 
-      return bool;
-    case 0: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return false;
+        }
+      }
+      else
+      {
+        bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
+        f1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
+        paramMessage = this.jdField_c_of_type_AndroidViewView;
+        if (paramMessage != null)
+        {
+          paramMessage.scrollTo((int)f1, 0);
+          paramMessage = this.jdField_a_of_type_ComTencentWidgetListView;
+          if (paramMessage != null) {
+            paramMessage.invalidate();
+          }
+        }
+        if (bool)
+        {
+          this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+          return true;
+        }
+        this.jdField_c_of_type_AndroidViewView = null;
+        return true;
+      }
+    }
+    else
+    {
       bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
       f1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-      if (this.jdField_c_of_type_AndroidViewView != null)
+      paramMessage = this.jdField_c_of_type_AndroidViewView;
+      if (paramMessage != null)
       {
-        this.jdField_c_of_type_AndroidViewView.scrollTo((int)f1, 0);
-        if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
-          this.jdField_a_of_type_ComTencentWidgetListView.invalidate();
+        paramMessage.scrollTo((int)f1, 0);
+        paramMessage = this.jdField_a_of_type_ComTencentWidgetListView;
+        if (paramMessage != null) {
+          paramMessage.invalidate();
         }
       }
       if (bool)
@@ -576,29 +601,13 @@ public class TroopSidesSlippingMaker
         return true;
       }
       this.jdField_c_of_type_AndroidViewView = null;
-      return true;
     }
-    bool = this.jdField_a_of_type_AndroidWidgetScroller.computeScrollOffset();
-    float f1 = this.jdField_a_of_type_AndroidWidgetScroller.getCurrX();
-    if (this.jdField_c_of_type_AndroidViewView != null)
-    {
-      this.jdField_c_of_type_AndroidViewView.scrollTo((int)f1, 0);
-      if (this.jdField_a_of_type_ComTencentWidgetListView != null) {
-        this.jdField_a_of_type_ComTencentWidgetListView.invalidate();
-      }
-    }
-    if (bool)
-    {
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      return true;
-    }
-    this.jdField_c_of_type_AndroidViewView = null;
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopSidesSlippingMaker
  * JD-Core Version:    0.7.0.1
  */

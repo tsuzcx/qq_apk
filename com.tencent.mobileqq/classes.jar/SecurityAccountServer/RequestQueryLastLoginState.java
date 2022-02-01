@@ -31,14 +31,15 @@ public final class RequestQueryLastLoginState
   {
     paramJceOutputStream.write(this.nextFlag, 0);
     paramJceOutputStream.write(this.timeStamp, 1);
-    if (this.MobileUniqueNo != null) {
-      paramJceOutputStream.write(this.MobileUniqueNo, 2);
+    String str = this.MobileUniqueNo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RequestQueryLastLoginState
  * JD-Core Version:    0.7.0.1
  */

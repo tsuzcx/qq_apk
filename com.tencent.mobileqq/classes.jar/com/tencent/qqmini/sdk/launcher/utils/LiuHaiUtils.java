@@ -75,35 +75,29 @@ public class LiuHaiUtils
   
   private static boolean enableHuaWeiNotch(Activity paramActivity)
   {
-    boolean bool = true;
-    if ((paramActivity == null) || (paramActivity.getWindow() == null))
+    if ((paramActivity != null) && (paramActivity.getWindow() != null))
     {
-      if (QMLog.isColorLevel()) {
-        QMLog.i("LiuHaiUtils", "enableHuaWeiNotch invalid param");
-      }
-      bool = false;
-    }
-    for (;;)
-    {
-      return bool;
       Object localObject = paramActivity.getWindow().getAttributes();
       try
       {
         paramActivity = Class.forName("com.huawei.android.view.LayoutParamsEx");
         localObject = paramActivity.getConstructor(new Class[] { WindowManager.LayoutParams.class }).newInstance(new Object[] { localObject });
         paramActivity.getMethod("addHwFlags", new Class[] { Integer.TYPE }).invoke(localObject, new Object[] { Integer.valueOf(65536) });
-        if (QMLog.isColorLevel())
-        {
+        if (QMLog.isColorLevel()) {
           QMLog.i("LiuHaiUtils", "enableHuaWeiNotch true");
-          return true;
         }
+        return true;
       }
       catch (Exception paramActivity)
       {
         if (QMLog.isColorLevel()) {
           QMLog.e("LiuHaiUtils", "enableHuaWeiNotch Exception", paramActivity);
         }
+        return false;
       }
+    }
+    if (QMLog.isColorLevel()) {
+      QMLog.i("LiuHaiUtils", "enableHuaWeiNotch invalid param");
     }
     return false;
   }
@@ -113,7 +107,7 @@ public class LiuHaiUtils
     try
     {
       paramActivity = paramActivity.getWindow().getDecorView();
-      paramActivity.setSystemUiVisibility(0x80 | paramActivity.getSystemUiVisibility());
+      paramActivity.setSystemUiVisibility(paramActivity.getSystemUiVisibility() | 0x80);
       if (QMLog.isColorLevel()) {
         QMLog.i("LiuHaiUtils", "enableMeizuNotch true");
       }
@@ -131,8 +125,12 @@ public class LiuHaiUtils
   public static boolean enableNotch(Activity paramActivity)
   {
     int i = Build.VERSION.SDK_INT;
-    if (QMLog.isColorLevel()) {
-      QMLog.i("LiuHaiUtils", "enableNotch apiVersion: " + i);
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enableNotch apiVersion: ");
+      localStringBuilder.append(i);
+      QMLog.i("LiuHaiUtils", localStringBuilder.toString());
     }
     if (i > 27) {
       return enableNotchInScreen_AndroidP(paramActivity);
@@ -143,43 +141,46 @@ public class LiuHaiUtils
   private static boolean enableNotchInScreen(Activity paramActivity)
   {
     int i = Build.VERSION.SDK_INT;
-    if (QMLog.isColorLevel()) {
-      QMLog.i("LiuHaiUtils", "enableNotchInScreen apiVersion: " + i);
+    if (QMLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("enableNotchInScreen apiVersion: ");
+      paramActivity.append(i);
+      QMLog.i("LiuHaiUtils", paramActivity.toString());
     }
     return true;
   }
   
   private static boolean enableNotchInScreen_AndroidO(Activity paramActivity)
   {
-    boolean bool = true;
-    String str = "" + Build.MANUFACTURER;
-    if (str.equalsIgnoreCase("HUAWEI")) {
-      bool = enableHuaWeiNotch(paramActivity);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    localObject = ((StringBuilder)localObject).toString();
+    if (((String)localObject).equalsIgnoreCase("HUAWEI")) {
+      return enableHuaWeiNotch(paramActivity);
     }
-    do
+    if (((String)localObject).equalsIgnoreCase("OPPO"))
     {
-      do
-      {
-        return bool;
-        if (!str.equalsIgnoreCase("OPPO")) {
-          break;
-        }
-      } while (!QMLog.isColorLevel());
-      QMLog.i("LiuHaiUtils", "enableNotchInScreen_AndroidO OPPO=true");
-      return true;
-      if (!str.equalsIgnoreCase("VIVO")) {
-        break;
+      if (QMLog.isColorLevel()) {
+        QMLog.i("LiuHaiUtils", "enableNotchInScreen_AndroidO OPPO=true");
       }
-    } while (!QMLog.isColorLevel());
-    QMLog.i("LiuHaiUtils", "enableNotchInScreen_AndroidO VIVO=true");
-    return true;
-    if (str.equalsIgnoreCase("XIAOMI")) {
+      return true;
+    }
+    if (((String)localObject).equalsIgnoreCase("VIVO"))
+    {
+      if (QMLog.isColorLevel()) {
+        QMLog.i("LiuHaiUtils", "enableNotchInScreen_AndroidO VIVO=true");
+      }
+      return true;
+    }
+    if (((String)localObject).equalsIgnoreCase("XIAOMI")) {
       return enableXiaoMiNotch(paramActivity);
     }
-    if (str.equalsIgnoreCase("SAMSUNG")) {
+    if (((String)localObject).equalsIgnoreCase("SAMSUNG")) {
       return enableSamsungNotch(paramActivity);
     }
-    if (str.equalsIgnoreCase("Meizu")) {
+    if (((String)localObject).equalsIgnoreCase("Meizu")) {
       return enableMeizuNotch(paramActivity);
     }
     return false;
@@ -201,9 +202,11 @@ public class LiuHaiUtils
     }
     catch (Exception paramActivity)
     {
-      if (QMLog.isColorLevel()) {
-        QMLog.e("LiuHaiUtils", "enableNotchInScreen_AndroidP Exception");
-      }
+      label54:
+      break label54;
+    }
+    if (QMLog.isColorLevel()) {
+      QMLog.e("LiuHaiUtils", "enableNotchInScreen_AndroidP Exception");
     }
     return false;
   }
@@ -235,253 +238,313 @@ public class LiuHaiUtils
   
   public static int getNotchInScreenHeight(Activity paramActivity)
   {
-    int k = Build.VERSION.SDK_INT;
-    if (QMLog.isColorLevel()) {
-      QMLog.i("LiuHaiUtils", "getNotchInScreenHeight apiVersion: " + k);
+    int i = Build.VERSION.SDK_INT;
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNotchInScreenHeight apiVersion: ");
+      localStringBuilder.append(i);
+      QMLog.i("LiuHaiUtils", localStringBuilder.toString());
     }
     int j = getStatusBarHeight(paramActivity);
-    int i = j;
     if (j <= 0)
     {
-      if (k > 27) {
-        i = getNotchInScreenHeight_AndroidP(paramActivity);
+      if (i > 27) {
+        return getNotchInScreenHeight_AndroidP(paramActivity);
       }
+      return getNotchInScreenHeight_AndroidO(paramActivity);
     }
-    else {
-      return i;
-    }
-    return getNotchInScreenHeight_AndroidO(paramActivity);
+    return j;
   }
   
   public static int getNotchInScreenHeight_AndroidO(Context paramContext)
   {
-    int j = 0;
-    Object localObject = "" + Build.MANUFACTURER;
-    if (((String)localObject).equalsIgnoreCase("HUAWEI")) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    String str = ((StringBuilder)localObject).toString();
+    boolean bool = str.equalsIgnoreCase("HUAWEI");
+    localObject = null;
+    if (bool) {
       localObject = hwGetNotchSize(paramContext);
+    } else if (str.equalsIgnoreCase("OPPO")) {
+      localObject = oppoGetNotchSize(paramContext);
+    } else if ((!str.equalsIgnoreCase("VIVO")) && (str.equalsIgnoreCase("XIAOMI"))) {
+      localObject = xiaomiGetNotchSize(paramContext);
     }
-    for (;;)
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject[0];
+    } else {
+      i = 0;
+    }
+    if (localObject != null) {
+      j = localObject[1];
+    }
+    int k = getStatusBarHeight(paramContext);
+    if (QMLog.isColorLevel())
     {
-      if (localObject != null) {}
-      for (int i = localObject[0];; i = 0)
-      {
-        if (localObject != null) {
-          j = localObject[1];
-        }
-        int k = getStatusBarHeight(paramContext);
-        if (QMLog.isColorLevel()) {
-          QMLog.e("LiuHaiUtils", "getNotchInScreenHeight manufacturer:" + Build.MANUFACTURER + " height:" + j + " width:" + i + " status:" + k);
-        }
-        return Math.max(j, k);
-        if (((String)localObject).equalsIgnoreCase("OPPO"))
-        {
-          localObject = oppoGetNotchSize(paramContext);
-          break;
-        }
-        if (((String)localObject).equalsIgnoreCase("VIVO"))
-        {
-          localObject = null;
-          break;
-        }
-        if (!((String)localObject).equalsIgnoreCase("XIAOMI")) {
-          break label194;
-        }
-        localObject = xiaomiGetNotchSize(paramContext);
-        break;
-      }
-      label194:
-      localObject = null;
+      paramContext = new StringBuilder();
+      paramContext.append("getNotchInScreenHeight manufacturer:");
+      paramContext.append(Build.MANUFACTURER);
+      paramContext.append(" height:");
+      paramContext.append(j);
+      paramContext.append(" width:");
+      paramContext.append(i);
+      paramContext.append(" status:");
+      paramContext.append(k);
+      QMLog.e("LiuHaiUtils", paramContext.toString());
     }
+    return Math.max(j, k);
   }
   
   public static int getNotchInScreenHeight_AndroidP(Activity paramActivity)
   {
-    int j = getStatusBarHeight(paramActivity);
+    int i = getStatusBarHeight(paramActivity);
     paramActivity = paramActivity.getWindow().getDecorView();
-    int i;
     if (paramActivity == null)
     {
       if (QMLog.isColorLevel()) {
         QMLog.i("LiuHaiUtils", "getNotchInScreenHeight_AndroidP decorView=null ");
       }
-      i = j;
-    }
-    for (;;)
-    {
       return i;
-      try
-      {
-        paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
-        if (paramActivity == null)
-        {
-          if (!QMLog.isColorLevel()) {
-            return j;
-          }
-          QMLog.i("LiuHaiUtils", "getNotchInScreenHeight_AndroidP getRootWindowInsets inserts=null ");
-          return j;
-        }
-        paramActivity = paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]);
-        if (QMLog.isColorLevel()) {
-          QMLog.i("LiuHaiUtils", "getNotchInScreenHeight_AndroidP getDisplayCutout cutOut=" + paramActivity);
-        }
-        if (paramActivity != null)
-        {
-          int k = ((Integer)paramActivity.getClass().getMethod("getSafeInsetTop", new Class[0]).invoke(paramActivity, new Object[0])).intValue();
-          i = k;
-          if (!QMLog.isColorLevel()) {
-            continue;
-          }
-          QMLog.i("LiuHaiUtils", "getNotchInScreenHeight_AndroidP top:" + k);
-          return k;
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        if (QMLog.isColorLevel()) {
-          QMLog.e("LiuHaiUtils", "getNotchInScreenHeight_AndroidP Exception");
-        }
-      }
     }
-    return j;
-    return j;
+    try
+    {
+      paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
+      if (paramActivity == null)
+      {
+        if (!QMLog.isColorLevel()) {
+          return i;
+        }
+        QMLog.i("LiuHaiUtils", "getNotchInScreenHeight_AndroidP getRootWindowInsets inserts=null ");
+        return i;
+      }
+      paramActivity = paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]);
+      if (QMLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNotchInScreenHeight_AndroidP getDisplayCutout cutOut=");
+        localStringBuilder.append(paramActivity);
+        QMLog.i("LiuHaiUtils", localStringBuilder.toString());
+      }
+      if (paramActivity == null) {
+        break label222;
+      }
+      int j = ((Integer)paramActivity.getClass().getMethod("getSafeInsetTop", new Class[0]).invoke(paramActivity, new Object[0])).intValue();
+      if (QMLog.isColorLevel())
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("getNotchInScreenHeight_AndroidP top:");
+        paramActivity.append(j);
+        QMLog.i("LiuHaiUtils", paramActivity.toString());
+      }
+      return j;
+    }
+    catch (Exception paramActivity)
+    {
+      label208:
+      label222:
+      break label208;
+    }
+    if (QMLog.isColorLevel()) {
+      QMLog.e("LiuHaiUtils", "getNotchInScreenHeight_AndroidP Exception");
+    }
+    return i;
+    return i;
   }
   
   public static int[] getRealDisplay(Context paramContext)
   {
-    Display localDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    Object localObject = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    localDisplay.getMetrics(localDisplayMetrics);
+    ((Display)localObject).getMetrics(localDisplayMetrics);
     if (Build.VERSION.SDK_INT >= 17)
     {
       paramContext = new DisplayMetrics();
-      localDisplay.getRealMetrics(paramContext);
-      if (QMLog.isColorLevel()) {
-        QMLog.i("LiuHaiUtils", "getRealDisplay manufacturer:" + Build.MANUFACTURER + " version:" + Build.VERSION.SDK_INT + " width:" + paramContext.widthPixels + " height:" + paramContext.heightPixels);
+      ((Display)localObject).getRealMetrics(paramContext);
+      if (QMLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getRealDisplay manufacturer:");
+        ((StringBuilder)localObject).append(Build.MANUFACTURER);
+        ((StringBuilder)localObject).append(" version:");
+        ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+        ((StringBuilder)localObject).append(" width:");
+        ((StringBuilder)localObject).append(paramContext.widthPixels);
+        ((StringBuilder)localObject).append(" height:");
+        ((StringBuilder)localObject).append(paramContext.heightPixels);
+        QMLog.i("LiuHaiUtils", ((StringBuilder)localObject).toString());
       }
       return new int[] { paramContext.widthPixels, paramContext.heightPixels };
     }
     boolean bool = DisplayUtil.hasNavBar(paramContext);
-    if (bool) {}
-    for (int i = DisplayUtil.getNavigationBarHeight(paramContext);; i = 0)
-    {
-      if (QMLog.isColorLevel()) {
-        QMLog.i("LiuHaiUtils", "getRealDisplay[none] manufacturer:" + Build.MANUFACTURER + " width:" + localDisplayMetrics.widthPixels + " height:" + localDisplayMetrics.heightPixels + " mNavigationBarHeight:" + i + " hasNavBar:" + bool);
-      }
-      return new int[] { localDisplayMetrics.widthPixels, i + localDisplayMetrics.heightPixels };
+    int i;
+    if (bool) {
+      i = DisplayUtil.getNavigationBarHeight(paramContext);
+    } else {
+      i = 0;
     }
+    if (QMLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getRealDisplay[none] manufacturer:");
+      paramContext.append(Build.MANUFACTURER);
+      paramContext.append(" width:");
+      paramContext.append(localDisplayMetrics.widthPixels);
+      paramContext.append(" height:");
+      paramContext.append(localDisplayMetrics.heightPixels);
+      paramContext.append(" mNavigationBarHeight:");
+      paramContext.append(i);
+      paramContext.append(" hasNavBar:");
+      paramContext.append(bool);
+      QMLog.i("LiuHaiUtils", paramContext.toString());
+    }
+    return new int[] { localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels + i };
   }
   
   public static int getStatusBarHeight(Context paramContext)
   {
-    int i = 0;
-    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getResources().getDimensionPixelSize(j);
+    int i = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
+    if (i > 0) {
+      return paramContext.getResources().getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
   
   private static int getSystemPropertyForXiaomi(String paramString, int paramInt)
   {
     try
     {
-      Object localObject = Class.forName("android.os.SystemProperties");
-      i = paramInt;
+      localObject = Class.forName("android.os.SystemProperties");
       if (localObject != null)
       {
         localObject = ((Class)localObject).getMethod("getInt", new Class[] { String.class, Integer.TYPE });
-        i = paramInt;
         if (localObject != null)
         {
           paramString = ((Method)localObject).invoke(null, new Object[] { paramString, Integer.valueOf(paramInt) });
-          i = paramInt;
-          if ((paramString instanceof Integer)) {
-            i = ((Integer)paramString).intValue();
+          if ((paramString instanceof Integer))
+          {
+            int i = ((Integer)paramString).intValue();
+            return i;
           }
         }
       }
     }
     catch (Exception paramString)
     {
-      do
+      Object localObject;
+      if (QMLog.isColorLevel())
       {
-        int i = paramInt;
-      } while (!QMLog.isColorLevel());
-      QMLog.d("LiuHaiUtils", "getSystemPropertyForXiaomi() Exception=" + paramString.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getSystemPropertyForXiaomi() Exception=");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        QMLog.d("LiuHaiUtils", ((StringBuilder)localObject).toString());
+      }
     }
-    return i;
     return paramInt;
   }
   
   private static boolean hasNotchInScreen(Activity paramActivity)
   {
     boolean bool1 = false;
-    boolean bool2 = false;
     sIsIrregularScreen = false;
     int i = Build.VERSION.SDK_INT;
-    String str = "" + Build.MANUFACTURER;
-    if (QMLog.isColorLevel()) {
-      QMLog.i("LiuHaiUtils", "hasNotchInScreen version: " + i + " " + str);
-    }
-    if (i < 26) {}
-    do
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    localObject = ((StringBuilder)localObject).toString();
+    if (QMLog.isColorLevel())
     {
-      return bool2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hasNotchInScreen version: ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append((String)localObject);
+      QMLog.i("LiuHaiUtils", localStringBuilder.toString());
+    }
+    if (i < 26) {
+      return false;
+    }
+    if (i > 27) {
+      bool1 = hasNotchInScreen_AndroidP(paramActivity);
+    }
+    boolean bool2 = bool1;
+    if (!bool1)
+    {
       bool2 = bool1;
-      if (i > 27) {
-        bool2 = hasNotchInScreen_AndroidP(paramActivity);
+      if (i >= 26) {
+        bool2 = hasNotchInScreen_AndroidO(paramActivity);
       }
-      bool1 = bool2;
-      if (!bool2)
+    }
+    if (isLiuHaiModel())
+    {
+      if (QMLog.isColorLevel())
       {
-        bool1 = bool2;
-        if (i >= 26) {
-          bool1 = hasNotchInScreen_AndroidO(paramActivity);
-        }
+        paramActivity = new StringBuilder();
+        paramActivity.append("hasNotchInScreen manufacturer = ");
+        paramActivity.append(Build.MANUFACTURER);
+        paramActivity.append(" ,brand = ");
+        paramActivity.append(Build.BRAND);
+        paramActivity.append(" ,model = ");
+        paramActivity.append(Build.MODEL);
+        QMLog.i("LiuHaiUtils", paramActivity.toString());
       }
-      if (isLiuHaiModel())
-      {
-        if (QMLog.isColorLevel()) {
-          QMLog.i("LiuHaiUtils", "hasNotchInScreen manufacturer = " + Build.MANUFACTURER + " ,brand = " + Build.BRAND + " ,model = " + Build.MODEL);
-        }
-        return true;
-      }
-      bool2 = bool1;
-    } while (!QMLog.isColorLevel());
-    QMLog.i("LiuHaiUtils", "hasNotchInScreen haveNotch: " + bool1);
-    return bool1;
+      return true;
+    }
+    if (QMLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("hasNotchInScreen haveNotch: ");
+      paramActivity.append(bool2);
+      QMLog.i("LiuHaiUtils", paramActivity.toString());
+    }
+    return bool2;
   }
   
   public static boolean hasNotchInScreenByVersion(Activity paramActivity)
   {
     int i = Build.VERSION.SDK_INT;
-    String str = "" + Build.MANUFACTURER;
-    if (QMLog.isColorLevel()) {
-      QMLog.i("LiuHaiUtils", "hasNotchInScreenByVersion version: " + i + " " + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    localObject = ((StringBuilder)localObject).toString();
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hasNotchInScreenByVersion version: ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append((String)localObject);
+      QMLog.i("LiuHaiUtils", localStringBuilder.toString());
     }
     boolean bool = false;
     if (i > 27) {
-      bool = hasNotchInScreen_AndroidP(paramActivity);
+      return hasNotchInScreen_AndroidP(paramActivity);
     }
-    while (i < 26) {
-      return bool;
+    if (i >= 26) {
+      bool = hasNotchInScreen_AndroidO(paramActivity);
     }
-    return hasNotchInScreen_AndroidO(paramActivity);
+    return bool;
   }
   
   public static boolean hasNotchInScreen_AndroidO(Context paramContext)
   {
-    String str = "" + Build.MANUFACTURER;
-    if (str.equalsIgnoreCase("HUAWEI")) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    localObject = ((StringBuilder)localObject).toString();
+    if (((String)localObject).equalsIgnoreCase("HUAWEI")) {
       return hwHasNotchInScreen(paramContext);
     }
-    if (str.equalsIgnoreCase("OPPO")) {
+    if (((String)localObject).equalsIgnoreCase("OPPO")) {
       return oppoHasNotchInScreen(paramContext);
     }
-    if (str.equalsIgnoreCase("VIVO")) {
+    if (((String)localObject).equalsIgnoreCase("VIVO")) {
       return vivoHasNotchInScreen(paramContext);
     }
-    if (str.equalsIgnoreCase("XIAOMI")) {
+    if (((String)localObject).equalsIgnoreCase("XIAOMI")) {
       return xiaomiHasNotchInScreen(paramContext);
     }
     return false;
@@ -490,327 +553,310 @@ public class LiuHaiUtils
   public static boolean hasNotchInScreen_AndroidP(Activity paramActivity)
   {
     paramActivity = paramActivity.getWindow().getDecorView();
-    if (paramActivity == null) {
+    if (paramActivity == null)
+    {
       if (QMLog.isColorLevel()) {
         QMLog.i("LiuHaiUtils", "hasNotchInScreen_AndroidP decorView=null");
       }
+      return false;
     }
-    do
+    for (;;)
     {
-      for (;;)
+      try
       {
-        return false;
-        try
+        paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
+        if (paramActivity == null)
         {
-          paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
-          if (paramActivity != null) {
-            break label88;
+          if (!QMLog.isColorLevel()) {
+            break label160;
           }
-          if (QMLog.isColorLevel())
-          {
-            QMLog.i("LiuHaiUtils", "hasNotchInScreen_AndroidP getRootWindowInsets inserts=null");
-            return false;
-          }
+          QMLog.i("LiuHaiUtils", "hasNotchInScreen_AndroidP getRootWindowInsets inserts=null");
+          return false;
         }
-        catch (Exception paramActivity) {}
+        if (paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]) == null) {
+          break label162;
+        }
+        bool = true;
+        if (QMLog.isColorLevel())
+        {
+          paramActivity = new StringBuilder();
+          paramActivity.append("hasNotchInScreen_AndroidP getDisplayCutout  exists:");
+          paramActivity.append(bool);
+          QMLog.i("LiuHaiUtils", paramActivity.toString());
+        }
+        return bool;
       }
-    } while (!QMLog.isColorLevel());
-    QMLog.e("LiuHaiUtils", "hasNotchInScreen_AndroidP Exception");
-    return false;
-    label88:
-    if (paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]) != null) {}
-    for (boolean bool = true;; bool = false)
-    {
+      catch (Exception paramActivity)
+      {
+        continue;
+      }
       if (QMLog.isColorLevel()) {
-        QMLog.i("LiuHaiUtils", "hasNotchInScreen_AndroidP getDisplayCutout  exists:" + bool);
+        QMLog.e("LiuHaiUtils", "hasNotchInScreen_AndroidP Exception");
       }
-      return bool;
+      return false;
+      label160:
+      return false;
+      label162:
+      boolean bool = false;
     }
   }
   
-  /* Error */
   private static int[] hwGetNotchSize(Context paramContext)
   {
-    // Byte code:
-    //   0: iconst_2
-    //   1: newarray int
-    //   3: astore_1
-    //   4: aload_1
-    //   5: dup
-    //   6: iconst_0
-    //   7: iconst_0
-    //   8: iastore
-    //   9: dup
-    //   10: iconst_1
-    //   11: iconst_0
-    //   12: iastore
-    //   13: pop
-    //   14: aload_0
-    //   15: invokevirtual 508	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   18: ldc_w 510
-    //   21: invokevirtual 515	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   24: astore_0
-    //   25: aload_0
-    //   26: ldc_w 517
-    //   29: iconst_0
-    //   30: anewarray 160	java/lang/Class
-    //   33: invokevirtual 188	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   36: aload_0
-    //   37: iconst_0
-    //   38: anewarray 4	java/lang/Object
-    //   41: invokevirtual 198	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   44: checkcast 519	[I
-    //   47: checkcast 519	[I
-    //   50: astore_0
-    //   51: aload_0
-    //   52: astore_1
-    //   53: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   56: ifeq +30 -> 86
-    //   59: ldc 32
-    //   61: new 214	java/lang/StringBuilder
-    //   64: dup
-    //   65: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   68: ldc_w 521
-    //   71: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   74: aload_0
-    //   75: invokevirtual 351	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   78: invokevirtual 227	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   81: invokestatic 152	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   84: aload_0
-    //   85: astore_1
-    //   86: aload_1
-    //   87: areturn
-    //   88: astore_0
-    //   89: aload_1
-    //   90: astore_0
-    //   91: aload_0
-    //   92: astore_1
-    //   93: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   96: ifeq -10 -> 86
-    //   99: ldc 32
-    //   101: ldc_w 523
-    //   104: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   107: aload_0
-    //   108: areturn
-    //   109: astore_0
-    //   110: aload_1
-    //   111: astore_0
-    //   112: aload_0
-    //   113: astore_1
-    //   114: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   117: ifeq -31 -> 86
-    //   120: ldc 32
-    //   122: ldc_w 525
-    //   125: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   128: aload_0
-    //   129: areturn
-    //   130: astore_0
-    //   131: aload_1
-    //   132: astore_0
-    //   133: aload_0
-    //   134: astore_1
-    //   135: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   138: ifeq -52 -> 86
-    //   141: ldc 32
-    //   143: ldc_w 527
-    //   146: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   149: aload_0
-    //   150: areturn
-    //   151: astore_1
-    //   152: goto -19 -> 133
-    //   155: astore_1
-    //   156: goto -44 -> 112
-    //   159: astore_1
-    //   160: goto -69 -> 91
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	163	0	paramContext	Context
-    //   3	132	1	localObject	Object
-    //   151	1	1	localException	Exception
-    //   155	1	1	localNoSuchMethodException	java.lang.NoSuchMethodException
-    //   159	1	1	localClassNotFoundException	java.lang.ClassNotFoundException
-    // Exception table:
-    //   from	to	target	type
-    //   14	51	88	java/lang/ClassNotFoundException
-    //   14	51	109	java/lang/NoSuchMethodException
-    //   14	51	130	java/lang/Exception
-    //   53	84	151	java/lang/Exception
-    //   53	84	155	java/lang/NoSuchMethodException
-    //   53	84	159	java/lang/ClassNotFoundException
+    Object localObject = new int[2];
+    Object tmp5_4 = localObject;
+    tmp5_4[0] = 0;
+    Object tmp9_5 = tmp5_4;
+    tmp9_5[1] = 0;
+    tmp9_5;
+    try
+    {
+      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
+      paramContext = (int[])paramContext.getMethod("getNotchSize", new Class[0]).invoke(paramContext, new Object[0]);
+      localObject = paramContext;
+    }
+    catch (ClassNotFoundException paramContext)
+    {
+      break label141;
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      label141:
+      label143:
+      label161:
+      break label121;
+    }
+    catch (Exception paramContext)
+    {
+      label92:
+      label95:
+      label98:
+      label101:
+      label103:
+      label121:
+      label123:
+      break label101;
+    }
+    try
+    {
+      if (!QMLog.isColorLevel()) {
+        break label161;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hwGetNotchSize ret=");
+      ((StringBuilder)localObject).append(paramContext);
+      QMLog.i("LiuHaiUtils", ((StringBuilder)localObject).toString());
+      return paramContext;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      break label98;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label95;
+    }
+    catch (Exception localException)
+    {
+      break label92;
+    }
+    break label103;
+    break label123;
+    break label143;
+    paramContext = (Context)localObject;
+    localObject = paramContext;
+    if (QMLog.isColorLevel())
+    {
+      QMLog.e("LiuHaiUtils", "hasNotchInScreen Exception");
+      return paramContext;
+      paramContext = (Context)localObject;
+      localObject = paramContext;
+      if (QMLog.isColorLevel())
+      {
+        QMLog.e("LiuHaiUtils", "hwGetNotchSize NoSuchMethodException");
+        return paramContext;
+        paramContext = (Context)localObject;
+        localObject = paramContext;
+        if (QMLog.isColorLevel())
+        {
+          QMLog.e("LiuHaiUtils", "hwGetNotchSize ClassNotFoundException");
+          localObject = paramContext;
+        }
+      }
+    }
+    return localObject;
   }
   
-  /* Error */
   private static boolean hwHasNotchInScreen(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 508	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   4: ldc_w 510
-    //   7: invokevirtual 515	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   10: astore_0
-    //   11: aload_0
-    //   12: ldc_w 528
-    //   15: iconst_0
-    //   16: anewarray 160	java/lang/Class
-    //   19: invokevirtual 188	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   22: aload_0
-    //   23: iconst_0
-    //   24: anewarray 4	java/lang/Object
-    //   27: invokevirtual 198	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: checkcast 530	java/lang/Boolean
-    //   33: invokevirtual 533	java/lang/Boolean:booleanValue	()Z
-    //   36: istore_1
-    //   37: iload_1
-    //   38: istore_2
-    //   39: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   42: ifeq +30 -> 72
-    //   45: ldc 32
-    //   47: new 214	java/lang/StringBuilder
-    //   50: dup
-    //   51: invokespecial 215	java/lang/StringBuilder:<init>	()V
-    //   54: ldc_w 535
-    //   57: invokevirtual 221	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   60: iload_1
-    //   61: invokevirtual 415	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   64: invokevirtual 227	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   67: invokestatic 152	com/tencent/qqmini/sdk/launcher/log/QMLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   70: iload_1
-    //   71: istore_2
-    //   72: iload_2
-    //   73: ireturn
-    //   74: astore_0
-    //   75: iconst_0
-    //   76: istore_1
-    //   77: iload_1
-    //   78: istore_2
-    //   79: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   82: ifeq -10 -> 72
-    //   85: ldc 32
-    //   87: ldc_w 537
-    //   90: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   93: iload_1
-    //   94: ireturn
-    //   95: astore_0
-    //   96: iconst_0
-    //   97: istore_1
-    //   98: iload_1
-    //   99: istore_2
-    //   100: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   103: ifeq -31 -> 72
-    //   106: ldc 32
-    //   108: ldc_w 539
-    //   111: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   114: iload_1
-    //   115: ireturn
-    //   116: astore_0
-    //   117: iconst_0
-    //   118: istore_1
-    //   119: iload_1
-    //   120: istore_2
-    //   121: invokestatic 146	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   124: ifeq -52 -> 72
-    //   127: ldc 32
-    //   129: ldc_w 541
-    //   132: invokestatic 294	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   135: iload_1
-    //   136: ireturn
-    //   137: astore_0
-    //   138: goto -19 -> 119
-    //   141: astore_0
-    //   142: goto -44 -> 98
-    //   145: astore_0
-    //   146: goto -69 -> 77
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	149	0	paramContext	Context
-    //   36	100	1	bool1	boolean
-    //   38	83	2	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   0	37	74	java/lang/ClassNotFoundException
-    //   0	37	95	java/lang/NoSuchMethodException
-    //   0	37	116	java/lang/Exception
-    //   39	70	137	java/lang/Exception
-    //   39	70	141	java/lang/NoSuchMethodException
-    //   39	70	145	java/lang/ClassNotFoundException
+    boolean bool2 = false;
+    boolean bool6 = false;
+    boolean bool1 = false;
+    boolean bool3 = bool1;
+    boolean bool4 = bool2;
+    boolean bool5 = bool6;
+    try
+    {
+      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
+      bool3 = bool1;
+      bool4 = bool2;
+      bool5 = bool6;
+      bool1 = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
+      bool2 = bool1;
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      if (!QMLog.isColorLevel()) {
+        break label201;
+      }
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      paramContext = new StringBuilder();
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      paramContext.append("hwHasNotchInScreen ret=");
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      paramContext.append(bool1);
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      QMLog.i("LiuHaiUtils", paramContext.toString());
+      return bool1;
+    }
+    catch (ClassNotFoundException paramContext)
+    {
+      break label183;
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      break label163;
+    }
+    catch (Exception paramContext)
+    {
+      label143:
+      break label143;
+    }
+    bool2 = bool5;
+    if (QMLog.isColorLevel())
+    {
+      QMLog.e("LiuHaiUtils", "hwHasNotchInScreen Exception");
+      return bool5;
+      label163:
+      bool2 = bool4;
+      if (QMLog.isColorLevel())
+      {
+        QMLog.e("LiuHaiUtils", "hwHasNotchInScreen NoSuchMethodException");
+        return bool4;
+        label183:
+        bool2 = bool3;
+        if (QMLog.isColorLevel())
+        {
+          QMLog.e("LiuHaiUtils", "hwHasNotchInScreen ClassNotFoundException");
+          bool2 = bool3;
+        }
+      }
+    }
+    label201:
+    return bool2;
   }
   
   public static void initLiuHaiProperty(Activity paramActivity)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.i("LiuHaiUtils", "initLiuHaiProperty manufacturer:" + Build.MANUFACTURER + " hasInitHasNotch:" + hasInitHasNotch + " sHasNotch:" + sHasNotch + " sEnableNotchOK:" + sEnableNotchOK + " sNotchHeight:" + sNotchHeight);
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("initLiuHaiProperty manufacturer:");
+      localStringBuilder1.append(Build.MANUFACTURER);
+      localStringBuilder1.append(" hasInitHasNotch:");
+      localStringBuilder1.append(hasInitHasNotch);
+      localStringBuilder1.append(" sHasNotch:");
+      localStringBuilder1.append(sHasNotch);
+      localStringBuilder1.append(" sEnableNotchOK:");
+      localStringBuilder1.append(sEnableNotchOK);
+      localStringBuilder1.append(" sNotchHeight:");
+      localStringBuilder1.append(sNotchHeight);
+      QMLog.i("LiuHaiUtils", localStringBuilder1.toString());
     }
     if (!hasInitHasNotch)
     {
       sScreenHeight = DisplayUtil.getScreenHeight(paramActivity);
       sScreenWidth = DisplayUtil.getScreenWidth(paramActivity);
       sHasNotch = false;
-    }
-    try
-    {
-      sHasNotch = hasNotchInScreen(paramActivity);
+      try
+      {
+        sHasNotch = hasNotchInScreen(paramActivity);
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QMLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("initLiuHaiProperty manufacturer:");
+          localStringBuilder2.append(Build.MANUFACTURER);
+          QMLog.e("LiuHaiUtils", localStringBuilder2.toString(), localThrowable);
+        }
+      }
       if (sHasNotch) {
         sNotchHeight = getNotchInScreenHeight(paramActivity);
       }
       hasInitHasNotch = true;
-      sEnableNotchOK = false;
-      if (sHasNotch)
-      {
-        sEnableNotchOK = enableNotchInScreen(paramActivity);
-        if (sNotchHeight <= 0) {
-          sEnableNotchOK = false;
-        }
-      }
-      if (QMLog.isColorLevel()) {
-        QMLog.i("LiuHaiUtils", "initLiuHaiProperty[after] manufacturer:" + Build.MANUFACTURER + " hasInitHasNotch:" + hasInitHasNotch + " sHasNotch:" + sHasNotch + " sEnableNotchOK:" + sEnableNotchOK + " sNotchHeight:" + sNotchHeight);
-      }
-      return;
     }
-    catch (Throwable localThrowable)
+    sEnableNotchOK = false;
+    if (sHasNotch)
     {
-      for (;;)
-      {
-        if (QMLog.isColorLevel()) {
-          QMLog.e("LiuHaiUtils", "initLiuHaiProperty manufacturer:" + Build.MANUFACTURER, localThrowable);
-        }
+      sEnableNotchOK = enableNotchInScreen(paramActivity);
+      if (sNotchHeight <= 0) {
+        sEnableNotchOK = false;
       }
+    }
+    if (QMLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("initLiuHaiProperty[after] manufacturer:");
+      paramActivity.append(Build.MANUFACTURER);
+      paramActivity.append(" hasInitHasNotch:");
+      paramActivity.append(hasInitHasNotch);
+      paramActivity.append(" sHasNotch:");
+      paramActivity.append(sHasNotch);
+      paramActivity.append(" sEnableNotchOK:");
+      paramActivity.append(sEnableNotchOK);
+      paramActivity.append(" sNotchHeight:");
+      paramActivity.append(sNotchHeight);
+      QMLog.i("LiuHaiUtils", paramActivity.toString());
     }
   }
   
   public static boolean isInNotchWhiteList()
   {
-    String str = (Build.MANUFACTURER + "_" + Build.MODEL).toLowerCase();
-    return NOTCH_WHITE_LIST.contains(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString().toLowerCase();
+    return NOTCH_WHITE_LIST.contains(localObject);
   }
   
   private static boolean isLiuHaiModel()
   {
-    boolean bool2 = false;
     String str = Build.MODEL;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
     if (!TextUtils.isEmpty(str))
     {
-      arrayOfString = LIUHAI_LIST;
-      j = arrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      String[] arrayOfString = LIUHAI_LIST;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
         if (str.equalsIgnoreCase(arrayOfString[i])) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   public static boolean isLiuHaiUseValid()
@@ -820,32 +866,43 @@ public class LiuHaiUtils
   
   private static boolean isNoneSupportedPhone()
   {
-    String str = "" + Build.MANUFACTURER;
-    if (Build.VERSION.SDK_INT > 27) {}
-    for (;;)
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    localObject = ((StringBuilder)localObject).toString();
+    if (Build.VERSION.SDK_INT > 27) {
       return true;
-      String[] arrayOfString = MANUFACTURER;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
-      {
-        if (str.equalsIgnoreCase(arrayOfString[i])) {
-          return false;
-        }
-        i += 1;
-      }
     }
+    String[] arrayOfString = MANUFACTURER;
+    int j = arrayOfString.length;
+    int i = 0;
+    while (i < j)
+    {
+      if (((String)localObject).equalsIgnoreCase(arrayOfString[i])) {
+        return false;
+      }
+      i += 1;
+    }
+    return true;
   }
   
   public static boolean isSamsungFolderMobile()
   {
     String str = Build.MODEL.toUpperCase();
-    if (TextUtils.isEmpty(str)) {}
-    while ((!Build.MANUFACTURER.equalsIgnoreCase("samsung")) || (!str.contains("SM-F9000"))) {
+    boolean bool1 = TextUtils.isEmpty(str);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
     }
-    return true;
+    bool1 = bool2;
+    if (Build.MANUFACTURER.equalsIgnoreCase("samsung"))
+    {
+      bool1 = bool2;
+      if (str.contains("SM-F9000")) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static boolean needCloseFullScreen()
@@ -858,92 +915,123 @@ public class LiuHaiUtils
     try
     {
       paramContext = DisplayUtil.getSystemProperty("ro.oppo.screen.heteromorphism", null);
-      if (TextUtils.isEmpty(paramContext))
-      {
-        if (QMLog.isColorLevel()) {
-          QMLog.i("LiuHaiUtils", "oppoGetNotchSize mProperty empty");
-        }
-        return null;
-      }
     }
     catch (Throwable paramContext)
     {
-      do
+      if (QMLog.isColorLevel()) {
+        QMLog.i("LiuHaiUtils", "oppoGetNotchSize mProperty exp ", paramContext);
+      }
+      paramContext = null;
+    }
+    if (TextUtils.isEmpty(paramContext))
+    {
+      if (QMLog.isColorLevel()) {
+        QMLog.i("LiuHaiUtils", "oppoGetNotchSize mProperty empty");
+      }
+      return null;
+    }
+    paramContext = paramContext.split(":");
+    Object localObject;
+    if (QMLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("oppoGetNotchSize mProperty values=");
+      ((StringBuilder)localObject).append(paramContext);
+      QMLog.i("LiuHaiUtils", ((StringBuilder)localObject).toString());
+    }
+    if (paramContext.length >= 2)
+    {
+      localObject = paramContext[0].split(",");
+      StringBuilder localStringBuilder;
+      if (QMLog.isColorLevel())
       {
-        for (;;)
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("oppoGetNotchSize mProperty values[0] size=");
+        localStringBuilder.append(localObject);
+        QMLog.i("LiuHaiUtils", localStringBuilder.toString());
+      }
+      if (localObject.length < 2) {
+        return null;
+      }
+      try
+      {
+        int i = Integer.valueOf(localObject[0]).intValue();
+        int j = Integer.valueOf(localObject[1]).intValue();
+        if (QMLog.isColorLevel())
         {
-          if (QMLog.isColorLevel()) {
-            QMLog.i("LiuHaiUtils", "oppoGetNotchSize mProperty exp ", paramContext);
-          }
-          paramContext = null;
-          continue;
-          paramContext = paramContext.split(":");
-          if (QMLog.isColorLevel()) {
-            QMLog.i("LiuHaiUtils", "oppoGetNotchSize mProperty values=" + paramContext);
-          }
-          if (paramContext.length >= 2)
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("oppoGetNotchSize mProperty values[0] left=");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" top=");
+          ((StringBuilder)localObject).append(j);
+          QMLog.i("LiuHaiUtils", ((StringBuilder)localObject).toString());
+        }
+        localObject = paramContext[1].split(",");
+        if (QMLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("oppoGetNotchSize mProperty values[1] size=");
+          localStringBuilder.append(localObject);
+          QMLog.i("LiuHaiUtils", localStringBuilder.toString());
+        }
+        if (localObject.length < 2) {
+          return null;
+        }
+        try
+        {
+          int k = Integer.valueOf(localObject[0]).intValue();
+          int m = Integer.valueOf(localObject[1]).intValue();
+          if (QMLog.isColorLevel())
           {
-            String[] arrayOfString = paramContext[0].split(",");
-            if (QMLog.isColorLevel()) {
-              QMLog.i("LiuHaiUtils", "oppoGetNotchSize mProperty values[0] size=" + arrayOfString);
-            }
-            if (arrayOfString.length >= 2) {
-              try
-              {
-                int i = Integer.valueOf(arrayOfString[0]).intValue();
-                int j = Integer.valueOf(arrayOfString[1]).intValue();
-                if (QMLog.isColorLevel()) {
-                  QMLog.i("LiuHaiUtils", "oppoGetNotchSize mProperty values[0] left=" + i + " top=" + j);
-                }
-                arrayOfString = paramContext[1].split(",");
-                if (QMLog.isColorLevel()) {
-                  QMLog.i("LiuHaiUtils", "oppoGetNotchSize mProperty values[1] size=" + arrayOfString);
-                }
-                int k;
-                int m;
-                if ((arrayOfString.length >= 2) && (QMLog.isColorLevel())) {
-                  QMLog.i("LiuHaiUtils", "oppoGetNotchSize values[0]=" + paramContext[0], localNumberFormatException1);
-                }
-              }
-              catch (NumberFormatException localNumberFormatException1)
-              {
-                try
-                {
-                  k = Integer.valueOf(arrayOfString[0]).intValue();
-                  m = Integer.valueOf(arrayOfString[1]).intValue();
-                  if (QMLog.isColorLevel()) {
-                    QMLog.i("LiuHaiUtils", "oppoGetNotchSize mProperty values[1] right=" + k + " bottom=" + m);
-                  }
-                  return new int[] { k - i, m - j };
-                }
-                catch (NumberFormatException localNumberFormatException2) {}
-                localNumberFormatException1 = localNumberFormatException1;
-              }
-            }
+            paramContext = new StringBuilder();
+            paramContext.append("oppoGetNotchSize mProperty values[1] right=");
+            paramContext.append(k);
+            paramContext.append(" bottom=");
+            paramContext.append(m);
+            QMLog.i("LiuHaiUtils", paramContext.toString());
           }
+          return new int[] { k - i, m - j };
+        }
+        catch (NumberFormatException localNumberFormatException1)
+        {
+          if (QMLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("oppoGetNotchSize values[1]=");
+            localStringBuilder.append(paramContext[1]);
+            QMLog.i("LiuHaiUtils", localStringBuilder.toString(), localNumberFormatException1);
+          }
+          return null;
         }
         return null;
-      } while (!QMLog.isColorLevel());
-      QMLog.i("LiuHaiUtils", "oppoGetNotchSize values[1]=" + paramContext[1], localNumberFormatException2);
+      }
+      catch (NumberFormatException localNumberFormatException2)
+      {
+        if (QMLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("oppoGetNotchSize values[0]=");
+          localStringBuilder.append(paramContext[0]);
+          QMLog.i("LiuHaiUtils", localStringBuilder.toString(), localNumberFormatException2);
+        }
+      }
     }
-    return null;
   }
   
   private static boolean oppoHasNotchInScreen(Context paramContext)
   {
-    boolean bool1;
     if (Build.MODEL.equals("PAAM00")) {
-      bool1 = true;
+      return true;
     }
-    boolean bool2;
-    do
+    boolean bool = paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
+    if (QMLog.isColorLevel())
     {
-      return bool1;
-      bool2 = paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-      bool1 = bool2;
-    } while (!QMLog.isColorLevel());
-    QMLog.i("LiuHaiUtils", "oppoHasNotchInScreen exits:" + bool2);
-    return bool2;
+      paramContext = new StringBuilder();
+      paramContext.append("oppoHasNotchInScreen exits:");
+      paramContext.append(bool);
+      QMLog.i("LiuHaiUtils", paramContext.toString());
+    }
+    return bool;
   }
   
   public static void resetAllLiuHaiStatus()
@@ -972,37 +1060,39 @@ public class LiuHaiUtils
   
   public static boolean vivoHasNotchInScreen(Context paramContext)
   {
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    boolean bool3;
+    try
     {
-      try
+      paramContext = paramContext.getClassLoader().loadClass("android.util.FtFeature");
+      bool1 = bool2;
+      bool2 = ((Boolean)paramContext.getMethod("isFeatureSupport", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(32) })).booleanValue();
+      bool1 = bool2;
+      bool3 = bool2;
+      if (QMLog.isColorLevel())
       {
-        paramContext = paramContext.getClassLoader().loadClass("android.util.FtFeature");
-        bool1 = ((Boolean)paramContext.getMethod("isFeatureSupport", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(32) })).booleanValue();
-        boolean bool2 = bool1;
-        bool2 = bool1;
+        bool1 = bool2;
+        paramContext = new StringBuilder();
+        bool1 = bool2;
+        paramContext.append("vivoHasNotchInScreen ret=");
+        bool1 = bool2;
+        paramContext.append(bool2);
+        bool1 = bool2;
+        QMLog.i("LiuHaiUtils", paramContext.toString());
+        return bool2;
       }
-      catch (Exception paramContext)
+    }
+    catch (Exception paramContext)
+    {
+      bool3 = bool1;
+      if (QMLog.isColorLevel())
       {
-        try
-        {
-          if (QMLog.isColorLevel())
-          {
-            QMLog.i("LiuHaiUtils", "vivoHasNotchInScreen ret=" + bool1);
-            bool2 = bool1;
-          }
-          return bool2;
-        }
-        catch (Exception paramContext)
-        {
-          boolean bool1;
-          continue;
-        }
-        paramContext = paramContext;
-        bool1 = false;
+        QMLog.e("LiuHaiUtils", "vivoHasNotchInScreen Exception", paramContext);
+        bool3 = bool1;
       }
-    } while (!QMLog.isColorLevel());
-    QMLog.e("LiuHaiUtils", "vivoHasNotchInScreen Exception", paramContext);
-    return bool1;
+    }
+    return bool3;
   }
   
   private static int[] xiaomiGetNotchSize(Context paramContext)
@@ -1014,21 +1104,36 @@ public class LiuHaiUtils
     tmp9_5[1] = 0;
     tmp9_5;
     int i = paramContext.getResources().getIdentifier("notch_width", "dimen", "android");
-    if (QMLog.isColorLevel()) {
-      QMLog.i("LiuHaiUtils", "xiaomiGetNotchSize [notch_width]resourceId: " + i);
+    StringBuilder localStringBuilder;
+    if (QMLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("xiaomiGetNotchSize [notch_width]resourceId: ");
+      localStringBuilder.append(i);
+      QMLog.i("LiuHaiUtils", localStringBuilder.toString());
     }
     if (i > 0) {
       arrayOfInt[0] = paramContext.getResources().getDimensionPixelSize(i);
     }
     i = paramContext.getResources().getIdentifier("notch_height", "dimen", "android");
-    if (QMLog.isColorLevel()) {
-      QMLog.i("LiuHaiUtils", "xiaomiGetNotchSize [notch_height]resourceId: " + i);
+    if (QMLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("xiaomiGetNotchSize [notch_height]resourceId: ");
+      localStringBuilder.append(i);
+      QMLog.i("LiuHaiUtils", localStringBuilder.toString());
     }
     if (i > 0) {
       arrayOfInt[1] = paramContext.getResources().getDimensionPixelSize(i);
     }
-    if (QMLog.isColorLevel()) {
-      QMLog.i("LiuHaiUtils", "xiaomiGetNotchSize width: " + arrayOfInt[0] + " height:" + arrayOfInt[1]);
+    if (QMLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("xiaomiGetNotchSize width: ");
+      paramContext.append(arrayOfInt[0]);
+      paramContext.append(" height:");
+      paramContext.append(arrayOfInt[1]);
+      QMLog.i("LiuHaiUtils", paramContext.toString());
     }
     return arrayOfInt;
   }
@@ -1036,46 +1141,53 @@ public class LiuHaiUtils
   @TargetApi(17)
   private static boolean xiaomiHasNotchInScreen(Context paramContext)
   {
-    try
+    for (;;)
     {
-      if (Build.VERSION.SDK_INT >= 17)
+      try
       {
+        if (Build.VERSION.SDK_INT < 17) {
+          break label137;
+        }
         i = Settings.Global.getInt(paramContext.getContentResolver(), "force_black", 0);
         if (i == 1)
         {
           if (!QMLog.isColorLevel()) {
-            break label127;
+            break;
           }
-          QMLog.i("LiuHaiUtils", "xiaomiHasNotchInScreen closed: " + i);
+          paramContext = new StringBuilder();
+          paramContext.append("xiaomiHasNotchInScreen closed: ");
+          paramContext.append(i);
+          QMLog.i("LiuHaiUtils", paramContext.toString());
           return false;
         }
         i = getSystemPropertyForXiaomi("ro.miui.notch", 0);
-        if (QMLog.isColorLevel()) {
-          QMLog.i("LiuHaiUtils", "xiaomiHasNotchInScreen isNotch: " + i);
+        if (QMLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("xiaomiHasNotchInScreen isNotch: ");
+          paramContext.append(i);
+          QMLog.i("LiuHaiUtils", paramContext.toString());
         }
-        if (i != 1) {
-          break label127;
+        if (i == 1) {
+          return true;
         }
-        return true;
       }
-    }
-    catch (Throwable paramContext)
-    {
-      int i;
-      while (QMLog.isColorLevel())
+      catch (Throwable paramContext)
       {
-        QMLog.i("LiuHaiUtils", "xiaomiHasNotchInScreen crash: ", paramContext);
-        return false;
-        i = 0;
+        if (QMLog.isColorLevel()) {
+          QMLog.i("LiuHaiUtils", "xiaomiHasNotchInScreen crash: ", paramContext);
+        }
       }
+      return false;
+      label137:
+      int i = 0;
     }
-    label127:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.LiuHaiUtils
  * JD-Core Version:    0.7.0.1
  */

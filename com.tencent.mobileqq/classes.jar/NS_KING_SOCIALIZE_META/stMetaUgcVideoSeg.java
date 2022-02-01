@@ -63,35 +63,40 @@ public final class stMetaUgcVideoSeg
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.file_id != null) {
-      paramJceOutputStream.write(this.file_id, 0);
+    Object localObject = this.file_id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.file_size, 1);
-    if (this.sha1 != null) {
-      paramJceOutputStream.write(this.sha1, 2);
+    localObject = this.sha1;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.play_index, 3);
     paramJceOutputStream.write(this.duration, 4);
     paramJceOutputStream.write(this.width, 5);
     paramJceOutputStream.write(this.height, 6);
-    if (this.md5 != null) {
-      paramJceOutputStream.write(this.md5, 7);
+    localObject = this.md5;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.orientation, 8);
     paramJceOutputStream.write(this.h265_hvc1, 9);
     paramJceOutputStream.write(this.max_db, 10);
     paramJceOutputStream.write(this.voice_ratio, 11);
-    if (this.loudnorm != null) {
-      paramJceOutputStream.write(this.loudnorm, 12);
+    localObject = this.loudnorm;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.meta_loudnorm != null) {
-      paramJceOutputStream.write(this.meta_loudnorm, 13);
+    localObject = this.meta_loudnorm;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stMetaUgcVideoSeg
  * JD-Core Version:    0.7.0.1
  */

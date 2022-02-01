@@ -31,7 +31,19 @@ public final class ULongRange
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof ULongRange)) && (((isEmpty()) && (((ULongRange)paramObject).isEmpty())) || ((getFirst() == ((ULongRange)paramObject).getFirst()) && (getLast() == ((ULongRange)paramObject).getLast())));
+    if ((paramObject instanceof ULongRange)) {
+      if ((!isEmpty()) || (!((ULongRange)paramObject).isEmpty()))
+      {
+        long l = getFirst();
+        paramObject = (ULongRange)paramObject;
+        if ((l != paramObject.getFirst()) || (getLast() != paramObject.getLast())) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   @NotNull
@@ -51,7 +63,8 @@ public final class ULongRange
     if (isEmpty()) {
       return -1;
     }
-    return 31 * (int)ULong.constructor-impl(getFirst() ^ ULong.constructor-impl(getFirst() >>> 32)) + (int)ULong.constructor-impl(getLast() ^ ULong.constructor-impl(getLast() >>> 32));
+    int i = (int)ULong.constructor-impl(getFirst() ^ ULong.constructor-impl(getFirst() >>> 32));
+    return (int)ULong.constructor-impl(getLast() ^ ULong.constructor-impl(getLast() >>> 32)) + i * 31;
   }
   
   public boolean isEmpty()
@@ -62,12 +75,16 @@ public final class ULongRange
   @NotNull
   public String toString()
   {
-    return ULong.toString-impl(getFirst()) + ".." + ULong.toString-impl(getLast());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ULong.toString-impl(getFirst()));
+    localStringBuilder.append("..");
+    localStringBuilder.append(ULong.toString-impl(getLast()));
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ranges.ULongRange
  * JD-Core Version:    0.7.0.1
  */

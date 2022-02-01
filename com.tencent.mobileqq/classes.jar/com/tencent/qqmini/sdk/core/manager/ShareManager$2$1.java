@@ -27,16 +27,17 @@ class ShareManager$2$1
   
   public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
   {
-    if (paramString != null) {}
-    for (paramInt = 1;; paramInt = 0)
+    if (paramString != null) {
+      paramInt = 1;
+    } else {
+      paramInt = 0;
+    }
+    this.val$loadingDialog.dismiss();
+    if (paramInt == 0) {
+      MiniToast.makeText(this.this$1.val$activity, 1, "网络异常，图片分享失败", 1).show(this.this$1.val$activity.getResources().getDimensionPixelSize(R.dimen.mini_sdk_title_bar_height));
+    }
+    if (paramInt != 0)
     {
-      this.val$loadingDialog.dismiss();
-      if (paramInt == 0) {
-        MiniToast.makeText(this.this$1.val$activity, 1, "网络异常，图片分享失败", 1).show(this.this$1.val$activity.getResources().getDimensionPixelSize(R.dimen.mini_sdk_title_bar_height));
-      }
-      if (paramInt == 0) {
-        break;
-      }
       this.this$1.val$shareData.isLocalPic = true;
       this.this$1.val$shareData.sharePicPath = paramString;
       ShareManager.access$100(this.this$1.this$0, this.this$1.val$shareData);
@@ -47,7 +48,7 @@ class ShareManager$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.ShareManager.2.1
  * JD-Core Version:    0.7.0.1
  */

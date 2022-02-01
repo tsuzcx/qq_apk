@@ -11,7 +11,7 @@ import java.util.List;
 import mqq.manager.Manager;
 
 public class MiniCardManager
-  implements Manager
+  implements IMiniCardManager, Manager
 {
   private static final QQLruCache<String, NowSummaryCard.MiniCard> a;
   public QQAppInterface a;
@@ -31,6 +31,11 @@ public class MiniCardManager
     return (NowSummaryCard.MiniCard)jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.get(paramString);
   }
   
+  public static void a(String paramString, NowSummaryCard.MiniCard paramMiniCard)
+  {
+    jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.put(paramString, paramMiniCard);
+  }
+  
   public static boolean a(String paramString)
   {
     return jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.containsKey(paramString);
@@ -41,7 +46,7 @@ public class MiniCardManager
     jdField_a_of_type_ComTencentCommonsdkCacheQQLruCache.evictAll();
   }
   
-  public void a(List<Long> paramList, int paramInt, MiniCardManager.IGetMiniCardCallback paramIGetMiniCardCallback)
+  public void a(List<Long> paramList, int paramInt, IGetMiniCardCallback paramIGetMiniCardCallback)
   {
     NowSummaryCard.NearbyMiniCardReq localNearbyMiniCardReq = new NowSummaryCard.NearbyMiniCardReq();
     localNearbyMiniCardReq.target_id.set(paramList);
@@ -56,7 +61,7 @@ public class MiniCardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.MiniCardManager
  * JD-Core Version:    0.7.0.1
  */

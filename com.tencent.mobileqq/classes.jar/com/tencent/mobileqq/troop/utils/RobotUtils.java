@@ -3,8 +3,6 @@ package com.tencent.mobileqq.troop.utils;
 import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.content.res.Resources;
 import android.os.Bundle;
 import android.text.TextUtils;
@@ -12,19 +10,16 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopHandler;
-import com.tencent.mobileqq.app.TroopManager;
-import com.tencent.mobileqq.data.troop.TroopInfo;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.AbsShareMsg;
 import com.tencent.mobileqq.structmsg.AbsShareMsg.Builder;
+import com.tencent.mobileqq.structmsg.AbsStructMsgElement;
 import com.tencent.mobileqq.structmsg.AbsStructMsgItem;
 import com.tencent.mobileqq.structmsg.StructMsgForGeneralShare;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemCover;
@@ -32,233 +27,192 @@ import com.tencent.mobileqq.structmsg.view.StructMsgItemLayout2;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemLayoutDefault;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemSummary;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemTitle;
+import com.tencent.mobileqq.troop.robot.api.IRobotUtilApi;
+import com.tencent.mobileqq.troop.robot.api.ITroopRobotHandler;
+import com.tencent.mobileqq.troop.robot.api.ITroopRobotService;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.webview.swift.WebViewPluginFactory;
-import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 
 public class RobotUtils
 {
-  public static SharedPreferences a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null)
-    {
-      QLog.e("RobotUtils", 2, "RobotRed  get sp by app is null");
-      return null;
-    }
-    paramQQAppInterface = paramQQAppInterface.getCurrentUin();
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramQQAppInterface)))
-    {
-      QLog.e("RobotUtils", 2, "RobotRed get sp by uin is null");
-      return null;
-    }
-    return BaseApplicationImpl.getContext().getSharedPreferences("sp_robot_in_troop" + paramQQAppInterface, 0);
-  }
-  
   public static String a(AbsShareMsg paramAbsShareMsg, String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (paramAbsShareMsg != null)
     {
-      if (!TextUtils.isEmpty(paramString)) {
-        break label19;
+      if (TextUtils.isEmpty(paramString)) {
+        return null;
       }
-      localObject1 = localObject2;
-    }
-    label19:
-    do
-    {
-      do
+      if (paramAbsShareMsg.mMsgServiceID != 14) {
+        return null;
+      }
+      if (!a(paramAbsShareMsg.mMsgUrl)) {
+        return null;
+      }
+      if (QLog.isColorLevel())
       {
-        do
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("isTroopRobotCard, url:");
+        ((StringBuilder)localObject).append(paramAbsShareMsg.mMsgUrl);
+        ((StringBuilder)localObject).append(" troopuin:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("RobotUtils", 2, ((StringBuilder)localObject).toString());
+      }
+      Object localObject = b(paramAbsShareMsg.mMsgUrl, "gc");
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("troopuin in url:");
+        localStringBuilder.append((String)localObject);
+        QLog.d("RobotUtils", 2, localStringBuilder.toString());
+      }
+      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (((String)localObject).equals(paramString)))
+      {
+        if (QLog.isColorLevel())
         {
-          do
-          {
-            return localObject1;
-            localObject1 = localObject2;
-          } while (paramAbsShareMsg.mMsgServiceID != 14);
-          localObject1 = localObject2;
-        } while (!a(paramAbsShareMsg.mMsgUrl));
-        if (QLog.isColorLevel()) {
-          QLog.d("RobotUtils", 2, "isTroopRobotCard, url:" + paramAbsShareMsg.mMsgUrl + " troopuin:" + paramString);
+          paramString = new StringBuilder();
+          paramString.append("has troopuin:");
+          paramString.append(paramAbsShareMsg.mMsgUrl);
+          QLog.d("RobotUtils", 2, paramString.toString());
         }
-        localObject1 = b(paramAbsShareMsg.mMsgUrl, "gc");
-        if (QLog.isColorLevel()) {
-          QLog.d("RobotUtils", 2, "troopuin in url:" + (String)localObject1);
-        }
-        if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!((String)localObject1).equals(paramString))) {
-          break;
-        }
-        localObject1 = localObject2;
-      } while (!QLog.isColorLevel());
-      QLog.d("RobotUtils", 2, "has troopuin:" + paramAbsShareMsg.mMsgUrl);
-      return null;
+        return null;
+      }
       paramString = a(paramAbsShareMsg.mMsgUrl, paramString);
-      localObject1 = paramString;
-    } while (!QLog.isColorLevel());
-    QLog.d("RobotUtils", 2, "attach troopuin:" + paramAbsShareMsg.mMsgUrl);
-    return paramString;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("attach troopuin:");
+        ((StringBuilder)localObject).append(paramAbsShareMsg.mMsgUrl);
+        QLog.d("RobotUtils", 2, ((StringBuilder)localObject).toString());
+      }
+      return paramString;
+    }
+    return null;
   }
   
   public static String a(String paramString)
   {
-    String str = "";
-    if (paramString != null) {
-      str = "gc=" + paramString + "&";
+    if (paramString != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gc=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("&");
+      paramString = localStringBuilder.toString();
     }
-    paramString = "https://web.qun.qq.com/qunrobot/timingmessageedit?" + str + "r_uin=2854196310&f_id=41&type=2&slot=0&_wwv=128";
-    if (QLog.isColorLevel()) {
-      QLog.d("RobotUtils", 2, "url " + paramString);
+    else
+    {
+      paramString = "";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("https://web.qun.qq.com/qunrobot/timingmessageedit?");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("r_uin=2854196310&f_id=41&type=2&slot=0&_wwv=128");
+    paramString = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url ");
+      localStringBuilder.append(paramString);
+      QLog.d("RobotUtils", 2, localStringBuilder.toString());
     }
     return paramString;
   }
   
   public static String a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1))) {
-      return paramString1;
+    String str = paramString1;
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      if (TextUtils.isEmpty(paramString1)) {
+        return paramString1;
+      }
+      str = a(paramString1, "gc", paramString2);
     }
-    return a(paramString1, "gc", paramString2);
+    return str;
   }
   
   public static String a(String paramString1, String paramString2, String paramString3)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return paramString1;
-    }
-    int i = paramString1.indexOf("?");
-    if ((i <= 0) || (i >= paramString1.length())) {
-      return paramString1 + "?" + paramString2 + "=" + paramString3;
-    }
-    String[] arrayOfString = paramString1.substring(i + 1).split("&");
-    if ((arrayOfString == null) || (arrayOfString.length == 0)) {
-      return paramString1 + paramString2 + "=" + paramString3;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramString1.substring(0, i + 1));
-    paramString1 = paramString2 + "=";
-    int j = 0;
-    int k = 0;
-    i = 1;
-    if (j < arrayOfString.length)
+    Object localObject = paramString1;
+    if (!TextUtils.isEmpty(paramString1))
     {
-      if (TextUtils.isEmpty(arrayOfString[j])) {}
-      for (;;)
-      {
-        j += 1;
-        break;
-        if (i != 0) {
-          i = 0;
-        }
-        for (;;)
-        {
-          if (!paramString1.equalsIgnoreCase(arrayOfString[j].substring(0, paramString1.length()))) {
-            break label257;
-          }
-          localStringBuilder.append(paramString1);
-          localStringBuilder.append(paramString3);
-          k = 1;
-          break;
-          localStringBuilder.append("&");
-        }
-        label257:
-        localStringBuilder.append(arrayOfString[j]);
+      if (TextUtils.isEmpty(paramString2)) {
+        return paramString1;
       }
-    }
-    if (k == 0)
-    {
-      localStringBuilder.append("&");
-      localStringBuilder.append(paramString2);
-      localStringBuilder.append("=");
-      localStringBuilder.append(paramString3);
-    }
-    return localStringBuilder.toString();
-  }
-  
-  public static String a(ArrayList<String> paramArrayList)
-  {
-    String str2 = "";
-    String str1 = str2;
-    if (paramArrayList != null)
-    {
-      str1 = str2;
-      if (paramArrayList.size() > 0)
+      int i = paramString1.indexOf("?");
+      if ((i > 0) && (i < paramString1.length()))
       {
-        str1 = "";
-        int i = 0;
-        while (i < paramArrayList.size())
+        i += 1;
+        localObject = paramString1.substring(i).split("&");
+        if ((localObject != null) && (localObject.length != 0))
         {
-          str1 = str1 + (String)paramArrayList.get(i) + "_";
-          i += 1;
-        }
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("RobotUtils", 2, "RobotRed convertUinListToString  " + str1);
-    }
-    return str1;
-  }
-  
-  public static ArrayList<String> a(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = a(paramQQAppInterface);
-    Object localObject;
-    if (paramQQAppInterface == null) {
-      localObject = new ArrayList();
-    }
-    do
-    {
-      return localObject;
-      localObject = a(paramQQAppInterface.getString("sp_new_robot_red_list", ""));
-      paramQQAppInterface = (QQAppInterface)localObject;
-      if (localObject == null) {
-        paramQQAppInterface = new ArrayList();
-      }
-      localObject = paramQQAppInterface;
-    } while (!QLog.isColorLevel());
-    QLog.d("RobotUtils", 2, "RobotRed getNewRobotListFromSp size  " + paramQQAppInterface.size());
-    return paramQQAppInterface;
-  }
-  
-  public static ArrayList<String> a(String paramString)
-  {
-    ArrayList localArrayList = new ArrayList();
-    if (!TextUtils.isEmpty(paramString))
-    {
-      String[] arrayOfString = paramString.split("_");
-      if ((arrayOfString != null) && (arrayOfString.length > 0))
-      {
-        int i = 0;
-        if (i < arrayOfString.length)
-        {
-          if (!TextUtils.isEmpty(arrayOfString[i])) {
-            localArrayList.add(arrayOfString[i]);
-          }
-          for (;;)
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString1.substring(0, i));
+          paramString1 = new StringBuilder();
+          paramString1.append(paramString2);
+          paramString1.append("=");
+          paramString1 = paramString1.toString();
+          int j = 0;
+          int k = 0;
+          i = 1;
+          while (j < localObject.length)
           {
-            i += 1;
-            break;
-            QLog.e("RobotUtils", 2, "RobotRed SplitUinListFromString I empty " + i);
+            if (!TextUtils.isEmpty(localObject[j]))
+            {
+              if (i != 0) {
+                i = 0;
+              } else {
+                localStringBuilder.append("&");
+              }
+              if (paramString1.equalsIgnoreCase(localObject[j].substring(0, paramString1.length())))
+              {
+                localStringBuilder.append(paramString1);
+                localStringBuilder.append(paramString3);
+                k = 1;
+              }
+              else
+              {
+                localStringBuilder.append(localObject[j]);
+              }
+            }
+            j += 1;
           }
+          if (k == 0)
+          {
+            localStringBuilder.append("&");
+            localStringBuilder.append(paramString2);
+            localStringBuilder.append("=");
+            localStringBuilder.append(paramString3);
+          }
+          return localStringBuilder.toString();
         }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString1);
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append("=");
+        ((StringBuilder)localObject).append(paramString3);
+        return ((StringBuilder)localObject).toString();
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("?");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("=");
+      ((StringBuilder)localObject).append(paramString3);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("RobotUtils", 2, "RobotRed SplitUinListFromString size  " + localArrayList.size() + " listString " + paramString);
-    }
-    return localArrayList;
+    return localObject;
   }
   
   public static void a(Context paramContext, String paramString1, String paramString2)
   {
-    paramString1 = c(paramString1, paramString2);
+    paramString1 = ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).getRobotProfileUrl(paramString1, paramString2);
     paramString2 = new Intent(paramContext, QQBrowserActivity.class);
     paramString2.putExtra("url", paramString1);
-    paramString2.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131713440));
+    paramString2.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131713408));
     if (WebViewPluginFactory.a.containsKey("robotsummary")) {
       paramString2.putExtra("insertPluginsArray", new String[] { "robotsummary" });
     }
@@ -267,44 +221,62 @@ public class RobotUtils
   
   public static void a(Context paramContext, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6, String paramString7, String paramString8, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("RobotUtils", 2, "invokeRobotFunction, troopuin:" + paramString1 + " robotuin:" + paramString3 + " robotname:" + paramString4 + " offurl:" + paramString7 + " offtitle:" + paramString8 + " onurl:" + paramString5 + " ontitle:" + paramString6);
-    }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString3)) || (TextUtils.isEmpty(paramString8)) || (TextUtils.isEmpty(paramString7))) {}
-    while (paramContext == null) {
-      return;
-    }
-    Bundle localBundle = new Bundle();
-    localBundle.putString("troopuin", paramString1);
-    localBundle.putString("robotuin", paramString3);
-    localBundle.putString("robotname", paramString4);
-    localBundle.putString("onurl", paramString5);
-    localBundle.putString("ontitle", paramString6);
-    localBundle.putString("offurl", paramString7);
-    localBundle.putString("offtitle", paramString8);
-    paramString5 = AIOUtils.a(new Intent(paramContext, SplashActivity.class), null);
-    if (paramInt == 1)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      paramString5.putExtra("uin", paramString1);
-      paramString5.putExtra("uintype", 1);
-      paramString5.putExtra("uinname", paramString2);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("invokeRobotFunction, troopuin:");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" robotuin:");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(" robotname:");
+      ((StringBuilder)localObject).append(paramString4);
+      ((StringBuilder)localObject).append(" offurl:");
+      ((StringBuilder)localObject).append(paramString7);
+      ((StringBuilder)localObject).append(" offtitle:");
+      ((StringBuilder)localObject).append(paramString8);
+      ((StringBuilder)localObject).append(" onurl:");
+      ((StringBuilder)localObject).append(paramString5);
+      ((StringBuilder)localObject).append(" ontitle:");
+      ((StringBuilder)localObject).append(paramString6);
+      QLog.d("RobotUtils", 2, ((StringBuilder)localObject).toString());
     }
-    for (;;)
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString3)) && (!TextUtils.isEmpty(paramString8)))
     {
-      paramString5.putExtra("key_invoke_troop_robot_function", localBundle);
-      paramString5.putExtra("isBack2Root", true);
-      paramContext.startActivity(paramString5);
-      return;
-      if (paramInt == 0)
+      if (TextUtils.isEmpty(paramString7)) {
+        return;
+      }
+      if (paramContext == null) {
+        return;
+      }
+      localObject = new Bundle();
+      ((Bundle)localObject).putString("troopuin", paramString1);
+      ((Bundle)localObject).putString("robotuin", paramString3);
+      ((Bundle)localObject).putString("robotname", paramString4);
+      ((Bundle)localObject).putString("onurl", paramString5);
+      ((Bundle)localObject).putString("ontitle", paramString6);
+      ((Bundle)localObject).putString("offurl", paramString7);
+      ((Bundle)localObject).putString("offtitle", paramString8);
+      paramString5 = AIOUtils.a(new Intent(paramContext, SplashActivity.class), null);
+      if (paramInt == 1)
+      {
+        paramString5.putExtra("uin", paramString1);
+        paramString5.putExtra("uintype", 1);
+        paramString5.putExtra("uinname", paramString2);
+      }
+      else if (paramInt == 0)
       {
         paramString5.putExtra("uin", paramString3);
         paramString5.putExtra("uintype", 1043);
         paramString5.putExtra("uinname", paramString4);
       }
+      paramString5.putExtra("key_invoke_troop_robot_function", (Bundle)localObject);
+      paramString5.putExtra("isBack2Root", true);
+      paramContext.startActivity(paramString5);
     }
   }
   
-  public static void a(BaseActivity paramBaseActivity, String paramString)
+  public static void a(QBaseActivity paramQBaseActivity, String paramString)
   {
     if (TextUtils.isEmpty(paramString))
     {
@@ -312,68 +284,74 @@ public class RobotUtils
       return;
     }
     paramString = a(paramString);
-    Intent localIntent = new Intent(paramBaseActivity, QQBrowserActivity.class);
+    Intent localIntent = new Intent(paramQBaseActivity, QQBrowserActivity.class);
     localIntent.putExtra("url", paramString);
-    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131713442));
+    localIntent.putExtra("selfSet_leftViewText", HardCodeUtil.a(2131713410));
     if (WebViewPluginFactory.a.containsKey("robotsummary")) {
       localIntent.putExtra("insertPluginsArray", new String[] { "robotsummary" });
     }
-    paramBaseActivity.startActivity(localIntent);
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong)
-  {
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {}
-    long l;
-    do
-    {
-      return;
-      l = NetConnInfoCenter.getServerTime();
-      paramQQAppInterface.edit().putLong("sp_robot_red_expire_time", paramLong).apply();
-      paramQQAppInterface.edit().putLong("sp_robot_red_update_time", l).apply();
-    } while (!QLog.isColorLevel());
-    QLog.d("RobotUtils", 2, "RobotRed setRobotRedInfoUpdate expireTime  " + paramLong + " update time: " + l);
+    paramQBaseActivity.startActivity(localIntent);
   }
   
   public static void a(QQAppInterface paramQQAppInterface, Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    do
+    if (TextUtils.isEmpty(paramString2)) {
+      return;
+    }
+    if ((paramQQAppInterface != null) && (!a(paramQQAppInterface, paramString2))) {
+      return;
+    }
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=");
+    paramQQAppInterface.append(paramString2);
+    Object localObject1 = paramQQAppInterface.toString();
+    paramQQAppInterface = new StringBuilder();
+    paramQQAppInterface.append("AppCmd://OpenContactInfo/?uin=");
+    paramQQAppInterface.append(paramString2);
+    Object localObject2 = paramQQAppInterface.toString();
+    paramQQAppInterface = ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).getRobotProfileUrl(paramString1, paramString2);
+    paramString1 = new StringBuilder();
+    paramString1.append(HardCodeUtil.a(2131713409));
+    paramString1.append(paramString2);
+    paramString1 = paramString1.toString();
+    Object localObject3 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(14);
+    Object localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append(HardCodeUtil.a(2131713412));
+    ((StringBuilder)localObject4).append(paramString3);
+    localObject2 = ((AbsShareMsg.Builder)localObject3).a(((StringBuilder)localObject4).toString()).a(2).a(1).a("web", paramQQAppInterface, (String)localObject2, (String)localObject1, (String)localObject1).d(paramActivity.getResources().getString(2131718146)).a();
+    localObject3 = new StructMsgItemLayoutDefault();
+    ((AbsStructMsgItem)localObject3).b(1);
+    ((AbsStructMsgItem)localObject3).a(HardCodeUtil.a(2131713411));
+    localObject4 = new StructMsgItemLayout2();
+    ((AbsStructMsgItem)localObject4).b(1);
+    ((AbsStructMsgItem)localObject4).a(new StructMsgItemCover((String)localObject1));
+    ((AbsStructMsgItem)localObject4).a(new StructMsgItemTitle(paramString3));
+    ((AbsStructMsgItem)localObject4).a(new StructMsgItemSummary(paramString1));
+    ((AbsShareMsg)localObject2).addItem((AbsStructMsgElement)localObject3);
+    ((AbsShareMsg)localObject2).addItem((AbsStructMsgElement)localObject4);
+    localObject1 = new Bundle();
+    ((Bundle)localObject1).putInt("forward_type", 42);
+    ((Bundle)localObject1).putInt("structmsg_service_id", 14);
+    ((Bundle)localObject1).putByteArray("stuctmsg_bytes", ((AbsShareMsg)localObject2).getBytes());
+    ((Bundle)localObject1).putBoolean("k_dataline", false);
+    localObject2 = new Intent();
+    ((Intent)localObject2).putExtras((Bundle)localObject1);
+    ((Intent)localObject2).putExtra("uin", paramString2);
+    ((Intent)localObject2).putExtra("uinname", paramString3);
+    ForwardBaseOption.a(paramActivity, (Intent)localObject2, paramInt);
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-      } while ((paramQQAppInterface != null) && (!b(paramQQAppInterface, paramString2)));
-      Object localObject1 = "mqqapi://card/show_pslcard?src_type=internal&source=sharecard&version=1&uin=" + paramString2;
-      Object localObject2 = "AppCmd://OpenContactInfo/?uin=" + paramString2;
-      paramQQAppInterface = c(paramString1, paramString2);
-      paramString1 = HardCodeUtil.a(2131713441) + paramString2;
-      localObject2 = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(14).a(HardCodeUtil.a(2131713444) + paramString3).a(2).a(1).a("web", paramQQAppInterface, (String)localObject2, (String)localObject1, (String)localObject1).d(paramActivity.getResources().getString(2131718481)).a();
-      StructMsgItemLayoutDefault localStructMsgItemLayoutDefault = new StructMsgItemLayoutDefault();
-      localStructMsgItemLayoutDefault.b(1);
-      localStructMsgItemLayoutDefault.a(HardCodeUtil.a(2131713443));
-      StructMsgItemLayout2 localStructMsgItemLayout2 = new StructMsgItemLayout2();
-      localStructMsgItemLayout2.b(1);
-      localStructMsgItemLayout2.a(new StructMsgItemCover((String)localObject1));
-      localStructMsgItemLayout2.a(new StructMsgItemTitle(paramString3));
-      localStructMsgItemLayout2.a(new StructMsgItemSummary(paramString1));
-      ((AbsShareMsg)localObject2).addItem(localStructMsgItemLayoutDefault);
-      ((AbsShareMsg)localObject2).addItem(localStructMsgItemLayout2);
-      localObject1 = new Bundle();
-      ((Bundle)localObject1).putInt("forward_type", 42);
-      ((Bundle)localObject1).putInt("structmsg_service_id", 14);
-      ((Bundle)localObject1).putByteArray("stuctmsg_bytes", ((AbsShareMsg)localObject2).getBytes());
-      ((Bundle)localObject1).putBoolean("k_dataline", false);
-      localObject2 = new Intent();
-      ((Intent)localObject2).putExtras((Bundle)localObject1);
-      ((Intent)localObject2).putExtra("uin", paramString2);
-      ((Intent)localObject2).putExtra("uinname", paramString3);
-      ForwardBaseOption.a(paramActivity, (Intent)localObject2, paramInt);
-    } while (!QLog.isColorLevel());
-    paramActivity = new StringBuilder(300);
-    paramActivity.append("forwardTroopRobotCard [").append("nickname: ").append(paramString3).append(", info: ").append(paramString1).append(", url: ").append(paramQQAppInterface).append("]");
-    QLog.i("RobotUtils", 2, paramActivity.toString());
+      paramActivity = new StringBuilder(300);
+      paramActivity.append("forwardTroopRobotCard [");
+      paramActivity.append("nickname: ");
+      paramActivity.append(paramString3);
+      paramActivity.append(", info: ");
+      paramActivity.append(paramString1);
+      paramActivity.append(", url: ");
+      paramActivity.append(paramQQAppInterface);
+      paramActivity.append("]");
+      QLog.i("RobotUtils", 2, paramActivity.toString());
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3)
@@ -386,107 +364,35 @@ public class RobotUtils
     }
     catch (Exception paramString2)
     {
-      ReportController.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, "0", "", paramString3, "");
+      label27:
+      break label27;
     }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RobotUtils", 2, "RobotRed setRobotItemRedShowed bShowed: " + paramBoolean);
-    }
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    paramQQAppInterface.edit().putBoolean("sp_robot_red_item_int_chat_setting", paramBoolean).apply();
-  }
-  
-  public static void a(boolean paramBoolean, String paramString)
-  {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject == null) {}
-      do
-      {
-        return;
-        localObject = (TroopRobotManager)((QQAppInterface)localObject).getManager(QQManagerFactory.TROOP_ROBOT_MANAGER);
-      } while (localObject == null);
-      ((TroopRobotManager)localObject).a(paramBoolean, paramString);
-      return;
-    }
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface)
-  {
-    if (paramQQAppInterface == null) {
-      return false;
-    }
-    paramQQAppInterface = (TroopRobotManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_ROBOT_MANAGER);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.b();
-    }
-    return false;
+    ReportController.b(paramQQAppInterface, "dc00898", "", "", paramString1, paramString1, 0, 0, "0", "", paramString3, "");
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, String paramString)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {
-      return false;
-    }
-    paramQQAppInterface = (TroopManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER);
-    if (paramQQAppInterface != null)
-    {
-      paramQQAppInterface = paramQQAppInterface.b(paramString);
-      if (paramQQAppInterface != null) {
-        return paramQQAppInterface.isAdmin();
-      }
-      QLog.e("RobotUtils", 2, "ROBOT RED isTroopOwnerOrAdminOrMember troopInfo IS null");
-    }
-    return false;
-  }
-  
-  public static boolean a(QQAppInterface paramQQAppInterface, ArrayList<String> paramArrayList)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramArrayList != null)
-    {
-      String str = a(paramArrayList);
-      paramQQAppInterface = a(paramQQAppInterface);
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface.edit().putString("sp_new_robot_red_list", str).apply();
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("RobotUtils", 2, "RobotRed setNewRobotListToSp size  " + paramArrayList.size());
-        bool2 = bool1;
-      }
-    }
-    return bool2;
+    return ((ITroopRobotService)paramQQAppInterface.getRuntimeService(ITroopRobotService.class, "all")).isRobotUin(paramString);
   }
   
   public static boolean a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    String str;
-    do
-    {
-      int i;
-      do
-      {
-        return false;
-        str = c(null, null);
-        i = str.indexOf("?");
-      } while (i <= 0);
-      str = str.substring(0, i);
-    } while ((TextUtils.isEmpty(str)) || (!str.equalsIgnoreCase(paramString.substring(0, str.length()))) || (TextUtils.isEmpty(b(paramString, "robot_uin"))));
-    return true;
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    String str = ((IRobotUtilApi)QRoute.api(IRobotUtilApi.class)).getRobotProfileUrl(null, null);
+    int i = str.indexOf("?");
+    if (i <= 0) {
+      return false;
+    }
+    str = str.substring(0, i);
+    if (TextUtils.isEmpty(str)) {
+      return false;
+    }
+    if (!str.equalsIgnoreCase(paramString.substring(0, str.length()))) {
+      return false;
+    }
+    return !TextUtils.isEmpty(b(paramString, "robot_uin"));
   }
   
   public static boolean a(String paramString1, String paramString2, String paramString3, boolean paramBoolean)
@@ -495,12 +401,15 @@ public class RobotUtils
     if (localQQAppInterface == null) {
       return false;
     }
-    if (!b(localQQAppInterface, paramString2))
+    if (!a(localQQAppInterface, paramString2))
     {
-      QLog.i("RobotUtils", 2, "notifyMemChange err" + paramString2);
+      paramString1 = new StringBuilder();
+      paramString1.append("notifyMemChange err");
+      paramString1.append(paramString2);
+      QLog.i("RobotUtils", 2, paramString1.toString());
       return false;
     }
-    ((TroopHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER)).a(paramString1, paramString2, paramString3, Boolean.valueOf(paramBoolean));
+    ((ITroopRobotHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_ROBOT_HANDLER)).a(paramString1, paramString2, paramString3, Boolean.valueOf(paramBoolean));
     return true;
   }
   
@@ -515,245 +424,44 @@ public class RobotUtils
   
   public static final String b(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return null;
-    }
-    int i = paramString1.indexOf("?");
-    if ((i <= 0) || (i >= paramString1.length())) {
-      return null;
-    }
-    paramString1 = paramString1.substring(i + 1).split("&");
-    if ((paramString1 == null) || (paramString1.length == 0)) {
-      return null;
-    }
-    paramString2 = paramString2 + "=";
-    i = 0;
-    if (i < paramString1.length)
+    if (!TextUtils.isEmpty(paramString1))
     {
-      if (TextUtils.isEmpty(paramString1[i])) {}
-      while (!paramString2.equalsIgnoreCase(paramString1[i].substring(0, paramString2.length())))
+      if (TextUtils.isEmpty(paramString2)) {
+        return null;
+      }
+      int i = paramString1.indexOf("?");
+      if (i > 0)
       {
-        i += 1;
-        break;
-      }
-      return paramString1[i].substring(paramString2.length());
-    }
-    return null;
-  }
-  
-  public static ArrayList<String> b(QQAppInterface paramQQAppInterface)
-  {
-    paramQQAppInterface = a(paramQQAppInterface);
-    Object localObject;
-    if (paramQQAppInterface == null) {
-      localObject = new ArrayList();
-    }
-    do
-    {
-      return localObject;
-      localObject = a(paramQQAppInterface.getString("sp_history_robot_red_list", ""));
-      paramQQAppInterface = (QQAppInterface)localObject;
-      if (localObject == null) {
-        paramQQAppInterface = new ArrayList();
-      }
-      localObject = paramQQAppInterface;
-    } while (!QLog.isColorLevel());
-    QLog.d("RobotUtils", 2, "RobotRed getHistoryRobotListFromSp size  " + paramQQAppInterface.size());
-    return paramQQAppInterface;
-  }
-  
-  public static void b(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RobotUtils", 2, "RobotRed setRobotRedForAllMembers bShowed: " + paramBoolean);
-    }
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    paramQQAppInterface.edit().putBoolean("sp_robot_red_limit_role_for_member", paramBoolean).apply();
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = false;
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {}
-    boolean bool2;
-    do
-    {
-      return bool1;
-      bool2 = paramQQAppInterface.getBoolean("sp_robot_red_item_int_chat_setting", false);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("RobotUtils", 2, "RobotRed getRobotItemRedShowed bNeedShowed: " + bool2);
-    return bool2;
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    paramQQAppInterface = (TroopRobotManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_ROBOT_MANAGER);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.b(paramString);
-    }
-    return false;
-  }
-  
-  public static boolean b(QQAppInterface paramQQAppInterface, ArrayList<String> paramArrayList)
-  {
-    boolean bool2 = false;
-    boolean bool1 = false;
-    if (paramArrayList != null)
-    {
-      String str = a(paramArrayList);
-      paramQQAppInterface = a(paramQQAppInterface);
-      if (paramQQAppInterface != null)
-      {
-        paramQQAppInterface.edit().putString("sp_history_robot_red_list", str).apply();
-        bool1 = true;
-      }
-      bool2 = bool1;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("RobotUtils", 2, "RobotRed setHistoryRobotListToSp size  " + paramArrayList.size());
-        bool2 = bool1;
-      }
-    }
-    return bool2;
-  }
-  
-  public static String c(String paramString1, String paramString2)
-  {
-    String str3 = "";
-    String str2 = "robot_uin=";
-    String str1 = str3;
-    if (paramString1 != null)
-    {
-      str1 = str3;
-      if (!paramString1.equals("0")) {
-        str1 = "gc=" + paramString1 + "&";
-      }
-    }
-    paramString1 = str2;
-    if (paramString2 != null) {
-      paramString1 = "robot_uin=" + paramString2;
-    }
-    return "https://web.qun.qq.com/qunrobot/data.html?" + str1 + paramString1 + "&_wwv=128&_wv=3";
-  }
-  
-  public static void c(QQAppInterface paramQQAppInterface, boolean paramBoolean)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("RobotUtils", 2, "RobotRed setHasShowRobotRedDotAio bShowed: " + paramBoolean);
-    }
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      return;
-    }
-    paramQQAppInterface.edit().putBoolean("sp_robot_red_int_troop_aio", paramBoolean).apply();
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool1 = false;
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {}
-    boolean bool2;
-    do
-    {
-      return bool1;
-      bool2 = paramQQAppInterface.getBoolean("sp_robot_red_limit_role_for_member", false);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("RobotUtils", 2, "RobotRed getIfTheRightRoleInTroopShowRobotRedDot bNeedShowed: " + bool2);
-    return bool2;
-  }
-  
-  public static boolean c(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((TextUtils.isEmpty(paramString)) || (paramString == "0"))
-    {
-      QLog.e("RobotUtils", 2, "getNeedShowRobotRedDotAio WITH wrong troopUin");
-      bool1 = bool2;
-    }
-    do
-    {
-      do
-      {
-        do
+        if (i >= paramString1.length()) {
+          return null;
+        }
+        paramString1 = paramString1.substring(i + 1).split("&");
+        if (paramString1 != null)
         {
-          return bool1;
-          bool1 = bool2;
-        } while (!d(paramQQAppInterface, paramString));
-        paramQQAppInterface = a(paramQQAppInterface);
-        bool1 = bool2;
-      } while (paramQQAppInterface == null);
-      bool2 = paramQQAppInterface.getBoolean("sp_robot_red_int_troop_aio", false);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("RobotUtils", 2, "RobotRed needShowRobotRedDotAio bNeedShowed: " + bool2);
-    return bool2;
-  }
-  
-  public static boolean d(QQAppInterface paramQQAppInterface)
-  {
-    boolean bool2 = true;
-    boolean bool1 = true;
-    paramQQAppInterface = a(paramQQAppInterface);
-    if (paramQQAppInterface == null) {
-      bool2 = bool1;
-    }
-    long l1;
-    long l2;
-    long l3;
-    do
-    {
-      return bool2;
-      l1 = paramQQAppInterface.getLong("sp_robot_red_expire_time", 3600L);
-      l2 = paramQQAppInterface.getLong("sp_robot_red_update_time", 0L);
-      l3 = NetConnInfoCenter.getServerTime();
-      long l4 = l3 - l2;
-      bool1 = bool2;
-      if (l4 < l1)
-      {
-        bool1 = bool2;
-        if (l4 > 0L) {
-          bool1 = false;
+          if (paramString1.length == 0) {
+            return null;
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append("=");
+          paramString2 = localStringBuilder.toString();
+          i = 0;
+          while (i < paramString1.length)
+          {
+            if ((!TextUtils.isEmpty(paramString1[i])) && (paramString2.equalsIgnoreCase(paramString1[i].substring(0, paramString2.length())))) {
+              return paramString1[i].substring(paramString2.length());
+            }
+            i += 1;
+          }
         }
       }
-      bool2 = bool1;
-    } while (!QLog.isColorLevel());
-    QLog.d("RobotUtils", 2, "RobotRed getIfRobotRedInfoNeedUpdate: " + l1 + " update :" + l2 + " now：" + l3 + " needUpdate：" + bool1);
-    return bool1;
-  }
-  
-  public static boolean d(QQAppInterface paramQQAppInterface, String paramString)
-  {
-    boolean bool1;
-    if ((TextUtils.isEmpty(paramString)) || (paramString == "0"))
-    {
-      QLog.e("RobotUtils", 2, "getNeedShowRobotRedDotAio WITH wrong troopUin");
-      bool1 = false;
     }
-    boolean bool2;
-    do
-    {
-      return bool1;
-      if (c(paramQQAppInterface)) {
-        return true;
-      }
-      bool2 = a(paramQQAppInterface, paramString);
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("RobotUtils", 2, "RobotRed getIfTheRightRoleInTroopShowRobotRedDot isTroopOwnerOrAdminOrMember: " + bool2);
-    return bool2;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.RobotUtils
  * JD-Core Version:    0.7.0.1
  */

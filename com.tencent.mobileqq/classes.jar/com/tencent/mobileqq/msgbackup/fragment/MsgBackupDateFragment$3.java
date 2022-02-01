@@ -13,44 +13,37 @@ class MsgBackupDateFragment$3
   
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 2131365405)
     {
-    default: 
-      if (MsgBackupDateFragment.a(this.a)) {
-        if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a))) {
-          this.a.setRightButtonEnable(true);
-        }
-      }
-      break;
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
       MsgBackupDateFragment.a(this.a, false);
       MsgBackupDateFragment.a(this.a, 0L);
       MsgBackupDateFragment.b(this.a, 0L);
       MsgBackupDateFragment.a(this.a).setVisibility(8);
-      break;
+    }
+    else if (paramInt == 2131365406)
+    {
       MsgBackupDateFragment.a(this.a, true);
       MsgBackupDateFragment.a(this.a).setVisibility(0);
-      break;
-      if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a))))
-      {
-        this.a.setRightButtonEnable(true);
-      }
-      else
-      {
-        this.a.setRightButtonEnable(false);
-        continue;
-        this.a.setRightButtonEnable(true);
+    }
+    if (MsgBackupDateFragment.a(this.a))
+    {
+      if ((MsgBackupDateFragment.b(this.a)) && (MsgBackupDateFragment.c(this.a))) {
+        this.a.i_(true);
+      } else if ((!TextUtils.isEmpty(MsgBackupDateFragment.a(this.a))) && (!TextUtils.isEmpty(MsgBackupDateFragment.b(this.a)))) {
+        this.a.i_(true);
+      } else {
+        this.a.i_(false);
       }
     }
+    else {
+      this.a.i_(true);
+    }
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment.3
  * JD-Core Version:    0.7.0.1
  */

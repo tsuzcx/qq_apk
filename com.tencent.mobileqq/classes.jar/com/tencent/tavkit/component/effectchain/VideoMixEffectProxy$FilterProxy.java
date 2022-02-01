@@ -29,30 +29,28 @@ class VideoMixEffectProxy$FilterProxy
   
   private void checkRuntimeRelease(List<TAVVideoMixEffect> paramList)
   {
-    if (!this.onEffectRemove) {}
-    for (;;)
-    {
+    if (!this.onEffectRemove) {
       return;
-      this.onEffectRemove = false;
-      ArrayList localArrayList = new ArrayList();
-      paramList = paramList.iterator();
-      Object localObject;
-      while (paramList.hasNext())
-      {
-        localObject = (TAVVideoMixEffect)paramList.next();
-        if (!TextUtils.isEmpty(((TAVVideoMixEffect)localObject).effectId())) {
-          localArrayList.add(((TAVVideoMixEffect)localObject).effectId());
-        }
+    }
+    this.onEffectRemove = false;
+    ArrayList localArrayList = new ArrayList();
+    paramList = paramList.iterator();
+    Object localObject;
+    while (paramList.hasNext())
+    {
+      localObject = (TAVVideoMixEffect)paramList.next();
+      if (!TextUtils.isEmpty(((TAVVideoMixEffect)localObject).effectId())) {
+        localArrayList.add(((TAVVideoMixEffect)localObject).effectId());
       }
-      paramList = new HashSet(this.filterMap.keySet()).iterator();
-      while (paramList.hasNext())
+    }
+    paramList = new HashSet(this.filterMap.keySet()).iterator();
+    while (paramList.hasNext())
+    {
+      localObject = (String)paramList.next();
+      if (!localArrayList.contains(localObject))
       {
-        localObject = (String)paramList.next();
-        if (!localArrayList.contains(localObject))
-        {
-          ((TAVVideoMixEffect.Filter)this.filterMap.get(localObject)).release();
-          this.filterMap.remove(localObject);
-        }
+        ((TAVVideoMixEffect.Filter)this.filterMap.get(localObject)).release();
+        this.filterMap.remove(localObject);
       }
     }
   }
@@ -60,16 +58,17 @@ class VideoMixEffectProxy$FilterProxy
   @Nullable
   private TAVVideoMixEffect.Filter getCacheFilter(TAVVideoMixEffect paramTAVVideoMixEffect)
   {
-    if ((paramTAVVideoMixEffect == null) || (TextUtils.isEmpty(paramTAVVideoMixEffect.effectId()))) {
-      return null;
+    if ((paramTAVVideoMixEffect != null) && (!TextUtils.isEmpty(paramTAVVideoMixEffect.effectId())))
+    {
+      String str = paramTAVVideoMixEffect.effectId();
+      if (this.filterMap.containsKey(str)) {
+        return (TAVVideoMixEffect.Filter)this.filterMap.get(str);
+      }
+      paramTAVVideoMixEffect = paramTAVVideoMixEffect.createFilter();
+      this.filterMap.put(str, paramTAVVideoMixEffect);
+      return paramTAVVideoMixEffect;
     }
-    String str = paramTAVVideoMixEffect.effectId();
-    if (this.filterMap.containsKey(str)) {
-      return (TAVVideoMixEffect.Filter)this.filterMap.get(str);
-    }
-    paramTAVVideoMixEffect = paramTAVVideoMixEffect.createFilter();
-    this.filterMap.put(str, paramTAVVideoMixEffect);
-    return paramTAVVideoMixEffect;
+    return null;
   }
   
   private void notifyOnEffectRemove()
@@ -82,37 +81,33 @@ class VideoMixEffectProxy$FilterProxy
     if (!(paramTAVVideoMixEffect instanceof VideoMixEffectProxy)) {
       return null;
     }
-    Object localObject = ((VideoMixEffectProxy)paramTAVVideoMixEffect).getEffects();
-    if ((((VideoMixEffectProxy)paramTAVVideoMixEffect).isAutoCheckEffectRemove()) || (this.onEffectRemove)) {
+    paramTAVVideoMixEffect = (VideoMixEffectProxy)paramTAVVideoMixEffect;
+    Object localObject = paramTAVVideoMixEffect.getEffects();
+    if ((paramTAVVideoMixEffect.isAutoCheckEffectRemove()) || (this.onEffectRemove)) {
       checkRuntimeRelease((List)localObject);
     }
     Iterator localIterator = ((List)localObject).iterator();
     paramTAVVideoMixEffect = null;
-    TAVVideoMixEffect.Filter localFilter;
-    long l;
     while (localIterator.hasNext())
     {
       localObject = (TAVVideoMixEffect)localIterator.next();
-      localFilter = getCacheFilter((TAVVideoMixEffect)localObject);
+      TAVVideoMixEffect.Filter localFilter = getCacheFilter((TAVVideoMixEffect)localObject);
       if (localFilter != null)
       {
-        l = System.nanoTime();
-        if (!(localFilter instanceof IReportable)) {
-          break label153;
+        long l = System.nanoTime();
+        if ((localFilter instanceof IReportable)) {
+          paramTAVVideoMixEffect = ((IReportable)localFilter).getReportKey();
+        } else {
+          paramTAVVideoMixEffect = null;
         }
+        localObject = localFilter.apply((TAVVideoMixEffect)localObject, paramImageCollection, paramRenderInfo);
+        if (!TextUtils.isEmpty(paramTAVVideoMixEffect)) {
+          this.reportSession.tick(paramTAVVideoMixEffect, System.nanoTime() - l);
+        }
+        paramTAVVideoMixEffect = (TAVVideoMixEffect)localObject;
       }
     }
-    label153:
-    for (paramTAVVideoMixEffect = ((IReportable)localFilter).getReportKey();; paramTAVVideoMixEffect = null)
-    {
-      localObject = localFilter.apply((TAVVideoMixEffect)localObject, paramImageCollection, paramRenderInfo);
-      if (!TextUtils.isEmpty(paramTAVVideoMixEffect)) {
-        this.reportSession.tick(paramTAVVideoMixEffect, System.nanoTime() - l);
-      }
-      paramTAVVideoMixEffect = (TAVVideoMixEffect)localObject;
-      break;
-      return paramTAVVideoMixEffect;
-    }
+    return paramTAVVideoMixEffect;
   }
   
   public String getReportKey()
@@ -129,14 +124,19 @@ class VideoMixEffectProxy$FilterProxy
         ((TAVVideoMixEffect.Filter)localIterator.next()).release();
       }
       this.filterMap.clear();
+      this.reportSession.commit();
+      return;
     }
     finally {}
-    this.reportSession.commit();
+    for (;;)
+    {
+      throw localObject;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.component.effectchain.VideoMixEffectProxy.FilterProxy
  * JD-Core Version:    0.7.0.1
  */

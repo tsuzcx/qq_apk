@@ -12,7 +12,7 @@ class StoryShare$3
   public void a()
   {
     if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).c();
+      StoryShare.a(this.a).b();
     }
   }
   
@@ -20,14 +20,14 @@ class StoryShare$3
   {
     StoryShare.a(this.a).a(paramInt);
     if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).b(paramInt);
+      StoryShare.a(this.a).a(paramInt);
     }
   }
   
   public void b()
   {
     if (StoryShare.a(this.a) != null) {
-      StoryShare.a(this.a).d();
+      StoryShare.a(this.a).c();
     }
   }
   
@@ -40,7 +40,7 @@ class StoryShare$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.StoryShare.3
  * JD-Core Version:    0.7.0.1
  */

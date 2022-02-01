@@ -15,34 +15,59 @@ public class PortalManager$ComboNumber
   
   public String getCowJumpAnimFileName()
   {
-    return this.number + "_anim.png";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.number);
+    localStringBuilder.append("_anim.png");
+    return localStringBuilder.toString();
   }
   
   public String getFlowerImage1FileName()
   {
-    return this.number + "_flower1.png";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.number);
+    localStringBuilder.append("_flower1.png");
+    return localStringBuilder.toString();
   }
   
   public String getFlowerImage2FileName()
   {
-    return this.number + "_flower2.png";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.number);
+    localStringBuilder.append("_flower2.png");
+    return localStringBuilder.toString();
   }
   
   public String getNumberImageFileName()
   {
-    return this.number + "_number.png";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.number);
+    localStringBuilder.append("_number.png");
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("number=").append(this.number).append(", numUrl=").append(this.numberImageUrl).append(", numMd5=").append(this.numberImageMD5).append(", floUrl=").append(this.flowerImageUrl).append(", floMd5=").append(this.flowerImageMD5).append(", flo2Url=").append(this.flowerImage2Url).append(", flo2Md5=").append(this.flowerImage2MD5);
+    localStringBuilder.append("number=");
+    localStringBuilder.append(this.number);
+    localStringBuilder.append(", numUrl=");
+    localStringBuilder.append(this.numberImageUrl);
+    localStringBuilder.append(", numMd5=");
+    localStringBuilder.append(this.numberImageMD5);
+    localStringBuilder.append(", floUrl=");
+    localStringBuilder.append(this.flowerImageUrl);
+    localStringBuilder.append(", floMd5=");
+    localStringBuilder.append(this.flowerImageMD5);
+    localStringBuilder.append(", flo2Url=");
+    localStringBuilder.append(this.flowerImage2Url);
+    localStringBuilder.append(", flo2Md5=");
+    localStringBuilder.append(this.flowerImage2MD5);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.PortalManager.ComboNumber
  * JD-Core Version:    0.7.0.1
  */

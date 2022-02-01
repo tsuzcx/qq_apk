@@ -7,207 +7,203 @@ import com.tencent.util.AnimateUtils;
 class Gallery$FlingRunnable
   implements Runnable
 {
-  private float jdField_a_of_type_Float;
-  private int jdField_a_of_type_Int;
-  private long jdField_a_of_type_Long;
-  private OverScroller jdField_a_of_type_ComTencentWidgetOverScroller;
-  private boolean jdField_a_of_type_Boolean;
-  private float jdField_b_of_type_Float;
-  private int jdField_b_of_type_Int;
-  private float c;
-  private float d;
-  private float e;
+  private float mDeltaRotation;
+  private float mDeltaScale;
+  private float mDurationReciprocal;
+  private int mLastFlingX;
+  private int mLastFlingY;
+  private boolean mScaling;
+  private OverScroller mScroller;
+  private float mStartRotation;
+  private float mStartScale;
+  private long mStartTime;
   
   public Gallery$FlingRunnable(Gallery paramGallery)
   {
-    this.jdField_a_of_type_ComTencentWidgetOverScroller = new OverScroller(paramGallery.getContext());
-    this.jdField_a_of_type_ComTencentWidgetOverScroller.setFriction(0.04F);
+    this.mScroller = new OverScroller(paramGallery.getContext());
+    this.mScroller.setFriction(0.04F);
   }
   
-  private float a(float paramFloat)
+  private void endFling(boolean paramBoolean)
+  {
+    this.mScroller.forceFinished(true);
+    this.mStartTime = -1L;
+    if (this.this$0.mOnScollListener != null) {
+      this.this$0.mOnScollListener.onScrollEnd(this.this$0.mSelectedPosition);
+    }
+    if (this.this$0.mScrollState == 2)
+    {
+      Gallery localGallery = this.this$0;
+      localGallery.onSlotChanged(localGallery.mSelectedPosition, this.this$0.getChildAt(0), this.this$0);
+      Gallery.access$800(this.this$0);
+    }
+    this.this$0.mScrollState = -1;
+  }
+  
+  private float getInterpolation(float paramFloat)
   {
     return AnimateUtils.a(paramFloat);
   }
   
-  private void a()
+  private void startCommon()
   {
     this.this$0.removeCallbacks(this);
   }
   
-  private void b(boolean paramBoolean)
+  public int calcFlingDistance(int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentWidgetOverScroller.forceFinished(true);
-    this.jdField_a_of_type_Long = -1L;
-    if (this.this$0.jdField_a_of_type_ComTencentWidgetGallery$OnScollListener != null) {
-      this.this$0.jdField_a_of_type_ComTencentWidgetGallery$OnScollListener.b(this.this$0.mSelectedPosition);
-    }
-    if (this.this$0.j == 2)
-    {
-      this.this$0.b(this.this$0.mSelectedPosition, this.this$0.getChildAt(0), this.this$0);
-      Gallery.b(this.this$0);
-    }
-    this.this$0.j = -1;
-  }
-  
-  public int a(int paramInt1, int paramInt2)
-  {
-    this.jdField_a_of_type_ComTencentWidgetOverScroller.fling(paramInt1, 0, paramInt2, 0, -2147483648, 2147483647, 0, 0);
-    return this.jdField_a_of_type_ComTencentWidgetOverScroller.getFinalX();
-  }
-  
-  public void a(int paramInt1, int paramInt2)
-  {
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {}
-    do
-    {
-      return;
-      a();
-      this.jdField_a_of_type_Int = 0;
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_a_of_type_ComTencentWidgetOverScroller.startScroll(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
-      this.this$0.post(this);
-    } while (this.this$0.jdField_a_of_type_ComTencentWidgetGallery$OnScollListener == null);
-    this.this$0.jdField_a_of_type_ComTencentWidgetGallery$OnScollListener.a(this.this$0.mSelectedPosition);
-  }
-  
-  public void a(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
-  {
-    if ((paramInt1 == 0) && (paramInt2 == 0) && (paramFloat1 == paramFloat2) && (paramFloat3 == paramFloat4)) {
-      return;
-    }
-    a();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentWidgetOverScroller.startScroll(0, 0, paramInt1, paramInt2, Gallery.b(this.this$0));
-    this.this$0.post(this);
-    this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-    this.jdField_a_of_type_Float = paramFloat1;
-    this.jdField_b_of_type_Float = (paramFloat2 - paramFloat1);
-    this.e = (1.0F / Gallery.b(this.this$0));
-    this.c = paramFloat3;
-    this.d = (paramFloat4 - paramFloat3);
-  }
-  
-  public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
-  {
-    if ((paramInt1 == 0) && (paramInt2 == 0)) {
-      return;
-    }
-    a();
-    this.jdField_a_of_type_Int = 0;
-    this.jdField_b_of_type_Int = 0;
-    if (AnimationUtils.currentAnimationTimeMillis() - this.this$0.jdField_a_of_type_Long > 15L) {
-      this.jdField_a_of_type_ComTencentWidgetOverScroller.fling(this.this$0.jdField_a_of_type_Long + 15L, 0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
-    }
-    for (;;)
-    {
-      this.this$0.post(this);
-      if (this.this$0.jdField_a_of_type_ComTencentWidgetGallery$OnScollListener == null) {
-        break;
-      }
-      this.this$0.jdField_a_of_type_ComTencentWidgetGallery$OnScollListener.a(this.this$0.mSelectedPosition);
-      return;
-      this.jdField_a_of_type_ComTencentWidgetOverScroller.fling(0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.a(this.this$0), Gallery.a(this.this$0));
-    }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    this.this$0.removeCallbacks(this);
-    b(paramBoolean);
+    this.mScroller.fling(paramInt1, 0, paramInt2, 0, -2147483648, 2147483647, 0, 0);
+    return this.mScroller.getFinalX();
   }
   
   public void run()
   {
-    if (this.this$0.jdField_a_of_type_AndroidViewView == null) {
+    if (this.this$0.mSelectedChild == null) {
       return;
     }
-    if (this.this$0.mItemCount == 0)
+    int i = this.this$0.mItemCount;
+    boolean bool1 = true;
+    if (i == 0)
     {
-      b(true);
+      endFling(true);
       return;
     }
-    Gallery.b(this.this$0, false);
-    Object localObject = this.jdField_a_of_type_ComTencentWidgetOverScroller;
-    boolean bool = ((OverScroller)localObject).computeScrollOffset();
-    int i = ((OverScroller)localObject).getCurrX();
+    Gallery.access$902(this.this$0, false);
+    Object localObject = this.mScroller;
+    boolean bool2 = ((OverScroller)localObject).computeScrollOffset();
+    i = ((OverScroller)localObject).getCurrX();
     int j = ((OverScroller)localObject).getCurrY();
-    int k = this.jdField_a_of_type_Int;
-    int m = this.jdField_b_of_type_Int;
+    int k = this.mLastFlingX;
+    int m = this.mLastFlingY;
     float f2;
-    float f3;
-    if (this.jdField_a_of_type_Long >= 0L)
+    float f1;
+    if (this.mStartTime >= 0L)
     {
-      int n = (int)(AnimationUtils.currentAnimationTimeMillis() - this.jdField_a_of_type_Long);
-      if (n >= Gallery.b(this.this$0)) {
-        break label273;
+      int n = (int)(AnimationUtils.currentAnimationTimeMillis() - this.mStartTime);
+      if (n < Gallery.access$700(this.this$0))
+      {
+        f2 = getInterpolation(n * this.mDurationReciprocal);
+        f1 = this.mStartScale + this.mDeltaScale * f2;
+        f2 = this.mStartRotation + f2 * this.mDeltaRotation;
       }
-      f1 = a(n * this.e);
-      f2 = this.jdField_a_of_type_Float + this.jdField_b_of_type_Float * f1;
-      f3 = this.c;
+      else
+      {
+        f1 = this.mStartScale;
+        f1 = this.mDeltaScale + f1;
+        f2 = this.mStartRotation;
+        f2 = this.mDeltaRotation + f2;
+      }
+      localObject = this.this$0;
+      Gallery.access$1000((Gallery)localObject, ((Gallery)localObject).mSelectedChild, f1);
+      localObject = this.this$0;
+      Gallery.access$1100((Gallery)localObject, ((Gallery)localObject).mSelectedChild, f2);
+      if (!this.mScaling) {
+        this.mScaling = true;
+      }
     }
-    for (float f1 = f1 * this.d + f3;; f1 = this.c + this.d)
+    this.this$0.trackMotionScroll(i - k, j - m, false);
+    if ((bool2) && (!Gallery.access$900(this.this$0)))
     {
-      Gallery.a(this.this$0, this.this$0.jdField_a_of_type_AndroidViewView, f2);
-      Gallery.b(this.this$0, this.this$0.jdField_a_of_type_AndroidViewView, f1);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_Boolean = true;
-      }
-      this.this$0.a(i - k, j - m, false);
-      if ((!bool) || (Gallery.a(this.this$0))) {
-        break label298;
-      }
-      this.jdField_a_of_type_Int = i;
-      this.jdField_b_of_type_Int = j;
+      this.mLastFlingX = i;
+      this.mLastFlingY = j;
       this.this$0.post(this);
-      if ((this.this$0.j != 1) || (!this.this$0.a())) {
-        break;
+      if ((this.this$0.mScrollState == 1) && (this.this$0.canUpdateRegionRect())) {
+        this.this$0.updateShowArea(true, 1);
       }
-      this.this$0.a(true, 1);
-      return;
-      label273:
-      f1 = this.jdField_a_of_type_Float;
-      f2 = this.jdField_b_of_type_Float + f1;
     }
-    label298:
-    if (this.jdField_a_of_type_Boolean)
+    else
     {
-      this.jdField_a_of_type_Boolean = false;
-      if (this.this$0.a())
+      if (this.mScaling)
       {
-        f1 = 1.0F;
-        if (this.this$0.jdField_a_of_type_AndroidViewView.getTag(2131296385) != null) {
-          f1 = ((Float)this.this$0.jdField_a_of_type_AndroidViewView.getTag(2131296385)).floatValue();
+        this.mScaling = false;
+        if (this.this$0.canUpdateRegionRect())
+        {
+          f1 = 1.0F;
+          if (this.this$0.mSelectedChild.getTag(2131296385) != null) {
+            f1 = ((Float)this.this$0.mSelectedChild.getTag(2131296385)).floatValue();
+          }
+          localObject = this.this$0;
+          f2 = ((Gallery)localObject).getChildScale(((Gallery)localObject).mSelectedChild);
+          localObject = this.this$0;
+          if (f2 - f1 <= 1.E-005D) {
+            bool1 = false;
+          }
+          Gallery.access$1200((Gallery)localObject, bool1);
         }
-        f2 = this.this$0.a(this.this$0.jdField_a_of_type_AndroidViewView);
+      }
+      else if (this.this$0.mScrollState == 1)
+      {
         localObject = this.this$0;
-        if (f2 - f1 <= 1.E-005D) {
-          break label404;
+        ((Gallery)localObject).mScrollDirection = 0;
+        if (((Gallery)localObject).canUpdateRegionRect()) {
+          Gallery.access$1200(this.this$0, true);
         }
-        bool = true;
-        Gallery.a((Gallery)localObject, bool);
       }
+      endFling(false);
     }
-    for (;;)
-    {
-      b(false);
+  }
+  
+  public void startUsingDistance(int paramInt1, int paramInt2)
+  {
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
       return;
-      label404:
-      bool = false;
-      break;
-      if (this.this$0.j == 1)
-      {
-        this.this$0.k = 0;
-        if (this.this$0.a()) {
-          Gallery.a(this.this$0, true);
-        }
-      }
     }
+    startCommon();
+    this.mLastFlingX = 0;
+    this.mLastFlingY = 0;
+    this.mScroller.startScroll(0, 0, paramInt1, paramInt2, Gallery.access$700(this.this$0));
+    this.this$0.post(this);
+    if (this.this$0.mOnScollListener != null) {
+      this.this$0.mOnScollListener.onScrollStart(this.this$0.mSelectedPosition);
+    }
+  }
+  
+  public void startUsingDistance(int paramInt1, int paramInt2, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
+  {
+    if ((paramInt1 == 0) && (paramInt2 == 0) && (paramFloat1 == paramFloat2) && (paramFloat3 == paramFloat4)) {
+      return;
+    }
+    startCommon();
+    this.mLastFlingX = 0;
+    this.mLastFlingY = 0;
+    this.mScroller.startScroll(0, 0, paramInt1, paramInt2, Gallery.access$700(this.this$0));
+    this.this$0.post(this);
+    this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
+    this.mStartScale = paramFloat1;
+    this.mDeltaScale = (paramFloat2 - paramFloat1);
+    this.mDurationReciprocal = (1.0F / Gallery.access$700(this.this$0));
+    this.mStartRotation = paramFloat3;
+    this.mDeltaRotation = (paramFloat4 - paramFloat3);
+  }
+  
+  public void startUsingVelocity(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6)
+  {
+    if ((paramInt1 == 0) && (paramInt2 == 0)) {
+      return;
+    }
+    startCommon();
+    this.mLastFlingX = 0;
+    this.mLastFlingY = 0;
+    if (AnimationUtils.currentAnimationTimeMillis() - this.this$0.lastMoveTime > 15L) {
+      this.mScroller.fling(15L + this.this$0.lastMoveTime, 0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.access$600(this.this$0), Gallery.access$600(this.this$0));
+    } else {
+      this.mScroller.fling(0, 0, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramInt6, Gallery.access$600(this.this$0), Gallery.access$600(this.this$0));
+    }
+    this.this$0.post(this);
+    if (this.this$0.mOnScollListener != null) {
+      this.this$0.mOnScollListener.onScrollStart(this.this$0.mSelectedPosition);
+    }
+  }
+  
+  public void stop(boolean paramBoolean)
+  {
+    this.this$0.removeCallbacks(this);
+    endFling(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.Gallery.FlingRunnable
  * JD-Core Version:    0.7.0.1
  */

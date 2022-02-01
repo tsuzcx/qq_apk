@@ -17,13 +17,14 @@ import com.tencent.falco.base.floatwindow.permission.romutils.MiuiRomUtils;
 import com.tencent.falco.base.floatwindow.permission.romutils.OppoRomUtils;
 import com.tencent.falco.base.floatwindow.permission.romutils.PhoneRomUtils;
 import com.tencent.falco.base.floatwindow.permission.romutils.QikuRomUtils;
+import com.tencent.falco.base.floatwindow.permission.romutils.VivoRomUtils;
 import com.tencent.falco.base.floatwindow.utils.Logger;
 import kotlin.Metadata;
 import kotlin.jvm.JvmStatic;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/falco/base/floatwindow/permission/FWPermission;", "", "()V", "TAG", "", "requestCode", "", "commonPermissionApply", "", "fragment", "Landroid/app/Fragment;", "commonPermissionApplyInternal", "commonPermissionCheck", "", "context", "Landroid/content/Context;", "hasPermission", "isResult", "huaweiPermissionCheck", "meizuPermissionCheck", "miuiPermissionCheck", "oppoPermissionCheck", "qikuPermissionCheck", "requestPermission", "activity", "Landroid/app/Activity;", "onPermissionResult", "Lcom/tencent/falco/base/floatwindow/interfaces/OnFloatWindowPermissionListener;", "floatwindow_release"}, k=1, mv={1, 1, 15})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/falco/base/floatwindow/permission/FWPermission;", "", "()V", "TAG", "", "requestCode", "", "commonPermissionApply", "", "fragment", "Landroid/app/Fragment;", "commonPermissionApplyInternal", "commonPermissionCheck", "", "context", "Landroid/content/Context;", "hasPermission", "isResult", "huaweiPermissionCheck", "meizuPermissionCheck", "miuiPermissionCheck", "oppoPermissionCheck", "qikuPermissionCheck", "requestPermission", "activity", "Landroid/app/Activity;", "onPermissionResult", "Lcom/tencent/falco/base/floatwindow/interfaces/OnFloatWindowPermissionListener;", "vivoPermissionCheck", "floatwindow_release"}, k=1, mv={1, 1, 15})
 public final class FWPermission
 {
   public static final FWPermission INSTANCE = new FWPermission();
@@ -35,6 +36,11 @@ public final class FWPermission
     if (PhoneRomUtils.INSTANCE.checkIsMeizuRom())
     {
       MeizuRomUtils.applyPermission(paramFragment);
+      return;
+    }
+    if (PhoneRomUtils.INSTANCE.checkIsVivoRom())
+    {
+      VivoRomUtils.a((Context)paramFragment.getActivity());
       return;
     }
     if (Build.VERSION.SDK_INT >= 23) {
@@ -59,10 +65,12 @@ public final class FWPermission
     try
     {
       Intent localIntent = new Intent("android.settings.action.MANAGE_OVERLAY_PERMISSION");
-      StringBuilder localStringBuilder = new StringBuilder().append("package:");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("package:");
       Activity localActivity = paramFragment.getActivity();
       Intrinsics.checkExpressionValueIsNotNull(localActivity, "fragment.activity");
-      localIntent.setData(Uri.parse(localActivity.getPackageName()));
+      localStringBuilder.append(localActivity.getPackageName());
+      localIntent.setData(Uri.parse(localStringBuilder.toString()));
       paramFragment.startActivityForResult(localIntent, 100);
       return;
     }
@@ -77,6 +85,9 @@ public final class FWPermission
   {
     if (PhoneRomUtils.INSTANCE.checkIsMeizuRom()) {
       return meizuPermissionCheck(paramContext);
+    }
+    if (PhoneRomUtils.INSTANCE.checkIsVivoRom()) {
+      return vivoPermissionCheck(paramContext);
     }
     return Settings.canDrawOverlays(paramContext);
   }
@@ -188,10 +199,15 @@ public final class FWPermission
     }
     INSTANCE.commonPermissionApply(paramFragment);
   }
+  
+  private final boolean vivoPermissionCheck(Context paramContext)
+  {
+    return VivoRomUtils.a(paramContext);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.FWPermission
  * JD-Core Version:    0.7.0.1
  */

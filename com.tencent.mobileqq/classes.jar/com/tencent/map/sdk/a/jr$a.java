@@ -17,7 +17,7 @@ public final class jr$a
     super(paramContext);
     this.b.setAntiAlias(true);
     this.b.setColor(-16777216);
-    this.b.setStrokeWidth(1.0F * jr.d(paramjr));
+    this.b.setStrokeWidth(jr.d(paramjr) * 1.0F);
     this.b.setStyle(Paint.Style.STROKE);
     this.c = new Paint(65);
     this.c.setStyle(Paint.Style.FILL);
@@ -28,23 +28,27 @@ public final class jr$a
   {
     super.draw(paramCanvas);
     int j = getHeight();
-    int i = (int)(6.0F * jr.d(this.a));
+    int i = (int)(jr.d(this.a) * 6.0F);
     j /= 2;
     paramCanvas.drawPaint(this.c);
-    paramCanvas.drawLine(i, j, jr.e(this.a) + i, j, this.b);
-    paramCanvas.drawLine(i, j - jr.d(this.a) * 3.0F, i, j + 1, this.b);
-    paramCanvas.drawLine(jr.e(this.a) + i, j - jr.d(this.a) * 3.0F, jr.e(this.a) + i, j + 1, this.b);
+    float f1 = i;
+    float f2 = j;
+    paramCanvas.drawLine(f1, f2, jr.e(this.a) + i, f2, this.b);
+    float f3 = jr.d(this.a);
+    float f4 = j + 1;
+    paramCanvas.drawLine(f1, f2 - f3 * 3.0F, f1, f4, this.b);
+    paramCanvas.drawLine(jr.e(this.a) + i, f2 - jr.d(this.a) * 3.0F, i + jr.e(this.a), f4, this.b);
   }
   
-  public final void onMeasure(int paramInt1, int paramInt2)
+  protected final void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    setMeasuredDimension(Math.min(Math.round(jr.e(this.a) + 12.0F * jr.d(this.a)), jr.f(this.a) / 2), Math.round(jr.g(this.a) * jr.d(this.a)));
+    setMeasuredDimension(Math.min(Math.round(jr.e(this.a) + jr.d(this.a) * 12.0F), jr.f(this.a) / 2), Math.round(jr.g(this.a) * jr.d(this.a)));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jr.a
  * JD-Core Version:    0.7.0.1
  */

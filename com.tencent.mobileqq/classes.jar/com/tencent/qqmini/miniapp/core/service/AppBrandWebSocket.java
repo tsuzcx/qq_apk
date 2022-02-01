@@ -71,35 +71,42 @@ public class AppBrandWebSocket
       if ("[]".equals(localObject)) {
         paramJSONObject = "";
       }
-      if (this.serviceEventListener != null)
+      localObject = this.serviceEventListener;
+      if (localObject != null)
       {
-        this.serviceEventListener.onServiceEvent(str1, str2, jsStringToJavaIntArray(paramJSONObject));
+        ((ServiceEventListener)localObject).onServiceEvent(str1, str2, jsStringToJavaIntArray(paramJSONObject));
         sendCallInterfaceResultCmd(l, "");
-        QMLog.d("AppBrandRemoteService", "--- send callinterfaceResult   publishHandler: " + l);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("--- send callinterfaceResult   publishHandler: ");
+        paramJSONObject.append(l);
+        QMLog.d("AppBrandRemoteService", paramJSONObject.toString());
       }
     }
-    int i;
-    do
+    else if ("invokeHandler".equals(str1))
     {
-      do
-      {
-        return;
-      } while (!"invokeHandler".equals(str1));
       localObject = paramJSONObject.getString(0);
       str1 = paramJSONObject.getString(1);
-      i = paramJSONObject.getInt(2);
-    } while (this.serviceEventListener == null);
-    sendCallInterfaceResultCmd(l, this.serviceEventListener.onServiceNativeRequest((String)localObject, str1, i));
-    QMLog.d("AppBrandRemoteService", "--- send callinterfaceResult   invokeHandler: " + l);
+      int i = paramJSONObject.getInt(2);
+      paramJSONObject = this.serviceEventListener;
+      if (paramJSONObject != null)
+      {
+        sendCallInterfaceResultCmd(l, paramJSONObject.onServiceNativeRequest((String)localObject, str1, i));
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("--- send callinterfaceResult   invokeHandler: ");
+        paramJSONObject.append(l);
+        QMLog.d("AppBrandRemoteService", paramJSONObject.toString());
+      }
+    }
   }
   
   private void debugMessageDomOp(JSONObject paramJSONObject)
   {
-    paramJSONObject = paramJSONObject.getJSONObject("data");
-    String str = paramJSONObject.getString("params");
-    int i = paramJSONObject.getInt("webview_id");
-    if (this.serviceEventListener != null) {
-      this.serviceEventListener.onServiceEvent("remoteDebugCommand", str, new int[] { i });
+    Object localObject = paramJSONObject.getJSONObject("data");
+    paramJSONObject = ((JSONObject)localObject).getString("params");
+    int i = ((JSONObject)localObject).getInt("webview_id");
+    localObject = this.serviceEventListener;
+    if (localObject != null) {
+      ((ServiceEventListener)localObject).onServiceEvent("remoteDebugCommand", paramJSONObject, new int[] { i });
     }
   }
   
@@ -128,15 +135,17 @@ public class AppBrandWebSocket
         evaluateJsEx(paramJSONObject.js, paramJSONObject.valueCallback);
       }
     }
-    if (this.mServiceInitFinishListener != null) {
-      this.mServiceInitFinishListener.onLoadFinish();
+    paramJSONObject = this.mServiceInitFinishListener;
+    if (paramJSONObject != null) {
+      paramJSONObject.onLoadFinish();
     }
   }
   
   public static int[] jsStringToJavaIntArray(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     int i = 0;
-    if (TextUtils.isEmpty(paramString)) {
+    if (bool) {
       return new int[0];
     }
     paramString = paramString.replaceAll("\\[", "").replaceAll("\\]", "").replaceAll("\\s", "").split(",");
@@ -147,14 +156,14 @@ public class AppBrandWebSocket
       try
       {
         arrayOfInt[i] = Integer.parseInt(paramString[i]);
-        label65:
+        label67:
         i += 1;
         continue;
         return arrayOfInt;
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        break label65;
+        break label67;
       }
     }
   }
@@ -163,50 +172,48 @@ public class AppBrandWebSocket
   {
     paramJSONObject = paramJSONObject.getJSONArray("debug_message");
     int i = 0;
-    if (i < paramJSONObject.length())
+    while (i < paramJSONObject.length())
     {
       JSONObject localJSONObject = (JSONObject)paramJSONObject.get(i);
       sendArkCmd(localJSONObject.getLong("seq"));
       String str = localJSONObject.getString("category");
       if (str.equals("evaluateJavascriptResult")) {
         debugMessageEvaluateJavascriptResult(localJSONObject);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        if (str.equals("callInterface")) {
-          debugMessageCallInterface(localJSONObject);
-        } else if (str.equals("domOp")) {
-          debugMessageDomOp(localJSONObject);
-        } else if (str.equals("setupContextResult")) {
-          debugMessageSetupContextResult(localJSONObject);
-        } else if (str.equals("breakpoint")) {
-          if (localJSONObject.getJSONObject("data").getInt("is_hit") == 0) {
-            AppStateEvent.obtain(101).notifyRuntime(this.miniAppContext);
-          } else {
-            AppStateEvent.obtain(100).notifyRuntime(this.miniAppContext);
-          }
+      } else if (str.equals("callInterface")) {
+        debugMessageCallInterface(localJSONObject);
+      } else if (str.equals("domOp")) {
+        debugMessageDomOp(localJSONObject);
+      } else if (str.equals("setupContextResult")) {
+        debugMessageSetupContextResult(localJSONObject);
+      } else if (str.equals("breakpoint")) {
+        if (localJSONObject.getJSONObject("data").getInt("is_hit") == 0) {
+          AppStateEvent.obtain(101).notifyRuntime(this.miniAppContext);
+        } else {
+          AppStateEvent.obtain(100).notifyRuntime(this.miniAppContext);
         }
       }
+      i += 1;
     }
   }
   
   private void processSocketMessage(JSONObject paramJSONObject)
   {
     String str = paramJSONObject.getString("code");
-    if ((str.equals("0002")) || (str.equals("0004")))
+    if ((!str.equals("0002")) && (!str.equals("0004")))
+    {
+      if (str.equals("1002"))
+      {
+        QMLog.d("AppBrandRemoteService", "enter room failed ");
+        ProcessUtil.exitProcess(this.miniAppContext);
+      }
+    }
+    else
     {
       paramJSONObject.getString("sessionId");
       this.hasEnterRoom = true;
       sendSetupContextCmd(this.mServiceInitFinishListener);
       evaluateJs("WeixinJSBridge.subscribeHandler('onWxConfigReady');", null);
     }
-    while (!str.equals("1002")) {
-      return;
-    }
-    QMLog.d("AppBrandRemoteService", "enter room failed ");
-    ProcessUtil.exitProcess(this.miniAppContext);
   }
   
   public void evaluateJs(String paramString, ValueCallback paramValueCallback)
@@ -239,19 +246,23 @@ public class AppBrandWebSocket
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("call_id", paramLong);
-      if (TextUtils.isEmpty(paramString))
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("call_id", paramLong);
+      boolean bool = TextUtils.isEmpty(paramString);
+      if (bool)
       {
-        localJSONObject.put("ret", "{}");
-        return localJSONObject;
+        ((JSONObject)localObject).put("ret", "{}");
+        return localObject;
       }
-      localJSONObject.put("ret", paramString);
-      return localJSONObject;
+      ((JSONObject)localObject).put("ret", paramString);
+      return localObject;
     }
     catch (Exception paramString)
     {
-      QMLog.d("AppBrandRemoteService", "getCallInterfaceResultData error:" + paramString);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getCallInterfaceResultData error:");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.d("AppBrandRemoteService", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -260,13 +271,13 @@ public class AppBrandWebSocket
   {
     try
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      localJSONObject1.put("appId", this.mApkgInfo.appId);
-      localJSONObject1.put("icon", this.mApkgInfo.iconUrl);
-      localJSONObject1.put("nickname", this.mApkgInfo.apkgName);
-      JSONObject localJSONObject2 = new JSONObject(this.mApkgInfo.mConfigStr);
-      localJSONObject2.put("appContactInfo", new JSONObject("{'operationInfo':{'jsonInfo':{'apiAvailable':{'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0}}}}"));
-      localJSONObject2.remove("preload");
+      Object localObject3 = new JSONObject();
+      ((JSONObject)localObject3).put("appId", this.mApkgInfo.appId);
+      ((JSONObject)localObject3).put("icon", this.mApkgInfo.iconUrl);
+      ((JSONObject)localObject3).put("nickname", this.mApkgInfo.apkgName);
+      Object localObject4 = new JSONObject(this.mApkgInfo.mConfigStr);
+      ((JSONObject)localObject4).put("appContactInfo", new JSONObject("{'operationInfo':{'jsonInfo':{'apiAvailable':{'navigateToMiniProgramConfig':0,'shareCustomImageUrl':1,'authorize':0,'navigateToMiniProgram':1,'getUserInfo':0,'openSetting':0}}}}"));
+      ((JSONObject)localObject4).remove("preload");
       Object localObject2 = "release";
       Object localObject1 = localObject2;
       if (this.miniAppContext != null)
@@ -277,22 +288,63 @@ public class AppBrandWebSocket
         }
       }
       localObject2 = QUAUtil.getPlatformQUA();
-      localObject2 = String.format("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nif (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s'); __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='" + (String)localObject1 + "';__qqConfig.QUA='" + (String)localObject2 + "';var __wxIndexPage = 'page/index/index.html';", new Object[] { localJSONObject2.toString(), localJSONObject1.toString() });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("function extend(obj, src) {\n    for (var key in src) {\n        if (src.hasOwnProperty(key)) obj[key] = src[key];\n    }\n    return obj;\n}\nif (typeof __qqConfig === 'undefined') var __qqConfig = {};var __tempConfig = JSON.parse('%1$s'); __qqConfig = extend(__qqConfig, __tempConfig);__qqConfig.accountInfo=JSON.parse('%2$s'); __qqConfig.envVersion='");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("';__qqConfig.QUA='");
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append("';var __wxIndexPage = 'page/index/index.html';");
+      localObject2 = String.format(localStringBuilder.toString(), new Object[] { ((JSONObject)localObject4).toString(), ((JSONObject)localObject3).toString() });
+      localObject3 = StorageUtil.getPreference();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append(this.miniAppContext.getMiniAppInfo().appId);
+      ((StringBuilder)localObject4).append("_debug");
       localObject1 = localObject2;
-      if (Boolean.valueOf(StorageUtil.getPreference().getBoolean(this.miniAppContext.getMiniAppInfo().appId + "_debug", false)).booleanValue()) {
-        localObject1 = (String)localObject2 + "__qqConfig.debug =true;";
+      if (Boolean.valueOf(((SharedPreferences)localObject3).getBoolean(((StringBuilder)localObject4).toString(), false)).booleanValue())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append("__qqConfig.debug =true;");
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
       localObject2 = localObject1;
       if (this.mEmbeddedState != null)
       {
-        localObject1 = (String)localObject1 + "__qqConfig.useXWebVideo=" + this.mEmbeddedState.isEnableEmbeddedVideo() + ";";
-        QMLog.d("miniapp-embedded", "x5 service enableEmbeddedVideo : " + this.mEmbeddedState.isEnableEmbeddedVideo());
-        localObject1 = (String)localObject1 + "__qqConfig.useXWebLive=" + this.mEmbeddedState.isEnableEmbeddedLive() + ";";
-        QMLog.d("miniapp-embedded", "x5 service enableEmbeddedLive : " + this.mEmbeddedState.isEnableEmbeddedLive());
-        localObject2 = (String)localObject1 + "__qqConfig.useXWebElement=" + this.mEmbeddedState.isEnableEmbeddedElement() + ";";
-        QMLog.d("miniapp-embedded", "x5 service enableEmbeddedElement : " + this.mEmbeddedState.isEnableEmbeddedElement());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("__qqConfig.useXWebVideo=");
+        ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedVideo());
+        ((StringBuilder)localObject2).append(";");
+        localObject1 = ((StringBuilder)localObject2).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("x5 service enableEmbeddedVideo : ");
+        ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedVideo());
+        QMLog.d("miniapp-embedded", ((StringBuilder)localObject2).toString());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("__qqConfig.useXWebLive=");
+        ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedLive());
+        ((StringBuilder)localObject2).append(";");
+        localObject1 = ((StringBuilder)localObject2).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("x5 service enableEmbeddedLive : ");
+        ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedLive());
+        QMLog.d("miniapp-embedded", ((StringBuilder)localObject2).toString());
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("__qqConfig.useXWebElement=");
+        ((StringBuilder)localObject2).append(this.mEmbeddedState.isEnableEmbeddedElement());
+        ((StringBuilder)localObject2).append(";");
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("x5 service enableEmbeddedElement : ");
+        ((StringBuilder)localObject1).append(this.mEmbeddedState.isEnableEmbeddedElement());
+        QMLog.d("miniapp-embedded", ((StringBuilder)localObject1).toString());
       }
-      localObject1 = (String)localObject2 + "if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};";
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("if (typeof WeixinJSBridge != 'undefined' && typeof WeixinJSBridge.subscribeHandler == 'function') {WeixinJSBridge.subscribeHandler('onWxConfigReady')};");
+      localObject1 = ((StringBuilder)localObject1).toString();
       return localObject1;
     }
     catch (JSONException localJSONException)
@@ -327,14 +379,17 @@ public class AppBrandWebSocket
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("params", paramString);
-      localJSONObject.put("webview_id", paramInt);
-      return localJSONObject;
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("params", paramString);
+      ((JSONObject)localObject).put("webview_id", paramInt);
+      return localObject;
     }
     catch (Exception paramString)
     {
-      QMLog.d("AppBrandRemoteService", "getDomEventData error:" + paramString);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getDomEventData error:");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.d("AppBrandRemoteService", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -357,17 +412,26 @@ public class AppBrandWebSocket
   
   int getNetworkType()
   {
-    int i = NetworkUtil.getActiveNetworkType(this.miniAppContext.getContext());
-    if (i == 5) {
+    int j = NetworkUtil.getActiveNetworkType(this.miniAppContext.getContext());
+    if (j == 5) {
       return 1;
     }
-    if (i == 1) {
+    if (j == 1) {
       return 5;
     }
-    if ((i == 2) || (i == 3) || (i == 4)) {
-      return i;
+    int i = j;
+    if (j != 2)
+    {
+      i = j;
+      if (j != 3)
+      {
+        if (j == 4) {
+          return j;
+        }
+        i = 0;
+      }
     }
-    return 0;
+    return i;
   }
   
   public int getPingCount()
@@ -403,7 +467,10 @@ public class AppBrandWebSocket
     }
     catch (Exception paramString1)
     {
-      QMLog.d("AppBrandRemoteService", "send Cmd error: " + paramString1);
+      paramString2 = new StringBuilder();
+      paramString2.append("send Cmd error: ");
+      paramString2.append(paramString1);
+      QMLog.d("AppBrandRemoteService", paramString2.toString());
     }
     return "";
   }
@@ -426,7 +493,10 @@ public class AppBrandWebSocket
     }
     catch (Exception localException)
     {
-      QMLog.d("AppBrandRemoteService", "getSetupContexData error:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSetupContexData error:");
+      localStringBuilder.append(localException);
+      QMLog.d("AppBrandRemoteService", localStringBuilder.toString());
     }
     return null;
   }
@@ -438,40 +508,45 @@ public class AppBrandWebSocket
   
   protected void processMessage(String paramString)
   {
-    JSONObject localJSONObject;
     try
     {
-      localJSONObject = new JSONObject(paramString);
-      paramString = localJSONObject.getString("cmd");
-      localJSONObject = localJSONObject.getJSONObject("data");
+      localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).getString("cmd");
+      localObject = ((JSONObject)localObject).getJSONObject("data");
       if (paramString.equals("DebugPing"))
       {
-        sendPongCmd(localJSONObject.getLong("ping_id"));
+        sendPongCmd(((JSONObject)localObject).getLong("ping_id"));
         return;
       }
       if (paramString.equals("SocketMessage"))
       {
-        processSocketMessage(localJSONObject);
+        processSocketMessage((JSONObject)localObject);
         return;
       }
+      if (paramString.equals("DebugMessageMaster"))
+      {
+        processDebugMesage((JSONObject)localObject);
+        return;
+      }
+      paramString.equals("DebugArkMaster");
+      return;
     }
     catch (Exception paramString)
     {
-      QMLog.e("AppBrandRemoteService", "cmd error: " + paramString);
-      return;
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cmd error: ");
+      ((StringBuilder)localObject).append(paramString);
+      QMLog.e("AppBrandRemoteService", ((StringBuilder)localObject).toString());
     }
-    if (paramString.equals("DebugMessageMaster"))
-    {
-      processDebugMesage(localJSONObject);
-      return;
-    }
-    boolean bool = paramString.equals("DebugArkMaster");
-    if (bool) {}
   }
   
   public void sendArkCmd(long paramLong)
   {
-    sendStringMessage("{\"cmd\":\"DebugArkClient\",\"data\":{\"ark_message\":[{\"ark\":" + paramLong + "}]}}");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"cmd\":\"DebugArkClient\",\"data\":{\"ark_message\":[{\"ark\":");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("}]}}");
+    sendStringMessage(localStringBuilder.toString());
   }
   
   public void sendCallInterfaceResultCmd(long paramLong, String paramString)
@@ -486,12 +561,22 @@ public class AppBrandWebSocket
   
   public void sendPingCmd(long paramLong)
   {
-    sendStringMessage("{ \"cmd\": \"DebugPong\", \"data\": { \"ping_id\": " + paramLong + " }}");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{ \"cmd\": \"DebugPong\", \"data\": { \"ping_id\": ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(" }}");
+    sendStringMessage(localStringBuilder.toString());
   }
   
   public void sendPongCmd(long paramLong)
   {
-    sendStringMessage("{ \"cmd\": \"DebugPong\", \"data\": { \"ping_id\": " + paramLong + ",\"network_type\":" + getNetworkType() + " }}");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{ \"cmd\": \"DebugPong\", \"data\": { \"ping_id\": ");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(",\"network_type\":");
+    localStringBuilder.append(getNetworkType());
+    localStringBuilder.append(" }}");
+    sendStringMessage(localStringBuilder.toString());
   }
   
   public void sendSetupContextCmd(AppBrandRemoteService.OnLoadServiceWebvieJsListener paramOnLoadServiceWebvieJsListener)
@@ -506,13 +591,19 @@ public class AppBrandWebSocket
       if (paramOnLoadServiceWebvieJsListener != null)
       {
         this.mServiceInitFinishListener = paramOnLoadServiceWebvieJsListener;
-        if ((this.hasSetupContextResult) && (this.mServiceInitFinishListener != null)) {
-          this.mServiceInitFinishListener.onLoadFinish();
+        if (this.hasSetupContextResult)
+        {
+          paramOnLoadServiceWebvieJsListener = this.mServiceInitFinishListener;
+          if (paramOnLoadServiceWebvieJsListener != null) {
+            paramOnLoadServiceWebvieJsListener.onLoadFinish();
+          }
         }
       }
-      return;
     }
-    this.mServiceInitFinishListener = paramOnLoadServiceWebvieJsListener;
+    else
+    {
+      this.mServiceInitFinishListener = paramOnLoadServiceWebvieJsListener;
+    }
   }
   
   public void setApkgInfo(ApkgInfo paramApkgInfo)
@@ -527,7 +618,7 @@ public class AppBrandWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.service.AppBrandWebSocket
  * JD-Core Version:    0.7.0.1
  */

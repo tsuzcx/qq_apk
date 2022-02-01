@@ -63,15 +63,19 @@ public class RhythmTransitionHelper
     while (i < paramList.size())
     {
       TAVTransitionAutomaticEffect localTAVTransitionAutomaticEffect = (TAVTransitionAutomaticEffect)paramList.get(i);
-      if ((localTAVTransitionAutomaticEffect.isFaceTransition()) && (i + 1 < paramList1.size()))
+      if (localTAVTransitionAutomaticEffect.isFaceTransition())
       {
-        TAVMovieClip localTAVMovieClip1 = (TAVMovieClip)paramList1.get(i);
-        TAVMovieClip localTAVMovieClip2 = (TAVMovieClip)paramList1.get(i + 1);
-        if (((!clipSupportFaceTransition(localTAVMovieClip1)) || (!clipSupportFaceTransition(localTAVMovieClip2))) && (!CollectionUtil.isEmptyList(localTAVTransitionAutomaticEffect.subTransitions)))
+        int j = i + 1;
+        if (j < paramList1.size())
         {
-          localTAVTransitionAutomaticEffect = getFaceTransitionSubTransition(localTAVTransitionAutomaticEffect.subTransitions);
-          paramList.remove(i);
-          paramList.add(i, localTAVTransitionAutomaticEffect);
+          TAVMovieClip localTAVMovieClip1 = (TAVMovieClip)paramList1.get(i);
+          TAVMovieClip localTAVMovieClip2 = (TAVMovieClip)paramList1.get(j);
+          if (((!clipSupportFaceTransition(localTAVMovieClip1)) || (!clipSupportFaceTransition(localTAVMovieClip2))) && (!CollectionUtil.isEmptyList(localTAVTransitionAutomaticEffect.subTransitions)))
+          {
+            localTAVTransitionAutomaticEffect = getFaceTransitionSubTransition(localTAVTransitionAutomaticEffect.subTransitions);
+            paramList.remove(i);
+            paramList.add(i, localTAVTransitionAutomaticEffect);
+          }
         }
       }
       i += 1;
@@ -84,7 +88,8 @@ public class RhythmTransitionHelper
     Object localObject1 = (TransitionEffectParam)this.mTransitionEffectParams.get(paramInt);
     CMTime localCMTime1 = ((TransitionEffectParam)localObject1).getLeftTransitionTime();
     localObject1 = ((TransitionEffectParam)localObject1).getOverlayTime().divide(2.0F);
-    if (paramInt == 0) {
+    if (paramInt == 0)
+    {
       if (localCMTimeRange.getDuration().bigThan(localCMTime1))
       {
         localCMTimeRange.setDuration(localCMTimeRange.getDuration().sub((CMTime)localObject1));
@@ -92,39 +97,47 @@ public class RhythmTransitionHelper
         paramTAVMovieClipEx1.setCurrentReverse(true);
       }
     }
-    while (paramTAVMovieClipEx2 == null) {
-      return;
-    }
-    Object localObject2 = paramTAVMovieClipEx2.getTransitionEffectParam();
-    CMTime localCMTime2 = ((TransitionEffectParam)localObject2).getOverlayTime().divide(2);
-    if (paramTAVMovieClipEx2.isCurrentReverse()) {
-      if (paramTAVMovieClipEx1.getTavMovieClip().getResource().getTimeRange().getDuration().bigThan(((TransitionEffectParam)localObject2).getRightTransitionTime()))
-      {
-        paramTAVMovieClipEx2 = localCMTimeRange.getStart().add(localCMTime2);
-        localCMTime2 = localCMTimeRange.getDuration().sub(localCMTime2);
-        localCMTimeRange.setStart(paramTAVMovieClipEx2);
-        localCMTimeRange.setDuration(localCMTime2);
-        paramTAVMovieResource.setTimeRange(localCMTimeRange);
-        paramTAVMovieClipEx1.setLastReverse(true);
-      }
-    }
-    while (localCMTimeRange.getDuration().bigThan(localCMTime1))
+    else
     {
-      localCMTimeRange.setDuration(localCMTimeRange.getDuration().sub((CMTime)localObject1));
-      paramTAVMovieResource.setTimeRange(localCMTimeRange);
-      paramTAVMovieClipEx1.setCurrentReverse(true);
-      return;
-      localObject2 = localCMTimeRange.getStart().sub(localCMTime2);
-      localCMTime2 = localCMTimeRange.getDuration().add(localCMTime2);
-      localCMTimeRange.setStart((CMTime)localObject2);
-      localCMTimeRange.setDuration(localCMTime2);
-      paramTAVMovieClipEx2.getTavMovieClip().getResource().setTimeRange(localCMTimeRange);
-      paramTAVMovieClipEx2.setCurrentReverse(false);
-      paramTAVMovieClipEx1.setLastReverse(false);
-      continue;
-      paramTAVMovieClipEx1.setLastReverse(false);
+      if (paramTAVMovieClipEx2 == null) {
+        return;
+      }
+      Object localObject2 = paramTAVMovieClipEx2.getTransitionEffectParam();
+      CMTime localCMTime2 = ((TransitionEffectParam)localObject2).getOverlayTime().divide(2);
+      if (paramTAVMovieClipEx2.isCurrentReverse())
+      {
+        if (paramTAVMovieClipEx1.getTavMovieClip().getResource().getTimeRange().getDuration().bigThan(((TransitionEffectParam)localObject2).getRightTransitionTime()))
+        {
+          paramTAVMovieClipEx2 = localCMTimeRange.getStart().add(localCMTime2);
+          localCMTime2 = localCMTimeRange.getDuration().sub(localCMTime2);
+          localCMTimeRange.setStart(paramTAVMovieClipEx2);
+          localCMTimeRange.setDuration(localCMTime2);
+          paramTAVMovieResource.setTimeRange(localCMTimeRange);
+          paramTAVMovieClipEx1.setLastReverse(true);
+        }
+        else
+        {
+          localObject2 = localCMTimeRange.getStart().sub(localCMTime2);
+          localCMTime2 = localCMTimeRange.getDuration().add(localCMTime2);
+          localCMTimeRange.setStart((CMTime)localObject2);
+          localCMTimeRange.setDuration(localCMTime2);
+          paramTAVMovieClipEx2.getTavMovieClip().getResource().setTimeRange(localCMTimeRange);
+          paramTAVMovieClipEx2.setCurrentReverse(false);
+          paramTAVMovieClipEx1.setLastReverse(false);
+        }
+      }
+      else {
+        paramTAVMovieClipEx1.setLastReverse(false);
+      }
+      if (localCMTimeRange.getDuration().bigThan(localCMTime1))
+      {
+        localCMTimeRange.setDuration(localCMTimeRange.getDuration().sub((CMTime)localObject1));
+        paramTAVMovieResource.setTimeRange(localCMTimeRange);
+        paramTAVMovieClipEx1.setCurrentReverse(true);
+        return;
+      }
+      paramTAVMovieClipEx1.setCurrentReverse(false);
     }
-    paramTAVMovieClipEx1.setCurrentReverse(false);
   }
   
   public void addExtraInfoToClip(List<List<TAVClip>> paramList, List<FaceTransition> paramList1)
@@ -155,28 +168,32 @@ public class RhythmTransitionHelper
   public void computeTransitionTime()
   {
     this.mTransitionDurationMsList.clear();
-    if ((this.mTransitionAutomaticEffectList != null) && (!this.mTransitionAutomaticEffectList.isEmpty()))
+    Object localObject = this.mTransitionAutomaticEffectList;
+    if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
     {
       int i = 0;
-      if (i < this.mTransitionAutomaticEffectList.size())
+      while (i < this.mTransitionAutomaticEffectList.size())
       {
-        Object localObject = (TAVTransitionAutomaticEffect)this.mTransitionAutomaticEffectList.get(i);
+        localObject = (TAVTransitionAutomaticEffect)this.mTransitionAutomaticEffectList.get(i);
         if (((TAVTransitionAutomaticEffect)localObject).isFaceTransition())
         {
           long l = ((TAVTransitionAutomaticEffect)localObject).getDuration();
           this.mTransitionDurationMsList.add(Long.valueOf(l));
         }
-        for (;;)
+        else
         {
-          i += 1;
-          break;
-          localObject = new TAVMovieSticker(this.templateDir + File.separator + ((TAVTransitionAutomaticEffect)localObject).parameter.filePath);
-          if ((localObject != null) && (((TAVMovieSticker)localObject).getSticker() != null))
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(this.templateDir);
+          localStringBuilder.append(File.separator);
+          localStringBuilder.append(((TAVTransitionAutomaticEffect)localObject).parameter.filePath);
+          localObject = new TAVMovieSticker(localStringBuilder.toString());
+          if (((TAVMovieSticker)localObject).getSticker() != null)
           {
             localObject = ((TAVMovieSticker)localObject).getSticker();
             this.mTransitionDurationMsList.add(Long.valueOf(((float)((TAVSticker)localObject).durationTime() / 1000.0F)));
           }
         }
+        i += 1;
       }
     }
   }
@@ -189,31 +206,30 @@ public class RhythmTransitionHelper
       return;
     }
     int i = 0;
-    label27:
-    TAVTransitionAutomaticEffect localTAVTransitionAutomaticEffect;
-    Object localObject;
-    if (i < this.mTransitionAutomaticEffectList.size())
+    while (i < this.mTransitionAutomaticEffectList.size())
     {
-      localTAVTransitionAutomaticEffect = (TAVTransitionAutomaticEffect)this.mTransitionAutomaticEffectList.get(i);
-      if (!localTAVTransitionAutomaticEffect.isFaceTransition()) {
-        break label108;
+      TAVTransitionAutomaticEffect localTAVTransitionAutomaticEffect = (TAVTransitionAutomaticEffect)this.mTransitionAutomaticEffectList.get(i);
+      Object localObject;
+      if (localTAVTransitionAutomaticEffect.isFaceTransition())
+      {
+        long l = localTAVTransitionAutomaticEffect.getDuration();
+        this.mTransitionDurationMsList.add(Long.valueOf(l));
+        localObject = CMTime.fromMs(l);
+        this.mTransitionEffectParams.add(TransitionUtils.getFaceTransitionParam((CMTime)localObject, localTAVTransitionAutomaticEffect.effectId));
       }
-      long l = localTAVTransitionAutomaticEffect.getDuration();
-      this.mTransitionDurationMsList.add(Long.valueOf(l));
-      localObject = CMTime.fromMs(l);
-      this.mTransitionEffectParams.add(TransitionUtils.getFaceTransitionParam((CMTime)localObject, localTAVTransitionAutomaticEffect.effectId));
-    }
-    for (;;)
-    {
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.templateDir);
+        ((StringBuilder)localObject).append(File.separator);
+        ((StringBuilder)localObject).append(localTAVTransitionAutomaticEffect.parameter.filePath);
+        localObject = TavStickerUtils.createSticker(((StringBuilder)localObject).toString(), false);
+        if (localObject != null) {
+          this.mTransitionDurationMsList.add(Long.valueOf(((TAVSticker)localObject).durationTime() / 1000L));
+        }
+        this.mTransitionEffectParams.add(TransitionUtils.getTransitionParams((TAVSticker)localObject, localTAVTransitionAutomaticEffect.effectId));
+      }
       i += 1;
-      break label27;
-      break;
-      label108:
-      localObject = TavStickerUtils.createSticker(this.templateDir + File.separator + localTAVTransitionAutomaticEffect.parameter.filePath, false);
-      if (localObject != null) {
-        this.mTransitionDurationMsList.add(Long.valueOf(((TAVSticker)localObject).durationTime() / 1000L));
-      }
-      this.mTransitionEffectParams.add(TransitionUtils.getTransitionParams((TAVSticker)localObject, localTAVTransitionAutomaticEffect.effectId));
     }
   }
   
@@ -252,8 +268,12 @@ public class RhythmTransitionHelper
   
   public TAVTransitionAutomaticEffect getFaceTransitionSubTransition(List<TAVTransitionAutomaticEffect> paramList)
   {
-    if (TAVRhythmAutomaticTemplate.ApplyEffectType.RandomApplyEffect.ordinal() == this.transitionApplyType) {
-      return (TAVTransitionAutomaticEffect)paramList.get((int)(Math.random() * paramList.size()));
+    if (TAVRhythmAutomaticTemplate.ApplyEffectType.RandomApplyEffect.ordinal() == this.transitionApplyType)
+    {
+      double d1 = Math.random();
+      double d2 = paramList.size();
+      Double.isNaN(d2);
+      return (TAVTransitionAutomaticEffect)paramList.get((int)(d1 * d2));
     }
     return (TAVTransitionAutomaticEffect)paramList.get(0);
   }
@@ -271,74 +291,104 @@ public class RhythmTransitionHelper
   @Nullable
   public TAVTransitionAutomaticEffect getTransitionEffect(int paramInt)
   {
-    if ((this.mTransitionAutomaticEffectList == null) || (this.mTransitionAutomaticEffectList.isEmpty())) {
-      return null;
+    ArrayList localArrayList = this.mTransitionAutomaticEffectList;
+    if ((localArrayList != null) && (!localArrayList.isEmpty()))
+    {
+      int i = paramInt;
+      if (paramInt >= this.mTransitionAutomaticEffectList.size()) {
+        i = paramInt % this.mTransitionAutomaticEffectList.size();
+      }
+      return (TAVTransitionAutomaticEffect)this.mTransitionAutomaticEffectList.get(i);
     }
-    int i = paramInt;
-    if (paramInt >= this.mTransitionAutomaticEffectList.size()) {
-      i = paramInt % this.mTransitionAutomaticEffectList.size();
-    }
-    return (TAVTransitionAutomaticEffect)this.mTransitionAutomaticEffectList.get(i);
+    return null;
   }
   
   public TAVSticker getTransitionSticker(TAVTransitionAutomaticEffect paramTAVTransitionAutomaticEffect)
   {
-    TAVSticker localTAVSticker = TavStickerUtils.createSticker(this.templateDir + File.separator + paramTAVTransitionAutomaticEffect.parameter.filePath, false);
-    if (localTAVSticker == null) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.templateDir);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramTAVTransitionAutomaticEffect.parameter.filePath);
+    localObject = TavStickerUtils.createSticker(((StringBuilder)localObject).toString(), false);
+    if (localObject == null) {
       return null;
     }
-    localTAVSticker.setStickerId(paramTAVTransitionAutomaticEffect.effectId);
-    return localTAVSticker;
+    ((TAVSticker)localObject).setStickerId(paramTAVTransitionAutomaticEffect.effectId);
+    return localObject;
   }
   
   public boolean isDurationEnoughForTransition(CMTime paramCMTime1, CMTime paramCMTime2, long paramLong)
   {
     long l1 = paramCMTime1.getTimeUs() / 1000L;
     long l2 = paramCMTime2.getTimeUs() / 1000L;
-    return (l1 > this.transThreshold) && (l2 > this.transThreshold) && (l1 > paramLong) && (l2 > paramLong);
+    long l3 = this.transThreshold;
+    return (l1 > l3) && (l2 > l3) && (l1 > paramLong) && (l2 > paramLong);
   }
   
   public ArrayList<TAVTransitionAutomaticEffect> randomTransitionEffects(int paramInt)
   {
-    int j = 0;
-    int k = 0;
-    int i = 0;
-    if (this.rhythmEffects == null) {}
-    Object localObject;
-    do
-    {
+    Object localObject2 = this.rhythmEffects;
+    Object localObject1 = null;
+    if (localObject2 == null) {
       return null;
-      localObject = this.rhythmEffects.getTransitions();
-    } while ((localObject == null) || (((List)localObject).isEmpty()));
-    ArrayList localArrayList = new ArrayList();
-    if (TAVRhythmAutomaticTemplate.ApplyEffectType.DefaultApplyEffect.ordinal() == this.transitionApplyType)
+    }
+    Object localObject3 = ((TAVRhythmEffects)localObject2).getTransitions();
+    if (localObject3 != null)
     {
-      localObject = (TAVTransitionAutomaticEffect)((List)localObject).get(0);
-      while (i < paramInt)
+      if (((List)localObject3).isEmpty()) {
+        return null;
+      }
+      localObject2 = new ArrayList();
+      int m = TAVRhythmAutomaticTemplate.ApplyEffectType.DefaultApplyEffect.ordinal();
+      int n = this.transitionApplyType;
+      int j = 0;
+      int k = 0;
+      int i = 0;
+      if (m == n)
       {
-        localArrayList.add(localObject);
-        i += 1;
+        localObject3 = (TAVTransitionAutomaticEffect)((List)localObject3).get(0);
+        for (;;)
+        {
+          localObject1 = localObject2;
+          if (i >= paramInt) {
+            break;
+          }
+          ((ArrayList)localObject2).add(localObject3);
+          i += 1;
+        }
+      }
+      if (TAVRhythmAutomaticTemplate.ApplyEffectType.RandomApplyEffect.ordinal() == this.transitionApplyType)
+      {
+        i = j;
+        for (;;)
+        {
+          localObject1 = localObject2;
+          if (i >= paramInt) {
+            break;
+          }
+          double d1 = Math.random();
+          double d2 = ((List)localObject3).size();
+          Double.isNaN(d2);
+          ((ArrayList)localObject2).add((TAVTransitionAutomaticEffect)((List)localObject3).get((int)(d1 * d2)));
+          i += 1;
+        }
+      }
+      localObject1 = localObject2;
+      if (TAVRhythmAutomaticTemplate.ApplyEffectType.SequenceApplyEffect.ordinal() == this.transitionApplyType)
+      {
+        i = k;
+        for (;;)
+        {
+          localObject1 = localObject2;
+          if (i >= paramInt) {
+            break;
+          }
+          ((ArrayList)localObject2).add((TAVTransitionAutomaticEffect)((List)localObject3).get(i % ((List)localObject3).size()));
+          i += 1;
+        }
       }
     }
-    if (TAVRhythmAutomaticTemplate.ApplyEffectType.RandomApplyEffect.ordinal() == this.transitionApplyType)
-    {
-      i = j;
-      while (i < paramInt)
-      {
-        localArrayList.add((TAVTransitionAutomaticEffect)((List)localObject).get((int)(Math.random() * ((List)localObject).size())));
-        i += 1;
-      }
-    }
-    if (TAVRhythmAutomaticTemplate.ApplyEffectType.SequenceApplyEffect.ordinal() == this.transitionApplyType)
-    {
-      i = k;
-      while (i < paramInt)
-      {
-        localArrayList.add((TAVTransitionAutomaticEffect)((List)localObject).get(i % ((List)localObject).size()));
-        i += 1;
-      }
-    }
-    return localArrayList;
+    return localObject1;
   }
   
   public void reRandomTransitions(int paramInt)
@@ -358,40 +408,32 @@ public class RhythmTransitionHelper
     if (this.mTransitionDurationMsList.isEmpty()) {
       return;
     }
-    paramList = paramList.iterator();
     int i = 0;
-    label20:
-    TAVMovieClipEx localTAVMovieClipEx;
-    TAVMovieResource localTAVMovieResource;
-    if (paramList.hasNext())
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
     {
-      localTAVMovieClipEx = (TAVMovieClipEx)paramList.next();
-      localTAVMovieResource = localTAVMovieClipEx.getTavMovieClip().getResource();
-      if (!(localTAVMovieResource instanceof TAVMovieTrackResource)) {
-        break label181;
-      }
-      CMTimeRange localCMTimeRange = localTAVMovieResource.getTimeRange();
-      long l1 = ((Long)this.mTransitionDurationMsList.get(i)).longValue();
-      if (localCMTimeRange.getDuration().getTimeUs() / 1000L > l1)
+      TAVMovieClipEx localTAVMovieClipEx = (TAVMovieClipEx)paramList.next();
+      TAVMovieResource localTAVMovieResource = localTAVMovieClipEx.getTavMovieClip().getResource();
+      if ((localTAVMovieResource instanceof TAVMovieTrackResource))
       {
-        long l2 = l1 / 2L;
-        CMTime localCMTime1 = localCMTimeRange.getStart().add(new CMTime(l2, 1000));
-        CMTime localCMTime2 = localCMTimeRange.getDuration().sub(new CMTime(l1, 1000));
-        localCMTimeRange.setStart(localCMTime1);
-        localCMTimeRange.setDuration(localCMTime2);
-        localTAVMovieResource.setTimeRange(localCMTimeRange);
+        CMTimeRange localCMTimeRange = localTAVMovieResource.getTimeRange();
+        long l1 = ((Long)this.mTransitionDurationMsList.get(i)).longValue();
+        if (localCMTimeRange.getDuration().getTimeUs() / 1000L > l1)
+        {
+          long l2 = l1 / 2L;
+          CMTime localCMTime1 = localCMTimeRange.getStart().add(new CMTime(l2, 1000));
+          CMTime localCMTime2 = localCMTimeRange.getDuration().sub(new CMTime(l1, 1000));
+          localCMTimeRange.setStart(localCMTime1);
+          localCMTimeRange.setDuration(localCMTime2);
+          localTAVMovieResource.setTimeRange(localCMTimeRange);
+          localTAVMovieClipEx.setReverse(true);
+        }
+      }
+      else if ((localTAVMovieResource instanceof TAVMovieImageResource))
+      {
         localTAVMovieClipEx.setReverse(true);
       }
-    }
-    for (;;)
-    {
       i += 1;
-      break label20;
-      break;
-      label181:
-      if ((localTAVMovieResource instanceof TAVMovieImageResource)) {
-        localTAVMovieClipEx.setReverse(true);
-      }
     }
   }
   
@@ -402,36 +444,24 @@ public class RhythmTransitionHelper
     }
     TAVMovieClipEx localTAVMovieClipEx1 = null;
     int i = 0;
-    label15:
-    TAVMovieClipEx localTAVMovieClipEx2;
-    TAVMovieResource localTAVMovieResource;
-    if (i < paramList.size())
+    while (i < paramList.size())
     {
-      localTAVMovieClipEx2 = (TAVMovieClipEx)paramList.get(i);
+      TAVMovieClipEx localTAVMovieClipEx2 = (TAVMovieClipEx)paramList.get(i);
       localTAVMovieClipEx2.setTransitionEffectParam((TransitionEffectParam)this.mTransitionEffectParams.get(i));
-      localTAVMovieResource = localTAVMovieClipEx2.getTavMovieClip().getResource();
-      if (i <= 0) {
-        break label128;
+      TAVMovieResource localTAVMovieResource = localTAVMovieClipEx2.getTavMovieClip().getResource();
+      if (i > 0) {
+        localTAVMovieClipEx1 = (TAVMovieClipEx)paramList.get(i - 1);
       }
-      localTAVMovieClipEx1 = (TAVMovieClipEx)paramList.get(i - 1);
-    }
-    label128:
-    for (;;)
-    {
-      if ((localTAVMovieResource instanceof TAVMovieTrackResource)) {
+      if ((localTAVMovieResource instanceof TAVMovieTrackResource))
+      {
         reverseMovieTrackResource(localTAVMovieClipEx2, localTAVMovieClipEx1, i, localTAVMovieResource);
       }
-      for (;;)
+      else if ((localTAVMovieResource instanceof TAVMovieImageResource))
       {
-        i += 1;
-        break label15;
-        break;
-        if ((localTAVMovieResource instanceof TAVMovieImageResource))
-        {
-          localTAVMovieClipEx2.setLastReverse(true);
-          localTAVMovieClipEx2.setCurrentReverse(true);
-        }
+        localTAVMovieClipEx2.setLastReverse(true);
+        localTAVMovieClipEx2.setCurrentReverse(true);
       }
+      i += 1;
     }
   }
   

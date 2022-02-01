@@ -22,11 +22,12 @@ public class QQLifecycleBusinessObserver
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (getClass() != paramObject.getClass())) {
-      return false;
+    if ((paramObject != null) && (getClass() == paramObject.getClass()))
+    {
+      paramObject = (QQLifecycleBusinessObserver)paramObject;
+      return this.businessObserver.equals(paramObject.businessObserver);
     }
-    paramObject = (QQLifecycleBusinessObserver)paramObject;
-    return this.businessObserver.equals(paramObject.businessObserver);
+    return false;
   }
   
   public Class<?> getBusinessObserverClass()
@@ -54,7 +55,7 @@ public class QQLifecycleBusinessObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQLifecycleBusinessObserver
  * JD-Core Version:    0.7.0.1
  */

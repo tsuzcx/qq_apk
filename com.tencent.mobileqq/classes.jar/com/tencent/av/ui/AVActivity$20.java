@@ -11,9 +11,8 @@ class AVActivity$20
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what != 272)
     {
-    default: 
       super.handleMessage(paramMessage);
       return;
     }
@@ -30,7 +29,7 @@ class AVActivity$20
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.20
  * JD-Core Version:    0.7.0.1
  */

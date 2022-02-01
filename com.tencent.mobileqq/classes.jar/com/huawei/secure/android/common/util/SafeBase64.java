@@ -5,7 +5,7 @@ import android.util.Log;
 
 public class SafeBase64
 {
-  private static final String TAG = SafeBase64.class.getSimpleName();
+  private static final String TAG = "SafeBase64";
   
   public static byte[] decode(String paramString, int paramInt)
   {
@@ -16,7 +16,12 @@ public class SafeBase64
     }
     catch (Exception paramString)
     {
-      Log.e(TAG, paramString.getClass().getSimpleName() + " , message2 : " + paramString.getMessage());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString.getClass().getSimpleName());
+      localStringBuilder.append(" , message2 : ");
+      localStringBuilder.append(paramString.getMessage());
+      Log.e(str, localStringBuilder.toString());
     }
     return new byte[0];
   }
@@ -30,7 +35,12 @@ public class SafeBase64
     }
     catch (Exception paramArrayOfByte)
     {
-      Log.e(TAG, paramArrayOfByte.getClass().getSimpleName() + " , message0 : " + paramArrayOfByte.getMessage());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArrayOfByte.getClass().getSimpleName());
+      localStringBuilder.append(" , message0 : ");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      Log.e(str, localStringBuilder.toString());
     }
     return new byte[0];
   }
@@ -44,7 +54,12 @@ public class SafeBase64
     }
     catch (Exception paramArrayOfByte)
     {
-      Log.e(TAG, paramArrayOfByte.getClass().getSimpleName() + " , message1 : " + paramArrayOfByte.getMessage());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArrayOfByte.getClass().getSimpleName());
+      localStringBuilder.append(" , message1 : ");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      Log.e(str, localStringBuilder.toString());
     }
     return new byte[0];
   }
@@ -58,7 +73,12 @@ public class SafeBase64
     }
     catch (Exception paramArrayOfByte)
     {
-      Log.e(TAG, paramArrayOfByte.getClass().getSimpleName() + " , message3 : " + paramArrayOfByte.getMessage());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArrayOfByte.getClass().getSimpleName());
+      localStringBuilder.append(" , message3 : ");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      Log.e(str, localStringBuilder.toString());
     }
     return new byte[0];
   }
@@ -72,7 +92,12 @@ public class SafeBase64
     }
     catch (Exception paramArrayOfByte)
     {
-      Log.e(TAG, paramArrayOfByte.getClass().getSimpleName() + " , message4 : " + paramArrayOfByte.getMessage());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArrayOfByte.getClass().getSimpleName());
+      localStringBuilder.append(" , message4 : ");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      Log.e(str, localStringBuilder.toString());
     }
     return new byte[0];
   }
@@ -86,7 +111,12 @@ public class SafeBase64
     }
     catch (Exception paramArrayOfByte)
     {
-      Log.e(TAG, paramArrayOfByte.getClass().getSimpleName() + " , message5 : " + paramArrayOfByte.getMessage());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArrayOfByte.getClass().getSimpleName());
+      localStringBuilder.append(" , message5 : ");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      Log.e(str, localStringBuilder.toString());
     }
     return "";
   }
@@ -100,14 +130,19 @@ public class SafeBase64
     }
     catch (Exception paramArrayOfByte)
     {
-      Log.e(TAG, paramArrayOfByte.getClass().getSimpleName() + " , message6 : " + paramArrayOfByte.getMessage());
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramArrayOfByte.getClass().getSimpleName());
+      localStringBuilder.append(" , message6 : ");
+      localStringBuilder.append(paramArrayOfByte.getMessage());
+      Log.e(str, localStringBuilder.toString());
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.secure.android.common.util.SafeBase64
  * JD-Core Version:    0.7.0.1
  */

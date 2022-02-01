@@ -34,22 +34,19 @@ class j$h
     j.g localg = this.a.a;
     boolean bool1 = bool2;
     if (!paramBoolean1) {
-      if (!paramBoolean2) {
-        break label63;
+      if (paramBoolean2) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
     }
-    label63:
-    for (bool1 = bool2;; bool1 = false)
-    {
-      localg.h = bool1;
-      this.a.a.a(paramList);
-      return;
-    }
+    localg.h = bool1;
+    this.a.a.a(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.a.j.h
  * JD-Core Version:    0.7.0.1
  */

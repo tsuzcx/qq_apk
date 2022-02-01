@@ -23,7 +23,7 @@ public class SubscribePersonalBottomBlock
     super(paramBundle);
   }
   
-  public BaseWidgetView a(ViewGroup paramViewGroup, MultiViewBlock paramMultiViewBlock)
+  protected BaseWidgetView a(ViewGroup paramViewGroup, MultiViewBlock paramMultiViewBlock)
   {
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView = new RelativePersonalBottomView(paramViewGroup.getContext(), paramMultiViewBlock);
     return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
@@ -35,8 +35,9 @@ public class SubscribePersonalBottomBlock
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
-      return this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.c();
+    RelativePersonalBottomView localRelativePersonalBottomView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+    if (localRelativePersonalBottomView != null) {
+      return localRelativePersonalBottomView.c();
     }
     return 0;
   }
@@ -45,22 +46,24 @@ public class SubscribePersonalBottomBlock
   {
     super.b(paramString, paramShareData);
     this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData = paramShareData;
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(paramShareData);
+    paramString = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+    if (paramString != null) {
+      paramString.a(paramShareData);
     }
   }
   
   public void onBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView.a(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData);
+    RelativePersonalBottomView localRelativePersonalBottomView = this.jdField_a_of_type_ComTencentBizSubscribeWidgetRelativevideoRelativePersonalBottomView;
+    if (localRelativePersonalBottomView != null) {
+      localRelativePersonalBottomView.a(this.jdField_a_of_type_ComTencentBizSubscribePartBlockBlockMerger$ShareData);
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramViewHolder, paramInt, getItemId(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.SubscribePersonalBottomBlock
  * JD-Core Version:    0.7.0.1
  */

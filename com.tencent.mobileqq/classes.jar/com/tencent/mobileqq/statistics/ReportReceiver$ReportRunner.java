@@ -20,43 +20,48 @@ class ReportReceiver$ReportRunner
   private void a()
   {
     AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
-    if ((localAppRuntime == null) || (!"com.tencent.mobileqq".equals(MobileQQ.sMobileQQ.getQQProcessName()))) {}
-    Object localObject;
-    do
+    if (localAppRuntime != null)
     {
-      int i;
-      String str;
-      int j;
-      do
-      {
+      if (!"com.tencent.mobileqq".equals(MobileQQ.sMobileQQ.getQQProcessName())) {
         return;
-        i = this.a.getIntExtra("is_runtime", -1);
-        localObject = this.a.getStringExtra("reporting_tag");
-        if (!a(i, (String)localObject)) {
-          break;
-        }
-        str = this.a.getStringExtra("reporting_detail");
-        j = this.a.getIntExtra("reporting_count", 1);
+      }
+      int i = this.a.getIntExtra("is_runtime", -1);
+      Object localObject = this.a.getStringExtra("reporting_tag");
+      if (a(i, (String)localObject))
+      {
+        String str = this.a.getStringExtra("reporting_detail");
+        int j = this.a.getIntExtra("reporting_count", 1);
         if (i == 0)
         {
           ReportController.b(localAppRuntime, (String)localObject, str, j);
           return;
         }
-      } while (i != 1);
-      ReportController.a(localAppRuntime, (String)localObject, str, j);
-      return;
-      localObject = ReportControllerServiceHolder.a();
-    } while (localObject == null);
-    ((IReportService)localObject).a(this.a, localAppRuntime);
+        if (i == 1) {
+          ReportController.a(localAppRuntime, (String)localObject, str, j);
+        }
+      }
+      else
+      {
+        localObject = ReportControllerServiceHolder.a();
+        if (localObject != null) {
+          ((IReportService)localObject).a(this.a, localAppRuntime);
+        }
+      }
+    }
   }
   
   private boolean a(int paramInt, String paramString)
   {
-    if (paramInt == 1001) {}
-    while (("dc02528".equals(paramString)) || ("dc02181".equals(paramString)) || ("dc_qqgame".equals(paramString))) {
+    if (paramInt == 1001) {
       return false;
     }
-    return true;
+    if ("dc02528".equals(paramString)) {
+      return false;
+    }
+    if ("dc02181".equals(paramString)) {
+      return false;
+    }
+    return !"dc_qqgame".equals(paramString);
   }
   
   public void run()
@@ -74,7 +79,7 @@ class ReportReceiver$ReportRunner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.ReportReceiver.ReportRunner
  * JD-Core Version:    0.7.0.1
  */

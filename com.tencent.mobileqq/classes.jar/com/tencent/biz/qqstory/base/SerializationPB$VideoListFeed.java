@@ -26,15 +26,16 @@ public final class SerializationPB$VideoListFeed
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 74, 82, 90 }, new String[] { "commet_like_feed", "video_next_cookie", "video_pull_type", "is_video_end", "is_contribute", "video_seq", "has_tag", "has_public_video", "qim_sync_wording", "ws_schema_main", "ws_schema_memories" }, new Object[] { null, "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, VideoListFeed.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 48, 56, 64, 74, 82, 90 }, new String[] { "commet_like_feed", "video_next_cookie", "video_pull_type", "is_video_end", "is_contribute", "video_seq", "has_tag", "has_public_video", "qim_sync_wording", "ws_schema_main", "ws_schema_memories" }, new Object[] { null, "", localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3 }, VideoListFeed.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.SerializationPB.VideoListFeed
  * JD-Core Version:    0.7.0.1
  */

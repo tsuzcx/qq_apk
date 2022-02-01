@@ -94,7 +94,6 @@ public class SystemEmoticonInfo
   
   public static boolean parseWhiteList(AppRuntime paramAppRuntime, boolean paramBoolean)
   {
-    int i = 0;
     if ((!paramBoolean) && (parsed)) {
       return true;
     }
@@ -102,34 +101,45 @@ public class SystemEmoticonInfo
     if (paramAppRuntime != null) {}
     for (;;)
     {
-      int j;
+      int i;
+      int k;
       try
       {
-        Object localObject = paramAppRuntime.optJSONArray("systemEmojiWhiteList").optJSONObject(0).optJSONArray("androidEmoticonWhiteList");
+        paramAppRuntime = paramAppRuntime.optJSONArray("systemEmojiWhiteList");
+        i = 0;
+        Object localObject = paramAppRuntime.optJSONObject(0).optJSONArray("androidEmoticonWhiteList");
         paramAppRuntime = new int[((JSONArray)localObject).length()];
         int m = ((JSONArray)localObject).length();
         j = 0;
-        if (j < m)
+        if (i < m)
         {
-          int n = ((JSONArray)localObject).optInt(j, -1);
-          if ((n < 0) || (n >= EmotcationConstants.VALID_SYS_EMOTCATION_COUNT)) {
-            break label225;
+          int n = ((JSONArray)localObject).optInt(i, -1);
+          k = j;
+          if (n < 0) {
+            break label240;
           }
-          int k = i + 1;
-          paramAppRuntime[i] = n;
-          i = k;
-          break label225;
+          k = j;
+          if (n >= EmotcationConstants.VALID_SYS_EMOTCATION_COUNT) {
+            break label240;
+          }
+          paramAppRuntime[j] = n;
+          k = j + 1;
+          break label240;
         }
-        if (i == 0)
+        if (j == 0)
         {
           QLog.e("SystemEmoticonInfo", 1, "parseWhiteList no valid emoticon, use default");
           return true;
         }
-        localObject = Arrays.copyOf(paramAppRuntime, i);
-        if (QLog.isColorLevel()) {
-          QLog.d("SystemEmoticonInfo", 2, "newOrderList: " + Arrays.toString((int[])localObject));
+        localObject = Arrays.copyOf(paramAppRuntime, j);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("newOrderList: ");
+          localStringBuilder.append(Arrays.toString((int[])localObject));
+          QLog.d("SystemEmoticonInfo", 2, localStringBuilder.toString());
         }
-        paramAppRuntime = Arrays.copyOf(paramAppRuntime, i);
+        paramAppRuntime = Arrays.copyOf(paramAppRuntime, j);
         Arrays.sort(paramAppRuntime);
         SYS_EMOTION_ORDER = (int[])localObject;
         sortedOrderList = paramAppRuntime;
@@ -138,16 +148,14 @@ public class SystemEmoticonInfo
       catch (Throwable paramAppRuntime)
       {
         QLog.e("SystemEmoticonInfo", 2, "parseWhiteList error", paramAppRuntime);
-        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("SystemEmoticonInfo", 2, "parseWhiteList: local file not exist.");
       }
       return parsed;
-      if (QLog.isColorLevel())
-      {
-        QLog.d("SystemEmoticonInfo", 2, "parseWhiteList: local file not exist.");
-        continue;
-        label225:
-        j += 1;
-      }
+      label240:
+      i += 1;
+      int j = k;
     }
   }
   
@@ -168,20 +176,15 @@ public class SystemEmoticonInfo
   
   public void send(AppRuntime paramAppRuntime, Context paramContext, EditText paramEditText, Parcelable paramParcelable)
   {
-    if (this.src_type == 1) {
+    if (this.srcType == 1) {
       ReportController.b(null, "CliOper", "", "", "0X8005507", "0X8005507", 0, 0, "", "", "", "");
+    } else if (this.srcType == 2) {
+      ReportController.b(null, "CliOper", "", "", "0X8005508", "0X8005508", 0, 0, "", "", "", "");
     }
-    for (;;)
-    {
-      int i = paramEditText.getSelectionStart();
-      int j = paramEditText.getSelectionEnd();
-      paramEditText.getEditableText().replace(i, j, QQSysFaceUtil.getFaceString(this.code));
-      paramEditText.requestFocus();
-      return;
-      if (this.src_type == 2) {
-        ReportController.b(null, "CliOper", "", "", "0X8005508", "0X8005508", 0, 0, "", "", "", "");
-      }
-    }
+    int i = paramEditText.getSelectionStart();
+    int j = paramEditText.getSelectionEnd();
+    paramEditText.getEditableText().replace(i, j, QQSysFaceUtil.getFaceString(this.code));
+    paramEditText.requestFocus();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -192,7 +195,7 @@ public class SystemEmoticonInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemEmoticonInfo
  * JD-Core Version:    0.7.0.1
  */

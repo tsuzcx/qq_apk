@@ -12,7 +12,7 @@ class RecentAdapter$10$1
   
   public void a(Activity paramActivity)
   {
-    QQToast.a(paramActivity, 2, 2131691562, 0).a();
+    QQToast.a(paramActivity, 2, 2131691483, 0).a();
   }
   
   public void a(QQAppInterface paramQQAppInterface, int paramInt) {}
@@ -21,7 +21,7 @@ class RecentAdapter$10$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.10.1
  * JD-Core Version:    0.7.0.1
  */

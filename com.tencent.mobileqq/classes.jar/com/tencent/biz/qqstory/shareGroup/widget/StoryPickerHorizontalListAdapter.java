@@ -49,7 +49,7 @@ public class StoryPickerHorizontalListAdapter
   
   private View a(ViewGroup paramViewGroup)
   {
-    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561928, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561775, paramViewGroup, false);
     paramViewGroup.setTag(new StoryPickerHorizontalListAdapter.ItemHolder(this, paramViewGroup));
     return paramViewGroup;
   }
@@ -101,29 +101,27 @@ public class StoryPickerHorizontalListAdapter
   
   public void b(List<VideoCollectionItem.FakeVideoUIItem> paramList, String paramString)
   {
-    if (!this.jdField_a_of_type_JavaLangString.equals(paramString)) {
-      SLog.d("StoryPickerHorizontalListAdapter", "mCollectionId=%s, but update id=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramString });
-    }
-    for (;;)
+    if (!this.jdField_a_of_type_JavaLangString.equals(paramString))
     {
+      SLog.d("StoryPickerHorizontalListAdapter", "mCollectionId=%s, but update id=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramString });
       return;
-      SLog.a("StoryPickerHorizontalListAdapter", "updateData");
-      paramList = paramList.iterator();
-      while (paramList.hasNext())
+    }
+    SLog.a("StoryPickerHorizontalListAdapter", "updateData");
+    paramList = paramList.iterator();
+    while (paramList.hasNext())
+    {
+      Object localObject = (VideoCollectionItem.FakeVideoUIItem)paramList.next();
+      paramString = (VideoCollectionItem.FakeVideoUIItem)this.jdField_a_of_type_JavaUtilHashMap.get(((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
+      if ((paramString != null) && (((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
       {
-        Object localObject = (VideoCollectionItem.FakeVideoUIItem)paramList.next();
-        paramString = (VideoCollectionItem.FakeVideoUIItem)this.jdField_a_of_type_JavaUtilHashMap.get(((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
-        if ((paramString != null) && (((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem != null))
+        paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
+        localObject = (WeakReference)this.jdField_b_of_type_JavaUtilHashMap.get(((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
+        if ((localObject != null) && (((WeakReference)localObject).get() != null))
         {
-          paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem;
-          localObject = (WeakReference)this.jdField_b_of_type_JavaUtilHashMap.get(((VideoCollectionItem.FakeVideoUIItem)localObject).jdField_a_of_type_JavaLangString);
-          if ((localObject != null) && (((WeakReference)localObject).get() != null))
-          {
-            localObject = ((StoryPickerHorizontalListAdapter.ItemHolder)((WeakReference)localObject).get()).a;
-            a(((StoryCoverView)localObject).a, paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
-            ((StoryCoverView)localObject).setPollLayout(paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), -1, null);
-            ((StoryCoverView)localObject).setRateLayout(paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
-          }
+          localObject = ((StoryPickerHorizontalListAdapter.ItemHolder)((WeakReference)localObject).get()).a;
+          a(((StoryCoverView)localObject).a, paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.mVideoThumbnailUrl);
+          ((StoryCoverView)localObject).setPollLayout(paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getPollLayout(), -1, null);
+          ((StoryCoverView)localObject).setRateLayout(paramString.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.getInteractLayout(), -1, -1L, -1);
         }
       }
     }
@@ -141,17 +139,15 @@ public class StoryPickerHorizontalListAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null)
     {
-      paramView = a(paramViewGroup);
-      paramView.setFocusable(true);
+      localView = a(paramViewGroup);
+      localView.setFocusable(true);
     }
-    for (;;)
-    {
-      a(paramView, paramInt);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
-    }
+    a(localView, paramInt);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
@@ -167,7 +163,7 @@ public class StoryPickerHorizontalListAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerHorizontalListAdapter
  * JD-Core Version:    0.7.0.1
  */

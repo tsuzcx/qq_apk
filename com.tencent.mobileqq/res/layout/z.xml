@@ -1,7 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@color/bp" android:layout_width="fill_parent" android:layout_height="fill_parent"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/cn" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="fitCenter" />
-    <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:gravity="center_horizontal" android:layout_gravity="bottom|center|left" android:id="@id/h4" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="50.0dip" android:layout_marginBottom="61.0dip" android:text="@string/br5" android:shadowColor="@color/c1" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:drawableTop="@drawable/s" android:drawablePadding="9.0dip" />
-    <TextView android:textSize="17.0sp" android:textColor="@color/al3" android:gravity="center_horizontal" android:layout_gravity="bottom|center|right" android:id="@id/h5" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginRight="50.0dip" android:layout_marginBottom="61.0dip" android:text="@string/br4" android:shadowColor="@color/c1" android:shadowDx="1.0" android:shadowDy="1.0" android:shadowRadius="1.0" android:drawableTop="@drawable/y" android:drawablePadding="9.0dip" />
-</FrameLayout>

@@ -22,6 +22,7 @@ import com.tencent.falco.base.libapi.imageloader.ImageLoaderInterface;
 import com.tencent.falco.base.libapi.location.LocationInterface;
 import com.tencent.falco.base.libapi.log.LogInterface;
 import com.tencent.falco.base.libapi.log.LogSdkServiceInterface;
+import com.tencent.falco.base.libapi.lottie.LottieServiceInterface;
 import com.tencent.falco.base.libapi.network.NetworkStateInterface;
 import com.tencent.falco.base.libapi.notification.NotificationInterface;
 import com.tencent.falco.base.libapi.qqsdk.QQSdkInterface;
@@ -32,10 +33,10 @@ import com.tencent.falco.base.libapi.wns.WnsInterface;
 import com.tencent.falco.base.libapi.wxsdk.WxSdkInterface;
 import com.tencent.ilive.phoneloginsdk.PhoneLoginInterface;
 import com.tencent.ilivesdk.beautyfilterservice_interface.BeautyFilterServiceInterface;
-import com.tencent.ilivesdk.cscservice_interface.CscServiceInterface;
 import com.tencent.ilivesdk.liveconfigservice_interface.LiveConfigServiceInterface;
 import com.tencent.ilivesdk.qualityreportservice_interface.QualityReportServiceInterface;
 import com.tencent.ilivesdk.uicustomservice_interface.UICustomServiceInterface;
+import com.tencent.ilivesdk.webcommonserviceinterface.WebCommonServiceInterface;
 import com.tencent.livesdk.accountengine.UserEngine;
 import com.tencent.livesdk.servicefactory.BaseEnginLogic;
 import com.tencent.livesdk.servicefactory.BaseEngine;
@@ -56,6 +57,7 @@ public class LiveEngine
   private Context context;
   private LiveEngineConfig liveEngineConfig;
   private UserEngine mCurrentUserEngine;
+  private FloatRoomManager mFloatRoomManager = new FloatRoomManager();
   
   public LiveEngine(Context paramContext, LiveEngineConfig paramLiveEngineConfig)
   {
@@ -76,10 +78,14 @@ public class LiveEngine
     InfoConfiguration localInfoConfiguration = (InfoConfiguration)getService(AppGeneralInfoService.class);
     if (localInfoConfiguration != null)
     {
-      ((LogInterface)getService(LogInterface.class)).i("LiveEngine", "configure app general info, Config = " + this.liveEngineConfig, new Object[0]);
+      Object localObject = (LogInterface)getService(LogInterface.class);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("configure app general info, Config = ");
+      localStringBuilder.append(this.liveEngineConfig);
+      ((LogInterface)localObject).i("LiveEngine", localStringBuilder.toString(), new Object[0]);
       localInfoConfiguration.setApplication((Application)this.context);
-      localInfoConfiguration.setVersionCode(10305);
-      localInfoConfiguration.setVersionName("1.5.4.117-release_qq_8.5.5");
+      localInfoConfiguration.setVersionCode(10800);
+      localInfoConfiguration.setVersionName("1.8.0.158-release_qq_8.6.5");
       localInfoConfiguration.setClientType(this.liveEngineConfig.clientType);
       localInfoConfiguration.setChannelID(this.liveEngineConfig.channelID);
       localInfoConfiguration.setDebug(this.liveEngineConfig.isDebug);
@@ -89,13 +95,15 @@ public class LiveEngine
       localInfoConfiguration.setWnsAppid(this.liveEngineConfig.wns_appid);
       localInfoConfiguration.setHostGuId(this.liveEngineConfig.guid);
       localInfoConfiguration.setOpenSdkAppId(this.liveEngineConfig.opensdk_appid);
+      localInfoConfiguration.setNeedInitTPPlatform(this.liveEngineConfig.isNeedInitTPPlatform);
       localInfoConfiguration.setTPPlatform(this.liveEngineConfig.tpplayer_platform);
       localInfoConfiguration.setHostVersionCode(this.liveEngineConfig.versionCode);
       localInfoConfiguration.setHostVersionName(this.liveEngineConfig.versionName);
       localInfoConfiguration.setLiteSdk(this.liveEngineConfig.liteSdk);
-      HostProxyInterface localHostProxyInterface = (HostProxyInterface)getService(HostProxyInterface.class);
-      if (localHostProxyInterface.getSdkInfoInterface() != null) {
-        ((AppGeneralInfoService)localInfoConfiguration).setSvrTestEnv(localHostProxyInterface.getSdkInfoInterface().isTestEnv());
+      localInfoConfiguration.setIsHoldPlayerLog(this.liveEngineConfig.isHoldPlayerLog);
+      localObject = (HostProxyInterface)getService(HostProxyInterface.class);
+      if (((HostProxyInterface)localObject).getSdkInfoInterface() != null) {
+        ((AppGeneralInfoService)localInfoConfiguration).setSvrTestEnv(((HostProxyInterface)localObject).getSdkInfoInterface().isTestEnv());
       }
     }
   }
@@ -140,13 +148,14 @@ public class LiveEngine
     this.scopeServices.add(WeiboSdkInterface.class);
     this.scopeServices.add(FloatWindowConfigServiceInterface.class);
     this.scopeServices.add(LiveConfigServiceInterface.class);
-    this.scopeServices.add(CscServiceInterface.class);
     this.scopeServices.add(BeautyFilterServiceInterface.class);
     this.scopeServices.add(HostProxyInterface.class);
     this.scopeServices.add(QualityReportServiceInterface.class);
     this.scopeServices.add(UICustomServiceInterface.class);
     this.scopeServices.add(NotificationInterface.class);
     this.scopeServices.add(ActivityLifeCycleService.class);
+    this.scopeServices.add(WebCommonServiceInterface.class);
+    this.scopeServices.add(LottieServiceInterface.class);
     initNewServiceScope(ServiceEnginScope.Live);
   }
   
@@ -176,6 +185,11 @@ public class LiveEngine
     return null;
   }
   
+  public FloatRoomManager getFloatRoomManager()
+  {
+    return this.mFloatRoomManager;
+  }
+  
   public String getOwnerEngine()
   {
     return "LiveEngine";
@@ -193,14 +207,15 @@ public class LiveEngine
   
   public void unInit()
   {
-    if (this.mCurrentUserEngine != null) {
-      this.mCurrentUserEngine.uninit();
+    Object localObject = this.mCurrentUserEngine;
+    if (localObject != null) {
+      ((UserEngine)localObject).uninit();
     }
     if (this.serviceManager.getAllAvailableService().size() > 0)
     {
-      Iterator localIterator = this.serviceManager.getAllAvailableService().values().iterator();
-      while (localIterator.hasNext()) {
-        ((ServiceBaseInterface)localIterator.next()).onDestroy();
+      localObject = this.serviceManager.getAllAvailableService().values().iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((ServiceBaseInterface)((Iterator)localObject).next()).onDestroy();
       }
     }
     this.serviceManager.getAllAvailableService().clear();
@@ -208,7 +223,7 @@ public class LiveEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.liveengine.LiveEngine
  * JD-Core Version:    0.7.0.1
  */

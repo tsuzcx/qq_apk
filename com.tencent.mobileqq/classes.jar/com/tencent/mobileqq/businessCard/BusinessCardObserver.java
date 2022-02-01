@@ -18,30 +18,36 @@ public class BusinessCardObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      paramInt = paramBundle.getInt("resp_result", 0);
-      b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
+            return;
+          }
+          a(paramBoolean);
+          return;
+        }
+        b(paramBoolean, paramBundle.getString("key_card_id"));
+        return;
+      }
       a(paramBoolean, paramBundle.getString("key_card_id"));
       return;
-    case 3: 
-      b(paramBoolean, paramBundle.getString("key_card_id"));
-      return;
-    case 4: 
-      a(paramBoolean);
-      return;
     }
-    a(paramBoolean, paramBundle.getString("key_card_id"), paramBundle.getInt("key_get_detail_type"));
+    paramInt = paramBundle.getInt("resp_result", 0);
+    b(paramBoolean, paramBundle.getString("key_card_id"), paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.businessCard.BusinessCardObserver
  * JD-Core Version:    0.7.0.1
  */

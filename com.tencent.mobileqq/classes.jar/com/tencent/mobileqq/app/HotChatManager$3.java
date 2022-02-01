@@ -18,60 +18,68 @@ class HotChatManager$3
 {
   public void run()
   {
-    String str2 = null;
     if (QLog.isColorLevel()) {
       QLog.i("HotChatManager", 2, "isUinInVList,init");
     }
-    Object localObject1 = new File(BaseApplicationImpl.getContext().getFilesDir() + File.separator + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount() + "_nearby_hotchat_v_list");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(BaseApplicationImpl.getContext().getFilesDir());
+    ((StringBuilder)localObject1).append(File.separator);
+    ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    ((StringBuilder)localObject1).append("_nearby_hotchat_v_list");
+    localObject1 = new File(((StringBuilder)localObject1).toString());
+    String str = null;
+    Object localObject2;
     try
     {
-      localObject1 = FileUtils.b((File)localObject1);
-      this.this$0.jdField_a_of_type_JavaUtilList = new ArrayList();
-      if (localObject1 == null) {}
+      localObject1 = FileUtils.readFileToString((File)localObject1);
     }
     catch (IOException localIOException)
     {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isUinInVList, readFile exception:");
+        localStringBuilder.append(localIOException.getMessage());
+        QLog.i("HotChatManager", 2, localStringBuilder.toString());
+      }
+      localIOException.printStackTrace();
+      localObject2 = null;
+    }
+    this.this$0.jdField_a_of_type_JavaUtilList = new ArrayList();
+    if (localObject2 != null)
+    {
       try
       {
-        localObject1 = new JSONObject((String)localObject1).getJSONArray("vusers");
-        if (localObject1 != null)
-        {
-          int i = 0;
-          while (i < ((JSONArray)localObject1).length())
-          {
-            str2 = ((JSONArray)localObject1).optString(i);
-            if (!TextUtils.isEmpty(str2)) {
-              this.this$0.jdField_a_of_type_JavaUtilList.add(str2);
-            }
-            i += 1;
-            continue;
-            localIOException = localIOException;
-            if (QLog.isColorLevel()) {
-              QLog.i("HotChatManager", 2, "isUinInVList, readFile exception:" + localIOException.getMessage());
-            }
-            localIOException.printStackTrace();
-            Object localObject2 = null;
-          }
-        }
+        localObject2 = new JSONObject((String)localObject2).getJSONArray("vusers");
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
+        localJSONException.printStackTrace();
+        localObject3 = str;
+      }
+      if (localObject3 != null)
+      {
+        int i = 0;
+        while (i < ((JSONArray)localObject3).length())
         {
-          localJSONException.printStackTrace();
-          String str1 = str2;
+          str = ((JSONArray)localObject3).optString(i);
+          if (!TextUtils.isEmpty(str)) {
+            this.this$0.jdField_a_of_type_JavaUtilList.add(str);
+          }
+          i += 1;
         }
       }
-      this.this$0.f = false;
-      if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppHotChatManager$OnVListUpdateListener != null) {
-        this.this$0.jdField_a_of_type_ComTencentMobileqqAppHotChatManager$OnVListUpdateListener.a();
-      }
+    }
+    Object localObject3 = this.this$0;
+    ((HotChatManager)localObject3).f = false;
+    if (((HotChatManager)localObject3).jdField_a_of_type_ComTencentMobileqqAppHotChatManager$OnVListUpdateListener != null) {
+      this.this$0.jdField_a_of_type_ComTencentMobileqqAppHotChatManager$OnVListUpdateListener.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.HotChatManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -55,19 +55,20 @@ class VersionedParcelStream
   private VersionedParcelStream(InputStream paramInputStream, OutputStream paramOutputStream, ArrayMap<String, Method> paramArrayMap1, ArrayMap<String, Method> paramArrayMap2, ArrayMap<String, Class> paramArrayMap)
   {
     super(paramArrayMap1, paramArrayMap2, paramArrayMap);
-    if (paramInputStream != null) {}
-    for (paramInputStream = new DataInputStream(new VersionedParcelStream.1(this, paramInputStream));; paramInputStream = null)
-    {
-      this.mMasterInput = paramInputStream;
-      paramInputStream = localObject;
-      if (paramOutputStream != null) {
-        paramInputStream = new DataOutputStream(paramOutputStream);
-      }
-      this.mMasterOutput = paramInputStream;
-      this.mCurrentInput = this.mMasterInput;
-      this.mCurrentOutput = this.mMasterOutput;
-      return;
+    paramArrayMap1 = null;
+    if (paramInputStream != null) {
+      paramInputStream = new DataInputStream(new VersionedParcelStream.1(this, paramInputStream));
+    } else {
+      paramInputStream = null;
     }
+    this.mMasterInput = paramInputStream;
+    paramInputStream = paramArrayMap1;
+    if (paramOutputStream != null) {
+      paramInputStream = new DataOutputStream(paramOutputStream);
+    }
+    this.mMasterOutput = paramInputStream;
+    this.mCurrentInput = this.mMasterInput;
+    this.mCurrentOutput = this.mMasterOutput;
   }
   
   private void readObject(int paramInt, String paramString, Bundle paramBundle)
@@ -75,51 +76,54 @@ class VersionedParcelStream
     switch (paramInt)
     {
     default: 
-      throw new RuntimeException("Unknown type " + paramInt);
-    case 0: 
-      paramBundle.putParcelable(paramString, null);
-      return;
-    case 1: 
-      paramBundle.putBundle(paramString, readBundle());
-      return;
-    case 2: 
-      paramBundle.putBundle(paramString, readBundle());
-      return;
-    case 3: 
-      paramBundle.putString(paramString, readString());
-      return;
-    case 4: 
-      paramBundle.putStringArray(paramString, (String[])readArray(new String[0]));
-      return;
-    case 5: 
-      paramBundle.putBoolean(paramString, readBoolean());
-      return;
-    case 6: 
-      paramBundle.putBooleanArray(paramString, readBooleanArray());
-      return;
-    case 7: 
-      paramBundle.putDouble(paramString, readDouble());
-      return;
-    case 8: 
-      paramBundle.putDoubleArray(paramString, readDoubleArray());
-      return;
-    case 9: 
-      paramBundle.putInt(paramString, readInt());
-      return;
-    case 10: 
-      paramBundle.putIntArray(paramString, readIntArray());
-      return;
-    case 11: 
-      paramBundle.putLong(paramString, readLong());
-      return;
-    case 12: 
-      paramBundle.putLongArray(paramString, readLongArray());
+      paramString = new StringBuilder();
+      paramString.append("Unknown type ");
+      paramString.append(paramInt);
+      throw new RuntimeException(paramString.toString());
+    case 14: 
+      paramBundle.putFloatArray(paramString, readFloatArray());
       return;
     case 13: 
       paramBundle.putFloat(paramString, readFloat());
       return;
+    case 12: 
+      paramBundle.putLongArray(paramString, readLongArray());
+      return;
+    case 11: 
+      paramBundle.putLong(paramString, readLong());
+      return;
+    case 10: 
+      paramBundle.putIntArray(paramString, readIntArray());
+      return;
+    case 9: 
+      paramBundle.putInt(paramString, readInt());
+      return;
+    case 8: 
+      paramBundle.putDoubleArray(paramString, readDoubleArray());
+      return;
+    case 7: 
+      paramBundle.putDouble(paramString, readDouble());
+      return;
+    case 6: 
+      paramBundle.putBooleanArray(paramString, readBooleanArray());
+      return;
+    case 5: 
+      paramBundle.putBoolean(paramString, readBoolean());
+      return;
+    case 4: 
+      paramBundle.putStringArray(paramString, (String[])readArray(new String[0]));
+      return;
+    case 3: 
+      paramBundle.putString(paramString, readString());
+      return;
+    case 2: 
+      paramBundle.putBundle(paramString, readBundle());
+      return;
+    case 1: 
+      paramBundle.putBundle(paramString, readBundle());
+      return;
     }
-    paramBundle.putFloatArray(paramString, readFloatArray());
+    paramBundle.putParcelable(paramString, null);
   }
   
   private void writeObject(Object paramObject)
@@ -207,23 +211,28 @@ class VersionedParcelStream
       writeFloatArray((float[])paramObject);
       return;
     }
-    throw new IllegalArgumentException("Unsupported type " + paramObject.getClass());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Unsupported type ");
+    localStringBuilder.append(paramObject.getClass());
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public void closeField()
   {
-    if (this.mFieldBuffer != null) {}
-    try
-    {
-      if (this.mFieldBuffer.mOutput.size() != 0) {
-        this.mFieldBuffer.flushField();
+    VersionedParcelStream.FieldBuffer localFieldBuffer = this.mFieldBuffer;
+    if (localFieldBuffer != null) {
+      try
+      {
+        if (localFieldBuffer.mOutput.size() != 0) {
+          this.mFieldBuffer.flushField();
+        }
+        this.mFieldBuffer = null;
+        return;
       }
-      this.mFieldBuffer = null;
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      throw new VersionedParcel.ParcelException(localIOException);
+      catch (IOException localIOException)
+      {
+        throw new VersionedParcel.ParcelException(localIOException);
+      }
     }
   }
   
@@ -253,24 +262,18 @@ class VersionedParcelStream
   public Bundle readBundle()
   {
     int j = readInt();
-    Object localObject;
-    if (j < 0)
-    {
-      localObject = null;
-      return localObject;
+    if (j < 0) {
+      return null;
     }
     Bundle localBundle = new Bundle();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject = localBundle;
-      if (i >= j) {
-        break;
-      }
-      localObject = readString();
-      readObject(readInt(), (String)localObject, localBundle);
+      String str = readString();
+      readObject(readInt(), str, localBundle);
       i += 1;
     }
+    return localBundle;
   }
   
   public byte[] readByteArray()
@@ -320,7 +323,7 @@ class VersionedParcelStream
           return true;
         }
         if (String.valueOf(this.mFieldId).compareTo(String.valueOf(paramInt)) > 0) {
-          break;
+          return false;
         }
         if (this.mCount < this.mFieldSize) {
           this.mMasterInput.skip(this.mFieldSize - this.mCount);
@@ -419,10 +422,12 @@ class VersionedParcelStream
   
   public void setSerializationFlags(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (!paramBoolean1) {
-      throw new RuntimeException("Serialization of this object is not allowed");
+    if (paramBoolean1)
+    {
+      this.mIgnoreParcelables = paramBoolean2;
+      return;
     }
-    this.mIgnoreParcelables = paramBoolean2;
+    throw new RuntimeException("Serialization of this object is not allowed");
   }
   
   public void writeBoolean(boolean paramBoolean)
@@ -440,25 +445,29 @@ class VersionedParcelStream
   
   public void writeBundle(Bundle paramBundle)
   {
-    if (paramBundle != null) {
-      try
+    if (paramBundle != null) {}
+    try
+    {
+      Object localObject = paramBundle.keySet();
+      this.mCurrentOutput.writeInt(((Set)localObject).size());
+      localObject = ((Set)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        Object localObject = paramBundle.keySet();
-        this.mCurrentOutput.writeInt(((Set)localObject).size());
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
-        {
-          String str = (String)((Iterator)localObject).next();
-          writeString(str);
-          writeObject(paramBundle.get(str));
-          continue;
-          this.mCurrentOutput.writeInt(-1);
-        }
+        String str = (String)((Iterator)localObject).next();
+        writeString(str);
+        writeObject(paramBundle.get(str));
+        continue;
+        this.mCurrentOutput.writeInt(-1);
       }
-      catch (IOException paramBundle)
-      {
-        throw new VersionedParcel.ParcelException(paramBundle);
-      }
+      return;
+    }
+    catch (IOException paramBundle)
+    {
+      paramBundle = new VersionedParcel.ParcelException(paramBundle);
+    }
+    for (;;)
+    {
+      throw paramBundle;
     }
   }
   
@@ -496,9 +505,10 @@ class VersionedParcelStream
   
   protected void writeCharSequence(CharSequence paramCharSequence)
   {
-    if (!this.mIgnoreParcelables) {
-      throw new RuntimeException("CharSequence cannot be written to an OutputStream");
+    if (this.mIgnoreParcelables) {
+      return;
     }
+    throw new RuntimeException("CharSequence cannot be written to an OutputStream");
   }
   
   public void writeDouble(double paramDouble)
@@ -555,9 +565,10 @@ class VersionedParcelStream
   
   public void writeParcelable(Parcelable paramParcelable)
   {
-    if (!this.mIgnoreParcelables) {
-      throw new RuntimeException("Parcelables cannot be written to an OutputStream");
+    if (this.mIgnoreParcelables) {
+      return;
     }
+    throw new RuntimeException("Parcelables cannot be written to an OutputStream");
   }
   
   public void writeString(String paramString)
@@ -579,21 +590,23 @@ class VersionedParcelStream
   
   public void writeStrongBinder(IBinder paramIBinder)
   {
-    if (!this.mIgnoreParcelables) {
-      throw new RuntimeException("Binders cannot be written to an OutputStream");
+    if (this.mIgnoreParcelables) {
+      return;
     }
+    throw new RuntimeException("Binders cannot be written to an OutputStream");
   }
   
   public void writeStrongInterface(IInterface paramIInterface)
   {
-    if (!this.mIgnoreParcelables) {
-      throw new RuntimeException("Binders cannot be written to an OutputStream");
+    if (this.mIgnoreParcelables) {
+      return;
     }
+    throw new RuntimeException("Binders cannot be written to an OutputStream");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.versionedparcelable.VersionedParcelStream
  * JD-Core Version:    0.7.0.1
  */

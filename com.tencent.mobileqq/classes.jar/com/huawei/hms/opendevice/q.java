@@ -1,132 +1,36 @@
 package com.huawei.hms.opendevice;
 
 import android.content.Context;
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
-import android.os.Build.VERSION;
+import com.huawei.hms.aaid.constant.ErrorEnum;
+import com.huawei.hms.common.internal.ResponseErrorCode;
+import com.huawei.hms.support.api.client.Status;
+import com.huawei.hms.support.hianalytics.HiAnalyticsClient;
 
-public class q
+public final class q
 {
-  protected SharedPreferences a;
-  
-  public q(Context paramContext, String paramString)
+  public static String a(Context paramContext, String paramString)
   {
-    if (paramContext == null) {
-      throw new NullPointerException("context is null!");
-    }
-    Context localContext = paramContext;
-    SharedPreferences localSharedPreferences;
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      localContext = paramContext.createDeviceProtectedStorageContext();
-      localSharedPreferences = localContext.getSharedPreferences("move_to_de_records", 0);
-      if (localSharedPreferences.getBoolean(paramString, false)) {
-        break label99;
-      }
-      if (localContext.moveSharedPreferencesFrom(paramContext, paramString)) {
-        break label76;
-      }
-      localContext = paramContext;
-    }
-    label76:
-    label99:
-    for (;;)
-    {
-      this.a = localContext.getSharedPreferences(paramString, 0);
-      return;
-      paramContext = localSharedPreferences.edit();
-      paramContext.putBoolean(paramString, true);
-      paramContext.apply();
-    }
+    return HiAnalyticsClient.reportEntry(paramContext, paramString, 50101300);
   }
   
-  public void a(String paramString, Long paramLong)
+  public static void a(Context paramContext, String paramString, ResponseErrorCode paramResponseErrorCode)
   {
-    if (this.a == null) {}
-    SharedPreferences.Editor localEditor;
-    do
-    {
-      return;
-      localEditor = this.a.edit();
-    } while (localEditor == null);
-    localEditor.putLong(paramString, paramLong.longValue()).commit();
+    HiAnalyticsClient.reportExit(paramContext, paramString, paramResponseErrorCode.getTransactionId(), paramResponseErrorCode.getStatusCode(), paramResponseErrorCode.getErrorCode(), 50101300);
   }
   
-  public void a(String paramString, boolean paramBoolean)
+  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt)
   {
-    if (this.a == null) {}
-    SharedPreferences.Editor localEditor;
-    do
-    {
-      return;
-      localEditor = this.a.edit();
-    } while (localEditor == null);
-    localEditor.putBoolean(paramString, paramBoolean).commit();
+    HiAnalyticsClient.reportExit(paramContext, paramString1, paramString2, Status.SUCCESS.getStatusCode(), paramInt, 50101300);
   }
   
-  public boolean a(String paramString)
+  public static void a(Context paramContext, String paramString1, String paramString2, ErrorEnum paramErrorEnum)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      bool1 = bool2;
-      if (this.a.getBoolean(paramString, false)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
-  }
-  
-  public boolean a(String paramString1, String paramString2)
-  {
-    if (this.a == null) {}
-    SharedPreferences.Editor localEditor;
-    do
-    {
-      return false;
-      localEditor = this.a.edit();
-    } while (localEditor == null);
-    return localEditor.putString(paramString1, paramString2).commit();
-  }
-  
-  public String b(String paramString)
-  {
-    if (this.a != null) {
-      return this.a.getString(paramString, "");
-    }
-    return "";
-  }
-  
-  public long c(String paramString)
-  {
-    long l = 0L;
-    if (this.a != null) {
-      l = this.a.getLong(paramString, 0L);
-    }
-    return l;
-  }
-  
-  public boolean d(String paramString)
-  {
-    return (this.a != null) && (this.a.contains(paramString));
-  }
-  
-  public boolean e(String paramString)
-  {
-    if ((this.a != null) && (this.a.contains(paramString)))
-    {
-      SharedPreferences.Editor localEditor = this.a.edit();
-      if (localEditor != null) {
-        return localEditor.remove(paramString).commit();
-      }
-    }
-    return false;
+    HiAnalyticsClient.reportExit(paramContext, paramString1, paramString2, Status.SUCCESS.getStatusCode(), paramErrorEnum.getExternalCode(), 50101300);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.opendevice.q
  * JD-Core Version:    0.7.0.1
  */

@@ -19,10 +19,15 @@ public class ExposureFilter
   
   private float transLevel2Value(float paramFloat)
   {
+    float f;
     if (paramFloat < 50.0F) {
-      return (paramFloat - 50.0F) / 50.0F * Math.abs(-2.0F);
+      f = (paramFloat - 50.0F) / 50.0F;
     }
-    return (paramFloat - 50.0F) / 50.0F * Math.abs(1.5F);
+    for (paramFloat = Math.abs(-2.0F);; paramFloat = Math.abs(1.5F))
+    {
+      return f * paramFloat;
+      f = (paramFloat - 50.0F) / 50.0F;
+    }
   }
   
   public boolean needRender()
@@ -44,7 +49,7 @@ public class ExposureFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.ExposureFilter
  * JD-Core Version:    0.7.0.1
  */

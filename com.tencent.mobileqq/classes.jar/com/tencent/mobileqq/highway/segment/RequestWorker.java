@@ -52,21 +52,19 @@ public class RequestWorker
   
   private void addHwRequest(HwRequest paramHwRequest)
   {
-    int i = 2;
     int j = paramHwRequest.getPriority();
-    if (j + 0 > 3) {}
-    for (;;)
+    int i = j;
+    if (j + 0 > 3) {
+      i = 2;
+    }
+    synchronized (this.priorityList)
     {
-      synchronized (this.priorityList)
-      {
-        paramHwRequest.status.set(2);
-        ((List)this.priorityList.get(i)).add(paramHwRequest);
-        if (paramHwRequest.getPriority() > 0) {
-          this.mCurrentRequests += 1;
-        }
-        return;
+      paramHwRequest.status.set(2);
+      ((List)this.priorityList.get(i)).add(paramHwRequest);
+      if (paramHwRequest.getPriority() > 0) {
+        this.mCurrentRequests += 1;
       }
-      i = j;
+      return;
     }
   }
   
@@ -77,32 +75,40 @@ public class RequestWorker
     for (;;)
     {
       if (i < 3) {}
-      Iterator localIterator;
       try
       {
         ((List)this.priorityList.get(i)).clear();
         i += 1;
       }
-      finally {}
+      finally
+      {
+        Iterator localIterator;
+        break label117;
+      }
     }
     synchronized (this.sentRequests)
     {
       localIterator = this.sentRequests.values().iterator();
-      if (localIterator.hasNext()) {
+      while (localIterator.hasNext()) {
         ((HwRequest)localIterator.next()).isCancel.set(true);
       }
+      this.sentRequests.clear();
+      this.sendUrgentHB.clear();
+      return;
     }
-    this.sentRequests.clear();
-    this.sendUrgentHB.clear();
+    label117:
+    for (;;)
+    {
+      throw localObject3;
+    }
   }
   
   private void cancelRequestByTrans(Transaction paramTransaction)
   {
     Object localObject2 = new ArrayList();
-    Object localObject3;
     synchronized (this.priorityList)
     {
-      localObject3 = (List)this.priorityList.get(2);
+      Object localObject3 = (List)this.priorityList.get(2);
       Iterator localIterator = ((List)localObject3).iterator();
       while (localIterator.hasNext())
       {
@@ -114,21 +120,26 @@ public class RequestWorker
           ((ArrayList)localObject2).add(localHwRequest);
         }
       }
-    }
-    ((List)localObject3).removeAll((Collection)localObject2);
-    ((ArrayList)localObject2).clear();
-    synchronized (this.sentRequests)
-    {
-      localObject2 = this.sentRequests.values().iterator();
-      while (((Iterator)localObject2).hasNext())
+      ((List)localObject3).removeAll((Collection)localObject2);
+      ((ArrayList)localObject2).clear();
+      synchronized (this.sentRequests)
       {
-        localObject3 = (HwRequest)((Iterator)localObject2).next();
-        if ((((HwRequest)localObject3).transId == paramTransaction.getTransationId()) && (((HwRequest)localObject3).getPriority() == 2))
+        localObject2 = this.sentRequests.values().iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          ((HwRequest)localObject3).isCancel.set(true);
-          ((HwRequest)localObject3).onCancle();
+          localObject3 = (HwRequest)((Iterator)localObject2).next();
+          if ((((HwRequest)localObject3).transId == paramTransaction.getTransationId()) && (((HwRequest)localObject3).getPriority() == 2))
+          {
+            ((HwRequest)localObject3).isCancel.set(true);
+            ((HwRequest)localObject3).onCancle();
+          }
         }
+        return;
       }
+    }
+    for (;;)
+    {
+      throw paramTransaction;
     }
   }
   
@@ -154,147 +165,159 @@ public class RequestWorker
   
   private void handleConnClosed(int paramInt)
   {
-    ArrayList localArrayList;
     Object localObject3;
-    Object localObject4;
-    for (;;)
+    int j;
+    int m;
+    label698:
+    synchronized (this.sentRequests)
     {
-      synchronized (this.sentRequests)
+      SparseArray localSparseArray = new SparseArray();
+      ArrayList localArrayList = new ArrayList();
+      Object localObject2 = this.sentRequests.values().iterator();
+      Object localObject4;
+      while (((Iterator)localObject2).hasNext())
       {
-        SparseArray localSparseArray = new SparseArray();
-        localArrayList = new ArrayList();
-        localObject2 = this.sentRequests.values().iterator();
-        if (!((Iterator)localObject2).hasNext()) {
-          break;
-        }
         localObject3 = (HwRequest)((Iterator)localObject2).next();
-        if ((((HwRequest)localObject3).isCancel.get()) || (((HwRequest)localObject3).sendConnId != paramInt)) {
-          continue;
+        if (((HwRequest)localObject3).isCancel.get()) {
+          break label698;
         }
-        localObject4 = (IConnection)this.engine.mConnManager.connections.get(Integer.valueOf(paramInt));
-        if (((HwRequest)localObject3).hwCmd.equalsIgnoreCase("PicUp.Echo"))
+        if (((HwRequest)localObject3).sendConnId == paramInt)
         {
-          ((HwRequest)localObject3).isCancel.set(true);
-          ((HwRequest)localObject3).reqListener.handleError(-1003, "ConnClose", (IConnection)localObject4);
+          localObject4 = (IConnection)this.engine.mConnManager.connections.get(Integer.valueOf(paramInt));
+          if (((HwRequest)localObject3).hwCmd.equalsIgnoreCase("PicUp.Echo"))
+          {
+            ((HwRequest)localObject3).isCancel.set(true);
+            ((HwRequest)localObject3).reqListener.handleError(-1003, "ConnClose", (IConnection)localObject4);
+          }
+          else if (((HwRequest)localObject3).hwCmd.equalsIgnoreCase("PicUp.QueryOffset"))
+          {
+            ((HwRequest)localObject3).reqListener.handleError(-1003, "ConnClose", (IConnection)localObject4);
+          }
+          else if ((localObject3 instanceof RequestFilter))
+          {
+            if (((HwRequest)localObject3).retryCount > 1)
+            {
+              this.sentRequests.remove(Integer.valueOf(((HwRequest)localObject3).getHwSeq()));
+              ((HwRequest)localObject3).onError(-1003);
+              return;
+            }
+            ((HwRequest)localObject3).reqListener.handleError(-1003, "ConnClose", (IConnection)localObject4);
+          }
+          else if ((((HwRequest)localObject3).hwCmd.equalsIgnoreCase("PicUp.DataUp")) && (!((HwRequest)localObject3).isCancel.get()) && (((HwRequest)localObject3).status.get() == 3))
+          {
+            localObject4 = this.engine.mTransWorker.getTransactionById(((HwRequest)localObject3).transId);
+            if (localObject4 != null) {
+              localSparseArray.put(((Transaction)localObject4).getTransationId(), localObject4);
+            }
+            localArrayList.add(localObject3);
+          }
         }
       }
-      if (((HwRequest)localObject3).hwCmd.equalsIgnoreCase("PicUp.QueryOffset"))
+      localObject2 = localArrayList.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        ((HwRequest)localObject3).reqListener.handleError(-1003, "ConnClose", (IConnection)localObject4);
+        localObject3 = (HwRequest)((Iterator)localObject2).next();
+        ((HwRequest)localObject3).isCancel.set(true);
+        this.sentRequests.remove(Integer.valueOf(((HwRequest)localObject3).getHwSeq()));
       }
-      else if ((localObject3 instanceof RequestFilter))
+      int k = localSparseArray.size();
+      int i = 0;
+      while (i < k)
       {
-        if (((HwRequest)localObject3).retryCount > 1)
+        localObject2 = (Transaction)localSparseArray.valueAt(i);
+        localObject3 = new byte[((Transaction)localObject2).bitmap.length];
+        localObject4 = localArrayList.iterator();
+        while (((Iterator)localObject4).hasNext())
         {
-          this.sentRequests.remove(Integer.valueOf(((HwRequest)localObject3).getHwSeq()));
-          ((HwRequest)localObject3).onError(-1003);
-          return;
+          HwRequest localHwRequest = (HwRequest)((Iterator)localObject4).next();
+          if (localHwRequest.transId == ((Transaction)localObject2).getTransationId())
+          {
+            Object localObject5 = (RequestDataTrans)localHwRequest;
+            j = ((RequestDataTrans)localObject5).mInfo.bitmapS;
+            m = ((RequestDataTrans)localObject5).mInfo.bitmapE;
+            localObject5 = new StringBuilder();
+            ((StringBuilder)localObject5).append("QueryDebug Waiting Resp : ");
+            ((StringBuilder)localObject5).append(localHwRequest.dumpBaseInfo());
+            BdhLogUtil.LogEvent("R", ((StringBuilder)localObject5).toString());
+            break label701;
+          }
         }
-        ((HwRequest)localObject3).reqListener.handleError(-1003, "ConnClose", (IConnection)localObject4);
-      }
-      else if ((((HwRequest)localObject3).hwCmd.equalsIgnoreCase("PicUp.DataUp")) && (!((HwRequest)localObject3).isCancel.get()) && (((HwRequest)localObject3).status.get() == 3))
-      {
-        localObject4 = this.engine.mTransWorker.getTransactionById(((HwRequest)localObject3).transId);
-        if (localObject4 != null) {
-          localObject1.put(((Transaction)localObject4).getTransationId(), localObject4);
-        }
-        localArrayList.add(localObject3);
-      }
-    }
-    Object localObject2 = localArrayList.iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      localObject3 = (HwRequest)((Iterator)localObject2).next();
-      ((HwRequest)localObject3).isCancel.set(true);
-      this.sentRequests.remove(Integer.valueOf(((HwRequest)localObject3).getHwSeq()));
-    }
-    int k = localObject1.size();
-    int i = 0;
-    if (i < k)
-    {
-      localObject2 = (Transaction)localObject1.valueAt(i);
-      localObject3 = new byte[((Transaction)localObject2).bitmap.length];
-      localObject4 = localArrayList.iterator();
-    }
-    for (;;)
-    {
-      int j;
-      int m;
-      if (((Iterator)localObject4).hasNext())
-      {
-        HwRequest localHwRequest = (HwRequest)((Iterator)localObject4).next();
-        if (localHwRequest.transId != ((Transaction)localObject2).getTransationId()) {
-          continue;
-        }
-        RequestDataTrans localRequestDataTrans = (RequestDataTrans)localHwRequest;
-        j = localRequestDataTrans.mInfo.bitmapS;
-        m = localRequestDataTrans.mInfo.bitmapE;
-        BdhLogUtil.LogEvent("R", "QueryDebug Waiting Resp : " + localHwRequest.dumpBaseInfo());
-      }
-      else
-      {
-        BdhLogUtil.LogEvent("R", "QueryDebug Before Query : TransId:" + ((Transaction)localObject2).getTransationId() + " CopyBitmap:" + Arrays.toString((byte[])localObject3) + " CurrentBitmap:" + Arrays.toString(((Transaction)localObject2).bitmap));
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("QueryDebug Before Query : TransId:");
+        ((StringBuilder)localObject4).append(((Transaction)localObject2).getTransationId());
+        ((StringBuilder)localObject4).append(" CopyBitmap:");
+        ((StringBuilder)localObject4).append(Arrays.toString((byte[])localObject3));
+        ((StringBuilder)localObject4).append(" CurrentBitmap:");
+        ((StringBuilder)localObject4).append(Arrays.toString(((Transaction)localObject2).bitmap));
+        BdhLogUtil.LogEvent("R", ((StringBuilder)localObject4).toString());
         sendInfoQueryRequest((Transaction)localObject2, (byte[])localObject3);
         i += 1;
-        break;
-        if ((k == 0) && (this.engine.mTransWorker.getTransactionNum() > 0)) {
-          this.engine.mConnManager.wakeupConnectionToWrite(this.mCurrentRequests, false);
-        }
-        this.sendUrgentHB.remove(Integer.valueOf(paramInt));
-        return;
       }
-      while (j <= m)
-      {
-        localObject3[j] = 2;
-        j += 1;
+      if ((k == 0) && (this.engine.mTransWorker.getTransactionNum() > 0)) {
+        this.engine.mConnManager.wakeupConnectionToWrite(this.mCurrentRequests, false);
       }
+      this.sendUrgentHB.remove(Integer.valueOf(paramInt));
+      return;
+    }
+    label701:
+    while (j <= m)
+    {
+      localObject3[j] = 2;
+      j += 1;
     }
   }
   
   private void handleResp(List<HwResponse> paramList)
   {
     Iterator localIterator = paramList.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       HwResponse localHwResponse = (HwResponse)localIterator.next();
       HwRequest localHwRequest = (HwRequest)this.sentRequests.get(Integer.valueOf(localHwResponse.hwSeq));
-      Object localObject = new StringBuilder().append("HandleResp : Resp.hwSeq:").append(localHwResponse.hwSeq).append(" SegmentResp:").append(localHwResponse.segmentResp).append(" FIN:");
-      if (localHwResponse.segmentResp != null)
-      {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("HandleResp : Resp.hwSeq:");
+      ((StringBuilder)localObject).append(localHwResponse.hwSeq);
+      ((StringBuilder)localObject).append(" SegmentResp:");
+      ((StringBuilder)localObject).append(localHwResponse.segmentResp);
+      ((StringBuilder)localObject).append(" FIN:");
+      paramList = localHwResponse.segmentResp;
+      String str = "null";
+      if (paramList != null) {
         paramList = Integer.valueOf(localHwResponse.segmentResp.uint32_flag.get());
-        label112:
-        BdhLogUtil.LogEvent("R", paramList);
+      } else {
+        paramList = "null";
+      }
+      ((StringBuilder)localObject).append(paramList);
+      BdhLogUtil.LogEvent("R", ((StringBuilder)localObject).toString());
+      paramList = localHwRequest;
+      if (localHwRequest == null)
+      {
+        localObject = this.engine.mTransWorker.getTransactionById(localHwResponse.mTransId);
         paramList = localHwRequest;
-        if (localHwRequest == null)
+        if (localObject != null)
         {
-          localObject = this.engine.mTransWorker.getTransactionById(localHwResponse.mTransId);
+          localHwRequest = (HwRequest)((Transaction)localObject).getRetryRequests().get(Integer.valueOf(localHwResponse.hwSeq));
           paramList = localHwRequest;
-          if (localObject != null)
+          if (localHwRequest != null)
           {
-            localHwRequest = (HwRequest)((Transaction)localObject).getRetryRequests().get(Integer.valueOf(localHwResponse.hwSeq));
-            paramList = localHwRequest;
-            if (localHwRequest != null)
-            {
-              localObject = new StringBuilder().append("HandleRetryRequestsResp : Resp.hwSeq:").append(localHwResponse.hwSeq).append(" SegmentResp:").append(localHwResponse.segmentResp).append(" FIN:");
-              if (localHwResponse.segmentResp == null) {
-                break label298;
-              }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("HandleRetryRequestsResp : Resp.hwSeq:");
+            ((StringBuilder)localObject).append(localHwResponse.hwSeq);
+            ((StringBuilder)localObject).append(" SegmentResp:");
+            ((StringBuilder)localObject).append(localHwResponse.segmentResp);
+            ((StringBuilder)localObject).append(" FIN:");
+            paramList = str;
+            if (localHwResponse.segmentResp != null) {
+              paramList = Integer.valueOf(localHwResponse.segmentResp.uint32_flag.get());
             }
+            ((StringBuilder)localObject).append(paramList);
+            BdhLogUtil.LogEvent("R", ((StringBuilder)localObject).toString());
+            paramList = localHwRequest;
           }
         }
       }
-      label298:
-      for (paramList = Integer.valueOf(localHwResponse.segmentResp.uint32_flag.get());; paramList = "null")
-      {
-        BdhLogUtil.LogEvent("R", paramList);
-        paramList = localHwRequest;
-        if ((paramList == null) || (paramList.reqListener == null)) {
-          break;
-        }
+      if ((paramList != null) && (paramList.reqListener != null)) {
         paramList.reqListener.handleResponse(localHwResponse);
-        break;
-        paramList = "null";
-        break label112;
       }
     }
     prepareRequests();
@@ -302,38 +325,53 @@ public class RequestWorker
   
   private void prepareRequests()
   {
-    Object localObject = this.engine.getCurrentConfig();
-    int i = ((List)this.priorityList.get(2)).size();
-    i = this.sentRequests.size() + i;
-    long l = ((HwNetSegConf)localObject).segNum;
-    int j;
-    if (l > 8L)
+    Object localObject1 = this.engine.getCurrentConfig();
+    int i = ((List)this.priorityList.get(2)).size() + this.sentRequests.size();
+    long l2 = ((HwNetSegConf)localObject1).segNum;
+    long l1 = l2;
+    if (l2 > 8L)
     {
-      QLog.i("BDH_LOG", 1, "seg num beyond default,value :" + l);
-      l = 8L;
-      j = 0;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("seg num beyond default,value :");
+      ((StringBuilder)localObject1).append(l2);
+      QLog.i("BDH_LOG", 1, ((StringBuilder)localObject1).toString());
+      l1 = 8L;
     }
-    for (;;)
+    for (int j = 0; i < l1; j = 1)
     {
-      if (i < l)
-      {
-        localObject = this.engine.mTransWorker.pullNextSegment(this.engine.getCurrentBuzConfigs());
-        if (localObject != null)
-        {
-          RequestDataTrans localRequestDataTrans = new RequestDataTrans(((DataTransInfo)localObject).parent.peerUin, "PicUp.DataUp", ((DataTransInfo)localObject).parent.mBuzCmdId, (DataTransInfo)localObject, ((DataTransInfo)localObject).parent.ticket, ((DataTransInfo)localObject).parent.getTransationId(), 30000L);
-          addHwRequest(localRequestDataTrans);
-          i += 1;
-          ((DataTransInfo)localObject).parent.TRACKER.logStep("QUEUE", " SLICEINFO Start:" + ((DataTransInfo)localObject).bitmapS + " End:" + ((DataTransInfo)localObject).bitmapE + " Seq:" + localRequestDataTrans.getHwSeq());
-          BdhLogUtil.LogEvent("R", "PrepareRequests : T_Id:" + ((DataTransInfo)localObject).parent.getTransationId() + " Offset:" + ((DataTransInfo)localObject).offset + " Len:" + ((DataTransInfo)localObject).length + " HwSeq:" + localRequestDataTrans.getHwSeq() + " Status:" + localRequestDataTrans.status.get() + " dataSize:" + i);
-          j = 1;
-          continue;
-        }
+      localObject1 = this.engine.mTransWorker.pullNextSegment(this.engine.getCurrentBuzConfigs());
+      if (localObject1 == null) {
+        break;
       }
-      if (j != 0) {
-        this.engine.mConnManager.wakeupConnectionToWrite(this.mCurrentRequests, false);
-      }
-      return;
-      j = 0;
+      RequestDataTrans localRequestDataTrans = new RequestDataTrans(((DataTransInfo)localObject1).parent.peerUin, "PicUp.DataUp", ((DataTransInfo)localObject1).parent.mBuzCmdId, (DataTransInfo)localObject1, ((DataTransInfo)localObject1).parent.ticket, ((DataTransInfo)localObject1).parent.getTransationId(), 30000L);
+      addHwRequest(localRequestDataTrans);
+      i += 1;
+      Object localObject2 = ((DataTransInfo)localObject1).parent.TRACKER;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" SLICEINFO Start:");
+      localStringBuilder.append(((DataTransInfo)localObject1).bitmapS);
+      localStringBuilder.append(" End:");
+      localStringBuilder.append(((DataTransInfo)localObject1).bitmapE);
+      localStringBuilder.append(" Seq:");
+      localStringBuilder.append(localRequestDataTrans.getHwSeq());
+      ((Tracker)localObject2).logStep("QUEUE", localStringBuilder.toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("PrepareRequests : T_Id:");
+      ((StringBuilder)localObject2).append(((DataTransInfo)localObject1).parent.getTransationId());
+      ((StringBuilder)localObject2).append(" Offset:");
+      ((StringBuilder)localObject2).append(((DataTransInfo)localObject1).offset);
+      ((StringBuilder)localObject2).append(" Len:");
+      ((StringBuilder)localObject2).append(((DataTransInfo)localObject1).length);
+      ((StringBuilder)localObject2).append(" HwSeq:");
+      ((StringBuilder)localObject2).append(localRequestDataTrans.getHwSeq());
+      ((StringBuilder)localObject2).append(" Status:");
+      ((StringBuilder)localObject2).append(localRequestDataTrans.status.get());
+      ((StringBuilder)localObject2).append(" dataSize:");
+      ((StringBuilder)localObject2).append(i);
+      BdhLogUtil.LogEvent("R", ((StringBuilder)localObject2).toString());
+    }
+    if (j != 0) {
+      this.engine.mConnManager.wakeupConnectionToWrite(this.mCurrentRequests, false);
     }
   }
   
@@ -344,13 +382,11 @@ public class RequestWorker
     synchronized (this.priorityList)
     {
       ((List)this.priorityList.get(2)).remove(paramHwRequest);
-    }
-    synchronized (this.sentRequests)
-    {
-      this.sentRequests.remove(paramHwRequest);
-      return;
-      paramHwRequest = finally;
-      throw paramHwRequest;
+      synchronized (this.sentRequests)
+      {
+        this.sentRequests.remove(paramHwRequest);
+        return;
+      }
     }
   }
   
@@ -359,158 +395,159 @@ public class RequestWorker
     if (!this.mWorking.get()) {
       return null;
     }
-    ArrayList localArrayList = new ArrayList();
+    Object localObject3 = new ArrayList();
+    int i;
+    label583:
+    label603:
+    label606:
     synchronized (this.sentRequests)
     {
-      localObject6 = this.sentRequests.values().iterator();
-      while (((Iterator)localObject6).hasNext())
+      Object localObject5 = this.sentRequests.values().iterator();
+      while (((Iterator)localObject5).hasNext())
       {
-        localObject7 = (HwRequest)((Iterator)localObject6).next();
-        if (((HwRequest)localObject7).isCancel.get()) {
-          localArrayList.add(Integer.valueOf(((HwRequest)localObject7).getHwSeq()));
+        localObject6 = (HwRequest)((Iterator)localObject5).next();
+        if (((HwRequest)localObject6).isCancel.get()) {
+          ((ArrayList)localObject3).add(Integer.valueOf(((HwRequest)localObject6).getHwSeq()));
         }
       }
-    }
-    Object localObject5 = localObject4.iterator();
-    while (((Iterator)localObject5).hasNext())
-    {
-      i = ((Integer)((Iterator)localObject5).next()).intValue();
-      this.sentRequests.remove(Integer.valueOf(i));
-    }
-    ??? = null;
-    Object localObject7 = new ArrayList();
-    Object localObject6 = this.priorityList;
-    int i = 0;
-    localObject5 = ???;
-    List localList;
-    label313:
-    Object localObject3;
-    if (i <= paramInt2)
-    {
+      localObject3 = ((ArrayList)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
+      {
+        i = ((Integer)((Iterator)localObject3).next()).intValue();
+        this.sentRequests.remove(Integer.valueOf(i));
+      }
+      Object localObject6 = new ArrayList();
+      localObject5 = this.priorityList;
+      ??? = null;
+      i = 0;
+      localObject3 = ???;
+      if (i <= paramInt2) {}
       try
       {
-        localList = (List)this.priorityList.get(i);
-        localObject5 = ???;
+        List localList = (List)this.priorityList.get(i);
+        localObject3 = ???;
         if (localList.size() == 0) {
-          break label585;
+          break label606;
         }
-        if (i == 0) {
-          break label408;
-        }
-        ??? = (HwRequest)localList.remove(0);
-        if (((HwRequest)???).status.get() == 3)
+        if (i != 0)
         {
-          localObject5 = ???;
-          break label585;
+          ??? = (HwRequest)localList.remove(0);
+          if (((HwRequest)???).status.get() == 3)
+          {
+            localObject3 = ???;
+            break label606;
+          }
+          localObject3 = ???;
+          if ((??? instanceof RequestDataTrans))
+          {
+            localObject3 = ???;
+            if (BdhSegTimeoutUtil.sEnableDynTimeout == 1)
+            {
+              paramLong1 = BdhSegTimeoutUtil.calculateTimeout(this.engine.getAppContext(), (RequestDataTrans)???, paramLong2, paramInt3, paramLong1);
+              localObject3 = ???;
+              if (paramLong1 > 1000L)
+              {
+                ((HwRequest)???).timeOut = paramLong1;
+                localObject3 = ???;
+              }
+            }
+          }
         }
-        localObject5 = ???;
-        if (!(??? instanceof RequestDataTrans)) {
-          break label575;
-        }
-        localObject5 = ???;
-        if (BdhSegTimeoutUtil.sEnableDynTimeout != 1) {
-          break label575;
-        }
-        paramLong1 = BdhSegTimeoutUtil.calculateTimeout(this.engine.getAppContext(), (RequestDataTrans)???, paramLong2, paramInt3, paramLong1);
-        if (paramLong1 <= 1000L) {
-          break label598;
-        }
-        ((HwRequest)???).timeOut = paramLong1;
-      }
-      finally {}
-      if (??? != null)
-      {
-        if (((HwRequest)???).getPriority() > 0) {
-          this.mCurrentRequests -= 1;
-        }
-        ((HwRequest)???).updateStaus(3);
-        this.sentRequests.put(Integer.valueOf(((HwRequest)???).getHwSeq()), ???);
-        if (((HwRequest)???).reqListener == null) {
-          ((HwRequest)???).reqListener = new RequestWorker.RequestListener(this, (HwRequest)???);
-        }
-        ((HwRequest)???).reqListener.handleSendBegin(paramInt1);
-      }
-      return ???;
-      label408:
-      Iterator localIterator = localList.iterator();
-      do
-      {
-        for (;;)
+        else
         {
-          localObject5 = localObject2;
-          if (!localIterator.hasNext()) {
-            break label547;
+          Object localObject7 = localList.iterator();
+          do
+          {
+            for (;;)
+            {
+              if (!((Iterator)localObject7).hasNext()) {
+                break label603;
+              }
+              localObject3 = (HwRequest)((Iterator)localObject7).next();
+              if (this.engine.mConnManager.connections.containsKey(Integer.valueOf(((RequestHeartBreak)localObject3).connId))) {
+                break;
+              }
+              ((ArrayList)localObject6).add(localObject3);
+            }
+          } while (((RequestHeartBreak)localObject3).connId != paramInt1);
+          ??? = localObject3;
+          if ((localObject3 instanceof RequestHeartBreak))
+          {
+            localObject7 = (RequestHeartBreak)localObject3;
+            ??? = localObject3;
+            if (((RequestHeartBreak)localObject7).isUrgent)
+            {
+              long l = BdhSegTimeoutUtil.getUrgentHbTimeout(this.engine.getAppContext());
+              ??? = localObject3;
+              if (l > 1000L)
+              {
+                ((RequestHeartBreak)localObject7).timeOut = l;
+                ??? = localObject3;
+              }
+            }
           }
-          localObject5 = (HwRequest)localIterator.next();
-          if (this.engine.mConnManager.connections.containsKey(Integer.valueOf(((RequestHeartBreak)localObject5).connId))) {
-            break;
+          if (??? != null) {
+            localList.remove(???);
           }
-          ((ArrayList)localObject7).add(localObject5);
+          localList.removeAll((Collection)localObject6);
+          localObject3 = ???;
+          break label606;
         }
-      } while (((RequestHeartBreak)localObject5).connId != paramInt1);
-      if (!(localObject5 instanceof RequestHeartBreak)) {
-        break label582;
+        if (localObject3 != null)
+        {
+          if (((HwRequest)localObject3).getPriority() > 0) {
+            this.mCurrentRequests -= 1;
+          }
+          ((HwRequest)localObject3).updateStaus(3);
+          this.sentRequests.put(Integer.valueOf(((HwRequest)localObject3).getHwSeq()), localObject3);
+          if (((HwRequest)localObject3).reqListener == null) {
+            ((HwRequest)localObject3).reqListener = new RequestWorker.RequestListener(this, (HwRequest)localObject3);
+          }
+          ((HwRequest)localObject3).reqListener.handleSendBegin(paramInt1);
+        }
+        return localObject3;
       }
-      localObject3 = (RequestHeartBreak)localObject5;
-      if (!((RequestHeartBreak)localObject3).isUrgent) {
-        break label601;
+      finally
+      {
+        break label583;
       }
-      long l = BdhSegTimeoutUtil.getUrgentHbTimeout(this.engine.getAppContext());
-      if (l <= 1000L) {
-        break label601;
-      }
-      ((RequestHeartBreak)localObject3).timeOut = l;
-      break label601;
-    }
-    label547:
-    label575:
-    label582:
-    label585:
-    label598:
-    label601:
-    for (;;)
-    {
-      if (localObject5 != null) {
-        localList.remove(localObject5);
-      }
-      localList.removeAll((Collection)localObject7);
-      break label585;
-      localObject3 = localObject5;
-      break label313;
-      continue;
-      i += 1;
-      localObject3 = localObject5;
-      break;
-      break label313;
+      throw ((Throwable)???);
     }
   }
   
   public void notifyTransactionChange(int paramInt, Transaction paramTransaction)
   {
     Object localObject = this.mRequestHandler;
-    if ((!this.mWorking.get()) || (localObject == null)) {}
-    do
+    if (this.mWorking.get())
     {
-      return;
+      if (localObject == null) {
+        return;
+      }
       if (paramInt == 1)
       {
         ((RequestWorker.RequestHandler)localObject).sendEmptyMessage(1);
         return;
       }
-    } while (paramInt != 2);
-    localObject = Message.obtain(this.mRequestHandler);
-    ((Message)localObject).what = 3;
-    ((Message)localObject).obj = paramTransaction;
-    ((Message)localObject).sendToTarget();
+      if (paramInt == 2)
+      {
+        localObject = Message.obtain(this.mRequestHandler);
+        ((Message)localObject).what = 3;
+        ((Message)localObject).obj = paramTransaction;
+        ((Message)localObject).sendToTarget();
+      }
+    }
   }
   
   public void onConnClose(int paramInt)
   {
     RequestWorker.RequestHandler localRequestHandler = this.mRequestHandler;
-    if ((!this.mWorking.get()) || (localRequestHandler == null)) {
-      return;
+    if (this.mWorking.get())
+    {
+      if (localRequestHandler == null) {
+        return;
+      }
+      localRequestHandler.post(new RequestWorker.1(this, paramInt));
     }
-    localRequestHandler.post(new RequestWorker.1(this, paramInt));
   }
   
   public void onConnConnected(int paramInt) {}
@@ -519,8 +556,12 @@ public class RequestWorker
   
   public void onDestroy()
   {
-    if ((this.mWorking.compareAndSet(true, false)) && (this.mRequestHandler != null)) {
-      this.mRequestHandler.sendEmptyMessage(2);
+    if (this.mWorking.compareAndSet(true, false))
+    {
+      RequestWorker.RequestHandler localRequestHandler = this.mRequestHandler;
+      if (localRequestHandler != null) {
+        localRequestHandler.sendEmptyMessage(2);
+      }
     }
   }
   
@@ -541,17 +582,23 @@ public class RequestWorker
   
   public void onNetworkChanged(boolean paramBoolean)
   {
-    BdhLogUtil.LogEvent("N", "RequestWorker onNetworkChanged : about to clear the request - hasNetwork:" + paramBoolean);
-    RequestWorker.RequestHandler localRequestHandler = this.mRequestHandler;
-    if ((!paramBoolean) || (!this.mWorking.get()) || (localRequestHandler == null)) {
-      return;
-    }
-    if ((!this.sentRequests.isEmpty()) || (this.mCurrentRequests != 0))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("RequestWorker onNetworkChanged : about to clear the request - hasNetwork:");
+    ((StringBuilder)localObject).append(paramBoolean);
+    BdhLogUtil.LogEvent("N", ((StringBuilder)localObject).toString());
+    localObject = this.mRequestHandler;
+    if ((paramBoolean) && (this.mWorking.get()))
     {
+      if (localObject == null) {
+        return;
+      }
+      if ((this.sentRequests.isEmpty()) && (this.mCurrentRequests == 0))
+      {
+        ((RequestWorker.RequestHandler)localObject).obtainMessage(1).sendToTarget();
+        return;
+      }
       sendConnectRequest(0L, false);
-      return;
     }
-    localRequestHandler.obtainMessage(1).sendToTarget();
   }
   
   public void onReceiveResp(List<HwResponse> paramList)
@@ -587,27 +634,25 @@ public class RequestWorker
   
   public void sendConnectRequest(long paramLong, boolean paramBoolean)
   {
-    int i = 5;
     RequestWorker.RequestHandler localRequestHandler = this.mRequestHandler;
-    if ((!this.mWorking.get()) || (localRequestHandler == null)) {
-      return;
-    }
-    if (paramLong > 0L)
+    if (this.mWorking.get())
     {
-      if (paramBoolean) {}
-      for (;;)
+      if (localRequestHandler == null) {
+        return;
+      }
+      int i = 5;
+      if (paramLong > 0L)
       {
+        if (!paramBoolean) {
+          i = 4;
+        }
         localRequestHandler.sendMessageDelayed(localRequestHandler.obtainMessage(i), paramLong);
         return;
+      }
+      if (!paramBoolean) {
         i = 4;
       }
-    }
-    if (paramBoolean) {}
-    for (;;)
-    {
       localRequestHandler.obtainMessage(i).sendToTarget();
-      return;
-      i = 4;
     }
   }
   
@@ -617,34 +662,51 @@ public class RequestWorker
     paramTransaction.mCurrentQueryFinishCount += 1;
     paramArrayOfByte.mQueryHoleFinishIndex = paramInt;
     addHwRequest(paramArrayOfByte);
-    BdhLogUtil.LogEvent("R", "sendFinishQueryRequest : " + paramArrayOfByte.dumpBaseInfo() + " size:" + this.mCurrentRequests + " queryIndex:" + paramArrayOfByte.mQueryHoleFinishIndex);
+    paramTransaction = new StringBuilder();
+    paramTransaction.append("sendFinishQueryRequest : ");
+    paramTransaction.append(paramArrayOfByte.dumpBaseInfo());
+    paramTransaction.append(" size:");
+    paramTransaction.append(this.mCurrentRequests);
+    paramTransaction.append(" queryIndex:");
+    paramTransaction.append(paramArrayOfByte.mQueryHoleFinishIndex);
+    BdhLogUtil.LogEvent("R", paramTransaction.toString());
     this.engine.mConnManager.wakeupConnectionToWrite(this.mCurrentRequests, false);
   }
   
   public void sendHeartBreak(int paramInt1, boolean paramBoolean1, boolean paramBoolean2, int paramInt2)
   {
-    RequestWorker.RequestHandler localRequestHandler = this.mRequestHandler;
-    if ((!this.mWorking.get()) || (localRequestHandler == null)) {
-      return;
-    }
-    Object localObject = new RequestHeartBreak(this.engine.currentUin, "PicUp.Echo", 0, 30000L, paramInt1, paramBoolean1);
-    Runnable localRunnable = (Runnable)this.engine.mConnManager.heartBreaks.remove(Integer.valueOf(paramInt1));
-    if ((paramBoolean2) && (localRunnable != null)) {
-      localRequestHandler.removeCallbacks(localRunnable);
-    }
-    if (paramInt2 == 0)
+    Object localObject1 = this.mRequestHandler;
+    if (this.mWorking.get())
     {
-      addHwRequest((HwRequest)localObject);
-      if (paramBoolean1) {
-        this.sendUrgentHB.put(Integer.valueOf(paramInt1), localObject);
+      if (localObject1 == null) {
+        return;
       }
-      BdhLogUtil.LogEvent("N", "SendHeartBreak : " + ((HwRequest)localObject).dumpBaseInfo() + " size:" + this.mCurrentRequests + " delay:" + paramInt2);
-      this.engine.mConnManager.wakeupConnectionToWrite(this.mCurrentRequests, false);
-      return;
+      Object localObject2 = new RequestHeartBreak(this.engine.currentUin, "PicUp.Echo", 0, 30000L, paramInt1, paramBoolean1);
+      Runnable localRunnable = (Runnable)this.engine.mConnManager.heartBreaks.remove(Integer.valueOf(paramInt1));
+      if ((paramBoolean2) && (localRunnable != null)) {
+        ((RequestWorker.RequestHandler)localObject1).removeCallbacks(localRunnable);
+      }
+      if (paramInt2 == 0)
+      {
+        addHwRequest((HwRequest)localObject2);
+        if (paramBoolean1) {
+          this.sendUrgentHB.put(Integer.valueOf(paramInt1), localObject2);
+        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("SendHeartBreak : ");
+        ((StringBuilder)localObject1).append(((HwRequest)localObject2).dumpBaseInfo());
+        ((StringBuilder)localObject1).append(" size:");
+        ((StringBuilder)localObject1).append(this.mCurrentRequests);
+        ((StringBuilder)localObject1).append(" delay:");
+        ((StringBuilder)localObject1).append(paramInt2);
+        BdhLogUtil.LogEvent("N", ((StringBuilder)localObject1).toString());
+        this.engine.mConnManager.wakeupConnectionToWrite(this.mCurrentRequests, false);
+        return;
+      }
+      localObject2 = new RequestWorker.2(this, paramInt1, (HwRequest)localObject2, paramInt2);
+      ((RequestWorker.RequestHandler)localObject1).postDelayed((Runnable)localObject2, paramInt2);
+      this.engine.mConnManager.heartBreaks.put(Integer.valueOf(paramInt1), localObject2);
     }
-    localObject = new RequestWorker.2(this, paramInt1, (HwRequest)localObject, paramInt2);
-    localRequestHandler.postDelayed((Runnable)localObject, paramInt2);
-    this.engine.mConnManager.heartBreaks.put(Integer.valueOf(paramInt1), localObject);
   }
   
   public void sendInfoQueryFinish(Transaction paramTransaction, byte[] paramArrayOfByte, int paramInt)
@@ -662,13 +724,18 @@ public class RequestWorker
   {
     paramTransaction = new RequestInfoQuery(paramTransaction.peerUin, "PicUp.QueryOffset", paramTransaction.mBuzCmdId, paramTransaction.ticket, paramTransaction, 30000L, paramArrayOfByte);
     addHwRequest(paramTransaction);
-    BdhLogUtil.LogEvent("R", "SendInfoQueryRequest : " + paramTransaction.dumpBaseInfo() + " size:" + this.mCurrentRequests);
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("SendInfoQueryRequest : ");
+    paramArrayOfByte.append(paramTransaction.dumpBaseInfo());
+    paramArrayOfByte.append(" size:");
+    paramArrayOfByte.append(this.mCurrentRequests);
+    BdhLogUtil.LogEvent("R", paramArrayOfByte.toString());
     this.engine.mConnManager.wakeupConnectionToWrite(this.mCurrentRequests, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestWorker
  * JD-Core Version:    0.7.0.1
  */

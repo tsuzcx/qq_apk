@@ -35,14 +35,23 @@ final class TabDragAnimationView$ScaleAnimUpdateListener
     }
     this.jdField_a_of_type_Float = f;
     this.jdField_a_of_type_ComTencentMobileqqWidgetTabDragAnimationView.c();
-    if (QLog.isColorLevel()) {
-      QLog.d(TabDragAnimationView.class.getSimpleName(), 2, "do mScale animation, percent=" + this.jdField_a_of_type_Float + ",reversed=" + this.jdField_a_of_type_Boolean + ",doAnim=" + this.b);
+    if (QLog.isColorLevel())
+    {
+      paramValueAnimator = TabDragAnimationView.class.getSimpleName();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("do mScale animation, percent=");
+      localStringBuilder.append(this.jdField_a_of_type_Float);
+      localStringBuilder.append(",reversed=");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(",doAnim=");
+      localStringBuilder.append(this.b);
+      QLog.d(paramValueAnimator, 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.TabDragAnimationView.ScaleAnimUpdateListener
  * JD-Core Version:    0.7.0.1
  */

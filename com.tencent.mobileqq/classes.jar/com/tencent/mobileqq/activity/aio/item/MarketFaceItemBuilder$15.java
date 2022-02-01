@@ -11,12 +11,12 @@ final class MarketFaceItemBuilder$15
   
   public void run()
   {
-    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131689613), 0).b(this.a.getResources().getDimensionPixelSize(2131299166));
+    QQToast.a(this.a.getApplicationContext(), this.a.getString(2131689645), 0).b(this.a.getResources().getDimensionPixelSize(2131299168));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.MarketFaceItemBuilder.15
  * JD-Core Version:    0.7.0.1
  */

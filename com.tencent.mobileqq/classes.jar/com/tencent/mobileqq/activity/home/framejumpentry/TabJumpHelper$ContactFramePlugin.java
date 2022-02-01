@@ -16,13 +16,13 @@ public class TabJumpHelper$ContactFramePlugin
   {
     paramFrameFragment = (Contacts)paramFrameFragment.a(Contacts.class);
     if (paramFrameFragment != null) {
-      paramFrameFragment.a(true);
+      paramFrameFragment.c(true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.framejumpentry.TabJumpHelper.ContactFramePlugin
  * JD-Core Version:    0.7.0.1
  */

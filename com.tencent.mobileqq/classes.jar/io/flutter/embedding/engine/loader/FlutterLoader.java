@@ -78,92 +78,98 @@ public class FlutterLoader
     if (Looper.myLooper() == Looper.getMainLooper())
     {
       if (this.settings != null) {
-        for (;;)
+        try
         {
-          ArrayList localArrayList;
-          try
+          FlutterLoader.InitResult localInitResult = (FlutterLoader.InitResult)this.initResultFuture.get();
+          ArrayList localArrayList = new ArrayList();
+          localArrayList.add("--icu-symbol-prefix=_binary_icudtl_dat");
+          Object localObject = sNativeLibDir;
+          if (localObject == null)
           {
-            FlutterLoader.InitResult localInitResult = (FlutterLoader.InitResult)this.initResultFuture.get();
-            localArrayList = new ArrayList();
-            localArrayList.add("--icu-symbol-prefix=_binary_icudtl_dat");
-            if (sNativeLibDir == null)
-            {
-              localStringBuilder = new StringBuilder();
-              localStringBuilder.append("--icu-native-lib-path=");
-              localStringBuilder.append(this.flutterApplicationInfo.nativeLibraryDir);
-              localStringBuilder.append(File.separator);
-              localStringBuilder.append("libflutter.so");
-              localArrayList.add(localStringBuilder.toString());
-              if (paramArrayOfString != null) {
-                Collections.addAll(localArrayList, paramArrayOfString);
-              }
-              if (sNativeLibDir != null) {
-                break label529;
-              }
-              paramArrayOfString = new StringBuilder();
-              paramArrayOfString.append("--aot-shared-library-name=");
-              paramArrayOfString.append(this.flutterApplicationInfo.aotSharedLibraryName);
-              localArrayList.add(paramArrayOfString.toString());
-              paramArrayOfString = new StringBuilder();
-              paramArrayOfString.append("--aot-shared-library-name=");
-              paramArrayOfString.append(this.flutterApplicationInfo.nativeLibraryDir);
-              paramArrayOfString.append(File.separator);
-              paramArrayOfString.append(this.flutterApplicationInfo.aotSharedLibraryName);
-              localArrayList.add(paramArrayOfString.toString());
-              paramArrayOfString = new StringBuilder();
-              paramArrayOfString.append("--cache-dir-path=");
-              paramArrayOfString.append(localInitResult.engineCachesPath);
-              localArrayList.add(paramArrayOfString.toString());
-              if (!this.flutterApplicationInfo.clearTextPermitted) {
-                localArrayList.add("--disallow-insecure-connections");
-              }
-              if (this.flutterApplicationInfo.domainNetworkPolicy != null)
-              {
-                paramArrayOfString = new StringBuilder();
-                paramArrayOfString.append("--domain-network-policy=");
-                paramArrayOfString.append(this.flutterApplicationInfo.domainNetworkPolicy);
-                localArrayList.add(paramArrayOfString.toString());
-              }
-              if (this.settings.getLogTag() != null)
-              {
-                paramArrayOfString = new StringBuilder();
-                paramArrayOfString.append("--log-tag=");
-                paramArrayOfString.append(this.settings.getLogTag());
-                localArrayList.add(paramArrayOfString.toString());
-              }
-              long l1 = SystemClock.uptimeMillis();
-              long l2 = this.initStartTimestampMillis;
-              if (FlutterInjector.instance().shouldLoadNative()) {
-                FlutterJNI.nativeInit(paramContext, (String[])localArrayList.toArray(new String[0]), null, localInitResult.appStoragePath, localInitResult.engineCachesPath, l1 - l2);
-              }
-              this.initialized = true;
-              return;
-            }
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("--icu-native-lib-path=");
+            ((StringBuilder)localObject).append(this.flutterApplicationInfo.nativeLibraryDir);
+            ((StringBuilder)localObject).append(File.separator);
+            ((StringBuilder)localObject).append("libflutter.so");
           }
-          catch (Exception paramContext)
+          for (localObject = ((StringBuilder)localObject).toString();; localObject = ((StringBuilder)localObject).toString())
           {
-            Log.e("FlutterLoader", "Flutter initialization failed.", paramContext);
-            throw new RuntimeException(paramContext);
+            localArrayList.add(localObject);
+            break;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("--icu-native-lib-path=");
+            ((StringBuilder)localObject).append(sNativeLibDir);
+            ((StringBuilder)localObject).append(File.separator);
+            ((StringBuilder)localObject).append("libflutter.so");
           }
-          StringBuilder localStringBuilder = new StringBuilder();
-          localStringBuilder.append("--icu-native-lib-path=");
-          localStringBuilder.append(sNativeLibDir);
-          localStringBuilder.append(File.separator);
-          localStringBuilder.append("libflutter.so");
-          localArrayList.add(localStringBuilder.toString());
-          continue;
-          label529:
+          if (paramArrayOfString != null) {
+            Collections.addAll(localArrayList, paramArrayOfString);
+          }
+          paramArrayOfString = sNativeLibDir;
+          if (paramArrayOfString == null)
+          {
+            paramArrayOfString = new StringBuilder();
+            paramArrayOfString.append("--aot-shared-library-name=");
+            paramArrayOfString.append(this.flutterApplicationInfo.aotSharedLibraryName);
+            localArrayList.add(paramArrayOfString.toString());
+            paramArrayOfString = new StringBuilder();
+            paramArrayOfString.append("--aot-shared-library-name=");
+            paramArrayOfString.append(this.flutterApplicationInfo.nativeLibraryDir);
+            paramArrayOfString.append(File.separator);
+            paramArrayOfString.append(this.flutterApplicationInfo.aotSharedLibraryName);
+          }
+          for (paramArrayOfString = paramArrayOfString.toString();; paramArrayOfString = paramArrayOfString.toString())
+          {
+            localArrayList.add(paramArrayOfString);
+            break;
+            paramArrayOfString = new StringBuilder();
+            paramArrayOfString.append("--aot-shared-library-name=");
+            paramArrayOfString.append(sNativeLibDir);
+            paramArrayOfString.append(File.separator);
+            paramArrayOfString.append(this.flutterApplicationInfo.aotSharedLibraryName);
+          }
           paramArrayOfString = new StringBuilder();
-          paramArrayOfString.append("--aot-shared-library-name=");
-          paramArrayOfString.append(sNativeLibDir);
-          paramArrayOfString.append(File.separator);
-          paramArrayOfString.append(this.flutterApplicationInfo.aotSharedLibraryName);
+          paramArrayOfString.append("--cache-dir-path=");
+          paramArrayOfString.append(localInitResult.engineCachesPath);
           localArrayList.add(paramArrayOfString.toString());
+          if (!this.flutterApplicationInfo.clearTextPermitted) {
+            localArrayList.add("--disallow-insecure-connections");
+          }
+          if (this.flutterApplicationInfo.domainNetworkPolicy != null)
+          {
+            paramArrayOfString = new StringBuilder();
+            paramArrayOfString.append("--domain-network-policy=");
+            paramArrayOfString.append(this.flutterApplicationInfo.domainNetworkPolicy);
+            localArrayList.add(paramArrayOfString.toString());
+          }
+          if (this.settings.getLogTag() != null)
+          {
+            paramArrayOfString = new StringBuilder();
+            paramArrayOfString.append("--log-tag=");
+            paramArrayOfString.append(this.settings.getLogTag());
+            localArrayList.add(paramArrayOfString.toString());
+          }
+          long l1 = SystemClock.uptimeMillis();
+          long l2 = this.initStartTimestampMillis;
+          if (FlutterInjector.instance().shouldLoadNative()) {
+            FlutterJNI.nativeInit(paramContext, (String[])localArrayList.toArray(new String[0]), null, localInitResult.appStoragePath, localInitResult.engineCachesPath, l1 - l2);
+          }
+          this.initialized = true;
+          return;
+        }
+        catch (Exception paramContext)
+        {
+          Log.e("FlutterLoader", "Flutter initialization failed.", paramContext);
+          throw new RuntimeException(paramContext);
         }
       }
       throw new IllegalStateException("ensureInitializationComplete must be called after startInitialization");
     }
-    throw new IllegalStateException("ensureInitializationComplete must be called on the main thread");
+    paramContext = new IllegalStateException("ensureInitializationComplete must be called on the main thread");
+    for (;;)
+    {
+      throw paramContext;
+    }
   }
   
   public void ensureInitializationCompleteAsync(@NonNull Context paramContext, @Nullable String[] paramArrayOfString, @NonNull Handler paramHandler, @NonNull Runnable paramRunnable)
@@ -240,7 +246,7 @@ public class FlutterLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.loader.FlutterLoader
  * JD-Core Version:    0.7.0.1
  */

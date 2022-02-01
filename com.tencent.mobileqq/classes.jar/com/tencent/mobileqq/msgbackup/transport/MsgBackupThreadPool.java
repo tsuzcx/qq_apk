@@ -26,7 +26,11 @@ public class MsgBackupThreadPool
     int i = 0;
     while (i < 5)
     {
-      this.jdField_a_of_type_ArrayOfAndroidOsHandlerThread[i] = new HandlerThread("msgbackup_thread_" + i);
+      HandlerThread[] arrayOfHandlerThread = this.jdField_a_of_type_ArrayOfAndroidOsHandlerThread;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("msgbackup_thread_");
+      localStringBuilder.append(i);
+      arrayOfHandlerThread[i] = new HandlerThread(localStringBuilder.toString());
       this.jdField_a_of_type_ArrayOfAndroidOsHandlerThread[i].start();
       this.jdField_a_of_type_ArrayOfAndroidOsHandler[i] = new Handler(this.jdField_a_of_type_ArrayOfAndroidOsHandlerThread[i].getLooper());
       i += 1;
@@ -35,7 +39,7 @@ public class MsgBackupThreadPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.transport.MsgBackupThreadPool
  * JD-Core Version:    0.7.0.1
  */

@@ -17,32 +17,35 @@ public class NearbyObserver
 {
   private void a(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    if (paramObject == null) {}
-    Object localObject;
-    do
-    {
+    if (paramObject == null) {
       return;
-      localObject = (Object[])paramObject;
-    } while (localObject.length < 4);
-    int i = ((Integer)localObject[0]).intValue();
-    if ((localObject[1] instanceof oidb_0x8dd.RspBody)) {}
-    for (paramObject = (oidb_0x8dd.RspBody)localObject[1];; paramObject = null)
+    }
+    Object localObject = (Object[])paramObject;
+    if (localObject.length >= 4)
     {
-      if ((localObject[2] instanceof ToServiceMsg)) {}
-      for (ToServiceMsg localToServiceMsg = (ToServiceMsg)localObject[2];; localToServiceMsg = null)
-      {
-        if ((localObject[3] instanceof List)) {}
-        for (localObject = (List)localObject[3];; localObject = null)
-        {
-          if (paramInt == 1)
-          {
-            b(paramBoolean, i, paramObject, localToServiceMsg, (List)localObject);
-            return;
-          }
-          a(paramBoolean, i, paramObject, localToServiceMsg, (List)localObject);
-          return;
-        }
+      int i = ((Integer)localObject[0]).intValue();
+      if ((localObject[1] instanceof oidb_0x8dd.RspBody)) {
+        paramObject = (oidb_0x8dd.RspBody)localObject[1];
+      } else {
+        paramObject = null;
       }
+      ToServiceMsg localToServiceMsg;
+      if ((localObject[2] instanceof ToServiceMsg)) {
+        localToServiceMsg = (ToServiceMsg)localObject[2];
+      } else {
+        localToServiceMsg = null;
+      }
+      if ((localObject[3] instanceof List)) {
+        localObject = (List)localObject[3];
+      } else {
+        localObject = null;
+      }
+      if (paramInt == 1)
+      {
+        b(paramBoolean, i, paramObject, localToServiceMsg, (List)localObject);
+        return;
+      }
+      a(paramBoolean, i, paramObject, localToServiceMsg, (List)localObject);
     }
   }
   
@@ -74,13 +77,13 @@ public class NearbyObserver
   
   private void b(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return;
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length != 3);
-    a((FromServiceMsg)paramObject[0], (ToServiceMsg)paramObject[1], (Object[])paramObject[2]);
+    }
+    paramObject = (Object[])paramObject;
+    if (paramObject.length == 3) {
+      a((FromServiceMsg)paramObject[0], (ToServiceMsg)paramObject[1], (Object[])paramObject[2]);
+    }
   }
   
   private void b(boolean paramBoolean, Object paramObject)
@@ -210,67 +213,66 @@ public class NearbyObserver
     case 14: 
     default: 
       return;
+    case 22: 
+      a(paramObject);
+      return;
+    case 21: 
+      d(paramBoolean, paramObject);
+      return;
+    case 20: 
+      b();
+      return;
+    case 19: 
+      c(paramBoolean, paramObject);
+      return;
+    case 18: 
+      b(paramBoolean, paramObject);
+      return;
+    case 17: 
+      a(paramBoolean, paramObject);
+      return;
+    case 16: 
+      e(paramBoolean, paramObject);
+      return;
     case 15: 
       b(paramObject);
       return;
-    case 1: 
-    case 13: 
-      a(paramInt, paramBoolean, paramObject);
-      return;
     case 12: 
       a();
-      return;
-    case 3: 
-      j(paramBoolean, paramObject);
-      return;
-    case 4: 
-      a(paramBoolean, (Object[])paramObject);
-      return;
-    case 5: 
-      i(paramBoolean, paramObject);
-      return;
-    case 6: 
-      h(paramBoolean, paramObject);
-      return;
-    case 8: 
-      g(paramBoolean, paramObject);
-      return;
-    case 9: 
-      f(paramBoolean, paramObject);
-      return;
-    case 10: 
-      paramObject = (Object[])paramObject;
-      a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
       return;
     case 11: 
       paramObject = (Object[])paramObject;
       a(paramBoolean, (ArrayList)paramObject[0], (byte[])paramObject[1], ((Integer)paramObject[2]).intValue(), ((Long)paramObject[3]).longValue(), (String)paramObject[4], ((Boolean)paramObject[5]).booleanValue(), ((Long)paramObject[6]).longValue(), ((Long)paramObject[7]).longValue());
       return;
-    case 16: 
-      e(paramBoolean, paramObject);
+    case 10: 
+      paramObject = (Object[])paramObject;
+      a(paramBoolean, (String)paramObject[0], (List)paramObject[1], (String)paramObject[2], ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue());
       return;
-    case 17: 
-      a(paramBoolean, paramObject);
+    case 9: 
+      f(paramBoolean, paramObject);
       return;
-    case 18: 
-      b(paramBoolean, paramObject);
+    case 8: 
+      g(paramBoolean, paramObject);
       return;
-    case 19: 
-      c(paramBoolean, paramObject);
+    case 6: 
+      h(paramBoolean, paramObject);
       return;
-    case 20: 
-      b();
+    case 5: 
+      i(paramBoolean, paramObject);
       return;
-    case 21: 
-      d(paramBoolean, paramObject);
+    case 4: 
+      a(paramBoolean, (Object[])paramObject);
+      return;
+    case 3: 
+      j(paramBoolean, paramObject);
       return;
     }
-    a(paramObject);
+    a(paramInt, paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyObserver
  * JD-Core Version:    0.7.0.1
  */

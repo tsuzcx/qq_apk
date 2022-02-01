@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.apollo.view.opengl;
 
-import android.util.Log;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
 import java.util.ArrayList;
@@ -37,7 +36,10 @@ public class GLThread
   
   GLThread(GLThreadManager paramGLThreadManager, WeakReference<GLRenderView> paramWeakReference)
   {
-    setName("GLThread " + getId());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GLThread ");
+    localStringBuilder.append(getId());
+    setName(localStringBuilder.toString());
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Int = 0;
     this.l = true;
@@ -48,7 +50,19 @@ public class GLThread
   
   private boolean b()
   {
-    return (!this.d) && (this.e) && (!this.f) && (this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0) && ((this.l) || (this.jdField_c_of_type_Int == 1));
+    boolean bool2 = this.d;
+    boolean bool1 = true;
+    if ((!bool2) && (this.e) && (!this.f) && (this.jdField_a_of_type_Int > 0) && (this.jdField_b_of_type_Int > 0))
+    {
+      if (this.l) {
+        return bool1;
+      }
+      if (this.jdField_c_of_type_Int == 1) {
+        return true;
+      }
+    }
+    bool1 = false;
+    return bool1;
   }
   
   private void h()
@@ -91,1000 +105,992 @@ public class GLThread
     //   26: iconst_0
     //   27: putfield 132	com/tencent/mobileqq/apollo/view/opengl/GLThread:m	Z
     //   30: iconst_0
-    //   31: istore 10
-    //   33: aconst_null
-    //   34: astore 23
+    //   31: istore 5
+    //   33: iconst_0
+    //   34: istore 4
     //   36: iconst_0
-    //   37: istore_2
-    //   38: iconst_0
-    //   39: istore 5
-    //   41: aconst_null
-    //   42: astore 22
-    //   44: iconst_0
-    //   45: istore_3
-    //   46: iconst_0
-    //   47: istore_1
-    //   48: aconst_null
-    //   49: astore 21
+    //   37: istore 8
+    //   39: aconst_null
+    //   40: astore 21
+    //   42: iconst_0
+    //   43: istore 6
+    //   45: aconst_null
+    //   46: astore 22
+    //   48: iconst_0
+    //   49: istore 7
     //   51: iconst_0
-    //   52: istore 4
+    //   52: istore 12
     //   54: iconst_0
-    //   55: istore 6
+    //   55: istore 11
     //   57: iconst_0
-    //   58: istore 7
-    //   60: iconst_0
-    //   61: istore 8
-    //   63: iconst_0
-    //   64: istore 9
-    //   66: aload_0
-    //   67: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   70: astore 25
-    //   72: aload 25
-    //   74: monitorenter
-    //   75: iload 10
-    //   77: istore 11
-    //   79: iload 9
-    //   81: istore 12
-    //   83: iload 8
+    //   58: istore_3
+    //   59: iconst_0
+    //   60: istore_2
+    //   61: iconst_0
+    //   62: istore_1
+    //   63: aconst_null
+    //   64: astore 23
+    //   66: iload 4
+    //   68: istore 10
+    //   70: aload_0
+    //   71: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   74: astore 24
+    //   76: aload 24
+    //   78: monitorenter
+    //   79: iload 8
+    //   81: istore 4
+    //   83: iload 10
     //   85: istore 9
-    //   87: iload 7
-    //   89: istore 10
-    //   91: iload 6
-    //   93: istore 8
-    //   95: iload 5
-    //   97: istore 13
-    //   99: aload_0
-    //   100: getfield 134	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_b_of_type_Boolean	Z
-    //   103: ifeq +35 -> 138
-    //   106: aload 25
-    //   108: monitorexit
-    //   109: aload_0
-    //   110: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   113: astore 21
-    //   115: aload 21
-    //   117: monitorenter
-    //   118: aload_0
-    //   119: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
-    //   122: aload_0
-    //   123: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
-    //   126: aload 21
-    //   128: monitorexit
-    //   129: return
-    //   130: astore 22
-    //   132: aload 21
-    //   134: monitorexit
-    //   135: aload 22
-    //   137: athrow
-    //   138: aload_0
-    //   139: getfield 41	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   142: invokevirtual 141	java/util/ArrayList:isEmpty	()Z
-    //   145: ifne +125 -> 270
-    //   148: aload_0
-    //   149: getfield 41	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
-    //   152: iconst_0
-    //   153: invokevirtual 145	java/util/ArrayList:remove	(I)Ljava/lang/Object;
-    //   156: checkcast 147	java/lang/Runnable
-    //   159: astore 24
-    //   161: iload_1
-    //   162: istore 5
-    //   164: iload_3
-    //   165: istore_1
-    //   166: aload 22
-    //   168: astore 21
-    //   170: iload 13
-    //   172: istore 7
-    //   174: iload_2
-    //   175: istore_3
-    //   176: iload 10
-    //   178: istore 6
-    //   180: iload 4
-    //   182: istore_2
-    //   183: aload 24
-    //   185: astore 22
-    //   187: iload 11
-    //   189: istore 10
-    //   191: iload 5
-    //   193: istore 4
-    //   195: iload 12
-    //   197: istore 5
-    //   199: aload 25
-    //   201: monitorexit
-    //   202: aload 22
-    //   204: ifnull +1035 -> 1239
-    //   207: aload 22
-    //   209: invokeinterface 150 1 0
-    //   214: iload_1
-    //   215: istore 13
-    //   217: iload 4
-    //   219: istore_1
-    //   220: aconst_null
-    //   221: astore 24
-    //   223: iload_2
-    //   224: istore 4
-    //   226: iload 6
-    //   228: istore 11
-    //   230: iload 5
-    //   232: istore 12
-    //   234: aload 21
-    //   236: astore 22
-    //   238: aload 24
-    //   240: astore 21
-    //   242: iload_3
-    //   243: istore_2
-    //   244: iload 13
-    //   246: istore_3
-    //   247: iload 7
-    //   249: istore 5
-    //   251: iload 8
-    //   253: istore 6
-    //   255: iload 11
-    //   257: istore 7
-    //   259: iload 9
-    //   261: istore 8
-    //   263: iload 12
-    //   265: istore 9
-    //   267: goto -201 -> 66
-    //   270: aload_0
-    //   271: getfield 104	com/tencent/mobileqq/apollo/view/opengl/GLThread:d	Z
-    //   274: aload_0
-    //   275: getfield 152	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_c_of_type_Boolean	Z
-    //   278: if_icmpeq +1541 -> 1819
-    //   281: aload_0
-    //   282: getfield 152	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_c_of_type_Boolean	Z
-    //   285: istore 19
-    //   287: aload_0
-    //   288: aload_0
-    //   289: getfield 152	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_c_of_type_Boolean	Z
-    //   292: putfield 104	com/tencent/mobileqq/apollo/view/opengl/GLThread:d	Z
-    //   295: aload_0
-    //   296: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   299: invokevirtual 157	java/lang/Object:notifyAll	()V
-    //   302: iload 4
-    //   304: istore 5
-    //   306: aload_0
-    //   307: getfield 159	com/tencent/mobileqq/apollo/view/opengl/GLThread:k	Z
-    //   310: ifeq +19 -> 329
-    //   313: aload_0
-    //   314: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
-    //   317: aload_0
-    //   318: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
-    //   321: aload_0
-    //   322: iconst_0
-    //   323: putfield 159	com/tencent/mobileqq/apollo/view/opengl/GLThread:k	Z
-    //   326: iconst_1
-    //   327: istore 5
-    //   329: iload 10
-    //   331: istore 7
-    //   333: iload 10
-    //   335: ifeq +14 -> 349
-    //   338: aload_0
-    //   339: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
-    //   342: aload_0
-    //   343: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
-    //   346: iconst_0
-    //   347: istore 7
-    //   349: iload 19
-    //   351: ifeq +14 -> 365
-    //   354: aload_0
-    //   355: getfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
-    //   358: ifeq +7 -> 365
-    //   361: aload_0
-    //   362: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
-    //   365: iload 19
-    //   367: ifeq +49 -> 416
-    //   370: aload_0
-    //   371: getfield 116	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	Z
-    //   374: ifeq +42 -> 416
-    //   377: aload_0
-    //   378: getfield 92	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   381: invokevirtual 87	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   384: checkcast 161	com/tencent/mobileqq/apollo/view/opengl/GLRenderView
-    //   387: astore 24
-    //   389: aload 24
-    //   391: ifnonnull +424 -> 815
-    //   394: iconst_0
-    //   395: istore 20
-    //   397: iload 20
-    //   399: ifeq +13 -> 412
-    //   402: aload_0
-    //   403: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   406: invokevirtual 163	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	()Z
-    //   409: ifeq +7 -> 416
-    //   412: aload_0
-    //   413: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
-    //   416: iload 19
-    //   418: ifeq +20 -> 438
-    //   421: aload_0
-    //   422: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   425: invokevirtual 165	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:b	()Z
-    //   428: ifeq +10 -> 438
-    //   431: aload_0
-    //   432: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
-    //   435: invokevirtual 118	com/tencent/mobileqq/apollo/view/opengl/EglHelper:c	()V
-    //   438: aload_0
-    //   439: getfield 101	com/tencent/mobileqq/apollo/view/opengl/GLThread:e	Z
-    //   442: ifne +72 -> 514
-    //   445: aload_0
-    //   446: getfield 167	com/tencent/mobileqq/apollo/view/opengl/GLThread:g	Z
-    //   449: ifne +65 -> 514
-    //   452: invokestatic 172	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   455: ifeq +31 -> 486
-    //   458: ldc 174
-    //   460: iconst_2
-    //   461: new 51	java/lang/StringBuilder
-    //   464: dup
-    //   465: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   468: ldc 176
-    //   470: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   473: aload_0
-    //   474: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
-    //   477: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   480: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   483: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   486: aload_0
-    //   487: getfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
-    //   490: ifeq +7 -> 497
-    //   493: aload_0
-    //   494: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
-    //   497: aload_0
-    //   498: iconst_1
-    //   499: putfield 167	com/tencent/mobileqq/apollo/view/opengl/GLThread:g	Z
-    //   502: aload_0
-    //   503: iconst_0
-    //   504: putfield 106	com/tencent/mobileqq/apollo/view/opengl/GLThread:f	Z
-    //   507: aload_0
-    //   508: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   511: invokevirtual 157	java/lang/Object:notifyAll	()V
-    //   514: aload_0
-    //   515: getfield 101	com/tencent/mobileqq/apollo/view/opengl/GLThread:e	Z
-    //   518: ifeq +22 -> 540
-    //   521: aload_0
-    //   522: getfield 167	com/tencent/mobileqq/apollo/view/opengl/GLThread:g	Z
-    //   525: ifeq +15 -> 540
-    //   528: aload_0
-    //   529: iconst_0
-    //   530: putfield 167	com/tencent/mobileqq/apollo/view/opengl/GLThread:g	Z
-    //   533: aload_0
-    //   534: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   537: invokevirtual 157	java/lang/Object:notifyAll	()V
-    //   540: iload 13
-    //   542: istore 6
-    //   544: iload 13
-    //   546: ifeq +23 -> 569
-    //   549: aload_0
-    //   550: iconst_0
-    //   551: putfield 132	com/tencent/mobileqq/apollo/view/opengl/GLThread:m	Z
-    //   554: iconst_0
-    //   555: istore 6
-    //   557: aload_0
-    //   558: iconst_1
-    //   559: putfield 181	com/tencent/mobileqq/apollo/view/opengl/GLThread:n	Z
-    //   562: aload_0
-    //   563: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   566: invokevirtual 157	java/lang/Object:notifyAll	()V
-    //   569: aload_0
-    //   570: getfield 45	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   573: ifnull +1243 -> 1816
-    //   576: aload_0
-    //   577: getfield 45	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   580: astore 22
-    //   582: aload_0
-    //   583: aconst_null
-    //   584: putfield 45	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
-    //   587: aload_0
-    //   588: invokespecial 182	com/tencent/mobileqq/apollo/view/opengl/GLThread:b	()Z
-    //   591: ifeq +379 -> 970
-    //   594: iload 5
-    //   596: istore 4
-    //   598: iload 11
-    //   600: istore 10
-    //   602: aload_0
-    //   603: getfield 116	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	Z
-    //   606: ifne +15 -> 621
-    //   609: iload 5
-    //   611: ifeq +216 -> 827
-    //   614: iconst_0
-    //   615: istore 4
-    //   617: iload 11
-    //   619: istore 10
-    //   621: iload 8
-    //   623: istore 13
-    //   625: iload 9
-    //   627: istore 5
-    //   629: iload 12
-    //   631: istore 11
-    //   633: aload_0
-    //   634: getfield 116	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	Z
-    //   637: ifeq +36 -> 673
-    //   640: iload 8
-    //   642: istore 13
-    //   644: iload 9
-    //   646: istore 5
-    //   648: iload 12
-    //   650: istore 11
-    //   652: aload_0
-    //   653: getfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
-    //   656: ifne +17 -> 673
-    //   659: aload_0
-    //   660: iconst_1
-    //   661: putfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
-    //   664: iconst_1
-    //   665: istore 11
-    //   667: iconst_1
-    //   668: istore 5
-    //   670: iconst_1
-    //   671: istore 13
-    //   673: aload 22
-    //   675: astore 24
-    //   677: iload 4
-    //   679: istore 14
-    //   681: iload 13
-    //   683: istore 18
-    //   685: iload 5
-    //   687: istore 15
-    //   689: iload 11
-    //   691: istore 16
-    //   693: iload 10
-    //   695: istore 17
-    //   697: aload_0
-    //   698: getfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
-    //   701: ifeq +336 -> 1037
-    //   704: aload_0
-    //   705: getfield 43	com/tencent/mobileqq/apollo/view/opengl/GLThread:o	Z
-    //   708: ifeq +1105 -> 1813
-    //   711: iconst_1
-    //   712: istore 13
-    //   714: aload_0
-    //   715: getfield 75	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_Int	I
-    //   718: istore_3
-    //   719: aload_0
-    //   720: getfield 77	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_b_of_type_Int	I
-    //   723: istore_2
-    //   724: aload_0
-    //   725: iconst_1
-    //   726: putfield 132	com/tencent/mobileqq/apollo/view/opengl/GLThread:m	Z
-    //   729: iconst_1
-    //   730: istore 11
-    //   732: aload_0
-    //   733: iconst_0
-    //   734: putfield 43	com/tencent/mobileqq/apollo/view/opengl/GLThread:o	Z
-    //   737: aload_0
-    //   738: iconst_0
-    //   739: putfield 79	com/tencent/mobileqq/apollo/view/opengl/GLThread:l	Z
-    //   742: aload_0
-    //   743: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   746: invokevirtual 157	java/lang/Object:notifyAll	()V
-    //   749: aload_0
-    //   750: getfield 132	com/tencent/mobileqq/apollo/view/opengl/GLThread:m	Z
-    //   753: ifeq +1003 -> 1756
-    //   756: iload_3
-    //   757: istore_1
-    //   758: iconst_1
-    //   759: istore 14
-    //   761: iload 11
-    //   763: istore_3
-    //   764: iload 5
-    //   766: istore 9
-    //   768: iload 7
-    //   770: istore 11
-    //   772: iload 13
-    //   774: istore 8
-    //   776: iload 4
-    //   778: istore 12
-    //   780: aload 21
-    //   782: astore 24
-    //   784: iload_3
-    //   785: istore 5
-    //   787: iload 6
-    //   789: istore 7
-    //   791: iload 14
-    //   793: istore 4
-    //   795: aload 22
-    //   797: astore 21
-    //   799: aload 24
-    //   801: astore 22
-    //   803: iload_2
-    //   804: istore_3
-    //   805: iload 12
-    //   807: istore_2
-    //   808: iload 11
-    //   810: istore 6
-    //   812: goto -613 -> 199
-    //   815: aload 24
-    //   817: invokeinterface 185 1 0
-    //   822: istore 20
-    //   824: goto -427 -> 397
-    //   827: aload_0
-    //   828: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   831: aload_0
-    //   832: invokevirtual 188	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	(Lcom/tencent/mobileqq/apollo/view/opengl/GLThread;)Z
-    //   835: istore 19
-    //   837: iload 5
-    //   839: istore 4
-    //   841: iload 11
-    //   843: istore 10
-    //   845: iload 19
-    //   847: ifeq -226 -> 621
-    //   850: aload_0
-    //   851: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
-    //   854: invokevirtual 190	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	()V
-    //   857: aload_0
-    //   858: iconst_1
-    //   859: putfield 116	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	Z
-    //   862: iconst_1
-    //   863: istore 10
-    //   865: aload_0
-    //   866: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   869: invokevirtual 157	java/lang/Object:notifyAll	()V
-    //   872: iload 5
-    //   874: istore 4
-    //   876: goto -255 -> 621
-    //   879: astore 21
-    //   881: aload 25
-    //   883: monitorexit
-    //   884: aload 21
-    //   886: athrow
-    //   887: astore 22
-    //   889: aload_0
-    //   890: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   893: astore 21
+    //   87: aload_0
+    //   88: getfield 134	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_b_of_type_Boolean	Z
+    //   91: ifeq +35 -> 126
+    //   94: aload 24
+    //   96: monitorexit
+    //   97: aload_0
+    //   98: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   101: astore 21
+    //   103: aload 21
+    //   105: monitorenter
+    //   106: aload_0
+    //   107: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
+    //   110: aload_0
+    //   111: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
+    //   114: aload 21
+    //   116: monitorexit
+    //   117: return
+    //   118: astore 22
+    //   120: aload 21
+    //   122: monitorexit
+    //   123: aload 22
+    //   125: athrow
+    //   126: aload_0
+    //   127: getfield 41	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   130: invokevirtual 141	java/util/ArrayList:isEmpty	()Z
+    //   133: ifne +27 -> 160
+    //   136: aload_0
+    //   137: getfield 41	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaUtilArrayList	Ljava/util/ArrayList;
+    //   140: iconst_0
+    //   141: invokevirtual 145	java/util/ArrayList:remove	(I)Ljava/lang/Object;
+    //   144: checkcast 147	java/lang/Runnable
+    //   147: astore 23
+    //   149: iload 4
+    //   151: istore 8
+    //   153: iload 9
+    //   155: istore 4
+    //   157: goto +948 -> 1105
+    //   160: aload_0
+    //   161: getfield 104	com/tencent/mobileqq/apollo/view/opengl/GLThread:d	Z
+    //   164: aload_0
+    //   165: getfield 149	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_c_of_type_Boolean	Z
+    //   168: if_icmpeq +1570 -> 1738
+    //   171: aload_0
+    //   172: getfield 149	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_c_of_type_Boolean	Z
+    //   175: istore 19
+    //   177: aload_0
+    //   178: aload_0
+    //   179: getfield 149	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_c_of_type_Boolean	Z
+    //   182: putfield 104	com/tencent/mobileqq/apollo/view/opengl/GLThread:d	Z
+    //   185: aload_0
+    //   186: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   189: invokevirtual 154	java/lang/Object:notifyAll	()V
+    //   192: new 51	java/lang/StringBuilder
+    //   195: dup
+    //   196: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   199: astore 25
+    //   201: aload 25
+    //   203: ldc 156
+    //   205: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   208: pop
+    //   209: aload 25
+    //   211: aload_0
+    //   212: getfield 104	com/tencent/mobileqq/apollo/view/opengl/GLThread:d	Z
+    //   215: invokevirtual 159	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
+    //   218: pop
+    //   219: aload 25
+    //   221: ldc 161
+    //   223: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   226: pop
+    //   227: aload 25
+    //   229: aload_0
+    //   230: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   233: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   236: pop
+    //   237: ldc 163
+    //   239: iconst_1
+    //   240: aload 25
+    //   242: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   245: invokestatic 168	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   248: goto +3 -> 251
+    //   251: aload_0
+    //   252: getfield 170	com/tencent/mobileqq/apollo/view/opengl/GLThread:k	Z
+    //   255: ifeq +1489 -> 1744
+    //   258: new 51	java/lang/StringBuilder
+    //   261: dup
+    //   262: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   265: astore 25
+    //   267: aload 25
+    //   269: ldc 172
+    //   271: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   274: pop
+    //   275: aload 25
+    //   277: aload_0
+    //   278: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   281: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   284: pop
+    //   285: ldc 163
+    //   287: iconst_1
+    //   288: aload 25
+    //   290: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   293: invokestatic 168	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   296: aload_0
+    //   297: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
+    //   300: aload_0
+    //   301: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
+    //   304: aload_0
+    //   305: iconst_0
+    //   306: putfield 170	com/tencent/mobileqq/apollo/view/opengl/GLThread:k	Z
+    //   309: iconst_1
+    //   310: istore 4
+    //   312: goto +3 -> 315
+    //   315: iload 5
+    //   317: istore 8
+    //   319: iload 5
+    //   321: ifeq +14 -> 335
+    //   324: aload_0
+    //   325: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
+    //   328: aload_0
+    //   329: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
+    //   332: iconst_0
+    //   333: istore 8
+    //   335: iload 19
+    //   337: ifeq +1410 -> 1747
+    //   340: aload_0
+    //   341: getfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
+    //   344: ifeq +1403 -> 1747
+    //   347: new 51	java/lang/StringBuilder
+    //   350: dup
+    //   351: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   354: astore 25
+    //   356: aload 25
+    //   358: ldc 174
+    //   360: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   363: pop
+    //   364: aload 25
+    //   366: aload_0
+    //   367: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   370: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   373: pop
+    //   374: ldc 163
+    //   376: iconst_1
+    //   377: aload 25
+    //   379: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   382: invokestatic 168	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   385: aload_0
+    //   386: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
+    //   389: goto +3 -> 392
+    //   392: iload 19
+    //   394: ifeq +99 -> 493
+    //   397: aload_0
+    //   398: getfield 116	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	Z
+    //   401: ifeq +92 -> 493
+    //   404: aload_0
+    //   405: getfield 92	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   408: invokevirtual 87	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   411: checkcast 176	com/tencent/mobileqq/apollo/view/opengl/GLRenderView
+    //   414: astore 25
+    //   416: aload 25
+    //   418: ifnonnull +9 -> 427
+    //   421: iconst_0
+    //   422: istore 20
+    //   424: goto +12 -> 436
+    //   427: aload 25
+    //   429: invokeinterface 179 1 0
+    //   434: istore 20
+    //   436: iload 20
+    //   438: ifeq +13 -> 451
+    //   441: aload_0
+    //   442: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   445: invokevirtual 181	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	()Z
+    //   448: ifeq +45 -> 493
+    //   451: aload_0
+    //   452: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
+    //   455: new 51	java/lang/StringBuilder
+    //   458: dup
+    //   459: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   462: astore 25
+    //   464: aload 25
+    //   466: ldc 183
+    //   468: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   471: pop
+    //   472: aload 25
+    //   474: aload_0
+    //   475: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   478: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   481: pop
+    //   482: ldc 163
+    //   484: iconst_1
+    //   485: aload 25
+    //   487: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   490: invokestatic 168	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   493: iload 19
+    //   495: ifeq +58 -> 553
+    //   498: aload_0
+    //   499: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   502: invokevirtual 185	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:b	()Z
+    //   505: ifeq +48 -> 553
+    //   508: aload_0
+    //   509: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
+    //   512: invokevirtual 118	com/tencent/mobileqq/apollo/view/opengl/EglHelper:c	()V
+    //   515: new 51	java/lang/StringBuilder
+    //   518: dup
+    //   519: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   522: astore 25
+    //   524: aload 25
+    //   526: ldc 187
+    //   528: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   531: pop
+    //   532: aload 25
+    //   534: aload_0
+    //   535: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   538: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   541: pop
+    //   542: ldc 163
+    //   544: iconst_1
+    //   545: aload 25
+    //   547: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   550: invokestatic 168	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   553: aload_0
+    //   554: getfield 101	com/tencent/mobileqq/apollo/view/opengl/GLThread:e	Z
+    //   557: ifne +82 -> 639
+    //   560: aload_0
+    //   561: getfield 189	com/tencent/mobileqq/apollo/view/opengl/GLThread:g	Z
+    //   564: ifne +75 -> 639
+    //   567: invokestatic 192	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   570: ifeq +41 -> 611
+    //   573: new 51	java/lang/StringBuilder
+    //   576: dup
+    //   577: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   580: astore 25
+    //   582: aload 25
+    //   584: ldc 194
+    //   586: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   589: pop
+    //   590: aload 25
+    //   592: aload_0
+    //   593: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   596: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   599: pop
+    //   600: ldc 163
+    //   602: iconst_2
+    //   603: aload 25
+    //   605: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   608: invokestatic 196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   611: aload_0
+    //   612: getfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
+    //   615: ifeq +7 -> 622
+    //   618: aload_0
+    //   619: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
+    //   622: aload_0
+    //   623: iconst_1
+    //   624: putfield 189	com/tencent/mobileqq/apollo/view/opengl/GLThread:g	Z
+    //   627: aload_0
+    //   628: iconst_0
+    //   629: putfield 106	com/tencent/mobileqq/apollo/view/opengl/GLThread:f	Z
+    //   632: aload_0
+    //   633: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   636: invokevirtual 154	java/lang/Object:notifyAll	()V
+    //   639: aload_0
+    //   640: getfield 101	com/tencent/mobileqq/apollo/view/opengl/GLThread:e	Z
+    //   643: ifeq +60 -> 703
+    //   646: aload_0
+    //   647: getfield 189	com/tencent/mobileqq/apollo/view/opengl/GLThread:g	Z
+    //   650: ifeq +53 -> 703
+    //   653: new 51	java/lang/StringBuilder
+    //   656: dup
+    //   657: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   660: astore 25
+    //   662: aload 25
+    //   664: ldc 198
+    //   666: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   669: pop
+    //   670: aload 25
+    //   672: aload_0
+    //   673: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   676: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   679: pop
+    //   680: ldc 163
+    //   682: iconst_1
+    //   683: aload 25
+    //   685: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   688: invokestatic 168	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   691: aload_0
+    //   692: iconst_0
+    //   693: putfield 189	com/tencent/mobileqq/apollo/view/opengl/GLThread:g	Z
+    //   696: aload_0
+    //   697: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   700: invokevirtual 154	java/lang/Object:notifyAll	()V
+    //   703: iload 9
+    //   705: istore 13
+    //   707: iload 9
+    //   709: ifeq +61 -> 770
+    //   712: new 51	java/lang/StringBuilder
+    //   715: dup
+    //   716: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   719: astore 25
+    //   721: aload 25
+    //   723: ldc 200
+    //   725: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   728: pop
+    //   729: aload 25
+    //   731: aload_0
+    //   732: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   735: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   738: pop
+    //   739: ldc 163
+    //   741: iconst_1
+    //   742: aload 25
+    //   744: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   747: invokestatic 168	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   750: aload_0
+    //   751: iconst_0
+    //   752: putfield 132	com/tencent/mobileqq/apollo/view/opengl/GLThread:m	Z
+    //   755: aload_0
+    //   756: iconst_1
+    //   757: putfield 202	com/tencent/mobileqq/apollo/view/opengl/GLThread:n	Z
+    //   760: aload_0
+    //   761: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   764: invokevirtual 154	java/lang/Object:notifyAll	()V
+    //   767: iconst_0
+    //   768: istore 13
+    //   770: aload_0
+    //   771: getfield 45	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   774: ifnull +976 -> 1750
+    //   777: aload_0
+    //   778: getfield 45	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   781: astore 21
+    //   783: aload_0
+    //   784: aconst_null
+    //   785: putfield 45	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRunnable	Ljava/lang/Runnable;
+    //   788: goto +3 -> 791
+    //   791: aload_0
+    //   792: invokespecial 203	com/tencent/mobileqq/apollo/view/opengl/GLThread:b	()Z
+    //   795: ifeq +834 -> 1629
+    //   798: iload 4
+    //   800: istore 5
+    //   802: iload_3
+    //   803: istore 9
+    //   805: aload_0
+    //   806: getfield 116	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	Z
+    //   809: ifne +126 -> 935
+    //   812: iload 4
+    //   814: ifeq +12 -> 826
+    //   817: iconst_0
+    //   818: istore 5
+    //   820: iload_3
+    //   821: istore 9
+    //   823: goto +112 -> 935
+    //   826: aload_0
+    //   827: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   830: aload_0
+    //   831: invokevirtual 206	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	(Lcom/tencent/mobileqq/apollo/view/opengl/GLThread;)Z
+    //   834: istore 19
+    //   836: iload 4
+    //   838: istore 5
+    //   840: iload_3
+    //   841: istore 9
+    //   843: iload 19
+    //   845: ifeq +90 -> 935
+    //   848: aload_0
+    //   849: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
+    //   852: invokevirtual 208	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	()V
+    //   855: aload_0
+    //   856: iconst_1
+    //   857: putfield 116	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	Z
+    //   860: aload_0
+    //   861: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   864: invokevirtual 154	java/lang/Object:notifyAll	()V
+    //   867: iconst_1
+    //   868: istore 9
+    //   870: iload 4
+    //   872: istore 5
+    //   874: goto +61 -> 935
+    //   877: astore 21
+    //   879: aload_0
+    //   880: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   883: aload_0
+    //   884: invokevirtual 123	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:b	(Lcom/tencent/mobileqq/apollo/view/opengl/GLThread;)V
+    //   887: aload 21
+    //   889: athrow
+    //   890: astore 21
+    //   892: ldc 163
+    //   894: iconst_1
     //   895: aload 21
-    //   897: monitorenter
-    //   898: aload_0
-    //   899: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
-    //   902: aload_0
-    //   903: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
-    //   906: aload 21
-    //   908: monitorexit
-    //   909: aload 22
-    //   911: athrow
-    //   912: astore 21
-    //   914: ldc 174
-    //   916: iconst_1
-    //   917: aload 21
-    //   919: invokevirtual 193	com/tencent/mobileqq/apollo/view/opengl/EglHelper$EGLException:getMessage	()Ljava/lang/String;
-    //   922: invokestatic 195	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   925: aload 25
-    //   927: monitorexit
-    //   928: aload_0
-    //   929: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   932: astore 21
-    //   934: aload 21
-    //   936: monitorenter
-    //   937: aload_0
-    //   938: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
-    //   941: aload_0
-    //   942: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
-    //   945: aload 21
-    //   947: monitorexit
-    //   948: return
-    //   949: astore 22
-    //   951: aload 21
-    //   953: monitorexit
-    //   954: aload 22
-    //   956: athrow
-    //   957: astore 21
-    //   959: aload_0
-    //   960: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   963: aload_0
-    //   964: invokevirtual 123	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:b	(Lcom/tencent/mobileqq/apollo/view/opengl/GLThread;)V
-    //   967: aload 21
-    //   969: athrow
-    //   970: aload 22
-    //   972: astore 24
-    //   974: iload 5
-    //   976: istore 14
-    //   978: iload 8
-    //   980: istore 18
-    //   982: iload 9
-    //   984: istore 15
-    //   986: iload 12
-    //   988: istore 16
-    //   990: iload 11
-    //   992: istore 17
-    //   994: aload 22
-    //   996: ifnull +41 -> 1037
-    //   999: ldc 174
-    //   1001: ldc 197
-    //   1003: invokestatic 203	android/util/Log:w	(Ljava/lang/String;Ljava/lang/String;)I
-    //   1006: pop
-    //   1007: aload 22
-    //   1009: invokeinterface 150 1 0
-    //   1014: aconst_null
-    //   1015: astore 24
-    //   1017: iload 11
-    //   1019: istore 17
-    //   1021: iload 12
-    //   1023: istore 16
-    //   1025: iload 9
-    //   1027: istore 15
-    //   1029: iload 8
-    //   1031: istore 18
-    //   1033: iload 5
-    //   1035: istore 14
-    //   1037: ldc 174
-    //   1039: new 51	java/lang/StringBuilder
-    //   1042: dup
-    //   1043: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   1046: ldc 205
-    //   1048: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1051: aload_0
-    //   1052: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
-    //   1055: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   1058: ldc 207
-    //   1060: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1063: aload_0
-    //   1064: getfield 116	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	Z
-    //   1067: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1070: ldc 212
-    //   1072: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1075: aload_0
-    //   1076: getfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
-    //   1079: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1082: ldc 214
-    //   1084: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1087: aload_0
-    //   1088: getfield 216	com/tencent/mobileqq/apollo/view/opengl/GLThread:j	Z
-    //   1091: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1094: ldc 218
-    //   1096: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1099: aload_0
-    //   1100: getfield 104	com/tencent/mobileqq/apollo/view/opengl/GLThread:d	Z
-    //   1103: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1106: ldc 220
-    //   1108: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1111: aload_0
-    //   1112: getfield 101	com/tencent/mobileqq/apollo/view/opengl/GLThread:e	Z
-    //   1115: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1118: ldc 222
-    //   1120: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1123: aload_0
-    //   1124: getfield 106	com/tencent/mobileqq/apollo/view/opengl/GLThread:f	Z
-    //   1127: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1130: ldc 224
-    //   1132: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1135: aload_0
-    //   1136: getfield 167	com/tencent/mobileqq/apollo/view/opengl/GLThread:g	Z
-    //   1139: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1142: ldc 226
-    //   1144: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1147: aload_0
-    //   1148: getfield 75	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_Int	I
-    //   1151: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1154: ldc 231
-    //   1156: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1159: aload_0
-    //   1160: getfield 77	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_b_of_type_Int	I
-    //   1163: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1166: ldc 233
-    //   1168: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1171: aload_0
-    //   1172: getfield 79	com/tencent/mobileqq/apollo/view/opengl/GLThread:l	Z
-    //   1175: invokevirtual 210	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   1178: ldc 235
-    //   1180: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   1183: aload_0
-    //   1184: getfield 81	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_c_of_type_Int	I
-    //   1187: invokevirtual 229	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   1190: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   1193: invokestatic 237	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   1196: pop
-    //   1197: aload_0
-    //   1198: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   1201: invokevirtual 240	java/lang/Object:wait	()V
-    //   1204: aload 24
-    //   1206: astore 22
-    //   1208: iload 14
-    //   1210: istore 4
-    //   1212: iload 6
-    //   1214: istore 13
-    //   1216: iload 18
-    //   1218: istore 8
-    //   1220: iload 7
-    //   1222: istore 10
-    //   1224: iload 15
-    //   1226: istore 9
-    //   1228: iload 16
-    //   1230: istore 12
-    //   1232: iload 17
-    //   1234: istore 11
-    //   1236: goto -1137 -> 99
-    //   1239: iload 5
-    //   1241: ifeq +512 -> 1753
-    //   1244: aload_0
-    //   1245: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
-    //   1248: invokevirtual 241	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	()Z
-    //   1251: ifeq +383 -> 1634
-    //   1254: aload_0
-    //   1255: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   1258: astore 24
-    //   1260: aload 24
-    //   1262: monitorenter
-    //   1263: aload_0
-    //   1264: iconst_1
-    //   1265: putfield 216	com/tencent/mobileqq/apollo/view/opengl/GLThread:j	Z
-    //   1268: aload_0
-    //   1269: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   1272: invokevirtual 157	java/lang/Object:notifyAll	()V
-    //   1275: aload 24
-    //   1277: monitorexit
-    //   1278: iconst_0
-    //   1279: istore 5
-    //   1281: iload 9
-    //   1283: ifeq +467 -> 1750
-    //   1286: aload_0
-    //   1287: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
-    //   1290: invokevirtual 244	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	()Ljavax/microedition/khronos/opengles/GL;
-    //   1293: checkcast 246	javax/microedition/khronos/opengles/GL10
-    //   1296: astore 23
-    //   1298: aload_0
-    //   1299: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   1302: aload 23
-    //   1304: invokevirtual 249	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	(Ljavax/microedition/khronos/opengles/GL10;)V
-    //   1307: iconst_0
-    //   1308: istore 9
-    //   1310: iload 10
-    //   1312: istore 11
-    //   1314: iload 10
-    //   1316: ifeq +44 -> 1360
-    //   1319: aload_0
-    //   1320: getfield 92	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   1323: invokevirtual 87	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   1326: checkcast 161	com/tencent/mobileqq/apollo/view/opengl/GLRenderView
-    //   1329: astore 24
-    //   1331: aload 24
-    //   1333: ifnull +499 -> 1832
+    //   897: invokevirtual 211	com/tencent/mobileqq/apollo/view/opengl/EglHelper$EGLException:getMessage	()Ljava/lang/String;
+    //   900: invokestatic 213	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   903: aload 24
+    //   905: monitorexit
+    //   906: aload_0
+    //   907: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   910: astore 21
+    //   912: aload 21
+    //   914: monitorenter
+    //   915: aload_0
+    //   916: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
+    //   919: aload_0
+    //   920: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
+    //   923: aload 21
+    //   925: monitorexit
+    //   926: return
+    //   927: astore 22
+    //   929: aload 21
+    //   931: monitorexit
+    //   932: aload 22
+    //   934: athrow
+    //   935: iload_2
+    //   936: istore 4
+    //   938: iload_1
+    //   939: istore 10
+    //   941: iload 6
+    //   943: istore_3
+    //   944: aload_0
+    //   945: getfield 116	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	Z
+    //   948: ifeq +32 -> 980
+    //   951: iload_2
+    //   952: istore 4
+    //   954: iload_1
+    //   955: istore 10
+    //   957: iload 6
+    //   959: istore_3
+    //   960: aload_0
+    //   961: getfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
+    //   964: ifne +16 -> 980
+    //   967: aload_0
+    //   968: iconst_1
+    //   969: putfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
+    //   972: iconst_1
+    //   973: istore 4
+    //   975: iconst_1
+    //   976: istore 10
+    //   978: iconst_1
+    //   979: istore_3
+    //   980: iload 5
+    //   982: istore 17
+    //   984: iload 9
+    //   986: istore 16
+    //   988: iload 4
+    //   990: istore 15
+    //   992: iload 10
+    //   994: istore 14
+    //   996: iload_3
+    //   997: istore 18
+    //   999: aload_0
+    //   1000: getfield 108	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	Z
+    //   1003: ifeq +805 -> 1808
+    //   1006: aload_0
+    //   1007: getfield 43	com/tencent/mobileqq/apollo/view/opengl/GLThread:o	Z
+    //   1010: ifeq +743 -> 1753
+    //   1013: aload_0
+    //   1014: getfield 75	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_Int	I
+    //   1017: istore 12
+    //   1019: aload_0
+    //   1020: getfield 77	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_b_of_type_Int	I
+    //   1023: istore 11
+    //   1025: aload_0
+    //   1026: iconst_1
+    //   1027: putfield 132	com/tencent/mobileqq/apollo/view/opengl/GLThread:m	Z
+    //   1030: new 51	java/lang/StringBuilder
+    //   1033: dup
+    //   1034: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   1037: astore 25
+    //   1039: aload 25
+    //   1041: ldc 215
+    //   1043: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1046: pop
+    //   1047: aload 25
+    //   1049: aload_0
+    //   1050: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   1053: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1056: pop
+    //   1057: ldc 163
+    //   1059: iconst_1
+    //   1060: aload 25
+    //   1062: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1065: invokestatic 168	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1068: aload_0
+    //   1069: iconst_0
+    //   1070: putfield 43	com/tencent/mobileqq/apollo/view/opengl/GLThread:o	Z
+    //   1073: iconst_1
+    //   1074: istore_2
+    //   1075: iconst_1
+    //   1076: istore_3
+    //   1077: goto +3 -> 1080
+    //   1080: aload_0
+    //   1081: iconst_0
+    //   1082: putfield 79	com/tencent/mobileqq/apollo/view/opengl/GLThread:l	Z
+    //   1085: aload_0
+    //   1086: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1089: invokevirtual 154	java/lang/Object:notifyAll	()V
+    //   1092: aload_0
+    //   1093: getfield 132	com/tencent/mobileqq/apollo/view/opengl/GLThread:m	Z
+    //   1096: ifeq +663 -> 1759
+    //   1099: iconst_1
+    //   1100: istore 7
+    //   1102: goto +657 -> 1759
+    //   1105: aload 24
+    //   1107: monitorexit
+    //   1108: aload 23
+    //   1110: ifnull +13 -> 1123
+    //   1113: aload 23
+    //   1115: invokeinterface 218 1 0
+    //   1120: goto -1057 -> 63
+    //   1123: iload_2
+    //   1124: istore 9
+    //   1126: iload_2
+    //   1127: ifeq +102 -> 1229
+    //   1130: ldc 163
+    //   1132: iconst_1
+    //   1133: ldc 220
+    //   1135: invokestatic 223	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1138: aload_0
+    //   1139: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
+    //   1142: invokevirtual 224	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	()Z
+    //   1145: ifeq +41 -> 1186
+    //   1148: aload_0
+    //   1149: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1152: astore 24
+    //   1154: aload 24
+    //   1156: monitorenter
+    //   1157: aload_0
+    //   1158: iconst_1
+    //   1159: putfield 226	com/tencent/mobileqq/apollo/view/opengl/GLThread:j	Z
+    //   1162: aload_0
+    //   1163: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1166: invokevirtual 154	java/lang/Object:notifyAll	()V
+    //   1169: aload 24
+    //   1171: monitorexit
+    //   1172: iconst_0
+    //   1173: istore 9
+    //   1175: goto +54 -> 1229
+    //   1178: astore 21
+    //   1180: aload 24
+    //   1182: monitorexit
+    //   1183: aload 21
+    //   1185: athrow
+    //   1186: aload_0
+    //   1187: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1190: astore 24
+    //   1192: aload 24
+    //   1194: monitorenter
+    //   1195: aload_0
+    //   1196: iconst_1
+    //   1197: putfield 226	com/tencent/mobileqq/apollo/view/opengl/GLThread:j	Z
+    //   1200: aload_0
+    //   1201: iconst_1
+    //   1202: putfield 106	com/tencent/mobileqq/apollo/view/opengl/GLThread:f	Z
+    //   1205: aload_0
+    //   1206: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1209: invokevirtual 154	java/lang/Object:notifyAll	()V
+    //   1212: aload 24
+    //   1214: monitorexit
+    //   1215: iload_2
+    //   1216: istore 9
+    //   1218: goto +401 -> 1619
+    //   1221: astore 21
+    //   1223: aload 24
+    //   1225: monitorexit
+    //   1226: aload 21
+    //   1228: athrow
+    //   1229: iload_1
+    //   1230: ifeq +555 -> 1785
+    //   1233: aload_0
+    //   1234: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
+    //   1237: invokevirtual 229	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	()Ljavax/microedition/khronos/opengles/GL;
+    //   1240: checkcast 231	javax/microedition/khronos/opengles/GL10
+    //   1243: astore 22
+    //   1245: aload_0
+    //   1246: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1249: aload 22
+    //   1251: invokevirtual 234	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	(Ljavax/microedition/khronos/opengles/GL10;)V
+    //   1254: iconst_0
+    //   1255: istore_1
+    //   1256: goto +3 -> 1259
+    //   1259: iload_3
+    //   1260: istore_2
+    //   1261: iload_3
+    //   1262: ifeq +52 -> 1314
+    //   1265: ldc 163
+    //   1267: iconst_1
+    //   1268: ldc 236
+    //   1270: invokestatic 223	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1273: aload_0
+    //   1274: getfield 92	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   1277: invokevirtual 87	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   1280: checkcast 176	com/tencent/mobileqq/apollo/view/opengl/GLRenderView
+    //   1283: astore 24
+    //   1285: aload 24
+    //   1287: ifnull +501 -> 1788
+    //   1290: aload 24
+    //   1292: invokeinterface 240 1 0
+    //   1297: aload 22
+    //   1299: aload_0
+    //   1300: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
+    //   1303: getfield 243	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	Ljavax/microedition/khronos/egl/EGLConfig;
+    //   1306: invokeinterface 248 3 0
+    //   1311: goto +477 -> 1788
+    //   1314: iload 6
+    //   1316: ifeq +486 -> 1802
+    //   1319: new 51	java/lang/StringBuilder
+    //   1322: dup
+    //   1323: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   1326: astore 24
+    //   1328: aload 24
+    //   1330: ldc 250
+    //   1332: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1335: pop
     //   1336: aload 24
-    //   1338: invokeinterface 253 1 0
-    //   1343: aload 23
-    //   1345: aload_0
-    //   1346: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
-    //   1349: getfield 256	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	Ljavax/microedition/khronos/egl/EGLConfig;
-    //   1352: invokeinterface 262 3 0
-    //   1357: goto +475 -> 1832
-    //   1360: iload 8
-    //   1362: istore 10
-    //   1364: iload 8
-    //   1366: ifeq +54 -> 1420
-    //   1369: aload_0
-    //   1370: getfield 92	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   1373: invokevirtual 87	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   1376: checkcast 161	com/tencent/mobileqq/apollo/view/opengl/GLRenderView
-    //   1379: astore 24
-    //   1381: aload 24
-    //   1383: ifnull +455 -> 1838
-    //   1386: invokestatic 172	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   1389: ifeq +12 -> 1401
-    //   1392: ldc 174
-    //   1394: iconst_2
-    //   1395: ldc_w 264
-    //   1398: invokestatic 179	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   1401: aload 24
-    //   1403: invokeinterface 253 1 0
-    //   1408: aload 23
-    //   1410: iload_1
-    //   1411: iload_3
-    //   1412: invokeinterface 268 4 0
-    //   1417: goto +421 -> 1838
-    //   1420: aload_0
-    //   1421: getfield 92	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
-    //   1424: invokevirtual 87	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
-    //   1427: checkcast 161	com/tencent/mobileqq/apollo/view/opengl/GLRenderView
-    //   1430: astore 25
-    //   1432: aload 21
-    //   1434: astore 24
-    //   1436: aload 25
-    //   1438: ifnull +45 -> 1483
-    //   1441: aload 21
-    //   1443: astore 24
-    //   1445: aload 23
-    //   1447: ifnull +36 -> 1483
-    //   1450: aload 25
-    //   1452: invokeinterface 253 1 0
-    //   1457: aload 23
-    //   1459: invokeinterface 271 2 0
-    //   1464: aload 21
-    //   1466: astore 24
-    //   1468: aload 21
-    //   1470: ifnull +13 -> 1483
-    //   1473: aload 21
-    //   1475: invokeinterface 150 1 0
-    //   1480: aconst_null
-    //   1481: astore 24
-    //   1483: aload_0
-    //   1484: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
-    //   1487: invokevirtual 274	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	()I
-    //   1490: istore 12
-    //   1492: iload 6
-    //   1494: istore 8
-    //   1496: iload 12
-    //   1498: lookupswitch	default:+346->1844, 12288:+64->1562, 12302:+230->1728
-    //   1525: freturn
-    //   1526: ldc_w 276
-    //   1529: iload 12
-    //   1531: invokestatic 279	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	(Ljava/lang/String;Ljava/lang/String;I)V
-    //   1534: aload_0
-    //   1535: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   1538: astore 21
-    //   1540: aload 21
-    //   1542: monitorenter
-    //   1543: aload_0
-    //   1544: iconst_1
-    //   1545: putfield 106	com/tencent/mobileqq/apollo/view/opengl/GLThread:f	Z
-    //   1548: aload_0
-    //   1549: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   1552: invokevirtual 157	java/lang/Object:notifyAll	()V
-    //   1555: aload 21
-    //   1557: monitorexit
-    //   1558: iload 6
-    //   1560: istore 8
-    //   1562: iload 4
-    //   1564: ifeq +261 -> 1825
-    //   1567: iconst_1
-    //   1568: istore 6
-    //   1570: iconst_0
-    //   1571: istore 4
-    //   1573: aload 22
-    //   1575: astore 21
-    //   1577: iload_2
-    //   1578: istore 12
-    //   1580: iload 8
-    //   1582: istore 7
-    //   1584: iload 9
-    //   1586: istore 8
-    //   1588: iload 5
-    //   1590: istore 9
-    //   1592: iload_3
-    //   1593: istore_2
-    //   1594: iload 6
+    //   1338: iload 12
+    //   1340: invokevirtual 253	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1343: pop
+    //   1344: aload 24
+    //   1346: ldc 255
+    //   1348: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1351: pop
+    //   1352: aload 24
+    //   1354: iload 11
+    //   1356: invokevirtual 253	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   1359: pop
+    //   1360: aload 24
+    //   1362: ldc_w 257
+    //   1365: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1368: pop
+    //   1369: ldc 163
+    //   1371: iconst_1
+    //   1372: aload 24
+    //   1374: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1377: invokestatic 223	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1380: aload_0
+    //   1381: getfield 92	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   1384: invokevirtual 87	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   1387: checkcast 176	com/tencent/mobileqq/apollo/view/opengl/GLRenderView
+    //   1390: astore 24
+    //   1392: aload 24
+    //   1394: ifnull +402 -> 1796
+    //   1397: invokestatic 192	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   1400: ifeq +393 -> 1793
+    //   1403: ldc 163
+    //   1405: iconst_2
+    //   1406: ldc_w 259
+    //   1409: invokestatic 196	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1412: goto +3 -> 1415
+    //   1415: aload 24
+    //   1417: invokeinterface 240 1 0
+    //   1422: aload 22
+    //   1424: iload 12
+    //   1426: iload 11
+    //   1428: invokeinterface 263 4 0
+    //   1433: goto +363 -> 1796
+    //   1436: aload_0
+    //   1437: getfield 92	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_JavaLangRefWeakReference	Ljava/lang/ref/WeakReference;
+    //   1440: invokevirtual 87	java/lang/ref/WeakReference:get	()Ljava/lang/Object;
+    //   1443: checkcast 176	com/tencent/mobileqq/apollo/view/opengl/GLRenderView
+    //   1446: astore 24
+    //   1448: aload 24
+    //   1450: ifnull +355 -> 1805
+    //   1453: aload 22
+    //   1455: ifnull +350 -> 1805
+    //   1458: aload 24
+    //   1460: invokeinterface 240 1 0
+    //   1465: aload 22
+    //   1467: invokeinterface 266 2 0
+    //   1472: aload 21
+    //   1474: ifnull +331 -> 1805
+    //   1477: aload 21
+    //   1479: invokeinterface 218 1 0
+    //   1484: aconst_null
+    //   1485: astore 21
+    //   1487: goto +3 -> 1490
+    //   1490: aload_0
+    //   1491: getfield 110	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglEglHelper	Lcom/tencent/mobileqq/apollo/view/opengl/EglHelper;
+    //   1494: invokevirtual 269	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	()I
+    //   1497: istore_3
+    //   1498: iload_3
+    //   1499: sipush 12288
+    //   1502: if_icmpeq +99 -> 1601
+    //   1505: iload_3
+    //   1506: sipush 12302
+    //   1509: if_icmpeq +47 -> 1556
+    //   1512: ldc 163
+    //   1514: ldc_w 271
+    //   1517: iload_3
+    //   1518: invokestatic 274	com/tencent/mobileqq/apollo/view/opengl/EglHelper:a	(Ljava/lang/String;Ljava/lang/String;I)V
+    //   1521: aload_0
+    //   1522: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1525: astore 24
+    //   1527: aload 24
+    //   1529: monitorenter
+    //   1530: aload_0
+    //   1531: iconst_1
+    //   1532: putfield 106	com/tencent/mobileqq/apollo/view/opengl/GLThread:f	Z
+    //   1535: aload_0
+    //   1536: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1539: invokevirtual 154	java/lang/Object:notifyAll	()V
+    //   1542: aload 24
+    //   1544: monitorexit
+    //   1545: goto +56 -> 1601
+    //   1548: astore 21
+    //   1550: aload 24
+    //   1552: monitorexit
+    //   1553: aload 21
+    //   1555: athrow
+    //   1556: new 51	java/lang/StringBuilder
+    //   1559: dup
+    //   1560: invokespecial 52	java/lang/StringBuilder:<init>	()V
+    //   1563: astore 24
+    //   1565: aload 24
+    //   1567: ldc_w 276
+    //   1570: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   1573: pop
+    //   1574: aload 24
+    //   1576: aload_0
+    //   1577: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
+    //   1580: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   1583: pop
+    //   1584: ldc 163
+    //   1586: iconst_1
+    //   1587: aload 24
+    //   1589: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   1592: invokestatic 168	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1595: iconst_1
     //   1596: istore 5
-    //   1598: iload 4
-    //   1600: istore 6
-    //   1602: aload 24
-    //   1604: astore 22
-    //   1606: iload_1
-    //   1607: istore_3
-    //   1608: iload 12
-    //   1610: istore 4
-    //   1612: iload 6
-    //   1614: istore_1
-    //   1615: iload 10
-    //   1617: istore 6
-    //   1619: iload 11
+    //   1598: goto +3 -> 1601
+    //   1601: iload 7
+    //   1603: ifeq +14 -> 1617
+    //   1606: iconst_1
+    //   1607: istore 4
+    //   1609: iconst_0
+    //   1610: istore 7
+    //   1612: iload_2
+    //   1613: istore_3
+    //   1614: goto +5 -> 1619
+    //   1617: iload_2
+    //   1618: istore_3
+    //   1619: iload 4
     //   1621: istore 10
-    //   1623: goto -1557 -> 66
-    //   1626: astore 21
-    //   1628: aload 24
-    //   1630: monitorexit
-    //   1631: aload 21
-    //   1633: athrow
-    //   1634: aload_0
-    //   1635: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   1638: astore 24
-    //   1640: aload 24
-    //   1642: monitorenter
-    //   1643: aload_0
-    //   1644: iconst_1
-    //   1645: putfield 216	com/tencent/mobileqq/apollo/view/opengl/GLThread:j	Z
-    //   1648: aload_0
-    //   1649: iconst_1
-    //   1650: putfield 106	com/tencent/mobileqq/apollo/view/opengl/GLThread:f	Z
-    //   1653: aload_0
-    //   1654: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   1657: invokevirtual 157	java/lang/Object:notifyAll	()V
-    //   1660: aload 24
-    //   1662: monitorexit
-    //   1663: iload_1
-    //   1664: istore 13
-    //   1666: iload 4
-    //   1668: istore_1
-    //   1669: aload 22
-    //   1671: astore 24
-    //   1673: iload_2
-    //   1674: istore 4
-    //   1676: iload 6
-    //   1678: istore 11
-    //   1680: iload 5
-    //   1682: istore 12
-    //   1684: aload 21
-    //   1686: astore 22
-    //   1688: aload 24
-    //   1690: astore 21
-    //   1692: iload_3
-    //   1693: istore_2
-    //   1694: iload 13
-    //   1696: istore_3
-    //   1697: iload 7
-    //   1699: istore 5
-    //   1701: iload 8
-    //   1703: istore 6
-    //   1705: iload 11
-    //   1707: istore 7
-    //   1709: iload 9
-    //   1711: istore 8
-    //   1713: iload 12
-    //   1715: istore 9
-    //   1717: goto -1651 -> 66
-    //   1720: astore 21
-    //   1722: aload 24
-    //   1724: monitorexit
-    //   1725: aload 21
-    //   1727: athrow
-    //   1728: iconst_1
-    //   1729: istore 8
-    //   1731: goto -169 -> 1562
-    //   1734: astore 22
-    //   1736: aload 21
-    //   1738: monitorexit
-    //   1739: aload 22
-    //   1741: athrow
-    //   1742: astore 22
-    //   1744: aload 21
-    //   1746: monitorexit
-    //   1747: aload 22
-    //   1749: athrow
-    //   1750: goto -440 -> 1310
-    //   1753: goto -472 -> 1281
-    //   1756: iload 11
-    //   1758: istore 14
-    //   1760: iload 5
-    //   1762: istore 9
-    //   1764: iload 7
-    //   1766: istore 11
-    //   1768: iload 13
-    //   1770: istore 8
-    //   1772: iload 4
-    //   1774: istore 12
-    //   1776: aload 21
-    //   1778: astore 24
-    //   1780: iload_1
-    //   1781: istore 4
-    //   1783: iload_3
-    //   1784: istore_1
-    //   1785: iload 14
-    //   1787: istore 5
-    //   1789: iload 6
-    //   1791: istore 7
-    //   1793: aload 22
-    //   1795: astore 21
-    //   1797: aload 24
-    //   1799: astore 22
-    //   1801: iload_2
-    //   1802: istore_3
-    //   1803: iload 12
-    //   1805: istore_2
-    //   1806: iload 11
-    //   1808: istore 6
-    //   1810: goto -1611 -> 199
-    //   1813: goto -1076 -> 737
-    //   1816: goto -1229 -> 587
-    //   1819: iconst_0
-    //   1820: istore 19
-    //   1822: goto -1520 -> 302
-    //   1825: iload 7
-    //   1827: istore 6
-    //   1829: goto -256 -> 1573
-    //   1832: iconst_0
-    //   1833: istore 11
-    //   1835: goto -475 -> 1360
-    //   1838: iconst_0
-    //   1839: istore 10
-    //   1841: goto -421 -> 1420
-    //   1844: goto -320 -> 1524
+    //   1623: iload 9
+    //   1625: istore_2
+    //   1626: goto -1556 -> 70
+    //   1629: iload 4
+    //   1631: istore 17
+    //   1633: iload_3
+    //   1634: istore 16
+    //   1636: iload_2
+    //   1637: istore 15
+    //   1639: iload_1
+    //   1640: istore 14
+    //   1642: iload 6
+    //   1644: istore 18
+    //   1646: aload 21
+    //   1648: ifnull +160 -> 1808
+    //   1651: ldc 163
+    //   1653: iconst_1
+    //   1654: ldc_w 278
+    //   1657: invokestatic 223	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;)V
+    //   1660: aload 21
+    //   1662: invokeinterface 218 1 0
+    //   1667: aconst_null
+    //   1668: astore 21
+    //   1670: goto +3 -> 1673
+    //   1673: aload_0
+    //   1674: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1677: invokevirtual 281	java/lang/Object:wait	()V
+    //   1680: iload 8
+    //   1682: istore 5
+    //   1684: iload 13
+    //   1686: istore 9
+    //   1688: goto -1601 -> 87
+    //   1691: astore 21
+    //   1693: aload 24
+    //   1695: monitorexit
+    //   1696: aload 21
+    //   1698: athrow
+    //   1699: astore 22
+    //   1701: aload_0
+    //   1702: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   1705: astore 21
+    //   1707: aload 21
+    //   1709: monitorenter
+    //   1710: aload_0
+    //   1711: invokespecial 136	com/tencent/mobileqq/apollo/view/opengl/GLThread:h	()V
+    //   1714: aload_0
+    //   1715: invokespecial 138	com/tencent/mobileqq/apollo/view/opengl/GLThread:i	()V
+    //   1718: aload 21
+    //   1720: monitorexit
+    //   1721: aload 22
+    //   1723: athrow
+    //   1724: astore 22
+    //   1726: aload 21
+    //   1728: monitorexit
+    //   1729: goto +6 -> 1735
+    //   1732: aload 22
+    //   1734: athrow
+    //   1735: goto -3 -> 1732
+    //   1738: iconst_0
+    //   1739: istore 19
+    //   1741: goto -1490 -> 251
+    //   1744: goto -1429 -> 315
+    //   1747: goto -1355 -> 392
+    //   1750: goto -959 -> 791
+    //   1753: iload 4
+    //   1755: istore_2
+    //   1756: goto -676 -> 1080
+    //   1759: iload 5
+    //   1761: istore_1
+    //   1762: iload 8
+    //   1764: istore 5
+    //   1766: iload 13
+    //   1768: istore 4
+    //   1770: iload_1
+    //   1771: istore 8
+    //   1773: iload_3
+    //   1774: istore 6
+    //   1776: iload 9
+    //   1778: istore_3
+    //   1779: iload 10
+    //   1781: istore_1
+    //   1782: goto -677 -> 1105
+    //   1785: goto -526 -> 1259
+    //   1788: iconst_0
+    //   1789: istore_2
+    //   1790: goto -476 -> 1314
+    //   1793: goto -378 -> 1415
+    //   1796: iconst_0
+    //   1797: istore 6
+    //   1799: goto -363 -> 1436
+    //   1802: goto -366 -> 1436
+    //   1805: goto -315 -> 1490
+    //   1808: iload 18
+    //   1810: istore 6
+    //   1812: iload 17
+    //   1814: istore 4
+    //   1816: iload 16
+    //   1818: istore_3
+    //   1819: iload 15
+    //   1821: istore_2
+    //   1822: iload 14
+    //   1824: istore_1
+    //   1825: goto -152 -> 1673
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	1847	0	this	GLThread
-    //   47	1738	1	i1	int
-    //   37	1769	2	i2	int
-    //   45	1758	3	i3	int
-    //   52	1730	4	i4	int
-    //   39	1749	5	i5	int
-    //   55	1773	6	i6	int
-    //   58	1768	7	i7	int
-    //   61	1710	8	i8	int
-    //   64	1699	9	i9	int
-    //   31	1809	10	i10	int
-    //   77	1757	11	i11	int
-    //   81	1723	12	i12	int
-    //   97	1672	13	i13	int
-    //   679	1107	14	i14	int
-    //   687	538	15	i15	int
-    //   691	538	16	i16	int
-    //   695	538	17	i17	int
-    //   683	534	18	i18	int
-    //   285	1536	19	bool1	boolean
-    //   395	428	20	bool2	boolean
-    //   49	749	21	localObject1	Object
-    //   879	6	21	localObject2	Object
-    //   893	14	21	localGLThreadManager1	GLThreadManager
-    //   912	6	21	localEGLException	EglHelper.EGLException
-    //   957	517	21	localRuntimeException	java.lang.RuntimeException
-    //   1626	59	21	localObject4	Object
-    //   1690	1	21	localObject5	Object
-    //   1720	57	21	localObject6	Object
-    //   1795	1	21	localObject7	Object
-    //   42	1	22	localObject8	Object
-    //   130	37	22	localObject9	Object
-    //   185	617	22	localObject10	Object
-    //   887	23	22	localObject11	Object
-    //   949	59	22	localObject12	Object
-    //   1206	481	22	localObject13	Object
-    //   1734	6	22	localObject14	Object
-    //   1742	52	22	localObject15	Object
-    //   1799	1	22	localObject16	Object
-    //   34	1424	23	localGL10	javax.microedition.khronos.opengles.GL10
-    //   70	1381	25	localObject18	Object
+    //   0	1828	0	this	GLThread
+    //   62	1763	1	i1	int
+    //   60	1762	2	i2	int
+    //   58	1761	3	i3	int
+    //   34	1781	4	i4	int
+    //   31	1734	5	i5	int
+    //   43	1768	6	i6	int
+    //   49	1562	7	i7	int
+    //   37	1735	8	i8	int
+    //   85	1692	9	i9	int
+    //   68	1712	10	i10	int
+    //   55	1372	11	i11	int
+    //   52	1373	12	i12	int
+    //   705	1062	13	i13	int
+    //   994	829	14	i14	int
+    //   990	830	15	i15	int
+    //   986	831	16	i16	int
+    //   982	831	17	i17	int
+    //   997	812	18	i18	int
+    //   175	1565	19	bool1	boolean
+    //   422	15	20	bool2	boolean
+    //   40	742	21	localObject1	Object
+    //   877	11	21	localRuntimeException	java.lang.RuntimeException
+    //   890	6	21	localEGLException	EglHelper.EGLException
+    //   910	20	21	localGLThreadManager1	GLThreadManager
+    //   1178	6	21	localObject2	Object
+    //   1221	257	21	localObject3	Object
+    //   1485	1	21	localObject4	Object
+    //   1548	113	21	localObject5	Object
+    //   1668	1	21	localObject6	Object
+    //   1691	6	21	localObject7	Object
+    //   1705	22	21	localGLThreadManager2	GLThreadManager
+    //   46	1	22	localObject8	Object
+    //   118	6	22	localObject9	Object
+    //   927	6	22	localObject10	Object
+    //   1243	223	22	localGL10	javax.microedition.khronos.opengles.GL10
+    //   1699	23	22	localObject11	Object
+    //   1724	9	22	localObject12	Object
+    //   64	1050	23	localRunnable	Runnable
+    //   74	1620	24	localObject13	Object
+    //   199	862	25	localObject14	Object
     // Exception table:
     //   from	to	target	type
-    //   118	129	130	finally
-    //   132	135	130	finally
-    //   99	109	879	finally
-    //   138	161	879	finally
-    //   199	202	879	finally
-    //   270	302	879	finally
-    //   306	326	879	finally
-    //   338	346	879	finally
-    //   354	365	879	finally
-    //   370	389	879	finally
-    //   402	412	879	finally
-    //   412	416	879	finally
-    //   421	438	879	finally
-    //   438	486	879	finally
-    //   486	497	879	finally
-    //   497	514	879	finally
-    //   514	540	879	finally
-    //   549	554	879	finally
-    //   557	569	879	finally
-    //   569	587	879	finally
-    //   587	594	879	finally
-    //   602	609	879	finally
-    //   633	640	879	finally
-    //   652	664	879	finally
-    //   697	711	879	finally
-    //   714	729	879	finally
-    //   732	737	879	finally
-    //   737	756	879	finally
-    //   815	824	879	finally
-    //   827	837	879	finally
-    //   850	857	879	finally
-    //   857	862	879	finally
-    //   865	872	879	finally
-    //   881	884	879	finally
-    //   914	928	879	finally
-    //   959	970	879	finally
-    //   999	1014	879	finally
-    //   1037	1204	879	finally
-    //   66	75	887	finally
-    //   207	214	887	finally
-    //   884	887	887	finally
-    //   1244	1263	887	finally
-    //   1286	1307	887	finally
-    //   1319	1331	887	finally
-    //   1336	1357	887	finally
-    //   1369	1381	887	finally
-    //   1386	1401	887	finally
-    //   1401	1417	887	finally
-    //   1420	1432	887	finally
-    //   1450	1464	887	finally
-    //   1473	1480	887	finally
-    //   1483	1492	887	finally
-    //   1524	1543	887	finally
-    //   1631	1634	887	finally
-    //   1634	1643	887	finally
-    //   1725	1728	887	finally
-    //   1739	1742	887	finally
-    //   850	857	912	com/tencent/mobileqq/apollo/view/opengl/EglHelper$EGLException
-    //   937	948	949	finally
-    //   951	954	949	finally
-    //   850	857	957	java/lang/RuntimeException
-    //   1263	1278	1626	finally
-    //   1628	1631	1626	finally
-    //   1643	1663	1720	finally
-    //   1722	1725	1720	finally
-    //   1543	1558	1734	finally
-    //   1736	1739	1734	finally
-    //   898	909	1742	finally
-    //   1744	1747	1742	finally
+    //   106	117	118	finally
+    //   120	123	118	finally
+    //   848	855	877	java/lang/RuntimeException
+    //   848	855	890	com/tencent/mobileqq/apollo/view/opengl/EglHelper$EGLException
+    //   915	926	927	finally
+    //   929	932	927	finally
+    //   1157	1172	1178	finally
+    //   1180	1183	1178	finally
+    //   1195	1215	1221	finally
+    //   1223	1226	1221	finally
+    //   1530	1545	1548	finally
+    //   1550	1553	1548	finally
+    //   87	97	1691	finally
+    //   126	149	1691	finally
+    //   160	192	1691	finally
+    //   192	248	1691	finally
+    //   251	309	1691	finally
+    //   324	332	1691	finally
+    //   340	389	1691	finally
+    //   397	416	1691	finally
+    //   427	436	1691	finally
+    //   441	451	1691	finally
+    //   451	493	1691	finally
+    //   498	553	1691	finally
+    //   553	611	1691	finally
+    //   611	622	1691	finally
+    //   622	639	1691	finally
+    //   639	703	1691	finally
+    //   712	767	1691	finally
+    //   770	788	1691	finally
+    //   791	798	1691	finally
+    //   805	812	1691	finally
+    //   826	836	1691	finally
+    //   848	855	1691	finally
+    //   855	867	1691	finally
+    //   879	890	1691	finally
+    //   892	906	1691	finally
+    //   944	951	1691	finally
+    //   960	972	1691	finally
+    //   999	1073	1691	finally
+    //   1080	1099	1691	finally
+    //   1105	1108	1691	finally
+    //   1651	1667	1691	finally
+    //   1673	1680	1691	finally
+    //   1693	1696	1691	finally
+    //   70	79	1699	finally
+    //   1113	1120	1699	finally
+    //   1130	1157	1699	finally
+    //   1183	1186	1699	finally
+    //   1186	1195	1699	finally
+    //   1226	1229	1699	finally
+    //   1233	1254	1699	finally
+    //   1265	1285	1699	finally
+    //   1290	1311	1699	finally
+    //   1319	1392	1699	finally
+    //   1397	1412	1699	finally
+    //   1415	1433	1699	finally
+    //   1436	1448	1699	finally
+    //   1458	1472	1699	finally
+    //   1477	1484	1699	finally
+    //   1490	1498	1699	finally
+    //   1512	1530	1699	finally
+    //   1553	1556	1699	finally
+    //   1556	1595	1699	finally
+    //   1696	1699	1699	finally
+    //   1710	1721	1724	finally
+    //   1726	1729	1724	finally
   }
   
   public int a()
@@ -1108,15 +1114,15 @@ public class GLThread
   
   public void a(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > 1)) {
-      throw new IllegalArgumentException("renderMode");
+    if ((paramInt >= 0) && (paramInt <= 1)) {
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager)
+      {
+        this.jdField_c_of_type_Int = paramInt;
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.notifyAll();
+        return;
+      }
     }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager)
-    {
-      this.jdField_c_of_type_Int = paramInt;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.notifyAll();
-      return;
-    }
+    throw new IllegalArgumentException("renderMode");
   }
   
   public void a(int paramInt1, int paramInt2)
@@ -1132,23 +1138,26 @@ public class GLThread
         return;
       }
       this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.notifyAll();
-      for (;;)
-      {
-        if ((this.r) && (!this.jdField_a_of_type_Boolean) && (!this.d) && (!this.n))
+      if (this.r) {
+        while ((!this.jdField_a_of_type_Boolean) && (!this.d) && (!this.n) && (a()))
         {
-          boolean bool = a();
-          if (bool) {
-            try
-            {
-              this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("TextureView onWindowResize waiting for render complete from tid=");
+          localStringBuilder.append(getId());
+          QLog.i("[ApolloGL][GLThread]Main thread", 1, localStringBuilder.toString());
+          try
+          {
+            this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
           }
+          catch (InterruptedException localInterruptedException)
+          {
+            label134:
+            break label134;
+          }
+          Thread.currentThread().interrupt();
         }
       }
+      return;
     }
   }
   
@@ -1182,27 +1191,29 @@ public class GLThread
   {
     synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager)
     {
-      Log.i("GLThread", "surfaceCreated tid=" + getId());
       this.e = true;
       this.j = false;
       this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.notifyAll();
-      for (;;)
-      {
-        if ((this.r) && (this.g) && (!this.j))
+      if (this.r) {
+        while ((this.g) && (!this.j))
         {
           boolean bool = this.jdField_a_of_type_Boolean;
-          if (!bool) {
-            try
-            {
-              this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
+          if (bool) {
+            break;
           }
+          try
+          {
+            this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            label64:
+            break label64;
+          }
+          Thread.currentThread().interrupt();
         }
       }
+      return;
     }
   }
   
@@ -1230,17 +1241,20 @@ public class GLThread
     }
     synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager)
     {
-      Log.i("GLThread", "surfaceDestroyed tid=" + getId());
       this.e = false;
       this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.notifyAll();
-      for (;;)
-      {
-        if ((this.r) && (!this.g) && (!this.jdField_a_of_type_Boolean))
+      if (this.r) {
+        while ((!this.g) && (!this.jdField_a_of_type_Boolean))
         {
           if ((!this.p) && (QLog.isColorLevel()))
           {
             this.p = true;
-            QLog.d("GLThread", 2, "mWaitingForSurface " + this.g + " mExited " + this.jdField_a_of_type_Boolean);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("mWaitingForSurface ");
+            localStringBuilder.append(this.g);
+            localStringBuilder.append(" mExited ");
+            localStringBuilder.append(this.jdField_a_of_type_Boolean);
+            QLog.d("[ApolloGL][GLThread]", 2, localStringBuilder.toString());
           }
           try
           {
@@ -1248,53 +1262,58 @@ public class GLThread
           }
           catch (InterruptedException localInterruptedException)
           {
-            Thread.currentThread().interrupt();
+            label151:
+            break label151;
           }
+          Thread.currentThread().interrupt();
         }
       }
+      return;
     }
   }
   
   public void c(Runnable paramRunnable)
   {
-    if (paramRunnable == null) {
-      throw new IllegalArgumentException("r must not be null");
-    }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager)
-    {
-      this.jdField_a_of_type_JavaUtilArrayList.remove(paramRunnable);
-      this.jdField_a_of_type_JavaUtilArrayList.add(paramRunnable);
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 100) {
-        QLog.e("GLThread", 1, new Object[] { "GLThread runable queueList size is > 100, last r:", paramRunnable });
+    if (paramRunnable != null) {
+      synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager)
+      {
+        this.jdField_a_of_type_JavaUtilArrayList.remove(paramRunnable);
+        this.jdField_a_of_type_JavaUtilArrayList.add(paramRunnable);
+        if (this.jdField_a_of_type_JavaUtilArrayList.size() > 100) {
+          QLog.e("[ApolloGL][GLThread]", 1, new Object[] { "GLThread runable queueList size is > 100, last r:", paramRunnable });
+        }
+        this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.notifyAll();
+        return;
       }
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.notifyAll();
-      return;
     }
+    throw new IllegalArgumentException("r must not be null");
   }
   
   public void d()
   {
     synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onPause tid=");
+      localStringBuilder.append(getId());
+      QLog.i("[ApolloGL][GLThread]", 1, localStringBuilder.toString());
       this.jdField_c_of_type_Boolean = true;
       this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.notifyAll();
-      for (;;)
+      while ((!this.jdField_a_of_type_Boolean) && (!this.d))
       {
-        if (!this.jdField_a_of_type_Boolean)
+        QLog.i("[ApolloGL][GLThread]Main thread", 1, "onPause waiting for mPaused.");
+        try
         {
-          boolean bool = this.d;
-          if (!bool) {
-            try
-            {
-              this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+          this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
         }
+        catch (InterruptedException localInterruptedException)
+        {
+          label88:
+          break label88;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -1302,27 +1321,29 @@ public class GLThread
   {
     synchronized (this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager)
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onResume tid=");
+      localStringBuilder.append(getId());
+      QLog.i("[ApolloGL][GLThread]", 1, localStringBuilder.toString());
       this.jdField_c_of_type_Boolean = false;
       this.l = true;
       this.n = false;
       this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.notifyAll();
-      for (;;)
+      while ((!this.jdField_a_of_type_Boolean) && (this.d) && (!this.n))
       {
-        if ((!this.jdField_a_of_type_Boolean) && (this.d))
+        QLog.i("[ApolloGL][GLThread]Main thread", 1, "onResume waiting for !mPaused.");
+        try
         {
-          boolean bool = this.n;
-          if (!bool) {
-            try
-            {
-              this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
-          }
+          this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
         }
+        catch (InterruptedException localInterruptedException)
+        {
+          label105:
+          break label105;
+        }
+        Thread.currentThread().interrupt();
       }
+      return;
     }
   }
   
@@ -1336,18 +1357,22 @@ public class GLThread
         for (;;)
         {
           boolean bool = this.jdField_a_of_type_Boolean;
-          if (!bool) {
-            try
-            {
-              this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              Thread.currentThread().interrupt();
-            }
+          if (bool) {
+            break;
           }
+          try
+          {
+            this.jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager.wait();
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            label45:
+            break label45;
+          }
+          Thread.currentThread().interrupt();
         }
       }
+      return;
     }
   }
   
@@ -1361,52 +1386,36 @@ public class GLThread
   public void run()
   {
     // Byte code:
-    //   0: ldc 174
-    //   2: new 51	java/lang/StringBuilder
-    //   5: dup
-    //   6: invokespecial 52	java/lang/StringBuilder:<init>	()V
-    //   9: ldc_w 338
-    //   12: invokevirtual 58	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: aload_0
-    //   16: invokevirtual 62	com/tencent/mobileqq/apollo/view/opengl/GLThread:getId	()J
-    //   19: invokevirtual 65	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   22: invokevirtual 69	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   25: invokestatic 237	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   28: pop
-    //   29: aload_0
-    //   30: invokespecial 340	com/tencent/mobileqq/apollo/view/opengl/GLThread:j	()V
-    //   33: aload_0
-    //   34: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   37: aload_0
-    //   38: invokevirtual 342	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	(Lcom/tencent/mobileqq/apollo/view/opengl/GLThread;)V
-    //   41: return
-    //   42: astore_1
-    //   43: aload_0
-    //   44: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   47: aload_0
-    //   48: invokevirtual 342	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	(Lcom/tencent/mobileqq/apollo/view/opengl/GLThread;)V
-    //   51: return
-    //   52: astore_1
-    //   53: aload_0
-    //   54: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
-    //   57: aload_0
-    //   58: invokevirtual 342	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	(Lcom/tencent/mobileqq/apollo/view/opengl/GLThread;)V
-    //   61: aload_1
-    //   62: athrow
+    //   0: aload_0
+    //   1: invokespecial 348	com/tencent/mobileqq/apollo/view/opengl/GLThread:j	()V
+    //   4: aload_0
+    //   5: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   8: aload_0
+    //   9: invokevirtual 350	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	(Lcom/tencent/mobileqq/apollo/view/opengl/GLThread;)V
+    //   12: return
+    //   13: astore_1
+    //   14: aload_0
+    //   15: getfield 94	com/tencent/mobileqq/apollo/view/opengl/GLThread:jdField_a_of_type_ComTencentMobileqqApolloViewOpenglGLThreadManager	Lcom/tencent/mobileqq/apollo/view/opengl/GLThreadManager;
+    //   18: aload_0
+    //   19: invokevirtual 350	com/tencent/mobileqq/apollo/view/opengl/GLThreadManager:a	(Lcom/tencent/mobileqq/apollo/view/opengl/GLThread;)V
+    //   22: aload_1
+    //   23: athrow
+    //   24: astore_1
+    //   25: goto -21 -> 4
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	63	0	this	GLThread
-    //   42	1	1	localInterruptedException	InterruptedException
-    //   52	10	1	localObject	Object
+    //   0	28	0	this	GLThread
+    //   13	10	1	localObject	Object
+    //   24	1	1	localInterruptedException	InterruptedException
     // Exception table:
     //   from	to	target	type
-    //   29	33	42	java/lang/InterruptedException
-    //   29	33	52	finally
+    //   0	4	13	finally
+    //   0	4	24	java/lang/InterruptedException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.opengl.GLThread
  * JD-Core Version:    0.7.0.1
  */

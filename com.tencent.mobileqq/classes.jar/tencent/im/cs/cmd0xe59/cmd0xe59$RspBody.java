@@ -21,14 +21,16 @@ public final class cmd0xe59$RspBody
   
   static
   {
+    Boolean localBoolean = Boolean.valueOf(false);
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48 }, new String[] { "ret", "sub_ret", "msg", "song_lyric", "zip_compress_flag", "safe_hit_flag" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Boolean.valueOf(false), Boolean.valueOf(false) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48 }, new String[] { "ret", "sub_ret", "msg", "song_lyric", "zip_compress_flag", "safe_hit_flag" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localBoolean, localBoolean }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0xe59.cmd0xe59.RspBody
  * JD-Core Version:    0.7.0.1
  */

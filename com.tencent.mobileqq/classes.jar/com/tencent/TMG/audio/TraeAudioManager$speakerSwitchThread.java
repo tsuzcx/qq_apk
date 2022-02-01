@@ -15,47 +15,61 @@ class TraeAudioManager$speakerSwitchThread
   
   public void _run()
   {
-    int j = 0;
-    if ((!TraeAudioManager.IsMusicScene) && (TraeAudioManager.IsUpdateSceneFlag)) {
-      this.this$0.InternalSetSpeaker(this.this$0._context, true);
+    Object localObject;
+    if ((!TraeAudioManager.IsMusicScene) && (TraeAudioManager.IsUpdateSceneFlag))
+    {
+      localObject = this.this$0;
+      ((TraeAudioManager)localObject).InternalSetSpeaker(((TraeAudioManager)localObject)._context, true);
     }
     updateStatus();
-    if ((TraeAudioManager.IsMusicScene) || (!TraeAudioManager.IsUpdateSceneFlag))
+    boolean bool = TraeAudioManager.IsMusicScene;
+    int j = 0;
+    int i;
+    if ((!bool) && (TraeAudioManager.IsUpdateSceneFlag))
     {
-      if (QLog.isColorLevel()) {
-        QLog.w("TRAE", 0, "connect speakerPhone: do nothing");
-      }
-      return;
-    }
-    int i = j;
-    if (QLog.isColorLevel())
-    {
-      QLog.w("TRAE", 0, " _run:" + getDeviceName() + " _running:" + this._running);
       i = j;
-    }
-    while (this._running == true)
-    {
-      if (this.this$0._am.isSpeakerphoneOn() != true) {
-        this.this$0.InternalSetSpeaker(this.this$0._context, true);
-      }
-      long l;
-      if (i < 5) {
-        l = 1000L;
-      }
-      try
+      if (QLog.isColorLevel())
       {
-        for (;;)
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(" _run:");
+        ((StringBuilder)localObject).append(getDeviceName());
+        ((StringBuilder)localObject).append(" _running:");
+        ((StringBuilder)localObject).append(this._running);
+        QLog.w("TRAE", 0, ((StringBuilder)localObject).toString());
+        i = j;
+      }
+    }
+    for (;;)
+    {
+      long l;
+      if (this._running == true)
+      {
+        if (this.this$0._am.isSpeakerphoneOn() != true)
         {
-          Thread.sleep(l);
-          label162:
-          i += 1;
-          break;
+          localObject = this.this$0;
+          ((TraeAudioManager)localObject).InternalSetSpeaker(((TraeAudioManager)localObject)._context, true);
+        }
+        if (i < 5) {
+          l = 1000L;
+        } else {
           l = 4000L;
         }
       }
+      try
+      {
+        Thread.sleep(l);
+        label182:
+        i += 1;
+        continue;
+        return;
+        if (QLog.isColorLevel()) {
+          QLog.w("TRAE", 0, "connect speakerPhone: do nothing");
+        }
+        return;
+      }
       catch (InterruptedException localInterruptedException)
       {
-        break label162;
+        break label182;
       }
     }
   }

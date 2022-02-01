@@ -7,8 +7,6 @@ import mqq.app.QQPermissionCallback;
 final class TroopBarPublishUtils$3
   implements QQPermissionCallback
 {
-  TroopBarPublishUtils$3(BaseActivity paramBaseActivity) {}
-  
   public void deny(int paramInt, String[] paramArrayOfString, int[] paramArrayOfInt)
   {
     if (!this.a.isFinishing()) {
@@ -20,7 +18,7 @@ final class TroopBarPublishUtils$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopBarPublishUtils.3
  * JD-Core Version:    0.7.0.1
  */

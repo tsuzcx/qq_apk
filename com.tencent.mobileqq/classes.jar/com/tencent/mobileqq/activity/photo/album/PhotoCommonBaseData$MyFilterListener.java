@@ -6,24 +6,35 @@ import com.tencent.mobileqq.activity.photo.album.querymedia.ICursor.FilterListen
 import java.util.ArrayList;
 import java.util.Iterator;
 
-class PhotoCommonBaseData$MyFilterListener
+public class PhotoCommonBaseData$MyFilterListener
   implements ICursor.FilterListener
 {
-  private PhotoCommonBaseData$MyFilterListener(PhotoCommonBaseData paramPhotoCommonBaseData) {}
+  public PhotoCommonBaseData$MyFilterListener(PhotoCommonBaseData paramPhotoCommonBaseData) {}
   
-  private boolean filterMedia(LocalMediaInfo paramLocalMediaInfo)
+  public boolean filterMedia(LocalMediaInfo paramLocalMediaInfo)
   {
     if (paramLocalMediaInfo.mMediaType == 0)
     {
-      if ((this.this$0.filter.imageMinHeight > 0) && (paramLocalMediaInfo.mediaHeight < this.this$0.filter.imageMinHeight)) {}
-      while (((this.this$0.filter.imageMinWidth > 0) && (paramLocalMediaInfo.mediaHeight < this.this$0.filter.imageMinWidth)) || ((this.this$0.filter.imageMinSize > 0L) && (paramLocalMediaInfo.fileSize < this.this$0.filter.imageMinSize))) {
+      if ((this.this$0.filter.imageMinHeight > 0) && (paramLocalMediaInfo.mediaHeight < this.this$0.filter.imageMinHeight)) {
+        return true;
+      }
+      if ((this.this$0.filter.imageMinWidth > 0) && (paramLocalMediaInfo.mediaHeight < this.this$0.filter.imageMinWidth)) {
+        return true;
+      }
+      if ((this.this$0.filter.imageMinSize > 0L) && (paramLocalMediaInfo.fileSize < this.this$0.filter.imageMinSize)) {
         return true;
       }
     }
-    while ((paramLocalMediaInfo.mMediaType != 1) || (this.this$0.filter.videoMaxDuration <= 0L) || (paramLocalMediaInfo.mDuration <= this.this$0.filter.videoMaxDuration)) {
-      return false;
+    else if (paramLocalMediaInfo.mMediaType == 1)
+    {
+      if ((this.this$0.filter.videoMaxDuration > 0L) && (paramLocalMediaInfo.mDuration > this.this$0.filter.videoMaxDuration)) {
+        return true;
+      }
+      if ((this.this$0.filter.videoSizeLimit > 0L) && (paramLocalMediaInfo.fileSize > this.this$0.filter.videoSizeLimit)) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   public boolean needMediaInfo(LocalMediaInfo paramLocalMediaInfo)
@@ -56,7 +67,7 @@ class PhotoCommonBaseData$MyFilterListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.PhotoCommonBaseData.MyFilterListener
  * JD-Core Version:    0.7.0.1
  */

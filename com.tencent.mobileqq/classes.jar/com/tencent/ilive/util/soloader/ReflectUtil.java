@@ -21,11 +21,10 @@ public class ReflectUtil
   
   public static Constructor<?> findConstructor(Object paramObject, Class<?>... paramVarArgs)
   {
-    Class localClass = paramObject.getClass();
-    while (localClass != null) {
+    for (Object localObject = paramObject.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
       try
       {
-        Constructor localConstructor = localClass.getDeclaredConstructor(paramVarArgs);
+        Constructor localConstructor = ((Class)localObject).getDeclaredConstructor(paramVarArgs);
         if (!localConstructor.isAccessible()) {
           localConstructor.setAccessible(true);
         }
@@ -33,16 +32,25 @@ public class ReflectUtil
       }
       catch (NoSuchMethodException localNoSuchMethodException)
       {
-        localClass = localClass.getSuperclass();
+        label29:
+        break label29;
       }
     }
-    throw new NoSuchMethodException("Constructor with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramObject.getClass());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Constructor with parameters ");
+    ((StringBuilder)localObject).append(Arrays.asList(paramVarArgs));
+    ((StringBuilder)localObject).append(" not found in ");
+    ((StringBuilder)localObject).append(paramObject.getClass());
+    paramObject = new NoSuchMethodException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public static Field findField(Class<?> paramClass, String paramString)
   {
-    Object localObject = paramClass;
-    while (localObject != null) {
+    for (Object localObject = paramClass; localObject != null; localObject = ((Class)localObject).getSuperclass()) {
       try
       {
         Field localField = ((Class)localObject).getDeclaredField(paramString);
@@ -53,19 +61,28 @@ public class ReflectUtil
       }
       catch (NoSuchFieldException localNoSuchFieldException)
       {
-        localObject = ((Class)localObject).getSuperclass();
+        label26:
+        break label26;
       }
     }
-    throw new NoSuchFieldException("Field " + paramString + " not found in " + paramClass);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Field ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" not found in ");
+    ((StringBuilder)localObject).append(paramClass);
+    paramClass = new NoSuchFieldException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramClass;
+    }
   }
   
   public static Field findField(Object paramObject, String paramString)
   {
-    Class localClass = paramObject.getClass();
-    while (localClass != null) {
+    for (Object localObject = paramObject.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
       try
       {
-        Field localField = localClass.getDeclaredField(paramString);
+        Field localField = ((Class)localObject).getDeclaredField(paramString);
         if (!localField.isAccessible()) {
           localField.setAccessible(true);
         }
@@ -73,19 +90,28 @@ public class ReflectUtil
       }
       catch (NoSuchFieldException localNoSuchFieldException)
       {
-        localClass = localClass.getSuperclass();
+        label29:
+        break label29;
       }
     }
-    throw new NoSuchFieldException("Field " + paramString + " not found in " + paramObject.getClass());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Field ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" not found in ");
+    ((StringBuilder)localObject).append(paramObject.getClass());
+    paramObject = new NoSuchFieldException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public static Method findMethod(Object paramObject, String paramString, Class<?>... paramVarArgs)
   {
-    Class localClass = paramObject.getClass();
-    while (localClass != null) {
+    for (Object localObject = paramObject.getClass(); localObject != null; localObject = ((Class)localObject).getSuperclass()) {
       try
       {
-        Method localMethod = localClass.getDeclaredMethod(paramString, paramVarArgs);
+        Method localMethod = ((Class)localObject).getDeclaredMethod(paramString, paramVarArgs);
         if (!localMethod.isAccessible()) {
           localMethod.setAccessible(true);
         }
@@ -93,10 +119,22 @@ public class ReflectUtil
       }
       catch (NoSuchMethodException localNoSuchMethodException)
       {
-        localClass = localClass.getSuperclass();
+        label34:
+        break label34;
       }
     }
-    throw new NoSuchMethodException("Method " + paramString + " with parameters " + Arrays.asList(paramVarArgs) + " not found in " + paramObject.getClass());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Method ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" with parameters ");
+    ((StringBuilder)localObject).append(Arrays.asList(paramVarArgs));
+    ((StringBuilder)localObject).append(" not found in ");
+    ((StringBuilder)localObject).append(paramObject.getClass());
+    paramObject = new NoSuchMethodException(((StringBuilder)localObject).toString());
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public static Object getActivityThread(Context paramContext, Class<?> paramClass)
@@ -142,16 +180,15 @@ public class ReflectUtil
   
   public static void reduceFieldArray(Object paramObject, String paramString, int paramInt)
   {
-    if (paramInt <= 0) {}
-    Object[] arrayOfObject1;
-    int i;
-    do
-    {
+    if (paramInt <= 0) {
       return;
-      paramString = findField(paramObject, paramString);
-      arrayOfObject1 = (Object[])paramString.get(paramObject);
-      i = arrayOfObject1.length - paramInt;
-    } while (i <= 0);
+    }
+    paramString = findField(paramObject, paramString);
+    Object[] arrayOfObject1 = (Object[])paramString.get(paramObject);
+    int i = arrayOfObject1.length - paramInt;
+    if (i <= 0) {
+      return;
+    }
     Object[] arrayOfObject2 = (Object[])Array.newInstance(arrayOfObject1.getClass().getComponentType(), i);
     System.arraycopy(arrayOfObject1, paramInt, arrayOfObject2, 0, i);
     paramString.set(paramObject, arrayOfObject2);
@@ -159,7 +196,7 @@ public class ReflectUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.util.soloader.ReflectUtil
  * JD-Core Version:    0.7.0.1
  */

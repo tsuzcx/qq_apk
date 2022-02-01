@@ -17,37 +17,41 @@ class MiniAppProxyImpl$11
   {
     String str = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultData");
     paramIntent = paramIntent.getStringExtra("com.tencent.mobileqq.mini.out.plugins.scanResultType");
-    QLog.d("MiniAppProxyImpl", 2, "scanResult: " + str + "----scan_type: " + paramIntent);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("scanResult: ");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append("----scan_type: ");
+    ((StringBuilder)localObject).append(paramIntent);
+    QLog.d("MiniAppProxyImpl", 2, ((StringBuilder)localObject).toString());
     try
     {
-      JSONObject localJSONObject1 = new JSONObject();
-      JSONObject localJSONObject2 = new JSONObject();
-      localJSONObject2.put("result", str);
-      localJSONObject2.put("scanType", paramIntent);
-      localJSONObject2.put("rawData", MD5.a(str));
-      localJSONObject2.put("charSet", "utf-8");
-      localJSONObject1.put("detail", localJSONObject2);
-      localJSONObject1.put("result", str);
-      localJSONObject1.put("scanType", paramIntent);
-      localJSONObject1.put("rawData", MD5.a(str));
-      localJSONObject1.put("charSet", "utf-8");
-      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, localJSONObject1);
+      localObject = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
+      localJSONObject.put("result", str);
+      localJSONObject.put("scanType", paramIntent);
+      localJSONObject.put("rawData", MD5.a(str));
+      localJSONObject.put("charSet", "utf-8");
+      ((JSONObject)localObject).put("detail", localJSONObject);
+      ((JSONObject)localObject).put("result", str);
+      ((JSONObject)localObject).put("scanType", paramIntent);
+      ((JSONObject)localObject).put("rawData", MD5.a(str));
+      ((JSONObject)localObject).put("charSet", "utf-8");
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult.onReceiveResult(true, (JSONObject)localObject);
       paramContext.unregisterReceiver(MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl));
-      MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl, null);
-      return;
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        QLog.e("MiniAppProxyImpl", 1, "scan result error." + paramContext);
-      }
+      paramIntent = new StringBuilder();
+      paramIntent.append("scan result error.");
+      paramIntent.append(paramContext);
+      QLog.e("MiniAppProxyImpl", 1, paramIntent.toString());
     }
+    MiniAppProxyImpl.a(this.jdField_a_of_type_ComTencentQqminiProxyimplMiniAppProxyImpl, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.MiniAppProxyImpl.11
  * JD-Core Version:    0.7.0.1
  */

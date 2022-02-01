@@ -18,7 +18,10 @@ public class VideoViewTextureImpl
   public VideoViewTextureImpl(Context paramContext, String paramString)
   {
     this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView = new TextureVideoView(paramContext.getApplicationContext());
-    this.jdField_a_of_type_JavaLangString += paramString;
+    paramContext = new StringBuilder();
+    paramContext.append(this.jdField_a_of_type_JavaLangString);
+    paramContext.append(paramString);
+    this.jdField_a_of_type_JavaLangString = paramContext.toString();
   }
   
   public int a()
@@ -56,64 +59,60 @@ public class VideoViewTextureImpl
   public void a(IVideoView.OnCompletionListener paramOnCompletionListener)
   {
     TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
-    if (paramOnCompletionListener == null) {}
-    for (paramOnCompletionListener = null;; paramOnCompletionListener = new VideoViewTextureImpl.1(this, paramOnCompletionListener))
-    {
-      localTextureVideoView.setOnCompletionListener(paramOnCompletionListener);
-      return;
+    if (paramOnCompletionListener == null) {
+      paramOnCompletionListener = null;
+    } else {
+      paramOnCompletionListener = new VideoViewTextureImpl.1(this, paramOnCompletionListener);
     }
+    localTextureVideoView.setOnCompletionListener(paramOnCompletionListener);
   }
   
   public void a(IVideoView.OnDownloadListener paramOnDownloadListener) {}
   
   public void a(IVideoView.OnErrorListener paramOnErrorListener)
   {
-    Object localObject = null;
     TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
-    if (paramOnErrorListener == null) {}
-    for (paramOnErrorListener = localObject;; paramOnErrorListener = new VideoViewTextureImpl.2(this, paramOnErrorListener, null))
-    {
-      localTextureVideoView.setOnErrorListener(paramOnErrorListener);
-      return;
+    Object localObject = null;
+    if (paramOnErrorListener == null) {
+      paramOnErrorListener = localObject;
+    } else {
+      paramOnErrorListener = new VideoViewTextureImpl.2(this, paramOnErrorListener, null);
     }
+    localTextureVideoView.setOnErrorListener(paramOnErrorListener);
   }
   
   public void a(IVideoView.OnInfoListener paramOnInfoListener)
   {
     TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
-    if (paramOnInfoListener == null) {}
-    for (paramOnInfoListener = null;; paramOnInfoListener = new VideoViewTextureImpl.3(this, paramOnInfoListener))
-    {
-      localTextureVideoView.setOnInfoListener(paramOnInfoListener);
-      return;
+    if (paramOnInfoListener == null) {
+      paramOnInfoListener = null;
+    } else {
+      paramOnInfoListener = new VideoViewTextureImpl.3(this, paramOnInfoListener);
     }
+    localTextureVideoView.setOnInfoListener(paramOnInfoListener);
   }
   
   public void a(IVideoView.OnPreparedListener paramOnPreparedListener)
   {
     TextureVideoView localTextureVideoView = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView;
-    if (paramOnPreparedListener == null) {}
-    for (paramOnPreparedListener = null;; paramOnPreparedListener = new VideoViewTextureImpl.4(this, paramOnPreparedListener))
-    {
-      localTextureVideoView.setOnPreparedListener(paramOnPreparedListener);
-      return;
+    if (paramOnPreparedListener == null) {
+      paramOnPreparedListener = null;
+    } else {
+      paramOnPreparedListener = new VideoViewTextureImpl.4(this, paramOnPreparedListener);
     }
+    localTextureVideoView.setOnPreparedListener(paramOnPreparedListener);
   }
   
   public void a(String paramString1, String paramString2, String paramString3, long paramLong, int paramInt1, int paramInt2)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData.jdField_a_of_type_JavaLangString = paramString1;
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData.jdField_a_of_type_Boolean = true;
-    paramString1 = paramString3;
-    if (!TextUtils.isEmpty(paramString2))
-    {
-      paramString1 = paramString3;
-      if (FileCacheUtils.a(new File(paramString2))) {
-        paramString1 = paramString2;
-      }
+    StoryPlayerTVKWrapper.ReportData localReportData = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerStoryPlayerTVKWrapper$ReportData;
+    localReportData.jdField_a_of_type_JavaLangString = paramString1;
+    localReportData.jdField_a_of_type_Boolean = true;
+    if ((TextUtils.isEmpty(paramString2)) || (!FileCacheUtils.a(new File(paramString2)))) {
+      paramString2 = paramString3;
     }
     SLog.d(this.jdField_a_of_type_JavaLangString, "setVideoPath");
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoPath(paramString1);
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTextureVideoView.setVideoPath(paramString2);
   }
   
   public boolean a()
@@ -153,7 +152,7 @@ public class VideoViewTextureImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.VideoViewTextureImpl
  * JD-Core Version:    0.7.0.1
  */

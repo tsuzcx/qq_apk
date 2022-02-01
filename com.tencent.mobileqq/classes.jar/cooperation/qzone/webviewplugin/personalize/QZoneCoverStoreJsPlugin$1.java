@@ -5,7 +5,6 @@ import android.view.View.OnClickListener;
 import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import cooperation.qzone.QZoneHelper.QZoneCoverConstants;
 
 class QZoneCoverStoreJsPlugin$1
@@ -17,15 +16,14 @@ class QZoneCoverStoreJsPlugin$1
   {
     if ((this.this$0.mRuntime.a() != null) && (this.this$0.mRuntime.a() != null))
     {
-      String str = QZoneHelper.QZoneCoverConstants.getCoverStoreUrl("qzone", String.valueOf(1), this.this$0.mRuntime.a().getAccount(), this.this$0.mRuntime.a().getAccount());
-      this.this$0.mRuntime.a().loadUrl(str);
+      paramView = QZoneHelper.QZoneCoverConstants.getCoverStoreUrl("qzone", String.valueOf(1), this.this$0.mRuntime.a().getAccount(), this.this$0.mRuntime.a().getAccount());
+      this.this$0.mRuntime.a().loadUrl(paramView);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.personalize.QZoneCoverStoreJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -51,44 +51,56 @@ public class e
   
   public String a(String paramString)
   {
-    TbsLog.e(a, "Request url: " + this.b + ",params: " + this.c);
-    int i;
-    ByteArrayOutputStream localByteArrayOutputStream;
+    Object localObject1 = a;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("Request url: ");
+    ((StringBuilder)localObject2).append(this.b);
+    ((StringBuilder)localObject2).append(",params: ");
+    ((StringBuilder)localObject2).append(this.c);
+    TbsLog.e((String)localObject1, ((StringBuilder)localObject2).toString());
     try
     {
       paramString = (HttpURLConnection)new URL(paramString.trim()).openConnection();
       paramString.setRequestMethod(this.d);
       paramString.setRequestProperty("Content-Type", "application/json;charset=UTF-8");
-      paramString.setRequestProperty("Content-Length", this.c.length() + "");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(this.c.length());
+      ((StringBuilder)localObject1).append("");
+      paramString.setRequestProperty("Content-Length", ((StringBuilder)localObject1).toString());
       paramString.setDoOutput(true);
       paramString.getOutputStream().write(this.c.getBytes());
-      i = paramString.getResponseCode();
+      int i = paramString.getResponseCode();
       if (200 == i)
       {
         paramString = paramString.getInputStream();
-        localByteArrayOutputStream = new ByteArrayOutputStream();
-        byte[] arrayOfByte = new byte[1024];
+        localObject1 = new ByteArrayOutputStream();
+        localObject2 = new byte[1024];
         for (;;)
         {
-          i = paramString.read(arrayOfByte);
+          i = paramString.read((byte[])localObject2);
           if (-1 == i) {
             break;
           }
-          localByteArrayOutputStream.write(arrayOfByte, 0, i);
-          localByteArrayOutputStream.flush();
+          ((ByteArrayOutputStream)localObject1).write((byte[])localObject2, 0, i);
+          ((ByteArrayOutputStream)localObject1).flush();
         }
-        return null;
+        return ((ByteArrayOutputStream)localObject1).toString("utf-8");
       }
+      paramString = a;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Bad http request, code: ");
+      ((StringBuilder)localObject1).append(i);
+      TbsLog.e(paramString, ((StringBuilder)localObject1).toString());
     }
     catch (Exception paramString)
     {
-      TbsLog.e(a, "Http exception: " + paramString.getMessage());
+      localObject1 = a;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Http exception: ");
+      ((StringBuilder)localObject2).append(paramString.getMessage());
+      TbsLog.e((String)localObject1, ((StringBuilder)localObject2).toString());
     }
-    for (;;)
-    {
-      return localByteArrayOutputStream.toString("utf-8");
-      TbsLog.e(a, "Bad http request, code: " + i);
-    }
+    return null;
   }
   
   public void a(e.a parama)
@@ -98,7 +110,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.a.e
  * JD-Core Version:    0.7.0.1
  */

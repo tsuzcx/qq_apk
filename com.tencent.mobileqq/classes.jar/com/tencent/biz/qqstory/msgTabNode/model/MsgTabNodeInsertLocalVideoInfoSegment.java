@@ -27,34 +27,35 @@ public class MsgTabNodeInsertLocalVideoInfoSegment
   
   protected void a(JobContext paramJobContext, List<MsgTabVideoData> paramList)
   {
-    Object localObject1;
-    Object localObject2;
-    Object localObject3;
     if (this.a.jdField_a_of_type_Int == 5)
     {
       if (QLog.isColorLevel()) {
         QLog.d("Q.qqstory.msgTab.jobLocalVideo", 2, "self node, check local video");
       }
       paramJobContext = (StoryManager)SuperManager.a(5);
-      localObject1 = ((MsgTabStoryManager)QQStoryContext.a().getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a().a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
-      if ((localObject1 == null) || (((MsgTabNodeInfo)localObject1).b == null) || (((MsgTabNodeInfo)localObject1).b.isEmpty())) {
-        break label410;
-      }
-      localObject1 = ((MsgTabNodeInfo)localObject1).b.iterator();
-      while (((Iterator)localObject1).hasNext())
+      Object localObject1 = ((MsgTabStoryManager)QQStoryContext.a().getManager(QQManagerFactory.MSG_TAB_STORY_MANAGER)).a().a(this.a.jdField_a_of_type_Int, this.a.jdField_a_of_type_JavaLangString);
+      Object localObject2;
+      Object localObject3;
+      int i;
+      if ((localObject1 != null) && (((MsgTabNodeInfo)localObject1).b != null) && (!((MsgTabNodeInfo)localObject1).b.isEmpty()))
       {
-        localObject2 = (MsgTabVideoData)((Iterator)localObject1).next();
-        localObject3 = paramJobContext.a(((MsgTabVideoData)localObject2).jdField_b_of_type_JavaLangString);
-        if (localObject3 != null)
+        localObject1 = ((MsgTabNodeInfo)localObject1).b.iterator();
+        while (((Iterator)localObject1).hasNext())
         {
-          ((MsgTabVideoData)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject3);
-          paramList.add(localObject2);
+          localObject2 = (MsgTabVideoData)((Iterator)localObject1).next();
+          localObject3 = paramJobContext.a(((MsgTabVideoData)localObject2).jdField_b_of_type_JavaLangString);
+          if (localObject3 != null)
+          {
+            ((MsgTabVideoData)localObject2).jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryVideoItem)localObject3);
+            paramList.add(localObject2);
+          }
         }
+        i = 1;
       }
-    }
-    label410:
-    for (int i = 1;; i = 0)
-    {
+      else
+      {
+        i = 0;
+      }
       localObject1 = paramJobContext.a(false);
       int j = i;
       if (localObject1 != null)
@@ -94,19 +95,18 @@ public class MsgTabNodeInsertLocalVideoInfoSegment
         }
         Collections.sort(paramList, new MsgTabNodeInsertLocalVideoInfoSegment.1(this));
       }
-      if (paramList.isEmpty())
-      {
-        notifyError(new ErrorMessage(103, "nodeInfo not valid"));
-        return;
-      }
-      notifyResult(paramList);
+    }
+    if (paramList.isEmpty())
+    {
+      notifyError(new ErrorMessage(103, "nodeInfo not valid"));
       return;
     }
+    notifyResult(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeInsertLocalVideoInfoSegment
  * JD-Core Version:    0.7.0.1
  */

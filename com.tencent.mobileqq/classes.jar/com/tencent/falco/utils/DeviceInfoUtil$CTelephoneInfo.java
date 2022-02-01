@@ -43,13 +43,13 @@ class DeviceInfoUtil$CTelephoneInfo
         paramContext = paramContext.toString();
         return paramContext;
       }
+      return null;
     }
     catch (Exception paramContext)
     {
       paramContext.printStackTrace();
       throw new DeviceInfoUtil.CTelephoneInfo.GeminiMethodNotFoundException(paramString);
     }
-    return null;
   }
   
   private static boolean getSIMStateBySlot(Context paramContext, String paramString, int paramInt)
@@ -65,23 +65,25 @@ class DeviceInfoUtil$CTelephoneInfo
           return true;
         }
       }
+      return false;
     }
     catch (Exception paramContext)
     {
       paramContext.printStackTrace();
       throw new DeviceInfoUtil.CTelephoneInfo.GeminiMethodNotFoundException(paramString);
     }
-    return false;
   }
   
   public String getINumeric()
   {
     if (this.imeiSIM2 != null)
     {
-      if ((this.iNumeric1 != null) && (this.iNumeric1.length() > 1)) {
+      String str = this.iNumeric1;
+      if ((str != null) && (str.length() > 1)) {
         return this.iNumeric1;
       }
-      if ((this.iNumeric2 != null) && (this.iNumeric2.length() > 1)) {
+      str = this.iNumeric2;
+      if ((str != null) && (str.length() > 1)) {
         return this.iNumeric2;
       }
     }
@@ -135,74 +137,71 @@ class DeviceInfoUtil$CTelephoneInfo
   
   public void setCTelephoneInfo()
   {
-    TelephonyManager localTelephonyManager = (TelephonyManager)mContext.getSystemService("phone");
-    CTelephoneInfo.imeiSIM1 = localTelephonyManager.getDeviceId();
-    CTelephoneInfo.imeiSIM2 = null;
+    Object localObject = (TelephonyManager)mContext.getSystemService("phone");
+    CTelephoneInfo.imeiSIM1 = ((TelephonyManager)localObject).getDeviceId();
+    CTelephoneInfo localCTelephoneInfo1 = CTelephoneInfo;
+    localCTelephoneInfo1.imeiSIM2 = null;
     try
     {
-      CTelephoneInfo.imeiSIM1 = getOperatorBySlot(mContext, "getDeviceIdGemini", 0);
+      localCTelephoneInfo1.imeiSIM1 = getOperatorBySlot(mContext, "getDeviceIdGemini", 0);
       CTelephoneInfo.imeiSIM2 = getOperatorBySlot(mContext, "getDeviceIdGemini", 1);
       CTelephoneInfo.iNumeric1 = getOperatorBySlot(mContext, "getSimOperatorGemini", 0);
       CTelephoneInfo.iNumeric2 = getOperatorBySlot(mContext, "getSimOperatorGemini", 1);
       CTelephoneInfo.iDataConnected1 = getOperatorBySlot(mContext, "getDataStateGemini", 0);
       CTelephoneInfo.iDataConnected2 = getOperatorBySlot(mContext, "getDataStateGemini", 1);
-      CTelephoneInfo localCTelephoneInfo = CTelephoneInfo;
-      if (localTelephonyManager.getSimState() == 5)
-      {
-        bool = true;
-        localCTelephoneInfo.isSIM1Ready = bool;
-        CTelephoneInfo.isSIM2Ready = false;
-      }
     }
     catch (DeviceInfoUtil.CTelephoneInfo.GeminiMethodNotFoundException localGeminiMethodNotFoundException3)
     {
-      for (;;)
+      localGeminiMethodNotFoundException3.printStackTrace();
+      try
       {
-        try
-        {
-          CTelephoneInfo.isSIM1Ready = getSIMStateBySlot(mContext, "getSimStateGemini", 0);
-          CTelephoneInfo.isSIM2Ready = getSIMStateBySlot(mContext, "getSimStateGemini", 1);
-          return;
-        }
-        catch (DeviceInfoUtil.CTelephoneInfo.GeminiMethodNotFoundException localGeminiMethodNotFoundException1)
-        {
-          boolean bool;
-          localGeminiMethodNotFoundException1.printStackTrace();
-          try
-          {
-            CTelephoneInfo.isSIM1Ready = getSIMStateBySlot(mContext, "getSimState", 0);
-            CTelephoneInfo.isSIM2Ready = getSIMStateBySlot(mContext, "getSimState", 1);
-            return;
-          }
-          catch (DeviceInfoUtil.CTelephoneInfo.GeminiMethodNotFoundException localGeminiMethodNotFoundException2)
-          {
-            localGeminiMethodNotFoundException2.printStackTrace();
-          }
-        }
-        localGeminiMethodNotFoundException3 = localGeminiMethodNotFoundException3;
-        localGeminiMethodNotFoundException3.printStackTrace();
-        try
-        {
-          CTelephoneInfo.imeiSIM1 = getOperatorBySlot(mContext, "getDeviceId", 0);
-          CTelephoneInfo.imeiSIM2 = getOperatorBySlot(mContext, "getDeviceId", 1);
-          CTelephoneInfo.iNumeric1 = getOperatorBySlot(mContext, "getSimOperator", 0);
-          CTelephoneInfo.iNumeric2 = getOperatorBySlot(mContext, "getSimOperator", 1);
-          CTelephoneInfo.iDataConnected1 = getOperatorBySlot(mContext, "getDataState", 0);
-          CTelephoneInfo.iDataConnected2 = getOperatorBySlot(mContext, "getDataState", 1);
-        }
-        catch (DeviceInfoUtil.CTelephoneInfo.GeminiMethodNotFoundException localGeminiMethodNotFoundException4)
-        {
-          localGeminiMethodNotFoundException4.printStackTrace();
-        }
-        continue;
-        bool = false;
+        CTelephoneInfo.imeiSIM1 = getOperatorBySlot(mContext, "getDeviceId", 0);
+        CTelephoneInfo.imeiSIM2 = getOperatorBySlot(mContext, "getDeviceId", 1);
+        CTelephoneInfo.iNumeric1 = getOperatorBySlot(mContext, "getSimOperator", 0);
+        CTelephoneInfo.iNumeric2 = getOperatorBySlot(mContext, "getSimOperator", 1);
+        CTelephoneInfo.iDataConnected1 = getOperatorBySlot(mContext, "getDataState", 0);
+        CTelephoneInfo.iDataConnected2 = getOperatorBySlot(mContext, "getDataState", 1);
+      }
+      catch (DeviceInfoUtil.CTelephoneInfo.GeminiMethodNotFoundException localGeminiMethodNotFoundException4)
+      {
+        localGeminiMethodNotFoundException4.printStackTrace();
+      }
+    }
+    CTelephoneInfo localCTelephoneInfo2 = CTelephoneInfo;
+    boolean bool;
+    if (((TelephonyManager)localObject).getSimState() == 5) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localCTelephoneInfo2.isSIM1Ready = bool;
+    localObject = CTelephoneInfo;
+    ((CTelephoneInfo)localObject).isSIM2Ready = false;
+    try
+    {
+      ((CTelephoneInfo)localObject).isSIM1Ready = getSIMStateBySlot(mContext, "getSimStateGemini", 0);
+      CTelephoneInfo.isSIM2Ready = getSIMStateBySlot(mContext, "getSimStateGemini", 1);
+      return;
+    }
+    catch (DeviceInfoUtil.CTelephoneInfo.GeminiMethodNotFoundException localGeminiMethodNotFoundException1)
+    {
+      localGeminiMethodNotFoundException1.printStackTrace();
+      try
+      {
+        CTelephoneInfo.isSIM1Ready = getSIMStateBySlot(mContext, "getSimState", 0);
+        CTelephoneInfo.isSIM2Ready = getSIMStateBySlot(mContext, "getSimState", 1);
+        return;
+      }
+      catch (DeviceInfoUtil.CTelephoneInfo.GeminiMethodNotFoundException localGeminiMethodNotFoundException2)
+      {
+        localGeminiMethodNotFoundException2.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.DeviceInfoUtil.CTelephoneInfo
  * JD-Core Version:    0.7.0.1
  */

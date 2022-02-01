@@ -43,14 +43,15 @@ public final class GetPasswordRsp
     paramJceOutputStream.write(this.checkInterval, 2);
     paramJceOutputStream.write(this.passInterval, 3);
     paramJceOutputStream.write(this.passwordType, 4);
-    if (this.deviceId != null) {
-      paramJceOutputStream.write(this.deviceId, 5);
+    String str = this.deviceId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.GetPasswordRsp
  * JD-Core Version:    0.7.0.1
  */

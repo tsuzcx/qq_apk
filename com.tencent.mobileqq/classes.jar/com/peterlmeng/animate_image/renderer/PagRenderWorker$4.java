@@ -17,18 +17,15 @@ class PagRenderWorker$4
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
+      if (this.this$0.registrarWeakReference == null) {
+        return;
+      }
+      Object localObject2 = (Context)this.this$0.registrarWeakReference.get();
+      Object localObject1 = RenderUtils.pathToFile((Context)localObject2, this.this$0.url, this.this$0.packagePath);
+      if ((localObject1 != null) && (((File)localObject1).exists()))
       {
-        if (this.this$0.registrarWeakReference == null) {
-          return;
-        }
-        Object localObject2 = (Context)this.this$0.registrarWeakReference.get();
-        Object localObject1 = RenderUtils.pathToFile((Context)localObject2, this.this$0.url, this.this$0.packagePath);
-        if ((localObject1 == null) || (!((File)localObject1).exists())) {
-          break;
-        }
         localObject1 = PAGFile.Load(((File)localObject1).getAbsolutePath());
         if (this.this$0.replaceImageModel != null)
         {
@@ -44,22 +41,24 @@ class PagRenderWorker$4
             localObject2 = PAGImage.FromBitmap((Bitmap)localObject2);
             ((PAGFile)localObject1).replaceImage(this.this$0.replaceImageModel.index, (PAGImage)localObject2);
           }
-          PagRenderWorker.access$400(this.this$0, (PAGFile)localObject1);
-          return;
         }
-      }
-      catch (Exception localException)
-      {
-        LogUtils.b("PagRenderWorker", localException.getMessage());
+        else
+        {
+          LogUtils.c("PagRenderWorker", "need not replace resource");
+        }
+        PagRenderWorker.access$400(this.this$0, (PAGFile)localObject1);
         return;
       }
-      LogUtils.c("PagRenderWorker", "need not replace resource");
+    }
+    catch (Exception localException)
+    {
+      LogUtils.b("PagRenderWorker", localException.getMessage());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.PagRenderWorker.4
  * JD-Core Version:    0.7.0.1
  */

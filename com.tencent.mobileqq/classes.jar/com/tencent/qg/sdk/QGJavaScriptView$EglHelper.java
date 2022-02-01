@@ -27,12 +27,13 @@ class QGJavaScriptView$EglHelper
   
   private void destroySurfaceImp()
   {
-    if ((this.mEglSurface != null) && (this.mEglSurface != EGL10.EGL_NO_SURFACE))
+    Object localObject = this.mEglSurface;
+    if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
     {
       this.mEgl.eglMakeCurrent(this.mEglDisplay, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_SURFACE, EGL10.EGL_NO_CONTEXT);
-      QGJavaScriptView localQGJavaScriptView = (QGJavaScriptView)this.mGLSurfaceViewWeakRef.get();
-      if (localQGJavaScriptView != null) {
-        localQGJavaScriptView.mEGLWindowSurfaceFactory.destroySurface(this.mEgl, this.mEglDisplay, this.mEglSurface);
+      localObject = (QGJavaScriptView)this.mGLSurfaceViewWeakRef.get();
+      if (localObject != null) {
+        ((QGJavaScriptView)localObject).mEGLWindowSurfaceFactory.destroySurface(this.mEgl, this.mEglDisplay, this.mEglSurface);
       }
       this.mEglSurface = null;
     }
@@ -40,7 +41,11 @@ class QGJavaScriptView$EglHelper
   
   public static String formatEglError(String paramString, int paramInt)
   {
-    return paramString + " failed: " + QGJavaScriptView.getErrorString(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(" failed: ");
+    localStringBuilder.append(QGJavaScriptView.getErrorString(paramInt));
+    return localStringBuilder.toString();
   }
   
   public static void logEglErrorAsWarning(String paramString1, String paramString2, int paramInt)
@@ -63,61 +68,67 @@ class QGJavaScriptView$EglHelper
     GL localGL2 = this.mEglContext.getGL();
     QGJavaScriptView localQGJavaScriptView = (QGJavaScriptView)this.mGLSurfaceViewWeakRef.get();
     Object localObject = localGL2;
-    GL localGL1;
-    int i;
     if (localQGJavaScriptView != null)
     {
-      localGL1 = localGL2;
+      GL localGL1 = localGL2;
       if (localQGJavaScriptView.mGLWrapper != null) {
         localGL1 = localQGJavaScriptView.mGLWrapper.wrap(localGL2);
       }
       localObject = localGL1;
       if ((localQGJavaScriptView.mDebugFlags & 0x3) != 0)
       {
-        i = 0;
+        int i = 0;
+        localObject = null;
         if ((localQGJavaScriptView.mDebugFlags & 0x1) != 0) {
           i = 1;
         }
-        if ((localQGJavaScriptView.mDebugFlags & 0x2) == 0) {
-          break label106;
+        if ((localQGJavaScriptView.mDebugFlags & 0x2) != 0) {
+          localObject = new QGJavaScriptView.LogWriter();
         }
+        localObject = GLDebugHelper.wrap(localGL1, i, (Writer)localObject);
       }
     }
-    label106:
-    for (localObject = new QGJavaScriptView.LogWriter();; localObject = null)
-    {
-      localObject = GLDebugHelper.wrap(localGL1, i, (Writer)localObject);
-      return localObject;
-    }
+    return localObject;
   }
   
   public boolean createSurface()
   {
-    if (this.mEgl == null) {
-      throw new RuntimeException("egl not initialized");
-    }
-    if (this.mEglDisplay == null) {
+    if (this.mEgl != null)
+    {
+      if (this.mEglDisplay != null)
+      {
+        if (this.mEglConfig != null)
+        {
+          destroySurfaceImp();
+          Object localObject = (QGJavaScriptView)this.mGLSurfaceViewWeakRef.get();
+          if (localObject != null) {
+            this.mEglSurface = ((QGJavaScriptView)localObject).mEGLWindowSurfaceFactory.createWindowSurface(this.mEgl, this.mEglDisplay, this.mEglConfig, ((QGJavaScriptView)localObject).getHolder());
+          } else {
+            this.mEglSurface = null;
+          }
+          localObject = this.mEglSurface;
+          if ((localObject != null) && (localObject != EGL10.EGL_NO_SURFACE))
+          {
+            localObject = this.mEgl;
+            EGLDisplay localEGLDisplay = this.mEglDisplay;
+            EGLSurface localEGLSurface = this.mEglSurface;
+            if (!((EGL10)localObject).eglMakeCurrent(localEGLDisplay, localEGLSurface, localEGLSurface, this.mEglContext))
+            {
+              logEglErrorAsWarning("EGLHelper", "eglMakeCurrent", this.mEgl.eglGetError());
+              return false;
+            }
+            return true;
+          }
+          if (this.mEgl.eglGetError() == 12299) {
+            Log.e("EglHelper", "createWindowSurface returned EGL_BAD_NATIVE_WINDOW.");
+          }
+          return false;
+        }
+        throw new RuntimeException("mEglConfig not initialized");
+      }
       throw new RuntimeException("eglDisplay not initialized");
     }
-    if (this.mEglConfig == null) {
-      throw new RuntimeException("mEglConfig not initialized");
-    }
-    destroySurfaceImp();
-    QGJavaScriptView localQGJavaScriptView = (QGJavaScriptView)this.mGLSurfaceViewWeakRef.get();
-    if (localQGJavaScriptView != null) {}
-    for (this.mEglSurface = localQGJavaScriptView.mEGLWindowSurfaceFactory.createWindowSurface(this.mEgl, this.mEglDisplay, this.mEglConfig, localQGJavaScriptView.getHolder()); (this.mEglSurface == null) || (this.mEglSurface == EGL10.EGL_NO_SURFACE); this.mEglSurface = null)
-    {
-      if (this.mEgl.eglGetError() == 12299) {
-        Log.e("EglHelper", "createWindowSurface returned EGL_BAD_NATIVE_WINDOW.");
-      }
-      return false;
-    }
-    if (!this.mEgl.eglMakeCurrent(this.mEglDisplay, this.mEglSurface, this.mEglSurface, this.mEglContext))
-    {
-      logEglErrorAsWarning("EGLHelper", "eglMakeCurrent", this.mEgl.eglGetError());
-      return false;
-    }
-    return true;
+    throw new RuntimeException("egl not initialized");
   }
   
   public void destroySurface()
@@ -129,15 +140,16 @@ class QGJavaScriptView$EglHelper
   {
     if (this.mEglContext != null)
     {
-      QGJavaScriptView localQGJavaScriptView = (QGJavaScriptView)this.mGLSurfaceViewWeakRef.get();
-      if (localQGJavaScriptView != null) {
-        localQGJavaScriptView.mEGLContextFactory.destroyContext(this.mEgl, this.mEglDisplay, this.mEglContext);
+      localObject = (QGJavaScriptView)this.mGLSurfaceViewWeakRef.get();
+      if (localObject != null) {
+        ((QGJavaScriptView)localObject).mEGLContextFactory.destroyContext(this.mEgl, this.mEglDisplay, this.mEglContext);
       }
       this.mEglContext = null;
     }
-    if (this.mEglDisplay != null)
+    Object localObject = this.mEglDisplay;
+    if (localObject != null)
     {
-      this.mEgl.eglTerminate(this.mEglDisplay);
+      this.mEgl.eglTerminate((EGLDisplay)localObject);
       this.mEglDisplay = null;
     }
   }
@@ -151,28 +163,34 @@ class QGJavaScriptView$EglHelper
   {
     this.mEgl = ((EGL10)EGLContext.getEGL());
     this.mEglDisplay = this.mEgl.eglGetDisplay(EGL10.EGL_DEFAULT_DISPLAY);
-    if (this.mEglDisplay == EGL10.EGL_NO_DISPLAY) {
-      throw new RuntimeException("eglGetDisplay failed");
-    }
-    Object localObject = new int[2];
-    if (!this.mEgl.eglInitialize(this.mEglDisplay, (int[])localObject)) {
+    if (this.mEglDisplay != EGL10.EGL_NO_DISPLAY)
+    {
+      Object localObject = new int[2];
+      if (this.mEgl.eglInitialize(this.mEglDisplay, (int[])localObject))
+      {
+        localObject = (QGJavaScriptView)this.mGLSurfaceViewWeakRef.get();
+        if (localObject == null)
+        {
+          this.mEglConfig = null;
+          this.mEglContext = null;
+        }
+        else
+        {
+          this.mEglConfig = ((QGJavaScriptView)localObject).mEGLConfigChooser.chooseConfig(this.mEgl, this.mEglDisplay);
+          this.mEglContext = ((QGJavaScriptView)localObject).mEGLContextFactory.createContext(this.mEgl, this.mEglDisplay, this.mEglConfig);
+        }
+        localObject = this.mEglContext;
+        if ((localObject == null) || (localObject == EGL10.EGL_NO_CONTEXT))
+        {
+          this.mEglContext = null;
+          throwEglException("createContext");
+        }
+        this.mEglSurface = null;
+        return;
+      }
       throw new RuntimeException("eglInitialize failed");
     }
-    localObject = (QGJavaScriptView)this.mGLSurfaceViewWeakRef.get();
-    if (localObject == null) {
-      this.mEglConfig = null;
-    }
-    for (this.mEglContext = null;; this.mEglContext = ((QGJavaScriptView)localObject).mEGLContextFactory.createContext(this.mEgl, this.mEglDisplay, this.mEglConfig))
-    {
-      if ((this.mEglContext == null) || (this.mEglContext == EGL10.EGL_NO_CONTEXT))
-      {
-        this.mEglContext = null;
-        throwEglException("createContext");
-      }
-      this.mEglSurface = null;
-      return;
-      this.mEglConfig = ((QGJavaScriptView)localObject).mEGLConfigChooser.chooseConfig(this.mEgl, this.mEglDisplay);
-    }
+    throw new RuntimeException("eglGetDisplay failed");
   }
   
   public int swap()
@@ -185,7 +203,7 @@ class QGJavaScriptView$EglHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qg.sdk.QGJavaScriptView.EglHelper
  * JD-Core Version:    0.7.0.1
  */

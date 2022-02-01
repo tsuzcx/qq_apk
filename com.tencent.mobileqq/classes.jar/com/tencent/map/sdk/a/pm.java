@@ -104,8 +104,9 @@ public final class pm
   
   public final void a(String paramString1, String paramString2)
   {
-    if (this.b != null) {
-      this.b.a(paramString1, paramString2);
+    lw locallw = this.b;
+    if (locallw != null) {
+      locallw.a(paramString1, paramString2);
     }
   }
   
@@ -193,8 +194,11 @@ public final class pm
   public final float e()
   {
     float f1 = c();
-    double d1 = f();
-    return (float)(f1 + Math.log(d1) / Math.log(2.0D));
+    double d2 = f();
+    double d1 = f1;
+    d2 = Math.log(d2) / Math.log(2.0D);
+    Double.isNaN(d1);
+    return (float)(d1 + d2);
   }
   
   public final void e(int paramInt)
@@ -232,16 +236,16 @@ public final class pm
   
   public final String k()
   {
-    String str = null;
-    if (this.b != null) {
-      str = this.b.l();
+    lw locallw = this.b;
+    if (locallw != null) {
+      return locallw.l();
     }
-    return str;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.pm
  * JD-Core Version:    0.7.0.1
  */

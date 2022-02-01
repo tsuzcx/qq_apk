@@ -12,22 +12,22 @@ class HalfSizeWebviewDialog$3
   
   public void onClick(View paramView)
   {
-    if (!this.a.a.canGoBack()) {
+    if (!this.a.a.canGoBack())
+    {
       this.a.dismiss();
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       HalfSizeWebviewDialog localHalfSizeWebviewDialog = this.a;
       localHalfSizeWebviewDialog.c -= 1;
       HalfSizeWebviewDialog.a(this.a);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.webmodule.dialog.HalfSizeWebviewDialog.3
  * JD-Core Version:    0.7.0.1
  */

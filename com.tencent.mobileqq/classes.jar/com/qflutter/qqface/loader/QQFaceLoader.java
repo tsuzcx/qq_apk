@@ -37,8 +37,6 @@ public class QQFaceLoader
   
   private QQFaceFlutterData buildFlutterDate(String paramString, QQFaceNativeData paramQQFaceNativeData, boolean paramBoolean)
   {
-    boolean bool3 = false;
-    boolean bool2 = true;
     Object localObject = new StringBuilder();
     ((StringBuilder)localObject).append("buildFlutterDate, shareBitmap: ");
     ((StringBuilder)localObject).append(paramBoolean);
@@ -47,14 +45,15 @@ public class QQFaceLoader
     Bitmap localBitmap = paramQQFaceNativeData.getBitmap();
     String str = paramQQFaceNativeData.getPath();
     byte[] arrayOfByte = paramQQFaceNativeData.getRawData();
-    boolean bool1 = bool3;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     if (localBitmap != null)
     {
-      bool1 = bool3;
+      bool1 = bool2;
       if (paramBoolean)
       {
         long l = NativeBitmap.getBitmapPixelDataMemoryPtr(localBitmap);
-        bool1 = bool3;
+        bool1 = bool2;
         if (l > 0L)
         {
           ((QQFaceFlutterData)localObject).dataFormat = 0;
@@ -81,24 +80,26 @@ public class QQFaceLoader
         paramBoolean = true;
       }
     }
-    if ((!paramBoolean) && (!TextUtils.isEmpty(str)))
+    bool1 = paramBoolean;
+    if (!paramBoolean)
     {
-      ((QQFaceFlutterData)localObject).dataFormat = 2;
-      ((QQFaceFlutterData)localObject).path = str;
-      paramBoolean = bool2;
+      bool1 = paramBoolean;
+      if (!TextUtils.isEmpty(str))
+      {
+        ((QQFaceFlutterData)localObject).dataFormat = 2;
+        ((QQFaceFlutterData)localObject).path = str;
+        bool1 = true;
+      }
     }
-    for (;;)
-    {
-      paramString = new StringBuilder();
-      paramString.append("buildFlutterDate dataFormat: ");
-      paramString.append(((QQFaceFlutterData)localObject).dataFormat);
-      paramString.append(", handle: ");
-      paramString.append(paramBoolean);
-      paramString.append(", isDefault: ");
-      paramString.append(((QQFaceFlutterData)localObject).isDefault);
-      Log.d("QQFaceLoader", paramString.toString());
-      return localObject;
-    }
+    paramString = new StringBuilder();
+    paramString.append("buildFlutterDate dataFormat: ");
+    paramString.append(((QQFaceFlutterData)localObject).dataFormat);
+    paramString.append(", handle: ");
+    paramString.append(bool1);
+    paramString.append(", isDefault: ");
+    paramString.append(((QQFaceFlutterData)localObject).isDefault);
+    Log.d("QQFaceLoader", paramString.toString());
+    return localObject;
   }
   
   public static QQFaceLoader instance()
@@ -136,8 +137,9 @@ public class QQFaceLoader
   
   public void onDestroy()
   {
-    if (this.mQQFaceInterface != null) {
-      this.mQQFaceInterface.onDestroy();
+    QQFaceInterface localQQFaceInterface = this.mQQFaceInterface;
+    if (localQQFaceInterface != null) {
+      localQQFaceInterface.onDestroy();
     }
   }
   
@@ -146,6 +148,18 @@ public class QQFaceLoader
     Log.d("QQFaceLoader", "onDetachedFromEngine");
     if (this.mQQFacePlugins.contains(paramQQFacePlugin)) {
       this.mQQFacePlugins.remove(paramQQFacePlugin);
+    }
+  }
+  
+  public void onUpdate(QQFaceParam paramQQFaceParam, QQFaceNativeData paramQQFaceNativeData)
+  {
+    if (paramQQFaceParam == null) {
+      return;
+    }
+    paramQQFaceParam = buildFlutterDate(paramQQFaceParam.getFaceId(), paramQQFaceNativeData, true);
+    paramQQFaceNativeData = this.mQQFacePlugins.iterator();
+    while (paramQQFaceNativeData.hasNext()) {
+      ((QQFacePlugin)paramQQFaceNativeData.next()).updateHead(paramQQFaceParam);
     }
   }
   
@@ -165,7 +179,7 @@ public class QQFaceLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqface.loader.QQFaceLoader
  * JD-Core Version:    0.7.0.1
  */

@@ -33,47 +33,52 @@ public final class QQLiveImageHelper
   @NotNull
   public int[] interestedIn()
   {
-    return new int[] { 9, 6, 10, 11, 14, 17, 16, 15 };
+    return new int[] { 10, 7, 11, 12, 15, 18, 17, 16 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQLiveImagehelper", 2, "onMoveToState: state=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMoveToState: state=");
+      localStringBuilder.append(paramInt);
+      QLog.d("QQLiveImagehelper", 2, localStringBuilder.toString());
     }
     switch (paramInt)
     {
-    case 7: 
     case 8: 
-    case 12: 
+    case 9: 
     case 13: 
+    case 14: 
     default: 
       return;
-    case 9: 
+    case 18: 
       QQLiveImage.resumeAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
       return;
-    case 6: 
-      QQLiveImage.onForeground((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-      return;
-    case 10: 
+    case 16: 
+    case 17: 
       QQLiveImage.pauseAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
       return;
-    case 11: 
-      QQLiveImage.onBackground((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
-      return;
-    case 14: 
+    case 15: 
       QQLiveImage.releaseAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
       return;
-    case 17: 
+    case 12: 
+      QQLiveImage.onBackground((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      return;
+    case 11: 
+      QQLiveImage.pauseAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      return;
+    case 10: 
       QQLiveImage.resumeAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
       return;
     }
-    QQLiveImage.pauseAll((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+    QQLiveImage.onForeground((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.QQLiveImageHelper
  * JD-Core Version:    0.7.0.1
  */

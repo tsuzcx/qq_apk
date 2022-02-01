@@ -63,7 +63,7 @@ class QavInOutAnimation$InDelayAnimationListener
       }
     }
     if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null)) {
-      this.a.jdField_a_of_type_ComTencentAvVideoController.a().au = true;
+      this.a.jdField_a_of_type_ComTencentAvVideoController.a().ai = true;
     }
   }
   
@@ -73,7 +73,7 @@ class QavInOutAnimation$InDelayAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavInOutAnimation.InDelayAnimationListener
  * JD-Core Version:    0.7.0.1
  */

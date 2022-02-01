@@ -69,7 +69,11 @@ public class QAPMCellingHprofWrapper
   
   public boolean a()
   {
-    this.jdField_a_of_type_AndroidContentSharedPreferences = MobileQQ.getContext().getSharedPreferences("memory_reporter_" + MobileQQ.sProcessId, 0);
+    BaseApplication localBaseApplication = MobileQQ.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("memory_reporter_");
+    localStringBuilder.append(MobileQQ.sProcessId);
+    this.jdField_a_of_type_AndroidContentSharedPreferences = localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0);
     this.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidContentSharedPreferences.getLong("sp_key_last_shot_time", 0L);
     if (Math.abs(System.currentTimeMillis() - this.jdField_a_of_type_Long) >= 86400000L)
     {
@@ -80,13 +84,10 @@ public class QAPMCellingHprofWrapper
         this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putLong("sp_key_last_shot_time", this.jdField_a_of_type_Long).putBoolean("key_need_report", true).commit();
         return true;
       }
+      return false;
     }
-    else
-    {
-      c();
-      return true;
-    }
-    return false;
+    c();
+    return true;
   }
   
   public String b()
@@ -132,7 +133,25 @@ public class QAPMCellingHprofWrapper
       float f3 = (float)Runtime.getRuntime().totalMemory() / 1024.0F / 1024.0F;
       float f4 = (float)Runtime.getRuntime().maxMemory() / 1024.0F / 1024.0F;
       long l3 = HackVmImpl.jdField_a_of_type_Long / 1024L / 1024L;
-      localStringBuilder.append(l1).append("M,avaiable:").append(l2).append("M used:").append(((DecimalFormat)localObject).format(f1)).append("M freeMemory:").append(f2).append("M,appTotalMemory:").append(f3).append("M,orgMaxMemory:").append(l3).append("M,maxMemory:").append(f4).append("M, ImgCache:").append(GlobalImageCache.a.size() / 1024 / 1024).append("M,SkinCache:").append(SkinEngine.dumpDrawableCacheMemSize() / 1024L / 1024L).append("M,LeakMonitor=").append(MagnifierSDK.a().a().b());
+      localStringBuilder.append(l1);
+      localStringBuilder.append("M,avaiable:");
+      localStringBuilder.append(l2);
+      localStringBuilder.append("M used:");
+      localStringBuilder.append(((DecimalFormat)localObject).format(f1));
+      localStringBuilder.append("M freeMemory:");
+      localStringBuilder.append(f2);
+      localStringBuilder.append("M,appTotalMemory:");
+      localStringBuilder.append(f3);
+      localStringBuilder.append("M,orgMaxMemory:");
+      localStringBuilder.append(l3);
+      localStringBuilder.append("M,maxMemory:");
+      localStringBuilder.append(f4);
+      localStringBuilder.append("M, ImgCache:");
+      localStringBuilder.append(GlobalImageCache.a.size() / 1024 / 1024);
+      localStringBuilder.append("M,SkinCache:");
+      localStringBuilder.append(SkinEngine.dumpDrawableCacheMemSize() / 1024L / 1024L);
+      localStringBuilder.append("M,LeakMonitor=");
+      localStringBuilder.append(MagnifierSDK.a().a().b());
       localObject = (ArrayList)MemoryReporter.jdField_a_of_type_JavaUtilArrayList.clone();
       if (((ArrayList)localObject).size() > 0)
       {
@@ -143,19 +162,20 @@ public class QAPMCellingHprofWrapper
           localStringBuilder.append((String)((Iterator)localObject).next());
           localStringBuilder.append(",");
         }
+        localStringBuilder.append("]");
       }
-      return localStringBuilder.toString();
     }
-    catch (Throwable localThrowable) {}
-    for (;;)
+    catch (Throwable localThrowable)
     {
-      localStringBuilder.append("]");
+      label433:
+      break label433;
     }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.memory.QAPMCellingHprofWrapper
  * JD-Core Version:    0.7.0.1
  */

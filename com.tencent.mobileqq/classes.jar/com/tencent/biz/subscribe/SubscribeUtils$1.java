@@ -3,6 +3,7 @@ package com.tencent.biz.subscribe;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
+import com.tencent.mobileqq.transfile.NetReq;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -16,20 +17,23 @@ final class SubscribeUtils$1
   
   public void run()
   {
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = new SubscribeUtils.1.1(this);
-    localHttpNetReq.mReqUrl = this.b;
-    localHttpNetReq.mHttpMethod = 0;
-    localHttpNetReq.mOutPath = this.jdField_a_of_type_JavaIoFile.getPath();
-    localHttpNetReq.mContinuErrorLimit = NetworkUtil.a(NetworkCenter.getInstance().getNetType());
+    Object localObject = new HttpNetReq();
+    ((HttpNetReq)localObject).mCallback = new SubscribeUtils.1.1(this);
+    ((HttpNetReq)localObject).mReqUrl = this.b;
+    ((HttpNetReq)localObject).mHttpMethod = 0;
+    ((HttpNetReq)localObject).mOutPath = this.jdField_a_of_type_JavaIoFile.getPath();
+    ((HttpNetReq)localObject).mContinuErrorLimit = NetworkUtil.getConnRetryTimes(NetworkCenter.getInstance().getNetType());
     QQStoryContext.a();
-    ((IHttpEngineService)QQStoryContext.a().getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
-    QLog.i("DownLoadZipFile", 1, "startDownloadZipFile, url: " + this.b);
+    ((IHttpEngineService)QQStoryContext.a().getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startDownloadZipFile, url: ");
+    ((StringBuilder)localObject).append(this.b);
+    QLog.i("DownLoadZipFile", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.SubscribeUtils.1
  * JD-Core Version:    0.7.0.1
  */

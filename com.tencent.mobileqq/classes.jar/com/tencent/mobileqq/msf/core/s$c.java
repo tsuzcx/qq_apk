@@ -18,13 +18,14 @@ class s$c
     if (j == 99) {
       i = -3;
     }
-    this.a.f = i;
-    this.a.D();
+    paramSignalStrength = this.a;
+    paramSignalStrength.f = i;
+    paramSignalStrength.D();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.s.c
  * JD-Core Version:    0.7.0.1
  */

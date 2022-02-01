@@ -12,13 +12,13 @@ class QavVideoRecordUICtrl$1$1
   {
     this.a.this$0.c();
     if (((AVActivity)QavVideoRecordUICtrl.a(this.a.this$0).get()).a != null) {
-      TipsUtil.a(((AVActivity)QavVideoRecordUICtrl.a(this.a.this$0).get()).a, 1023, 2131695760);
+      TipsUtil.a(((AVActivity)QavVideoRecordUICtrl.a(this.a.this$0).get()).a, 1023, 2131695774);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavVideoRecordUICtrl.1.1
  * JD-Core Version:    0.7.0.1
  */

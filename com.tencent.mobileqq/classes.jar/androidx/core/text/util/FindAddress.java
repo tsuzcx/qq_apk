@@ -40,151 +40,132 @@ class FindAddress
   
   private static int attemptMatch(String paramString, MatchResult paramMatchResult)
   {
-    int j = -1;
-    int k = -1;
-    int i = paramMatchResult.end();
-    int i1 = 1;
-    int n = 1;
-    int m = 0;
-    int i2 = 1;
-    paramMatchResult = "";
+    int j = paramMatchResult.end();
     Matcher localMatcher = sWordRe.matcher(paramString);
-    label60:
-    label86:
-    int i3;
-    if (i < paramString.length())
+    paramMatchResult = "";
+    int i2 = 1;
+    int i3 = 1;
+    int i1 = 1;
+    int n = 0;
+    int k = -1;
+    int m = -1;
+    int i;
+    for (;;)
     {
-      if (!localMatcher.find(i))
-      {
-        m = -paramString.length();
-        return m;
+      i = j;
+      if (j >= paramString.length()) {
+        break;
       }
-      if (localMatcher.end() - localMatcher.start() > 25) {
-        return -localMatcher.end();
+      if (!localMatcher.find(j)) {}
+      for (i = paramString.length();; i = localMatcher.end())
+      {
+        return -i;
+        i = j;
+        if (localMatcher.end() - localMatcher.start() <= 25) {
+          break;
+        }
       }
       while (i < localMatcher.start())
       {
-        i3 = i + 1;
-        if ("\n\013\f\r  ".indexOf(paramString.charAt(i)) == -1) {
-          break label491;
+        j = i2;
+        if ("\n\013\f\r  ".indexOf(paramString.charAt(i)) != -1) {
+          j = i2 + 1;
         }
-        i1 += 1;
-        i = i3;
+        i += 1;
+        i2 = j;
       }
-      if (i1 <= 5) {}
-    }
-    for (;;)
-    {
-      label132:
-      m = k;
-      if (k > 0) {
-        break label60;
+      if (i2 > 5) {
+        break;
       }
-      if (j > 0) {}
-      for (;;)
+      i3 += 1;
+      if (i3 > 14) {
+        break;
+      }
+      int i4;
+      int i5;
+      int i6;
+      if (matchHouseNumber(paramString, i) != null)
       {
-        return -j;
-        i2 += 1;
-        if (i2 > 14) {
-          break label132;
+        if ((i1 != 0) && (i2 > 1)) {
+          return -i;
         }
-        int i5;
-        int i6;
-        int i4;
-        if (matchHouseNumber(paramString, i) != null)
+        j = i1;
+        i4 = n;
+        i5 = k;
+        i6 = m;
+        if (k == -1)
         {
-          if ((n != 0) && (i1 > 1)) {
-            return -i;
-          }
-          i5 = m;
-          i6 = n;
-          i3 = k;
-          i4 = j;
-          if (j == -1)
-          {
-            i4 = i;
-            i3 = k;
-            i6 = n;
-            i5 = m;
-          }
+          j = i1;
+          i4 = n;
+          i5 = i;
+          i6 = m;
         }
-        for (;;)
+      }
+      else if (isValidLocationName(localMatcher.group(0)))
+      {
+        j = 0;
+        i4 = 1;
+        i5 = k;
+        i6 = m;
+      }
+      else
+      {
+        if ((i3 == 5) && (n == 0))
         {
-          paramMatchResult = localMatcher.group(0);
           i = localMatcher.end();
-          m = i5;
-          n = i6;
-          k = i3;
-          j = i4;
           break;
-          n = 0;
-          if (isValidLocationName(localMatcher.group(0)))
+        }
+        j = m;
+        if (n != 0)
+        {
+          j = m;
+          if (i3 > 4)
           {
-            i5 = 1;
-            i6 = n;
-            i3 = k;
-            i4 = j;
-          }
-          else
-          {
-            if ((i2 == 5) && (m == 0))
+            MatchResult localMatchResult = matchState(paramString, i);
+            j = m;
+            if (localMatchResult != null)
             {
-              i = localMatcher.end();
-              break label132;
-            }
-            i5 = m;
-            i6 = n;
-            i3 = k;
-            i4 = j;
-            if (m != 0)
-            {
-              i5 = m;
-              i6 = n;
-              i3 = k;
-              i4 = j;
-              if (i2 > 4)
+              if ((paramMatchResult.equals("et")) && (localMatchResult.group(0).equals("al")))
               {
-                MatchResult localMatchResult = matchState(paramString, i);
-                i5 = m;
-                i6 = n;
-                i3 = k;
-                i4 = j;
-                if (localMatchResult != null)
-                {
-                  if ((paramMatchResult.equals("et")) && (localMatchResult.group(0).equals("al")))
-                  {
-                    i = localMatchResult.end();
-                    break label132;
-                  }
-                  paramMatchResult = sWordRe.matcher(paramString);
-                  if (paramMatchResult.find(localMatchResult.end()))
-                  {
-                    i5 = m;
-                    i6 = n;
-                    i3 = k;
-                    i4 = j;
-                    if (isValidZipCode(paramMatchResult.group(0), localMatchResult)) {
-                      return paramMatchResult.end();
-                    }
-                  }
-                  else
-                  {
-                    i3 = localMatchResult.end();
-                    i5 = m;
-                    i6 = n;
-                    i4 = j;
-                  }
+                i = localMatchResult.end();
+                break;
+              }
+              paramMatchResult = sWordRe.matcher(paramString);
+              if (paramMatchResult.find(localMatchResult.end()))
+              {
+                j = m;
+                if (isValidZipCode(paramMatchResult.group(0), localMatchResult)) {
+                  return paramMatchResult.end();
                 }
+              }
+              else
+              {
+                j = localMatchResult.end();
               }
             }
           }
         }
+        i = 0;
+        i6 = j;
+        i5 = k;
+        i4 = n;
         j = i;
       }
-      label491:
-      i = i3;
-      break label86;
+      paramMatchResult = localMatcher.group(0);
+      i = localMatcher.end();
+      i1 = j;
+      n = i4;
+      k = i5;
+      m = i6;
+      j = i;
     }
+    if (m > 0) {
+      return m;
+    }
+    if (k > 0) {
+      i = k;
+    }
+    return -i;
   }
   
   private static boolean checkHouseNumber(String paramString)
@@ -199,34 +180,39 @@ class FindAddress
       }
       i += 1;
     }
-    if (j > 5) {}
-    do
-    {
+    if (j > 5) {
       return false;
-      paramString = sSuffixedNumberRe.matcher(paramString);
-      if (!paramString.find()) {
-        break;
-      }
-      i = Integer.parseInt(paramString.group(1));
-    } while (i == 0);
-    String str = paramString.group(2).toLowerCase(Locale.getDefault());
-    switch (i % 10)
-    {
-    default: 
-      return str.equals("th");
-    case 1: 
-      if (i % 100 == 11) {}
-      for (paramString = "th";; paramString = "st") {
-        return str.equals(paramString);
-      }
-    case 2: 
-      if (i % 100 == 12) {}
-      for (paramString = "th";; paramString = "nd") {
-        return str.equals(paramString);
-      }
     }
-    if (i % 100 == 13) {}
-    for (paramString = "th";; paramString = "rd") {
+    paramString = sSuffixedNumberRe.matcher(paramString);
+    if (paramString.find())
+    {
+      i = Integer.parseInt(paramString.group(1));
+      if (i == 0) {
+        return false;
+      }
+      String str = paramString.group(2).toLowerCase(Locale.getDefault());
+      j = i % 10;
+      paramString = "th";
+      if (j != 1)
+      {
+        if (j != 2)
+        {
+          if (j != 3) {
+            return str.equals("th");
+          }
+          if (i % 100 != 13) {
+            paramString = "rd";
+          }
+          return str.equals(paramString);
+        }
+        if (i % 100 != 12) {
+          paramString = "nd";
+        }
+        return str.equals(paramString);
+      }
+      if (i % 100 != 11) {
+        paramString = "st";
+      }
       return str.equals(paramString);
     }
     return true;
@@ -274,59 +260,68 @@ class FindAddress
   
   private static boolean isValidZipCode(String paramString, MatchResult paramMatchResult)
   {
+    boolean bool2 = false;
     if (paramMatchResult == null) {
       return false;
     }
-    int i = paramMatchResult.groupCount();
     int j;
-    if (i > 0)
+    for (int i = paramMatchResult.groupCount();; i = j)
     {
-      j = i - 1;
-      if (paramMatchResult.group(i) == null) {}
-    }
-    for (;;)
-    {
-      if ((sZipCodeRe.matcher(paramString).matches()) && (sStateZipCodeRanges[j].matches(paramString))) {}
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-      i = j;
-      break;
       j = i;
+      if (i <= 0) {
+        break;
+      }
+      j = i - 1;
+      if (paramMatchResult.group(i) != null) {
+        break;
+      }
     }
+    boolean bool1 = bool2;
+    if (sZipCodeRe.matcher(paramString).matches())
+    {
+      bool1 = bool2;
+      if (sStateZipCodeRanges[j].matches(paramString)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   @VisibleForTesting
   public static MatchResult matchHouseNumber(String paramString, int paramInt)
   {
-    if ((paramInt > 0) && (":,\"'\t                　\n\013\f\r  ".indexOf(paramString.charAt(paramInt - 1)) == -1)) {}
-    do
+    if ((paramInt > 0) && (":,\"'\t                　\n\013\f\r  ".indexOf(paramString.charAt(paramInt - 1)) == -1)) {
+      return null;
+    }
+    paramString = sHouseNumberRe.matcher(paramString).region(paramInt, paramString.length());
+    if (paramString.lookingAt())
     {
-      do
-      {
-        return null;
-        paramString = sHouseNumberRe.matcher(paramString).region(paramInt, paramString.length());
-      } while (!paramString.lookingAt());
       paramString = paramString.toMatchResult();
-    } while (!checkHouseNumber(paramString.group(0)));
-    return paramString;
+      if (checkHouseNumber(paramString.group(0))) {
+        return paramString;
+      }
+    }
+    return null;
   }
   
   @VisibleForTesting
   public static MatchResult matchState(String paramString, int paramInt)
   {
-    if ((paramInt > 0) && (",*•\t                　\n\013\f\r  ".indexOf(paramString.charAt(paramInt - 1)) == -1)) {}
-    do
-    {
+    Object localObject = null;
+    if ((paramInt > 0) && (",*•\t                　\n\013\f\r  ".indexOf(paramString.charAt(paramInt - 1)) == -1)) {
       return null;
-      paramString = sStateRe.matcher(paramString).region(paramInt, paramString.length());
-    } while (!paramString.lookingAt());
-    return paramString.toMatchResult();
+    }
+    Matcher localMatcher = sStateRe.matcher(paramString).region(paramInt, paramString.length());
+    paramString = localObject;
+    if (localMatcher.lookingAt()) {
+      paramString = localMatcher.toMatchResult();
+    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.text.util.FindAddress
  * JD-Core Version:    0.7.0.1
  */

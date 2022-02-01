@@ -43,45 +43,51 @@ public class UIJavascriptInterface
   
   private void openWebUrl(Map<String, String> paramMap)
   {
-    String str1 = (String)paramMap.get("url");
-    logI("UIJavascriptInterface", "openWebUrl openWebUrl openWebUrl url = " + str1);
-    Uri.parse(str1);
-    String str2 = (String)paramMap.get("target");
+    String str = (String)paramMap.get("url");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("openWebUrl openWebUrl openWebUrl url = ");
+    ((StringBuilder)localObject).append(str);
+    logI("UIJavascriptInterface", ((StringBuilder)localObject).toString());
+    Uri.parse(str);
+    localObject = (String)paramMap.get("target");
     paramMap = (String)paramMap.get("no_history");
     try
     {
-      i = Integer.valueOf(str2).intValue();
-      switch (i)
-      {
-      }
+      i = Integer.valueOf((String)localObject).intValue();
     }
     catch (Exception localException)
     {
-      do
-      {
-        for (;;)
-        {
-          Log.e("UIJavascriptInterface", "illegal target");
-          int i = 1;
-        }
-      } while (TextUtils.isEmpty(str1));
-      if (str1.contains("quan.qq.com"))
-      {
-        startWebActivity(str1);
+      int i;
+      label89:
+      break label89;
+    }
+    Log.e("UIJavascriptInterface", "illegal target");
+    i = 1;
+    if (i != 0)
+    {
+      if (i != 1) {
         return;
       }
-      if ((str1.startsWith("http://")) || (str1.startsWith("https://")) || (str1.startsWith("file://")))
+      if (!TextUtils.isEmpty(str))
       {
+        if (str.contains("quan.qq.com"))
+        {
+          startWebActivity(str);
+          return;
+        }
+        if ((!str.startsWith("http://")) && (!str.startsWith("https://")) && (!str.startsWith("file://")))
+        {
+          startOuterActivity(str);
+          return;
+        }
         if (SPUtil.get(this.mContext, "nowlive_config").getString("status", "1").equals("1"))
         {
           ((FloatWindowConfigServiceInterface)BizEngineMgr.getInstance().getLiveEngine().getService(FloatWindowConfigServiceInterface.class)).setFloatWindowEnabledOnce(true);
-          ((FloatWindowPermissionInterface)BizEngineMgr.getInstance().getLiveEngine().getService(FloatWindowPermissionInterface.class)).requestPermissionAndDoJump((Activity)this.mContext, new UIJavascriptInterface.2(this, paramMap, str1));
+          ((FloatWindowPermissionInterface)BizEngineMgr.getInstance().getLiveEngine().getService(FloatWindowPermissionInterface.class)).requestPermissionAndDoJump((Activity)this.mContext, new UIJavascriptInterface.2(this, paramMap, str));
           return;
         }
-        startWebActivity(paramMap, str1);
-        return;
+        startWebActivity(paramMap, str);
       }
-      startOuterActivity(str1);
     }
   }
   
@@ -96,7 +102,10 @@ public class UIJavascriptInterface
     }
     catch (Exception paramString)
     {
-      logE("UIJavascriptInterface", "start activity error, e =" + paramString.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("start activity error, e =");
+      localStringBuilder.append(paramString.toString());
+      logE("UIJavascriptInterface", localStringBuilder.toString());
     }
   }
   
@@ -138,21 +147,23 @@ public class UIJavascriptInterface
     try
     {
       i = Integer.valueOf(paramMap).intValue();
-      switch (i)
-      {
-      }
     }
     catch (Exception paramMap)
     {
-      do
-      {
-        for (;;)
-        {
-          Log.e("UIJavascriptInterface", "illegal target");
-          int i = 1;
-        }
-      } while ((TextUtils.isEmpty(str)) || ((!str.startsWith("http://")) && (!str.startsWith("https://")) && (!str.startsWith("file://"))));
-      startWebActivity(str);
+      int i;
+      label35:
+      break label35;
+    }
+    Log.e("UIJavascriptInterface", "illegal target");
+    i = 1;
+    if (i != 0)
+    {
+      if (i != 1) {
+        return;
+      }
+      if ((!TextUtils.isEmpty(str)) && ((str.startsWith("http://")) || (str.startsWith("https://")) || (str.startsWith("file://")))) {
+        startWebActivity(str);
+      }
     }
   }
   
@@ -160,24 +171,30 @@ public class UIJavascriptInterface
   public void openUrlInWx(Map<String, String> paramMap)
   {
     paramMap = (String)paramMap.get("url");
-    Log.i("UIJavascriptInterface", "openUrlInWx:" + paramMap);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("openUrlInWx:");
+    localStringBuilder.append(paramMap);
+    Log.i("UIJavascriptInterface", localStringBuilder.toString());
   }
   
   @NewJavascriptInterface
   public void savePic(Map<String, String> paramMap)
   {
     paramMap = (String)paramMap.get("url");
-    Object localObject = this.mContext.getCacheDir().getAbsolutePath();
-    String str = System.currentTimeMillis() + ".jpg";
-    localObject = new File((String)localObject, str);
+    Object localObject1 = this.mContext.getCacheDir().getAbsolutePath();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(System.currentTimeMillis());
+    ((StringBuilder)localObject2).append(".jpg");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    localObject1 = new File((String)localObject1, (String)localObject2);
     if ((getJsBizAdapter() != null) && (getJsBizAdapter().getHttp() != null)) {
-      getJsBizAdapter().getHttp().download(paramMap, null, ((File)localObject).getAbsolutePath(), new UIJavascriptInterface.1(this, (File)localObject, str));
+      getJsBizAdapter().getHttp().download(paramMap, null, ((File)localObject1).getAbsolutePath(), new UIJavascriptInterface.1(this, (File)localObject1, (String)localObject2));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.js.UIJavascriptInterface
  * JD-Core Version:    0.7.0.1
  */

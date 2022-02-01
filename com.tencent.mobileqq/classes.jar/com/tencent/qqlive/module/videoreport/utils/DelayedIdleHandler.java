@@ -31,8 +31,12 @@ public class DelayedIdleHandler
   @MainThread
   public void post(DelayedIdleHandler.DelayedRunnable paramDelayedRunnable, long paramLong)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("DelayedIdleHandler", "receive task to delay:" + paramLong);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("receive task to delay:");
+      ((StringBuilder)localObject).append(paramLong);
+      Log.d("DelayedIdleHandler", ((StringBuilder)localObject).toString());
     }
     Object localObject = (Runnable)this.mRunnableMap.get(paramDelayedRunnable);
     if (localObject != null)
@@ -60,7 +64,7 @@ public class DelayedIdleHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.DelayedIdleHandler
  * JD-Core Version:    0.7.0.1
  */

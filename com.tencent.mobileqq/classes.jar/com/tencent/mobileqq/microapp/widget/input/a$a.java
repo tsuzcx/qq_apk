@@ -20,30 +20,31 @@ public final class a$a
         if ("hideKeyboard".equals((String)paramObject)) {
           return;
         }
-        if (!"hideInput".equals((String)paramObject)) {
+        if ("hideInput".equals((String)paramObject)) {
+          this.a.a(false);
+        }
+      }
+      else if ((paramObject instanceof Integer))
+      {
+        if (a.b(this.a) == null) {
           return;
         }
-        this.a.a(false);
+        paramObservable = new JSONObject();
+        paramObservable.put("inputId", a.a(this.a));
+        paramObservable.put("height", paramObject);
+        a.b(this.a).getCurrentPageWebview().evaluateSubcribeJS("onKeyboardShow", paramObservable.toString(), a.b(this.a).getCurrentPageWebview().pageWebviewId);
         return;
       }
     }
     catch (Exception paramObservable)
     {
       paramObservable.printStackTrace();
-      return;
-    }
-    if (((paramObject instanceof Integer)) && (a.b(this.a) != null))
-    {
-      paramObservable = new JSONObject();
-      paramObservable.put("inputId", a.a(this.a));
-      paramObservable.put("height", paramObject);
-      a.b(this.a).getCurrentPageWebview().evaluateSubcribeJS("onKeyboardShow", paramObservable.toString(), a.b(this.a).getCurrentPageWebview().pageWebviewId);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.input.a.a
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.filemanager.app;
 
-class ProtocolManager$CustomData
+public class ProtocolManager$CustomData
 {
   private int jdField_a_of_type_Int;
   private ProtocolFileCallback jdField_a_of_type_ComTencentMobileqqFilemanagerAppProtocolFileCallback;
   
-  public ProtocolManager$CustomData(ProtocolManager paramProtocolManager, ProtocolFileCallback paramProtocolFileCallback)
+  public ProtocolManager$CustomData(ProtocolFileCallback paramProtocolFileCallback)
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppProtocolFileCallback = paramProtocolFileCallback;
   }
@@ -27,7 +27,7 @@ class ProtocolManager$CustomData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.ProtocolManager.CustomData
  * JD-Core Version:    0.7.0.1
  */

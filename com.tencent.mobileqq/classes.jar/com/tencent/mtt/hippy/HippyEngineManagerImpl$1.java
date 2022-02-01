@@ -14,20 +14,15 @@ class HippyEngineManagerImpl$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    for (;;)
-    {
-      super.handleMessage(paramMessage);
-      return;
+    if (paramMessage.what == 100) {
       HippyEngineManagerImpl.access$000(this.this$0, 2, null);
     }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngineManagerImpl.1
  * JD-Core Version:    0.7.0.1
  */

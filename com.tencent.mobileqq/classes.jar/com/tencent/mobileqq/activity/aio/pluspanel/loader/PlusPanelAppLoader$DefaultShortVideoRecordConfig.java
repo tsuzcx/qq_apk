@@ -2,7 +2,7 @@ package com.tencent.mobileqq.activity.aio.pluspanel.loader;
 
 import com.tencent.mobileqq.shortvideo.ShortVideoUtils;
 
-public class PlusPanelAppLoader$DefaultShortVideoRecordConfig
+class PlusPanelAppLoader$DefaultShortVideoRecordConfig
   implements PlusPanelAppLoader.ShortVideoRecordConfig
 {
   public boolean a()
@@ -12,7 +12,7 @@ public class PlusPanelAppLoader$DefaultShortVideoRecordConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.PlusPanelAppLoader.DefaultShortVideoRecordConfig
  * JD-Core Version:    0.7.0.1
  */

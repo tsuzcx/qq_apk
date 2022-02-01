@@ -20,8 +20,18 @@ class DoubleVideoCtrlUI$StartTimerRunnable
   
   void b(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.this$0.jdField_d_of_type_JavaLangString, 1, "StartTimerRunnable.remove, mNeedRemoveAudioCallback[" + this.this$0.jdField_d_of_type_Boolean + "], seq[" + paramLong + "], lastseq[" + this.a + "]");
+    if (QLog.isColorLevel())
+    {
+      String str = this.this$0.jdField_d_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StartTimerRunnable.remove, mNeedRemoveAudioCallback[");
+      localStringBuilder.append(this.this$0.jdField_d_of_type_Boolean);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("], lastseq[");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
     if (this.this$0.jdField_d_of_type_Boolean) {
       this.this$0.jdField_a_of_type_ComTencentAvAppVideoAppInterface.a().removeCallbacks(this.this$0.jdField_a_of_type_ComTencentAvUiDoubleVideoCtrlUI$StartTimerRunnable);
@@ -30,15 +40,21 @@ class DoubleVideoCtrlUI$StartTimerRunnable
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.w(this.this$0.jdField_d_of_type_JavaLangString, 1, "StartTimerRunnable.Run, seq[" + this.a + "]");
+    if (QLog.isColorLevel())
+    {
+      String str = this.this$0.jdField_d_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("StartTimerRunnable.Run, seq[");
+      localStringBuilder.append(this.a);
+      localStringBuilder.append("]");
+      QLog.w(str, 1, localStringBuilder.toString());
     }
-    this.this$0.B(this.a);
+    this.this$0.A(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.StartTimerRunnable
  * JD-Core Version:    0.7.0.1
  */

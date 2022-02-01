@@ -11,14 +11,18 @@ class NewReportPlugin$3$2
   public void run()
   {
     this.this$0.a.dismiss();
-    if (QLog.isColorLevel()) {
-      QLog.d("NewReportPlugin", 2, "nearbySafetyRealReport exception1" + this.a.getMessage());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("nearbySafetyRealReport exception1");
+      localStringBuilder.append(this.a.getMessage());
+      QLog.d("NewReportPlugin", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.NewReportPlugin.3.2
  * JD-Core Version:    0.7.0.1
  */

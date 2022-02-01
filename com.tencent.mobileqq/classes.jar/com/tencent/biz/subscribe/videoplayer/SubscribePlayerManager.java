@@ -48,10 +48,15 @@ public class SubscribePlayerManager
   
   private int a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) || (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0) == null)) {
-      return 0;
+    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+    if (localChatXListView != null)
+    {
+      if (localChatXListView.getChildAt(0) == null) {
+        return 0;
+      }
+      return this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0).getTop();
     }
-    return this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(0).getTop();
+    return 0;
   }
   
   public static SubscribePlayerManager a()
@@ -78,33 +83,45 @@ public class SubscribePlayerManager
   
   private void a(boolean paramBoolean)
   {
-    if (NetworkUtil.a(BaseApplicationImpl.context) != 1) {
-      QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
-    }
-    for (;;)
+    if (NetworkUtil.a(BaseApplicationImpl.context) != 1)
     {
+      QLog.d("SubscribePlayerManager", 4, "not wifi autoPlay return");
       return;
-      if ((this.f > this.jdField_c_of_type_Int) && (this.f < this.d))
+    }
+    int i = this.f;
+    if ((i > this.jdField_c_of_type_Int) && (i < this.d))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("mCurrentPosition:");
+      localStringBuilder.append(this.f);
+      localStringBuilder.append("is play in screen");
+      QLog.d("SubscribePlayerManager", 4, localStringBuilder.toString());
+      return;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mFirstPosition:");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(",mLastPosition:");
+    localStringBuilder.append(this.d);
+    QLog.d("SubscribePlayerManager", 4, localStringBuilder.toString());
+    if (paramBoolean)
+    {
+      i = this.jdField_c_of_type_Int;
+      while (i <= this.d)
       {
-        QLog.d("SubscribePlayerManager", 4, "mCurrentPosition:" + this.f + "is play in screen");
+        if (b(i)) {
+          return;
+        }
+        i += 1;
+      }
+    }
+    i = this.d;
+    while (i >= this.jdField_c_of_type_Int)
+    {
+      if (b(i)) {
         return;
       }
-      QLog.d("SubscribePlayerManager", 4, "mFirstPosition:" + this.jdField_c_of_type_Int + ",mLastPosition:" + this.d);
-      int i;
-      if (paramBoolean)
-      {
-        i = this.jdField_c_of_type_Int;
-        while ((i <= this.d) && (!b(i))) {
-          i += 1;
-        }
-      }
-      else
-      {
-        i = this.d;
-        while ((i >= this.jdField_c_of_type_Int) && (!b(i))) {
-          i -= 1;
-        }
-      }
+      i -= 1;
     }
   }
   
@@ -118,14 +135,18 @@ public class SubscribePlayerManager
     if (paramAutoVideoMsgViewHolder != null) {
       while ((paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0) instanceof CleanVideoPlayerView))
       {
-        View localView = paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
-        paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
-        if (((VideoPlayerView)localView).e()) {
-          ((VideoPlayerView)localView).g();
+        Object localObject = paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+        paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView((View)localObject);
+        localObject = (VideoPlayerView)localObject;
+        if (((VideoPlayerView)localObject).e()) {
+          ((VideoPlayerView)localObject).g();
         }
-        ((VideoPlayerView)localView).b();
+        ((VideoPlayerView)localObject).b();
         a(paramAutoVideoMsgViewHolder, false);
-        QLog.d("SubscribePlayerManager", 4, "release videoPlayer position:" + paramAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("release videoPlayer position:");
+        ((StringBuilder)localObject).append(paramAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+        QLog.d("SubscribePlayerManager", 4, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -150,16 +171,20 @@ public class SubscribePlayerManager
             if (!((CleanVideoPlayerView)localObject).e())
             {
               ((CleanVideoPlayerView)localObject).f();
-              QLog.d("SubscribePlayerManager", 4, "play by old player position:" + localAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("play by old player position:");
+              ((StringBuilder)localObject).append(localAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+              QLog.d("SubscribePlayerManager", 4, ((StringBuilder)localObject).toString());
             }
-            QLog.d("SubscribePlayerManager", 4, "is playing now position:" + localAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("is playing now position:");
+            ((StringBuilder)localObject).append(localAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+            QLog.d("SubscribePlayerManager", 4, ((StringBuilder)localObject).toString());
             a(localAutoVideoMsgViewHolder, true);
-          }
-          for (;;)
-          {
             return true;
-            c(localAutoVideoMsgViewHolder, paramInt);
           }
+          c(localAutoVideoMsgViewHolder, paramInt);
+          return true;
         }
       }
     }
@@ -172,55 +197,45 @@ public class SubscribePlayerManager
     {
       if (!NetworkUtil.a(BaseApplicationImpl.context))
       {
-        ToastUtil.a().a(HardCodeUtil.a(2131714529));
+        ToastUtil.a().a(HardCodeUtil.a(2131714450));
         QLog.d("SubscribePlayerManager", 4, "network not available");
+        return;
       }
-    }
-    else {
-      return;
-    }
-    Object localObject;
-    CleanVideoPlayerView localCleanVideoPlayerView;
-    int i;
-    if (!TextUtils.isEmpty(paramAutoVideoMsgViewHolder.jdField_b_of_type_JavaLangString))
-    {
-      b(paramAutoVideoMsgViewHolder);
-      localObject = a(paramAutoVideoMsgViewHolder.jdField_b_of_type_JavaLangString, "vid");
-      if (!TextUtils.isEmpty((CharSequence)localObject))
+      if (!TextUtils.isEmpty(paramAutoVideoMsgViewHolder.jdField_b_of_type_JavaLangString))
       {
-        localCleanVideoPlayerView = new CleanVideoPlayerView(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getContext());
-        localCleanVideoPlayerView.setLoopBack(true);
-        localCleanVideoPlayerView.setOutPutMute(true);
-        localCleanVideoPlayerView.setWifiAutoPlay(true);
-        if (this.jdField_b_of_type_JavaUtilMap == null) {
-          break label301;
+        b(paramAutoVideoMsgViewHolder);
+        Object localObject = a(paramAutoVideoMsgViewHolder.jdField_b_of_type_JavaLangString, "vid");
+        if (!TextUtils.isEmpty((CharSequence)localObject))
+        {
+          CleanVideoPlayerView localCleanVideoPlayerView = new CleanVideoPlayerView(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getContext());
+          localCleanVideoPlayerView.setLoopBack(true);
+          localCleanVideoPlayerView.setOutPutMute(true);
+          localCleanVideoPlayerView.setWifiAutoPlay(true);
+          Map localMap = this.jdField_b_of_type_JavaUtilMap;
+          if ((localMap != null) && (localMap.get(Integer.valueOf(paramAutoVideoMsgViewHolder.jdField_b_of_type_Int)) != null)) {
+            i = ((Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramAutoVideoMsgViewHolder.jdField_b_of_type_Int))).intValue();
+          } else {
+            i = 0;
+          }
+          localCleanVideoPlayerView.setVideoPath((String)localObject, "", i);
+          localCleanVideoPlayerView.setBaseVideoViewListenerSets(new SubscribePlayerManager.3(this, paramAutoVideoMsgViewHolder));
+          localCleanVideoPlayerView.setRevertProgress(true);
+          int i = ScreenUtil.dip2px(180.0F);
+          localObject = new RelativeLayout.LayoutParams((int)(i * (paramAutoVideoMsgViewHolder.e / paramAutoVideoMsgViewHolder.f)), i);
+          ((RelativeLayout.LayoutParams)localObject).addRule(13);
+          paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localCleanVideoPlayerView, 0, (ViewGroup.LayoutParams)localObject);
+          this.f = paramInt;
+          e();
+          paramAutoVideoMsgViewHolder = new StringBuilder();
+          paramAutoVideoMsgViewHolder.append("playInner mCurrentPlayPosition: ");
+          paramAutoVideoMsgViewHolder.append(this.f);
+          QLog.d("SubscribePlayerManager", 4, paramAutoVideoMsgViewHolder.toString());
+          return;
         }
-        if (this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramAutoVideoMsgViewHolder.jdField_b_of_type_Int)) == null) {
-          i = 0;
-        }
+        QLog.d("SubscribePlayerManager", 4, "vid is empty");
+        return;
       }
-    }
-    for (;;)
-    {
-      localCleanVideoPlayerView.setVideoPath((String)localObject, "", i);
-      localCleanVideoPlayerView.setBaseVideoViewListenerSets(new SubscribePlayerManager.3(this, paramAutoVideoMsgViewHolder));
-      localCleanVideoPlayerView.setRevertProgress(true);
-      i = ScreenUtil.dip2px(180.0F);
-      localObject = new RelativeLayout.LayoutParams((int)(i * (paramAutoVideoMsgViewHolder.e / paramAutoVideoMsgViewHolder.f)), i);
-      ((RelativeLayout.LayoutParams)localObject).addRule(13);
-      paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(localCleanVideoPlayerView, 0, (ViewGroup.LayoutParams)localObject);
-      this.f = paramInt;
-      e();
-      QLog.d("SubscribePlayerManager", 4, "playInner mCurrentPlayPosition: " + this.f);
-      return;
-      i = ((Integer)this.jdField_b_of_type_JavaUtilMap.get(Integer.valueOf(paramAutoVideoMsgViewHolder.jdField_b_of_type_Int))).intValue();
-      continue;
-      QLog.d("SubscribePlayerManager", 4, "vid is empty");
-      return;
       QLog.d("SubscribePlayerManager", 4, "url is empty");
-      return;
-      label301:
-      i = 0;
     }
   }
   
@@ -249,26 +264,22 @@ public class SubscribePlayerManager
   
   public String a(String paramString1, String paramString2)
   {
-    String str = "";
-    String[] arrayOfString = paramString1.substring(paramString1.indexOf("?") + 1).split("&");
-    int j = arrayOfString.length;
+    Object localObject = paramString1.substring(paramString1.indexOf("?") + 1).split("&");
+    int j = localObject.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      paramString1 = str;
-      if (i < j)
+      paramString1 = localObject[i];
+      if (paramString1.contains(paramString2))
       {
-        paramString1 = arrayOfString[i];
-        if (paramString1.contains(paramString2)) {
-          paramString1 = paramString1.replace(paramString2 + "=", "");
-        }
-      }
-      else
-      {
-        return paramString1;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append("=");
+        return paramString1.replace(((StringBuilder)localObject).toString(), "");
       }
       i += 1;
     }
+    return "";
   }
   
   public void a()
@@ -276,11 +287,18 @@ public class SubscribePlayerManager
     AutoVideoItemBuilder.AutoVideoMsgViewHolder localAutoVideoMsgViewHolder = (AutoVideoItemBuilder.AutoVideoMsgViewHolder)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.f));
     if (localAutoVideoMsgViewHolder != null)
     {
-      View localView = localAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
-      if (((localView instanceof CleanVideoPlayerView)) && (!((VideoPlayerView)localView).e()))
+      Object localObject = localAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+      if ((localObject instanceof CleanVideoPlayerView))
       {
-        ((VideoPlayerView)localView).f();
-        QLog.d("SubscribePlayerManager", 4, "onResume play video position:" + localAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+        localObject = (VideoPlayerView)localObject;
+        if (!((VideoPlayerView)localObject).e())
+        {
+          ((VideoPlayerView)localObject).f();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onResume play video position:");
+          ((StringBuilder)localObject).append(localAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+          QLog.d("SubscribePlayerManager", 4, ((StringBuilder)localObject).toString());
+        }
       }
     }
   }
@@ -292,10 +310,14 @@ public class SubscribePlayerManager
     if ((localView instanceof CleanVideoPlayerView))
     {
       paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
-      if (((VideoPlayerView)localView).e())
+      Object localObject = (VideoPlayerView)localView;
+      if (((VideoPlayerView)localObject).e())
       {
-        ((VideoPlayerView)localView).g();
-        QLog.d("SubscribePlayerManager", 4, "handleScrollOutScreen:" + paramAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+        ((VideoPlayerView)localObject).g();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("handleScrollOutScreen:");
+        ((StringBuilder)localObject).append(paramAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+        QLog.d("SubscribePlayerManager", 4, ((StringBuilder)localObject).toString());
       }
       ((CleanVideoPlayerView)localView).b();
       this.f = -1;
@@ -310,18 +332,24 @@ public class SubscribePlayerManager
     d();
     this.jdField_a_of_type_JavaUtilMap.put(Integer.valueOf(paramInt), paramAutoVideoMsgViewHolder);
     this.jdField_a_of_type_JavaUtilSet.add(paramAutoVideoMsgViewHolder);
-    View localView = paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
-    if ((localView instanceof CleanVideoPlayerView))
+    Object localObject = paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+    if ((localObject instanceof CleanVideoPlayerView))
     {
-      paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
-      if (((VideoPlayerView)localView).e()) {
-        ((VideoPlayerView)localView).g();
+      paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView((View)localObject);
+      localObject = (VideoPlayerView)localObject;
+      if (((VideoPlayerView)localObject).e()) {
+        ((VideoPlayerView)localObject).g();
       }
-      ((VideoPlayerView)localView).b();
+      ((VideoPlayerView)localObject).b();
     }
     a(paramAutoVideoMsgViewHolder, false);
     paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(new SubscribePlayerManager.1(this, paramAutoVideoMsgViewHolder));
-    QLog.d("SubscribePlayerManager", 4, "bindViewHolder:" + paramInt + "  HolderSize:" + this.jdField_a_of_type_JavaUtilSet.size());
+    paramAutoVideoMsgViewHolder = new StringBuilder();
+    paramAutoVideoMsgViewHolder.append("bindViewHolder:");
+    paramAutoVideoMsgViewHolder.append(paramInt);
+    paramAutoVideoMsgViewHolder.append("  HolderSize:");
+    paramAutoVideoMsgViewHolder.append(this.jdField_a_of_type_JavaUtilSet.size());
+    QLog.d("SubscribePlayerManager", 4, paramAutoVideoMsgViewHolder.toString());
   }
   
   public void a(AbsListView paramAbsListView, int paramInt)
@@ -329,14 +357,17 @@ public class SubscribePlayerManager
     if (this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView == null) {
       this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = ((ChatXListView)paramAbsListView);
     }
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return;
     }
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
     this.jdField_a_of_type_Boolean = true;
-    QLog.d("SubscribePlayerManager", 4, "mPerFirstVisible:" + this.jdField_b_of_type_Int + "  mFiresVisible:" + this.jdField_c_of_type_Int);
+    paramAbsListView = new StringBuilder();
+    paramAbsListView.append("mPerFirstVisible:");
+    paramAbsListView.append(this.jdField_b_of_type_Int);
+    paramAbsListView.append("  mFiresVisible:");
+    paramAbsListView.append(this.jdField_c_of_type_Int);
+    QLog.d("SubscribePlayerManager", 4, paramAbsListView.toString());
     if (!this.jdField_b_of_type_Boolean)
     {
       a(true);
@@ -357,37 +388,36 @@ public class SubscribePlayerManager
     }
     if (a(paramInt1))
     {
-      int i = a();
-      if (Math.abs(this.jdField_a_of_type_Int - i) > 0)
-      {
+      i = a();
+      if (Math.abs(this.jdField_a_of_type_Int - i) > 0) {
         paramInt3 = 1;
-        if (paramInt3 != 0) {
-          if (this.jdField_a_of_type_Int <= i) {
-            break label130;
-          }
+      } else {
+        paramInt3 = 0;
+      }
+      if (paramInt3 != 0) {
+        if (this.jdField_a_of_type_Int > i) {
+          this.jdField_b_of_type_Boolean = true;
+        } else {
+          this.jdField_b_of_type_Boolean = false;
         }
       }
-      label130:
-      for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
-      {
-        this.jdField_a_of_type_Int = i;
-        paramInt3 = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFooterViewsCount();
-        i = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
-        this.jdField_c_of_type_Int = (paramInt1 - i);
-        this.e = paramInt2;
-        this.d = (this.jdField_c_of_type_Int + paramInt2 - paramInt3 - i);
-        return;
-        paramInt3 = 0;
-        break;
-      }
+      this.jdField_a_of_type_Int = i;
     }
-    if (paramInt1 > this.jdField_b_of_type_Int) {}
-    for (this.jdField_b_of_type_Boolean = true;; this.jdField_b_of_type_Boolean = false)
+    else
     {
+      if (paramInt1 > this.jdField_b_of_type_Int) {
+        this.jdField_b_of_type_Boolean = true;
+      } else {
+        this.jdField_b_of_type_Boolean = false;
+      }
       this.jdField_a_of_type_Int = a();
       this.jdField_b_of_type_Int = paramInt1;
-      break;
     }
+    paramInt3 = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFooterViewsCount();
+    int i = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
+    this.jdField_c_of_type_Int = (paramInt1 - i);
+    this.e = paramInt2;
+    this.d = (this.jdField_c_of_type_Int + paramInt2 - paramInt3 - i);
   }
   
   public void b()
@@ -395,11 +425,18 @@ public class SubscribePlayerManager
     AutoVideoItemBuilder.AutoVideoMsgViewHolder localAutoVideoMsgViewHolder = (AutoVideoItemBuilder.AutoVideoMsgViewHolder)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(this.f));
     if (localAutoVideoMsgViewHolder != null)
     {
-      View localView = localAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
-      if (((localView instanceof CleanVideoPlayerView)) && (((VideoPlayerView)localView).e()))
+      Object localObject = localAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+      if ((localObject instanceof CleanVideoPlayerView))
       {
-        ((VideoPlayerView)localView).g();
-        QLog.d("SubscribePlayerManager", 4, "onStop pause video position:" + localAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+        localObject = (VideoPlayerView)localObject;
+        if (((VideoPlayerView)localObject).e())
+        {
+          ((VideoPlayerView)localObject).g();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("onStop pause video position:");
+          ((StringBuilder)localObject).append(localAutoVideoMsgViewHolder.jdField_b_of_type_Int);
+          QLog.d("SubscribePlayerManager", 4, ((StringBuilder)localObject).toString());
+        }
       }
     }
   }
@@ -409,16 +446,20 @@ public class SubscribePlayerManager
     if (paramAutoVideoMsgViewHolder != null)
     {
       this.jdField_a_of_type_JavaUtilMap.remove(Integer.valueOf(paramAutoVideoMsgViewHolder.jdField_b_of_type_Int));
-      View localView = paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
-      if ((localView instanceof CleanVideoPlayerView))
+      Object localObject = paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.getChildAt(0);
+      if ((localObject instanceof CleanVideoPlayerView))
       {
-        paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView(localView);
-        if (((VideoPlayerView)localView).e()) {
-          ((VideoPlayerView)localView).g();
+        paramAutoVideoMsgViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.removeView((View)localObject);
+        localObject = (VideoPlayerView)localObject;
+        if (((VideoPlayerView)localObject).e()) {
+          ((VideoPlayerView)localObject).g();
         }
-        ((VideoPlayerView)localView).b();
+        ((VideoPlayerView)localObject).b();
         a(paramAutoVideoMsgViewHolder, false);
-        QLog.d("SubscribePlayerManager", 4, "unbind view position:" + paramInt);
+        paramAutoVideoMsgViewHolder = new StringBuilder();
+        paramAutoVideoMsgViewHolder.append("unbind view position:");
+        paramAutoVideoMsgViewHolder.append(paramInt);
+        QLog.d("SubscribePlayerManager", 4, paramAutoVideoMsgViewHolder.toString());
       }
     }
   }
@@ -440,7 +481,7 @@ public class SubscribePlayerManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.SubscribePlayerManager
  * JD-Core Version:    0.7.0.1
  */

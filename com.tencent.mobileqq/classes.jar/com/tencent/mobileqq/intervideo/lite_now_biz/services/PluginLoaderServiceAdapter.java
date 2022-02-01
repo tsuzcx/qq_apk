@@ -53,22 +53,26 @@ public class PluginLoaderServiceAdapter
       while (i < paramJSONObject.length())
       {
         JSONObject localJSONObject = paramJSONObject.getJSONObject(i);
-        localArrayList.add(new Plugin.Builder().d("iLiveOpenSdk").a(localJSONObject.optString("url")).b(this.jdField_a_of_type_JavaLangString + "/iLiveOpenSdk").c("/data/local/tmp/iLiveOpenSdk.zip").b(6).a(j).e(localJSONObject.optString("hash")).a(new String[] { "lib/armeabi/" }).b(jdField_a_of_type_ArrayOfJavaLangString).a());
+        Plugin.Builder localBuilder = new Plugin.Builder().d("iLiveOpenSdk").a(localJSONObject.optString("url"));
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+        localStringBuilder.append("/iLiveOpenSdk");
+        localArrayList.add(localBuilder.b(localStringBuilder.toString()).c("/data/local/tmp/iLiveOpenSdk.zip").b(6).a(j).e(localJSONObject.optString("hash")).a(new String[] { "lib/armeabi/" }).b(jdField_a_of_type_ArrayOfJavaLangString).a());
         i += 1;
       }
       DataReport.c(String.valueOf(j));
       return localArrayList;
     }
-    catch (JSONException paramJSONObject)
+    catch (NullPointerException paramJSONObject)
     {
-      paramJSONObject = String.format("getToInstallPlugins: JSONException[%s]", new Object[] { paramJSONObject.getMessage() });
+      paramJSONObject = String.format("getToInstallPlugins: NullPointerException[%s]", new Object[] { paramJSONObject.getMessage() });
       DataReport.b(paramJSONObject);
       a().i("PluginLoaderService", paramJSONObject, new Object[0]);
       return localArrayList;
     }
-    catch (NullPointerException paramJSONObject)
+    catch (JSONException paramJSONObject)
     {
-      paramJSONObject = String.format("getToInstallPlugins: NullPointerException[%s]", new Object[] { paramJSONObject.getMessage() });
+      paramJSONObject = String.format("getToInstallPlugins: JSONException[%s]", new Object[] { paramJSONObject.getMessage() });
       DataReport.b(paramJSONObject);
       a().i("PluginLoaderService", paramJSONObject, new Object[0]);
     }
@@ -119,7 +123,7 @@ public class PluginLoaderServiceAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.PluginLoaderServiceAdapter
  * JD-Core Version:    0.7.0.1
  */

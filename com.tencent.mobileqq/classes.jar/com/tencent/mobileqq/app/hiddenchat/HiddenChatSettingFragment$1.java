@@ -9,26 +9,37 @@ class HiddenChatSettingFragment$1
 {
   HiddenChatSettingFragment$1(HiddenChatSettingFragment paramHiddenChatSettingFragment) {}
   
-  public void onSetHiddenSession(boolean paramBoolean, int paramInt)
+  protected void onSetHiddenSession(boolean paramBoolean, int paramInt)
   {
     super.onSetHiddenSession(paramBoolean, paramInt);
-    if (QLog.isColorLevel()) {
-      QLog.d("HiddenChatSetting", 2, "onSetHiddenSession " + paramBoolean + " type=" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSetHiddenSession ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" type=");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("HiddenChatSetting", 2, ((StringBuilder)localObject).toString());
     }
-    if (paramInt == 42318) {
-      if (!paramBoolean) {
-        HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.a(this.a), HiddenChatUtil.a(HiddenChatSettingFragment.a(this.a).getCurrentUin(), this.a.getActivity()));
+    if (paramInt == 42318)
+    {
+      if (!paramBoolean)
+      {
+        localObject = this.a;
+        HiddenChatSettingFragment.a((HiddenChatSettingFragment)localObject, HiddenChatSettingFragment.a((HiddenChatSettingFragment)localObject), HiddenChatUtil.a(HiddenChatSettingFragment.a(this.a).getCurrentUin(), this.a.getBaseActivity()));
       }
     }
-    while ((paramInt != 42319) || (paramBoolean)) {
-      return;
+    else if ((paramInt == 42319) && (!paramBoolean))
+    {
+      localObject = this.a;
+      HiddenChatSettingFragment.a((HiddenChatSettingFragment)localObject, HiddenChatSettingFragment.b((HiddenChatSettingFragment)localObject), HiddenChatUtil.b(HiddenChatSettingFragment.a(this.a).getCurrentUin(), this.a.getBaseActivity()));
     }
-    HiddenChatSettingFragment.a(this.a, HiddenChatSettingFragment.b(this.a), HiddenChatUtil.b(HiddenChatSettingFragment.a(this.a).getCurrentUin(), this.a.getActivity()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatSettingFragment.1
  * JD-Core Version:    0.7.0.1
  */

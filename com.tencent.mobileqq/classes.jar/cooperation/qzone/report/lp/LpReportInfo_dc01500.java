@@ -40,7 +40,7 @@ public class LpReportInfo_dc01500
   public static final String EVENT_FETCH_CONFIG = "event_fetch_config";
   public static final String EVENT_INSTALL = "event_install";
   public static final String EVENT_LAUNCH = "event_launch";
-  private static int S_EVENT_INDEX = 0;
+  private static int S_EVENT_INDEX;
   public String attach_info = "";
   public String client_time = "";
   public String download_id = "";
@@ -180,7 +180,14 @@ public class LpReportInfo_dc01500
   
   public String getSimpleInfo()
   {
-    return "dc01500: plugin_id:" + this.plugin_id + " event_id:" + this.event_id + " ret_code:" + this.ret_code;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dc01500: plugin_id:");
+    localStringBuilder.append(this.plugin_id);
+    localStringBuilder.append(" event_id:");
+    localStringBuilder.append(this.event_id);
+    localStringBuilder.append(" ret_code:");
+    localStringBuilder.append(this.ret_code);
+    return localStringBuilder.toString();
   }
   
   public Map<String, String> toMap()
@@ -209,7 +216,7 @@ public class LpReportInfo_dc01500
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_dc01500
  * JD-Core Version:    0.7.0.1
  */

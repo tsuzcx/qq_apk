@@ -21,45 +21,42 @@ class QIPCClientModuleCore
   
   public EIPCResult isModuleRunning(String paramString, Bundle paramBundle)
   {
-    boolean bool1 = false;
-    for (;;)
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    try
     {
-      try
+      paramString = paramBundle.getString("module_id");
+      bool1 = bool2;
+      bool2 = MobileQQ.sMobileQQ.isModuleLoaded(paramString);
+      bool1 = bool2;
+      if (!bool2)
       {
-        paramString = paramBundle.getString("module_id");
-        bool2 = MobileQQ.sMobileQQ.isModuleLoaded(paramString);
         bool1 = bool2;
-        bool2 = bool1;
-        if (!bool1) {}
-        paramString.printStackTrace();
+        bool2 = MobileQQ.sMobileQQ.waitAppRuntime(null).isModuleRunning(paramString);
+        bool1 = bool2;
       }
-      catch (Exception paramString)
-      {
-        try
-        {
-          bool2 = MobileQQ.sMobileQQ.waitAppRuntime(null).isModuleRunning(paramString);
-          if (!bool2) {
-            break;
-          }
-          return EIPCResult.createSuccessResult(null);
-        }
-        catch (Exception paramString)
-        {
-          boolean bool2;
-          break label52;
-        }
-        paramString = paramString;
-      }
-      label52:
-      bool2 = bool1;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    if (bool1) {
+      return EIPCResult.createSuccessResult(null);
     }
     return EIPCResult.createResult(-102, null);
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.name, 2, "action = " + paramString + ", params = " + paramBundle);
+    if (QLog.isColorLevel())
+    {
+      String str = this.name;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("action = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", params = ");
+      localStringBuilder.append(paramBundle);
+      QLog.d(str, 2, localStringBuilder.toString());
     }
     if (TextUtils.equals(paramString, "isrun")) {
       return isModuleRunning(paramString, paramBundle);
@@ -69,7 +66,7 @@ class QIPCClientModuleCore
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qipc.QIPCClientModuleCore
  * JD-Core Version:    0.7.0.1
  */

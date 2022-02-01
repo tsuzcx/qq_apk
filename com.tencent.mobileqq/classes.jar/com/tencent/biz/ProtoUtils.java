@@ -41,7 +41,7 @@ public class ProtoUtils
     if (paramAppProtocolObserver != null)
     {
       paramAppProtocolObserver.a = new WeakReference(paramAppRuntime);
-      paramAppProtocolObserver.jdField_b_of_type_Int = 1;
+      paramAppProtocolObserver.mType = 1;
       paramArrayOfByte.setObserver(paramAppProtocolObserver);
     }
     paramArrayOfByte.putExtra("cmd", paramString);
@@ -105,7 +105,7 @@ public class ProtoUtils
     }
     if (paramTroopProtocolObserver != null)
     {
-      paramTroopProtocolObserver.jdField_b_of_type_Int = 1;
+      paramTroopProtocolObserver.mType = 1;
       paramArrayOfByte.setObserver(paramTroopProtocolObserver);
     }
     paramArrayOfByte.putExtra("cmd", paramString);
@@ -130,8 +130,8 @@ public class ProtoUtils
     if (paramBundle != null) {
       localNewIntent.putExtras(paramBundle);
     }
-    paramTroopProtocolObserver.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
-    paramTroopProtocolObserver.jdField_b_of_type_Int = 2;
+    paramTroopProtocolObserver.mApp = new WeakReference(paramAppRuntime);
+    paramTroopProtocolObserver.mType = 2;
     localNewIntent.putExtra("cmd", paramString);
     localNewIntent.putExtra("data", paramArrayOfByte);
     localNewIntent.putExtra("isResend", paramBoolean);
@@ -186,8 +186,8 @@ public class ProtoUtils
     }
     if (paramTroopProtocolObserver != null)
     {
-      paramTroopProtocolObserver.jdField_b_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
-      paramTroopProtocolObserver.jdField_b_of_type_Int = 1;
+      paramTroopProtocolObserver.mApp = new WeakReference(paramAppRuntime);
+      paramTroopProtocolObserver.mType = 1;
       paramArrayOfByte.setObserver(paramTroopProtocolObserver);
     }
     paramArrayOfByte.putExtra("cmd", paramString);
@@ -200,7 +200,7 @@ public class ProtoUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.ProtoUtils
  * JD-Core Version:    0.7.0.1
  */

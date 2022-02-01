@@ -32,21 +32,24 @@ public final class CmShowQzoneTrack
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.strThumb != null) {
-      paramJceOutputStream.write(this.strThumb, 0);
+    String str = this.strThumb;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.iItemType, 1);
-    if (this.strItemId != null) {
-      paramJceOutputStream.write(this.strItemId, 2);
+    str = this.strItemId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strName != null) {
-      paramJceOutputStream.write(this.strName, 3);
+    str = this.strName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.CmShowQzoneTrack
  * JD-Core Version:    0.7.0.1
  */

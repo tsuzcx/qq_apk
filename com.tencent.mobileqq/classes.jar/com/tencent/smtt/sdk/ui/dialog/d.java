@@ -69,38 +69,59 @@ public class d
     super(paramContext, 16973835);
     this.n = paramString3;
     paramString3 = paramContext.getPackageManager().queryIntentActivities(paramIntent, 65536);
-    TbsLog.i("TBSActivityPicker", "acts.size(): " + paramString3.size());
-    if (paramBundle != null) {}
-    for (paramBundle = paramBundle.getBundle("extraMenu"); paramBundle != null; paramBundle = null)
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("acts.size(): ");
+    ((StringBuilder)localObject1).append(paramString3.size());
+    TbsLog.i("TBSActivityPicker", ((StringBuilder)localObject1).toString());
+    if (paramBundle != null) {
+      paramBundle = paramBundle.getBundle("extraMenu");
+    } else {
+      paramBundle = null;
+    }
+    if (paramBundle != null)
     {
       this.b = new ArrayList();
-      Iterator localIterator = paramBundle.keySet().iterator();
-      while (localIterator.hasNext())
+      localObject1 = paramBundle.keySet().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject = paramBundle.getBundle((String)localIterator.next());
-        if (localObject != null)
+        Object localObject2 = paramBundle.getBundle((String)((Iterator)localObject1).next());
+        if (localObject2 != null)
         {
-          String str = ((Bundle)localObject).getString("name", null);
-          int i1 = ((Bundle)localObject).getInt("resource_id", -1);
-          localObject = ((Bundle)localObject).getString("value", null);
-          if ((str != null) && (i1 != -1) && (localObject != null))
+          String str = ((Bundle)localObject2).getString("name", null);
+          int i1 = ((Bundle)localObject2).getInt("resource_id", -1);
+          localObject2 = ((Bundle)localObject2).getString("value", null);
+          if ((str != null) && (i1 != -1) && (localObject2 != null))
           {
             Context localContext = getContext();
-            this.b.add(new b(localContext, i1, str, (String)localObject));
+            this.b.add(new b(localContext, i1, str, (String)localObject2));
           }
         }
       }
     }
     TbsLog.i("TBSActivityPicker", "no extra menu info in bundle");
-    if (((paramString3 == null) || (paramString3.size() == 0)) && ((this.b == null) || (this.b.isEmpty())) && (MttLoader.isBrowserInstalled(paramContext)))
+    if ((paramString3 == null) || (paramString3.size() == 0))
     {
-      TbsLog.i("TBSActivityPicker", "no action has been found with Intent:" + paramIntent.toString());
-      com.tencent.smtt.sdk.QbSdk.isDefaultDialog = true;
+      paramBundle = this.b;
+      if (((paramBundle == null) || (paramBundle.isEmpty())) && (MttLoader.isBrowserInstalled(paramContext)))
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("no action has been found with Intent:");
+        paramBundle.append(paramIntent.toString());
+        TbsLog.i("TBSActivityPicker", paramBundle.toString());
+        com.tencent.smtt.sdk.QbSdk.isDefaultDialog = true;
+      }
     }
-    if (("com.tencent.rtxlite".equalsIgnoreCase(paramContext.getApplicationContext().getPackageName())) && ((paramString3 == null) || (paramString3.size() == 0)) && ((this.b == null) || (this.b.isEmpty())))
+    if (("com.tencent.rtxlite".equalsIgnoreCase(paramContext.getApplicationContext().getPackageName())) && ((paramString3 == null) || (paramString3.size() == 0)))
     {
-      TbsLog.i("TBSActivityPicker", "package name equal to `com.tencent.rtxlite` but no action has been found with Intent:" + paramIntent.toString());
-      com.tencent.smtt.sdk.QbSdk.isDefaultDialog = true;
+      paramBundle = this.b;
+      if ((paramBundle == null) || (paramBundle.isEmpty()))
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append("package name equal to `com.tencent.rtxlite` but no action has been found with Intent:");
+        paramBundle.append(paramIntent.toString());
+        TbsLog.i("TBSActivityPicker", paramBundle.toString());
+        com.tencent.smtt.sdk.QbSdk.isDefaultDialog = true;
+      }
     }
     this.k = paramString1;
     this.o = paramIntent;
@@ -109,14 +130,19 @@ public class d
     if (!TextUtils.isEmpty(paramString2)) {
       this.m = paramString2;
     }
-    TbsLog.i("TBSActivityPicker", "Intent:" + this.m + " MineType:" + this.m);
+    paramContext = new StringBuilder();
+    paramContext.append("Intent:");
+    paramContext.append(this.m);
+    paramContext.append(" MineType:");
+    paramContext.append(this.m);
+    TbsLog.i("TBSActivityPicker", paramContext.toString());
   }
   
   private View a(Context paramContext)
   {
     this.s = new FrameLayout(paramContext);
     this.t = new LinearLayout(paramContext);
-    Object localObject = new FrameLayout.LayoutParams(-1, Double.valueOf(0.5F * c.a(paramContext)).intValue());
+    Object localObject = new FrameLayout.LayoutParams(-1, Double.valueOf(c.a(paramContext) * 0.5F).intValue());
     ((FrameLayout.LayoutParams)localObject).gravity = 17;
     this.t.setLayoutParams((ViewGroup.LayoutParams)localObject);
     this.t.setOrientation(1);
@@ -176,73 +202,104 @@ public class d
   {
     if (paramb.f())
     {
-      if ((c()) && (a.get() != null)) {
+      if ((c()) && (a.get() != null))
+      {
         ((ValueCallback)a.get()).onReceiveValue("https://mdc.html5.qq.com/d/directdown.jsp?channel_id=11047");
+        return;
       }
+      paramb = new Intent("android.intent.action.VIEW", Uri.parse("https://mdc.html5.qq.com/d/directdown.jsp?channel_id=11041"));
+      paramb.addFlags(268435456);
+      getContext().startActivity(paramb);
     }
-    else {
-      return;
-    }
-    paramb = new Intent("android.intent.action.VIEW", Uri.parse("https://mdc.html5.qq.com/d/directdown.jsp?channel_id=11041"));
-    paramb.addFlags(268435456);
-    getContext().startActivity(paramb);
   }
   
   private void b(String paramString)
   {
-    if ((this.l == null) || (!c())) {}
-    b localb;
-    do
+    if (this.l != null)
     {
-      ResolveInfo localResolveInfo;
-      do
-      {
-        return;
-        localb = this.l.a();
-        localResolveInfo = this.l.a(localb);
-      } while (a.get() == null);
-      if ((localb != null) && (localResolveInfo != null) && (localResolveInfo.activityInfo != null) && (localResolveInfo.activityInfo.packageName != null))
-      {
-        ((ValueCallback)a.get()).onReceiveValue(paramString + localResolveInfo.activityInfo.packageName);
+      if (!c()) {
         return;
       }
-      if (localb == null) {
-        break;
-      }
-      if (localb.e())
+      b localb = this.l.a();
+      Object localObject2 = this.l.a(localb);
+      if (a.get() != null)
       {
-        ((ValueCallback)a.get()).onReceiveValue(paramString + localb.g());
-        return;
+        Object localObject1;
+        Object localObject3;
+        if ((localb != null) && (localObject2 != null) && (((ResolveInfo)localObject2).activityInfo != null) && (((ResolveInfo)localObject2).activityInfo.packageName != null))
+        {
+          localObject1 = (ValueCallback)a.get();
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append(paramString);
+          ((StringBuilder)localObject3).append(((ResolveInfo)localObject2).activityInfo.packageName);
+          localObject2 = ((StringBuilder)localObject3).toString();
+          paramString = (String)localObject1;
+          localObject1 = localObject2;
+        }
+        else
+        {
+          if (localb != null)
+          {
+            if (localb.e())
+            {
+              localObject3 = (ValueCallback)a.get();
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(paramString);
+              localObject2 = localb.g();
+              paramString = (String)localObject3;
+            }
+            for (;;)
+            {
+              ((StringBuilder)localObject1).append((String)localObject2);
+              paramString.onReceiveValue(((StringBuilder)localObject1).toString());
+              return;
+              if (!localb.f()) {
+                break;
+              }
+              localObject2 = (ValueCallback)a.get();
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(paramString);
+              localObject3 = localb.d();
+              paramString = (String)localObject2;
+              localObject2 = localObject3;
+            }
+          }
+          localObject2 = (ValueCallback)a.get();
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(paramString);
+          ((StringBuilder)localObject1).append("other");
+          localObject1 = ((StringBuilder)localObject1).toString();
+          paramString = (String)localObject2;
+        }
+        paramString.onReceiveValue(localObject1);
       }
-    } while (!localb.f());
-    ((ValueCallback)a.get()).onReceiveValue(paramString + localb.d());
-    return;
-    ((ValueCallback)a.get()).onReceiveValue(paramString + "other");
+    }
   }
   
   private Drawable c(String paramString)
   {
-    Context localContext = getContext();
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    Object localObject = getContext();
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      paramString = new File(localContext.getFilesDir(), paramString);
-    } while (!FileUtil.c(paramString));
+    }
+    paramString = new File(((Context)localObject).getFilesDir(), paramString);
+    if (!FileUtil.c(paramString)) {
+      return null;
+    }
     try
     {
-      TbsLog.i("TBSActivityPicker", "load icon from: " + paramString.getAbsolutePath());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("load icon from: ");
+      ((StringBuilder)localObject).append(paramString.getAbsolutePath());
+      TbsLog.i("TBSActivityPicker", ((StringBuilder)localObject).toString());
       paramString = new BitmapDrawable(BitmapFactory.decodeFile(paramString.getAbsolutePath()));
       return paramString;
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
+      paramString.printStackTrace();
     }
+    return null;
   }
   
   private boolean c()
@@ -252,56 +309,53 @@ public class d
   
   private void d()
   {
-    if (this.l != null) {}
-    for (b localb = this.l.a();; localb = null)
+    Object localObject2 = this.l;
+    Object localObject1 = null;
+    b localb;
+    if (localObject2 != null) {
+      localb = ((a)localObject2).a();
+    } else {
+      localb = null;
+    }
+    localObject2 = this.p;
+    if (localObject2 != null)
     {
-      Object localObject3;
-      Object localObject1;
-      Object localObject4;
-      Object localObject2;
-      if (this.p != null)
-      {
-        localObject3 = c(this.p.getString("key_tbs_recommend_icon_url", null));
-        localObject1 = this.p.getString("key_tbs_recommend_label", null);
-        localObject4 = this.p.getString("key_tbs_recommend_description", null);
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          if (!TextUtils.isEmpty((CharSequence)localObject4))
-          {
-            localObject2 = localObject1;
-            localObject1 = localObject4;
-          }
-        }
-      }
-      for (;;)
-      {
-        localObject4 = localObject3;
-        if (localObject3 == null) {
-          localObject4 = e.a("application_icon");
-        }
-        localObject3 = localObject2;
-        if (localObject2 == null) {
-          localObject3 = "QQ浏览器";
-        }
-        localObject2 = localObject1;
-        if (localObject1 == null) {
-          localObject2 = e.b("x5_tbs_wechat_activity_picker_label_recommend");
-        }
-        localObject1 = new b(getContext(), (Drawable)localObject4, (String)localObject3, "com.tencent.mtt", (String)localObject2);
-        this.l = new a(getContext(), this.o, (b)localObject1, this.b, localb, this, this.g);
-        this.g.setAdapter(this.l);
-        e();
-        return;
+      Drawable localDrawable = c(((SharedPreferences)localObject2).getString("key_tbs_recommend_icon_url", null));
+      localObject4 = this.p.getString("key_tbs_recommend_label", null);
+      String str = this.p.getString("key_tbs_recommend_description", null);
+      if (TextUtils.isEmpty((CharSequence)localObject4)) {
         localObject4 = null;
-        localObject2 = localObject1;
-        localObject1 = localObject4;
-        continue;
-        localObject1 = null;
-        break;
-        localObject1 = null;
-        localObject2 = null;
-        localObject3 = null;
+      }
+      localObject3 = localDrawable;
+      localObject2 = localObject4;
+      if (!TextUtils.isEmpty(str))
+      {
+        localObject1 = str;
+        localObject3 = localDrawable;
+        localObject2 = localObject4;
       }
     }
+    else
+    {
+      localObject3 = null;
+      localObject2 = localObject3;
+    }
+    Object localObject4 = localObject3;
+    if (localObject3 == null) {
+      localObject4 = e.a("application_icon");
+    }
+    Object localObject3 = localObject2;
+    if (localObject2 == null) {
+      localObject3 = "QQ浏览器";
+    }
+    localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = e.b("x5_tbs_wechat_activity_picker_label_recommend");
+    }
+    localObject1 = new b(getContext(), (Drawable)localObject4, (String)localObject3, "com.tencent.mtt", (String)localObject2);
+    this.l = new a(getContext(), this.o, (b)localObject1, this.b, localb, this, this.g);
+    this.g.setAdapter(this.l);
+    e();
   }
   
   private void e()
@@ -321,47 +375,79 @@ public class d
     }
     double d1 = this.r + i2 + this.q;
     localObject = this.t.getLayoutParams();
-    i1 = c.a(getContext());
-    ((ViewGroup.LayoutParams)localObject).height = Double.valueOf(Math.max(Math.min(d1, 0.9F * i1), i1 * 0.5F)).intValue();
+    float f1 = c.a(getContext());
+    ((ViewGroup.LayoutParams)localObject).height = Double.valueOf(Math.max(Math.min(d1, 0.9F * f1), f1 * 0.5F)).intValue();
     this.t.setLayoutParams((ViewGroup.LayoutParams)localObject);
   }
   
   public String a()
   {
-    String str = null;
     if (this.p != null)
     {
-      TbsLog.i("TBSActivityPicker", "getTBSPickedDefaultBrowser: " + this.p.getString(new StringBuilder().append("key_tbs_picked_default_browser_").append(this.m).toString(), null));
-      str = this.p.getString("key_tbs_picked_default_browser_" + this.m, null);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getTBSPickedDefaultBrowser: ");
+      Object localObject2 = this.p;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("key_tbs_picked_default_browser_");
+      localStringBuilder.append(this.m);
+      ((StringBuilder)localObject1).append(((SharedPreferences)localObject2).getString(localStringBuilder.toString(), null));
+      TbsLog.i("TBSActivityPicker", ((StringBuilder)localObject1).toString());
+      localObject1 = this.p;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("key_tbs_picked_default_browser_");
+      ((StringBuilder)localObject2).append(this.m);
+      return ((SharedPreferences)localObject1).getString(((StringBuilder)localObject2).toString(), null);
     }
-    return str;
+    return null;
   }
   
   public void a(String paramString)
   {
-    TbsLog.i("TBSActivityPicker", "setTBSPickedDefaultBrowser:" + paramString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setTBSPickedDefaultBrowser:");
+    ((StringBuilder)localObject).append(paramString);
+    TbsLog.i("TBSActivityPicker", ((StringBuilder)localObject).toString());
     if (this.p != null)
     {
       if (TextUtils.isEmpty(paramString))
       {
-        TbsLog.i("TBSActivityPicker", "paramString empty, remove: key_tbs_picked_default_browser_" + this.m);
-        this.p.edit().remove("key_tbs_picked_default_browser_" + this.m).commit();
+        paramString = new StringBuilder();
+        paramString.append("paramString empty, remove: key_tbs_picked_default_browser_");
+        paramString.append(this.m);
+        TbsLog.i("TBSActivityPicker", paramString.toString());
+        paramString = this.p.edit();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("key_tbs_picked_default_browser_");
+        ((StringBuilder)localObject).append(this.m);
+        paramString = paramString.remove(((StringBuilder)localObject).toString());
       }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("paramString not empty, set: key_tbs_picked_default_browser_");
+        ((StringBuilder)localObject).append(this.m);
+        ((StringBuilder)localObject).append("=");
+        ((StringBuilder)localObject).append(paramString);
+        TbsLog.i("TBSActivityPicker", ((StringBuilder)localObject).toString());
+        localObject = this.p.edit();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("key_tbs_picked_default_browser_");
+        localStringBuilder.append(this.m);
+        paramString = ((SharedPreferences.Editor)localObject).putString(localStringBuilder.toString(), paramString);
+      }
+      paramString.commit();
     }
-    else {
-      return;
-    }
-    TbsLog.i("TBSActivityPicker", "paramString not empty, set: key_tbs_picked_default_browser_" + this.m + "=" + paramString);
-    this.p.edit().putString("key_tbs_picked_default_browser_" + this.m, paramString).commit();
   }
   
   void a(boolean paramBoolean)
   {
-    if (this.i != null) {
-      this.i.setEnabled(paramBoolean);
+    Button localButton = this.i;
+    if (localButton != null) {
+      localButton.setEnabled(paramBoolean);
     }
-    if (this.h != null) {
-      this.h.setEnabled(paramBoolean);
+    localButton = this.h;
+    if (localButton != null) {
+      localButton.setEnabled(paramBoolean);
     }
     b("userMenuClickEvent:");
   }
@@ -396,7 +482,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.d
  * JD-Core Version:    0.7.0.1
  */

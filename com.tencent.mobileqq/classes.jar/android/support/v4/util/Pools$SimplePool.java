@@ -8,40 +8,37 @@ public class Pools$SimplePool<T>
   
   public Pools$SimplePool(int paramInt)
   {
-    if (paramInt <= 0) {
-      throw new IllegalArgumentException("The max pool size must be > 0");
+    if (paramInt > 0)
+    {
+      this.mPool = new Object[paramInt];
+      return;
     }
-    this.mPool = new Object[paramInt];
+    throw new IllegalArgumentException("The max pool size must be > 0");
   }
   
   private boolean isInPool(T paramT)
   {
-    boolean bool2 = false;
     int i = 0;
-    for (;;)
+    while (i < this.mPoolSize)
     {
-      boolean bool1 = bool2;
-      if (i < this.mPoolSize)
-      {
-        if (this.mPool[i] == paramT) {
-          bool1 = true;
-        }
-      }
-      else {
-        return bool1;
+      if (this.mPool[i] == paramT) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   public T acquire()
   {
-    if (this.mPoolSize > 0)
+    int i = this.mPoolSize;
+    if (i > 0)
     {
-      int i = this.mPoolSize - 1;
-      Object localObject = this.mPool[i];
-      this.mPool[i] = null;
-      this.mPoolSize -= 1;
+      int j = i - 1;
+      Object[] arrayOfObject = this.mPool;
+      Object localObject = arrayOfObject[j];
+      arrayOfObject[j] = null;
+      this.mPoolSize = (i - 1);
       return localObject;
     }
     return null;
@@ -49,16 +46,19 @@ public class Pools$SimplePool<T>
   
   public boolean release(T paramT)
   {
-    if (isInPool(paramT)) {
-      throw new IllegalStateException("Already in the pool!");
-    }
-    if (this.mPoolSize < this.mPool.length)
+    if (!isInPool(paramT))
     {
-      this.mPool[this.mPoolSize] = paramT;
-      this.mPoolSize += 1;
-      return true;
+      int i = this.mPoolSize;
+      Object[] arrayOfObject = this.mPool;
+      if (i < arrayOfObject.length)
+      {
+        arrayOfObject[i] = paramT;
+        this.mPoolSize = (i + 1);
+        return true;
+      }
+      return false;
     }
-    return false;
+    throw new IllegalStateException("Already in the pool!");
   }
 }
 

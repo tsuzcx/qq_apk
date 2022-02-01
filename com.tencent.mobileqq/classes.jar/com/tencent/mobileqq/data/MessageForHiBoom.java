@@ -15,10 +15,11 @@ public class MessageForHiBoom
     try
     {
       this.mHiBoomMessage = ((HiBoomMessage)MessagePkgUtils.a(this.msgData));
-      if ((this.msg == null) && (this.mHiBoomMessage != null)) {
+      if ((this.msg == null) && (this.mHiBoomMessage != null))
+      {
         this.msg = this.mHiBoomMessage.text;
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -31,26 +32,29 @@ public class MessageForHiBoom
     return true;
   }
   
-  public void prewrite()
+  protected void prewrite()
   {
-    if (this.mHiBoomMessage != null) {}
-    try
-    {
-      this.msgData = MessagePkgUtils.a(this.mHiBoomMessage);
-      if (!TextUtils.isEmpty(this.mHiBoomMessage.text)) {
-        this.msg = this.mHiBoomMessage.text;
+    HiBoomMessage localHiBoomMessage = this.mHiBoomMessage;
+    if (localHiBoomMessage != null) {
+      try
+      {
+        this.msgData = MessagePkgUtils.a(localHiBoomMessage);
+        if (!TextUtils.isEmpty(this.mHiBoomMessage.text))
+        {
+          this.msg = this.mHiBoomMessage.text;
+          return;
+        }
       }
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.e("MessageForHiBoom", 1, "prewrite error: ", localException);
+      catch (Exception localException)
+      {
+        QLog.e("MessageForHiBoom", 1, "prewrite error: ", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForHiBoom
  * JD-Core Version:    0.7.0.1
  */

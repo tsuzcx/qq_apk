@@ -25,15 +25,16 @@ public class EnableServiceActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  protected void onCreate(Bundle paramBundle)
+  public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    setContentView(2131558450);
+    requestWindowFeature(1);
+    setContentView(2131558478);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.activity.EnableServiceActivity
  * JD-Core Version:    0.7.0.1
  */

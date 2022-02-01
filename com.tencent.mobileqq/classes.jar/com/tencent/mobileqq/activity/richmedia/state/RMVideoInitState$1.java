@@ -18,56 +18,53 @@ class RMVideoInitState$1
       QLog.d("RMVideoInitState", 2, "[@] delayInit,run start");
     }
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
-    if (!localRMVideoStateMgr.f())
+    if (!localRMVideoStateMgr.d())
     {
       RMVideoStateMgr.b(null);
-      if (localRMVideoStateMgr.f()) {}
+      if (!localRMVideoStateMgr.d()) {
+        return;
+      }
     }
-    for (;;)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(GloableValue.a);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(".nomedia");
+    localObject = new File(((StringBuilder)localObject).toString());
+    if (!((File)localObject).exists()) {}
+    try
     {
-      return;
-      File localFile = new File(GloableValue.a + File.separator + ".nomedia");
-      if (!localFile.exists()) {}
-      try
-      {
-        localFile.createNewFile();
-        label84:
-        if (QLog.isColorLevel()) {
-          QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
-        }
-        localRMVideoStateMgr.a.postDelayed(this.this$0.a, 10000L);
-        localRMVideoStateMgr.l();
-        localRMVideoStateMgr.m();
-        localRMVideoStateMgr.k();
-        try
-        {
-          AVCodec.get().init();
-          this.this$0.c = true;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
-          return;
-        }
-        catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-        {
-          for (;;)
-          {
-            localUnsatisfiedLinkError.printStackTrace();
-            this.this$0.c = false;
-          }
-        }
-      }
-      catch (IOException localIOException)
-      {
-        break label84;
-      }
+      ((File)localObject).createNewFile();
+    }
+    catch (IOException localIOException)
+    {
+      label95:
+      break label95;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoInitState", 2, "[@] delayInit, post timeout runnable");
+    }
+    localRMVideoStateMgr.a.postDelayed(this.this$0.a, 10000L);
+    localRMVideoStateMgr.l();
+    localRMVideoStateMgr.m();
+    localRMVideoStateMgr.k();
+    try
+    {
+      AVCodec.get().init();
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      localUnsatisfiedLinkError.printStackTrace();
+      this.this$0.c = false;
+    }
+    this.this$0.c = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("RMVideoInitState", 2, "[@] delayInit,run finish");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.1
  * JD-Core Version:    0.7.0.1
  */

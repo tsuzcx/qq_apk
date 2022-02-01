@@ -41,10 +41,10 @@ public abstract class LimitedMemoryCache
   
   public boolean put(String paramString, Bitmap paramBitmap)
   {
-    boolean bool = false;
     int j = getSize(paramBitmap);
     int k = getSizeLimit();
     int i = this.cacheSize.get();
+    boolean bool;
     if (j < k)
     {
       while (i + j > k)
@@ -57,6 +57,10 @@ public abstract class LimitedMemoryCache
       this.hardCache.add(paramBitmap);
       this.cacheSize.addAndGet(j);
       bool = true;
+    }
+    else
+    {
+      bool = false;
     }
     super.put(paramString, paramBitmap);
     return bool;
@@ -75,7 +79,7 @@ public abstract class LimitedMemoryCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.cache.memory.LimitedMemoryCache
  * JD-Core Version:    0.7.0.1
  */

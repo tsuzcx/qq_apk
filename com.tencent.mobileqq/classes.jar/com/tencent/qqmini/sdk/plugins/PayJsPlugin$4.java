@@ -18,42 +18,48 @@ class PayJsPlugin$4
     if (paramBoolean)
     {
       int i = paramJSONObject.optInt("result");
-      String str1 = paramJSONObject.optString("errMsg");
-      String str2 = paramJSONObject.optString("firstRefer");
+      Object localObject = paramJSONObject.optString("errMsg");
+      String str = paramJSONObject.optString("firstRefer");
       paramJSONObject = paramJSONObject.optString("firstVia");
       try
       {
-        this.val$paramsObject.put("firstRefer", str2);
+        this.val$paramsObject.put("firstRefer", str);
         this.val$paramsObject.put("firstVia", paramJSONObject);
-        if (i == 1)
-        {
-          paramJSONObject = PayJsPlugin.access$1200(this.this$0, this.val$paramsObject);
-          PayJsPlugin.access$1400(this.this$0, PayJsPlugin.access$1300(this.this$0).getAttachedActivity(), this.val$req, paramJSONObject);
-          return;
-        }
       }
       catch (JSONException paramJSONObject)
       {
-        do
-        {
-          for (;;)
-          {
-            QMLog.e("PayJsPlugin", "put refer via error ", paramJSONObject);
-          }
-        } while ((i != 0) && (i != 2));
-        AppBrandTask.runTaskOnUiThread(new PayJsPlugin.4.1(this, str1));
-        QMLog.e("PayJsPlugin", "handleNativeRequest result = " + i);
-        PayJsPlugin.access$700(this.this$0, this.val$req, null, str1);
+        QMLog.e("PayJsPlugin", "put refer via error ", paramJSONObject);
+      }
+      if (i == 1)
+      {
+        paramJSONObject = PayJsPlugin.access$1200(this.this$0, this.val$paramsObject);
+        localObject = this.this$0;
+        PayJsPlugin.access$1400((PayJsPlugin)localObject, PayJsPlugin.access$1300((PayJsPlugin)localObject).getAttachedActivity(), this.val$req, paramJSONObject);
         return;
       }
+      if ((i == 0) || (i == 2))
+      {
+        AppBrandTask.runTaskOnUiThread(new PayJsPlugin.4.1(this, (String)localObject));
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("handleNativeRequest result = ");
+        paramJSONObject.append(i);
+        QMLog.e("PayJsPlugin", paramJSONObject.toString());
+        PayJsPlugin.access$700(this.this$0, this.val$req, null, (String)localObject);
+      }
     }
-    QMLog.e("PayJsPlugin", "checkOfferId isSuc = " + paramBoolean);
-    PayJsPlugin.access$700(this.this$0, this.val$req, null, "checkOfferId fail");
+    else
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("checkOfferId isSuc = ");
+      paramJSONObject.append(paramBoolean);
+      QMLog.e("PayJsPlugin", paramJSONObject.toString());
+      PayJsPlugin.access$700(this.this$0, this.val$req, null, "checkOfferId fail");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PayJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

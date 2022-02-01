@@ -31,10 +31,11 @@ final class ZipAnimationDrawable$ZipAnimationState
   
   public int getChildCount()
   {
-    if (this.animationResLoader == null) {
+    ZipDrawableLoader localZipDrawableLoader = this.animationResLoader;
+    if (localZipDrawableLoader == null) {
       return 0;
     }
-    return this.animationResLoader.getFrameCount();
+    return localZipDrawableLoader.getFrameCount();
   }
   
   public void loadAndShowFirstFrame() {}
@@ -56,44 +57,42 @@ final class ZipAnimationDrawable$ZipAnimationState
   
   public void setAnimationRes(String paramString, int paramInt)
   {
-    if ((this.aniResUrl != null) && (!this.aniResUrl.equals(paramString))) {
+    Object localObject = this.aniResUrl;
+    if ((localObject != null) && (!((String)localObject).equals(paramString))) {
       this.aniResLoaded = false;
     }
-    if (this.animationResLoader == null)
-    {
+    localObject = this.animationResLoader;
+    if (localObject == null) {
       this.animationResLoader = new ZipDrawableLoader(BaseApplicationImpl.getApplication());
-      if (this.animationResLoaderListener == null) {
-        this.animationResLoaderListener = new ZipAnimationDrawable.ZipAnimationState.1(this);
-      }
-      this.animationResLoader.setZipLoadedListener(this.animationResLoaderListener);
-      if ((!this.aniResLoaded) || (this.aniResUrl == null) || (!this.aniResUrl.equals(paramString)))
-      {
-        if (!URLUtil.isNetworkUrl(paramString)) {
-          break label148;
-        }
-        this.animationResLoader.setDrawableData(paramString, -1, true);
-      }
+    } else if (!this.aniResLoaded) {
+      ((ZipDrawableLoader)localObject).release();
     }
-    for (;;)
+    if (this.animationResLoaderListener == null) {
+      this.animationResLoaderListener = new ZipAnimationDrawable.ZipAnimationState.1(this);
+    }
+    this.animationResLoader.setZipLoadedListener(this.animationResLoaderListener);
+    if (this.aniResLoaded)
     {
-      if (paramInt > 0) {
-        this.frameRate = paramInt;
-      }
-      this.aniResUrl = paramString;
-      return;
-      if (this.aniResLoaded) {
-        break;
-      }
-      this.animationResLoader.release();
-      break;
-      label148:
+      localObject = this.aniResUrl;
+      if ((localObject != null) && (((String)localObject).equals(paramString))) {}
+    }
+    else if (URLUtil.isNetworkUrl(paramString))
+    {
+      this.animationResLoader.setDrawableData(paramString, -1, true);
+    }
+    else
+    {
       this.animationResLoader.loadLocalZipData(paramString, true);
     }
+    if (paramInt > 0) {
+      this.frameRate = paramInt;
+    }
+    this.aniResUrl = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.zipanimate.ZipAnimationDrawable.ZipAnimationState
  * JD-Core Version:    0.7.0.1
  */

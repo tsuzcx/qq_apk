@@ -43,29 +43,37 @@ public class InsertDeleteWatcher
     }
     paramEditable = paramEditable.toString();
     String str1;
+    int i;
     if (this.jdField_a_of_type_Boolean)
     {
-      str1 = this.jdField_b_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int);
+      str1 = this.jdField_b_of_type_JavaLangString;
+      i = this.jdField_a_of_type_Int;
+      str1 = str1.substring(i, this.jdField_b_of_type_Int + i);
       this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, paramEditable);
     }
-    for (;;)
+    else if (this.jdField_b_of_type_Boolean)
     {
-      a();
-      return;
-      if (this.jdField_b_of_type_Boolean)
-      {
-        str1 = this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, paramEditable);
-      }
-      else if (this.jdField_c_of_type_Boolean)
-      {
-        str1 = this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
-        String str2 = this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_Int) + this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int + this.jdField_c_of_type_Int);
-        String str3 = this.jdField_b_of_type_JavaLangString.substring(this.jdField_a_of_type_Int, this.jdField_a_of_type_Int + this.jdField_b_of_type_Int);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, str2);
-        this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, str3, this.jdField_a_of_type_JavaLangString, paramEditable);
-      }
+      str1 = this.jdField_a_of_type_JavaLangString;
+      i = this.jdField_a_of_type_Int;
+      str1 = str1.substring(i, this.jdField_c_of_type_Int + i);
+      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, paramEditable);
     }
+    else if (this.jdField_c_of_type_Boolean)
+    {
+      str1 = this.jdField_a_of_type_JavaLangString;
+      i = this.jdField_a_of_type_Int;
+      str1 = str1.substring(i, this.jdField_c_of_type_Int + i);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString.substring(0, this.jdField_a_of_type_Int));
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString.substring(this.jdField_a_of_type_Int + this.jdField_c_of_type_Int));
+      localObject = ((StringBuilder)localObject).toString();
+      String str2 = this.jdField_b_of_type_JavaLangString;
+      i = this.jdField_a_of_type_Int;
+      str2 = str2.substring(i, this.jdField_b_of_type_Int + i);
+      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.b(this.jdField_a_of_type_Int, this.jdField_c_of_type_Int, str1, this.jdField_a_of_type_JavaLangString, (String)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqWritetogetherDataInsertDeleteWatcher$OnTextInsertDelete.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, str2, this.jdField_a_of_type_JavaLangString, paramEditable);
+    }
+    a();
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3)
@@ -95,7 +103,7 @@ public class InsertDeleteWatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogether.data.InsertDeleteWatcher
  * JD-Core Version:    0.7.0.1
  */

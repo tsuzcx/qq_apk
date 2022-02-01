@@ -14,8 +14,8 @@ final class QIMUserManager$4
   {
     try
     {
-      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850521);
-      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850525);
+      Drawable localDrawable1 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850447);
+      Drawable localDrawable2 = SkinEngine.getInstances().getDefaultThemeDrawable(2130850451);
       StateListDrawable localStateListDrawable = new StateListDrawable();
       localStateListDrawable.addState(new int[] { 16842910 }, localDrawable1);
       localStateListDrawable.addState(new int[] { 16842919, 16842910 }, localDrawable2);
@@ -30,7 +30,7 @@ final class QIMUserManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.qim.QIMUserManager.4
  * JD-Core Version:    0.7.0.1
  */

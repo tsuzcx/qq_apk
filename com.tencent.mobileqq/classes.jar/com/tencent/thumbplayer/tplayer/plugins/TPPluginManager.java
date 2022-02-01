@@ -1,26 +1,27 @@
 package com.tencent.thumbplayer.tplayer.plugins;
 
-import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.concurrent.CopyOnWriteArrayList;
 
 public class TPPluginManager
   implements ITPPluginManager
 {
-  private ArrayList<ITPPluginBase> mPluginList = new ArrayList();
+  private CopyOnWriteArrayList<ITPPluginBase> mPluginList = new CopyOnWriteArrayList();
   
-  public ITPPluginManager addPlugin(ITPPluginBase paramITPPluginBase)
+  public void addPlugin(ITPPluginBase paramITPPluginBase)
   {
     try
     {
-      if (this.mPluginList == null) {
-        this.mPluginList = new ArrayList();
+      CopyOnWriteArrayList localCopyOnWriteArrayList = this.mPluginList;
+      if (localCopyOnWriteArrayList == null) {
+        return;
       }
       if (!this.mPluginList.contains(paramITPPluginBase))
       {
         paramITPPluginBase.onAttach();
         this.mPluginList.add(paramITPPluginBase);
       }
-      return this;
+      return;
     }
     finally {}
   }
@@ -44,8 +45,13 @@ public class TPPluginManager
           }
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void release()
@@ -61,12 +67,17 @@ public class TPPluginManager
           if (localITPPluginBase != null) {
             localITPPluginBase.onDetach();
           }
-          localIterator.remove();
         }
+        this.mPluginList.clear();
       }
       this.mPluginList = null;
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public void removePlugin(ITPPluginBase paramITPPluginBase)
@@ -89,7 +100,7 @@ public class TPPluginManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.tplayer.plugins.TPPluginManager
  * JD-Core Version:    0.7.0.1
  */

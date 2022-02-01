@@ -48,35 +48,57 @@ public class QQLiveDrawable$QQLiveDrawableParams
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append(" QQLiveDrawableParams [");
-    localStringBuilder.append("\n mMute: ").append(this.mMute);
-    localStringBuilder.append("\n mRequestFormat: ").append(this.mRequestFormat);
-    localStringBuilder.append("\n mPreviewWidth: ").append(this.mPreviewWidth);
-    localStringBuilder.append("\n mPreviewHeight: ").append(this.mPreviewHeight);
-    localStringBuilder.append("\n mStartPosi: ").append(this.mStartPosi);
-    localStringBuilder.append("\n mPlayPause: ").append(this.mPlayPause);
-    localStringBuilder.append("\n mListener: ").append(this.mListener);
-    localStringBuilder.append("\n mDataSourceType: ").append(this.mDataSourceType);
-    localStringBuilder.append("\n mDataSource: ").append(this.mDataSource);
-    localStringBuilder.append("\n mCoverUrl: ").append(this.mCoverUrl);
-    localStringBuilder.append("\n mLoopback: ").append(this.mLoopback);
-    localStringBuilder.append("\n mMaxPlayTimeMs: ").append(this.mMaxPlayTimeMs);
-    localStringBuilder.append("\n mPlayType: ").append(this.mPlayType);
-    localStringBuilder.append("\n mUrls: ").append(Arrays.toString(this.mUrls));
-    localStringBuilder.append("\n mServerType: ").append(this.mServerType);
-    localStringBuilder.append("\n mSavePath: ").append(this.mSavePath);
-    localStringBuilder.append("\n mVid: ").append(this.mVid);
-    localStringBuilder.append("\n mDuraion: ").append(this.mDuraion);
-    localStringBuilder.append("\n mVideoTime: ").append(this.mVideoTime);
-    localStringBuilder.append("\n msgUniseq: ").append(this.msgUniseq);
-    localStringBuilder.append("\n OnDownloadListener: ").append(this.mDownloadListener);
-    localStringBuilder.append("\n OnLoopBackListener: ").append(this.mLoopBackListener);
+    localStringBuilder.append("\n mMute: ");
+    localStringBuilder.append(this.mMute);
+    localStringBuilder.append("\n mRequestFormat: ");
+    localStringBuilder.append(this.mRequestFormat);
+    localStringBuilder.append("\n mPreviewWidth: ");
+    localStringBuilder.append(this.mPreviewWidth);
+    localStringBuilder.append("\n mPreviewHeight: ");
+    localStringBuilder.append(this.mPreviewHeight);
+    localStringBuilder.append("\n mStartPosi: ");
+    localStringBuilder.append(this.mStartPosi);
+    localStringBuilder.append("\n mPlayPause: ");
+    localStringBuilder.append(this.mPlayPause);
+    localStringBuilder.append("\n mListener: ");
+    localStringBuilder.append(this.mListener);
+    localStringBuilder.append("\n mDataSourceType: ");
+    localStringBuilder.append(this.mDataSourceType);
+    localStringBuilder.append("\n mDataSource: ");
+    localStringBuilder.append(this.mDataSource);
+    localStringBuilder.append("\n mCoverUrl: ");
+    localStringBuilder.append(this.mCoverUrl);
+    localStringBuilder.append("\n mLoopback: ");
+    localStringBuilder.append(this.mLoopback);
+    localStringBuilder.append("\n mMaxPlayTimeMs: ");
+    localStringBuilder.append(this.mMaxPlayTimeMs);
+    localStringBuilder.append("\n mPlayType: ");
+    localStringBuilder.append(this.mPlayType);
+    localStringBuilder.append("\n mUrls: ");
+    localStringBuilder.append(Arrays.toString(this.mUrls));
+    localStringBuilder.append("\n mServerType: ");
+    localStringBuilder.append(this.mServerType);
+    localStringBuilder.append("\n mSavePath: ");
+    localStringBuilder.append(this.mSavePath);
+    localStringBuilder.append("\n mVid: ");
+    localStringBuilder.append(this.mVid);
+    localStringBuilder.append("\n mDuraion: ");
+    localStringBuilder.append(this.mDuraion);
+    localStringBuilder.append("\n mVideoTime: ");
+    localStringBuilder.append(this.mVideoTime);
+    localStringBuilder.append("\n msgUniseq: ");
+    localStringBuilder.append(this.msgUniseq);
+    localStringBuilder.append("\n OnDownloadListener: ");
+    localStringBuilder.append(this.mDownloadListener);
+    localStringBuilder.append("\n OnLoopBackListener: ");
+    localStringBuilder.append(this.mLoopBackListener);
     localStringBuilder.append("] ");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.QQLiveDrawable.QQLiveDrawableParams
  * JD-Core Version:    0.7.0.1
  */

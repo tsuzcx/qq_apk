@@ -58,27 +58,28 @@ public abstract class RichNodeViewBase
   
   public void a(Context paramContext)
   {
-    View localView = LayoutInflater.from(paramContext).inflate(2131561584, null, false);
-    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = ((RichNodeRootLayout)localView.findViewById(2131377366));
-    this.b = localView.findViewById(2131365922);
+    View localView = LayoutInflater.from(paramContext).inflate(2131561425, null, false);
+    this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout = ((RichNodeRootLayout)localView.findViewById(2131376818));
+    this.b = localView.findViewById(2131365759);
     this.jdField_a_of_type_AndroidViewView = a(paramContext);
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout.addView(this.jdField_a_of_type_AndroidViewView);
+    paramContext = this.jdField_a_of_type_AndroidViewView;
+    if (paramContext != null) {
+      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout.addView(paramContext);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.b != null)
+    View localView = this.b;
+    if (localView != null)
     {
-      if (paramBoolean) {
-        this.b.setVisibility(0);
+      if (paramBoolean)
+      {
+        localView.setVisibility(0);
+        return;
       }
+      localView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.b.setVisibility(8);
   }
   
   public ImageView b()
@@ -118,7 +119,7 @@ public abstract class RichNodeViewBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.RichNodeViewBase
  * JD-Core Version:    0.7.0.1
  */

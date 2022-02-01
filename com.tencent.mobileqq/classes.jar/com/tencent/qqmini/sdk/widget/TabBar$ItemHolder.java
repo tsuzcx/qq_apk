@@ -61,15 +61,9 @@ public class TabBar$ItemHolder
       this.icon.setVisibility(8);
       this.topBorder.setVisibility(8);
       this.bottomBorder.setVisibility(0);
-      this.txt.setText(this.btnInfo.text);
-      if (!"top".equals(this.tabBarInfo.position)) {
-        break label225;
-      }
     }
-    for (;;)
+    else
     {
-      invalidateStatus(false);
-      return;
       localLayoutParams = (RelativeLayout.LayoutParams)this.txt.getLayoutParams();
       localLayoutParams.bottomMargin = DisplayUtil.dip2px(this.btnView.getContext(), 5.0F);
       localLayoutParams.topMargin = DisplayUtil.dip2px(this.btnView.getContext(), 0.0F);
@@ -78,73 +72,67 @@ public class TabBar$ItemHolder
       this.bottomBorder.setVisibility(8);
       this.topBorder.setVisibility(0);
       this.icon.setVisibility(0);
-      break;
-      label225:
+    }
+    this.txt.setText(this.btnInfo.text);
+    if (!"top".equals(this.tabBarInfo.position))
+    {
       this.iconDrawable = new BitmapDrawable(this.btnView.getContext().getResources(), this.btnInfo.iconBitmap);
       this.selectedDrawable = new BitmapDrawable(this.btnView.getContext().getResources(), this.btnInfo.selectedBitmap);
     }
+    invalidateStatus(false);
   }
   
   public void invalidateStatus(boolean paramBoolean)
   {
-    int j = 855638016;
     this.isSelected = paramBoolean;
     this.btnView.setBackgroundColor(this.tabBarInfo.backgroundColor);
     if (!paramBoolean)
     {
       localObject = this.txt;
-      if (this.tabBarInfo.color == 0)
-      {
+      if (this.tabBarInfo.color == 0) {
         i = TabBar.TEXT_DEFAULT_COLOR;
-        ((TextView)localObject).setTextColor(i);
-        if (!"top".equals(this.tabBarInfo.position)) {
-          break label147;
-        }
+      } else {
+        i = this.tabBarInfo.color;
+      }
+      ((TextView)localObject).setTextColor(i);
+      if ("top".equals(this.tabBarInfo.position)) {
         this.bottomSelectedBorder.setVisibility(8);
-        label76:
-        if (!"top".equals(this.tabBarInfo.position)) {
-          break label244;
-        }
-        localObject = this.bottomBorder;
-        if (!"black".equals(this.tabBarInfo.borderStyle)) {
-          break label238;
-        }
+      } else {
+        this.icon.setImageDrawable(this.iconDrawable);
       }
     }
-    label147:
-    label224:
-    label238:
-    for (int i = 855638016;; i = 872415231)
+    else
     {
+      localObject = this.txt;
+      if (this.tabBarInfo.selectedColor == 0) {
+        i = TabBar.TEXT_DEFAULT_COLOR;
+      } else {
+        i = this.tabBarInfo.selectedColor;
+      }
+      ((TextView)localObject).setTextColor(i);
+      if ("top".equals(this.tabBarInfo.position)) {
+        this.bottomSelectedBorder.setVisibility(0);
+      } else {
+        this.icon.setImageDrawable(this.selectedDrawable);
+      }
+    }
+    paramBoolean = "top".equals(this.tabBarInfo.position);
+    int i = 855638016;
+    if (paramBoolean)
+    {
+      localObject = this.bottomBorder;
+      if (!"black".equals(this.tabBarInfo.borderStyle)) {
+        i = 872415231;
+      }
       ((View)localObject).setBackgroundColor(i);
       this.bottomSelectedBorder.setBackgroundColor(this.tabBarInfo.selectedColor);
       return;
-      i = this.tabBarInfo.color;
-      break;
-      this.icon.setImageDrawable(this.iconDrawable);
-      break label76;
-      localObject = this.txt;
-      if (this.tabBarInfo.selectedColor == 0) {}
-      for (i = TabBar.TEXT_DEFAULT_COLOR;; i = this.tabBarInfo.selectedColor)
-      {
-        ((TextView)localObject).setTextColor(i);
-        if (!"top".equals(this.tabBarInfo.position)) {
-          break label224;
-        }
-        this.bottomSelectedBorder.setVisibility(0);
-        break;
-      }
-      this.icon.setImageDrawable(this.selectedDrawable);
-      break label76;
     }
-    label244:
     Object localObject = this.topBorder;
-    if ("black".equals(this.tabBarInfo.borderStyle)) {}
-    for (i = j;; i = 872415231)
-    {
-      ((View)localObject).setBackgroundColor(i);
-      return;
+    if (!"black".equals(this.tabBarInfo.borderStyle)) {
+      i = 872415231;
     }
+    ((View)localObject).setBackgroundColor(i);
   }
   
   public void invalidateStatusSelf()
@@ -154,7 +142,7 @@ public class TabBar$ItemHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.widget.TabBar.ItemHolder
  * JD-Core Version:    0.7.0.1
  */

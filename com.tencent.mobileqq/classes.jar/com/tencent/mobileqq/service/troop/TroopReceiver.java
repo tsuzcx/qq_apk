@@ -24,11 +24,7 @@ public class TroopReceiver
       localUniPacket.decode(paramArrayOfByte);
       return localUniPacket.getByClass(paramString, paramT);
     }
-    catch (Exception paramArrayOfByte)
-    {
-      return null;
-    }
-    catch (RuntimeException paramArrayOfByte) {}
+    catch (RuntimeException|Exception paramArrayOfByte) {}
     return null;
   }
   
@@ -39,43 +35,23 @@ public class TroopReceiver
   
   private Object c(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    paramFromServiceMsg = (GetTroopListRespV2)a(paramFromServiceMsg.getWupBuffer(), "GetTroopListRespV2", new GetTroopListRespV2());
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.result != 1))
-    {
-      paramToServiceMsg = paramFromServiceMsg;
-      if (paramFromServiceMsg.vecTroopList == null)
-      {
-        paramToServiceMsg = paramFromServiceMsg;
-        if (paramFromServiceMsg.vecTroopListDel == null)
-        {
-          paramToServiceMsg = paramFromServiceMsg;
-          if (paramFromServiceMsg.vecTroopRank == null)
-          {
-            paramToServiceMsg = paramFromServiceMsg;
-            if (paramFromServiceMsg.vecFavGroup != null) {}
-          }
-        }
-      }
+    paramToServiceMsg = (GetTroopListRespV2)a(paramFromServiceMsg.getWupBuffer(), "GetTroopListRespV2", new GetTroopListRespV2());
+    if ((paramToServiceMsg != null) && (paramToServiceMsg.result != 1) && ((paramToServiceMsg.vecTroopList != null) || (paramToServiceMsg.vecTroopListDel != null) || (paramToServiceMsg.vecTroopRank != null) || (paramToServiceMsg.vecFavGroup != null))) {
+      return paramToServiceMsg;
     }
-    else
-    {
-      paramToServiceMsg = null;
-    }
-    return paramToServiceMsg;
+    return null;
   }
   
   private Object d(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
-    paramFromServiceMsg = (GetTroopRemarkResp)a(paramFromServiceMsg.getWupBuffer(), "GTRRESP", new GetTroopRemarkResp());
-    if (paramFromServiceMsg == null) {
-      paramToServiceMsg = null;
+    paramToServiceMsg = (GetTroopRemarkResp)a(paramFromServiceMsg.getWupBuffer(), "GTRRESP", new GetTroopRemarkResp());
+    if (paramToServiceMsg == null) {
+      return null;
     }
-    do
-    {
-      return paramToServiceMsg;
-      paramToServiceMsg = paramFromServiceMsg;
-    } while (paramFromServiceMsg.result != 1);
-    return null;
+    if (paramToServiceMsg.result == 1) {
+      return null;
+    }
+    return paramToServiceMsg;
   }
   
   private Object e(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -84,38 +60,47 @@ public class TroopReceiver
     {
       paramToServiceMsg = (GetTroopMemberListResp)a(paramFromServiceMsg.getWupBuffer(), "GTMLRESP", new GetTroopMemberListResp());
       paramFromServiceMsg = paramToServiceMsg;
-      StringBuilder localStringBuilder;
-      label74:
-      return paramFromServiceMsg;
     }
     catch (OutOfMemoryError paramToServiceMsg)
     {
-      try
-      {
-        if (!QLog.isColorLevel()) {
-          return paramFromServiceMsg;
-        }
-        localStringBuilder = new StringBuilder().append("FriendListService.decodeTroopGetMemberList");
-        if (paramToServiceMsg == null) {}
-        for (paramFromServiceMsg = "resp == null";; paramFromServiceMsg = "resp != null")
-        {
-          QLog.d("TroopReceiver", 2, paramFromServiceMsg);
-          return paramToServiceMsg;
-        }
-        paramToServiceMsg = paramToServiceMsg;
-        paramToServiceMsg = null;
-      }
-      catch (OutOfMemoryError paramFromServiceMsg)
-      {
-        break label74;
-      }
-      paramFromServiceMsg = paramToServiceMsg;
-      if (QLog.isColorLevel())
-      {
-        QLog.e("TroopReceiver", 2, "decodeTroopGetMemberList OOM");
-        return paramToServiceMsg;
-      }
+      StringBuilder localStringBuilder;
+      label54:
+      label72:
+      label75:
+      label77:
+      label95:
+      break label75;
     }
+    try
+    {
+      if (!QLog.isColorLevel()) {
+        break label95;
+      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("FriendListService.decodeTroopGetMemberList");
+      if (paramToServiceMsg != null) {
+        break label105;
+      }
+      paramFromServiceMsg = "resp == null";
+    }
+    catch (OutOfMemoryError paramFromServiceMsg)
+    {
+      break label72;
+      paramFromServiceMsg = "resp != null";
+      break label54;
+    }
+    localStringBuilder.append(paramFromServiceMsg);
+    QLog.d("TroopReceiver", 2, localStringBuilder.toString());
+    return paramToServiceMsg;
+    break label77;
+    paramToServiceMsg = null;
+    paramFromServiceMsg = paramToServiceMsg;
+    if (QLog.isColorLevel())
+    {
+      QLog.e("TroopReceiver", 2, "decodeTroopGetMemberList OOM");
+      paramFromServiceMsg = paramToServiceMsg;
+    }
+    return paramFromServiceMsg;
   }
   
   private Object f(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -141,8 +126,12 @@ public class TroopReceiver
   public Object a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
   {
     String str = paramFromServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopReceiver", 2, "~~~decode cmd: " + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("~~~decode cmd: ");
+      localStringBuilder.append(str);
+      QLog.d("TroopReceiver", 2, localStringBuilder.toString());
     }
     if ("friendlist.GetMultiTroopInfoReq".equalsIgnoreCase(str)) {
       return b(paramToServiceMsg, paramFromServiceMsg);
@@ -173,7 +162,7 @@ public class TroopReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.troop.TroopReceiver
  * JD-Core Version:    0.7.0.1
  */

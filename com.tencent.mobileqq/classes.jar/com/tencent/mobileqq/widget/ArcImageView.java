@@ -45,18 +45,14 @@ public class ArcImageView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.STROKE);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167374));
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(getResources().getColor(2131167394));
       this.jdField_a_of_type_Int = ((int)(getResources().getDisplayMetrics().density * 1.5F));
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        localException.printStackTrace();
-      }
+      localException.printStackTrace();
     }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Int);
   }
   
   public void a(boolean paramBoolean)
@@ -65,57 +61,62 @@ public class ArcImageView
     {
       this.jdField_a_of_type_Boolean = paramBoolean;
       if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850830);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130850766);
       }
       postInvalidate();
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    RectF localRectF = new RectF();
-    localRectF.left = this.jdField_a_of_type_Int;
-    localRectF.top = this.jdField_a_of_type_Int;
-    localRectF.right = (getWidth() - this.jdField_a_of_type_Int);
-    localRectF.bottom = (getHeight() - this.jdField_a_of_type_Int);
-    paramCanvas.drawArc(localRectF, 270.0F, this.jdField_a_of_type_Float, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null))
+    Object localObject = new RectF();
+    int i = this.jdField_a_of_type_Int;
+    ((RectF)localObject).left = i;
+    ((RectF)localObject).top = i;
+    ((RectF)localObject).right = (getWidth() - this.jdField_a_of_type_Int);
+    ((RectF)localObject).bottom = (getHeight() - this.jdField_a_of_type_Int);
+    paramCanvas.drawArc((RectF)localObject, 270.0F, this.jdField_a_of_type_Float, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    if (this.jdField_a_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setState(getDrawableState());
-      int i = getWidth();
-      int j = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
-      int k = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i - j, 0, getWidth(), k);
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      if (localObject != null)
+      {
+        ((Drawable)localObject).setState(getDrawableState());
+        i = getWidth();
+        int j = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth();
+        int k = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicHeight();
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(i - j, 0, getWidth(), k);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      }
     }
   }
   
   public void setProgress(float paramFloat)
   {
     float f;
-    if (paramFloat < 0.0F) {
+    if (paramFloat < 0.0F)
+    {
       f = 0.0F;
     }
-    for (;;)
+    else
     {
-      paramFloat = 360.0F * f;
-      if (this.jdField_a_of_type_Float != paramFloat)
-      {
-        this.jdField_a_of_type_Float = paramFloat;
-        postInvalidate();
-      }
-      return;
       f = paramFloat;
       if (paramFloat > 1.0F) {
         f = 1.0F;
       }
     }
+    paramFloat = f * 360.0F;
+    if (this.jdField_a_of_type_Float != paramFloat)
+    {
+      this.jdField_a_of_type_Float = paramFloat;
+      postInvalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ArcImageView
  * JD-Core Version:    0.7.0.1
  */

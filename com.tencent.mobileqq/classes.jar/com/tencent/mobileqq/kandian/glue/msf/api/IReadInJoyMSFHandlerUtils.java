@@ -1,0 +1,23 @@
+package com.tencent.mobileqq.kandian.glue.msf.api;
+
+import com.tencent.mobileqq.kandian.repo.feeds.entity.AbsBaseArticleInfo;
+import com.tencent.mobileqq.qroute.QRouteApi;
+import com.tencent.mobileqq.qroute.annotation.QAPI;
+import kotlin.Metadata;
+import org.jetbrains.annotations.Nullable;
+import tencent.im.oidb.articlesummary.articlesummary.ArticleSummary;
+
+@QAPI(process={"all"})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/kandian/glue/msf/api/IReadInJoyMSFHandlerUtils;", "Lcom/tencent/mobileqq/qroute/QRouteApi;", "convertArticleInfo", "Lcom/tencent/mobileqq/kandian/repo/feeds/entity/AbsBaseArticleInfo;", "summary", "Ltencent/im/oidb/articlesummary/articlesummary$ArticleSummary;", "channelID", "", "refreshType", "articleInfo", "kandian-api_release"}, k=1, mv={1, 1, 16})
+public abstract interface IReadInJoyMSFHandlerUtils
+  extends QRouteApi
+{
+  @Nullable
+  public abstract AbsBaseArticleInfo convertArticleInfo(@Nullable articlesummary.ArticleSummary paramArticleSummary, int paramInt1, int paramInt2, @Nullable AbsBaseArticleInfo paramAbsBaseArticleInfo);
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+ * Qualified Name:     com.tencent.mobileqq.kandian.glue.msf.api.IReadInJoyMSFHandlerUtils
+ * JD-Core Version:    0.7.0.1
+ */

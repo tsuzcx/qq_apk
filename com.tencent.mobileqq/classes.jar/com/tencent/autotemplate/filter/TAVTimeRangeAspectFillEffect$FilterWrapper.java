@@ -30,24 +30,28 @@ class TAVTimeRangeAspectFillEffect$FilterWrapper
   
   public void attachPositionTime(CMTime paramCMTime)
   {
-    if ((TAVTimeRangeAspectFillEffect.access$300(this.this$0) == null) || (paramCMTime == null)) {}
-    long l;
-    do
+    if (TAVTimeRangeAspectFillEffect.access$300(this.this$0) != null)
     {
-      return;
-      if (TAVTimeRangeAspectFillEffect.access$300(this.this$0).getStartUs() - 100000 > paramCMTime.getTimeUs()) {
-        break;
+      if (paramCMTime == null) {
+        return;
       }
-      l = TAVTimeRangeAspectFillEffect.access$300(this.this$0).getEndUs();
-    } while (100000 + l >= paramCMTime.getTimeUs());
-    release();
+      long l1 = TAVTimeRangeAspectFillEffect.access$300(this.this$0).getStartUs();
+      long l2 = 100000;
+      if ((l1 - l2 > paramCMTime.getTimeUs()) || (TAVTimeRangeAspectFillEffect.access$300(this.this$0).getEndUs() + l2 < paramCMTime.getTimeUs())) {
+        release();
+      }
+    }
   }
   
   public void release()
   {
     if (this.filter != null)
     {
-      Logger.d(TAVTimeRangeAspectFillEffect.access$200(this.this$0), "release() called，filter = " + this.filter);
+      String str = TAVTimeRangeAspectFillEffect.access$200(this.this$0);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("release() called，filter = ");
+      localStringBuilder.append(this.filter);
+      Logger.d(str, localStringBuilder.toString());
       this.filter.release();
       this.filter = null;
     }

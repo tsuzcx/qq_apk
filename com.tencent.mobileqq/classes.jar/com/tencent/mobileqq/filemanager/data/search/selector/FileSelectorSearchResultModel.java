@@ -22,11 +22,6 @@ public abstract class FileSelectorSearchResultModel
     this.jdField_a_of_type_Int = paramInt;
   }
   
-  public String a()
-  {
-    return this.jdField_a_of_type_JavaLangString;
-  }
-  
   public List<ISearchResultModel> a(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     return new ArrayList(0);
@@ -39,19 +34,20 @@ public abstract class FileSelectorSearchResultModel
   
   public void a(View paramView)
   {
-    int i = d();
-    if (i == 1) {
-      if (paramView.getId() == 2131366919) {
-        b(paramView);
-      }
-    }
-    while (i <= 1)
+    int i = e_();
+    if (i == 1)
     {
-      return;
+      if (paramView.getId() == 2131366781)
+      {
+        b(paramView);
+        return;
+      }
       c(paramView);
       return;
     }
-    d(paramView);
+    if (i > 1) {
+      d(paramView);
+    }
   }
   
   public boolean a()
@@ -59,28 +55,33 @@ public abstract class FileSelectorSearchResultModel
     return false;
   }
   
+  public String b()
+  {
+    return this.jdField_a_of_type_JavaLangString;
+  }
+  
   protected abstract void b(View paramView);
   
   public abstract boolean b();
+  
+  public abstract int c();
   
   public abstract String c();
   
   protected abstract void c(View paramView);
   
-  public int d()
-  {
-    return 0;
-  }
-  
   public abstract String d();
   
   protected abstract void d(View paramView);
   
-  public abstract int e();
+  public int e_()
+  {
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.selector.FileSelectorSearchResultModel
  * JD-Core Version:    0.7.0.1
  */

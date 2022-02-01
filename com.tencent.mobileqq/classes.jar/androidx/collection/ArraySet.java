@@ -39,12 +39,11 @@ public final class ArraySet<E>
       this.mHashes = INT;
       this.mArray = OBJECT;
     }
-    for (;;)
+    else
     {
-      this.mSize = 0;
-      return;
       allocArrays(paramInt);
     }
+    this.mSize = 0;
   }
   
   public ArraySet(@Nullable ArraySet<E> paramArraySet)
@@ -65,9 +64,7 @@ public final class ArraySet<E>
   
   private void allocArrays(int paramInt)
   {
-    if (paramInt == 8) {}
-    for (;;)
-    {
+    if (paramInt == 8) {
       try
       {
         if (sTwiceBaseCache != null)
@@ -81,29 +78,27 @@ public final class ArraySet<E>
           sTwiceBaseCacheSize -= 1;
           return;
         }
-        this.mHashes = new int[paramInt];
-        this.mArray = new Object[paramInt];
-        return;
       }
       finally {}
-      if (paramInt == 4) {
-        try
+    } else if (paramInt == 4) {
+      try
+      {
+        if (sBaseCache != null)
         {
-          if (sBaseCache != null)
-          {
-            Object[] arrayOfObject2 = sBaseCache;
-            this.mArray = arrayOfObject2;
-            sBaseCache = (Object[])arrayOfObject2[0];
-            this.mHashes = ((int[])arrayOfObject2[1]);
-            arrayOfObject2[1] = null;
-            arrayOfObject2[0] = null;
-            sBaseCacheSize -= 1;
-            return;
-          }
+          Object[] arrayOfObject2 = sBaseCache;
+          this.mArray = arrayOfObject2;
+          sBaseCache = (Object[])arrayOfObject2[0];
+          this.mHashes = ((int[])arrayOfObject2[1]);
+          arrayOfObject2[1] = null;
+          arrayOfObject2[0] = null;
+          sBaseCacheSize -= 1;
+          return;
         }
-        finally {}
       }
+      finally {}
     }
+    this.mHashes = new int[paramInt];
+    this.mArray = new Object[paramInt];
   }
   
   private static void freeArrays(int[] paramArrayOfInt, Object[] paramArrayOfObject, int paramInt)
@@ -116,18 +111,14 @@ public final class ArraySet<E>
           paramArrayOfObject[0] = sTwiceBaseCache;
           paramArrayOfObject[1] = paramArrayOfInt;
           paramInt -= 1;
-          break label113;
+          break label114;
           sTwiceBaseCache = paramArrayOfObject;
           sTwiceBaseCacheSize += 1;
         }
         return;
       }
       finally {}
-    } else {
-      if (paramArrayOfInt.length != 4) {
-        break label129;
-      }
-    }
+    } else if (paramArrayOfInt.length != 4) {}
     for (;;)
     {
       try
@@ -144,15 +135,14 @@ public final class ArraySet<E>
         return;
       }
       finally {}
-      label113:
+      return;
+      label114:
       while (paramInt >= 2)
       {
         paramArrayOfObject[paramInt] = null;
         paramInt -= 1;
       }
       break;
-      label129:
-      return;
       label130:
       while (paramInt >= 2)
       {
@@ -172,146 +162,129 @@ public final class ArraySet<E>
   
   private int indexOf(Object paramObject, int paramInt)
   {
-    int m = this.mSize;
-    int i;
-    if (m == 0) {
-      i = -1;
+    int j = this.mSize;
+    if (j == 0) {
+      return -1;
     }
-    int j;
-    do
+    int k = ContainerHelpers.binarySearch(this.mHashes, j, paramInt);
+    if (k < 0) {
+      return k;
+    }
+    if (paramObject.equals(this.mArray[k])) {
+      return k;
+    }
+    int i = k + 1;
+    while ((i < j) && (this.mHashes[i] == paramInt))
     {
-      do
-      {
+      if (paramObject.equals(this.mArray[i])) {
         return i;
-        j = ContainerHelpers.binarySearch(this.mHashes, m, paramInt);
-        i = j;
-      } while (j < 0);
-      i = j;
-    } while (paramObject.equals(this.mArray[j]));
-    int k = j + 1;
-    while ((k < m) && (this.mHashes[k] == paramInt))
-    {
-      if (paramObject.equals(this.mArray[k])) {
-        return k;
       }
-      k += 1;
+      i += 1;
     }
-    j -= 1;
-    for (;;)
+    j = k - 1;
+    while ((j >= 0) && (this.mHashes[j] == paramInt))
     {
-      if ((j < 0) || (this.mHashes[j] != paramInt)) {
-        break label150;
-      }
-      i = j;
       if (paramObject.equals(this.mArray[j])) {
-        break;
+        return j;
       }
       j -= 1;
     }
-    label150:
-    return k ^ 0xFFFFFFFF;
+    return i ^ 0xFFFFFFFF;
   }
   
   private int indexOfNull()
   {
-    int m = this.mSize;
-    int i;
-    if (m == 0) {
-      i = -1;
+    int j = this.mSize;
+    if (j == 0) {
+      return -1;
     }
-    int j;
-    do
+    int k = ContainerHelpers.binarySearch(this.mHashes, j, 0);
+    if (k < 0) {
+      return k;
+    }
+    if (this.mArray[k] == null) {
+      return k;
+    }
+    int i = k + 1;
+    while ((i < j) && (this.mHashes[i] == 0))
     {
-      do
-      {
+      if (this.mArray[i] == null) {
         return i;
-        j = ContainerHelpers.binarySearch(this.mHashes, m, 0);
-        i = j;
-      } while (j < 0);
-      i = j;
-    } while (this.mArray[j] == null);
-    int k = j + 1;
-    while ((k < m) && (this.mHashes[k] == 0))
-    {
-      if (this.mArray[k] == null) {
-        return k;
       }
-      k += 1;
+      i += 1;
     }
-    j -= 1;
-    for (;;)
+    j = k - 1;
+    while ((j >= 0) && (this.mHashes[j] == 0))
     {
-      if ((j < 0) || (this.mHashes[j] != 0)) {
-        break label115;
-      }
-      i = j;
       if (this.mArray[j] == null) {
-        break;
+        return j;
       }
       j -= 1;
     }
-    label115:
-    return k ^ 0xFFFFFFFF;
+    return i ^ 0xFFFFFFFF;
   }
   
   public boolean add(@Nullable E paramE)
   {
-    int k = 8;
-    int i;
     int j;
     if (paramE == null)
     {
       i = indexOfNull();
       j = 0;
     }
-    while (i >= 0)
+    else
     {
-      return false;
       j = paramE.hashCode();
       i = indexOf(paramE, j);
     }
-    int m = i ^ 0xFFFFFFFF;
-    if (this.mSize >= this.mHashes.length)
-    {
-      if (this.mSize < 8) {
-        break label223;
-      }
-      i = this.mSize + (this.mSize >> 1);
+    if (i >= 0) {
+      return false;
     }
-    for (;;)
+    int k = i ^ 0xFFFFFFFF;
+    int m = this.mSize;
+    Object localObject;
+    if (m >= this.mHashes.length)
     {
-      int[] arrayOfInt = this.mHashes;
+      i = 4;
+      if (m >= 8) {
+        i = (m >> 1) + m;
+      } else if (m >= 4) {
+        i = 8;
+      }
+      localObject = this.mHashes;
       Object[] arrayOfObject = this.mArray;
       allocArrays(i);
-      if (this.mHashes.length > 0)
+      int[] arrayOfInt = this.mHashes;
+      if (arrayOfInt.length > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.mHashes, 0, arrayOfInt.length);
+        System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
         System.arraycopy(arrayOfObject, 0, this.mArray, 0, arrayOfObject.length);
       }
-      freeArrays(arrayOfInt, arrayOfObject, this.mSize);
-      if (m < this.mSize)
-      {
-        System.arraycopy(this.mHashes, m, this.mHashes, m + 1, this.mSize - m);
-        System.arraycopy(this.mArray, m, this.mArray, m + 1, this.mSize - m);
-      }
-      this.mHashes[m] = j;
-      this.mArray[m] = paramE;
-      this.mSize += 1;
-      return true;
-      label223:
-      i = k;
-      if (this.mSize < 4) {
-        i = 4;
-      }
+      freeArrays((int[])localObject, arrayOfObject, this.mSize);
     }
+    int i = this.mSize;
+    if (k < i)
+    {
+      localObject = this.mHashes;
+      m = k + 1;
+      System.arraycopy(localObject, k, localObject, m, i - k);
+      localObject = this.mArray;
+      System.arraycopy(localObject, k, localObject, m, this.mSize - k);
+    }
+    this.mHashes[k] = j;
+    this.mArray[k] = paramE;
+    this.mSize += 1;
+    return true;
   }
   
   public void addAll(@NonNull ArraySet<? extends E> paramArraySet)
   {
-    int i = 0;
     int j = paramArraySet.mSize;
     ensureCapacity(this.mSize + j);
-    if (this.mSize == 0) {
+    int k = this.mSize;
+    int i = 0;
+    if (k == 0)
+    {
       if (j > 0)
       {
         System.arraycopy(paramArraySet.mHashes, 0, this.mHashes, 0, j);
@@ -319,9 +292,7 @@ public final class ArraySet<E>
         this.mSize = j;
       }
     }
-    for (;;)
-    {
-      return;
+    else {
       while (i < j)
       {
         add(paramArraySet.valueAt(i));
@@ -333,8 +304,8 @@ public final class ArraySet<E>
   public boolean addAll(@NonNull Collection<? extends E> paramCollection)
   {
     ensureCapacity(this.mSize + paramCollection.size());
-    boolean bool = false;
     paramCollection = paramCollection.iterator();
+    boolean bool = false;
     while (paramCollection.hasNext()) {
       bool |= add(paramCollection.next());
     }
@@ -343,9 +314,10 @@ public final class ArraySet<E>
   
   public void clear()
   {
-    if (this.mSize != 0)
+    int i = this.mSize;
+    if (i != 0)
     {
-      freeArrays(this.mHashes, this.mArray, this.mSize);
+      freeArrays(this.mHashes, this.mArray, i);
       this.mHashes = INT;
       this.mArray = OBJECT;
       this.mSize = 0;
@@ -370,14 +342,15 @@ public final class ArraySet<E>
   
   public void ensureCapacity(int paramInt)
   {
-    if (this.mHashes.length < paramInt)
+    int[] arrayOfInt = this.mHashes;
+    if (arrayOfInt.length < paramInt)
     {
-      int[] arrayOfInt = this.mHashes;
       Object[] arrayOfObject = this.mArray;
       allocArrays(paramInt);
-      if (this.mSize > 0)
+      paramInt = this.mSize;
+      if (paramInt > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.mHashes, 0, this.mSize);
+        System.arraycopy(arrayOfInt, 0, this.mHashes, 0, paramInt);
         System.arraycopy(arrayOfObject, 0, this.mArray, 0, this.mSize);
       }
       freeArrays(arrayOfInt, arrayOfObject, this.mSize);
@@ -386,46 +359,40 @@ public final class ArraySet<E>
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    for (;;)
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject instanceof Set))
-      {
-        paramObject = (Set)paramObject;
-        if (size() != paramObject.size()) {
-          return false;
-        }
-        int i = 0;
-        try
-        {
-          while (i < this.mSize)
-          {
-            boolean bool = paramObject.contains(valueAt(i));
-            if (!bool) {
-              return false;
-            }
-            i += 1;
-          }
-          return false;
-        }
-        catch (NullPointerException paramObject)
-        {
-          return false;
-        }
-        catch (ClassCastException paramObject)
-        {
-          return false;
-        }
-      }
     }
+    int i;
+    if ((paramObject instanceof Set))
+    {
+      paramObject = (Set)paramObject;
+      if (size() != paramObject.size()) {
+        return false;
+      }
+      i = 0;
+    }
+    try
+    {
+      while (i < this.mSize)
+      {
+        boolean bool = paramObject.contains(valueAt(i));
+        if (!bool) {
+          return false;
+        }
+        i += 1;
+      }
+      return true;
+    }
+    catch (NullPointerException|ClassCastException paramObject) {}
+    return false;
+    return false;
   }
   
   public int hashCode()
   {
-    int i = 0;
     int[] arrayOfInt = this.mHashes;
     int k = this.mSize;
+    int i = 0;
     int j = 0;
     while (i < k)
     {
@@ -466,9 +433,9 @@ public final class ArraySet<E>
   
   public boolean removeAll(@NonNull ArraySet<? extends E> paramArraySet)
   {
-    boolean bool = false;
     int j = paramArraySet.mSize;
     int k = this.mSize;
+    boolean bool = false;
     int i = 0;
     while (i < j)
     {
@@ -483,8 +450,8 @@ public final class ArraySet<E>
   
   public boolean removeAll(@NonNull Collection<?> paramCollection)
   {
-    boolean bool = false;
     paramCollection = paramCollection.iterator();
+    boolean bool = false;
     while (paramCollection.hasNext()) {
       bool |= remove(paramCollection.next());
     }
@@ -493,54 +460,64 @@ public final class ArraySet<E>
   
   public E removeAt(int paramInt)
   {
-    int i = 8;
-    Object localObject = this.mArray[paramInt];
-    if (this.mSize <= 1)
+    Object localObject = this.mArray;
+    E ? = localObject[paramInt];
+    int j = this.mSize;
+    if (j <= 1)
     {
-      freeArrays(this.mHashes, this.mArray, this.mSize);
+      freeArrays(this.mHashes, (Object[])localObject, j);
       this.mHashes = INT;
       this.mArray = OBJECT;
       this.mSize = 0;
+      return ?;
     }
-    int[] arrayOfInt;
-    Object[] arrayOfObject;
-    do
+    localObject = this.mHashes;
+    int k = localObject.length;
+    int i = 8;
+    if ((k > 8) && (j < localObject.length / 3))
     {
-      return localObject;
-      if ((this.mHashes.length <= 8) || (this.mSize >= this.mHashes.length / 3)) {
-        break;
+      if (j > 8) {
+        i = j + (j >> 1);
       }
-      if (this.mSize > 8) {
-        i = this.mSize + (this.mSize >> 1);
-      }
-      arrayOfInt = this.mHashes;
-      arrayOfObject = this.mArray;
+      localObject = this.mHashes;
+      Object[] arrayOfObject = this.mArray;
       allocArrays(i);
       this.mSize -= 1;
       if (paramInt > 0)
       {
-        System.arraycopy(arrayOfInt, 0, this.mHashes, 0, paramInt);
+        System.arraycopy(localObject, 0, this.mHashes, 0, paramInt);
         System.arraycopy(arrayOfObject, 0, this.mArray, 0, paramInt);
       }
-    } while (paramInt >= this.mSize);
-    System.arraycopy(arrayOfInt, paramInt + 1, this.mHashes, paramInt, this.mSize - paramInt);
-    System.arraycopy(arrayOfObject, paramInt + 1, this.mArray, paramInt, this.mSize - paramInt);
-    return localObject;
-    this.mSize -= 1;
-    if (paramInt < this.mSize)
-    {
-      System.arraycopy(this.mHashes, paramInt + 1, this.mHashes, paramInt, this.mSize - paramInt);
-      System.arraycopy(this.mArray, paramInt + 1, this.mArray, paramInt, this.mSize - paramInt);
+      i = this.mSize;
+      if (paramInt < i)
+      {
+        j = paramInt + 1;
+        System.arraycopy(localObject, j, this.mHashes, paramInt, i - paramInt);
+        System.arraycopy(arrayOfObject, j, this.mArray, paramInt, this.mSize - paramInt);
+        return ?;
+      }
     }
-    this.mArray[this.mSize] = null;
-    return localObject;
+    else
+    {
+      this.mSize -= 1;
+      i = this.mSize;
+      if (paramInt < i)
+      {
+        localObject = this.mHashes;
+        j = paramInt + 1;
+        System.arraycopy(localObject, j, localObject, paramInt, i - paramInt);
+        localObject = this.mArray;
+        System.arraycopy(localObject, j, localObject, paramInt, this.mSize - paramInt);
+      }
+      this.mArray[this.mSize] = null;
+    }
+    return ?;
   }
   
   public boolean retainAll(@NonNull Collection<?> paramCollection)
   {
-    int i = this.mSize;
+    int i = this.mSize - 1;
     boolean bool = false;
-    i -= 1;
     while (i >= 0)
     {
       if (!paramCollection.contains(this.mArray[i]))
@@ -561,25 +538,26 @@ public final class ArraySet<E>
   @NonNull
   public Object[] toArray()
   {
-    Object[] arrayOfObject = new Object[this.mSize];
-    System.arraycopy(this.mArray, 0, arrayOfObject, 0, this.mSize);
+    int i = this.mSize;
+    Object[] arrayOfObject = new Object[i];
+    System.arraycopy(this.mArray, 0, arrayOfObject, 0, i);
     return arrayOfObject;
   }
   
   @NonNull
   public <T> T[] toArray(@NonNull T[] paramArrayOfT)
   {
+    Object localObject = paramArrayOfT;
     if (paramArrayOfT.length < this.mSize) {
-      paramArrayOfT = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), this.mSize);
+      localObject = (Object[])Array.newInstance(paramArrayOfT.getClass().getComponentType(), this.mSize);
     }
-    for (;;)
-    {
-      System.arraycopy(this.mArray, 0, paramArrayOfT, 0, this.mSize);
-      if (paramArrayOfT.length > this.mSize) {
-        paramArrayOfT[this.mSize] = null;
-      }
-      return paramArrayOfT;
+    System.arraycopy(this.mArray, 0, localObject, 0, this.mSize);
+    int i = localObject.length;
+    int j = this.mSize;
+    if (i > j) {
+      localObject[j] = null;
     }
+    return localObject;
   }
   
   public String toString()
@@ -590,7 +568,7 @@ public final class ArraySet<E>
     StringBuilder localStringBuilder = new StringBuilder(this.mSize * 14);
     localStringBuilder.append('{');
     int i = 0;
-    if (i < this.mSize)
+    while (i < this.mSize)
     {
       if (i > 0) {
         localStringBuilder.append(", ");
@@ -598,13 +576,10 @@ public final class ArraySet<E>
       Object localObject = valueAt(i);
       if (localObject != this) {
         localStringBuilder.append(localObject);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localStringBuilder.append("(this Set)");
       }
+      i += 1;
     }
     localStringBuilder.append('}');
     return localStringBuilder.toString();
@@ -618,7 +593,7 @@ public final class ArraySet<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.collection.ArraySet
  * JD-Core Version:    0.7.0.1
  */

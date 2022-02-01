@@ -28,36 +28,47 @@ public class MiniAppExposureManager$TianShuExposureData
   {
     try
     {
-      TianShuReportData localTianShuReportData = new TianShuReportData();
-      AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      String str = "";
-      if (localAppRuntime != null) {
-        str = localAppRuntime.getAccount();
+      localObject2 = new TianShuReportData();
+      Object localObject3 = BaseApplicationImpl.getApplication().getRuntime();
+      Object localObject1 = "";
+      if (localObject3 != null) {
+        localObject1 = ((AppRuntime)localObject3).getAccount();
       }
       long l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-      localTianShuReportData.b = (str + "_" + l);
-      localTianShuReportData.jdField_a_of_type_Int = 1;
-      localTianShuReportData.jdField_e_of_type_JavaLangString = this.appId;
-      localTianShuReportData.f = this.pageId;
-      localTianShuReportData.g = this.itemId;
-      localTianShuReportData.d = this.actionId;
-      localTianShuReportData.jdField_e_of_type_Int = 1;
-      localTianShuReportData.jdField_a_of_type_Long = l;
-      TianShuManager.getInstance().report(localTianShuReportData);
-      if (QLog.isColorLevel()) {
-        QLog.i("MiniAppExposureManager", 2, "TianShuExposureData, report itemId: " + this.itemId);
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append("_");
+      ((StringBuilder)localObject3).append(l);
+      ((TianShuReportData)localObject2).b = ((StringBuilder)localObject3).toString();
+      ((TianShuReportData)localObject2).jdField_a_of_type_Int = 1;
+      ((TianShuReportData)localObject2).jdField_e_of_type_JavaLangString = this.appId;
+      ((TianShuReportData)localObject2).f = this.pageId;
+      ((TianShuReportData)localObject2).g = this.itemId;
+      ((TianShuReportData)localObject2).d = this.actionId;
+      ((TianShuReportData)localObject2).jdField_e_of_type_Int = 1;
+      ((TianShuReportData)localObject2).jdField_a_of_type_Long = l;
+      TianShuManager.getInstance().report((TianShuReportData)localObject2);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("TianShuExposureData, report itemId: ");
+        ((StringBuilder)localObject1).append(this.itemId);
+        QLog.i("MiniAppExposureManager", 2, ((StringBuilder)localObject1).toString());
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.e("MiniAppExposureManager", 1, "TianShuExposureData, report exception: " + Log.getStackTraceString(localException));
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("TianShuExposureData, report exception: ");
+      ((StringBuilder)localObject2).append(Log.getStackTraceString(localException));
+      QLog.e("MiniAppExposureManager", 1, ((StringBuilder)localObject2).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppExposureManager.TianShuExposureData
  * JD-Core Version:    0.7.0.1
  */

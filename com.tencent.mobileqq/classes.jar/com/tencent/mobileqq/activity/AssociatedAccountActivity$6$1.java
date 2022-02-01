@@ -9,8 +9,8 @@ import android.view.ViewGroup.LayoutParams;
 import android.widget.ImageView;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.mobileqq.activity.aio.AIOUtils;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.ViewUtils;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 
 class AssociatedAccountActivity$6$1
   implements Runnable
@@ -19,56 +19,47 @@ class AssociatedAccountActivity$6$1
   
   public void run()
   {
-    ColorStateList localColorStateList;
-    Object localObject;
     if (!this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.isFinishing())
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.leftView.setText("");
-      AssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setText(this.jdField_a_of_type_JavaLangString);
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        break label331;
+      AssociatedAccountActivity.access$100(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setText(this.jdField_a_of_type_JavaLangString);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        AssociatedAccountActivity.access$200(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setVisibility(8);
+      } else {
+        AssociatedAccountActivity.access$300(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setVisibility(0);
       }
-      AssociatedAccountActivity.b(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setVisibility(8);
-      AssociatedAccountActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setVisibility(4);
+      AssociatedAccountActivity.access$400(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setVisibility(4);
       this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.leftView.setContentDescription(this.b);
       this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.leftView.bringToFront();
       if ("1103".equals(ThemeUtil.curThemeId))
       {
-        localColorStateList = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.getResources().getColorStateList(2131167030);
-        AssociatedAccountActivity.d(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setTextColor(localColorStateList);
-        AssociatedAccountActivity.e(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setBackgroundResource(2130838474);
-        AssociatedAccountActivity.f(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setPadding(AIOUtils.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.getResources()), 0, AIOUtils.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.getResources()), 0);
-        localObject = AssociatedAccountActivity.g(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).getLayoutParams();
-        ((ViewGroup.LayoutParams)localObject).height = AIOUtils.a(24.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.getResources());
+        ColorStateList localColorStateList = this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.getResources().getColorStateList(2131167053);
+        AssociatedAccountActivity.access$500(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setTextColor(localColorStateList);
+        AssociatedAccountActivity.access$600(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setBackgroundResource(2130838321);
+        AssociatedAccountActivity.access$700(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setPadding(ViewUtils.a(8.0F), 0, ViewUtils.a(8.0F), 0);
+        Object localObject = AssociatedAccountActivity.access$800(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).getLayoutParams();
+        ((ViewGroup.LayoutParams)localObject).height = ViewUtils.a(24.0F);
         if ((localObject instanceof RelativeLayout.LayoutParams)) {
-          ((RelativeLayout.LayoutParams)localObject).leftMargin = AIOUtils.a(8.0F, this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0.getResources());
+          ((RelativeLayout.LayoutParams)localObject).leftMargin = ViewUtils.a(8.0F);
         }
-        AssociatedAccountActivity.h(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).requestLayout();
-        localObject = (GradientDrawable)AssociatedAccountActivity.i(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).getBackground();
+        AssociatedAccountActivity.access$900(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).requestLayout();
+        localObject = (GradientDrawable)AssociatedAccountActivity.access$1000(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).getBackground();
         if (localObject != null)
         {
-          if (Build.VERSION.SDK_INT < 21) {
-            break label348;
+          if (Build.VERSION.SDK_INT >= 21) {
+            ((GradientDrawable)localObject).setColor(localColorStateList);
+          } else {
+            ((GradientDrawable)localObject).setColor(localColorStateList.getDefaultColor());
           }
-          ((GradientDrawable)localObject).setColor(localColorStateList);
+          ((GradientDrawable)localObject).setAlpha(46);
         }
       }
-    }
-    for (;;)
-    {
-      ((GradientDrawable)localObject).setAlpha(46);
-      return;
-      label331:
-      AssociatedAccountActivity.c(this.jdField_a_of_type_ComTencentMobileqqActivityAssociatedAccountActivity$6.this$0).setVisibility(0);
-      break;
-      label348:
-      ((GradientDrawable)localObject).setColor(localColorStateList.getDefaultColor());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.6.1
  * JD-Core Version:    0.7.0.1
  */

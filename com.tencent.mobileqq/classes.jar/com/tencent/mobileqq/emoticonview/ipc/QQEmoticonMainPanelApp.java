@@ -2,29 +2,40 @@ package com.tencent.mobileqq.emoticonview.ipc;
 
 import android.content.Context;
 import android.os.Bundle;
-import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.app.BusinessHandler;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.app.CameraEmoRoamingHandler;
+import com.tencent.mobileqq.app.EmoticonHandler;
+import com.tencent.mobileqq.app.FavEmoRoamingHandler;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.emosm.api.ICameraEmoRoamingManagerService;
+import com.tencent.mobileqq.emosm.api.ICameraEmotionRoamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.ICommonUsedSystemEmojiManagerService;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
+import com.tencent.mobileqq.emosm.api.IEmotionSearchManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingDBManagerService;
+import com.tencent.mobileqq.emosm.api.IFavroamingManagerService;
+import com.tencent.mobileqq.emosm.api.IVipComicMqqManagerService;
+import com.tencent.mobileqq.emosm.vipcomic.VipComicMqqHandler;
+import com.tencent.mobileqq.emoticon.api.IEmojiManagerService;
 import com.tencent.mobileqq.emoticonview.IEmoticonMainPanelApp;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.AbsEmoRuntimeServiceProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.AbsHandlerProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.AbsManagerProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingHandlerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingManagerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmotionRoamingDBManagerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.CommercialDrainageManagerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.CommonUsedSystemEmojiManagerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.DownloaderFactoryProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.EmojiManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmotionRoamingDBManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CommercialDrainageManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CommonUsedSystemEmojiManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmojiManagerServiceProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonHandlerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.EmotionSearchManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmotionSearchManagerServiceProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.FavEmoRoamingHandlerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.FavroamingDBManagerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.FavroamingManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.FavroamingDBManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.FavroamingManagerServiceProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.FontManagerProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.GameCenterManagerImpProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.MqqHandlerProxy;
@@ -33,11 +44,16 @@ import com.tencent.mobileqq.emoticonview.ipc.proxy.RedTouchManagerProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.SVIPHandlerProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.VasQuickUpdateManagerProxy;
 import com.tencent.mobileqq.emoticonview.ipc.proxy.VipComicMqqHandlerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.VipComicMqqManagerProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.VipComicMqqManagerServiceProxy;
+import com.tencent.mobileqq.model.api.ICommercialDrainageManagerService;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.widget.XPanelContainer;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
+import com.tencent.mobileqq.vas.font.api.IFontManagerService;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandlerProxy;
+import com.tencent.mobileqq.vas.updatesystem.api.IVasQuickUpdateService;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
 import java.util.concurrent.ConcurrentHashMap;
@@ -46,129 +62,133 @@ import mqq.app.MobileQQ;
 import mqq.app.api.IRuntimeService;
 import mqq.manager.Manager;
 import mqq.os.MqqHandler;
-import org.jetbrains.annotations.Nullable;
 
 public class QQEmoticonMainPanelApp
   implements IEmoticonMainPanelApp
 {
+  private static final int GAMECENTER_MANAGER = ((IEmosmService)QRoute.api(IEmosmService.class)).getManagerID("GAMECENTER_MANAGER");
   private static final String TAG = "QQEmoticonMainPanelApp";
   private static boolean sInit = false;
-  private QQAppInterface mApp;
+  private BaseQQAppInterface mApp;
   protected EntityManager mEntityManager;
-  protected QQEntityManagerFactoryProxy mEntityManagerFactoryProxy;
+  protected EntityManagerFactory mEntityManagerFactory;
+  protected int mExternalPanelheight;
   private QQMessageFacadeProxy mMessageFacadeProxy;
   private ConcurrentHashMap<String, AbsHandlerProxy<? extends BusinessHandler>> mProxyHandlerMap = new ConcurrentHashMap();
   private ConcurrentHashMap<Integer, AbsManagerProxy<? extends Manager>> mProxyManagerMap = new ConcurrentHashMap();
+  private ConcurrentHashMap<Class, AbsEmoRuntimeServiceProxy<? extends IRuntimeService>> mProxyRuntimeMap = new ConcurrentHashMap();
   private AppRuntime mRuntime;
   
   public QQEmoticonMainPanelApp()
   {
-    this.mRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((this.mRuntime instanceof QQAppInterface)) {
-      this.mApp = ((QQAppInterface)this.mRuntime);
+    this.mRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    AppRuntime localAppRuntime = this.mRuntime;
+    if ((localAppRuntime instanceof BaseQQAppInterface)) {
+      this.mApp = ((BaseQQAppInterface)localAppRuntime);
     }
     init();
   }
   
-  public QQEmoticonMainPanelApp(QQAppInterface paramQQAppInterface)
+  public QQEmoticonMainPanelApp(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    if (paramQQAppInterface != null)
+    if (paramBaseQQAppInterface != null)
     {
-      this.mApp = paramQQAppInterface;
-      this.mRuntime = paramQQAppInterface;
+      this.mApp = paramBaseQQAppInterface;
+      this.mRuntime = paramBaseQQAppInterface;
     }
-    for (;;)
+    else
     {
-      init();
-      return;
-      this.mRuntime = BaseApplicationImpl.getApplication().getRuntime();
-      if ((this.mRuntime instanceof QQAppInterface)) {
-        this.mApp = ((QQAppInterface)this.mRuntime);
+      this.mRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      paramBaseQQAppInterface = this.mRuntime;
+      if ((paramBaseQQAppInterface instanceof BaseQQAppInterface)) {
+        this.mApp = ((BaseQQAppInterface)paramBaseQQAppInterface);
       }
     }
+    init();
   }
   
   public QQEmoticonMainPanelApp(AppRuntime paramAppRuntime)
   {
     AppRuntime localAppRuntime = paramAppRuntime;
     if (paramAppRuntime == null) {
-      localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+      localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
     }
     this.mRuntime = localAppRuntime;
-    if ((this.mRuntime instanceof QQAppInterface)) {
-      this.mApp = ((QQAppInterface)this.mRuntime);
+    paramAppRuntime = this.mRuntime;
+    if ((paramAppRuntime instanceof BaseQQAppInterface)) {
+      this.mApp = ((BaseQQAppInterface)paramAppRuntime);
     }
     init();
   }
   
-  @Nullable
-  private AbsHandlerProxy<? extends BusinessHandler> createHandlerProxy(String paramString)
+  private AbsHandlerProxy createHandlerProxy(String paramString)
   {
-    if (BusinessHandlerFactory.CAMERA_EMOTICON_HANDLER.equals(paramString)) {
+    if (CameraEmoRoamingHandler.a.equals(paramString)) {
       return new CameraEmoRoamingHandlerProxy(this.mApp);
     }
-    if (BusinessHandlerFactory.HANDLER_EMOSM.equals(paramString)) {
+    if (EmoticonHandler.a.equals(paramString)) {
       return new EmoticonHandlerProxy(this.mApp);
     }
-    if (BusinessHandlerFactory.MQQ_COMIC_HANDLER.equals(paramString)) {
+    if (VipComicMqqHandler.a.equals(paramString)) {
       return new VipComicMqqHandlerProxy(this.mApp);
     }
-    if (BusinessHandlerFactory.SVIP_HANDLER.equals(paramString)) {
+    if ((paramString != null) && (paramString.equals(((ISVIPHandlerProxy)QRoute.api(ISVIPHandlerProxy.class)).getImplClassName()))) {
       return new SVIPHandlerProxy(this.mApp);
     }
-    if (BusinessHandlerFactory.FAVEMO_ROAMING_HANDLER.equals(paramString)) {
+    if (FavEmoRoamingHandler.a.equals(paramString)) {
       return new FavEmoRoamingHandlerProxy(this.mApp);
     }
     return null;
   }
   
-  @Nullable
-  private AbsManagerProxy<? extends Manager> createMangerProxy(int paramInt)
+  private AbsManagerProxy createMangerProxy(int paramInt)
   {
-    if (QQManagerFactory.EMOTION_SEARCH_MANAGER == paramInt) {
-      return new EmotionSearchManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.FAV_ROAMING_MANAGER == paramInt) {
-      return new FavroamingManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.COMMERCIAL_DRAINAGE_MANAGER == paramInt) {
-      return new CommercialDrainageManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.EMOTICON_MANAGER == paramInt) {
-      return new EmoticonManagerProxy(this.mApp, this.mEntityManager);
-    }
-    if (QQManagerFactory.CAMERA_EMOTION_DB_MANAGER == paramInt) {
-      return new CameraEmotionRoamingDBManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.CAMERA_EMOTION_MANAGER == paramInt) {
-      return new CameraEmoRoamingManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.CHAT_EMOTION_MANAGER == paramInt) {
-      return new EmojiManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.FAVROAMING_DB_MANAGER == paramInt) {
-      return new FavroamingDBManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.MQQ_COMIC_MANAGER == paramInt) {
-      return new VipComicMqqManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.MGR_RED_TOUCH == paramInt) {
-      return new RedTouchManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.COMMONUSED_SYSTEM_EMOJI_MANAGERT == paramInt) {
-      return new CommonUsedSystemEmojiManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.VAS_QUICKUPDATE_MANAGER == paramInt) {
-      return new VasQuickUpdateManagerProxy(this.mApp);
-    }
-    if (QQManagerFactory.DOWNLOADER_FACTORY == paramInt) {
-      return new DownloaderFactoryProxy(this.mApp);
-    }
-    if (QQManagerFactory.GAMECENTER_MANAGER == paramInt) {
+    if (GAMECENTER_MANAGER == paramInt) {
       return new GameCenterManagerImpProxy(this.mApp);
     }
-    if (QQManagerFactory.CHAT_FONT_MANAGER == paramInt) {
+    return null;
+  }
+  
+  private AbsEmoRuntimeServiceProxy<? extends IRuntimeService> createRuntimeServiceProxy(Class paramClass)
+  {
+    if (paramClass == IEmotionSearchManagerService.class) {
+      return new EmotionSearchManagerServiceProxy(this.mApp);
+    }
+    if (paramClass == IFavroamingManagerService.class) {
+      return new FavroamingManagerServiceProxy(this.mApp);
+    }
+    if (paramClass == ICommercialDrainageManagerService.class) {
+      return new CommercialDrainageManagerServiceProxy(this.mApp);
+    }
+    if (paramClass == IEmoticonManagerService.class) {
+      return new EmoticonManagerServiceProxy(this.mApp, this.mEntityManager);
+    }
+    if (paramClass == ICameraEmotionRoamingDBManagerService.class) {
+      return new CameraEmotionRoamingDBManagerServiceProxy(this.mApp);
+    }
+    if (paramClass == ICameraEmoRoamingManagerService.class) {
+      return new CameraEmoRoamingManagerServiceProxy(this.mApp);
+    }
+    if (paramClass == IEmojiManagerService.class) {
+      return new EmojiManagerServiceProxy(this.mApp);
+    }
+    if (paramClass == IFavroamingDBManagerService.class) {
+      return new FavroamingDBManagerServiceProxy(this.mApp);
+    }
+    if (paramClass == IVipComicMqqManagerService.class) {
+      return new VipComicMqqManagerServiceProxy(this.mApp);
+    }
+    if (paramClass == ICommonUsedSystemEmojiManagerService.class) {
+      return new CommonUsedSystemEmojiManagerServiceProxy(this.mApp);
+    }
+    if (paramClass == IRedTouchManager.class) {
+      return new RedTouchManagerProxy(this.mApp);
+    }
+    if (paramClass == IFontManagerService.class) {
       return new FontManagerProxy(this.mApp);
+    }
+    if (paramClass == IVasQuickUpdateService.class) {
+      return new VasQuickUpdateManagerProxy(this.mApp);
     }
     return null;
   }
@@ -177,20 +197,21 @@ public class QQEmoticonMainPanelApp
   {
     if (this.mApp == null)
     {
-      this.mEntityManagerFactoryProxy = QQEntityManagerFactoryProxy.a(getAccount());
-      this.mEntityManager = this.mEntityManagerFactoryProxy.createEntityManager();
+      this.mEntityManagerFactory = this.mRuntime.getEntityManagerFactory(getAccount());
+      this.mEntityManager = this.mEntityManagerFactory.createEntityManager();
     }
   }
   
   public static boolean isMainProcess()
   {
-    return BaseApplicationImpl.sProcessId == 1;
+    return MobileQQ.sProcessId == 1;
   }
   
   public void addObserver(BusinessObserver paramBusinessObserver)
   {
-    if (this.mApp != null) {
-      this.mApp.addObserver(paramBusinessObserver);
+    BaseQQAppInterface localBaseQQAppInterface = this.mApp;
+    if (localBaseQQAppInterface != null) {
+      localBaseQQAppInterface.addObserver(paramBusinessObserver);
     }
   }
   
@@ -206,8 +227,9 @@ public class QQEmoticonMainPanelApp
   
   public AppRuntime getAppRuntime()
   {
-    if (this.mApp != null) {
-      return this.mApp;
+    BaseQQAppInterface localBaseQQAppInterface = this.mApp;
+    if (localBaseQQAppInterface != null) {
+      return localBaseQQAppInterface;
     }
     return this.mRuntime;
   }
@@ -228,7 +250,9 @@ public class QQEmoticonMainPanelApp
           return localAbsHandlerProxy;
         }
         localAbsHandlerProxy = createHandlerProxy(paramString);
-        this.mProxyHandlerMap.put(paramString, localAbsHandlerProxy);
+        if (localAbsHandlerProxy != null) {
+          this.mProxyHandlerMap.put(paramString, localAbsHandlerProxy);
+        }
         return localAbsHandlerProxy;
       }
       finally {}
@@ -238,38 +262,42 @@ public class QQEmoticonMainPanelApp
   
   public String getCurrentAccountUin()
   {
-    if (this.mApp != null) {
-      return this.mApp.getCurrentAccountUin();
+    BaseQQAppInterface localBaseQQAppInterface = this.mApp;
+    if (localBaseQQAppInterface != null) {
+      return localBaseQQAppInterface.getCurrentAccountUin();
     }
     return this.mRuntime.getAccount();
   }
   
   public String getCurrentUin()
   {
-    if (this.mApp != null) {
-      return this.mApp.getCurrentUin();
+    BaseQQAppInterface localBaseQQAppInterface = this.mApp;
+    if (localBaseQQAppInterface != null) {
+      return localBaseQQAppInterface.getCurrentUin();
     }
     return getQQCurrentUin();
   }
   
-  public QQEntityManagerFactoryProxy getEntityManagerFactory()
+  public EntityManagerFactory getEntityManagerFactory()
   {
-    if (this.mApp != null) {
-      return this.mApp.getEntityManagerFactory();
+    BaseQQAppInterface localBaseQQAppInterface = this.mApp;
+    if (localBaseQQAppInterface != null) {
+      return localBaseQQAppInterface.getEntityManagerFactory();
     }
-    return this.mEntityManagerFactoryProxy;
+    return this.mEntityManagerFactory;
   }
   
   public int getExternalPanelheight()
   {
     if (this.mApp != null) {
-      return XPanelContainer.a;
+      return ((IEmosmService)QRoute.api(IEmosmService.class)).getExternalPanelheight();
     }
-    if (XPanelContainer.a != 0) {
-      return XPanelContainer.a;
+    int i = this.mExternalPanelheight;
+    if (i != 0) {
+      return i;
     }
-    XPanelContainer.a = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "externalpanel_height", null).data.getInt("height");
-    return XPanelContainer.a;
+    this.mExternalPanelheight = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "externalpanel_height", null).data.getInt("height");
+    return this.mExternalPanelheight;
   }
   
   public MqqHandlerProxy getHandler(Class paramClass)
@@ -288,7 +316,9 @@ public class QQEmoticonMainPanelApp
           return localAbsManagerProxy;
         }
         localAbsManagerProxy = createMangerProxy(paramInt);
-        this.mProxyManagerMap.put(Integer.valueOf(paramInt), localAbsManagerProxy);
+        if (localAbsManagerProxy != null) {
+          this.mProxyManagerMap.put(Integer.valueOf(paramInt), localAbsManagerProxy);
+        }
         return localAbsManagerProxy;
       }
       finally {}
@@ -304,32 +334,55 @@ public class QQEmoticonMainPanelApp
     return this.mMessageFacadeProxy;
   }
   
-  public QQAppInterface getQQAppInterface()
+  public BaseQQAppInterface getQQAppInterface()
   {
     return this.mApp;
   }
   
   public String getQQCurrentUin()
   {
-    String str = "";
     if (!"0".equals(getCurrentAccountUin())) {
-      str = getCurrentAccountUin();
+      return getCurrentAccountUin();
     }
-    return str;
+    return "";
   }
   
-  public IRuntimeService getService(Class paramClass)
+  public AbsEmoRuntimeServiceProxy<? extends IRuntimeService> getRuntimeService(Class paramClass)
   {
-    if (this.mApp == null) {
+    AbsEmoRuntimeServiceProxy localAbsEmoRuntimeServiceProxy = (AbsEmoRuntimeServiceProxy)this.mProxyRuntimeMap.get(paramClass);
+    if (localAbsEmoRuntimeServiceProxy == null) {
+      try
+      {
+        localAbsEmoRuntimeServiceProxy = (AbsEmoRuntimeServiceProxy)this.mProxyRuntimeMap.get(paramClass);
+        if (localAbsEmoRuntimeServiceProxy != null) {
+          return localAbsEmoRuntimeServiceProxy;
+        }
+        localAbsEmoRuntimeServiceProxy = createRuntimeServiceProxy(paramClass);
+        if (localAbsEmoRuntimeServiceProxy != null) {
+          this.mProxyRuntimeMap.put(paramClass, localAbsEmoRuntimeServiceProxy);
+        }
+        return localAbsEmoRuntimeServiceProxy;
+      }
+      finally {}
+    }
+    return localAbsEmoRuntimeServiceProxy;
+  }
+  
+  public <T extends IRuntimeService> T getService(Class<T> paramClass)
+  {
+    BaseQQAppInterface localBaseQQAppInterface = this.mApp;
+    if (localBaseQQAppInterface == null) {
       return null;
     }
-    return this.mApp.getRuntimeService(paramClass, "");
+    return localBaseQQAppInterface.getRuntimeService(paramClass, "");
   }
   
   public void registerOtherProcessCallback()
   {
-    if (isMainProcess()) {}
-    while (sInit) {
+    if (isMainProcess()) {
+      return;
+    }
+    if (sInit) {
       return;
     }
     sInit = true;
@@ -342,14 +395,15 @@ public class QQEmoticonMainPanelApp
   
   public void removeObserver(BusinessObserver paramBusinessObserver)
   {
-    if (this.mApp != null) {
-      this.mApp.removeObserver(paramBusinessObserver);
+    BaseQQAppInterface localBaseQQAppInterface = this.mApp;
+    if (localBaseQQAppInterface != null) {
+      localBaseQQAppInterface.removeObserver(paramBusinessObserver);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp
  * JD-Core Version:    0.7.0.1
  */

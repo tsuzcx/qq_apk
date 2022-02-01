@@ -36,8 +36,9 @@ public class RichNodeRootLayout
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewGestureDetector != null) {
-      this.jdField_a_of_type_AndroidViewGestureDetector.onTouchEvent(paramMotionEvent);
+    GestureDetector localGestureDetector = this.jdField_a_of_type_AndroidViewGestureDetector;
+    if (localGestureDetector != null) {
+      localGestureDetector.onTouchEvent(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
@@ -45,35 +46,29 @@ public class RichNodeRootLayout
   public void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
-    if (this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout$RichNodeRootLayoutEvent != null) {
-      this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout$RichNodeRootLayoutEvent.a();
+    RichNodeRootLayout.RichNodeRootLayoutEvent localRichNodeRootLayoutEvent = this.jdField_a_of_type_ComTencentMobileqqSearchRichRichNodeRootLayout$RichNodeRootLayoutEvent;
+    if (localRichNodeRootLayoutEvent != null) {
+      localRichNodeRootLayoutEvent.a();
     }
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i;
     if (this.jdField_a_of_type_Boolean)
     {
-      i = paramMotionEvent.getActionMasked();
-      if (i != 0) {
-        break label32;
-      }
-      getParent().requestDisallowInterceptTouchEvent(true);
-    }
-    for (;;)
-    {
-      return super.onInterceptTouchEvent(paramMotionEvent);
-      label32:
-      if ((i == 1) || (i == 3)) {
+      int i = paramMotionEvent.getActionMasked();
+      if (i == 0) {
+        getParent().requestDisallowInterceptTouchEvent(true);
+      } else if ((i == 1) || (i == 3)) {
         getParent().requestDisallowInterceptTouchEvent(false);
       }
     }
+    return super.onInterceptTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.rich.RichNodeRootLayout
  * JD-Core Version:    0.7.0.1
  */

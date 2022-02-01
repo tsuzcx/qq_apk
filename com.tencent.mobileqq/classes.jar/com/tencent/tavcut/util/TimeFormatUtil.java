@@ -31,7 +31,10 @@ public class TimeFormatUtil
     float f = (float)paramLong / 1000.0F;
     DecimalFormat localDecimalFormat = new DecimalFormat("0.0");
     localDecimalFormat.setRoundingMode(RoundingMode.DOWN);
-    return localDecimalFormat.format(f) + "秒";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localDecimalFormat.format(f));
+    localStringBuilder.append("秒");
+    return localStringBuilder.toString();
   }
   
   public static String getDurationSecondsEnglish(long paramLong)
@@ -39,12 +42,15 @@ public class TimeFormatUtil
     float f = (float)paramLong / 1000.0F;
     DecimalFormat localDecimalFormat = new DecimalFormat("0.0");
     localDecimalFormat.setRoundingMode(RoundingMode.DOWN);
-    return localDecimalFormat.format(f) + "s";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(localDecimalFormat.format(f));
+    localStringBuilder.append("s");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.util.TimeFormatUtil
  * JD-Core Version:    0.7.0.1
  */

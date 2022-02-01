@@ -4,10 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.SparseArray;
 import android.view.View;
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import com.tencent.mobileqq.app.BaseActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.profilecard.base.framework.IComponent;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
 
@@ -16,12 +14,12 @@ public abstract class AbsComponent<VIEW, DATA>
 {
   private static final boolean LOG_ENABLE = false;
   private static final String TAG = "AbsComponent";
-  public BaseActivity mActivity;
-  public QQAppInterface mApp;
+  protected QBaseActivity mActivity;
+  protected AppInterface mApp;
   protected SparseArray<IComponent<? extends View, DATA>> mChildComponent;
   protected IComponentCenter mComponentCenter;
-  public DATA mData;
-  public VIEW mViewContainer;
+  protected DATA mData;
+  protected VIEW mViewContainer;
   
   public AbsComponent(IComponentCenter paramIComponentCenter, DATA paramDATA)
   {
@@ -37,15 +35,17 @@ public abstract class AbsComponent<VIEW, DATA>
   
   public void attachToComponentCenter()
   {
-    if (this.mComponentCenter != null) {
-      this.mComponentCenter.addComponent(this);
+    IComponentCenter localIComponentCenter = this.mComponentCenter;
+    if (localIComponentCenter != null) {
+      localIComponentCenter.addComponent(this);
     }
   }
   
   public void detachFromComponentCenter()
   {
-    if (this.mComponentCenter != null) {
-      this.mComponentCenter.removeComponent(this);
+    IComponentCenter localIComponentCenter = this.mComponentCenter;
+    if (localIComponentCenter != null) {
+      localIComponentCenter.removeComponent(this);
     }
   }
   
@@ -71,10 +71,10 @@ public abstract class AbsComponent<VIEW, DATA>
     return false;
   }
   
-  public void onCreate(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, Bundle paramBundle)
   {
-    this.mActivity = paramBaseActivity;
-    this.mApp = paramBaseActivity.app;
+    this.mActivity = paramQBaseActivity;
+    this.mApp = ((AppInterface)paramQBaseActivity.getAppRuntime());
   }
   
   public boolean onDataUpdate(DATA paramDATA)
@@ -82,22 +82,17 @@ public abstract class AbsComponent<VIEW, DATA>
     this.mData = paramDATA;
     int j = this.mChildComponent.size();
     int i = 0;
-    boolean bool = false;
-    if (i < j)
+    boolean bool2;
+    for (boolean bool1 = false; i < j; bool1 = bool2)
     {
       IComponent localIComponent = (IComponent)this.mChildComponent.valueAt(i);
-      if (localIComponent == null) {
-        break label64;
+      bool2 = bool1;
+      if (localIComponent != null) {
+        bool2 = bool1 | localIComponent.onDataUpdate(paramDATA);
       }
-      bool = localIComponent.onDataUpdate(paramDATA) | bool;
-    }
-    label64:
-    for (;;)
-    {
       i += 1;
-      break;
-      return bool;
     }
+    return bool1;
   }
   
   public void onDestroy()
@@ -116,6 +111,8 @@ public abstract class AbsComponent<VIEW, DATA>
   
   public void onStop() {}
   
+  public void onWindowFocusChanged(boolean paramBoolean) {}
+  
   public void removeComponent(IComponent<? extends View, DATA> paramIComponent)
   {
     this.mChildComponent.remove(paramIComponent.getComponentType());
@@ -126,7 +123,6 @@ public abstract class AbsComponent<VIEW, DATA>
     this.mViewContainer = paramVIEW;
   }
   
-  @NonNull
   public String toString()
   {
     return String.format("Component@%s{componentType=%s componentName=%s}", new Object[] { Integer.valueOf(hashCode()), Integer.valueOf(getComponentType()), getComponentName() });
@@ -134,7 +130,7 @@ public abstract class AbsComponent<VIEW, DATA>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.framework.impl.AbsComponent
  * JD-Core Version:    0.7.0.1
  */

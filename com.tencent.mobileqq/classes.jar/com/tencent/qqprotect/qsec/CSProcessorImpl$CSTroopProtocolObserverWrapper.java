@@ -15,16 +15,17 @@ class CSProcessorImpl$CSTroopProtocolObserverWrapper
     this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener = paramICSProcessorListener;
   }
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener != null) {
-      this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
+    paramBundle = this.jdField_a_of_type_ComTencentQqprotectQsecICSProcessor$ICSProcessorListener;
+    if (paramBundle != null) {
+      paramBundle.a(paramInt, this.jdField_a_of_type_ArrayOfByte, paramArrayOfByte);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CSProcessorImpl.CSTroopProtocolObserverWrapper
  * JD-Core Version:    0.7.0.1
  */

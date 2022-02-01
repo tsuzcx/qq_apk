@@ -11,12 +11,16 @@ public class LightVideoRenderNote
   implements TAVVideoEffect
 {
   private OnNodeRenderListener jdField_a_of_type_ComTencentWeseevideoCompositionInterfacesOnNodeRenderListener;
-  private final String jdField_a_of_type_JavaLangString = "LightVideoRenderNote@" + Integer.toHexString(hashCode());
+  private final String jdField_a_of_type_JavaLangString;
   private LightAsset jdField_a_of_type_OrgLightLightAsset;
   private final LightEngine jdField_a_of_type_OrgLightLightEngine;
   
   public LightVideoRenderNote(LightEngine paramLightEngine)
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LightVideoRenderNote@");
+    localStringBuilder.append(Integer.toHexString(hashCode()));
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     this.jdField_a_of_type_OrgLightLightEngine = paramLightEngine;
   }
   
@@ -43,7 +47,7 @@ public class LightVideoRenderNote
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.LightVideoRenderNote
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout android:orientation="vertical" android:layout_width="fill_parent" android:layout_height="fill_parent"
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <com.tencent.mobileqq.profile.view.SoftInputDetectView android:id="@id/dmq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    <ScrollView android:id="@id/o5_" android:fadingEdge="vertical" android:fadingEdgeLength="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/head">
+        <LinearLayout android:orientation="vertical" android:id="@id/root" android:layout_width="fill_parent" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical" android:id="@id/oe_" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="8.0dip">
+                <com.tencent.mobileqq.troop.widget.PresetWordFlowLayout android:id="@id/oea" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="12.0dip" />
+                <TextView android:textColor="@color/bp" android:id="@id/oe9" android:paddingLeft="16.0dip" android:paddingRight="16.0dip" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content" android:text="@string/ymc" />
+                <ImageView android:id="@id/oe7" android:background="@drawable/eoe" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="16.0dip" android:layout_marginTop="13.0dip" android:layout_marginBottom="60.0dip" android:src="@drawable/ihc" android:scaleType="center" android:contentDescription="@string/ylq" />
+            </LinearLayout>
+            <RelativeLayout android:id="@id/b1v" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="43.0dip" android:layout_marginLeft="17.0dip" android:layout_marginTop="-17.0dip" android:layout_marginRight="45.0dip">
+                <ImageView android:layout_width="fill_parent" android:layout_height="fill_parent" android:src="@drawable/fn0" android:scaleType="fitXY" />
+                <TextView android:textSize="15.0dip" android:textColor="@color/bp" android:id="@id/b1x" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="10.0dip" android:layout_marginTop="15.0dip" android:text="@string/lv9" />
+                <com.tencent.mobileqq.widget.ColorNickTextView android:textSize="15.0dip" android:textColor="#ff03081a" android:ellipsize="end" android:id="@id/b1w" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="15.0dip" android:maxWidth="122.0dip" android:singleLine="true" android:layout_toRightOf="@id/b1x" />
+                <TextView android:textSize="15.0dip" android:textColor="#ff12b7f5" android:id="@id/b1u" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="5.0dip" android:layout_marginTop="15.0dip" android:text="@string/lvc" android:layout_toRightOf="@id/b1w" />
+                <ImageView android:id="@id/b1t" android:layout_width="24.0dip" android:layout_height="24.0dip" android:layout_marginTop="13.0dip" android:layout_marginRight="6.0dip" android:src="@drawable/ghp" android:layout_alignParentRight="true" />
+            </RelativeLayout>
+            <com.tencent.mobileqq.vas.troopnick.shop.widget.ShopLayout android:id="@id/oeq" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+        </LinearLayout>
+    </ScrollView>
+    <RelativeLayout android:id="@id/b22" android:background="@color/al3" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="426.5dip" android:layout_alignParentBottom="true">
+        <RelativeLayout android:id="@id/b1y" android:layout_width="fill_parent" android:layout_height="44.0dip">
+            <ImageView android:id="@id/b20" android:layout_width="20.0dip" android:layout_height="23.5dip" android:layout_marginLeft="10.0dip" android:src="@drawable/dvd" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0dip" android:textColor="@color/bp" android:id="@id/b21" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="6.5dip" android:text="@string/a4_" android:layout_toRightOf="@id/b20" android:layout_centerVertical="true" />
+            <TextView android:textSize="14.0dip" android:textColor="#ff71400b" android:gravity="center" android:id="@id/b1z" android:background="@drawable/anp" android:layout_width="52.0dip" android:layout_height="26.0dip" android:layout_marginRight="10.0dip" android:text="@string/a4a" android:layout_alignParentRight="true" android:layout_centerVertical="true" />
+            <View android:background="#ffdedede" android:layout_width="fill_parent" android:layout_height="1.0px" android:layout_alignParentBottom="true" />
+        </RelativeLayout>
+        <RelativeLayout android:id="@id/b1p" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/b1y" />
+        <android.support.v7.widget.RecyclerView android:id="@id/b1n" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_below="@id/b1y" />
+    </RelativeLayout>
+    <RelativeLayout android:id="@id/b1k" android:background="#ffecedf1" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="50.0dip" android:layout_alignParentBottom="true">
+        <ImageView android:id="@id/b1o" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="14.0dip" android:src="@drawable/fmx" android:layout_centerVertical="true" />
+        <ImageView android:id="@id/b1l" android:layout_width="22.0dip" android:layout_height="22.0dip" android:layout_marginLeft="31.0dip" android:src="@drawable/fms" android:layout_toRightOf="@id/b1o" android:layout_centerVertical="true" />
+    </RelativeLayout>
+</RelativeLayout>

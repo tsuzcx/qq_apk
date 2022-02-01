@@ -27,7 +27,7 @@ public class NowRoomAudienceModules
   
   public void a(Context paramContext)
   {
-    a((ViewGroup)LayoutInflater.from(paramContext).inflate(2131559641, (ViewGroup)null));
+    a((ViewGroup)LayoutInflater.from(paramContext).inflate(2131559518, (ViewGroup)null));
   }
   
   public void b() {}
@@ -44,7 +44,7 @@ public class NowRoomAudienceModules
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.now_live.NowRoomAudienceModules
  * JD-Core Version:    0.7.0.1
  */

@@ -34,27 +34,23 @@ class GesturePWDCreateActivity$PromptAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    View localView = paramView;
     if (paramView == null) {
-      paramView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559324, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559202, null);
     }
-    for (;;)
-    {
-      View localView = paramView.findViewById(2131367855);
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt] > 0)) {
-        localView.setBackgroundResource(2130845376);
-      }
-      for (;;)
-      {
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localView.setBackgroundResource(2130851162);
-      }
+    paramView = localView.findViewById(2131367622);
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a != null) && (paramInt >= 0) && (paramInt < this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a.length) && (this.jdField_a_of_type_ComTencentMobileqqActivityGesturePWDCreateActivity.a[paramInt] > 0)) {
+      paramView.setBackgroundResource(2130845249);
+    } else {
+      paramView.setBackgroundResource(2130851078);
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GesturePWDCreateActivity.PromptAdapter
  * JD-Core Version:    0.7.0.1
  */

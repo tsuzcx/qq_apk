@@ -18,50 +18,87 @@ class ShortVideoPreDownloaderWithSdkSupport$2
   
   public void onDownloadError(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "onDownloadError, preLoadId = " + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.f + " , uniseq = " + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq + ", moduleID = " + paramInt2 + ", errorCode = " + paramInt3 + ", extInfo = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDownloadError, preLoadId = ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.f);
+      localStringBuilder.append(" , uniseq = ");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      localStringBuilder.append(", moduleID = ");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", errorCode = ");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(", extInfo = ");
+      localStringBuilder.append(paramString);
+      QLog.d("ShortVideoPreDownloader", 2, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloaderWithSdkSupport$VideoDownCallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloaderWithSdkSupport$VideoDownCallback.a(paramInt3);
+    paramString = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq;
+    if ((paramString != null) && (paramString.jdField_a_of_type_ComTencentMobileqqShortvideoVideoDownCallback != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoVideoDownCallback.a(paramInt3);
     }
   }
   
   public void onDownloadFinish(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "onDownloadFinish, preLoadId = " + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.f + " , uniseq = " + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onDownloadFinish, preLoadId = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.f);
+      ((StringBuilder)localObject).append(" , uniseq = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      QLog.d("ShortVideoPreDownloader", 2, ((StringBuilder)localObject).toString());
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloaderWithSdkSupport$VideoDownCallback != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloaderWithSdkSupport$VideoDownCallback.a(0);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq;
+    if ((localObject != null) && (((ShortVideoReq)localObject).jdField_a_of_type_ComTencentMobileqqShortvideoVideoDownCallback != null)) {
+      this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoVideoDownCallback.a(0);
     }
   }
   
   public void onDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreDownloader", 2, "onDownloadProgressUpdate, preLoadId = " + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.f + " , uniseq = " + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq + "currentDownloadSizeByte = " + paramLong1 + ", totalFileSizeByte = " + paramLong2);
-    }
-    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloaderWithSdkSupport$VideoDownCallback != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null))
+    if (QLog.isColorLevel())
     {
-      if (paramLong1 <= this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_Long) {
-        break label238;
+      paramString = new StringBuilder();
+      paramString.append("onDownloadProgressUpdate, preLoadId = ");
+      paramString.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.f);
+      paramString.append(" , uniseq = ");
+      paramString.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+      paramString.append("currentDownloadSizeByte = ");
+      paramString.append(paramLong1);
+      paramString.append(", totalFileSizeByte = ");
+      paramString.append(paramLong2);
+      QLog.d("ShortVideoPreDownloader", 2, paramString.toString());
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoVideoDownCallback != null) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo != null))
+    {
+      if (paramLong1 > this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_Long) {
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_Long = paramLong1;
+      } else {
+        paramLong1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_Long;
       }
-      this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_Long = paramLong1;
-    }
-    for (;;)
-    {
       paramLong2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileSize;
       if ((paramLong2 > 0L) && (paramLong1 <= paramLong2))
       {
-        paramInt1 = (int)(paramLong1 * 1.0D / paramLong2 * 100.0D);
-        if (QLog.isColorLevel()) {
-          QLog.d("ShortVideoPreDownloader", 2, "onDownloadProgressUpdate, preLoadId = " + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.f + ", pogress = " + paramInt1 + " , uniseq = " + this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+        double d1 = paramLong1;
+        Double.isNaN(d1);
+        double d2 = paramLong2;
+        Double.isNaN(d2);
+        paramInt1 = (int)(d1 * 1.0D / d2 * 100.0D);
+        if (QLog.isColorLevel())
+        {
+          paramString = new StringBuilder();
+          paramString.append("onDownloadProgressUpdate, preLoadId = ");
+          paramString.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.f);
+          paramString.append(", pogress = ");
+          paramString.append(paramInt1);
+          paramString.append(" , uniseq = ");
+          paramString.append(this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+          QLog.d("ShortVideoPreDownloader", 2, paramString.toString());
         }
-        this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoPreDownloaderWithSdkSupport$VideoDownCallback.b(paramInt1);
+        this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_ComTencentMobileqqShortvideoVideoDownCallback.b(paramInt1);
       }
-      return;
-      label238:
-      paramLong1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoShortVideoReq.jdField_a_of_type_Long;
     }
   }
   
@@ -71,7 +108,7 @@ class ShortVideoPreDownloaderWithSdkSupport$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.ShortVideoPreDownloaderWithSdkSupport.2
  * JD-Core Version:    0.7.0.1
  */

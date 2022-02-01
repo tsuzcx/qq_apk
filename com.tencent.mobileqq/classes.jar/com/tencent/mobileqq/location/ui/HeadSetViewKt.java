@@ -19,66 +19,52 @@ public final class HeadSetViewKt
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Intrinsics.checkParameterIsNotNull(paramDrawable, "d");
-    Drawable localDrawable;
-    Object localObject;
-    Bitmap localBitmap;
-    Resources localResources;
-    if (!(paramDrawable instanceof SkinnableBitmapDrawable))
-    {
-      localDrawable = paramDrawable;
-      if (!(paramDrawable instanceof BitmapDrawable)) {}
+    boolean bool = paramDrawable instanceof SkinnableBitmapDrawable;
+    if ((!bool) && (!(paramDrawable instanceof BitmapDrawable))) {
+      return paramDrawable;
     }
-    else
-    {
-      localObject = (Bitmap)null;
-      if (!(paramDrawable instanceof SkinnableBitmapDrawable)) {
-        break label175;
-      }
+    Object localObject = (Bitmap)null;
+    if (bool) {
       localObject = ((SkinnableBitmapDrawable)paramDrawable).getBitmap();
-      localBitmap = Bitmap.createBitmap((Bitmap)localObject);
-      localResources = paramContext.getResources();
-      localDrawable = paramDrawable;
-      if (localResources != null) {
-        if ((localObject == null) || (localBitmap != null)) {
-          break label193;
+    } else if ((paramDrawable instanceof BitmapDrawable)) {
+      localObject = ((BitmapDrawable)paramDrawable).getBitmap();
+    }
+    Bitmap localBitmap = Bitmap.createBitmap((Bitmap)localObject);
+    Resources localResources = paramContext.getResources();
+    if (localResources != null)
+    {
+      if ((localObject != null) && (localBitmap == null))
+      {
+        paramContext = (Context)localObject;
+      }
+      else
+      {
+        paramContext = localBitmap;
+        if (localObject == null)
+        {
+          paramContext = localBitmap;
+          if (localBitmap == null) {
+            return paramDrawable;
+          }
         }
       }
-    }
-    label175:
-    label193:
-    label204:
-    for (paramContext = (Context)localObject;; paramContext = localBitmap)
-    {
       paramDrawable = new BitmapDrawable(localResources, (Bitmap)localObject);
       localObject = new BitmapDrawable(localResources, paramContext);
       ((BitmapDrawable)localObject).setAlpha(127);
       paramContext = new StateListDrawable();
       localObject = (Drawable)localObject;
       paramContext.addState(new int[] { 16842919, 16842910 }, (Drawable)localObject);
-      localObject = (Drawable)paramDrawable;
-      paramContext.addState(new int[] { 16842908 }, (Drawable)localObject);
       paramDrawable = (Drawable)paramDrawable;
+      paramContext.addState(new int[] { 16842908 }, paramDrawable);
       paramContext.addState(new int[0], paramDrawable);
-      localDrawable = (Drawable)paramContext;
-      do
-      {
-        return localDrawable;
-        if (!(paramDrawable instanceof BitmapDrawable)) {
-          break;
-        }
-        localObject = ((BitmapDrawable)paramDrawable).getBitmap();
-        break;
-        if (localObject != null) {
-          break label204;
-        }
-        localDrawable = paramDrawable;
-      } while (localBitmap == null);
+      return (Drawable)paramContext;
     }
+    return paramDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.ui.HeadSetViewKt
  * JD-Core Version:    0.7.0.1
  */

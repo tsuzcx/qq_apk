@@ -16,7 +16,11 @@ class PKFilter$PKDecodeListener
   
   public void onDecodeFrame(long paramLong1, long paramLong2)
   {
-    SLog.d(PKFilter.TAG, "PK decoder onDecodeFrame=" + paramLong1 / 1000000L);
+    String str = PKFilter.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PK decoder onDecodeFrame=");
+    localStringBuilder.append(paramLong1 / 1000000L);
+    SLog.d(str, localStringBuilder.toString());
     PKFilter.access$102(this.this$0, paramLong1);
   }
   
@@ -32,7 +36,7 @@ class PKFilter$PKDecodeListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.pkvideo.PKFilter.PKDecodeListener
  * JD-Core Version:    0.7.0.1
  */

@@ -1,45 +1,41 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
+import android.view.View;
+import android.view.View.OnClickListener;
+import com.tencent.biz.pubaccount.api.IPublicAccountManager;
+import com.tencent.biz.ui.CustomMenuBar;
+import com.tencent.mobileqq.activity.aio.InputLinearLayout;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.data.PublicAccountMenuEntity;
-import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
+import com.tencent.mobileqq.activity.aio.core.input.AIOInput;
+import com.tencent.mobileqq.activity.aio.coreui.input.FakeInputUI;
+import com.tencent.mobileqq.activity.aio.coreui.input.InputUIContainer;
+import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class PublicAccountChatPie$34
-  implements Runnable
+  implements View.OnClickListener
 {
-  PublicAccountChatPie$34(PublicAccountChatPie paramPublicAccountChatPie, SharedPreferences paramSharedPreferences, String paramString) {}
+  PublicAccountChatPie$34(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  public void onClick(View paramView)
   {
-    try
-    {
-      EntityManager localEntityManager = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getEntityManagerFactory().createEntityManager();
-      PublicAccountMenuEntity localPublicAccountMenuEntity = (PublicAccountMenuEntity)localEntityManager.find(PublicAccountMenuEntity.class, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString);
-      if (localPublicAccountMenuEntity != null) {
-        localEntityManager.remove(localPublicAccountMenuEntity);
-      }
-      localEntityManager.close();
+    com.tencent.mobileqq.activity.aio.AIOUtils.o = true;
+    this.a.jdField_a_of_type_ComTencentBizUiCustomMenuBar.setVisibility(8);
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout != null) {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout.setVisibility(0);
     }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          QLog.d(this.this$0.b, 4, localException.getMessage());
-        }
-      }
+    PublicAccountChatPie.a(this.a).a().a().a().a();
+    this.a.X();
+    if (this.a.jdField_a_of_type_ComTencentBizPubaccountApiIPublicAccountManager.getPublicAccountMenuType(this.a.b()) != 0) {
+      ReportController.b(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "P_CliOper", "Pb_account_lifeservice", "", "0X8005EC5", "0X8005EC5", 0, 0, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, "", "", "");
     }
-    this.jdField_a_of_type_AndroidContentSharedPreferences.edit().putBoolean(this.jdField_a_of_type_JavaLangString, true).commit();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.34
  * JD-Core Version:    0.7.0.1
  */

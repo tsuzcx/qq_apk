@@ -28,21 +28,23 @@ public class GameActivityStatusWatcher
   
   public void startWatch()
   {
-    if (this.mRecevier != null) {
-      this.mContext.registerReceiver(this.mRecevier, this.mFilter);
+    GameActivityStatusWatcher.InnerRecevier localInnerRecevier = this.mRecevier;
+    if (localInnerRecevier != null) {
+      this.mContext.registerReceiver(localInnerRecevier, this.mFilter);
     }
   }
   
   public void stopWatch()
   {
-    if (this.mRecevier != null) {
-      this.mContext.unregisterReceiver(this.mRecevier);
+    GameActivityStatusWatcher.InnerRecevier localInnerRecevier = this.mRecevier;
+    if (localInnerRecevier != null) {
+      this.mContext.unregisterReceiver(localInnerRecevier);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.utils.GameActivityStatusWatcher
  * JD-Core Version:    0.7.0.1
  */

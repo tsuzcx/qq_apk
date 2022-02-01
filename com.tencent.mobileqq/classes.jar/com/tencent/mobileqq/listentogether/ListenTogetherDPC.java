@@ -49,31 +49,35 @@ public class ListenTogetherDPC
           this.jdField_a_of_type_Long = Long.valueOf(arrayOfString[2]).longValue();
         }
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("ListenTogether.dpc", 2, String.format("loadDpc, dpcValue: %s, [%s]", new Object[] { str, this }));
-      }
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QLog.d("ListenTogether.dpc", 1, "loadDpc", localException);
-        this.jdField_a_of_type_Int = 50;
-        this.b = 0;
-        this.jdField_a_of_type_Long = 3000L;
-      }
+      QLog.d("ListenTogether.dpc", 1, "loadDpc", localException);
+      this.jdField_a_of_type_Int = 50;
+      this.b = 0;
+      this.jdField_a_of_type_Long = 3000L;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ListenTogether.dpc", 2, String.format("loadDpc, dpcValue: %s, [%s]", new Object[] { str, this }));
     }
   }
   
   public String toString()
   {
-    return "ListenTogetherDPC{maxCacheCount=" + this.jdField_a_of_type_Int + ", preDownloadNetType=" + this.b + ", playingAdjustInterval=" + this.jdField_a_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ListenTogetherDPC{maxCacheCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", preDownloadNetType=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", playingAdjustInterval=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.ListenTogetherDPC
  * JD-Core Version:    0.7.0.1
  */

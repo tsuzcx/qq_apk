@@ -10,9 +10,11 @@ import android.view.View.OnClickListener;
 import com.tencent.biz.common.util.NetworkUtil;
 import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
 import com.tencent.biz.pubaccount.weishi_new.data.WSUserBusiness;
+import com.tencent.biz.pubaccount.weishi_new.image.WSPicLoader;
 import com.tencent.biz.pubaccount.weishi_new.report.dc898.WSReportDC898Vertical;
 import com.tencent.biz.pubaccount.weishi_new.util.WSFeedUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.Presenter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSVerticalBeaconReport;
@@ -20,7 +22,6 @@ import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalJumpU
 import com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
 import com.tencent.open.base.ToastUtil;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class WSVerticalItemAvatarAreaController
   extends AbsWsUIGroup<WSVerticalItemData>
@@ -68,16 +69,22 @@ public class WSVerticalItemAvatarAreaController
   
   private void g()
   {
-    if (!NetworkUtil.a(a())) {
-      ToastUtil.a().a(2131720723);
-    }
-    while ((this.jdField_a_of_type_UserGrowthStSimpleMetaFeed == null) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster == null) || (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating())) {
+    if (!NetworkUtil.a(a()))
+    {
+      ToastUtil.a().a(2131720447);
       return;
     }
-    WSUserBusiness.a().a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.id, 1);
-    WSVerticalBeaconReport.e(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-    WSReportDC898Vertical.d();
-    h();
+    stSimpleMetaFeed localstSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+    if ((localstSimpleMetaFeed != null) && (localstSimpleMetaFeed.poster != null))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.isAnimating()) {
+        return;
+      }
+      WSUserBusiness.a().a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.id, 1);
+      WSVerticalBeaconReport.c(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, ((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).b());
+      WSReportDC898Vertical.d();
+      h();
+    }
   }
   
   private void h()
@@ -86,60 +93,64 @@ public class WSVerticalItemAvatarAreaController
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
   }
   
-  public void a()
+  protected void a()
   {
     WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
-    if (localWSVerticalItemData == null) {}
-    while (!(localWSVerticalItemData.a() instanceof stSimpleMetaFeed)) {
+    if (localWSVerticalItemData == null) {
       return;
     }
-    this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+    if ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed)) {
+      this.jdField_a_of_type_UserGrowthStSimpleMetaFeed = localWSVerticalItemData.a();
+    }
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560149;
+    return 2131560031;
   }
   
   @UiThread
-  public void b()
+  protected void b()
   {
-    if ((this.jdField_a_of_type_UserGrowthStSimpleMetaFeed == null) || (this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster == null)) {
-      return;
+    stSimpleMetaFeed localstSimpleMetaFeed = this.jdField_a_of_type_UserGrowthStSimpleMetaFeed;
+    if (localstSimpleMetaFeed != null)
+    {
+      if (localstSimpleMetaFeed.poster == null) {
+        return;
+      }
+      WSPicLoader.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.avatar);
+      a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster);
     }
-    WeishiUtils.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster.avatar);
-    a(this.jdField_a_of_type_UserGrowthStSimpleMetaFeed.poster);
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131381192));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView = ((WSRoundedImageView)a(2131380445));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewWSRoundedImageView.setOnClickListener(this);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131369594));
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131369304));
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setOnClickListener(this);
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("wsfollow/followbtn.json");
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
+    int i = paramView.getId();
+    if (i != 2131369304)
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      if (i != 2131380445) {
+        return;
+      }
       f();
-      continue;
-      g();
+      return;
     }
+    g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemAvatarAreaController
  * JD-Core Version:    0.7.0.1
  */

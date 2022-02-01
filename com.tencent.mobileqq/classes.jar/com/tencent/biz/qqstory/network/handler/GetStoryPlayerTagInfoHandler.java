@@ -19,15 +19,18 @@ public class GetStoryPlayerTagInfoHandler
   @Nullable
   public static GetStoryPlayerTagInfoRequest.TagInfoBaseVidList a(String paramString, List<GetStoryPlayerTagInfoRequest.TagInfoBaseVidList> paramList)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((!TextUtils.isEmpty(paramString)) && (paramList != null))
     {
-      GetStoryPlayerTagInfoRequest.TagInfoBaseVidList localTagInfoBaseVidList = (GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)paramList.next();
-      if (paramString.equals(localTagInfoBaseVidList.a)) {
-        return localTagInfoBaseVidList;
+      if (paramList.isEmpty()) {
+        return null;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        GetStoryPlayerTagInfoRequest.TagInfoBaseVidList localTagInfoBaseVidList = (GetStoryPlayerTagInfoRequest.TagInfoBaseVidList)paramList.next();
+        if (paramString.equals(localTagInfoBaseVidList.a)) {
+          return localTagInfoBaseVidList;
+        }
       }
     }
     return null;
@@ -64,7 +67,7 @@ public class GetStoryPlayerTagInfoHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetStoryPlayerTagInfoHandler
  * JD-Core Version:    0.7.0.1
  */

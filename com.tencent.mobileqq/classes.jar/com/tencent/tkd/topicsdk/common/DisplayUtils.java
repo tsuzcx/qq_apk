@@ -22,19 +22,18 @@ public final class DisplayUtils
   private final int[] a(Context paramContext)
   {
     paramContext = paramContext.getSystemService("window");
-    if (paramContext == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.view.WindowManager");
-    }
-    paramContext = (WindowManager)paramContext;
-    DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    if (Build.VERSION.SDK_INT >= 17) {
-      paramContext.getDefaultDisplay().getRealMetrics(localDisplayMetrics);
-    }
-    for (;;)
+    if (paramContext != null)
     {
+      paramContext = (WindowManager)paramContext;
+      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+      if (Build.VERSION.SDK_INT >= 17) {
+        paramContext.getDefaultDisplay().getRealMetrics(localDisplayMetrics);
+      } else {
+        paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
+      }
       return new int[] { localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels };
-      paramContext.getDefaultDisplay().getMetrics(localDisplayMetrics);
     }
+    throw new TypeCastException("null cannot be cast to non-null type android.view.WindowManager");
   }
   
   public final int a(float paramFloat, @NotNull Context paramContext)
@@ -54,7 +53,7 @@ public final class DisplayUtils
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     paramContext = paramContext.getResources();
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "context.resources");
-    return (int)(paramContext.getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getDisplayMetrics().density + 0.5F);
   }
   
   @Nullable
@@ -67,25 +66,45 @@ public final class DisplayUtils
       i = j - k * 60;
     }
     paramInt %= 60;
-    Object localObject2;
     if (i >= 10)
     {
       localObject1 = String.valueOf(i);
-      if (paramInt < 10) {
-        break label173;
-      }
-      localObject2 = String.valueOf(paramInt);
-      label56:
-      if (k <= 0) {
-        break label262;
-      }
-      if (k < 10) {
-        break label217;
-      }
-      localObject3 = String.valueOf(k);
     }
-    for (;;)
+    else
     {
+      localObject1 = StringCompanionObject.INSTANCE;
+      localObject1 = new Object[1];
+      localObject1[0] = Integer.valueOf(i);
+      localObject1 = String.format("0%d", Arrays.copyOf((Object[])localObject1, localObject1.length));
+      Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
+    }
+    Object localObject2;
+    if (paramInt >= 10)
+    {
+      localObject2 = String.valueOf(paramInt);
+    }
+    else
+    {
+      localObject2 = StringCompanionObject.INSTANCE;
+      localObject2 = new Object[1];
+      localObject2[0] = Integer.valueOf(paramInt);
+      localObject2 = String.format("0%d", Arrays.copyOf((Object[])localObject2, localObject2.length));
+      Intrinsics.checkExpressionValueIsNotNull(localObject2, "java.lang.String.format(format, *args)");
+    }
+    if (k > 0)
+    {
+      if (k >= 10)
+      {
+        localObject3 = String.valueOf(k);
+      }
+      else
+      {
+        localObject3 = StringCompanionObject.INSTANCE;
+        localObject3 = new Object[1];
+        localObject3[0] = Integer.valueOf(k);
+        localObject3 = String.format("0%d", Arrays.copyOf((Object[])localObject3, localObject3.length));
+        Intrinsics.checkExpressionValueIsNotNull(localObject3, "java.lang.String.format(format, *args)");
+      }
       Object localObject4 = StringCompanionObject.INSTANCE;
       localObject4 = new Object[3];
       localObject4[0] = localObject3;
@@ -94,27 +113,7 @@ public final class DisplayUtils
       localObject1 = String.format("%s:%s:%s", Arrays.copyOf((Object[])localObject4, localObject4.length));
       Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
       return localObject1;
-      localObject1 = StringCompanionObject.INSTANCE;
-      localObject1 = new Object[1];
-      localObject1[0] = Integer.valueOf(i);
-      localObject1 = String.format("0%d", Arrays.copyOf((Object[])localObject1, localObject1.length));
-      Intrinsics.checkExpressionValueIsNotNull(localObject1, "java.lang.String.format(format, *args)");
-      break;
-      label173:
-      localObject2 = StringCompanionObject.INSTANCE;
-      localObject2 = new Object[1];
-      localObject2[0] = Integer.valueOf(paramInt);
-      localObject2 = String.format("0%d", Arrays.copyOf((Object[])localObject2, localObject2.length));
-      Intrinsics.checkExpressionValueIsNotNull(localObject2, "java.lang.String.format(format, *args)");
-      break label56;
-      label217:
-      localObject3 = StringCompanionObject.INSTANCE;
-      localObject3 = new Object[1];
-      localObject3[0] = Integer.valueOf(k);
-      localObject3 = String.format("0%d", Arrays.copyOf((Object[])localObject3, localObject3.length));
-      Intrinsics.checkExpressionValueIsNotNull(localObject3, "java.lang.String.format(format, *args)");
     }
-    label262:
     Object localObject3 = StringCompanionObject.INSTANCE;
     localObject3 = new Object[2];
     localObject3[0] = localObject1;
@@ -132,7 +131,7 @@ public final class DisplayUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.common.DisplayUtils
  * JD-Core Version:    0.7.0.1
  */

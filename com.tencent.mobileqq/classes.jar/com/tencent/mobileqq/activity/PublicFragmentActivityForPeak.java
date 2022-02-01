@@ -40,9 +40,10 @@ public class PublicFragmentActivityForPeak
       }
       this.a.add(new WeakReference((PublicFragmentActivityCallBackInterface)localObject1));
     }
-    if (this.a != null)
+    localObject1 = this.a;
+    if (localObject1 != null)
     {
-      localObject1 = this.a.iterator();
+      localObject1 = ((ArrayList)localObject1).iterator();
       while (((Iterator)localObject1).hasNext())
       {
         Object localObject2 = (WeakReference)((Iterator)localObject1).next();
@@ -57,7 +58,7 @@ public class PublicFragmentActivityForPeak
     }
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.getIntent().putExtra("fling_action_key", 0);
     return super.doOnCreate(paramBundle);
@@ -72,7 +73,7 @@ public class PublicFragmentActivityForPeak
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PublicFragmentActivityForPeak
  * JD-Core Version:    0.7.0.1
  */

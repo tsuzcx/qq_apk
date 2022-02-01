@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class AppExtInfoParam
   extends JceStruct
@@ -37,17 +38,19 @@ public final class AppExtInfoParam
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.flag, 0);
-    if (this.oftenUsedPath != null) {
-      paramJceOutputStream.write(this.oftenUsedPath, 1);
+    Object localObject = this.oftenUsedPath;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.targetFileNameList != null) {
-      paramJceOutputStream.write(this.targetFileNameList, 2);
+    localObject = this.targetFileNameList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistant.common.jce.AppExtInfoParam
  * JD-Core Version:    0.7.0.1
  */

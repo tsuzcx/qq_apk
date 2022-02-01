@@ -22,35 +22,38 @@ public abstract class AbstractPluginLoader
   @TargetApi(17)
   protected String[] a(IPlugin paramIPlugin)
   {
-    paramIPlugin = new DexClassLoader(paramIPlugin.e(), paramIPlugin.f(), paramIPlugin.g(), getClass().getClassLoader());
+    Object localObject = new DexClassLoader(paramIPlugin.e(), paramIPlugin.f(), paramIPlugin.g(), getClass().getClassLoader());
+    paramIPlugin = null;
     try
     {
-      paramIPlugin = (String[])paramIPlugin.loadClass("com.tencent.shadow.dynamic.impl.WhiteList").getDeclaredField("sWhiteList").get(null);
-      if (paramIPlugin != null) {
-        return a(a(), paramIPlugin);
-      }
-    }
-    catch (ClassNotFoundException paramIPlugin)
-    {
-      for (;;)
+      try
       {
-        paramIPlugin = null;
+        localObject = (String[])((DexClassLoader)localObject).loadClass("com.tencent.shadow.dynamic.impl.WhiteList").getDeclaredField("sWhiteList").get(null);
+        paramIPlugin = (IPlugin)localObject;
+      }
+      catch (IllegalAccessException paramIPlugin)
+      {
+        throw new RuntimeException(paramIPlugin);
+      }
+      catch (NoSuchFieldException paramIPlugin)
+      {
+        throw new RuntimeException(paramIPlugin);
       }
     }
-    catch (NoSuchFieldException paramIPlugin)
+    catch (ClassNotFoundException localClassNotFoundException)
     {
-      throw new RuntimeException(paramIPlugin);
+      label82:
+      break label82;
     }
-    catch (IllegalAccessException paramIPlugin)
-    {
-      throw new RuntimeException(paramIPlugin);
+    if (paramIPlugin != null) {
+      return a(a(), paramIPlugin);
     }
     return a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.pluginloaderservice.loader.AbstractPluginLoader
  * JD-Core Version:    0.7.0.1
  */

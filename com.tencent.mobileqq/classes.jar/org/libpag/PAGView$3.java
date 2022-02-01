@@ -14,15 +14,20 @@ class PAGView$3
     {
       ArrayList localArrayList = new ArrayList(PAGView.access$600(this.this$0));
       ??? = localArrayList.iterator();
-      if (((Iterator)???).hasNext()) {
+      while (((Iterator)???).hasNext()) {
         ((PAGView.PAGFlushListener)((Iterator)???).next()).onFlush();
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.libpag.PAGView.3
  * JD-Core Version:    0.7.0.1
  */

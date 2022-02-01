@@ -30,43 +30,47 @@ public class MessageForFile
     if ((this.msg != null) && (this.msg.length() > 0) && (this.msg.charAt(0) == '\026'))
     {
       this.tempMsg = this.msg.split("\\|");
-      String str;
-      if (this.tempMsg.length > 0)
+      Object localObject = this.tempMsg;
+      if (localObject.length > 0)
       {
-        str = this.tempMsg[0];
-        if ((str != null) && (str.length() > 0))
+        localObject = localObject[0];
+        if ((localObject != null) && (((String)localObject).length() > 0))
         {
-          int i = str.lastIndexOf(File.separator);
-          if (i == -1) {
-            break label94;
+          int i = ((String)localObject).lastIndexOf(File.separator);
+          if (i != -1)
+          {
+            this.fileName = ((String)localObject).substring(i + 1);
+            return;
           }
-          this.fileName = str.substring(i + 1);
+          this.fileName = ((String)localObject);
         }
       }
-      return;
-      label94:
-      this.fileName = str;
-      return;
     }
-    this.tempMsg = null;
+    else
+    {
+      this.tempMsg = null;
+    }
   }
   
   public String getSummaryMsg()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append(HardCodeUtil.a(2131706580));
-    if (this.fileName == null) {}
-    for (String str = "";; str = this.fileName) {
-      return str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131706603));
+    String str2 = this.fileName;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    localStringBuilder.append(str1);
+    return localStringBuilder.toString();
   }
   
   public boolean hasFileName()
   {
-    if (TextUtils.isEmpty(this.fileName)) {}
-    while (this.fileName.trim().equalsIgnoreCase("null")) {
+    if (TextUtils.isEmpty(this.fileName)) {
       return false;
     }
-    return true;
+    return !this.fileName.trim().equalsIgnoreCase("null");
   }
   
   public boolean isSupportReply()
@@ -74,7 +78,7 @@ public class MessageForFile
     return true;
   }
   
-  public void postRead()
+  protected void postRead()
   {
     try
     {
@@ -86,7 +90,7 @@ public class MessageForFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForFile
  * JD-Core Version:    0.7.0.1
  */

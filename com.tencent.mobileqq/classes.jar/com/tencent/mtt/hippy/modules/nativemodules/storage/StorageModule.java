@@ -26,110 +26,109 @@ public class StorageModule
   @HippyMethod(name="getAllKeys")
   public void getAllKeys(Promise paramPromise)
   {
-    if (this.a == null)
+    HippyStorageAdapter localHippyStorageAdapter = this.a;
+    if (localHippyStorageAdapter == null)
     {
       paramPromise.reject("Database Null");
       return;
     }
-    this.a.getAllKeys(new StorageModule.4(this, paramPromise));
+    localHippyStorageAdapter.getAllKeys(new StorageModule.4(this, paramPromise));
   }
   
   @HippyMethod(name="multiGet")
   public void multiGet(HippyArray paramHippyArray, Promise paramPromise)
   {
-    if ((paramHippyArray == null) || (paramHippyArray.size() <= 0))
+    if ((paramHippyArray != null) && (paramHippyArray.size() > 0))
     {
-      paramPromise.reject("Invalid Key");
+      HippyStorageAdapter localHippyStorageAdapter = this.a;
+      if (localHippyStorageAdapter == null)
+      {
+        paramPromise.reject("Database Null");
+        return;
+      }
+      localHippyStorageAdapter.multiGet(paramHippyArray, new StorageModule.1(this, paramPromise));
       return;
     }
-    if (this.a == null)
-    {
-      paramPromise.reject("Database Null");
-      return;
-    }
-    this.a.multiGet(paramHippyArray, new StorageModule.1(this, paramPromise));
+    paramPromise.reject("Invalid Key");
   }
   
   @HippyMethod(name="multiRemove")
   public void multiRemove(HippyArray paramHippyArray, Promise paramPromise)
   {
-    if ((paramHippyArray == null) || (paramHippyArray.size() == 0))
+    if ((paramHippyArray != null) && (paramHippyArray.size() != 0))
     {
-      paramPromise.reject("Invalid key");
+      HippyStorageAdapter localHippyStorageAdapter = this.a;
+      if (localHippyStorageAdapter == null)
+      {
+        paramPromise.reject("Database Null");
+        return;
+      }
+      localHippyStorageAdapter.multiRemove(paramHippyArray, new StorageModule.3(this, paramPromise));
       return;
     }
-    if (this.a == null)
-    {
-      paramPromise.reject("Database Null");
-      return;
-    }
-    this.a.multiRemove(paramHippyArray, new StorageModule.3(this, paramPromise));
+    paramPromise.reject("Invalid key");
   }
   
   @HippyMethod(name="multiSet")
   public void multiSet(HippyArray paramHippyArray, Promise paramPromise)
   {
-    int i = 0;
-    if ((paramHippyArray == null) || (paramHippyArray.size() <= 0))
+    if ((paramHippyArray != null) && (paramHippyArray.size() > 0))
     {
-      paramPromise.reject("Invalid Value");
-      return;
-    }
-    if (this.a == null)
-    {
-      paramPromise.reject("Database Null");
-      return;
-    }
-    ArrayList localArrayList;
-    for (;;)
-    {
+      if (this.a == null)
+      {
+        paramPromise.reject("Database Null");
+        return;
+      }
       try
       {
-        localArrayList = new ArrayList();
-        if (i >= paramHippyArray.size()) {
-          break;
-        }
-        localObject = paramHippyArray.getArray(i);
-        if (localObject == null)
+        ArrayList localArrayList = new ArrayList();
+        int i = 0;
+        while (i < paramHippyArray.size())
         {
-          paramPromise.reject("Invalid Value");
-          return;
+          Object localObject = paramHippyArray.getArray(i);
+          if (localObject == null)
+          {
+            paramPromise.reject("Invalid Value");
+            return;
+          }
+          if (((HippyArray)localObject).size() != 2)
+          {
+            paramPromise.reject("Invalid Value");
+            return;
+          }
+          String str = ((HippyArray)localObject).getString(0);
+          if (str == null)
+          {
+            paramPromise.reject("Invalid key");
+            return;
+          }
+          localObject = ((HippyArray)localObject).getString(1);
+          if (localObject == null)
+          {
+            paramPromise.reject("Invalid Value");
+            return;
+          }
+          HippyStorageKeyValue localHippyStorageKeyValue = new HippyStorageKeyValue();
+          localHippyStorageKeyValue.key = str;
+          localHippyStorageKeyValue.value = ((String)localObject);
+          localArrayList.add(localHippyStorageKeyValue);
+          i += 1;
         }
+        this.a.multiSet(localArrayList, new StorageModule.2(this, paramPromise));
+        return;
       }
       catch (Throwable paramHippyArray)
       {
         paramPromise.reject(paramHippyArray.getMessage());
         return;
       }
-      if (((HippyArray)localObject).size() != 2)
-      {
-        paramPromise.reject("Invalid Value");
-        return;
-      }
-      String str = ((HippyArray)localObject).getString(0);
-      if (str == null)
-      {
-        paramPromise.reject("Invalid key");
-        return;
-      }
-      Object localObject = ((HippyArray)localObject).getString(1);
-      if (localObject == null)
-      {
-        paramPromise.reject("Invalid Value");
-        return;
-      }
-      HippyStorageKeyValue localHippyStorageKeyValue = new HippyStorageKeyValue();
-      localHippyStorageKeyValue.key = str;
-      localHippyStorageKeyValue.value = ((String)localObject);
-      localArrayList.add(localHippyStorageKeyValue);
-      i += 1;
     }
-    this.a.multiSet(localArrayList, new StorageModule.2(this, paramPromise));
+    paramPromise.reject("Invalid Value");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.storage.StorageModule
  * JD-Core Version:    0.7.0.1
  */

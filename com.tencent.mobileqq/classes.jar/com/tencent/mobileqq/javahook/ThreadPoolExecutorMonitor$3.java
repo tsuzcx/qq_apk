@@ -10,16 +10,17 @@ final class ThreadPoolExecutorMonitor$3
 {
   public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if ((AsyncTask.THREAD_POOL_EXECUTOR.equals(paramMethodHookParam.thisObject)) || (AsyncTask.SERIAL_EXECUTOR.equals(paramMethodHookParam.thisObject))) {}
-    for (;;)
+    if (!AsyncTask.THREAD_POOL_EXECUTOR.equals(paramMethodHookParam.thisObject))
     {
-      return;
+      if (AsyncTask.SERIAL_EXECUTOR.equals(paramMethodHookParam.thisObject)) {
+        return;
+      }
       Object localObject = (Runnable)paramMethodHookParam.args[1];
       synchronized (ThreadPoolExecutorMonitor.a())
       {
         localObject = (ThreadPoolExecutorMonitor.ThreadPoolExecutorMonitorResult)ThreadPoolExecutorMonitor.a().get(localObject);
         if (localObject == null) {
-          continue;
+          return;
         }
         ((ThreadPoolExecutorMonitor.ThreadPoolExecutorMonitorResult)localObject).jdField_b_of_type_JavaLangString = ((Thread)paramMethodHookParam.args[0]).getName();
         ((ThreadPoolExecutorMonitor.ThreadPoolExecutorMonitorResult)localObject).jdField_b_of_type_Long = System.currentTimeMillis();
@@ -32,7 +33,7 @@ final class ThreadPoolExecutorMonitor$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.ThreadPoolExecutorMonitor.3
  * JD-Core Version:    0.7.0.1
  */

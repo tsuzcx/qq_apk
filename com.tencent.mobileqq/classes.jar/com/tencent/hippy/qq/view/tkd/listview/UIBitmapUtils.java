@@ -16,26 +16,33 @@ public class UIBitmapUtils
   
   public static Drawable getColorImage(Drawable paramDrawable, int paramInt)
   {
-    if (paramDrawable == null) {}
-    do
+    Object localObject = null;
+    if (paramDrawable == null) {
+      return null;
+    }
+    Drawable localDrawable;
+    if (paramDrawable.getConstantState() == null)
     {
-      do
-      {
-        return null;
-        if (paramDrawable.getConstantState() != null) {
-          break;
-        }
-        paramDrawable = paramDrawable.mutate();
-      } while (paramDrawable == null);
-      return new TintDrawableWrapper(paramDrawable, paramInt);
-      paramDrawable = paramDrawable.getConstantState().newDrawable().mutate();
-    } while (paramDrawable == null);
-    return new TintDrawableWrapper(paramDrawable, paramInt);
+      localDrawable = paramDrawable.mutate();
+      paramDrawable = localObject;
+      if (localDrawable != null) {
+        return new TintDrawableWrapper(localDrawable, paramInt);
+      }
+    }
+    else
+    {
+      localDrawable = paramDrawable.getConstantState().newDrawable().mutate();
+      paramDrawable = localObject;
+      if (localDrawable != null) {
+        paramDrawable = new TintDrawableWrapper(localDrawable, paramInt);
+      }
+    }
+    return paramDrawable;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.UIBitmapUtils
  * JD-Core Version:    0.7.0.1
  */

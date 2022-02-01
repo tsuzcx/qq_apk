@@ -74,18 +74,17 @@ public final class UserMeta
   {
     try
     {
-      String str1 = URLEncoder.encode(Build.MODEL, "UTF-8");
-      Intrinsics.checkExpressionValueIsNotNull(str1, "URLEncoder.encode(Build.MODEL, \"UTF-8\")");
-      DEVICE = str1;
-      return;
+      str = URLEncoder.encode(Build.MODEL, "UTF-8");
+      Intrinsics.checkExpressionValueIsNotNull(str, "URLEncoder.encode(Build.MODEL, \"UTF-8\")");
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        String str2 = "";
-      }
+      String str;
+      label29:
+      break label29;
     }
+    str = "";
+    DEVICE = str;
   }
   
   public UserMeta()
@@ -207,195 +206,115 @@ public final class UserMeta
   
   public boolean equals(@Nullable Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this != paramObject)
     {
-      bool1 = bool2;
-      if (!(paramObject instanceof UserMeta)) {
-        break label249;
-      }
-      paramObject = (UserMeta)paramObject;
-      bool1 = bool2;
-      if (!Intrinsics.areEqual(this.uin, paramObject.uin)) {
-        break label249;
-      }
-      bool1 = bool2;
-      if (!Intrinsics.areEqual(this.uuid, paramObject.uuid)) {
-        break label249;
-      }
-      bool1 = bool2;
-      if (!Intrinsics.areEqual(this.appKey, paramObject.appKey)) {
-        break label249;
-      }
-      if (this.appId != paramObject.appId) {
-        break label251;
-      }
-    }
-    label249:
-    label251:
-    for (int i = 1;; i = 0)
-    {
-      bool1 = bool2;
-      if (i != 0)
+      if ((paramObject instanceof UserMeta))
       {
-        bool1 = bool2;
-        if (Intrinsics.areEqual(this.version, paramObject.version))
+        paramObject = (UserMeta)paramObject;
+        if ((Intrinsics.areEqual(this.uin, paramObject.uin)) && (Intrinsics.areEqual(this.uuid, paramObject.uuid)) && (Intrinsics.areEqual(this.appKey, paramObject.appKey)))
         {
-          bool1 = bool2;
-          if (Intrinsics.areEqual(this.deviceId, paramObject.deviceId))
-          {
-            bool1 = bool2;
-            if (Intrinsics.areEqual(this.sdkVersion, paramObject.sdkVersion))
-            {
-              bool1 = bool2;
-              if (Intrinsics.areEqual(this.os, paramObject.os))
-              {
-                bool1 = bool2;
-                if (Intrinsics.areEqual(this.manufacturer, paramObject.manufacturer))
-                {
-                  bool1 = bool2;
-                  if (Intrinsics.areEqual(this.device, paramObject.device))
-                  {
-                    bool1 = bool2;
-                    if (Intrinsics.areEqual(this.apiVer, paramObject.apiVer))
-                    {
-                      bool1 = bool2;
-                      if (Intrinsics.areEqual(this.pluginVer, paramObject.pluginVer))
-                      {
-                        bool1 = bool2;
-                        if (Intrinsics.areEqual(this.abFactor, paramObject.abFactor)) {
-                          bool1 = true;
-                        }
-                      }
-                    }
-                  }
-                }
-              }
-            }
+          int i;
+          if (this.appId == paramObject.appId) {
+            i = 1;
+          } else {
+            i = 0;
+          }
+          if ((i != 0) && (Intrinsics.areEqual(this.version, paramObject.version)) && (Intrinsics.areEqual(this.deviceId, paramObject.deviceId)) && (Intrinsics.areEqual(this.sdkVersion, paramObject.sdkVersion)) && (Intrinsics.areEqual(this.os, paramObject.os)) && (Intrinsics.areEqual(this.manufacturer, paramObject.manufacturer)) && (Intrinsics.areEqual(this.device, paramObject.device)) && (Intrinsics.areEqual(this.apiVer, paramObject.apiVer)) && (Intrinsics.areEqual(this.pluginVer, paramObject.pluginVer)) && (Intrinsics.areEqual(this.abFactor, paramObject.abFactor))) {
+            return true;
           }
         }
       }
-      return bool1;
+      return false;
     }
+    return true;
   }
   
   public int hashCode()
   {
-    int i7 = 0;
     String str = this.uin;
+    int i7 = 0;
     int i;
-    int j;
-    label37:
-    int k;
-    label54:
-    int i8;
-    int m;
-    label78:
-    int n;
-    label96:
-    int i1;
-    label114:
-    int i2;
-    label132:
-    int i3;
-    label150:
-    int i4;
-    label168:
-    int i5;
-    if (str != null)
-    {
+    if (str != null) {
       i = str.hashCode();
-      str = this.uuid;
-      if (str == null) {
-        break label299;
-      }
-      j = str.hashCode();
-      str = this.appKey;
-      if (str == null) {
-        break label304;
-      }
-      k = str.hashCode();
-      i8 = this.appId;
-      str = this.version;
-      if (str == null) {
-        break label309;
-      }
-      m = str.hashCode();
-      str = this.deviceId;
-      if (str == null) {
-        break label315;
-      }
-      n = str.hashCode();
-      str = this.sdkVersion;
-      if (str == null) {
-        break label321;
-      }
-      i1 = str.hashCode();
-      str = this.os;
-      if (str == null) {
-        break label327;
-      }
-      i2 = str.hashCode();
-      str = this.manufacturer;
-      if (str == null) {
-        break label333;
-      }
-      i3 = str.hashCode();
-      str = this.device;
-      if (str == null) {
-        break label339;
-      }
-      i4 = str.hashCode();
-      str = this.apiVer;
-      if (str == null) {
-        break label345;
-      }
-      i5 = str.hashCode();
-      label186:
-      str = this.pluginVer;
-      if (str == null) {
-        break label351;
-      }
-    }
-    label299:
-    label304:
-    label309:
-    label315:
-    label321:
-    label327:
-    label333:
-    label339:
-    label345:
-    label351:
-    for (int i6 = str.hashCode();; i6 = 0)
-    {
-      str = this.abFactor;
-      if (str != null) {
-        i7 = str.hashCode();
-      }
-      return (i6 + (i5 + (i4 + (i3 + (i2 + (i1 + (n + (m + ((k + (j + i * 31) * 31) * 31 + i8) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i7;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label37;
-      k = 0;
-      break label54;
-      m = 0;
-      break label78;
-      n = 0;
-      break label96;
-      i1 = 0;
-      break label114;
-      i2 = 0;
-      break label132;
-      i3 = 0;
-      break label150;
-      i4 = 0;
-      break label168;
-      i5 = 0;
-      break label186;
     }
+    str = this.uuid;
+    int j;
+    if (str != null) {
+      j = str.hashCode();
+    } else {
+      j = 0;
+    }
+    str = this.appKey;
+    int k;
+    if (str != null) {
+      k = str.hashCode();
+    } else {
+      k = 0;
+    }
+    int i8 = this.appId;
+    str = this.version;
+    int m;
+    if (str != null) {
+      m = str.hashCode();
+    } else {
+      m = 0;
+    }
+    str = this.deviceId;
+    int n;
+    if (str != null) {
+      n = str.hashCode();
+    } else {
+      n = 0;
+    }
+    str = this.sdkVersion;
+    int i1;
+    if (str != null) {
+      i1 = str.hashCode();
+    } else {
+      i1 = 0;
+    }
+    str = this.os;
+    int i2;
+    if (str != null) {
+      i2 = str.hashCode();
+    } else {
+      i2 = 0;
+    }
+    str = this.manufacturer;
+    int i3;
+    if (str != null) {
+      i3 = str.hashCode();
+    } else {
+      i3 = 0;
+    }
+    str = this.device;
+    int i4;
+    if (str != null) {
+      i4 = str.hashCode();
+    } else {
+      i4 = 0;
+    }
+    str = this.apiVer;
+    int i5;
+    if (str != null) {
+      i5 = str.hashCode();
+    } else {
+      i5 = 0;
+    }
+    str = this.pluginVer;
+    int i6;
+    if (str != null) {
+      i6 = str.hashCode();
+    } else {
+      i6 = 0;
+    }
+    str = this.abFactor;
+    if (str != null) {
+      i7 = str.hashCode();
+    }
+    return (((((((((((i * 31 + j) * 31 + k) * 31 + i8) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3) * 31 + i4) * 31 + i5) * 31 + i6) * 31 + i7;
   }
   
   @NotNull
@@ -407,12 +326,40 @@ public final class UserMeta
   @NotNull
   public String toString()
   {
-    return "UserMeta(uin=" + this.uin + ", uuid=" + this.uuid + ", appKey=" + this.appKey + ", appId=" + this.appId + ", version=" + this.version + ", deviceId=" + this.deviceId + ", sdkVersion=" + this.sdkVersion + ", os=" + this.os + ", manufacturer=" + this.manufacturer + ", device=" + this.device + ", apiVer=" + this.apiVer + ", pluginVer=" + this.pluginVer + ", abFactor=" + this.abFactor + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UserMeta(uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(", uuid=");
+    localStringBuilder.append(this.uuid);
+    localStringBuilder.append(", appKey=");
+    localStringBuilder.append(this.appKey);
+    localStringBuilder.append(", appId=");
+    localStringBuilder.append(this.appId);
+    localStringBuilder.append(", version=");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append(", deviceId=");
+    localStringBuilder.append(this.deviceId);
+    localStringBuilder.append(", sdkVersion=");
+    localStringBuilder.append(this.sdkVersion);
+    localStringBuilder.append(", os=");
+    localStringBuilder.append(this.os);
+    localStringBuilder.append(", manufacturer=");
+    localStringBuilder.append(this.manufacturer);
+    localStringBuilder.append(", device=");
+    localStringBuilder.append(this.device);
+    localStringBuilder.append(", apiVer=");
+    localStringBuilder.append(this.apiVer);
+    localStringBuilder.append(", pluginVer=");
+    localStringBuilder.append(this.pluginVer);
+    localStringBuilder.append(", abFactor=");
+    localStringBuilder.append(this.abFactor);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.meta.UserMeta
  * JD-Core Version:    0.7.0.1
  */

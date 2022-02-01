@@ -22,14 +22,15 @@ public final class ProgramInfo
   
   public static ProgramInfo[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new ProgramInfo[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new ProgramInfo[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static ProgramInfo parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -52,24 +53,27 @@ public final class ProgramInfo
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
     int i = j;
     if (!this.id.equals("")) {
       i = j + CodedOutputByteBufferNano.computeStringSize(1, this.id);
     }
+    long l = this.roomid;
     j = i;
-    if (this.roomid != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(2, this.roomid);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(2, l);
     }
+    l = this.uid;
     i = j;
-    if (this.uid != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, this.uid);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, l);
     }
+    int k = this.state;
     j = i;
-    if (this.state != 0) {
-      j = i + CodedOutputByteBufferNano.computeInt32Size(4, this.state);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeInt32Size(4, k);
     }
     return j;
   }
@@ -79,26 +83,38 @@ public final class ProgramInfo
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        this.id = paramCodedInputByteBufferNano.readString();
-        break;
-      case 16: 
-        this.roomid = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 24: 
-        this.uid = paramCodedInputByteBufferNano.readUInt64();
+      if (i == 0) {
         break;
       }
-      this.state = paramCodedInputByteBufferNano.readInt32();
+      if (i != 10)
+      {
+        if (i != 16)
+        {
+          if (i != 24)
+          {
+            if (i != 32)
+            {
+              if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                return this;
+              }
+            }
+            else {
+              this.state = paramCodedInputByteBufferNano.readInt32();
+            }
+          }
+          else {
+            this.uid = paramCodedInputByteBufferNano.readUInt64();
+          }
+        }
+        else {
+          this.roomid = paramCodedInputByteBufferNano.readUInt64();
+        }
+      }
+      else {
+        this.id = paramCodedInputByteBufferNano.readString();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
@@ -106,21 +122,24 @@ public final class ProgramInfo
     if (!this.id.equals("")) {
       paramCodedOutputByteBufferNano.writeString(1, this.id);
     }
-    if (this.roomid != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(2, this.roomid);
+    long l = this.roomid;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(2, l);
     }
-    if (this.uid != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(3, this.uid);
+    l = this.uid;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(3, l);
     }
-    if (this.state != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(4, this.state);
+    int i = this.state;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(4, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveRoomPlay.nano.ProgramInfo
  * JD-Core Version:    0.7.0.1
  */

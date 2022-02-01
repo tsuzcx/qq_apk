@@ -27,35 +27,31 @@ public class TimerTaskManager
   {
     if (paramRunnable == null)
     {
-      if (VideoReport.isDebugMode()) {
-        throw new NullPointerException("runnable is null");
+      if (!VideoReport.isDebugMode()) {
+        return "";
       }
-      return "";
+      throw new NullPointerException("runnable is null");
     }
-    String str = "VR_TimerTask_ID_" + this.nextID.incrementAndGet();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("VR_TimerTask_ID_");
+    ((StringBuilder)localObject).append(this.nextID.incrementAndGet());
+    localObject = ((StringBuilder)localObject).toString();
     boolean bool;
-    if (paramLong2 > 0L)
-    {
+    if (paramLong2 > 0L) {
       bool = true;
-      paramRunnable = new TimerTaskManager.WatcherRunnable(this, paramRunnable, str, bool);
-      if (!paramBoolean) {
-        break label116;
-      }
-      paramRunnable = this.mHandlerExecutor.scheduleAtFixedRate(paramRunnable, paramLong1, paramLong2, TimeUnit.MILLISECONDS);
-    }
-    for (;;)
-    {
-      this.mWorkingGroup.put(str, paramRunnable);
-      return str;
+    } else {
       bool = false;
-      break;
-      label116:
-      if (paramLong2 > 0L) {
-        paramRunnable = this.mThreadExecutor.scheduleAtFixedRate(paramRunnable, paramLong1, paramLong2, TimeUnit.MILLISECONDS);
-      } else {
-        paramRunnable = this.mThreadExecutor.schedule(paramRunnable, paramLong1, TimeUnit.MILLISECONDS);
-      }
     }
+    paramRunnable = new TimerTaskManager.WatcherRunnable(this, paramRunnable, (String)localObject, bool);
+    if (paramBoolean) {
+      paramRunnable = this.mHandlerExecutor.scheduleAtFixedRate(paramRunnable, paramLong1, paramLong2, TimeUnit.MILLISECONDS);
+    } else if (paramLong2 > 0L) {
+      paramRunnable = this.mThreadExecutor.scheduleAtFixedRate(paramRunnable, paramLong1, paramLong2, TimeUnit.MILLISECONDS);
+    } else {
+      paramRunnable = this.mThreadExecutor.schedule(paramRunnable, paramLong1, TimeUnit.MILLISECONDS);
+    }
+    this.mWorkingGroup.put(localObject, paramRunnable);
+    return localObject;
   }
   
   public static TimerTaskManager getInstance()
@@ -85,17 +81,19 @@ public class TimerTaskManager
   
   public void cancelTimerTask(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      paramString = (Future)this.mWorkingGroup.remove(paramString);
-    } while (paramString == null);
-    if (!(paramString instanceof HandlerScheduledFuture)) {}
-    for (boolean bool = true;; bool = false)
+    }
+    paramString = (Future)this.mWorkingGroup.remove(paramString);
+    if (paramString != null)
     {
+      boolean bool;
+      if (!(paramString instanceof HandlerScheduledFuture)) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       paramString.cancel(bool);
-      return;
     }
   }
   
@@ -109,7 +107,7 @@ public class TimerTaskManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.task.TimerTaskManager
  * JD-Core Version:    0.7.0.1
  */

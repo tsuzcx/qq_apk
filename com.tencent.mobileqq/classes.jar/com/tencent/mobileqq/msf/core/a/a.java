@@ -94,8 +94,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "getHeartBeatTimeout error" + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getHeartBeatTimeout error");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
       return 30000L;
@@ -115,8 +119,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getConnFastDetectDelay error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getConnFastDetectDelay error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 2000L;
@@ -134,8 +142,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getConnFastDetectTimeout error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getConnFastDetectTimeout error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 10000L;
@@ -153,8 +165,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getAutoReconnInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getAutoReconnInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 0L;
@@ -172,8 +188,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getCheckChangeTokenInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getCheckChangeTokenInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 1800000L;
@@ -191,8 +211,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getChangeTokenRequestInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getChangeTokenRequestInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 1000L;
@@ -210,8 +234,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getHeartBeatTimeout error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getHeartBeatTimeout error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 10000L;
@@ -229,8 +257,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getQuickHeartBeatReConnInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQuickHeartBeatReConnInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 120000L;
@@ -248,8 +280,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getHeartBeatRetryCount error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getHeartBeatRetryCount error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 1;
@@ -267,8 +303,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getBusPacketTimeoutMaxNum error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBusPacketTimeoutMaxNum error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 10;
@@ -286,8 +326,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getBusPacketTimeoutMaxNum error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBusPacketTimeoutMaxNum error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 5000L;
@@ -305,8 +349,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getUpdateServerTimePacketTimeoutMaxNum error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getUpdateServerTimePacketTimeoutMaxNum error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 72000000L;
@@ -324,8 +372,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getUpdateServerTimePacketTimeoutExtraInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getUpdateServerTimePacketTimeoutExtraInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 7200000L;
@@ -343,8 +395,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getCheckServerTimeCompareInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getCheckServerTimeCompareInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 7200000L;
@@ -356,8 +412,12 @@ public class a
     {
       if (r.containsKey("msf_heartBeatTimeInterval"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_heartBeatTimeInterval = " + (String)r.get("msf_heartBeatTimeInterval"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("msf_heartBeatTimeInterval = ");
+          localStringBuilder1.append((String)r.get("msf_heartBeatTimeInterval"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("msf_heartBeatTimeInterval"));
         return i1 * 60 * 1000;
@@ -365,8 +425,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "getHeartBeatTimeInterval error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getHeartBeatTimeInterval error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 60000;
@@ -378,8 +442,12 @@ public class a
     {
       if (r.containsKey("msf_preHeartBeatTimeInterval"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_preHeartBeatTimeInterval = " + (String)r.get("msf_preHeartBeatTimeInterval"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("msf_preHeartBeatTimeInterval = ");
+          localStringBuilder1.append((String)r.get("msf_preHeartBeatTimeInterval"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("msf_preHeartBeatTimeInterval"));
         return i1 * 1000;
@@ -387,8 +455,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "getPreHeartBeatTimeInterval error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getPreHeartBeatTimeInterval error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 10000;
@@ -406,8 +478,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getUpdateHBTimeSwtich error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getUpdateHBTimeSwtich error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return false;
@@ -419,8 +495,12 @@ public class a
     {
       if (r.containsKey("msf_netIdleTimeInterval"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_netIdleTimeInterval = " + (String)r.get("msf_netIdleTimeInterval"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("msf_netIdleTimeInterval = ");
+          localStringBuilder1.append((String)r.get("msf_netIdleTimeInterval"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("msf_netIdleTimeInterval"));
         return i1 * 60 * 1000;
@@ -428,8 +508,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "getNetIdleTimeInterval error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getNetIdleTimeInterval error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 1680000;
@@ -447,8 +531,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getTcpdumpSSOVip error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getTcpdumpSSOVip error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return null;
@@ -460,8 +548,12 @@ public class a
     {
       if (r.containsKey("TcpdumpSSOTime"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "TcpdumpSSOTime = " + (String)r.get("TcpdumpSSOTime"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("TcpdumpSSOTime = ");
+          localStringBuilder1.append((String)r.get("TcpdumpSSOTime"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("TcpdumpSSOTime"));
         return i1;
@@ -469,8 +561,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "getTcpdumpSSOTime error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getTcpdumpSSOTime error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 0;
@@ -482,8 +578,12 @@ public class a
     {
       if (r.containsKey("msf_netWeakTimeInterval"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_netWeakTimeInterval = " + (String)r.get("msf_netWeakTimeInterval"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("msf_netWeakTimeInterval = ");
+          localStringBuilder1.append((String)r.get("msf_netWeakTimeInterval"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("msf_netWeakTimeInterval"));
         return i1 * 60 * 1000;
@@ -491,8 +591,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "getNetWeakTimeInterval error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getNetWeakTimeInterval error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 180000;
@@ -504,8 +608,12 @@ public class a
     {
       if (r.containsKey("msf_pcactiveretrytimes"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_pcactiveretrytimes = " + (String)r.get("msf_pcactiveretrytimes"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("msf_pcactiveretrytimes = ");
+          localStringBuilder1.append((String)r.get("msf_pcactiveretrytimes"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("msf_pcactiveretrytimes"));
         return i1;
@@ -513,8 +621,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "msf_pcactiveretrytimes error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("msf_pcactiveretrytimes error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 10;
@@ -526,8 +638,12 @@ public class a
     {
       if (r.containsKey("msf_netWeakExceptionCount"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_netWeakExceptionCount = " + (String)r.get("msf_netWeakExceptionCount"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("msf_netWeakExceptionCount = ");
+          localStringBuilder1.append((String)r.get("msf_netWeakExceptionCount"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("msf_netWeakExceptionCount"));
         return i1;
@@ -535,8 +651,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "getNetWeakExceptionCount error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getNetWeakExceptionCount error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 3;
@@ -552,8 +672,12 @@ public class a
       }
       catch (NumberFormatException localNumberFormatException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " get CallQQIntervTimeOnBoot error " + localNumberFormatException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" get CallQQIntervTimeOnBoot error ");
+          localStringBuilder.append(localNumberFormatException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -578,10 +702,13 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set msf_StartNoStickyForMSFService error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set msf_StartNoStickyForMSFService error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
-        return false;
       }
     }
     return false;
@@ -591,15 +718,24 @@ public class a
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "msfCore setAutoStaring " + paramBoolean);
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("msfCore setAutoStaring ");
+        localStringBuilder.append(paramBoolean);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
       B.set(paramBoolean);
       if (MsfStore.getNativeConfigStore() != null) {
         MsfStore.getNativeConfigStore().setConfig("_msf_isBootingKey", String.valueOf(paramBoolean));
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "storeAutoStaring " + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("storeAutoStaring ");
+        localStringBuilder.append(paramBoolean);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
       return;
     }
@@ -608,16 +744,29 @@ public class a
   
   public static boolean a(String paramString)
   {
-    if (r.containsKey(paramString + "_isAutoBoot")) {
+    ConcurrentHashMap localConcurrentHashMap = r;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_isAutoBoot");
+    if (localConcurrentHashMap.containsKey(localStringBuilder.toString())) {
       try
       {
-        boolean bool = Boolean.parseBoolean(((String)r.get(paramString + "_isAutoBoot")).trim());
+        localConcurrentHashMap = r;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("_isAutoBoot");
+        boolean bool = Boolean.parseBoolean(((String)localConcurrentHashMap.get(localStringBuilder.toString())).trim());
         return bool;
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, paramString + " set isAutoBoot error " + localException);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramString);
+          localStringBuilder.append(" set isAutoBoot error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
         return false;
       }
@@ -629,13 +778,27 @@ public class a
   {
     try
     {
-      b.a(new ByteArrayInputStream(("<" + paramString1 + ">" + paramString2 + "</" + paramString1 + ">").getBytes("UTF-8")), r, paramString3);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("<");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(">");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append("</");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(">");
+      b.a(new ByteArrayInputStream(localStringBuilder.toString().getBytes("UTF-8")), r, paramString3);
       return true;
     }
     catch (Exception paramString2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "parse " + paramString1 + "Config error " + paramString2, paramString2);
+      if (QLog.isColorLevel())
+      {
+        paramString3 = new StringBuilder();
+        paramString3.append("parse ");
+        paramString3.append(paramString1);
+        paramString3.append("Config error ");
+        paramString3.append(paramString2);
+        QLog.d("MSF.C.ConfigManager", 2, paramString3.toString(), paramString2);
       }
     }
     return false;
@@ -651,8 +814,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set isStandbyTestAvailable error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set isStandbyTestAvailable error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -669,8 +836,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set getStandbyTestSeq error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set getStandbyTestSeq error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -689,8 +860,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getTcpDumpTime error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getTcpDumpTime error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 600000L;
@@ -706,8 +881,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set getRetryStartProcessTimes error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set getRetryStartProcessTimes error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -726,8 +905,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getContinueConnInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getContinueConnInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 1000;
@@ -745,8 +928,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getQuickSendFastInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQuickSendFastInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 15000;
@@ -764,8 +951,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getQuickSendFastTimes error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQuickSendFastTimes error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 4;
@@ -783,8 +974,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getForceQuickSend1S error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getForceQuickSend1S error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -802,8 +997,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "applySocketAdaptorFeature error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("applySocketAdaptorFeature error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return false;
@@ -821,8 +1020,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "innerSwitchForAdaptor error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("innerSwitchForAdaptor error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return false;
@@ -840,8 +1043,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "timeoutPkgToResetMode error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("timeoutPkgToResetMode error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 100;
@@ -859,8 +1066,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "ExptionCountToResetMode error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ExptionCountToResetMode error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 15;
@@ -878,8 +1089,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "startHeartBeatProxyInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("startHeartBeatProxyInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 60000L;
@@ -897,8 +1112,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "ExptionCountToCloseHeartbeat error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ExptionCountToCloseHeartbeat error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 50;
@@ -916,8 +1135,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "ResumeCountLimit error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ResumeCountLimit error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 3;
@@ -935,8 +1158,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "hwExceptionCheckInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("hwExceptionCheckInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 7200000L;
@@ -954,8 +1181,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "applyHeartbeatProxyFeature error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("applyHeartbeatProxyFeature error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return false;
@@ -973,8 +1204,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "retryHeartbeatTestCount error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("retryHeartbeatTestCount error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 5;
@@ -992,8 +1227,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getSortIpSocketErrorWeight error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSortIpSocketErrorWeight error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 10;
@@ -1011,8 +1250,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getSortIpContinueRspTimeoutWeight error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSortIpContinueRspTimeoutWeight error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 10;
@@ -1030,8 +1273,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getSortIpPingTimeoutWeight error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSortIpPingTimeoutWeight error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 10;
@@ -1049,8 +1296,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getSortIpNetDetectFailedWeight error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSortIpNetDetectFailedWeight error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 20;
@@ -1068,8 +1319,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getSortIpInvalidDataWeight error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSortIpInvalidDataWeight error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 20;
@@ -1087,8 +1342,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getSortIpConnFullWeight error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSortIpConnFullWeight error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 20;
@@ -1106,8 +1365,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "loginWithPicSt error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("loginWithPicSt error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -1125,8 +1388,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getSingleWiFiSSIDStoreTimes error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSingleWiFiSSIDStoreTimes error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 3;
@@ -1142,8 +1409,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set isPermitQuickTimeoutCheck error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set isPermitQuickTimeoutCheck error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
         return false;
       }
@@ -1157,8 +1428,12 @@ public class a
     {
       if (r.containsKey("msf_getHttpRecvTimeout"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_getHttpRecvTimeout = " + (String)r.get("msf_getHttpRecvTimeout"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("msf_getHttpRecvTimeout = ");
+          localStringBuilder1.append((String)r.get("msf_getHttpRecvTimeout"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("msf_getHttpRecvTimeout"));
         return i1;
@@ -1166,8 +1441,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "getHttpRecvTimeout error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getHttpRecvTimeout error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 30000;
@@ -1179,8 +1458,12 @@ public class a
     {
       if (r.containsKey("msf_getHttpReSendMessageConcurrentLimit"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_getHttpReSendMessageConcurrentLimit = " + (String)r.get("msf_getHttpReSendMessageConcurrentLimit"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("msf_getHttpReSendMessageConcurrentLimit = ");
+          localStringBuilder1.append((String)r.get("msf_getHttpReSendMessageConcurrentLimit"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("msf_getHttpReSendMessageConcurrentLimit"));
         return i1;
@@ -1188,8 +1471,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "getHttpReSendMessageConcurrentLimit error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getHttpReSendMessageConcurrentLimit error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 5;
@@ -1201,8 +1488,12 @@ public class a
     {
       if (r.containsKey("msf_getHttpReSendMessageTimeout"))
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "msf_getHttpReSendMessageTimeout = " + (String)r.get("msf_getHttpReSendMessageTimeout"));
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder1 = new StringBuilder();
+          localStringBuilder1.append("msf_getHttpReSendMessageTimeout = ");
+          localStringBuilder1.append((String)r.get("msf_getHttpReSendMessageTimeout"));
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder1.toString());
         }
         int i1 = Integer.parseInt((String)r.get("msf_getHttpReSendMessageTimeout"));
         return i1;
@@ -1210,8 +1501,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "getHttpReSendMessageTimeout error" + localException);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("getHttpReSendMessageTimeout error");
+        localStringBuilder2.append(localException);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder2.toString());
       }
     }
     return 30000;
@@ -1259,8 +1554,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getBasicTicketChangeInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getBasicTicketChangeInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 0L;
@@ -1278,8 +1577,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getWebTicketChangeInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getWebTicketChangeInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 0L;
@@ -1295,8 +1598,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set isBasicTicketChangeLimit error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set isBasicTicketChangeLimit error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
         return false;
       }
@@ -1314,8 +1621,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set msf_isReportDataCorrupt error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set msf_isReportDataCorrupt error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
         return false;
       }
@@ -1333,8 +1644,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set msf_isDelayChangeWebKey error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set msf_isDelayChangeWebKey error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
         return false;
       }
@@ -1366,8 +1681,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set isStandbyModeAvailable error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set isStandbyModeAvailable error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -1384,8 +1703,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, " set isReqAllFailTest error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" set isReqAllFailTest error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -1472,56 +1795,46 @@ public class a
     if (localObject == null) {
       return null;
     }
-    if ((((String)localObject).startsWith("460")) || (((String)localObject).startsWith("461"))) {
-      if ((((String)localObject).startsWith("46000")) || (((String)localObject).startsWith("46002"))) {
-        localObject = "ydconn";
-      }
-    }
-    for (;;)
-    {
-      if (r.containsKey(localObject)) {
-        try
-        {
-          localObject = ((String)r.get(localObject)).replaceAll("\\|", ",").split(",");
-          int i1 = 0;
-          for (;;)
-          {
-            if (i1 < localObject.length)
-            {
-              String[] arrayOfString = localObject[i1].split(":");
-              com.tencent.mobileqq.msf.core.d locald = new com.tencent.mobileqq.msf.core.d();
-              locald.c(arrayOfString[0]);
-              locald.a(Integer.parseInt(arrayOfString[1]));
-              localCopyOnWriteArrayList.add(locald);
-              i1 += 1;
-              continue;
-              if (((String)localObject).startsWith("46001"))
-              {
-                localObject = "ltconn";
-                break;
-              }
-              if (((String)localObject).startsWith("46003"))
-              {
-                localObject = "dxconn";
-                break;
-              }
-              return null;
-              return null;
-            }
-          }
-          return localCopyOnWriteArrayList;
-        }
-        catch (Exception localException)
-        {
-          localException.printStackTrace();
-        }
-      }
-    }
-    for (;;)
-    {
+    if ((!((String)localObject).startsWith("460")) && (!((String)localObject).startsWith("461"))) {
       return null;
-      QLog.d("MSF.C.ConfigManager", 1, "getReqAllFailDetectXGSSOList not be found.");
     }
+    if ((!((String)localObject).startsWith("46000")) && (!((String)localObject).startsWith("46002")))
+    {
+      if (((String)localObject).startsWith("46001")) {
+        localObject = "ltconn";
+      } else if (((String)localObject).startsWith("46003")) {
+        localObject = "dxconn";
+      } else {
+        return null;
+      }
+    }
+    else {
+      localObject = "ydconn";
+    }
+    if (r.containsKey(localObject)) {
+      try
+      {
+        localObject = ((String)r.get(localObject)).replaceAll("\\|", ",").split(",");
+        int i1 = 0;
+        while (i1 < localObject.length)
+        {
+          String[] arrayOfString = localObject[i1].split(":");
+          com.tencent.mobileqq.msf.core.d locald = new com.tencent.mobileqq.msf.core.d();
+          locald.c(arrayOfString[0]);
+          locald.a(Integer.parseInt(arrayOfString[1]));
+          localCopyOnWriteArrayList.add(locald);
+          i1 += 1;
+        }
+        return localCopyOnWriteArrayList;
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        return null;
+      }
+    }
+    QLog.d("MSF.C.ConfigManager", 1, "getReqAllFailDetectXGSSOList not be found.");
+    return null;
   }
   
   public static long ba()
@@ -1536,8 +1849,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getReportWiFiSSIDInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getReportWiFiSSIDInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 72000000L;
@@ -1555,8 +1872,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getMsfAliveSplitLen error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMsfAliveSplitLen error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 1024;
@@ -1574,8 +1895,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getMsfAliveReportMax error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMsfAliveReportMax error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 15360;
@@ -1593,8 +1918,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getMsfAliveAutoInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMsfAliveAutoInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 7200;
@@ -1612,8 +1941,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "reportMsfAliveFull error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reportMsfAliveFull error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -1631,8 +1964,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getRandomPushReportBase error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getRandomPushReportBase error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 1;
@@ -1661,12 +1998,17 @@ public class a
           }
         }
       }
+      StringBuilder localStringBuilder;
       return l.c;
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getPskeyDomains error" + localException);
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getPskeyDomains error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
   }
@@ -1683,8 +2025,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getStoreLogcatTriggerInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getStoreLogcatTriggerInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 10000L;
@@ -1702,8 +2048,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getLogcatStoreInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getLogcatStoreInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 1800000L;
@@ -1721,8 +2071,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getLogCompressLevel error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getLogCompressLevel error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 9;
@@ -1740,8 +2094,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getMSFPullReportBase error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getMSFPullReportBase error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 1;
@@ -1759,8 +2117,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "reportPushDetail error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reportPushDetail error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -1778,8 +2140,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getPreDetectionAlarmTimeAlpha error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getPreDetectionAlarmTimeAlpha error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 900000L;
@@ -1797,8 +2163,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getPreDetectionAlarmTimeBeta error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getPreDetectionAlarmTimeBeta error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 480000L;
@@ -1816,8 +2186,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getHeartBeatSwtich error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getHeartBeatSwtich error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -1835,8 +2209,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getQuickHeartBeatSwitch error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getQuickHeartBeatSwitch error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -1854,8 +2232,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getSimpleGetTimeoutNumber error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getSimpleGetTimeoutNumber error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 5;
@@ -1873,8 +2255,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getAppTimeout error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getAppTimeout error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 2000;
@@ -1892,8 +2278,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getAllowWhileIdleSwtich error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getAllowWhileIdleSwtich error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -1911,8 +2301,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "msf_weaknet_config error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("msf_weaknet_config error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 0;
@@ -1920,18 +2314,26 @@ public class a
   
   public static boolean bu()
   {
+    boolean bool = false;
     try
     {
       if (r.containsKey("msf_weaknetXGSendMsg"))
       {
         int i1 = Integer.parseInt((String)r.get("msf_weaknetXGSendMsg"));
-        return i1 != 0;
+        if (i1 != 0) {
+          bool = true;
+        }
+        return bool;
       }
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getWeaknetXGSendMsg error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getWeaknetXGSendMsg error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return false;
@@ -1939,10 +2341,21 @@ public class a
   
   public static boolean bv()
   {
-    if ((!"x86".equals(com.tencent.mobileqq.msf.core.c.c(BaseApplication.getContext()))) || (QLog.isColorLevel())) {
-      QLog.i("MSF.C.ConfigManager", 2, "isQuicEnabled enabled=" + false + " " + (String)r.get("quic_enable") + " reload=" + QuicWrapper.reload() + " isLoad=" + QuicWrapper.isLoaded);
+    "x86".equals(com.tencent.mobileqq.msf.core.c.c(BaseApplication.getContext()));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isQuicEnabled enabled=");
+      localStringBuilder.append(false);
+      localStringBuilder.append(" ");
+      localStringBuilder.append((String)r.get("quic_enable"));
+      localStringBuilder.append(" reload=");
+      localStringBuilder.append(QuicWrapper.reload());
+      localStringBuilder.append(" isLoad=");
+      localStringBuilder.append(QuicWrapper.isLoaded);
+      QLog.i("MSF.C.ConfigManager", 2, localStringBuilder.toString());
     }
-    return (0 != 0) && (QuicWrapper.reload());
+    return false;
   }
   
   public static int bw()
@@ -1953,27 +2366,28 @@ public class a
       if (r.containsKey("jobscheduler_enable")) {
         i1 = Integer.parseInt((String)r.get("jobscheduler_enable"));
       }
-      QLog.d("MSF.C.ConfigManager", 1, new Object[] { "MSF_Alive_Log get config jobscheduler_enable=", Integer.valueOf(i1) });
-      return i1;
     }
     catch (Exception localException)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "MSF_Alive_Log get jobscheduler_enable error" + localException);
-        }
-        i1 = 0;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("MSF_Alive_Log get jobscheduler_enable error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
+      i1 = 0;
     }
+    QLog.d("MSF.C.ConfigManager", 1, new Object[] { "MSF_Alive_Log get config jobscheduler_enable=", Integer.valueOf(i1) });
+    return i1;
   }
   
   private void bx()
   {
-    boolean bool2 = false;
     int i2;
     int i1;
-    String str2;
+    Object localObject;
+    StringBuilder localStringBuilder;
     if (r.containsKey("msf_noReportRdmEvent")) {
       try
       {
@@ -1982,24 +2396,33 @@ public class a
         i1 = 0;
         while (i1 < i2)
         {
-          str2 = arrayOfString1[i1];
-          if (!str2.trim().equals(""))
+          localObject = arrayOfString1[i1];
+          if (!((String)localObject).trim().equals(""))
           {
-            s.add(str2);
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.C.ConfigManager", 2, "rdm event " + str2 + " set no report.");
+            s.add(localObject);
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("rdm event ");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append(" set no report.");
+              QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
             }
           }
           i1 += 1;
         }
         if (!r.containsKey("msf_needPrintLogCmd")) {
-          break label309;
+          break label352;
         }
       }
       catch (Exception localException1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "set msf_noReportRdmEvent error " + localException1);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("set msf_noReportRdmEvent error ");
+          ((StringBuilder)localObject).append(localException1);
+          QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject).toString());
         }
       }
     } else {
@@ -2010,99 +2433,129 @@ public class a
         i1 = 0;
         while (i1 < i2)
         {
-          str2 = arrayOfString2[i1];
-          if (!str2.trim().equals(""))
+          localObject = arrayOfString2[i1];
+          if (!((String)localObject).trim().equals(""))
           {
-            t.add(str2);
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.C.ConfigManager", 2, "msg " + str2 + " need print log.");
+            t.add(localObject);
+            if (QLog.isColorLevel())
+            {
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("msg ");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append(" need print log.");
+              QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
             }
           }
           i1 += 1;
         }
-        if (!r.containsKey("msf_AnyPacketAsPushHB")) {}
+        bool1 = r.containsKey("msf_AnyPacketAsPushHB");
       }
       catch (Exception localException2)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "set msf_noReportRdmEvent error " + localException2);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("set msf_noReportRdmEvent error ");
+          ((StringBuilder)localObject).append(localException2);
+          QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject).toString());
         }
       }
     }
-    label309:
+    label352:
     boolean bool1;
-    for (;;)
-    {
+    boolean bool2 = true;
+    if (bool1) {
       try
       {
-        str1 = (String)r.get("msf_AnyPacketAsPushHB");
+        String str1 = (String)r.get("msf_AnyPacketAsPushHB");
         if (!str1.equals("0")) {
-          continue;
+          break label767;
         }
         bool1 = false;
         u = bool1;
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "config useAnyPacketAsPushHB " + str1);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("config useAnyPacketAsPushHB ");
+          ((StringBuilder)localObject).append(str1);
+          QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject).toString());
         }
       }
       catch (Exception localException3)
       {
-        String str1;
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("set msf_noReportRdmEvent error ");
+          ((StringBuilder)localObject).append(localException3);
+          QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject).toString());
         }
-        QLog.d("MSF.C.ConfigManager", 2, "set msf_noReportRdmEvent error " + localException3);
-        continue;
-        bool1 = true;
-        continue;
       }
-      if (r.containsKey("msf_preDetectionSupport")) {}
+    } else if (!r.containsKey("msf_preDetectionSupport")) {}
+    for (;;)
+    {
       try
       {
-        str1 = (String)r.get("msf_preDetectionSupport");
-        if (!str1.equals("0")) {
-          continue;
+        String str2 = (String)r.get("msf_preDetectionSupport");
+        if (!str2.equals("0")) {
+          break label772;
         }
         bool1 = false;
         v = bool1;
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "config msf_preDetectionSupport " + str1);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("config msf_preDetectionSupport ");
+          ((StringBuilder)localObject).append(str2);
+          QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject).toString());
         }
       }
       catch (Exception localException4)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("set msf_preDetectionSupport error ");
+          ((StringBuilder)localObject).append(localException4);
+          QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject).toString());
         }
-        QLog.d("MSF.C.ConfigManager", 2, "set msf_preDetectionSupport error " + localException4);
-        continue;
-        bool1 = true;
-        continue;
       }
-      if (r.containsKey("msf_simpleGetReportSwitch")) {}
-      try
-      {
-        str1 = (String)r.get("msf_simpleGetReportSwitch");
-        if (!str1.equals("0")) {
-          break label625;
+      if (r.containsKey("msf_simpleGetReportSwitch")) {
+        try
+        {
+          String str3 = (String)r.get("msf_simpleGetReportSwitch");
+          bool1 = bool2;
+          if (str3.equals("0")) {
+            bool1 = false;
+          }
+          w = bool1;
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("config msf_simpleGetReportSwitch ");
+            ((StringBuilder)localObject).append(str3);
+            QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject).toString());
+            return;
+          }
         }
-        bool1 = bool2;
-        w = bool1;
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "config msf_simpleGetReportSwitch " + str1);
+        catch (Exception localException5)
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("set msf_simpleGetReportSwitch error ");
+            ((StringBuilder)localObject).append(localException5);
+            QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject).toString());
+          }
         }
-        return;
       }
-      catch (Exception localException5)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("MSF.C.ConfigManager", 2, "set msf_simpleGetReportSwitch error " + localException5);
-      }
+      return;
+      label767:
+      bool1 = true;
+      break;
+      label772:
       bool1 = true;
     }
-    label625:
   }
   
   private void by()
@@ -2110,59 +2563,65 @@ public class a
     try
     {
       String[] arrayOfString = av();
-      if ((arrayOfString != null) && (this.A.getStandyModeManager() != null)) {
+      if ((arrayOfString != null) && (this.A.getStandyModeManager() != null))
+      {
         this.A.getStandyModeManager().a(arrayOfString);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      QLog.d("MSF.C.ConfigManager", 1, " " + localException, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" ");
+      localStringBuilder.append(localException);
+      QLog.d("MSF.C.ConfigManager", 1, localStringBuilder.toString(), localException);
     }
   }
   
   private void bz()
   {
+    StringBuilder localStringBuilder;
     try
     {
-      String[] arrayOfString = c();
-      if (arrayOfString != null)
+      String[] arrayOfString1 = c();
+      if (arrayOfString1 != null)
       {
-        this.A.sender.j = Integer.parseInt(arrayOfString[0]);
-        this.A.sender.k = Integer.parseInt(arrayOfString[1]);
-        this.A.sender.o = Integer.parseInt(arrayOfString[2]);
-        this.A.sender.m = Integer.parseInt(arrayOfString[3]);
+        this.A.sender.j = Integer.parseInt(arrayOfString1[0]);
+        this.A.sender.k = Integer.parseInt(arrayOfString1[1]);
+        this.A.sender.o = Integer.parseInt(arrayOfString1[2]);
+        this.A.sender.m = Integer.parseInt(arrayOfString1[3]);
       }
-      return;
     }
     catch (Exception localException1)
     {
-      try
-      {
-        for (;;)
-        {
-          arrayOfString = d();
-          this.A.sender.a(arrayOfString);
-          try
-          {
-            this.A.sender.n = Integer.parseInt(e());
-            return;
-          }
-          catch (Exception localException3)
-          {
-            QLog.d("MSF.C.ConfigManager", 1, " " + localException3, localException3);
-          }
-          localException1 = localException1;
-          QLog.d("MSF.C.ConfigManager", 1, " " + localException1, localException1);
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          QLog.d("MSF.C.ConfigManager", 1, " " + localException2, localException2);
-        }
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" ");
+      localStringBuilder.append(localException1);
+      QLog.d("MSF.C.ConfigManager", 1, localStringBuilder.toString(), localException1);
+    }
+    try
+    {
+      String[] arrayOfString2 = d();
+      this.A.sender.a(arrayOfString2);
+    }
+    catch (Exception localException2)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" ");
+      localStringBuilder.append(localException2);
+      QLog.d("MSF.C.ConfigManager", 1, localStringBuilder.toString(), localException2);
+    }
+    try
+    {
+      this.A.sender.n = Integer.parseInt(e());
+      return;
+    }
+    catch (Exception localException3)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(" ");
+      localStringBuilder.append(localException3);
+      QLog.d("MSF.C.ConfigManager", 1, localStringBuilder.toString(), localException3);
     }
   }
   
@@ -2175,8 +2634,12 @@ public class a
     }
     catch (Exception paramString)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "Str2HexStr error " + paramString, paramString);
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Str2HexStr error ");
+        localStringBuilder.append(paramString);
+        QLog.d("MSF.C.ConfigManager", 4, localStringBuilder.toString(), paramString);
       }
     }
     return null;
@@ -2207,8 +2670,12 @@ public class a
     }
     catch (Exception paramString)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "HexStr2Str error " + paramString, paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("HexStr2Str error ");
+        localStringBuilder.append(paramString);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString(), paramString);
       }
     }
     return null;
@@ -2255,8 +2722,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "get ipHostReportSwitch error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("get ipHostReportSwitch error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -2289,8 +2760,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "get useLastOpenAddress error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("get useLastOpenAddress error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -2307,8 +2782,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "get msf_limitWtChangetoken error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("get msf_limitWtChangetoken error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -2325,8 +2804,12 @@ public class a
       }
       catch (Exception localException)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "get msf_isSetReloadKeyUin error " + localException);
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("get msf_isSetReloadKeyUin error ");
+          localStringBuilder.append(localException);
+          QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
         }
       }
     }
@@ -2345,8 +2828,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "get DeepSleepMaxInterval error " + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get DeepSleepMaxInterval error ");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 57600000L;
@@ -2364,8 +2851,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "msf_isUseWtlogin error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("msf_isUseWtlogin error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return z;
@@ -2383,8 +2874,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "get standbyWaitInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get standbyWaitInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 30000L;
@@ -2402,8 +2897,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "get getCompressLogDelay error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get getCompressLogDelay error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 60000L;
@@ -2421,8 +2920,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "get getLogClearInterval error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get getLogClearInterval error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 3600000L;
@@ -2440,8 +2943,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getNewLogClearStrategy error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNewLogClearStrategy error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -2459,8 +2966,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getNewLogClearStrategyTest error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNewLogClearStrategyTest error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -2478,8 +2989,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getNewLogClearStrategyTestShutdown error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNewLogClearStrategyTestShutdown error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return false;
@@ -2497,8 +3012,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "get getSSOPingTimeout error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get getSSOPingTimeout error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 12000L;
@@ -2516,8 +3035,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "get getSSOPingAvailable error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get getSSOPingAvailable error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -2535,8 +3058,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "get getConnFastDetectAvailable error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("get getConnFastDetectAvailable error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -2554,8 +3081,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getActivePreDetect error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getActivePreDetect error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return true;
@@ -2563,36 +3094,28 @@ public class a
   
   public static boolean y()
   {
-    boolean bool1 = false;
     try
     {
-      if (Build.VERSION.SDK_INT < 28)
-      {
-        bool1 = false;
+      if (Build.VERSION.SDK_INT < 28) {
+        return false;
       }
-      else if (!r.containsKey("msf_reconnWhenMobileToWifi"))
-      {
-        bool1 = false;
+      if (!r.containsKey("msf_reconnWhenMobileToWifi")) {
+        return false;
       }
-      else
-      {
-        boolean bool2 = Boolean.parseBoolean((String)r.get("msf_reconnWhenMobileToWifi"));
-        if (!bool2) {
-          bool1 = false;
-        } else {
-          bool1 = true;
-        }
-      }
+      boolean bool = Boolean.parseBoolean((String)r.get("msf_reconnWhenMobileToWifi"));
+      return bool;
     }
     catch (Exception localException)
     {
       if (QLog.isColorLevel())
       {
-        QLog.d("MSF.C.ConfigManager", 2, "getReconnWhenMobileToWiFi error" + localException);
-        return false;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getReconnWhenMobileToWiFi error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
-    return bool1;
+    return false;
   }
   
   public static long z()
@@ -2607,8 +3130,12 @@ public class a
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "getPreDetectTimeout error" + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getPreDetectTimeout error");
+        localStringBuilder.append(localException);
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     return 10000L;
@@ -2616,11 +3143,8 @@ public class a
   
   public int a(ToServiceMsg paramToServiceMsg)
   {
-    if ((paramToServiceMsg.getWupBuffer() != null) && (paramToServiceMsg.getWupBuffer().length > 0)) {}
-    for (;;)
+    if ((paramToServiceMsg.getWupBuffer() == null) || (paramToServiceMsg.getWupBuffer().length <= 0))
     {
-      this.A.sendSsoMsg(paramToServiceMsg);
-      return paramToServiceMsg.getRequestSsoSeq();
       Object localObject1 = new com.tencent.msf.service.protocol.f.f();
       ((com.tencent.msf.service.protocol.f.f)localObject1).f = 0;
       ((com.tencent.msf.service.protocol.f.f)localObject1).a = new com.tencent.msf.service.protocol.f.b();
@@ -2649,6 +3173,8 @@ public class a
       ((UniPacket)localObject2).put("GetResourceReqV2", localObject1);
       paramToServiceMsg.putWupBuffer(((UniPacket)localObject2).encode());
     }
+    this.A.sendSsoMsg(paramToServiceMsg);
+    return paramToServiceMsg.getRequestSsoSeq();
   }
   
   public int a(HashMap paramHashMap, String paramString)
@@ -2670,244 +3196,280 @@ public class a
   
   public void a(com.tencent.msf.service.protocol.e.f paramf, FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.ConfigManager", 2, "recvServerConfig: " + paramf);
+    if (QLog.isColorLevel())
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("recvServerConfig: ");
+      paramToServiceMsg.append(paramf);
+      QLog.d("MSF.C.ConfigManager", 2, paramToServiceMsg.toString());
     }
-    if (paramf == null) {
+    if (paramf == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.d("MSF.C.ConfigManager", 2, "configInfo.iUpdateType is null , return");
       }
+      return;
     }
-    label280:
-    label359:
-    label631:
-    label889:
-    do
+    if (paramf.a != 1)
     {
-      String str3;
-      do
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          do
-          {
-            return;
-            if (paramf.a == 1) {
-              break;
-            }
-          } while (!QLog.isColorLevel());
-          QLog.d("MSF.C.ConfigManager", 2, "configInfo.iUpdateType is " + paramf.a + " , return");
-          return;
-          str3 = paramf.d;
-          if ((str3 != null) && (str3.length() != 0)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("MSF.C.ConfigManager", 2, "handle config, res.sConf null, return");
-        return;
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("configInfo.iUpdateType is ");
+        paramFromServiceMsg.append(paramf.a);
+        paramFromServiceMsg.append(" , return");
+        QLog.d("MSF.C.ConfigManager", 2, paramFromServiceMsg.toString());
+      }
+      return;
+    }
+    paramToServiceMsg = paramf.d;
+    if ((paramToServiceMsg != null) && (paramToServiceMsg.length() != 0))
+    {
+      Object localObject1;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handle sConf ");
+        ((StringBuilder)localObject1).append(paramf.d);
+        QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject1).toString());
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("handle sEspConf ");
+        ((StringBuilder)localObject1).append(paramf.f);
+        QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject1).toString());
+      }
+      int i1 = paramToServiceMsg.indexOf("<MSF>");
+      int i2 = paramToServiceMsg.indexOf("</MSF>");
+      Object localObject3 = "";
+      Object localObject4;
+      if ((i1 != -1) && (i2 != -1) && (i1 < i2))
+      {
+        localObject1 = paramToServiceMsg.substring(i1 + 5, i2);
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(paramToServiceMsg.substring(0, i1));
+        ((StringBuilder)localObject4).append(paramToServiceMsg.substring(i2 + 6, paramToServiceMsg.length()));
+        paramToServiceMsg = ((StringBuilder)localObject4).toString();
+      }
+      else
+      {
         if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "handle sConf " + paramf.d);
+          QLog.d("MSF.C.ConfigManager", 2, "handle config MSF null, skip");
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("MSF.C.ConfigManager", 2, "handle sEspConf " + paramf.f);
-        }
-        String str4 = "";
-        i1 = str3.indexOf("<MSF>");
-        i2 = str3.indexOf("</MSF>");
-        if ((i1 == -1) || (i2 == -1) || (i1 >= i2))
+        localObject1 = "";
+      }
+      i1 = paramToServiceMsg.indexOf("<quic_enable>");
+      i2 = paramToServiceMsg.indexOf("</quic_enable>");
+      if ((i1 > 0) && (i2 > 0) && (i1 <= i2))
+      {
+        localObject4 = paramToServiceMsg.substring(i1 + 13, i2);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("parse config str_quic_enable: ");
+        localStringBuilder.append((String)localObject4);
+        QLog.d("MSF.C.ConfigManager", 1, localStringBuilder.toString());
+      }
+      else
+      {
+        QLog.d("MSF.C.ConfigManager", 1, "parse quic_enable config error");
+      }
+      if ((localObject1 != null) && (((String)localObject1).length() != 0)) {
+        if (a("msfConfig", (String)localObject1, ""))
         {
-          str1 = str4;
-          paramToServiceMsg = str3;
+          localObject1 = c((String)localObject1);
           if (QLog.isColorLevel())
           {
-            QLog.d("MSF.C.ConfigManager", 2, "handle config MSF null, skip");
-            paramToServiceMsg = str3;
-            str1 = str4;
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("recv config str_msf: ");
+            ((StringBuilder)localObject4).append((String)localObject1);
+            QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject4).toString());
           }
-          i1 = paramToServiceMsg.indexOf("<quic_enable>");
-          i2 = paramToServiceMsg.indexOf("</quic_enable>");
-          if ((i1 <= 0) || (i2 <= 0) || (i1 > i2)) {
-            break label533;
-          }
-          str3 = paramToServiceMsg.substring("<quic_enable>".length() + i1, i2);
-          QLog.d("MSF.C.ConfigManager", 1, "parse config str_quic_enable: " + str3);
-          if ((str1 != null) && (str1.length() != 0)) {
-            break label545;
-          }
+          MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_Msf", (String)localObject1);
         }
-        for (;;)
+        else if (QLog.isColorLevel())
         {
-          if ((paramf.b != 0) && (y != paramf.b)) {
-            break label631;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.ConfigManager", 2, "handle config,  iGetSdkLastTime is obsolete, skip...");
-          }
-          if ((paramf.g != 0) && (x != paramf.g)) {
-            break label889;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.ConfigManager", 2, "handle config, iGetAppidTime is obsolete, skip...");
-          }
-          paramToServiceMsg = paramf.f;
-          if ((paramToServiceMsg != null) && (paramToServiceMsg.length() != 0)) {
-            break label1139;
-          }
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          QLog.d("MSF.C.ConfigManager", 2, "handle config, res.sEspConf null, return");
-          return;
-          str1 = str3.substring("<MSF>".length() + i1, i2);
-          paramToServiceMsg = str3.substring(0, i1) + str3.substring("</MSF>".length() + i2, str3.length());
-          break label280;
-          QLog.d("MSF.C.ConfigManager", 1, "parse quic_enable config error");
-          break label359;
-          if (a("msfConfig", str1, ""))
-          {
-            str1 = c(str1);
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.C.ConfigManager", 2, "recv config str_msf: " + str1);
-            }
-            MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_Msf", str1);
-          }
-          else if (QLog.isColorLevel())
-          {
-            QLog.d("MSF.C.ConfigManager", 2, "parse msfConf error , skip store.");
-          }
+          QLog.d("MSF.C.ConfigManager", 2, "parse msfConf error , skip store.");
         }
+      }
+      if ((paramf.b != 0) && (y != paramf.b))
+      {
         y = paramf.b;
-        if (QLog.isDevelopLevel()) {
-          QLog.d("MSF.C.ConfigManager", 4, "save confReq iGetSdkNewTime" + paramf.b);
+        if (QLog.isDevelopLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("save confReq iGetSdkNewTime");
+          ((StringBuilder)localObject1).append(paramf.b);
+          QLog.d("MSF.C.ConfigManager", 4, ((StringBuilder)localObject1).toString());
         }
         MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iConfSdkLastTimeKey", String.valueOf(paramf.b));
         i1 = paramToServiceMsg.indexOf("<CommConf>");
         i2 = paramToServiceMsg.indexOf("</CommConf>");
-        if ((i1 != -1) && (i2 != -1) && (i1 < i2)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("MSF.C.ConfigManager", 2, "handle config CommConf error");
-      return;
-      String str1 = paramToServiceMsg.substring("<CommConf>".length() + i1, i2);
-      if ((str1 == null) || (str1.length() == 0)) {
-        MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_UserCommCon", "");
-      }
-      for (;;)
-      {
-        try
+        if ((i1 != -1) && (i2 != -1) && (i1 < i2))
         {
-          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 0, str1, this.A.sender.l());
-        }
-        catch (IOException localIOException)
-        {
-          QLog.e("MSF.C.ConfigManager", 1, "write config error " + localIOException);
-        }
-        break;
-        if (a("commConfig", localIOException, ""))
-        {
-          str3 = c(localIOException);
-          MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_UserCommCon", str3);
+          localObject1 = paramToServiceMsg.substring(i1 + 10, i2);
+          if ((localObject1 != null) && (((String)localObject1).length() != 0))
+          {
+            if (a("commConfig", (String)localObject1, ""))
+            {
+              localObject4 = c((String)localObject1);
+              MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_UserCommCon", (String)localObject4);
+            }
+            else if (QLog.isColorLevel())
+            {
+              QLog.d("MSF.C.ConfigManager", 2, "parse commonConf error , skip store.");
+            }
+          }
+          else {
+            MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_UserCommCon", "");
+          }
+          try
+          {
+            MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 0, (String)localObject1, this.A.sender.l());
+          }
+          catch (IOException localIOException)
+          {
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("write config error ");
+            ((StringBuilder)localObject4).append(localIOException);
+            QLog.e("MSF.C.ConfigManager", 1, ((StringBuilder)localObject4).toString());
+          }
         }
         else if (QLog.isColorLevel())
         {
-          QLog.d("MSF.C.ConfigManager", 2, "parse commonConf error , skip store.");
+          QLog.d("MSF.C.ConfigManager", 2, "handle config CommConf error");
         }
-      }
-      x = paramf.g;
-      if (QLog.isDevelopLevel()) {
-        QLog.d("MSF.C.ConfigManager", 4, "save confReq getiConfAppidTimeKey" + paramf.g);
-      }
-      MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iConfAppidTimeKey", String.valueOf(paramf.g));
-      i1 = paramToServiceMsg.indexOf("<APPIDConf>");
-      i2 = paramToServiceMsg.indexOf("</APPIDConf>");
-      if ((i1 != -1) && (i2 != -1) && (i1 < i2)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    label533:
-    label545:
-    QLog.d("MSF.C.ConfigManager", 2, "handle config APPIDConf error");
-    return;
-    paramToServiceMsg = paramToServiceMsg.substring("<APPIDConf>".length() + i1, i2);
-    if ((paramToServiceMsg == null) || (paramToServiceMsg.length() == 0)) {
-      MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_AppConf", "");
-    }
-    for (;;)
-    {
-      try
-      {
-        MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 2, paramToServiceMsg, this.A.sender.l());
-      }
-      catch (IOException paramToServiceMsg)
-      {
-        QLog.e("MSF.C.ConfigManager", 1, "write config error " + paramToServiceMsg);
-      }
-      break;
-      if (a("appidConf", paramToServiceMsg, ""))
-      {
-        str2 = c(paramToServiceMsg);
-        MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_AppConf", str2);
       }
       else if (QLog.isColorLevel())
       {
-        QLog.d("MSF.C.ConfigManager", 2, "parse appidConf error , skip store.");
+        QLog.d("MSF.C.ConfigManager", 2, "handle config,  iGetSdkLastTime is obsolete, skip...");
       }
-    }
-    label1139:
-    String str2 = "";
-    int i1 = paramToServiceMsg.indexOf("<UserConf>");
-    int i2 = paramToServiceMsg.indexOf("</UserConf>");
-    if ((i1 == -1) || (i2 == -1) || (i1 >= i2))
-    {
-      paramToServiceMsg = str2;
-      if (QLog.isColorLevel())
+      Object localObject2;
+      if ((paramf.g != 0) && (x != paramf.g))
       {
-        QLog.d("MSF.C.ConfigManager", 2, "handle config UserConf skip");
-        paramToServiceMsg = str2;
-      }
-    }
-    for (;;)
-    {
-      if ((paramToServiceMsg == null) || (paramToServiceMsg.length() == 0)) {}
-      try
-      {
-        for (;;)
+        x = paramf.g;
+        if (QLog.isDevelopLevel())
         {
-          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 1, paramToServiceMsg, this.A.sender.l());
-          MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iConfGetEspLastTimeKe", String.valueOf(paramf.e));
-          if (QLog.isDevelopLevel()) {
-            QLog.d("MSF.C.ConfigManager", 4, "save confReq getiConfGetEspLastTimeKey" + paramf.e);
-          }
-          bx();
-          bz();
-          by();
-          this.A.quicksender.b();
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.ConfigManager", 2, "handle server config ok");
-          }
-          CodecWarpper.getFileStoreKey();
-          return;
-          paramToServiceMsg = paramToServiceMsg.substring("<UserConf>".length() + i1, i2);
-          break;
-          if (a("userConf", paramToServiceMsg, paramFromServiceMsg.getUin() + "_"))
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("save confReq getiConfAppidTimeKey");
+          ((StringBuilder)localObject2).append(paramf.g);
+          QLog.d("MSF.C.ConfigManager", 4, ((StringBuilder)localObject2).toString());
+        }
+        MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iConfAppidTimeKey", String.valueOf(paramf.g));
+        i1 = paramToServiceMsg.indexOf("<APPIDConf>");
+        i2 = paramToServiceMsg.indexOf("</APPIDConf>");
+        if ((i1 != -1) && (i2 != -1) && (i1 < i2))
+        {
+          paramToServiceMsg = paramToServiceMsg.substring(i1 + 11, i2);
+          if ((paramToServiceMsg != null) && (paramToServiceMsg.length() != 0))
           {
-            str2 = c(paramToServiceMsg);
-            MsfStore.getNativeConfigStore().n_setConfig(paramFromServiceMsg.getUin() + "_" + "__loginSdk_iconf_UserConf", str2);
+            if (a("appidConf", paramToServiceMsg, ""))
+            {
+              localObject2 = c(paramToServiceMsg);
+              MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_AppConf", (String)localObject2);
+            }
+            else if (QLog.isColorLevel())
+            {
+              QLog.d("MSF.C.ConfigManager", 2, "parse appidConf error , skip store.");
+            }
+          }
+          else {
+            MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iconf_AppConf", "");
+          }
+          try
+          {
+            MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 2, paramToServiceMsg, this.A.sender.l());
+          }
+          catch (IOException paramToServiceMsg)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("write config error ");
+            ((StringBuilder)localObject2).append(paramToServiceMsg);
+            QLog.e("MSF.C.ConfigManager", 1, ((StringBuilder)localObject2).toString());
+          }
+        }
+        else if (QLog.isColorLevel())
+        {
+          QLog.d("MSF.C.ConfigManager", 2, "handle config APPIDConf error");
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.d("MSF.C.ConfigManager", 2, "handle config, iGetAppidTime is obsolete, skip...");
+      }
+      paramToServiceMsg = paramf.f;
+      if ((paramToServiceMsg != null) && (paramToServiceMsg.length() != 0))
+      {
+        i1 = paramToServiceMsg.indexOf("<UserConf>");
+        i2 = paramToServiceMsg.indexOf("</UserConf>");
+        if ((i1 != -1) && (i2 != -1) && (i1 < i2))
+        {
+          paramToServiceMsg = paramToServiceMsg.substring(i1 + 10, i2);
+        }
+        else
+        {
+          paramToServiceMsg = (ToServiceMsg)localObject3;
+          if (QLog.isColorLevel())
+          {
+            QLog.d("MSF.C.ConfigManager", 2, "handle config UserConf skip");
+            paramToServiceMsg = (ToServiceMsg)localObject3;
+          }
+        }
+        if ((paramToServiceMsg != null) && (paramToServiceMsg.length() != 0))
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(paramFromServiceMsg.getUin());
+          ((StringBuilder)localObject2).append("_");
+          if (a("userConf", paramToServiceMsg, ((StringBuilder)localObject2).toString()))
+          {
+            localObject2 = c(paramToServiceMsg);
+            localObject3 = MsfStore.getNativeConfigStore();
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append(paramFromServiceMsg.getUin());
+            ((StringBuilder)localObject4).append("_");
+            ((StringBuilder)localObject4).append("__loginSdk_iconf_UserConf");
+            ((NativeConfigStore)localObject3).n_setConfig(((StringBuilder)localObject4).toString(), (String)localObject2);
           }
           else if (QLog.isColorLevel())
           {
             QLog.d("MSF.C.ConfigManager", 2, "parse userConfig error , skip store.");
           }
         }
-      }
-      catch (IOException paramFromServiceMsg)
-      {
-        for (;;)
+        try
         {
-          QLog.e("MSF.C.ConfigManager", 1, "write config error " + paramFromServiceMsg);
+          MsfSdkUtils.writeServerConfig("com.tencent.mobileqq", 1, paramToServiceMsg, this.A.sender.l());
         }
+        catch (IOException paramFromServiceMsg)
+        {
+          paramToServiceMsg = new StringBuilder();
+          paramToServiceMsg.append("write config error ");
+          paramToServiceMsg.append(paramFromServiceMsg);
+          QLog.e("MSF.C.ConfigManager", 1, paramToServiceMsg.toString());
+        }
+        MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_iConfGetEspLastTimeKe", String.valueOf(paramf.e));
+        if (QLog.isDevelopLevel())
+        {
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("save confReq getiConfGetEspLastTimeKey");
+          paramFromServiceMsg.append(paramf.e);
+          QLog.d("MSF.C.ConfigManager", 4, paramFromServiceMsg.toString());
+        }
+        bx();
+        bz();
+        by();
+        this.A.quicksender.b();
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.ConfigManager", 2, "handle server config ok");
+        }
+        CodecWarpper.getFileStoreKey();
+        return;
       }
+      if (QLog.isColorLevel()) {
+        QLog.d("MSF.C.ConfigManager", 2, "handle config, res.sEspConf null, return");
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("MSF.C.ConfigManager", 2, "handle config, res.sConf null, return");
     }
   }
   
@@ -2942,102 +3504,122 @@ public class a
         ((a.a)localObject3).a = l1;
         ((a.a)localObject3).b = ((com.tencent.msf.service.protocol.d.a)localObject1);
         this.K.add(localObject3);
-        QLog.d("MSF.C.ConfigManager", 1, "recved OverloadPushNotify cmd: " + (String)localObject2 + " delaySecs = " + ((com.tencent.msf.service.protocol.d.a)localObject1).b + " timeReced: " + l1 + " tips: " + ((com.tencent.msf.service.protocol.d.a)localObject1).e);
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("recved OverloadPushNotify cmd: ");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append(" delaySecs = ");
+        ((StringBuilder)localObject3).append(((com.tencent.msf.service.protocol.d.a)localObject1).b);
+        ((StringBuilder)localObject3).append(" timeReced: ");
+        ((StringBuilder)localObject3).append(l1);
+        ((StringBuilder)localObject3).append(" tips: ");
+        ((StringBuilder)localObject3).append(((com.tencent.msf.service.protocol.d.a)localObject1).e);
+        QLog.d("MSF.C.ConfigManager", 1, ((StringBuilder)localObject3).toString());
       }
     }
   }
   
   public void a(FromServiceMsg paramFromServiceMsg, ToServiceMsg paramToServiceMsg)
   {
-    QLog.i("MSF.C.ConfigManager", 1, "handleConfig before quic_enable=" + e("quic_enable"));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleConfig before quic_enable=");
+    ((StringBuilder)localObject).append(e("quic_enable"));
+    QLog.i("MSF.C.ConfigManager", 1, ((StringBuilder)localObject).toString());
     if (!paramFromServiceMsg.isSuccess())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "wait " + paramToServiceMsg + " timeout.");
+      if (QLog.isColorLevel())
+      {
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("wait ");
+        paramFromServiceMsg.append(paramToServiceMsg);
+        paramFromServiceMsg.append(" timeout.");
+        QLog.d("MSF.C.ConfigManager", 2, paramFromServiceMsg.toString());
       }
       return;
     }
-    UniPacket localUniPacket = new UniPacket(true);
-    localUniPacket.setEncodeName("UTF-8");
-    localUniPacket.decode(paramFromServiceMsg.getWupBuffer());
-    int i1 = ((Integer)localUniPacket.getByClass("iCmdType", Integer.valueOf(0))).intValue();
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.ConfigManager", 2, "handle check ConfigResp ." + i1);
-    }
-    if (i1 == 16) {}
-    for (;;)
+    localObject = new UniPacket(true);
+    ((UniPacket)localObject).setEncodeName("UTF-8");
+    ((UniPacket)localObject).decode(paramFromServiceMsg.getWupBuffer());
+    int i1 = ((Integer)((UniPacket)localObject).getByClass("iCmdType", Integer.valueOf(0))).intValue();
+    if (QLog.isColorLevel())
     {
-      QLog.i("MSF.C.ConfigManager", 1, "handleConfig after quic_enable=" + e("quic_enable"));
-      return;
-      if (i1 == 32) {
-        a((com.tencent.msf.service.protocol.e.f)localUniPacket.getByClass("SDKConfRes", new com.tencent.msf.service.protocol.e.f()), paramFromServiceMsg, paramToServiceMsg);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handle check ConfigResp .");
+      localStringBuilder.append(i1);
+      QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
     }
+    if ((i1 != 16) && (i1 == 32)) {
+      a((com.tencent.msf.service.protocol.e.f)((UniPacket)localObject).getByClass("SDKConfRes", new com.tencent.msf.service.protocol.e.f()), paramFromServiceMsg, paramToServiceMsg);
+    }
+    paramFromServiceMsg = new StringBuilder();
+    paramFromServiceMsg.append("handleConfig after quic_enable=");
+    paramFromServiceMsg.append(e("quic_enable"));
+    QLog.i("MSF.C.ConfigManager", 1, paramFromServiceMsg.toString());
   }
   
   public void a(ToServiceMsg paramToServiceMsg, long paramLong)
   {
     if (aq())
     {
-      if (!NetConnInfoCenter.isMobileConn()) {
-        break label85;
+      if (NetConnInfoCenter.isMobileConn())
+      {
+        D = paramLong;
+        MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_checkmobilessotime", String.valueOf(D));
+        F = D + 3600000L;
+        ar();
       }
-      D = paramLong;
-      MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_checkmobilessotime", String.valueOf(D));
-      F = D + 3600000L;
-      ar();
-    }
-    try
-    {
-      this.A.getSsoListManager().a(paramToServiceMsg.getAppId(), paramToServiceMsg.getUin(), 60000L, NetConnInfoCenter.isWifiConn(), "", false);
-    }
-    catch (Exception localException)
-    {
+      else if (NetConnInfoCenter.isWifiConn())
+      {
+        E = paramLong;
+        MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_checkwifissotime", String.valueOf(E));
+        G = E + 3600000L;
+        as();
+      }
       try
       {
-        for (;;)
-        {
-          a(paramToServiceMsg.getUin(), 60000);
-          return;
-          label85:
-          if (NetConnInfoCenter.isWifiConn())
-          {
-            E = paramLong;
-            MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_checkwifissotime", String.valueOf(E));
-            G = E + 3600000L;
-            as();
-            continue;
-            localException = localException;
-            if (QLog.isColorLevel()) {
-              QLog.d("MSF.C.ConfigManager", 2, localException.toString(), localException);
-            }
-          }
+        this.A.getSsoListManager().a(paramToServiceMsg.getAppId(), paramToServiceMsg.getUin(), 60000L, NetConnInfoCenter.isWifiConn(), "", false);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.ConfigManager", 2, localException.toString(), localException);
         }
+      }
+      try
+      {
+        a(paramToServiceMsg.getUin(), 60000);
+        return;
       }
       catch (Exception paramToServiceMsg)
       {
-        while (!QLog.isColorLevel()) {}
-        QLog.d("MSF.C.ConfigManager", 2, paramToServiceMsg.toString(), paramToServiceMsg);
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.ConfigManager", 2, paramToServiceMsg.toString(), paramToServiceMsg);
+        }
       }
     }
   }
   
   public void a(String paramString, int paramInt)
   {
-    byte[] arrayOfByte = at();
+    Object localObject = at();
     ToServiceMsg localToServiceMsg = new ToServiceMsg("", paramString, "ConfigService.ClientReq");
     localToServiceMsg.setMsfCommand(MsfCommand._msf_getConfig);
     localToServiceMsg.setRequestSsoSeq(MsfCore.getNextSeq());
-    if (this.A.getMsfAppid() == -1) {}
-    for (int i1 = 100;; i1 = this.A.getMsfAppid())
-    {
-      localToServiceMsg.setAppId(i1);
-      localToServiceMsg.putWupBuffer(arrayOfByte);
-      localToServiceMsg.setTimeout(paramInt);
-      this.A.sender.b(localToServiceMsg);
-      QLog.d("MSF.C.ConfigManager", 1, "send checkConfig uin=" + MsfSdkUtils.getShortUin(paramString) + " appid=" + i1);
-      return;
+    int i1;
+    if (this.A.getMsfAppid() == -1) {
+      i1 = 100;
+    } else {
+      i1 = this.A.getMsfAppid();
     }
+    localToServiceMsg.setAppId(i1);
+    localToServiceMsg.putWupBuffer((byte[])localObject);
+    localToServiceMsg.setTimeout(paramInt);
+    this.A.sender.b(localToServiceMsg);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("send checkConfig uin=");
+    ((StringBuilder)localObject).append(MsfSdkUtils.getShortUin(paramString));
+    ((StringBuilder)localObject).append(" appid=");
+    ((StringBuilder)localObject).append(i1);
+    QLog.d("MSF.C.ConfigManager", 1, ((StringBuilder)localObject).toString());
   }
   
   byte[] a(String paramString, HashMap paramHashMap)
@@ -3073,54 +3655,78 @@ public class a
   public boolean aq()
   {
     long l1 = System.currentTimeMillis();
-    if (NetConnInfoCenter.isMobileConn()) {
-      if (D != 0L) {}
-    }
-    do
+    boolean bool5 = NetConnInfoCenter.isMobileConn();
+    boolean bool4 = false;
+    boolean bool2 = false;
+    boolean bool3 = false;
+    boolean bool1 = false;
+    long l2;
+    long l3;
+    if (bool5)
     {
-      do
+      l2 = D;
+      if (l2 == 0L) {
+        return true;
+      }
+      l3 = F;
+      if (l3 == 0L)
       {
-        do
-        {
-          do
-          {
-            do
-            {
-              return true;
-              if (F != 0L) {
-                break;
-              }
-            } while (l1 - D >= 43200000L);
-            return false;
-          } while (l1 >= F);
-          return false;
-          if (!NetConnInfoCenter.isWifiConn()) {
-            break;
-          }
-        } while (E == 0L);
-        if (G != 0L) {
-          break;
+        if (l1 - l2 >= 43200000L) {
+          bool1 = true;
         }
-      } while (l1 - E >= 43200000L);
-      return false;
-    } while (l1 >= G);
-    return false;
-    return false;
+        return bool1;
+      }
+      bool1 = bool4;
+      if (l1 >= l3) {
+        bool1 = true;
+      }
+      return bool1;
+    }
+    bool1 = bool3;
+    if (NetConnInfoCenter.isWifiConn())
+    {
+      l2 = E;
+      if (l2 == 0L) {
+        return true;
+      }
+      l3 = G;
+      if (l3 == 0L)
+      {
+        bool1 = bool2;
+        if (l1 - l2 >= 43200000L) {
+          bool1 = true;
+        }
+        return bool1;
+      }
+      bool1 = bool3;
+      if (l1 >= l3) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public void ar()
   {
     MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_mobilessotime", String.valueOf(F));
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.ConfigManager", 2, "save next get mobile sso time is " + this.A.timeFormatter.format(Long.valueOf(F)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("save next get mobile sso time is ");
+      localStringBuilder.append(this.A.timeFormatter.format(Long.valueOf(F)));
+      QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
     }
   }
   
   public void as()
   {
     MsfStore.getNativeConfigStore().n_setConfig("__loginSdk_wifissotime", String.valueOf(G));
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.ConfigManager", 2, "save next get Wifi sso time is " + this.A.timeFormatter.format(Long.valueOf(G)));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("save next get Wifi sso time is ");
+      localStringBuilder.append(this.A.timeFormatter.format(Long.valueOf(G)));
+      QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
     }
   }
   
@@ -3170,8 +3776,16 @@ public class a
     locale.e = x;
     locale.b = y;
     locale.d = i1;
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.ConfigManager", 2, "load confReq iGetAppidTime" + locale.e + " iGetSdkLastTime:" + locale.b + " iGetEspLastTime:" + locale.d);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("load confReq iGetAppidTime");
+      ((StringBuilder)localObject1).append(locale.e);
+      ((StringBuilder)localObject1).append(" iGetSdkLastTime:");
+      ((StringBuilder)localObject1).append(locale.b);
+      ((StringBuilder)localObject1).append(" iGetEspLastTime:");
+      ((StringBuilder)localObject1).append(locale.d);
+      QLog.d("MSF.C.ConfigManager", 2, ((StringBuilder)localObject1).toString());
     }
     localObject2 = this.A.getAccountCenter().d();
     Object localObject1 = new ArrayList();
@@ -3180,8 +3794,12 @@ public class a
     {
       SimpleAccount localSimpleAccount = (SimpleAccount)((Iterator)localObject2).next();
       ((ArrayList)localObject1).add(localSimpleAccount.getUin());
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.ConfigManager", 2, "checkConfig uin=" + localSimpleAccount.getUin());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("checkConfig uin=");
+        localStringBuilder.append(localSimpleAccount.getUin());
+        QLog.d("MSF.C.ConfigManager", 2, localStringBuilder.toString());
       }
     }
     locale.c = ((ArrayList)localObject1);
@@ -3207,22 +3825,24 @@ public class a
     try
     {
       locala.c = str.getBytes("utf-8");
-      localUniPacket.put("ClientReportReq", locala);
-      paramToServiceMsg.putWupBuffer(localUniPacket.encode());
-      return this.A.sendSsoMsg(paramToServiceMsg);
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        localUnsupportedEncodingException.printStackTrace();
-      }
+      localUnsupportedEncodingException.printStackTrace();
     }
+    localUniPacket.put("ClientReportReq", locala);
+    paramToServiceMsg.putWupBuffer(localUniPacket.encode());
+    return this.A.sendSsoMsg(paramToServiceMsg);
   }
   
   public String b(String paramString)
   {
-    return d(MsfStore.getNativeConfigStore().getConfig(paramString + "_" + "__loginSdk_iconf_UserConf"));
+    NativeConfigStore localNativeConfigStore = MsfStore.getNativeConfigStore();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append("__loginSdk_iconf_UserConf");
+    return d(localNativeConfigStore.getConfig(localStringBuilder.toString()));
   }
   
   protected void b()
@@ -3302,8 +3922,12 @@ public class a
     {
       str1 = (String)((Iterator)localObject).next();
       String str2 = b(str1);
-      if ((str2 != null) && (str2.length() > 0)) {
-        a("userConfig", str2, str1 + "_");
+      if ((str2 != null) && (str2.length() > 0))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str1);
+        localStringBuilder.append("_");
+        a("userConfig", str2, localStringBuilder.toString());
       }
     }
     bx();
@@ -3311,21 +3935,24 @@ public class a
   
   public String c(ToServiceMsg paramToServiceMsg)
   {
-    switch (((Integer)paramToServiceMsg.getAttributes().get("to_getServerConfig_type")).intValue())
+    int i1 = ((Integer)paramToServiceMsg.getAttributes().get("to_getServerConfig_type")).intValue();
+    if (i1 != 0)
     {
-    default: 
-      return null;
-    case 0: 
-      return an();
-    case 1: 
+      if (i1 != 1)
+      {
+        if (i1 != 2) {
+          return null;
+        }
+        return ao();
+      }
       return b(paramToServiceMsg.getUin());
     }
-    return ao();
+    return an();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.a.a
  * JD-Core Version:    0.7.0.1
  */

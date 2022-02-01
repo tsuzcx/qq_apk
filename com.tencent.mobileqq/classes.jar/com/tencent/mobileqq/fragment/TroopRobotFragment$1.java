@@ -1,27 +1,32 @@
 package com.tencent.mobileqq.fragment;
 
-import android.support.v4.app.FragmentActivity;
-import com.tencent.mobileqq.app.TroopBusinessObserver;
-import com.tencent.mobileqq.troop.utils.TroopRobotData;
+import androidx.fragment.app.FragmentActivity;
+import com.tencent.mobileqq.troop.robot.TroopRobotData;
+import com.tencent.mobileqq.troop.robot.api.TroopRobotObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class TroopRobotFragment$1
-  extends TroopBusinessObserver
+  extends TroopRobotObserver
 {
   TroopRobotFragment$1(TroopRobotFragment paramTroopRobotFragment) {}
   
-  public void onAddRobot(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong1, long paramLong2)
   {
-    String str = String.valueOf(paramLong1);
-    if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
+    Object localObject = String.valueOf(paramLong1);
+    if ((localObject != null) && (((String)localObject).equals(TroopRobotFragment.a(this.a))))
     {
       TroopRobotFragment.a(this.a, paramLong1);
       return;
     }
-    QLog.i("TroopRobotFragment", 2, "onAddRobot  net troopuin" + paramLong1 + " cur " + TroopRobotFragment.a(this.a));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onAddRobot  net troopuin");
+    ((StringBuilder)localObject).append(paramLong1);
+    ((StringBuilder)localObject).append(" cur ");
+    ((StringBuilder)localObject).append(TroopRobotFragment.a(this.a));
+    QLog.i("TroopRobotFragment", 2, ((StringBuilder)localObject).toString());
   }
   
-  public void onGetAllRobots(boolean paramBoolean, int paramInt, long paramLong, TroopRobotData paramTroopRobotData)
+  protected void a(boolean paramBoolean, int paramInt, long paramLong, TroopRobotData paramTroopRobotData)
   {
     String str = String.valueOf(paramLong);
     if ((str != null) && (str.equals(TroopRobotFragment.a(this.a))))
@@ -32,16 +37,26 @@ class TroopRobotFragment$1
         this.a.getActivity().runOnUiThread(new TroopRobotFragment.1.1(this, paramTroopRobotData));
         return;
       }
-      QLog.e("TroopRobotFragment", 2, "onGetAllRobots err " + paramInt + " :" + paramLong);
+      paramTroopRobotData = new StringBuilder();
+      paramTroopRobotData.append("onGetAllRobots err ");
+      paramTroopRobotData.append(paramInt);
+      paramTroopRobotData.append(" :");
+      paramTroopRobotData.append(paramLong);
+      QLog.e("TroopRobotFragment", 2, paramTroopRobotData.toString());
       TroopRobotFragment.a(this.a, paramLong);
       return;
     }
-    QLog.i("TroopRobotFragment", 2, "onGetAllRobots  net troopuin" + paramLong + " cur " + TroopRobotFragment.a(this.a));
+    paramTroopRobotData = new StringBuilder();
+    paramTroopRobotData.append("onGetAllRobots  net troopuin");
+    paramTroopRobotData.append(paramLong);
+    paramTroopRobotData.append(" cur ");
+    paramTroopRobotData.append(TroopRobotFragment.a(this.a));
+    QLog.i("TroopRobotFragment", 2, paramTroopRobotData.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.TroopRobotFragment.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,8 +15,11 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.ark.browser.ArkBrowserFragment;
 import com.tencent.mobileqq.gesturelock.GesturePWDUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.teamwork.TeamWorkUtils;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkDocEditBrowserProxy;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtilsTemp;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class QQBrowserDelegationActivity
@@ -37,26 +40,24 @@ public class QQBrowserDelegationActivity
   
   void a(Intent paramIntent, QQAppInterface paramQQAppInterface)
   {
-    if ((paramIntent == null) || (paramQQAppInterface == null) || (paramQQAppInterface.getMessageFacade() == null)) {}
-    do
+    if ((paramIntent != null) && (paramQQAppInterface != null))
     {
-      int i;
-      EcShopAssistantManager localEcShopAssistantManager;
-      do
-      {
+      if (paramQQAppInterface.getMessageFacade() == null) {
         return;
-        i = 0;
-        localEcShopAssistantManager = (EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
-        if ("3046055438".equals(localEcShopAssistantManager.i)) {
-          i = 1;
+      }
+      EcShopAssistantManager localEcShopAssistantManager = (EcShopAssistantManager)paramQQAppInterface.getManager(QQManagerFactory.EC_SHOP_ASSISTANT_MANAGER);
+      boolean bool = "3046055438".equals(localEcShopAssistantManager.i);
+      localEcShopAssistantManager.i = null;
+      if (bool)
+      {
+        paramIntent.setClass(this, BusinessBrowser.class);
+        paramIntent.putExtra("jump_from", 1);
+        paramQQAppInterface = paramQQAppInterface.getMessageFacade().getLastMessage(localEcShopAssistantManager.i, 1008);
+        if (paramQQAppInterface != null) {
+          paramIntent.putExtra("msg_id", paramQQAppInterface.getExtInfoFromExtStr("public_account_msg_id"));
         }
-        localEcShopAssistantManager.i = null;
-      } while (i == 0);
-      paramIntent.setClass(this, BusinessBrowser.class);
-      paramIntent.putExtra("jump_from", 1);
-      paramQQAppInterface = paramQQAppInterface.getMessageFacade().a(localEcShopAssistantManager.i, 1008);
-    } while (paramQQAppInterface == null);
-    paramIntent.putExtra("msg_id", paramQQAppInterface.getExtInfoFromExtStr("public_account_msg_id"));
+      }
+    }
   }
   
   @Override
@@ -68,70 +69,65 @@ public class QQBrowserDelegationActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     this.jdField_a_of_type_AndroidContentIntent = getIntent();
-    if (this.jdField_a_of_type_AndroidContentIntent.getExtras() == null) {
-      finish();
-    }
-    Intent localIntent;
-    String str;
-    label244:
-    boolean bool;
-    do
+    if (this.jdField_a_of_type_AndroidContentIntent.getExtras() == null)
     {
+      finish();
       return false;
-      localIntent = new Intent(getIntent());
-      int i = localIntent.getIntExtra("browserType", 0);
-      localIntent.putExtra("needSkey", "true");
-      switch (i)
+    }
+    Intent localIntent = new Intent(getIntent());
+    int i = localIntent.getIntExtra("browserType", 0);
+    localIntent.putExtra("needSkey", "true");
+    if (i != 1)
+    {
+      if (i != 3)
       {
-      case 2: 
-      default: 
         localIntent.setClass(this, QQBrowserActivity.class);
-        str = localIntent.getStringExtra("url");
-        if (!TeamWorkUtils.b(str)) {
-          break label244;
-        }
-        paramBundle = null;
-        i = localIntent.getIntExtra("uinType", 1);
-        if (i == 1) {
-          paramBundle = localIntent.getStringExtra("groupUin");
-        }
-        break;
       }
-      for (;;)
+      else
       {
-        if ((TextUtils.isEmpty(paramBundle)) || (!TeamWorkUtils.a(this, str, TeamWorkUtils.a(this.app, paramBundle, i)))) {
-          break label244;
-        }
+        localIntent.putExtra("fragmentClass", ArkBrowserFragment.class);
+        localIntent.setClass(this, QQBrowserActivity.class);
+      }
+    }
+    else {
+      localIntent.setClass(this, QQH5BrowserActivity.class);
+    }
+    String str = localIntent.getStringExtra("url");
+    if (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsFormUrl(str))
+    {
+      paramBundle = null;
+      i = localIntent.getIntExtra("uinType", 1);
+      if (i == 1) {
+        paramBundle = localIntent.getStringExtra("groupUin");
+      } else if (i == 0) {
+        paramBundle = localIntent.getStringExtra("friend_uin");
+      }
+      if ((!TextUtils.isEmpty(paramBundle)) && (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).openTroopFormMiniApp(this, str, ((ITeamWorkUtilsTemp)QRoute.api(ITeamWorkUtilsTemp.class)).getTroopFormGrayParameter(this.app, paramBundle, i))))
+      {
         ReportController.b(this.app, "dc00898", "", paramBundle, "0X8009FCF", "0X8009FCF", 0, 0, "", "", "", "");
         finish();
         return false;
-        localIntent.setClass(this, QQH5BrowserActivity.class);
-        break;
-        localIntent.putExtra("fragmentClass", ArkBrowserFragment.class);
-        localIntent.setClass(this, QQBrowserActivity.class);
-        break;
-        if (i == 0) {
-          paramBundle = localIntent.getStringExtra("friend_uin");
+      }
+    }
+    paramBundle = localIntent;
+    if (((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).isDocsUrl(str))
+    {
+      if (localIntent.getBooleanExtra("h5_ark_is_from_share", false))
+      {
+        boolean bool = ((ITeamWorkDocEditBrowserProxy)QRoute.api(ITeamWorkDocEditBrowserProxy.class)).openDocsMiniApp(this, str, "s_qq_aio_ark_h5");
+        finish();
+        if (bool) {
+          return false;
         }
       }
-      paramBundle = localIntent;
-      if (!TeamWorkUtils.a(str)) {
-        break label309;
-      }
-      if (!localIntent.getBooleanExtra("h5_ark_is_from_share", false)) {
-        break;
-      }
-      bool = TeamWorkDocEditBrowserActivity.a(this, str, "s_qq_aio_ark_h5");
-      finish();
-    } while (bool);
-    localIntent.setClass(this, TeamWorkDocEditBrowserActivity.class);
-    localIntent.addFlags(603979776);
-    paramBundle = TeamWorkDocEditBrowserActivity.a(localIntent, str, this);
-    label309:
+      localIntent.setClass(this, TeamWorkDocEditBrowserActivity.class);
+      localIntent.addFlags(603979776);
+      paramBundle = TeamWorkDocEditBrowserActivity.a(localIntent, str, this);
+    }
     a(paramBundle, this.app);
     paramBundle.putExtra("startOpenPageTime", System.currentTimeMillis());
     paramBundle.putExtra("uin", this.app.getCurrentAccountUin());
@@ -140,7 +136,7 @@ public class QQBrowserDelegationActivity
     return false;
   }
   
-  public void doOnStart()
+  protected void doOnStart()
   {
     super.doOnStart();
     mAppForground = GesturePWDUtils.getAppForground(getActivity());
@@ -163,14 +159,14 @@ public class QQBrowserDelegationActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     requestWindowFeature(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.QQBrowserDelegationActivity
  * JD-Core Version:    0.7.0.1
  */

@@ -1,19 +1,14 @@
 package com.tencent.mobileqq.app.decoupleim;
 
 import android.content.Intent;
-import android.os.Bundle;
-import android.text.TextUtils;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.open.agent.util.AuthParamUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqconnect.wtlogin.LoginHelper;
-import java.util.HashMap;
-import oicq.wlogin_sdk.request.WUserSigInfo;
-import oicq.wlogin_sdk.tlv_type.tlv_t;
 import tencent.im.login.GatewayVerify.RspBody;
 import tencent.im.login.GatewayVerify.RspLftInfo;
-import tencent.im.login.GatewayVerify.RspTipsInfo;
 
 public class ThirdPartyLoginBlockUtilImpl
   implements ThirdPartyLoginBlockUtilInterface
@@ -23,122 +18,36 @@ public class ThirdPartyLoginBlockUtilImpl
   
   public static ThirdPartyLoginBlockUtilImpl a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl == null) {
-        jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl = new ThirdPartyLoginBlockUtilImpl();
+    if (jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl == null) {
+          jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl = new ThirdPartyLoginBlockUtilImpl();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl;
+      finally {}
     }
-    finally {}
-  }
-  
-  private boolean a(Intent paramIntent, Bundle paramBundle)
-  {
-    if ((paramIntent == null) || (paramBundle == null))
-    {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "handleAgentAppId params empty");
-      return true;
-    }
-    return false;
-  }
-  
-  private boolean a(WUserSigInfo paramWUserSigInfo)
-  {
-    if (paramWUserSigInfo == null) {
-      return true;
-    }
-    paramWUserSigInfo = paramWUserSigInfo.loginResultTLVMap;
-    if (paramWUserSigInfo == null) {
-      return true;
-    }
-    paramWUserSigInfo = (tlv_t)paramWUserSigInfo.get(Integer.valueOf(1347));
-    if (paramWUserSigInfo == null) {
-      return true;
-    }
-    if (paramWUserSigInfo.get_data() == null) {
-      return true;
-    }
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "SigData is valid");
-    return false;
-  }
-  
-  private boolean b(Bundle paramBundle)
-  {
-    if ((paramBundle == null) || (paramBundle.getParcelable("userSigInfo") == null))
-    {
-      QLog.d("ThirdPartyLoginUtilImpl", 1, "checkIMBlockByBundle not support im block check");
-      return true;
-    }
-    return false;
+    return jdField_a_of_type_ComTencentMobileqqAppDecoupleimThirdPartyLoginBlockUtilImpl;
   }
   
   private boolean b(byte[] paramArrayOfByte, QBaseActivity paramQBaseActivity)
   {
-    if ((paramQBaseActivity == null) || (paramQBaseActivity.getIntent() == null))
+    if ((paramQBaseActivity != null) && (paramQBaseActivity.getIntent() != null))
     {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "activity related param null");
-      return true;
-    }
-    if (paramArrayOfByte == null)
-    {
-      QLog.d("ThirdPartyLoginUtilImpl", 1, "not im block");
-      return true;
-    }
-    return false;
-  }
-  
-  public int a(byte[] paramArrayOfByte)
-  {
-    if (paramArrayOfByte == null)
-    {
-      QLog.d("ThirdPartyLoginUtilImpl", 1, "getTipsScenesId tlvData is null");
-      return 0;
-    }
-    GatewayVerify.RspBody localRspBody;
-    try
-    {
-      localRspBody = new GatewayVerify.RspBody();
-      localRspBody.mergeFrom(paramArrayOfByte);
-      if (localRspBody.msg_rsp_lft_info.uint32_lft_forbid_area.get() != 1)
+      if (paramArrayOfByte == null)
       {
-        QLog.d("ThirdPartyLoginUtilImpl", 1, "getTipsScenesId not area im");
-        return 0;
+        QLog.d("ThirdPartyLoginUtilImpl", 1, "not im block");
+        return true;
       }
+      return false;
     }
-    catch (Exception paramArrayOfByte)
-    {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "getTipsScenesId error: ", paramArrayOfByte);
-      return 0;
-    }
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "getTipsScenesId scene_id=" + localRspBody.msg_rsp_tips_info.uint32_scene_id.get());
-    int i = localRspBody.msg_rsp_tips_info.uint32_scene_id.get();
-    return i;
+    QLog.e("ThirdPartyLoginUtilImpl", 1, "activity related param null");
+    return true;
   }
   
   public void a()
   {
     this.jdField_a_of_type_ComTencentMobileqqAppDecoupleimOpenSDKLoginCallback = null;
-  }
-  
-  public void a(Intent paramIntent, Bundle paramBundle, String paramString)
-  {
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "handleAgentAppId");
-    if (a(paramIntent, paramBundle)) {
-      return;
-    }
-    long l2 = paramBundle.getLong("dstAppid");
-    long l1 = l2;
-    if (l2 == 0L) {
-      l1 = 1600001540L;
-    }
-    paramBundle = paramString;
-    if (TextUtils.isEmpty(paramString)) {
-      paramBundle = String.valueOf(l1);
-    }
-    paramIntent.putExtra("im_block_sso_appid", paramBundle);
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "put IM_BLOCK_SSO_APPID: " + paramBundle);
   }
   
   public void a(OpenSDKLoginCallback paramOpenSDKLoginCallback)
@@ -152,36 +61,6 @@ public class ThirdPartyLoginBlockUtilImpl
     LoginHelper.a(paramString1, paramString2, paramString3, new ThirdPartyLoginBlockUtilImpl.1(this, paramString1));
   }
   
-  public boolean a(Bundle paramBundle)
-  {
-    QLog.d("ThirdPartyLoginUtilImpl", 1, "checkIMBlockByBundle");
-    if (b(paramBundle)) {
-      return false;
-    }
-    paramBundle = (WUserSigInfo)paramBundle.getParcelable("userSigInfo");
-    if (a(paramBundle)) {
-      return false;
-    }
-    try
-    {
-      paramBundle = ((tlv_t)paramBundle.loginResultTLVMap.get(Integer.valueOf(1347))).get_data();
-      GatewayVerify.RspBody localRspBody = new GatewayVerify.RspBody();
-      localRspBody.mergeFrom(paramBundle);
-      if (localRspBody.msg_rsp_lft_info.uint32_lft_forbid_area.get() == 1)
-      {
-        QLog.d("ThirdPartyLoginUtilImpl", 1, "checkIMBlockByBundle FORBID_AREA_IM");
-        return true;
-      }
-      QLog.d("ThirdPartyLoginUtilImpl", 1, "checkIMBlockByBundle FORBID_AREA_ALL");
-      return false;
-    }
-    catch (Exception paramBundle)
-    {
-      QLog.e("ThirdPartyLoginUtilImpl", 1, "GatewayVerify.RspBody error: ", paramBundle);
-    }
-    return false;
-  }
-  
   public boolean a(byte[] paramArrayOfByte, QBaseActivity paramQBaseActivity)
   {
     QLog.d("ThirdPartyLoginUtilImpl", 1, "shouldIMLoginBlock");
@@ -192,7 +71,7 @@ public class ThirdPartyLoginBlockUtilImpl
     {
       GatewayVerify.RspBody localRspBody = new GatewayVerify.RspBody();
       localRspBody.mergeFrom(paramArrayOfByte);
-      if ((localRspBody.msg_rsp_lft_info.uint32_lft_forbid_area.get() == 1) && (paramQBaseActivity.getIntent().getBooleanExtra("authority_start_qq_login", false)))
+      if ((localRspBody.msg_rsp_lft_info.uint32_lft_forbid_area.get() == 1) && (AuthParamUtil.a(paramQBaseActivity.getIntent())))
       {
         QLog.d("ThirdPartyLoginUtilImpl", 1, "shouldIMLoginBlock FORBID_AREA_IM");
         return true;
@@ -223,7 +102,7 @@ public class ThirdPartyLoginBlockUtilImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.decoupleim.ThirdPartyLoginBlockUtilImpl
  * JD-Core Version:    0.7.0.1
  */

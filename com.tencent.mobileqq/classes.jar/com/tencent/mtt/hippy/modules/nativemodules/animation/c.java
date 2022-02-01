@@ -11,7 +11,7 @@ public class c
   extends a
   implements Animator.AnimatorListener
 {
-  private AnimatorSet d = new AnimatorSet();
+  private final AnimatorSet d = new AnimatorSet();
   private AnimatorSet.Builder e;
   private a f;
   private ArrayList<Integer> g;
@@ -19,7 +19,7 @@ public class c
   private int i = 0;
   private int j = 0;
   private int k = -1;
-  private a.a l = new c.1(this);
+  private final a.a l = new c.1(this);
   
   public c(int paramInt)
   {
@@ -34,35 +34,38 @@ public class c
   
   public void a(a parama, boolean paramBoolean)
   {
-    if ((parama == null) || (parama.a() == null)) {
-      return;
-    }
-    parama.a(this.l);
-    if (this.h == null) {
-      this.h = parama;
-    }
-    if (this.g == null) {
-      this.g = new ArrayList();
-    }
-    this.g.add(Integer.valueOf(parama.d()));
-    if (this.f == null)
+    if (parama != null)
     {
-      this.e = this.d.play(parama.a());
-      this.f = parama;
-      return;
+      if (parama.a() == null) {
+        return;
+      }
+      parama.a(this.l);
+      if (this.h == null) {
+        this.h = parama;
+      }
+      if (this.g == null) {
+        this.g = new ArrayList();
+      }
+      this.g.add(Integer.valueOf(parama.d()));
+      if (this.f == null) {}
+      for (AnimatorSet.Builder localBuilder = this.d.play(parama.a());; localBuilder = this.d.play(parama.a()).after(this.f.a()))
+      {
+        this.e = localBuilder;
+        this.f = parama;
+        return;
+        if (!paramBoolean)
+        {
+          this.e.with(parama.a());
+          return;
+        }
+      }
     }
-    if (!paramBoolean)
-    {
-      this.e.with(parama.a());
-      return;
-    }
-    this.e = this.d.play(parama.a()).after(this.f.a());
-    this.f = parama;
   }
   
   public void b()
   {
-    if ((this.k == -1) || (this.k == 2))
+    int m = this.k;
+    if ((m == -1) || (m == 2))
     {
       this.j = 0;
       this.k = 0;
@@ -88,16 +91,18 @@ public class c
   
   public Object f()
   {
-    if (this.h != null) {
-      return this.h.f();
+    a locala = this.h;
+    if (locala != null) {
+      return locala.f();
     }
     return Integer.valueOf(0);
   }
   
   public Object g()
   {
-    if (this.h != null) {
-      return this.h.g();
+    a locala = this.h;
+    if (locala != null) {
+      return locala.g();
     }
     return Integer.valueOf(0);
   }
@@ -128,15 +133,16 @@ public class c
       super.onAnimationEnd(paramAnimator);
       return;
     }
-    if ((this.i == -1) || ((this.i > 0) && (this.j < this.i - 1)))
+    int m = this.i;
+    if ((m != -1) && ((m <= 0) || (this.j >= m - 1)))
     {
-      this.k = 1;
-      this.j += 1;
-      this.d.start();
+      this.k = 2;
+      super.onAnimationEnd(paramAnimator);
       return;
     }
-    this.k = 2;
-    super.onAnimationEnd(paramAnimator);
+    this.k = 1;
+    this.j += 1;
+    this.d.start();
   }
   
   public void onAnimationStart(Animator paramAnimator)
@@ -151,7 +157,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.c
  * JD-Core Version:    0.7.0.1
  */

@@ -37,28 +37,24 @@ public class TraceStateMachineScheduler
   public void a(Bundle paramBundle)
   {
     this.b = false;
-    do
+    while (!this.b)
     {
-      while (!this.b) {
-        switch (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$StateMachine.a(paramBundle))
+      int i = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$StateMachine.a(paramBundle);
+      if (i != -1)
+      {
+        if ((i != 0) && (i == 1) && (this.jdField_a_of_type_Boolean))
         {
-        case 0: 
-        default: 
-          break;
-        case -1: 
-          if ((this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState != null) && (this.jdField_a_of_type_Int > 0))
-          {
-            paramBundle = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
-            this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramBundle, this.jdField_a_of_type_Int);
-          }
-          break;
+          Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
+          localMessage.setData(paramBundle);
+          this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
         }
       }
-      return;
-    } while (!this.jdField_a_of_type_Boolean);
-    Message localMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-    localMessage.setData(paramBundle);
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(localMessage);
+      else if ((this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState != null) && (this.jdField_a_of_type_Int > 0))
+      {
+        paramBundle = this.jdField_a_of_type_AndroidOsHandler.obtainMessage(3);
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramBundle, this.jdField_a_of_type_Int);
+      }
+    }
   }
   
   public void b()
@@ -71,27 +67,29 @@ public class TraceStateMachineScheduler
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 2)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (!this.b) {
-        a(paramMessage.getData());
-      }
-      return true;
-      if (this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState != null)
+      if (i == 3)
       {
-        this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState.b();
-        this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState = null;
+        paramMessage = this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState;
+        if (paramMessage != null)
+        {
+          paramMessage.b();
+          this.jdField_a_of_type_ComTencentMobileqqApolloStatisticsTraceSdkStateTraceStateMachineScheduler$TimeOutState = null;
+        }
       }
+      return false;
     }
+    if (!this.b) {
+      a(paramMessage.getData());
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.trace.sdk.state.TraceStateMachineScheduler
  * JD-Core Version:    0.7.0.1
  */

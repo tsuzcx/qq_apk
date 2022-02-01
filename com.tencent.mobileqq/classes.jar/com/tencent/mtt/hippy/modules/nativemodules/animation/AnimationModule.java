@@ -57,8 +57,10 @@ public class AnimationModule
   
   private HippyMap a(int paramInt, HippyRootView paramHippyRootView, HippyMap paramHippyMap)
   {
-    if (paramHippyMap == null) {}
-    while ((paramHippyMap.containsKey("handleMessageByAnimation")) && (paramHippyMap.getBoolean("handleMessageByAnimation"))) {
+    if (paramHippyMap == null) {
+      return paramHippyMap;
+    }
+    if ((paramHippyMap.containsKey("handleMessageByAnimation")) && (paramHippyMap.getBoolean("handleMessageByAnimation"))) {
       return paramHippyMap;
     }
     if (!paramHippyMap.containsKey("useAnimation"))
@@ -73,18 +75,18 @@ public class AnimationModule
         a(paramInt, paramHippyRootView, null, null);
         return paramHippyMap;
       }
+      HippyMap localHippyMap = new HippyMap();
+      ArrayList localArrayList = new ArrayList();
+      a(paramInt, paramHippyMap, localHippyMap, localArrayList);
+      a(paramInt, paramHippyRootView, paramHippyMap, localArrayList);
+      localHippyMap.pushBoolean("handleMessageByAnimation", true);
+      return localHippyMap;
     }
     catch (Throwable paramHippyRootView)
     {
       paramHippyRootView.printStackTrace();
-      return paramHippyMap;
     }
-    HippyMap localHippyMap = new HippyMap();
-    ArrayList localArrayList = new ArrayList();
-    a(paramInt, paramHippyMap, localHippyMap, localArrayList);
-    a(paramInt, paramHippyRootView, paramHippyMap, localArrayList);
-    localHippyMap.pushBoolean("handleMessageByAnimation", true);
-    return localHippyMap;
+    return paramHippyMap;
   }
   
   private Object a(int paramInt1, int paramInt2)
@@ -118,68 +120,70 @@ public class AnimationModule
     synchronized (this.e)
     {
       Iterator localIterator = this.e.iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         int i = ((Integer)localIterator.next()).intValue();
         b localb = (b)this.b.get(i);
         this.f.add(localb);
         localIterator.remove();
       }
+      ??? = this.f.iterator();
+      while (((Iterator)???).hasNext())
+      {
+        a((b)((Iterator)???).next());
+        ((Iterator)???).remove();
+      }
+      if ((this.mContext != null) && (this.mContext.getDomManager() != null)) {
+        this.mContext.getDomManager().c();
+      }
+      return;
     }
-    ??? = this.f.iterator();
-    while (((Iterator)???).hasNext())
+    for (;;)
     {
-      a((b)((Iterator)???).next());
-      ((Iterator)???).remove();
-    }
-    if ((this.mContext != null) && (this.mContext.getDomManager() != null)) {
-      this.mContext.getDomManager().c();
+      throw localObject2;
     }
   }
   
   private void a(int paramInt, HippyRootView paramHippyRootView, HippyMap paramHippyMap, ArrayList<Integer> paramArrayList)
   {
-    Object localObject = (b)this.b.get(paramInt);
-    if (localObject != null)
+    b localb = (b)this.b.get(paramInt);
+    Object localObject;
+    if (localb != null)
     {
-      Iterator localIterator = ((b)localObject).d().iterator();
-      while (localIterator.hasNext())
+      localObject = localb.d().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        a locala = (a)localIterator.next();
+        a locala = (a)((Iterator)localObject).next();
         if ((locala != null) && ((paramArrayList == null) || (!paramArrayList.contains(Integer.valueOf(locala.a)))))
         {
           locala.b(paramInt);
-          localIterator.remove();
+          ((Iterator)localObject).remove();
         }
       }
     }
-    if ((paramArrayList == null) || (paramArrayList.size() <= 0))
+    if ((paramArrayList != null) && (paramArrayList.size() > 0))
     {
-      this.b.remove(paramInt);
-      return;
-    }
-    if (localObject == null)
-    {
-      paramHippyRootView = new b(paramInt, paramHippyRootView);
-      this.b.append(paramInt, paramHippyRootView);
-    }
-    for (;;)
-    {
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
+      localObject = localb;
+      if (localb == null)
       {
-        localObject = (Integer)paramArrayList.next();
-        localObject = (a)this.a.get(((Integer)localObject).intValue());
-        if (localObject != null)
+        localObject = new b(paramInt, paramHippyRootView);
+        this.b.append(paramInt, localObject);
+      }
+      paramHippyRootView = paramArrayList.iterator();
+      while (paramHippyRootView.hasNext())
+      {
+        paramArrayList = (Integer)paramHippyRootView.next();
+        paramArrayList = (a)this.a.get(paramArrayList.intValue());
+        if (paramArrayList != null)
         {
-          paramHippyRootView.a((a)localObject);
-          ((a)localObject).a(paramInt);
+          ((b)localObject).a(paramArrayList);
+          paramArrayList.a(paramInt);
         }
       }
-      paramHippyRootView.a(paramHippyMap);
+      ((b)localObject).a(paramHippyMap);
       return;
-      paramHippyRootView = (HippyRootView)localObject;
     }
+    this.b.remove(paramInt);
   }
   
   private void a(int paramInt, HippyArray paramHippyArray1, HippyArray paramHippyArray2, ArrayList<Integer> paramArrayList)
@@ -189,111 +193,105 @@ public class AnimationModule
     }
     int j = paramHippyArray1.size();
     int i = 0;
-    label14:
-    Object localObject1;
-    if (i < j)
+    while (i < j)
     {
-      localObject1 = paramHippyArray1.get(i);
-      if (!(localObject1 instanceof HippyMap)) {
-        break label138;
-      }
-      if (!b((HippyMap)localObject1)) {
-        break label106;
-      }
-      int k = ((HippyMap)localObject1).getInt("animationId");
-      if (paramArrayList != null) {
-        paramArrayList.add(Integer.valueOf(k));
-      }
-      localObject1 = a(paramInt, k);
-      if (localObject1 != null) {
-        paramHippyArray2.pushObject(localObject1);
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label14;
-      break;
-      label106:
-      Object localObject2 = new HippyMap();
-      a(paramInt, (HippyMap)localObject1, (HippyMap)localObject2, paramArrayList);
-      paramHippyArray2.pushMap((HippyMap)localObject2);
-      continue;
-      label138:
-      if ((localObject1 instanceof HippyArray))
+      Object localObject2 = paramHippyArray1.get(i);
+      Object localObject1;
+      if ((localObject2 instanceof HippyMap))
       {
-        localObject2 = new HippyArray();
-        a(paramInt, (HippyArray)localObject1, (HippyArray)localObject2, paramArrayList);
-        paramHippyArray2.pushArray((HippyArray)localObject2);
+        localObject1 = (HippyMap)localObject2;
+        if (b((HippyMap)localObject1))
+        {
+          int k = ((HippyMap)localObject1).getInt("animationId");
+          if (paramArrayList != null) {
+            paramArrayList.add(Integer.valueOf(k));
+          }
+          localObject1 = a(paramInt, k);
+          if (localObject1 == null) {
+            break label174;
+          }
+        }
+        else
+        {
+          localObject2 = new HippyMap();
+          a(paramInt, (HippyMap)localObject1, (HippyMap)localObject2, paramArrayList);
+          paramHippyArray2.pushMap((HippyMap)localObject2);
+          break label174;
+        }
       }
       else
       {
-        paramHippyArray2.pushObject(localObject1);
+        localObject1 = localObject2;
+        if ((localObject2 instanceof HippyArray))
+        {
+          localObject1 = new HippyArray();
+          a(paramInt, (HippyArray)localObject2, (HippyArray)localObject1, paramArrayList);
+          paramHippyArray2.pushArray((HippyArray)localObject1);
+          break label174;
+        }
       }
+      paramHippyArray2.pushObject(localObject1);
+      label174:
+      i += 1;
     }
   }
   
   private void a(int paramInt, HippyMap paramHippyMap1, HippyMap paramHippyMap2, ArrayList<Integer> paramArrayList)
   {
-    if (paramHippyMap1 == null) {}
-    for (;;)
-    {
+    if (paramHippyMap1 == null) {
       return;
-      Iterator localIterator = paramHippyMap1.keySet().iterator();
-      while (localIterator.hasNext())
+    }
+    Iterator localIterator = paramHippyMap1.keySet().iterator();
+    while (localIterator.hasNext())
+    {
+      String str = (String)localIterator.next();
+      Object localObject2 = paramHippyMap1.get(str);
+      if ((localObject2 instanceof HippyMap))
       {
-        String str = (String)localIterator.next();
-        Object localObject1 = paramHippyMap1.get(str);
-        Object localObject2;
-        if ((localObject1 instanceof HippyMap))
+        localObject1 = (HippyMap)localObject2;
+        if (b((HippyMap)localObject1))
         {
-          if (b((HippyMap)localObject1))
-          {
-            int i = ((HippyMap)localObject1).getInt("animationId");
-            if (paramArrayList != null) {
-              paramArrayList.add(Integer.valueOf(i));
-            }
-            localObject1 = a(paramInt, i);
-            if (localObject1 != null) {
-              paramHippyMap2.pushObject(str, localObject1);
-            }
+          int i = ((HippyMap)localObject1).getInt("animationId");
+          if (paramArrayList != null) {
+            paramArrayList.add(Integer.valueOf(i));
           }
-          else
-          {
-            localObject2 = new HippyMap();
-            a(paramInt, (HippyMap)localObject1, (HippyMap)localObject2, paramArrayList);
-            paramHippyMap2.pushMap(str, (HippyMap)localObject2);
+          localObject1 = a(paramInt, i);
+          if (localObject1 == null) {
+            continue;
           }
-        }
-        else if ((localObject1 instanceof HippyArray))
-        {
-          localObject2 = new HippyArray();
-          a(paramInt, (HippyArray)localObject1, (HippyArray)localObject2, paramArrayList);
-          paramHippyMap2.pushArray(str, (HippyArray)localObject2);
-        }
-        else
-        {
-          paramHippyMap2.pushObject(str, localObject1);
         }
       }
+      do
+      {
+        paramHippyMap2.pushObject(str, localObject1);
+        break;
+        localObject2 = new HippyMap();
+        a(paramInt, (HippyMap)localObject1, (HippyMap)localObject2, paramArrayList);
+        paramHippyMap2.pushMap(str, (HippyMap)localObject2);
+        break;
+        localObject1 = localObject2;
+      } while (!(localObject2 instanceof HippyArray));
+      Object localObject1 = new HippyArray();
+      a(paramInt, (HippyArray)localObject2, (HippyArray)localObject1, paramArrayList);
+      paramHippyMap2.pushArray(str, (HippyArray)localObject1);
     }
   }
   
   private void a(HippyMap paramHippyMap)
   {
-    if (paramHippyMap == null) {}
-    Object localObject;
-    do
+    if (paramHippyMap == null) {
+      return;
+    }
+    if (paramHippyMap.containsKey("startValue"))
     {
-      do
+      Object localObject = paramHippyMap.get("startValue");
+      if ((localObject instanceof HippyMap))
       {
-        return;
-      } while (!paramHippyMap.containsKey("startValue"));
-      localObject = paramHippyMap.get("startValue");
-    } while (!(localObject instanceof HippyMap));
-    int i = ((HippyMap)localObject).getInt("animationId");
-    paramHippyMap.remove("startValue");
-    paramHippyMap.pushObject("startValue", ((a)this.a.get(i)).g());
+        int i = ((HippyMap)localObject).getInt("animationId");
+        paramHippyMap.remove("startValue");
+        paramHippyMap.pushObject("startValue", ((a)this.a.get(i)).g());
+      }
+    }
   }
   
   private void a(b paramb)
@@ -303,62 +301,62 @@ public class AnimationModule
     }
     try
     {
-      HippyMap localHippyMap = new HippyMap();
-      a(paramb.a(), paramb.c(), localHippyMap, null);
-      localHippyMap.pushBoolean("handleMessageByAnimation", true);
-      this.mContext.getDomManager().a(paramb.a(), localHippyMap, paramb.b());
+      localObject = new HippyMap();
+      a(paramb.a(), paramb.c(), (HippyMap)localObject, null);
+      ((HippyMap)localObject).pushBoolean("handleMessageByAnimation", true);
+      this.mContext.getDomManager().a(paramb.a(), (HippyMap)localObject, paramb.b());
       return;
     }
-    catch (Throwable paramb) {}
+    catch (Throwable paramb)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateAnimationNodeProps: ");
+      ((StringBuilder)localObject).append(paramb.getMessage());
+      LogUtils.d("AnimationModule", ((StringBuilder)localObject).toString());
+    }
   }
   
   private boolean b(HippyMap paramHippyMap)
   {
-    if (paramHippyMap == null) {}
-    while ((!paramHippyMap.containsKey("animationId")) || (paramHippyMap.size() != 1)) {
+    if (paramHippyMap == null) {
       return false;
     }
-    return true;
+    return (paramHippyMap.containsKey("animationId")) && (paramHippyMap.size() == 1);
   }
   
   @HippyMethod(name="createAnimation")
   public void createAnimation(int paramInt, String paramString, HippyMap paramHippyMap)
   {
-    if (this.a.get(paramInt) != null) {}
-    for (;;)
-    {
+    if (this.a.get(paramInt) != null) {
       return;
-      if (TextUtils.isEmpty(paramString)) {
-        this.a.put(paramInt, null);
-      }
-      try
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      this.a.put(paramInt, null);
+    }
+    try
+    {
+      if (TextUtils.equals(paramString, "timing"))
       {
-        if (TextUtils.equals(paramString, "timing"))
-        {
-          a(paramHippyMap);
-          paramString = new e(paramInt);
-          paramString.a(this);
-          paramString.a(paramHippyMap);
-          this.a.append(paramInt, paramString);
-          return;
-        }
+        a(paramHippyMap);
+        paramString = new e(paramInt);
+        paramString.a(this);
+        paramString.a(paramHippyMap);
+        this.a.append(paramInt, paramString);
+        return;
       }
-      catch (Throwable paramString)
-      {
-        paramString.printStackTrace();
-      }
+    }
+    catch (Throwable paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
   @HippyMethod(name="createAnimationSet")
   public void createAnimationSet(int paramInt, HippyMap paramHippyMap)
   {
-    boolean bool1 = false;
     c localc = new c(paramInt);
     localc.a(this);
-    if (paramHippyMap != null) {}
-    for (;;)
-    {
+    if (paramHippyMap != null) {
       try
       {
         if (paramHippyMap.containsKey("repeatCount")) {
@@ -366,33 +364,36 @@ public class AnimationModule
         }
         paramHippyMap = paramHippyMap.getArray("children");
         int j = paramHippyMap.size();
-        i = 0;
-        if (i < j)
+        int i = 0;
+        Object localObject;
+        boolean bool2;
+        for (boolean bool1 = false; i < j; bool1 = bool2)
         {
-          localHippyMap = paramHippyMap.getMap(i);
-          boolean bool2 = localHippyMap.containsKey("animationId");
-          if (bool2) {
-            continue;
+          localObject = paramHippyMap.getMap(i);
+          if (!((HippyMap)localObject).containsKey("animationId")) {
+            break;
           }
+          int k = ((HippyMap)localObject).getInt("animationId");
+          bool2 = bool1;
+          if (i != 0)
+          {
+            bool2 = bool1;
+            if (((HippyMap)localObject).containsKey("follow")) {
+              bool2 = ((HippyMap)localObject).getBoolean("follow");
+            }
+          }
+          localc.a((a)this.a.get(k), bool2);
+          i += 1;
         }
+        this.a.append(paramInt, localc);
       }
       catch (Throwable paramHippyMap)
       {
-        int i;
-        HippyMap localHippyMap;
-        int k;
-        continue;
-        continue;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("createAnimationSet: ");
+        ((StringBuilder)localObject).append(paramHippyMap.getMessage());
+        LogUtils.d("AnimationModule", ((StringBuilder)localObject).toString());
       }
-      this.a.append(paramInt, localc);
-      return;
-      k = localHippyMap.getInt("animationId");
-      if ((i == 0) || (!localHippyMap.containsKey("follow"))) {
-        continue;
-      }
-      bool1 = localHippyMap.getBoolean("follow");
-      localc.a((a)this.a.get(k), bool1);
-      i += 1;
     }
   }
   
@@ -429,27 +430,28 @@ public class AnimationModule
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 100)
     {
+      if (i != 101) {}
     }
-    for (;;)
+    else
     {
-      return true;
-      if (!this.c.hasMessages(101))
+      long l1;
+      long l2;
+      do
       {
-        long l = SystemClock.elapsedRealtime();
-        if (l - this.d >= 16L)
-        {
-          a();
+        a();
+        break;
+        if (this.c.hasMessages(101)) {
+          break;
         }
-        else
-        {
-          this.c.sendEmptyMessageDelayed(101, l - this.d);
-          continue;
-          a();
-        }
-      }
+        l1 = SystemClock.elapsedRealtime();
+        l2 = this.d;
+      } while (l1 - l2 >= 16L);
+      this.c.sendEmptyMessageDelayed(101, l1 - l2);
     }
+    return true;
   }
   
   public void initialize()
@@ -488,22 +490,22 @@ public class AnimationModule
   
   public void onAnimationUpdate(a parama)
   {
-    if (parama == null) {}
-    do
+    if (parama == null) {
+      return;
+    }
+    parama = parama.e();
+    if (parama == null) {
+      return;
+    }
+    parama = parama.iterator();
+    while (parama.hasNext())
     {
-      do
-      {
-        return;
-        parama = parama.e();
-      } while (parama == null);
-      parama = parama.iterator();
-      while (parama.hasNext())
-      {
-        int i = ((Integer)parama.next()).intValue();
-        this.e.add(Integer.valueOf(i));
-      }
-    } while (this.c.hasMessages(100));
-    this.c.sendEmptyMessage(100);
+      int i = ((Integer)parama.next()).intValue();
+      this.e.add(Integer.valueOf(i));
+    }
+    if (!this.c.hasMessages(100)) {
+      this.c.sendEmptyMessage(100);
+    }
   }
   
   public HippyMap onCreateNode(int paramInt, HippyRootView paramHippyRootView, HippyMap paramHippyMap)
@@ -518,15 +520,17 @@ public class AnimationModule
   
   public void onEnginePause()
   {
-    if (this.c != null) {
-      this.c.post(new AnimationModule.2(this));
+    Handler localHandler = this.c;
+    if (localHandler != null) {
+      localHandler.post(new AnimationModule.2(this));
     }
   }
   
   public void onEngineResume()
   {
-    if (this.c != null) {
-      this.c.post(new AnimationModule.1(this));
+    Handler localHandler = this.c;
+    if (localHandler != null) {
+      localHandler.post(new AnimationModule.1(this));
     }
   }
   
@@ -576,20 +580,22 @@ public class AnimationModule
   {
     LogUtils.d("shit", Thread.currentThread().getName());
     a locala = (a)this.a.get(paramInt);
-    if ((locala == null) || ((locala.a() != null) && (locala.a().isRunning()))) {
-      LogUtils.d("AnimationModule", "trying to update a unexisted animation or the animation has started");
-    }
-    while (!(locala instanceof e)) {
+    if ((locala != null) && ((locala.a() == null) || (!locala.a().isRunning())))
+    {
+      if ((locala instanceof e))
+      {
+        a(paramHippyMap);
+        ((e)locala).a(paramHippyMap);
+        locala.onAnimationUpdate(null);
+      }
       return;
     }
-    a(paramHippyMap);
-    ((e)locala).a(paramHippyMap);
-    locala.onAnimationUpdate(null);
+    LogUtils.d("AnimationModule", "trying to update a unexisted animation or the animation has started");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.animation.AnimationModule
  * JD-Core Version:    0.7.0.1
  */

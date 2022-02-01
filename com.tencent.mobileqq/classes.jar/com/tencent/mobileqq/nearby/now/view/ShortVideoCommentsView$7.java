@@ -13,19 +13,21 @@ class ShortVideoCommentsView$7
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (ShortVideoCommentsView.a(this.a) == null) {}
-    while (CommentsUtil.a(paramEditable.toString()) <= 140) {
+    if (ShortVideoCommentsView.access$400(this.a) == null) {
       return;
     }
-    int j = Selection.getSelectionEnd(paramEditable);
-    paramEditable = CommentsUtil.a(paramEditable.toString(), 0, 140).toString();
-    ShortVideoCommentsView.a(this.a).setText(paramEditable);
-    paramEditable = ShortVideoCommentsView.a(this.a).getText();
-    int i = j;
-    if (j > paramEditable.length()) {
-      i = paramEditable.length();
+    if (CommentsUtil.a(paramEditable.toString()) > 140)
+    {
+      int j = Selection.getSelectionEnd(paramEditable);
+      paramEditable = CommentsUtil.a(paramEditable.toString(), 0, 140).toString();
+      ShortVideoCommentsView.access$400(this.a).setText(paramEditable);
+      paramEditable = ShortVideoCommentsView.access$400(this.a).getText();
+      int i = j;
+      if (j > paramEditable.length()) {
+        i = paramEditable.length();
+      }
+      Selection.setSelection(paramEditable, i);
     }
-    Selection.setSelection(paramEditable, i);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -34,7 +36,7 @@ class ShortVideoCommentsView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.7
  * JD-Core Version:    0.7.0.1
  */

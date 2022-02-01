@@ -11,23 +11,13 @@
         <item>@string/cvy</item>
         <item>@string/cvz</item>
     </string-array>
-    <string-array name="bk">
-        <item>哈哈哈</item>
-        <item>在吗</item>
-        <item>宝贝</item>
-        <item>拜拜</item>
-        <item>为什么</item>
-        <item>我不知道</item>
-        <item>笑死我了</item>
-        <item>爱你</item>
-    </string-array>
-    <integer-array name="bl">
+    <integer-array name="bk">
         <item>4</item>
         <item>1</item>
         <item>2</item>
         <item>3</item>
     </integer-array>
-    <string-array name="bm">
+    <string-array name="bl">
         <item>好友</item>
         <item>情侣</item>
         <item>闺蜜</item>
@@ -50,6 +40,7 @@
         <item>拨打免费电话</item>
         <item>发送短信</item>
         <item>取消</item>
+        <item>对方手机号未验证，请谨慎拨打</item>
     </string-array>
     <string-array name="h">
         <item>拨打电话</item>
@@ -257,6 +248,20 @@
         <item>拍照</item>
         <item>从相册选择</item>
     </string-array>
+    <string-array name="bm">
+        <item>"我打游戏超厉害！精通五路
+声音很温柔的，一起开黑给你听"</item>
+        <item>"一起唠唠嗑，倾诉小心事，打游戏，踩空间都ok
+无雷放心加"</item>
+        <item>"可盐可甜，喜欢哼歌
+回收野王 旧野王 各种别人不要的野王！我们一起摘星星⭐"</item>
+        <item>"最近弹架子鼓，时差选手阴间作息
+喜欢沙雕越傻越好"</item>
+        <item>"dd个固聊，能每天聊聊天……
+难道只有学电焊，才能让姐姐眼前一亮吗？"</item>
+        <item>"刚买了单反|随便拍拍
+钢琴|会发一些我自己弹的好听的曲子"</item>
+    </string-array>
     <string-array name="ah">
         <item>China 中国大陆 86 11 常用地区</item>
         <item>Hong Kong 中国香港 852 8 常用地区</item>
@@ -396,6 +401,7 @@
         <item></item>
         <item>资料卡设置</item>
         <item>消息列表</item>
+        <item>创建专属形象</item>
     </string-array>
     <string-array name="aw">
         <item>未填写</item>
@@ -907,6 +913,16 @@
         <item>个人头像违规</item>
         <item>昵称违规</item>
         <item>内容违规</item>
+    </string-array>
+    <string-array name="ca">
+        <item>哈哈哈</item>
+        <item>在吗</item>
+        <item>宝贝</item>
+        <item>拜拜</item>
+        <item>为什么</item>
+        <item>我不知道</item>
+        <item>笑死我了</item>
+        <item>爱你</item>
     </string-array>
     <string-array name="bj">
         <item>" · "</item>

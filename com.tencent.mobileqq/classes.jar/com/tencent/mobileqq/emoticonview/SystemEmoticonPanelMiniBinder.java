@@ -21,7 +21,9 @@ public class SystemEmoticonPanelMiniBinder
   
   private int getPageCount(int[] paramArrayOfInt)
   {
-    return (paramArrayOfInt.length + this.mNumEmojiPage - 1) / this.mNumEmojiPage;
+    int i = paramArrayOfInt.length;
+    int j = this.mNumEmojiPage;
+    return (i + j - 1) / j;
   }
   
   private void setRowNumAndPageNum(boolean paramBoolean)
@@ -55,7 +57,7 @@ public class SystemEmoticonPanelMiniBinder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.SystemEmoticonPanelMiniBinder
  * JD-Core Version:    0.7.0.1
  */

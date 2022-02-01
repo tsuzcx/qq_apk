@@ -2,7 +2,7 @@ package com.tencent.hippy.qq.view.video;
 
 import android.content.Context;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.viola.videonew.VVideo;
+import com.tencent.mobileqq.kandian.biz.viola.video.VVideoInit;
 import com.tencent.mtt.hippy.annotation.HippyController;
 import com.tencent.mtt.hippy.annotation.HippyControllerProps;
 import com.tencent.mtt.hippy.common.HippyArray;
@@ -34,108 +34,98 @@ public class HippyQQVideoViewController
   
   public boolean consumeBackKeyEvent()
   {
-    if (getVideoViewControlListener() != null)
+    Object localObject = getVideoViewControlListener();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (localObject != null)
     {
+      bool1 = bool2;
       if (getVideoViewControlListener().isFullScreen())
       {
-        this.mHostView.exitFullScreen(1);
+        localObject = this.mHostView;
+        bool1 = true;
+        ((HippyQQVideoView)localObject).exitFullScreen(1);
         getVideoViewControlListener().exitFullScreen(this.mHostView, null);
-        return true;
       }
-      return false;
     }
-    return false;
+    return bool1;
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return null;
   }
   
-  public View createViewImpl(Context paramContext, HippyMap paramHippyMap)
+  protected View createViewImpl(Context paramContext, HippyMap paramHippyMap)
   {
     this.mHostView = new HippyQQVideoView(paramContext);
     this.mHostView.initView();
-    if (paramHippyMap != null) {}
-    label347:
-    for (;;)
-    {
-      Object localObject1;
-      Object localObject2;
+    if (paramHippyMap != null) {
       try
       {
         paramContext = paramHippyMap.entrySet().iterator();
-        paramHippyMap = VVideo.initDefaultVideoData();
-        if (paramContext.hasNext())
+        paramHippyMap = VVideoInit.a();
+        while (paramContext.hasNext())
         {
-          localObject1 = (Map.Entry)paramContext.next();
-          localObject2 = (String)((Map.Entry)localObject1).getKey();
-          if ("src".equals(localObject2)) {
-            if ((((Map.Entry)localObject1).getValue() instanceof String))
+          Object localObject1 = (Map.Entry)paramContext.next();
+          Object localObject2 = (String)((Map.Entry)localObject1).getKey();
+          if ("src".equals(localObject2))
+          {
+            boolean bool = ((Map.Entry)localObject1).getValue() instanceof String;
+            if (bool)
             {
               localObject2 = new JSONObject();
               this.mCurrentVideoUrl = ((String)((Map.Entry)localObject1).getValue());
               ((JSONObject)localObject2).put("videoUrl", ((Map.Entry)localObject1).getValue());
               paramHippyMap.put("video_info", localObject2);
-              continue;
-              return this.mHostView;
+            }
+            else if ((((Map.Entry)localObject1).getValue() instanceof HippyMap))
+            {
+              localObject1 = (HippyMap)((Map.Entry)localObject1).getValue();
+              this.mCurrentVid = ((HippyMap)localObject1).getString("vid");
+              paramHippyMap.put("video_info", ((HippyMap)localObject1).toJSONObject());
             }
           }
+          else if ("timeInterval".equals(localObject2))
+          {
+            paramHippyMap.put("timeupdateRate", ((Map.Entry)localObject1).getValue());
+          }
+          else if ("autoPlay".equals(localObject2))
+          {
+            paramHippyMap.put("autoplay", ((Map.Entry)localObject1).getValue());
+          }
+          else if ((((Map.Entry)localObject1).getValue() instanceof HippyMap))
+          {
+            paramHippyMap.put((String)localObject2, ((HippyMap)((Map.Entry)localObject1).getValue()).toJSONObject());
+          }
+          else if ((((Map.Entry)localObject1).getValue() instanceof HippyArray))
+          {
+            paramHippyMap.put((String)localObject2, ((HippyArray)((Map.Entry)localObject1).getValue()).toJSONArray());
+          }
+          else
+          {
+            paramHippyMap.put((String)localObject2, ((Map.Entry)localObject1).getValue());
+          }
         }
+        this.mHostView.getVideoViewControlListener().open(this.mHostView, paramHippyMap);
       }
       catch (Exception paramContext)
       {
         paramContext.printStackTrace();
       }
-      for (;;)
-      {
-        if (!(((Map.Entry)localObject1).getValue() instanceof HippyMap)) {
-          break label347;
-        }
-        localObject1 = (HippyMap)((Map.Entry)localObject1).getValue();
-        this.mCurrentVid = ((HippyMap)localObject1).getString("vid");
-        paramHippyMap.put("video_info", ((HippyMap)localObject1).toJSONObject());
-        break;
-        if ("timeInterval".equals(localObject2))
-        {
-          paramHippyMap.put("timeupdateRate", ((Map.Entry)localObject1).getValue());
-          break;
-        }
-        if ("autoPlay".equals(localObject2))
-        {
-          paramHippyMap.put("autoplay", ((Map.Entry)localObject1).getValue());
-          break;
-        }
-        if ((((Map.Entry)localObject1).getValue() instanceof HippyMap))
-        {
-          paramHippyMap.put((String)localObject2, ((HippyMap)((Map.Entry)localObject1).getValue()).toJSONObject());
-          break;
-        }
-        if ((((Map.Entry)localObject1).getValue() instanceof HippyArray))
-        {
-          paramHippyMap.put((String)localObject2, ((HippyArray)((Map.Entry)localObject1).getValue()).toJSONArray());
-          break;
-        }
-        paramHippyMap.put((String)localObject2, ((Map.Entry)localObject1).getValue());
-        break;
-        this.mHostView.getVideoViewControlListener().open(this.mHostView, paramHippyMap);
-      }
     }
+    return this.mHostView;
   }
   
   public void dispatchFunction(HippyQQVideoView paramHippyQQVideoView, String paramString, HippyArray paramHippyArray)
   {
     if (getVideoViewControlListener() != null)
     {
-      if (!"preplay".equals(paramString)) {
-        break label27;
+      if ("preplay".equals(paramString))
+      {
+        getVideoViewControlListener().preplay(paramHippyQQVideoView);
+        return;
       }
-      getVideoViewControlListener().preplay(paramHippyQQVideoView);
-    }
-    label27:
-    do
-    {
-      return;
       if ("play".equals(paramString))
       {
         getVideoViewControlListener().play(paramHippyQQVideoView);
@@ -166,23 +156,21 @@ public class HippyQQVideoViewController
         getVideoViewControlListener().setLoopBack(paramHippyArray.getBoolean(0));
         return;
       }
-    } while (!"resetSrc".equals(paramString));
-    resetSrc(paramHippyArray.getObject(0));
+      if ("resetSrc".equals(paramString)) {
+        resetSrc(paramHippyArray.getObject(0));
+      }
+    }
   }
   
   public void dispatchFunction(HippyQQVideoView paramHippyQQVideoView, String paramString, HippyArray paramHippyArray, Promise paramPromise)
   {
     if (getVideoViewControlListener() != null)
     {
-      if (!"getPlayInfo".equals(paramString)) {
-        break label29;
+      if ("getPlayInfo".equals(paramString))
+      {
+        getVideoViewControlListener().getPlayInfo(paramHippyQQVideoView, paramPromise);
+        return;
       }
-      getVideoViewControlListener().getPlayInfo(paramHippyQQVideoView, paramPromise);
-    }
-    label29:
-    do
-    {
-      return;
       if ("exitFullScreen".equals(paramString))
       {
         paramHippyQQVideoView.exitFullScreen(1);
@@ -199,13 +187,16 @@ public class HippyQQVideoViewController
         dealFullScreen(paramHippyArray.getInt(0), false, paramPromise);
         return;
       }
-    } while (!"fullPortraitScreen".equals(paramString));
-    dealFullScreen(0, true, paramPromise);
+      if ("fullPortraitScreen".equals(paramString)) {
+        dealFullScreen(0, true, paramPromise);
+      }
+    }
   }
   
   public HippyQQVideoView.OnVideoViewControlListener getVideoViewControlListener()
   {
-    if ((this.mHostView != null) && (this.mHostView.getVideoViewControlListener() != null)) {
+    HippyQQVideoView localHippyQQVideoView = this.mHostView;
+    if ((localHippyQQVideoView != null) && (localHippyQQVideoView.getVideoViewControlListener() != null)) {
       return this.mHostView.getVideoViewControlListener();
     }
     return null;
@@ -276,35 +267,39 @@ public class HippyQQVideoViewController
   {
     if (getVideoViewControlListener() != null)
     {
-      JSONObject localJSONObject = initCurrentVideoData();
+      Object localObject1 = initCurrentVideoData();
       try
       {
-        Object localObject;
-        if (((paramObject instanceof String)) && (!this.mCurrentVideoUrl.equals(paramObject)))
+        boolean bool = paramObject instanceof String;
+        Object localObject2;
+        if ((bool) && (!this.mCurrentVideoUrl.equals(paramObject)))
         {
-          localObject = new JSONObject();
-          ((JSONObject)localObject).put("videoUrl", paramObject);
-          localJSONObject.put("video_info", localObject);
+          localObject2 = new JSONObject();
+          ((JSONObject)localObject2).put("videoUrl", paramObject);
+          ((JSONObject)localObject1).put("video_info", localObject2);
           this.mCurrentVideoUrl = ((String)paramObject);
-          getVideoViewControlListener().resetSrc(this.mHostView, localJSONObject);
+          getVideoViewControlListener().resetSrc(this.mHostView, (JSONObject)localObject1);
           return;
         }
         if ((paramObject instanceof HippyMap))
         {
           paramObject = (HippyMap)paramObject;
-          localObject = paramObject.getString("vid");
-          if (!this.mCurrentVid.equals(localObject))
+          localObject2 = paramObject.getString("vid");
+          if (!this.mCurrentVid.equals(localObject2))
           {
-            localJSONObject.put("video_info", paramObject.toJSONObject());
-            this.mCurrentVid = ((String)localObject);
-            getVideoViewControlListener().resetSrc(this.mHostView, localJSONObject);
+            ((JSONObject)localObject1).put("video_info", paramObject.toJSONObject());
+            this.mCurrentVid = ((String)localObject2);
+            getVideoViewControlListener().resetSrc(this.mHostView, (JSONObject)localObject1);
             return;
           }
         }
       }
       catch (Exception paramObject)
       {
-        ViolaLogUtils.e("HippyVideoController", "setSrc error :" + paramObject.getMessage());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("setSrc error :");
+        ((StringBuilder)localObject1).append(paramObject.getMessage());
+        ViolaLogUtils.e("HippyVideoController", ((StringBuilder)localObject1).toString());
       }
     }
   }
@@ -351,7 +346,7 @@ public class HippyQQVideoViewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.video.HippyQQVideoViewController
  * JD-Core Version:    0.7.0.1
  */

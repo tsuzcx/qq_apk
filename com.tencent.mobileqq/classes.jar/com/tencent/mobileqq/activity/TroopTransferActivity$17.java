@@ -12,87 +12,82 @@ class TroopTransferActivity$17
   
   public void run()
   {
-    label166:
-    String str;
-    label187:
-    boolean bool;
-    if (!Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j))
+    boolean bool2 = Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j);
+    boolean bool1 = true;
+    Object localObject;
+    if (!bool2)
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j = this.jdField_a_of_type_ComTencentMobileqqDataFriends.remark;
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m))
       {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.k = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m, 2);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.l = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m, 1);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+        ((TroopTransferActivity.TroopMemberItem)localObject).k = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).m, 2);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+        ((TroopTransferActivity.TroopMemberItem)localObject).l = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).m, 1);
+      }
+      else
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+        ((TroopTransferActivity.TroopMemberItem)localObject).k = "";
+        ((TroopTransferActivity.TroopMemberItem)localObject).l = "";
+      }
+    }
+    if (!Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
+      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+        ((TroopTransferActivity.TroopMemberItem)localObject).h = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).g, 2);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+        ((TroopTransferActivity.TroopMemberItem)localObject).i = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).g, 1);
+      }
+      else
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+        ((TroopTransferActivity.TroopMemberItem)localObject).h = "";
+        ((TroopTransferActivity.TroopMemberItem)localObject).i = "";
+      }
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j)) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j;
+    } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m)) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m;
+    } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g)) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g;
+    } else if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a)) {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a;
+    } else {
+      localObject = "";
+    }
+    if (!Utils.a(localObject, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b))
+    {
+      TroopTransferActivity.TroopMemberItem localTroopMemberItem = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+      localTroopMemberItem.b = ((String)localObject);
+      if (!TextUtils.isEmpty(localTroopMemberItem.b))
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+        ((TroopTransferActivity.TroopMemberItem)localObject).c = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).b, 2);
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+        ((TroopTransferActivity.TroopMemberItem)localObject).d = ChnToSpell.a(((TroopTransferActivity.TroopMemberItem)localObject).b, 1);
+      }
+      else
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem;
+        ((TroopTransferActivity.TroopMemberItem)localObject).c = "";
+        ((TroopTransferActivity.TroopMemberItem)localObject).d = "";
       }
     }
     else
     {
-      if (!Utils.a(this.jdField_a_of_type_ComTencentMobileqqDataFriends.name, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g = this.jdField_a_of_type_ComTencentMobileqqDataFriends.name;
-        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g)) {
-          break label290;
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.h = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g, 2);
-        this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.i = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g, 1);
-      }
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j)) {
-        break label311;
-      }
-      str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.j;
-      if (Utils.a(str, this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b)) {
-        break label412;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b = str;
-      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b)) {
-        break label389;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.c = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b, 2);
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.d = ChnToSpell.a(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.b, 1);
-      bool = true;
+      bool1 = false;
     }
-    for (;;)
-    {
-      this.this$0.a(bool);
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.k = "";
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.l = "";
-      break;
-      label290:
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.h = "";
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.i = "";
-      break label166;
-      label311:
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m))
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.m;
-        break label187;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g))
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.g;
-        break label187;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a))
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.a;
-        break label187;
-      }
-      str = "";
-      break label187;
-      label389:
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.c = "";
-      this.jdField_a_of_type_ComTencentMobileqqActivityTroopTransferActivity$TroopMemberItem.d = "";
-      bool = true;
-      continue;
-      label412:
-      bool = false;
-    }
+    this.this$0.a(bool1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.17
  * JD-Core Version:    0.7.0.1
  */

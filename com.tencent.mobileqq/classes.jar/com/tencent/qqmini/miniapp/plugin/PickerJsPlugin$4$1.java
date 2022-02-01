@@ -31,22 +31,45 @@ class PickerJsPlugin$4$1
     try
     {
       JSONObject localJSONObject = new JSONObject();
-      if (TextUtils.isEmpty(this.this$1.val$fields)) {
-        paramString1 = paramString1 + "-" + paramString2 + "-" + paramString3;
-      }
-      for (;;)
+      boolean bool = TextUtils.isEmpty(this.this$1.val$fields);
+      StringBuilder localStringBuilder;
+      if (bool)
       {
-        localJSONObject.put("value", paramString1);
-        this.this$1.val$req.ok(localJSONObject);
-        return;
-        if ("year".equals(this.this$1.val$fields)) {
-          paramString1 = paramString1 + "";
-        } else if ("month".equals(this.this$1.val$fields)) {
-          paramString1 = paramString1 + "-" + paramString2;
-        } else {
-          paramString1 = paramString1 + "-" + paramString2 + "-" + paramString3;
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("-");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append("-");
+        localStringBuilder.append(paramString3);
+        paramString1 = localStringBuilder.toString();
       }
+      else if ("year".equals(this.this$1.val$fields))
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append(paramString1);
+        paramString2.append("");
+        paramString1 = paramString2.toString();
+      }
+      else if ("month".equals(this.this$1.val$fields))
+      {
+        paramString3 = new StringBuilder();
+        paramString3.append(paramString1);
+        paramString3.append("-");
+        paramString3.append(paramString2);
+        paramString1 = paramString3.toString();
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("-");
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append("-");
+        localStringBuilder.append(paramString3);
+        paramString1 = localStringBuilder.toString();
+      }
+      localJSONObject.put("value", paramString1);
+      this.this$1.val$req.ok(localJSONObject);
       return;
     }
     catch (JSONException paramString1)
@@ -58,7 +81,7 @@ class PickerJsPlugin$4$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.plugin.PickerJsPlugin.4.1
  * JD-Core Version:    0.7.0.1
  */

@@ -24,10 +24,14 @@ class PagRenderWorker$PAGRenderHandler
       {
         float f = paramMessage.arg1 / 1.0E+008F;
         localPagRenderWorker.pagPlayer.setProgress(f);
-      }
-      try
-      {
-        localPagRenderWorker.pagPlayer.flush();
+        try
+        {
+          localPagRenderWorker.pagPlayer.flush();
+        }
+        catch (Exception paramMessage)
+        {
+          LogUtils.b("PagRenderWorker", paramMessage.getMessage());
+        }
         if (!localPagRenderWorker.firstFrame)
         {
           if (localPagRenderWorker.entry != null)
@@ -54,22 +58,15 @@ class PagRenderWorker$PAGRenderHandler
             ThreadManager.getsInstance().execute(3, new PagRenderWorker.PAGRenderHandler.1(this, localPagRenderWorker, paramMessage));
           }
         }
-        return true;
       }
-      catch (Exception paramMessage)
-      {
-        for (;;)
-        {
-          LogUtils.b("PagRenderWorker", paramMessage.getMessage());
-        }
-      }
+      return true;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.PagRenderWorker.PAGRenderHandler
  * JD-Core Version:    0.7.0.1
  */

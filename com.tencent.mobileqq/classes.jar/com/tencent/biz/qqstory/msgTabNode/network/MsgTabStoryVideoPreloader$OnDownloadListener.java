@@ -23,8 +23,14 @@ class MsgTabStoryVideoPreloader$OnDownloadListener
     super.a(paramString, paramInt1, paramErrorMessage, paramInt2, paramDownloadTask);
     if (paramInt2 == 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("MsgTabStoryVideoPreloader", 2, "download error: vid=" + paramString + " fileType=" + paramInt1, paramErrorMessage);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("download error: vid=");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(" fileType=");
+        localStringBuilder.append(paramInt1);
+        QLog.e("MsgTabStoryVideoPreloader", 2, localStringBuilder.toString(), paramErrorMessage);
       }
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a(paramDownloadTask.c, true);
     }
@@ -35,8 +41,14 @@ class MsgTabStoryVideoPreloader$OnDownloadListener
     super.a(paramString, paramInt1, paramFile, paramInt2, paramDownloadTask);
     if (paramInt2 == 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "download success before: vid=" + paramString + " fileType=" + paramInt1);
+      if (QLog.isColorLevel())
+      {
+        paramFile = new StringBuilder();
+        paramFile.append("download success before: vid=");
+        paramFile.append(paramString);
+        paramFile.append(" fileType=");
+        paramFile.append(paramInt1);
+        QLog.i("MsgTabStoryVideoPreloader", 2, paramFile.toString());
       }
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a(paramDownloadTask.c, true);
     }
@@ -47,8 +59,14 @@ class MsgTabStoryVideoPreloader$OnDownloadListener
     super.b(paramString, paramInt1, paramFile, paramInt2, paramDownloadTask);
     if (paramInt2 == 2)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("MsgTabStoryVideoPreloader", 2, "download success: vid=" + paramString + " fileType=" + paramInt1);
+      if (QLog.isColorLevel())
+      {
+        paramFile = new StringBuilder();
+        paramFile.append("download success: vid=");
+        paramFile.append(paramString);
+        paramFile.append(" fileType=");
+        paramFile.append(paramInt1);
+        QLog.i("MsgTabStoryVideoPreloader", 2, paramFile.toString());
       }
       this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeNetworkMsgTabStoryVideoPreloader.a(paramDownloadTask.c, this.jdField_a_of_type_JavaUtilSet.add(paramString));
     }
@@ -56,7 +74,7 @@ class MsgTabStoryVideoPreloader$OnDownloadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabStoryVideoPreloader.OnDownloadListener
  * JD-Core Version:    0.7.0.1
  */

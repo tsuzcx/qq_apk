@@ -21,45 +21,43 @@ public class VExtensionInfoManager
   
   public ExtensionInfo a(String paramString)
   {
-    Object localObject3 = null;
-    Object localObject2 = null;
-    ??? = localObject2;
+    Object localObject = null;
+    ExtensionInfo localExtensionInfo = null;
     if (paramString != null)
     {
-      if (!"".equals(paramString)) {
-        break label24;
+      if ("".equals(paramString)) {
+        return null;
       }
-      ??? = localObject2;
-    }
-    label24:
-    do
-    {
-      do
+      ConcurrentHashMap localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+      localObject = localExtensionInfo;
+      if (localConcurrentHashMap != null) {
+        localObject = (ExtensionInfo)localConcurrentHashMap.get(paramString);
+      }
+      if (localObject != null) {
+        return localObject;
+      }
+      localExtensionInfo = (ExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(ExtensionInfo.class, paramString);
+      localObject = localExtensionInfo;
+      if (localExtensionInfo != null)
       {
-        do
-        {
-          return ???;
-          localObject2 = localObject3;
-          if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap != null) {
-            localObject2 = (ExtensionInfo)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(paramString);
+        localConcurrentHashMap = this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap;
+        localObject = localExtensionInfo;
+        if (localConcurrentHashMap != null) {
+          try
+          {
+            this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localExtensionInfo);
+            return localExtensionInfo;
           }
-          ??? = localObject2;
-        } while (localObject2 != null);
-        localObject2 = (ExtensionInfo)this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.find(ExtensionInfo.class, paramString);
-        ??? = localObject2;
-      } while (localObject2 == null);
-      ??? = localObject2;
-    } while (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap == null);
-    synchronized (this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap)
-    {
-      this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString, localObject2);
-      return localObject2;
+          finally {}
+        }
+      }
     }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.VExtensionInfoManager
  * JD-Core Version:    0.7.0.1
  */

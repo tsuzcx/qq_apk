@@ -10,10 +10,9 @@ public class OnBatteryChangeObserver
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    int i = 0;
-    if (paramInt == 0)
+    if (paramInt == 26364)
     {
-      paramInt = i;
+      paramInt = 0;
       if (paramBundle != null) {
         paramInt = paramBundle.getInt("KEY_BATTERY", 0);
       }
@@ -23,7 +22,7 @@ public class OnBatteryChangeObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.OnBatteryChangeObserver
  * JD-Core Version:    0.7.0.1
  */

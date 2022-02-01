@@ -23,12 +23,12 @@ public class BaseMessageResultAdapter
 {
   private static final String jdField_b_of_type_JavaLangString = MessageResultAdapter.class.getSimpleName();
   protected Context a;
-  public SessionInfo a;
-  public QQAppInterface a;
-  public ChatHistorySearchData a;
-  public MqqWeakReferenceHandler a;
-  public String a;
-  public boolean a;
+  protected SessionInfo a;
+  protected QQAppInterface a;
+  protected ChatHistorySearchData a;
+  protected MqqWeakReferenceHandler a;
+  protected String a;
+  protected boolean a;
   Object jdField_b_of_type_JavaLangObject = new Object();
   protected List<MessageItem> b;
   
@@ -42,54 +42,53 @@ public class BaseMessageResultAdapter
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramQQAppInterface;
   }
   
-  public ChatHistorySearchData a(ChatHistorySearchData paramChatHistorySearchData, ArrayList<MessageItem> paramArrayList)
+  protected ChatHistorySearchData a(ChatHistorySearchData paramChatHistorySearchData, ArrayList<MessageItem> paramArrayList)
   {
     if (paramChatHistorySearchData == null)
     {
-      paramArrayList = paramChatHistorySearchData;
-      if (QLog.isColorLevel())
-      {
+      if (QLog.isColorLevel()) {
         QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData == null");
-        paramArrayList = paramChatHistorySearchData;
       }
-    }
-    do
-    {
-      do
-      {
-        return paramArrayList;
-        if (paramChatHistorySearchData.mSearchData1 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.mSearchData1 == null");
-          }
-          paramChatHistorySearchData.offset = 0;
-          return paramChatHistorySearchData;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.offset = " + paramChatHistorySearchData.offset);
-        }
-        int i = paramChatHistorySearchData.offset;
-        while (i < paramChatHistorySearchData.mSearchData1.size())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)paramChatHistorySearchData.mSearchData1.get(i);
-          paramChatHistorySearchData.offset += 1;
-          if (a(localMessageRecord)) {
-            paramArrayList.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-          }
-          i += 1;
-        }
-        if ((paramChatHistorySearchData.mSearchData2 != null) && (!paramChatHistorySearchData.mSearchData2.isEmpty())) {
-          break;
-        }
-        paramArrayList = paramChatHistorySearchData;
-      } while (!QLog.isColorLevel());
-      QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.mSearchData2 == null or empty");
       return paramChatHistorySearchData;
+    }
+    if (paramChatHistorySearchData.mSearchData1 == null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.mSearchData1 == null");
+      }
+      paramChatHistorySearchData.offset = 0;
+      return paramChatHistorySearchData;
+    }
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_b_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("chatHistorySearchData.offset = ");
+      localStringBuilder.append(paramChatHistorySearchData.offset);
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
+    }
+    int i = paramChatHistorySearchData.offset;
+    while (i < paramChatHistorySearchData.mSearchData1.size())
+    {
+      localObject = (MessageRecord)paramChatHistorySearchData.mSearchData1.get(i);
+      paramChatHistorySearchData.offset += 1;
+      if (a((MessageRecord)localObject)) {
+        paramArrayList.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject));
+      }
+      i += 1;
+    }
+    if ((paramChatHistorySearchData.mSearchData2 != null) && (!paramChatHistorySearchData.mSearchData2.isEmpty()))
+    {
       paramChatHistorySearchData = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramChatHistorySearchData.mSearchData2);
-      paramArrayList = paramChatHistorySearchData;
-    } while (paramChatHistorySearchData == null);
-    paramChatHistorySearchData.offset = 0;
+      if (paramChatHistorySearchData != null) {
+        paramChatHistorySearchData.offset = 0;
+      }
+      return paramChatHistorySearchData;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.mSearchData2 == null or empty");
+    }
     return paramChatHistorySearchData;
   }
   
@@ -100,25 +99,30 @@ public class BaseMessageResultAdapter
   
   public void a(long paramLong, String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_b_of_type_JavaLangString, 2, "loadMessageResult, keyword = " + paramString + ", loadType = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = jdField_b_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadMessageResult, keyword = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", loadType = ");
+      localStringBuilder.append(paramInt);
+      QLog.i(str, 2, localStringBuilder.toString());
     }
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return;
-      if (paramInt != 2) {
-        break;
-      }
-    } while ((this.jdField_a_of_type_Boolean) || (!paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString)));
-    for (;;)
+    }
+    if (paramInt == 2)
     {
-      ThreadManager.post(new BaseMessageResultAdapter.1(this, paramString, paramInt, paramLong), 8, null, false);
-      return;
+      if ((!this.jdField_a_of_type_Boolean) && (paramString.equalsIgnoreCase(this.jdField_a_of_type_JavaLangString))) {}
+    }
+    else
+    {
       this.jdField_a_of_type_JavaLangString = paramString;
       MessageItem.a(paramString);
       this.jdField_a_of_type_Boolean = false;
     }
+    ThreadManager.post(new BaseMessageResultAdapter.1(this, paramString, paramInt, paramLong), 8, null, false);
   }
   
   public void a(String paramString)
@@ -129,13 +133,14 @@ public class BaseMessageResultAdapter
   
   public void a(List<MessageItem> paramList, int paramInt)
   {
-    if (paramInt == 1) {
+    if (paramInt == 1)
+    {
       this.jdField_b_of_type_JavaUtilList = paramList;
-    }
-    while (paramInt != 2) {
       return;
     }
-    this.jdField_b_of_type_JavaUtilList.addAll(paramList);
+    if (paramInt == 2) {
+      this.jdField_b_of_type_JavaUtilList.addAll(paramList);
+    }
   }
   
   public boolean a()
@@ -143,87 +148,97 @@ public class BaseMessageResultAdapter
     return this.jdField_a_of_type_Boolean;
   }
   
-  public boolean a(MessageRecord paramMessageRecord)
+  protected boolean a(MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord == null) || (paramMessageRecord.msg == null) || (paramMessageRecord.msg.trim().length() == 0)) {
-      if (QLog.isColorLevel()) {
-        QLog.i(jdField_b_of_type_JavaLangString, 2, "isValidData, empty item");
-      }
-    }
-    String str;
-    do
+    boolean bool = false;
+    if ((paramMessageRecord != null) && (paramMessageRecord.msg != null) && (paramMessageRecord.msg.trim().length() != 0))
     {
-      return false;
-      str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramMessageRecord.isSend(), paramMessageRecord.senderuin).toLowerCase(Locale.US);
+      String str = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, paramMessageRecord.isSend(), paramMessageRecord.senderuin).toLowerCase(Locale.US);
       paramMessageRecord = MessageItem.a(paramMessageRecord.msg).toLowerCase(Locale.US);
-    } while ((!str.contains(MessageItem.jdField_a_of_type_JavaLangString)) && (!paramMessageRecord.contains(MessageItem.jdField_a_of_type_JavaLangString)));
-    return true;
+      if ((str.contains(MessageItem.jdField_a_of_type_JavaLangString)) || (paramMessageRecord.contains(MessageItem.jdField_a_of_type_JavaLangString))) {
+        bool = true;
+      }
+      return bool;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i(jdField_b_of_type_JavaLangString, 2, "isValidData, empty item");
+    }
+    return false;
   }
   
-  public ChatHistorySearchData b(ChatHistorySearchData paramChatHistorySearchData, ArrayList<MessageItem> paramArrayList)
+  protected ChatHistorySearchData b(ChatHistorySearchData paramChatHistorySearchData, ArrayList<MessageItem> paramArrayList)
   {
-    int i = 0;
-    for (;;)
+    int j = 0;
+    while (j < 20)
     {
-      if (i < 20)
+      if (paramChatHistorySearchData == null)
       {
-        if (paramChatHistorySearchData == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData == null");
-          }
-          return paramChatHistorySearchData;
-        }
-        if (paramChatHistorySearchData.mSearchData1 == null)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.mSearchData1 == null");
-          }
-          paramChatHistorySearchData.offset = 0;
-          return paramChatHistorySearchData;
-        }
         if (QLog.isColorLevel()) {
-          QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.offset = " + paramChatHistorySearchData.offset);
+          QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData == null");
         }
-        int k = paramChatHistorySearchData.offset;
-        while (k < paramChatHistorySearchData.mSearchData1.size())
-        {
-          MessageRecord localMessageRecord = (MessageRecord)paramChatHistorySearchData.mSearchData1.get(k);
-          paramChatHistorySearchData.offset += 1;
-          int j = i;
-          if (a(localMessageRecord))
-          {
-            paramArrayList.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localMessageRecord));
-            i += 1;
-            j = i;
-            if (i == 20)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.i(jdField_b_of_type_JavaLangString, 2, "getMessageRecords, one page, offset = " + paramChatHistorySearchData.offset);
-              }
-              return paramChatHistorySearchData;
-            }
-          }
-          k += 1;
-          i = j;
-        }
-        if ((paramChatHistorySearchData.mSearchData2 == null) || (paramChatHistorySearchData.mSearchData2.isEmpty()))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.mSearchData2 == null or empty");
-          }
-          return paramChatHistorySearchData;
-        }
-        paramChatHistorySearchData = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramChatHistorySearchData.mSearchData2);
-        if (paramChatHistorySearchData != null) {
-          paramChatHistorySearchData.offset = 0;
-        }
-      }
-      else
-      {
         return paramChatHistorySearchData;
       }
+      if (paramChatHistorySearchData.mSearchData1 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.mSearchData1 == null");
+        }
+        paramChatHistorySearchData.offset = 0;
+        return paramChatHistorySearchData;
+      }
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = jdField_b_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("chatHistorySearchData.offset = ");
+        localStringBuilder.append(paramChatHistorySearchData.offset);
+        QLog.i((String)localObject, 2, localStringBuilder.toString());
+      }
+      int k = paramChatHistorySearchData.offset;
+      for (int i = j; k < paramChatHistorySearchData.mSearchData1.size(); i = j)
+      {
+        localObject = (MessageRecord)paramChatHistorySearchData.mSearchData1.get(k);
+        paramChatHistorySearchData.offset += 1;
+        j = i;
+        if (a((MessageRecord)localObject))
+        {
+          paramArrayList.add(new MessageItem(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageRecord)localObject));
+          i += 1;
+          j = i;
+          if (i == 20)
+          {
+            if (QLog.isColorLevel())
+            {
+              paramArrayList = jdField_b_of_type_JavaLangString;
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("getMessageRecords, one page, offset = ");
+              ((StringBuilder)localObject).append(paramChatHistorySearchData.offset);
+              QLog.i(paramArrayList, 2, ((StringBuilder)localObject).toString());
+            }
+            return paramChatHistorySearchData;
+          }
+        }
+        k += 1;
+      }
+      if ((paramChatHistorySearchData.mSearchData2 != null) && (!paramChatHistorySearchData.mSearchData2.isEmpty()))
+      {
+        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, paramChatHistorySearchData.mSearchData2);
+        paramChatHistorySearchData = (ChatHistorySearchData)localObject;
+        j = i;
+        if (localObject != null)
+        {
+          ((ChatHistorySearchData)localObject).offset = 0;
+          paramChatHistorySearchData = (ChatHistorySearchData)localObject;
+          j = i;
+        }
+      }
+      else if (QLog.isColorLevel())
+      {
+        QLog.i(jdField_b_of_type_JavaLangString, 2, "chatHistorySearchData.mSearchData2 == null or empty");
+      }
     }
+    return paramChatHistorySearchData;
   }
   
   public int getCount()
@@ -249,7 +264,7 @@ public class BaseMessageResultAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.BaseMessageResultAdapter
  * JD-Core Version:    0.7.0.1
  */

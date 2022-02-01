@@ -11,15 +11,15 @@ class DialogBaseActivity$4
   
   public void onDismiss(DialogInterface paramDialogInterface)
   {
-    if (this.a.a != null) {
-      this.a.a.setOnDismissListener(null);
+    if (this.a.progressDialog != null) {
+      this.a.progressDialog.setOnDismissListener(null);
     }
-    this.a.a = null;
+    this.a.progressDialog = null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.DialogBaseActivity.4
  * JD-Core Version:    0.7.0.1
  */

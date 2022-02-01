@@ -13,7 +13,8 @@ public class PreviewContext$HandleVideo
   
   public void run()
   {
-    if ((SVHwEncoder)this.this$0.mEncodeRef.get() != null) {
+    if ((SVHwEncoder)this.this$0.mEncodeRef.get() != null)
+    {
       if (PreviewContext.access$000(this.this$0))
       {
         this.this$0.mAVCodec.handleQQVideoFrameWithCallback();
@@ -21,28 +22,29 @@ public class PreviewContext$HandleVideo
           QLog.d("PreviewContext", 2, "[@] HandleVideo: handleQQVideoFrameWithCallback");
         }
       }
-    }
-    for (;;)
-    {
-      this.this$0.mCamera.a.a(7, new Object[] { Integer.valueOf(0) });
-      this.this$0.mVideoFrameProcess.incrementAndGet();
-      return;
-      this.this$0.mAVCodec.handleQQVideoOneFrame();
-      if (QLog.isColorLevel()) {
-        QLog.d("PreviewContext", 2, "[@] HandleVideo: handleQQVideoOneFrame");
+      else
+      {
+        this.this$0.mAVCodec.handleQQVideoOneFrame();
+        if (QLog.isColorLevel()) {
+          QLog.d("PreviewContext", 2, "[@] HandleVideo: handleQQVideoOneFrame");
+        }
+        this.this$0.encodeOneFrameNotify();
       }
-      this.this$0.encodeOneFrameNotify();
-      continue;
+    }
+    else
+    {
       this.this$0.mAVCodec.handleQQVideo();
       if (QLog.isColorLevel()) {
         QLog.d("PreviewContext", 2, "[@] HandleVideo: encode=null");
       }
     }
+    this.this$0.mCamera.a.a(7, new Object[] { Integer.valueOf(0) });
+    this.this$0.mVideoFrameProcess.incrementAndGet();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediadevice.PreviewContext.HandleVideo
  * JD-Core Version:    0.7.0.1
  */

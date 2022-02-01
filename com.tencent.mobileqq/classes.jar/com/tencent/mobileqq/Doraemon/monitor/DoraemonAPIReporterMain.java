@@ -1,8 +1,6 @@
 package com.tencent.mobileqq.Doraemon.monitor;
 
 import com.tencent.biz.ProtoUtils;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBInt64Field;
@@ -12,6 +10,7 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
 import mqq.app.AppRuntime;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import tencent.im.oidb.oidb_0xb6f.Identity;
 import tencent.im.oidb.oidb_0xb6f.ReportFreqReqBody;
@@ -24,7 +23,12 @@ public class DoraemonAPIReporterMain
   
   private void a(String paramString1, int paramInt1, String paramString2, String paramString3, int paramInt2)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if (MobileQQ.sProcessId != 1)
+    {
+      QLog.e("DoraemonOpenAPI.report", 1, "process is not main process");
+      return;
+    }
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
     if (localAppRuntime == null)
     {
       QLog.e("DoraemonOpenAPI.report", 1, "app is null");
@@ -39,45 +43,67 @@ public class DoraemonAPIReporterMain
       localReqBody.report_freq_req.identity.setHasFlag(true);
       localReqBody.report_freq_req.invoke_times.set(paramInt2);
       localReqBody.report_freq_req.setHasFlag(true);
-      if (QLog.isColorLevel()) {
-        QLog.i("DoraemonOpenAPI.report", 2, "send key=" + paramString1 + ", api=" + paramString3 + ", count=" + paramInt2);
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("send key=");
+        paramString2.append(paramString1);
+        paramString2.append(", api=");
+        paramString2.append(paramString3);
+        paramString2.append(", count=");
+        paramString2.append(paramInt2);
+        QLog.i("DoraemonOpenAPI.report", 2, paramString2.toString());
       }
       ProtoUtils.a(localAppRuntime, new DoraemonAPIReporterMain.2(this, paramString1, paramString3, paramInt2), localReqBody.toByteArray(), "OidbSvc.0xb6f_1", 2927, 1, null, 0L);
       return;
     }
     catch (NumberFormatException paramString1)
     {
-      QLog.e("DoraemonOpenAPI.report", 1, "parse appid error appid=" + paramString2, paramString1);
+      paramString3 = new StringBuilder();
+      paramString3.append("parse appid error appid=");
+      paramString3.append(paramString2);
+      QLog.e("DoraemonOpenAPI.report", 1, paramString3.toString(), paramString1);
     }
   }
   
   private void a(String paramString1, int paramInt, String paramString2, String paramString3, long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.report", 2, "updateFrequenceData key=" + paramString1 + ", api=" + paramString3 + ", remain=" + paramLong1 + ", exp=" + paramLong2);
-    }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {
-      ThreadManager.post(new DoraemonAPIReporterMain.3(this, (QQAppInterface)localObject, paramInt, paramString2, paramString3, paramLong1, paramLong2), 5, null, true);
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      localObject = this.a;
-      if (localObject != null) {
-        ThreadManager.getUIHandler().post(new DoraemonAPIReporterMain.4(this, (DoraemonAPIReporter.OnFrequenceDataUpdateListener)localObject, paramString1, paramInt, paramString2, paramString3, paramLong1, paramLong2));
-      }
-      return;
-      QLog.e("DoraemonOpenAPI.report", 1, "app is null");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateFrequenceData key=");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", api=");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(", remain=");
+      ((StringBuilder)localObject).append(paramLong1);
+      ((StringBuilder)localObject).append(", exp=");
+      ((StringBuilder)localObject).append(paramLong2);
+      QLog.d("DoraemonOpenAPI.report", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if ((localObject != null) && (MobileQQ.sProcessId == 1)) {
+      ThreadManager.post(new DoraemonAPIReporterMain.3(this, (AppRuntime)localObject, paramInt, paramString2, paramString3, paramLong1, paramLong2), 5, null, true);
+    } else {
+      QLog.e("DoraemonOpenAPI.report", 1, "app is null or process is not main process");
+    }
+    localObject = this.a;
+    if (localObject != null) {
+      ThreadManager.getUIHandler().post(new DoraemonAPIReporterMain.4(this, (DoraemonAPIReporter.OnFrequenceDataUpdateListener)localObject, paramString1, paramInt, paramString2, paramString3, paramLong1, paramLong2));
     }
   }
   
   private void a(String paramString, List<APIQuotaEntity> paramList)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("DoraemonOpenAPI.report", 2, "updateFrequenceDataBatch key=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateFrequenceDataBatch key=");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("DoraemonOpenAPI.report", 2, ((StringBuilder)localObject).toString());
     }
-    DoraemonAPIReporter.OnFrequenceDataUpdateListener localOnFrequenceDataUpdateListener = this.a;
-    if (localOnFrequenceDataUpdateListener != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
       HashMap localHashMap = new HashMap(paramList.size());
       paramList = paramList.iterator();
@@ -89,7 +115,7 @@ public class DoraemonAPIReporterMain
         localAPIQuotaItem.expireTimeMillis = localAPIQuotaEntity.expireTimeMillis;
         localHashMap.put(localAPIQuotaEntity.apiName, localAPIQuotaItem);
       }
-      ThreadManager.getUIHandler().post(new DoraemonAPIReporterMain.5(this, localOnFrequenceDataUpdateListener, paramString, localHashMap));
+      ThreadManager.getUIHandler().post(new DoraemonAPIReporterMain.5(this, (DoraemonAPIReporter.OnFrequenceDataUpdateListener)localObject, paramString, localHashMap));
     }
   }
   
@@ -100,13 +126,18 @@ public class DoraemonAPIReporterMain
   
   public void a(String paramString1, int paramInt, String paramString2)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if (!(localAppRuntime instanceof QQAppInterface))
+    if (MobileQQ.sProcessId != 1)
+    {
+      QLog.e("DoraemonOpenAPI.report", 1, "process is not main process");
+      return;
+    }
+    AppRuntime localAppRuntime = MobileQQ.sMobileQQ.waitAppRuntime(null);
+    if (localAppRuntime == null)
     {
       QLog.e("DoraemonOpenAPI.report", 1, "app is null");
       return;
     }
-    ThreadManager.post(new DoraemonAPIReporterMain.1(this, (QQAppInterface)localAppRuntime, paramInt, paramString2, paramString1), 5, null, true);
+    ThreadManager.post(new DoraemonAPIReporterMain.1(this, localAppRuntime, paramInt, paramString2, paramString1), 5, null, true);
   }
   
   public void a(String paramString1, int paramInt, String paramString2, String paramString3)
@@ -116,7 +147,7 @@ public class DoraemonAPIReporterMain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.monitor.DoraemonAPIReporterMain
  * JD-Core Version:    0.7.0.1
  */

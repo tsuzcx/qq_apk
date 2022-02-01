@@ -179,30 +179,32 @@ public class DefaultDispatcher
     localList.add(PendingPost.obtainPendingPost("async.dispatch.DefaultDispatcher", str, paramDispatchable));
     if (!paramString.isPosting)
     {
-      if (Looper.getMainLooper() == Looper.myLooper()) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramString.isMainThread = bool;
-        paramString.isPosting = true;
-        if (!paramString.canceled) {
-          break;
-        }
-        throw new DispatcherException("Internal error. Abort state was not reset");
+      boolean bool;
+      if (Looper.getMainLooper() == Looper.myLooper()) {
+        bool = true;
+      } else {
+        bool = false;
       }
-      try
-      {
-        if (!localList.isEmpty())
+      paramString.isMainThread = bool;
+      paramString.isPosting = true;
+      if (!paramString.canceled) {
+        try
         {
-          paramDispatchable = (PendingPost)localList.remove(0);
-          dispatchSingle(paramDispatchable.tag, paramDispatchable.group, paramDispatchable.dispatchable);
+          while (!localList.isEmpty())
+          {
+            paramDispatchable = (PendingPost)localList.remove(0);
+            dispatchSingle(paramDispatchable.tag, paramDispatchable.group, paramDispatchable.dispatchable);
+            PendingPost.releasePendingPost(paramDispatchable);
+          }
+          return;
         }
-        return;
+        finally
+        {
+          paramString.isPosting = false;
+          paramString.isMainThread = false;
+        }
       }
-      finally
-      {
-        paramString.isPosting = false;
-        paramString.isMainThread = false;
-      }
+      throw new DispatcherException("Internal error. Abort state was not reset");
     }
   }
   
@@ -230,30 +232,35 @@ public class DefaultDispatcher
   
   void doDispatch(Object paramObject, Dispatcher.Dispatchable paramDispatchable)
   {
-    int j = 1;
     AssertUtils.checkNotNull(paramDispatchable);
     AssertUtils.checkNotNull(paramObject);
-    int i = 0;
-    DefaultDispatcher.SubscriberKey localSubscriberKey = makeKey(paramDispatchable.getClass(), paramObject);
-    CopyOnWriteArraySet localCopyOnWriteArraySet = (CopyOnWriteArraySet)this.mSubscribersByKey.get(localSubscriberKey);
+    Object localObject = makeKey(paramDispatchable.getClass(), paramObject);
+    CopyOnWriteArraySet localCopyOnWriteArraySet = (CopyOnWriteArraySet)this.mSubscribersByKey.get(localObject);
+    int i;
     if (localCopyOnWriteArraySet != null)
     {
-      notifySubscribers(localCopyOnWriteArraySet, localSubscriberKey, paramDispatchable);
+      notifySubscribers(localCopyOnWriteArraySet, (DefaultDispatcher.SubscriberKey)localObject, paramDispatchable);
       i = 1;
     }
-    localSubscriberKey = makeKey(paramDispatchable.getClass(), "root_group");
-    localCopyOnWriteArraySet = (CopyOnWriteArraySet)this.mSubscribersByKey.get(localSubscriberKey);
+    else
+    {
+      i = 0;
+    }
+    localObject = makeKey(paramDispatchable.getClass(), "root_group");
+    localCopyOnWriteArraySet = (CopyOnWriteArraySet)this.mSubscribersByKey.get(localObject);
     if (localCopyOnWriteArraySet != null)
     {
-      notifySubscribers(localCopyOnWriteArraySet, localSubscriberKey, paramDispatchable);
-      i = j;
+      notifySubscribers(localCopyOnWriteArraySet, (DefaultDispatcher.SubscriberKey)localObject, paramDispatchable);
+      i = 1;
     }
-    for (;;)
+    if (i != 0)
     {
-      if (i != 0) {
-        SLog.d("async.dispatch.DefaultDispatcher", "group = " + paramObject + ", dispatchable = " + paramDispatchable);
-      }
-      return;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("group = ");
+      ((StringBuilder)localObject).append(paramObject);
+      ((StringBuilder)localObject).append(", dispatchable = ");
+      ((StringBuilder)localObject).append(paramDispatchable);
+      SLog.d("async.dispatch.DefaultDispatcher", ((StringBuilder)localObject).toString());
     }
   }
   
@@ -275,13 +282,14 @@ public class DefaultDispatcher
     if (TextUtils.isEmpty(paramString)) {
       str = "default_group";
     }
-    if (paramSubscriber != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      AssertUtils.assertTrue(bool);
-      insertSubscriber(str, new DefaultDispatcher.DefaultWrpper(paramSubscriber));
-      return;
+    boolean bool;
+    if (paramSubscriber != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    AssertUtils.assertTrue(bool);
+    insertSubscriber(str, new DefaultDispatcher.DefaultWrpper(paramSubscriber));
   }
   
   public void registerWeakSubscriber(Subscriber paramSubscriber)
@@ -302,17 +310,18 @@ public class DefaultDispatcher
   
   public void unRegisterSubscriber(Subscriber paramSubscriber)
   {
-    if (paramSubscriber == null) {
-      AssertUtils.fail("subscriber cannot be null.", new Object[0]);
-    }
-    do
+    if (paramSubscriber == null)
     {
+      AssertUtils.fail("subscriber cannot be null.", new Object[0]);
       return;
-      localObject = new ArrayList(2);
-      paramSubscriber.accept((List)localObject);
-    } while (((List)localObject).size() == 0);
+    }
+    Object localObject = new ArrayList(2);
+    paramSubscriber.accept((List)localObject);
+    if (((List)localObject).size() == 0) {
+      return;
+    }
     CopyOnWriteArraySet localCopyOnWriteArraySet = (CopyOnWriteArraySet)this.mGroupsBySubscriber.get(Integer.valueOf(paramSubscriber.hashCode()));
-    Object localObject = ((List)localObject).iterator();
+    localObject = ((List)localObject).iterator();
     while (((Iterator)localObject).hasNext())
     {
       Class localClass = (Class)((Iterator)localObject).next();
@@ -333,7 +342,7 @@ public class DefaultDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.dispatch.DefaultDispatcher
  * JD-Core Version:    0.7.0.1
  */

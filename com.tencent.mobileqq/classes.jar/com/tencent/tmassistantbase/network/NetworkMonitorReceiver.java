@@ -17,7 +17,7 @@ public class NetworkMonitorReceiver
   protected static final int MSG_DELAY_TIME = 3500;
   protected static final int MSG_resumeDownloadTime = 67;
   protected static final String TAG = "NetworkMonitorReceiver";
-  protected static NetworkMonitorReceiver mInstance = null;
+  protected static NetworkMonitorReceiver mInstance;
   protected static Handler mNetworkChangedHandler;
   protected boolean isRegisterReceiver = false;
   ArrayList<INetworkChangedObserver> mObs = new ArrayList();
@@ -44,12 +44,13 @@ public class NetworkMonitorReceiver
   
   public void notifyNetworkChanged()
   {
-    if (this.mObs != null)
+    Object localObject = this.mObs;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mObs.iterator();
-      while (localIterator.hasNext())
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        INetworkChangedObserver localINetworkChangedObserver = (INetworkChangedObserver)localIterator.next();
+        INetworkChangedObserver localINetworkChangedObserver = (INetworkChangedObserver)((Iterator)localObject).next();
         if (localINetworkChangedObserver != null) {
           localINetworkChangedObserver.onNetworkChanged();
         }
@@ -85,18 +86,14 @@ public class NetworkMonitorReceiver
       localContext.registerReceiver(this, localIntentFilter);
       this.isRegisterReceiver = true;
       ab.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = true");
-      ab.c("NetworkMonitorReceiver", "registerReceiver exit");
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        this.isRegisterReceiver = false;
-        ab.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = false");
-        localThrowable.printStackTrace();
-      }
+      this.isRegisterReceiver = false;
+      ab.c("NetworkMonitorReceiver", "registerReceiver isRegisterReceiver = false");
+      localThrowable.printStackTrace();
     }
+    ab.c("NetworkMonitorReceiver", "registerReceiver exit");
   }
   
   public void removeNetworkChangedObserver(INetworkChangedObserver paramINetworkChangedObserver)
@@ -108,32 +105,31 @@ public class NetworkMonitorReceiver
   
   public void unregisterReceiver()
   {
-    if (mInstance == null) {}
-    for (;;)
-    {
+    if (mInstance == null) {
       return;
-      Context localContext = GlobalUtil.getInstance().getContext();
-      if (localContext != null) {
-        try
-        {
-          if (this.isRegisterReceiver)
-          {
-            localContext.unregisterReceiver(this);
-            this.isRegisterReceiver = false;
-            return;
-          }
-        }
-        catch (Throwable localThrowable)
-        {
-          localThrowable.printStackTrace();
-        }
+    }
+    Context localContext = GlobalUtil.getInstance().getContext();
+    if (localContext == null) {
+      return;
+    }
+    try
+    {
+      if (this.isRegisterReceiver)
+      {
+        localContext.unregisterReceiver(this);
+        this.isRegisterReceiver = false;
+        return;
       }
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.network.NetworkMonitorReceiver
  * JD-Core Version:    0.7.0.1
  */

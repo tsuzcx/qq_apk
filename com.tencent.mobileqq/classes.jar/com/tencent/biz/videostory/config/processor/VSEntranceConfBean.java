@@ -47,12 +47,19 @@ public class VSEntranceConfBean
   
   public String toString()
   {
-    return "k = mine_videostory_entrance, value = " + this.a + "\n k = enableClickTakePicture, value = " + this.b + "\n k = mine_videostory_chouti_entrance, value = " + this.c;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("k = mine_videostory_entrance, value = ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append("\n k = enableClickTakePicture, value = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append("\n k = mine_videostory_chouti_entrance, value = ");
+    localStringBuilder.append(this.c);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.config.processor.VSEntranceConfBean
  * JD-Core Version:    0.7.0.1
  */

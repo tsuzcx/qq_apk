@@ -14,8 +14,14 @@ class EditUniqueTitleActivity$5
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EditUniqueTitleActivity", 2, "setUniqueTitle, onReceive. type=" + paramInt + ", isSuccess=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("setUniqueTitle, onReceive. type=");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", isSuccess=");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("EditUniqueTitleActivity", 2, ((StringBuilder)localObject).toString());
     }
     if (!paramBoolean)
     {
@@ -23,23 +29,25 @@ class EditUniqueTitleActivity$5
       return;
     }
     paramBundle = paramBundle.getByteArray("data");
-    oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
+    Object localObject = new oidb_sso.OIDBSSOPkg();
     try
     {
-      localOIDBSSOPkg.mergeFrom(paramBundle);
-      paramInt = localOIDBSSOPkg.uint32_result.get();
+      ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramBundle);
+      paramInt = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
       EditUniqueTitleActivity.a(this.a, paramInt);
       return;
     }
     catch (InvalidProtocolBufferMicroException paramBundle)
     {
-      EditUniqueTitleActivity.a(this.a, -1);
+      label110:
+      break label110;
     }
+    EditUniqueTitleActivity.a(this.a, -1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.EditUniqueTitleActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,13 @@ public class HippyViewPagerAdapter
   {
     if ((paramHippyViewPagerItem != null) && (paramInt >= 0))
     {
-      if (paramInt >= this.mViews.size()) {
+      if (paramInt >= this.mViews.size())
+      {
         this.mViews.add(paramHippyViewPagerItem);
+        return;
       }
+      this.mViews.add(paramInt, paramHippyViewPagerItem);
     }
-    else {
-      return;
-    }
-    this.mViews.add(paramInt, paramHippyViewPagerItem);
   }
   
   public void destroyItem(ViewGroup paramViewGroup, int paramInt, Object paramObject)
@@ -63,45 +62,54 @@ public class HippyViewPagerAdapter
   
   public int getItemPosition(Object paramObject)
   {
-    if ((this.mViews == null) || (this.mViews.isEmpty())) {}
-    int i;
-    do
+    List localList = this.mViews;
+    if (localList != null)
     {
-      return -2;
-      i = this.mViews.indexOf(paramObject);
-    } while (i < 0);
-    return i;
+      if (localList.isEmpty()) {
+        return -2;
+      }
+      int i = this.mViews.indexOf(paramObject);
+      if (i < 0) {
+        return -2;
+      }
+      return i;
+    }
+    return -2;
   }
   
   protected int getItemViewSize()
   {
-    if (this.mViews == null) {
+    List localList = this.mViews;
+    if (localList == null) {
       return 0;
     }
-    return this.mViews.size();
+    return localList.size();
   }
   
   protected View getViewAt(int paramInt)
   {
-    if ((this.mViews == null) || (paramInt < 0) || (paramInt >= this.mViews.size())) {
-      return null;
+    List localList = this.mViews;
+    if ((localList != null) && (paramInt >= 0) && (paramInt < localList.size())) {
+      return (View)this.mViews.get(paramInt);
     }
-    return (View)this.mViews.get(paramInt);
+    return null;
   }
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((this.mViews != null) && (paramInt < this.mViews.size())) {}
-    for (View localView = (View)this.mViews.get(paramInt);; localView = null)
-    {
-      if ((localView != null) && (localView.getParent() == null))
-      {
-        paramViewGroup.addView(localView, new ViewPager.LayoutParams());
-        this.mViewPager.triggerRequestLayout();
-        return localView;
-      }
-      return null;
+    Object localObject = this.mViews;
+    if ((localObject != null) && (paramInt < ((List)localObject).size())) {
+      localObject = (View)this.mViews.get(paramInt);
+    } else {
+      localObject = null;
     }
+    if ((localObject != null) && (((View)localObject).getParent() == null))
+    {
+      paramViewGroup.addView((View)localObject, new ViewPager.LayoutParams());
+      this.mViewPager.triggerRequestLayout();
+      return localObject;
+    }
+    return null;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -113,18 +121,17 @@ public class HippyViewPagerAdapter
   {
     int j = this.mViews.size();
     int i = 0;
-    if (i < j) {
-      if (getViewAt(i) != paramView) {}
-    }
-    for (;;)
+    while (i < j)
     {
-      if (i >= 0) {
-        this.mViews.remove(i);
+      if (getViewAt(i) == paramView) {
+        break label38;
       }
-      return;
       i += 1;
-      break;
-      i = -1;
+    }
+    i = -1;
+    label38:
+    if (i >= 0) {
+      this.mViews.remove(i);
     }
   }
   
@@ -147,7 +154,7 @@ public class HippyViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.viewpager.HippyViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

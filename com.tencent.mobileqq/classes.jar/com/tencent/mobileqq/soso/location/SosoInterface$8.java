@@ -21,25 +21,31 @@ final class SosoInterface$8
       try
       {
         SosoInterface.access$2400().setDeviceID(new Pair("oaId", SosoInterface.mOaid));
-        if (QLog.isColorLevel()) {
-          QLog.d("SOSO.LBS", 2, "mLocationManager.setDeviceId（） mOaid = " + SosoInterface.mOaid);
-        }
-        return;
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          QLog.d("SOSO.LBS", 1, "setDeviceId（） has exception = " + localException);
-        }
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("setDeviceId（） has exception = ");
+        localStringBuilder2.append(localException);
+        QLog.d("SOSO.LBS", 1, localStringBuilder2.toString());
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("mLocationManager.setDeviceId（） mOaid = ");
+        localStringBuilder1.append(SosoInterface.mOaid);
+        QLog.d("SOSO.LBS", 2, localStringBuilder1.toString());
       }
     }
-    QLog.d("SOSO.LBS", 1, "getOaid（） mOaid is empty ");
+    else
+    {
+      QLog.d("SOSO.LBS", 1, "getOaid（） mOaid is empty ");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.SosoInterface.8
  * JD-Core Version:    0.7.0.1
  */

@@ -24,30 +24,28 @@ public final class jf
       return "";
     }
     String str = paramContext.getPackageName();
+    Object localObject = null;
     try
     {
       paramContext = paramContext.getPackageManager().getApplicationInfo(str, 128);
-      if (paramContext == null) {
-        return "";
-      }
     }
     catch (PackageManager.NameNotFoundException paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-        paramContext = null;
-      }
-      if (paramContext.metaData == null) {
-        return "";
-      }
+      paramContext.printStackTrace();
+      paramContext = localObject;
+    }
+    if (paramContext == null) {
+      return "";
+    }
+    if (paramContext.metaData == null) {
+      return "";
     }
     return paramContext.metaData.getString("TencentMapSDK");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jf
  * JD-Core Version:    0.7.0.1
  */

@@ -13,13 +13,11 @@ public final class RequestLine
     localStringBuilder.append(' ');
     if (includeAuthorityInRequestLine(paramRequest, paramType)) {
       localStringBuilder.append(paramRequest.url());
-    }
-    for (;;)
-    {
-      localStringBuilder.append(" HTTP/1.1");
-      return localStringBuilder.toString();
+    } else {
       localStringBuilder.append(requestPath(paramRequest.url()));
     }
+    localStringBuilder.append(" HTTP/1.1");
+    return localStringBuilder.toString();
   }
   
   private static boolean includeAuthorityInRequestLine(Request paramRequest, Proxy.Type paramType)
@@ -32,15 +30,20 @@ public final class RequestLine
     String str1 = paramHttpUrl.encodedPath();
     String str2 = paramHttpUrl.encodedQuery();
     paramHttpUrl = str1;
-    if (str2 != null) {
-      paramHttpUrl = str1 + '?' + str2;
+    if (str2 != null)
+    {
+      paramHttpUrl = new StringBuilder();
+      paramHttpUrl.append(str1);
+      paramHttpUrl.append('?');
+      paramHttpUrl.append(str2);
+      paramHttpUrl = paramHttpUrl.toString();
     }
     return paramHttpUrl;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     okhttp3.internal.http.RequestLine
  * JD-Core Version:    0.7.0.1
  */

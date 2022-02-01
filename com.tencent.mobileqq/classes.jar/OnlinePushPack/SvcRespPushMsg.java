@@ -53,18 +53,20 @@ public final class SvcRespPushMsg
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.vDelInfos, 1);
     paramJceOutputStream.write(this.svrip, 2);
-    if (this.bytes_push_token != null) {
-      paramJceOutputStream.write(this.bytes_push_token, 3);
+    Object localObject = this.bytes_push_token;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 3);
     }
     paramJceOutputStream.write(this.service_type, 4);
-    if (this.deviceInfo != null) {
-      paramJceOutputStream.write(this.deviceInfo, 5);
+    localObject = this.deviceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     OnlinePushPack.SvcRespPushMsg
  * JD-Core Version:    0.7.0.1
  */

@@ -10,11 +10,11 @@ import com.tencent.biz.pubaccount.weishi_new.baseui.AbsWsUIGroup;
 import com.tencent.biz.pubaccount.weishi_new.report.dc898.WSReportDC898Vertical;
 import com.tencent.biz.pubaccount.weishi_new.util.FeedRichTextView;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
+import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageContract.Presenter;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.data.WSVerticalItemData;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.report.WSVerticalBeaconReport;
 import com.tencent.biz.pubaccount.weishi_new.verticalvideo.utils.WSVerticalJumpUtils;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 public class WSVerticalItemBottomContentController
   extends AbsWsUIGroup<WSVerticalItemData>
@@ -58,11 +58,11 @@ public class WSVerticalItemBottomContentController
   private void f()
   {
     WSVerticalJumpUtils.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment, this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
-    WSVerticalBeaconReport.f(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed);
+    WSVerticalBeaconReport.d(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.a(), this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b(), this.jdField_a_of_type_UserGrowthStSimpleMetaFeed, ((WSVerticalPageContract.Presenter)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoWSVerticalPageFragment.b()).b());
     WSReportDC898Vertical.e();
   }
   
-  public void a()
+  protected void a()
   {
     WSVerticalItemData localWSVerticalItemData = (WSVerticalItemData)a();
     if ((localWSVerticalItemData != null) && ((localWSVerticalItemData.a() instanceof stSimpleMetaFeed))) {
@@ -70,45 +70,46 @@ public class WSVerticalItemBottomContentController
     }
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560153;
+    return 2131560035;
   }
   
-  public void b()
+  protected void b()
   {
     Object localObject = (WSVerticalItemData)a();
-    if (localObject == null) {}
-    while (!(((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed)) {
+    if (localObject == null) {
       return;
     }
-    localObject = ((WSVerticalItemData)localObject).a();
-    a(((stSimpleMetaFeed)localObject).feed_desc);
-    b(((stSimpleMetaFeed)localObject).material_desc);
+    if ((((WSVerticalItemData)localObject).a() instanceof stSimpleMetaFeed))
+    {
+      localObject = ((WSVerticalItemData)localObject).a();
+      a(((stSimpleMetaFeed)localObject).feed_desc);
+      b(((stSimpleMetaFeed)localObject).material_desc);
+    }
   }
   
-  public void c() {}
+  protected void c() {}
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)a(2131381198));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131381199));
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilFeedRichTextView = ((FeedRichTextView)a(2131380454));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131380455));
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this);
   }
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131381199)
+    if (paramView.getId() == 2131380455)
     {
       WSLog.b("WSVerticalItemBottomContentController", "跳转到微视端内");
       f();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.holder.WSVerticalItemBottomContentController
  * JD-Core Version:    0.7.0.1
  */

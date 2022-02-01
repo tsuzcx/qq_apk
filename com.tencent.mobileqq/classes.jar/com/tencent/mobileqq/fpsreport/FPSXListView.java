@@ -32,8 +32,9 @@ public class FPSXListView
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a();
+    FPSCalculator localFPSCalculator = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+    if (localFPSCalculator != null) {
+      localFPSCalculator.a();
     }
   }
   
@@ -45,34 +46,42 @@ public class FPSXListView
   public void draw(Canvas paramCanvas)
   {
     super.draw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null)) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.b();
+    if (this.jdField_a_of_type_Boolean)
+    {
+      paramCanvas = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+      if (paramCanvas != null) {
+        paramCanvas.b();
+      }
     }
   }
   
-  public void reportScrollStateChange(int paramInt)
+  protected void reportScrollStateChange(int paramInt)
   {
     super.reportScrollStateChange(paramInt);
-    if (this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator != null) {
-      this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator.a(paramInt);
+    FPSCalculator localFPSCalculator = this.jdField_a_of_type_ComTencentQqperfMonitorFpsFPSCalculator;
+    if (localFPSCalculator != null) {
+      localFPSCalculator.a(paramInt);
     }
-    if (this.jdField_a_of_type_Int == 1) {
-      if (paramInt == 0) {
-        DropFrameMonitor.a().a("list_leba_new", false);
-      }
-    }
-    while (this.jdField_a_of_type_Int != 2)
+    int i = this.jdField_a_of_type_Int;
+    if (i == 1)
     {
-      return;
+      if (paramInt == 0)
+      {
+        DropFrameMonitor.a().a("list_leba_new", false);
+        return;
+      }
       DropFrameMonitor.a().a("list_leba_new");
       return;
     }
-    if (paramInt == 0)
+    if (i == 2)
     {
-      DropFrameMonitor.a().a("list_leba", false);
-      return;
+      if (paramInt == 0)
+      {
+        DropFrameMonitor.a().a("list_leba", false);
+        return;
+      }
+      DropFrameMonitor.a().a("list_leba");
     }
-    DropFrameMonitor.a().a("list_leba");
   }
   
   public void setActTAG(String paramString)
@@ -89,7 +98,7 @@ public class FPSXListView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fpsreport.FPSXListView
  * JD-Core Version:    0.7.0.1
  */

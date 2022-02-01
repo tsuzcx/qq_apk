@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:id="@id/n9a" android:layout_width="wrap_content" android:layout_height="wrap_content"
+<LinearLayout android:orientation="vertical" android:layout_width="wrap_content" android:layout_height="wrap_content"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <RelativeLayout android:id="@id/n6t" android:background="@drawable/intimate_relationship_card_item" android:layout_width="fill_parent" android:layout_height="160.0dip" android:layout_marginLeft="-13.5dip" android:layout_marginTop="-5.0dip" android:layout_marginRight="-13.5dip" android:layout_marginBottom="-20.5dip">
-        <com.tencent.widget.RoundRectImageView android:id="@id/n6v" android:layout_width="fill_parent" android:layout_height="fill_parent" android:scaleType="centerCrop" />
-        <LinearLayout android:gravity="center_vertical" android:orientation="horizontal" android:id="@id/mzu" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="20.0dip" android:layout_marginTop="16.0dip" android:layout_marginRight="20.0dip">
-            <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_second_content_text_color" android:ellipsize="end" android:layout_gravity="center_vertical" android:id="@id/mzt" android:layout_width="wrap_content" android:layout_height="wrap_content" android:maxLines="1" android:includeFontPadding="false" />
-            <ImageView android:layout_width="10.0dip" android:layout_height="14.0dip" android:layout_marginLeft="3.0dip" android:layout_marginRight="5.0dip" android:src="@drawable/intimate_relationship_arrow" android:layout_toRightOf="@id/mzt" android:layout_alignParentRight="true" />
-        </LinearLayout>
-        <LinearLayout android:gravity="bottom" android:orientation="vertical" android:id="@id/mzr" android:layout_width="fill_parent" android:layout_height="fill_parent" android:layout_marginLeft="20.0dip" android:layout_marginRight="20.0dip" android:layout_marginBottom="17.0dip" android:layout_below="@id/mzu" />
-    </RelativeLayout>
-</RelativeLayout>
+    <LinearLayout android:orientation="vertical" android:id="@id/njv" android:clipChildren="false" android:layout_width="278.0dip" android:layout_height="wrap_content">
+        <ImageView android:layout_gravity="center" android:id="@id/no4" android:layout_width="fill_parent" android:layout_height="11.0dip" />
+    </LinearLayout>
+</LinearLayout>

@@ -35,16 +35,44 @@ public class VideoPackageUtils$VideoPacket
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("VideoPacket{roomId=").append(this.jdField_a_of_type_Long).append(", bodyType=").append(this.jdField_a_of_type_Int).append(", uin=").append(this.jdField_b_of_type_Long).append(", fromuin=").append(this.jdField_c_of_type_Long).append(", subServiceType=").append(this.jdField_b_of_type_Int).append(", seq=").append(this.jdField_c_of_type_Int).append(", business_flag=").append(this.jdField_d_of_type_Int).append(", terminal_switch_flag =").append(this.jdField_a_of_type_Boolean).append(", u32AccountType =").append(this.e).append(", uint64_group_uin =").append(this.jdField_d_of_type_Long).append(", str_from_nation =").append(this.jdField_b_of_type_JavaLangString).append(", str_from_mobile =");
-    if (this.jdField_a_of_type_JavaLangString != null) {}
-    for (boolean bool = true;; bool = false) {
-      return bool + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VideoPacket{roomId=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", bodyType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", uin=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", fromuin=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", subServiceType=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", seq=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", business_flag=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(", terminal_switch_flag =");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", u32AccountType =");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", uint64_group_uin =");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", str_from_nation =");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", str_from_mobile =");
+    boolean bool;
+    if (this.jdField_a_of_type_JavaLangString != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    localStringBuilder.append(bool);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoPackageUtils.VideoPacket
  * JD-Core Version:    0.7.0.1
  */

@@ -42,8 +42,13 @@ public final class SubpackagePlugin
     int j = this.subpackageTaskId.getAndIncrement();
     String str = paramArgument.getParams().optString("name");
     CharSequence localCharSequence = (CharSequence)str;
-    if ((localCharSequence == null) || (localCharSequence.length() == 0)) {}
-    for (int i = 1; i != 0; i = 0)
+    int i;
+    if ((localCharSequence != null) && (localCharSequence.length() != 0)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if (i != 0)
     {
       paramArgument = new JSONObject();
       paramArgument.put("loadTaskId", j);
@@ -71,14 +76,10 @@ public final class SubpackagePlugin
   {
     Intrinsics.checkParameterIsNotNull(paramString, "eventName");
     Intrinsics.checkParameterIsNotNull(paramArgument, "arguments");
-    switch (paramString.hashCode())
-    {
+    if ((paramString.hashCode() == 541681965) && (paramString.equals("createLoadSubPackageTask"))) {
+      return createSubPackageTask(paramArgument);
     }
-    do
-    {
-      return null;
-    } while (!paramString.equals("createLoadSubPackageTask"));
-    return createSubPackageTask(paramArgument);
+    return null;
   }
   
   public void onCreate(@NotNull TritonEngine paramTritonEngine)
@@ -115,7 +116,7 @@ public final class SubpackagePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.plugin.SubpackagePlugin
  * JD-Core Version:    0.7.0.1
  */

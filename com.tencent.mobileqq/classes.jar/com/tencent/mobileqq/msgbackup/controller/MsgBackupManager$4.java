@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.msgbackup.controller;
 
 import android.content.res.Resources;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor;
 import com.tencent.mobileqq.msgbackup.util.MsgBackupTimeStats;
 import com.tencent.mobileqq.msgbackup.util.MsgBackupUtil;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 class MsgBackupManager$4
@@ -20,54 +20,75 @@ class MsgBackupManager$4
       MsgBackupTimeStats.a("total_transport_cost", null);
       MsgBackupTimeStats.a();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessionProgress!!! finishedSessions = " + paramInt1 + ", totalSession" + paramInt2);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sessionProgress!!! finishedSessions = ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(", totalSession");
+      ((StringBuilder)localObject).append(paramInt2);
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, ((StringBuilder)localObject).toString());
     }
     MsgBackupManager.a(this.a, paramInt2);
     MsgBackupManager.b(this.a, paramInt1);
-    if (paramInt1 != paramInt2) {}
-    for (int i = paramInt1 + 1;; i = paramInt1)
+    if (paramInt1 != paramInt2) {
+      i = paramInt1 + 1;
+    } else {
+      i = paramInt1;
+    }
+    String str;
+    if (MsgBackupManager.a(this.a) == 1)
     {
-      String str1;
-      String str2;
-      if (MsgBackupManager.a(this.a) == 1)
-      {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690649);
-        str2 = i + "/" + MsgBackupManager.b;
+      str = BaseApplication.getContext().getResources().getString(2131690577);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else if (MsgBackupManager.a(this.a) == 3)
+    {
+      str = BaseApplication.getContext().getResources().getString(2131690579);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      str = BaseApplication.getContext().getResources().getString(2131690579);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MsgBackupUtil.a(MsgBackupManager.a(this.a)));
+    localStringBuilder.append("B/s");
+    Object localObject = String.format(str, new Object[] { localObject, localStringBuilder.toString() });
+    int i = MsgBackupAuthProcessor.a().a();
+    if (paramInt1 == paramInt2)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessioncompleted >>>>>>>>>>>>>>>>>");
       }
-      for (;;)
-      {
-        str1 = String.format(str1, new Object[] { str2, MsgBackupUtil.a(MsgBackupManager.a(this.a)) + "B/s" });
-        i = MsgBackupAuthProcessor.a().a();
-        if (paramInt1 != paramInt2) {
-          break;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("MsgBackup.BackupAndMigrateManager", 2, "sessioncompleted >>>>>>>>>>>>>>>>>");
-        }
-        MsgBackupManager.m();
-        this.a.a(BaseActivity.sTopActivity, i);
-        return;
-        if (MsgBackupManager.a(this.a) == 3)
-        {
-          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690651);
-          str2 = i + "/" + MsgBackupManager.b;
-        }
-        else
-        {
-          str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690651);
-          str2 = i + "/" + MsgBackupManager.b;
-        }
-      }
-      this.a.b(i, str1);
+      MsgBackupManager.m();
+      this.a.a(QBaseActivity.sTopActivity, i);
       return;
     }
+    this.a.b(i, (String)localObject);
   }
   
   public void a(long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateManager", 2, "speedState!!! increment = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("speedState!!! increment = ");
+      ((StringBuilder)localObject).append(paramLong);
+      QLog.d("MsgBackup.BackupAndMigrateManager", 2, ((StringBuilder)localObject).toString());
     }
     MsgBackupManager.a(this.a, paramLong);
     int j = MsgBackupManager.b(this.a);
@@ -75,36 +96,44 @@ class MsgBackupManager$4
     if (j != MsgBackupManager.b) {
       i = j + 1;
     }
-    String str1;
-    String str2;
+    String str;
     if (MsgBackupManager.a(this.a) == 1)
     {
-      str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690649);
-      str2 = i + "/" + MsgBackupManager.b;
+      str = BaseApplication.getContext().getString(2131690577);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      localObject = ((StringBuilder)localObject).toString();
     }
-    for (;;)
+    else if (MsgBackupManager.a(this.a) == 3)
     {
-      str1 = String.format(str1, new Object[] { str2, MsgBackupUtil.a(MsgBackupManager.a(this.a)) + "B/S" });
-      this.a.b(MsgBackupAuthProcessor.a().a(), str1);
-      return;
-      if (MsgBackupManager.a(this.a) == 3)
-      {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690651);
-        str2 = i + "/" + MsgBackupManager.b;
-      }
-      else
-      {
-        str1 = BaseApplicationImpl.getApplication().getResources().getString(2131690651);
-        str2 = i + "/" + MsgBackupManager.b;
-      }
+      str = BaseApplication.getContext().getResources().getString(2131690579);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      localObject = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      str = BaseApplication.getContext().getResources().getString(2131690579);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(MsgBackupManager.b);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MsgBackupUtil.a(MsgBackupManager.a(this.a)));
+    localStringBuilder.append("B/S");
+    Object localObject = String.format(str, new Object[] { localObject, localStringBuilder.toString() });
+    this.a.b(MsgBackupAuthProcessor.a().a(), (String)localObject);
   }
   
   public void a(boolean paramBoolean) {}
   
   public void b(int paramInt1, int paramInt2) {}
-  
-  public void b(boolean paramBoolean) {}
   
   public void c(boolean paramBoolean)
   {
@@ -112,10 +141,12 @@ class MsgBackupManager$4
     MsgBackupTimeStats.b();
     MsgBackupTimeStats.a(null, "total_transport_cost");
   }
+  
+  public void h_(boolean paramBoolean) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.controller.MsgBackupManager.4
  * JD-Core Version:    0.7.0.1
  */

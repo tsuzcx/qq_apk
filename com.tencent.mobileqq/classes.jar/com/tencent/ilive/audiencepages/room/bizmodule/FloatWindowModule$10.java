@@ -15,22 +15,22 @@ class FloatWindowModule$10
   
   public void onClick(View paramView)
   {
-    if (!FloatWindowModule.access$000(this.this$0).isDragEnd()) {}
-    for (;;)
+    if (this.this$0.floatWindowComponent.isDragEnd())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      FloatWindowModule.access$000(this.this$0).dismiss(8);
-      this.this$0.getAudienceRoomPager().getRoomPageAction().onFloatWindowClick();
-      this.this$0.jumpAudienceRoomActivity();
-      FloatWindowModule.access$1402(this.this$0, false);
+      this.this$0.floatWindowComponent.dismiss(8);
+      FloatWindowModule.10.1 local1 = new FloatWindowModule.10.1(this);
+      if (!this.this$0.getAudienceRoomPager().getRoomPageAction().onFloatWindowClick(local1, FloatWindowModule.access$3400(this.this$0))) {
+        this.this$0.jumpAudienceRoomActivity(local1);
+      }
+      FloatWindowModule.access$1302(this.this$0, false);
       this.this$0.getLog().i("FloatWindowModule", "isFloatWindowShow = false, onFloatWindowClick", new Object[0]);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.10
  * JD-Core Version:    0.7.0.1
  */

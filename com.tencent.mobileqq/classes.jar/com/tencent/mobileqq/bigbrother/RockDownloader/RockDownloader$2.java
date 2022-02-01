@@ -48,19 +48,18 @@ final class RockDownloader$2
     }
     if (this.a.getQueryAPKListener() != null)
     {
-      if (localArrayList.size() > 0) {
+      if (localArrayList.size() > 0)
+      {
         this.a.getQueryAPKListener().a(localArrayList);
+        return;
       }
+      this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), HardCodeUtil.a(2131713413), 10002);
     }
-    else {
-      return;
-    }
-    this.a.getQueryAPKListener().a(this.a.getDownloadInfo(), HardCodeUtil.a(2131713445), 10002);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bigbrother.RockDownloader.RockDownloader.2
  * JD-Core Version:    0.7.0.1
  */

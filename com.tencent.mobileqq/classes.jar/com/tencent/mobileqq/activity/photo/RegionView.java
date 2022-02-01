@@ -48,21 +48,21 @@ public class RegionView
     localMatrix.postScale(this.c / ((RectF)localObject).width(), this.d / ((RectF)localObject).height(), 0.0F, 0.0F);
     int i = this.c;
     int j = this.d;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (localObject = Bitmap.Config.ARGB_8888;; localObject = Bitmap.Config.RGB_565)
-    {
-      localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
-      Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
-      if ((localObject != null) && (localBitmap != null)) {
-        new Canvas((Bitmap)localObject).drawBitmap(localBitmap, localMatrix, new Paint(6));
-      }
-      return localObject;
+    if (this.jdField_a_of_type_Boolean) {
+      localObject = Bitmap.Config.ARGB_8888;
+    } else {
+      localObject = Bitmap.Config.RGB_565;
     }
+    localObject = Bitmap.createBitmap(i, j, (Bitmap.Config)localObject);
+    Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
+    if ((localObject != null) && (localBitmap != null)) {
+      new Canvas((Bitmap)localObject).drawBitmap(localBitmap, localMatrix, new Paint(6));
+    }
+    return localObject;
   }
   
   public Rect a()
   {
-    int j = 0;
     Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
     Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
     Bitmap localBitmap = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
@@ -70,45 +70,39 @@ public class RegionView
     ((Matrix)localObject2).invert(localMatrix);
     localObject2 = new RectF();
     localMatrix.mapRect((RectF)localObject2, (RectF)localObject1);
-    if (QLog.isColorLevel()) {
+    boolean bool = QLog.isColorLevel();
+    int j = 0;
+    if (bool) {
       QLog.i("RegionView", 2, String.format("getClipInfo src=[%.0f,%.0f,%.0f,%.0f],dst=[%.0f,%.0f,%.0f,%.0f],[tW,tH]=[%d,%d]", new Object[] { Float.valueOf(((RectF)localObject1).left), Float.valueOf(((RectF)localObject1).top), Float.valueOf(((RectF)localObject1).right), Float.valueOf(((RectF)localObject1).bottom), Float.valueOf(((RectF)localObject2).left), Float.valueOf(((RectF)localObject2).top), Float.valueOf(((RectF)localObject2).right), Float.valueOf(((RectF)localObject2).bottom), Integer.valueOf(localBitmap.getWidth()), Integer.valueOf(localBitmap.getHeight()) }));
     }
     localObject1 = new Rect();
     ((RectF)localObject2).round((Rect)localObject1);
-    if (((Rect)localObject1).left < 0)
-    {
+    int i;
+    if (((Rect)localObject1).left < 0) {
       i = 0;
-      ((Rect)localObject1).left = i;
-      if (((Rect)localObject1).top >= 0) {
-        break label304;
-      }
-      i = j;
-      label240:
-      ((Rect)localObject1).top = i;
-      if (((Rect)localObject1).right <= localBitmap.getWidth()) {
-        break label313;
-      }
-      i = localBitmap.getWidth();
-      label263:
-      ((Rect)localObject1).right = i;
-      if (((Rect)localObject1).bottom <= localBitmap.getHeight()) {
-        break label322;
-      }
-    }
-    label304:
-    label313:
-    label322:
-    for (int i = localBitmap.getHeight();; i = ((Rect)localObject1).bottom)
-    {
-      ((Rect)localObject1).bottom = i;
-      return localObject1;
+    } else {
       i = ((Rect)localObject1).left;
-      break;
-      i = ((Rect)localObject1).top;
-      break label240;
-      i = ((Rect)localObject1).right;
-      break label263;
     }
+    ((Rect)localObject1).left = i;
+    if (((Rect)localObject1).top < 0) {
+      i = j;
+    } else {
+      i = ((Rect)localObject1).top;
+    }
+    ((Rect)localObject1).top = i;
+    if (((Rect)localObject1).right > localBitmap.getWidth()) {
+      i = localBitmap.getWidth();
+    } else {
+      i = ((Rect)localObject1).right;
+    }
+    ((Rect)localObject1).right = i;
+    if (((Rect)localObject1).bottom > localBitmap.getHeight()) {
+      i = localBitmap.getHeight();
+    } else {
+      i = ((Rect)localObject1).bottom;
+    }
+    ((Rect)localObject1).bottom = i;
+    return localObject1;
   }
   
   public Bitmap b()
@@ -116,12 +110,13 @@ public class RegionView
     return this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.a();
+      this.jdField_a_of_type_Int = ((PortraitImageview)localObject).a();
       this.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentMobileqqActivityPortraitImageview.b();
     }
     this.jdField_a_of_type_AndroidGraphicsRect.left = ((getWidth() - this.jdField_a_of_type_Int) / 2);
@@ -157,7 +152,7 @@ public class RegionView
     this.jdField_a_of_type_ArrayOfAndroidGraphicsRect = new Rect[] { new Rect(0, 0, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.left, 0, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.right, 0, getWidth(), this.jdField_a_of_type_AndroidGraphicsRect.top), new Rect(0, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.bottom), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.top, getWidth(), this.jdField_a_of_type_AndroidGraphicsRect.bottom), new Rect(0, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsRect.left, getHeight()), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.bottom, this.jdField_a_of_type_AndroidGraphicsRect.right, getHeight()), new Rect(this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom, getWidth(), getHeight()) };
     this.jdField_b_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_b_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidGraphicsRect);
-    Object localObject = this.jdField_b_of_type_AndroidGraphicsRect;
+    localObject = this.jdField_b_of_type_AndroidGraphicsRect;
     ((Rect)localObject).left -= 2;
     localObject = this.jdField_b_of_type_AndroidGraphicsRect;
     ((Rect)localObject).right += 2;
@@ -168,9 +163,13 @@ public class RegionView
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(1711276032);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
     int i = 0;
-    while (i < this.jdField_a_of_type_ArrayOfAndroidGraphicsRect.length)
+    for (;;)
     {
-      paramCanvas.drawRect(this.jdField_a_of_type_ArrayOfAndroidGraphicsRect[i], this.jdField_a_of_type_AndroidGraphicsPaint);
+      localObject = this.jdField_a_of_type_ArrayOfAndroidGraphicsRect;
+      if (i >= localObject.length) {
+        break;
+      }
+      paramCanvas.drawRect(localObject[i], this.jdField_a_of_type_AndroidGraphicsPaint);
       i += 1;
     }
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(0);
@@ -187,7 +186,7 @@ public class RegionView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.RegionView
  * JD-Core Version:    0.7.0.1
  */

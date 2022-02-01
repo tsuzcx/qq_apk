@@ -11,10 +11,16 @@ import org.jetbrains.annotations.Nullable;
 public final class TroopAskAnonymouslyHelper$1
   extends MessageObserver
 {
-  public void onSendResult(boolean paramBoolean, @Nullable String paramString, long paramLong)
+  protected void onSendResult(boolean paramBoolean, @Nullable String paramString, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopAskAnonymouslyHelper", 2, "onSendResult called isSuccess = " + paramBoolean + " and uniseq = " + paramLong);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("onSendResult called isSuccess = ");
+      paramString.append(paramBoolean);
+      paramString.append(" and uniseq = ");
+      paramString.append(paramLong);
+      QLog.i("TroopAskAnonymouslyHelper", 2, paramString.toString());
     }
     if (paramBoolean)
     {
@@ -27,7 +33,7 @@ public final class TroopAskAnonymouslyHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAskAnonymouslyHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -23,30 +23,24 @@ public class VideoEndModel
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
+    if (paramObject != null)
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return bool1;
-            bool1 = bool2;
-          } while (paramObject == null);
-          bool1 = bool2;
-        } while (getClass() != paramObject.getClass());
-        paramObject = (VideoEndModel)paramObject;
-        bool1 = bool2;
-      } while (!TextUtils.equals(this.mEndName, paramObject.mEndName));
-      bool1 = bool2;
-    } while (!TextUtils.equals(this.mId, paramObject.mId));
-    return TextUtils.equals(this.mType, paramObject.mType);
+      if (getClass() != paramObject.getClass()) {
+        return false;
+      }
+      paramObject = (VideoEndModel)paramObject;
+      if (!TextUtils.equals(this.mEndName, paramObject.mEndName)) {
+        return false;
+      }
+      if (!TextUtils.equals(this.mId, paramObject.mId)) {
+        return false;
+      }
+      return TextUtils.equals(this.mType, paramObject.mType);
+    }
+    return false;
   }
   
   public float getCompositionDuration()
@@ -96,25 +90,26 @@ public class VideoEndModel
   
   public int hashCode()
   {
+    String str = this.mEndName;
     int k = 0;
     int i;
-    if (this.mEndName != null)
-    {
-      i = this.mEndName.hashCode();
-      if (this.mId == null) {
-        break label64;
-      }
-    }
-    label64:
-    for (int j = this.mId.hashCode();; j = 0)
-    {
-      if (this.mType != null) {
-        k = this.mType.hashCode();
-      }
-      return (j + i * 31) * 31 + k;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
       i = 0;
-      break;
     }
+    str = this.mId;
+    int j;
+    if (str != null) {
+      j = str.hashCode();
+    } else {
+      j = 0;
+    }
+    str = this.mType;
+    if (str != null) {
+      k = str.hashCode();
+    }
+    return (i * 31 + j) * 31 + k;
   }
   
   public void setCompositionDuration(float paramFloat)
@@ -164,7 +159,7 @@ public class VideoEndModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.effect.VideoEndModel
  * JD-Core Version:    0.7.0.1
  */

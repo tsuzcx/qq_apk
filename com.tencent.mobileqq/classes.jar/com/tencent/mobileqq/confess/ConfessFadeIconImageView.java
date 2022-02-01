@@ -19,27 +19,25 @@ public class ConfessFadeIconImageView
     super(paramContext, paramAttributeSet);
   }
   
-  public void drawableStateChanged()
+  protected void drawableStateChanged()
   {
     super.drawableStateChanged();
     Drawable localDrawable = getDrawable();
     if (localDrawable != null)
     {
       int[] arrayOfInt = getDrawableState();
-      if (StateSet.stateSetMatches(PRESSED_WINDOW_FOCUSED_STATE_SET, arrayOfInt)) {
+      if (StateSet.stateSetMatches(PRESSED_WINDOW_FOCUSED_STATE_SET, arrayOfInt))
+      {
         localDrawable.setAlpha(125);
+        return;
       }
+      localDrawable.setAlpha(255);
     }
-    else
-    {
-      return;
-    }
-    localDrawable.setAlpha(255);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessFadeIconImageView
  * JD-Core Version:    0.7.0.1
  */

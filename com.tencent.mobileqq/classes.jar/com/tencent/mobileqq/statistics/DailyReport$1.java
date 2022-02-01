@@ -2,7 +2,7 @@ package com.tencent.mobileqq.statistics;
 
 import android.os.Bundle;
 import com.tencent.mobileqq.utils.AvatarPendantUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
 import java.io.File;
@@ -19,7 +19,7 @@ class DailyReport$1
   {
     super.onDone(paramDownloadTask);
     long l = paramDownloadTask.a().getLong("id");
-    VasWebviewUtil.reportVasStatus("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, AvatarPendantUtil.a(new File(AvatarPendantUtil.b(l, 4))), "");
+    VasWebviewUtil.a("AvatarPendant", "AvatarPendantOn", String.valueOf(l), 0, 0, 0, 0, AvatarPendantUtil.a(new File(AvatarPendantUtil.b(l, 4))), "");
   }
   
   public boolean onStart(DownloadTask paramDownloadTask)
@@ -29,7 +29,7 @@ class DailyReport$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.DailyReport.1
  * JD-Core Version:    0.7.0.1
  */

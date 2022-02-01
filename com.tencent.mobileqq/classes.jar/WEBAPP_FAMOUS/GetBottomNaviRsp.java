@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -45,18 +46,20 @@ public final class GetBottomNaviRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.vec_out_app != null) {
-      paramJceOutputStream.write(this.vec_out_app, 0);
+    Object localObject = this.vec_out_app;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.app_list != null) {
-      paramJceOutputStream.write(this.app_list, 1);
+    localObject = this.app_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
     paramJceOutputStream.write(this.bitmap_flag, 2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     WEBAPP_FAMOUS.GetBottomNaviRsp
  * JD-Core Version:    0.7.0.1
  */

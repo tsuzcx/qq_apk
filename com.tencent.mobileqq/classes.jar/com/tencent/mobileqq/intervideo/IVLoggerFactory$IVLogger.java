@@ -16,28 +16,31 @@ class IVLoggerFactory$IVLogger
   private void a(int paramInt, String paramString, Throwable paramThrowable)
   {
     String str = String.valueOf(this.jdField_a_of_type_JavaLangString);
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 4: 
-    case 5: 
-      if (paramThrowable == null)
+      if (paramInt != 2)
       {
-        QLog.d(str, 4, paramString);
+        if (paramInt != 3)
+        {
+          if ((paramInt != 4) && (paramInt != 5)) {
+            return;
+          }
+          if (paramThrowable == null)
+          {
+            QLog.d(str, 4, paramString);
+            return;
+          }
+          QLog.d(str, 4, paramString, paramThrowable);
+          return;
+        }
+        if (paramThrowable == null)
+        {
+          QLog.i(str, 2, paramString);
+          return;
+        }
+        QLog.i(str, 2, paramString, paramThrowable);
         return;
       }
-      QLog.d(str, 4, paramString, paramThrowable);
-      return;
-    case 3: 
-      if (paramThrowable == null)
-      {
-        QLog.i(str, 2, paramString);
-        return;
-      }
-      QLog.i(str, 2, paramString, paramThrowable);
-      return;
-    case 2: 
       if (paramThrowable == null)
       {
         QLog.w(str, 1, paramString);
@@ -211,7 +214,7 @@ class IVLoggerFactory$IVLogger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.IVLoggerFactory.IVLogger
  * JD-Core Version:    0.7.0.1
  */

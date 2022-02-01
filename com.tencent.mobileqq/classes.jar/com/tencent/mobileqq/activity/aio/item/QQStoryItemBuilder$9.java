@@ -11,8 +11,14 @@ class QQStoryItemBuilder$9
   
   public void a(int paramInt, String paramString, StoryVideoItem paramStoryVideoItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqstory.share", 2, "QQStoryItemBuilder requestVideoInfo: errorCode = " + paramInt + ", storyVideoItem = " + paramStoryVideoItem);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("QQStoryItemBuilder requestVideoInfo: errorCode = ");
+      paramString.append(paramInt);
+      paramString.append(", storyVideoItem = ");
+      paramString.append(paramStoryVideoItem);
+      QLog.d("Q.qqstory.share", 2, paramString.toString());
     }
     if ((paramInt == 0) && (paramStoryVideoItem != null))
     {
@@ -35,7 +41,7 @@ class QQStoryItemBuilder$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryItemBuilder.9
  * JD-Core Version:    0.7.0.1
  */

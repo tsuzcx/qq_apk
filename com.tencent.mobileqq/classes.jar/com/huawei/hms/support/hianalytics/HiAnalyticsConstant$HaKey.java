@@ -10,6 +10,7 @@ public abstract interface HiAnalyticsConstant$HaKey
   public static final String BI_KEY_ERRORREASON = "errorReason";
   public static final String BI_KEY_HMSVERSION = "hmsVersion";
   public static final String BI_KEY_PACKAGE = "package";
+  public static final String BI_KEY_PHONETYPE = "phoneType";
   public static final String BI_KEY_RESULT = "statusCode";
   public static final String BI_KEY_RETURNCODE = "result";
   public static final String BI_KEY_SERVICE = "service";
@@ -21,7 +22,7 @@ public abstract interface HiAnalyticsConstant$HaKey
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.hianalytics.HiAnalyticsConstant.HaKey
  * JD-Core Version:    0.7.0.1
  */

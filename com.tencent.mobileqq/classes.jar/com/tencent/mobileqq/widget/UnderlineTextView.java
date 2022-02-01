@@ -51,11 +51,11 @@ public class UnderlineTextView
     this.jdField_a_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     int j = getLineCount();
-    Layout localLayout = getLayout();
+    Object localObject = getLayout();
     int i = 0;
     for (;;)
     {
@@ -63,17 +63,22 @@ public class UnderlineTextView
         try
         {
           int k = getLineBounds(i, this.jdField_a_of_type_AndroidGraphicsRect);
-          int m = localLayout.getLineStart(i);
-          int n = localLayout.getLineEnd(i);
-          float f1 = localLayout.getPrimaryHorizontal(m);
-          float f2 = localLayout.getPrimaryHorizontal(m + 1);
-          float f3 = localLayout.getPrimaryHorizontal(n - 1);
-          paramCanvas.drawLine(getPaddingLeft() + f1, k + this.jdField_a_of_type_Float + 15.0F, getPaddingLeft() + (f3 + (f2 - f1)), k + this.jdField_a_of_type_Float + 15.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
+          int m = ((Layout)localObject).getLineStart(i);
+          int n = ((Layout)localObject).getLineEnd(i);
+          float f1 = ((Layout)localObject).getPrimaryHorizontal(m);
+          float f2 = ((Layout)localObject).getPrimaryHorizontal(m + 1);
+          float f3 = ((Layout)localObject).getPrimaryHorizontal(n - 1);
+          float f4 = getPaddingLeft();
+          float f5 = k;
+          paramCanvas.drawLine(f1 + f4, this.jdField_a_of_type_Float + f5 + 15.0F, f3 + (f2 - f1) + getPaddingLeft(), f5 + this.jdField_a_of_type_Float + 15.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
           i += 1;
         }
         catch (Exception paramCanvas)
         {
-          QZLog.e("UnderlineTextView", "" + paramCanvas);
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("");
+          ((StringBuilder)localObject).append(paramCanvas);
+          QZLog.e("UnderlineTextView", ((StringBuilder)localObject).toString());
         }
       }
     }
@@ -93,7 +98,7 @@ public class UnderlineTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.UnderlineTextView
  * JD-Core Version:    0.7.0.1
  */

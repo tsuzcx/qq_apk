@@ -45,27 +45,24 @@ class AccessibilityViewEmbedder
     while (i < paramAccessibilityNodeInfo1.getChildCount())
     {
       Object localObject = AccessibilityViewEmbedder.ReflectionAccessors.access$500(this.reflectionAccessors, paramAccessibilityNodeInfo1, i);
-      if (localObject == null)
-      {
-        i += 1;
-      }
-      else
+      if (localObject != null)
       {
         int k = AccessibilityViewEmbedder.ReflectionAccessors.access$200(((Long)localObject).longValue());
         localObject = new AccessibilityViewEmbedder.ViewAndId(paramView, k, null);
         int j;
-        if (this.originToFlutterId.containsKey(localObject)) {
+        if (this.originToFlutterId.containsKey(localObject))
+        {
           j = ((Integer)this.originToFlutterId.get(localObject)).intValue();
         }
-        for (;;)
+        else
         {
-          paramAccessibilityNodeInfo2.addChild(this.rootAccessibilityView, j);
-          break;
           j = this.nextFlutterId;
           this.nextFlutterId = (j + 1);
           cacheVirtualIdMappings(paramView, k, j);
         }
+        paramAccessibilityNodeInfo2.addChild(this.rootAccessibilityView, j);
       }
+      i += 1;
     }
   }
   
@@ -147,14 +144,14 @@ class AccessibilityViewEmbedder
   private void setFlutterNodeParent(@NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo1, @NonNull View paramView, @NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo2)
   {
     paramAccessibilityNodeInfo1 = AccessibilityViewEmbedder.ReflectionAccessors.access$300(this.reflectionAccessors, paramAccessibilityNodeInfo1);
-    if (paramAccessibilityNodeInfo1 == null) {}
-    do
-    {
+    if (paramAccessibilityNodeInfo1 == null) {
       return;
-      int i = AccessibilityViewEmbedder.ReflectionAccessors.access$200(paramAccessibilityNodeInfo1.longValue());
-      paramAccessibilityNodeInfo1 = (Integer)this.originToFlutterId.get(new AccessibilityViewEmbedder.ViewAndId(paramView, i, null));
-    } while (paramAccessibilityNodeInfo1 == null);
-    paramAccessibilityNodeInfo2.setParent(this.rootAccessibilityView, paramAccessibilityNodeInfo1.intValue());
+    }
+    int i = AccessibilityViewEmbedder.ReflectionAccessors.access$200(paramAccessibilityNodeInfo1.longValue());
+    paramAccessibilityNodeInfo1 = (Integer)this.originToFlutterId.get(new AccessibilityViewEmbedder.ViewAndId(paramView, i, null));
+    if (paramAccessibilityNodeInfo1 != null) {
+      paramAccessibilityNodeInfo2.setParent(this.rootAccessibilityView, paramAccessibilityNodeInfo1.intValue());
+    }
   }
   
   private void setFlutterNodesTranslateBounds(@NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo1, @NonNull Rect paramRect, @NonNull AccessibilityNodeInfo paramAccessibilityNodeInfo2)
@@ -283,31 +280,27 @@ class AccessibilityViewEmbedder
     localAccessibilityEvent.setClassName(paramAccessibilityEvent.getClassName());
     localAccessibilityEvent.setPackageName(paramAccessibilityEvent.getPackageName());
     i = 0;
-    for (;;)
+    while (i < localAccessibilityEvent.getRecordCount())
     {
-      if (i >= localAccessibilityEvent.getRecordCount()) {
-        break label239;
-      }
       paramAccessibilityEvent = localAccessibilityEvent.getRecord(i);
       localObject = AccessibilityViewEmbedder.ReflectionAccessors.access$600(this.reflectionAccessors, paramAccessibilityEvent);
       if (localObject == null) {
-        break;
+        return false;
       }
       localObject = new AccessibilityViewEmbedder.ViewAndId(paramView1, AccessibilityViewEmbedder.ReflectionAccessors.access$200(((Long)localObject).longValue()), null);
       if (!this.originToFlutterId.containsKey(localObject)) {
-        break;
+        return false;
       }
       j = ((Integer)this.originToFlutterId.get(localObject)).intValue();
       paramAccessibilityEvent.setSource(this.rootAccessibilityView, j);
       i += 1;
     }
-    label239:
     return this.rootAccessibilityView.getParent().requestSendAccessibilityEvent(paramView2, localAccessibilityEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.view.AccessibilityViewEmbedder
  * JD-Core Version:    0.7.0.1
  */

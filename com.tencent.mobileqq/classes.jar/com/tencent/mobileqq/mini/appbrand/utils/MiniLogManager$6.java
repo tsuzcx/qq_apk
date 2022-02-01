@@ -19,17 +19,28 @@ final class MiniLogManager$6
     {
       paramBundle = paramBundle.extra;
       MiniLogManager.access$800(paramBundle, this.val$filePath);
-      if (QLog.isDebugVersion()) {
-        QLog.d(MiniLogManager.access$100(), 4, " action:" + this.val$action + " logUrl:" + paramBundle + " filePath:" + this.val$filePath);
+      if (QLog.isDebugVersion())
+      {
+        String str = MiniLogManager.access$100();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" action:");
+        localStringBuilder.append(this.val$action);
+        localStringBuilder.append(" logUrl:");
+        localStringBuilder.append(paramBundle);
+        localStringBuilder.append(" filePath:");
+        localStringBuilder.append(this.val$filePath);
+        QLog.d(str, 4, localStringBuilder.toString());
       }
-      return;
     }
-    new File(this.val$filePath).delete();
+    else
+    {
+      new File(this.val$filePath).delete();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.utils.MiniLogManager.6
  * JD-Core Version:    0.7.0.1
  */

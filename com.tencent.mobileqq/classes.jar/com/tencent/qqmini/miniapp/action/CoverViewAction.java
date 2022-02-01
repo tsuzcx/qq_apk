@@ -62,32 +62,38 @@ public class CoverViewAction
   
   public Object perform(BaseRuntime paramBaseRuntime)
   {
-    paramBaseRuntime = paramBaseRuntime.getPage();
-    if (!(paramBaseRuntime instanceof AppBrandPageContainer))
+    Object localObject = paramBaseRuntime.getPage();
+    boolean bool = localObject instanceof AppBrandPageContainer;
+    paramBaseRuntime = Boolean.valueOf(false);
+    if (!bool)
     {
       QMLog.d("CoverViewAction", "Page is invalid");
       if (this.action == 1) {
-        return null;
+        paramBaseRuntime = null;
       }
-      return Boolean.valueOf(false);
+      return paramBaseRuntime;
     }
-    paramBaseRuntime = (AppBrandPageContainer)paramBaseRuntime;
-    switch (this.action)
+    localObject = (AppBrandPageContainer)localObject;
+    int i = this.action;
+    if (i != 1)
     {
-    default: 
-      QMLog.e("CoverViewAction", "Unknown action");
-      return Boolean.valueOf(false);
-    case 1: 
-      return paramBaseRuntime.getCoverView(this.coverViewId);
-    case 2: 
-      return Boolean.valueOf(paramBaseRuntime.addCoverView(this.parentViewId, this.coverViewId, this.coverView, this.fixed));
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          QMLog.e("CoverViewAction", "Unknown action");
+          return paramBaseRuntime;
+        }
+        return Boolean.valueOf(((AppBrandPageContainer)localObject).removeCoverView(this.coverViewId));
+      }
+      return Boolean.valueOf(((AppBrandPageContainer)localObject).addCoverView(this.parentViewId, this.coverViewId, this.coverView, this.fixed));
     }
-    return Boolean.valueOf(paramBaseRuntime.removeCoverView(this.coverViewId));
+    return ((AppBrandPageContainer)localObject).getCoverView(this.coverViewId);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.action.CoverViewAction
  * JD-Core Version:    0.7.0.1
  */

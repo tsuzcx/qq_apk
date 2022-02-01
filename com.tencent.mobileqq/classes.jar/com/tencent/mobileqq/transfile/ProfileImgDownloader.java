@@ -1,16 +1,10 @@
 package com.tencent.mobileqq.transfile;
 
 import android.graphics.BitmapFactory.Options;
-import android.text.TextUtils;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.URLDrawableHandler;
-import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
-import com.tencent.mobileqq.utils.FileUtils;
-import com.tencent.mobileqq.utils.HttpDownloadUtil;
-import com.tencent.qphone.base.util.QLog;
 import java.io.File;
 import java.io.OutputStream;
-import java.net.URL;
 
 public class ProfileImgDownloader
   extends AbsDownloader
@@ -23,8 +17,8 @@ public class ProfileImgDownloader
   
   public static int calculateInSampleSize(BitmapFactory.Options paramOptions, int paramInt1, int paramInt2)
   {
-    int i = 1;
     int j = 1;
+    int i = 1;
     int m = j;
     if (paramInt1 != 0)
     {
@@ -34,282 +28,240 @@ public class ProfileImgDownloader
         m = j;
         if (paramInt1 != -1)
         {
-          if (paramInt2 != -1) {
-            break label42;
+          if (paramInt2 == -1) {
+            return 1;
           }
-          m = j;
+          j = paramOptions.outHeight;
+          int k = paramOptions.outWidth;
+          for (;;)
+          {
+            if (j <= paramInt2)
+            {
+              m = i;
+              if (k <= paramInt1) {
+                break;
+              }
+            }
+            int n = Math.round(j / paramInt2);
+            m = Math.round(k / paramInt1);
+            if (n <= m) {
+              n = m;
+            }
+            m = i;
+            if (n < 2) {
+              break;
+            }
+            k /= 2;
+            j /= 2;
+            i *= 2;
+          }
         }
       }
     }
-    label42:
-    int k;
-    label54:
-    do
-    {
-      return m;
-      j = paramOptions.outHeight;
-      k = paramOptions.outWidth;
-      if (j > paramInt2) {
-        break;
-      }
-      m = i;
-    } while (k <= paramInt1);
-    int n = Math.round(j / paramInt2);
-    m = Math.round(k / paramInt1);
-    if (n > m) {}
-    for (;;)
-    {
-      m = i;
-      if (n < 2) {
-        break;
-      }
-      k /= 2;
-      j /= 2;
-      i *= 2;
-      break label54;
-      n = m;
-    }
+    return m;
   }
   
   /* Error */
   public java.lang.Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 4
-    //   3: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   6: ifeq +43 -> 49
-    //   9: ldc 20
-    //   11: iconst_2
-    //   12: new 56	java/lang/StringBuilder
-    //   15: dup
-    //   16: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   19: ldc 59
-    //   21: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   24: aload_2
-    //   25: getfield 69	com/tencent/image/DownloadParams:url	Ljava/net/URL;
-    //   28: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   31: ldc 74
-    //   33: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_1
-    //   37: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   40: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   43: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   46: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   49: ldc 17
-    //   51: aload_2
-    //   52: getfield 69	com/tencent/image/DownloadParams:url	Ljava/net/URL;
-    //   55: invokevirtual 92	java/net/URL:getProtocol	()Ljava/lang/String;
-    //   58: invokevirtual 98	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   61: ifeq +155 -> 216
-    //   64: new 29	android/graphics/BitmapFactory$Options
-    //   67: dup
-    //   68: invokespecial 99	android/graphics/BitmapFactory$Options:<init>	()V
-    //   71: astore 6
-    //   73: aload 6
-    //   75: iconst_1
-    //   76: putfield 103	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   79: aload_1
-    //   80: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   83: aload 6
-    //   85: invokestatic 108	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   88: pop
-    //   89: aload 6
-    //   91: aload 6
-    //   93: sipush 160
-    //   96: sipush 160
-    //   99: invokestatic 110	com/tencent/mobileqq/transfile/ProfileImgDownloader:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
-    //   102: putfield 113	android/graphics/BitmapFactory$Options:inSampleSize	I
-    //   105: aload 6
-    //   107: iconst_0
-    //   108: putfield 103	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
-    //   111: new 115	java/io/BufferedInputStream
-    //   114: dup
-    //   115: new 117	java/io/FileInputStream
-    //   118: dup
-    //   119: aload_1
-    //   120: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   123: invokespecial 120	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   126: invokespecial 123	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   129: astore 5
-    //   131: aload 5
-    //   133: astore 4
-    //   135: aload 5
-    //   137: aconst_null
-    //   138: aload 6
-    //   140: invokestatic 127	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
-    //   143: astore 6
-    //   145: aload 5
-    //   147: ifnull +8 -> 155
+    //   0: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +59 -> 62
+    //   6: new 56	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   13: astore 4
+    //   15: aload 4
+    //   17: ldc 59
+    //   19: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   22: pop
+    //   23: aload 4
+    //   25: aload_2
+    //   26: getfield 69	com/tencent/image/DownloadParams:url	Ljava/net/URL;
+    //   29: invokevirtual 72	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   32: pop
+    //   33: aload 4
+    //   35: ldc 74
+    //   37: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: aload 4
+    //   43: aload_1
+    //   44: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   47: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: pop
+    //   51: ldc 20
+    //   53: iconst_2
+    //   54: aload 4
+    //   56: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   59: invokestatic 87	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   62: ldc 17
+    //   64: aload_2
+    //   65: getfield 69	com/tencent/image/DownloadParams:url	Ljava/net/URL;
+    //   68: invokevirtual 92	java/net/URL:getProtocol	()Ljava/lang/String;
+    //   71: invokevirtual 98	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   74: ifeq +231 -> 305
+    //   77: aconst_null
+    //   78: astore 7
+    //   80: aconst_null
+    //   81: astore 5
+    //   83: aload 5
+    //   85: astore 4
+    //   87: new 29	android/graphics/BitmapFactory$Options
+    //   90: dup
+    //   91: invokespecial 99	android/graphics/BitmapFactory$Options:<init>	()V
+    //   94: astore 6
+    //   96: aload 5
+    //   98: astore 4
+    //   100: aload 6
+    //   102: iconst_1
+    //   103: putfield 103	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
+    //   106: aload 5
+    //   108: astore 4
+    //   110: aload_1
+    //   111: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   114: aload 6
+    //   116: invokestatic 108	android/graphics/BitmapFactory:decodeFile	(Ljava/lang/String;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   119: pop
+    //   120: aload 5
+    //   122: astore 4
+    //   124: aload 6
+    //   126: aload 6
+    //   128: sipush 160
+    //   131: sipush 160
+    //   134: invokestatic 110	com/tencent/mobileqq/transfile/ProfileImgDownloader:calculateInSampleSize	(Landroid/graphics/BitmapFactory$Options;II)I
+    //   137: putfield 113	android/graphics/BitmapFactory$Options:inSampleSize	I
+    //   140: aload 5
+    //   142: astore 4
+    //   144: aload 6
+    //   146: iconst_0
+    //   147: putfield 103	android/graphics/BitmapFactory$Options:inJustDecodeBounds	Z
     //   150: aload 5
-    //   152: invokevirtual 132	java/io/InputStream:close	()V
-    //   155: aload 6
-    //   157: areturn
-    //   158: astore 6
-    //   160: aconst_null
-    //   161: astore 5
-    //   163: aload 5
-    //   165: astore 4
-    //   167: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   170: ifeq +36 -> 206
-    //   173: aload 5
-    //   175: astore 4
-    //   177: ldc 20
-    //   179: iconst_2
-    //   180: new 56	java/lang/StringBuilder
-    //   183: dup
-    //   184: invokespecial 57	java/lang/StringBuilder:<init>	()V
-    //   187: ldc 134
-    //   189: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: aload 6
-    //   194: invokevirtual 137	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
-    //   197: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   200: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   203: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   206: aload 5
-    //   208: ifnull +8 -> 216
-    //   211: aload 5
-    //   213: invokevirtual 132	java/io/InputStream:close	()V
-    //   216: aload_0
-    //   217: aload_1
-    //   218: aload_2
-    //   219: aload_3
-    //   220: invokespecial 142	com/tencent/mobileqq/transfile/AbsDownloader:decodeFile	(Ljava/io/File;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/lang/Object;
-    //   223: areturn
-    //   224: astore_1
-    //   225: aload 4
-    //   227: astore_2
-    //   228: aload_2
-    //   229: ifnull +7 -> 236
-    //   232: aload_2
-    //   233: invokevirtual 132	java/io/InputStream:close	()V
-    //   236: aload_1
-    //   237: athrow
-    //   238: astore_1
-    //   239: aload 6
-    //   241: areturn
-    //   242: astore 4
-    //   244: goto -28 -> 216
-    //   247: astore_2
-    //   248: goto -12 -> 236
-    //   251: astore_1
-    //   252: aload 4
-    //   254: astore_2
-    //   255: goto -27 -> 228
-    //   258: astore 6
-    //   260: goto -97 -> 163
+    //   152: astore 4
+    //   154: new 115	java/io/BufferedInputStream
+    //   157: dup
+    //   158: new 117	java/io/FileInputStream
+    //   161: dup
+    //   162: aload_1
+    //   163: invokevirtual 80	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   166: invokespecial 120	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   169: invokespecial 123	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   172: astore 5
+    //   174: aload 5
+    //   176: aconst_null
+    //   177: aload 6
+    //   179: invokestatic 127	android/graphics/BitmapFactory:decodeStream	(Ljava/io/InputStream;Landroid/graphics/Rect;Landroid/graphics/BitmapFactory$Options;)Landroid/graphics/Bitmap;
+    //   182: astore 4
+    //   184: aload 5
+    //   186: invokevirtual 132	java/io/InputStream:close	()V
+    //   189: aload 4
+    //   191: areturn
+    //   192: astore_1
+    //   193: aload 5
+    //   195: astore 4
+    //   197: goto +96 -> 293
+    //   200: astore 6
+    //   202: goto +13 -> 215
+    //   205: astore_1
+    //   206: goto +87 -> 293
+    //   209: astore 6
+    //   211: aload 7
+    //   213: astore 5
+    //   215: aload 5
+    //   217: astore 4
+    //   219: invokestatic 54	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   222: ifeq +58 -> 280
+    //   225: aload 5
+    //   227: astore 4
+    //   229: new 56	java/lang/StringBuilder
+    //   232: dup
+    //   233: invokespecial 57	java/lang/StringBuilder:<init>	()V
+    //   236: astore 7
+    //   238: aload 5
+    //   240: astore 4
+    //   242: aload 7
+    //   244: ldc 134
+    //   246: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   249: pop
+    //   250: aload 5
+    //   252: astore 4
+    //   254: aload 7
+    //   256: aload 6
+    //   258: invokevirtual 137	java/lang/OutOfMemoryError:getMessage	()Ljava/lang/String;
+    //   261: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   264: pop
+    //   265: aload 5
+    //   267: astore 4
+    //   269: ldc 20
+    //   271: iconst_2
+    //   272: aload 7
+    //   274: invokevirtual 83	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   277: invokestatic 140	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   280: aload 5
+    //   282: ifnull +23 -> 305
+    //   285: aload 5
+    //   287: invokevirtual 132	java/io/InputStream:close	()V
+    //   290: goto +15 -> 305
+    //   293: aload 4
+    //   295: ifnull +8 -> 303
+    //   298: aload 4
+    //   300: invokevirtual 132	java/io/InputStream:close	()V
+    //   303: aload_1
+    //   304: athrow
+    //   305: aload_0
+    //   306: aload_1
+    //   307: aload_2
+    //   308: aload_3
+    //   309: invokespecial 142	com/tencent/mobileqq/transfile/AbsDownloader:decodeFile	(Ljava/io/File;Lcom/tencent/image/DownloadParams;Lcom/tencent/image/URLDrawableHandler;)Ljava/lang/Object;
+    //   312: areturn
+    //   313: astore_1
+    //   314: aload 4
+    //   316: areturn
+    //   317: astore 4
+    //   319: goto -14 -> 305
+    //   322: astore_2
+    //   323: goto -20 -> 303
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	263	0	this	ProfileImgDownloader
-    //   0	263	1	paramFile	File
-    //   0	263	2	paramDownloadParams	DownloadParams
-    //   0	263	3	paramURLDrawableHandler	URLDrawableHandler
-    //   1	225	4	localObject1	java.lang.Object
-    //   242	11	4	localIOException	java.io.IOException
-    //   129	83	5	localBufferedInputStream	java.io.BufferedInputStream
-    //   71	85	6	localObject2	java.lang.Object
-    //   158	82	6	localOutOfMemoryError1	java.lang.OutOfMemoryError
-    //   258	1	6	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   0	326	0	this	ProfileImgDownloader
+    //   0	326	1	paramFile	File
+    //   0	326	2	paramDownloadParams	DownloadParams
+    //   0	326	3	paramURLDrawableHandler	URLDrawableHandler
+    //   13	302	4	localObject1	java.lang.Object
+    //   317	1	4	localIOException	java.io.IOException
+    //   81	205	5	localObject2	java.lang.Object
+    //   94	84	6	localOptions	BitmapFactory.Options
+    //   200	1	6	localOutOfMemoryError1	java.lang.OutOfMemoryError
+    //   209	48	6	localOutOfMemoryError2	java.lang.OutOfMemoryError
+    //   78	195	7	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   64	131	158	java/lang/OutOfMemoryError
-    //   64	131	224	finally
-    //   150	155	238	java/io/IOException
-    //   211	216	242	java/io/IOException
-    //   232	236	247	java/io/IOException
-    //   135	145	251	finally
-    //   167	173	251	finally
-    //   177	206	251	finally
-    //   135	145	258	java/lang/OutOfMemoryError
+    //   174	184	192	finally
+    //   174	184	200	java/lang/OutOfMemoryError
+    //   87	96	205	finally
+    //   100	106	205	finally
+    //   110	120	205	finally
+    //   124	140	205	finally
+    //   144	150	205	finally
+    //   154	174	205	finally
+    //   219	225	205	finally
+    //   229	238	205	finally
+    //   242	250	205	finally
+    //   254	265	205	finally
+    //   269	280	205	finally
+    //   87	96	209	java/lang/OutOfMemoryError
+    //   100	106	209	java/lang/OutOfMemoryError
+    //   110	120	209	java/lang/OutOfMemoryError
+    //   124	140	209	java/lang/OutOfMemoryError
+    //   144	150	209	java/lang/OutOfMemoryError
+    //   154	174	209	java/lang/OutOfMemoryError
+    //   184	189	313	java/io/IOException
+    //   285	290	317	java/io/IOException
+    //   298	303	322	java/io/IOException
   }
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("ProfileImgDownloader", 2, "downloadImage() url = " + paramDownloadParams.url);
-    }
-    paramURLDrawableHandler = paramDownloadParams.url.getProtocol();
-    paramOutputStream = paramDownloadParams.url.getHost();
-    paramDownloadParams = paramDownloadParams.url.getFile();
-    int i;
-    int j;
-    if ((paramOutputStream != null) && ((paramOutputStream.startsWith("[")) || (paramOutputStream.endsWith("]")))) {
-      if (paramOutputStream.startsWith("["))
-      {
-        i = 1;
-        if (!paramOutputStream.endsWith("]")) {
-          break label205;
-        }
-        j = paramOutputStream.length() - 1;
-        label112:
-        if (i >= j) {
-          break label435;
-        }
-        paramOutputStream = paramOutputStream.substring(i, j);
-      }
-    }
-    label408:
-    label435:
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("ProfileImgDownloader", 2, "downloadImage() [" + paramURLDrawableHandler + "," + paramOutputStream + "," + paramDownloadParams + "]");
-      }
-      if (TextUtils.isEmpty(paramDownloadParams))
-      {
-        throw new RuntimeException("downloadImage() path is null");
-        i = 0;
-        break;
-        label205:
-        j = paramOutputStream.length();
-        break label112;
-      }
-      File localFile1 = new File(paramDownloadParams);
-      File localFile2;
-      if (!localFile1.exists())
-      {
-        if (!"profile_img_icon".equals(paramURLDrawableHandler)) {
-          break label408;
-        }
-        paramURLDrawableHandler = paramDownloadParams + "_temp";
-        localFile2 = new File(paramURLDrawableHandler);
-        if (localFile2.exists()) {
-          localFile2.delete();
-        }
-        File localFile3 = localFile2.getParentFile();
-        if ((localFile3 != null) && (!localFile3.exists())) {
-          localFile3.mkdirs();
-        }
-      }
-      try
-      {
-        bool1 = HttpDownloadUtil.download(null, MsfSdkUtils.insertMtype("qzone", paramOutputStream), localFile2);
-        if (bool1)
-        {
-          FileUtils.d(paramURLDrawableHandler, paramDownloadParams);
-          localFile2.delete();
-          return localFile1;
-        }
-      }
-      catch (Exception paramOutputStream)
-      {
-        for (;;)
-        {
-          boolean bool1 = bool2;
-          if (QLog.isColorLevel())
-          {
-            QLog.i("Q.profilecard.FrdProfileCard", 2, "downloadQzonePic() " + paramOutputStream.toString());
-            bool1 = bool2;
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.i("Q.profilecard.FrdProfileCard", 2, "downloadQzonePic() fail");
-            }
-          }
-        }
-      }
-      throw new RuntimeException("downloadImage() file not exist, path = " + paramDownloadParams);
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean useDiskCache()
@@ -319,7 +271,7 @@ public class ProfileImgDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ProfileImgDownloader
  * JD-Core Version:    0.7.0.1
  */

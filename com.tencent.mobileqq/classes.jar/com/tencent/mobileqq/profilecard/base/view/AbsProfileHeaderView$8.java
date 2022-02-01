@@ -2,8 +2,8 @@ package com.tencent.mobileqq.profilecard.base.view;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
-import com.tencent.mobileqq.vas.PrettyAccountUtil;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.vas.util.PrettyAccountUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class AbsProfileHeaderView$8
@@ -20,7 +20,7 @@ class AbsProfileHeaderView$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.base.view.AbsProfileHeaderView.8
  * JD-Core Version:    0.7.0.1
  */

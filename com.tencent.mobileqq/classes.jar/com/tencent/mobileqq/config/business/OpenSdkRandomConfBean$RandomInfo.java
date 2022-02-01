@@ -9,13 +9,19 @@ public class OpenSdkRandomConfBean$RandomInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("{");
-    localStringBuilder.append("nickName:").append(this.a).append(",headID:").append(this.b).append(",headURL:").append(this.c).append("}");
+    localStringBuilder.append("nickName:");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",headID:");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",headURL:");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkRandomConfBean.RandomInfo
  * JD-Core Version:    0.7.0.1
  */

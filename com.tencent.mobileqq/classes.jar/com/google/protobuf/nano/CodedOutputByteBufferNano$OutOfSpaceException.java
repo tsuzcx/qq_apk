@@ -9,12 +9,12 @@ public class CodedOutputByteBufferNano$OutOfSpaceException
   
   CodedOutputByteBufferNano$OutOfSpaceException(int paramInt1, int paramInt2)
   {
-    super("CodedOutputStream was writing to a flat byte array and ran out of space (pos " + paramInt1 + " limit " + paramInt2 + ").");
+    super(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.protobuf.nano.CodedOutputByteBufferNano.OutOfSpaceException
  * JD-Core Version:    0.7.0.1
  */

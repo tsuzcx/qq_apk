@@ -8,11 +8,10 @@ import android.os.Bundle;
 import android.util.AttributeSet;
 import com.tencent.common.app.InnerFrame;
 import com.tencent.common.app.InnerFrameManager;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.forward.ForwardBaseOption;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
 
 public class PhoneInnerFrame
   extends InnerFrame
@@ -23,7 +22,7 @@ public class PhoneInnerFrame
   private ContactListView jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView;
   private PhoneLaunchView jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView;
   private PhoneMatchView jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView;
-  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver;
+  private ContactBindObserver jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver;
   boolean jdField_a_of_type_Boolean;
   
   public PhoneInnerFrame(Context paramContext)
@@ -41,14 +40,23 @@ public class PhoneInnerFrame
     super(paramContext, paramAttributeSet, paramInt);
   }
   
+  private void a(Intent paramIntent)
+  {
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView == null) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView = new PhoneMatchView(a(), this.jdField_a_of_type_Int);
+    }
+    a(paramIntent, this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView);
+  }
+  
   private void a(Intent paramIntent, BaseActivityView paramBaseActivityView)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView != paramBaseActivityView)
+    BaseActivityView localBaseActivityView = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView;
+    if (localBaseActivityView != paramBaseActivityView)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView != null)
+      if (localBaseActivityView != null)
       {
         if (this.jdField_a_of_type_Boolean) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView.c();
+          localBaseActivityView.c();
         }
         this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView.d();
       }
@@ -63,14 +71,6 @@ public class PhoneInnerFrame
   }
   
   private void b(Intent paramIntent)
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView == null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView = new PhoneMatchView(a(), this.jdField_a_of_type_Int);
-    }
-    a(paramIntent, this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView);
-  }
-  
-  private void c(Intent paramIntent)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView == null) {
       this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView = new PhoneLaunchView(a(), this.jdField_a_of_type_Int);
@@ -93,16 +93,18 @@ public class PhoneInnerFrame
   
   public ForwardBaseOption a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.a;
+    ContactListView localContactListView = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView;
+    if (localContactListView != null) {
+      return localContactListView.a;
     }
     return null;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView.b();
+    BaseActivityView localBaseActivityView = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView;
+    if (localBaseActivityView != null) {
+      localBaseActivityView.b();
     }
     this.jdField_a_of_type_Boolean = true;
     super.a();
@@ -116,8 +118,9 @@ public class PhoneInnerFrame
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     super.a(paramInt1, paramInt2, paramIntent);
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView.a(paramInt1, paramInt2, paramIntent);
+    BaseActivityView localBaseActivityView = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView;
+    if (localBaseActivityView != null) {
+      localBaseActivityView.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
@@ -131,12 +134,12 @@ public class PhoneInnerFrame
     }
     if (str.equals(PhoneLaunchActivity.class.getName()))
     {
-      c(paramIntent);
+      b(paramIntent);
       return;
     }
     if (str.equals(PhoneMatchView.class.getName()))
     {
-      b(null);
+      a(null);
       return;
     }
     a().startActivityForResult(paramIntent, paramInt);
@@ -152,11 +155,13 @@ public class PhoneInnerFrame
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView.c();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView;
+    if (localObject != null) {
+      ((BaseActivityView)localObject).c();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.c();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView;
+    if (localObject != null) {
+      ((ContactListView)localObject).c();
     }
     this.jdField_a_of_type_Boolean = false;
     super.b();
@@ -169,39 +174,43 @@ public class PhoneInnerFrame
       this.jdField_a_of_type_Int = paramBundle.getInt("key_req_type");
     }
     g();
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver == null)
+    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = new PhoneInnerFrame.1(this);
-      b().a().registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver = new PhoneInnerFrame.1(this);
+      b().a().registObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView.d();
+      ((BaseActivityView)localObject).d();
       this.jdField_a_of_type_ComTencentMobileqqActivityPhoneBaseActivityView = null;
       removeAllViews();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver != null)
+    if (this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver != null)
     {
-      b().a().unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver);
-      this.jdField_a_of_type_ComTencentMobileqqPhonecontactContactBindObserver = null;
+      b().a().unRegistObserver(this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver);
+      this.jdField_a_of_type_ComTencentMobileqqPhonecontactObserverContactBindObserver = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView.e();
+      ((ContactListView)localObject).e();
       this.jdField_a_of_type_ComTencentMobileqqActivityPhoneContactListView = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView.e();
+      ((PhoneLaunchView)localObject).e();
       this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneLaunchView = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView.e();
+      ((PhoneMatchView)localObject).e();
       this.jdField_a_of_type_ComTencentMobileqqActivityPhonePhoneMatchView = null;
     }
     super.c();
@@ -223,17 +232,23 @@ public class PhoneInnerFrame
   
   void g()
   {
-    PhoneContactManagerImp localPhoneContactManagerImp = (PhoneContactManagerImp)b().a().getManager(QQManagerFactory.CONTACT_MANAGER);
-    switch (localPhoneContactManagerImp.d())
+    IPhoneContactService localIPhoneContactService = (IPhoneContactService)b().a().getRuntimeService(IPhoneContactService.class, "");
+    switch (localIPhoneContactService.getSelfBindState())
     {
     default: 
       h();
       return;
-    case 0: 
-    case 7: 
-    case 8: 
-    case 9: 
+    case 6: 
+      if ((!localIPhoneContactService.isAutoUploadContacts()) && (this.jdField_a_of_type_Int != 2))
+      {
+        a(null);
+        return;
+      }
       h();
+      return;
+    case 4: 
+    case 5: 
+      b(null);
       return;
     case 1: 
     case 2: 
@@ -243,24 +258,15 @@ public class PhoneInnerFrame
         h();
         return;
       }
-      c(null);
-      return;
-    case 4: 
-    case 5: 
-      c(null);
+      b(null);
       return;
     }
-    if ((localPhoneContactManagerImp.f()) || (this.jdField_a_of_type_Int == 2))
-    {
-      h();
-      return;
-    }
-    b(null);
+    h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.PhoneInnerFrame
  * JD-Core Version:    0.7.0.1
  */

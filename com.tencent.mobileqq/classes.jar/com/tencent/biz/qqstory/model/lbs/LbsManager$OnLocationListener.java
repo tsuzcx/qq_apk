@@ -18,13 +18,16 @@ public abstract class LbsManager$OnLocationListener
     if ((paramInt == 0) && (paramSosoLbsInfo != null) && (paramSosoLbsInfo.mLocation != null))
     {
       LbsManager.a = new BasicLocation((int)(paramSosoLbsInfo.mLocation.mLat02 * 1000000.0D), (int)(paramSosoLbsInfo.mLocation.mLon02 * 1000000.0D));
-      SLog.b("LbsManager", "onLocationFinish success : " + LbsManager.a);
+      paramSosoLbsInfo = new StringBuilder();
+      paramSosoLbsInfo.append("onLocationFinish success : ");
+      paramSosoLbsInfo.append(LbsManager.a);
+      SLog.b("LbsManager", paramSosoLbsInfo.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.lbs.LbsManager.OnLocationListener
  * JD-Core Version:    0.7.0.1
  */

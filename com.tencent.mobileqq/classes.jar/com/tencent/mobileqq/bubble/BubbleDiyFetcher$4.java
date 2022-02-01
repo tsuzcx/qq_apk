@@ -3,7 +3,6 @@ package com.tencent.mobileqq.bubble;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.concurrent.CopyOnWriteArrayList;
@@ -18,9 +17,8 @@ class BubbleDiyFetcher$4
   {
     if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("BubbleDiyFetcher", 2, "now query mUnCacheDiyId: " + TextUtils.join(",", this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet));
-      }
+      localObject1 = this.this$0;
+      BubbleDiyFetcher.a((BubbleDiyFetcher)localObject1, TextUtils.join(",", ((BubbleDiyFetcher)localObject1).jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet), "now query mUnCacheDiyId: ");
       this.this$0.c(this.a);
       if (!this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.isEmpty())
       {
@@ -31,24 +29,24 @@ class BubbleDiyFetcher$4
     if (!this.this$0.b.isEmpty()) {
       this.this$0.b();
     }
-    Object localObject;
+    Object localObject2;
     if (!this.this$0.c.isEmpty())
     {
-      localIterator = this.this$0.c.iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.this$0.c.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (String)localIterator.next();
-        if (!TextUtils.isEmpty((CharSequence)localObject)) {
-          this.this$0.c((String)localObject);
+        localObject2 = (String)((Iterator)localObject1).next();
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          this.this$0.c((String)localObject2);
         }
       }
     }
-    Iterator localIterator = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
-    while (localIterator.hasNext())
+    Object localObject1 = this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      localObject = (VipBubbleDrawable)localIterator.next();
-      if ((localObject == null) || (((VipBubbleDrawable)localObject).getCallback() == null)) {
-        this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject);
+      localObject2 = (VipBubbleDrawable)((Iterator)localObject1).next();
+      if ((localObject2 == null) || (((VipBubbleDrawable)localObject2).getCallback() == null)) {
+        this.this$0.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArrayList.remove(localObject2);
       }
     }
     BubbleDiyFetcher.jdField_a_of_type_Long = 0L;
@@ -56,7 +54,7 @@ class BubbleDiyFetcher$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.BubbleDiyFetcher.4
  * JD-Core Version:    0.7.0.1
  */

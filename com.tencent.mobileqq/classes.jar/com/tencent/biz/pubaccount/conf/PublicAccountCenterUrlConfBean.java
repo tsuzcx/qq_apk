@@ -3,6 +3,7 @@ package com.tencent.biz.pubaccount.conf;
 import android.text.TextUtils;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
 import com.tencent.biz.pubaccount.util.api.impl.PublicAccountConfigUtilImpl;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.IQStorageSafable;
@@ -34,38 +35,36 @@ public class PublicAccountCenterUrlConfBean
   
   private PublicAccountCenterUrlConfBean a(PublicAccountCenterUrlConfBean paramPublicAccountCenterUrlConfBean, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return this;
-      try
-      {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("pacenter_url")) {
-          this.jdField_a_of_type_JavaLangString = paramPublicAccountCenterUrlConfBean.jdField_a_of_type_JavaLangString;
-        }
-        if (paramString.has("pacategory_url")) {
-          this.jdField_b_of_type_JavaLangString = paramPublicAccountCenterUrlConfBean.jdField_b_of_type_JavaLangString;
-        }
-        if (paramString.has("readinjoy_search_url")) {
-          this.c = paramPublicAccountCenterUrlConfBean.c;
-        }
-        if (paramString.has("image_collection_comment")) {
-          this.jdField_a_of_type_Boolean = paramPublicAccountCenterUrlConfBean.jdField_a_of_type_Boolean;
-        }
-        if (paramPublicAccountCenterUrlConfBean.jdField_b_of_type_Boolean)
-        {
-          this.jdField_b_of_type_Boolean = true;
-          return this;
-        }
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("pacenter_url")) {
+        this.jdField_a_of_type_JavaLangString = paramPublicAccountCenterUrlConfBean.jdField_a_of_type_JavaLangString;
       }
-      catch (Exception paramPublicAccountCenterUrlConfBean)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramPublicAccountCenterUrlConfBean);
-        }
-        paramPublicAccountCenterUrlConfBean.printStackTrace();
+      if (paramString.has("pacategory_url")) {
+        this.jdField_b_of_type_JavaLangString = paramPublicAccountCenterUrlConfBean.jdField_b_of_type_JavaLangString;
       }
+      if (paramString.has("readinjoy_search_url")) {
+        this.c = paramPublicAccountCenterUrlConfBean.c;
+      }
+      if (paramString.has("image_collection_comment")) {
+        this.jdField_a_of_type_Boolean = paramPublicAccountCenterUrlConfBean.jdField_a_of_type_Boolean;
+      }
+      if (paramPublicAccountCenterUrlConfBean.jdField_b_of_type_Boolean)
+      {
+        this.jdField_b_of_type_Boolean = true;
+        return this;
+      }
+    }
+    catch (Exception paramPublicAccountCenterUrlConfBean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PublicAccountCenterUrlConfProcessor", 2, "checkPublicAccountCenterUrlConfigData error", paramPublicAccountCenterUrlConfBean);
+      }
+      paramPublicAccountCenterUrlConfBean.printStackTrace();
     }
     return this;
   }
@@ -74,13 +73,9 @@ public class PublicAccountCenterUrlConfBean
   {
     Object localObject = new PublicAccountCenterUrlConfBean();
     int i = 0;
-    String str;
-    for (;;)
+    while (i < paramArrayOfQConfItem.length)
     {
-      if (i >= paramArrayOfQConfItem.length) {
-        return localObject;
-      }
-      str = paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString;
+      String str = paramArrayOfQConfItem[i].jdField_a_of_type_JavaLangString;
       try
       {
         PublicAccountCenterUrlConfBean localPublicAccountCenterUrlConfBean = ((PublicAccountCenterUrlConfBean)localObject).a((PublicAccountCenterUrlConfBean)QStorage.a(str, PublicAccountCenterUrlConfBean.class), str);
@@ -88,10 +83,10 @@ public class PublicAccountCenterUrlConfBean
       }
       catch (QStorageInstantiateException localQStorageInstantiateException)
       {
-        for (;;)
-        {
-          QLog.i("PublicAccountCenterUrlConfProcessor", 1, "loadConfig l :" + str, localQStorageInstantiateException);
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("loadConfig l :");
+        localStringBuilder.append(str);
+        QLog.i("PublicAccountCenterUrlConfProcessor", 1, localStringBuilder.toString(), localQStorageInstantiateException);
       }
       i += 1;
     }
@@ -108,41 +103,39 @@ public class PublicAccountCenterUrlConfBean
   
   public void a(String paramString)
   {
-    boolean bool3 = true;
     for (;;)
     {
-      boolean bool2;
       try
       {
         paramString = new JSONObject(paramString);
         String str1 = paramString.getString("pacenter_url");
         String str2 = paramString.getString("pacategory_url");
-        if (!PublicAccountConfigUtilImpl.checkUrlFormat(str1)) {
-          break label156;
-        }
-        this.jdField_a_of_type_JavaLangString = str1;
-        bool1 = true;
-        if (PublicAccountConfigUtilImpl.checkUrlFormat(str2))
+        if (PublicAccountConfigUtilImpl.checkUrlFormat(str1))
         {
-          this.jdField_b_of_type_JavaLangString = str2;
+          this.jdField_a_of_type_JavaLangString = str1;
           bool1 = true;
-        }
-        bool2 = bool1;
-        if (paramString.has("readinjoy_search_url"))
-        {
-          str1 = paramString.getString("readinjoy_search_url");
-          bool2 = bool1;
-          if (PublicAccountConfigUtilImpl.checkUrlFormat(str1))
+          if (PublicAccountConfigUtilImpl.checkUrlFormat(str2))
           {
-            this.c = str1;
+            this.jdField_b_of_type_JavaLangString = str2;
+            bool1 = true;
+          }
+          boolean bool2 = bool1;
+          if (paramString.has("readinjoy_search_url"))
+          {
+            str1 = paramString.getString("readinjoy_search_url");
+            bool2 = bool1;
+            if (PublicAccountConfigUtilImpl.checkUrlFormat(str1))
+            {
+              this.c = str1;
+              bool2 = true;
+            }
+          }
+          if (paramString.has("image_collection_comment"))
+          {
+            this.jdField_a_of_type_Boolean = paramString.getBoolean("image_collection_comment");
             bool2 = true;
           }
-        }
-        if (paramString.has("image_collection_comment"))
-        {
-          this.jdField_a_of_type_Boolean = paramString.getBoolean("image_collection_comment");
-          bool1 = bool3;
-          this.jdField_b_of_type_Boolean = bool1;
+          this.jdField_b_of_type_Boolean = bool2;
           return;
         }
       }
@@ -155,10 +148,7 @@ public class PublicAccountCenterUrlConfBean
         this.jdField_b_of_type_Boolean = false;
         return;
       }
-      boolean bool1 = bool2;
-      continue;
-      label156:
-      bool1 = false;
+      boolean bool1 = false;
     }
   }
   
@@ -168,13 +158,13 @@ public class PublicAccountCenterUrlConfBean
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).updatePublicAccountCenterUrlConfigData((QQAppInterface)localObject);
+      ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).updatePublicAccountCenterUrlConfigData((AppInterface)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PublicAccountCenterUrlConfBean
  * JD-Core Version:    0.7.0.1
  */

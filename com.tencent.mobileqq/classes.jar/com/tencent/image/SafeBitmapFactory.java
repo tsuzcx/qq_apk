@@ -50,19 +50,11 @@ public class SafeBitmapFactory
   private static final String TAG = "SafeBitmapFactory";
   public static final int THREADS_COUNT_DEFAULTS = 7;
   public static Object lock = new Object();
-  public static AtomicBoolean sInjectHotPatch;
-  public static int sNeedRegionDecode;
-  public static long sPxThreshold;
+  public static AtomicBoolean sInjectHotPatch = new AtomicBoolean(false);
+  public static int sNeedRegionDecode = -1;
+  public static long sPxThreshold = -1L;
   public static int sRamThreshold = -1;
-  public static int sThreadCount;
-  
-  static
-  {
-    sPxThreshold = -1L;
-    sThreadCount = -1;
-    sNeedRegionDecode = -1;
-    sInjectHotPatch = new AtomicBoolean(false);
-  }
+  public static int sThreadCount = -1;
   
   public static Bitmap decodeByteArray(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
@@ -79,43 +71,47 @@ public class SafeBitmapFactory
   @TargetApi(10)
   private static Bitmap decodeData(Object paramObject, BitmapFactory.Options paramOptions)
   {
-    Bitmap localBitmap = null;
     if ((paramObject instanceof String))
     {
       paramObject = (String)paramObject;
-      if (URLDrawable.depImp.mLog.isColorLevel()) {
-        URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "解码图片文件路径：" + paramObject);
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        ILog localILog = URLDrawable.depImp.mLog;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("解码图片文件路径：");
+        localStringBuilder.append(paramObject);
+        localILog.d("SafeBitmapFactory", 2, localStringBuilder.toString());
       }
-      localBitmap = BitmapFactory.decodeFile(paramObject, paramOptions);
+      return BitmapFactory.decodeFile(paramObject, paramOptions);
     }
-    do
+    if ((paramObject instanceof InputStream))
     {
-      return localBitmap;
-      if ((paramObject instanceof InputStream))
-      {
-        paramObject = (InputStream)paramObject;
-        if (URLDrawable.depImp.mLog.isColorLevel()) {
-          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "解码图片文件流");
-        }
-        return BitmapFactory.decodeStream(paramObject, null, paramOptions);
+      paramObject = (InputStream)paramObject;
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "解码图片文件流");
       }
-      if ((paramObject instanceof FileDescriptor))
-      {
-        paramObject = (FileDescriptor)paramObject;
-        if (URLDrawable.depImp.mLog.isColorLevel()) {
-          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "解码图片文件描述");
-        }
-        return BitmapFactory.decodeFileDescriptor(paramObject, null, paramOptions);
+      return BitmapFactory.decodeStream(paramObject, null, paramOptions);
+    }
+    if ((paramObject instanceof FileDescriptor))
+    {
+      paramObject = (FileDescriptor)paramObject;
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "解码图片文件描述");
       }
-    } while (!(paramObject instanceof byte[]));
-    paramObject = (byte[])paramObject;
-    if (URLDrawable.depImp.mLog.isColorLevel()) {
-      URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "解码图片字节数组");
+      return BitmapFactory.decodeFileDescriptor(paramObject, null, paramOptions);
     }
-    if (paramOptions != null) {
-      return BitmapFactory.decodeByteArray(paramObject, 0, paramObject.length, paramOptions);
+    if ((paramObject instanceof byte[]))
+    {
+      paramObject = (byte[])paramObject;
+      if (URLDrawable.depImp.mLog.isColorLevel()) {
+        URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "解码图片字节数组");
+      }
+      if (paramOptions != null) {
+        return BitmapFactory.decodeByteArray(paramObject, 0, paramObject.length, paramOptions);
+      }
+      return BitmapFactory.decodeByteArray(paramObject, 0, paramObject.length);
     }
-    return BitmapFactory.decodeByteArray(paramObject, 0, paramObject.length);
+    return null;
   }
   
   public static Bitmap decodeFile(String paramString)
@@ -145,14 +141,13 @@ public class SafeBitmapFactory
   public static int getNeedRegionDecode()
   {
     if (sNeedRegionDecode == -1) {
-      if (!URLDrawable.mApplicationContext.getSharedPreferences("sp_safe_bitmap", 4).getBoolean("sp_need_region_decode", true)) {
-        break label35;
+      if (URLDrawable.mApplicationContext.getSharedPreferences("sp_safe_bitmap", 4).getBoolean("sp_need_region_decode", true)) {
+        sNeedRegionDecode = 1;
+      } else {
+        sNeedRegionDecode = 0;
       }
     }
-    label35:
-    for (sNeedRegionDecode = 1;; sNeedRegionDecode = 0) {
-      return sNeedRegionDecode;
-    }
+    return sNeedRegionDecode;
   }
   
   public static long getPxThreshoid()
@@ -198,15 +193,26 @@ public class SafeBitmapFactory
   
   private static void initRegionCacheFilePath()
   {
-    if (URLDrawable.depImp == null) {}
-    while (ROOT_PATH != null) {
+    if (URLDrawable.depImp == null) {
       return;
     }
-    Context localContext = URLDrawable.depImp.mTool.getContext();
-    ROOT_PATH = localContext.getFilesDir().getAbsolutePath() + "/urldrawable/hugeimagecache";
+    if (ROOT_PATH != null) {
+      return;
+    }
+    Object localObject = URLDrawable.depImp.mTool.getContext();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(((Context)localObject).getFilesDir().getAbsolutePath());
+    localStringBuilder.append("/urldrawable/hugeimagecache");
+    ROOT_PATH = localStringBuilder.toString();
     LARGE_MAP_CACHE_PATH = ROOT_PATH;
-    FLASH_BACK_TEST_PATH = ROOT_PATH + "/flashback.mc";
-    FLASH_BACK_TEST_REGION_PATH = ROOT_PATH + "/flashbackRegion.mc";
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(ROOT_PATH);
+    ((StringBuilder)localObject).append("/flashback.mc");
+    FLASH_BACK_TEST_PATH = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(ROOT_PATH);
+    ((StringBuilder)localObject).append("/flashbackRegion.mc");
+    FLASH_BACK_TEST_REGION_PATH = ((StringBuilder)localObject).toString();
   }
   
   public static void injectBitmapHotPatch() {}
@@ -215,15 +221,14 @@ public class SafeBitmapFactory
   {
     initRegionCacheFilePath();
     Object localObject1 = paramSafeDecodeOption.inOptions;
-    boolean bool1;
+    boolean bool2 = true;
     if ((localObject1 != null) && (((BitmapFactory.Options)localObject1).inJustDecodeBounds))
     {
       if (URLDrawable.depImp.mLog.isColorLevel()) {
         URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "只要获取图片数据，不需要解码图片，不使用区域解码");
       }
       paramSafeDecodeOption.isInJustDecodeBounds = true;
-      bool1 = false;
-      return bool1;
+      return false;
     }
     paramSafeDecodeOption.isInJustDecodeBounds = false;
     if (getNeedRegionDecode() == 0)
@@ -252,103 +257,143 @@ public class SafeBitmapFactory
     paramSafeDecodeOption.flashTestThreshold = 10000000L;
     if (localOptions.outWidth * localOptions.outHeight < 10000000L)
     {
-      if (URLDrawable.depImp.mLog.isColorLevel()) {
-        URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "图片太小，小于闪退检测阈值，不用区域解码。rawWidth：" + localOptions.outWidth + ", rawHeight :" + localOptions.outHeight + ",sPxThreshold:" + sPxThreshold);
+      if (URLDrawable.depImp.mLog.isColorLevel())
+      {
+        paramObject = URLDrawable.depImp.mLog;
+        paramSafeDecodeOption = new StringBuilder();
+        paramSafeDecodeOption.append("图片太小，小于闪退检测阈值，不用区域解码。rawWidth：");
+        paramSafeDecodeOption.append(localOptions.outWidth);
+        paramSafeDecodeOption.append(", rawHeight :");
+        paramSafeDecodeOption.append(localOptions.outHeight);
+        paramSafeDecodeOption.append(",sPxThreshold:");
+        paramSafeDecodeOption.append(sPxThreshold);
+        paramObject.d("SafeBitmapFactory", 2, paramSafeDecodeOption.toString());
       }
       return false;
     }
-    localObject1 = null;
     for (;;)
     {
-      long l1;
       try
       {
         if ((paramObject instanceof String))
         {
           localObject1 = new FileInputStream((String)paramObject);
           paramSafeDecodeOption.dataSourceType = "String";
-          localObject2 = new byte[29];
-          ((InputStream)localObject1).read((byte[])localObject2);
-          if ((localObject2[1] != 80) || (localObject2[2] != 78) || (localObject2[3] != 71) || (localObject2[28] != 1))
-          {
-            if (URLDrawable.depImp.mLog.isColorLevel()) {
-              URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "不是隔行扫描的png图片，不用区域解码");
-            }
-            paramSafeDecodeOption.isPng = 0;
-            return false;
-          }
+        }
+        else if ((paramObject instanceof FileDescriptor))
+        {
+          localObject1 = new FileInputStream((FileDescriptor)paramObject);
+          paramSafeDecodeOption.dataSourceType = "FileDescriptor";
         }
         else
         {
-          if ((paramObject instanceof FileDescriptor))
-          {
-            localObject1 = new FileInputStream((FileDescriptor)paramObject);
-            paramSafeDecodeOption.dataSourceType = "FileDescriptor";
-            continue;
-          }
           if (!(paramObject instanceof byte[])) {
-            continue;
+            break label1056;
           }
           localObject1 = new ByteArrayInputStream((byte[])paramObject);
           paramSafeDecodeOption.dataSourceType = "byte[]";
-          continue;
         }
-        paramSafeDecodeOption.isPng = 1;
-        ((InputStream)localObject1).close();
-        paramSafeDecodeOption.pxThreshold = getPxThreshoid();
-        if (localOptions.outWidth * localOptions.outHeight >= sPxThreshold) {
-          break label1010;
-        }
-        if (URLDrawable.depImp.mLog.isColorLevel()) {
-          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "图片小于区域解码阈值。rawWidth：" + localOptions.outWidth + ", rawHeight :" + localOptions.outHeight + ",sPxThreshold:" + sPxThreshold);
-        }
-        bool1 = false;
-        l1 = -1L;
-        if ((Build.VERSION.SDK_INT < 16) || (URLDrawable.mApplicationContext == null)) {
-          break label892;
-        }
-        localObject1 = (ActivityManager)URLDrawable.mApplicationContext.getSystemService("activity");
-        Object localObject2 = new ActivityManager.MemoryInfo();
-        if (localObject1 != null) {
-          ((ActivityManager)localObject1).getMemoryInfo((ActivityManager.MemoryInfo)localObject2);
-        }
-        l1 = ((ActivityManager.MemoryInfo)localObject2).totalMem / 1024L / 1024L / 1024L + 1L;
-        paramSafeDecodeOption.ram = l1;
-        paramSafeDecodeOption.ramThreshold = getRamThreshoid();
-        if (l1 <= sRamThreshold) {
-          break label1005;
-        }
-        if (URLDrawable.depImp.mLog.isColorLevel()) {
-          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "手机内存够大。ram：" + l1 + ",sRamThreshold:" + sRamThreshold);
-        }
-        bool2 = false;
-        bool1 = bool2;
-        if (bool2) {
-          break;
-        }
-        bool1 = bool2;
-        if (!paramSafeDecodeOption.inNeedFlashBackTest) {
-          break;
-        }
-        bool1 = bool2;
-        if (localOptions.outWidth * localOptions.outHeight <= 10000000L) {
-          break;
-        }
-        bool1 = bool2;
-        if (!(paramObject instanceof String)) {
-          break;
-        }
-        bool1 = bool2;
-        switch (MmapCache.getInstance(FLASH_BACK_TEST_PATH).findOrAddItem((String)paramObject))
+        Object localObject2 = new byte[29];
+        ((InputStream)localObject1).read((byte[])localObject2);
+        if ((localObject2[1] == 80) && (localObject2[2] == 78) && (localObject2[3] == 71) && (localObject2[28] == 1))
         {
-        case -1: 
-        default: 
-          return bool2;
+          paramSafeDecodeOption.isPng = 1;
+          ((InputStream)localObject1).close();
+          paramSafeDecodeOption.pxThreshold = getPxThreshoid();
+          boolean bool1;
+          if (localOptions.outWidth * localOptions.outHeight < sPxThreshold)
+          {
+            if (URLDrawable.depImp.mLog.isColorLevel())
+            {
+              localObject1 = URLDrawable.depImp.mLog;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("图片小于区域解码阈值。rawWidth：");
+              ((StringBuilder)localObject2).append(localOptions.outWidth);
+              ((StringBuilder)localObject2).append(", rawHeight :");
+              ((StringBuilder)localObject2).append(localOptions.outHeight);
+              ((StringBuilder)localObject2).append(",sPxThreshold:");
+              ((StringBuilder)localObject2).append(sPxThreshold);
+              ((ILog)localObject1).d("SafeBitmapFactory", 2, ((StringBuilder)localObject2).toString());
+            }
+            bool1 = false;
+          }
+          else
+          {
+            bool1 = true;
+          }
+          long l;
+          if ((Build.VERSION.SDK_INT >= 16) && (URLDrawable.mApplicationContext != null))
+          {
+            localObject1 = (ActivityManager)URLDrawable.mApplicationContext.getSystemService("activity");
+            localObject2 = new ActivityManager.MemoryInfo();
+            if (localObject1 != null) {
+              ((ActivityManager)localObject1).getMemoryInfo((ActivityManager.MemoryInfo)localObject2);
+            }
+            l = ((ActivityManager.MemoryInfo)localObject2).totalMem / 1024L / 1024L / 1024L;
+            l += 1L;
+          }
+          else
+          {
+            try
+            {
+              l = Long.valueOf(new java.io.BufferedReader(new java.io.FileReader("/proc/meminfo")).readLine().split("\\s+")[1]).longValue() / 1024L / 1024L;
+            }
+            catch (IOException localIOException)
+            {
+              localIOException.printStackTrace();
+            }
+            catch (FileNotFoundException localFileNotFoundException)
+            {
+              localFileNotFoundException.printStackTrace();
+            }
+            l = -1L;
+          }
+          paramSafeDecodeOption.ram = l;
+          paramSafeDecodeOption.ramThreshold = getRamThreshoid();
+          if (l > sRamThreshold)
+          {
+            if (URLDrawable.depImp.mLog.isColorLevel())
+            {
+              localILog = URLDrawable.depImp.mLog;
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("手机内存够大。ram：");
+              ((StringBuilder)localObject2).append(l);
+              ((StringBuilder)localObject2).append(",sRamThreshold:");
+              ((StringBuilder)localObject2).append(sRamThreshold);
+              localILog.d("SafeBitmapFactory", 2, ((StringBuilder)localObject2).toString());
+            }
+            bool1 = false;
+          }
+          if ((!bool1) && (paramSafeDecodeOption.inNeedFlashBackTest) && (localOptions.outWidth * localOptions.outHeight > 10000000L) && ((paramObject instanceof String)))
+          {
+            int i = MmapCache.getInstance(FLASH_BACK_TEST_PATH).findOrAddItem((String)paramObject);
+            if (i != -1) {
+              if (i != 0)
+              {
+                if (i == 1)
+                {
+                  paramSafeDecodeOption.isBeforeFlashBackPic = 1;
+                  bool1 = bool2;
+                  if (URLDrawable.depImp.mLog.isColorLevel())
+                  {
+                    URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "闪退缓存中存在该数据，说明之前崩溃，采用区域解码。");
+                    return true;
+                  }
+                }
+              }
+              else
+              {
+                paramSafeDecodeOption.needFlashBackTest = true;
+                paramSafeDecodeOption.isBeforeFlashBackPic = 0;
+              }
+            }
+          }
+          return bool1;
         }
-      }
-      catch (FileNotFoundException paramObject)
-      {
-        paramObject.printStackTrace();
+        if (URLDrawable.depImp.mLog.isColorLevel()) {
+          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "不是隔行扫描的png图片，不用区域解码");
+        }
+        paramSafeDecodeOption.isPng = 0;
         return false;
       }
       catch (IOException paramObject)
@@ -356,36 +401,13 @@ public class SafeBitmapFactory
         paramObject.printStackTrace();
         return false;
       }
-      paramSafeDecodeOption.needFlashBackTest = true;
-      paramSafeDecodeOption.isBeforeFlashBackPic = 0;
-      return bool2;
-      try
+      catch (FileNotFoundException paramObject)
       {
-        label892:
-        long l2 = Long.valueOf(new java.io.BufferedReader(new java.io.FileReader("/proc/meminfo")).readLine().split("\\s+")[1]).longValue() / 1024L / 1024L;
-        l1 = l2 + 1L;
+        paramObject.printStackTrace();
+        return false;
       }
-      catch (FileNotFoundException localFileNotFoundException)
-      {
-        localFileNotFoundException.printStackTrace();
-      }
-      catch (IOException localIOException)
-      {
-        localIOException.printStackTrace();
-      }
-      continue;
-      paramSafeDecodeOption.isBeforeFlashBackPic = 1;
-      bool1 = true;
-      if (!URLDrawable.depImp.mLog.isColorLevel()) {
-        break;
-      }
-      URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "闪退缓存中存在该数据，说明之前崩溃，采用区域解码。");
-      return true;
-      label1005:
-      boolean bool2 = bool1;
-      continue;
-      label1010:
-      bool1 = true;
+      label1056:
+      ILog localILog = null;
     }
   }
   
@@ -393,180 +415,198 @@ public class SafeBitmapFactory
   private static Bitmap regionDecodeData(Object paramObject, SafeBitmapFactory.SafeDecodeOption paramSafeDecodeOption)
   {
     BitmapFactory.Options localOptions2 = paramSafeDecodeOption.inOptions;
-    if (localOptions2 == null) {}
-    Object localObject1;
-    for (BitmapFactory.Options localOptions1 = new BitmapFactory.Options(); paramSafeDecodeOption.inNeedCache; localOptions1 = localOptions2)
+    BitmapFactory.Options localOptions1;
+    if (localOptions2 == null) {
+      localOptions1 = new BitmapFactory.Options();
+    } else {
+      localOptions1 = localOptions2;
+    }
+    if (paramSafeDecodeOption.inNeedCache)
     {
       localObject1 = regionDecodeFromCache(paramObject, localOptions2);
-      if (localObject1 == null) {
-        break;
+      if (localObject1 != null) {
+        return localObject1;
       }
-      return localObject1;
     }
-    if ((paramSafeDecodeOption.inNeedFlashBackTest) && ((paramObject instanceof String))) {}
-    Object localObject2;
-    int k;
-    int m;
-    int i;
-    label313:
-    int j;
-    label333:
-    int n;
-    int i1;
-    Semaphore localSemaphore;
-    Canvas localCanvas;
-    switch (MmapCache.getInstance(FLASH_BACK_TEST_REGION_PATH).findOrAddItem((String)paramObject))
+    if ((paramSafeDecodeOption.inNeedFlashBackTest) && ((paramObject instanceof String)))
     {
-    case -1: 
-    default: 
-      if (URLDrawable.depImp.mLog.isColorLevel())
-      {
-        long l2 = -1L;
-        long l1 = l2;
-        if (Build.VERSION.SDK_INT >= 16)
+      i = MmapCache.getInstance(FLASH_BACK_TEST_REGION_PATH).findOrAddItem((String)paramObject);
+      if (i != -1) {
+        if (i != 0)
         {
-          l1 = l2;
-          if (URLDrawable.mApplicationContext != null)
+          if (i == 1)
           {
-            localObject1 = (ActivityManager)URLDrawable.mApplicationContext.getSystemService("activity");
-            localObject2 = new ActivityManager.MemoryInfo();
-            if (localObject1 != null) {
-              ((ActivityManager)localObject1).getMemoryInfo((ActivityManager.MemoryInfo)localObject2);
-            }
-            l1 = ((ActivityManager.MemoryInfo)localObject2).availMem / 1024L / 1024L;
-          }
-        }
-        URLDrawable.depImp.mLog.d("SafeBitmapFactory", 4, "当前系统剩余内存。availMem：" + l1 + "MB");
-      }
-      localObject1 = new BitmapFactory.Options();
-      ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
-      decodeData(paramObject, (BitmapFactory.Options)localObject1);
-      ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
-      k = ((BitmapFactory.Options)localObject1).outWidth / 4000 + 1;
-      m = ((BitmapFactory.Options)localObject1).outHeight / 4000 + 1;
-      if (localOptions1.inSampleSize > 0)
-      {
-        i = ((BitmapFactory.Options)localObject1).outWidth / localOptions1.inSampleSize;
-        if (localOptions1.inSampleSize <= 0) {
-          break label686;
-        }
-        j = ((BitmapFactory.Options)localObject1).outHeight / localOptions1.inSampleSize;
-        n = i / k;
-        i1 = j / m;
-        if (URLDrawable.depImp.mLog.isColorLevel())
-        {
-          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "区域解码原图 宽：" + ((BitmapFactory.Options)localObject1).outWidth + ", 高" + ((BitmapFactory.Options)localObject1).outHeight);
-          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "区域解码原图 inSampleSize：" + localOptions1.inSampleSize);
-        }
-        localObject1 = Bitmap.createBitmap(i, j, localOptions1.inPreferredConfig);
-        localObject2 = new CountDownLatch(m * k);
-        if (paramSafeDecodeOption.isBeforeFlashBackPicRegion != 1) {
-          break label695;
-        }
-        i = getThreadCount() / 2 + 1;
-        if (URLDrawable.depImp.mLog.isColorLevel()) {
-          URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "threadCount：" + i);
-        }
-        localSemaphore = new Semaphore(i);
-        localCanvas = new Canvas((Bitmap)localObject1);
-        i = 0;
-      }
-      break;
-    }
-    for (;;)
-    {
-      label686:
-      label695:
-      for (;;)
-      {
-        if (i >= m) {
-          break label719;
-        }
-        j = 0;
-        label570:
-        if (j < k) {
-          try
-          {
-            localSemaphore.acquire();
-            SafeBitmapFactory.1 local1 = new SafeBitmapFactory.1(localOptions1, j, n, i, i1, paramObject, localCanvas, (CountDownLatch)localObject2);
-            URLDrawable.depImp.mThreadManager.executeOnFileThreadExcutor(local1, null, true);
-            localSemaphore.release();
-            j += 1;
-            break label570;
-            paramSafeDecodeOption.isBeforeFlashBackPicRegion = 0;
-            break;
             paramSafeDecodeOption.isBeforeFlashBackPicRegion = 1;
-            if (!URLDrawable.depImp.mLog.isColorLevel()) {
-              break;
-            }
-            URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "闪退缓存中存在该数据，说明之前用区域解码崩溃过。降低线程数");
-            break;
-            i = ((BitmapFactory.Options)localObject1).outWidth;
-            break label313;
-            j = ((BitmapFactory.Options)localObject1).outHeight;
-            break label333;
-            i = getThreadCount();
-          }
-          catch (InterruptedException localInterruptedException2)
-          {
-            for (;;)
-            {
-              localInterruptedException2.printStackTrace();
+            if (URLDrawable.depImp.mLog.isColorLevel()) {
+              URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "闪退缓存中存在该数据，说明之前用区域解码崩溃过。降低线程数");
             }
           }
         }
+        else {
+          paramSafeDecodeOption.isBeforeFlashBackPicRegion = 0;
+        }
+      }
+    }
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      long l2 = -1L;
+      long l1 = l2;
+      if (Build.VERSION.SDK_INT >= 16)
+      {
+        l1 = l2;
+        if (URLDrawable.mApplicationContext != null)
+        {
+          localObject1 = (ActivityManager)URLDrawable.mApplicationContext.getSystemService("activity");
+          localObject2 = new ActivityManager.MemoryInfo();
+          if (localObject1 != null) {
+            ((ActivityManager)localObject1).getMemoryInfo((ActivityManager.MemoryInfo)localObject2);
+          }
+          l1 = ((ActivityManager.MemoryInfo)localObject2).availMem / 1024L / 1024L;
+        }
+      }
+      localObject1 = URLDrawable.depImp.mLog;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("当前系统剩余内存。availMem：");
+      ((StringBuilder)localObject2).append(l1);
+      ((StringBuilder)localObject2).append("MB");
+      ((ILog)localObject1).d("SafeBitmapFactory", 4, ((StringBuilder)localObject2).toString());
+    }
+    Object localObject1 = new BitmapFactory.Options();
+    ((BitmapFactory.Options)localObject1).inJustDecodeBounds = true;
+    decodeData(paramObject, (BitmapFactory.Options)localObject1);
+    ((BitmapFactory.Options)localObject1).inJustDecodeBounds = false;
+    int m = ((BitmapFactory.Options)localObject1).outWidth / 4000 + 1;
+    int k = ((BitmapFactory.Options)localObject1).outHeight / 4000 + 1;
+    if (localOptions1.inSampleSize > 0) {
+      i = ((BitmapFactory.Options)localObject1).outWidth / localOptions1.inSampleSize;
+    } else {
+      i = ((BitmapFactory.Options)localObject1).outWidth;
+    }
+    if (localOptions1.inSampleSize > 0) {
+      j = ((BitmapFactory.Options)localObject1).outHeight / localOptions1.inSampleSize;
+    } else {
+      j = ((BitmapFactory.Options)localObject1).outHeight;
+    }
+    int n = i / m;
+    int i1 = j / k;
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      localObject2 = URLDrawable.depImp.mLog;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("区域解码原图 宽：");
+      ((StringBuilder)localObject3).append(((BitmapFactory.Options)localObject1).outWidth);
+      ((StringBuilder)localObject3).append(", 高");
+      ((StringBuilder)localObject3).append(((BitmapFactory.Options)localObject1).outHeight);
+      ((ILog)localObject2).d("SafeBitmapFactory", 2, ((StringBuilder)localObject3).toString());
+      localObject1 = URLDrawable.depImp.mLog;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("区域解码原图 inSampleSize：");
+      ((StringBuilder)localObject2).append(localOptions1.inSampleSize);
+      ((ILog)localObject1).d("SafeBitmapFactory", 2, ((StringBuilder)localObject2).toString());
+    }
+    Bitmap localBitmap = Bitmap.createBitmap(i, j, localOptions1.inPreferredConfig);
+    localObject1 = new CountDownLatch(k * m);
+    if (paramSafeDecodeOption.isBeforeFlashBackPicRegion == 1) {
+      i = getThreadCount() / 2 + 1;
+    } else {
+      i = getThreadCount();
+    }
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      localObject2 = URLDrawable.depImp.mLog;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("threadCount：");
+      ((StringBuilder)localObject3).append(i);
+      ((ILog)localObject2).d("SafeBitmapFactory", 2, ((StringBuilder)localObject3).toString());
+    }
+    Object localObject2 = new Semaphore(i);
+    Object localObject3 = new Canvas(localBitmap);
+    int i = 0;
+    int j = m;
+    while (i < k)
+    {
+      m = 0;
+      while (m < j)
+      {
+        try
+        {
+          ((Semaphore)localObject2).acquire();
+        }
+        catch (InterruptedException localInterruptedException2)
+        {
+          localInterruptedException2.printStackTrace();
+        }
+        SafeBitmapFactory.1 local1 = new SafeBitmapFactory.1(localOptions1, m, n, i, i1, paramObject, (Canvas)localObject3, (CountDownLatch)localObject1);
+        URLDrawable.depImp.mThreadManager.executeOnFileThreadExcutor(local1, null, true);
+        ((Semaphore)localObject2).release();
+        m += 1;
       }
       i += 1;
     }
     try
     {
-      label719:
-      ((CountDownLatch)localObject2).await(20L, TimeUnit.SECONDS);
-      if (paramSafeDecodeOption.inNeedCache) {
-        regionDecodeToCache(paramObject, (Bitmap)localObject1, localOptions2);
-      }
-      if (localOptions2 != null)
-      {
-        localOptions2.inJustDecodeBounds = true;
-        decodeData(paramObject, localOptions2);
-        localOptions2.inJustDecodeBounds = false;
-      }
-      if (paramSafeDecodeOption.isBeforeFlashBackPicRegion == 0) {
-        MmapCache.getInstance(FLASH_BACK_TEST_REGION_PATH).deleteItem((String)paramObject);
-      }
-      return localObject1;
+      ((CountDownLatch)localObject1).await(20L, TimeUnit.SECONDS);
     }
     catch (InterruptedException localInterruptedException1)
     {
-      for (;;)
-      {
-        localInterruptedException1.printStackTrace();
-      }
+      localInterruptedException1.printStackTrace();
     }
+    if (paramSafeDecodeOption.inNeedCache) {
+      regionDecodeToCache(paramObject, localBitmap, localOptions2);
+    }
+    if (localOptions2 != null)
+    {
+      localOptions2.inJustDecodeBounds = true;
+      decodeData(paramObject, localOptions2);
+      localOptions2.inJustDecodeBounds = false;
+    }
+    if (paramSafeDecodeOption.isBeforeFlashBackPicRegion == 0) {
+      MmapCache.getInstance(FLASH_BACK_TEST_REGION_PATH).deleteItem((String)paramObject);
+    }
+    return localBitmap;
   }
   
   private static Bitmap regionDecodeFromCache(Object paramObject, BitmapFactory.Options paramOptions)
   {
-    Object localObject = null;
     paramObject = MD5Util.getMd5(paramObject);
-    paramObject = Utils.Crc64String(paramObject) + "_" + paramOptions.inSampleSize;
-    paramOptions = LARGE_MAP_CACHE_PATH + File.separator + paramObject;
-    File localFile = new File(paramOptions);
-    if (URLDrawable.depImp.mLog.isColorLevel()) {
-      URLDrawable.depImp.mLog.d("SafeBitmapFactory", 2, "缓存PATH:" + paramOptions);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Utils.Crc64String(paramObject));
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramOptions.inSampleSize);
+    paramObject = ((StringBuilder)localObject).toString();
+    paramOptions = new StringBuilder();
+    paramOptions.append(LARGE_MAP_CACHE_PATH);
+    paramOptions.append(File.separator);
+    paramOptions.append(paramObject);
+    paramObject = paramOptions.toString();
+    paramOptions = new File(paramObject);
+    if (URLDrawable.depImp.mLog.isColorLevel())
+    {
+      localObject = URLDrawable.depImp.mLog;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("缓存PATH:");
+      localStringBuilder.append(paramObject);
+      ((ILog)localObject).d("SafeBitmapFactory", 2, localStringBuilder.toString());
     }
-    paramObject = localObject;
-    if (localFile.exists()) {
-      paramObject = BitmapFactory.decodeFile(paramOptions);
+    if (paramOptions.exists()) {
+      return BitmapFactory.decodeFile(paramObject);
     }
-    return paramObject;
+    return null;
   }
   
   private static void regionDecodeToCache(Object paramObject, Bitmap paramBitmap, BitmapFactory.Options paramOptions)
   {
     paramObject = MD5Util.getMd5(paramObject);
-    paramObject = Utils.Crc64String(paramObject) + "_" + paramOptions.inSampleSize;
-    paramObject = LARGE_MAP_CACHE_PATH + File.separator + paramObject;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Utils.Crc64String(paramObject));
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramOptions.inSampleSize);
+    paramObject = localStringBuilder.toString();
+    paramOptions = new StringBuilder();
+    paramOptions.append(LARGE_MAP_CACHE_PATH);
+    paramOptions.append(File.separator);
+    paramOptions.append(paramObject);
+    paramObject = paramOptions.toString();
     try
     {
       paramOptions = new File(LARGE_MAP_CACHE_PATH);
@@ -579,12 +619,12 @@ public class SafeBitmapFactory
       paramObject.close();
       return;
     }
-    catch (FileNotFoundException paramObject)
+    catch (IOException paramObject)
     {
       paramObject.printStackTrace();
       return;
     }
-    catch (IOException paramObject)
+    catch (FileNotFoundException paramObject)
     {
       paramObject.printStackTrace();
     }
@@ -616,40 +656,35 @@ public class SafeBitmapFactory
     }
     long l = System.currentTimeMillis();
     localSafeDecodeOption.needRegionDecode = needRegionDecode(paramObject, localSafeDecodeOption);
-    if (localSafeDecodeOption.needRegionDecode) {
-      paramSafeDecodeOption = regionDecodeData(paramObject, localSafeDecodeOption);
-    }
-    for (;;)
+    if (localSafeDecodeOption.needRegionDecode)
     {
-      if (paramSafeDecodeOption != null) {
-        localSafeDecodeOption.isGetBitmap = true;
-      }
-      localSafeDecodeOption.runTime = (System.currentTimeMillis() - l);
-      return paramSafeDecodeOption;
-      Bitmap localBitmap = decodeData(paramObject, localSafeDecodeOption.inOptions);
-      paramSafeDecodeOption = localBitmap;
-      if ((paramObject instanceof String))
-      {
-        paramSafeDecodeOption = localBitmap;
-        if (localSafeDecodeOption.needFlashBackTest)
-        {
-          MmapCache.getInstance(FLASH_BACK_TEST_PATH).deleteItem((String)paramObject);
-          paramSafeDecodeOption = localBitmap;
-        }
-      }
+      paramObject = regionDecodeData(paramObject, localSafeDecodeOption);
     }
+    else
+    {
+      paramSafeDecodeOption = decodeData(paramObject, localSafeDecodeOption.inOptions);
+      if (((paramObject instanceof String)) && (localSafeDecodeOption.needFlashBackTest)) {
+        MmapCache.getInstance(FLASH_BACK_TEST_PATH).deleteItem((String)paramObject);
+      }
+      paramObject = paramSafeDecodeOption;
+    }
+    if (paramObject != null) {
+      localSafeDecodeOption.isGetBitmap = true;
+    }
+    localSafeDecodeOption.runTime = (System.currentTimeMillis() - l);
+    return paramObject;
   }
   
   public static void setNeedRegionDecode(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (sNeedRegionDecode = 1;; sNeedRegionDecode = 0)
-    {
-      SharedPreferences.Editor localEditor = URLDrawable.mApplicationContext.getSharedPreferences("sp_safe_bitmap", 4).edit();
-      localEditor.putBoolean("sp_need_region_decode", paramBoolean);
-      localEditor.commit();
-      return;
+    if (paramBoolean) {
+      sNeedRegionDecode = 1;
+    } else {
+      sNeedRegionDecode = 0;
     }
+    SharedPreferences.Editor localEditor = URLDrawable.mApplicationContext.getSharedPreferences("sp_safe_bitmap", 4).edit();
+    localEditor.putBoolean("sp_need_region_decode", paramBoolean);
+    localEditor.commit();
   }
   
   public static void setPxThreshoidToSp(long paramLong)
@@ -687,7 +722,7 @@ public class SafeBitmapFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.SafeBitmapFactory
  * JD-Core Version:    0.7.0.1
  */

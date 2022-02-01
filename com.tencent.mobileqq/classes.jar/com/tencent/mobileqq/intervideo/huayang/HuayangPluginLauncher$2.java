@@ -11,51 +11,54 @@ class HuayangPluginLauncher$2
   
   public void run()
   {
-    long l;
-    if (HuayangPluginLauncher.a(this.this$0) == null)
+    if (HuayangPluginLauncher.access$400(this.this$0) == null)
     {
-      HuayangPluginLauncher.a(this.this$0, HuayangPluginLauncher.b(this.this$0));
+      HuayangPluginLauncher localHuayangPluginLauncher = this.this$0;
+      HuayangPluginLauncher.access$402(localHuayangPluginLauncher, HuayangPluginLauncher.access$500(localHuayangPluginLauncher));
       if (this.a)
       {
-        l = 1000L - (System.currentTimeMillis() - HuayangPluginLauncher.a(this.this$0));
-        if (l > 0L) {
-          HuayangPluginLauncher.a(this.this$0, "HuayangPluginLauncher", HardCodeUtil.a(2131705674) + l);
+        long l = 1000L - (System.currentTimeMillis() - HuayangPluginLauncher.access$600(this.this$0));
+        if (l > 0L)
+        {
+          localHuayangPluginLauncher = this.this$0;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(HardCodeUtil.a(2131705740));
+          localStringBuilder.append(l);
+          HuayangPluginLauncher.access$700(localHuayangPluginLauncher, "HuayangPluginLauncher", localStringBuilder.toString());
+          try
+          {
+            Thread.sleep(l);
+          }
+          catch (InterruptedException localInterruptedException)
+          {
+            localInterruptedException.printStackTrace();
+          }
         }
       }
     }
-    try
+    if ((HuayangPluginLauncher.access$400(this.this$0) != null) && (HuayangPluginLauncher.access$800(this.this$0)))
     {
-      Thread.sleep(l);
-      if ((HuayangPluginLauncher.a(this.this$0) != null) && (HuayangPluginLauncher.a(this.this$0)))
+      Object localObject;
+      if (this.a)
       {
-        if (this.a)
-        {
-          Message localMessage = Message.obtain(HuayangPluginLauncher.a(this.this$0), 2);
-          HuayangPluginLauncher.a(this.this$0).sendMessage(localMessage);
-          HuayangPluginLauncher.a(this.this$0, HuayangPluginLauncher.a(this.this$0));
-          this.this$0.a = true;
-        }
+        localObject = Message.obtain(HuayangPluginLauncher.access$900(this.this$0), 2);
+        HuayangPluginLauncher.access$900(this.this$0).sendMessage((Message)localObject);
+        localObject = this.this$0;
+        HuayangPluginLauncher.access$1000((HuayangPluginLauncher)localObject, HuayangPluginLauncher.access$400((HuayangPluginLauncher)localObject));
+        this.this$0.mStartActivityCalled = true;
       }
       else
       {
-        HuayangPluginLauncher.a(this.this$0, false);
-        return;
+        localObject = this.this$0;
+        HuayangPluginLauncher.access$1100((HuayangPluginLauncher)localObject, HuayangPluginLauncher.access$400((HuayangPluginLauncher)localObject));
       }
     }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-        continue;
-        HuayangPluginLauncher.b(this.this$0, HuayangPluginLauncher.a(this.this$0));
-      }
-    }
+    HuayangPluginLauncher.access$1202(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.huayang.HuayangPluginLauncher.2
  * JD-Core Version:    0.7.0.1
  */

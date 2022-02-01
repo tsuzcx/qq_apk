@@ -59,11 +59,11 @@ public class SwitchFaceFilter
     float f3 = -((PointF)paramList.get(9)).y;
     float f4 = ((PointF)paramList.get(84)).y;
     PointF localPointF1 = AlgoUtils.middlePoint((PointF)paramList.get(41), (PointF)paramList.get(51));
-    double d = 3.141592653589793D + Math.atan2(f1 - f2, f3 + f4);
+    double d1 = Math.atan2(f1 - f2, f3 + f4) + 3.141592653589793D;
     Matrix localMatrix = new Matrix();
     localMatrix.reset();
     localMatrix.postTranslate(-localPointF1.x, -localPointF1.y);
-    localMatrix.postRotate((float)Math.toDegrees(-d));
+    localMatrix.postRotate((float)Math.toDegrees(-d1));
     localMatrix.postTranslate(localPointF1.x, localPointF1.y);
     paramList = AlgoUtils.mapPoints(paramList, localMatrix);
     ArrayList localArrayList = new ArrayList();
@@ -83,15 +83,20 @@ public class SwitchFaceFilter
     PointF localPointF2 = midBetween((PointF)paramList.get(56), (PointF)paramList.get(62));
     PointF localPointF3 = new PointF();
     f1 = distanceFrom((PointF)paramList.get(9), localPointF2);
-    localPointF3.x = (((PointF)paramList.get(9)).x + 2.0F * f1 / 8.0F * (float)Math.sin(0.0F));
-    localPointF3.y = (((PointF)paramList.get(9)).y - 2.0F * f1 / 8.0F * (float)Math.cos(0.0F));
+    f2 = ((PointF)paramList.get(9)).x;
+    f3 = 2.0F * f1 / 8.0F;
+    double d2 = 0.0F;
+    localPointF3.x = (f2 + (float)Math.sin(d2) * f3);
+    localPointF3.y = (((PointF)paramList.get(9)).y - f3 * (float)Math.cos(d2));
     localArrayList.add(localPointF3);
     i = 1;
     while (i < 6)
     {
       localPointF3 = new PointF();
-      localPointF3.x = (((PointF)paramList.get(9)).x + (i + 2) * f1 / 8.0F * (float)Math.sin(0.0F));
-      localPointF3.y = (((PointF)paramList.get(9)).y - (i + 2) * f1 / 8.0F * (float)Math.cos(0.0F));
+      f2 = ((PointF)paramList.get(9)).x;
+      f3 = (i + 2) * f1 / 8.0F;
+      localPointF3.x = (f2 + (float)Math.sin(d2) * f3);
+      localPointF3.y = (((PointF)paramList.get(9)).y - f3 * (float)Math.cos(d2));
       localArrayList.add(localPointF3);
       i += 1;
     }
@@ -102,7 +107,7 @@ public class SwitchFaceFilter
     localArrayList.add(paramList.get(89));
     localMatrix.reset();
     localMatrix.postTranslate(-localPointF1.x, -localPointF1.y);
-    localMatrix.postRotate((float)Math.toDegrees(d));
+    localMatrix.postRotate((float)Math.toDegrees(d1));
     localMatrix.postTranslate(localPointF1.x, localPointF1.y);
     return AlgoUtils.mapPoints(localArrayList, localMatrix);
   }
@@ -139,62 +144,117 @@ public class SwitchFaceFilter
   
   public void renderProcess(Set<Integer> paramSet)
   {
-    if ((!paramSet.contains(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value))) || (this.mFaceLists.size() < 2))
+    if ((paramSet.contains(Integer.valueOf(PTFaceAttr.PTExpression.FACE_DETECT.value))) && (this.mFaceLists.size() >= 2))
     {
-      setPositions(GlUtil.EMPTY_POSITIONS);
-      setCoordNum(4);
-      OnDrawFrameGLSL();
-      renderTexture(this.mFaceTex, this.width, this.height);
-    }
-    for (;;)
-    {
-      return;
-      int i;
+      int k = this.mFaceLists.size();
+      int i = 0;
+      int j = 0;
       List localList;
-      if ((this.mFaceLists.size() & 0x1) == 0)
+      double d1;
+      double d2;
+      if ((k & 0x1) == 0)
       {
-        i = 0;
+        i = j;
         while (i < this.mFaceLists.size() / 2)
         {
-          localList = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get(i * 2)));
-          paramSet = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get(i * 2 + 1)));
+          paramSet = this.mFaceLists;
+          j = i * 2;
+          localList = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)paramSet.get(j)));
+          paramSet = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get(j + 1)));
           localList = faceSwapFacePoint(localList);
           paramSet = faceSwapFacePoint(paramSet);
-          VideoMaterial.flipYPoints(localList, (int)(this.height * this.mFaceDetScale));
-          VideoMaterial.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
-          setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(localList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.texVertices));
-          setPositions(SwitchFaceUtil.initFacePositions(paramSet, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
+          d1 = this.height;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          VideoMaterial.flipYPoints(localList, (int)(d1 * d2));
+          d1 = this.height;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          VideoMaterial.flipYPoints(paramSet, (int)(d1 * d2));
+          d1 = this.width;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          j = (int)(d1 * d2);
+          d1 = this.height;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(localList, j, (int)(d1 * d2), this.texVertices));
+          d1 = this.width;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          j = (int)(d1 * d2);
+          d1 = this.height;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          setPositions(SwitchFaceUtil.initFacePositions(paramSet, j, (int)(d1 * d2), this.faceVertices));
           setCoordNum(138);
           OnDrawFrameGLSL();
           renderTexture(this.mFaceTex, this.width, this.height);
-          setPositions(SwitchFaceUtil.initFacePositions(localList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-          setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(paramSet, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.texVertices));
+          d1 = this.width;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          j = (int)(d1 * d2);
+          d1 = this.height;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          setPositions(SwitchFaceUtil.initFacePositions(localList, j, (int)(d1 * d2), this.faceVertices));
+          d1 = this.width;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          j = (int)(d1 * d2);
+          d1 = this.height;
+          d2 = this.mFaceDetScale;
+          Double.isNaN(d1);
+          setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(paramSet, j, (int)(d1 * d2), this.texVertices));
           setCoordNum(138);
           OnDrawFrameGLSL();
           renderTexture(this.mFaceTex, this.width, this.height);
           i += 1;
         }
       }
-      else
+      while (i < this.mFaceLists.size())
       {
-        i = 0;
-        while (i < this.mFaceLists.size())
-        {
-          localList = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get(i % this.mFaceLists.size())));
-          paramSet = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)this.mFaceLists.get((i + 1) % this.mFaceLists.size())));
-          localList = faceSwapFacePoint(localList);
-          paramSet = faceSwapFacePoint(paramSet);
-          VideoMaterial.flipYPoints(localList, (int)(this.height * this.mFaceDetScale));
-          VideoMaterial.flipYPoints(paramSet, (int)(this.height * this.mFaceDetScale));
-          setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(localList, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.texVertices));
-          setPositions(SwitchFaceUtil.initFacePositions(paramSet, (int)(this.width * this.mFaceDetScale), (int)(this.height * this.mFaceDetScale), this.faceVertices));
-          setCoordNum(138);
-          OnDrawFrameGLSL();
-          renderTexture(this.mFaceTex, this.width, this.height);
-          i += 1;
-        }
+        paramSet = this.mFaceLists;
+        paramSet = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)paramSet.get(i % paramSet.size())));
+        localList = this.mFaceLists;
+        i += 1;
+        localList = SwitchFaceUtil.getFullCoords(VideoMaterial.copyList((List)localList.get(i % localList.size())));
+        paramSet = faceSwapFacePoint(paramSet);
+        localList = faceSwapFacePoint(localList);
+        d1 = this.height;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        VideoMaterial.flipYPoints(paramSet, (int)(d1 * d2));
+        d1 = this.height;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        VideoMaterial.flipYPoints(localList, (int)(d1 * d2));
+        d1 = this.width;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        j = (int)(d1 * d2);
+        d1 = this.height;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        setTexCords(SwitchFaceUtil.initMaterialFaceTexCoords(paramSet, j, (int)(d1 * d2), this.texVertices));
+        d1 = this.width;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        j = (int)(d1 * d2);
+        d1 = this.height;
+        d2 = this.mFaceDetScale;
+        Double.isNaN(d1);
+        setPositions(SwitchFaceUtil.initFacePositions(localList, j, (int)(d1 * d2), this.faceVertices));
+        setCoordNum(138);
+        OnDrawFrameGLSL();
+        renderTexture(this.mFaceTex, this.width, this.height);
       }
+      return;
     }
+    setPositions(GlUtil.EMPTY_POSITIONS);
+    setCoordNum(4);
+    OnDrawFrameGLSL();
+    renderTexture(this.mFaceTex, this.width, this.height);
   }
   
   public void setFaceParams(List<List<PointF>> paramList, int paramInt)
@@ -212,7 +272,7 @@ public class SwitchFaceFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.SwitchFaceFilter
  * JD-Core Version:    0.7.0.1
  */

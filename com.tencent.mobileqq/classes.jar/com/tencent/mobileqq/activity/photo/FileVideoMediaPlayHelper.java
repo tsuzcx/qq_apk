@@ -44,58 +44,70 @@ public class FileVideoMediaPlayHelper
   
   private int a(long paramLong)
   {
-    int i = 32;
     if (paramLong <= 2097152) {}
-    for (;;)
+    int i;
+    while (paramLong <= 20971520)
     {
-      return i * 1024;
-      if (paramLong > 20971520) {
-        if (paramLong <= 209715200) {
-          i = 128;
-        } else if (paramLong <= 524288000) {
-          i = 512;
-        } else if (paramLong <= 1073741824) {
-          i = 1024;
-        } else if (paramLong <= -50331648) {
-          i = 2048;
-        } else {
-          i = 4096;
-        }
-      }
+      i = 32;
+      break;
     }
+    if (paramLong <= 209715200) {
+      i = 128;
+    } else if (paramLong <= 524288000) {
+      i = 512;
+    } else if (paramLong <= 1073741824) {
+      i = 1024;
+    } else if (paramLong <= -50331648) {
+      i = 2048;
+    } else {
+      i = 4096;
+    }
+    return i * 1024;
   }
   
   public long a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr == null)) {
-      return super.a();
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr != null)) {
+      return this.f;
     }
-    return this.f;
+    return super.a();
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) || (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr == null))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean))
     {
-      super.a();
-      return;
-    }
-    if (this.jdField_d_of_type_Int > -1) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(this.jdField_d_of_type_Int);
-    }
-    if (this.jdField_d_of_type_Int > -1) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(this.jdField_d_of_type_Int);
-    }
-    if (this.jdField_c_of_type_Int > -1) {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(this.jdField_c_of_type_Int);
-    }
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr != null)
-    {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.DownloadDeinit(20160714);
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr = null;
-    }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("PauseDebug", 1, "FileVideoMediaPlayHelper releaseMediaPlayer:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+      Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr;
+      if (localObject != null)
+      {
+        int i = this.jdField_d_of_type_Int;
+        if (i > -1) {
+          ((TVK_IDownloadMgr)localObject).stopPreLoad(i);
+        }
+        i = this.jdField_d_of_type_Int;
+        if (i > -1) {
+          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(i);
+        }
+        i = this.jdField_c_of_type_Int;
+        if (i > -1) {
+          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr.stopPreLoad(i);
+        }
+        localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr;
+        if (localObject != null)
+        {
+          ((TVK_IDownloadMgr)localObject).DownloadDeinit(20160714);
+          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IDownloadMgr = null;
+        }
+        if (QLog.isDevelopLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("FileVideoMediaPlayHelper releaseMediaPlayer:");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+          QLog.i("PauseDebug", 1, ((StringBuilder)localObject).toString());
+        }
+        super.a();
+        return;
+      }
     }
     super.a();
   }
@@ -147,93 +159,131 @@ public class FileVideoMediaPlayHelper
   
   public void downloadCallBack(String paramString)
   {
-    if (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) {
+    if (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean)
+    {
       super.OnDownloadCallback(paramString);
+      return;
     }
+    int i;
+    try
+    {
+      paramString = new JSONObject(paramString);
+      i = paramString.getInt("callBackType");
+      paramString.getInt("fileSize");
+      l2 = paramString.getInt("offset");
+      j = paramString.getInt("playID");
+      this.f = paramString.getLong("speedKBS");
+      if (this.jdField_c_of_type_Long == 0L) {
+        this.jdField_c_of_type_Long = a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long);
+      }
+      if ((j != this.jdField_d_of_type_Long) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration() > 1L) && (l2 > this.e)) {
+        this.e = l2;
+      }
+      l1 = l2;
+      if (l2 < this.e) {
+        l1 = this.e;
+      }
+      boolean bool = this.jdField_b_of_type_Boolean;
+      if (!bool) {
+        break label735;
+      }
+      if (QLog.isDevelopLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("[");
+        paramString.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+        paramString.append("],playid +[");
+        paramString.append(j);
+        paramString.append("] callBackType[ ");
+        paramString.append(i);
+        paramString.append(" ]download success! igon");
+        QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, paramString.toString());
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO$OnDownloadListener == null) {
+        break label734;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO$OnDownloadListener.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      long l2;
+      int j;
+      long l1;
+      paramString.printStackTrace();
+    }
+    if (FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_JavaLangString) != this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long) {
+      return;
+    }
+    label734:
+    label735:
     do
     {
-      float f1;
+      this.jdField_b_of_type_Boolean = true;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO$OnDownloadListener.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+      return;
       do
       {
-        int i;
-        long l2;
-        int j;
-        long l1;
-        for (;;)
+        l2 = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_JavaLangString);
+        if (QLog.isDevelopLevel())
         {
-          return;
-          try
-          {
-            paramString = new JSONObject(paramString);
-            i = paramString.getInt("callBackType");
-            paramString.getInt("fileSize");
-            l2 = paramString.getInt("offset");
-            j = paramString.getInt("playID");
-            this.f = paramString.getLong("speedKBS");
-            if (this.jdField_c_of_type_Long == 0L) {
-              this.jdField_c_of_type_Long = a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long);
-            }
-            if ((j != this.jdField_d_of_type_Long) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getDuration() > 1L) && (l2 > this.e)) {
-              this.e = l2;
-            }
-            l1 = l2;
-            if (l2 < this.e) {
-              l1 = this.e;
-            }
-            if (this.jdField_b_of_type_Boolean)
-            {
-              if (QLog.isDevelopLevel()) {
-                QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long + "],playid +[" + j + "] callBackType[ " + i + " ]download success! igon");
-              }
-              if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO$OnDownloadListener == null) {
-                continue;
-              }
-              this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO$OnDownloadListener.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
-            }
-          }
-          catch (JSONException paramString)
-          {
-            paramString.printStackTrace();
-            return;
-          }
+          paramString = new StringBuilder();
+          paramString.append("[");
+          paramString.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+          paramString.append("],playid +[");
+          paramString.append(j);
+          paramString.append("] callBackType[");
+          paramString.append(i);
+          paramString.append("]， tempLen:");
+          paramString.append(l2);
+          QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, paramString.toString());
         }
-        switch (i)
+        l1 -= l2;
+        if ((l1 > this.jdField_c_of_type_Long) && (!this.jdField_c_of_type_Boolean))
         {
-        case 4: 
-        case 5: 
-        case 6: 
-        default: 
+          if (QLog.isDevelopLevel())
+          {
+            paramString = new StringBuilder();
+            paramString.append("[");
+            paramString.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+            paramString.append("],playid +[");
+            paramString.append(j);
+            paramString.append("] need download block currentBlockId:");
+            paramString.append(this.jdField_d_of_type_Int);
+            QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, paramString.toString());
+          }
+          ThreadManager.getUIHandler().post(new FileVideoMediaPlayHelper.1(this, j));
+          this.jdField_c_of_type_Boolean = true;
           return;
-        case 2: 
-          l2 = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_JavaLangString);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long + "],playid +[" + j + "] callBackType[" + i + "]， tempLen:" + l2);
-          }
-          if ((l1 - l2 > this.jdField_c_of_type_Long) && (!this.jdField_c_of_type_Boolean))
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.d("FileVideoMediaPlayHelper.filevideoPeek", 4, "[" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long + "],playid +[" + j + "] need download block currentBlockId:" + this.jdField_d_of_type_Int);
-            }
-            ThreadManager.getUIHandler().post(new FileVideoMediaPlayHelper.1(this, j));
-            this.jdField_c_of_type_Boolean = true;
-            return;
-          }
-          if ((this.jdField_d_of_type_Int > 0) && (l1 - l2 < this.jdField_c_of_type_Long))
-          {
-            ThreadManager.getUIHandler().post(new FileVideoMediaPlayHelper.2(this));
-            this.jdField_d_of_type_Int = -1;
-            this.jdField_c_of_type_Boolean = false;
-          }
-          f1 = (float)l2 / (float)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long;
-          paramString = this.jdField_a_of_type_AndroidContentContext.getString(2131692750) + "(" + FileUtil.a(l2) + "/" + FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long) + ")";
         }
-      } while ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null) || (!this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()));
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO$OnDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long, f1, paramString);
-      return;
-    } while (FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_JavaLangString) != this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long);
-    this.jdField_b_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean = false;
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO$OnDownloadListener.b(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+        if ((this.jdField_d_of_type_Int > 0) && (l1 < this.jdField_c_of_type_Long))
+        {
+          ThreadManager.getUIHandler().post(new FileVideoMediaPlayHelper.2(this));
+          this.jdField_d_of_type_Int = -1;
+          this.jdField_c_of_type_Boolean = false;
+        }
+        float f1 = (float)l2 / (float)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long;
+        paramString = new StringBuilder();
+        paramString.append(this.jdField_a_of_type_AndroidContentContext.getString(2131692707));
+        paramString.append("(");
+        paramString.append(FileUtil.a(l2));
+        paramString.append("/");
+        paramString.append(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long));
+        paramString.append(")");
+        paramString = paramString.toString();
+        if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
+        {
+          this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForAIO$OnDownloadListener.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long, f1, paramString);
+          return;
+        }
+        return;
+        return;
+      } while (i == 2);
+      if (i == 3) {
+        break;
+      }
+    } while (i == 7);
   }
   
   public void onCaptureImageFailed(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2)
@@ -256,7 +306,7 @@ public class FileVideoMediaPlayHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.FileVideoMediaPlayHelper
  * JD-Core Version:    0.7.0.1
  */

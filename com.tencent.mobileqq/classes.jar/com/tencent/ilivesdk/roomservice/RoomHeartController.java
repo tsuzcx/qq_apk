@@ -31,15 +31,22 @@ public class RoomHeartController
     pbexit_heart_list_room.LeaveLiveRoomReq localLeaveLiveRoomReq = new pbexit_heart_list_room.LeaveLiveRoomReq();
     localLeaveLiveRoomReq.roomid.set(paramInt2);
     localLeaveLiveRoomReq.sub_roomid.set(paramInt3);
-    this.mAdapter.getLogger().d("RoomHeartController", "start heartRoom--roomid=" + paramInt2 + ";roomType=" + paramInt1, new Object[0]);
+    LogInterface localLogInterface = this.mAdapter.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("start heartRoom--roomid=");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(";roomType=");
+    localStringBuilder.append(paramInt1);
+    localLogInterface.d("RoomHeartController", localStringBuilder.toString(), new Object[0]);
     this.mChannel.send(29952, 4, localLeaveLiveRoomReq.toByteArray(), new RoomHeartController.2(this, paramInt1, paramInt2, paramInt3));
   }
   
   void cancelHeart()
   {
-    if (this.mTimer != null)
+    Timer localTimer = this.mTimer;
+    if (localTimer != null)
     {
-      this.mTimer.cancel();
+      localTimer.cancel();
       this.mTimer.purge();
       this.mTimer = null;
     }
@@ -47,8 +54,9 @@ public class RoomHeartController
   
   public void startNextHeartbeat(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (this.mTimer != null) {
-      this.mTimer.schedule(new RoomHeartController.1(this, paramInt1, paramInt2, paramInt3), 0L, this.mHeartbeatInterval);
+    Timer localTimer = this.mTimer;
+    if (localTimer != null) {
+      localTimer.schedule(new RoomHeartController.1(this, paramInt1, paramInt2, paramInt3), 0L, this.mHeartbeatInterval);
     }
   }
   
@@ -61,7 +69,7 @@ public class RoomHeartController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.RoomHeartController
  * JD-Core Version:    0.7.0.1
  */

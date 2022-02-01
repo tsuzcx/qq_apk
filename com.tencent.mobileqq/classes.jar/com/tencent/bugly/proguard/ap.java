@@ -24,15 +24,9 @@ public final class ap
   
   static
   {
-    if (!ap.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      o = bool;
-      m = new ao();
-      n = new HashMap();
-      n.put("", "");
-      return;
-    }
+    m = new ao();
+    n = new HashMap();
+    n.put("", "");
   }
   
   public final void a(i parami)
@@ -59,24 +53,30 @@ public final class ap
     paramj.a(this.a, 0);
     paramj.a(this.b, 1);
     paramj.a(this.c, 2);
-    if (this.d != null) {
-      paramj.a(this.d, 3);
+    Object localObject = this.d;
+    if (localObject != null) {
+      paramj.a((String)localObject, 3);
     }
-    if (this.e != null) {
-      paramj.a(this.e, 4);
+    localObject = this.e;
+    if (localObject != null) {
+      paramj.a((String)localObject, 4);
     }
-    if (this.f != null) {
-      paramj.a(this.f, 5);
+    localObject = this.f;
+    if (localObject != null) {
+      paramj.a((k)localObject, 5);
     }
-    if (this.g != null) {
-      paramj.a(this.g, 6);
+    localObject = this.g;
+    if (localObject != null) {
+      paramj.a((Map)localObject, 6);
     }
     paramj.a(this.h, 7);
-    if (this.j != null) {
-      paramj.a(this.j, 8);
+    localObject = this.j;
+    if (localObject != null) {
+      paramj.a((String)localObject, 8);
     }
-    if (this.k != null) {
-      paramj.a(this.k, 9);
+    localObject = this.k;
+    if (localObject != null) {
+      paramj.a((String)localObject, 9);
     }
     paramj.a(this.l, 10);
     paramj.a(this.i, 11);
@@ -101,29 +101,29 @@ public final class ap
   
   public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (o) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (o) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (ap)paramObject;
-    } while ((!l.a(this.a, paramObject.a)) || (!l.a(this.b, paramObject.b)) || (!l.a(this.c, paramObject.c)) || (!l.a(this.d, paramObject.d)) || (!l.a(this.e, paramObject.e)) || (!l.a(this.f, paramObject.f)) || (!l.a(this.g, paramObject.g)) || (!l.a(this.h, paramObject.h)) || (!l.a(this.j, paramObject.j)) || (!l.a(this.k, paramObject.k)) || (!l.a(this.l, paramObject.l)) || (!l.a(this.i, paramObject.i)));
-    return true;
+    }
+    paramObject = (ap)paramObject;
+    return (l.a(this.a, paramObject.a)) && (l.a(this.b, paramObject.b)) && (l.a(this.c, paramObject.c)) && (l.a(this.d, paramObject.d)) && (l.a(this.e, paramObject.e)) && (l.a(this.f, paramObject.f)) && (l.a(this.g, paramObject.g)) && (l.a(this.h, paramObject.h)) && (l.a(this.j, paramObject.j)) && (l.a(this.k, paramObject.k)) && (l.a(this.l, paramObject.l)) && (l.a(this.i, paramObject.i));
   }
   
   public final int hashCode()
@@ -141,7 +141,7 @@ public final class ap
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.ap
  * JD-Core Version:    0.7.0.1
  */

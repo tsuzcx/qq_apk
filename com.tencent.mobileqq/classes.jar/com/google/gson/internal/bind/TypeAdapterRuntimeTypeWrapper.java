@@ -46,29 +46,25 @@ final class TypeAdapterRuntimeTypeWrapper<T>
   
   public void write(JsonWriter paramJsonWriter, T paramT)
   {
-    TypeAdapter localTypeAdapter = this.delegate;
-    Type localType = getRuntimeTypeIfMoreSpecific(this.type, paramT);
-    if (localType != this.type)
+    Object localObject1 = this.delegate;
+    Object localObject2 = getRuntimeTypeIfMoreSpecific(this.type, paramT);
+    if (localObject2 != this.type)
     {
-      localTypeAdapter = this.context.getAdapter(TypeToken.get(localType));
-      if ((localTypeAdapter instanceof ReflectiveTypeAdapterFactory.Adapter)) {
-        break label52;
+      localObject1 = this.context.getAdapter(TypeToken.get((Type)localObject2));
+      if ((localObject1 instanceof ReflectiveTypeAdapterFactory.Adapter))
+      {
+        localObject2 = this.delegate;
+        if (!(localObject2 instanceof ReflectiveTypeAdapterFactory.Adapter)) {
+          localObject1 = localObject2;
+        }
       }
     }
-    for (;;)
-    {
-      localTypeAdapter.write(paramJsonWriter, paramT);
-      return;
-      label52:
-      if (!(this.delegate instanceof ReflectiveTypeAdapterFactory.Adapter)) {
-        localTypeAdapter = this.delegate;
-      }
-    }
+    ((TypeAdapter)localObject1).write(paramJsonWriter, paramT);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapterRuntimeTypeWrapper
  * JD-Core Version:    0.7.0.1
  */

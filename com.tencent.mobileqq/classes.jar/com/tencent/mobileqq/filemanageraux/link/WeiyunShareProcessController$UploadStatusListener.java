@@ -15,77 +15,91 @@ final class WeiyunShareProcessController$UploadStatusListener
   
   private WeiyunShareProcessController$UploadStatusListener(WeiyunShareProcessController paramWeiyunShareProcessController, String paramString)
   {
-    if (paramWeiyunShareProcessController == null) {}
-    for (paramWeiyunShareProcessController = null;; paramWeiyunShareProcessController = new WeakReference(paramWeiyunShareProcessController))
-    {
-      this.jdField_a_of_type_MqqUtilWeakReference = paramWeiyunShareProcessController;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      return;
+    if (paramWeiyunShareProcessController == null) {
+      paramWeiyunShareProcessController = null;
+    } else {
+      paramWeiyunShareProcessController = new WeakReference(paramWeiyunShareProcessController);
     }
+    this.jdField_a_of_type_MqqUtilWeakReference = paramWeiyunShareProcessController;
+    this.jdField_a_of_type_JavaLangString = paramString;
   }
   
   public void onUploadJobAdded(String paramString, long paramLong) {}
   
   public void onUploadStatusChanged(String paramString, long paramLong, UploadJobContext.StatusInfo paramStatusInfo, boolean paramBoolean)
   {
+    paramString = this.jdField_a_of_type_MqqUtilWeakReference;
+    Object localObject = null;
     WeiyunShareProcessController localWeiyunShareProcessController;
-    if (this.jdField_a_of_type_MqqUtilWeakReference == null)
-    {
+    if (paramString == null) {
       localWeiyunShareProcessController = null;
-      if ((localWeiyunShareProcessController != null) && (!WeiyunShareProcessController.a(localWeiyunShareProcessController))) {
-        break label39;
-      }
+    } else {
+      localWeiyunShareProcessController = (WeiyunShareProcessController)paramString.get();
     }
-    label39:
-    while (WeiyunShareProcessController.a(localWeiyunShareProcessController) == null)
+    if (localWeiyunShareProcessController != null)
     {
-      return;
-      localWeiyunShareProcessController = (WeiyunShareProcessController)this.jdField_a_of_type_MqqUtilWeakReference.get();
-      break;
-    }
-    if (paramBoolean)
-    {
-      switch (paramStatusInfo.state)
-      {
-      default: 
-        label80:
-        paramString = null;
-      }
-      while (paramString != null)
-      {
-        WeiyunShareProcessController.a(localWeiyunShareProcessController).sendMessage(paramString);
+      if (WeiyunShareProcessController.a(localWeiyunShareProcessController)) {
         return;
-        if (paramStatusInfo.errorCode == 1810002)
+      }
+      if (WeiyunShareProcessController.a(localWeiyunShareProcessController) == null) {
+        return;
+      }
+      if (paramBoolean)
+      {
+        int i = paramStatusInfo.state;
+        if (i != 5)
         {
-          if (!QLog.isColorLevel()) {
-            break label80;
+          if (i != 6)
+          {
+            paramString = localObject;
           }
-          QLog.i("WeiyunShareProcessController<FileAssistant>", 2, "upload is canceled, for file:" + this.jdField_a_of_type_JavaLangString);
-          paramString = null;
-          continue;
+          else if (paramStatusInfo.errorCode == 1810002)
+          {
+            paramString = localObject;
+            if (QLog.isColorLevel())
+            {
+              paramString = new StringBuilder();
+              paramString.append("upload is canceled, for file:");
+              paramString.append(this.jdField_a_of_type_JavaLangString);
+              QLog.i("WeiyunShareProcessController<FileAssistant>", 2, paramString.toString());
+              paramString = localObject;
+            }
+          }
+          else
+          {
+            paramString = new Message();
+            paramString.what = 3;
+            paramString.obj = new Object[] { Integer.valueOf(paramStatusInfo.errorCode), paramStatusInfo.errorMsg };
+          }
+        }
+        else
+        {
+          paramString = new Message();
+          paramString.what = 2;
+          paramString.obj = new Object[] { paramStatusInfo, this.jdField_a_of_type_JavaLangString };
+        }
+      }
+      else
+      {
+        float f;
+        if (paramStatusInfo.totalSize <= 0L) {
+          f = 0.0F;
+        } else {
+          f = (float)paramStatusInfo.currSize / (float)paramStatusInfo.totalSize;
         }
         paramString = new Message();
-        paramString.what = 3;
-        paramString.obj = new Object[] { Integer.valueOf(paramStatusInfo.errorCode), paramStatusInfo.errorMsg };
-        continue;
-        paramString = new Message();
-        paramString.what = 2;
-        paramString.obj = new Object[] { paramStatusInfo, this.jdField_a_of_type_JavaLangString };
+        paramString.what = 4;
+        paramString.obj = new Object[] { Float.valueOf(f) };
       }
-    }
-    if (paramStatusInfo.totalSize <= 0L) {}
-    for (float f = 0.0F;; f = (float)paramStatusInfo.currSize / (float)paramStatusInfo.totalSize)
-    {
-      paramString = new Message();
-      paramString.what = 4;
-      paramString.obj = new Object[] { Float.valueOf(f) };
-      break;
+      if (paramString != null) {
+        WeiyunShareProcessController.a(localWeiyunShareProcessController).sendMessage(paramString);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanageraux.link.WeiyunShareProcessController.UploadStatusListener
  * JD-Core Version:    0.7.0.1
  */

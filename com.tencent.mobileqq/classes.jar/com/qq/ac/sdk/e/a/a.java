@@ -29,13 +29,17 @@ public final class a
       paramb = (String)localk.get();
       return paramb;
     }
-    catch (Exception paramb) {}
+    catch (Exception paramb)
+    {
+      label46:
+      break label46;
+    }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qq.ac.sdk.e.a.a
  * JD-Core Version:    0.7.0.1
  */

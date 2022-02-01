@@ -23,8 +23,10 @@ public class PathData
   
   public long a()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return ((PathData.PointData)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1)).a();
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      return ((PathData.PointData)localArrayList.get(localArrayList.size() - 1)).a();
     }
     return 0L;
   }
@@ -84,8 +86,10 @@ public class PathData
   
   public PathData.PointData b()
   {
-    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-      return (PathData.PointData)this.jdField_a_of_type_JavaUtilArrayList.get(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
+    if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+    {
+      ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+      return (PathData.PointData)localArrayList.get(localArrayList.size() - 1);
     }
     return null;
   }
@@ -102,7 +106,7 @@ public class PathData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.PathData
  * JD-Core Version:    0.7.0.1
  */

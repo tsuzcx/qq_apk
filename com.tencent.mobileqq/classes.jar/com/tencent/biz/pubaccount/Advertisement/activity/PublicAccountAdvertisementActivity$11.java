@@ -13,7 +13,8 @@ class PublicAccountAdvertisementActivity$11
   public void onClick(View paramView)
   {
     PublicAccountAdvertisementActivity.h(this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementActivityPublicAccountAdvertisementActivity);
-    if ((this.jdField_a_of_type_AndroidAppDialog != null) && (this.jdField_a_of_type_AndroidAppDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
+    Dialog localDialog = this.jdField_a_of_type_AndroidAppDialog;
+    if ((localDialog != null) && (localDialog.isShowing()) && (this.jdField_a_of_type_AndroidAppDialog.getWindow() != null)) {
       this.jdField_a_of_type_AndroidAppDialog.dismiss();
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -21,7 +22,7 @@ class PublicAccountAdvertisementActivity$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.activity.PublicAccountAdvertisementActivity.11
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ import mqq.os.MqqHandler;
 
 public class FrameGifView
   extends ImageView
-  implements SimpleFrameZipDecoder.onFrameDecodeListener
+  implements SimpleFrameZipDecoder.OnFrameDecodeListener
 {
   FrameGifView.AnimationListener jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener;
   private FrameGifView.DecoderRunnable jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable = new FrameGifView.DecoderRunnable();
@@ -36,8 +36,9 @@ public class FrameGifView
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener.a();
+    FrameGifView.AnimationListener localAnimationListener = this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$AnimationListener;
+    if (localAnimationListener != null) {
+      localAnimationListener.a();
     }
   }
   
@@ -48,23 +49,26 @@ public class FrameGifView
   
   public int b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a();
+    QQFrameZipDecoder localQQFrameZipDecoder = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+    if (localQQFrameZipDecoder != null) {
+      return localQQFrameZipDecoder.a();
     }
     return 0;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a();
+    QQFrameZipDecoder localQQFrameZipDecoder = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+    if (localQQFrameZipDecoder != null) {
+      localQQFrameZipDecoder.a();
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.b();
+    QQFrameZipDecoder localQQFrameZipDecoder = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+    if (localQQFrameZipDecoder != null) {
+      localQQFrameZipDecoder.b();
     }
   }
   
@@ -78,9 +82,10 @@ public class FrameGifView
     if (getDrawable() == null) {
       super.setImageDrawable(paramDrawable);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null)
+    paramDrawable = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+    if (paramDrawable != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable.a(this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder, paramInt, paramString1, paramString2, paramBoolean);
+      this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable.a(paramDrawable, paramInt, paramString1, paramString2, paramBoolean);
       ThreadManager.getSubThreadHandler().removeCallbacks(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
       ThreadManager.getSubThreadHandler().post(this.jdField_a_of_type_ComTencentMobileqqApolloViewFrameGifView$DecoderRunnable);
     }
@@ -88,14 +93,15 @@ public class FrameGifView
   
   public void setPlayLoop(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder != null) {
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(paramBoolean);
+    QQFrameZipDecoder localQQFrameZipDecoder = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+    if (localQQFrameZipDecoder != null) {
+      localQQFrameZipDecoder.a(paramBoolean);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.FrameGifView
  * JD-Core Version:    0.7.0.1
  */

@@ -25,40 +25,33 @@ public final class CodaBarReader
   
   static boolean arrayContains(char[] paramArrayOfChar, char paramChar)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    int j;
-    int i;
     if (paramArrayOfChar != null)
     {
-      j = paramArrayOfChar.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      int j = paramArrayOfChar.length;
+      int i = 0;
+      while (i < j)
       {
         if (paramArrayOfChar[i] == paramChar) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   private void counterAppend(int paramInt)
   {
-    this.counters[this.counterLength] = paramInt;
-    this.counterLength += 1;
-    if (this.counterLength >= this.counters.length)
+    int[] arrayOfInt1 = this.counters;
+    int i = this.counterLength;
+    arrayOfInt1[i] = paramInt;
+    this.counterLength = (i + 1);
+    paramInt = this.counterLength;
+    if (paramInt >= arrayOfInt1.length)
     {
-      int[] arrayOfInt = new int[this.counterLength * 2];
-      System.arraycopy(this.counters, 0, arrayOfInt, 0, this.counterLength);
-      this.counters = arrayOfInt;
+      int[] arrayOfInt2 = new int[paramInt * 2];
+      System.arraycopy(arrayOfInt1, 0, arrayOfInt2, 0, paramInt);
+      this.counters = arrayOfInt2;
     }
   }
   
@@ -70,8 +63,8 @@ public final class CodaBarReader
       int j = toNarrowWidePattern(i);
       if ((j != -1) && (arrayContains(STARTEND_ENCODING, ALPHABET[j])))
       {
-        int k = 0;
         j = i;
+        int k = 0;
         while (j < i + 7)
         {
           k += this.counters[j];
@@ -83,135 +76,124 @@ public final class CodaBarReader
       }
       i += 2;
     }
-    throw NotFoundException.getNotFoundInstance();
+    NotFoundException localNotFoundException = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw localNotFoundException;
+    }
   }
   
   private void setCounters(BitArray paramBitArray)
   {
+    int i = 0;
     this.counterLength = 0;
     int j = paramBitArray.getNextUnset(0);
     int k = paramBitArray.getSize();
-    if (j >= k) {
-      throw NotFoundException.getNotFoundInstance();
-    }
-    int m = 1;
-    int i = 0;
-    while (j < k) {
-      if (paramBitArray.get(j) != m)
+    if (j < k)
+    {
+      int m = 1;
+      while (j < k)
       {
-        i += 1;
+        if (paramBitArray.get(j) != m)
+        {
+          i += 1;
+        }
+        else
+        {
+          counterAppend(i);
+          m ^= 0x1;
+          i = 1;
+        }
         j += 1;
       }
-      else
-      {
-        counterAppend(i);
-        if (m == 0) {}
-        for (m = 1;; m = 0)
-        {
-          i = 1;
-          break;
-        }
-      }
+      counterAppend(i);
+      return;
     }
-    counterAppend(i);
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
+    {
+      throw paramBitArray;
+    }
   }
   
   private int toNarrowWidePattern(int paramInt)
   {
-    int i2 = 2147483647;
-    int i3 = paramInt + 7;
-    if (i3 >= this.counterLength)
-    {
-      j = -1;
-      return j;
+    int i5 = paramInt + 7;
+    if (i5 >= this.counterLength) {
+      return -1;
     }
     int[] arrayOfInt = this.counters;
+    int i4 = 2147483647;
+    int i2 = 0;
     int j = paramInt;
     int m = 2147483647;
-    int i = 0;
-    label37:
     int n;
-    int k;
-    if (j < i3)
+    for (int i = 0; j < i5; i = i1)
     {
       n = arrayOfInt[j];
       k = m;
       if (n < m) {
         k = n;
       }
-      if (n <= i) {
-        break label254;
+      i1 = i;
+      if (n > i) {
+        i1 = n;
       }
-      i = n;
-    }
-    label102:
-    label246:
-    label248:
-    label251:
-    label254:
-    for (;;)
-    {
       j += 2;
       m = k;
-      break label37;
-      int i1 = (m + i) / 2;
-      j = paramInt + 1;
-      i = 0;
-      m = i2;
-      if (j < i3)
-      {
-        n = arrayOfInt[j];
-        k = m;
-        if (n < m) {
-          k = n;
-        }
-        if (n <= i) {
-          break label251;
-        }
-        i = n;
-      }
-      for (;;)
-      {
-        j += 2;
-        m = k;
-        break label102;
-        n = (m + i) / 2;
-        j = 0;
-        i = 0;
-        k = 128;
-        if (j < 7) {
-          if ((j & 0x1) == 0)
-          {
-            m = i1;
-            k >>= 1;
-            if (arrayOfInt[(paramInt + j)] <= m) {
-              break label248;
-            }
-            i |= k;
-          }
-        }
-        for (;;)
-        {
-          j += 1;
-          break label166;
-          m = n;
-          break label182;
-          paramInt = 0;
-          for (;;)
-          {
-            if (paramInt >= CHARACTER_ENCODINGS.length) {
-              break label246;
-            }
-            j = paramInt;
-            if (CHARACTER_ENCODINGS[paramInt] == i) {
-              break;
-            }
-            paramInt += 1;
-          }
-          return -1;
-        }
-      }
     }
+    int i3 = (m + i) / 2;
+    i = paramInt + 1;
+    j = 0;
+    m = i4;
+    while (i < i5)
+    {
+      n = arrayOfInt[i];
+      k = m;
+      if (n < m) {
+        k = n;
+      }
+      i1 = j;
+      if (n > j) {
+        i1 = n;
+      }
+      i += 2;
+      m = k;
+      j = i1;
+    }
+    int i1 = (m + j) / 2;
+    j = 0;
+    int k = 128;
+    for (i = 0;; i = m)
+    {
+      m = i2;
+      if (j >= 7) {
+        break;
+      }
+      if ((j & 0x1) == 0) {
+        n = i3;
+      } else {
+        n = i1;
+      }
+      k >>= 1;
+      m = i;
+      if (arrayOfInt[(paramInt + j)] > n) {
+        m = i | k;
+      }
+      j += 1;
+    }
+    for (;;)
+    {
+      arrayOfInt = CHARACTER_ENCODINGS;
+      if (m >= arrayOfInt.length) {
+        break;
+      }
+      if (arrayOfInt[m] == i) {
+        return m;
+      }
+      m += 1;
+    }
+    return -1;
   }
   
   private void validatePattern(int paramInt)
@@ -236,65 +218,68 @@ public final class CodaBarReader
     int[] tmp43_39 = tmp39_35;
     tmp43_39[3] = 0;
     tmp43_39;
-    int n = this.decodeRowResult.length() - 1;
-    int i = 0;
+    int i1 = this.decodeRowResult.length() - 1;
+    int n = 0;
     int j = paramInt;
-    int m;
-    int k;
-    int i1;
-    float[] arrayOfFloat1;
-    float[] arrayOfFloat2;
+    int i = 0;
     for (;;)
     {
-      m = CHARACTER_ENCODINGS[this.decodeRowResult.charAt(i)];
-      k = 6;
+      int m = CHARACTER_ENCODINGS[this.decodeRowResult.charAt(i)];
+      int k = 6;
       while (k >= 0)
       {
-        i1 = (k & 0x1) + (m & 0x1) * 2;
-        arrayOfInt1[i1] += this.counters[(j + k)];
-        arrayOfInt2[i1] += 1;
+        int i2 = (k & 0x1) + (m & 0x1) * 2;
+        arrayOfInt1[i2] += this.counters[(j + k)];
+        arrayOfInt2[i2] += 1;
         m >>= 1;
         k -= 1;
       }
-      if (i >= n)
+      if (i >= i1)
       {
-        arrayOfFloat1 = new float[4];
-        arrayOfFloat2 = new float[4];
-        i = 0;
-        while (i < 2)
+        float[] arrayOfFloat1 = new float[4];
+        float[] arrayOfFloat2 = new float[4];
+        k = 0;
+        for (;;)
         {
-          arrayOfFloat2[i] = 0.0F;
-          arrayOfFloat2[(i + 2)] = ((arrayOfInt1[i] / arrayOfInt2[i] + arrayOfInt1[(i + 2)] / arrayOfInt2[(i + 2)]) / 2.0F);
-          arrayOfFloat1[i] = arrayOfFloat2[(i + 2)];
-          arrayOfFloat1[(i + 2)] = ((arrayOfInt1[(i + 2)] * 2.0F + 1.5F) / arrayOfInt2[(i + 2)]);
+          i = n;
+          j = paramInt;
+          if (k >= 2) {
+            break;
+          }
+          arrayOfFloat2[k] = 0.0F;
+          i = k + 2;
+          arrayOfFloat2[i] = ((arrayOfInt1[k] / arrayOfInt2[k] + arrayOfInt1[i] / arrayOfInt2[i]) / 2.0F);
+          arrayOfFloat1[k] = arrayOfFloat2[i];
+          arrayOfFloat1[i] = ((arrayOfInt1[i] * 2.0F + 1.5F) / arrayOfInt2[i]);
+          k += 1;
+        }
+        for (;;)
+        {
+          k = CHARACTER_ENCODINGS[this.decodeRowResult.charAt(i)];
+          paramInt = 6;
+          while (paramInt >= 0)
+          {
+            m = (paramInt & 0x1) + (k & 0x1) * 2;
+            float f = this.counters[(j + paramInt)];
+            if ((f >= arrayOfFloat2[m]) && (f <= arrayOfFloat1[m]))
+            {
+              k >>= 1;
+              paramInt -= 1;
+            }
+            else
+            {
+              throw NotFoundException.getNotFoundInstance();
+            }
+          }
+          if (i >= i1) {
+            return;
+          }
+          j += 8;
           i += 1;
         }
       }
       j += 8;
       i += 1;
-    }
-    j = 0;
-    i = paramInt;
-    paramInt = j;
-    for (;;)
-    {
-      k = CHARACTER_ENCODINGS[this.decodeRowResult.charAt(paramInt)];
-      j = 6;
-      while (j >= 0)
-      {
-        m = (j & 0x1) + (k & 0x1) * 2;
-        i1 = this.counters[(i + j)];
-        if ((i1 < arrayOfFloat2[m]) || (i1 > arrayOfFloat1[m])) {
-          throw NotFoundException.getNotFoundInstance();
-        }
-        k >>= 1;
-        j -= 1;
-      }
-      if (paramInt >= n) {
-        return;
-      }
-      i += 8;
-      paramInt += 1;
     }
   }
   
@@ -305,78 +290,93 @@ public final class CodaBarReader
     int j = findStartPattern();
     this.decodeRowResult.setLength(0);
     int i = j;
-    int k = toNarrowWidePattern(i);
-    if (k == -1) {
-      throw NotFoundException.getNotFoundInstance();
-    }
-    this.decodeRowResult.append((char)k);
-    int m = i + 8;
-    if ((this.decodeRowResult.length() > 1) && (arrayContains(STARTEND_ENCODING, ALPHABET[k]))) {}
-    int n;
-    for (;;)
+    int m;
+    do
     {
-      n = this.counters[(m - 1)];
-      i = -8;
-      k = 0;
-      while (i < -1)
-      {
-        k += this.counters[(m + i)];
-        i += 1;
+      k = toNarrowWidePattern(i);
+      if (k == -1) {
+        break label487;
       }
-      i = m;
-      if (m < this.counterLength) {
+      this.decodeRowResult.append((char)k);
+      m = i + 8;
+      if ((this.decodeRowResult.length() > 1) && (arrayContains(STARTEND_ENCODING, ALPHABET[k]))) {
         break;
       }
+      i = m;
+    } while (m < this.counterLength);
+    paramBitArray = this.counters;
+    int n = m - 1;
+    int i1 = paramBitArray[n];
+    i = -8;
+    int k = 0;
+    while (i < -1)
+    {
+      k += this.counters[(m + i)];
+      i += 1;
     }
-    if ((m < this.counterLength) && (n < k / 2)) {
+    if ((m < this.counterLength) && (i1 < k / 2)) {
       throw NotFoundException.getNotFoundInstance();
     }
     validatePattern(j);
     i = 0;
     while (i < this.decodeRowResult.length())
     {
-      this.decodeRowResult.setCharAt(i, ALPHABET[this.decodeRowResult.charAt(i)]);
+      paramBitArray = this.decodeRowResult;
+      paramBitArray.setCharAt(i, ALPHABET[paramBitArray.charAt(i)]);
       i += 1;
     }
     char c = this.decodeRowResult.charAt(0);
-    if (!arrayContains(STARTEND_ENCODING, c)) {
+    if (arrayContains(STARTEND_ENCODING, c))
+    {
+      paramBitArray = this.decodeRowResult;
+      c = paramBitArray.charAt(paramBitArray.length() - 1);
+      if (arrayContains(STARTEND_ENCODING, c))
+      {
+        if (this.decodeRowResult.length() > 3)
+        {
+          if ((paramMap == null) || (!paramMap.containsKey(DecodeHintType.RETURN_CODABAR_START_END)))
+          {
+            paramBitArray = this.decodeRowResult;
+            paramBitArray.deleteCharAt(paramBitArray.length() - 1);
+            this.decodeRowResult.deleteCharAt(0);
+          }
+          k = 0;
+          i = 0;
+          while (k < j)
+          {
+            i += this.counters[k];
+            k += 1;
+          }
+          float f1 = i;
+          while (j < n)
+          {
+            i += this.counters[j];
+            j += 1;
+          }
+          float f2 = i;
+          paramBitArray = this.decodeRowResult.toString();
+          float f3 = paramInt;
+          paramMap = new ResultPoint(f1, f3);
+          ResultPoint localResultPoint = new ResultPoint(f2, f3);
+          BarcodeFormat localBarcodeFormat = BarcodeFormat.CODABAR;
+          return new Result(paramBitArray, null, new ResultPoint[] { paramMap, localResultPoint }, localBarcodeFormat);
+        }
+        throw NotFoundException.getNotFoundInstance();
+      }
       throw NotFoundException.getNotFoundInstance();
     }
-    c = this.decodeRowResult.charAt(this.decodeRowResult.length() - 1);
-    if (!arrayContains(STARTEND_ENCODING, c)) {
-      throw NotFoundException.getNotFoundInstance();
-    }
-    if (this.decodeRowResult.length() <= 3) {
-      throw NotFoundException.getNotFoundInstance();
-    }
-    if ((paramMap == null) || (!paramMap.containsKey(DecodeHintType.RETURN_CODABAR_START_END)))
+    throw NotFoundException.getNotFoundInstance();
+    label487:
+    paramBitArray = NotFoundException.getNotFoundInstance();
+    for (;;)
     {
-      this.decodeRowResult.deleteCharAt(this.decodeRowResult.length() - 1);
-      this.decodeRowResult.deleteCharAt(0);
+      throw paramBitArray;
     }
-    k = 0;
-    for (i = 0; k < j; i = n + i)
-    {
-      n = this.counters[k];
-      k += 1;
-    }
-    float f1 = i;
-    while (j < m - 1)
-    {
-      i += this.counters[j];
-      j += 1;
-    }
-    float f2 = i;
-    paramBitArray = this.decodeRowResult.toString();
-    paramMap = new ResultPoint(f1, paramInt);
-    ResultPoint localResultPoint = new ResultPoint(f2, paramInt);
-    BarcodeFormat localBarcodeFormat = BarcodeFormat.CODABAR;
-    return new Result(paramBitArray, null, new ResultPoint[] { paramMap, localResultPoint }, localBarcodeFormat);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.oned.CodaBarReader
  * JD-Core Version:    0.7.0.1
  */

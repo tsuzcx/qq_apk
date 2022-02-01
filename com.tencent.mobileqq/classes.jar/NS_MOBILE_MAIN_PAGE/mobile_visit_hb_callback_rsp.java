@@ -38,17 +38,19 @@ public final class mobile_visit_hb_callback_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.err_msg != null) {
-      paramJceOutputStream.write(this.err_msg, 1);
+    Object localObject = this.err_msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.ext_info != null) {
-      paramJceOutputStream.write(this.ext_info, 2);
+    localObject = this.ext_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_visit_hb_callback_rsp
  * JD-Core Version:    0.7.0.1
  */

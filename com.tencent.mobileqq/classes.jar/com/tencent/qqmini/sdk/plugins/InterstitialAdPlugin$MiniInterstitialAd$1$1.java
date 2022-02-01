@@ -17,41 +17,37 @@ class InterstitialAdPlugin$MiniInterstitialAd$1$1
   
   public boolean doOnActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    boolean bool = false;
-    String str;
     if (paramInt1 == 10001)
     {
       AdFrequencyLimit.setInterstitialAdShowing(false);
-      if (paramInt2 != -1) {
-        break label132;
+      String str;
+      if (paramInt2 == -1) {
+        str = "on closed";
+      } else {
+        str = "on closed error";
       }
-      str = "on closed";
       if (InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$2.this$1) != null) {
         InterstitialAdPlugin.MiniInterstitialAd.access$300(this.this$2.this$1).onDismiss();
       }
       ActivityResultManager.g().removeActivityResultListener(this);
-      if (InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$2.this$1) == null) {
-        break label139;
+      Activity localActivity;
+      if (InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$2.this$1) != null) {
+        localActivity = (Activity)InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$2.this$1).get();
+      } else {
+        localActivity = null;
       }
-    }
-    label132:
-    label139:
-    for (Activity localActivity = (Activity)InterstitialAdPlugin.MiniInterstitialAd.access$000(this.this$2.this$1).get();; localActivity = null)
-    {
       if (InterstitialAdPlugin.MiniInterstitialAd.access$100(this.this$2.this$1) != null) {
         InterstitialAdPlugin.MiniInterstitialAd.access$100(this.this$2.this$1).onClose(localActivity, paramInt2, paramIntent);
       }
       QMLog.i("SDK_MiniInterstitialAd", str);
-      bool = true;
-      return bool;
-      str = "on closed error";
-      break;
+      return true;
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.InterstitialAdPlugin.MiniInterstitialAd.1.1
  * JD-Core Version:    0.7.0.1
  */

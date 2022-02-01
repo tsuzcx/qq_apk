@@ -3,6 +3,7 @@ package com.tencent.ttpic.filter.juyoujinggame;
 import android.graphics.PointF;
 import com.tencent.aekit.openrender.internal.AEFilterI;
 import com.tencent.aekit.openrender.internal.Frame;
+import com.tencent.aekit.openrender.internal.VideoFilterBase;
 import com.tencent.aekit.plugin.core.AIAttr;
 import com.tencent.ttpic.filter.NormalVideoFilter;
 import com.tencent.ttpic.openapi.PTDetectInfo;
@@ -30,12 +31,24 @@ public class UKYOTachi
   
   public Frame RenderProcess(Frame paramFrame)
   {
-    if ((this.filter == null) || (this.mTachiStatus == null) || (this.mTachiStatus.mIsAppear)) {}
-    while ((this.triggerCtrlItem != null) && (!this.triggerCtrlItem.isTriggered())) {
-      return paramFrame;
+    Object localObject = paramFrame;
+    if (this.filter != null)
+    {
+      UKYOTachi.TachiStatus localTachiStatus = this.mTachiStatus;
+      localObject = paramFrame;
+      if (localTachiStatus != null)
+      {
+        if (localTachiStatus.mIsAppear) {
+          return paramFrame;
+        }
+        if ((this.triggerCtrlItem != null) && (!this.triggerCtrlItem.isTriggered())) {
+          return paramFrame;
+        }
+        localObject = (UKYOFilter)this.filter;
+        localObject = this.mRenderListener.RenderProcessForFilter(paramFrame, null, (VideoFilterBase)localObject);
+      }
     }
-    UKYOFilter localUKYOFilter = (UKYOFilter)this.filter;
-    return this.mRenderListener.RenderProcessForFilter(paramFrame, null, localUKYOFilter);
+    return localObject;
   }
   
   public void apply()
@@ -47,10 +60,14 @@ public class UKYOTachi
   
   public void checkAppStatus(ArrayList<IHittingStatus> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0) || (this.mTachiStatus == null)) {
-      return;
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
+    {
+      UKYOTachi.TachiStatus localTachiStatus = this.mTachiStatus;
+      if (localTachiStatus == null) {
+        return;
+      }
+      localTachiStatus.updateHittingStatus(paramArrayList);
     }
-    this.mTachiStatus.updateHittingStatus(paramArrayList);
   }
   
   public void clear()
@@ -71,8 +88,9 @@ public class UKYOTachi
   
   public void reset()
   {
-    if (this.mTachiStatus != null) {
-      this.mTachiStatus.reset();
+    UKYOTachi.TachiStatus localTachiStatus = this.mTachiStatus;
+    if (localTachiStatus != null) {
+      localTachiStatus.reset();
     }
   }
   
@@ -90,57 +108,66 @@ public class UKYOTachi
   
   public void updatePreview(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof PTDetectInfo))) {}
-    do
+    if (paramObject != null)
     {
-      do
-      {
+      if (!(paramObject instanceof PTDetectInfo)) {
         return;
-        localObject = (PTDetectInfo)paramObject;
-        PTFaceAttr localPTFaceAttr = (PTFaceAttr)((PTDetectInfo)localObject).aiAttr.getFaceAttr();
-        if ((((PTDetectInfo)localObject).facePoints != null) && (this.mTachiSetting != null) && (localPTFaceAttr != null) && (PTFaceAttr.checkFaceFeatureOutScreenUKYO(((PTDetectInfo)localObject).facePoints, this.mTachiSetting.mWidth, this.mTachiSetting.mHeight, localPTFaceAttr.getFaceDetectScale())))
+      }
+      Object localObject = (PTDetectInfo)paramObject;
+      PTFaceAttr localPTFaceAttr = (PTFaceAttr)((PTDetectInfo)localObject).aiAttr.getFaceAttr();
+      if ((((PTDetectInfo)localObject).facePoints != null) && (this.mTachiSetting != null) && (localPTFaceAttr != null) && (PTFaceAttr.checkFaceFeatureOutScreenUKYO(((PTDetectInfo)localObject).facePoints, this.mTachiSetting.mWidth, this.mTachiSetting.mHeight, localPTFaceAttr.getFaceDetectScale())))
+      {
+        this.prefacePoints = ((PTDetectInfo)localObject).facePoints;
+        this.prefaceAngles = ((PTDetectInfo)localObject).faceAngles;
+        this.prephoneAngle = ((PTDetectInfo)localObject).phoneAngle;
+      }
+      this.mCurrentTime = ((PTDetectInfo)localObject).timestamp;
+      localObject = this.mTachiStatus;
+      if (localObject != null)
+      {
+        ((UKYOTachi.TachiStatus)localObject).updateCurTime(this.mCurrentTime);
+        if (this.filter != null)
         {
-          this.prefacePoints = ((PTDetectInfo)localObject).facePoints;
-          this.prefaceAngles = ((PTDetectInfo)localObject).faceAngles;
-          this.prephoneAngle = ((PTDetectInfo)localObject).phoneAngle;
+          ((UKYOFilter)this.filter).setImageID(this.mTachiStatus.getImageId());
+          localObject = (UKYOFilter)this.filter;
+          int i;
+          if (this.mTachiStatus.mCurFrameIndex >= 0) {
+            i = this.mTachiStatus.mCurFrameIndex;
+          } else {
+            i = 0;
+          }
+          ((UKYOFilter)localObject).setFrameIndex(i);
+          ((UKYOFilter)this.filter).setPositions(this.mTachiStatus.updatePositions(this.prefacePoints, this.prefaceAngles, this.prephoneAngle));
+          this.filter.updatePreview(paramObject);
+          ((NormalVideoFilter)this.filter).setTriggered(true);
         }
-        this.mCurrentTime = ((PTDetectInfo)localObject).timestamp;
-      } while (this.mTachiStatus == null);
-      this.mTachiStatus.updateCurTime(this.mCurrentTime);
-    } while (this.filter == null);
-    ((UKYOFilter)this.filter).setImageID(this.mTachiStatus.getImageId());
-    Object localObject = (UKYOFilter)this.filter;
-    if (this.mTachiStatus.mCurFrameIndex >= 0) {}
-    for (int i = this.mTachiStatus.mCurFrameIndex;; i = 0)
-    {
-      ((UKYOFilter)localObject).setFrameIndex(i);
-      ((UKYOFilter)this.filter).setPositions(this.mTachiStatus.updatePositions(this.prefacePoints, this.prefaceAngles, this.prephoneAngle));
-      this.filter.updatePreview(paramObject);
-      ((NormalVideoFilter)this.filter).setTriggered(true);
-      return;
+      }
     }
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
   {
-    if (this.filter == null) {}
-    do
-    {
+    if (this.filter == null) {
       return;
-      ((UKYOFilter)this.filter).updateVideoSize(paramInt1, paramInt2, paramDouble);
-      if ((this.mTachiSetting != null) && (this.mTachiSetting.mWidth == 0))
-      {
-        this.mTachiSetting.mWidth = paramInt1;
-        this.mTachiSetting.mHeight = paramInt2;
-        this.mTachiSetting.updateItemWidth(paramInt1);
-      }
-    } while (this.mTachiStatus == null);
-    this.mTachiStatus.mFaceDetScale = paramDouble;
+    }
+    ((UKYOFilter)this.filter).updateVideoSize(paramInt1, paramInt2, paramDouble);
+    Object localObject = this.mTachiSetting;
+    if ((localObject != null) && (((TachiSetting)localObject).mWidth == 0))
+    {
+      localObject = this.mTachiSetting;
+      ((TachiSetting)localObject).mWidth = paramInt1;
+      ((TachiSetting)localObject).mHeight = paramInt2;
+      ((TachiSetting)localObject).updateItemWidth(paramInt1);
+    }
+    localObject = this.mTachiStatus;
+    if (localObject != null) {
+      ((UKYOTachi.TachiStatus)localObject).mFaceDetScale = paramDouble;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.UKYOTachi
  * JD-Core Version:    0.7.0.1
  */

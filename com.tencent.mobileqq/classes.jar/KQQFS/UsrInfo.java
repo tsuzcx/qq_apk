@@ -81,8 +81,9 @@ public final class UsrInfo
     paramJceOutputStream.write(this.shKeyType, 7);
     paramJceOutputStream.write(this.vKey, 8);
     paramJceOutputStream.write(this.encryAbi, 9);
-    if (this.otherID != null) {
-      paramJceOutputStream.write(this.otherID, 10);
+    byte[] arrayOfByte = this.otherID;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 10);
     }
     paramJceOutputStream.write(this.cNetType, 11);
     paramJceOutputStream.write(this.cPicType, 12);
@@ -90,7 +91,7 @@ public final class UsrInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQFS.UsrInfo
  * JD-Core Version:    0.7.0.1
  */

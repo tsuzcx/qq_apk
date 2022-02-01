@@ -18,7 +18,7 @@ public class DownCallBack$DownResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.DownCallBack.DownResult
  * JD-Core Version:    0.7.0.1
  */

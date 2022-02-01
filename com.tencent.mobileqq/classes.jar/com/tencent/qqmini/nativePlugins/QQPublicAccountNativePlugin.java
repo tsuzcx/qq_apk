@@ -28,13 +28,19 @@ public class QQPublicAccountNativePlugin
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      return localJSONObject;
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      return localObject;
     }
     catch (JSONException localJSONException)
     {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Failed to parse jsonParams=" + paramRequestEvent.jsonParams);
+      Object localObject;
+      label14:
+      break label14;
     }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Failed to parse jsonParams=");
+    ((StringBuilder)localObject).append(paramRequestEvent.jsonParams);
+    QLog.e("QQPublicAccountNativePlugin", 1, ((StringBuilder)localObject).toString());
     return null;
   }
   
@@ -54,8 +60,8 @@ public class QQPublicAccountNativePlugin
         localObject = Arrays.toString(localVacFeedsAdvMetaReq.toByteArray());
         new JSONObject().put("deviceinfo", localObject);
         paramRequestEvent.ok();
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -78,8 +84,8 @@ public class QQPublicAccountNativePlugin
         long l = ((JSONObject)localObject).optLong("createtime");
         localObject = SubscribeLaucher.a(str2, str1, i, ((JSONObject)localObject).optInt("width"), ((JSONObject)localObject).optInt("height"), l);
         SubscribeLaucher.a(this.mMiniAppContext.getAttachedActivity(), (CertifiedAccountMeta.StFeed)localObject, 9001);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -91,31 +97,37 @@ public class QQPublicAccountNativePlugin
   @JsEvent({"qsubscribe_opendiscover"})
   public void qsubscribeOpendiscover(RequestEvent paramRequestEvent)
   {
-    boolean bool = false;
-    try
+    for (;;)
     {
-      Object localObject = a(paramRequestEvent).optJSONObject("data");
-      if (localObject != null)
+      try
       {
-        String str = ((JSONObject)localObject).optString("uin");
-        int i = ((JSONObject)localObject).optInt("shoptype");
-        localObject = new Intent();
-        ((Intent)localObject).putExtra("postUin", str);
-        ((Intent)localObject).putExtra("sourceFrom", 1);
-        if (i > 1) {
+        Object localObject = a(paramRequestEvent).optJSONObject("data");
+        if (localObject != null)
+        {
+          String str = ((JSONObject)localObject).optString("uin");
+          int i = ((JSONObject)localObject).optInt("shoptype");
+          localObject = new Intent();
+          ((Intent)localObject).putExtra("postUin", str);
+          ((Intent)localObject).putExtra("sourceFrom", 1);
+          if (i <= 1) {
+            break label128;
+          }
           bool = true;
+          ((Intent)localObject).putExtra("has_shop", bool);
+          ((Intent)localObject).addFlags(268435456);
+          QZoneHelper.forwardToQQPublicAccountPublishPage(this.mMiniAppContext.getAttachedActivity(), (Intent)localObject, 0);
+          paramRequestEvent.ok();
+          return;
         }
-        ((Intent)localObject).putExtra("has_shop", bool);
-        ((Intent)localObject).addFlags(268435456);
-        QZoneHelper.forwardToQQPublicAccountPublishPage(this.mMiniAppContext.getAttachedActivity(), (Intent)localObject, 0);
-        paramRequestEvent.ok();
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
+        paramRequestEvent.fail();
       }
       return;
-    }
-    catch (Throwable localThrowable)
-    {
-      QLog.e("QQPublicAccountNativePlugin", 1, "Handle QQPublicAccountNativePlugin failed! ", localThrowable);
-      paramRequestEvent.fail();
+      label128:
+      boolean bool = false;
     }
   }
   
@@ -129,8 +141,8 @@ public class QQPublicAccountNativePlugin
       {
         localObject = ((JSONObject)localObject).optString("uin");
         SubscribeLaucher.a(this.mMiniAppContext.getAttachedActivity(), (String)localObject, 9001);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -141,7 +153,7 @@ public class QQPublicAccountNativePlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.nativePlugins.QQPublicAccountNativePlugin
  * JD-Core Version:    0.7.0.1
  */

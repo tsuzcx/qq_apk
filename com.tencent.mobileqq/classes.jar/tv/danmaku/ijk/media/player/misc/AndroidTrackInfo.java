@@ -42,24 +42,25 @@ public class AndroidTrackInfo
   @TargetApi(19)
   public IMediaFormat getFormat()
   {
-    if (this.mTrackInfo == null) {}
-    MediaFormat localMediaFormat;
-    do
-    {
-      do
-      {
-        return null;
-      } while (Build.VERSION.SDK_INT < 19);
-      localMediaFormat = this.mTrackInfo.getFormat();
-    } while (localMediaFormat == null);
+    if (this.mTrackInfo == null) {
+      return null;
+    }
+    if (Build.VERSION.SDK_INT < 19) {
+      return null;
+    }
+    MediaFormat localMediaFormat = this.mTrackInfo.getFormat();
+    if (localMediaFormat == null) {
+      return null;
+    }
     return new AndroidMediaFormat(localMediaFormat);
   }
   
   @TargetApi(16)
   public String getInfoInline()
   {
-    if (this.mTrackInfo != null) {
-      return this.mTrackInfo.toString();
+    MediaPlayer.TrackInfo localTrackInfo = this.mTrackInfo;
+    if (localTrackInfo != null) {
+      return localTrackInfo.toString();
     }
     return "null";
   }
@@ -67,19 +68,21 @@ public class AndroidTrackInfo
   @TargetApi(16)
   public String getLanguage()
   {
-    if (this.mTrackInfo == null) {
+    MediaPlayer.TrackInfo localTrackInfo = this.mTrackInfo;
+    if (localTrackInfo == null) {
       return "und";
     }
-    return this.mTrackInfo.getLanguage();
+    return localTrackInfo.getLanguage();
   }
   
   @TargetApi(16)
   public int getTrackType()
   {
-    if (this.mTrackInfo == null) {
+    MediaPlayer.TrackInfo localTrackInfo = this.mTrackInfo;
+    if (localTrackInfo == null) {
       return 0;
     }
-    return this.mTrackInfo.getTrackType();
+    return localTrackInfo.getTrackType();
   }
   
   @TargetApi(16)
@@ -88,20 +91,19 @@ public class AndroidTrackInfo
     StringBuilder localStringBuilder = new StringBuilder(128);
     localStringBuilder.append(getClass().getSimpleName());
     localStringBuilder.append('{');
-    if (this.mTrackInfo != null) {
-      localStringBuilder.append(this.mTrackInfo.toString());
-    }
-    for (;;)
-    {
-      localStringBuilder.append('}');
-      return localStringBuilder.toString();
+    MediaPlayer.TrackInfo localTrackInfo = this.mTrackInfo;
+    if (localTrackInfo != null) {
+      localStringBuilder.append(localTrackInfo.toString());
+    } else {
       localStringBuilder.append("null");
     }
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tv.danmaku.ijk.media.player.misc.AndroidTrackInfo
  * JD-Core Version:    0.7.0.1
  */

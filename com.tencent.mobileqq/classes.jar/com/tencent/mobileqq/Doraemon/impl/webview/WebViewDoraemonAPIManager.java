@@ -21,7 +21,7 @@ public class WebViewDoraemonAPIManager
     this.c = paramString2;
   }
   
-  public Map<String, APIConfig> a()
+  protected Map<String, APIConfig> a()
   {
     return D.manifest.webview_apis.a();
   }
@@ -31,14 +31,14 @@ public class WebViewDoraemonAPIManager
     return this.jdField_b_of_type_Int == 2;
   }
   
-  public void c()
+  protected void c()
   {
     DefaultDoraemonAppInfoHelper.a().a(this.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.c, new WebViewDoraemonAPIManager.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.webview.WebViewDoraemonAPIManager
  * JD-Core Version:    0.7.0.1
  */

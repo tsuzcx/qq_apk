@@ -42,15 +42,13 @@ public class SortedFixedLinkedList<V>
       return super.add(paramV);
     }
     int j = size();
-    if (i < j)
+    while (i < j)
     {
       Object localObject = get(i);
-      if (localObject == null) {}
-      while (this.mComparator.compare(paramV, localObject) > 0)
-      {
-        i += 1;
+      if ((localObject != null) && (this.mComparator.compare(paramV, localObject) <= 0)) {
         break;
       }
+      i += 1;
     }
     super.add(i, paramV);
     return true;
@@ -58,7 +56,7 @@ public class SortedFixedLinkedList<V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.statistics.common.SortedFixedLinkedList
  * JD-Core Version:    0.7.0.1
  */

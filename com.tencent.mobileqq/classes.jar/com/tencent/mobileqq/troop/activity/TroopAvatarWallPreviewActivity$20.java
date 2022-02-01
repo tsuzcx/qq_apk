@@ -1,24 +1,18 @@
 package com.tencent.mobileqq.troop.activity;
 
-import android.content.BroadcastReceiver;
-import android.content.Context;
-import android.content.Intent;
-
 class TroopAvatarWallPreviewActivity$20
-  extends BroadcastReceiver
+  implements Runnable
 {
   TroopAvatarWallPreviewActivity$20(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void onReceive(Context paramContext, Intent paramIntent)
+  public void run()
   {
-    if ((paramIntent != null) && (paramIntent.getAction().equals("cooperation.qzone.webviewplugin.QzoneQunFeedJsPlugin.handleQunDetailDelete"))) {
-      this.a.finish();
-    }
+    this.this$0.animated = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.20
  * JD-Core Version:    0.7.0.1
  */

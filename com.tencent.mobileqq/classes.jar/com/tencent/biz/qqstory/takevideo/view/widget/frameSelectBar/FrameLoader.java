@@ -11,8 +11,6 @@ import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.view.asyncImageLoader.ImageLoader;
 import com.tencent.biz.qqstory.view.asyncImageLoader.Task;
-import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.activity.richmedia.QQStoryFlowCallback;
 import com.tencent.mobileqq.activity.richmedia.trimvideo.video.utils.ThumbnailUtils;
 
 public class FrameLoader
@@ -53,17 +51,10 @@ public class FrameLoader
   {
     super.a();
     this.jdField_a_of_type_AndroidSupportV4UtilLruCache.evictAll();
-    if (this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever != null) {
-      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.release();
+    MediaMetadataRetriever localMediaMetadataRetriever = this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever;
+    if (localMediaMetadataRetriever != null) {
+      localMediaMetadataRetriever.release();
     }
-  }
-  
-  public void a(LocalMediaInfo paramLocalMediaInfo)
-  {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader$GetFrameReport == null) {
-      return;
-    }
-    StoryReportor.b("upload_local_video", "get_frame_cost", 0, 0, new String[] { String.valueOf(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader$GetFrameReport.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentBizQqstoryTakevideoViewWidgetFrameSelectBarFrameLoader$GetFrameReport.toString(), QQStoryFlowCallback.a(paramLocalMediaInfo) });
   }
   
   @TargetApi(10)
@@ -73,49 +64,40 @@ public class FrameLoader
     SLog.a("Q.qqstory.frameWidget.FrameLoader", "initVideo,duration=%s,path=%s", Integer.valueOf(paramInt1), paramString);
     try
     {
-      if (this.jdField_a_of_type_Boolean)
-      {
+      if (this.jdField_a_of_type_Boolean) {
         ThumbnailUtils.a(paramString, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int, 0, 0, this.jdField_b_of_type_Int, this.jdField_a_of_type_Int);
-        this.jdField_b_of_type_Boolean = true;
+      } else {
+        ThumbnailUtils.a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
+      this.jdField_b_of_type_Boolean = true;
     }
     catch (Exception localException1)
     {
-      try
-      {
-        for (;;)
-        {
-          this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
-          this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.setDataSource(paramString);
-          if (Build.VERSION.SDK_INT >= 26) {
-            this.jdField_b_of_type_Boolean = false;
-          }
-          this.jdField_a_of_type_JavaLangString = paramString;
-          this.c = paramInt2;
-          c();
-          return;
-          ThumbnailUtils.a(paramString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, 0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-          continue;
-          localException1 = localException1;
-          this.jdField_b_of_type_Boolean = false;
-          SLog.c("Q.qqstory.frameWidget.FrameLoader", "ThumbnailUtils init failed! e:%s", localException1);
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          SLog.e("Q.qqstory.frameWidget.FrameLoader", StringAppendTool.a(new Object[] { "MediaMetadataRetriever init failed! mVideoPath = ", paramString, "  e=", localException2 }));
-          StoryReportor.b("story_local_video", "frame_loader", 0, 0, new String[] { paramString, localException2.getMessage() });
-          this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = null;
-        }
+      this.jdField_b_of_type_Boolean = false;
+      SLog.c("Q.qqstory.frameWidget.FrameLoader", "ThumbnailUtils init failed! e:%s", localException1);
+    }
+    try
+    {
+      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = new MediaMetadataRetriever();
+      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever.setDataSource(paramString);
+      if (Build.VERSION.SDK_INT >= 26) {
+        this.jdField_b_of_type_Boolean = false;
       }
     }
+    catch (Exception localException2)
+    {
+      SLog.e("Q.qqstory.frameWidget.FrameLoader", StringAppendTool.a(new Object[] { "MediaMetadataRetriever init failed! mVideoPath = ", paramString, "  e=", localException2 }));
+      StoryReportor.b("story_local_video", "frame_loader", 0, 0, new String[] { paramString, localException2.getMessage() });
+      this.jdField_a_of_type_AndroidMediaMediaMetadataRetriever = null;
+    }
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.c = paramInt2;
+    c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.FrameLoader
  * JD-Core Version:    0.7.0.1
  */

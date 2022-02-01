@@ -1,73 +1,72 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.content.res.Resources;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
+import android.view.ViewGroup;
+import android.widget.TextView;
+import com.tencent.mobileqq.activity.ChatActivityConstants;
+import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.FriendListObserver;
-import com.tencent.mobileqq.mutualmark.oldlogic.ReCheckInHelper;
+import com.tencent.mobileqq.activity.aio.helper.HelperProvider;
+import com.tencent.mobileqq.activity.aio.helper.QidianHelper;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.widget.QQToast;
+import com.tencent.qidian.controller.QidianBusinessObserver;
+import com.tencent.qidian.data.QidianExternalInfo;
 import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
 
 class FriendChatPie$14
-  extends FriendListObserver
+  extends QidianBusinessObserver
 {
   FriendChatPie$14(FriendChatPie paramFriendChatPie) {}
   
-  public void onAddFriend(String paramString)
+  protected void c(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    if (!this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramString)) {
+    if (paramBoolean)
+    {
+      this.a.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.notifyDataSetChanged();
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.a().getString(2131698323), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d(this.a.b, 2, "onAddFriend");
-    }
-    FriendChatPie.a(this.a, false);
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, this.a.a().getString(2131698322), 0).b(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getTitleBarHeight());
   }
   
-  public void onReqRecheckInHotReactive(boolean paramBoolean, String paramString1, String paramString2, int paramInt)
+  protected void d(boolean paramBoolean, HashMap<String, Object> paramHashMap)
   {
-    this.a.jdField_a_of_type_ComTencentMobileqqMutualmarkOldlogicReCheckInHelper.a(paramBoolean, paramString1, paramString2, paramInt);
-  }
-  
-  public void onSetAsNormalContacts(boolean paramBoolean, List<String> paramList)
-  {
-    if (!paramBoolean) {
-      QQToast.a(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity, this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getResources().getString(2131719077), 0).b(this.a.jdField_a_of_type_AndroidSupportV4AppFragmentActivity.getTitleBarHeight());
-    }
-  }
-  
-  public void onSetAsUncommonlyUsedContacts(boolean paramBoolean, List<String> paramList) {}
-  
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
-  {
-    super.onUpdateFriendInfo(paramString, paramBoolean);
-    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)) && (paramString.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+    if ((paramBoolean) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (paramHashMap.containsKey("external")) && (paramHashMap.get("external") != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onUpdateHotFriendLevel");
+      paramHashMap = (QidianExternalInfo)paramHashMap.get("external");
+      if ((this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a != null) && (paramHashMap != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a.equals(paramHashMap.uin)))
+      {
+        paramHashMap = ((QidianHelper)this.a.jdField_a_of_type_ComTencentMobileqqActivityAioHelperHelperProvider.a(61)).a();
+        if (paramHashMap != null)
+        {
+          this.a.a(true);
+          this.a.f.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
+          this.a.jdField_a_of_type_AndroidViewViewGroup.setOnClickListener(null);
+          this.a.jdField_b_of_type_AndroidViewViewGroup.setOnClickListener(null);
+          this.a.a(paramHashMap);
+          if (ChatActivityConstants.a) {
+            this.a.f.setContentDescription(paramHashMap);
+          }
+          this.a.jdField_b_of_type_Boolean = true;
+          return;
+        }
+        this.a.a(false);
+        return;
       }
-      this.a.E();
+      if (QLog.isColorLevel()) {
+        QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo not current curFriendUin");
+      }
     }
-  }
-  
-  public void onUpdateHotFriendLevel(boolean paramBoolean, ArrayList<String> paramArrayList)
-  {
-    super.onUpdateHotFriendLevel(paramBoolean, paramArrayList);
-    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.contains(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+    else if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onUpdateHotFriendLevel");
-      }
-      this.a.E();
+      QLog.d(this.a.jdField_b_of_type_JavaLangString, 2, "onGetQidianUserDetailInfo fail");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.14
  * JD-Core Version:    0.7.0.1
  */

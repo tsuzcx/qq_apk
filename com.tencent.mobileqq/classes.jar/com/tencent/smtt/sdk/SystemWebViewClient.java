@@ -25,7 +25,7 @@ import com.tencent.smtt.utils.n;
 class SystemWebViewClient
   extends android.webkit.WebViewClient
 {
-  private static String c = null;
+  private static String c;
   private WebViewClient a;
   private WebView b;
   
@@ -116,18 +116,18 @@ class SystemWebViewClient
   
   public void onReceivedError(android.webkit.WebView paramWebView, WebResourceRequest paramWebResourceRequest, WebResourceError paramWebResourceError)
   {
-    Object localObject = null;
     this.b.a(paramWebView);
-    if (paramWebResourceRequest != null) {}
-    for (paramWebView = new SystemWebViewClient.f(paramWebResourceRequest);; paramWebView = null)
-    {
-      paramWebResourceRequest = localObject;
-      if (paramWebResourceError != null) {
-        paramWebResourceRequest = new SystemWebViewClient.2(this, paramWebResourceError);
-      }
-      this.a.onReceivedError(this.b, paramWebView, paramWebResourceRequest);
-      return;
+    Object localObject = null;
+    if (paramWebResourceRequest != null) {
+      paramWebView = new SystemWebViewClient.f(paramWebResourceRequest);
+    } else {
+      paramWebView = null;
     }
+    paramWebResourceRequest = localObject;
+    if (paramWebResourceError != null) {
+      paramWebResourceRequest = new SystemWebViewClient.2(this, paramWebResourceError);
+    }
+    this.a.onReceivedError(this.b, paramWebView, paramWebResourceRequest);
   }
   
   public void onReceivedHttpAuthRequest(android.webkit.WebView paramWebView, HttpAuthHandler paramHttpAuthHandler, String paramString1, String paramString2)
@@ -191,57 +191,47 @@ class SystemWebViewClient
   public android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
     if (Build.VERSION.SDK_INT < 21) {
-      paramWebView = null;
+      return null;
     }
-    int i;
-    String str;
-    do
+    if (paramWebResourceRequest == null) {
+      return null;
+    }
+    if (Build.VERSION.SDK_INT >= 24)
     {
-      do
+      paramWebView = i.a(paramWebResourceRequest, "isRedirect");
+      if ((paramWebView instanceof Boolean))
       {
-        return paramWebView;
-        if (paramWebResourceRequest == null) {
-          return null;
-        }
-        boolean bool2 = false;
-        boolean bool1 = bool2;
-        if (Build.VERSION.SDK_INT >= 24)
-        {
-          paramWebView = i.a(paramWebResourceRequest, "isRedirect");
-          bool1 = bool2;
-          if ((paramWebView instanceof Boolean)) {
-            bool1 = ((Boolean)paramWebView).booleanValue();
-          }
-        }
-        paramWebView = new SystemWebViewClient.e(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
-        paramWebView = this.a.shouldInterceptRequest(this.b, paramWebView);
-        if (paramWebView == null) {
-          return null;
-        }
-        paramWebResourceRequest = new android.webkit.WebResourceResponse(paramWebView.getMimeType(), paramWebView.getEncoding(), paramWebView.getData());
-        paramWebResourceRequest.setResponseHeaders(paramWebView.getResponseHeaders());
-        i = paramWebView.getStatusCode();
-        str = paramWebView.getReasonPhrase();
-        if (i != paramWebResourceRequest.getStatusCode()) {
-          break;
-        }
-        paramWebView = paramWebResourceRequest;
-      } while (str == null);
-      paramWebView = paramWebResourceRequest;
-    } while (str.equals(paramWebResourceRequest.getReasonPhrase()));
-    paramWebResourceRequest.setStatusCodeAndReasonPhrase(i, str);
-    return paramWebResourceRequest;
+        bool = ((Boolean)paramWebView).booleanValue();
+        break label54;
+      }
+    }
+    boolean bool = false;
+    label54:
+    paramWebView = new SystemWebViewClient.e(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
+    paramWebResourceRequest = this.a.shouldInterceptRequest(this.b, paramWebView);
+    if (paramWebResourceRequest == null) {
+      return null;
+    }
+    paramWebView = new android.webkit.WebResourceResponse(paramWebResourceRequest.getMimeType(), paramWebResourceRequest.getEncoding(), paramWebResourceRequest.getData());
+    paramWebView.setResponseHeaders(paramWebResourceRequest.getResponseHeaders());
+    int i = paramWebResourceRequest.getStatusCode();
+    paramWebResourceRequest = paramWebResourceRequest.getReasonPhrase();
+    if ((i != paramWebView.getStatusCode()) || ((paramWebResourceRequest != null) && (!paramWebResourceRequest.equals(paramWebView.getReasonPhrase())))) {
+      paramWebView.setStatusCodeAndReasonPhrase(i, paramWebResourceRequest);
+    }
+    return paramWebView;
   }
   
   @TargetApi(11)
   public android.webkit.WebResourceResponse shouldInterceptRequest(android.webkit.WebView paramWebView, String paramString)
   {
-    if (Build.VERSION.SDK_INT < 11) {}
-    do
-    {
+    if (Build.VERSION.SDK_INT < 11) {
       return null;
-      paramWebView = this.a.shouldInterceptRequest(this.b, paramString);
-    } while (paramWebView == null);
+    }
+    paramWebView = this.a.shouldInterceptRequest(this.b, paramString);
+    if (paramWebView == null) {
+      return null;
+    }
     return new android.webkit.WebResourceResponse(paramWebView.getMimeType(), paramWebView.getEncoding(), paramWebView.getData());
   }
   
@@ -253,45 +243,45 @@ class SystemWebViewClient
   
   public boolean shouldOverrideUrlLoading(android.webkit.WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramWebResourceRequest != null)
+    String str;
+    if ((paramWebResourceRequest != null) && (paramWebResourceRequest.getUrl() != null)) {
+      str = paramWebResourceRequest.getUrl().toString();
+    } else {
+      str = null;
+    }
+    if ((str != null) && (!this.b.showDebugView(str)))
     {
-      localObject1 = localObject2;
-      if (paramWebResourceRequest.getUrl() != null) {
-        localObject1 = paramWebResourceRequest.getUrl().toString();
+      this.b.a(paramWebView);
+      if (Build.VERSION.SDK_INT >= 24)
+      {
+        paramWebView = i.a(paramWebResourceRequest, "isRedirect");
+        if ((paramWebView instanceof Boolean))
+        {
+          bool = ((Boolean)paramWebView).booleanValue();
+          break label94;
+        }
       }
+      boolean bool = false;
+      label94:
+      paramWebView = new SystemWebViewClient.e(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
+      return this.a.shouldOverrideUrlLoading(this.b, paramWebView);
     }
-    if ((localObject1 == null) || (this.b.showDebugView((String)localObject1))) {
-      return true;
-    }
-    this.b.a(paramWebView);
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (Build.VERSION.SDK_INT >= 24)
-    {
-      paramWebView = i.a(paramWebResourceRequest, "isRedirect");
-      bool1 = bool2;
-      if ((paramWebView instanceof Boolean)) {
-        bool1 = ((Boolean)paramWebView).booleanValue();
-      }
-    }
-    paramWebView = new SystemWebViewClient.e(paramWebResourceRequest.getUrl().toString(), paramWebResourceRequest.isForMainFrame(), bool1, paramWebResourceRequest.hasGesture(), paramWebResourceRequest.getMethod(), paramWebResourceRequest.getRequestHeaders());
-    return this.a.shouldOverrideUrlLoading(this.b, paramWebView);
+    return true;
   }
   
   public boolean shouldOverrideUrlLoading(android.webkit.WebView paramWebView, String paramString)
   {
-    if ((paramString == null) || (this.b.showDebugView(paramString))) {
-      return true;
+    if ((paramString != null) && (!this.b.showDebugView(paramString)))
+    {
+      this.b.a(paramWebView);
+      return this.a.shouldOverrideUrlLoading(this.b, paramString);
     }
-    this.b.a(paramWebView);
-    return this.a.shouldOverrideUrlLoading(this.b, paramString);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.SystemWebViewClient
  * JD-Core Version:    0.7.0.1
  */

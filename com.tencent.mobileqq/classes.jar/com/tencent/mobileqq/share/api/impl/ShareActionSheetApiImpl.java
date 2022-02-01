@@ -24,198 +24,235 @@ public class ShareActionSheetApiImpl
   private List<ShareActionSheetBuilder.ActionSheetItem> getOperationsLines(ShareConfig paramShareConfig)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramShareConfig == null) {}
-    do
-    {
+    if (paramShareConfig == null) {
       return localArrayList;
-      if (paramShareConfig.isShowDelete) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(40));
-      }
-      if (paramShareConfig.isShowSave) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(39));
-      }
-      if (paramShareConfig.isShowBarrageOpen) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(142));
-      }
-      if (paramShareConfig.isShowBarrageClose) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(143));
-      }
-      if (paramShareConfig.isShowDisLike) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(44));
-      }
-      if (paramShareConfig.isShowHideThisWork) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(141));
-      }
-      if (paramShareConfig.isShowReport) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(11));
-      }
-      if (paramShareConfig.isShowDeletePush) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(140));
-      }
-    } while (!paramShareConfig.isShowDebug);
-    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(74));
+    }
+    if (paramShareConfig.isShowDelete) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(40));
+    }
+    if (paramShareConfig.isShowSave) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(39));
+    }
+    if (paramShareConfig.isShowDeletePush) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(140));
+    }
+    if (paramShareConfig.isShowBarrageOpen) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(142));
+    }
+    if (paramShareConfig.isShowBarrageClose) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(143));
+    }
+    if (paramShareConfig.isShowDisLike) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(44));
+    }
+    if (paramShareConfig.isShowHideThisWork) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(141));
+    }
+    if (paramShareConfig.isShowReport) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(11));
+    }
+    if (paramShareConfig.isShowDebug) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(74));
+    }
     return localArrayList;
   }
   
   private List<ShareActionSheetBuilder.ActionSheetItem> getPathsLines(ShareConfig paramShareConfig)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramShareConfig == null) {}
-    do
-    {
+    if (paramShareConfig == null) {
       return localArrayList;
-      if (paramShareConfig.isShowShareToFriend) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
-      }
-      if (paramShareConfig.isShowShareToQZone) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
-      }
-      if (paramShareConfig.isShowShareToWechat) {
-        localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
-      }
-    } while (!paramShareConfig.isShowShareToWechatCircle);
-    localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+    }
+    if (paramShareConfig.isShowShareToFriend) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(2));
+    }
+    if (paramShareConfig.isShowShareToQZone) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(3));
+    }
+    if (paramShareConfig.isShowShareToWechat) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(9));
+    }
+    if (paramShareConfig.isShowShareToWechatCircle) {
+      localArrayList.add(ShareActionSheetBuilder.ActionSheetItem.build(10));
+    }
     return localArrayList;
   }
   
   private void handleClickMenuItem(ShareActionSheetBuilder.ActionSheetItem paramActionSheetItem)
   {
     int i = paramActionSheetItem.action;
-    boolean bool2 = true;
-    boolean bool1;
-    switch (i)
+    if (i != 2)
     {
-    default: 
-      bool1 = bool2;
-    }
-    for (;;)
-    {
-      if (((i == 3) || (i == 9) || (i == 10) || (i == 72) || (i == 73) || (i == 2)) && (this.mQCircleClickListener != null)) {
-        this.mQCircleClickListener.dispatchEvent();
-      }
-      if (this.mShareActionSheet != null) {
-        this.mShareActionSheet.dismiss();
-      }
-      if (this.mQCircleClickListener != null) {
-        this.mQCircleClickListener.afterHandleClick(bool1);
-      }
-      return;
-      bool1 = bool2;
-      if (this.mShareActionSheetClickListener != null)
+      if (i != 3)
       {
-        this.mShareActionSheetClickListener.jumpQcirclePrivateMessage();
-        bool1 = bool2;
-        continue;
-        bool1 = bool2;
-        if (this.mShareActionSheetClickListener != null)
+        if (i != 39)
         {
-          this.mShareActionSheetClickListener.shareToQQ();
-          bool1 = bool2;
-          continue;
-          bool1 = bool2;
-          if (this.mShareActionSheetClickListener != null)
+          if (i != 40)
           {
-            this.mShareActionSheetClickListener.shareToSpecifiedFriend(paramActionSheetItem.uin, paramActionSheetItem.uinType);
-            bool1 = bool2;
-            continue;
-            bool1 = bool2;
-            if (this.mShareActionSheetClickListener != null)
+            if (i != 44)
             {
-              this.mShareActionSheetClickListener.shareToQZone();
-              bool1 = bool2;
-              continue;
-              bool1 = bool2;
-              if (this.mShareActionSheetClickListener != null)
+              if (i != 86)
               {
-                this.mShareActionSheetClickListener.shareToWeChat();
-                bool1 = bool2;
-                continue;
-                bool1 = bool2;
-                if (this.mShareActionSheetClickListener != null)
+                if (i != 162)
                 {
-                  this.mShareActionSheetClickListener.shareToWeChatCircle();
-                  bool1 = bool2;
-                  continue;
-                  bool1 = bool2;
-                  if (this.mShareActionSheetClickListener != null)
+                  switch (i)
                   {
-                    this.mShareActionSheetClickListener.report();
-                    bool1 = bool2;
-                    continue;
-                    bool1 = bool2;
-                    if (this.mShareActionSheetClickListener != null)
+                  default: 
+                    switch (i)
                     {
-                      this.mShareActionSheetClickListener.switchBarrageOpen();
-                      bool1 = bool2;
-                      continue;
-                      bool1 = bool2;
-                      if (this.mShareActionSheetClickListener != null)
+                    default: 
+                      switch (i)
                       {
-                        this.mShareActionSheetClickListener.switchBarrageClose();
-                        bool1 = bool2;
-                        continue;
-                        bool1 = bool2;
-                        if (this.mShareActionSheetClickListener != null)
-                        {
-                          this.mShareActionSheetClickListener.delete();
-                          bool1 = bool2;
-                          continue;
-                          if (this.mShareActionSheetClickListener != null) {
-                            this.mShareActionSheetClickListener.showReportDisLike();
-                          }
-                          bool1 = false;
-                          continue;
-                          bool1 = bool2;
-                          if (this.mShareActionSheetClickListener != null)
-                          {
-                            this.mShareActionSheetClickListener.hideThisWork();
-                            bool1 = bool2;
-                            continue;
-                            bool1 = bool2;
-                            if (this.mShareActionSheetClickListener != null)
-                            {
-                              this.mShareActionSheetClickListener.hideHim();
-                              bool1 = bool2;
-                              continue;
-                              bool1 = bool2;
-                              if (this.mShareActionSheetClickListener != null)
-                              {
-                                this.mShareActionSheetClickListener.deleteHasPush();
-                                bool1 = bool2;
-                                continue;
-                                bool1 = bool2;
-                                if (this.mShareActionSheetClickListener != null)
-                                {
-                                  this.mShareActionSheetClickListener.save();
-                                  bool1 = bool2;
-                                  continue;
-                                  bool1 = bool2;
-                                  if (this.mShareActionSheetClickListener != null)
-                                  {
-                                    this.mShareActionSheetClickListener.miniAppDebugOn();
-                                    bool1 = bool2;
-                                  }
-                                }
-                              }
-                            }
-                          }
+                      default: 
+                        break;
+                      case 143: 
+                        paramActionSheetItem = this.mShareActionSheetClickListener;
+                        if (paramActionSheetItem == null) {
+                          break;
                         }
+                        paramActionSheetItem.switchBarrageClose();
+                        break;
+                      case 142: 
+                        paramActionSheetItem = this.mShareActionSheetClickListener;
+                        if (paramActionSheetItem == null) {
+                          break;
+                        }
+                        paramActionSheetItem.switchBarrageOpen();
+                        break;
+                      case 141: 
+                        paramActionSheetItem = this.mShareActionSheetClickListener;
+                        if (paramActionSheetItem == null) {
+                          break;
+                        }
+                        paramActionSheetItem.hideThisWork();
+                        break;
+                      case 140: 
+                        paramActionSheetItem = this.mShareActionSheetClickListener;
+                        if (paramActionSheetItem == null) {
+                          break;
+                        }
+                        paramActionSheetItem.deleteHasPush();
                       }
+                      break;
+                    case 74: 
+                      paramActionSheetItem = this.mShareActionSheetClickListener;
+                      if (paramActionSheetItem == null) {
+                        break;
+                      }
+                      paramActionSheetItem.miniAppDebugOn();
+                      break;
+                    case 72: 
+                      ShareActionSheetClickListener localShareActionSheetClickListener = this.mShareActionSheetClickListener;
+                      if (localShareActionSheetClickListener == null) {
+                        break;
+                      }
+                      localShareActionSheetClickListener.shareToSpecifiedFriend(paramActionSheetItem.uin, paramActionSheetItem.uinType);
                     }
+                    break;
+                  case 11: 
+                    paramActionSheetItem = this.mShareActionSheetClickListener;
+                    if (paramActionSheetItem == null) {
+                      break;
+                    }
+                    paramActionSheetItem.report();
+                    break;
+                  case 10: 
+                    paramActionSheetItem = this.mShareActionSheetClickListener;
+                    if (paramActionSheetItem == null) {
+                      break;
+                    }
+                    paramActionSheetItem.shareToWeChatCircle();
+                    break;
+                  case 9: 
+                    paramActionSheetItem = this.mShareActionSheetClickListener;
+                    if (paramActionSheetItem == null) {
+                      break;
+                    }
+                    paramActionSheetItem.shareToWeChat();
+                    break;
+                  }
+                }
+                else
+                {
+                  paramActionSheetItem = this.mShareActionSheetClickListener;
+                  if (paramActionSheetItem != null) {
+                    paramActionSheetItem.jumpQcirclePrivateMessage();
                   }
                 }
               }
+              else
+              {
+                paramActionSheetItem = this.mShareActionSheetClickListener;
+                if (paramActionSheetItem != null) {
+                  paramActionSheetItem.hideHim();
+                }
+              }
+            }
+            else
+            {
+              paramActionSheetItem = this.mShareActionSheetClickListener;
+              if (paramActionSheetItem != null) {
+                paramActionSheetItem.showReportDisLike();
+              }
+              bool = false;
+              break label435;
+            }
+          }
+          else
+          {
+            paramActionSheetItem = this.mShareActionSheetClickListener;
+            if (paramActionSheetItem != null) {
+              paramActionSheetItem.delete();
             }
           }
         }
+        else
+        {
+          paramActionSheetItem = this.mShareActionSheetClickListener;
+          if (paramActionSheetItem != null) {
+            paramActionSheetItem.save();
+          }
+        }
       }
+      else
+      {
+        paramActionSheetItem = this.mShareActionSheetClickListener;
+        if (paramActionSheetItem != null) {
+          paramActionSheetItem.shareToQZone();
+        }
+      }
+    }
+    else
+    {
+      paramActionSheetItem = this.mShareActionSheetClickListener;
+      if (paramActionSheetItem != null) {
+        paramActionSheetItem.shareToQQ();
+      }
+    }
+    boolean bool = true;
+    label435:
+    if ((i == 3) || (i == 9) || (i == 10) || (i == 72) || (i == 73) || (i == 2) || (i == 142) || (i == 143))
+    {
+      paramActionSheetItem = this.mQCircleClickListener;
+      if (paramActionSheetItem != null) {
+        paramActionSheetItem.dispatchEvent();
+      }
+    }
+    paramActionSheetItem = this.mShareActionSheet;
+    if (paramActionSheetItem != null) {
+      paramActionSheetItem.dismiss();
+    }
+    paramActionSheetItem = this.mQCircleClickListener;
+    if (paramActionSheetItem != null) {
+      paramActionSheetItem.afterHandleClick(bool);
     }
   }
   
   public void dismiss()
   {
-    if (this.mShareActionSheet != null) {
-      this.mShareActionSheet.dismiss();
+    ShareActionSheet localShareActionSheet = this.mShareActionSheet;
+    if (localShareActionSheet != null) {
+      localShareActionSheet.dismiss();
     }
   }
   
@@ -229,7 +266,8 @@ public class ShareActionSheetApiImpl
   
   public boolean isShowing()
   {
-    return (this.mShareActionSheet != null) && (this.mShareActionSheet.isShowing());
+    ShareActionSheet localShareActionSheet = this.mShareActionSheet;
+    return (localShareActionSheet != null) && (localShareActionSheet.isShowing());
   }
   
   public void setActionSheetClickListener(ShareActionSheetClickListener paramShareActionSheetClickListener)
@@ -271,7 +309,7 @@ public class ShareActionSheetApiImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.share.api.impl.ShareActionSheetApiImpl
  * JD-Core Version:    0.7.0.1
  */

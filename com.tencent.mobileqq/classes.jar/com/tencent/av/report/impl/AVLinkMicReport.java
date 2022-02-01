@@ -30,50 +30,38 @@ public class AVLinkMicReport
   
   public void prepareData()
   {
+    String str2 = "";
     this.reportData.put("attaid", getReportId());
     this.reportData.put("token", getToken());
     this.reportData.put("terminaltype", "android");
     this.reportData.put("model", Build.MODEL);
     this.reportData.put("band", Build.BRAND);
     Object localObject1 = AVReportUtils.getAppContext().getPackageManager();
-    String str2 = "";
-    for (;;)
+    try
     {
+      Object localObject2 = ((PackageManager)localObject1).getPackageInfo(AVReportUtils.getAppContext().getPackageName(), 0);
+      localObject1 = ((PackageInfo)localObject2).versionName;
       try
       {
-        Object localObject2 = ((PackageManager)localObject1).getPackageInfo(AVReportUtils.getAppContext().getPackageName(), 0);
-        localObject1 = ((PackageInfo)localObject2).versionName;
-        int i;
-        localNameNotFoundException1.printStackTrace();
+        localObject2 = String.valueOf(((PackageInfo)localObject2).versionCode);
       }
-      catch (PackageManager.NameNotFoundException localNameNotFoundException1)
-      {
-        try
-        {
-          i = ((PackageInfo)localObject2).versionCode;
-          localObject2 = String.valueOf(i);
-          this.reportData.put("clientversion", localObject2);
-          this.reportData.put("sdkversion", localObject1);
-          this.reportData.put("bundle", AVReportUtils.getAppContext().getPackageName());
-          this.reportData.put("netstring", String.valueOf(AVReportUtils.getNetworkType(AVReportUtils.getAppContext())));
-          return;
-        }
-        catch (PackageManager.NameNotFoundException localNameNotFoundException2)
-        {
-          String str1;
-          break label184;
-        }
-        localNameNotFoundException1 = localNameNotFoundException1;
-        localObject1 = "";
-      }
-      label184:
-      str1 = str2;
+      catch (PackageManager.NameNotFoundException localNameNotFoundException1) {}
+      localNameNotFoundException2.printStackTrace();
     }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException2)
+    {
+      localObject1 = "";
+    }
+    String str1 = str2;
+    this.reportData.put("clientversion", str1);
+    this.reportData.put("sdkversion", localObject1);
+    this.reportData.put("bundle", AVReportUtils.getAppContext().getPackageName());
+    this.reportData.put("netstring", String.valueOf(AVReportUtils.getNetworkType(AVReportUtils.getAppContext())));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.impl.AVLinkMicReport
  * JD-Core Version:    0.7.0.1
  */

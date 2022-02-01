@@ -39,7 +39,7 @@ public class PTSAnimationUtil$AnimationInfo$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.utils.PTSAnimationUtil.AnimationInfo.Builder
  * JD-Core Version:    0.7.0.1
  */

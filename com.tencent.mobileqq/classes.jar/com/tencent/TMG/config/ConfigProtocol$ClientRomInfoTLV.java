@@ -30,10 +30,7 @@ public class ConfigProtocol$ClientRomInfoTLV
     }
     catch (UnsupportedEncodingException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
     setLength(s);
   }

@@ -19,73 +19,81 @@ class RangeButtonView$RangeButtonTouchHelper
     super(paramView);
   }
   
-  public Rect a(int paramInt)
+  public Rect getBoundsForIndex(int paramInt)
   {
-    Point localPoint = (Point)RangeButtonView.a(this.a).a().get(paramInt);
-    paramInt = RangeButtonView.a(this.a).a() / 2;
+    Point localPoint = (Point)RangeButtonView.access$000(this.this$0).getUnitPoints().get(paramInt);
+    paramInt = RangeButtonView.access$100(this.this$0).getThumbHeight() / 2;
     return new Rect(localPoint.x - paramInt, localPoint.y - paramInt, localPoint.x + paramInt, localPoint.y + paramInt);
   }
   
-  public int getVirtualViewAt(float paramFloat1, float paramFloat2)
+  protected int getVirtualViewAt(float paramFloat1, float paramFloat2)
   {
-    return RangeButtonView.a(this.a, (int)paramFloat1, (int)paramFloat2, RangeButtonView.a(this.a).a() / 2, RangeButtonView.a(this.a).a() / 2, false);
+    RangeButtonView localRangeButtonView = this.this$0;
+    return RangeButtonView.access$200(localRangeButtonView, (int)paramFloat1, (int)paramFloat2, RangeButtonView.access$000(localRangeButtonView).getUintSpace() / 2, RangeButtonView.access$100(this.this$0).getThumbHeight() / 2, false);
   }
   
-  public void getVisibleVirtualViews(List<Integer> paramList)
+  protected void getVisibleVirtualViews(List<Integer> paramList)
   {
     int i = 0;
-    while (i < RangeButtonView.a(this.a).size())
+    while (i < RangeButtonView.access$300(this.this$0).size())
     {
       paramList.add(Integer.valueOf(i));
       i += 1;
     }
   }
   
-  public boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
+  protected boolean onPerformActionForVirtualView(int paramInt1, int paramInt2, Bundle paramBundle)
   {
-    switch (paramInt2)
-    {
-    }
-    do
-    {
+    if (paramInt2 != 16) {
       return false;
-    } while ((RangeButtonView.a(this.a) == null) || (RangeButtonView.a(this.a) == null));
-    if ((paramInt1 != RangeButtonView.a(this.a)) && (paramInt1 != -1))
-    {
-      if (RangeButtonView.a(this.a) != null) {
-        RangeButtonView.a(this.a).a(RangeButtonView.a(this.a), paramInt1);
-      }
-      RangeButtonView.a(this.a, paramInt1);
-      this.a.invalidate();
     }
-    return true;
+    if (RangeButtonView.access$000(this.this$0) != null)
+    {
+      if (RangeButtonView.access$100(this.this$0) == null) {
+        return false;
+      }
+      if ((paramInt1 != RangeButtonView.access$500(this.this$0)) && (paramInt1 != -1))
+      {
+        if (RangeButtonView.access$600(this.this$0) != null) {
+          RangeButtonView.access$600(this.this$0).onChange(RangeButtonView.access$500(this.this$0), paramInt1);
+        }
+        RangeButtonView.access$502(this.this$0, paramInt1);
+        this.this$0.invalidate();
+      }
+      return true;
+    }
+    return false;
   }
   
-  public void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
+  protected void onPopulateEventForVirtualView(int paramInt, AccessibilityEvent paramAccessibilityEvent)
   {
-    if ((RangeButtonView.b(this.a) != null) && (RangeButtonView.b(this.a).size() > paramInt)) {
-      paramAccessibilityEvent.setContentDescription((CharSequence)RangeButtonView.b(this.a).get(paramInt));
+    if ((RangeButtonView.access$400(this.this$0) != null) && (RangeButtonView.access$400(this.this$0).size() > paramInt)) {
+      paramAccessibilityEvent.setContentDescription((CharSequence)RangeButtonView.access$400(this.this$0).get(paramInt));
     }
   }
   
-  public void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
+  protected void onPopulateNodeForVirtualView(int paramInt, AccessibilityNodeInfoCompat paramAccessibilityNodeInfoCompat)
   {
-    if ((RangeButtonView.b(this.a) != null) && (RangeButtonView.b(this.a).size() > paramInt))
+    if ((RangeButtonView.access$400(this.this$0) != null) && (RangeButtonView.access$400(this.this$0).size() > paramInt))
     {
-      String str2 = (String)RangeButtonView.b(this.a).get(paramInt);
-      String str1 = str2;
-      if (paramInt == RangeButtonView.a(this.a)) {
-        str1 = str2 + HardCodeUtil.a(2131712675);
+      String str = (String)RangeButtonView.access$400(this.this$0).get(paramInt);
+      Object localObject = str;
+      if (paramInt == RangeButtonView.access$500(this.this$0))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(HardCodeUtil.a(2131712650));
+        localObject = ((StringBuilder)localObject).toString();
       }
-      paramAccessibilityNodeInfoCompat.setContentDescription(str1);
+      paramAccessibilityNodeInfoCompat.setContentDescription((CharSequence)localObject);
     }
     paramAccessibilityNodeInfoCompat.addAction(16);
-    paramAccessibilityNodeInfoCompat.setBoundsInParent(a(paramInt));
+    paramAccessibilityNodeInfoCompat.setBoundsInParent(getBoundsForIndex(paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.RangeButtonView.RangeButtonTouchHelper
  * JD-Core Version:    0.7.0.1
  */

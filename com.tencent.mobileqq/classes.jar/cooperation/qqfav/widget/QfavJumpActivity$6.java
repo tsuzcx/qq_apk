@@ -15,7 +15,7 @@ class QfavJumpActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.widget.QfavJumpActivity.6
  * JD-Core Version:    0.7.0.1
  */

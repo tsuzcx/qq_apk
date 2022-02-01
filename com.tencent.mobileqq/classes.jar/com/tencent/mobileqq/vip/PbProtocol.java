@@ -3,7 +3,7 @@ package com.tencent.mobileqq.vip;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebReq;
 import NS_QWEB_PROTOCAL.PROTOCAL.StQWebRsp;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.apollo.api.handler.IApolloExtensionHandler;
+import com.tencent.mobileqq.apollo.handler.IApolloExtensionHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.BusinessObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
@@ -18,6 +18,7 @@ import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.soso.location.api.ILbsManagerServiceApi;
 import com.tencent.mobileqq.soso.location.data.SosoLbsInfo;
 import com.tencent.mobileqq.soso.location.data.SosoLocation;
+import com.tencent.mobileqq.vas.api.AbsProtocol;
 import cooperation.qzone.PlatformInfor;
 import cooperation.qzone.QUA;
 import java.text.SimpleDateFormat;
@@ -30,7 +31,7 @@ import org.jetbrains.annotations.NotNull;
 public class PbProtocol
   extends AbsProtocol
 {
-  private static long a = 0L;
+  private static long a;
   
   @NotNull
   public static MessageMicro a(byte[] paramArrayOfByte)
@@ -59,14 +60,17 @@ public class PbProtocol
       {
         localObject1 = new StringBuilder((String)localObject2);
         ((StringBuilder)localObject1).append('&');
-        ((StringBuilder)localObject1).append("timezone=").append(TimeZone.getDefault().getID());
+        ((StringBuilder)localObject1).append("timezone=");
+        ((StringBuilder)localObject1).append(TimeZone.getDefault().getID());
         localObject2 = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("qqcircle");
         if ((localObject2 != null) && (((SosoLbsInfo)localObject2).mLocation != null))
         {
           ((StringBuilder)localObject1).append('&');
-          ((StringBuilder)localObject1).append("latitude=").append(String.valueOf(((SosoLbsInfo)localObject2).mLocation.mLat02));
+          ((StringBuilder)localObject1).append("latitude=");
+          ((StringBuilder)localObject1).append(String.valueOf(((SosoLbsInfo)localObject2).mLocation.mLat02));
           ((StringBuilder)localObject1).append('&');
-          ((StringBuilder)localObject1).append("longitude=").append(String.valueOf(((SosoLbsInfo)localObject2).mLocation.mLon02));
+          ((StringBuilder)localObject1).append("longitude=");
+          ((StringBuilder)localObject1).append(String.valueOf(((SosoLbsInfo)localObject2).mLocation.mLon02));
         }
         localObject1 = ((StringBuilder)localObject1).toString();
       }
@@ -123,13 +127,18 @@ public class PbProtocol
     SimpleDateFormat localSimpleDateFormat = new SimpleDateFormat("MMddHHmmss");
     Random localRandom = new Random();
     localRandom.setSeed(System.currentTimeMillis());
-    localStringBuilder.append(str).append("_").append(localSimpleDateFormat.format(new Date())).append(System.currentTimeMillis() % 1000L).append("_").append(localRandom.nextInt(90000) + 10000);
+    localStringBuilder.append(str);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localSimpleDateFormat.format(new Date()));
+    localStringBuilder.append(System.currentTimeMillis() % 1000L);
+    localStringBuilder.append("_");
+    localStringBuilder.append(localRandom.nextInt(90000) + 10000);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vip.PbProtocol
  * JD-Core Version:    0.7.0.1
  */

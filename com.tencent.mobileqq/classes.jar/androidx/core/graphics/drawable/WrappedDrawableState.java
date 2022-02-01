@@ -36,10 +36,14 @@ final class WrappedDrawableState
   public int getChangingConfigurations()
   {
     int j = this.mChangingConfigurations;
-    if (this.mDrawableState != null) {}
-    for (int i = this.mDrawableState.getChangingConfigurations();; i = 0) {
-      return i | j;
+    Drawable.ConstantState localConstantState = this.mDrawableState;
+    int i;
+    if (localConstantState != null) {
+      i = localConstantState.getChangingConfigurations();
+    } else {
+      i = 0;
     }
+    return j | i;
   }
   
   @NonNull
@@ -59,7 +63,7 @@ final class WrappedDrawableState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.graphics.drawable.WrappedDrawableState
  * JD-Core Version:    0.7.0.1
  */

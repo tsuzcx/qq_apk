@@ -39,14 +39,15 @@ public final class FRIEND_INFO
     paramJceOutputStream.write(this.remark, 1);
     paramJceOutputStream.write(this.isVip, 2);
     paramJceOutputStream.write(this.vipLevel, 3);
-    if (this.nick != null) {
-      paramJceOutputStream.write(this.nick, 4);
+    String str = this.nick;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.FRIEND_INFO
  * JD-Core Version:    0.7.0.1
  */

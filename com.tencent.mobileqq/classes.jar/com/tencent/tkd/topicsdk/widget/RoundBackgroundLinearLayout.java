@@ -6,13 +6,17 @@ import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.util.AttributeSet;
 import kotlin.Metadata;
+import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/widget/RoundBackgroundLinearLayout;", "Lcom/tencent/tkd/topicsdk/widget/PressLinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "topicsdk-widget_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/widget/RoundBackgroundLinearLayout;", "Lcom/tencent/tkd/topicsdk/widget/PressLinearLayout;", "context", "Landroid/content/Context;", "attrs", "Landroid/util/AttributeSet;", "(Landroid/content/Context;Landroid/util/AttributeSet;)V", "backgroundDrawable", "Landroid/graphics/drawable/GradientDrawable;", "getBackgroundDrawable", "()Landroid/graphics/drawable/GradientDrawable;", "setBackgroundDrawable", "(Landroid/graphics/drawable/GradientDrawable;)V", "setRoundBackgroundColor", "", "color", "", "topicsdk-widget_release"}, k=1, mv={1, 1, 16})
 public final class RoundBackgroundLinearLayout
   extends PressLinearLayout
 {
+  @NotNull
+  private GradientDrawable a = new GradientDrawable();
+  
   public RoundBackgroundLinearLayout(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
@@ -23,19 +27,31 @@ public final class RoundBackgroundLinearLayout
       int j = paramContext.getColor(R.styleable.t, 0);
       int k = paramContext.getInt(R.styleable.u, -1);
       float f = paramContext.getDimension(R.styleable.s, 0.0F);
-      paramAttributeSet = new GradientDrawable();
-      paramAttributeSet.setColor(i);
-      paramAttributeSet.setCornerRadius(f);
-      paramAttributeSet.setStroke(k, j);
-      setBackground((Drawable)paramAttributeSet);
+      this.a = new GradientDrawable();
+      this.a.setColor(i);
+      this.a.setCornerRadius(f);
+      this.a.setStroke(k, j);
+      setBackground((Drawable)this.a);
       setEnablePressEffect(paramContext.getBoolean(R.styleable.q, false));
       paramContext.recycle();
     }
   }
+  
+  public final void setBackgroundDrawable(@NotNull GradientDrawable paramGradientDrawable)
+  {
+    Intrinsics.checkParameterIsNotNull(paramGradientDrawable, "<set-?>");
+    this.a = paramGradientDrawable;
+  }
+  
+  public final void setRoundBackgroundColor(int paramInt)
+  {
+    this.a.setColor(paramInt);
+    setBackground((Drawable)this.a);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.RoundBackgroundLinearLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -26,13 +26,14 @@ public final class ConfigurationService$RespGetConfigByPage
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 808, 816, 824, 832, 840, 1600 }, new String[] { "result", "type", "content", "page_info", "delay_time", "wording_no", "seed_ids", "show_time", "show_strategy", "stagger_version" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, RespGetConfigByPage.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 808, 816, 824, 832, 840, 1600 }, new String[] { "result", "type", "content", "page_info", "delay_time", "wording_no", "seed_ids", "show_time", "show_strategy", "stagger_version" }, new Object[] { localInteger, localInteger, localByteStringMicro, null, localInteger, localInteger, localInteger, localInteger, localInteger, localInteger }, RespGetConfigByPage.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.struct.splashproto.ConfigurationService.RespGetConfigByPage
  * JD-Core Version:    0.7.0.1
  */

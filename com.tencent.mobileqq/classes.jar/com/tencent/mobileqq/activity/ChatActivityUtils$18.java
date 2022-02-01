@@ -1,34 +1,33 @@
 package com.tencent.mobileqq.activity;
 
+import android.app.Activity;
+import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
-import com.tencent.qphone.base.util.QLog;
+import android.content.Intent;
+import android.net.Uri;
 
 final class ChatActivityUtils$18
-  implements CUKingCardHelper.CUKingDialogListener
+  implements DialogInterface.OnClickListener
 {
-  ChatActivityUtils$18(DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2) {}
+  ChatActivityUtils$18(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener) {}
   
-  public void callback(int paramInt)
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ChatActivityUtils", 2, "showDlgWithCuOpenCheck type = " + paramInt);
-    }
-    switch (paramInt)
+    if (paramInt == 1)
     {
-    default: 
-      return;
-    case 1: 
-    case 2: 
-      this.a.onClick(null, 0);
-      return;
+      localObject = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
+      ((Intent)localObject).setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidAppActivity.getPackageName(), null));
+      this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
     }
-    this.b.onClick(null, 0);
+    Object localObject = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    if (localObject != null) {
+      ((DialogInterface.OnClickListener)localObject).onClick(paramDialogInterface, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.18
  * JD-Core Version:    0.7.0.1
  */

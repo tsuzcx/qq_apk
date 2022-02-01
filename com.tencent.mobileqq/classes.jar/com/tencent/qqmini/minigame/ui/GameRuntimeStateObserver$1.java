@@ -11,14 +11,18 @@ class GameRuntimeStateObserver$1
   
   public void run()
   {
-    if (!GameRuntimeStateObserver.access$000(this.this$0).isDone()) {
-      QMLog.e("GameRuntimeState", "GameLaunchStuck for 10S GameLoadTaskExecutionStatics:\n" + TaskStaticsVisualizer.visualizeToString(GameRuntimeStateObserver.access$100(this.this$0)));
+    if (!GameRuntimeStateObserver.access$000(this.this$0).isDone())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GameLaunchStuck for 10S GameLoadTaskExecutionStatics:\n");
+      localStringBuilder.append(TaskStaticsVisualizer.visualizeToString(GameRuntimeStateObserver.access$100(this.this$0)));
+      QMLog.e("GameRuntimeState", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.GameRuntimeStateObserver.1
  * JD-Core Version:    0.7.0.1
  */

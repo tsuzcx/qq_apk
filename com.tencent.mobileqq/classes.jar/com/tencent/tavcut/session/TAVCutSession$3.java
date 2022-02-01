@@ -16,12 +16,12 @@ class TAVCutSession$3
     CropModel localCropModel = new CropModel();
     localCropModel.setCropConfig(this.val$cropConfig);
     this.val$mediaModel.getMediaEffectModel().setCropModel(localCropModel);
-    this.this$0.updateRenderChain(this.val$renderChainManager, this.val$mediaModel.getMediaEffectModel());
+    this.this$0.updateRenderChain(this.val$renderChainManager, this.val$mediaModel.getMediaEffectModel(), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.session.TAVCutSession.3
  * JD-Core Version:    0.7.0.1
  */

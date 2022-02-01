@@ -34,78 +34,129 @@ public class d
   
   public String a(int paramInt)
   {
-    switch (paramInt)
+    int m = 0;
+    int k = 0;
+    long l1;
+    long l2;
+    if ((paramInt == 513) || ((paramInt == 515) || (paramInt == 516)))
     {
-    }
-    for (;;)
-    {
-      return null;
       try
       {
-        localStringBuilder = new StringBuilder();
-        localIterator = d.entrySet().iterator();
-        l = 0L;
-        k = 0;
-        paramInt = 0;
-        while (localIterator.hasNext())
+        localObject1 = new StringBuilder();
+        localObject2 = e.entrySet().iterator();
+        l1 = 0L;
+        paramInt = k;
+        if (((Iterator)localObject2).hasNext())
         {
-          localEntry = (Map.Entry)localIterator.next();
-          if ((((Long)localEntry.getValue()).longValue() <= 600000L) && (((Long)localEntry.getValue()).longValue() >= 0L))
-          {
-            localStringBuilder.append("seq_").append(localEntry.getKey()).append("+").append("consume_").append(localEntry.getValue()).append("|");
-            l += ((Long)localEntry.getValue()).longValue();
-            k += 1;
-            paramInt += 1;
+          localEntry = (Map.Entry)((Iterator)localObject2).next();
+          k = paramInt;
+          l2 = l1;
+          if (((Long)localEntry.getValue()).longValue() > 45000L) {
+            break label735;
           }
+          if (((Long)localEntry.getValue()).longValue() < 0L)
+          {
+            k = paramInt;
+            l2 = l1;
+            break label735;
+          }
+          ((StringBuilder)localObject1).append("seq_");
+          ((StringBuilder)localObject1).append(localEntry.getKey());
+          ((StringBuilder)localObject1).append("+");
+          ((StringBuilder)localObject1).append("consume_");
+          ((StringBuilder)localObject1).append(localEntry.getValue());
+          ((StringBuilder)localObject1).append("|");
+          l2 = l1 + ((Long)localEntry.getValue()).longValue();
+          k = paramInt + 1;
+          break label735;
         }
-        if (k > 0) {
-          localStringBuilder.append("count_").append(k).append("+").append("sumcount_").append(l).append("+average_").append(l / k);
+        if (paramInt > 0)
+        {
+          ((StringBuilder)localObject1).append("count_");
+          ((StringBuilder)localObject1).append(paramInt);
+          ((StringBuilder)localObject1).append("+");
+          ((StringBuilder)localObject1).append("sumcount_");
+          ((StringBuilder)localObject1).append(l1);
+          ((StringBuilder)localObject1).append("+average_");
+          ((StringBuilder)localObject1).append(l1 / paramInt);
         }
-        d.clear();
-        QLog.d("NormalSocketAdaptor", 1, "report consume: " + localStringBuilder.toString());
-        return localStringBuilder.toString();
+        e.clear();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("report consume exclude timeout: ");
+        ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+        QLog.d("NormalSocketAdaptor", 1, ((StringBuilder)localObject2).toString());
+        return ((StringBuilder)localObject1).toString();
       }
       catch (Exception localException)
       {
-        StringBuilder localStringBuilder;
-        Iterator localIterator;
-        long l;
-        int k;
+        Object localObject1;
+        Object localObject2;
         Map.Entry localEntry;
         QLog.d("NormalSocketAdaptor", 1, "failed to get config ", localException);
       }
-      localStringBuilder = new StringBuilder();
-      localIterator = e.entrySet().iterator();
-      l = 0L;
-      k = 0;
-      paramInt = 0;
-      while (localIterator.hasNext())
+      localObject1 = new StringBuilder();
+      localObject2 = f.iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        localEntry = (Map.Entry)localIterator.next();
-        if ((((Long)localEntry.getValue()).longValue() <= 45000L) && (((Long)localEntry.getValue()).longValue() >= 0L))
-        {
-          localStringBuilder.append("seq_").append(localEntry.getKey()).append("+").append("consume_").append(localEntry.getValue()).append("|");
-          l += ((Long)localEntry.getValue()).longValue();
-          k += 1;
-          paramInt += 1;
+        ((StringBuilder)localObject1).append((String)((Iterator)localObject2).next());
+        ((StringBuilder)localObject1).append("#");
+      }
+      f.clear();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("report heartbeat: ");
+      ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+      QLog.d("NormalSocketAdaptor", 2, ((StringBuilder)localObject2).toString());
+      return ((StringBuilder)localObject1).toString();
+      localObject1 = new StringBuilder();
+      localObject2 = d.entrySet().iterator();
+      l1 = 0L;
+      paramInt = m;
+    }
+    for (;;)
+    {
+      if (((Iterator)localObject2).hasNext())
+      {
+        localEntry = (Map.Entry)((Iterator)localObject2).next();
+        if (((Long)localEntry.getValue()).longValue() <= 600000L) {
+          if (((Long)localEntry.getValue()).longValue() >= 0L)
+          {
+            ((StringBuilder)localObject1).append("seq_");
+            ((StringBuilder)localObject1).append(localEntry.getKey());
+            ((StringBuilder)localObject1).append("+");
+            ((StringBuilder)localObject1).append("consume_");
+            ((StringBuilder)localObject1).append(localEntry.getValue());
+            ((StringBuilder)localObject1).append("|");
+            l1 += ((Long)localEntry.getValue()).longValue();
+            paramInt += 1;
+          }
         }
       }
-      if (k > 0) {
-        localStringBuilder.append("count_").append(k).append("+").append("sumcount_").append(l).append("+average_").append(l / k);
-      }
-      e.clear();
-      QLog.d("NormalSocketAdaptor", 1, "report consume exclude timeout: " + localStringBuilder.toString());
-      return localStringBuilder.toString();
-      localStringBuilder = new StringBuilder();
-      localIterator = f.iterator();
-      while (localIterator.hasNext()) {
-        localStringBuilder.append((String)localIterator.next()).append("#");
+      else
+      {
+        if (paramInt > 0)
+        {
+          ((StringBuilder)localObject1).append("count_");
+          ((StringBuilder)localObject1).append(paramInt);
+          ((StringBuilder)localObject1).append("+");
+          ((StringBuilder)localObject1).append("sumcount_");
+          ((StringBuilder)localObject1).append(l1);
+          ((StringBuilder)localObject1).append("+average_");
+          ((StringBuilder)localObject1).append(l1 / paramInt);
+        }
+        d.clear();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("report consume: ");
+        ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+        QLog.d("NormalSocketAdaptor", 1, ((StringBuilder)localObject2).toString());
+        localObject1 = ((StringBuilder)localObject1).toString();
+        return localObject1;
+        return null;
+        label735:
+        paramInt = k;
+        l1 = l2;
+        break;
       }
     }
-    f.clear();
-    QLog.d("NormalSocketAdaptor", 2, "report heartbeat: " + localException.toString());
-    String str = localException.toString();
-    return str;
   }
   
   public void a()
@@ -117,13 +168,20 @@ public class d
       if (l > 600000L)
       {
         StringBuilder localStringBuilder = new StringBuilder();
-        localStringBuilder.append("begin_").append(g).append(":");
-        localStringBuilder.append("end_").append(h).append(":");
-        localStringBuilder.append("last_").append(l).append(":");
-        localStringBuilder.append("net_").append(NetConnInfoCenter.isWifiOrMobileConn());
+        localStringBuilder.append("begin_");
+        localStringBuilder.append(g);
+        localStringBuilder.append(":");
+        localStringBuilder.append("end_");
+        localStringBuilder.append(h);
+        localStringBuilder.append(":");
+        localStringBuilder.append("last_");
+        localStringBuilder.append(l);
+        localStringBuilder.append(":");
+        localStringBuilder.append("net_");
+        localStringBuilder.append(NetConnInfoCenter.isWifiOrMobileConn());
         f.add(localStringBuilder.toString());
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -149,8 +207,8 @@ public class d
       {
         l2 = ((Long)e.get(Integer.valueOf(paramInt))).longValue();
         e.put(Integer.valueOf(paramInt), Long.valueOf(l1 - l2));
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -185,7 +243,10 @@ public class d
       if (j > com.tencent.mobileqq.msf.core.a.a.aL()) {
         a.j();
       }
-      QLog.d("NormalSocketAdaptor", 1, "failed to send in normal way " + paramArrayOfByte.toString());
+      paramSocket = new StringBuilder();
+      paramSocket.append("failed to send in normal way ");
+      paramSocket.append(paramArrayOfByte.toString());
+      QLog.d("NormalSocketAdaptor", 1, paramSocket.toString());
     }
   }
   
@@ -196,7 +257,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.a.d
  * JD-Core Version:    0.7.0.1
  */

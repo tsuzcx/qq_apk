@@ -16,13 +16,13 @@ class QzonePhotoPreviewActivity$2
     localIntent.putExtra("PhotoConst.send_changtu", true);
     localIntent.putExtra("PhotoConst.KEY_SHOW_TYPE", 1);
     localIntent.putExtra("PhotoConst.KEY_SHOW_ORIGIN_TYPE", 1);
-    PhotoUtils.sendPhoto(this.a.getActivity(), QzonePhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_Int, false);
+    PhotoUtils.sendPhoto(this.a.getBaseActivity(), QzonePhotoPreviewActivity.a(this.a), this.a.jdField_a_of_type_JavaUtilArrayList, this.a.jdField_a_of_type_Int, false);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity.2
  * JD-Core Version:    0.7.0.1
  */

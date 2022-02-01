@@ -30,17 +30,19 @@ public final class FacadeEditData
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iIndexId, 0);
-    if (this.strText != null) {
-      paramJceOutputStream.write(this.strText, 1);
+    String str = this.strText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strImageUrl != null) {
-      paramJceOutputStream.write(this.strImageUrl, 2);
+    str = this.strImageUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.FacadeEditData
  * JD-Core Version:    0.7.0.1
  */

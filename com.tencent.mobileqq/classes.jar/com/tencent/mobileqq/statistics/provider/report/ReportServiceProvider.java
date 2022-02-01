@@ -15,20 +15,21 @@ public class ReportServiceProvider
   
   public IReportService a()
   {
-    if (this.a == null) {}
-    try
-    {
-      if (this.a == null) {
-        this.a = b();
+    if (this.a == null) {
+      try
+      {
+        if (this.a == null) {
+          this.a = b();
+        }
       }
-      return this.a;
+      finally {}
     }
-    finally {}
+    return this.a;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.provider.report.ReportServiceProvider
  * JD-Core Version:    0.7.0.1
  */

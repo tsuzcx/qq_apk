@@ -11,8 +11,10 @@ public class VideoAdClickRecorder
   
   public static void a(AdvertisementInfo paramAdvertisementInfo)
   {
-    if (paramAdvertisementInfo == null) {}
-    while (TextUtils.isEmpty(paramAdvertisementInfo.getTicket())) {
+    if (paramAdvertisementInfo == null) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramAdvertisementInfo.getTicket())) {
       return;
     }
     a.add(paramAdvertisementInfo.getTicket());
@@ -20,8 +22,10 @@ public class VideoAdClickRecorder
   
   public static boolean a(AdvertisementInfo paramAdvertisementInfo)
   {
-    if (paramAdvertisementInfo == null) {}
-    while (TextUtils.isEmpty(paramAdvertisementInfo.getTicket())) {
+    if (paramAdvertisementInfo == null) {
+      return false;
+    }
+    if (TextUtils.isEmpty(paramAdvertisementInfo.getTicket())) {
       return false;
     }
     return a.contains(paramAdvertisementInfo.getTicket());
@@ -29,8 +33,10 @@ public class VideoAdClickRecorder
   
   public static void b(AdvertisementInfo paramAdvertisementInfo)
   {
-    if (paramAdvertisementInfo == null) {}
-    while (TextUtils.isEmpty(paramAdvertisementInfo.getTicket())) {
+    if (paramAdvertisementInfo == null) {
+      return;
+    }
+    if (TextUtils.isEmpty(paramAdvertisementInfo.getTicket())) {
       return;
     }
     a.remove(paramAdvertisementInfo.getTicket());
@@ -38,7 +44,7 @@ public class VideoAdClickRecorder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.report.VideoAdClickRecorder
  * JD-Core Version:    0.7.0.1
  */

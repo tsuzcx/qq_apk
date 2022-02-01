@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -69,30 +70,31 @@ public final class cell_video
   
   static
   {
-    Object localObject = new s_picurl();
-    cache_coverurl.put(Integer.valueOf(0), localObject);
+    Object localObject1 = Integer.valueOf(0);
+    Object localObject2 = new s_picurl();
+    cache_coverurl.put(localObject1, localObject2);
     cache_videourls = new HashMap();
-    localObject = new s_videourl();
-    cache_videourls.put(Integer.valueOf(0), localObject);
+    localObject2 = new s_videourl();
+    cache_videourls.put(localObject1, localObject2);
     cache_extendinfo = new HashMap();
     cache_extendinfo.put("", "");
     cache_videoremark = new s_videoremark();
     cache_video_show_type = 0;
     cache_video_source = 0;
     cache_vcCovers = new ArrayList();
-    localObject = new HashMap();
-    ((Map)localObject).put(Integer.valueOf(0), new s_picurl());
-    cache_vcCovers.add(localObject);
+    localObject2 = new HashMap();
+    ((Map)localObject2).put(localObject1, new s_picurl());
+    cache_vcCovers.add(localObject2);
     cache_gaussPicUrl = new HashMap();
-    localObject = new s_picurl();
-    cache_gaussPicUrl.put(Integer.valueOf(0), localObject);
+    localObject2 = new s_picurl();
+    cache_gaussPicUrl.put(localObject1, localObject2);
     cache_weishi = new s_weishi();
     cache_stKingCard = new s_kingcard();
     cache_bottom_button = new s_button();
     cache_video_click_type = 0;
     cache_video_rate_list = new ArrayList();
-    localObject = new s_videourl();
-    cache_video_rate_list.add(localObject);
+    localObject1 = new s_videourl();
+    cache_video_rate_list.add(localObject1);
   }
   
   public cell_video() {}
@@ -193,88 +195,109 @@ public final class cell_video
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.videoid != null) {
-      paramJceOutputStream.write(this.videoid, 0);
+    Object localObject = this.videoid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.videourl != null) {
-      paramJceOutputStream.write(this.videourl, 1);
+    localObject = this.videourl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.coverurl != null) {
-      paramJceOutputStream.write(this.coverurl, 2);
+    localObject = this.coverurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
     paramJceOutputStream.write(this.actiontype, 3);
-    if (this.actionurl != null) {
-      paramJceOutputStream.write(this.actionurl, 4);
+    localObject = this.actionurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 5);
+    localObject = this.clientkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.filetype, 6);
     paramJceOutputStream.write(this.videotype, 7);
     paramJceOutputStream.write(this.videotime, 8);
-    if (this.videourls != null) {
-      paramJceOutputStream.write(this.videourls, 9);
+    localObject = this.videourls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 9);
     }
     paramJceOutputStream.write(this.playtype, 10);
     paramJceOutputStream.write(this.videostatus, 11);
-    if (this.toast != null) {
-      paramJceOutputStream.write(this.toast, 12);
+    localObject = this.toast;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 12);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 13);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
-    if (this.videoremark != null) {
-      paramJceOutputStream.write(this.videoremark, 14);
+    localObject = this.videoremark;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 14);
     }
     paramJceOutputStream.write(this.video_show_type, 15);
     paramJceOutputStream.write(this.isPanorama, 16);
     paramJceOutputStream.write(this.video_source, 17);
-    if (this.sloc != null) {
-      paramJceOutputStream.write(this.sloc, 18);
+    localObject = this.sloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 18);
     }
-    if (this.lloc != null) {
-      paramJceOutputStream.write(this.lloc, 19);
+    localObject = this.lloc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
     paramJceOutputStream.write(this.report_video_feeds_type, 20);
     paramJceOutputStream.write(this.videoplaycnt, 21);
     paramJceOutputStream.write(this.is_share, 22);
     paramJceOutputStream.write(this.adv_delay_time, 23);
-    if (this.video_webview_url != null) {
-      paramJceOutputStream.write(this.video_webview_url, 24);
+    localObject = this.video_webview_url;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 24);
     }
     paramJceOutputStream.write(this.isOnWifiPlay, 25);
     paramJceOutputStream.write(this.isHadSetPlayOnWifi, 26);
     paramJceOutputStream.write(this.auto_refresh_second, 27);
-    if (this.vcCovers != null) {
-      paramJceOutputStream.write(this.vcCovers, 28);
+    localObject = this.vcCovers;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 28);
     }
     paramJceOutputStream.write(this.video_form, 29);
-    if (this.gaussPicUrl != null) {
-      paramJceOutputStream.write(this.gaussPicUrl, 30);
+    localObject = this.gaussPicUrl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 30);
     }
-    if (this.weishi != null) {
-      paramJceOutputStream.write(this.weishi, 31);
+    localObject = this.weishi;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 31);
     }
-    if (this.stKingCard != null) {
-      paramJceOutputStream.write(this.stKingCard, 32);
+    localObject = this.stKingCard;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 32);
     }
-    if (this.bottom_button != null) {
-      paramJceOutputStream.write(this.bottom_button, 33);
+    localObject = this.bottom_button;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 33);
     }
     paramJceOutputStream.write(this.video_click_type, 34);
-    if (this.header_desc != null) {
-      paramJceOutputStream.write(this.header_desc, 35);
+    localObject = this.header_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 35);
     }
-    if (this.video_rate_list != null) {
-      paramJceOutputStream.write(this.video_rate_list, 36);
+    localObject = this.video_rate_list;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 36);
     }
     paramJceOutputStream.write(this.cur_video_rate, 37);
-    if (this.albumid != null) {
-      paramJceOutputStream.write(this.albumid, 38);
+    localObject = this.albumid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 38);
     }
     paramJceOutputStream.write(this.anonymity, 39);
-    if (this.video_desc != null) {
-      paramJceOutputStream.write(this.video_desc, 40);
+    localObject = this.video_desc;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 40);
     }
     paramJceOutputStream.write(this.video_max_playtime, 41);
     paramJceOutputStream.write(this.needShowFollowGuideAnimation, 42);
@@ -282,7 +305,7 @@ public final class cell_video
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_video
  * JD-Core Version:    0.7.0.1
  */

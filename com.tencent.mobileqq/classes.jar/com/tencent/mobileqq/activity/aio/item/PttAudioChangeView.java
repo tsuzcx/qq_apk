@@ -21,7 +21,8 @@ public class PttAudioChangeView
   public void a()
   {
     super.a();
-    if ((this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled())) {
+    Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+    if ((localBitmap != null) && (!localBitmap.isRecycled())) {
       this.jdField_a_of_type_AndroidGraphicsBitmap.recycle();
     }
     this.jdField_a_of_type_AndroidGraphicsBitmap = null;
@@ -40,12 +41,19 @@ public class PttAudioChangeView
   
   protected boolean a()
   {
-    return (this.c != null) && (!this.c.isRecycled()) && (this.jdField_a_of_type_AndroidGraphicsBitmap != null) && (!this.jdField_a_of_type_AndroidGraphicsBitmap.isRecycled());
+    if ((this.c != null) && (!this.c.isRecycled()))
+    {
+      Bitmap localBitmap = this.jdField_a_of_type_AndroidGraphicsBitmap;
+      if ((localBitmap != null) && (!localBitmap.isRecycled())) {
+        return true;
+      }
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.PttAudioChangeView
  * JD-Core Version:    0.7.0.1
  */

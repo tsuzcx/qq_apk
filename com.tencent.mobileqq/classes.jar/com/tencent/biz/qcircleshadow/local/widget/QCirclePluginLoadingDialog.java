@@ -45,11 +45,11 @@ public class QCirclePluginLoadingDialog
   
   public QCirclePluginLoadingDialog(@NonNull Context paramContext)
   {
-    super(paramContext, 2131755912);
+    super(paramContext, 2131756260);
     this.jdField_a_of_type_AndroidViewLayoutInflater = LayoutInflater.from(paramContext);
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560844, null);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131374356));
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844230);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131560719, null);
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131373908));
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130844134);
   }
   
   private Handler a()
@@ -62,33 +62,42 @@ public class QCirclePluginLoadingDialog
   
   private void b()
   {
-    if ((this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable == null) || (this.jdField_a_of_type_AndroidWidgetImageView == null)) {
-      return;
+    QQAnimationDrawable localQQAnimationDrawable = this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable;
+    if (localQQAnimationDrawable != null)
+    {
+      ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+      if (localImageView == null) {
+        return;
+      }
+      localImageView.setImageDrawable(localQQAnimationDrawable);
+      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable.start();
     }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable);
-    this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable.start();
   }
   
   private void c()
   {
     d();
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView != null) {
+      localImageView.setImageDrawable(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
   }
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable == null) {}
-    while (!this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable.isRunning()) {
+    QQAnimationDrawable localQQAnimationDrawable = this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable;
+    if (localQQAnimationDrawable == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable.stop();
+    if (localQQAnimationDrawable.isRunning()) {
+      this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable.stop();
+    }
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable == null) {
+    if (this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableQQAnimationDrawable == null)
+    {
       if (RFWDownloaderFactory.getDownloader(QCircleDownloadConfig.a()).isFileDownLoaded("https://downv6.qq.com/video_story/qcircle/animation/pull_refresh_logo.zip"))
       {
         AnimationDrawableCreateOption.Builder localBuilder = new AnimationDrawableCreateOption.Builder("https://downv6.qq.com/video_story/qcircle/animation/pull_refresh_logo.zip");
@@ -98,15 +107,15 @@ public class QCirclePluginLoadingDialog
         localBuilder.b(true);
         AnimationDrawableFactory.a().a(hashCode(), localBuilder.a(), this.jdField_a_of_type_ComTencentBizRichframeworkAnimationDrawableAnimationDrawableFactory$CreateResultListener);
       }
+      else
+      {
+        c();
+      }
     }
-    for (;;)
-    {
-      show();
-      return;
-      c();
-      continue;
+    else {
       b();
     }
+    show();
   }
   
   public void dismiss()
@@ -126,22 +135,21 @@ public class QCirclePluginLoadingDialog
       paramBundle.addFlags(-2147483648);
       paramBundle.setStatusBarColor(0);
     }
-    for (;;)
+    else
     {
-      WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
-      localLayoutParams.width = -1;
-      localLayoutParams.height = -1;
-      localLayoutParams.gravity = 17;
-      paramBundle.setAttributes(localLayoutParams);
-      setCanceledOnTouchOutside(false);
-      return;
       getWindow().addFlags(67108864);
     }
+    WindowManager.LayoutParams localLayoutParams = paramBundle.getAttributes();
+    localLayoutParams.width = -1;
+    localLayoutParams.height = -1;
+    localLayoutParams.gravity = 17;
+    paramBundle.setAttributes(localLayoutParams);
+    setCanceledOnTouchOutside(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.widget.QCirclePluginLoadingDialog
  * JD-Core Version:    0.7.0.1
  */

@@ -16,10 +16,10 @@ public final class AIOSelectableDelegateProxy
   private AIOSelectableDelegateImpl a()
   {
     AIOSelectableDelegateImpl localAIOSelectableDelegateImpl = AIOSelectableDelegateImpl.a();
-    if (this != localAIOSelectableDelegateImpl.a()) {
-      throw new IllegalStateException("The proxy has been not attached.");
+    if (this == localAIOSelectableDelegateImpl.a()) {
+      return localAIOSelectableDelegateImpl;
     }
-    return localAIOSelectableDelegateImpl;
+    throw new IllegalStateException("The proxy has been not attached.");
   }
   
   public int a()
@@ -95,10 +95,7 @@ public final class AIOSelectableDelegateProxy
   public void a(ChatMessage paramChatMessage)
   {
     AIOSelectableDelegateImpl localAIOSelectableDelegateImpl = AIOSelectableDelegateImpl.a();
-    AIOSelectableDelegateProxy localAIOSelectableDelegateProxy = localAIOSelectableDelegateImpl.a();
-    if (localAIOSelectableDelegateProxy != null)
-    {
-      if (this == localAIOSelectableDelegateProxy) {}
+    if (localAIOSelectableDelegateImpl.a() != null) {
       localAIOSelectableDelegateImpl.d();
     }
     localAIOSelectableDelegateImpl.a(this);
@@ -140,31 +137,32 @@ public final class AIOSelectableDelegateProxy
   
   public void b(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
-    AIOSelectableDelegateImpl localAIOSelectableDelegateImpl;
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          localAIOSelectableDelegateImpl = AIOSelectableDelegateImpl.a();
-        } while ((!localAIOSelectableDelegateImpl.c()) || (localAIOSelectableDelegateImpl.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null));
-        if (paramChatMessage.uniseq == localAIOSelectableDelegateImpl.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq) {
-          break;
-        }
-      } while (this != localAIOSelectableDelegateImpl.a());
-      localAIOSelectableDelegateImpl.f();
+    if (paramChatMessage == null) {
       return;
-    } while (this == localAIOSelectableDelegateImpl.a());
-    localAIOSelectableDelegateImpl.a(this);
-    localAIOSelectableDelegateImpl.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent);
-    localAIOSelectableDelegateImpl.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor, this.b);
-    if (localAIOSelectableDelegateImpl.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu != null) {
-      a(localAIOSelectableDelegateImpl.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu);
     }
-    localAIOSelectableDelegateImpl.e();
+    AIOSelectableDelegateImpl localAIOSelectableDelegateImpl = AIOSelectableDelegateImpl.a();
+    if (localAIOSelectableDelegateImpl.c())
+    {
+      if (localAIOSelectableDelegateImpl.jdField_a_of_type_ComTencentMobileqqDataChatMessage == null) {
+        return;
+      }
+      if (paramChatMessage.uniseq != localAIOSelectableDelegateImpl.jdField_a_of_type_ComTencentMobileqqDataChatMessage.uniseq)
+      {
+        if (this == localAIOSelectableDelegateImpl.a()) {
+          localAIOSelectableDelegateImpl.f();
+        }
+      }
+      else if (this != localAIOSelectableDelegateImpl.a())
+      {
+        localAIOSelectableDelegateImpl.a(this);
+        localAIOSelectableDelegateImpl.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableComponent);
+        localAIOSelectableDelegateImpl.a(this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor, this.b);
+        if (localAIOSelectableDelegateImpl.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu != null) {
+          a(localAIOSelectableDelegateImpl.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectablePopupMenu);
+        }
+        localAIOSelectableDelegateImpl.e();
+      }
+    }
   }
   
   public boolean b()
@@ -208,12 +206,14 @@ public final class AIOSelectableDelegateProxy
   
   public boolean d()
   {
-    return (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor != null) && (this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor.a(1));
+    SelectableCursor localSelectableCursor = this.jdField_a_of_type_ComTencentMobileqqActivitySelectableSelectableCursor;
+    return (localSelectableCursor != null) && (localSelectableCursor.a(1));
   }
   
   public boolean e()
   {
-    return (this.b != null) && (this.b.a(2));
+    SelectableCursor localSelectableCursor = this.b;
+    return (localSelectableCursor != null) && (localSelectableCursor.a(2));
   }
   
   public boolean f()
@@ -223,7 +223,7 @@ public final class AIOSelectableDelegateProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.AIOSelectableDelegateProxy
  * JD-Core Version:    0.7.0.1
  */

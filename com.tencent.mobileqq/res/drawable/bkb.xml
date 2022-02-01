@@ -1,6 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="rectangle"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="#33000000" />
-    <corners android:radius="12.5dip" />
-</shape>
+<clip android:gravity="bottom" android:drawable="@drawable/gg7" android:clipOrientation="vertical"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

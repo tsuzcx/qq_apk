@@ -75,22 +75,26 @@ public class EGLScreenCaptureThread
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender != null)
+    Object localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.release();
+      ((TextureRender)localObject).release();
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
     }
-    if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+    localObject = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    if (localObject != null) {
+      ((RenderBuffer)localObject).destroy();
     }
-    if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null)
+    localObject = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+    if (localObject != null)
     {
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      ((RenderBuffer)localObject).destroy();
       this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = null;
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter != null)
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter.c();
+      ((RGBToI420Filter)localObject).c();
       this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter = null;
     }
     this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$PerfData.b();
@@ -107,27 +111,28 @@ public class EGLScreenCaptureThread
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
-    if ((this.jdField_b_of_type_ComTencentAvcoreDataRecordParam.isValid()) || (this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.isValid())) {
-      i();
-    }
-    for (;;)
+    if ((!this.jdField_b_of_type_ComTencentAvcoreDataRecordParam.isValid()) && (!this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.isValid()))
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 2000L);
-      return;
       if (QLog.isDevelopLevel()) {
         QLog.i("EGLScreenCaptureThread", 4, "check, param not valid.");
       }
     }
+    else {
+      i();
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, 2000L);
   }
   
   private void h()
   {
     boolean bool = this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.update(this.jdField_b_of_type_ComTencentAvcoreDataRecordParam);
+    RenderBuffer localRenderBuffer;
     if ((this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (bool))
     {
-      if (this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+      localRenderBuffer = this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+      if (localRenderBuffer != null) {
+        localRenderBuffer.destroy();
       }
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height, 33984);
     }
@@ -135,8 +140,9 @@ public class EGLScreenCaptureThread
     {
       if ((this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer == null) || (bool))
       {
-        if (this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer != null) {
-          this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.destroy();
+        localRenderBuffer = this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer;
+        if (localRenderBuffer != null) {
+          localRenderBuffer.destroy();
         }
         this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height, 33985);
       }
@@ -159,7 +165,7 @@ public class EGLScreenCaptureThread
   
   private void i()
   {
-    long l6 = SystemClock.elapsedRealtime();
+    long l5 = SystemClock.elapsedRealtime();
     h();
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
     if (this.jdField_b_of_type_ArrayOfFloat == null)
@@ -169,55 +175,60 @@ public class EGLScreenCaptureThread
     }
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender.drawTexture(36197, this.d, this.jdField_a_of_type_ArrayOfFloat, this.jdField_b_of_type_ArrayOfFloat);
     this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-    long l7 = Math.abs(SystemClock.elapsedRealtime() - l6);
-    long l4 = 0L;
-    long l5 = 0L;
-    long l1 = 0L;
-    long l3;
+    long l6 = Math.abs(SystemClock.elapsedRealtime() - l5);
+    long l1;
     long l2;
     Object localObject;
+    long l3;
     if (this.jdField_b_of_type_Boolean)
     {
       l1 = SystemClock.elapsedRealtime();
       this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.bind();
       this.jdField_a_of_type_ComTencentAvOpenglEffectsRGBToI420Filter.a(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId());
-      l3 = Math.abs(SystemClock.elapsedRealtime() - l1);
+      l2 = Math.abs(SystemClock.elapsedRealtime() - l1);
       l1 = SystemClock.elapsedRealtime();
       GLES20.glReadPixels(0, 0, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height * 3 / 8, 6408, 5121, this.jdField_a_of_type_JavaNioByteBuffer);
       this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.unbind();
-      l2 = Math.abs(SystemClock.elapsedRealtime() - l1);
+      l4 = Math.abs(SystemClock.elapsedRealtime() - l1);
       this.jdField_a_of_type_JavaNioByteBuffer.get(this.jdField_a_of_type_ArrayOfByte, 0, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width * this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height * 3 / 2);
       this.jdField_a_of_type_JavaNioByteBuffer.clear();
       localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$onVideoFrameAvailableListener;
-      if (localObject == null) {
-        break label398;
+      if (localObject != null)
+      {
+        l1 = SystemClock.elapsedRealtime();
+        ((EGLScreenCaptureThread.onVideoFrameAvailableListener)localObject).a(this.jdField_a_of_type_ArrayOfByte, this.g, 2, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam);
+        l1 = SystemClock.elapsedRealtime() - l1;
       }
-      l1 = SystemClock.elapsedRealtime();
-      ((EGLScreenCaptureThread.onVideoFrameAvailableListener)localObject).a(this.jdField_a_of_type_ArrayOfByte, this.g, 2, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam);
-      l1 = SystemClock.elapsedRealtime() - l1;
+      else
+      {
+        l1 = 0L;
+      }
+      l3 = l1;
+      l1 = l2;
+      l2 = l4;
     }
-    for (;;)
+    else
     {
-      this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
-      l4 = this.jdField_c_of_type_Long;
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$PerfData.a(l7, l3, l2, l1, l4 - l6);
-      return;
       localObject = GlUtil.captureFrame(this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer.getTexId(), this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.width, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.height, 0);
       EGLScreenCaptureThread.onVideoFrameAvailableListener localonVideoFrameAvailableListener = this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$onVideoFrameAvailableListener;
-      l3 = l4;
-      l2 = l5;
       if (localonVideoFrameAvailableListener != null)
       {
         l1 = SystemClock.elapsedRealtime();
         localonVideoFrameAvailableListener.a((Bitmap)localObject, this.jdField_a_of_type_ComTencentAvcoreDataRecordParam);
-        l1 = SystemClock.elapsedRealtime() - l1;
-        l3 = l4;
-        l2 = l5;
-        continue;
-        label398:
+        l3 = SystemClock.elapsedRealtime() - l1;
         l1 = 0L;
+        l2 = l1;
+      }
+      else
+      {
+        l1 = 0L;
+        l2 = l1;
+        l3 = l2;
       }
     }
+    this.jdField_c_of_type_Long = SystemClock.elapsedRealtime();
+    long l4 = this.jdField_c_of_type_Long;
+    this.jdField_a_of_type_ComTencentAvOpenglEffectsEGLScreenCaptureThread$PerfData.a(l6, l1, l2, l3, l4 - l5);
   }
   
   public Handler a()
@@ -244,20 +255,23 @@ public class EGLScreenCaptureThread
   @RequiresApi(api=21)
   public void a(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      b();
-      d();
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3) {
+          return;
+        }
+        g();
+        return;
+      }
       e();
       f();
       return;
     }
-    g();
+    b();
+    d();
   }
   
   public void a(EGLScreenCaptureThread.onVideoFrameAvailableListener paramonVideoFrameAvailableListener)
@@ -267,13 +281,23 @@ public class EGLScreenCaptureThread
   
   public void a(RecordParam paramRecordParam)
   {
-    if ((paramRecordParam == null) || (!paramRecordParam.isValid())) {
-      return;
+    if (paramRecordParam != null)
+    {
+      if (!paramRecordParam.isValid()) {
+        return;
+      }
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("updateRecordParam cur[");
+        localStringBuilder.append(this.jdField_b_of_type_ComTencentAvcoreDataRecordParam);
+        localStringBuilder.append("], come[");
+        localStringBuilder.append(paramRecordParam);
+        localStringBuilder.append("]");
+        QLog.i("EGLScreenCaptureThread", 4, localStringBuilder.toString());
+      }
+      this.jdField_b_of_type_ComTencentAvcoreDataRecordParam.update(paramRecordParam);
     }
-    if (QLog.isDevelopLevel()) {
-      QLog.i("EGLScreenCaptureThread", 4, "updateRecordParam cur[" + this.jdField_b_of_type_ComTencentAvcoreDataRecordParam + "], come[" + paramRecordParam + "]");
-    }
-    this.jdField_b_of_type_ComTencentAvcoreDataRecordParam.update(paramRecordParam);
   }
   
   @RequiresApi(api=18)
@@ -292,49 +316,58 @@ public class EGLScreenCaptureThread
   
   public void onFrameAvailable(SurfaceTexture paramSurfaceTexture)
   {
-    int i = 0;
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_b_of_type_Long += 1L;
-      l = SystemClock.elapsedRealtime();
-      this.jdField_a_of_type_Long = l;
-      if (this.jdField_a_of_type_ArrayOfFloat == null) {
-        this.jdField_a_of_type_ArrayOfFloat = new float[16];
-      }
-      paramSurfaceTexture.updateTexImage();
-      paramSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
-      this.jdField_a_of_type_Float = ((float)paramSurfaceTexture.getTimestamp());
-      if (this.jdField_a_of_type_Float != 0.0F) {
-        break;
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.i("EGLScreenCaptureThread", 4, "onFrameAvailable, time[" + this.jdField_a_of_type_Float + "]");
-    return;
-    long l = Math.abs(l - this.jdField_c_of_type_Long);
-    if (this.jdField_c_of_type_Long != 0L) {
-      if (l >= this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.intervalTime) {}
     }
-    for (i = 1;; i = 0)
+    this.jdField_b_of_type_Long += 1L;
+    long l1 = SystemClock.elapsedRealtime();
+    this.jdField_a_of_type_Long = l1;
+    if (this.jdField_a_of_type_ArrayOfFloat == null) {
+      this.jdField_a_of_type_ArrayOfFloat = new float[16];
+    }
+    paramSurfaceTexture.updateTexImage();
+    paramSurfaceTexture.getTransformMatrix(this.jdField_a_of_type_ArrayOfFloat);
+    this.jdField_a_of_type_Float = ((float)paramSurfaceTexture.getTimestamp());
+    if (this.jdField_a_of_type_Float == 0.0F)
     {
-      if (i != 0) {}
-      for (l = Math.min(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.intervalTime - l, 2000L);; l = 2000L)
+      if (QLog.isDevelopLevel())
       {
-        this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, l);
-        if ((i != 0) || ((!this.jdField_b_of_type_ComTencentAvcoreDataRecordParam.isValid()) && (!this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.isValid()))) {
-          break;
-        }
-        i();
-        return;
+        paramSurfaceTexture = new StringBuilder();
+        paramSurfaceTexture.append("onFrameAvailable, time[");
+        paramSurfaceTexture.append(this.jdField_a_of_type_Float);
+        paramSurfaceTexture.append("]");
+        QLog.i("EGLScreenCaptureThread", 4, paramSurfaceTexture.toString());
       }
+      return;
+    }
+    long l2 = Math.abs(l1 - this.jdField_c_of_type_Long);
+    l1 = this.jdField_c_of_type_Long;
+    int j = 0;
+    int i = j;
+    if (l1 != 0L)
+    {
+      i = j;
+      if (l2 < this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.intervalTime) {
+        i = 1;
+      }
+    }
+    l1 = 2000L;
+    if (i != 0) {
+      l1 = Math.min(this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.intervalTime - l2, 2000L);
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(3);
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(3, l1);
+    if (i != 0) {
+      return;
+    }
+    if ((this.jdField_b_of_type_ComTencentAvcoreDataRecordParam.isValid()) || (this.jdField_a_of_type_ComTencentAvcoreDataRecordParam.isValid())) {
+      i();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.EGLScreenCaptureThread
  * JD-Core Version:    0.7.0.1
  */

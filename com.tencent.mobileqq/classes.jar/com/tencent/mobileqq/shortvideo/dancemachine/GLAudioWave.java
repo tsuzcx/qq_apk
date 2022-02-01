@@ -8,19 +8,25 @@ public class GLAudioWave
 {
   public static final int NUM_OF_COLUMN = 5;
   public static final int WAVE_COLUMN = 15;
-  private float extraSizeH = (this.mWaveColumn.length - 1) * this.spacing;
-  private float extraSizeV = 4.0F * this.spacing;
+  private float extraSizeH;
+  private float extraSizeV;
   private float mHeightBlock;
   private Random mRandom = new Random();
-  private RectF mSoundRegion = new RectF();
+  private RectF mSoundRegion;
   private float[] mWaveColumn = new float[15];
-  private RectF mWaveRegion = new RectF();
+  private RectF mWaveRegion;
   private float mWidthBlock;
   private float spacing = DisplayUtils.pixelToRealPixel(2.0F);
   
   public GLAudioWave(GLViewContext paramGLViewContext, String paramString)
   {
     super(paramGLViewContext, paramString);
+    float f1 = this.mWaveColumn.length - 1;
+    float f2 = this.spacing;
+    this.extraSizeH = (f1 * f2);
+    this.extraSizeV = (f2 * 4.0F);
+    this.mWaveRegion = new RectF();
+    this.mSoundRegion = new RectF();
   }
   
   private void computeBlockSize()
@@ -42,9 +48,9 @@ public class GLAudioWave
     if (f2 > 0.0F) {
       i = j + 1;
     }
-    paramFloat2 = f1;
     j = 0;
-    if (j < i)
+    paramFloat2 = f1;
+    while (j < i)
     {
       f1 = paramFloat2 - this.mHeightBlock;
       this.mSoundRegion.set(paramFloat1, f1, this.mWidthBlock + paramFloat1, paramFloat2);
@@ -56,15 +62,16 @@ public class GLAudioWave
         super.setImageClipDrawRegion(this.mSoundRegion);
         this.mEnableClip = true;
         super.draw();
+        paramFloat2 = f1;
       }
-      for (paramFloat2 = f1;; paramFloat2 = f1)
+      else
       {
-        paramFloat2 -= this.spacing;
-        j += 1;
-        break;
         super.setImageClipDrawRegion(this.mSoundRegion);
         super.draw();
+        paramFloat2 = f1;
       }
+      paramFloat2 -= this.spacing;
+      j += 1;
     }
   }
   
@@ -102,7 +109,7 @@ public class GLAudioWave
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.GLAudioWave
  * JD-Core Version:    0.7.0.1
  */

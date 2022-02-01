@@ -31,14 +31,14 @@ class VideoControlUI$10
   public boolean onSingleTapUp(MotionEvent paramMotionEvent)
   {
     if ((this.a.g != null) && (this.a.g.isShown())) {
-      this.a.r(false);
+      this.a.s(false);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoControlUI.10
  * JD-Core Version:    0.7.0.1
  */

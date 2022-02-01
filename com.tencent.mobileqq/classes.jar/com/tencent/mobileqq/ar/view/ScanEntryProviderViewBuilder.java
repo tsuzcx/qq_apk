@@ -9,21 +9,21 @@ public class ScanEntryProviderViewBuilder
   private int jdField_a_of_type_Int;
   private ArrayList<ScanEntryProviderViewBuilder.ScanEntryProviderViewItem> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
   public boolean a;
-  private final int[] jdField_a_of_type_ArrayOfInt = { 2131375125, 2131372469, 2131362938 };
-  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131713464), HardCodeUtil.a(2131718693), "AR" };
+  private final int[] jdField_a_of_type_ArrayOfInt = { 2131374641, 2131372051, 2131362887 };
+  private final String[] jdField_a_of_type_ArrayOfJavaLangString = { HardCodeUtil.a(2131713432), HardCodeUtil.a(2131718411), "AR" };
   public boolean b;
   private final int[] b;
   public boolean c;
   private final int[] c;
-  private final int[] d = { 2130844992, 2130844993, 2130844994, 2130844995, 2130844996, 2130844997, 2130844998, 2130844999 };
+  private final int[] d = { 2130844868, 2130844869, 2130844870, 2130844871, 2130844872, 2130844873, 2130844874, 2130844875 };
   
   public ScanEntryProviderViewBuilder(int paramInt)
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_b_of_type_Boolean = true;
     this.jdField_c_of_type_Boolean = true;
-    this.jdField_b_of_type_ArrayOfInt = new int[] { 2130845000, 2130845001, 2130845002, 2130845003, 2130845004, 2130845005, 2130845006, 2130845007 };
-    this.jdField_c_of_type_ArrayOfInt = new int[] { 2130844975, 2130844976, 2130844977, 2130844978, 2130844979, 2130844980, 2130844981, 2130844982 };
+    this.jdField_b_of_type_ArrayOfInt = new int[] { 2130844876, 2130844877, 2130844878, 2130844879, 2130844880, 2130844881, 2130844882, 2130844883 };
+    this.jdField_c_of_type_ArrayOfInt = new int[] { 2130844851, 2130844852, 2130844853, 2130844854, 2130844855, 2130844856, 2130844857, 2130844858 };
     this.jdField_a_of_type_Int = paramInt;
   }
   
@@ -34,28 +34,29 @@ public class ScanEntryProviderViewBuilder
   
   public int a(int paramInt)
   {
-    int i = 1;
     if (paramInt == 1) {
-      i = 0;
+      return 0;
     }
-    while (paramInt == 2) {
-      return i;
+    if (paramInt == 2) {
+      return 1;
     }
     return 2;
   }
   
   public ScanEntryProviderView a(int paramInt, Context paramContext, ScanEntryContainerViewListener paramScanEntryContainerViewListener)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return null;
-    case 1: 
-      return new QRScanEntryView(paramContext, paramScanEntryContainerViewListener);
-    case 3: 
-      return new ARScanEntryView(paramContext, paramScanEntryContainerViewListener);
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return null;
+        }
+        return new ARScanEntryView(paramContext, paramScanEntryContainerViewListener);
+      }
+      return new OCRScanEntryView(paramContext, paramScanEntryContainerViewListener);
     }
-    return new OCRScanEntryView(paramContext, paramScanEntryContainerViewListener);
+    return new QRScanEntryView(paramContext, paramScanEntryContainerViewListener);
   }
   
   public ScanEntryProviderViewBuilder.ScanEntryProviderViewItem a(int paramInt)
@@ -71,7 +72,7 @@ public class ScanEntryProviderViewBuilder
     if (this.jdField_a_of_type_Int == 1)
     {
       if (this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_JavaUtilArrayList.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(1, HardCodeUtil.a(2131713465)));
+        this.jdField_a_of_type_JavaUtilArrayList.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(1, HardCodeUtil.a(2131713433)));
       }
       if (this.jdField_c_of_type_Boolean) {
         this.jdField_a_of_type_JavaUtilArrayList.add(new ScanEntryProviderViewBuilder.ScanEntryProviderViewItem(2, "OCR"));
@@ -113,7 +114,7 @@ public class ScanEntryProviderViewBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.view.ScanEntryProviderViewBuilder
  * JD-Core Version:    0.7.0.1
  */

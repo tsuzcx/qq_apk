@@ -12,19 +12,23 @@ class SonicSessionConnection$SessionConnectionDefaultImpl$1
   
   public boolean verify(String paramString, SSLSession paramSSLSession)
   {
-    boolean bool = false;
     long l = System.currentTimeMillis();
     if (this.val$finalUrl.getHost().equals(paramString))
     {
-      bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.val$finalOriginHost, paramSSLSession);
-      SonicUtils.log("SonicSdk_SonicSessionConnection", 3, "verify hostname cost " + (System.currentTimeMillis() - l) + " ms.");
+      boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.val$finalOriginHost, paramSSLSession);
+      paramString = new StringBuilder();
+      paramString.append("verify hostname cost ");
+      paramString.append(System.currentTimeMillis() - l);
+      paramString.append(" ms.");
+      SonicUtils.log("SonicSdk_SonicSessionConnection", 3, paramString.toString());
+      return bool;
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sonic.sdk.SonicSessionConnection.SessionConnectionDefaultImpl.1
  * JD-Core Version:    0.7.0.1
  */

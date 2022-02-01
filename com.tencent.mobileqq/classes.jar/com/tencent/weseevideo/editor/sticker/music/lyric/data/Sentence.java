@@ -40,295 +40,279 @@ public class Sentence
     if (paramArrayOfString.length == 1) {
       return paramArrayList;
     }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
+    ArrayList localArrayList1 = new ArrayList();
+    paramArrayList = paramArrayList.iterator();
+    int j = 0;
     int k = 0;
     int m = 0;
-    int n = 0;
-    Iterator localIterator = paramArrayList.iterator();
-    LyricCharacter localLyricCharacter;
-    int j;
-    int i1;
-    int i3;
-    if (localIterator.hasNext())
+    int i = 0;
+    if (paramArrayList.hasNext())
     {
-      localLyricCharacter = (LyricCharacter)localIterator.next();
-      j = i;
-      i1 = n;
-      int i2 = m;
-      if (i <= localLyricCharacter.mStart)
+      LyricCharacter localLyricCharacter2 = (LyricCharacter)paramArrayList.next();
+      if (j <= localLyricCharacter2.mStart)
       {
-        if (m != paramArrayOfString.length - 1) {
-          break label190;
-        }
-        j = this.mText.length();
-        k = i;
-        i2 = m;
-        i1 = n;
-      }
-      for (;;)
-      {
-        paramArrayList = localLyricCharacter;
-        m = j;
-        n = i1;
-        i = i2;
-        i3 = k;
-        if (localLyricCharacter.mStart < k) {
-          break label243;
-        }
-        paramArrayList = localLyricCharacter;
-        m = j;
-        n = i1;
-        i = i2;
-        i3 = k;
-        if (j < localLyricCharacter.mEnd) {
-          break label243;
-        }
-        localArrayList.add(localLyricCharacter);
-        i = j;
-        n = i1;
-        m = i2;
-        break;
-        label190:
-        i1 = n + paramArrayOfString[m].length();
-        i2 = m + 1;
-        j = paramString.indexOf(paramArrayOfString[i2], i1);
-        k = i;
-      }
-    }
-    label348:
-    label478:
-    for (;;)
-    {
-      i3 = m;
-      m = i;
-      i = j;
-      n = k;
-      label243:
-      if ((paramArrayList.mStart < m) && (paramArrayList.mEnd > m))
-      {
-        long l = (1.0F * (float)paramArrayList.mDuration * (m - paramArrayList.mStart) / (paramArrayList.mEnd - paramArrayList.mStart));
-        localLyricCharacter = new LyricCharacter(paramArrayList.mStartTime, l, paramArrayList.mStart, m);
-        paramArrayList = new LyricCharacter(paramArrayList.mStartTime + l, paramArrayList.mDuration - l, m, paramArrayList.mEnd);
-        localArrayList.add(localLyricCharacter);
-        if (m >= paramArrayList.mEnd) {
-          break label461;
-        }
-        if (i == paramArrayOfString.length - 1)
+        if (k == paramArrayOfString.length - 1)
         {
-          k = this.mText.length();
-          j = i;
-          i = k;
-          k = n;
+          i = this.mText.length();
+        }
+        else
+        {
+          m += paramArrayOfString[k].length();
+          k += 1;
+          i = paramString.indexOf(paramArrayOfString[k], m);
+        }
+      }
+      else
+      {
+        n = j;
+        j = i;
+        i = n;
+      }
+      ArrayList<LyricCharacter> localArrayList = paramArrayList;
+      int i3 = j;
+      int i1 = k;
+      int i2 = m;
+      int n = i;
+      LyricCharacter localLyricCharacter1 = localLyricCharacter2;
+      if (localLyricCharacter2.mStart >= j)
+      {
+        localArrayList = paramArrayList;
+        i3 = j;
+        i1 = k;
+        i2 = m;
+        n = i;
+        localLyricCharacter1 = localLyricCharacter2;
+        if (i >= localLyricCharacter2.mEnd)
+        {
+          localArrayList1.add(localLyricCharacter2);
+          localArrayList = paramArrayList;
+          label207:
+          n = j;
+          break label457;
         }
       }
       for (;;)
       {
-        if (i < paramArrayList.mEnd) {
-          break label478;
+        if ((localLyricCharacter1.mStart < n) && (localLyricCharacter1.mEnd > n))
+        {
+          long l = ((float)localLyricCharacter1.mDuration * 1.0F * (n - localLyricCharacter1.mStart) / (localLyricCharacter1.mEnd - localLyricCharacter1.mStart));
+          paramArrayList = new LyricCharacter(localLyricCharacter1.mStartTime, l, localLyricCharacter1.mStart, n);
+          localLyricCharacter1 = new LyricCharacter(localLyricCharacter1.mStartTime + l, localLyricCharacter1.mDuration - l, n, localLyricCharacter1.mEnd);
+          localArrayList1.add(paramArrayList);
         }
-        localArrayList.add(paramArrayList);
-        i1 = m;
-        n = k;
-        m = j;
-        k = i1;
-        break;
-        k = paramArrayOfString[i].length() + n;
-        j = i + 1;
-        i = paramString.indexOf(paramArrayOfString[j], k);
-        continue;
-        return localArrayList;
-        break label348;
-        k = n;
-        j = i;
-        i = m;
-        m = i3;
+        if (n < localLyricCharacter1.mEnd)
+        {
+          if (i1 == paramArrayOfString.length - 1)
+          {
+            i = this.mText.length();
+          }
+          else
+          {
+            i2 += paramArrayOfString[i1].length();
+            i1 += 1;
+            i = paramString.indexOf(paramArrayOfString[i1], i2);
+          }
+          j = n;
+          n = i;
+          i = j;
+          k = i1;
+          m = i2;
+        }
+        else
+        {
+          i = i3;
+          m = i2;
+          k = i1;
+        }
+        if (n >= localLyricCharacter1.mEnd)
+        {
+          localArrayList1.add(localLyricCharacter1);
+          j = i;
+          i = n;
+          break label207;
+          label457:
+          paramArrayList = localArrayList;
+          j = i;
+          i = n;
+          break;
+        }
+        i3 = i;
+        i1 = k;
+        i2 = m;
       }
     }
+    return localArrayList1;
   }
   
   public void generateUILyricLineList(Paint paramPaint1, Paint paramPaint2, int paramInt, boolean paramBoolean1, boolean paramBoolean2)
   {
-    if (TextUtils.isEmpty(this.mText)) {}
-    int k;
-    int j;
-    String[] arrayOfString;
-    int i7;
-    do
-    {
+    Object localObject1 = paramPaint1;
+    if (TextUtils.isEmpty(this.mText)) {
       return;
-      this.mUILine.clear();
-      k = (int)paramPaint1.measureText(this.mText);
-      j = 0;
-      i = 0;
-      if (k <= paramInt)
+    }
+    this.mUILine.clear();
+    int j = (int)((Paint)localObject1).measureText(this.mText);
+    int i4 = 0;
+    int i = 0;
+    if (j <= paramInt)
+    {
+      if (!paramBoolean2)
       {
+        i = paramInt - (int)paramPaint2.measureText(this.mText) >> 1;
+        paramInt = paramInt - j >> 1;
+      }
+      else
+      {
+        paramInt = 0;
+      }
+      paramPaint1 = new SentenceUI(this.mText, i, paramInt, this.mCharacters);
+      paramPaint2 = this.mBitmapLeftAttachInfo;
+      if (paramPaint2 != null) {
+        paramPaint1.mLeftAttachInfo = paramPaint2;
+      } else {
+        paramPaint1.mLeftAttachInfo = this.mNormalLeftAttachInfo;
+      }
+      this.mUILine.add(paramPaint1);
+      return;
+    }
+    if (paramBoolean1)
+    {
+      paramPaint1 = new SentenceUI(this.mText, 0, 0, this.mCharacters);
+      paramPaint2 = this.mBitmapLeftAttachInfo;
+      if (paramPaint2 != null) {
+        paramPaint1.mLeftAttachInfo = paramPaint2;
+      } else {
+        paramPaint1.mLeftAttachInfo = this.mNormalLeftAttachInfo;
+      }
+      this.mUILine.add(paramPaint1);
+      return;
+    }
+    String[] arrayOfString = LyricDataUtil.wrap(this.mText, (Paint)localObject1, paramInt, paramInt);
+    j = arrayOfString.length;
+    if (j > 0)
+    {
+      localObject1 = this.mCharacters;
+      if (localObject1 != null)
+      {
+        localObject1 = rerangeLyricCharacterList(this.mText, arrayOfString, (ArrayList)localObject1);
+        this.mUICharacters = ((ArrayList)localObject1);
+      }
+      else
+      {
+        localObject1 = null;
+      }
+      int i3 = 0;
+      int m = 0;
+      int i5 = 0;
+      int n = 0;
+      int i1 = 0;
+      int k = 0;
+      int i7;
+      for (i = 0; i4 < j; i = i7)
+      {
+        Object localObject2 = arrayOfString[i4];
+        i7 = ((String)localObject2).length();
         if (!paramBoolean2)
         {
-          j = paramInt - (int)paramPaint2.measureText(this.mText) >> 1;
-          i = paramInt - k >> 1;
+          k = paramInt - (int)paramPaint2.measureText((String)localObject2) >> 1;
+          i = paramInt - (int)paramPaint1.measureText((String)localObject2) >> 1;
         }
-        paramPaint1 = new SentenceUI(this.mText, j, i, this.mCharacters);
-        if (this.mBitmapLeftAttachInfo != null) {}
-        for (paramPaint1.mLeftAttachInfo = this.mBitmapLeftAttachInfo;; paramPaint1.mLeftAttachInfo = this.mNormalLeftAttachInfo)
+        int i6;
+        int i2;
+        if (localObject1 != null)
         {
-          this.mUILine.add(paramPaint1);
-          return;
-        }
-      }
-      if (paramBoolean1)
-      {
-        paramPaint1 = new SentenceUI(this.mText, 0, 0, this.mCharacters);
-        if (this.mBitmapLeftAttachInfo != null) {}
-        for (paramPaint1.mLeftAttachInfo = this.mBitmapLeftAttachInfo;; paramPaint1.mLeftAttachInfo = this.mNormalLeftAttachInfo)
-        {
-          this.mUILine.add(paramPaint1);
-          return;
-        }
-      }
-      arrayOfString = LyricDataUtil.wrap(this.mText, paramPaint1, paramInt, paramInt);
-      i7 = arrayOfString.length;
-    } while (i7 <= 0);
-    int n = 0;
-    int i = 0;
-    ArrayList localArrayList;
-    if (this.mCharacters != null)
-    {
-      localArrayList = rerangeLyricCharacterList(this.mText, arrayOfString, this.mCharacters);
-      this.mUICharacters = localArrayList;
-    }
-    for (;;)
-    {
-      int i4 = 0;
-      int i2 = 0;
-      int i1 = 0;
-      int m = 0;
-      j = 0;
-      k = 0;
-      label259:
-      Object localObject;
-      int i6;
-      int i3;
-      label297:
-      int i5;
-      LyricCharacter localLyricCharacter;
-      if (i4 < i7)
-      {
-        localObject = arrayOfString[i4];
-        i6 = ((String)localObject).length();
-        if (!paramBoolean2) {
-          break label567;
-        }
-        i3 = i2;
-        i2 = i1;
-        i1 = i3;
-        if (localArrayList == null) {
-          break label811;
-        }
-        n += i6;
-        localObject = new ArrayList();
-        i5 = j;
-        i3 = m;
-        j = k;
-        k = i5;
-        if (i3 >= localArrayList.size()) {
-          break label780;
-        }
-        localLyricCharacter = (LyricCharacter)localArrayList.get(i3);
-        if ((i4 == 0) || (i != i3)) {
-          break label765;
-        }
-        k = n - i6;
-        m = localLyricCharacter.mStart;
-        j = k;
-        k = m - k;
-        label393:
-        if ((localLyricCharacter.mStart > n) || (localLyricCharacter.mEnd < n)) {
-          break label643;
-        }
-        if (i4 != 0) {
-          break label600;
-        }
-        ((ArrayList)localObject).add(new LyricCharacter(localLyricCharacter.mStartTime, localLyricCharacter.mDuration, localLyricCharacter.mStart, i6));
-        label448:
-        i = i3 + 1;
-        i3 = i;
-        m = n;
-        n = k;
-        k = i3;
-      }
-      for (;;)
-      {
-        if (i4 == 0) {
-          localObject = new SentenceUI(arrayOfString[i4], i2, i1, (ArrayList)localObject);
-        }
-        for (((SentenceUI)localObject).mLeftAttachInfo = this.mBitmapLeftAttachInfo;; ((SentenceUI)localObject).mLeftAttachInfo = this.mNormalLeftAttachInfo)
-        {
-          this.mUILine.add(localObject);
-          i6 = i4 + 1;
-          i5 = n;
-          n = k;
-          i3 = m;
-          i4 = i2;
-          k = i5;
-          m = i;
+          i6 = i3 + i7;
+          localObject2 = new ArrayList();
           i2 = i1;
-          i = n;
-          n = i3;
-          i1 = i4;
-          i4 = i6;
-          break label259;
-          break;
-          label567:
-          i2 = (int)paramPaint2.measureText((String)localObject);
-          i1 = paramInt - (int)paramPaint1.measureText((String)localObject) >> 1;
-          i2 = paramInt - i2 >> 1;
-          break label297;
-          label600:
-          i = localLyricCharacter.mStart;
-          ((ArrayList)localObject).add(new LyricCharacter(localLyricCharacter.mStartTime, localLyricCharacter.mDuration, i - j - k, i6));
-          break label448;
-          label643:
-          if (i4 == 0) {
-            ((ArrayList)localObject).add(localLyricCharacter);
-          }
-          for (;;)
+          i3 = n;
+          while (m < ((ArrayList)localObject1).size())
           {
-            m = k;
-            i3 += 1;
-            k = j;
-            j = m;
-            break;
-            m = localLyricCharacter.mStart;
-            i5 = localLyricCharacter.mEnd;
-            ((ArrayList)localObject).add(new LyricCharacter(localLyricCharacter.mStartTime, localLyricCharacter.mDuration, m - j - k, i5 - j - k));
+            LyricCharacter localLyricCharacter = (LyricCharacter)((ArrayList)localObject1).get(m);
+            i1 = i3;
+            n = i2;
+            if (i4 != 0)
+            {
+              i1 = i3;
+              n = i2;
+              if (i5 == m)
+              {
+                i1 = i6 - i7;
+                i2 = localLyricCharacter.mStart;
+                n = i1;
+                i1 = i2 - i1;
+              }
+            }
+            if ((localLyricCharacter.mStart <= i6) && (localLyricCharacter.mEnd >= i6))
+            {
+              if (i4 == 0)
+              {
+                ((ArrayList)localObject2).add(new LyricCharacter(localLyricCharacter.mStartTime, localLyricCharacter.mDuration, localLyricCharacter.mStart, i7));
+              }
+              else
+              {
+                i2 = localLyricCharacter.mStart;
+                ((ArrayList)localObject2).add(new LyricCharacter(localLyricCharacter.mStartTime, localLyricCharacter.mDuration, i2 - n - i1, i7));
+              }
+              i3 = i;
+              i = j;
+              m += 1;
+              i5 = m;
+              i2 = n;
+              j = k;
+              k = i3;
+              break label700;
+            }
+            if (i4 == 0)
+            {
+              ((ArrayList)localObject2).add(localLyricCharacter);
+            }
+            else
+            {
+              i2 = localLyricCharacter.mStart;
+              i3 = localLyricCharacter.mEnd;
+              ((ArrayList)localObject2).add(new LyricCharacter(localLyricCharacter.mStartTime, localLyricCharacter.mDuration, i2 - n - i1, i3 - n - i1));
+            }
+            m += 1;
+            i3 = i1;
+            i2 = n;
           }
-          localObject = new SentenceUI(arrayOfString[i4], i2, i1, (ArrayList)localObject);
+          n = i;
+          i1 = i3;
+          i = j;
+          j = k;
+          k = n;
         }
-        label765:
-        m = j;
-        j = k;
-        k = m;
-        break label393;
-        label780:
-        i5 = k;
-        i6 = j;
-        m = n;
-        k = i;
-        j = i5;
-        n = i6;
-        i = i3;
-        continue;
-        label811:
-        i3 = k;
-        i5 = m;
-        localObject = null;
-        m = n;
-        k = i;
-        n = i3;
-        i = i5;
+        else
+        {
+          i2 = j;
+          j = k;
+          localObject2 = null;
+          k = i;
+          i = i2;
+          i2 = i1;
+          i1 = n;
+          i6 = i3;
+        }
+        label700:
+        if (i4 == 0)
+        {
+          localObject2 = new SentenceUI(arrayOfString[i4], j, k, (ArrayList)localObject2);
+          ((SentenceUI)localObject2).mLeftAttachInfo = this.mBitmapLeftAttachInfo;
+        }
+        else
+        {
+          localObject2 = new SentenceUI(arrayOfString[i4], j, k, (ArrayList)localObject2);
+          ((SentenceUI)localObject2).mLeftAttachInfo = this.mNormalLeftAttachInfo;
+        }
+        i7 = k;
+        k = j;
+        this.mUILine.add(localObject2);
+        i4 += 1;
+        j = i;
+        i3 = i6;
+        n = i1;
+        i1 = i2;
       }
-      localArrayList = null;
     }
   }
   
@@ -359,28 +343,29 @@ public class Sentence
   
   public int[] marshalMarkCharacter(int[] paramArrayOfInt)
   {
-    if (this.mUICharacters == null) {
+    Object localObject = this.mUICharacters;
+    if (localObject == null) {
       return paramArrayOfInt;
     }
-    int[] arrayOfInt = new int[this.mUICharacters.size()];
-    int j = 0;
+    localObject = new int[((ArrayList)localObject).size()];
     int i = 0;
-    while (j < this.mCharacters.size())
+    int j = 0;
+    while (i < this.mCharacters.size())
     {
-      LyricCharacter localLyricCharacter = (LyricCharacter)this.mCharacters.get(j);
-      while ((i < this.mUICharacters.size()) && (isInCharacter(localLyricCharacter, (LyricCharacter)this.mUICharacters.get(i))))
+      LyricCharacter localLyricCharacter = (LyricCharacter)this.mCharacters.get(i);
+      while ((j < this.mUICharacters.size()) && (isInCharacter(localLyricCharacter, (LyricCharacter)this.mUICharacters.get(j))))
       {
-        arrayOfInt[i] = paramArrayOfInt[j];
-        i += 1;
+        localObject[j] = paramArrayOfInt[i];
+        j += 1;
       }
-      j += 1;
+      i += 1;
     }
-    return arrayOfInt;
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.lyric.data.Sentence
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import java.util.concurrent.Executor;
 public class UrlRequestBuilderImpl
   extends UrlRequest.Builder
 {
-  private static final String a = UrlRequestBuilderImpl.class.getSimpleName();
+  private static final String a = "UrlRequestBuilderImpl";
   private final String b;
   private final UrlRequest.Callback c;
   private final Executor d;
@@ -26,44 +26,49 @@ public class UrlRequestBuilderImpl
   
   public UrlRequestBuilderImpl(String paramString, UrlRequest.Callback paramCallback, Executor paramExecutor)
   {
-    if (paramString == null) {
-      throw new NullPointerException("URL is required.");
-    }
-    if (paramCallback == null) {
+    if (paramString != null)
+    {
+      if (paramCallback != null)
+      {
+        if (paramExecutor != null)
+        {
+          this.b = paramString;
+          this.c = paramCallback;
+          this.d = paramExecutor;
+          return;
+        }
+        throw new NullPointerException("Executor is required.");
+      }
       throw new NullPointerException("Callback is required.");
     }
-    if (paramExecutor == null) {
-      throw new NullPointerException("Executor is required.");
-    }
-    this.b = paramString;
-    this.c = paramCallback;
-    this.d = paramExecutor;
+    throw new NullPointerException("URL is required.");
   }
   
   public UrlRequestBuilderImpl addHeader(String paramString1, String paramString2)
   {
-    if (paramString1 == null) {
-      throw new NullPointerException("Invalid header name.");
-    }
-    if (paramString2 == null) {
+    if (paramString1 != null)
+    {
+      if (paramString2 != null)
+      {
+        if ("Accept-Encoding".equalsIgnoreCase(paramString1)) {
+          return this;
+        }
+        this.f.add(Pair.create(paramString1, paramString2));
+        return this;
+      }
       throw new NullPointerException("Invalid header value.");
     }
-    if ("Accept-Encoding".equalsIgnoreCase(paramString1)) {
-      return this;
-    }
-    this.f.add(Pair.create(paramString1, paramString2));
-    return this;
+    throw new NullPointerException("Invalid header name.");
   }
   
   public UrlRequest build()
   {
     Object localObject1 = x.a();
-    Object localObject2;
     if ((localObject1 != null) && (((x)localObject1).b()))
     {
       DexLoader localDexLoader = ((x)localObject1).c().b();
       localObject1 = Integer.TYPE;
-      localObject2 = Boolean.TYPE;
+      Object localObject2 = Boolean.TYPE;
       String str1 = this.b;
       int m = this.h;
       UrlRequest.Callback localCallback = this.c;
@@ -123,16 +128,12 @@ public class UrlRequestBuilderImpl
         str5 = this.l;
         localObject1 = (UrlRequest)localDexLoader.invokeStaticMethod("com.tencent.tbs.tbsshell.WebCoreProxy", "UrlRequest_getX5UrlRequestProvider", new Class[] { String.class, localObject1, UrlRequest.Callback.class, Executor.class, localObject2, String.class, ArrayList.class, String.class, [B.class, String.class, String.class }, new Object[] { str1, Integer.valueOf(m), localCallback, localExecutor, Boolean.valueOf(bool), str2, localArrayList, str3, arrayOfByte, str4, str5 });
       }
-      localObject2 = localObject1;
-      if (localObject1 == null) {
-        throw new NullPointerException("UrlRequest build fail");
+      if (localObject1 != null) {
+        return localObject1;
       }
+      throw new NullPointerException("UrlRequest build fail");
     }
-    else
-    {
-      localObject2 = null;
-    }
-    return localObject2;
+    return null;
   }
   
   public UrlRequestBuilderImpl disableCache()
@@ -143,11 +144,11 @@ public class UrlRequestBuilderImpl
   
   public UrlRequestBuilderImpl setDns(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      throw new NullPointerException("host and address are required.");
+    if ((paramString1 != null) && (paramString2 != null))
+    {
+      this.k = paramString1;
+      this.l = paramString2;
     }
-    this.k = paramString1;
-    this.l = paramString2;
     try
     {
       paramString1 = x.a();
@@ -161,16 +162,18 @@ public class UrlRequestBuilderImpl
       return this;
     }
     catch (Exception paramString1) {}
+    throw new NullPointerException("host and address are required.");
     return this;
   }
   
   public UrlRequest.Builder setHttpMethod(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("Method is required.");
+    if (paramString != null)
+    {
+      this.e = paramString;
+      return this;
     }
-    this.e = paramString;
-    return this;
+    throw new NullPointerException("Method is required.");
   }
   
   public UrlRequestBuilderImpl setPriority(int paramInt)
@@ -181,25 +184,27 @@ public class UrlRequestBuilderImpl
   
   public UrlRequest.Builder setRequestBody(String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("Body is required.");
+    if (paramString != null)
+    {
+      this.i = paramString;
+      return this;
     }
-    this.i = paramString;
-    return this;
+    throw new NullPointerException("Body is required.");
   }
   
   public UrlRequest.Builder setRequestBodyBytes(byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {
-      throw new NullPointerException("Body is required.");
+    if (paramArrayOfByte != null)
+    {
+      this.j = paramArrayOfByte;
+      return this;
     }
-    this.j = paramArrayOfByte;
-    return this;
+    throw new NullPointerException("Body is required.");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.UrlRequestBuilderImpl
  * JD-Core Version:    0.7.0.1
  */

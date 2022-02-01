@@ -14,7 +14,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class BusinessInfoCheckUpdate$TimeReqBody
   extends MessageMicro<TimeReqBody>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50, 58, 66, 72, 80, 90, 96, 104 }, new String[] { "iProtocolVer", "uiClientPlatID", "sClientVer", "uiUin", "rptMsgAppInfo", "rptSetting", "rptNoRedPath", "lbs", "uiNetType", "bHebaFlag", "sQimei", "uReqType", "rptIdList" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), "", Long.valueOf(0L), null, null, "", null, Integer.valueOf(0), Boolean.valueOf(false), "", Integer.valueOf(0), Long.valueOf(0L) }, TimeReqBody.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bHebaFlag = PBField.initBool(false);
   public final PBInt32Field iProtocolVer = PBField.initInt32(0);
   public BusinessInfoCheckUpdate.LbsInfo lbs = new BusinessInfoCheckUpdate.LbsInfo();
@@ -28,10 +28,16 @@ public final class BusinessInfoCheckUpdate$TimeReqBody
   public final PBUInt32Field uiClientPlatID = PBField.initUInt32(0);
   public final PBUInt32Field uiNetType = PBField.initUInt32(0);
   public final PBUInt64Field uiUin = PBField.initUInt64(0L);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50, 58, 66, 72, 80, 90, 96, 104 }, new String[] { "iProtocolVer", "uiClientPlatID", "sClientVer", "uiUin", "rptMsgAppInfo", "rptSetting", "rptNoRedPath", "lbs", "uiNetType", "bHebaFlag", "sQimei", "uReqType", "rptIdList" }, new Object[] { localInteger, localInteger, "", Long.valueOf(0L), null, null, "", null, localInteger, Boolean.valueOf(false), "", localInteger, Long.valueOf(0L) }, TimeReqBody.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.TimeReqBody
  * JD-Core Version:    0.7.0.1
  */

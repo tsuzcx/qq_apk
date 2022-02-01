@@ -16,14 +16,16 @@ class SDKAvatarSettingManager$5
     if (QLog.isColorLevel()) {
       QLog.w("SDKAvatarSettingManager", 2, "-->preForward--fetch openid timeout");
     }
-    this.this$0.a = true;
-    this.this$0.d();
-    SDKAvatarSettingManager.a(this.this$0, SDKAvatarSettingManager.a(this.this$0));
+    SDKAvatarSettingManager localSDKAvatarSettingManager = this.this$0;
+    localSDKAvatarSettingManager.a = true;
+    localSDKAvatarSettingManager.d();
+    localSDKAvatarSettingManager = this.this$0;
+    SDKAvatarSettingManager.a(localSDKAvatarSettingManager, SDKAvatarSettingManager.a(localSDKAvatarSettingManager));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.5
  * JD-Core Version:    0.7.0.1
  */

@@ -6,7 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
 import android.widget.ImageView;
-import com.etrump.mixlayout.FontManager;
+import com.tencent.mobileqq.vas.font.api.IFontManagerService;
 
 class TextPreviewSettingActivity$1
   extends Handler
@@ -18,27 +18,32 @@ class TextPreviewSettingActivity$1
   
   public void handleMessage(Message paramMessage)
   {
-    ImageView localImageView = (ImageView)this.a.findViewById(2131367321);
-    switch (paramMessage.what)
+    ImageView localImageView = (ImageView)this.a.findViewById(2131367104);
+    int i = paramMessage.what;
+    if (i != 16)
     {
-    }
-    do
-    {
-      do
+      if (i != 18)
       {
-        return;
-        localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).a(TextPreviewSettingActivity.a(this.a)));
-        return;
-      } while (!(paramMessage.obj instanceof Drawable));
-      localImageView.setImageDrawable((Drawable)paramMessage.obj);
-      return;
-    } while (!(paramMessage.obj instanceof Bitmap));
-    localImageView.setImageBitmap((Bitmap)paramMessage.obj);
+        if (i != 19) {
+          return;
+        }
+        if ((paramMessage.obj instanceof Bitmap)) {
+          localImageView.setImageBitmap((Bitmap)paramMessage.obj);
+        }
+      }
+      else if ((paramMessage.obj instanceof Drawable))
+      {
+        localImageView.setImageDrawable((Drawable)paramMessage.obj);
+      }
+    }
+    else {
+      localImageView.setImageDrawable(TextPreviewSettingActivity.a(this.a).getFontNameDrawable(TextPreviewSettingActivity.a(this.a)));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TextPreviewSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

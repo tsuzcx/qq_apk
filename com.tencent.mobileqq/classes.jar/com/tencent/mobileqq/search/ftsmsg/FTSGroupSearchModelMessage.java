@@ -2,10 +2,10 @@ package com.tencent.mobileqq.search.ftsmsg;
 
 import android.view.View;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.search.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
+import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
+import com.tencent.mobileqq.search.business.group.model.FTSGroupSearchModelEntity;
 import com.tencent.mobileqq.search.ftsentity.FTSEntitySearchActivity;
-import com.tencent.mobileqq.search.ftsentity.FTSGroupSearchModelEntity;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
 import com.tencent.mobileqq.search.report.UniteSearchReportController;
 import com.tencent.mobileqq.search.util.SearchUtils;
@@ -30,7 +30,7 @@ public class FTSGroupSearchModelMessage
   
   public String a()
   {
-    return HardCodeUtil.a(2131704974);
+    return HardCodeUtil.a(2131705050);
   }
   
   public void a(View paramView)
@@ -38,7 +38,10 @@ public class FTSGroupSearchModelMessage
     SearchUtils.a(this.jdField_a_of_type_JavaLangString, 40, 0, paramView);
     if ((paramView.getContext() instanceof UniteSearchActivity))
     {
-      SearchUtils.a("all_result", "more_talk", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      SearchUtils.a("all_result", "more_talk", new String[] { localStringBuilder.toString() });
       UniteSearchReportController.a(null, 0, this.jdField_a_of_type_Int, "0X8009D4F", 0, 0, null, null);
     }
     com.tencent.mobileqq.utils.fts.SQLiteFTSUtils.FtsItemClickEvent.d = -1;
@@ -53,7 +56,7 @@ public class FTSGroupSearchModelMessage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.ftsmsg.FTSGroupSearchModelMessage
  * JD-Core Version:    0.7.0.1
  */

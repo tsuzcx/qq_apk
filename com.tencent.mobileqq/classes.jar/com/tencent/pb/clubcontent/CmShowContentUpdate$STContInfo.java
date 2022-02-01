@@ -19,13 +19,14 @@ public final class CmShowContentUpdate$STContInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "biz_id", "item_id", "name", "ver" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0) }, STContInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32 }, new String[] { "biz_id", "item_id", "name", "ver" }, new Object[] { localInteger, Long.valueOf(0L), localByteStringMicro, localInteger }, STContInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.clubcontent.CmShowContentUpdate.STContInfo
  * JD-Core Version:    0.7.0.1
  */

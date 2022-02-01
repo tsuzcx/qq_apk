@@ -24,7 +24,7 @@ public class DiyPendantDrawable$DiyAddonSticker
   
   DiyPendantDrawable$DiyAddonSticker(DiyPendantDrawable paramDiyPendantDrawable, int paramInt1, double paramDouble, String paramString, int paramInt2, int paramInt3, int paramInt4)
   {
-    this.jdField_a_of_type_Double = (0.0174532925199433D * paramDouble);
+    this.jdField_a_of_type_Double = (paramDouble * 0.0174532925199433D);
     this.d = paramInt1;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.c = paramInt4;
@@ -35,18 +35,35 @@ public class DiyPendantDrawable$DiyAddonSticker
   public void a(Canvas paramCanvas, Paint paramPaint)
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable, this.d);
-    float f;
     if (localObject != null)
     {
       Rect localRect1 = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.getBounds();
       int i = localRect1.width();
       int j = localRect1.height();
-      i = (int)(i / 2 + Math.sin(this.jdField_a_of_type_Double) * this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.d);
-      j = (int)(j / 2 - Math.cos(this.jdField_a_of_type_Double) * this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.d);
-      int k = (int)(((Bitmap)localObject).getWidth() * this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double);
-      int m = (int)(((Bitmap)localObject).getHeight() * this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double);
-      this.jdField_a_of_type_AndroidGraphicsRect.set(i - k / 2, j - m / 2 + this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.c / 2, k / 2 + i, m / 2 + j + this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.c / 2);
-      Rect localRect2;
+      double d1 = i / 2;
+      double d2 = Math.sin(this.jdField_a_of_type_Double);
+      double d3 = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.d;
+      Double.isNaN(d3);
+      Double.isNaN(d1);
+      i = (int)(d1 + d2 * d3);
+      d1 = j / 2;
+      d2 = Math.cos(this.jdField_a_of_type_Double);
+      d3 = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.d;
+      Double.isNaN(d3);
+      Double.isNaN(d1);
+      j = (int)(d1 - d2 * d3);
+      d1 = ((Bitmap)localObject).getWidth();
+      d2 = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double;
+      Double.isNaN(d1);
+      int k = (int)(d1 * d2);
+      d1 = ((Bitmap)localObject).getHeight();
+      d2 = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double;
+      Double.isNaN(d1);
+      int m = (int)(d1 * d2);
+      Rect localRect2 = this.jdField_a_of_type_AndroidGraphicsRect;
+      int n = k / 2;
+      int i1 = m / 2;
+      localRect2.set(i - n, j - i1 + this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.c / 2, n + i, i1 + j + this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.c / 2);
       if (this.jdField_a_of_type_AndroidGraphicsRect.left < localRect1.left)
       {
         localRect2 = this.jdField_a_of_type_AndroidGraphicsRect;
@@ -72,68 +89,105 @@ public class DiyPendantDrawable$DiyAddonSticker
         this.jdField_a_of_type_AndroidGraphicsRect.bottom = localRect1.bottom;
       }
       paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_a_of_type_AndroidGraphicsRect, paramPaint);
-      if (QLog.isColorLevel()) {
-        QLog.d("DiyPendantDrawable", 2, "draw sticker index = " + this.d + "scaleFactor=" + this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double + ", x=" + i + ", y=" + j + ", w=" + k + ", h=" + m);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("draw sticker index = ");
+        ((StringBuilder)localObject).append(this.d);
+        ((StringBuilder)localObject).append("scaleFactor=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double);
+        ((StringBuilder)localObject).append(", x=");
+        ((StringBuilder)localObject).append(i);
+        ((StringBuilder)localObject).append(", y=");
+        ((StringBuilder)localObject).append(j);
+        ((StringBuilder)localObject).append(", w=");
+        ((StringBuilder)localObject).append(k);
+        ((StringBuilder)localObject).append(", h=");
+        ((StringBuilder)localObject).append(m);
+        QLog.d("DiyPendantDrawable", 2, ((StringBuilder)localObject).toString());
       }
       if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
       {
-        i = (int)(10.0D * this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double);
+        i = (int)(this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double * 10.0D);
         this.jdField_b_of_type_AndroidGraphicsRect.set(this.jdField_a_of_type_AndroidGraphicsRect.left + i, this.jdField_a_of_type_AndroidGraphicsRect.top + i, this.jdField_a_of_type_AndroidGraphicsRect.right - i, this.jdField_a_of_type_AndroidGraphicsRect.bottom - i);
-        f = AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_JavaLangString);
-        if (this.jdField_b_of_type_Int != 1) {
-          break label891;
-        }
-        localObject = new Paint();
-        ((Paint)localObject).setTextSize(f);
-        i = (int)((Paint)localObject).measureText(this.jdField_a_of_type_JavaLangString);
-        j = (int)Math.min(f + 10.0D * this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double, this.jdField_b_of_type_AndroidGraphicsRect.height());
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, f, this.c, i, j, paramPaint);
-        if (localObject != null)
+        float f = AvatarPendantUtil.a(this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b, this.jdField_b_of_type_AndroidGraphicsRect, this.jdField_a_of_type_JavaLangString);
+        boolean bool;
+        if (this.jdField_b_of_type_Int == 1)
         {
-          i = this.jdField_a_of_type_AndroidGraphicsRect.centerX();
-          j = this.jdField_a_of_type_AndroidGraphicsRect.centerY();
-          this.jdField_b_of_type_AndroidGraphicsRect.set(i - ((Bitmap)localObject).getWidth() / 2, j - ((Bitmap)localObject).getHeight() / 2, i + ((Bitmap)localObject).getWidth() / 2, j + ((Bitmap)localObject).getHeight() / 2);
-          paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_b_of_type_AndroidGraphicsRect, paramPaint);
-        }
-        if (QLog.isColorLevel())
-        {
-          if ("draw textInfo text = " + this.jdField_a_of_type_JavaLangString + " fontId = " + this.jdField_a_of_type_Int + " fontType = " + 1 + " color = " + this.c + " fontBitmap Existed = " + localObject == null) {
-            break label885;
+          localObject = new Paint();
+          ((Paint)localObject).setTextSize(f);
+          i = (int)((Paint)localObject).measureText(this.jdField_a_of_type_JavaLangString);
+          d1 = f;
+          d2 = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_Double;
+          Double.isNaN(d1);
+          j = (int)Math.min(d1 + d2 * 10.0D, this.jdField_b_of_type_AndroidGraphicsRect.height());
+          localObject = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, f, this.c, i, j, paramPaint);
+          if (localObject != null)
+          {
+            i = this.jdField_a_of_type_AndroidGraphicsRect.centerX();
+            j = this.jdField_a_of_type_AndroidGraphicsRect.centerY();
+            this.jdField_b_of_type_AndroidGraphicsRect.set(i - ((Bitmap)localObject).getWidth() / 2, j - ((Bitmap)localObject).getHeight() / 2, i + ((Bitmap)localObject).getWidth() / 2, j + ((Bitmap)localObject).getHeight() / 2);
+            paramCanvas.drawBitmap((Bitmap)localObject, null, this.jdField_b_of_type_AndroidGraphicsRect, paramPaint);
           }
+          if (QLog.isColorLevel())
+          {
+            bool = true;
+            paramCanvas = new StringBuilder();
+            paramCanvas.append("draw textInfo text = ");
+            paramCanvas.append(this.jdField_a_of_type_JavaLangString);
+            paramCanvas.append(" fontId = ");
+            paramCanvas.append(this.jdField_a_of_type_Int);
+            paramCanvas.append(" fontType = ");
+            paramCanvas.append(1);
+            paramCanvas.append(" color = ");
+            paramCanvas.append(this.c);
+            paramCanvas.append(" fontBitmap Existed = ");
+            paramCanvas.append(localObject);
+            if (paramCanvas.toString() == null) {
+              bool = false;
+            }
+            QLog.d("DiyPendantDrawable", 2, new Object[] { Boolean.valueOf(bool) });
+          }
+        }
+        else
+        {
           bool = true;
-          QLog.d("DiyPendantDrawable", 2, new Object[] { Boolean.valueOf(bool) });
+          paramPaint = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+          if (paramPaint != null) {
+            this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.setTypeface(paramPaint);
+          }
+          this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.setColor(this.c);
+          this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.setTextAlign(Paint.Align.CENTER);
+          this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.setTextSize(f);
+          localObject = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.getFontMetrics();
+          f = (this.jdField_b_of_type_AndroidGraphicsRect.bottom + this.jdField_b_of_type_AndroidGraphicsRect.top - ((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top) / 2.0F;
+          paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidGraphicsRect.centerX(), f, this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b);
+          if (QLog.isColorLevel())
+          {
+            paramCanvas = new StringBuilder();
+            paramCanvas.append("draw textInfo text = ");
+            paramCanvas.append(this.jdField_a_of_type_JavaLangString);
+            paramCanvas.append(" fontId = ");
+            paramCanvas.append(this.jdField_a_of_type_Int);
+            paramCanvas.append(" fontType = ");
+            paramCanvas.append(this.jdField_b_of_type_Int);
+            paramCanvas.append(" color = ");
+            paramCanvas.append(this.c);
+            paramCanvas.append(" localTypeFace Existed = ");
+            paramCanvas.append(paramPaint);
+            if (paramCanvas.toString() == null) {
+              bool = false;
+            }
+            QLog.d("DiyPendantDrawable", 2, new Object[] { Boolean.valueOf(bool) });
+          }
         }
       }
-    }
-    label885:
-    label891:
-    do
-    {
-      return;
-      bool = false;
-      break;
-      paramPaint = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantFetcher.a(this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      if (paramPaint != null) {
-        this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.setTypeface(paramPaint);
-      }
-      this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.setColor(this.c);
-      this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.setTextAlign(Paint.Align.CENTER);
-      this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.setTextSize(f);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b.getFontMetrics();
-      f = (this.jdField_b_of_type_AndroidGraphicsRect.bottom + this.jdField_b_of_type_AndroidGraphicsRect.top - ((Paint.FontMetrics)localObject).bottom - ((Paint.FontMetrics)localObject).top) / 2.0F;
-      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_AndroidGraphicsRect.centerX(), f, this.jdField_a_of_type_ComTencentMobileqqAddonDiyPendantDrawable.b);
-    } while (!QLog.isColorLevel());
-    if ("draw textInfo text = " + this.jdField_a_of_type_JavaLangString + " fontId = " + this.jdField_a_of_type_Int + " fontType = " + this.jdField_b_of_type_Int + " color = " + this.c + " localTypeFace Existed = " + paramPaint != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("DiyPendantDrawable", 2, new Object[] { Boolean.valueOf(bool) });
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantDrawable.DiyAddonSticker
  * JD-Core Version:    0.7.0.1
  */

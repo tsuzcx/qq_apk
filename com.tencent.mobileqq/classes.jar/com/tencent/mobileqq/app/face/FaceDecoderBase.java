@@ -47,39 +47,38 @@ public abstract class FaceDecoderBase
   
   protected void enqueueDecode(FaceInfo paramFaceInfo)
   {
-    if (paramFaceInfo == null) {}
-    for (;;)
-    {
+    if (paramFaceInfo == null) {
       return;
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enqueueDecode, iRunningRequests=");
+      localStringBuilder.append(this.iRunningRequests);
+      localStringBuilder.append(", pause=");
+      localStringBuilder.append(this.mPause);
+      localStringBuilder.append(",faceinfo=");
+      localStringBuilder.append(paramFaceInfo.toString());
+      QLog.e("FaceDecoderBase", 2, localStringBuilder.toString());
+    }
+    try
+    {
+      this.mReadyRequests.remove(paramFaceInfo);
+    }
+    catch (Exception localException)
+    {
       if (QLog.isColorLevel()) {
-        QLog.e("FaceDecoderBase", 2, "enqueueDecode, iRunningRequests=" + this.iRunningRequests + ", pause=" + this.mPause + ",faceinfo=" + paramFaceInfo.toString());
+        QLog.e("FaceDecoderBase", 2, "enqueueDecode", localException);
       }
-      try
-      {
-        this.mReadyRequests.remove(paramFaceInfo);
-        if (paramFaceInfo.b)
-        {
-          this.mReadyRequests.addLast(paramFaceInfo);
-          paramFaceInfo.a(FaceInfo.k);
-          if ((this.iRunningRequests >= this.maxDecodingTask) || (this.mPause)) {
-            continue;
-          }
-          runNextTask();
-          return;
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.e("FaceDecoderBase", 2, "enqueueDecode", localException);
-            continue;
-            this.mReadyRequests.addFirst(paramFaceInfo);
-          }
-        }
-      }
+    }
+    if (paramFaceInfo.b) {
+      this.mReadyRequests.addLast(paramFaceInfo);
+    } else {
+      this.mReadyRequests.addFirst(paramFaceInfo);
+    }
+    paramFaceInfo.a(FaceInfo.k);
+    if ((this.iRunningRequests < this.maxDecodingTask) && (!this.mPause)) {
+      runNextTask();
     }
   }
   
@@ -148,7 +147,7 @@ public abstract class FaceDecoderBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDecoderBase
  * JD-Core Version:    0.7.0.1
  */

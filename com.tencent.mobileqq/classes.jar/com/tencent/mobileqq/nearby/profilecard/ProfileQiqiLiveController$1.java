@@ -34,7 +34,8 @@ class ProfileQiqiLiveController$1
         if (str == null) {
           break;
         }
-        ((StringBuffer)localObject).append(str).append("\n");
+        ((StringBuffer)localObject).append(str);
+        ((StringBuffer)localObject).append("\n");
       }
       localObject = ((StringBuffer)localObject).toString();
       paramVarArgs.close();
@@ -55,7 +56,11 @@ class ProfileQiqiLiveController$1
       }
       return localBundle;
     }
-    catch (Exception paramVarArgs) {}
+    catch (Exception paramVarArgs)
+    {
+      label211:
+      break label211;
+    }
     return null;
   }
   
@@ -74,7 +79,7 @@ class ProfileQiqiLiveController$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.ProfileQiqiLiveController.1
  * JD-Core Version:    0.7.0.1
  */

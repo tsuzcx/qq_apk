@@ -5,7 +5,7 @@ import java.util.concurrent.ThreadPoolExecutor;
 public class InfiniteTaskThreadPool
   extends ThreadPoolExecutor
 {
-  private static int a = 0;
+  private static int a;
   
   public void execute(Runnable paramRunnable)
   {
@@ -16,7 +16,7 @@ public class InfiniteTaskThreadPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.InfiniteTaskThreadPool
  * JD-Core Version:    0.7.0.1
  */

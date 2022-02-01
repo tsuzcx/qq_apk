@@ -45,54 +45,61 @@ public final class Debugger
   
   private static IDebugger getDebugger(String paramString, int paramInt)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject = null;
+    if (bool) {
       return null;
     }
-    for (;;)
+    synchronized (DEBUGGER_MAP)
     {
-      synchronized (DEBUGGER_MAP)
-      {
-        paramString = (List)DEBUGGER_MAP.get(paramString);
-        if (paramString == null) {
-          break label68;
-        }
-        if (paramInt >= paramString.size())
-        {
-          break label68;
-          return paramString;
+      List localList = (List)DEBUGGER_MAP.get(paramString);
+      paramString = localObject;
+      if (localList != null) {
+        if (paramInt >= localList.size()) {
+          paramString = localObject;
+        } else {
+          paramString = (IDebugger)localList.get(paramInt);
         }
       }
-      paramString = (IDebugger)paramString.get(paramInt);
-      continue;
-      label68:
-      paramString = null;
+      return paramString;
     }
   }
   
   private static int getDebuggersSize(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool = TextUtils.isEmpty(paramString);
+    int i = 0;
+    if (bool) {
       return 0;
     }
-    for (;;)
+    synchronized (DEBUGGER_MAP)
     {
-      synchronized (DEBUGGER_MAP)
-      {
-        paramString = (List)DEBUGGER_MAP.get(paramString);
-        if (paramString == null)
-        {
-          i = 0;
-          return i;
-        }
+      paramString = (List)DEBUGGER_MAP.get(paramString);
+      if (paramString != null) {
+        i = paramString.size();
       }
-      int i = paramString.size();
+      return i;
     }
   }
   
   public static String getVersionInfo(String paramString)
   {
-    if (TextUtils.equals(paramString, "11")) {
-      return "PoLib-" + Noumenon.getLibVersion("1") + "\nPrLib-" + Noumenon.getLibVersion("11") + "\nDoLib-" + Noumenon.getLibVersion("12") + "\nShLib-" + Noumenon.getLibVersion("13") + "\nSlLib-" + Noumenon.getLibVersion("14") + "\nViLib-" + Noumenon.getLibVersion("15");
+    if (TextUtils.equals(paramString, "11"))
+    {
+      paramString = new StringBuilder();
+      paramString.append("PoLib-");
+      paramString.append(Noumenon.getLibVersion("1"));
+      paramString.append("\nPrLib-");
+      paramString.append(Noumenon.getLibVersion("11"));
+      paramString.append("\nDoLib-");
+      paramString.append(Noumenon.getLibVersion("12"));
+      paramString.append("\nShLib-");
+      paramString.append(Noumenon.getLibVersion("13"));
+      paramString.append("\nSlLib-");
+      paramString.append(Noumenon.getLibVersion("14"));
+      paramString.append("\nViLib-");
+      paramString.append(Noumenon.getLibVersion("15"));
+      return paramString.toString();
     }
     return "";
   }
@@ -104,71 +111,80 @@ public final class Debugger
   
   public static void setDebugger(String paramString, int paramInt, IDebugger paramIDebugger)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramIDebugger == null)) {
-      return;
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      Object localObject;
+      if (paramIDebugger == null) {
+        return;
+      }
       synchronized (DEBUGGER_MAP)
       {
-        localObject = (List)DEBUGGER_MAP.get(paramString);
-        if (localObject == null)
+        List localList = (List)DEBUGGER_MAP.get(paramString);
+        Object localObject = localList;
+        if (localList == null)
         {
           localObject = new LinkedList();
           DEBUGGER_MAP.put(paramString, localObject);
-          paramString = (String)localObject;
-          int i = paramString.size();
-          if (paramInt >= i) {
-            if (i < paramInt + 1)
-            {
-              paramString.add(null);
-              i += 1;
-              continue;
-            }
-          }
-          paramString.set(paramInt, paramIDebugger);
-          return;
         }
+        int i = ((List)localObject).size();
+        if (paramInt >= i) {
+          while (i < paramInt + 1)
+          {
+            ((List)localObject).add(null);
+            i += 1;
+          }
+        }
+        ((List)localObject).set(paramInt, paramIDebugger);
+        return;
       }
-      paramString = (String)localObject;
     }
   }
   
   private static void setInWhiteList(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("moduleId should be no-null.");
-    }
-    if (sIsWhiteList == paramBoolean) {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (sIsWhiteList == paramBoolean) {
+        return;
+      }
+      sIsWhiteList = paramBoolean;
+      Noumenon.sHostInterface.commitPreferences(wrapKey("key_white_list", paramString), paramBoolean, true);
       return;
     }
-    sIsWhiteList = paramBoolean;
-    Noumenon.sHostInterface.commitPreferences(wrapKey("key_white_list", paramString), paramBoolean, true);
+    throw new IllegalArgumentException("moduleId should be no-null.");
   }
   
   public static void setUserEnable(String paramString, boolean paramBoolean)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new IllegalArgumentException("moduleId should be no-null.");
-    }
-    if (sIsUserEnable == paramBoolean) {
+    if (!TextUtils.isEmpty(paramString))
+    {
+      if (sIsUserEnable == paramBoolean) {
+        return;
+      }
+      sIsUserEnable = paramBoolean;
+      Noumenon.sHostInterface.commitPreferences(wrapKey("key_user_enable", paramString), paramBoolean, false);
       return;
     }
-    sIsUserEnable = paramBoolean;
-    Noumenon.sHostInterface.commitPreferences(wrapKey("key_user_enable", paramString), paramBoolean, false);
+    throw new IllegalArgumentException("moduleId should be no-null.");
   }
   
   public static boolean shouldDisable(String paramString)
   {
-    if ((!sIsUserEnable) || (!sIsWhiteList)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      if (bool) {
-        Log.w("Debugger", "shouldDisable, userEnable=" + sIsUserEnable + ", whiteList=" + sIsWhiteList);
-      }
-      return bool;
+    boolean bool;
+    if ((sIsUserEnable) && (sIsWhiteList)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    if (bool)
+    {
+      paramString = new StringBuilder();
+      paramString.append("shouldDisable, userEnable=");
+      paramString.append(sIsUserEnable);
+      paramString.append(", whiteList=");
+      paramString.append(sIsWhiteList);
+      Log.w("Debugger", paramString.toString());
+    }
+    return bool;
   }
   
   public static void upgradePlugin(String paramString, Debugger.IDebugCallback paramIDebugCallback)
@@ -178,12 +194,16 @@ public final class Debugger
   
   private static String wrapKey(String paramString1, String paramString2)
   {
-    return paramString1 + '_' + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append('_');
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kwstudio.office.debug.Debugger
  * JD-Core Version:    0.7.0.1
  */

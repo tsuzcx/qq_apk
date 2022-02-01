@@ -12,16 +12,16 @@ class DiyPendantFetcher$6
   
   public void run()
   {
-    HashSet localHashSet = new HashSet();
+    Object localObject = new HashSet();
     Iterator localIterator = this.this$0.a.iterator();
     while (localIterator.hasNext())
     {
       DiyPendantFetcher.Invalidatable localInvalidatable = (DiyPendantFetcher.Invalidatable)localIterator.next();
       if ((localInvalidatable != null) && (localInvalidatable.a() != null))
       {
-        if (!localHashSet.contains(localInvalidatable))
+        if (!((HashSet)localObject).contains(localInvalidatable))
         {
-          localHashSet.add(localInvalidatable);
+          ((HashSet)localObject).add(localInvalidatable);
           localInvalidatable.invalidateSelf();
           this.this$0.a.remove(localInvalidatable);
         }
@@ -30,14 +30,18 @@ class DiyPendantFetcher$6
         this.this$0.a.remove(localInvalidatable);
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("DiyPendantFetcher", 2, "wait for refresh size: " + this.this$0.a.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("wait for refresh size: ");
+      ((StringBuilder)localObject).append(this.this$0.a.size());
+      QLog.i("DiyPendantFetcher", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.addon.DiyPendantFetcher.6
  * JD-Core Version:    0.7.0.1
  */

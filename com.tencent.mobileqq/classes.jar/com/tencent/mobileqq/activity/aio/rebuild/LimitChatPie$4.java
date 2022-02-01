@@ -1,24 +1,20 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.avatar.observer.AvatarObserver;
+import com.tencent.mobileqq.app.FriendListObserver;
 
 class LimitChatPie$4
-  extends AvatarObserver
+  extends FriendListObserver
 {
   LimitChatPie$4(LimitChatPie paramLimitChatPie) {}
   
-  public void onUpdateApolloHead(boolean paramBoolean, String paramString, int paramInt)
+  protected void onAddFriend(String paramString)
   {
-    if ((this.a.a != null) && (TextUtils.equals(paramString, this.a.a.getCurrentAccountUin()))) {
-      this.a.g(65536);
-    }
+    LimitChatPie.a(this.a, paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.LimitChatPie.4
  * JD-Core Version:    0.7.0.1
  */

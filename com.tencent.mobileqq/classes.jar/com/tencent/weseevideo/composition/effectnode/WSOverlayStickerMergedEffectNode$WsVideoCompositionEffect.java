@@ -55,103 +55,117 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
   
   private CIImage applyEffectHard(@NonNull TAVStickerRenderContext paramTAVStickerRenderContext, CIImage paramCIImage, CMTime paramCMTime, CIContext paramCIContext)
   {
-    if ((WSOverlayStickerMergedEffectNode.access$300(this.this$0) == null) || (WSOverlayStickerMergedEffectNode.access$400(this.this$0).isEmpty())) {
-      return paramCIImage;
-    }
-    ArrayList localArrayList = new ArrayList();
-    Iterator localIterator = WSOverlayStickerMergedEffectNode.access$500(this.this$0).iterator();
-    TAVSticker localTAVSticker;
-    while (localIterator.hasNext())
+    if (WSOverlayStickerMergedEffectNode.access$300(this.this$0) != null)
     {
-      localTAVSticker = (TAVSticker)localIterator.next();
-      if (localTAVSticker.getTimeRange().containsTime(paramCMTime)) {
-        localArrayList.add(localTAVSticker);
+      if (WSOverlayStickerMergedEffectNode.access$400(this.this$0).isEmpty()) {
+        return paramCIImage;
       }
-    }
-    if (localArrayList.isEmpty()) {
-      releaseCloneRenderContext();
-    }
-    if ((WSOverlayStickerMergedEffectNode.access$600(this.this$0)) && (this.cloneStickerContext != null) && (localArrayList.size() < this.cloneStickerContext.getStickerCount())) {
-      releaseCloneRenderContext();
-    }
-    localIterator = localArrayList.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
+      ArrayList localArrayList = new ArrayList();
+      Iterator localIterator = WSOverlayStickerMergedEffectNode.access$500(this.this$0).iterator();
+      TAVSticker localTAVSticker;
+      while (localIterator.hasNext())
+      {
+        localTAVSticker = (TAVSticker)localIterator.next();
+        if (localTAVSticker.getTimeRange().containsTime(paramCMTime)) {
+          localArrayList.add(localTAVSticker);
+        }
       }
-      localTAVSticker = (TAVSticker)localIterator.next();
-    } while ((this.cloneStickerContext == null) || (this.cloneStickerContext.containSticker(localTAVSticker)));
-    for (int i = 1;; i = 0)
-    {
+      if (localArrayList.isEmpty()) {
+        releaseCloneRenderContext();
+      }
+      if ((WSOverlayStickerMergedEffectNode.access$600(this.this$0)) && (this.cloneStickerContext != null) && (localArrayList.size() < this.cloneStickerContext.getStickerCount())) {
+        releaseCloneRenderContext();
+      }
+      int j = 0;
+      localIterator = localArrayList.iterator();
+      TAVStickerRenderContext localTAVStickerRenderContext;
+      do
+      {
+        i = j;
+        if (!localIterator.hasNext()) {
+          break;
+        }
+        localTAVSticker = (TAVSticker)localIterator.next();
+        localTAVStickerRenderContext = this.cloneStickerContext;
+      } while ((localTAVStickerRenderContext == null) || (localTAVStickerRenderContext.containSticker(localTAVSticker)));
+      int i = 1;
       if ((i != 0) && (WSOverlayStickerMergedEffectNode.access$700(this.this$0))) {
         releaseCloneRenderContext();
       }
       renderByCloneContext(paramTAVStickerRenderContext, localArrayList, paramCIImage, paramCMTime, paramCIContext);
-      return paramCIImage;
     }
+    return paramCIImage;
   }
   
   private CIImage applyWithBlurStickerRenderContext(TAVStickerRenderContext paramTAVStickerRenderContext, TAVVideoEffect paramTAVVideoEffect, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
     this.applyEffectStartTime = System.currentTimeMillis();
     paramTAVVideoEffect = paramRenderInfo.getCiContext();
-    if (paramTAVStickerRenderContext == null) {}
-    CMSampleBuffer localCMSampleBuffer;
-    do
-    {
-      do
-      {
-        return paramCIImage;
-        this.currentTime = paramRenderInfo.getTime();
-        if (WSOverlayStickerMergedEffectNode.access$200(this.this$0)) {
-          return applyEffectHard(paramTAVStickerRenderContext, paramCIImage, paramRenderInfo.getTime(), paramTAVVideoEffect);
-        }
-        this.stickerContext.setRenderSize(paramCIImage.getSize());
-        localCMSampleBuffer = this.stickerContext.renderSticker(paramRenderInfo.getTime().getTimeUs() / 1000L, null, paramTAVVideoEffect.getRenderContext().eglContext());
-        paramTAVVideoEffect.getRenderContext().makeCurrent();
-        WSOverLayBlurManager.updateSourceCIImage(paramTAVStickerRenderContext, paramCIImage, paramRenderInfo);
-      } while (noStickerRender(paramRenderInfo.getTime(), paramTAVStickerRenderContext.getStickers()));
-      this.applyEffectStartTime = System.currentTimeMillis();
-    } while (localCMSampleBuffer == null);
-    if (localCMSampleBuffer.isNewFrame()) {
-      this.stickerContext.getStickerTexture().awaitNewImage(1000L);
-    }
-    paramTAVVideoEffect = localCMSampleBuffer.getTextureInfo();
-    paramTAVVideoEffect.setMixAlpha(false);
-    paramTAVVideoEffect = new CIImage(paramTAVVideoEffect);
-    if (((IBlurStickerRenderContext)paramTAVStickerRenderContext).shouldRenderBlurSticker())
-    {
-      insertBlurCIImage(paramCIImage, paramRenderInfo, paramTAVVideoEffect);
+    if (paramTAVStickerRenderContext == null) {
       return paramCIImage;
     }
-    paramTAVVideoEffect.imageByCompositingOverImage(paramCIImage);
-    Log.d("blur_cost", String.format("------------------无马赛克渲染总耗时：%d%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.applyEffectStartTime), "------------------" }));
+    this.stickerContext.setRenderSize(paramCIImage.getSize());
+    WSOverLayBlurManager.updateSourceCIImage(paramTAVStickerRenderContext, paramCIImage, paramRenderInfo);
+    this.currentTime = paramRenderInfo.getTime();
+    if (WSOverlayStickerMergedEffectNode.access$200(this.this$0)) {
+      return applyEffectHard(paramTAVStickerRenderContext, paramCIImage, paramRenderInfo.getTime(), paramTAVVideoEffect);
+    }
+    CMSampleBuffer localCMSampleBuffer = this.stickerContext.renderSticker(paramRenderInfo.getTime().getTimeUs() / 1000L, null, paramTAVVideoEffect.getRenderContext().eglContext());
+    paramTAVVideoEffect.getRenderContext().makeCurrent();
+    if (noStickerRender(paramRenderInfo.getTime(), paramTAVStickerRenderContext.getStickers())) {
+      return paramCIImage;
+    }
+    this.applyEffectStartTime = System.currentTimeMillis();
+    if (localCMSampleBuffer != null)
+    {
+      if (localCMSampleBuffer.isNewFrame()) {
+        this.stickerContext.getStickerTexture().awaitNewImage(1000L);
+      }
+      paramTAVVideoEffect = localCMSampleBuffer.getTextureInfo();
+      paramTAVVideoEffect.setMixAlpha(false);
+      paramTAVVideoEffect = new CIImage(paramTAVVideoEffect);
+      if (((IBlurStickerRenderContext)paramTAVStickerRenderContext).shouldRenderBlurSticker())
+      {
+        insertBlurCIImage(paramCIImage, paramRenderInfo, paramTAVVideoEffect);
+        return paramCIImage;
+      }
+      if (this.this$0.needRender)
+      {
+        paramTAVVideoEffect.imageByCompositingOverImage(paramCIImage);
+        Log.d("blur_cost", String.format("------------------无马赛克渲染总耗时：%d%s", new Object[] { Long.valueOf(System.currentTimeMillis() - this.applyEffectStartTime), "------------------" }));
+      }
+    }
     return paramCIImage;
   }
   
   private CIImage applyWithTAVStickerRenderContext(TAVStickerRenderContext paramTAVStickerRenderContext, TAVVideoEffect paramTAVVideoEffect, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
     paramTAVVideoEffect = paramRenderInfo.getCiContext();
-    if (paramTAVStickerRenderContext == null) {}
-    CMSampleBuffer localCMSampleBuffer;
-    do
-    {
+    if (paramTAVStickerRenderContext == null) {
       return paramCIImage;
-      this.currentTime = paramRenderInfo.getTime();
-      if (WSOverlayStickerMergedEffectNode.access$100(this.this$0)) {
-        return applyEffectHard(paramTAVStickerRenderContext, paramCIImage, paramRenderInfo.getTime(), paramTAVVideoEffect);
-      }
-      this.stickerContext.setRenderSize(paramCIImage.getSize());
-      localCMSampleBuffer = this.stickerContext.renderSticker(paramRenderInfo.getTime().getTimeUs() / 1000L, null, paramTAVVideoEffect.getRenderContext().eglContext());
-      paramTAVVideoEffect.getRenderContext().makeCurrent();
-    } while ((noStickerRender(paramRenderInfo.getTime(), paramTAVStickerRenderContext.getStickers())) || (localCMSampleBuffer == null));
-    if (localCMSampleBuffer.isNewFrame()) {
-      this.stickerContext.getStickerTexture().awaitNewImage(1000L);
     }
-    paramTAVStickerRenderContext = localCMSampleBuffer.getTextureInfo();
-    paramTAVStickerRenderContext.setMixAlpha(false);
-    new CIImage(paramTAVStickerRenderContext).imageByCompositingOverImage(paramCIImage);
+    this.stickerContext.setRenderSize(paramCIImage.getSize());
+    if (!this.this$0.needRender) {
+      return paramCIImage;
+    }
+    this.currentTime = paramRenderInfo.getTime();
+    if (WSOverlayStickerMergedEffectNode.access$100(this.this$0)) {
+      return applyEffectHard(paramTAVStickerRenderContext, paramCIImage, paramRenderInfo.getTime(), paramTAVVideoEffect);
+    }
+    CMSampleBuffer localCMSampleBuffer = this.stickerContext.renderSticker(paramRenderInfo.getTime().getTimeUs() / 1000L, null, paramTAVVideoEffect.getRenderContext().eglContext());
+    paramTAVVideoEffect.getRenderContext().makeCurrent();
+    if (noStickerRender(paramRenderInfo.getTime(), paramTAVStickerRenderContext.getStickers())) {
+      return paramCIImage;
+    }
+    if (localCMSampleBuffer != null)
+    {
+      if (localCMSampleBuffer.isNewFrame()) {
+        this.stickerContext.getStickerTexture().awaitNewImage(1000L);
+      }
+      paramTAVStickerRenderContext = localCMSampleBuffer.getTextureInfo();
+      paramTAVStickerRenderContext.setMixAlpha(false);
+      new CIImage(paramTAVStickerRenderContext).imageByCompositingOverImage(paramCIImage);
+    }
     return paramCIImage;
   }
   
@@ -162,18 +176,23 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
   
   private TextureInfo getCacheTextureInfo(int paramInt1, int paramInt2)
   {
-    String str = paramInt1 + "_" + paramInt2;
-    TextureInfo localTextureInfo1 = null;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramInt1);
+    ((StringBuilder)localObject1).append("_");
+    ((StringBuilder)localObject1).append(paramInt2);
+    String str = ((StringBuilder)localObject1).toString();
     if (this.textureMap.containsKey(str)) {
-      localTextureInfo1 = (TextureInfo)this.textureMap.get(str);
+      localObject1 = (TextureInfo)this.textureMap.get(str);
+    } else {
+      localObject1 = null;
     }
-    TextureInfo localTextureInfo2 = localTextureInfo1;
-    if (localTextureInfo1 == null)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localTextureInfo2 = CIContext.newTextureInfo(paramInt1, paramInt2);
-      this.textureMap.put(str, localTextureInfo2);
+      localObject2 = CIContext.newTextureInfo(paramInt1, paramInt2);
+      this.textureMap.put(str, localObject2);
     }
-    return localTextureInfo2;
+    return localObject2;
   }
   
   private void insertBlurCIImage(CIImage paramCIImage1, RenderInfo paramRenderInfo, CIImage paramCIImage2)
@@ -215,18 +234,27 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
   
   private boolean isRenderNormalSticker()
   {
+    boolean bool1 = this.this$0.needRender;
+    boolean bool2 = false;
+    if (!bool1) {
+      return false;
+    }
+    bool1 = bool2;
     if (this.stickerContext.getStickers().size() > ((IBlurStickerRenderContext)this.stickerContext).getBlurStickers().size())
     {
       Iterator localIterator = this.stickerContext.getStickers().iterator();
-      while (localIterator.hasNext())
+      TAVSticker localTAVSticker;
+      do
       {
-        TAVSticker localTAVSticker = (TAVSticker)localIterator.next();
-        if ((!((IBlurStickerRenderContext)this.stickerContext).getBlurStickers().contains(localTAVSticker)) && (localTAVSticker.getMode() == TAVStickerMode.INACTIVE)) {
-          return true;
+        bool1 = bool2;
+        if (!localIterator.hasNext()) {
+          break;
         }
-      }
+        localTAVSticker = (TAVSticker)localIterator.next();
+      } while ((((IBlurStickerRenderContext)this.stickerContext).getBlurStickers().contains(localTAVSticker)) || (localTAVSticker.getMode() != TAVStickerMode.INACTIVE));
+      bool1 = true;
     }
-    return false;
+    return bool1;
   }
   
   private boolean noStickerRender(CMTime paramCMTime, List<TAVSticker> paramList)
@@ -245,9 +273,10 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
   
   private void releaseCloneRenderContext()
   {
-    if (this.cloneStickerContext != null)
+    TAVStickerRenderContext localTAVStickerRenderContext = this.cloneStickerContext;
+    if (localTAVStickerRenderContext != null)
     {
-      this.cloneStickerContext.release();
+      localTAVStickerRenderContext.release();
       this.cloneStickerContext.removeAllStickers();
       this.cloneStickerContext = null;
     }
@@ -255,16 +284,17 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
   
   private void renderByCloneContext(@NonNull TAVStickerRenderContext paramTAVStickerRenderContext, List<TAVSticker> paramList, CIImage paramCIImage, CMTime paramCMTime, CIContext paramCIContext)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {}
-    do
+    if (paramList != null)
     {
-      do
-      {
+      if (paramList.isEmpty()) {
         return;
-        if (this.cloneStickerContext == null) {
-          this.cloneStickerContext = paramTAVStickerRenderContext.copy();
-        }
-      } while (this.cloneStickerContext == null);
+      }
+      if (this.cloneStickerContext == null) {
+        this.cloneStickerContext = paramTAVStickerRenderContext.copy();
+      }
+      if (this.cloneStickerContext == null) {
+        return;
+      }
       paramTAVStickerRenderContext = paramList.iterator();
       while (paramTAVStickerRenderContext.hasNext())
       {
@@ -276,26 +306,31 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
       this.cloneStickerContext.setRenderSize(paramCIImage.getSize());
       paramTAVStickerRenderContext = this.cloneStickerContext.renderSticker(paramCMTime.getTimeUs() / 1000L, null, paramCIContext.getRenderContext().eglContext());
       paramCIContext.getRenderContext().makeCurrent();
-    } while (paramTAVStickerRenderContext == null);
-    if (paramTAVStickerRenderContext.isNewFrame()) {
-      this.cloneStickerContext.getStickerTexture().awaitNewImage(1000L);
+      if (paramTAVStickerRenderContext != null)
+      {
+        if (paramTAVStickerRenderContext.isNewFrame()) {
+          this.cloneStickerContext.getStickerTexture().awaitNewImage(1000L);
+        }
+        new CIImage(paramTAVStickerRenderContext.getTextureInfo()).imageByCompositingOverImage(paramCIImage);
+      }
     }
-    new CIImage(paramTAVStickerRenderContext.getTextureInfo()).imageByCompositingOverImage(paramCIImage);
   }
   
   public CIImage apply(TAVVideoEffect paramTAVVideoEffect, CIImage paramCIImage, RenderInfo paramRenderInfo)
   {
-    if ((this.stickerContext instanceof IBlurStickerRenderContext)) {
-      return applyWithBlurStickerRenderContext(this.stickerContext, paramTAVVideoEffect, paramCIImage, paramRenderInfo);
+    TAVStickerRenderContext localTAVStickerRenderContext = this.stickerContext;
+    if ((localTAVStickerRenderContext instanceof IBlurStickerRenderContext)) {
+      return applyWithBlurStickerRenderContext(localTAVStickerRenderContext, paramTAVVideoEffect, paramCIImage, paramRenderInfo);
     }
-    return applyWithTAVStickerRenderContext(this.stickerContext, paramTAVVideoEffect, paramCIImage, paramRenderInfo);
+    return applyWithTAVStickerRenderContext(localTAVStickerRenderContext, paramTAVVideoEffect, paramCIImage, paramRenderInfo);
   }
   
   public String getReportKey()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.stickerContext != null) {
-      synchronized (this.stickerContext.getStickers())
+    ??? = this.stickerContext;
+    if (??? != null) {
+      synchronized (((TAVStickerRenderContext)???).getStickers())
       {
         Iterator localIterator = this.stickerContext.getStickers().iterator();
         while (localIterator.hasNext())
@@ -307,8 +342,14 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
         }
       }
     }
-    if (!localCollection.isEmpty()) {
-      return WSOverlayStickerMergedEffectNode.access$800(this.this$0) + ":[" + MemoryReportHelper.appendKeys(localCollection) + "]";
+    if (!localCollection.isEmpty())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append(WSOverlayStickerMergedEffectNode.access$800(this.this$0));
+      ((StringBuilder)???).append(":[");
+      ((StringBuilder)???).append(MemoryReportHelper.appendKeys(localCollection));
+      ((StringBuilder)???).append("]");
+      return ((StringBuilder)???).toString();
     }
     return null;
   }
@@ -316,26 +357,33 @@ class WSOverlayStickerMergedEffectNode$WsVideoCompositionEffect
   public void release()
   {
     releaseCloneRenderContext();
-    if ((this.stickerContext != null) && (this.this$0.getStickerContext() != this.stickerContext))
+    if (this.stickerContext != null)
     {
-      this.stickerContext.release();
-      this.stickerContext = null;
+      localObject = this.this$0.getStickerContext();
+      TAVStickerRenderContext localTAVStickerRenderContext = this.stickerContext;
+      if (localObject != localTAVStickerRenderContext)
+      {
+        localTAVStickerRenderContext.release();
+        this.stickerContext = null;
+      }
     }
-    if (this.verticalBlurFilter != null)
+    Object localObject = this.verticalBlurFilter;
+    if (localObject != null)
     {
-      this.verticalBlurFilter.release();
+      ((GaosiBlurFilter)localObject).release();
       this.verticalBlurFilter = null;
     }
-    if (this.horizontalBlurFilter != null)
+    localObject = this.horizontalBlurFilter;
+    if (localObject != null)
     {
-      this.horizontalBlurFilter.release();
+      ((GaosiBlurFilter)localObject).release();
       this.horizontalBlurFilter = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.composition.effectnode.WSOverlayStickerMergedEffectNode.WsVideoCompositionEffect
  * JD-Core Version:    0.7.0.1
  */

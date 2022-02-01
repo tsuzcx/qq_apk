@@ -11,30 +11,37 @@ public abstract class nm
   {
     try
     {
-      nm localnm = (nm)super.clone();
+      localObject = (nm)super.clone();
       if (this.a != null)
       {
         ArrayList localArrayList = this.a;
-        localnm.a = new ArrayList();
+        ((nm)localObject).a = new ArrayList();
         int j = localArrayList.size();
         int i = 0;
         while (i < j)
         {
-          localnm.a.add(localArrayList.get(i));
+          ((nm)localObject).a.add(localArrayList.get(i));
           i += 1;
         }
       }
-      return localCloneNotSupportedException;
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      throw new AssertionError();
+      Object localObject;
+      label68:
+      break label68;
+    }
+    localObject = new AssertionError();
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.nm
  * JD-Core Version:    0.7.0.1
  */

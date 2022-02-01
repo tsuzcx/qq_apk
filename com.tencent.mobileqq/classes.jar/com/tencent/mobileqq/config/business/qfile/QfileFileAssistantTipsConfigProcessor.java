@@ -9,10 +9,9 @@ import androidx.annotation.Nullable;
 import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
-import com.tencent.mobileqq.filemanager.api.IQQFileTempUtils;
 import com.tencent.mobileqq.filemanager.api.util.QStorage;
 import com.tencent.mobileqq.filemanager.app.QFileConfigManager;
-import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.filemanager.util.QQFileManagerUtilImpl;
 import com.tencent.qphone.base.util.QLog;
 
 public class QfileFileAssistantTipsConfigProcessor
@@ -23,7 +22,11 @@ public class QfileFileAssistantTipsConfigProcessor
   @NonNull
   public QfileFileAssistantTipsConfigBean a(int paramInt)
   {
-    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "migrateOldOrDefaultContent: type[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("migrateOldOrDefaultContent: type[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, localStringBuilder.toString());
     return new QfileFileAssistantTipsConfigBean();
   }
   
@@ -39,28 +42,37 @@ public class QfileFileAssistantTipsConfigProcessor
   
   public void a(QfileFileAssistantTipsConfigBean paramQfileFileAssistantTipsConfigBean)
   {
-    if (paramQfileFileAssistantTipsConfigBean == null) {
-      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onUpdate: newConf is null.");
-    }
-    do
+    if (paramQfileFileAssistantTipsConfigBean == null)
     {
+      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onUpdate: newConf is null.");
       return;
-      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "QfileFileAssistantTipsConfigProcessor onUpdate");
-      localObject = ((IQQFileTempUtils)QRoute.api(IQQFileTempUtils.class)).getApp();
-      if (localObject == null)
-      {
-        QLog.e("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "app is null!!!");
-        return;
-      }
-    } while (paramQfileFileAssistantTipsConfigBean == null);
-    if (TextUtils.isEmpty(paramQfileFileAssistantTipsConfigBean.a)) {
-      paramQfileFileAssistantTipsConfigBean.a = "{}";
     }
-    Object localObject = ((BaseQQAppInterface)localObject).getApplicationContext().getSharedPreferences("qfile_file_assistant_tips" + ((BaseQQAppInterface)localObject).getCurrentUin(), 0).edit();
-    ((SharedPreferences.Editor)localObject).putString("qfile_file_assistant_tips", paramQfileFileAssistantTipsConfigBean.a);
-    ((SharedPreferences.Editor)localObject).apply();
-    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "save FileAssistantTips config [" + paramQfileFileAssistantTipsConfigBean.a + "]");
-    QFileConfigManager.a().a(paramQfileFileAssistantTipsConfigBean);
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "QfileFileAssistantTipsConfigProcessor onUpdate");
+    BaseQQAppInterface localBaseQQAppInterface = QQFileManagerUtilImpl.a();
+    if (localBaseQQAppInterface == null)
+    {
+      QLog.e("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "app is null!!!");
+      return;
+    }
+    if (paramQfileFileAssistantTipsConfigBean != null)
+    {
+      if (TextUtils.isEmpty(paramQfileFileAssistantTipsConfigBean.a)) {
+        paramQfileFileAssistantTipsConfigBean.a = "{}";
+      }
+      Object localObject = localBaseQQAppInterface.getApplicationContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qfile_file_assistant_tips");
+      localStringBuilder.append(localBaseQQAppInterface.getCurrentUin());
+      localObject = ((Context)localObject).getSharedPreferences(localStringBuilder.toString(), 0).edit();
+      ((SharedPreferences.Editor)localObject).putString("qfile_file_assistant_tips", paramQfileFileAssistantTipsConfigBean.a);
+      ((SharedPreferences.Editor)localObject).apply();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("save FileAssistantTips config [");
+      ((StringBuilder)localObject).append(paramQfileFileAssistantTipsConfigBean.a);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+      QFileConfigManager.a(localBaseQQAppInterface).a(paramQfileFileAssistantTipsConfigBean);
+    }
   }
   
   public Class<QfileFileAssistantTipsConfigBean> clazz()
@@ -85,7 +97,11 @@ public class QfileFileAssistantTipsConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, "onReqFailed: failCode[" + paramInt + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReqFailed: failCode[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("]");
+    QLog.i("QfileFileAssistantTipsConfigProcessor<FileAssistant>", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -95,7 +111,7 @@ public class QfileFileAssistantTipsConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.qfile.QfileFileAssistantTipsConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

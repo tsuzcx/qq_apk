@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_enabled="false" android:state_checked="false" android:drawable="@drawable/gs0" />
-    <item android:state_enabled="true" android:state_checked="true" android:drawable="@drawable/grz" />
-    <item android:state_checked="false" android:drawable="@drawable/gry" />
-</selector>
+    <corners android:radius="25.0dip" />
+    <solid android:color="@color/afu" />
+    <stroke android:width="0.5dip" android:color="@color/aju" />
+</shape>

@@ -15,7 +15,10 @@ public class RoomCloseEvent
   public static final short ID_SCENE_SCROLL = 1;
   public int sceneId = 5;
   
-  public RoomCloseEvent() {}
+  public RoomCloseEvent()
+  {
+    this.sceneId = 5;
+  }
   
   public RoomCloseEvent(short paramShort)
   {
@@ -31,7 +34,7 @@ public class RoomCloseEvent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.pages.room.events.RoomCloseEvent
  * JD-Core Version:    0.7.0.1
  */

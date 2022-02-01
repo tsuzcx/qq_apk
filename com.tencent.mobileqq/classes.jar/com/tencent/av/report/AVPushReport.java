@@ -8,60 +8,59 @@ import org.json.JSONObject;
 
 public class AVPushReport
 {
-  private static HttpUtil.SimpleHttpPostTask a = null;
+  private static HttpUtil.SimpleHttpPostTask a;
   
   public static void a(VideoAppInterface paramVideoAppInterface, int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AVPushReport", 2, "onAvReportPush : rspType = " + paramInt + ",rspBody = " + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onAvReportPush : rspType = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(",rspBody = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("AVPushReport", 2, ((StringBuilder)localObject).toString());
     }
     if (a != null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("AVPushReport", 2, "ReportTask is running.");
       }
-      return;
     }
-    String str;
-    if (a()) {
-      str = "https://play.mobile.qq.com/avreport_test/cgi-bin/report";
-    }
-    try
+    else
     {
-      for (;;)
+      if (a()) {
+        localObject = "https://play.mobile.qq.com/avreport_test/cgi-bin/report";
+      } else {
+        localObject = "https://play.mobile.qq.com/avreport/cgi-bin/report";
+      }
+      try
       {
         paramString = new JSONObject(paramString).optJSONObject("attach");
-        JSONObject localJSONObject = new JSONObject();
-        try
-        {
-          localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
-          localJSONObject.put("skey", paramVideoAppInterface.b());
-          localJSONObject.put("qqversion", "8.5.5");
-          localJSONObject.put("time", System.currentTimeMillis());
-          if (paramString != null) {
-            localJSONObject.put("attach", paramString);
-          }
-        }
-        catch (JSONException paramVideoAppInterface)
-        {
-          for (;;)
-          {
-            paramVideoAppInterface.printStackTrace();
-          }
-        }
-        a = new AVPushReport.1(str, localJSONObject.toString(), null);
-        a.execute(new Void[0]);
-        return;
-        str = "https://play.mobile.qq.com/avreport/cgi-bin/report";
       }
-    }
-    catch (JSONException paramString)
-    {
-      for (;;)
+      catch (JSONException paramString)
       {
         paramString.printStackTrace();
         paramString = null;
       }
+      JSONObject localJSONObject = new JSONObject();
+      try
+      {
+        localJSONObject.put("uin", paramVideoAppInterface.getLongAccountUin());
+        localJSONObject.put("skey", paramVideoAppInterface.b());
+        localJSONObject.put("qqversion", "8.7.0");
+        localJSONObject.put("time", System.currentTimeMillis());
+        if (paramString != null) {
+          localJSONObject.put("attach", paramString);
+        }
+      }
+      catch (JSONException paramVideoAppInterface)
+      {
+        paramVideoAppInterface.printStackTrace();
+      }
+      a = new AVPushReport.1((String)localObject, localJSONObject.toString(), null);
+      a.execute(new Void[0]);
     }
   }
   
@@ -72,7 +71,7 @@ public class AVPushReport
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.report.AVPushReport
  * JD-Core Version:    0.7.0.1
  */

@@ -108,81 +108,118 @@ public class PayJsPlugin
   
   private String getSDKH5Url(String paramString)
   {
-    String str1 = paramString;
+    Object localObject1 = paramString;
     if (!QUAUtil.isQQApp())
     {
-      str1 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName();
-      if ((this.mMiniAppInfo == null) || (this.mMiniAppInfo.launchParam == null)) {
-        break label184;
-      }
-      str1 = str1 + "_" + this.mMiniAppInfo.launchParam.scene;
-    }
-    label184:
-    for (;;)
-    {
-      String str2 = LoginManager.getInstance().getAccount();
-      if (TextUtils.isEmpty(str2)) {
-        str2 = "null";
-      }
-      for (;;)
+      Object localObject2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName();
+      localObject1 = localObject2;
+      if (this.mMiniAppInfo != null)
       {
-        paramString = new StringBuilder(paramString);
-        String str3 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
-        paramString.append("&").append("refer=").append(str1).append("&").append("shareuid=").append(str2).append("&").append("platform=").append(str3).append("&").append("fromSDK=1");
-        str1 = paramString.toString();
-        return str1;
+        localObject1 = localObject2;
+        if (this.mMiniAppInfo.launchParam != null)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append("_");
+          ((StringBuilder)localObject1).append(this.mMiniAppInfo.launchParam.scene);
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
       }
+      String str = LoginManager.getInstance().getAccount();
+      localObject2 = str;
+      if (TextUtils.isEmpty(str)) {
+        localObject2 = "null";
+      }
+      paramString = new StringBuilder(paramString);
+      str = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPlatformId();
+      paramString.append("&");
+      paramString.append("refer=");
+      paramString.append((String)localObject1);
+      paramString.append("&");
+      paramString.append("shareuid=");
+      paramString.append((String)localObject2);
+      paramString.append("&");
+      paramString.append("platform=");
+      paramString.append(str);
+      paramString.append("&");
+      paramString.append("fromSDK=1");
+      localObject1 = paramString.toString();
     }
+    return localObject1;
   }
   
   private String getSDKPf(String paramString)
   {
+    boolean bool = TextUtils.isEmpty(paramString);
     Object localObject2 = "null";
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(paramString)) {
-      localObject1 = localObject2;
-    }
-    int i;
-    for (;;)
-    {
+    if (!bool) {
       try
       {
-        localObject2 = new JSONObject(paramString).optString("prepayId");
-        paramString = (String)localObject2;
-        localObject1 = localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          paramString = "null";
-        }
-        localObject2 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName();
-        localObject1 = localObject2;
-        if (this.mMiniAppInfo != null)
+        paramString = new JSONObject(paramString).optString("prepayId");
+        try
         {
-          localObject1 = localObject2;
-          if (this.mMiniAppInfo.launchParam != null) {
-            localObject1 = (String)localObject2 + "_" + this.mMiniAppInfo.launchParam.scene;
+          bool = TextUtils.isEmpty(paramString);
+          if (!bool) {
+            break label64;
           }
         }
-        String str = LoginManager.getInstance().getAccount();
-        localObject2 = str;
-        if (TextUtils.isEmpty(str)) {
-          localObject2 = "null";
-        }
-        i = LoginManager.getInstance().getLoginType();
-        if ((i != 2) && (i != 3)) {
-          break;
-        }
-        return "qq_m_qq-20031-android-2011-" + this.mMiniAppInfo.appId + "-" + paramString + "-" + (String)localObject1 + "-" + (String)localObject2;
+        catch (JSONException localJSONException1) {}
+        localJSONException2.printStackTrace();
       }
-      catch (JSONException paramString)
+      catch (JSONException localJSONException2)
       {
-        paramString.printStackTrace();
+        paramString = "null";
       }
-      paramString = (String)localObject1;
+    } else {
+      paramString = "null";
     }
-    if (i == 1) {
-      return "qq_m_wx-20031-android-2011-" + this.mMiniAppInfo.appId + "-" + paramString + "-" + (String)localObject1 + "-" + (String)localObject2;
+    label64:
+    Object localObject3 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName();
+    Object localObject1 = localObject3;
+    if (this.mMiniAppInfo != null)
+    {
+      localObject1 = localObject3;
+      if (this.mMiniAppInfo.launchParam != null)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)localObject3);
+        ((StringBuilder)localObject1).append("_");
+        ((StringBuilder)localObject1).append(this.mMiniAppInfo.launchParam.scene);
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
     }
-    return "";
+    localObject3 = LoginManager.getInstance().getAccount();
+    if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+      localObject2 = localObject3;
+    }
+    int i = LoginManager.getInstance().getLoginType();
+    if ((i != 2) && (i != 3))
+    {
+      if (i == 1)
+      {
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("qq_m_wx-20031-android-2011-");
+        ((StringBuilder)localObject3).append(this.mMiniAppInfo.appId);
+        ((StringBuilder)localObject3).append("-");
+        ((StringBuilder)localObject3).append(paramString);
+        ((StringBuilder)localObject3).append("-");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append("-");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        return ((StringBuilder)localObject3).toString();
+      }
+      return "";
+    }
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("qq_m_qq-20031-android-2011-");
+    ((StringBuilder)localObject3).append(this.mMiniAppInfo.appId);
+    ((StringBuilder)localObject3).append("-");
+    ((StringBuilder)localObject3).append(paramString);
+    ((StringBuilder)localObject3).append("-");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append("-");
+    ((StringBuilder)localObject3).append((String)localObject2);
+    return ((StringBuilder)localObject3).toString();
   }
   
   @NotNull
@@ -230,16 +267,18 @@ public class PayJsPlugin
         handleNativeResponseFail(paramRequestEvent, null, "not support pay");
         return;
       }
+      paramActivity = ((PayProxy)localObject2).midasPay(paramActivity, paramJSONObject.toString(), new PayJsPlugin.12(this, paramRequestEvent), (Bundle)localObject1);
     }
-    for (paramActivity = ((PayProxy)localObject2).midasPay(paramActivity, paramJSONObject.toString(), new PayJsPlugin.12(this, paramRequestEvent), (Bundle)localObject1);; paramActivity = null)
+    else
     {
-      if (paramActivity != null) {}
-      for (i = paramActivity.getInt("retCode", 0); (paramActivity != null) && (i != 0); i = 0)
-      {
-        handleNativeResponseFail(paramRequestEvent, null, "");
-        return;
-      }
-      break;
+      paramActivity = null;
+    }
+    i = 0;
+    if (paramActivity != null) {
+      i = paramActivity.getInt("retCode", 0);
+    }
+    if ((paramActivity != null) && (i != 0)) {
+      handleNativeResponseFail(paramRequestEvent, null, "");
     }
   }
   
@@ -253,25 +292,26 @@ public class PayJsPlugin
     localBundle.putLong("payparmas_h5_start", System.currentTimeMillis());
     localBundle.putInt("payparmas_request_code", 14);
     localBundle.putString("payparmas_sdk_pf", getSDKPf(paramString));
-    PayProxy localPayProxy;
     if (paramActivity != null)
     {
-      localPayProxy = (PayProxy)ProxyManager.get(PayProxy.class);
+      PayProxy localPayProxy = (PayProxy)ProxyManager.get(PayProxy.class);
       if (localPayProxy == null)
       {
         handleNativeResponseFail(paramRequestEvent, null, "not support pay");
         return;
       }
+      paramActivity = localPayProxy.midasPay(paramActivity, paramString, new PayJsPlugin.11(this, paramRequestEvent), localBundle);
     }
-    for (paramActivity = localPayProxy.midasPay(paramActivity, paramString, new PayJsPlugin.11(this, paramRequestEvent), localBundle);; paramActivity = null)
+    else
     {
-      if (paramActivity != null) {}
-      for (i = paramActivity.getInt("retCode", 0); (paramActivity != null) && (i != 0); i = 0)
-      {
-        handleNativeResponseFail(paramRequestEvent, null, "");
-        return;
-      }
-      break;
+      paramActivity = null;
+    }
+    i = 0;
+    if (paramActivity != null) {
+      i = paramActivity.getInt("retCode", 0);
+    }
+    if ((paramActivity != null) && (i != 0)) {
+      handleNativeResponseFail(paramRequestEvent, null, "");
     }
   }
   
@@ -305,7 +345,20 @@ public class PayJsPlugin
         invokeMidasConsume(paramRequestEvent, paramString1, paramString2, paramInt3, paramInt1, paramInt2, paramInt5, paramInt4);
         return;
       }
-      QMLog.i("PayJsPlugin", "handleRechargeGame onPayCallBack, , consumeAppid = " + paramString1 + ", consumePrepayId = " + paramString2 + ", consumeStarCurrency = " + paramInt3 + ", consumeTopupAmount = " + paramInt2 + ", consumeBalanceAmount = " + paramInt1 + ", payChannel = " + paramInt5);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("handleRechargeGame onPayCallBack, , consumeAppid = ");
+      paramJSONObject.append(paramString1);
+      paramJSONObject.append(", consumePrepayId = ");
+      paramJSONObject.append(paramString2);
+      paramJSONObject.append(", consumeStarCurrency = ");
+      paramJSONObject.append(paramInt3);
+      paramJSONObject.append(", consumeTopupAmount = ");
+      paramJSONObject.append(paramInt2);
+      paramJSONObject.append(", consumeBalanceAmount = ");
+      paramJSONObject.append(paramInt1);
+      paramJSONObject.append(", payChannel = ");
+      paramJSONObject.append(paramInt5);
+      QMLog.i("PayJsPlugin", paramJSONObject.toString());
       return;
     }
     handleNativeResponseOk(paramRequestEvent, paramJSONObject);
@@ -315,18 +368,25 @@ public class PayJsPlugin
   {
     Object localObject1 = new JSONObject(paramRequestEvent.jsonParams);
     Object localObject3 = ((JSONObject)localObject1).optString("prepayId", "");
-    Object localObject4 = ((JSONObject)localObject1).getJSONObject("payInfo");
-    Object localObject2 = ((JSONObject)localObject4).optString("miniAppId", "");
+    Object localObject5 = ((JSONObject)localObject1).getJSONObject("payInfo");
+    Object localObject2 = ((JSONObject)localObject5).optString("miniAppId", "");
     localObject1 = localObject2;
     if (TextUtils.isEmpty((CharSequence)localObject2)) {
       localObject1 = this.mApkgInfo.appId;
     }
-    String str = ((JSONObject)localObject4).optString("bargainor_id", "");
-    localObject4 = ((JSONObject)localObject4).optString("channel", "");
+    Object localObject4 = ((JSONObject)localObject5).optString("bargainor_id", "");
+    localObject5 = ((JSONObject)localObject5).optString("channel", "");
     localObject2 = new JSONObject();
     ((JSONObject)localObject2).put("tokenId", localObject3);
     ((JSONObject)localObject2).put("comeForm", 9);
-    ((JSONObject)localObject2).put("appInfo", "appid#" + (String)localObject1 + "|bargainor_id#" + str + "|channel#" + (String)localObject4);
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append("appid#");
+    ((StringBuilder)localObject3).append((String)localObject1);
+    ((StringBuilder)localObject3).append("|bargainor_id#");
+    ((StringBuilder)localObject3).append((String)localObject4);
+    ((StringBuilder)localObject3).append("|channel#");
+    ((StringBuilder)localObject3).append((String)localObject5);
+    ((JSONObject)localObject2).put("appInfo", ((StringBuilder)localObject3).toString());
     int i = paramRequestEvent.callbackId;
     localObject3 = new Bundle();
     ((Bundle)localObject3).putString("payparmas_callback_sn", String.valueOf(i));
@@ -335,29 +395,31 @@ public class PayJsPlugin
     ((Bundle)localObject3).putLong("payparmas_h5_start", System.currentTimeMillis());
     ((Bundle)localObject3).putInt("payparmas_request_code", 9);
     ((Bundle)localObject3).putString("payparmas_sdk_pf", getSDKPf(((JSONObject)localObject2).toString()));
-    if (this.mMiniAppContext != null) {}
-    for (localObject1 = this.mMiniAppContext.getAttachedActivity();; localObject1 = null)
-    {
-      if (localObject1 == null) {
-        break label364;
-      }
-      localObject4 = (PayProxy)ProxyManager.get(PayProxy.class);
-      if (localObject4 != null) {
-        break;
-      }
-      handleNativeResponseFail(paramRequestEvent, null, "not support pay");
-      return;
+    if (this.mMiniAppContext != null) {
+      localObject1 = this.mMiniAppContext.getAttachedActivity();
+    } else {
+      localObject1 = null;
     }
-    label364:
-    for (localObject1 = ((PayProxy)localObject4).midasPay((Activity)localObject1, ((JSONObject)localObject2).toString(), new PayJsPlugin.13(this, paramRequestEvent), (Bundle)localObject3);; localObject1 = null)
+    if (localObject1 != null)
     {
-      if (localObject1 != null) {}
-      for (i = ((Bundle)localObject1).getInt("retCode", 0); (localObject1 != null) && (i != 0); i = 0)
+      localObject4 = (PayProxy)ProxyManager.get(PayProxy.class);
+      if (localObject4 == null)
       {
-        handleNativeResponseFail(paramRequestEvent, null, "");
+        handleNativeResponseFail(paramRequestEvent, null, "not support pay");
         return;
       }
-      break;
+      localObject1 = ((PayProxy)localObject4).midasPay((Activity)localObject1, ((JSONObject)localObject2).toString(), new PayJsPlugin.13(this, paramRequestEvent), (Bundle)localObject3);
+    }
+    else
+    {
+      localObject1 = null;
+    }
+    i = 0;
+    if (localObject1 != null) {
+      i = ((Bundle)localObject1).getInt("retCode", 0);
+    }
+    if ((localObject1 != null) && (i != 0)) {
+      handleNativeResponseFail(paramRequestEvent, null, "");
     }
   }
   
@@ -374,17 +436,20 @@ public class PayJsPlugin
       label65:
       if ((paramPayResponse.getResultCode() == 0) && (paramPayResponse.getPayState() == 0)) {
         handleNativeResponseOk(paramRequestEvent, localJSONObject);
+      } else if ((paramPayResponse.getResultCode() != 2) && (paramPayResponse.getPayState() != 1)) {
+        handleNativeResponseFail(paramRequestEvent, localJSONObject, paramPayResponse.getResultMsg());
+      } else {
+        handleNativeResponseCancel(paramRequestEvent, localJSONObject);
       }
-      for (;;)
-      {
-        QMLog.i("PayJsPlugin", "handleMidasGoodsPay onPayCallBack, , resultCode = " + paramPayResponse.getResultCode() + ", resultMsg = " + paramPayResponse.getResultMsg() + "extendInfo = " + paramPayResponse.getExtendInfo());
-        return;
-        if ((paramPayResponse.getResultCode() == 2) || (paramPayResponse.getPayState() == 1)) {
-          handleNativeResponseCancel(paramRequestEvent, localJSONObject);
-        } else {
-          handleNativeResponseFail(paramRequestEvent, localJSONObject, paramPayResponse.getResultMsg());
-        }
-      }
+      paramRequestEvent = new StringBuilder();
+      paramRequestEvent.append("handleMidasGoodsPay onPayCallBack, , resultCode = ");
+      paramRequestEvent.append(paramPayResponse.getResultCode());
+      paramRequestEvent.append(", resultMsg = ");
+      paramRequestEvent.append(paramPayResponse.getResultMsg());
+      paramRequestEvent.append("extendInfo = ");
+      paramRequestEvent.append(paramPayResponse.getExtendInfo());
+      QMLog.i("PayJsPlugin", paramRequestEvent.toString());
+      return;
     }
     catch (JSONException localJSONException)
     {
@@ -394,71 +459,68 @@ public class PayJsPlugin
   
   private String processPayByH5Param(JSONObject paramJSONObject)
   {
-    String str2 = URL_PAY_BY_H5;
-    int i;
-    String str4;
-    String str5;
-    String str6;
-    String str7;
-    String str3;
-    String str1;
-    if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2)
-    {
+    Object localObject2 = URL_PAY_BY_H5;
+    if (MiniAppEnv.g().getContext().getResources().getConfiguration().orientation == 2) {
       i = 1;
-      if (i != 0) {
-        str2 = URL_PAY_BY_H5_LANDSCAPE;
-      }
-      String str11 = paramJSONObject.optString("prepayId", "");
-      i = paramJSONObject.optInt("starCurrency");
-      String str12 = paramJSONObject.optString("offerId", "");
-      String str13 = paramJSONObject.optString("zoneId", "");
-      String str14 = paramJSONObject.optString("acctType", "");
-      int j = paramJSONObject.optInt("saveValue");
-      boolean bool1 = paramJSONObject.optBoolean("isCanChange");
-      String str8 = paramJSONObject.optString("currencyType", "");
-      String str9 = paramJSONObject.optString("platform", "");
-      String str10 = paramJSONObject.optString("remark", "");
-      str4 = paramJSONObject.optString("aid", "");
-      boolean bool2 = paramJSONObject.optBoolean("numberVisible");
-      str5 = paramJSONObject.optString("other", "");
-      int k = paramJSONObject.optInt("setEnv");
-      str6 = paramJSONObject.optString("firstRefer", "");
-      str7 = paramJSONObject.optString("firstVia", "");
-      MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
-      str3 = "";
-      str1 = "";
-      paramJSONObject = str3;
-      if (localMiniAppInfo != null)
-      {
-        paramJSONObject = str3;
-        if (localMiniAppInfo.launchParam != null) {
-          paramJSONObject = String.valueOf(localMiniAppInfo.launchParam.scene);
-        }
-      }
-      if (localMiniAppInfo != null) {
-        str1 = localMiniAppInfo.via;
-      }
-      str3 = str2.replace("{prepayId}", str11).replace("{starCurrency}", i + "").replace("{offerId}", str12).replace("{setEnv}", k + "").replace("{appid}", this.mMiniAppInfo.appId).replace("{acctType}", str14).replace("{zoneId}", str13).replace("{buyQuantity}", j + "");
-      if (!bool1) {
-        break label500;
-      }
-      str2 = "1";
-      label391:
-      str3 = str3.replace("{isCanChange}", str2).replace("{currencyType}", str8).replace("{platform}", str9).replace("{remark}", str10);
-      if (!bool2) {
-        break label508;
-      }
-    }
-    label500:
-    label508:
-    for (str2 = "1";; str2 = "0")
-    {
-      return str3.replace("{numberVisible}", str2).replace("{other}", str5).replace("{aid}", str4).replace("{firstRefer}", str6).replace("{firstVia}", str7).replace("{refer}", paramJSONObject).replace("{via}", str1);
+    } else {
       i = 0;
-      break;
-      str2 = "0";
-      break label391;
     }
+    if (i != 0) {
+      localObject2 = URL_PAY_BY_H5_LANDSCAPE;
+    }
+    Object localObject5 = paramJSONObject.optString("prepayId", "");
+    int i = paramJSONObject.optInt("starCurrency");
+    Object localObject4 = paramJSONObject.optString("offerId", "");
+    Object localObject3 = paramJSONObject.optString("zoneId", "");
+    String str8 = paramJSONObject.optString("acctType", "");
+    int j = paramJSONObject.optInt("saveValue");
+    boolean bool1 = paramJSONObject.optBoolean("isCanChange");
+    String str5 = paramJSONObject.optString("currencyType", "");
+    String str6 = paramJSONObject.optString("platform", "");
+    String str7 = paramJSONObject.optString("remark", "");
+    String str1 = paramJSONObject.optString("aid", "");
+    boolean bool2 = paramJSONObject.optBoolean("numberVisible");
+    String str2 = paramJSONObject.optString("other", "");
+    int k = paramJSONObject.optInt("setEnv");
+    String str3 = paramJSONObject.optString("firstRefer", "");
+    String str4 = paramJSONObject.optString("firstVia", "");
+    Object localObject1 = this.mMiniAppInfo;
+    if ((localObject1 != null) && (((MiniAppInfo)localObject1).launchParam != null)) {
+      paramJSONObject = String.valueOf(((MiniAppInfo)localObject1).launchParam.scene);
+    } else {
+      paramJSONObject = "";
+    }
+    if (localObject1 != null) {
+      localObject1 = ((MiniAppInfo)localObject1).via;
+    } else {
+      localObject1 = "";
+    }
+    localObject2 = ((String)localObject2).replace("{prepayId}", (CharSequence)localObject5);
+    localObject5 = new StringBuilder();
+    ((StringBuilder)localObject5).append(i);
+    ((StringBuilder)localObject5).append("");
+    localObject2 = ((String)localObject2).replace("{starCurrency}", ((StringBuilder)localObject5).toString()).replace("{offerId}", (CharSequence)localObject4);
+    localObject4 = new StringBuilder();
+    ((StringBuilder)localObject4).append(k);
+    ((StringBuilder)localObject4).append("");
+    localObject2 = ((String)localObject2).replace("{setEnv}", ((StringBuilder)localObject4).toString()).replace("{appid}", this.mMiniAppInfo.appId).replace("{acctType}", str8).replace("{zoneId}", (CharSequence)localObject3);
+    localObject3 = new StringBuilder();
+    ((StringBuilder)localObject3).append(j);
+    ((StringBuilder)localObject3).append("");
+    str8 = ((String)localObject2).replace("{buyQuantity}", ((StringBuilder)localObject3).toString());
+    localObject3 = "1";
+    if (bool1) {
+      localObject2 = "1";
+    } else {
+      localObject2 = "0";
+    }
+    str5 = str8.replace("{isCanChange}", (CharSequence)localObject2).replace("{currencyType}", str5).replace("{platform}", str6).replace("{remark}", str7);
+    if (bool2) {
+      localObject2 = localObject3;
+    } else {
+      localObject2 = "0";
+    }
+    return str5.replace("{numberVisible}", (CharSequence)localObject2).replace("{other}", str2).replace("{aid}", str1).replace("{firstRefer}", str3).replace("{firstVia}", str4).replace("{refer}", paramJSONObject).replace("{via}", (CharSequence)localObject1);
   }
   
   private void putAid(JSONObject paramJSONObject, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5)
@@ -491,7 +553,10 @@ public class PayJsPlugin
     {
       paramJSONObject.put("aid", paramString1);
       label125:
-      QMLog.d("PayJsPlugin", "putAid, aid = " + paramString1);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("putAid, aid = ");
+      paramJSONObject.append(paramString1);
+      QMLog.d("PayJsPlugin", paramJSONObject.toString());
       return;
     }
     catch (JSONException paramJSONObject)
@@ -502,126 +567,143 @@ public class PayJsPlugin
   
   private void reChargeStarCurrency(RequestEvent paramRequestEvent, boolean paramBoolean)
   {
-    try
+    label478:
+    for (;;)
     {
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      String str2 = localJSONObject.optString("prepayId", null);
-      int i = localJSONObject.optInt("balanceAmount", -1);
-      int j = localJSONObject.optInt("topupAmount", -1);
-      int k = localJSONObject.optInt("starCurrency", -1);
-      int m = localJSONObject.optInt("setEnv", 0);
-      String str1 = localJSONObject.optString("aid", "");
-      Object localObject = str1;
-      if (!TextUtils.isEmpty(str1))
+      try
       {
-        localObject = str1;
-        if (str1.contains("{appid}")) {
-          localObject = str1.replace("{appid}", this.mApkgInfo.appId);
-        }
-      }
-      localJSONObject.put("userId", LoginManager.getInstance().getAccount());
-      localJSONObject.put("aid", localObject);
-      localJSONObject.put("comeForm", 9);
-      localJSONObject.put("setMidasEnv", m);
-      if (this.mIsMiniGame)
-      {
-        localObject = this.mMiniAppInfo;
-        if (localObject != null)
+        JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
+        String str = localJSONObject.optString("prepayId", null);
+        int i = localJSONObject.optInt("balanceAmount", -1);
+        int j = localJSONObject.optInt("topupAmount", -1);
+        int k = localJSONObject.optInt("starCurrency", -1);
+        int m = localJSONObject.optInt("setEnv", 0);
+        Object localObject1 = localJSONObject.optString("aid", "");
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).contains("{appid}")))
         {
-          localObject = this.mApkgInfo.appId + "_" + ((MiniAppInfo)localObject).verType;
-          str1 = MD5Utils.encodeHexStr((String)localObject);
-          this.mContext.getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", str1).commit();
-          localJSONObject.put("miniAppVertypeStr", localObject);
-        }
-      }
-      str1 = String.valueOf(paramRequestEvent.callbackId);
-      localObject = str1;
-      if (i != -1)
-      {
-        localObject = str1;
-        if (j != -1)
-        {
-          localObject = str1;
-          if (k != -1)
-          {
-            localObject = new JSONObject();
-            ((JSONObject)localObject).put("appId", this.mApkgInfo.appId);
-            ((JSONObject)localObject).put("prepayId", str2);
-            ((JSONObject)localObject).put("balanceAmount", i);
-            ((JSONObject)localObject).put("topupAmount", j);
-            ((JSONObject)localObject).put("starCurrency", k);
-            ((JSONObject)localObject).put("seq", paramRequestEvent.callbackId);
-            ((JSONObject)localObject).put("setEnv", m);
-            localObject = ((JSONObject)localObject).toString();
+          localObject1 = ((String)localObject1).replace("{appid}", this.mApkgInfo.appId);
+          localJSONObject.put("userId", LoginManager.getInstance().getAccount());
+          localJSONObject.put("aid", localObject1);
+          localJSONObject.put("comeForm", 9);
+          localJSONObject.put("setMidasEnv", m);
+          if (!this.mIsMiniGame) {
+            break label478;
           }
+          localObject1 = this.mMiniAppInfo;
+          if (localObject1 == null) {
+            break label478;
+          }
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.mApkgInfo.appId);
+          ((StringBuilder)localObject2).append("_");
+          ((StringBuilder)localObject2).append(((MiniAppInfo)localObject1).verType);
+          localObject1 = ((StringBuilder)localObject2).toString();
+          localObject2 = MD5Utils.encodeHexStr((String)localObject1);
+          this.mContext.getSharedPreferences("keyMiniGamePayEnv", 4).edit().putString("keyMiniGamePayEnvAppidVertype", (String)localObject2).commit();
+          localJSONObject.put("miniAppVertypeStr", localObject1);
+          localObject2 = String.valueOf(paramRequestEvent.callbackId);
+          localObject1 = localObject2;
+          if (i != -1)
+          {
+            localObject1 = localObject2;
+            if (j != -1)
+            {
+              localObject1 = localObject2;
+              if (k != -1)
+              {
+                localObject1 = new JSONObject();
+                ((JSONObject)localObject1).put("appId", this.mApkgInfo.appId);
+                ((JSONObject)localObject1).put("prepayId", str);
+                ((JSONObject)localObject1).put("balanceAmount", i);
+                ((JSONObject)localObject1).put("topupAmount", j);
+                ((JSONObject)localObject1).put("starCurrency", k);
+                ((JSONObject)localObject1).put("seq", paramRequestEvent.callbackId);
+                ((JSONObject)localObject1).put("setEnv", m);
+                localObject1 = ((JSONObject)localObject1).toString();
+              }
+            }
+          }
+          if (!TextUtils.isEmpty(this.mRealOfferId)) {
+            localJSONObject.put("offerId", this.mRealOfferId);
+          }
+          handleRechargeGame(paramRequestEvent, this.mMiniAppContext.getAttachedActivity(), localJSONObject.toString(), (String)localObject1, paramBoolean);
+          return;
         }
       }
-      if (!TextUtils.isEmpty(this.mRealOfferId)) {
-        localJSONObject.put("offerId", this.mRealOfferId);
+      catch (JSONException paramRequestEvent)
+      {
+        QMLog.e("PayJsPlugin", "API_RECHARGE_STAR_CURRENCY JSONException ", paramRequestEvent);
+        return;
       }
-      handleRechargeGame(paramRequestEvent, this.mMiniAppContext.getAttachedActivity(), localJSONObject.toString(), (String)localObject, paramBoolean);
-      return;
-    }
-    catch (JSONException paramRequestEvent)
-    {
-      QMLog.e("PayJsPlugin", "API_RECHARGE_STAR_CURRENCY JSONException ", paramRequestEvent);
     }
   }
   
   private void reportWithGroupId(String paramString)
   {
+    Object localObject = this.mMiniAppInfo;
     String str = "";
-    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam != null) && (this.mMiniAppInfo.launchParam.entryModel != null))
+    if ((localObject != null) && (this.mMiniAppInfo.launchParam != null) && (this.mMiniAppInfo.launchParam.entryModel != null))
     {
       int i = this.mMiniAppInfo.launchParam.entryModel.type;
       long l = this.mMiniAppInfo.launchParam.entryModel.uin;
-      if (i == 1)
-      {
+      if (i == 1) {
         str = String.valueOf(l);
-        QMLog.i("PayJsPlugin", "report 4329 type=" + i + ", uin=" + l);
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("report 4329 type=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(", uin=");
+      ((StringBuilder)localObject).append(l);
+      QMLog.i("PayJsPlugin", ((StringBuilder)localObject).toString());
     }
-    for (;;)
+    else
     {
-      SDKMiniProgramLpReportDC04239.reportWithGroupId(this.mMiniAppInfo, "wechat_pay", "launch_wechatpay", "", paramString, str);
-      return;
-      str = "";
-      break;
       QMLog.i("PayJsPlugin", "no groupId");
     }
+    SDKMiniProgramLpReportDC04239.reportWithGroupId(this.mMiniAppInfo, "wechat_pay", "launch_wechatpay", "", paramString, str);
   }
   
   @JsEvent({"requestWxPayment"})
   private void requestWxPayment(RequestEvent paramRequestEvent)
   {
-    Object localObject;
     try
     {
-      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      Object localObject = new JSONObject(paramRequestEvent.jsonParams);
       String str = ((JSONObject)localObject).optString("url");
       localObject = ((JSONObject)localObject).optString("referer");
-      QMLog.i("PayJsPlugin", "handleWxPayment, url=" + str);
-      if ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty((CharSequence)localObject)))
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleWxPayment, url=");
+      localStringBuilder.append(str);
+      QMLog.i("PayJsPlugin", localStringBuilder.toString());
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject)))
       {
-        paramRequestEvent.fail("url or referer is empty, please check!");
-        QMLog.i("PayJsPlugin", "handleWxPayment, url=" + str + ", referer=" + (String)localObject);
+        if ((!URLUtil.isHttpsUrl(str)) && (!URLUtil.isHttpUrl(str)))
+        {
+          paramRequestEvent.fail("url is not http url, please check!");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleWxPayment, url=");
+          ((StringBuilder)localObject).append(str);
+          QMLog.i("PayJsPlugin", ((StringBuilder)localObject).toString());
+          return;
+        }
+        checkWxPayUrl(paramRequestEvent, str, (String)localObject, this.mMiniAppInfo.appId);
+        reportWithGroupId(str);
         return;
       }
-      if ((!URLUtil.isHttpsUrl(str)) && (!URLUtil.isHttpUrl(str)))
-      {
-        paramRequestEvent.fail("url is not http url, please check!");
-        QMLog.i("PayJsPlugin", "handleWxPayment, url=" + str);
-        return;
-      }
+      paramRequestEvent.fail("url or referer is empty, please check!");
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleWxPayment, url=");
+      localStringBuilder.append(str);
+      localStringBuilder.append(", referer=");
+      localStringBuilder.append((String)localObject);
+      QMLog.i("PayJsPlugin", localStringBuilder.toString());
+      return;
     }
     catch (Exception localException)
     {
       QMLog.i("PayJsPlugin", "handleWxPayment error", localException);
       paramRequestEvent.fail();
-      return;
     }
-    checkWxPayUrl(paramRequestEvent, localException, (String)localObject, this.mMiniAppInfo.appId);
-    reportWithGroupId(localException);
   }
   
   private void setCookieIfNeed(Bundle paramBundle)
@@ -629,27 +711,54 @@ public class PayJsPlugin
     if (!QUAUtil.isQQApp())
     {
       int i = LoginManager.getInstance().getLoginType();
-      String str1 = LoginManager.getInstance().getPayOpenId();
+      String str2 = LoginManager.getInstance().getPayOpenId();
       String str3 = LoginManager.getInstance().getPayOpenKey();
-      String str4 = LoginManager.getInstance().getPayAccessToken();
-      String str6 = LoginManager.getInstance().getAppId();
-      Object localObject = LoginManager.getInstance().getLoginSig();
-      String str2 = LoginManager.getInstance().getAccount();
-      str1 = "openid=" + str1;
-      str3 = "openkey=" + str3;
-      str4 = "accesstoken=" + str4;
-      String str5 = "login_type=" + i;
-      str6 = "login_appid=" + str6;
-      localObject = "login_sig=" + new String((byte[])localObject);
-      str2 = "login_uin=" + str2;
+      String str5 = LoginManager.getInstance().getPayAccessToken();
+      String str4 = LoginManager.getInstance().getAppId();
+      Object localObject1 = LoginManager.getInstance().getLoginSig();
+      String str1 = LoginManager.getInstance().getAccount();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("openid=");
+      ((StringBuilder)localObject2).append(str2);
+      str2 = ((StringBuilder)localObject2).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("openkey=");
+      ((StringBuilder)localObject2).append(str3);
+      str3 = ((StringBuilder)localObject2).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("accesstoken=");
+      ((StringBuilder)localObject2).append(str5);
+      str5 = ((StringBuilder)localObject2).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("login_type=");
+      ((StringBuilder)localObject2).append(i);
+      localObject2 = ((StringBuilder)localObject2).toString();
       StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(str1).append(";");
-      localStringBuilder.append(str3).append(";");
-      localStringBuilder.append(str4).append(";");
-      localStringBuilder.append(str5).append(";");
-      localStringBuilder.append(str6).append(";");
-      localStringBuilder.append((String)localObject).append(";");
+      localStringBuilder.append("login_appid=");
+      localStringBuilder.append(str4);
+      str4 = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("login_sig=");
+      localStringBuilder.append(new String((byte[])localObject1));
+      localObject1 = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("login_uin=");
+      localStringBuilder.append(str1);
+      str1 = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
       localStringBuilder.append(str2);
+      localStringBuilder.append(";");
+      localStringBuilder.append(str3);
+      localStringBuilder.append(";");
+      localStringBuilder.append(str5);
+      localStringBuilder.append(";");
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append(";");
+      localStringBuilder.append(str4);
+      localStringBuilder.append(";");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(";");
+      localStringBuilder.append(str1);
       paramBundle.putString("cookie", localStringBuilder.toString());
     }
   }
@@ -663,7 +772,10 @@ public class PayJsPlugin
     ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
     paramString = getSDKH5Url(paramString);
     localChannelProxy.startTransparentBrowserActivityForResult(paramActivity, paramString, paramRequestEvent, 3003);
-    QMLog.i("PayJsPlugin", "startPayBrowserActivity, url=" + paramString);
+    paramRequestEvent = new StringBuilder();
+    paramRequestEvent.append("startPayBrowserActivity, url=");
+    paramRequestEvent.append(paramString);
+    QMLog.i("PayJsPlugin", paramRequestEvent.toString());
     paramRequestEvent = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
     if ((paramRequestEvent != null) && (paramRequestEvent.isDebugVersion())) {
       AppBrandTask.runTaskOnUiThread(new PayJsPlugin.7(this, paramActivity));
@@ -689,29 +801,34 @@ public class PayJsPlugin
   public void checkH5PayStatus(RequestEvent paramRequestEvent)
   {
     JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    try
     {
-      try
-      {
-        int i = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPayMode();
-        switch (i)
+      int i = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getPayMode();
+      if (i != 0) {
+        if (i != 1)
         {
-        case 0: 
-          handleNativeResponseFail(paramRequestEvent, localJSONObject, "not support pay mode:" + i);
+          if (i != 2)
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("not support pay mode:");
+            localStringBuilder.append(i);
+            handleNativeResponseFail(paramRequestEvent, localJSONObject, localStringBuilder.toString());
+          }
+        }
+        else
+        {
+          localJSONObject.put("resultCode", 1);
+          handleNativeResponseOk(paramRequestEvent, localJSONObject);
           return;
         }
-      }
-      catch (JSONException paramRequestEvent)
-      {
-        QMLog.e("PayJsPlugin", "checkH5PayStatus JSONException ", paramRequestEvent);
-        return;
       }
       localJSONObject.put("resultCode", 0);
       handleNativeResponseOk(paramRequestEvent, localJSONObject);
       return;
-      localJSONObject.put("resultCode", 1);
-      handleNativeResponseOk(paramRequestEvent, localJSONObject);
-      return;
+    }
+    catch (JSONException paramRequestEvent)
+    {
+      QMLog.e("PayJsPlugin", "checkH5PayStatus JSONException ", paramRequestEvent);
     }
   }
   
@@ -759,62 +876,79 @@ public class PayJsPlugin
   
   public void invokeMidasConsume(RequestEvent paramRequestEvent, String paramString1, String paramString2, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    QMLog.i("PayJsPlugin", "invokeMidasConsume prepayId= " + paramString2 + " starCurrency=" + String.valueOf(paramInt1));
-    if ((TextUtils.isEmpty(paramString2)) || (paramInt1 <= 0) || (TextUtils.isEmpty(paramString1)))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("invokeMidasConsume prepayId= ");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(" starCurrency=");
+    ((StringBuilder)localObject).append(String.valueOf(paramInt1));
+    QMLog.i("PayJsPlugin", ((StringBuilder)localObject).toString());
+    if ((!TextUtils.isEmpty(paramString2)) && (paramInt1 > 0) && (!TextUtils.isEmpty(paramString1)))
     {
-      paramString1 = new JSONObject();
-      try
+      if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.launchParam != null))
       {
-        paramString1.put("resultCode", -4);
-        paramString1.put("resultMsg", "消耗参数错误");
-        handleNativeResponseFail(paramRequestEvent, paramString1, "");
-        return;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName());
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(this.mMiniAppInfo.launchParam.scene);
+        localObject = ((StringBuilder)localObject).toString();
       }
-      catch (JSONException paramRequestEvent)
+      else
       {
-        QMLog.e("PayJsPlugin", "invokeMidasConsume JSONException ", paramRequestEvent);
-        return;
+        localObject = "";
       }
-    }
-    String str2 = "";
-    String str1 = str2;
-    if (this.mMiniAppInfo != null)
-    {
-      str1 = str2;
-      if (this.mMiniAppInfo.launchParam != null) {
-        str1 = ((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).getAppName() + "_" + this.mMiniAppInfo.launchParam.scene;
+      String str;
+      if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.via != null)) {
+        str = this.mMiniAppInfo.via;
+      } else {
+        str = "";
       }
-    }
-    if ((this.mMiniAppInfo != null) && (this.mMiniAppInfo.via != null)) {}
-    for (str2 = this.mMiniAppInfo.via;; str2 = "")
-    {
-      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMidasConsumeResult(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, str1, str2, new PayJsPlugin.9(this, paramRequestEvent));
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).getMidasConsumeResult(paramString1, paramString2, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, (String)localObject, str, new PayJsPlugin.9(this, paramRequestEvent));
       return;
+    }
+    paramString1 = new JSONObject();
+    try
+    {
+      paramString1.put("resultCode", -4);
+      paramString1.put("resultMsg", "消耗参数错误");
+      handleNativeResponseFail(paramRequestEvent, paramString1, "");
+      return;
+    }
+    catch (JSONException paramRequestEvent)
+    {
+      QMLog.e("PayJsPlugin", "invokeMidasConsume JSONException ", paramRequestEvent);
     }
   }
   
   public void invokeMidasQuery(String paramString1, String paramString2, int paramInt1, int paramInt2, PayJsPlugin.IStarQueryListener paramIStarQueryListener)
   {
-    QMLog.i("PayJsPlugin", "invokeMidasQuery prepayId= " + paramString1 + " starCurrency=" + String.valueOf(paramInt1) + " setEnv:" + paramInt2);
-    if ((TextUtils.isEmpty(paramString1)) || (paramInt1 <= 0) || (TextUtils.isEmpty(paramString2)))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("invokeMidasQuery prepayId= ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(" starCurrency=");
+    localStringBuilder.append(String.valueOf(paramInt1));
+    localStringBuilder.append(" setEnv:");
+    localStringBuilder.append(paramInt2);
+    QMLog.i("PayJsPlugin", localStringBuilder.toString());
+    if ((!TextUtils.isEmpty(paramString1)) && (paramInt1 > 0) && (!TextUtils.isEmpty(paramString2)))
     {
-      paramString1 = new JSONObject();
-      try
+      ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).queryCurrency(paramString1, paramString2, paramInt1, paramInt2, new PayJsPlugin.10(this, paramIStarQueryListener));
+      return;
+    }
+    paramString1 = new JSONObject();
+    try
+    {
+      paramString1.put("resultCode", 1000);
+      paramString1.put("errMsg", "参数错误");
+      if (paramIStarQueryListener != null)
       {
-        paramString1.put("resultCode", 1000);
-        paramString1.put("errMsg", "参数错误");
-        if (paramIStarQueryListener != null) {
-          paramIStarQueryListener.onResult(false, paramString1);
-        }
-        return;
-      }
-      catch (JSONException paramString1)
-      {
-        QMLog.e("PayJsPlugin", "invokeMidasQuery JSONException ", paramString1);
+        paramIStarQueryListener.onResult(false, paramString1);
         return;
       }
     }
-    ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).queryCurrency(paramString1, paramString2, paramInt1, paramInt2, new PayJsPlugin.10(this, paramIStarQueryListener));
+    catch (JSONException paramString1)
+    {
+      QMLog.e("PayJsPlugin", "invokeMidasQuery JSONException ", paramString1);
+    }
   }
   
   public void onCreate(IMiniAppContext paramIMiniAppContext)
@@ -827,31 +961,24 @@ public class PayJsPlugin
     Object localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
     if ((localObject != null) && (((ChannelProxy)localObject).isGooglePlayVersion()))
     {
-      int i;
+      int i = 0;
       if (WnsConfig.getConfig("qqminiapp", "mini_app_google_play_pay_switch", 0) == 1) {
         i = 1;
       }
-      for (;;)
+      if (i == 0)
       {
-        if (i == 0)
+        localObject = new JSONObject();
+        try
         {
-          localObject = new JSONObject();
-          try
-          {
-            ((JSONObject)localObject).put("retCode", -123);
-            ((JSONObject)localObject).put("errMsg", "googlePlay PayAPI no supported!");
-            handleNativeResponseFail(paramRequestEvent, (JSONObject)localObject, "googlePlay PayAPI no supported!");
-            return true;
-            i = 0;
-          }
-          catch (JSONException localJSONException)
-          {
-            for (;;)
-            {
-              localJSONException.printStackTrace();
-            }
-          }
+          ((JSONObject)localObject).put("retCode", -123);
+          ((JSONObject)localObject).put("errMsg", "googlePlay PayAPI no supported!");
         }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
+        }
+        handleNativeResponseFail(paramRequestEvent, (JSONObject)localObject, "googlePlay PayAPI no supported!");
+        return true;
       }
     }
     return super.onInterceptJsEvent(paramRequestEvent);
@@ -917,13 +1044,17 @@ public class PayJsPlugin
         localObject2 = GameWnsUtils.defaultPayShareImg();
       }
       localObject3 = new COMM.StCommonExt();
-      COMM.Entry localEntry = new COMM.Entry();
-      localEntry.key.set("prepay_id");
-      localEntry.value.set((String)localObject4);
-      ((COMM.StCommonExt)localObject3).mapInfo.get().add(localEntry);
+      Object localObject5 = new COMM.Entry();
+      ((COMM.Entry)localObject5).key.set("prepay_id");
+      ((COMM.Entry)localObject5).value.set((String)localObject4);
+      ((COMM.StCommonExt)localObject3).mapInfo.get().add(localObject5);
       localObject4 = new COMM.Entry();
       ((COMM.Entry)localObject4).key.set("set_env");
-      ((COMM.Entry)localObject4).value.set(i + "");
+      localObject5 = ((COMM.Entry)localObject4).value;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(i);
+      localStringBuilder.append("");
+      ((PBStringField)localObject5).set(localStringBuilder.toString());
       ((COMM.StCommonExt)localObject3).mapInfo.get().add(localObject4);
       localObject4 = GetShareState.obtain(this.mMiniAppContext);
       if (this.mMiniAppInfo != null) {
@@ -976,14 +1107,17 @@ public class PayJsPlugin
     try
     {
       String str = LoginManager.getInstance().getAccount();
-      JSONObject localJSONObject = new JSONObject(paramRequestEvent.jsonParams);
-      localJSONObject.put("userId", str);
-      handleMidasGoodsPay(this.mMiniAppContext.getAttachedActivity(), localJSONObject, paramRequestEvent);
+      localObject = new JSONObject(paramRequestEvent.jsonParams);
+      ((JSONObject)localObject).put("userId", str);
+      handleMidasGoodsPay(this.mMiniAppContext.getAttachedActivity(), (JSONObject)localObject, paramRequestEvent);
       return;
     }
     catch (JSONException localJSONException)
     {
-      QMLog.e("PayJsPlugin", paramRequestEvent.event + " error.", localJSONException);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramRequestEvent.event);
+      ((StringBuilder)localObject).append(" error.");
+      QMLog.e("PayJsPlugin", ((StringBuilder)localObject).toString(), localJSONException);
       handleNativeResponseFail(paramRequestEvent, null, "");
     }
   }
@@ -1051,14 +1185,17 @@ public class PayJsPlugin
     }
     catch (Exception localException)
     {
-      QMLog.e("PayJsPlugin", paramRequestEvent.event + " error,", localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRequestEvent.event);
+      localStringBuilder.append(" error,");
+      QMLog.e("PayJsPlugin", localStringBuilder.toString(), localException);
       handleNativeResponseFail(paramRequestEvent, null, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.PayJsPlugin
  * JD-Core Version:    0.7.0.1
  */

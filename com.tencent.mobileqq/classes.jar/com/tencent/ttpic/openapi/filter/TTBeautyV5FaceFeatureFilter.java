@@ -55,7 +55,9 @@ public class TTBeautyV5FaceFeatureFilter
   
   private boolean initFaceImage()
   {
-    if (BitmapUtils.isLegal(VideoMemoryManager.getInstance().getBeautyCacheBitmap(this.softlightImage)))
+    boolean bool1 = BitmapUtils.isLegal(VideoMemoryManager.getInstance().getBeautyCacheBitmap(this.softlightImage));
+    boolean bool2 = false;
+    if (bool1)
     {
       if (!this.isSoftLiteImageReady)
       {
@@ -83,7 +85,19 @@ public class TTBeautyV5FaceFeatureFilter
       }
       addParam(new UniformParam.TextureParam("inputImageTexture4", this.texture[2], 33988));
     }
-    return (this.isSoftLiteImageReady) && (this.isMultiplyImageReady) && (this.isNormalImageReady);
+    bool1 = bool2;
+    if (this.isSoftLiteImageReady)
+    {
+      bool1 = bool2;
+      if (this.isMultiplyImageReady)
+      {
+        bool1 = bool2;
+        if (this.isNormalImageReady) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   private void initFaceTexCoords()
@@ -94,12 +108,14 @@ public class TTBeautyV5FaceFeatureFilter
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearGLSLSelf()
   {
-    GLES20.glDeleteTextures(this.texture.length, this.texture, 0);
+    int[] arrayOfInt = this.texture;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
     this.isSoftLiteImageReady = false;
     this.isMultiplyImageReady = false;
     this.isNormalImageReady = false;
@@ -133,13 +149,21 @@ public class TTBeautyV5FaceFeatureFilter
   public boolean renderTexture(int paramInt1, int paramInt2, int paramInt3)
   {
     AttributeParam localAttributeParam = getAttribParam("position");
-    if ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690)) {}
-    do
+    if (localAttributeParam != null)
     {
-      return false;
+      if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+        return false;
+      }
       localAttributeParam = getAttribParam("inputTextureCoordinate");
-    } while ((localAttributeParam == null) || (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690));
-    return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      if (localAttributeParam != null)
+      {
+        if (localAttributeParam.vertices.length / localAttributeParam.perVertexFloat != 690) {
+          return false;
+        }
+        return super.renderTexture(paramInt1, paramInt2, paramInt3);
+      }
+    }
+    return false;
   }
   
   public void resetCosDefaultEffect()
@@ -157,17 +181,20 @@ public class TTBeautyV5FaceFeatureFilter
     addParam(new UniformParam.FloatParam("alphaNormal", this.alphaNormal * this.factorNormal));
     addParam(new UniformParam.FloatParam("alphaMultiply", this.alphaMultiply));
     addParam(new UniformParam.FloatParam("alphaSoftlight", this.alphaSoftlight));
-    if ((this.normalImage == null) || (!this.normalImage.equals(paramFaceFeatureParam.faceFeatureNormalImage)))
+    String str = this.normalImage;
+    if ((str == null) || (!str.equals(paramFaceFeatureParam.faceFeatureNormalImage)))
     {
       this.isNormalImageReady = false;
       this.normalImage = paramFaceFeatureParam.faceFeatureNormalImage;
     }
-    if ((this.softlightImage == null) || (!this.softlightImage.equals(paramFaceFeatureParam.faceFeatureSoftlightImage)))
+    str = this.softlightImage;
+    if ((str == null) || (!str.equals(paramFaceFeatureParam.faceFeatureSoftlightImage)))
     {
       this.isSoftLiteImageReady = false;
       this.softlightImage = paramFaceFeatureParam.faceFeatureSoftlightImage;
     }
-    if ((this.multiplyImage == null) || (!this.multiplyImage.equals(paramFaceFeatureParam.faceFeatureMultiplyImage)))
+    str = this.multiplyImage;
+    if ((str == null) || (!str.equals(paramFaceFeatureParam.faceFeatureMultiplyImage)))
     {
       this.isMultiplyImageReady = false;
       this.multiplyImage = paramFaceFeatureParam.faceFeatureMultiplyImage;
@@ -212,7 +239,7 @@ public class TTBeautyV5FaceFeatureFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.TTBeautyV5FaceFeatureFilter
  * JD-Core Version:    0.7.0.1
  */

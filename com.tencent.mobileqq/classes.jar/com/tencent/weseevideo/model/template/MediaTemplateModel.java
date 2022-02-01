@@ -2,14 +2,12 @@ package com.tencent.weseevideo.model.template;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
-import com.tencent.weseevideo.model.BaseMediaModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.template.auto.AutomaticMediaTemplateModel;
 import com.tencent.weseevideo.model.template.light.LightMediaTemplateModel;
 import com.tencent.weseevideo.model.template.movie.MovieMediaTemplateModel;
 
 public class MediaTemplateModel
-  extends BaseMediaModel
 {
   private AutomaticMediaTemplateModel automaticMediaTemplateModel = new AutomaticMediaTemplateModel();
   private LightMediaTemplateModel lightMediaTemplateModel = new LightMediaTemplateModel();
@@ -92,7 +90,7 @@ public class MediaTemplateModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.MediaTemplateModel
  * JD-Core Version:    0.7.0.1
  */

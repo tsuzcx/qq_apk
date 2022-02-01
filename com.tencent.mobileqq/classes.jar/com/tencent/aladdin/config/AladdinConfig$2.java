@@ -13,16 +13,25 @@ class AladdinConfig$2
     try
     {
       boolean bool = AladdinConfig.access$000(this.this$0).delete();
-      Log.i("AladdinConfig", "clear: deleteResult = " + bool);
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("clear: deleteResult = ");
+      localStringBuilder1.append(bool);
+      Log.i("AladdinConfig", localStringBuilder1.toString());
       return;
     }
     catch (Exception localException)
     {
-      do
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("clear: ");
+      localStringBuilder2.append(localException.getMessage());
+      Log.e("AladdinConfig", localStringBuilder2.toString());
+      if (Log.isDebugVersion())
       {
-        Log.e("AladdinConfig", "clear: " + localException.getMessage());
-      } while (!Log.isDebugVersion());
-      Log.e("AladdinConfig", "clear: " + localException);
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("clear: ");
+        localStringBuilder2.append(localException);
+        Log.e("AladdinConfig", localStringBuilder2.toString());
+      }
     }
   }
 }

@@ -14,24 +14,30 @@ class SubscribeDraftManager$3
     if (localObject != null)
     {
       localObject = SubscribeDraftManager.a(this.this$0, (String)((Pair)localObject).second);
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        break label90;
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = (SubscribeDraftBean)JsonBinder.a().a((String)localObject, SubscribeDraftBean.class);
+        if (localObject != null)
+        {
+          SubscribeDraftManager.SubDraftListener localSubDraftListener = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+          if (localSubDraftListener != null) {
+            localSubDraftListener.a(5, true, this.b, new Object[] { localObject });
+          }
+        }
       }
-      localObject = (SubscribeDraftBean)JsonBinder.a().a((String)localObject, SubscribeDraftBean.class);
-      if ((localObject != null) && (this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener != null)) {
-        this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener.a(5, true, this.b, new Object[] { localObject });
+      else
+      {
+        localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        if (localObject != null) {
+          ((SubscribeDraftManager.SubDraftListener)localObject).a(5, false, this.b, null);
+        }
       }
     }
-    label90:
-    while (this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener == null) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener.a(5, false, this.b, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.SubscribeDraftManager.3
  * JD-Core Version:    0.7.0.1
  */

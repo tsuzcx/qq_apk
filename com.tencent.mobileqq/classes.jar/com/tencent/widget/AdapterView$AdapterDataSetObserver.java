@@ -18,43 +18,47 @@ public class AdapterView$AdapterDataSetObserver
   
   public void onChanged()
   {
-    this.this$0.mDataChanged = true;
-    this.this$0.mOldItemCount = this.this$0.mItemCount;
-    this.this$0.mItemCount = this.this$0.getAdapter().getCount();
+    AdapterView localAdapterView = this.this$0;
+    localAdapterView.mDataChanged = true;
+    localAdapterView.mOldItemCount = localAdapterView.mItemCount;
+    localAdapterView = this.this$0;
+    localAdapterView.mItemCount = localAdapterView.getAdapter().getCount();
     if ((this.this$0.getAdapter().hasStableIds()) && (this.mInstanceState != null) && (this.this$0.mOldItemCount == 0) && (this.this$0.mItemCount > 0))
     {
       AdapterView.access$000(this.this$0, this.mInstanceState);
       this.mInstanceState = null;
     }
-    for (;;)
+    else
     {
-      this.this$0.checkFocus();
-      this.this$0.requestLayout();
-      return;
       this.this$0.rememberSyncState();
     }
+    this.this$0.checkFocus();
+    this.this$0.requestLayout();
   }
   
   public void onInvalidated()
   {
-    this.this$0.mDataChanged = true;
-    if (this.this$0.getAdapter().hasStableIds()) {
+    AdapterView localAdapterView = this.this$0;
+    localAdapterView.mDataChanged = true;
+    if (localAdapterView.getAdapter().hasStableIds()) {
       this.mInstanceState = AdapterView.access$100(this.this$0);
     }
-    this.this$0.mOldItemCount = this.this$0.mItemCount;
-    this.this$0.mItemCount = 0;
-    this.this$0.mSelectedPosition = -1;
-    this.this$0.mSelectedRowId = -9223372036854775808L;
-    this.this$0.mNextSelectedPosition = -1;
-    this.this$0.mNextSelectedRowId = -9223372036854775808L;
-    this.this$0.mNeedSync = false;
-    this.this$0.checkFocus();
+    localAdapterView = this.this$0;
+    localAdapterView.mOldItemCount = localAdapterView.mItemCount;
+    localAdapterView = this.this$0;
+    localAdapterView.mItemCount = 0;
+    localAdapterView.mSelectedPosition = -1;
+    localAdapterView.mSelectedRowId = -9223372036854775808L;
+    localAdapterView.mNextSelectedPosition = -1;
+    localAdapterView.mNextSelectedRowId = -9223372036854775808L;
+    localAdapterView.mNeedSync = false;
+    localAdapterView.checkFocus();
     this.this$0.requestLayout();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AdapterView.AdapterDataSetObserver
  * JD-Core Version:    0.7.0.1
  */

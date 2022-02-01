@@ -32,7 +32,10 @@ public class ImageCompressor
     {
       paramAbstractUploadTask.uploadTaskCallback.onUploadError(paramAbstractUploadTask, paramInt, paramString2);
       paramAbstractUploadTask.uploadTaskCallback.onUploadStateChange(paramAbstractUploadTask, 5);
-      UploadLog.v("ImageProcessor", "abortTask flowId:" + paramAbstractUploadTask.flowId);
+      paramString2 = new StringBuilder();
+      paramString2.append("abortTask flowId:");
+      paramString2.append(paramAbstractUploadTask.flowId);
+      UploadLog.v("ImageProcessor", paramString2.toString());
     }
     UploadLog.w("ImageProcessor", paramString1);
   }
@@ -40,19 +43,14 @@ public class ImageCompressor
   public static final boolean copyTaskFile(AbstractUploadTask paramAbstractUploadTask)
   {
     String str = FileUtils.getTempFilePath(UploadGlobalConfig.getContext(), paramAbstractUploadTask.getFilePath(), paramAbstractUploadTask.md5, paramAbstractUploadTask.flowId);
-    boolean bool1;
     if (TextUtils.isEmpty(str)) {
-      bool1 = false;
+      return false;
     }
-    boolean bool2;
-    do
-    {
-      return bool1;
-      bool2 = FileUtils.copyFile(paramAbstractUploadTask.getFilePath(), str);
-      bool1 = bool2;
-    } while (!bool2);
-    paramAbstractUploadTask.setTmpFilePath(str);
-    return bool2;
+    boolean bool = FileUtils.copyFile(paramAbstractUploadTask.getFilePath(), str);
+    if (bool) {
+      paramAbstractUploadTask.setTmpFilePath(str);
+    }
+    return bool;
   }
   
   public static String getTaskTempFile(AbstractUploadTask paramAbstractUploadTask, Context paramContext)
@@ -62,52 +60,71 @@ public class ImageCompressor
   
   public static IUploadConfig.UploadImageSize getUploadImageSize(AbstractUploadTask paramAbstractUploadTask, int paramInt)
   {
-    int k = 0;
     paramAbstractUploadTask = paramAbstractUploadTask.getFilePath();
     if (!new File(paramAbstractUploadTask).exists()) {
       return null;
     }
-    Object localObject = ImageProcessUtil.decodeBitmapOptions(paramAbstractUploadTask);
-    boolean bool = "image/jpeg".equalsIgnoreCase(((BitmapFactory.Options)localObject).outMimeType);
-    if ((((BitmapFactory.Options)localObject).outWidth == 0) && (((BitmapFactory.Options)localObject).outHeight == 0))
+    Object localObject1 = ImageProcessUtil.decodeBitmapOptions(paramAbstractUploadTask);
+    boolean bool = "image/jpeg".equalsIgnoreCase(((BitmapFactory.Options)localObject1).outMimeType);
+    if ((((BitmapFactory.Options)localObject1).outWidth == 0) && (((BitmapFactory.Options)localObject1).outHeight == 0))
     {
-      UploadLog.e("ImageProcessor", "getUploadImageSize size illegal. path=" + paramAbstractUploadTask);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getUploadImageSize size illegal. path=");
+      ((StringBuilder)localObject1).append(paramAbstractUploadTask);
+      UploadLog.e("ImageProcessor", ((StringBuilder)localObject1).toString());
       return null;
     }
-    if (bool) {}
-    for (int i = UploadConfiguration.getPictureQuality(paramAbstractUploadTask);; i = 100)
+    if (bool) {
+      i = UploadConfiguration.getPictureQuality(paramAbstractUploadTask);
+    } else {
+      i = 100;
+    }
+    int j = i;
+    if (i <= 0) {
+      j = 100;
+    }
+    Object localObject2 = UploadGlobalConfig.getConfig();
+    localObject1 = new IUploadConfig.UploadImageSize(((BitmapFactory.Options)localObject1).outWidth, ((BitmapFactory.Options)localObject1).outHeight, 100);
+    int i = 0;
+    paramAbstractUploadTask = ((IUploadConfig)localObject2).getUploadImageSize((IUploadConfig.UploadImageSize)localObject1, paramInt, new ImageUploadTask(false, paramAbstractUploadTask));
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("getUploadImageSize size=");
+    ((StringBuilder)localObject2).append(localObject1);
+    ((StringBuilder)localObject2).append(" targetSize=");
+    ((StringBuilder)localObject2).append(paramAbstractUploadTask);
+    ((StringBuilder)localObject2).append(" q:");
+    ((StringBuilder)localObject2).append(j);
+    ((StringBuilder)localObject2).append(" jpg:");
+    ((StringBuilder)localObject2).append(bool);
+    UploadLog.d("ImageProcessor", ((StringBuilder)localObject2).toString());
+    if ((paramAbstractUploadTask != null) && (paramAbstractUploadTask.height > 0) && (paramAbstractUploadTask.width > 0))
     {
-      int j = i;
-      if (i <= 0) {
-        j = 100;
-      }
-      IUploadConfig localIUploadConfig = UploadGlobalConfig.getConfig();
-      localObject = new IUploadConfig.UploadImageSize(((BitmapFactory.Options)localObject).outWidth, ((BitmapFactory.Options)localObject).outHeight, 100);
-      paramAbstractUploadTask = localIUploadConfig.getUploadImageSize((IUploadConfig.UploadImageSize)localObject, paramInt, new ImageUploadTask(false, paramAbstractUploadTask));
-      UploadLog.d("ImageProcessor", "getUploadImageSize size=" + localObject + " targetSize=" + paramAbstractUploadTask + " q:" + j + " jpg:" + bool);
-      if ((paramAbstractUploadTask != null) && (paramAbstractUploadTask.height > 0) && (paramAbstractUploadTask.width > 0))
-      {
-        paramInt = k;
-        if (paramAbstractUploadTask.quality > 0) {}
-      }
-      else
-      {
-        paramInt = 1;
-      }
-      if ((paramInt != 0) || ((((IUploadConfig.UploadImageSize)localObject).width <= paramAbstractUploadTask.width) && (((IUploadConfig.UploadImageSize)localObject).height <= paramAbstractUploadTask.height) && (j <= paramAbstractUploadTask.quality))) {
-        return localObject;
+      paramInt = i;
+      if (paramAbstractUploadTask.quality > 0) {}
+    }
+    else
+    {
+      paramInt = 1;
+    }
+    if (paramInt == 0)
+    {
+      if ((((IUploadConfig.UploadImageSize)localObject1).width <= paramAbstractUploadTask.width) && (((IUploadConfig.UploadImageSize)localObject1).height <= paramAbstractUploadTask.height) && (j <= paramAbstractUploadTask.quality)) {
+        return localObject1;
       }
       if (j < paramAbstractUploadTask.quality) {
         paramAbstractUploadTask.quality = j;
       }
       return paramAbstractUploadTask;
     }
+    return localObject1;
   }
   
   public static boolean isGifPicture(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (!new File(paramString).exists()) {
+    if (TextUtils.isEmpty(paramString)) {
+      return false;
+    }
+    if (!new File(paramString).exists()) {
       return false;
     }
     return "image/gif".equalsIgnoreCase(ImageProcessUtil.decodeBitmapOptions(paramString).outMimeType);
@@ -115,69 +132,71 @@ public class ImageCompressor
   
   public static final void processGif(AbstractUploadTask paramAbstractUploadTask)
   {
-    boolean bool = true;
     int i = UploadConfiguration.getCurrentNetworkCategory();
     long l = new File(paramAbstractUploadTask.getFilePath()).length();
-    UploadLog.i("ImageProcessor", "processGif, networkType:" + i + " length:" + l + " flowId:" + paramAbstractUploadTask.flowId);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("processGif, networkType:");
+    ((StringBuilder)localObject1).append(i);
+    ((StringBuilder)localObject1).append(" length:");
+    ((StringBuilder)localObject1).append(l);
+    ((StringBuilder)localObject1).append(" flowId:");
+    ((StringBuilder)localObject1).append(paramAbstractUploadTask.flowId);
+    UploadLog.i("ImageProcessor", ((StringBuilder)localObject1).toString());
     if (l < UploadConfiguration.getGifUploadLimit(i))
     {
-      UploadLog.v("ImageProcessor", "processGif() 满足上传原图条件 flowId=" + paramAbstractUploadTask.flowId);
-      if (copyTaskFile(paramAbstractUploadTask))
-      {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("processGif() 满足上传原图条件 flowId=");
+      ((StringBuilder)localObject1).append(paramAbstractUploadTask.flowId);
+      UploadLog.v("ImageProcessor", ((StringBuilder)localObject1).toString());
+      if (copyTaskFile(paramAbstractUploadTask)) {
         i = 2;
-        if ((i != 2) && (i != 3) && (i != 5)) {
-          break label316;
-        }
+      } else {
         i = 1;
-        label132:
-        if (i != 0) {
-          break label321;
-        }
       }
     }
-    for (;;)
+    else
     {
-      paramAbstractUploadTask.keepTmpFile(bool);
-      return;
-      i = 1;
-      break;
-      Object localObject = BitmapUtils.getOptions();
-      localObject = ImageProcessUtil.decodeFileWithRetry(paramAbstractUploadTask.getFilePath(), (BitmapFactory.Options)localObject);
-      String str = FileUtils.getTempFilePath(UploadGlobalConfig.getContext(), paramAbstractUploadTask.getFilePath(), paramAbstractUploadTask.md5, paramAbstractUploadTask.flowId);
-      int j;
-      if ((localObject != null) && (str != null) && (ImageProcessUtil.bitmapToFile((Bitmap)localObject, str, 80, false, false, null)))
+      localObject1 = BitmapUtils.getOptions();
+      localObject1 = ImageProcessUtil.decodeFileWithRetry(paramAbstractUploadTask.getFilePath(), (BitmapFactory.Options)localObject1);
+      Object localObject2 = FileUtils.getTempFilePath(UploadGlobalConfig.getContext(), paramAbstractUploadTask.getFilePath(), paramAbstractUploadTask.md5, paramAbstractUploadTask.flowId);
+      if ((localObject1 != null) && (localObject2 != null) && (ImageProcessUtil.bitmapToFile((Bitmap)localObject1, (String)localObject2, 80, false, false, null)))
       {
-        paramAbstractUploadTask.uploadFilePath = str;
-        ((Bitmap)localObject).recycle();
-        UploadLog.v("ImageProcessor", "processGif() 取第一帧上传 flowId=" + paramAbstractUploadTask.flowId);
-        localObject = null;
-        j = 3;
-        i = j;
-        if (localObject == null) {
-          break;
+        paramAbstractUploadTask.uploadFilePath = ((String)localObject2);
+        ((Bitmap)localObject1).recycle();
+        localObject1 = null;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("processGif() 取第一帧上传 flowId=");
+        ((StringBuilder)localObject2).append(paramAbstractUploadTask.flowId);
+        UploadLog.v("ImageProcessor", ((StringBuilder)localObject2).toString());
+        i = 3;
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("processGif() 上传原图 flowId=");
+        ((StringBuilder)localObject2).append(paramAbstractUploadTask.flowId);
+        UploadLog.v("ImageProcessor", ((StringBuilder)localObject2).toString());
+        if (copyTaskFile(paramAbstractUploadTask)) {
+          i = 5;
+        } else {
+          i = 4;
         }
-        ((Bitmap)localObject).recycle();
-        i = j;
-        break;
       }
-      UploadLog.v("ImageProcessor", "processGif() 上传原图 flowId=" + paramAbstractUploadTask.flowId);
-      if (copyTaskFile(paramAbstractUploadTask)) {}
-      for (i = 5;; i = 4)
-      {
-        j = i;
-        break;
+      if (localObject1 != null) {
+        ((Bitmap)localObject1).recycle();
       }
-      label316:
-      i = 0;
-      break label132;
-      label321:
-      bool = false;
     }
+    if ((i != 2) && (i != 3) && (i != 5)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    paramAbstractUploadTask.keepTmpFile(i ^ 0x1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.impl.ImageCompressor
  * JD-Core Version:    0.7.0.1
  */

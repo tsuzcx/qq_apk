@@ -54,7 +54,18 @@ public class LbsDataV2$GpsInfo
   
   public String toString()
   {
-    return "lat: " + this.lat + ", lon: " + this.lon + ", alt: " + this.alt + ", gpsType: " + this.gpsType + ", accuracy: " + this.accuracy;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lat: ");
+    localStringBuilder.append(this.lat);
+    localStringBuilder.append(", lon: ");
+    localStringBuilder.append(this.lon);
+    localStringBuilder.append(", alt: ");
+    localStringBuilder.append(this.alt);
+    localStringBuilder.append(", gpsType: ");
+    localStringBuilder.append(this.gpsType);
+    localStringBuilder.append(", accuracy: ");
+    localStringBuilder.append(this.accuracy);
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -68,7 +79,7 @@ public class LbsDataV2$GpsInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.LbsDataV2.GpsInfo
  * JD-Core Version:    0.7.0.1
  */

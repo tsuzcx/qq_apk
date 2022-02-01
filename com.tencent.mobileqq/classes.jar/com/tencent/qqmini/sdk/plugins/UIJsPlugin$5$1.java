@@ -15,24 +15,28 @@ class UIJsPlugin$5$1
   {
     try
     {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("confirm", true);
-      this.this$1.val$req.ok(localJSONObject);
-      if (paramDialogInterface != null) {
+      localObject = new JSONObject();
+      ((JSONObject)localObject).put("confirm", true);
+      this.this$1.val$req.ok((JSONObject)localObject);
+      if (paramDialogInterface != null)
+      {
         paramDialogInterface.dismiss();
+        return;
       }
-      return;
     }
     catch (Exception paramDialogInterface)
     {
-      QMLog.e("UIJsPlugin", "show modalView error." + paramDialogInterface);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("show modalView error.");
+      ((StringBuilder)localObject).append(paramDialogInterface);
+      QMLog.e("UIJsPlugin", ((StringBuilder)localObject).toString());
       this.this$1.val$req.fail();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.UIJsPlugin.5.1
  * JD-Core Version:    0.7.0.1
  */

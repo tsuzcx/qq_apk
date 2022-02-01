@@ -13,37 +13,44 @@ class RequestServer$1
   
   public boolean onReply(int paramInt, byte[] paramArrayOfByte, String paramString)
   {
-    QMLog.w("RequestServer", "recvData " + this.val$request + ",retCode = " + paramInt);
-    if (paramInt == 0) {
+    paramString = new StringBuilder();
+    paramString.append("recvData ");
+    paramString.append(this.val$request);
+    paramString.append(",retCode = ");
+    paramString.append(paramInt);
+    QMLog.w("RequestServer", paramString.toString());
+    if (paramInt == 0)
+    {
       if (this.val$result != null)
       {
         paramArrayOfByte = this.val$request.getResponse(paramArrayOfByte);
-        if (paramArrayOfByte == null) {
-          break label99;
+        if (paramArrayOfByte != null)
+        {
+          if (paramArrayOfByte.optInt("retCode", 0) == 0L)
+          {
+            this.val$result.onReceiveResult(true, paramArrayOfByte);
+            return true;
+          }
+          this.val$result.onReceiveResult(false, paramArrayOfByte);
+          return true;
         }
-        if (paramArrayOfByte.optInt("retCode", 0) != 0L) {
-          break label86;
-        }
-        this.val$result.onReceiveResult(true, paramArrayOfByte);
+        this.val$result.onReceiveResult(false, new JSONObject());
+        return true;
       }
     }
-    label86:
-    label99:
-    while (this.val$result == null)
+    else
     {
-      return true;
-      this.val$result.onReceiveResult(false, paramArrayOfByte);
-      return true;
-      this.val$result.onReceiveResult(false, new JSONObject());
-      return true;
+      paramArrayOfByte = this.val$result;
+      if (paramArrayOfByte != null) {
+        paramArrayOfByte.onReceiveResult(false, new JSONObject());
+      }
     }
-    this.val$result.onReceiveResult(false, new JSONObject());
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.RequestServer.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<animated-vector android:drawable="@drawable/blh"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <solid android:color="@color/al3" />
-    <corners android:topLeftRadius="10.0dip" android:topRightRadius="10.0dip" />
-</shape>
+    <target android:name="ring_outer" android:animation="@anim/ji" />
+    <target android:name="ring_outer_path" android:animation="@anim/jj" />
+    <target android:name="dot_group" android:animation="@anim/jh" />
+</animated-vector>

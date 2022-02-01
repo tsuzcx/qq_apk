@@ -14,27 +14,30 @@ class TogetherPopupDialog$2
   {
     switch (((TogetherEntryData)paramView.getTag()).b)
     {
-    }
-    for (;;)
-    {
-      this.a.dismiss();
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      this.a.e();
-      continue;
-      this.a.f();
-      continue;
-      this.a.g();
-      continue;
-      this.a.h();
-      continue;
+    default: 
+      break;
+    case 1005: 
       this.a.i();
+      break;
+    case 1004: 
+      this.a.h();
+      break;
+    case 1003: 
+      this.a.g();
+      break;
+    case 1002: 
+      this.a.f();
+      break;
+    case 1001: 
+      this.a.e();
     }
+    this.a.dismiss();
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.TogetherPopupDialog.2
  * JD-Core Version:    0.7.0.1
  */

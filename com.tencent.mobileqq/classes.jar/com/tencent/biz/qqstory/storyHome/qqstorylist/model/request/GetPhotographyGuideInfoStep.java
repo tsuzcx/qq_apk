@@ -38,13 +38,11 @@ public class GetPhotographyGuideInfoStep
       paramGetPhotographyGuideResponse = paramGetPhotographyGuideResponse.a;
       if ((paramGetPhotographyGuideResponse != null) && (paramGetPhotographyGuideResponse.size() > 0)) {
         paramGetPhotographyGuideRequest.b("StorySvc.get_photography_guide.word", paramGetPhotographyGuideResponse.get(0));
+      } else {
+        paramGetPhotographyGuideRequest.b("StorySvc.get_photography_guide.word", HardCodeUtil.a(2131705354));
       }
-      for (;;)
-      {
-        d();
-        return;
-        paramGetPhotographyGuideRequest.b("StorySvc.get_photography_guide.word", HardCodeUtil.a(2131705280));
-      }
+      d();
+      return;
     }
     SLog.d("Q.qqstory.home.GetPhotographyGuideInfoStep", "onCmdRespond : failed. errorMsg:%s , request:%s .", new Object[] { paramErrorMessage, paramGetPhotographyGuideRequest });
     b(paramErrorMessage);
@@ -68,7 +66,7 @@ public class GetPhotographyGuideInfoStep
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.GetPhotographyGuideInfoStep
  * JD-Core Version:    0.7.0.1
  */

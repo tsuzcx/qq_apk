@@ -98,94 +98,128 @@ public class CameraFilterFactory
   
   private static BaseFilter creatFilterByIdForPudding(int paramInt)
   {
-    BlurLutFilter localBlurLutFilter;
-    switch (paramInt)
+    if (paramInt != 246)
     {
-    default: 
-      return null;
-    case 2001: 
-      return new GPUImageLookupFilter("sh/ziran_front.png");
-    case 2002: 
-      return new GPUImageLookupFilter("sh/ziran_back.png");
-    case 2003: 
-      return new GPUImageLookupFilter("sh/chengjing.png");
-    case 2004: 
-      return new GPUImageLookupFilter("sh/liankong.png");
-    case 2005: 
-      return new GPUImageLookupFilter("sh/laodianying.png");
-    case 2006: 
-      return new GPUImageLookupFilter("sh/xinxian.png");
-    case 2007: 
-      return new GPUImageLookupFilter("sh/meiwei.png");
-    case 2008: 
-      return new GPUImageLookupFilter("sh/tianping.png");
-    case 2009: 
-      localBlurLutFilter = new BlurLutFilter();
-      ((BlurLutFilter)localBlurLutFilter).setLutTexture("sh/yanhong.png");
-      ((BlurLutFilter)localBlurLutFilter).setBlendAplha(0.5F);
-      return localBlurLutFilter;
-    case 2010: 
-      localBlurLutFilter = new BlurLutFilter();
-      ((BlurLutFilter)localBlurLutFilter).setLutTexture("sh/hanfeng.png");
-      ((BlurLutFilter)localBlurLutFilter).setBlendAplha(0.5F);
-      return localBlurLutFilter;
-    case 2011: 
-      localBlurLutFilter = new BlurLutFilter();
-      ((BlurLutFilter)localBlurLutFilter).setLutTexture("sh/jiazhou.png");
-      ((BlurLutFilter)localBlurLutFilter).setBlendAplha(0.5F);
-      return localBlurLutFilter;
-    case 282: 
-      return new GPUImageLookupFilter("sh/BaiXi.png");
-    case 2013: 
-      return new GPUImageLookupFilter("sh/FeiHong.png");
-    case 2014: 
-      return new GPUImageLookupFilter("sh/NaiXing.png");
-    case 2015: 
-      return new GPUImageLookupFilter("sh/YaHui.png");
-    case 2016: 
-      return new GPUImageLookupFilter("sh/JiaoCha.png");
-    case 2017: 
-      return new GPUImageLookupFilter("sh/FeiLin.png");
-    case 2018: 
-      return new GPUImageLookupFilter("sh/MoKa.png");
-    case 2020: 
-      return new GPUImageLookupFilter("sh/wu_lf_front.png");
-    case 2019: 
-      return new GPUImageLookupFilter("sh/wu_lf_back.png");
-    case 298: 
-      return new GPUImageLookupFilter("sh/qingxi_lf.png");
-    case 308: 
-      return new GPUImageLookupFilter("sh/chuxia_lf.png");
-    case 305: 
-      return new GPUImageLookupFilter("sh/qingcheng_lf.png");
-    case 246: 
-      return new GPUImageLookupFilter("sh/meiguichuxue_lf.png");
-    case 309: 
-      return new GPUImageLookupFilter("sh/muse_lf.png");
-    case 306: 
-      return new GPUImageLookupFilter("sh/xindong_lf.png");
-    case 307: 
-      return new GPUImageLookupFilter("sh/gaobai_lf.png");
-    case 310: 
-      return new GPUImageLookupFilter("sh/dannai_lf.png");
-    case 297: 
-      return new GPUImageLookupFilter("sh/wuxia_lf.png");
-    case 285: 
-      return new GPUImageLookupFilter("sh/xinye_lf.png");
-    case 287: 
-      return new GPUImageLookupFilter("sh/shuilian_lf.png");
-    case 283: 
-      return new GPUImageLookupFilter("sh/qiangwei_lf.png");
-    case 271: 
-      return new GPUImageLookupFilter("sh/baicha_lf.png");
-    case 273: 
-      return new MoscoFilter();
-    case 257: 
+      if (paramInt != 257)
+      {
+        if (paramInt != 268)
+        {
+          if (paramInt != 271)
+          {
+            if (paramInt != 273)
+            {
+              if (paramInt != 285)
+              {
+                if (paramInt != 287)
+                {
+                  if (paramInt != 314)
+                  {
+                    if (paramInt != 282)
+                    {
+                      if (paramInt != 283)
+                      {
+                        if (paramInt != 297)
+                        {
+                          if (paramInt != 298)
+                          {
+                            switch (paramInt)
+                            {
+                            default: 
+                              BlurLutFilter localBlurLutFilter1;
+                              BlurLutFilter localBlurLutFilter2;
+                              switch (paramInt)
+                              {
+                              default: 
+                                switch (paramInt)
+                                {
+                                default: 
+                                  return null;
+                                case 2020: 
+                                  return new GPUImageLookupFilter("sh/wu_lf_front.png");
+                                case 2019: 
+                                  return new GPUImageLookupFilter("sh/wu_lf_back.png");
+                                case 2018: 
+                                  return new GPUImageLookupFilter("sh/MoKa.png");
+                                case 2017: 
+                                  return new GPUImageLookupFilter("sh/FeiLin.png");
+                                case 2016: 
+                                  return new GPUImageLookupFilter("sh/JiaoCha.png");
+                                case 2015: 
+                                  return new GPUImageLookupFilter("sh/YaHui.png");
+                                case 2014: 
+                                  return new GPUImageLookupFilter("sh/NaiXing.png");
+                                }
+                                return new GPUImageLookupFilter("sh/FeiHong.png");
+                              case 2011: 
+                                localBlurLutFilter1 = new BlurLutFilter();
+                                localBlurLutFilter2 = (BlurLutFilter)localBlurLutFilter1;
+                                localBlurLutFilter2.setLutTexture("sh/jiazhou.png");
+                                localBlurLutFilter2.setBlendAplha(0.5F);
+                                return localBlurLutFilter1;
+                              case 2010: 
+                                localBlurLutFilter1 = new BlurLutFilter();
+                                localBlurLutFilter2 = (BlurLutFilter)localBlurLutFilter1;
+                                localBlurLutFilter2.setLutTexture("sh/hanfeng.png");
+                                localBlurLutFilter2.setBlendAplha(0.5F);
+                                return localBlurLutFilter1;
+                              case 2009: 
+                                localBlurLutFilter1 = new BlurLutFilter();
+                                localBlurLutFilter2 = (BlurLutFilter)localBlurLutFilter1;
+                                localBlurLutFilter2.setLutTexture("sh/yanhong.png");
+                                localBlurLutFilter2.setBlendAplha(0.5F);
+                                return localBlurLutFilter1;
+                              case 2008: 
+                                return new GPUImageLookupFilter("sh/tianping.png");
+                              case 2007: 
+                                return new GPUImageLookupFilter("sh/meiwei.png");
+                              case 2006: 
+                                return new GPUImageLookupFilter("sh/xinxian.png");
+                              case 2005: 
+                                return new GPUImageLookupFilter("sh/laodianying.png");
+                              case 2004: 
+                                return new GPUImageLookupFilter("sh/liankong.png");
+                              case 2003: 
+                                return new GPUImageLookupFilter("sh/chengjing.png");
+                              case 2002: 
+                                return new GPUImageLookupFilter("sh/ziran_back.png");
+                              }
+                              return new GPUImageLookupFilter("sh/ziran_front.png");
+                            case 310: 
+                              return new GPUImageLookupFilter("sh/dannai_lf.png");
+                            case 309: 
+                              return new GPUImageLookupFilter("sh/muse_lf.png");
+                            case 308: 
+                              return new GPUImageLookupFilter("sh/chuxia_lf.png");
+                            case 307: 
+                              return new GPUImageLookupFilter("sh/gaobai_lf.png");
+                            case 306: 
+                              return new GPUImageLookupFilter("sh/xindong_lf.png");
+                            }
+                            return new GPUImageLookupFilter("sh/qingcheng_lf.png");
+                          }
+                          return new GPUImageLookupFilter("sh/qingxi_lf.png");
+                        }
+                        return new GPUImageLookupFilter("sh/wuxia_lf.png");
+                      }
+                      return new GPUImageLookupFilter("sh/qiangwei_lf.png");
+                    }
+                    return new GPUImageLookupFilter("sh/BaiXi.png");
+                  }
+                  return new GPUImageLookupFilter("sh/zhongxing_lf.png");
+                }
+                return new GPUImageLookupFilter("sh/shuilian_lf.png");
+              }
+              return new GPUImageLookupFilter("sh/xinye_lf.png");
+            }
+            return new MoscoFilter();
+          }
+          return new GPUImageLookupFilter("sh/baicha_lf.png");
+        }
+        return new GPUImageLookupFilter("sh/mo_lf.png");
+      }
       return new GPUImageLookupFilter("sh/dongjing_lf.png");
-    case 268: 
-      return new GPUImageLookupFilter("sh/mo_lf.png");
     }
-    return new GPUImageLookupFilter("sh/zhongxing_lf.png");
+    return new GPUImageLookupFilter("sh/meiguichuxue_lf.png");
   }
   
   public static BaseFilter createFilterById(int paramInt)
@@ -218,192 +252,223 @@ public class CameraFilterFactory
   
   private static BaseFilter createFilterByIdForPitu(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 200)
     {
-    default: 
-      return null;
-    case 200: 
-      return new ShiShangSHFilter();
-    case 201: 
+      if (paramInt != 201)
+      {
+        if (paramInt != 215)
+        {
+          if (paramInt != 216)
+          {
+            if (paramInt != 219)
+            {
+              if (paramInt != 220)
+              {
+                if (paramInt != 269)
+                {
+                  if (paramInt != 270)
+                  {
+                    switch (paramInt)
+                    {
+                    default: 
+                      switch (paramInt)
+                      {
+                      default: 
+                        switch (paramInt)
+                        {
+                        default: 
+                          switch (paramInt)
+                          {
+                          default: 
+                            switch (paramInt)
+                            {
+                            default: 
+                              switch (paramInt)
+                              {
+                              default: 
+                                return null;
+                              case 281: 
+                                return new TransKongChengFilter();
+                              case 280: 
+                                return new TransXinXianFilter();
+                              case 279: 
+                                return new GPUImageLookupFilter("sh/rouhe_lf.png");
+                              case 278: 
+                                return new GPUImageLookupFilter("sh/rixi2_lf.png");
+                              case 277: 
+                                return new TransMeiWeiFilter();
+                              case 276: 
+                                return new GPUImageLookupFilter();
+                              case 275: 
+                                return new ImageAutoLevelGPUFilter();
+                              }
+                              return new DarkCornerPtuFilter();
+                            case 267: 
+                              return new GPUImageLookupFilter("sh/yingtaobuding_lf.png");
+                            case 266: 
+                              return new LollyFilter();
+                            case 265: 
+                              return new MilkBlueFilter();
+                            case 264: 
+                              return new MilkCoffeeFilter();
+                            case 263: 
+                              return new GradientGlareFashionFilter();
+                            case 262: 
+                              return new GradientGlareFondDreamFilter();
+                            case 261: 
+                              return new GradientAndyWarholCowFilter();
+                            case 260: 
+                              return new GradientPurpleYellowFilter();
+                            case 259: 
+                              return new MedSeaFilter();
+                            }
+                            return new SapporoFilter();
+                          case 256: 
+                            return new YoungFilter();
+                          case 255: 
+                            return new ChongShengFilter();
+                          case 254: 
+                            return new LightRedFilter();
+                          case 253: 
+                            return new GPUImageLookupFilter("sh/fenbi_lf.png");
+                          case 252: 
+                            return new GPUImageLookupFilter("sh/tianbohe_lf.png");
+                          case 251: 
+                            return new MilkGreenFilter();
+                          case 250: 
+                            return new RichYellowFilter();
+                          case 249: 
+                            return new RichBlueFilter();
+                          case 248: 
+                            return new ThursdayFilter();
+                          }
+                          return new NextDoorFilter();
+                        case 3000: 
+                          return new GPUImageLookupFilter("sh/zhigan_lf.png");
+                        case 313: 
+                          return new GPUImageLookupFilter("sh/hanfeng_lf.png");
+                        case 312: 
+                          return new GPUImageLookupFilter("sh/jiazhou_lf.png");
+                        case 311: 
+                          return new GPUImageLookupFilter("sh/hongkong_lf.png");
+                        case 304: 
+                          return new GPUImageLookupFilter("sh/peach_lf.png");
+                        case 303: 
+                          return new WeiZhiDaoFilters.KaFeiFilter();
+                        case 302: 
+                          return new WeiZhiDaoFilters.TianPinFilter();
+                        case 301: 
+                          return new WeiZhiDaoFilters.XinXianFilter();
+                        case 300: 
+                          return new WeiZhiDaoFilters.XiCanFilter();
+                        case 299: 
+                          return new WeiZhiDaoFilters.MeiWeiFilter();
+                        case 296: 
+                          return new GPUImageLookupFilter("sh/yingtaobuding_lf.png");
+                        case 295: 
+                          return new GPUImageLookupFilter("sh/fenhongbao_lf.png");
+                        case 294: 
+                          return new GPUImageLookupFilter("sh/wu_lf.png");
+                        case 293: 
+                          FaceBeautyAutoFilter localFaceBeautyAutoFilter = new FaceBeautyAutoFilter();
+                          localFaceBeautyAutoFilter.setEffectIndex(4);
+                          return localFaceBeautyAutoFilter;
+                        case 292: 
+                          return new GPUImageLookupFilter("sh/nuanyang_lf.png");
+                        case 291: 
+                          return new TianMeiZiPaiFilter();
+                        case 290: 
+                          return new GPUImageLookupFilter("sh/fennen_lf.png");
+                        case 288: 
+                          return new GPUImageLookupFilter("sh/youjiali_lf.png");
+                        case 286: 
+                          return new GPUImageLookupFilter("sh/tangguomeigui_lf.png");
+                        case 284: 
+                          return new GPUImageLookupFilter("sh/qingliang_lf.png");
+                        case 272: 
+                          return new TianMeiZiPaiFilter();
+                        case 245: 
+                          return new LightWhiteFilter();
+                        case 244: 
+                          return new RichRedFilter();
+                        case 243: 
+                          return new ThreeDFilter();
+                        case 242: 
+                          return new QuanMinYIngDiFilter();
+                        case 241: 
+                          return new PtuQingCongFilter();
+                        case 240: 
+                          return new PtuWenYiFanFilter();
+                        case 239: 
+                          return new PtuShiShang2RenFilter();
+                        case 238: 
+                          return new PtuShiGuangRenFilter();
+                        case 237: 
+                          return new PtuLengMeiRenFilter();
+                        case 236: 
+                          return new PtuLinjiaFilter();
+                        case 235: 
+                          return new AutoLevelFilter();
+                        case 234: 
+                          return new FengJngFilter();
+                        case 233: 
+                          return new MeishiFilter();
+                        }
+                        return new JingWuFilter();
+                      case 230: 
+                        return new FaceBeautyAutoFilter();
+                      case 229: 
+                        return new SenlinFilter();
+                      case 228: 
+                        return new NaichaFilter();
+                      case 227: 
+                        return new MenghuanFilter();
+                      case 226: 
+                        return new BlackWhite4Filter();
+                      case 225: 
+                        return new BlurHighRealFilter();
+                      case 224: 
+                        return new BeautysRealAutoFilter();
+                      case 223: 
+                        return new GaoLengFilter();
+                      }
+                      return new SnowFilter();
+                    case 213: 
+                      return new NuanHuangFilter();
+                    case 212: 
+                      return new MoLvFilter();
+                    case 211: 
+                      return new LanTuiSeFilter();
+                    case 210: 
+                      return new LanFilter();
+                    case 209: 
+                      return new JiaoPianFilter();
+                    case 208: 
+                      return new HuaiJiuFilter();
+                    case 207: 
+                      return new BlackWhiteFilter();
+                    case 206: 
+                      return new GaoGuangLanZiFilter();
+                    case 205: 
+                      return new FuGuHuangFilter();
+                    }
+                    return new FenFilter();
+                  }
+                  return new TeaMilkFilter();
+                }
+                return new CoffeeFilter();
+              }
+              return new BlackWhite3Filter();
+            }
+            return new FuGuFilter();
+          }
+          return new BlackWhite2Filter();
+        }
+        return new Fen2Filter();
+      }
       return new ShiShangSHFilter(1);
-    case 230: 
-      return new FaceBeautyAutoFilter();
-    case 204: 
-      return new FenFilter();
-    case 205: 
-      return new FuGuHuangFilter();
-    case 206: 
-      return new GaoGuangLanZiFilter();
-    case 207: 
-      return new BlackWhiteFilter();
-    case 208: 
-      return new HuaiJiuFilter();
-    case 209: 
-      return new JiaoPianFilter();
-    case 210: 
-      return new LanFilter();
-    case 211: 
-      return new LanTuiSeFilter();
-    case 212: 
-      return new MoLvFilter();
-    case 213: 
-      return new NuanHuangFilter();
-    case 215: 
-      return new Fen2Filter();
-    case 216: 
-      return new BlackWhite2Filter();
-    case 219: 
-      return new FuGuFilter();
-    case 220: 
-      return new BlackWhite3Filter();
-    case 223: 
-      return new GaoLengFilter();
-    case 222: 
-      return new SnowFilter();
-    case 224: 
-      return new BeautysRealAutoFilter();
-    case 225: 
-      return new BlurHighRealFilter();
-    case 226: 
-      return new BlackWhite4Filter();
-    case 227: 
-      return new MenghuanFilter();
-    case 228: 
-      return new NaichaFilter();
-    case 229: 
-      return new SenlinFilter();
-    case 232: 
-      return new JingWuFilter();
-    case 233: 
-      return new MeishiFilter();
-    case 234: 
-      return new FengJngFilter();
-    case 235: 
-      return new AutoLevelFilter();
-    case 236: 
-      return new PtuLinjiaFilter();
-    case 241: 
-      return new PtuQingCongFilter();
-    case 237: 
-      return new PtuLengMeiRenFilter();
-    case 238: 
-      return new PtuShiGuangRenFilter();
-    case 239: 
-      return new PtuShiShang2RenFilter();
-    case 240: 
-      return new PtuWenYiFanFilter();
-    case 242: 
-      return new QuanMinYIngDiFilter();
-    case 243: 
-      return new ThreeDFilter();
-    case 244: 
-      return new RichRedFilter();
-    case 245: 
-      return new LightWhiteFilter();
-    case 247: 
-      return new NextDoorFilter();
-    case 248: 
-      return new ThursdayFilter();
-    case 249: 
-      return new RichBlueFilter();
-    case 250: 
-      return new RichYellowFilter();
-    case 251: 
-      return new MilkGreenFilter();
-    case 252: 
-      return new GPUImageLookupFilter("sh/tianbohe_lf.png");
-    case 253: 
-      return new GPUImageLookupFilter("sh/fenbi_lf.png");
-    case 254: 
-      return new LightRedFilter();
-    case 255: 
-      return new ChongShengFilter();
-    case 256: 
-      return new YoungFilter();
-    case 258: 
-      return new SapporoFilter();
-    case 259: 
-      return new MedSeaFilter();
-    case 260: 
-      return new GradientPurpleYellowFilter();
-    case 261: 
-      return new GradientAndyWarholCowFilter();
-    case 262: 
-      return new GradientGlareFondDreamFilter();
-    case 263: 
-      return new GradientGlareFashionFilter();
-    case 264: 
-      return new MilkCoffeeFilter();
-    case 265: 
-      return new MilkBlueFilter();
-    case 266: 
-      return new LollyFilter();
-    case 267: 
-      return new GPUImageLookupFilter("sh/yingtaobuding_lf.png");
-    case 269: 
-      return new CoffeeFilter();
-    case 270: 
-      return new TeaMilkFilter();
-    case 272: 
-      return new TianMeiZiPaiFilter();
-    case 274: 
-      return new DarkCornerPtuFilter();
-    case 275: 
-      return new ImageAutoLevelGPUFilter();
-    case 276: 
-      return new GPUImageLookupFilter();
-    case 277: 
-      return new TransMeiWeiFilter();
-    case 278: 
-      return new GPUImageLookupFilter("sh/rixi2_lf.png");
-    case 279: 
-      return new GPUImageLookupFilter("sh/rouhe_lf.png");
-    case 280: 
-      return new TransXinXianFilter();
-    case 281: 
-      return new TransKongChengFilter();
-    case 304: 
-      return new GPUImageLookupFilter("sh/peach_lf.png");
-    case 311: 
-      return new GPUImageLookupFilter("sh/hongkong_lf.png");
-    case 312: 
-      return new GPUImageLookupFilter("sh/jiazhou_lf.png");
-    case 313: 
-      return new GPUImageLookupFilter("sh/hanfeng_lf.png");
-    case 284: 
-      return new GPUImageLookupFilter("sh/qingliang_lf.png");
-    case 286: 
-      return new GPUImageLookupFilter("sh/tangguomeigui_lf.png");
-    case 288: 
-      return new GPUImageLookupFilter("sh/youjiali_lf.png");
-    case 294: 
-      return new GPUImageLookupFilter("sh/wu_lf.png");
-    case 290: 
-      return new GPUImageLookupFilter("sh/fennen_lf.png");
-    case 291: 
-      return new TianMeiZiPaiFilter();
-    case 292: 
-      return new GPUImageLookupFilter("sh/nuanyang_lf.png");
-    case 293: 
-      FaceBeautyAutoFilter localFaceBeautyAutoFilter = new FaceBeautyAutoFilter();
-      localFaceBeautyAutoFilter.setEffectIndex(4);
-      return localFaceBeautyAutoFilter;
-    case 295: 
-      return new GPUImageLookupFilter("sh/fenhongbao_lf.png");
-    case 296: 
-      return new GPUImageLookupFilter("sh/yingtaobuding_lf.png");
-    case 299: 
-      return new WeiZhiDaoFilters.MeiWeiFilter();
-    case 300: 
-      return new WeiZhiDaoFilters.XiCanFilter();
-    case 301: 
-      return new WeiZhiDaoFilters.XinXianFilter();
-    case 302: 
-      return new WeiZhiDaoFilters.TianPinFilter();
-    case 303: 
-      return new WeiZhiDaoFilters.KaFeiFilter();
     }
-    return new GPUImageLookupFilter("sh/zhigan_lf.png");
+    return new ShiShangSHFilter();
   }
   
   public static BaseFilter createFilterByName(String paramString)
@@ -413,7 +478,7 @@ public class CameraFilterFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.CameraFilterFactory
  * JD-Core Version:    0.7.0.1
  */

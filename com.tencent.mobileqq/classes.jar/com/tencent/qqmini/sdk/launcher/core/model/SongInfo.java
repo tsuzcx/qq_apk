@@ -56,15 +56,16 @@ public class SongInfo
     this.type = paramParcel.readInt();
     this.singerId = paramParcel.readLong();
     this.startTime = paramParcel.readInt();
-    if (paramParcel.readFloat() != 0.0F) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.fromMini = bool;
-      this.duration = paramParcel.readLong();
-      this.uin = paramParcel.readLong();
-      this.mid = paramParcel.readString();
-      return;
+    boolean bool;
+    if (paramParcel.readFloat() != 0.0F) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.fromMini = bool;
+    this.duration = paramParcel.readLong();
+    this.uin = paramParcel.readLong();
+    this.mid = paramParcel.readString();
   }
   
   public int describeContents()
@@ -85,20 +86,21 @@ public class SongInfo
     paramParcel.writeInt(this.type);
     paramParcel.writeLong(this.singerId);
     paramParcel.writeInt(this.startTime);
-    if (this.fromMini) {}
-    for (float f = 1.0F;; f = 0.0F)
-    {
-      paramParcel.writeFloat(f);
-      paramParcel.writeLong(this.duration);
-      paramParcel.writeLong(this.uin);
-      paramParcel.writeString(this.mid);
-      return;
+    float f;
+    if (this.fromMini) {
+      f = 1.0F;
+    } else {
+      f = 0.0F;
     }
+    paramParcel.writeFloat(f);
+    paramParcel.writeLong(this.duration);
+    paramParcel.writeLong(this.uin);
+    paramParcel.writeString(this.mid);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.model.SongInfo
  * JD-Core Version:    0.7.0.1
  */

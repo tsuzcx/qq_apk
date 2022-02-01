@@ -2,8 +2,9 @@ package cooperation.qzone.webviewplugin;
 
 import android.app.Activity;
 import android.graphics.Bitmap;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
-import cooperation.qzone.share.WXShareFromQZHelper;
+import com.tencent.qzonehub.api.IQzoneShareApi;
 import java.util.Map;
 
 final class QZoneWebViewJsHandleLogic$2
@@ -14,17 +15,20 @@ final class QZoneWebViewJsHandleLogic$2
   public void run()
   {
     Object localObject = this.val$runtime.a();
-    if ((localObject == null) || (((Activity)localObject).isFinishing())) {
-      return;
+    if (localObject != null)
+    {
+      if (((Activity)localObject).isFinishing()) {
+        return;
+      }
+      localObject = (Bitmap)this.val$wrapper.remove("image");
+      ((IQzoneShareApi)QRoute.api(IQzoneShareApi.class)).addObserver(QZoneWebViewJsHandleLogic.wxShareListener);
+      ((IQzoneShareApi)QRoute.api(IQzoneShareApi.class)).shareMiniProgram(this.val$title, (Bitmap)localObject, this.val$description, this.val$webpageUrl, this.val$path, this.val$userName, null, 0);
     }
-    localObject = (Bitmap)this.val$wrapper.remove("image");
-    WXShareFromQZHelper.getInstance().addObserver(QZoneWebViewJsHandleLogic.wxShareListener);
-    WXShareFromQZHelper.getInstance().shareMiniProgram(this.val$title, (Bitmap)localObject, this.val$description, this.val$webpageUrl, this.val$path, this.val$userName, null, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneWebViewJsHandleLogic.2
  * JD-Core Version:    0.7.0.1
  */

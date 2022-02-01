@@ -2,18 +2,18 @@ package com.tencent.mobileqq.activity.main;
 
 import android.os.Handler;
 import android.os.Message;
-import com.tencent.mobileqq.activity.contact.addfriendverifi.NewFriendVerificationManager;
-import com.tencent.mobileqq.activity.contact.newfriend.NewFriendManager;
 import com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.RecommendTroopManagerImp;
 import com.tencent.mobileqq.config.QConfigManager;
-import com.tencent.mobileqq.config.TroopNotificationEntryConfig;
+import com.tencent.mobileqq.newfriend.api.INewFriendService;
+import com.tencent.mobileqq.newfriend.api.INewFriendVerificationService;
 import com.tencent.mobileqq.pb.PBStringField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.systemmsg.GroupSystemMsgController;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.RedTypeInfo;
+import com.tencent.mobileqq.troop.troopnotification.config.TroopNotificationEntryConfig;
+import com.tencent.mobileqq.troop.utils.RecommendTroopUtils;
 import com.tencent.qphone.base.util.QLog;
 
 class MainAssistObserver$15
@@ -23,100 +23,105 @@ class MainAssistObserver$15
   
   public void run()
   {
-    label412:
-    label494:
-    for (;;)
+    try
     {
-      Object localObject3;
-      try
+      Object localObject2 = (CTEntryMng)this.a.getManager(QQManagerFactory.CTENTRY_MNG);
+      Object localObject1 = null;
+      Object localObject3 = (INewFriendService)this.a.getRuntimeService(INewFriendService.class);
+      int j = ((INewFriendService)localObject3).getAllUnreadMessageCount();
+      boolean bool = QLog.isColorLevel();
+      if (bool)
       {
-        Object localObject1 = (CTEntryMng)this.a.getManager(QQManagerFactory.CTENTRY_MNG);
-        localObject3 = (NewFriendManager)this.a.getManager(QQManagerFactory.NEW_FRIEND_MANAGER);
-        int i = ((NewFriendManager)localObject3).d();
-        if (QLog.isColorLevel()) {
-          QLog.d("MainAssistObserver", 1, "updateTabContactNotify, totalCount = " + i);
-        }
-        TroopNotificationEntryConfig localTroopNotificationEntryConfig = (TroopNotificationEntryConfig)QConfigManager.a().a(691);
-        if ((localTroopNotificationEntryConfig == null) || (!localTroopNotificationEntryConfig.a(this.a.getCurrentAccountUin()))) {
-          break label494;
-        }
-        int k = RecommendTroopManagerImp.b(this.a);
-        int m = GroupSystemMsgController.a().a(this.a);
-        int j = i + k + m;
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append("updateTabContactNotify, totalCount = ");
+        ((StringBuilder)localObject4).append(j);
+        QLog.d("MainAssistObserver", 1, ((StringBuilder)localObject4).toString());
+      }
+      Object localObject4 = (TroopNotificationEntryConfig)QConfigManager.a().a(691);
+      int i = j;
+      if (localObject4 != null)
+      {
         i = j;
-        if (QLog.isColorLevel())
+        if (((TroopNotificationEntryConfig)localObject4).a(this.a.getCurrentAccountUin()))
         {
-          QLog.d("MainAssistObserver", 1, "updateTabContactNotify, totalCount = " + j + " recommendUnreadCount" + k + " notificationUnreadCount" + m);
+          int k = RecommendTroopUtils.b(this.a);
+          int m = GroupSystemMsgController.a().a(this.a);
+          j = j + k + m;
           i = j;
-        }
-        if (i > 0)
-        {
-          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(5);
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set(i + "");
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("{'cn':'#FF0000'}");
-          localObject1 = localObject3;
           if (QLog.isColorLevel())
           {
-            QLog.d("UndealCount.updateTabContactNotify", 2, "unread=" + i);
-            localObject1 = localObject3;
+            localObject4 = new StringBuilder();
+            ((StringBuilder)localObject4).append("updateTabContactNotify, totalCount = ");
+            ((StringBuilder)localObject4).append(j);
+            ((StringBuilder)localObject4).append(" recommendUnreadCount");
+            ((StringBuilder)localObject4).append(k);
+            ((StringBuilder)localObject4).append(" notificationUnreadCount");
+            ((StringBuilder)localObject4).append(m);
+            QLog.d("MainAssistObserver", 1, ((StringBuilder)localObject4).toString());
+            i = j;
           }
-          localObject3 = this.this$0.a.obtainMessage(3);
-          ((Message)localObject3).obj = localObject1;
-          this.this$0.a.sendMessage((Message)localObject3);
-          return;
-        }
-        if (((NewFriendManager)localObject3).a())
-        {
-          localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set("");
-          ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("");
-          localObject1 = localObject3;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("UndealCount.updateTabContactNotify", 2, "redpoint");
-          localObject1 = localObject3;
-          continue;
-        }
-        if (localException == null) {
-          break label412;
         }
       }
-      catch (Exception localException)
+      if (i > 0)
       {
-        localException.printStackTrace();
-        return;
-      }
-      Object localObject2;
-      if (localException.a())
-      {
-        localObject2 = null;
-      }
-      else if (NewFriendVerificationManager.a(this.a).a())
-      {
-        localObject3 = new BusinessInfoCheckUpdate.RedTypeInfo();
-        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_type.set(0);
-        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_content.set("");
-        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject3).red_desc.set("");
-        localObject2 = localObject3;
+        localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(5);
+        localObject1 = ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content;
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append(i);
+        ((StringBuilder)localObject3).append("");
+        ((PBStringField)localObject1).set(((StringBuilder)localObject3).toString());
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set("{'cn':'#FF0000'}");
+        localObject1 = localObject2;
         if (QLog.isColorLevel())
         {
-          QLog.d("NewFriendVerification.manager", 2, "updateTabContactNotify redpoint");
-          localObject2 = localObject3;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("unread=");
+          ((StringBuilder)localObject1).append(i);
+          QLog.d("UndealCount.updateTabContactNotify", 2, ((StringBuilder)localObject1).toString());
+          localObject1 = localObject2;
         }
       }
-      else
+      else if (((INewFriendService)localObject3).needShowAvatar())
       {
-        localObject2 = null;
+        localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(0);
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set("");
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set("");
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("UndealCount.updateTabContactNotify", 2, "redpoint");
+          localObject1 = localObject2;
+        }
       }
+      else if (((localObject2 == null) || (!((CTEntryMng)localObject2).a())) && (((INewFriendVerificationService)this.a.getRuntimeService(INewFriendVerificationService.class)).isShowRedPoint()))
+      {
+        localObject2 = new BusinessInfoCheckUpdate.RedTypeInfo();
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_type.set(0);
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_content.set("");
+        ((BusinessInfoCheckUpdate.RedTypeInfo)localObject2).red_desc.set("");
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          QLog.d("MainAssistObserver", 2, "updateTabContactNotify redpoint");
+          localObject1 = localObject2;
+        }
+      }
+      localObject2 = this.this$0.a.obtainMessage(3);
+      ((Message)localObject2).obj = localObject1;
+      this.this$0.a.sendMessage((Message)localObject2);
+      return;
+    }
+    catch (Exception localException)
+    {
+      localException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.main.MainAssistObserver.15
  * JD-Core Version:    0.7.0.1
  */

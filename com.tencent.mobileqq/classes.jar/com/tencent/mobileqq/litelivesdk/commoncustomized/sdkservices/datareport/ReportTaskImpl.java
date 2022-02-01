@@ -42,11 +42,19 @@ public class ReportTaskImpl
   
   public void send()
   {
-    String str = this.c + "#" + this.jdField_a_of_type_JavaLangString + "#" + this.b;
-    if ((TextUtils.isEmpty(this.c)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(this.b)) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilMap.get("page_desc"))) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilMap.get("page_module_desc"))) || (TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilMap.get("act_type_desc")))) {
-      throw new NullPointerException("缺少上报基础字段，请检查 page,module,actType以及他们的描述");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.c);
+    ((StringBuilder)localObject).append("#");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("#");
+    ((StringBuilder)localObject).append(this.b);
+    localObject = ((StringBuilder)localObject).toString();
+    if ((!TextUtils.isEmpty(this.c)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(this.b)) && (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilMap.get("page_desc"))) && (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilMap.get("page_module_desc"))) && (!TextUtils.isEmpty((CharSequence)this.jdField_a_of_type_JavaUtilMap.get("act_type_desc"))))
+    {
+      this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.reportEvent((String)localObject, this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+      return;
     }
-    this.jdField_a_of_type_ComTencentFalcoBaseLibapiDatareportDataReportInterface.reportEvent(str, this.jdField_a_of_type_JavaUtilMap, this.jdField_a_of_type_Boolean);
+    throw new NullPointerException("缺少上报基础字段，请检查 page,module,actType以及他们的描述");
   }
   
   public ReportTask setActType(String paramString)
@@ -107,7 +115,7 @@ public class ReportTaskImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.sdkservices.datareport.ReportTaskImpl
  * JD-Core Version:    0.7.0.1
  */

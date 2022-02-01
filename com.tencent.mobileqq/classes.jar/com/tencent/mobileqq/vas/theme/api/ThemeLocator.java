@@ -21,8 +21,18 @@ public class ThemeLocator
   public ThemeLocator a(Context paramContext, String paramString1, String paramString2)
   {
     paramContext = a(paramContext);
-    this.b = (paramContext + paramString1 + ".zip");
-    this.c = (paramContext + paramString1 + File.separator + paramString2 + File.separator);
+    StringBuilder localStringBuilder = StringBuilderUtils.a();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(".zip");
+    this.b = localStringBuilder.toString();
+    localStringBuilder = StringBuilderUtils.a();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(File.separator);
+    this.c = localStringBuilder.toString();
     return this;
   }
   
@@ -40,11 +50,14 @@ public class ThemeLocator
   public String a(Context paramContext)
   {
     paramContext = paramContext.getDir("theme_810", 0).getAbsolutePath();
-    StringBuilder localStringBuilder = StringBuilderUtils.a().append(paramContext);
+    StringBuilder localStringBuilder = StringBuilderUtils.a();
+    localStringBuilder.append(paramContext);
     if (!paramContext.endsWith(File.separator)) {
       localStringBuilder.append(File.separator);
     }
-    return this.a + File.separator;
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   public boolean a()
@@ -59,13 +72,18 @@ public class ThemeLocator
   
   public String b()
   {
-    return ThemeUtil.a(this.a);
+    return ThemeUtil.getThemeConfigID(this.a);
   }
   
   public String b(Context paramContext)
   {
     paramContext = a(paramContext);
-    return paramContext + "3_" + b() + ".cfg";
+    StringBuilder localStringBuilder = StringBuilderUtils.a();
+    localStringBuilder.append(paramContext);
+    localStringBuilder.append("3_");
+    localStringBuilder.append(b());
+    localStringBuilder.append(".cfg");
+    return localStringBuilder.toString();
   }
   
   public boolean b()
@@ -97,7 +115,7 @@ public class ThemeLocator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.theme.api.ThemeLocator
  * JD-Core Version:    0.7.0.1
  */

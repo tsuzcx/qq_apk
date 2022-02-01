@@ -48,7 +48,7 @@ public abstract class BaseProtocolReceiver<T extends BusinessHandler>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.handler.recevier.BaseProtocolReceiver
  * JD-Core Version:    0.7.0.1
  */

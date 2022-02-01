@@ -17,17 +17,22 @@ class TroopGiftPanel$7
   {
     if (((TroopManager)this.jdField_a_of_type_ComTencentCommonAppAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(this.jdField_a_of_type_JavaLangString, this.b) != null)
     {
-      String str = ContactUtils.g((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
-      this.jdField_a_of_type_AndroidOsHandler.post(new TroopGiftPanel.7.1(this, str));
+      localObject = ContactUtils.b((QQAppInterface)this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_JavaLangString, this.b);
+      this.jdField_a_of_type_AndroidOsHandler.post(new TroopGiftPanel.7.1(this, (String)localObject));
       return;
     }
-    QLog.e("TroopGiftPanel", 1, "last receiver is not in troop, troopUin=" + this.jdField_a_of_type_JavaLangString + ", memberUin=" + this.b);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("last receiver is not in troop, troopUin=");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(", memberUin=");
+    ((StringBuilder)localObject).append(this.b);
+    QLog.e("TroopGiftPanel", 1, ((StringBuilder)localObject).toString());
     TroopGiftAioPanelData.b(this.jdField_a_of_type_JavaLangString, "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.7
  * JD-Core Version:    0.7.0.1
  */

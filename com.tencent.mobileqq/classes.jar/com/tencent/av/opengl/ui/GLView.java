@@ -78,10 +78,12 @@ public class GLView
   
   public int a()
   {
-    if ((this.jdField_a_of_type_Int & 0x1) == 0) {
-      return 0;
+    int m = this.jdField_a_of_type_Int;
+    int k = 1;
+    if ((m & 0x1) == 0) {
+      k = 0;
     }
-    return 1;
+    return k;
   }
   
   public Rect a()
@@ -94,11 +96,6 @@ public class GLView
     return this.jdField_a_of_type_ComTencentAvOpenglUiGLRootView;
   }
   
-  public InputTextureInfo a(GLCanvas paramGLCanvas)
-  {
-    return null;
-  }
-  
   public Object a()
   {
     return this.jdField_a_of_type_JavaLangObject;
@@ -106,8 +103,9 @@ public class GLView
   
   public Object a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    if (localSparseArray != null) {
+      return localSparseArray.get(paramInt);
     }
     return null;
   }
@@ -127,13 +125,13 @@ public class GLView
     if (paramInt == a()) {
       return;
     }
-    if (paramInt == 0) {}
-    for (this.jdField_a_of_type_Int &= 0xFFFFFFFE;; this.jdField_a_of_type_Int |= 0x1)
-    {
-      f(paramInt);
-      b();
-      return;
+    if (paramInt == 0) {
+      this.jdField_a_of_type_Int &= 0xFFFFFFFE;
+    } else {
+      this.jdField_a_of_type_Int |= 0x1;
     }
+    f(paramInt);
+    b();
   }
   
   protected void a(int paramInt1, int paramInt2) {}
@@ -153,43 +151,43 @@ public class GLView
   
   public void a(long paramLong)
   {
-    label101:
-    for (;;)
+    int k;
+    int m;
+    label110:
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      if (this.jdField_a_of_type_JavaUtilList.size() > 0)
       {
-        if (this.jdField_a_of_type_JavaUtilList.size() > 0)
-        {
-          b();
-          int k = 0;
-          int m = this.jdField_a_of_type_JavaUtilList.size();
-          if (k < m) {
-            try
-            {
-              boolean bool = ((GLAnimation)this.jdField_a_of_type_JavaUtilList.get(k)).a(paramLong);
-              if (!bool) {
-                break label101;
-              }
-              k -= 1;
-              k += 1;
+        b();
+        k = 0;
+        m = this.jdField_a_of_type_JavaUtilList.size();
+        if (k < m) {
+          try
+          {
+            boolean bool = ((GLAnimation)this.jdField_a_of_type_JavaUtilList.get(k)).a(paramLong);
+            m = k;
+            if (!bool) {
+              break label110;
             }
-            catch (Exception localException)
-            {
-              localException.printStackTrace();
-              break label101;
-            }
+            m = k - 1;
+          }
+          catch (Exception localException)
+          {
+            localException.printStackTrace();
+            m = k;
           }
         }
-        return;
       }
+      return;
     }
   }
   
   public void a(Bitmap paramBitmap)
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture != null)
+    BasicTexture localBasicTexture = this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture;
+    if (localBasicTexture != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture.a();
+      localBasicTexture.a();
       this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture = null;
     }
     if (paramBitmap != null)
@@ -205,56 +203,59 @@ public class GLView
     int k = this.jdField_a_of_type_AndroidGraphicsRect.left;
     int m = this.jdField_a_of_type_AndroidGraphicsRect.top;
     paramGLCanvas.b();
-    GLAnimation localGLAnimation = null;
+    GLAnimation localGLAnimation;
     if (this.jdField_a_of_type_JavaUtilList.size() > 0) {
       localGLAnimation = (GLAnimation)this.jdField_a_of_type_JavaUtilList.get(0);
+    } else {
+      localGLAnimation = null;
     }
-    if ((localGLAnimation != null) && (localGLAnimation.a()))
-    {
+    if ((localGLAnimation != null) && (localGLAnimation.a())) {
       paramGLCanvas.a(localGLAnimation.a(), localGLAnimation.b(), localGLAnimation.c());
-      float f1 = this.jdField_e_of_type_Float;
-      f1 = this.jdField_f_of_type_Float;
-      f1 = this.jdField_g_of_type_Float;
-      if ((localGLAnimation != null) && (localGLAnimation.b()))
-      {
-        f1 = localGLAnimation.d();
-        float f2 = localGLAnimation.e();
-        a(k, m, (int)(f1 + k), (int)(f2 + m));
-      }
-      paramGLCanvas.a(b() / 2, c() / 2, 0.0F);
-      if ((localGLAnimation == null) || (!localGLAnimation.c())) {
-        break label268;
-      }
+    } else {
+      paramGLCanvas.a(k, m, this.jdField_a_of_type_Float);
+    }
+    float f1 = this.jdField_e_of_type_Float;
+    f1 = this.jdField_f_of_type_Float;
+    f1 = this.jdField_g_of_type_Float;
+    if ((localGLAnimation != null) && (localGLAnimation.b()))
+    {
+      f1 = localGLAnimation.d();
+      float f2 = localGLAnimation.e();
+      a(k, m, (int)(k + f1), (int)(m + f2));
+    }
+    paramGLCanvas.a(b() / 2, c() / 2, 0.0F);
+    if ((localGLAnimation != null) && (localGLAnimation.c()))
+    {
       paramGLCanvas.a(localGLAnimation.f(), 1.0F, 0.0F, 0.0F);
       paramGLCanvas.a(localGLAnimation.g(), 0.0F, 1.0F, 0.0F);
       paramGLCanvas.a(localGLAnimation.h(), 0.0F, 0.0F, 1.0F);
     }
-    for (;;)
+    else
     {
-      c(paramGLCanvas);
-      b(paramGLCanvas);
-      paramGLCanvas.c();
-      return;
-      paramGLCanvas.a(k, m, this.jdField_a_of_type_Float);
-      break;
-      label268:
-      if (this.jdField_b_of_type_Float != 0.0F) {
-        paramGLCanvas.a(this.jdField_b_of_type_Float, 1.0F, 0.0F, 0.0F);
+      f1 = this.jdField_b_of_type_Float;
+      if (f1 != 0.0F) {
+        paramGLCanvas.a(f1, 1.0F, 0.0F, 0.0F);
       }
-      if (this.jdField_c_of_type_Float != 0.0F) {
-        paramGLCanvas.a(this.jdField_c_of_type_Float, 0.0F, 1.0F, 0.0F);
+      f1 = this.jdField_c_of_type_Float;
+      if (f1 != 0.0F) {
+        paramGLCanvas.a(f1, 0.0F, 1.0F, 0.0F);
       }
-      if (this.jdField_d_of_type_Float != 0.0F) {
-        paramGLCanvas.a(this.jdField_d_of_type_Float, 0.0F, 0.0F, 1.0F);
+      f1 = this.jdField_d_of_type_Float;
+      if (f1 != 0.0F) {
+        paramGLCanvas.a(f1, 0.0F, 0.0F, 1.0F);
       }
     }
+    c(paramGLCanvas);
+    b(paramGLCanvas);
+    paramGLCanvas.c();
   }
   
   public void a(BitmapTexture paramBitmapTexture)
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture != null)
+    BasicTexture localBasicTexture = this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture;
+    if (localBasicTexture != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture.a();
+      localBasicTexture.a();
       this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture = null;
     }
     if (paramBitmapTexture != null)
@@ -329,12 +330,14 @@ public class GLView
   
   public boolean a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if ((paramInt3 - paramInt1 != this.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_AndroidGraphicsRect.left) || (paramInt4 - paramInt2 != this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
-      return bool;
+    boolean bool;
+    if ((paramInt3 - paramInt1 == this.jdField_a_of_type_AndroidGraphicsRect.right - this.jdField_a_of_type_AndroidGraphicsRect.left) && (paramInt4 - paramInt2 == this.jdField_a_of_type_AndroidGraphicsRect.bottom - this.jdField_a_of_type_AndroidGraphicsRect.top)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    this.jdField_a_of_type_AndroidGraphicsRect.set(paramInt1, paramInt2, paramInt3, paramInt4);
+    return bool;
   }
   
   protected boolean a(MotionEvent paramMotionEvent)
@@ -401,8 +404,12 @@ public class GLView
   
   protected boolean b(MotionEvent paramMotionEvent)
   {
-    if ((a() == 0) && (this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener != null) && (this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener.a(this, paramMotionEvent))) {
-      return true;
+    if (a() == 0)
+    {
+      GLView.OnTouchListener localOnTouchListener = this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnTouchListener;
+      if ((localOnTouchListener != null) && (localOnTouchListener.a(this, paramMotionEvent))) {
+        return true;
+      }
     }
     return a(paramMotionEvent);
   }
@@ -417,26 +424,27 @@ public class GLView
     this.jdField_a_of_type_Int |= 0x4;
     this.jdField_e_of_type_Int = -1;
     this.jdField_d_of_type_Int = -1;
-    if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglUiGLView.c();
-    }
-    GLRootView localGLRootView;
-    do
+    Object localObject = this.jdField_a_of_type_ComTencentAvOpenglUiGLView;
+    if (localObject != null)
     {
+      ((GLView)localObject).c();
       return;
-      localGLRootView = a();
-    } while (localGLRootView == null);
-    localGLRootView.a();
+    }
+    localObject = a();
+    if (localObject != null) {
+      ((GLRootView)localObject).a();
+    }
   }
   
   public void c(int paramInt)
   {
-    if (this.j != paramInt)
+    int k = this.j;
+    if (k != paramInt)
     {
-      int k = this.j;
       this.j = paramInt;
-      if (this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener != null) {
-        this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener.a(this, paramInt, k);
+      GLView.OnZOrderChangedListener localOnZOrderChangedListener = this.jdField_a_of_type_ComTencentAvOpenglUiGLView$OnZOrderChangedListener;
+      if (localOnZOrderChangedListener != null) {
+        localOnZOrderChangedListener.a(this, paramInt, k);
       }
     }
   }
@@ -479,28 +487,28 @@ public class GLView
   
   public void e(int paramInt)
   {
-    ResourceTexture localResourceTexture = null;
     if ((paramInt != 0) && (paramInt == this.h)) {
       return;
     }
     Object localObject = a();
-    if (localObject == null) {
-      throw new RuntimeException("Cannot set resource background before attach to GLRootView!");
-    }
-    if (this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture != null)
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture.a();
-      this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture = null;
-    }
-    localObject = ((GLRootView)localObject).getContext();
-    if (paramInt == 0) {}
-    for (;;)
-    {
+      BasicTexture localBasicTexture = this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture;
+      ResourceTexture localResourceTexture = null;
+      if (localBasicTexture != null)
+      {
+        localBasicTexture.a();
+        this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture = null;
+      }
+      localObject = ((GLRootView)localObject).getContext();
+      if (paramInt != 0) {
+        localResourceTexture = new ResourceTexture((Context)localObject, paramInt);
+      }
       this.jdField_a_of_type_ComTencentAvOpenglTextureBasicTexture = localResourceTexture;
       this.h = paramInt;
       return;
-      localResourceTexture = new ResourceTexture((Context)localObject, paramInt);
     }
+    throw new RuntimeException("Cannot set resource background before attach to GLRootView!");
   }
   
   protected void f() {}
@@ -534,7 +542,7 @@ public class GLView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.ui.GLView
  * JD-Core Version:    0.7.0.1
  */

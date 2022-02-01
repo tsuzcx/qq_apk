@@ -50,53 +50,63 @@ public class C2CDataReporter
       return paramInt;
     }
     g();
-    if (paramLong < 300L) {}
-    switch ((int)paramLong)
+    if (paramLong < 300L)
     {
-    default: 
-      if ((!AppNetConnInfo.isNetSupport()) || (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin())) {
+      paramInt = (int)paramLong;
+      if (paramInt != 0)
+      {
+        if (paramInt != 101)
+        {
+          if (paramInt == 201) {
+            return 9001L;
+          }
+        }
+        else {
+          return 9037L;
+        }
+      }
+      else {
+        return 0L;
+      }
+    }
+    if (AppNetConnInfo.isNetSupport())
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.isLogin()) {
         return 9004L;
       }
-      break;
-    case 0: 
-      return 0L;
-    case 101: 
-      return 9037L;
-    case 201: 
-      return 9001L;
-    }
-    g();
-    if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
-      return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).intValue();
-    }
-    switch ((int)paramLong)
-    {
-    default: 
-      return paramLong;
-    case 501: 
-    case 502: 
-    case 503: 
-    case 505: 
+      g();
+      if (this.jdField_a_of_type_JavaUtilMap.containsKey(Long.valueOf(paramLong))) {
+        return ((Integer)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(paramLong))).intValue();
+      }
+      switch ((int)paramLong)
+      {
+      default: 
+        return paramLong;
+      case 506: 
+        return 9040L;
+      case 504: 
+        return 9082L;
+      }
       if (b()) {
         return 9040L;
       }
       return 9003L;
-    case 506: 
-      return 9040L;
     }
-    return 9082L;
+    return 9004L;
   }
   
   private boolean b()
   {
-    if (SystemUtil.a()) {}
-    for (long l = SystemUtil.a() * 1024L; this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.d > l; l = SystemUtil.b() * 1024L) {
-      return true;
+    long l;
+    if (SystemUtil.a()) {
+      l = SystemUtil.a();
+    } else {
+      l = SystemUtil.b();
     }
-    return false;
+    return this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.d > l * 1024L;
   }
   
-  public String a(boolean paramBoolean)
+  protected String a(boolean paramBoolean)
   {
     if (paramBoolean) {
       return "actFileDown";
@@ -104,21 +114,25 @@ public class C2CDataReporter
     return "actPDFileDownload";
   }
   
-  public HashMap<String, String> a()
+  protected HashMap<String, String> a()
   {
     HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.a());
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo;
+    if (localObject != null) {
+      localHashMap.putAll(((DataReportBasicInfo)localObject).a());
     }
     localHashMap.put("param_SubReason", String.valueOf(this.jdField_a_of_type_Long));
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp.getReportData());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloaderFirstPkgRp;
+    if (localObject != null) {
+      localHashMap.putAll(((ExcitingTransferDownloaderFirstPkgRp)localObject).getReportData());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null) {
-      localHashMap.putAll(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.getReportData());
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
+    if (localObject != null) {
+      localHashMap.putAll(((ExcitingTransferDownloadCompletedInfo)localObject).getReportData());
     }
-    if (this.jdField_b_of_type_Long != 0L) {
-      localHashMap.put("param_SrvRetCode", String.valueOf(this.jdField_b_of_type_Long));
+    long l = this.jdField_b_of_type_Long;
+    if (l != 0L) {
+      localHashMap.put("param_SrvRetCode", String.valueOf(l));
     }
     localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
     localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
@@ -130,9 +144,10 @@ public class C2CDataReporter
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_a_of_type_Long = 5L;
+    DataReportBasicInfo localDataReportBasicInfo = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo;
+    localDataReportBasicInfo.jdField_a_of_type_Long = 5L;
     this.jdField_a_of_type_Long = 3L;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_b_of_type_Long = 9004L;
+    localDataReportBasicInfo.jdField_b_of_type_Long = 9004L;
     a(false);
   }
   
@@ -155,16 +170,13 @@ public class C2CDataReporter
     localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
     if (paramExcitingTransferOneSlotComplete != null) {
       localHashMap.put("param_ipAddrType", String.valueOf(QFileUtils.b(paramExcitingTransferOneSlotComplete.mstrIp)));
-    }
-    for (;;)
-    {
-      localHashMap.put("param_stackType", String.valueOf(QFileUtils.b()));
-      localHashMap.put("param_loginType", String.valueOf(QFileUtils.c()));
-      localHashMap.put("param_ishttps", String.valueOf(this.c));
-      super.a(localDataReportBasicInfo, paramExcitingTransferOneSlotComplete, localHashMap);
-      return;
+    } else {
       localHashMap.put("param_ipAddrType", String.valueOf(0));
     }
+    localHashMap.put("param_stackType", String.valueOf(QFileUtils.b()));
+    localHashMap.put("param_loginType", String.valueOf(QFileUtils.c()));
+    localHashMap.put("param_ishttps", String.valueOf(this.c));
+    super.a(localDataReportBasicInfo, paramExcitingTransferOneSlotComplete, localHashMap);
   }
   
   public void a(long paramLong)
@@ -182,17 +194,18 @@ public class C2CDataReporter
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo = paramExcitingTransferDownloadCompletedInfo;
   }
   
-  public boolean a()
+  protected boolean a()
   {
     return true;
   }
   
-  public HashMap<String, String> b()
+  protected HashMap<String, String> b()
   {
     HashMap localHashMap = new HashMap();
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo != null)
+    ExcitingTransferDownloadCompletedInfo localExcitingTransferDownloadCompletedInfo = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo;
+    if (localExcitingTransferDownloadCompletedInfo != null)
     {
-      localHashMap.put("serverip", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.mstrLastServerHost));
+      localHashMap.put("serverip", String.valueOf(localExcitingTransferDownloadCompletedInfo.mstrLastServerHost));
       localHashMap.put("param_Server", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.mstrLastServerHost));
       localHashMap.put("param_ftnIP", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.mstrLastServerHost));
       localHashMap.put("param_retry", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.muRetryTimes));
@@ -202,40 +215,40 @@ public class C2CDataReporter
       localHashMap.put("param_realTransferType", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.muProxyType));
       if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.muTotalTimes != 0L) {
         localHashMap.put("param_speed", String.valueOf((float)(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.muDownloadedSize / 1048576L) / (float)this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferExcitingtransfersdkExcitingTransferDownloadCompletedInfo.muTotalTimes));
+      } else {
+        localHashMap.put("param_speed", "0");
       }
     }
-    for (;;)
+    else
     {
-      localHashMap.put("param_uuid", "");
-      localHashMap.put("param_MD5", "");
-      localHashMap.put("param_fsizeo", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.d));
-      localHashMap.put("param_PeerUin", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.c));
-      localHashMap.put("param_url", String.valueOf(""));
-      localHashMap.put("param_rspHeader", String.valueOf(""));
-      localHashMap.put("param_nSessionId", String.valueOf(""));
-      localHashMap.put("param_fromType", String.valueOf("1"));
-      localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
-      localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
-      localHashMap.put("param_stackType", String.valueOf(QFileUtils.b()));
-      localHashMap.put("param_loginType", String.valueOf(QFileUtils.c()));
-      localHashMap.put("param_ishttps", String.valueOf(this.c));
-      return localHashMap;
-      localHashMap.put("param_speed", "0");
-      continue;
       localHashMap.put("param_FailCode", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_b_of_type_Long));
     }
+    localHashMap.put("param_uuid", "");
+    localHashMap.put("param_MD5", "");
+    localHashMap.put("param_fsizeo", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.d));
+    localHashMap.put("param_PeerUin", String.valueOf(this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.c));
+    localHashMap.put("param_url", "");
+    localHashMap.put("param_rspHeader", "");
+    localHashMap.put("param_nSessionId", "");
+    localHashMap.put("param_fromType", "1");
+    localHashMap.put("param_V6SelectType", String.valueOf(this.jdField_a_of_type_Int));
+    localHashMap.put("param_ipAddrType", String.valueOf(this.jdField_b_of_type_Int));
+    localHashMap.put("param_stackType", String.valueOf(QFileUtils.b()));
+    localHashMap.put("param_loginType", String.valueOf(QFileUtils.c()));
+    localHashMap.put("param_ishttps", String.valueOf(this.c));
+    return localHashMap;
   }
   
   public void b()
   {
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_a_of_type_Long = 1L;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (this.jdField_a_of_type_Long = 3L;; this.jdField_a_of_type_Long = 2L)
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_b_of_type_Long = 9037L;
-      a(false);
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_Long = 3L;
+    } else {
+      this.jdField_a_of_type_Long = 2L;
     }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_b_of_type_Long = 9037L;
+    a(false);
   }
   
   public void b(int paramInt)
@@ -245,9 +258,10 @@ public class C2CDataReporter
   
   public void b(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_a_of_type_Long = 2L;
+    DataReportBasicInfo localDataReportBasicInfo = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo;
+    localDataReportBasicInfo.jdField_a_of_type_Long = 2L;
     this.jdField_a_of_type_Long = 2L;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_b_of_type_Long = paramLong;
+    localDataReportBasicInfo.jdField_b_of_type_Long = paramLong;
     a(false);
   }
   
@@ -267,21 +281,17 @@ public class C2CDataReporter
   
   public void c(long paramLong)
   {
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_a_of_type_Long = 2L;
+    DataReportBasicInfo localDataReportBasicInfo = this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo;
+    localDataReportBasicInfo.jdField_a_of_type_Long = 2L;
     this.jdField_a_of_type_Long = 7L;
     this.jdField_b_of_type_Long = paramLong;
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerExcitingtransferDataReportBasicInfo.jdField_b_of_type_Long = paramLong;
+    localDataReportBasicInfo.jdField_b_of_type_Long = paramLong;
     a(false);
   }
   
   public void c(boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      this.c = i;
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void d()
@@ -344,7 +354,7 @@ public class C2CDataReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.downloader.c2cdownloader.C2CDataReporter
  * JD-Core Version:    0.7.0.1
  */

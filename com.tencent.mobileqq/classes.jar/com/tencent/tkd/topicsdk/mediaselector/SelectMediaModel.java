@@ -42,22 +42,27 @@ public final class SelectMediaModel
   {
     Intrinsics.checkParameterIsNotNull(paramPanelType, "panelType");
     Intrinsics.checkParameterIsNotNull(paramFunction2, "callback");
-    switch (SelectMediaModel.WhenMappings.a[paramPanelType.ordinal()])
+    int i = SelectMediaModel.WhenMappings.a[paramPanelType.ordinal()];
+    if (i != 1)
     {
-    default: 
-      TLog.a("SelectMediaModel", "no support panelType=" + paramPanelType);
-      paramFunction2.invoke(new ArrayList(), new HashMap());
-      return;
-    case 1: 
-      a(this.jdField_a_of_type_AndroidContentContext, paramFunction2);
+      if (i != 2)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("no support panelType=");
+        localStringBuilder.append(paramPanelType);
+        TLog.a("SelectMediaModel", localStringBuilder.toString());
+        paramFunction2.invoke(new ArrayList(), new HashMap());
+        return;
+      }
+      b(this.jdField_a_of_type_AndroidContentContext, paramFunction2);
       return;
     }
-    b(this.jdField_a_of_type_AndroidContentContext, paramFunction2);
+    a(this.jdField_a_of_type_AndroidContentContext, paramFunction2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.SelectMediaModel
  * JD-Core Version:    0.7.0.1
  */

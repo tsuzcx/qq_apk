@@ -19,7 +19,6 @@ import android.widget.ImageView;
 import android.widget.Switch;
 import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.MiniSDK;
 import com.tencent.qqmini.sdk.R.drawable;
 import com.tencent.qqmini.sdk.R.id;
@@ -29,6 +28,7 @@ import com.tencent.qqmini.sdk.core.proxy.ProxyManager;
 import com.tencent.qqmini.sdk.launcher.core.proxy.ChannelProxy;
 import com.tencent.qqmini.sdk.launcher.core.proxy.MiniAppProxy;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
+import com.tencent.qqmini.sdk.launcher.model.AppMode;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import com.tencent.qqmini.sdk.launcher.ui.MiniBaseFragment;
 import com.tencent.qqmini.sdk.launcher.utils.DisplayUtil;
@@ -50,7 +50,7 @@ public class MainPageFragment
 {
   private static final String LIKE_NUM_POSTFIX = "个赞";
   private static final String MINI_FILE_SUB_PATH = "/tencent/mini/files/";
-  private static final String MINI_LOG_PATH = Environment.getExternalStorageDirectory().getPath() + "/tencent/mini/files/";
+  private static final String MINI_LOG_PATH;
   public static final String TAG = "MainPageFragment";
   private boolean isLike;
   private boolean isMiniGame = false;
@@ -80,48 +80,56 @@ public class MainPageFragment
   private TextView mSetTopText;
   private COMM.StCommonExt mTopExtInfo;
   
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+    localStringBuilder.append("/tencent/mini/files/");
+    MINI_LOG_PATH = localStringBuilder.toString();
+  }
+  
   private Drawable getIconDrawable(String paramString)
   {
     int i = DisplayUtil.dip2px(getActivity(), 70.0F);
-    Drawable localDrawable = null;
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    Object localObject2;
     try
     {
       if (Build.VERSION.SDK_INT >= 21) {
-        localDrawable = getActivity().getDrawable(R.drawable.mini_sdk_icon_loading_default);
+        localObject1 = getActivity().getDrawable(R.drawable.mini_sdk_icon_loading_default);
       }
-      return this.mMiniAppProxy.getDrawable(getActivity(), paramString, i, i, localDrawable);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        QMLog.e("MainPageFragment", "getIconDrawable, exception!");
-        localException.printStackTrace();
-        Object localObject = null;
-      }
+      QMLog.e("MainPageFragment", "getIconDrawable, exception!");
+      localException.printStackTrace();
+      localObject2 = localObject3;
     }
+    return this.mMiniAppProxy.getDrawable(getActivity(), paramString, i, i, localObject2);
   }
   
   private void handleMiniappMoreInfo()
   {
-    if (QUAUtil.isQQApp()) {
+    if (QUAUtil.isQQApp())
+    {
       startMoreInformation(null);
     }
-    for (;;)
+    else
     {
-      this.mMiniAppDialog.dismiss();
-      reportClick("profile");
-      return;
       ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
       if (localChannelProxy != null) {
         localChannelProxy.getSDKOpenKeyToken(null, new MainPageFragment.3(this));
       }
     }
+    this.mMiniAppDialog.dismiss();
+    reportClick("profile");
   }
   
   private void handleMiniappSetting()
   {
-    if ((this.mMiniAppInfo != null) && (!TextUtils.isEmpty(this.mMiniAppInfo.appId)))
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    if ((localMiniAppInfo != null) && (!TextUtils.isEmpty(localMiniAppInfo.appId)))
     {
       ((ChannelProxy)ProxyManager.get(ChannelProxy.class)).openPermissionSettingsActivity(getActivity(), this.mMiniAppInfo.appId, this.mMiniAppInfo.name);
       this.mMiniAppDialog.dismiss();
@@ -155,22 +163,24 @@ public class MainPageFragment
   
   private void initUI()
   {
-    if (this.mMiniAppInfo != null)
+    Object localObject = this.mMiniAppInfo;
+    if (localObject != null)
     {
-      if (!TextUtils.isEmpty(this.mMiniAppInfo.iconUrl)) {
+      if (!TextUtils.isEmpty(((MiniAppInfo)localObject).iconUrl)) {
         this.mAppIcon.setImageDrawable(getIconDrawable(this.mMiniAppInfo.iconUrl));
       }
       this.mAppName.setText(this.mMiniAppInfo.name);
       this.mIntroduction.setText(this.mMiniAppInfo.desc);
-      boolean bool = this.mMiniAppInfo.isAppStoreMiniApp();
+      boolean bool = this.mMiniAppInfo.appMode.disableAddToMyApp;
       if ((bool) || (this.mMiniAppInfo.isInternalApp()))
       {
         this.mSetTopContainer.setVisibility(8);
         if (bool)
         {
           this.mRecommendMiniAppBtn.setVisibility(8);
-          if (this.mSeparator != null) {
-            this.mSeparator.setVisibility(8);
+          localObject = this.mSeparator;
+          if (localObject != null) {
+            ((View)localObject).setVisibility(8);
           }
         }
       }
@@ -188,7 +198,8 @@ public class MainPageFragment
   
   private void reportClick(String paramString)
   {
-    SDKMiniProgramLpReportDC04239.reportUserClick(this.mMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(this.mMiniAppInfo), null, "user_click", "more_about", paramString);
+    MiniAppInfo localMiniAppInfo = this.mMiniAppInfo;
+    SDKMiniProgramLpReportDC04239.reportUserClick(localMiniAppInfo, SDKMiniProgramLpReportDC04239.getAppType(localMiniAppInfo), null, "user_click", "more_about", paramString);
   }
   
   private void sendGetUserAppInfoRequest()
@@ -210,22 +221,22 @@ public class MainPageFragment
     {
       this.isLike = false;
       this.mLikeNumber -= 1;
-      updateLikeNum(this.mLikeNumber);
-      updateLikeState(this.isLike);
-      sendSetUserAppLikeRequest(this.isLike);
-      if (!this.isLike) {
-        break label81;
-      }
     }
-    label81:
-    for (String str = "like_on";; str = "like_off")
+    else
     {
-      reportClick(str);
-      return;
       this.isLike = true;
       this.mLikeNumber += 1;
-      break;
     }
+    updateLikeNum(this.mLikeNumber);
+    updateLikeState(this.isLike);
+    sendSetUserAppLikeRequest(this.isLike);
+    String str;
+    if (this.isLike) {
+      str = "like_on";
+    } else {
+      str = "like_off";
+    }
+    reportClick(str);
   }
   
   private void setMiniAppTop(MiniAppInfo paramMiniAppInfo)
@@ -241,52 +252,63 @@ public class MainPageFragment
   private void setTopType(MiniAppInfo paramMiniAppInfo)
   {
     int i;
-    if (paramMiniAppInfo.topType == 0)
-    {
+    if (paramMiniAppInfo.topType == 0) {
       i = 1;
-      paramMiniAppInfo.topType = i;
-      updateTopTypeState(paramMiniAppInfo);
-      sendSetUserAppTopRequest(paramMiniAppInfo);
-      if (paramMiniAppInfo.topType != 0) {
-        break label46;
-      }
-    }
-    label46:
-    for (paramMiniAppInfo = "settop_off";; paramMiniAppInfo = "settop_on")
-    {
-      reportClick(paramMiniAppInfo);
-      return;
+    } else {
       i = 0;
-      break;
     }
+    paramMiniAppInfo.topType = i;
+    updateTopTypeState(paramMiniAppInfo);
+    sendSetUserAppTopRequest(paramMiniAppInfo);
+    if (paramMiniAppInfo.topType == 0) {
+      paramMiniAppInfo = "settop_off";
+    } else {
+      paramMiniAppInfo = "settop_on";
+    }
+    reportClick(paramMiniAppInfo);
   }
   
   private void startComplainAndCallback()
   {
     if (this.mMiniAppInfo == null)
     {
-      QMLog.e("MainPageFragment", "startComplainAndCallback, mApkgConfig = " + this.mMiniAppInfo);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("startComplainAndCallback, mApkgConfig = ");
+      ((StringBuilder)localObject1).append(this.mMiniAppInfo);
+      QMLog.e("MainPageFragment", ((StringBuilder)localObject1).toString());
       return;
     }
     Object localObject1 = "";
     try
     {
-      localObject2 = URLEncoder.encode("https://support.qq.com/data/1368/2018/0927/5e6c84b68d1f3ad390e7beeb6c2f83b0.jpeg", "UTF-8");
-      localObject1 = localObject2;
+      String str = URLEncoder.encode("https://support.qq.com/data/1368/2018/0927/5e6c84b68d1f3ad390e7beeb6c2f83b0.jpeg", "UTF-8");
+      localObject1 = str;
     }
     catch (UnsupportedEncodingException localUnsupportedEncodingException)
     {
-      for (;;)
-      {
-        Object localObject2;
-        QMLog.e("MainPageFragment", "startComplainAndCallback, url = " + "");
-        localUnsupportedEncodingException.printStackTrace();
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startComplainAndCallback, url = ");
+      localStringBuilder.append("");
+      QMLog.e("MainPageFragment", localStringBuilder.toString());
+      localUnsupportedEncodingException.printStackTrace();
     }
-    localObject2 = "https://tucao.qq.com/qq_miniprogram/tucao?appid=" + this.mMiniAppInfo.appId + "&openid=" + getUin() + "&avatar=" + (String)localObject1 + "&nickname=游客";
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("https://tucao.qq.com/qq_miniprogram/tucao?appid=");
+    ((StringBuilder)localObject2).append(this.mMiniAppInfo.appId);
+    ((StringBuilder)localObject2).append("&openid=");
+    ((StringBuilder)localObject2).append(getUin());
+    ((StringBuilder)localObject2).append("&avatar=");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("&nickname=游客");
+    localObject2 = ((StringBuilder)localObject2).toString();
     localObject1 = localObject2;
-    if (!QUAUtil.isQQApp()) {
-      localObject1 = (String)localObject2 + "&customInfo=-" + this.mMiniAppProxy.getPlatformId();
+    if (!QUAUtil.isQQApp())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("&customInfo=-");
+      ((StringBuilder)localObject1).append(this.mMiniAppProxy.getPlatformId());
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
     localObject2 = new Intent();
     ((Intent)localObject2).putExtra("url", (String)localObject1);
@@ -310,23 +332,35 @@ public class MainPageFragment
   {
     if (this.mMiniAppInfo == null)
     {
-      QMLog.e("MainPageFragment", "startMoreInformation, miniAppInfo = " + this.mMiniAppInfo);
+      paramString = new StringBuilder();
+      paramString.append("startMoreInformation, miniAppInfo = ");
+      paramString.append(this.mMiniAppInfo);
+      QMLog.e("MainPageFragment", paramString.toString());
       return;
     }
-    Object localObject = "https://q.qq.com/os/store/details-more?appid=" + this.mMiniAppInfo.appId;
-    MiniAppProxy localMiniAppProxy;
-    if (!TextUtils.isEmpty(paramString)) {
-      localMiniAppProxy = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
-    }
-    for (paramString = (String)localObject + "&token=" + paramString + "&uin=" + localMiniAppProxy.getAccount() + "&pid=" + localMiniAppProxy.getPlatformId();; paramString = (String)localObject)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("https://q.qq.com/os/store/details-more?appid=");
+    ((StringBuilder)localObject).append(this.mMiniAppInfo.appId);
+    String str = ((StringBuilder)localObject).toString();
+    localObject = str;
+    if (!TextUtils.isEmpty(paramString))
     {
-      localObject = new Intent();
-      ((Intent)localObject).putExtra("url", paramString);
-      ((Intent)localObject).putExtra("title", "更多资料");
-      new Bundle().putBoolean("hide_more_button", true);
-      this.mMiniAppProxy.startBrowserActivity(getActivity(), (Intent)localObject);
-      return;
+      localObject = (MiniAppProxy)ProxyManager.get(MiniAppProxy.class);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("&token=");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("&uin=");
+      localStringBuilder.append(((MiniAppProxy)localObject).getAccount());
+      localStringBuilder.append("&pid=");
+      localStringBuilder.append(((MiniAppProxy)localObject).getPlatformId());
+      localObject = localStringBuilder.toString();
     }
+    paramString = new Intent();
+    paramString.putExtra("url", (String)localObject);
+    paramString.putExtra("title", "更多资料");
+    new Bundle().putBoolean("hide_more_button", true);
+    this.mMiniAppProxy.startBrowserActivity(getActivity(), paramString);
   }
   
   private void startRecommendMiniApp() {}
@@ -347,24 +381,35 @@ public class MainPageFragment
   
   private void updateLikeNum(int paramInt)
   {
-    if (!this.isLike) {
-      if (this.isMiniGame) {
-        this.mLikeNum.setText("为小游戏点赞");
-      }
-    }
-    while (paramInt <= 0)
+    if (!this.isLike)
     {
-      return;
+      if (this.isMiniGame)
+      {
+        this.mLikeNum.setText("为小游戏点赞");
+        return;
+      }
       this.mLikeNum.setText("为小程序点赞");
       return;
     }
-    if (paramInt > 9999)
+    if (paramInt > 0)
     {
-      float f = paramInt / 10000.0F;
-      this.mLikeNum.setText(String.format("%.2f", new Object[] { Float.valueOf(f) }) + "万" + "个赞");
-      return;
+      if (paramInt > 9999)
+      {
+        float f = paramInt / 10000.0F;
+        localTextView = this.mLikeNum;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(String.format("%.2f", new Object[] { Float.valueOf(f) }));
+        localStringBuilder.append("万");
+        localStringBuilder.append("个赞");
+        localTextView.setText(localStringBuilder.toString());
+        return;
+      }
+      TextView localTextView = this.mLikeNum;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("个赞");
+      localTextView.setText(localStringBuilder.toString());
     }
-    this.mLikeNum.setText(paramInt + "个赞");
   }
   
   private void updateLikeState(boolean paramBoolean)
@@ -416,40 +461,36 @@ public class MainPageFragment
       startMiniApp();
       reportClick("launch");
     }
-    for (;;)
+    else if (i == R.id.miniapp_like_container)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (i == R.id.miniapp_like_container)
-      {
-        setLikeNum();
-      }
-      else if (i == R.id.miniapp_set_top_switch)
-      {
-        setTopType(this.mMiniAppInfo);
-      }
-      else if (i == R.id.miniapp_recommend_miniapp_btn)
-      {
-        startRecommendMiniApp();
-        reportClick("share");
-      }
-      else if (i != R.id.miniapp_relative_public_account_container)
-      {
-        if (i == R.id.miniapp_complain_callback_container) {
-          startComplainAndCallback();
-        } else if (i == R.id.miniapp_title_back) {
-          getActivity().finish();
-        } else if (i == R.id.miniapp_title_more) {
-          handleMoreButtonEvent();
-        } else if (i == R.id.miniapp_seting) {
-          handleMiniappSetting();
-        } else if (i == R.id.miniapp_more_information) {
-          handleMiniappMoreInfo();
-        } else if (i == R.id.miniapp_dialog_cancel) {
-          this.mMiniAppDialog.dismiss();
-        }
+      setLikeNum();
+    }
+    else if (i == R.id.miniapp_set_top_switch)
+    {
+      setTopType(this.mMiniAppInfo);
+    }
+    else if (i == R.id.miniapp_recommend_miniapp_btn)
+    {
+      startRecommendMiniApp();
+      reportClick("share");
+    }
+    else if (i != R.id.miniapp_relative_public_account_container)
+    {
+      if (i == R.id.miniapp_complain_callback_container) {
+        startComplainAndCallback();
+      } else if (i == R.id.miniapp_title_back) {
+        getActivity().finish();
+      } else if (i == R.id.miniapp_title_more) {
+        handleMoreButtonEvent();
+      } else if (i == R.id.miniapp_seting) {
+        handleMiniappSetting();
+      } else if (i == R.id.miniapp_more_information) {
+        handleMiniappMoreInfo();
+      } else if (i == R.id.miniapp_dialog_cancel) {
+        this.mMiniAppDialog.dismiss();
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -468,7 +509,6 @@ public class MainPageFragment
       paramLayoutInflater.setPadding(0, DisplayUtil.getStatusBarHeight(getActivity()), 0, 0);
     }
     initData();
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
@@ -513,14 +553,18 @@ public class MainPageFragment
   
   public void sendSetUserAppTopRequest(MiniAppInfo paramMiniAppInfo)
   {
-    if ((paramMiniAppInfo == null) && (QMLog.isColorLevel())) {
-      QMLog.e("MainPageFragment", "sendSetUserAppTopRequest, miniAppInfo = " + this.mMiniAppInfo);
+    if ((paramMiniAppInfo == null) && (QMLog.isColorLevel()))
+    {
+      paramMiniAppInfo = new StringBuilder();
+      paramMiniAppInfo.append("sendSetUserAppTopRequest, miniAppInfo = ");
+      paramMiniAppInfo.append(this.mMiniAppInfo);
+      QMLog.e("MainPageFragment", paramMiniAppInfo.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MainPageFragment
  * JD-Core Version:    0.7.0.1
  */

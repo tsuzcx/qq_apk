@@ -24,42 +24,49 @@ public class RichTextPanelScrollListener
   
   public void a(boolean paramBoolean)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener != null))
+    if (paramBoolean)
     {
-      this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener.onPullUp();
-      this.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(false);
+      EmotionPanelListView.PullAndFastScrollListener localPullAndFastScrollListener = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener;
+      if (localPullAndFastScrollListener != null)
+      {
+        localPullAndFastScrollListener.onPullUp();
+        this.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(false);
+      }
     }
   }
   
   public boolean a(RecyclerView paramRecyclerView, MotionEvent paramMotionEvent)
   {
     int i = paramMotionEvent.getAction();
-    if (i == 0) {
+    if (i == 0)
+    {
       this.jdField_a_of_type_ComTencentMobileqqHotpicScrollVelometer.a(true);
     }
-    for (;;)
+    else if ((i == 1) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0))
     {
-      return false;
-      if ((i == 1) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener.onPullDown();
+      paramRecyclerView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener;
+      if (paramRecyclerView != null) {
+        paramRecyclerView.onPullDown();
       }
     }
+    return false;
   }
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
     if (paramInt == 0) {
       AbstractGifImage.resumeAll();
-    }
-    for (;;)
-    {
-      if ((paramInt == 0) && (this.jdField_a_of_type_Int == 2) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0) && (this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener.onPullDown();
-      }
-      this.jdField_a_of_type_Int = paramInt;
-      return;
+    } else {
       AbstractGifImage.pauseAll();
     }
+    if ((paramInt == 0) && (this.jdField_a_of_type_Int == 2) && (((GridLayoutManager)paramRecyclerView.getLayoutManager()).findFirstCompletelyVisibleItemPosition() == 0))
+    {
+      paramRecyclerView = this.jdField_a_of_type_ComTencentMobileqqEmoticonviewEmotionPanelListView$PullAndFastScrollListener;
+      if (paramRecyclerView != null) {
+        paramRecyclerView.onPullDown();
+      }
+    }
+    this.jdField_a_of_type_Int = paramInt;
   }
   
   public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
@@ -71,7 +78,7 @@ public class RichTextPanelScrollListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.RichTextPanelScrollListener
  * JD-Core Version:    0.7.0.1
  */

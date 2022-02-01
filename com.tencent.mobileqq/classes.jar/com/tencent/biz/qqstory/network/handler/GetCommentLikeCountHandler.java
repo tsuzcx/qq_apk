@@ -15,18 +15,18 @@ public class GetCommentLikeCountHandler
   public void a(@NonNull GetCommentLikeCountRequest paramGetCommentLikeCountRequest, @Nullable GetCommentLikeCountRespone paramGetCommentLikeCountRespone, @NonNull ErrorMessage paramErrorMessage)
   {
     paramGetCommentLikeCountRequest = new GetCommentLikeCountHandler.GetCommentLikeCountEvent(paramErrorMessage);
-    if ((paramGetCommentLikeCountRespone == null) || (paramErrorMessage.isFail()))
+    if ((paramGetCommentLikeCountRespone != null) && (!paramErrorMessage.isFail()))
     {
+      paramGetCommentLikeCountRequest.a = paramGetCommentLikeCountRespone.a;
       StoryDispatcher.a().dispatch(paramGetCommentLikeCountRequest);
       return;
     }
-    paramGetCommentLikeCountRequest.a = paramGetCommentLikeCountRespone.a;
     StoryDispatcher.a().dispatch(paramGetCommentLikeCountRequest);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetCommentLikeCountHandler
  * JD-Core Version:    0.7.0.1
  */

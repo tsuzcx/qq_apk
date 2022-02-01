@@ -27,8 +27,9 @@ class ConfigSettingForDataLine$LocalWtTicketPromise
       ThreadManager.excute(new ConfigSettingForDataLine.LocalWtTicketPromise.1(this), 128, null, false);
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean != null) {
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean.a(false);
+    paramTicket = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean;
+    if (paramTicket != null) {
+      paramTicket.a(false);
     }
     QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket is null");
   }
@@ -36,22 +37,24 @@ class ConfigSettingForDataLine$LocalWtTicketPromise
   public void Failed(ErrMsg paramErrMsg)
   {
     QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket failed");
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean != null) {
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean.a(false);
+    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean;
+    if (paramErrMsg != null) {
+      paramErrMsg.a(false);
     }
   }
   
   public void Timeout(ErrMsg paramErrMsg)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean != null) {
-      this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean.a(false);
+    paramErrMsg = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessTendocTencentDocDataLineTipsConfigBean;
+    if (paramErrMsg != null) {
+      paramErrMsg.a(false);
     }
     QLog.e("ConfigSettingForDataLine", 2, "get pskey failed ticket time oiut");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.spread.ConfigSettingForDataLine.LocalWtTicketPromise
  * JD-Core Version:    0.7.0.1
  */

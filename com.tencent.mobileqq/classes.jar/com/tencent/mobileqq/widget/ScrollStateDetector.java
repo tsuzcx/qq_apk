@@ -27,34 +27,33 @@ public class ScrollStateDetector
   
   void a(int paramInt)
   {
-    int i;
-    if (paramInt != this.jdField_a_of_type_Int)
+    int i = this.jdField_a_of_type_Int;
+    if (paramInt != i)
     {
-      i = this.jdField_a_of_type_Int;
       this.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollStateDetector$OnScrollListener != null) {
-        if (this.jdField_a_of_type_JavaLangRefWeakReference != null) {
-          break label47;
+      if (this.jdField_a_of_type_ComTencentMobileqqWidgetScrollStateDetector$OnScrollListener != null)
+      {
+        Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+        if (localObject == null) {
+          localObject = null;
+        } else {
+          localObject = (View)((WeakReference)localObject).get();
         }
+        this.jdField_a_of_type_ComTencentMobileqqWidgetScrollStateDetector$OnScrollListener.a((View)localObject, i, paramInt);
       }
-    }
-    label47:
-    for (View localView = null;; localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetScrollStateDetector$OnScrollListener.a(localView, i, paramInt);
-      return;
     }
   }
   
   void a(View paramView)
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    for (View localView = null;; localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get())
-    {
-      if (localView != paramView) {
-        this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
-      }
-      return;
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
+      localObject = null;
+    } else {
+      localObject = (View)((WeakReference)localObject).get();
+    }
+    if (localObject != paramView) {
+      this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramView);
     }
   }
   
@@ -95,13 +94,14 @@ public class ScrollStateDetector
   {
     a(paramView);
     paramInt3 = Math.abs(paramInt2 - paramInt4);
-    if ((paramInt3 == 0) || (paramInt2 == 0)) {}
-    for (paramInt1 = 1;; paramInt1 = 0)
+    if ((paramInt3 != 0) && (paramInt2 != 0)) {
+      paramInt1 = 0;
+    } else {
+      paramInt1 = 1;
+    }
+    this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
+    if ((paramInt1 != 0) && (!this.jdField_b_of_type_Boolean))
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
-      if ((paramInt1 == 0) || (this.jdField_b_of_type_Boolean)) {
-        break;
-      }
       this.jdField_a_of_type_Boolean = false;
       a(0);
       return;
@@ -122,7 +122,7 @@ public class ScrollStateDetector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ScrollStateDetector
  * JD-Core Version:    0.7.0.1
  */

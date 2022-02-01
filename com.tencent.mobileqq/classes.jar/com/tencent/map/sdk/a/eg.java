@@ -4,22 +4,23 @@ public final class eg
 {
   public static <T> T a(T paramT)
   {
-    if (paramT == null) {
-      throw new NullPointerException();
+    if (paramT != null) {
+      return paramT;
     }
-    return paramT;
+    throw new NullPointerException();
   }
   
   public static void a(boolean paramBoolean)
   {
-    if (!paramBoolean) {
-      throw new IllegalArgumentException();
+    if (paramBoolean) {
+      return;
     }
+    throw new IllegalArgumentException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.eg
  * JD-Core Version:    0.7.0.1
  */

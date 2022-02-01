@@ -46,41 +46,34 @@ public class ThridAppShareHelper
   
   public boolean a(Intent paramIntent, Activity paramActivity, QQAppInterface paramQQAppInterface)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (!"thridapp".equals(paramIntent.getStringExtra("share_from"))) {
-      bool1 = false;
+      return false;
     }
-    Object localObject;
-    Long localLong;
-    do
+    paramIntent.removeExtra("share_from");
+    Object localObject = a();
+    Long localLong = Long.valueOf(paramIntent.getLongExtra("req_share_id", 0L));
+    if (!((ThridAppShareHelper)localObject).a(String.valueOf(localLong))) {
+      return true;
+    }
+    paramIntent.putExtra("share_from_aio", true);
+    paramIntent.putExtra("forward_type", 11);
+    paramIntent.putExtra("req_type", 1);
+    if (!paramIntent.hasExtra("pkg_name")) {
+      paramIntent.putExtra("pkg_name", "");
+    }
+    paramIntent.putExtra("refuse_show_share_result_dialog", true);
+    localObject = ((ThridAppShareHelper)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    if (localObject != null)
     {
-      do
-      {
-        return bool1;
-        paramIntent.removeExtra("share_from");
-        localObject = a();
-        localLong = Long.valueOf(paramIntent.getLongExtra("req_share_id", 0L));
-        bool1 = bool2;
-      } while (!((ThridAppShareHelper)localObject).a(String.valueOf(localLong)));
-      paramIntent.putExtra("share_from_aio", true);
-      paramIntent.putExtra("forward_type", 11);
-      paramIntent.putExtra("req_type", 1);
-      if (!paramIntent.hasExtra("pkg_name")) {
-        paramIntent.putExtra("pkg_name", "");
-      }
-      paramIntent.putExtra("refuse_show_share_result_dialog", true);
-      localObject = ((ThridAppShareHelper)localObject).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
-      bool1 = bool2;
-    } while (localObject == null);
-    paramIntent = ForwardOptionBuilder.a(paramIntent, paramQQAppInterface, paramActivity);
-    paramActivity = new Bundle();
-    paramActivity.putString("uin", ((SessionInfo)localObject).jdField_a_of_type_JavaLangString);
-    paramActivity.putInt("uintype", ((SessionInfo)localObject).jdField_a_of_type_Int);
-    paramActivity.putString("troop_uin", ((SessionInfo)localObject).b);
-    paramActivity.putString("uinname", ((SessionInfo)localObject).d);
-    paramIntent.a(ForwardAbility.ForwardAbilityType.a.intValue(), paramActivity);
-    a(String.valueOf(localLong), "app_share_view", "", "", "");
+      paramIntent = ForwardOptionBuilder.a(paramIntent, paramQQAppInterface, paramActivity);
+      paramActivity = new Bundle();
+      paramActivity.putString("uin", ((SessionInfo)localObject).jdField_a_of_type_JavaLangString);
+      paramActivity.putInt("uintype", ((SessionInfo)localObject).jdField_a_of_type_Int);
+      paramActivity.putString("troop_uin", ((SessionInfo)localObject).b);
+      paramActivity.putString("uinname", ((SessionInfo)localObject).d);
+      paramIntent.a(ForwardAbility.ForwardAbilityType.a.intValue(), paramActivity);
+      a(String.valueOf(localLong), "app_share_view", "", "", "");
+    }
     return true;
   }
   
@@ -91,7 +84,7 @@ public class ThridAppShareHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.thridappshare.ThridAppShareHelper
  * JD-Core Version:    0.7.0.1
  */

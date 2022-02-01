@@ -30,21 +30,34 @@ public class NativeViewRequestEvent
   
   public String perform(BaseRuntime paramBaseRuntime)
   {
-    QMLog.d("Action", "sendNativeViewEvent " + "eventName = " + this.event + " " + "jsService = " + this.jsService + " " + "callbackId = " + this.callbackId + " " + "target = " + this.dispatchTarget);
+    StringBuilder localStringBuilder = new StringBuilder("sendNativeViewEvent ");
+    localStringBuilder.append("eventName = ");
+    localStringBuilder.append(this.event);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("jsService = ");
+    localStringBuilder.append(this.jsService);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("callbackId = ");
+    localStringBuilder.append(this.callbackId);
+    localStringBuilder.append(" ");
+    localStringBuilder.append("target = ");
+    localStringBuilder.append(this.dispatchTarget);
+    QMLog.d("Action", localStringBuilder.toString());
     this.mService = paramBaseRuntime.getJsService();
     return paramBaseRuntime.getPage().dispatchEventToNativeView(this);
   }
   
   public void sendSubscribeJs(String paramString1, String paramString2, int paramInt)
   {
-    if (this.mService != null) {
-      this.mService.evaluateSubscribeJS(paramString1, paramString2, paramInt);
+    IJsService localIJsService = this.mService;
+    if (localIJsService != null) {
+      localIJsService.evaluateSubscribeJS(paramString1, paramString2, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.core.action.NativeViewRequestEvent
  * JD-Core Version:    0.7.0.1
  */

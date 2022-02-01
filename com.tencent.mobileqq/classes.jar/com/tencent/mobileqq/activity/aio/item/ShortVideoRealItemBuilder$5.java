@@ -18,13 +18,8 @@ class ShortVideoRealItemBuilder$5
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
       if ((this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uiOperatorFlag == 1) && (this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.videoFileStatus == 1004)) {
         ShortVideoUtils.reportCancelSendVideo("0X800A7F0", this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
       }
@@ -41,8 +36,16 @@ class ShortVideoRealItemBuilder$5
         else if (!ShortVideoRealItemBuilder.a().containsKey(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq)))
         {
           ShortVideoRealItemBuilder.a().put(Long.valueOf(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq), this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo);
-          if (QLog.isColorLevel()) {
-            QLog.i("ShortVideoRealItemBuilder", 2, "messageMap size:" + ShortVideoRealItemBuilder.a().size() + ", [" + this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq + "] added, mEncoding:" + ShortVideoRealItemBuilder.b());
+          if (QLog.isColorLevel())
+          {
+            paramView = new StringBuilder();
+            paramView.append("messageMap size:");
+            paramView.append(ShortVideoRealItemBuilder.a().size());
+            paramView.append(", [");
+            paramView.append(this.jdField_a_of_type_ComTencentMobileqqDataMessageForShortVideo.uniseq);
+            paramView.append("] added, mEncoding:");
+            paramView.append(ShortVideoRealItemBuilder.b());
+            QLog.i("ShortVideoRealItemBuilder", 2, paramView.toString());
           }
         }
       }
@@ -59,11 +62,12 @@ class ShortVideoRealItemBuilder$5
         ShortVideoRealItemBuilder.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemShortVideoRealItemBuilder);
       }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ShortVideoRealItemBuilder.5
  * JD-Core Version:    0.7.0.1
  */

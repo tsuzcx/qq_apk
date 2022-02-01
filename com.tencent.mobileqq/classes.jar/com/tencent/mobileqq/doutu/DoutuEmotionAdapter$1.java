@@ -31,15 +31,15 @@ class DoutuEmotionAdapter$1
       if (this.a.a == null) {
         this.a.a = new HashMap();
       }
-      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url != null)) {
-        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_md5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.pic_down_url);
+      if ((paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picMd5 != null) && (paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picDownUrl != null)) {
+        this.a.a.put(paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picMd5, paramView.jdField_a_of_type_ComTencentMobileqqDoutuDoutuData.picDownUrl);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.doutu.DoutuEmotionAdapter.1
  * JD-Core Version:    0.7.0.1
  */

@@ -72,8 +72,16 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
   
   private boolean processVideoInfoIsHEVCNotSupported(TVKPlayerWrapperCGIModel.CGIRequest paramCGIRequest, TVKNetVideoInfo paramTVKNetVideoInfo)
   {
-    if (!paramTVKNetVideoInfo.isHevc()) {}
-    while ((paramTVKNetVideoInfo.getCurDefinition() == null) || (TextUtils.isEmpty(paramTVKNetVideoInfo.getCurDefinition().getDefn())) || (paramCGIRequest.playbackParam.videoInfo().getPlayType() != 2)) {
+    if (!paramTVKNetVideoInfo.isHevc()) {
+      return false;
+    }
+    if (paramTVKNetVideoInfo.getCurDefinition() == null) {
+      return false;
+    }
+    if (TextUtils.isEmpty(paramTVKNetVideoInfo.getCurDefinition().getDefn())) {
+      return false;
+    }
+    if (paramCGIRequest.playbackParam.videoInfo().getPlayType() != 2) {
       return false;
     }
     int j = TVKUtils.optInt(paramCGIRequest.playbackParam.videoInfo().getConfigMapValue("sysplayer_hevc_cap", ""), 0);
@@ -81,21 +89,15 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
     if (j == 1)
     {
       i = 28;
-      if (TVKPlayerUtils.getDefnHevcLevel(paramTVKNetVideoInfo.getCurDefinition().getDefn(), i) > 0) {
-        break label107;
-      }
     }
-    label107:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      return bool;
       i = j;
-      if (j != 2) {
-        break;
+      if (j == 2) {
+        i = 33;
       }
-      i = 33;
-      break;
     }
+    return TVKPlayerUtils.getDefnHevcLevel(paramTVKNetVideoInfo.getCurDefinition().getDefn(), i) <= 0;
   }
   
   private boolean processVideoInfoIsNeedReRequestVideoInfo(TVKPlayerWrapperCGIModel.CGIRequest paramCGIRequest, TVKNetVideoInfo paramTVKNetVideoInfo)
@@ -116,11 +118,10 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
   
   private boolean processVideoInfoIsRequestExpired(TVKPlayerWrapperCGIModel.CGIRequest paramCGIRequest)
   {
-    if (paramCGIRequest == null) {}
-    while (paramCGIRequest.reqState == 2) {
+    if (paramCGIRequest == null) {
       return true;
     }
-    return false;
+    return paramCGIRequest.reqState == 2;
   }
   
   public void onFailure(int paramInt1, int paramInt2, String paramString1, int paramInt3, String paramString2)
@@ -145,7 +146,7 @@ class TVKPlayerWrapperCGIModel$CGICombineCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerWrapperCGIModel.CGICombineCallback
  * JD-Core Version:    0.7.0.1
  */

@@ -24,75 +24,123 @@ class TroopFileThumbnailFetchWorker$2
   
   public void a(boolean paramBoolean, int paramInt, oidb_0x6d6.DownloadFileRspBody paramDownloadFileRspBody, Bundle paramBundle)
   {
-    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {}
-    boolean bool;
-    do
+    if (paramBundle.getLong("troopUin") != this.a.jdField_a_of_type_Long) {
+      return;
+    }
+    String str = paramBundle.getString("itemKey");
+    if (str == null) {
+      return;
+    }
+    if (!UUID.fromString(str).equals(this.a.a())) {
+      return;
+    }
+    if (this.a.jdField_a_of_type_Boolean) {
+      return;
+    }
+    int j = paramBundle.getInt("thumbNail");
+    int i = 0;
+    boolean bool = paramBundle.getBoolean("isPreview", false);
+    if ((j != 0) && (!bool))
     {
-      String str;
-      do
-      {
+      if (j != this.a.jdField_a_of_type_Int) {
         return;
-        str = paramBundle.getString("itemKey");
-      } while ((str == null) || (!UUID.fromString(str).equals(this.a.a())) || (this.a.jdField_a_of_type_Boolean));
-      i = paramBundle.getInt("thumbNail");
-      bool = paramBundle.getBoolean("isPreview", false);
-    } while ((i == 0) || (bool) || (i != this.a.jdField_a_of_type_Int));
-    if ((paramDownloadFileRspBody == null) || (!paramBoolean))
-    {
-      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult isSuccess:false  errCode:" + paramInt);
+      }
+      if ((paramDownloadFileRspBody != null) && (paramBoolean))
+      {
+        j = paramDownloadFileRspBody.int32_ret_code.get();
+        int k = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        paramBundle = new StringBuilder();
+        paramBundle.append("[");
+        paramBundle.append(this.a.jdField_a_of_type_JavaLangString);
+        paramBundle.append("] onReqFetchResult isSuccess:true  errCode:");
+        paramBundle.append(paramInt);
+        paramBundle.append(" retCode:");
+        paramBundle.append(j);
+        TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", k, paramBundle.toString());
+        if (j < 0) {
+          if ((j != -103) && (j != -302) && (j != -301))
+          {
+            this.a.c(j);
+          }
+          else
+          {
+            paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+            paramBundle = new StringBuilder();
+            paramBundle.append("[");
+            paramBundle.append(this.a.jdField_a_of_type_JavaLangString);
+            paramBundle.append("] onReqFetchResult  file is not exsit. retCode:");
+            paramBundle.append(j);
+            TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", paramInt, paramBundle.toString());
+            paramBundle = this.a;
+            paramBundle.jdField_a_of_type_Boolean = true;
+            paramBundle.b(4);
+            this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ErrorCode = 0;
+            TroopFileDataCenter.a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 12);
+            if (this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener != null) {
+              this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener.a(this.a.a(), false, j, this.a);
+            }
+          }
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
+        if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue.toLowerCase();
+        }
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
+        this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
+        if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp))
+        {
+          paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+          paramBundle = new StringBuilder();
+          paramBundle.append("[");
+          paramBundle.append(this.a.jdField_a_of_type_JavaLangString);
+          paramBundle.append("] onReqFetchResult DownloadIp is null");
+          TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", paramInt, paramBundle.toString());
+          TroopTechReportUtils.a("gfile", "ipnull", "", "", "", "");
+        }
+        j = paramDownloadFileRspBody.uint32_preview_port.get();
+        paramInt = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+        paramBundle = new StringBuilder();
+        paramBundle.append("[");
+        paramBundle.append(this.a.jdField_a_of_type_JavaLangString);
+        paramBundle.append("] onReqFetchResult DownloadIp:");
+        paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp);
+        paramBundle.append(" DownloadDNS:");
+        paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS);
+        paramBundle.append(" videoPort:");
+        paramBundle.append(j);
+        paramBundle.append(" DownloadUrl:");
+        paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl);
+        paramBundle.append(" cookieValue:");
+        paramBundle.append(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue);
+        TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", paramInt, paramBundle.toString());
+        paramInt = i;
+        if (paramDownloadFileRspBody.uint32_preview_port_https.has()) {
+          paramInt = paramDownloadFileRspBody.uint32_preview_port_https.get();
+        }
+        paramBundle = null;
+        if (paramDownloadFileRspBody.str_download_dns_https.has()) {
+          paramBundle = paramDownloadFileRspBody.str_download_dns_https.get();
+        }
+        this.a.a(j, paramBundle, paramInt);
+        return;
+      }
+      i = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      paramDownloadFileRspBody = new StringBuilder();
+      paramDownloadFileRspBody.append("[");
+      paramDownloadFileRspBody.append(this.a.jdField_a_of_type_JavaLangString);
+      paramDownloadFileRspBody.append("] onReqFetchResult isSuccess:false  errCode:");
+      paramDownloadFileRspBody.append(paramInt);
+      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", i, paramDownloadFileRspBody.toString());
       this.a.c(TroopTechReportUtils.TroopFileReportResultCode.A);
-      return;
-    }
-    int i = paramDownloadFileRspBody.int32_ret_code.get();
-    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult isSuccess:true  errCode:" + paramInt + " retCode:" + i);
-    if (i < 0)
-    {
-      if ((i != -103) && (i != -302) && (i != -301)) {
-        break label779;
-      }
-      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult  file is not exsit. retCode:" + i);
-      this.a.jdField_a_of_type_Boolean = true;
-      this.a.b(4);
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.ErrorCode = 0;
-      TroopFileDataCenter.a(this.a.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item, 12);
-      if (this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailFetchWorker$ITroopFileThumbFetchWorkerListener.a(this.a.a(), false, i, this.a);
-      }
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_cookie_val.get().toByteArray());
-    if (this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue = this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue.toLowerCase();
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp = paramDownloadFileRspBody.str_download_ip.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS = paramDownloadFileRspBody.str_download_dns.get().toStringUtf8();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl = HexUtil.bytes2HexStr(paramDownloadFileRspBody.bytes_download_url.get().toByteArray());
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.Md5 = paramDownloadFileRspBody.bytes_md5.get().toByteArray();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.NameForSave = paramDownloadFileRspBody.str_save_file_name.get();
-    if (TextUtils.isEmpty(this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp))
-    {
-      TroopFileTransferUtil.Log.a("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult DownloadIp is null");
-      TroopTechReportUtils.a("gfile", "ipnull", "", "", "", "");
-    }
-    i = paramDownloadFileRspBody.uint32_preview_port.get();
-    TroopFileTransferUtil.Log.c("TroopFileDownloadWorker", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "[" + this.a.jdField_a_of_type_JavaLangString + "] onReqFetchResult DownloadIp:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadIp + " DownloadDNS:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadDNS + " videoPort:" + i + " DownloadUrl:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.DownloadUrl + " cookieValue:" + this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager$Item.cookieValue);
-    if (paramDownloadFileRspBody.uint32_preview_port_https.has()) {}
-    for (paramInt = paramDownloadFileRspBody.uint32_preview_port_https.get();; paramInt = 0)
-    {
-      paramBundle = null;
-      if (paramDownloadFileRspBody.str_download_dns_https.has()) {
-        paramBundle = paramDownloadFileRspBody.str_download_dns_https.get();
-      }
-      this.a.a(i, paramBundle, paramInt);
-      return;
-      label779:
-      this.a.c(i);
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailFetchWorker.2
  * JD-Core Version:    0.7.0.1
  */

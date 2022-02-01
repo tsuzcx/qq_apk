@@ -81,33 +81,38 @@ public class FloatDragAdManager
   
   public boolean removeDragAd()
   {
-    if (this.mGameContainer == null) {
+    ViewGroup localViewGroup = this.mGameContainer;
+    if (localViewGroup == null) {
       return false;
     }
-    this.mGameContainer.post(new FloatDragAdManager.4(this));
+    localViewGroup.post(new FloatDragAdManager.4(this));
     return true;
   }
   
   public boolean showDragAd(FloatDragAdInfo paramFloatDragAdInfo)
   {
-    if ((this.mContext == null) || (this.mGameContainer == null))
+    if (this.mContext != null)
     {
-      QMLog.e("FloatDragAdManager", "showDragAd fail");
-      return false;
+      ViewGroup localViewGroup = this.mGameContainer;
+      if (localViewGroup != null)
+      {
+        if (this.mDragImageView != null)
+        {
+          performReport(paramFloatDragAdInfo.getAdItem(), paramFloatDragAdInfo.getType(), 101);
+          QMLog.e("FloatDragAdManager", "showDragAd fail, already exist");
+          return false;
+        }
+        localViewGroup.post(new FloatDragAdManager.1(this, paramFloatDragAdInfo));
+        return true;
+      }
     }
-    if (this.mDragImageView != null)
-    {
-      performReport(paramFloatDragAdInfo.getAdItem(), paramFloatDragAdInfo.getType(), 101);
-      QMLog.e("FloatDragAdManager", "showDragAd fail, already exist");
-      return false;
-    }
-    this.mGameContainer.post(new FloatDragAdManager.1(this, paramFloatDragAdInfo));
-    return true;
+    QMLog.e("FloatDragAdManager", "showDragAd fail");
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.manager.FloatDragAdManager
  * JD-Core Version:    0.7.0.1
  */

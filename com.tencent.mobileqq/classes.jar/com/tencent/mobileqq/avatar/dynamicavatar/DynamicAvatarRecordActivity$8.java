@@ -20,24 +20,21 @@ class DynamicAvatarRecordActivity$8
     this.this$0.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
     if (this.this$0.jdField_d_of_type_Boolean) {
       this.this$0.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-    }
-    for (;;)
-    {
-      this.this$0.jdField_d_of_type_AndroidWidgetTextView.setVisibility(4);
-      this.this$0.c.setVisibility(0);
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      this.this$0.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
-      this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
-      this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(4);
-      this.this$0.e.setVisibility(4);
-      return;
+    } else {
       this.this$0.jdField_b_of_type_AndroidWidgetTextView.setVisibility(4);
     }
+    this.this$0.jdField_d_of_type_AndroidWidgetTextView.setVisibility(4);
+    this.this$0.c.setVisibility(0);
+    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.this$0.jdField_a_of_type_AndroidWidgetImageView.setEnabled(true);
+    this.this$0.jdField_b_of_type_AndroidWidgetImageView.setVisibility(4);
+    this.this$0.jdField_a_of_type_ComTencentMobileqqWidgetCircleProgress.setVisibility(4);
+    this.this$0.e.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.8
  * JD-Core Version:    0.7.0.1
  */

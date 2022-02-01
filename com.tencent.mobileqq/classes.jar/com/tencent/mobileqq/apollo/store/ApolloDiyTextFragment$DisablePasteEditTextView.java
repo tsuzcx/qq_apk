@@ -35,7 +35,7 @@ class ApolloDiyTextFragment$DisablePasteEditTextView
     }
     catch (Exception localException)
     {
-      QLog.e("ApolloDiyTextActivity", 1, localException.getMessage());
+      QLog.e("[cmshow]ApolloDiyTextActivity", 1, localException.getMessage());
     }
   }
   
@@ -63,7 +63,7 @@ class ApolloDiyTextFragment$DisablePasteEditTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloDiyTextFragment.DisablePasteEditTextView
  * JD-Core Version:    0.7.0.1
  */

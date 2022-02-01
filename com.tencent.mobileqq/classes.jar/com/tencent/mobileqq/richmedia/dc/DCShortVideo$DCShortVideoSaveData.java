@@ -10,13 +10,34 @@ class DCShortVideo$DCShortVideoSaveData
     if ("ShortVideo.Save".equals(paramString))
     {
       paramString = new HashMap();
-      paramString.put("param_uinType", this.b + "");
-      paramString.put("param_GroupMemberCount", this.c + "");
-      paramString.put("param_age", this.d + "");
-      paramString.put("param_gender", this.e + "");
-      paramString.put("param_shortVideoType", this.f + "");
-      paramString.put("param_reportHour", this.g + "");
-      paramString.put("param_netType", this.h + "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.b);
+      localStringBuilder.append("");
+      paramString.put("param_uinType", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.c);
+      localStringBuilder.append("");
+      paramString.put("param_GroupMemberCount", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.d);
+      localStringBuilder.append("");
+      paramString.put("param_age", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.e);
+      localStringBuilder.append("");
+      paramString.put("param_gender", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.f);
+      localStringBuilder.append("");
+      paramString.put("param_shortVideoType", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.g);
+      localStringBuilder.append("");
+      paramString.put("param_reportHour", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.h);
+      localStringBuilder.append("");
+      paramString.put("param_netType", localStringBuilder.toString());
       return paramString;
     }
     return null;
@@ -24,7 +45,7 @@ class DCShortVideo$DCShortVideoSaveData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCShortVideo.DCShortVideoSaveData
  * JD-Core Version:    0.7.0.1
  */

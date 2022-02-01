@@ -14,11 +14,12 @@ class GuessSongGameRecordCtrl$5
   
   public void run()
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      this.a.destroyDrawingCache();
-      Bitmap localBitmap = this.a.getDrawingCache();
-      if (localBitmap != null)
+      ((View)localObject).destroyDrawingCache();
+      localObject = this.a.getDrawingCache();
+      if (localObject != null)
       {
         Context localContext = (Context)this.this$0.a.get();
         if (localContext != null)
@@ -27,8 +28,8 @@ class GuessSongGameRecordCtrl$5
           int i = (int)(this.a.getWidth() * f);
           int j = (int)(this.a.getHeight() * f);
           int k = (int)(this.a.getLeft() * f);
-          int m = (int)(f * this.a.getTop());
-          this.this$0.a(localBitmap, i, j, k, m);
+          int m = (int)(this.a.getTop() * f);
+          this.this$0.a((Bitmap)localObject, i, j, k, m);
         }
       }
     }
@@ -36,7 +37,7 @@ class GuessSongGameRecordCtrl$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GuessSongGameRecordCtrl.5
  * JD-Core Version:    0.7.0.1
  */

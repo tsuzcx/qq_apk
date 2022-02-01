@@ -26,15 +26,18 @@ class ShareGroupPageLoader$1
       {
         StoryDispatcher.a().dispatch(localGetShareGroupListEvent);
         SLog.a("Q.qqstory.memories:ShareGroupPageLoader", "dispatch share group list return from cache: %s", localGetShareGroupListEvent);
-        return;
       }
-      SLog.d("Q.qqstory.memories:ShareGroupPageLoader", "load cache data later than load from network");
+      else
+      {
+        SLog.d("Q.qqstory.memories:ShareGroupPageLoader", "load cache data later than load from network");
+      }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.ShareGroupPageLoader.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,24 +21,38 @@ class LiveRoomBusinessPlugin$1
     if ((localPluginBaseInfo != null) && (localPluginBaseInfo.mState == 4))
     {
       LiveRoomHelper.setPluginInstalledInTool();
-      LiveRoomHelper.setPluginVersionInTool("" + localPluginBaseInfo.mCurVersion);
-      this.jdField_a_of_type_ComTencentMobileqqJspLiveRoomBusinessPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":0\"version\":\"" + localPluginBaseInfo.mCurVersion + "\"}" });
-      if (QLog.isColorLevel()) {
-        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is installed: version=" + localPluginBaseInfo.mCurVersion);
+      paramPluginManagerClient = new StringBuilder();
+      paramPluginManagerClient.append("");
+      paramPluginManagerClient.append(localPluginBaseInfo.mCurVersion);
+      LiveRoomHelper.setPluginVersionInTool(paramPluginManagerClient.toString());
+      paramPluginManagerClient = this.jdField_a_of_type_ComTencentMobileqqJspLiveRoomBusinessPlugin;
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{\"result\":0\"version\":\"");
+      localStringBuilder.append(localPluginBaseInfo.mCurVersion);
+      localStringBuilder.append("\"}");
+      paramPluginManagerClient.callJs(str, new String[] { localStringBuilder.toString() });
+      if (QLog.isColorLevel())
+      {
+        paramPluginManagerClient = new StringBuilder();
+        paramPluginManagerClient.append("plugin is installed: version=");
+        paramPluginManagerClient.append(localPluginBaseInfo.mCurVersion);
+        QLog.d("LiveRoomBusinessPlugin", 2, paramPluginManagerClient.toString());
       }
     }
-    do
+    else
     {
-      return;
       this.jdField_a_of_type_ComTencentMobileqqJspLiveRoomBusinessPlugin.callJs(this.jdField_a_of_type_JavaLangString, new String[] { "{\"result\":-1}" });
       LiveRoomPluginInstaller.getInstance().installFromTool(paramPluginManagerClient, "checkSDKInstalled");
-    } while (!QLog.isColorLevel());
-    QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
+      if (QLog.isColorLevel()) {
+        QLog.d("LiveRoomBusinessPlugin", 2, "plugin is not installed");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.LiveRoomBusinessPlugin.1
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,19 @@ class f$a
       paramContext = paramIntent.getStringExtra("reason");
       if (paramContext != null)
       {
-        if (!paramContext.equals("homekey")) {
-          break label39;
+        if (paramContext.equals("homekey"))
+        {
+          c.a().d();
+          return;
         }
-        c.a().d();
+        paramContext.equals("recentapps");
       }
-    }
-    label39:
-    while (!paramContext.equals("recentapps")) {
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.g.f.a
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -60,26 +61,31 @@ public final class mobile_video_layer_adv_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.all_feeds_adv != null) {
-      paramJceOutputStream.write(this.all_feeds_adv, 0);
+    Object localObject = this.all_feeds_adv;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 0);
     }
-    if (this.all_tips_adv != null) {
-      paramJceOutputStream.write(this.all_tips_adv, 1);
+    localObject = this.all_tips_adv;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 1);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 2);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.all_premovie_adv != null) {
-      paramJceOutputStream.write(this.all_premovie_adv, 3);
+    localObject = this.all_premovie_adv;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.all_pop_adv != null) {
-      paramJceOutputStream.write(this.all_pop_adv, 4);
+    localObject = this.all_pop_adv;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_video_layer_adv_rsp
  * JD-Core Version:    0.7.0.1
  */

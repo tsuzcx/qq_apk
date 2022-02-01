@@ -17,11 +17,12 @@ public class ConfigProtocol$WriteLocalLogTLV
   
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
-    if ((paramByteBuffer == null) || (paramByteBuffer.length() < 2)) {
-      return false;
+    if ((paramByteBuffer != null) && (paramByteBuffer.length() >= 2))
+    {
+      this.m_bIsWrite = paramByteBuffer.ReadUInt16();
+      return true;
     }
-    this.m_bIsWrite = paramByteBuffer.ReadUInt16();
-    return true;
+    return false;
   }
   
   public short getIsWriteLog()

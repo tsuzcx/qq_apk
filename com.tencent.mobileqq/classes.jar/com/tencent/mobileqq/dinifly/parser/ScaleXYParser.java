@@ -11,19 +11,19 @@ public class ScaleXYParser
   
   public ScaleXY parse(JsonReader paramJsonReader, float paramFloat)
   {
-    if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY) {}
-    float f1;
-    float f2;
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        paramJsonReader.beginArray();
-      }
-      f1 = (float)paramJsonReader.nextDouble();
-      f2 = (float)paramJsonReader.nextDouble();
-      while (paramJsonReader.hasNext()) {
-        paramJsonReader.skipValue();
-      }
+    int i;
+    if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      paramJsonReader.beginArray();
+    }
+    float f1 = (float)paramJsonReader.nextDouble();
+    float f2 = (float)paramJsonReader.nextDouble();
+    while (paramJsonReader.hasNext()) {
+      paramJsonReader.skipValue();
     }
     if (i != 0) {
       paramJsonReader.endArray();
@@ -33,7 +33,7 @@ public class ScaleXYParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ScaleXYParser
  * JD-Core Version:    0.7.0.1
  */

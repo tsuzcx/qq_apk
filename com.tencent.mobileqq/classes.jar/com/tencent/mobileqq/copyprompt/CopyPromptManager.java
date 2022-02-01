@@ -11,6 +11,7 @@ import android.os.Build.VERSION;
 import android.preference.PreferenceManager;
 import android.text.TextUtils;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.qmethodmonitor.monitor.ClipboardMonitor;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import mqq.manager.Manager;
@@ -48,7 +49,9 @@ public class CopyPromptManager
     if (Build.VERSION.SDK_INT >= 26)
     {
       long l1 = a().getLong("KEY_LAST_COPY_TIME", 0L);
-      Object localObject = a().getPrimaryClipDescription();
+      Object localObject = a();
+      ClipboardMonitor.getPrimaryClipDescription((ClipboardManager)localObject);
+      localObject = ((ClipboardManager)localObject).getPrimaryClipDescription();
       if (localObject != null)
       {
         long l2 = ((ClipDescription)localObject).getTimestamp();
@@ -56,14 +59,22 @@ public class CopyPromptManager
         if ((l2 != l1) && (l3 - l2 < 180000L))
         {
           a().edit().putLong("KEY_LAST_COPY_TIME", l2).apply();
-          if (a().hasPrimaryClip())
+          localObject = a();
+          ClipboardMonitor.hasPrimaryClip((ClipboardManager)localObject);
+          if (((ClipboardManager)localObject).hasPrimaryClip())
           {
-            localObject = a().getPrimaryClip();
+            localObject = a();
+            ClipboardMonitor.getPrimaryClip((ClipboardManager)localObject);
+            localObject = ((ClipboardManager)localObject).getPrimaryClip();
             if ((localObject != null) && (((ClipData)localObject).getItemCount() > 0))
             {
               localObject = ((ClipData)localObject).getItemAt(0);
-              if (QLog.isColorLevel()) {
-                QLog.d("CopyPromptManager", 2, "origin copy data : " + localObject);
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("origin copy data : ");
+                localStringBuilder.append(localObject);
+                QLog.d("CopyPromptManager", 2, localStringBuilder.toString());
               }
               if (localObject != null)
               {
@@ -87,7 +98,7 @@ public class CopyPromptManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.CopyPromptManager
  * JD-Core Version:    0.7.0.1
  */

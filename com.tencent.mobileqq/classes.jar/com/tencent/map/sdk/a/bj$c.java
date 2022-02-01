@@ -20,9 +20,10 @@ final class bj$c
   {
     bj.g(this.b);
     bj.a(this.b, SystemClock.elapsedRealtime());
-    int j;
-    int i;
-    if (this.a.d)
+    boolean bool = this.a.d;
+    int i = 0;
+    int j = 0;
+    if (bool)
     {
       if (bj.j(this.b) > 0) {
         bj.k(this.b);
@@ -30,10 +31,10 @@ final class bj$c
       this.b.a.addAndGet(this.a.f);
       if (!this.a.b)
       {
-        j = this.a.e.size();
+        int k = this.a.e.size();
         ArrayList localArrayList = new ArrayList();
-        i = 0;
-        while (i < j)
+        i = j;
+        while (i < k)
         {
           localArrayList.add(Long.valueOf(((bs.a)this.a.e.get(i)).a));
           i += 1;
@@ -43,14 +44,9 @@ final class bj$c
         {
           bj.m(this.b);
           bj.a(this.b, true, this.a.c);
+          return;
         }
       }
-    }
-    label363:
-    label372:
-    for (;;)
-    {
-      return;
       if (!this.a.a)
       {
         SystemClock.sleep(200L);
@@ -59,37 +55,34 @@ final class bj$c
       }
       bj.a(this.b, true);
       return;
-      if (ao.i())
+    }
+    if (ao.i()) {
+      if (bj.j(this.b) > 0)
       {
-        if (bj.j(this.b) <= 0) {
-          break label363;
-        }
-        i = as.a("report_interval_forbid_limit", 30, 1440, 60);
-        if (bj.j(this.b) < i) {
+        j = as.a("report_interval_forbid_limit", 30, 1440, 60);
+        if (bj.j(this.b) < j) {
           bj.n(this.b);
         }
       }
-      for (;;)
+      else
       {
-        if ((!this.a.c) || (!this.a.b)) {
-          break label372;
-        }
-        j = this.a.e.size();
-        i = 0;
-        while (i < j)
-        {
-          bs.a(this.b.b()).b(((bs.a)this.a.e.get(i)).b);
-          i += 1;
-        }
-        break;
         bj.o(this.b);
+      }
+    }
+    if ((this.a.c) && (this.a.b))
+    {
+      j = this.a.e.size();
+      while (i < j)
+      {
+        bs.a(this.b.b()).b(((bs.a)this.a.e.get(i)).b);
+        i += 1;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.bj.c
  * JD-Core Version:    0.7.0.1
  */

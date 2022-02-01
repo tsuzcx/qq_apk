@@ -80,12 +80,14 @@ public class VSEntranceWidget
       this.b.clearAnimation();
       this.b.startAnimation(c());
     }
-    for (;;)
+    else
     {
-      QLog.d("Q.videostory.config.VSEntranceWidget", 1, "playWidgetAnimationset resourceReady:" + this.jdField_a_of_type_Boolean);
-      return;
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(8);
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("playWidgetAnimationset resourceReady:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    QLog.d("Q.videostory.config.VSEntranceWidget", 1, localStringBuilder.toString());
   }
   
   public void a(FrameLayout paramFrameLayout, View paramView, String paramString)
@@ -93,35 +95,35 @@ public class VSEntranceWidget
     this.jdField_a_of_type_AndroidWidgetFrameLayout = paramFrameLayout;
     this.jdField_a_of_type_AndroidViewView = paramView;
     paramFrameLayout = VSEntranceWidgetHelper.a().a(paramString);
-    if ((paramFrameLayout == null) || (!paramFrameLayout.a()))
+    if ((paramFrameLayout != null) && (paramFrameLayout.a()))
     {
-      QLog.e("Q.videostory.config.VSEntranceWidget", 1, "bindTargetView error!widgetConfig is null or resource not ready!");
-      this.jdField_a_of_type_Boolean = false;
+      this.jdField_a_of_type_Boolean = true;
+      paramView = a(paramFrameLayout.c, this.jdField_a_of_type_AndroidWidgetFrameLayout);
+      if (paramView != null) {
+        this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(paramView);
+      }
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131364252));
+      paramView = a(paramFrameLayout.d, this.jdField_a_of_type_AndroidWidgetImageView);
+      if (paramView != null) {
+        this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
+      }
+      this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.b = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131381114));
+      paramFrameLayout = a(paramFrameLayout.f, this.b);
+      if (paramFrameLayout != null) {
+        this.b.setImageDrawable(paramFrameLayout);
+      }
+      this.b.setVisibility(4);
       return;
     }
-    this.jdField_a_of_type_Boolean = true;
-    paramView = a(paramFrameLayout.c, this.jdField_a_of_type_AndroidWidgetFrameLayout);
-    if (paramView != null) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundDrawable(paramView);
-    }
-    this.jdField_a_of_type_AndroidWidgetFrameLayout.setVisibility(4);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131364349));
-    paramView = a(paramFrameLayout.d, this.jdField_a_of_type_AndroidWidgetImageView);
-    if (paramView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.b = ((ImageView)this.jdField_a_of_type_AndroidWidgetFrameLayout.findViewById(2131381911));
-    paramFrameLayout = a(paramFrameLayout.f, this.b);
-    if (paramFrameLayout != null) {
-      this.b.setImageDrawable(paramFrameLayout);
-    }
-    this.b.setVisibility(4);
+    QLog.e("Q.videostory.config.VSEntranceWidget", 1, "bindTargetView error!widgetConfig is null or resource not ready!");
+    this.jdField_a_of_type_Boolean = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidget
  * JD-Core Version:    0.7.0.1
  */

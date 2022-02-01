@@ -24,29 +24,29 @@ class ProgressPieDrawable$AnimationHandler
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b > this.jdField_a_of_type_Int)
     {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b - 1);
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable;
+      paramMessage.c(paramMessage.b - 1);
       sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.e);
       return;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b < this.jdField_a_of_type_Int)
     {
       int i = this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.b + this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.f;
-      if (i <= this.jdField_a_of_type_Int) {
+      int j = this.jdField_a_of_type_Int;
+      if (i <= j) {
         this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(i);
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(j);
       }
-      for (;;)
-      {
-        sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.e);
-        return;
-        this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.c(this.jdField_a_of_type_Int);
-      }
+      sendEmptyMessageDelayed(0, this.jdField_a_of_type_ComTencentMobileqqWidgetProgressPieDrawable.e);
+      return;
     }
     removeMessages(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ProgressPieDrawable.AnimationHandler
  * JD-Core Version:    0.7.0.1
  */

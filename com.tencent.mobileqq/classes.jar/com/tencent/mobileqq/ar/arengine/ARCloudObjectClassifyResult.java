@@ -28,32 +28,14 @@ public class ARCloudObjectClassifyResult
   
   public static boolean a(ARCloudObjectClassifyResult paramARCloudObjectClassifyResult)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramARCloudObjectClassifyResult != null)
+    if ((paramARCloudObjectClassifyResult != null) && (paramARCloudObjectClassifyResult.jdField_a_of_type_Int == 0) && (paramARCloudObjectClassifyResult.b == 0))
     {
-      bool1 = bool2;
-      if (paramARCloudObjectClassifyResult.jdField_a_of_type_Int == 0)
-      {
-        bool1 = bool2;
-        if (paramARCloudObjectClassifyResult.b == 0)
-        {
-          bool1 = bool2;
-          if (paramARCloudObjectClassifyResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag != null)
-          {
-            bool1 = bool2;
-            if (paramARCloudObjectClassifyResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[0].jdField_c_of_type_Int == 0)
-            {
-              bool1 = bool2;
-              if (paramARCloudObjectClassifyResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[0].a != null) {
-                bool1 = true;
-              }
-            }
-          }
-        }
+      ARCloudObjectClassifyResult.ImageTag[] arrayOfImageTag = paramARCloudObjectClassifyResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag;
+      if ((arrayOfImageTag != null) && (arrayOfImageTag[0].jdField_c_of_type_Int == 0) && (paramARCloudObjectClassifyResult.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[0].a != null)) {
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   public byte[] a()
@@ -65,25 +47,52 @@ public class ARCloudObjectClassifyResult
   {
     if (this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag != null)
     {
-      String str1 = "ImageTags{";
       int i = 0;
+      localObject1 = "ImageTags{";
       for (;;)
       {
-        str2 = str1;
+        localObject2 = localObject1;
         if (i >= this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag.length) {
           break;
         }
-        str1 = str1 + ", imageTags[" + i + "] = " + this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[i];
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(", imageTags[");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append("] = ");
+        ((StringBuilder)localObject2).append(this.jdField_a_of_type_ArrayOfComTencentMobileqqArArengineARCloudObjectClassifyResult$ImageTag[i]);
+        localObject1 = ((StringBuilder)localObject2).toString();
         i += 1;
       }
     }
-    String str2 = "null";
-    return "ARCloudObjectClassifyResult{retCode = " + this.jdField_a_of_type_Int + ", retMsg = " + this.jdField_a_of_type_JavaLangString + ", recogSvrRetCode = " + this.b + ", recogSvrRetMsg = " + this.jdField_c_of_type_JavaLangString + ", sessionId = " + this.jdField_d_of_type_JavaLangString + ", imageTags = " + str2 + ", timeLen = " + this.jdField_c_of_type_Int + ", score = " + this.jdField_d_of_type_Int + ", kptNum = " + this.e + super.toString() + '}';
+    Object localObject2 = "null";
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("ARCloudObjectClassifyResult{retCode = ");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject1).append(", retMsg = ");
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(", recogSvrRetCode = ");
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append(", recogSvrRetMsg = ");
+    ((StringBuilder)localObject1).append(this.jdField_c_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(", sessionId = ");
+    ((StringBuilder)localObject1).append(this.jdField_d_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append(", imageTags = ");
+    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append(", timeLen = ");
+    ((StringBuilder)localObject1).append(this.jdField_c_of_type_Int);
+    ((StringBuilder)localObject1).append(", score = ");
+    ((StringBuilder)localObject1).append(this.jdField_d_of_type_Int);
+    ((StringBuilder)localObject1).append(", kptNum = ");
+    ((StringBuilder)localObject1).append(this.e);
+    ((StringBuilder)localObject1).append(super.toString());
+    ((StringBuilder)localObject1).append('}');
+    return ((StringBuilder)localObject1).toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARCloudObjectClassifyResult
  * JD-Core Version:    0.7.0.1
  */

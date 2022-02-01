@@ -31,7 +31,6 @@ import java.util.List;
 
 public class HippyEngine$EngineInitParams
 {
-  public Context appContext;
   public String codeCacheTag = "";
   public Context context;
   public String coreJSAssetsPath;
@@ -42,7 +41,6 @@ public class HippyEngine$EngineInitParams
   public HippyDeviceAdapter deviceAdapter;
   public boolean enableBuffer = true;
   public boolean enableLog = false;
-  public HippyEngine.EngineMode engineMode = HippyEngine.EngineMode.NORMAL;
   public HippyEngineMonitorAdapter engineMonitor;
   public HippyExceptionHandlerAdapter exceptionHandler;
   public HippyExecutorSupplierAdapter executorSupplier;
@@ -63,54 +61,68 @@ public class HippyEngine$EngineInitParams
   
   protected void check()
   {
-    if (this.context == null) {
-      throw new IllegalArgumentException(EngineInitParams.class.getName() + " context must not be null!");
+    Object localObject = this.context;
+    if (localObject != null)
+    {
+      if (this.imageLoader != null)
+      {
+        if (this.sharedPreferencesAdapter == null) {
+          this.sharedPreferencesAdapter = new DefaultSharedPreferencesAdapter((Context)localObject);
+        }
+        if (this.exceptionHandler == null) {
+          this.exceptionHandler = new DefaultExceptionHandler();
+        }
+        if (this.httpAdapter == null) {
+          this.httpAdapter = new DefaultHttpAdapter();
+        }
+        if (this.executorSupplier == null) {
+          this.executorSupplier = new DefaultExecutorSupplierAdapter();
+        }
+        if (this.storageAdapter == null) {
+          this.storageAdapter = new DefaultStorageAdapter(this.context, this.executorSupplier.getDBExecutor());
+        }
+        if (this.engineMonitor == null) {
+          this.engineMonitor = new DefaultEngineMonitorAdapter();
+        }
+        if (this.fontScaleAdapter == null) {
+          this.fontScaleAdapter = new DefaultFontScaleAdapter();
+        }
+        if (this.soLoader == null) {
+          this.soLoader = new DefaultSoLoaderAdapter();
+        }
+        if (this.deviceAdapter == null) {
+          this.deviceAdapter = new DefaultDeviceAdapter();
+        }
+        if (this.logAdapter == null) {
+          this.logAdapter = new DefaultLogAdapter();
+        }
+        if (this.providers == null) {
+          this.providers = new ArrayList();
+        }
+        this.providers.add(0, new d());
+        if ((!this.debugMode) && (TextUtils.isEmpty(this.coreJSAssetsPath)))
+        {
+          if (!TextUtils.isEmpty(this.coreJSFilePath)) {
+            return;
+          }
+          throw new RuntimeException("Hippy: debugMode=true, initParams.coreJSAssetsPath and coreJSFilePath both null!");
+        }
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(EngineInitParams.class.getName());
+      ((StringBuilder)localObject).append(" imageLoader must not be null!");
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
     }
-    if (this.imageLoader == null) {
-      throw new IllegalArgumentException(EngineInitParams.class.getName() + " imageLoader must not be null!");
-    }
-    if (this.sharedPreferencesAdapter == null) {
-      this.sharedPreferencesAdapter = new DefaultSharedPreferencesAdapter(this.context);
-    }
-    if (this.exceptionHandler == null) {
-      this.exceptionHandler = new DefaultExceptionHandler();
-    }
-    if (this.httpAdapter == null) {
-      this.httpAdapter = new DefaultHttpAdapter();
-    }
-    if (this.executorSupplier == null) {
-      this.executorSupplier = new DefaultExecutorSupplierAdapter();
-    }
-    if (this.storageAdapter == null) {
-      this.storageAdapter = new DefaultStorageAdapter(this.context, this.executorSupplier.getDBExecutor());
-    }
-    if (this.engineMonitor == null) {
-      this.engineMonitor = new DefaultEngineMonitorAdapter();
-    }
-    if (this.fontScaleAdapter == null) {
-      this.fontScaleAdapter = new DefaultFontScaleAdapter();
-    }
-    if (this.soLoader == null) {
-      this.soLoader = new DefaultSoLoaderAdapter();
-    }
-    if (this.deviceAdapter == null) {
-      this.deviceAdapter = new DefaultDeviceAdapter();
-    }
-    if (this.logAdapter == null) {
-      this.logAdapter = new DefaultLogAdapter();
-    }
-    if (this.providers == null) {
-      this.providers = new ArrayList();
-    }
-    this.providers.add(0, new d());
-    if ((!this.debugMode) && (TextUtils.isEmpty(this.coreJSAssetsPath)) && (TextUtils.isEmpty(this.coreJSFilePath))) {
-      throw new RuntimeException("Hippy: debugMode=true, initParams.coreJSAssetsPath and coreJSFilePath both null!");
-    }
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(EngineInitParams.class.getName());
+    ((StringBuilder)localObject).append(" context must not be null!");
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.HippyEngine.EngineInitParams
  * JD-Core Version:    0.7.0.1
  */

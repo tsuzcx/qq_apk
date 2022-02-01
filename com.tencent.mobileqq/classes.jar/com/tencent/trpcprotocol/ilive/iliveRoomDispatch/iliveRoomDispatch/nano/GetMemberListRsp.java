@@ -29,53 +29,64 @@ public final class GetMemberListRsp
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
+      if (i == 0) {
+        break;
+      }
+      if (i != 10)
       {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (i != 16)
+        {
+          if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+            return this;
+          }
         }
-      case 0: 
-        return this;
-      case 10: 
+        else {
+          this.jdField_a_of_type_Boolean = paramCodedInputByteBufferNano.readBool();
+        }
+      }
+      else
+      {
         if (this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList == null) {
           this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList = new UserList();
         }
         paramCodedInputByteBufferNano.readMessage(this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList);
-        break;
       }
-      this.jdField_a_of_type_Boolean = paramCodedInputByteBufferNano.readBool();
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    UserList localUserList = this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList;
     int i = j;
-    if (this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(1, this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList);
+    if (localUserList != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(1, localUserList);
     }
+    boolean bool = this.jdField_a_of_type_Boolean;
     j = i;
-    if (this.jdField_a_of_type_Boolean) {
-      j = i + CodedOutputByteBufferNano.computeBoolSize(2, this.jdField_a_of_type_Boolean);
+    if (bool) {
+      j = i + CodedOutputByteBufferNano.computeBoolSize(2, bool);
     }
     return j;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList != null) {
-      paramCodedOutputByteBufferNano.writeMessage(1, this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList);
+    UserList localUserList = this.jdField_a_of_type_ComTencentTrpcprotocolIliveIliveRoomDispatchIliveRoomDispatchNanoUserList;
+    if (localUserList != null) {
+      paramCodedOutputByteBufferNano.writeMessage(1, localUserList);
     }
-    if (this.jdField_a_of_type_Boolean) {
-      paramCodedOutputByteBufferNano.writeBool(2, this.jdField_a_of_type_Boolean);
+    boolean bool = this.jdField_a_of_type_Boolean;
+    if (bool) {
+      paramCodedOutputByteBufferNano.writeBool(2, bool);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.GetMemberListRsp
  * JD-Core Version:    0.7.0.1
  */

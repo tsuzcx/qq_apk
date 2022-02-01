@@ -29,13 +29,14 @@ public class L
     if (!traceEnabled) {
       return;
     }
-    if (traceDepth == 20)
+    int i = traceDepth;
+    if (i == 20)
     {
       depthPastMaxDepth += 1;
       return;
     }
-    sections[traceDepth] = paramString;
-    startTimeNs[traceDepth] = System.nanoTime();
+    sections[i] = paramString;
+    startTimeNs[i] = System.nanoTime();
     TraceCompat.beginSection(paramString);
     traceDepth += 1;
   }
@@ -49,33 +50,46 @@ public class L
   
   public static float endSection(String paramString)
   {
-    if (depthPastMaxDepth > 0) {
-      depthPastMaxDepth -= 1;
+    int i = depthPastMaxDepth;
+    if (i > 0)
+    {
+      depthPastMaxDepth = i - 1;
+      return 0.0F;
     }
-    while (!traceEnabled) {
+    if (!traceEnabled) {
       return 0.0F;
     }
     traceDepth -= 1;
-    if (traceDepth == -1) {
-      throw new IllegalStateException("Can't end trace section. There are none.");
+    i = traceDepth;
+    if (i != -1)
+    {
+      if (paramString.equals(sections[i]))
+      {
+        TraceCompat.endSection();
+        return (float)(System.nanoTime() - startTimeNs[traceDepth]) / 1000000.0F;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unbalanced trace call ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(". Expected ");
+      localStringBuilder.append(sections[traceDepth]);
+      localStringBuilder.append(".");
+      throw new IllegalStateException(localStringBuilder.toString());
     }
-    if (!paramString.equals(sections[traceDepth])) {
-      throw new IllegalStateException("Unbalanced trace call " + paramString + ". Expected " + sections[traceDepth] + ".");
-    }
-    TraceCompat.endSection();
-    return (float)(System.nanoTime() - startTimeNs[traceDepth]) / 1000000.0F;
+    throw new IllegalStateException("Can't end trace section. There are none.");
   }
   
   public static void setTraceEnabled(boolean paramBoolean)
   {
-    if (traceEnabled == paramBoolean) {}
-    do
-    {
+    if (traceEnabled == paramBoolean) {
       return;
-      traceEnabled = paramBoolean;
-    } while (!traceEnabled);
-    sections = new String[20];
-    startTimeNs = new long[20];
+    }
+    traceEnabled = paramBoolean;
+    if (traceEnabled)
+    {
+      sections = new String[20];
+      startTimeNs = new long[20];
+    }
   }
   
   public static void warn(String paramString)
@@ -89,7 +103,7 @@ public class L
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.L
  * JD-Core Version:    0.7.0.1
  */

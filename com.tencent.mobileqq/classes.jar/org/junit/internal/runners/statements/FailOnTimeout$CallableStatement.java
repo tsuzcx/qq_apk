@@ -24,19 +24,19 @@ class FailOnTimeout$CallableStatement
       FailOnTimeout.access$600(this.this$0).evaluate();
       return null;
     }
-    catch (Exception localException)
-    {
-      throw localException;
-    }
     catch (Throwable localThrowable)
     {
       return localThrowable;
+    }
+    catch (Exception localException)
+    {
+      throw localException;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.junit.internal.runners.statements.FailOnTimeout.CallableStatement
  * JD-Core Version:    0.7.0.1
  */

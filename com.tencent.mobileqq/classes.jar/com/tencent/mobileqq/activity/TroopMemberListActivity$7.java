@@ -12,9 +12,10 @@ class TroopMemberListActivity$7
   
   public void onClick(View paramView)
   {
-    this.a.setResult(0, this.a.getIntent());
+    TroopMemberListActivity localTroopMemberListActivity = this.a;
+    localTroopMemberListActivity.setResult(0, localTroopMemberListActivity.getIntent());
     this.a.finish();
-    if (this.a.d == 11) {
+    if (this.a.mFrom == 11) {
       ReportController.b(this.a.app, "CliOper", "", "", "0X8006215", "0X8006215", 0, 0, "1", "", "", "");
     }
     EventCollector.getInstance().onViewClicked(paramView);
@@ -22,7 +23,7 @@ class TroopMemberListActivity$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.7
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,21 @@ public class VasCommonJsPlugin$ChooseH5PTVReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if ((paramInt != 0) || (paramBundle == null))
+    if ((paramInt == 0) && (paramBundle != null))
     {
-      this.mJsPlugin.doChooseFriendResultForH5(null, null, null, null);
+      ArrayList localArrayList1 = paramBundle.getStringArrayList("choose_friend_uins");
+      ArrayList localArrayList2 = paramBundle.getStringArrayList("choose_friend_phones");
+      ArrayList localArrayList3 = paramBundle.getStringArrayList("choose_friend_names");
+      paramBundle = paramBundle.getStringArrayList("choose_friend_types");
+      this.mJsPlugin.doChooseFriendResultForH5(localArrayList1, localArrayList2, localArrayList3, paramBundle);
       return;
     }
-    ArrayList localArrayList1 = paramBundle.getStringArrayList("choose_friend_uins");
-    ArrayList localArrayList2 = paramBundle.getStringArrayList("choose_friend_phones");
-    ArrayList localArrayList3 = paramBundle.getStringArrayList("choose_friend_names");
-    paramBundle = paramBundle.getStringArrayList("choose_friend_types");
-    this.mJsPlugin.doChooseFriendResultForH5(localArrayList1, localArrayList2, localArrayList3, paramBundle);
+    this.mJsPlugin.doChooseFriendResultForH5(null, null, null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin.ChooseH5PTVReceiver
  * JD-Core Version:    0.7.0.1
  */

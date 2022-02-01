@@ -25,13 +25,14 @@ public final class VaProfileGate$VaProfileGateRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 74, 82 }, new String[] { "iRetCode", "sRetMsg", "stPrivilegeRsp", "stGiftRsp", "rpt_task_item", "rpt_oidb_flag", "st_vip_care", "lhLogoLv", "qid_info", "qq_value" }, new Object[] { Integer.valueOf(0), localByteStringMicro, null, null, null, null, null, Integer.valueOf(0), null, null }, VaProfileGateRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 42, 50, 58, 64, 74, 82 }, new String[] { "iRetCode", "sRetMsg", "stPrivilegeRsp", "stGiftRsp", "rpt_task_item", "rpt_oidb_flag", "st_vip_care", "lhLogoLv", "qid_info", "qq_value" }, new Object[] { localInteger, localByteStringMicro, null, null, null, null, null, localInteger, null, null }, VaProfileGateRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.profilecard.VaProfileGate.VaProfileGateRsp
  * JD-Core Version:    0.7.0.1
  */

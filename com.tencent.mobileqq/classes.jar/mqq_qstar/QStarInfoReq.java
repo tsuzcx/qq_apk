@@ -48,11 +48,13 @@ public final class QStarInfoReq
     paramJceOutputStream.write(this.seq, 1);
     paramJceOutputStream.write(this.cmd, 2);
     paramJceOutputStream.write(this.platform, 3);
-    if (this.osver != null) {
-      paramJceOutputStream.write(this.osver, 4);
+    String str = this.osver;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.mqqver != null) {
-      paramJceOutputStream.write(this.mqqver, 5);
+    str = this.mqqver;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.uin, 6);
     paramJceOutputStream.write(this.touin, 7);
@@ -60,7 +62,7 @@ public final class QStarInfoReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     mqq_qstar.QStarInfoReq
  * JD-Core Version:    0.7.0.1
  */

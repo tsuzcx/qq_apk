@@ -52,17 +52,18 @@ public class HandlerScheduledFuture<T>
   
   public int compareTo(Delayed paramDelayed)
   {
-    if (paramDelayed == this) {}
-    long l;
-    do
-    {
+    int i = 0;
+    if (paramDelayed == this) {
       return 0;
-      l = this.mDelay - paramDelayed.getDelay(TimeUnit.MILLISECONDS);
-      if (l < 0L) {
-        return -1;
-      }
-    } while (l <= 0L);
-    return 1;
+    }
+    long l = this.mDelay - paramDelayed.getDelay(TimeUnit.MILLISECONDS);
+    if (l < 0L) {
+      return -1;
+    }
+    if (l > 0L) {
+      i = 1;
+    }
+    return i;
   }
   
   public long getDelay(TimeUnit paramTimeUnit)
@@ -78,20 +79,21 @@ public class HandlerScheduledFuture<T>
   public void run()
   {
     boolean bool = isPeriodic();
-    if (isCancelled()) {
-      cancel(false);
-    }
-    do
+    if (isCancelled())
     {
+      cancel(false);
       return;
-      if (!bool)
-      {
-        super.run();
-        return;
-      }
-    } while (!super.runAndReset());
-    this.count += 1;
-    reExecutePeriodic(this, setNextRunTime());
+    }
+    if (!bool)
+    {
+      super.run();
+      return;
+    }
+    if (super.runAndReset())
+    {
+      this.count += 1;
+      reExecutePeriodic(this, setNextRunTime());
+    }
   }
   
   long setNextRunTime()
@@ -101,7 +103,7 @@ public class HandlerScheduledFuture<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.task.base.HandlerScheduledFuture
  * JD-Core Version:    0.7.0.1
  */

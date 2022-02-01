@@ -25,20 +25,31 @@ class DataApiPlugin$GetKeyListener
   
   public void OnGetStWithoutPasswd(String paramString, long paramLong1, long paramLong2, int paramInt1, long paramLong3, WUserSigInfo paramWUserSigInfo, int paramInt2, ErrMsg paramErrMsg)
   {
-    if (paramInt2 == 0) {
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null)) {
+    if (paramInt2 == 0)
+    {
+      paramString = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ((paramString != null) && (paramString.get() != null)) {
         ((DataApiPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get()).a(this.jdField_a_of_type_JavaLangString, paramWUserSigInfo, this.b, paramInt1, this.c, this.d);
       }
     }
-    while ((this.jdField_a_of_type_JavaLangRefWeakReference == null) || (this.jdField_a_of_type_JavaLangRefWeakReference.get() == null)) {
-      return;
+    else
+    {
+      paramString = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ((paramString != null) && (paramString.get() != null))
+      {
+        paramString = (DataApiPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        paramWUserSigInfo = this.b;
+        paramErrMsg = new StringBuilder();
+        paramErrMsg.append("getTicket fail code = ");
+        paramErrMsg.append(paramInt2);
+        paramString.b(paramWUserSigInfo, paramErrMsg.toString());
+      }
     }
-    ((DataApiPlugin)this.jdField_a_of_type_JavaLangRefWeakReference.get()).b(this.b, "getTicket fail code = " + paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.DataApiPlugin.GetKeyListener
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,25 @@ public class RMVideoClipSpec
   
   public String toString()
   {
-    return "RMVideoClipSpec: " + this.a + "," + this.b + "," + this.c + "," + this.d + "," + this.e + "," + this.f;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RMVideoClipSpec: ");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.f);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoClipSpec
  * JD-Core Version:    0.7.0.1
  */

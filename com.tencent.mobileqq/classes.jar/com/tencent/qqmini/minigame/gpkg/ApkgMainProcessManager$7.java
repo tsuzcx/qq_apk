@@ -24,44 +24,59 @@ class ApkgMainProcessManager$7
       paramMiniAppInfo.putFloat("PROGRESS", paramFloat);
       paramMiniAppInfo.putLong("TOTAL_SIZE", paramLong);
       localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+    }
+    for (;;)
+    {
+      MiniCmdCallback localMiniCmdCallback;
+      if (((Iterator)localObject).hasNext())
       {
-        MiniCmdCallback localMiniCmdCallback = (MiniCmdCallback)((Iterator)localObject).next();
-        if (localMiniCmdCallback != null) {
-          try
-          {
-            localMiniCmdCallback.onCmdResult(false, paramMiniAppInfo);
-          }
-          catch (RemoteException localRemoteException) {}
+        localMiniCmdCallback = (MiniCmdCallback)((Iterator)localObject).next();
+        if (localMiniCmdCallback == null) {}
+      }
+      else
+      {
+        try
+        {
+          localMiniCmdCallback.onCmdResult(false, paramMiniAppInfo);
         }
+        catch (RemoteException localRemoteException) {}
+        return;
       }
     }
   }
   
   public void onInitGpkgInfo(int paramInt, MiniGamePkg paramMiniGamePkg, String paramString, @Nullable GpkgManager.Info paramInfo)
   {
-    QMLog.d("ApkgMainProcessManager", "onInitGpkgInfo load gpkg in main process end " + this.val$miniAppConfig);
+    paramMiniGamePkg = new StringBuilder();
+    paramMiniGamePkg.append("onInitGpkgInfo load gpkg in main process end ");
+    paramMiniGamePkg.append(this.val$miniAppConfig);
+    QMLog.d("ApkgMainProcessManager", paramMiniGamePkg.toString());
     paramMiniGamePkg = (List)ApkgMainProcessManager.access$000(this.this$0).remove(this.val$miniAppConfig.appId);
-    if (paramMiniGamePkg != null)
-    {
+    if (paramMiniGamePkg != null) {
       paramMiniGamePkg = paramMiniGamePkg.iterator();
-      while (paramMiniGamePkg.hasNext())
+    }
+    for (;;)
+    {
+      if (paramMiniGamePkg.hasNext())
       {
         paramString = (MiniCmdCallback)paramMiniGamePkg.next();
-        if (paramString != null) {
-          try
-          {
-            paramString.onCmdResult(true, new Bundle());
-          }
-          catch (RemoteException paramString) {}
+        if (paramString == null) {}
+      }
+      else
+      {
+        try
+        {
+          paramString.onCmdResult(true, new Bundle());
         }
+        catch (RemoteException paramString) {}
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.ApkgMainProcessManager.7
  * JD-Core Version:    0.7.0.1
  */

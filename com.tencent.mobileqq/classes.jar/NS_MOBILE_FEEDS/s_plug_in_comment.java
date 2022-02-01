@@ -32,19 +32,21 @@ public final class s_plug_in_comment
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.title != null) {
-      paramJceOutputStream.write(this.title, 0);
+    String str = this.title;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.action_type, 1);
-    if (this.action_url != null) {
-      paramJceOutputStream.write(this.action_url, 2);
+    str = this.action_url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.insert_index, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_plug_in_comment
  * JD-Core Version:    0.7.0.1
  */

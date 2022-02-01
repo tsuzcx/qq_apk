@@ -11,12 +11,12 @@ class QQARSession$14$1
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131710118), 1).a();
+    QQToast.a(BaseApplicationImpl.getContext(), 1, HardCodeUtil.a(2131710105), 1).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.model.QQARSession.14.1
  * JD-Core Version:    0.7.0.1
  */

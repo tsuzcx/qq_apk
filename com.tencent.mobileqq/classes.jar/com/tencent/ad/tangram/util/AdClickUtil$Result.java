@@ -25,8 +25,9 @@ public class AdClickUtil$Result
   
   public int getErrorCode()
   {
-    if (this.error != null) {
-      return this.error.getErrorCode();
+    AdError localAdError = this.error;
+    if (localAdError != null) {
+      return localAdError.getErrorCode();
     }
     return 1;
   }

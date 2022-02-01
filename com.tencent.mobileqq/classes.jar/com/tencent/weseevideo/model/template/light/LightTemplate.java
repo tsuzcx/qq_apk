@@ -101,12 +101,16 @@ public class LightTemplate
       return;
     }
     this.mLightAsset = LightAsset.Load(this.mFilePath, 100);
-    if (this.mLightAsset == null)
+    paramString = this.mLightAsset;
+    if (paramString == null)
     {
-      Logger.e("LightTemplate", "LightAsset.Load return null! mFilePath=" + this.mFilePath);
+      paramString = new StringBuilder();
+      paramString.append("LightAsset.Load return null! mFilePath=");
+      paramString.append(this.mFilePath);
+      Logger.e("LightTemplate", paramString.toString());
       return;
     }
-    this.renderSize = new CGSize(this.mLightAsset.width(), this.mLightAsset.height());
+    this.renderSize = new CGSize(paramString.width(), this.mLightAsset.height());
   }
   
   public boolean isNoDurationLimitTemplate()
@@ -165,7 +169,7 @@ public class LightTemplate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.light.LightTemplate
  * JD-Core Version:    0.7.0.1
  */

@@ -10,9 +10,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 
 public final class VideoTalkMemberManager
-  implements VideoMemmberChangeListener
+  implements VideoMemberChangeListener
 {
-  public static final String a;
+  public static final String a = "VideoTalkMemberManager";
   private int jdField_a_of_type_Int = 0;
   private VideoController jdField_a_of_type_ComTencentAvVideoController;
   private VideoLayerUI jdField_a_of_type_ComTencentAvUiVideoLayerUI;
@@ -27,11 +27,6 @@ public final class VideoTalkMemberManager
   private final Object[] jdField_c_of_type_ArrayOfJavaLangObject = new Object[0];
   private boolean d = false;
   
-  static
-  {
-    jdField_a_of_type_JavaLangString = VideoTalkMemberManager.class.getSimpleName();
-  }
-  
   public VideoTalkMemberManager(VideoController paramVideoController, VideoLayerUI paramVideoLayerUI)
   {
     this.jdField_a_of_type_ComTencentAvVideoController = paramVideoController;
@@ -40,7 +35,10 @@ public final class VideoTalkMemberManager
   
   private String a(long paramLong, int paramInt)
   {
-    return String.valueOf(paramLong) + String.valueOf(paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(String.valueOf(paramLong));
+    localStringBuilder.append(String.valueOf(paramInt));
+    return localStringBuilder.toString();
   }
   
   public ArrayList<VideoMemberInfo> a()
@@ -54,124 +52,127 @@ public final class VideoTalkMemberManager
   
   public ArrayList<VideoMemberInfo> a(boolean paramBoolean)
   {
-    int i = 0;
     long l = System.currentTimeMillis();
+    int i;
     synchronized (this.jdField_a_of_type_ArrayOfJavaLangObject)
     {
       if (this.jdField_a_of_type_Boolean)
       {
         this.jdField_a_of_type_Boolean = false;
         i = 1;
-      }
-    }
-    Object localObject11;
-    Object localObject13;
-    Object localObject14;
-    synchronized (this.jdField_b_of_type_ArrayOfJavaLangObject)
-    {
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_b_of_type_Boolean = false;
-        i = 1;
-      }
-      if ((i == 0) && (!paramBoolean)) {
-        break label702;
-      }
-      synchronized (this.jdField_c_of_type_ArrayOfJavaLangObject)
-      {
-        this.jdField_b_of_type_JavaUtilArrayList.clear();
-        localObject11 = new HashMap();
-        synchronized (this.jdField_a_of_type_ComTencentAvVideoController.a().d)
+        synchronized (this.jdField_b_of_type_ArrayOfJavaLangObject)
         {
-          Iterator localIterator = this.jdField_a_of_type_ComTencentAvVideoController.a().d.iterator();
-          do
+          if (this.jdField_b_of_type_Boolean)
           {
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localObject13 = (VideoViewInfo)localIterator.next();
-            ??? = new VideoMemberInfo();
-            ((VideoMemberInfo)???).jdField_a_of_type_Long = ((VideoViewInfo)localObject13).jdField_a_of_type_Long;
-            ((VideoMemberInfo)???).jdField_b_of_type_Int = ((VideoViewInfo)localObject13).jdField_a_of_type_Int;
-            ((VideoMemberInfo)???).h = ((VideoViewInfo)localObject13).e;
-            ((VideoMemberInfo)???).g = ((VideoViewInfo)localObject13).jdField_a_of_type_Boolean;
-            ((VideoMemberInfo)???).f = true;
-            ((VideoMemberInfo)???).jdField_a_of_type_Boolean = true;
-            this.jdField_b_of_type_JavaUtilArrayList.add(???);
-            localObject13 = a(((VideoMemberInfo)???).jdField_a_of_type_Long, ((VideoMemberInfo)???).jdField_b_of_type_Int);
-            localObject14 = (VideoMemberInfo)((HashMap)localObject11).put(localObject13, ???);
-          } while (localObject14 == null);
-          if (((VideoMemberInfo)???).b()) {
-            ((HashMap)localObject11).put(localObject13, localObject14);
+            this.jdField_b_of_type_Boolean = false;
+            i = 1;
           }
-          QLog.w(jdField_a_of_type_JavaLangString, 1, "getVideoViewList oldInfo:=" + ((VideoMemberInfo)localObject14).toString());
+          if ((i != 0) || (paramBoolean)) {}
+          synchronized (this.jdField_c_of_type_ArrayOfJavaLangObject)
+          {
+            this.jdField_b_of_type_JavaUtilArrayList.clear();
+            Object localObject10 = new HashMap();
+            synchronized (this.jdField_a_of_type_ComTencentAvVideoController.a().d)
+            {
+              ??? = this.jdField_a_of_type_ComTencentAvVideoController.a().d.iterator();
+              Object localObject12;
+              Object localObject13;
+              while (((Iterator)???).hasNext())
+              {
+                ??? = (VideoViewInfo)((Iterator)???).next();
+                localObject12 = new VideoMemberInfo();
+                ((VideoMemberInfo)localObject12).jdField_a_of_type_Long = ((VideoViewInfo)???).jdField_a_of_type_Long;
+                ((VideoMemberInfo)localObject12).jdField_b_of_type_Int = ((VideoViewInfo)???).jdField_a_of_type_Int;
+                ((VideoMemberInfo)localObject12).h = ((VideoViewInfo)???).e;
+                ((VideoMemberInfo)localObject12).g = ((VideoViewInfo)???).jdField_a_of_type_Boolean;
+                ((VideoMemberInfo)localObject12).f = true;
+                ((VideoMemberInfo)localObject12).jdField_a_of_type_Boolean = true;
+                this.jdField_b_of_type_JavaUtilArrayList.add(localObject12);
+                localObject13 = a(((VideoMemberInfo)localObject12).jdField_a_of_type_Long, ((VideoMemberInfo)localObject12).jdField_b_of_type_Int);
+                ??? = (VideoMemberInfo)((HashMap)localObject10).put(localObject13, localObject12);
+                if (??? != null)
+                {
+                  if (((VideoMemberInfo)localObject12).b()) {
+                    ((HashMap)localObject10).put(localObject13, ???);
+                  }
+                  localObject12 = jdField_a_of_type_JavaLangString;
+                  localObject13 = new StringBuilder();
+                  ((StringBuilder)localObject13).append("getVideoViewList oldInfo:=");
+                  ((StringBuilder)localObject13).append(((VideoMemberInfo)???).toString());
+                  QLog.w((String)localObject12, 1, ((StringBuilder)localObject13).toString());
+                }
+              }
+              this.jdField_a_of_type_Int = this.jdField_b_of_type_JavaUtilArrayList.size();
+              synchronized (this.jdField_a_of_type_ArrayOfJavaLangObject)
+              {
+                localObject12 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+                while (((Iterator)localObject12).hasNext())
+                {
+                  localObject13 = (VideoController.GAudioFriends)((Iterator)localObject12).next();
+                  ??? = (VideoMemberInfo)((HashMap)localObject10).get(a(((VideoController.GAudioFriends)localObject13).jdField_a_of_type_Long, 1));
+                  ??? = ???;
+                  if (??? == null) {
+                    ??? = (VideoMemberInfo)((HashMap)localObject10).get(a(((VideoController.GAudioFriends)localObject13).jdField_a_of_type_Long, 2));
+                  }
+                  if (??? != null)
+                  {
+                    if (((VideoMemberInfo)???).b() != 2)
+                    {
+                      ((VideoMemberInfo)???).jdField_b_of_type_Boolean = ((VideoController.GAudioFriends)localObject13).jdField_a_of_type_Boolean;
+                      ((VideoMemberInfo)???).jdField_a_of_type_Int = ((VideoController.GAudioFriends)localObject13).d;
+                      ((VideoMemberInfo)???).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = ((VideoController.GAudioFriends)localObject13).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo;
+                      ((VideoMemberInfo)???).d = ((VideoController.GAudioFriends)localObject13).e;
+                      ((VideoMemberInfo)???).e = ((VideoController.GAudioFriends)localObject13).f;
+                    }
+                    else
+                    {
+                      ((VideoMemberInfo)???).jdField_b_of_type_Boolean = false;
+                    }
+                  }
+                  else
+                  {
+                    ??? = new VideoMemberInfo();
+                    ((VideoMemberInfo)???).jdField_a_of_type_Long = ((VideoController.GAudioFriends)localObject13).jdField_a_of_type_Long;
+                    ((VideoMemberInfo)???).jdField_b_of_type_Int = 0;
+                    ((VideoMemberInfo)???).f = false;
+                    ((VideoMemberInfo)???).jdField_a_of_type_Boolean = ((VideoController.GAudioFriends)localObject13).h;
+                    ((VideoMemberInfo)???).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = ((VideoController.GAudioFriends)localObject13).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo;
+                    ((VideoMemberInfo)???).jdField_b_of_type_Boolean = ((VideoController.GAudioFriends)localObject13).jdField_a_of_type_Boolean;
+                    ((VideoMemberInfo)???).jdField_a_of_type_Int = ((VideoController.GAudioFriends)localObject13).d;
+                    ((VideoMemberInfo)???).d = ((VideoController.GAudioFriends)localObject13).e;
+                    ((VideoMemberInfo)???).e = ((VideoController.GAudioFriends)localObject13).f;
+                    this.jdField_b_of_type_JavaUtilArrayList.add(???);
+                  }
+                }
+                ??? = this.jdField_b_of_type_JavaUtilArrayList.iterator();
+                while (((Iterator)???).hasNext())
+                {
+                  ??? = (VideoMemberInfo)((Iterator)???).next();
+                  localObject10 = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(((VideoMemberInfo)???).jdField_a_of_type_Long);
+                  if (localObject10 != null)
+                  {
+                    ((VideoMemberInfo)???).jdField_b_of_type_Boolean = ((VideoMemberInfo)localObject10).jdField_b_of_type_Boolean;
+                    ((VideoMemberInfo)???).d = ((VideoMemberInfo)localObject10).d;
+                  }
+                }
+                synchronized (this.jdField_c_of_type_ArrayOfJavaLangObject)
+                {
+                  ??? = (ArrayList)this.jdField_b_of_type_JavaUtilArrayList.clone();
+                  if (QLog.isColorLevel())
+                  {
+                    ??? = jdField_a_of_type_JavaLangString;
+                    ??? = new StringBuilder();
+                    ((StringBuilder)???).append("getVideoViewList listSort exceedMaxNumber cost");
+                    ((StringBuilder)???).append(System.currentTimeMillis() - l);
+                    QLog.d((String)???, 1, ((StringBuilder)???).toString());
+                  }
+                  return ???;
+                }
+              }
+            }
+          }
         }
       }
-      localObject7 = finally;
-      throw localObject7;
-    }
-    this.jdField_a_of_type_Int = this.jdField_b_of_type_JavaUtilArrayList.size();
-    Object localObject9;
-    for (;;)
-    {
-      synchronized (this.jdField_a_of_type_ArrayOfJavaLangObject)
-      {
-        localObject13 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-        if (!((Iterator)localObject13).hasNext()) {
-          break;
-        }
-        localObject14 = (VideoController.GAudioFriends)((Iterator)localObject13).next();
-        localObject9 = (VideoMemberInfo)((HashMap)localObject11).get(a(((VideoController.GAudioFriends)localObject14).jdField_a_of_type_Long, 1));
-        Object localObject3 = localObject9;
-        if (localObject9 == null) {
-          localObject3 = (VideoMemberInfo)((HashMap)localObject11).get(a(((VideoController.GAudioFriends)localObject14).jdField_a_of_type_Long, 2));
-        }
-        if (localObject3 == null) {
-          break label519;
-        }
-        if (((VideoMemberInfo)localObject3).b() != 2)
-        {
-          ((VideoMemberInfo)localObject3).jdField_b_of_type_Boolean = ((VideoController.GAudioFriends)localObject14).jdField_a_of_type_Boolean;
-          ((VideoMemberInfo)localObject3).jdField_a_of_type_Int = ((VideoController.GAudioFriends)localObject14).d;
-          ((VideoMemberInfo)localObject3).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = ((VideoController.GAudioFriends)localObject14).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo;
-          ((VideoMemberInfo)localObject3).d = ((VideoController.GAudioFriends)localObject14).e;
-          ((VideoMemberInfo)localObject3).e = ((VideoController.GAudioFriends)localObject14).f;
-        }
-      }
-      localObject4.jdField_b_of_type_Boolean = false;
-      continue;
-      label519:
-      ??? = new VideoMemberInfo();
-      ((VideoMemberInfo)???).jdField_a_of_type_Long = ((VideoController.GAudioFriends)localObject14).jdField_a_of_type_Long;
-      ((VideoMemberInfo)???).jdField_b_of_type_Int = 0;
-      ((VideoMemberInfo)???).f = false;
-      ((VideoMemberInfo)???).jdField_a_of_type_Boolean = ((VideoController.GAudioFriends)localObject14).h;
-      ((VideoMemberInfo)???).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo = ((VideoController.GAudioFriends)localObject14).jdField_a_of_type_ComTencentAvGaudioAVPhoneUserInfo;
-      ((VideoMemberInfo)???).jdField_b_of_type_Boolean = ((VideoController.GAudioFriends)localObject14).jdField_a_of_type_Boolean;
-      ((VideoMemberInfo)???).jdField_a_of_type_Int = ((VideoController.GAudioFriends)localObject14).d;
-      ((VideoMemberInfo)???).d = ((VideoController.GAudioFriends)localObject14).e;
-      ((VideoMemberInfo)???).e = ((VideoController.GAudioFriends)localObject14).f;
-      this.jdField_b_of_type_JavaUtilArrayList.add(???);
-    }
-    ??? = this.jdField_b_of_type_JavaUtilArrayList.iterator();
-    while (((Iterator)???).hasNext())
-    {
-      localObject9 = (VideoMemberInfo)((Iterator)???).next();
-      localObject11 = this.jdField_a_of_type_ComTencentAvUiVideoLayerUI.a(((VideoMemberInfo)localObject9).jdField_a_of_type_Long);
-      if (localObject11 != null)
-      {
-        ((VideoMemberInfo)localObject9).jdField_b_of_type_Boolean = ((VideoMemberInfo)localObject11).jdField_b_of_type_Boolean;
-        ((VideoMemberInfo)localObject9).d = ((VideoMemberInfo)localObject11).d;
-      }
-    }
-    label702:
-    synchronized (this.jdField_c_of_type_ArrayOfJavaLangObject)
-    {
-      localObject9 = (ArrayList)this.jdField_b_of_type_JavaUtilArrayList.clone();
-      if (QLog.isColorLevel()) {
-        QLog.d(jdField_a_of_type_JavaLangString, 1, "getVideoViewList listSort exceedMaxNumber cost" + (System.currentTimeMillis() - l));
-      }
-      return localObject9;
     }
   }
   
@@ -221,14 +222,12 @@ public final class VideoTalkMemberManager
     {
       this.jdField_a_of_type_Boolean = false;
       this.jdField_a_of_type_JavaUtilArrayList.clear();
-    }
-    synchronized (this.jdField_c_of_type_ArrayOfJavaLangObject)
-    {
-      this.jdField_b_of_type_JavaUtilArrayList.clear();
-      this.d = true;
-      return;
-      localObject1 = finally;
-      throw localObject1;
+      synchronized (this.jdField_c_of_type_ArrayOfJavaLangObject)
+      {
+        this.jdField_b_of_type_JavaUtilArrayList.clear();
+        this.d = true;
+        return;
+      }
     }
   }
   
@@ -246,7 +245,7 @@ public final class VideoTalkMemberManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoTalkMemberManager
  * JD-Core Version:    0.7.0.1
  */

@@ -14,10 +14,10 @@ class SensorJsPlugin$4
     try
     {
       SensorJsPlugin.access$000(this.this$0);
-      JSONObject localJSONObject1 = new JSONObject(this.val$req.jsonParams);
-      if (localJSONObject1.optBoolean("enable"))
+      JSONObject localJSONObject = new JSONObject(this.val$req.jsonParams);
+      if (localJSONObject.optBoolean("enable"))
       {
-        int i = this.this$0.getInterval(localJSONObject1);
+        int i = this.this$0.getInterval(localJSONObject);
         if (this.this$0.startRotationListening(this.val$req.jsService, i))
         {
           this.val$req.ok();
@@ -26,22 +26,25 @@ class SensorJsPlugin$4
         this.val$req.fail();
         return;
       }
+      this.this$0.stopRotationListening();
+      this.val$req.ok();
+      localJSONObject = new JSONObject();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$req.event);
+      localStringBuilder.append(":cancel");
+      localJSONObject.put("errMsg", localStringBuilder.toString());
+      this.val$req.evaluateCallbackJs(localJSONObject.toString());
+      return;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      return;
     }
-    this.this$0.stopRotationListening();
-    this.val$req.ok();
-    JSONObject localJSONObject2 = new JSONObject();
-    localJSONObject2.put("errMsg", this.val$req.event + ":cancel");
-    this.val$req.evaluateCallbackJs(localJSONObject2.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.SensorJsPlugin.4
  * JD-Core Version:    0.7.0.1
  */

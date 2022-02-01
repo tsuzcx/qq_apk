@@ -20,8 +20,12 @@ public class LoadingStateManager
     if (NetConnInfoCenter.socketConnState == 4) {
       this.jdField_a_of_type_Int = 2;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("LoadingStateManager", 2, "LoadingStateManager init loadingstate = " + this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("LoadingStateManager init loadingstate = ");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.d("LoadingStateManager", 2, localStringBuilder.toString());
     }
   }
   
@@ -50,27 +54,33 @@ public class LoadingStateManager
   
   public void a(FromServiceMsg paramFromServiceMsg, QQAppInterface paramQQAppInterface)
   {
-    if ((paramFromServiceMsg == null) || (paramFromServiceMsg.getAttribute("_tag_socket") == null)) {}
-    do
+    if (paramFromServiceMsg != null)
     {
-      do
+      if (paramFromServiceMsg.getAttribute("_tag_socket") == null) {
+        return;
+      }
+      if (QLog.isColorLevel())
       {
-        do
-        {
-          return;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork mShowIllegalNetworkBar=" + this.jdField_a_of_type_Boolean);
-            QLog.d("LoadingStateManager", 2, "changeConversationLoadingState mShowErrorNetworkBar=" + this.b);
-          }
-        } while ((!this.jdField_a_of_type_Boolean) && (!this.b));
-        if (!this.b) {
-          break;
-        }
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("notifyIsNotIllegalNetWork mShowIllegalNetworkBar=");
+        paramFromServiceMsg.append(this.jdField_a_of_type_Boolean);
+        QLog.d("LoadingStateManager", 2, paramFromServiceMsg.toString());
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("changeConversationLoadingState mShowErrorNetworkBar=");
+        paramFromServiceMsg.append(this.b);
+        QLog.d("LoadingStateManager", 2, paramFromServiceMsg.toString());
+      }
+      if ((!this.jdField_a_of_type_Boolean) && (!this.b)) {
+        return;
+      }
+      if (this.b)
+      {
         paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
-      } while (paramFromServiceMsg == null);
-      paramFromServiceMsg.obtainMessage(10002, null).sendToTarget();
-      return;
+        if (paramFromServiceMsg != null) {
+          paramFromServiceMsg.obtainMessage(10002, null).sendToTarget();
+        }
+        return;
+      }
       if (!c()) {
         a(0);
       }
@@ -78,8 +88,10 @@ public class LoadingStateManager
         QLog.d("LoadingStateManager", 2, "notifyIsNotIllegalNetWork");
       }
       paramFromServiceMsg = paramQQAppInterface.getHandler(Conversation.class);
-    } while (paramFromServiceMsg == null);
-    paramFromServiceMsg.obtainMessage(1134012, null).sendToTarget();
+      if (paramFromServiceMsg != null) {
+        paramFromServiceMsg.obtainMessage(1134012, null).sendToTarget();
+      }
+    }
   }
   
   public void a(boolean paramBoolean)
@@ -99,7 +111,16 @@ public class LoadingStateManager
   
   public boolean b()
   {
-    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 2);
+    int i = this.jdField_a_of_type_Int;
+    boolean bool = true;
+    if (i != 1)
+    {
+      if (i == 2) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public boolean c()
@@ -114,7 +135,7 @@ public class LoadingStateManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.managers.LoadingStateManager
  * JD-Core Version:    0.7.0.1
  */

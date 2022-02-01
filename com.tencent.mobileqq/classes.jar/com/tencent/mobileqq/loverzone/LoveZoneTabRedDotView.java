@@ -15,11 +15,12 @@ import android.view.View;
 import android.view.View.MeasureSpec;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qzonehub.api.zipanimate.IZipAnimationDrawable;
 import common.config.service.QzoneConfig;
-import cooperation.qzone.zipanimate.ZipAnimationDrawable;
 import org.json.JSONObject;
 
 public class LoveZoneTabRedDotView
@@ -31,7 +32,7 @@ public class LoveZoneTabRedDotView
   private Paint jdField_a_of_type_AndroidGraphicsPaint;
   private Rect jdField_a_of_type_AndroidGraphicsRect;
   private Drawable.Callback jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback = new LoveZoneTabRedDotView.1(this);
-  private ZipAnimationDrawable jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable;
+  private Drawable jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   public boolean a;
   private String b = "";
   
@@ -59,7 +60,7 @@ public class LoveZoneTabRedDotView
       paramAppInfo = paramAppInfo.buffer.get();
       try
       {
-        Object localObject = new JSONObject(paramAppInfo);
+        localObject = new JSONObject(paramAppInfo);
         paramAppInfo = ((JSONObject)localObject).optJSONObject("param");
         localObject = ((JSONObject)localObject).optString("_show_mission");
         if ((paramAppInfo != null) && (!TextUtils.isEmpty((CharSequence)localObject)))
@@ -77,7 +78,10 @@ public class LoveZoneTabRedDotView
       }
       catch (Exception paramAppInfo)
       {
-        QLog.e("LoveZoneTabRedDotView", 1, "buffer handle exception:" + paramAppInfo);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("buffer handle exception:");
+        ((StringBuilder)localObject).append(paramAppInfo);
+        QLog.e("LoveZoneTabRedDotView", 1, ((StringBuilder)localObject).toString());
         paramAppInfo.printStackTrace();
       }
     }
@@ -90,11 +94,11 @@ public class LoveZoneTabRedDotView
     {
       this.jdField_a_of_type_Boolean = false;
       setVisibility(8);
-      if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable != null)
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
-        this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.stop();
-        this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.release();
-        this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable = null;
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).stop(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).release(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = null;
       }
     }
   }
@@ -103,45 +107,47 @@ public class LoveZoneTabRedDotView
   {
     if ((this.jdField_a_of_type_Boolean) && (getVisibility() == 0))
     {
-      if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable == null) {
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+      {
         requestLayout();
+        return;
       }
+      ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).restartAnimation(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.restartAnimation();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_AndroidGraphicsRect == null) || (this.jdField_a_of_type_AndroidGraphicsPaint == null) || (TextUtils.isEmpty(this.b))) {
-      return;
-    }
-    paramCanvas.save();
-    Drawable localDrawable = getResources().getDrawable(2130846360);
-    localDrawable.getBounds();
-    localDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
-    localDrawable.draw(paramCanvas);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
-    paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.b(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
-    if (this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable == null)
+    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_AndroidGraphicsRect != null) && (this.jdField_a_of_type_AndroidGraphicsPaint != null))
     {
-      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable = new ZipAnimationDrawable();
-      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setAnimationRes(jdField_a_of_type_JavaLangString, 18);
-      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setRepeatAnimation(false);
-      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setShowLastFrameWhenStop(true);
-      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.loadAndShowFirstFrame();
-      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
-      this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.start();
+      if (TextUtils.isEmpty(this.b)) {
+        return;
+      }
+      paramCanvas.save();
+      Drawable localDrawable = getResources().getDrawable(2130846232);
+      localDrawable.getBounds();
+      localDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top, this.jdField_a_of_type_AndroidGraphicsRect.right, this.jdField_a_of_type_AndroidGraphicsRect.bottom);
+      localDrawable.draw(paramCanvas);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-1);
+      paramCanvas.drawText(this.b, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.b(25.0F), this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
+      if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null)
+      {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).getZipAnimationDrawable();
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setAnimationRes(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, jdField_a_of_type_JavaLangString, 18);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setRepeatAnimation(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, false);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).setShowLastFrameWhenStop(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable, true);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).loadAndShowFirstFrame(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setCallback(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable$Callback);
+        ((IZipAnimationDrawable)QRoute.api(IZipAnimationDrawable.class)).start(this.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+      }
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - ViewUtils.b(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.b(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + ViewUtils.b(25.0F) - ViewUtils.b(2.0F) * 3);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
+      paramCanvas.restore();
     }
-    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.setBounds(this.jdField_a_of_type_AndroidGraphicsRect.left, this.jdField_a_of_type_AndroidGraphicsRect.top - ViewUtils.b(2.0F) * 3, this.jdField_a_of_type_AndroidGraphicsRect.left + ViewUtils.b(25.0F), this.jdField_a_of_type_AndroidGraphicsRect.top + ViewUtils.b(25.0F) - ViewUtils.b(2.0F) * 3);
-    this.jdField_a_of_type_CooperationQzoneZipanimateZipAnimationDrawable.draw(paramCanvas);
-    paramCanvas.restore();
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
     if (TextUtils.isEmpty(this.b)) {
@@ -162,10 +168,11 @@ public class LoveZoneTabRedDotView
     if (this.jdField_a_of_type_AndroidGraphicsRect == null) {
       this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     }
-    this.jdField_a_of_type_AndroidGraphicsRect.left = 0;
-    this.jdField_a_of_type_AndroidGraphicsRect.top = j;
-    this.jdField_a_of_type_AndroidGraphicsRect.right = (paramInt1 + 0);
-    this.jdField_a_of_type_AndroidGraphicsRect.bottom = (i + k * 2 + j);
+    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    localRect.left = 0;
+    localRect.top = j;
+    localRect.right = (paramInt1 + 0);
+    localRect.bottom = (i + k * 2 + j);
     this.jdField_a_of_type_Float = (j + ViewUtils.b(2.0F) - localFontMetrics.top);
     setMeasuredDimension(paramInt1, paramInt2);
   }
@@ -178,19 +185,18 @@ public class LoveZoneTabRedDotView
       a();
       setVisibility(8);
     }
-    for (;;)
+    else
     {
-      invalidate();
-      return;
       setVisibility(0);
       requestLayout();
       b();
     }
+    invalidate();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loverzone.LoveZoneTabRedDotView
  * JD-Core Version:    0.7.0.1
  */

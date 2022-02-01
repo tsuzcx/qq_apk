@@ -22,16 +22,15 @@ class ARParticleFilter$ParticleCalculationHandler
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.isStopped) {}
-    int j;
-    List localList;
-    do
-    {
+    if (this.isStopped) {
       return;
-      j = paramMessage.what;
-      paramMessage = new ARParticleFilter.FrameData(this.this$0);
-      localList = ARParticleFilter.access$600(this.this$0).advance();
-    } while (localList == null);
+    }
+    int j = paramMessage.what;
+    paramMessage = new ARParticleFilter.FrameData(this.this$0);
+    List localList = ARParticleFilter.access$600(this.this$0).advance();
+    if (localList == null) {
+      return;
+    }
     int i = 0;
     while ((i < localList.size()) && (i < ARParticleFilter.access$100(this.this$0).size()) && (i < ARParticleFilter.access$200(this.this$0).size()))
     {
@@ -46,7 +45,13 @@ class ARParticleFilter$ParticleCalculationHandler
       localFrameParticleData1.particleSize = localFrameParticleData.particleSize;
       localFrameParticleData1.texCoords = localFrameParticleData.texCoords;
       localFrameParticleData1.particleColor = localFrameParticleData.particleColor;
-      localFrameParticleData1.audioPath = (ARParticleFilter.access$700(this.this$0) + File.separator + (String)ARParticleFilter.access$200(this.this$0).get(i) + File.separator + localSprite.audioPath);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ARParticleFilter.access$700(this.this$0));
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append((String)ARParticleFilter.access$200(this.this$0).get(i));
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(localSprite.audioPath);
+      localFrameParticleData1.audioPath = localStringBuilder.toString();
       if ((!paramMessage.needPlayMusic) && (!TextUtils.isEmpty(localFrameParticleData.audioPath))) {
         paramMessage.needPlayMusic = localFrameParticleData.playAudio;
       }
@@ -59,7 +64,7 @@ class ARParticleFilter$ParticleCalculationHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.ar.filter.ARParticleFilter.ParticleCalculationHandler
  * JD-Core Version:    0.7.0.1
  */

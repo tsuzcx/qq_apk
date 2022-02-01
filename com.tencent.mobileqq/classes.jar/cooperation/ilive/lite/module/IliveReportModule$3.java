@@ -1,23 +1,46 @@
 package cooperation.ilive.lite.module;
 
-import android.os.Handler;
-import androidx.lifecycle.Observer;
-import com.tencent.ilive.pages.room.events.ScrollBottomEvent;
-import com.tencent.mobileqq.app.ThreadManagerV2;
+import com.tencent.ilivesdk.roomservice.RoomDataServer;
+import com.tencent.ilivesdk.roomservice_interface.RoomServiceInterface;
+import com.tencent.ilivesdk.roomservice_interface.model.LiveRoomInfo;
+import com.tencent.livesdk.servicefactory.ServiceAccessor;
+import com.tencent.livesdk.servicefactory.ServiceAccessorMgr;
+import com.tencent.mobileqq.vas.VasStatisticCollector;
+import com.tencent.qphone.base.util.QLog;
+import cooperation.ilive.lite.service.IliveCustomRoomService;
+import kotlin.Pair;
 
 class IliveReportModule$3
-  implements Observer<ScrollBottomEvent>
+  implements Runnable
 {
-  IliveReportModule$3(IliveReportModule paramIliveReportModule) {}
+  IliveReportModule$3(IliveReportModule paramIliveReportModule, long paramLong) {}
   
-  public void a(ScrollBottomEvent paramScrollBottomEvent)
+  public void run()
   {
-    ThreadManagerV2.getUIHandlerV2().post(new IliveReportModule.3.1(this));
+    try
+    {
+      Object localObject = (RoomServiceInterface)ServiceAccessorMgr.getInstance().getRoomAccessor().getService(RoomServiceInterface.class);
+      if ((localObject != null) && ((localObject instanceof IliveCustomRoomService)))
+      {
+        QLog.e("IliveReportModule", 1, "handle requestExitRoom");
+        localObject = (IliveCustomRoomService)localObject;
+        VasStatisticCollector.b("lite_exit_sso", new Pair[0]);
+        LiveRoomInfo localLiveRoomInfo = new LiveRoomInfo();
+        localLiveRoomInfo.roomId = this.a;
+        RoomDataServer.requestExitRoom(((IliveCustomRoomService)localObject).a(), localLiveRoomInfo);
+        return;
+      }
+    }
+    catch (Throwable localThrowable)
+    {
+      localThrowable.printStackTrace();
+      QLog.e("IliveReportModule", 1, "requestExitRoom exception", localThrowable);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.lite.module.IliveReportModule.3
  * JD-Core Version:    0.7.0.1
  */

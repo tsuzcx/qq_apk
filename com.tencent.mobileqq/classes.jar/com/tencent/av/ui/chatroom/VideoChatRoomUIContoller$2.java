@@ -1,10 +1,10 @@
 package com.tencent.av.ui.chatroom;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class VideoChatRoomUIContoller$2
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   VideoChatRoomUIContoller$2(VideoChatRoomUIContoller paramVideoChatRoomUIContoller) {}
   
@@ -15,13 +15,23 @@ class VideoChatRoomUIContoller$2
     VideoChatRoomUIContoller.a(this.a).setVisibility(8);
   }
   
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
+  }
+  
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.VideoChatRoomUIContoller.2
  * JD-Core Version:    0.7.0.1
  */

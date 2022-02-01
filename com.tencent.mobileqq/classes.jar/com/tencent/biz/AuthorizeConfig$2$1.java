@@ -20,25 +20,34 @@ class AuthorizeConfig$2$1
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AuthorizeConfig", 2, "onReceive whitelist:" + paramBoolean);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive whitelist:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject).toString());
     }
     if (paramBoolean)
     {
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle != null)
+      localObject = paramBundle.getByteArray("data");
+      if (localObject != null)
       {
-        mobileqq_mp.WebviewWhiteListResponse localWebviewWhiteListResponse = new mobileqq_mp.WebviewWhiteListResponse();
+        paramBundle = new mobileqq_mp.WebviewWhiteListResponse();
         try
         {
-          localWebviewWhiteListResponse.mergeFrom(paramBundle);
-          paramInt = localWebviewWhiteListResponse.ret_info.ret_code.get();
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "sso status code: " + String.valueOf(paramInt));
+          paramBundle.mergeFrom((byte[])localObject);
+          paramInt = paramBundle.ret_info.ret_code.get();
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("sso status code: ");
+            ((StringBuilder)localObject).append(String.valueOf(paramInt));
+            QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject).toString());
           }
           if (paramInt == 0)
           {
-            ThreadManager.getSubThreadHandler().post(new AuthorizeConfig.2.1.1(this, localWebviewWhiteListResponse));
+            ThreadManager.getSubThreadHandler().post(new AuthorizeConfig.2.1.1(this, paramBundle));
             ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", "", "webview_whitelist", "update_success", 0, 1, 0, "", "", "", "");
             return;
           }
@@ -54,8 +63,12 @@ class AuthorizeConfig$2$1
         }
         catch (Exception paramBundle)
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("AuthorizeConfig", 2, "update error: " + paramBundle);
+          if (QLog.isColorLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("update error: ");
+            ((StringBuilder)localObject).append(paramBundle);
+            QLog.d("AuthorizeConfig", 2, ((StringBuilder)localObject).toString());
           }
         }
       }
@@ -68,7 +81,7 @@ class AuthorizeConfig$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.AuthorizeConfig.2.1
  * JD-Core Version:    0.7.0.1
  */

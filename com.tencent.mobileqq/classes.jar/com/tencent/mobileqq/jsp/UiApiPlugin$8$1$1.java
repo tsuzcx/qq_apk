@@ -26,7 +26,11 @@ class UiApiPlugin$8$1$1
     if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
     {
       Object localObject1 = new File(BaseApplicationImpl.getApplication().getCacheDir(), "ShareScreenShots");
-      Object localObject2 = "ShareScreenShot_" + System.currentTimeMillis() + ".jpg";
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("ShareScreenShot_");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis());
+      ((StringBuilder)localObject2).append(".jpg");
+      localObject2 = ((StringBuilder)localObject2).toString();
       localObject1 = ScreenShotUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject1, (String)localObject2);
       localObject2 = new Intent(this.jdField_a_of_type_ComTencentMobileqqJspUiApiPlugin$8$1.a.this$0.mRuntime.a(), ForwardRecentActivity.class);
       ((Intent)localObject2).putExtra("key_flag_from_plugin", true);
@@ -49,7 +53,7 @@ class UiApiPlugin$8$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.8.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -59,12 +59,18 @@ public class RectangleShape
   
   public String toString()
   {
-    return "RectangleShape{position=" + this.position + ", size=" + this.size + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RectangleShape{position=");
+    localStringBuilder.append(this.position);
+    localStringBuilder.append(", size=");
+    localStringBuilder.append(this.size);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.content.RectangleShape
  * JD-Core Version:    0.7.0.1
  */

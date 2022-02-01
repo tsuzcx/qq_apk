@@ -31,48 +31,73 @@ public class PAReportUtilImpl
   
   private static void reportClickEventRuntime(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, int paramInt1, int paramInt2, int paramInt3, String paramString6, String paramString7, String paramString8, List<String> paramList)
   {
-    if ((TextUtils.isEmpty(paramString6)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString1)) || (paramAppInterface == null))
+    if ((!TextUtils.isEmpty(paramString6)) && (!TextUtils.isEmpty(paramString2)) && (!TextUtils.isEmpty(paramString1)) && (paramAppInterface != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("PAReport", 2, "r2 or mainAction or tag or app is null");
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        int i = paramList.size();
+        if (i > 0)
+        {
+          ((StringBuilder)localObject1).append((String)paramList.get(0));
+          int j = 1;
+          while (j < i)
+          {
+            ((StringBuilder)localObject1).append("|");
+            ((StringBuilder)localObject1).append((String)paramList.get(j));
+            j += 1;
+          }
+        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("Reporting: ");
+        ((StringBuilder)localObject2).append(paramString1);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramString2);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramString3);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramString4);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramString5);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramInt1);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramInt2);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramInt3);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramString6);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramString7);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(paramString8);
+        ((StringBuilder)localObject2).append("|");
+        ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+        QLog.d("PAReport", 2, ((StringBuilder)localObject2).toString());
       }
+      Object localObject1 = new NewIntent(paramAppInterface.getApplication(), PublicAccountServletImpl.class);
+      ((NewIntent)localObject1).putExtra("cmd", "PubAccountAdSvc.");
+      Object localObject2 = new mobileqq_mp.ReportPublicAccountRequest();
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).tag.set(paramString1);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).mainAction.set(paramString2);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).toUin.set(paramString3);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).subAction.set(paramString4);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).actionName.set(paramString5);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).fromType.set(paramInt1);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).count.set(paramInt2);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).result.set(paramInt3);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).r2.set(paramString6);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).r3.set(paramString7);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).r4.set(paramString8);
+      ((mobileqq_mp.ReportPublicAccountRequest)localObject2).r5.set(paramList);
+      ((NewIntent)localObject1).putExtra("data", ((mobileqq_mp.ReportPublicAccountRequest)localObject2).toByteArray());
+      ((NewIntent)localObject1).setObserver(new PAReportUtilImpl.1(paramAppInterface, paramList, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8));
+      paramAppInterface.startServlet((NewIntent)localObject1);
       return;
     }
-    if (QLog.isColorLevel())
-    {
-      localObject = new StringBuilder();
-      int j = paramList.size();
-      if (j > 0)
-      {
-        ((StringBuilder)localObject).append((String)paramList.get(0));
-        int i = 1;
-        while (i < j)
-        {
-          ((StringBuilder)localObject).append("|");
-          ((StringBuilder)localObject).append((String)paramList.get(i));
-          i += 1;
-        }
-      }
-      QLog.d("PAReport", 2, "Reporting: " + paramString1 + "|" + paramString2 + "|" + paramString3 + "|" + paramString4 + "|" + paramString5 + "|" + paramInt1 + "|" + paramInt2 + "|" + paramInt3 + "|" + paramString6 + "|" + paramString7 + "|" + paramString8 + "|" + ((StringBuilder)localObject).toString());
+    if (QLog.isColorLevel()) {
+      QLog.d("PAReport", 2, "r2 or mainAction or tag or app is null");
     }
-    Object localObject = new NewIntent(paramAppInterface.getApplication(), PublicAccountServletImpl.class);
-    ((NewIntent)localObject).putExtra("cmd", "PubAccountAdSvc.");
-    mobileqq_mp.ReportPublicAccountRequest localReportPublicAccountRequest = new mobileqq_mp.ReportPublicAccountRequest();
-    localReportPublicAccountRequest.tag.set(paramString1);
-    localReportPublicAccountRequest.mainAction.set(paramString2);
-    localReportPublicAccountRequest.toUin.set(paramString3);
-    localReportPublicAccountRequest.subAction.set(paramString4);
-    localReportPublicAccountRequest.actionName.set(paramString5);
-    localReportPublicAccountRequest.fromType.set(paramInt1);
-    localReportPublicAccountRequest.count.set(paramInt2);
-    localReportPublicAccountRequest.result.set(paramInt3);
-    localReportPublicAccountRequest.r2.set(paramString6);
-    localReportPublicAccountRequest.r3.set(paramString7);
-    localReportPublicAccountRequest.r4.set(paramString8);
-    localReportPublicAccountRequest.r5.set(paramList);
-    ((NewIntent)localObject).putExtra("data", localReportPublicAccountRequest.toByteArray());
-    ((NewIntent)localObject).setObserver(new PAReportUtilImpl.1(paramAppInterface, paramList, paramString1, paramString2, paramString3, paramString4, paramString5, paramInt1, paramInt2, paramInt3, paramString6, paramString7, paramString8));
-    paramAppInterface.startServlet((NewIntent)localObject);
   }
   
   public void reportAdMsgArriveReceipt(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, List<String> paramList)
@@ -89,75 +114,80 @@ public class PAReportUtilImpl
       localJSONObject.put("q_user_agent", str);
       localJSONObject.put("gdt_imp_data", paramString4);
       localJSONObject.put("view_id", paramString5);
-      reportClickEventRuntime(paramAppInterface, "P_CliOper", "Pb_account_lifeservice", paramAppInterface.getAccount(), paramString1, paramString2, 0, 1, 0, "send_ad_receipt", String.valueOf(l * 1000L), localJSONObject.toString(), paramList);
-      return;
     }
     catch (JSONException paramString3)
     {
-      for (;;)
-      {
-        paramString3.printStackTrace();
-      }
+      paramString3.printStackTrace();
     }
+    reportClickEventRuntime(paramAppInterface, "P_CliOper", "Pb_account_lifeservice", paramAppInterface.getAccount(), paramString1, paramString2, 0, 1, 0, "send_ad_receipt", String.valueOf(l * 1000L), localJSONObject.toString(), paramList);
   }
   
   public void reportAdMsgRead(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3, List<String> paramList1, List<String> paramList2, List<String> paramList3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reportAdMsgRead report msgId size = " + paramList2.size());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportAdMsgRead report msgId size = ");
+      ((StringBuilder)localObject).append(paramList2.size());
+      QLog.d("PAReport", 2, ((StringBuilder)localObject).toString());
     }
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONObject();
     try
     {
       String str1 = AppSetting.e();
-      String str2 = MobileInfoUtil.a();
-      String str3 = MobileInfoUtil.d();
+      String str2 = MobileInfoUtil.getLocalMacAddress();
+      String str3 = MobileInfoUtil.getImsi();
       String str4 = Settings.Secure.getString(paramAppInterface.getApp().getContentResolver(), "android_id");
-      String str5 = MobileInfoUtil.c();
+      String str5 = MobileInfoUtil.getImei();
       JSONArray localJSONArray = new JSONArray();
-      int j = paramList1.size();
+      int k = paramList1.size();
+      int j = 0;
       int i = 0;
-      while (i < j)
+      while (i < k)
       {
         localJSONArray.put(i, paramList1.get(i));
         i += 1;
       }
-      localJSONObject.put("puin", paramString3);
-      localJSONObject.put("q_user_agent", str1);
-      localJSONObject.put("hardware_addr", str2);
-      localJSONObject.put("mobile_imsi", str3);
-      localJSONObject.put("mobile_android_id", str4);
-      localJSONObject.put("mobile_imei", str5);
-      localJSONObject.put("gdt_cli_data", localJSONArray);
+      ((JSONObject)localObject).put("puin", paramString3);
+      ((JSONObject)localObject).put("q_user_agent", str1);
+      ((JSONObject)localObject).put("hardware_addr", str2);
+      ((JSONObject)localObject).put("mobile_imsi", str3);
+      ((JSONObject)localObject).put("mobile_android_id", str4);
+      ((JSONObject)localObject).put("mobile_imei", str5);
+      ((JSONObject)localObject).put("gdt_cli_data", localJSONArray);
       paramString3 = new JSONArray();
-      j = paramList3.size();
-      i = 0;
-      while (i < j)
+      k = paramList3.size();
+      i = j;
+      while (i < k)
       {
         paramString3.put(i, paramList3.get(i));
         i += 1;
       }
-      localJSONObject.put("view_id", paramString3);
+      ((JSONObject)localObject).put("view_id", paramString3);
     }
     catch (JSONException paramString3)
     {
-      for (;;)
-      {
-        long l;
-        paramString3.printStackTrace();
-      }
+      paramString3.printStackTrace();
     }
-    l = NetConnInfoCenter.getServerTime();
-    reportClickEventRuntime(paramAppInterface, "P_CliOper", "Pb_account_lifeservice", paramAppInterface.getAccount(), paramString1, paramString2, 0, 1, 0, "read_ad_msg", String.valueOf(l * 1000L), localJSONObject.toString(), paramList2);
+    long l = NetConnInfoCenter.getServerTime();
+    reportClickEventRuntime(paramAppInterface, "P_CliOper", "Pb_account_lifeservice", paramAppInterface.getAccount(), paramString1, paramString2, 0, 1, 0, "read_ad_msg", String.valueOf(l * 1000L), ((JSONObject)localObject).toString(), paramList2);
   }
   
   public void reportClickEventForAdver(AppInterface paramAppInterface, String paramString1, String paramString2, String paramString3)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PAReport", 2, "reportClickEventForAdver send: " + paramString1 + "r4:" + paramString2 + "r5:" + paramString3);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportClickEventForAdver send: ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("r4:");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("r5:");
+      ((StringBuilder)localObject).append(paramString3);
+      QLog.d("PAReport", 2, ((StringBuilder)localObject).toString());
     }
-    NewIntent localNewIntent = new NewIntent(paramAppInterface.getApplication(), PublicAccountServletImpl.class);
-    localNewIntent.putExtra("cmd", "PubAccountAdSvc.");
+    Object localObject = new NewIntent(paramAppInterface.getApplication(), PublicAccountServletImpl.class);
+    ((NewIntent)localObject).putExtra("cmd", "PubAccountAdSvc.");
     mobileqq_mp.ReportPublicAccountRequest localReportPublicAccountRequest = new mobileqq_mp.ReportPublicAccountRequest();
     localReportPublicAccountRequest.tag.set("P_CliOper");
     localReportPublicAccountRequest.mainAction.set("Pb_account_lifeservice");
@@ -174,14 +204,14 @@ public class PAReportUtilImpl
     paramString1 = new ArrayList();
     paramString1.add(paramString3);
     localReportPublicAccountRequest.r5.set(paramString1);
-    localNewIntent.putExtra("data", localReportPublicAccountRequest.toByteArray());
-    localNewIntent.setObserver(new PAReportUtilImpl.2(this));
-    paramAppInterface.startServlet(localNewIntent);
+    ((NewIntent)localObject).putExtra("data", localReportPublicAccountRequest.toByteArray());
+    ((NewIntent)localObject).setObserver(new PAReportUtilImpl.2(this));
+    paramAppInterface.startServlet((NewIntent)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PAReportUtilImpl
  * JD-Core Version:    0.7.0.1
  */

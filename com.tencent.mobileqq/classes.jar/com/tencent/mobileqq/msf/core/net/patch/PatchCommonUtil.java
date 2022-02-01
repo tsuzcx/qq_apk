@@ -16,16 +16,22 @@ public class PatchCommonUtil
     if (TextUtils.isEmpty(paramContext)) {
       return "/data/data/com.tencent.mobileqq/files/hotpatch";
     }
-    return paramContext + File.separator + "hotpatch";
+    paramContext = new StringBuilder(paramContext);
+    paramContext.append(File.separator);
+    paramContext.append("hotpatch");
+    return paramContext.toString();
   }
   
   public static String getPatchPath(String paramString)
   {
-    String str = getPatchDirPath(BaseApplication.getContext());
+    Object localObject = getPatchDirPath(BaseApplication.getContext());
     if (TextUtils.isEmpty(paramString)) {
-      return str;
+      return localObject;
     }
-    return str + File.separator + paramString;
+    localObject = new StringBuilder((String)localObject);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(paramString);
+    return ((StringBuilder)localObject).toString();
   }
   
   public static boolean isArtGeN()
@@ -50,7 +56,7 @@ public class PatchCommonUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.net.patch.PatchCommonUtil
  * JD-Core Version:    0.7.0.1
  */

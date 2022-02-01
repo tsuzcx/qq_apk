@@ -12,12 +12,15 @@ import org.json.JSONObject;
 public class QZoneLauncher
   implements ILauncher
 {
+  public int getType()
+  {
+    return 17170432;
+  }
+  
   public void launch(Context paramContext, ColorNote paramColorNote)
   {
     Object localObject1 = paramColorNote.getSubType();
-    if (((String)localObject1).startsWith("qzone_detail")) {}
-    do
-    {
+    if (((String)localObject1).startsWith("qzone_detail")) {
       try
       {
         Object localObject2 = new JSONObject(new String(paramColorNote.getReserve()));
@@ -27,13 +30,18 @@ public class QZoneLauncher
         long l = ((JSONObject)localObject2).getLong("uin");
         ((JSONObject)localObject2).getString("source");
         boolean bool = ((JSONObject)localObject2).getBoolean("mIsFromKuolie");
-        String str = ((JSONObject)localObject2).getString("mainTitle");
-        localObject2 = ((JSONObject)localObject2).getString("subType");
-        Bundle localBundle = new Bundle();
-        localBundle.putBoolean("req_from_kuolie", bool);
-        localBundle.putString("mainTitle", str);
-        localBundle.putString("subType", (String)localObject2);
-        QZoneHelper.forwardToDetail(paramContext, QZoneHelper.UserInfo.getInstance(), Long.valueOf(l).toString(), i + "", paramColorNote, (String)localObject1, 0, localBundle, true, true);
+        Object localObject3 = ((JSONObject)localObject2).getString("mainTitle");
+        String str = ((JSONObject)localObject2).getString("subType");
+        localObject2 = new Bundle();
+        ((Bundle)localObject2).putBoolean("req_from_kuolie", bool);
+        ((Bundle)localObject2).putString("mainTitle", (String)localObject3);
+        ((Bundle)localObject2).putString("subType", str);
+        localObject3 = QZoneHelper.UserInfo.getInstance();
+        str = Long.valueOf(l).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(i);
+        localStringBuilder.append("");
+        QZoneHelper.forwardToDetail(paramContext, (QZoneHelper.UserInfo)localObject3, str, localStringBuilder.toString(), paramColorNote, (String)localObject1, 0, (Bundle)localObject2, true, true);
         return;
       }
       catch (JSONException paramContext)
@@ -41,37 +49,41 @@ public class QZoneLauncher
         QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
         return;
       }
-      if (((String)localObject1).startsWith("qzone_userhome")) {
-        try
-        {
-          paramColorNote = new JSONObject(new String(paramColorNote.getReserve())).getString("visitUin");
-          QZoneHelper.forwardToUserHome(paramContext, QZoneHelper.UserInfo.getInstance(), paramColorNote, 0, 0, 0, null, null, true);
-          return;
-        }
-        catch (JSONException paramContext)
-        {
-          QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
-          return;
-        }
-      }
-    } while (!((String)localObject1).startsWith("qzone_famous_userhome"));
-    try
-    {
-      localObject1 = new JSONObject(new String(paramColorNote.getReserve()));
-      paramColorNote = ((JSONObject)localObject1).getString("visitUin");
-      localObject1 = ((JSONObject)localObject1).getString("webviewUrl");
-      QZoneHelper.forwardToFamousUserHome(paramContext, QZoneHelper.UserInfo.getInstance(), paramColorNote, 0, 0, null, (String)localObject1, true);
-      return;
     }
-    catch (JSONException paramContext)
-    {
-      QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+    if (((String)localObject1).startsWith("qzone_userhome")) {
+      try
+      {
+        paramColorNote = new JSONObject(new String(paramColorNote.getReserve())).getString("visitUin");
+        QZoneHelper.forwardToUserHome(paramContext, QZoneHelper.UserInfo.getInstance(), paramColorNote, 0, 0, 0, null, null, true);
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+        return;
+      }
+    }
+    if (((String)localObject1).startsWith("qzone_famous_userhome")) {
+      try
+      {
+        localObject1 = new JSONObject(new String(paramColorNote.getReserve()));
+        paramColorNote = ((JSONObject)localObject1).getString("visitUin");
+        localObject1 = ((JSONObject)localObject1).getString("webviewUrl");
+        QZoneHelper.forwardToFamousUserHome(paramContext, QZoneHelper.UserInfo.getInstance(), paramColorNote, 0, 0, null, (String)localObject1, true);
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        QLog.e("QZoneLauncher", 1, paramContext, new Object[0]);
+      }
     }
   }
+  
+  public void onCreate(Context paramContext, ColorNote paramColorNote, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.launcher.QZoneLauncher
  * JD-Core Version:    0.7.0.1
  */

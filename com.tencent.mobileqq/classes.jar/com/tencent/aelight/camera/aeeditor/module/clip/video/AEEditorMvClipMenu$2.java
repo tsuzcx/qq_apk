@@ -1,0 +1,23 @@
+package com.tencent.aelight.camera.aeeditor.module.clip.video;
+
+import android.view.View;
+import android.view.View.OnClickListener;
+
+class AEEditorMvClipMenu$2
+  implements View.OnClickListener
+{
+  AEEditorMvClipMenu$2(AEEditorMvClipMenu paramAEEditorMvClipMenu) {}
+  
+  public void onClick(View paramView)
+  {
+    if (AEEditorMvClipMenu.a(this.a) != null) {
+      AEEditorMvClipMenu.a(this.a).a();
+    }
+  }
+}
+
+
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.aelight.camera.aeeditor.module.clip.video.AEEditorMvClipMenu.2
+ * JD-Core Version:    0.7.0.1
+ */

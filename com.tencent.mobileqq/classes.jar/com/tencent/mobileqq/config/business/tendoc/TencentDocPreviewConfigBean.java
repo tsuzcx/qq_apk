@@ -14,25 +14,27 @@ public class TencentDocPreviewConfigBean
   
   public static TencentDocPreviewConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      return null;
-    }
-    localTencentDocPreviewConfigBean = new TencentDocPreviewConfigBean();
-    try
+    TencentDocPreviewConfigBean localTencentDocPreviewConfigBean;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
-      Iterator localIterator = paramArrayOfQConfItem.keys();
-      while (localIterator.hasNext())
+      localTencentDocPreviewConfigBean = new TencentDocPreviewConfigBean();
+      try
       {
-        String str = (String)localIterator.next();
-        localTencentDocPreviewConfigBean.a.put(str, Long.valueOf(paramArrayOfQConfItem.getLong(str)));
+        paramArrayOfQConfItem = new JSONObject(paramArrayOfQConfItem[0].a);
+        Iterator localIterator = paramArrayOfQConfItem.keys();
+        while (localIterator.hasNext())
+        {
+          String str = (String)localIterator.next();
+          localTencentDocPreviewConfigBean.a.put(str, Long.valueOf(paramArrayOfQConfItem.getLong(str)));
+        }
+        return localTencentDocPreviewConfigBean;
       }
-      return localTencentDocPreviewConfigBean;
+      catch (JSONException paramArrayOfQConfItem)
+      {
+        QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfQConfItem.getLocalizedMessage(), paramArrayOfQConfItem);
+      }
     }
-    catch (JSONException paramArrayOfQConfItem)
-    {
-      QLog.e("TencentDocPreviewConfigBean", 1, paramArrayOfQConfItem.getLocalizedMessage(), paramArrayOfQConfItem);
-    }
+    return null;
   }
   
   public Map<String, Long> a()
@@ -42,7 +44,7 @@ public class TencentDocPreviewConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocPreviewConfigBean
  * JD-Core Version:    0.7.0.1
  */

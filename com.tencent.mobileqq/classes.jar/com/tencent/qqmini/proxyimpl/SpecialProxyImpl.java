@@ -16,54 +16,59 @@ public class SpecialProxyImpl
 {
   private void a(Bundle paramBundle, SpecialProxy.EventCallback paramEventCallback)
   {
-    if (paramBundle == null) {
+    if (paramBundle == null)
+    {
       if (paramEventCallback != null) {
         paramEventCallback.onResult(false, null);
       }
-    }
-    do
-    {
-      do
-      {
-        return;
-        paramBundle.setClassLoader(MiniAppInfo.class.getClassLoader());
-        paramBundle = MiniSdkUtil.a((MiniAppInfo)paramBundle.getParcelable("mini_appinfo"));
-        if (paramBundle != null) {
-          break;
-        }
-      } while (paramEventCallback == null);
-      paramEventCallback.onResult(false, null);
       return;
-      MiniAppUtils.notityPullDownEntryInMainProcess(paramBundle);
-    } while (paramEventCallback == null);
-    paramEventCallback.onResult(true, null);
+    }
+    paramBundle.setClassLoader(MiniAppInfo.class.getClassLoader());
+    paramBundle = MiniSdkUtil.a((MiniAppInfo)paramBundle.getParcelable("mini_appinfo"));
+    if (paramBundle == null)
+    {
+      if (paramEventCallback != null) {
+        paramEventCallback.onResult(false, null);
+      }
+      return;
+    }
+    MiniAppUtils.notityPullDownEntryInMainProcess(paramBundle);
+    if (paramEventCallback != null) {
+      paramEventCallback.onResult(true, null);
+    }
   }
   
   private void b(Bundle paramBundle, SpecialProxy.EventCallback paramEventCallback)
   {
-    if (paramBundle == null) {
+    if (paramBundle == null)
+    {
       if (paramEventCallback != null) {
         paramEventCallback.onResult(false, null);
       }
-    }
-    do
-    {
       return;
-      paramBundle.setClassLoader(MiniAppInfo.class.getClassLoader());
-      paramBundle = (NetworkTimeoutInfo)paramBundle.getParcelable("NetworkTimeOutInfo");
-      if (paramBundle != null) {
-        break;
+    }
+    paramBundle.setClassLoader(MiniAppInfo.class.getClassLoader());
+    paramBundle = (NetworkTimeoutInfo)paramBundle.getParcelable("NetworkTimeOutInfo");
+    if (paramBundle == null)
+    {
+      if (paramEventCallback != null) {
+        paramEventCallback.onResult(false, null);
       }
-    } while (paramEventCallback == null);
-    paramEventCallback.onResult(false, null);
-    return;
-    QLog.e("SpecialProxyImpl", 1, "Specialproxy onInitNetworkInfo :" + paramBundle.toString());
+      return;
+    }
+    paramEventCallback = new StringBuilder();
+    paramEventCallback.append("Specialproxy onInitNetworkInfo :");
+    paramEventCallback.append(paramBundle.toString());
+    QLog.e("SpecialProxyImpl", 1, paramEventCallback.toString());
     MiniOkHttpClientFactory.init(paramBundle.request, paramBundle.uploadFile, paramBundle.downloadFile);
   }
   
   public boolean sendEventToHost(int paramInt, Bundle paramBundle, SpecialProxy.EventCallback paramEventCallback)
   {
-    QLog.i("SpecialProxyImpl", 1, "receive event from minisdk, event:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("receive event from minisdk, event:");
+    localStringBuilder.append(paramInt);
+    QLog.i("SpecialProxyImpl", 1, localStringBuilder.toString());
     if (1 == paramInt) {}
     try
     {
@@ -72,19 +77,21 @@ public class SpecialProxyImpl
     }
     catch (Throwable paramBundle)
     {
-      QLog.e("SpecialProxyImpl", 1, "exception when receive event from minisdk", paramBundle);
+      label61:
+      break label61;
     }
     if (2 == paramInt)
     {
       b(paramBundle, paramEventCallback);
       return true;
+      QLog.e("SpecialProxyImpl", 1, "exception when receive event from minisdk", paramBundle);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.SpecialProxyImpl
  * JD-Core Version:    0.7.0.1
  */

@@ -9,16 +9,22 @@ import com.tencent.mobileqq.pb.PBStringField;
 public final class QWalletPubAdReport$ReportReq
   extends MessageMicro<ReportReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42 }, new String[] { "uin", "pskey", "ad_reslut", "channel", "terminal_infor" }, new Object[] { "", "", Integer.valueOf(0), Integer.valueOf(0), null }, ReportReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBInt32Field ad_reslut = PBField.initInt32(0);
   public final PBInt32Field channel = PBField.initInt32(0);
   public final PBStringField pskey = PBField.initString("");
   public QWalletPubAdReport.TerminalInfor terminal_infor = new QWalletPubAdReport.TerminalInfor();
   public final PBStringField uin = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 42 }, new String[] { "uin", "pskey", "ad_reslut", "channel", "terminal_infor" }, new Object[] { "", "", localInteger, localInteger, null }, ReportReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.qqwallet.QWalletPubAdReport.ReportReq
  * JD-Core Version:    0.7.0.1
  */

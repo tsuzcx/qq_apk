@@ -39,7 +39,10 @@ public class u
     int i = 0;
     while (i < 12)
     {
-      str = str + String.valueOf(localRandom.nextInt(10));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(String.valueOf(localRandom.nextInt(10)));
+      str = localStringBuilder.toString();
       i += 1;
     }
     return str;
@@ -103,10 +106,11 @@ public class u
         QLog.d(paramString, 1, String.format("requestPartialWakeLock tag=%s timeout=%s", new Object[] { paramString, Long.valueOf(paramLong) }));
       }
       PowerManager localPowerManager = (PowerManager)BaseApplication.getContext().getSystemService("power");
-      if (localPowerManager != null) {
+      if (localPowerManager != null)
+      {
         localPowerManager.newWakeLock(1, paramString).acquire(paramLong);
+        return;
       }
-      return;
     }
     catch (Throwable localThrowable)
     {
@@ -124,38 +128,45 @@ public class u
   
   public static boolean b()
   {
-    for (;;)
+    try
     {
-      try
+      List localList = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
+      if (localList == null)
       {
-        Object localObject = ((ActivityManager)BaseApplication.getContext().getSystemService("activity")).getRunningAppProcesses();
-        if (localObject == null)
+        if (QLog.isColorLevel())
         {
-          if (!QLog.isColorLevel()) {
-            break;
-          }
           QLog.d("MSF.S.Util", 2, "can not load appProcesses.");
-          break;
+          return false;
         }
-        String str = MsfSdkUtils.getProcessName(BaseApplication.getContext());
-        if ((str != null) && (str.indexOf(":") > 0))
+      }
+      else
+      {
+        localObject2 = MsfSdkUtils.getProcessName(BaseApplication.getContext());
+        Object localObject1 = localObject2;
+        if (localObject2 != null)
         {
-          str = str.substring(0, str.indexOf(":"));
-          localObject = ((List)localObject).iterator();
-          if (!((Iterator)localObject).hasNext()) {
-            break;
+          localObject1 = localObject2;
+          if (((String)localObject2).indexOf(":") > 0) {
+            localObject1 = ((String)localObject2).substring(0, ((String)localObject2).indexOf(":"));
           }
-          boolean bool = ((ActivityManager.RunningAppProcessInfo)((Iterator)localObject).next()).processName.equals(str);
+        }
+        localObject2 = localList.iterator();
+        while (((Iterator)localObject2).hasNext())
+        {
+          boolean bool = ((ActivityManager.RunningAppProcessInfo)((Iterator)localObject2).next()).processName.equals(localObject1);
           if (bool) {
             return true;
           }
         }
       }
-      catch (Exception localException)
-      {
-        QLog.d("MSF.S.Util", 1, "check isMainProcessRunning error " + localException);
-        return false;
-      }
+      return false;
+    }
+    catch (Exception localException)
+    {
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("check isMainProcessRunning error ");
+      ((StringBuilder)localObject2).append(localException);
+      QLog.d("MSF.S.Util", 1, ((StringBuilder)localObject2).toString());
     }
     return false;
   }
@@ -163,16 +174,15 @@ public class u
   public static String c()
   {
     c localc = e.a(BaseApplication.getContext().getPackageName());
-    String str = "com.tencent.mobileqq.broadcast.qq";
     if (localc != null) {
-      str = localc.b();
+      return localc.b();
     }
-    return str;
+    return "com.tencent.mobileqq.broadcast.qq";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.u
  * JD-Core Version:    0.7.0.1
  */

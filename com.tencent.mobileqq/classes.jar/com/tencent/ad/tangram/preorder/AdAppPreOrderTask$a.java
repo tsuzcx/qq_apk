@@ -19,18 +19,18 @@ public final class AdAppPreOrderTask$a
   
   public static int getIndex(int paramInt)
   {
-    if ((paramInt < 12) || (paramInt > AdAppPreOrderTask.Status.QQREMINDER_END)) {
-      return -2147483648;
+    if ((paramInt >= 12) && (paramInt <= AdAppPreOrderTask.Status.QQREMINDER_END)) {
+      return (paramInt - 12) / 7;
     }
-    return (paramInt - 12) / 7;
+    return -2147483648;
   }
   
   public static int getStage(int paramInt)
   {
-    if ((paramInt < 12) || (paramInt > AdAppPreOrderTask.Status.QQREMINDER_END)) {
-      return -2147483648;
+    if ((paramInt >= 12) && (paramInt <= AdAppPreOrderTask.Status.QQREMINDER_END)) {
+      return (paramInt - 12) % 7;
     }
-    return (paramInt - 12) % 7;
+    return -2147483648;
   }
   
   public static int getStatus(int paramInt1, int paramInt2)

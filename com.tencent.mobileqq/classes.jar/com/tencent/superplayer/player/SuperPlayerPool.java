@@ -22,19 +22,31 @@ public class SuperPlayerPool
     if (paramISuperPlayer == null) {
       return;
     }
-    LogUtil.d("SuperPlayerPool", "SuperPlayerPool put player:" + paramISuperPlayer.getToken() + ", size:" + size());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SuperPlayerPool put player:");
+    localStringBuilder.append(paramISuperPlayer.getToken());
+    localStringBuilder.append(", size:");
+    localStringBuilder.append(size());
+    LogUtil.d("SuperPlayerPool", localStringBuilder.toString());
     this.mPoolMap.put(paramISuperPlayer.getToken(), paramISuperPlayer);
   }
   
   public boolean remove(ISuperPlayer paramISuperPlayer)
   {
-    if (paramISuperPlayer == null) {}
-    do
-    {
+    boolean bool = false;
+    if (paramISuperPlayer == null) {
       return false;
-      LogUtil.d("SuperPlayerPool", "SuperPlayerPool remove player:" + paramISuperPlayer.getToken() + ", size:" + size());
-    } while (this.mPoolMap.remove(paramISuperPlayer.getToken()) == null);
-    return true;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SuperPlayerPool remove player:");
+    localStringBuilder.append(paramISuperPlayer.getToken());
+    localStringBuilder.append(", size:");
+    localStringBuilder.append(size());
+    LogUtil.d("SuperPlayerPool", localStringBuilder.toString());
+    if (this.mPoolMap.remove(paramISuperPlayer.getToken()) != null) {
+      bool = true;
+    }
+    return bool;
   }
   
   public int size()
@@ -44,7 +56,7 @@ public class SuperPlayerPool
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerPool
  * JD-Core Version:    0.7.0.1
  */

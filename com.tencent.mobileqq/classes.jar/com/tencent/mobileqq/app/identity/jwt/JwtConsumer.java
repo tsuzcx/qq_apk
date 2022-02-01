@@ -14,19 +14,19 @@ public class JwtConsumer
   
   private JwtContext a(String paramString)
   {
-    JsonWebSignature localJsonWebSignature = JsonWebSignature.a(paramString);
-    if (localJsonWebSignature == null)
+    Object localObject2 = JsonWebSignature.a(paramString);
+    Object localObject1 = null;
+    if (localObject2 == null)
     {
       QLog.e("JwtConsumer", 1, "format jwt token error");
       return null;
     }
-    paramString = new JwtContext(paramString, localJsonWebSignature);
-    if (a(paramString)) {}
-    for (;;)
-    {
-      return paramString;
-      paramString = null;
+    localObject2 = new JwtContext(paramString, (JsonWebSignature)localObject2);
+    paramString = localObject1;
+    if (a((JwtContext)localObject2)) {
+      paramString = (String)localObject2;
     }
+    return paramString;
   }
   
   private boolean a(JwtContext paramJwtContext)
@@ -61,7 +61,7 @@ public class JwtConsumer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.jwt.JwtConsumer
  * JD-Core Version:    0.7.0.1
  */

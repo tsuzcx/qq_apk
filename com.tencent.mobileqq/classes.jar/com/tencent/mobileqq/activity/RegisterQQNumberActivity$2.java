@@ -11,7 +11,7 @@ class RegisterQQNumberActivity$2
 {
   RegisterQQNumberActivity$2(RegisterQQNumberActivity paramRegisterQQNumberActivity) {}
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
   {
     super.onLoginFailed(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2, paramString4);
     if (QLog.isDevelopLevel()) {
@@ -34,7 +34,7 @@ class RegisterQQNumberActivity$2
     }
   }
   
-  public void onLoginTimeout(String paramString)
+  protected void onLoginTimeout(String paramString)
   {
     super.onLoginTimeout(paramString);
     if (QLog.isColorLevel()) {
@@ -44,7 +44,7 @@ class RegisterQQNumberActivity$2
     this.a.handler.post(new RegisterQQNumberActivity.2.1(this));
   }
   
-  public void onUserCancel(String paramString)
+  protected void onUserCancel(String paramString)
   {
     super.onUserCancel(paramString);
     if (QLog.isColorLevel()) {
@@ -54,7 +54,7 @@ class RegisterQQNumberActivity$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity.2
  * JD-Core Version:    0.7.0.1
  */

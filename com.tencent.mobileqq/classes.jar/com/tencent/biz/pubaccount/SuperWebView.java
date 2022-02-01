@@ -6,15 +6,15 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.webprocess.temp.api.IWebviewApi;
+import com.tencent.mobileqq.webview.swift.utils.BaseOpenWebMonitor;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView;
 import com.tencent.smtt.sdk.WebView;
 import java.util.ArrayList;
 import java.util.Map;
 import mqq.os.MqqHandler;
 
 public abstract class SuperWebView
-  extends WebView
+  extends DtX5WebView
 {
   static final String JAVASCRIPT_SCHEME = "javascript:";
   protected Intent mIntent = null;
@@ -54,34 +54,35 @@ public abstract class SuperWebView
   
   public void loadUrl(String paramString)
   {
-    ((IWebviewApi)QRoute.api(IWebviewApi.class)).monitorLoadUrl(this.mIntent, paramString);
-    if (this.mReadyForLoadJs) {
-      if ((Build.VERSION.SDK_INT >= 19) && (paramString != null) && (paramString.startsWith("javascript:"))) {
-        super.evaluateJavascript(paramString.substring("javascript:".length()), null);
-      }
-    }
-    do
+    BaseOpenWebMonitor.a(this.mIntent, paramString);
+    if (this.mReadyForLoadJs)
     {
-      do
+      if ((Build.VERSION.SDK_INT >= 19) && (paramString != null) && (paramString.startsWith("javascript:")))
       {
+        super.evaluateJavascript(paramString.substring(11), null);
         return;
-        String str = getUrl();
-        if ((str != null) && (str.equals(paramString)) && (!this.mIsForceLoadUrl))
-        {
-          super.reload();
-          return;
-        }
-        super.loadUrl(paramString);
+      }
+      String str = getUrl();
+      if ((str != null) && (str.equals(paramString)) && (!this.mIsForceLoadUrl))
+      {
+        super.reload();
         return;
-      } while (TextUtils.isEmpty(paramString));
+      }
+      super.loadUrl(paramString);
+      return;
+    }
+    if (!TextUtils.isEmpty(paramString))
+    {
       if (paramString.startsWith("javascript:"))
       {
         this.mJsUrlsWaitingForLoad.add(paramString);
         return;
       }
       super.loadUrl(paramString);
-    } while ((!paramString.startsWith("http://")) && (!paramString.startsWith("https://")));
-    readyForLoadJs();
+      if ((paramString.startsWith("http://")) || (paramString.startsWith("https://"))) {
+        readyForLoadJs();
+      }
+    }
   }
   
   public void loadUrl(String paramString, Map<String, String> paramMap)
@@ -126,7 +127,7 @@ public abstract class SuperWebView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.SuperWebView
  * JD-Core Version:    0.7.0.1
  */

@@ -9,10 +9,14 @@ class WTogetherRealNameMainProcessHelper$1
 {
   WTogetherRealNameMainProcessHelper$1(WTogetherRealNameMainProcessHelper paramWTogetherRealNameMainProcessHelper) {}
   
-  public void a(boolean paramBoolean)
+  protected void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("WTogetherRealNameMainProcessHelper", 2, "onGetRealNameStatusForAV authed:=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGetRealNameStatusForAV authed:=");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("WTogetherRealNameMainProcessHelper", 2, localStringBuilder.toString());
     }
     WTogetherRealNameMainProcessHelper.a(this.a, paramBoolean);
     WTogetherRealNameMainProcessHelper.a(this.a).removeObserver(WTogetherRealNameMainProcessHelper.a(this.a));
@@ -20,7 +24,7 @@ class WTogetherRealNameMainProcessHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.WTogetherRealNameMainProcessHelper.1
  * JD-Core Version:    0.7.0.1
  */

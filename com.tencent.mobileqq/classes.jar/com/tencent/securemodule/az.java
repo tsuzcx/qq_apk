@@ -18,7 +18,6 @@ public class az
   
   public static long a(AppInfo paramAppInfo)
   {
-    long l1 = 0L;
     StringBuffer localStringBuffer = new StringBuffer();
     localStringBuffer.append(paramAppInfo.getPkgName());
     localStringBuffer.append("&");
@@ -26,6 +25,7 @@ public class az
     localStringBuffer.append("&");
     localStringBuffer.append(paramAppInfo.getFileSize());
     paramAppInfo = b(localStringBuffer.toString().getBytes());
+    long l1 = 0L;
     long l2 = l1;
     if (paramAppInfo != null)
     {
@@ -36,9 +36,8 @@ public class az
         if (i >= 8) {
           break;
         }
-        l2 = paramAppInfo[(i + 8)] & 0xFF;
+        l1 = (l1 << 8) + (paramAppInfo[(i + 8)] & 0xFF);
         i += 1;
-        l1 = l2 + (l1 << 8);
       }
     }
     return l2;
@@ -80,76 +79,96 @@ public class az
   private static boolean a(Context paramContext)
   {
     paramContext = SecureEngine.getEngineVersion(paramContext);
+    int i;
     if (paramContext != null)
     {
-      int i = paramContext.indexOf("version=");
-      if (i != -1) {
-        try
-        {
-          i = Integer.parseInt(paramContext.substring(i + 8, i + 13).replace(".", "")) / 10;
-          if (i == 21) {
-            return true;
-          }
-        }
-        catch (Exception paramContext) {}
+      i = paramContext.indexOf("version=");
+      if (i == -1) {}
+    }
+    try
+    {
+      i = Integer.parseInt(paramContext.substring(i + 8, i + 13).replace(".", "")) / 10;
+      if (i == 21) {
+        return true;
       }
+    }
+    catch (Exception paramContext)
+    {
+      label55:
+      break label55;
     }
     return false;
   }
   
   public static boolean a(Context paramContext, String paramString)
   {
-    boolean bool = true;
-    Object localObject = paramContext.getFilesDir();
-    if (localObject == null) {
+    Object localObject1 = paramContext.getFilesDir();
+    boolean bool2 = false;
+    if (localObject1 == null) {
       return false;
     }
-    localObject = ((File)localObject).getAbsolutePath();
-    String str = (String)localObject + "/lib" + paramString + ".so";
-    if (new File(str).exists()) {}
-    for (;;)
+    localObject1 = ((File)localObject1).getAbsolutePath();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("/lib");
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append(".so");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    if (new File((String)localObject2).exists()) {}
+    try
     {
-      try
-      {
-        System.load(str);
-        i = 1;
-      }
-      catch (Throwable localThrowable2)
-      {
-        i = 0;
-        continue;
-        bool = false;
-        continue;
-      }
-      int j = i;
-      if (i == 0) {}
-      try
-      {
-        System.load(((String)localObject).replaceFirst("/files", "/lib") + "/lib" + paramString + ".so");
-        j = 1;
-      }
-      catch (Throwable localThrowable1)
-      {
-        j = i;
-        continue;
-      }
-      int i = j;
-      if (j == 0) {}
-      try
-      {
-        System.loadLibrary(paramString);
-        i = 1;
-      }
-      catch (Throwable paramString)
+      System.load((String)localObject2);
+      j = 1;
+    }
+    catch (Throwable localThrowable2)
+    {
+      label95:
+      break label95;
+    }
+    j = 0;
+    i = j;
+    if (j == 0) {}
+    try
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(((String)localObject1).replaceFirst("/files", "/lib"));
+      ((StringBuilder)localObject2).append("/lib");
+      ((StringBuilder)localObject2).append(paramString);
+      ((StringBuilder)localObject2).append(".so");
+      System.load(((StringBuilder)localObject2).toString());
+      i = 1;
+    }
+    catch (Throwable localThrowable1)
+    {
+      for (;;)
       {
         i = j;
-        continue;
       }
-      if ((i != 0) && (a(paramContext))) {
-        return bool;
-      }
-      i = 0;
     }
+    j = i;
+    if (i == 0) {}
+    try
+    {
+      System.loadLibrary(paramString);
+      j = 1;
+    }
+    catch (Throwable paramString)
+    {
+      for (;;)
+      {
+        boolean bool1;
+        j = i;
+      }
+    }
+    bool1 = bool2;
+    if (j != 0)
+    {
+      bool1 = bool2;
+      if (a(paramContext)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public static byte[] b(String paramString)
@@ -177,12 +196,11 @@ public class az
       paramArrayOfByte = localMessageDigest.digest();
       return paramArrayOfByte;
     }
-    catch (NoSuchAlgorithmException paramArrayOfByte)
+    catch (Exception paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
-      return null;
     }
-    catch (Exception paramArrayOfByte)
+    catch (NoSuchAlgorithmException paramArrayOfByte)
     {
       paramArrayOfByte.printStackTrace();
     }
@@ -191,38 +209,36 @@ public class az
   
   public static final String c(String paramString)
   {
-    String str;
-    int i;
-    if (0 == 0)
+    String str = Uri.decode(paramString);
+    if (str != null)
     {
-      str = Uri.decode(paramString);
-      if (str != null)
+      int i = str.indexOf('?');
+      paramString = str;
+      if (i > 0) {
+        paramString = str.substring(0, i);
+      }
+      if (!paramString.endsWith("/"))
       {
-        i = str.indexOf('?');
-        paramString = str;
-        if (i > 0) {
-          paramString = str.substring(0, i);
-        }
-        if (!paramString.endsWith("/"))
+        i = paramString.lastIndexOf('/') + 1;
+        if (i > 0)
         {
-          i = paramString.lastIndexOf('/') + 1;
-          if (i <= 0) {}
+          paramString = paramString.substring(i);
+          break label62;
         }
       }
     }
-    for (paramString = paramString.substring(i);; paramString = null)
-    {
-      str = paramString;
-      if (paramString == null) {
-        str = "downloadfile";
-      }
-      return str;
+    paramString = null;
+    label62:
+    str = paramString;
+    if (paramString == null) {
+      str = "downloadfile";
     }
+    return str;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.az
  * JD-Core Version:    0.7.0.1
  */

@@ -13,27 +13,29 @@ final class OperatorBufferWithSize$BufferSkip$BufferSkipProducer
   
   public void request(long paramLong)
   {
-    if (paramLong < 0L) {
-      throw new IllegalArgumentException("n >= 0 required but it was " + paramLong);
-    }
-    OperatorBufferWithSize.BufferSkip localBufferSkip;
-    if (paramLong != 0L)
+    if (paramLong >= 0L)
     {
-      localBufferSkip = this.this$0;
-      if ((!get()) && (compareAndSet(false, true))) {
-        OperatorBufferWithSize.BufferSkip.access$100(localBufferSkip, BackpressureUtils.addCap(BackpressureUtils.multiplyCap(paramLong, localBufferSkip.count), BackpressureUtils.multiplyCap(localBufferSkip.skip - localBufferSkip.count, paramLong - 1L)));
+      if (paramLong != 0L)
+      {
+        localObject = this.this$0;
+        if ((!get()) && (compareAndSet(false, true)))
+        {
+          OperatorBufferWithSize.BufferSkip.access$100((OperatorBufferWithSize.BufferSkip)localObject, BackpressureUtils.addCap(BackpressureUtils.multiplyCap(paramLong, ((OperatorBufferWithSize.BufferSkip)localObject).count), BackpressureUtils.multiplyCap(((OperatorBufferWithSize.BufferSkip)localObject).skip - ((OperatorBufferWithSize.BufferSkip)localObject).count, paramLong - 1L)));
+          return;
+        }
+        OperatorBufferWithSize.BufferSkip.access$200((OperatorBufferWithSize.BufferSkip)localObject, BackpressureUtils.multiplyCap(paramLong, ((OperatorBufferWithSize.BufferSkip)localObject).skip));
       }
-    }
-    else
-    {
       return;
     }
-    OperatorBufferWithSize.BufferSkip.access$200(localBufferSkip, BackpressureUtils.multiplyCap(paramLong, localBufferSkip.skip));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("n >= 0 required but it was ");
+    ((StringBuilder)localObject).append(paramLong);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorBufferWithSize.BufferSkip.BufferSkipProducer
  * JD-Core Version:    0.7.0.1
  */

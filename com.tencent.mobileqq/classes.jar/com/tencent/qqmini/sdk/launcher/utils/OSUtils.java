@@ -11,10 +11,12 @@ public class OSUtils
   
   public static String getEMUIVersion()
   {
-    if (isEMUI()) {
-      return getSystemProperty("ro.build.version.emui", "");
+    boolean bool = isEMUI();
+    String str = "";
+    if (bool) {
+      str = getSystemProperty("ro.build.version.emui", "");
     }
-    return "";
+    return str;
   }
   
   private static String getFlymeOSFlag()
@@ -24,18 +26,22 @@ public class OSUtils
   
   public static String getFlymeOSVersion()
   {
-    if (isFlymeOS()) {
-      return getSystemProperty("ro.build.display.id", "");
+    boolean bool = isFlymeOS();
+    String str = "";
+    if (bool) {
+      str = getSystemProperty("ro.build.display.id", "");
     }
-    return "";
+    return str;
   }
   
   public static String getMIUIVersion()
   {
-    if (isMIUI()) {
-      return getSystemProperty("ro.miui.ui.version.name", "");
+    boolean bool = isMIUI();
+    String str = "";
+    if (bool) {
+      str = getSystemProperty("ro.miui.ui.version.name", "");
     }
-    return "";
+    return str;
   }
   
   public static String getSystemProperty(String paramString1, String paramString2)
@@ -55,7 +61,7 @@ public class OSUtils
   
   public static boolean isEMUI()
   {
-    return !TextUtils.isEmpty(getSystemProperty("ro.build.version.emui", ""));
+    return TextUtils.isEmpty(getSystemProperty("ro.build.version.emui", "")) ^ true;
   }
   
   public static boolean isEMUI3_1()
@@ -72,14 +78,18 @@ public class OSUtils
   public static boolean isFlymeOS4More()
   {
     String str = getFlymeOSVersion();
-    int i;
     try
     {
-      if (!str.isEmpty()) {
+      if (!str.isEmpty())
+      {
+        int i;
         if (str.toLowerCase().contains("os")) {
           i = Integer.valueOf(str.substring(9, 10)).intValue();
         } else {
           i = Integer.valueOf(str.substring(6, 7)).intValue();
+        }
+        if (i >= 4) {
+          return true;
         }
       }
     }
@@ -87,15 +97,12 @@ public class OSUtils
     {
       localException.printStackTrace();
     }
-    while (i < 4) {
-      return false;
-    }
-    return true;
+    return false;
   }
   
   public static boolean isMIUI()
   {
-    return !TextUtils.isEmpty(getSystemProperty("ro.miui.ui.version.name", ""));
+    return TextUtils.isEmpty(getSystemProperty("ro.miui.ui.version.name", "")) ^ true;
   }
   
   public static boolean isMIUI6More()
@@ -120,7 +127,7 @@ public class OSUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.OSUtils
  * JD-Core Version:    0.7.0.1
  */

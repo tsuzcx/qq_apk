@@ -18,13 +18,9 @@ class ReceiptMessageDetailFragment$DiscussionFetchReadStatusCallback
     super(paramReceiptMessageDetailFragment);
   }
   
-  void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if ((paramInt != 0) || (paramArrayOfByte == null))
-    {
-      QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback request error on code: " + paramInt);
-      return;
-    }
+    if ((paramInt == 0) && (paramArrayOfByte != null)) {}
     try
     {
       paramBundle = new oidb_0x985.RspBody();
@@ -38,27 +34,34 @@ class ReceiptMessageDetailFragment$DiscussionFetchReadStatusCallback
         paramBundle = (oidb_0x985.GetReadListRsp)paramBundle.msg_get_read_list_rsp.get();
         paramArrayOfByte = paramBundle.rpt_msg_read_list.get();
         paramBundle = paramBundle.rpt_msg_unread_list.get();
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = (ReceiptMessageDetailFragment)this.a;
-        paramInt = paramArrayOfByte.size();
-        int i = paramArrayOfByte.size();
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, paramBundle.size() + i, true);
+        ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramArrayOfByte.size(), paramArrayOfByte.size() + paramBundle.size(), true);
         paramInt = paramArrayOfByte.size();
         ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a, paramInt, true);
         return;
       }
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("mDiscussionFetchReadStatusCallback fail on code: ");
+      paramArrayOfByte.append(paramInt);
+      QLog.d("ReceiptMessageDetailFragment", 1, paramArrayOfByte.toString());
+      ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+      return;
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      QLog.d("ReceiptMessageDetailFragment", 2, "fetch read member fail on invalid data");
-      return;
+      label176:
+      break label176;
     }
-    QLog.d("ReceiptMessageDetailFragment", 1, "mDiscussionFetchReadStatusCallback fail on code: " + paramInt);
-    ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)this.a).sendEmptyMessage(20);
+    QLog.d("ReceiptMessageDetailFragment", 2, "fetch read member fail on invalid data");
+    return;
+    paramArrayOfByte = new StringBuilder();
+    paramArrayOfByte.append("mDiscussionFetchReadStatusCallback request error on code: ");
+    paramArrayOfByte.append(paramInt);
+    QLog.d("ReceiptMessageDetailFragment", 1, paramArrayOfByte.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.DiscussionFetchReadStatusCallback
  * JD-Core Version:    0.7.0.1
  */

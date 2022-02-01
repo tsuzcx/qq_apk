@@ -14,19 +14,20 @@ class SubscribeQRCodeShareHelper$6
   {
     if (SubscribeQRCodeShareHelper.a(this.this$0))
     {
-      String str = SubscribeQRCodeShareHelper.a(this.this$0, SubscribeQRCodeShareHelper.a(this.this$0));
-      File localFile = new File(str);
+      Object localObject = this.this$0;
+      localObject = SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject, SubscribeQRCodeShareHelper.a((SubscribeQRCodeShareHelper)localObject));
+      File localFile = new File((String)localObject);
       Intent localIntent = new Intent();
       localIntent.putExtra("forward_type", 1);
-      localIntent.putExtra("forward_filepath", str);
-      localIntent.putExtra("forward_thumb", str);
+      localIntent.putExtra("forward_filepath", (String)localObject);
+      localIntent.putExtra("forward_thumb", (String)localObject);
       localIntent.putExtra("forward_urldrawable", true);
       localIntent.putExtra("forward_urldrawable_big_url", localFile.toURI().toString());
       localIntent.putExtra("forward_urldrawable_thumb_url", localFile.toURI().toString());
       localIntent.putExtra("key_help_forward_pic", true);
       localIntent.putExtra("selection_mode", 1);
       localIntent.putExtra("forward_ability_entrence_show_in_share", false);
-      localIntent.putExtra("filePath", str);
+      localIntent.putExtra("filePath", (String)localObject);
       localIntent.putExtra("shareQQType", 13);
       localIntent.putExtra("reqType", 1);
       ForwardBaseOption.a(SubscribeQRCodeShareHelper.a(this.this$0), localIntent, 21);
@@ -35,7 +36,7 @@ class SubscribeQRCodeShareHelper$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.6
  * JD-Core Version:    0.7.0.1
  */

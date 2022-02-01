@@ -58,7 +58,12 @@ public class HwEngine
   {
     int i = this.mTransWorker.getTransactionNum();
     int j = this.mConnManager.getCurrentConnNum();
-    BdhLogUtil.LogEvent("E", "dumpEngineInfo<-- : transNum:" + i + " connNum:" + j);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("dumpEngineInfo<-- : transNum:");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" connNum:");
+    localStringBuilder.append(j);
+    BdhLogUtil.LogEvent("E", localStringBuilder.toString());
   }
   
   public void SubmitAckRequest(RequestAck paramRequestAck)
@@ -215,7 +220,7 @@ public class HwEngine
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.HwEngine
  * JD-Core Version:    0.7.0.1
  */

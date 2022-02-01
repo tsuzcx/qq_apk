@@ -14,18 +14,23 @@ class AVGameShareUtil$3
   
   public void a(boolean paramBoolean, String paramString)
   {
-    QLog.d("AVGameShareUtil", 1, "getShareLinkCallback isSuccess: " + paramBoolean + " shareUrl: " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getShareLinkCallback isSuccess: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" shareUrl: ");
+    localStringBuilder.append(paramString);
+    QLog.d("AVGameShareUtil", 1, localStringBuilder.toString());
     if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
     {
-      new AVGameShareResultLink(this.jdField_a_of_type_AndroidAppActivity, String.valueOf(this.jdField_a_of_type_Long), paramString, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString).c();
+      new AVGameShareResultLink(this.jdField_a_of_type_AndroidAppActivity, String.valueOf(this.jdField_a_of_type_Long), paramString, this.jdField_b_of_type_Long, this.jdField_a_of_type_Int, this.jdField_a_of_type_JavaLangString, this.jdField_b_of_type_JavaLangString).b();
       return;
     }
-    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, 2131690599, 0).a();
+    QQToast.a(this.jdField_a_of_type_AndroidAppActivity, 1, 2131690527, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.avgameshare.AVGameShareUtil.3
  * JD-Core Version:    0.7.0.1
  */

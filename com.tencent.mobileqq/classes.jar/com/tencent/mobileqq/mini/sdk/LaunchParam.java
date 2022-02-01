@@ -180,51 +180,61 @@ public class LaunchParam
   
   public String getScheme()
   {
-    Object localObject2 = "mqqapi://microapp/open?mini_appid=" + this.miniAppId;
-    Object localObject1 = localObject2;
-    if (!TextUtils.isEmpty(this.entryPath)) {
-      localObject1 = (String)localObject2 + "&entryPath=" + this.entryPath;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("mqqapi://microapp/open?mini_appid=");
+    ((StringBuilder)localObject1).append(this.miniAppId);
+    Object localObject2 = ((StringBuilder)localObject1).toString();
+    localObject1 = localObject2;
+    if (!TextUtils.isEmpty(this.entryPath))
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("&entryPath=");
+      ((StringBuilder)localObject1).append(this.entryPath);
+      localObject1 = ((StringBuilder)localObject1).toString();
     }
     localObject2 = localObject1;
-    if (!TextUtils.isEmpty(this.extendData)) {
-      localObject2 = (String)localObject1 + "&extraData=" + this.extendData;
+    if (!TextUtils.isEmpty(this.extendData))
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&extraData=");
+      ((StringBuilder)localObject2).append(this.extendData);
+      localObject2 = ((StringBuilder)localObject2).toString();
     }
     return localObject2;
   }
   
   public boolean isValid()
   {
-    boolean bool1 = true;
+    int i = this.scene;
     boolean bool2 = false;
-    switch (this.scene)
+    boolean bool1 = false;
+    if (i != 1037)
     {
-    default: 
-      if (TextUtils.isEmpty(this.miniAppId))
+      if (i != 2003)
       {
-        bool1 = bool2;
-        if (TextUtils.isEmpty(this.fakeUrl)) {
-          break;
+        switch (i)
+        {
+        default: 
+          if ((!TextUtils.isEmpty(this.miniAppId)) || (!TextUtils.isEmpty(this.fakeUrl))) {
+            bool1 = true;
+          }
+          return bool1;
         }
+        return TextUtils.isEmpty(this.fakeUrl) ^ true;
       }
-      else
-      {
+      return TextUtils.isEmpty(this.fakeUrl) ^ true;
+    }
+    bool1 = bool2;
+    if (!TextUtils.isEmpty(this.miniAppId))
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(this.fromMiniAppId)) {
         bool1 = true;
       }
-      break;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          return bool1;
-        } while (!TextUtils.isEmpty(this.fakeUrl));
-        return false;
-      } while ((!TextUtils.isEmpty(this.miniAppId)) && (!TextUtils.isEmpty(this.fromMiniAppId)));
-      return false;
-    } while (!TextUtils.isEmpty(this.fakeUrl));
-    return false;
+    return bool1;
   }
   
   public void standardize()
@@ -234,7 +244,48 @@ public class LaunchParam
   
   public String toString()
   {
-    return "LaunchParam{scene=" + this.scene + ", miniAppId='" + this.miniAppId + '\'' + ", extraKey='" + this.extraKey + '\'' + ", entryPath='" + this.entryPath + '\'' + ", extendData='" + this.extendData + '\'' + ", navigateExtData='" + this.navigateExtData + '\'' + ", fromMiniAppId='" + this.fromMiniAppId + '\'' + ", fakeUrl='" + this.fakeUrl + '\'' + ", timestamp=" + this.timestamp + ", launchClickTimeMillis=" + this.launchClickTimeMillis + ", tempState=" + this.tempState + ", shareTicket=" + this.shareTicket + ", envVersion=" + this.envVersion + ", reportData=" + this.reportData + ", fromBackToMiniApp=" + this.fromBackToMiniApp + ", fromEnvVersion=" + this.fromEnvVersion + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LaunchParam{scene=");
+    localStringBuilder.append(this.scene);
+    localStringBuilder.append(", miniAppId='");
+    localStringBuilder.append(this.miniAppId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extraKey='");
+    localStringBuilder.append(this.extraKey);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", entryPath='");
+    localStringBuilder.append(this.entryPath);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", extendData='");
+    localStringBuilder.append(this.extendData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", navigateExtData='");
+    localStringBuilder.append(this.navigateExtData);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fromMiniAppId='");
+    localStringBuilder.append(this.fromMiniAppId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", fakeUrl='");
+    localStringBuilder.append(this.fakeUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", timestamp=");
+    localStringBuilder.append(this.timestamp);
+    localStringBuilder.append(", launchClickTimeMillis=");
+    localStringBuilder.append(this.launchClickTimeMillis);
+    localStringBuilder.append(", tempState=");
+    localStringBuilder.append(this.tempState);
+    localStringBuilder.append(", shareTicket=");
+    localStringBuilder.append(this.shareTicket);
+    localStringBuilder.append(", envVersion=");
+    localStringBuilder.append(this.envVersion);
+    localStringBuilder.append(", reportData=");
+    localStringBuilder.append(this.reportData);
+    localStringBuilder.append(", fromBackToMiniApp=");
+    localStringBuilder.append(this.fromBackToMiniApp);
+    localStringBuilder.append(", fromEnvVersion=");
+    localStringBuilder.append(this.fromEnvVersion);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -261,7 +312,7 @@ public class LaunchParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.sdk.LaunchParam
  * JD-Core Version:    0.7.0.1
  */

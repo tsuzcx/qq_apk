@@ -46,9 +46,12 @@ public class StrategyManager
     String str = paramBundle.toLowerCase();
     paramBundle = str;
     if (str.startsWith("share_msg_")) {
-      paramBundle = str.substring("share_msg_".length());
+      paramBundle = str.substring(10);
     }
-    return (paramBundle.startsWith("kandian_")) || ((paramBundle.compareTo("3000") >= 0) && (paramBundle.compareTo("5999") <= 0));
+    if (!paramBundle.startsWith("kandian_")) {
+      return (paramBundle.compareTo("3000") >= 0) && (paramBundle.compareTo("5999") <= 0);
+    }
+    return true;
   }
   
   private IEnterRoomStrategy b(QQAppInterface paramQQAppInterface)
@@ -71,16 +74,12 @@ public class StrategyManager
   {
     if (a(paramBundle)) {
       this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = a(paramQQAppInterface);
+    } else if (b(paramBundle)) {
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = b(paramQQAppInterface);
+    } else {
+      this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = a();
     }
-    for (;;)
-    {
-      return this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy;
-      if (b(paramBundle)) {
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = b(paramQQAppInterface);
-      } else {
-        this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy = a();
-      }
-    }
+    return this.jdField_a_of_type_ComTencentMobileqqIntervideoNowDynamicStrategyIEnterRoomStrategy;
   }
   
   public void a()
@@ -93,7 +92,7 @@ public class StrategyManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.strategy.StrategyManager
  * JD-Core Version:    0.7.0.1
  */

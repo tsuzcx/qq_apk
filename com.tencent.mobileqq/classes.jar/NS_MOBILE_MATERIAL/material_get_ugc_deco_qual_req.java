@@ -7,7 +7,7 @@ import com.qq.taf.jce.JceStruct;
 public final class material_get_ugc_deco_qual_req
   extends JceStruct
 {
-  static int cache_eType = 0;
+  static int cache_eType;
   static byte[] cache_vecBuf = (byte[])new byte[1];
   public int eType = 0;
   public long lUin = 0L;
@@ -38,14 +38,15 @@ public final class material_get_ugc_deco_qual_req
   {
     paramJceOutputStream.write(this.lUin, 0);
     paramJceOutputStream.write(this.eType, 1);
-    if (this.vecBuf != null) {
-      paramJceOutputStream.write(this.vecBuf, 2);
+    byte[] arrayOfByte = this.vecBuf;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.material_get_ugc_deco_qual_req
  * JD-Core Version:    0.7.0.1
  */

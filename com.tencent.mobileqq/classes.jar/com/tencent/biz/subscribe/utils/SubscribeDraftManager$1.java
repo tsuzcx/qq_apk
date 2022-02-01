@@ -11,41 +11,45 @@ class SubscribeDraftManager$1
   
   public void run()
   {
-    Pair localPair = SubscribeDraftManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
-    if (localPair != null)
+    Object localObject = SubscribeDraftManager.a(this.this$0, this.jdField_a_of_type_JavaLangString, this.b);
+    if (localObject != null)
     {
       int i;
-      if ((this.this$0.a((String)localPair.first, this.c)) && (this.this$0.a((String)localPair.second, this.d)))
-      {
+      if ((this.this$0.a((String)((Pair)localObject).first, this.c)) && (this.this$0.a((String)((Pair)localObject).second, this.d))) {
         i = 1;
-        if (i == 0) {
-          break label100;
-        }
-        if (this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener != null) {
-          this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener.a(3, true, this.b, new Object[0]);
+      } else {
+        i = 0;
+      }
+      if (i != 0)
+      {
+        localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        if (localObject != null) {
+          ((SubscribeDraftManager.SubDraftListener)localObject).a(3, true, this.b, new Object[0]);
         }
       }
-      label100:
-      do
+      else
       {
-        return;
-        i = 0;
-        break;
-        FileUtils.e((String)localPair.first);
-        FileUtils.e((String)localPair.second);
-      } while (this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener == null);
-      this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener.a(3, false, this.b, new Object[0]);
-      return;
+        FileUtils.deleteFile((String)((Pair)localObject).first);
+        FileUtils.deleteFile((String)((Pair)localObject).second);
+        localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+        if (localObject != null) {
+          ((SubscribeDraftManager.SubDraftListener)localObject).a(3, false, this.b, new Object[0]);
+        }
+      }
     }
-    if (this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener.a(3, false, this.b, new Object[0]);
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager$SubDraftListener;
+      if (localObject != null) {
+        ((SubscribeDraftManager.SubDraftListener)localObject).a(3, false, this.b, new Object[0]);
+      }
+      QLog.d(SubscribeDraftManager.jdField_a_of_type_JavaLangString, 4, "modify new draft failed because cat't new folder");
     }
-    QLog.d(SubscribeDraftManager.jdField_a_of_type_JavaLangString, 4, "modify new draft failed because cat't new folder");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.SubscribeDraftManager.1
  * JD-Core Version:    0.7.0.1
  */

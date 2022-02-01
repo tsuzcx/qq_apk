@@ -20,9 +20,15 @@ final class JobIntentService$CompatWorkEnqueuer
     super(paramComponentName);
     this.mContext = paramContext.getApplicationContext();
     paramContext = (PowerManager)paramContext.getSystemService("power");
-    this.mLaunchWakeLock = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":launch");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramComponentName.getClassName());
+    localStringBuilder.append(":launch");
+    this.mLaunchWakeLock = paramContext.newWakeLock(1, localStringBuilder.toString());
     this.mLaunchWakeLock.setReferenceCounted(false);
-    this.mRunWakeLock = paramContext.newWakeLock(1, paramComponentName.getClassName() + ":run");
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramComponentName.getClassName());
+    localStringBuilder.append(":run");
+    this.mRunWakeLock = paramContext.newWakeLock(1, localStringBuilder.toString());
     this.mRunWakeLock.setReferenceCounted(false);
   }
   
@@ -90,7 +96,7 @@ final class JobIntentService$CompatWorkEnqueuer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.JobIntentService.CompatWorkEnqueuer
  * JD-Core Version:    0.7.0.1
  */

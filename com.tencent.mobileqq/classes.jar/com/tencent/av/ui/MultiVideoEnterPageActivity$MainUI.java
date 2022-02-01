@@ -27,39 +27,45 @@ class MultiVideoEnterPageActivity$MainUI
   
   void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(paramInt);
+    Object localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (localObject != null) {
+      ((RelativeLayout)localObject).setVisibility(paramInt);
     }
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(paramInt);
     }
-    if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(paramInt);
+    localObject = this.jdField_b_of_type_AndroidWidgetTextView;
+    if (localObject != null) {
+      ((TextView)localObject).setVisibility(paramInt);
     }
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(paramInt);
+    localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (localObject != null) {
+      ((LinearLayout)localObject).setVisibility(paramInt);
     }
-    if (this.jdField_a_of_type_AndroidWidgetButton != null) {
-      this.jdField_a_of_type_AndroidWidgetButton.setVisibility(paramInt);
+    localObject = this.jdField_a_of_type_AndroidWidgetButton;
+    if (localObject != null) {
+      ((Button)localObject).setVisibility(paramInt);
     }
-    if ((this.jdField_b_of_type_AndroidWidgetButton != null) && (paramInt != 0)) {
-      this.jdField_b_of_type_AndroidWidgetButton.setVisibility(paramInt);
+    localObject = this.jdField_b_of_type_AndroidWidgetButton;
+    if ((localObject != null) && (paramInt != 0)) {
+      ((Button)localObject).setVisibility(paramInt);
     }
   }
   
   void a(Activity paramActivity)
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131373970));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373804));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373803));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373834));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373827));
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131373832));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramActivity.findViewById(2131373542));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373376));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramActivity.findViewById(2131373375));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373406));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)paramActivity.findViewById(2131373399));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramActivity.findViewById(2131373404));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.MultiVideoEnterPageActivity.MainUI
  * JD-Core Version:    0.7.0.1
  */

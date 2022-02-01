@@ -9,22 +9,22 @@ class VideoInviteActivity$10$1
   {
     if (this.a.a.a != null)
     {
-      this.a.a.a.setViewEnable(2131373938, false);
-      this.a.a.a.setViewEnable(2131363179, false);
-      this.a.a.a.setViewEnable(2131363191, false);
-      this.a.a.a.setViewEnable(2131363190, false);
+      this.a.a.a.setViewEnable(2131373510, false);
+      this.a.a.a.setViewEnable(2131363119, false);
+      this.a.a.a.setViewEnable(2131363130, false);
+      this.a.a.a.setViewEnable(2131363129, false);
     }
   }
   
   public void b()
   {
     this.a.a.finish();
-    this.a.a.overridePendingTransition(0, 2130772192);
+    this.a.a.overridePendingTransition(0, 2130772219);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoInviteActivity.10.1
  * JD-Core Version:    0.7.0.1
  */

@@ -17,11 +17,13 @@ public class SpeedUtil
   
   public static int convertSpeedToSeekValue(float paramFloat)
   {
-    if (paramFloat > 1.0F) {
-      return (int)((paramFloat - 1.0F) / 4.0F * 50.0F + 50.0F);
-    }
-    if (paramFloat < 1.0F) {
-      return (int)((paramFloat - 0.2F) / 0.8F * 50.0F);
+    if (paramFloat > 1.0F) {}
+    for (paramFloat = (paramFloat - 1.0F) / 4.0F * 50.0F + 50.0F;; paramFloat = (paramFloat - 0.2F) / 0.8F * 50.0F)
+    {
+      return (int)paramFloat;
+      if (paramFloat >= 1.0F) {
+        break;
+      }
     }
     return 50;
   }
@@ -44,7 +46,7 @@ public class SpeedUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavcut.util.SpeedUtil
  * JD-Core Version:    0.7.0.1
  */

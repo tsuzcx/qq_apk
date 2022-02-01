@@ -18,13 +18,17 @@ class ConstructorConstructor$14
     }
     catch (Exception localException)
     {
-      throw new RuntimeException("Unable to invoke no-args constructor for " + this.val$type + ". Registering an InstanceCreator with Gson for this type may fix this problem.", localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Unable to invoke no-args constructor for ");
+      localStringBuilder.append(this.val$type);
+      localStringBuilder.append(". Registering an InstanceCreator with Gson for this type may fix this problem.");
+      throw new RuntimeException(localStringBuilder.toString(), localException);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.ConstructorConstructor.14
  * JD-Core Version:    0.7.0.1
  */

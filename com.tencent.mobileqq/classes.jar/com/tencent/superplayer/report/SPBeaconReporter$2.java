@@ -14,19 +14,24 @@ final class SPBeaconReporter$2
   
   public void run()
   {
-    if ((TextUtils.isEmpty(this.val$eventName)) || (this.val$copyMap.isEmpty()))
+    if ((!TextUtils.isEmpty(this.val$eventName)) && (!this.val$copyMap.isEmpty()))
     {
-      LogUtil.e(".SPBeaconReporter", "report failed for eventName:" + this.val$eventName + "dataMap:" + this.val$copyMap);
+      this.val$copyMap.put("param_uin", SuperPlayerSDKMgr.getUid());
+      this.val$copyMap.put("param_netType", String.valueOf(NetworkUtil.getNetWorkType()));
+      BeaconAdapter.onUserActionToTunnel("00000U7O8S3BLETM", this.val$eventName, true, -1L, -1L, this.val$copyMap, true, true);
       return;
     }
-    this.val$copyMap.put("param_uin", SuperPlayerSDKMgr.getUid());
-    this.val$copyMap.put("param_netType", String.valueOf(NetworkUtil.getNetWorkType()));
-    BeaconAdapter.onUserActionToTunnel("00000U7O8S3BLETM", this.val$eventName, true, -1L, -1L, this.val$copyMap, true, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("report failed for eventName:");
+    localStringBuilder.append(this.val$eventName);
+    localStringBuilder.append("dataMap:");
+    localStringBuilder.append(this.val$copyMap);
+    LogUtil.e(".SPBeaconReporter", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.report.SPBeaconReporter.2
  * JD-Core Version:    0.7.0.1
  */

@@ -35,16 +35,18 @@ abstract class MediaCodecDecoder
   {
     this.jdField_a_of_type_JavaLangString = MediaCodecDecoder.class.getSimpleName();
     this.jdField_a_of_type_JavaLangString = getClass().getSimpleName();
-    if ((paramMediaExtractor == null) || (paramInt == -1)) {
-      throw new IllegalArgumentException("no track specified");
+    if ((paramMediaExtractor != null) && (paramInt != -1))
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor = paramMediaExtractor;
+      this.e = paramBoolean;
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaExtractor.a(this.jdField_a_of_type_Int);
+      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$OnDecoderEventListener = paramOnDecoderEventListener;
+      this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime"));
+      this.jdField_a_of_type_Long = -9223372036854775808L;
+      return;
     }
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor = paramMediaExtractor;
-    this.e = paramBoolean;
-    this.jdField_a_of_type_Int = paramInt;
-    this.jdField_a_of_type_AndroidMediaMediaFormat = paramMediaExtractor.a(this.jdField_a_of_type_Int);
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$OnDecoderEventListener = paramOnDecoderEventListener;
-    this.jdField_a_of_type_AndroidMediaMediaCodec = MediaCodec.createDecoderByType(this.jdField_a_of_type_AndroidMediaMediaFormat.getString("mime"));
-    this.jdField_a_of_type_Long = -9223372036854775808L;
+    throw new IllegalArgumentException("no track specified");
   }
   
   public long a()
@@ -69,64 +71,65 @@ abstract class MediaCodecDecoder
     }
     int i = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueOutputBuffer(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo, 0L);
     boolean bool;
-    if ((i >= 0) && ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0))
-    {
+    if ((i >= 0) && ((this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.flags & 0x4) != 0)) {
       bool = true;
-      this.jdField_b_of_type_Boolean = bool;
-      if ((!this.jdField_b_of_type_Boolean) || (!this.c)) {
-        break label85;
-      }
+    } else {
+      bool = false;
+    }
+    this.jdField_b_of_type_Boolean = bool;
+    if ((this.jdField_b_of_type_Boolean) && (this.c))
+    {
       a();
       this.jdField_b_of_type_Boolean = false;
       this.c = false;
       this.d = true;
-    }
-    for (;;)
-    {
       return null;
-      bool = false;
-      break;
-      label85:
-      Object localObject;
-      if (i >= 0)
-      {
-        localObject = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
-        if ((localObject != null) && (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0))
-        {
-          ((ByteBuffer)localObject).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
-          ((ByteBuffer)localObject).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
-        }
-        MediaCodecDecoder.FrameInfo localFrameInfo = (MediaCodecDecoder.FrameInfo)this.jdField_a_of_type_JavaUtilList.get(0);
-        localFrameInfo.jdField_a_of_type_Int = i;
-        localFrameInfo.jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)localObject);
-        localFrameInfo.jdField_a_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
-        localFrameInfo.jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
-        if (this.d)
-        {
-          this.d = false;
-          localFrameInfo.jdField_b_of_type_Boolean = true;
-        }
-        if (localFrameInfo.jdField_a_of_type_Boolean)
-        {
-          Log.d(this.jdField_a_of_type_JavaLangString, "EOS output");
-          return localFrameInfo;
-        }
-        this.jdField_a_of_type_Long = localFrameInfo.jdField_a_of_type_Long;
-        return localFrameInfo;
-      }
-      if (i == -3)
-      {
-        this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
-        Log.d(this.jdField_a_of_type_JavaLangString, "output buffers have changed.");
-      }
-      else if (i == -2)
-      {
-        localObject = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
-        Log.d(this.jdField_a_of_type_JavaLangString, "output format has changed to " + localObject);
-        a((MediaFormat)localObject);
-      }
-      else if (i != -1) {}
     }
+    Object localObject1;
+    Object localObject2;
+    if (i >= 0)
+    {
+      localObject1 = this.jdField_b_of_type_ArrayOfJavaNioByteBuffer[i];
+      if ((localObject1 != null) && (this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size != 0))
+      {
+        ((ByteBuffer)localObject1).position(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset);
+        ((ByteBuffer)localObject1).limit(this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.offset + this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.size);
+      }
+      localObject2 = (MediaCodecDecoder.FrameInfo)this.jdField_a_of_type_JavaUtilList.get(0);
+      ((MediaCodecDecoder.FrameInfo)localObject2).jdField_a_of_type_Int = i;
+      ((MediaCodecDecoder.FrameInfo)localObject2).jdField_a_of_type_JavaNioByteBuffer = ((ByteBuffer)localObject1);
+      ((MediaCodecDecoder.FrameInfo)localObject2).jdField_a_of_type_Long = this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo.presentationTimeUs;
+      ((MediaCodecDecoder.FrameInfo)localObject2).jdField_a_of_type_Boolean = this.jdField_b_of_type_Boolean;
+      if (this.d)
+      {
+        this.d = false;
+        ((MediaCodecDecoder.FrameInfo)localObject2).jdField_b_of_type_Boolean = true;
+      }
+      if (((MediaCodecDecoder.FrameInfo)localObject2).jdField_a_of_type_Boolean)
+      {
+        Log.d(this.jdField_a_of_type_JavaLangString, "EOS output");
+        return localObject2;
+      }
+      this.jdField_a_of_type_Long = ((MediaCodecDecoder.FrameInfo)localObject2).jdField_a_of_type_Long;
+      return localObject2;
+    }
+    if (i == -3)
+    {
+      this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
+      Log.d(this.jdField_a_of_type_JavaLangString, "output buffers have changed.");
+      return null;
+    }
+    if (i == -2)
+    {
+      localObject1 = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputFormat();
+      localObject2 = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("output format has changed to ");
+      localStringBuilder.append(localObject1);
+      Log.d((String)localObject2, localStringBuilder.toString());
+      a((MediaFormat)localObject1);
+    }
+    return null;
   }
   
   protected MediaCodecDecoder.FrameInfo a(MediaPlayer.SeekMode paramSeekMode, long paramLong, MediaExtractor paramMediaExtractor, MediaCodec paramMediaCodec)
@@ -138,10 +141,22 @@ abstract class MediaCodecDecoder
       paramMediaCodec.flush();
       return null;
     }
-    Log.d(this.jdField_a_of_type_JavaLangString, "seeking to:                 " + paramLong);
-    Log.d(this.jdField_a_of_type_JavaLangString, "extractor current position: " + paramMediaExtractor.a());
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("seeking to:                 ");
+    localStringBuilder.append(paramLong);
+    Log.d((String)localObject, localStringBuilder.toString());
+    localObject = this.jdField_a_of_type_JavaLangString;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("extractor current position: ");
+    localStringBuilder.append(paramMediaExtractor.a());
+    Log.d((String)localObject, localStringBuilder.toString());
     paramMediaExtractor.a(paramLong, paramSeekMode.a());
-    Log.d(this.jdField_a_of_type_JavaLangString, "extractor new position:     " + paramMediaExtractor.a());
+    paramSeekMode = this.jdField_a_of_type_JavaLangString;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("extractor new position:     ");
+    ((StringBuilder)localObject).append(paramMediaExtractor.a());
+    Log.d(paramSeekMode, ((StringBuilder)localObject).toString());
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
     paramMediaCodec.flush();
@@ -172,7 +187,6 @@ abstract class MediaCodecDecoder
   
   protected final void a()
   {
-    int i = 0;
     try
     {
       long l = SystemClock.elapsedRealtime();
@@ -183,6 +197,7 @@ abstract class MediaCodecDecoder
       this.jdField_a_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getInputBuffers();
       this.jdField_b_of_type_ArrayOfJavaNioByteBuffer = this.jdField_a_of_type_AndroidMediaMediaCodec.getOutputBuffers();
       this.jdField_a_of_type_AndroidMediaMediaCodec$BufferInfo = new MediaCodec.BufferInfo();
+      int i = 0;
       this.jdField_a_of_type_Boolean = false;
       this.jdField_b_of_type_Boolean = false;
       this.jdField_a_of_type_JavaUtilList = new ArrayList();
@@ -191,20 +206,28 @@ abstract class MediaCodecDecoder
         this.jdField_a_of_type_JavaUtilList.add(new MediaCodecDecoder.FrameInfo());
         i += 1;
       }
-      Log.d(this.jdField_a_of_type_JavaLangString, "reinitCodec " + (SystemClock.elapsedRealtime() - l) + "ms");
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reinitCodec ");
+      localStringBuilder.append(SystemClock.elapsedRealtime() - l);
+      localStringBuilder.append("ms");
+      Log.d(str, localStringBuilder.toString());
       return;
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
-      Log.e(this.jdField_a_of_type_JavaLangString, "reinitCodec: invalid surface or format");
-      throw localIllegalArgumentException;
     }
     catch (IllegalStateException localIllegalStateException)
     {
       this.jdField_a_of_type_AndroidMediaMediaCodec.release();
       Log.e(this.jdField_a_of_type_JavaLangString, "reinitCodec: illegal state");
       throw localIllegalStateException;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      this.jdField_a_of_type_AndroidMediaMediaCodec.release();
+      Log.e(this.jdField_a_of_type_JavaLangString, "reinitCodec: invalid surface or format");
+    }
+    for (;;)
+    {
+      throw localIllegalArgumentException;
     }
   }
   
@@ -238,62 +261,79 @@ abstract class MediaCodecDecoder
   
   public final boolean a(boolean paramBoolean)
   {
-    int j = 4;
-    long l = 0L;
-    if ((this.jdField_a_of_type_Boolean) || (!a())) {}
-    int k;
-    Object localObject;
-    do
+    if (!this.jdField_a_of_type_Boolean)
     {
-      do
+      if (!a()) {
+        return false;
+      }
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() != -1) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() != this.jdField_a_of_type_Int))
       {
-        do
+        if (paramBoolean) {
+          return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
+        }
+        return false;
+      }
+      int k = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(0L);
+      if (k >= 0)
+      {
+        Object localObject = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[k];
+        if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.c())
         {
-          return false;
-          if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() == -1) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() == this.jdField_a_of_type_Int)) {
-            break;
+          this.c = true;
+          this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(k, 0, 0, 0L, 4);
+          if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() > -1L)
+          {
+            localObject = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$OnDecoderEventListener;
+            if (localObject != null) {
+              ((MediaCodecDecoder.OnDecoderEventListener)localObject).a(this);
+            }
           }
-        } while (!paramBoolean);
-        return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
-        k = this.jdField_a_of_type_AndroidMediaMediaCodec.dequeueInputBuffer(0L);
-      } while (k < 0);
-      localObject = this.jdField_a_of_type_ArrayOfJavaNioByteBuffer[k];
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.c()) {
-        break;
+        }
+        else
+        {
+          if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() > -1L)
+          {
+            MediaCodecDecoder.OnDecoderEventListener localOnDecoderEventListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$OnDecoderEventListener;
+            if (localOnDecoderEventListener != null) {
+              localOnDecoderEventListener.a(this);
+            }
+          }
+          int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a((ByteBuffer)localObject, 0);
+          long l;
+          if (i < 0)
+          {
+            Log.d(this.jdField_a_of_type_JavaLangString, "EOS input");
+            this.jdField_a_of_type_Boolean = true;
+            l = 0L;
+            paramBoolean = false;
+            i = 0;
+          }
+          else
+          {
+            l = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
+            paramBoolean = true;
+          }
+          localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
+          int j;
+          if (this.jdField_a_of_type_Boolean) {
+            j = 4;
+          } else {
+            j = 0;
+          }
+          ((MediaCodec)localObject).queueInputBuffer(k, 0, i, l, j);
+          bool = paramBoolean;
+          if (this.jdField_a_of_type_Boolean) {
+            break label283;
+          }
+          this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
+          return paramBoolean;
+        }
       }
-      this.c = true;
-      this.jdField_a_of_type_AndroidMediaMediaCodec.queueInputBuffer(k, 0, 0, 0L, 4);
-    } while ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() <= -1L) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$OnDecoderEventListener == null));
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$OnDecoderEventListener.a(this);
+      boolean bool = false;
+      label283:
+      return bool;
+    }
     return false;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.b() > -1L) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$OnDecoderEventListener != null)) {
-      this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$OnDecoderEventListener.a(this);
-    }
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a((ByteBuffer)localObject, 0);
-    if (i < 0)
-    {
-      Log.d(this.jdField_a_of_type_JavaLangString, "EOS input");
-      this.jdField_a_of_type_Boolean = true;
-      i = 0;
-      paramBoolean = false;
-      localObject = this.jdField_a_of_type_AndroidMediaMediaCodec;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label265;
-      }
-    }
-    for (;;)
-    {
-      ((MediaCodec)localObject).queueInputBuffer(k, 0, i, l, j);
-      if (!this.jdField_a_of_type_Boolean) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
-      }
-      return paramBoolean;
-      l = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaExtractor.a();
-      paramBoolean = true;
-      break;
-      label265:
-      j = 0;
-    }
   }
   
   public long b()
@@ -329,8 +369,9 @@ abstract class MediaCodecDecoder
   
   public void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$FrameInfo != null) {
-      a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$FrameInfo, 0L);
+    MediaCodecDecoder.FrameInfo localFrameInfo = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$FrameInfo;
+    if (localFrameInfo != null) {
+      a(localFrameInfo, 0L);
     }
   }
   
@@ -347,8 +388,9 @@ abstract class MediaCodecDecoder
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$FrameInfo != null) {
-      a(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$FrameInfo);
+    MediaCodecDecoder.FrameInfo localFrameInfo = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerMediaCodecDecoder$FrameInfo;
+    if (localFrameInfo != null) {
+      a(localFrameInfo);
     }
   }
   
@@ -366,7 +408,7 @@ abstract class MediaCodecDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaCodecDecoder
  * JD-Core Version:    0.7.0.1
  */

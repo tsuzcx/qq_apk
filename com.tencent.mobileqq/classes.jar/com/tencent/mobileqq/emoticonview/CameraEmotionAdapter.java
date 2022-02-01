@@ -17,9 +17,11 @@ import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLImageView;
+import com.tencent.mobileqq.AIODepend.IPanelInteractionListener;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
+import com.tencent.mobileqq.activity.aio.core.BaseAIOContext;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.core.SystemEmotionPanelManager;
-import com.tencent.mobileqq.emoticonview.adapter.ICameraEmotionAdapterHelper;
+import com.tencent.mobileqq.emoticon.IEmotionPanelDataCallback;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.mobileqq.utils.ViewUtils;
@@ -29,6 +31,7 @@ import java.util.List;
 
 public class CameraEmotionAdapter
   extends BaseEmotionAdapter
+  implements IEmotionPanelDataCallback<EmotionPanelData>
 {
   public static final int CONTENT_HEIGHT = 61;
   public static final int ERROR_ICON_HEIGHT_OFFSET = 5;
@@ -37,15 +40,20 @@ public class CameraEmotionAdapter
   public static final int GUIDE_IMG_WIDTH = 161;
   public static final int IMG_HEIGHT = 56;
   public static final String TAG = "CameraEmotionAdapter";
-  private ICameraEmotionAdapterHelper mCameraEmotionAdapterHelper;
+  private BaseAIOContext mAIOContext;
   private Drawable mCameraPanelFailedDrawable = null;
+  private IPanelInteractionListener mInteractionListener;
   public IEmoticonPanelLinearLayoutHelper.OnClickListener mInterceptListener = new CameraEmotionAdapter.1(this);
   
-  public CameraEmotionAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback)
+  public CameraEmotionAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, IPanelInteractionListener paramIPanelInteractionListener, Context paramContext, int paramInt1, int paramInt2, int paramInt3, EmoticonCallback paramEmoticonCallback)
   {
     super(paramIEmoticonMainPanelApp, paramContext, paramInt1, paramInt2, paramInt3, paramEmoticonCallback);
-    this.mCameraPanelFailedDrawable = paramContext.getResources().getDrawable(2130846567);
-    this.mCameraEmotionAdapterHelper = ((ICameraEmotionAdapterHelper)SystemEmotionPanelManager.a().a(paramIEmoticonMainPanelApp, 11));
+    this.mInteractionListener = paramIPanelInteractionListener;
+    paramIEmoticonMainPanelApp = this.mInteractionListener;
+    if (paramIEmoticonMainPanelApp != null) {
+      this.mAIOContext = paramIEmoticonMainPanelApp.getAIOContext();
+    }
+    this.mCameraPanelFailedDrawable = paramContext.getResources().getDrawable(2130846446);
   }
   
   private RelativeLayout getCameraEmoView()
@@ -54,33 +62,33 @@ public class CameraEmotionAdapter
       QLog.d("CameraEmotionAdapter", 2, "getCameraEmoView");
     }
     RelativeLayout localRelativeLayout = new RelativeLayout(this.mContext);
-    localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(61.0F * this.density)));
+    localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum, (int)(this.density * 61.0F)));
     Object localObject = new URLImageView(this.mContext);
-    ((URLImageView)localObject).setId(2131378813);
+    ((URLImageView)localObject).setId(2131378202);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     localLayoutParams.addRule(13, -1);
     localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, (int)(5.0F * this.density));
+    localLayoutParams.setMargins(0, 0, 0, (int)(this.density * 5.0F));
     ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
     ((URLImageView)localObject).setAdjustViewBounds(false);
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setId(2131374857);
+    ((ImageView)localObject).setId(2131374391);
     localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 56.0F), (int)(this.density * 56.0F));
     localLayoutParams.addRule(13, -1);
     localLayoutParams.addRule(12, -1);
-    localLayoutParams.setMargins(0, 0, 0, (int)(5.0F * this.density));
+    localLayoutParams.setMargins(0, 0, 0, (int)(this.density * 5.0F));
     ((ImageView)localObject).setScaleType(ImageView.ScaleType.CENTER_INSIDE);
     ((ImageView)localObject).setAdjustViewBounds(false);
     ((ImageView)localObject).setVisibility(8);
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new ImageView(this.mContext);
-    ((ImageView)localObject).setId(2131374859);
+    ((ImageView)localObject).setId(2131374393);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    ((ImageView)localObject).setBackgroundResource(2130846564);
-    localLayoutParams.addRule(7, 2131378813);
-    localLayoutParams.addRule(8, 2131378813);
-    localLayoutParams.setMargins(0, 0, (int)(-5.0F * this.density), (int)(-5.0F * this.density));
+    ((ImageView)localObject).setBackgroundResource(2130846441);
+    localLayoutParams.addRule(7, 2131378202);
+    localLayoutParams.addRule(8, 2131378202);
+    localLayoutParams.setMargins(0, 0, (int)(this.density * -5.0F), (int)(this.density * -5.0F));
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     ((ImageView)localObject).setVisibility(8);
     if (AppSetting.d) {
@@ -92,21 +100,21 @@ public class CameraEmotionAdapter
   private RelativeLayout getGuideView()
   {
     RelativeLayout localRelativeLayout = new RelativeLayout(this.mContext);
-    localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum * (this.columnNum - 2), (int)(199.0F * this.density)));
+    localRelativeLayout.setLayoutParams(new LinearLayout.LayoutParams(this.widthPixels / this.columnNum * (this.columnNum - 2), (int)(this.density * 199.0F)));
     Object localObject = new URLImageView(this.mContext);
-    ((URLImageView)localObject).setId(2131378813);
-    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(161.0F * this.density), (int)(127.0F * this.density));
+    ((URLImageView)localObject).setId(2131378202);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams((int)(this.density * 161.0F), (int)(this.density * 127.0F));
     localLayoutParams.addRule(13, -1);
     ((URLImageView)localObject).setScaleType(ImageView.ScaleType.FIT_XY);
     ((URLImageView)localObject).setAdjustViewBounds(false);
     localRelativeLayout.addView((View)localObject, localLayoutParams);
     localObject = new TextView(this.mContext);
     localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-    ((TextView)localObject).setText(HardCodeUtil.a(2131699608));
+    ((TextView)localObject).setText(HardCodeUtil.a(2131699716));
     ((TextView)localObject).setTextSize(ViewUtils.b(12.0F));
     ((TextView)localObject).setTextColor(-8947849);
     localLayoutParams.addRule(14, -1);
-    localLayoutParams.addRule(3, 2131378813);
+    localLayoutParams.addRule(3, 2131378202);
     return localRelativeLayout;
   }
   
@@ -121,142 +129,174 @@ public class CameraEmotionAdapter
         localURLDrawable.startDownload();
       }
       if (!(paramImageView.getDrawable() instanceof Animatable)) {
-        paramImageView.setImageDrawable((Drawable)paramURLImageView.getContext().getResources().getDrawable(2130846582));
+        paramImageView.setImageDrawable((Drawable)paramURLImageView.getContext().getResources().getDrawable(2130846461));
       }
       paramURLImageView = (Animatable)paramImageView.getDrawable();
       if (!paramURLImageView.isRunning()) {
         paramURLImageView.start();
       }
-      return;
     }
-    if ((localURLDrawable.getStatus() == 2) || (localURLDrawable.getStatus() == 3))
+    else
     {
+      if ((localURLDrawable.getStatus() != 2) && (localURLDrawable.getStatus() != 3))
+      {
+        paramURLImageView.setVisibility(0);
+        paramImageView.setVisibility(8);
+        return;
+      }
       paramURLImageView.setVisibility(8);
       paramImageView.setVisibility(0);
       if ((paramImageView.getDrawable() instanceof Animatable)) {
         ((Animatable)paramImageView.getDrawable()).stop();
       }
       paramImageView.setImageDrawable(this.mCameraPanelFailedDrawable);
-      return;
     }
-    paramURLImageView.setVisibility(0);
-    paramImageView.setVisibility(8);
   }
   
   private void updateUI(View paramView, EmotionPanelData paramEmotionPanelData)
   {
-    if ((paramView == null) || (!(paramEmotionPanelData instanceof CameraEmoticonInfo))) {
-      QLog.e("CameraEmotionAdapter", 1, "emotionInfo or contentView = null");
-    }
-    for (;;)
+    if ((paramView != null) && ((paramEmotionPanelData instanceof CameraEmoticonInfo)))
     {
-      return;
-      Object localObject = (URLImageView)paramView.findViewById(2131378813);
+      Object localObject1 = (URLImageView)paramView.findViewById(2131378202);
       CameraEmoticonInfo localCameraEmoticonInfo = (CameraEmoticonInfo)paramEmotionPanelData;
       paramView.setTag(localCameraEmoticonInfo);
       paramView.setVisibility(0);
-      if ((QLog.isColorLevel()) && (!StringUtil.a(localCameraEmoticonInfo.action))) {
-        QLog.d("CameraEmotionAdapter", 2, "updateUI info = " + localCameraEmoticonInfo.action);
-      }
-      if (((URLImageView)localObject).getTag(2131374864) != paramEmotionPanelData)
+      Object localObject2;
+      if ((QLog.isColorLevel()) && (!StringUtil.a(localCameraEmoticonInfo.action)))
       {
-        ((URLImageView)localObject).setTag(2131374864, paramEmotionPanelData);
-        paramEmotionPanelData = (ImageView)paramView.findViewById(2131374857);
-        paramView = (ImageView)paramView.findViewById(2131374859);
-        ((URLImageView)localObject).setVisibility(0);
-        ((URLImageView)localObject).setURLDrawableDownListener(null);
-        if ("cameraEdit".equals(localCameraEmoticonInfo.action))
-        {
-          ((URLImageView)localObject).setImageDrawable(null);
-          ((URLImageView)localObject).setBackgroundResource(2130846573);
-          paramEmotionPanelData.setVisibility(4);
-          paramView.setVisibility(4);
-          if (AppSetting.d) {
-            ((URLImageView)localObject).setContentDescription(HardCodeUtil.a(2131699609));
-          }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("updateUI info = ");
+        ((StringBuilder)localObject2).append(localCameraEmoticonInfo.action);
+        QLog.d("CameraEmotionAdapter", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (((URLImageView)localObject1).getTag(2131374399) == paramEmotionPanelData) {
+        return;
+      }
+      ((URLImageView)localObject1).setTag(2131374399, paramEmotionPanelData);
+      paramEmotionPanelData = (ImageView)paramView.findViewById(2131374391);
+      paramView = (ImageView)paramView.findViewById(2131374393);
+      ((URLImageView)localObject1).setVisibility(0);
+      ((URLImageView)localObject1).setURLDrawableDownListener(null);
+      if ("cameraEdit".equals(localCameraEmoticonInfo.action))
+      {
+        ((URLImageView)localObject1).setImageDrawable(null);
+        ((URLImageView)localObject1).setBackgroundResource(2130846452);
+        paramEmotionPanelData.setVisibility(4);
+        paramView.setVisibility(4);
+        if (AppSetting.d) {
+          ((URLImageView)localObject1).setContentDescription(HardCodeUtil.a(2131699717));
         }
-        else if ("cameraJump".equals(localCameraEmoticonInfo.action))
+      }
+      else if ("cameraJump".equals(localCameraEmoticonInfo.action))
+      {
+        ((URLImageView)localObject1).setImageDrawable(null);
+        ((URLImageView)localObject1).setBackgroundResource(2130846442);
+        paramEmotionPanelData.setVisibility(4);
+        paramView.setVisibility(4);
+        if (AppSetting.d) {
+          ((URLImageView)localObject1).setContentDescription(HardCodeUtil.a(2131699718));
+        }
+      }
+      else
+      {
+        localObject2 = localCameraEmoticonInfo.getDrawable(this.mContext, this.density);
+        ((URLImageView)localObject1).setBackgroundDrawable((Drawable)localObject2);
+        if (localCameraEmoticonInfo.roamingType.equals("needUpload"))
         {
-          ((URLImageView)localObject).setImageDrawable(null);
-          ((URLImageView)localObject).setBackgroundResource(2130846565);
-          paramEmotionPanelData.setVisibility(4);
+          ((URLImageView)localObject1).setImageDrawable(new ColorDrawable(-419430401));
+          localObject1 = (Animatable)this.mContext.getResources().getDrawable(2130846461);
+          paramEmotionPanelData.setImageDrawable((Drawable)localObject1);
+          ((Animatable)localObject1).start();
+          paramEmotionPanelData.setVisibility(0);
           paramView.setVisibility(4);
-          if (AppSetting.d) {
-            ((URLImageView)localObject).setContentDescription(HardCodeUtil.a(2131699610));
-          }
+        }
+        else if (localCameraEmoticonInfo.roamingType.equals("failed"))
+        {
+          ((URLImageView)localObject1).setImageDrawable(new ColorDrawable(-419430401));
+          paramEmotionPanelData.setVisibility(4);
+          paramView.setVisibility(0);
         }
         else
         {
-          Drawable localDrawable = localCameraEmoticonInfo.getDrawable(this.mContext, this.density);
-          ((URLImageView)localObject).setBackgroundDrawable(localDrawable);
-          if (localCameraEmoticonInfo.roamingType.equals("needUpload"))
+          ((URLImageView)localObject1).setImageDrawable(null);
+          paramEmotionPanelData.setVisibility(4);
+          paramView.setVisibility(4);
+          if ((localObject2 instanceof URLDrawable))
           {
-            ((URLImageView)localObject).setImageDrawable(new ColorDrawable(-419430401));
-            localObject = (Animatable)this.mContext.getResources().getDrawable(2130846582);
-            paramEmotionPanelData.setImageDrawable((Drawable)localObject);
-            ((Animatable)localObject).start();
-            paramEmotionPanelData.setVisibility(0);
-            paramView.setVisibility(4);
-          }
-          while (!TextUtils.isEmpty(localCameraEmoticonInfo.eId))
-          {
-            ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", "0X800A370", "0X800A370", 0, 0, "", "", localCameraEmoticonInfo.eId, "");
-            return;
-            if (localCameraEmoticonInfo.roamingType.equals("failed"))
-            {
-              ((URLImageView)localObject).setImageDrawable(new ColorDrawable(-419430401));
-              paramEmotionPanelData.setVisibility(4);
-              paramView.setVisibility(0);
-            }
-            else
-            {
-              ((URLImageView)localObject).setImageDrawable(null);
-              paramEmotionPanelData.setVisibility(4);
-              paramView.setVisibility(4);
-              if ((localDrawable instanceof URLDrawable))
-              {
-                ((URLImageView)localObject).setURLDrawableDownListener(new CameraEmotionAdapter.2(this, localCameraEmoticonInfo, (URLImageView)localObject, paramEmotionPanelData));
-                updateEmoticonDrawable((URLImageView)localObject, paramEmotionPanelData);
-              }
-            }
+            ((URLImageView)localObject1).setURLDrawableDownListener(new CameraEmotionAdapter.2(this, localCameraEmoticonInfo, (URLImageView)localObject1, paramEmotionPanelData));
+            updateEmoticonDrawable((URLImageView)localObject1, paramEmotionPanelData);
           }
         }
+        if (!TextUtils.isEmpty(localCameraEmoticonInfo.eId)) {
+          ReportController.b(this.app.getQQAppInterface(), "dc00898", "", "", "0X800A370", "0X800A370", 0, 0, "", "", localCameraEmoticonInfo.eId, "");
+        }
       }
+      return;
+    }
+    QLog.e("CameraEmotionAdapter", 1, "emotionInfo or contentView = null");
+  }
+  
+  public void callbackInMainThread(List<EmotionPanelData> paramList)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("refreshPanelData call back dataList = ");
+      Object localObject;
+      if (paramList == null) {
+        localObject = "null";
+      } else {
+        localObject = Integer.valueOf(paramList.size());
+      }
+      localStringBuilder.append(localObject);
+      QLog.d("CameraEmotionAdapter", 2, localStringBuilder.toString());
+    }
+    if (paramList != null)
+    {
+      setData(paramList);
+      notifyDataSetChanged();
     }
   }
   
   public View getEmotionView(BaseEmotionAdapter.ViewHolder paramViewHolder, int paramInt, View paramView, ViewGroup paramViewGroup)
   {
+    boolean bool = QLog.isColorLevel();
     int j = 0;
-    boolean bool;
-    if (QLog.isColorLevel())
+    if (bool)
     {
-      paramViewGroup = new StringBuilder().append("getEmotionView position = ").append(paramInt).append(" convertView NULL is ");
-      if (paramView == null)
-      {
+      paramViewGroup = new StringBuilder();
+      paramViewGroup.append("getEmotionView position = ");
+      paramViewGroup.append(paramInt);
+      paramViewGroup.append(" convertView NULL is ");
+      if (paramView == null) {
         bool = true;
-        QLog.d("CameraEmotionAdapter", 2, bool);
+      } else {
+        bool = false;
       }
+      paramViewGroup.append(bool);
+      QLog.d("CameraEmotionAdapter", 2, paramViewGroup.toString());
     }
-    else
+    paramViewGroup = (CameraEmotionAdapter.CameraEmotionViewHolder)paramViewHolder;
+    int i = j;
+    paramViewHolder = paramView;
+    if (paramView == null)
     {
-      paramViewGroup = (CameraEmotionAdapter.CameraEmotionViewHolder)paramViewHolder;
-      if (paramView != null) {
-        break label416;
+      if (QLog.isColorLevel())
+      {
+        paramViewHolder = new StringBuilder();
+        paramViewHolder.append("getEmotionView position = ");
+        paramViewHolder.append(paramInt);
+        paramViewHolder.append("; view from inflater");
+        QLog.d("CameraEmotionAdapter", 2, paramViewHolder.toString());
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("CameraEmotionAdapter", 2, "getEmotionView position = " + paramInt + "; view from inflater");
-      }
-      paramViewHolder = new EmoticonPanelLinearLayout(this.mContext, SystemEmotionPanelManager.a().a(this.mContext, true), -1);
+      paramViewHolder = new EmoticonPanelLinearLayout(this.mContext, new QQEmoticonPanelLinearLayoutHelper(this.mContext, this.mInteractionListener), -1);
       paramViewHolder.setLayoutParams(new AbsListView.LayoutParams(-1, -1));
       paramViewHolder.setOrientation(0);
-      if (paramInt != 0) {
-        break label224;
+      if (paramInt == 0) {
+        i = 16;
+      } else {
+        i = 14;
       }
-    }
-    label224:
-    for (int i = 16;; i = 14)
-    {
       paramViewHolder.setPadding(0, (int)(i * this.density), 0, 0);
       i = 0;
       while (i < this.columnNum)
@@ -268,43 +308,34 @@ public class CameraEmotionAdapter
         paramViewHolder.addView(paramView);
         i += 1;
       }
-      bool = false;
-      break;
-    }
-    paramViewHolder.setInterceptListener(this.mInterceptListener);
-    ((EmoticonPanelLinearLayout)paramViewHolder).setCallBack(this.callback);
-    paramView = (ViewGroup)paramViewHolder;
-    paramViewGroup.contentViews = new RelativeLayout[this.columnNum];
-    i = 0;
-    while (i < this.columnNum)
-    {
-      paramViewGroup.contentViews[i] = ((RelativeLayout)paramView.getChildAt(i));
-      i += 1;
-    }
-    paramViewHolder.setTag(paramViewGroup);
-    i = j;
-    for (;;)
-    {
-      if (i < this.columnNum)
+      paramViewHolder.setInterceptListener(this.mInterceptListener);
+      ((EmoticonPanelLinearLayout)paramViewHolder).setCallBack(this.callback);
+      paramView = (ViewGroup)paramViewHolder;
+      paramViewGroup.contentViews = new RelativeLayout[this.columnNum];
+      i = 0;
+      while (i < this.columnNum)
       {
-        j = this.columnNum * paramInt + i;
-        if (j > this.data.size() - 1)
-        {
-          paramViewGroup.contentViews[i].setTag(null);
-          paramViewGroup.contentViews[i].setVisibility(8);
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          updateUI(paramViewGroup.contentViews[i], (EmotionPanelData)this.data.get(j));
-        }
+        paramViewGroup.contentViews[i] = ((RelativeLayout)paramView.getChildAt(i));
+        i += 1;
       }
-      return paramViewHolder;
-      label416:
-      paramViewHolder = paramView;
+      paramViewHolder.setTag(paramViewGroup);
       i = j;
     }
+    while (i < this.columnNum)
+    {
+      j = this.columnNum * paramInt + i;
+      if (j > this.data.size() - 1)
+      {
+        paramViewGroup.contentViews[i].setTag(null);
+        paramViewGroup.contentViews[i].setVisibility(8);
+      }
+      else
+      {
+        updateUI(paramViewGroup.contentViews[i], (EmotionPanelData)this.data.get(j));
+      }
+      i += 1;
+    }
+    return paramViewHolder;
   }
   
   public BaseEmotionAdapter.ViewHolder newHolder()
@@ -317,12 +348,22 @@ public class CameraEmotionAdapter
     if (QLog.isColorLevel()) {
       QLog.d("CameraEmotionAdapter", 2, "refreshPanelData");
     }
-    this.mCameraEmotionAdapterHelper.refreshPanelData(this, this.panelType);
+    EmotionPanelDataBuilder localEmotionPanelDataBuilder = EmotionPanelDataBuilder.getInstance();
+    IEmoticonMainPanelApp localIEmoticonMainPanelApp = this.app;
+    int j = this.panelType;
+    BaseAIOContext localBaseAIOContext = this.mAIOContext;
+    int i;
+    if (localBaseAIOContext != null) {
+      i = localBaseAIOContext.a().a;
+    } else {
+      i = -1;
+    }
+    localEmotionPanelDataBuilder.asyncGetEmotionPanelData(localIEmoticonMainPanelApp, j, null, -1, i, false, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.CameraEmotionAdapter
  * JD-Core Version:    0.7.0.1
  */

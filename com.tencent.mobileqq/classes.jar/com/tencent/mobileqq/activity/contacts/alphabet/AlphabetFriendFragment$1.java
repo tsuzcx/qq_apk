@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.contacts.alphabet;
 
 import android.os.Vibrator;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 import com.tencent.qphone.base.util.QLog;
 
 class AlphabetFriendFragment$1
@@ -28,7 +28,7 @@ class AlphabetFriendFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.alphabet.AlphabetFriendFragment.1
  * JD-Core Version:    0.7.0.1
  */

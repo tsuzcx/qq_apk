@@ -4,9 +4,9 @@ import com.tencent.biz.qqstory.database.CommentEntry;
 
 public abstract interface DetailEventCallback
 {
-  public abstract void L_();
+  public abstract void I_();
   
-  public abstract void M_();
+  public abstract void J_();
   
   public abstract void a(int paramInt);
   
@@ -22,7 +22,7 @@ public abstract interface DetailEventCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.model.DetailEventCallback
  * JD-Core Version:    0.7.0.1
  */

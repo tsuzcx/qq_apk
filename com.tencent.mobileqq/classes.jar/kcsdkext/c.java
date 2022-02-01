@@ -16,91 +16,111 @@ public class c
   
   public static String a()
   {
+    Object localObject3;
     int j;
-    int i;
     int k;
-    try
-    {
-      localObject2 = PreferenceManager.getDefaultSharedPreferences(c);
-      localObject3 = a;
-      j = localObject3.length;
-      i = 0;
-      localObject1 = null;
-      if (i < j)
-      {
-        k = localObject3[i];
-        if (localObject1 == null)
-        {
-          localObject1 = k + "";
-          break label345;
-        }
-        localObject1 = (String)localObject1 + "," + k;
-        break label345;
-      }
-      ((SharedPreferences)localObject2).edit().putString("kcsdk_vers", (String)localObject1).commit();
-      j = ((SharedPreferences)localObject2).getInt("kcsdk_tar", 0);
-      Log.e("KcSdkShellManager", "KEY_KC_target: " + j);
-      if (j == 0) {
-        return null;
-      }
-      localObject1 = a;
-      k = localObject1.length;
-      i = 0;
-    }
-    catch (Throwable localThrowable)
-    {
-      Object localObject2;
-      Object localObject3;
-      Object localObject1;
-      label160:
-      localThrowable.printStackTrace();
-      return null;
-    }
-    if (i == 0)
-    {
-      Log.e("KcSdkShellManager", "version match failed, cload: " + j + " - cur: " + 2);
-      return null;
-    }
-    localObject1 = ((SharedPreferences)localObject2).getString("kcsdk_file", null);
-    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (!new File((String)localObject1).exists()))
-    {
-      Log.e("KcSdkShellManager", "sdkFile not exists");
-      return null;
-    }
-    if (!a((String)localObject1))
-    {
-      Log.e("KcSdkShellManager", "checkSign error");
-      return null;
-    }
-    localObject3 = a.a(new File((String)localObject1));
-    localObject2 = ((SharedPreferences)localObject2).getString("kcsdk_m5", "");
-    if (!((String)localObject2).equalsIgnoreCase((String)localObject3))
-    {
-      Log.e("KcSdkShellManager", "fileMD5: " + (String)localObject3 + " md5: " + (String)localObject2);
-      return null;
-    }
-    label345:
-    label376:
+    int i;
+    int m;
+    int n;
     for (;;)
     {
-      i = 0;
-      break label160;
-      i += 1;
-      break;
-      return localThrowable;
-      for (;;)
+      try
       {
-        if (i >= k) {
-          break label376;
-        }
-        if (j == localThrowable[i])
+        localObject2 = PreferenceManager.getDefaultSharedPreferences(c);
+        localObject3 = a;
+        j = localObject3.length;
+        k = 0;
+        localObject1 = null;
+        i = 0;
+        if (i < j)
         {
-          i = 1;
-          break;
+          m = localObject3[i];
+          if (localObject1 == null)
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append(m);
+            ((StringBuilder)localObject1).append("");
+            localObject1 = ((StringBuilder)localObject1).toString();
+            break label426;
+          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject1);
+          localStringBuilder.append(",");
+          localStringBuilder.append(m);
+          localObject1 = localStringBuilder.toString();
+          break label426;
         }
-        i += 1;
+        ((SharedPreferences)localObject2).edit().putString("kcsdk_vers", (String)localObject1).commit();
+        m = ((SharedPreferences)localObject2).getInt("kcsdk_tar", 0);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("KEY_KC_target: ");
+        ((StringBuilder)localObject1).append(m);
+        Log.e("KcSdkShellManager", ((StringBuilder)localObject1).toString());
+        if (m == 0) {
+          return null;
+        }
+        localObject1 = a;
+        n = localObject1.length;
+        j = 0;
       }
+      catch (Throwable localThrowable)
+      {
+        Object localObject2;
+        Object localObject1;
+        localThrowable.printStackTrace();
+        return null;
+      }
+      if (i == 0)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("version match failed, cload: ");
+        ((StringBuilder)localObject1).append(m);
+        ((StringBuilder)localObject1).append(" - cur: ");
+        ((StringBuilder)localObject1).append(2);
+        Log.e("KcSdkShellManager", ((StringBuilder)localObject1).toString());
+        return null;
+      }
+      localObject3 = ((SharedPreferences)localObject2).getString("kcsdk_file", null);
+      if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (new File((String)localObject3).exists()))
+      {
+        if (!a((String)localObject3))
+        {
+          Log.e("KcSdkShellManager", "checkSign error");
+          return null;
+        }
+        localObject1 = a.a(new File((String)localObject3));
+        localObject2 = ((SharedPreferences)localObject2).getString("kcsdk_m5", "");
+        if (((String)localObject2).equalsIgnoreCase((String)localObject1)) {
+          break label461;
+        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("fileMD5: ");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(" md5: ");
+        ((StringBuilder)localObject3).append((String)localObject2);
+        Log.e("KcSdkShellManager", ((StringBuilder)localObject3).toString());
+        return null;
+      }
+      Log.e("KcSdkShellManager", "sdkFile not exists");
+      return null;
+      label426:
+      i += 1;
     }
+    for (;;)
+    {
+      i = k;
+      if (j >= n) {
+        break;
+      }
+      if (m == localThrowable[j])
+      {
+        i = 1;
+        break;
+      }
+      j += 1;
+    }
+    label461:
+    return localObject3;
   }
   
   public static void a(Context paramContext)
@@ -133,7 +153,7 @@ public class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kcsdkext.c
  * JD-Core Version:    0.7.0.1
  */

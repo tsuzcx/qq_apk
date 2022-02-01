@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.app.message;
 
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
@@ -22,7 +23,7 @@ public class MessageStatisticHelper
     synchronized (jdField_a_of_type_JavaUtilList)
     {
       Iterator localIterator = jdField_a_of_type_JavaUtilList.iterator();
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         MessageStatisticHelper.DelayMsgReportItem localDelayMsgReportItem = (MessageStatisticHelper.DelayMsgReportItem)localIterator.next();
         HashMap localHashMap = new HashMap();
@@ -32,9 +33,14 @@ public class MessageStatisticHelper
         localHashMap.put("uinType", String.valueOf(localDelayMsgReportItem.c));
         StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(localDelayMsgReportItem.jdField_a_of_type_JavaLangString, "actBelatedMsg", false, localDelayMsgReportItem.jdField_a_of_type_Long, 0L, localHashMap, "");
       }
+      MessageStatisticHelper.DelayMsgReportItem.a(jdField_a_of_type_JavaUtilList);
+      jdField_a_of_type_JavaUtilList.clear();
+      return;
     }
-    MessageStatisticHelper.DelayMsgReportItem.a(jdField_a_of_type_JavaUtilList);
-    jdField_a_of_type_JavaUtilList.clear();
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt)
@@ -49,27 +55,33 @@ public class MessageStatisticHelper
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "actNoCachedLastMsg", true, 0L, 0L, paramQQAppInterface, "");
   }
   
-  public static void a(MessageRecord arg0, QQAppInterface paramQQAppInterface)
+  public static void a(MessageRecord arg0, AppInterface paramAppInterface)
   {
-    if (!paramQQAppInterface.getCurrentUin().endsWith("77")) {}
-    long l;
-    do
-    {
+    if (!paramAppInterface.getCurrentUin().endsWith("77")) {
       return;
-      l = NetConnInfoCenter.getServerTime() - ???.time;
-    } while ((l < 30L) || ((paramQQAppInterface.mLoginTime != 0L) && (???.time < paramQQAppInterface.mLoginTime)));
-    if (???.time < paramQQAppInterface.mRegisterPushTime) {}
-    for (int i = 1;; i = 2)
+    }
+    long l = NetConnInfoCenter.getServerTime() - ???.time;
+    if (l < 30L) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)paramAppInterface;
+    if ((localQQAppInterface.mLoginTime != 0L) && (???.time < localQQAppInterface.mLoginTime)) {
+      return;
+    }
+    int i;
+    if (???.time < localQQAppInterface.mRegisterPushTime) {
+      i = 1;
+    } else {
+      i = 2;
+    }
+    paramAppInterface = MessageStatisticHelper.DelayMsgReportItem.a(i, paramAppInterface.getCurrentUin(), l, ???.msgtype, ???.istroop);
+    synchronized (jdField_a_of_type_JavaUtilList)
     {
-      paramQQAppInterface = MessageStatisticHelper.DelayMsgReportItem.a(i, paramQQAppInterface.getCurrentUin(), l, ???.msgtype, ???.istroop);
-      synchronized (jdField_a_of_type_JavaUtilList)
-      {
-        jdField_a_of_type_JavaUtilList.add(paramQQAppInterface);
-        if (jdField_a_of_type_JavaUtilList.size() >= 32) {
-          a();
-        }
-        return;
+      jdField_a_of_type_JavaUtilList.add(paramAppInterface);
+      if (jdField_a_of_type_JavaUtilList.size() >= 32) {
+        a();
       }
+      return;
     }
   }
   
@@ -85,7 +97,7 @@ public class MessageStatisticHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.message.MessageStatisticHelper
  * JD-Core Version:    0.7.0.1
  */

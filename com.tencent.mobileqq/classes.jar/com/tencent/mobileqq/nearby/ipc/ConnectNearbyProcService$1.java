@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.nearby.ipc;
 
 import android.os.Message;
-import com.tencent.mobileqq.nearby.NearbyProxy;
+import com.tencent.mobileqq.nearby.api.INearbyProxy;
 import com.tencent.qphone.base.util.QLog;
 
 class ConnectNearbyProcService$1
@@ -19,16 +19,16 @@ class ConnectNearbyProcService$1
   
   public BasicTypeDataParcel a(BasicTypeDataParcel paramBasicTypeDataParcel)
   {
-    if (paramBasicTypeDataParcel == null) {}
-    Object[] arrayOfObject;
-    do
-    {
+    if (paramBasicTypeDataParcel == null) {
       return null;
-      if (QLog.isColorLevel()) {
-        QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
-      }
-      arrayOfObject = ConnectNearbyProcService.a(this.a, paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
-    } while (arrayOfObject == null);
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("nearby_ipc_log_tag", 2, paramBasicTypeDataParcel.toString());
+    }
+    Object[] arrayOfObject = ConnectNearbyProcService.a(this.a, paramBasicTypeDataParcel.jdField_a_of_type_Int, paramBasicTypeDataParcel.jdField_a_of_type_ArrayOfJavaLangObject);
+    if (arrayOfObject == null) {
+      return null;
+    }
     return new BasicTypeDataParcel(paramBasicTypeDataParcel.jdField_a_of_type_Int, arrayOfObject);
   }
   
@@ -36,13 +36,13 @@ class ConnectNearbyProcService$1
   {
     ConnectNearbyProcService.a(paramNearbyProcessInterface);
     if (ConnectNearbyProcService.a(this.a) != null) {
-      ConnectNearbyProcService.a(this.a).a();
+      ConnectNearbyProcService.a(this.a).c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.ipc.ConnectNearbyProcService.1
  * JD-Core Version:    0.7.0.1
  */

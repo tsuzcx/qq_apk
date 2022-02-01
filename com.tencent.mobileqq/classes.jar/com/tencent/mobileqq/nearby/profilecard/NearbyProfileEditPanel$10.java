@@ -4,7 +4,6 @@ import android.content.res.Resources;
 import android.view.View;
 import android.view.View.OnClickListener;
 import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import java.util.ArrayList;
 
 class NearbyProfileEditPanel$10
@@ -14,22 +13,17 @@ class NearbyProfileEditPanel$10
   
   public void onClick(View paramView)
   {
-    int i = this.a.jdField_a_of_type_JavaUtilArrayList.size();
-    NearbyPeopleProfileActivity localNearbyPeopleProfileActivity = this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity;
-    if (i >= NearbyPeopleProfileActivity.c) {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694439), 0).a();
-    }
-    for (;;)
+    if (this.a.jdField_a_of_type_JavaUtilArrayList.size() >= NearbyProfileCardConstants.a)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
+      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity, 0, this.a.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyPeopleProfileActivity.getResources().getString(2131694404), 0).a();
       return;
-      NearbyProfileEditPanel.c(this.a);
     }
+    NearbyProfileEditPanel.c(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.10
  * JD-Core Version:    0.7.0.1
  */

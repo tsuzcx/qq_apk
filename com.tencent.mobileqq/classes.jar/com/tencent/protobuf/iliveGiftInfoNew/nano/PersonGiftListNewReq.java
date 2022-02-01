@@ -23,14 +23,15 @@ public final class PersonGiftListNewReq
   
   public static PersonGiftListNewReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new PersonGiftListNewReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new PersonGiftListNewReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static PersonGiftListNewReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -54,30 +55,35 @@ public final class PersonGiftListNewReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int j = super.computeSerializedSize();
-    int i = j;
-    if (this.roomId != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.roomId);
+    int i = super.computeSerializedSize();
+    long l = this.roomId;
+    int j = i;
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
-    j = i;
-    if (this.from != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, this.from);
-    }
+    int k = this.from;
     i = j;
-    if (this.roomType != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(3, this.roomType);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(2, k);
     }
+    k = this.roomType;
     j = i;
-    if (this.msgType != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, this.msgType);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(3, k);
     }
+    k = this.msgType;
     i = j;
-    if (this.needFullUrl != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(5, this.needFullUrl);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(4, k);
     }
-    return i;
+    k = this.needFullUrl;
+    j = i;
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(5, k);
+    }
+    return j;
   }
   
   public PersonGiftListNewReq mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -85,54 +91,74 @@ public final class PersonGiftListNewReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.roomId = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 16: 
-        this.from = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 24: 
-        this.roomType = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 32: 
-        this.msgType = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
       }
-      this.needFullUrl = paramCodedInputByteBufferNano.readUInt32();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 24)
+          {
+            if (i != 32)
+            {
+              if (i != 40)
+              {
+                if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                  return this;
+                }
+              }
+              else {
+                this.needFullUrl = paramCodedInputByteBufferNano.readUInt32();
+              }
+            }
+            else {
+              this.msgType = paramCodedInputByteBufferNano.readUInt32();
+            }
+          }
+          else {
+            this.roomType = paramCodedInputByteBufferNano.readUInt32();
+          }
+        }
+        else {
+          this.from = paramCodedInputByteBufferNano.readUInt32();
+        }
+      }
+      else {
+        this.roomId = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.roomId != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.roomId);
+    long l = this.roomId;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if (this.from != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(2, this.from);
+    int i = this.from;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
-    if (this.roomType != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(3, this.roomType);
+    i = this.roomType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(3, i);
     }
-    if (this.msgType != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(4, this.msgType);
+    i = this.msgType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(4, i);
     }
-    if (this.needFullUrl != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(5, this.needFullUrl);
+    i = this.needFullUrl;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(5, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveGiftInfoNew.nano.PersonGiftListNewReq
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class DrawableCenterTextView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     Object localObject = getCompoundDrawables();
     if (localObject != null)
@@ -37,7 +37,7 @@ public class DrawableCenterTextView
         int i = getCompoundDrawablePadding();
         float f2 = ((Drawable)localObject).getIntrinsicWidth();
         float f3 = i;
-        paramCanvas.translate((getWidth() - (f2 + f1 + f3)) / 2.0F, 0.0F);
+        paramCanvas.translate((getWidth() - (f1 + f2 + f3)) / 2.0F, 0.0F);
       }
     }
     super.onDraw(paramCanvas);
@@ -45,7 +45,7 @@ public class DrawableCenterTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.DrawableCenterTextView
  * JD-Core Version:    0.7.0.1
  */

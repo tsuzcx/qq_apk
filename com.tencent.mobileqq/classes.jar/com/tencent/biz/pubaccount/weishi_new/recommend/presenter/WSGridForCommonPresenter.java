@@ -18,24 +18,24 @@ public class WSGridForCommonPresenter
     return false;
   }
   
-  protected boolean b()
+  protected boolean d()
   {
     return false;
   }
   
-  protected boolean c()
+  protected boolean e()
   {
     return true;
   }
   
-  protected boolean d()
+  protected boolean f()
   {
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommend.presenter.WSGridForCommonPresenter
  * JD-Core Version:    0.7.0.1
  */

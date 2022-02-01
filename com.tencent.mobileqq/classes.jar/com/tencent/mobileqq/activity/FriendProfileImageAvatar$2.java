@@ -9,41 +9,56 @@ class FriendProfileImageAvatar$2
 {
   FriendProfileImageAvatar$2(FriendProfileImageAvatar paramFriendProfileImageAvatar) {}
   
-  public void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
+  protected void onGetHeadInfo(boolean paramBoolean, Setting paramSetting)
   {
-    if ((paramSetting == null) || (!this.a.b.equals(paramSetting.uin))) {}
-    do
+    if (paramSetting != null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.profilecard.Avatar", 2, "onGetHeadInfo: uin=" + paramSetting.uin);
+      if (!this.a.b.equals(paramSetting.uin)) {
+        return;
       }
-    } while ((!this.a.jdField_a_of_type_Boolean) || (paramSetting.url == null) || (paramSetting.url.length() <= 0));
-    this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onGetHeadInfo: uin=");
+        localStringBuilder.append(paramSetting.uin);
+        QLog.d("Q.profilecard.Avatar", 2, localStringBuilder.toString());
+      }
+      if ((this.a.jdField_a_of_type_Boolean) && (paramSetting.url != null) && (paramSetting.url.length() > 0)) {
+        this.a.a(paramSetting.uin, paramSetting.bFaceFlags, paramSetting.url);
+      }
+    }
   }
   
-  public void onUpdateCustomHead(boolean paramBoolean, String paramString)
+  protected void onUpdateCustomHead(boolean paramBoolean, String paramString)
   {
     if (!this.a.b.equals(paramString)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.profilecard.Avatar", 2, "onUpdateCustomHead: uin=" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdateCustomHead: uin=");
+      localStringBuilder.append(paramString);
+      QLog.d("Q.profilecard.Avatar", 2, localStringBuilder.toString());
     }
-    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    paramString = this.a;
+    paramString.b(paramString.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
     if (paramBoolean)
     {
-      this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo, false);
-      this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+      paramString = this.a;
+      paramString.a(paramString.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo, false);
+      paramString = this.a;
+      paramString.c(paramString.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
       return;
     }
     this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo.a = 2;
-    this.a.c(this.a.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
+    paramString = this.a;
+    paramString.c(paramString.jdField_a_of_type_ComTencentMobileqqActivityFriendProfileImageModel$ProfileImageInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FriendProfileImageAvatar.2
  * JD-Core Version:    0.7.0.1
  */

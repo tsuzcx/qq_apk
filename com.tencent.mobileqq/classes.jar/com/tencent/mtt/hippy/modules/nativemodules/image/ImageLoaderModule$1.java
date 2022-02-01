@@ -17,7 +17,7 @@ class ImageLoaderModule$1
   {
     if (paramHippyDrawable != null)
     {
-      Object localObject = paramHippyDrawable.getBitmap();
+      localObject = paramHippyDrawable.getBitmap();
       if (localObject != null)
       {
         int i = ((Bitmap)localObject).getWidth();
@@ -27,24 +27,36 @@ class ImageLoaderModule$1
         ((HippyMap)localObject).pushInt("height", j);
         this.a.resolve(localObject);
       }
-      for (;;)
+      else
       {
-        paramHippyDrawable.onDrawableDetached();
-        return;
-        this.a.reject("bitmap is null " + paramHippyDrawable.getSource());
+        localObject = this.a;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("bitmap is null ");
+        localStringBuilder.append(paramHippyDrawable.getSource());
+        ((Promise)localObject).reject(localStringBuilder.toString());
       }
+      paramHippyDrawable.onDrawableDetached();
+      return;
     }
-    this.a.reject("fetch image fail " + this.b);
+    paramHippyDrawable = this.a;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("fetch image fail ");
+    ((StringBuilder)localObject).append(this.b);
+    paramHippyDrawable.reject(((StringBuilder)localObject).toString());
   }
   
   public void onRequestFail(Throwable paramThrowable, String paramString)
   {
-    this.a.reject("fetch image fail " + paramString);
+    paramThrowable = this.a;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("fetch image fail ");
+    localStringBuilder.append(paramString);
+    paramThrowable.reject(localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.image.ImageLoaderModule.1
  * JD-Core Version:    0.7.0.1
  */

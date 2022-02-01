@@ -25,17 +25,17 @@ class TroopStoryMemoriesListAdapter$VideoItemViewHolder
   public TroopStoryMemoriesListAdapter$VideoItemViewHolder(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363196));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131372115));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379336));
-    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131381523));
+    this.jdField_a_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131363135));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131371697));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131378688));
+    this.jdField_b_of_type_ComTencentImageURLImageView = ((URLImageView)paramView.findViewById(2131380758));
   }
   
   public void a(TroopStoryItemInfo paramTroopStoryItemInfo, int paramInt)
   {
     TroopStoryMemoriesListAdapter.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter, paramTroopStoryItemInfo, this.jdField_a_of_type_ComTencentImageURLImageView, this.jdField_a_of_type_AndroidWidgetTextView);
     this.jdField_b_of_type_AndroidWidgetTextView.setText(DateUtils.d(paramTroopStoryItemInfo.publishTime));
-    Drawable localDrawable = this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130847249);
+    Drawable localDrawable = this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a.getResources().getDrawable(2130847117);
     try
     {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
@@ -44,23 +44,21 @@ class TroopStoryMemoriesListAdapter$VideoItemViewHolder
       localURLDrawableOptions.mMemoryCacheKeySuffix = "troop_story_message";
       paramTroopStoryItemInfo = URLDrawable.getDrawable(paramTroopStoryItemInfo.videoThumbUrl, localURLDrawableOptions);
       paramTroopStoryItemInfo.setTag(URLDrawableDecodeHandler.b(UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 50.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 70.0F), UIUtils.a(this.jdField_b_of_type_ComTencentBizQqstoryTroopMemoriesTroopStoryMemoriesListAdapter.a, 3.0F)));
-      paramTroopStoryItemInfo.setDecodeHandler(URLDrawableDecodeHandler.j);
+      paramTroopStoryItemInfo.setDecodeHandler(URLDrawableDecodeHandler.i);
       this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(paramTroopStoryItemInfo);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(new TroopStoryMemoriesListAdapter.VideoItemViewHolder.1(this, paramInt));
-      return;
     }
     catch (Exception paramTroopStoryItemInfo)
     {
-      for (;;)
-      {
-        this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
-      }
+      label141:
+      break label141;
     }
+    this.jdField_b_of_type_ComTencentImageURLImageView.setImageDrawable(localDrawable);
+    this.jdField_a_of_type_AndroidViewView.setOnClickListener(new TroopStoryMemoriesListAdapter.VideoItemViewHolder.1(this, paramInt));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.VideoItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 public final class LBSInfo
@@ -59,48 +60,51 @@ public final class LBSInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("LBSInfo[\n");
-    if (this.stGps != null) {
-      localStringBuilder.append(this.stGps.toString());
+    Object localObject = this.stGps;
+    if (localObject != null) {
+      localStringBuilder.append(((GPS)localObject).toString());
     }
-    if (this.stAttr != null) {
-      localStringBuilder.append(this.stAttr.toString());
+    localObject = this.stAttr;
+    if (localObject != null) {
+      localStringBuilder.append(((Attr)localObject).toString());
     }
-    Iterator localIterator;
-    if ((this.vCells != null) && (this.vCells.size() > 0))
+    localObject = this.vCells;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
     {
-      localIterator = this.vCells.iterator();
-      if (localIterator.hasNext()) {}
-    }
-    else if ((this.vWifis != null) && (this.vWifis.size() > 0))
-    {
-      localIterator = this.vWifis.iterator();
-    }
-    for (;;)
-    {
-      if (!localIterator.hasNext())
-      {
-        localStringBuilder.append("]");
-        return localStringBuilder.toString();
-        localStringBuilder.append(((Cell)localIterator.next()).toString());
-        break;
+      localObject = this.vCells.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localStringBuilder.append(((Cell)((Iterator)localObject).next()).toString());
       }
-      localStringBuilder.append(((Wifi)localIterator.next()).toString());
     }
+    localObject = this.vWifis;
+    if ((localObject != null) && (((ArrayList)localObject).size() > 0))
+    {
+      localObject = this.vWifis.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localStringBuilder.append(((Wifi)((Iterator)localObject).next()).toString());
+      }
+    }
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stGps != null) {
-      paramJceOutputStream.write(this.stGps, 0);
+    Object localObject = this.stGps;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.vWifis != null) {
-      paramJceOutputStream.write(this.vWifis, 1);
+    localObject = this.vWifis;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.vCells != null) {
-      paramJceOutputStream.write(this.vCells, 2);
+    localObject = this.vCells;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.stAttr != null) {
-      paramJceOutputStream.write(this.stAttr, 3);
+    localObject = this.stAttr;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }

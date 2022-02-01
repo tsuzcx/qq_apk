@@ -16,14 +16,18 @@ class QQIndividualityBridgeActivity$1
       this.a.setResult(1001);
       QQIndividualityBridgeActivity.a(this.a);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("QQIndividuality", 2, "dialog dismiss: " + this.a.a);
+    if (QLog.isColorLevel())
+    {
+      paramDialogInterface = new StringBuilder();
+      paramDialogInterface.append("dialog dismiss: ");
+      paramDialogInterface.append(this.a.a);
+      QLog.d("QQIndividuality", 2, paramDialogInterface.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqindividuality.QQIndividualityBridgeActivity.1
  * JD-Core Version:    0.7.0.1
  */

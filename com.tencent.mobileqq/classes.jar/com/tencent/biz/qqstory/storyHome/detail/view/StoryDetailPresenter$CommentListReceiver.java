@@ -17,17 +17,11 @@ class StoryDetailPresenter$CommentListReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull CommentListPageLoader.GetFeedCommentEvent paramGetFeedCommentEvent)
   {
-    if ((!paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null)) {
-      SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetFeedCommentEvent.toString());
-    }
-    boolean bool2;
-    boolean bool1;
-    do
+    if ((paramGetFeedCommentEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) && (!paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
     {
-      return;
       SLog.a(this.TAG, "receive comment list event. %s.", paramGetFeedCommentEvent.toString());
-      bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
-      bool1 = true;
+      boolean bool2 = StoryDetailPresenter.a(paramStoryDetailPresenter);
+      boolean bool1 = true;
       if (paramGetFeedCommentEvent.jdField_a_of_type_Int == 0) {
         bool1 = false;
       }
@@ -35,8 +29,12 @@ class StoryDetailPresenter$CommentListReceiver
       StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1, paramGetFeedCommentEvent.b);
       StoryDetailPresenter.a(paramStoryDetailPresenter).a(bool1, paramGetFeedCommentEvent.jdField_a_of_type_Boolean);
       StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramGetFeedCommentEvent.jdField_a_of_type_JavaUtilList, paramGetFeedCommentEvent.c, bool1);
-    } while (bool2 != bool1);
-    paramStoryDetailPresenter.b(paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      if (bool2 == bool1) {
+        paramStoryDetailPresenter.b(paramGetFeedCommentEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess());
+      }
+      return;
+    }
+    SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetFeedCommentEvent.toString());
   }
   
   public Class acceptEventClass()
@@ -48,7 +46,7 @@ class StoryDetailPresenter$CommentListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.CommentListReceiver
  * JD-Core Version:    0.7.0.1
  */

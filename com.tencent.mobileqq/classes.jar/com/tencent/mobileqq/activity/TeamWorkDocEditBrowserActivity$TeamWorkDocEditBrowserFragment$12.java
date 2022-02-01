@@ -1,34 +1,22 @@
 package com.tencent.mobileqq.activity;
 
-import android.support.v4.app.FragmentActivity;
-import android.view.View;
-import com.tencent.widget.ActionSheet;
-import com.tencent.widget.ActionSheet.OnButtonClickListener;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.utils.SharedPreUtils;
 
 class TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$12
-  implements ActionSheet.OnButtonClickListener
+  implements Runnable
 {
-  TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$12(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment, ActionSheet paramActionSheet) {}
+  TeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment$12(TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment paramTeamWorkDocEditBrowserFragment) {}
   
-  public void OnClick(View paramView, int paramInt)
+  public void run()
   {
-    switch (paramInt)
-    {
-    default: 
-      return;
-    case 0: 
-      TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.c(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment, true);
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.b(this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getShareUrl());
-      return;
-    }
-    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-    this.jdField_a_of_type_ComTencentMobileqqActivityTeamWorkDocEditBrowserActivity$TeamWorkDocEditBrowserFragment.getActivity().finish();
+    String str = SharedPreUtils.q(this.this$0.getQBaseActivity());
+    this.this$0.getQBaseActivity().runOnUiThread(new TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.12.1(this, str));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TeamWorkDocEditBrowserActivity.TeamWorkDocEditBrowserFragment.12
  * JD-Core Version:    0.7.0.1
  */

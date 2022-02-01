@@ -41,27 +41,36 @@ class AppStateManager$3
         return;
       }
     }
-    String str = "";
-    if (this.val$type == 1) {
+    int k = this.val$type;
+    if (k == 1) {
       str = "小程序启动碰到了异常.";
+    } else if (k == 2) {
+      str = "小程序启动可能碰到了问题.";
+    } else {
+      str = "";
     }
-    for (;;)
-    {
-      str = str + " \n   tbsVersion=" + i + " \n   tmpDirTbsVersion=" + j;
-      str = str + "\n是否需要清理当前小程序缓存，并重新启动小程序？";
-      QMLog.e("minisdk-start_RuntimeState", "show Dialig :" + str);
-      DialogUtil.createCustomDialog(this.val$activity, 230, "小程序启动", str, R.string.mini_sdk_cancel, R.string.mini_sdk_ok, new AppStateManager.3.1(this), new AppStateManager.3.2(this)).show();
-      AppStateManager.access$502(this.this$0, true);
-      return;
-      if (this.val$type == 2) {
-        str = "小程序启动可能碰到了问题.";
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(" \n   tbsVersion=");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" \n   tmpDirTbsVersion=");
+    localStringBuilder.append(j);
+    String str = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append("\n是否需要清理当前小程序缓存，并重新启动小程序？");
+    str = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("show Dialig :");
+    localStringBuilder.append(str);
+    QMLog.e("minisdk-start_RuntimeState", localStringBuilder.toString());
+    DialogUtil.createCustomDialog(this.val$activity, 230, "小程序启动", str, R.string.mini_sdk_cancel, R.string.mini_sdk_ok, new AppStateManager.3.1(this), new AppStateManager.3.2(this)).show();
+    AppStateManager.access$502(this.this$0, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.runtime.AppStateManager.3
  * JD-Core Version:    0.7.0.1
  */

@@ -13,21 +13,26 @@ class GameRuntime$8
   
   public void onGetScreenShot(@NotNull Object paramObject)
   {
-    if ((paramObject instanceof Bitmap)) {}
-    for (paramObject = (Bitmap)paramObject; (paramObject == null) || (paramObject.isRecycled()); paramObject = null)
+    if ((paramObject instanceof Bitmap)) {
+      paramObject = (Bitmap)paramObject;
+    } else {
+      paramObject = null;
+    }
+    if ((paramObject != null) && (!paramObject.isRecycled()))
     {
-      if (this.val$screenshotCallback != null) {
-        this.val$screenshotCallback.onGetScreenshot(null);
-      }
-      GameRuntime.access$900(this.this$0).isGettingScreenShot = false;
+      ThreadManager.executeOnDiskIOThreadPool(new GameRuntime.8.1(this, paramObject));
       return;
     }
-    ThreadManager.executeOnDiskIOThreadPool(new GameRuntime.8.1(this, paramObject));
+    paramObject = this.val$screenshotCallback;
+    if (paramObject != null) {
+      paramObject.onGetScreenshot(null);
+    }
+    GameRuntime.access$900(this.this$0).isGettingScreenShot = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.GameRuntime.8
  * JD-Core Version:    0.7.0.1
  */

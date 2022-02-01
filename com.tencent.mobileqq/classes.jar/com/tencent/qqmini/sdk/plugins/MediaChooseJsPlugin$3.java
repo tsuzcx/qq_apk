@@ -10,8 +10,12 @@ class MediaChooseJsPlugin$3
   
   public void run()
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("MediaJsPlugin", "hideToastView toastView=" + MediaChooseJsPlugin.access$100(this.this$0));
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hideToastView toastView=");
+      localStringBuilder.append(MediaChooseJsPlugin.access$100(this.this$0));
+      QMLog.d("MediaJsPlugin", localStringBuilder.toString());
     }
     if (MediaChooseJsPlugin.access$100(this.this$0) != null)
     {
@@ -22,7 +26,7 @@ class MediaChooseJsPlugin$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.MediaChooseJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

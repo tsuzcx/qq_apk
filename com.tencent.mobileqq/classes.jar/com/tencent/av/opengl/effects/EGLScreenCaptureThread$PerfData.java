@@ -34,9 +34,7 @@ class EGLScreenCaptureThread$PerfData
     this.d = ((this.d + paramLong3) / 2L);
     this.e = ((this.e + paramLong4) / 2L);
     this.f = ((this.f + paramLong5) / 2L);
-    if (this.g != 0L) {
-      paramLong1 = this.g;
-    }
+    paramLong1 = this.g;
     this.g = l;
   }
   
@@ -49,7 +47,7 @@ class EGLScreenCaptureThread$PerfData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.EGLScreenCaptureThread.PerfData
  * JD-Core Version:    0.7.0.1
  */

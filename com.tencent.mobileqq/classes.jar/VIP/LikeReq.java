@@ -32,14 +32,15 @@ public final class LikeReq
   {
     paramJceOutputStream.write(this.fromUin, 0);
     paramJceOutputStream.write(this.toUin, 1);
-    if (this.stSource != null) {
-      paramJceOutputStream.write(this.stSource, 2);
+    SourceInfo localSourceInfo = this.stSource;
+    if (localSourceInfo != null) {
+      paramJceOutputStream.write(localSourceInfo, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VIP.LikeReq
  * JD-Core Version:    0.7.0.1
  */

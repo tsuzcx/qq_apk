@@ -1,7 +1,5 @@
 package com.tencent.mobileqq.config.business;
 
-import androidx.annotation.Nullable;
-
 public class AIOPicThumbSizeProcessor$AIOPicThumbSizeConfig
 {
   public double a;
@@ -16,20 +14,55 @@ public class AIOPicThumbSizeProcessor$AIOPicThumbSizeConfig
   public int g;
   public int h;
   
-  public boolean equals(@Nullable Object paramObject)
+  public boolean equals(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof AIOPicThumbSizeConfig))) {}
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      return false;
+      if (!(paramObject instanceof AIOPicThumbSizeConfig)) {
+        return false;
+      }
       paramObject = (AIOPicThumbSizeConfig)paramObject;
-    } while ((this.a != paramObject.a) || (this.c != paramObject.c) || (this.d != paramObject.d) || (this.e != paramObject.e) || (this.f != paramObject.f) || (this.g != paramObject.g) || (this.h != paramObject.h) || (this.b != paramObject.b));
-    return true;
+      bool1 = bool2;
+      if (this.a == paramObject.a)
+      {
+        bool1 = bool2;
+        if (this.c == paramObject.c)
+        {
+          bool1 = bool2;
+          if (this.d == paramObject.d)
+          {
+            bool1 = bool2;
+            if (this.e == paramObject.e)
+            {
+              bool1 = bool2;
+              if (this.f == paramObject.f)
+              {
+                bool1 = bool2;
+                if (this.g == paramObject.g)
+                {
+                  bool1 = bool2;
+                  if (this.h == paramObject.h)
+                  {
+                    bool1 = bool2;
+                    if (this.b == paramObject.b) {
+                      bool1 = true;
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig
  * JD-Core Version:    0.7.0.1
  */

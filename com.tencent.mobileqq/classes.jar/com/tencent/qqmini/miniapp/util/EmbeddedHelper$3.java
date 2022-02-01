@@ -11,30 +11,45 @@ final class EmbeddedHelper$3
   
   public void onDownloadFinish(int paramInt)
   {
-    QMLog.e("EmbeddedHelper", "onDownloadFinish " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadFinish ");
+    localStringBuilder.append(paramInt);
+    QMLog.e("EmbeddedHelper", localStringBuilder.toString());
     if ((paramInt == 177) || (paramInt == 110)) {
       EmbeddedHelper.access$200(this.val$activity);
     }
-    EmbeddedHelper.access$300(781, "downloadFinish" + paramInt);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("downloadFinish");
+    localStringBuilder.append(paramInt);
+    EmbeddedHelper.access$300(781, localStringBuilder.toString());
   }
   
   public void onDownloadProgress(int paramInt)
   {
-    QMLog.e("EmbeddedHelper", "onDownloadProgress : " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadProgress : ");
+    localStringBuilder.append(paramInt);
+    QMLog.e("EmbeddedHelper", localStringBuilder.toString());
   }
   
   public void onInstallFinish(int paramInt)
   {
-    QMLog.e("EmbeddedHelper", "onInstallFinish : " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onInstallFinish : ");
+    localStringBuilder.append(paramInt);
+    QMLog.e("EmbeddedHelper", localStringBuilder.toString());
     if ((paramInt == 220) || (paramInt == 232)) {
       EmbeddedHelper.access$200(this.val$activity);
     }
-    EmbeddedHelper.access$300(781, "installFinish" + paramInt);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("installFinish");
+    localStringBuilder.append(paramInt);
+    EmbeddedHelper.access$300(781, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.EmbeddedHelper.3
  * JD-Core Version:    0.7.0.1
  */

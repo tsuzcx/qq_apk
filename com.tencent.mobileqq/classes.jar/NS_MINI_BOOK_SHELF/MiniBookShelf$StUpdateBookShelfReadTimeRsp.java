@@ -11,7 +11,7 @@ public final class MiniBookShelf$StUpdateBookShelfReadTimeRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_BOOK_SHELF.MiniBookShelf.StUpdateBookShelfReadTimeRsp
  * JD-Core Version:    0.7.0.1
  */

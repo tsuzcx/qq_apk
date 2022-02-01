@@ -19,7 +19,12 @@ public class VipUploadConfigImpl
   
   public boolean canHoldSystemLock()
   {
-    return QzoneConfig.getInstance().getConfig("PhotoUpload", "canHoldSystemLock", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("PhotoUpload", "canHoldSystemLock", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean enableBitmapNativeAlloc()
@@ -29,7 +34,12 @@ public class VipUploadConfigImpl
   
   public boolean enableV6Route()
   {
-    return QzoneConfig.getInstance().getConfig("QzoneUploadSetting", "UploadEnableV6Route", 0) == 1;
+    QzoneConfig localQzoneConfig = QzoneConfig.getInstance();
+    boolean bool = false;
+    if (localQzoneConfig.getConfig("QzoneUploadSetting", "UploadEnableV6Route", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   public int getAppId()
@@ -79,18 +89,20 @@ public class VipUploadConfigImpl
   
   public int getGifUploadLimit(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    case 4: 
-    case 5: 
-    default: 
-      return 0;
-    case 3: 
-      return QzoneConfig.getInstance().getConfig("PhotoUpload", "GifUploadLimt2G", 819200);
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 6) {
+            return 0;
+          }
+          return QzoneConfig.getInstance().getConfig("PhotoUpload", "GifUploadLimt4G", 5242880);
+        }
+        return QzoneConfig.getInstance().getConfig("PhotoUpload", "GifUploadLimt2G", 819200);
+      }
       return QzoneConfig.getInstance().getConfig("PhotoUpload", "GifUploadLimt3G", 2097152);
-    case 6: 
-      return QzoneConfig.getInstance().getConfig("PhotoUpload", "GifUploadLimt4G", 5242880);
     }
     return QzoneConfig.getInstance().getConfig("PhotoUpload", "GifUploadLimtWifi", 5242880);
   }
@@ -227,7 +239,7 @@ public class VipUploadConfigImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.upload.config.VipUploadConfigImpl
  * JD-Core Version:    0.7.0.1
  */

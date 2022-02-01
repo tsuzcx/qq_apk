@@ -18,133 +18,147 @@ public class LiteJsModuleProvider
   
   public boolean callFunction(String paramString1, String paramString2, Map<String, String> paramMap)
   {
-    for (;;)
+    try
     {
-      boolean bool1;
-      try
+      Object localObject1 = (ArrayList)this.mModuleInstances.get(paramString1);
+      if (localObject1 == null)
       {
-        Object localObject1 = (ArrayList)this.mModuleInstances.get(paramString1);
-        if (localObject1 == null)
+        paramMap = new StringBuilder();
+        paramMap.append("callFunction: jsModuleList is null, moduleName is ");
+        paramMap.append(paramString1);
+        paramMap.append(", methodName is ");
+        paramMap.append(paramString2);
+        Log.e("LiteJsModuleProvider", paramMap.toString());
+        return false;
+      }
+      localObject1 = ((ArrayList)localObject1).iterator();
+      boolean bool2 = false;
+      boolean bool1;
+      do
+      {
+        BaseLiteJSModule localBaseLiteJSModule;
+        do
         {
-          Log.e("LiteJsModuleProvider", "callFunction: jsModuleList is null, moduleName is " + paramString1 + ", methodName is " + paramString2);
-          bool2 = false;
-          return bool2;
-        }
-        localObject1 = ((ArrayList)localObject1).iterator();
-        bool1 = false;
-        if (((Iterator)localObject1).hasNext())
-        {
-          BaseLiteJSModule localBaseLiteJSModule = (BaseLiteJSModule)((Iterator)localObject1).next();
+          bool1 = bool2;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          localBaseLiteJSModule = (BaseLiteJSModule)((Iterator)localObject1).next();
           if (!localBaseLiteJSModule.isInit())
           {
             localBaseLiteJSModule.onJsCreate();
             localBaseLiteJSModule.setInit(true);
           }
-          if (!TextUtils.isEmpty(paramString2))
-          {
-            Object localObject2 = localBaseLiteJSModule.getClass();
-            try
-            {
-              localObject2 = ((Class)localObject2).getMethod(paramString2, new Class[] { Map.class });
-              if (((Method)localObject2).isAnnotationPresent(NewJavascriptInterface.class)) {
-                ((Method)localObject2).invoke(localBaseLiteJSModule, new Object[] { paramMap });
-              }
-              bool1 = true;
-            }
-            catch (Exception localException)
-            {
-              Log.e("LiteJsModuleProvider", "callFunction exception: moduleName is " + paramString1 + ", methodName is " + paramString2 + ", jsModule is " + localBaseLiteJSModule + ", e is " + localException.getMessage());
-              bool1 = false;
-              continue;
-            }
-            bool2 = bool1;
-            if (bool1) {
-              continue;
-            }
-            continue;
+        } while (TextUtils.isEmpty(paramString2));
+        Object localObject2 = localBaseLiteJSModule.getClass();
+        try
+        {
+          localObject2 = ((Class)localObject2).getMethod(paramString2, new Class[] { Map.class });
+          if (((Method)localObject2).isAnnotationPresent(NewJavascriptInterface.class)) {
+            ((Method)localObject2).invoke(localBaseLiteJSModule, new Object[] { paramMap });
           }
-          continue;
+          bool1 = true;
         }
-      }
-      finally {}
-      boolean bool2 = bool1;
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("callFunction exception: moduleName is ");
+          localStringBuilder.append(paramString1);
+          localStringBuilder.append(", methodName is ");
+          localStringBuilder.append(paramString2);
+          localStringBuilder.append(", jsModule is ");
+          localStringBuilder.append(localBaseLiteJSModule);
+          localStringBuilder.append(", e is ");
+          localStringBuilder.append(localException.getMessage());
+          Log.e("LiteJsModuleProvider", localStringBuilder.toString());
+          bool1 = false;
+        }
+        bool2 = bool1;
+      } while (!bool1);
+      return bool1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramString1;
     }
   }
   
   public void registerJsModule(BaseLiteJSModule paramBaseLiteJSModule)
   {
-    int j = 1;
     if (paramBaseLiteJSModule == null) {}
-    Iterator localIterator;
-    int i;
     try
     {
       Log.e("LiteJsModuleProvider", "registerJsModule: module is null");
       return;
     }
-    finally {}
-    ArrayList localArrayList = (ArrayList)this.mModuleInstances.get(paramBaseLiteJSModule.getName());
+    finally
+    {
+      for (;;)
+      {
+        ArrayList localArrayList;
+        int i;
+        Iterator localIterator;
+        for (;;)
+        {
+          throw paramBaseLiteJSModule;
+        }
+        Object localObject = localArrayList;
+      }
+    }
+    localArrayList = (ArrayList)this.mModuleInstances.get(paramBaseLiteJSModule.getName());
+    i = 0;
     if (localArrayList != null)
     {
       localIterator = localArrayList.iterator();
       i = 0;
-    }
-    label308:
-    label310:
-    for (;;)
-    {
-      BaseLiteJSModule localBaseLiteJSModule;
-      Object localObject;
-      if (localIterator.hasNext())
+      label257:
+      for (;;)
       {
-        localBaseLiteJSModule = (BaseLiteJSModule)localIterator.next();
+        if (!localIterator.hasNext()) {
+          break label304;
+        }
+        BaseLiteJSModule localBaseLiteJSModule = (BaseLiteJSModule)localIterator.next();
         if (localBaseLiteJSModule.getClass() == paramBaseLiteJSModule.getClass())
         {
           Log.i("LiteJsModuleProvider", "registerJsModule: module is exist in list");
-          i = j;
+          i = 1;
           localObject = localArrayList;
+          break;
         }
-      }
-      for (;;)
-      {
-        if (i != 0) {
-          break label308;
-        }
-        ((ArrayList)localObject).add(paramBaseLiteJSModule);
-        break;
         for (localObject = paramBaseLiteJSModule.getClass().getSuperclass(); (localObject != null) && (BaseLiteJSModule.class != localObject); localObject = ((Class)localObject).getSuperclass()) {
           if (localObject == localBaseLiteJSModule.getClass())
           {
-            Log.i("LiteJsModuleProvider", "registerJsModule: remove module, because module is base class, jsModule is " + localBaseLiteJSModule);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("registerJsModule: remove module, because module is base class, jsModule is ");
+            localStringBuilder.append(localBaseLiteJSModule);
+            Log.i("LiteJsModuleProvider", localStringBuilder.toString());
             localBaseLiteJSModule.onJsDestroy();
             localBaseLiteJSModule.setInit(false);
             localIterator.remove();
           }
         }
-        localObject = localBaseLiteJSModule.getClass().getSuperclass();
-        for (;;)
+        for (localObject = localBaseLiteJSModule.getClass().getSuperclass();; localObject = ((Class)localObject).getSuperclass())
         {
-          if ((localObject != null) && (BaseLiteJSModule.class != localObject)) {
-            if (localObject == paramBaseLiteJSModule.getClass())
-            {
-              Log.i("LiteJsModuleProvider", "registerJsModule: not add module, because module is base class, module is " + paramBaseLiteJSModule);
-              i = 1;
-            }
-            else
-            {
-              localObject = ((Class)localObject).getSuperclass();
-              continue;
-              localObject = new ArrayList();
-              this.mModuleInstances.put(paramBaseLiteJSModule.getName(), localObject);
-              i = 0;
-              break;
-            }
+          if ((localObject == null) || (BaseLiteJSModule.class == localObject)) {
+            break label257;
+          }
+          if (localObject == paramBaseLiteJSModule.getClass())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("registerJsModule: not add module, because module is base class, module is ");
+            ((StringBuilder)localObject).append(paramBaseLiteJSModule);
+            Log.i("LiteJsModuleProvider", ((StringBuilder)localObject).toString());
+            i = 1;
+            break;
           }
         }
-        break label310;
-        localObject = localArrayList;
       }
-      break;
+    }
+    localObject = new ArrayList();
+    this.mModuleInstances.put(paramBaseLiteJSModule.getName(), localObject);
+    if (i == 0) {
+      ((ArrayList)localObject).add(paramBaseLiteJSModule);
     }
   }
   
@@ -176,7 +190,7 @@ public class LiteJsModuleProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.jsmodule.LiteJsModuleProvider
  * JD-Core Version:    0.7.0.1
  */

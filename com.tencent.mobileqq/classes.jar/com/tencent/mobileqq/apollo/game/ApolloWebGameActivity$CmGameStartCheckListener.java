@@ -1,11 +1,9 @@
 package com.tencent.mobileqq.apollo.game;
 
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.DefaultGameCheckListener;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.ICmGameConfirmListener;
-import com.tencent.mobileqq.apollo.cmgame.CmGameStartChecker.StartCheckParam;
-import com.tencent.mobileqq.apollo.process.data.CmGameInitParams;
-import com.tencent.mobileqq.apollo.process.data.CmGameLauncher;
+import com.tencent.mobileqq.apollo.game.process.data.CmGameInitParams;
+import com.tencent.mobileqq.apollo.game.process.data.CmGameLauncher;
+import com.tencent.mobileqq.apollo.model.StartCheckParam;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.util.WeakReferenceHandler;
 
@@ -17,108 +15,90 @@ class ApolloWebGameActivity$CmGameStartCheckListener
     super(paramAppInterface, false);
   }
   
-  public void a(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
-  {
-    if (ApolloWebGameActivity.a(this.a)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          QLog.d("cmgame_process.ApolloWebGameActivity", 1, new Object[] { "[onGameCheckFinish] resultCode=", Long.valueOf(paramLong) });
-          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish mStartCheckParam == null || mStartCheckParam.game == null");
-        return;
-        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
-      return;
-    } while (paramLong == 0L);
-    if (QLog.isColorLevel()) {
-      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish resultCode != 0");
-    }
-    paramCmGameInitParams = ApolloWebGameActivity.a(this.a).obtainMessage(17);
-    paramCmGameInitParams.obj = paramStartCheckParam.wordingV2;
-    ApolloWebGameActivity.a(this.a).sendMessage(paramCmGameInitParams);
-  }
-  
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public void a(long paramLong, StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
   {
     if (ApolloWebGameActivity.a(this.a)) {
       return;
     }
-    if (QLog.isColorLevel())
+    QLog.d("cmgame_process.ApolloWebGameActivity", 1, new Object[] { "[onGameCheckFinish] resultCode=", Long.valueOf(paramLong) });
+    if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null))
     {
-      if (paramStartCheckParam != null) {
-        break label39;
+      if ((ApolloWebGameActivity.a(this.a) != null) && (paramStartCheckParam.requestCode != ApolloWebGameActivity.a(this.a).requestCode))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+        }
+        return;
       }
-      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "showGameLifeTip mStartCheckParam is null");
-    }
-    for (;;)
-    {
-      a(-1L, paramStartCheckParam, null);
+      if (paramLong != 0L)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish resultCode != 0");
+        }
+        paramCmGameInitParams = ApolloWebGameActivity.a(this.a).obtainMessage(17);
+        paramCmGameInitParams.obj = paramStartCheckParam.wordingV2;
+        ApolloWebGameActivity.a(this.a).sendMessage(paramCmGameInitParams);
+      }
       return;
-      label39:
-      QLog.d("cmgame_process.ApolloWebGameActivity", 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onGameCheckFinish mStartCheckParam == null || mStartCheckParam.game == null");
     }
   }
   
-  public void a(CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameStartChecker.ICmGameConfirmListener paramICmGameConfirmListener, long paramLong)
+  public void a(StartCheckParam paramStartCheckParam)
   {
-    if (ApolloWebGameActivity.a(this.a)) {}
-    do
+    super.a(paramStartCheckParam);
+    if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null))
     {
-      do
-      {
-        do
-        {
-          return;
-          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
-        return;
-        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
+      ApolloWebGameActivity.a(this.a).game = paramStartCheckParam.game;
+      if (ApolloWebGameActivity.a(this.a) != null) {
+        ApolloWebGameActivity.a(this.a).a(ApolloWebGameActivity.a(this.a));
+      }
       return;
-    } while (paramICmGameConfirmListener == null);
-    paramICmGameConfirmListener.a(paramStartCheckParam);
+    }
+    QLog.e("cmgame_process.ApolloWebGameActivity", 1, "onGetGameData startCheckParam == null or game is null");
   }
   
-  public void b(long paramLong, CmGameStartChecker.StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  public void a(StartCheckParam paramStartCheckParam, CmGameStartChecker.ICmGameConfirmListener paramICmGameConfirmListener, long paramLong)
   {
-    if (ApolloWebGameActivity.a(this.a)) {}
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-          QLog.d("cmgame_process.ApolloWebGameActivity", 1, new Object[] { "[onVerifyGameFinish] resultCode=", Long.valueOf(paramLong) });
-          if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null)) {
-            break;
-          }
-        } while (!QLog.isColorLevel());
-        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish mStartCheckParam == null || mStartCheckParam.game == null");
-        return;
-        if ((ApolloWebGameActivity.a(this.a) == null) || (paramStartCheckParam.requestCode == ApolloWebGameActivity.a(this.a).requestCode)) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+    if (ApolloWebGameActivity.a(this.a)) {
       return;
+    }
+    if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null))
+    {
+      if ((ApolloWebGameActivity.a(this.a) != null) && (paramStartCheckParam.requestCode != ApolloWebGameActivity.a(this.a).requestCode))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm startCheckParam.requestCode != mStartCheckParam.requestCode");
+        }
+        return;
+      }
+      if (paramICmGameConfirmListener != null) {
+        paramICmGameConfirmListener.a(paramStartCheckParam);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onDownloadConfirm mStartCheckParam == null || mStartCheckParam.game == null");
+    }
+  }
+  
+  public void b(long paramLong, StartCheckParam paramStartCheckParam, CmGameInitParams paramCmGameInitParams)
+  {
+    if (ApolloWebGameActivity.a(this.a)) {
+      return;
+    }
+    QLog.d("cmgame_process.ApolloWebGameActivity", 1, new Object[] { "[onVerifyGameFinish] resultCode=", Long.valueOf(paramLong) });
+    if ((paramStartCheckParam != null) && (paramStartCheckParam.game != null))
+    {
+      if ((ApolloWebGameActivity.a(this.a) != null) && (paramStartCheckParam.requestCode != ApolloWebGameActivity.a(this.a).requestCode))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish startCheckParam.requestCode != mStartCheckParam.requestCode");
+        }
+        return;
+      }
       if (paramLong != 0L)
       {
         if (QLog.isColorLevel()) {
@@ -132,27 +112,34 @@ class ApolloWebGameActivity$CmGameStartCheckListener
       ApolloWebGameActivity.a(this.a).startCallEngine = System.currentTimeMillis();
       ApolloGameStateMachine.a().a(1, "ApolloWebGameActivity.openGame");
       ApolloGameStateMachine.a().a(2, "ApolloWebGameActivity.openGame");
-    } while (ApolloWebGameActivity.a(this.a) == null);
-    ApolloWebGameActivity.a(this.a).a(this.a, paramCmGameInitParams);
+      if (ApolloWebGameActivity.a(this.a) != null) {
+        ApolloWebGameActivity.a(this.a).a(this.a, paramCmGameInitParams);
+      }
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("cmgame_process.ApolloWebGameActivity", 2, "onVerifyGameFinish mStartCheckParam == null || mStartCheckParam.game == null");
+    }
   }
   
-  public void c(CmGameStartChecker.StartCheckParam paramStartCheckParam)
+  public void b(StartCheckParam paramStartCheckParam)
   {
-    super.c(paramStartCheckParam);
-    if ((paramStartCheckParam == null) || (paramStartCheckParam.game == null)) {
-      QLog.e("cmgame_process.ApolloWebGameActivity", 1, "onGetGameData startCheckParam == null or game is null");
-    }
-    do
-    {
+    if (ApolloWebGameActivity.a(this.a)) {
       return;
-      ApolloWebGameActivity.a(this.a).game = paramStartCheckParam.game;
-    } while (ApolloWebGameActivity.a(this.a) == null);
-    ApolloWebGameActivity.a(this.a).a(ApolloWebGameActivity.a(this.a));
+    }
+    if (QLog.isColorLevel()) {
+      if (paramStartCheckParam == null) {
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, "showGameLifeTip mStartCheckParam is null");
+      } else {
+        QLog.d("cmgame_process.ApolloWebGameActivity", 2, new Object[] { "showGameLifeTip mStartCheckParam:", paramStartCheckParam });
+      }
+    }
+    a(-1L, paramStartCheckParam, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.game.ApolloWebGameActivity.CmGameStartCheckListener
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
+import com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView;
 import com.tencent.qphone.base.util.QLog;
 
 class ReadInjoyDoubleImageView$1
@@ -12,15 +12,23 @@ class ReadInjoyDoubleImageView$1
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadCanceled:" + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append("onLoadCanceled:");
+      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("ReadInjoyDoubleImageView", 2, paramURLDrawable.toString());
     }
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadFialed:" + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append("onLoadFialed:");
+      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("ReadInjoyDoubleImageView", 2, paramURLDrawable.toString());
     }
   }
   
@@ -33,8 +41,12 @@ class ReadInjoyDoubleImageView$1
   
   public void onLoadSuccessed(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ReadInjoyDoubleImageView", 2, "onLoadSuccessed:" + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onLoadSuccessed:");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("ReadInjoyDoubleImageView", 2, localStringBuilder.toString());
     }
     if (paramURLDrawable != null)
     {
@@ -46,7 +58,7 @@ class ReadInjoyDoubleImageView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInjoyDoubleImageView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,38 +18,36 @@ class ViewCompatEclairMr1
   
   public static void setChildrenDrawingOrderEnabled(ViewGroup paramViewGroup, boolean paramBoolean)
   {
-    if (sChildrenDrawingOrderMethod == null) {}
-    try
+    if (sChildrenDrawingOrderMethod == null)
     {
-      sChildrenDrawingOrderMethod = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
-      sChildrenDrawingOrderMethod.setAccessible(true);
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
-      for (;;)
+      try
       {
-        try
-        {
-          sChildrenDrawingOrderMethod.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
-          return;
-        }
-        catch (IllegalAccessException paramViewGroup)
-        {
-          Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-          return;
-        }
-        catch (IllegalArgumentException paramViewGroup)
-        {
-          Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-          return;
-        }
-        catch (InvocationTargetException paramViewGroup)
-        {
-          Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
-        }
-        localNoSuchMethodException = localNoSuchMethodException;
+        sChildrenDrawingOrderMethod = ViewGroup.class.getDeclaredMethod("setChildrenDrawingOrderEnabled", new Class[] { Boolean.TYPE });
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
         Log.e("ViewCompat", "Unable to find childrenDrawingOrderEnabled", localNoSuchMethodException);
       }
+      sChildrenDrawingOrderMethod.setAccessible(true);
+    }
+    try
+    {
+      sChildrenDrawingOrderMethod.invoke(paramViewGroup, new Object[] { Boolean.valueOf(paramBoolean) });
+      return;
+    }
+    catch (InvocationTargetException paramViewGroup)
+    {
+      Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
+      return;
+    }
+    catch (IllegalArgumentException paramViewGroup)
+    {
+      Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
+      return;
+    }
+    catch (IllegalAccessException paramViewGroup)
+    {
+      Log.e("ViewCompat", "Unable to invoke childrenDrawingOrderEnabled", paramViewGroup);
     }
   }
 }

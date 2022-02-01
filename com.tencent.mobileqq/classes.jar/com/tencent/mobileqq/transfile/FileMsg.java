@@ -10,8 +10,6 @@ import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class FileMsg
 {
@@ -263,32 +261,61 @@ public class FileMsg
         openSendFile(paramString2);
         return;
       }
+      this.serverPath = paramString2;
+      return;
     }
     catch (Exception paramString1)
     {
       paramString1.printStackTrace();
-      return;
     }
-    this.serverPath = paramString2;
   }
   
+  /* Error */
   public static String getTransFileDateTime()
   {
-    try
-    {
-      Thread.sleep(10L);
-      long l = System.currentTimeMillis();
-      String str = new SimpleDateFormat("yyyyMMddHHmmssSSS").format(new Date(l));
-      return str;
-    }
-    catch (InterruptedException localInterruptedException)
-    {
-      for (;;)
-      {
-        localInterruptedException.printStackTrace();
-      }
-    }
-    finally {}
+    // Byte code:
+    //   0: ldc 2
+    //   2: monitorenter
+    //   3: ldc2_w 527
+    //   6: invokestatic 534	java/lang/Thread:sleep	(J)V
+    //   9: goto +12 -> 21
+    //   12: astore_2
+    //   13: goto +39 -> 52
+    //   16: astore_2
+    //   17: aload_2
+    //   18: invokevirtual 535	java/lang/InterruptedException:printStackTrace	()V
+    //   21: invokestatic 473	java/lang/System:currentTimeMillis	()J
+    //   24: lstore_0
+    //   25: new 537	java/text/SimpleDateFormat
+    //   28: dup
+    //   29: ldc_w 539
+    //   32: invokespecial 540	java/text/SimpleDateFormat:<init>	(Ljava/lang/String;)V
+    //   35: new 542	java/util/Date
+    //   38: dup
+    //   39: lload_0
+    //   40: invokespecial 544	java/util/Date:<init>	(J)V
+    //   43: invokevirtual 548	java/text/SimpleDateFormat:format	(Ljava/util/Date;)Ljava/lang/String;
+    //   46: astore_2
+    //   47: ldc 2
+    //   49: monitorexit
+    //   50: aload_2
+    //   51: areturn
+    //   52: ldc 2
+    //   54: monitorexit
+    //   55: aload_2
+    //   56: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   24	16	0	l	long
+    //   12	1	2	localObject	Object
+    //   16	2	2	localInterruptedException	java.lang.InterruptedException
+    //   46	10	2	str	String
+    // Exception table:
+    //   from	to	target	type
+    //   3	9	12	finally
+    //   17	21	12	finally
+    //   21	47	12	finally
+    //   3	9	16	java/lang/InterruptedException
   }
   
   private void openSendFile(String paramString)
@@ -320,19 +347,19 @@ public class FileMsg
       if (this.revStream != null) {
         this.revStream.close();
       }
-      this.revStream = null;
-      return;
     }
     catch (IOException localIOException)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("8pic", 2, "exception io FileMsg, " + localIOException.toString());
-        }
-        localIOException.printStackTrace();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("exception io FileMsg, ");
+        localStringBuilder.append(localIOException.toString());
+        QLog.d("8pic", 2, localStringBuilder.toString());
       }
+      localIOException.printStackTrace();
     }
+    this.revStream = null;
   }
   
   public OutputStream getReceiveStream()
@@ -340,16 +367,18 @@ public class FileMsg
     if (this.revStream == null) {}
     try
     {
-      if (this.fileType == 0) {}
-      for (this.revStream = new FileOutputStream(this.filePath, true);; this.revStream = new FileOutputStream(this.filePath)) {
-        label30:
-        return this.revStream;
+      if (this.fileType == 0) {
+        this.revStream = new FileOutputStream(this.filePath, true);
+      } else {
+        this.revStream = new FileOutputStream(this.filePath);
       }
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      break label30;
+      label48:
+      break label48;
     }
+    return this.revStream;
   }
   
   public byte[] getSendStreamSlice(int paramInt1, int paramInt2)
@@ -357,54 +386,55 @@ public class FileMsg
     InputStream localInputStream = this.sendStream;
     this.transferData = new byte[paramInt2];
     if (paramInt1 == 0) {}
-    for (;;)
+    try
     {
-      try
+      localInputStream = resetSendStream();
+      if (paramInt1 > this.currPofSendStream)
       {
-        localInputStream = resetSendStream();
-        if (paramInt1 <= this.currPofSendStream) {
-          continue;
-        }
         localInputStream.skip(paramInt1 - this.currPofSendStream);
-        this.currPofSendStream = paramInt1;
-        localInputStream.read(this.transferData, 0, paramInt2);
-        this.currPofSendStream += paramInt2;
       }
-      catch (Exception localException)
-      {
-        this.transferData = null;
-        continue;
-      }
-      return this.transferData;
-      if (paramInt1 < this.currPofSendStream)
+      else if (paramInt1 < this.currPofSendStream)
       {
         localInputStream = resetSendStream();
         localInputStream.skip(paramInt1);
       }
+      this.currPofSendStream = paramInt1;
+      localInputStream.read(this.transferData, 0, paramInt2);
+      this.currPofSendStream += paramInt2;
     }
+    catch (Exception localException)
+    {
+      label93:
+      break label93;
+    }
+    this.transferData = null;
+    return this.transferData;
   }
   
   public void logEvent(int paramInt1, int paramInt2)
   {
-    FileMsg.StepTransInfo localStepTransInfo;
-    switch (paramInt1)
+    if (paramInt1 != 2)
     {
-    default: 
-      return;
-    case 2: 
-      localStepTransInfo = this.stepTrans;
-      localStepTransInfo.retryCount += 1;
-      return;
-    case 4: 
-      localStepTransInfo = this.stepTrans;
-      localStepTransInfo.flowDown += paramInt2;
-      return;
-    case 3: 
+      if (paramInt1 != 3)
+      {
+        if (paramInt1 != 4)
+        {
+          if (paramInt1 != 5) {
+            return;
+          }
+          this.stepTrans.serverExist = true;
+          return;
+        }
+        localStepTransInfo = this.stepTrans;
+        localStepTransInfo.flowDown += paramInt2;
+        return;
+      }
       localStepTransInfo = this.stepTrans;
       localStepTransInfo.flowUp += paramInt2;
       return;
     }
-    this.stepTrans.serverExist = true;
+    FileMsg.StepTransInfo localStepTransInfo = this.stepTrans;
+    localStepTransInfo.retryCount += 1;
   }
   
   public InputStream resetSendStream()
@@ -412,15 +442,14 @@ public class FileMsg
     try
     {
       this.sendStream = new FileInputStream(this.filePath);
-      return this.sendStream;
     }
     catch (FileNotFoundException localFileNotFoundException)
     {
-      for (;;)
-      {
-        this.sendStream = null;
-      }
+      label18:
+      break label18;
     }
+    this.sendStream = null;
+    return this.sendStream;
   }
   
   public void setActionType(int paramInt)
@@ -440,43 +469,47 @@ public class FileMsg
   
   public void setFilePath(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
-      return;
-      try
-      {
-        this.filePath = paramString;
-        this.file = new File(paramString);
-        File localFile = this.file.getParentFile();
-        if ((localFile != null) && (!localFile.exists())) {
-          localFile.mkdirs();
-        }
-        if ((this.actionType == 0) && (this.sendStream == null))
-        {
-          if (this.file.exists())
-          {
-            this.fileSize = this.file.length();
-            if ((paramString != null) && (paramString.contains("."))) {
-              this.suffixType = paramString.substring(paramString.lastIndexOf(".")).toLowerCase();
-            }
-          }
-          this.sendStream = new FileInputStream(paramString);
-          return;
-        }
-      }
-      catch (FileNotFoundException paramString)
-      {
-        this.filePath = null;
-        return;
-      }
-    } while (this.revStream != null);
-    if (this.fileType == 0)
-    {
-      this.revStream = new FileOutputStream(paramString, true);
+    if (paramString == null) {
       return;
     }
-    this.revStream = new FileOutputStream(paramString);
+    try
+    {
+      this.filePath = paramString;
+      this.file = new File(paramString);
+      File localFile = this.file.getParentFile();
+      if ((localFile != null) && (!localFile.exists())) {
+        localFile.mkdirs();
+      }
+      if ((this.actionType == 0) && (this.sendStream == null))
+      {
+        if (this.file.exists())
+        {
+          this.fileSize = this.file.length();
+          if ((paramString != null) && (paramString.contains("."))) {
+            this.suffixType = paramString.substring(paramString.lastIndexOf(".")).toLowerCase();
+          }
+        }
+        this.sendStream = new FileInputStream(paramString);
+        return;
+      }
+      if (this.revStream != null) {
+        break label172;
+      }
+      if (this.fileType == 0)
+      {
+        this.revStream = new FileOutputStream(paramString, true);
+        return;
+      }
+      this.revStream = new FileOutputStream(paramString);
+      return;
+    }
+    catch (FileNotFoundException paramString)
+    {
+      label167:
+      label172:
+      break label167;
+    }
+    this.filePath = null;
   }
   
   public void setFileType(int paramInt)
@@ -496,27 +529,29 @@ public class FileMsg
   
   public void setRcvStream(String paramString)
   {
-    if (paramString == null) {}
-    for (;;)
-    {
+    if (paramString == null) {
       return;
-      try
-      {
-        if (this.revStream == null) {
-          if (this.fileType == 0)
-          {
-            this.revStream = new FileOutputStream(paramString, true);
-            return;
-          }
-        }
+    }
+    try
+    {
+      if (this.revStream != null) {
+        break label51;
       }
-      catch (FileNotFoundException paramString)
+      if (this.fileType == 0)
       {
-        this.filePath = null;
+        this.revStream = new FileOutputStream(paramString, true);
         return;
       }
+      this.revStream = new FileOutputStream(paramString);
+      return;
     }
-    this.revStream = new FileOutputStream(paramString);
+    catch (FileNotFoundException paramString)
+    {
+      label46:
+      label51:
+      break label46;
+    }
+    this.filePath = null;
   }
   
   public void setServerPath(String paramString)
@@ -526,7 +561,7 @@ public class FileMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.FileMsg
  * JD-Core Version:    0.7.0.1
  */

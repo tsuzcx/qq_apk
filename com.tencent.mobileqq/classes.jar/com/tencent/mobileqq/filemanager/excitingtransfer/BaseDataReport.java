@@ -24,7 +24,6 @@ public abstract class BaseDataReport
   
   public void a(DataReportBasicInfo paramDataReportBasicInfo, ExcitingTransferOneSlotComplete paramExcitingTransferOneSlotComplete, HashMap<String, String> paramHashMap)
   {
-    boolean bool = false;
     paramDataReportBasicInfo = paramDataReportBasicInfo.a();
     if (paramExcitingTransferOneSlotComplete != null) {
       paramDataReportBasicInfo.putAll(paramExcitingTransferOneSlotComplete.getReportData());
@@ -32,14 +31,17 @@ public abstract class BaseDataReport
     if (paramHashMap != null) {
       paramDataReportBasicInfo.putAll(paramHashMap);
     }
-    if (paramExcitingTransferOneSlotComplete != null) {
-      if (paramExcitingTransferOneSlotComplete.mSubReason != 0) {}
-    }
-    for (bool = true;; bool = false)
+    boolean bool = false;
+    if (paramExcitingTransferOneSlotComplete != null)
     {
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "actPDSlot", bool, 0L, 0L, paramDataReportBasicInfo, "");
-      return;
+      if (paramExcitingTransferOneSlotComplete.mSubReason == 0) {
+        bool = true;
+      }
     }
+    else {
+      bool = false;
+    }
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), "actPDSlot", bool, 0L, 0L, paramDataReportBasicInfo, "");
   }
   
   public void a(boolean paramBoolean)
@@ -48,8 +50,13 @@ public abstract class BaseDataReport
       b(paramBoolean);
     }
     HashMap localHashMap = a();
-    if (localHashMap != null) {
-      QLog.i("DataReport", 1, ">>> report: act=" + a(false) + localHashMap.toString());
+    if (localHashMap != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(">>> report: act=");
+      localStringBuilder.append(a(false));
+      localStringBuilder.append(localHashMap.toString());
+      QLog.i("DataReport", 1, localStringBuilder.toString());
     }
     StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(false), paramBoolean, 0L, 0L, localHashMap, "");
   }
@@ -65,14 +72,18 @@ public abstract class BaseDataReport
     HashMap localHashMap = b();
     if (localHashMap != null)
     {
-      QLog.i("OldDataReport", 1, ">>> reportOld: act=" + a(true) + localHashMap.toString());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(">>> reportOld: act=");
+      localStringBuilder.append(a(true));
+      localStringBuilder.append(localHashMap.toString());
+      QLog.i("OldDataReport", 1, localStringBuilder.toString());
       StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.a.getCurrentAccountUin(), a(true), paramBoolean, 0L, 0L, localHashMap, "");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.excitingtransfer.BaseDataReport
  * JD-Core Version:    0.7.0.1
  */

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android">
+    <RelativeLayout android:orientation="horizontal" android:id="@id/mtf" android:paddingLeft="20.0dip" android:paddingRight="20.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_below="@id/mti">
+        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/mti" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:text="@string/wuo" android:fontFamily="PingFangSC-Medium" />
+        <TextView android:textSize="14.0dip" android:textColor="@color/qzone_skin_feed_content_text_color" android:id="@id/mth" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="17.0dip" android:layout_marginRight="4.0dip" android:text="@string/wun" android:layout_toLeftOf="@id/mtd" />
+        <ImageView android:id="@id/mtd" android:layout_width="10.0dip" android:layout_height="14.0dip" android:layout_marginTop="20.0dip" android:src="@drawable/intimate_relationship_arrow" android:layout_alignParentRight="true" />
+        <androidx.recyclerview.widget.RecyclerView android:id="@id/mtg" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginTop="12.0dip" android:layout_below="@id/mti" />
+    </RelativeLayout>
+</merge>

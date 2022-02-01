@@ -20,8 +20,12 @@ public class ScreenShotConfigProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("ScreenShotConfigProcessor", 2, "onParsed : " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed : ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("ScreenShotConfigProcessor", 2, localStringBuilder.toString());
       }
       return ScreenShotConfigProcessor.ScreenShotConfigData.a(paramArrayOfQConfItem[0].a);
     }
@@ -30,8 +34,12 @@ public class ScreenShotConfigProcessor
   
   public void a(ScreenShotConfigProcessor.ScreenShotConfigData paramScreenShotConfigData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramScreenShotConfigData);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate : ");
+      localStringBuilder.append(paramScreenShotConfigData);
+      QLog.d("ScreenShotConfigProcessor", 2, localStringBuilder.toString());
     }
     ScreenShotHelper.a(paramScreenShotConfigData);
   }
@@ -63,8 +71,12 @@ public class ScreenShotConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ScreenShotConfigProcessor", 2, "onUpdate : " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate : ");
+      localStringBuilder.append(paramInt);
+      QLog.d("ScreenShotConfigProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -75,7 +87,7 @@ public class ScreenShotConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.screendetect.ScreenShotConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -16,24 +16,26 @@ class HistorySearchEntryModel$2
   public void onClick(View paramView)
   {
     long l = ((Long)paramView.getTag(-1)).longValue();
-    int i = HistorySearchEntryModel.a(this.a, this.a.a, l);
-    if (i == -1) {}
-    for (;;)
+    Object localObject = this.a;
+    int i = HistorySearchEntryModel.a((HistorySearchEntryModel)localObject, ((HistorySearchEntryModel)localObject).a, l);
+    if (i != -1)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      SearchHistory localSearchHistory = (SearchHistory)((IContactSearchable)this.a.a.get(i)).a();
-      if (localSearchHistory != null)
+      localObject = (SearchHistory)((IContactSearchable)this.a.a.get(i)).a();
+      if (localObject != null)
       {
-        SearchUtils.a("home_page", "del_history", new String[] { "" + i });
-        ThreadManager.postImmediately(new HistorySearchEntryModel.2.1(this, localSearchHistory, l), null, true);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(i);
+        SearchUtils.a("home_page", "del_history", new String[] { localStringBuilder.toString() });
+        ThreadManager.postImmediately(new HistorySearchEntryModel.2.1(this, (SearchHistory)localObject, l), null, true);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.HistorySearchEntryModel.2
  * JD-Core Version:    0.7.0.1
  */

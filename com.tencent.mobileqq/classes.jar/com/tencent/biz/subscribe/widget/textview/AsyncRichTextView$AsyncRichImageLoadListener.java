@@ -26,14 +26,15 @@ public class AsyncRichTextView$AsyncRichImageLoadListener
     if (QLog.isColorLevel()) {
       QLog.d("AsyncRichTextView", 4, "onLoadSuccessed ");
     }
-    if ((this.a != null) && (this.a.get() != null)) {
+    paramURLDrawable = this.a;
+    if ((paramURLDrawable != null) && (paramURLDrawable.get() != null)) {
       ((AsyncRichTextView)this.a.get()).invalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.textview.AsyncRichTextView.AsyncRichImageLoadListener
  * JD-Core Version:    0.7.0.1
  */

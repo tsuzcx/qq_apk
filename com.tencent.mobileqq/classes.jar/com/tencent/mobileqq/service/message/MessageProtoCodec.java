@@ -2,27 +2,20 @@ package com.tencent.mobileqq.service.message;
 
 import android.text.TextUtils;
 import androidx.annotation.Nullable;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.apollo.api.model.Apollo3DMessage;
-import com.tencent.mobileqq.apollo.api.model.ApolloMessage;
-import com.tencent.mobileqq.apollo.api.model.MessageForApollo;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.BaseMessageHandler;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.MessageHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.MessagePkgUtils;
 import com.tencent.mobileqq.data.ArkAppMessage;
 import com.tencent.mobileqq.data.ArkFlashChatMessage;
 import com.tencent.mobileqq.data.AtTroopMemberInfo;
 import com.tencent.mobileqq.data.ChatMessage;
-import com.tencent.mobileqq.data.FunnyFaceMessage;
-import com.tencent.mobileqq.data.FunnyFaceMessage.Bomb;
-import com.tencent.mobileqq.data.FunnyFaceMessage.Turntable;
 import com.tencent.mobileqq.data.HiBoomMessage;
 import com.tencent.mobileqq.data.MarkFaceMessage;
 import com.tencent.mobileqq.data.MessageForArkApp;
 import com.tencent.mobileqq.data.MessageForArkBabyqReply;
 import com.tencent.mobileqq.data.MessageForArkFlashChat;
-import com.tencent.mobileqq.data.MessageForFunnyFace;
 import com.tencent.mobileqq.data.MessageForHiBoom;
 import com.tencent.mobileqq.data.MessageForLimitChatConfirm;
 import com.tencent.mobileqq.data.MessageForLongTextMsg;
@@ -47,10 +40,7 @@ import com.tencent.mobileqq.hiboom.hiboom_type.Hiboom_Type;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.InvalidProtocolBufferMicroException;
 import com.tencent.mobileqq.pb.MessageMicro;
-import com.tencent.mobileqq.pb.PBBoolField;
 import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.pb.PBInt64Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
@@ -65,10 +55,7 @@ import com.tencent.mobileqq.structmsg.StructMsgUtils;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemVideo;
 import com.tencent.mobileqq.troop.data.MessageInfo;
 import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.HexUtil;
-import com.tencent.pb.apollomsgextend.ApolloMsgExtend.AuthReserve;
-import com.tencent.pb.apollomsgextend.ApolloMsgExtend.ThreeDBaseInfo;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.io.ByteArrayOutputStream;
@@ -92,19 +79,15 @@ import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype14;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype16;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype19;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype2;
-import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype20;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype23;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype24;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype24.LimitChatEnter;
 import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype24.LimitChatExit;
+import tencent.im.msg.hummer.servtype.hummer_commelem.MsgElemInfo_servtype33;
 import tencent.im.msg.im_msg_body.AnonymousGroupMsg;
-import tencent.im.msg.im_msg_body.ApolloActMsg;
 import tencent.im.msg.im_msg_body.CommonElem;
 import tencent.im.msg.im_msg_body.Elem;
 import tencent.im.msg.im_msg_body.ElemFlags2;
-import tencent.im.msg.im_msg_body.FunFace;
-import tencent.im.msg.im_msg_body.FunFace.Bomb;
-import tencent.im.msg.im_msg_body.FunFace.Turntable;
 import tencent.im.msg.im_msg_body.GeneralFlags;
 import tencent.im.msg.im_msg_body.LightAppElem;
 import tencent.im.msg.im_msg_body.MarketFace;
@@ -125,25 +108,7 @@ public class MessageProtoCodec
   
   public static int a(msg_comm.Msg paramMsg)
   {
-    int j = 0;
-    paramMsg = a(paramMsg);
-    int i = j;
-    if (paramMsg != null)
-    {
-      if (paramMsg.uint32_bubble_diy_text_id.has()) {
-        break label27;
-      }
-      i = j;
-    }
-    label27:
-    do
-    {
-      return i;
-      j = paramMsg.uint32_bubble_diy_text_id.get();
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.MessageHandler", 2, "decodeC2CMsgPkg_BubbleDiyTextID->" + j);
-    return j;
+    return QMessageProtoCodec.d(paramMsg);
   }
   
   public static int a(im_msg_body.RichText paramRichText, String paramString, ArrayList<AtTroopMemberInfo> paramArrayList)
@@ -151,66 +116,24 @@ public class MessageProtoCodec
     return QMessageProtoCodec.a(paramRichText, paramString, paramArrayList);
   }
   
-  public static long a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, String paramString1, String paramString2)
-  {
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()))
-    {
-      l1 = 0L;
-      return l1;
-    }
-    paramMsg = ((im_msg_body.RichText)((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.get()).elems.get().iterator();
-    long l1 = -1L;
-    label71:
-    Object localObject;
-    if (paramMsg.hasNext())
-    {
-      localObject = (im_msg_body.Elem)paramMsg.next();
-      if ((((im_msg_body.Elem)localObject).elem_flags2.has()) && (((im_msg_body.ElemFlags2)((im_msg_body.Elem)localObject).elem_flags2.get()).uint32_color_text_id.has())) {
-        l1 = ((im_msg_body.ElemFlags2)((im_msg_body.Elem)localObject).elem_flags2.get()).uint32_color_text_id.get() & 0xFFFFFFFF;
-      }
-    }
-    for (;;)
-    {
-      break label71;
-      if (((im_msg_body.Elem)localObject).secret_file.has())
-      {
-        localObject = ((im_msg_body.Elem)localObject).secret_file;
-        if ((((im_msg_body.SecretFileMsg)localObject).elem_flags2.has()) && (((im_msg_body.SecretFileMsg)localObject).elem_flags2.uint32_color_text_id.has()))
-        {
-          l1 = ((im_msg_body.ElemFlags2)((im_msg_body.SecretFileMsg)localObject).elem_flags2.get()).uint32_color_text_id.get() & 0xFFFFFFFF;
-          continue;
-          if (l1 == 4294967295L) {}
-          for (long l2 = paramMessageHandler.a.getMessageFacade().a(paramString1, paramString2);; l2 = -1L)
-          {
-            if (l1 != 4294967295L) {
-              l2 = l1;
-            }
-            l1 = l2;
-            if (l2 != -1L) {
-              break;
-            }
-            return 0L;
-          }
-        }
-      }
-    }
-  }
-  
   public static long a(msg_comm.Msg paramMsg)
   {
-    long l1;
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has())) {
-      l1 = -1L;
-    }
-    long l2;
-    do
+    if (paramMsg.msg_body.has())
     {
-      return l1;
-      l2 = a(paramMsg, -1L);
-      l1 = l2;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.MessageHandler", 2, "decodeC2CMsgPkg_VipFontID: fontid = " + l2);
-    return l2;
+      if (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).rich_text.has()) {
+        return -1L;
+      }
+      long l = a(paramMsg, -1L);
+      if (QLog.isColorLevel())
+      {
+        paramMsg = new StringBuilder();
+        paramMsg.append("decodeC2CMsgPkg_VipFontID: fontid = ");
+        paramMsg.append(l);
+        QLog.d("Q.msg.MessageHandler", 2, paramMsg.toString());
+      }
+      return l;
+    }
+    return -1L;
   }
   
   protected static long a(msg_comm.Msg paramMsg, long paramLong)
@@ -224,25 +147,19 @@ public class MessageProtoCodec
   
   private static long a(im_msg_body.Elem paramElem, long paramLong)
   {
-    long l;
-    if ((paramElem.elem_flags2.has()) && (paramElem.elem_flags2.uint32_custom_font.has())) {
-      l = ((im_msg_body.ElemFlags2)paramElem.elem_flags2.get()).uint32_custom_font.get() & 0xFFFFFFFF;
-    }
-    do
+    if ((paramElem.elem_flags2.has()) && (paramElem.elem_flags2.uint32_custom_font.has())) {}
+    for (int i = ((im_msg_body.ElemFlags2)paramElem.elem_flags2.get()).uint32_custom_font.get();; i = ((im_msg_body.ElemFlags2)paramElem.elem_flags2.get()).uint32_custom_font.get())
     {
-      do
-      {
-        do
-        {
-          return l;
-          l = paramLong;
-        } while (!paramElem.secret_file.has());
-        paramElem = paramElem.secret_file;
-        l = paramLong;
-      } while (!paramElem.elem_flags2.has());
-      l = paramLong;
-    } while (!paramElem.elem_flags2.uint32_custom_font.has());
-    return ((im_msg_body.ElemFlags2)paramElem.elem_flags2.get()).uint32_custom_font.get() & 0xFFFFFFFF;
+      return i & 0xFFFFFFFF;
+      if (!paramElem.secret_file.has()) {
+        break;
+      }
+      paramElem = paramElem.secret_file;
+      if ((!paramElem.elem_flags2.has()) || (!paramElem.elem_flags2.uint32_custom_font.has())) {
+        break;
+      }
+    }
+    return paramLong;
   }
   
   public static MessageRecord a(List<MessageRecord> paramList, byte[] paramArrayOfByte, MessageInfo paramMessageInfo)
@@ -250,91 +167,95 @@ public class MessageProtoCodec
     MixedMsg.Msg localMsg = new MixedMsg.Msg();
     JSONObject localJSONObject = new JSONObject();
     paramList = paramList.iterator();
+    int j = 0;
     int i = 0;
-    int k = 0;
     while (paramList.hasNext())
     {
-      Object localObject1 = (MessageRecord)paramList.next();
+      Object localObject = (MessageRecord)paramList.next();
       MixedMsg.Elem localElem = new MixedMsg.Elem();
-      int j;
-      if (((MessageRecord)localObject1).msgtype == -1000)
+      int k;
+      if (((MessageRecord)localObject).msgtype == -1000)
       {
-        if (!TextUtils.isEmpty(((MessageRecord)localObject1).msg))
+        if (TextUtils.isEmpty(((MessageRecord)localObject).msg)) {
+          continue;
+        }
+        localElem.textMsg.set(((MessageRecord)localObject).msg);
+        k = j;
+        try
         {
-          localElem.textMsg.set(((MessageRecord)localObject1).msg);
-          j = i;
+          if (((MessageRecord)localObject).atInfoList == null) {
+            break label426;
+          }
+          k = j;
+          if (((MessageRecord)localObject).atInfoList.size() <= 0) {
+            break label426;
+          }
+          JSONArray localJSONArray = new JSONArray();
+          localObject = ((MessageRecord)localObject).atInfoList.iterator();
+          k = 0;
+          while (((Iterator)localObject).hasNext())
+          {
+            localJSONArray.put(k, ((AtTroopMemberInfo)((Iterator)localObject).next()).toJsonObject());
+            k += 1;
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("");
+          ((StringBuilder)localObject).append(i);
+          localJSONObject.put(((StringBuilder)localObject).toString(), localJSONArray);
+          k = 1;
+        }
+        catch (JSONException localJSONException)
+        {
+          QLog.e("Q.msg.MessageHandler", 1, "disc mixMsg create atInfos error:", localJSONException);
+          k = j;
         }
       }
-      else {
-        for (;;)
+      else if (((MessageRecord)localObject).msgtype == -2000)
+      {
+        RichMsg.PicRec localPicRec = new RichMsg.PicRec();
+        try
         {
-          Object localObject2;
+          localPicRec = (RichMsg.PicRec)localPicRec.mergeFrom(((MessageRecord)localObject).msgData);
+          localElem.picMsg.set(localPicRec);
+          k = j;
+        }
+        catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
+        {
+          QLog.e("Q.msg.MessageHandler", 1, "mergeMixedMsgContent", localInvalidProtocolBufferMicroException);
+          k = j;
+        }
+      }
+      else
+      {
+        k = j;
+        if (((MessageRecord)localObject).msgtype == -1049) {
           try
           {
-            if (((MessageRecord)localObject1).atInfoList != null)
+            MessageForReplyText localMessageForReplyText = (MessageForReplyText)localObject;
+            localObject = MessagePkgUtils.a(localMessageForReplyText.mSourceMsgInfo);
+            localElem.sourceMsgInfo.set(HexUtil.bytes2HexStr((byte[])localObject));
+            k = j;
+            if (!TextUtils.isEmpty(localMessageForReplyText.msg))
             {
-              j = i;
-              if (((MessageRecord)localObject1).atInfoList.size() > 0)
-              {
-                localObject2 = new JSONArray();
-                localObject1 = ((MessageRecord)localObject1).atInfoList.iterator();
-                j = 0;
-                if (((Iterator)localObject1).hasNext())
-                {
-                  ((JSONArray)localObject2).put(j, ((AtTroopMemberInfo)((Iterator)localObject1).next()).toJsonObject());
-                  j += 1;
-                  continue;
-                }
-                localJSONObject.put("" + k, localObject2);
-                j = 1;
-              }
-            }
-            i = j;
-          }
-          catch (JSONException localJSONException)
-          {
-            QLog.e("Q.msg.MessageHandler", 1, "disc mixMsg create atInfos error:", localJSONException);
-            continue;
-          }
-          localMsg.elems.get().add(localElem);
-          k += 1;
-          break;
-          if (localJSONException.msgtype == -2000)
-          {
-            localObject2 = new RichMsg.PicRec();
-            try
-            {
-              RichMsg.PicRec localPicRec = (RichMsg.PicRec)((RichMsg.PicRec)localObject2).mergeFrom(localJSONException.msgData);
-              localElem.picMsg.set(localPicRec);
-            }
-            catch (InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException)
-            {
-              for (;;)
-              {
-                QLog.e("Q.msg.MessageHandler", 1, "mergeMixedMsgContent", localInvalidProtocolBufferMicroException);
-              }
+              localElem.textMsg.set(localMessageForReplyText.msg);
+              k = j;
             }
           }
-          else if (localInvalidProtocolBufferMicroException.msgtype == -1049)
+          catch (Exception localException)
           {
-            try
+            k = j;
+            if (QLog.isColorLevel())
             {
-              MessageForReplyText localMessageForReplyText = (MessageForReplyText)localInvalidProtocolBufferMicroException;
-              localObject2 = MessagePkgUtils.a(localMessageForReplyText.mSourceMsgInfo);
-              localElem.sourceMsgInfo.set(HexUtil.bytes2HexStr((byte[])localObject2));
-              if (!TextUtils.isEmpty(localMessageForReplyText.msg)) {
-                localElem.textMsg.set(localMessageForReplyText.msg);
-              }
-            }
-            catch (Exception localException)
-            {
-              if (QLog.isColorLevel()) {
-                QLog.d("Q.msg.MessageHandler", 2, localException.getMessage());
-              }
+              QLog.d("Q.msg.MessageHandler", 2, localException.getMessage());
+              k = j;
             }
           }
         }
       }
+      label426:
+      localMsg.elems.get().add(localElem);
+      i += 1;
+      j = k;
     }
     paramList = (MessageForMixedMsg)MessageRecordFactory.a(-1035);
     paramList.msgtype = -1035;
@@ -342,7 +263,7 @@ public class MessageProtoCodec
     if ((paramMessageInfo != null) && (paramMessageInfo.jdField_a_of_type_Int == 3000)) {
       paramList.frienduin = paramMessageInfo.jdField_a_of_type_JavaLangString;
     }
-    if ((i != 0) && (paramMessageInfo != null)) {
+    if ((j != 0) && (paramMessageInfo != null)) {
       AtTroopMemberSpan.a(paramMessageInfo.jdField_a_of_type_Int, localJSONObject.toString(), paramList);
     }
     if (paramArrayOfByte != null) {
@@ -354,51 +275,59 @@ public class MessageProtoCodec
   
   private static String a(String paramString)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramString.length())
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    int j;
+    for (int i = 0; i < paramString.length(); i = j + 1)
     {
-      if ((paramString.charAt(i) == '\024') && (i + 1 < paramString.length()))
+      if (paramString.charAt(i) == '\024')
       {
-        int k = paramString.charAt(i + 1);
-        if (QLog.isColorLevel()) {
-          QLog.d("Q.msg.MessageHandler", 2, "localeCode value:" + k + ",max len:" + MessageUtils.a.length);
-        }
-        j = i;
-        if (QQSysFaceUtil.isValidFaceId(k))
+        int k = i + 1;
+        if (k < paramString.length())
         {
-          j = QQSysFaceUtil.convertToServer(k);
-          if (QLog.isColorLevel()) {
-            QLog.d("Q.msg.MessageHandler", 2, "---faceIndex:" + j);
+          int m = paramString.charAt(k);
+          StringBuilder localStringBuilder2;
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("localeCode value:");
+            localStringBuilder2.append(m);
+            localStringBuilder2.append(",max len:");
+            localStringBuilder2.append(MessageUtils.a.length);
+            QLog.d("Q.msg.MessageHandler", 2, localStringBuilder2.toString());
           }
-          localStringBuilder.append(paramString.charAt(i));
-          localStringBuilder.append((char)(j / 128 + 65));
-          localStringBuilder.append((char)(j % 128 + 65));
+          j = i;
+          if (!QQSysFaceUtil.isValidFaceId(m)) {
+            continue;
+          }
+          j = QQSysFaceUtil.convertToServer(m);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append("---faceIndex:");
+            localStringBuilder2.append(j);
+            QLog.d("Q.msg.MessageHandler", 2, localStringBuilder2.toString());
+          }
+          localStringBuilder1.append(paramString.charAt(i));
+          localStringBuilder1.append((char)(j / 128 + 65));
+          localStringBuilder1.append((char)(j % 128 + 65));
+          j = k;
+          continue;
         }
       }
-      for (int j = i + 1;; j = i)
-      {
-        i = j + 1;
-        break;
-        localStringBuilder.append(paramString.charAt(i));
-      }
+      localStringBuilder1.append(paramString.charAt(i));
+      j = i;
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
   
-  public static msg_svc.PbSendMsgReq a(MessageHandler paramMessageHandler, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, TransMsgContext paramTransMsgContext, long paramLong, int paramInt3)
+  public static msg_svc.PbSendMsgReq a(AppInterface paramAppInterface, int paramInt1, String paramString, TransMsgContext paramTransMsgContext, long paramLong, int paramInt2)
   {
-    return QMessageProtoCodec.a(paramMessageHandler.a, paramString, paramArrayOfByte, paramInt1, paramInt2, paramTransMsgContext, paramLong, paramInt3);
+    return QMessageProtoCodec.a(paramAppInterface, paramInt1, paramString, paramTransMsgContext, paramLong, paramInt2);
   }
   
-  public static msg_svc.PbSendMsgReq a(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, TransMsgContext paramTransMsgContext, long paramLong, int paramInt2)
+  public static msg_svc.PbSendMsgReq a(BaseMessageHandler paramBaseMessageHandler, String paramString, byte[] paramArrayOfByte, int paramInt1, int paramInt2, TransMsgContext paramTransMsgContext, long paramLong, int paramInt3)
   {
-    return QMessageProtoCodec.a(paramQQAppInterface, paramInt1, paramString, paramTransMsgContext, paramLong, paramInt2);
-  }
-  
-  public static msg_svc.PbSendMsgReq a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, im_msg_body.RichText paramRichText, int paramInt)
-  {
-    return QMessageProtoCodec.a(paramQQAppInterface, paramMessageRecord, paramRichText, paramInt);
+    return QMessageProtoCodec.a(paramBaseMessageHandler.a(), paramString, paramArrayOfByte, paramInt1, paramInt2, paramTransMsgContext, paramLong, paramInt3);
   }
   
   public static generalflags.ResvAttr a(im_msg_body.GeneralFlags paramGeneralFlags)
@@ -412,14 +341,6 @@ public class MessageProtoCodec
     return QMessageProtoCodec.a(paramMsg);
   }
   
-  public static im_msg_body.RichText a(MessageForApollo paramMessageForApollo)
-  {
-    if ((paramMessageForApollo == null) || (paramMessageForApollo.mApolloMessage == null)) {
-      return null;
-    }
-    return b(paramMessageForApollo);
-  }
-  
   public static im_msg_body.RichText a(ChatMessage paramChatMessage)
   {
     if ((paramChatMessage != null) && ((paramChatMessage instanceof MessageForRichText))) {
@@ -430,137 +351,96 @@ public class MessageProtoCodec
   
   public static im_msg_body.RichText a(ChatMessage paramChatMessage, boolean paramBoolean)
   {
-    Object localObject2 = null;
-    Object localObject1;
     if (paramChatMessage == null) {
-      localObject1 = localObject2;
+      return null;
     }
-    for (;;)
+    if (!(paramChatMessage instanceof MessageForArkApp)) {
+      return null;
+    }
+    paramChatMessage = (MessageForArkApp)paramChatMessage;
+    Object localObject1;
+    ByteArrayOutputStream localByteArrayOutputStream;
+    if (paramChatMessage != null)
     {
-      return localObject1;
-      localObject1 = localObject2;
-      if (!(paramChatMessage instanceof MessageForArkApp)) {
-        continue;
-      }
-      paramChatMessage = (MessageForArkApp)paramChatMessage;
-      localObject1 = localObject2;
-      if (paramChatMessage == null) {
-        continue;
-      }
-      localObject1 = localObject2;
       if (paramChatMessage.ark_app_message == null) {
-        continue;
-      }
-      Object localObject3 = paramChatMessage.ark_app_message.toPbData();
-      localObject1 = localObject2;
-      if (localObject3 == null) {
-        continue;
-      }
-      localObject1 = localObject2;
-      if (localObject3.length == 0) {
-        continue;
-      }
-      byte[] arrayOfByte = StructMsgUtils.b((byte[])localObject3);
-      localObject1 = localObject2;
-      if (arrayOfByte == null) {
-        continue;
-      }
-      localObject1 = localObject2;
-      if (arrayOfByte.length == 0) {
-        continue;
-      }
-      localObject3 = new ByteArrayOutputStream();
-      try
-      {
-        ((ByteArrayOutputStream)localObject3).write(1);
-        ((ByteArrayOutputStream)localObject3).write(arrayOfByte);
-        if ((!TextUtils.isEmpty(paramChatMessage.resIDForLongMsg)) && (!paramBoolean))
-        {
-          localObject1 = new im_msg_body.RichText();
-          localObject2 = new im_msg_body.Elem();
-          ((im_msg_body.Elem)localObject2).general_flags.long_text_flag.set(1);
-          ((im_msg_body.Elem)localObject2).general_flags.long_text_resid.set(ByteStringMicro.copyFromUtf8(paramChatMessage.resIDForLongMsg));
-          ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject2);
-          return localObject1;
-        }
-        if (paramChatMessage.ark_app_message.containStructMsg != null)
-        {
-          paramChatMessage = a(paramChatMessage.ark_app_message.containStructMsg);
-          localObject1 = new im_msg_body.LightAppElem();
-          ((im_msg_body.LightAppElem)localObject1).bytes_data.set(ByteStringMicro.copyFrom(((ByteArrayOutputStream)localObject3).toByteArray()));
-          localObject2 = new im_msg_body.Elem();
-          ((im_msg_body.Elem)localObject2).light_app.set((MessageMicro)localObject1);
-          localObject1 = paramChatMessage;
-          if (paramChatMessage == null) {
-            continue;
-          }
-          paramChatMessage.elems.add((MessageMicro)localObject2);
-          return paramChatMessage;
-        }
-        localObject2 = new im_msg_body.RichText();
-        if (!TextUtils.isEmpty(paramChatMessage.ark_app_message.compatibleText)) {
-          localObject1 = paramChatMessage.ark_app_message.compatibleText;
-        }
-        for (;;)
-        {
-          paramChatMessage = (ChatMessage)localObject2;
-          if (localObject1 == null) {
-            break;
-          }
-          paramChatMessage = (ChatMessage)localObject2;
-          if (((String)localObject1).length() <= 0) {
-            break;
-          }
-          paramChatMessage = new im_msg_body.Text();
-          paramChatMessage.str.set(ByteStringMicro.copyFromUtf8((String)localObject1));
-          localObject1 = new im_msg_body.Elem();
-          ((im_msg_body.Elem)localObject1).text.set(paramChatMessage);
-          ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
-          paramChatMessage = (ChatMessage)localObject2;
-          break;
-          paramChatMessage = paramChatMessage.getSummery();
-          if ((paramChatMessage == null) || (paramChatMessage.length() == 0)) {
-            localObject1 = BaseApplication.getContext().getString(2131693677);
-          } else {
-            localObject1 = String.format(BaseApplication.getContext().getString(2131693678), new Object[] { paramChatMessage });
-          }
-        }
         return null;
       }
-      catch (Exception paramChatMessage) {}
-    }
-  }
-  
-  private static im_msg_body.RichText a(FunnyFaceMessage paramFunnyFaceMessage)
-  {
-    im_msg_body.FunFace localFunFace = new im_msg_body.FunFace();
-    Object localObject;
-    if (paramFunnyFaceMessage.faceId == 1)
-    {
-      localObject = new im_msg_body.FunFace.Turntable();
-      Iterator localIterator = paramFunnyFaceMessage.turntable.uinList.iterator();
-      while (localIterator.hasNext())
+      localObject1 = paramChatMessage.ark_app_message.toPbData();
+      if (localObject1 != null)
       {
-        String str = (String)localIterator.next();
-        ((im_msg_body.FunFace.Turntable)localObject).rpt_uint64_uin_list.add(Long.valueOf(str));
-      }
-      ((im_msg_body.FunFace.Turntable)localObject).uint64_hit_uin.set(Long.valueOf(paramFunnyFaceMessage.turntable.hitUin).longValue());
-      localFunFace.msg_turntable.set((MessageMicro)localObject);
-    }
-    for (;;)
-    {
-      paramFunnyFaceMessage = new im_msg_body.RichText();
-      localObject = new im_msg_body.Elem();
-      ((im_msg_body.Elem)localObject).fun_face.set(localFunFace);
-      paramFunnyFaceMessage.elems.add((MessageMicro)localObject);
-      return paramFunnyFaceMessage;
-      if (paramFunnyFaceMessage.faceId == 2)
-      {
-        localObject = new im_msg_body.FunFace.Bomb();
-        ((im_msg_body.FunFace.Bomb)localObject).bool_burst.set(paramFunnyFaceMessage.bomb.isBurst);
-        localFunFace.msg_bomb.set((MessageMicro)localObject);
+        if (localObject1.length == 0) {
+          return null;
+        }
+        localObject1 = StructMsgUtils.b((byte[])localObject1);
+        if (localObject1 != null)
+        {
+          if (localObject1.length == 0) {
+            return null;
+          }
+          localByteArrayOutputStream = new ByteArrayOutputStream();
+        }
       }
     }
+    try
+    {
+      localByteArrayOutputStream.write(1);
+      localByteArrayOutputStream.write((byte[])localObject1);
+      if ((!TextUtils.isEmpty(paramChatMessage.resIDForLongMsg)) && (!paramBoolean))
+      {
+        localObject1 = new im_msg_body.RichText();
+        localObject2 = new im_msg_body.Elem();
+        ((im_msg_body.Elem)localObject2).general_flags.long_text_flag.set(1);
+        ((im_msg_body.Elem)localObject2).general_flags.long_text_resid.set(ByteStringMicro.copyFromUtf8(paramChatMessage.resIDForLongMsg));
+        ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject2);
+        return localObject1;
+      }
+      if (paramChatMessage.ark_app_message.containStructMsg != null)
+      {
+        localObject1 = a(paramChatMessage.ark_app_message.containStructMsg);
+      }
+      else
+      {
+        localObject2 = new im_msg_body.RichText();
+        if (!TextUtils.isEmpty(paramChatMessage.ark_app_message.compatibleText))
+        {
+          paramChatMessage = paramChatMessage.ark_app_message.compatibleText;
+        }
+        else
+        {
+          paramChatMessage = paramChatMessage.getSummery();
+          if ((paramChatMessage != null) && (paramChatMessage.length() != 0)) {
+            paramChatMessage = String.format(BaseApplication.getContext().getString(2131693631), new Object[] { paramChatMessage });
+          } else {
+            paramChatMessage = BaseApplication.getContext().getString(2131693630);
+          }
+        }
+        localObject1 = localObject2;
+        if (paramChatMessage != null)
+        {
+          localObject1 = localObject2;
+          if (paramChatMessage.length() > 0)
+          {
+            localObject1 = new im_msg_body.Text();
+            ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8(paramChatMessage));
+            paramChatMessage = new im_msg_body.Elem();
+            paramChatMessage.text.set((MessageMicro)localObject1);
+            ((im_msg_body.RichText)localObject2).elems.add(paramChatMessage);
+            localObject1 = localObject2;
+          }
+        }
+      }
+      paramChatMessage = new im_msg_body.LightAppElem();
+      paramChatMessage.bytes_data.set(ByteStringMicro.copyFrom(localByteArrayOutputStream.toByteArray()));
+      Object localObject2 = new im_msg_body.Elem();
+      ((im_msg_body.Elem)localObject2).light_app.set(paramChatMessage);
+      if (localObject1 != null) {
+        ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject2);
+      }
+      return localObject1;
+    }
+    catch (Exception paramChatMessage) {}
+    return null;
+    return null;
   }
   
   public static im_msg_body.RichText a(MarkFaceMessage paramMarkFaceMessage, String paramString, boolean paramBoolean)
@@ -588,8 +468,16 @@ public class MessageProtoCodec
     if ((paramMarkFaceMessage.resvAttr != null) && (paramMarkFaceMessage.resvAttr.length > 0)) {
       ((im_msg_body.MarketFace)localObject).bytes_pb_reserve.set(ByteStringMicro.copyFrom(paramMarkFaceMessage.resvAttr));
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.MessageHandler", 2, "encodeMarketFace : mf epid = " + ((im_msg_body.MarketFace)localObject).uint32_tab_id.get() + " csubtype = " + ((im_msg_body.MarketFace)localObject).uint32_sub_type.get() + ";mediaType = " + ((im_msg_body.MarketFace)localObject).uint32_media_type.get());
+    if (QLog.isColorLevel())
+    {
+      paramMarkFaceMessage = new StringBuilder();
+      paramMarkFaceMessage.append("encodeMarketFace : mf epid = ");
+      paramMarkFaceMessage.append(((im_msg_body.MarketFace)localObject).uint32_tab_id.get());
+      paramMarkFaceMessage.append(" csubtype = ");
+      paramMarkFaceMessage.append(((im_msg_body.MarketFace)localObject).uint32_sub_type.get());
+      paramMarkFaceMessage.append(";mediaType = ");
+      paramMarkFaceMessage.append(((im_msg_body.MarketFace)localObject).uint32_media_type.get());
+      QLog.d("Q.msg.MessageHandler", 2, paramMarkFaceMessage.toString());
     }
     paramMarkFaceMessage = new im_msg_body.Text();
     if (paramString != null) {
@@ -605,73 +493,76 @@ public class MessageProtoCodec
     return paramString;
   }
   
-  public static im_msg_body.RichText a(MessageForFunnyFace paramMessageForFunnyFace)
-  {
-    if ((paramMessageForFunnyFace == null) || (paramMessageForFunnyFace.mFunnyFaceMessage == null)) {
-      return null;
-    }
-    return a(paramMessageForFunnyFace.mFunnyFaceMessage);
-  }
-  
   public static im_msg_body.RichText a(MessageForLongTextMsg paramMessageForLongTextMsg, boolean paramBoolean)
   {
-    Object localObject2 = null;
     if (paramMessageForLongTextMsg == null) {
-      localObject1 = localObject2;
+      return null;
     }
-    do
+    Object localObject2;
+    Object localObject1;
+    if (paramBoolean)
     {
-      do
-      {
-        do
-        {
-          return localObject1;
-          if (!paramBoolean) {
-            break;
-          }
-          localObject1 = localObject2;
-        } while (paramMessageForLongTextMsg.structingMsg == null);
-        localObject3 = paramMessageForLongTextMsg.structingMsg.getXmlBytes();
-        localObject1 = localObject2;
-      } while (localObject3 == null);
+      if (paramMessageForLongTextMsg.structingMsg == null) {
+        return null;
+      }
+      localObject2 = paramMessageForLongTextMsg.structingMsg.getXmlBytes();
+      if (localObject2 == null) {
+        return null;
+      }
       localObject1 = new im_msg_body.RichMsg();
-      ((im_msg_body.RichMsg)localObject1).bytes_template_1.set(ByteStringMicro.copyFrom((byte[])localObject3));
+      ((im_msg_body.RichMsg)localObject1).bytes_template_1.set(ByteStringMicro.copyFrom((byte[])localObject2));
       ((im_msg_body.RichMsg)localObject1).uint32_service_id.set(paramMessageForLongTextMsg.structingMsg.mMsgServiceID);
       localObject2 = new im_msg_body.RichText();
-      localObject3 = new im_msg_body.Elem();
+      Object localObject3 = new im_msg_body.Elem();
       ((im_msg_body.Elem)localObject3).rich_msg.set((MessageMicro)localObject1);
       ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject3);
       localObject1 = localObject2;
-    } while (TextUtils.isEmpty(paramMessageForLongTextMsg.structingMsg.mCompatibleText));
-    Object localObject1 = new im_msg_body.Elem();
-    Object localObject3 = new im_msg_body.Text();
-    ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFrom(paramMessageForLongTextMsg.structingMsg.mCompatibleText.getBytes()));
-    ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject3);
-    ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
-    return localObject2;
-    paramMessageForLongTextMsg = a(paramMessageForLongTextMsg.msg, paramMessageForLongTextMsg.atInfoList);
-    localObject1 = new im_msg_body.GeneralFlags();
-    ((im_msg_body.GeneralFlags)localObject1).long_text_flag.set(2);
-    localObject2 = new im_msg_body.Elem();
-    ((im_msg_body.Elem)localObject2).general_flags.set((MessageMicro)localObject1);
-    paramMessageForLongTextMsg.elems.add((MessageMicro)localObject2);
-    return paramMessageForLongTextMsg;
+      if (!TextUtils.isEmpty(paramMessageForLongTextMsg.structingMsg.mCompatibleText))
+      {
+        localObject1 = new im_msg_body.Elem();
+        localObject3 = new im_msg_body.Text();
+        ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFrom(paramMessageForLongTextMsg.structingMsg.mCompatibleText.getBytes()));
+        ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject3);
+        ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
+        return localObject2;
+      }
+    }
+    else
+    {
+      localObject1 = a(paramMessageForLongTextMsg.msg, paramMessageForLongTextMsg.atInfoList);
+      paramMessageForLongTextMsg = new im_msg_body.GeneralFlags();
+      paramMessageForLongTextMsg.long_text_flag.set(2);
+      localObject2 = new im_msg_body.Elem();
+      ((im_msg_body.Elem)localObject2).general_flags.set(paramMessageForLongTextMsg);
+      ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject2);
+    }
+    return localObject1;
   }
   
   public static im_msg_body.RichText a(MessageForMarketFace paramMessageForMarketFace)
   {
-    if ((paramMessageForMarketFace == null) || (paramMessageForMarketFace.mMarkFaceMessage == null)) {
-      return null;
-    }
-    if (TextUtils.isEmpty(paramMessageForMarketFace.mMarkFaceMessage.faceName)) {}
-    for (String str = HardCodeUtil.a(2131706662);; str = "[" + paramMessageForMarketFace.mMarkFaceMessage.faceName + "]")
+    if ((paramMessageForMarketFace != null) && (paramMessageForMarketFace.mMarkFaceMessage != null))
     {
+      Object localObject;
+      if (TextUtils.isEmpty(paramMessageForMarketFace.mMarkFaceMessage.faceName))
+      {
+        localObject = HardCodeUtil.a(2131706684);
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[");
+        ((StringBuilder)localObject).append(paramMessageForMarketFace.mMarkFaceMessage.faceName);
+        ((StringBuilder)localObject).append("]");
+        localObject = ((StringBuilder)localObject).toString();
+      }
       boolean bool = true;
       if (paramMessageForMarketFace.istroop == 3000) {
         bool = false;
       }
-      return a(paramMessageForMarketFace.mMarkFaceMessage, str, bool);
+      return a(paramMessageForMarketFace.mMarkFaceMessage, (String)localObject, bool);
     }
+    return null;
   }
   
   public static im_msg_body.RichText a(MessageForMixedMsg paramMessageForMixedMsg)
@@ -682,7 +573,7 @@ public class MessageProtoCodec
     im_msg_body.RichText localRichText = new im_msg_body.RichText();
     int k = paramMessageForMixedMsg.msgElemList.size();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       Object localObject = (MessageRecord)paramMessageForMixedMsg.msgElemList.get(i);
       int j;
@@ -707,24 +598,20 @@ public class MessageProtoCodec
         }
         localRichText.elems.add(((im_msg_body.RichText)localObject).elems.get(0));
       }
-      for (;;)
+      else if ((localObject instanceof MessageForReplyText))
       {
-        i += 1;
-        break;
-        if ((localObject instanceof MessageForReplyText))
+        localObject = a((MessageForReplyText)localObject);
+        if (localObject != null)
         {
-          localObject = a((MessageForReplyText)localObject);
-          if (localObject != null)
+          j = 0;
+          while (j < ((im_msg_body.RichText)localObject).elems.size())
           {
-            j = 0;
-            while (j < ((im_msg_body.RichText)localObject).elems.size())
-            {
-              localRichText.elems.add(((im_msg_body.RichText)localObject).elems.get(j));
-              j += 1;
-            }
+            localRichText.elems.add(((im_msg_body.RichText)localObject).elems.get(j));
+            j += 1;
           }
         }
       }
+      i += 1;
     }
     return localRichText;
   }
@@ -736,24 +623,22 @@ public class MessageProtoCodec
   
   public static im_msg_body.RichText a(MessageForReplyText paramMessageForReplyText)
   {
-    localObject2 = paramMessageForReplyText.getExtInfoFromExtStr("sens_msg_source_msg_info");
-    localObject1 = localObject2;
-    if (TextUtils.isEmpty((CharSequence)localObject2)) {}
-    try
-    {
-      String str = HexUtil.bytes2HexStr(MessagePkgUtils.a(paramMessageForReplyText.mSourceMsgInfo));
-      localObject1 = str;
-      localObject2 = str;
-      if (!TextUtils.isEmpty(str))
+    Object localObject2 = paramMessageForReplyText.getExtInfoFromExtStr("sens_msg_source_msg_info");
+    Object localObject1 = localObject2;
+    if (TextUtils.isEmpty((CharSequence)localObject2)) {
+      try
       {
+        String str = HexUtil.bytes2HexStr(MessagePkgUtils.a(paramMessageForReplyText.mSourceMsgInfo));
         localObject2 = str;
-        paramMessageForReplyText.saveExtInfoToExtStr("sens_msg_source_msg_info", str);
         localObject1 = str;
+        if (!TextUtils.isEmpty(str))
+        {
+          localObject2 = str;
+          paramMessageForReplyText.saveExtInfoToExtStr("sens_msg_source_msg_info", str);
+          localObject1 = str;
+        }
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         localObject1 = localObject2;
         if (QLog.isColorLevel())
@@ -763,40 +648,44 @@ public class MessageProtoCodec
         }
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.", 2, "getSourceMsgInfo data = " + localObject1 + ", mSourceMsgInfo = " + paramMessageForReplyText.mSourceMsgInfo);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getSourceMsgInfo data = ");
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append(", mSourceMsgInfo = ");
+      ((StringBuilder)localObject2).append(paramMessageForReplyText.mSourceMsgInfo);
+      QLog.d("Q.msg.", 2, ((StringBuilder)localObject2).toString());
     }
     return a(paramMessageForReplyText);
   }
   
   public static im_msg_body.RichText a(MessageForShakeWindow paramMessageForShakeWindow)
   {
-    if ((paramMessageForShakeWindow == null) || (paramMessageForShakeWindow.mShakeWindowMsg == null)) {
-      return null;
+    if ((paramMessageForShakeWindow != null) && (paramMessageForShakeWindow.mShakeWindowMsg != null))
+    {
+      im_msg_body.RichText localRichText = new im_msg_body.RichText();
+      im_msg_body.ShakeWindow localShakeWindow = new im_msg_body.ShakeWindow();
+      localShakeWindow.uint32_type.set(paramMessageForShakeWindow.mShakeWindowMsg.mType);
+      paramMessageForShakeWindow = new im_msg_body.Elem();
+      paramMessageForShakeWindow.shake_window.set(localShakeWindow);
+      localRichText.elems.add(paramMessageForShakeWindow);
+      return localRichText;
     }
-    im_msg_body.RichText localRichText = new im_msg_body.RichText();
-    im_msg_body.ShakeWindow localShakeWindow = new im_msg_body.ShakeWindow();
-    localShakeWindow.uint32_type.set(paramMessageForShakeWindow.mShakeWindowMsg.mType);
-    paramMessageForShakeWindow = new im_msg_body.Elem();
-    paramMessageForShakeWindow.shake_window.set(localShakeWindow);
-    localRichText.elems.add(paramMessageForShakeWindow);
-    return localRichText;
+    return null;
   }
   
   public static im_msg_body.RichText a(MessageForStructing paramMessageForStructing)
   {
-    if ((paramMessageForStructing == null) || (paramMessageForStructing.structingMsg == null)) {
-      localObject1 = null;
-    }
-    Object localObject2;
-    label344:
-    do
+    if (paramMessageForStructing != null)
     {
-      return localObject1;
+      if (paramMessageForStructing.structingMsg == null) {
+        return null;
+      }
       if (paramMessageForStructing.richText != null) {
         return paramMessageForStructing.richText;
       }
-      localObject2 = paramMessageForStructing.structingMsg.getXmlBytes();
+      Object localObject2 = paramMessageForStructing.structingMsg.getXmlBytes();
       if (localObject2 == null) {
         return null;
       }
@@ -816,9 +705,9 @@ public class MessageProtoCodec
           paramMessageForStructing.structingMsg.mMsgActionData = ((String)localObject2);
         }
       }
-      localObject3 = new im_msg_body.RichMsg();
-      ((im_msg_body.RichMsg)localObject3).bytes_template_1.set(ByteStringMicro.copyFrom((byte[])localObject1));
-      ((im_msg_body.RichMsg)localObject3).uint32_service_id.set(paramMessageForStructing.structingMsg.mMsgServiceID);
+      localObject2 = new im_msg_body.RichMsg();
+      ((im_msg_body.RichMsg)localObject2).bytes_template_1.set(ByteStringMicro.copyFrom((byte[])localObject1));
+      ((im_msg_body.RichMsg)localObject2).uint32_service_id.set(paramMessageForStructing.structingMsg.mMsgServiceID);
       if ((paramMessageForStructing.structingMsg instanceof AbsShareMsg))
       {
         localObject1 = ((AbsShareMsg)paramMessageForStructing.structingMsg).getStructMsgItemLists();
@@ -828,25 +717,25 @@ public class MessageProtoCodec
           for (;;)
           {
             if (!((Iterator)localObject1).hasNext()) {
-              break label344;
+              break label342;
             }
-            localObject2 = (AbsStructMsgElement)((Iterator)localObject1).next();
-            if ((localObject2 instanceof AbsStructMsgItem))
+            localObject3 = (AbsStructMsgElement)((Iterator)localObject1).next();
+            if ((localObject3 instanceof AbsStructMsgItem))
             {
-              localObject2 = ((AbsStructMsgItem)localObject2).a;
-              if (localObject2 != null)
+              localObject3 = ((AbsStructMsgItem)localObject3).a;
+              if (localObject3 != null)
               {
-                localObject2 = ((List)localObject2).iterator();
-                if (((Iterator)localObject2).hasNext())
+                localObject3 = ((List)localObject3).iterator();
+                if (((Iterator)localObject3).hasNext())
                 {
-                  AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject2).next();
+                  AbsStructMsgElement localAbsStructMsgElement = (AbsStructMsgElement)((Iterator)localObject3).next();
                   if (!(localAbsStructMsgElement instanceof StructMsgItemVideo)) {
                     break;
                   }
                   if (((StructMsgItemVideo)localAbsStructMsgElement).a()) {
-                    ((im_msg_body.RichMsg)localObject3).uint32_flags.set(4);
+                    ((im_msg_body.RichMsg)localObject2).uint32_flags.set(4);
                   } else {
-                    ((im_msg_body.RichMsg)localObject3).uint32_flags.set(2);
+                    ((im_msg_body.RichMsg)localObject2).uint32_flags.set(2);
                   }
                 }
               }
@@ -854,21 +743,25 @@ public class MessageProtoCodec
           }
         }
       }
-      localObject2 = new im_msg_body.RichText();
-      localObject1 = new im_msg_body.Elem();
-      ((im_msg_body.Elem)localObject1).rich_msg.set((MessageMicro)localObject3);
-      ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
+      label342:
+      Object localObject1 = new im_msg_body.RichText();
+      Object localObject3 = new im_msg_body.Elem();
+      ((im_msg_body.Elem)localObject3).rich_msg.set((MessageMicro)localObject2);
+      ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject3);
       if (TextUtils.isEmpty(paramMessageForStructing.structingMsg.mCompatibleText)) {
         paramMessageForStructing.structingMsg.mCompatibleText = paramMessageForStructing.structingMsg.mMsgUrl;
       }
-      localObject1 = localObject2;
-    } while (TextUtils.isEmpty(paramMessageForStructing.structingMsg.mCompatibleText));
-    Object localObject1 = new im_msg_body.Elem();
-    Object localObject3 = new im_msg_body.Text();
-    ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFrom(paramMessageForStructing.structingMsg.mCompatibleText.getBytes()));
-    ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject3);
-    ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
-    return localObject2;
+      if (!TextUtils.isEmpty(paramMessageForStructing.structingMsg.mCompatibleText))
+      {
+        localObject2 = new im_msg_body.Elem();
+        localObject3 = new im_msg_body.Text();
+        ((im_msg_body.Text)localObject3).str.set(ByteStringMicro.copyFrom(paramMessageForStructing.structingMsg.mCompatibleText.getBytes()));
+        ((im_msg_body.Elem)localObject2).text.set((MessageMicro)localObject3);
+        ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject2);
+      }
+      return localObject1;
+    }
+    return null;
   }
   
   public static im_msg_body.RichText a(MessageForText paramMessageForText)
@@ -909,117 +802,118 @@ public class MessageProtoCodec
   
   public static im_msg_body.RichText a(MessageRecord paramMessageRecord)
   {
-    Object localObject3 = null;
     Object localObject4 = paramMessageRecord.getExtInfoFromExtStr("sens_msg_source_msg_info");
-    Object localObject1;
-    ArrayList localArrayList;
-    Object localObject2;
-    if (paramMessageRecord.msg == null)
-    {
+    if (paramMessageRecord.msg == null) {
       localObject1 = "";
-      localArrayList = paramMessageRecord.atInfoList;
-      localObject2 = paramMessageRecord.getExtInfoFromExtStr("sens_reply_special_msg");
-      paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("sens_reply_special_at_list");
-      if ((TextUtils.isEmpty((CharSequence)localObject2)) || (TextUtils.isEmpty(paramMessageRecord))) {
-        break label548;
-      }
-      localArrayList = MessageForText.getTroopMemberInfoFromExtrJson(paramMessageRecord);
+    } else {
+      localObject1 = paramMessageRecord.msg;
     }
+    ArrayList localArrayList2 = paramMessageRecord.atInfoList;
+    Object localObject3 = paramMessageRecord.getExtInfoFromExtStr("sens_reply_special_msg");
+    paramMessageRecord = paramMessageRecord.getExtInfoFromExtStr("sens_reply_special_at_list");
+    Object localObject2 = localObject1;
+    ArrayList localArrayList1 = localArrayList2;
+    if (!TextUtils.isEmpty((CharSequence)localObject3))
+    {
+      localObject2 = localObject1;
+      localArrayList1 = localArrayList2;
+      if (!TextUtils.isEmpty(paramMessageRecord))
+      {
+        localArrayList1 = MessageForText.getTroopMemberInfoFromExtrJson(paramMessageRecord);
+        localObject2 = localObject3;
+      }
+    }
+    boolean bool = TextUtils.isEmpty((CharSequence)localObject4);
+    Object localObject1 = null;
+    localArrayList2 = null;
+    paramMessageRecord = (MessageRecord)localObject1;
+    if (!bool) {}
     for (;;)
     {
-      if (!TextUtils.isEmpty((CharSequence)localObject4))
+      try
       {
-        try
-        {
-          localSourceMsgInfo = (MessageForReplyText.SourceMsgInfo)MessagePkgUtils.a(HexUtil.hexStr2Bytes((String)localObject4));
-          if (localSourceMsgInfo == null) {
-            break label543;
-          }
-          localObject4 = new im_msg_body.SourceMsg();
-          ((im_msg_body.SourceMsg)localObject4).uint32_orig_seqs.add(Integer.valueOf((int)localSourceMsgInfo.mSourceMsgSeq));
-          paramMessageRecord = a(localSourceMsgInfo.mSourceMsgText, null);
-          ((im_msg_body.SourceMsg)localObject4).elems.set(paramMessageRecord.elems.get());
-          if (localSourceMsgInfo.getSourceMsg() != null) {
-            ((im_msg_body.SourceMsg)localObject4).bytes_src_msg.set(ByteStringMicro.copyFrom(localSourceMsgInfo.getSourceMsg()));
-          }
-          if (!TextUtils.isEmpty(localSourceMsgInfo.mAnonymousNickName))
-          {
-            paramMessageRecord = new im_msg_body.AnonymousGroupMsg();
-            paramMessageRecord.str_anon_nick.set(ByteStringMicro.copyFromUtf8(localSourceMsgInfo.mAnonymousNickName));
-            localObject1 = new im_msg_body.Elem();
-            ((im_msg_body.Elem)localObject1).anon_group_msg.set(paramMessageRecord);
-            ((im_msg_body.SourceMsg)localObject4).elems.add((MessageMicro)localObject1);
-          }
-          if (!TextUtils.isEmpty(localSourceMsgInfo.mSourceMsgTroopName)) {
-            ((im_msg_body.SourceMsg)localObject4).bytes_troop_name.set(ByteStringMicro.copyFromUtf8(localSourceMsgInfo.mSourceMsgTroopName));
-          }
-          ((im_msg_body.SourceMsg)localObject4).uint64_sender_uin.set(localSourceMsgInfo.mSourceMsgSenderUin);
-          ((im_msg_body.SourceMsg)localObject4).uint64_to_uin.set(localSourceMsgInfo.mSourceMsgToUin);
-          ((im_msg_body.SourceMsg)localObject4).uint32_time.set(localSourceMsgInfo.mSourceMsgTime);
-          ((im_msg_body.SourceMsg)localObject4).uint32_flag.set(localSourceMsgInfo.mSourceSummaryFlag);
-          ((im_msg_body.SourceMsg)localObject4).uint32_type.set(localSourceMsgInfo.mType);
-          if (localSourceMsgInfo.mRichMsg != null) {
-            ((im_msg_body.SourceMsg)localObject4).bytes_richMsg.set(ByteStringMicro.copyFromUtf8(localSourceMsgInfo.mRichMsg));
-          }
-          if (localSourceMsgInfo.oriMsgType == 0) {
-            break label538;
-          }
-          paramMessageRecord = new source_msg.ResvAttr();
-          paramMessageRecord.uint32_ori_msgtype.set(localSourceMsgInfo.oriMsgType);
+        localObject3 = (MessageForReplyText.SourceMsgInfo)MessagePkgUtils.a(HexUtil.hexStr2Bytes((String)localObject4));
+        paramMessageRecord = (MessageRecord)localObject1;
+        if (localObject3 == null) {
+          break label567;
         }
-        catch (Exception localException1)
-        {
-          for (;;)
-          {
-            MessageForReplyText.SourceMsgInfo localSourceMsgInfo;
-            paramMessageRecord = localObject3;
-            if (QLog.isColorLevel()) {
-              QLog.d("Q.msg.", 2, "getSourceMsgInfo exception:" + localException1.getMessage());
-            }
-            continue;
-            localMessageRecord = paramMessageRecord;
-            continue;
-            paramMessageRecord = null;
-          }
+        localObject4 = new im_msg_body.SourceMsg();
+        ((im_msg_body.SourceMsg)localObject4).uint32_orig_seqs.add(Integer.valueOf((int)((MessageForReplyText.SourceMsgInfo)localObject3).mSourceMsgSeq));
+        paramMessageRecord = a(((MessageForReplyText.SourceMsgInfo)localObject3).mSourceMsgText, null);
+        ((im_msg_body.SourceMsg)localObject4).elems.set(paramMessageRecord.elems.get());
+        if (((MessageForReplyText.SourceMsgInfo)localObject3).getSourceMsg() != null) {
+          ((im_msg_body.SourceMsg)localObject4).bytes_src_msg.set(ByteStringMicro.copyFrom(((MessageForReplyText.SourceMsgInfo)localObject3).getSourceMsg()));
         }
-        if (localSourceMsgInfo.origUid != 0L)
+        if (!TextUtils.isEmpty(((MessageForReplyText.SourceMsgInfo)localObject3).mAnonymousNickName))
+        {
+          paramMessageRecord = new im_msg_body.AnonymousGroupMsg();
+          paramMessageRecord.str_anon_nick.set(ByteStringMicro.copyFromUtf8(((MessageForReplyText.SourceMsgInfo)localObject3).mAnonymousNickName));
+          localObject1 = new im_msg_body.Elem();
+          ((im_msg_body.Elem)localObject1).anon_group_msg.set(paramMessageRecord);
+          ((im_msg_body.SourceMsg)localObject4).elems.add((MessageMicro)localObject1);
+        }
+        if (!TextUtils.isEmpty(((MessageForReplyText.SourceMsgInfo)localObject3).mSourceMsgTroopName)) {
+          ((im_msg_body.SourceMsg)localObject4).bytes_troop_name.set(ByteStringMicro.copyFromUtf8(((MessageForReplyText.SourceMsgInfo)localObject3).mSourceMsgTroopName));
+        }
+        ((im_msg_body.SourceMsg)localObject4).uint64_sender_uin.set(((MessageForReplyText.SourceMsgInfo)localObject3).mSourceMsgSenderUin);
+        ((im_msg_body.SourceMsg)localObject4).uint64_to_uin.set(((MessageForReplyText.SourceMsgInfo)localObject3).mSourceMsgToUin);
+        ((im_msg_body.SourceMsg)localObject4).uint32_time.set(((MessageForReplyText.SourceMsgInfo)localObject3).mSourceMsgTime);
+        ((im_msg_body.SourceMsg)localObject4).uint32_flag.set(((MessageForReplyText.SourceMsgInfo)localObject3).mSourceSummaryFlag);
+        ((im_msg_body.SourceMsg)localObject4).uint32_type.set(((MessageForReplyText.SourceMsgInfo)localObject3).mType);
+        if (((MessageForReplyText.SourceMsgInfo)localObject3).mRichMsg != null) {
+          ((im_msg_body.SourceMsg)localObject4).bytes_richMsg.set(ByteStringMicro.copyFromUtf8(((MessageForReplyText.SourceMsgInfo)localObject3).mRichMsg));
+        }
+        if (((MessageForReplyText.SourceMsgInfo)localObject3).oriMsgType == 0) {
+          break label582;
+        }
+        paramMessageRecord = new source_msg.ResvAttr();
+        paramMessageRecord.uint32_ori_msgtype.set(((MessageForReplyText.SourceMsgInfo)localObject3).oriMsgType);
+        localObject1 = paramMessageRecord;
+        if (((MessageForReplyText.SourceMsgInfo)localObject3).origUid != 0L)
         {
           localObject1 = paramMessageRecord;
           if (paramMessageRecord == null) {
             localObject1 = new source_msg.ResvAttr();
           }
-          ((source_msg.ResvAttr)localObject1).uint64_orig_uids.add(Long.valueOf(localSourceMsgInfo.origUid));
-          if (localObject1 != null) {
-            ((im_msg_body.SourceMsg)localObject4).bytes_pb_reserve.set(ByteStringMicro.copyFrom(((source_msg.ResvAttr)localObject1).toByteArray()));
-          }
+          ((source_msg.ResvAttr)localObject1).uint64_orig_uids.add(Long.valueOf(((MessageForReplyText.SourceMsgInfo)localObject3).origUid));
         }
-      }
-      MessageRecord localMessageRecord;
-      label538:
-      label543:
-      for (paramMessageRecord = new im_msg_body.RichText();; paramMessageRecord = null)
-      {
+        if (localObject1 != null) {
+          ((im_msg_body.SourceMsg)localObject4).bytes_pb_reserve.set(ByteStringMicro.copyFrom(((source_msg.ResvAttr)localObject1).toByteArray()));
+        }
+        paramMessageRecord = new im_msg_body.RichText();
         try
         {
           localObject1 = new im_msg_body.Elem();
           ((im_msg_body.Elem)localObject1).src_msg.set((MessageMicro)localObject4);
           paramMessageRecord.elems.add((MessageMicro)localObject1);
-          a(paramMessageRecord, (String)localObject2, localArrayList);
-          localObject1 = paramMessageRecord;
-          if (paramMessageRecord == null) {
-            localObject1 = a((String)localObject2, localArrayList);
-          }
-          return localObject1;
+          a(paramMessageRecord, localObject2, localArrayList1);
         }
-        catch (Exception localException2)
+        catch (Exception localException1)
         {
-          continue;
+          localObject1 = paramMessageRecord;
         }
-        localObject1 = paramMessageRecord.msg;
-        break;
+        paramMessageRecord = (MessageRecord)localObject1;
       }
-      label548:
-      localObject2 = localMessageRecord;
+      catch (Exception localException2)
+      {
+        localObject1 = localArrayList2;
+      }
+      if (QLog.isColorLevel())
+      {
+        paramMessageRecord = new StringBuilder();
+        paramMessageRecord.append("getSourceMsgInfo exception:");
+        paramMessageRecord.append(localException2.getMessage());
+        QLog.d("Q.msg.", 2, paramMessageRecord.toString());
+        paramMessageRecord = (MessageRecord)localObject1;
+      }
+      label567:
+      localObject1 = paramMessageRecord;
+      if (paramMessageRecord == null) {
+        localObject1 = a(localObject2, localArrayList1);
+      }
+      return localObject1;
+      label582:
+      paramMessageRecord = null;
     }
   }
   
@@ -1028,24 +922,24 @@ public class MessageProtoCodec
     return QMessageProtoCodec.a(paramString, paramArrayList);
   }
   
-  public static void a(MessageHandler paramMessageHandler, long paramLong1, int paramInt1, long paramLong2, int paramInt2)
+  public static void a(long paramLong1, int paramInt1, long paramLong2, int paramInt2, AppInterface paramAppInterface)
   {
-    QMessageProtoCodec.a(paramMessageHandler.a, paramLong1, paramInt1, paramLong2, paramInt2);
+    QMessageProtoCodec.a(paramAppInterface, paramLong1, paramInt1, paramLong2, paramInt2);
   }
   
-  public static void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, MessageInfo paramMessageInfo)
+  public static void a(AppInterface paramAppInterface, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte)
   {
-    a(paramMessageHandler, paramList, paramMsg, paramBoolean1, paramBoolean2, paramMessageInfo, null, null);
+    QMessageProtoCodec.a(paramAppInterface, paramLong1, paramInt1, paramLong2, paramInt2, paramArrayOfByte);
   }
   
-  public static void a(MessageHandler paramMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, MessageInfo paramMessageInfo, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext)
+  public static void a(BaseMessageHandler paramBaseMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, MessageInfo paramMessageInfo)
   {
-    QMessageProtoCodec.a(paramMessageHandler.a, paramList, paramMsg, paramBoolean1, paramBoolean2, paramMessageInfo, paramTempSessionInfo, paramDecodeProtoPkgContext);
+    a(paramBaseMessageHandler, paramList, paramMsg, paramBoolean1, paramBoolean2, paramMessageInfo, null, null);
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, long paramLong1, int paramInt1, long paramLong2, int paramInt2, byte[] paramArrayOfByte)
+  public static void a(BaseMessageHandler paramBaseMessageHandler, List<MessageRecord> paramList, msg_comm.Msg paramMsg, boolean paramBoolean1, boolean paramBoolean2, MessageInfo paramMessageInfo, TempSessionInfo paramTempSessionInfo, DecodeProtoPkgContext paramDecodeProtoPkgContext)
   {
-    QMessageProtoCodec.a(paramQQAppInterface, paramLong1, paramInt1, paramLong2, paramInt2, paramArrayOfByte);
+    QMessageProtoCodec.a(paramBaseMessageHandler.a(), paramList, paramMsg, paramBoolean1, paramBoolean2, paramMessageInfo, paramTempSessionInfo, paramDecodeProtoPkgContext);
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord, msg_svc.RoutingHead paramRoutingHead)
@@ -1060,104 +954,7 @@ public class MessageProtoCodec
   
   public static int b(msg_comm.Msg paramMsg)
   {
-    int j = 0;
-    paramMsg = a(paramMsg);
-    int i = j;
-    if (paramMsg != null)
-    {
-      if (paramMsg.bytes_pb_reserve.has()) {
-        break label27;
-      }
-      i = j;
-    }
-    label27:
-    do
-    {
-      do
-      {
-        do
-        {
-          return i;
-          paramMsg = a(paramMsg);
-          i = j;
-        } while (paramMsg == null);
-        i = j;
-      } while (!paramMsg.uint32_req_font_effect_id.has());
-      j = paramMsg.uint32_req_font_effect_id.get();
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.MessageHandler", 2, "decodeC2CMsgPkg_FontEffectID->" + j);
-    return j;
-  }
-  
-  public static im_msg_body.RichText b(MessageForApollo paramMessageForApollo)
-  {
-    im_msg_body.ApolloActMsg localApolloActMsg = new im_msg_body.ApolloActMsg();
-    ApolloMessage localApolloMessage = paramMessageForApollo.mApolloMessage;
-    localApolloActMsg.uint32_action_id.set(localApolloMessage.id);
-    localApolloActMsg.uint32_flag.set(localApolloMessage.flag);
-    localApolloActMsg.uint32_peer_uin.set(Utils.a(localApolloMessage.peer_uin));
-    localApolloActMsg.uint32_sender_ts.set(Utils.a(localApolloMessage.sender_ts));
-    localApolloActMsg.uint32_peer_ts.set(Utils.a(localApolloMessage.peer_ts));
-    localApolloActMsg.int32_sender_status.set(localApolloMessage.sender_status);
-    localApolloActMsg.int32_peer_status.set(localApolloMessage.peer_status);
-    Object localObject1 = new ApolloMsgExtend.AuthReserve();
-    ((ApolloMsgExtend.AuthReserve)localObject1).diy_voice_id.set(paramMessageForApollo.audioId);
-    ((ApolloMsgExtend.AuthReserve)localObject1).diy_voice_begin_ts.set((paramMessageForApollo.audioStartTime * 1000.0F));
-    ((ApolloMsgExtend.AuthReserve)localObject1).game_id.set(paramMessageForApollo.gameId);
-    ((ApolloMsgExtend.AuthReserve)localObject1).sub_type.set(paramMessageForApollo.msgType);
-    ((ApolloMsgExtend.AuthReserve)localObject1).room_id.set(paramMessageForApollo.roomId);
-    ((ApolloMsgExtend.AuthReserve)localObject1).welcome_id.set(paramMessageForApollo.welcomeId);
-    ((ApolloMsgExtend.AuthReserve)localObject1).cur_used_id_type.set(paramMessageForApollo.curUsedIdType);
-    if (!TextUtils.isEmpty(paramMessageForApollo.gameName)) {
-      ((ApolloMsgExtend.AuthReserve)localObject1).game_name.set(ByteStringMicro.copyFrom(paramMessageForApollo.gameName.getBytes()));
-    }
-    if (!TextUtils.isEmpty(paramMessageForApollo.gameExtendJson)) {
-      ((ApolloMsgExtend.AuthReserve)localObject1).game_share_ark_json.set(ByteStringMicro.copyFrom(paramMessageForApollo.gameExtendJson.getBytes()));
-    }
-    ((ApolloMsgExtend.AuthReserve)localObject1).action_type.set(paramMessageForApollo.actionType);
-    if (!TextUtils.isEmpty(paramMessageForApollo.extendJson)) {
-      ((ApolloMsgExtend.AuthReserve)localObject1).extend_json.set(ByteStringMicro.copyFrom(paramMessageForApollo.extendJson.getBytes()));
-    }
-    if (paramMessageForApollo.mApollo3DMessage != null)
-    {
-      localObject2 = paramMessageForApollo.mApollo3DMessage;
-      ApolloMsgExtend.ThreeDBaseInfo localThreeDBaseInfo = new ApolloMsgExtend.ThreeDBaseInfo();
-      localThreeDBaseInfo.uint32_action_id.set(((Apollo3DMessage)localObject2).actionID_3D);
-      localThreeDBaseInfo.action_type.set(((Apollo3DMessage)localObject2).actionType_3D);
-      localThreeDBaseInfo.bytes_action_name.set(ByteStringMicro.copyFrom(((Apollo3DMessage)localObject2).actionName_3D.getBytes()));
-      localThreeDBaseInfo.int32_sender_status.set(((Apollo3DMessage)localObject2).senderStatus_3D);
-      localThreeDBaseInfo.int32_peer_status.set(((Apollo3DMessage)localObject2).peerStatus_3D);
-      ((ApolloMsgExtend.AuthReserve)localObject1).act3d.set(localThreeDBaseInfo);
-    }
-    localObject1 = ((ApolloMsgExtend.AuthReserve)localObject1).toByteArray();
-    if ((localObject1 != null) && (localObject1.length > 0)) {
-      localApolloActMsg.bytes_pb_reserve.set(ByteStringMicro.copyFrom((byte[])localObject1));
-    }
-    if (localApolloMessage.name != null) {
-      localApolloActMsg.bytes_action_name.set(ByteStringMicro.copyFrom(localApolloMessage.name));
-    }
-    if (localApolloMessage.text != null) {
-      localApolloActMsg.bytes_action_text.set(ByteStringMicro.copyFrom(localApolloMessage.text));
-    }
-    if (!TextUtils.isEmpty(paramMessageForApollo.inputText)) {
-      localApolloActMsg.input_text.set(ByteStringMicro.copyFrom(paramMessageForApollo.inputText.getBytes()));
-    }
-    Object localObject2 = new im_msg_body.Text();
-    localObject1 = HardCodeUtil.a(2131706666);
-    paramMessageForApollo = (MessageForApollo)localObject1;
-    if (localApolloMessage.name != null) {
-      paramMessageForApollo = (String)localObject1 + new String(localApolloMessage.name);
-    }
-    ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8(paramMessageForApollo));
-    paramMessageForApollo = new im_msg_body.RichText();
-    localObject1 = new im_msg_body.Elem();
-    ((im_msg_body.Elem)localObject1).apollo_msg.set(localApolloActMsg);
-    paramMessageForApollo.elems.add((MessageMicro)localObject1);
-    localObject1 = new im_msg_body.Elem();
-    ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject2);
-    paramMessageForApollo.elems.add((MessageMicro)localObject1);
-    return paramMessageForApollo;
+    return QMessageProtoCodec.c(paramMsg);
   }
   
   public static im_msg_body.RichText b(ChatMessage paramChatMessage)
@@ -1179,183 +976,81 @@ public class MessageProtoCodec
         localMsgElemInfo_servtype24.limit_chat_enter.uint64_match_ts.set(((MessageForLimitChatConfirm)localObject1).timeStamp);
         localMsgElemInfo_servtype24.limit_chat_enter.uint64_ready_ts.set(((MessageForLimitChatConfirm)localObject1).readyTs);
         localMsgElemInfo_servtype24.limit_chat_enter.setHasFlag(true);
-        if (!((MessageForLimitChatConfirm)localObject1).bEnterMsg) {
-          break label352;
-        }
       }
-      label352:
-      for (int i = 1;; i = 2)
+      else
       {
-        ((im_msg_body.CommonElem)localObject2).uint32_business_type.set(i, true);
-        ((im_msg_body.CommonElem)localObject2).bytes_pb_elem.set(ByteStringMicro.copyFrom(localMsgElemInfo_servtype24.toByteArray()), true);
-        paramChatMessage.common_elem.set((MessageMicro)localObject2, true);
-        localObject1 = new im_msg_body.Elem();
-        localObject2 = new im_msg_body.Text();
-        ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131706665)));
-        ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject2);
-        ((im_msg_body.Elem)localObject1).text.setHasFlag(true);
-        localObject2 = new im_msg_body.RichText();
-        ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
-        ((im_msg_body.RichText)localObject2).elems.add(paramChatMessage);
-        if (QLog.isColorLevel()) {
-          QLog.d("LimitChat", 2, "getSendLimitChatConfirmMsgBody");
-        }
-        return localObject2;
         localMsgElemInfo_servtype24.limit_chat_exit.uint32_exit_method.set(((MessageForLimitChatConfirm)localObject1).leaveChatType);
         localMsgElemInfo_servtype24.limit_chat_exit.uint64_match_ts.set(((MessageForLimitChatConfirm)localObject1).timeStamp);
         localMsgElemInfo_servtype24.limit_chat_exit.setHasFlag(true);
-        break;
       }
+      int i;
+      if (((MessageForLimitChatConfirm)localObject1).bEnterMsg) {
+        i = 1;
+      } else {
+        i = 2;
+      }
+      ((im_msg_body.CommonElem)localObject2).uint32_business_type.set(i, true);
+      ((im_msg_body.CommonElem)localObject2).bytes_pb_elem.set(ByteStringMicro.copyFrom(localMsgElemInfo_servtype24.toByteArray()), true);
+      paramChatMessage.common_elem.set((MessageMicro)localObject2, true);
+      localObject1 = new im_msg_body.Elem();
+      localObject2 = new im_msg_body.Text();
+      ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131706687)));
+      ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject2);
+      ((im_msg_body.Elem)localObject1).text.setHasFlag(true);
+      localObject2 = new im_msg_body.RichText();
+      ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
+      ((im_msg_body.RichText)localObject2).elems.add(paramChatMessage);
+      if (QLog.isColorLevel()) {
+        QLog.d("LimitChat", 2, "getSendLimitChatConfirmMsgBody");
+      }
+      return localObject2;
     }
     return null;
   }
   
   public static im_msg_body.RichText b(ChatMessage paramChatMessage, boolean paramBoolean)
   {
-    if (paramChatMessage == null)
-    {
-      paramChatMessage = null;
-      return paramChatMessage;
-    }
-    if (!(paramChatMessage instanceof MessageForArkApp)) {
-      return null;
-    }
-    Object localObject1 = (MessageForArkApp)paramChatMessage;
-    if ((localObject1 == null) || (((MessageForArkApp)localObject1).ark_app_message == null)) {
-      return null;
-    }
-    Object localObject2 = ((MessageForArkApp)localObject1).ark_app_message.toPbData();
-    if ((localObject2 == null) || (localObject2.length == 0)) {
-      return null;
-    }
-    localObject2 = StructMsgUtils.b((byte[])localObject2);
-    if ((localObject2 == null) || (localObject2.length == 0)) {
-      return null;
-    }
-    Object localObject3 = new ByteArrayOutputStream();
-    try
-    {
-      ((ByteArrayOutputStream)localObject3).write(1);
-      ((ByteArrayOutputStream)localObject3).write((byte[])localObject2);
-      if ((!TextUtils.isEmpty(((MessageForArkApp)localObject1).resIDForLongMsg)) && (!paramBoolean))
-      {
-        paramChatMessage = new im_msg_body.RichText();
-        localObject2 = new im_msg_body.Elem();
-        ((im_msg_body.Elem)localObject2).general_flags.long_text_flag.set(1);
-        ((im_msg_body.Elem)localObject2).general_flags.long_text_resid.set(ByteStringMicro.copyFromUtf8(((MessageForArkApp)localObject1).resIDForLongMsg));
-        paramChatMessage.elems.add((MessageMicro)localObject2);
-        return paramChatMessage;
-      }
-    }
-    catch (Exception paramChatMessage)
-    {
-      return null;
-    }
-    Object localObject4;
-    if (((MessageForArkApp)localObject1).ark_app_message.containStructMsg != null)
-    {
-      localObject1 = a(((MessageForArkApp)localObject1).ark_app_message.containStructMsg);
-      localObject4 = new hummer_commelem.MsgElemInfo_servtype20();
-      ((hummer_commelem.MsgElemInfo_servtype20)localObject4).bytes_data.set(ByteStringMicro.copyFrom(((ByteArrayOutputStream)localObject3).toByteArray()));
-      localObject2 = new im_msg_body.CommonElem();
-      ((im_msg_body.CommonElem)localObject2).uint32_service_type.set(20);
-      ((im_msg_body.CommonElem)localObject2).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype20)localObject4).toByteArray()));
-      localObject3 = ((im_msg_body.CommonElem)localObject2).uint32_business_type;
-      if (!"1".equals(paramChatMessage.getExtInfoFromExtStr(MessageConstants.e))) {
-        break label466;
-      }
-    }
-    label466:
-    for (int i = 1;; i = 0)
-    {
-      ((PBUInt32Field)localObject3).set(i);
-      localObject3 = new im_msg_body.Elem();
-      ((im_msg_body.Elem)localObject3).common_elem.set((MessageMicro)localObject2);
-      paramChatMessage = (ChatMessage)localObject1;
-      if (localObject1 == null) {
-        break;
-      }
-      ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject3);
-      return localObject1;
-      localObject2 = new im_msg_body.RichText();
-      if (((MessageForArkApp)localObject1).ark_app_message.compatibleText != null) {
-        localObject1 = ((MessageForArkApp)localObject1).ark_app_message.compatibleText;
-      }
-      for (;;)
-      {
-        if ((localObject1 != null) && (((String)localObject1).length() > 0))
-        {
-          localObject4 = new im_msg_body.Text();
-          ((im_msg_body.Text)localObject4).str.set(ByteStringMicro.copyFromUtf8((String)localObject1));
-          localObject1 = new im_msg_body.Elem();
-          ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject4);
-          ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
-        }
-        localObject1 = localObject2;
-        break;
-        localObject1 = ((MessageForArkApp)localObject1).getSummery();
-        if ((localObject1 == null) || (((String)localObject1).length() == 0)) {
-          localObject1 = BaseApplication.getContext().getString(2131693677);
-        } else {
-          localObject1 = String.format(BaseApplication.getContext().getString(2131693678), new Object[] { localObject1 });
-        }
-      }
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:659)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
+  @Deprecated
   public static int c(msg_comm.Msg paramMsg)
   {
-    int j = 0;
-    paramMsg = a(paramMsg);
-    int i = j;
-    if (paramMsg != null)
-    {
-      if (paramMsg.bytes_pb_reserve.has()) {
-        break label27;
-      }
-      i = j;
-    }
-    label27:
-    do
-    {
-      do
-      {
-        do
-        {
-          return i;
-          paramMsg = a(paramMsg);
-          i = j;
-        } while (paramMsg == null);
-        i = j;
-      } while (!paramMsg.uint32_pendant_diy_id.has());
-      j = paramMsg.uint32_pendant_diy_id.get();
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.MessageHandler", 2, "decodeC2CMsgPkg_PendantDiyID->" + j);
-    return j;
+    return QMessageProtoCodec.e(paramMsg);
   }
   
   public static im_msg_body.RichText c(ChatMessage paramChatMessage)
   {
-    if (paramChatMessage == null) {}
+    if (paramChatMessage == null) {
+      return null;
+    }
+    if (!(paramChatMessage instanceof MessageForArkFlashChat)) {
+      return null;
+    }
+    paramChatMessage = (MessageForArkFlashChat)paramChatMessage;
+    Object localObject1;
     Object localObject2;
-    do
+    if (paramChatMessage != null)
     {
-      do
+      if (paramChatMessage.ark_app_message == null) {
+        return null;
+      }
+      localObject1 = paramChatMessage.ark_app_message.toPbData();
+      if (localObject1 != null)
       {
-        do
+        if (localObject1.length == 0) {
+          return null;
+        }
+        localObject2 = StructMsgUtils.b((byte[])localObject1);
+        if (localObject2 != null)
         {
-          do
-          {
+          if (localObject2.length == 0) {
             return null;
-          } while (!(paramChatMessage instanceof MessageForArkFlashChat));
-          paramChatMessage = (MessageForArkFlashChat)paramChatMessage;
-        } while ((paramChatMessage == null) || (paramChatMessage.ark_app_message == null));
-        localObject1 = paramChatMessage.ark_app_message.toPbData();
-      } while ((localObject1 == null) || (localObject1.length == 0));
-      localObject2 = StructMsgUtils.b((byte[])localObject1);
-    } while ((localObject2 == null) || (localObject2.length == 0));
-    Object localObject1 = new ByteArrayOutputStream();
+          }
+          localObject1 = new ByteArrayOutputStream();
+        }
+      }
+    }
     try
     {
       ((ByteArrayOutputStream)localObject1).write(1);
@@ -1375,11 +1070,12 @@ public class MessageProtoCodec
     }
     catch (Exception paramChatMessage) {}
     return null;
+    return null;
   }
   
   public static im_msg_body.RichText c(ChatMessage paramChatMessage, boolean paramBoolean)
   {
-    int i = 1;
+    im_msg_body.RichText localRichText = null;
     if (paramChatMessage == null) {
       return null;
     }
@@ -1387,151 +1083,104 @@ public class MessageProtoCodec
       return null;
     }
     Object localObject1 = (MessageForArkBabyqReply)paramChatMessage;
-    paramChatMessage = ((MessageForArkBabyqReply)localObject1).toPbData();
-    if ((paramChatMessage == null) || (paramChatMessage.length == 0)) {
-      return null;
+    Object localObject2 = ((MessageForArkBabyqReply)localObject1).toPbData();
+    paramChatMessage = localRichText;
+    int i;
+    if (localObject2 != null)
+    {
+      if (localObject2.length == 0) {
+        return null;
+      }
+      localObject2 = StructMsgUtils.b((byte[])localObject2);
+      paramChatMessage = localRichText;
+      if (localObject2 != null)
+      {
+        if (localObject2.length == 0) {
+          return null;
+        }
+        paramChatMessage = new ByteArrayOutputStream();
+        i = 1;
+      }
     }
-    paramChatMessage = StructMsgUtils.b(paramChatMessage);
-    if ((paramChatMessage == null) || (paramChatMessage.length == 0)) {
-      return null;
-    }
-    Object localObject2 = new ByteArrayOutputStream();
     try
     {
-      ((ByteArrayOutputStream)localObject2).write(1);
-      ((ByteArrayOutputStream)localObject2).write(paramChatMessage);
-      paramChatMessage = new im_msg_body.RichText();
+      paramChatMessage.write(1);
+      paramChatMessage.write((byte[])localObject2);
+      localRichText = new im_msg_body.RichText();
       if ((!TextUtils.isEmpty(((MessageForArkBabyqReply)localObject1).resIDForLongMsg)) && (!paramBoolean))
       {
-        localObject2 = new im_msg_body.Elem();
-        ((im_msg_body.Elem)localObject2).general_flags.long_text_flag.set(1);
-        ((im_msg_body.Elem)localObject2).general_flags.long_text_resid.set(ByteStringMicro.copyFromUtf8(((MessageForArkBabyqReply)localObject1).resIDForLongMsg));
-        paramChatMessage.elems.add((MessageMicro)localObject2);
-        return paramChatMessage;
+        paramChatMessage = new im_msg_body.Elem();
+        paramChatMessage.general_flags.long_text_flag.set(1);
+        paramChatMessage.general_flags.long_text_resid.set(ByteStringMicro.copyFromUtf8(((MessageForArkBabyqReply)localObject1).resIDForLongMsg));
+        localRichText.elems.add(paramChatMessage);
+        return localRichText;
       }
-    }
-    catch (Exception paramChatMessage)
-    {
-      return null;
-    }
-    Object localObject3 = new hummer_commelem.MsgElemInfo_servtype19();
-    ((hummer_commelem.MsgElemInfo_servtype19)localObject3).bytes_data.set(ByteStringMicro.copyFrom(((ByteArrayOutputStream)localObject2).toByteArray()));
-    localObject2 = new im_msg_body.CommonElem();
-    ((im_msg_body.CommonElem)localObject2).uint32_service_type.set(19);
-    ((im_msg_body.CommonElem)localObject2).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype19)localObject3).toByteArray()));
-    localObject3 = ((im_msg_body.CommonElem)localObject2).uint32_business_type;
-    if (((MessageForArkBabyqReply)localObject1).showAsBabyq) {}
-    for (;;)
-    {
-      ((PBUInt32Field)localObject3).set(i);
-      localObject3 = new im_msg_body.Elem();
-      ((im_msg_body.Elem)localObject3).common_elem.set((MessageMicro)localObject2);
-      paramChatMessage.elems.add((MessageMicro)localObject3);
-      localObject2 = ((MessageForArkBabyqReply)localObject1).babyqReplyText;
-      if ((localObject2 == null) || (((String)localObject2).length() <= 0)) {
-        break;
+      localObject2 = new hummer_commelem.MsgElemInfo_servtype19();
+      ((hummer_commelem.MsgElemInfo_servtype19)localObject2).bytes_data.set(ByteStringMicro.copyFrom(paramChatMessage.toByteArray()));
+      paramChatMessage = new im_msg_body.CommonElem();
+      paramChatMessage.uint32_service_type.set(19);
+      paramChatMessage.bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype19)localObject2).toByteArray()));
+      localObject2 = paramChatMessage.uint32_business_type;
+      if (!((MessageForArkBabyqReply)localObject1).showAsBabyq) {
+        i = 2;
       }
-      localObject1 = new im_msg_body.Text();
-      ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+      ((PBUInt32Field)localObject2).set(i);
       localObject2 = new im_msg_body.Elem();
-      ((im_msg_body.Elem)localObject2).text.set((MessageMicro)localObject1);
-      paramChatMessage.elems.add((MessageMicro)localObject2);
-      break;
-      i = 2;
-    }
-  }
-  
-  public static int d(msg_comm.Msg paramMsg)
-  {
-    int j = 0;
-    paramMsg = a(paramMsg);
-    int i = j;
-    if (paramMsg != null)
-    {
-      if (paramMsg.bytes_pb_reserve.has()) {
-        break label27;
-      }
-      i = j;
-    }
-    label27:
-    do
-    {
-      do
+      ((im_msg_body.Elem)localObject2).common_elem.set(paramChatMessage);
+      localRichText.elems.add((MessageMicro)localObject2);
+      localObject1 = ((MessageForArkBabyqReply)localObject1).babyqReplyText;
+      paramChatMessage = localRichText;
+      if (localObject1 != null)
       {
-        do
+        paramChatMessage = localRichText;
+        if (((String)localObject1).length() > 0)
         {
-          return i;
-          paramMsg = a(paramMsg);
-          i = j;
-        } while (paramMsg == null);
-        i = j;
-      } while (!paramMsg.uint32_face_id.has());
-      j = paramMsg.uint32_face_id.get();
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.MessageHandler", 2, "decodeC2CMsgPkg_FaceID->" + j);
-    return j;
+          paramChatMessage = new im_msg_body.Text();
+          paramChatMessage.str.set(ByteStringMicro.copyFromUtf8((String)localObject1));
+          localObject1 = new im_msg_body.Elem();
+          ((im_msg_body.Elem)localObject1).text.set(paramChatMessage);
+          localRichText.elems.add((MessageMicro)localObject1);
+          paramChatMessage = localRichText;
+        }
+      }
+      return paramChatMessage;
+    }
+    catch (Exception paramChatMessage) {}
+    return null;
   }
   
   public static im_msg_body.RichText d(ChatMessage paramChatMessage)
   {
-    Object localObject1 = null;
     if (!(paramChatMessage instanceof MessageForHiBoom)) {
-      paramChatMessage = (ChatMessage)localObject1;
+      return null;
     }
-    do
+    paramChatMessage = (MessageForHiBoom)paramChatMessage;
+    if (paramChatMessage.mHiBoomMessage == null) {
+      return null;
+    }
+    Object localObject1 = new hummer_commelem.MsgElemInfo_servtype14();
+    ((hummer_commelem.MsgElemInfo_servtype14)localObject1).uint32_id.set(paramChatMessage.mHiBoomMessage.id);
+    Object localObject2 = new hiboom_type.Hiboom_Type();
+    ((hiboom_type.Hiboom_Type)localObject2).uint32_hiboom_type.set(paramChatMessage.mHiBoomMessage.type);
+    ((hummer_commelem.MsgElemInfo_servtype14)localObject1).reserve_Info.set(ByteStringMicro.copyFrom(((hiboom_type.Hiboom_Type)localObject2).toByteArray()));
+    localObject2 = new im_msg_body.CommonElem();
+    ((im_msg_body.CommonElem)localObject2).uint32_business_type.set(1);
+    ((im_msg_body.CommonElem)localObject2).uint32_service_type.set(14);
+    ((im_msg_body.CommonElem)localObject2).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype14)localObject1).toByteArray()));
+    im_msg_body.Elem localElem = new im_msg_body.Elem();
+    localElem.common_elem.set((MessageMicro)localObject2);
+    localObject1 = new im_msg_body.RichText();
+    ((im_msg_body.RichText)localObject1).elems.add(localElem);
+    localObject2 = paramChatMessage.mHiBoomMessage.text;
+    if (!TextUtils.isEmpty((CharSequence)localObject2))
     {
-      do
-      {
-        return paramChatMessage;
-        localObject2 = (MessageForHiBoom)paramChatMessage;
-        paramChatMessage = (ChatMessage)localObject1;
-      } while (((MessageForHiBoom)localObject2).mHiBoomMessage == null);
-      paramChatMessage = new hummer_commelem.MsgElemInfo_servtype14();
-      paramChatMessage.uint32_id.set(((MessageForHiBoom)localObject2).mHiBoomMessage.id);
-      localObject1 = new hiboom_type.Hiboom_Type();
-      ((hiboom_type.Hiboom_Type)localObject1).uint32_hiboom_type.set(((MessageForHiBoom)localObject2).mHiBoomMessage.type);
-      paramChatMessage.reserve_Info.set(ByteStringMicro.copyFrom(((hiboom_type.Hiboom_Type)localObject1).toByteArray()));
-      localObject1 = new im_msg_body.CommonElem();
-      ((im_msg_body.CommonElem)localObject1).uint32_business_type.set(1);
-      ((im_msg_body.CommonElem)localObject1).uint32_service_type.set(14);
-      ((im_msg_body.CommonElem)localObject1).bytes_pb_elem.set(ByteStringMicro.copyFrom(paramChatMessage.toByteArray()));
-      paramChatMessage = new im_msg_body.Elem();
-      paramChatMessage.common_elem.set((MessageMicro)localObject1);
-      localObject1 = new im_msg_body.RichText();
-      ((im_msg_body.RichText)localObject1).elems.add(paramChatMessage);
-      localObject2 = ((MessageForHiBoom)localObject2).mHiBoomMessage.text;
-      paramChatMessage = (ChatMessage)localObject1;
-    } while (TextUtils.isEmpty((CharSequence)localObject2));
-    paramChatMessage = new im_msg_body.Text();
-    paramChatMessage.str.set(ByteStringMicro.copyFromUtf8((String)localObject2));
-    Object localObject2 = new im_msg_body.Elem();
-    ((im_msg_body.Elem)localObject2).text.set(paramChatMessage);
-    ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject2);
+      paramChatMessage = new im_msg_body.Text();
+      paramChatMessage.str.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+      localObject2 = new im_msg_body.Elem();
+      ((im_msg_body.Elem)localObject2).text.set(paramChatMessage);
+      ((im_msg_body.RichText)localObject1).elems.add((MessageMicro)localObject2);
+    }
     return localObject1;
-  }
-  
-  public static int e(msg_comm.Msg paramMsg)
-  {
-    int j = 0;
-    paramMsg = a(paramMsg);
-    int i = j;
-    if (paramMsg != null)
-    {
-      if (paramMsg.uint32_bubble_sub_id.has()) {
-        break label27;
-      }
-      i = j;
-    }
-    label27:
-    do
-    {
-      return i;
-      j = paramMsg.uint32_bubble_sub_id.get();
-      i = j;
-    } while (!QLog.isColorLevel());
-    QLog.d("Q.msg.MessageHandler", 2, "decodeC2CMsgPkg_SubBubbleID->" + j);
-    return j;
   }
   
   public static im_msg_body.RichText e(ChatMessage paramChatMessage)
@@ -1554,13 +1203,19 @@ public class MessageProtoCodec
       ((hummer_commelem.MsgElemInfo_servtype2)localObject2).uint32_poke_flag.set(paramChatMessage.flag);
       ((im_msg_body.CommonElem)localObject1).bytes_pb_elem.set(ByteStringMicro.copyFrom(((hummer_commelem.MsgElemInfo_servtype2)localObject2).toByteArray()));
       ((im_msg_body.CommonElem)localObject1).uint32_business_type.set(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "getSendPokeMsgBody type:" + i + " ,doubleHitState:" + j);
+      if (QLog.isColorLevel())
+      {
+        paramChatMessage = new StringBuilder();
+        paramChatMessage.append("getSendPokeMsgBody type:");
+        paramChatMessage.append(i);
+        paramChatMessage.append(" ,doubleHitState:");
+        paramChatMessage.append(j);
+        QLog.d("Q.msg.MessageHandler", 2, paramChatMessage.toString());
       }
     }
     paramChatMessage = new im_msg_body.Elem();
     paramChatMessage.common_elem.set((MessageMicro)localObject1);
-    Object localObject2 = HardCodeUtil.a(2131706664);
+    Object localObject2 = HardCodeUtil.a(2131706686);
     localObject1 = new im_msg_body.Text();
     ((im_msg_body.Text)localObject1).str.set(ByteStringMicro.copyFromUtf8((String)localObject2));
     localObject2 = new im_msg_body.Elem();
@@ -1578,56 +1233,81 @@ public class MessageProtoCodec
   {
     Object localObject3 = new im_msg_body.CommonElem();
     ((im_msg_body.CommonElem)localObject3).uint32_service_type.set(23);
-    Object localObject2 = HardCodeUtil.a(2131706669);
-    Object localObject1 = "";
-    hummer_commelem.MsgElemInfo_servtype23 localMsgElemInfo_servtype23;
-    int i;
-    int j;
-    PBBytesField localPBBytesField;
-    if ((paramChatMessage instanceof MessageForPokeEmo))
+    Object localObject1 = HardCodeUtil.a(2131706691);
+    boolean bool = paramChatMessage instanceof MessageForPokeEmo;
+    Object localObject2 = "";
+    if (bool)
     {
-      localMsgElemInfo_servtype23 = new hummer_commelem.MsgElemInfo_servtype23();
-      paramChatMessage = (MessageForPokeEmo)paramChatMessage;
-      i = paramChatMessage.pokeemoId;
-      j = paramChatMessage.pokeemoPressCount;
-      paramChatMessage = paramChatMessage.summary;
-      localObject2 = String.format("[%s]x%d", new Object[] { paramChatMessage, Integer.valueOf(j) });
+      hummer_commelem.MsgElemInfo_servtype23 localMsgElemInfo_servtype23 = new hummer_commelem.MsgElemInfo_servtype23();
+      localObject1 = (MessageForPokeEmo)paramChatMessage;
+      int i = ((MessageForPokeEmo)localObject1).pokeemoId;
+      int j = ((MessageForPokeEmo)localObject1).pokeemoPressCount;
+      paramChatMessage = ((MessageForPokeEmo)localObject1).summary;
+      if ((i == 13) && (((MessageForPokeEmo)localObject1).emoIndex >= 0))
+      {
+        localObject4 = new hummer_commelem.MsgElemInfo_servtype33();
+        ((hummer_commelem.MsgElemInfo_servtype33)localObject4).uint32_index.set(((MessageForPokeEmo)localObject1).emoIndex);
+        paramChatMessage = QQSysFaceUtil.getPrueFaceDescription(QQSysFaceUtil.getFaceDescription(QQSysFaceUtil.convertToLocal(((MessageForPokeEmo)localObject1).emoIndex)));
+        if (paramChatMessage == null) {
+          localObject1 = "";
+        } else {
+          localObject1 = paramChatMessage;
+        }
+        ((hummer_commelem.MsgElemInfo_servtype33)localObject4).bytes_text.set(ByteStringMicro.copyFromUtf8((String)localObject1));
+        if (paramChatMessage == null) {
+          localObject1 = "";
+        } else {
+          localObject1 = paramChatMessage;
+        }
+        ((hummer_commelem.MsgElemInfo_servtype33)localObject4).bytes_compat.set(ByteStringMicro.copyFromUtf8((String)localObject1));
+        localMsgElemInfo_servtype23.msg_yellow_face.set((MessageMicro)localObject4);
+        localObject1 = String.format("[%s]x%d", new Object[] { paramChatMessage, Integer.valueOf(j) });
+      }
+      else
+      {
+        localObject1 = String.format("[%s]x%d", new Object[] { paramChatMessage, Integer.valueOf(j) });
+      }
       localMsgElemInfo_servtype23.uint32_face_type.set(i);
       localMsgElemInfo_servtype23.uint32_face_bubble_count.set(j);
-      localPBBytesField = localMsgElemInfo_servtype23.bytes_face_summary;
+      Object localObject4 = localMsgElemInfo_servtype23.bytes_face_summary;
       if (paramChatMessage != null) {
-        break label356;
+        localObject2 = paramChatMessage;
       }
-    }
-    label356:
-    for (localObject1 = "";; localObject1 = paramChatMessage)
-    {
-      localPBBytesField.set(ByteStringMicro.copyFromUtf8((String)localObject1));
+      ((PBBytesField)localObject4).set(ByteStringMicro.copyFromUtf8((String)localObject2));
       ((im_msg_body.CommonElem)localObject3).bytes_pb_elem.set(ByteStringMicro.copyFrom(localMsgElemInfo_servtype23.toByteArray()));
       ((im_msg_body.CommonElem)localObject3).uint32_business_type.set(i);
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.msg.MessageHandler", 2, "getSendPokeEmoMsgBody pokeemoId:" + i + " ,pokeemoPressCount:" + j);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getSendPokeEmoMsgBody pokeemoId:");
+        ((StringBuilder)localObject2).append(i);
+        ((StringBuilder)localObject2).append(" ,pokeemoPressCount:");
+        ((StringBuilder)localObject2).append(j);
+        QLog.d("Q.msg.MessageHandler", 2, ((StringBuilder)localObject2).toString());
       }
-      localObject1 = localObject2;
-      localObject2 = paramChatMessage;
-      paramChatMessage = new im_msg_body.Elem();
-      paramChatMessage.common_elem.set((MessageMicro)localObject3);
-      localObject3 = String.format("[%s]请使用最新版手机QQ体验新功能。", new Object[] { localObject2 });
-      localObject2 = new im_msg_body.Text();
-      ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8((String)localObject1));
-      localObject1 = new TextMsgExtPb.ResvAttr();
-      ((TextMsgExtPb.ResvAttr)localObject1).wording.set(ByteStringMicro.copyFromUtf8((String)localObject3));
-      ((im_msg_body.Text)localObject2).bytes_pb_reserve.set(ByteStringMicro.copyFrom(((TextMsgExtPb.ResvAttr)localObject1).toByteArray()));
-      localObject1 = new im_msg_body.Elem();
-      ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject2);
-      localObject2 = new im_msg_body.RichText();
-      ((im_msg_body.RichText)localObject2).elems.add(paramChatMessage);
-      ((im_msg_body.RichText)localObject2).elems.add((MessageMicro)localObject1);
-      if (QLog.isColorLevel()) {
-        QLog.d("PokeMsg", 2, "getSendPokeMsgBody");
-      }
-      return localObject2;
+      localObject2 = localObject1;
     }
+    else
+    {
+      paramChatMessage = (ChatMessage)localObject1;
+    }
+    localObject1 = new im_msg_body.Elem();
+    ((im_msg_body.Elem)localObject1).common_elem.set((MessageMicro)localObject3);
+    localObject3 = String.format("[%s]请使用最新版手机QQ体验新功能。", new Object[] { paramChatMessage });
+    paramChatMessage = new im_msg_body.Text();
+    paramChatMessage.str.set(ByteStringMicro.copyFromUtf8((String)localObject2));
+    localObject2 = new TextMsgExtPb.ResvAttr();
+    ((TextMsgExtPb.ResvAttr)localObject2).wording.set(ByteStringMicro.copyFromUtf8((String)localObject3));
+    paramChatMessage.bytes_pb_reserve.set(ByteStringMicro.copyFrom(((TextMsgExtPb.ResvAttr)localObject2).toByteArray()));
+    localObject2 = new im_msg_body.Elem();
+    ((im_msg_body.Elem)localObject2).text.set(paramChatMessage);
+    paramChatMessage = new im_msg_body.RichText();
+    paramChatMessage.elems.add((MessageMicro)localObject1);
+    paramChatMessage.elems.add((MessageMicro)localObject2);
+    if (QLog.isColorLevel()) {
+      QLog.d("PokeMsg", 2, "getSendPokeMsgBody");
+    }
+    return paramChatMessage;
   }
   
   public static im_msg_body.RichText g(ChatMessage paramChatMessage)
@@ -1648,7 +1328,7 @@ public class MessageProtoCodec
       paramChatMessage.common_elem.set((MessageMicro)localObject2);
       localObject1 = new im_msg_body.Elem();
       localObject2 = new im_msg_body.Text();
-      ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131706661)));
+      ((im_msg_body.Text)localObject2).str.set(ByteStringMicro.copyFromUtf8(HardCodeUtil.a(2131706683)));
       ((im_msg_body.Elem)localObject1).text.set((MessageMicro)localObject2);
       ((im_msg_body.Elem)localObject1).text.setHasFlag(true);
       localObject2 = new im_msg_body.RichText();
@@ -1664,7 +1344,7 @@ public class MessageProtoCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.MessageProtoCodec
  * JD-Core Version:    0.7.0.1
  */

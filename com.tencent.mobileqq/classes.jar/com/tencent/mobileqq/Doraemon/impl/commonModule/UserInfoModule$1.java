@@ -3,15 +3,15 @@ package com.tencent.mobileqq.Doraemon.impl.commonModule;
 import android.os.Bundle;
 import com.tencent.mobileqq.Doraemon.APICallback;
 import com.tencent.mobileqq.Doraemon.APIParam;
-import com.tencent.mobileqq.Doraemon.DoraemonBridge.Callback;
+import com.tencent.mobileqq.Doraemon.Callback;
 import com.tencent.mobileqq.Doraemon.util.DoraemonUtil;
 
 class UserInfoModule$1
-  extends DoraemonBridge.Callback
+  extends Callback
 {
   UserInfoModule$1(UserInfoModule paramUserInfoModule, APICallback paramAPICallback) {}
   
-  public void a(boolean paramBoolean, Bundle paramBundle)
+  protected void a(boolean paramBoolean, Bundle paramBundle)
   {
     if (paramBundle != null)
     {
@@ -23,7 +23,7 @@ class UserInfoModule$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.UserInfoModule.1
  * JD-Core Version:    0.7.0.1
  */

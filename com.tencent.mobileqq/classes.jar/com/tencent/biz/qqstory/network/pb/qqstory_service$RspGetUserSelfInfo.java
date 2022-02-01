@@ -23,16 +23,17 @@ public final class qqstory_service$RspGetUserSelfInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48, 58, 66, 74 }, new String[] { "result", "is_vip", "fans_count", "union_id", "video_count", "visit_total_count", "newest_video_cover", "newest_video_vid", "head_url" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, RspGetUserSelfInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40, 48, 58, 66, 74 }, new String[] { "result", "is_vip", "fans_count", "union_id", "video_count", "visit_total_count", "newest_video_cover", "newest_video_vid", "head_url" }, new Object[] { null, localInteger, localInteger, localByteStringMicro1, localInteger, localInteger, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4 }, RspGetUserSelfInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspGetUserSelfInfo
  * JD-Core Version:    0.7.0.1
  */

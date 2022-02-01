@@ -20,52 +20,45 @@ public final class EditorInfoCompat
     if (Build.VERSION.SDK_INT >= 25)
     {
       paramEditorInfo = paramEditorInfo.contentMimeTypes;
-      if (paramEditorInfo == null) {}
-    }
-    String[] arrayOfString1;
-    do
-    {
-      return paramEditorInfo;
+      if (paramEditorInfo != null) {
+        return paramEditorInfo;
+      }
       return EMPTY_STRING_ARRAY;
-      if (paramEditorInfo.extras == null) {
-        return EMPTY_STRING_ARRAY;
-      }
-      String[] arrayOfString2 = paramEditorInfo.extras.getStringArray("androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
-      arrayOfString1 = arrayOfString2;
-      if (arrayOfString2 == null) {
-        arrayOfString1 = paramEditorInfo.extras.getStringArray("android.support.v13.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
-      }
-      paramEditorInfo = arrayOfString1;
-    } while (arrayOfString1 != null);
+    }
+    if (paramEditorInfo.extras == null) {
+      return EMPTY_STRING_ARRAY;
+    }
+    String[] arrayOfString2 = paramEditorInfo.extras.getStringArray("androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
+    String[] arrayOfString1 = arrayOfString2;
+    if (arrayOfString2 == null) {
+      arrayOfString1 = paramEditorInfo.extras.getStringArray("android.support.v13.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
+    }
+    if (arrayOfString1 != null) {
+      return arrayOfString1;
+    }
     return EMPTY_STRING_ARRAY;
   }
   
   static int getProtocol(EditorInfo paramEditorInfo)
   {
-    int j = 0;
-    int i;
     if (Build.VERSION.SDK_INT >= 25) {
-      i = 1;
+      return 1;
     }
-    boolean bool2;
-    do
-    {
-      do
-      {
-        return i;
-        i = j;
-      } while (paramEditorInfo.extras == null);
-      boolean bool1 = paramEditorInfo.extras.containsKey("androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
-      bool2 = paramEditorInfo.extras.containsKey("android.support.v13.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
-      if ((bool1) && (bool2)) {
-        return 4;
-      }
-      if (bool1) {
-        return 3;
-      }
-      i = j;
-    } while (!bool2);
-    return 2;
+    if (paramEditorInfo.extras == null) {
+      return 0;
+    }
+    boolean bool1 = paramEditorInfo.extras.containsKey("androidx.core.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
+    boolean bool2 = paramEditorInfo.extras.containsKey("android.support.v13.view.inputmethod.EditorInfoCompat.CONTENT_MIME_TYPES");
+    if ((bool1) && (bool2)) {
+      return 4;
+    }
+    if (bool1) {
+      return 3;
+    }
+    if (bool2) {
+      return 2;
+    }
+    return 0;
   }
   
   public static void setContentMimeTypes(@NonNull EditorInfo paramEditorInfo, @Nullable String[] paramArrayOfString)
@@ -84,7 +77,7 @@ public final class EditorInfoCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.inputmethod.EditorInfoCompat
  * JD-Core Version:    0.7.0.1
  */

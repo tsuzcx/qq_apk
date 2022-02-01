@@ -25,85 +25,55 @@ public class VSEntranceWidgetHelper
   private VSEntranceWidgetBean jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean;
   private HashMap<String, VSEntranceWidgetHelper.WidgetConfig> jdField_b_of_type_JavaUtilHashMap = new HashMap();
   
-  /* Error */
   public static VSEntranceWidgetHelper a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 27	com/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper:jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetHelper	Lcom/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper;
-    //   6: ifnonnull +25 -> 31
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 27	com/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper:jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetHelper	Lcom/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper;
-    //   15: ifnonnull +13 -> 28
-    //   18: new 2	com/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper
-    //   21: dup
-    //   22: invokespecial 28	com/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper:<init>	()V
-    //   25: putstatic 27	com/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper:jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetHelper	Lcom/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper;
-    //   28: ldc 2
-    //   30: monitorexit
-    //   31: getstatic 27	com/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper:jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetHelper	Lcom/tencent/biz/videostory/entrancewidget/VSEntranceWidgetHelper;
-    //   34: astore_0
-    //   35: ldc 2
-    //   37: monitorexit
-    //   38: aload_0
-    //   39: areturn
-    //   40: astore_0
-    //   41: ldc 2
-    //   43: monitorexit
-    //   44: aload_0
-    //   45: athrow
-    //   46: astore_0
-    //   47: ldc 2
-    //   49: monitorexit
-    //   50: aload_0
-    //   51: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   34	5	0	localVSEntranceWidgetHelper	VSEntranceWidgetHelper
-    //   40	5	0	localObject1	Object
-    //   46	5	0	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   12	28	40	finally
-    //   28	31	40	finally
-    //   41	44	40	finally
-    //   3	12	46	finally
-    //   31	35	46	finally
-    //   44	46	46	finally
+    try
+    {
+      if (jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetHelper == null) {
+        try
+        {
+          if (jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetHelper == null) {
+            jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetHelper = new VSEntranceWidgetHelper();
+          }
+        }
+        finally {}
+      }
+      VSEntranceWidgetHelper localVSEntranceWidgetHelper = jdField_a_of_type_ComTencentBizVideostoryEntrancewidgetVSEntranceWidgetHelper;
+      return localVSEntranceWidgetHelper;
+    }
+    finally {}
   }
   
   private void a(VSEntranceStyleBean paramVSEntranceStyleBean)
   {
     QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "handleStyleConfig()");
-    String str;
     if (paramVSEntranceStyleBean != null)
     {
-      str = paramVSEntranceStyleBean.a();
-      if (TextUtils.isEmpty(str)) {
+      String str = paramVSEntranceStyleBean.a();
+      if (TextUtils.isEmpty(str))
+      {
         QLog.e("Q.videostory.config.VSEntranceWidgetHelper", 1, "handleStyleConfig error!");
+        return;
       }
+      if (VSEntranceWidgetDownLoadHelper.a().a(str))
+      {
+        a(paramVSEntranceStyleBean, VSEntranceWidgetDownLoadHelper.a().b(str));
+        return;
+      }
+      VSEntranceWidgetDownLoadHelper.a().a(paramVSEntranceStyleBean.a(), new VSEntranceWidgetHelper.1(this, paramVSEntranceStyleBean, str));
     }
-    else
-    {
-      return;
-    }
-    if (VSEntranceWidgetDownLoadHelper.a().a(str))
-    {
-      a(paramVSEntranceStyleBean, VSEntranceWidgetDownLoadHelper.a().b(str));
-      return;
-    }
-    VSEntranceWidgetDownLoadHelper.a().a(paramVSEntranceStyleBean.a(), new VSEntranceWidgetHelper.1(this, paramVSEntranceStyleBean, str));
   }
   
   private void a(VSEntranceStyleBean paramVSEntranceStyleBean, String paramString)
   {
-    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "initStyleConfigCache() path:" + paramString);
-    Iterator localIterator = paramVSEntranceStyleBean.a().keys();
-    while (localIterator.hasNext())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("initStyleConfigCache() path:");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, ((StringBuilder)localObject).toString());
+    localObject = paramVSEntranceStyleBean.a().keys();
+    while (((Iterator)localObject).hasNext())
     {
-      String str = (String)localIterator.next();
+      String str = (String)((Iterator)localObject).next();
       VSEntranceWidgetHelper.StyleConfig localStyleConfig = new VSEntranceWidgetHelper.StyleConfig(this, str, paramVSEntranceStyleBean.a().optJSONObject(str));
       localStyleConfig.a(paramString);
       this.jdField_a_of_type_JavaUtilHashMap.put(str, localStyleConfig);
@@ -113,56 +83,58 @@ public class VSEntranceWidgetHelper
   private void a(VSEntranceWidgetBean paramVSEntranceWidgetBean)
   {
     QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "handleWidgetConfig()");
-    String str;
     if (paramVSEntranceWidgetBean != null)
     {
-      str = paramVSEntranceWidgetBean.a();
-      if (TextUtils.isEmpty(str)) {
+      String str = paramVSEntranceWidgetBean.a();
+      if (TextUtils.isEmpty(str))
+      {
         QLog.e("Q.videostory.config.VSEntranceWidgetHelper", 1, "handleWidgetConfig error!");
+        return;
       }
+      if (VSEntranceWidgetDownLoadHelper.a().a(str))
+      {
+        a(paramVSEntranceWidgetBean, VSEntranceWidgetDownLoadHelper.a().b(str));
+        return;
+      }
+      VSEntranceWidgetDownLoadHelper.a().a(paramVSEntranceWidgetBean.a(), new VSEntranceWidgetHelper.2(this, paramVSEntranceWidgetBean, str));
     }
-    else
-    {
-      return;
-    }
-    if (VSEntranceWidgetDownLoadHelper.a().a(str))
-    {
-      a(paramVSEntranceWidgetBean, VSEntranceWidgetDownLoadHelper.a().b(str));
-      return;
-    }
-    VSEntranceWidgetDownLoadHelper.a().a(paramVSEntranceWidgetBean.a(), new VSEntranceWidgetHelper.2(this, paramVSEntranceWidgetBean, str));
   }
   
   private void a(VSEntranceWidgetBean paramVSEntranceWidgetBean, String paramString)
   {
-    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, "initWidgetConfigCache() path:" + paramString);
-    Object localObject1 = new File(paramString);
-    Object localObject2;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("initWidgetConfigCache() path:");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.d("Q.videostory.config.VSEntranceWidgetHelper", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = new File(paramString);
     if (((File)localObject1).exists())
     {
-      localObject2 = Arrays.asList(((File)localObject1).list());
-      if (!((List)localObject2).contains("widget@2x.png")) {
-        break label195;
-      }
-    }
-    label195:
-    for (localObject1 = paramString + "/" + "widget@2x.png";; localObject1 = "")
-    {
-      localObject2 = ((List)localObject2).iterator();
-      for (;;)
+      Object localObject2 = Arrays.asList(((File)localObject1).list());
+      if (((List)localObject2).contains("widget@2x.png"))
       {
-        String str;
-        if (((Iterator)localObject2).hasNext())
-        {
-          str = (String)((Iterator)localObject2).next();
-          if (!"widget@2x.png".equals(str)) {}
-        }
-        else
-        {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append("/");
+        ((StringBuilder)localObject1).append("widget@2x.png");
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      else
+      {
+        localObject1 = "";
+      }
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        String str = (String)((Iterator)localObject2).next();
+        if ("widget@2x.png".equals(str)) {
           return;
         }
         VSEntranceWidgetHelper.WidgetConfig localWidgetConfig = new VSEntranceWidgetHelper.WidgetConfig(this, str, paramVSEntranceWidgetBean.c());
-        localWidgetConfig.a(paramString + "/" + str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString);
+        localStringBuilder.append("/");
+        localStringBuilder.append(str);
+        localWidgetConfig.a(localStringBuilder.toString());
         localWidgetConfig.f = ((String)localObject1);
         this.jdField_b_of_type_JavaUtilHashMap.put(str, localWidgetConfig);
       }
@@ -200,29 +172,45 @@ public class VSEntranceWidgetHelper
   {
     try
     {
-      String str = (String)VSConfigManager.a().a("KEY_VS_ENTRANCE_STYLE_CONTENT", "");
-      if (!TextUtils.isEmpty(str))
+      Object localObject = (String)VSConfigManager.a().a("KEY_VS_ENTRANCE_STYLE_CONTENT", "");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean = VSEntranceStyleBean.a(str);
-        if (this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean != null) {
-          QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, "old style config:" + this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean.toString());
+        this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean = VSEntranceStyleBean.a((String)localObject);
+        if (this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean != null)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("old style config:");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean.toString());
+          QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, ((StringBuilder)localObject).toString());
         }
       }
-      str = (String)VSConfigManager.a().a("KEY_VS_ENTRANCE_WIDGET_CONTENT", "");
-      if (!TextUtils.isEmpty(str))
+      localObject = (String)VSConfigManager.a().a("KEY_VS_ENTRANCE_WIDGET_CONTENT", "");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean = VSEntranceWidgetBean.a(str);
-        if (this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean != null) {
-          QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, "old widget config:" + this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean.toString());
+        this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean = VSEntranceWidgetBean.a((String)localObject);
+        if (this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean != null)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("old widget config:");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean.toString());
+          QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, ((StringBuilder)localObject).toString());
         }
       }
       this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean = ((VSEntranceStyleBean)QConfigManager.a().a(473));
-      if (this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean != null) {
-        QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, "load style config:" + this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean.toString());
+      if (this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("load style config:");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceStyleBean.toString());
+        QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, ((StringBuilder)localObject).toString());
       }
       this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean = ((VSEntranceWidgetBean)QConfigManager.a().a(474));
-      if (this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean != null) {
-        QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, "load widget config:" + this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean.toString());
+      if (this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("load widget config:");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_ComTencentBizVideostoryConfigProcessorVSEntranceWidgetBean.toString());
+        QLog.i("Q.videostory.config.VSEntranceWidgetHelper", 1, ((StringBuilder)localObject).toString());
       }
       if (b())
       {
@@ -238,7 +226,10 @@ public class VSEntranceWidgetHelper
     }
     catch (Exception localException)
     {
-      QZLog.e("Q.videostory.config.VSEntranceWidgetHelper", 1, new Object[] { "loadConfig error!" + localException.toString() });
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadConfig error!");
+      localStringBuilder.append(localException.toString());
+      QZLog.e("Q.videostory.config.VSEntranceWidgetHelper", 1, new Object[] { localStringBuilder.toString() });
     }
   }
   
@@ -249,7 +240,7 @@ public class VSEntranceWidgetHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.entrancewidget.VSEntranceWidgetHelper
  * JD-Core Version:    0.7.0.1
  */

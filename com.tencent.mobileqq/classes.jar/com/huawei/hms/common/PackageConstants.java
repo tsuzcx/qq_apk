@@ -4,10 +4,11 @@ public class PackageConstants
 {
   public static final String APPID_HMS = "C10132067";
   public static final String APPID_HMS_TV = "C100636709";
-  public static final int HMS_SDK_VERSION_CODE = 50000301;
-  public static final String HMS_SDK_VERSION_NAME = "5.0.0.301";
+  public static final int HMS_SDK_VERSION_CODE = 50200300;
+  public static final String HMS_SDK_VERSION_NAME = "5.2.0.300";
   public static final String SERVICES_ACTION = "com.huawei.hms.core.aidlservice";
   public static final String SERVICES_PACKAGE = "com.huawei.hwid";
+  @Deprecated
   public static final String SERVICES_PACKAGE_ALL_SCENE = "com.huawei.hms";
   public static final String SERVICES_PACKAGE_APPMARKET = "com.huawei.appmarket";
   public static final String SERVICES_PACKAGE_APPMARKET_CAR = "com.huawei.appmarket.car";
@@ -20,7 +21,7 @@ public class PackageConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.PackageConstants
  * JD-Core Version:    0.7.0.1
  */

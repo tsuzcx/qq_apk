@@ -10,18 +10,21 @@ class GdtLandingPageReport$5
   
   public void a(String paramString)
   {
-    if ((paramString == null) || (!paramString.equals("true")))
+    if ((paramString != null) && (paramString.equals("true")))
     {
-      GdtLog.a("GdtLandingPageReport", " should supply performance inject. resp: " + paramString);
-      GdtLandingPageReport.a(this.jdField_a_of_type_ComTencentGdtadWebGdtLandingPageReport, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, this.jdField_a_of_type_JavaLangString);
+      GdtLandingPageReport.a(this.jdField_a_of_type_ComTencentGdtadWebGdtLandingPageReport, true);
       return;
     }
-    GdtLandingPageReport.a(this.jdField_a_of_type_ComTencentGdtadWebGdtLandingPageReport, true);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" should supply performance inject. resp: ");
+    localStringBuilder.append(paramString);
+    GdtLog.a("GdtLandingPageReport", localStringBuilder.toString());
+    GdtLandingPageReport.a(this.jdField_a_of_type_ComTencentGdtadWebGdtLandingPageReport, this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView, this.jdField_a_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtLandingPageReport.5
  * JD-Core Version:    0.7.0.1
  */

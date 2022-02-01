@@ -13,34 +13,41 @@ import java.util.Map;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-public final class RemoteMessage
+public class RemoteMessage
   implements Parcelable
 {
-  public static final Parcelable.Creator<RemoteMessage> CREATOR = new RemoteMessage.1();
+  public static final Parcelable.Creator<RemoteMessage> CREATOR = new b();
   public static final int PRIORITY_HIGH = 1;
   public static final int PRIORITY_NORMAL = 2;
   public static final int PRIORITY_UNKNOWN = 0;
-  private static final String[] a = new String[0];
-  private static final int[] b = new int[0];
-  private static final long[] c = new long[0];
-  private static final HashMap<String, Object> d = new HashMap(6);
-  private static final HashMap<String, Object> e;
-  private static final HashMap<String, Object> f;
-  private static final HashMap<String, Object> g;
-  private static final HashMap<String, Object> h;
-  private Bundle i;
-  private RemoteMessage.Notification j;
+  public static final String[] a;
+  public static final int[] b;
+  public static final long[] c;
+  public static final HashMap<String, Object> d;
+  public static final HashMap<String, Object> e;
+  public static final HashMap<String, Object> f;
+  public static final HashMap<String, Object> g;
+  public static final HashMap<String, Object> h;
+  public Bundle i;
+  public RemoteMessage.Notification j;
   
   static
   {
+    Object localObject1 = Integer.valueOf(0);
+    a = new String[0];
+    b = new int[0];
+    c = new long[0];
+    d = new HashMap(8);
     d.put("from", "");
     d.put("collapseKey", "");
     d.put("sendTime", "");
     d.put("ttl", Integer.valueOf(86400));
-    d.put("urgency", Integer.valueOf(2));
-    d.put("oriUrgency", Integer.valueOf(2));
-    d.put("sendMode", Integer.valueOf(0));
-    d.put("receiptMode", Integer.valueOf(0));
+    Object localObject2 = d;
+    Integer localInteger = Integer.valueOf(2);
+    ((HashMap)localObject2).put("urgency", localInteger);
+    d.put("oriUrgency", localInteger);
+    d.put("sendMode", localObject1);
+    d.put("receiptMode", localObject1);
     e = new HashMap(8);
     e.put("title_loc_key", "");
     e.put("body_loc_key", "");
@@ -54,18 +61,20 @@ public final class RemoteMessage
     f.put("icon", "");
     f.put("color", "");
     f.put("sound", "");
-    f.put("defaultLightSettings", Integer.valueOf(1));
+    localObject1 = f;
+    localObject2 = Integer.valueOf(1);
+    ((HashMap)localObject1).put("defaultLightSettings", localObject2);
     f.put("lightSettings", b);
-    f.put("defaultSound", Integer.valueOf(1));
-    f.put("defaultVibrateTimings", Integer.valueOf(1));
+    f.put("defaultSound", localObject2);
+    f.put("defaultVibrateTimings", localObject2);
     f.put("vibrateTimings", c);
     g = new HashMap(8);
     g.put("tag", "");
     g.put("when", "");
-    g.put("localOnly", Integer.valueOf(1));
+    g.put("localOnly", localObject2);
     g.put("badgeSetNum", "");
     g.put("priority", "");
-    g.put("autoCancel", Integer.valueOf(1));
+    g.put("autoCancel", localObject2);
     g.put("visibility", "");
     g.put("channelId", "");
     h = new HashMap(3);
@@ -85,19 +94,67 @@ public final class RemoteMessage
     this.j = ((RemoteMessage.Notification)paramParcel.readSerializable());
   }
   
-  private Bundle a(Bundle paramBundle)
+  public static JSONObject a(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      return paramJSONObject.optJSONObject("msgContent");
+    }
+    return null;
+  }
+  
+  public static JSONObject b(Bundle paramBundle)
+  {
+    try
+    {
+      paramBundle = new JSONObject(v.a(paramBundle.getByteArray("message_body")));
+      return paramBundle;
+    }
+    catch (JSONException paramBundle)
+    {
+      label19:
+      break label19;
+    }
+    HMSLog.w("RemoteMessage", "JSONException:parse message body failed.");
+    return null;
+  }
+  
+  public static JSONObject b(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      return paramJSONObject.optJSONObject("notifyDetail");
+    }
+    return null;
+  }
+  
+  public static JSONObject c(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      return paramJSONObject.optJSONObject("param");
+    }
+    return null;
+  }
+  
+  public static JSONObject d(JSONObject paramJSONObject)
+  {
+    if (paramJSONObject != null) {
+      return paramJSONObject.optJSONObject("psContent");
+    }
+    return null;
+  }
+  
+  public final Bundle a(Bundle paramBundle)
   {
     Bundle localBundle = new Bundle();
     JSONObject localJSONObject1 = b(paramBundle);
     JSONObject localJSONObject2 = a(localJSONObject1);
     String str1 = JsonUtil.getString(localJSONObject2, "data", null);
     localBundle.putString("device_token", paramBundle.getString("device_token"));
-    JSONObject localJSONObject3 = b(localJSONObject2);
-    JSONObject localJSONObject4 = c(localJSONObject3);
-    JSONObject localJSONObject5 = d(localJSONObject3);
-    if ((paramBundle.getInt("inputType") == 1) && (w.a(localJSONObject2, localJSONObject3, str1)))
+    JSONObject localJSONObject3 = d(localJSONObject2);
+    JSONObject localJSONObject4 = b(localJSONObject3);
+    JSONObject localJSONObject5 = c(localJSONObject3);
+    if ((paramBundle.getInt("inputType") == 1) && (s.a(localJSONObject2, localJSONObject3, str1)))
     {
-      localBundle.putString("data", aa.a(paramBundle.getByteArray("message_body")));
+      localBundle.putString("data", v.a(paramBundle.getByteArray("message_body")));
       return localBundle;
     }
     String str2 = paramBundle.getString("to");
@@ -112,7 +169,7 @@ public final class RemoteMessage
     return localBundle;
   }
   
-  private Bundle a(JSONObject paramJSONObject1, JSONObject paramJSONObject2, JSONObject paramJSONObject3, JSONObject paramJSONObject4, JSONObject paramJSONObject5)
+  public final Bundle a(JSONObject paramJSONObject1, JSONObject paramJSONObject2, JSONObject paramJSONObject3, JSONObject paramJSONObject4, JSONObject paramJSONObject5)
   {
     Bundle localBundle = new Bundle();
     JsonUtil.transferJsonObjectToBundle(paramJSONObject3, localBundle, e);
@@ -121,52 +178,6 @@ public final class RemoteMessage
     JsonUtil.transferJsonObjectToBundle(paramJSONObject5, localBundle, h);
     localBundle.putInt("notifyId", JsonUtil.getInt(paramJSONObject2, "notifyId", 0));
     return localBundle;
-  }
-  
-  private static JSONObject a(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      return paramJSONObject.optJSONObject("msgContent");
-    }
-    return null;
-  }
-  
-  private static JSONObject b(Bundle paramBundle)
-  {
-    try
-    {
-      paramBundle = new JSONObject(aa.a(paramBundle.getByteArray("message_body")));
-      return paramBundle;
-    }
-    catch (JSONException paramBundle)
-    {
-      HMSLog.w("RemoteMessage", "JSONException:parse message body failed.");
-    }
-    return null;
-  }
-  
-  private static JSONObject b(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      return paramJSONObject.optJSONObject("psContent");
-    }
-    return null;
-  }
-  
-  private static JSONObject c(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      return paramJSONObject.optJSONObject("notifyDetail");
-    }
-    return null;
-  }
-  
-  private static JSONObject d(JSONObject paramJSONObject)
-  {
-    if (paramJSONObject != null) {
-      return paramJSONObject.optJSONObject("param");
-    }
-    return null;
   }
   
   public final int describeContents()
@@ -186,25 +197,26 @@ public final class RemoteMessage
   
   public Map<String, String> getDataOfMap()
   {
-    localHashMap = new HashMap();
+    HashMap localHashMap = new HashMap();
     Object localObject = this.i.getString("data");
-    if ((localObject != null) && (!((String)localObject).trim().isEmpty())) {
-      try
+    if ((localObject != null) && (!((String)localObject).trim().isEmpty())) {}
+    try
+    {
+      localObject = new JSONObject((String)localObject);
+      Iterator localIterator = ((JSONObject)localObject).keys();
+      while (localIterator.hasNext())
       {
-        localObject = new JSONObject((String)localObject);
-        Iterator localIterator = ((JSONObject)localObject).keys();
-        while (localIterator.hasNext())
-        {
-          String str = String.valueOf(localIterator.next());
-          localHashMap.put(str, String.valueOf(((JSONObject)localObject).get(str)));
-        }
-        return localHashMap;
-      }
-      catch (JSONException localJSONException)
-      {
-        HMSLog.w("RemoteMessage", "JSONException: get data from map failed");
+        String str = String.valueOf(localIterator.next());
+        localHashMap.put(str, String.valueOf(((JSONObject)localObject).get(str)));
       }
     }
+    catch (JSONException localJSONException)
+    {
+      label87:
+      break label87;
+    }
+    HMSLog.w("RemoteMessage", "JSONException: get data from map failed");
+    return localHashMap;
   }
   
   public String getFrom()
@@ -263,16 +275,19 @@ public final class RemoteMessage
     long l = 0L;
     try
     {
-      String str = this.i.getString("sendTime");
-      if (!TextUtils.isEmpty(str)) {
-        l = Long.parseLong(str);
+      Object localObject = this.i;
+      localObject = ((Bundle)localObject).getString("sendTime");
+      if (!TextUtils.isEmpty((CharSequence)localObject)) {
+        l = Long.parseLong((String)localObject);
       }
       return l;
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      HMSLog.w("RemoteMessage", "NumberFormatException: get sendTime error.");
+      label28:
+      break label28;
     }
+    HMSLog.w("RemoteMessage", "NumberFormatException: get sendTime error.");
     return 0L;
   }
   

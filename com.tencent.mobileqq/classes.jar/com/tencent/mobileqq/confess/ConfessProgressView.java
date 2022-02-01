@@ -44,26 +44,28 @@ public class ConfessProgressView
   
   public void a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 <= 0) || (paramInt1 >= paramInt2)) {
-      this.jdField_a_of_type_Float = 0.0F;
-    }
-    for (;;)
+    if ((paramInt1 > 0) && (paramInt1 < paramInt2))
     {
-      invalidate();
-      return;
       int i = 80 / (paramInt2 - 1);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.argb(255, 252, 228 - i * (paramInt1 - 1), 80));
-      float f1 = this.b / 15.0F;
-      float f2 = this.b / 5.0F;
+      int j = paramInt1 - 1;
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.argb(255, 252, 228 - i * j, 80));
+      float f2 = this.b;
+      float f1 = f2 / 15.0F;
+      f2 /= 5.0F;
       if (paramInt1 == 1) {
         this.jdField_a_of_type_Float = f1;
       } else {
-        this.jdField_a_of_type_Float = (f1 + (f2 - f1) / (paramInt2 - 2) * (paramInt1 - 1));
+        this.jdField_a_of_type_Float = (f1 + (f2 - f1) / (paramInt2 - 2) * j);
       }
     }
+    else
+    {
+      this.jdField_a_of_type_Float = 0.0F;
+    }
+    invalidate();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     paramCanvas.drawCircle(this.b / 2.0F + this.d, this.c / 2.0F * 1.08F + this.e, this.jdField_a_of_type_Float, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
@@ -78,7 +80,7 @@ public class ConfessProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessProgressView
  * JD-Core Version:    0.7.0.1
  */

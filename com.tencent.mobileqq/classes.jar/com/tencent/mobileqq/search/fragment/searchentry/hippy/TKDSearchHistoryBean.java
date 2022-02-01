@@ -25,7 +25,11 @@ public class TKDSearchHistoryBean
       paramJsonObject = (TKDSearchHistoryBean)new Gson().fromJson(paramJsonObject, TKDSearchHistoryBean.class);
       return paramJsonObject;
     }
-    catch (Exception paramJsonObject) {}
+    catch (Exception paramJsonObject)
+    {
+      label27:
+      break label27;
+    }
     return localTKDSearchHistoryBean;
   }
   
@@ -53,15 +57,17 @@ public class TKDSearchHistoryBean
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (TKDSearchHistoryBean)paramObject;
-    } while (this.id == paramObject.id);
+      return this.id == paramObject.id;
+    }
     return false;
   }
   
@@ -164,13 +170,17 @@ public class TKDSearchHistoryBean
       String str = new Gson().toJson(this);
       return str;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label14:
+      break label14;
+    }
     return new JsonObject().toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hippy.TKDSearchHistoryBean
  * JD-Core Version:    0.7.0.1
  */

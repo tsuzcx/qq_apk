@@ -16,7 +16,7 @@ public final class searchtab$Item2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.troop_search_searchtab.searchtab.Item2
  * JD-Core Version:    0.7.0.1
  */

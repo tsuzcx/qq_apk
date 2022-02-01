@@ -15,10 +15,22 @@ class VipVideoPlayActivity$VideoPlayerErrorListener
     if (QLog.isColorLevel())
     {
       paramTVK_IMediaPlayer = new StringBuilder();
-      paramTVK_IMediaPlayer.append("video player error model=" + paramInt1);
-      paramTVK_IMediaPlayer.append(",what=" + paramInt2);
-      paramTVK_IMediaPlayer.append(",extra=" + paramInt3);
-      paramTVK_IMediaPlayer.append(",detailInfo=" + paramString);
+      paramObject = new StringBuilder();
+      paramObject.append("video player error model=");
+      paramObject.append(paramInt1);
+      paramTVK_IMediaPlayer.append(paramObject.toString());
+      paramObject = new StringBuilder();
+      paramObject.append(",what=");
+      paramObject.append(paramInt2);
+      paramTVK_IMediaPlayer.append(paramObject.toString());
+      paramObject = new StringBuilder();
+      paramObject.append(",extra=");
+      paramObject.append(paramInt3);
+      paramTVK_IMediaPlayer.append(paramObject.toString());
+      paramObject = new StringBuilder();
+      paramObject.append(",detailInfo=");
+      paramObject.append(paramString);
+      paramTVK_IMediaPlayer.append(paramObject.toString());
       QLog.d("VipVideoPlayActivity", 2, paramTVK_IMediaPlayer.toString());
     }
     long l1 = SystemClock.elapsedRealtime();
@@ -29,7 +41,7 @@ class VipVideoPlayActivity$VideoPlayerErrorListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.video.VipVideoPlayActivity.VideoPlayerErrorListener
  * JD-Core Version:    0.7.0.1
  */

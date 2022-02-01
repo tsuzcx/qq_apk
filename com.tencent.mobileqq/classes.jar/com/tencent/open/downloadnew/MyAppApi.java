@@ -1,11 +1,9 @@
 package com.tencent.open.downloadnew;
 
 import android.app.Activity;
-import android.content.ActivityNotFoundException;
 import android.content.Context;
 import android.content.DialogInterface.OnCancelListener;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
@@ -14,7 +12,6 @@ import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
@@ -30,7 +27,6 @@ import com.tencent.open.adapter.CommonDataAdapter;
 import com.tencent.open.appstore.report.AppCenterReporter;
 import com.tencent.open.base.LogUtility;
 import com.tencent.open.base.TicketUtils;
-import com.tencent.open.business.base.OpenConfig;
 import com.tencent.open.business.base.StaticAnalyz;
 import com.tencent.open.business.base.appreport.AppReportReceiver;
 import com.tencent.tmassistant.aidl.TMAssistantDownloadTaskInfo;
@@ -47,12 +43,15 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Map;
 import mqq.app.AppActivity;
+import mqq.app.Foreground;
 import mqq.os.MqqHandler;
+import org.jetbrains.annotations.NotNull;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class MyAppApi
+  extends BaseMyAppApi
 {
   protected static MyAppApi a;
   private final int jdField_a_of_type_Int = 7090000;
@@ -90,22 +89,13 @@ public class MyAppApi
     try
     {
       a();
-      d();
-      i();
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        LogUtility.c("MyAppApi", "MyAppApi init>>>", localThrowable);
-      }
+      LogUtility.c("MyAppApi", "MyAppApi init>>>", localThrowable);
     }
-  }
-  
-  private static Uri a(OuterCallReportModel paramOuterCallReportModel)
-  {
-    return Uri.parse("tmast://sdk_wake?jump_code=" + OpenConfig.a(CommonDataAdapter.a().a(), null).a("Common_jump_code") + "&outerCallTime=" + paramOuterCallReportModel.mOuterCallTime + "&outerCallType=" + paramOuterCallReportModel.mOuterCallType + "&outerCallMode=" + paramOuterCallReportModel.mOuterCallMode + "&hostpname=com.tencent.mobileqq&hostversion=" + GlobalUtil.getAppVersionCode(CommonDataAdapter.a().a()));
+    f();
+    m();
   }
   
   public static MyAppApi a()
@@ -115,16 +105,59 @@ public class MyAppApi
       if (jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi == null) {
         jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi = new MyAppApi();
       }
-      c();
+      e();
       MyAppApi localMyAppApi = jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi;
       return localMyAppApi;
     }
     finally {}
   }
   
+  @NotNull
+  private String a(String paramString)
+  {
+    if (TextUtils.isEmpty(paramString)) {
+      return "1101070898";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("1101070898_");
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
+  }
+  
+  private boolean a(DownloadInfo paramDownloadInfo)
+  {
+    return (paramDownloadInfo != null) && (paramDownloadInfo.jdField_c_of_type_JavaLangString.startsWith("1101070898"));
+  }
+  
   public static int b()
   {
-    return TMAssistantCallYYB_V2.getQQDownloadApiLevel(BaseApplicationImpl.getApplication());
+    Object localObject = CommonDataAdapter.a().a();
+    if (localObject == null) {
+      return 1;
+    }
+    localObject = ((Context)localObject).getPackageManager();
+    if (localObject == null) {
+      return 1;
+    }
+    try
+    {
+      if (((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0) == null) {
+        return 1;
+      }
+      int i = GlobalUtil.getInstance().getQQDownloaderAPILevel();
+      if (2 > i) {
+        return 2;
+      }
+      return 0;
+    }
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("yyb installed check error:");
+      localStringBuilder.append(localNameNotFoundException.getMessage());
+      LogUtility.e("TAMST_WAKE", localStringBuilder.toString());
+    }
+    return 1;
   }
   
   @NonNull
@@ -138,77 +171,87 @@ public class MyAppApi
     return localOuterCallReportModel;
   }
   
-  public static void c()
-  {
-    ThreadManager.executeOnSubThread(new MyAppApi.1());
-  }
-  
-  private static void c(OuterCallReportModel paramOuterCallReportModel)
-  {
-    Intent localIntent = new Intent("android.intent.action.VIEW");
-    localIntent.setPackage("com.tencent.android.qqdownloader");
-    localIntent.setData(a(paramOuterCallReportModel));
-    localIntent.addFlags(32768);
-    if (!(CommonDataAdapter.a().a() instanceof Activity)) {
-      localIntent.addFlags(268435456);
-    }
-    try
-    {
-      CommonDataAdapter.a().a().startActivity(localIntent);
-      return;
-    }
-    catch (SecurityException paramOuterCallReportModel)
-    {
-      paramOuterCallReportModel.printStackTrace();
-      return;
-    }
-    catch (ActivityNotFoundException paramOuterCallReportModel)
-    {
-      LogUtility.e("TAMST_WAKE", "activity not found error:" + paramOuterCallReportModel.getMessage());
-    }
-  }
-  
-  private static void d(OuterCallReportModel paramOuterCallReportModel)
+  private static void b(OuterCallReportModel paramOuterCallReportModel)
   {
     GlobalUtil.getInstance().setContext(CommonDataAdapter.a().a());
     SDKReportManager2.getInstance().postReport(15, paramOuterCallReportModel.toString());
   }
   
-  /* Error */
-  public static boolean d()
+  public static boolean b()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 156	com/tencent/open/downloadnew/MyAppApi:jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi	Lcom/tencent/open/downloadnew/MyAppApi;
-    //   6: astore_1
-    //   7: aload_1
-    //   8: ifnull +10 -> 18
-    //   11: iconst_1
-    //   12: istore_0
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: iload_0
-    //   17: ireturn
-    //   18: iconst_0
-    //   19: istore_0
-    //   20: goto -7 -> 13
-    //   23: astore_1
-    //   24: ldc 2
-    //   26: monitorexit
-    //   27: aload_1
-    //   28: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   12	8	0	bool	boolean
-    //   6	2	1	localMyAppApi	MyAppApi
-    //   23	5	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	7	23	finally
+    boolean bool = false;
+    try
+    {
+      int i = b();
+      if (i == 2) {
+        return false;
+      }
+      if (i != 1) {
+        bool = true;
+      }
+      return bool;
+    }
+    catch (Exception localException)
+    {
+      LogUtility.c("MyAppApi", "hasValidQQDownloader>>>", localException);
+    }
+    return false;
   }
   
-  private void i()
+  public static int c()
+  {
+    return TMAssistantCallYYB_V2.getQQDownloadApiLevel(BaseApplicationImpl.getApplication());
+  }
+  
+  public static void c() {}
+  
+  public static void d()
+  {
+    c();
+    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.1(), 5000L);
+  }
+  
+  public static boolean d()
+  {
+    try
+    {
+      MyAppApi localMyAppApi = jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi;
+      boolean bool;
+      if (localMyAppApi != null) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      return bool;
+    }
+    finally
+    {
+      localObject = finally;
+      throw localObject;
+    }
+  }
+  
+  public static void e()
+  {
+    ThreadManager.executeOnSubThread(new MyAppApi.2());
+  }
+  
+  private static boolean j()
+  {
+    return (k()) && (ControlPolicyUtil.l()) && (l());
+  }
+  
+  private static boolean k()
+  {
+    return GlobalUtil.getInstance().getQQDownloaderVersionCode() >= 7512130;
+  }
+  
+  private static boolean l()
+  {
+    return (Foreground.isCurrentProcessForeground()) || (ControlPolicyUtil.n());
+  }
+  
+  private void m()
   {
     IntentFilter localIntentFilter = new IntentFilter();
     localIntentFilter.addAction("android.intent.action.PACKAGE_ADDED");
@@ -217,9 +260,28 @@ public class MyAppApi
     CommonDataAdapter.a().a().registerReceiver(new AppReportReceiver(), localIntentFilter);
   }
   
-  private static boolean i()
+  private static boolean m()
   {
     return (ControlPolicyUtil.i()) && (TMAssistantCallYYB_V1.getQQDownloadApiLevel(CommonDataAdapter.a().a()) >= 7);
+  }
+  
+  private static void n()
+  {
+    YybWakeManager.a().a();
+    OuterCallReportModel localOuterCallReportModel = b();
+    localOuterCallReportModel.mComponentName = "com.live.watermelon.Instrumentation";
+    b(localOuterCallReportModel);
+  }
+  
+  private static void o()
+  {
+    if (!ControlPolicyUtil.m())
+    {
+      LogUtility.b("TAMST_WAKE", "preInit==not TmastWake");
+      return;
+    }
+    LogUtility.b("TAMST_WAKE", "preInit==allow TmastWake");
+    ThreadManager.executeOnSubThread(new MyAppApi.3());
   }
   
   protected int a()
@@ -233,23 +295,20 @@ public class MyAppApi
   
   protected int a(Bundle paramBundle)
   {
-    int j = 1;
-    int i = j;
-    if (paramBundle != null)
-    {
-      i = j;
-      if (paramBundle.getInt(DownloadConstants.k) == 3) {
-        i = 2;
-      }
+    if ((paramBundle != null) && (paramBundle.getInt(DownloadConstants.k) == 3)) {
+      return 2;
     }
-    return i;
+    return 1;
   }
   
   protected long a(Bundle paramBundle)
   {
     try
     {
-      LogUtility.c("MyAppApi", "--addDownloadTaskFromTmast--params = " + paramBundle);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--addDownloadTaskFromTmast--params = ");
+      localStringBuilder.append(paramBundle);
+      LogUtility.c("MyAppApi", localStringBuilder.toString());
       if (paramBundle == null) {
         return -1L;
       }
@@ -266,7 +325,12 @@ public class MyAppApi
   
   protected long a(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    LogUtility.c("MyAppApi", "--addDownloadTaskFromTaskList--params = " + paramBundle + "autoDownload = " + paramBoolean1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("--addDownloadTaskFromTaskList--params = ");
+    localStringBuilder.append(paramBundle);
+    localStringBuilder.append("autoDownload = ");
+    localStringBuilder.append(paramBoolean1);
+    LogUtility.c("MyAppApi", localStringBuilder.toString());
     if (paramBundle == null) {
       return -1L;
     }
@@ -291,89 +355,105 @@ public class MyAppApi
       localDownloadInfo.jdField_h_of_type_JavaLangString = paramBundle.getString(DownloadConstants.i);
       localDownloadInfo.f = paramBundle.getString(DownloadConstants.l);
       localDownloadInfo.jdField_d_of_type_JavaLangString = paramBundle.getString(DownloadConstants.j);
-      localDownloadInfo.jdField_d_of_type_Int = paramBundle.getInt(DownloadConstants.F);
+      localDownloadInfo.jdField_d_of_type_Int = paramBundle.getInt(DownloadConstants.G);
     }
     return localDownloadInfo;
   }
   
   public TMAssistantDownloadTaskInfo a(Bundle paramBundle)
   {
-    if ((paramBundle == null) || (!b())) {
-      return null;
-    }
-    paramBundle = a(paramBundle);
-    if (a() <= 2)
+    Object localObject3 = null;
+    Object localObject2 = null;
+    Object localObject1 = localObject3;
+    if (paramBundle != null)
     {
-      paramBundle = ((TMAssistantCallYYB_V1)a()).getDownloadTaskState(paramBundle);
-      if (paramBundle != null) {
-        return new TMAssistantDownloadTaskInfo(paramBundle.mUrl, paramBundle.mSavePath, paramBundle.mState, paramBundle.mReceiveDataLen, paramBundle.mTotalDataLen, paramBundle.mContentType);
+      if (!b()) {
+        return null;
       }
-      return null;
+      paramBundle = a(paramBundle);
+      if (a() <= 2)
+      {
+        localObject1 = ((TMAssistantCallYYB_V1)a()).getDownloadTaskState(paramBundle);
+        paramBundle = localObject2;
+        if (localObject1 != null) {
+          paramBundle = new TMAssistantDownloadTaskInfo(((TMAssistantCallYYBTaskInfo)localObject1).mUrl, ((TMAssistantCallYYBTaskInfo)localObject1).mSavePath, ((TMAssistantCallYYBTaskInfo)localObject1).mState, ((TMAssistantCallYYBTaskInfo)localObject1).mReceiveDataLen, ((TMAssistantCallYYBTaskInfo)localObject1).mTotalDataLen, ((TMAssistantCallYYBTaskInfo)localObject1).mContentType);
+        }
+        return paramBundle;
+      }
+      paramBundle = ((TMAssistantCallYYB_V2)a()).getDownloadTaskState(paramBundle);
+      localObject1 = localObject3;
+      if (paramBundle != null) {
+        localObject1 = new TMAssistantDownloadTaskInfo(paramBundle.mUrl, paramBundle.mSavePath, paramBundle.mState, paramBundle.mReceiveDataLen, paramBundle.mTotalDataLen, paramBundle.mContentType);
+      }
     }
-    paramBundle = ((TMAssistantCallYYB_V2)a()).getDownloadTaskState(paramBundle);
-    if (paramBundle != null) {
-      return new TMAssistantDownloadTaskInfo(paramBundle.mUrl, paramBundle.mSavePath, paramBundle.mState, paramBundle.mReceiveDataLen, paramBundle.mTotalDataLen, paramBundle.mContentType);
-    }
-    return null;
+    return localObject1;
   }
   
   protected TMAssistantCallYYBParamStruct a(Bundle paramBundle)
   {
-    String str3 = paramBundle.getString(DownloadConstants.b);
-    String str4 = paramBundle.getString(DownloadConstants.jdField_c_of_type_JavaLangString);
-    String str5 = paramBundle.getString(DownloadConstants.jdField_d_of_type_JavaLangString);
-    String str6 = paramBundle.getString(DownloadConstants.f);
-    Object localObject = paramBundle.getString(DownloadConstants.i);
+    String str2 = paramBundle.getString(DownloadConstants.b);
+    String str3 = paramBundle.getString(DownloadConstants.jdField_c_of_type_JavaLangString);
+    String str4 = paramBundle.getString(DownloadConstants.jdField_d_of_type_JavaLangString);
+    String str5 = paramBundle.getString(DownloadConstants.f);
+    Object localObject1 = paramBundle.getString(DownloadConstants.i);
     int j = paramBundle.getInt(DownloadConstants.e);
     int i = j;
     if (j == 0) {}
     try
     {
       i = Integer.valueOf(paramBundle.getString(DownloadConstants.e)).intValue();
-      String str2;
       String str1;
-      if (this.jdField_a_of_type_Boolean)
-      {
-        str2 = StaticAnalyz.a((String)localObject, "NEWYYB");
-        paramBundle.getString(DownloadConstants.A);
-        localObject = paramBundle.getString(DownloadConstants.C);
-        j = paramBundle.getInt(DownloadConstants.B);
-        if (j != 1) {
-          break label418;
-        }
-        localObject = "ANDROIDQQ-gray";
-        str1 = "1";
+      if (this.jdField_a_of_type_Boolean) {
+        str1 = StaticAnalyz.a((String)localObject1, "NEWYYB");
+      } else {
+        str1 = StaticAnalyz.a((String)localObject1, "YYB");
       }
-      for (;;)
+      paramBundle.getString(DownloadConstants.B);
+      Object localObject2 = paramBundle.getString(DownloadConstants.D);
+      j = paramBundle.getInt(DownloadConstants.C);
+      if (j == 1) {
+        localObject2 = "ANDROIDQQ-gray";
+      }
+      Object localObject3;
+      for (localObject1 = "1";; localObject1 = ((StringBuilder)localObject1).toString())
       {
-        LogUtility.b("State_Log", " channelId:" + (String)localObject);
-        localObject = new TMAssistantCallYYBParamStruct(str3, str4, str5, i, str2, str6, "", "", (String)localObject, str1);
-        if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(CommonDataAdapter.a().a()) >= 6)
-        {
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_JS_DoDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_JS_DoDownloadAction", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_DownloadApi_DoDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_DownloadApi_DoDownloadAction", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_DownloadApi_DoDownloadActionByMyApp", Long.valueOf(paramBundle.getLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_MyAppApi_HandleDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_HandleDownloadAction", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_MyAppApi_StartToAppDetail", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_StartToAppDetail", 0L)));
-          ((TMAssistantCallYYBParamStruct)localObject).timePointMap.put("OuterCall_MyAppApi_StartToDownloadList", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_StartToDownloadList", 0L)));
-        }
-        ((TMAssistantCallYYBParamStruct)localObject).source = paramBundle.getString("big_brother_source_key");
-        ((TMAssistantCallYYBParamStruct)localObject).recommendId = paramBundle.getString("recommendId");
-        LogUtility.b("MyAppApi", "recommendId:" + ((TMAssistantCallYYBParamStruct)localObject).recommendId);
-        return localObject;
-        str2 = StaticAnalyz.a((String)localObject, "YYB");
+        localObject3 = localObject1;
+        localObject1 = localObject2;
         break;
-        label418:
-        if (TextUtils.isEmpty((CharSequence)localObject))
+        if (TextUtils.isEmpty((CharSequence)localObject2))
         {
-          localObject = "ANDROIDQQ";
-          str1 = j + "";
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(j);
+          ((StringBuilder)localObject1).append("");
+          localObject3 = ((StringBuilder)localObject1).toString();
+          localObject1 = "ANDROIDQQ";
+          break;
         }
-        else
-        {
-          str1 = j + "";
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(j);
+        ((StringBuilder)localObject1).append("");
       }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" channelId:");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      LogUtility.b("State_Log", ((StringBuilder)localObject2).toString());
+      localObject1 = new TMAssistantCallYYBParamStruct(str2, str3, str4, i, str1, str5, "", "", (String)localObject1, (String)localObject3);
+      if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(CommonDataAdapter.a().a()) >= 6)
+      {
+        ((TMAssistantCallYYBParamStruct)localObject1).timePointMap.put("OuterCall_JS_DoDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_JS_DoDownloadAction", 0L)));
+        ((TMAssistantCallYYBParamStruct)localObject1).timePointMap.put("OuterCall_DownloadApi_DoDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_DownloadApi_DoDownloadAction", 0L)));
+        ((TMAssistantCallYYBParamStruct)localObject1).timePointMap.put("OuterCall_DownloadApi_DoDownloadActionByMyApp", Long.valueOf(paramBundle.getLong("OuterCall_DownloadApi_DoDownloadActionByMyApp", 0L)));
+        ((TMAssistantCallYYBParamStruct)localObject1).timePointMap.put("OuterCall_MyAppApi_HandleDownloadAction", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_HandleDownloadAction", 0L)));
+        ((TMAssistantCallYYBParamStruct)localObject1).timePointMap.put("OuterCall_MyAppApi_StartToAppDetail", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_StartToAppDetail", 0L)));
+        ((TMAssistantCallYYBParamStruct)localObject1).timePointMap.put("OuterCall_MyAppApi_StartToDownloadList", Long.valueOf(paramBundle.getLong("OuterCall_MyAppApi_StartToDownloadList", 0L)));
+      }
+      ((TMAssistantCallYYBParamStruct)localObject1).source = paramBundle.getString("big_brother_source_key");
+      ((TMAssistantCallYYBParamStruct)localObject1).recommendId = paramBundle.getString("recommendId");
+      paramBundle = new StringBuilder();
+      paramBundle.append("recommendId:");
+      paramBundle.append(((TMAssistantCallYYBParamStruct)localObject1).recommendId);
+      LogUtility.b("MyAppApi", paramBundle.toString());
+      return localObject1;
     }
     catch (Exception localException)
     {
@@ -399,7 +479,8 @@ public class MyAppApi
   
   public String a()
   {
-    if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams != null) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle != null)) {
+    MyAppApi.InstallParams localInstallParams = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams;
+    if ((localInstallParams != null) && (localInstallParams.jdField_a_of_type_AndroidOsBundle != null)) {
       return this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle.getString(DownloadConstants.b);
     }
     return "";
@@ -407,167 +488,188 @@ public class MyAppApi
   
   public void a()
   {
-    if (a() <= 2) {}
-    for (this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V1.getInstance();; this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V2.getInstance())
-    {
-      this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.initTMAssistantCallYYBApi(CommonDataAdapter.a().a());
-      g();
-      return;
+    if (a() <= 2) {
+      this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V1.getInstance();
+    } else {
+      this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V2.getInstance();
     }
+    this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.initTMAssistantCallYYBApi(CommonDataAdapter.a().a());
+    i();
   }
   
   public void a(Activity paramActivity)
   {
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.3(this, paramActivity));
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.5(this, paramActivity));
   }
   
   protected void a(Activity paramActivity, int paramInt1, int paramInt2, String paramString1, DialogInterface.OnClickListener paramOnClickListener1, DialogInterface.OnClickListener paramOnClickListener2, DialogInterface.OnCancelListener paramOnCancelListener, String paramString2, boolean paramBoolean, Bundle paramBundle)
   {
     String str = paramBundle.getString(DownloadConstants.p);
-    int i = paramBundle.getInt("dialogType");
-    int j = paramBundle.getInt("auto_start_yyb_download");
+    int j = paramBundle.getInt("dialogType");
+    int k = paramBundle.getInt("auto_start_yyb_download");
     LogUtility.c("TIME-STATISTIC", "MyAppApi--showTipDialog");
     LogUtility.c("MyAppApi", "-showTipDialog-");
     if (paramActivity == null) {
       return;
     }
     Resources localResources = paramActivity.getResources();
-    Object localObject;
-    if (paramInt2 == 1) {
-      if (paramInt1 == 2)
-      {
+    int i = 1;
+    if (paramInt2 == 1)
+    {
+      if (paramInt1 == 2) {
+        paramInt1 = i;
+      } else if ((paramInt1 == 12) && (!TextUtils.isEmpty(paramString1))) {
+        paramInt1 = 2;
+      } else {
         paramInt1 = 1;
-        if (!TextUtils.isEmpty(str)) {
-          break label463;
-        }
-        localObject = ControlPolicyUtil.a(paramInt1, paramString2);
-        label86:
-        paramString2 = (String)localObject;
-        if (TextUtils.isEmpty((CharSequence)localObject)) {}
-        switch (paramInt1)
-        {
-        default: 
-          paramString2 = localResources.getString(2131691692);
-          label138:
-          if (((paramInt1 != 2) && (paramInt1 != 4)) || (!TextUtils.isEmpty(str))) {
-            break;
-          }
-        }
       }
     }
-    for (;;)
+    else
     {
-      try
+      if (paramInt1 == 2) {}
+      while ((paramInt1 != 12) || (TextUtils.isEmpty(paramString1)))
       {
-        paramString1 = String.format(paramString2, new Object[] { paramString1 });
-        localObject = localResources.getString(2131691712);
-        if ((paramInt2 == 1) && (i == 1))
+        paramInt1 = 3;
+        break;
+      }
+      paramInt1 = 4;
+    }
+    if (TextUtils.isEmpty(str)) {
+      paramString2 = ControlPolicyUtil.a(paramInt1, paramString2);
+    } else {
+      paramString2 = str;
+    }
+    Object localObject = paramString2;
+    if (TextUtils.isEmpty(paramString2)) {
+      if (paramInt1 != 1)
+      {
+        if (paramInt1 != 2)
         {
-          paramString1 = localResources.getString(2131691713);
-          paramString2 = localResources.getString(2131691696);
-          localObject = new MyAppDialog(paramActivity);
-          ((MyAppDialog)localObject).b(2131691707, paramOnClickListener2, true);
-          if (!paramBoolean)
+          if (paramInt1 != 3)
           {
-            bool = true;
-            ((MyAppDialog)localObject).a(2131691710, paramOnClickListener1, bool);
-            ((MyAppDialog)localObject).a(paramString1);
-            ((MyAppDialog)localObject).b(paramString2);
-            if (i == 1)
+            if (paramInt1 != 4)
             {
-              ((MyAppDialog)localObject).b(2131691707, Color.parseColor("#D2D1D1"), paramOnClickListener2, true);
-              paramInt1 = Color.parseColor("#3AC8FF");
-              if (paramBoolean) {
-                continue;
-              }
-              paramBoolean = true;
-              ((MyAppDialog)localObject).a(2131691710, paramInt1, paramOnClickListener1, paramBoolean);
-              ((MyAppDialog)localObject).a(paramActivity.getResources().getDrawable(2130842039));
-              ((MyAppDialog)localObject).a(Color.parseColor("#848484"));
+              localObject = localResources.getString(2131691614);
             }
-            ((MyAppDialog)localObject).setCancelable(true);
-            ((MyAppDialog)localObject).setOnCancelListener(paramOnCancelListener);
-            ((MyAppDialog)localObject).setOnDismissListener(new MyAppApi.12(this));
-            if ((!(paramActivity instanceof AppActivity)) || (((AppActivity)paramActivity).isResume())) {
-              continue;
-            }
-            LogUtility.c("TIME-STATISTIC", "MyAppApi--showTipDialog---cancel !isResume");
-            return;
-            if ((paramInt1 == 12) && (!TextUtils.isEmpty(paramString1)))
+            else
             {
-              paramInt1 = 2;
-              break;
+              paramString2 = localResources.getString(2131691617, new Object[] { paramString1 });
+              break label269;
             }
-            paramInt1 = 1;
-            break;
-            if (paramInt1 == 2)
-            {
-              paramInt1 = 3;
-              break;
-            }
-            if ((paramInt1 == 12) && (!TextUtils.isEmpty(paramString1)))
-            {
-              paramInt1 = 4;
-              break;
-            }
-            paramInt1 = 3;
-            break;
-            label463:
-            localObject = str;
-            break label86;
-            paramString2 = localResources.getString(2131691692);
-            break label138;
-            paramString2 = localResources.getString(2131691693, new Object[] { paramString1 });
-            break label138;
-            paramString2 = localResources.getString(2131691694);
-            break label138;
-            paramString2 = localResources.getString(2131691695, new Object[] { paramString1 });
+          }
+          else
+          {
+            paramString2 = localResources.getString(2131691616);
+            break label269;
           }
         }
-      }
-      catch (Exception paramString2)
-      {
-        if (paramInt1 == 2)
+        else
         {
-          paramString1 = localResources.getString(2131691692);
-          LogUtility.c("MyAppApi", " errorMsg = " + paramString2.getMessage());
-          continue;
+          paramString2 = localResources.getString(2131691615, new Object[] { paramString1 });
+          break label269;
         }
-        paramString1 = localResources.getString(2131691694);
-        continue;
-        boolean bool = false;
-        continue;
-        paramBoolean = false;
-        continue;
+      }
+      else
+      {
+        paramString2 = localResources.getString(2131691614);
+        break label269;
+      }
+    }
+    paramString2 = (String)localObject;
+    label269:
+    if (paramInt1 != 2)
+    {
+      localObject = paramString2;
+      if (paramInt1 != 4) {}
+    }
+    else
+    {
+      localObject = paramString2;
+      if (TextUtils.isEmpty(str)) {
         try
         {
-          if (!paramActivity.isFinishing())
-          {
-            ((MyAppDialog)localObject).show();
-            ReportController.b(null, "dc00898", "", "", "0X8008F7A", "0X8008F7A", 0, 0, "", "", "", "");
-            if (i == 1)
-            {
-              AppCenterReporter.a("6006", "0", "0", paramBundle.getString(DownloadConstants.i), paramBundle.getString("pageId") + "_" + paramBundle.getString("moduleId") + "_" + paramBundle.getString(DownloadConstants.f) + "_" + paramBundle.getString(DownloadConstants.jdField_c_of_type_JavaLangString) + "_" + paramBundle.getString(DownloadConstants.jdField_d_of_type_JavaLangString));
-              if (j == 1) {
-                ThreadManager.getUIHandler().post(new MyAppApi.13(this, paramOnClickListener1, (MyAppDialog)localObject));
-              }
-            }
+          localObject = String.format(paramString2, new Object[] { paramString1 });
+        }
+        catch (Exception paramString2)
+        {
+          if (paramInt1 == 2) {
+            paramString1 = localResources.getString(2131691614);
+          } else {
+            paramString1 = localResources.getString(2131691616);
+          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" errorMsg = ");
+          ((StringBuilder)localObject).append(paramString2.getMessage());
+          LogUtility.c("MyAppApi", ((StringBuilder)localObject).toString());
+          localObject = paramString1;
+        }
+      }
+    }
+    str = localResources.getString(2131691634);
+    paramString2 = (String)localObject;
+    paramString1 = str;
+    if (paramInt2 == 1)
+    {
+      paramString2 = (String)localObject;
+      paramString1 = str;
+      if (j == 1)
+      {
+        paramString1 = localResources.getString(2131691635);
+        paramString2 = localResources.getString(2131691618);
+      }
+    }
+    localObject = new MyAppDialog(paramActivity);
+    ((MyAppDialog)localObject).b(2131691629, paramOnClickListener2, true);
+    ((MyAppDialog)localObject).a(2131691632, paramOnClickListener1, paramBoolean ^ true);
+    ((MyAppDialog)localObject).a(paramString1);
+    ((MyAppDialog)localObject).b(paramString2);
+    if (j == 1)
+    {
+      ((MyAppDialog)localObject).b(2131691629, Color.parseColor("#D2D1D1"), paramOnClickListener2, true);
+      ((MyAppDialog)localObject).a(2131691632, Color.parseColor("#3AC8FF"), paramOnClickListener1, paramBoolean ^ true);
+      ((MyAppDialog)localObject).a(paramActivity.getResources().getDrawable(2130841936));
+      ((MyAppDialog)localObject).a(Color.parseColor("#848484"));
+    }
+    ((MyAppDialog)localObject).setCancelable(true);
+    ((MyAppDialog)localObject).setOnCancelListener(paramOnCancelListener);
+    ((MyAppDialog)localObject).setOnDismissListener(new MyAppApi.14(this));
+    if (((paramActivity instanceof AppActivity)) && (!((AppActivity)paramActivity).isResume()))
+    {
+      LogUtility.c("TIME-STATISTIC", "MyAppApi--showTipDialog---cancel !isResume");
+      return;
+    }
+    try
+    {
+      if (!paramActivity.isFinishing())
+      {
+        ((MyAppDialog)localObject).show();
+        ReportController.b(null, "dc00898", "", "", "0X8008F7A", "0X8008F7A", 0, 0, "", "", "", "");
+        if (j == 1)
+        {
+          paramActivity = paramBundle.getString(DownloadConstants.i);
+          paramString1 = new StringBuilder();
+          paramString1.append(paramBundle.getString("pageId"));
+          paramString1.append("_");
+          paramString1.append(paramBundle.getString("moduleId"));
+          paramString1.append("_");
+          paramString1.append(paramBundle.getString(DownloadConstants.f));
+          paramString1.append("_");
+          paramString1.append(paramBundle.getString(DownloadConstants.jdField_c_of_type_JavaLangString));
+          paramString1.append("_");
+          paramString1.append(paramBundle.getString(DownloadConstants.jdField_d_of_type_JavaLangString));
+          AppCenterReporter.a("6006", "0", "0", paramActivity, paramString1.toString());
+          if (k == 1) {
+            ThreadManager.getUIHandler().post(new MyAppApi.15(this, paramOnClickListener1, (MyAppDialog)localObject));
           }
         }
-        catch (Exception paramActivity)
-        {
-          paramActivity.printStackTrace();
-          continue;
-        }
-        LogUtility.c("TIME-STATISTIC", "MyAppApi--showTipDialog---complete");
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog = ((MyAppDialog)localObject);
-        return;
-        paramString2 = paramString1;
-        paramString1 = (String)localObject;
-        continue;
       }
-      paramString1 = paramString2;
     }
+    catch (Exception paramActivity)
+    {
+      paramActivity.printStackTrace();
+    }
+    LogUtility.c("TIME-STATISTIC", "MyAppApi--showTipDialog---complete");
+    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog = ((MyAppDialog)localObject);
   }
   
   protected void a(Activity paramActivity, DialogInterface.OnClickListener paramOnClickListener)
@@ -575,39 +677,31 @@ public class MyAppApi
     boolean bool = ControlPolicyUtil.d();
     long l = CommonDataAdapter.a().a();
     int i;
-    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long))
-    {
+    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long)) {
       i = 1;
-      if (i != 0) {
-        break label115;
-      }
-      if (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct == null) {
-        break label106;
-      }
-      if (a() > 2) {
-        break label85;
-      }
-      ((TMAssistantCallYYB_V1)a()).startToAuthorized(paramActivity, this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
-      label74:
-      this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
-    }
-    label85:
-    label106:
-    label115:
-    TicketUtils localTicketUtils;
-    do
-    {
-      return;
+    } else {
       i = 0;
-      break;
-      ((TMAssistantCallYYB_V2)a()).startToAuthorized(paramActivity, this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
-      break label74;
+    }
+    if (i == 0)
+    {
+      if (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null)
+      {
+        if (a() <= 2) {
+          ((TMAssistantCallYYB_V1)a()).startToAuthorized(paramActivity, this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+        } else {
+          ((TMAssistantCallYYB_V2)a()).startToAuthorized(paramActivity, this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct, "2");
+        }
+        this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
+        return;
+      }
       LogUtility.e("MyAppApi", "startToAuthorizedDirect mLastAuthorizeParam = null, needCarryQQIdentity = false");
       return;
-      localTicketUtils = new TicketUtils();
-      localTicketUtils.a(new MyAppApi.15(this, localTicketUtils, l, paramActivity, paramOnClickListener));
-    } while (!(paramActivity instanceof BaseActivity));
-    localTicketUtils.a(((BaseActivity)paramActivity).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
+    }
+    TicketUtils localTicketUtils = new TicketUtils();
+    localTicketUtils.a(new MyAppApi.17(this, localTicketUtils, l, paramActivity, paramOnClickListener));
+    if ((paramActivity instanceof BaseActivity)) {
+      localTicketUtils.a(((BaseActivity)paramActivity).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
+    }
   }
   
   public void a(Activity paramActivity, Bundle paramBundle, DialogInterface.OnClickListener paramOnClickListener)
@@ -616,142 +710,147 @@ public class MyAppApi
     if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramActivity) >= 6) {
       paramBundle.putLong("OuterCall_MyAppApi_HandleDownloadAction", System.currentTimeMillis());
     }
-    int i = -1;
+    int i;
     try
     {
-      j = a().checkQQDownloaderInstalled();
-      i = j;
+      i = a().checkQQDownloaderInstalled();
     }
     catch (Exception localException1)
     {
-      for (;;)
-      {
-        boolean bool5;
-        DownloadInfo localDownloadInfo;
-        localException1.printStackTrace();
-        continue;
-        bool1 = false;
-      }
-      if (i == 2) {
-        break label307;
-      }
+      localException1.printStackTrace();
+      i = -1;
     }
     boolean bool2 = paramBundle.getBoolean(DownloadConstants.g, false);
     boolean bool3 = paramBundle.getBoolean(DownloadConstants.jdField_h_of_type_JavaLangString, true);
     int k = paramBundle.getInt(DownloadConstants.n);
     int j = paramBundle.getInt(DownloadConstants.k);
-    String str3 = paramBundle.getString(DownloadConstants.i);
-    String str2 = paramBundle.getString(DownloadConstants.b);
+    String str2 = paramBundle.getString(DownloadConstants.i);
+    String str1 = paramBundle.getString(DownloadConstants.b);
     int m = paramBundle.getInt("dialogType");
-    int n = paramBundle.getInt(DownloadConstants.t, 0);
-    int i1 = paramBundle.getInt(DownloadConstants.u, 0);
+    int n = paramBundle.getInt(DownloadConstants.u, 0);
+    int i1 = paramBundle.getInt(DownloadConstants.v, 0);
     boolean bool4 = ControlPolicyUtil.e();
-    bool5 = ControlPolicyUtil.g();
-    LogUtility.c("OpenConfig-MyAppApi", " useMyAppFlag = " + bool4);
-    localDownloadInfo = DownloadManager.a().a(str2);
+    boolean bool5 = ControlPolicyUtil.g();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(" useMyAppFlag = ");
+    ((StringBuilder)localObject).append(bool4);
+    LogUtility.c("OpenConfig-MyAppApi", ((StringBuilder)localObject).toString());
+    localObject = DownloadManager.a().a(str1);
     boolean bool1;
-    if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 1))
-    {
+    if ((localObject != null) && (((DownloadInfo)localObject).jdField_c_of_type_Int == 1)) {
       bool1 = true;
-      if (((bool4) && (bool5)) || (bool1)) {
-        break label295;
-      }
+    } else {
+      bool1 = false;
+    }
+    if (((!bool4) || (!bool5)) && (!bool1))
+    {
       if (paramOnClickListener != null)
       {
-        LogUtility.a("MyAppApi", "allowMyApp=" + bool4 + " allowMyAppDownload=" + bool5 + " taskExist=" + bool1);
+        paramActivity = new StringBuilder();
+        paramActivity.append("allowMyApp=");
+        paramActivity.append(bool4);
+        paramActivity.append(" allowMyAppDownload=");
+        paramActivity.append(bool5);
+        paramActivity.append(" taskExist=");
+        paramActivity.append(bool1);
+        LogUtility.a("MyAppApi", paramActivity.toString());
         paramOnClickListener.onClick(null, 0);
       }
-      StaticAnalyz.a("200", str3, str2);
-    }
-    for (;;)
-    {
+      StaticAnalyz.a("200", str2, str1);
       return;
-      label295:
-      if (i == 1) {
-        label307:
-        if ((this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog != null) && (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.isShowing())) {
-          if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a() == paramActivity)
-          {
-            LogUtility.a("MyAppApi", "mTipDialog is showing return");
-            return;
-          }
-        }
-      }
-      try
+    }
+    if ((i != 2) && (i != 1))
+    {
+      if (i == 0)
       {
-        this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
-        label351:
-        for (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog = null; (!ControlPolicyUtil.f()) || ((j != 2) && (j != 12)); this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog = null)
+        if ((!ControlPolicyUtil.h()) && (!bool1))
         {
-          LogUtility.a("MyAppApi", "not allowShowDialog return actionCode = " + j);
           if (paramOnClickListener != null) {
             paramOnClickListener.onClick(null, 0);
           }
-          StaticAnalyz.a("200", str3, str2);
+          StaticAnalyz.a("200", str2, str1);
           return;
         }
-        ThreadManager.getSubThreadHandler().post(new MyAppApi.5(this, str3, str2));
-        bool4 = ControlPolicyUtil.a();
-        MyAppApi.6 local6 = new MyAppApi.6(this, bool2, paramOnClickListener, paramBundle, k, bool4, paramActivity, str3, bool1, bool3, str2, m);
-        MyAppApi.ClickListenerProxy localClickListenerProxy = new MyAppApi.ClickListenerProxy(this, paramOnClickListener, str3, str2);
-        MyAppApi.BackListener localBackListener = new MyAppApi.BackListener(this, str3, str2);
-        String str1 = null;
-        Object localObject = str1;
-        if (i1 > 0)
+        paramOnClickListener = StaticAnalyz.a(str2, "YYB");
+        if (k == 0) {
+          a(paramActivity, paramBundle, bool2, bool3);
+        } else {
+          a(paramActivity, paramBundle, bool2, bool3);
+        }
+        if ((localObject == null) && ((j == 2) || (j == 12)))
         {
-          localObject = str1;
-          if (n > 0)
+          StaticAnalyz.a("202", paramOnClickListener, str1);
+          return;
+        }
+        StaticAnalyz.a("200", paramOnClickListener, str1);
+      }
+    }
+    else
+    {
+      localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog;
+      if ((localObject != null) && (((MyAppDialog)localObject).isShowing())) {
+        if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.a() == paramActivity)
+        {
+          LogUtility.a("MyAppApi", "mTipDialog is showing return");
+          return;
+        }
+      }
+    }
+    try
+    {
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog.dismiss();
+      label494:
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog = null;
+      break label507;
+      this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppDialog = null;
+      label507:
+      if ((ControlPolicyUtil.f()) && ((j == 2) || (j == 12)))
+      {
+        ThreadManager.getSubThreadHandler().post(new MyAppApi.7(this, str2, str1));
+        bool4 = ControlPolicyUtil.a();
+        MyAppApi.8 local8 = new MyAppApi.8(this, bool2, paramOnClickListener, paramBundle, k, bool4, paramActivity, str2, str1, bool1, bool3, m);
+        MyAppApi.ClickListenerProxy localClickListenerProxy = new MyAppApi.ClickListenerProxy(this, paramOnClickListener, str2, str1);
+        MyAppApi.BackListener localBackListener = new MyAppApi.BackListener(this, str2, str1);
+        if ((i1 > 0) && (n > 0))
+        {
+          k = i1 - n;
+          if (k > 0)
           {
-            k = i1 - n;
-            localObject = str1;
-            if (k > 0) {
-              localObject = YybHandleUtil.a(k);
-            }
+            localObject = YybHandleUtil.a(k);
+            break label646;
           }
         }
-        str1 = paramBundle.getString("source");
-        ThreadManager.getUIHandler().post(new MyAppApi.7(this, paramActivity, j, i, (String)localObject, local6, localClickListenerProxy, localBackListener, str1, bool4, paramBundle));
-        ThreadManager.getSubThreadHandler().post(new MyAppApi.8(this, str3, str2));
+        localObject = null;
+        String str3 = paramBundle.getString("source");
+        ThreadManager.getUIHandler().post(new MyAppApi.9(this, paramActivity, j, i, (String)localObject, local8, localClickListenerProxy, localBackListener, str3, bool4, paramBundle));
+        ThreadManager.getSubThreadHandler().post(new MyAppApi.10(this, str2, str1));
         this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = paramOnClickListener;
         return;
-        if (i != 0) {
-          continue;
-        }
-        if ((ControlPolicyUtil.h()) || (bool1))
-        {
-          paramOnClickListener = StaticAnalyz.a(str3, "YYB");
-          if (k == 0) {
-            a(paramActivity, paramBundle, bool2, bool3);
-          }
-          while ((localObject == null) && ((j == 2) || (j == 12)))
-          {
-            StaticAnalyz.a("202", paramOnClickListener, str2);
-            return;
-            a(paramActivity, paramBundle, bool2, bool3);
-          }
-          StaticAnalyz.a("200", paramOnClickListener, str2);
-          return;
-        }
-        if (paramOnClickListener != null) {
-          paramOnClickListener.onClick(null, 0);
-        }
-        StaticAnalyz.a("200", str3, str2);
-        return;
       }
-      catch (Exception localException2)
-      {
-        break label351;
+      label646:
+      paramActivity = new StringBuilder();
+      paramActivity.append("not allowShowDialog return actionCode = ");
+      paramActivity.append(j);
+      LogUtility.a("MyAppApi", paramActivity.toString());
+      if (paramOnClickListener != null) {
+        paramOnClickListener.onClick(null, 0);
       }
+      StaticAnalyz.a("200", str2, str1);
+      return;
+    }
+    catch (Exception localException2)
+    {
+      break label494;
     }
   }
   
   public void a(Activity paramActivity, String paramString)
   {
     LogUtility.c("NewUpgradeDialog", "preDownload called,get updateDetail info");
-    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.18(this, paramActivity), 0L);
+    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.20(this, paramActivity), 0L);
   }
   
-  protected void a(Activity paramActivity, String paramString, int paramInt)
+  protected void a(Activity paramActivity, String paramString1, int paramInt, String paramString2, String paramString3)
   {
     LogUtility.c("MyAppApi", "downloadYyb");
     if (paramInt == 1) {
@@ -762,49 +861,56 @@ public class MyAppApi
       this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener = new MyAppApi.YYBDownloadListener(this);
       DownloadManager.a().a(this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$YYBDownloadListener);
     }
-    Object localObject = DownloadManager.a().a("1101070898");
-    LogUtility.c("MyAppApi", "---startDownloadYYB---");
+    Object localObject = a(paramString2);
+    localObject = DownloadManager.a().a((String)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("---startDownloadYYB---");
+    localStringBuilder.append(localObject);
+    LogUtility.c("MyAppApi", localStringBuilder.toString());
     if (localObject != null)
     {
       if (paramInt == 1)
       {
         ((DownloadInfo)localObject).jdField_a_of_type_Boolean = false;
         ((DownloadInfo)localObject).jdField_b_of_type_Boolean = true;
+        ((DownloadInfo)localObject).jdField_h_of_type_Int = 1;
       }
-      for (((DownloadInfo)localObject).jdField_h_of_type_Int = 1;; ((DownloadInfo)localObject).jdField_h_of_type_Int = 0)
+      else
       {
-        ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString = paramString;
-        DownloadManager.a().e((DownloadInfo)localObject);
-        DownloadManager.a().a((DownloadInfo)localObject);
-        return;
         ((DownloadInfo)localObject).jdField_a_of_type_Boolean = true;
         ((DownloadInfo)localObject).jdField_b_of_type_Boolean = false;
+        ((DownloadInfo)localObject).jdField_h_of_type_Int = 0;
       }
+      ((DownloadInfo)localObject).jdField_h_of_type_JavaLangString = paramString1;
+      DownloadManager.a().e((DownloadInfo)localObject);
+      DownloadManager.a().a((DownloadInfo)localObject);
+      return;
     }
-    String str = ControlPolicyUtil.a();
-    localObject = str;
-    if (TextUtils.isEmpty(str)) {
+    if (TextUtils.isEmpty(paramString3)) {
+      paramString3 = ControlPolicyUtil.a();
+    }
+    localObject = paramString3;
+    if (TextUtils.isEmpty(paramString3)) {
       localObject = "https://a.app.qq.com/o/myapp-down?g_f=991310";
     }
-    a(paramActivity, (String)localObject, paramString, paramInt, false);
+    a(paramActivity, (String)localObject, paramString1, paramInt, paramString2, false);
   }
   
   public void a(Activity paramActivity, String paramString1, String paramString2)
   {
-    if (!"biz_src_yyb".equals(paramString2))
+    boolean bool = "biz_src_yyb".equals(paramString2);
+    long l = 0L;
+    if (!bool)
     {
-      long l2 = ControlPolicyUtil.a();
-      l1 = l2;
-      if (l2 > 0L) {}
+      l = ControlPolicyUtil.a();
+      if (l <= 0L) {
+        l = 2000L;
+      }
     }
-    for (long l1 = 2000L;; l1 = 0L)
-    {
-      ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.17(this, paramActivity, paramString1), l1);
-      return;
-    }
+    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.19(this, paramActivity, paramString1), l);
   }
   
-  public void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, boolean paramBoolean)
+  public void a(Activity paramActivity, String paramString1, String paramString2, int paramInt, String paramString3, boolean paramBoolean)
   {
     LogUtility.c("MyAppApi", "startDownloadYyb");
     Bundle localBundle = new Bundle();
@@ -812,32 +918,29 @@ public class MyAppApi
     if (TextUtils.isEmpty(paramString1)) {
       str = "https://a.app.qq.com/o/myapp-down?g_f=991310";
     }
-    localBundle.putString(DownloadConstants.b, "1101070898");
+    localBundle.putString(DownloadConstants.b, a(paramString3));
     localBundle.putString(DownloadConstants.j, str);
     localBundle.putString(DownloadConstants.f, "com.tencent.android.qqdownloader");
     localBundle.putInt(DownloadConstants.k, 2);
     localBundle.putString(DownloadConstants.i, paramString2);
     localBundle.putString(DownloadConstants.l, YybHandleUtil.jdField_d_of_type_JavaLangString);
     if (paramInt == 1) {
-      localBundle.putBoolean(DownloadConstants.x, true);
+      localBundle.putBoolean(DownloadConstants.y, true);
+    } else {
+      localBundle.putBoolean(DownloadConstants.y, false);
     }
-    for (;;)
-    {
-      localBundle.putInt(DownloadConstants.D, paramInt);
-      localBundle.putString(DownloadConstants.m, "yyb");
-      localBundle.putString(DownloadConstants.jdField_c_of_type_JavaLangString, "5848");
-      localBundle.putBoolean(DownloadConstants.g, true);
-      localBundle.putBoolean(DownloadConstants.jdField_h_of_type_JavaLangString, paramBoolean);
-      localBundle.putInt(DownloadConstants.n, 1);
-      DownloadApi.a(paramActivity, localBundle, "biz_src_yyb", null, 0);
-      return;
-      localBundle.putBoolean(DownloadConstants.x, false);
-    }
+    localBundle.putInt(DownloadConstants.E, paramInt);
+    localBundle.putString(DownloadConstants.m, "yyb");
+    localBundle.putString(DownloadConstants.jdField_c_of_type_JavaLangString, "5848");
+    localBundle.putBoolean(DownloadConstants.g, true);
+    localBundle.putBoolean(DownloadConstants.jdField_h_of_type_JavaLangString, paramBoolean);
+    localBundle.putInt(DownloadConstants.n, 1);
+    DownloadApi.a(paramActivity, localBundle, "biz_src_yyb", null, 0);
   }
   
   public void a(Activity paramActivity, String paramString, boolean paramBoolean)
   {
-    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.19(this, paramBoolean, paramActivity, paramString), 0L);
+    ThreadManager.getSubThreadHandler().postDelayed(new MyAppApi.21(this, paramBoolean, paramActivity, paramString), 0L);
   }
   
   protected void a(Context paramContext, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
@@ -846,86 +949,107 @@ public class MyAppApi
     if (TMAssistantCallYYB_V1.getQQDownloadApiLevel(paramContext) >= 6) {
       paramBundle.putLong("OuterCall_MyAppApi_StartToDownloadList", System.currentTimeMillis());
     }
-    if ((paramBundle == null) || (paramContext == null)) {
-      return;
-    }
-    TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = a(paramBundle);
-    boolean bool = ControlPolicyUtil.d();
-    long l = CommonDataAdapter.a().a();
+    TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct;
     int i;
-    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long)) {
-      i = 1;
-    }
     Object localObject;
-    label296:
-    int j;
-    while ((i == 0) || (paramContext == null) || (!(paramContext instanceof BaseActivity)))
+    if (paramBundle != null)
     {
+      if (paramContext == null) {
+        return;
+      }
+      localTMAssistantCallYYBParamStruct = a(paramBundle);
+      boolean bool = ControlPolicyUtil.d();
+      long l = CommonDataAdapter.a().a();
+      if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long)) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+      if ((i != 0) && (paramContext != null))
+      {
+        bool = paramContext instanceof BaseActivity;
+        if (bool)
+        {
+          localObject = new TicketUtils();
+          ((TicketUtils)localObject).a(new MyAppApi.13(this, (TicketUtils)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+          if (!bool) {
+            break label459;
+          }
+          ((TicketUtils)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
+          return;
+        }
+      }
       localObject = a(localTMAssistantCallYYBParamStruct, paramBundle);
       DownloadManager.a().e((DownloadInfo)localObject);
+    }
+    label459:
+    label460:
+    for (;;)
+    {
       try
       {
-        LogUtility.a("State_Log", "OpenSDK startToDownloadTaskList param SNGAppId=" + localTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + localTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + localTMAssistantCallYYBParamStruct.taskAppId + " packageName=" + localTMAssistantCallYYBParamStruct.taskPackageName + " version=" + localTMAssistantCallYYBParamStruct.taskVersion + " uin=" + localTMAssistantCallYYBParamStruct.uin + " via=" + localTMAssistantCallYYBParamStruct.via);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("OpenSDK startToDownloadTaskList param SNGAppId=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.SNGAppId);
+        ((StringBuilder)localObject).append(" apkId=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.taskApkId);
+        ((StringBuilder)localObject).append(" taskAppId=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.taskAppId);
+        ((StringBuilder)localObject).append(" packageName=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.taskPackageName);
+        ((StringBuilder)localObject).append(" version=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.taskVersion);
+        ((StringBuilder)localObject).append(" uin=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.uin);
+        ((StringBuilder)localObject).append(" via=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.via);
+        LogUtility.a("State_Log", ((StringBuilder)localObject).toString());
         LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToDownloadTaskList");
-        if (a() > 2) {
-          break label296;
+        if (a() <= 2)
+        {
+          ((TMAssistantCallYYB_V1)a()).startToDownloadTaskList(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2);
+          return;
         }
-        ((TMAssistantCallYYB_V1)a()).startToDownloadTaskList(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2);
+        i = paramBundle.getInt(DownloadConstants.k);
+        int j = a(paramBundle);
+        if (i != 3) {
+          break label460;
+        }
+        paramBoolean1 = false;
+        paramBoolean2 = false;
+        ((TMAssistantCallYYB_V2)a()).startToDownloadTaskList(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, j);
         return;
       }
       catch (Exception paramContext)
       {
-        LogUtility.e("MyAppApi", "--startToDownloadTaskList--Exception = " + paramContext);
-        return;
+        paramBundle = new StringBuilder();
+        paramBundle.append("--startToDownloadTaskList--Exception = ");
+        paramBundle.append(paramContext);
+        LogUtility.e("MyAppApi", paramBundle.toString());
       }
-      i = 0;
-      continue;
-      i = paramBundle.getInt(DownloadConstants.k);
-      j = a(paramBundle);
-      if (i != 3) {
-        break label400;
-      }
-      paramBoolean1 = false;
-      paramBoolean2 = false;
-    }
-    label400:
-    for (;;)
-    {
-      ((TMAssistantCallYYB_V2)a()).startToDownloadTaskList(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, j);
-      return;
-      localObject = new TicketUtils();
-      ((TicketUtils)localObject).a(new MyAppApi.11(this, (TicketUtils)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
-      if (!(paramContext instanceof BaseActivity)) {
-        break;
-      }
-      ((TicketUtils)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
       return;
     }
   }
   
   public void a(Context paramContext, JSONArray paramJSONArray, int paramInt, String paramString1, String paramString2)
   {
-    int j = 2;
-    if (paramJSONArray == null) {}
-    int k;
-    do
-    {
+    if (paramJSONArray == null) {
       return;
-      k = paramJSONArray.length();
-    } while (k == 0);
+    }
+    int j = paramJSONArray.length();
+    if (j == 0) {
+      return;
+    }
     ArrayList localArrayList = new ArrayList();
     int i = 0;
-    if (i < k)
+    while (i < j)
     {
       JSONObject localJSONObject = paramJSONArray.optJSONObject(i);
-      if (localJSONObject == null) {}
-      for (;;)
+      if (localJSONObject != null)
       {
-        i += 1;
-        break;
         TMAssistantCallYYBParamStruct localTMAssistantCallYYBParamStruct = new TMAssistantCallYYBParamStruct();
         localTMAssistantCallYYBParamStruct.recommendId = localJSONObject.optString("recommendId");
-        localTMAssistantCallYYBParamStruct.channelId = localJSONObject.optString(DownloadConstants.L);
+        localTMAssistantCallYYBParamStruct.channelId = localJSONObject.optString(DownloadConstants.M);
         localTMAssistantCallYYBParamStruct.taskPackageName = localJSONObject.optString(DownloadConstants.f);
         localTMAssistantCallYYBParamStruct.taskVersion = localJSONObject.optInt(DownloadConstants.e);
         localTMAssistantCallYYBParamStruct.via = localJSONObject.optString(DownloadConstants.i);
@@ -941,12 +1065,14 @@ public class MyAppApi
         localTMAssistantCallYYBParamStruct.source = paramString2;
         localArrayList.add(localTMAssistantCallYYBParamStruct);
       }
+      i += 1;
     }
-    i = j;
     if (paramInt == 2) {
-      i = 3;
+      paramInt = 3;
+    } else {
+      paramInt = 2;
     }
-    ThreadManager.excute(new MyAppApi.9(this, paramContext, localArrayList, i, paramString1), 16, null, true);
+    ThreadManager.excute(new MyAppApi.11(this, paramContext, localArrayList, paramInt, paramString1), 16, null, true);
   }
   
   protected void a(String paramString)
@@ -955,14 +1081,12 @@ public class MyAppApi
     DownloadInfo localDownloadInfo = new DownloadInfo();
     localDownloadInfo.jdField_c_of_type_JavaLangString = paramString;
     localDownloadInfo.a(10);
-    if (localDownloadInfo != null) {
-      localDownloadManager.a(10, localDownloadInfo);
-    }
+    localDownloadManager.a(10, localDownloadInfo);
   }
   
   public void a(String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity)
   {
-    ThreadManager.getSubThreadHandler().post(new MyAppApi.14(this, paramString, paramOnClickListener, paramActivity));
+    ThreadManager.getSubThreadHandler().post(new MyAppApi.16(this, paramString, paramOnClickListener, paramActivity));
   }
   
   public void a(boolean paramBoolean)
@@ -972,22 +1096,23 @@ public class MyAppApi
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      this.jdField_d_of_type_Boolean = paramBoolean;
-      this.jdField_a_of_type_JavaLangString = paramString;
-    } while (!this.jdField_d_of_type_Boolean);
-    SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("showTost_pf", 0).edit();
-    localEditor.putBoolean("showToast", this.jdField_d_of_type_Boolean);
-    localEditor.putString("toast_msg", paramString);
-    localEditor.commit();
+    }
+    this.jdField_d_of_type_Boolean = paramBoolean;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    if (this.jdField_d_of_type_Boolean)
+    {
+      SharedPreferences.Editor localEditor = CommonDataAdapter.a().a().getSharedPreferences("showTost_pf", 0).edit();
+      localEditor.putBoolean("showToast", this.jdField_d_of_type_Boolean);
+      localEditor.putString("toast_msg", paramString);
+      localEditor.commit();
+    }
   }
   
   protected boolean a()
   {
-    return !TMAssistantCallYYB_V1.isExistActoin(this.jdField_a_of_type_Long);
+    return TMAssistantCallYYB_V1.isExistActoin(this.jdField_a_of_type_Long) ^ true;
   }
   
   public boolean a(Context paramContext, Bundle paramBundle)
@@ -1004,6 +1129,7 @@ public class MyAppApi
   
   public boolean a(Context paramContext, Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
+    boolean bool1 = paramBoolean1;
     LogUtility.c("TIME-STATISTIC", "MyAppApi--startToAppDetail ");
     if (paramBundle == null) {
       return false;
@@ -1015,52 +1141,80 @@ public class MyAppApi
     if (!DownloadApi.b(localTMAssistantCallYYBParamStruct.SNGAppId)) {
       return false;
     }
-    boolean bool = ControlPolicyUtil.d();
+    boolean bool2 = ControlPolicyUtil.d();
     long l = CommonDataAdapter.a().a();
-    if ((bool) && (l > 0L) && (l != this.jdField_d_of_type_Long)) {}
-    for (int i = 1;; i = 0)
+    int i;
+    if ((bool2) && (l > 0L) && (l != this.jdField_d_of_type_Long)) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if ((i != 0) && (paramContext != null))
     {
-      Object localObject;
-      if ((i == 0) || (paramContext == null) || (!(paramContext instanceof BaseActivity)))
+      bool2 = paramContext instanceof BaseActivity;
+      if (bool2)
       {
-        localObject = a(localTMAssistantCallYYBParamStruct, paramBundle);
-        DownloadManager.a().e((DownloadInfo)localObject);
-      }
-      for (;;)
-      {
-        try
-        {
-          LogUtility.a("State_Log", "OpenSDK startToAppDetail param SNGAppId=" + localTMAssistantCallYYBParamStruct.SNGAppId + " apkId=" + localTMAssistantCallYYBParamStruct.taskApkId + " taskAppId=" + localTMAssistantCallYYBParamStruct.taskAppId + " source=" + localTMAssistantCallYYBParamStruct.source + " packageName=" + localTMAssistantCallYYBParamStruct.taskPackageName + " version=" + localTMAssistantCallYYBParamStruct.taskVersion + " uin=" + localTMAssistantCallYYBParamStruct.uin + " via=" + localTMAssistantCallYYBParamStruct.via + " autoDownload=" + paramBoolean1 + " autoInstall=" + paramBoolean2);
-          LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
-          if (a() <= 2)
-          {
-            ((TMAssistantCallYYB_V1)a()).startToAppDetail(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2);
-          }
-          else
-          {
-            i = paramBundle.getInt(DownloadConstants.k);
-            int j = a(paramBundle);
-            if (i == 3)
-            {
-              paramBoolean1 = false;
-              paramBoolean2 = false;
-              ((TMAssistantCallYYB_V2)a()).startToAppDetail(paramContext, localTMAssistantCallYYBParamStruct, paramBoolean1, paramBoolean2, j);
-            }
-          }
-        }
-        catch (Exception paramContext)
-        {
-          LogUtility.b("MyAppApi", "startToAppDetail err", paramContext);
-          return false;
-        }
         localObject = new TicketUtils();
-        ((TicketUtils)localObject).a(new MyAppApi.10(this, (TicketUtils)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
-        if ((paramContext instanceof BaseActivity)) {
+        ((TicketUtils)localObject).a(new MyAppApi.12(this, (TicketUtils)localObject, localTMAssistantCallYYBParamStruct, paramBundle, l, paramContext, paramBoolean1, paramBoolean2));
+        if (bool2) {
           ((TicketUtils)localObject).a(((BaseActivity)paramContext).getAppRuntime(), 710020706L, "com.tencent.android.qqdownloader");
         }
         return true;
       }
+    }
+    Object localObject = a(localTMAssistantCallYYBParamStruct, paramBundle);
+    DownloadManager.a().e((DownloadInfo)localObject);
+    for (;;)
+    {
+      try
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("OpenSDK startToAppDetail param SNGAppId=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.SNGAppId);
+        ((StringBuilder)localObject).append(" apkId=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.taskApkId);
+        ((StringBuilder)localObject).append(" taskAppId=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.taskAppId);
+        ((StringBuilder)localObject).append(" source=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.source);
+        ((StringBuilder)localObject).append(" packageName=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.taskPackageName);
+        ((StringBuilder)localObject).append(" version=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.taskVersion);
+        ((StringBuilder)localObject).append(" uin=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.uin);
+        ((StringBuilder)localObject).append(" via=");
+        ((StringBuilder)localObject).append(localTMAssistantCallYYBParamStruct.via);
+        ((StringBuilder)localObject).append(" autoDownload=");
+        ((StringBuilder)localObject).append(bool1);
+        ((StringBuilder)localObject).append(" autoInstall=");
+        ((StringBuilder)localObject).append(paramBoolean2);
+        LogUtility.a("State_Log", ((StringBuilder)localObject).toString());
+        LogUtility.c("TIME-STATISTIC", "mDownloadSdk.startToAppDetail");
+        if (a() <= 2)
+        {
+          ((TMAssistantCallYYB_V1)a()).startToAppDetail(paramContext, localTMAssistantCallYYBParamStruct, bool1, paramBoolean2);
+        }
+        else
+        {
+          i = paramBundle.getInt(DownloadConstants.k);
+          int j = a(paramBundle);
+          if (i != 3) {
+            break label514;
+          }
+          paramBoolean1 = false;
+          bool1 = false;
+          ((TMAssistantCallYYB_V2)a()).startToAppDetail(paramContext, localTMAssistantCallYYBParamStruct, bool1, paramBoolean1, j);
+        }
+      }
+      catch (Exception paramContext)
+      {
+        LogUtility.b("MyAppApi", "startToAppDetail err", paramContext);
+        return false;
+      }
       return true;
+      label514:
+      paramBoolean1 = paramBoolean2;
     }
   }
   
@@ -1068,17 +1222,20 @@ public class MyAppApi
   {
     try
     {
-      LogUtility.c("MyAppApi", "--addDownloadTaskFromAppDetail--params = " + paramBundle);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("--addDownloadTaskFromAppDetail--params = ");
+      ((StringBuilder)localObject).append(paramBundle);
+      LogUtility.c("MyAppApi", ((StringBuilder)localObject).toString());
       if (paramBundle == null) {
         return -1L;
       }
-      String str = paramBundle.getString("url");
-      if (!TextUtils.isEmpty(str))
+      localObject = paramBundle.getString("url");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
       {
-        if ((str.startsWith("tmast")) || (str.startsWith("tpmast"))) {
-          return a().addDownloadTaskFromTmast(paramBundle);
+        if ((!((String)localObject).startsWith("tmast")) && (!((String)localObject).startsWith("tpmast"))) {
+          return a().addDownloadTaskFromWebview(paramBundle);
         }
-        long l = a().addDownloadTaskFromWebview(paramBundle);
+        long l = a().addDownloadTaskFromTmast(paramBundle);
         return l;
       }
     }
@@ -1091,7 +1248,12 @@ public class MyAppApi
   
   protected long b(Bundle paramBundle, boolean paramBoolean1, boolean paramBoolean2)
   {
-    LogUtility.c("MyAppApi", "--addDownloadTaskFromAppDetail--params = " + paramBundle + "autoDownload = " + paramBoolean1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("--addDownloadTaskFromAppDetail--params = ");
+    localStringBuilder.append(paramBundle);
+    localStringBuilder.append("autoDownload = ");
+    localStringBuilder.append(paramBoolean1);
+    LogUtility.c("MyAppApi", localStringBuilder.toString());
     if (paramBundle == null) {
       return -1L;
     }
@@ -1104,48 +1266,86 @@ public class MyAppApi
   {
     this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB = TMAssistantCallYYB_V2.getInstance();
     this.jdField_a_of_type_ComTencentTmassistantsdkInternalOpenSDKTMAssistantBaseCallYYB.initTMAssistantCallYYBApi(CommonDataAdapter.a().a());
-    g();
+    i();
   }
   
   protected void b(Activity paramActivity)
   {
     long l = System.currentTimeMillis() - this.jdField_b_of_type_Long;
-    LogUtility.c("MyAppApi", "judgeInstallFlag -- mInstalledFlag = " + this.jdField_a_of_type_Boolean + "mInstallTime = " + this.jdField_b_of_type_Long + " countTime =" + l);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("judgeInstallFlag -- mInstalledFlag = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append("mInstallTime = ");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+    ((StringBuilder)localObject).append(" countTime =");
+    ((StringBuilder)localObject).append(l);
+    LogUtility.c("MyAppApi", ((StringBuilder)localObject).toString());
     int i;
     if (this.jdField_a_of_type_Boolean)
     {
       if ((this.jdField_b_of_type_Long != -1L) && (l <= 180000L)) {
-        break label337;
+        i = 0;
+      } else {
+        i = 1;
       }
-      i = 1;
-      if (!b()) {
-        break label404;
+      if (b())
+      {
+        if (!a()) {
+          this.jdField_b_of_type_Boolean = false;
+        } else {
+          this.jdField_b_of_type_Boolean = true;
+        }
+        if ((this.jdField_b_of_type_Boolean) || (i != 0)) {
+          break label409;
+        }
+        if (this.jdField_a_of_type_Long != -1L) {
+          a().removeDownloadTask(this.jdField_a_of_type_Long);
+        }
+        if (ControlPolicyUtil.h())
+        {
+          localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams;
+          if (localObject != null) {
+            if (((MyAppApi.InstallParams)localObject).jdField_a_of_type_Int == 0) {
+              a(paramActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean);
+            } else {
+              a(paramActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean);
+            }
+          }
+        }
+        else if (i == 0)
+        {
+          paramActivity = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+          if (paramActivity != null) {
+            paramActivity.onClick(null, 0);
+          }
+        }
       }
-      if (a()) {
-        break label342;
+    }
+    try
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append(CommonDataAdapter.a().a().getFilesDir());
+      paramActivity.append(File.separator);
+      paramActivity.append("yyb_via_info.txt");
+      if (new File(paramActivity.toString()).exists()) {
+        CommonDataAdapter.a().a().deleteFile("yyb_via_info.txt");
       }
-      this.jdField_b_of_type_Boolean = false;
-      label107:
+      label354:
       if ((!this.jdField_b_of_type_Boolean) && (i == 0))
       {
         if (this.jdField_a_of_type_Long != -1L) {
           a().removeDownloadTask(this.jdField_a_of_type_Long);
         }
-        if (!ControlPolicyUtil.h()) {
-          break label379;
-        }
-        if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams != null)
+        if (i == 0)
         {
-          if (this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Int != 0) {
-            break label350;
+          paramActivity = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+          if (paramActivity != null) {
+            paramActivity.onClick(null, 0);
           }
-          a(paramActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean);
         }
       }
-    }
-    for (;;)
-    {
-      e();
+      label409:
+      g();
       if ((!this.jdField_d_of_type_Boolean) && (!b()))
       {
         paramActivity = CommonDataAdapter.a().a().getSharedPreferences("showTost_pf", 0);
@@ -1155,7 +1355,7 @@ public class MyAppApi
       if (this.jdField_d_of_type_Boolean)
       {
         if (!b()) {
-          new Handler(Looper.getMainLooper()).postDelayed(new MyAppApi.4(this), 2000L);
+          new Handler(Looper.getMainLooper()).postDelayed(new MyAppApi.6(this), 2000L);
         }
         this.jdField_d_of_type_Boolean = false;
         paramActivity = CommonDataAdapter.a().a().getSharedPreferences("showTost_pf", 0).edit();
@@ -1163,43 +1363,10 @@ public class MyAppApi
         paramActivity.commit();
       }
       return;
-      label337:
-      i = 0;
-      break;
-      label342:
-      this.jdField_b_of_type_Boolean = true;
-      break label107;
-      label350:
-      a(paramActivity, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_AndroidOsBundle, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams.jdField_b_of_type_Boolean);
-      continue;
-      label379:
-      if ((i != 0) || (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
-        continue;
-      }
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-      continue;
-      try
-      {
-        label404:
-        if (new File(CommonDataAdapter.a().a().getFilesDir() + File.separator + "yyb_via_info.txt").exists()) {
-          CommonDataAdapter.a().a().deleteFile("yyb_via_info.txt");
-        }
-        label464:
-        if ((this.jdField_b_of_type_Boolean) || (i != 0)) {
-          continue;
-        }
-        if (this.jdField_a_of_type_Long != -1L) {
-          a().removeDownloadTask(this.jdField_a_of_type_Long);
-        }
-        if ((i != 0) || (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener == null)) {
-          continue;
-        }
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(null, 0);
-      }
-      catch (Exception paramActivity)
-      {
-        break label464;
-      }
+    }
+    catch (Exception paramActivity)
+    {
+      break label354;
     }
   }
   
@@ -1209,6 +1376,7 @@ public class MyAppApi
       paramBundle.putLong("OuterCall_MyAppApi_HandleDownloadAction", System.currentTimeMillis());
     }
     int i = -1;
+    int j;
     try
     {
       j = a().checkQQDownloaderInstalled();
@@ -1216,160 +1384,124 @@ public class MyAppApi
     }
     catch (Exception localException)
     {
-      int j;
-      boolean bool1;
-      boolean bool2;
-      int k;
-      int m;
-      String str2;
-      DownloadInfo localDownloadInfo;
-      for (;;)
-      {
-        boolean bool3;
-        boolean bool4;
-        String str1;
-        localException.printStackTrace();
-        continue;
-        j = 0;
-      }
-      if ((i != 2) && (i != 1)) {
-        break label244;
-      }
-      if (paramOnClickListener == null) {
-        break label233;
-      }
-      paramOnClickListener.onClick(null, 0);
-      StaticAnalyz.a("202", str2, localException);
-      return;
-      if ((!ControlPolicyUtil.h()) && (j == 0)) {
-        break label331;
-      }
-      if (k != 0) {
-        break label308;
-      }
-      a(paramActivity, paramBundle, bool1, bool2);
-      for (;;)
-      {
-        paramActivity = StaticAnalyz.a(str2, "YYB");
-        if ((localDownloadInfo != null) || ((m != 2) && (m != 12))) {
-          break;
-        }
-        StaticAnalyz.a("202", paramActivity, localException);
-        return;
-        a(paramActivity, paramBundle, bool1, bool2);
-      }
-      StaticAnalyz.a("200", paramActivity, localException);
-      return;
-      if (paramOnClickListener == null) {
-        break label343;
-      }
-      paramOnClickListener.onClick(null, 0);
-      StaticAnalyz.a("200", str2, localException);
+      localException.printStackTrace();
     }
-    bool1 = paramBundle.getBoolean(DownloadConstants.g, false);
-    bool2 = paramBundle.getBoolean(DownloadConstants.jdField_h_of_type_JavaLangString, true);
-    k = paramBundle.getInt(DownloadConstants.n);
-    m = paramBundle.getInt(DownloadConstants.k);
-    bool3 = ControlPolicyUtil.e();
-    bool4 = ControlPolicyUtil.g();
-    str1 = paramBundle.getString(DownloadConstants.b);
-    str2 = paramBundle.getString(DownloadConstants.i);
-    localDownloadInfo = DownloadManager.a().a(str1);
-    if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 1))
-    {
+    boolean bool1 = paramBundle.getBoolean(DownloadConstants.g, false);
+    boolean bool2 = paramBundle.getBoolean(DownloadConstants.jdField_h_of_type_JavaLangString, true);
+    int k = paramBundle.getInt(DownloadConstants.n);
+    int m = paramBundle.getInt(DownloadConstants.k);
+    boolean bool3 = ControlPolicyUtil.e();
+    boolean bool4 = ControlPolicyUtil.g();
+    String str1 = paramBundle.getString(DownloadConstants.b);
+    String str2 = paramBundle.getString(DownloadConstants.i);
+    DownloadInfo localDownloadInfo = DownloadManager.a().a(str1);
+    if ((localDownloadInfo != null) && (localDownloadInfo.jdField_c_of_type_Int == 1)) {
       j = 1;
-      LogUtility.c("OpenConfig-MyAppApi", " useMyAppFlag = " + bool3);
-      if (((bool3) && (bool4)) || (j != 0)) {
-        break label209;
-      }
+    } else {
+      j = 0;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" useMyAppFlag = ");
+    localStringBuilder.append(bool3);
+    LogUtility.c("OpenConfig-MyAppApi", localStringBuilder.toString());
+    if (((!bool3) || (!bool4)) && (j == 0))
+    {
       if (paramOnClickListener != null) {
         paramOnClickListener.onClick(null, 0);
       }
       StaticAnalyz.a("200", str2, str1);
+      return;
     }
-    label209:
-    label233:
-    label244:
-    return;
+    if ((i != 2) && (i != 1))
+    {
+      if ((!ControlPolicyUtil.h()) && (j == 0))
+      {
+        if (paramOnClickListener != null) {
+          paramOnClickListener.onClick(null, 0);
+        }
+        StaticAnalyz.a("200", str2, str1);
+        return;
+      }
+      if (k == 0) {
+        a(paramActivity, paramBundle, bool1, bool2);
+      } else {
+        a(paramActivity, paramBundle, bool1, bool2);
+      }
+      paramActivity = StaticAnalyz.a(str2, "YYB");
+      if ((localDownloadInfo == null) && ((m == 2) || (m == 12)))
+      {
+        StaticAnalyz.a("202", paramActivity, str1);
+        return;
+      }
+      StaticAnalyz.a("200", paramActivity, str1);
+      return;
+    }
+    if (paramOnClickListener != null) {
+      paramOnClickListener.onClick(null, 0);
+    }
+    StaticAnalyz.a("202", str2, str1);
   }
   
   protected void b(String paramString, DialogInterface.OnClickListener paramOnClickListener, Activity paramActivity)
   {
-    for (;;)
-    {
-      String str3;
-      try
-      {
-        JSONObject localJSONObject = new JSONObject(paramString);
-        String str1 = localJSONObject.optString("appid", "");
-        localJSONObject.optString("myAppid", "");
-        localJSONObject.optString("apkId", "");
-        Object localObject2 = localJSONObject.optString("versionCode", "");
-        String str2 = localJSONObject.optString("via", "");
-        localJSONObject.optString("appPackageName", "");
-        str3 = localJSONObject.optString("appName", HardCodeUtil.a(2131707062));
-        localJSONObject.optString("channelId", "");
-        Object localObject1 = localJSONObject.optString("appAuthorizedStr", "");
-        Bundle localBundle = new Bundle();
-        paramString = (String)localObject2;
-        if (TextUtils.isEmpty((CharSequence)localObject2)) {
-          paramString = "1";
-        }
-        int i = Integer.parseInt(paramString);
-        localBundle.putString(DownloadConstants.b, localJSONObject.optString("appid", ""));
-        localBundle.putString(DownloadConstants.jdField_c_of_type_JavaLangString, localJSONObject.optString("myAppid", ""));
-        localBundle.putString(DownloadConstants.jdField_d_of_type_JavaLangString, localJSONObject.optString("apkId"));
-        localBundle.putInt(DownloadConstants.e, i);
-        localBundle.putString(DownloadConstants.f, localJSONObject.optString("appPackageName"));
-        localBundle.putString(DownloadConstants.i, localJSONObject.optString("via"));
-        localBundle.putString(DownloadConstants.l, localJSONObject.optString("appName"));
-        localBundle.putString(DownloadConstants.A, localJSONObject.optString("channelId"));
-        localBundle.putString(DownloadConstants.C, localJSONObject.optString("channel"));
-        localBundle.putString(DownloadConstants.v, localJSONObject.optString("uin"));
-        this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = a(localBundle);
-        this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.actionFlag = "2";
-        if (b())
-        {
-          a(paramActivity, paramOnClickListener);
-          return;
-        }
-        if (!TextUtils.isEmpty((CharSequence)localObject1))
-        {
-          paramString = (String)localObject1;
-          boolean bool = ControlPolicyUtil.a();
-          localObject1 = new MyAppApi.16(this, localBundle, bool, paramActivity, str2, paramOnClickListener, str1);
-          paramOnClickListener = new MyAppApi.ClickListenerProxy(this, paramOnClickListener, str2, str1);
-          localObject2 = new MyAppApi.BackListener(this, str2, str1);
-          localBundle.putString(DownloadConstants.p, paramString);
-          a(paramActivity, 1, 1, "0", (DialogInterface.OnClickListener)localObject1, paramOnClickListener, (DialogInterface.OnCancelListener)localObject2, "biz_src_yyb", bool, localBundle);
-          return;
-        }
-      }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      paramString = str3 + HardCodeUtil.a(2131707059);
-    }
-  }
-  
-  public boolean b()
-  {
-    boolean bool = true;
     try
     {
-      int i = a().checkQQDownloaderInstalled();
-      if ((i == 2) || (i == 1)) {
-        bool = false;
+      JSONObject localJSONObject = new JSONObject(paramString);
+      String str1 = localJSONObject.optString("appid", "");
+      localJSONObject.optString("myAppid", "");
+      localJSONObject.optString("apkId", "");
+      Object localObject2 = localJSONObject.optString("versionCode", "");
+      String str2 = localJSONObject.optString("via", "");
+      localJSONObject.optString("appPackageName", "");
+      String str3 = localJSONObject.optString("appName", HardCodeUtil.a(2131707084));
+      localJSONObject.optString("channelId", "");
+      Object localObject1 = localJSONObject.optString("appAuthorizedStr", "");
+      Bundle localBundle = new Bundle();
+      paramString = (String)localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        paramString = "1";
       }
-      return bool;
+      int i = Integer.parseInt(paramString);
+      localBundle.putString(DownloadConstants.b, localJSONObject.optString("appid", ""));
+      localBundle.putString(DownloadConstants.jdField_c_of_type_JavaLangString, localJSONObject.optString("myAppid", ""));
+      localBundle.putString(DownloadConstants.jdField_d_of_type_JavaLangString, localJSONObject.optString("apkId"));
+      localBundle.putInt(DownloadConstants.e, i);
+      localBundle.putString(DownloadConstants.f, localJSONObject.optString("appPackageName"));
+      localBundle.putString(DownloadConstants.i, localJSONObject.optString("via"));
+      localBundle.putString(DownloadConstants.l, localJSONObject.optString("appName"));
+      localBundle.putString(DownloadConstants.B, localJSONObject.optString("channelId"));
+      localBundle.putString(DownloadConstants.D, localJSONObject.optString("channel"));
+      localBundle.putString(DownloadConstants.w, localJSONObject.optString("uin"));
+      this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = a(localBundle);
+      this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct.actionFlag = "2";
+      if (b())
+      {
+        a(paramActivity, paramOnClickListener);
+        return;
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        paramString = (String)localObject1;
+      }
+      else
+      {
+        paramString = new StringBuilder();
+        paramString.append(str3);
+        paramString.append(HardCodeUtil.a(2131707081));
+        paramString = paramString.toString();
+      }
+      boolean bool = ControlPolicyUtil.a();
+      localObject1 = new MyAppApi.18(this, localBundle, bool, paramActivity, str2, paramOnClickListener, str1);
+      paramOnClickListener = new MyAppApi.ClickListenerProxy(this, paramOnClickListener, str2, str1);
+      localObject2 = new MyAppApi.BackListener(this, str2, str1);
+      localBundle.putString(DownloadConstants.p, paramString);
+      a(paramActivity, 1, 1, "0", (DialogInterface.OnClickListener)localObject1, paramOnClickListener, (DialogInterface.OnCancelListener)localObject2, "biz_src_yyb", bool, localBundle);
+      return;
     }
-    catch (Exception localException)
+    catch (JSONException paramString)
     {
-      LogUtility.c("MyAppApi", "hasValidQQDownloader>>>", localException);
+      paramString.printStackTrace();
     }
-    return false;
   }
   
   public boolean b(Context paramContext, Bundle paramBundle)
@@ -1392,42 +1524,28 @@ public class MyAppApi
     return (b()) && (ControlPolicyUtil.e()) && (ControlPolicyUtil.h());
   }
   
-  protected void d()
-  {
-    IntentFilter localIntentFilter = new IntentFilter();
-    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
-    MyAppApi.2 local2 = new MyAppApi.2(this);
-    CommonDataAdapter.a().a().registerReceiver(local2, localIntentFilter);
-  }
-  
   protected void d(Activity paramActivity)
   {
     if ((this.e) && (this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct != null))
     {
-      if ((!a()) && (a().b()))
+      if (!a())
       {
-        if (this.jdField_a_of_type_Long != -1L) {
-          a().removeDownloadTask(this.jdField_a_of_type_Long);
+        a();
+        if (b())
+        {
+          if (this.jdField_a_of_type_Long != -1L) {
+            a().removeDownloadTask(this.jdField_a_of_type_Long);
+          }
+          a(paramActivity, null);
         }
-        a(paramActivity, null);
       }
       this.e = false;
-      e();
+      g();
       return;
     }
     this.e = false;
     this.jdField_a_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
-    e();
-  }
-  
-  protected void e()
-  {
-    LogUtility.c("MyAppApi", "clearInstallParam");
-    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_b_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
+    g();
   }
   
   public boolean e()
@@ -1435,9 +1553,12 @@ public class MyAppApi
     return a() > 2;
   }
   
-  public void f()
+  protected void f()
   {
-    this.jdField_d_of_type_Long = 0L;
+    IntentFilter localIntentFilter = new IntentFilter();
+    localIntentFilter.addAction("mqq.intent.action.ACCOUNT_EXPIRED");
+    MyAppApi.4 local4 = new MyAppApi.4(this);
+    CommonDataAdapter.a().a().registerReceiver(local4, localIntentFilter);
   }
   
   public boolean f()
@@ -1447,37 +1568,50 @@ public class MyAppApi
   
   protected void g()
   {
-    a().registerListener(this.jdField_a_of_type_ComTencentTmassistantsdkITMAssistantCallBackListener);
+    LogUtility.c("MyAppApi", "clearInstallParam");
+    this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams = null;
+    this.jdField_a_of_type_Boolean = false;
+    this.jdField_b_of_type_Boolean = false;
+    this.jdField_b_of_type_ComTencentTmassistantsdkTMAssistantCallYYBParamStruct = null;
   }
   
   public boolean g()
   {
-    boolean bool2 = false;
     Object localObject = BaseActivity.sTopActivity.getPackageManager();
-    boolean bool1 = bool2;
-    if (localObject != null) {}
-    try
-    {
-      localObject = ((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0);
-      bool1 = bool2;
-      if (localObject != null)
+    boolean bool = false;
+    if (localObject != null) {
+      try
       {
-        int i = ((PackageInfo)localObject).versionCode;
-        bool1 = bool2;
-        if (i >= 7090000) {
-          bool1 = true;
+        localObject = ((PackageManager)localObject).getPackageInfo("com.tencent.android.qqdownloader", 0);
+        if (localObject != null)
+        {
+          int i = ((PackageInfo)localObject).versionCode;
+          if (i >= 7090000) {
+            bool = true;
+          }
+          return bool;
         }
       }
-      return bool1;
-    }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException)
-    {
-      localNameNotFoundException.printStackTrace();
+      catch (PackageManager.NameNotFoundException localNameNotFoundException)
+      {
+        localNameNotFoundException.printStackTrace();
+      }
     }
     return false;
   }
   
   public void h()
+  {
+    this.jdField_d_of_type_Long = 0L;
+  }
+  
+  protected void i()
+  {
+    a().registerListener(this.jdField_a_of_type_ComTencentTmassistantsdkITMAssistantCallBackListener);
+  }
+  
+  public void j()
   {
     try
     {
@@ -1486,23 +1620,19 @@ public class MyAppApi
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        try
-        {
-          jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi = null;
-          return;
-        }
-        finally {}
-        localException = localException;
-        LogUtility.a("MyAppApi", "onDestroy>>>", localException);
-      }
+      LogUtility.a("MyAppApi", "onDestroy>>>", localException);
     }
+    try
+    {
+      jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi = null;
+      return;
+    }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi
  * JD-Core Version:    0.7.0.1
  */

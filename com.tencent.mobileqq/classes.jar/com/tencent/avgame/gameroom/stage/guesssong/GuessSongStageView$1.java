@@ -11,19 +11,25 @@ class GuessSongStageView$1
   
   public void a(LottieDrawable paramLottieDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("GuessSongStageView", 2, "onLoad lottieDrawable = " + paramLottieDrawable);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onLoad lottieDrawable = ");
+      ((StringBuilder)localObject).append(paramLottieDrawable);
+      QLog.d("GuessSongStageView", 2, ((StringBuilder)localObject).toString());
     }
     if (paramLottieDrawable != null)
     {
-      this.a.a = paramLottieDrawable;
-      this.a.d();
+      localObject = this.a;
+      ((GuessSongStageView)localObject).a = paramLottieDrawable;
+      ((GuessSongStageView)localObject).d();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.stage.guesssong.GuessSongStageView.1
  * JD-Core Version:    0.7.0.1
  */

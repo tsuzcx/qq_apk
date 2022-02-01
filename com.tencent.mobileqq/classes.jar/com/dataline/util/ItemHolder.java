@@ -121,23 +121,25 @@ public class ItemHolder
   {
     try
     {
-      localObject = super.clone();
+      Object localObject = super.clone();
       return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      do
+      if (QLog.isDevelopLevel())
       {
-        Object localObject = this;
-      } while (!QLog.isDevelopLevel());
-      QLog.w("Dataline.ItemHolder", 4, "ItemHolder clone failed." + localCloneNotSupportedException.toString());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ItemHolder clone failed.");
+        localStringBuilder.append(localCloneNotSupportedException.toString());
+        QLog.w("Dataline.ItemHolder", 4, localStringBuilder.toString());
+      }
     }
     return this;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.ItemHolder
  * JD-Core Version:    0.7.0.1
  */

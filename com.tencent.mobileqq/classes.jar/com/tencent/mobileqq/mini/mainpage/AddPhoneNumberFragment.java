@@ -6,7 +6,6 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +14,7 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
 import com.tencent.widget.Switch;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -47,7 +47,12 @@ public class AddPhoneNumberFragment
     this.mSendSmsCodeBtn.setClickable(false);
     this.mSendSmsCodeBtn.setTextColor(Color.parseColor("#B0B3BF"));
     mSecond = paramInt;
-    this.mSendSmsCodeBtn.setText("有效期(" + mSecond + ")");
+    Button localButton = this.mSendSmsCodeBtn;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("有效期(");
+    localStringBuilder.append(mSecond);
+    localStringBuilder.append(")");
+    localButton.setText(localStringBuilder.toString());
     this.mHandler.postDelayed(this.runnableCountdown, 1000L);
   }
   
@@ -58,11 +63,11 @@ public class AddPhoneNumberFragment
   
   public boolean onBackEvent()
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if ((localFragmentActivity != null) && (!localFragmentActivity.isFinishing()))
+    BaseActivity localBaseActivity = getBaseActivity();
+    if ((localBaseActivity != null) && (!localBaseActivity.isFinishing()))
     {
-      localFragmentActivity.setResult(0);
-      localFragmentActivity.finish();
+      localBaseActivity.setResult(0);
+      localBaseActivity.finish();
     }
     return super.onBackEvent();
   }
@@ -79,18 +84,18 @@ public class AddPhoneNumberFragment
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    paramLayoutInflater = LayoutInflater.from(getActivity()).inflate(2131559494, null);
+    paramLayoutInflater = LayoutInflater.from(getBaseActivity()).inflate(2131559368, null);
     if (Build.VERSION.SDK_INT >= 23)
     {
-      getActivity().getWindow().clearFlags(67108864);
-      getActivity().getWindow().addFlags(-2147483648);
-      getActivity().getWindow().setStatusBarColor(-1);
-      ImmersiveUtils.setStatusTextColor(true, getActivity().getWindow());
+      getBaseActivity().getWindow().clearFlags(67108864);
+      getBaseActivity().getWindow().addFlags(-2147483648);
+      getBaseActivity().getWindow().setStatusBarColor(-1);
+      ImmersiveUtils.setStatusTextColor(true, getBaseActivity().getWindow());
     }
     if (ImmersiveUtils.isSupporImmersive() == 1)
     {
       paramLayoutInflater.setFitsSystemWindows(true);
-      paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getActivity()), 0, 0);
+      paramLayoutInflater.setPadding(0, ImmersiveUtils.getStatusBarHeight(getBaseActivity()), 0, 0);
     }
     return paramLayoutInflater;
   }
@@ -98,19 +103,19 @@ public class AddPhoneNumberFragment
   public void onViewCreated(View paramView, Bundle paramBundle)
   {
     super.onViewCreated(paramView, paramBundle);
-    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371548));
-    this.mSendSmsCodeBtn = ((Button)paramView.findViewById(2131371429));
+    this.mLeftBtnView = ((ImageView)paramView.findViewById(2131371168));
+    this.mSendSmsCodeBtn = ((Button)paramView.findViewById(2131371049));
     this.mSendSmsCodeBtn.setText("获取验证码");
     this.mSendSmsCodeBtn.setTextColor(Color.parseColor("#B0B3BF"));
     this.mSendSmsCodeBtn.setEnabled(false);
     this.mSendSmsCodeBtn.setClickable(false);
-    this.mPhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131371428));
-    this.mPhoneNumberEditText = ((EditText)paramView.findViewById(2131371431));
-    this.mSmsCodeLayout = ((RelativeLayout)paramView.findViewById(2131371439));
-    this.mSmsCodeEditText = ((EditText)paramView.findViewById(2131371440));
-    this.mSaveSwitch = ((Switch)paramView.findViewById(2131371437));
+    this.mPhoneNumberLayout = ((RelativeLayout)paramView.findViewById(2131371048));
+    this.mPhoneNumberEditText = ((EditText)paramView.findViewById(2131371051));
+    this.mSmsCodeLayout = ((RelativeLayout)paramView.findViewById(2131371059));
+    this.mSmsCodeEditText = ((EditText)paramView.findViewById(2131371060));
+    this.mSaveSwitch = ((Switch)paramView.findViewById(2131371057));
     this.mSaveSwitch.setChecked(false);
-    this.mCommitBtn = ((Button)paramView.findViewById(2131371430));
+    this.mCommitBtn = ((Button)paramView.findViewById(2131371050));
     this.mCommitBtn.setEnabled(false);
     this.mCommitBtn.setClickable(false);
     this.mCommitBtn.setTextColor(Color.parseColor("#3303081A"));
@@ -126,7 +131,7 @@ public class AddPhoneNumberFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.AddPhoneNumberFragment
  * JD-Core Version:    0.7.0.1
  */

@@ -21,8 +21,9 @@ class h$a
   public void onAvailable(Network paramNetwork)
   {
     h.a(this.a, false);
-    this.a.b = paramNetwork;
-    h.d(this.a).removeMessages(1);
+    h localh = this.a;
+    localh.b = paramNetwork;
+    h.d(localh).removeMessages(1);
     paramNetwork = h.d(this.a).obtainMessage(2);
     h.d(this.a).sendMessageAtFrontOfQueue(paramNetwork);
   }
@@ -37,7 +38,7 @@ class h$a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.h.a
  * JD-Core Version:    0.7.0.1
  */

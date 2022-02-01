@@ -14,8 +14,8 @@ public class TaskMonitorManager
   public static final String SCENE_TAG_HIDE = "hide";
   public static final String SCENE_TAG_SHOW = "show";
   public static final String TAG = "TaskMonitorManager";
-  public static String TASK_PERFM_SWITCH_PAGE = HardCodeUtil.a(2131714608);
-  protected static TaskMonitorManager mInstance = null;
+  public static String TASK_PERFM_SWITCH_PAGE = HardCodeUtil.a(2131714528);
+  protected static TaskMonitorManager mInstance;
   protected boolean isCalcDeviceUsageOk = true;
   protected volatile long mAppCurUsage = 0L;
   protected volatile long mAppLastUsage = 0L;
@@ -35,55 +35,49 @@ public class TaskMonitorManager
   
   public static TaskMonitorManager g()
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new TaskMonitorManager();
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new TaskMonitorManager();
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
   }
   
   protected ThreadMsgInfo fillEndThreadInfo(ThreadMsgInfo paramThreadMsgInfo)
   {
-    long l2 = 0L;
-    long l1;
     if (paramThreadMsgInfo != null)
     {
       paramThreadMsgInfo.realTimeEnd = System.currentTimeMillis();
       paramThreadMsgInfo.threadTimeEnd = SystemClock.currentThreadTimeMillis();
-      l1 = paramThreadMsgInfo.realTimeEnd - paramThreadMsgInfo.realTimeStart;
-      if (l1 <= 0L) {
-        break label73;
+      long l = paramThreadMsgInfo.realTimeEnd - paramThreadMsgInfo.realTimeStart;
+      if (l <= 0L) {
+        l = 0L;
       }
-    }
-    for (;;)
-    {
-      paramThreadMsgInfo.realTimeCost = l1;
-      long l3 = paramThreadMsgInfo.threadTimeEnd - paramThreadMsgInfo.threadTimeStart;
-      l1 = l2;
-      if (l3 > 0L) {
-        l1 = l3;
+      paramThreadMsgInfo.realTimeCost = l;
+      l = paramThreadMsgInfo.threadTimeEnd - paramThreadMsgInfo.threadTimeStart;
+      if (l <= 0L) {
+        l = 0L;
       }
-      paramThreadMsgInfo.threadTimeCost = l1;
-      return paramThreadMsgInfo;
-      label73:
-      l1 = 0L;
+      paramThreadMsgInfo.threadTimeCost = l;
     }
+    return paramThreadMsgInfo;
   }
   
   protected String genKey(String paramString, Runnable paramRunnable)
   {
+    String str = paramString;
     if (TextUtils.isEmpty(paramString))
     {
       if (paramRunnable == null) {
         return "null";
       }
-      return paramRunnable.toString();
+      str = paramRunnable.toString();
     }
-    return paramString;
+    return str;
   }
   
   protected ThreadMsgInfo genStartThreadInfo(String paramString, Thread paramThread)
@@ -99,34 +93,45 @@ public class TaskMonitorManager
     try
     {
       localThreadMsgInfo.currentThreadStack = paramThread.getStackTrace();
-      localThreadMsgInfo.realTimeStart = System.currentTimeMillis();
-      localThreadMsgInfo.threadTimeStart = SystemClock.currentThreadTimeMillis();
-      return localThreadMsgInfo;
     }
     catch (Exception paramString)
     {
-      for (;;)
-      {
-        localThreadMsgInfo.currentThreadStack = null;
-      }
+      label57:
+      break label57;
     }
+    localThreadMsgInfo.currentThreadStack = null;
+    localThreadMsgInfo.realTimeStart = System.currentTimeMillis();
+    localThreadMsgInfo.threadTimeStart = SystemClock.currentThreadTimeMillis();
+    return localThreadMsgInfo;
   }
   
   public String getCpuUsageInfo()
   {
     long l1 = this.mAppCurUsage;
     long l2 = this.mAppLastUsage;
-    return "CPU已使用: " + (l1 - l2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CPU已使用: ");
+    localStringBuilder.append(l1 - l2);
+    return localStringBuilder.toString();
   }
   
   public String getCpuUsageRate()
   {
-    if (this.sTotalCpuUsage > 0) {}
-    for (String str = "CPU使用率: " + this.sTotalCpuUsage + "%";; str = "CPU使用率: -")
+    Object localObject;
+    if (this.sTotalCpuUsage > 0)
     {
-      updateCpuInfoSync();
-      return str;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("CPU使用率: ");
+      ((StringBuilder)localObject).append(this.sTotalCpuUsage);
+      ((StringBuilder)localObject).append("%");
+      localObject = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      localObject = "CPU使用率: -";
+    }
+    updateCpuInfoSync();
+    return localObject;
   }
   
   public double getCurrentFps()
@@ -146,27 +151,30 @@ public class TaskMonitorManager
   
   public long getMemeryUsage()
   {
-    int j = 0;
     long l1 = Runtime.getRuntime().maxMemory();
     long l2 = Runtime.getRuntime().totalMemory() - Runtime.getRuntime().freeMemory();
-    int i = j;
-    if (l1 > 0L)
-    {
-      i = j;
-      if (l2 > 0L) {
-        i = (int)((float)l2 / (float)l1 * 100.0F);
-      }
+    int i;
+    if ((l1 > 0L) && (l2 > 0L)) {
+      i = (int)((float)l2 / (float)l1 * 100.0F);
+    } else {
+      i = 0;
     }
     return i;
   }
   
   public ThreadMsgInfo getTaskLooperInfo(String paramString)
   {
-    if (!this.mEnable) {}
-    while ((TextUtils.isEmpty(paramString)) || (this.mMsgInfoList == null) || (!this.mMsgInfoList.containsKey(paramString))) {
+    if (!this.mEnable) {
       return null;
     }
-    return (ThreadMsgInfo)this.mMsgInfoList.get(paramString);
+    if (!TextUtils.isEmpty(paramString))
+    {
+      ConcurrentHashMap localConcurrentHashMap = this.mMsgInfoList;
+      if ((localConcurrentHashMap != null) && (localConcurrentHashMap.containsKey(paramString))) {
+        return (ThreadMsgInfo)this.mMsgInfoList.get(paramString);
+      }
+    }
+    return null;
   }
   
   public ThreadMsgInfo getTaskPerfmSwitchPageInfo()
@@ -196,33 +204,39 @@ public class TaskMonitorManager
   
   public void startLooperMonitor(String paramString1, Thread paramThread, String paramString2, String paramString3, String paramString4)
   {
-    if (!this.mEnable) {}
-    String str;
-    do
+    if (!this.mEnable) {
+      return;
+    }
+    String str = genKey(paramString1, paramThread);
+    if (!TextUtils.isEmpty(str))
     {
-      do
+      Object localObject1;
+      if (QLog.isColorLevel())
       {
-        return;
-        str = genKey(paramString1, paramThread);
-      } while (TextUtils.isEmpty(str));
-      if (QLog.isColorLevel()) {
-        QLog.d("TaskMonitorManager", 2, "startLooperMonitor, key is " + paramString1);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("startLooperMonitor, key is ");
+        ((StringBuilder)localObject1).append(paramString1);
+        QLog.d("TaskMonitorManager", 2, ((StringBuilder)localObject1).toString());
       }
-    } while (this.mMsgInfoList == null);
-    ThreadMsgInfo localThreadMsgInfo1 = null;
-    if (this.mMsgInfoList.containsKey(str)) {
-      localThreadMsgInfo1 = (ThreadMsgInfo)this.mMsgInfoList.get(paramString1);
+      Object localObject2 = this.mMsgInfoList;
+      if (localObject2 != null)
+      {
+        localObject1 = null;
+        if (((ConcurrentHashMap)localObject2).containsKey(str)) {
+          localObject1 = (ThreadMsgInfo)this.mMsgInfoList.get(paramString1);
+        }
+        localObject2 = localObject1;
+        if (localObject1 == null) {
+          localObject2 = genStartThreadInfo(paramString1, paramThread);
+        }
+        ((ThreadMsgInfo)localObject2).realTimeStart = System.currentTimeMillis();
+        ((ThreadMsgInfo)localObject2).threadTimeStart = SystemClock.currentThreadTimeMillis();
+        ((ThreadMsgInfo)localObject2).sceneName = paramString2;
+        ((ThreadMsgInfo)localObject2).sceneDes = paramString3;
+        ((ThreadMsgInfo)localObject2).sceneTag = paramString4;
+        this.mMsgInfoList.put(str, localObject2);
+      }
     }
-    ThreadMsgInfo localThreadMsgInfo2 = localThreadMsgInfo1;
-    if (localThreadMsgInfo1 == null) {
-      localThreadMsgInfo2 = genStartThreadInfo(paramString1, paramThread);
-    }
-    localThreadMsgInfo2.realTimeStart = System.currentTimeMillis();
-    localThreadMsgInfo2.threadTimeStart = SystemClock.currentThreadTimeMillis();
-    localThreadMsgInfo2.sceneName = paramString2;
-    localThreadMsgInfo2.sceneDes = paramString3;
-    localThreadMsgInfo2.sceneTag = paramString4;
-    this.mMsgInfoList.put(str, localThreadMsgInfo2);
   }
   
   public void stopLooperMonitor(String paramString)
@@ -232,17 +246,27 @@ public class TaskMonitorManager
   
   public void stopLooperMonitor(String paramString, Runnable paramRunnable)
   {
-    if (!this.mEnable) {}
-    do
-    {
+    if (!this.mEnable) {
       return;
-      paramRunnable = genKey(paramString, paramRunnable);
-      if (QLog.isColorLevel()) {
-        QLog.d("TaskMonitorManager", 2, "stopLooperMonitor, key is " + paramRunnable);
+    }
+    paramRunnable = genKey(paramString, paramRunnable);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("stopLooperMonitor, key is ");
+      ((StringBuilder)localObject).append(paramRunnable);
+      QLog.d("TaskMonitorManager", 2, ((StringBuilder)localObject).toString());
+    }
+    if (!TextUtils.isEmpty(paramRunnable))
+    {
+      localObject = this.mMsgInfoList;
+      if ((localObject != null) && (((ConcurrentHashMap)localObject).containsKey(paramRunnable)))
+      {
+        paramRunnable = fillEndThreadInfo((ThreadMsgInfo)this.mMsgInfoList.get(paramRunnable));
+        this.mMsgInfoList.put(paramString, paramRunnable);
       }
-    } while ((TextUtils.isEmpty(paramRunnable)) || (this.mMsgInfoList == null) || (!this.mMsgInfoList.containsKey(paramRunnable)));
-    paramRunnable = fillEndThreadInfo((ThreadMsgInfo)this.mMsgInfoList.get(paramRunnable));
-    this.mMsgInfoList.put(paramString, paramRunnable);
+    }
   }
   
   public void switchPerfmPage(String paramString, boolean paramBoolean)
@@ -250,43 +274,40 @@ public class TaskMonitorManager
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    ThreadMsgInfo localThreadMsgInfo = getTaskPerfmSwitchPageInfo();
+    Object localObject = getTaskPerfmSwitchPageInfo();
     String str;
     if (QLog.isColorLevel())
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("switchPerfmPage, page url is ").append(paramString).append(", ");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("switchPerfmPage, page url is ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", ");
+      if (paramBoolean) {
+        str = "show";
+      } else {
+        str = "hide";
+      }
+      localStringBuilder.append(str);
+      QLog.d("TaskMonitorManager", 2, localStringBuilder.toString());
+    }
+    if (paramBoolean) {
+      str = "show";
+    } else {
+      str = "hide";
+    }
+    if (localObject != null)
+    {
       if (paramBoolean)
       {
-        str = "show";
-        QLog.d("TaskMonitorManager", 2, str);
-      }
-    }
-    else
-    {
-      if (!paramBoolean) {
-        break label98;
-      }
-      str = "show";
-    }
-    for (;;)
-    {
-      if (localThreadMsgInfo != null)
-      {
-        if (paramBoolean)
-        {
-          stopLooperMonitor(TASK_PERFM_SWITCH_PAGE, null);
-          return;
-          str = "hide";
-          break;
-          label98:
-          str = "hide";
-          continue;
-        }
-        startLooperMonitor(TASK_PERFM_SWITCH_PAGE, null, TASK_PERFM_SWITCH_PAGE, paramString, str);
+        stopLooperMonitor(TASK_PERFM_SWITCH_PAGE, null);
         return;
       }
+      localObject = TASK_PERFM_SWITCH_PAGE;
+      startLooperMonitor((String)localObject, null, (String)localObject, paramString, str);
+      return;
     }
-    startLooperMonitor(TASK_PERFM_SWITCH_PAGE, null, TASK_PERFM_SWITCH_PAGE, paramString, str);
+    localObject = TASK_PERFM_SWITCH_PAGE;
+    startLooperMonitor((String)localObject, null, (String)localObject, paramString, str);
   }
   
   public void updateCpuInfoSync()
@@ -296,7 +317,7 @@ public class TaskMonitorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.monitor.service.TaskMonitorManager
  * JD-Core Version:    0.7.0.1
  */

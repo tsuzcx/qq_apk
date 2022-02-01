@@ -24,16 +24,17 @@ public class QuitState
   
   public boolean a(Message paramMessage)
   {
-    switch (paramMessage.what)
+    if (paramMessage.what == 1)
     {
+      VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.a;
+      if (localVoiceAssistantStateMachine != null)
+      {
+        localVoiceAssistantStateMachine.c(1);
+        this.a.a(paramMessage);
+        return true;
+      }
     }
-    do
-    {
-      return super.a(paramMessage);
-    } while (this.a == null);
-    this.a.c(1);
-    this.a.a(paramMessage);
-    return true;
+    return super.a(paramMessage);
   }
   
   public void b()
@@ -43,7 +44,7 @@ public class QuitState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.QuitState
  * JD-Core Version:    0.7.0.1
  */

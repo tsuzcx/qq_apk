@@ -4,7 +4,7 @@ import android.os.Handler;
 import android.view.View;
 import com.tencent.ad.tangram.Ad;
 import com.tencent.ad.tangram.log.AdLog;
-import com.tencent.ad.tangram.statistics.AdReporterForAnalysis;
+import com.tencent.ad.tangram.statistics.AdAnalysisHelperForUtil;
 import java.lang.ref.WeakReference;
 
 class AdExposureChecker$1
@@ -14,22 +14,28 @@ class AdExposureChecker$1
   
   public void run()
   {
-    if ((AdExposureChecker.access$100(this.this$0) == null) || (AdExposureChecker.access$100(this.this$0).get() == null) || (AdExposureChecker.access$200(this.this$0) == null) || (AdExposureChecker.access$300(this.this$0) == AdExposureChecker.c.CHECKING))
+    if ((AdExposureChecker.access$100(this.this$0) != null) && (AdExposureChecker.access$100(this.this$0).get() != null) && (AdExposureChecker.access$200(this.this$0) != null) && (AdExposureChecker.access$300(this.this$0) != AdExposureChecker.c.CHECKING))
     {
-      AdLog.e("AdExposureChecker", "startCheck: " + AdExposureChecker.access$300(this.this$0));
+      if (!AdExposureListHolder.getInstance().containsTraceIdForAnalysis(AdExposureChecker.access$200(this.this$0).getTraceId()))
+      {
+        AdAnalysisHelperForUtil.reportForExposureApiInvoked(((View)AdExposureChecker.access$100(this.this$0).get()).getContext(), AdExposureChecker.access$200(this.this$0));
+        AdExposureListHolder.getInstance().addTraceIdForAnalysis(AdExposureChecker.access$200(this.this$0).getTraceId());
+      }
+      localObject = this.this$0;
+      AdExposureChecker.access$400((AdExposureChecker)localObject, (View)AdExposureChecker.access$100((AdExposureChecker)localObject).get());
+      if (AdExposureChecker.access$500(this.this$0) == null)
+      {
+        localObject = this.this$0;
+        AdExposureChecker.access$502((AdExposureChecker)localObject, new AdExposureChecker.a((AdExposureChecker)localObject, null));
+      }
+      AdExposureChecker.access$302(this.this$0, AdExposureChecker.c.CHECKING);
+      AdExposureChecker.access$700(this.this$0).post(AdExposureChecker.access$500(this.this$0));
       return;
     }
-    if (!AdExposureListHolder.getInstance().containsTraceIdForAnalysis(AdExposureChecker.access$200(this.this$0).getTraceId()))
-    {
-      AdReporterForAnalysis.reportForExposureApiInvoked(((View)AdExposureChecker.access$100(this.this$0).get()).getContext(), AdExposureChecker.access$200(this.this$0));
-      AdExposureListHolder.getInstance().addTraceIdForAnalysis(AdExposureChecker.access$200(this.this$0).getTraceId());
-    }
-    AdExposureChecker.access$400(this.this$0, (View)AdExposureChecker.access$100(this.this$0).get());
-    if (AdExposureChecker.access$500(this.this$0) == null) {
-      AdExposureChecker.access$502(this.this$0, new AdExposureChecker.a(this.this$0, null));
-    }
-    AdExposureChecker.access$302(this.this$0, AdExposureChecker.c.CHECKING);
-    AdExposureChecker.access$700(this.this$0).post(AdExposureChecker.access$500(this.this$0));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("startCheck: ");
+    ((StringBuilder)localObject).append(AdExposureChecker.access$300(this.this$0));
+    AdLog.e("AdExposureChecker", ((StringBuilder)localObject).toString());
   }
 }
 

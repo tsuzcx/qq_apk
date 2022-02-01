@@ -32,82 +32,94 @@ public class PraiseInfo
   
   public static PraiseInfo a(int paramInt, String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return null;
-      try
-      {
-        paramString = a(paramString);
-        if (TextUtils.isEmpty(paramString)) {
-          continue;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("PraiseInfo", 2, "content:" + paramString);
-        }
-        paramString = new JSONObject(paramString);
-        PraiseInfo localPraiseInfo = new PraiseInfo(paramInt);
-        localPraiseInfo.jdField_a_of_type_JavaLangString = paramString.optString("name");
-        localPraiseInfo.jdField_b_of_type_JavaLangString = paramString.optString("text");
-        if (paramString.has("color"))
-        {
-          String str = paramString.optString("color").trim();
-          paramString = str;
-          if (str.startsWith("0x")) {
-            paramString = str.substring(2);
-          }
-        }
-        try
-        {
-          localPraiseInfo.jdField_b_of_type_Int = Color.parseColor("#" + paramString);
-          return localPraiseInfo;
-        }
-        catch (Exception paramString)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("PraiseInfo", 2, "color invalid");
-            }
-          }
-        }
+    }
+    try
+    {
+      paramString = a(paramString);
+      if (TextUtils.isEmpty(paramString)) {
         return null;
       }
-      catch (JSONException paramString)
+      if (QLog.isColorLevel())
       {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
-        return null;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("content:");
+        ((StringBuilder)localObject).append(paramString);
+        QLog.d("PraiseInfo", 2, ((StringBuilder)localObject).toString());
       }
-      catch (IOException paramString)
+      paramString = new JSONObject(paramString);
+      localPraiseInfo = new PraiseInfo(paramInt);
+      localPraiseInfo.jdField_a_of_type_JavaLangString = paramString.optString("name");
+      localPraiseInfo.jdField_b_of_type_JavaLangString = paramString.optString("text");
+      if (paramString.has("color"))
       {
-        QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
+        localObject = paramString.optString("color").trim();
+        paramString = (String)localObject;
+        if (((String)localObject).startsWith("0x")) {
+          paramString = ((String)localObject).substring(2);
+        }
       }
     }
+    catch (IOException paramString)
+    {
+      Object localObject;
+      PraiseInfo localPraiseInfo;
+      QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with IOException.", paramString);
+      return null;
+    }
+    catch (JSONException paramString)
+    {
+      label168:
+      QLog.e("PraiseInfo", 1, "parsePraiseInfo failed with JsonException.", paramString);
+      return null;
+    }
+    try
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("#");
+      ((StringBuilder)localObject).append(paramString);
+      localPraiseInfo.jdField_b_of_type_Int = Color.parseColor(((StringBuilder)localObject).toString());
+      return localPraiseInfo;
+    }
+    catch (Exception paramString)
+    {
+      break label168;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("PraiseInfo", 2, "color invalid");
+    }
+    return localPraiseInfo;
   }
   
   private static String a(String paramString)
   {
-    File localFile = new File(paramString);
-    if (!localFile.exists()) {
-      QLog.e("PraiseInfo", 1, paramString + " not exist!");
-    }
-    do
+    Object localObject = new File(paramString);
+    if (!((File)localObject).exists())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(" not exist!");
+      QLog.e("PraiseInfo", 1, ((StringBuilder)localObject).toString());
       return null;
-      try
-      {
-        paramString = FileUtils.b(localFile);
-        return paramString;
+    }
+    try
+    {
+      paramString = FileUtils.readFileToString((File)localObject);
+      return paramString;
+    }
+    catch (OutOfMemoryError paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("PraiseInfo", 2, paramString.getMessage());
       }
-      catch (OutOfMemoryError paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("PraiseInfo", 2, paramString.getMessage());
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.like.PraiseInfo
  * JD-Core Version:    0.7.0.1
  */

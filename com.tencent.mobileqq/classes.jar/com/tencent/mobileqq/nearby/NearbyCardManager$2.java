@@ -15,25 +15,35 @@ final class NearbyCardManager$2
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    paramDialogInterface = this.jdField_a_of_type_JavaLangString + "&from=" + this.jdField_a_of_type_Int;
-    Intent localIntent = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
-    localIntent.putExtra("url", paramDialogInterface);
-    this.jdField_a_of_type_AndroidAppActivity.startActivity(localIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.nearby.tribeAppDownload", 2, "open download page, url=" + paramDialogInterface);
+    paramDialogInterface = new StringBuilder();
+    paramDialogInterface.append(this.jdField_a_of_type_JavaLangString);
+    paramDialogInterface.append("&from=");
+    paramDialogInterface.append(this.jdField_a_of_type_Int);
+    paramDialogInterface = paramDialogInterface.toString();
+    Object localObject = new Intent(this.jdField_a_of_type_AndroidAppActivity, QQBrowserActivity.class);
+    ((Intent)localObject).putExtra("url", paramDialogInterface);
+    this.jdField_a_of_type_AndroidAppActivity.startActivity((Intent)localObject);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("open download page, url=");
+      ((StringBuilder)localObject).append(paramDialogInterface);
+      QLog.d("Q.nearby.tribeAppDownload", 2, ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_Int == 1) {
+    paramInt = this.jdField_a_of_type_Int;
+    if (paramInt == 1)
+    {
       ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "msg_down", 0, 0, "", "", "", "");
-    }
-    while (this.jdField_a_of_type_Int != 2) {
       return;
     }
-    ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
+    if (paramInt == 2) {
+      ReportController.b(null, "dc00899", "grp_lbs", "", "app_down", "pic_down", 0, 0, "", "", "", "");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.NearbyCardManager.2
  * JD-Core Version:    0.7.0.1
  */

@@ -53,7 +53,10 @@ public class LebaRedTouchSwitchProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("LebaRedTouchSwitchProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onReqFailed] failCode=");
+    localStringBuilder.append(paramInt);
+    QLog.d("LebaRedTouchSwitchProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -63,7 +66,7 @@ public class LebaRedTouchSwitchProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.config.LebaRedTouchSwitchProcessor
  * JD-Core Version:    0.7.0.1
  */

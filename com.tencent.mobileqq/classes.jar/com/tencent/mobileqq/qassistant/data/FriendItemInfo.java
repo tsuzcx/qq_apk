@@ -17,25 +17,31 @@ public class FriendItemInfo
   
   public static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "";
-    case 1: 
-      return "\"第一个\"";
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return "";
+            }
+            return "\"第五个\"";
+          }
+          return "\"第四个\"";
+        }
+        return "\"第三个\"";
+      }
       return "\"第二个\"";
-    case 3: 
-      return "\"第三个\"";
-    case 4: 
-      return "\"第四个\"";
     }
-    return "\"第五个\"";
+    return "\"第一个\"";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.data.FriendItemInfo
  * JD-Core Version:    0.7.0.1
  */

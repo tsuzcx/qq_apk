@@ -64,39 +64,41 @@ public class TAVLUTAutomaticEffect
   
   public CMTimeRange getLutTimeRange(float paramFloat)
   {
-    long l2;
-    long l1;
-    if ((this.startOffset > -1L) && (this.endOffset == -1L))
+    long l2 = this.startOffset;
+    long l1 = 0L;
+    if ((l2 > -1L) && (this.endOffset == -1L))
     {
       l2 = this.startOffset;
       if (this.duration > 0L) {
         l1 = this.duration;
+      } else {
+        l1 = (paramFloat - (float)this.startOffset);
       }
     }
-    for (;;)
+    else
     {
-      return new CMTimeRange(new CMTime(l2, 1000), new CMTime(l1, 1000));
-      l1 = (paramFloat - (float)this.startOffset);
-      continue;
       if ((this.startOffset == -1L) && (this.endOffset > -1L))
       {
         if (this.duration > 0L)
         {
           l2 = (paramFloat - (float)this.endOffset - (float)this.duration);
           l1 = this.duration;
+          break label160;
         }
-        else
-        {
-          l1 = (paramFloat - (float)this.endOffset);
-          l2 = 0L;
-        }
+        l2 = this.endOffset;
       }
       else
       {
-        l2 = this.startOffset;
-        l1 = (paramFloat - (float)this.startOffset - (float)this.endOffset);
+        l1 = this.startOffset;
+        paramFloat -= (float)this.startOffset;
+        l2 = this.endOffset;
       }
+      long l3 = (paramFloat - (float)l2);
+      l2 = l1;
+      l1 = l3;
     }
+    label160:
+    return new CMTimeRange(new CMTime(l2, 1000), new CMTime(l1, 1000));
   }
 }
 

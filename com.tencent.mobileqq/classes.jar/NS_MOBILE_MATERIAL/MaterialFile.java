@@ -45,14 +45,17 @@ public final class MaterialFile
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iFileId, 0);
-    if (this.strName != null) {
-      paramJceOutputStream.write(this.strName, 1);
+    String str = this.strName;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strUrl != null) {
-      paramJceOutputStream.write(this.strUrl, 2);
+    str = this.strUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strMd5 != null) {
-      paramJceOutputStream.write(this.strMd5, 3);
+    str = this.strMd5;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
     paramJceOutputStream.write(this.iSize, 4);
     paramJceOutputStream.write(this.iFileType, 5);
@@ -62,7 +65,7 @@ public final class MaterialFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MATERIAL.MaterialFile
  * JD-Core Version:    0.7.0.1
  */

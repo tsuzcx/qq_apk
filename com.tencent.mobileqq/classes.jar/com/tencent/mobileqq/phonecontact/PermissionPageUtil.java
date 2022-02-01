@@ -18,7 +18,7 @@ import java.util.List;
 
 public class PermissionPageUtil
 {
-  private static String b = null;
+  private static String b;
   private Context jdField_a_of_type_AndroidContentContext;
   private String jdField_a_of_type_JavaLangString;
   
@@ -34,136 +34,159 @@ public class PermissionPageUtil
   public static String a()
   {
     // Byte code:
-    //   0: getstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   3: ifnull +7 -> 10
-    //   6: getstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   0: getstatic 46	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   3: astore_0
+    //   4: aload_0
+    //   5: ifnull +5 -> 10
+    //   8: aload_0
     //   9: areturn
     //   10: aconst_null
-    //   11: astore_0
-    //   12: new 48	java/io/BufferedReader
-    //   15: dup
-    //   16: new 50	java/io/InputStreamReader
-    //   19: dup
-    //   20: invokestatic 56	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   23: new 58	java/lang/StringBuilder
-    //   26: dup
-    //   27: invokespecial 59	java/lang/StringBuilder:<init>	()V
-    //   30: ldc 61
-    //   32: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: ldc 67
-    //   37: invokevirtual 65	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokevirtual 74	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   46: invokevirtual 80	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   49: invokespecial 83	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   52: sipush 1024
-    //   55: invokespecial 86	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
-    //   58: astore_1
-    //   59: aload_1
-    //   60: astore_0
-    //   61: aload_1
-    //   62: invokevirtual 89	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   65: putstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   68: aload_1
-    //   69: astore_0
-    //   70: aload_1
-    //   71: invokevirtual 92	java/io/BufferedReader:close	()V
-    //   74: aload_1
-    //   75: ifnull +7 -> 82
-    //   78: aload_1
-    //   79: invokevirtual 92	java/io/BufferedReader:close	()V
-    //   82: getstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   85: ifnonnull +8 -> 93
-    //   88: ldc 94
-    //   90: putstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   93: ldc 96
-    //   95: iconst_1
-    //   96: anewarray 4	java/lang/Object
-    //   99: dup
-    //   100: iconst_0
-    //   101: getstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   104: aastore
-    //   105: invokestatic 40	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
-    //   108: invokestatic 43	com/tencent/mobileqq/phonecontact/PermissionPageUtil:a	(Ljava/lang/String;)V
-    //   111: getstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   114: areturn
-    //   115: astore_0
-    //   116: aload_0
-    //   117: invokevirtual 99	java/lang/Throwable:printStackTrace	()V
-    //   120: goto -38 -> 82
+    //   11: astore_2
+    //   12: aconst_null
+    //   13: astore_1
+    //   14: aload_1
+    //   15: astore_0
+    //   16: invokestatic 52	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   19: astore_3
+    //   20: aload_1
+    //   21: astore_0
+    //   22: new 54	java/lang/StringBuilder
+    //   25: dup
+    //   26: invokespecial 55	java/lang/StringBuilder:<init>	()V
+    //   29: astore 4
+    //   31: aload_1
+    //   32: astore_0
+    //   33: aload 4
+    //   35: ldc 57
+    //   37: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   40: pop
+    //   41: aload_1
+    //   42: astore_0
+    //   43: aload 4
+    //   45: ldc 63
+    //   47: invokevirtual 61	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   50: pop
+    //   51: aload_1
+    //   52: astore_0
+    //   53: new 65	java/io/BufferedReader
+    //   56: dup
+    //   57: new 67	java/io/InputStreamReader
+    //   60: dup
+    //   61: aload_3
+    //   62: aload 4
+    //   64: invokevirtual 70	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   67: invokevirtual 74	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   70: invokevirtual 80	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   73: invokespecial 83	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   76: sipush 1024
+    //   79: invokespecial 86	java/io/BufferedReader:<init>	(Ljava/io/Reader;I)V
+    //   82: astore_1
+    //   83: aload_1
+    //   84: invokevirtual 89	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   87: putstatic 46	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   90: aload_1
+    //   91: invokevirtual 92	java/io/BufferedReader:close	()V
+    //   94: aload_1
+    //   95: invokevirtual 92	java/io/BufferedReader:close	()V
+    //   98: goto +8 -> 106
+    //   101: astore_0
+    //   102: aload_0
+    //   103: invokevirtual 95	java/lang/Throwable:printStackTrace	()V
+    //   106: getstatic 46	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   109: ifnonnull +60 -> 169
+    //   112: goto +52 -> 164
+    //   115: astore_2
+    //   116: aload_1
+    //   117: astore_0
+    //   118: aload_2
+    //   119: astore_1
+    //   120: goto +71 -> 191
     //   123: astore_2
-    //   124: aconst_null
-    //   125: astore_1
-    //   126: aload_1
-    //   127: astore_0
-    //   128: aload_2
-    //   129: invokevirtual 99	java/lang/Throwable:printStackTrace	()V
-    //   132: aload_1
-    //   133: ifnull +7 -> 140
+    //   124: goto +12 -> 136
+    //   127: astore_1
+    //   128: goto +63 -> 191
+    //   131: astore_0
+    //   132: aload_2
+    //   133: astore_1
+    //   134: aload_0
+    //   135: astore_2
     //   136: aload_1
-    //   137: invokevirtual 92	java/io/BufferedReader:close	()V
-    //   140: getstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   143: ifnonnull -50 -> 93
-    //   146: ldc 94
-    //   148: putstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   151: goto -58 -> 93
-    //   154: astore_0
-    //   155: aload_0
-    //   156: invokevirtual 99	java/lang/Throwable:printStackTrace	()V
-    //   159: goto -19 -> 140
-    //   162: astore_2
-    //   163: aload_0
-    //   164: astore_1
-    //   165: aload_2
-    //   166: astore_0
-    //   167: aload_1
-    //   168: ifnull +7 -> 175
-    //   171: aload_1
-    //   172: invokevirtual 92	java/io/BufferedReader:close	()V
-    //   175: getstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   178: ifnonnull +8 -> 186
-    //   181: ldc 94
-    //   183: putstatic 12	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
-    //   186: aload_0
-    //   187: athrow
-    //   188: astore_1
-    //   189: aload_1
-    //   190: invokevirtual 99	java/lang/Throwable:printStackTrace	()V
-    //   193: goto -18 -> 175
-    //   196: astore_2
-    //   197: aload_0
-    //   198: astore_1
-    //   199: aload_2
-    //   200: astore_0
-    //   201: goto -34 -> 167
-    //   204: astore_2
-    //   205: goto -79 -> 126
+    //   137: astore_0
+    //   138: aload_2
+    //   139: invokevirtual 95	java/lang/Throwable:printStackTrace	()V
+    //   142: aload_1
+    //   143: ifnull +15 -> 158
+    //   146: aload_1
+    //   147: invokevirtual 92	java/io/BufferedReader:close	()V
+    //   150: goto +8 -> 158
+    //   153: astore_0
+    //   154: aload_0
+    //   155: invokevirtual 95	java/lang/Throwable:printStackTrace	()V
+    //   158: getstatic 46	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   161: ifnonnull +8 -> 169
+    //   164: ldc 97
+    //   166: putstatic 46	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   169: ldc 99
+    //   171: iconst_1
+    //   172: anewarray 4	java/lang/Object
+    //   175: dup
+    //   176: iconst_0
+    //   177: getstatic 46	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   180: aastore
+    //   181: invokestatic 38	java/lang/String:format	(Ljava/lang/String;[Ljava/lang/Object;)Ljava/lang/String;
+    //   184: invokestatic 41	com/tencent/mobileqq/phonecontact/PermissionPageUtil:a	(Ljava/lang/String;)V
+    //   187: getstatic 46	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   190: areturn
+    //   191: aload_0
+    //   192: ifnull +15 -> 207
+    //   195: aload_0
+    //   196: invokevirtual 92	java/io/BufferedReader:close	()V
+    //   199: goto +8 -> 207
+    //   202: astore_0
+    //   203: aload_0
+    //   204: invokevirtual 95	java/lang/Throwable:printStackTrace	()V
+    //   207: getstatic 46	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   210: ifnonnull +8 -> 218
+    //   213: ldc 97
+    //   215: putstatic 46	com/tencent/mobileqq/phonecontact/PermissionPageUtil:b	Ljava/lang/String;
+    //   218: aload_1
+    //   219: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   11	59	0	localObject1	Object
-    //   115	2	0	localThrowable1	Throwable
-    //   127	1	0	localObject2	Object
-    //   154	10	0	localThrowable2	Throwable
-    //   166	35	0	localObject3	Object
-    //   58	114	1	localObject4	Object
-    //   188	2	1	localThrowable3	Throwable
-    //   198	1	1	localObject5	Object
-    //   123	6	2	localThrowable4	Throwable
-    //   162	4	2	localObject6	Object
-    //   196	4	2	localObject7	Object
-    //   204	1	2	localThrowable5	Throwable
+    //   3	50	0	localObject1	Object
+    //   101	2	0	localThrowable1	Throwable
+    //   117	1	0	localObject2	Object
+    //   131	4	0	localThrowable2	Throwable
+    //   137	1	0	localObject3	Object
+    //   153	43	0	localThrowable3	Throwable
+    //   202	2	0	localThrowable4	Throwable
+    //   13	107	1	localObject4	Object
+    //   127	1	1	localObject5	Object
+    //   133	86	1	localThrowable5	Throwable
+    //   11	1	2	localObject6	Object
+    //   115	4	2	localObject7	Object
+    //   123	10	2	localThrowable6	Throwable
+    //   135	4	2	localThrowable7	Throwable
+    //   19	43	3	localRuntime	java.lang.Runtime
+    //   29	34	4	localStringBuilder	java.lang.StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   78	82	115	java/lang/Throwable
-    //   12	59	123	java/lang/Throwable
-    //   136	140	154	java/lang/Throwable
-    //   12	59	162	finally
-    //   171	175	188	java/lang/Throwable
-    //   61	68	196	finally
-    //   70	74	196	finally
-    //   128	132	196	finally
-    //   61	68	204	java/lang/Throwable
-    //   70	74	204	java/lang/Throwable
+    //   94	98	101	java/lang/Throwable
+    //   83	94	115	finally
+    //   83	94	123	java/lang/Throwable
+    //   16	20	127	finally
+    //   22	31	127	finally
+    //   33	41	127	finally
+    //   43	51	127	finally
+    //   53	83	127	finally
+    //   138	142	127	finally
+    //   16	20	131	java/lang/Throwable
+    //   22	31	131	java/lang/Throwable
+    //   33	41	131	java/lang/Throwable
+    //   43	51	131	java/lang/Throwable
+    //   53	83	131	java/lang/Throwable
+    //   146	150	153	java/lang/Throwable
+    //   195	199	202	java/lang/Throwable
   }
   
   public static void a(String paramString)
@@ -175,48 +198,44 @@ public class PermissionPageUtil
   
   private void b(String paramString)
   {
-    Object localObject;
+    String str = null;
     try
     {
       paramString = this.jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(paramString, 0);
-      if (paramString == null)
-      {
-        c();
-        return;
-      }
     }
     catch (PackageManager.NameNotFoundException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-        paramString = null;
-      }
-      localObject = new Intent("android.intent.action.MAIN", null);
-      ((Intent)localObject).addCategory("android.intent.category.LAUNCHER");
-      ((Intent)localObject).setPackage(paramString.packageName);
-      paramString = this.jdField_a_of_type_AndroidContentContext.getPackageManager().queryIntentActivities((Intent)localObject, 0);
-      if (paramString == null) {
-        break label158;
-      }
+      paramString.printStackTrace();
+      paramString = null;
     }
-    if (paramString.size() > 0) {}
-    label158:
-    for (paramString = (ResolveInfo)paramString.get(0);; paramString = null)
+    if (paramString == null)
     {
-      if (paramString != null)
-      {
-        localObject = paramString.activityInfo.packageName;
-        paramString = paramString.activityInfo.name;
-        Intent localIntent = new Intent("android.intent.action.MAIN");
-        localIntent.addCategory("android.intent.category.LAUNCHER");
-        localIntent.setComponent(new ComponentName((String)localObject, paramString));
-        a(localIntent);
-        return;
-      }
       c();
       return;
     }
+    Object localObject = new Intent("android.intent.action.MAIN", null);
+    ((Intent)localObject).addCategory("android.intent.category.LAUNCHER");
+    ((Intent)localObject).setPackage(paramString.packageName);
+    localObject = this.jdField_a_of_type_AndroidContentContext.getPackageManager().queryIntentActivities((Intent)localObject, 0);
+    paramString = str;
+    if (localObject != null)
+    {
+      paramString = str;
+      if (((List)localObject).size() > 0) {
+        paramString = (ResolveInfo)((List)localObject).get(0);
+      }
+    }
+    if (paramString != null)
+    {
+      str = paramString.activityInfo.packageName;
+      paramString = paramString.activityInfo.name;
+      localObject = new Intent("android.intent.action.MAIN");
+      ((Intent)localObject).addCategory("android.intent.category.LAUNCHER");
+      ((Intent)localObject).setComponent(new ComponentName(str, paramString));
+      a((Intent)localObject);
+      return;
+    }
+    c();
   }
   
   private void c()
@@ -224,12 +243,13 @@ public class PermissionPageUtil
     a("goIntentSetting");
     Intent localIntent = new Intent("android.settings.APPLICATION_DETAILS_SETTINGS");
     localIntent.setData(Uri.fromParts("package", this.jdField_a_of_type_AndroidContentContext.getPackageName(), null));
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    if ((localContext instanceof Activity))
     {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 99999);
+      ((Activity)localContext).startActivityForResult(localIntent, 9999);
       return;
     }
-    this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    localContext.startActivity(localIntent);
   }
   
   private void d()
@@ -243,17 +263,13 @@ public class PermissionPageUtil
   private void e()
   {
     Object localObject = a();
-    if (("V6".equals(localObject)) || ("V7".equals(localObject)))
+    if ((!"V6".equals(localObject)) && (!"V7".equals(localObject)))
     {
-      localObject = new Intent();
-      ((Intent)localObject).setAction("miui.intent.action.APP_PERM_EDITOR");
-      ((Intent)localObject).setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
-      ((Intent)localObject).putExtra("extra_pkgname", this.jdField_a_of_type_JavaLangString);
-      a((Intent)localObject);
-      return;
-    }
-    if (("V8".equals(localObject)) || ("V9".equals(localObject)))
-    {
+      if ((!"V8".equals(localObject)) && (!"V9".equals(localObject)))
+      {
+        c();
+        return;
+      }
       localObject = new Intent();
       ((Intent)localObject).setAction("miui.intent.action.APP_PERM_EDITOR");
       ((Intent)localObject).setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.PermissionsEditorActivity");
@@ -261,7 +277,11 @@ public class PermissionPageUtil
       a((Intent)localObject);
       return;
     }
-    c();
+    localObject = new Intent();
+    ((Intent)localObject).setAction("miui.intent.action.APP_PERM_EDITOR");
+    ((Intent)localObject).setClassName("com.miui.securitycenter", "com.miui.permcenter.permissions.AppPermissionsEditorActivity");
+    ((Intent)localObject).putExtra("extra_pkgname", this.jdField_a_of_type_JavaLangString);
+    a((Intent)localObject);
   }
   
   public void a()
@@ -297,7 +317,7 @@ public class PermissionPageUtil
     {
       if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity))
       {
-        ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(paramIntent, 99999);
+        ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(paramIntent, 9999);
         return;
       }
       this.jdField_a_of_type_AndroidContentContext.startActivity(paramIntent);
@@ -317,22 +337,20 @@ public class PermissionPageUtil
     localIntent.putExtra("hide_more_button", true);
     localIntent.putExtra("hide_operation_bar", true);
     localIntent.putExtra("url", "https://kf.qq.com/touch/faq/120307IVnEni150407eEv2IF.html?platform=14&_wv=0");
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) {
-      ((Activity)this.jdField_a_of_type_AndroidContentContext).startActivityForResult(localIntent, 99999);
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    if ((localContext instanceof Activity)) {
+      ((Activity)localContext).startActivityForResult(localIntent, 9999);
+    } else {
+      localContext.startActivity(localIntent);
     }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("PermissionPageUtil", 2, "openDefaultGuide");
-      }
-      return;
-      this.jdField_a_of_type_AndroidContentContext.startActivity(localIntent);
+    if (QLog.isColorLevel()) {
+      QLog.i("PermissionPageUtil", 2, "openDefaultGuide");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.phonecontact.PermissionPageUtil
  * JD-Core Version:    0.7.0.1
  */

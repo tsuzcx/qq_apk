@@ -16,22 +16,25 @@ class SystemUtils$UIVersionGetterBySystemProperty
   
   public String getUIVersion()
   {
-    String str2 = SystemUtils.access$000(this.mPropertyName);
-    String str1;
-    if (TextUtils.isEmpty(str2)) {
-      str1 = null;
+    String str = SystemUtils.access$000(this.mPropertyName);
+    if (TextUtils.isEmpty(str)) {
+      return null;
     }
-    do
+    Object localObject = str;
+    if (!TextUtils.isEmpty(this.mUIPrefix))
     {
-      return str1;
-      str1 = str2;
-    } while (TextUtils.isEmpty(this.mUIPrefix));
-    return this.mUIPrefix + " " + str2;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mUIPrefix);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(str);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.SystemUtils.UIVersionGetterBySystemProperty
  * JD-Core Version:    0.7.0.1
  */

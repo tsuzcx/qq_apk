@@ -33,12 +33,16 @@ public class Attr
     while (localIterator.hasNext()) {
       try
       {
-        String str = (String)localIterator.next();
-        put(str, paramJSONObject.get(str));
+        String str1 = (String)localIterator.next();
+        put(str1, paramJSONObject.get(str1));
       }
       catch (JSONException localJSONException)
       {
-        ViolaLogUtils.e(TAG, "JSONException e:" + localJSONException.getMessage());
+        String str2 = TAG;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("JSONException e:");
+        localStringBuilder.append(localJSONException.getMessage());
+        ViolaLogUtils.e(str2, localStringBuilder.toString());
       }
     }
   }
@@ -56,7 +60,10 @@ public class Attr
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("ATTR", "recycle:" + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recycle:");
+      localStringBuilder.append(localException);
+      ViolaLogUtils.e("ATTR", localStringBuilder.toString());
     }
     return true;
   }
@@ -133,7 +140,7 @@ public class Attr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.dom.Attr
  * JD-Core Version:    0.7.0.1
  */

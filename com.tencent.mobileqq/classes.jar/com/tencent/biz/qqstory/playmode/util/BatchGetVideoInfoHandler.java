@@ -15,58 +15,56 @@ public class BatchGetVideoInfoHandler
   
   public void a(int paramInt)
   {
-    boolean bool2 = true;
-    if (QLog.isColorLevel()) {
-      QLog.e("BatchGetVideoInfoHandler", 2, "handleFail, reqType:" + paramInt);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleFail, reqType:");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.e("BatchGetVideoInfoHandler", 2, ((StringBuilder)localObject).toString());
     }
-    BatchGetVideoInfoHandler.VideoInfoListEvent localVideoInfoListEvent;
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback != null)
     {
-      localVideoInfoListEvent = new BatchGetVideoInfoHandler.VideoInfoListEvent();
-      localVideoInfoListEvent.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label113;
+      localObject = new BatchGetVideoInfoHandler.VideoInfoListEvent();
+      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).jdField_a_of_type_Int = paramInt;
+      paramInt = this.jdField_a_of_type_Int;
+      boolean bool2 = false;
+      if (paramInt == 0) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      bool1 = true;
-      localVideoInfoListEvent.jdField_a_of_type_Boolean = bool1;
-      if (this.jdField_b_of_type_Int != this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
-        break label118;
+      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).jdField_a_of_type_Boolean = bool1;
+      boolean bool1 = bool2;
+      if (this.jdField_b_of_type_Int == this.jdField_a_of_type_JavaUtilArrayList.size() - 1) {
+        bool1 = true;
       }
-    }
-    label113:
-    label118:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      localVideoInfoListEvent.jdField_b_of_type_Boolean = bool1;
-      localVideoInfoListEvent.c = -100;
-      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback.a(localVideoInfoListEvent);
-      return;
-      bool1 = false;
-      break;
+      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).jdField_b_of_type_Boolean = bool1;
+      ((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject).c = -100;
+      this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback.a((BatchGetVideoInfoHandler.VideoInfoListEvent)localObject);
     }
   }
   
   public void a(int paramInt, ArrayList<StoryVideoItem> paramArrayList)
   {
-    boolean bool2 = true;
-    BatchGetVideoInfoHandler.VideoInfoListEvent localVideoInfoListEvent;
     if (this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback != null)
     {
-      localVideoInfoListEvent = new BatchGetVideoInfoHandler.VideoInfoListEvent();
+      BatchGetVideoInfoHandler.VideoInfoListEvent localVideoInfoListEvent = new BatchGetVideoInfoHandler.VideoInfoListEvent();
       localVideoInfoListEvent.jdField_a_of_type_Int = paramInt;
-      if (this.jdField_a_of_type_Int != 0) {
-        break label105;
+      int i = this.jdField_a_of_type_Int;
+      boolean bool2 = true;
+      boolean bool1;
+      if (i == 0) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      bool1 = true;
       localVideoInfoListEvent.jdField_a_of_type_Boolean = bool1;
-      if (this.jdField_b_of_type_Int != this.jdField_a_of_type_JavaUtilArrayList.size()) {
-        break label110;
+      if (this.jdField_b_of_type_Int == this.jdField_a_of_type_JavaUtilArrayList.size()) {
+        bool1 = bool2;
+      } else {
+        bool1 = false;
       }
-    }
-    label105:
-    label110:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
       localVideoInfoListEvent.jdField_b_of_type_Boolean = bool1;
       localVideoInfoListEvent.jdField_a_of_type_JavaUtilArrayList = paramArrayList;
       localVideoInfoListEvent.c = 0;
@@ -74,15 +72,12 @@ public class BatchGetVideoInfoHandler
         localVideoInfoListEvent.jdField_b_of_type_Int = (this.c - this.jdField_a_of_type_Int);
       }
       this.jdField_a_of_type_ComTencentBizQqstoryPlaymodeUtilBatchGetVideoInfoHandler$IBatchGetVideoInfoCallback.a(localVideoInfoListEvent);
-      return;
-      bool1 = false;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playmode.util.BatchGetVideoInfoHandler
  * JD-Core Version:    0.7.0.1
  */

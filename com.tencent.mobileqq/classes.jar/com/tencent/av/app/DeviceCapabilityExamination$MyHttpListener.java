@@ -12,47 +12,68 @@ class DeviceCapabilityExamination$MyHttpListener
 {
   public void onResp(NetResp paramNetResp)
   {
-    boolean bool = false;
-    String str1 = (String)paramNetResp.mReq.getUserData();
+    String str = (String)paramNetResp.mReq.getUserData();
+    boolean bool;
     if (paramNetResp.mResult == 0) {
       bool = true;
+    } else {
+      bool = false;
     }
+    Object localObject;
+    label228:
     try
     {
       if (DeviceCapabilityExamination.a != null)
       {
-        DeviceCapabilityExamination.a.a(str1, bool);
+        DeviceCapabilityExamination.a.a(str, bool);
         if (DeviceCapabilityExamination.a.a()) {
           DeviceCapabilityExamination.a = null;
         }
       }
       if (!bool)
       {
-        QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource fail, md5[" + str1 + "], resp.mResult[" + paramNetResp.mResult + "]");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("DownloadTestResource fail, md5[");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("], resp.mResult[");
+        ((StringBuilder)localObject).append(paramNetResp.mResult);
+        ((StringBuilder)localObject).append("]");
+        QLog.w("DeviceCapabilityExamination", 1, ((StringBuilder)localObject).toString());
         return;
       }
     }
     finally {}
     try
     {
-      String str2 = DeviceCapabilityExamination.b(str1);
-      FileUtils.a(paramNetResp.mReq.mOutPath, str2, false);
-      FileUtils.e(paramNetResp.mReq.mOutPath);
-      paramNetResp = new File(DeviceCapabilityExamination.a(str1));
-      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource, suc, md5[" + str1 + "], exists[" + paramNetResp.exists() + "]");
+      localObject = DeviceCapabilityExamination.b(str);
+      FileUtils.uncompressZip(paramNetResp.mReq.mOutPath, (String)localObject, false);
+      FileUtils.deleteFile(paramNetResp.mReq.mOutPath);
+      paramNetResp = new File(DeviceCapabilityExamination.a(str));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DownloadTestResource, suc, md5[");
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("], exists[");
+      ((StringBuilder)localObject).append(paramNetResp.exists());
+      ((StringBuilder)localObject).append("]");
+      QLog.w("DeviceCapabilityExamination", 1, ((StringBuilder)localObject).toString());
       return;
     }
     catch (Exception paramNetResp)
     {
-      QLog.w("DeviceCapabilityExamination", 1, "DownloadTestResource Exception, md5[" + str1 + "]");
+      break label228;
     }
+    paramNetResp = new StringBuilder();
+    paramNetResp.append("DownloadTestResource Exception, md5[");
+    paramNetResp.append(str);
+    paramNetResp.append("]");
+    QLog.w("DeviceCapabilityExamination", 1, paramNetResp.toString());
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.app.DeviceCapabilityExamination.MyHttpListener
  * JD-Core Version:    0.7.0.1
  */

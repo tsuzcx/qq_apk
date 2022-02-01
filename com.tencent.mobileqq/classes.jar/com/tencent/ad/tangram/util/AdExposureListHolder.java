@@ -45,18 +45,21 @@ public final class AdExposureListHolder
       }
       return;
     }
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   private void addDiskCheckedData(Context paramContext)
   {
-    if (paramContext == null) {}
-    LinkedList localLinkedList;
-    do
-    {
+    if (paramContext == null) {
       return;
-      localLinkedList = getExposuredTraceIdList();
-    } while ((localLinkedList == null) || (localLinkedList.size() <= 0));
-    AdThreadManager.INSTANCE.post(new AdExposureListHolder.2(this, paramContext), 5);
+    }
+    LinkedList localLinkedList = getExposuredTraceIdList();
+    if ((localLinkedList != null) && (localLinkedList.size() > 0)) {
+      AdThreadManager.INSTANCE.post(new AdExposureListHolder.2(this, paramContext), 5);
+    }
   }
   
   private LinkedList<String> getExposuredTraceIdList()
@@ -66,10 +69,16 @@ public final class AdExposureListHolder
   
   private File getFileByProcessName(Context paramContext, String paramString)
   {
-    if ((paramContext == null) || (TextUtils.isEmpty(paramString))) {
-      return null;
+    if ((paramContext != null) && (!TextUtils.isEmpty(paramString)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(getFileDir(paramContext).getAbsolutePath());
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("_ids");
+      return new File(localStringBuilder.toString());
     }
-    return new File(getFileDir(paramContext).getAbsolutePath() + File.separator + paramString + "_ids");
+    return null;
   }
   
   private File getFileDir(Context paramContext)
@@ -82,21 +91,28 @@ public final class AdExposureListHolder
   
   public static AdExposureListHolder getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new AdExposureListHolder();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new AdExposureListHolder();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void addTraceIdForAnalysis(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((this.traceIdListForAnalysis == null) || (this.traceIdListForAnalysis.contains(paramString))) {
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    LinkedList localLinkedList = this.traceIdListForAnalysis;
+    if (localLinkedList == null) {
+      return;
+    }
+    if (localLinkedList.contains(paramString)) {
       return;
     }
     if (this.traceIdListForAnalysis.size() >= 100)
@@ -110,11 +126,14 @@ public final class AdExposureListHolder
   
   public boolean containsTraceIdForAnalysis(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((this.traceIdListForAnalysis == null) || (!this.traceIdListForAnalysis.contains(paramString))) {
-      return false;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      LinkedList localLinkedList = this.traceIdListForAnalysis;
+      if ((localLinkedList != null) && (localLinkedList.contains(paramString))) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   public boolean inCheckedList(String paramString)
@@ -136,32 +155,38 @@ public final class AdExposureListHolder
           }
         }
       }
+      return false;
     }
-    return false;
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   public void init(Context paramContext)
   {
-    if (this.initialized) {}
-    do
-    {
+    if (this.initialized) {
       return;
-      try
-      {
-        if (this.initialized) {
-          return;
-        }
+    }
+    try
+    {
+      if (this.initialized) {
+        return;
       }
-      finally {}
       this.initialized = true;
-    } while (paramContext == null);
-    if (this.traceIdList == null) {
-      this.traceIdList = new LinkedList();
+      if (paramContext == null) {
+        return;
+      }
+      if (this.traceIdList == null) {
+        this.traceIdList = new LinkedList();
+      }
+      if (this.traceIdListForAnalysis == null) {
+        this.traceIdListForAnalysis = new LinkedList();
+      }
+      AdThreadManager.INSTANCE.post(new AdExposureListHolder.1(this, paramContext), 5);
+      return;
     }
-    if (this.traceIdListForAnalysis == null) {
-      this.traceIdListForAnalysis = new LinkedList();
-    }
-    AdThreadManager.INSTANCE.post(new AdExposureListHolder.1(this, paramContext), 5);
+    finally {}
   }
   
   public void putExternalReportData(Context paramContext, String paramString)
@@ -169,7 +194,10 @@ public final class AdExposureListHolder
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    AdLog.i("AdExposureListHolder", "putExternalReportData id :" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("putExternalReportData id :");
+    localStringBuilder.append(paramString);
+    AdLog.i("AdExposureListHolder", localStringBuilder.toString());
     addCheckedData(paramString);
     addDiskCheckedData(paramContext);
   }

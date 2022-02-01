@@ -5,6 +5,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetCatMatTreeReq
   extends JceStruct
@@ -44,24 +45,28 @@ public final class GetCatMatTreeReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.ETag != null) {
-      paramJceOutputStream.write(this.ETag, 0);
+    Object localObject = this.ETag;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.GroupId != null) {
-      paramJceOutputStream.write(this.GroupId, 1);
+    localObject = this.GroupId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.ServiceId != null) {
-      paramJceOutputStream.write(this.ServiceId, 2);
+    localObject = this.ServiceId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.SdkInfos != null) {
-      paramJceOutputStream.write(this.SdkInfos, 3);
+    localObject = this.SdkInfos;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.ReqType, 4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.SHADOW_BACKEND_INTERFACE.GetCatMatTreeReq
  * JD-Core Version:    0.7.0.1
  */

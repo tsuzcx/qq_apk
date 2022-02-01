@@ -13,29 +13,29 @@ class IceBreakHelper$1
   
   public void a(boolean paramBoolean, List<IStickerRecEmoticon> paramList, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("onGetIceBreakHotPic, success: ").append(paramBoolean).append(" hotPiceList size: ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onGetIceBreakHotPic, success: ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" hotPiceList size: ");
     int i;
-    if (paramList == null)
-    {
+    if (paramList == null) {
       i = 0;
-      QLog.i("IceBreak.HotPic", 1, i);
-      if (paramBoolean) {
-        break label62;
-      }
-    }
-    label62:
-    while (this.a.a == null)
-    {
-      return;
+    } else {
       i = paramList.size();
-      break;
     }
-    this.a.a.a(paramList, paramInt);
+    localStringBuilder.append(i);
+    QLog.i("IceBreak.HotPic", 1, localStringBuilder.toString());
+    if (!paramBoolean) {
+      return;
+    }
+    if (this.a.a != null) {
+      this.a.a.a(paramList, paramInt);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.IceBreakHelper.1
  * JD-Core Version:    0.7.0.1
  */

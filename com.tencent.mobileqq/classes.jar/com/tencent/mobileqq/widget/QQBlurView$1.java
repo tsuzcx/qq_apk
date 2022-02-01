@@ -9,8 +9,10 @@ class QQBlurView$1
   
   public boolean onPreDraw()
   {
-    if (!QQBlurView.a(this.a)) {}
-    while (!QQBlurView.a(this.a).a()) {
+    if (!QQBlurView.a(this.a)) {
+      return true;
+    }
+    if (!QQBlurView.a(this.a).a()) {
       return true;
     }
     return QQBlurView.a(this.a).b();
@@ -18,7 +20,7 @@ class QQBlurView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QQBlurView.1
  * JD-Core Version:    0.7.0.1
  */

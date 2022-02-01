@@ -12,25 +12,24 @@ class MsgBackupDateFragment$4
   
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, "checkedId = " + paramInt);
-    }
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkedId = ");
+      localStringBuilder.append(paramInt);
+      QLog.d("MsgBackup.BackupAndMigrateDateFragment", 2, localStringBuilder.toString());
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
-      return;
+    if (paramInt == 2131365185) {
       MsgBackupDateFragment.a(this.a, 1);
-      continue;
+    } else if (paramInt == 2131365186) {
       MsgBackupDateFragment.a(this.a, 2);
     }
+    EventCollector.getInstance().onCheckedChanged(paramRadioGroup, paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupDateFragment.4
  * JD-Core Version:    0.7.0.1
  */

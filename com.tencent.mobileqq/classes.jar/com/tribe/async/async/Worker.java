@@ -62,32 +62,29 @@ public class Worker<Progress, Result>
   
   protected void done()
   {
-    if (isCancelled()) {
+    if (isCancelled())
+    {
       notifyCanceled();
     }
-    for (;;)
+    else
     {
-      this.mJobContext.setCancelListener(null);
-      return;
       try
       {
         this.mResult = get();
-        notifyDone(this.mResult);
-      }
-      catch (InterruptedException localInterruptedException)
-      {
-        for (;;)
-        {
-          this.mException = localInterruptedException;
-          SLog.e("async.boss.Worker", "InterruptedException", localInterruptedException);
-        }
       }
       catch (ExecutionException localExecutionException)
       {
         this.mException = localExecutionException;
         throw new RuntimeException("ExecutionException", localExecutionException);
       }
+      catch (InterruptedException localInterruptedException)
+      {
+        this.mException = localInterruptedException;
+        SLog.e("async.boss.Worker", "InterruptedException", localInterruptedException);
+      }
+      notifyDone(this.mResult);
     }
+    this.mJobContext.setCancelListener(null);
   }
   
   @Nullable
@@ -129,12 +126,15 @@ public class Worker<Progress, Result>
   
   public String toString()
   {
-    return "Worker:" + this.mJob.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Worker:");
+    localStringBuilder.append(this.mJob.toString());
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.Worker
  * JD-Core Version:    0.7.0.1
  */

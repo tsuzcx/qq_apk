@@ -12,7 +12,13 @@ class RoomService$2
   
   public void onFail(int paramInt, String paramString)
   {
-    RoomService.access$100(this.this$0).getLogger().i("RoomService", "enterRoom--onFail failCode=" + paramInt + ";errMsg=" + paramString, new Object[0]);
+    LogInterface localLogInterface = RoomService.access$100(this.this$0).getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("enterRoom--onFail failCode=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(";errMsg=");
+    localStringBuilder.append(paramString);
+    localLogInterface.i("RoomService", localStringBuilder.toString(), new Object[0]);
     if (paramString.startsWith("wns_Error:"))
     {
       if (RoomService.access$300(this.this$0) < 1)
@@ -35,7 +41,7 @@ class RoomService$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.roomservice.RoomService.2
  * JD-Core Version:    0.7.0.1
  */

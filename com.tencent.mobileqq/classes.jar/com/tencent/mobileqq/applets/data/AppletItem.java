@@ -78,7 +78,19 @@ public class AppletItem
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("AppletItem:[").append("id = ").append(this.jdField_a_of_type_Long).append(", name = ").append(this.jdField_a_of_type_JavaLangString).append(" icon = ").append(this.jdField_b_of_type_JavaLangString).append(", type = ").append(this.jdField_a_of_type_Int).append("(1:开, 0:关) ").append(", value = ").append(this.jdField_b_of_type_Int).append("] ");
+    localStringBuilder.append("AppletItem:[");
+    localStringBuilder.append("id = ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", name = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(" icon = ");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append(", type = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("(1:开, 0:关) ");
+    localStringBuilder.append(", value = ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("] ");
     return localStringBuilder.toString();
   }
   
@@ -94,7 +106,7 @@ public class AppletItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.applets.data.AppletItem
  * JD-Core Version:    0.7.0.1
  */

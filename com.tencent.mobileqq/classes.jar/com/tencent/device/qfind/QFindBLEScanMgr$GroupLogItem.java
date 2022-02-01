@@ -16,26 +16,24 @@ class QFindBLEScanMgr$GroupLogItem
   public int hashCode()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (this.a == null)
-    {
-      str = "";
-      localStringBuilder = localStringBuilder.append(str);
-      if (this.b != null) {
-        break label54;
-      }
+    String str2 = this.a;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    label54:
-    for (String str = "";; str = this.b)
-    {
-      return str.hashCode();
-      str = this.a;
-      break;
+    localStringBuilder.append(str1);
+    str2 = this.b;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    localStringBuilder.append(str1);
+    return localStringBuilder.toString().hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.qfind.QFindBLEScanMgr.GroupLogItem
  * JD-Core Version:    0.7.0.1
  */

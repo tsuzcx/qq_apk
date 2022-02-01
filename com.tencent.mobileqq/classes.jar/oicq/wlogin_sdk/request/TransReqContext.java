@@ -84,12 +84,14 @@ public class TransReqContext
   
   public void setWtST(WloginSigInfo paramWloginSigInfo)
   {
-    if (true == paramWloginSigInfo.isWtSessionTicketExpired()) {}
-    while ((paramWloginSigInfo.wtSessionTicket == null) || (paramWloginSigInfo.wtSessionTicketKey == null)) {
+    if (true == paramWloginSigInfo.isWtSessionTicketExpired()) {
       return;
     }
-    this.wtSessionTicket = ((byte[])paramWloginSigInfo.wtSessionTicket.clone());
-    this.wtSessionTicketKey = ((byte[])paramWloginSigInfo.wtSessionTicketKey.clone());
+    if ((paramWloginSigInfo.wtSessionTicket != null) && (paramWloginSigInfo.wtSessionTicketKey != null))
+    {
+      this.wtSessionTicket = ((byte[])paramWloginSigInfo.wtSessionTicket.clone());
+      this.wtSessionTicketKey = ((byte[])paramWloginSigInfo.wtSessionTicketKey.clone());
+    }
   }
   
   public void set_body(byte[] paramArrayOfByte)
@@ -147,7 +149,7 @@ public class TransReqContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.TransReqContext
  * JD-Core Version:    0.7.0.1
  */

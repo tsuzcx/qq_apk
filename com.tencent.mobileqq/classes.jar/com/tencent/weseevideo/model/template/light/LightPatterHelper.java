@@ -47,10 +47,11 @@ public class LightPatterHelper
   
   public static void fillDate(HashMap<String, String> paramHashMap1, HashMap<String, String> paramHashMap2)
   {
-    if ((paramHashMap1 == null) || (paramHashMap1.isEmpty())) {}
-    for (;;)
+    if (paramHashMap1 != null)
     {
-      return;
+      if (paramHashMap1.isEmpty()) {
+        return;
+      }
       paramHashMap1 = paramHashMap1.keySet().iterator();
       while (paramHashMap1.hasNext())
       {
@@ -78,7 +79,12 @@ public class LightPatterHelper
   {
     try
     {
-      Logger.d("LightPatterHelper", "Date format: " + paramString1 + ", locale : " + paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Date format: ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", locale : ");
+      localStringBuilder.append(paramString2);
+      Logger.d("LightPatterHelper", localStringBuilder.toString());
       paramDate = new SimpleDateFormat(paramString1, LocaleUtils.getLocale(paramString2)).format(paramDate);
       return paramDate;
     }
@@ -114,15 +120,21 @@ public class LightPatterHelper
     String[] arrayOfString = paramString.split("\\.");
     if (arrayOfString.length < 2)
     {
-      Logger.e("LightPatterHelper", "fillDate >> 日期key格式不对. dateKey：" + paramString + ". spiltFormats:" + arrayOfString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fillDate >> 日期key格式不对. dateKey：");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(". spiltFormats:");
+      ((StringBuilder)localObject).append(arrayOfString);
+      Logger.e("LightPatterHelper", ((StringBuilder)localObject).toString());
       return null;
     }
-    String str = arrayOfString[1];
-    paramString = "";
+    Object localObject = arrayOfString[1];
     if (arrayOfString.length >= 3) {
       paramString = arrayOfString[2];
+    } else {
+      paramString = "";
     }
-    return format(getCurrentDate(), str, paramString);
+    return format(getCurrentDate(), (String)localObject, paramString);
   }
   
   public static String getWeekChinese(Date paramDate)
@@ -133,18 +145,18 @@ public class LightPatterHelper
     {
     default: 
       return "周六";
-    case 1: 
-      return "周日";
-    case 2: 
-      return "周一";
-    case 3: 
-      return "周二";
-    case 4: 
-      return "周三";
+    case 6: 
+      return "周五";
     case 5: 
       return "周四";
+    case 4: 
+      return "周三";
+    case 3: 
+      return "周二";
+    case 2: 
+      return "周一";
     }
-    return "周五";
+    return "周日";
   }
   
   private static String getYearInChinese(String paramString)
@@ -167,90 +179,101 @@ public class LightPatterHelper
   
   public static String numberToChinese(int paramInt)
   {
-    Object localObject1;
     if (paramInt == 0) {
-      localObject1 = "零";
+      return "零";
     }
+    Object localObject1 = "";
+    int k = 0;
+    int i = 0;
+    int j = paramInt;
+    paramInt = k;
     Object localObject2;
-    do
+    while (j > 0)
     {
-      return localObject1;
-      localObject1 = "";
-      int k = 0;
-      int i = 0;
-      int j = paramInt;
-      paramInt = k;
-      if (j > 0)
+      k = j % 10000;
+      localObject2 = localObject1;
+      if (paramInt != 0)
       {
-        k = j % 10000;
-        localObject2 = localObject1;
-        if (paramInt != 0) {
-          localObject2 = numbs[0] + (String)localObject1;
-        }
-        String str = sectionTrans(k);
-        localObject1 = str;
-        if (k != 0) {
-          localObject1 = str + weight_units[i];
-        }
-        localObject1 = (String)localObject1 + (String)localObject2;
-        Logger.d("LightPatterHelper", "");
-        if ((k < 1000) && (k > 0)) {}
-        for (paramInt = 1;; paramInt = 0)
-        {
-          j /= 10000;
-          i += 1;
-          break;
-        }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(numbs[0]);
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject2 = ((StringBuilder)localObject2).toString();
       }
-      if (((String)localObject1).length() != 2)
+      Object localObject3 = sectionTrans(k);
+      localObject1 = localObject3;
+      if (k != 0)
       {
-        localObject2 = localObject1;
-        if (((String)localObject1).length() != 3) {}
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)localObject3);
+        ((StringBuilder)localObject1).append(weight_units[i]);
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
-      else
-      {
-        localObject2 = localObject1;
-        if (((String)localObject1).contains("一十")) {
-          localObject2 = ((String)localObject1).substring(1, ((String)localObject1).length());
-        }
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append((String)localObject2);
+      localObject1 = ((StringBuilder)localObject3).toString();
+      Logger.d("LightPatterHelper", "");
+      if ((k < 1000) && (k > 0)) {
+        paramInt = 1;
+      } else {
+        paramInt = 0;
       }
-      localObject1 = localObject2;
-    } while (((String)localObject2).indexOf("一十") != 0);
-    return ((String)localObject2).replaceFirst("一十", "十");
+      j /= 10000;
+      i += 1;
+    }
+    if (((String)localObject1).length() != 2)
+    {
+      localObject2 = localObject1;
+      if (((String)localObject1).length() != 3) {}
+    }
+    else
+    {
+      localObject2 = localObject1;
+      if (((String)localObject1).contains("一十")) {
+        localObject2 = ((String)localObject1).substring(1, ((String)localObject1).length());
+      }
+    }
+    localObject1 = localObject2;
+    if (((String)localObject2).indexOf("一十") == 0) {
+      localObject1 = ((String)localObject2).replaceFirst("一十", "十");
+    }
+    return localObject1;
   }
   
   public static String sectionTrans(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    int k = 1;
     int j = 0;
+    int k = 1;
     int i = paramInt;
-    if (i > 0)
+    while (i > 0)
     {
       paramInt = i % 10;
       if (paramInt == 0)
       {
         paramInt = k;
-        if (k == 0) {
+        if (k == 0)
+        {
           localStringBuilder.insert(0, numbs[0]);
+          paramInt = 1;
         }
       }
-      for (paramInt = 1;; paramInt = 0)
+      else
       {
-        j += 1;
-        i /= 10;
-        k = paramInt;
-        break;
         localStringBuilder.insert(0, pos_units[j]);
         localStringBuilder.insert(0, numbs[paramInt]);
+        paramInt = 0;
       }
+      j += 1;
+      i /= 10;
+      k = paramInt;
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.template.light.LightPatterHelper
  * JD-Core Version:    0.7.0.1
  */

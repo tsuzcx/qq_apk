@@ -13,9 +13,11 @@ class NearbyProfileEditPanel$1
   
   public void onConfirmBtClicked()
   {
-    if ((this.jdField_a_of_type_ComTencentWidgetActionSheet != null) && (this.jdField_a_of_type_ComTencentWidgetActionSheet.isShowing()))
+    Object localObject = this.jdField_a_of_type_ComTencentWidgetActionSheet;
+    if ((localObject != null) && (((ActionSheet)localObject).isShowing()))
     {
-      NearbyProfileEditPanel.a(this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel, this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel.b, false);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqNearbyProfilecardNearbyProfileEditPanel;
+      NearbyProfileEditPanel.a((NearbyProfileEditPanel)localObject, ((NearbyProfileEditPanel)localObject).b, false);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
     }
   }
@@ -29,7 +31,7 @@ class NearbyProfileEditPanel$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyProfileEditPanel.1
  * JD-Core Version:    0.7.0.1
  */

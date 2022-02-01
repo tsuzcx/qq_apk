@@ -20,8 +20,8 @@ class QavInOutAnimation$OutAnimationListener
     {
       if ((this.a.jdField_a_of_type_ComTencentAvVideoController != null) && (this.a.jdField_a_of_type_ComTencentAvVideoController.a() != null))
       {
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().au = false;
-        this.a.jdField_a_of_type_ComTencentAvVideoController.a().av = false;
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a().ai = false;
+        this.a.jdField_a_of_type_ComTencentAvVideoController.a().aj = false;
       }
       if (this.a.jdField_a_of_type_ComTencentAvUiQavPanel != null) {
         this.a.jdField_a_of_type_ComTencentAvUiQavPanel.setVisibility(4);
@@ -44,15 +44,21 @@ class QavInOutAnimation$OutAnimationListener
       if (this.a.g != null) {
         this.a.g.setVisibility(4);
       }
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener != null) {
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener != null)
+      {
         this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener.b();
+        return;
       }
-      return;
     }
     catch (Exception paramAnimation)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationEnd Exception :" + paramAnimation);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QavOutAnimationListener onAnimationEnd Exception :");
+        localStringBuilder.append(paramAnimation);
+        QLog.e("QavInOutAnimation", 2, localStringBuilder.toString());
+      }
     }
   }
   
@@ -65,21 +71,27 @@ class QavInOutAnimation$OutAnimationListener
     }
     try
     {
-      if (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener != null) {
+      if (this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener != null)
+      {
         this.a.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener.a();
+        return;
       }
-      return;
     }
     catch (Exception paramAnimation)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("QavInOutAnimation", 2, "QavOutAnimationListener onAnimationStart Exception :" + paramAnimation);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("QavOutAnimationListener onAnimationStart Exception :");
+        localStringBuilder.append(paramAnimation);
+        QLog.e("QavInOutAnimation", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavInOutAnimation.OutAnimationListener
  * JD-Core Version:    0.7.0.1
  */

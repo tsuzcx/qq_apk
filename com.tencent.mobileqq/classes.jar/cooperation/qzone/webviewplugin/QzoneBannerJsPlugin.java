@@ -31,132 +31,163 @@ public class QzoneBannerJsPlugin
     }
     catch (JSONException paramString)
     {
-      for (;;)
-      {
-        QLog.e(this.TAG, 1, paramString, new Object[0]);
-        paramString = null;
-      }
+      QLog.e(this.TAG, 1, paramString, new Object[0]);
     }
+    return null;
   }
   
   public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((!"Qzone".equals(paramString2)) || (this.parentPlugin == null) || (this.parentPlugin.mRuntime == null)) {
-      return false;
-    }
-    if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null)) {
-      paramJsBridgeListener = this.parentPlugin.mRuntime.a();
-    }
-    while (paramJsBridgeListener != null)
+    if (("Qzone".equals(paramString2)) && (this.parentPlugin != null))
     {
-      paramString1 = paramJsBridgeListener.getTag(2131368659);
-      if ((paramString1 != null) && ((paramString1 instanceof QzoneBannerJsPlugin.WebViewBannerInterface)))
-      {
-        paramString1 = (QzoneBannerJsPlugin.WebViewBannerInterface)paramString1;
-        if ((!"setBannerHeight".equals(paramString3)) || (paramVarArgs == null) || (paramVarArgs.length < 1)) {
-          break label344;
-        }
-        paramJsBridgeListener = toJson(paramVarArgs[0]);
-        if (paramJsBridgeListener != null) {
-          break label176;
-        }
-        QLog.e(this.TAG, 1, "setBannerHeight 方法参数错误！！！！");
+      if (this.parentPlugin.mRuntime == null) {
         return false;
+      }
+      if ((this.parentPlugin != null) && (this.parentPlugin.mRuntime != null)) {
+        paramJsBridgeListener = this.parentPlugin.mRuntime.a();
+      } else {
         paramJsBridgeListener = null;
       }
-      else
+      if (paramJsBridgeListener != null)
       {
-        QLog.e(this.TAG, 1, "webViewBannerInterface error o=" + paramString1);
+        paramString1 = paramJsBridgeListener.getTag(2131368394);
+        if ((paramString1 != null) && ((paramString1 instanceof WebViewBannerInterface)))
+        {
+          paramString1 = (WebViewBannerInterface)paramString1;
+          int i;
+          if (("setBannerHeight".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+          {
+            paramJsBridgeListener = toJson(paramVarArgs[0]);
+            if (paramJsBridgeListener == null)
+            {
+              QLog.e(this.TAG, 1, "setBannerHeight 方法参数错误！！！！");
+              return false;
+            }
+            double d1 = paramJsBridgeListener.optDouble("height");
+            if (d1 <= 0.0D)
+            {
+              QLog.e(this.TAG, 1, "setBannerHeight 方法参数错误 height<=0 ！！！！  )");
+              return true;
+            }
+            i = paramJsBridgeListener.optInt("unit");
+            paramJsBridgeListener = this.TAG;
+            paramString2 = new StringBuilder();
+            paramString2.append("setBannerHeight height:");
+            paramString2.append(d1);
+            paramString2.append(",unit:");
+            paramString2.append(i);
+            QLog.i(paramJsBridgeListener, 1, paramString2.toString());
+            if (i == 1)
+            {
+              paramString1.setBannerHeight((int)d1);
+              return true;
+            }
+            if (i == 2)
+            {
+              paramString1.setBannerHeight((int)ViewUtils.a((float)d1));
+              return true;
+            }
+            if (i == 3)
+            {
+              double d2 = ViewUtils.a();
+              Double.isNaN(d2);
+              paramString1.setBannerHeight((int)(d1 * d2));
+              return true;
+            }
+            paramJsBridgeListener = this.TAG;
+            paramString1 = new StringBuilder();
+            paramString1.append("setBannerHeight 方法参数错误 :unit= ");
+            paramString1.append(i);
+            QLog.e(paramJsBridgeListener, 1, paramString1.toString());
+            return true;
+          }
+          if ("closeBanner".equals(paramString3))
+          {
+            QLog.i(this.TAG, 1, "closeBanner:");
+            paramString1.close();
+            return true;
+          }
+          if (("enableGesture".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+          {
+            paramJsBridgeListener = toJson(paramVarArgs[0]);
+            if (paramJsBridgeListener == null)
+            {
+              QLog.e(this.TAG, 1, "enableGesture 方法参数错误！！！！");
+              return true;
+            }
+            boolean bool = paramJsBridgeListener.optBoolean("enable");
+            paramJsBridgeListener = this.TAG;
+            paramString2 = new StringBuilder();
+            paramString2.append("enableGesture enable:");
+            paramString2.append(bool);
+            QLog.i(paramJsBridgeListener, 1, paramString2.toString());
+            paramString1.enableGesture(bool);
+            return true;
+          }
+          if (("getBannerData".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+          {
+            paramString2 = toJson(paramVarArgs[0]);
+            if (paramString2 == null)
+            {
+              QLog.e(this.TAG, 1, "getBannerData 方法参数错误！！！！");
+              return true;
+            }
+            paramString2 = paramString2.optString("callback");
+            if (TextUtils.isEmpty(paramString2)) {
+              QLog.e(this.TAG, 1, "getBannerData 方法参数错误！！！！");
+            }
+            paramString1 = paramString1.getBannerData();
+            paramJsBridgeListener.callJs(paramString2, new String[] { paramString1 });
+            paramJsBridgeListener = this.TAG;
+            paramString2 = new StringBuilder();
+            paramString2.append("getBannerData ");
+            paramString2.append(paramString1);
+            QLog.i(paramJsBridgeListener, 1, paramString2.toString());
+            return true;
+          }
+          if (("qbossReport".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
+          {
+            paramString2 = toJson(paramVarArgs[0]);
+            if (paramString2 == null)
+            {
+              QLog.e(this.TAG, 1, "qbossReport 方法参数错误！！！！");
+              return true;
+            }
+            paramJsBridgeListener = paramString2.optString("sQBosstrace");
+            if (TextUtils.isEmpty(paramJsBridgeListener)) {
+              QLog.e(this.TAG, 1, "qbossReport 方法参数错误！！！！");
+            }
+            i = paramString2.optInt("type");
+            paramString2 = paramString2.optString("reportInfo");
+            paramString1.qbossReport(i, paramJsBridgeListener, paramString2);
+            paramString1 = this.TAG;
+            paramString3 = new StringBuilder();
+            paramString3.append("qbossReport type:");
+            paramString3.append(i);
+            paramString3.append(",qBosstrace:");
+            paramString3.append(paramJsBridgeListener);
+            paramString3.append(" ,reportInfo:");
+            paramString3.append(paramString2);
+            QLog.i(paramString1, 1, paramString3.toString());
+            return true;
+          }
+          return false;
+        }
+        paramJsBridgeListener = this.TAG;
+        paramString2 = new StringBuilder();
+        paramString2.append("webViewBannerInterface error o=");
+        paramString2.append(paramString1);
+        QLog.e(paramJsBridgeListener, 1, paramString2.toString());
         return false;
       }
-    }
-    QLog.e(this.TAG, 1, "handleJsRequest webView==null");
-    return false;
-    label176:
-    double d = paramJsBridgeListener.optDouble("height");
-    if (d <= 0.0D) {
-      QLog.e(this.TAG, 1, "setBannerHeight 方法参数错误 height<=0 ！！！！  )");
-    }
-    int i;
-    for (;;)
-    {
-      return true;
-      i = paramJsBridgeListener.optInt("unit");
-      QLog.i(this.TAG, 1, "setBannerHeight height:" + d + ",unit:" + i);
-      if (i == 1) {
-        paramString1.setBannerHeight((int)d);
-      } else if (i == 2) {
-        paramString1.setBannerHeight((int)ViewUtils.a((float)d));
-      } else if (i == 3) {
-        paramString1.setBannerHeight((int)(d * ViewUtils.a()));
-      } else {
-        QLog.e(this.TAG, 1, "setBannerHeight 方法参数错误 :unit= " + i);
-      }
-    }
-    label344:
-    if ("closeBanner".equals(paramString3))
-    {
-      QLog.i(this.TAG, 1, "closeBanner:");
-      paramString1.close();
-      return true;
-    }
-    if (("enableGesture".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      paramJsBridgeListener = toJson(paramVarArgs[0]);
-      if (paramJsBridgeListener == null) {
-        QLog.e(this.TAG, 1, "enableGesture 方法参数错误！！！！");
-      }
-      for (;;)
-      {
-        return true;
-        boolean bool = paramJsBridgeListener.optBoolean("enable");
-        QLog.i(this.TAG, 1, "enableGesture enable:" + bool);
-        paramString1.enableGesture(bool);
-      }
-    }
-    if (("getBannerData".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      paramString2 = toJson(paramVarArgs[0]);
-      if (paramString2 == null) {
-        QLog.e(this.TAG, 1, "getBannerData 方法参数错误！！！！");
-      }
-      for (;;)
-      {
-        return true;
-        paramString2 = paramString2.optString("callback");
-        if (TextUtils.isEmpty(paramString2)) {
-          QLog.e(this.TAG, 1, "getBannerData 方法参数错误！！！！");
-        }
-        paramString1 = paramString1.getBannerData();
-        paramJsBridgeListener.callJs(paramString2, new String[] { paramString1 });
-        QLog.i(this.TAG, 1, "getBannerData " + paramString1);
-      }
-    }
-    if (("qbossReport".equals(paramString3)) && (paramVarArgs != null) && (paramVarArgs.length >= 1))
-    {
-      paramString2 = toJson(paramVarArgs[0]);
-      if (paramString2 == null) {
-        QLog.e(this.TAG, 1, "qbossReport 方法参数错误！！！！");
-      }
-      for (;;)
-      {
-        return true;
-        paramJsBridgeListener = paramString2.optString("sQBosstrace");
-        if (TextUtils.isEmpty(paramJsBridgeListener)) {
-          QLog.e(this.TAG, 1, "qbossReport 方法参数错误！！！！");
-        }
-        i = paramString2.optInt("type");
-        paramString2 = paramString2.optString("reportInfo");
-        paramString1.qbossReport(i, paramJsBridgeListener, paramString2);
-        QLog.i(this.TAG, 1, "qbossReport type:" + i + ",qBosstrace:" + paramJsBridgeListener + " ,reportInfo:" + paramString2);
-      }
+      QLog.e(this.TAG, 1, "handleJsRequest webView==null");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneBannerJsPlugin
  * JD-Core Version:    0.7.0.1
  */

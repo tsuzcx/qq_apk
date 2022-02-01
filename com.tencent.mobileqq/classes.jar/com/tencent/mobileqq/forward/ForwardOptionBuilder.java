@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.util.SparseArray;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.sharehelper.systemshare.SystemShareListener;
 import com.tencent.qphone.base.util.QLog;
 import java.lang.reflect.Constructor;
 
@@ -45,9 +46,7 @@ public class ForwardOptionBuilder
     a.put(26, ForwardApolloActionSendOption.class);
     a.put(-5, ForwardMixedMsgOption.class);
     a.put(28, ForwardQQStoryMsgOption.class);
-    a.put(29, ForwardQQStoryAccountMsgOption.class);
     a.put(32, ForwardTroopStoryMsgOption.class);
-    a.put(34, ForwardApolloGameMsgOption.class);
     a.put(36, ForwardTribeShortVideoMsgOption.class);
     a.put(37, ForwardHiboomMsgOption.class);
     a.put(39, ForwardQzoneArkMsgOption.class);
@@ -62,23 +61,27 @@ public class ForwardOptionBuilder
   public static ForwardBaseOption a(Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("forward_type", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("ForwardOption.ForwardOptionBuilder", 2, "ForwardOptionBuilder forwardType=" + i);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ForwardOptionBuilder forwardType=");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("ForwardOption.ForwardOptionBuilder", 2, ((StringBuilder)localObject).toString());
     }
-    Class localClass = (Class)a.get(i);
-    if (localClass != null) {
+    Object localObject = (Class)a.get(i);
+    if (localObject != null) {
       try
       {
-        paramIntent = (ForwardBaseOption)localClass.getDeclaredConstructor(new Class[] { Intent.class }).newInstance(new Object[] { paramIntent });
+        paramIntent = (ForwardBaseOption)((Class)localObject).getDeclaredConstructor(new Class[] { Intent.class }).newInstance(new Object[] { paramIntent });
         return paramIntent;
       }
       catch (Exception paramIntent)
       {
         QLog.e("ForwardOption.ForwardOptionBuilder", 1, paramIntent, new Object[0]);
-        return null;
       }
+    } else {
+      QLog.e("ForwardOption.ForwardOptionBuilder", 1, "clazz should not be null!!");
     }
-    QLog.e("ForwardOption.ForwardOptionBuilder", 1, "clazz should not be null!!");
     return null;
   }
   
@@ -90,13 +93,21 @@ public class ForwardOptionBuilder
     {
       paramIntent.a(paramQQAppInterface, paramActivity);
       paramIntent.a();
+      a(paramIntent);
     }
     return paramIntent;
+  }
+  
+  public static void a(ForwardBaseOption paramForwardBaseOption)
+  {
+    if (paramForwardBaseOption.g()) {
+      paramForwardBaseOption.a(new SystemShareListener());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardOptionBuilder
  * JD-Core Version:    0.7.0.1
  */

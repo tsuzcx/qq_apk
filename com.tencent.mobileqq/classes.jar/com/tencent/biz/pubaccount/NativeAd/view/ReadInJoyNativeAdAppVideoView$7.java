@@ -11,7 +11,10 @@ class ReadInJoyNativeAdAppVideoView$7
   
   public void a()
   {
-    GdtLog.a("ReadInJoyNativeAdAppVideoView", "tips onYes mVideoState " + ReadInJoyNativeAdAppVideoView.a(this.a));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("tips onYes mVideoState ");
+    localStringBuilder.append(ReadInJoyNativeAdAppVideoView.a(this.a));
+    GdtLog.a("ReadInJoyNativeAdAppVideoView", localStringBuilder.toString());
     if (ReadInJoyNativeAdAppVideoView.a(this.a) == 6)
     {
       ReadInJoyNativeAdAppVideoView.a(this.a).start();
@@ -25,7 +28,7 @@ class ReadInJoyNativeAdAppVideoView$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.NativeAd.view.ReadInJoyNativeAdAppVideoView.7
  * JD-Core Version:    0.7.0.1
  */

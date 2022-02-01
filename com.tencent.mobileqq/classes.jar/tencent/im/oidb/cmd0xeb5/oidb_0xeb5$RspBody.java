@@ -21,13 +21,14 @@ public final class oidb_0xeb5$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48 }, new String[] { "cache_ts", "app", "redpoint_cache_ts", "cookies", "max_show_app_num", "expose_id" }, new Object[] { Integer.valueOf(0), null, Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40, 48 }, new String[] { "cache_ts", "app", "redpoint_cache_ts", "cookies", "max_show_app_num", "expose_id" }, new Object[] { localInteger, null, localInteger, localByteStringMicro, localInteger, localInteger }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xeb5.oidb_0xeb5.RspBody
  * JD-Core Version:    0.7.0.1
  */

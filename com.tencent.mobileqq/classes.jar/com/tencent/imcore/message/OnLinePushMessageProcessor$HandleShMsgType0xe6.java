@@ -1,12 +1,12 @@
 package com.tencent.imcore.message;
 
 import OnlinePushPack.MsgInfo;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.FriendsManager;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.Friends;
-import com.tencent.mobileqq.model.PhoneContactManager;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.mobileqq.service.message.EmotionCodecUtils;
 import localpb.richMsg.SafeMsg.SafeMoreInfo;
 
@@ -36,27 +36,32 @@ class OnLinePushMessageProcessor$HandleShMsgType0xe6
   public HandleShMsgType0xe6 a()
   {
     this.jdField_a_of_type_JavaLangString = new String(EmotionCodecUtils.a(this.jdField_a_of_type_OnlinePushPackMsgInfo.vMsg), "utf-8");
-    Object localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a.getManager(QQManagerFactory.FRIENDS_MANAGER)).e(this.jdField_b_of_type_Long + "");
-    if ((localObject != null) && (((Friends)localObject).isFriend())) {
+    Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a.getManager(QQManagerFactory.FRIENDS_MANAGER);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("");
+    localObject = ((FriendsManager)localObject).e(localStringBuilder.toString());
+    if ((localObject != null) && (((Friends)localObject).isFriend()))
+    {
       this.jdField_a_of_type_Int = 0;
     }
-    for (;;)
+    else
     {
-      localObject = new SafeMsg.SafeMoreInfo();
-      ((SafeMsg.SafeMoreInfo)localObject).strFromMobile.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromMobile);
-      ((SafeMsg.SafeMoreInfo)localObject).strFromName.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromName);
-      ((SafeMsg.SafeMoreInfo)localObject).strMsgTxt.set(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ArrayOfByte = ((SafeMsg.SafeMoreInfo)localObject).toByteArray();
-      this.jdField_b_of_type_Int = -1002;
-      this.jdField_a_of_type_Boolean = true;
-      return this;
-      localObject = ((PhoneContactManager)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a.getManager(QQManagerFactory.CONTACT_MANAGER)).b(String.valueOf(this.jdField_a_of_type_Long));
+      localObject = ((IPhoneContactService)this.jdField_a_of_type_ComTencentImcoreMessageOnLinePushMessageProcessor.a.getRuntimeService(IPhoneContactService.class, "")).getPhoneNumByUin(String.valueOf(this.jdField_a_of_type_Long));
       if ((localObject != null) && (((String)localObject).length() != 0)) {
         this.jdField_a_of_type_Int = 1006;
       } else {
         this.jdField_a_of_type_Int = 1000;
       }
     }
+    localObject = new SafeMsg.SafeMoreInfo();
+    ((SafeMsg.SafeMoreInfo)localObject).strFromMobile.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromMobile);
+    ((SafeMsg.SafeMoreInfo)localObject).strFromName.set(this.jdField_a_of_type_OnlinePushPackMsgInfo.strFromName);
+    ((SafeMsg.SafeMoreInfo)localObject).strMsgTxt.set(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ArrayOfByte = ((SafeMsg.SafeMoreInfo)localObject).toByteArray();
+    this.jdField_b_of_type_Int = -1002;
+    this.jdField_a_of_type_Boolean = true;
+    return this;
   }
   
   public String a()
@@ -81,7 +86,7 @@ class OnLinePushMessageProcessor$HandleShMsgType0xe6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.OnLinePushMessageProcessor.HandleShMsgType0xe6
  * JD-Core Version:    0.7.0.1
  */

@@ -29,471 +29,505 @@ public class RecentRouteRecordStorage
     {
       String str = (String)localIterator.next();
       RecentRouteRecord localRecentRouteRecord = (RecentRouteRecord)this.mRecentRouteRecordMap.get(str);
-      if (localRecentRouteRecord != null) {
-        UploadLog.d("RouteSetStorage", "mRecentRouteRecordMap key=" + str + ",value=" + localRecentRouteRecord);
+      if (localRecentRouteRecord != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mRecentRouteRecordMap key=");
+        localStringBuilder.append(str);
+        localStringBuilder.append(",value=");
+        localStringBuilder.append(localRecentRouteRecord);
+        UploadLog.d("RouteSetStorage", localStringBuilder.toString());
       }
     }
   }
   
   private String getRecentRouteSetFilePath(int paramInt)
   {
-    return "upload_recent_route_" + paramInt + "_" + "_v2.0.2";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("upload_recent_route_");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append("_v2.0.2");
+    return localStringBuilder.toString();
   }
   
   /* Error */
   private boolean load()
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_1
-    //   2: ldc 14
-    //   4: ldc 102
-    //   6: invokestatic 105	com/tencent/upload/utils/UploadLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   9: invokestatic 111	com/tencent/upload/common/UploadGlobalConfig:getContext	()Landroid/content/Context;
-    //   12: astore 9
-    //   14: aload 9
-    //   16: ifnonnull +12 -> 28
-    //   19: ldc 14
-    //   21: ldc 113
-    //   23: invokestatic 116	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   26: iconst_0
-    //   27: ireturn
-    //   28: aload 9
-    //   30: aload_0
-    //   31: aload_0
-    //   32: getfield 31	com/tencent/upload/network/route/RecentRouteRecordStorage:mServerRouteTable	Lcom/tencent/upload/network/route/ServerRouteTable;
-    //   35: getfield 122	com/tencent/upload/network/route/ServerRouteTable:code	I
-    //   38: invokespecial 124	com/tencent/upload/network/route/RecentRouteRecordStorage:getRecentRouteSetFilePath	(I)Ljava/lang/String;
-    //   41: invokevirtual 130	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
-    //   44: astore_2
-    //   45: aload_2
-    //   46: astore_1
-    //   47: new 132	java/io/BufferedInputStream
-    //   50: dup
-    //   51: aload_1
-    //   52: sipush 8192
-    //   55: invokespecial 135	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   58: astore_2
-    //   59: new 137	java/io/ObjectInputStream
-    //   62: dup
-    //   63: aload_2
-    //   64: invokespecial 140	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
-    //   67: astore 5
-    //   69: aload_1
-    //   70: astore 4
-    //   72: aload_2
-    //   73: astore 7
-    //   75: aload 5
-    //   77: astore 8
-    //   79: aload 5
-    //   81: invokevirtual 143	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
-    //   84: astore_3
-    //   85: aload_1
-    //   86: astore 4
-    //   88: aload_2
-    //   89: astore 7
-    //   91: aload 5
-    //   93: astore 8
-    //   95: aload_3
-    //   96: instanceof 26
-    //   99: ifeq +21 -> 120
-    //   102: aload_1
-    //   103: astore 4
-    //   105: aload_2
-    //   106: astore 7
-    //   108: aload 5
-    //   110: astore 8
-    //   112: aload_0
-    //   113: aload_3
-    //   114: checkcast 26	java/util/HashMap
-    //   117: putfield 29	com/tencent/upload/network/route/RecentRouteRecordStorage:mRecentRouteRecordMap	Ljava/util/HashMap;
-    //   120: aload_1
-    //   121: astore 4
-    //   123: aload_2
-    //   124: astore 7
-    //   126: aload 5
-    //   128: astore 8
-    //   130: aload_0
-    //   131: getfield 29	com/tencent/upload/network/route/RecentRouteRecordStorage:mRecentRouteRecordMap	Ljava/util/HashMap;
-    //   134: ifnonnull +80 -> 214
-    //   137: aload_1
-    //   138: astore 4
-    //   140: aload_2
-    //   141: astore 7
-    //   143: aload 5
-    //   145: astore 8
-    //   147: aload_0
-    //   148: new 26	java/util/HashMap
-    //   151: dup
-    //   152: invokespecial 27	java/util/HashMap:<init>	()V
-    //   155: putfield 29	com/tencent/upload/network/route/RecentRouteRecordStorage:mRecentRouteRecordMap	Ljava/util/HashMap;
-    //   158: aload 5
-    //   160: ifnull +18 -> 178
-    //   163: aload_1
-    //   164: astore 4
-    //   166: aload_2
-    //   167: astore 7
-    //   169: aload 5
-    //   171: astore 8
-    //   173: aload 5
-    //   175: invokevirtual 146	java/io/ObjectInputStream:close	()V
+    //   0: ldc 14
+    //   2: ldc 102
+    //   4: invokestatic 105	com/tencent/upload/utils/UploadLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   7: invokestatic 111	com/tencent/upload/common/UploadGlobalConfig:getContext	()Landroid/content/Context;
+    //   10: astore 9
+    //   12: aload 9
+    //   14: ifnonnull +12 -> 26
+    //   17: ldc 14
+    //   19: ldc 113
+    //   21: invokestatic 116	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   24: iconst_0
+    //   25: ireturn
+    //   26: aconst_null
+    //   27: astore 4
+    //   29: aconst_null
+    //   30: astore 5
+    //   32: aconst_null
+    //   33: astore 7
+    //   35: aload 9
+    //   37: aload_0
+    //   38: aload_0
+    //   39: getfield 31	com/tencent/upload/network/route/RecentRouteRecordStorage:mServerRouteTable	Lcom/tencent/upload/network/route/ServerRouteTable;
+    //   42: getfield 122	com/tencent/upload/network/route/ServerRouteTable:code	I
+    //   45: invokespecial 124	com/tencent/upload/network/route/RecentRouteRecordStorage:getRecentRouteSetFilePath	(I)Ljava/lang/String;
+    //   48: invokevirtual 130	android/content/Context:openFileInput	(Ljava/lang/String;)Ljava/io/FileInputStream;
+    //   51: astore_1
+    //   52: new 132	java/io/BufferedInputStream
+    //   55: dup
+    //   56: aload_1
+    //   57: sipush 8192
+    //   60: invokespecial 135	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   63: astore_2
+    //   64: aload_1
+    //   65: astore 6
+    //   67: aload_2
+    //   68: astore_3
+    //   69: new 137	java/io/ObjectInputStream
+    //   72: dup
+    //   73: aload_2
+    //   74: invokespecial 140	java/io/ObjectInputStream:<init>	(Ljava/io/InputStream;)V
+    //   77: astore 5
+    //   79: aload_1
+    //   80: astore 6
+    //   82: aload_2
+    //   83: astore 4
+    //   85: aload 5
+    //   87: astore 8
+    //   89: aload 5
+    //   91: invokevirtual 143	java/io/ObjectInputStream:readObject	()Ljava/lang/Object;
+    //   94: astore_3
+    //   95: aload_1
+    //   96: astore 6
+    //   98: aload_2
+    //   99: astore 4
+    //   101: aload 5
+    //   103: astore 8
+    //   105: aload_3
+    //   106: instanceof 26
+    //   109: ifeq +21 -> 130
+    //   112: aload_1
+    //   113: astore 6
+    //   115: aload_2
+    //   116: astore 4
+    //   118: aload 5
+    //   120: astore 8
+    //   122: aload_0
+    //   123: aload_3
+    //   124: checkcast 26	java/util/HashMap
+    //   127: putfield 29	com/tencent/upload/network/route/RecentRouteRecordStorage:mRecentRouteRecordMap	Ljava/util/HashMap;
+    //   130: aload_1
+    //   131: astore 6
+    //   133: aload_2
+    //   134: astore 4
+    //   136: aload 5
+    //   138: astore 8
+    //   140: aload_0
+    //   141: getfield 29	com/tencent/upload/network/route/RecentRouteRecordStorage:mRecentRouteRecordMap	Ljava/util/HashMap;
+    //   144: ifnonnull +65 -> 209
+    //   147: aload_1
+    //   148: astore 6
+    //   150: aload_2
+    //   151: astore 4
+    //   153: aload 5
+    //   155: astore 8
+    //   157: aload_0
+    //   158: new 26	java/util/HashMap
+    //   161: dup
+    //   162: invokespecial 27	java/util/HashMap:<init>	()V
+    //   165: putfield 29	com/tencent/upload/network/route/RecentRouteRecordStorage:mRecentRouteRecordMap	Ljava/util/HashMap;
+    //   168: aload_1
+    //   169: astore 6
+    //   171: aload_2
+    //   172: astore 4
+    //   174: aload 5
+    //   176: astore 8
     //   178: aload 5
-    //   180: ifnull +8 -> 188
+    //   180: invokevirtual 146	java/io/ObjectInputStream:close	()V
     //   183: aload 5
     //   185: invokevirtual 146	java/io/ObjectInputStream:close	()V
     //   188: aload_2
-    //   189: ifnull +7 -> 196
-    //   192: aload_2
-    //   193: invokevirtual 147	java/io/BufferedInputStream:close	()V
+    //   189: invokevirtual 147	java/io/BufferedInputStream:close	()V
+    //   192: aload_1
+    //   193: ifnull +14 -> 207
     //   196: aload_1
-    //   197: ifnull +7 -> 204
-    //   200: aload_1
-    //   201: invokevirtual 150	java/io/FileInputStream:close	()V
-    //   204: iconst_0
-    //   205: ireturn
-    //   206: astore_1
-    //   207: aload_1
-    //   208: invokevirtual 153	java/lang/Exception:printStackTrace	()V
-    //   211: goto -7 -> 204
-    //   214: aload_1
-    //   215: astore 4
-    //   217: aload_2
-    //   218: astore 7
-    //   220: aload 5
-    //   222: astore 8
-    //   224: aload_0
-    //   225: invokespecial 155	com/tencent/upload/network/route/RecentRouteRecordStorage:dump	()V
-    //   228: aload 5
-    //   230: ifnull +8 -> 238
-    //   233: aload 5
-    //   235: invokevirtual 146	java/io/ObjectInputStream:close	()V
-    //   238: aload_2
-    //   239: ifnull +7 -> 246
-    //   242: aload_2
-    //   243: invokevirtual 147	java/io/BufferedInputStream:close	()V
-    //   246: aload_1
-    //   247: ifnull +7 -> 254
-    //   250: aload_1
-    //   251: invokevirtual 150	java/io/FileInputStream:close	()V
-    //   254: iconst_1
-    //   255: ireturn
+    //   197: invokevirtual 150	java/io/FileInputStream:close	()V
+    //   200: iconst_0
+    //   201: ireturn
+    //   202: astore_1
+    //   203: aload_1
+    //   204: invokevirtual 153	java/lang/Exception:printStackTrace	()V
+    //   207: iconst_0
+    //   208: ireturn
+    //   209: aload_1
+    //   210: astore 6
+    //   212: aload_2
+    //   213: astore 4
+    //   215: aload 5
+    //   217: astore 8
+    //   219: aload_0
+    //   220: invokespecial 155	com/tencent/upload/network/route/RecentRouteRecordStorage:dump	()V
+    //   223: aload 5
+    //   225: invokevirtual 146	java/io/ObjectInputStream:close	()V
+    //   228: aload_2
+    //   229: invokevirtual 147	java/io/BufferedInputStream:close	()V
+    //   232: aload_1
+    //   233: ifnull +15 -> 248
+    //   236: aload_1
+    //   237: invokevirtual 150	java/io/FileInputStream:close	()V
+    //   240: goto +8 -> 248
+    //   243: astore_1
+    //   244: aload_1
+    //   245: invokevirtual 153	java/lang/Exception:printStackTrace	()V
+    //   248: iconst_1
+    //   249: ireturn
+    //   250: astore_3
+    //   251: aload_1
+    //   252: astore 7
+    //   254: aload 5
     //   256: astore_1
-    //   257: aload_1
-    //   258: invokevirtual 153	java/lang/Exception:printStackTrace	()V
-    //   261: goto -7 -> 254
-    //   264: astore_2
-    //   265: aconst_null
-    //   266: astore_2
-    //   267: aconst_null
-    //   268: astore_3
-    //   269: ldc 14
-    //   271: new 66	java/lang/StringBuilder
-    //   274: dup
-    //   275: invokespecial 67	java/lang/StringBuilder:<init>	()V
-    //   278: ldc 157
-    //   280: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   283: aload_0
-    //   284: aload_0
-    //   285: getfield 31	com/tencent/upload/network/route/RecentRouteRecordStorage:mServerRouteTable	Lcom/tencent/upload/network/route/ServerRouteTable;
-    //   288: getfield 122	com/tencent/upload/network/route/ServerRouteTable:code	I
-    //   291: invokespecial 124	com/tencent/upload/network/route/RecentRouteRecordStorage:getRecentRouteSetFilePath	(I)Ljava/lang/String;
-    //   294: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   297: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   300: invokestatic 160	com/tencent/upload/utils/UploadLog:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   303: aload_3
-    //   304: ifnull +7 -> 311
-    //   307: aload_3
-    //   308: invokevirtual 146	java/io/ObjectInputStream:close	()V
-    //   311: aload_2
-    //   312: ifnull +7 -> 319
-    //   315: aload_2
-    //   316: invokevirtual 147	java/io/BufferedInputStream:close	()V
-    //   319: aload_1
-    //   320: ifnull +7 -> 327
-    //   323: aload_1
-    //   324: invokevirtual 150	java/io/FileInputStream:close	()V
-    //   327: iconst_0
-    //   328: ireturn
-    //   329: astore_1
+    //   257: goto +66 -> 323
+    //   260: goto +189 -> 449
+    //   263: astore_3
+    //   264: aconst_null
+    //   265: astore 4
+    //   267: aload_1
+    //   268: astore 7
+    //   270: aload 4
+    //   272: astore_1
+    //   273: goto +50 -> 323
+    //   276: astore_2
+    //   277: aconst_null
+    //   278: astore_3
+    //   279: goto +295 -> 574
+    //   282: astore_3
+    //   283: aconst_null
+    //   284: astore 4
+    //   286: aload 4
+    //   288: astore_2
+    //   289: aload_1
+    //   290: astore 7
+    //   292: aload 4
+    //   294: astore_1
+    //   295: goto +28 -> 323
+    //   298: aconst_null
+    //   299: astore_2
+    //   300: aload 7
+    //   302: astore 5
+    //   304: goto +145 -> 449
+    //   307: astore_2
+    //   308: aconst_null
+    //   309: astore_1
+    //   310: aload_1
+    //   311: astore_3
+    //   312: goto +262 -> 574
+    //   315: astore_3
+    //   316: aconst_null
+    //   317: astore_2
+    //   318: aload_2
+    //   319: astore_1
+    //   320: aload_1
+    //   321: astore 7
+    //   323: aload 7
+    //   325: astore 6
+    //   327: aload_2
+    //   328: astore 4
     //   330: aload_1
-    //   331: invokevirtual 153	java/lang/Exception:printStackTrace	()V
-    //   334: goto -7 -> 327
-    //   337: astore_3
-    //   338: aconst_null
-    //   339: astore_2
-    //   340: aconst_null
-    //   341: astore_1
-    //   342: aconst_null
+    //   331: astore 8
+    //   333: ldc 14
+    //   335: ldc 157
+    //   337: aload_3
+    //   338: invokestatic 160	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   341: aload 7
     //   343: astore 6
-    //   345: aload 6
-    //   347: astore 4
-    //   349: aload_2
-    //   350: astore 7
-    //   352: aload_1
-    //   353: astore 8
-    //   355: ldc 14
-    //   357: ldc 162
-    //   359: aload_3
-    //   360: invokestatic 165	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   363: aload 6
-    //   365: astore 4
-    //   367: aload_2
-    //   368: astore 7
-    //   370: aload_1
-    //   371: astore 8
-    //   373: aload 9
-    //   375: aload_0
-    //   376: aload_0
-    //   377: getfield 31	com/tencent/upload/network/route/RecentRouteRecordStorage:mServerRouteTable	Lcom/tencent/upload/network/route/ServerRouteTable;
-    //   380: getfield 122	com/tencent/upload/network/route/ServerRouteTable:code	I
-    //   383: invokespecial 124	com/tencent/upload/network/route/RecentRouteRecordStorage:getRecentRouteSetFilePath	(I)Ljava/lang/String;
-    //   386: invokevirtual 169	android/content/Context:deleteFile	(Ljava/lang/String;)Z
-    //   389: pop
-    //   390: aload_1
-    //   391: ifnull +7 -> 398
-    //   394: aload_1
-    //   395: invokevirtual 146	java/io/ObjectInputStream:close	()V
-    //   398: aload_2
-    //   399: ifnull +7 -> 406
-    //   402: aload_2
-    //   403: invokevirtual 147	java/io/BufferedInputStream:close	()V
-    //   406: aload 6
-    //   408: ifnull +8 -> 416
-    //   411: aload 6
-    //   413: invokevirtual 150	java/io/FileInputStream:close	()V
-    //   416: iconst_0
-    //   417: ireturn
-    //   418: astore_3
-    //   419: aload 6
-    //   421: astore 4
-    //   423: aload_2
-    //   424: astore 7
-    //   426: aload_1
-    //   427: astore 8
-    //   429: ldc 14
-    //   431: ldc 171
-    //   433: aload_3
-    //   434: invokestatic 165	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   437: goto -47 -> 390
-    //   440: astore_3
-    //   441: aload 8
-    //   443: astore_1
-    //   444: aload 7
-    //   446: astore_2
-    //   447: aload_1
-    //   448: ifnull +7 -> 455
-    //   451: aload_1
-    //   452: invokevirtual 146	java/io/ObjectInputStream:close	()V
-    //   455: aload_2
-    //   456: ifnull +7 -> 463
-    //   459: aload_2
-    //   460: invokevirtual 147	java/io/BufferedInputStream:close	()V
-    //   463: aload 4
-    //   465: ifnull +8 -> 473
-    //   468: aload 4
-    //   470: invokevirtual 150	java/io/FileInputStream:close	()V
-    //   473: aload_3
-    //   474: athrow
-    //   475: astore_1
-    //   476: aload_1
-    //   477: invokevirtual 153	java/lang/Exception:printStackTrace	()V
-    //   480: goto -64 -> 416
-    //   483: astore_1
-    //   484: aload_1
-    //   485: invokevirtual 153	java/lang/Exception:printStackTrace	()V
-    //   488: goto -15 -> 473
-    //   491: astore_3
-    //   492: aconst_null
-    //   493: astore 4
-    //   495: aconst_null
-    //   496: astore_2
-    //   497: aconst_null
-    //   498: astore_1
-    //   499: goto -52 -> 447
-    //   502: astore_3
-    //   503: aconst_null
-    //   504: astore_2
-    //   505: aconst_null
-    //   506: astore 5
-    //   508: aload_1
-    //   509: astore 4
-    //   511: aload 5
-    //   513: astore_1
-    //   514: goto -67 -> 447
-    //   517: astore_3
-    //   518: aconst_null
-    //   519: astore 5
-    //   521: aload_1
-    //   522: astore 4
-    //   524: aload 5
-    //   526: astore_1
-    //   527: goto -80 -> 447
-    //   530: astore 4
-    //   532: aload_3
-    //   533: astore 5
-    //   535: aload 4
-    //   537: astore_3
-    //   538: aload_1
-    //   539: astore 4
-    //   541: aload 5
-    //   543: astore_1
-    //   544: goto -97 -> 447
-    //   547: astore_3
-    //   548: aconst_null
-    //   549: astore 4
-    //   551: aconst_null
-    //   552: astore_2
-    //   553: aload_1
-    //   554: astore 6
-    //   556: aload 4
-    //   558: astore_1
-    //   559: goto -214 -> 345
-    //   562: astore_3
-    //   563: aconst_null
-    //   564: astore 4
-    //   566: aload_1
-    //   567: astore 6
-    //   569: aload 4
-    //   571: astore_1
-    //   572: goto -227 -> 345
-    //   575: astore_3
-    //   576: aload_1
-    //   577: astore 6
+    //   345: aload_2
+    //   346: astore 4
+    //   348: aload_1
+    //   349: astore 8
+    //   351: aload 9
+    //   353: aload_0
+    //   354: aload_0
+    //   355: getfield 31	com/tencent/upload/network/route/RecentRouteRecordStorage:mServerRouteTable	Lcom/tencent/upload/network/route/ServerRouteTable;
+    //   358: getfield 122	com/tencent/upload/network/route/ServerRouteTable:code	I
+    //   361: invokespecial 124	com/tencent/upload/network/route/RecentRouteRecordStorage:getRecentRouteSetFilePath	(I)Ljava/lang/String;
+    //   364: invokevirtual 164	android/content/Context:deleteFile	(Ljava/lang/String;)Z
+    //   367: pop
+    //   368: goto +36 -> 404
+    //   371: astore_2
+    //   372: aload 8
+    //   374: astore 5
+    //   376: aload 6
+    //   378: astore_1
+    //   379: aload 4
+    //   381: astore_3
+    //   382: goto +192 -> 574
+    //   385: astore_3
+    //   386: aload 7
+    //   388: astore 6
+    //   390: aload_2
+    //   391: astore 4
+    //   393: aload_1
+    //   394: astore 8
+    //   396: ldc 14
+    //   398: ldc 166
+    //   400: aload_3
+    //   401: invokestatic 160	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   404: aload_1
+    //   405: ifnull +10 -> 415
+    //   408: aload_1
+    //   409: invokevirtual 146	java/io/ObjectInputStream:close	()V
+    //   412: goto +3 -> 415
+    //   415: aload_2
+    //   416: ifnull +7 -> 423
+    //   419: aload_2
+    //   420: invokevirtual 147	java/io/BufferedInputStream:close	()V
+    //   423: aload 7
+    //   425: ifnull +14 -> 439
+    //   428: aload 7
+    //   430: invokevirtual 150	java/io/FileInputStream:close	()V
+    //   433: iconst_0
+    //   434: ireturn
+    //   435: aload_1
+    //   436: invokevirtual 153	java/lang/Exception:printStackTrace	()V
+    //   439: iconst_0
+    //   440: ireturn
+    //   441: aconst_null
+    //   442: astore_1
+    //   443: aload_1
+    //   444: astore_2
+    //   445: aload 7
+    //   447: astore 5
+    //   449: aload 5
+    //   451: astore 4
+    //   453: aload_1
+    //   454: astore 6
+    //   456: aload_2
+    //   457: astore_3
+    //   458: new 66	java/lang/StringBuilder
+    //   461: dup
+    //   462: invokespecial 67	java/lang/StringBuilder:<init>	()V
+    //   465: astore 7
+    //   467: aload 5
+    //   469: astore 4
+    //   471: aload_1
+    //   472: astore 6
+    //   474: aload_2
+    //   475: astore_3
+    //   476: aload 7
+    //   478: ldc 168
+    //   480: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   483: pop
+    //   484: aload 5
+    //   486: astore 4
+    //   488: aload_1
+    //   489: astore 6
+    //   491: aload_2
+    //   492: astore_3
+    //   493: aload 7
+    //   495: aload_0
+    //   496: aload_0
+    //   497: getfield 31	com/tencent/upload/network/route/RecentRouteRecordStorage:mServerRouteTable	Lcom/tencent/upload/network/route/ServerRouteTable;
+    //   500: getfield 122	com/tencent/upload/network/route/ServerRouteTable:code	I
+    //   503: invokespecial 124	com/tencent/upload/network/route/RecentRouteRecordStorage:getRecentRouteSetFilePath	(I)Ljava/lang/String;
+    //   506: invokevirtual 73	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   509: pop
+    //   510: aload 5
+    //   512: astore 4
+    //   514: aload_1
+    //   515: astore 6
+    //   517: aload_2
+    //   518: astore_3
+    //   519: ldc 14
+    //   521: aload 7
+    //   523: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   526: invokestatic 171	com/tencent/upload/utils/UploadLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   529: aload 5
+    //   531: ifnull +11 -> 542
+    //   534: aload 5
+    //   536: invokevirtual 146	java/io/ObjectInputStream:close	()V
+    //   539: goto +3 -> 542
+    //   542: aload_2
+    //   543: ifnull +7 -> 550
+    //   546: aload_2
+    //   547: invokevirtual 147	java/io/BufferedInputStream:close	()V
+    //   550: aload_1
+    //   551: ifnull +13 -> 564
+    //   554: aload_1
+    //   555: invokevirtual 150	java/io/FileInputStream:close	()V
+    //   558: iconst_0
+    //   559: ireturn
+    //   560: aload_1
+    //   561: invokevirtual 153	java/lang/Exception:printStackTrace	()V
+    //   564: iconst_0
+    //   565: ireturn
+    //   566: astore_2
+    //   567: aload 6
+    //   569: astore_1
+    //   570: aload 4
+    //   572: astore 5
+    //   574: aload 5
+    //   576: ifnull +11 -> 587
     //   579: aload 5
-    //   581: astore_1
-    //   582: goto -237 -> 345
-    //   585: astore_2
-    //   586: aconst_null
-    //   587: astore_3
-    //   588: aconst_null
-    //   589: astore_2
-    //   590: goto -321 -> 269
-    //   593: astore_3
-    //   594: aconst_null
-    //   595: astore_3
-    //   596: goto -327 -> 269
-    //   599: astore_3
-    //   600: aload 5
-    //   602: astore_3
-    //   603: goto -334 -> 269
+    //   581: invokevirtual 146	java/io/ObjectInputStream:close	()V
+    //   584: goto +3 -> 587
+    //   587: aload_3
+    //   588: ifnull +7 -> 595
+    //   591: aload_3
+    //   592: invokevirtual 147	java/io/BufferedInputStream:close	()V
+    //   595: aload_1
+    //   596: ifnull +14 -> 610
+    //   599: aload_1
+    //   600: invokevirtual 150	java/io/FileInputStream:close	()V
+    //   603: goto +7 -> 610
+    //   606: aload_1
+    //   607: invokevirtual 153	java/lang/Exception:printStackTrace	()V
+    //   610: aload_2
+    //   611: athrow
+    //   612: astore_1
+    //   613: goto -172 -> 441
+    //   616: astore_2
+    //   617: goto -319 -> 298
+    //   620: astore_3
+    //   621: aload 7
+    //   623: astore 5
+    //   625: goto -176 -> 449
+    //   628: astore_3
+    //   629: goto -369 -> 260
+    //   632: astore_1
+    //   633: goto -198 -> 435
+    //   636: astore_1
+    //   637: goto -77 -> 560
+    //   640: astore_1
+    //   641: goto -35 -> 606
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	606	0	this	RecentRouteRecordStorage
-    //   1	200	1	localObject1	Object
-    //   206	45	1	localException1	Exception
-    //   256	68	1	localException2	Exception
-    //   329	2	1	localException3	Exception
-    //   341	111	1	localObject2	Object
-    //   475	2	1	localException4	Exception
-    //   483	2	1	localException5	Exception
-    //   498	84	1	localObject3	Object
-    //   44	199	2	localObject4	Object
-    //   264	1	2	localFileNotFoundException1	java.io.FileNotFoundException
-    //   266	287	2	localObject5	Object
-    //   585	1	2	localFileNotFoundException2	java.io.FileNotFoundException
-    //   589	1	2	localObject6	Object
-    //   84	224	3	localObject7	Object
-    //   337	23	3	localException6	Exception
-    //   418	16	3	localException7	Exception
-    //   440	34	3	localObject8	Object
-    //   491	1	3	localObject9	Object
-    //   502	1	3	localObject10	Object
-    //   517	16	3	localObject11	Object
-    //   537	1	3	localObject12	Object
-    //   547	1	3	localException8	Exception
-    //   562	1	3	localException9	Exception
-    //   575	1	3	localException10	Exception
-    //   587	1	3	localObject13	Object
-    //   593	1	3	localFileNotFoundException3	java.io.FileNotFoundException
-    //   595	1	3	localObject14	Object
-    //   599	1	3	localFileNotFoundException4	java.io.FileNotFoundException
-    //   602	1	3	localObject15	Object
-    //   70	453	4	localObject16	Object
-    //   530	6	4	localObject17	Object
-    //   539	31	4	localObject18	Object
-    //   67	534	5	localObject19	Object
-    //   343	235	6	localObject20	Object
-    //   73	372	7	localObject21	Object
-    //   77	365	8	localObject22	Object
-    //   12	362	9	localContext	Context
+    //   0	644	0	this	RecentRouteRecordStorage
+    //   51	146	1	localFileInputStream	java.io.FileInputStream
+    //   202	35	1	localException1	Exception
+    //   243	9	1	localException2	Exception
+    //   256	351	1	localObject1	Object
+    //   612	1	1	localFileNotFoundException1	java.io.FileNotFoundException
+    //   632	1	1	localException3	Exception
+    //   636	1	1	localException4	Exception
+    //   640	1	1	localException5	Exception
+    //   63	166	2	localBufferedInputStream	java.io.BufferedInputStream
+    //   276	1	2	localObject2	Object
+    //   288	12	2	localObject3	Object
+    //   307	1	2	localObject4	Object
+    //   317	29	2	localObject5	Object
+    //   371	49	2	localObject6	Object
+    //   444	103	2	localObject7	Object
+    //   566	45	2	localObject8	Object
+    //   616	1	2	localFileNotFoundException2	java.io.FileNotFoundException
+    //   68	56	3	localObject9	Object
+    //   250	1	3	localException6	Exception
+    //   263	1	3	localException7	Exception
+    //   278	1	3	localObject10	Object
+    //   282	1	3	localException8	Exception
+    //   311	1	3	localObject11	Object
+    //   315	23	3	localException9	Exception
+    //   381	1	3	localObject12	Object
+    //   385	16	3	localException10	Exception
+    //   457	135	3	localObject13	Object
+    //   620	1	3	localFileNotFoundException3	java.io.FileNotFoundException
+    //   628	1	3	localFileNotFoundException4	java.io.FileNotFoundException
+    //   27	544	4	localObject14	Object
+    //   30	594	5	localObject15	Object
+    //   65	503	6	localObject16	Object
+    //   33	589	7	localObject17	Object
+    //   87	308	8	localObject18	Object
+    //   10	342	9	localContext	Context
     // Exception table:
     //   from	to	target	type
-    //   183	188	206	java/lang/Exception
-    //   192	196	206	java/lang/Exception
-    //   200	204	206	java/lang/Exception
-    //   233	238	256	java/lang/Exception
-    //   242	246	256	java/lang/Exception
-    //   250	254	256	java/lang/Exception
-    //   28	45	264	java/io/FileNotFoundException
-    //   307	311	329	java/lang/Exception
-    //   315	319	329	java/lang/Exception
-    //   323	327	329	java/lang/Exception
-    //   28	45	337	java/lang/Exception
-    //   355	363	418	java/lang/Exception
-    //   373	390	418	java/lang/Exception
-    //   79	85	440	finally
-    //   95	102	440	finally
-    //   112	120	440	finally
-    //   130	137	440	finally
-    //   147	158	440	finally
-    //   173	178	440	finally
-    //   224	228	440	finally
-    //   355	363	440	finally
-    //   373	390	440	finally
-    //   429	437	440	finally
-    //   394	398	475	java/lang/Exception
-    //   402	406	475	java/lang/Exception
-    //   411	416	475	java/lang/Exception
-    //   451	455	483	java/lang/Exception
-    //   459	463	483	java/lang/Exception
-    //   468	473	483	java/lang/Exception
-    //   28	45	491	finally
-    //   47	59	502	finally
-    //   59	69	517	finally
-    //   269	303	530	finally
-    //   47	59	547	java/lang/Exception
-    //   59	69	562	java/lang/Exception
-    //   79	85	575	java/lang/Exception
-    //   95	102	575	java/lang/Exception
-    //   112	120	575	java/lang/Exception
-    //   130	137	575	java/lang/Exception
-    //   147	158	575	java/lang/Exception
-    //   173	178	575	java/lang/Exception
-    //   224	228	575	java/lang/Exception
-    //   47	59	585	java/io/FileNotFoundException
-    //   59	69	593	java/io/FileNotFoundException
-    //   79	85	599	java/io/FileNotFoundException
-    //   95	102	599	java/io/FileNotFoundException
-    //   112	120	599	java/io/FileNotFoundException
-    //   130	137	599	java/io/FileNotFoundException
-    //   147	158	599	java/io/FileNotFoundException
-    //   173	178	599	java/io/FileNotFoundException
-    //   224	228	599	java/io/FileNotFoundException
+    //   183	192	202	java/lang/Exception
+    //   196	200	202	java/lang/Exception
+    //   223	232	243	java/lang/Exception
+    //   236	240	243	java/lang/Exception
+    //   89	95	250	java/lang/Exception
+    //   105	112	250	java/lang/Exception
+    //   122	130	250	java/lang/Exception
+    //   140	147	250	java/lang/Exception
+    //   157	168	250	java/lang/Exception
+    //   178	183	250	java/lang/Exception
+    //   219	223	250	java/lang/Exception
+    //   69	79	263	java/lang/Exception
+    //   52	64	276	finally
+    //   52	64	282	java/lang/Exception
+    //   35	52	307	finally
+    //   35	52	315	java/lang/Exception
+    //   89	95	371	finally
+    //   105	112	371	finally
+    //   122	130	371	finally
+    //   140	147	371	finally
+    //   157	168	371	finally
+    //   178	183	371	finally
+    //   219	223	371	finally
+    //   333	341	371	finally
+    //   351	368	371	finally
+    //   396	404	371	finally
+    //   333	341	385	java/lang/Exception
+    //   351	368	385	java/lang/Exception
+    //   69	79	566	finally
+    //   458	467	566	finally
+    //   476	484	566	finally
+    //   493	510	566	finally
+    //   519	529	566	finally
+    //   35	52	612	java/io/FileNotFoundException
+    //   52	64	616	java/io/FileNotFoundException
+    //   69	79	620	java/io/FileNotFoundException
+    //   89	95	628	java/io/FileNotFoundException
+    //   105	112	628	java/io/FileNotFoundException
+    //   122	130	628	java/io/FileNotFoundException
+    //   140	147	628	java/io/FileNotFoundException
+    //   157	168	628	java/io/FileNotFoundException
+    //   178	183	628	java/io/FileNotFoundException
+    //   219	223	628	java/io/FileNotFoundException
+    //   408	412	632	java/lang/Exception
+    //   419	423	632	java/lang/Exception
+    //   428	433	632	java/lang/Exception
+    //   534	539	636	java/lang/Exception
+    //   546	550	636	java/lang/Exception
+    //   554	558	636	java/lang/Exception
+    //   579	584	640	java/lang/Exception
+    //   591	595	640	java/lang/Exception
+    //   599	603	640	java/lang/Exception
   }
   
   private void removeExpired()
   {
-    if (this.mRecentRouteRecordMap == null) {}
-    for (;;)
-    {
+    Object localObject1 = this.mRecentRouteRecordMap;
+    if (localObject1 == null) {
       return;
-      Object localObject = this.mRecentRouteRecordMap.keySet();
-      if (localObject != null)
+    }
+    localObject1 = ((HashMap)localObject1).keySet();
+    if (localObject1 == null) {
+      return;
+    }
+    localObject1 = ((Set)localObject1).iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      String str = (String)((Iterator)localObject1).next();
+      Object localObject2 = (RecentRouteRecord)this.mRecentRouteRecordMap.get(str);
+      if (localObject2 != null)
       {
-        localObject = ((Set)localObject).iterator();
-        while (((Iterator)localObject).hasNext())
+        long l = ((RecentRouteRecord)localObject2).getTimeStamp();
+        if ((l != 0L) && (System.currentTimeMillis() > l + UploadConfiguration.getRecentRouteExpire()))
         {
-          String str = (String)((Iterator)localObject).next();
-          RecentRouteRecord localRecentRouteRecord = (RecentRouteRecord)this.mRecentRouteRecordMap.get(str);
-          if (localRecentRouteRecord != null)
-          {
-            long l = localRecentRouteRecord.getTimeStamp();
-            if ((l != 0L) && (System.currentTimeMillis() > l + UploadConfiguration.getRecentRouteExpire()))
-            {
-              ((Iterator)localObject).remove();
-              UploadLog.d("RouteSetStorage", "removeExpired key:" + str + " contains:" + this.mRecentRouteRecordMap.containsKey(str));
-            }
-          }
+          ((Iterator)localObject1).remove();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("removeExpired key:");
+          ((StringBuilder)localObject2).append(str);
+          ((StringBuilder)localObject2).append(" contains:");
+          ((StringBuilder)localObject2).append(this.mRecentRouteRecordMap.containsKey(str));
+          UploadLog.d("RouteSetStorage", ((StringBuilder)localObject2).toString());
         }
       }
     }
@@ -506,128 +540,115 @@ public class RecentRouteRecordStorage
     //   0: ldc 14
     //   2: ldc 202
     //   4: invokestatic 105	com/tencent/upload/utils/UploadLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   7: aconst_null
-    //   8: astore_1
-    //   9: invokestatic 111	com/tencent/upload/common/UploadGlobalConfig:getContext	()Landroid/content/Context;
-    //   12: astore_2
-    //   13: aload_2
-    //   14: ifnonnull +12 -> 26
-    //   17: ldc 14
-    //   19: ldc 204
-    //   21: invokestatic 116	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   24: iconst_0
-    //   25: ireturn
-    //   26: aload_0
-    //   27: invokespecial 206	com/tencent/upload/network/route/RecentRouteRecordStorage:removeExpired	()V
-    //   30: new 208	java/io/ObjectOutputStream
-    //   33: dup
-    //   34: new 210	java/io/BufferedOutputStream
-    //   37: dup
-    //   38: aload_2
-    //   39: aload_0
-    //   40: aload_0
-    //   41: getfield 31	com/tencent/upload/network/route/RecentRouteRecordStorage:mServerRouteTable	Lcom/tencent/upload/network/route/ServerRouteTable;
-    //   44: getfield 122	com/tencent/upload/network/route/ServerRouteTable:code	I
-    //   47: invokespecial 124	com/tencent/upload/network/route/RecentRouteRecordStorage:getRecentRouteSetFilePath	(I)Ljava/lang/String;
-    //   50: iconst_0
-    //   51: invokevirtual 214	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
-    //   54: invokespecial 217	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   57: invokespecial 218	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   60: astore_2
-    //   61: aload_2
-    //   62: astore_1
+    //   7: invokestatic 111	com/tencent/upload/common/UploadGlobalConfig:getContext	()Landroid/content/Context;
+    //   10: astore_2
+    //   11: aload_2
+    //   12: ifnonnull +12 -> 24
+    //   15: ldc 14
+    //   17: ldc 204
+    //   19: invokestatic 116	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   22: iconst_0
+    //   23: ireturn
+    //   24: aload_0
+    //   25: invokespecial 206	com/tencent/upload/network/route/RecentRouteRecordStorage:removeExpired	()V
+    //   28: aconst_null
+    //   29: astore_3
+    //   30: aconst_null
+    //   31: astore_1
+    //   32: new 208	java/io/ObjectOutputStream
+    //   35: dup
+    //   36: new 210	java/io/BufferedOutputStream
+    //   39: dup
+    //   40: aload_2
+    //   41: aload_0
+    //   42: aload_0
+    //   43: getfield 31	com/tencent/upload/network/route/RecentRouteRecordStorage:mServerRouteTable	Lcom/tencent/upload/network/route/ServerRouteTable;
+    //   46: getfield 122	com/tencent/upload/network/route/ServerRouteTable:code	I
+    //   49: invokespecial 124	com/tencent/upload/network/route/RecentRouteRecordStorage:getRecentRouteSetFilePath	(I)Ljava/lang/String;
+    //   52: iconst_0
+    //   53: invokevirtual 214	android/content/Context:openFileOutput	(Ljava/lang/String;I)Ljava/io/FileOutputStream;
+    //   56: invokespecial 217	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   59: invokespecial 218	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   62: astore_2
     //   63: aload_2
     //   64: aload_0
     //   65: getfield 29	com/tencent/upload/network/route/RecentRouteRecordStorage:mRecentRouteRecordMap	Ljava/util/HashMap;
     //   68: invokevirtual 222	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   71: aload_2
-    //   72: astore_1
-    //   73: aload_0
-    //   74: invokespecial 155	com/tencent/upload/network/route/RecentRouteRecordStorage:dump	()V
-    //   77: aload_2
-    //   78: ifnull +7 -> 85
-    //   81: aload_2
-    //   82: invokevirtual 223	java/io/ObjectOutputStream:close	()V
-    //   85: iconst_1
-    //   86: ireturn
-    //   87: astore_1
-    //   88: ldc 14
-    //   90: ldc 225
-    //   92: aload_1
-    //   93: invokestatic 165	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   96: goto -11 -> 85
-    //   99: astore_3
-    //   100: aconst_null
-    //   101: astore_2
-    //   102: aload_2
-    //   103: astore_1
-    //   104: ldc 14
-    //   106: ldc 227
-    //   108: aload_3
-    //   109: invokestatic 165	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   112: aload_2
-    //   113: ifnull -28 -> 85
-    //   116: aload_2
-    //   117: invokevirtual 223	java/io/ObjectOutputStream:close	()V
-    //   120: goto -35 -> 85
-    //   123: astore_1
-    //   124: ldc 14
-    //   126: ldc 225
-    //   128: aload_1
-    //   129: invokestatic 165	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   132: goto -47 -> 85
-    //   135: astore_3
-    //   136: aload_1
-    //   137: astore_2
-    //   138: aload_3
-    //   139: astore_1
-    //   140: aload_2
-    //   141: ifnull +7 -> 148
-    //   144: aload_2
-    //   145: invokevirtual 223	java/io/ObjectOutputStream:close	()V
-    //   148: aload_1
-    //   149: athrow
-    //   150: astore_2
-    //   151: ldc 14
-    //   153: ldc 225
+    //   71: aload_0
+    //   72: invokespecial 155	com/tencent/upload/network/route/RecentRouteRecordStorage:dump	()V
+    //   75: aload_2
+    //   76: invokevirtual 223	java/io/ObjectOutputStream:close	()V
+    //   79: goto +54 -> 133
+    //   82: astore_3
+    //   83: aload_2
+    //   84: astore_1
+    //   85: aload_3
+    //   86: astore_2
+    //   87: goto +48 -> 135
+    //   90: astore_3
+    //   91: goto +12 -> 103
+    //   94: astore_2
+    //   95: goto +40 -> 135
+    //   98: astore_1
+    //   99: aload_3
+    //   100: astore_2
+    //   101: aload_1
+    //   102: astore_3
+    //   103: aload_2
+    //   104: astore_1
+    //   105: ldc 14
+    //   107: ldc 225
+    //   109: aload_3
+    //   110: invokestatic 160	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   113: aload_2
+    //   114: ifnull +19 -> 133
+    //   117: aload_2
+    //   118: invokevirtual 223	java/io/ObjectOutputStream:close	()V
+    //   121: goto +12 -> 133
+    //   124: astore_1
+    //   125: ldc 14
+    //   127: ldc 227
+    //   129: aload_1
+    //   130: invokestatic 160	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   133: iconst_1
+    //   134: ireturn
+    //   135: aload_1
+    //   136: ifnull +19 -> 155
+    //   139: aload_1
+    //   140: invokevirtual 223	java/io/ObjectOutputStream:close	()V
+    //   143: goto +12 -> 155
+    //   146: astore_1
+    //   147: ldc 14
+    //   149: ldc 227
+    //   151: aload_1
+    //   152: invokestatic 160	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
     //   155: aload_2
-    //   156: invokestatic 165	com/tencent/upload/utils/UploadLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   159: goto -11 -> 148
-    //   162: astore_3
-    //   163: aload_1
-    //   164: astore_2
-    //   165: aload_3
-    //   166: astore_1
-    //   167: goto -27 -> 140
-    //   170: astore_3
-    //   171: goto -69 -> 102
+    //   156: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	174	0	this	RecentRouteRecordStorage
-    //   8	65	1	localObject1	Object
-    //   87	6	1	localException1	Exception
-    //   103	1	1	localObject2	Object
-    //   123	14	1	localException2	Exception
-    //   139	28	1	localObject3	Object
-    //   12	133	2	localObject4	Object
-    //   150	6	2	localException3	Exception
-    //   164	1	2	localObject5	Object
-    //   99	10	3	localException4	Exception
-    //   135	4	3	localObject6	Object
-    //   162	4	3	localObject7	Object
-    //   170	1	3	localException5	Exception
+    //   0	157	0	this	RecentRouteRecordStorage
+    //   31	54	1	localObject1	Object
+    //   98	4	1	localException1	Exception
+    //   104	1	1	localObject2	Object
+    //   124	16	1	localException2	Exception
+    //   146	6	1	localException3	Exception
+    //   10	77	2	localObject3	Object
+    //   94	1	2	localObject4	Object
+    //   100	56	2	localObject5	Object
+    //   29	1	3	localObject6	Object
+    //   82	4	3	localObject7	Object
+    //   90	10	3	localException4	Exception
+    //   102	8	3	localObject8	Object
     // Exception table:
     //   from	to	target	type
-    //   81	85	87	java/lang/Exception
-    //   30	61	99	java/lang/Exception
-    //   116	120	123	java/lang/Exception
-    //   30	61	135	finally
-    //   144	148	150	java/lang/Exception
-    //   63	71	162	finally
-    //   73	77	162	finally
-    //   104	112	162	finally
-    //   63	71	170	java/lang/Exception
-    //   73	77	170	java/lang/Exception
+    //   63	75	82	finally
+    //   63	75	90	java/lang/Exception
+    //   32	63	94	finally
+    //   105	113	94	finally
+    //   32	63	98	java/lang/Exception
+    //   75	79	124	java/lang/Exception
+    //   117	121	124	java/lang/Exception
+    //   139	143	146	java/lang/Exception
   }
   
   public void clear(int paramInt)
@@ -646,7 +667,10 @@ public class RecentRouteRecordStorage
     catch (Exception localException)
     {
       localException.printStackTrace();
-      UploadLog.e("RouteSetStorage", "clear() deleteFile " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("clear() deleteFile ");
+      localStringBuilder.append(localException);
+      UploadLog.e("RouteSetStorage", localStringBuilder.toString());
     }
   }
   
@@ -663,7 +687,7 @@ public class RecentRouteRecordStorage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.network.route.RecentRouteRecordStorage
  * JD-Core Version:    0.7.0.1
  */

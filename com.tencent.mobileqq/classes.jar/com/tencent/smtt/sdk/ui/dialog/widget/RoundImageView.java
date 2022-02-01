@@ -47,42 +47,38 @@ public class RoundImageView
     this.e = new RectF();
     this.h = c.a(paramContext, 16.459999F);
     int j = 0;
-    while (j < this.d.length)
+    for (;;)
     {
-      this.d[j] = this.h;
+      paramContext = this.d;
+      if (j >= paramContext.length) {
+        break;
+      }
+      paramContext[j] = this.h;
       j += 1;
     }
   }
   
   private Bitmap a()
   {
+    Object localObject = null;
     try
     {
-      localBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-      Canvas localCanvas;
-      Paint localPaint;
-      localThrowable1.printStackTrace();
+      Bitmap localBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+      localObject = localBitmap;
+      Canvas localCanvas = new Canvas(localBitmap);
+      localObject = localBitmap;
+      Paint localPaint = new Paint(1);
+      localObject = localBitmap;
+      localPaint.setColor(-16777216);
+      localObject = localBitmap;
+      localCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.h, this.h, localPaint);
+      return localBitmap;
     }
-    catch (Throwable localThrowable1)
+    catch (Throwable localThrowable)
     {
-      try
-      {
-        localCanvas = new Canvas(localBitmap);
-        localPaint = new Paint(1);
-        localPaint.setColor(-16777216);
-        localCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getWidth(), getHeight()), this.h, this.h, localPaint);
-        return localBitmap;
-      }
-      catch (Throwable localThrowable2)
-      {
-        Bitmap localBitmap;
-        break label76;
-      }
-      localThrowable1 = localThrowable1;
-      localBitmap = null;
+      localThrowable.printStackTrace();
     }
-    label76:
-    return localBitmap;
+    return localObject;
   }
   
   private void a(int paramInt1, int paramInt2)
@@ -103,66 +99,71 @@ public class RoundImageView
   public void invalidate()
   {
     this.g = null;
-    if (this.c != null)
+    Bitmap localBitmap = this.c;
+    if (localBitmap != null)
     {
-      this.c.recycle();
+      localBitmap.recycle();
       this.c = null;
     }
     super.invalidate();
   }
   
   @SuppressLint({"DrawAllocation"})
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    Object localObject;
-    if (this.g == null)
+    Object localObject1 = this.g;
+    if (localObject1 == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = (Bitmap)((WeakReference)localObject1).get();
+    }
+    if ((localObject1 != null) && (!((Bitmap)localObject1).isRecycled()))
     {
-      localObject = null;
-      if ((localObject != null) && (!((Bitmap)localObject).isRecycled())) {
-        break label263;
-      }
-      localObject = getDrawable();
-      if (localObject != null)
+      this.a.setXfermode(null);
+      paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, 0.0F, this.a);
+    }
+    else
+    {
+      Object localObject2 = getDrawable();
+      if (localObject2 != null)
       {
-        int j = ((Drawable)localObject).getIntrinsicWidth();
-        int k = ((Drawable)localObject).getIntrinsicHeight();
-        Bitmap localBitmap = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
-        Canvas localCanvas = new Canvas(localBitmap);
-        float f1 = Math.max(getWidth() * 1.0F / j, getHeight() * 1.0F / k);
-        ((Drawable)localObject).setBounds(0, 0, (int)(j * f1), (int)(k * f1));
-        ((Drawable)localObject).draw(localCanvas);
-        if ((this.c == null) || (this.c.isRecycled())) {
+        int j = ((Drawable)localObject2).getIntrinsicWidth();
+        int k = ((Drawable)localObject2).getIntrinsicHeight();
+        localObject1 = Bitmap.createBitmap(getWidth(), getHeight(), Bitmap.Config.ARGB_8888);
+        Canvas localCanvas = new Canvas((Bitmap)localObject1);
+        float f2 = getWidth();
+        float f1 = j;
+        float f3 = f2 * 1.0F / f1;
+        float f4 = getHeight();
+        f2 = k;
+        f3 = Math.max(f3, f4 * 1.0F / f2);
+        ((Drawable)localObject2).setBounds(0, 0, (int)(f1 * f3), (int)(f3 * f2));
+        ((Drawable)localObject2).draw(localCanvas);
+        localObject2 = this.c;
+        if ((localObject2 == null) || (((Bitmap)localObject2).isRecycled())) {
           this.c = a();
         }
         this.a.reset();
         this.a.setFilterBitmap(false);
         this.a.setXfermode(this.b);
-        if (this.c != null) {
-          localCanvas.drawBitmap(this.c, 0.0F, 0.0F, this.a);
+        localObject2 = this.c;
+        if (localObject2 != null) {
+          localCanvas.drawBitmap((Bitmap)localObject2, 0.0F, 0.0F, this.a);
         }
         this.a.setXfermode(null);
-        paramCanvas.drawBitmap(localBitmap, 0.0F, 0.0F, null);
-        this.g = new WeakReference(localBitmap);
+        paramCanvas.drawBitmap((Bitmap)localObject1, 0.0F, 0.0F, null);
+        this.g = new WeakReference(localObject1);
       }
     }
-    for (;;)
-    {
-      a(paramCanvas, 1, this.f, this.e, this.d);
-      return;
-      localObject = (Bitmap)this.g.get();
-      break;
-      label263:
-      this.a.setXfermode(null);
-      paramCanvas.drawBitmap((Bitmap)localObject, 0.0F, 0.0F, this.a);
-    }
+    a(paramCanvas, 1, this.f, this.e, this.d);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.e.set(0.5F, 0.5F, paramInt1 - 0.5F, paramInt2 - 0.5F);
@@ -170,7 +171,7 @@ public class RoundImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.ui.dialog.widget.RoundImageView
  * JD-Core Version:    0.7.0.1
  */

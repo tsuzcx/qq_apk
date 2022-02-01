@@ -17,12 +17,19 @@ final class VorbisBitArray
   
   private void assertValidOffset()
   {
-    if ((this.byteOffset >= 0) && ((this.byteOffset < this.byteLimit) || ((this.byteOffset == this.byteLimit) && (this.bitOffset == 0)))) {}
-    for (boolean bool = true;; bool = false)
+    int i = this.byteOffset;
+    if (i >= 0)
     {
-      Assertions.checkState(bool);
-      return;
+      int j = this.byteLimit;
+      if ((i < j) || ((i == j) && (this.bitOffset == 0)))
+      {
+        bool = true;
+        break label38;
+      }
     }
+    boolean bool = false;
+    label38:
+    Assertions.checkState(bool);
   }
   
   public int bitsLeft()
@@ -37,12 +44,14 @@ final class VorbisBitArray
   
   public boolean readBit()
   {
-    if (((this.data[this.byteOffset] & 0xFF) >> this.bitOffset & 0x1) == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      skipBits(1);
-      return bool;
+    boolean bool;
+    if (((this.data[this.byteOffset] & 0xFF) >> this.bitOffset & 0x1) == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    skipBits(1);
+    return bool;
   }
   
   public int readBits(int paramInt)
@@ -79,18 +88,19 @@ final class VorbisBitArray
   {
     int i = paramInt / 8;
     this.byteOffset += i;
-    this.bitOffset = (paramInt - i * 8 + this.bitOffset);
-    if (this.bitOffset > 7)
+    this.bitOffset += paramInt - i * 8;
+    paramInt = this.bitOffset;
+    if (paramInt > 7)
     {
       this.byteOffset += 1;
-      this.bitOffset -= 8;
+      this.bitOffset = (paramInt - 8);
     }
     assertValidOffset();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ogg.VorbisBitArray
  * JD-Core Version:    0.7.0.1
  */

@@ -61,12 +61,24 @@ public abstract class BaseTavEvent
   
   public String toString()
   {
-    return "BaseEvent{className='" + this.jdField_a_of_type_JavaLangString + '\'' + ", methodName='" + this.b + '\'' + ", param=" + this.jdField_a_of_type_OrgJsonJSONObject + ", objPool=" + TavObjPool.a() + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseEvent{className='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", methodName='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", param=");
+    localStringBuilder.append(this.jdField_a_of_type_OrgJsonJSONObject);
+    localStringBuilder.append(", objPool=");
+    localStringBuilder.append(TavObjPool.a());
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.BaseTavEvent
  * JD-Core Version:    0.7.0.1
  */

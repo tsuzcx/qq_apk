@@ -17,27 +17,34 @@ class MiniAppLivePlayer$2
   
   public void onAudioVolumeEvaluationNotify(int paramInt)
   {
-    QMLog.d("MiniAppLivePlayer", "onAudioVolumeEvaluationNotify code:" + paramInt);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onAudioVolumeEvaluationNotify code:");
+    ((StringBuilder)localObject).append(paramInt);
+    QMLog.d("MiniAppLivePlayer", ((StringBuilder)localObject).toString());
     try
     {
       JSONObject localJSONObject = new JSONObject();
       localJSONObject.put("livePlayerId", this.this$0.livePlayerId);
-      Object localObject = new JSONObject();
+      localObject = new JSONObject();
       ((JSONObject)localObject).put("volume", paramInt);
       localJSONObject.put("info", localObject);
-      if (this.this$0.miniAppContextRef != null) {}
-      for (localObject = (IMiniAppContext)this.this$0.miniAppContextRef.get();; localObject = null)
+      if (this.this$0.miniAppContextRef != null) {
+        localObject = (IMiniAppContext)this.this$0.miniAppContextRef.get();
+      } else {
+        localObject = null;
+      }
+      if (localObject != null) {
+        ((IMiniAppContext)localObject).performAction(ServiceSubscribeEvent.obtain("onLivePlayerAudioVolumeNotify", localJSONObject.toString(), this.this$0.webviewId));
+      }
+      this.val$req.jsService.evaluateSubscribeJS("onLivePlayerAudioVolumeNotify", localJSONObject.toString(), this.this$0.webviewId);
+      if (QMLog.isColorLevel())
       {
-        if (localObject != null) {
-          ((IMiniAppContext)localObject).performAction(ServiceSubscribeEvent.obtain("onLivePlayerAudioVolumeNotify", localJSONObject.toString(), this.this$0.webviewId));
-        }
-        this.val$req.jsService.evaluateSubscribeJS("onLivePlayerAudioVolumeNotify", localJSONObject.toString(), this.this$0.webviewId);
-        if (QMLog.isColorLevel()) {
-          QMLog.e("MiniAppLivePlayer", "onAudioVolumeEvaluationNotify resultObj.toString() = " + localJSONObject.toString());
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onAudioVolumeEvaluationNotify resultObj.toString() = ");
+        ((StringBuilder)localObject).append(localJSONObject.toString());
+        QMLog.e("MiniAppLivePlayer", ((StringBuilder)localObject).toString());
         return;
       }
-      return;
     }
     catch (JSONException localJSONException)
     {
@@ -47,7 +54,7 @@ class MiniAppLivePlayer$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppLivePlayer.2
  * JD-Core Version:    0.7.0.1
  */

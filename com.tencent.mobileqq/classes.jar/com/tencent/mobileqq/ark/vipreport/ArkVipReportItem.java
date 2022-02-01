@@ -23,7 +23,6 @@ public class ArkVipReportItem
   public JSONObject a()
   {
     JSONObject localJSONObject = new JSONObject();
-    String str;
     for (;;)
     {
       try
@@ -39,32 +38,32 @@ public class ArkVipReportItem
           localJSONObject.put("costTime", this.c);
           localJSONObject.put("net", this.d);
           localObject = new JSONObject();
-          if (this.jdField_a_of_type_JavaUtilHashMap == null) {
-            break;
+          if (this.jdField_a_of_type_JavaUtilHashMap != null)
+          {
+            Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+            if (localIterator.hasNext())
+            {
+              Map.Entry localEntry = (Map.Entry)localIterator.next();
+              ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue());
+              continue;
+            }
           }
-          Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-          if (!localIterator.hasNext()) {
-            break;
-          }
-          Map.Entry localEntry = (Map.Entry)localIterator.next();
-          ((JSONObject)localObject).put((String)localEntry.getKey(), localEntry.getValue());
-          continue;
+          localJSONObject.put("param", localObject);
+          return localJSONObject;
         }
-        str = "";
       }
       catch (JSONException localJSONException)
       {
         QLog.e("ArkVipReportItem", 1, "getJsonObject()", localJSONException);
         return localJSONObject;
       }
+      String str = "";
     }
-    localJSONObject.put("param", str);
-    return localJSONObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.vipreport.ArkVipReportItem
  * JD-Core Version:    0.7.0.1
  */

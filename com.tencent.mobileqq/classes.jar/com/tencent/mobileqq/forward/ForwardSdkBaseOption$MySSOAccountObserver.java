@@ -31,23 +31,23 @@ class ForwardSdkBaseOption$MySSOAccountObserver
   public void onGetTicketNoPasswd(String paramString, byte[] paramArrayOfByte, int paramInt, Bundle paramBundle)
   {
     QLog.d("ForwardSdkBaseOption", 1, new Object[] { "-->onGetTicketNoPasswd--recv g_t_n_p, account = ", paramString });
-    if (paramInt == 4096) {}
-    for (paramString = new String(paramArrayOfByte);; paramString = null)
+    if (paramInt == 4096) {
+      paramString = new String(paramArrayOfByte);
+    } else {
+      paramString = null;
+    }
+    paramArrayOfByte = (ForwardSdkBaseOption)this.a.get();
+    if (paramArrayOfByte != null)
     {
-      paramArrayOfByte = (ForwardSdkBaseOption)this.a.get();
-      if (paramArrayOfByte != null)
-      {
-        ForwardSdkBaseOption.a(paramArrayOfByte, "KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
-        paramArrayOfByte.k = paramString;
-        paramArrayOfByte.n = true;
-      }
-      return;
+      ForwardSdkBaseOption.a(paramArrayOfByte, "KEY_SSO_GET_TICKET_NO_PASSWD", paramBundle, true);
+      paramArrayOfByte.k = paramString;
+      paramArrayOfByte.n = true;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardSdkBaseOption.MySSOAccountObserver
  * JD-Core Version:    0.7.0.1
  */

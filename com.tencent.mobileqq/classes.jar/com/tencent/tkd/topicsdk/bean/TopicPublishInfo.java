@@ -60,7 +60,21 @@ public final class TopicPublishInfo
   @NotNull
   public String toString()
   {
-    return "TopicPublishInfo { " + "coverUrl = " + this.jdField_a_of_type_JavaLangString + ", " + "title = " + this.b + ", " + "intro = " + this.c + ',' + "allowSubmit = " + this.jdField_a_of_type_Boolean + " }";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TopicPublishInfo { ");
+    localStringBuilder.append("coverUrl = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("title = ");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", ");
+    localStringBuilder.append("intro = ");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(',');
+    localStringBuilder.append("allowSubmit = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(" }");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
@@ -70,7 +84,7 @@ public final class TopicPublishInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.bean.TopicPublishInfo
  * JD-Core Version:    0.7.0.1
  */

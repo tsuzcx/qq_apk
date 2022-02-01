@@ -1,9 +1,8 @@
 package com.tencent.mobileqq.activity.aio.tips;
 
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.View;
 import android.view.View.OnClickListener;
+import androidx.fragment.app.FragmentManager;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.BaseActivity;
@@ -17,9 +16,9 @@ class ArkTipsBar$1
   
   public void onClick(View paramView)
   {
-    if ((BaseActivity.sTopActivity instanceof FragmentActivity))
+    if ((BaseActivity.sTopActivity instanceof BaseActivity))
     {
-      Object localObject = (ChatFragment)((FragmentActivity)BaseActivity.sTopActivity).getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
+      Object localObject = (ChatFragment)BaseActivity.sTopActivity.getSupportFragmentManager().findFragmentByTag(ChatFragment.class.getName());
       if (localObject != null)
       {
         localObject = ((ChatFragment)localObject).a();
@@ -34,7 +33,7 @@ class ArkTipsBar$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.tips.ArkTipsBar.1
  * JD-Core Version:    0.7.0.1
  */

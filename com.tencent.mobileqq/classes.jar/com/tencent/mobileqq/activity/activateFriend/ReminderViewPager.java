@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.ViewParent;
+import androidx.viewpager.widget.ViewPager;
 
 public class ReminderViewPager
   extends ViewPager
@@ -24,44 +24,40 @@ public class ReminderViewPager
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    for (;;)
+    try
     {
-      int i;
-      int j;
-      try
+      int i = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      int k = paramMotionEvent.getAction();
+      if (k != 0)
       {
-        i = (int)paramMotionEvent.getRawX();
-        j = (int)paramMotionEvent.getRawY();
-        switch (paramMotionEvent.getAction())
+        if (k == 2)
         {
-        case 1: 
-        case 3: 
-          return super.dispatchTouchEvent(paramMotionEvent);
+          if (Math.abs(i - this.a) + 0 >= Math.abs(j - this.b) + 0) {
+            getParent().requestDisallowInterceptTouchEvent(true);
+          } else {
+            getParent().requestDisallowInterceptTouchEvent(false);
+          }
+          this.a = i;
+          this.b = j;
         }
       }
-      catch (Throwable paramMotionEvent)
-      {
-        paramMotionEvent.printStackTrace();
-        return false;
-      }
-      getParent().requestDisallowInterceptTouchEvent(true);
-      continue;
-      if (Math.abs(i - this.a) + 0 >= Math.abs(j - this.b) + 0) {
+      else {
         getParent().requestDisallowInterceptTouchEvent(true);
       }
-      for (;;)
-      {
-        this.a = i;
-        this.b = j;
-        break;
-        getParent().requestDisallowInterceptTouchEvent(false);
-      }
+      boolean bool = super.dispatchTouchEvent(paramMotionEvent);
+      return bool;
     }
+    catch (Throwable paramMotionEvent)
+    {
+      paramMotionEvent.printStackTrace();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ReminderViewPager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.biz.addContactTroopView;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 
 class TroopCardBanner$2$1
   implements Runnable
@@ -15,7 +15,7 @@ class TroopCardBanner$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.addContactTroopView.TroopCardBanner.2.1
  * JD-Core Version:    0.7.0.1
  */

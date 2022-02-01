@@ -11,13 +11,13 @@ class ScreenShareHandler$1
   
   public void run()
   {
-    PopupDialog.a(BaseApplicationImpl.getContext(), 230, null, this.a, 2131718846, 2131718846, new ScreenShareHandler.1.1(this), null);
+    PopupDialog.a(BaseApplicationImpl.getContext(), 230, null, this.a, 2131718561, 2131718561, new ScreenShareHandler.1.1(this), null);
     ReportController.b(null, "dc00898", "", "", "0X800B8AB", "0X800B8AB", 0, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.screenshare.ScreenShareHandler.1
  * JD-Core Version:    0.7.0.1
  */

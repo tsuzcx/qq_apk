@@ -17,45 +17,50 @@ public class ConnectApiPlugin
     this.mPluginNameSpace = "connect";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = false;
-    if (("connect".equals(paramString2)) && ("exchangeID".equals(paramString3)) && (paramVarArgs.length > 0)) {}
-    try
-    {
-      paramString3 = new JSONObject(paramVarArgs[0]);
-      paramJsBridgeListener = paramString3.optString("appid");
-      paramString1 = paramString3.optString("openid");
-      paramString2 = paramString3.optString("troopuin");
-      paramString3 = paramString3.optString("callback");
-      if (this.a == null)
+    if (("connect".equals(paramString2)) && ("exchangeID".equals(paramString3)) && (paramVarArgs.length > 0)) {
+      try
       {
-        this.a = TroopMemberApiClient.a();
-        this.a.a();
+        paramString3 = new JSONObject(paramVarArgs[0]);
+        paramJsBridgeListener = paramString3.optString("appid");
+        paramString1 = paramString3.optString("openid");
+        paramString2 = paramString3.optString("troopuin");
+        paramString3 = paramString3.optString("callback");
+        if (this.a == null)
+        {
+          this.a = TroopMemberApiClient.a();
+          this.a.a();
+        }
+        this.a.b(paramJsBridgeListener, paramString1, paramString2, new ConnectApiPlugin.1(this, paramString3));
       }
-      this.a.b(paramJsBridgeListener, paramString1, paramString2, new ConnectApiPlugin.1(this, paramString3));
-      bool = true;
+      catch (JSONException paramJsBridgeListener)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramString1 = new StringBuilder();
+          paramString1.append("handleJsRequest JSONException:");
+          paramString1.append(paramJsBridgeListener);
+          QLog.e("ConnectApiPlugin", 2, paramString1.toString());
+        }
+        return false;
+      }
     }
-    catch (JSONException paramJsBridgeListener)
-    {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("ConnectApiPlugin", 2, "handleJsRequest JSONException:" + paramJsBridgeListener);
-    }
-    return bool;
-    return false;
+    return true;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if (this.a != null) {
-      this.a.b();
+    TroopMemberApiClient localTroopMemberApiClient = this.a;
+    if (localTroopMemberApiClient != null) {
+      localTroopMemberApiClient.b();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.ConnectApiPlugin
  * JD-Core Version:    0.7.0.1
  */

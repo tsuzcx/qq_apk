@@ -22,23 +22,22 @@ class BindGroupConfirmActivity$8$1
     try
     {
       ForwardSdkShareOption.a(this.a.this$0, true, "action_game_bind_group", Long.valueOf(this.a.this$0.c).longValue(), -1, this.a.a);
-      this.a.this$0.a.cancel();
-      BindGroupConfirmActivity.a(this.a.this$0, -1);
-      BindGroupConfirmActivity.a(this.a.this$0);
-      return;
     }
     catch (Exception paramDialogInterface)
     {
-      for (;;)
-      {
-        QLog.e("BindGroupConfirmActivity", 1, "showAlertDlg error = " + paramDialogInterface);
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showAlertDlg error = ");
+      localStringBuilder.append(paramDialogInterface);
+      QLog.e("BindGroupConfirmActivity", 1, localStringBuilder.toString());
     }
+    this.a.this$0.a.cancel();
+    BindGroupConfirmActivity.a(this.a.this$0, -1);
+    BindGroupConfirmActivity.a(this.a.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupConfirmActivity.8.1
  * JD-Core Version:    0.7.0.1
  */

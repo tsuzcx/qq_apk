@@ -61,58 +61,67 @@ public class ClickableColorSpanTextView
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
   {
-    int i;
-    StatableSpanTextView.StatableForegroundColorSpan localStatableForegroundColorSpan;
     if ((this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan != null) && ((getText() instanceof Spannable)))
     {
       int j = getOffsetForPosition(paramMotionEvent.getX(), paramMotionEvent.getY());
-      StatableSpanTextView.StatableForegroundColorSpan[] arrayOfStatableForegroundColorSpan = this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
-      int k = arrayOfStatableForegroundColorSpan.length;
-      i = 0;
-      if (i >= k) {
-        break label247;
-      }
-      localStatableForegroundColorSpan = arrayOfStatableForegroundColorSpan[i];
-      int m = ((Spannable)getText()).getSpanStart(localStatableForegroundColorSpan);
-      int n = ((Spannable)getText()).getSpanEnd(localStatableForegroundColorSpan);
-      if ((j <= m) || (j >= n)) {
-        break label138;
-      }
-    }
-    for (;;)
-    {
-      switch (paramMotionEvent.getAction())
+      Object localObject2 = this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+      int k = localObject2.length;
+      int i = 0;
+      while (i < k)
       {
-      }
-      for (;;)
-      {
-        return super.onTouchEvent(paramMotionEvent);
-        label138:
+        localObject1 = localObject2[i];
+        int m = ((Spannable)getText()).getSpanStart(localObject1);
+        int n = ((Spannable)getText()).getSpanEnd(localObject1);
+        if ((j > m) && (j < n)) {
+          break label112;
+        }
         i += 1;
-        break;
-        if (localStatableForegroundColorSpan != null)
-        {
-          localStatableForegroundColorSpan.a(StatableSpanTextView.StatableForegroundColorSpan.a);
-          this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = localStatableForegroundColorSpan;
-          invalidate();
-          return true;
-          if ((this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan == localStatableForegroundColorSpan) && (this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan != null)) {
-            return true;
-          }
-          if (this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan != null)
+      }
+      Object localObject1 = null;
+      label112:
+      i = paramMotionEvent.getAction();
+      if (i != 0)
+      {
+        if (i != 1) {
+          if (i != 2)
           {
-            if ((this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan == localStatableForegroundColorSpan) && (this.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener != null)) {
-              this.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener.a(this, this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan);
+            if (i != 3) {
+              break label245;
             }
-            this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan.a(StateSet.WILD_CARD);
-            this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
-            invalidate();
+          }
+          else
+          {
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+            if ((localObject2 == localObject1) && (localObject2 != null)) {
+              return true;
+            }
           }
         }
+        localObject2 = this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan;
+        if (localObject2 != null)
+        {
+          if (localObject2 == localObject1)
+          {
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqWidgetClickableColorSpanTextView$SpanClickListener;
+            if (localObject1 != null) {
+              ((ClickableColorSpanTextView.SpanClickListener)localObject1).a(this, (StatableSpanTextView.StatableForegroundColorSpan)localObject2);
+            }
+          }
+          this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan.a(StateSet.WILD_CARD);
+          this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
+          invalidate();
+        }
       }
-      label247:
-      localStatableForegroundColorSpan = null;
+      else if (localObject1 != null)
+      {
+        ((StatableSpanTextView.StatableForegroundColorSpan)localObject1).a(StatableSpanTextView.StatableForegroundColorSpan.a);
+        this.jdField_a_of_type_ComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = ((StatableSpanTextView.StatableForegroundColorSpan)localObject1);
+        invalidate();
+        return true;
+      }
     }
+    label245:
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void setSpanClickListener(ClickableColorSpanTextView.SpanClickListener paramSpanClickListener)
@@ -128,17 +137,16 @@ public class ClickableColorSpanTextView
       this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = ((StatableSpanTextView.StatableForegroundColorSpan[])paramBufferType.getSpans(0, paramBufferType.length(), StatableSpanTextView.StatableForegroundColorSpan.class));
       paramBufferType = TextView.BufferType.SPANNABLE;
     }
-    for (;;)
+    else
     {
-      super.setText(paramCharSequence, paramBufferType);
-      return;
       this.jdField_a_of_type_ArrayOfComTencentMobileqqWidgetStatableSpanTextView$StatableForegroundColorSpan = null;
     }
+    super.setText(paramCharSequence, paramBufferType);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClickableColorSpanTextView
  * JD-Core Version:    0.7.0.1
  */

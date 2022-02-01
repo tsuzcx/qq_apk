@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.model;
+package com.tencent.biz.pubaccount.accountdetail.model;
 
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_SDKMgr.InstallListener;
@@ -12,8 +12,12 @@ class AccountDetailVideoManager$5$1
   
   public void onInstalledFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "installSDK onInstalledFailed arg0=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("installSDK onInstalledFailed arg0=");
+      localStringBuilder.append(paramInt);
+      QLog.d("AccountDetailVideoManager", 2, localStringBuilder.toString());
     }
     AccountDetailVideoManager.a = false;
   }
@@ -28,7 +32,7 @@ class AccountDetailVideoManager$5$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager.5.1
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailVideoManager.5.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,13 +2,14 @@ package com.tencent.richmediabrowser.model;
 
 import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.richmediabrowser.core.IBaseModelBuilder;
 import com.tencent.richmediabrowser.presenter.MainBrowserPresenter;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
 
 public class MainBrowserModel
-  extends BrowserBaseModel
+  implements IBaseModelBuilder
 {
   public List<RichMediaBrowserInfo> browserDataList = new ArrayList();
   private MainBrowserPresenter browserPresenter;
@@ -20,27 +21,18 @@ public class MainBrowserModel
     this.browserPresenter = paramMainBrowserPresenter;
   }
   
-  public void buildComplete()
-  {
-    super.buildComplete();
-  }
+  public void buildComplete() {}
   
-  public void buildModel()
-  {
-    super.buildModel();
-  }
+  public void buildModel() {}
   
-  public void buildParams(Intent paramIntent)
-  {
-    super.buildParams(paramIntent);
-  }
+  public void buildParams(Intent paramIntent) {}
   
   public int getCount()
   {
     if (!this.browserDataList.isEmpty()) {
       return this.browserDataList.size();
     }
-    return super.getCount();
+    return 0;
   }
   
   public RichMediaBrowserInfo getItem(int paramInt)
@@ -48,7 +40,7 @@ public class MainBrowserModel
     if ((!this.browserDataList.isEmpty()) && (paramInt >= 0) && (paramInt < this.browserDataList.size())) {
       return (RichMediaBrowserInfo)this.browserDataList.get(paramInt);
     }
-    return super.getItem(paramInt);
+    return null;
   }
   
   public RichMediaBrowserInfo getItem(String paramString)
@@ -152,7 +144,7 @@ public class MainBrowserModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.richmediabrowser.model.MainBrowserModel
  * JD-Core Version:    0.7.0.1
  */

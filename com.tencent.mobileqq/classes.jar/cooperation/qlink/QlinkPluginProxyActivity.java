@@ -100,29 +100,26 @@ public class QlinkPluginProxyActivity
     EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (!TextUtils.isEmpty(this.mCreateErrorInfo)) {
-      if (paramBundle == null) {
-        break label68;
-      }
-    }
-    for (;;)
+    if (!TextUtils.isEmpty(this.mCreateErrorInfo))
     {
+      if (paramBundle == null) {
+        paramBundle = getIntent().getExtras();
+      }
       paramBundle = paramBundle.getString("pluginsdk_launchActivity");
-      StringBuffer localStringBuffer = new StringBuffer(HardCodeUtil.a(2131709859));
-      localStringBuffer.append(paramBundle).append(" ").append(this.mCreateErrorInfo);
+      StringBuffer localStringBuffer = new StringBuffer(HardCodeUtil.a(2131709846));
+      localStringBuffer.append(paramBundle);
+      localStringBuffer.append(" ");
+      localStringBuffer.append(this.mCreateErrorInfo);
       QLog.e("QLinkLog", 1, localStringBuffer.toString());
-      return;
-      label68:
-      paramBundle = getIntent().getExtras();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qlink.QlinkPluginProxyActivity
  * JD-Core Version:    0.7.0.1
  */

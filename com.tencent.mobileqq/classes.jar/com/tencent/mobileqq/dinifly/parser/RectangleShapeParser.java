@@ -11,68 +11,79 @@ class RectangleShapeParser
 {
   static RectangleShape parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableFloatValue localAnimatableFloatValue = null;
-    boolean bool = false;
-    AnimatablePointValue localAnimatablePointValue = null;
-    AnimatableValue localAnimatableValue = null;
     String str1 = null;
-    label14:
+    Object localObject1 = str1;
+    Object localObject2 = localObject1;
+    Object localObject3 = localObject2;
+    boolean bool = false;
     while (paramJsonReader.hasNext())
     {
       String str2 = paramJsonReader.nextName();
       int i = -1;
-      switch (str2.hashCode())
+      int j = str2.hashCode();
+      if (j != 112)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (j != 3324)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label14;
-          if (str2.equals("nm"))
+          if (j != 3519)
           {
-            i = 0;
-            continue;
-            if (str2.equals("p"))
+            if (j != 114)
             {
-              i = 1;
-              continue;
-              if (str2.equals("s"))
-              {
+              if ((j == 115) && (str2.equals("s"))) {
                 i = 2;
-                continue;
-                if (str2.equals("r"))
-                {
-                  i = 3;
-                  continue;
-                  if (str2.equals("hd")) {
-                    i = 4;
-                  }
-                }
               }
             }
+            else if (str2.equals("r")) {
+              i = 3;
+            }
           }
-          break;
+          else if (str2.equals("nm")) {
+            i = 0;
+          }
+        }
+        else if (str2.equals("hd")) {
+          i = 4;
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      localAnimatableValue = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatablePointValue = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
-      continue;
-      localAnimatableFloatValue = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else if (str2.equals("p")) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 4) {
+                paramJsonReader.skipValue();
+              } else {
+                bool = paramJsonReader.nextBoolean();
+              }
+            }
+            else {
+              localObject3 = AnimatableValueParser.parseFloat(paramJsonReader, paramLottieComposition);
+            }
+          }
+          else {
+            localObject2 = AnimatableValueParser.parsePoint(paramJsonReader, paramLottieComposition);
+          }
+        }
+        else {
+          localObject1 = AnimatablePathValueParser.parseSplitPath(paramJsonReader, paramLottieComposition);
+        }
+      }
+      else {
+        str1 = paramJsonReader.nextString();
+      }
     }
-    return new RectangleShape(str1, localAnimatableValue, localAnimatablePointValue, localAnimatableFloatValue, bool);
+    return new RectangleShape(str1, (AnimatableValue)localObject1, (AnimatablePointValue)localObject2, (AnimatableFloatValue)localObject3, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.RectangleShapeParser
  * JD-Core Version:    0.7.0.1
  */

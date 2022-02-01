@@ -22,21 +22,21 @@ class TTEngine$6
     }
     catch (Throwable localThrowable)
     {
-      String str;
-      ErrorCallback localErrorCallback;
-      do
-      {
-        str = "postRunnableToMessageQueue run failed " + this.val$runnable;
-        Logger.e(TTEngine.access$000(this.this$0), str, localThrowable);
-        localErrorCallback = (ErrorCallback)this.this$0.getEngineContext().getStatisticsManager().getErrorCallback().getValue();
-      } while (localErrorCallback == null);
-      localErrorCallback.onError(str, new TritonException(str, ErrorCodes.UNKNOWN, localThrowable));
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("postRunnableToMessageQueue run failed ");
+      ((StringBuilder)localObject).append(this.val$runnable);
+      localObject = ((StringBuilder)localObject).toString();
+      Logger.e(TTEngine.access$000(this.this$0), (String)localObject, localThrowable);
+      ErrorCallback localErrorCallback = (ErrorCallback)this.this$0.getEngineContext().getStatisticsManager().getErrorCallback().getValue();
+      if (localErrorCallback != null) {
+        localErrorCallback.onError((String)localObject, new TritonException((String)localObject, ErrorCodes.UNKNOWN, localThrowable));
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.engine.TTEngine.6
  * JD-Core Version:    0.7.0.1
  */

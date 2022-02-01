@@ -18,12 +18,12 @@ public class HippyModalHostManager
     return new HippyModalHostView(paramContext);
   }
   
-  public StyleNode createNode(boolean paramBoolean)
+  protected StyleNode createNode(boolean paramBoolean)
   {
     return new ModalStyleNode();
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     paramContext = createModalHostView(paramContext);
     paramContext.setOnRequestCloseListener(new HippyModalHostManager.1(this, paramContext));
@@ -69,7 +69,7 @@ public class HippyModalHostManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.modal.HippyModalHostManager
  * JD-Core Version:    0.7.0.1
  */

@@ -25,19 +25,10 @@ class AVGameControlUIImpl$2
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (paramInt2 != -1)
-    {
-      if (paramInt1 != 2) {
-        break label38;
-      }
-      AVGameControlUIImpl.b(this.a, 1);
-    }
-    for (;;)
-    {
-      AVGameControlUIImpl.a(this.a).post(new AVGameControlUIImpl.2.5(this));
-      return;
-      label38:
-      if (paramInt1 == 1) {
+    if (paramInt2 != -1) {
+      if (paramInt1 == 2) {
+        AVGameControlUIImpl.b(this.a, 1);
+      } else if (paramInt1 == 1) {
         AVGameControlUIImpl.b(this.a, 4);
       } else if (paramInt1 == 0) {
         if (paramInt2 == 0) {
@@ -47,6 +38,7 @@ class AVGameControlUIImpl$2
         }
       }
     }
+    AVGameControlUIImpl.a(this.a).post(new AVGameControlUIImpl.2.5(this));
   }
   
   public void a(QavDef.MultiUserInfo paramMultiUserInfo) {}
@@ -55,8 +47,14 @@ class AVGameControlUIImpl$2
   
   public void a(QavDef.MultiUserInfo paramMultiUserInfo, boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameControlUIImpl", 2, "onUserSpeaking userInfo:" + paramMultiUserInfo.toString() + " isSpeaking:" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUserSpeaking userInfo:");
+      localStringBuilder.append(paramMultiUserInfo.toString());
+      localStringBuilder.append(" isSpeaking:");
+      localStringBuilder.append(paramBoolean);
+      QLog.i("AVGameControlUIImpl", 2, localStringBuilder.toString());
     }
     if (GameEngine.a().i()) {
       return;
@@ -81,17 +79,22 @@ class AVGameControlUIImpl$2
   public void b(int paramInt)
   {
     AVGameSession localAVGameSession = AVGameBusinessCtrl.b().a();
-    if ((localAVGameSession == null) || (localAVGameSession.e)) {
-      return;
+    if (localAVGameSession != null)
+    {
+      if (localAVGameSession.e) {
+        return;
+      }
+      AVGameHandler.a().b().post(new AVGameControlUIImpl.2.3(this, paramInt));
     }
-    AVGameHandler.a().b().post(new AVGameControlUIImpl.2.3(this, paramInt));
   }
   
   public void b(QavDef.MultiUserInfo paramMultiUserInfo) {}
   
   public void b(boolean paramBoolean)
   {
-    if ((GameEngine.a().f()) && (!GameEngine.a().g())) {}
+    if (GameEngine.a().f()) {
+      GameEngine.a().g();
+    }
   }
   
   public void b(boolean paramBoolean, long paramLong, int paramInt)
@@ -103,7 +106,7 @@ class AVGameControlUIImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2
  * JD-Core Version:    0.7.0.1
  */

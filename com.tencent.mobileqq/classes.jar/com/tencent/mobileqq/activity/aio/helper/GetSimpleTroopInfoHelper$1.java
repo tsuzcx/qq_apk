@@ -12,7 +12,7 @@ class GetSimpleTroopInfoHelper$1
 {
   GetSimpleTroopInfoHelper$1(GetSimpleTroopInfoHelper paramGetSimpleTroopInfoHelper) {}
   
-  public void onGetSimpleTroopInfoResult(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
+  protected void onGetSimpleTroopInfoResult(boolean paramBoolean, TroopInfo paramTroopInfo, String paramString)
   {
     if ((GetSimpleTroopInfoHelper.a(this.a) != null) && (GetSimpleTroopInfoHelper.a(this.a).a != null) && (GetSimpleTroopInfoHelper.a(this.a).a.a != null))
     {
@@ -25,7 +25,7 @@ class GetSimpleTroopInfoHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.GetSimpleTroopInfoHelper.1
  * JD-Core Version:    0.7.0.1
  */

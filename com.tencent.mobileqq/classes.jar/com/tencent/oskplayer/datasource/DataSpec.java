@@ -28,52 +28,49 @@ public final class DataSpec
   
   public DataSpec(Uri paramUri, long paramLong1, long paramLong2, long paramLong3, String paramString1, int paramInt1, String paramString2, int paramInt2)
   {
-    boolean bool;
+    boolean bool2 = false;
+    boolean bool1;
     if (paramLong1 >= 0L) {
-      bool = true;
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    label132:
     for (;;)
     {
       try
       {
-        Assertions.checkArgument(bool);
+        Assertions.checkArgument(bool1);
         if (paramLong2 >= 0L)
         {
-          bool = true;
-          Assertions.checkArgument(bool);
+          bool1 = true;
+          Assertions.checkArgument(bool1);
           if (paramLong3 > 0L) {
-            break label132;
+            break label136;
           }
-          if (paramLong3 == -1L)
-          {
-            break label132;
-            Assertions.checkArgument(bool);
-            this.uri = paramUri;
-            this.absoluteStreamPosition = paramLong1;
-            this.position = paramLong2;
-            this.length = paramLong3;
-            this.key = paramString1;
-            this.flags = paramInt1;
-            this.uuid = paramString2;
-            this.priority = paramInt2;
-            return;
-            bool = false;
+          bool1 = bool2;
+          if (paramLong3 == -1L) {
+            break label136;
           }
+          Assertions.checkArgument(bool1);
+          this.uri = paramUri;
+          this.absoluteStreamPosition = paramLong1;
+          this.position = paramLong2;
+          this.length = paramLong3;
+          this.key = paramString1;
+          this.flags = paramInt1;
+          this.uuid = paramString2;
+          this.priority = paramInt2;
+          return;
         }
-        else
-        {
-          bool = false;
-          continue;
-        }
-        bool = false;
-        continue;
-        bool = true;
       }
       catch (IllegalArgumentException paramUri)
       {
         throw new IllegalDataSpecException(paramUri);
       }
+      bool1 = false;
+      continue;
+      label136:
+      bool1 = true;
     }
   }
   
@@ -94,64 +91,79 @@ public final class DataSpec
   
   public DataSpec(Uri paramUri, String paramString1, long paramLong1, long paramLong2, long paramLong3, String paramString2, int paramInt, String paramString3)
   {
-    boolean bool;
+    boolean bool2 = false;
+    boolean bool1;
     if (paramLong1 >= 0L) {
-      bool = true;
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    label136:
     for (;;)
     {
       try
       {
-        Assertions.checkArgument(bool);
+        Assertions.checkArgument(bool1);
         if (paramLong2 >= 0L)
         {
-          bool = true;
-          Assertions.checkArgument(bool);
+          bool1 = true;
+          Assertions.checkArgument(bool1);
           if (paramLong3 > 0L) {
-            break label136;
+            break label140;
           }
-          if (paramLong3 == -1L)
-          {
-            break label136;
-            Assertions.checkArgument(bool);
-            this.originUrl = paramString1;
-            this.uri = paramUri;
-            this.absoluteStreamPosition = paramLong1;
-            this.position = paramLong2;
-            this.length = paramLong3;
-            this.key = paramString2;
-            this.flags = paramInt;
-            this.uuid = paramString3;
-            this.priority = -1;
-            return;
-            bool = false;
+          bool1 = bool2;
+          if (paramLong3 == -1L) {
+            break label140;
           }
+          Assertions.checkArgument(bool1);
+          this.originUrl = paramString1;
+          this.uri = paramUri;
+          this.absoluteStreamPosition = paramLong1;
+          this.position = paramLong2;
+          this.length = paramLong3;
+          this.key = paramString2;
+          this.flags = paramInt;
+          this.uuid = paramString3;
+          this.priority = -1;
+          return;
         }
-        else
-        {
-          bool = false;
-          continue;
-        }
-        bool = false;
-        continue;
-        bool = true;
       }
       catch (IllegalArgumentException paramUri)
       {
         throw new IllegalDataSpecException(paramUri);
       }
+      bool1 = false;
+      continue;
+      label140:
+      bool1 = true;
     }
   }
   
   public String toString()
   {
-    return "DataSpec[uri=" + this.uri + ", originUrl=" + this.originUrl + ", absPos=" + this.absoluteStreamPosition + ", pos=" + this.position + ", len=" + this.length + ", key=" + this.key + ", flags=" + this.flags + ", uuid=" + this.uuid + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DataSpec[uri=");
+    localStringBuilder.append(this.uri);
+    localStringBuilder.append(", originUrl=");
+    localStringBuilder.append(this.originUrl);
+    localStringBuilder.append(", absPos=");
+    localStringBuilder.append(this.absoluteStreamPosition);
+    localStringBuilder.append(", pos=");
+    localStringBuilder.append(this.position);
+    localStringBuilder.append(", len=");
+    localStringBuilder.append(this.length);
+    localStringBuilder.append(", key=");
+    localStringBuilder.append(this.key);
+    localStringBuilder.append(", flags=");
+    localStringBuilder.append(this.flags);
+    localStringBuilder.append(", uuid=");
+    localStringBuilder.append(this.uuid);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.datasource.DataSpec
  * JD-Core Version:    0.7.0.1
  */

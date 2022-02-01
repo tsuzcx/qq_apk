@@ -10,7 +10,7 @@ class TroopStoryMemoriesListAdapter$ShootingItemViewHolder
   public TroopStoryMemoriesListAdapter$ShootingItemViewHolder(TroopStoryMemoriesListAdapter paramTroopStoryMemoriesListAdapter, View paramView)
   {
     this.jdField_a_of_type_AndroidViewView = paramView;
-    this.b = paramView.findViewById(2131381307);
+    this.b = paramView.findViewById(2131380563);
   }
   
   public void a(TroopStoryItemInfo paramTroopStoryItemInfo)
@@ -20,7 +20,7 @@ class TroopStoryMemoriesListAdapter$ShootingItemViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.troop.memories.TroopStoryMemoriesListAdapter.ShootingItemViewHolder
  * JD-Core Version:    0.7.0.1
  */

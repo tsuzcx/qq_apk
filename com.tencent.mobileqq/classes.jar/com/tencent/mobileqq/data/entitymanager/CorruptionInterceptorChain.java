@@ -22,7 +22,8 @@ public class CorruptionInterceptorChain
   
   public Void proceed()
   {
-    if ((this.interceptors != null) && (this.index < this.interceptors.size())) {
+    List localList = this.interceptors;
+    if ((localList != null) && (this.index < localList.size())) {
       return (Void)((Interceptor)this.interceptors.get(this.index)).intercept(new CorruptionInterceptorChain(this.index + 1, this.interceptors, this.database, this.defaultErrorHandler));
     }
     return null;
@@ -30,7 +31,7 @@ public class CorruptionInterceptorChain
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.entitymanager.CorruptionInterceptorChain
  * JD-Core Version:    0.7.0.1
  */

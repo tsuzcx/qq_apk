@@ -1,71 +1,56 @@
 package com.tencent.mobileqq.activity;
 
 import android.os.Message;
-import com.tencent.mobileqq.app.CardObserver;
-import com.tencent.mobileqq.subaccount.SubAccountControll;
+import com.tencent.mobileqq.subaccount.SubAccountControllUtil;
+import com.tencent.mobileqq.subaccount.api.ISubAccountApi.CardObserverCallback;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import mqq.os.MqqHandler;
 
 class AssociatedAccountManageActivity$2
-  extends CardObserver
+  implements ISubAccountApi.CardObserverCallback
 {
   AssociatedAccountManageActivity$2(AssociatedAccountManageActivity paramAssociatedAccountManageActivity) {}
   
-  public void onSetSubaccountDisplayThirdQQ(boolean paramBoolean)
+  public void a(boolean paramBoolean)
   {
-    boolean bool1 = true;
-    boolean bool2 = AssociatedAccountManageActivity.a(this.a).a();
-    AssociatedAccountManageActivity.a(this.a).removeMessages(8193);
-    AssociatedAccountManageActivity.a(this.a).sendEmptyMessage(8194);
-    Object localObject = AssociatedAccountManageActivity.a(this.a).obtainMessage(8195);
+    boolean bool = AssociatedAccountManageActivity.access$200(this.a).a();
+    AssociatedAccountManageActivity.access$300(this.a).removeMessages(8193);
+    AssociatedAccountManageActivity.access$300(this.a).sendEmptyMessage(8194);
+    Message localMessage = AssociatedAccountManageActivity.access$300(this.a).obtainMessage(8195);
     int i;
+    if (paramBoolean) {
+      i = 2;
+    } else {
+      i = 1;
+    }
+    localMessage.arg1 = i;
     if (paramBoolean)
     {
-      i = 2;
-      ((Message)localObject).arg1 = i;
-      if (!paramBoolean) {
-        break label134;
-      }
-      if (!bool2) {
-        break label128;
-      }
-      i = 2131699213;
-    }
-    for (;;)
-    {
-      ((Message)localObject).arg2 = i;
-      AssociatedAccountManageActivity.a(this.a).sendMessage((Message)localObject);
-      if (!paramBoolean) {
-        break label151;
-      }
-      AssociatedAccountManageActivity.a(this.a);
-      SubAccountControll.a(this.a.app, bool2);
-      return;
-      i = 1;
-      break;
-      label128:
-      i = 2131699212;
-      continue;
-      label134:
-      if (bool2) {
-        i = 2131719596;
+      if (bool) {
+        i = 2131699317;
       } else {
-        i = 2131719595;
+        i = 2131699316;
       }
     }
-    label151:
-    localObject = this.a;
-    if (!bool2) {}
-    for (paramBoolean = bool1;; paramBoolean = false)
+    else if (bool) {
+      i = 2131719315;
+    } else {
+      i = 2131719314;
+    }
+    localMessage.arg2 = i;
+    AssociatedAccountManageActivity.access$300(this.a).sendMessage(localMessage);
+    if (paramBoolean)
     {
-      AssociatedAccountManageActivity.a((AssociatedAccountManageActivity)localObject, paramBoolean);
+      AssociatedAccountManageActivity.access$400(this.a);
+      SubAccountControllUtil.a(this.a.app, bool);
       return;
     }
+    AssociatedAccountManageActivity.access$500(this.a, bool ^ true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountManageActivity.2
  * JD-Core Version:    0.7.0.1
  */

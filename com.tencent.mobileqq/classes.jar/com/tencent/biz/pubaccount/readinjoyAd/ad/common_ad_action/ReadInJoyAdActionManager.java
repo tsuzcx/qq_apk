@@ -6,7 +6,8 @@ import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.jump_action.ReadInJoyAdJumpUtils;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.jump_action.ReadInJoyGdtAdParams;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.report_action.ReadInJoyAdReportUtils;
-import com.tencent.biz.pubaccount.util.ReadinJoyActionUtil;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdActionUtilService;
+import com.tencent.mobileqq.qroute.QRoute;
 
 public class ReadInJoyAdActionManager
 {
@@ -15,24 +16,20 @@ public class ReadInJoyAdActionManager
     if (paramAdvertisementInfo == null) {
       return;
     }
-    ReadinJoyActionUtil.a(paramActivity);
+    ((IRIJAdActionUtilService)QRoute.api(IRIJAdActionUtilService.class)).closeFloatWindow(paramActivity);
     int i = paramAdvertisementInfo.clickPos;
     paramActivity = ReadInJoyAdJumpUtils.a(paramAdvertisementInfo, paramActivity, paramReadInJoyGdtAdParams);
     if (paramActivity.intValue() == 10)
     {
-      paramInt1 = 8;
       paramAdvertisementInfo.clickPos = i;
+      paramInt1 = 8;
     }
-    for (;;)
-    {
-      ReadInJoyAdReportUtils.a(ReportAction.CLICK, paramActivity, paramAdvertisementInfo, paramInt1, paramInt2, paramInt3);
-      return;
-    }
+    ReadInJoyAdReportUtils.a(ReportAction.CLICK, paramActivity, paramAdvertisementInfo, paramInt1, paramInt2, paramInt3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.common_ad_action.ReadInJoyAdActionManager
  * JD-Core Version:    0.7.0.1
  */

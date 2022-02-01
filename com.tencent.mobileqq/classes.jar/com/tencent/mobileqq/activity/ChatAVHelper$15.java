@@ -15,28 +15,30 @@ final class ChatAVHelper$15
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     int i = UITools.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.jdField_a_of_type_Int);
-    String str;
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.jdField_a_of_type_JavaUtilMap != null) && (i == 1))
     {
-      str = (String)this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.jdField_a_of_type_JavaUtilMap.get("MultiAVType");
-      if (str == null) {}
-    }
-    for (paramInt = Integer.valueOf(str).intValue();; paramInt = 0)
-    {
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, i, paramInt);
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.d = false;
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.e = false;
-      ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag);
-      if (paramDialogInterface != null) {
-        paramDialogInterface.dismiss();
+      localObject = (String)this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag.jdField_a_of_type_JavaUtilMap.get("MultiAVType");
+      if (localObject != null)
+      {
+        paramInt = Integer.valueOf((String)localObject).intValue();
+        break label64;
       }
-      return;
+    }
+    paramInt = 0;
+    label64:
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, i, paramInt);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$VideoCheckFlag;
+    ((ChatActivityUtils.VideoCheckFlag)localObject).d = false;
+    ((ChatActivityUtils.VideoCheckFlag)localObject).e = false;
+    ChatActivityUtils.a(this.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityChatActivityUtils$StartVideoListener, (ChatActivityUtils.VideoCheckFlag)localObject);
+    if (paramDialogInterface != null) {
+      paramDialogInterface.dismiss();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatAVHelper.15
  * JD-Core Version:    0.7.0.1
  */

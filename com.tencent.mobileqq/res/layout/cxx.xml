@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout android:background="@drawable/aao" android:layout_width="fill_parent" android:layout_height="wrap_content"
+<RelativeLayout android:layout_width="0.0dip" android:layout_height="wrap_content" android:layout_weight="1.0"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.ark.open.ArkView android:id="@id/m_y" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-</FrameLayout>
+    <ImageView android:id="@id/n8i" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginTop="4.0dip" android:scaleType="fitXY" android:layout_alignParentTop="true" android:layout_centerHorizontal="true" />
+    <ImageView android:id="@id/n8j" android:visibility="gone" android:layout_width="9.0dip" android:layout_height="9.0dip" android:layout_marginLeft="-8.0dip" android:layout_marginTop="2.0dip" android:src="@drawable/dzm" android:scaleType="fitCenter" android:layout_toRightOf="@id/n8i" android:layout_alignParentTop="true" />
+    <TextView android:textSize="9.0sp" android:id="@id/md8" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="2.0dip" android:layout_marginBottom="4.0dip" android:layout_below="@id/n8i" android:layout_centerHorizontal="true" />
+</RelativeLayout>

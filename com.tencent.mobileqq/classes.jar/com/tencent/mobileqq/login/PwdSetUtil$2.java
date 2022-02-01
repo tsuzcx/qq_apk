@@ -16,13 +16,16 @@ final class PwdSetUtil$2
     }
     catch (Exception paramDialogInterface)
     {
-      QLog.e("PwdSetUtil", 1, "gotoPwdSetWebsite: dismiss exception. " + paramDialogInterface.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("gotoPwdSetWebsite: dismiss exception. ");
+      localStringBuilder.append(paramDialogInterface.getMessage());
+      QLog.e("PwdSetUtil", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.login.PwdSetUtil.2
  * JD-Core Version:    0.7.0.1
  */

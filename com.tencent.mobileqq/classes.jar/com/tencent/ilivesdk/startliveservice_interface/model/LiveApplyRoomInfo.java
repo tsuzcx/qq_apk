@@ -23,12 +23,34 @@ public class LiveApplyRoomInfo
   
   public String toString()
   {
-    return "roominfo is [roomid= " + this.roomId + ";roomName=" + this.roomName + ";roomLogo=" + this.roomLogo + ";roomType=" + this.roomType + ";goodsUrl=" + this.goodsUrl + ";programId=" + this.programId + ";isGift=" + this.isGift + ";mIsFreeFlow=" + this.isFreeFlow + ";mFreeFlowSig=" + Arrays.toString(this.freeFlowSig) + ";defaultRoomName=" + this.defaultRoomName + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("roominfo is [roomid= ");
+    localStringBuilder.append(this.roomId);
+    localStringBuilder.append(";roomName=");
+    localStringBuilder.append(this.roomName);
+    localStringBuilder.append(";roomLogo=");
+    localStringBuilder.append(this.roomLogo);
+    localStringBuilder.append(";roomType=");
+    localStringBuilder.append(this.roomType);
+    localStringBuilder.append(";goodsUrl=");
+    localStringBuilder.append(this.goodsUrl);
+    localStringBuilder.append(";programId=");
+    localStringBuilder.append(this.programId);
+    localStringBuilder.append(";isGift=");
+    localStringBuilder.append(this.isGift);
+    localStringBuilder.append(";mIsFreeFlow=");
+    localStringBuilder.append(this.isFreeFlow);
+    localStringBuilder.append(";mFreeFlowSig=");
+    localStringBuilder.append(Arrays.toString(this.freeFlowSig));
+    localStringBuilder.append(";defaultRoomName=");
+    localStringBuilder.append(this.defaultRoomName);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.startliveservice_interface.model.LiveApplyRoomInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -22,15 +22,12 @@ public class GetFeedTagInfoListRequest
     try
     {
       localRspStoryFeedTagInfo.mergeFrom(paramArrayOfByte);
-      return new GetFeedTagInfoListRequest.GetFeedTagInfoListResponse(localRspStoryFeedTagInfo);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new GetFeedTagInfoListRequest.GetFeedTagInfoListResponse(localRspStoryFeedTagInfo);
   }
   
   public String a()
@@ -38,7 +35,7 @@ public class GetFeedTagInfoListRequest
     return "StorySvc.homepage_batch_feeds_label";
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqStoryFeedTagInfo localReqStoryFeedTagInfo = new qqstory_service.ReqStoryFeedTagInfo();
     Iterator localIterator = this.a.iterator();
@@ -52,7 +49,7 @@ public class GetFeedTagInfoListRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.request.GetFeedTagInfoListRequest
  * JD-Core Version:    0.7.0.1
  */

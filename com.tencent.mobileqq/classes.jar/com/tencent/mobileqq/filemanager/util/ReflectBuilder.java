@@ -54,22 +54,26 @@ public class ReflectBuilder<T>
   
   void a()
   {
-    if ((this.jdField_a_of_type_Int != 8192) || (this.jdField_a_of_type_JavaLangClass == null) || (this.jdField_a_of_type_JavaLangObject == null) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+    if ((this.jdField_a_of_type_Int == 8192) && (this.jdField_a_of_type_JavaLangClass != null) && (this.jdField_a_of_type_JavaLangObject != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    {
+      Object localObject = this.jdField_a_of_type_ArrayOfJavaLangClass;
+      if (localObject.length == this.jdField_a_of_type_ArrayOfJavaLangObject.length)
+      {
+        localObject = this.jdField_a_of_type_JavaLangClass.getDeclaredMethod(this.jdField_a_of_type_JavaLangString, (Class[])localObject);
+        if (this.jdField_a_of_type_Boolean) {
+          ((Method)localObject).setAccessible(true);
+        }
+        ((Method)localObject).invoke(this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ArrayOfJavaLangObject);
+        return;
+      }
       throw new ReflectBuilder.WrongParamException();
     }
-    if (this.jdField_a_of_type_ArrayOfJavaLangClass.length != this.jdField_a_of_type_ArrayOfJavaLangObject.length) {
-      throw new ReflectBuilder.WrongParamException();
-    }
-    Method localMethod = this.jdField_a_of_type_JavaLangClass.getDeclaredMethod(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ArrayOfJavaLangClass);
-    if (this.jdField_a_of_type_Boolean) {
-      localMethod.setAccessible(true);
-    }
-    localMethod.invoke(this.jdField_a_of_type_JavaLangObject, this.jdField_a_of_type_ArrayOfJavaLangObject);
+    throw new ReflectBuilder.WrongParamException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.ReflectBuilder
  * JD-Core Version:    0.7.0.1
  */

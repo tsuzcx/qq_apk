@@ -25,10 +25,10 @@ public final class e
   
   public final void a(c paramc)
   {
-    int i = 0;
     paramc.b = this;
     this.d = true;
     paramc.a();
+    int i = 0;
     this.d = false;
     paramc = (c[])this.e.toArray(new c[0]);
     this.e.clear();
@@ -60,7 +60,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.a.e
  * JD-Core Version:    0.7.0.1
  */

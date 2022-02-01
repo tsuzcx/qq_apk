@@ -10,15 +10,18 @@ class DOMActionContextImpl$1
   
   public void accept(DomObject paramDomObject)
   {
-    if ((!paramDomObject.hasUpdate()) || (DOMActionContextImpl.access$400(this.this$0))) {
-      return;
+    if (paramDomObject.hasUpdate())
+    {
+      if (DOMActionContextImpl.access$400(this.this$0)) {
+        return;
+      }
+      paramDomObject.layoutBefore();
     }
-    paramDomObject.layoutBefore();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.context.DOMActionContextImpl.1
  * JD-Core Version:    0.7.0.1
  */

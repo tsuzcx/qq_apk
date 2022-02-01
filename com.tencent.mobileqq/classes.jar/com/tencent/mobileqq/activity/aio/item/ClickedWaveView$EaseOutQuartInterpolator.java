@@ -8,12 +8,12 @@ class ClickedWaveView$EaseOutQuartInterpolator
   public float getInterpolation(float paramFloat)
   {
     paramFloat -= 1.0F;
-    return 1.0F - paramFloat * (paramFloat * paramFloat * paramFloat);
+    return 1.0F - paramFloat * paramFloat * paramFloat * paramFloat;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ClickedWaveView.EaseOutQuartInterpolator
  * JD-Core Version:    0.7.0.1
  */

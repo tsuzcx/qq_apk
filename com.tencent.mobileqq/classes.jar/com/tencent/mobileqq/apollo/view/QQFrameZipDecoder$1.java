@@ -12,23 +12,29 @@ class QQFrameZipDecoder$1
   public void onDone(DownloadTask paramDownloadTask)
   {
     super.onDone(paramDownloadTask);
-    if (3 == paramDownloadTask.a()) {
+    Object localObject;
+    if (3 == paramDownloadTask.a())
+    {
       this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(true, this.jdField_a_of_type_JavaLangString, this.b, this.c);
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SimpleFrameZipDecoder", 2, "downloadZip onDone task.getStatus()->" + paramDownloadTask.a());
-      }
-      return;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a = 2;
-      this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder.a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqApolloViewQQFrameZipDecoder;
+      ((QQFrameZipDecoder)localObject).a = 2;
+      ((QQFrameZipDecoder)localObject).a(false, this.jdField_a_of_type_JavaLangString, this.b, this.c);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downloadZip onDone task.getStatus()->");
+      ((StringBuilder)localObject).append(paramDownloadTask.a());
+      QLog.d("[cmshow]SimpleFrameZipDecoder", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.view.QQFrameZipDecoder.1
  * JD-Core Version:    0.7.0.1
  */

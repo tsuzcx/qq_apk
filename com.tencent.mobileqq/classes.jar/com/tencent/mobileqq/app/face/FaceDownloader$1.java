@@ -17,45 +17,46 @@ class FaceDownloader$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage == null) {}
-    while (paramMessage.what != 100) {
+    if (paramMessage == null) {
       return;
     }
-    int i = 0;
-    label16:
-    if (i < this.this$0.sPendingResultList.size())
+    if (paramMessage.what == 100)
     {
-      paramMessage = (FaceDownloader.PendingTask)this.this$0.sPendingResultList.get(i);
-      if (paramMessage != null) {
-        break label56;
-      }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label16;
-      break;
-      label56:
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.qqhead.FaceDownloader", 2, "handle download finish task.faceInfo=" + paramMessage.faceInfo + ",bitmap=" + paramMessage.bitmap);
-      }
-      if ((paramMessage != null) && (paramMessage.faceInfo != null) && (paramMessage.bitmap != null) && (this.this$0.mDownloadListener.size() > 0))
+      int i = 0;
+      while (i < this.this$0.sPendingResultList.size())
       {
-        int j = 0;
-        while (j < this.this$0.mDownloadListener.size())
+        paramMessage = (FaceDownloader.PendingTask)this.this$0.sPendingResultList.get(i);
+        if (paramMessage != null)
         {
-          ((FaceDownloader.FaceDownloadListener)this.this$0.mDownloadListener.get(j)).onFaceDownloadFinished(true, paramMessage.faceInfo, paramMessage.bitmap);
-          j += 1;
+          if (QLog.isColorLevel())
+          {
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("handle download finish task.faceInfo=");
+            localStringBuilder.append(paramMessage.faceInfo);
+            localStringBuilder.append(",bitmap=");
+            localStringBuilder.append(paramMessage.bitmap);
+            QLog.i("Q.qqhead.FaceDownloader", 2, localStringBuilder.toString());
+          }
+          if ((paramMessage != null) && (paramMessage.faceInfo != null) && (paramMessage.bitmap != null) && (this.this$0.mDownloadListener.size() > 0))
+          {
+            int j = 0;
+            while (j < this.this$0.mDownloadListener.size())
+            {
+              ((FaceDownloader.FaceDownloadListener)this.this$0.mDownloadListener.get(j)).onFaceDownloadFinished(true, paramMessage.faceInfo, paramMessage.bitmap);
+              j += 1;
+            }
+          }
+          this.this$0.sPendingResultList.remove(i);
+          i -= 1;
         }
+        i += 1;
       }
-      this.this$0.sPendingResultList.remove(i);
-      i -= 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDownloader.1
  * JD-Core Version:    0.7.0.1
  */

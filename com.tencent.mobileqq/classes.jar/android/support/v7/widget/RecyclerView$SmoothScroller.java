@@ -22,37 +22,36 @@ public abstract class RecyclerView$SmoothScroller
       stop();
     }
     this.mPendingInitialRun = false;
-    if (this.mTargetView != null)
-    {
-      if (getChildPosition(this.mTargetView) != this.mTargetPosition) {
-        break label151;
-      }
-      onTargetFound(this.mTargetView, localRecyclerView.mState, this.mRecyclingAction);
-      RecyclerView.SmoothScroller.Action.access$6200(this.mRecyclingAction, localRecyclerView);
-      stop();
-    }
-    for (;;)
-    {
-      if (this.mRunning)
+    View localView = this.mTargetView;
+    if (localView != null) {
+      if (getChildPosition(localView) == this.mTargetPosition)
       {
-        onSeekTargetStep(paramInt1, paramInt2, localRecyclerView.mState, this.mRecyclingAction);
-        boolean bool = this.mRecyclingAction.hasJumpTarget();
+        onTargetFound(this.mTargetView, localRecyclerView.mState, this.mRecyclingAction);
         RecyclerView.SmoothScroller.Action.access$6200(this.mRecyclingAction, localRecyclerView);
-        if (bool)
+        stop();
+      }
+      else
+      {
+        Log.e("RecyclerView", "Passed over target position while smooth scrolling.");
+        this.mTargetView = null;
+      }
+    }
+    if (this.mRunning)
+    {
+      onSeekTargetStep(paramInt1, paramInt2, localRecyclerView.mState, this.mRecyclingAction);
+      boolean bool = this.mRecyclingAction.hasJumpTarget();
+      RecyclerView.SmoothScroller.Action.access$6200(this.mRecyclingAction, localRecyclerView);
+      if (bool)
+      {
+        if (this.mRunning)
         {
-          if (!this.mRunning) {
-            break;
-          }
           this.mPendingInitialRun = true;
           RecyclerView.access$6000(localRecyclerView).postOnAnimation();
+          return;
         }
+        stop();
       }
-      return;
-      label151:
-      Log.e("RecyclerView", "Passed over target position while smooth scrolling.");
-      this.mTargetView = null;
     }
-    stop();
   }
   
   public View findViewByPosition(int paramInt)
@@ -99,9 +98,13 @@ public abstract class RecyclerView$SmoothScroller
   
   protected void normalize(PointF paramPointF)
   {
-    double d = Math.sqrt(paramPointF.x * paramPointF.x + paramPointF.y * paramPointF.y);
-    paramPointF.x = ((float)(paramPointF.x / d));
-    paramPointF.y = ((float)(paramPointF.y / d));
+    double d1 = Math.sqrt(paramPointF.x * paramPointF.x + paramPointF.y * paramPointF.y);
+    double d2 = paramPointF.x;
+    Double.isNaN(d2);
+    paramPointF.x = ((float)(d2 / d1));
+    d2 = paramPointF.y;
+    Double.isNaN(d2);
+    paramPointF.y = ((float)(d2 / d1));
   }
   
   protected void onChildAttachedToWindow(View paramView)
@@ -128,15 +131,17 @@ public abstract class RecyclerView$SmoothScroller
   {
     this.mRecyclerView = paramRecyclerView;
     this.mLayoutManager = paramLayoutManager;
-    if (this.mTargetPosition == -1) {
-      throw new IllegalArgumentException("Invalid target position");
+    if (this.mTargetPosition != -1)
+    {
+      RecyclerView.State.access$5902(this.mRecyclerView.mState, this.mTargetPosition);
+      this.mRunning = true;
+      this.mPendingInitialRun = true;
+      this.mTargetView = findViewByPosition(getTargetPosition());
+      onStart();
+      RecyclerView.access$6000(this.mRecyclerView).postOnAnimation();
+      return;
     }
-    RecyclerView.State.access$5902(this.mRecyclerView.mState, this.mTargetPosition);
-    this.mRunning = true;
-    this.mPendingInitialRun = true;
-    this.mTargetView = findViewByPosition(getTargetPosition());
-    onStart();
-    RecyclerView.access$6000(this.mRecyclerView).postOnAnimation();
+    throw new IllegalArgumentException("Invalid target position");
   }
   
   protected final void stop()

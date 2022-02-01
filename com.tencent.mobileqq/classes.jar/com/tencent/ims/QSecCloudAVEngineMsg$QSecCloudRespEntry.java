@@ -21,13 +21,14 @@ public final class QSecCloudAVEngineMsg$QSecCloudRespEntry
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58 }, new String[] { "entryId", "attrType", "category", "subCategory", "timeToLive", "actionType", "extraInfo" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro }, QSecCloudRespEntry.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 40, 48, 58 }, new String[] { "entryId", "attrType", "category", "subCategory", "timeToLive", "actionType", "extraInfo" }, new Object[] { localInteger, localInteger, localInteger, localInteger, localInteger, localInteger, localByteStringMicro }, QSecCloudRespEntry.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.ims.QSecCloudAVEngineMsg.QSecCloudRespEntry
  * JD-Core Version:    0.7.0.1
  */

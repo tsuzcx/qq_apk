@@ -5,7 +5,11 @@ import android.text.TextUtils;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.core.AIOContext;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.activity.aio.core.input.AIOInput;
+import com.tencent.mobileqq.activity.aio.coreui.input.InputUIContainer;
+import com.tencent.mobileqq.activity.aio.helper.ReplyHelper;
 import com.tencent.mobileqq.activity.aio.panel.AIOPanelUtiles;
 import com.tencent.mobileqq.activity.aio.photo.PhotoListPanel;
 import com.tencent.mobileqq.app.AppConstants;
@@ -30,13 +34,13 @@ import com.tencent.mobileqq.filemanager.util.FileUtil;
 import com.tencent.mobileqq.mqsafeedit.MD5;
 import com.tencent.mobileqq.multimsg.IUpLoadMsgPackBusinessType;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pic.PicBusiManager;
 import com.tencent.mobileqq.pic.PicFowardInfo;
 import com.tencent.mobileqq.pic.PicReq;
 import com.tencent.mobileqq.pic.UpCallBack;
-import com.tencent.mobileqq.pic.compress.Utils;
+import com.tencent.mobileqq.pic.api.IPicBus;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.replymsg.ReplyMsgSender;
-import com.tencent.mobileqq.richmedia.ordersend.OrderMediaMsgManager;
+import com.tencent.mobileqq.richmedia.ordersend.IOrderMediaMsgService;
 import com.tencent.mobileqq.service.message.MessageCache;
 import com.tencent.mobileqq.service.message.MessageProtoCodec;
 import com.tencent.mobileqq.service.message.MessageRecordFactory;
@@ -46,8 +50,9 @@ import com.tencent.mobileqq.transfile.TransferRequest;
 import com.tencent.mobileqq.transfile.TransferRequest.PicUpExtraInfo;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
 import com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager;
+import com.tencent.mobileqq.troop.robot.api.ITroopRobotService;
 import com.tencent.mobileqq.troop.text.AtTroopMemberSpan;
-import com.tencent.mobileqq.troop.utils.TroopRobotManager;
+import com.tencent.mobileqq.utils.BaseImageUtil;
 import com.tencent.mobileqq.utils.HexUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
@@ -70,10 +75,18 @@ import tencent.im.msg.im_msg_body.RichText;
 public class MixedMsgManager
   implements IUpLoadMsgPackBusinessType, Manager
 {
-  private static final String jdField_a_of_type_JavaLangString = AppConstants.SDCARD_PATH + "fight/pic_expire.png";
+  private static final String jdField_a_of_type_JavaLangString;
   private long jdField_a_of_type_Long;
   public QQAppInterface a;
   public ConcurrentHashMap<Long, ChatMessage> a;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("fight/pic_expire.png");
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+  }
   
   public MixedMsgManager(QQAppInterface paramQQAppInterface)
   {
@@ -94,46 +107,45 @@ public class MixedMsgManager
     Object localObject = (MessageRecord)paramList.get(0);
     ((MessageRecord)localObject).longMsgId = 0;
     MessageRecord.copyMessageRecordBaseField(localMessageForMixedMsg, (MessageRecord)localObject);
-    if (localMessageForMixedMsg.istroop == 1) {
+    int i = localMessageForMixedMsg.istroop;
+    int j = 1;
+    if (i == 1) {
       AnonymousChatHelper.a().b(localMessageForMixedMsg);
     }
-    if ((paramSourceMsgInfo != null) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+    if ((paramSourceMsgInfo != null) && (paramArrayList != null) && (paramArrayList.size() > 0))
+    {
       paramSourceMsgInfo = new JSONObject();
-    }
-    try
-    {
-      localObject = new JSONArray();
-      int i = 0;
-      while (i < paramArrayList.size())
+      try
       {
-        ((JSONArray)localObject).put(i, ((AtTroopMemberInfo)paramArrayList.get(i)).toJsonObject());
-        i += 1;
+        localObject = new JSONArray();
+        i = 0;
+        while (i < paramArrayList.size())
+        {
+          ((JSONArray)localObject).put(i, ((AtTroopMemberInfo)paramArrayList.get(i)).toJsonObject());
+          i += 1;
+        }
+        paramSourceMsgInfo.put("0", localObject);
       }
-      paramSourceMsgInfo.put("0", localObject);
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      catch (JSONException localJSONException)
       {
         QLog.e("MixedMsgManager", 1, localJSONException, new Object[0]);
-        continue;
-        paramInt = -1;
       }
+      AtTroopMemberSpan.a(paramInt, paramSourceMsgInfo.toString(), localMessageForMixedMsg);
     }
-    AtTroopMemberSpan.a(paramInt, paramSourceMsgInfo.toString(), localMessageForMixedMsg);
     localMessageForMixedMsg.uniseq = (System.currentTimeMillis() + (Math.random() * 10000.0D));
     localMessageForMixedMsg.issend = 1;
     localMessageForMixedMsg.msgtype = -1035;
     localMessageForMixedMsg.extraflag = 32772;
     localMessageForMixedMsg.msgElemList = paramList;
-    if (paramBoolean)
-    {
-      paramInt = 1;
-      localMessageForMixedMsg.mRobotFlag = paramInt;
-      localMessageForMixedMsg.atInfoList = paramArrayList;
-      localMessageForMixedMsg.prewrite();
-      return localMessageForMixedMsg;
+    if (paramBoolean) {
+      paramInt = j;
+    } else {
+      paramInt = -1;
     }
+    localMessageForMixedMsg.mRobotFlag = paramInt;
+    localMessageForMixedMsg.atInfoList = paramArrayList;
+    localMessageForMixedMsg.prewrite();
+    return localMessageForMixedMsg;
   }
   
   public static MessageForPic a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, String paramString3, int paramInt)
@@ -148,10 +160,10 @@ public class MixedMsgManager
       paramString2.isRead = true;
       paramString2.localUUID = PicReq.a();
       paramString2.md5 = HexUtil.bytes2HexStr(MD5.getFileMd5(paramString2.path));
-      if (Utils.a(paramString1))
+      if (BaseImageUtil.b(paramString1))
       {
         paramString1 = new PicMessageExtraData();
-        paramString1.textSummary = paramQQAppInterface.getApp().getString(2131691358);
+        paramString1.textSummary = paramQQAppInterface.getApp().getString(2131691279);
         paramString2.picExtraData = paramString1;
       }
       paramString2.serial();
@@ -162,90 +174,86 @@ public class MixedMsgManager
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, MessageForMixedMsg paramMessageForMixedMsg, boolean paramBoolean)
   {
-    im_msg_body.RichText localRichText = new im_msg_body.RichText();
-    int m = paramMessageForMixedMsg.msgElemList.size();
-    int j = 0;
+    Object localObject1 = new im_msg_body.RichText();
+    int k = paramMessageForMixedMsg.msgElemList.size();
     int i = 0;
-    Object localObject;
-    if (j < m)
+    while (i < k)
     {
-      localObject = (MessageRecord)paramMessageForMixedMsg.msgElemList.get(j);
-      if ((localObject instanceof MessageForText))
+      Object localObject2 = (MessageRecord)paramMessageForMixedMsg.msgElemList.get(i);
+      int j;
+      if ((localObject2 instanceof MessageForText))
       {
-        localObject = MessageProtoCodec.a((MessageForText)localObject);
-        if (localObject != null) {}
-      }
-    }
-    for (;;)
-    {
-      j += 1;
-      break;
-      int k = 0;
-      while (k < ((im_msg_body.RichText)localObject).elems.size())
-      {
-        localRichText.elems.add(((im_msg_body.RichText)localObject).elems.get(k));
-        k += 1;
-      }
-      continue;
-      if ((localObject instanceof MessageForRichText))
-      {
-        localObject = ((MessageForPic)localObject).richText;
-        if (localObject != null)
+        localObject2 = MessageProtoCodec.a((MessageForText)localObject2);
+        if (localObject2 != null)
         {
-          localRichText.elems.add(((im_msg_body.RichText)localObject).elems.get(0));
-          i += 1;
-        }
-      }
-      else if ((localObject instanceof MessageForReplyText))
-      {
-        localObject = MessageProtoCodec.a((MessageForReplyText)localObject);
-        if (localObject != null)
-        {
-          k = 0;
-          while (k < ((im_msg_body.RichText)localObject).elems.size())
+          j = 0;
+          while (j < ((im_msg_body.RichText)localObject2).elems.size())
           {
-            localRichText.elems.add(((im_msg_body.RichText)localObject).elems.get(k));
-            k += 1;
-            continue;
-            i = localRichText.toByteArray().length;
-            if (QLog.isColorLevel()) {
-              QLog.d("MixedMsgManager", 2, "packAndSendMsg, richTextLength : " + i);
-            }
-            paramMessageForMixedMsg.mRichTextLength = i;
-            a(paramString, paramInt, paramMessageForMixedMsg, paramQQAppInterface, false);
-            if (QLog.isColorLevel()) {
-              QLog.d("MixedMsgManager", 2, "packAndSendMsg,, send by longStruct message");
-            }
-            return;
+            ((im_msg_body.RichText)localObject1).elems.add(((im_msg_body.RichText)localObject2).elems.get(j));
+            j += 1;
           }
         }
       }
+      else if ((localObject2 instanceof MessageForRichText))
+      {
+        localObject2 = ((MessageForPic)localObject2).richText;
+        if (localObject2 != null) {
+          ((im_msg_body.RichText)localObject1).elems.add(((im_msg_body.RichText)localObject2).elems.get(0));
+        }
+      }
+      else if ((localObject2 instanceof MessageForReplyText))
+      {
+        localObject2 = MessageProtoCodec.a((MessageForReplyText)localObject2);
+        if (localObject2 != null)
+        {
+          j = 0;
+          while (j < ((im_msg_body.RichText)localObject2).elems.size())
+          {
+            ((im_msg_body.RichText)localObject1).elems.add(((im_msg_body.RichText)localObject2).elems.get(j));
+            j += 1;
+          }
+        }
+      }
+      i += 1;
+    }
+    i = ((im_msg_body.RichText)localObject1).toByteArray().length;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("packAndSendMsg, richTextLength : ");
+      ((StringBuilder)localObject1).append(i);
+      QLog.d("MixedMsgManager", 2, ((StringBuilder)localObject1).toString());
+    }
+    paramMessageForMixedMsg.mRichTextLength = i;
+    a(paramString, paramInt, paramMessageForMixedMsg, paramQQAppInterface, false);
+    if (QLog.isColorLevel()) {
+      QLog.d("MixedMsgManager", 2, "packAndSendMsg,, send by longStruct message");
     }
   }
   
   private void a(QQAppInterface paramQQAppInterface, String paramString, int paramInt, ArrayList<PicFowardInfo> paramArrayList, MessageForMixedMsg paramMessageForMixedMsg)
   {
-    PicReq localPicReq = PicBusiManager.a(8, 7);
+    PicReq localPicReq = ((IPicBus)QRoute.api(IPicBus.class)).createPicReq(8, 7);
     localPicReq.a(paramArrayList);
     localPicReq.a(new MixedMsgManager.2(this, paramMessageForMixedMsg, paramQQAppInterface, paramString, paramInt));
-    PicBusiManager.a(localPicReq);
+    ((IPicBus)QRoute.api(IPicBus.class)).launch(localPicReq);
   }
   
   private void a(MessageForMixedMsg paramMessageForMixedMsg, ArrayList<AtTroopMemberInfo> paramArrayList, String paramString, Map<String, Boolean> paramMap)
   {
-    Object localObject = (OrderMediaMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MEDIA_MSG_ORDER_SEND_MANAGER);
-    ((OrderMediaMsgManager)localObject).a(paramString, paramMessageForMixedMsg.uniseq);
-    ((OrderMediaMsgManager)localObject).a(paramMessageForMixedMsg, null);
+    ((IOrderMediaMsgService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IOrderMediaMsgService.class)).enqueueMediaMsgByUniseq(paramString, paramMessageForMixedMsg.uniseq);
+    ((IOrderMediaMsgService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IOrderMediaMsgService.class)).addOrderMsg(paramMessageForMixedMsg, null);
     Map localMap = Collections.synchronizedMap(new HashMap());
     HashMap localHashMap = new HashMap();
     Iterator localIterator = paramMessageForMixedMsg.msgElemList.iterator();
+    Object localObject;
     while (localIterator.hasNext())
     {
       paramString = (MessageRecord)localIterator.next();
       if ((paramString instanceof MessageForPic))
       {
         MessageForPic localMessageForPic = (MessageForPic)paramString;
-        if (FileUtil.a(localMessageForPic.path))
+        if (FileUtil.b(localMessageForPic.path))
         {
           localObject = (List)localMap.get(localMessageForPic.path);
           paramString = (String)localObject;
@@ -260,28 +268,30 @@ public class MixedMsgManager
       }
     }
     paramMessageForMixedMsg = localHashMap.entrySet().iterator();
-    if (paramMessageForMixedMsg.hasNext())
+    while (paramMessageForMixedMsg.hasNext())
     {
-      paramArrayList = (Map.Entry)paramMessageForMixedMsg.next();
-      paramString = (MixedMsgManager.PicUploadCallBack2)paramArrayList.getValue();
-      if (paramMap == null) {
-        break label346;
+      paramString = (Map.Entry)paramMessageForMixedMsg.next();
+      paramArrayList = (MixedMsgManager.PicUploadCallBack2)paramString.getValue();
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (paramMap != null)
+      {
+        localObject = (Boolean)paramMap.get(paramArrayList.jdField_a_of_type_JavaLangString);
+        bool1 = bool2;
+        if (localObject != null) {
+          bool1 = ((Boolean)localObject).booleanValue();
+        }
       }
-      localObject = (Boolean)paramMap.get(paramString.jdField_a_of_type_JavaLangString);
-      if (localObject == null) {
-        break label346;
+      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForPic)paramString.getKey(), bool1, paramArrayList);
+      if (QLog.isColorLevel())
+      {
+        paramString = new StringBuilder();
+        paramString.append("send pic req:");
+        paramString.append(paramArrayList.jdField_a_of_type_JavaLangString);
+        paramString.append(", raw:");
+        paramString.append(bool1);
+        QLog.d("MixedMsgManager", 2, paramString.toString());
       }
-    }
-    label346:
-    for (boolean bool = ((Boolean)localObject).booleanValue();; bool = false)
-    {
-      a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForPic)paramArrayList.getKey(), bool, paramString);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("MixedMsgManager", 2, "send pic req:" + paramString.jdField_a_of_type_JavaLangString + ", raw:" + bool);
-      break;
-      return;
     }
   }
   
@@ -301,7 +311,7 @@ public class MixedMsgManager
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg.uniseq, 32768, paramMessageForMixedMsg.sendFailCode);
     a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForMixedMsg);
     this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramMessageForMixedMsg.mForwardFromUniSeq));
-    OrderMediaMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.uniseq);
+    ((IOrderMediaMsgService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IOrderMediaMsgService.class)).removeMediaMsgByUniseq(paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.uniseq);
     a(false, paramBoolean, paramMessageForMixedMsg, paramString);
   }
   
@@ -332,23 +342,27 @@ public class MixedMsgManager
   
   private boolean a(QQAppInterface paramQQAppInterface, byte[] paramArrayOfByte, String paramString1, String paramString2, String paramString3, int paramInt1, long paramLong, int paramInt2, UpCallBack paramUpCallBack)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MixedMsgManager", 2, "[sendLongTextMsg]data.length = " + paramArrayOfByte.length);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[sendLongTextMsg]data.length = ");
+      ((StringBuilder)localObject).append(paramArrayOfByte.length);
+      QLog.d("MixedMsgManager", 2, ((StringBuilder)localObject).toString());
     }
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.mIsUp = true;
-    localTransferRequest.mFileType = 131078;
-    localTransferRequest.multiMsgType = 1;
-    localTransferRequest.toSendData = paramArrayOfByte;
-    localTransferRequest.mSelfUin = paramString1;
-    localTransferRequest.mPeerUin = paramString2;
-    localTransferRequest.mSecondId = paramString3;
-    localTransferRequest.mUinType = paramInt1;
-    localTransferRequest.mUniseq = paramLong;
-    localTransferRequest.mBusiType = paramInt2;
-    localTransferRequest.mUpCallBack = paramUpCallBack;
-    localTransferRequest.upMsgBusiType = a();
-    ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
+    Object localObject = new TransferRequest();
+    ((TransferRequest)localObject).mIsUp = true;
+    ((TransferRequest)localObject).mFileType = 131078;
+    ((TransferRequest)localObject).multiMsgType = 1;
+    ((TransferRequest)localObject).toSendData = paramArrayOfByte;
+    ((TransferRequest)localObject).mSelfUin = paramString1;
+    ((TransferRequest)localObject).mPeerUin = paramString2;
+    ((TransferRequest)localObject).mSecondId = paramString3;
+    ((TransferRequest)localObject).mUinType = paramInt1;
+    ((TransferRequest)localObject).mUniseq = paramLong;
+    ((TransferRequest)localObject).mBusiType = paramInt2;
+    ((TransferRequest)localObject).mUpCallBack = paramUpCallBack;
+    ((TransferRequest)localObject).upMsgBusiType = a();
+    ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).transferAsync((TransferRequest)localObject);
     return true;
   }
   
@@ -360,23 +374,21 @@ public class MixedMsgManager
   public void a(SessionInfo paramSessionInfo, long paramLong, int paramInt)
   {
     Object localObject = (ChatMessage)this.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(Long.valueOf(paramLong));
-    if (localObject != null) {
-      if (((ChatMessage)localObject).msgtype == -1036)
-      {
+    if (localObject != null)
+    {
+      if (((ChatMessage)localObject).msgtype == -1036) {
         localObject = (MessageForMixedMsg)((MessageForLongMsg)localObject).rebuildLongMsg();
-        ((MessageForMixedMsg)localObject).mForwardFromUniSeq = paramLong;
-        ((MessageForMixedMsg)localObject).forwardID = paramInt;
-        ReplyMsgSender.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForMixedMsg)localObject, paramSessionInfo, paramInt);
-      }
-    }
-    while (!QLog.isColorLevel()) {
-      for (;;)
-      {
-        return;
+      } else {
         localObject = (MessageForMixedMsg)localObject;
       }
+      ((MessageForMixedMsg)localObject).mForwardFromUniSeq = paramLong;
+      ((MessageForMixedMsg)localObject).forwardID = paramInt;
+      ReplyMsgSender.a().a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (MessageForMixedMsg)localObject, paramSessionInfo, paramInt);
+      return;
     }
-    QLog.e("MixedMsgManager", 2, "forwardMixedMsg, not find in cache !");
+    if (QLog.isColorLevel()) {
+      QLog.e("MixedMsgManager", 2, "forwardMixedMsg, not find in cache !");
+    }
   }
   
   public void a(SessionInfo paramSessionInfo, MessageForMixedMsg paramMessageForMixedMsg, boolean paramBoolean)
@@ -392,144 +404,150 @@ public class MixedMsgManager
   
   public void a(QQAppInterface paramQQAppInterface, BaseChatPie paramBaseChatPie, ArrayList<AtTroopMemberInfo> paramArrayList, MixedMsgInfo paramMixedMsgInfo, boolean paramBoolean)
   {
-    if ((paramQQAppInterface == null) || (paramBaseChatPie == null) || (paramMixedMsgInfo == null)) {}
-    Object localObject1;
-    label254:
-    do
+    if ((paramQQAppInterface != null) && (paramBaseChatPie != null))
     {
-      int m;
-      Object localObject2;
-      do
-      {
+      if (paramMixedMsgInfo == null) {
         return;
-        localObject1 = paramMixedMsgInfo.b();
-        if ((TextUtils.isEmpty(paramMixedMsgInfo.b())) && (localObject1 != null) && (((List)localObject1).size() == 1))
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("MixedMsgManager", 2, "sendMixedMrInfo, only 1 pic, send by pic message");
-          }
-          paramArrayList = null;
-          if (paramBoolean)
-          {
-            paramArrayList = new Intent();
-            paramArrayList.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1057);
-          }
-          AIOPanelUtiles.a(paramQQAppInterface, paramBaseChatPie, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioInputLinearLayout, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout, false, paramArrayList).a(paramBaseChatPie, (List)localObject1, false);
-          return;
+      }
+      Object localObject2 = paramMixedMsgInfo.b();
+      boolean bool = TextUtils.isEmpty(paramMixedMsgInfo.b());
+      Object localObject1 = "MixedMsgManager";
+      if ((bool) && (localObject2 != null) && (((List)localObject2).size() == 1))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MixedMsgManager", 2, "sendMixedMrInfo, only 1 pic, send by pic message");
         }
-        int i;
-        MessageForReplyText.SourceMsgInfo localSourceMsgInfo;
-        boolean bool1;
-        Object localObject3;
-        int k;
-        int j;
+        if (paramBoolean)
+        {
+          paramArrayList = new Intent();
+          paramArrayList.putExtra("PhotoConst.SEND_BUSINESS_TYPE", 1057);
+        }
+        else
+        {
+          paramArrayList = null;
+        }
+        paramMixedMsgInfo = paramBaseChatPie.b().a().a().a();
+        AIOPanelUtiles.a(paramQQAppInterface, paramBaseChatPie.b(), paramMixedMsgInfo, paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioPanelPanelIconLinearLayout, false, paramArrayList).a(paramBaseChatPie, (List)localObject2, false);
+        return;
+      }
+      if (localObject2 == null) {
+        i = 0;
+      } else {
+        i = ((List)localObject2).size();
+      }
+      a("0X800AE1B", i);
+      MessageForReplyText.SourceMsgInfo localSourceMsgInfo = ((ReplyHelper)paramBaseChatPie.a(119)).a();
+      String str = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+      int i = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
+      localObject2 = new ArrayList();
+      if ((paramArrayList != null) && (!paramArrayList.isEmpty()))
+      {
+        paramBaseChatPie = (ITroopRobotService)paramQQAppInterface.getRuntimeService(ITroopRobotService.class, "all");
+        localObject3 = paramArrayList.iterator();
+        while (((Iterator)localObject3).hasNext()) {
+          if (paramBaseChatPie.isRobotUin(((AtTroopMemberInfo)((Iterator)localObject3).next()).uin))
+          {
+            bool = true;
+            break label281;
+          }
+        }
+      }
+      bool = false;
+      label281:
+      Object localObject3 = new HashMap();
+      int k = 0;
+      int j = 1;
+      paramBaseChatPie = (BaseChatPie)localObject1;
+      localObject1 = localObject3;
+      for (;;)
+      {
+        int m = 0;
+        if (k >= paramMixedMsgInfo.a().size()) {
+          break;
+        }
+        localObject3 = (MixedMsgInfo.MsgNode)paramMixedMsgInfo.a().get(k);
         Object localObject4;
         Object localObject5;
-        if (localObject1 == null)
+        if ((localObject3 instanceof MixedMsgInfo.TextMsgNode))
         {
-          i = 0;
-          a("0X800AE1B", i);
-          localSourceMsgInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo;
-          localObject1 = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-          m = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int;
-          paramBaseChatPie = new ArrayList();
-          boolean bool2 = false;
-          bool1 = bool2;
-          if (paramArrayList != null)
+          localObject4 = ((MixedMsgInfo.MsgNode)localObject3).text();
+          if (!TextUtils.isEmpty((CharSequence)localObject4))
           {
-            bool1 = bool2;
-            if (!paramArrayList.isEmpty())
+            if ((j != 0) && (localSourceMsgInfo != null))
             {
-              localObject2 = (TroopRobotManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_ROBOT_MANAGER);
-              localObject3 = paramArrayList.iterator();
-              do
-              {
-                bool1 = bool2;
-                if (!((Iterator)localObject3).hasNext()) {
-                  break;
-                }
-              } while (!((TroopRobotManager)localObject2).a(((AtTroopMemberInfo)((Iterator)localObject3).next()).uin));
-              bool1 = true;
-            }
-          }
-          localObject2 = new HashMap();
-          k = 0;
-          i = 1;
-          if (k >= paramMixedMsgInfo.a().size()) {
-            break label698;
-          }
-          localObject3 = (MixedMsgInfo.MsgNode)paramMixedMsgInfo.a().get(k);
-          j = i;
-          if ((localObject3 instanceof MixedMsgInfo.TextMsgNode))
-          {
-            localObject4 = ((MixedMsgInfo.MsgNode)localObject3).text();
-            j = i;
-            if (!TextUtils.isEmpty((CharSequence)localObject4))
-            {
-              if ((i == 0) || (localSourceMsgInfo == null)) {
-                break label627;
-              }
-              localObject5 = MessageRecordFactory.a(paramQQAppInterface, (String)localObject1, m, localSourceMsgInfo, (String)localObject4);
+              localObject5 = MessageRecordFactory.a(paramQQAppInterface, str, i, localSourceMsgInfo, (String)localObject4);
               ((MessageForReplyText)localObject5).atInfoList = paramArrayList;
-              paramBaseChatPie.add(localObject5);
+              ((List)localObject2).add(localObject5);
               if (QLog.isColorLevel()) {
-                QLog.d("MixedMsgManager", 2, "Attach at first text node");
+                QLog.d(paramBaseChatPie, 2, "Attach at first text node");
               }
-              i = 0;
-              j = i;
-              if (QLog.isColorLevel())
-              {
-                QLog.d("MixedMsgManager", 2, "add txt:" + (String)localObject4);
-                j = i;
-              }
+              j = m;
             }
-          }
-          if ((localObject3 instanceof MixedMsgInfo.PhotoMsgNode))
-          {
-            localObject3 = ((MixedMsgInfo.PhotoMsgNode)localObject3).getPhotoItem();
-            if ((localObject3 != null) && (FileUtil.a(((MixedMsgInfo.PhotoItem)localObject3).path)))
+            else
             {
-              localObject4 = a(paramQQAppInterface, ((MixedMsgInfo.PhotoItem)localObject3).path, null, (String)localObject1, m);
-              ThreadManager.getFileThreadHandler().post(new MixedMsgManager.6(this, (MessageForPic)localObject4));
-              ((MessageForPic)localObject4).subMsgId = paramBaseChatPie.size();
-              paramBaseChatPie.add(localObject4);
-              localObject5 = (Boolean)((Map)localObject2).get(((MessageForPic)localObject4).path);
-              if (localObject5 != null) {
-                break label666;
-              }
-              ((Map)localObject2).put(((MessageForPic)localObject4).path, Boolean.valueOf(((MixedMsgInfo.PhotoItem)localObject3).isOriginal));
+              localObject5 = MessageRecordFactory.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), str, str, i, (byte)1, (byte)0, (short)0, (String)localObject4);
+              ((MessageForText)localObject5).atInfoList = paramArrayList;
+              ((List)localObject2).add(localObject5);
+            }
+            if (QLog.isColorLevel())
+            {
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append("add txt:");
+              ((StringBuilder)localObject5).append((String)localObject4);
+              QLog.d(paramBaseChatPie, 2, ((StringBuilder)localObject5).toString());
             }
           }
         }
-        for (;;)
+        if ((localObject3 instanceof MixedMsgInfo.PhotoMsgNode))
         {
-          if (QLog.isColorLevel()) {
-            QLog.d("MixedMsgManager", 2, "add pic:" + ((MessageForPic)localObject4).path + ", raw:" + ((Map)localObject2).get(((MessageForPic)localObject4).path));
-          }
-          k += 1;
-          i = j;
-          break label254;
-          i = ((List)localObject1).size();
-          break;
-          localObject5 = MessageRecordFactory.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), (String)localObject1, (String)localObject1, m, (byte)1, (byte)0, (short)0, (String)localObject4);
-          ((MessageForText)localObject5).atInfoList = paramArrayList;
-          paramBaseChatPie.add(localObject5);
-          break label374;
-          if (!((Boolean)localObject5).booleanValue()) {
-            ((Map)localObject2).put(((MessageForPic)localObject4).path, Boolean.valueOf(((MixedMsgInfo.PhotoItem)localObject3).isOriginal));
+          localObject5 = ((MixedMsgInfo.PhotoMsgNode)localObject3).getPhotoItem();
+          if ((localObject5 != null) && (FileUtil.b(((MixedMsgInfo.PhotoItem)localObject5).path)))
+          {
+            localObject4 = a(paramQQAppInterface, ((MixedMsgInfo.PhotoItem)localObject5).path, null, str, i);
+            ThreadManager.getFileThreadHandler().post(new MixedMsgManager.6(this, (MessageForPic)localObject4));
+            ((MessageForPic)localObject4).subMsgId = ((List)localObject2).size();
+            ((List)localObject2).add(localObject4);
+            Object localObject6 = ((MessageForPic)localObject4).path;
+            localObject3 = localObject1;
+            localObject6 = (Boolean)((Map)localObject3).get(localObject6);
+            if (localObject6 == null) {
+              ((Map)localObject3).put(((MessageForPic)localObject4).path, Boolean.valueOf(((MixedMsgInfo.PhotoItem)localObject5).isOriginal));
+            } else if (!((Boolean)localObject6).booleanValue()) {
+              ((Map)localObject3).put(((MessageForPic)localObject4).path, Boolean.valueOf(((MixedMsgInfo.PhotoItem)localObject5).isOriginal));
+            }
+            if (QLog.isColorLevel())
+            {
+              localObject5 = new StringBuilder();
+              ((StringBuilder)localObject5).append("add pic:");
+              ((StringBuilder)localObject5).append(((MessageForPic)localObject4).path);
+              ((StringBuilder)localObject5).append(", raw:");
+              ((StringBuilder)localObject5).append(((Map)localObject3).get(((MessageForPic)localObject4).path));
+              QLog.d(paramBaseChatPie, 2, ((StringBuilder)localObject5).toString());
+            }
+            else {}
           }
         }
-        paramBaseChatPie = a(paramBaseChatPie, paramArrayList, localSourceMsgInfo, m, bool1);
-      } while (paramBaseChatPie == null);
-      if (paramBoolean) {
-        ((TroopEssenceMsgManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).a(paramBaseChatPie.frienduin, paramBaseChatPie.uniseq);
+        k += 1;
       }
-      a(paramBaseChatPie, paramArrayList, (String)localObject1, (Map)localObject2);
-      paramQQAppInterface.getMessageFacade().f((String)localObject1, m);
-    } while (!QLog.isColorLevel());
-    label374:
-    QLog.d("MixedMsgManager", 2, "orderSender, sessionUin:" + (String)localObject1 + ", sequin:" + paramBaseChatPie.uniseq);
-    label627:
+      paramMixedMsgInfo = a((List)localObject2, paramArrayList, localSourceMsgInfo, i, bool);
+      if (paramMixedMsgInfo == null) {
+        return;
+      }
+      if (paramBoolean) {
+        ((TroopEssenceMsgManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_ESSENCE_MSG_MANAGER)).a(paramMixedMsgInfo.frienduin, paramMixedMsgInfo.uniseq);
+      }
+      a(paramMixedMsgInfo, paramArrayList, str, (Map)localObject1);
+      paramQQAppInterface.getMessageFacade().e(str, i);
+      if (QLog.isColorLevel())
+      {
+        paramQQAppInterface = new StringBuilder();
+        paramQQAppInterface.append("orderSender, sessionUin:");
+        paramQQAppInterface.append(str);
+        paramQQAppInterface.append(", sequin:");
+        paramQQAppInterface.append(paramMixedMsgInfo.uniseq);
+        QLog.d(paramBaseChatPie, 2, paramQQAppInterface.toString());
+      }
+    }
   }
   
   protected void a(QQAppInterface paramQQAppInterface, MessageForPic paramMessageForPic, boolean paramBoolean, UpCallBack paramUpCallBack)
@@ -567,26 +585,49 @@ public class MixedMsgManager
   
   public void a(QQAppInterface paramQQAppInterface, String paramString1, int paramInt, ArrayList<String> paramArrayList, boolean paramBoolean, String paramString2, ArrayList<AtTroopMemberInfo> paramArrayList1, MessageForReplyText.SourceMsgInfo paramSourceMsgInfo)
   {
-    if ((paramQQAppInterface == null) || (paramArrayList == null) || (paramArrayList.isEmpty())) {
-      return;
-    }
-    Object localObject = new ArrayList();
-    boolean bool;
-    if (paramSourceMsgInfo != null)
+    if ((paramQQAppInterface != null) && (paramArrayList != null))
     {
-      paramString2 = MessageRecordFactory.a(paramQQAppInterface, paramString1, paramInt, paramSourceMsgInfo, paramString2);
-      paramString2.atInfoList = paramArrayList1;
-      ((List)localObject).add(paramString2);
-      bool = false;
-    }
-    for (;;)
-    {
-      label64:
+      if (paramArrayList.isEmpty()) {
+        return;
+      }
+      Object localObject = new ArrayList();
+      boolean bool1 = false;
+      boolean bool2 = false;
+      if (paramSourceMsgInfo != null)
+      {
+        paramString2 = MessageRecordFactory.a(paramQQAppInterface, paramString1, paramInt, paramSourceMsgInfo, paramString2);
+        paramString2.atInfoList = paramArrayList1;
+        ((List)localObject).add(paramString2);
+      }
+      else if (!TextUtils.isEmpty(paramString2))
+      {
+        paramString2 = MessageRecordFactory.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramInt, (byte)1, (byte)0, (short)0, paramString2);
+        paramString2.atInfoList = paramArrayList1;
+        bool1 = bool2;
+        if (paramString2.atInfoList != null)
+        {
+          bool1 = bool2;
+          if (!paramString2.atInfoList.isEmpty())
+          {
+            ITroopRobotService localITroopRobotService = (ITroopRobotService)paramQQAppInterface.getRuntimeService(ITroopRobotService.class, "all");
+            Iterator localIterator = paramString2.atInfoList.iterator();
+            do
+            {
+              bool1 = bool2;
+              if (!localIterator.hasNext()) {
+                break;
+              }
+            } while (!localITroopRobotService.isRobotUin(((AtTroopMemberInfo)localIterator.next()).uin));
+            bool1 = true;
+          }
+        }
+        ((List)localObject).add(paramString2);
+      }
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
         paramString2 = (String)paramArrayList.next();
-        if (FileUtil.a(paramString2))
+        if (FileUtil.b(paramString2))
         {
           paramString2 = a(paramQQAppInterface, paramString2, null, paramString1, paramInt);
           if (paramString2 != null)
@@ -594,35 +635,12 @@ public class MixedMsgManager
             ThreadManager.post(new MixedMsgManager.5(this, paramString2), 8, null, true);
             paramString2.subMsgId = ((List)localObject).size();
             ((List)localObject).add(paramString2);
-            continue;
-            if (TextUtils.isEmpty(paramString2)) {
-              break label417;
-            }
-            paramString2 = MessageRecordFactory.a(paramQQAppInterface, paramQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramInt, (byte)1, (byte)0, (short)0, paramString2);
-            paramString2.atInfoList = paramArrayList1;
-            if ((paramString2.atInfoList == null) || (paramString2.atInfoList.isEmpty())) {
-              break label411;
-            }
-            TroopRobotManager localTroopRobotManager = (TroopRobotManager)paramQQAppInterface.getManager(QQManagerFactory.TROOP_ROBOT_MANAGER);
-            Iterator localIterator = paramString2.atInfoList.iterator();
-            do
-            {
-              if (!localIterator.hasNext()) {
-                break;
-              }
-            } while (!localTroopRobotManager.a(((AtTroopMemberInfo)localIterator.next()).uin));
           }
         }
       }
-      label411:
-      for (bool = true;; bool = false)
+      paramArrayList = a((List)localObject, paramArrayList1, paramSourceMsgInfo, paramInt, bool1);
+      if (paramArrayList != null)
       {
-        ((List)localObject).add(paramString2);
-        break label64;
-        paramArrayList = a((List)localObject, paramArrayList1, paramSourceMsgInfo, paramInt, bool);
-        if (paramArrayList == null) {
-          break;
-        }
         paramString2 = new HashMap();
         paramSourceMsgInfo = paramArrayList.msgElemList.iterator();
         while (paramSourceMsgInfo.hasNext())
@@ -631,17 +649,14 @@ public class MixedMsgManager
           if ((localObject instanceof MessageForPic))
           {
             localObject = (MessageForPic)localObject;
-            if (FileUtil.a(((MessageForPic)localObject).path)) {
+            if (FileUtil.b(((MessageForPic)localObject).path)) {
               paramString2.put(((MessageForPic)localObject).path, Boolean.valueOf(paramBoolean));
             }
           }
         }
         a(paramArrayList, paramArrayList1, paramString1, paramString2);
-        paramQQAppInterface.getMessageFacade().f(paramString1, paramInt);
-        return;
+        paramQQAppInterface.getMessageFacade().e(paramString1, paramInt);
       }
-      label417:
-      bool = false;
     }
   }
   
@@ -663,33 +678,38 @@ public class MixedMsgManager
     if ((paramMessageForMixedMsg instanceof ChatMessage)) {
       paramMessageForMixedMsg.mPendantAnimatable = true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MixedMsgManager", 2, "step2: sendStructLongMsg saveMessage end and pack StructLongMsg start currenttime:" + System.currentTimeMillis());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("step2: sendStructLongMsg saveMessage end and pack StructLongMsg start currenttime:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      QLog.d("MixedMsgManager", 2, ((StringBuilder)localObject).toString());
     }
-    byte[] arrayOfByte = paramQQAppInterface.getProxyManager().a().a(paramMessageForMixedMsg);
-    if (arrayOfByte == null)
+    Object localObject = paramQQAppInterface.getProxyManager().a().a(paramMessageForMixedMsg);
+    if (localObject == null)
     {
       if (QLog.isColorLevel()) {
         QLog.d("MixedMsgManager", 2, "step2: sendStructLongMsg pack failed! packData is null.............................");
       }
       a(paramMessageForMixedMsg, true, "sendStructLongMsg pack fail : packData is null");
-    }
-    do
-    {
-      do
-      {
-        return;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        paramString = new MixedMsgManager.3(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramInt);
-        paramBoolean = a(paramQQAppInterface, arrayOfByte, paramQQAppInterface.getCurrentAccountUin(), paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg.uniseq, 1035, new MixedMsgManager.4(this, paramQQAppInterface, paramMessageForMixedMsg, paramString));
-        if (!paramBoolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.d("MixedMsgManager", 2, "sendLongTextMsg successful, uploadLongTextMsgPkg start!");
       return;
-    } while (!QLog.isColorLevel());
-    QLog.d("MixedMsgManager", 2, "sendLongTextMsg failed! isSuccess:" + paramBoolean);
+    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
+    paramString = new MixedMsgManager.3(this, paramQQAppInterface, paramMessageForMixedMsg, paramString, paramInt);
+    paramBoolean = a(paramQQAppInterface, (byte[])localObject, paramQQAppInterface.getCurrentAccountUin(), paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.frienduin, paramMessageForMixedMsg.istroop, paramMessageForMixedMsg.uniseq, 1035, new MixedMsgManager.4(this, paramQQAppInterface, paramMessageForMixedMsg, paramString));
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MixedMsgManager", 2, "sendLongTextMsg successful, uploadLongTextMsgPkg start!");
+      }
+    }
+    else if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("sendLongTextMsg failed! isSuccess:");
+      paramString.append(paramBoolean);
+      QLog.d("MixedMsgManager", 2, paramString.toString());
+    }
   }
   
   public void a(boolean paramBoolean, int paramInt)
@@ -720,7 +740,7 @@ public class MixedMsgManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mixedmsg.MixedMsgManager
  * JD-Core Version:    0.7.0.1
  */

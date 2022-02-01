@@ -16,22 +16,17 @@ class ChatHistoryC2CLinkFragment$3$1
   {
     if (this.jdField_a_of_type_JavaUtilList.size() == 1) {
       this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment$3.a.b.getMessageFacade().a((MessageRecord)this.jdField_a_of_type_JavaUtilList.get(0), false);
+    } else if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment$3.a.b.getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
     }
-    for (;;)
-    {
-      Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment$3.a.a.obtainMessage(2);
-      localMessage.obj = this.jdField_a_of_type_JavaUtilList;
-      this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment$3.a.a.sendMessage(localMessage);
-      return;
-      if (this.jdField_a_of_type_JavaUtilList.size() > 1) {
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment$3.a.b.getMessageFacade().a(this.jdField_a_of_type_JavaUtilList, false);
-      }
-    }
+    Message localMessage = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment$3.a.a.obtainMessage(2);
+    localMessage.obj = this.jdField_a_of_type_JavaUtilList;
+    this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryC2CLinkFragment$3.a.a.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CLinkFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

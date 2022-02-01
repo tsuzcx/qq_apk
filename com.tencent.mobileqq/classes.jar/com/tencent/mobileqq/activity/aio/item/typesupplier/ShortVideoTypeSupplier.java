@@ -8,25 +8,30 @@ import com.tencent.mobileqq.data.MessageForShortVideo;
 public class ShortVideoTypeSupplier
   implements MessageTypeSupplier
 {
-  public int a(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
+  public int get(QQAppInterface paramQQAppInterface, ChatMessage paramChatMessage)
   {
-    switch (((MessageForShortVideo)paramChatMessage).busiType)
+    int i = ((MessageForShortVideo)paramChatMessage).busiType;
+    if (i != 1)
     {
-    default: 
-      return 29;
-    case 1: 
-      return 38;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 1007)
+        {
+          if (i != 1008) {
+            return 29;
+          }
+          return 41;
+        }
+        return 40;
+      }
       return 46;
-    case 1007: 
-      return 40;
     }
-    return 41;
+    return 38;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.typesupplier.ShortVideoTypeSupplier
  * JD-Core Version:    0.7.0.1
  */

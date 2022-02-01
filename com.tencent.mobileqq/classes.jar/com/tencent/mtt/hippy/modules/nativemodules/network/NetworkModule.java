@@ -35,10 +35,11 @@ public class NetworkModule
   
   private void a(HippyHttpRequest paramHippyHttpRequest, HippyMap paramHippyMap)
   {
-    if ((paramHippyHttpRequest == null) || (paramHippyMap == null)) {}
-    for (;;)
+    if (paramHippyHttpRequest != null)
     {
-      return;
+      if (paramHippyMap == null) {
+        return;
+      }
       Iterator localIterator = paramHippyMap.keySet().iterator();
       while (localIterator.hasNext())
       {
@@ -46,27 +47,35 @@ public class NetworkModule
         Object localObject1 = paramHippyMap.get(str);
         if ((localObject1 instanceof HippyArray))
         {
-          localObject1 = (HippyArray)localObject1;
+          HippyArray localHippyArray = (HippyArray)localObject1;
           ArrayList localArrayList = new ArrayList();
           int i = 0;
-          if (i < ((HippyArray)localObject1).size())
+          while (i < localHippyArray.size())
           {
-            Object localObject2 = ((HippyArray)localObject1).get(i);
-            if ((localObject2 instanceof Number)) {
-              localArrayList.add(localObject2 + "");
-            }
-            for (;;)
+            Object localObject2 = localHippyArray.get(i);
+            if ((localObject2 instanceof Number))
             {
-              i += 1;
-              break;
-              if ((localObject2 instanceof Boolean)) {
-                localArrayList.add(localObject2 + "");
-              } else if ((localObject2 instanceof String)) {
-                localArrayList.add((String)localObject2);
-              } else {
-                LogUtils.e("hippy_console", "Unsupported Request Header List Type");
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(localObject2);
+              ((StringBuilder)localObject1).append("");
+            }
+            for (localObject1 = ((StringBuilder)localObject1).toString();; localObject1 = (String)localObject2)
+            {
+              localArrayList.add(localObject1);
+              break label191;
+              if ((localObject2 instanceof Boolean))
+              {
+                localObject1 = new StringBuilder();
+                break;
+              }
+              if (!(localObject2 instanceof String)) {
+                break label184;
               }
             }
+            label184:
+            LogUtils.e("hippy_console", "Unsupported Request Header List Type");
+            label191:
+            i += 1;
           }
           if (!localArrayList.isEmpty()) {
             paramHippyHttpRequest.addHeader(str, localArrayList);
@@ -161,52 +170,48 @@ public class NetworkModule
   @HippyMethod(name="fetch")
   public void fetch(HippyMap paramHippyMap, Promise paramPromise)
   {
-    if (paramHippyMap == null)
+    if (paramHippyMap == null) {}
+    for (paramHippyMap = "invalid request param";; paramHippyMap = "no valid url for request")
     {
-      paramPromise.reject("invalid request param");
+      paramPromise.reject(paramHippyMap);
       return;
-    }
-    Object localObject1 = paramHippyMap.getString("url");
-    Object localObject2 = paramHippyMap.getString("method");
-    if ((TextUtils.isEmpty((CharSequence)localObject1)) || (TextUtils.isEmpty((CharSequence)localObject2)))
-    {
-      paramPromise.reject("no valid url for request");
-      return;
-    }
-    HippyHttpRequest localHippyHttpRequest = new HippyHttpRequest();
-    localHippyHttpRequest.setConnectTimeout(10000);
-    localHippyHttpRequest.setReadTimeout(10000);
-    String str = paramHippyMap.getString("redirect");
-    if ((!TextUtils.isEmpty(str)) && (TextUtils.equals("follow", str))) {
-      localHippyHttpRequest.setInstanceFollowRedirects(true);
-    }
-    for (;;)
-    {
-      localHippyHttpRequest.setUseCaches(false);
-      localHippyHttpRequest.setMethod((String)localObject2);
-      localHippyHttpRequest.setUrl((String)localObject1);
-      localObject2 = paramHippyMap.getMap("headers");
-      if (localObject2 != null)
+      Object localObject1 = paramHippyMap.getString("url");
+      Object localObject2 = paramHippyMap.getString("method");
+      if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty((CharSequence)localObject2)))
       {
-        a((String)localObject1, ((HippyMap)localObject2).getArray("Cookie"));
-        a(localHippyHttpRequest, (HippyMap)localObject2);
+        HippyHttpRequest localHippyHttpRequest = new HippyHttpRequest();
+        localHippyHttpRequest.setConnectTimeout(10000);
+        localHippyHttpRequest.setReadTimeout(10000);
+        String str = paramHippyMap.getString("redirect");
+        if ((!TextUtils.isEmpty(str)) && (TextUtils.equals("follow", str))) {
+          localHippyHttpRequest.setInstanceFollowRedirects(true);
+        } else {
+          localHippyHttpRequest.setInstanceFollowRedirects(false);
+        }
+        localHippyHttpRequest.setUseCaches(false);
+        localHippyHttpRequest.setMethod((String)localObject2);
+        localHippyHttpRequest.setUrl((String)localObject1);
+        localObject2 = paramHippyMap.getMap("headers");
+        if (localObject2 != null)
+        {
+          a((String)localObject1, ((HippyMap)localObject2).getArray("Cookie"));
+          a(localHippyHttpRequest, (HippyMap)localObject2);
+        }
+        localHippyHttpRequest.setBody(paramHippyMap.getString("body"));
+        paramHippyMap = b().getCookie((String)localObject1);
+        if (!TextUtils.isEmpty(paramHippyMap)) {
+          localHippyHttpRequest.addHeader("Cookie", paramHippyMap);
+        }
+        localObject1 = this.mContext.getGlobalConfigs();
+        paramHippyMap = null;
+        if (localObject1 != null) {
+          paramHippyMap = ((HippyGlobalConfigs)localObject1).getHttpAdapter();
+        }
+        if (paramHippyMap != null) {
+          paramHippyMap.sendRequest(localHippyHttpRequest, new NetworkModule.a(paramPromise));
+        }
+        return;
       }
-      localHippyHttpRequest.setBody(paramHippyMap.getString("body"));
-      paramHippyMap = b().getCookie((String)localObject1);
-      if (!TextUtils.isEmpty(paramHippyMap)) {
-        localHippyHttpRequest.addHeader("Cookie", paramHippyMap);
-      }
-      localObject1 = this.mContext.getGlobalConfigs();
-      paramHippyMap = null;
-      if (localObject1 != null) {
-        paramHippyMap = ((HippyGlobalConfigs)localObject1).getHttpAdapter();
-      }
-      if (paramHippyMap == null) {
-        break;
-      }
-      paramHippyMap.sendRequest(localHippyHttpRequest, new NetworkModule.a(paramPromise));
-      return;
-      localHippyHttpRequest.setInstanceFollowRedirects(false);
     }
   }
   
@@ -221,24 +226,26 @@ public class NetworkModule
   {
     if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if (TextUtils.isEmpty(paramString3)) {
-        break label61;
+      if (!TextUtils.isEmpty(paramString3))
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString2);
+        localStringBuilder.append(";expires=");
+        localStringBuilder.append(paramString3);
+        paramString2 = localStringBuilder.toString();
+        b().setCookie(paramString1, paramString2);
       }
-      paramString2 = paramString2 + ";expires=" + paramString3;
-      b().setCookie(paramString1, paramString2);
-    }
-    for (;;)
-    {
+      else
+      {
+        a(paramString1, paramString2);
+      }
       a.sync();
-      return;
-      label61:
-      a(paramString1, paramString2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.network.NetworkModule
  * JD-Core Version:    0.7.0.1
  */

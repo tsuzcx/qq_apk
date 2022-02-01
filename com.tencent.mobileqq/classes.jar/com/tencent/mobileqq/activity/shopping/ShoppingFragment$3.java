@@ -11,18 +11,19 @@ class ShoppingFragment$3
   
   public void a(LoadInfo paramLoadInfo, RelativeFeedsAdapter paramRelativeFeedsAdapter)
   {
-    if (paramLoadInfo.e()) {
+    if (paramLoadInfo.e())
+    {
       ShoppingFragment.a(this.a, paramRelativeFeedsAdapter);
-    }
-    while ((!paramLoadInfo.d()) && (!paramLoadInfo.c())) {
       return;
     }
-    ShoppingFragment.b(this.a, paramRelativeFeedsAdapter);
+    if ((paramLoadInfo.d()) || (paramLoadInfo.c())) {
+      ShoppingFragment.b(this.a, paramRelativeFeedsAdapter);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shopping.ShoppingFragment.3
  * JD-Core Version:    0.7.0.1
  */

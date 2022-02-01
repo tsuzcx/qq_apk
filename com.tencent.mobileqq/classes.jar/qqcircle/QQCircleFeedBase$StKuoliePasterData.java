@@ -27,13 +27,14 @@ public final class QQCircleFeedBase$StKuoliePasterData
   
   static
   {
+    Float localFloat = Float.valueOf(0.0F);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 21, 29, 37, 45, 53, 58, 66, 72, 82, 90 }, new String[] { "kuolie_id", "center_x", "center_y", "width", "height", "rotation", "scheme", "content", "click_type", "trans_info", "highlight_words" }, new Object[] { "", Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), Float.valueOf(0.0F), "", "", Integer.valueOf(0), localByteStringMicro, "" }, StKuoliePasterData.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 21, 29, 37, 45, 53, 58, 66, 72, 82, 90 }, new String[] { "kuolie_id", "center_x", "center_y", "width", "height", "rotation", "scheme", "content", "click_type", "trans_info", "highlight_words" }, new Object[] { "", localFloat, localFloat, localFloat, localFloat, localFloat, "", "", Integer.valueOf(0), localByteStringMicro, "" }, StKuoliePasterData.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleFeedBase.StKuoliePasterData
  * JD-Core Version:    0.7.0.1
  */

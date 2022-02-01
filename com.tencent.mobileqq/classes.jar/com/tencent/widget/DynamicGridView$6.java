@@ -19,23 +19,23 @@ class DynamicGridView$6
   {
     if ((this.d > 0) && (this.e == 0))
     {
-      if ((!DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) || (!DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView))) {
-        break label42;
+      if ((DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)))
+      {
+        DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+        return;
       }
-      DynamicGridView.b(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+      if (DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) {
+        DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
+      }
     }
-    label42:
-    while (!DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) {
-      return;
-    }
-    DynamicGridView.c(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
   }
   
   public void a()
   {
     if ((this.c != this.jdField_a_of_type_Int) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
     {
-      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
+      DynamicGridView localDynamicGridView = this.jdField_a_of_type_ComTencentWidgetDynamicGridView;
+      DynamicGridView.a(localDynamicGridView, DynamicGridView.a(localDynamicGridView));
       DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
     }
   }
@@ -44,7 +44,8 @@ class DynamicGridView$6
   {
     if ((this.c + this.d != this.jdField_a_of_type_Int + this.b) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView)) && (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != -1L))
     {
-      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView, DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView));
+      DynamicGridView localDynamicGridView = this.jdField_a_of_type_ComTencentWidgetDynamicGridView;
+      DynamicGridView.a(localDynamicGridView, DynamicGridView.a(localDynamicGridView));
       DynamicGridView.d(this.jdField_a_of_type_ComTencentWidgetDynamicGridView);
     }
   }
@@ -53,28 +54,24 @@ class DynamicGridView$6
   {
     this.c = paramInt1;
     this.d = paramInt2;
-    if (this.jdField_a_of_type_Int == -1)
-    {
+    int j = this.jdField_a_of_type_Int;
+    int i = j;
+    if (j == -1) {
       i = this.c;
-      this.jdField_a_of_type_Int = i;
-      if (this.b != -1) {
-        break label111;
-      }
     }
-    label111:
-    for (int i = this.d;; i = this.b)
-    {
-      this.b = i;
-      a();
-      b();
-      this.jdField_a_of_type_Int = this.c;
-      this.b = this.d;
-      if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
-        DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
-      }
-      return;
-      i = this.jdField_a_of_type_Int;
-      break;
+    this.jdField_a_of_type_Int = i;
+    j = this.b;
+    i = j;
+    if (j == -1) {
+      i = this.d;
+    }
+    this.b = i;
+    a();
+    b();
+    this.jdField_a_of_type_Int = this.c;
+    this.b = this.d;
+    if (DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView) != null) {
+      DynamicGridView.a(this.jdField_a_of_type_ComTencentWidgetDynamicGridView).onScroll(paramAbsListView, paramInt1, paramInt2, paramInt3);
     }
   }
   
@@ -91,7 +88,7 @@ class DynamicGridView$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.DynamicGridView.6
  * JD-Core Version:    0.7.0.1
  */

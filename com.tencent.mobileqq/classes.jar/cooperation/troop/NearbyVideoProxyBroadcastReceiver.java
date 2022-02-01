@@ -15,32 +15,40 @@ public class NearbyVideoProxyBroadcastReceiver
 {
   public static void a(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyVideoProxyBroadcastReceiver", 2, "sendPluginBroadcast:" + paramIntent.getAction());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("sendPluginBroadcast:");
+      ((StringBuilder)localObject).append(paramIntent.getAction());
+      QLog.d("NearbyVideoProxyBroadcastReceiver", 2, ((StringBuilder)localObject).toString());
     }
-    Intent localIntent = new Intent(paramIntent.getAction());
-    localIntent.putExtras(paramIntent);
-    localIntent.putExtra("action", paramIntent.getAction());
+    Object localObject = new Intent(paramIntent.getAction());
+    ((Intent)localObject).putExtras(paramIntent);
+    ((Intent)localObject).putExtra("action", paramIntent.getAction());
     paramIntent = new IPluginManager.PluginParams(1);
     paramIntent.b = "nearby_video_chat_plugin.apk";
     paramIntent.e = PluginInfo.l;
     paramIntent.jdField_a_of_type_JavaLangString = BaseApplicationImpl.getApplication().getRuntime().getAccount();
     paramIntent.f = "com.tencent.mobileqq.nearbyvideochat.service.NearbyVideoMsgBroadcastReceiver";
-    paramIntent.jdField_a_of_type_AndroidContentIntent = localIntent;
+    paramIntent.jdField_a_of_type_AndroidContentIntent = ((Intent)localObject);
     IPluginManager.b(paramContext, paramIntent);
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     super.onReceive(paramContext, paramIntent);
-    if (QLog.isColorLevel()) {
-      QLog.d("NearbyVideoProxyBroadcastReceiver", 2, "onReceive:" + paramIntent.getAction());
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("onReceive:");
+      paramContext.append(paramIntent.getAction());
+      QLog.d("NearbyVideoProxyBroadcastReceiver", 2, paramContext.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop.NearbyVideoProxyBroadcastReceiver
  * JD-Core Version:    0.7.0.1
  */

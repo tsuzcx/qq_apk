@@ -5,7 +5,6 @@ import android.os.Bundle;
 import androidx.lifecycle.LifecycleOwner;
 import com.tencent.ilive.audiencepages.room.events.PlayerStateEvent;
 import com.tencent.ilive.base.event.ModuleEvent;
-import com.tencent.ilive.commonpages.room.VerticalViewPager;
 import com.tencent.ilive.interfaces.IAudienceRoomPager;
 import com.tencent.ilive.litepages.room.webmodule.model.RoomExtInfo;
 import com.tencent.ilive.pages.room.RoomBizContext;
@@ -48,41 +47,37 @@ public class KandianCustomDataReportModule
   
   private Map<String, String> a()
   {
-    String str4 = b();
-    String str3 = c();
-    String str2 = d();
+    String str3 = b();
+    String str2 = c();
+    String str1 = d();
     HashMap localHashMap = new HashMap();
-    String str1 = str4;
-    if (str4 == null) {
-      str1 = "";
+    Object localObject = str3;
+    if (str3 == null) {
+      localObject = "";
     }
-    localHashMap.put("roomid", str1);
-    if (str3 == null)
+    localHashMap.put("roomid", localObject);
+    localObject = str2;
+    if (str2 == null) {
+      localObject = "";
+    }
+    localHashMap.put("program_id", localObject);
+    localObject = str1;
+    if (str1 == null) {
+      localObject = "";
+    }
+    localHashMap.put("ab_token", localObject);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener;
+    if ((localObject != null) && (((OnGetRoomExtInfoListener)localObject).a() != null))
     {
-      str1 = "";
-      localHashMap.put("program_id", str1);
-      if (str2 != null) {
-        break label240;
+      localHashMap.put("zt_int4", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().followStatus);
+      localHashMap.put("zt_int5", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().liveType);
+      localHashMap.put("state", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().state);
+      if ("1".equals(this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().liveType)) {
+        localHashMap.put("program_id", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().programId);
       }
+      localHashMap.put("anchor", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().anchorUid);
     }
-    label240:
-    for (str1 = "";; str1 = str2)
-    {
-      localHashMap.put("ab_token", str1);
-      if ((this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener != null) && (this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a() != null))
-      {
-        localHashMap.put("zt_int4", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().followStatus);
-        localHashMap.put("zt_int5", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().liveType);
-        localHashMap.put("state", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().state);
-        if ("1".equals(this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().liveType)) {
-          localHashMap.put("program_id", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().programId);
-        }
-        localHashMap.put("anchor", this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportOnGetRoomExtInfoListener.a().anchorUid);
-      }
-      return localHashMap;
-      str1 = str3;
-      break;
-    }
+    return localHashMap;
   }
   
   private void a()
@@ -105,45 +100,56 @@ public class KandianCustomDataReportModule
     this.jdField_a_of_type_Boolean = a();
     Map localMap = a();
     localMap.put("timelong", String.valueOf(paramLong));
-    if (this.jdField_c_of_type_Boolean) {}
-    for (String str = "1";; str = "0")
-    {
-      localMap.put("zt_str1", str);
-      if ((this.jdField_a_of_type_Boolean) && (!this.jdField_c_of_type_Boolean)) {
-        localMap.put("zt_str2", BusinessManager.a.c());
-      }
-      DataReportMgr.a().a(this.jdField_a_of_type_Boolean, localMap);
-      return;
+    String str;
+    if (this.jdField_c_of_type_Boolean) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    localMap.put("zt_str1", str);
+    if ((this.jdField_a_of_type_Boolean) && (!this.jdField_c_of_type_Boolean)) {
+      localMap.put("zt_str2", BusinessManager.a.c());
+    }
+    DataReportMgr.a().a(this.jdField_a_of_type_Boolean, localMap);
   }
   
   private boolean a()
   {
-    boolean bool = false;
     int j = a();
-    if (getAudienceRoomPager().getViewPager() != null) {}
-    for (int i = getAudienceRoomPager().getViewPager().getCurrentItem();; i = 0)
-    {
-      if (j == i) {
-        bool = true;
-      }
-      return bool;
+    IAudienceRoomPager localIAudienceRoomPager = getAudienceRoomPager();
+    boolean bool = false;
+    int i;
+    if (localIAudienceRoomPager != null) {
+      i = getAudienceRoomPager().getCurrentIndex();
+    } else {
+      i = 0;
     }
+    if (j == i) {
+      bool = true;
+    }
+    return bool;
   }
   
   private String b()
   {
-    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null))
+    RoomBizContext localRoomBizContext = this.roomBizContext;
+    String str2 = "";
+    String str1 = str2;
+    if (localRoomBizContext != null)
     {
-      if (this.roomBizContext.getEnterRoomInfo().roomId != 0L) {
-        return String.valueOf(this.roomBizContext.getEnterRoomInfo().roomId);
+      str1 = str2;
+      if (this.roomBizContext.getEnterRoomInfo() != null)
+      {
+        if (this.roomBizContext.getEnterRoomInfo().roomId != 0L) {
+          return String.valueOf(this.roomBizContext.getEnterRoomInfo().roomId);
+        }
+        str1 = str2;
+        if (this.roomBizContext.getEnterRoomInfo().extData != null) {
+          str1 = this.roomBizContext.getEnterRoomInfo().extData.getString("roomid", "");
+        }
       }
-      if (this.roomBizContext.getEnterRoomInfo().extData != null) {
-        return this.roomBizContext.getEnterRoomInfo().extData.getString("roomid", "");
-      }
-      return "";
     }
-    return "";
+    return str1;
   }
   
   private void b()
@@ -161,18 +167,24 @@ public class KandianCustomDataReportModule
   
   private String c()
   {
-    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null))
+    RoomBizContext localRoomBizContext = this.roomBizContext;
+    String str2 = "";
+    String str1 = str2;
+    if (localRoomBizContext != null)
     {
-      if ((this.roomBizContext.getEnterRoomInfo().programId == null) || (this.roomBizContext.getEnterRoomInfo().programId.equals("0")))
+      str1 = str2;
+      if (this.roomBizContext.getEnterRoomInfo() != null)
       {
-        if (this.roomBizContext.getEnterRoomInfo().extData != null) {
-          return this.roomBizContext.getEnterRoomInfo().extData.getString("vid", "");
+        if ((this.roomBizContext.getEnterRoomInfo().programId != null) && (!this.roomBizContext.getEnterRoomInfo().programId.equals("0"))) {
+          return this.roomBizContext.getEnterRoomInfo().programId;
         }
-        return "";
+        str1 = str2;
+        if (this.roomBizContext.getEnterRoomInfo().extData != null) {
+          str1 = this.roomBizContext.getEnterRoomInfo().extData.getString("vid", "");
+        }
       }
-      return this.roomBizContext.getEnterRoomInfo().programId;
     }
-    return "";
+    return str1;
   }
   
   private void c()
@@ -182,7 +194,12 @@ public class KandianCustomDataReportModule
       QLog.i("DataReportMgr", 1, "exitRoomReported true");
       return;
     }
-    QLog.i("DataReportMgr", 1, "onExitRoom roomId = " + b() + ", vid = " + c());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onExitRoom roomId = ");
+    localStringBuilder.append(b());
+    localStringBuilder.append(", vid = ");
+    localStringBuilder.append(c());
+    QLog.i("DataReportMgr", 1, localStringBuilder.toString());
     this.jdField_b_of_type_Boolean = true;
     this.jdField_a_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqIntervideoLitelive_kandianCustomizedRoombizmodulesDatareportHeartbeatReportMgr.b(a());
@@ -191,14 +208,21 @@ public class KandianCustomDataReportModule
   
   private String d()
   {
-    if ((this.roomBizContext != null) && (this.roomBizContext.getEnterRoomInfo() != null))
+    RoomBizContext localRoomBizContext = this.roomBizContext;
+    String str2 = "";
+    String str1 = str2;
+    if (localRoomBizContext != null)
     {
-      if (this.roomBizContext.getEnterRoomInfo().extData == null) {
-        return "";
+      str1 = str2;
+      if (this.roomBizContext.getEnterRoomInfo() != null)
+      {
+        if (this.roomBizContext.getEnterRoomInfo().extData == null) {
+          return "";
+        }
+        str1 = this.roomBizContext.getEnterRoomInfo().extData.getString("ab_token");
       }
-      return this.roomBizContext.getEnterRoomInfo().extData.getString("ab_token");
     }
-    return "";
+    return str1;
   }
   
   public String a()
@@ -220,12 +244,14 @@ public class KandianCustomDataReportModule
         localObject = this.jdField_a_of_type_JavaLangString;
         return localObject;
       }
+      this.jdField_a_of_type_JavaLangString = "1";
+      return this.jdField_a_of_type_JavaLangString;
     }
     catch (Exception localException)
     {
-      return this.jdField_a_of_type_JavaLangString;
+      label86:
+      break label86;
     }
-    this.jdField_a_of_type_JavaLangString = "1";
     return this.jdField_a_of_type_JavaLangString;
   }
   
@@ -268,7 +294,12 @@ public class KandianCustomDataReportModule
   {
     super.onEnterRoom(paramBoolean);
     b();
-    QLog.i("DataReportMgr", 1, "onEnterRoom roomId = " + b() + ", vid = " + c());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onEnterRoom roomId = ");
+    localStringBuilder.append(b());
+    localStringBuilder.append(", vid = ");
+    localStringBuilder.append(c());
+    QLog.i("DataReportMgr", 1, localStringBuilder.toString());
   }
   
   public void onExitRoom(boolean paramBoolean)
@@ -290,26 +321,22 @@ public class KandianCustomDataReportModule
   
   public void onVisibleToUser(boolean paramBoolean)
   {
-    boolean bool = true;
     super.onVisibleToUser(paramBoolean);
     if (!paramBoolean)
     {
       c();
-      if (getAudienceRoomPager().getScrollDirection() != 1) {
-        break label42;
+      int i = getAudienceRoomPager().getScrollDirection();
+      paramBoolean = true;
+      if (i != 1) {
+        paramBoolean = false;
       }
-    }
-    label42:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
       DataReportMgr.a().b(paramBoolean, a());
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.litelive_kandian.customized.roombizmodules.datareport.KandianCustomDataReportModule
  * JD-Core Version:    0.7.0.1
  */

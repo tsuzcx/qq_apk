@@ -12,12 +12,14 @@ final class jl$1
   
   public final Thread newThread(Runnable paramRunnable)
   {
-    return new Thread(paramRunnable, "AsyncTask Low #" + this.b.getAndIncrement());
+    StringBuilder localStringBuilder = new StringBuilder("AsyncTask Low #");
+    localStringBuilder.append(this.b.getAndIncrement());
+    return new Thread(paramRunnable, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jl.1
  * JD-Core Version:    0.7.0.1
  */

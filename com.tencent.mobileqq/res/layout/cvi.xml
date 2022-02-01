@@ -1,15 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout android:gravity="center_vertical" android:orientation="vertical" android:background="@android:color/transparent" android:layout_width="fill_parent" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <LinearLayout android:orientation="horizontal" android:id="@id/b64" android:descendantFocusability="blocksDescendants" android:layout_width="fill_parent" android:layout_height="wrap_content" android:minHeight="@dimen/aik">
-        <View android:id="@id/icon" android:background="@drawable/qq_profilecard_item_qqcircle" style="@style/bw" />
-        <LinearLayout android:orientation="horizontal" style="@style/by">
-            <TextView android:textSize="@dimen/uj" android:textColor="@color/skin_black_theme_version2" android:ellipsize="middle" android:id="@id/jj7" android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="@string/xse" android:singleLine="true" android:includeFontPadding="false" />
-            <ImageView android:layout_gravity="center_vertical" android:id="@id/dec" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="10.0dip" android:layout_marginLeft="6.0dip" android:src="@drawable/skin_tips_newmessage" />
-            <com.tencent.mobileqq.profilecard.bussiness.circle.view.ProfileCircleInfoView android:gravity="center|right" android:orientation="horizontal" android:id="@id/myl" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="fill_parent" />
-        </LinearLayout>
-        <ImageView android:id="@id/dcv" style="@style/bv" />
-    </LinearLayout>
-    <LinearLayout android:orientation="horizontal" android:id="@id/n6_" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a06" android:layout_marginRight="@dimen/a03" />
-    <LinearLayout android:orientation="horizontal" android:id="@id/n6a" android:layout_width="fill_parent" android:layout_height="wrap_content" android:layout_marginLeft="@dimen/a03" android:layout_marginTop="10.0dip" android:layout_marginRight="@dimen/a03" />
-</LinearLayout>
+<com.tencent.mobileqq.widget.RoundRelativeLayout android:id="@id/ifh" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <com.tencent.image.URLImageView android:id="@id/n8x" android:layout_width="@dimen/aif" android:layout_height="@dimen/aif" android:scaleType="centerCrop" />
+    <View android:id="@id/n8w" android:background="@color/j_" android:visibility="gone" android:layout_width="@dimen/aif" android:layout_height="@dimen/aif" />
+    <View android:id="@id/n8z" android:background="@drawable/ghm" android:visibility="gone" android:layout_width="30.0dip" android:layout_height="30.0dip" android:scaleType="centerInside" android:layout_centerInParent="true" />
+    <com.tencent.mobileqq.widget.UnderlineTextView android:textSize="13.0dip" android:textColor="#ff34394c" android:ellipsize="end" android:gravity="center_vertical" android:layout_gravity="center" android:id="@id/n8s" android:background="#fffdfdf3" android:paddingLeft="4.0dip" android:paddingTop="3.0dip" android:paddingBottom="5.0dip" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:lineSpacingExtra="8.0dip" app:underedlineColor="#ffececec" app:underedlineWidth="1.0px" />
+    <View android:layout_gravity="bottom|center|right" android:id="@id/n8y" android:background="@drawable/ghk" android:visibility="gone" android:layout_width="10.0dip" android:layout_height="12.0dip" android:layout_marginRight="6.0dip" android:layout_marginBottom="4.0dip" android:scaleType="centerInside" />
+    <TextView android:textSize="@dimen/aiu" android:textColor="@color/skin_color_white" android:layout_gravity="center" android:id="@id/n8t" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+</com.tencent.mobileqq.widget.RoundRelativeLayout>

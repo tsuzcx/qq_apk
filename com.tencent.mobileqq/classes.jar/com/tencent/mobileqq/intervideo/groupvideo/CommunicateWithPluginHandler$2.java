@@ -13,28 +13,36 @@ class CommunicateWithPluginHandler$2
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     int i = paramIntent.getIntExtra("command_type", 0);
-    QLog.i("GroupVideoManager|Communicate", 2, "get message from plugin: " + paramIntent.getExtras());
-    switch (i)
+    paramContext = new StringBuilder();
+    paramContext.append("get message from plugin: ");
+    paramContext.append(paramIntent.getExtras());
+    QLog.i("GroupVideoManager|Communicate", 2, paramContext.toString());
+    if (i != 1)
     {
-    case 4: 
-    default: 
-      return;
-    case 1: 
-      CommunicateWithPluginHandler.a(this.a, paramIntent, CommunicateWithPluginHandler.a(this.a));
-      return;
-    case 2: 
-      CommunicateWithPluginHandler.a(this.a, paramIntent, CommunicateWithPluginHandler.b(this.a));
-      return;
-    case 3: 
-      CommunicateWithPluginHandler.a(this.a, paramIntent);
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 5) {
+            return;
+          }
+          CommunicateWithPluginHandler.a(this.a);
+          return;
+        }
+        CommunicateWithPluginHandler.a(this.a, paramIntent);
+        return;
+      }
+      paramContext = this.a;
+      CommunicateWithPluginHandler.a(paramContext, paramIntent, CommunicateWithPluginHandler.b(paramContext));
       return;
     }
-    CommunicateWithPluginHandler.a(this.a);
+    paramContext = this.a;
+    CommunicateWithPluginHandler.a(paramContext, paramIntent, CommunicateWithPluginHandler.a(paramContext));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.groupvideo.CommunicateWithPluginHandler.2
  * JD-Core Version:    0.7.0.1
  */

@@ -3,9 +3,12 @@ package com.tencent.thumbplayer.utils;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
 import java.io.StringReader;
+import java.math.BigDecimal;
 import java.security.MessageDigest;
 import java.util.Collection;
 import java.util.Map;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 import java.util.regex.PatternSyntaxException;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -18,41 +21,51 @@ public class TPCommonUtils
   
   static
   {
-    if ((Build.VERSION.SDK_INT == 25) && (Build.VERSION.CODENAME.charAt(0) == 'O')) {}
-    for (int i = 26;; i = Build.VERSION.SDK_INT)
-    {
-      SDK_INT = i;
-      return;
+    int i;
+    if ((Build.VERSION.SDK_INT == 25) && (Build.VERSION.CODENAME.charAt(0) == 'O')) {
+      i = 26;
+    } else {
+      i = Build.VERSION.SDK_INT;
     }
+    SDK_INT = i;
   }
   
   public static void assertTrue(boolean paramBoolean, String paramString)
   {
-    if (!paramBoolean) {
-      throw new IllegalArgumentException(paramString);
+    if (paramBoolean) {
+      return;
     }
+    throw new IllegalArgumentException(paramString);
   }
   
   public static String getMd5(String paramString)
   {
     for (;;)
     {
-      StringBuilder localStringBuilder;
       int i;
       try
       {
         paramString = MessageDigest.getInstance("MD5").digest(paramString.getBytes("UTF-8"));
-        localStringBuilder = new StringBuilder(40);
+        StringBuilder localStringBuilder = new StringBuilder(40);
         int j = paramString.length;
         i = 0;
         if (i < j)
         {
-          int k = paramString[i];
-          if ((k & 0xFF) >> 4 == 0) {
-            localStringBuilder.append("0").append(Integer.toHexString(k & 0xFF));
-          } else {
-            localStringBuilder.append(Integer.toHexString(k & 0xFF));
+          int k = paramString[i] & 0xFF;
+          if (k >> 4 == 0)
+          {
+            localStringBuilder.append("0");
+            localStringBuilder.append(Integer.toHexString(k));
           }
+          else
+          {
+            localStringBuilder.append(Integer.toHexString(k));
+          }
+        }
+        else
+        {
+          paramString = localStringBuilder.toString();
+          return paramString;
         }
       }
       catch (Exception paramString)
@@ -60,24 +73,25 @@ public class TPCommonUtils
         TPLogUtil.e("TPCommonUtils", paramString.toString());
         return null;
       }
-      paramString = localStringBuilder.toString();
-      return paramString;
       i += 1;
     }
   }
   
   public static final String getTaskIdFromDataTransportUrl(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.lastIndexOf("proxy/") <= 0)) {
-      return "";
+    if (!TextUtils.isEmpty(paramString)) {
+      if (paramString.lastIndexOf("proxy/") <= 0) {
+        return "";
+      }
     }
     try
     {
-      int i = paramString.indexOf("proxy/") + "proxy/".length();
+      int i = paramString.indexOf("proxy/") + 6;
       paramString = paramString.substring(i, i + 8);
       return paramString;
     }
     catch (Exception paramString) {}
+    return "";
     return "";
   }
   
@@ -89,6 +103,18 @@ public class TPCommonUtils
   public static boolean isEmpty(Map<? extends Object, ? extends Object> paramMap)
   {
     return (paramMap == null) || (paramMap.size() <= 0);
+  }
+  
+  public static boolean isNumeric(String paramString)
+  {
+    Pattern localPattern = Pattern.compile("-?[0-9]+(\\.[0-9]+)?");
+    try
+    {
+      paramString = new BigDecimal(paramString).toString();
+      return localPattern.matcher(paramString).matches();
+    }
+    catch (Exception paramString) {}
+    return false;
   }
   
   public static boolean isUrl(String paramString)
@@ -128,16 +154,16 @@ public class TPCommonUtils
   
   public static double optDouble(String paramString, double paramDouble)
   {
-    double d = paramDouble;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      d = Double.parseDouble(paramString);
-      return d;
-    }
-    catch (NumberFormatException paramString)
-    {
-      TPLogUtil.e("TPCommonUtils", paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        double d = Double.parseDouble(paramString);
+        return d;
+      }
+      catch (NumberFormatException paramString)
+      {
+        TPLogUtil.e("TPCommonUtils", paramString);
+      }
     }
     return paramDouble;
   }
@@ -160,29 +186,29 @@ public class TPCommonUtils
   
   public static int optInt(String paramString, int paramInt)
   {
-    int i = paramInt;
     if (!TextUtils.isEmpty(paramString)) {}
     try
     {
-      i = Integer.parseInt(paramString);
+      int i = Integer.parseInt(paramString);
       return i;
     }
     catch (NumberFormatException paramString) {}
+    return paramInt;
     return paramInt;
   }
   
   public static long optLong(String paramString, long paramLong)
   {
-    long l = paramLong;
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
-    {
-      l = Long.parseLong(paramString);
-      return l;
-    }
-    catch (NumberFormatException paramString)
-    {
-      TPLogUtil.e("TPCommonUtils", paramString);
+    if (!TextUtils.isEmpty(paramString)) {
+      try
+      {
+        long l = Long.parseLong(paramString);
+        return l;
+      }
+      catch (NumberFormatException paramString)
+      {
+        TPLogUtil.e("TPCommonUtils", paramString);
+      }
     }
     return paramLong;
   }
@@ -191,18 +217,16 @@ public class TPCommonUtils
   {
     if (paramObject == null)
     {
-      if (!TextUtils.isEmpty(paramString)) {}
-      for (;;)
-      {
-        throw new IllegalArgumentException(paramString);
+      if (TextUtils.isEmpty(paramString)) {
         paramString = "this argument should not be null!";
       }
+      throw new IllegalArgumentException(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPCommonUtils
  * JD-Core Version:    0.7.0.1
  */

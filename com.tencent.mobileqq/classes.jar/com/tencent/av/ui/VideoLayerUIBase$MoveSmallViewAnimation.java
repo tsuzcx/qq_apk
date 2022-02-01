@@ -26,28 +26,25 @@ class VideoLayerUIBase$MoveSmallViewAnimation
     }
     if (this.jdField_a_of_type_Int == 9) {
       this.this$0.h(this.jdField_b_of_type_Int);
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int += 1;
-      if (this.this$0.a == null) {
-        break;
-      }
-      if (this.jdField_a_of_type_Int > 9) {
-        break label99;
-      }
-      this.this$0.a.a().postDelayed(this, 10L);
-      return;
+    } else {
       this.this$0.d((int)this.jdField_a_of_type_Float, (int)this.jdField_b_of_type_Float);
     }
-    label99:
-    this.this$0.s();
-    this.this$0.a.a(new Object[] { Integer.valueOf(121) });
+    this.jdField_a_of_type_Int += 1;
+    if (this.this$0.a != null)
+    {
+      if (this.jdField_a_of_type_Int <= 9)
+      {
+        this.this$0.a.a().postDelayed(this, 10L);
+        return;
+      }
+      this.this$0.r();
+      this.this$0.a.a(new Object[] { Integer.valueOf(121) });
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.VideoLayerUIBase.MoveSmallViewAnimation
  * JD-Core Version:    0.7.0.1
  */

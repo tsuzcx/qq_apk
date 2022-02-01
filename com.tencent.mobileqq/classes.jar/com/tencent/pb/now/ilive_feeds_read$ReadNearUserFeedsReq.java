@@ -22,14 +22,16 @@ public final class ilive_feeds_read$ReadNearUserFeedsReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 34, 42, 48, 56, 64 }, new String[] { "pos", "num", "lng", "lat", "id_type", "bus_id", "tinyid" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L) }, ReadNearUserFeedsReq.class);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 34, 42, 48, 56, 64 }, new String[] { "pos", "num", "lng", "lat", "id_type", "bus_id", "tinyid" }, new Object[] { localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localLong, localLong }, ReadNearUserFeedsReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.ReadNearUserFeedsReq
  * JD-Core Version:    0.7.0.1
  */

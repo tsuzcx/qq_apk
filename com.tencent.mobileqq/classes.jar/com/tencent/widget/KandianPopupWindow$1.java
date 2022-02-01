@@ -1,6 +1,8 @@
 package com.tencent.widget;
 
 import android.widget.PopupWindow.OnDismissListener;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 
 class KandianPopupWindow$1
   implements PopupWindow.OnDismissListener
@@ -9,15 +11,16 @@ class KandianPopupWindow$1
   
   public void onDismiss()
   {
-    this.a.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnUninterestConfirmListener = null;
-    this.a.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnComplainListener = null;
-    this.a.c();
-    com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils.a = false;
+    KandianPopupWindow localKandianPopupWindow = this.a;
+    localKandianPopupWindow.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnUninterestConfirmListener = null;
+    localKandianPopupWindow.jdField_a_of_type_ComTencentWidgetKandianPopupWindow$OnComplainListener = null;
+    localKandianPopupWindow.c();
+    ((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).setIsShowPopup(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.KandianPopupWindow.1
  * JD-Core Version:    0.7.0.1
  */

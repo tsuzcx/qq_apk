@@ -17,19 +17,20 @@ public class d
     locall.a(paramLong3);
     int i = localTLV_QuerySig.get_size();
     int j = locall.get_size();
-    if ((i == 0) || (j == 0)) {
-      return new byte[0];
+    if ((i != 0) && (j != 0))
+    {
+      byte[] arrayOfByte = new byte[i + 2 + j];
+      util.int16_to_buf(arrayOfByte, 0, 2);
+      System.arraycopy(localTLV_QuerySig.get_buf(), 0, arrayOfByte, 2, i);
+      System.arraycopy(locall.get_buf(), 0, arrayOfByte, 2 + i, j);
+      return _get_request(paramLong1, paramLong2, arrayOfByte);
     }
-    byte[] arrayOfByte = new byte[i + 2 + j];
-    util.int16_to_buf(arrayOfByte, 0, 2);
-    System.arraycopy(localTLV_QuerySig.get_buf(), 0, arrayOfByte, 2, i);
-    System.arraycopy(locall.get_buf(), 0, arrayOfByte, i + 2, j);
-    return _get_request(paramLong1, paramLong2, arrayOfByte);
+    return new byte[0];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.devicelock.d
  * JD-Core Version:    0.7.0.1
  */

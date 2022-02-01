@@ -105,54 +105,49 @@ public class i
   
   public static void a(h paramh, HttpURLConnection paramHttpURLConnection)
   {
-    Object localObject = paramHttpURLConnection.getURL().toString();
-    paramHttpURLConnection = null;
-    if (((String)localObject).contains("?"))
+    paramHttpURLConnection = paramHttpURLConnection.getURL().toString();
+    Object localObject;
+    if (paramHttpURLConnection.contains("?"))
     {
-      int i = ((String)localObject).indexOf("?");
-      paramHttpURLConnection = ((String)localObject).substring(0, i);
-      String str = ((String)localObject).substring(i + 1);
-      localObject = paramHttpURLConnection;
-      paramHttpURLConnection = str;
+      int i = paramHttpURLConnection.indexOf("?");
+      localObject = paramHttpURLConnection.substring(0, i);
+      String str = paramHttpURLConnection.substring(i + 1);
+      paramHttpURLConnection = (HttpURLConnection)localObject;
+      localObject = str;
     }
-    for (;;)
+    else
     {
-      paramh.f((String)localObject);
-      paramh.b(paramHttpURLConnection);
-      paramh.a(paramHttpURLConnection);
-      paramh.a(paramHttpURLConnection);
-      paramh.c(NetworkWatcher.INSTANCE.activeNetworkCarrier());
-      return;
+      localObject = null;
     }
+    paramh.f(paramHttpURLConnection);
+    paramh.b((String)localObject);
+    paramh.a((String)localObject);
+    paramh.a((String)localObject);
+    paramh.c(NetworkWatcher.INSTANCE.activeNetworkCarrier());
   }
   
   public static void a(String paramString, f paramf, h paramh)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramh != null) && (paramf != null)) {}
+    TextUtils.isEmpty(paramString);
   }
   
   public static boolean a(Exception paramException)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
     if (paramException != null) {
-      bool1 = bool2;
-    }
-    try
-    {
-      if ((paramException instanceof SocketException))
+      try
       {
-        boolean bool3 = paramException.getMessage().contains("recvfrom failed: ECONNRESET (Connection reset by peer)");
-        bool1 = bool2;
-        if (bool3) {
-          bool1 = true;
+        if ((paramException instanceof SocketException))
+        {
+          boolean bool = paramException.getMessage().contains("recvfrom failed: ECONNRESET (Connection reset by peer)");
+          if (bool) {
+            return true;
+          }
         }
       }
-      return bool1;
-    }
-    catch (Exception paramException)
-    {
-      Logger.INSTANCE.exception("QAPM_Impl_QAPMTransactionStateUtil", "isSocketECONNRESET error", paramException);
+      catch (Exception paramException)
+      {
+        Logger.INSTANCE.exception("QAPM_Impl_QAPMTransactionStateUtil", "isSocketECONNRESET error", paramException);
+      }
     }
     return false;
   }
@@ -207,15 +202,7 @@ public class i
       j = paramHttpURLConnection.getResponseCode();
       i = j;
     }
-    catch (IOException paramHttpURLConnection)
-    {
-      break label120;
-    }
-    catch (NullPointerException paramHttpURLConnection)
-    {
-      break label120;
-    }
-    catch (Exception paramHttpURLConnection)
+    catch (IOException|NullPointerException|Exception paramHttpURLConnection)
     {
       break label120;
     }
@@ -224,7 +211,7 @@ public class i
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.instrumentation.i
  * JD-Core Version:    0.7.0.1
  */

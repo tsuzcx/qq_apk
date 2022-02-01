@@ -12,90 +12,76 @@ class AuthDevRenameActivity$1
   
   public CharSequence filter(CharSequence paramCharSequence, int paramInt1, int paramInt2, Spanned paramSpanned, int paramInt3, int paramInt4)
   {
-    int j = paramInt1;
-    int k = 0;
-    if (j < paramInt2)
+    int n = 0;
+    int k = paramInt1;
+    int j = 0;
+    for (;;)
     {
-      i = paramCharSequence.charAt(j);
-      if (i < 128) {
-        i = 1;
-      }
-      for (;;)
-      {
-        j += 1;
-        k += i;
+      i = 1;
+      if (k >= paramInt2) {
         break;
-        if (i < 2048) {
+      }
+      m = paramCharSequence.charAt(k);
+      if (m >= 128) {
+        if (m < 2048) {
           i = 2;
         } else {
           i = 3;
         }
       }
+      j += i;
+      k += 1;
     }
-    int n = paramSpanned.length();
-    int i = 0;
+    int i1 = paramSpanned.length();
     int m = 0;
-    if (m < n)
+    k = n;
+    while (k < i1)
     {
-      if ((m >= paramInt3) && (m < paramInt4)) {
-        break label272;
+      if ((k >= paramInt3) && (k < paramInt4)) {
+        break label164;
       }
-      j = paramSpanned.charAt(m);
-      if (j < 128)
-      {
-        j = 1;
-        label127:
-        i = j + i;
+      i = paramSpanned.charAt(k);
+      if (i < 128) {
+        i = 1;
+      } else if (i < 2048) {
+        i = 2;
+      } else {
+        i = 3;
       }
+      m += i;
+      label164:
+      k += 1;
     }
-    label272:
-    for (;;)
-    {
-      m += 1;
-      break;
-      if (j < 2048)
-      {
-        j = 2;
-        break label127;
-      }
-      j = 3;
-      break label127;
-      i = this.jdField_a_of_type_Int - i;
-      if (i <= 0) {
-        return "";
-      }
-      if (i >= k) {
-        return null;
-      }
-      paramInt4 = paramInt1;
-      while (paramInt4 < paramInt2)
-      {
-        paramInt3 = paramCharSequence.charAt(paramInt4);
-        if (paramInt3 < 128) {
-          paramInt3 = 1;
-        }
-        for (;;)
-        {
-          i -= paramInt3;
-          if (i >= 0) {
-            break;
-          }
-          return paramCharSequence.subSequence(paramInt1, paramInt4);
-          if (paramInt3 < 2048) {
-            paramInt3 = 2;
-          } else {
-            paramInt3 = 3;
-          }
-        }
-        paramInt4 += 1;
-      }
+    int i = this.jdField_a_of_type_Int - m;
+    if (i <= 0) {
+      return "";
+    }
+    if (i >= j) {
       return null;
     }
+    paramInt4 = paramInt1;
+    while (paramInt4 < paramInt2)
+    {
+      paramInt3 = paramCharSequence.charAt(paramInt4);
+      if (paramInt3 < 128) {
+        paramInt3 = 1;
+      } else if (paramInt3 < 2048) {
+        paramInt3 = 2;
+      } else {
+        paramInt3 = 3;
+      }
+      i -= paramInt3;
+      if (i < 0) {
+        return paramCharSequence.subSequence(paramInt1, paramInt4);
+      }
+      paramInt4 += 1;
+    }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevRenameActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,46 +20,59 @@ public class PicSTWXQIPCModule
   
   public static PicSTWXQIPCModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new PicSTWXQIPCModule("PicSTWXQIPCModule");
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new PicSTWXQIPCModule("PicSTWXQIPCModule");
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public EIPCResult onCall(String paramString, Bundle paramBundle, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicSTWXQIPCModule", 2, "onCall, action = " + paramString);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall, action = ");
+      localStringBuilder.append(paramString);
+      QLog.d("PicSTWXQIPCModule", 2, localStringBuilder.toString());
     }
     paramString = paramBundle.getString("param_pic_path", "");
-    if (TextUtils.isEmpty(paramString)) {
+    if (TextUtils.isEmpty(paramString))
+    {
       if (QLog.isColorLevel()) {
         QLog.d("PicSTWXQIPCModule", 2, "path is empty");
       }
-    }
-    int i;
-    do
-    {
       return null;
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onCall, path = ");
+      localStringBuilder.append(paramString);
+      QLog.d("PicSTWXQIPCModule", 2, localStringBuilder.toString());
+    }
+    int i = paramBundle.getInt("param_from_type", 0);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onCall, fromType = ");
+      paramBundle.append(i);
+      QLog.d("PicSTWXQIPCModule", 2, paramBundle.toString());
+    }
+    paramBundle = BaseApplicationImpl.getApplication().getRuntime();
+    if (!(paramBundle instanceof QQAppInterface))
+    {
       if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "onCall, path = " + paramString);
+        QLog.d("PicSTWXQIPCModule", 2, "cannot get QQAppInterface.");
       }
-      i = paramBundle.getInt("param_from_type", 0);
-      if (QLog.isColorLevel()) {
-        QLog.d("PicSTWXQIPCModule", 2, "onCall, fromType = " + i);
-      }
-      paramBundle = BaseApplicationImpl.getApplication().getRuntime();
-      if ((paramBundle instanceof QQAppInterface)) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("PicSTWXQIPCModule", 2, "cannot get QQAppInterface.");
-    return null;
+      return null;
+    }
     paramBundle = (QQAppInterface)paramBundle;
     PicShareToWX.a().a(this, paramInt, paramBundle, paramString, i);
     return null;
@@ -67,7 +80,7 @@ public class PicSTWXQIPCModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicSTWXQIPCModule
  * JD-Core Version:    0.7.0.1
  */

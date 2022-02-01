@@ -14,39 +14,40 @@ class AssociatedAccountActivity$16
   
   public void onNotCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (this.a.jdField_a_of_type_Boolean)
+    if (this.a.mIsStartRefreshList)
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.ah_();
+      this.a.mTopRefreshTop.f();
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.c(0L);
+    this.a.mTopRefreshTop.c(0L);
   }
   
   public void onViewCompleteVisable(int paramInt, View paramView, ListView paramListView)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
+    if (this.a.mIsStartRefreshList) {
       return;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.b(0L);
+    this.a.mTopRefreshTop.b(0L);
   }
   
   public boolean onViewCompleteVisableAndReleased(int paramInt, View paramView, ListView paramListView)
   {
-    if (this.a.jdField_a_of_type_Boolean) {
+    if (this.a.mIsStartRefreshList) {
       return true;
     }
     if (QLog.isColorLevel()) {
       QLog.d("AssociatedAccountActivity", 2, "onViewCompleteVisableAndReleased begin refresh");
     }
-    if (this.a.c())
+    if (this.a.isNetConnToast())
     {
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(0L);
-      this.a.b = true;
-      AssociatedAccountActivity.b(this.a, false, true);
+      this.a.mTopRefreshTop.a(0L);
+      paramView = this.a;
+      paramView.mIsFromPull = true;
+      AssociatedAccountActivity.access$2200(paramView, false, true);
       return true;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqWidgetPullRefreshHeader.a(1);
-    this.a.jdField_a_of_type_MqqOsMqqHandler.postDelayed(new AssociatedAccountActivity.16.1(this), 800L);
+    this.a.mTopRefreshTop.a(1);
+    this.a.mHandler.postDelayed(new AssociatedAccountActivity.16.1(this), 800L);
     return true;
   }
   
@@ -54,7 +55,7 @@ class AssociatedAccountActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssociatedAccountActivity.16
  * JD-Core Version:    0.7.0.1
  */

@@ -16,48 +16,44 @@ class DefaultFileModel$3
   public void a(FileBrowserModelBase.ImageFileInfo paramImageFileInfo)
   {
     IFileViewerAdapter localIFileViewerAdapter = ((DefaultImageInfo)paramImageFileInfo).a();
-    if (localIFileViewerAdapter != null)
-    {
-      if (1 != localIFileViewerAdapter.c()) {
-        break label147;
-      }
-      if (!localIFileViewerAdapter.a().isZipInnerFile) {
-        break label91;
-      }
-      paramImageFileInfo = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(localIFileViewerAdapter.a());
-      if ((paramImageFileInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(String.valueOf(localIFileViewerAdapter.a()), paramImageFileInfo);
-      }
-    }
-    label91:
-    while (2 != localIFileViewerAdapter.c())
-    {
-      do
+    if (localIFileViewerAdapter != null) {
+      if (1 == localIFileViewerAdapter.c())
       {
-        return;
-        paramImageFileInfo = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localIFileViewerAdapter.a(), 7);
-      } while ((paramImageFileInfo == null) || (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener == null));
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(localIFileViewerAdapter.c(), paramImageFileInfo);
-      return;
-    }
-    label147:
-    FileManagerEngine localFileManagerEngine = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine();
-    String str = localIFileViewerAdapter.e();
-    if (localIFileViewerAdapter.a() == null) {}
-    for (paramImageFileInfo = null;; paramImageFileInfo = localIFileViewerAdapter.a().e)
-    {
-      paramImageFileInfo = localFileManagerEngine.a(str, paramImageFileInfo, 7, localIFileViewerAdapter);
-      if ((paramImageFileInfo == null) || (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener == null)) {
-        break;
+        if (localIFileViewerAdapter.a().isZipInnerFile)
+        {
+          paramImageFileInfo = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().c(localIFileViewerAdapter.a());
+          if ((paramImageFileInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null)) {
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(String.valueOf(localIFileViewerAdapter.a()), paramImageFileInfo);
+          }
+        }
+        else
+        {
+          paramImageFileInfo = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine().a(localIFileViewerAdapter.a(), 7);
+          if ((paramImageFileInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null)) {
+            this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(localIFileViewerAdapter.c(), paramImageFileInfo);
+          }
+        }
       }
-      this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(localIFileViewerAdapter.e(), paramImageFileInfo);
-      return;
+      else if (2 == localIFileViewerAdapter.c())
+      {
+        FileManagerEngine localFileManagerEngine = this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerEngine();
+        String str = localIFileViewerAdapter.e();
+        if (localIFileViewerAdapter.a() == null) {
+          paramImageFileInfo = null;
+        } else {
+          paramImageFileInfo = localIFileViewerAdapter.a().e;
+        }
+        paramImageFileInfo = localFileManagerEngine.a(str, paramImageFileInfo, 7, localIFileViewerAdapter);
+        if ((paramImageFileInfo != null) && (this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener != null)) {
+          this.a.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerModelFileBrowserModelBase$OnThumbEventListener.a(localIFileViewerAdapter.e(), paramImageFileInfo);
+        }
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.model.DefaultFileModel.3
  * JD-Core Version:    0.7.0.1
  */

@@ -16,17 +16,15 @@ class PushApiPlugin$1
     if (!TextUtils.isEmpty(this.a.a))
     {
       paramBundle = paramBundle.getString("info");
-      localJSONObject = new JSONObject();
-    }
-    while (!QLog.isColorLevel()) {
+      JSONObject localJSONObject = new JSONObject();
       try
       {
-        JSONObject localJSONObject;
         localJSONObject.put("data", paramBundle);
         this.a.callJs(this.a.a, new String[] { localJSONObject.toString() });
-        if (QLog.isColorLevel()) {
-          QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
+        if (!QLog.isColorLevel()) {
+          return;
         }
+        QLog.d("PushApiPlugin", 2, new Object[] { "handleJsRequest callback:", paramBundle });
         return;
       }
       catch (Throwable paramBundle)
@@ -35,12 +33,15 @@ class PushApiPlugin$1
         return;
       }
     }
-    QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("PushApiPlugin", 2, "handleJsRequest callback is empty");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.PushApiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

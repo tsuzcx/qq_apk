@@ -21,58 +21,63 @@ public class VFSFile
   
   public VFSFile(Uri paramUri)
   {
-    if (paramUri == null) {
-      throw new NullPointerException("uri == null");
-    }
-    String str = paramUri.getPath();
-    Uri localUri = paramUri;
-    if (str != null)
+    if (paramUri != null)
     {
-      str = VFSUtils.normalizePath(str, false, false);
-      localUri = paramUri;
-      if (!paramUri.getPath().equals(str)) {
-        localUri = paramUri.buildUpon().path(str).build();
+      String str = paramUri.getPath();
+      Uri localUri = paramUri;
+      if (str != null)
+      {
+        str = VFSUtils.normalizePath(str, false, false);
+        localUri = paramUri;
+        if (!paramUri.getPath().equals(str)) {
+          localUri = paramUri.buildUpon().path(str).build();
+        }
       }
+      this.mUri = localUri;
+      return;
     }
-    this.mUri = localUri;
+    throw new NullPointerException("uri == null");
   }
   
   public VFSFile(Uri paramUri, String paramString)
   {
-    if (paramString == null) {
-      throw new NullPointerException("name == null");
-    }
-    Object localObject;
-    if (paramUri == null)
+    if (paramString != null)
     {
-      paramUri = new Uri.Builder().path(paramString);
-      paramString = paramUri.build();
-      localObject = paramString.getPath();
-      if (localObject == null) {
-        break label111;
+      if (paramUri == null)
+      {
+        paramUri = new Uri.Builder().path(paramString);
       }
-      localObject = VFSUtils.normalizePath((String)localObject, false, false);
-      if (paramString.getPath().equals(localObject)) {
-        break label111;
+      else
+      {
+        localObject = paramUri.buildUpon();
+        paramUri = (Uri)localObject;
+        if (!paramString.isEmpty())
+        {
+          ((Uri.Builder)localObject).appendPath(paramString);
+          paramUri = (Uri)localObject;
+        }
       }
-    }
-    label111:
-    for (paramUri = paramUri.path((String)localObject).build();; paramUri = paramString)
-    {
-      this.mUri = paramUri;
+      Object localObject = paramUri.build();
+      String str = ((Uri)localObject).getPath();
+      paramString = (String)localObject;
+      if (str != null)
+      {
+        str = VFSUtils.normalizePath(str, false, false);
+        paramString = (String)localObject;
+        if (!((Uri)localObject).getPath().equals(str)) {
+          paramString = paramUri.path(str).build();
+        }
+      }
+      this.mUri = paramString;
       return;
-      localObject = paramUri.buildUpon();
-      paramUri = (Uri)localObject;
-      if (paramString.isEmpty()) {
-        break;
-      }
-      ((Uri.Builder)localObject).appendPath(paramString);
-      paramUri = (Uri)localObject;
-      break;
     }
+    throw new NullPointerException("name == null");
   }
   
-  public VFSFile(VFSFile paramVFSFile, String paramString) {}
+  public VFSFile(VFSFile paramVFSFile, String paramString)
+  {
+    this(paramVFSFile, paramString);
+  }
   
   public VFSFile(File paramFile)
   {
@@ -101,29 +106,39 @@ public class VFSFile
     }
     String str2 = this.mUri.getPath();
     String str1 = System.getProperty("user.dir");
-    if (str2.isEmpty()) {}
-    for (;;)
+    if (!str2.isEmpty())
     {
-      return this.mUri.buildUpon().path(str1).build();
-      str1 = str1 + '/' + str2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str1);
+      localStringBuilder.append('/');
+      localStringBuilder.append(str2);
+      str1 = localStringBuilder.toString();
     }
+    return this.mUri.buildUpon().path(str1).build();
   }
   
   public boolean canExecute()
   {
     Object localObject = resolve();
-    if (!((FileSystemManager.Resolution)localObject).valid()) {}
-    do
+    boolean bool1 = ((FileSystemManager.Resolution)localObject).valid();
+    boolean bool2 = false;
+    if (!bool1) {
+      return false;
+    }
+    FileSystem localFileSystem = ((FileSystemManager.Resolution)localObject).fileSystem;
+    if ((localFileSystem.capabilityFlags() & 0x2) == 0) {
+      return false;
+    }
+    localObject = localFileSystem.realPath(((FileSystemManager.Resolution)localObject).path, false);
+    bool1 = bool2;
+    if (localObject != null)
     {
-      FileSystem localFileSystem;
-      do
-      {
-        return false;
-        localFileSystem = ((FileSystemManager.Resolution)localObject).fileSystem;
-      } while ((localFileSystem.capabilityFlags() & 0x2) == 0);
-      localObject = localFileSystem.realPath(((FileSystemManager.Resolution)localObject).path, false);
-    } while ((localObject == null) || (!new File((String)localObject).canExecute()));
-    return true;
+      bool1 = bool2;
+      if (new File((String)localObject).canExecute()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public boolean canRead()
@@ -143,13 +158,13 @@ public class VFSFile
   public boolean canWrite()
   {
     FileSystemManager.Resolution localResolution = resolve();
-    if (!localResolution.valid()) {}
-    FileSystem localFileSystem;
-    do
-    {
+    if (!localResolution.valid()) {
       return false;
-      localFileSystem = localResolution.fileSystem;
-    } while ((localFileSystem.capabilityFlags() & 0x1) == 0);
+    }
+    FileSystem localFileSystem = localResolution.fileSystem;
+    if ((localFileSystem.capabilityFlags() & 0x1) == 0) {
+      return false;
+    }
     String str = localFileSystem.realPath(localResolution.path, true);
     if (str != null) {
       return new File(str).canWrite();
@@ -164,15 +179,19 @@ public class VFSFile
   
   public boolean createNewFile()
   {
-    FileSystemManager.Resolution localResolution = resolve();
-    if (!localResolution.valid()) {
-      throw new FileNotFoundException("Cannot resolve path or URI: " + this.mUri);
+    Object localObject = resolve();
+    if (((FileSystemManager.Resolution)localObject).valid())
+    {
+      if (((FileSystemManager.Resolution)localObject).fileSystem.exists(((FileSystemManager.Resolution)localObject).path)) {
+        return false;
+      }
+      ((FileSystemManager.Resolution)localObject).fileSystem.openWrite(((FileSystemManager.Resolution)localObject).path, false).close();
+      return true;
     }
-    if (localResolution.fileSystem.exists(localResolution.path)) {
-      return false;
-    }
-    localResolution.fileSystem.openWrite(localResolution.path, false).close();
-    return true;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Cannot resolve path or URI: ");
+    ((StringBuilder)localObject).append(this.mUri);
+    throw new FileNotFoundException(((StringBuilder)localObject).toString());
   }
   
   public boolean delete()
@@ -246,13 +265,16 @@ public class VFSFile
     String str = this.mUri.getPath();
     int i = str.length();
     int j = str.lastIndexOf('/');
-    if ((j == -1) || (str.charAt(i - 1) == '/')) {
-      return null;
-    }
-    if ((str.indexOf('/') == j) && (str.charAt(0) == '/')) {}
-    for (str = str.substring(0, j + 1);; str = str.substring(0, j)) {
+    if ((j != -1) && (str.charAt(i - 1) != '/'))
+    {
+      if ((str.indexOf('/') == j) && (str.charAt(0) == '/')) {
+        str = str.substring(0, j + 1);
+      } else {
+        str = str.substring(0, j);
+      }
       return this.mUri.buildUpon().path(str).build();
     }
+    return null;
   }
   
   public String getPath()
@@ -263,12 +285,13 @@ public class VFSFile
   public long getTotalSpace()
   {
     Object localObject = resolve();
-    if (!((FileSystemManager.Resolution)localObject).valid()) {}
-    do
-    {
+    if (!((FileSystemManager.Resolution)localObject).valid()) {
       return 0L;
-      localObject = ((FileSystemManager.Resolution)localObject).fileSystem.fileSystemStat(((FileSystemManager.Resolution)localObject).path);
-    } while (localObject == null);
+    }
+    localObject = ((FileSystemManager.Resolution)localObject).fileSystem.fileSystemStat(((FileSystemManager.Resolution)localObject).path);
+    if (localObject == null) {
+      return 0L;
+    }
     return ((FileSystem.FsStat)localObject).totalSpace;
   }
   
@@ -280,12 +303,13 @@ public class VFSFile
   public long getUsableSpace()
   {
     Object localObject = resolve();
-    if (!((FileSystemManager.Resolution)localObject).valid()) {}
-    do
-    {
+    if (!((FileSystemManager.Resolution)localObject).valid()) {
       return 0L;
-      localObject = ((FileSystemManager.Resolution)localObject).fileSystem.fileSystemStat(((FileSystemManager.Resolution)localObject).path);
-    } while (localObject == null);
+    }
+    localObject = ((FileSystemManager.Resolution)localObject).fileSystem.fileSystemStat(((FileSystemManager.Resolution)localObject).path);
+    if (localObject == null) {
+      return 0L;
+    }
     return ((FileSystem.FsStat)localObject).availableSpace;
   }
   
@@ -296,10 +320,10 @@ public class VFSFile
   
   public boolean isAbsolute()
   {
-    boolean bool2 = false;
     String str = this.mUri.getPath();
-    boolean bool1;
-    if (!this.mUri.isAbsolute())
+    boolean bool1 = this.mUri.isAbsolute();
+    boolean bool2 = false;
+    if (!bool1)
     {
       bool1 = bool2;
       if (str.length() > 0)
@@ -344,12 +368,13 @@ public class VFSFile
   public long lastModified()
   {
     Object localObject = resolve();
-    if (!((FileSystemManager.Resolution)localObject).valid()) {}
-    do
-    {
+    if (!((FileSystemManager.Resolution)localObject).valid()) {
       return 0L;
-      localObject = ((FileSystemManager.Resolution)localObject).fileSystem.stat(((FileSystemManager.Resolution)localObject).path);
-    } while (localObject == null);
+    }
+    localObject = ((FileSystemManager.Resolution)localObject).fileSystem.stat(((FileSystemManager.Resolution)localObject).path);
+    if (localObject == null) {
+      return 0L;
+    }
     return ((FileSystem.FileEntry)localObject).modifiedTime;
   }
   
@@ -365,14 +390,15 @@ public class VFSFile
   public String[] list()
   {
     Object localObject1 = resolve();
-    if (!((FileSystemManager.Resolution)localObject1).valid()) {}
-    do
-    {
+    if (!((FileSystemManager.Resolution)localObject1).valid()) {
       return null;
-      localObject2 = ((FileSystemManager.Resolution)localObject1).fileSystem.list(((FileSystemManager.Resolution)localObject1).path, false);
-    } while (localObject2 == null);
+    }
+    Object localObject2 = ((FileSystemManager.Resolution)localObject1).fileSystem.list(((FileSystemManager.Resolution)localObject1).path, false);
+    if (localObject2 == null) {
+      return null;
+    }
     localObject1 = new ArrayList();
-    Object localObject2 = ((Iterable)localObject2).iterator();
+    localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((ArrayList)localObject1).add(((FileSystem.FileEntry)((Iterator)localObject2).next()).name);
     }
@@ -381,29 +407,24 @@ public class VFSFile
   
   public String[] list(VFSFilenameFilter paramVFSFilenameFilter)
   {
-    Iterator localIterator = null;
     if (paramVFSFilenameFilter == null) {
-      localObject1 = list();
+      return list();
     }
-    Object localObject2;
-    do
+    Object localObject1 = resolve();
+    if (!((FileSystemManager.Resolution)localObject1).valid()) {
+      return null;
+    }
+    Object localObject2 = ((FileSystemManager.Resolution)localObject1).fileSystem.list(((FileSystemManager.Resolution)localObject1).path, false);
+    if (localObject2 == null) {
+      return null;
+    }
+    localObject1 = new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      do
-      {
-        return localObject1;
-        localObject2 = resolve();
-        localObject1 = localIterator;
-      } while (!((FileSystemManager.Resolution)localObject2).valid());
-      localObject2 = ((FileSystemManager.Resolution)localObject2).fileSystem.list(((FileSystemManager.Resolution)localObject2).path, false);
-      localObject1 = localIterator;
-    } while (localObject2 == null);
-    Object localObject1 = new ArrayList();
-    localIterator = ((Iterable)localObject2).iterator();
-    while (localIterator.hasNext())
-    {
-      localObject2 = (FileSystem.FileEntry)localIterator.next();
-      if (paramVFSFilenameFilter.accept(this, ((FileSystem.FileEntry)localObject2).name)) {
-        ((ArrayList)localObject1).add(((FileSystem.FileEntry)localObject2).name);
+      FileSystem.FileEntry localFileEntry = (FileSystem.FileEntry)((Iterator)localObject2).next();
+      if (paramVFSFilenameFilter.accept(this, localFileEntry.name)) {
+        ((ArrayList)localObject1).add(localFileEntry.name);
       }
     }
     return (String[])((ArrayList)localObject1).toArray(new String[0]);
@@ -412,14 +433,15 @@ public class VFSFile
   public VFSFile[] listFiles()
   {
     Object localObject1 = resolve();
-    if (!((FileSystemManager.Resolution)localObject1).valid()) {}
-    do
-    {
+    if (!((FileSystemManager.Resolution)localObject1).valid()) {
       return null;
-      localObject2 = ((FileSystemManager.Resolution)localObject1).fileSystem.list(((FileSystemManager.Resolution)localObject1).path, false);
-    } while (localObject2 == null);
+    }
+    Object localObject2 = ((FileSystemManager.Resolution)localObject1).fileSystem.list(((FileSystemManager.Resolution)localObject1).path, false);
+    if (localObject2 == null) {
+      return null;
+    }
     localObject1 = new ArrayList();
-    Object localObject2 = ((Iterable)localObject2).iterator();
+    localObject2 = ((Iterable)localObject2).iterator();
     while (((Iterator)localObject2).hasNext()) {
       ((ArrayList)localObject1).add(new VFSFile(this, ((FileSystem.FileEntry)((Iterator)localObject2).next()).name));
     }
@@ -428,29 +450,24 @@ public class VFSFile
   
   public VFSFile[] listFiles(VFSFileFilter paramVFSFileFilter)
   {
-    Iterator localIterator = null;
     if (paramVFSFileFilter == null) {
-      localObject1 = listFiles();
+      return listFiles();
     }
-    Object localObject2;
-    do
+    Object localObject1 = resolve();
+    if (!((FileSystemManager.Resolution)localObject1).valid()) {
+      return null;
+    }
+    Object localObject2 = ((FileSystemManager.Resolution)localObject1).fileSystem.list(((FileSystemManager.Resolution)localObject1).path, false);
+    if (localObject2 == null) {
+      return null;
+    }
+    localObject1 = new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      do
-      {
-        return localObject1;
-        localObject2 = resolve();
-        localObject1 = localIterator;
-      } while (!((FileSystemManager.Resolution)localObject2).valid());
-      localObject2 = ((FileSystemManager.Resolution)localObject2).fileSystem.list(((FileSystemManager.Resolution)localObject2).path, false);
-      localObject1 = localIterator;
-    } while (localObject2 == null);
-    Object localObject1 = new ArrayList();
-    localIterator = ((Iterable)localObject2).iterator();
-    while (localIterator.hasNext())
-    {
-      localObject2 = new VFSFile(this, ((FileSystem.FileEntry)localIterator.next()).name);
-      if (paramVFSFileFilter.accept((VFSFile)localObject2)) {
-        ((ArrayList)localObject1).add(localObject2);
+      VFSFile localVFSFile = new VFSFile(this, ((FileSystem.FileEntry)((Iterator)localObject2).next()).name);
+      if (paramVFSFileFilter.accept(localVFSFile)) {
+        ((ArrayList)localObject1).add(localVFSFile);
       }
     }
     return (VFSFile[])((ArrayList)localObject1).toArray(new VFSFile[0]);
@@ -458,29 +475,24 @@ public class VFSFile
   
   public VFSFile[] listFiles(VFSFilenameFilter paramVFSFilenameFilter)
   {
-    Iterator localIterator = null;
     if (paramVFSFilenameFilter == null) {
-      localObject1 = listFiles();
+      return listFiles();
     }
-    Object localObject2;
-    do
+    Object localObject1 = resolve();
+    if (!((FileSystemManager.Resolution)localObject1).valid()) {
+      return null;
+    }
+    Object localObject2 = ((FileSystemManager.Resolution)localObject1).fileSystem.list(((FileSystemManager.Resolution)localObject1).path, false);
+    if (localObject2 == null) {
+      return null;
+    }
+    localObject1 = new ArrayList();
+    localObject2 = ((Iterable)localObject2).iterator();
+    while (((Iterator)localObject2).hasNext())
     {
-      do
-      {
-        return localObject1;
-        localObject2 = resolve();
-        localObject1 = localIterator;
-      } while (!((FileSystemManager.Resolution)localObject2).valid());
-      localObject2 = ((FileSystemManager.Resolution)localObject2).fileSystem.list(((FileSystemManager.Resolution)localObject2).path, false);
-      localObject1 = localIterator;
-    } while (localObject2 == null);
-    Object localObject1 = new ArrayList();
-    localIterator = ((Iterable)localObject2).iterator();
-    while (localIterator.hasNext())
-    {
-      localObject2 = (FileSystem.FileEntry)localIterator.next();
-      if (paramVFSFilenameFilter.accept(this, ((FileSystem.FileEntry)localObject2).name)) {
-        ((ArrayList)localObject1).add(new VFSFile(this, ((FileSystem.FileEntry)localObject2).name));
+      FileSystem.FileEntry localFileEntry = (FileSystem.FileEntry)((Iterator)localObject2).next();
+      if (paramVFSFilenameFilter.accept(this, localFileEntry.name)) {
+        ((ArrayList)localObject1).add(new VFSFile(this, localFileEntry.name));
       }
     }
     return (VFSFile[])((ArrayList)localObject1).toArray(new VFSFile[0]);
@@ -504,8 +516,10 @@ public class VFSFile
   {
     FileSystemManager.Resolution localResolution = resolve();
     paramVFSFile = paramVFSFile.resolve();
-    if ((!localResolution.valid()) || (!paramVFSFile.valid())) {
-      return false;
+    if (localResolution.valid()) {
+      if (!paramVFSFile.valid()) {
+        return false;
+      }
     }
     try
     {
@@ -513,6 +527,7 @@ public class VFSFile
       return true;
     }
     catch (IOException paramVFSFile) {}
+    return false;
     return false;
   }
   
@@ -529,7 +544,7 @@ public class VFSFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSFile
  * JD-Core Version:    0.7.0.1
  */

@@ -19,21 +19,23 @@ class TcpConnection$ConnWorker
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 1) {
-      TcpConnection.access$900(this.this$0, TcpConnection.access$800(this.this$0));
-    }
-    do
+    if (paramMessage.what == 1)
     {
+      paramMessage = this.this$0;
+      TcpConnection.access$900(paramMessage, TcpConnection.access$800(paramMessage));
       return;
-      if (paramMessage.what == 2)
-      {
-        TcpConnection.access$1000(this.this$0);
-        return;
-      }
-    } while (paramMessage.what != 3);
-    TcpConnection.access$1100(this.this$0).quit();
-    TcpConnection.access$1102(this.this$0, null);
-    TcpConnection.access$1202(this.this$0, null);
+    }
+    if (paramMessage.what == 2)
+    {
+      TcpConnection.access$1000(this.this$0);
+      return;
+    }
+    if (paramMessage.what == 3)
+    {
+      TcpConnection.access$1100(this.this$0).quit();
+      TcpConnection.access$1102(this.this$0, null);
+      TcpConnection.access$1202(this.this$0, null);
+    }
   }
   
   public void notifyToQuit()
@@ -53,7 +55,7 @@ class TcpConnection$ConnWorker
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.conn.TcpConnection.ConnWorker
  * JD-Core Version:    0.7.0.1
  */

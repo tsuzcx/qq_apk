@@ -1,7 +1,7 @@
 package com.tencent.biz.lebasearch;
 
 import android.widget.LinearLayout;
-import com.tencent.biz.pubaccount.AccountDetailBounceScrollView;
+import com.tencent.biz.lebasearch.widget.LebaSearchBounceScrollView;
 import com.tencent.mobileqq.widget.BounceScrollView.OnScrollChangedListener;
 
 class LebaSearchPluginManagerActivity$4
@@ -13,8 +13,15 @@ class LebaSearchPluginManagerActivity$4
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt1 = (int)(this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight() - this.a.b * (1.0D - LebaSearchPluginManagerActivity.jdField_a_of_type_Double) + 56.0F * this.a.jdField_a_of_type_Float);
-    this.a.jdField_a_of_type_ComTencentBizPubaccountAccountDetailBounceScrollView.setMaxOverScrollY(paramInt1);
+    double d1 = this.a.jdField_a_of_type_AndroidWidgetLinearLayout.getHeight();
+    double d2 = this.a.b;
+    double d3 = LebaSearchPluginManagerActivity.jdField_a_of_type_Double;
+    Double.isNaN(d2);
+    Double.isNaN(d1);
+    double d4 = this.a.jdField_a_of_type_Float * 56.0F;
+    Double.isNaN(d4);
+    paramInt1 = (int)(d1 - d2 * (1.0D - d3) + d4);
+    this.a.jdField_a_of_type_ComTencentBizLebasearchWidgetLebaSearchBounceScrollView.setMaxOverScrollY(paramInt1);
     if (LebaSearchPluginManagerActivity.a(this.a))
     {
       this.a.a(paramInt2);
@@ -24,7 +31,7 @@ class LebaSearchPluginManagerActivity$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.lebasearch.LebaSearchPluginManagerActivity.4
  * JD-Core Version:    0.7.0.1
  */

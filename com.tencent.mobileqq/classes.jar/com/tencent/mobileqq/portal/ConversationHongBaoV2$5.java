@@ -15,8 +15,12 @@ class ConversationHongBaoV2$5
   {
     if ((!TextUtils.isEmpty(paramString)) && (paramString.equals(this.jdField_a_of_type_JavaLangString)) && ((paramObject instanceof Bitmap)) && (this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("2021_UI_ConversationHongBaoV2", 2, "showShuaYiShuaTask progressLogo onDownloadCallback suc,url = " + paramString);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("showShuaYiShuaTask progressLogo onDownloadCallback suc,url = ");
+        localStringBuilder.append(paramString);
+        QLog.d("2021_UI_ConversationHongBaoV2", 2, localStringBuilder.toString());
       }
       paramString = (Bitmap)paramObject;
       this.jdField_a_of_type_ComTencentMobileqqPortalConversationHongBaoV2.a.setProgressLogo(paramString, false);
@@ -26,7 +30,7 @@ class ConversationHongBaoV2$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.portal.ConversationHongBaoV2.5
  * JD-Core Version:    0.7.0.1
  */

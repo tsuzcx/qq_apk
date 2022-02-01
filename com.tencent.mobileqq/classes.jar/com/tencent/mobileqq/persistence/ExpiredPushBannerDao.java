@@ -23,29 +23,23 @@ public class ExpiredPushBannerDao
       return paramEntity;
     }
     int i = paramCursor.getColumnIndex("cid");
-    if (i == -1)
-    {
+    if (i == -1) {
       paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("cid", Long.TYPE));
-      i = paramCursor.getColumnIndex("md5");
-      if (i != -1) {
-        break label187;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("md5", String.class));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("endtime");
-      if (i != -1) {
-        break label202;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("endtime", Long.TYPE));
-      return paramEntity;
+    } else {
       paramEntity.cid = paramCursor.getLong(i);
-      break;
-      label187:
+    }
+    i = paramCursor.getColumnIndex("md5");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("md5", String.class));
+    } else {
       paramEntity.md5 = paramCursor.getString(i);
     }
-    label202:
+    i = paramCursor.getColumnIndex("endtime");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("endtime", Long.TYPE));
+      return paramEntity;
+    }
     paramEntity.endtime = paramCursor.getLong(i);
     return paramEntity;
   }
@@ -68,7 +62,7 @@ public class ExpiredPushBannerDao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.ExpiredPushBannerDao
  * JD-Core Version:    0.7.0.1
  */

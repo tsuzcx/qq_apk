@@ -43,27 +43,27 @@ public class FastBlurUtil
       while (k < paramBitmap.getWidth())
       {
         int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { 9, 4 });
-        int m = 0;
-        int i = -1;
-        while (i <= 1)
+        int m = -1;
+        int i = 0;
+        while (m <= 1)
         {
           int n = -1;
           while (n <= 1)
           {
             int i1 = k + n;
-            int i2 = j + i;
+            int i2 = j + m;
             if ((i1 >= 0) && (i2 >= 0) && (i1 < paramBitmap.getWidth()) && (i2 < paramBitmap.getHeight()))
             {
               i1 = paramBitmap.getPixel(i1, i2);
-              arrayOfInt[m][0] = (i1 >> 24 & 0xFF);
-              arrayOfInt[m][1] = (i1 >> 16 & 0xFF);
-              arrayOfInt[m][2] = (i1 >> 8 & 0xFF);
-              arrayOfInt[m][3] = (i1 & 0xFF);
+              arrayOfInt[i][0] = (i1 >> 24 & 0xFF);
+              arrayOfInt[i][1] = (i1 >> 16 & 0xFF);
+              arrayOfInt[i][2] = (i1 >> 8 & 0xFF);
+              arrayOfInt[i][3] = (i1 & 0xFF);
             }
-            m += 1;
+            i += 1;
             n += 1;
           }
-          i += 1;
+          m += 1;
         }
         int[] arrayOfInt2 = new int[4];
         i = 0;
@@ -78,22 +78,17 @@ public class FastBlurUtil
           i += 1;
         }
         m = 0;
-        if (m < arrayOfInt2.length)
+        while (m < arrayOfInt2.length)
         {
           if (arrayOfInt2[m] < 0) {
             i = 0;
+          } else if (arrayOfInt2[m] > 255) {
+            i = 255;
+          } else {
+            i = arrayOfInt2[m];
           }
-          for (;;)
-          {
-            arrayOfInt2[m] = i;
-            m += 1;
-            break;
-            if (arrayOfInt2[m] > 255) {
-              i = 255;
-            } else {
-              i = arrayOfInt2[m];
-            }
-          }
+          arrayOfInt2[m] = i;
+          m += 1;
         }
         i = paramBitmap.getWidth() * j + k;
         arrayOfInt1[i] |= arrayOfInt2[0] << 24;
@@ -112,229 +107,236 @@ public class FastBlurUtil
   
   public static Bitmap doBlur(Bitmap paramBitmap, int paramInt, boolean paramBoolean)
   {
-    if (paramBoolean) {}
-    while (paramInt < 1)
-    {
-      return null;
+    int i7 = paramInt;
+    if (!paramBoolean) {
       paramBitmap = paramBitmap.copy(paramBitmap.getConfig(), true);
     }
-    int i12 = paramBitmap.getWidth();
-    int i13 = paramBitmap.getHeight();
-    int[] arrayOfInt1 = new int[i12 * i13];
-    paramBitmap.getPixels(arrayOfInt1, 0, i12, 0, 0, i12, i13);
-    int i11 = i12 - 1;
-    int i14 = i13 - 1;
-    int i = i12 * i13;
-    int i15 = paramInt + paramInt + 1;
-    int[] arrayOfInt2 = new int[i];
+    if (i7 < 1) {
+      return null;
+    }
+    int i15 = paramBitmap.getWidth();
+    int j = paramBitmap.getHeight();
+    int i = i15 * j;
     int[] arrayOfInt3 = new int[i];
+    paramBitmap.getPixels(arrayOfInt3, 0, i15, 0, 0, i15, j);
+    int i18 = i15 - 1;
+    int k = j - 1;
+    int i16 = i7 + i7 + 1;
     int[] arrayOfInt4 = new int[i];
-    int[] arrayOfInt5 = new int[Math.max(i12, i13)];
-    i = i15 + 1 >> 1;
-    int j = i * i;
-    int[] arrayOfInt6 = new int[j * 256];
+    int[] arrayOfInt5 = new int[i];
+    int[] arrayOfInt6 = new int[i];
+    int[] arrayOfInt2 = new int[Math.max(i15, j)];
+    i = i16 + 1 >> 1;
+    int m = i * i;
+    int n = m * 256;
+    int[] arrayOfInt1 = new int[n];
     i = 0;
-    while (i < j * 256)
+    while (i < n)
     {
-      arrayOfInt6[i] = (i / j);
+      arrayOfInt1[i] = (i / m);
       i += 1;
     }
-    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i15, 3 });
-    int i16 = paramInt + 1;
-    int i7 = 0;
-    i = 0;
-    int i6 = 0;
-    int i8;
-    int m;
-    int n;
+    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i16, 3 });
+    int i17 = i7 + 1;
+    int i9 = 0;
+    int i10 = 0;
+    int i8 = 0;
+    i = k;
+    Bitmap localBitmap = paramBitmap;
+    int i11;
     int i1;
     int i2;
     int i3;
     int i4;
     int i5;
-    int k;
-    int i9;
-    int[] arrayOfInt7;
-    int i10;
-    int i17;
-    while (i6 < i13)
+    int i6;
+    int i12;
+    int i13;
+    int i14;
+    while (i9 < j)
     {
-      j = 0;
-      i8 = -paramInt;
-      m = 0;
-      n = 0;
+      i11 = -i7;
       i1 = 0;
       i2 = 0;
       i3 = 0;
+      n = 0;
+      m = 0;
+      k = 0;
       i4 = 0;
       i5 = 0;
-      k = 0;
-      if (i8 <= paramInt)
+      i6 = 0;
+      while (i11 <= i7)
       {
-        i9 = arrayOfInt1[(Math.min(i11, Math.max(i8, 0)) + i)];
-        arrayOfInt7 = arrayOfInt[(i8 + paramInt)];
-        arrayOfInt7[0] = ((0xFF0000 & i9) >> 16);
-        arrayOfInt7[1] = ((0xFF00 & i9) >> 8);
-        arrayOfInt7[2] = (i9 & 0xFF);
-        i9 = i16 - Math.abs(i8);
-        i5 += arrayOfInt7[0] * i9;
-        i4 += arrayOfInt7[1] * i9;
-        i3 += i9 * arrayOfInt7[2];
-        if (i8 > 0)
+        i12 = arrayOfInt3[(i10 + Math.min(i18, Math.max(i11, 0)))];
+        paramBitmap = arrayOfInt[(i11 + i7)];
+        paramBitmap[0] = ((i12 & 0xFF0000) >> 16);
+        paramBitmap[1] = ((i12 & 0xFF00) >> 8);
+        paramBitmap[2] = (i12 & 0xFF);
+        i12 = i17 - Math.abs(i11);
+        i1 += paramBitmap[0] * i12;
+        i2 += paramBitmap[1] * i12;
+        i3 += paramBitmap[2] * i12;
+        if (i11 > 0)
         {
-          m += arrayOfInt7[0];
-          k += arrayOfInt7[1];
-          j += arrayOfInt7[2];
+          i4 += paramBitmap[0];
+          i5 += paramBitmap[1];
+          i6 += paramBitmap[2];
         }
-        for (;;)
+        else
         {
-          i8 += 1;
-          break;
-          i2 += arrayOfInt7[0];
-          i1 += arrayOfInt7[1];
-          n += arrayOfInt7[2];
+          n += paramBitmap[0];
+          m += paramBitmap[1];
+          k += paramBitmap[2];
         }
+        i11 += 1;
       }
-      i8 = i4;
-      i10 = 0;
-      i4 = paramInt;
-      i9 = i5;
-      i5 = i3;
-      i3 = i10;
-      while (i3 < i12)
+      i13 = i7;
+      i14 = 0;
+      i11 = i5;
+      i12 = i4;
+      i5 = i1;
+      i4 = i13;
+      i1 = i14;
+      while (i1 < i15)
       {
-        arrayOfInt2[i] = arrayOfInt6[i9];
-        arrayOfInt3[i] = arrayOfInt6[i8];
-        arrayOfInt4[i] = arrayOfInt6[i5];
-        arrayOfInt7 = arrayOfInt[((i4 - paramInt + i15) % i15)];
-        int i18 = arrayOfInt7[0];
-        i17 = arrayOfInt7[1];
-        i10 = arrayOfInt7[2];
-        if (i6 == 0) {
-          arrayOfInt5[i3] = Math.min(i3 + paramInt + 1, i11);
+        arrayOfInt4[i10] = arrayOfInt1[i5];
+        arrayOfInt5[i10] = arrayOfInt1[i2];
+        arrayOfInt6[i10] = arrayOfInt1[i3];
+        paramBitmap = arrayOfInt[((i4 - i7 + i16) % i16)];
+        int i19 = paramBitmap[0];
+        i14 = paramBitmap[1];
+        i13 = paramBitmap[2];
+        if (i9 == 0) {
+          arrayOfInt2[i1] = Math.min(i1 + i7 + 1, i18);
         }
-        int i19 = arrayOfInt1[(arrayOfInt5[i3] + i7)];
-        arrayOfInt7[0] = ((0xFF0000 & i19) >> 16);
-        arrayOfInt7[1] = ((0xFF00 & i19) >> 8);
-        arrayOfInt7[2] = (i19 & 0xFF);
-        m += arrayOfInt7[0];
-        k += arrayOfInt7[1];
-        j += arrayOfInt7[2];
-        i9 = i9 - i2 + m;
-        i8 = i8 - i1 + k;
-        i5 = i5 - n + j;
-        i4 = (i4 + 1) % i15;
-        arrayOfInt7 = arrayOfInt[(i4 % i15)];
-        i2 = i2 - i18 + arrayOfInt7[0];
-        i1 = i1 - i17 + arrayOfInt7[1];
-        n = n - i10 + arrayOfInt7[2];
-        m -= arrayOfInt7[0];
-        k -= arrayOfInt7[1];
-        j -= arrayOfInt7[2];
-        i += 1;
-        i3 += 1;
+        int i20 = arrayOfInt3[(i8 + arrayOfInt2[i1])];
+        paramBitmap[0] = ((i20 & 0xFF0000) >> 16);
+        paramBitmap[1] = ((i20 & 0xFF00) >> 8);
+        paramBitmap[2] = (i20 & 0xFF);
+        i12 += paramBitmap[0];
+        i11 += paramBitmap[1];
+        i6 += paramBitmap[2];
+        i5 = i5 - n + i12;
+        i2 = i2 - m + i11;
+        i3 = i3 - k + i6;
+        i4 = (i4 + 1) % i16;
+        paramBitmap = arrayOfInt[(i4 % i16)];
+        n = n - i19 + paramBitmap[0];
+        m = m - i14 + paramBitmap[1];
+        k = k - i13 + paramBitmap[2];
+        i12 -= paramBitmap[0];
+        i11 -= paramBitmap[1];
+        i6 -= paramBitmap[2];
+        i10 += 1;
+        i1 += 1;
       }
-      i7 += i12;
-      i6 += 1;
+      i8 += i15;
+      i9 += 1;
     }
-    i = 0;
-    while (i < i12)
+    i7 = j;
+    k = 0;
+    j = i;
+    paramBitmap = arrayOfInt2;
+    i = k;
+    for (;;)
     {
-      i5 = 0;
-      i7 = -paramInt * i12;
-      i6 = -paramInt;
-      i3 = 0;
-      n = 0;
-      i1 = 0;
-      i2 = 0;
-      j = 0;
-      m = 0;
-      k = 0;
-      i4 = 0;
-      if (i6 <= paramInt)
-      {
-        i8 = Math.max(0, i7) + i;
-        arrayOfInt7 = arrayOfInt[(i6 + paramInt)];
-        arrayOfInt7[0] = arrayOfInt2[i8];
-        arrayOfInt7[1] = arrayOfInt3[i8];
-        arrayOfInt7[2] = arrayOfInt4[i8];
-        i9 = i16 - Math.abs(i6);
-        i10 = arrayOfInt2[i8];
-        i11 = arrayOfInt3[i8];
-        i17 = arrayOfInt4[i8];
-        if (i6 > 0)
-        {
-          i3 += arrayOfInt7[0];
-          i4 += arrayOfInt7[1];
-          i5 += arrayOfInt7[2];
-        }
-        for (;;)
-        {
-          i8 = i7;
-          if (i6 < i14) {
-            i8 = i7 + i12;
-          }
-          i6 += 1;
-          j = i17 * i9 + j;
-          m = i11 * i9 + m;
-          k = i10 * i9 + k;
-          i7 = i8;
-          break;
-          i2 += arrayOfInt7[0];
-          i1 += arrayOfInt7[1];
-          n += arrayOfInt7[2];
-        }
+      i8 = paramInt;
+      if (i >= i15) {
+        break;
       }
-      i9 = m;
-      i10 = k;
-      i11 = 0;
-      k = i;
-      i6 = i5;
-      i7 = i4;
-      i8 = i3;
-      m = n;
-      n = i1;
-      i1 = i2;
-      i2 = paramInt;
-      i5 = i10;
-      i4 = i9;
-      i3 = j;
-      j = i11;
-      while (j < i13)
+      i9 = -i8;
+      i10 = i9 * i15;
+      i2 = 0;
+      i3 = 0;
+      i4 = 0;
+      i1 = 0;
+      n = 0;
+      m = 0;
+      i6 = 0;
+      i5 = 0;
+      k = 0;
+      while (i9 <= i8)
       {
-        arrayOfInt1[k] = (0xFF000000 & arrayOfInt1[k] | arrayOfInt6[i5] << 16 | arrayOfInt6[i4] << 8 | arrayOfInt6[i3]);
-        arrayOfInt7 = arrayOfInt[((i2 - paramInt + i15) % i15)];
-        i11 = arrayOfInt7[0];
-        i10 = arrayOfInt7[1];
-        i9 = arrayOfInt7[2];
-        if (i == 0) {
-          arrayOfInt5[j] = (Math.min(j + i16, i14) * i12);
+        i12 = Math.max(0, i10) + i;
+        arrayOfInt2 = arrayOfInt[(i9 + i8)];
+        arrayOfInt2[0] = arrayOfInt4[i12];
+        arrayOfInt2[1] = arrayOfInt5[i12];
+        arrayOfInt2[2] = arrayOfInt6[i12];
+        i13 = i17 - Math.abs(i9);
+        i11 = i2 + arrayOfInt4[i12] * i13;
+        i3 += arrayOfInt5[i12] * i13;
+        i4 += arrayOfInt6[i12] * i13;
+        if (i9 > 0)
+        {
+          i6 += arrayOfInt2[0];
+          i5 += arrayOfInt2[1];
+          k += arrayOfInt2[2];
         }
-        i17 = arrayOfInt5[j] + i;
-        arrayOfInt7[0] = arrayOfInt2[i17];
-        arrayOfInt7[1] = arrayOfInt3[i17];
-        arrayOfInt7[2] = arrayOfInt4[i17];
-        i8 += arrayOfInt7[0];
-        i7 += arrayOfInt7[1];
-        i6 += arrayOfInt7[2];
-        i5 = i5 - i1 + i8;
-        i4 = i4 - n + i7;
-        i3 = i3 - m + i6;
-        i2 = (i2 + 1) % i15;
-        arrayOfInt7 = arrayOfInt[i2];
-        i1 = i1 - i11 + arrayOfInt7[0];
-        n = n - i10 + arrayOfInt7[1];
-        m = m - i9 + arrayOfInt7[2];
-        i8 -= arrayOfInt7[0];
-        i7 -= arrayOfInt7[1];
-        i6 -= arrayOfInt7[2];
-        k += i12;
-        j += 1;
+        else
+        {
+          i1 += arrayOfInt2[0];
+          n += arrayOfInt2[1];
+          m += arrayOfInt2[2];
+        }
+        i2 = i10;
+        if (i9 < j) {
+          i2 = i10 + i15;
+        }
+        i9 += 1;
+        i10 = i2;
+        i2 = i11;
+      }
+      i9 = i;
+      i13 = i5;
+      i14 = 0;
+      i5 = i8;
+      i11 = i1;
+      i12 = i2;
+      i10 = i6;
+      i8 = i13;
+      i6 = k;
+      i1 = i5;
+      k = m;
+      m = n;
+      n = i11;
+      i2 = i4;
+      i5 = i12;
+      i4 = i14;
+      while (i4 < i7)
+      {
+        arrayOfInt3[i9] = (arrayOfInt3[i9] & 0xFF000000 | arrayOfInt1[i5] << 16 | arrayOfInt1[i3] << 8 | arrayOfInt1[i2]);
+        arrayOfInt2 = arrayOfInt[((i1 - paramInt + i16) % i16)];
+        i13 = arrayOfInt2[0];
+        i12 = arrayOfInt2[1];
+        i11 = arrayOfInt2[2];
+        if (i == 0) {
+          paramBitmap[i4] = (Math.min(i4 + i17, j) * i15);
+        }
+        i14 = paramBitmap[i4] + i;
+        arrayOfInt2[0] = arrayOfInt4[i14];
+        arrayOfInt2[1] = arrayOfInt5[i14];
+        arrayOfInt2[2] = arrayOfInt6[i14];
+        i10 += arrayOfInt2[0];
+        i8 += arrayOfInt2[1];
+        i6 += arrayOfInt2[2];
+        i5 = i5 - n + i10;
+        i3 = i3 - m + i8;
+        i2 = i2 - k + i6;
+        i1 = (i1 + 1) % i16;
+        arrayOfInt2 = arrayOfInt[i1];
+        n = n - i13 + arrayOfInt2[0];
+        m = m - i12 + arrayOfInt2[1];
+        k = k - i11 + arrayOfInt2[2];
+        i10 -= arrayOfInt2[0];
+        i8 -= arrayOfInt2[1];
+        i6 -= arrayOfInt2[2];
+        i9 += i15;
+        i4 += 1;
       }
       i += 1;
     }
-    paramBitmap.setPixels(arrayOfInt1, 0, i12, 0, 0, i12, i13);
-    return paramBitmap;
+    localBitmap.setPixels(arrayOfInt3, 0, i15, 0, 0, i15, i7);
+    return localBitmap;
   }
   
   public static Bitmap transform(Bitmap paramBitmap, int paramInt1, int paramInt2)
@@ -343,7 +345,8 @@ public class FastBlurUtil
     int j = paramBitmap.getHeight();
     Bitmap localBitmap = Bitmap.createBitmap(i / paramInt1, j / paramInt1, Bitmap.Config.RGB_565);
     Canvas localCanvas = new Canvas(localBitmap);
-    localCanvas.scale(1.0F / paramInt1, 1.0F / paramInt1);
+    float f = 1.0F / paramInt1;
+    localCanvas.scale(f, f);
     Paint localPaint = new Paint();
     localPaint.setFlags(2);
     localCanvas.drawBitmap(paramBitmap, 0.0F, 0.0F, localPaint);
@@ -352,7 +355,7 @@ public class FastBlurUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.FastBlurUtil
  * JD-Core Version:    0.7.0.1
  */

@@ -2,7 +2,6 @@ package com.tencent.mobileqq.comment;
 
 import android.content.Context;
 import android.graphics.Paint;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.item.ReplyTextItemBuilder;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.data.MessageForFile;
@@ -13,12 +12,8 @@ import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
-import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
-import com.tencent.qphone.base.util.BaseApplication;
-import java.util.HashMap;
-import mqq.app.AppRuntime;
 
 public class DanmuUtil
 {
@@ -76,73 +71,51 @@ public class DanmuUtil
       i = 1;
     }
     if (i < 60) {
-      return paramContext.getString(2131699094, new Object[] { Integer.valueOf(i) });
+      return paramContext.getString(2131718208, new Object[] { Integer.valueOf(i) });
     }
     if (i < 3600) {
-      return paramContext.getString(2131699095, new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) });
+      return paramContext.getString(2131718209, new Object[] { Integer.valueOf(i / 60), Integer.valueOf(i % 60) });
     }
     paramInt = i / 60;
-    return paramContext.getString(2131699096, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
+    return paramContext.getString(2131718210, new Object[] { Integer.valueOf(paramInt / 60), Integer.valueOf(paramInt % 60) });
   }
   
   public static final String a(Paint paramPaint, String paramString, int paramInt)
   {
     float f1 = paramPaint.measureText(paramString);
     float f2 = paramPaint.measureText("…");
-    if (f2 > f1) {}
-    for (;;)
-    {
+    if (f2 > f1) {
       return paramString;
-      if (f2 > paramInt) {
-        return "…";
-      }
-      if (f1 > paramInt)
+    }
+    float f3 = paramInt;
+    if (f2 > f3) {
+      return "…";
+    }
+    if (f1 > f3)
+    {
+      float[] arrayOfFloat = new float[paramString.length()];
+      paramPaint.getTextWidths(paramString, arrayOfFloat);
+      paramInt = 0;
+      f1 = 0.0F;
+      while (paramInt < arrayOfFloat.length)
       {
-        float[] arrayOfFloat = new float[paramString.length()];
-        paramPaint.getTextWidths(paramString, arrayOfFloat);
-        float f3 = paramInt;
-        f1 = 0.0F;
-        paramInt = 0;
-        while (paramInt < arrayOfFloat.length)
+        f1 += arrayOfFloat[paramInt];
+        if (f1 > f3 - f2)
         {
-          f1 += arrayOfFloat[paramInt];
-          if (f1 > f3 - f2) {
-            return paramString.substring(0, paramInt) + "…";
-          }
-          paramInt += 1;
+          paramPaint = new StringBuilder();
+          paramPaint.append(paramString.substring(0, paramInt));
+          paramPaint.append("…");
+          return paramPaint.toString();
         }
+        paramInt += 1;
       }
     }
-  }
-  
-  public static void a(boolean paramBoolean1, int paramInt1, int paramInt2, boolean paramBoolean2, String paramString)
-  {
-    HashMap localHashMap = new HashMap();
-    if (paramBoolean1)
-    {
-      str = "1";
-      localHashMap.put("eventSuccess", str);
-      localHashMap.put("statusCode", String.valueOf(paramInt1));
-      localHashMap.put("mediaType", String.valueOf(paramInt2));
-      if (!paramBoolean2) {
-        break label113;
-      }
-    }
-    label113:
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("rspValid", str);
-      localHashMap.put("errInfo", paramString);
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(BaseApplicationImpl.getApplication().getRuntime().getAccount(), "DanmakuRequestMonitor", paramBoolean1, 0L, 0L, localHashMap, null);
-      return;
-      str = "0";
-      break;
-    }
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.comment.DanmuUtil
  * JD-Core Version:    0.7.0.1
  */

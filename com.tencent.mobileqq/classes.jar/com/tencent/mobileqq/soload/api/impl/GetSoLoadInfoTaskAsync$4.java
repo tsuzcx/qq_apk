@@ -9,10 +9,14 @@ class GetSoLoadInfoTaskAsync$4
 {
   GetSoLoadInfoTaskAsync$4(GetSoLoadInfoTaskAsync paramGetSoLoadInfoTaskAsync, String paramString, long paramLong, int paramInt) {}
   
-  public void a(int paramInt1, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt2)
+  public void onResult(int paramInt1, String paramString1, String paramString2, String paramString3, boolean paramBoolean, int paramInt2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, "[downRFiles] download resCode=" + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append("[downRFiles] download resCode=");
+      paramString1.append(paramInt1);
+      QLog.i("SoLoadWidget.GetSoTaskAsync", 2, paramString1.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqSoloadApiImplGetSoLoadInfoTaskAsync.jdField_a_of_type_Int = paramInt2;
     if ((paramInt1 == 0) && (!TextUtils.isEmpty(paramString2)))
@@ -25,7 +29,7 @@ class GetSoLoadInfoTaskAsync$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soload.api.impl.GetSoLoadInfoTaskAsync.4
  * JD-Core Version:    0.7.0.1
  */

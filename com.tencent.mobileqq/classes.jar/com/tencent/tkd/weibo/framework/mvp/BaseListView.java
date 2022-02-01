@@ -1,16 +1,20 @@
 package com.tencent.tkd.weibo.framework.mvp;
 
+import android.content.Context;
+import android.graphics.drawable.ColorDrawable;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup;
 import android.widget.AbsListView.OnScrollListener;
 import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import com.tencent.tkd.weibo.R.id;
-import com.tencent.tkd.weibo.R.layout;
+import com.tencent.tkd.weibo.component.R.id;
+import com.tencent.tkd.weibo.component.R.layout;
 import java.util.Collection;
 import java.util.HashMap;
 import java.util.List;
@@ -35,6 +39,15 @@ public abstract class BaseListView<BEAN>
   private Function0<Unit> jdField_a_of_type_KotlinJvmFunctionsFunction0;
   private Function1<? super BEAN, Unit> jdField_a_of_type_KotlinJvmFunctionsFunction1;
   private boolean jdField_a_of_type_Boolean;
+  
+  public BaseListView(@NotNull Context paramContext, @NotNull ListPresenter<BEAN, ListContract.IListView<BEAN>> paramListPresenter)
+  {
+    super(paramContext);
+    this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpListPresenter = paramListPresenter;
+    this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpBaseListView$onScrollListener$1 = new BaseListView.onScrollListener.1(this);
+    LayoutInflater.from(paramContext).inflate(R.layout.e, (ViewGroup)this, true);
+    ((RelativeLayout)a(R.id.c)).setOnClickListener((View.OnClickListener)new BaseListView.1(this));
+  }
   
   private final void a()
   {
@@ -112,7 +125,7 @@ public abstract class BaseListView<BEAN>
     return this.jdField_a_of_type_KotlinJvmFunctionsFunction0;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     Object localObject = LayoutInflater.from(getContext()).inflate(R.layout.b, null, false);
@@ -128,24 +141,27 @@ public abstract class BaseListView<BEAN>
       Intrinsics.throwUninitializedPropertyAccessException("footerView");
     }
     ((View)localObject).setEnabled(false);
-    localObject = (ListView)a(R.id.f);
+    localObject = (ListView)a(R.id.g);
     View localView = this.jdField_a_of_type_AndroidViewView;
     if (localView == null) {
       Intrinsics.throwUninitializedPropertyAccessException("footerView");
     }
     ((ListView)localObject).addFooterView(localView);
-    localObject = (ListView)a(R.id.f);
+    localObject = (ListView)a(R.id.g);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
     ((ListView)localObject).setAdapter((ListAdapter)a());
-    localObject = (ListView)a(R.id.f);
+    localObject = (ListView)a(R.id.g);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
     ((ListView)localObject).setOnItemClickListener((AdapterView.OnItemClickListener)new BaseListView.onAttachedToWindow.1(this));
-    ((ListView)a(R.id.f)).setOnScrollListener((AbsListView.OnScrollListener)this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpBaseListView$onScrollListener$1);
+    localObject = (ListView)a(R.id.g);
+    Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
+    ((ListView)localObject).setSelector((Drawable)new ColorDrawable(0));
+    ((ListView)a(R.id.g)).setOnScrollListener((AbsListView.OnScrollListener)this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpBaseListView$onScrollListener$1);
     this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpListPresenter.a((ListContract.IListView)this);
     ListContract.IListPresenter.DefaultImpls.a(this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpListPresenter, null, 1, null);
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpListPresenter.a();
     super.onDetachedFromWindow();
@@ -153,7 +169,7 @@ public abstract class BaseListView<BEAN>
   
   public void setCenterEmpty()
   {
-    Object localObject = (ListView)a(R.id.f);
+    Object localObject = (ListView)a(R.id.g);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
     ((ListView)localObject).setVisibility(8);
     localObject = (RelativeLayout)a(R.id.c);
@@ -166,7 +182,7 @@ public abstract class BaseListView<BEAN>
   
   public void setCenterError(int paramInt, @Nullable String paramString)
   {
-    paramString = (ListView)a(R.id.f);
+    paramString = (ListView)a(R.id.g);
     Intrinsics.checkExpressionValueIsNotNull(paramString, "listView");
     paramString.setVisibility(8);
     paramString = (RelativeLayout)a(R.id.c);
@@ -179,14 +195,14 @@ public abstract class BaseListView<BEAN>
   
   public void setCenterHide()
   {
-    ListView localListView = (ListView)a(R.id.f);
+    ListView localListView = (ListView)a(R.id.g);
     Intrinsics.checkExpressionValueIsNotNull(localListView, "listView");
     localListView.setVisibility(0);
   }
   
   public void setCenterLoading()
   {
-    Object localObject = (ListView)a(R.id.f);
+    Object localObject = (ListView)a(R.id.g);
     Intrinsics.checkExpressionValueIsNotNull(localObject, "listView");
     ((ListView)localObject).setVisibility(8);
     localObject = (RelativeLayout)a(R.id.c);
@@ -237,20 +253,15 @@ public abstract class BaseListView<BEAN>
   public void setListData(@NotNull List<? extends BEAN> paramList, boolean paramBoolean)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "allList");
-    if (!((Collection)paramList).isEmpty()) {}
-    for (int i = 1;; i = 0)
+    if ((((Collection)paramList).isEmpty() ^ true))
     {
-      if (i != 0)
-      {
-        RelativeLayout localRelativeLayout = (RelativeLayout)a(R.id.b);
-        Intrinsics.checkExpressionValueIsNotNull(localRelativeLayout, "emptyLayout");
-        localRelativeLayout.setVisibility(8);
-      }
-      a().a(paramList);
-      if ((a().a().size() < 15) && (this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpListPresenter.a().a())) {
-        this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpListPresenter.b();
-      }
-      return;
+      RelativeLayout localRelativeLayout = (RelativeLayout)a(R.id.b);
+      Intrinsics.checkExpressionValueIsNotNull(localRelativeLayout, "emptyLayout");
+      localRelativeLayout.setVisibility(8);
+    }
+    a().a(paramList);
+    if ((a().a().size() < 15) && (this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpListPresenter.a().a())) {
+      this.jdField_a_of_type_ComTencentTkdWeiboFrameworkMvpListPresenter.b();
     }
   }
   
@@ -263,7 +274,7 @@ public abstract class BaseListView<BEAN>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.weibo.framework.mvp.BaseListView
  * JD-Core Version:    0.7.0.1
  */

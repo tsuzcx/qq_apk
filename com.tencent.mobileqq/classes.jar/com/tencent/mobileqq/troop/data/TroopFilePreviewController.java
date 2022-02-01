@@ -34,8 +34,9 @@ public class TroopFilePreviewController
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver != null) {
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver);
+    BizTroopObserver localBizTroopObserver = this.jdField_a_of_type_ComTencentMobileqqAppBizTroopObserver;
+    if (localBizTroopObserver != null) {
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.removeObserver(localBizTroopObserver);
     }
   }
   
@@ -47,17 +48,15 @@ public class TroopFilePreviewController
     }
     if (this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a != null) {
       localTroopFileTransferManager.e(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.a);
-    }
-    for (;;)
-    {
-      return true;
+    } else {
       localTroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.e, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.g, this.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileStatusInfo.h);
     }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.TroopFilePreviewController
  * JD-Core Version:    0.7.0.1
  */

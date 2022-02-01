@@ -17,12 +17,12 @@ class AnimationUtils$4$1
       this.a.a.setImageAlpha(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
       return;
     }
-    this.a.a.setImageResource(2130851162);
+    this.a.a.setImageResource(2130851078);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.AnimationUtils.4.1
  * JD-Core Version:    0.7.0.1
  */

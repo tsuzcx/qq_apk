@@ -34,35 +34,29 @@ public class HippyTKDUISize
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool1;
     if (!(paramObject instanceof HippyTKDUISize)) {
-      bool1 = false;
+      return false;
     }
-    do
-    {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramObject == this);
-      paramObject = (HippyTKDUISize)paramObject;
-      if (paramObject.mHeight != this.mHeight) {
-        break;
-      }
-      bool1 = bool2;
-    } while (paramObject.mWidth == this.mWidth);
-    return false;
+    if (paramObject == this) {
+      return true;
+    }
+    paramObject = (HippyTKDUISize)paramObject;
+    return (paramObject.mHeight == this.mHeight) && (paramObject.mWidth == this.mWidth);
   }
   
   public int hashCode()
   {
-    return ("" + this.mWidth + "x" + this.mHeight).hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.mWidth);
+    localStringBuilder.append("x");
+    localStringBuilder.append(this.mHeight);
+    return localStringBuilder.toString().hashCode();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.HippyTKDUISize
  * JD-Core Version:    0.7.0.1
  */

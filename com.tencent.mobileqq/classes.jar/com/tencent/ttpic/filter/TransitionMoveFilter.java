@@ -23,19 +23,21 @@ public class TransitionMoveFilter
   
   private double getDuration(double paramDouble1, double paramDouble2, double paramDouble3)
   {
-    paramDouble3 = (paramDouble3 - paramDouble1) / (paramDouble2 - paramDouble1);
-    switch (this.easeCurve)
+    double d = paramDouble2 - paramDouble1;
+    paramDouble3 = (paramDouble3 - paramDouble1) / d;
+    int i = this.easeCurve;
+    if (i != 1)
     {
-    default: 
-      return paramDouble3 * (paramDouble2 - paramDouble1) + paramDouble1;
-    case 1: 
-      paramDouble1 = -(paramDouble2 - paramDouble1);
-      return Math.cos(paramDouble3 * 1.570796326794897D) * paramDouble1 + paramDouble2;
-    case 2: 
-      return Math.sin(paramDouble3 * 1.570796326794897D) * (paramDouble2 - paramDouble1) + paramDouble1;
+      if (i != 2) {
+        if (i == 3) {}
+      }
+      for (paramDouble2 = d * paramDouble3;; paramDouble2 = d * Math.sin(paramDouble3 * 1.570796326794897D))
+      {
+        return paramDouble2 + paramDouble1;
+        return -d / 2.0D * (Math.cos(paramDouble3 * 3.141592653589793D) - 1.0D) + paramDouble1;
+      }
     }
-    paramDouble2 = -(paramDouble2 - paramDouble1) / 2.0D;
-    return (Math.cos(paramDouble3 * 3.141592653589793D) - 1.0D) * paramDouble2 + paramDouble1;
+    return -d * Math.cos(paramDouble3 * 1.570796326794897D) + paramDouble2;
   }
   
   private void initParams()
@@ -47,41 +49,30 @@ public class TransitionMoveFilter
   
   private void updateTextureParam(long paramLong)
   {
-    float f2 = 1.0F;
-    float f4 = 0.0F;
-    float f1 = (float)(getDuration(this.transitionStartTime, this.transitionStartTime + this.transitionDuration, paramLong) - this.transitionStartTime) / (float)this.transitionDuration;
-    if (f1 > 1.0F) {}
-    for (;;)
-    {
-      float f3;
-      if (this.moveOrientation == 1)
-      {
-        f1 = 0.0F;
-        f3 = f2;
-      }
-      for (;;)
-      {
-        addParam(new UniformParam.FloatParam("moveX", f3));
-        addParam(new UniformParam.FloatParam("moveY", f1));
-        return;
-        if (this.moveOrientation == 2)
-        {
-          f3 = -f2;
-          f1 = 0.0F;
-        }
-        else
-        {
-          f1 = f2;
-          f3 = f4;
-          if (this.moveOrientation != 3)
-          {
-            f1 = -f2;
-            f3 = f4;
-          }
-        }
-      }
-      f2 = f1;
+    long l = this.transitionStartTime;
+    float f2 = (float)(getDuration(l, l + this.transitionDuration, paramLong) - this.transitionStartTime) / (float)this.transitionDuration;
+    float f1 = f2;
+    if (f2 > 1.0F) {
+      f1 = 1.0F;
     }
+    int i = this.moveOrientation;
+    f2 = 0.0F;
+    if (i != 1) {
+      if (i == 2)
+      {
+        f1 = -f1;
+      }
+      else
+      {
+        if (i != 3) {
+          f1 = -f1;
+        }
+        f2 = f1;
+        f1 = 0.0F;
+      }
+    }
+    addParam(new UniformParam.FloatParam("moveX", f1));
+    addParam(new UniformParam.FloatParam("moveY", f2));
   }
   
   public void reset()
@@ -122,7 +113,7 @@ public class TransitionMoveFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.TransitionMoveFilter
  * JD-Core Version:    0.7.0.1
  */

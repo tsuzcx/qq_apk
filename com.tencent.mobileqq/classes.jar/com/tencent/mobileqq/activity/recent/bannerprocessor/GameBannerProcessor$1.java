@@ -20,46 +20,45 @@ class GameBannerProcessor$1
     if (GameBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor) != null) {
       GameBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).sendEmptyMessageDelayed(1000, 2500L);
     }
-    Object localObject1 = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
-    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    Object localObject = this.jdField_a_of_type_AndroidOsBundle.getString("activity");
+    if (!TextUtils.isEmpty((CharSequence)localObject)) {}
     try
     {
-      localObject1 = Class.forName((String)localObject1);
-      if (localObject1 != null)
-      {
-        localObject1 = new Intent(GameBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).getApplicationContext(), (Class)localObject1);
-        String str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).setAction(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).addCategory(str);
-        }
-        str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
-        if (!TextUtils.isEmpty(str)) {
-          ((Intent)localObject1).putExtra("url", str);
-        }
-        ((Intent)localObject1).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
-        ((Intent)localObject1).putExtra("force_no_reload", true);
-        GameBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).startActivity((Intent)localObject1);
-      }
-      ReportController.a(GameBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).getAppRuntime(), "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      localObject = Class.forName((String)localObject);
     }
     catch (ClassNotFoundException localClassNotFoundException)
     {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
+      label52:
+      String str;
+      break label52;
     }
+    localObject = null;
+    if (localObject != null)
+    {
+      localObject = new Intent(GameBannerProcessor.a(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).getApplicationContext(), (Class)localObject);
+      str = this.jdField_a_of_type_AndroidOsBundle.getString("action");
+      if (!TextUtils.isEmpty(str)) {
+        ((Intent)localObject).setAction(str);
+      }
+      str = this.jdField_a_of_type_AndroidOsBundle.getString("category");
+      if (!TextUtils.isEmpty(str)) {
+        ((Intent)localObject).addCategory(str);
+      }
+      str = this.jdField_a_of_type_AndroidOsBundle.getString("url");
+      if (!TextUtils.isEmpty(str)) {
+        ((Intent)localObject).putExtra("url", str);
+      }
+      ((Intent)localObject).setFlags(this.jdField_a_of_type_AndroidOsBundle.getInt("flags", 0));
+      ((Intent)localObject).putExtra("force_no_reload", true);
+      GameBannerProcessor.b(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).startActivity((Intent)localObject);
+    }
+    ReportController.a(GameBannerProcessor.c(this.jdField_a_of_type_ComTencentMobileqqActivityRecentBannerprocessorGameBannerProcessor).getAppRuntime(), "dc00898", "", "", "0X8009EE3", "0X8009EE3", 4, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.GameBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

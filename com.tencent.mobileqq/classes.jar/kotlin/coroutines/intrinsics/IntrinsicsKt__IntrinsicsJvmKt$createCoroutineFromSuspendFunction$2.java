@@ -21,25 +21,27 @@ public final class IntrinsicsKt__IntrinsicsJvmKt$createCoroutineFromSuspendFunct
   }
   
   @Nullable
-  public Object invokeSuspend(@NotNull Object paramObject)
+  protected Object invokeSuspend(@NotNull Object paramObject)
   {
-    switch (this.label)
+    int i = this.label;
+    if (i != 0)
     {
-    default: 
+      if (i == 1)
+      {
+        this.label = 2;
+        ResultKt.throwOnFailure(paramObject);
+        return paramObject;
+      }
       throw ((Throwable)new IllegalStateException("This coroutine had already completed".toString()));
-    case 0: 
-      this.label = 1;
-      ResultKt.throwOnFailure(paramObject);
-      return this.$block.invoke(this);
     }
-    this.label = 2;
+    this.label = 1;
     ResultKt.throwOnFailure(paramObject);
-    return paramObject;
+    return this.$block.invoke(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.coroutines.intrinsics.IntrinsicsKt__IntrinsicsJvmKt.createCoroutineFromSuspendFunction.2
  * JD-Core Version:    0.7.0.1
  */

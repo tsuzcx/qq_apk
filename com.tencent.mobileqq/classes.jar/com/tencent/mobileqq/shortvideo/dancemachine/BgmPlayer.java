@@ -69,9 +69,10 @@ public class BgmPlayer
   
   public void releaseResource()
   {
-    if (this.mediaPlayer != null)
+    MediaPlayer localMediaPlayer = this.mediaPlayer;
+    if (localMediaPlayer != null)
     {
-      this.mediaPlayer.stop();
+      localMediaPlayer.stop();
       this.mediaPlayer.release();
       this.mediaPlayer = null;
     }
@@ -96,7 +97,7 @@ public class BgmPlayer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.dancemachine.BgmPlayer
  * JD-Core Version:    0.7.0.1
  */

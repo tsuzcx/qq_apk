@@ -46,8 +46,9 @@ public abstract class PTSAppInstance
   
   public void addOnRecyclerViewScrollListener(RecyclerView.OnScrollListener paramOnScrollListener)
   {
-    if (this.rootNode != null) {
-      this.rootNode.addOnRecyclerViewScrollListener(paramOnScrollListener);
+    PTSRootNode localPTSRootNode = this.rootNode;
+    if (localPTSRootNode != null) {
+      localPTSRootNode.addOnRecyclerViewScrollListener(paramOnScrollListener);
     }
   }
   
@@ -93,8 +94,9 @@ public abstract class PTSAppInstance
   
   public float getRootViewWidth()
   {
-    if (this.containerWidth > 0.0F) {
-      return this.containerWidth;
+    float f = this.containerWidth;
+    if (f > 0.0F) {
+      return f;
     }
     return PTSDeviceUtil.getScreenWidthDp();
   }
@@ -184,7 +186,7 @@ public abstract class PTSAppInstance
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.core.PTSAppInstance
  * JD-Core Version:    0.7.0.1
  */

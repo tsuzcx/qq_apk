@@ -24,14 +24,17 @@ class SDKAvatarSettingManager$2
     if (QLog.isColorLevel()) {
       QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onPermission, code=", Integer.valueOf(paramInt) });
     }
-    if ((SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).isFinishing()) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b)) {
-      return;
+    if (!SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).isFinishing())
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.d();
+      if (SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager) != null) {
+        SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).removeCallbacks(SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.a(HardCodeUtil.a(2131713516), this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.d();
-    if (SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager) != null) {
-      SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).removeCallbacks(SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.a(HardCodeUtil.a(2131713549), this.jdField_a_of_type_JavaLangString);
   }
   
   public void a(int paramInt, String paramString)
@@ -39,14 +42,17 @@ class SDKAvatarSettingManager$2
     if (QLog.isColorLevel()) {
       QLog.d("SDKAvatarSettingManager", 2, new Object[] { "check api, onFailure, code=", Integer.valueOf(paramInt), ", msg=", paramString });
     }
-    if ((SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).isFinishing()) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b)) {
-      return;
+    if (!SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).isFinishing())
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b) {
+        return;
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.d();
+      if (SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager) != null) {
+        SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).removeCallbacks(SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager));
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.a(HardCodeUtil.a(2131713512), this.jdField_a_of_type_JavaLangString);
     }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.d();
-    if (SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager) != null) {
-      SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).removeCallbacks(SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager));
-    }
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.a(HardCodeUtil.a(2131713545), this.jdField_a_of_type_JavaLangString);
   }
   
   public void a(JSONObject paramJSONObject)
@@ -54,13 +60,16 @@ class SDKAvatarSettingManager$2
     if (QLog.isColorLevel()) {
       QLog.d("SDKAvatarSettingManager", 2, "check api, onSuccess");
     }
-    if ((SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).isFinishing()) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b)) {
-      return;
+    if (!SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).isFinishing())
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager.b) {
+        return;
+      }
+      if (SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager) != null) {
+        SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).removeCallbacks(SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager));
+      }
+      SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager);
     }
-    if (SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager) != null) {
-      SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager).removeCallbacks(SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager));
-    }
-    SDKAvatarSettingManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoSDKAvatarSettingManager);
   }
   
   public void b(JSONObject paramJSONObject)
@@ -72,7 +81,7 @@ class SDKAvatarSettingManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.SDKAvatarSettingManager.2
  * JD-Core Version:    0.7.0.1
  */

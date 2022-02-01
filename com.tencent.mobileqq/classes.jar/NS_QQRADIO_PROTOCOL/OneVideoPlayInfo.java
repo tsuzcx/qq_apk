@@ -35,8 +35,9 @@ public final class OneVideoPlayInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.url != null) {
-      paramJceOutputStream.write(this.url, 0);
+    String str = this.url;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.definition, 1);
     paramJceOutputStream.write(this.vbitrate, 2);
@@ -46,7 +47,7 @@ public final class OneVideoPlayInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_PROTOCOL.OneVideoPlayInfo
  * JD-Core Version:    0.7.0.1
  */

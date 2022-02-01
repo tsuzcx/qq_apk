@@ -33,7 +33,10 @@ public class SelfViewHolder
   
   static
   {
-    jdField_a_of_type_JavaLangString = "Q.qqstory.msgTab." + SelfViewHolder.class.getSimpleName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Q.qqstory.msgTab.");
+    localStringBuilder.append(SelfViewHolder.class.getSimpleName());
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     jdField_a_of_type_Int = 0;
     jdField_b_of_type_Int = 1;
   }
@@ -42,65 +45,53 @@ public class SelfViewHolder
   {
     this.itemView.setTag(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
     Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    QQAppInterface localQQAppInterface;
     if ((localObject1 instanceof QQAppInterface))
     {
-      localQQAppInterface = (QQAppInterface)localObject1;
-      localObject1 = String.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Long);
-      if (!"0".equals(localObject1)) {
-        break label335;
+      QQAppInterface localQQAppInterface = (QQAppInterface)localObject1;
+      Object localObject2 = String.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Long);
+      localObject1 = localObject2;
+      if ("0".equals(localObject2)) {
+        localObject1 = localQQAppInterface.getCurrentAccountUin();
       }
-      localObject1 = localQQAppInterface.getCurrentAccountUin();
-    }
-    label142:
-    label286:
-    label291:
-    label310:
-    label335:
-    for (;;)
-    {
       Object localObject3 = (UserManager)SuperManager.a(2);
-      Object localObject2 = QQStoryContext.a().b();
+      localObject2 = QQStoryContext.a().b();
       localObject3 = ((UserManager)localObject3).b((String)localObject2);
-      boolean bool;
-      if (localObject3 == null)
-      {
+      if (localObject3 == null) {
         if ("0_1000".equals(localObject2))
         {
           localObject2 = new QQUserUIItem.UserID(String.valueOf(localObject1), "");
           new GetUserInfoHandler().a(0, (QQUserUIItem.UserID)localObject2, String.valueOf(localObject1));
         }
+        else
+        {
+          QQUserUIItem.UserID localUserID = new QQUserUIItem.UserID("", (String)localObject2);
+          new GetUserInfoHandler().a(1, localUserID, (String)localObject2);
+        }
+      }
+      boolean bool;
+      if ((localObject3 != null) && (((QQUserUIItem)localObject3).isVip())) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      this.jdField_a_of_type_Boolean = bool;
+      if (this.jdField_a_of_type_Boolean)
+      {
+        PlayModeUtils.b(this.jdField_a_of_type_AndroidWidgetImageView, ((QQUserUIItem)localObject3).headUrl, true, (int)DisplayUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
       }
       else
       {
-        if ((localObject3 == null) || (!((QQUserUIItem)localObject3).isVip())) {
-          break label286;
-        }
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label291;
-        }
-        PlayModeUtils.b(this.jdField_a_of_type_AndroidWidgetImageView, ((QQUserUIItem)localObject3).headUrl, true, (int)DisplayUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
-      }
-      for (;;)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713730));
-        if (QLog.isDevelopLevel()) {
-          QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "update self view, isUploading:", Boolean.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Boolean), ", unUploadVideoCount: ", Integer.valueOf(paramMsgTabNodeInfo.d) });
-        }
-        if (!paramMsgTabNodeInfo.jdField_b_of_type_Boolean) {
-          break label310;
-        }
-        a(paramMsgTabNodeInfo, jdField_b_of_type_Int);
-        return;
-        QQUserUIItem.UserID localUserID = new QQUserUIItem.UserID("", (String)localObject2);
-        new GetUserInfoHandler().a(1, localUserID, (String)localObject2);
-        break;
-        bool = false;
-        break label142;
         localObject1 = FaceDrawable.getFaceDrawable(localQQAppInterface, 1, (String)localObject1);
         this.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject1);
+      }
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131713688));
+      if (QLog.isDevelopLevel()) {
+        QLog.d(jdField_a_of_type_JavaLangString, 2, new Object[] { "update self view, isUploading:", Boolean.valueOf(paramMsgTabNodeInfo.jdField_b_of_type_Boolean), ", unUploadVideoCount: ", Integer.valueOf(paramMsgTabNodeInfo.d) });
+      }
+      if (paramMsgTabNodeInfo.jdField_b_of_type_Boolean)
+      {
+        a(paramMsgTabNodeInfo, jdField_b_of_type_Int);
+        return;
       }
       if (paramMsgTabNodeInfo.d > 0)
       {
@@ -108,7 +99,6 @@ public class SelfViewHolder
         return;
       }
       a(paramMsgTabNodeInfo, jdField_a_of_type_Int);
-      return;
     }
   }
   
@@ -122,31 +112,31 @@ public class SelfViewHolder
       a(paramMsgTabNodeInfo.jdField_a_of_type_JavaUtilList.size(), paramMsgTabNodeInfo.jdField_b_of_type_Int);
       if (this.jdField_a_of_type_Boolean)
       {
-        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846987);
+        this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846865);
         this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-      }
-    }
-    do
-    {
-      return;
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      return;
-      if (paramInt == jdField_b_of_type_Int)
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.ROTATE);
-        this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
         return;
       }
-    } while (paramInt != c);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
-    this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(new int[] { -65536 });
-    this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846993);
-    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      return;
+    }
+    if (paramInt == jdField_b_of_type_Int)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.ROTATE);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+      return;
+    }
+    if (paramInt == c)
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderStyle(RotateCircleImageView.BorderStyle.STILL);
+      this.jdField_a_of_type_ComTencentBizQqstoryWidgetRotateCircleImageView.setBorderColors(new int[] { -65536 });
+      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846871);
+      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.SelfViewHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -25,131 +25,133 @@ class KeyframeSet
   
   public static KeyframeSet ofFloat(float... paramVarArgs)
   {
-    int i = 1;
     int j = paramVarArgs.length;
     Keyframe.FloatKeyframe[] arrayOfFloatKeyframe = new Keyframe.FloatKeyframe[Math.max(j, 2)];
+    int i = 1;
     if (j == 1)
     {
       arrayOfFloatKeyframe[0] = ((Keyframe.FloatKeyframe)Keyframe.ofFloat(0.0F));
       arrayOfFloatKeyframe[1] = ((Keyframe.FloatKeyframe)Keyframe.ofFloat(1.0F, paramVarArgs[0]));
     }
+    else
+    {
+      arrayOfFloatKeyframe[0] = ((Keyframe.FloatKeyframe)Keyframe.ofFloat(0.0F, paramVarArgs[0]));
+    }
     for (;;)
     {
-      return new FloatKeyframeSet(arrayOfFloatKeyframe);
-      arrayOfFloatKeyframe[0] = ((Keyframe.FloatKeyframe)Keyframe.ofFloat(0.0F, paramVarArgs[0]));
-      while (i < j)
-      {
-        arrayOfFloatKeyframe[i] = ((Keyframe.FloatKeyframe)Keyframe.ofFloat(i / (j - 1), paramVarArgs[i]));
-        i += 1;
+      if (i >= j) {
+        return new FloatKeyframeSet(arrayOfFloatKeyframe);
       }
+      arrayOfFloatKeyframe[i] = ((Keyframe.FloatKeyframe)Keyframe.ofFloat(i / (j - 1), paramVarArgs[i]));
+      i += 1;
     }
   }
   
   public static KeyframeSet ofInt(int... paramVarArgs)
   {
-    int i = 1;
     int j = paramVarArgs.length;
     Keyframe.IntKeyframe[] arrayOfIntKeyframe = new Keyframe.IntKeyframe[Math.max(j, 2)];
+    int i = 1;
     if (j == 1)
     {
       arrayOfIntKeyframe[0] = ((Keyframe.IntKeyframe)Keyframe.ofInt(0.0F));
       arrayOfIntKeyframe[1] = ((Keyframe.IntKeyframe)Keyframe.ofInt(1.0F, paramVarArgs[0]));
     }
+    else
+    {
+      arrayOfIntKeyframe[0] = ((Keyframe.IntKeyframe)Keyframe.ofInt(0.0F, paramVarArgs[0]));
+    }
     for (;;)
     {
-      return new IntKeyframeSet(arrayOfIntKeyframe);
-      arrayOfIntKeyframe[0] = ((Keyframe.IntKeyframe)Keyframe.ofInt(0.0F, paramVarArgs[0]));
-      while (i < j)
-      {
-        arrayOfIntKeyframe[i] = ((Keyframe.IntKeyframe)Keyframe.ofInt(i / (j - 1), paramVarArgs[i]));
-        i += 1;
+      if (i >= j) {
+        return new IntKeyframeSet(arrayOfIntKeyframe);
       }
+      arrayOfIntKeyframe[i] = ((Keyframe.IntKeyframe)Keyframe.ofInt(i / (j - 1), paramVarArgs[i]));
+      i += 1;
     }
   }
   
   public static KeyframeSet ofKeyframe(Keyframe... paramVarArgs)
   {
+    int i2 = paramVarArgs.length;
+    int i1 = 0;
     int n = 0;
-    int i1 = paramVarArgs.length;
-    int i = 0;
+    int j = 0;
     int m = 0;
     int k = 0;
-    int j = 0;
-    Object localObject;
-    if (i >= i1)
+    int i = 0;
+    for (;;)
     {
-      if ((j != 0) && (k == 0) && (m == 0))
+      if (j >= i2)
       {
-        localObject = new Keyframe.FloatKeyframe[i1];
-        i = n;
-      }
-    }
-    else {
-      for (;;)
-      {
-        if (i >= i1)
+        Object localObject;
+        if ((m != 0) && (k == 0) && (i == 0))
         {
-          return new FloatKeyframeSet((Keyframe.FloatKeyframe[])localObject);
-          if ((paramVarArgs[i] instanceof Keyframe.FloatKeyframe)) {
-            j = 1;
-          }
+          localObject = new Keyframe.FloatKeyframe[i2];
+          i = n;
           for (;;)
           {
-            i += 1;
-            break;
-            if ((paramVarArgs[i] instanceof Keyframe.IntKeyframe)) {
-              k = 1;
-            } else {
-              m = 1;
+            if (i >= i2) {
+              return new FloatKeyframeSet((Keyframe.FloatKeyframe[])localObject);
             }
+            localObject[i] = ((Keyframe.FloatKeyframe)paramVarArgs[i]);
+            i += 1;
           }
         }
-        localObject[i] = ((Keyframe.FloatKeyframe)paramVarArgs[i]);
-        i += 1;
-      }
-    }
-    if ((k != 0) && (j == 0) && (m == 0))
-    {
-      localObject = new Keyframe.IntKeyframe[i1];
-      i = 0;
-      for (;;)
-      {
-        if (i >= i1) {
-          return new IntKeyframeSet((Keyframe.IntKeyframe[])localObject);
+        if ((k != 0) && (m == 0) && (i == 0))
+        {
+          localObject = new Keyframe.IntKeyframe[i2];
+          i = i1;
+          for (;;)
+          {
+            if (i >= i2) {
+              return new IntKeyframeSet((Keyframe.IntKeyframe[])localObject);
+            }
+            localObject[i] = ((Keyframe.IntKeyframe)paramVarArgs[i]);
+            i += 1;
+          }
         }
-        localObject[i] = ((Keyframe.IntKeyframe)paramVarArgs[i]);
-        i += 1;
+        return new KeyframeSet(paramVarArgs);
       }
+      if ((paramVarArgs[j] instanceof Keyframe.FloatKeyframe)) {
+        m = 1;
+      } else if ((paramVarArgs[j] instanceof Keyframe.IntKeyframe)) {
+        k = 1;
+      } else {
+        i = 1;
+      }
+      j += 1;
     }
-    return new KeyframeSet(paramVarArgs);
   }
   
   public static KeyframeSet ofObject(Object... paramVarArgs)
   {
-    int i = 1;
     int j = paramVarArgs.length;
     Keyframe.ObjectKeyframe[] arrayOfObjectKeyframe = new Keyframe.ObjectKeyframe[Math.max(j, 2)];
+    int i = 1;
     if (j == 1)
     {
       arrayOfObjectKeyframe[0] = ((Keyframe.ObjectKeyframe)Keyframe.ofObject(0.0F));
       arrayOfObjectKeyframe[1] = ((Keyframe.ObjectKeyframe)Keyframe.ofObject(1.0F, paramVarArgs[0]));
     }
+    else
+    {
+      arrayOfObjectKeyframe[0] = ((Keyframe.ObjectKeyframe)Keyframe.ofObject(0.0F, paramVarArgs[0]));
+    }
     for (;;)
     {
-      return new KeyframeSet(arrayOfObjectKeyframe);
-      arrayOfObjectKeyframe[0] = ((Keyframe.ObjectKeyframe)Keyframe.ofObject(0.0F, paramVarArgs[0]));
-      while (i < j)
-      {
-        arrayOfObjectKeyframe[i] = ((Keyframe.ObjectKeyframe)Keyframe.ofObject(i / (j - 1), paramVarArgs[i]));
-        i += 1;
+      if (i >= j) {
+        return new KeyframeSet(arrayOfObjectKeyframe);
       }
+      arrayOfObjectKeyframe[i] = ((Keyframe.ObjectKeyframe)Keyframe.ofObject(i / (j - 1), paramVarArgs[i]));
+      i += 1;
     }
   }
   
   public KeyframeSet clone()
   {
     ArrayList localArrayList = this.mKeyframes;
-    int j = this.mKeyframes.size();
+    int j = localArrayList.size();
     Keyframe[] arrayOfKeyframe = new Keyframe[j];
     int i = 0;
     for (;;)
@@ -164,15 +166,18 @@ class KeyframeSet
   
   public Object getValue(float paramFloat)
   {
+    int j = this.mNumKeyframes;
     float f;
-    if (this.mNumKeyframes == 2)
+    if (j == 2)
     {
+      localObject1 = this.mInterpolator;
       f = paramFloat;
-      if (this.mInterpolator != null) {
-        f = this.mInterpolator.getInterpolation(paramFloat);
+      if (localObject1 != null) {
+        f = ((Interpolator)localObject1).getInterpolation(paramFloat);
       }
       return this.mEvaluator.evaluate(f, this.mFirstKeyframe.getValue(), this.mLastKeyframe.getValue());
     }
+    int i = 1;
     Object localObject2;
     if (paramFloat <= 0.0F)
     {
@@ -188,7 +193,7 @@ class KeyframeSet
     }
     if (paramFloat >= 1.0F)
     {
-      localObject1 = (Keyframe)this.mKeyframes.get(this.mNumKeyframes - 2);
+      localObject1 = (Keyframe)this.mKeyframes.get(j - 2);
       localObject2 = this.mLastKeyframe.getInterpolator();
       f = paramFloat;
       if (localObject2 != null) {
@@ -198,9 +203,7 @@ class KeyframeSet
       paramFloat = (f - paramFloat) / (this.mLastKeyframe.getFraction() - paramFloat);
       return this.mEvaluator.evaluate(paramFloat, ((Keyframe)localObject1).getValue(), this.mLastKeyframe.getValue());
     }
-    Object localObject1 = this.mFirstKeyframe;
-    int i = 1;
-    for (;;)
+    for (Object localObject1 = this.mFirstKeyframe;; localObject1 = localObject2)
     {
       if (i >= this.mNumKeyframes) {
         return this.mLastKeyframe.getValue();
@@ -218,7 +221,6 @@ class KeyframeSet
         return this.mEvaluator.evaluate(paramFloat, ((Keyframe)localObject1).getValue(), ((Keyframe)localObject2).getValue());
       }
       i += 1;
-      localObject1 = localObject2;
     }
   }
   
@@ -229,21 +231,24 @@ class KeyframeSet
   
   public String toString()
   {
-    String str = " ";
+    Object localObject = " ";
     int i = 0;
     for (;;)
     {
       if (i >= this.mNumKeyframes) {
-        return str;
+        return localObject;
       }
-      str = str + ((Keyframe)this.mKeyframes.get(i)).getValue() + "  ";
+      localObject = new StringBuilder(String.valueOf(localObject));
+      ((StringBuilder)localObject).append(((Keyframe)this.mKeyframes.get(i)).getValue());
+      ((StringBuilder)localObject).append("  ");
+      localObject = ((StringBuilder)localObject).toString();
       i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.animation.KeyframeSet
  * JD-Core Version:    0.7.0.1
  */

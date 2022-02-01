@@ -20,14 +20,15 @@ class AVActivity$4
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(this.this$0.b, 2, "Exception", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.this$0.b, 2, "Exception", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.AVActivity.4
  * JD-Core Version:    0.7.0.1
  */

@@ -29,16 +29,24 @@ public class CardCoverData
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("CardCoverData{type=").append(this.type).append(", text='");
-    if (this.text == null) {}
-    for (String str = "null";; str = this.text) {
-      return str + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("CardCoverData{type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", text='");
+    String str2 = this.text;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "null";
     }
+    localStringBuilder.append(str1);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.model.CardCoverData
  * JD-Core Version:    0.7.0.1
  */

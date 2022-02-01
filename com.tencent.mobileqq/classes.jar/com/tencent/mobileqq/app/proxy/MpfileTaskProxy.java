@@ -25,14 +25,28 @@ public class MpfileTaskProxy
   
   private String a(long paramLong, int paramInt)
   {
-    String str = MpfileTaskRecord.tableName();
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("select * ").append("from " + str + " ");
-    if (paramLong != -1L) {
-      localStringBuilder.append("where " + str + ".msgId < ? ");
+    Object localObject = MpfileTaskRecord.tableName();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("select * ");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("from ");
+    localStringBuilder2.append((String)localObject);
+    localStringBuilder2.append(" ");
+    localStringBuilder1.append(localStringBuilder2.toString());
+    if (paramLong != -1L)
+    {
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("where ");
+      localStringBuilder2.append((String)localObject);
+      localStringBuilder2.append(".msgId < ? ");
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    localStringBuilder.append("limit " + paramInt + " ");
-    return localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("limit ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" ");
+    localStringBuilder1.append(((StringBuilder)localObject).toString());
+    return localStringBuilder1.toString();
   }
   
   public long a(MpfileTaskRecord paramMpfileTaskRecord)
@@ -53,15 +67,21 @@ public class MpfileTaskProxy
   {
     if (this.a == null)
     {
-      Object localObject = MpfileTaskRecord.tableName();
+      Object localObject1 = MpfileTaskRecord.tableName();
       EntityManager localEntityManager = this.app.getEntityManagerFactory().createEntityManager();
-      localEntityManager.execSQL("create index if not exists " + (String)localObject + "_index ON " + (String)localObject + "(fileId, msgId)");
-      List localList = localEntityManager.rawQuery(MpfileTaskRecord.class, a(-1L, 15), null);
-      localObject = localList;
-      if (localList == null) {
-        localObject = new ArrayList();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("create index if not exists ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("_index ON ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("(fileId, msgId)");
+      localEntityManager.execSQL(((StringBuilder)localObject2).toString());
+      localObject2 = localEntityManager.rawQuery(MpfileTaskRecord.class, a(-1L, 15), null);
+      localObject1 = localObject2;
+      if (localObject2 == null) {
+        localObject1 = new ArrayList();
       }
-      this.a = ((List)localObject);
+      this.a = ((List)localObject1);
       localEntityManager.close();
     }
     return this.a;
@@ -109,7 +129,7 @@ public class MpfileTaskProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.MpfileTaskProxy
  * JD-Core Version:    0.7.0.1
  */

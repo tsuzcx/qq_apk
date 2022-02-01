@@ -45,10 +45,8 @@ final class PluginInterfaceHelper$1
         paramComponentName.onPluginInterfaceLoaded(PluginInterfaceHelper.access$100());
       }
     }
-    for (;;)
+    else
     {
-      clear();
-      return;
       if (QLog.isColorLevel()) {
         QLog.i("plugin_tag", 2, "binder not alive");
       }
@@ -56,6 +54,7 @@ final class PluginInterfaceHelper$1
         paramComponentName.onPluginInterfaceLoaded(PluginInterfaceHelper.access$100());
       }
     }
+    clear();
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
@@ -72,7 +71,7 @@ final class PluginInterfaceHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginInterfaceHelper.1
  * JD-Core Version:    0.7.0.1
  */

@@ -21,17 +21,17 @@ public class TroopGiftMsgItemBuilder$TroopGiftMsgItemSenderBuilder
   
   public View a(BaseChatItemLayout paramBaseChatItemLayout)
   {
-    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131563138, paramBaseChatItemLayout, false);
+    return LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131562961, paramBaseChatItemLayout, false);
   }
   
-  public BaseBubbleBuilder.ViewHolder a()
+  protected BaseBubbleBuilder.ViewHolder a()
   {
     return new TroopGiftMsgItemBuilder.TroopGiftMsgSenderHolder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.TroopGiftMsgItemBuilder.TroopGiftMsgItemSenderBuilder
  * JD-Core Version:    0.7.0.1
  */

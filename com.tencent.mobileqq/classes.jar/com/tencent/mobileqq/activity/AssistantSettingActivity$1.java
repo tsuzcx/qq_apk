@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.activity.aio.stickerrecommended.StickerRecManager;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.IStickerRecManager;
 import com.tencent.mobileqq.activity.contacts.topentry.CTEntry;
 import com.tencent.mobileqq.activity.contacts.topentry.CTEntryListener;
 import com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng;
@@ -20,14 +20,16 @@ class AssistantSettingActivity$1
 {
   AssistantSettingActivity$1(AssistantSettingActivity paramAssistantSettingActivity) {}
   
-  public void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onGetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
   {
-    if ((paramBoolean1) && (!this.a.isFinishing())) {
-      AssistantSettingActivity.a(this.a, this.a.g.a(), paramBoolean2);
+    if ((paramBoolean1) && (!this.a.isFinishing()))
+    {
+      AssistantSettingActivity localAssistantSettingActivity = this.a;
+      AssistantSettingActivity.a(localAssistantSettingActivity, localAssistantSettingActivity.g.a(), paramBoolean2);
     }
   }
   
-  public void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
+  protected void onGetCommonSwitchFromDetailInfo(boolean paramBoolean, short[] paramArrayOfShort, Map<Short, Short> paramMap)
   {
     if ((paramBoolean) && (AssistantSettingActivity.a(this.a) != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$EntryListAdapter != null) && (this.a.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$EntryListAdapter.a(paramArrayOfShort)))
     {
@@ -38,118 +40,115 @@ class AssistantSettingActivity$1
     }
   }
   
-  public void onGetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  protected void onGetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onGetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    Object localObject;
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onGetConnectionsSwitch:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramInt2);
+      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, ((StringBuilder)localObject).toString());
     }
-    AssistantSettingActivity localAssistantSettingActivity;
     if (paramBoolean)
     {
-      localAssistantSettingActivity = this.a;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.c()) {
-        break label81;
-      }
+      localObject = this.a;
+      AssistantSettingActivity.b((AssistantSettingActivity)localObject, ((AssistantSettingActivity)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.c() ^ true);
     }
-    label81:
-    for (paramBoolean = true;; paramBoolean = false)
+  }
+  
+  protected void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.a.isFinishing())
     {
-      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
-      return;
+      AssistantSettingActivity localAssistantSettingActivity = this.a;
+      AssistantSettingActivity.a(localAssistantSettingActivity, localAssistantSettingActivity.g.a(), paramBoolean2);
     }
   }
   
-  public void onSetAllowActivateFriend(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
   {
-    if (!this.a.isFinishing()) {
-      AssistantSettingActivity.a(this.a, this.a.g.a(), paramBoolean2);
+    CTEntry localCTEntry;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$EntryListAdapter == null) {
+      localCTEntry = null;
+    } else {
+      localCTEntry = this.a.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$EntryListAdapter.a(paramShort1);
     }
-  }
-  
-  public void onSetCommonSwitchFromDetailInfo(boolean paramBoolean, short paramShort1, short paramShort2)
-  {
-    boolean bool2 = true;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$EntryListAdapter == null) {}
-    for (CTEntry localCTEntry = null; localCTEntry == null; localCTEntry = this.a.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity$EntryListAdapter.a(paramShort1)) {
+    if (localCTEntry == null) {
       return;
     }
-    if (com.tencent.TMG.utils.QLog.isColorLevel()) {
+    boolean bool2 = com.tencent.TMG.utils.QLog.isColorLevel();
+    boolean bool1 = false;
+    if (bool2) {
       com.tencent.TMG.utils.QLog.i("AssistantSettingActivity", 0, String.format(Locale.getDefault(), "onSetCommonSwitchFromDetailInfo [%s, %s, %s]", new Object[] { Boolean.valueOf(paramBoolean), Short.valueOf(paramShort1), Short.valueOf(paramShort2) }));
     }
-    boolean bool1;
-    if (paramShort2 == 1)
-    {
+    if (paramShort2 == 1) {
       bool1 = true;
-      label91:
-      if ((paramBoolean) || (bool1 != localCTEntry.e)) {
-        break label148;
-      }
-      if (localCTEntry.e) {
-        break label150;
-      }
     }
-    label148:
-    label150:
-    for (paramBoolean = bool2;; paramBoolean = false)
+    if ((!paramBoolean) && (bool1 == localCTEntry.e))
     {
-      localCTEntry.e = paramBoolean;
+      localCTEntry.e ^= true;
       this.a.jdField_a_of_type_ComTencentWidgetHeightAdaptableListView.post(new AssistantSettingActivity.1.1(this, bool1));
-      return;
-      bool1 = false;
-      break label91;
-      break;
     }
   }
   
-  public void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
+  protected void onSetConnectionsSwitch(boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    boolean bool = true;
-    if (com.tencent.qphone.base.util.QLog.isColorLevel()) {
-      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, "onSetConnectionsSwitch:" + paramBoolean + " " + paramInt1 + " " + paramInt2);
+    Object localObject;
+    if (com.tencent.qphone.base.util.QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onSetConnectionsSwitch:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramInt1);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramInt2);
+      com.tencent.qphone.base.util.QLog.i("AssistantSettingActivity", 2, ((StringBuilder)localObject).toString());
     }
-    AssistantSettingActivity localAssistantSettingActivity;
     if (!paramBoolean)
     {
-      AssistantSettingActivity.a(this.a, 2131719116, 1);
-      localAssistantSettingActivity = this.a;
-      if (this.a.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.c()) {
-        break label95;
+      AssistantSettingActivity.a(this.a, 2131718834, 1);
+      localObject = this.a;
+      AssistantSettingActivity.b((AssistantSettingActivity)localObject, ((AssistantSettingActivity)localObject).jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryCTEntryMng.c() ^ true);
+    }
+  }
+  
+  protected void onSetEmotionRecSwitch(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (!this.a.isFinishing())
+    {
+      if (this.a.app == null) {
+        return;
       }
-    }
-    label95:
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      AssistantSettingActivity.b(localAssistantSettingActivity, paramBoolean);
-      return;
-    }
-  }
-  
-  public void onSetEmotionRecSwitch(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if ((this.a.isFinishing()) || (this.a.app == null)) {
-      return;
-    }
-    if (!paramBoolean1)
-    {
-      AssistantSettingActivity.a(this.a, 2131719116, 1);
-      AssistantSettingActivity.a(this.a, StickerRecManager.a(this.a.app).b(), AssistantSettingActivity.a(this.a));
-      return;
-    }
-    AssistantSettingActivity.a(this.a, paramBoolean2, AssistantSettingActivity.a(this.a));
-    QQAppInterface localQQAppInterface = this.a.app;
-    if (paramBoolean2) {}
-    for (String str = "1";; str = "2")
-    {
-      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A223", "0X800A223", 0, 0, str, "", "", "");
-      return;
+      if (!paramBoolean1)
+      {
+        AssistantSettingActivity.a(this.a, 2131718834, 1);
+        localObject = this.a;
+        AssistantSettingActivity.a((AssistantSettingActivity)localObject, ((IStickerRecManager)((AssistantSettingActivity)localObject).app.getRuntimeService(IStickerRecManager.class, "")).isEmotionRecSettingOpen(), AssistantSettingActivity.a(this.a));
+        return;
+      }
+      Object localObject = this.a;
+      AssistantSettingActivity.a((AssistantSettingActivity)localObject, paramBoolean2, AssistantSettingActivity.a((AssistantSettingActivity)localObject));
+      QQAppInterface localQQAppInterface = this.a.app;
+      if (paramBoolean2) {
+        localObject = "1";
+      } else {
+        localObject = "2";
+      }
+      ReportController.b(localQQAppInterface, "dc00898", "", "", "0X800A223", "0X800A223", 0, 0, (String)localObject, "", "", "");
     }
   }
   
-  public void onSetPttAutoToTxtSwitch(boolean paramBoolean, Object paramObject)
+  protected void onSetPttAutoToTxtSwitch(boolean paramBoolean, Object paramObject)
   {
     if (!paramBoolean)
     {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131700858), 0).b(this.a.getTitleBarHeight());
+      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131701001), 0).b(this.a.getTitleBarHeight());
       paramBoolean = ((Boolean)paramObject).booleanValue();
       AssistantSettingActivity.a(this.a, true);
       this.a.e.setChecked(paramBoolean);
@@ -160,7 +159,7 @@ class AssistantSettingActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,57 +22,79 @@ public class t
   
   public void run()
   {
-    while (this.a)
-    {
-      MsfMessagePair localMsfMessagePair;
-      for (;;)
+    while (this.a) {
+      try
       {
-        try
+        MsfMessagePair localMsfMessagePair = (MsfMessagePair)this.b.getMsfMessagePairs().take();
+        if (localMsfMessagePair != null)
         {
-          localMsfMessagePair = (MsfMessagePair)this.b.getMsfMessagePairs().take();
-          if (localMsfMessagePair == null) {
-            break;
+          Object localObject;
+          String str;
+          StringBuilder localStringBuilder;
+          if (localMsfMessagePair.toServiceMsg != null)
+          {
+            localObject = u.b(localMsfMessagePair.toServiceMsg);
+            if ((!"LongConn.OffPicUp".equals(localMsfMessagePair.toServiceMsg.getServiceCmd())) && (!"ImgStore.GroupPicUp".equals(localMsfMessagePair.toServiceMsg.getServiceCmd())))
+            {
+              if (QLog.isColorLevel())
+              {
+                str = c;
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append((String)localObject);
+                localStringBuilder.append(" add resp to queue:");
+                localStringBuilder.append(localMsfMessagePair.toServiceMsg.getRequestSsoSeq());
+                localStringBuilder.append(" from:");
+                localStringBuilder.append(localMsfMessagePair.fromServiceMsg);
+                QLog.d(str, 2, localStringBuilder.toString());
+              }
+              if (localObject == null) {
+                "MessageSvc.PbSendMsg".equals(localMsfMessagePair.toServiceMsg.getServiceCmd());
+              }
+            }
+            else
+            {
+              str = c;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("recv ");
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append(" req:");
+              localStringBuilder.append(localMsfMessagePair.toServiceMsg.getStringForLog());
+              localStringBuilder.append("resp:");
+              localStringBuilder.append(localMsfMessagePair.fromServiceMsg.getStringForLog());
+              QLog.d(str, 1, localStringBuilder.toString());
+            }
+            e.a((String)localObject, localMsfMessagePair.toServiceMsg, localMsfMessagePair.fromServiceMsg);
           }
-          if (localMsfMessagePair.toServiceMsg == null) {
-            break label225;
+          else if (localMsfMessagePair.fromServiceMsg != null)
+          {
+            str = localMsfMessagePair.sendProcess;
+            localObject = str;
+            if (TextUtils.isEmpty(str)) {
+              localObject = u.a(localMsfMessagePair.fromServiceMsg);
+            }
+            if (QLog.isColorLevel())
+            {
+              str = c;
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append((String)localObject);
+              localStringBuilder.append(" add push to queue: from:");
+              localStringBuilder.append(localMsfMessagePair.fromServiceMsg);
+              QLog.d(str, 2, localStringBuilder.toString());
+            }
+            e.a((String)localObject, localMsfMessagePair.toServiceMsg, localMsfMessagePair.fromServiceMsg);
           }
-          String str1 = u.b(localMsfMessagePair.toServiceMsg);
-          if ((!"LongConn.OffPicUp".equals(localMsfMessagePair.toServiceMsg.getServiceCmd())) && (!"ImgStore.GroupPicUp".equals(localMsfMessagePair.toServiceMsg.getServiceCmd()))) {
-            break label149;
-          }
-          QLog.d(c, 1, "recv " + str1 + " req:" + localMsfMessagePair.toServiceMsg.getStringForLog() + "resp:" + localMsfMessagePair.fromServiceMsg.getStringForLog());
-          e.a(str1, localMsfMessagePair.toServiceMsg, localMsfMessagePair.fromServiceMsg);
         }
-        catch (InterruptedException localInterruptedException)
-        {
-          localInterruptedException.printStackTrace();
-        }
-        break;
-        label149:
-        if (QLog.isColorLevel()) {
-          QLog.d(c, 2, localInterruptedException + " add resp to queue:" + localMsfMessagePair.toServiceMsg.getRequestSsoSeq() + " from:" + localMsfMessagePair.fromServiceMsg);
-        }
-        if ((localInterruptedException != null) || (!"MessageSvc.PbSendMsg".equals(localMsfMessagePair.toServiceMsg.getServiceCmd()))) {}
       }
-      label225:
-      if (localMsfMessagePair.fromServiceMsg != null)
+      catch (InterruptedException localInterruptedException)
       {
-        String str2 = localMsfMessagePair.sendProcess;
-        Object localObject = str2;
-        if (TextUtils.isEmpty(str2)) {
-          localObject = u.a(localMsfMessagePair.fromServiceMsg);
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d(c, 2, (String)localObject + " add push to queue: from:" + localMsfMessagePair.fromServiceMsg);
-        }
-        e.a((String)localObject, localMsfMessagePair.toServiceMsg, localMsfMessagePair.fromServiceMsg);
+        localInterruptedException.printStackTrace();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.t
  * JD-Core Version:    0.7.0.1
  */

@@ -30,7 +30,7 @@ public class DetailLikeListSegment
     super(paramContext);
   }
   
-  public void R_()
+  public void P_()
   {
     if (((StoryDetailListView)a()).a())
     {
@@ -42,37 +42,41 @@ public class DetailLikeListSegment
   
   public int a()
   {
-    if ((this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem != null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b).size() > 0)) {
-      return 1;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      DetailFeedItem localDetailFeedItem = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem;
+      if ((localDetailFeedItem != null) && (localDetailFeedItem.b(this.b).size() > 0)) {
+        return 1;
+      }
     }
     return 0;
   }
   
   public View a(int paramInt, BaseViewHolder paramBaseViewHolder, ViewGroup paramViewGroup)
   {
-    paramViewGroup = (TextView)paramBaseViewHolder.a(2131370367);
+    paramViewGroup = (TextView)paramBaseViewHolder.a(2131370032);
     SpannableStringBuilder localSpannableStringBuilder = SpannableStringUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.a, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$ClickNickCallback);
     if (localSpannableStringBuilder.length() == 0)
     {
       paramViewGroup.setVisibility(8);
-      return paramBaseViewHolder.a();
     }
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b) >= 30) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b) > this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b).size())) {
-      localSpannableStringBuilder.append(String.format("等%s人赞了", new Object[] { UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b)) }));
-    }
-    for (;;)
+    else
     {
+      if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b) >= 30) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b) > this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b).size())) {
+        localSpannableStringBuilder.append(String.format("等%s人赞了", new Object[] { UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailModelDetailFeedItem.b(this.b)) }));
+      } else {
+        localSpannableStringBuilder.append("赞了");
+      }
       paramViewGroup.setVisibility(0);
       paramViewGroup.setText(localSpannableStringBuilder);
       paramViewGroup.setOnTouchListener(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeDetailViewSegmentDetailCommentSegment$CommentTextOnTouchListener);
-      break;
-      localSpannableStringBuilder.append("赞了");
     }
+    return paramBaseViewHolder.a();
   }
   
   public BaseViewHolder a(int paramInt, ViewGroup paramViewGroup)
   {
-    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561784, paramViewGroup, false));
+    return new BaseViewHolder(LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131561646, paramViewGroup, false));
   }
   
   public String a()
@@ -94,7 +98,7 @@ public class DetailLikeListSegment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.segment.DetailLikeListSegment
  * JD-Core Version:    0.7.0.1
  */

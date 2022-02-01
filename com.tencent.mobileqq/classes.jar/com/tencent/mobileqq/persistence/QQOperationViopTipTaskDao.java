@@ -36,146 +36,101 @@ public class QQOperationViopTipTaskDao
       return paramEntity;
     }
     int i = paramCursor.getColumnIndex("taskid");
-    if (i == -1)
-    {
+    if (i == -1) {
       paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("taskid", Integer.TYPE));
-      i = paramCursor.getColumnIndex("uinType");
-      if (i != -1) {
-        break label871;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uinType", Integer.TYPE));
-      label370:
-      i = paramCursor.getColumnIndex("tipType");
-      if (i != -1) {
-        break label886;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("tipType", Integer.TYPE));
-      label405:
-      i = paramCursor.getColumnIndex("adwords");
-      if (i != -1) {
-        break label901;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("adwords", String.class));
-      label439:
-      i = paramCursor.getColumnIndex("clickableWord");
-      if (i != -1) {
-        break label916;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("clickableWord", String.class));
-      label473:
-      i = paramCursor.getColumnIndex("linkOffset");
-      if (i != -1) {
-        break label931;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("linkOffset", Integer.TYPE));
-      label508:
-      i = paramCursor.getColumnIndex("url");
-      if (i != -1) {
-        break label946;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("url", String.class));
-      label542:
-      i = paramCursor.getColumnIndex("limitDayAIOCount");
-      if (i != -1) {
-        break label961;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("limitDayAIOCount", Integer.TYPE));
-      label577:
-      i = paramCursor.getColumnIndex("limitDayAIOShowCount");
-      if (i != -1) {
-        break label976;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("limitDayAIOShowCount", Integer.TYPE));
-      label612:
-      i = paramCursor.getColumnIndex("limitTotalAIOCount");
-      if (i != -1) {
-        break label991;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("limitTotalAIOCount", Integer.TYPE));
-      label647:
-      i = paramCursor.getColumnIndex("limitTotalShowCount");
-      if (i != -1) {
-        break label1006;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("limitTotalShowCount", Integer.TYPE));
-      label682:
-      i = paramCursor.getColumnIndex("keywordString");
-      if (i != -1) {
-        break label1021;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("keywordString", String.class));
-      label716:
-      i = paramCursor.getColumnIndex("begin");
-      if (i != -1) {
-        break label1036;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("begin", String.class));
-      label750:
-      i = paramCursor.getColumnIndex("end");
-      if (i != -1) {
-        break label1051;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("end", String.class));
-      label784:
-      i = paramCursor.getColumnIndex("frequencyTime");
-      if (i != -1) {
-        break label1066;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("frequencyTime", Integer.TYPE));
-    }
-    for (;;)
-    {
-      i = paramCursor.getColumnIndex("frequencyMessage");
-      if (i != -1) {
-        break label1081;
-      }
-      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("frequencyMessage", Integer.TYPE));
-      return paramEntity;
+    } else {
       paramEntity.taskid = paramCursor.getInt(i);
-      break;
-      label871:
+    }
+    i = paramCursor.getColumnIndex("uinType");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("uinType", Integer.TYPE));
+    } else {
       paramEntity.uinType = paramCursor.getInt(i);
-      break label370;
-      label886:
+    }
+    i = paramCursor.getColumnIndex("tipType");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("tipType", Integer.TYPE));
+    } else {
       paramEntity.tipType = paramCursor.getInt(i);
-      break label405;
-      label901:
+    }
+    i = paramCursor.getColumnIndex("adwords");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("adwords", String.class));
+    } else {
       paramEntity.adwords = paramCursor.getString(i);
-      break label439;
-      label916:
+    }
+    i = paramCursor.getColumnIndex("clickableWord");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("clickableWord", String.class));
+    } else {
       paramEntity.clickableWord = paramCursor.getString(i);
-      break label473;
-      label931:
+    }
+    i = paramCursor.getColumnIndex("linkOffset");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("linkOffset", Integer.TYPE));
+    } else {
       paramEntity.linkOffset = paramCursor.getInt(i);
-      break label508;
-      label946:
+    }
+    i = paramCursor.getColumnIndex("url");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("url", String.class));
+    } else {
       paramEntity.url = paramCursor.getString(i);
-      break label542;
-      label961:
+    }
+    i = paramCursor.getColumnIndex("limitDayAIOCount");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("limitDayAIOCount", Integer.TYPE));
+    } else {
       paramEntity.limitDayAIOCount = paramCursor.getInt(i);
-      break label577;
-      label976:
+    }
+    i = paramCursor.getColumnIndex("limitDayAIOShowCount");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("limitDayAIOShowCount", Integer.TYPE));
+    } else {
       paramEntity.limitDayAIOShowCount = paramCursor.getInt(i);
-      break label612;
-      label991:
+    }
+    i = paramCursor.getColumnIndex("limitTotalAIOCount");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("limitTotalAIOCount", Integer.TYPE));
+    } else {
       paramEntity.limitTotalAIOCount = paramCursor.getInt(i);
-      break label647;
-      label1006:
+    }
+    i = paramCursor.getColumnIndex("limitTotalShowCount");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("limitTotalShowCount", Integer.TYPE));
+    } else {
       paramEntity.limitTotalShowCount = paramCursor.getInt(i);
-      break label682;
-      label1021:
+    }
+    i = paramCursor.getColumnIndex("keywordString");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("keywordString", String.class));
+    } else {
       paramEntity.keywordString = paramCursor.getString(i);
-      break label716;
-      label1036:
+    }
+    i = paramCursor.getColumnIndex("begin");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("begin", String.class));
+    } else {
       paramEntity.begin = paramCursor.getString(i);
-      break label750;
-      label1051:
+    }
+    i = paramCursor.getColumnIndex("end");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("end", String.class));
+    } else {
       paramEntity.end = paramCursor.getString(i);
-      break label784;
-      label1066:
+    }
+    i = paramCursor.getColumnIndex("frequencyTime");
+    if (i == -1) {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("frequencyTime", Integer.TYPE));
+    } else {
       paramEntity.frequencyTime = paramCursor.getInt(i);
     }
-    label1081:
+    i = paramCursor.getColumnIndex("frequencyMessage");
+    if (i == -1)
+    {
+      paramNoColumnErrorHandler.handleNoColumnError(new NoColumnError("frequencyMessage", Integer.TYPE));
+      return paramEntity;
+    }
     paramEntity.frequencyMessage = paramCursor.getInt(i);
     return paramEntity;
   }
@@ -211,7 +166,7 @@ public class QQOperationViopTipTaskDao
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.persistence.QQOperationViopTipTaskDao
  * JD-Core Version:    0.7.0.1
  */

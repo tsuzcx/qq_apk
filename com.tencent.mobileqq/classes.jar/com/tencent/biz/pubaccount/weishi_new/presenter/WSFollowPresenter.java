@@ -26,6 +26,7 @@ import com.tencent.biz.pubaccount.weishi_new.player.WSVideoInfo;
 import com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSFollowView;
 import com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedHolder;
 import com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSRecommendFollowHolder;
+import com.tencent.biz.pubaccount.weishi_new.util.WSLoadMoreReportHelper;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.widget.pull2refresh.BaseViewHolder;
 import com.tencent.widget.pull2refresh.RecyclerViewWithHeaderFooter;
@@ -40,12 +41,13 @@ public class WSFollowPresenter
 {
   private int jdField_a_of_type_Int = 0;
   private stFollowFeedsGlobalConfig jdField_a_of_type_UserGrowthStFollowFeedsGlobalConfig;
+  private WSLoadMoreReportHelper jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSLoadMoreReportHelper = new WSLoadMoreReportHelper("focus");
   
   private void a(RecyclerView paramRecyclerView, String paramString)
   {
     int j = paramRecyclerView.getChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       Object localObject = paramRecyclerView.getChildViewHolder(paramRecyclerView.getChildAt(i));
       stSimpleMetaPerson localstSimpleMetaPerson;
@@ -57,19 +59,15 @@ public class WSFollowPresenter
           ((WSRecommendFollowHolder)localObject).a();
         }
       }
-      for (;;)
+      else if ((localObject instanceof WSFollowFriendFeedHolder))
       {
-        i += 1;
-        break;
-        if ((localObject instanceof WSFollowFriendFeedHolder))
-        {
-          localObject = (WSFollowFriendFeedHolder)localObject;
-          localstSimpleMetaPerson = ((WSFollowFriendFeedHolder)localObject).a();
-          if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramString))) {
-            ((WSFollowFriendFeedHolder)localObject).c();
-          }
+        localObject = (WSFollowFriendFeedHolder)localObject;
+        localstSimpleMetaPerson = ((WSFollowFriendFeedHolder)localObject).a();
+        if ((localstSimpleMetaPerson != null) && (TextUtils.equals(localstSimpleMetaPerson.id, paramString))) {
+          ((WSFollowFriendFeedHolder)localObject).c();
         }
       }
+      i += 1;
     }
   }
   
@@ -94,64 +92,56 @@ public class WSFollowPresenter
   
   private void a(String paramString)
   {
-    if ((a() == null) || (((IWSFollowView)a()).a() == null)) {}
-    RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter;
-    do
+    if (a() != null)
     {
-      return;
-      localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().a();
-    } while (localRecyclerViewWithHeaderFooter == null);
-    int j = localRecyclerViewWithHeaderFooter.getChildCount();
-    int i = 0;
-    label53:
-    RecyclerView.ViewHolder localViewHolder;
-    if (i < j)
-    {
-      localViewHolder = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
-      if (!(localViewHolder instanceof WSFollowPersonHolder)) {
-        break label99;
+      if (((IWSFollowView)a()).a() == null) {
+        return;
       }
-      a(((WSFollowPersonHolder)localViewHolder).a(), paramString);
-    }
-    for (;;)
-    {
-      i += 1;
-      break label53;
-      break;
-      label99:
-      if ((localViewHolder instanceof WSFollowFriendCollectionHolder)) {
-        a(((WSFollowFriendCollectionHolder)localViewHolder).a(), paramString);
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().getRecyclerView();
+      if (localRecyclerViewWithHeaderFooter == null) {
+        return;
+      }
+      int j = localRecyclerViewWithHeaderFooter.getChildCount();
+      int i = 0;
+      while (i < j)
+      {
+        RecyclerView.ViewHolder localViewHolder = localRecyclerViewWithHeaderFooter.getChildViewHolder(localRecyclerViewWithHeaderFooter.getChildAt(i));
+        if ((localViewHolder instanceof WSFollowPersonHolder)) {
+          a(((WSFollowPersonHolder)localViewHolder).a(), paramString);
+        } else if ((localViewHolder instanceof WSFollowFriendCollectionHolder)) {
+          a(((WSFollowFriendCollectionHolder)localViewHolder).a(), paramString);
+        }
+        i += 1;
       }
     }
   }
   
   private void a(boolean paramBoolean)
   {
-    if ((a() == null) || (((IWSFollowView)a()).a() == null)) {
-      return;
-    }
-    Iterator localIterator = ((IWSFollowView)a()).a().a().iterator();
-    label42:
-    StringBuilder localStringBuilder;
-    while (localIterator.hasNext())
+    if (a() != null)
     {
-      localObject = (BaseViewHolder)localIterator.next();
-      if ((localObject instanceof WSFollowFeedHolder))
+      if (((IWSFollowView)a()).a() == null) {
+        return;
+      }
+      Iterator localIterator = ((IWSFollowView)a()).a().a().iterator();
+      while (localIterator.hasNext())
       {
-        localObject = (WSFollowFeedHolder)localObject;
-        ((WSFollowFeedHolder)localObject).a(paramBoolean);
-        localStringBuilder = new StringBuilder().append("updateMuteStatus title:");
-        if (((WSFollowFeedHolder)localObject).a == null) {
-          break label124;
+        Object localObject = (BaseViewHolder)localIterator.next();
+        if ((localObject instanceof WSFollowFeedHolder))
+        {
+          localObject = (WSFollowFeedHolder)localObject;
+          ((WSFollowFeedHolder)localObject).a(paramBoolean);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("updateMuteStatus title:");
+          if (((WSFollowFeedHolder)localObject).a != null) {
+            localObject = ((WSFollowFeedHolder)localObject).a.d;
+          } else {
+            localObject = "videoInfo is null!";
+          }
+          localStringBuilder.append((String)localObject);
+          WSLog.e("WSFollowPresenter", localStringBuilder.toString());
         }
       }
-    }
-    label124:
-    for (Object localObject = ((WSFollowFeedHolder)localObject).a.d;; localObject = "videoInfo is null!")
-    {
-      WSLog.e("WSFollowPresenter", (String)localObject);
-      break label42;
-      break;
     }
   }
   
@@ -162,11 +152,12 @@ public class WSFollowPresenter
   
   private void b(String paramString)
   {
-    if ((a() == null) || (((IWSFollowView)a()).a() == null)) {}
-    for (;;)
+    if (a() != null)
     {
-      return;
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().a();
+      if (((IWSFollowView)a()).a() == null) {
+        return;
+      }
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().getRecyclerView();
       if (localRecyclerViewWithHeaderFooter != null)
       {
         int j = localRecyclerViewWithHeaderFooter.getChildCount();
@@ -191,36 +182,37 @@ public class WSFollowPresenter
   private void c(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
     WSFriendFeedExposureEvent localWSFriendFeedExposureEvent = (WSFriendFeedExposureEvent)paramWSSimpleBaseEvent;
-    Object localObject = new StringBuilder().append("handleOnReceiveEventForFriendFeed event: ");
-    if (localWSFriendFeedExposureEvent == null)
-    {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleOnReceiveEventForFriendFeed event: ");
+    if (localWSFriendFeedExposureEvent == null) {
       paramWSSimpleBaseEvent = "null";
-      WSLog.b("WSFollowPresenter", paramWSSimpleBaseEvent);
-      if ((localWSFriendFeedExposureEvent != null) && (localWSFriendFeedExposureEvent.video != null)) {
-        break label68;
-      }
-    }
-    label195:
-    for (;;)
-    {
-      return;
+    } else {
       paramWSSimpleBaseEvent = Integer.valueOf(localWSFriendFeedExposureEvent.currentPosition);
-      break;
-      label68:
+    }
+    ((StringBuilder)localObject).append(paramWSSimpleBaseEvent);
+    WSLog.b("WSFollowPresenter", ((StringBuilder)localObject).toString());
+    if (localWSFriendFeedExposureEvent != null)
+    {
+      if (localWSFriendFeedExposureEvent.video == null) {
+        return;
+      }
       paramWSSimpleBaseEvent = ((IWSFollowView)a()).a();
-      if ((paramWSSimpleBaseEvent != null) && (paramWSSimpleBaseEvent.b() != null))
+      if (paramWSSimpleBaseEvent != null)
       {
+        if (paramWSSimpleBaseEvent.getDataList() == null) {
+          return;
+        }
         paramWSSimpleBaseEvent = ((IWSFollowView)a()).a();
-        if ((paramWSSimpleBaseEvent != null) && (paramWSSimpleBaseEvent.a() != null))
+        if (paramWSSimpleBaseEvent != null)
         {
-          paramWSSimpleBaseEvent = paramWSSimpleBaseEvent.a();
+          if (paramWSSimpleBaseEvent.getRecyclerView() == null) {
+            return;
+          }
+          paramWSSimpleBaseEvent = paramWSSimpleBaseEvent.getRecyclerView();
           int j = paramWSSimpleBaseEvent.getChildCount();
           int i = 0;
-          for (;;)
+          while (i < j)
           {
-            if (i >= j) {
-              break label195;
-            }
             localObject = paramWSSimpleBaseEvent.getChildViewHolder(paramWSSimpleBaseEvent.getChildAt(i));
             if ((localObject instanceof WSFollowFriendCollectionHolder))
             {
@@ -241,11 +233,12 @@ public class WSFollowPresenter
   
   private void c(String paramString)
   {
-    if ((a() == null) || (((IWSFollowView)a()).a() == null)) {}
-    for (;;)
+    if (a() != null)
     {
-      return;
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().a();
+      if (((IWSFollowView)a()).a() == null) {
+        return;
+      }
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().getRecyclerView();
       if (localRecyclerViewWithHeaderFooter != null)
       {
         int j = localRecyclerViewWithHeaderFooter.getChildCount();
@@ -272,30 +265,35 @@ public class WSFollowPresenter
   private void d(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
     Object localObject1 = (WSItemExposeEvent)paramWSSimpleBaseEvent;
-    Object localObject2 = new StringBuilder().append("handleItemExposeEvent event: ");
-    if (localObject1 == null)
-    {
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("handleItemExposeEvent event: ");
+    if (localObject1 == null) {
       paramWSSimpleBaseEvent = "null";
-      WSLog.b("WSFollowPresenter", paramWSSimpleBaseEvent);
-      if ((localObject1 != null) && (((WSItemExposeEvent)localObject1).video != null)) {
-        break label61;
-      }
-    }
-    for (;;)
-    {
-      return;
+    } else {
       paramWSSimpleBaseEvent = ((WSItemExposeEvent)localObject1).video;
-      break;
-      label61:
+    }
+    ((StringBuilder)localObject2).append(paramWSSimpleBaseEvent);
+    WSLog.b("WSFollowPresenter", ((StringBuilder)localObject2).toString());
+    if (localObject1 != null)
+    {
+      if (((WSItemExposeEvent)localObject1).video == null) {
+        return;
+      }
       paramWSSimpleBaseEvent = ((IWSFollowView)a()).a();
-      if ((paramWSSimpleBaseEvent != null) && (paramWSSimpleBaseEvent.b() != null))
+      if (paramWSSimpleBaseEvent != null)
       {
+        if (paramWSSimpleBaseEvent.getDataList() == null) {
+          return;
+        }
         localObject2 = ((IWSFollowView)a()).a();
-        if ((localObject2 != null) && (((XRecyclerView)localObject2).a() != null))
+        if (localObject2 != null)
         {
+          if (((XRecyclerView)localObject2).getRecyclerView() == null) {
+            return;
+          }
           localObject1 = ((WSItemExposeEvent)localObject1).video;
           List localList = WSFeedDataManager.a().b;
-          if (paramWSSimpleBaseEvent.b().size() < localList.size()) {
+          if (paramWSSimpleBaseEvent.getDataList().size() < localList.size()) {
             ((IWSFollowView)a()).a(localList);
           }
           int i = 0;
@@ -303,9 +301,14 @@ public class WSFollowPresenter
           {
             if (((stFeed)localList.get(i)).feed == localObject1)
             {
-              ((XRecyclerView)localObject2).a().scrollToPosition(i);
+              ((XRecyclerView)localObject2).getRecyclerView().scrollToPosition(i);
               this.jdField_a_of_type_Int = i;
-              WSLog.b("WSFollowPresenter", "receive item expose event, position: " + i + ", feed: " + ((stSimpleMetaFeed)localObject1).feed_desc);
+              paramWSSimpleBaseEvent = new StringBuilder();
+              paramWSSimpleBaseEvent.append("receive item expose event, position: ");
+              paramWSSimpleBaseEvent.append(i);
+              paramWSSimpleBaseEvent.append(", feed: ");
+              paramWSSimpleBaseEvent.append(((stSimpleMetaFeed)localObject1).feed_desc);
+              WSLog.b("WSFollowPresenter", paramWSSimpleBaseEvent.toString());
               return;
             }
             i += 1;
@@ -317,11 +320,12 @@ public class WSFollowPresenter
   
   private void d(String paramString)
   {
-    if ((a() == null) || (((IWSFollowView)a()).a() == null)) {}
-    for (;;)
+    if (a() != null)
     {
-      return;
-      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().a();
+      if (((IWSFollowView)a()).a() == null) {
+        return;
+      }
+      RecyclerViewWithHeaderFooter localRecyclerViewWithHeaderFooter = ((IWSFollowView)a()).a().getRecyclerView();
       if (localRecyclerViewWithHeaderFooter != null)
       {
         int j = localRecyclerViewWithHeaderFooter.getChildCount();
@@ -348,53 +352,50 @@ public class WSFollowPresenter
     WSLog.b("WSFollowPresenter", "[handleOnReceiveEventForFollow]");
     paramWSSimpleBaseEvent = (FollowEvent)paramWSSimpleBaseEvent;
     Object localObject1 = ((IWSFollowView)a()).a();
-    if ((localObject1 == null) || (((WSFollowAdapter)localObject1).b() == null)) {
-      return;
-    }
-    localObject1 = ((WSFollowAdapter)localObject1).b();
-    int i = 0;
-    label50:
-    Object localObject2;
-    if (i < ((List)localObject1).size())
+    if (localObject1 != null)
     {
-      localObject2 = (stFeed)((List)localObject1).get(i);
-      if ((localObject2 != null) && (((stFeed)localObject2).feed != null) && (((stFeed)localObject2).feed.poster != null)) {
-        break label105;
+      if (((WSFollowAdapter)localObject1).getDataList() == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label50;
-      break;
-      label105:
-      if ((((stFeed)localObject2).feed_type == 1) && (((stFeed)localObject2).person_meta != null))
+      localObject1 = ((WSFollowAdapter)localObject1).getDataList();
+      int i = 0;
+      while (i < ((List)localObject1).size())
       {
-        localObject2 = ((stFeed)localObject2).person_meta;
-        int j = 0;
-        while (j < ((ArrayList)localObject2).size())
+        Object localObject2 = (stFeed)((List)localObject1).get(i);
+        if ((localObject2 != null) && (((stFeed)localObject2).feed != null) && (((stFeed)localObject2).feed.poster != null))
         {
-          stSimpleMetaPerson localstSimpleMetaPerson = (stSimpleMetaPerson)((ArrayList)localObject2).get(j);
-          if (TextUtils.equals(localstSimpleMetaPerson.id, paramWSSimpleBaseEvent.getPersonId()))
+          int j;
+          if ((((stFeed)localObject2).feed_type == 1) && (((stFeed)localObject2).person_meta != null))
           {
-            localstSimpleMetaPerson.followStatus = paramWSSimpleBaseEvent.getIsFollow();
-            a(localstSimpleMetaPerson.id);
+            localObject2 = ((stFeed)localObject2).person_meta;
+            j = 0;
           }
-          j += 1;
+          while (j < ((ArrayList)localObject2).size())
+          {
+            stSimpleMetaPerson localstSimpleMetaPerson = (stSimpleMetaPerson)((ArrayList)localObject2).get(j);
+            if (TextUtils.equals(localstSimpleMetaPerson.id, paramWSSimpleBaseEvent.getPersonId()))
+            {
+              localstSimpleMetaPerson.followStatus = paramWSSimpleBaseEvent.getIsFollow();
+              a(localstSimpleMetaPerson.id);
+            }
+            j += 1;
+            continue;
+            if ((((stFeed)localObject2).feed_type == 2) && (((stFeed)localObject2).feed != null))
+            {
+              localObject2 = ((stFeed)localObject2).feed.poster;
+              if (TextUtils.equals(((stSimpleMetaPerson)localObject2).id, paramWSSimpleBaseEvent.getPersonId()))
+              {
+                ((stSimpleMetaPerson)localObject2).followStatus = paramWSSimpleBaseEvent.getIsFollow();
+                b(paramWSSimpleBaseEvent.getPersonId());
+              }
+            }
+            else if (((stFeed)localObject2).feed_type == 4)
+            {
+              a(paramWSSimpleBaseEvent, (stFeed)localObject2);
+            }
+          }
         }
-      }
-      else if ((((stFeed)localObject2).feed_type == 2) && (((stFeed)localObject2).feed != null))
-      {
-        localObject2 = ((stFeed)localObject2).feed.poster;
-        if (TextUtils.equals(((stSimpleMetaPerson)localObject2).id, paramWSSimpleBaseEvent.getPersonId()))
-        {
-          ((stSimpleMetaPerson)localObject2).followStatus = paramWSSimpleBaseEvent.getIsFollow();
-          b(paramWSSimpleBaseEvent.getPersonId());
-        }
-      }
-      else if (((stFeed)localObject2).feed_type == 4)
-      {
-        a(paramWSSimpleBaseEvent, (stFeed)localObject2);
+        i += 1;
       }
     }
   }
@@ -402,59 +403,59 @@ public class WSFollowPresenter
   private void f(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
     paramWSSimpleBaseEvent = (WSVideoPlayEvent)paramWSSimpleBaseEvent;
-    WSLog.b("WSFollowPresenter", "handleVideoPlayEvent mCurrentPosition: " + paramWSSimpleBaseEvent.mCurrentPosition);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleVideoPlayEvent mCurrentPosition: ");
+    localStringBuilder.append(paramWSSimpleBaseEvent.mCurrentPosition);
+    WSLog.b("WSFollowPresenter", localStringBuilder.toString());
   }
   
   private void g(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
     paramWSSimpleBaseEvent = (LikeRspEvent)paramWSSimpleBaseEvent;
-    WSLog.b("WSFollowPresenter", "handleLikeEvent feedId: " + paramWSSimpleBaseEvent.getFeedId() + " isDing:" + paramWSSimpleBaseEvent.getRspIsDing());
-    Object localObject = ((IWSFollowView)a()).a();
-    if ((localObject == null) || (((WSFollowAdapter)localObject).b() == null)) {
-      return;
-    }
-    localObject = ((WSFollowAdapter)localObject).b();
-    int i = 0;
-    label83:
-    stFeed localstFeed;
-    if (i < ((List)localObject).size())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleLikeEvent feedId: ");
+    ((StringBuilder)localObject).append(paramWSSimpleBaseEvent.getFeedId());
+    ((StringBuilder)localObject).append(" isDing:");
+    ((StringBuilder)localObject).append(paramWSSimpleBaseEvent.getRspIsDing());
+    WSLog.b("WSFollowPresenter", ((StringBuilder)localObject).toString());
+    localObject = ((IWSFollowView)a()).a();
+    if (localObject != null)
     {
-      localstFeed = (stFeed)((List)localObject).get(i);
-      if ((localstFeed != null) && (localstFeed.feed != null)) {
-        break label127;
+      if (((WSFollowAdapter)localObject).getDataList() == null) {
+        return;
       }
-    }
-    label127:
-    while (!TextUtils.equals(paramWSSimpleBaseEvent.getFeedId(), localstFeed.feed.id))
-    {
-      i += 1;
-      break label83;
-      break;
-    }
-    int j;
-    label174:
-    stSimpleMetaFeed localstSimpleMetaFeed;
-    if (paramWSSimpleBaseEvent.getRspIsDing() != localstFeed.feed.is_ding)
-    {
-      if (localstFeed.feed.is_ding != 1) {
-        break label220;
+      localObject = ((WSFollowAdapter)localObject).getDataList();
+      int i = 0;
+      while (i < ((List)localObject).size())
+      {
+        stFeed localstFeed = (stFeed)((List)localObject).get(i);
+        if ((localstFeed != null) && (localstFeed.feed != null) && (TextUtils.equals(paramWSSimpleBaseEvent.getFeedId(), localstFeed.feed.id)))
+        {
+          if (paramWSSimpleBaseEvent.getRspIsDing() != localstFeed.feed.is_ding)
+          {
+            int j;
+            if (localstFeed.feed.is_ding == 1) {
+              j = 1;
+            } else {
+              j = 0;
+            }
+            stSimpleMetaFeed localstSimpleMetaFeed;
+            if (j != 0)
+            {
+              localstSimpleMetaFeed = localstFeed.feed;
+              localstSimpleMetaFeed.ding_count -= 1;
+            }
+            else
+            {
+              localstSimpleMetaFeed = localstFeed.feed;
+              localstSimpleMetaFeed.ding_count += 1;
+            }
+          }
+          localstFeed.feed.is_ding = paramWSSimpleBaseEvent.getRspIsDing();
+          c(paramWSSimpleBaseEvent.getFeedId());
+        }
+        i += 1;
       }
-      j = 1;
-      if (j == 0) {
-        break label225;
-      }
-      localstSimpleMetaFeed = localstFeed.feed;
-    }
-    for (localstSimpleMetaFeed.ding_count -= 1;; localstSimpleMetaFeed.ding_count += 1)
-    {
-      localstFeed.feed.is_ding = paramWSSimpleBaseEvent.getRspIsDing();
-      c(paramWSSimpleBaseEvent.getFeedId());
-      break;
-      label220:
-      j = 0;
-      break label174;
-      label225:
-      localstSimpleMetaFeed = localstFeed.feed;
     }
   }
   
@@ -463,28 +464,20 @@ public class WSFollowPresenter
     WSLog.b("WSFollowPresenter", "[handleOnReceiveEventForFollow]");
     paramWSSimpleBaseEvent = (WSAddCommentEvent)paramWSSimpleBaseEvent;
     Object localObject = ((IWSFollowView)a()).a();
-    if ((localObject == null) || (((WSFollowAdapter)localObject).b() == null)) {
-      return;
-    }
-    localObject = ((WSFollowAdapter)localObject).b();
-    int i = 0;
-    label45:
-    stFeed localstFeed;
-    if (i < ((List)localObject).size())
+    if (localObject != null)
     {
-      localstFeed = (stFeed)((List)localObject).get(i);
-      if ((localstFeed != null) && (localstFeed.feed != null)) {
-        break label87;
+      if (((WSFollowAdapter)localObject).getDataList() == null) {
+        return;
       }
-    }
-    for (;;)
-    {
-      i += 1;
-      break label45;
-      break;
-      label87:
-      if (TextUtils.equals(paramWSSimpleBaseEvent.getFeedId(), localstFeed.feed.id)) {
-        d(paramWSSimpleBaseEvent.getFeedId());
+      localObject = ((WSFollowAdapter)localObject).getDataList();
+      int i = 0;
+      while (i < ((List)localObject).size())
+      {
+        stFeed localstFeed = (stFeed)((List)localObject).get(i);
+        if ((localstFeed != null) && (localstFeed.feed != null) && (TextUtils.equals(paramWSSimpleBaseEvent.getFeedId(), localstFeed.feed.id))) {
+          d(paramWSSimpleBaseEvent.getFeedId());
+        }
+        i += 1;
       }
     }
   }
@@ -496,39 +489,39 @@ public class WSFollowPresenter
   
   public void a(WSSimpleBaseEvent paramWSSimpleBaseEvent)
   {
-    if ((paramWSSimpleBaseEvent instanceof LikeRspEvent)) {
-      g(paramWSSimpleBaseEvent);
-    }
-    do
+    if ((paramWSSimpleBaseEvent instanceof LikeRspEvent))
     {
+      g(paramWSSimpleBaseEvent);
       return;
-      if ((paramWSSimpleBaseEvent instanceof WSVideoPlayEvent))
-      {
-        f(paramWSSimpleBaseEvent);
-        return;
-      }
-      if ((paramWSSimpleBaseEvent instanceof WSItemExposeEvent))
-      {
-        d(paramWSSimpleBaseEvent);
-        return;
-      }
-      if ((paramWSSimpleBaseEvent instanceof FollowEvent))
-      {
-        e(paramWSSimpleBaseEvent);
-        return;
-      }
-      if ((paramWSSimpleBaseEvent instanceof WSAddCommentEvent))
-      {
-        h(paramWSSimpleBaseEvent);
-        return;
-      }
-      if ((paramWSSimpleBaseEvent instanceof WSFriendFeedExposureEvent))
-      {
-        c(paramWSSimpleBaseEvent);
-        return;
-      }
-    } while (!(paramWSSimpleBaseEvent instanceof WSPlayerMuteEvent));
-    b(paramWSSimpleBaseEvent);
+    }
+    if ((paramWSSimpleBaseEvent instanceof WSVideoPlayEvent))
+    {
+      f(paramWSSimpleBaseEvent);
+      return;
+    }
+    if ((paramWSSimpleBaseEvent instanceof WSItemExposeEvent))
+    {
+      d(paramWSSimpleBaseEvent);
+      return;
+    }
+    if ((paramWSSimpleBaseEvent instanceof FollowEvent))
+    {
+      e(paramWSSimpleBaseEvent);
+      return;
+    }
+    if ((paramWSSimpleBaseEvent instanceof WSAddCommentEvent))
+    {
+      h(paramWSSimpleBaseEvent);
+      return;
+    }
+    if ((paramWSSimpleBaseEvent instanceof WSFriendFeedExposureEvent))
+    {
+      c(paramWSSimpleBaseEvent);
+      return;
+    }
+    if ((paramWSSimpleBaseEvent instanceof WSPlayerMuteEvent)) {
+      b(paramWSSimpleBaseEvent);
+    }
   }
   
   public void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -542,10 +535,25 @@ public class WSFollowPresenter
     long l = System.currentTimeMillis();
     WSFeedDataManager.a().a(paramBoolean1, paramBoolean2, "", 9, l, new WSFollowPresenter.1(this, paramBoolean1));
   }
+  
+  public void c()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSLoadMoreReportHelper.b();
+  }
+  
+  public void d()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSLoadMoreReportHelper.c();
+  }
+  
+  public void e()
+  {
+    this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newUtilWSLoadMoreReportHelper.d();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSFollowPresenter
  * JD-Core Version:    0.7.0.1
  */

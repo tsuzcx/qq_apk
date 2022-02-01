@@ -17,10 +17,11 @@ public class DCAIOPreviewProgressive
   
   public void a()
   {
-    if ((this.a != null) && (!this.b))
+    Object localObject = this.a;
+    if ((localObject != null) && (!this.b))
     {
-      DataReport.ReportTask localReportTask = new DataReport.ReportTask("Pic.AioPreview.Progressive", this.a.a("Pic.AioPreview.Progressive"));
-      DataReport.a().a(localReportTask);
+      localObject = new DataReport.ReportTask("Pic.AioPreview.Progressive", ((DCAIOPreviewProgressive.ProgressiveData)localObject).a("Pic.AioPreview.Progressive"));
+      DataReport.a().a((DataReport.ReportTask)localObject);
       this.b = true;
     }
   }
@@ -38,28 +39,31 @@ public class DCAIOPreviewProgressive
   
   public void b()
   {
-    if ((this.a != null) && (!this.b)) {
-      DCAIOPreviewProgressive.ProgressiveData.b(this.a, SystemClock.uptimeMillis());
+    DCAIOPreviewProgressive.ProgressiveData localProgressiveData = this.a;
+    if ((localProgressiveData != null) && (!this.b)) {
+      DCAIOPreviewProgressive.ProgressiveData.b(localProgressiveData, SystemClock.uptimeMillis());
     }
   }
   
   public void c()
   {
-    if ((this.a != null) && (!this.b)) {
-      DCAIOPreviewProgressive.ProgressiveData.c(this.a, SystemClock.uptimeMillis());
+    DCAIOPreviewProgressive.ProgressiveData localProgressiveData = this.a;
+    if ((localProgressiveData != null) && (!this.b)) {
+      DCAIOPreviewProgressive.ProgressiveData.c(localProgressiveData, SystemClock.uptimeMillis());
     }
   }
   
   public void d()
   {
-    if ((this.a != null) && (!this.b)) {
-      DCAIOPreviewProgressive.ProgressiveData.b(this.a, true);
+    DCAIOPreviewProgressive.ProgressiveData localProgressiveData = this.a;
+    if ((localProgressiveData != null) && (!this.b)) {
+      DCAIOPreviewProgressive.ProgressiveData.b(localProgressiveData, true);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCAIOPreviewProgressive
  * JD-Core Version:    0.7.0.1
  */

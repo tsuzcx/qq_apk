@@ -11,32 +11,43 @@ final class URLDrawableDecodeHandler$7
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
     if (paramBitmap == null) {
-      paramDownloadParams = null;
+      return null;
     }
-    Object localObject;
-    do
+    Object localObject = paramDownloadParams.tag;
+    Bitmap localBitmap = paramBitmap;
+    if ((localObject instanceof int[]))
     {
-      do
+      localObject = (int[])localObject;
+      localBitmap = paramBitmap;
+      if (localObject.length == 3)
       {
-        return paramDownloadParams;
-        localObject = paramDownloadParams.tag;
-        paramDownloadParams = paramBitmap;
-      } while (!(localObject instanceof int[]));
-      paramDownloadParams = paramBitmap;
-    } while (((int[])localObject).length != 3);
-    paramDownloadParams = (int[])localObject;
-    if (paramDownloadParams[0] == 0) {
-      paramDownloadParams[0] = paramBitmap.getWidth();
+        int j = localObject[0];
+        int i = j;
+        if (j == 0) {
+          if (paramDownloadParams.reqWidth == 0) {
+            i = paramBitmap.getWidth();
+          } else {
+            i = paramDownloadParams.reqWidth;
+          }
+        }
+        int k = localObject[1];
+        j = k;
+        if (k == 0) {
+          if (paramDownloadParams.reqHeight == 0) {
+            j = paramBitmap.getHeight();
+          } else {
+            j = paramDownloadParams.reqHeight;
+          }
+        }
+        localBitmap = ImageUtil.d(paramBitmap, localObject[2], i, j);
+      }
     }
-    if (paramDownloadParams[1] == 0) {
-      paramDownloadParams[1] = paramBitmap.getHeight();
-    }
-    return ImageUtil.d(paramBitmap, paramDownloadParams[2], paramDownloadParams[0], paramDownloadParams[1]);
+    return localBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.7
  * JD-Core Version:    0.7.0.1
  */

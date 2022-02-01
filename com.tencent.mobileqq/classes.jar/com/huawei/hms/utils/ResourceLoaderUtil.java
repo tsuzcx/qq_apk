@@ -6,8 +6,8 @@ import android.graphics.drawable.Drawable;
 
 public abstract class ResourceLoaderUtil
 {
-  private static Context a;
-  private static String b;
+  public static Context a;
+  public static String b;
   
   public static int getAnimId(String paramString)
   {
@@ -72,7 +72,7 @@ public abstract class ResourceLoaderUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.utils.ResourceLoaderUtil
  * JD-Core Version:    0.7.0.1
  */

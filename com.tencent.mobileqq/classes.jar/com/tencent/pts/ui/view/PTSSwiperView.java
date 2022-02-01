@@ -84,99 +84,100 @@ public class PTSSwiperView
   {
     int j = this.mIndicatorContainer.getChildCount();
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       View localView = this.mIndicatorContainer.getChildAt(i);
-      if (i == paramInt) {}
-      for (GradientDrawable localGradientDrawable = this.mIndicatorFocusedDrawable;; localGradientDrawable = this.mIndicatorNormalDrawable)
-      {
-        localView.setBackgroundDrawable(localGradientDrawable);
-        i += 1;
-        break;
+      GradientDrawable localGradientDrawable;
+      if (i == paramInt) {
+        localGradientDrawable = this.mIndicatorFocusedDrawable;
+      } else {
+        localGradientDrawable = this.mIndicatorNormalDrawable;
       }
+      localView.setBackgroundDrawable(localGradientDrawable);
+      i += 1;
     }
   }
   
   private void resetIndicator()
   {
+    if (this.mIndicatorContainer.getVisibility() != 0) {
+      return;
+    }
+    int m = this.mAdapter.getRealItemCount();
+    int k = this.mIndicatorContainer.getChildCount();
     int i = 0;
-    if (this.mIndicatorContainer.getVisibility() != 0) {}
+    if (m <= 1)
+    {
+      while (i < k)
+      {
+        this.mIndicatorContainer.getChildAt(i).setVisibility(8);
+        i += 1;
+      }
+      return;
+    }
+    int j;
+    if (m > k)
+    {
+      Context localContext = this.mIndicatorContainer.getContext();
+      int n = this.mIndicatorWidth;
+      int i1 = this.mIndicatorHeight;
+      i = k;
+      while (i < m)
+      {
+        View localView = new View(localContext);
+        LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(n, i1);
+        if (i == 0) {
+          j = 0;
+        } else {
+          j = this.mIndicatorGap;
+        }
+        localLayoutParams.leftMargin = j;
+        if (this.mIndicatorFocusedDrawable == null) {
+          this.mIndicatorFocusedDrawable = new GradientDrawable();
+        }
+        if (this.mIndicatorNormalDrawable == null) {
+          this.mIndicatorNormalDrawable = new GradientDrawable();
+        }
+        this.mIndicatorNormalDrawable.setColor(this.mIndicatorNormalColor);
+        this.mIndicatorFocusedDrawable.setColor(this.mIndicatorFocusedColor);
+        this.mIndicatorFocusedDrawable.setCornerRadius(this.mIndicatorRadius);
+        this.mIndicatorNormalDrawable.setCornerRadius(this.mIndicatorRadius);
+        GradientDrawable localGradientDrawable;
+        if (i == 0) {
+          localGradientDrawable = this.mIndicatorFocusedDrawable;
+        } else {
+          localGradientDrawable = this.mIndicatorNormalDrawable;
+        }
+        localView.setBackgroundDrawable(localGradientDrawable);
+        this.mIndicatorContainer.addView(localView, localLayoutParams);
+        i += 1;
+      }
+    }
+    i = 0;
     for (;;)
     {
-      return;
-      int m = this.mAdapter.getRealItemCount();
-      int k = this.mIndicatorContainer.getChildCount();
-      if (m <= 1)
-      {
-        while (i < k)
-        {
-          this.mIndicatorContainer.getChildAt(i).setVisibility(8);
-          i += 1;
-        }
+      j = m;
+      if (i >= m) {
+        break;
       }
-      else
-      {
-        if (m > k)
-        {
-          Context localContext = this.mIndicatorContainer.getContext();
-          int n = this.mIndicatorWidth;
-          int i1 = this.mIndicatorHeight;
-          i = k;
-          if (i < m)
-          {
-            View localView = new View(localContext);
-            LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(n, i1);
-            int j;
-            if (i == 0)
-            {
-              j = 0;
-              label126:
-              localLayoutParams.leftMargin = j;
-              if (this.mIndicatorFocusedDrawable == null) {
-                this.mIndicatorFocusedDrawable = new GradientDrawable();
-              }
-              if (this.mIndicatorNormalDrawable == null) {
-                this.mIndicatorNormalDrawable = new GradientDrawable();
-              }
-              this.mIndicatorNormalDrawable.setColor(this.mIndicatorNormalColor);
-              this.mIndicatorFocusedDrawable.setColor(this.mIndicatorFocusedColor);
-              this.mIndicatorFocusedDrawable.setCornerRadius(this.mIndicatorRadius);
-              this.mIndicatorNormalDrawable.setCornerRadius(this.mIndicatorRadius);
-              if (i != 0) {
-                break label255;
-              }
-            }
-            label255:
-            for (GradientDrawable localGradientDrawable = this.mIndicatorFocusedDrawable;; localGradientDrawable = this.mIndicatorNormalDrawable)
-            {
-              localView.setBackgroundDrawable(localGradientDrawable);
-              this.mIndicatorContainer.addView(localView, localLayoutParams);
-              i += 1;
-              break;
-              j = this.mIndicatorGap;
-              break label126;
-            }
-          }
-        }
-        i = 0;
-        while (i < m)
-        {
-          this.mIndicatorContainer.getChildAt(i).setVisibility(0);
-          i += 1;
-        }
-        i = m;
-        while (i < k)
-        {
-          this.mIndicatorContainer.getChildAt(i).setVisibility(8);
-          i += 1;
-        }
-      }
+      this.mIndicatorContainer.getChildAt(i).setVisibility(0);
+      i += 1;
+    }
+    while (j < k)
+    {
+      this.mIndicatorContainer.getChildAt(j).setVisibility(8);
+      j += 1;
     }
   }
   
   private void switchAutoPlay(boolean paramBoolean)
   {
-    PTSLog.i("PTSSwiperView", "[switchAutoPlay] autoPlay = " + paramBoolean + ", size = " + this.mDataList.size());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[switchAutoPlay] autoPlay = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", size = ");
+    localStringBuilder.append(this.mDataList.size());
+    PTSLog.i("PTSSwiperView", localStringBuilder.toString());
     this.mRecyclerView.removeCallbacks(this.mAutoPlayRunnable);
     if (!paramBoolean) {
       this.mRecyclerView.stopScroll();
@@ -188,105 +189,126 @@ public class PTSSwiperView
   
   private void switchCircular(boolean paramBoolean)
   {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[switchCircular] circular = ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(", size = ");
+    ((StringBuilder)localObject).append(this.mDataList.size());
+    PTSLog.i("PTSSwiperView", ((StringBuilder)localObject).toString());
+    localObject = this.mAdapter;
     boolean bool = true;
-    PTSLog.i("PTSSwiperView", "[switchCircular] circular = " + paramBoolean + ", size = " + this.mDataList.size());
-    PTSSwiperView.PTSSwiperRecyclerViewAdapter localPTSSwiperRecyclerViewAdapter = this.mAdapter;
-    if ((paramBoolean) && (this.mDataList.size() > 1)) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      localPTSSwiperRecyclerViewAdapter.setInfiniteLoop(paramBoolean);
-      return;
+    if ((paramBoolean) && (this.mDataList.size() > 1)) {
+      paramBoolean = bool;
+    } else {
+      paramBoolean = false;
     }
+    ((PTSSwiperView.PTSSwiperRecyclerViewAdapter)localObject).setInfiniteLoop(paramBoolean);
   }
   
   private void triggerSwiperDrag()
   {
-    if ((this.mPagerSnapHelper == null) || (this.mAdapter == null) || (this.nodeSwiper == null) || (this.mRecyclerView == null)) {
-      PTSLog.i("PTSSwiperView", "[triggerSwiperDrag] failed, something is null.");
-    }
-    int i;
-    Object localObject;
-    HashMap localHashMap;
-    PTSLiteItemViewManager localPTSLiteItemViewManager;
-    do
+    Object localObject1 = this.mPagerSnapHelper;
+    if ((localObject1 != null) && (this.mAdapter != null) && (this.nodeSwiper != null) && (this.mRecyclerView != null))
     {
-      return;
-      i = this.mPagerSnapHelper.getCurrentPosition();
+      int i = ((PTSSwiperView.PTSPagerSnapHelper)localObject1).getCurrentPosition();
       i = this.mAdapter.getRealPosition(i);
-      if ((i < 0) || (i >= this.mDataList.size()))
+      if ((i >= 0) && (i < this.mDataList.size()))
       {
-        PTSLog.i("PTSSwiperView", "[triggerSwiperDrag] failed, position = " + i);
-        return;
-      }
-      localObject = (PTSNodeInfo)this.mDataList.get(i);
-      PTSAppInstance localPTSAppInstance = this.nodeSwiper.getAppInstance();
-      if ((localObject == null) || (localPTSAppInstance == null))
-      {
+        Object localObject3 = (PTSNodeInfo)this.mDataList.get(i);
+        localObject1 = this.nodeSwiper.getAppInstance();
+        if ((localObject3 != null) && (localObject1 != null))
+        {
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[triggerSwiperDrag], position = ");
+          ((StringBuilder)localObject2).append(i);
+          PTSLog.i("PTSSwiperView", ((StringBuilder)localObject2).toString());
+          if (((PTSAppInstance)localObject1).isLiteAppInstance())
+          {
+            localObject2 = ((PTSNodeInfo)localObject3).getEventInfo();
+            localObject3 = PTSValueConvertUtil.getString(((PTSNodeInfo)localObject3).getAttributes().get("pts:on-swiper-drag"));
+            PTSAppInstance.PTSLiteAppInstance localPTSLiteAppInstance = (PTSAppInstance.PTSLiteAppInstance)localObject1;
+            IPTSLiteEventListener localIPTSLiteEventListener = localPTSLiteAppInstance.getLiteEventListener();
+            PTSLiteItemViewManager localPTSLiteItemViewManager = localPTSLiteAppInstance.getLiteItemViewManager();
+            if (localIPTSLiteEventListener != null)
+            {
+              localPTSLiteAppInstance.triggerLiteEvent(4, (String)localObject3, (HashMap)localObject2, this.mRecyclerView.getChildAt(i), ((PTSAppInstance)localObject1).getPtsComposer());
+              return;
+            }
+            if (localPTSLiteItemViewManager != null) {
+              localPTSLiteItemViewManager.triggerLiteEvent(4, (String)localObject3, (HashMap)localObject2, this.mRecyclerView.getChildAt(i));
+            }
+          }
+          else
+          {
+            PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure], is not PTSLiteAppInstance.");
+          }
+          return;
+        }
         PTSLog.i("PTSSwiperView", "[triggerSwiperDrag] failed, nodeInfo is null or ptsAppInstance is null.");
         return;
       }
-      PTSLog.i("PTSSwiperView", "[triggerSwiperDrag], position = " + i);
-      if (!localPTSAppInstance.isLiteAppInstance()) {
-        break;
-      }
-      localHashMap = ((PTSNodeInfo)localObject).getEventInfo();
-      localObject = PTSValueConvertUtil.getString(((PTSNodeInfo)localObject).getAttributes().get("pts:on-swiper-drag"));
-      IPTSLiteEventListener localIPTSLiteEventListener = ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).getLiteEventListener();
-      localPTSLiteItemViewManager = ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).getLiteItemViewManager();
-      if (localIPTSLiteEventListener != null)
-      {
-        ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).triggerLiteEvent(4, (String)localObject, localHashMap, this.mRecyclerView.getChildAt(i), localPTSAppInstance.getPtsComposer());
-        return;
-      }
-    } while (localPTSLiteItemViewManager == null);
-    localPTSLiteItemViewManager.triggerLiteEvent(4, (String)localObject, localHashMap, this.mRecyclerView.getChildAt(i));
-    return;
-    PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure], is not PTSLiteAppInstance.");
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[triggerSwiperDrag] failed, position = ");
+      ((StringBuilder)localObject1).append(i);
+      PTSLog.i("PTSSwiperView", ((StringBuilder)localObject1).toString());
+      return;
+    }
+    PTSLog.i("PTSSwiperView", "[triggerSwiperDrag] failed, something is null.");
   }
   
   private void triggerSwiperItemExposure(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mDataList.size())) {
-      PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure] failed, position = " + paramInt);
-    }
-    Object localObject;
-    HashMap localHashMap;
-    PTSLiteItemViewManager localPTSLiteItemViewManager;
-    do
+    if ((paramInt >= 0) && (paramInt < this.mDataList.size()))
     {
+      Object localObject3 = (PTSNodeInfo)this.mDataList.get(paramInt);
+      if (localObject3 != null)
+      {
+        localObject1 = this.nodeSwiper;
+        if ((localObject1 != null) && (this.mRecyclerView != null))
+        {
+          localObject1 = ((PTSNodeSwiper)localObject1).getAppInstance();
+          if (localObject1 == null)
+          {
+            PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure] failed, ptsAppInstance is null.");
+            return;
+          }
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[triggerSwiperItemExposure], position = ");
+          ((StringBuilder)localObject2).append(paramInt);
+          PTSLog.i("PTSSwiperView", ((StringBuilder)localObject2).toString());
+          if (((PTSAppInstance)localObject1).isLiteAppInstance())
+          {
+            localObject2 = ((PTSNodeInfo)localObject3).getEventInfo();
+            localObject3 = PTSValueConvertUtil.getString(((PTSNodeInfo)localObject3).getAttributes().get("pts:on-swiper-item-exposure"));
+            PTSAppInstance.PTSLiteAppInstance localPTSLiteAppInstance = (PTSAppInstance.PTSLiteAppInstance)localObject1;
+            IPTSLiteEventListener localIPTSLiteEventListener = localPTSLiteAppInstance.getLiteEventListener();
+            PTSLiteItemViewManager localPTSLiteItemViewManager = localPTSLiteAppInstance.getLiteItemViewManager();
+            if (localIPTSLiteEventListener != null)
+            {
+              localPTSLiteAppInstance.triggerLiteEvent(3, (String)localObject3, (HashMap)localObject2, this.mRecyclerView.getChildAt(paramInt), ((PTSAppInstance)localObject1).getPtsComposer());
+              return;
+            }
+            if (localPTSLiteItemViewManager != null) {
+              localPTSLiteItemViewManager.triggerLiteEvent(3, (String)localObject3, (HashMap)localObject2, this.mRecyclerView.getChildAt(paramInt));
+            }
+          }
+          else
+          {
+            PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure], is not PTSLiteAppInstance.");
+          }
+          return;
+        }
+      }
+      PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure] failed, nodeInfo is null or nodeSwiper is null, or recyclerView is null.");
       return;
-      localObject = (PTSNodeInfo)this.mDataList.get(paramInt);
-      if ((localObject == null) || (this.nodeSwiper == null) || (this.mRecyclerView == null))
-      {
-        PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure] failed, nodeInfo is null or nodeSwiper is null, or recyclerView is null.");
-        return;
-      }
-      PTSAppInstance localPTSAppInstance = this.nodeSwiper.getAppInstance();
-      if (localPTSAppInstance == null)
-      {
-        PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure] failed, ptsAppInstance is null.");
-        return;
-      }
-      PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure], position = " + paramInt);
-      if (!localPTSAppInstance.isLiteAppInstance()) {
-        break;
-      }
-      localHashMap = ((PTSNodeInfo)localObject).getEventInfo();
-      localObject = PTSValueConvertUtil.getString(((PTSNodeInfo)localObject).getAttributes().get("pts:on-swiper-item-exposure"));
-      IPTSLiteEventListener localIPTSLiteEventListener = ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).getLiteEventListener();
-      localPTSLiteItemViewManager = ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).getLiteItemViewManager();
-      if (localIPTSLiteEventListener != null)
-      {
-        ((PTSAppInstance.PTSLiteAppInstance)localPTSAppInstance).triggerLiteEvent(3, (String)localObject, localHashMap, this.mRecyclerView.getChildAt(paramInt), localPTSAppInstance.getPtsComposer());
-        return;
-      }
-    } while (localPTSLiteItemViewManager == null);
-    localPTSLiteItemViewManager.triggerLiteEvent(3, (String)localObject, localHashMap, this.mRecyclerView.getChildAt(paramInt));
-    return;
-    PTSLog.i("PTSSwiperView", "[triggerSwiperItemExposure], is not PTSLiteAppInstance.");
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("[triggerSwiperItemExposure] failed, position = ");
+    ((StringBuilder)localObject1).append(paramInt);
+    PTSLog.i("PTSSwiperView", ((StringBuilder)localObject1).toString());
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     switchAutoPlay(this.mAutoPlay);
@@ -306,32 +328,33 @@ public class PTSSwiperView
     post(new PTSSwiperView.2(this, paramPTSNodeInfo));
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     switchAutoPlay(false);
   }
   
-  public void onVisibilityChanged(@NonNull View paramView, int paramInt)
+  protected void onVisibilityChanged(@NonNull View paramView, int paramInt)
   {
     super.onVisibilityChanged(paramView, paramInt);
-    if ((paramInt == 0) && (this.mAutoPlay)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      switchAutoPlay(bool);
-      return;
+    boolean bool;
+    if ((paramInt == 0) && (this.mAutoPlay)) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    switchAutoPlay(bool);
   }
   
   public void onWindowFocusChanged(boolean paramBoolean)
   {
     super.onWindowFocusChanged(paramBoolean);
-    if ((paramBoolean) && (PTSDeviceUtil.isVisibleOnScreen(this))) {}
-    for (paramBoolean = true;; paramBoolean = false)
-    {
-      switchAutoPlay(paramBoolean);
-      return;
+    if ((paramBoolean) && (PTSDeviceUtil.isVisibleOnScreen(this))) {
+      paramBoolean = true;
+    } else {
+      paramBoolean = false;
     }
+    switchAutoPlay(paramBoolean);
   }
   
   public void setAutoPlay(boolean paramBoolean)
@@ -339,12 +362,13 @@ public class PTSSwiperView
     this.mAutoPlay = paramBoolean;
     this.mRecyclerView.setAutoPlay(paramBoolean);
     PTSSwiperView.PTSSwiperRecyclerView localPTSSwiperRecyclerView = this.mRecyclerView;
-    if (this.mAutoPlay) {}
-    for (Runnable localRunnable = this.mAutoPlayRunnable;; localRunnable = null)
-    {
-      localPTSSwiperRecyclerView.setAutoPlayRunnable(localRunnable);
-      return;
+    Runnable localRunnable;
+    if (this.mAutoPlay) {
+      localRunnable = this.mAutoPlayRunnable;
+    } else {
+      localRunnable = null;
     }
+    localPTSSwiperRecyclerView.setAutoPlayRunnable(localRunnable);
   }
   
   public void setAutoPlayDuration(int paramInt)
@@ -381,7 +405,12 @@ public class PTSSwiperView
   public void setIndicatorMarginBottom(float paramFloat)
   {
     this.mIndicatorMarginBottom = PTSDeviceUtil.dp2pxInt(paramFloat);
-    PTSLog.i("PTSSwiperView", "[setIndicatorMarginBottom], bottom = " + this.mIndicatorMarginBottom + ", bottom dp = " + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[setIndicatorMarginBottom], bottom = ");
+    localStringBuilder.append(this.mIndicatorMarginBottom);
+    localStringBuilder.append(", bottom dp = ");
+    localStringBuilder.append(paramFloat);
+    PTSLog.i("PTSSwiperView", localStringBuilder.toString());
     this.mIndicatorContainer.setPadding(0, 0, 0, this.mIndicatorMarginBottom);
   }
   
@@ -398,12 +427,13 @@ public class PTSSwiperView
   public void setIndicatorVisible(boolean paramBoolean)
   {
     LinearLayout localLinearLayout = this.mIndicatorContainer;
-    if (paramBoolean) {}
-    for (int i = 0;; i = 8)
-    {
-      localLinearLayout.setVisibility(i);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 0;
+    } else {
+      i = 8;
     }
+    localLinearLayout.setVisibility(i);
   }
   
   public void setIndicatorWidth(float paramFloat)
@@ -413,7 +443,7 @@ public class PTSSwiperView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.ui.view.PTSSwiperView
  * JD-Core Version:    0.7.0.1
  */

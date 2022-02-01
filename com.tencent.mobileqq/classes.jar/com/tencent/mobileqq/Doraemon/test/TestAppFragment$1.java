@@ -13,32 +13,29 @@ class TestAppFragment$1
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    File localFile;
     if (paramBoolean)
     {
       new File(this.a.a).mkdirs();
-      localFile = new File(this.a.a, this.a.b);
-    }
-    for (;;)
-    {
+      File localFile = new File(this.a.a, this.a.b);
       try
       {
         localFile.createNewFile();
-        EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-        return;
       }
       catch (IOException localIOException)
       {
         localIOException.printStackTrace();
-        continue;
       }
+    }
+    else
+    {
       new File(this.a.a, this.a.b).delete();
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.test.TestAppFragment.1
  * JD-Core Version:    0.7.0.1
  */

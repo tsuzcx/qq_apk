@@ -17,7 +17,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 @Metadata(bv={1, 0, 3}, d1={""}, d2={"buildSet", "", "E", "capacity", "", "builderAction", "Lkotlin/Function1;", "", "", "Lkotlin/ExtensionFunctionType;", "emptySet", "T", "hashSetOf", "Ljava/util/HashSet;", "Lkotlin/collections/HashSet;", "elements", "", "([Ljava/lang/Object;)Ljava/util/HashSet;", "linkedSetOf", "Ljava/util/LinkedHashSet;", "Lkotlin/collections/LinkedHashSet;", "([Ljava/lang/Object;)Ljava/util/LinkedHashSet;", "mutableSetOf", "([Ljava/lang/Object;)Ljava/util/Set;", "setOf", "optimizeReadOnlySet", "orEmpty", "kotlin-stdlib"}, k=5, mv={1, 1, 16}, xi=1, xs="kotlin/collections/SetsKt")
-public class SetsKt__SetsKt
+class SetsKt__SetsKt
   extends SetsKt__SetsJVMKt
 {
   @ExperimentalStdlibApi
@@ -92,14 +92,15 @@ public class SetsKt__SetsKt
   public static final <T> Set<T> optimizeReadOnlySet(@NotNull Set<? extends T> paramSet)
   {
     Intrinsics.checkParameterIsNotNull(paramSet, "$this$optimizeReadOnlySet");
-    switch (paramSet.size())
+    int i = paramSet.size();
+    if (i != 0)
     {
-    default: 
-      return paramSet;
-    case 0: 
-      return SetsKt.emptySet();
+      if (i != 1) {
+        return paramSet;
+      }
+      return SetsKt.setOf(paramSet.iterator().next());
     }
-    return SetsKt.setOf(paramSet.iterator().next());
+    return SetsKt.emptySet();
   }
   
   @InlineOnly
@@ -129,7 +130,7 @@ public class SetsKt__SetsKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.collections.SetsKt__SetsKt
  * JD-Core Version:    0.7.0.1
  */

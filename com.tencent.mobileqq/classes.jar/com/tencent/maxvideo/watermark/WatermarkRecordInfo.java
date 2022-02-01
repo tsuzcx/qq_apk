@@ -16,32 +16,32 @@ public class WatermarkRecordInfo
   public static String getJson(List<WatermarkRecordInfo> paramList)
   {
     StringBuffer localStringBuffer = new StringBuffer();
-    int i;
     if ((paramList != null) && (!paramList.isEmpty()))
     {
+      int i = 0;
       int j = paramList.size();
-      i = 0;
-      if (i >= j) {
-        localStringBuffer.append("]");
+      for (;;)
+      {
+        if (i >= j)
+        {
+          localStringBuffer.append("]");
+          break;
+        }
+        WatermarkRecordInfo localWatermarkRecordInfo = (WatermarkRecordInfo)paramList.get(i);
+        if (i == 0)
+        {
+          localStringBuffer.append("[");
+          localStringBuffer.append(localWatermarkRecordInfo.toJson());
+        }
+        else
+        {
+          localStringBuffer.append(",");
+          localStringBuffer.append(localWatermarkRecordInfo.toJson());
+        }
+        i += 1;
       }
     }
-    else
-    {
-      return localStringBuffer.toString();
-    }
-    WatermarkRecordInfo localWatermarkRecordInfo = (WatermarkRecordInfo)paramList.get(i);
-    if (i == 0)
-    {
-      localStringBuffer.append("[");
-      localStringBuffer.append(localWatermarkRecordInfo.toJson());
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      localStringBuffer.append(",");
-      localStringBuffer.append(localWatermarkRecordInfo.toJson());
-    }
+    return localStringBuffer.toString();
   }
   
   public static WatermarkRecordInfo getWatermarkRecordInfo4Json(String paramString)
@@ -50,14 +50,11 @@ public class WatermarkRecordInfo
       try
       {
         paramString = new JSONObject(paramString);
-        if (paramString != null)
-        {
-          WatermarkRecordInfo localWatermarkRecordInfo = new WatermarkRecordInfo();
-          localWatermarkRecordInfo.mStartIndex = paramString.getInt("start_index");
-          localWatermarkRecordInfo.mEndIndex = paramString.getInt("end_index");
-          localWatermarkRecordInfo.mDir = paramString.getString("root_path");
-          return localWatermarkRecordInfo;
-        }
+        WatermarkRecordInfo localWatermarkRecordInfo = new WatermarkRecordInfo();
+        localWatermarkRecordInfo.mStartIndex = paramString.getInt("start_index");
+        localWatermarkRecordInfo.mEndIndex = paramString.getInt("end_index");
+        localWatermarkRecordInfo.mDir = paramString.getString("root_path");
+        return localWatermarkRecordInfo;
       }
       catch (JSONException paramString)
       {
@@ -73,15 +70,11 @@ public class WatermarkRecordInfo
     ArrayList localArrayList;
     int j;
     int i;
-    label116:
     do
     {
       try
       {
         paramString = new JSONArray(paramString);
-        if (paramString == null) {
-          break label116;
-        }
         localArrayList = new ArrayList();
         j = paramString.length();
         i = 0;
@@ -110,17 +103,37 @@ public class WatermarkRecordInfo
   
   public String toJson()
   {
-    return "{\"start_index\":" + this.mStartIndex + ",\"end_index\":" + this.mEndIndex + ",\"root_path\":\"" + this.mDir + "\"}";
+    StringBuilder localStringBuilder = new StringBuilder("{\"start_index\":");
+    localStringBuilder.append(this.mStartIndex);
+    localStringBuilder.append(",\"end_index\":");
+    localStringBuilder.append(this.mEndIndex);
+    localStringBuilder.append(",\"root_path\":\"");
+    localStringBuilder.append(this.mDir);
+    localStringBuilder.append("\"}");
+    return localStringBuilder.toString();
   }
   
   public String toString()
   {
-    return "WatermarkRecordInfo [mStartIndex=" + this.mStartIndex + ", mEndIndex=" + this.mEndIndex + ", mType=" + this.mType + ", mDir=" + this.mDir + ", mJsonFilePath=" + this.mJsonFilePath + ", mDesc=" + this.mDesc + "]";
+    StringBuilder localStringBuilder = new StringBuilder("WatermarkRecordInfo [mStartIndex=");
+    localStringBuilder.append(this.mStartIndex);
+    localStringBuilder.append(", mEndIndex=");
+    localStringBuilder.append(this.mEndIndex);
+    localStringBuilder.append(", mType=");
+    localStringBuilder.append(this.mType);
+    localStringBuilder.append(", mDir=");
+    localStringBuilder.append(this.mDir);
+    localStringBuilder.append(", mJsonFilePath=");
+    localStringBuilder.append(this.mJsonFilePath);
+    localStringBuilder.append(", mDesc=");
+    localStringBuilder.append(this.mDesc);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.maxvideo.watermark.WatermarkRecordInfo
  * JD-Core Version:    0.7.0.1
  */

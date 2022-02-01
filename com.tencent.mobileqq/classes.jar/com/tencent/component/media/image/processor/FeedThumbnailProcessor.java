@@ -39,54 +39,66 @@ public class FeedThumbnailProcessor
   
   public Drawable process(Drawable paramDrawable)
   {
-    if ((this.mMaxWidth <= 0) || (this.mMaxHeight <= 0)) {}
-    do
+    Object localObject1 = paramDrawable;
+    if (this.mMaxWidth > 0)
     {
-      return paramDrawable;
-      j = paramDrawable.getIntrinsicWidth();
-      i = paramDrawable.getIntrinsicHeight();
-    } while ((j == this.mMaxWidth) && (i == this.mMaxHeight) && (j * GOLDEN_CUDGEL_RATIO > i));
-    float f2 = Math.min(this.mMaxWidth / j, this.mMaxHeight / i);
-    float f1 = f2;
-    if (this.mMaxScale != -1.0F)
-    {
-      f1 = f2;
-      if (f2 > this.mMaxScale) {
-        f1 = Math.min(f2, this.mMaxScale);
-      }
-    }
-    int j = (int)(j * f1);
-    int i = (int)Math.min(f1 * i, j * GOLDEN_CUDGEL_RATIO);
-    if ((paramDrawable instanceof ImageDrawable)) {
-      try
-      {
-        BitmapReference localBitmapReference = ((ImageDrawable)paramDrawable).getBitmapRef();
-        Object localObject1 = localBitmapReference.getConfig();
-        Object localObject2 = ImageManager.getInstance();
-        paramDrawable = (Drawable)localObject1;
-        if (localObject1 == null) {
-          paramDrawable = Bitmap.Config.ARGB_8888;
-        }
-        paramDrawable = ((ImageManager)localObject2).getBitmap(j, i, paramDrawable);
-        localObject1 = new Canvas(paramDrawable.getBitmap());
-        localObject2 = new Matrix();
-        ScaleDrawable.getMatrix((Matrix)localObject2, 10, localBitmapReference.getWidth(), localBitmapReference.getHeight(), j, i, this.mPivotXRate, this.mPivotYRate);
-        ((Canvas)localObject1).drawBitmap(localBitmapReference.getBitmap(), (Matrix)localObject2, new Paint());
-        if (!localBitmapReference.isRecycled()) {
-          localBitmapReference.release();
-        }
-        paramDrawable = new SpecifiedBitmapDrawable(paramDrawable);
+      if (this.mMaxHeight <= 0) {
         return paramDrawable;
       }
-      catch (OutOfMemoryError paramDrawable)
-      {
-        paramDrawable.printStackTrace();
-        return null;
+      int i = paramDrawable.getIntrinsicWidth();
+      int j = paramDrawable.getIntrinsicHeight();
+      if ((i == this.mMaxWidth) && (j == this.mMaxHeight) && (i * GOLDEN_CUDGEL_RATIO > j)) {
+        return paramDrawable;
       }
+      float f1 = this.mMaxWidth;
+      float f3 = i;
+      f1 /= f3;
+      float f2 = this.mMaxHeight;
+      float f4 = j;
+      f2 = Math.min(f1, f2 / f4);
+      float f5 = this.mMaxScale;
+      f1 = f2;
+      if (f5 != -1.0F)
+      {
+        f1 = f2;
+        if (f2 > f5) {
+          f1 = Math.min(f2, f5);
+        }
+      }
+      i = (int)(f3 * f1);
+      j = (int)Math.min(f4 * f1, i * GOLDEN_CUDGEL_RATIO);
+      if ((paramDrawable instanceof ImageDrawable)) {
+        try
+        {
+          BitmapReference localBitmapReference = ((ImageDrawable)paramDrawable).getBitmapRef();
+          localObject1 = localBitmapReference.getConfig();
+          Object localObject2 = ImageManager.getInstance();
+          paramDrawable = (Drawable)localObject1;
+          if (localObject1 == null) {
+            paramDrawable = Bitmap.Config.ARGB_8888;
+          }
+          paramDrawable = ((ImageManager)localObject2).getBitmap(i, j, paramDrawable);
+          localObject1 = new Canvas(paramDrawable.getBitmap());
+          localObject2 = new Matrix();
+          ScaleDrawable.getMatrix((Matrix)localObject2, 10, localBitmapReference.getWidth(), localBitmapReference.getHeight(), i, j, this.mPivotXRate, this.mPivotYRate);
+          ((Canvas)localObject1).drawBitmap(localBitmapReference.getBitmap(), (Matrix)localObject2, new Paint());
+          if (!localBitmapReference.isRecycled()) {
+            localBitmapReference.release();
+          }
+          paramDrawable = new SpecifiedBitmapDrawable(paramDrawable);
+          return paramDrawable;
+        }
+        catch (OutOfMemoryError paramDrawable)
+        {
+          paramDrawable.printStackTrace();
+          return null;
+        }
+      }
+      paramDrawable = new ScaleDrawable(paramDrawable, 10);
+      paramDrawable.setPivot(this.mPivotXRate, this.mPivotYRate);
+      localObject1 = new SpecifiedDrawable(paramDrawable, i, j);
     }
-    paramDrawable = new ScaleDrawable(paramDrawable, 10);
-    paramDrawable.setPivot(this.mPivotXRate, this.mPivotYRate);
-    return new SpecifiedDrawable(paramDrawable, j, i);
+    return localObject1;
   }
   
   public void setMaxScale(float paramFloat)
@@ -96,7 +108,7 @@ public class FeedThumbnailProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.processor.FeedThumbnailProcessor
  * JD-Core Version:    0.7.0.1
  */

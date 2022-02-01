@@ -1,61 +1,55 @@
 package com.tencent.mobileqq.urldrawable;
 
-import android.content.res.Resources;
 import android.graphics.Bitmap;
-import android.graphics.Matrix;
-import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
+import android.graphics.Canvas;
+import android.graphics.Color;
+import android.graphics.Paint;
+import android.graphics.Paint.Style;
 import com.tencent.image.DownloadParams;
 import com.tencent.image.DownloadParams.DecodeHandler;
-import com.tencent.qphone.base.util.QLog;
-import java.net.URL;
+import com.tencent.mobileqq.utils.DeviceInfoUtil;
+import com.tencent.mobileqq.utils.ImageUtil;
 
 final class URLDrawableDecodeHandler$15
   implements DownloadParams.DecodeHandler
 {
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    if ((paramBitmap == null) || (paramDownloadParams == null))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.hotchat", 2, "FLASH_PIC_MOSAIC_DECODE, bitmap is null");
-      }
+    if (paramBitmap == null) {
       return null;
     }
-    float f1 = BaseApplicationImpl.getApplication().getResources().getDisplayMetrics().density;
-    int j = (int)(paramDownloadParams.reqWidth / f1 + 0.5F);
-    int i = (int)(paramDownloadParams.reqHeight / f1 + 0.5F);
-    int k = paramBitmap.getWidth();
-    int m = paramBitmap.getHeight();
-    if ("chatthumb".equals(paramDownloadParams.url.getProtocol()))
+    Object localObject = paramDownloadParams.tag;
+    paramDownloadParams = paramBitmap;
+    if ((localObject instanceof int[]))
     {
-      j = 130;
-      i = 102;
+      localObject = (int[])localObject;
+      paramDownloadParams = paramBitmap;
+      if (localObject.length == 2)
+      {
+        float f2 = DeviceInfoUtil.a();
+        float f1 = f2;
+        if (f2 < 0.01F) {
+          f1 = 1.0F;
+        }
+        localObject[0] = ((int)(localObject[0] / f1));
+        localObject[1] = ((int)(localObject[1] / f1));
+        paramDownloadParams = ImageUtil.a(paramBitmap, localObject[0], localObject[1]);
+        paramBitmap = new Canvas(paramDownloadParams);
+        localObject = new Paint();
+        ((Paint)localObject).setAntiAlias(true);
+        ((Paint)localObject).setStyle(Paint.Style.STROKE);
+        ((Paint)localObject).setColor(Color.argb(20, 0, 0, 0));
+        ((Paint)localObject).setStrokeWidth(0.5F);
+        f1 = paramDownloadParams.getWidth() * 0.5F;
+        paramBitmap.drawCircle(f1, f1, f1 - 0.5F, (Paint)localObject);
+      }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat", 2, "downloadParams.reqWidth:" + paramDownloadParams.reqWidth + ",downloadParams.reqHeight:" + paramDownloadParams.reqHeight + ",reqWidth:" + j + ",reqHeight:" + i + ",isMutable:" + paramBitmap.isMutable());
-    }
-    f1 = j / k;
-    float f2 = i / m;
-    paramDownloadParams = new Matrix();
-    paramDownloadParams.postScale(f1, f2);
-    paramDownloadParams = Bitmap.createBitmap(paramBitmap, 0, 0, k, m, paramDownloadParams, false);
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.hotchat", 2, "scaleW:" + f1 + "scaleH:" + f2 + ",resizeBmp w:" + paramDownloadParams.getWidth() + ",h:" + paramDownloadParams.getHeight());
-    }
-    j = paramDownloadParams.getWidth() / 8;
-    i = j;
-    if (j == 0) {
-      i = 16;
-    }
-    paramDownloadParams = URLDrawableDecodeHandler.a(paramDownloadParams, i);
-    paramBitmap.recycle();
     return paramDownloadParams;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.urldrawable.URLDrawableDecodeHandler.15
  * JD-Core Version:    0.7.0.1
  */

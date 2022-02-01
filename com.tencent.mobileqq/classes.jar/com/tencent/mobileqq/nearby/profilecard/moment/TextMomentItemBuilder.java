@@ -30,7 +30,7 @@ public class TextMomentItemBuilder
   {
     paramViewGroup = (TextMomentItemBuilder.TextViewHolder)paramMomentViewHolder;
     paramMomentViewHolder = new TextView(this.a);
-    paramMomentViewHolder.setTextColor(this.a.getResources().getColor(2131165357));
+    paramMomentViewHolder.setTextColor(this.a.getResources().getColor(2131165327));
     paramMomentViewHolder.setTextSize(1, 16.0F);
     paramMomentViewHolder.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     paramViewGroup.g = paramMomentViewHolder;
@@ -62,7 +62,7 @@ public class TextMomentItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.TextMomentItemBuilder
  * JD-Core Version:    0.7.0.1
  */

@@ -11,26 +11,25 @@ class NearbyActivity$8
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1000)
     {
-    }
-    for (;;)
-    {
-      return false;
-      if (!this.a.c)
-      {
-        this.a.g();
-        this.a.b.removeMessages(1000);
-        this.a.b.sendEmptyMessageDelayed(1000, this.a.o);
-        continue;
-        NearbyActivity.a(this.a);
+      if (i == 1001) {
+        NearbyActivity.access$100(this.a);
       }
     }
+    else if (!this.a.isStopHeartBeat)
+    {
+      this.a.notifyHeartBeat();
+      this.a.mHeartBeatHandler.removeMessages(1000);
+      this.a.mHeartBeatHandler.sendEmptyMessageDelayed(1000, this.a.mHeartBeatInterval);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NearbyActivity.8
  * JD-Core Version:    0.7.0.1
  */

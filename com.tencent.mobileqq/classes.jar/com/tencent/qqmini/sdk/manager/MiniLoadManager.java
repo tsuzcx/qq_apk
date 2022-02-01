@@ -20,39 +20,39 @@ public class MiniLoadManager
   
   public static MiniLoadManager g()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new MiniLoadManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new MiniLoadManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   public void attachDownloadListener(MiniLoadManager.MiniLoadListener paramMiniLoadListener)
   {
-    QMLog.i("MiniLoadManager", "[MiniEng]attachDownloadListener " + paramMiniLoadListener);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MiniEng]attachDownloadListener ");
+    ((StringBuilder)localObject).append(paramMiniLoadListener);
+    QMLog.i("MiniLoadManager", ((StringBuilder)localObject).toString());
     this.mDownLoadListener = paramMiniLoadListener;
     this.mMiniAppEngineLoadTask.setDownloadListener(paramMiniLoadListener);
-    boolean bool;
     if (this.mMiniAppEngineLoadTask.isDone())
     {
       QMLog.i("MiniLoadManager", "[MiniEng]attachDownloadListener after mMiniAppEngineLoadTask isDone");
       if (paramMiniLoadListener != null)
       {
-        bool = this.mMiniAppEngineLoadTask.isSucceed();
-        if (this.mMiniAppEngineLoadTask.msg != null) {
-          break label88;
+        boolean bool = this.mMiniAppEngineLoadTask.isSucceed();
+        if (this.mMiniAppEngineLoadTask.msg == null) {
+          localObject = "";
+        } else {
+          localObject = this.mMiniAppEngineLoadTask.msg;
         }
+        paramMiniLoadListener.onEngineLoad(bool, (String)localObject);
       }
-    }
-    label88:
-    for (String str = "";; str = this.mMiniAppEngineLoadTask.msg)
-    {
-      paramMiniLoadListener.onEngineLoad(bool, str);
-      return;
     }
   }
   
@@ -65,7 +65,12 @@ public class MiniLoadManager
   
   public void detachDownloadListener(MiniLoadManager.MiniLoadListener paramMiniLoadListener)
   {
-    QMLog.i("MiniLoadManager", "[MiniEng]detachDownloadListener in:" + paramMiniLoadListener + ",current:" + this.mDownLoadListener);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng]detachDownloadListener in:");
+    localStringBuilder.append(paramMiniLoadListener);
+    localStringBuilder.append(",current:");
+    localStringBuilder.append(this.mDownLoadListener);
+    QMLog.i("MiniLoadManager", localStringBuilder.toString());
     if ((paramMiniLoadListener != null) && (paramMiniLoadListener.equals(this.mDownLoadListener)))
     {
       this.mDownLoadListener = null;
@@ -78,8 +83,12 @@ public class MiniLoadManager
   public String getBaseEnginePath()
   {
     InstalledEngine localInstalledEngine = this.mMiniAppEngineLoadTask.getEngine();
-    if ((localInstalledEngine != null) && (localInstalledEngine.isVerify)) {
-      return localInstalledEngine.engineDir + "/";
+    if ((localInstalledEngine != null) && (localInstalledEngine.isVerify))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localInstalledEngine.engineDir);
+      localStringBuilder.append("/");
+      return localStringBuilder.toString();
     }
     return null;
   }
@@ -95,31 +104,44 @@ public class MiniLoadManager
   
   public void onTaskDone(BaseTask paramBaseTask)
   {
-    QMLog.i("MiniLoadManager", "[MiniEng]" + paramBaseTask + " done! succ:" + paramBaseTask.isSucceed() + ", listener=" + this.mMiniAppEngineLoadTask);
-    if ((paramBaseTask instanceof MiniAppEngineLoadTask))
-    {
-      if (paramBaseTask.isSucceed()) {
-        break label97;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MiniEng]");
+    ((StringBuilder)localObject).append(paramBaseTask);
+    ((StringBuilder)localObject).append(" done! succ:");
+    ((StringBuilder)localObject).append(paramBaseTask.isSucceed());
+    ((StringBuilder)localObject).append(", listener=");
+    ((StringBuilder)localObject).append(this.mMiniAppEngineLoadTask);
+    QMLog.i("MiniLoadManager", ((StringBuilder)localObject).toString());
+    if ((paramBaseTask instanceof MiniAppEngineLoadTask)) {
+      if (!paramBaseTask.isSucceed())
+      {
+        localObject = this.mDownLoadListener;
+        if (localObject != null) {
+          ((MiniLoadManager.MiniLoadListener)localObject).onEngineLoad(false, ((MiniAppEngineLoadTask)paramBaseTask).msg);
+        }
+        this.baseDownloadEngineLoaded = false;
       }
-      if (this.mDownLoadListener != null) {
-        this.mDownLoadListener.onEngineLoad(false, ((MiniAppEngineLoadTask)paramBaseTask).msg);
+      else
+      {
+        localObject = this.mDownLoadListener;
+        if (localObject != null) {
+          ((MiniLoadManager.MiniLoadListener)localObject).onEngineLoad(true, "");
+        }
+        this.baseDownloadEngineLoaded = true;
       }
     }
-    for (this.baseDownloadEngineLoaded = false;; this.baseDownloadEngineLoaded = true)
-    {
-      super.onTaskDone(paramBaseTask);
-      return;
-      label97:
-      if (this.mDownLoadListener != null) {
-        this.mDownLoadListener.onEngineLoad(true, "");
-      }
-    }
+    super.onTaskDone(paramBaseTask);
   }
   
   public void setDownloadEngineChannel(EngineChannel paramEngineChannel)
   {
     this.mMiniAppEngineLoadTask.setEngineChannel(paramEngineChannel);
-    QMLog.i("MiniLoadManager", "[MiniEng]setDownloadEngineChannel " + paramEngineChannel + ", " + AppLoaderFactory.g().getProcessName());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng]setDownloadEngineChannel ");
+    localStringBuilder.append(paramEngineChannel);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(AppLoaderFactory.g().getProcessName());
+    QMLog.i("MiniLoadManager", localStringBuilder.toString());
   }
   
   @Deprecated
@@ -138,7 +160,7 @@ public class MiniLoadManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.MiniLoadManager
  * JD-Core Version:    0.7.0.1
  */

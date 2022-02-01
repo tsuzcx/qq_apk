@@ -19,50 +19,59 @@ public class ConfessObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    }
-    do
-    {
-      do
+      if (paramInt != 2)
       {
-        do
+        if (paramInt != 3)
         {
-          do
+          if (paramInt != 4)
           {
-            do
+            if (paramInt != 8)
             {
-              do
+              if (paramInt != 9) {
+                return;
+              }
+              if ((paramObject instanceof Object[]))
               {
-                do
-                {
-                  return;
-                  a(paramBoolean, paramObject);
-                  return;
-                  b(paramBoolean, paramObject);
-                  return;
-                } while ((paramObject == null) || (!(paramObject instanceof Object[])));
                 paramObject = (Object[])paramObject;
-              } while ((paramObject == null) || (paramObject.length != 6));
-              a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (ConfessInfo)paramObject[5]);
-              return;
-            } while ((paramObject == null) || (!(paramObject instanceof ConfessConfig)));
+                if (paramObject.length >= 3) {
+                  a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+                }
+              }
+            }
+            else if ((paramObject instanceof Object[]))
+            {
+              paramObject = (Object[])paramObject;
+              if (paramObject.length >= 7) {
+                a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Boolean)paramObject[6]).booleanValue());
+              }
+            }
+          }
+          else if ((paramObject != null) && ((paramObject instanceof ConfessConfig))) {
             a((ConfessConfig)paramObject);
-            return;
-          } while (!(paramObject instanceof Object[]));
+          }
+        }
+        else if ((paramObject != null) && ((paramObject instanceof Object[])))
+        {
           paramObject = (Object[])paramObject;
-        } while (paramObject.length < 7);
-        a(paramBoolean, ((Long)paramObject[0]).longValue(), ((Long)paramObject[1]).longValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), ((Integer)paramObject[4]).intValue(), ((Integer)paramObject[5]).intValue(), ((Boolean)paramObject[6]).booleanValue());
-        return;
-      } while (!(paramObject instanceof Object[]));
-      paramObject = (Object[])paramObject;
-    } while (paramObject.length < 3);
-    a((String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue());
+          if ((paramObject != null) && (paramObject.length == 6)) {
+            a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue(), (String)paramObject[4], (ConfessInfo)paramObject[5]);
+          }
+        }
+      }
+      else {
+        b(paramBoolean, paramObject);
+      }
+    }
+    else {
+      a(paramBoolean, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,7 @@ public class MustacheParseException
   
   public MustacheParseException(String paramString, int paramInt)
   {
-    super(paramString + " @ line " + paramInt);
+    super(localStringBuilder.toString());
   }
 }
 

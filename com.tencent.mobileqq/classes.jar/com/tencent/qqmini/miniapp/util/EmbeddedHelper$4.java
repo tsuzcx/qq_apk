@@ -16,7 +16,11 @@ final class EmbeddedHelper$4
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     QMLog.e("EmbeddedHelper", "startDownload");
-    EmbeddedHelper.access$400().edit().putInt(this.val$version + this.val$uin, 1).commit();
+    SharedPreferences.Editor localEditor = EmbeddedHelper.access$400().edit();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.val$version);
+    localStringBuilder.append(this.val$uin);
+    localEditor.putInt(localStringBuilder.toString(), 1).commit();
     TbsDownloader.startDownload(this.val$activity, true);
     paramDialogInterface.dismiss();
     EmbeddedHelper.setIsRunning(Boolean.valueOf(false));
@@ -25,7 +29,7 @@ final class EmbeddedHelper$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.EmbeddedHelper.4
  * JD-Core Version:    0.7.0.1
  */

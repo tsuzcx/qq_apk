@@ -65,14 +65,17 @@ class IntimateContentItemOldDnaView$1
     }
     catch (IllegalArgumentException paramTextPaint)
     {
-      while (!QLog.isColorLevel()) {}
+      label57:
+      break label57;
+    }
+    if (QLog.isColorLevel()) {
       QLog.e("intimate_relationship", 1, " color parse err");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemOldDnaView.1
  * JD-Core Version:    0.7.0.1
  */

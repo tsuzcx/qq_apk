@@ -11,13 +11,22 @@ public class PhotoSimilar
 {
   public static double a(Bitmap paramBitmap1, Bitmap paramBitmap2)
   {
-    if ((paramBitmap1 == null) || (paramBitmap2 == null)) {}
-    while ((paramBitmap1.getWidth() != paramBitmap2.getWidth()) || (paramBitmap1.getHeight() != paramBitmap2.getHeight())) {
-      return 0.0D;
+    if (paramBitmap1 != null)
+    {
+      if (paramBitmap2 == null) {
+        return 0.0D;
+      }
+      if (paramBitmap1.getWidth() == paramBitmap2.getWidth())
+      {
+        if (paramBitmap1.getHeight() != paramBitmap2.getHeight()) {
+          return 0.0D;
+        }
+        int i = a(a(paramBitmap1));
+        int j = a(a(paramBitmap2));
+        return a(a(paramBitmap1, i), a(paramBitmap2, j), paramBitmap1.getWidth(), paramBitmap1.getHeight());
+      }
     }
-    int i = a(a(paramBitmap1));
-    int j = a(a(paramBitmap2));
-    return a(a(paramBitmap1, i), a(paramBitmap2, j), paramBitmap1.getWidth(), paramBitmap1.getHeight());
+    return 0.0D;
   }
   
   private static double a(int[][] paramArrayOfInt1, int[][] paramArrayOfInt2, int paramInt1, int paramInt2)
@@ -29,7 +38,7 @@ public class PhotoSimilar
       int j = 0;
       while (j < paramInt2)
       {
-        double d2 = d1;
+        d2 = d1;
         if (paramArrayOfInt1[i][j] != paramArrayOfInt2[i][j]) {
           d2 = d1 + 1.0D;
         }
@@ -38,23 +47,23 @@ public class PhotoSimilar
       }
       i += 1;
     }
-    return 1.0D - d1 / (paramInt1 * paramInt2);
+    double d2 = paramInt1 * paramInt2;
+    Double.isNaN(d2);
+    return 1.0D - d1 / d2;
   }
   
   private static int a(byte[] paramArrayOfByte)
   {
-    float f1 = 0.0F;
-    int m = 0;
     int[] arrayOfInt = new int[256];
+    int m = 0;
     int i = 0;
     while (i < arrayOfInt.length)
     {
       arrayOfInt[i] = 0;
       i += 1;
     }
-    int j = 0;
     i = 0;
-    while (i < paramArrayOfByte.length)
+    for (int j = 0; i < paramArrayOfByte.length; j = k)
     {
       n = paramArrayOfByte[i] & 0xFF;
       arrayOfInt[n] += 1;
@@ -63,43 +72,53 @@ public class PhotoSimilar
         k = arrayOfInt[n];
       }
       i += 1;
-      j = k;
     }
     int n = paramArrayOfByte.length;
     i = 0;
-    for (float f2 = 0.0F; i < 256; f2 = f3 + f2)
+    float f1 = 0.0F;
+    while (i < 256)
     {
-      f3 = arrayOfInt[i] * i;
+      f1 += arrayOfInt[i] * i;
       i += 1;
     }
-    j = 0;
-    float f3 = 0.0F;
     int k = 0;
+    float f4 = 0.0F;
+    float f2 = 0.0F;
+    j = 0;
     i = m;
-    if (i < 256)
+    while (i < 256)
     {
-      k = arrayOfInt[i] + k;
-      if (k != 0) {}
-    }
-    for (;;)
-    {
-      i += 1;
-      break;
-      m = n - k;
-      if (m == 0) {
-        return j;
-      }
-      f1 = arrayOfInt[i] * i + f1;
-      float f4 = f1 / k;
-      float f5 = (f2 - f1) / m;
-      float f6 = k;
-      f4 = (f4 - f5) * (m * f6 * (f4 - f5));
-      if (f4 > f3)
+      k += arrayOfInt[i];
+      float f3;
+      if (k == 0)
       {
-        j = i;
-        f3 = f4;
+        f3 = f2;
       }
+      else
+      {
+        m = n - k;
+        if (m == 0) {
+          return j;
+        }
+        float f5 = f4 + arrayOfInt[i] * i;
+        f3 = k;
+        float f6 = f5 / f3;
+        f4 = m;
+        f6 -= (f1 - f5) / f4;
+        f6 = f3 * f4 * f6 * f6;
+        f4 = f5;
+        f3 = f2;
+        if (f6 > f2)
+        {
+          j = i;
+          f3 = f6;
+          f4 = f5;
+        }
+      }
+      i += 1;
+      f2 = f3;
     }
+    return j;
   }
   
   public static Bitmap a(Bitmap paramBitmap)
@@ -131,24 +150,19 @@ public class PhotoSimilar
   
   private static int[][] a(Bitmap paramBitmap, int paramInt)
   {
-    int i = paramBitmap.getWidth();
-    int j = paramBitmap.getHeight();
-    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { i, j });
-    i = 0;
+    int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { paramBitmap.getWidth(), paramBitmap.getHeight() });
+    int i = 0;
     while (i < paramBitmap.getWidth())
     {
-      j = 0;
-      if (j < paramBitmap.getHeight())
+      int j = 0;
+      while (j < paramBitmap.getHeight())
       {
         if (Color.red(paramBitmap.getPixel(i, j)) > paramInt) {
           arrayOfInt[i][j] = 1;
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
+        } else {
           arrayOfInt[i][j] = 0;
         }
+        j += 1;
       }
       i += 1;
     }
@@ -167,10 +181,16 @@ public class PhotoSimilar
       int j = 0;
       while (j < k)
       {
-        int n = arrayOfInt[(k * i + j)];
-        double d = (0xFF0000 & n) >> 16;
-        n = (int)(((0xFF00 & n) >> 8) * 0.59D + d * 0.3D + (n & 0xFF) * 0.11D);
-        arrayOfInt[(k * i + j)] = (n | n << 16 | 0xFF000000 | n << 8);
+        int n = k * i + j;
+        int i1 = arrayOfInt[n];
+        double d1 = (0xFF0000 & i1) >> 16;
+        Double.isNaN(d1);
+        double d2 = (0xFF00 & i1) >> 8;
+        Double.isNaN(d2);
+        double d3 = i1 & 0xFF;
+        Double.isNaN(d3);
+        i1 = (int)(d1 * 0.3D + d2 * 0.59D + d3 * 0.11D);
+        arrayOfInt[n] = (i1 | i1 << 16 | 0xFF000000 | i1 << 8);
         j += 1;
       }
       i += 1;
@@ -182,7 +202,7 @@ public class PhotoSimilar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.PhotoSimilar
  * JD-Core Version:    0.7.0.1
  */

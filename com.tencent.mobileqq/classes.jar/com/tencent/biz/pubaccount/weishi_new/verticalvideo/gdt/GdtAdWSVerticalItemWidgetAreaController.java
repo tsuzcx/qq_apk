@@ -43,7 +43,7 @@ public class GdtAdWSVerticalItemWidgetAreaController
     }
   }
   
-  public void a() {}
+  protected void a() {}
   
   public void a(WSVerticalItemData paramWSVerticalItemData)
   {
@@ -51,28 +51,29 @@ public class GdtAdWSVerticalItemWidgetAreaController
     b(paramWSVerticalItemData);
   }
   
-  public int b()
+  protected int b()
   {
-    return 2131560164;
+    return 2131560050;
   }
   
-  public void b() {}
+  protected void b() {}
   
-  public void c()
+  protected void c()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSVerticalItemWidgetButtonController != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSVerticalItemWidgetButtonController.c();
+    GdtAdWSVerticalItemWidgetButtonController localGdtAdWSVerticalItemWidgetButtonController = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoGdtGdtAdWSVerticalItemWidgetButtonController;
+    if (localGdtAdWSVerticalItemWidgetButtonController != null) {
+      localGdtAdWSVerticalItemWidgetButtonController.c();
     }
   }
   
-  public void e()
+  protected void e()
   {
-    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131381217));
+    this.jdField_a_of_type_AndroidViewViewStub = ((ViewStub)a(2131380473));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.GdtAdWSVerticalItemWidgetAreaController
  * JD-Core Version:    0.7.0.1
  */

@@ -52,19 +52,17 @@ public class PoiItem
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof PoiItem)) {
-        return false;
-      }
-      paramObject = (PoiItem)paramObject;
-      if (Double.compare(paramObject.longitude, this.longitude) != 0) {
-        return false;
-      }
-    } while (Double.compare(paramObject.latitude, this.latitude) == 0);
-    return false;
+    }
+    if (!(paramObject instanceof PoiItem)) {
+      return false;
+    }
+    paramObject = (PoiItem)paramObject;
+    if (Double.compare(paramObject.longitude, this.longitude) != 0) {
+      return false;
+    }
+    return Double.compare(paramObject.latitude, this.latitude) == 0;
   }
   
   public int hashCode()
@@ -77,7 +75,7 @@ public class PoiItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.data.PoiItem
  * JD-Core Version:    0.7.0.1
  */

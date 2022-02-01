@@ -21,13 +21,10 @@ class SingleViewPresentation$ImmContext
   private SingleViewPresentation$ImmContext(Context paramContext, @Nullable InputMethodManager paramInputMethodManager)
   {
     super(paramContext);
-    if (paramInputMethodManager != null) {}
-    for (;;)
-    {
-      this.inputMethodManager = paramInputMethodManager;
-      return;
+    if (paramInputMethodManager == null) {
       paramInputMethodManager = (InputMethodManager)paramContext.getSystemService("input_method");
     }
+    this.inputMethodManager = paramInputMethodManager;
   }
   
   public Context createDisplayContext(Display paramDisplay)
@@ -45,7 +42,7 @@ class SingleViewPresentation$ImmContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.SingleViewPresentation.ImmContext
  * JD-Core Version:    0.7.0.1
  */

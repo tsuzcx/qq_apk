@@ -39,11 +39,13 @@ public final class s_PolyPraise
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strPicUrl != null) {
-      paramJceOutputStream.write(this.strPicUrl, 1);
+    String str = this.strPicUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.strText != null) {
-      paramJceOutputStream.write(this.strText, 2);
+    str = this.strText;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.itype, 3);
     paramJceOutputStream.write(this.resourceId, 4);
@@ -52,7 +54,7 @@ public final class s_PolyPraise
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.s_PolyPraise
  * JD-Core Version:    0.7.0.1
  */

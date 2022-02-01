@@ -14,23 +14,18 @@ final class Completable$6
     try
     {
       Throwable localThrowable1 = (Throwable)this.val$errorFunc0.call();
-      label22:
-      Object localObject = localThrowable1;
-      if (localThrowable1 == null) {
-        localObject = new NullPointerException("The error supplied is null");
-      }
-      paramCompletableSubscriber.onError((Throwable)localObject);
-      return;
     }
-    catch (Throwable localThrowable2)
-    {
-      break label22;
+    catch (Throwable localThrowable2) {}
+    Object localObject = localThrowable2;
+    if (localThrowable2 == null) {
+      localObject = new NullPointerException("The error supplied is null");
     }
+    paramCompletableSubscriber.onError((Throwable)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.Completable.6
  * JD-Core Version:    0.7.0.1
  */

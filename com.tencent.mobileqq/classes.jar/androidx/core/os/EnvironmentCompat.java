@@ -31,14 +31,17 @@ public final class EnvironmentCompat
     }
     catch (IOException paramFile)
     {
-      Log.w("EnvironmentCompat", "Failed to resolve canonical path: " + paramFile);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to resolve canonical path: ");
+      localStringBuilder.append(paramFile);
+      Log.w("EnvironmentCompat", localStringBuilder.toString());
     }
     return "unknown";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.os.EnvironmentCompat
  * JD-Core Version:    0.7.0.1
  */

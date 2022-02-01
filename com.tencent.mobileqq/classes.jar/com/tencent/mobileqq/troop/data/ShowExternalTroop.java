@@ -43,32 +43,33 @@ public class ShowExternalTroop
       {
         paramGroupInfo = (ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class);
         this.strFaceUrl = paramGroupInfo.getThumbPhoto(paramGroupInfo.getAvatarAddress(null, this.troopUin, 0));
+        return;
       }
+      this.strFaceUrl = paramGroupInfo.str_face_url.get();
     }
-    else
-    {
-      return;
-    }
-    this.strFaceUrl = paramGroupInfo.str_face_url.get();
   }
   
   public static ShowExternalTroop createShowExternalTroop(String paramString1, String paramString2, long paramLong)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return null;
+    if (paramString1 != null)
+    {
+      if (paramString2 == null) {
+        return null;
+      }
+      ShowExternalTroop localShowExternalTroop = new ShowExternalTroop();
+      localShowExternalTroop.troopUin = paramString1;
+      localShowExternalTroop.troopName = paramString2;
+      localShowExternalTroop.addedTimestamp = paramLong;
+      paramString2 = (ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class);
+      localShowExternalTroop.strFaceUrl = paramString2.getThumbPhoto(paramString2.getAvatarAddress(null, paramString1, 0));
+      return localShowExternalTroop;
     }
-    ShowExternalTroop localShowExternalTroop = new ShowExternalTroop();
-    localShowExternalTroop.troopUin = paramString1;
-    localShowExternalTroop.troopName = paramString2;
-    localShowExternalTroop.addedTimestamp = paramLong;
-    paramString2 = (ITroopAvatarUtilApi)QRoute.api(ITroopAvatarUtilApi.class);
-    localShowExternalTroop.strFaceUrl = paramString2.getThumbPhoto(paramString2.getAvatarAddress(null, paramString1, 0));
-    return localShowExternalTroop;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.ShowExternalTroop
  * JD-Core Version:    0.7.0.1
  */

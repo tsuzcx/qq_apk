@@ -14,13 +14,14 @@ class ListenVideoCurrentTimeCase$1
     {
       long l = this.this$0.avPlayerService.getCurrentPositionMs();
       ListenVideoCurrentTimeCase.access$000(this.this$0, Long.valueOf(l));
-      ThreadCenter.postDelayedUITask(this.this$0, this.this$0.timeRunnable, 500L);
+      ListenVideoCurrentTimeCase localListenVideoCurrentTimeCase = this.this$0;
+      ThreadCenter.postDelayedUITask(localListenVideoCurrentTimeCase, localListenVideoCurrentTimeCase.timeRunnable, 500L);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.domain.usecase.ListenVideoCurrentTimeCase.1
  * JD-Core Version:    0.7.0.1
  */

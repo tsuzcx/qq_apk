@@ -51,48 +51,55 @@ public class d
   
   public static String a()
   {
-    int i = 0;
-    String[] arrayOfString;
-    int j;
     if (c == null)
     {
-      arrayOfString = new String[3];
+      String[] arrayOfString = new String[3];
+      int i = 0;
       arrayOfString[0] = "com.android.org.conscrypt";
       arrayOfString[1] = "org.conscrypt";
       arrayOfString[2] = "org.apache.harmony.xnet.provider.jsse";
-      j = arrayOfString.length;
-    }
-    for (;;)
-    {
-      String str;
-      if (i < j) {
-        str = arrayOfString[i];
-      }
-      try
+      int j = arrayOfString.length;
+      while (i < j)
       {
-        a(str + ".OpenSSLContextImpl");
-        c = str;
-        if (TextUtils.isEmpty(c)) {
-          a(new RuntimeException("cannot find OpenSSLContextImpl"));
+        String str = arrayOfString[i];
+        try
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(str);
+          localStringBuilder.append(".OpenSSLContextImpl");
+          a(localStringBuilder.toString());
+          c = str;
         }
-        return c;
-      }
-      catch (Exception localException)
-      {
+        catch (Exception localException)
+        {
+          label80:
+          break label80;
+        }
         i += 1;
       }
+      if (TextUtils.isEmpty(c)) {
+        a(new RuntimeException("cannot find OpenSSLContextImpl"));
+      }
     }
+    return c;
   }
   
   public static String a(Object paramObject)
   {
-    if ((paramObject instanceof FileDescriptor)) {
-      try
-      {
-        String str = "fd[" + a(FileDescriptor.class).a("descriptor").get(paramObject) + "]";
-        return str;
-      }
-      catch (Exception localException) {}
+    if ((paramObject instanceof FileDescriptor)) {}
+    try
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fd[");
+      ((StringBuilder)localObject).append(a(FileDescriptor.class).a("descriptor").get(paramObject));
+      ((StringBuilder)localObject).append("]");
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
+    }
+    catch (Exception localException)
+    {
+      label55:
+      break label55;
     }
     return String.valueOf(paramObject);
   }
@@ -104,7 +111,7 @@ public class d
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.d.d
  * JD-Core Version:    0.7.0.1
  */

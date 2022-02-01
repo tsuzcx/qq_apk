@@ -12,20 +12,25 @@ class ForwardPreviewTroopMemberController$4
   
   public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
   {
-    QLog.i("Forward.Preview.Dialog", 1, "onScrollStateChanged state: " + paramInt);
-    if (paramInt != 0) {
+    paramRecyclerView = new StringBuilder();
+    paramRecyclerView.append("onScrollStateChanged state: ");
+    paramRecyclerView.append(paramInt);
+    QLog.i("Forward.Preview.Dialog", 1, paramRecyclerView.toString());
+    if (paramInt != 0)
+    {
       ForwardPreviewTroopMemberController.a(this.a).pause();
-    }
-    while (!ForwardPreviewTroopMemberController.a(this.a).isPausing()) {
       return;
     }
-    ForwardPreviewTroopMemberController.a(this.a).resume();
-    ForwardPreviewTroopMemberController.a(this.a).notifyDataSetChanged();
+    if (ForwardPreviewTroopMemberController.a(this.a).isPausing())
+    {
+      ForwardPreviewTroopMemberController.a(this.a).resume();
+      ForwardPreviewTroopMemberController.a(this.a).notifyDataSetChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardPreviewTroopMemberController.4
  * JD-Core Version:    0.7.0.1
  */

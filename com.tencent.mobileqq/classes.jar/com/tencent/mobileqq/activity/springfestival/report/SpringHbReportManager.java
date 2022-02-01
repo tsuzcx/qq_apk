@@ -73,25 +73,21 @@ public class SpringHbReportManager
     long l = NetConnInfoCenter.getServerTimeMillis();
     Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
     int i = 0;
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       SpringHbReportManager.ReportInfo localReportInfo = (SpringHbReportManager.ReportInfo)localIterator.next();
-      if ((localReportInfo.isSending) || (!a(l, localReportInfo))) {
-        break label64;
+      if ((!localReportInfo.isSending) && (a(l, localReportInfo))) {
+        i += 1;
       }
-      i += 1;
     }
-    label64:
-    for (;;)
-    {
-      break;
-      return i;
-    }
+    return i;
   }
   
   private String a()
   {
-    StringBuilder localStringBuilder = new StringBuilder(((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath()).append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount()).append("/.config/");
+    StringBuilder localStringBuilder = new StringBuilder(((IQWalletHelper)QRoute.api(IQWalletHelper.class)).getQWalletInternalPath());
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount());
+    localStringBuilder.append("/.config/");
     localStringBuilder.append("report.cache");
     return localStringBuilder.toString();
   }
@@ -112,56 +108,62 @@ public class SpringHbReportManager
     //   12: astore_1
     //   13: aload 4
     //   15: monitorenter
-    //   16: aload_0
-    //   17: invokespecial 124	com/tencent/mobileqq/activity/springfestival/report/SpringHbReportManager:a	()Ljava/lang/String;
-    //   20: invokestatic 132	com/tencent/mobileqq/activity/qwallet/utils/QWalletTools:a	(Ljava/lang/String;)Ljava/lang/Object;
-    //   23: checkcast 30	java/util/LinkedList
-    //   26: astore_1
-    //   27: aload 4
-    //   29: monitorexit
-    //   30: aload_1
-    //   31: astore_2
-    //   32: aload_1
-    //   33: ifnonnull +11 -> 44
-    //   36: new 30	java/util/LinkedList
-    //   39: dup
-    //   40: invokespecial 31	java/util/LinkedList:<init>	()V
+    //   16: ldc 129
+    //   18: invokestatic 99	com/tencent/mobileqq/qroute/QRoute:api	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qroute/QRouteApi;
+    //   21: checkcast 129	com/tencent/mobileqq/qwallet/IQWalletApi
+    //   24: aload_0
+    //   25: invokespecial 124	com/tencent/mobileqq/activity/springfestival/report/SpringHbReportManager:a	()Ljava/lang/String;
+    //   28: invokeinterface 133 2 0
+    //   33: checkcast 30	java/util/LinkedList
+    //   36: astore_1
+    //   37: aload 4
+    //   39: monitorexit
+    //   40: goto +24 -> 64
     //   43: astore_2
     //   44: aload_2
-    //   45: areturn
-    //   46: astore_3
-    //   47: aload_2
-    //   48: astore_1
-    //   49: aload_1
-    //   50: astore_2
-    //   51: aload 4
-    //   53: monitorexit
-    //   54: aload_3
-    //   55: athrow
-    //   56: astore_2
-    //   57: aload_2
-    //   58: invokevirtual 135	java/lang/Throwable:printStackTrace	()V
-    //   61: goto -31 -> 30
-    //   64: astore_3
-    //   65: goto -16 -> 49
+    //   45: astore_3
+    //   46: goto +6 -> 52
+    //   49: astore_3
+    //   50: aload_2
+    //   51: astore_1
+    //   52: aload_1
+    //   53: astore_2
+    //   54: aload 4
+    //   56: monitorexit
+    //   57: aload_3
+    //   58: athrow
+    //   59: astore_2
+    //   60: aload_2
+    //   61: invokevirtual 136	java/lang/Throwable:printStackTrace	()V
+    //   64: aload_1
+    //   65: astore_2
+    //   66: aload_1
+    //   67: ifnonnull +11 -> 78
+    //   70: new 30	java/util/LinkedList
+    //   73: dup
+    //   74: invokespecial 31	java/util/LinkedList:<init>	()V
+    //   77: astore_2
+    //   78: aload_2
+    //   79: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	68	0	this	SpringHbReportManager
-    //   5	45	1	localObject1	Object
-    //   3	48	2	localObject2	Object
-    //   56	2	2	localThrowable	Throwable
-    //   1	11	3	localObject3	Object
-    //   46	9	3	localObject4	Object
-    //   64	1	3	localObject5	Object
-    //   9	43	4	arrayOfByte	byte[]
+    //   0	80	0	this	SpringHbReportManager
+    //   5	62	1	localObject1	Object
+    //   3	1	2	localObject2	Object
+    //   53	1	2	localObject4	Object
+    //   59	2	2	localThrowable	Throwable
+    //   65	14	2	localObject5	Object
+    //   1	45	3	localObject6	Object
+    //   49	9	3	localObject7	Object
+    //   9	46	4	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   16	27	46	finally
-    //   51	54	46	finally
-    //   6	11	56	java/lang/Throwable
-    //   13	16	56	java/lang/Throwable
-    //   54	56	56	java/lang/Throwable
-    //   27	30	64	finally
+    //   37	40	43	finally
+    //   16	37	49	finally
+    //   54	57	49	finally
+    //   6	11	59	java/lang/Throwable
+    //   13	16	59	java/lang/Throwable
+    //   57	59	59	java/lang/Throwable
   }
   
   private NewIntent a(String paramString, byte[] paramArrayOfByte, long paramLong)
@@ -192,26 +194,39 @@ public class SpringHbReportManager
     }
     localNYCommonInfo.plat.set(1);
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("uin=").append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
-    Object localObject = MobileInfoUtil.c();
-    if (!TextUtils.isEmpty((CharSequence)localObject)) {
-      localStringBuilder.append("&imei=").append((String)localObject);
+    localStringBuilder.append("uin=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getLongAccountUin());
+    Object localObject = MobileInfoUtil.getImei();
+    if (!TextUtils.isEmpty((CharSequence)localObject))
+    {
+      localStringBuilder.append("&imei=");
+      localStringBuilder.append((String)localObject);
     }
     localObject = ((ILbsManagerServiceApi)QRoute.api(ILbsManagerServiceApi.class)).getCachedLbsInfo("qq_spring_hb");
     if ((localObject != null) && (((SosoLbsInfo)localObject).mLocation != null))
     {
-      localStringBuilder.append("&lt=").append(((SosoLbsInfo)localObject).mLocation.mLon02);
-      localStringBuilder.append("&la=").append(((SosoLbsInfo)localObject).mLocation.mLat02);
+      localStringBuilder.append("&lt=");
+      localStringBuilder.append(((SosoLbsInfo)localObject).mLocation.mLon02);
+      localStringBuilder.append("&la=");
+      localStringBuilder.append(((SosoLbsInfo)localObject).mLocation.mLat02);
     }
-    if (!TextUtils.isEmpty(str)) {
-      localStringBuilder.append("&adcode=").append(str);
+    if (!TextUtils.isEmpty(str))
+    {
+      localStringBuilder.append("&adcode=");
+      localStringBuilder.append(str);
     }
-    localStringBuilder.append("&net=").append(b());
-    localStringBuilder.append("&plat=").append(1);
-    localStringBuilder.append("&ver=").append(DeviceInfoUtil.e());
-    localStringBuilder.append("&model=").append(DeviceInfoUtil.i());
-    localStringBuilder.append("&qqver=").append(DeviceInfoUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
-    localStringBuilder.append("&appid=").append(AppSetting.a());
+    localStringBuilder.append("&net=");
+    localStringBuilder.append(b());
+    localStringBuilder.append("&plat=");
+    localStringBuilder.append(1);
+    localStringBuilder.append("&ver=");
+    localStringBuilder.append(DeviceInfoUtil.e());
+    localStringBuilder.append("&model=");
+    localStringBuilder.append(DeviceInfoUtil.i());
+    localStringBuilder.append("&qqver=");
+    localStringBuilder.append(DeviceInfoUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()));
+    localStringBuilder.append("&appid=");
+    localStringBuilder.append(AppSetting.a());
     localNYCommonInfo.report_array.set(localStringBuilder.toString());
     return localNYCommonInfo;
   }
@@ -220,47 +235,53 @@ public class SpringHbReportManager
   {
     try
     {
-      Object localObject = new IntentFilter();
-      ((IntentFilter)localObject).addAction("com.tencent.plugin.state.change");
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, (IntentFilter)localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("spring_hb_report", 0);
-      this.jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("batch_size", 20);
-      this.jdField_a_of_type_Boolean = ((SharedPreferences)localObject).getBoolean("report_is_overload", false);
-      this.jdField_b_of_type_Int = ((SharedPreferences)localObject).getInt("report_level", 0);
-      this.jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong("report_level_time", 0L);
-      this.jdField_b_of_type_Long = ((SharedPreferences)localObject).getLong("last_report_time", 0L);
-      this.c = ((SharedPreferences)localObject).getLong("last_save_report_file_time", 0L);
-      this.jdField_a_of_type_JavaUtilLinkedList = a();
-      if (QLog.isColorLevel()) {
-        QLog.d("shua2021report_SpringHbReportManager", 2, "[init] mBatchSize:" + this.jdField_a_of_type_Int + ",mLastReportTime:" + this.jdField_b_of_type_Long + ",mLastSaveFileTime:" + this.c + ",mReportItems:" + this.jdField_a_of_type_JavaUtilLinkedList);
-      }
-      return;
+      IntentFilter localIntentFilter = new IntentFilter();
+      localIntentFilter.addAction("com.tencent.plugin.state.change");
+      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().registerReceiver(this.jdField_a_of_type_AndroidContentBroadcastReceiver, localIntentFilter);
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp().getSharedPreferences("spring_hb_report", 0);
+    this.jdField_a_of_type_Int = ((SharedPreferences)localObject).getInt("batch_size", 20);
+    this.jdField_a_of_type_Boolean = ((SharedPreferences)localObject).getBoolean("report_is_overload", false);
+    this.jdField_b_of_type_Int = ((SharedPreferences)localObject).getInt("report_level", 0);
+    this.jdField_a_of_type_Long = ((SharedPreferences)localObject).getLong("report_level_time", 0L);
+    this.jdField_b_of_type_Long = ((SharedPreferences)localObject).getLong("last_report_time", 0L);
+    this.c = ((SharedPreferences)localObject).getLong("last_save_report_file_time", 0L);
+    this.jdField_a_of_type_JavaUtilLinkedList = a();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[init] mBatchSize:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject).append(",mLastReportTime:");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Long);
+      ((StringBuilder)localObject).append(",mLastSaveFileTime:");
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(",mReportItems:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilLinkedList);
+      QLog.d("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject).toString());
     }
   }
   
   private void a(long paramLong)
   {
     long l;
-    if (paramLong < 0L) {
+    if (paramLong < 0L)
+    {
       l = 0L;
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + l);
-      BaseApplicationImpl.getApplication().getSharedPreferences("spring_hb_report", 0).edit().putLong("report_level_time", this.jdField_a_of_type_Long).apply();
-      return;
       l = paramLong;
       if (paramLong > 86400L) {
         l = 86400L;
       }
     }
+    this.jdField_a_of_type_Long = (NetConnInfoCenter.getServerTime() + l);
+    BaseApplicationImpl.getApplication().getSharedPreferences("spring_hb_report", 0).edit().putLong("report_level_time", this.jdField_a_of_type_Long).apply();
   }
   
   private void a(long paramLong, int paramInt)
@@ -276,11 +297,15 @@ public class SpringHbReportManager
       if (l <= 10000L)
       {
         l = 10000L - l;
-        if (QLog.isColorLevel()) {
-          QLog.d("shua2021report_SpringHbReportManager", 2, "[saveReportFile] no need to save, saveDelayTime=" + l);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("[saveReportFile] no need to save, saveDelayTime=");
+          ((StringBuilder)localObject).append(l);
+          QLog.d("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject).toString());
         }
         ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this.jdField_b_of_type_ArrayOfByte);
-        ThreadManager.getSubThreadHandler().postAtTime(new SpringHbReportManager.2(this), this.jdField_b_of_type_ArrayOfByte, l + SystemClock.uptimeMillis());
+        ThreadManager.getSubThreadHandler().postAtTime(new SpringHbReportManager.2(this), this.jdField_b_of_type_ArrayOfByte, SystemClock.uptimeMillis() + l);
         return;
       }
     }
@@ -290,13 +315,22 @@ public class SpringHbReportManager
     if (QLog.isColorLevel()) {
       QLog.d("shua2021report_SpringHbReportManager", 2, "[saveReportFile] go to save");
     }
-    LinkedList localLinkedList = new LinkedList(this.jdField_a_of_type_JavaUtilLinkedList);
-    ThreadManager.getFileThreadHandler().post(new SpringHbReportManager.3(this, localLinkedList));
+    Object localObject = new LinkedList(this.jdField_a_of_type_JavaUtilLinkedList);
+    ThreadManager.getFileThreadHandler().post(new SpringHbReportManager.3(this, (LinkedList)localObject));
   }
   
   private boolean a(long paramLong, SpringHbReportManager.ReportInfo paramReportInfo)
   {
-    return (paramReportInfo.reqSeq == 0L) || (paramLong - paramReportInfo.reqSeq > 1200000 * (paramReportInfo.retryCount + 1));
+    long l = paramReportInfo.reqSeq;
+    boolean bool = true;
+    if (l != 0L)
+    {
+      if (paramLong - paramReportInfo.reqSeq > (paramReportInfo.retryCount + 1) * 1200000) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   private boolean a(SpringHbReportManager.ReportInfo paramReportInfo)
@@ -304,49 +338,55 @@ public class SpringHbReportManager
     if ((paramReportInfo.isRealTime) && (this.jdField_a_of_type_Boolean)) {
       paramReportInfo.isRealTime = false;
     }
-    int i;
-    if (NetConnInfoCenter.getServerTime() > this.jdField_a_of_type_Long)
-    {
+    if (NetConnInfoCenter.getServerTime() > this.jdField_a_of_type_Long) {
       i = 1;
-      if (i != 0) {
-        this.jdField_b_of_type_Int = 0;
-      }
+    } else {
+      i = 0;
     }
-    switch (this.jdField_b_of_type_Int)
+    if (i != 0) {
+      this.jdField_b_of_type_Int = 0;
+    }
+    int i = this.jdField_b_of_type_Int;
+    if (i != 1)
     {
-    default: 
-    case 1: 
-    case 2: 
-      do
-      {
-        return false;
-        i = 0;
-        break;
-        paramReportInfo.isRealTime = false;
-        return false;
-      } while ((!TextUtils.equals(ReportConstant.Event.b, paramReportInfo.eventName)) && (!TextUtils.equals(ReportConstant.Event.a, paramReportInfo.eventName)) && (!TextUtils.equals(ReportConstant.Event.c, paramReportInfo.eventName)) && (!TextUtils.equals(ReportConstant.Event.e, paramReportInfo.eventName)) && (!TextUtils.equals(ReportConstant.Event.d, paramReportInfo.eventName)));
+      if (i != 2) {
+        return i == 3;
+      }
+      if ((!TextUtils.equals(ReportConstant.Event.b, paramReportInfo.eventName)) && (!TextUtils.equals(ReportConstant.Event.a, paramReportInfo.eventName)) && (!TextUtils.equals(ReportConstant.Event.c, paramReportInfo.eventName)) && (!TextUtils.equals(ReportConstant.Event.e, paramReportInfo.eventName))) {
+        return TextUtils.equals(ReportConstant.Event.d, paramReportInfo.eventName);
+      }
       return true;
     }
-    return true;
+    paramReportInfo.isRealTime = false;
+    return false;
   }
   
   private static int b()
   {
-    switch (NetworkUtil.b(BaseApplicationImpl.getContext()))
+    int j = NetworkUtil.getNetworkType(BaseApplicationImpl.getContext());
+    int i = 6;
+    if (j != 1)
     {
-    case 5: 
-    default: 
-      return 1;
-    case 1: 
-      return 3;
-    case 4: 
-      return 4;
-    case 3: 
-      return 5;
-    case 2: 
-      return 6;
+      if (j != 2)
+      {
+        if (j != 3)
+        {
+          if (j != 4)
+          {
+            if (j != 6) {
+              return 1;
+            }
+            return 7;
+          }
+          return 4;
+        }
+        return 5;
+      }
     }
-    return 7;
+    else {
+      i = 3;
+    }
+    return i;
   }
   
   private void b()
@@ -358,7 +398,8 @@ public class SpringHbReportManager
   private void b(int paramInt)
   {
     this.jdField_b_of_type_Int = paramInt;
-    if ((this.jdField_b_of_type_Int < 0) || (this.jdField_b_of_type_Int > 3)) {
+    paramInt = this.jdField_b_of_type_Int;
+    if ((paramInt < 0) || (paramInt > 3)) {
       this.jdField_b_of_type_Int = 0;
     }
     BaseApplicationImpl.getApplication().getSharedPreferences("spring_hb_report", 0).edit().putInt("report_level", this.jdField_b_of_type_Int).apply();
@@ -371,17 +412,26 @@ public class SpringHbReportManager
   
   private void b(SpringHbReportManager.ReportInfo paramReportInfo)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021report_SpringHbReportManager", 2, "[addToCache] mReportItems.size() = " + this.jdField_a_of_type_JavaUtilLinkedList.size());
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[addToCache] mReportItems.size() = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilLinkedList.size());
+      QLog.i("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject).toString());
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
     while (localIterator.hasNext())
     {
-      SpringHbReportManager.ReportInfo localReportInfo = (SpringHbReportManager.ReportInfo)localIterator.next();
-      if (localReportInfo.merge(paramReportInfo))
+      localObject = (SpringHbReportManager.ReportInfo)localIterator.next();
+      if (((SpringHbReportManager.ReportInfo)localObject).merge(paramReportInfo))
       {
-        if (QLog.isColorLevel()) {
-          QLog.i("shua2021report_SpringHbReportManager", 2, "[addToCache] merge succ:" + localReportInfo);
+        if (QLog.isColorLevel())
+        {
+          paramReportInfo = new StringBuilder();
+          paramReportInfo.append("[addToCache] merge succ:");
+          paramReportInfo.append(localObject);
+          QLog.i("shua2021report_SpringHbReportManager", 2, paramReportInfo.toString());
         }
         return;
       }
@@ -400,86 +450,100 @@ public class SpringHbReportManager
   
   private void c()
   {
-    long l1;
-    Object localObject3;
-    Object localObject4;
-    Object localObject2;
-    for (;;)
+    try
     {
-      try
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      long l1 = NetConnInfoCenter.getServerTimeMillis();
+      Object localObject3 = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
+      Object localObject4;
+      Object localObject2;
+      Object localObject5;
+      while (((Iterator)localObject3).hasNext())
       {
-        this.jdField_a_of_type_JavaUtilHashMap.clear();
-        l1 = NetConnInfoCenter.getServerTimeMillis();
-        localObject3 = this.jdField_a_of_type_JavaUtilLinkedList.iterator();
-        if (!((Iterator)localObject3).hasNext()) {
-          break;
-        }
         localObject4 = (SpringHbReportManager.ReportInfo)((Iterator)localObject3).next();
         if (((SpringHbReportManager.ReportInfo)localObject4).retryCount >= 2)
         {
           ((Iterator)localObject3).remove();
-          continue;
         }
-        l2 = ((SpringHbReportManager.ReportInfo)localObject4).reqSeq;
-      }
-      catch (Throwable localThrowable)
-      {
-        QLog.e("shua2021report_SpringHbReportManager", 1, localThrowable, new Object[0]);
-        return;
-      }
-      long l2;
-      if (a(l1, (SpringHbReportManager.ReportInfo)localObject4))
-      {
-        if (l2 == 0L) {
-          ((SpringHbReportManager.ReportInfo)localObject4).reqSeq = l1;
-        }
-        for (;;)
+        else
         {
-          ((SpringHbReportManager.ReportInfo)localObject4).isSending = true;
-          localObject2 = (LinkedList)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(((SpringHbReportManager.ReportInfo)localObject4).reqSeq));
-          localObject1 = localObject2;
-          if (localObject2 == null)
+          long l2 = ((SpringHbReportManager.ReportInfo)localObject4).reqSeq;
+          if (a(l1, (SpringHbReportManager.ReportInfo)localObject4))
           {
-            localObject1 = new LinkedList();
-            this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((SpringHbReportManager.ReportInfo)localObject4).reqSeq), localObject1);
+            if (l2 == 0L) {
+              ((SpringHbReportManager.ReportInfo)localObject4).reqSeq = l1;
+            } else {
+              ((SpringHbReportManager.ReportInfo)localObject4).retryCount += 1;
+            }
+            ((SpringHbReportManager.ReportInfo)localObject4).isSending = true;
+            localObject2 = (LinkedList)this.jdField_a_of_type_JavaUtilHashMap.get(Long.valueOf(((SpringHbReportManager.ReportInfo)localObject4).reqSeq));
+            localObject1 = localObject2;
+            if (localObject2 == null)
+            {
+              localObject1 = new LinkedList();
+              this.jdField_a_of_type_JavaUtilHashMap.put(Long.valueOf(((SpringHbReportManager.ReportInfo)localObject4).reqSeq), localObject1);
+            }
+            localObject2 = new newyear_report.NYReportItems();
+            ((newyear_report.NYReportItems)localObject2).optime.set(((SpringHbReportManager.ReportInfo)localObject4).optime);
+            ((newyear_report.NYReportItems)localObject2).event.set(((SpringHbReportManager.ReportInfo)localObject4).eventName);
+            ((newyear_report.NYReportItems)localObject2).action.set(((SpringHbReportManager.ReportInfo)localObject4).action);
+            ((newyear_report.NYReportItems)localObject2).result.set(((SpringHbReportManager.ReportInfo)localObject4).result);
+            ((newyear_report.NYReportItems)localObject2).count.set(((SpringHbReportManager.ReportInfo)localObject4).count);
+            ((newyear_report.NYReportItems)localObject2).str_action.set(((SpringHbReportManager.ReportInfo)localObject4).strAction);
+            localObject5 = new StringBuilder();
+            ((StringBuilder)localObject5).append(((SpringHbReportManager.ReportInfo)localObject4).paramsStr);
+            ((StringBuilder)localObject5).append("&optime=");
+            ((StringBuilder)localObject5).append(((SpringHbReportManager.ReportInfo)localObject4).optime);
+            ((SpringHbReportManager.ReportInfo)localObject4).paramsStr = ((StringBuilder)localObject5).toString();
+            ((newyear_report.NYReportItems)localObject2).param_array.set(((SpringHbReportManager.ReportInfo)localObject4).paramsStr);
+            ((LinkedList)localObject1).add(localObject2);
           }
-          localObject2 = new newyear_report.NYReportItems();
-          ((newyear_report.NYReportItems)localObject2).optime.set(((SpringHbReportManager.ReportInfo)localObject4).optime);
-          ((newyear_report.NYReportItems)localObject2).event.set(((SpringHbReportManager.ReportInfo)localObject4).eventName);
-          ((newyear_report.NYReportItems)localObject2).action.set(((SpringHbReportManager.ReportInfo)localObject4).action);
-          ((newyear_report.NYReportItems)localObject2).result.set(((SpringHbReportManager.ReportInfo)localObject4).result);
-          ((newyear_report.NYReportItems)localObject2).count.set(((SpringHbReportManager.ReportInfo)localObject4).count);
-          ((newyear_report.NYReportItems)localObject2).str_action.set(((SpringHbReportManager.ReportInfo)localObject4).strAction);
-          ((SpringHbReportManager.ReportInfo)localObject4).paramsStr = (((SpringHbReportManager.ReportInfo)localObject4).paramsStr + "&optime=" + ((SpringHbReportManager.ReportInfo)localObject4).optime);
-          ((newyear_report.NYReportItems)localObject2).param_array.set(((SpringHbReportManager.ReportInfo)localObject4).paramsStr);
-          ((LinkedList)localObject1).add(localObject2);
-          break;
-          ((SpringHbReportManager.ReportInfo)localObject4).retryCount += 1;
         }
       }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("shua2021report_SpringHbReportManager", 2, "[doReportRequest] " + this.jdField_a_of_type_JavaUtilLinkedList + ",mToReqMap:" + this.jdField_a_of_type_JavaUtilHashMap + ",convertCost:" + (System.currentTimeMillis() - l1));
-    }
-    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject3 = (Map.Entry)((Iterator)localObject1).next();
-      localObject2 = (LinkedList)((Map.Entry)localObject3).getValue();
-      localObject4 = new newyear_report.NYReportReq();
-      ((newyear_report.NYReportReq)localObject4).commonInfo.set(a());
-      ((newyear_report.NYReportReq)localObject4).reportItems.set((List)localObject2);
-      newyear_report.SsoReq localSsoReq = new newyear_report.SsoReq();
-      localSsoReq.data.set((MessageMicro)localObject4);
-      localObject4 = a("NY2021Report.report", localSsoReq.toByteArray(), 30000L);
-      localObject3 = (Long)((Map.Entry)localObject3).getKey();
-      ((NewIntent)localObject4).setObserver(a(((Long)localObject3).longValue()));
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject4);
-      if (QLog.isColorLevel()) {
-        QLog.d("shua2021report_SpringHbReportManager", 2, "[doReportRequest],reqSeq:" + localObject3 + ",startTime:" + l1 + ",batchReqSize:" + ((LinkedList)localObject2).size());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("[doReportRequest] ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilLinkedList);
+        ((StringBuilder)localObject1).append(",mToReqMap:");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilHashMap);
+        ((StringBuilder)localObject1).append(",convertCost:");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
+        QLog.d("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject1).toString());
       }
+      Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap.entrySet().iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject3 = (Map.Entry)((Iterator)localObject1).next();
+        localObject2 = (LinkedList)((Map.Entry)localObject3).getValue();
+        localObject4 = new newyear_report.NYReportReq();
+        ((newyear_report.NYReportReq)localObject4).commonInfo.set(a());
+        ((newyear_report.NYReportReq)localObject4).reportItems.set((List)localObject2);
+        localObject5 = new newyear_report.SsoReq();
+        ((newyear_report.SsoReq)localObject5).data.set((MessageMicro)localObject4);
+        localObject4 = a("NY2021Report.report", ((newyear_report.SsoReq)localObject5).toByteArray(), 30000L);
+        localObject3 = (Long)((Map.Entry)localObject3).getKey();
+        ((NewIntent)localObject4).setObserver(a(((Long)localObject3).longValue()));
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.startServlet((NewIntent)localObject4);
+        if (QLog.isColorLevel())
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("[doReportRequest],reqSeq:");
+          ((StringBuilder)localObject4).append(localObject3);
+          ((StringBuilder)localObject4).append(",startTime:");
+          ((StringBuilder)localObject4).append(l1);
+          ((StringBuilder)localObject4).append(",batchReqSize:");
+          ((StringBuilder)localObject4).append(((LinkedList)localObject2).size());
+          QLog.d("shua2021report_SpringHbReportManager", 2, ((StringBuilder)localObject4).toString());
+        }
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    catch (Throwable localThrowable)
+    {
+      QLog.e("shua2021report_SpringHbReportManager", 1, localThrowable, new Object[0]);
+    }
   }
   
   private void c(int paramInt)
@@ -493,65 +557,101 @@ public class SpringHbReportManager
   private void d(int paramInt)
   {
     int j = a();
-    if (QLog.isColorLevel()) {
-      QLog.i("shua2021report_SpringHbReportManager", 2, "[tryReportNow] reportScene:" + paramInt + ",reportCount:" + j);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[tryReportNow] reportScene:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",reportCount:");
+      localStringBuilder.append(j);
+      QLog.i("shua2021report_SpringHbReportManager", 2, localStringBuilder.toString());
     }
     if (j <= 0) {
       return;
     }
-    int i;
-    boolean bool1;
-    if (j >= this.jdField_a_of_type_Int)
-    {
+    int i = this.jdField_a_of_type_Int;
+    boolean bool3 = true;
+    if (j >= i) {
       i = 1;
-      l1 = Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.jdField_b_of_type_Long);
-      if ((l1 < 600000L) || (this.jdField_b_of_type_Long == 0L)) {
-        break label321;
-      }
+    } else {
+      i = 0;
+    }
+    long l1 = Math.abs(NetConnInfoCenter.getServerTimeMillis() - this.jdField_b_of_type_Long);
+    boolean bool1;
+    if ((l1 >= 600000L) && (this.jdField_b_of_type_Long != 0L)) {
       bool1 = true;
-      label97:
-      if ((paramInt != 1) && (paramInt != 3) && (paramInt != 4)) {
-        break label327;
+    } else {
+      bool1 = false;
+    }
+    boolean bool2 = bool3;
+    if (paramInt != 1)
+    {
+      bool2 = bool3;
+      if (paramInt != 3) {
+        if (paramInt == 4) {
+          bool2 = bool3;
+        } else {
+          bool2 = false;
+        }
       }
     }
-    label321:
-    label327:
-    for (boolean bool2 = true;; bool2 = false)
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("shua2021report_SpringHbReportManager", 2, "[tryReportInner] reportCount:" + j + ",mBatchSize:" + this.jdField_a_of_type_Int + ",isRealTime:" + bool2 + ",reportInterval:" + l1 + ",isTimeOk:" + bool1);
-      }
-      if (((!bool2) && (!bool1) && (i == 0)) || (!NetworkUtil.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp()))) {
-        break label333;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("shua2021report_SpringHbReportManager", 2, "[doReportRequest] tryReportInner,reportCount:" + j + ",mBatchSize:" + this.jdField_a_of_type_Int + ",isRealTime:" + bool2 + ",reportInterval:" + l1 + ",isTimeOk:" + bool1);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[tryReportInner] reportCount:");
+      localStringBuilder.append(j);
+      localStringBuilder.append(",mBatchSize:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(",isRealTime:");
+      localStringBuilder.append(bool2);
+      localStringBuilder.append(",reportInterval:");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(",isTimeOk:");
+      localStringBuilder.append(bool1);
+      QLog.d("shua2021report_SpringHbReportManager", 2, localStringBuilder.toString());
+    }
+    if (((bool2) || (bool1) || (i != 0)) && (NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp())))
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[doReportRequest] tryReportInner,reportCount:");
+        localStringBuilder.append(j);
+        localStringBuilder.append(",mBatchSize:");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(",isRealTime:");
+        localStringBuilder.append(bool2);
+        localStringBuilder.append(",reportInterval:");
+        localStringBuilder.append(l1);
+        localStringBuilder.append(",isTimeOk:");
+        localStringBuilder.append(bool1);
+        QLog.d("shua2021report_SpringHbReportManager", 2, localStringBuilder.toString());
       }
       c();
       b();
       ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
       return;
-      i = 0;
-      break;
-      bool1 = false;
-      break label97;
     }
-    label333:
-    if (this.jdField_b_of_type_Long == 0L) {}
-    for (long l1 = 600000L;; l1 = 600000L - l1)
+    if (this.jdField_b_of_type_Long == 0L) {
+      l1 = 600000L;
+    } else {
+      l1 = 600000L - l1;
+    }
+    long l2 = 600000L;
+    if (l1 <= 0L) {
+      l1 = l2;
+    }
+    if (QLog.isColorLevel())
     {
-      long l2 = l1;
-      if (l1 <= 0L) {
-        l2 = 600000L;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021report_SpringHbReportManager", 2, "[tryReportInner] schedule delayTime:" + l2);
-      }
-      ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
-      ThreadManager.getSubThreadHandler().postAtTime(new SpringHbReportManager.6(this), this, l2 + SystemClock.uptimeMillis());
-      a(false);
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[tryReportInner] schedule delayTime:");
+      localStringBuilder.append(l1);
+      QLog.i("shua2021report_SpringHbReportManager", 2, localStringBuilder.toString());
     }
+    ThreadManager.getSubThreadHandler().removeCallbacksAndMessages(this);
+    ThreadManager.getSubThreadHandler().postAtTime(new SpringHbReportManager.6(this), this, SystemClock.uptimeMillis() + l1);
+    a(false);
   }
   
   public void a(int paramInt)
@@ -583,7 +683,7 @@ public class SpringHbReportManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbReportManager
  * JD-Core Version:    0.7.0.1
  */

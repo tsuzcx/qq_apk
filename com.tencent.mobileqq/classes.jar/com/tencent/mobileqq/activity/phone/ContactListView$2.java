@@ -23,27 +23,29 @@ class ContactListView$2
     ContactListView.a(this.a).setVisibility(4);
     QQPimTipsInfoHelper.a(this.a.getContext(), QQPimGetTipsInfoIPC.a().a);
     String str = ContactListView.a(this.a).getAccount();
-    Object localObject = (TicketManagerImpl)ContactListView.a(this.a).getManager(2);
-    if (localObject == null) {}
-    for (;;)
+    Object localObject1 = (TicketManagerImpl)ContactListView.a(this.a).getManager(2);
+    if (localObject1 != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = ((TicketManagerImpl)localObject).getA2(str);
-      if (QLog.isColorLevel()) {
-        QLog.i("ContactListView", 2, "a2 = " + (String)localObject);
+      localObject1 = ((TicketManagerImpl)localObject1).getA2(str);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("a2 = ");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.i("ContactListView", 2, ((StringBuilder)localObject2).toString());
       }
-      Bundle localBundle = new Bundle();
-      localBundle.putString(QQPimDefineList.o, QQPimDefineList.i);
-      localBundle.putString(QQPimDefineList.l, str);
-      localBundle.putString(QQPimDefineList.m, (String)localObject);
-      new QQPimJumpHelper().a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, localBundle);
+      Object localObject2 = new Bundle();
+      ((Bundle)localObject2).putString(QQPimDefineList.o, QQPimDefineList.i);
+      ((Bundle)localObject2).putString(QQPimDefineList.l, str);
+      ((Bundle)localObject2).putString(QQPimDefineList.m, (String)localObject1);
+      new QQPimJumpHelper().a(this.a.jdField_a_of_type_ComTencentMobileqqAppBaseActivity, (Bundle)localObject2);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.ContactListView.2
  * JD-Core Version:    0.7.0.1
  */

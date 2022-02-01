@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.webview.swift.utils;
 
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.webprocess.WebAccelerateHelper;
 import com.tencent.mobileqq.webview.swift.SwiftReuseTouchWebView;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class SwiftBrowserIdleTaskHelper$PreloadIdleTask
@@ -21,48 +21,59 @@ public class SwiftBrowserIdleTaskHelper$PreloadIdleTask
       if (QLog.isColorLevel()) {
         QLog.d("SwiftBrowserIdleTaskHelper", 2, "preloadBrowserView on idle.");
       }
-    }
-    do
-    {
       return 2;
-      if (SwiftReuseTouchWebView.c != 0) {
-        break;
+    }
+    if (SwiftReuseTouchWebView.c == 0)
+    {
+      SwiftReuseTouchWebView.a(BaseApplication.getContext()).a(true);
+      if (QLog.isColorLevel()) {
+        QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
       }
-      SwiftReuseTouchWebView.a(BaseApplicationImpl.sApplication).a(true);
-    } while (!QLog.isColorLevel());
-    QLog.d("SwiftBrowserIdleTaskHelper", 2, "preload Webview on idle.");
-    return 2;
-    long l;
+      return 2;
+    }
+    StringBuilder localStringBuilder;
     if (SwiftBrowserIdleTaskHelper.a() < 5)
     {
-      l = System.currentTimeMillis();
+      long l = System.currentTimeMillis();
       if (System.currentTimeMillis() > SwiftBrowserIdleTaskHelper.a() + 10000L)
       {
         SwiftBrowserIdleTaskHelper.a();
         SwiftBrowserIdleTaskHelper.b();
         SwiftBrowserIdleTaskHelper.a(l);
-        if (QLog.isColorLevel()) {
+        if (QLog.isColorLevel())
+        {
           QLog.d("SwiftBrowserIdleTaskHelper", 2, "downloadX5KernelIfNeeded on idle.");
+          return 1;
         }
       }
-    }
-    for (;;)
-    {
-      return 1;
-      if (QLog.isColorLevel())
+      else if (QLog.isColorLevel())
       {
-        QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because time limit:" + l + " - " + SwiftBrowserIdleTaskHelper.a() + " < 10s.");
-        continue;
-        if (QLog.isColorLevel()) {
-          QLog.d("SwiftBrowserIdleTaskHelper", 2, "not need check because count limit:" + SwiftBrowserIdleTaskHelper.a() + ">=" + 5 + ".");
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("not need check because time limit:");
+        localStringBuilder.append(l);
+        localStringBuilder.append(" - ");
+        localStringBuilder.append(SwiftBrowserIdleTaskHelper.a());
+        localStringBuilder.append(" < 10s.");
+        QLog.d("SwiftBrowserIdleTaskHelper", 2, localStringBuilder.toString());
+        return 1;
       }
     }
+    else if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("not need check because count limit:");
+      localStringBuilder.append(SwiftBrowserIdleTaskHelper.a());
+      localStringBuilder.append(">=");
+      localStringBuilder.append(5);
+      localStringBuilder.append(".");
+      QLog.d("SwiftBrowserIdleTaskHelper", 2, localStringBuilder.toString());
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.utils.SwiftBrowserIdleTaskHelper.PreloadIdleTask
  * JD-Core Version:    0.7.0.1
  */

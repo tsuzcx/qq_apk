@@ -62,8 +62,8 @@ public class EdgeEffect
   public EdgeEffect(Context paramContext)
   {
     paramContext = paramContext.getResources();
-    this.mEdge = paramContext.getDrawable(2130841657);
-    this.mGlow = paramContext.getDrawable(2130841658);
+    this.mEdge = paramContext.getDrawable(2130841542);
+    this.mGlow = paramContext.getDrawable(2130841543);
     this.mMinWidth = ((int)(paramContext.getDisplayMetrics().density * 300.0F + 0.5F));
     this.mInterpolator = new DecelerateInterpolator();
   }
@@ -72,29 +72,53 @@ public class EdgeEffect
   {
     float f1 = Math.min((float)(AnimationUtils.currentAnimationTimeMillis() - this.mStartTime) / this.mDuration, 1.0F);
     float f2 = this.mInterpolator.getInterpolation(f1);
-    this.mEdgeAlpha = (this.mEdgeAlphaStart + (this.mEdgeAlphaFinish - this.mEdgeAlphaStart) * f2);
-    this.mEdgeScaleY = (this.mEdgeScaleYStart + (this.mEdgeScaleYFinish - this.mEdgeScaleYStart) * f2);
-    this.mGlowAlpha = (this.mGlowAlphaStart + (this.mGlowAlphaFinish - this.mGlowAlphaStart) * f2);
-    this.mGlowScaleY = (this.mGlowScaleYStart + (this.mGlowScaleYFinish - this.mGlowScaleYStart) * f2);
-    if (f1 >= 0.999F) {}
-    switch (this.mState)
+    float f3 = this.mEdgeAlphaStart;
+    this.mEdgeAlpha = (f3 + (this.mEdgeAlphaFinish - f3) * f2);
+    f3 = this.mEdgeScaleYStart;
+    this.mEdgeScaleY = (f3 + (this.mEdgeScaleYFinish - f3) * f2);
+    f3 = this.mGlowAlphaStart;
+    this.mGlowAlpha = (f3 + (this.mGlowAlphaFinish - f3) * f2);
+    f3 = this.mGlowScaleYStart;
+    float f4 = this.mGlowScaleYFinish;
+    this.mGlowScaleY = (f3 + (f4 - f3) * f2);
+    if (f1 >= 0.999F)
     {
-    default: 
-      return;
-    case 2: 
-      this.mState = 3;
-      this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
-      this.mDuration = 1000.0F;
-      this.mEdgeAlphaStart = this.mEdgeAlpha;
-      this.mEdgeScaleYStart = this.mEdgeScaleY;
-      this.mGlowAlphaStart = this.mGlowAlpha;
-      this.mGlowScaleYStart = this.mGlowScaleY;
-      this.mEdgeAlphaFinish = 0.0F;
-      this.mEdgeScaleYFinish = 0.0F;
-      this.mGlowAlphaFinish = 0.0F;
-      this.mGlowScaleYFinish = 0.0F;
-      return;
-    case 1: 
+      int i = this.mState;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4) {
+              return;
+            }
+            if (f4 != 0.0F) {
+              f1 = 1.0F / (f4 * f4);
+            } else {
+              f1 = 3.4028235E+38F;
+            }
+            f3 = this.mEdgeScaleYStart;
+            this.mEdgeScaleY = (f3 + (this.mEdgeScaleYFinish - f3) * f2 * f1);
+            this.mState = 3;
+            return;
+          }
+          this.mState = 0;
+          return;
+        }
+        this.mState = 3;
+        this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
+        this.mDuration = 1000.0F;
+        this.mEdgeAlphaStart = this.mEdgeAlpha;
+        this.mEdgeScaleYStart = this.mEdgeScaleY;
+        this.mGlowAlphaStart = this.mGlowAlpha;
+        this.mGlowScaleYStart = this.mGlowScaleY;
+        this.mEdgeAlphaFinish = 0.0F;
+        this.mEdgeScaleYFinish = 0.0F;
+        this.mGlowAlphaFinish = 0.0F;
+        this.mGlowScaleYFinish = 0.0F;
+        return;
+      }
       this.mState = 4;
       this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
       this.mDuration = 1000.0F;
@@ -106,55 +130,50 @@ public class EdgeEffect
       this.mEdgeScaleYFinish = 0.0F;
       this.mGlowAlphaFinish = 0.0F;
       this.mGlowScaleYFinish = 0.0F;
-      return;
-    case 4: 
-      if (this.mGlowScaleYFinish != 0.0F) {}
-      for (f1 = 1.0F / (this.mGlowScaleYFinish * this.mGlowScaleYFinish);; f1 = 3.4028235E+38F)
-      {
-        float f3 = this.mEdgeScaleYStart;
-        this.mEdgeScaleY = (f1 * (f2 * (this.mEdgeScaleYFinish - this.mEdgeScaleYStart)) + f3);
-        this.mState = 3;
-        return;
-      }
     }
-    this.mState = 0;
   }
   
   public boolean draw(Canvas paramCanvas)
   {
-    boolean bool = false;
     update();
     int i = this.mEdge.getIntrinsicHeight();
     this.mEdge.getIntrinsicWidth();
     int j = this.mGlow.getIntrinsicHeight();
     int k = this.mGlow.getIntrinsicWidth();
     this.mGlow.setAlpha((int)(Math.max(0.0F, Math.min(this.mGlowAlpha, 1.0F)) * 255.0F));
-    j = (int)Math.min(j * this.mGlowScaleY * j / k * 0.6F, j * 4.0F);
-    if (this.mWidth < this.mMinWidth)
+    float f = j;
+    j = (int)Math.min(this.mGlowScaleY * f * f / k * 0.6F, f * 4.0F);
+    k = this.mWidth;
+    int m = this.mMinWidth;
+    boolean bool = false;
+    if (k < m)
     {
-      k = (this.mWidth - this.mMinWidth) / 2;
-      this.mGlow.setBounds(k, 0, this.mWidth - k, j);
-      this.mGlow.draw(paramCanvas);
-      this.mEdge.setAlpha((int)(Math.max(0.0F, Math.min(this.mEdgeAlpha, 1.0F)) * 255.0F));
-      i = (int)(i * this.mEdgeScaleY);
-      if (this.mWidth >= this.mMinWidth) {
-        break label249;
-      }
-      j = (this.mWidth - this.mMinWidth) / 2;
-      this.mEdge.setBounds(j, 0, this.mWidth - j, i);
+      m = (k - m) / 2;
+      this.mGlow.setBounds(m, 0, k - m, j);
     }
-    for (;;)
+    else
     {
-      this.mEdge.draw(paramCanvas);
-      if (this.mState != 0) {
-        bool = true;
-      }
-      return bool;
-      this.mGlow.setBounds(0, 0, this.mWidth, j);
-      break;
-      label249:
-      this.mEdge.setBounds(0, 0, this.mWidth, i);
+      this.mGlow.setBounds(0, 0, k, j);
     }
+    this.mGlow.draw(paramCanvas);
+    this.mEdge.setAlpha((int)(Math.max(0.0F, Math.min(this.mEdgeAlpha, 1.0F)) * 255.0F));
+    i = (int)(i * this.mEdgeScaleY);
+    j = this.mWidth;
+    k = this.mMinWidth;
+    if (j < k)
+    {
+      k = (j - k) / 2;
+      this.mEdge.setBounds(k, 0, j - k, i);
+    }
+    else
+    {
+      this.mEdge.setBounds(0, 0, j, i);
+    }
+    this.mEdge.draw(paramCanvas);
+    if (this.mState != 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   public void finish()
@@ -172,15 +191,16 @@ public class EdgeEffect
     this.mState = 2;
     paramInt = Math.max(100, Math.abs(paramInt));
     this.mStartTime = AnimationUtils.currentAnimationTimeMillis();
-    this.mDuration = (0.1F + paramInt * 0.03F);
+    this.mDuration = (paramInt * 0.03F + 0.1F);
     this.mEdgeAlphaStart = 0.0F;
     this.mEdgeScaleYStart = 0.0F;
     this.mEdgeScaleY = 0.0F;
     this.mGlowAlphaStart = 0.5F;
     this.mGlowScaleYStart = 0.0F;
-    this.mEdgeAlphaFinish = Math.max(0, Math.min(paramInt * 8, 1));
-    this.mEdgeScaleYFinish = Math.max(0.5F, Math.min(paramInt * 8, 1.0F));
-    this.mGlowScaleYFinish = Math.min(0.025F + paramInt / 100 * paramInt * 0.00015F, 1.75F);
+    int i = paramInt * 8;
+    this.mEdgeAlphaFinish = Math.max(0, Math.min(i, 1));
+    this.mEdgeScaleYFinish = Math.max(0.5F, Math.min(i, 1.0F));
+    this.mGlowScaleYFinish = Math.min(paramInt / 100 * paramInt * 0.00015F + 0.025F, 1.75F);
     this.mGlowAlphaFinish = Math.max(this.mGlowAlphaStart, Math.min(paramInt * 16 * 1.0E-005F, 0.8F));
   }
   
@@ -219,7 +239,7 @@ public class EdgeEffect
     if (this.mPullDistance == 0.0F) {
       this.mGlowScaleY = 0.0F;
     }
-    paramFloat = Math.min(4.0F, Math.max(0.0F, f1 * 7.0F + this.mGlowScaleY));
+    paramFloat = Math.min(4.0F, Math.max(0.0F, this.mGlowScaleY + f1 * 7.0F));
     this.mGlowScaleYStart = paramFloat;
     this.mGlowScaleY = paramFloat;
     this.mEdgeAlphaFinish = this.mEdgeAlpha;
@@ -231,7 +251,8 @@ public class EdgeEffect
   public void onRelease()
   {
     this.mPullDistance = 0.0F;
-    if ((this.mState != 1) && (this.mState != 4)) {
+    int i = this.mState;
+    if ((i != 1) && (i != 4)) {
       return;
     }
     this.mState = 3;
@@ -261,7 +282,7 @@ public class EdgeEffect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.EdgeEffect
  * JD-Core Version:    0.7.0.1
  */

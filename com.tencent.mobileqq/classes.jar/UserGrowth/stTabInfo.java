@@ -36,22 +36,25 @@ public final class stTabInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.name != null) {
-      paramJceOutputStream.write(this.name, 0);
+    Object localObject = this.name;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.id, 1);
     paramJceOutputStream.write(this.displayType, 2);
-    if (this.displayIcon != null) {
-      paramJceOutputStream.write(this.displayIcon, 3);
+    localObject = this.displayIcon;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.schema != null) {
-      paramJceOutputStream.write(this.schema, 4);
+    localObject = this.schema;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stTabInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -25,13 +25,16 @@ class VLottie$2
     }
     catch (Exception localException)
     {
-      ViolaLogUtils.e("VComponent", "lottie v_setAnimation message:" + localException.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("lottie v_setAnimation message:");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("VComponent", localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VLottie.2
  * JD-Core Version:    0.7.0.1
  */

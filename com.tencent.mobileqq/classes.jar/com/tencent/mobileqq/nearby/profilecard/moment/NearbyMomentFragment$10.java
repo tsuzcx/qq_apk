@@ -37,24 +37,21 @@ class NearbyMomentFragment$10
       }
       if ((localMomentFeedInfo.jdField_a_of_type_JavaUtilList != null) && (localMomentFeedInfo.jdField_a_of_type_JavaUtilList.size() > 0))
       {
+        Object localObject = null;
         Iterator localIterator = localMomentFeedInfo.jdField_a_of_type_JavaUtilList.iterator();
         do
         {
+          paramString = localObject;
           if (!localIterator.hasNext()) {
             break;
           }
           paramString = (CommentInfo)localIterator.next();
         } while (paramString.a != paramLong);
-      }
-    }
-    for (;;)
-    {
-      if (paramString != null) {
-        localMomentFeedInfo.jdField_a_of_type_JavaUtilList.remove(paramString);
+        if (paramString != null) {
+          localMomentFeedInfo.jdField_a_of_type_JavaUtilList.remove(paramString);
+        }
       }
       NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      return;
-      paramString = null;
     }
   }
   
@@ -90,16 +87,12 @@ class NearbyMomentFragment$10
       paramString = (ShortVideoMomentFeedInfo)paramString;
       paramString.e += 1;
     }
-    for (;;)
+    else if ((paramString instanceof ChangMomentFeedInfo))
     {
-      NearbyMomentFragment.a(this.a).notifyDataSetChanged();
-      return;
-      if ((paramString instanceof ChangMomentFeedInfo))
-      {
-        paramString = (ChangMomentFeedInfo)paramString;
-        paramString.e += 1;
-      }
+      paramString = (ChangMomentFeedInfo)paramString;
+      paramString.e += 1;
     }
+    NearbyMomentFragment.a(this.a).notifyDataSetChanged();
   }
   
   public void c(String paramString, long paramLong)
@@ -117,7 +110,7 @@ class NearbyMomentFragment$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.moment.NearbyMomentFragment.10
  * JD-Core Version:    0.7.0.1
  */

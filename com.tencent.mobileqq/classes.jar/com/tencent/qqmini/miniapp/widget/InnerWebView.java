@@ -9,6 +9,7 @@ import android.os.Build.VERSION;
 import android.text.TextUtils;
 import android.util.Base64;
 import android.webkit.ValueCallback;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView;
 import com.tencent.qqmini.miniapp.util.FileChooserHelper;
 import com.tencent.qqmini.miniapp.util.IPV6OnlyUtils;
 import com.tencent.qqmini.sdk.core.BaseRuntimeImpl.BaselibProvider;
@@ -49,7 +50,7 @@ import java.util.Set;
 import org.json.JSONObject;
 
 public class InnerWebView
-  extends WebView
+  extends DtX5WebView
   implements IJsService
 {
   public static final String API_BATCH_CARD = "batchAddCard";
@@ -91,105 +92,141 @@ public class InnerWebView
     super(paramActivity);
     this.mActivity = paramActivity;
     WebSettings localWebSettings = getSettings();
-    ChannelProxy localChannelProxy = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
-    String str = "";
-    paramActivity = str;
-    if (this.mMiniAppContext != null)
-    {
-      paramActivity = str;
-      if (this.mMiniAppContext.getMiniAppInfo() != null) {
-        paramActivity = this.mMiniAppContext.getMiniAppInfo().appId;
-      }
+    Object localObject = (ChannelProxy)ProxyManager.get(ChannelProxy.class);
+    paramActivity = this.mMiniAppContext;
+    if ((paramActivity != null) && (paramActivity.getMiniAppInfo() != null)) {
+      paramActivity = this.mMiniAppContext.getMiniAppInfo().appId;
+    } else {
+      paramActivity = "";
     }
-    if ((localChannelProxy != null) && (localChannelProxy.isGooglePlayVersion())) {}
-    for (paramActivity = localWebSettings.getUserAgentString() + " QQ/" + QUAUtil.getPlatformVersionString() + "_GM " + QUAUtil.getPlatformQUA() + " miniProgram miniprogramhtmlwebview QMA/" + paramActivity;; paramActivity = localWebSettings.getUserAgentString() + " QQ/" + QUAUtil.getPlatformVersionString() + " " + QUAUtil.getPlatformQUA() + " miniProgram miniprogramhtmlwebview QMA/" + paramActivity)
+    if ((localObject != null) && (((ChannelProxy)localObject).isGooglePlayVersion()))
     {
-      localWebSettings.setUserAgent(paramActivity);
-      localWebSettings.setSavePassword(false);
-      localWebSettings.setSaveFormData(false);
-      localWebSettings.setBuiltInZoomControls(true);
-      localWebSettings.setUseWideViewPort(true);
-      localWebSettings.setLoadWithOverviewMode(true);
-      localWebSettings.setPluginState(WebSettings.PluginState.ON);
-      localWebSettings.setPluginsEnabled(true);
-      localWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
-      localWebSettings.setJavaScriptEnabled(true);
-      localWebSettings.setSupportZoom(false);
-      localWebSettings.setCacheMode(-1);
-      if (Build.VERSION.SDK_INT >= 11)
-      {
-        removeJavascriptInterface("searchBoxJavaBridge_");
-        removeJavascriptInterface("accessibility");
-        removeJavascriptInterface("accessibilityTraversal");
-      }
-      if (Build.VERSION.SDK_INT >= 21) {
-        localWebSettings.setMixedContentMode(0);
-      }
-      localWebSettings.setAllowContentAccess(true);
-      localWebSettings.setDatabaseEnabled(true);
-      localWebSettings.setDomStorageEnabled(true);
-      localWebSettings.setAppCacheEnabled(true);
-      localWebSettings.setMediaPlaybackRequiresUserGesture(false);
-      if (Build.VERSION.SDK_INT >= 21) {
-        localWebSettings.setMixedContentMode(0);
-      }
-      try
-      {
-        requestFocus();
-        return;
-      }
-      catch (Exception paramActivity) {}
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(localWebSettings.getUserAgentString());
+      ((StringBuilder)localObject).append(" QQ/");
+      ((StringBuilder)localObject).append(QUAUtil.getPlatformVersionString());
+      ((StringBuilder)localObject).append("_GM ");
+      ((StringBuilder)localObject).append(QUAUtil.getPlatformQUA());
+      ((StringBuilder)localObject).append(" miniProgram miniprogramhtmlwebview QMA/");
+      ((StringBuilder)localObject).append(paramActivity);
+      paramActivity = ((StringBuilder)localObject).toString();
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(localWebSettings.getUserAgentString());
+      ((StringBuilder)localObject).append(" QQ/");
+      ((StringBuilder)localObject).append(QUAUtil.getPlatformVersionString());
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(QUAUtil.getPlatformQUA());
+      ((StringBuilder)localObject).append(" miniProgram miniprogramhtmlwebview QMA/");
+      ((StringBuilder)localObject).append(paramActivity);
+      paramActivity = ((StringBuilder)localObject).toString();
+    }
+    localWebSettings.setUserAgent(paramActivity);
+    localWebSettings.setSavePassword(false);
+    localWebSettings.setSaveFormData(false);
+    localWebSettings.setBuiltInZoomControls(true);
+    localWebSettings.setUseWideViewPort(true);
+    localWebSettings.setLoadWithOverviewMode(true);
+    localWebSettings.setPluginState(WebSettings.PluginState.ON);
+    localWebSettings.setPluginsEnabled(true);
+    localWebSettings.setJavaScriptCanOpenWindowsAutomatically(true);
+    localWebSettings.setJavaScriptEnabled(true);
+    localWebSettings.setSupportZoom(false);
+    localWebSettings.setCacheMode(-1);
+    if (Build.VERSION.SDK_INT >= 11)
+    {
+      removeJavascriptInterface("searchBoxJavaBridge_");
+      removeJavascriptInterface("accessibility");
+      removeJavascriptInterface("accessibilityTraversal");
+    }
+    if (Build.VERSION.SDK_INT >= 21) {
+      localWebSettings.setMixedContentMode(0);
+    }
+    localWebSettings.setAllowContentAccess(true);
+    localWebSettings.setDatabaseEnabled(true);
+    localWebSettings.setDomStorageEnabled(true);
+    localWebSettings.setAppCacheEnabled(true);
+    localWebSettings.setMediaPlaybackRequiresUserGesture(false);
+    if (Build.VERSION.SDK_INT >= 21) {
+      localWebSettings.setMixedContentMode(0);
+    }
+    try
+    {
+      requestFocus();
+      return;
+    }
+    catch (Exception paramActivity) {}
   }
   
   private boolean checkEnableIPV6Only()
   {
-    return WnsConfig.getConfig("qqminiapp", "ipv6_proxy_enable", 0) == 1;
+    boolean bool = false;
+    if (WnsConfig.getConfig("qqminiapp", "ipv6_proxy_enable", 0) == 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   private WebResourceResponse doIPV6OnlyRequest(WebView paramWebView, WebResourceRequest paramWebResourceRequest)
   {
     paramWebView = paramWebResourceRequest.getUrl().toString();
-    String str = WnsConfig.getConfig("qqminiapp", "ipv6_http_proxy_url", "https://proxy.gtimg.cn/tx_tls_gate=");
-    HttpURLConnection localHttpURLConnection;
+    Object localObject1 = WnsConfig.getConfig("qqminiapp", "ipv6_http_proxy_url", "https://proxy.gtimg.cn/tx_tls_gate=");
     try
     {
-      str = str + paramWebView;
-      QMLog.e("InnerWebView", "shouldInterceptRequest url = " + str);
-      localHttpURLConnection = (HttpURLConnection)new URL(str).openConnection();
-      localHttpURLConnection.setRequestMethod(paramWebResourceRequest.getMethod());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(paramWebView);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      paramWebView = new StringBuilder();
+      paramWebView.append("shouldInterceptRequest url = ");
+      paramWebView.append((String)localObject1);
+      QMLog.e("InnerWebView", paramWebView.toString());
+      localObject2 = (HttpURLConnection)new URL((String)localObject1).openConnection();
+      ((HttpURLConnection)localObject2).setRequestMethod(paramWebResourceRequest.getMethod());
       if (paramWebResourceRequest.getRequestHeaders() != null)
       {
         paramWebView = paramWebResourceRequest.getRequestHeaders().entrySet().iterator();
         while (paramWebView.hasNext())
         {
           paramWebResourceRequest = (Map.Entry)paramWebView.next();
-          localHttpURLConnection.setRequestProperty((String)paramWebResourceRequest.getKey(), (String)paramWebResourceRequest.getValue());
+          ((HttpURLConnection)localObject2).setRequestProperty((String)paramWebResourceRequest.getKey(), (String)paramWebResourceRequest.getValue());
         }
       }
-      localHttpURLConnection.setConnectTimeout(6000);
+      ((HttpURLConnection)localObject2).setConnectTimeout(6000);
+      ((HttpURLConnection)localObject2).setReadTimeout(6000);
+      paramWebResourceRequest = "";
+      paramWebView = paramWebResourceRequest;
+      if (((HttpURLConnection)localObject2).getHeaderFields() != null)
+      {
+        paramWebView = paramWebResourceRequest;
+        if (((HttpURLConnection)localObject2).getHeaderFields().containsKey("Content-Type")) {
+          paramWebView = (String)((List)((HttpURLConnection)localObject2).getHeaderFields().get("Content-Type")).get(0);
+        }
+      }
+      paramWebResourceRequest = IPV6OnlyUtils.getMimeType(paramWebView);
+      paramWebView = IPV6OnlyUtils.getEncoding(paramWebView);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ipv6 code:");
+      localStringBuilder.append(((HttpURLConnection)localObject2).getResponseCode());
+      localStringBuilder.append("  url:");
+      localStringBuilder.append((String)localObject1);
+      QMLog.e("InnerWebView", localStringBuilder.toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("ipv6 mimeType = ");
+      ((StringBuilder)localObject1).append(paramWebResourceRequest);
+      ((StringBuilder)localObject1).append("encoding:");
+      ((StringBuilder)localObject1).append(paramWebView);
+      QMLog.e("InnerWebView", ((StringBuilder)localObject1).toString());
+      paramWebView = new WebResourceResponse(paramWebResourceRequest, paramWebView, ((HttpURLConnection)localObject2).getInputStream());
+      return paramWebView;
     }
     catch (Exception paramWebView)
     {
       QMLog.e("InnerWebView", "shouldInterceptRequest: failed ", paramWebView);
-      return null;
     }
-    localHttpURLConnection.setReadTimeout(6000);
-    paramWebResourceRequest = "";
-    paramWebView = paramWebResourceRequest;
-    if (localHttpURLConnection.getHeaderFields() != null)
-    {
-      paramWebView = paramWebResourceRequest;
-      if (localHttpURLConnection.getHeaderFields().containsKey("Content-Type")) {
-        paramWebView = (String)((List)localHttpURLConnection.getHeaderFields().get("Content-Type")).get(0);
-      }
-    }
-    paramWebResourceRequest = IPV6OnlyUtils.getMimeType(paramWebView);
-    paramWebView = IPV6OnlyUtils.getEncoding(paramWebView);
-    QMLog.e("InnerWebView", "ipv6 code:" + localHttpURLConnection.getResponseCode() + "  url:" + str);
-    QMLog.e("InnerWebView", "ipv6 mimeType = " + paramWebResourceRequest + "encoding:" + paramWebView);
-    paramWebView = new WebResourceResponse(paramWebResourceRequest, paramWebView, localHttpURLConnection.getInputStream());
-    return paramWebView;
+    return null;
   }
   
   private String getImageFileType(String paramString)
@@ -212,36 +249,43 @@ public class InnerWebView
   private void handleCallbackFail(String paramString1, JSONObject paramJSONObject, String paramString2, int paramInt)
   {
     paramString1 = ApiUtil.wrapCallbackFail(paramString1, null, paramString2);
-    if (paramString1 != null) {}
-    for (paramString1 = paramString1.toString();; paramString1 = "")
-    {
-      webViewEvaluteJs(paramString1, paramInt);
-      return;
+    if (paramString1 != null) {
+      paramString1 = paramString1.toString();
+    } else {
+      paramString1 = "";
     }
+    webViewEvaluteJs(paramString1, paramInt);
   }
   
   private void handleCallbackOK(String paramString, JSONObject paramJSONObject, int paramInt)
   {
     paramString = ApiUtil.wrapCallbackOk(paramString, paramJSONObject);
-    if (paramString != null) {}
-    for (paramString = paramString.toString();; paramString = "")
-    {
-      webViewEvaluteJs(paramString, paramInt);
-      return;
+    if (paramString != null) {
+      paramString = paramString.toString();
+    } else {
+      paramString = "";
     }
+    webViewEvaluteJs(paramString, paramInt);
   }
   
   private void handleProgressChanged(int paramInt)
   {
-    QMLog.d("InnerWebView", "onProgressChanged : " + paramInt);
-    if (this.mMiniAppContext != null) {
-      this.mMiniAppContext.performAction(new InnerWebView.4(this, paramInt));
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onProgressChanged : ");
+    ((StringBuilder)localObject).append(paramInt);
+    QMLog.d("InnerWebView", ((StringBuilder)localObject).toString());
+    localObject = this.mMiniAppContext;
+    if (localObject != null) {
+      ((IMiniAppContext)localObject).performAction(new InnerWebView.4(this, paramInt));
     }
   }
   
   private void handleReceivedTitle(String paramString)
   {
-    QMLog.d("InnerWebView", "onReceivedTitle title : " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReceivedTitle title : ");
+    localStringBuilder.append(paramString);
+    QMLog.d("InnerWebView", localStringBuilder.toString());
     if ((!TextUtils.isEmpty(paramString)) && (!paramString.equals("about:blank"))) {
       AppBrandTask.runTaskOnUiThread(new InnerWebView.3(this, paramString));
     }
@@ -249,110 +293,120 @@ public class InnerWebView
   
   private void handleSaveWithBase64(String paramString)
   {
-    String str2;
-    String str1;
-    if (this.mMiniAppContext != null)
-    {
-      str2 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);
-      if (!paramString.startsWith("data:image/jpg;base64,")) {
-        break label78;
-      }
-      str1 = str2 + ".jpg";
+    Object localObject = this.mMiniAppContext;
+    String str;
+    if (localObject != null) {
+      str = ((MiniAppFileManager)((IMiniAppContext)localObject).getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);
+    } else {
+      str = "";
     }
-    for (;;)
+    if (paramString.startsWith("data:image/jpg;base64,"))
     {
-      if (!savaBase64DataToLocalPath(paramString, str1)) {
-        break label146;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(".jpg");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else if (paramString.startsWith("data:image/png;base64,"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(".png");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      localObject = str;
+      if (paramString.startsWith("data:image/jpeg;base64,"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(".jpeg");
+        localObject = ((StringBuilder)localObject).toString();
       }
-      saveImageToAlbum(str1);
+    }
+    if (savaBase64DataToLocalPath(paramString, (String)localObject))
+    {
+      saveImageToAlbum((String)localObject);
       return;
-      str2 = "";
-      break;
-      label78:
-      if (paramString.startsWith("data:image/png;base64,"))
-      {
-        str1 = str2 + ".png";
-      }
-      else
-      {
-        str1 = str2;
-        if (paramString.startsWith("data:image/jpeg;base64,")) {
-          str1 = str2 + ".jpeg";
-        }
-      }
     }
-    label146:
     QMLog.e("InnerWebView", "saveImageToAlbum savaBase64DataToLocalPath failed.");
   }
   
   private void handleSaveWithNetworkUrl(String paramString)
   {
-    if (this.mMiniAppContext != null) {}
-    DownloaderProxy localDownloaderProxy;
-    for (String str = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);; str = "")
+    Object localObject = this.mMiniAppContext;
+    if (localObject != null) {
+      localObject = ((MiniAppFileManager)((IMiniAppContext)localObject).getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);
+    } else {
+      localObject = "";
+    }
+    DownloaderProxy localDownloaderProxy = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
+    if (localDownloaderProxy == null)
     {
-      localDownloaderProxy = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
-      if (localDownloaderProxy != null) {
-        break;
-      }
       QMLog.e("InnerWebView", "savaPicToAlbum proxy is null");
       return;
     }
-    localDownloaderProxy.download(paramString, null, str, 60, new InnerWebView.9(this, str));
+    localDownloaderProxy.download(paramString, null, (String)localObject, 60, new InnerWebView.9(this, (String)localObject));
   }
   
   private void handleShareBase64Image(String paramString)
   {
-    String str2;
-    String str1;
-    if (this.mMiniAppContext != null)
-    {
-      str2 = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);
-      if (!paramString.startsWith("data:image/jpg;base64,")) {
-        break label78;
-      }
-      str1 = str2 + ".jpg";
+    Object localObject = this.mMiniAppContext;
+    String str;
+    if (localObject != null) {
+      str = ((MiniAppFileManager)((IMiniAppContext)localObject).getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);
+    } else {
+      str = "";
     }
-    for (;;)
+    if (paramString.startsWith("data:image/jpg;base64,"))
     {
-      if (!savaBase64DataToLocalPath(paramString, str1)) {
-        break label146;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(".jpg");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else if (paramString.startsWith("data:image/png;base64,"))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(".png");
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      localObject = str;
+      if (paramString.startsWith("data:image/jpeg;base64,"))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(".jpeg");
+        localObject = ((StringBuilder)localObject).toString();
       }
-      realSharePicToQQ(str1);
+    }
+    if (savaBase64DataToLocalPath(paramString, (String)localObject))
+    {
+      realSharePicToQQ((String)localObject);
       return;
-      str2 = "";
-      break;
-      label78:
-      if (paramString.startsWith("data:image/png;base64,"))
-      {
-        str1 = str2 + ".png";
-      }
-      else
-      {
-        str1 = str2;
-        if (paramString.startsWith("data:image/jpeg;base64,")) {
-          str1 = str2 + ".jpeg";
-        }
-      }
     }
-    label146:
     QMLog.e("InnerWebView", "startSharePicToQQ savaBase64DataToLocalPath failed.");
   }
   
   private void handleShareWebImage(String paramString)
   {
-    if (this.mMiniAppContext != null) {}
-    DownloaderProxy localDownloaderProxy;
-    for (String str = ((MiniAppFileManager)this.mMiniAppContext.getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);; str = "")
+    Object localObject = this.mMiniAppContext;
+    if (localObject != null) {
+      localObject = ((MiniAppFileManager)((IMiniAppContext)localObject).getManager(MiniAppFileManager.class)).getTmpPathByUrl(paramString);
+    } else {
+      localObject = "";
+    }
+    DownloaderProxy localDownloaderProxy = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
+    if (localDownloaderProxy == null)
     {
-      localDownloaderProxy = (DownloaderProxy)ProxyManager.get(DownloaderProxy.class);
-      if (localDownloaderProxy != null) {
-        break;
-      }
       QMLog.e("InnerWebView", "savaPicToAlbum proxy is null");
       return;
     }
-    localDownloaderProxy.download(paramString, null, str, 60, new InnerWebView.10(this, str));
+    localDownloaderProxy.download(paramString, null, (String)localObject, 60, new InnerWebView.10(this, (String)localObject));
   }
   
   private void initWebChromeClient()
@@ -391,19 +445,23 @@ public class InnerWebView
   
   private void realSharePicToQQ(String paramString)
   {
-    if ((this.mMiniAppContext == null) || (this.mMiniAppContext.getAttachedActivity() == null) || (TextUtils.isEmpty(paramString)))
+    Object localObject = this.mMiniAppContext;
+    if ((localObject != null) && (((IMiniAppContext)localObject).getAttachedActivity() != null) && (!TextUtils.isEmpty(paramString)))
     {
-      QMLog.e("InnerWebView", "param error," + paramString);
+      paramString = new InnerShareData.Builder().setShareTarget(0).setSharePicPath(paramString).build();
+      localObject = (ShareProxy)ProxyManager.get(ShareProxy.class);
+      if (localObject != null)
+      {
+        ((ShareProxy)localObject).sharePic(this.mMiniAppContext.getAttachedActivity(), paramString);
+        return;
+      }
+      QMLog.i("InnerWebView", "proxy null");
       return;
     }
-    paramString = new InnerShareData.Builder().setShareTarget(0).setSharePicPath(paramString).build();
-    ShareProxy localShareProxy = (ShareProxy)ProxyManager.get(ShareProxy.class);
-    if (localShareProxy != null)
-    {
-      localShareProxy.sharePic(this.mMiniAppContext.getAttachedActivity(), paramString);
-      return;
-    }
-    QMLog.i("InnerWebView", "proxy null");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("param error,");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.e("InnerWebView", ((StringBuilder)localObject).toString());
   }
   
   private boolean savaBase64DataToLocalPath(String paramString1, String paramString2)
@@ -417,212 +475,265 @@ public class InnerWebView
     try
     {
       boolean bool = saveByteBufferToLocalFile(Base64.decode(paramString1.getBytes(), 2), paramString2);
-      QMLog.d("InnerWebView", "saveByteBufferToLocalFile ret:" + bool);
+      paramString1 = new StringBuilder();
+      paramString1.append("saveByteBufferToLocalFile ret:");
+      paramString1.append(bool);
+      QMLog.d("InnerWebView", paramString1.toString());
       return bool;
     }
     catch (Exception paramString1)
     {
-      QMLog.d("InnerWebView", "Base64.decode Exception: " + paramString1.toString());
+      paramString2 = new StringBuilder();
+      paramString2.append("Base64.decode Exception: ");
+      paramString2.append(paramString1.toString());
+      QMLog.d("InnerWebView", paramString2.toString());
     }
     return false;
   }
   
   private void savaPicToAlbum(String paramString)
   {
-    QMLog.d("InnerWebView", "savaPicToAlbum : " + paramString);
-    if ((this.mActivity == null) || (this.mActivity.isFinishing()))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("savaPicToAlbum : ");
+    ((StringBuilder)localObject).append(paramString);
+    QMLog.d("InnerWebView", ((StringBuilder)localObject).toString());
+    localObject = this.mActivity;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      QMLog.e("InnerWebView", "savaPicToAlbum failed, because of mActivity is empty");
-      MiniToast.makeText(this.mActivity, 1, "保存失败", 0).show();
+      if (TextUtils.isEmpty(paramString))
+      {
+        QMLog.e("InnerWebView", "savaPicToAlbum failed, because of sourceUrl is empty");
+        MiniToast.makeText(this.mActivity, 1, "保存失败", 0).show();
+        return;
+      }
+      if (isNetworkUrl(paramString))
+      {
+        handleSaveWithNetworkUrl(paramString);
+        return;
+      }
+      if (isBase64(paramString))
+      {
+        handleSaveWithBase64(paramString);
+        return;
+      }
+      saveImageToAlbum(paramString);
       return;
     }
-    if (TextUtils.isEmpty(paramString))
-    {
-      QMLog.e("InnerWebView", "savaPicToAlbum failed, because of sourceUrl is empty");
-      MiniToast.makeText(this.mActivity, 1, "保存失败", 0).show();
-      return;
-    }
-    if (isNetworkUrl(paramString))
-    {
-      handleSaveWithNetworkUrl(paramString);
-      return;
-    }
-    if (isBase64(paramString))
-    {
-      handleSaveWithBase64(paramString);
-      return;
-    }
-    saveImageToAlbum(paramString);
+    QMLog.e("InnerWebView", "savaPicToAlbum failed, because of mActivity is empty");
+    MiniToast.makeText(this.mActivity, 1, "保存失败", 0).show();
   }
   
   /* Error */
   protected static boolean saveByteBufferToLocalFile(byte[] paramArrayOfByte, String paramString)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore_2
-    //   2: aload_1
-    //   3: invokestatic 546	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   6: ifeq +5 -> 11
-    //   9: iload_2
-    //   10: ireturn
-    //   11: aconst_null
-    //   12: astore 5
-    //   14: aconst_null
-    //   15: astore 4
-    //   17: aload 5
-    //   19: astore_3
-    //   20: new 732	java/io/File
-    //   23: dup
-    //   24: aload_1
-    //   25: invokespecial 733	java/io/File:<init>	(Ljava/lang/String;)V
-    //   28: astore_1
-    //   29: aload 5
-    //   31: astore_3
-    //   32: aload_1
-    //   33: invokevirtual 736	java/io/File:exists	()Z
-    //   36: ifne +11 -> 47
-    //   39: aload 5
-    //   41: astore_3
-    //   42: aload_1
-    //   43: invokevirtual 739	java/io/File:createNewFile	()Z
-    //   46: pop
-    //   47: aload 5
-    //   49: astore_3
-    //   50: new 741	java/io/FileOutputStream
-    //   53: dup
-    //   54: aload_1
-    //   55: invokespecial 744	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   58: astore_1
-    //   59: aload_1
-    //   60: aload_0
-    //   61: invokevirtual 748	java/io/FileOutputStream:write	([B)V
-    //   64: iconst_1
-    //   65: istore_2
-    //   66: aload_1
-    //   67: ifnull -58 -> 9
-    //   70: aload_1
-    //   71: invokevirtual 751	java/io/FileOutputStream:close	()V
-    //   74: iconst_1
-    //   75: ireturn
-    //   76: astore_0
-    //   77: ldc 73
+    //   0: aload_1
+    //   1: invokestatic 546	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   4: istore_3
+    //   5: iconst_0
+    //   6: istore_2
+    //   7: iload_3
+    //   8: ifeq +5 -> 13
+    //   11: iconst_0
+    //   12: ireturn
+    //   13: aconst_null
+    //   14: astore 5
+    //   16: aconst_null
+    //   17: astore 6
+    //   19: aload 6
+    //   21: astore 4
+    //   23: new 732	java/io/File
+    //   26: dup
+    //   27: aload_1
+    //   28: invokespecial 733	java/io/File:<init>	(Ljava/lang/String;)V
+    //   31: astore_1
+    //   32: aload 6
+    //   34: astore 4
+    //   36: aload_1
+    //   37: invokevirtual 736	java/io/File:exists	()Z
+    //   40: ifne +12 -> 52
+    //   43: aload 6
+    //   45: astore 4
+    //   47: aload_1
+    //   48: invokevirtual 739	java/io/File:createNewFile	()Z
+    //   51: pop
+    //   52: aload 6
+    //   54: astore 4
+    //   56: new 741	java/io/FileOutputStream
+    //   59: dup
+    //   60: aload_1
+    //   61: invokespecial 744	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   64: astore_1
+    //   65: aload_1
+    //   66: aload_0
+    //   67: invokevirtual 748	java/io/FileOutputStream:write	([B)V
+    //   70: iconst_1
+    //   71: istore_2
+    //   72: aload_1
+    //   73: invokevirtual 751	java/io/FileOutputStream:close	()V
+    //   76: iconst_1
+    //   77: ireturn
+    //   78: astore_0
     //   79: new 140	java/lang/StringBuilder
     //   82: dup
     //   83: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   86: ldc_w 753
-    //   89: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: aload_0
-    //   93: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   96: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   99: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   102: iconst_1
-    //   103: ireturn
-    //   104: astore_1
-    //   105: aload 4
-    //   107: astore_0
-    //   108: aload_0
-    //   109: astore_3
-    //   110: ldc 73
-    //   112: new 140	java/lang/StringBuilder
-    //   115: dup
-    //   116: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   119: ldc_w 758
-    //   122: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   125: aload_1
-    //   126: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   135: aload_0
-    //   136: ifnull -127 -> 9
-    //   139: aload_0
-    //   140: invokevirtual 751	java/io/FileOutputStream:close	()V
-    //   143: iconst_0
-    //   144: ireturn
-    //   145: astore_0
-    //   146: ldc 73
-    //   148: new 140	java/lang/StringBuilder
-    //   151: dup
-    //   152: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   155: ldc_w 753
-    //   158: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: astore_1
+    //   87: aload_1
+    //   88: ldc_w 753
+    //   91: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   94: pop
+    //   95: aload_1
+    //   96: aload_0
+    //   97: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   100: pop
+    //   101: ldc 73
+    //   103: aload_1
+    //   104: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   107: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   110: iload_2
+    //   111: ireturn
+    //   112: astore_0
+    //   113: aload_1
+    //   114: astore 4
+    //   116: goto +92 -> 208
+    //   119: astore 4
+    //   121: aload_1
+    //   122: astore_0
+    //   123: aload 4
+    //   125: astore_1
+    //   126: goto +11 -> 137
+    //   129: astore_0
+    //   130: goto +78 -> 208
+    //   133: astore_1
+    //   134: aload 5
+    //   136: astore_0
+    //   137: aload_0
+    //   138: astore 4
+    //   140: new 140	java/lang/StringBuilder
+    //   143: dup
+    //   144: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   147: astore 5
+    //   149: aload_0
+    //   150: astore 4
+    //   152: aload 5
+    //   154: ldc_w 758
+    //   157: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   160: pop
     //   161: aload_0
-    //   162: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   165: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   168: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   171: iconst_0
-    //   172: ireturn
-    //   173: astore_0
-    //   174: aload_3
-    //   175: ifnull +7 -> 182
-    //   178: aload_3
-    //   179: invokevirtual 751	java/io/FileOutputStream:close	()V
-    //   182: aload_0
-    //   183: athrow
-    //   184: astore_1
-    //   185: ldc 73
-    //   187: new 140	java/lang/StringBuilder
-    //   190: dup
-    //   191: invokespecial 143	java/lang/StringBuilder:<init>	()V
-    //   194: ldc_w 753
-    //   197: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   200: aload_1
-    //   201: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   204: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   207: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
-    //   210: goto -28 -> 182
-    //   213: astore_0
-    //   214: aload_1
-    //   215: astore_3
-    //   216: goto -42 -> 174
-    //   219: astore_3
-    //   220: aload_1
-    //   221: astore_0
-    //   222: aload_3
-    //   223: astore_1
-    //   224: goto -116 -> 108
+    //   162: astore 4
+    //   164: aload 5
+    //   166: aload_1
+    //   167: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   170: pop
+    //   171: aload_0
+    //   172: astore 4
+    //   174: ldc 73
+    //   176: aload 5
+    //   178: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   181: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   184: aload_0
+    //   185: ifnull +21 -> 206
+    //   188: aload_0
+    //   189: invokevirtual 751	java/io/FileOutputStream:close	()V
+    //   192: iconst_0
+    //   193: ireturn
+    //   194: astore_0
+    //   195: new 140	java/lang/StringBuilder
+    //   198: dup
+    //   199: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   202: astore_1
+    //   203: goto -116 -> 87
+    //   206: iconst_0
+    //   207: ireturn
+    //   208: aload 4
+    //   210: ifnull +47 -> 257
+    //   213: aload 4
+    //   215: invokevirtual 751	java/io/FileOutputStream:close	()V
+    //   218: goto +39 -> 257
+    //   221: astore_1
+    //   222: new 140	java/lang/StringBuilder
+    //   225: dup
+    //   226: invokespecial 143	java/lang/StringBuilder:<init>	()V
+    //   229: astore 4
+    //   231: aload 4
+    //   233: ldc_w 753
+    //   236: invokevirtual 153	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   239: pop
+    //   240: aload 4
+    //   242: aload_1
+    //   243: invokevirtual 756	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   246: pop
+    //   247: ldc 73
+    //   249: aload 4
+    //   251: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   254: invokestatic 530	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   257: goto +5 -> 262
+    //   260: aload_0
+    //   261: athrow
+    //   262: goto -2 -> 260
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	227	0	paramArrayOfByte	byte[]
-    //   0	227	1	paramString	String
-    //   1	65	2	bool	boolean
-    //   19	197	3	localObject1	Object
-    //   219	4	3	localIOException	java.io.IOException
-    //   15	91	4	localObject2	Object
-    //   12	36	5	localObject3	Object
+    //   0	265	0	paramArrayOfByte	byte[]
+    //   0	265	1	paramString	String
+    //   6	105	2	bool1	boolean
+    //   4	4	3	bool2	boolean
+    //   21	94	4	localObject1	Object
+    //   119	5	4	localIOException	java.io.IOException
+    //   138	112	4	localObject2	Object
+    //   14	163	5	localStringBuilder	StringBuilder
+    //   17	36	6	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   70	74	76	java/lang/Exception
-    //   20	29	104	java/io/IOException
-    //   32	39	104	java/io/IOException
-    //   42	47	104	java/io/IOException
-    //   50	59	104	java/io/IOException
-    //   139	143	145	java/lang/Exception
-    //   20	29	173	finally
-    //   32	39	173	finally
-    //   42	47	173	finally
-    //   50	59	173	finally
-    //   110	135	173	finally
-    //   178	182	184	java/lang/Exception
-    //   59	64	213	finally
-    //   59	64	219	java/io/IOException
+    //   72	76	78	java/lang/Exception
+    //   65	70	112	finally
+    //   65	70	119	java/io/IOException
+    //   23	32	129	finally
+    //   36	43	129	finally
+    //   47	52	129	finally
+    //   56	65	129	finally
+    //   140	149	129	finally
+    //   152	161	129	finally
+    //   164	171	129	finally
+    //   174	184	129	finally
+    //   23	32	133	java/io/IOException
+    //   36	43	133	java/io/IOException
+    //   47	52	133	java/io/IOException
+    //   56	65	133	java/io/IOException
+    //   188	192	194	java/lang/Exception
+    //   213	218	221	java/lang/Exception
   }
   
   private void saveImageToAlbum(String paramString)
   {
-    if ((this.mActivity != null) && (!this.mActivity.isFinishing()))
+    Object localObject = this.mActivity;
+    if ((localObject != null) && (!((Activity)localObject).isFinishing()))
     {
-      String str = MiniAppFileManager.getLocalPathSuffix(paramString);
-      Object localObject = new File(paramString);
-      localObject = new StringBuilder().append(ShortVideoUtil.getCameraPath()).append(System.currentTimeMillis() / 1000L).append("_").append(((File)localObject).getName());
-      if (TextUtils.isEmpty(str)) {}
-      for (str = "." + getImageFileType(paramString);; str = "")
+      localObject = MiniAppFileManager.getLocalPathSuffix(paramString);
+      File localFile = new File(paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(ShortVideoUtil.getCameraPath());
+      localStringBuilder.append(System.currentTimeMillis() / 1000L);
+      localStringBuilder.append("_");
+      localStringBuilder.append(localFile.getName());
+      if (TextUtils.isEmpty((CharSequence)localObject))
       {
-        str = str;
-        QMLog.d("InnerWebView", "saveImageToAlbum savePath : " + str);
-        if (!FileUtils.saveVideoToAlbum(this.mActivity, paramString, str)) {
-          break;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(".");
+        ((StringBuilder)localObject).append(getImageFileType(paramString));
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = "";
+      }
+      localStringBuilder.append((String)localObject);
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveImageToAlbum savePath : ");
+      localStringBuilder.append((String)localObject);
+      QMLog.d("InnerWebView", localStringBuilder.toString());
+      if (FileUtils.saveVideoToAlbum(this.mActivity, paramString, (String)localObject))
+      {
         if (QMLog.isColorLevel()) {
           QMLog.d("InnerWebView", "savaPicToAlbum success.");
         }
@@ -644,8 +755,12 @@ public class InnerWebView
   
   private void sharePicToQQ(String paramString)
   {
-    if (QMLog.isColorLevel()) {
-      QMLog.d("InnerWebView", "sharePicToQQ : " + paramString);
+    if (QMLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sharePicToQQ : ");
+      localStringBuilder.append(paramString);
+      QMLog.d("InnerWebView", localStringBuilder.toString());
     }
     if (TextUtils.isEmpty(paramString))
     {
@@ -668,49 +783,50 @@ public class InnerWebView
   
   private boolean shouldOverrideUrlDomain(String paramString)
   {
-    boolean bool2 = false;
-    boolean bool1;
-    if ((this.mMiniAppContext == null) || (TextUtils.isEmpty(paramString)) || (!paramString.startsWith("https:")))
+    if (((this.mMiniAppContext != null) && (!TextUtils.isEmpty(paramString)) && (paramString.startsWith("https:"))) || (paramString.startsWith("http:")))
     {
-      bool1 = bool2;
-      if (!paramString.startsWith("http:")) {}
-    }
-    else
-    {
-      boolean bool3 = DomainUtil.isDomainValid(this.mMiniAppContext.getMiniAppInfo(), false, paramString, 4);
-      QMLog.i("InnerWebView", "shouldOverrideUrlLoading url = " + paramString + "; ret = " + bool3);
-      bool1 = bool2;
-      if (!bool3)
+      boolean bool = DomainUtil.isDomainValid(this.mMiniAppContext.getMiniAppInfo(), false, paramString, 4);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("shouldOverrideUrlLoading url = ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("; ret = ");
+      ((StringBuilder)localObject).append(bool);
+      QMLog.i("InnerWebView", ((StringBuilder)localObject).toString());
+      if (!bool)
       {
-        String str2 = WnsConfig.getConfig("qqminiapp", "https://m.q.qq.com/webview/error?url={url}&appid={appid}", "https://m.q.qq.com/webview/error?url={url}&appid={appid}");
-        String str1 = str2;
-        if (!TextUtils.isEmpty(str2)) {
-          str1 = str2.replace("{url}", paramString).replace("{appid}", this.mMiniAppContext.getMiniAppInfo().appId);
+        String str = WnsConfig.getConfig("qqminiapp", "https://m.q.qq.com/webview/error?url={url}&appid={appid}", "https://m.q.qq.com/webview/error?url={url}&appid={appid}");
+        localObject = str;
+        if (!TextUtils.isEmpty(str)) {
+          localObject = str.replace("{url}", paramString).replace("{appid}", this.mMiniAppContext.getMiniAppInfo().appId);
         }
-        loadUrl(str1);
-        bool1 = true;
+        loadUrl((String)localObject);
+        return true;
       }
     }
-    return bool1;
+    return false;
   }
   
   private boolean shouldOverrideUrlTel(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("tel:")) && (this.mActivity != null) && (!this.mActivity.isFinishing()))
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("tel:")))
     {
-      paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
-      paramString.putExtra("big_brother_source_key", "biz_src_miniapp");
-      try
+      Object localObject = this.mActivity;
+      if ((localObject != null) && (!((Activity)localObject).isFinishing()))
       {
-        this.mActivity.startActivity(paramString);
-        return true;
-      }
-      catch (Throwable paramString)
-      {
-        for (;;)
+        paramString = new Intent("android.intent.action.VIEW", Uri.parse(paramString));
+        paramString.putExtra("big_brother_source_key", "biz_src_miniapp");
+        try
         {
-          QMLog.e("InnerWebView", "error happend:" + paramString);
+          this.mActivity.startActivity(paramString);
         }
+        catch (Throwable paramString)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("error happend:");
+          ((StringBuilder)localObject).append(paramString);
+          QMLog.e("InnerWebView", ((StringBuilder)localObject).toString());
+        }
+        return true;
       }
     }
     return false;
@@ -735,7 +851,14 @@ public class InnerWebView
   
   public void evaluateSubscribeJS(String paramString1, String paramString2, int paramInt)
   {
-    QMLog.i("InnerWebView", "evaluateSubcribeJS : eventName " + paramString1 + "; data : " + paramString2 + "; webviweId : " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("evaluateSubcribeJS : eventName ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("; data : ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("; webviweId : ");
+    localStringBuilder.append(paramInt);
+    QMLog.i("InnerWebView", localStringBuilder.toString());
   }
   
   public byte[] getNativeBuffer(int paramInt)
@@ -762,14 +885,15 @@ public class InnerWebView
   
   public void onActivityResult(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if ((this.mFileChooserHelper != null) && (this.mFileChooserHelper.doOnActivityResult(paramInt1, paramInt2, paramIntent)) && (QMLog.isColorLevel())) {
+    FileChooserHelper localFileChooserHelper = this.mFileChooserHelper;
+    if ((localFileChooserHelper != null) && (localFileChooserHelper.doOnActivityResult(paramInt1, paramInt2, paramIntent)) && (QMLog.isColorLevel())) {
       QMLog.d("InnerWebView", "Activity result handled by FileChooserHelper.");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.InnerWebView
  * JD-Core Version:    0.7.0.1
  */

@@ -11,6 +11,8 @@ import java.lang.annotation.Target;
 @Target({java.lang.annotation.ElementType.FIELD})
 public @interface TPNativeKeyMap$MapOptionalId
 {
+  String keyName();
+  
   @TPCommonEnum.OptionalIdType
   int type();
   
@@ -19,7 +21,7 @@ public @interface TPNativeKeyMap$MapOptionalId
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.adapter.strategy.utils.TPNativeKeyMap.MapOptionalId
  * JD-Core Version:    0.7.0.1
  */

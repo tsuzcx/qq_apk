@@ -41,13 +41,14 @@ public final class cmd0x7ce$AppintDetail
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 64, 74, 80, 96, 106, 112, 122, 130, 136, 144, 154, 160, 184 }, new String[] { "msg_publisher_info", "msg_appoints_info", "uint32_score", "uint32_join_over", "uint32_join_next", "rpt_msg_stranger_info", "uint32_view_over", "uint32_view_next", "rpt_msg_vistor_info", "uint32_me_join", "uint32_can_profile", "str_profile_errmsg", "uint32_can_aio", "str_aio_errmsg", "bytes_SigC2C", "uint64_uin", "uint32_limited", "rpt_msg_comment_list", "uint32_comment_over", "uint32_me_invited" }, new Object[] { null, null, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), "", localByteStringMicro, Long.valueOf(0L), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0) }, AppintDetail.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 32, 40, 50, 56, 64, 74, 80, 96, 106, 112, 122, 130, 136, 144, 154, 160, 184 }, new String[] { "msg_publisher_info", "msg_appoints_info", "uint32_score", "uint32_join_over", "uint32_join_next", "rpt_msg_stranger_info", "uint32_view_over", "uint32_view_next", "rpt_msg_vistor_info", "uint32_me_join", "uint32_can_profile", "str_profile_errmsg", "uint32_can_aio", "str_aio_errmsg", "bytes_SigC2C", "uint64_uin", "uint32_limited", "rpt_msg_comment_list", "uint32_comment_over", "uint32_me_invited" }, new Object[] { null, null, localInteger, localInteger, localInteger, null, localInteger, localInteger, null, localInteger, localInteger, "", localInteger, "", localByteStringMicro, Long.valueOf(0L), localInteger, null, localInteger, localInteger }, AppintDetail.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x7ce.AppintDetail
  * JD-Core Version:    0.7.0.1
  */

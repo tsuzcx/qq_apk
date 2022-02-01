@@ -1,15 +1,17 @@
 package com.huawei.hms.push;
 
+import com.huawei.hms.aaid.constant.ErrorEnum;
+
 public class BaseException
   extends Exception
 {
-  private final int a;
-  private final a b;
+  public final int a;
+  public final ErrorEnum b;
   
   public BaseException(int paramInt)
   {
-    this.b = a.a(paramInt);
-    this.a = this.b.b();
+    this.b = ErrorEnum.fromCode(paramInt);
+    this.a = this.b.getExternalCode();
   }
   
   public int getErrorCode()
@@ -19,7 +21,7 @@ public class BaseException
   
   public String getMessage()
   {
-    return this.b.c();
+    return this.b.getMessage();
   }
 }
 

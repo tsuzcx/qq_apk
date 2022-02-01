@@ -8,7 +8,6 @@ import android.os.Handler.Callback;
 import android.os.Message;
 import android.os.SystemClock;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.statistics.StatisticCollector;
 import com.tencent.mobileqq.transfile.HttpNetReq;
@@ -19,7 +18,7 @@ import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.transfile.predownload.AbsPreDownloadTask;
 import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
 import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
-import com.tencent.mobileqq.transfile.predownload.PreDownloadController;
+import com.tencent.mobileqq.transfile.predownload.IPreDownloadController;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.RandomUtils;
 import com.tencent.qphone.base.util.BaseApplication;
@@ -37,7 +36,7 @@ public class PluginDownloader
   private Context jdField_a_of_type_AndroidContentContext;
   private Handler jdField_a_of_type_AndroidOsHandler;
   private QQAppInterface jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
-  private PreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController;
+  private IPreDownloadController jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController;
   private HashMap<String, Long> jdField_a_of_type_JavaUtilHashMap = new HashMap();
   private final Lock jdField_a_of_type_JavaUtilConcurrentLocksLock = new ReentrantLock();
   private HashMap<String, PluginDownloader.DownloadRecord> b;
@@ -50,7 +49,15 @@ public class PluginDownloader
     this.jdField_a_of_type_AndroidOsHandler = new Handler(ThreadManager.getSubThreadLooper(), this);
     this.b = new HashMap();
     this.c = new HashMap();
-    this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController = ((PreDownloadController)paramQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2));
+    try
+    {
+      this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController = ((IPreDownloadController)paramQQAppInterface.getRuntimeService(IPreDownloadController.class));
+      return;
+    }
+    catch (Exception paramContext)
+    {
+      paramContext.printStackTrace();
+    }
   }
   
   private int a(String paramString)
@@ -86,20 +93,23 @@ public class PluginDownloader
     if (paramInt2 > 0)
     {
       paramNetReq = (PluginDownloader.DownloadRecord)this.b.get(str);
-      if (paramNetReq == null) {
-        break label95;
+      if (paramNetReq != null) {
+        paramNetReq = PluginDownloader.DownloadRecord.a(paramNetReq);
+      } else {
+        paramNetReq = null;
       }
-    }
-    label95:
-    for (paramNetReq = PluginDownloader.DownloadRecord.a(paramNetReq);; paramNetReq = null)
-    {
       if (paramNetReq != null) {
         paramNetReq.a(paramInt1, paramInt2, str);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "doOnProgress: " + paramInt1 / paramInt2 + ", " + str);
+      if (QLog.isColorLevel())
+      {
+        paramNetReq = new StringBuilder();
+        paramNetReq.append("doOnProgress: ");
+        paramNetReq.append(paramInt1 / paramInt2);
+        paramNetReq.append(", ");
+        paramNetReq.append(str);
+        QLog.d("plugin_tag", 2, paramNetReq.toString());
       }
-      return;
     }
   }
   
@@ -108,51 +118,74 @@ public class PluginDownloader
     String str = (String)paramNetResp.mReq.getUserData();
     d(str);
     boolean bool;
-    Object localObject2;
-    if (paramNetResp.mResult == 0)
-    {
+    if (paramNetResp.mResult == 0) {
       bool = true;
-      localObject2 = (PreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.PRE_DOWNLOAD_CONTROLLER_2);
-      localObject1 = (PluginDownloader.DownloadRecord)this.b.remove(str);
-      if (localObject1 != null)
-      {
-        if (PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject1) != null) {
-          ((PreDownloadController)localObject2).preDownloadSuccess(PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject1).mReqUrl, paramNetResp.mTotalFileLen);
-        }
-        localObject2 = PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject1);
-        a(str, paramNetResp);
-        if (PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject1)) {
-          if (!bool) {
-            break label257;
-          }
-        }
-      }
+    } else {
+      bool = false;
     }
-    label257:
-    for (Object localObject1 = "success";; localObject1 = "failed")
+    Object localObject = null;
+    try
     {
-      a(str, (String)localObject1);
+      IPreDownloadController localIPreDownloadController = (IPreDownloadController)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPreDownloadController.class);
+      localObject = localIPreDownloadController;
+    }
+    catch (Exception localException)
+    {
+      QLog.e("plugin_tag", 1, "get IPreDownloadController error!", localException);
+    }
+    PluginDownloader.DownloadRecord localDownloadRecord = (PluginDownloader.DownloadRecord)this.b.remove(str);
+    if (localDownloadRecord != null)
+    {
+      if ((PluginDownloader.DownloadRecord.a(localDownloadRecord) != null) && (localObject != null)) {
+        ((IPreDownloadController)localObject).preDownloadSuccess(PluginDownloader.DownloadRecord.a(localDownloadRecord).mReqUrl, paramNetResp.mTotalFileLen);
+      }
+      PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = PluginDownloader.DownloadRecord.a(localDownloadRecord);
+      a(str, paramNetResp);
+      if (PluginDownloader.DownloadRecord.a(localDownloadRecord))
+      {
+        if (bool) {
+          localObject = "success";
+        } else {
+          localObject = "failed";
+        }
+        a(str, (String)localObject);
+      }
       a(a(this.jdField_a_of_type_AndroidContentContext), str, false);
       if (QLog.isColorLevel())
       {
-        QLog.d("plugin_tag", 2, "doOnResp. result,pluginid,length: " + paramNetResp.mResult + "," + str + ", " + paramNetResp.mTotalFileLen);
-        if ((!bool) && (QLog.isColorLevel())) {
-          QLog.e("plugin_tag", 2, "doOnResp. err: " + paramNetResp.mErrCode + ", " + paramNetResp.mErrDesc);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doOnResp. result,pluginid,length: ");
+        ((StringBuilder)localObject).append(paramNetResp.mResult);
+        ((StringBuilder)localObject).append(",");
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(", ");
+        ((StringBuilder)localObject).append(paramNetResp.mTotalFileLen);
+        QLog.d("plugin_tag", 2, ((StringBuilder)localObject).toString());
+        if ((!bool) && (QLog.isColorLevel()))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("doOnResp. err: ");
+          ((StringBuilder)localObject).append(paramNetResp.mErrCode);
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(paramNetResp.mErrDesc);
+          QLog.e("plugin_tag", 2, ((StringBuilder)localObject).toString());
         }
       }
-      if (localObject2 != null) {
-        ((PluginDownloader.OnPluginDownLoadListener)localObject2).a(bool, str);
+      if (localOnPluginDownLoadListener != null) {
+        localOnPluginDownLoadListener.a(bool, str);
       }
-      return;
-      bool = false;
-      break;
     }
   }
   
   private void a(File paramFile, String paramString, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "doDeleteDiscardFiles: " + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doDeleteDiscardFiles: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("plugin_tag", 2, ((StringBuilder)localObject).toString());
     }
     if ((paramFile != null) && (paramFile.exists()))
     {
@@ -161,35 +194,38 @@ public class PluginDownloader
       {
         int j = paramFile.length;
         int i = 0;
-        if (i < j)
+        while (i < j)
         {
-          Object localObject = paramFile[i];
-          String str = localObject.getPath();
-          if ((str == null) || (!str.startsWith(paramString))) {}
-          for (;;)
-          {
-            i += 1;
-            break;
-            if (!str.endsWith(".cfg")) {
-              if (str.equals(paramString))
+          StringBuilder localStringBuilder = paramFile[i];
+          localObject = localStringBuilder.getPath();
+          if ((localObject != null) && (((String)localObject).startsWith(paramString)) && (!((String)localObject).endsWith(".cfg"))) {
+            if (((String)localObject).equals(paramString))
+            {
+              if (paramBoolean)
               {
-                if (paramBoolean)
+                localStringBuilder.delete();
+                if (QLog.isColorLevel())
                 {
-                  localObject.delete();
-                  if (QLog.isColorLevel()) {
-                    QLog.d("plugin_tag", 2, "doDeleteDiscardFiles: " + str);
-                  }
-                }
-              }
-              else
-              {
-                localObject.delete();
-                if (QLog.isColorLevel()) {
-                  QLog.d("plugin_tag", 2, "doDeleteDiscardFiles: " + str);
+                  localStringBuilder = new StringBuilder();
+                  localStringBuilder.append("doDeleteDiscardFiles: ");
+                  localStringBuilder.append((String)localObject);
+                  QLog.d("plugin_tag", 2, localStringBuilder.toString());
                 }
               }
             }
+            else
+            {
+              localStringBuilder.delete();
+              if (QLog.isColorLevel())
+              {
+                localStringBuilder = new StringBuilder();
+                localStringBuilder.append("doDeleteDiscardFiles: ");
+                localStringBuilder.append((String)localObject);
+                QLog.d("plugin_tag", 2, localStringBuilder.toString());
+              }
+            }
           }
+          i += 1;
         }
       }
     }
@@ -205,8 +241,8 @@ public class PluginDownloader
     try
     {
       Object localObject = (HttpEngineTask)this.c.remove(paramString);
-      if (localObject != null) {
-        this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.cancelPreDownload(((HttpEngineTask)localObject).httpReq.mReqUrl);
+      if ((localObject != null) && (this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController.cancelPreDownload(((HttpEngineTask)localObject).httpReq.mReqUrl);
       }
       localObject = new PluginDownloader.DownloadRecord(null);
       PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject, paramHttpNetReq);
@@ -225,30 +261,29 @@ public class PluginDownloader
   private void a(String paramString, NetResp paramNetResp)
   {
     HashMap localHashMap = new HashMap();
-    paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
+    Object localObject = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (String)localObject;
+    if (localObject == null) {
       paramString = Long.valueOf(0L);
     }
-    for (;;)
-    {
-      localHashMap.put("mResult", String.valueOf(paramNetResp.mResult));
-      localHashMap.put("param_FailCode", String.valueOf(paramNetResp.mErrCode));
-      localHashMap.put("mErrDesc", paramNetResp.mErrDesc);
-      Object localObject = paramNetResp.mReq;
-      if ((paramNetResp.mResult != 0) && (localObject != null) && ((localObject instanceof HttpNetReq))) {
-        localHashMap.put("Url", ((HttpNetReq)localObject).mReqUrl);
-      }
-      localHashMap.put("mRespProperties[KeyReason]", paramNetResp.mRespProperties.get("netresp_param_reason"));
-      localHashMap.put("mRespProperties[KeyRawRespHttpHeader]", paramNetResp.mRespProperties.get("param_reqHeader"));
-      localObject = StatisticCollector.getInstance(BaseApplication.getContext());
-      String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
-      if (paramNetResp.mResult == 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        ((StatisticCollector)localObject).collectPerformance(str, "NetPluginsDownload", bool, paramString.longValue(), 0L, localHashMap, null);
-        return;
-      }
+    localHashMap.put("mResult", String.valueOf(paramNetResp.mResult));
+    localHashMap.put("param_FailCode", String.valueOf(paramNetResp.mErrCode));
+    localHashMap.put("mErrDesc", paramNetResp.mErrDesc);
+    localObject = paramNetResp.mReq;
+    if ((paramNetResp.mResult != 0) && (localObject != null) && ((localObject instanceof HttpNetReq))) {
+      localHashMap.put("Url", ((HttpNetReq)localObject).mReqUrl);
     }
+    localHashMap.put("mRespProperties[KeyReason]", paramNetResp.mRespProperties.get("netresp_param_reason"));
+    localHashMap.put("mRespProperties[KeyRawRespHttpHeader]", paramNetResp.mRespProperties.get("param_reqHeader"));
+    localObject = StatisticCollector.getInstance(BaseApplication.getContext());
+    String str = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    boolean bool;
+    if (paramNetResp.mResult == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ((StatisticCollector)localObject).collectPerformance(str, "NetPluginsDownload", bool, paramString.longValue(), 0L, localHashMap, null);
   }
   
   private void a(String paramString1, String paramString2)
@@ -260,19 +295,17 @@ public class PluginDownloader
     }
     HashMap localHashMap = new HashMap(3);
     localHashMap.put("plugin_id", paramString1);
-    paramString1 = "";
     try
     {
-      String str = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
-      paramString1 = str;
+      paramString1 = MobileQQ.sMobileQQ.waitAppRuntime(null).getAccount();
     }
-    catch (Throwable localThrowable)
+    catch (Throwable paramString1)
     {
-      for (;;)
-      {
-        QLog.e("plugin_tag", 1, "getAccount faild ！！！");
-      }
+      label56:
+      break label56;
     }
+    QLog.e("plugin_tag", 1, "getAccount faild ！！！");
+    paramString1 = "";
     localHashMap.put("qq_num", paramString1);
     localHashMap.put("result", paramString2);
     StatisticCollector.getInstance(MobileQQ.getContext()).collectPerformance(paramString1, "qqPluginPreDownloadReporter", true, 0L, 0L, localHashMap, null);
@@ -280,8 +313,9 @@ public class PluginDownloader
   
   private boolean a(String paramString)
   {
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
     boolean bool = false;
-    long l1 = this.jdField_a_of_type_AndroidContentContext.getSharedPreferences("pluginPreDownloadStartTime", 0).getLong(paramString, 0L);
+    long l1 = localContext.getSharedPreferences("pluginPreDownloadStartTime", 0).getLong(paramString, 0L);
     long l2 = System.currentTimeMillis();
     if ((l1 == 0L) || (l2 - l1 >= 28800000L)) {
       bool = true;
@@ -291,70 +325,73 @@ public class PluginDownloader
   
   private void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "doCancelInstall: " + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doCancelInstall: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("plugin_tag", 2, ((StringBuilder)localObject).toString());
     }
     this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    for (;;)
+    try
     {
-      PluginDownloader.DownloadRecord localDownloadRecord;
-      HttpEngineTask localHttpEngineTask;
-      try
+      PluginDownloader.DownloadRecord localDownloadRecord = (PluginDownloader.DownloadRecord)this.b.remove(paramString);
+      HttpEngineTask localHttpEngineTask = (HttpEngineTask)this.c.remove(paramString);
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      if ((localDownloadRecord != null) || (localHttpEngineTask != null))
       {
-        localDownloadRecord = (PluginDownloader.DownloadRecord)this.b.remove(paramString);
-        localHttpEngineTask = (HttpEngineTask)this.c.remove(paramString);
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if ((localDownloadRecord != null) || (localHttpEngineTask != null))
-        {
-          if (localDownloadRecord != null)
+        if (localDownloadRecord != null) {
+          if (PluginDownloader.DownloadRecord.a(localDownloadRecord) != null)
           {
-            if (PluginDownloader.DownloadRecord.a(localDownloadRecord) == null) {
-              break label191;
+            localObject = this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController;
+            if (localObject != null) {
+              ((IPreDownloadController)localObject).cancelPreDownload(PluginDownloader.DownloadRecord.a(localDownloadRecord).mReqUrl);
             }
-            this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.cancelPreDownload(PluginDownloader.DownloadRecord.a(localDownloadRecord).mReqUrl);
           }
-          if (localDownloadRecord != null) {
-            this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.cancelPreDownload(PluginDownloader.DownloadRecord.a(localDownloadRecord).mReqUrl);
-          }
-          if (localDownloadRecord == null) {
-            break label219;
-          }
-          localOnPluginDownLoadListener = PluginDownloader.DownloadRecord.a(localDownloadRecord);
-          if (localOnPluginDownLoadListener != null) {
-            localOnPluginDownLoadListener.c(paramString);
-          }
-          c(paramString);
-          if (((localDownloadRecord != null) && (PluginDownloader.DownloadRecord.a(localDownloadRecord))) || (localHttpEngineTask != null)) {
-            a(paramString, "cancel");
+          else
+          {
+            ((IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).cancelReq(PluginDownloader.DownloadRecord.a(localDownloadRecord));
           }
         }
-        return;
+        if (localDownloadRecord != null)
+        {
+          localObject = this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController;
+          if (localObject != null) {
+            ((IPreDownloadController)localObject).cancelPreDownload(PluginDownloader.DownloadRecord.a(localDownloadRecord).mReqUrl);
+          }
+        }
+        if (localDownloadRecord != null) {
+          localObject = PluginDownloader.DownloadRecord.a(localDownloadRecord);
+        } else {
+          localObject = (PluginDownloader.OnPluginDownLoadListener)localHttpEngineTask.userData;
+        }
+        if (localObject != null) {
+          ((PluginDownloader.OnPluginDownLoadListener)localObject).c(paramString);
+        }
+        c(paramString);
+        if (((localDownloadRecord != null) && (PluginDownloader.DownloadRecord.a(localDownloadRecord))) || (localHttpEngineTask != null)) {
+          a(paramString, "cancel");
+        }
       }
-      finally
-      {
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-      }
-      label191:
-      ((IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all")).cancelReq(PluginDownloader.DownloadRecord.a(localDownloadRecord));
-      continue;
-      label219:
-      PluginDownloader.OnPluginDownLoadListener localOnPluginDownLoadListener = (PluginDownloader.OnPluginDownLoadListener)localHttpEngineTask.userData;
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
     }
   }
   
   private void c(String paramString)
   {
-    paramString = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if (paramString == null) {
+    Object localObject = (Long)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    paramString = (String)localObject;
+    if (localObject == null) {
       paramString = Long.valueOf(0L);
     }
-    for (;;)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_FailCode", "0");
-      StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "NetPluginsCancelDownload", false, paramString.longValue(), 0L, localHashMap, null);
-      return;
-    }
+    localObject = new HashMap();
+    ((HashMap)localObject).put("param_FailCode", "0");
+    StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), "NetPluginsCancelDownload", false, paramString.longValue(), 0L, (HashMap)localObject, null);
   }
   
   private void d(String paramString)
@@ -364,129 +401,139 @@ public class PluginDownloader
   
   public void a(PluginInfo paramPluginInfo, PluginDownloader.OnPluginDownLoadListener paramOnPluginDownLoadListener, boolean paramBoolean)
   {
-    QLog.d("plugin_tag", 1, "doDownloadPlugin." + paramPluginInfo.mID + ", isPreDownload " + paramBoolean);
-    if ((paramBoolean) && (!a(paramPluginInfo.mID))) {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("doDownloadPlugin.");
+    ((StringBuilder)localObject1).append(paramPluginInfo.mID);
+    ((StringBuilder)localObject1).append(", isPreDownload ");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    QLog.d("plugin_tag", 1, ((StringBuilder)localObject1).toString());
+    if ((paramBoolean) && (!a(paramPluginInfo.mID)))
+    {
       if (QLog.isColorLevel()) {
         QLog.i("plugin_tag", 2, "exceed pre download frequency, ignore this call!");
       }
-    }
-    Object localObject1;
-    Object localObject2;
-    label407:
-    String str;
-    for (;;)
-    {
       return;
-      try
-      {
-        IHttpEngineService localIHttpEngineService = (IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all");
-        if (localIHttpEngineService == null)
-        {
-          QLog.d("plugin_tag", 1, "doDownloadPlugin nohttpabort" + paramPluginInfo.mID);
-          if (paramOnPluginDownLoadListener == null) {
-            continue;
-          }
-          paramOnPluginDownLoadListener.c(paramPluginInfo.mID);
-        }
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          QLog.e("plugin_tag", 1, "download plugin get IHttpEngineService error", localException);
-          localObject1 = null;
-        }
-        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-        try
-        {
-          if (this.b.containsKey(paramPluginInfo.mID))
-          {
-            localObject1 = (PluginDownloader.DownloadRecord)this.b.get(paramPluginInfo.mID);
-            if ((!paramBoolean) && (localObject1 != null) && (PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject1)))
-            {
-              PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject1, false);
-              a(paramPluginInfo.mID, "cancel");
-              PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject1, paramOnPluginDownLoadListener);
-              if (paramOnPluginDownLoadListener != null) {
-                paramOnPluginDownLoadListener.b(paramPluginInfo.mID);
-              }
-              if (QLog.isColorLevel()) {
-                QLog.i("plugin_tag", 2, "has pre download task running, replace current record listener!");
-              }
-            }
-            if (QLog.isColorLevel()) {
-              QLog.d("plugin_tag", 2, "downloading already");
-            }
-            return;
-          }
-          if (this.c.containsKey(paramPluginInfo.mID))
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("plugin_tag", 2, "pending downloading already exist");
-            }
-            if (paramBoolean) {
-              break label407;
-            }
-            localObject2 = (HttpEngineTask)this.c.remove(paramPluginInfo.mID);
-            if ((localObject2 != null) && (localObject2 != null)) {
-              this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.cancelPreDownload(((HttpEngineTask)localObject2).httpReq.mReqUrl);
-            }
-          }
-          this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-          if ((float)(paramPluginInfo.mLength * 1.75D) > FileUtils.a())
-          {
-            if (paramOnPluginDownLoadListener == null) {
-              continue;
-            }
-            paramOnPluginDownLoadListener.a(paramPluginInfo.mID);
-            return;
-            return;
-          }
-        }
-        finally
-        {
-          this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        }
-        localObject2 = new HttpNetReq();
-        ((HttpNetReq)localObject2).mCallback = this;
-        ((HttpNetReq)localObject2).mSupportBreakResume = true;
-        ((HttpNetReq)localObject2).mReqUrl = paramPluginInfo.mURL;
-        ((HttpNetReq)localObject2).mHttpMethod = 0;
-        ((HttpNetReq)localObject2).mNeedIpConnect = true;
-        ((HttpNetReq)localObject2).bAcceptNegativeContentLength = true;
-        ((HttpNetReq)localObject2).setUserData(paramPluginInfo.mID);
-        str = new File(a(this.jdField_a_of_type_AndroidContentContext), paramPluginInfo.mID).getPath();
-        ((HttpNetReq)localObject2).mOutPath = str;
-        if (!paramBoolean) {
-          break label690;
-        }
-      }
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.isEnable()) {
-      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
-    }
-    for (;;)
+    Object localObject2;
+    try
     {
-      try
+      localObject1 = (IHttpEngineService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IHttpEngineService.class, "all");
+    }
+    catch (Exception localException)
+    {
+      QLog.e("plugin_tag", 1, "download plugin get IHttpEngineService error", localException);
+      localObject2 = null;
+    }
+    if (localObject2 == null)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("doDownloadPlugin nohttpabort");
+      ((StringBuilder)localObject2).append(paramPluginInfo.mID);
+      QLog.d("plugin_tag", 1, ((StringBuilder)localObject2).toString());
+      if (paramOnPluginDownLoadListener != null) {
+        paramOnPluginDownLoadListener.c(paramPluginInfo.mID);
+      }
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+    try
+    {
+      if (this.b.containsKey(paramPluginInfo.mID))
       {
-        localObject1 = new HttpEngineTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPluginInfo.mID, this, (HttpNetReq)localObject2);
-        ((HttpEngineTask)localObject1).userData = paramOnPluginDownLoadListener;
-        this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadPreDownloadController.requestPreDownload(a(paramPluginInfo.mID), null, paramPluginInfo.mID + paramPluginInfo.mMD5, 0, paramPluginInfo.mURL, str, 1, 0, false, (AbsPreDownloadTask)localObject1);
-        this.c.put(paramPluginInfo.mID, localObject1);
+        localObject2 = (PluginDownloader.DownloadRecord)this.b.get(paramPluginInfo.mID);
+        if ((!paramBoolean) && (localObject2 != null) && (PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject2)))
+        {
+          PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject2, false);
+          a(paramPluginInfo.mID, "cancel");
+          PluginDownloader.DownloadRecord.a((PluginDownloader.DownloadRecord)localObject2, paramOnPluginDownLoadListener);
+          if (paramOnPluginDownLoadListener != null) {
+            paramOnPluginDownLoadListener.b(paramPluginInfo.mID);
+          }
+          if (QLog.isColorLevel()) {
+            QLog.i("plugin_tag", 2, "has pre download task running, replace current record listener!");
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "downloading already");
+        }
+      }
+      do
+      {
         this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
-        if (!QLog.isColorLevel()) {
+        return;
+        if (!this.c.containsKey(paramPluginInfo.mID)) {
           break;
         }
-        QLog.d("plugin_tag", 2, "downloadPlugin: " + ((HttpNetReq)localObject2).mReqUrl);
+        if (QLog.isColorLevel()) {
+          QLog.d("plugin_tag", 2, "pending downloading already exist");
+        }
+      } while (paramBoolean);
+      Object localObject3 = (HttpEngineTask)this.c.remove(paramPluginInfo.mID);
+      if ((localObject3 != null) && (localObject3 != null) && (this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController.cancelPreDownload(((HttpEngineTask)localObject3).httpReq.mReqUrl);
+      }
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+      double d = paramPluginInfo.mLength;
+      Double.isNaN(d);
+      if ((float)(d * 1.75D) > FileUtils.getAvailableInnernalMemorySize())
+      {
+        if (paramOnPluginDownLoadListener != null) {
+          paramOnPluginDownLoadListener.a(paramPluginInfo.mID);
+        }
         return;
+      }
+      localObject3 = new HttpNetReq();
+      ((HttpNetReq)localObject3).mCallback = this;
+      ((HttpNetReq)localObject3).mSupportBreakResume = true;
+      ((HttpNetReq)localObject3).mReqUrl = paramPluginInfo.mURL;
+      ((HttpNetReq)localObject3).mHttpMethod = 0;
+      ((HttpNetReq)localObject3).mNeedIpConnect = true;
+      ((HttpNetReq)localObject3).bAcceptNegativeContentLength = true;
+      ((HttpNetReq)localObject3).setUserData(paramPluginInfo.mID);
+      String str = new File(a(this.jdField_a_of_type_AndroidContentContext), paramPluginInfo.mID).getPath();
+      ((HttpNetReq)localObject3).mOutPath = str;
+      Object localObject4;
+      if (paramBoolean)
+      {
+        localObject4 = this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController;
+        if ((localObject4 != null) && (((IPreDownloadController)localObject4).isEnable())) {
+          this.jdField_a_of_type_JavaUtilConcurrentLocksLock.lock();
+        }
+      }
+      try
+      {
+        localObject2 = new HttpEngineTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramPluginInfo.mID, this, (HttpNetReq)localObject3);
+        ((HttpEngineTask)localObject2).userData = paramOnPluginDownLoadListener;
+        paramOnPluginDownLoadListener = this.jdField_a_of_type_ComTencentMobileqqTransfilePredownloadIPreDownloadController;
+        int i = a(paramPluginInfo.mID);
+        localObject4 = new StringBuilder();
+        ((StringBuilder)localObject4).append(paramPluginInfo.mID);
+        ((StringBuilder)localObject4).append(paramPluginInfo.mMD5);
+        paramOnPluginDownLoadListener.requestPreDownload(i, null, ((StringBuilder)localObject4).toString(), 0, paramPluginInfo.mURL, str, 1, 0, false, (AbsPreDownloadTask)localObject2);
+        this.c.put(paramPluginInfo.mID, localObject2);
+        this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
       }
       finally
       {
         this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
       }
-      label690:
-      a(paramPluginInfo.mID, (HttpNetReq)localObject2, paramOnPluginDownLoadListener, null, false);
-      ((IHttpEngineService)localObject1).sendReq((NetReq)localObject2);
+      ((IHttpEngineService)localObject2).sendReq((NetReq)localObject3);
+      if (QLog.isColorLevel())
+      {
+        paramPluginInfo = new StringBuilder();
+        paramPluginInfo.append("downloadPlugin: ");
+        paramPluginInfo.append(((HttpNetReq)localObject3).mReqUrl);
+        QLog.d("plugin_tag", 2, paramPluginInfo.toString());
+      }
+      return;
+    }
+    finally
+    {
+      this.jdField_a_of_type_JavaUtilConcurrentLocksLock.unlock();
+    }
+    for (;;)
+    {
+      throw paramPluginInfo;
     }
   }
   
@@ -499,16 +546,18 @@ public class PluginDownloader
   {
     switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
-      return false;
-      a((NetResp)paramMessage.obj);
-      continue;
-      a((NetReq)paramMessage.obj, paramMessage.arg1, paramMessage.arg2);
-      continue;
+    default: 
+      break;
+    case 65794: 
       b((String)paramMessage.obj);
+      break;
+    case 65793: 
+      a((NetReq)paramMessage.obj, paramMessage.arg1, paramMessage.arg2);
+      break;
+    case 65792: 
+      a((NetResp)paramMessage.obj);
     }
+    return false;
   }
   
   public void onPreDownloadStart(HttpEngineTask paramHttpEngineTask)
@@ -529,7 +578,7 @@ public class PluginDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.qqlive.module.videoreport.report.element;
 
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import android.view.View;
 import com.tencent.qqlive.module.videoreport.data.DataRWProxy;
 import com.tencent.qqlive.module.videoreport.page.ViewContainerBinder;
@@ -17,6 +18,16 @@ public class ExposurePolicyHelper
     getEleExposureMap(paramObject).clear();
   }
   
+  private static EleExposeInfo getCacheEleExposeInfo(Object paramObject, View paramView, String paramString)
+  {
+    paramView = getReExposeKey(paramObject, paramView, paramString);
+    paramObject = getEleExposureMap(paramObject).get(paramView);
+    if ((paramObject instanceof EleExposeInfo)) {
+      return (EleExposeInfo)paramObject;
+    }
+    return null;
+  }
+  
   @Nullable
   public static EleExposeInfo getEleExposeInfo(Object paramObject, View paramView, String paramString)
   {
@@ -24,17 +35,7 @@ public class ExposurePolicyHelper
     if (paramObject == null) {
       return null;
     }
-    return getEleExposeInfo(paramObject, paramString);
-  }
-  
-  private static EleExposeInfo getEleExposeInfo(Object paramObject, String paramString)
-  {
-    paramString = getReExposeKey(paramObject, paramString);
-    paramObject = getEleExposureMap(paramObject).get(paramString);
-    if ((paramObject instanceof EleExposeInfo)) {
-      return (EleExposeInfo)paramObject;
-    }
-    return null;
+    return getCacheEleExposeInfo(paramObject, paramView, paramString);
   }
   
   @NonNull
@@ -55,24 +56,35 @@ public class ExposurePolicyHelper
     Object localObject = paramObject;
     if (paramObject == null)
     {
-      if (paramView != null) {
-        break label14;
+      if (paramView == null) {
+        return null;
       }
-      localObject = null;
+      localObject = ViewContainerBinder.getInstance().getBoundContainer(paramView.getRootView());
+      if (localObject == null) {
+        return null;
+      }
     }
-    label14:
-    do
-    {
-      return localObject;
-      paramObject = ViewContainerBinder.getInstance().getBoundContainer(paramView.getRootView());
-      localObject = paramObject;
-    } while (paramObject != null);
-    return null;
+    return localObject;
   }
   
-  public static String getReExposeKey(Object paramObject, String paramString)
+  public static String getReExposeKey(Object paramObject, View paramView, String paramString)
   {
-    return paramObject.hashCode() + paramString;
+    String str = paramString;
+    if (TextUtils.isEmpty(paramString))
+    {
+      str = "";
+      if (paramView != null)
+      {
+        paramString = new StringBuilder();
+        paramString.append(paramView.hashCode());
+        paramString.append("");
+        str = paramString.toString();
+      }
+    }
+    paramView = new StringBuilder();
+    paramView.append(paramObject.hashCode());
+    paramView.append(str);
+    return paramView.toString();
   }
   
   public static void putEleExposeInfo(Object paramObject, View paramView, String paramString, EleExposeInfo paramEleExposeInfo)
@@ -81,7 +93,7 @@ public class ExposurePolicyHelper
     if (paramObject == null) {
       return;
     }
-    putEleExposeInfo(paramObject, getReExposeKey(paramObject, paramString), paramEleExposeInfo);
+    putEleExposeInfo(paramObject, getReExposeKey(paramObject, paramView, paramString), paramEleExposeInfo);
   }
   
   private static void putEleExposeInfo(Object paramObject, String paramString, EleExposeInfo paramEleExposeInfo)
@@ -91,7 +103,7 @@ public class ExposurePolicyHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.element.ExposurePolicyHelper
  * JD-Core Version:    0.7.0.1
  */

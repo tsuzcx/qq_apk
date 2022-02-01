@@ -24,57 +24,46 @@ final class WSLyricSticker$LyricWrapper
   @Nullable
   public final Sentence getCurrentSentence(long paramLong)
   {
-    long l = 0L;
-    Object localObject1 = null;
-    int i = (int)(this.startTime + paramLong);
-    Object localObject2 = this.mCurrentSentence;
-    if (localObject2 != null) {
-      paramLong = ((Sentence)localObject2).mStartTime;
+    int i = (int)(paramLong + this.startTime);
+    Object localObject = this.mCurrentSentence;
+    long l1 = 0L;
+    if (localObject != null) {
+      paramLong = ((Sentence)localObject).mStartTime + ((Sentence)localObject).mDuration;
+    } else {
+      paramLong = 0L;
     }
-    for (paramLong = ((Sentence)localObject2).mDuration + paramLong;; paramLong = 0L)
-    {
-      localObject2 = this.mCurrentSentence;
-      if (localObject2 != null) {
-        l = ((Sentence)localObject2).mStartTime;
-      }
-      if ((l >= i) || (i >= paramLong)) {
-        break;
-      }
-      localObject1 = this.mCurrentSentence;
-      return localObject1;
+    localObject = this.mCurrentSentence;
+    if (localObject != null) {
+      l1 = ((Sentence)localObject).mStartTime;
     }
-    localObject2 = this.lyric;
-    if (localObject2 != null)
-    {
-      i = ((Lyric)localObject2).findLineNo(i);
-      label105:
-      if (i == -1) {
-        break label163;
-      }
-      localObject1 = this.lyric;
-      if (localObject1 == null) {
-        break label165;
-      }
-      localObject1 = ((Lyric)localObject1).getSentenceList();
-      if (localObject1 == null) {
-        break label165;
-      }
-      localObject1 = (Sentence)((List)localObject1).get(i);
-      if (localObject1 == null) {
-        break label165;
-      }
-      this.mCurrentSentence = ((Sentence)localObject1);
+    long l2 = i;
+    if ((l1 < l2) && (l2 < paramLong)) {
+      return this.mCurrentSentence;
     }
-    for (;;)
-    {
-      return localObject1;
+    localObject = this.lyric;
+    if (localObject != null) {
+      i = ((Lyric)localObject).findLineNo(i);
+    } else {
       i = -1;
-      break label105;
-      label163:
-      break;
-      label165:
-      localObject1 = null;
     }
+    if (i == -1) {
+      return null;
+    }
+    localObject = this.lyric;
+    if (localObject != null)
+    {
+      localObject = ((Lyric)localObject).getSentenceList();
+      if (localObject != null)
+      {
+        localObject = (Sentence)((List)localObject).get(i);
+        if (localObject != null)
+        {
+          this.mCurrentSentence = ((Sentence)localObject);
+          return localObject;
+        }
+      }
+    }
+    return null;
   }
   
   public final long getEndTime()
@@ -83,12 +72,16 @@ final class WSLyricSticker$LyricWrapper
     if (localObject != null)
     {
       localObject = ((Lyric)localObject).getSentenceList();
-      if (localObject == null) {}
+      if (localObject != null)
+      {
+        localObject = (Sentence)CollectionsKt.lastOrNull((List)localObject);
+        break label31;
+      }
     }
-    for (localObject = (Sentence)CollectionsKt.lastOrNull((List)localObject); localObject != null; localObject = null)
-    {
-      long l = ((Sentence)localObject).mStartTime;
-      return ((Sentence)localObject).mDuration + l;
+    localObject = null;
+    label31:
+    if (localObject != null) {
+      return ((Sentence)localObject).mStartTime + ((Sentence)localObject).mDuration;
     }
     return 0L;
   }
@@ -111,7 +104,7 @@ final class WSLyricSticker$LyricWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.sticker.music.WSLyricSticker.LyricWrapper
  * JD-Core Version:    0.7.0.1
  */

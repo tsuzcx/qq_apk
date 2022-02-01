@@ -47,39 +47,36 @@ public class ClearableEditText
     try
     {
       a(paramContext, paramAttributeSet);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$ClearableEditTextHelper = new ClearableEditText.ClearableEditTextHelper(this, this);
-      ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$ClearableEditTextHelper);
-      ViewCompat.setImportantForAccessibility(this, 1);
-      return;
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        paramContext.printStackTrace();
-      }
+      paramContext.printStackTrace();
     }
+    this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$ClearableEditTextHelper = new ClearableEditText.ClearableEditTextHelper(this, this);
+    ViewCompat.setAccessibilityDelegate(this, this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$ClearableEditTextHelper);
+    ViewCompat.setImportantForAccessibility(this, 1);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
   {
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bi);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bW);
     try
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(R.styleable.ah);
-      this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.aj, -1);
-      this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.ai, -1);
+      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getDrawable(R.styleable.cr);
+      this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.ct, -1);
+      this.jdField_b_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.cs, -1);
       paramContext.recycle();
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable == null) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839679);
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = getResources().getDrawable(2130839537);
       }
       if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
       {
         if ((this.jdField_a_of_type_Int == -1) || (this.jdField_b_of_type_Int == -1))
         {
-          this.jdField_a_of_type_Int = ((int)(this.jdField_a_of_type_Float * 19.0F));
-          this.jdField_b_of_type_Int = ((int)(this.jdField_a_of_type_Float * 19.0F));
+          float f = this.jdField_a_of_type_Float;
+          this.jdField_a_of_type_Int = ((int)(f * 19.0F));
+          this.jdField_b_of_type_Int = ((int)(f * 19.0F));
         }
         this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(0, 0, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
         setClearButtonVisible(false);
@@ -96,44 +93,40 @@ public class ClearableEditText
   
   private boolean a()
   {
-    for (;;)
+    try
     {
-      try
+      Object localObject = TextView.class.getDeclaredField("mSingleLine");
+      ((Field)localObject).setAccessible(true);
+      localObject = ((Field)localObject).get(this);
+      if ((localObject instanceof Boolean))
       {
-        Object localObject = TextView.class.getDeclaredField("mSingleLine");
-        ((Field)localObject).setAccessible(true);
-        localObject = ((Field)localObject).get(this);
-        if ((localObject instanceof Boolean))
-        {
-          bool = ((Boolean)localObject).booleanValue();
-          return bool;
-        }
+        boolean bool = ((Boolean)localObject).booleanValue();
+        return bool;
       }
-      catch (NoSuchFieldException localNoSuchFieldException)
-      {
-        localNoSuchFieldException.printStackTrace();
-        return false;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        localIllegalArgumentException.printStackTrace();
-        return false;
-      }
-      catch (IllegalAccessException localIllegalAccessException)
-      {
-        localIllegalAccessException.printStackTrace();
-        return false;
-      }
-      boolean bool = false;
     }
+    catch (IllegalAccessException localIllegalAccessException)
+    {
+      localIllegalAccessException.printStackTrace();
+      return false;
+    }
+    catch (IllegalArgumentException localIllegalArgumentException)
+    {
+      localIllegalArgumentException.printStackTrace();
+      return false;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException)
+    {
+      localNoSuchFieldException.printStackTrace();
+    }
+    return false;
   }
   
-  public Drawable a()
+  protected Drawable a()
   {
     return this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
   }
   
-  public boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
+  protected boolean dispatchHoverEvent(MotionEvent paramMotionEvent)
   {
     if ((this.jdField_b_of_type_Boolean) && (paramMotionEvent.getX() > getWidth() - getPaddingRight() - this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.getIntrinsicWidth())) {
       return this.jdField_a_of_type_ComTencentMobileqqWidgetClearableEditText$ClearableEditTextHelper.dispatchHoverEvent(paramMotionEvent);
@@ -158,20 +151,19 @@ public class ClearableEditText
     super.onDetachedFromWindow();
   }
   
-  public void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
+  protected void onFocusChanged(boolean paramBoolean, int paramInt, Rect paramRect)
   {
     super.onFocusChanged(paramBoolean, paramInt, paramRect);
     if (!paramBoolean)
     {
       setCursorVisible(false);
       setClearButtonVisible(false);
-    }
-    do
-    {
       return;
-      setCursorVisible(true);
-    } while (getText().toString().length() == 0);
-    setClearButtonVisible(true);
+    }
+    setCursorVisible(true);
+    if (getText().toString().length() != 0) {
+      setClearButtonVisible(true);
+    }
   }
   
   public void setCanMultiLine(boolean paramBoolean)
@@ -182,13 +174,15 @@ public class ClearableEditText
   public void setClearButtonStyle(int paramInt)
   {
     this.jdField_c_of_type_Int = paramInt;
-    if (this.jdField_c_of_type_Int == 1) {
+    paramInt = this.jdField_c_of_type_Int;
+    if (paramInt == 1)
+    {
       setClearButtonVisible(false);
-    }
-    while (this.jdField_c_of_type_Int != 2) {
       return;
     }
-    setClearButtonVisible(true);
+    if (paramInt == 2) {
+      setClearButtonVisible(true);
+    }
   }
   
   public void setClearButtonVisible(boolean paramBoolean)
@@ -196,16 +190,17 @@ public class ClearableEditText
     if (((paramBoolean) && (this.jdField_c_of_type_Int == 1)) || ((!paramBoolean) && (this.jdField_c_of_type_Int == 2))) {
       return;
     }
-    if (paramBoolean) {}
-    for (Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;; localDrawable = null)
-    {
-      setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], localDrawable, getCompoundDrawables()[3]);
-      if (this.jdField_b_of_type_Boolean != paramBoolean) {
-        AccessibilityUtil.a(this);
-      }
-      this.jdField_b_of_type_Boolean = paramBoolean;
-      return;
+    Drawable localDrawable;
+    if (paramBoolean) {
+      localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    } else {
+      localDrawable = null;
     }
+    setCompoundDrawables(getCompoundDrawables()[0], getCompoundDrawables()[1], localDrawable, getCompoundDrawables()[3]);
+    if (this.jdField_b_of_type_Boolean != paramBoolean) {
+      AccessibilityUtil.a(this);
+    }
+    this.jdField_b_of_type_Boolean = paramBoolean;
   }
   
   public void setCursorVisible(boolean paramBoolean)
@@ -233,7 +228,7 @@ public class ClearableEditText
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.ClearableEditText
  * JD-Core Version:    0.7.0.1
  */

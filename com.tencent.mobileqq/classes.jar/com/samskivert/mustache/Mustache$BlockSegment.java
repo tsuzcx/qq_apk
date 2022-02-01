@@ -27,30 +27,38 @@ public abstract class Mustache$BlockSegment
   
   public boolean firstLeadsBlank()
   {
-    if ((this._segs.length == 0) || (!(this._segs[0] instanceof Mustache.StringSegment))) {
-      return false;
+    Template.Segment[] arrayOfSegment = this._segs;
+    if (arrayOfSegment.length != 0)
+    {
+      if (!(arrayOfSegment[0] instanceof Mustache.StringSegment)) {
+        return false;
+      }
+      return ((Mustache.StringSegment)arrayOfSegment[0]).leadsBlank();
     }
-    return ((Mustache.StringSegment)this._segs[0]).leadsBlank();
+    return false;
   }
   
   public boolean lastTrailsBlank()
   {
-    int i = this._segs.length - 1;
-    if ((this._segs.length == 0) || (!(this._segs[i] instanceof Mustache.StringSegment))) {
-      return false;
+    Template.Segment[] arrayOfSegment = this._segs;
+    int i = arrayOfSegment.length - 1;
+    if ((arrayOfSegment.length != 0) && ((arrayOfSegment[i] instanceof Mustache.StringSegment))) {
+      return ((Mustache.StringSegment)arrayOfSegment[i]).trailsBlank();
     }
-    return ((Mustache.StringSegment)this._segs[i]).trailsBlank();
+    return false;
   }
   
   public void trimFirstBlank()
   {
-    this._segs[0] = ((Mustache.StringSegment)this._segs[0]).trimLeadBlank();
+    Template.Segment[] arrayOfSegment = this._segs;
+    arrayOfSegment[0] = ((Mustache.StringSegment)arrayOfSegment[0]).trimLeadBlank();
   }
   
   public void trimLastBlank()
   {
-    int i = this._segs.length - 1;
-    this._segs[i] = ((Mustache.StringSegment)this._segs[i]).trimTrailBlank();
+    Template.Segment[] arrayOfSegment = this._segs;
+    int i = arrayOfSegment.length - 1;
+    arrayOfSegment[i] = ((Mustache.StringSegment)arrayOfSegment[i]).trimTrailBlank();
   }
 }
 

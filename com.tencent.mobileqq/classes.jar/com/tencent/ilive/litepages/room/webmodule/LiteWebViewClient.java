@@ -46,8 +46,9 @@ public class LiteWebViewClient
   
   public void onDestroy()
   {
-    if (this.mLiteJsModuleProvider != null) {
-      this.mLiteJsModuleProvider.removeAllJsModule();
+    LiteJsModuleProvider localLiteJsModuleProvider = this.mLiteJsModuleProvider;
+    if (localLiteJsModuleProvider != null) {
+      localLiteJsModuleProvider.removeAllJsModule();
     }
   }
   
@@ -65,24 +66,32 @@ public class LiteWebViewClient
   
   public boolean shouldOverrideUrlLoading(WebView paramWebView, String paramString)
   {
-    if ((this.mJsBizAdapter != null) && (this.mJsBizAdapter.getLogger() != null)) {
-      this.mJsBizAdapter.getLogger().i("LiteLiveWebViewClient", "shouldOverrideUrlLoading url = " + paramString, new Object[0]);
+    paramWebView = this.mJsBizAdapter;
+    Object localObject1;
+    if ((paramWebView != null) && (paramWebView.getLogger() != null))
+    {
+      paramWebView = this.mJsBizAdapter.getLogger();
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("shouldOverrideUrlLoading url = ");
+      ((StringBuilder)localObject1).append(paramString);
+      paramWebView.i("LiteLiveWebViewClient", ((StringBuilder)localObject1).toString(), new Object[0]);
     }
     if (paramString.startsWith("jsbridge://"))
     {
-      paramString = Uri.parse(paramString);
+      localObject1 = Uri.parse(paramString);
       paramWebView = new HashMap();
-      Object localObject = paramString.getQueryParameterNames().iterator();
-      while (((Iterator)localObject).hasNext())
+      paramString = ((Uri)localObject1).getQueryParameterNames().iterator();
+      while (paramString.hasNext())
       {
-        String str = (String)((Iterator)localObject).next();
-        paramWebView.put(str, paramString.getQueryParameter(str));
+        localObject2 = (String)paramString.next();
+        paramWebView.put(localObject2, ((Uri)localObject1).getQueryParameter((String)localObject2));
       }
-      localObject = paramString.getAuthority();
-      paramString = paramString.getPath();
-      paramString = paramString.substring(1, paramString.length());
-      if (this.mLiteJsModuleProvider != null) {
-        this.mLiteJsModuleProvider.callFunction((String)localObject, paramString, paramWebView);
+      paramString = ((Uri)localObject1).getAuthority();
+      localObject1 = ((Uri)localObject1).getPath();
+      localObject1 = ((String)localObject1).substring(1, ((String)localObject1).length());
+      Object localObject2 = this.mLiteJsModuleProvider;
+      if (localObject2 != null) {
+        ((LiteJsModuleProvider)localObject2).callFunction(paramString, (String)localObject1, paramWebView);
       }
       return true;
     }
@@ -95,7 +104,7 @@ public class LiteWebViewClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.litepages.room.webmodule.LiteWebViewClient
  * JD-Core Version:    0.7.0.1
  */

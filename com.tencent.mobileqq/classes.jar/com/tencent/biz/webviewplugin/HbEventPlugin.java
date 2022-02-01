@@ -92,10 +92,11 @@ public class HbEventPlugin
     if (paramInt <= 0) {
       return false;
     }
-    if (this.jdField_a_of_type_AndroidUtilSparseArray == null) {
+    Object localObject = this.jdField_a_of_type_AndroidUtilSparseArray;
+    if (localObject == null) {
       return false;
     }
-    Object localObject = (WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    localObject = (WeakReference)((SparseArray)localObject).get(paramInt);
     if (localObject == null) {
       return false;
     }
@@ -106,73 +107,65 @@ public class HbEventPlugin
     try
     {
       this.mRuntime.a().unregisterReceiver((BroadcastReceiver)localObject);
-      return true;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          localException.printStackTrace();
+      if (QLog.isColorLevel()) {
+        localException.printStackTrace();
+      }
+    }
+    return true;
+  }
+  
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (QLog.isColorLevel())
+    {
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest: ");
+      paramJsBridgeListener.append(paramString3);
+      paramJsBridgeListener.append(",");
+      paramJsBridgeListener.append(paramVarArgs);
+      QLog.i("PortalManager.HbEventPlugin", 2, paramJsBridgeListener.toString());
+    }
+    if (("redEnvelope".endsWith(paramString2)) && (("getRankingList".endsWith(paramString3)) || ("getHead".endsWith(paramString3)) || ("getJumpBtnState".endsWith(paramString3)) || ("getNick".endsWith(paramString3)) || ("takePhoto".endsWith(paramString3))))
+    {
+      int i = a();
+      paramJsBridgeListener = a(i);
+      a(paramJsBridgeListener, "com.tencent.portal.resp.action");
+      if (paramVarArgs != null) {
+        try
+        {
+          if (paramVarArgs.length > 0)
+          {
+            paramString1 = new JSONObject(paramVarArgs[0]);
+            paramJsBridgeListener.jdField_a_of_type_JavaLangString = paramString1.getString("callback");
+            paramJsBridgeListener.b = paramString1.getJSONObject("params").toString();
+          }
+        }
+        catch (JSONException paramString1)
+        {
+          paramString1.printStackTrace();
         }
       }
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    boolean bool2 = false;
-    if (QLog.isColorLevel()) {
-      QLog.i("PortalManager.HbEventPlugin", 2, "handleJsRequest: " + paramString3 + "," + paramVarArgs);
-    }
-    boolean bool1 = bool2;
-    int i;
-    if ("redEnvelope".endsWith(paramString2)) {
-      if ((!"getRankingList".endsWith(paramString3)) && (!"getHead".endsWith(paramString3)) && (!"getJumpBtnState".endsWith(paramString3)) && (!"getNick".endsWith(paramString3)))
-      {
-        bool1 = bool2;
-        if (!"takePhoto".endsWith(paramString3)) {}
-      }
-      else
-      {
-        i = a();
-        paramJsBridgeListener = a(i);
-        a(paramJsBridgeListener, "com.tencent.portal.resp.action");
-        if (paramVarArgs == null) {}
-      }
-    }
-    try
-    {
-      if (paramVarArgs.length > 0)
-      {
-        paramString1 = new JSONObject(paramVarArgs[0]);
-        paramJsBridgeListener.jdField_a_of_type_JavaLangString = paramString1.getString("callback");
-        paramJsBridgeListener.b = paramString1.getJSONObject("params").toString();
-      }
       a("com.tencent.portal.req.action", a(paramString3), i, paramJsBridgeListener.b);
-      bool1 = true;
-      return bool1;
+      return true;
     }
-    catch (JSONException paramString1)
-    {
-      for (;;)
-      {
-        paramString1.printStackTrace();
-      }
-    }
+    return false;
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
-    if ((this.jdField_a_of_type_AndroidUtilSparseArray != null) && (this.jdField_a_of_type_AndroidUtilSparseArray.size() > 0))
+    Object localObject = this.jdField_a_of_type_AndroidUtilSparseArray;
+    if ((localObject != null) && (((SparseArray)localObject).size() > 0))
     {
       int i = 0;
       while (i < this.jdField_a_of_type_AndroidUtilSparseArray.size())
       {
-        HbEventPlugin.DataReceiver localDataReceiver = (HbEventPlugin.DataReceiver)((WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).get();
-        if (localDataReceiver != null) {
-          a(localDataReceiver.jdField_a_of_type_Int);
+        localObject = (HbEventPlugin.DataReceiver)((WeakReference)this.jdField_a_of_type_AndroidUtilSparseArray.get(i)).get();
+        if (localObject != null) {
+          a(((HbEventPlugin.DataReceiver)localObject).jdField_a_of_type_Int);
         }
         i += 1;
       }
@@ -181,7 +174,7 @@ public class HbEventPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.HbEventPlugin
  * JD-Core Version:    0.7.0.1
  */

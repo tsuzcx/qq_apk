@@ -16,8 +16,18 @@ class BaseMessageProcessor$1
     if (localToServiceMsg == null) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.BaseMessageProcessor", 2, "prepareRetryRunnable cmd=" + localToServiceMsg.getServiceCmd() + ",reqSeq=" + this.jdField_a_of_type_Long + " timeout: " + this.c + " retryIndex:" + this.jdField_b_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("prepareRetryRunnable cmd=");
+      localStringBuilder.append(localToServiceMsg.getServiceCmd());
+      localStringBuilder.append(",reqSeq=");
+      localStringBuilder.append(this.jdField_a_of_type_Long);
+      localStringBuilder.append(" timeout: ");
+      localStringBuilder.append(this.c);
+      localStringBuilder.append(" retryIndex:");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      QLog.d("Q.msg.BaseMessageProcessor", 2, localStringBuilder.toString());
     }
     localToServiceMsg.extraData.putLong("timeOut", this.c);
     localToServiceMsg.extraData.putLong("startTime", this.jdField_b_of_type_Long);
@@ -28,7 +38,7 @@ class BaseMessageProcessor$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.BaseMessageProcessor.1
  * JD-Core Version:    0.7.0.1
  */

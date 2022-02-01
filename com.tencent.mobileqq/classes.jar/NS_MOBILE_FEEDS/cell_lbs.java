@@ -39,20 +39,23 @@ public final class cell_lbs
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.gps != null) {
-      paramJceOutputStream.write(this.gps, 0);
+    Object localObject = this.gps;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.location != null) {
-      paramJceOutputStream.write(this.location, 1);
+    localObject = this.location;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.extendinfo != null) {
-      paramJceOutputStream.write(this.extendinfo, 2);
+    localObject = this.extendinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_lbs
  * JD-Core Version:    0.7.0.1
  */

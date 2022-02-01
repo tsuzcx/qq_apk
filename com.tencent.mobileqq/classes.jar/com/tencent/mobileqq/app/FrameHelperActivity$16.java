@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.app;
 
-import com.tencent.mobileqq.onlinestatus.AccountPanel.OnlineStatusChangedListener;
+import com.tencent.mobileqq.onlinestatus.IAccountPanel.OnlineStatusChangedListener;
 import mqq.app.AppRuntime.Status;
 
 class FrameHelperActivity$16
-  implements AccountPanel.OnlineStatusChangedListener
+  implements IAccountPanel.OnlineStatusChangedListener
 {
   FrameHelperActivity$16(FrameHelperActivity paramFrameHelperActivity) {}
   
@@ -15,7 +15,7 @@ class FrameHelperActivity$16
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FrameHelperActivity.16
  * JD-Core Version:    0.7.0.1
  */

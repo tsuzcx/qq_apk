@@ -11,16 +11,16 @@ class VideoController$7
   public void run()
   {
     SessionInfo localSessionInfo = this.this$0.a();
-    if ((localSessionInfo.e) && (localSessionInfo.n) && (localSessionInfo.jdField_d_of_type_Int == 2))
+    if ((localSessionInfo.e) && (localSessionInfo.n) && (localSessionInfo.d == 2))
     {
-      localSessionInfo.a(this.a, false);
-      this.this$0.a.pauseVideo(localSessionInfo.jdField_d_of_type_JavaLangString);
+      localSessionInfo.b(this.a, false);
+      this.this$0.a.pauseVideo(localSessionInfo.c);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.7
  * JD-Core Version:    0.7.0.1
  */

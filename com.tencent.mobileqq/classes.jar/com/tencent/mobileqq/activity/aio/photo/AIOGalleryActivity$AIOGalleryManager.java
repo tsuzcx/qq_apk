@@ -43,14 +43,22 @@ class AIOGalleryActivity$AIOGalleryManager
   {
     if (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider == null)
     {
-      BinderWarpper localBinderWarpper = (BinderWarpper)paramActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
-      if (localBinderWarpper == null) {
-        break label160;
+      Object localObject = (BinderWarpper)paramActivity.getIntent().getParcelableExtra("extra.IMAGE_PROVIDER");
+      if (localObject != null)
+      {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider = IAIOImageProvider.Stub.a(((BinderWarpper)localObject).a);
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("IAIOImageProvider is ");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider);
+          QLog.d("AIOGalleryActivity", 2, ((StringBuilder)localObject).toString());
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider = IAIOImageProvider.Stub.a(localBinderWarpper.a);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProviderCallBack);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOGalleryActivity", 2, "IAIOImageProvider is " + this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryActivity.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider);
+      else
+      {
+        throw new IllegalArgumentException("can't find Binder in Intent..");
       }
     }
     boolean bool = paramActivity.getIntent().getBooleanExtra("extra.IS_GOTO_IMAGELIST", false);
@@ -63,9 +71,6 @@ class AIOGalleryActivity$AIOGalleryManager
         ((AIOImageListScene)this.jdField_a_of_type_ComTencentCommonGalleryactivityAbstractImageListScene).p();
       }
     }
-    return;
-    label160:
-    throw new IllegalArgumentException("can't find Binder in Intent..");
   }
   
   public boolean a()
@@ -75,7 +80,7 @@ class AIOGalleryActivity$AIOGalleryManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryActivity.AIOGalleryManager
  * JD-Core Version:    0.7.0.1
  */

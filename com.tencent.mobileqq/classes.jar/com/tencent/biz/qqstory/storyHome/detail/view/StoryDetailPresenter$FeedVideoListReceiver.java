@@ -19,25 +19,25 @@ class StoryDetailPresenter$FeedVideoListReceiver
   
   public void a(@NonNull StoryDetailPresenter paramStoryDetailPresenter, @NonNull VideoListPageLoader.GetVideoListEvent paramGetVideoListEvent)
   {
-    if ((!paramGetVideoListEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) || (paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) || (StoryDetailPresenter.a(paramStoryDetailPresenter) == null))
+    if ((paramGetVideoListEvent.jdField_a_of_type_JavaLangString.equals(StoryDetailPresenter.a(paramStoryDetailPresenter))) && (!paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isFail()) && (StoryDetailPresenter.a(paramStoryDetailPresenter) != null))
     {
-      SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetVideoListEvent.toString());
+      if (!StoryDetailPresenter.a(paramStoryDetailPresenter).c())
+      {
+        SLog.e(this.TAG, "this feed does not support video list. ignore this comment list event. %s.", new Object[] { paramGetVideoListEvent.toString() });
+        return;
+      }
+      SLog.a(this.TAG, "receive comment list event. %s.", paramGetVideoListEvent.toString());
+      StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList, paramGetVideoListEvent.c);
+      StoryDetailPresenter.a(paramStoryDetailPresenter).a().updateVideoInfo(paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
+      if (StoryDetailPresenter.a(paramStoryDetailPresenter).a().size() < 1)
+      {
+        StoryDetailPresenter.a(paramStoryDetailPresenter).b();
+        return;
+      }
+      paramStoryDetailPresenter.a();
       return;
     }
-    if (!StoryDetailPresenter.a(paramStoryDetailPresenter).c())
-    {
-      SLog.e(this.TAG, "this feed does not support video list. ignore this comment list event. %s.", new Object[] { paramGetVideoListEvent.toString() });
-      return;
-    }
-    SLog.a(this.TAG, "receive comment list event. %s.", paramGetVideoListEvent.toString());
-    StoryDetailPresenter.a(paramStoryDetailPresenter).a(paramGetVideoListEvent.jdField_a_of_type_JavaUtilList, paramGetVideoListEvent.c);
-    StoryDetailPresenter.a(paramStoryDetailPresenter).a().updateVideoInfo(paramGetVideoListEvent.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedVideoInfo);
-    if (StoryDetailPresenter.a(paramStoryDetailPresenter).a().size() < 1)
-    {
-      StoryDetailPresenter.a(paramStoryDetailPresenter).b();
-      return;
-    }
-    paramStoryDetailPresenter.a();
+    SLog.b(this.TAG, "ignore this comment list event. %s.", paramGetVideoListEvent.toString());
   }
   
   public Class acceptEventClass()
@@ -49,7 +49,7 @@ class StoryDetailPresenter$FeedVideoListReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.detail.view.StoryDetailPresenter.FeedVideoListReceiver
  * JD-Core Version:    0.7.0.1
  */

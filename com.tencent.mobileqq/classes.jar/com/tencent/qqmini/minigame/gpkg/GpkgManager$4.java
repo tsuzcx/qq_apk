@@ -17,12 +17,26 @@ final class GpkgManager$4
   
   public void onDownloadFailed(int paramInt, String paramString)
   {
-    MiniReportManager.reportEventType(this.val$miniAppInfo, 1011, "game pkg download failed s=[" + paramString + "], httpStatus=[" + paramInt + "] ", "1");
+    Object localObject = this.val$miniAppInfo;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("game pkg download failed s=[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], httpStatus=[");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("] ");
+    MiniReportManager.reportEventType((MiniAppInfo)localObject, 1011, localStringBuilder.toString(), "1");
     MiniReportManager.reportEventType(this.val$miniAppInfo, 620, null, null, null, paramInt, "1", 0L, null);
-    if (this.val$listener != null)
+    localObject = this.val$listener;
+    if (localObject != null)
     {
-      this.val$listener.onInitGpkgInfo(2004, null, "download pkg fail", null);
-      QMLog.e("[minigame] GpkgManager", "[Gpkg]onDownloadFailed() called with: s = [" + paramInt + "], downloadResult = [" + paramString + "]");
+      ((GpkgManager.OnInitGpkgListener)localObject).onInitGpkgInfo(2004, null, "download pkg fail", null);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[Gpkg]onDownloadFailed() called with: s = [");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], downloadResult = [");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QMLog.e("[minigame] GpkgManager", ((StringBuilder)localObject).toString());
     }
     SDKMiniProgramLpReportDC04239.reportForSDK(this.val$miniAppInfo, "1", null, "page_view", "load_fail", "download_apk_fail", "");
     MiniAppReportManager2.reportPageView("2launch_fail", "download_apk_fail", null, this.val$miniAppInfo);
@@ -38,11 +52,12 @@ final class GpkgManager$4
       long l = paramLong2;
       if (paramLong2 == 0L)
       {
+        int i = this.val$fFileSize;
         f = paramFloat;
         l = paramLong2;
-        if (this.val$fFileSize > 0)
+        if (i > 0)
         {
-          paramLong2 = this.val$fFileSize;
+          paramLong2 = i;
           f = paramFloat;
           l = paramLong2;
           if (paramLong2 > paramLong1)
@@ -58,13 +73,20 @@ final class GpkgManager$4
   
   public void onDownloadSucceed(int paramInt, String paramString, DownloaderProxy.DownloadListener.DownloadResult paramDownloadResult)
   {
-    long l = 0L;
     GpkgManager.downloadDuration = System.currentTimeMillis() - this.val$startTime;
-    QMLog.i("[minigame] GpkgManager", "[Gpkg] onDownloadSucceed " + paramInt + ",cost:" + GpkgManager.downloadDuration);
+    paramString = new StringBuilder();
+    paramString.append("[Gpkg] onDownloadSucceed ");
+    paramString.append(paramInt);
+    paramString.append(",cost:");
+    paramString.append(GpkgManager.downloadDuration);
+    QMLog.i("[minigame] GpkgManager", paramString.toString());
     MiniReportManager.addCostTimeEventAttachInfo(this.val$miniAppInfo, 2, "1");
     paramString = this.val$miniAppInfo;
+    long l;
     if (GpkgManager.downloadDuration > 0L) {
       l = GpkgManager.downloadDuration;
+    } else {
+      l = 0L;
     }
     MiniReportManager.reportEventType(paramString, 620, null, null, null, 0, "1", l, null);
     GpkgManager.access$200(GpkgManager.access$100(this.val$savePath), this.val$unPackFolderPath, this.val$miniAppInfo, this.val$listener, this.val$finalSubApkUrl, this.val$finalIndependentPath, paramDownloadResult);
@@ -72,7 +94,7 @@ final class GpkgManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.gpkg.GpkgManager.4
  * JD-Core Version:    0.7.0.1
  */

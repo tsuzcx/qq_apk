@@ -22,8 +22,9 @@ class MsgTabStoryNodeListManager$8
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.d = false;
         this.jdField_a_of_type_ComTencentBizQqstoryModelStoryConfigManager.b("first_show_node", Boolean.valueOf(false));
       }
-      this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.e = false;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.a()) {
+      paramView = this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager;
+      paramView.e = false;
+      if (paramView.a()) {
         this.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeListManager.jdField_a_of_type_ComTencentBizQqstoryMsgTabNodeViewMsgTabStoryNodeDelegate.a("exp_story", 4);
       }
     }
@@ -31,7 +32,7 @@ class MsgTabStoryNodeListManager$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeListManager.8
  * JD-Core Version:    0.7.0.1
  */

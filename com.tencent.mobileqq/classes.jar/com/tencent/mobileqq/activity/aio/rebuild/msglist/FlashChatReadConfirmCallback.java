@@ -18,7 +18,7 @@ public class FlashChatReadConfirmCallback
     if (paramList.size() > 0)
     {
       paramList = (ChatMessage)paramList.get(paramList.size() - 1);
-      ((FlashChatManager)paramAIOContext.a.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a(paramList);
+      ((FlashChatManager)paramAIOContext.a().getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a(paramList);
     }
   }
   
@@ -26,7 +26,7 @@ public class FlashChatReadConfirmCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.FlashChatReadConfirmCallback
  * JD-Core Version:    0.7.0.1
  */

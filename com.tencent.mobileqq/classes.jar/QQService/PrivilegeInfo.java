@@ -65,14 +65,17 @@ public final class PrivilegeInfo
     paramJceOutputStream.write(this.iFeeType, 2);
     paramJceOutputStream.write(this.iLevel, 3);
     paramJceOutputStream.write(this.iFlag, 4);
-    if (this.strIconUrl != null) {
-      paramJceOutputStream.write(this.strIconUrl, 5);
+    String str = this.strIconUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this.strDeluxeIconUrl != null) {
-      paramJceOutputStream.write(this.strDeluxeIconUrl, 6);
+    str = this.strDeluxeIconUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this.strJumpUrl != null) {
-      paramJceOutputStream.write(this.strJumpUrl, 7);
+    str = this.strJumpUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this.iIsBig, 8);
     paramJceOutputStream.write(this.iIsRemind, 9);

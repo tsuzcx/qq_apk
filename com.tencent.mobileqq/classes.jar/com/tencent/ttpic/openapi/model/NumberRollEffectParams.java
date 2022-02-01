@@ -26,7 +26,11 @@ public class NumberRollEffectParams
       int i = Integer.parseInt(this.triggerType);
       return i;
     }
-    catch (NumberFormatException localNumberFormatException) {}
+    catch (NumberFormatException localNumberFormatException)
+    {
+      label10:
+      break label10;
+    }
     return PTFaceAttr.PTExpression.FACE_DETECT.value;
   }
   
@@ -42,7 +46,7 @@ public class NumberRollEffectParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.model.NumberRollEffectParams
  * JD-Core Version:    0.7.0.1
  */

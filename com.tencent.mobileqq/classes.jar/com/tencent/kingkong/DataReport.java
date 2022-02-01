@@ -35,11 +35,11 @@ import java.util.Enumeration;
 public class DataReport
 {
   private static Context jdField_a_of_type_AndroidContentContext;
-  private static PackageManager jdField_a_of_type_AndroidContentPmPackageManager = null;
-  private static SensorManager jdField_a_of_type_AndroidHardwareSensorManager = null;
-  private static ConnectivityManager jdField_a_of_type_AndroidNetConnectivityManager = null;
-  private static WifiManager jdField_a_of_type_AndroidNetWifiWifiManager = null;
-  private static TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager = null;
+  private static PackageManager jdField_a_of_type_AndroidContentPmPackageManager;
+  private static SensorManager jdField_a_of_type_AndroidHardwareSensorManager;
+  private static ConnectivityManager jdField_a_of_type_AndroidNetConnectivityManager;
+  private static WifiManager jdField_a_of_type_AndroidNetWifiWifiManager;
+  private static TelephonyManager jdField_a_of_type_AndroidTelephonyTelephonyManager;
   private static String jdField_a_of_type_JavaLangString = "0";
   
   public static int a()
@@ -129,24 +129,24 @@ public class DataReport
   
   public static String a()
   {
-    if (jdField_a_of_type_AndroidContentContext == null) {}
-    for (;;)
-    {
+    Object localObject = jdField_a_of_type_AndroidContentContext;
+    if (localObject == null) {
       return null;
-      try
+    }
+    try
+    {
+      localObject = ((Context)localObject).getPackageManager().getPackageInfo(jdField_a_of_type_AndroidContentContext.getPackageName(), 0);
+      if (localObject != null)
       {
-        Object localObject = jdField_a_of_type_AndroidContentContext.getPackageManager().getPackageInfo(jdField_a_of_type_AndroidContentContext.getPackageName(), 0);
-        if (localObject != null)
-        {
-          localObject = ((PackageInfo)localObject).versionName;
-          boolean bool = TextUtils.isEmpty((CharSequence)localObject);
-          if (!bool) {
-            return localObject;
-          }
+        localObject = ((PackageInfo)localObject).versionName;
+        boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+        if (!bool) {
+          return localObject;
         }
       }
-      catch (Exception localException) {}
+      return null;
     }
+    catch (Exception localException) {}
     return null;
   }
   
@@ -160,11 +160,12 @@ public class DataReport
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    if (jdField_a_of_type_AndroidContentContext != null)
+    Object localObject = jdField_a_of_type_AndroidContentContext;
+    if (localObject != null)
     {
-      SharedPreferences.Editor localEditor = jdField_a_of_type_AndroidContentContext.getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0).edit();
-      localEditor.putString("QQUni", paramString);
-      localEditor.commit();
+      localObject = ((Context)localObject).getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0).edit();
+      ((SharedPreferences.Editor)localObject).putString("QQUni", paramString);
+      ((SharedPreferences.Editor)localObject).commit();
     }
     jdField_a_of_type_JavaLangString = paramString;
   }
@@ -172,7 +173,6 @@ public class DataReport
   public static boolean a()
   {
     Object localObject1 = null;
-    boolean bool3 = true;
     boolean bool2 = false;
     try
     {
@@ -181,41 +181,26 @@ public class DataReport
     }
     catch (Exception localException)
     {
-      label43:
+      label39:
       boolean bool1;
-      break label43;
+      break label39;
     }
-    if ((localObject1 != null) && ("1".equals(localObject1)))
-    {
-      if ((!new File("/system/bin/su").exists()) && (!new File("/system/xbin/su").exists())) {
-        return false;
-      }
+    if ((localObject1 != null) && ("1".equals(localObject1))) {
+      return (new File("/system/bin/su").exists()) || (new File("/system/xbin/su").exists());
     }
-    else
+    bool1 = bool2;
+    if (localObject1 != null)
     {
       bool1 = bool2;
-      if (localObject1 != null)
-      {
-        bool1 = bool2;
-        if ("0".equals(localObject1)) {
-          bool1 = true;
-        }
+      if ("0".equals(localObject1)) {
+        bool1 = true;
       }
-      if (bool1) {
-        bool2 = bool1;
-      }
-      for (;;)
-      {
-        return bool2;
-        bool2 = bool3;
-        if (!new File("/system/bin/su").exists())
-        {
-          bool2 = bool3;
-          if (!new File("/system/xbin/su").exists()) {
-            bool2 = bool1;
-          }
-        }
-      }
+    }
+    if (bool1) {
+      return bool1;
+    }
+    if ((!new File("/system/bin/su").exists()) && (!new File("/system/xbin/su").exists())) {
+      return bool1;
     }
     return true;
   }
@@ -242,20 +227,20 @@ public class DataReport
   
   public static String b()
   {
-    if (jdField_a_of_type_AndroidContentContext == null) {}
-    for (;;)
-    {
+    Object localObject = jdField_a_of_type_AndroidContentContext;
+    if (localObject == null) {
       return null;
-      try
-      {
-        String str = jdField_a_of_type_AndroidContentContext.getPackageName();
-        boolean bool = TextUtils.isEmpty(str);
-        if (!bool) {
-          return str;
-        }
-      }
-      catch (Exception localException) {}
     }
+    try
+    {
+      localObject = ((Context)localObject).getPackageName();
+      boolean bool = TextUtils.isEmpty((CharSequence)localObject);
+      if (!bool) {
+        return localObject;
+      }
+      return null;
+    }
+    catch (Exception localException) {}
     return null;
   }
   
@@ -271,11 +256,9 @@ public class DataReport
           return true;
         }
       }
-    }
-    catch (Exception localException)
-    {
       return false;
     }
+    catch (Exception localException) {}
     return false;
   }
   
@@ -376,23 +359,26 @@ public class DataReport
     try
     {
       TelephonyManager localTelephonyManager = a();
-      int i;
       if (localTelephonyManager != null) {
-        i = localTelephonyManager.getNetworkType();
-      }
-      switch (i)
-      {
-      default: 
-        return "unknown";
+        switch (localTelephonyManager.getNetworkType())
+        {
+        case 1: 
+        case 2: 
+        case 4: 
+        case 7: 
+        case 11: 
+          return "2G";
+        }
       }
     }
     catch (Exception localException)
     {
-      return null;
+      for (;;) {}
+      return "4G";
     }
-    return "2G";
+    return "unknown";
+    return null;
     return "3G";
-    return "4G";
   }
   
   public static boolean e()
@@ -423,11 +409,9 @@ public class DataReport
           return localObject;
         }
       }
-    }
-    catch (Exception localException)
-    {
       return null;
     }
+    catch (Exception localException) {}
     return null;
   }
   
@@ -542,17 +526,14 @@ public class DataReport
     {
       if (Build.VERSION.SDK_INT > 14) {
         str = System.getProperty("http.proxyHost");
+      } else if (jdField_a_of_type_AndroidContentContext != null) {
+        str = Proxy.getHost(jdField_a_of_type_AndroidContentContext);
       }
-      while (!TextUtils.isEmpty(str))
-      {
-        return true;
-        if (jdField_a_of_type_AndroidContentContext != null) {
-          str = Proxy.getHost(jdField_a_of_type_AndroidContentContext);
-        }
-      }
-      return false;
+      boolean bool = TextUtils.isEmpty(str);
+      return !bool;
     }
     catch (Exception localException) {}
+    return false;
   }
   
   public static String j()
@@ -568,11 +549,9 @@ public class DataReport
           return localObject;
         }
       }
-    }
-    catch (Exception localException)
-    {
       return null;
     }
+    catch (Exception localException) {}
     return null;
   }
   
@@ -608,7 +587,15 @@ public class DataReport
             if ((localObject2 != null) && (((WifiManager)localObject2).isWifiEnabled()))
             {
               int i = ((WifiManager)localObject2).getConnectionInfo().getIpAddress();
-              return (i & 0xFF) + "." + (i >> 8 & 0xFF) + "." + (i >> 16 & 0xFF) + "." + (i >> 24 & 0xFF);
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append(i & 0xFF);
+              ((StringBuilder)localObject1).append(".");
+              ((StringBuilder)localObject1).append(i >> 8 & 0xFF);
+              ((StringBuilder)localObject1).append(".");
+              ((StringBuilder)localObject1).append(i >> 16 & 0xFF);
+              ((StringBuilder)localObject1).append(".");
+              ((StringBuilder)localObject1).append(i >> 24 & 0xFF);
+              return ((StringBuilder)localObject1).toString();
             }
           }
           localObject1 = ((ConnectivityManager)localObject1).getNetworkInfo(0);
@@ -632,11 +619,9 @@ public class DataReport
           }
         }
       }
-    }
-    catch (Exception localException)
-    {
       return null;
     }
+    catch (Exception localException) {}
     return null;
   }
   
@@ -665,14 +650,23 @@ public class DataReport
       Object localObject1 = (WindowManager)jdField_a_of_type_AndroidContentContext.getSystemService("window");
       Object localObject2 = new DisplayMetrics();
       localObject1 = ((WindowManager)localObject1).getDefaultDisplay();
-      if (Build.VERSION.SDK_INT >= 17)
+      int i = Build.VERSION.SDK_INT;
+      if (i >= 17)
       {
         ((Display)localObject1).getRealMetrics((DisplayMetrics)localObject2);
-        return ((DisplayMetrics)localObject2).heightPixels + "*" + ((DisplayMetrics)localObject2).widthPixels;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(((DisplayMetrics)localObject2).heightPixels);
+        ((StringBuilder)localObject1).append("*");
+        ((StringBuilder)localObject1).append(((DisplayMetrics)localObject2).widthPixels);
+        return ((StringBuilder)localObject1).toString();
       }
       localObject2 = Display.class.getMethod("getRawWidth", new Class[0]);
       Method localMethod = Display.class.getMethod("getRawHeight", new Class[0]);
-      localObject1 = localMethod.invoke(localObject1, new Object[0]) + "*" + ((Method)localObject2).invoke(localObject1, new Object[0]);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localMethod.invoke(localObject1, new Object[0]));
+      localStringBuilder.append("*");
+      localStringBuilder.append(((Method)localObject2).invoke(localObject1, new Object[0]));
+      localObject1 = localStringBuilder.toString();
       return localObject1;
     }
     catch (Exception localException) {}
@@ -696,60 +690,68 @@ public class DataReport
   
   public static String m()
   {
+    StringBuilder localStringBuilder = null;
     try
     {
-      Object localObject = Environment.getDataDirectory();
-      if ((localObject == null) || (((File)localObject).getAbsolutePath().length() == 0)) {
-        break label116;
-      }
-      localObject = new StatFs(((File)localObject).getPath());
-      if (Build.VERSION.SDK_INT < 18)
+      Object localObject2 = Environment.getDataDirectory();
+      Object localObject1 = localStringBuilder;
+      if (localObject2 != null)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        long l = ((StatFs)localObject).getBlockCount();
-        return ((StatFs)localObject).getBlockSize() * l + "";
+        if (((File)localObject2).getAbsolutePath().length() == 0) {
+          return null;
+        }
+        localObject1 = new StatFs(((File)localObject2).getPath());
+        if (Build.VERSION.SDK_INT < 18)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((StatFs)localObject1).getBlockCount() * ((StatFs)localObject1).getBlockSize());
+          localStringBuilder.append("");
+          return localStringBuilder.toString();
+        }
+        localObject2 = localObject1.getClass().getDeclaredMethod("getTotalBytes", new Class[0]).invoke(localObject1, new Object[0]);
+        localObject1 = localStringBuilder;
+        if (localObject2 != null) {
+          localObject1 = ((Long)localObject2).toString();
+        }
       }
-      localObject = localObject.getClass().getDeclaredMethod("getTotalBytes", new Class[0]).invoke(localObject, new Object[0]);
-      if (localObject != null)
-      {
-        localObject = ((Long)localObject).toString();
-        return localObject;
-      }
+      return localObject1;
     }
     catch (Exception localException) {}
-    return null;
-    label116:
     return null;
   }
   
   public static String n()
   {
+    StringBuilder localStringBuilder = null;
     try
     {
       if (!"mounted".equals(Environment.getExternalStorageState())) {
         return null;
       }
-      Object localObject = Environment.getExternalStorageDirectory();
-      if ((localObject == null) || (((File)localObject).getAbsolutePath().length() == 0)) {
-        break label130;
-      }
-      localObject = new StatFs(((File)localObject).getPath());
-      if (Build.VERSION.SDK_INT < 18)
+      Object localObject2 = Environment.getExternalStorageDirectory();
+      Object localObject1 = localStringBuilder;
+      if (localObject2 != null)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
-        long l = ((StatFs)localObject).getBlockCount();
-        return ((StatFs)localObject).getBlockSize() * l + "";
+        if (((File)localObject2).getAbsolutePath().length() == 0) {
+          return null;
+        }
+        localObject1 = new StatFs(((File)localObject2).getPath());
+        if (Build.VERSION.SDK_INT < 18)
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append(((StatFs)localObject1).getBlockCount() * ((StatFs)localObject1).getBlockSize());
+          localStringBuilder.append("");
+          return localStringBuilder.toString();
+        }
+        localObject2 = localObject1.getClass().getDeclaredMethod("getTotalBytes", new Class[0]).invoke(localObject1, new Object[0]);
+        localObject1 = localStringBuilder;
+        if (localObject2 != null) {
+          localObject1 = ((Long)localObject2).toString();
+        }
       }
-      localObject = localObject.getClass().getDeclaredMethod("getTotalBytes", new Class[0]).invoke(localObject, new Object[0]);
-      if (localObject != null)
-      {
-        localObject = ((Long)localObject).toString();
-        return localObject;
-      }
+      return localObject1;
     }
     catch (Exception localException) {}
-    return null;
-    label130:
     return null;
   }
   
@@ -758,21 +760,23 @@ public class DataReport
     if (!jdField_a_of_type_JavaLangString.equals("0")) {
       return jdField_a_of_type_JavaLangString;
     }
-    if (jdField_a_of_type_AndroidContentContext != null) {
-      return jdField_a_of_type_AndroidContentContext.getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0).getString("QQUni", "0");
+    Context localContext = jdField_a_of_type_AndroidContentContext;
+    if (localContext != null) {
+      return localContext.getSharedPreferences("SHARED_PREFERENCE_KINGKONG_PATCH", 0).getString("QQUni", "0");
     }
     return jdField_a_of_type_JavaLangString;
   }
   
   public static String p()
   {
-    if (jdField_a_of_type_AndroidContentContext == null) {
+    Object localObject = jdField_a_of_type_AndroidContentContext;
+    if (localObject == null) {
       return null;
     }
     try
     {
-      String str = Settings.Secure.getString(jdField_a_of_type_AndroidContentContext.getContentResolver(), "android_id");
-      return str;
+      localObject = Settings.Secure.getString(((Context)localObject).getContentResolver(), "android_id");
+      return localObject;
     }
     catch (Exception localException) {}
     return null;
@@ -811,46 +815,49 @@ public class DataReport
           return str;
         }
       }
-    }
-    catch (Exception localException)
-    {
       return null;
     }
+    catch (Exception localException) {}
     return null;
   }
   
   public static String s()
   {
+    Object localObject2 = null;
     try
     {
-      localObject = a();
-      if (localObject == null) {
-        break label67;
-      }
-      localObject = ((ConnectivityManager)localObject).getActiveNetworkInfo();
-      if ((localObject == null) || (!((NetworkInfo)localObject).isConnected())) {
-        break label67;
-      }
-      switch (((NetworkInfo)localObject).getType())
+      Object localObject3 = a();
+      Object localObject1 = localObject2;
+      if (localObject3 != null)
       {
-      case 1: 
-        return ((NetworkInfo)localObject).getTypeName();
+        localObject3 = ((ConnectivityManager)localObject3).getActiveNetworkInfo();
+        localObject1 = localObject2;
+        if (localObject3 != null)
+        {
+          localObject1 = localObject2;
+          if (((NetworkInfo)localObject3).isConnected())
+          {
+            int i = ((NetworkInfo)localObject3).getType();
+            if (i != 0)
+            {
+              if (i != 1) {
+                return null;
+              }
+              return ((NetworkInfo)localObject3).getTypeName();
+            }
+            localObject1 = ((NetworkInfo)localObject3).getSubtypeName();
+          }
+        }
       }
+      return localObject1;
     }
-    catch (Exception localException)
-    {
-      Object localObject;
-      return null;
-    }
-    localObject = ((NetworkInfo)localObject).getSubtypeName();
-    return localObject;
-    label67:
+    catch (Exception localException) {}
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.DataReport
  * JD-Core Version:    0.7.0.1
  */

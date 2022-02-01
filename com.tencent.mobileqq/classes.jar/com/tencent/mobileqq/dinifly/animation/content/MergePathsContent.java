@@ -22,11 +22,13 @@ public class MergePathsContent
   
   public MergePathsContent(MergePaths paramMergePaths)
   {
-    if (Build.VERSION.SDK_INT < 19) {
-      throw new IllegalStateException("Merge paths are not supported pre-KitKat.");
+    if (Build.VERSION.SDK_INT >= 19)
+    {
+      this.name = paramMergePaths.getName();
+      this.mergePaths = paramMergePaths;
+      return;
     }
-    this.name = paramMergePaths.getName();
-    this.mergePaths = paramMergePaths;
+    throw new IllegalStateException("Merge paths are not supported pre-KitKat.");
   }
   
   private void addPaths()
@@ -42,7 +44,6 @@ public class MergePathsContent
   @TargetApi(19)
   private void opFirstPathWithRest(Path.Op paramOp)
   {
-    int k = 0;
     this.remainderPath.reset();
     this.firstPath.reset();
     int i = this.pathContents.size() - 1;
@@ -50,36 +51,39 @@ public class MergePathsContent
     Path localPath;
     while (i >= 1)
     {
-      localPathContent = (PathContent)this.pathContents.get(i);
-      if ((localPathContent instanceof ContentGroup))
+      localObject = (PathContent)this.pathContents.get(i);
+      if ((localObject instanceof ContentGroup))
       {
-        localList = ((ContentGroup)localPathContent).getPathList();
+        localObject = (ContentGroup)localObject;
+        localList = ((ContentGroup)localObject).getPathList();
         int j = localList.size() - 1;
         while (j >= 0)
         {
           localPath = ((PathContent)localList.get(j)).getPath();
-          localPath.transform(((ContentGroup)localPathContent).getTransformationMatrix());
+          localPath.transform(((ContentGroup)localObject).getTransformationMatrix());
           this.remainderPath.addPath(localPath);
           j -= 1;
         }
       }
-      this.remainderPath.addPath(localPathContent.getPath());
+      this.remainderPath.addPath(((PathContent)localObject).getPath());
       i -= 1;
     }
-    PathContent localPathContent = (PathContent)this.pathContents.get(0);
-    if ((localPathContent instanceof ContentGroup))
+    Object localObject = this.pathContents;
+    i = 0;
+    localObject = (PathContent)((List)localObject).get(0);
+    if ((localObject instanceof ContentGroup))
     {
-      localList = ((ContentGroup)localPathContent).getPathList();
-      i = k;
+      localObject = (ContentGroup)localObject;
+      localList = ((ContentGroup)localObject).getPathList();
       while (i < localList.size())
       {
         localPath = ((PathContent)localList.get(i)).getPath();
-        localPath.transform(((ContentGroup)localPathContent).getTransformationMatrix());
+        localPath.transform(((ContentGroup)localObject).getTransformationMatrix());
         this.firstPath.addPath(localPath);
         i += 1;
       }
     }
-    this.firstPath.set(localPathContent.getPath());
+    this.firstPath.set(((PathContent)localObject).getPath());
     this.path.op(this.firstPath, this.remainderPath, paramOp);
   }
   
@@ -108,22 +112,35 @@ public class MergePathsContent
     if (this.mergePaths.isHidden()) {
       return this.path;
     }
-    switch (MergePathsContent.1.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$MergePaths$MergePathsMode[this.mergePaths.getMode().ordinal()])
+    int i = MergePathsContent.1.$SwitchMap$com$tencent$mobileqq$dinifly$model$content$MergePaths$MergePathsMode[this.mergePaths.getMode().ordinal()];
+    if (i != 1)
     {
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i == 5) {
+              opFirstPathWithRest(Path.Op.XOR);
+            }
+          }
+          else {
+            opFirstPathWithRest(Path.Op.INTERSECT);
+          }
+        }
+        else {
+          opFirstPathWithRest(Path.Op.REVERSE_DIFFERENCE);
+        }
+      }
+      else {
+        opFirstPathWithRest(Path.Op.UNION);
+      }
     }
-    for (;;)
-    {
-      return this.path;
+    else {
       addPaths();
-      continue;
-      opFirstPathWithRest(Path.Op.UNION);
-      continue;
-      opFirstPathWithRest(Path.Op.REVERSE_DIFFERENCE);
-      continue;
-      opFirstPathWithRest(Path.Op.INTERSECT);
-      continue;
-      opFirstPathWithRest(Path.Op.XOR);
     }
+    return this.path;
   }
   
   public void setContents(List<Content> paramList1, List<Content> paramList2)
@@ -138,7 +155,7 @@ public class MergePathsContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.MergePathsContent
  * JD-Core Version:    0.7.0.1
  */

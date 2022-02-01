@@ -132,18 +132,18 @@ public final class VasCardData
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VasCardData))
       {
         paramObject = (VasCardData)paramObject;
-        if ((this.lCurrentStyleId != paramObject.lCurrentStyleId) || (this.lCurrentBgId != paramObject.lCurrentBgId) || (!Intrinsics.areEqual(this.backgroundUrl, paramObject.backgroundUrl)) || (this.backgroundColor != paramObject.backgroundColor) || (this.dynamicCardFlag != paramObject.dynamicCardFlag) || (!Intrinsics.areEqual(this.strZipUrl, paramObject.strZipUrl)) || (!Intrinsics.areEqual(this.strActiveUrl, paramObject.strActiveUrl)) || (!Intrinsics.areEqual(this.strDrawerCardUrl, paramObject.strDrawerCardUrl)) || (!Intrinsics.areEqual(this.strWzryHeroUrl, paramObject.strWzryHeroUrl)) || (!Intrinsics.areEqual(this.wzryHonorInfo, paramObject.wzryHonorInfo)) || (!Intrinsics.areEqual(this.strExtInfo, paramObject.strExtInfo)) || (!Intrinsics.areEqual(this.strCurrentBgUrl, paramObject.strCurrentBgUrl))) {}
+        if ((this.lCurrentStyleId == paramObject.lCurrentStyleId) && (this.lCurrentBgId == paramObject.lCurrentBgId) && (Intrinsics.areEqual(this.backgroundUrl, paramObject.backgroundUrl)) && (this.backgroundColor == paramObject.backgroundColor) && (this.dynamicCardFlag == paramObject.dynamicCardFlag) && (Intrinsics.areEqual(this.strZipUrl, paramObject.strZipUrl)) && (Intrinsics.areEqual(this.strActiveUrl, paramObject.strActiveUrl)) && (Intrinsics.areEqual(this.strDrawerCardUrl, paramObject.strDrawerCardUrl)) && (Intrinsics.areEqual(this.strWzryHeroUrl, paramObject.strWzryHeroUrl)) && (Intrinsics.areEqual(this.wzryHonorInfo, paramObject.wzryHonorInfo)) && (Intrinsics.areEqual(this.strExtInfo, paramObject.strExtInfo)) && (Intrinsics.areEqual(this.strCurrentBgUrl, paramObject.strCurrentBgUrl))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final long getBackgroundColor()
@@ -216,98 +216,105 @@ public final class VasCardData
   
   public int hashCode()
   {
-    int i3 = 0;
     long l = this.lCurrentStyleId;
     int i4 = (int)(l ^ l >>> 32);
     l = this.lCurrentBgId;
     int i5 = (int)(l ^ l >>> 32);
     Object localObject = this.backgroundUrl;
+    int i3 = 0;
     int i;
-    int i6;
-    int i7;
-    int j;
-    label94:
-    int k;
-    label111:
-    int m;
-    label129:
-    int n;
-    label147:
-    int i1;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      l = this.backgroundColor;
-      i6 = (int)(l ^ l >>> 32);
-      i7 = this.dynamicCardFlag;
-      localObject = this.strZipUrl;
-      if (localObject == null) {
-        break label272;
-      }
-      j = localObject.hashCode();
-      localObject = this.strActiveUrl;
-      if (localObject == null) {
-        break label277;
-      }
-      k = localObject.hashCode();
-      localObject = this.strDrawerCardUrl;
-      if (localObject == null) {
-        break label282;
-      }
-      m = localObject.hashCode();
-      localObject = this.strWzryHeroUrl;
-      if (localObject == null) {
-        break label288;
-      }
-      n = localObject.hashCode();
-      localObject = this.wzryHonorInfo;
-      if (localObject == null) {
-        break label294;
-      }
-      i1 = Arrays.hashCode((byte[])localObject);
-      label165:
-      localObject = this.strExtInfo;
-      if (localObject == null) {
-        break label300;
-      }
-    }
-    label272:
-    label277:
-    label282:
-    label288:
-    label294:
-    label300:
-    for (int i2 = localObject.hashCode();; i2 = 0)
-    {
-      localObject = this.strCurrentBgUrl;
-      if (localObject != null) {
-        i3 = localObject.hashCode();
-      }
-      return (i2 + (i1 + (n + (m + (k + (j + (((i + (i4 * 31 + i5) * 31) * 31 + i6) * 31 + i7) * 31) * 31) * 31) * 31) * 31) * 31) * 31 + i3;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label94;
-      k = 0;
-      break label111;
-      m = 0;
-      break label129;
-      n = 0;
-      break label147;
-      i1 = 0;
-      break label165;
     }
+    l = this.backgroundColor;
+    int i6 = (int)(l ^ l >>> 32);
+    int i7 = this.dynamicCardFlag;
+    localObject = this.strZipUrl;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.strActiveUrl;
+    int k;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    } else {
+      k = 0;
+    }
+    localObject = this.strDrawerCardUrl;
+    int m;
+    if (localObject != null) {
+      m = localObject.hashCode();
+    } else {
+      m = 0;
+    }
+    localObject = this.strWzryHeroUrl;
+    int n;
+    if (localObject != null) {
+      n = localObject.hashCode();
+    } else {
+      n = 0;
+    }
+    localObject = this.wzryHonorInfo;
+    int i1;
+    if (localObject != null) {
+      i1 = Arrays.hashCode((byte[])localObject);
+    } else {
+      i1 = 0;
+    }
+    localObject = this.strExtInfo;
+    int i2;
+    if (localObject != null) {
+      i2 = localObject.hashCode();
+    } else {
+      i2 = 0;
+    }
+    localObject = this.strCurrentBgUrl;
+    if (localObject != null) {
+      i3 = localObject.hashCode();
+    }
+    return ((((((((((i4 * 31 + i5) * 31 + i) * 31 + i6) * 31 + i7) * 31 + j) * 31 + k) * 31 + m) * 31 + n) * 31 + i1) * 31 + i2) * 31 + i3;
   }
   
   @NotNull
   public String toString()
   {
-    return "VasCardData(lCurrentStyleId=" + this.lCurrentStyleId + ", lCurrentBgId=" + this.lCurrentBgId + ", backgroundUrl=" + this.backgroundUrl + ", backgroundColor=" + this.backgroundColor + ", dynamicCardFlag=" + this.dynamicCardFlag + ", strZipUrl=" + this.strZipUrl + ", strActiveUrl=" + this.strActiveUrl + ", strDrawerCardUrl=" + this.strDrawerCardUrl + ", strWzryHeroUrl=" + this.strWzryHeroUrl + ", wzryHonorInfo=" + Arrays.toString(this.wzryHonorInfo) + ", strExtInfo=" + this.strExtInfo + ", strCurrentBgUrl=" + this.strCurrentBgUrl + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VasCardData(lCurrentStyleId=");
+    localStringBuilder.append(this.lCurrentStyleId);
+    localStringBuilder.append(", lCurrentBgId=");
+    localStringBuilder.append(this.lCurrentBgId);
+    localStringBuilder.append(", backgroundUrl=");
+    localStringBuilder.append(this.backgroundUrl);
+    localStringBuilder.append(", backgroundColor=");
+    localStringBuilder.append(this.backgroundColor);
+    localStringBuilder.append(", dynamicCardFlag=");
+    localStringBuilder.append(this.dynamicCardFlag);
+    localStringBuilder.append(", strZipUrl=");
+    localStringBuilder.append(this.strZipUrl);
+    localStringBuilder.append(", strActiveUrl=");
+    localStringBuilder.append(this.strActiveUrl);
+    localStringBuilder.append(", strDrawerCardUrl=");
+    localStringBuilder.append(this.strDrawerCardUrl);
+    localStringBuilder.append(", strWzryHeroUrl=");
+    localStringBuilder.append(this.strWzryHeroUrl);
+    localStringBuilder.append(", wzryHonorInfo=");
+    localStringBuilder.append(Arrays.toString(this.wzryHonorInfo));
+    localStringBuilder.append(", strExtInfo=");
+    localStringBuilder.append(this.strExtInfo);
+    localStringBuilder.append(", strCurrentBgUrl=");
+    localStringBuilder.append(this.strCurrentBgUrl);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.VasCardData
  * JD-Core Version:    0.7.0.1
  */

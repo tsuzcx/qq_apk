@@ -35,20 +35,22 @@ public final class CommonInfo
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.cookie != null) {
-      paramJceOutputStream.write(this.cookie, 0);
+    String str = this.cookie;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
     paramJceOutputStream.write(this.isRefresh, 1);
     paramJceOutputStream.write(this.hasMore, 2);
     paramJceOutputStream.write(this.noUpdate, 3);
-    if (this.debugModeInfo != null) {
-      paramJceOutputStream.write(this.debugModeInfo, 4);
+    str = this.debugModeInfo;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QQRADIO_PROTOCOL.CommonInfo
  * JD-Core Version:    0.7.0.1
  */

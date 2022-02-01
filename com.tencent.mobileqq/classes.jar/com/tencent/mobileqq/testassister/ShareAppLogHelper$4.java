@@ -11,18 +11,19 @@ class ShareAppLogHelper$4
   
   public boolean accept(File paramFile, String paramString)
   {
-    if (!paramString.endsWith(".log")) {}
-    do
-    {
+    if (!paramString.endsWith(".log")) {
       return false;
-      paramFile = ShareAppLogHelper.a(this.a, paramString);
-    } while ((paramFile == null) || (paramFile.toMillis(false) < ShareAppLogHelper.a(this.a).toMillis(false)) || (paramFile.toMillis(false) > ShareAppLogHelper.b(this.a).toMillis(false)));
-    return true;
+    }
+    paramFile = ShareAppLogHelper.a(this.a, paramString);
+    if ((paramFile != null) && (paramFile.toMillis(false) >= ShareAppLogHelper.a(this.a).toMillis(false))) {
+      return paramFile.toMillis(false) <= ShareAppLogHelper.b(this.a).toMillis(false);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.testassister.ShareAppLogHelper.4
  * JD-Core Version:    0.7.0.1
  */

@@ -17,73 +17,67 @@ class AVGameControlUIImpl$9
   
   public void a(boolean paramBoolean)
   {
-    if (this.a.a()) {}
-    Object localObject1;
-    do
+    if (this.a.a()) {
+      return;
+    }
+    Object localObject1 = AVGameBusinessCtrl.b();
+    if (localObject1 == null) {
+      return;
+    }
+    localObject1 = ((AVGameBusinessCtrl)localObject1).a();
+    if (localObject1 == null) {
+      return;
+    }
+    AVGameControlUIImpl.a(this.a, "CheckDisableSmallPicTask");
+    if ((this.a.a != null) && (paramBoolean))
     {
-      do
-      {
-        do
-        {
-          return;
-          localObject1 = AVGameBusinessCtrl.b();
-        } while (localObject1 == null);
-        localObject1 = ((AVGameBusinessCtrl)localObject1).a();
-      } while (localObject1 == null);
-      AVGameControlUIImpl.a(this.a, "CheckDisableSmallPicTask");
-    } while ((this.a.a == null) || (!paramBoolean));
-    boolean bool2 = SecurityPolicyChecker.a().b();
-    Object localObject2 = new ArrayList();
-    ((AVGameSession)localObject1).b((List)localObject2);
-    boolean bool1;
-    if (((List)localObject2).size() > 0)
-    {
-      localObject1 = ((List)localObject2).iterator();
+      boolean bool1 = false;
       paramBoolean = false;
-      do
+      boolean bool2 = SecurityPolicyChecker.a().b();
+      Object localObject2 = new ArrayList();
+      ((AVGameSession)localObject1).b((List)localObject2);
+      if (((List)localObject2).size() > 0)
       {
-        do
+        localObject1 = ((List)localObject2).iterator();
+        for (;;)
         {
           bool1 = paramBoolean;
           if (!((Iterator)localObject1).hasNext()) {
             break;
           }
           localObject2 = (AVGameUserInfo)((Iterator)localObject1).next();
-        } while (localObject2 == null);
-        if (!((AVGameUserInfo)localObject2).hasVideo()) {
-          break label242;
+          if ((localObject2 != null) && (((AVGameUserInfo)localObject2).hasVideo()) && (!((AVGameUserInfo)localObject2).mIsSelf))
+          {
+            if (((AVGameUserInfo)localObject2).mBigVideo) {}
+            while (!bool2)
+            {
+              paramBoolean = true;
+              break;
+            }
+          }
         }
-      } while (((AVGameUserInfo)localObject2).mIsSelf);
-    }
-    label242:
-    for (;;)
-    {
-      if (((AVGameUserInfo)localObject2).mBigVideo)
-      {
-        paramBoolean = true;
       }
-      else if (!bool2)
+      if (bool1) {
+        this.a.c();
+      } else {
+        this.a.e();
+      }
+      if (QLog.isDevelopLevel())
       {
-        paramBoolean = true;
-        continue;
-        bool1 = false;
-        if (bool1) {
-          this.a.c();
-        }
-        while (QLog.isDevelopLevel())
-        {
-          QLog.i("AVGameControlUIImpl", 4, "checkDisableSmallPic, [" + bool2 + "], needRequest[" + bool1 + "]");
-          return;
-          this.a.e();
-        }
-        break;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("checkDisableSmallPic, [");
+        ((StringBuilder)localObject1).append(bool2);
+        ((StringBuilder)localObject1).append("], needRequest[");
+        ((StringBuilder)localObject1).append(bool1);
+        ((StringBuilder)localObject1).append("]");
+        QLog.i("AVGameControlUIImpl", 4, ((StringBuilder)localObject1).toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.9
  * JD-Core Version:    0.7.0.1
  */

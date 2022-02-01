@@ -31,29 +31,35 @@ public final class j
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.bD != null) {
-      paramJceOutputStream.write(this.bD, 0);
+    String str = this.bD;
+    if (str != null) {
+      paramJceOutputStream.write(str, 0);
     }
-    if (this.bE != null) {
-      paramJceOutputStream.write(this.bE, 1);
+    str = this.bE;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
-    if (this.type != 0) {
-      paramJceOutputStream.write(this.type, 2);
+    int i = this.type;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 2);
     }
-    if (this.bF != 0) {
-      paramJceOutputStream.write(this.bF, 3);
+    i = this.bF;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 3);
     }
-    if (this.bG != 0) {
-      paramJceOutputStream.write(this.bG, 4);
+    i = this.bG;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 4);
     }
-    if (this.bgColor != 0) {
-      paramJceOutputStream.write(this.bgColor, 5);
+    i = this.bgColor;
+    if (i != 0) {
+      paramJceOutputStream.write(i, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Protocol.MConch.j
  * JD-Core Version:    0.7.0.1
  */

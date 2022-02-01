@@ -41,14 +41,16 @@ public final class ilive_feeds_read$FeedsInfo
   
   static
   {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 50, 58, 64, 72, 82, 90, 98, 106, 114, 122, 154, 800, 810, 818, 824, 832, 841, 850 }, new String[] { "publish_uin", "create_time", "feed_type", "feed_source", "feeds_id", "feed_info", "view_times", "status", "pic_info", "live_info", "chang_info", "jump_url", "publish_info", "lbs_info", "text_feed", "like", "like_info", "comments", "comment_num", "type", "distance", "topic_cfg" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(0), localByteStringMicro1, null, Integer.valueOf(0), Integer.valueOf(1), null, null, null, localByteStringMicro2, null, null, null, Integer.valueOf(0), null, null, Integer.valueOf(0), Integer.valueOf(0), Double.valueOf(0.0D), null }, FeedsInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 32, 50, 58, 64, 72, 82, 90, 98, 106, 114, 122, 154, 800, 810, 818, 824, 832, 841, 850 }, new String[] { "publish_uin", "create_time", "feed_type", "feed_source", "feeds_id", "feed_info", "view_times", "status", "pic_info", "live_info", "chang_info", "jump_url", "publish_info", "lbs_info", "text_feed", "like", "like_info", "comments", "comment_num", "type", "distance", "topic_cfg" }, new Object[] { Long.valueOf(0L), localInteger1, localInteger2, localInteger1, localByteStringMicro1, null, localInteger1, localInteger2, null, null, null, localByteStringMicro2, null, null, null, localInteger1, null, null, localInteger1, localInteger1, Double.valueOf(0.0D), null }, FeedsInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.ilive_feeds_read.FeedsInfo
  * JD-Core Version:    0.7.0.1
  */

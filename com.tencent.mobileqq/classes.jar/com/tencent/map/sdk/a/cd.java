@@ -11,7 +11,9 @@ public final class cd
   
   private cd()
   {
-    a(dc.b("HalleyOperInfo_" + ac.c(), ""), false);
+    StringBuilder localStringBuilder = new StringBuilder("HalleyOperInfo_");
+    localStringBuilder.append(ac.c());
+    a(dc.b(localStringBuilder.toString(), ""), false);
   }
   
   public static cd a()
@@ -21,30 +23,28 @@ public final class cd
   
   public static String a(int paramInt)
   {
-    String str = "";
     if (paramInt == 1) {
-      str = "cm";
+      return "cm";
     }
-    do
-    {
-      return str;
-      if (paramInt == 3) {
-        return "ct";
-      }
-    } while (paramInt != 2);
-    return "uni";
+    if (paramInt == 3) {
+      return "ct";
+    }
+    if (paramInt == 2) {
+      return "uni";
+    }
+    return "";
   }
   
   public final String a(String paramString)
   {
-    if ((dg.a(paramString)) || ("unknown".equals(paramString))) {
-      return "";
-    }
-    synchronized (this.b)
-    {
-      paramString = (String)this.b.get(paramString);
-      if (!dg.a(paramString)) {
-        return paramString;
+    if ((!dg.a(paramString)) && (!"unknown".equals(paramString))) {
+      synchronized (this.b)
+      {
+        paramString = (String)this.b.get(paramString);
+        if (!dg.a(paramString)) {
+          return paramString;
+        }
+        return "";
       }
     }
     return "";
@@ -52,61 +52,72 @@ public final class cd
   
   public final void a(String paramString1, String paramString2)
   {
-    if ((dg.a(paramString1)) || ("unknown".equals(paramString1)) || (dg.a(paramString2)) || ("unknown".equals(paramString2))) {
-      return;
-    }
-    synchronized (this.b)
+    if ((!dg.a(paramString1)) && (!"unknown".equals(paramString1)) && (!dg.a(paramString2)))
     {
-      if (!paramString2.equals((String)this.b.get(paramString1)))
-      {
-        this.b.put(paramString1, paramString2);
-        paramString1 = b();
-        dc.a("HalleyOperInfo_" + ac.c(), paramString1);
+      if ("unknown".equals(paramString2)) {
+        return;
       }
-      return;
+      synchronized (this.b)
+      {
+        if (!paramString2.equals((String)this.b.get(paramString1)))
+        {
+          this.b.put(paramString1, paramString2);
+          paramString1 = b();
+          paramString2 = new StringBuilder("HalleyOperInfo_");
+          paramString2.append(ac.c());
+          dc.a(paramString2.toString(), paramString1);
+        }
+        return;
+      }
     }
   }
   
   public final void a(String paramString, boolean paramBoolean)
   {
-    int i = 0;
-    label140:
     for (;;)
     {
+      int i;
       try
       {
-        if (!dg.a(paramString)) {}
-        synchronized (this.b)
-        {
-          this.b.clear();
-          String[] arrayOfString = paramString.split("h;l");
-          if (arrayOfString != null)
+        if (!dg.a(paramString)) {
+          synchronized (this.b)
           {
-            int j = arrayOfString.length;
-            if (i < j)
+            this.b.clear();
+            String[] arrayOfString = paramString.split("h;l");
+            if (arrayOfString != null)
             {
-              Object localObject2 = arrayOfString[i].split("h,l");
-              if (localObject2.length != 2) {
-                break label140;
+              int j = arrayOfString.length;
+              i = 0;
+              if (i < j)
+              {
+                Object localObject3 = arrayOfString[i].split("h,l");
+                if (localObject3.length != 2) {
+                  break label148;
+                }
+                Object localObject2 = localObject3[0];
+                localObject3 = localObject3[1];
+                this.b.put(localObject2, localObject3);
+                break label148;
               }
-              Object localObject1 = localObject2[0];
-              localObject2 = localObject2[1];
-              this.b.put(localObject1, localObject2);
-              break label140;
+            }
+            if (paramBoolean)
+            {
+              ??? = new StringBuilder("HalleyOperInfo_");
+              ((StringBuilder)???).append(ac.c());
+              dc.a(((StringBuilder)???).toString(), paramString);
+              return;
             }
           }
-          if (paramBoolean) {
-            dc.a("HalleyOperInfo_" + ac.c(), paramString);
-          }
-          return;
         }
-        i += 1;
+        return;
       }
       catch (Exception paramString)
       {
         paramString.printStackTrace();
         return;
       }
+      label148:
+      i += 1;
     }
   }
   
@@ -122,16 +133,23 @@ public final class cd
       {
         String str1 = (String)localArrayList1.get(i);
         String str2 = (String)localArrayList2.get(i);
-        localStringBuilder.append(str1).append("h,l").append(str2).append("h;l");
+        localStringBuilder.append(str1);
+        localStringBuilder.append("h,l");
+        localStringBuilder.append(str2);
+        localStringBuilder.append("h;l");
         i += 1;
       }
       return localStringBuilder.toString();
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.cd
  * JD-Core Version:    0.7.0.1
  */

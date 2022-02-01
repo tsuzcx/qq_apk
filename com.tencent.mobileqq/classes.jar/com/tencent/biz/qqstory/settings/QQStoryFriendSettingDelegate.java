@@ -9,7 +9,6 @@ import android.widget.CompoundButton.OnCheckedChangeListener;
 import android.widget.LinearLayout;
 import android.widget.LinearLayout.LayoutParams;
 import android.widget.TextView;
-import com.tencent.biz.ProtoUtils;
 import com.tencent.biz.qqstory.app.QQStoryConstant;
 import com.tencent.biz.qqstory.base.QQStoryHandler;
 import com.tencent.biz.qqstory.base.QQStoryManager;
@@ -19,8 +18,6 @@ import com.tencent.biz.qqstory.boundaries.delegates.ActivityDelegate;
 import com.tencent.biz.qqstory.model.StoryConfigManager;
 import com.tencent.biz.qqstory.model.SuperManager;
 import com.tencent.biz.qqstory.msgTabNode.model.MsgTabStoryNodeConfigManager;
-import com.tencent.biz.qqstory.network.pb.qqstory_service.ReqSetConfig;
-import com.tencent.biz.qqstory.network.pb.qqstory_struct.UserConfig;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
@@ -28,17 +25,11 @@ import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.Switch;
-import java.util.ArrayList;
-import java.util.List;
 
 public class QQStoryFriendSettingDelegate
   implements View.OnClickListener, CompoundButton.OnCheckedChangeListener, KeepConstructor, ActivityDelegate<QQStoryFriendSettings>
@@ -55,9 +46,9 @@ public class QQStoryFriendSettingDelegate
   
   protected View a(int paramInt1, String paramString, int paramInt2)
   {
-    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561702, null);
-    ((TextView)localView.findViewById(2131379432)).setText(paramString);
-    ((TextView)localView.findViewById(2131369051)).setText("");
+    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561545, null);
+    ((TextView)localView.findViewById(2131378784)).setText(paramString);
+    ((TextView)localView.findViewById(2131368773)).setText("");
     localView.setTag(Integer.valueOf(paramInt1));
     localView.setOnClickListener(this);
     localView.setBackgroundResource(paramInt2);
@@ -66,9 +57,9 @@ public class QQStoryFriendSettingDelegate
   
   protected View a(int paramInt1, String paramString, int paramInt2, boolean paramBoolean)
   {
-    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561705, null);
+    View localView = View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561548, null);
     this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt1] = localView;
-    Object localObject = (FormSwitchItem)localView.findViewById(2131369444);
+    Object localObject = (FormSwitchItem)localView.findViewById(2131369172);
     ((FormSwitchItem)localObject).a().setTextSize(1, 18.0F);
     ((FormSwitchItem)localObject).setText(paramString);
     ((FormSwitchItem)localObject).setContentDescription(paramString);
@@ -79,7 +70,7 @@ public class QQStoryFriendSettingDelegate
     ((Switch)localObject).setChecked(paramBoolean);
     ((Switch)localObject).setOnCheckedChangeListener(this);
     ((Switch)localObject).setContentDescription(paramString);
-    ((TextView)localView.findViewById(2131369114)).setVisibility(8);
+    ((TextView)localView.findViewById(2131368846)).setVisibility(8);
     return localView;
   }
   
@@ -92,7 +83,7 @@ public class QQStoryFriendSettingDelegate
   
   protected void a(int paramInt, boolean paramBoolean)
   {
-    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt].findViewById(2131369444);
+    FormSwitchItem localFormSwitchItem = (FormSwitchItem)this.jdField_a_of_type_ArrayOfAndroidViewView[paramInt].findViewById(2131369172);
     localFormSwitchItem.setOnCheckedChangeListener(null);
     localFormSwitchItem.setChecked(paramBoolean);
     localFormSwitchItem.setOnCheckedChangeListener(this);
@@ -109,260 +100,209 @@ public class QQStoryFriendSettingDelegate
     this.jdField_a_of_type_Int = paramQQStoryFriendSettings.getIntent().getIntExtra("from", 1);
     LinearLayout localLinearLayout = new LinearLayout(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings);
     paramBundle = new LinearLayout.LayoutParams(-1, -1);
-    localLinearLayout.setBackgroundResource(2130838980);
+    localLinearLayout.setBackgroundResource(2130838740);
     localLinearLayout.setLayoutParams(paramBundle);
     localLinearLayout.setOrientation(1);
-    localLinearLayout.setPadding(0, AIOUtils.a(20.0F, paramQQStoryFriendSettings.getResources()), 0, 0);
+    int i = AIOUtils.b(20.0F, paramQQStoryFriendSettings.getResources());
+    paramBundle = Boolean.valueOf(false);
+    localLinearLayout.setPadding(0, i, 0, 0);
     this.jdField_a_of_type_ArrayOfAndroidViewView = new View[9];
-    localLinearLayout.addView(a(0, HardCodeUtil.a(2131710820) + QQStoryConstant.b, 2130839591));
-    localLinearLayout.addView(a(1, HardCodeUtil.a(2131710854) + QQStoryConstant.b, 2130839582));
-    localLinearLayout.addView(View.inflate(paramQQStoryFriendSettings, 2131561722, null));
-    paramBundle = (QQStoryManager)paramQQStoryFriendSettings.app.getManager(QQManagerFactory.QQSTORY_MANAGER);
-    localLinearLayout.addView(a(2, HardCodeUtil.a(2131710852), 1, paramBundle.a()));
-    localLinearLayout.addView(a(3, HardCodeUtil.a(2131710849) + QQStoryConstant.b + HardCodeUtil.a(2131710836), 2, paramBundle.b()));
-    if (paramBundle.d())
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131710797));
+    ((StringBuilder)localObject).append(QQStoryConstant.b);
+    localLinearLayout.addView(a(0, ((StringBuilder)localObject).toString(), 2130839449));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131710831));
+    ((StringBuilder)localObject).append(QQStoryConstant.b);
+    localLinearLayout.addView(a(1, ((StringBuilder)localObject).toString(), 2130839440));
+    localLinearLayout.addView(View.inflate(paramQQStoryFriendSettings, 2131561565, null));
+    localObject = (QQStoryManager)paramQQStoryFriendSettings.app.getManager(QQManagerFactory.QQSTORY_MANAGER);
+    localLinearLayout.addView(a(2, HardCodeUtil.a(2131710829), 1, ((QQStoryManager)localObject).a()));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(HardCodeUtil.a(2131710826));
+    localStringBuilder.append(QQStoryConstant.b);
+    localStringBuilder.append(HardCodeUtil.a(2131710813));
+    localLinearLayout.addView(a(3, localStringBuilder.toString(), 2, ((QQStoryManager)localObject).b()));
+    if (((QQStoryManager)localObject).d())
     {
-      int i = paramBundle.b();
-      localLinearLayout.addView(a(5, String.format(HardCodeUtil.a(2131710830), new Object[] { Integer.valueOf(i), HardCodeUtil.a(2131710853) }), 2, paramBundle.c()));
+      i = ((QQStoryManager)localObject).b();
+      localLinearLayout.addView(a(5, String.format(HardCodeUtil.a(2131710807), new Object[] { Integer.valueOf(i), HardCodeUtil.a(2131710830) }), 2, ((QQStoryManager)localObject).c()));
       StoryReportor.a("friend_story_settings", "exp_strange", 0, 0, new String[0]);
     }
-    paramBundle = (StoryConfigManager)SuperManager.a(10);
-    boolean bool1 = ((Boolean)paramBundle.b("story_publish_flag_compress_configurable", Boolean.valueOf(false))).booleanValue();
-    boolean bool2 = ((Boolean)paramBundle.b("story_publish_flag_compress", Boolean.valueOf(false))).booleanValue();
+    localObject = (StoryConfigManager)SuperManager.a(10);
+    boolean bool1 = ((Boolean)((StoryConfigManager)localObject).b("story_publish_flag_compress_configurable", paramBundle)).booleanValue();
+    boolean bool2 = ((Boolean)((StoryConfigManager)localObject).b("story_publish_flag_compress", paramBundle)).booleanValue();
     SLog.d("QQStoryFriendSettingDelegate", "skipEncodeVisible=%s, skipEncodeEnable=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2) });
     if (bool1)
     {
-      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561722, null));
-      localLinearLayout.addView(a(7, HardCodeUtil.a(2131710850) + QQStoryConstant.a, 0, bool2));
+      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561565, null));
+      paramBundle = new StringBuilder();
+      paramBundle.append(HardCodeUtil.a(2131710827));
+      paramBundle.append(QQStoryConstant.a);
+      localLinearLayout.addView(a(7, paramBundle.toString(), 0, bool2));
     }
     paramBundle = (MsgTabStoryNodeConfigManager)paramQQStoryFriendSettings.app.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER);
     if ((paramBundle.b) && (paramBundle.c))
     {
-      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561722, null));
-      localLinearLayout.addView(a(8, HardCodeUtil.a(2131710826) + QQStoryConstant.b, 1, paramBundle.d));
-      if (!paramBundle.d) {
-        break label680;
+      localLinearLayout.addView(View.inflate(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, 2131561565, null));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131710803));
+      ((StringBuilder)localObject).append(QQStoryConstant.b);
+      localLinearLayout.addView(a(8, ((StringBuilder)localObject).toString(), 1, paramBundle.d));
+      if (paramBundle.d) {
+        paramBundle = "1";
+      } else {
+        paramBundle = "2";
       }
-    }
-    label680:
-    for (paramBundle = "1";; paramBundle = "2")
-    {
       StoryReportor.a("msg_tab", "exp_set", 0, 0, new String[] { "1", paramBundle });
-      paramQQStoryFriendSettings.setContentView(localLinearLayout);
-      paramQQStoryFriendSettings.setTitle(QQStoryConstant.a + HardCodeUtil.a(2131710843));
-      paramQQStoryFriendSettings.app.addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
-      ((QQStoryHandler)paramQQStoryFriendSettings.app.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).d();
-      StoryReportor.a("friend_story_settings", "exp_set", this.jdField_a_of_type_Int, 0, new String[] { "1", "", "", "" });
-      return;
     }
+    paramQQStoryFriendSettings.setContentView(localLinearLayout);
+    paramBundle = new StringBuilder();
+    paramBundle.append(QQStoryConstant.a);
+    paramBundle.append(HardCodeUtil.a(2131710820));
+    paramQQStoryFriendSettings.setTitle(paramBundle.toString());
+    paramQQStoryFriendSettings.app.addObserver(this.jdField_a_of_type_ComTencentBizQqstoryBaseQQStoryObserver);
+    ((QQStoryHandler)paramQQStoryFriendSettings.app.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER)).a();
+    StoryReportor.a("friend_story_settings", "exp_set", this.jdField_a_of_type_Int, 0, new String[] { "1", "", "", "" });
   }
   
   public void a(boolean paramBoolean)
   {
-    qqstory_service.ReqSetConfig localReqSetConfig = new qqstory_service.ReqSetConfig();
-    qqstory_struct.UserConfig localUserConfig = new qqstory_struct.UserConfig();
-    localUserConfig.config_key.set(ByteStringMicro.copyFromUtf8("self_notify"));
-    Object localObject = localUserConfig.config_value;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ((PBUInt32Field)localObject).set(i);
-      localObject = new ArrayList();
-      ((List)localObject).add(localUserConfig);
-      localReqSetConfig.user_config.set((List)localObject);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new QQStoryFriendSettingDelegate.2(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void b(boolean paramBoolean)
   {
-    qqstory_service.ReqSetConfig localReqSetConfig = new qqstory_service.ReqSetConfig();
-    qqstory_struct.UserConfig localUserConfig = new qqstory_struct.UserConfig();
-    localUserConfig.config_key.set(ByteStringMicro.copyFromUtf8("special_notify"));
-    Object localObject = localUserConfig.config_value;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ((PBUInt32Field)localObject).set(i);
-      localObject = new ArrayList();
-      ((List)localObject).add(localUserConfig);
-      localReqSetConfig.user_config.set((List)localObject);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new QQStoryFriendSettingDelegate.3(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void c(boolean paramBoolean)
   {
-    qqstory_service.ReqSetConfig localReqSetConfig = new qqstory_service.ReqSetConfig();
-    qqstory_struct.UserConfig localUserConfig = new qqstory_struct.UserConfig();
-    localUserConfig.config_key.set(ByteStringMicro.copyFromUtf8("allow_stranger_state"));
-    Object localObject = localUserConfig.config_value;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ((PBUInt32Field)localObject).set(i);
-      localObject = new ArrayList();
-      ((List)localObject).add(localUserConfig);
-      localReqSetConfig.user_config.set((List)localObject);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new QQStoryFriendSettingDelegate.4(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void d(boolean paramBoolean)
   {
-    qqstory_service.ReqSetConfig localReqSetConfig = new qqstory_service.ReqSetConfig();
-    qqstory_struct.UserConfig localUserConfig = new qqstory_struct.UserConfig();
-    localUserConfig.config_key.set(ByteStringMicro.copyFromUtf8("story_publish_flag_compress"));
-    Object localObject = localUserConfig.config_value;
-    if (paramBoolean) {}
-    for (int i = 1;; i = 0)
-    {
-      ((PBUInt32Field)localObject).set(i);
-      localObject = new ArrayList();
-      ((List)localObject).add(localUserConfig);
-      localReqSetConfig.user_config.set((List)localObject);
-      ProtoUtils.a(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app, new QQStoryFriendSettingDelegate.5(this, paramBoolean), localReqSetConfig.toByteArray(), QQStoryHandler.b);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.useAs(TypeTransformer.java:868)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:668)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool2 = true;
-    boolean bool3 = true;
-    boolean bool1 = true;
     Object localObject = paramCompoundButton.getTag();
-    if (!(localObject instanceof Integer)) {}
-    for (;;)
+    if ((localObject instanceof Integer))
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      switch (((Integer)localObject).intValue())
+      int i = ((Integer)localObject).intValue();
+      localObject = "2";
+      if (i != 2)
       {
-      case 6: 
-      default: 
-        break;
-      case 2: 
-        if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
+        if (i != 3)
         {
-          if (!paramBoolean) {}
-          for (bool1 = true;; bool1 = false)
+          if (i != 4)
           {
-            a(2, bool1);
-            a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692257));
-            break;
+            if (i != 5)
+            {
+              if (i != 7)
+              {
+                if (i == 8)
+                {
+                  ((MsgTabStoryNodeConfigManager)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a(paramBoolean);
+                  QQStoryHandler localQQStoryHandler = (QQStoryHandler)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
+                  if (paramBoolean) {
+                    i = 2;
+                  } else {
+                    i = 1;
+                  }
+                  localQQStoryHandler.b(i);
+                  if (paramBoolean) {
+                    localObject = "1";
+                  }
+                  StoryReportor.a("msg_tab", "turn_story", 0, 0, new String[] { "1", localObject });
+                }
+              }
+              else if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
+              {
+                a(7, paramBoolean ^ true);
+                a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692183));
+              }
+              else
+              {
+                d(paramBoolean);
+                SLog.d("QQStoryFriendSettingDelegate", "VIEW_ID_ALLOW_SKIP_ENCODE_THREAD %s", new Object[] { Boolean.valueOf(paramBoolean) });
+              }
+            }
+            else if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
+            {
+              a(5, paramBoolean ^ true);
+              a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692183));
+            }
+            else
+            {
+              c(paramBoolean);
+              if (paramBoolean) {
+                localObject = "1";
+              }
+              StoryReportor.a("friend_story_settings", "clk_strange", 0, 0, new String[] { localObject });
+            }
+          }
+          else {
+            ((QQStoryManager)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app.getManager(QQManagerFactory.QQSTORY_MANAGER)).g(paramBoolean);
           }
         }
-        a(paramBoolean);
-        if (paramBoolean) {}
-        for (localObject = "1";; localObject = "2")
+        else if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
         {
-          StoryReportor.a("friend_story_settings", "receive_me", 0, 0, new String[] { localObject, "", "", "" });
-          break;
+          a(3, paramBoolean ^ true);
+          a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692183));
         }
-      case 3: 
-        if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
+        else
         {
-          if (!paramBoolean) {}
-          for (;;)
-          {
-            a(3, bool1);
-            a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692257));
-            break;
-            bool1 = false;
+          b(paramBoolean);
+          if (paramBoolean) {
+            localObject = "1";
           }
-        }
-        b(paramBoolean);
-        if (paramBoolean) {}
-        for (localObject = "1";; localObject = "2")
-        {
           StoryReportor.a("friend_story_settings", "receive_care", 0, 0, new String[] { localObject, "", "", "" });
-          break;
         }
-      case 5: 
-        if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
-        {
-          if (!paramBoolean) {}
-          for (bool1 = bool2;; bool1 = false)
-          {
-            a(5, bool1);
-            a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692257));
-            break;
-          }
+      }
+      else if (!NetworkUtil.isNetSupport(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
+      {
+        a(2, paramBoolean ^ true);
+        a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692183));
+      }
+      else
+      {
+        a(paramBoolean);
+        if (paramBoolean) {
+          localObject = "1";
         }
-        c(paramBoolean);
-        if (paramBoolean) {}
-        for (localObject = "1";; localObject = "2")
-        {
-          StoryReportor.a("friend_story_settings", "clk_strange", 0, 0, new String[] { localObject });
-          break;
-        }
-      case 7: 
-        if (!NetworkUtil.d(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings))
-        {
-          if (!paramBoolean) {}
-          for (bool1 = bool3;; bool1 = false)
-          {
-            a(7, bool1);
-            a(0, this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.getString(2131692257));
-            break;
-          }
-        }
-        d(paramBoolean);
-        SLog.d("QQStoryFriendSettingDelegate", "VIEW_ID_ALLOW_SKIP_ENCODE_THREAD %s", new Object[] { Boolean.valueOf(paramBoolean) });
-        break;
-      case 4: 
-        ((QQStoryManager)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app.getManager(QQManagerFactory.QQSTORY_MANAGER)).g(paramBoolean);
+        StoryReportor.a("friend_story_settings", "receive_me", 0, 0, new String[] { localObject, "", "", "" });
       }
     }
-    ((MsgTabStoryNodeConfigManager)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app.getManager(QQManagerFactory.MSG_TAB_STORY_CONFIG_MANAGER)).a(paramBoolean);
-    localObject = (QQStoryHandler)this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.app.getBusinessHandler(BusinessHandlerFactory.QQSTORY_HANDLER);
-    int i;
-    if (paramBoolean)
-    {
-      i = 2;
-      label539:
-      ((QQStoryHandler)localObject).b(i);
-      if (!paramBoolean) {
-        break label588;
-      }
-    }
-    label588:
-    for (localObject = "1";; localObject = "2")
-    {
-      StoryReportor.a("msg_tab", "turn_story", 0, 0, new String[] { "1", localObject });
-      break;
-      i = 1;
-      break label539;
-    }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
   
   public void onClick(View paramView)
   {
     int i = ((Integer)paramView.getTag()).intValue();
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings, QQStoryShieldListActivity.class);
-    switch (i)
+    if (i != 0)
     {
+      if (i == 1)
+      {
+        localIntent.putExtra("sheild_type", 2);
+        StoryReportor.a("friend_story_settings", "clk_notletsee", 0, 0, new String[] { "", "", "", "" });
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.startActivity(localIntent);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localIntent.putExtra("sheild_type", 2);
-      StoryReportor.a("friend_story_settings", "clk_notletsee", 0, 0, new String[] { "", "", "", "" });
-      continue;
       localIntent.putExtra("sheild_type", 1);
       StoryReportor.a("friend_story_settings", "clk_notsee", 0, 0, new String[] { "", "", "", "" });
     }
+    this.jdField_a_of_type_ComTencentBizQqstorySettingsQQStoryFriendSettings.startActivity(localIntent);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.settings.QQStoryFriendSettingDelegate
  * JD-Core Version:    0.7.0.1
  */

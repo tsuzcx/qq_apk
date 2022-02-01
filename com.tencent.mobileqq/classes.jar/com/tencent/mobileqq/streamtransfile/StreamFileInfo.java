@@ -1,12 +1,13 @@
 package com.tencent.mobileqq.streamtransfile;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ptt.PttBuffer;
-import com.tencent.mobileqq.ptt.StreamParams;
+import com.tencent.mobileqq.pttlogic.api.IPttBuffer;
+import com.tencent.mobileqq.pttlogic.api.IStreamParams;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.transfile.NetworkCenter;
 import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.app.AppRuntime;
 
 public class StreamFileInfo
 {
@@ -23,12 +24,13 @@ public class StreamFileInfo
   private long jdField_c_of_type_Long;
   private short jdField_c_of_type_Short = 1;
   
-  public StreamFileInfo(QQAppInterface paramQQAppInterface, int paramInt1, String paramString, int paramInt2)
+  public StreamFileInfo(AppRuntime paramAppRuntime, int paramInt1, String paramString, int paramInt2)
   {
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_b_of_type_Int = paramInt2;
-    this.jdField_a_of_type_Int = StreamParams.a(paramQQAppInterface, paramInt1, NetworkCenter.getInstance().getNetType());
-    PttBuffer.a(paramString);
+    paramInt2 = NetworkCenter.getInstance().getNetType();
+    this.jdField_a_of_type_Int = ((IStreamParams)QRoute.api(IStreamParams.class)).getSliceSize(paramAppRuntime, paramInt1, paramInt2);
+    ((IPttBuffer)QRoute.api(IPttBuffer.class)).createBufferTask(paramString);
   }
   
   public int a()
@@ -75,15 +77,15 @@ public class StreamFileInfo
   {
     if (!paramBoolean)
     {
-      PttBuffer.b(this.jdField_a_of_type_JavaLangString);
+      ((IPttBuffer)QRoute.api(IPttBuffer.class)).flush(this.jdField_a_of_type_JavaLangString);
       return;
     }
-    PttBuffer.a(this.jdField_a_of_type_JavaLangString);
+    ((IPttBuffer)QRoute.api(IPttBuffer.class)).cancelBufferTask(this.jdField_a_of_type_JavaLangString);
   }
   
   public void a(byte[] paramArrayOfByte, int paramInt)
   {
-    PttBuffer.a(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, paramInt);
+    ((IPttBuffer)QRoute.api(IPttBuffer.class)).appendBuffer(this.jdField_a_of_type_JavaLangString, paramArrayOfByte, paramInt);
   }
   
   public int b()
@@ -113,7 +115,7 @@ public class StreamFileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.streamtransfile.StreamFileInfo
  * JD-Core Version:    0.7.0.1
  */

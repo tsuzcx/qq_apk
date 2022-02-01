@@ -19,36 +19,46 @@ class JefsClass$7
   
   public void run()
   {
-    String str;
-    for (Object localObject2 = null;; localObject2 = str)
+    for (;;)
     {
       try
       {
-        if ("application/vnd.android.package-archive".equalsIgnoreCase(this.jdField_a_of_type_AndroidContentIntent.getType())) {
-          localObject1 = this.jdField_a_of_type_AndroidContentIntent.getData();
+        Object localObject;
+        if ("application/vnd.android.package-archive".equalsIgnoreCase(this.jdField_a_of_type_AndroidContentIntent.getType()))
+        {
+          localObject = this.jdField_a_of_type_AndroidContentIntent.getData();
+          localObject = FileProvider7Helper.getRealPathFromContentURI(MobileQQ.context, (Uri)localObject);
         }
-        for (Object localObject1 = FileProvider7Helper.getRealPathFromContentURI(MobileQQ.context, (Uri)localObject1); localObject1 == null; localObject1 = Uri.parse(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("yyb_install_url")).getQueryParameter("filepath"))
+        else
+        {
+          localObject = Uri.parse(this.jdField_a_of_type_AndroidContentIntent.getStringExtra("yyb_install_url")).getQueryParameter("filepath");
+        }
+        if (localObject == null)
         {
           QLog.w("TeleScreen|JefsClass", 1, "apk path is null");
           JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
           return;
         }
-        if (new File((String)localObject1).exists())
+        str2 = null;
+        if (new File((String)localObject).exists())
         {
-          localObject1 = MobileQQ.context.getPackageManager().getPackageArchiveInfo((String)localObject1, 0);
-          if (localObject1 != null)
+          localObject = MobileQQ.context.getPackageManager().getPackageArchiveInfo((String)localObject, 0);
+          if (localObject != null)
           {
-            localObject1 = ((PackageInfo)localObject1).packageName;
-            continue;
+            localObject = ((PackageInfo)localObject).packageName;
+            break label205;
           }
         }
         else
         {
-          localObject1 = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if ((localObject2 == null) || (localObject1 == null)) {
-            break label188;
+          localObject = (Context)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+          if ((str2 != null) && (localObject != null))
+          {
+            JefsClass.a(this.this$0, (Context)localObject, this.jdField_a_of_type_JavaLangString, this.b, str2, null, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+            return;
           }
-          JefsClass.a(this.this$0, (Context)localObject1, this.jdField_a_of_type_JavaLangString, this.b, (String)localObject2, null, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
+          QLog.i("TeleScreen|JefsClass", 1, "could not resolve apk file's package");
+          JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
           return;
         }
       }
@@ -58,18 +68,15 @@ class JefsClass$7
         JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
         return;
       }
-      str = "";
-      continue;
-      label188:
-      QLog.i("TeleScreen|JefsClass", 1, "could not resolve apk file's package");
-      JefsClass.a(this.this$0, this.jdField_a_of_type_ComTencentMobileqqHaoliyouJefsClass$CancelableRunnable);
-      return;
+      String str1 = "";
+      label205:
+      String str2 = str1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.haoliyou.JefsClass.7
  * JD-Core Version:    0.7.0.1
  */

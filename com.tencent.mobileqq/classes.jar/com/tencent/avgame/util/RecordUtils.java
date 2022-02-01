@@ -1,6 +1,8 @@
 package com.tencent.avgame.util;
 
-import com.tencent.mobileqq.config.business.AvGameConfProcessor;
+import com.tencent.avgame.config.AvGameConfigUtil;
+import com.tencent.avgame.config.data.AvGameConfBean;
+import com.tencent.avgame.config.data.AvGameConfBean.RecordParam;
 import java.util.Iterator;
 import java.util.List;
 
@@ -13,7 +15,7 @@ public class RecordUtils
   
   public static AvGameConfBean.RecordParam a(int paramInt)
   {
-    Object localObject = AvGameConfProcessor.a().a();
+    Object localObject = AvGameConfigUtil.a().a();
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
@@ -45,7 +47,7 @@ public class RecordUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.util.RecordUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -23,10 +23,15 @@ public class MiniServiceManagerService
   
   public void addService(String paramString, IBinder paramIBinder)
   {
-    if (checkService(paramString) != null) {
-      throw new RemoteException("MiniService already exists. " + paramString);
+    if (checkService(paramString) == null)
+    {
+      services.put(paramString, paramIBinder);
+      return;
     }
-    services.put(paramString, paramIBinder);
+    paramIBinder = new StringBuilder();
+    paramIBinder.append("MiniService already exists. ");
+    paramIBinder.append(paramString);
+    throw new RemoteException(paramIBinder.toString());
   }
   
   public IBinder checkService(String paramString)
@@ -41,7 +46,7 @@ public class MiniServiceManagerService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.server.MiniServiceManagerService
  * JD-Core Version:    0.7.0.1
  */

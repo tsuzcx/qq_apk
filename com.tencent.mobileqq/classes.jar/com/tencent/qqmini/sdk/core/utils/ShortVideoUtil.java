@@ -10,7 +10,7 @@ import java.io.File;
 
 public class ShortVideoUtil
 {
-  static String SDCARD_IMG_CAMERA = SDCARD_ROOT + "/DCIM/Camera/";
+  static String SDCARD_IMG_CAMERA;
   static String SDCARD_IMG_VIDEO;
   static String SDCARD_IMG_VIDEO_GN9000L;
   static String SDCARD_IMG_VIDEO_RUBBISH_MX040;
@@ -21,10 +21,26 @@ public class ShortVideoUtil
   
   static
   {
-    SDCARD_IMG_VIDEO = SDCARD_ROOT + "/DCIM/Video/";
-    SDCARD_IMG_VIDEO_GN9000L = SDCARD_ROOT + "/照相机/Camera/";
-    SDCARD_IMG_VIDEO_VIVO_X7 = SDCARD_ROOT + "/相机/";
-    SDCARD_IMG_VIDEO_RUBBISH_MX040 = SDCARD_ROOT + "/Camera/Video/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SDCARD_ROOT);
+    localStringBuilder.append("/DCIM/Video/");
+    SDCARD_IMG_VIDEO = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SDCARD_ROOT);
+    localStringBuilder.append("/照相机/Camera/");
+    SDCARD_IMG_VIDEO_GN9000L = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SDCARD_ROOT);
+    localStringBuilder.append("/相机/");
+    SDCARD_IMG_VIDEO_VIVO_X7 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SDCARD_ROOT);
+    localStringBuilder.append("/Camera/Video/");
+    SDCARD_IMG_VIDEO_RUBBISH_MX040 = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append(SDCARD_ROOT);
+    localStringBuilder.append("/DCIM/Camera/");
+    SDCARD_IMG_CAMERA = localStringBuilder.toString();
   }
   
   public static String getCameraPath()
@@ -32,21 +48,20 @@ public class ShortVideoUtil
     String str = Build.MODEL.toUpperCase();
     if (str.contains("GN9000L")) {
       str = SDCARD_IMG_VIDEO_GN9000L;
+    } else if (isDCIMVideoModel(str)) {
+      str = SDCARD_IMG_VIDEO;
+    } else if (str.contains("M040")) {
+      str = SDCARD_IMG_VIDEO_RUBBISH_MX040;
+    } else if (isVIVOX7Model(str)) {
+      str = SDCARD_IMG_VIDEO_VIVO_X7;
+    } else {
+      str = SDCARD_IMG_CAMERA;
     }
-    for (;;)
-    {
-      QMLog.d("ShortVideoUtil", "getCameraPath: commonPath=" + str);
-      return str;
-      if (isDCIMVideoModel(str)) {
-        str = SDCARD_IMG_VIDEO;
-      } else if (str.contains("M040")) {
-        str = SDCARD_IMG_VIDEO_RUBBISH_MX040;
-      } else if (isVIVOX7Model(str)) {
-        str = SDCARD_IMG_VIDEO_VIVO_X7;
-      } else {
-        str = SDCARD_IMG_CAMERA;
-      }
-    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getCameraPath: commonPath=");
+    localStringBuilder.append(str);
+    QMLog.d("ShortVideoUtil", localStringBuilder.toString());
+    return str;
   }
   
   @TargetApi(10)
@@ -66,206 +81,203 @@ public class ShortVideoUtil
   public static Bitmap getVideoThumbnail(Context paramContext, String paramString, int paramInt, long paramLong)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 11
-    //   3: aconst_null
-    //   4: astore 12
-    //   6: iload_2
-    //   7: istore 6
-    //   9: iload_2
-    //   10: ifgt +8 -> 18
-    //   13: getstatic 66	com/tencent/qqmini/sdk/core/utils/ShortVideoUtil:VIDEO_THUMBNAIL_MAX_LENGTH_DEFAULT	I
-    //   16: istore 6
-    //   18: invokestatic 128	java/lang/System:currentTimeMillis	()J
-    //   21: lstore 9
-    //   23: new 130	android/media/MediaMetadataRetriever
-    //   26: dup
-    //   27: invokespecial 131	android/media/MediaMetadataRetriever:<init>	()V
-    //   30: astore 13
-    //   32: aload 13
-    //   34: aload_1
-    //   35: invokevirtual 135	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
-    //   38: aload 13
-    //   40: lload_3
-    //   41: invokevirtual 139	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
-    //   44: astore_0
-    //   45: aload 13
-    //   47: invokevirtual 142	android/media/MediaMetadataRetriever:release	()V
-    //   50: aload_0
-    //   51: ifnonnull +77 -> 128
-    //   54: aload 12
-    //   56: astore 11
-    //   58: aload 11
-    //   60: areturn
-    //   61: astore_0
-    //   62: aload 13
-    //   64: invokevirtual 142	android/media/MediaMetadataRetriever:release	()V
-    //   67: aconst_null
-    //   68: astore_0
-    //   69: goto -19 -> 50
-    //   72: astore_0
-    //   73: aconst_null
-    //   74: astore_0
-    //   75: goto -25 -> 50
-    //   78: astore_0
-    //   79: aload 13
-    //   81: invokevirtual 142	android/media/MediaMetadataRetriever:release	()V
+    //   0: iload_2
+    //   1: istore 6
+    //   3: iload_2
+    //   4: ifgt +8 -> 12
+    //   7: getstatic 66	com/tencent/qqmini/sdk/core/utils/ShortVideoUtil:VIDEO_THUMBNAIL_MAX_LENGTH_DEFAULT	I
+    //   10: istore 6
+    //   12: invokestatic 128	java/lang/System:currentTimeMillis	()J
+    //   15: lstore 9
+    //   17: new 130	android/media/MediaMetadataRetriever
+    //   20: dup
+    //   21: invokespecial 131	android/media/MediaMetadataRetriever:<init>	()V
+    //   24: astore 12
+    //   26: aconst_null
+    //   27: astore 11
+    //   29: aload 12
+    //   31: aload_1
+    //   32: invokevirtual 135	android/media/MediaMetadataRetriever:setDataSource	(Ljava/lang/String;)V
+    //   35: aload 12
+    //   37: lload_3
+    //   38: invokevirtual 139	android/media/MediaMetadataRetriever:getFrameAtTime	(J)Landroid/graphics/Bitmap;
+    //   41: astore_0
+    //   42: aload 12
+    //   44: invokevirtual 142	android/media/MediaMetadataRetriever:release	()V
+    //   47: goto +33 -> 80
+    //   50: astore_0
+    //   51: goto +20 -> 71
+    //   54: astore_0
+    //   55: ldc 14
+    //   57: ldc 144
+    //   59: aload_0
+    //   60: invokestatic 147	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   63: aload 12
+    //   65: invokevirtual 142	android/media/MediaMetadataRetriever:release	()V
+    //   68: goto +10 -> 78
+    //   71: aload 12
+    //   73: invokevirtual 142	android/media/MediaMetadataRetriever:release	()V
+    //   76: aload_0
+    //   77: athrow
+    //   78: aconst_null
+    //   79: astore_0
+    //   80: aload_0
+    //   81: ifnonnull +5 -> 86
     //   84: aconst_null
-    //   85: astore_0
-    //   86: goto -36 -> 50
-    //   89: astore_0
-    //   90: aconst_null
-    //   91: astore_0
-    //   92: goto -42 -> 50
-    //   95: astore_0
-    //   96: ldc 14
-    //   98: ldc 144
-    //   100: aload_0
-    //   101: invokestatic 147	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   104: aload 13
-    //   106: invokevirtual 142	android/media/MediaMetadataRetriever:release	()V
-    //   109: aconst_null
-    //   110: astore_0
-    //   111: goto -61 -> 50
-    //   114: astore_0
-    //   115: aconst_null
-    //   116: astore_0
-    //   117: goto -67 -> 50
-    //   120: astore_0
-    //   121: aload 13
-    //   123: invokevirtual 142	android/media/MediaMetadataRetriever:release	()V
-    //   126: aload_0
-    //   127: athrow
-    //   128: aload_0
-    //   129: invokevirtual 153	android/graphics/Bitmap:getWidth	()I
-    //   132: istore 7
-    //   134: aload_0
-    //   135: invokevirtual 156	android/graphics/Bitmap:getHeight	()I
-    //   138: istore_2
-    //   139: iload 7
-    //   141: iload_2
-    //   142: invokestatic 162	java/lang/Math:max	(II)I
-    //   145: istore 8
-    //   147: iload 8
-    //   149: iload 6
-    //   151: if_icmple +180 -> 331
-    //   154: iload 6
-    //   156: i2f
-    //   157: iload 8
-    //   159: i2f
-    //   160: fdiv
-    //   161: fstore 5
-    //   163: iload 7
-    //   165: i2f
-    //   166: fload 5
-    //   168: fmul
-    //   169: invokestatic 166	java/lang/Math:round	(F)I
-    //   172: istore 6
-    //   174: iload_2
-    //   175: i2f
-    //   176: fload 5
-    //   178: fmul
-    //   179: invokestatic 166	java/lang/Math:round	(F)I
-    //   182: istore_2
-    //   183: aload_0
-    //   184: iload 6
-    //   186: iload_2
-    //   187: iconst_1
-    //   188: invokestatic 170	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
-    //   191: astore_0
-    //   192: invokestatic 128	java/lang/System:currentTimeMillis	()J
-    //   195: lstore_3
-    //   196: aload_0
-    //   197: ifnull +90 -> 287
-    //   200: aload_0
-    //   201: astore 11
-    //   203: invokestatic 174	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   206: ifeq -148 -> 58
-    //   209: ldc 14
-    //   211: new 34	java/lang/StringBuilder
-    //   214: dup
-    //   215: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   218: ldc 176
-    //   220: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   223: aload_0
-    //   224: invokevirtual 153	android/graphics/Bitmap:getWidth	()I
-    //   227: invokevirtual 179	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   230: ldc 181
-    //   232: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   235: aload_0
-    //   236: invokevirtual 156	android/graphics/Bitmap:getHeight	()I
-    //   239: invokevirtual 179	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   242: ldc 183
-    //   244: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   247: aload_1
-    //   248: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   251: ldc 185
-    //   253: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   256: lload_3
-    //   257: lload 9
-    //   259: lsub
-    //   260: invokevirtual 188	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   263: ldc 190
-    //   265: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   85: areturn
+    //   86: aload_0
+    //   87: invokevirtual 153	android/graphics/Bitmap:getWidth	()I
+    //   90: istore 7
+    //   92: aload_0
+    //   93: invokevirtual 156	android/graphics/Bitmap:getHeight	()I
+    //   96: istore_2
+    //   97: iload 7
+    //   99: iload_2
+    //   100: invokestatic 162	java/lang/Math:max	(II)I
+    //   103: istore 8
+    //   105: iload 8
+    //   107: iload 6
+    //   109: if_icmple +55 -> 164
+    //   112: iload 6
+    //   114: i2f
+    //   115: iload 8
+    //   117: i2f
+    //   118: fdiv
+    //   119: fstore 5
+    //   121: iload 7
+    //   123: i2f
+    //   124: fload 5
+    //   126: fmul
+    //   127: invokestatic 166	java/lang/Math:round	(F)I
+    //   130: istore 6
+    //   132: fload 5
+    //   134: iload_2
+    //   135: i2f
+    //   136: fmul
+    //   137: invokestatic 166	java/lang/Math:round	(F)I
+    //   140: istore_2
+    //   141: aload_0
+    //   142: iload 6
+    //   144: iload_2
+    //   145: iconst_1
+    //   146: invokestatic 170	android/graphics/Bitmap:createScaledBitmap	(Landroid/graphics/Bitmap;IIZ)Landroid/graphics/Bitmap;
+    //   149: astore_0
+    //   150: goto +14 -> 164
+    //   153: astore_0
+    //   154: aload_0
+    //   155: invokevirtual 173	java/lang/OutOfMemoryError:printStackTrace	()V
+    //   158: aload 11
+    //   160: astore_0
+    //   161: goto +3 -> 164
+    //   164: invokestatic 128	java/lang/System:currentTimeMillis	()J
+    //   167: lstore_3
+    //   168: aload_0
+    //   169: ifnull +107 -> 276
+    //   172: invokestatic 177	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
+    //   175: ifeq +141 -> 316
+    //   178: new 34	java/lang/StringBuilder
+    //   181: dup
+    //   182: invokespecial 37	java/lang/StringBuilder:<init>	()V
+    //   185: astore 11
+    //   187: aload 11
+    //   189: ldc 179
+    //   191: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   194: pop
+    //   195: aload 11
+    //   197: aload_0
+    //   198: invokevirtual 153	android/graphics/Bitmap:getWidth	()I
+    //   201: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   204: pop
+    //   205: aload 11
+    //   207: ldc 184
+    //   209: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   212: pop
+    //   213: aload 11
+    //   215: aload_0
+    //   216: invokevirtual 156	android/graphics/Bitmap:getHeight	()I
+    //   219: invokevirtual 182	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   222: pop
+    //   223: aload 11
+    //   225: ldc 186
+    //   227: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   230: pop
+    //   231: aload 11
+    //   233: aload_1
+    //   234: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   237: pop
+    //   238: aload 11
+    //   240: ldc 188
+    //   242: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   245: pop
+    //   246: aload 11
+    //   248: lload_3
+    //   249: lload 9
+    //   251: lsub
+    //   252: invokevirtual 191	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
+    //   255: pop
+    //   256: aload 11
+    //   258: ldc 193
+    //   260: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   263: pop
+    //   264: ldc 14
+    //   266: aload 11
     //   268: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   271: invokestatic 93	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
+    //   271: invokestatic 102	com/tencent/qqmini/sdk/launcher/log/QMLog:d	(Ljava/lang/String;Ljava/lang/String;)V
     //   274: aload_0
     //   275: areturn
-    //   276: astore_0
-    //   277: aload_0
-    //   278: invokevirtual 193	java/lang/OutOfMemoryError:printStackTrace	()V
-    //   281: aload 11
-    //   283: astore_0
-    //   284: goto -92 -> 192
-    //   287: aload_0
-    //   288: astore 11
-    //   290: invokestatic 174	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
-    //   293: ifeq -235 -> 58
-    //   296: ldc 14
-    //   298: new 34	java/lang/StringBuilder
-    //   301: dup
-    //   302: invokespecial 37	java/lang/StringBuilder:<init>	()V
-    //   305: ldc 195
-    //   307: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   310: aload_1
-    //   311: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   314: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   317: invokestatic 198	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   320: aload_0
-    //   321: areturn
-    //   322: astore 13
-    //   324: goto -274 -> 50
-    //   327: astore_1
-    //   328: goto -202 -> 126
-    //   331: goto -139 -> 192
+    //   276: invokestatic 177	com/tencent/qqmini/sdk/launcher/log/QMLog:isColorLevel	()Z
+    //   279: ifeq +37 -> 316
+    //   282: new 34	java/lang/StringBuilder
+    //   285: dup
+    //   286: invokespecial 37	java/lang/StringBuilder:<init>	()V
+    //   289: astore 11
+    //   291: aload 11
+    //   293: ldc 195
+    //   295: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   298: pop
+    //   299: aload 11
+    //   301: aload_1
+    //   302: invokevirtual 41	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   305: pop
+    //   306: ldc 14
+    //   308: aload 11
+    //   310: invokevirtual 46	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   313: invokestatic 198	com/tencent/qqmini/sdk/launcher/log/QMLog:e	(Ljava/lang/String;Ljava/lang/String;)V
+    //   316: aload_0
+    //   317: areturn
+    //   318: astore_0
+    //   319: goto -256 -> 63
+    //   322: astore 12
+    //   324: goto -244 -> 80
+    //   327: astore_0
+    //   328: goto -250 -> 78
+    //   331: astore_1
+    //   332: goto -256 -> 76
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	334	0	paramContext	Context
-    //   0	334	1	paramString	String
-    //   0	334	2	paramInt	int
-    //   0	334	3	paramLong	long
-    //   161	16	5	f	float
-    //   7	178	6	i	int
-    //   132	32	7	j	int
-    //   145	13	8	k	int
-    //   21	237	9	l	long
-    //   1	288	11	localObject1	Object
-    //   4	51	12	localObject2	Object
-    //   30	92	13	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
-    //   322	1	13	localRuntimeException	java.lang.RuntimeException
+    //   0	335	0	paramContext	Context
+    //   0	335	1	paramString	String
+    //   0	335	2	paramInt	int
+    //   0	335	3	paramLong	long
+    //   119	14	5	f	float
+    //   1	142	6	i	int
+    //   90	32	7	j	int
+    //   103	13	8	k	int
+    //   15	235	9	l	long
+    //   27	282	11	localStringBuilder	StringBuilder
+    //   24	48	12	localMediaMetadataRetriever	android.media.MediaMetadataRetriever
+    //   322	1	12	localRuntimeException	java.lang.RuntimeException
     // Exception table:
     //   from	to	target	type
-    //   32	45	61	java/lang/IllegalArgumentException
-    //   62	67	72	java/lang/RuntimeException
-    //   32	45	78	java/lang/RuntimeException
-    //   79	84	89	java/lang/RuntimeException
-    //   32	45	95	java/lang/OutOfMemoryError
-    //   104	109	114	java/lang/RuntimeException
-    //   32	45	120	finally
-    //   96	104	120	finally
-    //   183	192	276	java/lang/OutOfMemoryError
-    //   45	50	322	java/lang/RuntimeException
-    //   121	126	327	java/lang/RuntimeException
+    //   29	42	50	finally
+    //   55	63	50	finally
+    //   29	42	54	java/lang/OutOfMemoryError
+    //   141	150	153	java/lang/OutOfMemoryError
+    //   29	42	318	java/lang/IllegalArgumentException
+    //   29	42	318	java/lang/RuntimeException
+    //   42	47	322	java/lang/RuntimeException
+    //   63	68	327	java/lang/RuntimeException
+    //   71	76	331	java/lang/RuntimeException
   }
   
   private static boolean isDCIMVideoModel(String paramString)
@@ -280,7 +292,7 @@ public class ShortVideoUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.utils.ShortVideoUtil
  * JD-Core Version:    0.7.0.1
  */

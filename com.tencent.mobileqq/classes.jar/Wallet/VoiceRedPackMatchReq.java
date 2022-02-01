@@ -60,36 +60,43 @@ public final class VoiceRedPackMatchReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.grabUin, 0);
-    if (this.billno != null) {
-      paramJceOutputStream.write(this.billno, 1);
+    Object localObject = this.billno;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.voiceText != null) {
-      paramJceOutputStream.write(this.voiceText, 2);
+    localObject = this.voiceText;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.makeUin, 3);
-    if (this.sKey != null) {
-      paramJceOutputStream.write(this.sKey, 4);
+    localObject = this.sKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.appid, 5);
     paramJceOutputStream.write(this.fromType, 6);
-    if (this.groupVoiceInfo != null) {
-      paramJceOutputStream.write(this.groupVoiceInfo, 7);
+    localObject = this.groupVoiceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
     paramJceOutputStream.write(this.platform, 8);
-    if (this.c2cVoiceInfo != null) {
-      paramJceOutputStream.write(this.c2cVoiceInfo, 9);
+    localObject = this.c2cVoiceInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
-    if (this.qqVersion != null) {
-      paramJceOutputStream.write(this.qqVersion, 10);
+    localObject = this.qqVersion;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
-    if (this.voiceMatchStatus != null) {
-      paramJceOutputStream.write(this.voiceMatchStatus, 11);
+    localObject = this.voiceMatchStatus;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.VoiceRedPackMatchReq
  * JD-Core Version:    0.7.0.1
  */

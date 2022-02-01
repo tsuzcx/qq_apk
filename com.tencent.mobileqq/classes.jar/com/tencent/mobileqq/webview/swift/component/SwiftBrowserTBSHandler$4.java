@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.webview.swift.component;
 
 import com.tencent.biz.common.offline.HtmlOffline;
-import com.tencent.common.app.BaseApplicationImpl;
+import mqq.app.MobileQQ;
 
 class SwiftBrowserTBSHandler$4
   implements Runnable
@@ -10,12 +10,12 @@ class SwiftBrowserTBSHandler$4
   
   public void run()
   {
-    HtmlOffline.a(this.a, BaseApplicationImpl.getApplication().getRuntime(), null);
+    HtmlOffline.a(this.a, MobileQQ.sMobileQQ.waitAppRuntime(null), null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserTBSHandler.4
  * JD-Core Version:    0.7.0.1
  */

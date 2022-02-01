@@ -75,24 +75,28 @@ public final class stPoiInfo
     paramJceOutputStream.write(this.stGps, 6);
     paramJceOutputStream.write(this.iDistance, 7);
     paramJceOutputStream.write(this.iHotValue, 8);
-    if (this.strPhone != null) {
-      paramJceOutputStream.write(this.strPhone, 9);
+    String str = this.strPhone;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this.strCountry != null) {
-      paramJceOutputStream.write(this.strCountry, 10);
+    str = this.strCountry;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
-    if (this.strProvince != null) {
-      paramJceOutputStream.write(this.strProvince, 11);
+    str = this.strProvince;
+    if (str != null) {
+      paramJceOutputStream.write(str, 11);
     }
-    if (this.strCity != null) {
-      paramJceOutputStream.write(this.strCity, 12);
+    str = this.strCity;
+    if (str != null) {
+      paramJceOutputStream.write(str, 12);
     }
     paramJceOutputStream.write(this.sorttype, 13);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBSClientInterfaceV2.stPoiInfo
  * JD-Core Version:    0.7.0.1
  */

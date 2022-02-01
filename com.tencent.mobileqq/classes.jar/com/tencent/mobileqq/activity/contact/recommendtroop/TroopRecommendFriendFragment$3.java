@@ -2,7 +2,8 @@ package com.tencent.mobileqq.activity.contact.recommendtroop;
 
 import android.support.v7.widget.RecyclerView.ViewHolder;
 import android.view.View;
-import com.tencent.mobileqq.activity.contact.recommendtroop.base.QuickRecyclerAdapter.OnItemClickListener;
+import com.tencent.mobileqq.troop.adapter.QuickRecyclerAdapter.OnItemClickListener;
+import com.tencent.mobileqq.troop.recommend.data.RecommendMember;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 
 class TroopRecommendFriendFragment$3
@@ -26,7 +27,7 @@ class TroopRecommendFriendFragment$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.recommendtroop.TroopRecommendFriendFragment.3
  * JD-Core Version:    0.7.0.1
  */

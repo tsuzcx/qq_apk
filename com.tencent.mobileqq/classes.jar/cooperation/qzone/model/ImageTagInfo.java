@@ -64,13 +64,9 @@ public class ImageTagInfo
       paramArrayList = paramArrayList.iterator();
       while (paramArrayList.hasNext())
       {
-        Object localObject = (ImageTagInfo)paramArrayList.next();
-        if (localObject != null)
-        {
-          localObject = new stPhotoTag(((ImageTagInfo)localObject).type, ((ImageTagInfo)localObject).content, ((ImageTagInfo)localObject).tagId, ((ImageTagInfo)localObject).xScale, ((ImageTagInfo)localObject).yScale, ((ImageTagInfo)localObject).direction, ((ImageTagInfo)localObject).poiTagStreet);
-          if (localObject != null) {
-            localArrayList.add(localObject);
-          }
+        ImageTagInfo localImageTagInfo = (ImageTagInfo)paramArrayList.next();
+        if (localImageTagInfo != null) {
+          localArrayList.add(new stPhotoTag(localImageTagInfo.type, localImageTagInfo.content, localImageTagInfo.tagId, localImageTagInfo.xScale, localImageTagInfo.yScale, localImageTagInfo.direction, localImageTagInfo.poiTagStreet));
         }
       }
     }
@@ -84,13 +80,10 @@ public class ImageTagInfo
   
   public static void setDbKey(String paramString)
   {
-    if (paramString != null) {}
-    for (;;)
-    {
-      sDbKey = paramString;
-      return;
+    if (paramString == null) {
       paramString = "";
     }
+    sDbKey = paramString;
   }
   
   public static ArrayList<ImageTagInfo> stPhotoTagConvertToImageTagInfo(ArrayList<stPhotoTag> paramArrayList)
@@ -99,12 +92,8 @@ public class ImageTagInfo
     if (paramArrayList != null)
     {
       paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        ImageTagInfo localImageTagInfo = new ImageTagInfo((stPhotoTag)paramArrayList.next());
-        if (localImageTagInfo != null) {
-          localArrayList.add(localImageTagInfo);
-        }
+      while (paramArrayList.hasNext()) {
+        localArrayList.add(new ImageTagInfo((stPhotoTag)paramArrayList.next()));
       }
     }
     return localArrayList;
@@ -159,7 +148,7 @@ public class ImageTagInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.ImageTagInfo
  * JD-Core Version:    0.7.0.1
  */

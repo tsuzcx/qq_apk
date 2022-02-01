@@ -39,20 +39,21 @@ public class MoreItemView
       QMLog.w("MoreItemView", "bind. Failed to bind data. MoreItem is null");
       return;
     }
-    if ((paramMoreItem.drawable == 0) || (paramMoreItem.text == null))
+    if ((paramMoreItem.drawable != 0) && (paramMoreItem.text != null))
     {
-      QMLog.w("MoreItemView", "bind. Failed to bind data. MoreItem is null");
-      return;
-    }
-    this.mMoreItem = paramMoreItem;
-    this.mMoreItemImage.setImageDrawable(getResources().getDrawable(paramMoreItem.drawable));
-    this.mMoreItemText.setText(paramMoreItem.text);
-    if (paramMoreItem.visible) {}
-    for (int i = 0;; i = 8)
-    {
+      this.mMoreItem = paramMoreItem;
+      this.mMoreItemImage.setImageDrawable(getResources().getDrawable(paramMoreItem.drawable));
+      this.mMoreItemText.setText(paramMoreItem.text);
+      int i;
+      if (paramMoreItem.visible) {
+        i = 0;
+      } else {
+        i = 8;
+      }
       setVisibility(i);
       return;
     }
+    QMLog.w("MoreItemView", "bind. Failed to bind data. MoreItem is null");
   }
   
   public MoreItem getMoreItem()
@@ -62,7 +63,7 @@ public class MoreItemView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MoreItemView
  * JD-Core Version:    0.7.0.1
  */

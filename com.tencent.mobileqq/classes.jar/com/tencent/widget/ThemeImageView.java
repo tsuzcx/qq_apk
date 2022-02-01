@@ -34,11 +34,12 @@ public class ThemeImageView
     setSupportMaskView(true);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.themeImageWrapper != null)
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null)
     {
-      this.themeImageWrapper.onDraw(paramCanvas, this);
+      localThemeImageWrapper.onDraw(paramCanvas, this);
       return;
     }
     super.onDraw(paramCanvas);
@@ -46,8 +47,9 @@ public class ThemeImageView
   
   public void setMaskShape(int paramInt)
   {
-    if (this.themeImageWrapper != null) {
-      this.themeImageWrapper.setMaskShape(paramInt);
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null) {
+      localThemeImageWrapper.setMaskShape(paramInt);
     }
   }
   
@@ -59,11 +61,12 @@ public class ThemeImageView
         this.themeImageWrapper = new ThemeImageWrapper();
       }
       this.themeImageWrapper.setSupportMaskView(true);
-    }
-    while (this.themeImageWrapper == null) {
       return;
     }
-    this.themeImageWrapper.setSupportMaskView(false);
+    ThemeImageWrapper localThemeImageWrapper = this.themeImageWrapper;
+    if (localThemeImageWrapper != null) {
+      localThemeImageWrapper.setSupportMaskView(false);
+    }
   }
   
   public void superOnDraw(Canvas paramCanvas)
@@ -73,7 +76,7 @@ public class ThemeImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.ThemeImageView
  * JD-Core Version:    0.7.0.1
  */

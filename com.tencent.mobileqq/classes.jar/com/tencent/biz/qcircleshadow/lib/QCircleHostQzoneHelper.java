@@ -4,54 +4,79 @@ import android.content.Context;
 import android.content.DialogInterface.OnDismissListener;
 import android.content.ServiceConnection;
 import android.os.Bundle;
+import com.tencent.commonsdk.util.notification.QQNotificationManager;
 import com.tencent.mobileqq.qcircle.api.IDbCacheService;
 import com.tencent.mobileqq.qcircle.api.db.IDBCacheDataWrapper;
 import com.tencent.mobileqq.qcircle.api.db.IDBManagerWrapper;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
 import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qzonehub.api.IQzoneShareApi;
+import com.tencent.qzonehub.api.utils.IQzoneHardwareRestriction;
 import cooperation.qzone.LocalMultiProcConfig;
+import cooperation.qzone.QZoneHelper;
+import cooperation.qzone.cache.CacheManager;
+import cooperation.qzone.report.retention.RetentionReport;
 
 public class QCircleHostQzoneHelper
 {
+  public static final String QCIRCLE_UNREADCOUND = "qzone_unreadcount";
+  private static final String TAG = "QCircleHostQzoneHelper";
+  
   public static int HARDWARE_HIGHLEVEL()
   {
-    return QCircleServiceImpl.getQZoneService().HARDWARE_HIGHLEVEL();
+    return 2;
   }
   
   public static int HARDWARE_LOWLEVEL()
   {
-    return QCircleServiceImpl.getQZoneService().HARDWARE_LOWLEVEL();
+    return 0;
   }
   
   public static String KEY_UPLOAD_KEEP_VIDEO_CACHE()
   {
-    return QCircleServiceImpl.getQZoneService().KEY_UPLOAD_KEEP_VIDEO_CACHE();
+    return "ServerKeepVideoCache";
   }
   
   public static String KEY_VIDEO_COMPRESS_SPEED()
   {
-    return QCircleServiceImpl.getQZoneService().KEY_VIDEO_COMPRESS_SPEED();
+    return "key_video_compress_speed";
   }
   
   public static String QZONE_SHARE_IMAGES()
   {
-    return QCircleServiceImpl.getQZoneService().QZONE_SHARE_IMAGES();
+    return "images";
   }
   
   public static String QZONE_SHARE_SUMMERY()
   {
-    return QCircleServiceImpl.getQZoneService().QZONE_SHARE_SUMMERY();
+    return "summary";
   }
   
   public static void bindQzoneVideoService(Context paramContext, String paramString, ServiceConnection paramServiceConnection)
   {
-    QCircleServiceImpl.getQZoneService().bindQzoneVideoService(paramContext, paramString, paramServiceConnection);
+    QZoneHelper.bindQzoneVideoService(paramContext, paramString, paramServiceConnection);
   }
   
   public static void cleanQCirclePush()
   {
-    QCircleServiceImpl.getQZoneService().cleanQCirclePush();
+    QQNotificationManager localQQNotificationManager = QQNotificationManager.getInstance();
+    if (localQQNotificationManager != null)
+    {
+      localQQNotificationManager.cancel("QCircleHostQzoneHelper", 3000532);
+      localQQNotificationManager.cancel("QCircleHostQzoneHelper", 3000533);
+      localQQNotificationManager.cancel("QCircleHostQzoneHelper", 3000534);
+      localQQNotificationManager.cancel("QCircleHostQzoneHelper", 3000535);
+      localQQNotificationManager.cancel("QCircleHostQzoneHelper", 3000536);
+    }
+    clearQCircleUnreadCount();
+  }
+  
+  public static void clearQCircleUnreadCount()
+  {
+    LocalMultiProcConfig.putInt("qzone_unreadcount3000532", 0);
+    LocalMultiProcConfig.putInt("qzone_unreadcount3000533", 0);
+    LocalMultiProcConfig.putInt("qzone_unreadcount3000534", 0);
+    LocalMultiProcConfig.putInt("qzone_unreadcount3000535", 0);
+    LocalMultiProcConfig.putInt("qzone_unreadcount3000536", 0);
   }
   
   public static void closeDbCacheService()
@@ -86,37 +111,37 @@ public class QCircleHostQzoneHelper
   
   public static String getSDCardCapabilityForDisplay()
   {
-    return QCircleServiceImpl.getQZoneService().getSDCardCapabilityForDisplay();
+    return CacheManager.getSDCardCapabilityForDisplay();
   }
   
   public static String getSDCardRemainForDisplay()
   {
-    return QCircleServiceImpl.getQZoneService().getSDCardRemainForDisplay();
+    return CacheManager.getSDCardRemainForDisplay();
   }
   
   public static int getVideoCanCompressLimitMs()
   {
-    return QCircleServiceImpl.getQZoneService().getVideoCanCompressLimitMs();
+    return QZoneHelper.getVideoCanCompressLimitMs();
   }
   
   public static String getVideoFileCacheDir()
   {
-    return QCircleServiceImpl.getQZoneService().getVideoFileCacheDir();
+    return CacheManager.getVideoFileCacheDir();
   }
   
   public static boolean isExternalAvailable()
   {
-    return QCircleServiceImpl.getQZoneService().isExternalAvailable();
+    return CacheManager.isExternalAvailable();
   }
   
   public static void jumpToQzoneShare(String paramString, Context paramContext, Bundle paramBundle, DialogInterface.OnDismissListener paramOnDismissListener, int paramInt)
   {
-    QCircleServiceImpl.getQZoneService().jumpToQzoneShare(paramString, paramContext, paramBundle, paramOnDismissListener, paramInt);
+    ((IQzoneShareApi)QRoute.api(IQzoneShareApi.class)).jumpToQzoneShare(paramString, paramContext, paramBundle, paramOnDismissListener, paramInt);
   }
   
   public static boolean meetHardwareRestriction(int paramInt1, int paramInt2)
   {
-    return QCircleServiceImpl.getQZoneService().meetHardwareRestriction(paramInt1, paramInt2);
+    return ((IQzoneHardwareRestriction)QRoute.api(IQzoneHardwareRestriction.class)).meetHardwareRestriction(paramInt1, paramInt2);
   }
   
   public static void putInt4Uin(String paramString, int paramInt, long paramLong)
@@ -131,12 +156,12 @@ public class QCircleHostQzoneHelper
   
   public static void retentionReport(int paramInt)
   {
-    QCircleServiceImpl.getQZoneService().retentionReport(paramInt);
+    RetentionReport.report(paramInt);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.lib.QCircleHostQzoneHelper
  * JD-Core Version:    0.7.0.1
  */

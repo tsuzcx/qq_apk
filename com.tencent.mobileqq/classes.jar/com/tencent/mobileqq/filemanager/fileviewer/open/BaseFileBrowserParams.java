@@ -70,28 +70,34 @@ public abstract class BaseFileBrowserParams
   {
     String str = a();
     long l = a();
-    if (FileUtils.b(b())) {
+    if (FileUtils.fileExistsAndNotEmpty(b())) {
       return false;
     }
     int i = a();
-    if ((i == 2) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) && (i == 8))) {
-      return false;
+    if (i != 2)
+    {
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a == 1) && (i == 8)) {
+        return false;
+      }
+      if (FileManagerUtil.a(str) != 2) {
+        return false;
+      }
+      if (!FileManagerUtil.a()) {
+        return false;
+      }
+      if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(str)).b)) {
+        return true;
+      }
+      if (l > 1048576L) {
+        return true;
+      }
     }
-    if (FileManagerUtil.a(str) != 2) {
-      return false;
-    }
-    if (!FileManagerUtil.a()) {
-      return false;
-    }
-    if ((!TextUtils.isEmpty(str)) && (l > 0L) && (l > ((IQFileConfigManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IQFileConfigManager.class, "")).getFileAutoDownloadConfig(HWTroopUtils.a(str)).b)) {
-      return true;
-    }
-    return l > 1048576L;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.open.BaseFileBrowserParams
  * JD-Core Version:    0.7.0.1
  */

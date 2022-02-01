@@ -20,55 +20,51 @@ public class GdtInterstitialParams
   public GdtHandler.Options a;
   public JSONObject a;
   public boolean a;
-  public int b = -2147483648;
-  int c = -2147483648;
-  int d = -2147483648;
+  int b;
+  int c;
   
   public GdtInterstitialParams()
   {
     this.jdField_a_of_type_Int = -2147483648;
     this.jdField_a_of_type_Boolean = false;
+    this.b = -2147483648;
+    this.c = -2147483648;
   }
   
   protected GdtInterstitialParams(Parcel paramParcel)
   {
     this.jdField_a_of_type_Int = -2147483648;
+    boolean bool = false;
     this.jdField_a_of_type_Boolean = false;
+    this.b = -2147483648;
+    this.c = -2147483648;
     if (paramParcel == null)
     {
       GdtLog.d("GdtInterstitialParams", "GdtInterstitialParams(Parcel in) error");
       return;
     }
     String str = paramParcel.readString();
-    if (!TextUtils.isEmpty(str)) {}
-    try
-    {
-      this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(str);
-      this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
-      this.jdField_a_of_type_Int = paramParcel.readInt();
-      this.b = paramParcel.readInt();
-      if (paramParcel.readByte() != 0)
+    if (!TextUtils.isEmpty(str)) {
+      try
       {
-        bool = true;
-        this.jdField_a_of_type_Boolean = bool;
-        return;
+        this.jdField_a_of_type_OrgJsonJSONObject = new JSONObject(str);
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
       {
         AdLog.e("GdtInterstitialParams", "GdtInterstitialParams(Parcel in)", localThrowable);
-        continue;
-        boolean bool = false;
       }
     }
+    this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options = ((GdtHandler.Options)paramParcel.readParcelable(GdtHandler.Options.class.getClassLoader()));
+    this.jdField_a_of_type_Int = paramParcel.readInt();
+    if (paramParcel.readByte() != 0) {
+      bool = true;
+    }
+    this.jdField_a_of_type_Boolean = bool;
   }
   
   String a()
   {
-    if (!a()) {}
-    while ((this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a == null) || (!this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.isValid())) {
+    if ((!a()) || (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a == null) || (!this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.isValid())) {
       return null;
     }
     return this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options.a.getTraceId();
@@ -76,7 +72,7 @@ public class GdtInterstitialParams
   
   public boolean a()
   {
-    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null) && (this.jdField_a_of_type_Int != -2147483648) && (this.b != -2147483648);
+    return (this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options != null) && (this.jdField_a_of_type_Int != -2147483648);
   }
   
   boolean b()
@@ -97,30 +93,20 @@ public class GdtInterstitialParams
       return;
     }
     String str;
-    if ((this.jdField_a_of_type_OrgJsonJSONObject != null) && (!JSONObject.NULL.equals(this.jdField_a_of_type_OrgJsonJSONObject)))
-    {
+    if ((this.jdField_a_of_type_OrgJsonJSONObject != null) && (!JSONObject.NULL.equals(this.jdField_a_of_type_OrgJsonJSONObject))) {
       str = this.jdField_a_of_type_OrgJsonJSONObject.toString();
-      paramParcel.writeString(str);
-      paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options, paramInt);
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeInt(this.b);
-      if (!this.jdField_a_of_type_Boolean) {
-        break label91;
-      }
-    }
-    label91:
-    for (paramInt = 1;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
+    } else {
       str = null;
-      break;
     }
+    paramParcel.writeString(str);
+    paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentGdtadAditemGdtHandler$Options, paramInt);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.interstitial.GdtInterstitialParams
  * JD-Core Version:    0.7.0.1
  */

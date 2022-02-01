@@ -33,7 +33,6 @@ public class LebaShowListManager
   
   static
   {
-    jdField_a_of_type_Int = 0;
     jdField_a_of_type_JavaLangObject = new Object();
   }
   
@@ -49,14 +48,15 @@ public class LebaShowListManager
   
   public static LebaShowListManager a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqLebaCoreLebaShowListManager == null) {}
-    synchronized (jdField_a_of_type_JavaLangObject)
-    {
-      if (jdField_a_of_type_ComTencentMobileqqLebaCoreLebaShowListManager == null) {
-        jdField_a_of_type_ComTencentMobileqqLebaCoreLebaShowListManager = new LebaShowListManager();
+    if (jdField_a_of_type_ComTencentMobileqqLebaCoreLebaShowListManager == null) {
+      synchronized (jdField_a_of_type_JavaLangObject)
+      {
+        if (jdField_a_of_type_ComTencentMobileqqLebaCoreLebaShowListManager == null) {
+          jdField_a_of_type_ComTencentMobileqqLebaCoreLebaShowListManager = new LebaShowListManager();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqLebaCoreLebaShowListManager;
     }
+    return jdField_a_of_type_ComTencentMobileqqLebaCoreLebaShowListManager;
   }
   
   public LebaViewItem a(long paramLong)
@@ -85,19 +85,22 @@ public class LebaShowListManager
           localArrayList.add(localLebaViewItem);
         }
       }
+      LebaUtil.a(localArrayList);
+      return localArrayList;
     }
-    LebaUtil.a(localList2);
-    return localList2;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public List<LebaViewItem> a(AppRuntime paramAppRuntime)
   {
     ArrayList localArrayList = new ArrayList();
     boolean bool = a();
-    StringBuffer localStringBuffer;
     synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      localStringBuffer = new StringBuffer("getLebaShowList,");
+      StringBuffer localStringBuffer = new StringBuffer("getLebaShowList,");
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
       {
@@ -106,14 +109,21 @@ public class LebaShowListManager
           a(bool, localLebaViewItem, localArrayList);
         }
       }
+      if (QLog.isColorLevel())
+      {
+        localStringBuffer.append("alldatasize=");
+        localStringBuffer.append(this.jdField_a_of_type_JavaUtilList.size());
+        localStringBuffer.append(", result");
+        localStringBuffer.append(LebaViewItem.a(localArrayList));
+        QLog.i("Q.lebatab.mgr", 2, localStringBuffer.toString());
+      }
+      LebaUtil.a(localArrayList);
+      return localArrayList;
     }
-    if (QLog.isColorLevel())
+    for (;;)
     {
-      localStringBuffer.append("alldatasize=").append(this.jdField_a_of_type_JavaUtilList.size()).append(", result").append(LebaViewItem.a(localArrayList));
-      QLog.i("Q.lebatab.mgr", 2, localStringBuffer.toString());
+      throw paramAppRuntime;
     }
-    LebaUtil.a(localArrayList);
-    return localArrayList;
   }
   
   public void a()
@@ -128,44 +138,55 @@ public class LebaShowListManager
   
   public void a(List<BusinessInfoCheckUpdate.AppSetting> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return;
+    if (paramList != null) {
+      if (paramList.size() == 0) {
+        return;
+      }
     }
     for (;;)
     {
       synchronized (this.jdField_a_of_type_JavaUtilList)
       {
-        Iterator localIterator1 = this.jdField_a_of_type_JavaUtilList.iterator();
-        continue;
-        if (!localIterator1.hasNext()) {
-          break;
-        }
-        LebaViewItem localLebaViewItem = (LebaViewItem)localIterator1.next();
-        if ((localLebaViewItem == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo == null)) {
-          continue;
-        }
-        long l = localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId;
-        if (l == 0L) {
-          continue;
-        }
-        Iterator localIterator2 = paramList.iterator();
-        if (!localIterator2.hasNext()) {
-          continue;
-        }
-        BusinessInfoCheckUpdate.AppSetting localAppSetting = (BusinessInfoCheckUpdate.AppSetting)localIterator2.next();
-        if ((localAppSetting == null) || (localAppSetting.appid.get() != l)) {
-          continue;
-        }
-        if (localAppSetting.setting.get())
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
+        if (localIterator.hasNext())
         {
+          LebaViewItem localLebaViewItem = (LebaViewItem)localIterator.next();
+          if ((localLebaViewItem == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo == null)) {
+            continue;
+          }
+          long l = localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId;
+          if (l == 0L) {
+            continue;
+          }
+          Object localObject = paramList.iterator();
+          if (!((Iterator)localObject).hasNext()) {
+            continue;
+          }
+          BusinessInfoCheckUpdate.AppSetting localAppSetting = (BusinessInfoCheckUpdate.AppSetting)((Iterator)localObject).next();
+          if ((localAppSetting == null) || (localAppSetting.appid.get() != l)) {
+            continue;
+          }
+          if (!localAppSetting.setting.get()) {
+            break label258;
+          }
           b = 0;
           localLebaViewItem.jdField_a_of_type_Byte = b;
-          if (QLog.isDevelopLevel()) {
-            QLog.i("Q.lebatab.mgr", 4, "updateAllLebaListFlag, name = " + localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResName + " cCurFlag:" + localLebaViewItem.jdField_a_of_type_Byte);
+          if (QLog.isDevelopLevel())
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("updateAllLebaListFlag, name = ");
+            ((StringBuilder)localObject).append(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResName);
+            ((StringBuilder)localObject).append(" cCurFlag:");
+            ((StringBuilder)localObject).append(localLebaViewItem.jdField_a_of_type_Byte);
+            QLog.i("Q.lebatab.mgr", 4, ((StringBuilder)localObject).toString());
           }
           localLebaViewItem.b = localAppSetting.modify_ts.get();
+          continue;
         }
+        return;
       }
+      return;
+      label258:
       byte b = 1;
     }
   }
@@ -173,24 +194,22 @@ public class LebaShowListManager
   public void a(AppRuntime paramAppRuntime)
   {
     Object localObject = a();
-    if (localObject == null) {}
-    for (;;)
-    {
+    if (localObject == null) {
       return;
-      localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
-      {
-        LebaViewItem localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
-        if (localLebaViewItem != null) {
-          if (localLebaViewItem.jdField_a_of_type_Byte == 0)
-          {
-            if (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo != null) {
-              ReportController.b(paramAppRuntime, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "1", String.valueOf(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId), "", "");
-            }
+    }
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      LebaViewItem localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
+      if (localLebaViewItem != null) {
+        if (localLebaViewItem.jdField_a_of_type_Byte == 0)
+        {
+          if (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo != null) {
+            ReportController.b(paramAppRuntime, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "1", String.valueOf(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId), "", "");
           }
-          else if ((localLebaViewItem.jdField_a_of_type_Byte == 1) && (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo != null)) {
-            ReportController.b(paramAppRuntime, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "0", String.valueOf(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId), "", "");
-          }
+        }
+        else if ((localLebaViewItem.jdField_a_of_type_Byte == 1) && (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo != null)) {
+          ReportController.b(paramAppRuntime, "CliStatus", "", "", "trends_tab", "Clk_plug_in_s", 0, 0, "0", String.valueOf(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId), "", "");
         }
       }
     }
@@ -203,123 +222,127 @@ public class LebaShowListManager
   
   public void a(AppRuntime paramAppRuntime, long paramLong1, boolean paramBoolean1, long paramLong2, long paramLong3, boolean paramBoolean2)
   {
-    int i = 1;
-    int k = 1;
-    for (;;)
+    int i;
+    label291:
+    label297:
+    label304:
+    synchronized (this.jdField_a_of_type_JavaUtilList)
     {
-      int j;
-      synchronized (this.jdField_a_of_type_JavaUtilList)
+      Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+      LebaViewItem localLebaViewItem;
+      do
       {
-        Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-        j = i;
-        if (!localIterator.hasNext()) {
-          break label280;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
         }
-        LebaViewItem localLebaViewItem = (LebaViewItem)localIterator.next();
-        if ((localLebaViewItem == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId != paramLong1)) {
-          continue;
-        }
-        if (paramBoolean1)
+        localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
+      } while ((localLebaViewItem == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId != paramLong1));
+      if (paramBoolean1)
+      {
+        i = 0;
+        localLebaViewItem.jdField_a_of_type_Byte = ((byte)i);
+        if (paramLong3 == -9223372036854775808L)
         {
-          i = 0;
-          localLebaViewItem.jdField_a_of_type_Byte = ((byte)i);
-          if (paramLong3 == -9223372036854775808L)
-          {
-            localLebaViewItem.b = paramLong2;
-            i = k;
-            j = i;
-            if (!QLog.isDevelopLevel()) {
-              break label280;
-            }
-            QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, name = " + localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResName + " status:" + paramBoolean1);
-            if ((paramAppRuntime != null) && (i == 1)) {
-              ThreadManager.post(new LebaShowListManager.1(this, paramAppRuntime, paramLong1, paramBoolean1, paramLong3, paramLong2, paramBoolean2), 5, null, true);
-            }
-            if (QLog.isDevelopLevel()) {
-              QLog.i("Q.lebatab.mgr", 4, "updateAppSetting, ret = " + i);
-            }
-          }
+          localLebaViewItem.b = paramLong2;
+          break label291;
         }
-        else
-        {
-          i = 1;
-          continue;
+        if (paramLong2 != localLebaViewItem.b) {
+          break label297;
         }
-        if (paramLong2 == localLebaViewItem.b)
+        localLebaViewItem.b = paramLong3;
+        break label291;
+        if (!QLog.isDevelopLevel()) {
+          break label304;
+        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateAppSetting, name = ");
+        ((StringBuilder)localObject).append(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strResName);
+        ((StringBuilder)localObject).append(" status:");
+        ((StringBuilder)localObject).append(paramBoolean1);
+        QLog.i("Q.lebatab.mgr", 4, ((StringBuilder)localObject).toString());
+        break label304;
+        if ((paramAppRuntime != null) && (i == 1)) {
+          ThreadManager.post(new LebaShowListManager.1(this, paramAppRuntime, paramLong1, paramBoolean1, paramLong3, paramLong2, paramBoolean2), 5, null, true);
+        }
+        if (QLog.isDevelopLevel())
         {
-          localLebaViewItem.b = paramLong3;
-          i = k;
+          paramAppRuntime = new StringBuilder();
+          paramAppRuntime.append("updateAppSetting, ret = ");
+          paramAppRuntime.append(i);
+          QLog.i("Q.lebatab.mgr", 4, paramAppRuntime.toString());
         }
       }
-      i = -2147483648;
-      continue;
-      label280:
-      i = j;
     }
   }
   
   public void a(AppRuntime paramAppRuntime, List<LebaViewItem> paramList, List<BusinessInfoCheckUpdate.AppSetting> paramList1)
   {
-    int i;
     if (QLog.isDevelopLevel())
     {
-      ??? = new StringBuilder().append("setAllLebaList, ");
-      if (paramList != null) {
-        break label93;
-      }
-      i = 0;
-    }
-    for (;;)
-    {
-      QLog.i("Q.lebatab.mgr", 4, i);
-      synchronized (this.jdField_a_of_type_JavaUtilList)
-      {
-        this.jdField_a_of_type_JavaUtilList.clear();
-        if (paramList != null) {
-          this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-        }
-        a(paramList1);
-        LebaSettingHandlerApi.a(paramAppRuntime, 1, true, null);
-        return;
-        label93:
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("setAllLebaList, ");
+      int i;
+      if (paramList == null) {
+        i = 0;
+      } else {
         i = paramList.size();
       }
+      ((StringBuilder)???).append(i);
+      QLog.i("Q.lebatab.mgr", 4, ((StringBuilder)???).toString());
+    }
+    synchronized (this.jdField_a_of_type_JavaUtilList)
+    {
+      this.jdField_a_of_type_JavaUtilList.clear();
+      if (paramList != null) {
+        this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      }
+      a(paramList1);
+      LebaSettingHandlerApi.a(paramAppRuntime, 1, true, null);
+      return;
     }
   }
   
   public void a(boolean paramBoolean, LebaViewItem paramLebaViewItem, List<LebaViewItem> paramList)
   {
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       if ((paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.showInSimpleMode != 0) || (paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == 0L)) {
         paramList.add(paramLebaViewItem);
       }
     }
-    while ((paramLebaViewItem.jdField_a_of_type_Byte != 0) && (paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId != 0L)) {
-      return;
+    else if ((paramLebaViewItem.jdField_a_of_type_Byte == 0) || (paramLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == 0L)) {
+      paramList.add(paramLebaViewItem);
     }
-    paramList.add(paramLebaViewItem);
   }
   
   public boolean a()
   {
-    return QQTheme.e();
+    return QQTheme.f();
   }
   
   public boolean a(long paramLong)
   {
     Object localObject = a();
+    boolean bool2 = false;
+    boolean bool1 = bool2;
     if (localObject != null)
     {
       localObject = ((List)localObject).iterator();
-      while (((Iterator)localObject).hasNext())
+      LebaViewItem localLebaViewItem;
+      do
       {
-        LebaViewItem localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
-        if ((localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo != null) && (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId == paramLong)) {
-          return localLebaViewItem.jdField_a_of_type_Byte == 0;
+        bool1 = bool2;
+        if (!((Iterator)localObject).hasNext()) {
+          break;
         }
+        localLebaViewItem = (LebaViewItem)((Iterator)localObject).next();
+      } while ((localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo == null) || (localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.uiResId != paramLong));
+      bool1 = bool2;
+      if (localLebaViewItem.jdField_a_of_type_Byte == 0) {
+        bool1 = true;
       }
     }
-    return false;
+    return bool1;
   }
   
   public List<LebaViewItem> b()
@@ -335,8 +358,12 @@ public class LebaShowListManager
           localArrayList.add(localLebaViewItem);
         }
       }
+      return localArrayList;
     }
-    return localList1;
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public List<LebaViewItem> b(AppRuntime paramAppRuntime)
@@ -347,24 +374,18 @@ public class LebaShowListManager
     ArrayList localArrayList = new ArrayList();
     List localList = null;
     Object localObject1 = (ILebaHelperService)paramAppRuntime.getRuntimeService(ILebaHelperService.class, "multi");
-    Object localObject2;
-    if (localObject1 != null)
-    {
+    if (localObject1 != null) {
       localList = ((ILebaHelperService)localObject1).getLebaConfigList();
-      if (localList != null)
-      {
-        localObject2 = new ArrayList(localList);
-        localObject1 = new ArrayList();
-        localObject2 = ((List)localObject2).iterator();
-      }
+    } else {
+      QLog.d("LebaShowListManager", 1, "reloadLebaItems lebaHelperService == null");
     }
-    else
+    if (localList != null)
     {
-      for (;;)
+      Object localObject2 = new ArrayList(localList);
+      localObject1 = new ArrayList();
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
       {
-        if (!((Iterator)localObject2).hasNext()) {
-          break label244;
-        }
         LebaPluginInfo localLebaPluginInfo = (LebaPluginInfo)((Iterator)localObject2).next();
         if (localLebaPluginInfo != null)
         {
@@ -373,30 +394,33 @@ public class LebaShowListManager
           {
             localLebaViewItem.jdField_a_of_type_Long = localLebaPluginInfo.uiResId;
             localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo = localLebaPluginInfo;
-            if (!LebaUtil.a(localLebaViewItem)) {
-              break label231;
+            if (LebaUtil.a(localLebaViewItem))
+            {
+              this.jdField_a_of_type_JavaUtilHashMap.put(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strPkgName, localLebaViewItem);
+              continue;
             }
-            this.jdField_a_of_type_JavaUtilHashMap.put(localLebaViewItem.jdField_a_of_type_ComTencentMobileqqLebaEntityLebaPluginInfo.strPkgName, localLebaViewItem);
+            ((List)localObject1).add(localLebaViewItem);
           }
           catch (Exception localException) {}
-          if ((QLog.isColorLevel()) && (localException != null))
-          {
+          if (QLog.isColorLevel()) {
             QLog.d("Q.lebatab.mgr", 2, localException.toString());
-            continue;
-            QLog.d("LebaShowListManager", 1, "reloadLebaItems lebaHelperService == null");
-            break;
-            label231:
-            ((List)localObject1).add(localLebaViewItem);
           }
         }
       }
-      label244:
       Collections.sort((List)localObject1, new LebaUtil.LebaItemComparator());
       a(paramAppRuntime, (List)localObject1, ((IRedTouchManager)paramAppRuntime.getRuntimeService(IRedTouchManager.class, "")).requestSettingInfoList());
       paramAppRuntime = a(paramAppRuntime);
       LebaUtil.a(localArrayList, paramAppRuntime);
-      if (QLog.isColorLevel()) {
-        QLog.i("Q.lebatab.mgr", 2, "reloadLebaItems, info.size=" + localList.size() + ", alldatasize=" + this.jdField_a_of_type_JavaUtilList.size() + ", pluginShowList=" + paramAppRuntime.size());
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("reloadLebaItems, info.size=");
+        ((StringBuilder)localObject1).append(localList.size());
+        ((StringBuilder)localObject1).append(", alldatasize=");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilList.size());
+        ((StringBuilder)localObject1).append(", pluginShowList=");
+        ((StringBuilder)localObject1).append(paramAppRuntime.size());
+        QLog.i("Q.lebatab.mgr", 2, ((StringBuilder)localObject1).toString());
       }
     }
     return localArrayList;
@@ -409,7 +433,7 @@ public class LebaShowListManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.core.LebaShowListManager
  * JD-Core Version:    0.7.0.1
  */

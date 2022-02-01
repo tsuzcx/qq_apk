@@ -4,13 +4,8 @@ import android.graphics.Bitmap;
 import android.graphics.Bitmap.Config;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import android.util.Log;
 import com.tencent.component.media.ILog;
 import com.tencent.component.media.ImageManagerEnv;
-import com.tencent.component.media.image.ImageKey;
-import com.tencent.component.media.image.ImageLoader;
-import com.tencent.component.media.utils.ImageManagerLog;
-import java.io.File;
 import java.net.URLDecoder;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,147 +16,350 @@ public class SharpPUtils
   public static final byte[] SHARPP_PRECODE = { 83, 72, 65, 82, 80, 80 };
   public static final String TAG = "SharpPUtils";
   
-  public static void checkNotSharppCacheFileIfNessary(File paramFile, String paramString)
+  /* Error */
+  public static void checkNotSharppCacheFileIfNessary(java.io.File paramFile, String paramString)
   {
-    if ((paramFile == null) || (TextUtils.isEmpty(paramString))) {}
-    while ((!isSharpP(paramFile)) || (isSharpP(paramString))) {
-      return;
-    }
-    ImageKey localImageKey = ImageKey.obtain();
-    try
-    {
-      localImageKey.filePath = paramFile.getAbsolutePath();
-      localImageKey.url = paramString;
-      if ((paramFile.exists()) && (isSharpP(paramFile)))
-      {
-        ImageLoader.getInstance().removeImageFile(localImageKey.url);
-        ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "The url is not sharpp but the file is sharpp. delete the sharpp file and download the new file. filename:" + paramFile.getName() });
-        if (paramFile.exists()) {
-          ImageManagerLog.w("SharpPUtils", "delete sharpp file cache failed. filename:" + paramFile.getName());
-        }
-      }
-      return;
-    }
-    catch (Throwable paramFile)
-    {
-      ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "catch an exception:" + Log.getStackTraceString(paramFile) });
-      return;
-    }
-    finally
-    {
-      localImageKey.recycle();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnull +220 -> 221
+    //   4: aload_1
+    //   5: invokestatic 36	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8: ifeq +4 -> 12
+    //   11: return
+    //   12: aload_0
+    //   13: invokestatic 40	com/tencent/sharpP/SharpPUtils:isSharpP	(Ljava/io/File;)Z
+    //   16: ifeq +205 -> 221
+    //   19: aload_1
+    //   20: invokestatic 43	com/tencent/sharpP/SharpPUtils:isSharpP	(Ljava/lang/String;)Z
+    //   23: ifeq +4 -> 27
+    //   26: return
+    //   27: invokestatic 49	com/tencent/component/media/image/ImageKey:obtain	()Lcom/tencent/component/media/image/ImageKey;
+    //   30: astore_2
+    //   31: aload_2
+    //   32: aload_0
+    //   33: invokevirtual 55	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   36: putfield 58	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   39: aload_2
+    //   40: aload_1
+    //   41: putfield 61	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   44: aload_0
+    //   45: invokevirtual 65	java/io/File:exists	()Z
+    //   48: ifeq +107 -> 155
+    //   51: aload_0
+    //   52: invokestatic 40	com/tencent/sharpP/SharpPUtils:isSharpP	(Ljava/io/File;)Z
+    //   55: ifeq +100 -> 155
+    //   58: invokestatic 71	com/tencent/component/media/image/ImageLoader:getInstance	()Lcom/tencent/component/media/image/ImageLoader;
+    //   61: aload_2
+    //   62: getfield 61	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   65: invokevirtual 75	com/tencent/component/media/image/ImageLoader:removeImageFile	(Ljava/lang/String;)V
+    //   68: invokestatic 81	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   71: astore_1
+    //   72: new 83	java/lang/StringBuilder
+    //   75: dup
+    //   76: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   79: astore_3
+    //   80: aload_3
+    //   81: ldc 86
+    //   83: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   86: pop
+    //   87: aload_3
+    //   88: aload_0
+    //   89: invokevirtual 93	java/io/File:getName	()Ljava/lang/String;
+    //   92: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   95: pop
+    //   96: aload_1
+    //   97: ldc 13
+    //   99: iconst_1
+    //   100: anewarray 4	java/lang/Object
+    //   103: dup
+    //   104: iconst_0
+    //   105: aload_3
+    //   106: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   109: aastore
+    //   110: invokeinterface 102 3 0
+    //   115: aload_0
+    //   116: invokevirtual 65	java/io/File:exists	()Z
+    //   119: ifeq +36 -> 155
+    //   122: new 83	java/lang/StringBuilder
+    //   125: dup
+    //   126: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   129: astore_1
+    //   130: aload_1
+    //   131: ldc 104
+    //   133: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   136: pop
+    //   137: aload_1
+    //   138: aload_0
+    //   139: invokevirtual 93	java/io/File:getName	()Ljava/lang/String;
+    //   142: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   145: pop
+    //   146: ldc 13
+    //   148: aload_1
+    //   149: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   152: invokestatic 110	com/tencent/component/media/utils/ImageManagerLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   155: aload_2
+    //   156: invokevirtual 113	com/tencent/component/media/image/ImageKey:recycle	()V
+    //   159: return
+    //   160: astore_0
+    //   161: goto +54 -> 215
+    //   164: astore_0
+    //   165: invokestatic 81	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   168: astore_1
+    //   169: new 83	java/lang/StringBuilder
+    //   172: dup
+    //   173: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   176: astore_3
+    //   177: aload_3
+    //   178: ldc 115
+    //   180: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   183: pop
+    //   184: aload_3
+    //   185: aload_0
+    //   186: invokestatic 121	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   189: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   192: pop
+    //   193: aload_1
+    //   194: ldc 13
+    //   196: iconst_1
+    //   197: anewarray 4	java/lang/Object
+    //   200: dup
+    //   201: iconst_0
+    //   202: aload_3
+    //   203: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   206: aastore
+    //   207: invokeinterface 102 3 0
+    //   212: goto -57 -> 155
+    //   215: aload_2
+    //   216: invokevirtual 113	com/tencent/component/media/image/ImageKey:recycle	()V
+    //   219: aload_0
+    //   220: athrow
+    //   221: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	222	0	paramFile	java.io.File
+    //   0	222	1	paramString	String
+    //   30	186	2	localImageKey	com.tencent.component.media.image.ImageKey
+    //   79	124	3	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   31	155	160	finally
+    //   165	212	160	finally
+    //   31	155	164	java/lang/Throwable
   }
   
   public static Bitmap decodeSharpP(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "------decodeSharpP:path is null" });
-    }
-    do
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      return null;
       paramString = new SharpPDecoderHelper(paramString);
-    } while (paramString.parseHeader() != 0);
-    SharpPDecoderWrapper.SharpPFeatureWrapper localSharpPFeatureWrapper = paramString.getFeatureInfo();
-    return paramString.decodeSharpP(localSharpPFeatureWrapper.getWidth(), localSharpPFeatureWrapper.getHeight(), Bitmap.Config.ARGB_8888);
+      if (paramString.parseHeader() == 0)
+      {
+        SharpPDecoderWrapper.SharpPFeatureWrapper localSharpPFeatureWrapper = paramString.getFeatureInfo();
+        return paramString.decodeSharpP(localSharpPFeatureWrapper.getWidth(), localSharpPFeatureWrapper.getHeight(), Bitmap.Config.ARGB_8888);
+      }
+      return null;
+    }
+    ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "------decodeSharpP:path is null" });
+    return null;
   }
   
   public static Bitmap decodeSharppPro(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0)) {
-      ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "------decodeSharppPro:path is null" });
-    }
-    do
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      return null;
       paramString = new SharpPDecoderHelper(paramString);
-    } while (paramString.parseHeader() != 0);
-    SharpPDecoderWrapper.SharpPFeatureWrapper localSharpPFeatureWrapper = paramString.getFeatureInfo();
-    if (isJpg(paramString.getMimeType())) {
-      return paramString.decodeSharpP2JPG(localSharpPFeatureWrapper.getWidth(), localSharpPFeatureWrapper.getHeight(), Bitmap.Config.RGB_565);
+      if (paramString.parseHeader() == 0)
+      {
+        SharpPDecoderWrapper.SharpPFeatureWrapper localSharpPFeatureWrapper = paramString.getFeatureInfo();
+        if (isJpg(paramString.getMimeType())) {
+          return paramString.decodeSharpP2JPG(localSharpPFeatureWrapper.getWidth(), localSharpPFeatureWrapper.getHeight(), Bitmap.Config.RGB_565);
+        }
+        return paramString.decodeSharpP2PNG(localSharpPFeatureWrapper.getWidth(), localSharpPFeatureWrapper.getHeight(), Bitmap.Config.ARGB_8888);
+      }
+      return null;
     }
-    return paramString.decodeSharpP2PNG(localSharpPFeatureWrapper.getWidth(), localSharpPFeatureWrapper.getHeight(), Bitmap.Config.ARGB_8888);
+    ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "------decodeSharppPro:path is null" });
+    return null;
   }
   
-  public static void deleteSharppCacheFileIfNessary(File paramFile, String paramString)
+  /* Error */
+  public static void deleteSharppCacheFileIfNessary(java.io.File paramFile, String paramString)
   {
-    if ((paramFile == null) || (TextUtils.isEmpty(paramString))) {
-      return;
-    }
-    ImageKey localImageKey = ImageKey.obtain();
-    try
-    {
-      localImageKey.filePath = paramFile.getAbsolutePath();
-      localImageKey.url = paramString;
-      if ((paramFile.exists()) && (!ImageManagerEnv.g().isSupportSharpp()) && (isSharpP(paramFile)))
-      {
-        ImageManagerEnv.g().reportImageDecodingRes("image/sharpp", paramString, paramFile.length(), false, 0L, 5);
-        ImageLoader.getInstance().removeImageFile(localImageKey.url);
-        ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "sharpp is not supported,delete sharpp file cache. filename:" + paramFile.getName() });
-        if (paramFile.exists()) {
-          ImageManagerLog.w("SharpPUtils", "delete sharpp file cache failed. filename:" + paramFile.getName());
-        }
-      }
-      return;
-    }
-    catch (Throwable paramFile)
-    {
-      ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "catch an exception:" + Log.getStackTraceString(paramFile) });
-      return;
-    }
-    finally
-    {
-      localImageKey.recycle();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: ifnull +230 -> 231
+    //   4: aload_1
+    //   5: invokestatic 36	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   8: ifeq +4 -> 12
+    //   11: return
+    //   12: invokestatic 49	com/tencent/component/media/image/ImageKey:obtain	()Lcom/tencent/component/media/image/ImageKey;
+    //   15: astore_2
+    //   16: aload_2
+    //   17: aload_0
+    //   18: invokevirtual 55	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   21: putfield 58	com/tencent/component/media/image/ImageKey:filePath	Ljava/lang/String;
+    //   24: aload_2
+    //   25: aload_1
+    //   26: putfield 61	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   29: aload_0
+    //   30: invokevirtual 65	java/io/File:exists	()Z
+    //   33: ifeq +132 -> 165
+    //   36: invokestatic 182	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   39: invokevirtual 185	com/tencent/component/media/ImageManagerEnv:isSupportSharpp	()Z
+    //   42: ifne +123 -> 165
+    //   45: aload_0
+    //   46: invokestatic 40	com/tencent/sharpP/SharpPUtils:isSharpP	(Ljava/io/File;)Z
+    //   49: ifeq +116 -> 165
+    //   52: invokestatic 182	com/tencent/component/media/ImageManagerEnv:g	()Lcom/tencent/component/media/ImageManagerEnv;
+    //   55: ldc 187
+    //   57: aload_1
+    //   58: aload_0
+    //   59: invokevirtual 190	java/io/File:length	()J
+    //   62: iconst_0
+    //   63: lconst_0
+    //   64: iconst_5
+    //   65: invokevirtual 194	com/tencent/component/media/ImageManagerEnv:reportImageDecodingRes	(Ljava/lang/String;Ljava/lang/String;JZJI)V
+    //   68: invokestatic 71	com/tencent/component/media/image/ImageLoader:getInstance	()Lcom/tencent/component/media/image/ImageLoader;
+    //   71: aload_2
+    //   72: getfield 61	com/tencent/component/media/image/ImageKey:url	Ljava/lang/String;
+    //   75: invokevirtual 75	com/tencent/component/media/image/ImageLoader:removeImageFile	(Ljava/lang/String;)V
+    //   78: invokestatic 81	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   81: astore_1
+    //   82: new 83	java/lang/StringBuilder
+    //   85: dup
+    //   86: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   89: astore_3
+    //   90: aload_3
+    //   91: ldc 196
+    //   93: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   96: pop
+    //   97: aload_3
+    //   98: aload_0
+    //   99: invokevirtual 93	java/io/File:getName	()Ljava/lang/String;
+    //   102: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   105: pop
+    //   106: aload_1
+    //   107: ldc 13
+    //   109: iconst_1
+    //   110: anewarray 4	java/lang/Object
+    //   113: dup
+    //   114: iconst_0
+    //   115: aload_3
+    //   116: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   119: aastore
+    //   120: invokeinterface 102 3 0
+    //   125: aload_0
+    //   126: invokevirtual 65	java/io/File:exists	()Z
+    //   129: ifeq +36 -> 165
+    //   132: new 83	java/lang/StringBuilder
+    //   135: dup
+    //   136: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   139: astore_1
+    //   140: aload_1
+    //   141: ldc 104
+    //   143: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   146: pop
+    //   147: aload_1
+    //   148: aload_0
+    //   149: invokevirtual 93	java/io/File:getName	()Ljava/lang/String;
+    //   152: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: pop
+    //   156: ldc 13
+    //   158: aload_1
+    //   159: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   162: invokestatic 110	com/tencent/component/media/utils/ImageManagerLog:w	(Ljava/lang/String;Ljava/lang/String;)V
+    //   165: aload_2
+    //   166: invokevirtual 113	com/tencent/component/media/image/ImageKey:recycle	()V
+    //   169: return
+    //   170: astore_0
+    //   171: goto +54 -> 225
+    //   174: astore_0
+    //   175: invokestatic 81	com/tencent/component/media/ImageManagerEnv:getLogger	()Lcom/tencent/component/media/ILog;
+    //   178: astore_1
+    //   179: new 83	java/lang/StringBuilder
+    //   182: dup
+    //   183: invokespecial 84	java/lang/StringBuilder:<init>	()V
+    //   186: astore_3
+    //   187: aload_3
+    //   188: ldc 115
+    //   190: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   193: pop
+    //   194: aload_3
+    //   195: aload_0
+    //   196: invokestatic 121	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   199: invokevirtual 90	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   202: pop
+    //   203: aload_1
+    //   204: ldc 13
+    //   206: iconst_1
+    //   207: anewarray 4	java/lang/Object
+    //   210: dup
+    //   211: iconst_0
+    //   212: aload_3
+    //   213: invokevirtual 96	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   216: aastore
+    //   217: invokeinterface 102 3 0
+    //   222: goto -57 -> 165
+    //   225: aload_2
+    //   226: invokevirtual 113	com/tencent/component/media/image/ImageKey:recycle	()V
+    //   229: aload_0
+    //   230: athrow
+    //   231: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	232	0	paramFile	java.io.File
+    //   0	232	1	paramString	String
+    //   15	211	2	localImageKey	com.tencent.component.media.image.ImageKey
+    //   89	124	3	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   16	165	170	finally
+    //   175	222	170	finally
+    //   16	165	174	java/lang/Throwable
   }
   
   public static Map<String, String> getArguments(String paramString)
   {
-    int i = 0;
-    HashMap localHashMap = new HashMap();
-    for (;;)
+    localHashMap = new HashMap();
+    try
     {
-      try
+      paramString = paramString.split("&");
+      int j = paramString.length;
+      int i = 0;
+      while (i < j)
       {
-        paramString = paramString.split("&");
-        int j = paramString.length;
-        if (i < j)
-        {
-          String[] arrayOfString = paramString[i].split("=");
-          if ((arrayOfString == null) || (arrayOfString.length != 2)) {
-            break label76;
-          }
+        String[] arrayOfString = paramString[i].split("=");
+        if ((arrayOfString != null) && (arrayOfString.length == 2)) {
           localHashMap.put(arrayOfString[0], URLDecoder.decode(arrayOfString[1]));
         }
-      }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
+        i += 1;
       }
       return localHashMap;
-      label76:
-      i += 1;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
   public static Map<String, String> getArgumentsFromURL(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
     if (paramString != null)
     {
       int i = paramString.indexOf("?");
-      localObject1 = localObject2;
-      if (-1 != i) {
-        localObject1 = getArguments(paramString.substring(i + 1));
+      if (-1 != i)
+      {
+        paramString = getArguments(paramString.substring(i + 1));
+        break label32;
       }
     }
-    paramString = (String)localObject1;
-    if (localObject1 == null) {
-      paramString = new HashMap();
+    paramString = null;
+    label32:
+    Object localObject = paramString;
+    if (paramString == null) {
+      localObject = new HashMap();
     }
-    return paramString;
+    return localObject;
   }
   
   public static String getWebpUrl(String paramString)
@@ -170,193 +368,172 @@ public class SharpPUtils
     if (isSharpP(paramString))
     {
       if (Build.VERSION.SDK_INT >= 14) {
-        str = paramString.replace("t=6", "t=5");
+        return paramString.replace("t=6", "t=5");
       }
+      str = paramString.replace("t=6", "");
     }
-    else {
-      return str;
-    }
-    return paramString.replace("t=6", "");
+    return str;
   }
   
   public static boolean isJpg(String paramString)
   {
-    boolean bool = false;
     if (!TextUtils.isEmpty(paramString)) {
-      bool = "image/jpg".equals(paramString);
+      return "image/jpg".equals(paramString);
     }
-    return bool;
+    return false;
   }
   
   /* Error */
-  public static boolean isSharpP(File paramFile)
+  public static boolean isSharpP(java.io.File paramFile)
   {
     // Byte code:
     //   0: iconst_0
-    //   1: istore_3
+    //   1: istore_2
     //   2: iconst_0
     //   3: istore_1
-    //   4: iload_3
-    //   5: istore_2
-    //   6: aload_0
-    //   7: ifnull +75 -> 82
-    //   10: new 268	java/io/BufferedInputStream
-    //   13: dup
-    //   14: new 270	java/io/FileInputStream
-    //   17: dup
-    //   18: aload_0
-    //   19: invokespecial 273	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   22: bipush 10
-    //   24: invokespecial 276	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
-    //   27: astore 4
-    //   29: aload 4
-    //   31: astore_0
-    //   32: bipush 6
-    //   34: newarray byte
-    //   36: astore 5
-    //   38: aload 4
-    //   40: astore_0
-    //   41: aload 4
-    //   43: aload 5
-    //   45: iconst_0
-    //   46: aload 5
-    //   48: arraylength
-    //   49: invokevirtual 280	java/io/BufferedInputStream:read	([BII)I
-    //   52: iconst_m1
-    //   53: if_icmpeq +15 -> 68
-    //   56: aload 4
-    //   58: astore_0
-    //   59: aload 5
-    //   61: getstatic 22	com/tencent/sharpP/SharpPUtils:SHARPP_PRECODE	[B
-    //   64: invokestatic 285	java/util/Arrays:equals	([B[B)Z
-    //   67: istore_1
-    //   68: iload_1
-    //   69: istore_2
-    //   70: aload 4
-    //   72: ifnull +10 -> 82
-    //   75: aload 4
-    //   77: invokevirtual 288	java/io/BufferedInputStream:close	()V
-    //   80: iload_1
-    //   81: istore_2
-    //   82: iload_2
-    //   83: ireturn
-    //   84: astore_0
-    //   85: aload_0
-    //   86: invokevirtual 289	java/io/IOException:printStackTrace	()V
-    //   89: iload_1
-    //   90: ireturn
-    //   91: astore 5
-    //   93: aconst_null
-    //   94: astore 4
-    //   96: aload 4
-    //   98: astore_0
-    //   99: aload 5
-    //   101: invokevirtual 290	java/io/FileNotFoundException:printStackTrace	()V
-    //   104: iload_3
-    //   105: istore_2
-    //   106: aload 4
-    //   108: ifnull -26 -> 82
-    //   111: aload 4
-    //   113: invokevirtual 288	java/io/BufferedInputStream:close	()V
-    //   116: iconst_0
-    //   117: ireturn
-    //   118: astore_0
-    //   119: aload_0
-    //   120: invokevirtual 289	java/io/IOException:printStackTrace	()V
-    //   123: iconst_0
-    //   124: ireturn
-    //   125: astore 5
-    //   127: aconst_null
-    //   128: astore 4
-    //   130: aload 4
-    //   132: astore_0
-    //   133: aload 5
-    //   135: invokevirtual 289	java/io/IOException:printStackTrace	()V
-    //   138: iload_3
-    //   139: istore_2
-    //   140: aload 4
-    //   142: ifnull -60 -> 82
-    //   145: aload 4
+    //   4: aload_0
+    //   5: ifnull +155 -> 160
+    //   8: aconst_null
+    //   9: astore 5
+    //   11: aconst_null
+    //   12: astore 6
+    //   14: aconst_null
+    //   15: astore_3
+    //   16: new 268	java/io/BufferedInputStream
+    //   19: dup
+    //   20: new 270	java/io/FileInputStream
+    //   23: dup
+    //   24: aload_0
+    //   25: invokespecial 273	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   28: bipush 10
+    //   30: invokespecial 276	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;I)V
+    //   33: astore_0
+    //   34: bipush 6
+    //   36: newarray byte
+    //   38: astore_3
+    //   39: aload_0
+    //   40: aload_3
+    //   41: iconst_0
+    //   42: aload_3
+    //   43: arraylength
+    //   44: invokevirtual 280	java/io/BufferedInputStream:read	([BII)I
+    //   47: iconst_m1
+    //   48: if_icmpeq +11 -> 59
+    //   51: aload_3
+    //   52: getstatic 22	com/tencent/sharpP/SharpPUtils:SHARPP_PRECODE	[B
+    //   55: invokestatic 285	java/util/Arrays:equals	([B[B)Z
+    //   58: istore_1
+    //   59: iload_1
+    //   60: istore_2
+    //   61: aload_0
+    //   62: invokevirtual 288	java/io/BufferedInputStream:close	()V
+    //   65: iload_1
+    //   66: ireturn
+    //   67: astore_0
+    //   68: aload_0
+    //   69: invokevirtual 289	java/io/IOException:printStackTrace	()V
+    //   72: iload_2
+    //   73: ireturn
+    //   74: astore 4
+    //   76: aload_0
+    //   77: astore_3
+    //   78: aload 4
+    //   80: astore_0
+    //   81: goto +61 -> 142
+    //   84: astore 4
+    //   86: goto +17 -> 103
+    //   89: astore 4
+    //   91: goto +34 -> 125
+    //   94: astore_0
+    //   95: goto +47 -> 142
+    //   98: astore 4
+    //   100: aload 5
+    //   102: astore_0
+    //   103: aload_0
+    //   104: astore_3
+    //   105: aload 4
+    //   107: invokevirtual 289	java/io/IOException:printStackTrace	()V
+    //   110: aload_0
+    //   111: ifnull +49 -> 160
+    //   114: aload_0
+    //   115: invokevirtual 288	java/io/BufferedInputStream:close	()V
+    //   118: iconst_0
+    //   119: ireturn
+    //   120: astore 4
+    //   122: aload 6
+    //   124: astore_0
+    //   125: aload_0
+    //   126: astore_3
+    //   127: aload 4
+    //   129: invokevirtual 290	java/io/FileNotFoundException:printStackTrace	()V
+    //   132: aload_0
+    //   133: ifnull +27 -> 160
+    //   136: aload_0
+    //   137: invokevirtual 288	java/io/BufferedInputStream:close	()V
+    //   140: iconst_0
+    //   141: ireturn
+    //   142: aload_3
+    //   143: ifnull +15 -> 158
+    //   146: aload_3
     //   147: invokevirtual 288	java/io/BufferedInputStream:close	()V
-    //   150: iconst_0
-    //   151: ireturn
-    //   152: astore_0
-    //   153: aload_0
-    //   154: invokevirtual 289	java/io/IOException:printStackTrace	()V
-    //   157: iconst_0
-    //   158: ireturn
-    //   159: astore 4
-    //   161: aconst_null
-    //   162: astore_0
-    //   163: aload_0
-    //   164: ifnull +7 -> 171
-    //   167: aload_0
-    //   168: invokevirtual 288	java/io/BufferedInputStream:close	()V
-    //   171: aload 4
-    //   173: athrow
-    //   174: astore_0
-    //   175: aload_0
-    //   176: invokevirtual 289	java/io/IOException:printStackTrace	()V
-    //   179: goto -8 -> 171
-    //   182: astore 4
-    //   184: goto -21 -> 163
-    //   187: astore 5
-    //   189: goto -59 -> 130
-    //   192: astore 5
-    //   194: goto -98 -> 96
+    //   150: goto +8 -> 158
+    //   153: astore_3
+    //   154: aload_3
+    //   155: invokevirtual 289	java/io/IOException:printStackTrace	()V
+    //   158: aload_0
+    //   159: athrow
+    //   160: iconst_0
+    //   161: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	197	0	paramFile	File
-    //   3	87	1	bool1	boolean
-    //   5	135	2	bool2	boolean
-    //   1	138	3	bool3	boolean
-    //   27	119	4	localBufferedInputStream	java.io.BufferedInputStream
-    //   159	13	4	localObject1	Object
-    //   182	1	4	localObject2	Object
-    //   36	24	5	arrayOfByte	byte[]
-    //   91	9	5	localFileNotFoundException1	java.io.FileNotFoundException
-    //   125	9	5	localIOException1	java.io.IOException
-    //   187	1	5	localIOException2	java.io.IOException
-    //   192	1	5	localFileNotFoundException2	java.io.FileNotFoundException
+    //   0	162	0	paramFile	java.io.File
+    //   3	63	1	bool1	boolean
+    //   1	72	2	bool2	boolean
+    //   15	132	3	localObject1	Object
+    //   153	2	3	localIOException1	java.io.IOException
+    //   74	5	4	localObject2	Object
+    //   84	1	4	localIOException2	java.io.IOException
+    //   89	1	4	localFileNotFoundException1	java.io.FileNotFoundException
+    //   98	8	4	localIOException3	java.io.IOException
+    //   120	8	4	localFileNotFoundException2	java.io.FileNotFoundException
+    //   9	92	5	localObject3	Object
+    //   12	111	6	localObject4	Object
     // Exception table:
     //   from	to	target	type
-    //   75	80	84	java/io/IOException
-    //   10	29	91	java/io/FileNotFoundException
-    //   111	116	118	java/io/IOException
-    //   10	29	125	java/io/IOException
-    //   145	150	152	java/io/IOException
-    //   10	29	159	finally
-    //   167	171	174	java/io/IOException
-    //   32	38	182	finally
-    //   41	56	182	finally
-    //   59	68	182	finally
-    //   99	104	182	finally
-    //   133	138	182	finally
-    //   32	38	187	java/io/IOException
-    //   41	56	187	java/io/IOException
-    //   59	68	187	java/io/IOException
-    //   32	38	192	java/io/FileNotFoundException
-    //   41	56	192	java/io/FileNotFoundException
-    //   59	68	192	java/io/FileNotFoundException
+    //   61	65	67	java/io/IOException
+    //   114	118	67	java/io/IOException
+    //   136	140	67	java/io/IOException
+    //   34	39	74	finally
+    //   39	59	74	finally
+    //   34	39	84	java/io/IOException
+    //   39	59	84	java/io/IOException
+    //   34	39	89	java/io/FileNotFoundException
+    //   39	59	89	java/io/FileNotFoundException
+    //   16	34	94	finally
+    //   105	110	94	finally
+    //   127	132	94	finally
+    //   16	34	98	java/io/IOException
+    //   16	34	120	java/io/FileNotFoundException
+    //   146	150	153	java/io/IOException
   }
   
   public static boolean isSharpP(String paramString)
   {
-    if ((paramString == null) || (paramString.length() == 0))
+    if ((paramString != null) && (paramString.length() != 0))
     {
-      ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "------isSharpP:url is null" });
-      return false;
+      String str = (String)getArgumentsFromURL(paramString).get("t");
+      if ((str != null) && (str.equals("6"))) {
+        return true;
+      }
+      return (str == null) && (paramString.lastIndexOf("&t=6#sce") > 0);
     }
-    String str = (String)getArgumentsFromURL(paramString).get("t");
-    if ((str != null) && (str.equals("6"))) {
-      return true;
-    }
-    return (str == null) && (paramString.lastIndexOf("&t=6#sce") > 0);
+    ImageManagerEnv.getLogger().e("SharpPUtils", new Object[] { "------isSharpP:url is null" });
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sharpP.SharpPUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -10,14 +10,7 @@ import tencent.im.oidb.cmd0x6d7.oidb_0x6d7.RspBody;
 public abstract class TroopFileDeleteFolderObserver
   extends ProtoUtils.TroopProtocolObserver
 {
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
-  {
-    b(paramInt, paramArrayOfByte, paramBundle);
-  }
-  
-  protected abstract void a(boolean paramBoolean, int paramInt);
-  
-  protected void b(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  protected void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
     if (paramInt != 0)
     {
@@ -29,29 +22,37 @@ public abstract class TroopFileDeleteFolderObserver
     {
       paramBundle.mergeFrom(paramArrayOfByte);
       paramArrayOfByte = (oidb_0x6d7.DeleteFolderRspBody)paramBundle.delete_folder_rsp.get();
-      if (!paramArrayOfByte.int32_ret_code.has()) {
-        break label84;
-      }
-      if (paramArrayOfByte.int32_ret_code.get() == 0)
+      if (paramArrayOfByte.int32_ret_code.has())
       {
-        a(true, 0);
+        if (paramArrayOfByte.int32_ret_code.get() == 0)
+        {
+          a(true, 0);
+          return;
+        }
+        a(false, paramArrayOfByte.int32_ret_code.get());
         return;
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
-    {
       a(false, -1);
       return;
     }
-    a(false, paramArrayOfByte.int32_ret_code.get());
-    return;
-    label84:
+    catch (InvalidProtocolBufferMicroException paramArrayOfByte)
+    {
+      label83:
+      break label83;
+    }
     a(false, -1);
+  }
+  
+  protected abstract void a(boolean paramBoolean, int paramInt);
+  
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  {
+    a(paramInt, paramArrayOfByte, paramBundle);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.file.protocol.TroopFileDeleteFolderObserver
  * JD-Core Version:    0.7.0.1
  */

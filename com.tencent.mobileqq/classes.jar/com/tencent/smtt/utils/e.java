@@ -23,101 +23,116 @@ public class e
   
   public e(File paramFile)
   {
-    c localc = new c(paramFile);
-    this.g = localc;
-    localc.a(this.b);
-    if (!a()) {
-      throw new UnknownFormatConversionException("Invalid elf magic: " + paramFile);
-    }
-    localc.a(e());
-    boolean bool = d();
-    int k;
-    label238:
-    Object localObject;
-    if (bool)
+    Object localObject1 = new c(paramFile);
+    this.g = ((c)localObject1);
+    ((c)localObject1).a(this.b);
+    if (a())
     {
-      paramFile = new e.f();
-      paramFile.a = localc.a();
-      paramFile.b = localc.a();
-      paramFile.c = localc.b();
-      paramFile.k = localc.c();
-      paramFile.l = localc.c();
-      paramFile.m = localc.c();
+      ((c)localObject1).a(e());
+      boolean bool = d();
+      if (bool)
+      {
+        paramFile = new e.f();
+        paramFile.a = ((c)localObject1).a();
+        paramFile.b = ((c)localObject1).a();
+        paramFile.c = ((c)localObject1).b();
+        paramFile.k = ((c)localObject1).c();
+        paramFile.l = ((c)localObject1).c();
+        paramFile.m = ((c)localObject1).c();
+      }
+      else
+      {
+        paramFile = new e.b();
+        paramFile.a = ((c)localObject1).a();
+        paramFile.b = ((c)localObject1).a();
+        paramFile.c = ((c)localObject1).b();
+        paramFile.k = ((c)localObject1).b();
+        paramFile.l = ((c)localObject1).b();
+        paramFile.m = ((c)localObject1).b();
+      }
       this.h = paramFile;
       paramFile = this.h;
-      paramFile.d = localc.b();
-      paramFile.e = localc.a();
-      paramFile.f = localc.a();
-      paramFile.g = localc.a();
-      paramFile.h = localc.a();
-      paramFile.i = localc.a();
-      paramFile.j = localc.a();
+      paramFile.d = ((c)localObject1).b();
+      paramFile.e = ((c)localObject1).a();
+      paramFile.f = ((c)localObject1).a();
+      paramFile.g = ((c)localObject1).a();
+      paramFile.h = ((c)localObject1).a();
+      paramFile.i = ((c)localObject1).a();
+      paramFile.j = ((c)localObject1).a();
       this.i = new e.k[paramFile.i];
-      k = 0;
-      if (k >= paramFile.i) {
-        break label581;
+      int k = 0;
+      Object localObject2;
+      while (k < paramFile.i)
+      {
+        ((c)localObject1).a(paramFile.a() + paramFile.h * k);
+        if (bool)
+        {
+          localObject2 = new e.h();
+          ((e.h)localObject2).g = ((c)localObject1).b();
+          ((e.h)localObject2).h = ((c)localObject1).b();
+          ((e.h)localObject2).a = ((c)localObject1).c();
+          ((e.h)localObject2).b = ((c)localObject1).c();
+          ((e.h)localObject2).c = ((c)localObject1).c();
+          ((e.h)localObject2).d = ((c)localObject1).c();
+          ((e.h)localObject2).i = ((c)localObject1).b();
+          ((e.h)localObject2).j = ((c)localObject1).b();
+          ((e.h)localObject2).e = ((c)localObject1).c();
+          ((e.h)localObject2).f = ((c)localObject1).c();
+          this.i[k] = localObject2;
+        }
+        else
+        {
+          localObject2 = new e.d();
+          ((e.d)localObject2).g = ((c)localObject1).b();
+          ((e.d)localObject2).h = ((c)localObject1).b();
+          ((e.d)localObject2).a = ((c)localObject1).b();
+          ((e.d)localObject2).b = ((c)localObject1).b();
+          ((e.d)localObject2).c = ((c)localObject1).b();
+          ((e.d)localObject2).d = ((c)localObject1).b();
+          ((e.d)localObject2).i = ((c)localObject1).b();
+          ((e.d)localObject2).j = ((c)localObject1).b();
+          ((e.d)localObject2).e = ((c)localObject1).b();
+          ((e.d)localObject2).f = ((c)localObject1).b();
+          this.i[k] = localObject2;
+        }
+        k += 1;
       }
-      localc.a(paramFile.a() + paramFile.h * k);
-      if (!bool) {
-        break label461;
+      if (paramFile.j > -1)
+      {
+        k = paramFile.j;
+        localObject2 = this.i;
+        if (k < localObject2.length)
+        {
+          localObject2 = localObject2[paramFile.j];
+          if (((e.k)localObject2).h == 3)
+          {
+            this.j = new byte[((e.k)localObject2).a()];
+            ((c)localObject1).a(((e.k)localObject2).b());
+            ((c)localObject1).a(this.j);
+            if (this.c) {
+              f();
+            }
+            return;
+          }
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Wrong string section e_shstrndx=");
+          ((StringBuilder)localObject1).append(paramFile.j);
+          throw new UnknownFormatConversionException(((StringBuilder)localObject1).toString());
+        }
       }
-      localObject = new e.h();
-      ((e.h)localObject).g = localc.b();
-      ((e.h)localObject).h = localc.b();
-      ((e.h)localObject).a = localc.c();
-      ((e.h)localObject).b = localc.c();
-      ((e.h)localObject).c = localc.c();
-      ((e.h)localObject).d = localc.c();
-      ((e.h)localObject).i = localc.b();
-      ((e.h)localObject).j = localc.b();
-      ((e.h)localObject).e = localc.c();
-      ((e.h)localObject).f = localc.c();
-      this.i[k] = localObject;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Invalid e_shstrndx=");
+      ((StringBuilder)localObject1).append(paramFile.j);
+      throw new UnknownFormatConversionException(((StringBuilder)localObject1).toString());
     }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Invalid elf magic: ");
+    ((StringBuilder)localObject1).append(paramFile);
+    paramFile = new UnknownFormatConversionException(((StringBuilder)localObject1).toString());
     for (;;)
     {
-      k += 1;
-      break label238;
-      paramFile = new e.b();
-      paramFile.a = localc.a();
-      paramFile.b = localc.a();
-      paramFile.c = localc.b();
-      paramFile.k = localc.b();
-      paramFile.l = localc.b();
-      paramFile.m = localc.b();
-      this.h = paramFile;
-      break;
-      label461:
-      localObject = new e.d();
-      ((e.d)localObject).g = localc.b();
-      ((e.d)localObject).h = localc.b();
-      ((e.d)localObject).a = localc.b();
-      ((e.d)localObject).b = localc.b();
-      ((e.d)localObject).c = localc.b();
-      ((e.d)localObject).d = localc.b();
-      ((e.d)localObject).i = localc.b();
-      ((e.d)localObject).j = localc.b();
-      ((e.d)localObject).e = localc.b();
-      ((e.d)localObject).f = localc.b();
-      this.i[k] = localObject;
+      throw paramFile;
     }
-    label581:
-    if ((paramFile.j > -1) && (paramFile.j < this.i.length))
-    {
-      localObject = this.i[paramFile.j];
-      if (((e.k)localObject).h == 3)
-      {
-        this.j = new byte[((e.k)localObject).a()];
-        localc.a(((e.k)localObject).b());
-        localc.a(this.j);
-        if (this.c) {
-          f();
-        }
-        return;
-      }
-      throw new UnknownFormatConversionException("Wrong string section e_shstrndx=" + paramFile.j);
-    }
-    throw new UnknownFormatConversionException("Invalid e_shstrndx=" + paramFile.j);
   }
   
   public static boolean a(File paramFile)
@@ -142,31 +157,37 @@ public class e
   
   public static boolean b(File paramFile)
   {
-    if ((g()) && (a(paramFile))) {}
-    try
-    {
-      new e(paramFile);
-      return true;
-    }
-    catch (IOException paramFile)
-    {
-      Log.e("ELF", "checkElfFile IOException: " + paramFile);
-      return false;
-    }
-    catch (UnknownFormatConversionException paramFile)
-    {
-      for (;;)
+    if ((g()) && (a(paramFile))) {
+      try
       {
-        Log.e("ELF", "checkElfFile UnknownFormatConversionException: " + paramFile);
+        try
+        {
+          new e(paramFile);
+        }
+        catch (Throwable localThrowable)
+        {
+          paramFile = new StringBuilder();
+          localObject = "checkElfFile Throwable: ";
+        }
+        catch (UnknownFormatConversionException localUnknownFormatConversionException)
+        {
+          paramFile = new StringBuilder();
+          localObject = "checkElfFile UnknownFormatConversionException: ";
+        }
+        paramFile.append((String)localObject);
+        paramFile.append(localUnknownFormatConversionException);
+        Log.e("ELF", paramFile.toString());
+      }
+      catch (IOException paramFile)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("checkElfFile IOException: ");
+        ((StringBuilder)localObject).append(paramFile);
+        Log.e("ELF", ((StringBuilder)localObject).toString());
+        return false;
       }
     }
-    catch (Throwable paramFile)
-    {
-      for (;;)
-      {
-        Log.e("ELF", "checkElfFile Throwable: " + paramFile);
-      }
-    }
+    return true;
   }
   
   private void f()
@@ -175,64 +196,59 @@ public class e
     c localc = this.g;
     boolean bool = d();
     Object localObject1 = a(".dynsym");
+    int m = 0;
     if (localObject1 != null)
     {
       localc.a(((e.k)localObject1).b());
-      int m = ((e.k)localObject1).a();
-      char[] arrayOfChar;
-      label72:
-      Object localObject2;
-      if (bool)
-      {
+      int n = ((e.k)localObject1).a();
+      if (bool) {
         k = 24;
-        m /= k;
-        this.e = new e.l[m];
-        arrayOfChar = new char[1];
-        k = 0;
-        if (k >= m) {
-          break label279;
-        }
-        if (!bool) {
-          break label185;
-        }
-        localObject2 = new e.i();
-        ((e.i)localObject2).c = localc.b();
-        localc.a(arrayOfChar);
-        ((e.i)localObject2).d = arrayOfChar[0];
-        localc.a(arrayOfChar);
-        ((e.i)localObject2).e = arrayOfChar[0];
-        ((e.i)localObject2).a = localc.c();
-        ((e.i)localObject2).b = localc.c();
-        ((e.i)localObject2).f = localc.a();
-        this.e[k] = localObject2;
-      }
-      for (;;)
-      {
-        k += 1;
-        break label72;
+      } else {
         k = 16;
-        break;
-        label185:
-        localObject2 = new e.e();
-        ((e.e)localObject2).c = localc.b();
-        ((e.e)localObject2).a = localc.b();
-        ((e.e)localObject2).b = localc.b();
-        localc.a(arrayOfChar);
-        ((e.e)localObject2).d = arrayOfChar[0];
-        localc.a(arrayOfChar);
-        ((e.e)localObject2).e = arrayOfChar[0];
-        ((e.e)localObject2).f = localc.a();
-        this.e[k] = localObject2;
       }
-      label279:
+      n /= k;
+      this.e = new e.l[n];
+      char[] arrayOfChar = new char[1];
+      k = 0;
+      while (k < n)
+      {
+        Object localObject2;
+        if (bool)
+        {
+          localObject2 = new e.i();
+          ((e.i)localObject2).c = localc.b();
+          localc.a(arrayOfChar);
+          ((e.i)localObject2).d = arrayOfChar[0];
+          localc.a(arrayOfChar);
+          ((e.i)localObject2).e = arrayOfChar[0];
+          ((e.i)localObject2).a = localc.c();
+          ((e.i)localObject2).b = localc.c();
+          ((e.i)localObject2).f = localc.a();
+          this.e[k] = localObject2;
+        }
+        else
+        {
+          localObject2 = new e.e();
+          ((e.e)localObject2).c = localc.b();
+          ((e.e)localObject2).a = localc.b();
+          ((e.e)localObject2).b = localc.b();
+          localc.a(arrayOfChar);
+          ((e.e)localObject2).d = arrayOfChar[0];
+          localc.a(arrayOfChar);
+          ((e.e)localObject2).e = arrayOfChar[0];
+          ((e.e)localObject2).f = localc.a();
+          this.e[k] = localObject2;
+        }
+        k += 1;
+      }
       localObject1 = this.i[localObject1.i];
       localc.a(((e.k)localObject1).b());
       this.f = new byte[((e.k)localObject1).a()];
       localc.a(this.f);
     }
     this.d = new e.j[locala.g];
-    int k = 0;
-    if (k < locala.g)
+    int k = m;
+    while (k < locala.g)
     {
       localc.a(locala.b() + locala.f * k);
       if (bool)
@@ -248,10 +264,8 @@ public class e
         ((e.g)localObject1).f = localc.c();
         this.d[k] = localObject1;
       }
-      for (;;)
+      else
       {
-        k += 1;
-        break;
         localObject1 = new e.c();
         ((e.c)localObject1).g = localc.b();
         ((e.c)localObject1).h = localc.b();
@@ -263,6 +277,7 @@ public class e
         ((e.c)localObject1).f = localc.b();
         this.d[k] = localObject1;
       }
+      k += 1;
     }
   }
   
@@ -294,16 +309,23 @@ public class e
       return "SHN_UNDEF";
     }
     int k = paramInt;
-    while (this.j[k] != 0) {
+    byte[] arrayOfByte;
+    for (;;)
+    {
+      arrayOfByte = this.j;
+      if (arrayOfByte[k] == 0) {
+        break;
+      }
       k += 1;
     }
-    return new String(this.j, paramInt, k - paramInt);
+    return new String(arrayOfByte, paramInt, k - paramInt);
   }
   
   final boolean a()
   {
+    char[] arrayOfChar = this.b;
     boolean bool = false;
-    if (this.b[0] == a[0]) {
+    if (arrayOfChar[0] == a[0]) {
       bool = true;
     }
     return bool;
@@ -336,7 +358,7 @@ public class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.utils.e
  * JD-Core Version:    0.7.0.1
  */

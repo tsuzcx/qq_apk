@@ -6,7 +6,7 @@ import java.util.ArrayList;
 public class LogBeanUtil
 {
   private static boolean detected = false;
-  private static LogBean oldLogBean = null;
+  private static LogBean oldLogBean;
   
   @Nullable
   public static LogBean createBeanFromLine(String paramString)
@@ -14,14 +14,15 @@ public class LogBeanUtil
     LogBean localLogBean = new LogBean();
     int i = paramString.indexOf("/");
     int j = paramString.indexOf("):");
-    if ((j == -1) || (i == -1)) {
-      return null;
+    if ((j != -1) && (i != -1))
+    {
+      localLogBean.tag = paramString.substring(i + 1, j + 1);
+      localLogBean.msg = paramString.substring(j + 2);
+      localLogBean.lev = paramString.substring(i - 1, i);
+      localLogBean.time = paramString.substring(6, i - 2);
+      return localLogBean;
     }
-    localLogBean.tag = paramString.substring(i + 1, j + 1);
-    localLogBean.msg = paramString.substring(j + 2);
-    localLogBean.lev = paramString.substring(i - 1, i);
-    localLogBean.time = paramString.substring(6, i - 2);
-    return localLogBean;
+    return null;
   }
   
   public static void loadLogBeanList(String paramString1, String paramString2, String paramString3, ILoadLogListener paramILoadLogListener)
@@ -32,23 +33,29 @@ public class LogBeanUtil
   
   private static void recordLogLine(LogBean paramLogBean, String paramString, ArrayList<LogBean> paramArrayList)
   {
-    if ((paramString.contains("FATAL EXCEPTION")) || (paramString.startsWith(" \t... ")) || (paramString.startsWith(" Process: "))) {
-      return;
-    }
-    if ((oldLogBean != null) && (paramString.startsWith(" \tat ")))
+    if ((!paramString.contains("FATAL EXCEPTION")) && (!paramString.startsWith(" \t... ")))
     {
-      paramLogBean = new StringBuilder();
-      paramArrayList = oldLogBean;
-      paramArrayList.msg = (paramArrayList.msg + "\n\t\t" + paramString);
-      return;
+      if (paramString.startsWith(" Process: ")) {
+        return;
+      }
+      if ((oldLogBean != null) && (paramString.startsWith(" \tat ")))
+      {
+        paramLogBean = new StringBuilder();
+        paramArrayList = oldLogBean;
+        paramLogBean.append(paramArrayList.msg);
+        paramLogBean.append("\n\t\t");
+        paramLogBean.append(paramString);
+        paramArrayList.msg = paramLogBean.toString();
+        return;
+      }
+      oldLogBean = paramLogBean;
+      paramArrayList.add(paramLogBean);
     }
-    oldLogBean = paramLogBean;
-    paramArrayList.add(paramLogBean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.util.logmonitor.LogBeanUtil
  * JD-Core Version:    0.7.0.1
  */

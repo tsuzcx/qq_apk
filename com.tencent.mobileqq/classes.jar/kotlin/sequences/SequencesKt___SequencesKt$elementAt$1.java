@@ -18,12 +18,16 @@ final class SequencesKt___SequencesKt$elementAt$1
   @NotNull
   public final Void invoke(int paramInt)
   {
-    throw ((Throwable)new IndexOutOfBoundsException("Sequence doesn't contain element at index " + this.$index + '.'));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Sequence doesn't contain element at index ");
+    localStringBuilder.append(this.$index);
+    localStringBuilder.append('.');
+    throw ((Throwable)new IndexOutOfBoundsException(localStringBuilder.toString()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.sequences.SequencesKt___SequencesKt.elementAt.1
  * JD-Core Version:    0.7.0.1
  */

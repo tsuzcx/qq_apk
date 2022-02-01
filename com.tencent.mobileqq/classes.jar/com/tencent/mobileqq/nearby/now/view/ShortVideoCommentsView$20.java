@@ -17,12 +17,13 @@ class ShortVideoCommentsView$20
     if (QLog.isColorLevel()) {
       QLog.d("nearby.bindphone", 2, "openBindPhonePage");
     }
-    this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a(this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView.a, "playpage_phone_clk");
+    paramDialogInterface = this.jdField_a_of_type_ComTencentMobileqqNearbyNowViewShortVideoCommentsView;
+    paramDialogInterface.reportBindPhoneAction(paramDialogInterface.app, "playpage_phone_clk");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.20
  * JD-Core Version:    0.7.0.1
  */

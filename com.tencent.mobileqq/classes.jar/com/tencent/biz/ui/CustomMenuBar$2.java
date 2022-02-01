@@ -13,24 +13,18 @@ class CustomMenuBar$2
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b))
     {
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
+      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843394);
     }
-    for (;;)
-    {
-      return false;
-      if (this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.b)
-      {
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_JavaLangRunnable);
-        this.jdField_a_of_type_ComTencentBizUiCustomMenuBar.jdField_a_of_type_AndroidViewView.setVisibility(4);
-        this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130843480);
-      }
-    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.CustomMenuBar.2
  * JD-Core Version:    0.7.0.1
  */

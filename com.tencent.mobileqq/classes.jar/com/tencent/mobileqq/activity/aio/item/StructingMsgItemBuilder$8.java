@@ -7,6 +7,7 @@ import android.widget.TextView;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.AppRuntime;
 
 class StructingMsgItemBuilder$8
   implements View.OnClickListener
@@ -15,20 +16,23 @@ class StructingMsgItemBuilder$8
   
   public void onClick(View paramView)
   {
-    if (StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder)) {}
-    for (;;)
+    if (!StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, true);
-      StructingMsgItemBuilder.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder, (Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00899", "Pb_account_lifeservice", "", "0X8006512", "0X8006512", 0, 0, "", "" + this.jdField_a_of_type_JavaLangString, "", "");
+      Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder;
+      StructingMsgItemBuilder.b((StructingMsgItemBuilder)localObject, (Activity)((StructingMsgItemBuilder)localObject).jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      ReportController.b((AppRuntime)localObject, "dc00899", "Pb_account_lifeservice", "", "0X8006512", "0X8006512", 0, 0, "", localStringBuilder.toString(), "", "");
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.8
  * JD-Core Version:    0.7.0.1
  */

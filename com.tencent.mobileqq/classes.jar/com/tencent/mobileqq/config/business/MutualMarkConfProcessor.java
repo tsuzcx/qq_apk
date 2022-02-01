@@ -10,7 +10,7 @@ import com.tencent.qphone.base.util.QLog;
 public class MutualMarkConfProcessor
   extends IQConfigProcessor<MutualMarkConfBean>
 {
-  private static MutualMarkConfBean a = null;
+  private static MutualMarkConfBean a;
   
   public static MutualMarkConfBean a()
   {
@@ -25,8 +25,9 @@ public class MutualMarkConfProcessor
   @NonNull
   public MutualMarkConfBean a(int paramInt)
   {
-    if (a != null) {
-      return a;
+    MutualMarkConfBean localMutualMarkConfBean = a;
+    if (localMutualMarkConfBean != null) {
+      return localMutualMarkConfBean;
     }
     if (QLog.isColorLevel()) {
       QLog.i("MutualMarkConfProcessor", 2, "migrateOldOrDefaultContent ");
@@ -40,7 +41,10 @@ public class MutualMarkConfProcessor
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
-      QLog.d("MutualMarkConfProcessor", 1, "MutualMarkConfProcessor#onParsed: success");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MutualMarkConfProcessor#onParsed: success，confFiles:");
+      localStringBuilder.append(paramArrayOfQConfItem);
+      QLog.d("MutualMarkConfProcessor", 1, localStringBuilder.toString());
       paramArrayOfQConfItem = MutualMarkConfBean.a(paramArrayOfQConfItem[0].a);
       a = null;
       return paramArrayOfQConfItem;
@@ -51,8 +55,12 @@ public class MutualMarkConfProcessor
   
   public void a(MutualMarkConfBean paramMutualMarkConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkConfProcessor", 2, "onUpdate newConf:" + paramMutualMarkConfBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate newConf:");
+      localStringBuilder.append(paramMutualMarkConfBean);
+      QLog.d("MutualMarkConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -78,8 +86,12 @@ public class MutualMarkConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkConfProcessor", 2, "onReqFailed failCode:" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed failCode:");
+      localStringBuilder.append(paramInt);
+      QLog.d("MutualMarkConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -90,7 +102,7 @@ public class MutualMarkConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MutualMarkConfProcessor
  * JD-Core Version:    0.7.0.1
  */

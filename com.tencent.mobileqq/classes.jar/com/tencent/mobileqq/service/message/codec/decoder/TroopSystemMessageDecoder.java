@@ -26,46 +26,59 @@ public class TroopSystemMessageDecoder
     if (QLog.isColorLevel()) {
       QLog.d("TroopSystemMessageDecoder", 2, "<---decodeC2CMsgPkg_GroupSys");
     }
-    long l2;
-    if ((!paramMsg.msg_body.has()) || (!((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()))
+    boolean bool = paramMsg.msg_body.has();
+    long l2 = 0L;
+    if ((bool) && (((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("TroopSystemMessageDecoder", 2, "<---decodeC2CMsgPkg_GroupSys return null:hasBody:" + paramMsg.msg_body.has() + ",hasMsgContent" + ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has() + ",isReaded:" + paramBoolean1 + "syncOther:" + paramBoolean2);
+      Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
+      long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
+      int i = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
+      byte[] arrayOfByte = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
+      long l1 = l2;
+      if (arrayOfByte != null)
+      {
+        l1 = l2;
+        if (arrayOfByte.length > 0) {
+          l1 = PkgTools.getLongData(arrayOfByte, 0);
+        }
       }
-      l2 = 0L;
-      return l2;
-    }
-    Long.valueOf(paramMessageHandler.a.getCurrentAccountUin()).longValue();
-    long l3 = ((msg_comm.MsgHead)paramMsg.msg_head.get()).from_uin.get();
-    int i = (short)((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_type.get();
-    byte[] arrayOfByte = ((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.get().toByteArray();
-    if ((arrayOfByte != null) && (arrayOfByte.length > 0)) {}
-    for (long l1 = PkgTools.getLongData(arrayOfByte, 0);; l1 = 0L)
-    {
       Object localObject = (msg_comm.MsgHead)paramMsg.msg_head.get();
       if (localObject != null)
       {
         localObject = ((msg_comm.MsgHead)localObject).group_name.get();
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopSystemMessageDecoder.sysnick", 2, "TroopCode:" + l1 + "TroopName:" + (String)localObject);
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("TroopCode:");
+          localStringBuilder.append(l1);
+          localStringBuilder.append("TroopName:");
+          localStringBuilder.append((String)localObject);
+          QLog.d("TroopSystemMessageDecoder.sysnick", 2, localStringBuilder.toString());
         }
-        paramMessageHandler.c("" + l1, (String)localObject);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("");
+        localStringBuilder.append(l1);
+        paramMessageHandler.c(localStringBuilder.toString(), (String)localObject);
       }
-      l2 = l1;
-      if (paramBoolean1) {
-        break;
+      if ((!paramBoolean1) && (!paramBoolean2) && (!paramBoolean3)) {
+        paramMessageHandler.a().a(i, arrayOfByte, l3, ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), (msg_comm.MsgHead)paramMsg.msg_head.get());
       }
-      l2 = l1;
-      if (paramBoolean2) {
-        break;
-      }
-      l2 = l1;
-      if (paramBoolean3) {
-        break;
-      }
-      paramMessageHandler.a().a(i, arrayOfByte, l3, ((msg_comm.MsgHead)paramMsg.msg_head.get()).msg_time.get(), (msg_comm.MsgHead)paramMsg.msg_head.get());
       return l1;
     }
+    if (QLog.isColorLevel())
+    {
+      paramMessageHandler = new StringBuilder();
+      paramMessageHandler.append("<---decodeC2CMsgPkg_GroupSys return null:hasBody:");
+      paramMessageHandler.append(paramMsg.msg_body.has());
+      paramMessageHandler.append(",hasMsgContent");
+      paramMessageHandler.append(((im_msg_body.MsgBody)paramMsg.msg_body.get()).msg_content.has());
+      paramMessageHandler.append(",isReaded:");
+      paramMessageHandler.append(paramBoolean1);
+      paramMessageHandler.append("syncOther:");
+      paramMessageHandler.append(paramBoolean2);
+      QLog.e("TroopSystemMessageDecoder", 2, paramMessageHandler.toString());
+    }
+    return 0L;
   }
   
   public void a(MessageHandler paramMessageHandler, msg_comm.Msg paramMsg, List<MessageRecord> paramList, DecodeProtoPkgContext paramDecodeProtoPkgContext)
@@ -74,24 +87,24 @@ public class TroopSystemMessageDecoder
     long l1 = paramList.from_uin.get();
     long l2 = paramList.msg_time.get();
     int i = paramList.msg_type.get();
-    if ((i == 85) || (i == 36)) {}
-    for (i = 1;; i = 0)
-    {
-      if ((!paramDecodeProtoPkgContext.c) && (i == 0)) {
-        paramMessageHandler.a().a(3, 1, false);
-      }
-      paramDecodeProtoPkgContext.e = 9998L;
-      a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.a, paramDecodeProtoPkgContext.f, paramDecodeProtoPkgContext.d);
-      if (i == 0) {
-        GroupSystemMsgController.a().a(l1, l2, paramMessageHandler.a);
-      }
-      return;
+    if ((i != 85) && (i != 36)) {
+      i = 0;
+    } else {
+      i = 1;
+    }
+    if ((!paramDecodeProtoPkgContext.c) && (i == 0)) {
+      paramMessageHandler.a().a(3, 1, false);
+    }
+    paramDecodeProtoPkgContext.g = 9998L;
+    a(paramMessageHandler, paramMsg, paramDecodeProtoPkgContext.a, paramDecodeProtoPkgContext.f, paramDecodeProtoPkgContext.d);
+    if (i == 0) {
+      GroupSystemMsgController.a().a(l1, l2, paramMessageHandler.a);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.codec.decoder.TroopSystemMessageDecoder
  * JD-Core Version:    0.7.0.1
  */

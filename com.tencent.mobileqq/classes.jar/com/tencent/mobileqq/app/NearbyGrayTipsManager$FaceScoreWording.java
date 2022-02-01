@@ -37,48 +37,65 @@ public class NearbyGrayTipsManager$FaceScoreWording
   public static String getPath(int paramInt)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(NearbyGrayTipsManager.a()).append(FaceScoreWording.class.getSimpleName()).append("_").append(paramInt);
+    localStringBuilder.append(NearbyGrayTipsManager.a());
+    localStringBuilder.append(FaceScoreWording.class.getSimpleName());
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
     return localStringBuilder.toString();
   }
   
   public String getWording(Random paramRandom, int paramInt)
   {
-    String str = "";
-    localObject = this.lock;
+    Object localObject = this.lock;
     if (paramInt == 1) {}
-    for (;;)
+    try
     {
-      try
+      List localList = this.femaleWordingList;
+      break label29;
+      localList = this.maleWordingList;
+      label29:
+      int j = localList.size();
+      if (j > 0)
       {
-        localList = this.femaleWordingList;
-        int j = localList.size();
-        if (j > 0)
-        {
-          int i = paramRandom.nextInt(j);
-          paramInt = i;
-          if (i == this.lastIndex) {
-            paramInt = (this.lastIndex + 1) % j;
-          }
-          this.lastIndex = paramInt;
-          str = (String)localList.get(paramInt);
+        int i = paramRandom.nextInt(j);
+        paramInt = i;
+        if (i == this.lastIndex) {
+          paramInt = (this.lastIndex + 1) % j;
         }
-        return str;
+        this.lastIndex = paramInt;
+        paramRandom = (String)localList.get(paramInt);
       }
-      finally {}
-      List localList = this.maleWordingList;
+      else
+      {
+        paramRandom = "";
+      }
+      return paramRandom;
     }
+    finally {}
   }
   
   public void saveWording(long paramLong, List<String> paramList1, List<String> paramList2, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q..troop.faceScore", 2, "saveWording time= " + paramLong + "  maleWordingList=" + paramList1 + "  femaleWordingList=" + paramList2 + "  needSaveToFile=" + paramBoolean);
-    }
-    if ((paramList1 == null) || (paramList1.size() == 0) || (paramList2 == null) || (paramList2.size() == 0)) {}
-    for (;;)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      return;
-      FaceScoreWording localFaceScoreWording = null;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("saveWording time= ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append("  maleWordingList=");
+      ((StringBuilder)localObject1).append(paramList1);
+      ((StringBuilder)localObject1).append("  femaleWordingList=");
+      ((StringBuilder)localObject1).append(paramList2);
+      ((StringBuilder)localObject1).append("  needSaveToFile=");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      QLog.d("Q..troop.faceScore", 2, ((StringBuilder)localObject1).toString());
+    }
+    if ((paramList1 != null) && (paramList1.size() != 0) && (paramList2 != null))
+    {
+      if (paramList2.size() == 0) {
+        return;
+      }
+      localObject1 = null;
       synchronized (this.lock)
       {
         if ((this.maleWordingList.size() == 0) || (this.createTime < paramLong))
@@ -95,16 +112,15 @@ public class NearbyGrayTipsManager$FaceScoreWording
         }
         if (paramBoolean)
         {
-          localFaceScoreWording = new FaceScoreWording(this.id);
-          localFaceScoreWording.createTime = this.createTime;
-          localFaceScoreWording.lastIndex = this.lastIndex;
-          localFaceScoreWording.maleWordingList.addAll(paramList1);
-          localFaceScoreWording.femaleWordingList.addAll(paramList2);
+          localObject1 = new FaceScoreWording(this.id);
+          ((FaceScoreWording)localObject1).createTime = this.createTime;
+          ((FaceScoreWording)localObject1).lastIndex = this.lastIndex;
+          ((FaceScoreWording)localObject1).maleWordingList.addAll(paramList1);
+          ((FaceScoreWording)localObject1).femaleWordingList.addAll(paramList2);
         }
-        if ((!paramBoolean) || (localFaceScoreWording == null)) {
-          continue;
+        if ((paramBoolean) && (localObject1 != null)) {
+          ThreadManager.getFileThreadHandler().post(new NearbyGrayTipsManager.FaceScoreWording.1(this, (FaceScoreWording)localObject1));
         }
-        ThreadManager.getFileThreadHandler().post(new NearbyGrayTipsManager.FaceScoreWording.1(this, localFaceScoreWording));
         return;
       }
     }
@@ -112,7 +128,7 @@ public class NearbyGrayTipsManager$FaceScoreWording
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager.FaceScoreWording
  * JD-Core Version:    0.7.0.1
  */

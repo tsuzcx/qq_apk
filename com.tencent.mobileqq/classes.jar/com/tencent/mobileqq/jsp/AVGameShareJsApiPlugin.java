@@ -26,18 +26,27 @@ public class AVGameShareJsApiPlugin
   {
     if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      QLog.d("AVGameShareJsApiPlugin", 1, "Call joinRoom, args:" + paramVarArgs);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Call joinRoom, args:");
+      ((StringBuilder)localObject).append(paramVarArgs);
+      QLog.d("AVGameShareJsApiPlugin", 1, ((StringBuilder)localObject).toString());
       try
       {
         paramVarArgs = new JSONObject(paramVarArgs[0]).optString("key");
-        Intent localIntent = new Intent(this.mRuntime.a(), JumpActivity.class);
-        localIntent.setData(Uri.parse("mqqapi://avgame/join_room?key=" + paramVarArgs));
-        this.mRuntime.a().startActivity(localIntent);
+        localObject = new Intent(this.mRuntime.a(), JumpActivity.class);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mqqapi://avgame/join_room?key=");
+        localStringBuilder.append(paramVarArgs);
+        ((Intent)localObject).setData(Uri.parse(localStringBuilder.toString()));
+        this.mRuntime.a().startActivity((Intent)localObject);
         return;
       }
       catch (Exception paramVarArgs)
       {
-        QLog.e("AVGameShareJsApiPlugin", 1, "Call joinRoom fail: " + paramVarArgs.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Call joinRoom fail: ");
+        ((StringBuilder)localObject).append(paramVarArgs.getMessage());
+        QLog.e("AVGameShareJsApiPlugin", 1, ((StringBuilder)localObject).toString());
         return;
       }
     }
@@ -49,7 +58,7 @@ public class AVGameShareJsApiPlugin
     try
     {
       QLog.d("AVGameShareJsApiPlugin", 1, "Call createRoom");
-      Intent localIntent = new Intent(this.mRuntime.a(), JumpActivity.class);
+      localObject = new Intent(this.mRuntime.a(), JumpActivity.class);
       StringBuilder localStringBuilder = new StringBuilder(50);
       localStringBuilder.append("mqqapi://avgame/create_room?gameType=");
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
@@ -62,13 +71,16 @@ public class AVGameShareJsApiPlugin
           localStringBuilder.append(Integer.valueOf(paramVarArgs.optString("fromType")).intValue());
         }
       }
-      localIntent.setData(Uri.parse(localStringBuilder.toString()));
-      this.mRuntime.a().startActivity(localIntent);
+      ((Intent)localObject).setData(Uri.parse(localStringBuilder.toString()));
+      this.mRuntime.a().startActivity((Intent)localObject);
       return;
     }
     catch (Exception paramVarArgs)
     {
-      QLog.e("AVGameShareJsApiPlugin", 1, "Call createRoom fail: " + paramVarArgs.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Call createRoom fail: ");
+      ((StringBuilder)localObject).append(paramVarArgs.getMessage());
+      QLog.e("AVGameShareJsApiPlugin", 1, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -77,7 +89,7 @@ public class AVGameShareJsApiPlugin
     try
     {
       QLog.d("AVGameShareJsApiPlugin", 1, "handlePKQQCJAction");
-      Intent localIntent = new Intent(this.mRuntime.a(), JumpActivity.class);
+      localObject = new Intent(this.mRuntime.a(), JumpActivity.class);
       StringBuilder localStringBuilder = new StringBuilder(100);
       localStringBuilder.append("mqqapi://avgame/pk_qqcj?");
       if ((paramVarArgs != null) && (paramVarArgs.length > 0))
@@ -97,13 +109,16 @@ public class AVGameShareJsApiPlugin
           localStringBuilder.append(Integer.valueOf(paramVarArgs.optString("fromtype")).intValue());
         }
       }
-      localIntent.setData(Uri.parse(localStringBuilder.toString()));
-      this.mRuntime.a().startActivity(localIntent);
+      ((Intent)localObject).setData(Uri.parse(localStringBuilder.toString()));
+      this.mRuntime.a().startActivity((Intent)localObject);
       return;
     }
     catch (Exception paramVarArgs)
     {
-      QLog.e("AVGameShareJsApiPlugin", 1, "handlePKQQCJActionfail: " + paramVarArgs.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handlePKQQCJActionfail: ");
+      ((StringBuilder)localObject).append(paramVarArgs.getMessage());
+      QLog.e("AVGameShareJsApiPlugin", 1, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -111,41 +126,52 @@ public class AVGameShareJsApiPlugin
   {
     if ((paramVarArgs != null) && (paramVarArgs.length > 0))
     {
-      QLog.d("AVGameShareJsApiPlugin", 1, "Call handleShareArk, args:" + paramVarArgs);
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Call handleShareArk, args:");
+      ((StringBuilder)localObject1).append(paramVarArgs);
+      QLog.d("AVGameShareJsApiPlugin", 1, ((StringBuilder)localObject1).toString());
       try
       {
-        Object localObject1 = this.mRuntime.a().getIntent();
-        String str2 = ((Intent)localObject1).getStringExtra("avgame_share_link");
-        String str1 = str2;
-        if (TextUtils.isEmpty(str2)) {
-          str1 = "https://www.qq.com";
+        Object localObject2 = this.mRuntime.a().getIntent();
+        String str1 = ((Intent)localObject2).getStringExtra("avgame_share_link");
+        localObject1 = str1;
+        if (TextUtils.isEmpty(str1)) {
+          localObject1 = "https://www.qq.com";
         }
-        str2 = ((Intent)localObject1).getStringExtra("avgame_share_name");
-        Object localObject2 = new JSONObject(paramVarArgs[0]);
-        paramVarArgs = ((JSONObject)localObject2).optString("awardTitle");
-        localObject1 = ((JSONObject)localObject2).optString("awardDesc");
-        localObject2 = ((JSONObject)localObject2).optString("awardIconUrl");
-        String str3 = this.mRuntime.a().getCurrentAccountUin();
-        ThreadManager.getUIHandler().postDelayed(new AVGameShareJsApiPlugin.1(this, str3, str1, str2, paramVarArgs, (String)localObject1, (String)localObject2), 200L);
+        str1 = ((Intent)localObject2).getStringExtra("avgame_share_name");
+        Object localObject3 = new JSONObject(paramVarArgs[0]);
+        paramVarArgs = ((JSONObject)localObject3).optString("awardTitle");
+        localObject2 = ((JSONObject)localObject3).optString("awardDesc");
+        localObject3 = ((JSONObject)localObject3).optString("awardIconUrl");
+        String str2 = this.mRuntime.a().getCurrentAccountUin();
+        ThreadManager.getUIHandler().postDelayed(new AVGameShareJsApiPlugin.1(this, str2, (String)localObject1, str1, paramVarArgs, (String)localObject2, (String)localObject3), 200L);
         return;
       }
       catch (Exception paramVarArgs)
       {
-        QLog.e("AVGameShareJsApiPlugin", 1, "Call handleShareArk fail: " + paramVarArgs.getMessage());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Call handleShareArk fail: ");
+        ((StringBuilder)localObject1).append(paramVarArgs.getMessage());
+        QLog.e("AVGameShareJsApiPlugin", 1, ((StringBuilder)localObject1).toString());
         return;
       }
     }
     QLog.e("AVGameShareJsApiPlugin", 1, "Call handleShareArk fail, args empty");
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (TextUtils.isEmpty(paramString1))
     {
       QLog.e("AVGameShareJsApiPlugin", 1, "Call avgame jsapi error, url is empty");
       return false;
     }
-    QLog.d("AVGameShareJsApiPlugin", 1, "Call AVGameShareJsApiPlugin handleJsRequest, url" + paramString1 + " pkgName:" + paramString2);
+    paramJsBridgeListener = new StringBuilder();
+    paramJsBridgeListener.append("Call AVGameShareJsApiPlugin handleJsRequest, url");
+    paramJsBridgeListener.append(paramString1);
+    paramJsBridgeListener.append(" pkgName:");
+    paramJsBridgeListener.append(paramString2);
+    QLog.d("AVGameShareJsApiPlugin", 1, paramJsBridgeListener.toString());
     if ("avgame".equals(paramString2))
     {
       if ("joinRoom".equals(paramString3))
@@ -175,19 +201,19 @@ public class AVGameShareJsApiPlugin
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.AVGameShareJsApiPlugin
  * JD-Core Version:    0.7.0.1
  */

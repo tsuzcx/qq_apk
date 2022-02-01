@@ -13,7 +13,10 @@ final class QFileMsgForwardManager$5
   {
     if (!paramBoolean)
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return failed fileid " + this.jdField_a_of_type_JavaLangString);
+      paramString = new StringBuilder();
+      paramString.append("onReqFeedsResult return failed fileid ");
+      paramString.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$OnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_Long, false), true);
       return;
     }
@@ -21,17 +24,25 @@ final class QFileMsgForwardManager$5
     paramBundle.putString("_m_ForwardDeadTime", String.valueOf(paramInt3));
     if (paramInt1 == 0)
     {
-      QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult success fileid " + this.jdField_a_of_type_JavaLangString);
+      paramString = new StringBuilder();
+      paramString.append("onReqFeedsResult success fileid ");
+      paramString.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$OnUploadCallback.a(this.jdField_a_of_type_JavaLangString, paramBundle);
       return;
     }
-    QLog.d("FileMultiMsgManager<FileAssistant>", 1, "onReqFeedsResult return[" + paramInt1 + "] fileid " + this.jdField_a_of_type_JavaLangString);
+    paramString = new StringBuilder();
+    paramString.append("onReqFeedsResult return[");
+    paramString.append(paramInt1);
+    paramString.append("] fileid ");
+    paramString.append(this.jdField_a_of_type_JavaLangString);
+    QLog.d("FileMultiMsgManager<FileAssistant>", 1, paramString.toString());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerAppQFileMsgForwardManager$OnUploadCallback.a(QFileMsgForwardManager.a(this.jdField_a_of_type_Long, false), false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.QFileMsgForwardManager.5
  * JD-Core Version:    0.7.0.1
  */

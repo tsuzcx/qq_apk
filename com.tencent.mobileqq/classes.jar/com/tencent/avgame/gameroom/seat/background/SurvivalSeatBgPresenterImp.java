@@ -5,6 +5,7 @@ import android.animation.Animator.AnimatorListener;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.view.View;
+import android.widget.BaseAdapter;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Iterator;
 import java.util.List;
@@ -20,10 +21,11 @@ public class SurvivalSeatBgPresenterImp
   
   private boolean a()
   {
-    boolean bool = false;
     Random localRandom = new Random();
     int i = localRandom.nextInt(50);
-    if (localRandom.nextInt(100) % 101 + 0 < 20 + i % 31) {
+    int j = localRandom.nextInt(100);
+    boolean bool = false;
+    if (j % 101 + 0 < i % 31 + 20) {
       bool = true;
     }
     return bool;
@@ -43,13 +45,17 @@ public class SurvivalSeatBgPresenterImp
   
   public void a()
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("SurvivalSeatBgPresenterImp", 4, "cancelAllAnimation " + this.jdField_a_of_type_JavaUtilList.size());
-    }
-    Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
-    while (localIterator.hasNext())
+    if (QLog.isDevelopLevel())
     {
-      Animator localAnimator = (Animator)localIterator.next();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cancelAllAnimation ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilList.size());
+      QLog.d("SurvivalSeatBgPresenterImp", 4, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.jdField_a_of_type_JavaUtilList.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      Animator localAnimator = (Animator)((Iterator)localObject).next();
       localAnimator.cancel();
       this.jdField_a_of_type_JavaUtilList.remove(localAnimator);
     }
@@ -75,38 +81,42 @@ public class SurvivalSeatBgPresenterImp
     localAnimatorSet.start();
   }
   
+  public void a(BaseAdapter paramBaseAdapter)
+  {
+    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter = ((SurvivalSeatBgGridAdapter)paramBaseAdapter);
+  }
+  
   public void a(SurvivalMemberDataSource paramSurvivalMemberDataSource)
   {
     this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource = paramSurvivalMemberDataSource;
   }
   
-  public void a(SurvivalSeatBgGridAdapter paramSurvivalSeatBgGridAdapter)
-  {
-    this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter = paramSurvivalSeatBgGridAdapter;
-  }
-  
   public void a(List<Long> paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource == null) || (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter == null)) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
+    if (localObject != null)
     {
-      return;
-      paramList = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource.a(paramList).iterator();
+      if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter == null) {
+        return;
+      }
+      paramList = ((SurvivalMemberDataSource)localObject).a(paramList).iterator();
       while (paramList.hasNext())
       {
-        Integer localInteger = (Integer)paramList.next();
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter.a(localInteger.intValue());
+        localObject = (Integer)paramList.next();
+        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter.a(((Integer)localObject).intValue());
       }
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource != null) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource.a();
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
+    if (localObject != null) {
+      ((SurvivalMemberDataSource)localObject).a();
     }
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter != null) {
-      this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter.notifyDataSetChanged();
+    localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter;
+    if (localObject != null) {
+      ((SurvivalSeatBgGridAdapter)localObject).notifyDataSetChanged();
     }
   }
   
@@ -124,22 +134,24 @@ public class SurvivalSeatBgPresenterImp
   
   public void b(List<Long> paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource == null) || (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter == null)) {}
-    for (;;)
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource;
+    if (localObject != null)
     {
-      return;
-      paramList = this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalMemberDataSource.b(paramList).iterator();
+      if (this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter == null) {
+        return;
+      }
+      paramList = ((SurvivalMemberDataSource)localObject).b(paramList).iterator();
       while (paramList.hasNext())
       {
-        Integer localInteger = (Integer)paramList.next();
-        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter.a(localInteger.intValue());
+        localObject = (Integer)paramList.next();
+        this.jdField_a_of_type_ComTencentAvgameGameroomSeatBackgroundSurvivalSeatBgGridAdapter.a(((Integer)localObject).intValue());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.seat.background.SurvivalSeatBgPresenterImp
  * JD-Core Version:    0.7.0.1
  */

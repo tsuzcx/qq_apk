@@ -12,7 +12,12 @@ class AddPhoneNumberFragment$8$1$1
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QLog.d("AddPhoneNumberFragment", 1, "addPhoneNumber isSuc : " + paramBoolean + "; " + paramJSONObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("addPhoneNumber isSuc : ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append("; ");
+    localStringBuilder.append(paramJSONObject);
+    QLog.d("AddPhoneNumberFragment", 1, localStringBuilder.toString());
     if (!paramBoolean)
     {
       AppBrandTask.runTaskOnUiThread(new AddPhoneNumberFragment.8.1.1.1(this, paramJSONObject.optString("errMsg")));
@@ -23,7 +28,7 @@ class AddPhoneNumberFragment$8$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.mainpage.AddPhoneNumberFragment.8.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,28 +15,38 @@ class EventListener$3
   
   public void onInitApkgInfo(int paramInt, ApkgInfo paramApkgInfo, String paramString)
   {
-    QMLog.i("EventListener", "getApkgInfoByConfig end. result=" + paramInt + "; msg : " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("getApkgInfoByConfig end. result=");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("; msg : ");
+    localStringBuilder.append(paramString);
+    QMLog.i("EventListener", localStringBuilder.toString());
     if ((paramInt == 0) && (paramApkgInfo != null))
     {
       ((MiniAppFileManager)this.this$0.mRuntime.getManager(MiniAppFileManager.class)).initFileManager(paramApkgInfo, false);
-      QMLog.i("EventListener", "initApkgByConfig appid=" + paramApkgInfo.appId + " appName=" + paramApkgInfo.apkgName);
+      paramString = new StringBuilder();
+      paramString.append("initApkgByConfig appid=");
+      paramString.append(paramApkgInfo.appId);
+      paramString.append(" appName=");
+      paramString.append(paramApkgInfo.apkgName);
+      QMLog.i("EventListener", paramString.toString());
       try
       {
         paramApkgInfo = new JSONObject();
         paramApkgInfo.put("state", "updateready");
         this.this$0.mRuntime.appBrandService.evaluateSubscribeJS("onUpdateStatusChange", paramApkgInfo.toString(), 0);
-        EventListener.access$202(this.this$0, this.val$miniAppInfo);
-        EventListener.access$200(this.this$0).forceReroad = 2;
-        EventListener.access$200(this.this$0).launchParam.tempState = 0;
-        return;
       }
       catch (Throwable paramApkgInfo)
       {
-        for (;;)
-        {
-          QMLog.e("EventListener", "updateJSONObject error." + paramApkgInfo);
-        }
+        paramString = new StringBuilder();
+        paramString.append("updateJSONObject error.");
+        paramString.append(paramApkgInfo);
+        QMLog.e("EventListener", paramString.toString());
       }
+      EventListener.access$202(this.this$0, this.val$miniAppInfo);
+      EventListener.access$200(this.this$0).forceReroad = 2;
+      EventListener.access$200(this.this$0).launchParam.tempState = 0;
+      return;
     }
     try
     {
@@ -47,13 +57,16 @@ class EventListener$3
     }
     catch (Throwable paramApkgInfo)
     {
-      QMLog.e("EventListener", "updateJSONObject error." + paramApkgInfo);
+      paramString = new StringBuilder();
+      paramString.append("updateJSONObject error.");
+      paramString.append(paramApkgInfo);
+      QMLog.e("EventListener", paramString.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.EventListener.3
  * JD-Core Version:    0.7.0.1
  */

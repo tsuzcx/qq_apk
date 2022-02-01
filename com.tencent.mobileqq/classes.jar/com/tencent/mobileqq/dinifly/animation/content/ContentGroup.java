@@ -101,8 +101,9 @@ public class ContentGroup
   
   public <T> void addValueCallback(T paramT, @Nullable LottieValueCallback<T> paramLottieValueCallback)
   {
-    if (this.transformAnimation != null) {
-      this.transformAnimation.applyValueCallback(paramT, paramLottieValueCallback);
+    TransformKeyframeAnimation localTransformKeyframeAnimation = this.transformAnimation;
+    if (localTransformKeyframeAnimation != null) {
+      localTransformKeyframeAnimation.applyValueCallback(paramT, paramLottieValueCallback);
     }
   }
   
@@ -112,36 +113,35 @@ public class ContentGroup
       return;
     }
     this.matrix.set(paramMatrix);
+    paramMatrix = this.transformAnimation;
     int i = paramInt;
-    if (this.transformAnimation != null)
+    if (paramMatrix != null)
     {
-      this.matrix.preConcat(this.transformAnimation.getMatrix());
-      if (this.transformAnimation.getOpacity() != null) {
-        break label130;
+      this.matrix.preConcat(paramMatrix.getMatrix());
+      if (this.transformAnimation.getOpacity() == null) {
+        i = 100;
+      } else {
+        i = ((Integer)this.transformAnimation.getOpacity().getValue()).intValue();
       }
-    }
-    label130:
-    for (i = 100;; i = ((Integer)this.transformAnimation.getOpacity().getValue()).intValue())
-    {
       i = (int)(i / 100.0F * paramInt / 255.0F * 255.0F);
-      paramInt = this.contents.size() - 1;
-      while (paramInt >= 0)
-      {
-        paramMatrix = this.contents.get(paramInt);
-        if ((paramMatrix instanceof DrawingContent)) {
-          ((DrawingContent)paramMatrix).draw(paramCanvas, this.matrix, i);
-        }
-        paramInt -= 1;
+    }
+    paramInt = this.contents.size() - 1;
+    while (paramInt >= 0)
+    {
+      paramMatrix = this.contents.get(paramInt);
+      if ((paramMatrix instanceof DrawingContent)) {
+        ((DrawingContent)paramMatrix).draw(paramCanvas, this.matrix, i);
       }
-      break;
+      paramInt -= 1;
     }
   }
   
   public void getBounds(RectF paramRectF, Matrix paramMatrix, boolean paramBoolean)
   {
     this.matrix.set(paramMatrix);
-    if (this.transformAnimation != null) {
-      this.matrix.preConcat(this.transformAnimation.getMatrix());
+    paramMatrix = this.transformAnimation;
+    if (paramMatrix != null) {
+      this.matrix.preConcat(paramMatrix.getMatrix());
     }
     this.rect.set(0.0F, 0.0F, 0.0F, 0.0F);
     int i = this.contents.size() - 1;
@@ -165,8 +165,9 @@ public class ContentGroup
   public Path getPath()
   {
     this.matrix.reset();
-    if (this.transformAnimation != null) {
-      this.matrix.set(this.transformAnimation.getMatrix());
+    Object localObject = this.transformAnimation;
+    if (localObject != null) {
+      this.matrix.set(((TransformKeyframeAnimation)localObject).getMatrix());
     }
     this.path.reset();
     if (this.hidden) {
@@ -175,9 +176,9 @@ public class ContentGroup
     int i = this.contents.size() - 1;
     while (i >= 0)
     {
-      Content localContent = (Content)this.contents.get(i);
-      if ((localContent instanceof PathContent)) {
-        this.path.addPath(((PathContent)localContent).getPath(), this.matrix);
+      localObject = (Content)this.contents.get(i);
+      if ((localObject instanceof PathContent)) {
+        this.path.addPath(((PathContent)localObject).getPath(), this.matrix);
       }
       i -= 1;
     }
@@ -204,8 +205,9 @@ public class ContentGroup
   
   Matrix getTransformationMatrix()
   {
-    if (this.transformAnimation != null) {
-      return this.transformAnimation.getMatrix();
+    TransformKeyframeAnimation localTransformKeyframeAnimation = this.transformAnimation;
+    if (localTransformKeyframeAnimation != null) {
+      return localTransformKeyframeAnimation.getMatrix();
     }
     this.matrix.reset();
     return this.matrix;
@@ -218,33 +220,31 @@ public class ContentGroup
   
   public void resolveKeyPath(KeyPath paramKeyPath1, int paramInt, List<KeyPath> paramList, KeyPath paramKeyPath2)
   {
-    if (!paramKeyPath1.matches(getName(), paramInt)) {}
-    for (;;)
-    {
+    if (!paramKeyPath1.matches(getName(), paramInt)) {
       return;
-      KeyPath localKeyPath = paramKeyPath2;
-      if (!"__container".equals(getName()))
+    }
+    KeyPath localKeyPath = paramKeyPath2;
+    if (!"__container".equals(getName()))
+    {
+      paramKeyPath2 = paramKeyPath2.addKey(getName());
+      localKeyPath = paramKeyPath2;
+      if (paramKeyPath1.fullyResolvesTo(getName(), paramInt))
       {
-        paramKeyPath2 = paramKeyPath2.addKey(getName());
+        paramList.add(paramKeyPath2.resolve(this));
         localKeyPath = paramKeyPath2;
-        if (paramKeyPath1.fullyResolvesTo(getName(), paramInt))
-        {
-          paramList.add(paramKeyPath2.resolve(this));
-          localKeyPath = paramKeyPath2;
-        }
       }
-      if (paramKeyPath1.propagateToChildren(getName(), paramInt))
+    }
+    if (paramKeyPath1.propagateToChildren(getName(), paramInt))
+    {
+      int j = paramKeyPath1.incrementDepthBy(getName(), paramInt);
+      int i = 0;
+      while (i < this.contents.size())
       {
-        int j = paramKeyPath1.incrementDepthBy(getName(), paramInt);
-        int i = 0;
-        while (i < this.contents.size())
-        {
-          paramKeyPath2 = (Content)this.contents.get(i);
-          if ((paramKeyPath2 instanceof KeyPathElement)) {
-            ((KeyPathElement)paramKeyPath2).resolveKeyPath(paramKeyPath1, paramInt + j, paramList, localKeyPath);
-          }
-          i += 1;
+        paramKeyPath2 = (Content)this.contents.get(i);
+        if ((paramKeyPath2 instanceof KeyPathElement)) {
+          ((KeyPathElement)paramKeyPath2).resolveKeyPath(paramKeyPath1, paramInt + j, paramList, localKeyPath);
         }
+        i += 1;
       }
     }
   }
@@ -265,7 +265,7 @@ public class ContentGroup
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.ContentGroup
  * JD-Core Version:    0.7.0.1
  */

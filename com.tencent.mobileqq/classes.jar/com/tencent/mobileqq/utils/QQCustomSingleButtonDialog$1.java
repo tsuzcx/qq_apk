@@ -33,55 +33,44 @@ class QQCustomSingleButtonDialog$1
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null) {
-      this.a.jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)this.a.getContext().getSystemService("layout_inflater"));
+    if (this.a.jdField_a_of_type_AndroidViewLayoutInflater == null)
+    {
+      localObject = this.a;
+      ((QQCustomSingleButtonDialog)localObject).jdField_a_of_type_AndroidViewLayoutInflater = ((LayoutInflater)((QQCustomSingleButtonDialog)localObject).getContext().getSystemService("layout_inflater"));
     }
-    QQCustomSingleButtonDialog.Holder localHolder;
+    Object localObject = paramView;
     if (paramView == null)
     {
-      paramView = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559072, null);
-      localHolder = new QQCustomSingleButtonDialog.Holder(this.a, null);
-      localHolder.a = ((TextView)paramView.findViewById(2131369433));
-      paramView.setTag(localHolder);
+      localObject = this.a.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131558966, null);
+      paramView = new QQCustomSingleButtonDialog.Holder(this.a, null);
+      paramView.a = ((TextView)((View)localObject).findViewById(2131369161));
+      ((View)localObject).setTag(paramView);
     }
-    for (;;)
+    paramView = (QQCustomSingleButtonDialog.Holder)((View)localObject).getTag();
+    if (paramView.a != null)
     {
-      localHolder = (QQCustomSingleButtonDialog.Holder)paramView.getTag();
-      int i;
-      int j;
-      int k;
-      int m;
-      if (localHolder.a != null)
-      {
-        localHolder.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
-        localHolder.a.setOnClickListener(new QQCustomSingleButtonDialog.CustomDialogItemOnClickListener(this.a, paramInt));
-        i = localHolder.a.getPaddingTop();
-        j = localHolder.a.getPaddingLeft();
-        k = localHolder.a.getPaddingRight();
-        m = localHolder.a.getPaddingBottom();
-        if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length != 1) {
-          break label232;
-        }
-        localHolder.a.setBackgroundResource(2130839683);
+      paramView.a.setText(this.a.jdField_a_of_type_ArrayOfJavaLangString[paramInt]);
+      paramView.a.setOnClickListener(new QQCustomSingleButtonDialog.CustomDialogItemOnClickListener(this.a, paramInt));
+      int i = paramView.a.getPaddingTop();
+      int j = paramView.a.getPaddingLeft();
+      int k = paramView.a.getPaddingRight();
+      int m = paramView.a.getPaddingBottom();
+      if (this.a.jdField_a_of_type_ArrayOfJavaLangString.length == 1) {
+        paramView.a.setBackgroundResource(2130839541);
+      } else if (paramInt == 0) {
+        paramView.a.setBackgroundResource(2130839542);
+      } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
+        paramView.a.setBackgroundResource(2130839540);
       }
-      for (;;)
-      {
-        localHolder.a.setPadding(j, i, k, m);
-        EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        label232:
-        if (paramInt == 0) {
-          localHolder.a.setBackgroundResource(2130839684);
-        } else if (paramInt == this.a.jdField_a_of_type_ArrayOfJavaLangString.length - 1) {
-          localHolder.a.setBackgroundResource(2130839682);
-        }
-      }
+      paramView.a.setPadding(j, i, k, m);
     }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QQCustomSingleButtonDialog.1
  * JD-Core Version:    0.7.0.1
  */

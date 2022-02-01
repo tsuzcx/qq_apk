@@ -2,16 +2,17 @@ package com.tencent.qqmini.miniapp.core.page;
 
 import android.content.Context;
 import android.os.Build.VERSION;
+import com.tencent.qqlive.module.videoreport.inject.webview.dtwebview.DtX5WebView;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
 import com.tencent.smtt.export.external.extension.interfaces.IX5WebSettingsExtension;
 import com.tencent.smtt.sdk.WebSettings;
 import com.tencent.smtt.sdk.WebView;
 
 public class BasePageWebview
-  extends WebView
+  extends DtX5WebView
 {
   public static volatile int PAGE_WEBVIEW_ID_FACTORY = 0;
-  private static final String TAG = BasePageWebview.class.getSimpleName();
+  private static final String TAG = "BasePageWebview";
   private AppBrandPageContainer mAppBrandPageContainer;
   protected PageEventListener mPageEventListener;
   protected int mPageWebviewId;
@@ -29,7 +30,10 @@ public class BasePageWebview
     if (Build.VERSION.SDK_INT >= 21) {
       paramContext.setMixedContentMode(0);
     }
-    paramContext.setUserAgent(paramContext.getUserAgentString() + "QQ/MiniApp");
+    paramAppBrandPageContainer = new StringBuilder();
+    paramAppBrandPageContainer.append(paramContext.getUserAgentString());
+    paramAppBrandPageContainer.append("QQ/MiniApp");
+    paramContext.setUserAgent(paramAppBrandPageContainer.toString());
     if (Build.VERSION.SDK_INT >= 11)
     {
       removeJavascriptInterface("searchBoxJavaBridge_");
@@ -41,19 +45,14 @@ public class BasePageWebview
       if (getSettingsExtension() != null) {
         getSettingsExtension().setFirstScreenDetect(false);
       }
-      if (this.mAppBrandPageContainer != null)
-      {
-        paramContext = this.mAppBrandPageContainer;
-        paramContext.aliveWebViewCount += 1;
-      }
-      return;
     }
     catch (Throwable paramContext)
     {
-      for (;;)
-      {
-        QMLog.e(TAG, "BasePageWebview init exception!", paramContext);
-      }
+      QMLog.e(TAG, "BasePageWebview init exception!", paramContext);
+    }
+    paramContext = this.mAppBrandPageContainer;
+    if (paramContext != null) {
+      paramContext.aliveWebViewCount += 1;
     }
   }
   
@@ -67,9 +66,8 @@ public class BasePageWebview
   public void destroy()
   {
     super.destroy();
-    if (this.mAppBrandPageContainer != null)
-    {
-      AppBrandPageContainer localAppBrandPageContainer = this.mAppBrandPageContainer;
+    AppBrandPageContainer localAppBrandPageContainer = this.mAppBrandPageContainer;
+    if (localAppBrandPageContainer != null) {
       localAppBrandPageContainer.aliveWebViewCount -= 1;
     }
   }
@@ -86,7 +84,7 @@ public class BasePageWebview
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.BasePageWebview
  * JD-Core Version:    0.7.0.1
  */

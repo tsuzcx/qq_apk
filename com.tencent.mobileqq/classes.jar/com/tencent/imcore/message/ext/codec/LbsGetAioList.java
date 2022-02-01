@@ -14,25 +14,25 @@ public class LbsGetAioList
     if ((paramInt1 != 1001) && (paramInt1 != 10002) && (UinTypeUtil.a(paramInt1) != 1032)) {
       return;
     }
-    if (paramList == null) {}
-    for (paramInt1 = 0;; paramInt1 = paramList.size())
+    if (paramList == null) {
+      paramInt1 = 0;
+    } else {
+      paramInt1 = paramList.size();
+    }
+    paramInt1 -= 1;
+    while (paramInt1 >= 0)
     {
-      paramInt1 -= 1;
-      while (paramInt1 >= 0)
-      {
-        paramString = (MessageRecord)paramList.get(paramInt1);
-        if ((paramString != null) && (paramString.msgtype == -4011)) {
-          paramList.remove(paramString);
-        }
-        paramInt1 -= 1;
+      paramString = (MessageRecord)paramList.get(paramInt1);
+      if ((paramString != null) && (paramString.msgtype == -4011)) {
+        paramList.remove(paramString);
       }
-      break;
+      paramInt1 -= 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.ext.codec.LbsGetAioList
  * JD-Core Version:    0.7.0.1
  */

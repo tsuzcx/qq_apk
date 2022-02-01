@@ -25,15 +25,18 @@ public class GetHotSortVideoHandler$GetHotSortVideoRequest
   
   public LegoResponseBase a(byte[] paramArrayOfByte)
   {
-    qqstory_group.RspGetGroupHotRankVideo localRspGetGroupHotRankVideo = new qqstory_group.RspGetGroupHotRankVideo();
+    Object localObject = new qqstory_group.RspGetGroupHotRankVideo();
     try
     {
-      localRspGetGroupHotRankVideo.mergeFrom(paramArrayOfByte);
-      return new GetHotSortVideoHandler.GetHotSortVideoResponse(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler, localRspGetGroupHotRankVideo, this.jdField_a_of_type_Boolean);
+      ((qqstory_group.RspGetGroupHotRankVideo)localObject).mergeFrom(paramArrayOfByte);
+      return new GetHotSortVideoHandler.GetHotSortVideoResponse(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler, (qqstory_group.RspGetGroupHotRankVideo)localObject, this.jdField_a_of_type_Boolean);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("GetHotSortVideoHandler", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("GetHotSortVideoHandler", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -43,7 +46,7 @@ public class GetHotSortVideoHandler$GetHotSortVideoRequest
     return StoryApi.a("StoryGroupSvc.get_hot_rank_video_list");
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_group.ReqGetGroupHotRankVideo localReqGetGroupHotRankVideo = new qqstory_group.ReqGetGroupHotRankVideo();
     localReqGetGroupHotRankVideo.union_id.set(ByteStringMicro.copyFromUtf8(GetHotSortVideoHandler.a(this.jdField_a_of_type_ComTencentBizQqstoryNetworkHandlerGetHotSortVideoHandler)));
@@ -60,7 +63,7 @@ public class GetHotSortVideoHandler$GetHotSortVideoRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetHotSortVideoHandler.GetHotSortVideoRequest
  * JD-Core Version:    0.7.0.1
  */

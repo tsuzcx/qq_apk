@@ -31,14 +31,15 @@ public final class bmp4_values
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.map_kv != null) {
-      paramJceOutputStream.write(this.map_kv, 0);
+    Map localMap = this.map_kv;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_BITMAP_4TH.bmp4_values
  * JD-Core Version:    0.7.0.1
  */

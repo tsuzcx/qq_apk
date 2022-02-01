@@ -39,6 +39,10 @@ public class FileUploadUtil
         localStringWriter.write(arrayOfChar, 0, i);
       }
       paramString = localStringWriter.toString();
+      if (paramInputStream != null) {
+        paramInputStream.close();
+      }
+      return paramString;
     }
     finally
     {
@@ -46,18 +50,18 @@ public class FileUploadUtil
         paramInputStream.close();
       }
     }
-    if (paramInputStream != null) {
-      paramInputStream.close();
+    for (;;)
+    {
+      throw paramString;
     }
-    return paramString;
   }
   
   private static String a(HttpURLConnection paramHttpURLConnection)
   {
-    if (paramHttpURLConnection.getResponseCode() != 200) {
-      throw new IOException(HardCodeUtil.a(2131704600));
+    if (paramHttpURLConnection.getResponseCode() == 200) {
+      return b(paramHttpURLConnection);
     }
-    return b(paramHttpURLConnection);
+    throw new IOException(HardCodeUtil.a(2131704680));
   }
   
   private static HttpURLConnection a(String paramString)
@@ -67,7 +71,10 @@ public class FileUploadUtil
     paramString.setUseCaches(false);
     paramString.setDoOutput(true);
     paramString.setRequestMethod("POST");
-    paramString.setRequestProperty("Content-Type", "multipart/form-data; boundary=" + jdField_a_of_type_JavaLangString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("multipart/form-data; boundary=");
+    localStringBuilder.append(jdField_a_of_type_JavaLangString);
+    paramString.setRequestProperty("Content-Type", localStringBuilder.toString());
     paramString.setRequestProperty("User-Agent", "Android Client Agent");
     return paramString;
   }
@@ -82,149 +89,171 @@ public class FileUploadUtil
     //   5: aload_1
     //   6: invokevirtual 134	java/io/File:getName	()Ljava/lang/String;
     //   9: astore_3
-    //   10: aload_0
-    //   11: new 110	java/lang/StringBuilder
-    //   14: dup
-    //   15: invokespecial 111	java/lang/StringBuilder:<init>	()V
-    //   18: ldc 136
-    //   20: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   23: getstatic 60	com/tencent/mobileqq/intervideo/now/FileUploadUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   26: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   32: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   35: aload_0
-    //   36: ldc 143
-    //   38: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   41: aload_0
-    //   42: new 110	java/lang/StringBuilder
-    //   45: dup
-    //   46: invokespecial 111	java/lang/StringBuilder:<init>	()V
-    //   49: ldc 145
-    //   51: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: aload_3
-    //   55: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: ldc 147
-    //   60: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   63: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   66: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   69: aload_0
-    //   70: ldc 143
-    //   72: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   75: aload_0
-    //   76: new 110	java/lang/StringBuilder
-    //   79: dup
-    //   80: invokespecial 111	java/lang/StringBuilder:<init>	()V
-    //   83: ldc 149
-    //   85: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   88: aload_3
-    //   89: invokestatic 154	java/net/URLConnection:guessContentTypeFromName	(Ljava/lang/String;)Ljava/lang/String;
-    //   92: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   98: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   101: aload_0
-    //   102: ldc 143
-    //   104: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   107: aload_0
-    //   108: ldc 143
-    //   110: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   113: aconst_null
-    //   114: astore_3
-    //   115: new 156	java/io/FileInputStream
-    //   118: dup
-    //   119: aload_1
-    //   120: invokespecial 159	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   123: astore_1
-    //   124: sipush 4096
-    //   127: newarray byte
-    //   129: astore_3
-    //   130: aload_1
-    //   131: aload_3
-    //   132: invokevirtual 162	java/io/InputStream:read	([B)I
-    //   135: istore_2
-    //   136: iload_2
-    //   137: iconst_m1
-    //   138: if_icmpeq +25 -> 163
-    //   141: aload_0
-    //   142: aload_3
-    //   143: iconst_0
-    //   144: iload_2
-    //   145: invokevirtual 165	java/io/DataOutputStream:write	([BII)V
-    //   148: goto -18 -> 130
-    //   151: astore_0
-    //   152: aload_1
-    //   153: ifnull -149 -> 4
-    //   156: aload_1
-    //   157: invokevirtual 54	java/io/InputStream:close	()V
-    //   160: return
-    //   161: astore_0
-    //   162: return
-    //   163: aload_1
-    //   164: invokevirtual 54	java/io/InputStream:close	()V
-    //   167: aload_0
-    //   168: ldc 143
-    //   170: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   173: aload_0
-    //   174: invokevirtual 168	java/io/DataOutputStream:flush	()V
-    //   177: aload_1
-    //   178: ifnull -174 -> 4
-    //   181: aload_1
-    //   182: invokevirtual 54	java/io/InputStream:close	()V
-    //   185: return
-    //   186: astore_0
-    //   187: return
-    //   188: astore_0
-    //   189: aload_3
-    //   190: astore_1
-    //   191: aload_1
-    //   192: ifnull +7 -> 199
-    //   195: aload_1
-    //   196: invokevirtual 54	java/io/InputStream:close	()V
-    //   199: aload_0
-    //   200: athrow
-    //   201: astore_1
-    //   202: goto -3 -> 199
+    //   10: new 108	java/lang/StringBuilder
+    //   13: dup
+    //   14: invokespecial 109	java/lang/StringBuilder:<init>	()V
+    //   17: astore 4
+    //   19: aload 4
+    //   21: ldc 136
+    //   23: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: aload 4
+    //   29: getstatic 60	com/tencent/mobileqq/intervideo/now/FileUploadUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   32: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   35: pop
+    //   36: aload_0
+    //   37: aload 4
+    //   39: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   42: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   45: aload_0
+    //   46: ldc 143
+    //   48: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   51: new 108	java/lang/StringBuilder
+    //   54: dup
+    //   55: invokespecial 109	java/lang/StringBuilder:<init>	()V
+    //   58: astore 4
+    //   60: aload 4
+    //   62: ldc 145
+    //   64: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   67: pop
+    //   68: aload 4
+    //   70: aload_3
+    //   71: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   74: pop
+    //   75: aload 4
+    //   77: ldc 147
+    //   79: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   82: pop
+    //   83: aload_0
+    //   84: aload 4
+    //   86: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   89: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   92: aload_0
+    //   93: ldc 143
+    //   95: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   98: new 108	java/lang/StringBuilder
+    //   101: dup
+    //   102: invokespecial 109	java/lang/StringBuilder:<init>	()V
+    //   105: astore 4
+    //   107: aload 4
+    //   109: ldc 149
+    //   111: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   114: pop
+    //   115: aload 4
+    //   117: aload_3
+    //   118: invokestatic 154	java/net/URLConnection:guessContentTypeFromName	(Ljava/lang/String;)Ljava/lang/String;
+    //   121: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: pop
+    //   125: aload_0
+    //   126: aload 4
+    //   128: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   131: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   134: aload_0
+    //   135: ldc 143
+    //   137: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   140: aload_0
+    //   141: ldc 143
+    //   143: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   146: new 156	java/io/FileInputStream
+    //   149: dup
+    //   150: aload_1
+    //   151: invokespecial 159	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   154: astore_1
+    //   155: sipush 4096
+    //   158: newarray byte
+    //   160: astore_3
+    //   161: aload_1
+    //   162: aload_3
+    //   163: invokevirtual 162	java/io/InputStream:read	([B)I
+    //   166: istore_2
+    //   167: iload_2
+    //   168: iconst_m1
+    //   169: if_icmpeq +13 -> 182
+    //   172: aload_0
+    //   173: aload_3
+    //   174: iconst_0
+    //   175: iload_2
+    //   176: invokevirtual 165	java/io/DataOutputStream:write	([BII)V
+    //   179: goto -18 -> 161
+    //   182: aload_1
+    //   183: invokevirtual 57	java/io/InputStream:close	()V
+    //   186: aload_0
+    //   187: ldc 143
+    //   189: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   192: aload_0
+    //   193: invokevirtual 168	java/io/DataOutputStream:flush	()V
+    //   196: aload_1
+    //   197: invokevirtual 57	java/io/InputStream:close	()V
+    //   200: return
+    //   201: astore_0
+    //   202: goto +6 -> 208
     //   205: astore_0
-    //   206: goto -15 -> 191
-    //   209: astore_0
-    //   210: aconst_null
-    //   211: astore_1
-    //   212: goto -60 -> 152
+    //   206: aconst_null
+    //   207: astore_1
+    //   208: aload_1
+    //   209: ifnull +7 -> 216
+    //   212: aload_1
+    //   213: invokevirtual 57	java/io/InputStream:close	()V
+    //   216: aload_0
+    //   217: athrow
+    //   218: aconst_null
+    //   219: astore_1
+    //   220: aload_1
+    //   221: ifnull +6 -> 227
+    //   224: goto -28 -> 196
+    //   227: return
+    //   228: astore_0
+    //   229: goto -11 -> 218
+    //   232: astore_0
+    //   233: goto -13 -> 220
+    //   236: astore_0
+    //   237: return
+    //   238: astore_1
+    //   239: goto -23 -> 216
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	215	0	paramDataOutputStream	DataOutputStream
-    //   0	215	1	paramFile	java.io.File
-    //   135	10	2	i	int
-    //   9	181	3	localObject	Object
+    //   0	242	0	paramDataOutputStream	DataOutputStream
+    //   0	242	1	paramFile	java.io.File
+    //   166	10	2	i	int
+    //   9	165	3	localObject	Object
+    //   17	110	4	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   124	130	151	java/io/IOException
-    //   130	136	151	java/io/IOException
-    //   141	148	151	java/io/IOException
-    //   163	177	151	java/io/IOException
-    //   156	160	161	java/lang/Exception
-    //   181	185	186	java/lang/Exception
-    //   115	124	188	finally
-    //   195	199	201	java/lang/Exception
-    //   124	130	205	finally
-    //   130	136	205	finally
-    //   141	148	205	finally
-    //   163	177	205	finally
-    //   115	124	209	java/io/IOException
+    //   155	161	201	finally
+    //   161	167	201	finally
+    //   172	179	201	finally
+    //   182	196	201	finally
+    //   146	155	205	finally
+    //   146	155	228	java/io/IOException
+    //   155	161	232	java/io/IOException
+    //   161	167	232	java/io/IOException
+    //   172	179	232	java/io/IOException
+    //   182	196	232	java/io/IOException
+    //   196	200	236	java/lang/Exception
+    //   212	216	238	java/lang/Exception
   }
   
   private static void a(DataOutputStream paramDataOutputStream, Map<String, String> paramMap)
   {
-    if ((paramMap == null) || (paramMap.isEmpty())) {}
-    for (;;)
+    if (paramMap != null)
     {
-      return;
+      if (paramMap.isEmpty()) {
+        return;
+      }
       paramMap = paramMap.entrySet().iterator();
       while (paramMap.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)paramMap.next();
-        paramDataOutputStream.writeBytes("--" + jdField_a_of_type_JavaLangString);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("--");
+        localStringBuilder.append(jdField_a_of_type_JavaLangString);
+        paramDataOutputStream.writeBytes(localStringBuilder.toString());
         paramDataOutputStream.writeBytes("\r\n");
-        paramDataOutputStream.writeBytes("Content-Disposition: form-data; name=\"" + (String)localEntry.getKey() + "\"");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Content-Disposition: form-data; name=\"");
+        localStringBuilder.append((String)localEntry.getKey());
+        localStringBuilder.append("\"");
+        paramDataOutputStream.writeBytes(localStringBuilder.toString());
         paramDataOutputStream.writeBytes("\r\n");
         paramDataOutputStream.writeBytes("\r\n");
         paramDataOutputStream.writeBytes(URLEncoder.encode((String)localEntry.getValue(), "UTF-8"));
@@ -235,166 +264,161 @@ public class FileUploadUtil
   
   public static void a(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null))
+    if ((paramString1 != null) && (paramString2 != null))
     {
-      Log.e("HttpUtil", "uin null or file path null");
+      ThreadManagerV2.excute(new FileUploadUtil.1(paramString1, paramString2), 128, null, false);
       return;
     }
-    ThreadManagerV2.excute(new FileUploadUtil.1(paramString1, paramString2), 128, null, false);
+    Log.e("HttpUtil", "uin null or file path null");
   }
   
   private static String b()
   {
-    Random localRandom = new Random();
-    char[] arrayOfChar = new char[localRandom.nextInt(9) + 12];
+    Object localObject = new Random();
+    char[] arrayOfChar1 = new char[((Random)localObject).nextInt(9) + 12];
     int i = 0;
-    while (i < arrayOfChar.length)
+    while (i < arrayOfChar1.length)
     {
-      arrayOfChar[i] = jdField_a_of_type_ArrayOfChar[localRandom.nextInt(jdField_a_of_type_ArrayOfChar.length)];
+      char[] arrayOfChar2 = jdField_a_of_type_ArrayOfChar;
+      arrayOfChar1[i] = arrayOfChar2[localObject.nextInt(arrayOfChar2.length)];
       i += 1;
     }
-    return "===AndroidFormBoundary" + new String(arrayOfChar);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("===AndroidFormBoundary");
+    ((StringBuilder)localObject).append(new String(arrayOfChar1));
+    return ((StringBuilder)localObject).toString();
   }
   
   private static String b(String paramString)
   {
-    String str = "UTF-8";
-    String[] arrayOfString = paramString.split(";");
-    int j = arrayOfString.length;
+    paramString = paramString.split(";");
+    int j = paramString.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      paramString = str;
-      if (i < j)
+      String str = paramString[i].trim();
+      if (str.startsWith("charset"))
       {
-        paramString = arrayOfString[i].trim();
-        if (!paramString.startsWith("charset")) {
-          break label71;
+        paramString = str.split("=", 2);
+        if (paramString.length != 2) {
+          break;
         }
-        arrayOfString = paramString.split("=", 2);
-        paramString = str;
-        if (arrayOfString.length == 2) {
-          paramString = arrayOfString[1].trim();
-        }
+        return paramString[1].trim();
       }
-      return paramString;
-      label71:
       i += 1;
     }
+    return "UTF-8";
   }
   
   /* Error */
   private static String b(String paramString, Map<String, String> paramMap, java.io.File paramFile)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore_3
-    //   2: aload_0
-    //   3: invokestatic 268	com/tencent/mobileqq/intervideo/now/FileUploadUtil:a	(Ljava/lang/String;)Ljava/net/HttpURLConnection;
-    //   6: astore_0
-    //   7: new 138	java/io/DataOutputStream
-    //   10: dup
-    //   11: aload_0
-    //   12: invokevirtual 272	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
-    //   15: invokespecial 275	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   18: astore_3
-    //   19: aload_3
-    //   20: aload_1
-    //   21: invokestatic 277	com/tencent/mobileqq/intervideo/now/FileUploadUtil:a	(Ljava/io/DataOutputStream;Ljava/util/Map;)V
-    //   24: aload_3
-    //   25: aload_2
-    //   26: invokestatic 279	com/tencent/mobileqq/intervideo/now/FileUploadUtil:a	(Ljava/io/DataOutputStream;Ljava/io/File;)V
-    //   29: aload_3
-    //   30: ldc 143
-    //   32: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   35: aload_3
-    //   36: new 110	java/lang/StringBuilder
-    //   39: dup
-    //   40: invokespecial 111	java/lang/StringBuilder:<init>	()V
-    //   43: ldc 136
-    //   45: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   48: getstatic 60	com/tencent/mobileqq/intervideo/now/FileUploadUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   51: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   54: ldc 136
-    //   56: invokevirtual 117	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   59: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   62: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   65: aload_3
-    //   66: ldc 143
+    //   0: aload_0
+    //   1: invokestatic 268	com/tencent/mobileqq/intervideo/now/FileUploadUtil:a	(Ljava/lang/String;)Ljava/net/HttpURLConnection;
+    //   4: astore_3
+    //   5: new 138	java/io/DataOutputStream
+    //   8: dup
+    //   9: aload_3
+    //   10: invokevirtual 272	java/net/HttpURLConnection:getOutputStream	()Ljava/io/OutputStream;
+    //   13: invokespecial 275	java/io/DataOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   16: astore_0
+    //   17: aload_0
+    //   18: aload_1
+    //   19: invokestatic 277	com/tencent/mobileqq/intervideo/now/FileUploadUtil:a	(Ljava/io/DataOutputStream;Ljava/util/Map;)V
+    //   22: aload_0
+    //   23: aload_2
+    //   24: invokestatic 279	com/tencent/mobileqq/intervideo/now/FileUploadUtil:a	(Ljava/io/DataOutputStream;Ljava/io/File;)V
+    //   27: aload_0
+    //   28: ldc 143
+    //   30: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   33: new 108	java/lang/StringBuilder
+    //   36: dup
+    //   37: invokespecial 109	java/lang/StringBuilder:<init>	()V
+    //   40: astore_1
+    //   41: aload_1
+    //   42: ldc 136
+    //   44: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   47: pop
+    //   48: aload_1
+    //   49: getstatic 60	com/tencent/mobileqq/intervideo/now/FileUploadUtil:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   52: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   55: pop
+    //   56: aload_1
+    //   57: ldc 136
+    //   59: invokevirtual 115	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   62: pop
+    //   63: aload_0
+    //   64: aload_1
+    //   65: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   68: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
-    //   71: aload_3
-    //   72: invokevirtual 280	java/io/DataOutputStream:close	()V
-    //   75: aload_0
-    //   76: invokestatic 282	com/tencent/mobileqq/intervideo/now/FileUploadUtil:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
-    //   79: astore_1
-    //   80: ldc 216
-    //   82: aload_1
-    //   83: invokestatic 285	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
-    //   86: pop
-    //   87: aload_0
-    //   88: ifnull +7 -> 95
-    //   91: aload_0
-    //   92: invokevirtual 288	java/net/HttpURLConnection:disconnect	()V
-    //   95: aload_3
-    //   96: ifnull +7 -> 103
-    //   99: aload_3
-    //   100: invokevirtual 280	java/io/DataOutputStream:close	()V
-    //   103: aload_1
-    //   104: areturn
-    //   105: astore_0
-    //   106: aload_0
-    //   107: invokevirtual 291	java/lang/Exception:printStackTrace	()V
-    //   110: aload_1
-    //   111: areturn
-    //   112: astore_0
-    //   113: aconst_null
+    //   71: aload_0
+    //   72: ldc 143
+    //   74: invokevirtual 141	java/io/DataOutputStream:writeBytes	(Ljava/lang/String;)V
+    //   77: aload_0
+    //   78: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   81: aload_3
+    //   82: invokestatic 282	com/tencent/mobileqq/intervideo/now/FileUploadUtil:a	(Ljava/net/HttpURLConnection;)Ljava/lang/String;
+    //   85: astore_1
+    //   86: ldc 226
+    //   88: aload_1
+    //   89: invokestatic 285	android/util/Log:i	(Ljava/lang/String;Ljava/lang/String;)I
+    //   92: pop
+    //   93: aload_3
+    //   94: ifnull +7 -> 101
+    //   97: aload_3
+    //   98: invokevirtual 288	java/net/HttpURLConnection:disconnect	()V
+    //   101: aload_0
+    //   102: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   105: aload_1
+    //   106: areturn
+    //   107: astore_0
+    //   108: aload_0
+    //   109: invokevirtual 291	java/lang/Exception:printStackTrace	()V
+    //   112: aload_1
+    //   113: areturn
     //   114: astore_1
     //   115: aload_3
     //   116: astore_2
-    //   117: aload_2
-    //   118: ifnull +7 -> 125
-    //   121: aload_2
-    //   122: invokevirtual 288	java/net/HttpURLConnection:disconnect	()V
-    //   125: aload_1
-    //   126: ifnull +7 -> 133
-    //   129: aload_1
-    //   130: invokevirtual 280	java/io/DataOutputStream:close	()V
-    //   133: aload_0
-    //   134: athrow
-    //   135: astore_1
-    //   136: aload_1
-    //   137: invokevirtual 291	java/lang/Exception:printStackTrace	()V
-    //   140: goto -7 -> 133
-    //   143: astore_3
-    //   144: aconst_null
-    //   145: astore_1
-    //   146: aload_0
-    //   147: astore_2
-    //   148: aload_3
-    //   149: astore_0
-    //   150: goto -33 -> 117
-    //   153: astore_1
-    //   154: aload_0
-    //   155: astore_2
-    //   156: aload_1
-    //   157: astore_0
-    //   158: aload_3
-    //   159: astore_1
-    //   160: goto -43 -> 117
+    //   117: goto +16 -> 133
+    //   120: astore_1
+    //   121: aconst_null
+    //   122: astore_0
+    //   123: aload_3
+    //   124: astore_2
+    //   125: goto +8 -> 133
+    //   128: astore_1
+    //   129: aconst_null
+    //   130: astore_2
+    //   131: aload_2
+    //   132: astore_0
+    //   133: aload_2
+    //   134: ifnull +7 -> 141
+    //   137: aload_2
+    //   138: invokevirtual 288	java/net/HttpURLConnection:disconnect	()V
+    //   141: aload_0
+    //   142: ifnull +15 -> 157
+    //   145: aload_0
+    //   146: invokevirtual 280	java/io/DataOutputStream:close	()V
+    //   149: goto +8 -> 157
+    //   152: astore_0
+    //   153: aload_0
+    //   154: invokevirtual 291	java/lang/Exception:printStackTrace	()V
+    //   157: aload_1
+    //   158: athrow
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	163	0	paramString	String
-    //   0	163	1	paramMap	Map<String, String>
-    //   0	163	2	paramFile	java.io.File
-    //   1	115	3	localDataOutputStream	DataOutputStream
-    //   143	16	3	localObject	Object
+    //   0	159	0	paramString	String
+    //   0	159	1	paramMap	Map<String, String>
+    //   0	159	2	paramFile	java.io.File
+    //   4	120	3	localHttpURLConnection	HttpURLConnection
     // Exception table:
     //   from	to	target	type
-    //   99	103	105	java/lang/Exception
-    //   2	7	112	finally
-    //   129	133	135	java/lang/Exception
-    //   7	19	143	finally
-    //   19	87	153	finally
+    //   101	105	107	java/lang/Exception
+    //   17	93	114	finally
+    //   5	17	120	finally
+    //   0	5	128	finally
+    //   145	149	152	java/lang/Exception
   }
   
   private static String b(HttpURLConnection paramHttpURLConnection)
@@ -409,7 +433,7 @@ public class FileUploadUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.FileUploadUtil
  * JD-Core Version:    0.7.0.1
  */

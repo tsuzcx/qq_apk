@@ -18,61 +18,53 @@ public class VFSAssistantUtils
   
   public static String getSDKPrivatePath(String paramString)
   {
-    if (!hasDetectedMounted) {}
-    String str3;
-    try
-    {
-      hasExternalStorage = "mounted".equals(Environment.getExternalStorageState());
-      hasDetectedMounted = true;
-      String str1 = paramString;
-      if (!TextUtils.isEmpty(paramString))
+    if (!hasDetectedMounted) {
+      try
       {
-        str1 = paramString;
-        if (hasExternalStorage)
+        hasExternalStorage = "mounted".equals(Environment.getExternalStorageState());
+        hasDetectedMounted = true;
+      }
+      catch (Exception localException)
+      {
+        QLog.e("VFSAssistantUtils", 1, "getSDKPrivatePath is called!", localException);
+      }
+    }
+    if ((!TextUtils.isEmpty(paramString)) && (hasExternalStorage))
+    {
+      String str = VFSRegisterProxy.a().a();
+      Object localObject;
+      if ((!paramString.startsWith("/")) && (paramString.indexOf(":") <= 0))
+      {
+        if (str != null)
         {
-          str3 = VFSRegisterProxy.a().a();
-          if ((!paramString.startsWith("/")) && (paramString.indexOf(":") <= 0)) {
-            break label149;
-          }
-          str1 = paramString;
-          if (str3 != null)
-          {
-            str1 = paramString;
-            if (!paramString.startsWith(str3))
-            {
-              str1 = paramString;
-              if (paramString.startsWith(VFSRegisterProxy.a().b()))
-              {
-                String[] arrayOfString = paramString.split(VFSRegisterProxy.a().b());
-                str1 = paramString;
-                if (arrayOfString.length >= 2) {
-                  str1 = str3 + arrayOfString[1];
-                }
-              }
-            }
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(str);
+          ((StringBuilder)localObject).append(File.separator);
+          ((StringBuilder)localObject).append(paramString);
+          return ((StringBuilder)localObject).toString();
         }
       }
-      return str1;
-    }
-    catch (Exception localException)
-    {
-      label149:
-      do
+      else if ((str != null) && (!paramString.startsWith(str)) && (paramString.startsWith(VFSRegisterProxy.a().b())))
       {
-        for (;;)
+        localObject = paramString.split(VFSRegisterProxy.a().b());
+        if (localObject.length >= 2)
         {
-          QLog.e("VFSAssistantUtils", 1, "getSDKPrivatePath is called!", localException);
+          paramString = new StringBuilder();
+          paramString.append(str);
+          paramString.append(localObject[1]);
+          return paramString.toString();
         }
-        String str2 = paramString;
-      } while (str3 == null);
+        if (paramString.equals(VFSRegisterProxy.a().b())) {
+          return str;
+        }
+      }
     }
-    return str3 + File.separator + paramString;
+    return paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vfs.VFSAssistantUtils
  * JD-Core Version:    0.7.0.1
  */

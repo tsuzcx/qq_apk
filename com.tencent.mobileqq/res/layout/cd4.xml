@@ -1,3 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<org.libpag.PAGView android:id="@id/ng9" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content"
-  xmlns:android="http://schemas.android.com/apk/res/android" />
+<merge
+  xmlns:android="http://schemas.android.com/apk/res/android" xmlns:app="http://schemas.android.com/apk/res-auto">
+    <TextView android:textSize="18.0sp" android:textColor="#ffffffff" android:id="@id/k60" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginLeft="15.0dip" android:layout_marginTop="45.0dip" android:text="@string/iv" android:shadowColor="@color/bx" android:shadowDy="2.0" android:shadowRadius="4.0" />
+    <TextView android:textSize="18.0sp" android:textStyle="bold" android:textColor="#ffffffff" android:id="@id/k6q" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="45.0dip" android:layout_marginRight="15.0dip" android:text="@string/wa1" android:shadowColor="@color/bx" android:shadowDy="2.0" android:shadowRadius="4.0" android:layout_alignParentRight="true" />
+    <RelativeLayout android:id="@id/m6h" android:background="@color/g9" android:layout_width="fill_parent" android:layout_height="@dimen/bbj" android:layout_alignParentBottom="true">
+        <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.DoodleColorAndModeView android:id="@id/nfj" android:layout_width="fill_parent" android:layout_height="37.0dip" android:layout_marginTop="@dimen/bbi" app:needHeader="true" app:needMosaic="false" app:useCase="o7o" />
+    </RelativeLayout>
+    <FrameLayout android:id="@id/nec" android:visibility="gone" android:layout_width="38.0dip" android:layout_height="38.0dip" android:layout_marginRight="17.0dip" android:layout_marginBottom="16.0dip" android:layout_above="@id/m6h" android:layout_alignParentRight="true">
+        <ImageView android:id="@id/dyq" android:background="@drawable/bix" android:layout_width="fill_parent" android:layout_height="fill_parent" />
+    </FrameLayout>
+    <com.tencent.aelight.camera.aioeditor.takevideo.doodle.ui.panel.AEDoodlePenWidthSeekBar android:id="@id/ilm" android:layout_width="15.5dip" android:layout_height="270.0dip" android:layout_centerVertical="true" />
+</merge>

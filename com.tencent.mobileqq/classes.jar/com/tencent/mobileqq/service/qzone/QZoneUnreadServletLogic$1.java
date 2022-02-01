@@ -17,45 +17,49 @@ final class QZoneUnreadServletLogic$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {}
-    Object localObject;
-    do
-    {
-      do
-      {
-        return;
-        localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.QZONE_MANAGER);
-      } while ((localObject == null) || (!(localObject instanceof QZoneManagerImp)));
-      localObject = (QZoneManagerImp)localObject;
-      if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList == null) {
-        ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      }
-      if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.size() == 0) {
-        QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList);
-      }
-    } while (QZoneUnreadServletLogic.a(this.jdField_a_of_type_JavaUtilArrayList, ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList));
-    ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.clear();
-    ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
-    try
-    {
-      BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.g, null, null);
-      QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilArrayList);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject == null) {
       return;
     }
-    catch (Exception localException)
+    localObject = ((QQAppInterface)localObject).getManager(QQManagerFactory.QZONE_MANAGER);
+    if (localObject == null) {
+      return;
+    }
+    if (!(localObject instanceof QZoneManagerImp)) {
+      return;
+    }
+    localObject = (QZoneManagerImp)localObject;
+    if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList == null) {
+      ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    }
+    if (((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.size() == 0) {
+      QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList);
+    }
+    if (!QZoneUnreadServletLogic.a(this.jdField_a_of_type_JavaUtilArrayList, ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList))
     {
-      for (;;)
+      ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.clear();
+      ((QZoneManagerImp)localObject).jdField_a_of_type_JavaUtilArrayList.addAll(this.jdField_a_of_type_JavaUtilArrayList);
+      try
       {
-        if (QLog.isColorLevel()) {
-          QLog.e("UndealCount.QZoneUnreadServletLogic", 2, "getNavigatorConfigs error:" + localException.getMessage(), localException);
+        BaseApplication.getContext().getContentResolver().delete(QZoneConfigProvider.g, null, null);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("getNavigatorConfigs error:");
+          localStringBuilder.append(localException.getMessage());
+          QLog.e("UndealCount.QZoneUnreadServletLogic", 2, localStringBuilder.toString(), localException);
         }
       }
+      QZConfigProviderUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), this.jdField_a_of_type_JavaUtilArrayList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.qzone.QZoneUnreadServletLogic.1
  * JD-Core Version:    0.7.0.1
  */

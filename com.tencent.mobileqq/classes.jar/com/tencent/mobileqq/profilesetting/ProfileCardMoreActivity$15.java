@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.profilesetting;
 
 import android.os.Message;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qphone.base.util.QLog;
 import mqq.os.MqqHandler;
@@ -13,46 +13,42 @@ class ProfileCardMoreActivity$15
   
   public void handleMessage(Message paramMessage)
   {
-    boolean bool2 = true;
-    switch (paramMessage.what)
+    Object localObject;
+    if (paramMessage.what != 36)
     {
-    default: 
-      QLog.d("IphoneTitleBarActivity", 2, "TEST more info message handler: " + paramMessage.what);
-    }
-    do
-    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("TEST more info message handler: ");
+      ((StringBuilder)localObject).append(paramMessage.what);
+      QLog.d("IphoneTitleBarActivity", 2, ((StringBuilder)localObject).toString());
       return;
-    } while (!((String)paramMessage.obj).equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.a));
-    label86:
-    FormSwitchItem localFormSwitchItem;
-    if (paramMessage.arg1 == 1)
-    {
-      bool1 = true;
-      if (bool1 == this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a()) {
-        break label154;
-      }
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
-      localFormSwitchItem = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
-      if (paramMessage.arg1 != 1) {
-        break label156;
-      }
     }
-    label154:
-    label156:
-    for (boolean bool1 = bool2;; bool1 = false)
+    if (((String)paramMessage.obj).equals(this.a.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne.uin))
     {
-      localFormSwitchItem.setChecked(bool1);
-      this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
-      return;
-      bool1 = false;
-      break label86;
-      break;
+      int i = paramMessage.arg1;
+      boolean bool2 = false;
+      boolean bool1;
+      if (i == 1) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      if (bool1 != this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.a())
+      {
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(null);
+        localObject = this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem;
+        bool1 = bool2;
+        if (paramMessage.arg1 == 1) {
+          bool1 = true;
+        }
+        ((FormSwitchItem)localObject).setChecked(bool1);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetFormSwitchItem.setOnCheckedChangeListener(this.a);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity.15
  * JD-Core Version:    0.7.0.1
  */

@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 import android.content.Context;
 import android.content.res.Resources;
@@ -74,8 +74,9 @@ public class AccountDetailXListView
   
   private void a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setPadding(this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingLeft(), 0, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight(), paramInt);
+    RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+    if (localRelativeLayout != null) {
+      localRelativeLayout.setPadding(localRelativeLayout.getPaddingLeft(), 0, this.jdField_a_of_type_AndroidWidgetRelativeLayout.getPaddingRight(), paramInt);
     }
   }
   
@@ -88,41 +89,48 @@ public class AccountDetailXListView
   
   private boolean a()
   {
-    if (getAdapter() == null) {}
-    while ((getFooterViewsCount() <= 0) || (getLastVisiblePosition() != getAdapter().getCount() - 1)) {
+    ListAdapter localListAdapter = getAdapter();
+    boolean bool = false;
+    if (localListAdapter == null) {
       return false;
     }
-    return true;
+    if (getFooterViewsCount() <= 0) {
+      return false;
+    }
+    if (getLastVisiblePosition() == getAdapter().getCount() - 1) {
+      bool = true;
+    }
+    return bool;
   }
   
   private void c()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131560108, this, false));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373701));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373702));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)LayoutInflater.from(getContext()).inflate(2131559979, this, false));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373273));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131373274));
     addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout, null, false);
     setFooterDividersEnabled(false);
   }
   
   private void d()
   {
-    if ((a()) && (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$RefreshCallback != null))
+    if ((a()) && (this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailXListView$RefreshCallback != null))
     {
       if (QLog.isColorLevel()) {
         QLog.d("AccountDetailXListView", 2, "loadingMore");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689505);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689532);
       a(0);
       this.jdField_a_of_type_Int = 1;
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$RefreshCallback.startLoadMore(this);
+      this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailXListView$RefreshCallback.startLoadMore(this);
     }
   }
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$RefreshCallback = null;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailXListView$RefreshCallback = null;
   }
   
   public void a(boolean paramBoolean)
@@ -136,10 +144,10 @@ public class AccountDetailXListView
         addFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
       }
     }
-    while ((this.jdField_a_of_type_AndroidWidgetRelativeLayout == null) || (getFooterViewsCount() <= 0)) {
-      return;
+    else if ((this.jdField_a_of_type_AndroidWidgetRelativeLayout != null) && (getFooterViewsCount() > 0))
+    {
+      removeFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
     }
-    removeFooterView(this.jdField_a_of_type_AndroidWidgetRelativeLayout);
   }
   
   public void b()
@@ -150,7 +158,7 @@ public class AccountDetailXListView
         QLog.d("AccountDetailXListView", 2, "loadMoreFail");
       }
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689504);
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689531);
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       a(0);
       this.jdField_a_of_type_Int = 0;
@@ -161,37 +169,42 @@ public class AccountDetailXListView
   {
     if (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailXListView", 2, "loadMoreComplete hasMoreData = " + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("loadMoreComplete hasMoreData = ");
+        localStringBuilder.append(paramBoolean);
+        QLog.d("AccountDetailXListView", 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_Int = 0;
       if (!paramBoolean)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689506);
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131689533);
         this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
         this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
         this.jdField_a_of_type_Boolean = false;
+        return;
       }
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
     }
-    else
-    {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
   }
   
-  public void onFinishInflate()
+  protected void onFinishInflate()
   {
     super.onFinishInflate();
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((paramBoolean) && (this.jdField_b_of_type_Int < 0) && (this.jdField_a_of_type_AndroidWidgetRelativeLayout != null))
+    if ((paramBoolean) && (this.jdField_b_of_type_Int < 0))
     {
-      this.jdField_b_of_type_Int = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getHeight();
-      a(-this.jdField_b_of_type_Int);
+      RelativeLayout localRelativeLayout = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
+      if (localRelativeLayout != null)
+      {
+        this.jdField_b_of_type_Int = localRelativeLayout.getHeight();
+        a(-this.jdField_b_of_type_Int);
+      }
     }
   }
   
@@ -208,39 +221,40 @@ public class AccountDetailXListView
   {
     int i = paramMotionEvent.getAction();
     this.jdField_b_of_type_Float = paramMotionEvent.getY();
+    float f1;
     if (i == 0)
     {
       this.jdField_d_of_type_Int = ((int)paramMotionEvent.getY());
-      this.jdField_a_of_type_Float = this.jdField_b_of_type_Float;
+      f1 = this.jdField_b_of_type_Float;
+      this.jdField_a_of_type_Float = f1;
       this.jdField_b_of_type_Boolean = true;
-      this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
+      this.jdField_c_of_type_Float = f1;
     }
-    for (;;)
+    else if (i == 2)
     {
-      return super.onTouchEvent(paramMotionEvent);
-      if (i == 2)
+      this.jdField_d_of_type_Int = ((int)(paramMotionEvent.getY() - this.jdField_d_of_type_Int));
+      if (Math.abs(this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) < DisplayUtil.a(super.getContext(), 10.0F))
       {
-        this.jdField_d_of_type_Int = ((int)(paramMotionEvent.getY() - this.jdField_d_of_type_Int));
-        if (Math.abs(this.jdField_b_of_type_Float - this.jdField_a_of_type_Float) < DisplayUtil.a(super.getContext(), 10.0F))
-        {
-          this.jdField_d_of_type_Int = ((int)paramMotionEvent.getY());
-          this.jdField_d_of_type_Float = (this.jdField_b_of_type_Float - this.jdField_c_of_type_Float);
-          this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
-        }
-      }
-      else if (paramMotionEvent.getAction() == 1)
-      {
-        this.jdField_e_of_type_Float = Math.abs(this.jdField_d_of_type_Float);
-        this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
         this.jdField_d_of_type_Int = ((int)paramMotionEvent.getY());
-        this.jdField_b_of_type_Boolean = false;
-        this.jdField_d_of_type_Float = (this.jdField_b_of_type_Float - this.jdField_c_of_type_Float);
-        this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
-        this.jdField_e_of_type_Int = getScrollY();
-        removeCallbacks(this);
-        postDelayed(this, this.f);
+        f1 = this.jdField_b_of_type_Float;
+        this.jdField_d_of_type_Float = (f1 - this.jdField_c_of_type_Float);
+        this.jdField_c_of_type_Float = f1;
       }
     }
+    else if (paramMotionEvent.getAction() == 1)
+    {
+      this.jdField_e_of_type_Float = Math.abs(this.jdField_d_of_type_Float);
+      this.jdField_c_of_type_Float = this.jdField_b_of_type_Float;
+      this.jdField_d_of_type_Int = ((int)paramMotionEvent.getY());
+      this.jdField_b_of_type_Boolean = false;
+      f1 = this.jdField_b_of_type_Float;
+      this.jdField_d_of_type_Float = (f1 - this.jdField_c_of_type_Float);
+      this.jdField_c_of_type_Float = f1;
+      this.jdField_e_of_type_Int = getScrollY();
+      removeCallbacks(this);
+      postDelayed(this, this.f);
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
   
   public void run()
@@ -248,28 +262,31 @@ public class AccountDetailXListView
     int i = getScrollY();
     if (this.jdField_e_of_type_Int - i == 0)
     {
-      if (this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$OnEndScrollListener != null) {
-        this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$OnEndScrollListener.a((int)this.jdField_e_of_type_Float);
+      AccountDetailXListView.OnEndScrollListener localOnEndScrollListener = this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailXListView$OnEndScrollListener;
+      if (localOnEndScrollListener != null) {
+        localOnEndScrollListener.a((int)this.jdField_e_of_type_Float);
       }
-      return;
     }
-    this.jdField_e_of_type_Int = getScrollY();
-    postDelayed(this, this.f);
+    else
+    {
+      this.jdField_e_of_type_Int = getScrollY();
+      postDelayed(this, this.f);
+    }
   }
   
   public void setOnEndScrollListener(AccountDetailXListView.OnEndScrollListener paramOnEndScrollListener)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$OnEndScrollListener = paramOnEndScrollListener;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailXListView$OnEndScrollListener = paramOnEndScrollListener;
   }
   
   public void setRefreshCallback(AccountDetailXListView.RefreshCallback paramRefreshCallback)
   {
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailViewAccountDetailXListView$RefreshCallback = paramRefreshCallback;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailViewAccountDetailXListView$RefreshCallback = paramRefreshCallback;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailXListView
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailXListView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.FTSDBManager;
 import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.mobileqq.fts.api.IFTSDBRuntimeService;
 import com.tencent.mobileqq.managers.MessageRecordManagerImpl;
 import com.tencent.mobileqq.utils.DBUtils;
 import com.tencent.open.OpenProxy;
@@ -21,7 +21,7 @@ class AccountManageActivity$22
       if (localProxyManager != null)
       {
         localProxyManager.transSaveToDatabase();
-        FTSDBManager.a(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
+        ((IFTSDBRuntimeService)this.this$0.app.getRuntimeService(IFTSDBRuntimeService.class, "")).clearFTS(this.this$0.app, this.jdField_a_of_type_JavaLangString, true);
         new MessageRecordManagerImpl().a(this.jdField_a_of_type_JavaLangString);
         DBUtils.a().a(this.this$0.app.getApp(), this.jdField_a_of_type_JavaLangString, false);
       }
@@ -31,7 +31,7 @@ class AccountManageActivity$22
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AccountManageActivity.22
  * JD-Core Version:    0.7.0.1
  */

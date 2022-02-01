@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class AccessReqHead
   extends JceStruct
@@ -71,41 +72,50 @@ public final class AccessReqHead
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.qua != null) {
-      paramJceOutputStream.write(this.qua, 0);
+    Object localObject = this.qua;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.uin, 1);
-    if (this.uniqueId != null) {
-      paramJceOutputStream.write(this.uniqueId, 2);
+    localObject = this.uniqueId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.terminal != null) {
-      paramJceOutputStream.write(this.terminal, 3);
+    localObject = this.terminal;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.ticketForQQ != null) {
-      paramJceOutputStream.write(this.ticketForQQ, 4);
+    localObject = this.ticketForQQ;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
     paramJceOutputStream.write(this.platform, 5);
-    if (this.iosTerminal != null) {
-      paramJceOutputStream.write(this.iosTerminal, 6);
+    localObject = this.iosTerminal;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 6);
     }
     paramJceOutputStream.write(this.loginType, 7);
-    if (this.opendId != null) {
-      paramJceOutputStream.write(this.opendId, 8);
+    localObject = this.opendId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.phoneNum != null) {
-      paramJceOutputStream.write(this.phoneNum, 9);
+    localObject = this.phoneNum;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.installPkgList != null) {
-      paramJceOutputStream.write(this.installPkgList, 10);
+    localObject = this.installPkgList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 10);
     }
-    if (this.uninstallPkgList != null) {
-      paramJceOutputStream.write(this.uninstallPkgList, 11);
+    localObject = this.uninstallPkgList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_NEW_MOBILE_REPORT.AccessReqHead
  * JD-Core Version:    0.7.0.1
  */

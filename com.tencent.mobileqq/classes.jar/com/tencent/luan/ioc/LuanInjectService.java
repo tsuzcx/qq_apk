@@ -86,14 +86,17 @@ public class LuanInjectService
           localObject2 = this.reflectAnalyst.getProvideMethods((Class)localObject3);
         }
       }
-      if ((localObject2 == null) || (((List)localObject2).isEmpty()))
+      if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
       {
-        LuanLog.i("LuanInjectService", "addProvider: this type has no provide method " + ((Class)localObject3).getName());
-      }
-      else
-      {
-        if (this.debugMode) {
-          LuanLog.d("LuanInjectService", "addProvider: " + ((Class)localObject3).getName() + " which has " + ((List)localObject2).size() + " provide methods");
+        if (this.debugMode)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("addProvider: ");
+          ((StringBuilder)localObject1).append(((Class)localObject3).getName());
+          ((StringBuilder)localObject1).append(" which has ");
+          ((StringBuilder)localObject1).append(((List)localObject2).size());
+          ((StringBuilder)localObject1).append(" provide methods");
+          LuanLog.d("LuanInjectService", ((StringBuilder)localObject1).toString());
         }
         localObject1 = ((List)localObject2).iterator();
         while (((Iterator)localObject1).hasNext())
@@ -106,6 +109,13 @@ public class LuanInjectService
             paramMap1.put(((InjectParam)localObject3).name, localObject2);
           }
         }
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("addProvider: this type has no provide method ");
+        ((StringBuilder)localObject1).append(((Class)localObject3).getName());
+        LuanLog.i("LuanInjectService", ((StringBuilder)localObject1).toString());
       }
     }
   }
@@ -126,17 +136,24 @@ public class LuanInjectService
   
   public <T> T get(Class<T> paramClass, String paramString, Object... paramVarArgs)
   {
-    if (paramClass == null) {
-      throw new NullPointerException("type for get object cannot be null");
+    if (paramClass != null)
+    {
+      if (this.debugMode)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("get type ");
+        ((StringBuilder)localObject).append(paramClass.getName());
+        ((StringBuilder)localObject).append(" with name ");
+        ((StringBuilder)localObject).append(paramString);
+        LuanLog.d("LuanInjectService", ((StringBuilder)localObject).toString());
+      }
+      Object localObject = new LuanInjector(null, this);
+      if (Utility.isEmpty(paramString)) {
+        return ((LuanInjector)localObject).get(paramClass, paramVarArgs);
+      }
+      return ((LuanInjector)localObject).get(paramString, paramVarArgs);
     }
-    if (this.debugMode) {
-      LuanLog.d("LuanInjectService", "get type " + paramClass.getName() + " with name " + paramString);
-    }
-    LuanInjector localLuanInjector = new LuanInjector(null, this);
-    if (Utility.isEmpty(paramString)) {
-      return localLuanInjector.get(paramClass, paramVarArgs);
-    }
-    return localLuanInjector.get(paramString, paramVarArgs);
+    throw new NullPointerException("type for get object cannot be null");
   }
   
   public LuanInjectService.Builder getCloneBuilder()
@@ -146,27 +163,31 @@ public class LuanInjectService
   
   InjectConstructor<?> getInjectConstructor(Class<?> paramClass)
   {
-    InjectConstructor localInjectConstructor = (InjectConstructor)this.typeInjectConstructorMap.get(paramClass);
-    Object localObject = localInjectConstructor;
-    if (localInjectConstructor == null)
+    Object localObject1 = (InjectConstructor)this.typeInjectConstructorMap.get(paramClass);
+    if (localObject1 == null)
     {
       if (this.indexAnalyst.isValid()) {
-        localInjectConstructor = this.indexAnalyst.getInjectConstructor(paramClass);
+        localObject1 = this.indexAnalyst.getInjectConstructor(paramClass);
       }
-      localObject = localInjectConstructor;
-      if (localInjectConstructor == null)
+      Object localObject2 = localObject1;
+      if (localObject1 == null)
       {
-        localObject = localInjectConstructor;
+        localObject2 = localObject1;
         if (this.reflectAnalyst.isValid()) {
-          localObject = this.reflectAnalyst.getInjectConstructor(paramClass);
+          localObject2 = this.reflectAnalyst.getInjectConstructor(paramClass);
         }
       }
-      if (localObject == null) {
-        throw new InjectException("failed to create object " + paramClass.getName());
+      if (localObject2 != null)
+      {
+        this.typeInjectConstructorMap.put(paramClass, localObject2);
+        return localObject2;
       }
-      this.typeInjectConstructorMap.put(paramClass, localObject);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("failed to create object ");
+      ((StringBuilder)localObject1).append(paramClass.getName());
+      throw new InjectException(((StringBuilder)localObject1).toString());
     }
-    return localObject;
+    return localObject1;
   }
   
   List<InjectMethod> getInjectMethods(Class<?> paramClass)
@@ -189,7 +210,10 @@ public class LuanInjectService
       localObject2 = localObject1;
       if (localObject1 == null)
       {
-        LuanLog.i("LuanInjectService", "getInjectMethods: this type has no inject method " + paramClass.getName());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getInjectMethods: this type has no inject method ");
+        ((StringBuilder)localObject1).append(paramClass.getName());
+        LuanLog.i("LuanInjectService", ((StringBuilder)localObject1).toString());
         localObject2 = Collections.emptyList();
       }
       this.typeInjectMethodsMap.put(paramClass, localObject2);
@@ -200,13 +224,19 @@ public class LuanInjectService
   
   public void inject(Object paramObject)
   {
-    if (paramObject == null) {
-      throw new NullPointerException("injected object cannot be null");
+    if (paramObject != null)
+    {
+      if (this.debugMode)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("start to inject ");
+        localStringBuilder.append(paramObject.getClass().getName());
+        LuanLog.d("LuanInjectService", localStringBuilder.toString());
+      }
+      new LuanInjector(paramObject, this).inject();
+      return;
     }
-    if (this.debugMode) {
-      LuanLog.d("LuanInjectService", "start to inject " + paramObject.getClass().getName());
-    }
-    new LuanInjector(paramObject, this).inject();
+    throw new NullPointerException("injected object cannot be null");
   }
   
   public boolean isDebugMode()
@@ -221,7 +251,7 @@ public class LuanInjectService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.luan.ioc.LuanInjectService
  * JD-Core Version:    0.7.0.1
  */

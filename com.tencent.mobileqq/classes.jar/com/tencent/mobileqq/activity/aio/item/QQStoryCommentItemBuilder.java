@@ -18,7 +18,6 @@ import android.widget.TextView;
 import com.etrump.mixlayout.ETFont;
 import com.etrump.mixlayout.ETTextView;
 import com.etrump.mixlayout.FontInfo;
-import com.etrump.mixlayout.FontManager;
 import com.tencent.biz.common.util.HttpUtil;
 import com.tencent.biz.qqstory.support.report.StoryReportor;
 import com.tencent.biz.qqstory.utils.ThumbnailUrlHelper;
@@ -33,7 +32,6 @@ import com.tencent.mobileqq.activity.aio.OnLongClickAndTouchListener;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.anim.AIOAnimationConatiner;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.bubble.BubbleInfo;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForQQStoryComment;
@@ -42,18 +40,24 @@ import com.tencent.mobileqq.studymode.AlphabeticFontHelper;
 import com.tencent.mobileqq.util.DisplayUtil;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenu;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import com.tencent.mobileqq.vas.font.api.IFontManagerService;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQStoryCommentItemBuilder
   extends BaseBubbleBuilder
 {
-  protected static final int c = BaseChatItemLayout.h + BaseChatItemLayout.m;
+  protected static final int a;
   protected static final int d = BaseChatItemLayout.i + BaseChatItemLayout.n;
   protected static final int e = BaseChatItemLayout.j + BaseChatItemLayout.o;
   protected static final int f = BaseChatItemLayout.k + BaseChatItemLayout.p;
   View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new QQStoryCommentItemBuilder.1(this);
   private AlphabeticFontHelper jdField_a_of_type_ComTencentMobileqqStudymodeAlphabeticFontHelper;
   final int g = DisplayUtil.a(this.jdField_a_of_type_AndroidContentContext, 50.0F);
+  
+  static
+  {
+    jdField_a_of_type_Int = BaseChatItemLayout.h + BaseChatItemLayout.m;
+  }
   
   public QQStoryCommentItemBuilder(QQAppInterface paramQQAppInterface, BaseAdapter paramBaseAdapter, Context paramContext, SessionInfo paramSessionInfo, AIOAnimationConatiner paramAIOAnimationConatiner)
   {
@@ -65,7 +69,7 @@ public class QQStoryCommentItemBuilder
     return 1;
   }
   
-  public View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(ChatMessage paramChatMessage, BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, BaseChatItemLayout paramBaseChatItemLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     Object localObject = paramBaseChatItemLayout.getContext();
     paramBaseChatItemLayout = (MessageForQQStoryComment)paramChatMessage;
@@ -73,59 +77,62 @@ public class QQStoryCommentItemBuilder
     paramChatMessage = paramView;
     if (paramView == null)
     {
-      paramChatMessage = LayoutInflater.from((Context)localObject).inflate(2131561953, null);
-      paramViewHolder.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage.findViewById(2131378520));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage.findViewById(2131378521));
-      paramViewHolder.jdField_c_of_type_AndroidViewView = paramChatMessage.findViewById(2131368508);
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramChatMessage.findViewById(2131365419));
-      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131379432));
-      paramViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131379336));
-      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131365027));
+      paramChatMessage = LayoutInflater.from((Context)localObject).inflate(2131561799, null);
+      paramViewHolder.jdField_b_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage.findViewById(2131377931));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramChatMessage.findViewById(2131377932));
+      paramViewHolder.jdField_c_of_type_AndroidViewView = paramChatMessage.findViewById(2131368256);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramChatMessage.findViewById(2131365284));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131378784));
+      paramViewHolder.jdField_c_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131378688));
+      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramChatMessage.findViewById(2131364910));
     }
     paramViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.comment);
     if (paramBaseChatItemLayout.displayType == 0)
     {
       paramView = ThumbnailUrlHelper.a(paramBaseChatItemLayout.coverUrl);
-      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846810);
+      localObject = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846690);
       if (HttpUtil.isValidUrl(paramView))
       {
         URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
         localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject);
         localURLDrawableOptions.mLoadingDrawable = localURLDrawableOptions.mFailedDrawable;
-        localURLDrawableOptions.mRequestWidth = this.g;
-        localURLDrawableOptions.mRequestHeight = this.g;
+        int i = this.g;
+        localURLDrawableOptions.mRequestWidth = i;
+        localURLDrawableOptions.mRequestHeight = i;
         paramView = URLDrawable.getDrawable(paramView, localURLDrawableOptions);
         if (paramView.getStatus() == 2) {
           paramView.restartDownload();
         }
         paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramView);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.title);
-        paramView = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView;
-        paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.summary);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(paramOnLongClickAndTouchListener);
-        paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(paramOnLongClickAndTouchListener);
       }
+      else
+      {
+        paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
+      }
+      paramViewHolder.jdField_a_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.title);
+      paramView = paramViewHolder.jdField_a_of_type_AndroidWidgetTextView;
+      paramViewHolder.jdField_c_of_type_AndroidWidgetTextView.setText(paramBaseChatItemLayout.summary);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(paramOnLongClickAndTouchListener);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setOnLongClickListener(paramOnLongClickAndTouchListener);
     }
-    for (;;)
+    else
     {
-      paramViewHolder.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new QQStoryCommentItemBuilder.OnCommentTouchListener(this, paramOnLongClickAndTouchListener));
-      paramChatMessage.setOnTouchListener(paramOnLongClickAndTouchListener);
-      paramChatMessage.setOnLongClickListener(paramOnLongClickAndTouchListener);
-      return paramChatMessage;
-      paramViewHolder.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable((Drawable)localObject);
-      break;
       paramViewHolder.jdField_a_of_type_AndroidWidgetRelativeLayout.setVisibility(8);
       paramViewHolder.jdField_c_of_type_AndroidViewView.setVisibility(8);
     }
+    paramViewHolder.jdField_b_of_type_AndroidWidgetRelativeLayout.setOnTouchListener(new QQStoryCommentItemBuilder.OnCommentTouchListener(this, paramOnLongClickAndTouchListener));
+    paramChatMessage.setOnTouchListener(paramOnLongClickAndTouchListener);
+    paramChatMessage.setOnLongClickListener(paramOnLongClickAndTouchListener);
+    return paramChatMessage;
   }
   
-  public BaseBubbleBuilder.ViewHolder a()
+  protected BaseBubbleBuilder.ViewHolder a()
   {
     return new QQStoryCommentItemBuilder.QQStoryCommentViewHolder(this);
   }
   
-  public String a(ChatMessage paramChatMessage)
+  protected String a(ChatMessage paramChatMessage)
   {
     return paramChatMessage.getSummaryMsg();
   }
@@ -133,8 +140,9 @@ public class QQStoryCommentItemBuilder
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqStudymodeAlphabeticFontHelper != null) {
-      this.jdField_a_of_type_ComTencentMobileqqStudymodeAlphabeticFontHelper.a();
+    AlphabeticFontHelper localAlphabeticFontHelper = this.jdField_a_of_type_ComTencentMobileqqStudymodeAlphabeticFontHelper;
+    if (localAlphabeticFontHelper != null) {
+      localAlphabeticFontHelper.a();
     }
   }
   
@@ -146,32 +154,19 @@ public class QQStoryCommentItemBuilder
     default: 
       super.a(paramInt, paramContext, paramChatMessage);
       return;
-    case 2131365636: 
-      ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
-      StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "4", "", "", "" });
+    case 2131371603: 
+      super.a(paramInt, this.jdField_a_of_type_AndroidContentContext, paramChatMessage);
+      StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "5", "", "", "" });
       return;
-    case 2131365448: 
-      if (localMessageForQQStoryComment.comment != null) {}
-      try
-      {
-        ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(localMessageForQQStoryComment.comment);
-        StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "1", "", "", "" });
-        return;
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.e("QQStoryCommentItemBuilder", 2, paramContext.toString());
-          }
-        }
-      }
-    case 2131367398: 
+    case 2131371562: 
+      super.a(paramInt, paramContext, paramChatMessage);
+      StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "3", "", "", "" });
+      return;
+    case 2131367180: 
       paramContext = new Bundle();
       paramContext.putInt("forward_type", -1);
       paramContext.putString("forward_text", localMessageForQQStoryComment.comment);
-      paramContext.putInt("selection_mode", this.b);
+      paramContext.putInt("selection_mode", this.c);
       paramContext.putInt("forward_source_uin_type", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
       paramChatMessage = new Intent();
       paramChatMessage.putExtras(paramContext);
@@ -179,26 +174,37 @@ public class QQStoryCommentItemBuilder
       ForwardBaseOption.a((Activity)this.jdField_a_of_type_AndroidContentContext, paramChatMessage, 21);
       StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "2", "", "", "" });
       return;
-    case 2131371954: 
-      super.a(paramInt, paramContext, paramChatMessage);
-      StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "3", "", "", "" });
+    case 2131365480: 
+      ChatActivityFacade.b(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage);
+      StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "4", "", "", "" });
       return;
     }
-    super.a(paramInt, this.jdField_a_of_type_AndroidContentContext, paramChatMessage);
-    StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "5", "", "", "" });
+    if (localMessageForQQStoryComment.comment != null) {
+      try
+      {
+        ((ClipboardManager)this.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(localMessageForQQStoryComment.comment);
+      }
+      catch (Exception paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("QQStoryCommentItemBuilder", 2, paramContext.toString());
+        }
+      }
+    }
+    StoryReportor.a("story_grp", "press_aio", 0, 0, new String[] { "1", "", "", "" });
   }
   
-  public void a(View paramView, ChatMessage paramChatMessage)
+  protected void a(View paramView, ChatMessage paramChatMessage)
   {
     if (paramChatMessage.isSend())
     {
-      paramView.setPadding(f, c, e, d);
+      paramView.setPadding(f, jdField_a_of_type_Int, e, d);
       return;
     }
-    paramView.setPadding(e, c, f, d);
+    paramView.setPadding(e, jdField_a_of_type_Int, f, d);
   }
   
-  public void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
+  protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, View paramView, ChatMessage paramChatMessage, BubbleInfo paramBubbleInfo)
   {
     paramViewHolder = (QQStoryCommentItemBuilder.QQStoryCommentViewHolder)paramViewHolder;
     if (paramBubbleInfo.b == 0)
@@ -218,38 +224,38 @@ public class QQStoryCommentItemBuilder
     paramViewHolder.jdField_c_of_type_AndroidViewView.setBackgroundColor(Color.argb(127, i, j, k));
   }
   
-  public void a(BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage)
+  protected void a(BaseBubbleBuilder.ViewHolder paramViewHolder, ChatMessage paramChatMessage)
   {
     Object localObject = (QQStoryCommentItemBuilder.QQStoryCommentViewHolder)paramViewHolder;
     if (this.jdField_a_of_type_ComTencentMobileqqStudymodeAlphabeticFontHelper == null) {
       this.jdField_a_of_type_ComTencentMobileqqStudymodeAlphabeticFontHelper = new AlphabeticFontHelper();
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqStudymodeAlphabeticFontHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ETTextView)((QQStoryCommentItemBuilder.QQStoryCommentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b)) {}
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqStudymodeAlphabeticFontHelper.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, (ETTextView)((QQStoryCommentItemBuilder.QQStoryCommentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.b)) {
       return;
-      paramViewHolder = ((FontManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CHAT_FONT_MANAGER)).b(paramChatMessage);
-      localObject = (ETTextView)((QQStoryCommentItemBuilder.QQStoryCommentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView;
-    } while (paramViewHolder == null);
-    ((ETTextView)localObject).setFont(new ETFont(paramViewHolder.jdField_a_of_type_Int, paramViewHolder.jdField_a_of_type_JavaLangString, ((ETTextView)localObject).getTextSize(), paramViewHolder.b, paramViewHolder.jdField_a_of_type_AndroidGraphicsTypeface), paramChatMessage.uniseq);
+    }
+    paramViewHolder = ((IFontManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IFontManagerService.class, "")).getUserFont(paramChatMessage);
+    localObject = (ETTextView)((QQStoryCommentItemBuilder.QQStoryCommentViewHolder)localObject).jdField_b_of_type_AndroidWidgetTextView;
+    if (paramViewHolder != null) {
+      ((ETTextView)localObject).setFont(new ETFont(paramViewHolder.jdField_a_of_type_Int, paramViewHolder.jdField_a_of_type_JavaLangString, ((ETTextView)localObject).getTextSize(), paramViewHolder.b, paramViewHolder.jdField_a_of_type_AndroidGraphicsTypeface), paramChatMessage.uniseq);
+    }
   }
   
   public QQCustomMenuItem[] a(View paramView)
   {
     QQCustomMenu localQQCustomMenu = new QQCustomMenu();
-    localQQCustomMenu.a(2131365448, this.jdField_a_of_type_AndroidContentContext.getString(2131691369), 2130839050);
-    localQQCustomMenu.a(2131367398, this.jdField_a_of_type_AndroidContentContext.getString(2131692687), 2130839059);
+    localQQCustomMenu.a(2131365311, this.jdField_a_of_type_AndroidContentContext.getString(2131691291), 2130838903);
+    localQQCustomMenu.a(2131367180, this.jdField_a_of_type_AndroidContentContext.getString(2131692644), 2130838912);
     paramView = ((BaseBubbleBuilder.ViewHolder)AIOUtils.a(paramView)).a;
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371954, paramView, new Bundle());
-    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131365636, paramView, new Bundle());
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371997, null, null);
-    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362524, null, null);
+    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371562, paramView, new Bundle());
+    a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131365480, paramView, new Bundle());
+    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131371603, null, null);
+    super.a(localQQCustomMenu, this.jdField_a_of_type_AndroidContentContext, 2131362480, null, null);
     return localQQCustomMenu.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder
  * JD-Core Version:    0.7.0.1
  */

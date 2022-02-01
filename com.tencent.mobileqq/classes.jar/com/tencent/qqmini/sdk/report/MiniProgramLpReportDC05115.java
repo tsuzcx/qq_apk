@@ -15,69 +15,77 @@ public class MiniProgramLpReportDC05115
   
   private static void doReport(MiniProgramLpReportDC05115.ReportModel paramReportModel)
   {
-    if (paramReportModel != null) {
+    if (paramReportModel != null) {}
+    for (;;)
+    {
       try
       {
-        String str = paramReportModel.toReportRecord();
-        QMLog.d("MiniProgramLpReportDC05", "doReport " + str);
-        QMLog.d("MiniProgramLpReportDC05", "doReport " + paramReportModel.toString());
-        Bundle localBundle = new Bundle();
-        localBundle.putStringArray("data", new String[] { str });
-        if (QUAUtil.isQQApp()) {}
-        for (str = "dc05115";; str = "dc05387")
-        {
-          localBundle.putString("log_key", str);
-          AppBrandCmdProxy.g().sendCmd("cmd_dc_report_log_key_data", localBundle, null);
-          paramReportModel.reset();
-          return;
+        str = paramReportModel.toReportRecord();
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doReport ");
+        ((StringBuilder)localObject).append(str);
+        QMLog.d("MiniProgramLpReportDC05", ((StringBuilder)localObject).toString());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doReport ");
+        ((StringBuilder)localObject).append(paramReportModel.toString());
+        QMLog.d("MiniProgramLpReportDC05", ((StringBuilder)localObject).toString());
+        localObject = new Bundle();
+        ((Bundle)localObject).putStringArray("data", new String[] { str });
+        if (!QUAUtil.isQQApp()) {
+          break label138;
         }
+        str = "dc05115";
+        ((Bundle)localObject).putString("log_key", str);
+        AppBrandCmdProxy.g().sendCmd("cmd_dc_report_log_key_data", (Bundle)localObject, null);
+        paramReportModel.reset();
         return;
       }
       catch (Exception paramReportModel)
       {
         QMLog.e("MiniProgramLpReportDC05", "doReport ", paramReportModel);
       }
+      return;
+      label138:
+      String str = "dc05387";
     }
   }
   
   public static void reDispatchReportEvent(MiniAppInfo paramMiniAppInfo, String paramString1, String paramString2, long paramLong)
   {
-    MiniProgramLpReportDC05115.ReportModel localReportModel;
     if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.appId)) && (paramString1 != null))
     {
-      localReportModel = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppInfo.appId);
-      if (localReportModel == null) {
-        break label131;
+      MiniProgramLpReportDC05115.ReportModel localReportModel = (MiniProgramLpReportDC05115.ReportModel)MINI_APP_ID_REPORT_MODEL_HASH_MAP.get(paramMiniAppInfo.appId);
+      if (localReportModel != null)
+      {
+        if ("app_download_result".equals(paramString1))
+        {
+          localReportModel.reportPKGDownloadResult(paramLong, paramString2);
+          return;
+        }
+        if ("launch_result".equals(paramString1))
+        {
+          localReportModel.reportLaunchResult(paramLong, paramString2);
+          return;
+        }
+        if ("game_first_launch_result".equals(paramString1))
+        {
+          MiniProgramLpReportDC05115.ReportModel.access$002(localReportModel, true);
+          return;
+        }
+        if ("game_twice_launch_result".equals(paramString1))
+        {
+          localReportModel.reportReLaunchResult(paramLong, paramString2);
+          return;
+        }
+        if (("minigamestaytime".equals(paramString1)) || ("miniappstaytime".equals(paramString1))) {
+          localReportModel.setGameUseTime(paramLong);
+        }
       }
-      if (!"app_download_result".equals(paramString1)) {
-        break label55;
+      else
+      {
+        MINI_APP_ID_REPORT_MODEL_HASH_MAP.put(paramMiniAppInfo.appId, new MiniProgramLpReportDC05115.ReportModel(paramMiniAppInfo));
       }
-      localReportModel.reportPKGDownloadResult(paramLong, paramString2);
     }
-    label55:
-    do
-    {
-      return;
-      if ("launch_result".equals(paramString1))
-      {
-        localReportModel.reportLaunchResult(paramLong, paramString2);
-        return;
-      }
-      if ("game_first_launch_result".equals(paramString1))
-      {
-        MiniProgramLpReportDC05115.ReportModel.access$002(localReportModel, true);
-        return;
-      }
-      if ("game_twice_launch_result".equals(paramString1))
-      {
-        localReportModel.reportReLaunchResult(paramLong, paramString2);
-        return;
-      }
-    } while ((!"minigamestaytime".equals(paramString1)) && (!"miniappstaytime".equals(paramString1)));
-    localReportModel.setGameUseTime(paramLong);
-    return;
-    label131:
-    MINI_APP_ID_REPORT_MODEL_HASH_MAP.put(paramMiniAppInfo.appId, new MiniProgramLpReportDC05115.ReportModel(paramMiniAppInfo));
   }
   
   public static void reportCPUMemoryFPS(MiniAppInfo paramMiniAppInfo, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
@@ -101,17 +109,15 @@ public class MiniProgramLpReportDC05115
       if (paramMiniAppInfo != null)
       {
         MiniProgramLpReportDC05115.ReportModel.access$202(paramMiniAppInfo, 1L);
-        if (!(paramThrowable instanceof OutOfMemoryError)) {
-          break label59;
+        int i;
+        if ((paramThrowable instanceof OutOfMemoryError)) {
+          i = 1;
+        } else {
+          i = 0;
         }
+        MiniProgramLpReportDC05115.ReportModel.access$302(paramMiniAppInfo, i);
+        doReport(paramMiniAppInfo);
       }
-    }
-    label59:
-    for (int i = 1;; i = 0)
-    {
-      MiniProgramLpReportDC05115.ReportModel.access$302(paramMiniAppInfo, i);
-      doReport(paramMiniAppInfo);
-      return;
     }
   }
   
@@ -150,7 +156,7 @@ public class MiniProgramLpReportDC05115
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramLpReportDC05115
  * JD-Core Version:    0.7.0.1
  */

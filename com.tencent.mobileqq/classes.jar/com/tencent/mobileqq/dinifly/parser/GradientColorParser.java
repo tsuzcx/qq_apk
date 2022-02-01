@@ -21,37 +21,38 @@ public class GradientColorParser
   
   private void addOpacityStopsToGradientIfNeeded(GradientColor paramGradientColor, List<Float> paramList)
   {
+    int i = this.colorPoints * 4;
+    if (paramList.size() <= i) {
+      return;
+    }
+    int j = (paramList.size() - i) / 2;
+    double[] arrayOfDouble1 = new double[j];
+    double[] arrayOfDouble2 = new double[j];
     int m = 0;
-    int j = this.colorPoints * 4;
-    if (paramList.size() <= j) {}
+    int k = 0;
     for (;;)
     {
-      return;
-      int i = (paramList.size() - j) / 2;
-      double[] arrayOfDouble1 = new double[i];
-      double[] arrayOfDouble2 = new double[i];
-      i = 0;
-      int k = m;
-      if (j < paramList.size())
-      {
-        if (j % 2 == 0) {
-          arrayOfDouble1[i] = ((Float)paramList.get(j)).floatValue();
-        }
-        for (;;)
-        {
-          j += 1;
-          break;
-          arrayOfDouble2[i] = ((Float)paramList.get(j)).floatValue();
-          i += 1;
-        }
+      j = m;
+      if (i >= paramList.size()) {
+        break;
       }
-      while (k < paramGradientColor.getSize())
+      if (i % 2 == 0)
       {
-        i = paramGradientColor.getColors()[k];
-        i = Color.argb(getOpacityAtPosition(paramGradientColor.getPositions()[k], arrayOfDouble1, arrayOfDouble2), Color.red(i), Color.green(i), Color.blue(i));
-        paramGradientColor.getColors()[k] = i;
+        arrayOfDouble1[k] = ((Float)paramList.get(i)).floatValue();
+      }
+      else
+      {
+        arrayOfDouble2[k] = ((Float)paramList.get(i)).floatValue();
         k += 1;
       }
+      i += 1;
+    }
+    while (j < paramGradientColor.getSize())
+    {
+      i = paramGradientColor.getColors()[j];
+      i = Color.argb(getOpacityAtPosition(paramGradientColor.getPositions()[j], arrayOfDouble1, arrayOfDouble2), Color.red(i), Color.green(i), Color.blue(i));
+      paramGradientColor.getColors()[j] = i;
+      j += 1;
     }
   }
   
@@ -59,32 +60,40 @@ public class GradientColorParser
   private int getOpacityAtPosition(double paramDouble, double[] paramArrayOfDouble1, double[] paramArrayOfDouble2)
   {
     int i = 1;
-    while (i < paramArrayOfDouble1.length)
+    int j;
+    if (i < paramArrayOfDouble1.length)
     {
-      double d1 = paramArrayOfDouble1[(i - 1)];
+      j = i - 1;
+      double d1 = paramArrayOfDouble1[j];
       double d2 = paramArrayOfDouble1[i];
-      if (paramArrayOfDouble1[i] >= paramDouble)
-      {
+      if (paramArrayOfDouble1[i] >= paramDouble) {
         paramDouble = (paramDouble - d1) / (d2 - d1);
-        return (int)(MiscUtils.lerp(paramArrayOfDouble2[(i - 1)], paramArrayOfDouble2[i], paramDouble) * 255.0D);
       }
-      i += 1;
     }
-    return (int)(paramArrayOfDouble2[(paramArrayOfDouble2.length - 1)] * 255.0D);
+    for (paramDouble = MiscUtils.lerp(paramArrayOfDouble2[j], paramArrayOfDouble2[i], paramDouble);; paramDouble = paramArrayOfDouble2[(paramArrayOfDouble2.length - 1)])
+    {
+      return (int)(paramDouble * 255.0D);
+      i += 1;
+      break;
+    }
   }
   
   public GradientColor parse(JsonReader paramJsonReader, float paramFloat)
   {
     ArrayList localArrayList = new ArrayList();
-    if (paramJsonReader.peek() == JsonToken.BEGIN_ARRAY) {}
-    for (int i = 1;; i = 0)
-    {
-      if (i != 0) {
-        paramJsonReader.beginArray();
-      }
-      while (paramJsonReader.hasNext()) {
-        localArrayList.add(Float.valueOf((float)paramJsonReader.nextDouble()));
-      }
+    Object localObject = paramJsonReader.peek();
+    JsonToken localJsonToken = JsonToken.BEGIN_ARRAY;
+    int k = 0;
+    if (localObject == localJsonToken) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    if (i != 0) {
+      paramJsonReader.beginArray();
+    }
+    while (paramJsonReader.hasNext()) {
+      localArrayList.add(Float.valueOf((float)paramJsonReader.nextDouble()));
     }
     if (i != 0) {
       paramJsonReader.endArray();
@@ -92,39 +101,55 @@ public class GradientColorParser
     if (this.colorPoints == -1) {
       this.colorPoints = (localArrayList.size() / 4);
     }
-    paramJsonReader = new float[this.colorPoints];
-    int[] arrayOfInt = new int[this.colorPoints];
-    i = 0;
-    int k = 0;
+    int i = this.colorPoints;
+    paramJsonReader = new float[i];
+    localObject = new int[i];
+    int m = 0;
     int j = 0;
-    if (i < this.colorPoints * 4)
+    i = k;
+    k = m;
+    while (i < this.colorPoints * 4)
     {
-      int m = i / 4;
+      m = i / 4;
       double d = ((Float)localArrayList.get(i)).floatValue();
-      switch (i % 4)
+      int n = i % 4;
+      if (n != 0)
       {
+        if (n != 1)
+        {
+          if (n != 2)
+          {
+            if (n == 3)
+            {
+              Double.isNaN(d);
+              localObject[m] = Color.argb(255, k, j, (int)(d * 255.0D));
+            }
+          }
+          else
+          {
+            Double.isNaN(d);
+            j = (int)(d * 255.0D);
+          }
+        }
+        else
+        {
+          Double.isNaN(d);
+          k = (int)(d * 255.0D);
+        }
       }
-      for (;;)
-      {
-        i += 1;
-        break;
+      else {
         paramJsonReader[m] = ((float)d);
-        continue;
-        j = (int)(d * 255.0D);
-        continue;
-        k = (int)(d * 255.0D);
-        continue;
-        arrayOfInt[m] = Color.argb(255, j, k, (int)(d * 255.0D));
       }
+      i += 1;
     }
-    paramJsonReader = new GradientColor(paramJsonReader, arrayOfInt);
+    paramJsonReader = new GradientColor(paramJsonReader, (int[])localObject);
     addOpacityStopsToGradientIfNeeded(paramJsonReader, localArrayList);
     return paramJsonReader;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.GradientColorParser
  * JD-Core Version:    0.7.0.1
  */

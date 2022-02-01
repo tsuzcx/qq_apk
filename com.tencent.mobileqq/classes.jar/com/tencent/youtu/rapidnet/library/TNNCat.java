@@ -13,37 +13,40 @@ public class TNNCat
     if ((paramList != null) && (paramList.size() > 0))
     {
       int i = 0;
-      float f1 = 1.4E-45F;
-      float f4 = 1.4E-45F;
+      float f6 = 3.4028235E+38F;
       float f2 = 3.4028235E+38F;
-      float f3;
-      for (float f5 = 3.4028235E+38F; i < paramList.size(); f5 = f3)
+      float f4 = 1.4E-45F;
+      float f7;
+      for (float f1 = 1.4E-45F; i < paramList.size(); f1 = f7)
       {
-        f3 = f5;
-        if (((PointF)paramList.get(i)).x < f5) {
+        float f3 = f6;
+        if (((PointF)paramList.get(i)).x < f6) {
           f3 = ((PointF)paramList.get(i)).x;
         }
-        f5 = f4;
+        float f5 = f4;
         if (((PointF)paramList.get(i)).x > f4) {
           f5 = ((PointF)paramList.get(i)).x;
         }
-        float f6 = f2;
+        f4 = f2;
         if (((PointF)paramList.get(i)).y < f2) {
-          f6 = ((PointF)paramList.get(i)).y;
+          f4 = ((PointF)paramList.get(i)).y;
         }
-        f2 = f1;
+        f7 = f1;
         if (((PointF)paramList.get(i)).y > f1) {
-          f2 = ((PointF)paramList.get(i)).y;
+          f7 = ((PointF)paramList.get(i)).y;
         }
         i += 1;
-        f1 = f2;
+        f6 = f3;
+        f2 = f4;
         f4 = f5;
-        f2 = f6;
       }
-      if ((f5 == 3.4028235E+38F) || (f2 == 3.4028235E+38F) || (f4 == 1.4E-45F) || (f1 == 1.4E-45F)) {
-        return null;
+      if ((f6 != 3.4028235E+38F) && (f2 != 3.4028235E+38F) && (f4 != 1.4E-45F))
+      {
+        if (f1 == 1.4E-45F) {
+          return null;
+        }
+        return new float[] { f6, f2, f4, f1 };
       }
-      return new float[] { f5, f2, f4, f1 };
     }
     return null;
   }
@@ -70,7 +73,7 @@ public class TNNCat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.youtu.rapidnet.library.TNNCat
  * JD-Core Version:    0.7.0.1
  */

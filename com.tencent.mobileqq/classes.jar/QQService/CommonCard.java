@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class CommonCard
   extends JceStruct
@@ -97,12 +98,14 @@ public final class CommonCard
     paramJceOutputStream.write(this.bSingle, 8);
     paramJceOutputStream.write(this.lVisitCount, 9);
     paramJceOutputStream.write(this.lVoteCount, 10);
-    if (this.vTags != null) {
-      paramJceOutputStream.write(this.vTags, 11);
+    Object localObject = this.vTags;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 11);
     }
     paramJceOutputStream.write(this.eUserIdentityType, 12);
-    if (this.vBackground != null) {
-      paramJceOutputStream.write(this.vBackground, 13);
+    localObject = this.vBackground;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 13);
     }
     paramJceOutputStream.write(this.iFaceNum, 14);
     paramJceOutputStream.write(this.lFavoriteCount, 15);
@@ -111,7 +114,7 @@ public final class CommonCard
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QQService.CommonCard
  * JD-Core Version:    0.7.0.1
  */

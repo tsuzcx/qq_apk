@@ -7,7 +7,8 @@ import android.view.MotionEvent;
 import android.widget.TextView;
 import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.ark.API.ArkAppModuleBase.APIAuthority;
+import com.tencent.mobileqq.ark.api.IArkModuleAPIAuthority;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.FormSwitchItem;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
@@ -26,34 +27,35 @@ public class ArkAuthorityInfoActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    setContentView(2131558738);
-    super.setTitle(2131690207);
+    setContentView(2131558637);
+    super.setTitle(2131690123);
     this.jdField_a_of_type_JavaLangString = getIntent().getStringExtra("intent_extra_authority_app_name");
-    ((TextView)super.findViewById(2131363005)).setText(getString(2131690213, new Object[] { this.jdField_a_of_type_JavaLangString }));
+    ((TextView)super.findViewById(2131362954)).setText(getString(2131690129, new Object[] { this.jdField_a_of_type_JavaLangString }));
     int i = 0;
     while (i < jdField_a_of_type_ArrayOfJavaLangString.length)
     {
-      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131362997, 2131362993, 2131362996, 2131362994, 2131362995 }[i]);
-      int j = ArkAppModuleBase.APIAuthority.a(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
+      paramBundle = (FormSwitchItem)super.findViewById(new int[] { 2131362946, 2131362942, 2131362945, 2131362943, 2131362944 }[i]);
+      int j = ((IArkModuleAPIAuthority)QRoute.api(IArkModuleAPIAuthority.class)).getArkAuthorityInfo(this.jdField_a_of_type_JavaLangString, jdField_a_of_type_ArrayOfJavaLangString[i], this.app.getCurrentAccountUin());
       if (j == 0)
       {
         paramBundle.setVisibility(8);
-        i += 1;
       }
       else
       {
         paramBundle.setVisibility(0);
-        if (1 == j) {}
-        for (boolean bool = true;; bool = false)
-        {
-          paramBundle.setChecked(bool);
-          paramBundle.setOnCheckedChangeListener(new ArkAuthorityInfoActivity.1(this, i));
-          break;
+        boolean bool;
+        if (1 == j) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        paramBundle.setChecked(bool);
+        paramBundle.setOnCheckedChangeListener(new ArkAuthorityInfoActivity.1(this, i));
       }
+      i += 1;
     }
     return true;
   }
@@ -67,7 +69,7 @@ public class ArkAuthorityInfoActivity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ark.setting.ArkAuthorityInfoActivity
  * JD-Core Version:    0.7.0.1
  */

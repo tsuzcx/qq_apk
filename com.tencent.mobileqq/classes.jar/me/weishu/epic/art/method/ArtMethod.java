@@ -9,6 +9,7 @@ import com.qq.android.dexposed.utility.Unsafe;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Constructor;
 import java.lang.reflect.Field;
+import java.lang.reflect.Member;
 import java.lang.reflect.Method;
 import java.lang.reflect.Modifier;
 import java.nio.ByteBuffer;
@@ -27,31 +28,38 @@ public class ArtMethod
   
   private ArtMethod(Constructor paramConstructor)
   {
-    if (paramConstructor == null) {
-      throw new IllegalArgumentException("constructor can not be null");
+    if (paramConstructor != null)
+    {
+      this.constructor = paramConstructor;
+      init();
+      return;
     }
-    this.constructor = paramConstructor;
-    init();
+    throw new IllegalArgumentException("constructor can not be null");
   }
   
   private ArtMethod(Method paramMethod)
   {
-    if (paramMethod == null) {
-      throw new IllegalArgumentException("method can not be null");
+    if (paramMethod != null)
+    {
+      this.method = paramMethod;
+      init();
+      return;
     }
-    this.method = paramMethod;
-    init();
+    throw new IllegalArgumentException("method can not be null");
   }
   
   public static int getArtMethodSize()
   {
-    if (artMethodSize > 0) {
-      return artMethodSize;
+    int i = artMethodSize;
+    if (i > 0) {
+      return i;
     }
-    Method localMethod = XposedHelpers.findMethodExact(ArtMethod.class, "rule1", new Class[0]);
-    long l = Math.abs(EpicNative.getMethodAddress(XposedHelpers.findMethodExact(ArtMethod.class, "rule2", new Class[0])) - EpicNative.getMethodAddress(localMethod));
+    Object localObject = XposedHelpers.findMethodExact(ArtMethod.class, "rule1", new Class[0]);
+    long l = Math.abs(EpicNative.getMethodAddress(XposedHelpers.findMethodExact(ArtMethod.class, "rule2", new Class[0])) - EpicNative.getMethodAddress((Member)localObject));
     artMethodSize = (int)l;
-    Logger.d("ArtMethod", "art Method size: " + l);
+    localObject = new StringBuilder("art Method size: ");
+    ((StringBuilder)localObject).append(l);
+    Logger.d("ArtMethod", ((StringBuilder)localObject).toString());
     return artMethodSize;
   }
   
@@ -65,9 +73,10 @@ public class ArtMethod
   
   private void init()
   {
-    if (this.constructor != null)
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null)
     {
-      this.address = EpicNative.getMethodAddress(this.constructor);
+      this.address = EpicNative.getMethodAddress(localConstructor);
       this.objectAddress = Unsafe.getObjectAddress(this.constructor);
       return;
     }
@@ -77,8 +86,9 @@ public class ArtMethod
   
   private Object invokeInternal(Object paramObject, Object... paramVarArgs)
   {
-    if (this.constructor != null) {
-      return this.constructor.newInstance(paramVarArgs);
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return localConstructor.newInstance(paramVarArgs);
     }
     return this.method.invoke(paramObject, paramVarArgs);
   }
@@ -105,134 +115,142 @@ public class ArtMethod
   
   public static long searchOffset(long paramLong1, long paramLong2, int paramInt)
   {
-    long l2 = paramLong2 / 4L;
-    for (paramLong2 = 0L;; paramLong2 = 1L + paramLong2)
+    long l1 = paramLong2 / 4L;
+    for (paramLong2 = 0L;; paramLong2 += 1L)
     {
-      long l1;
-      if (paramLong2 >= l2) {
-        l1 = -1L;
+      if (paramLong2 >= l1) {
+        return -1L;
       }
-      byte[] arrayOfByte;
-      do
-      {
-        return l1;
-        l1 = paramLong2 * 4L;
-        arrayOfByte = EpicNative.memget(paramLong2 * 4L + paramLong1, 4);
-      } while (ByteBuffer.allocate(4).put(arrayOfByte).getInt() == paramInt);
+      Long.signum(paramLong2);
+      long l2 = paramLong2 * 4L;
+      byte[] arrayOfByte = EpicNative.memget(paramLong1 + l2, 4);
+      if (ByteBuffer.allocate(4).put(arrayOfByte).getInt() == paramInt) {
+        return l2;
+      }
     }
   }
   
   public static long searchOffset(long paramLong1, long paramLong2, long paramLong3)
   {
-    long l2 = paramLong2 / 4L;
-    for (paramLong2 = 0L;; paramLong2 = 1L + paramLong2)
+    long l1 = paramLong2 / 4L;
+    for (paramLong2 = 0L;; paramLong2 += 1L)
     {
-      long l1;
-      if (paramLong2 >= l2) {
-        l1 = -1L;
+      if (paramLong2 >= l1) {
+        return -1L;
       }
-      byte[] arrayOfByte;
-      do
-      {
-        return l1;
-        l1 = 4L * paramLong2;
-        arrayOfByte = EpicNative.memget(4L * paramLong2 + paramLong1, 4);
-      } while (ByteBuffer.allocate(8).put(arrayOfByte).getLong() == paramLong3);
+      Long.signum(paramLong2);
+      long l2 = paramLong2 * 4L;
+      byte[] arrayOfByte = EpicNative.memget(paramLong1 + l2, 4);
+      if (ByteBuffer.allocate(8).put(arrayOfByte).getLong() == paramLong3) {
+        return l2;
+      }
     }
   }
   
   public ArtMethod backup()
   {
-    int j = 0;
-    int i = 0;
-    for (;;)
+    try
     {
-      try
+      localObject4 = Method.class.getSuperclass();
+      localObject3 = getExecutable();
+      j = Build.VERSION.SDK_INT;
+      i = 0;
+      if (j < 23)
       {
-        Object localObject3 = Method.class.getSuperclass();
-        Object localObject2 = getExecutable();
-        Object localObject1;
-        Object localObject5;
-        if (Build.VERSION.SDK_INT < 23)
+        localObject1 = Class.forName("java.lang.reflect.ArtMethod");
+        localObject4 = ((Class)localObject4).getDeclaredField("artMethod");
+        if (!((Field)localObject4).isAccessible()) {
+          ((Field)localObject4).setAccessible(true);
+        }
+        localObject3 = ((Field)localObject4).get(localObject3);
+        localObject4 = ((Class)localObject1).getDeclaredConstructor(new Class[0]);
+        ((Constructor)localObject4).setAccessible(true);
+        localObject4 = ((Constructor)localObject4).newInstance(new Object[0]);
+        localObject5 = ((Class)localObject1).getDeclaredFields();
+        j = localObject5.length;
+        i = 0;
+        for (;;)
         {
-          localObject1 = Class.forName("java.lang.reflect.ArtMethod");
-          localObject3 = ((Class)localObject3).getDeclaredField("artMethod");
-          if (!((Field)localObject3).isAccessible()) {
-            ((Field)localObject3).setAccessible(true);
-          }
-          localObject2 = ((Field)localObject3).get(localObject2);
-          localObject3 = ((Class)localObject1).getDeclaredConstructor(new Class[0]);
-          ((Constructor)localObject3).setAccessible(true);
-          localObject3 = ((Constructor)localObject3).newInstance(new Object[0]);
-          localObject4 = ((Class)localObject1).getDeclaredFields();
-          j = localObject4.length;
           if (i >= j)
           {
-            localObject1 = (Method)Method.class.getConstructor(new Class[] { localObject1 }).newInstance(new Object[] { localObject3 });
+            localObject1 = (Method)Method.class.getConstructor(new Class[] { localObject1 }).newInstance(new Object[] { localObject4 });
             ((Method)localObject1).setAccessible(true);
             localObject1 = of((Method)localObject1);
             ((ArtMethod)localObject1).setEntryPointFromQuickCompiledCode(getEntryPointFromQuickCompiledCode());
             ((ArtMethod)localObject1).setEntryPointFromJni(getEntryPointFromJni());
-            ((ArtMethod)localObject1).makePrivate();
-            ((ArtMethod)localObject1).setAccessible(true);
-            ((ArtMethod)localObject1).origin = this;
-            return localObject1;
+            break;
           }
-          localObject5 = localObject4[i];
-          if (!localObject5.isAccessible()) {
-            localObject5.setAccessible(true);
+          localObject6 = localObject5[i];
+          if (!localObject6.isAccessible()) {
+            localObject6.setAccessible(true);
           }
-          localObject5.set(localObject3, localObject5.get(localObject2));
+          localObject6.set(localObject4, localObject6.get(localObject3));
           i += 1;
-          continue;
-        }
-        Object localObject4 = Method.class.getDeclaredConstructor(new Class[0]);
-        if (Build.VERSION.SDK_INT == 23)
-        {
-          localObject1 = "flag";
-          localObject1 = AccessibleObject.class.getDeclaredField((String)localObject1);
-          ((Field)localObject1).setAccessible(true);
-          ((Field)localObject1).set(localObject4, Boolean.valueOf(true));
-          localObject1 = (Method)((Constructor)localObject4).newInstance(new Object[0]);
-          ((Method)localObject1).setAccessible(true);
-          localObject4 = ((Class)localObject3).getDeclaredFields();
-          int k = localObject4.length;
-          i = j;
-          if (i >= k)
-          {
-            localObject2 = ((Class)localObject3).getDeclaredField("artMethod");
-            ((Field)localObject2).setAccessible(true);
-            i = getArtMethodSize();
-            long l = EpicNative.map(i);
-            EpicNative.put(EpicNative.get(this.address, i), l);
-            ((Field)localObject2).set(localObject1, Long.valueOf(l));
-            localObject1 = of((Method)localObject1);
-          }
-          else
-          {
-            localObject5 = localObject4[i];
-            localObject5.setAccessible(true);
-            localObject5.set(localObject1, localObject5.get(localObject2));
-            i += 1;
-          }
-        }
-        else
-        {
-          String str = "override";
         }
       }
-      catch (Throwable localThrowable)
+      localObject5 = Method.class.getDeclaredConstructor(new Class[0]);
+      if (Build.VERSION.SDK_INT != 23) {
+        break label471;
+      }
+      localObject1 = "flag";
+    }
+    catch (Throwable localThrowable)
+    {
+      for (;;)
       {
+        Object localObject4;
+        int j;
+        int i;
+        Object localObject1;
+        Object localObject5;
+        Object localObject6;
         Log.e("ArtMethod", "backup method error:", localThrowable);
-        throw new IllegalStateException("Cannot create backup method from :: " + getExecutable(), localThrowable);
+        Object localObject3 = new StringBuilder("Cannot create backup method from :: ");
+        ((StringBuilder)localObject3).append(getExecutable());
+        Object localObject2 = new IllegalStateException(((StringBuilder)localObject3).toString(), localThrowable);
+        for (;;)
+        {
+          throw ((Throwable)localObject2);
+        }
+        label471:
+        localObject2 = "override";
       }
+    }
+    localObject1 = AccessibleObject.class.getDeclaredField((String)localObject1);
+    ((Field)localObject1).setAccessible(true);
+    ((Field)localObject1).set(localObject5, Boolean.valueOf(true));
+    localObject1 = (Method)((Constructor)localObject5).newInstance(new Object[0]);
+    ((Method)localObject1).setAccessible(true);
+    localObject5 = ((Class)localObject4).getDeclaredFields();
+    j = localObject5.length;
+    for (;;)
+    {
+      if (i >= j)
+      {
+        localObject3 = ((Class)localObject4).getDeclaredField("artMethod");
+        ((Field)localObject3).setAccessible(true);
+        i = getArtMethodSize();
+        long l = EpicNative.map(i);
+        EpicNative.put(EpicNative.get(this.address, i), l);
+        ((Field)localObject3).set(localObject1, Long.valueOf(l));
+        localObject1 = of((Method)localObject1);
+        ((ArtMethod)localObject1).makePrivate();
+        ((ArtMethod)localObject1).setAccessible(true);
+        ((ArtMethod)localObject1).origin = this;
+        return localObject1;
+      }
+      localObject6 = localObject5[i];
+      localObject6.setAccessible(true);
+      localObject6.set(localObject1, localObject6.get(localObject3));
+      i += 1;
     }
   }
   
   public boolean compile()
   {
-    if (this.constructor != null) {
-      return EpicNative.compileMethod(this.constructor);
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return EpicNative.compileMethod(localConstructor);
     }
     return EpicNative.compileMethod(this.method);
   }
@@ -265,8 +283,9 @@ public class ArtMethod
   
   public Class<?> getDeclaringClass()
   {
-    if (this.constructor != null) {
-      return this.constructor.getDeclaringClass();
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return localConstructor.getDeclaringClass();
     }
     return this.method.getDeclaringClass();
   }
@@ -283,16 +302,18 @@ public class ArtMethod
   
   public Class<?>[] getExceptionTypes()
   {
-    if (this.constructor != null) {
-      return this.constructor.getExceptionTypes();
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return localConstructor.getExceptionTypes();
     }
     return this.method.getExceptionTypes();
   }
   
   public Object getExecutable()
   {
-    if (this.constructor != null) {
-      return this.constructor;
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return localConstructor;
     }
     return this.method;
   }
@@ -309,24 +330,27 @@ public class ArtMethod
   
   public int getModifiers()
   {
-    if (this.constructor != null) {
-      return this.constructor.getModifiers();
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return localConstructor.getModifiers();
     }
     return this.method.getModifiers();
   }
   
   public String getName()
   {
-    if (this.constructor != null) {
-      return this.constructor.getName();
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return localConstructor.getName();
     }
     return this.method.getName();
   }
   
   public Class<?>[] getParameterTypes()
   {
-    if (this.constructor != null) {
-      return this.constructor.getParameterTypes();
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return localConstructor.getParameterTypes();
     }
     return this.method.getParameterTypes();
   }
@@ -347,7 +371,11 @@ public class ArtMethod
       if (l != this.objectAddress)
       {
         ArtMethod localArtMethod = this.origin.backup();
-        Logger.i("ArtMethod", "the address of java method was moved by gc, backup it now! origin address: 0x" + Long.toHexString(this.objectAddress) + " , currentAddress: 0x" + Long.toHexString(l));
+        StringBuilder localStringBuilder = new StringBuilder("the address of java method was moved by gc, backup it now! origin address: 0x");
+        localStringBuilder.append(Long.toHexString(this.objectAddress));
+        localStringBuilder.append(" , currentAddress: 0x");
+        localStringBuilder.append(Long.toHexString(l));
+        Logger.i("ArtMethod", localStringBuilder.toString());
         Epic.setBackMethod(this.origin, localArtMethod);
         return localArtMethod.invokeInternal(paramObject, paramVarArgs);
       }
@@ -358,8 +386,9 @@ public class ArtMethod
   
   public boolean isAccessible()
   {
-    if (this.constructor != null) {
-      return this.constructor.isAccessible();
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return localConstructor.isAccessible();
     }
     return this.method.isAccessible();
   }
@@ -376,9 +405,10 @@ public class ArtMethod
   
   public void setAccessible(boolean paramBoolean)
   {
-    if (this.constructor != null)
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null)
     {
-      this.constructor.setAccessible(paramBoolean);
+      localConstructor.setAccessible(paramBoolean);
       return;
     }
     this.method.setAccessible(paramBoolean);
@@ -396,15 +426,16 @@ public class ArtMethod
   
   public String toGenericString()
   {
-    if (this.constructor != null) {
-      return this.constructor.toGenericString();
+    Constructor localConstructor = this.constructor;
+    if (localConstructor != null) {
+      return localConstructor.toGenericString();
     }
     return this.method.toGenericString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     me.weishu.epic.art.method.ArtMethod
  * JD-Core Version:    0.7.0.1
  */

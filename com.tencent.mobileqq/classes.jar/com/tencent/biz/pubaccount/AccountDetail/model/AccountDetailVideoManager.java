@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.model;
+package com.tencent.biz.pubaccount.accountdetail.model;
 
 import android.app.Activity;
 import android.content.BroadcastReceiver;
@@ -10,8 +10,8 @@ import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
-import com.tencent.biz.pubaccount.PaConfigAttr;
-import com.tencent.biz.pubaccount.PaConfigAttr.PaConfigInfo;
+import com.tencent.biz.pubaccount.api.IPublicAccountConfigAttr.PaConfigInfo;
+import com.tencent.biz.pubaccount.api.impl.PublicAccountConfigAttrImpl;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
@@ -44,7 +44,7 @@ public class AccountDetailVideoManager
   {
     this.jdField_a_of_type_AndroidContentContext = paramActivity.getApplicationContext();
     this.jdField_a_of_type_AndroidAppActivity = paramActivity;
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailModelAccountDetailVideoManager$OnVideoPlayListener = paramOnVideoPlayListener;
+    this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailModelAccountDetailVideoManager$OnVideoPlayListener = paramOnVideoPlayListener;
     a(this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
     paramActivity = new IntentFilter();
     paramActivity.addAction("android.intent.action.SCREEN_OFF");
@@ -79,15 +79,16 @@ public class AccountDetailVideoManager
       TVK_SDKMgr.setDebugEnable(true);
       b = true;
     }
-    if (TVK_SDKMgr.isInstalled(paramContext)) {
+    if (TVK_SDKMgr.isInstalled(paramContext))
+    {
       jdField_a_of_type_Boolean = true;
     }
-    for (;;)
+    else
     {
-      return jdField_a_of_type_Boolean;
       jdField_a_of_type_Boolean = false;
       c();
     }
+    return jdField_a_of_type_Boolean;
   }
   
   private static void c()
@@ -97,11 +98,16 @@ public class AccountDetailVideoManager
   
   public void a()
   {
-    if ((this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null) && (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPlaying()))
+    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if ((localObject != null) && (((TVK_IMediaPlayer)localObject).isPlaying()))
     {
       this.jdField_a_of_type_Int = ((int)this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.getCurrentPostion());
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailVideoManager", 2, "pausePlayVideo , mCurrentPosition = " + this.jdField_a_of_type_Int);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("pausePlayVideo , mCurrentPosition = ");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+        QLog.d("AccountDetailVideoManager", 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.pause();
     }
@@ -109,19 +115,20 @@ public class AccountDetailVideoManager
   
   void a(FrameLayout paramFrameLayout)
   {
-    Object localObject;
     if (this.jdField_a_of_type_AndroidViewView == null)
     {
       this.jdField_a_of_type_AndroidViewView = a();
-      if (this.jdField_a_of_type_AndroidViewView != null)
+      localObject = this.jdField_a_of_type_AndroidViewView;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundColor(-1);
+        ((View)localObject).setBackgroundColor(-1);
         localObject = new FrameLayout.LayoutParams(-1, -1);
         this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
         paramFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, new ViewGroup.LayoutParams(-1, -1));
       }
     }
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.c) && (this.jdField_a_of_type_AndroidViewView.getParent() != null))
+    Object localObject = this.jdField_a_of_type_AndroidViewView;
+    if ((localObject != null) && (this.c) && (((View)localObject).getParent() != null))
     {
       localObject = this.jdField_a_of_type_AndroidViewView.getParent();
       if ((localObject instanceof ViewGroup))
@@ -130,84 +137,95 @@ public class AccountDetailVideoManager
         paramFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, new ViewGroup.LayoutParams(-1, -1));
       }
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("AccountDetailVideoManager", 2, "onCreateVideoSdkView needRemoveAndAdd = " + this.c);
+    if (QLog.isColorLevel())
+    {
+      paramFrameLayout = new StringBuilder();
+      paramFrameLayout.append("onCreateVideoSdkView needRemoveAndAdd = ");
+      paramFrameLayout.append(this.c);
+      QLog.d("AccountDetailVideoManager", 2, paramFrameLayout.toString());
     }
   }
   
-  void a(PaConfigAttr paramPaConfigAttr)
+  void a(PublicAccountConfigAttrImpl paramPublicAccountConfigAttrImpl)
   {
+    int i;
     if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer == null)
     {
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IProxyFactory.createMediaPlayer(this.jdField_a_of_type_AndroidContentContext, (IVideoViewBase)this.jdField_a_of_type_AndroidViewView);
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnVideoPreparedListener(new AccountDetailVideoManager.1(this));
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnCompletionListener(new AccountDetailVideoManager.2(this));
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setOnErrorListener(new AccountDetailVideoManager.3(this));
+      i = 1;
     }
-    for (int i = 1;; i = 0)
+    else
     {
-      if (i != 0)
+      i = 0;
+    }
+    if (i != 0)
+    {
+      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo("", "");
+      Object localObject2 = null;
+      Object localObject1 = localObject2;
+      if (paramPublicAccountConfigAttrImpl.configs != null)
       {
-        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo = new TVK_UserInfo("", "");
-        Object localObject2 = null;
-        Object localObject1 = localObject2;
-        if (paramPaConfigAttr.a != null)
-        {
-          localObject1 = localObject2;
-          if (paramPaConfigAttr.a.size() != 0) {
-            localObject1 = ((PaConfigAttr.PaConfigInfo)paramPaConfigAttr.a.get(0)).j;
-          }
-        }
-        if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
-        {
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, (String)localObject1, "");
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setLoopback(true);
-          paramPaConfigAttr = new HashMap();
-          paramPaConfigAttr.put("shouq_bus_type", "bus_type_account_detail");
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(paramPaConfigAttr);
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayer(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, "", 0L, 0L);
-          this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(2);
+        localObject1 = localObject2;
+        if (paramPublicAccountConfigAttrImpl.configs.size() != 0) {
+          localObject1 = ((IPublicAccountConfigAttr.PaConfigInfo)paramPublicAccountConfigAttrImpl.configs.get(0)).j;
         }
       }
-      return;
+      if ((localObject1 != null) && (!TextUtils.isEmpty((CharSequence)localObject1)))
+      {
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo = new TVK_PlayerVideoInfo(2, (String)localObject1, "");
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setLoopback(true);
+        paramPublicAccountConfigAttrImpl = new HashMap();
+        paramPublicAccountConfigAttrImpl.put("shouq_bus_type", "bus_type_account_detail");
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo.setReportInfoMap(paramPublicAccountConfigAttrImpl);
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.openMediaPlayer(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_UserInfo, this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_PlayerVideoInfo, "", 0L, 0L);
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.setXYaxis(2);
+      }
     }
   }
   
-  public void a(PaConfigAttr paramPaConfigAttr, FrameLayout paramFrameLayout)
+  public void a(PublicAccountConfigAttrImpl paramPublicAccountConfigAttrImpl, FrameLayout paramFrameLayout)
   {
     if (jdField_a_of_type_Boolean)
     {
       a(paramFrameLayout);
-      a(paramPaConfigAttr);
+      a(paramPublicAccountConfigAttrImpl);
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    Object localObject = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localObject != null)
     {
-      if (!this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.isPauseing()) {
-        break label86;
+      if (((TVK_IMediaPlayer)localObject).isPauseing())
+      {
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(this.jdField_a_of_type_Int);
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("restartPlayVideo , mCurrentPosition = ");
+          ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+          QLog.d("AccountDetailVideoManager", 2, ((StringBuilder)localObject).toString());
+        }
+        this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
+        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailModelAccountDetailVideoManager$OnVideoPlayListener.f();
+        return;
       }
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.seekTo(this.jdField_a_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.d("AccountDetailVideoManager", 2, "restartPlayVideo , mCurrentPosition = " + this.jdField_a_of_type_Int);
+      if (paramBoolean) {
+        this.jdField_a_of_type_ComTencentBizPubaccountAccountdetailModelAccountDetailVideoManager$OnVideoPlayListener.g();
       }
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.start();
-      this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailModelAccountDetailVideoManager$OnVideoPlayListener.f();
     }
-    label86:
-    while (!paramBoolean) {
-      return;
-    }
-    this.jdField_a_of_type_ComTencentBizPubaccountAccountDetailModelAccountDetailVideoManager$OnVideoPlayListener.g();
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer != null)
+    TVK_IMediaPlayer localTVK_IMediaPlayer = this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer;
+    if (localTVK_IMediaPlayer != null)
     {
-      this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.stop();
+      localTVK_IMediaPlayer.stop();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer.release();
       this.jdField_a_of_type_ComTencentQqliveMediaplayerApiTVK_IMediaPlayer = null;
       if (QLog.isColorLevel()) {
@@ -224,7 +242,7 @@ public class AccountDetailVideoManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.model.AccountDetailVideoManager
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.model.AccountDetailVideoManager
  * JD-Core Version:    0.7.0.1
  */

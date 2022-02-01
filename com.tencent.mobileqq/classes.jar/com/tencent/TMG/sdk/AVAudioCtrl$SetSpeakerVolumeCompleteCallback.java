@@ -8,7 +8,10 @@ public class AVAudioCtrl$SetSpeakerVolumeCompleteCallback
   
   protected void onComplete(int paramInt)
   {
-    Log.e("SdkJni", "SetSpeakerVolumeCompleteCallback.OnComplete， result = " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SetSpeakerVolumeCompleteCallback.OnComplete， result = ");
+    localStringBuilder.append(paramInt);
+    Log.e("SdkJni", localStringBuilder.toString());
   }
 }
 

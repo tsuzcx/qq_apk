@@ -18,7 +18,12 @@ public class TPGlobalEventNofication
       if ((mListeners != null) && (!mListeners.contains(paramOnGlobalEventChangeListener)))
       {
         mListeners.add(paramOnGlobalEventChangeListener);
-        TPLogUtil.i("TPGlobalEventNofication", "add onNetStatus change listener: " + paramOnGlobalEventChangeListener + ", mListeners: " + mListeners.size());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("add onNetStatus change listener: ");
+        localStringBuilder.append(paramOnGlobalEventChangeListener);
+        localStringBuilder.append(", mListeners: ");
+        localStringBuilder.append(mListeners.size());
+        TPLogUtil.i("TPGlobalEventNofication", localStringBuilder.toString());
       }
       return;
     }
@@ -37,8 +42,13 @@ public class TPGlobalEventNofication
       while (localIterator.hasNext()) {
         ((TPGlobalEventNofication.OnGlobalEventChangeListener)localIterator.next()).onEvent(paramInt1, paramInt2, paramInt3, paramObject);
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramObject;
+    }
   }
   
   public static void removeEventListener(TPGlobalEventNofication.OnGlobalEventChangeListener paramOnGlobalEventChangeListener)
@@ -48,7 +58,12 @@ public class TPGlobalEventNofication
       if (mListeners != null)
       {
         mListeners.remove(paramOnGlobalEventChangeListener);
-        TPLogUtil.i("TPGlobalEventNofication", "remove netStatusChangeListener, listener: " + paramOnGlobalEventChangeListener + ", mListeners: " + mListeners.size());
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("remove netStatusChangeListener, listener: ");
+        localStringBuilder.append(paramOnGlobalEventChangeListener);
+        localStringBuilder.append(", mListeners: ");
+        localStringBuilder.append(mListeners.size());
+        TPLogUtil.i("TPGlobalEventNofication", localStringBuilder.toString());
       }
       return;
     }
@@ -61,7 +76,7 @@ public class TPGlobalEventNofication
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.utils.TPGlobalEventNofication
  * JD-Core Version:    0.7.0.1
  */

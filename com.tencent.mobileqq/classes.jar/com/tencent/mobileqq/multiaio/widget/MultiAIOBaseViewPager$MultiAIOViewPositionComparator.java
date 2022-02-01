@@ -16,14 +16,17 @@ class MultiAIOBaseViewPager$MultiAIOViewPositionComparator
   {
     paramView1 = (MultiAIOBaseViewPager.LayoutParams)paramView1.getLayoutParams();
     paramView2 = (MultiAIOBaseViewPager.LayoutParams)paramView2.getLayoutParams();
-    if (paramView1.a != paramView2.a)
+    boolean bool1 = paramView1.a;
+    boolean bool2 = paramView2.a;
+    int i = -1;
+    if (bool1 != bool2)
     {
       if (paramView1.a) {
-        return 1;
+        i = 1;
       }
-      return -1;
+      return i;
     }
-    int i = this.a.a();
+    i = this.a.a();
     if (i == paramView1.b) {
       return 1;
     }
@@ -35,7 +38,7 @@ class MultiAIOBaseViewPager$MultiAIOViewPositionComparator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multiaio.widget.MultiAIOBaseViewPager.MultiAIOViewPositionComparator
  * JD-Core Version:    0.7.0.1
  */

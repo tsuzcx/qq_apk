@@ -18,29 +18,44 @@ public class FaceDrawableImpl$InternalDiscussionObserver
   public void onUpdateDiscussionFaceIcon(boolean paramBoolean1, boolean paramBoolean2, String paramString)
   {
     int i;
-    if (AvatarUtil.a(paramString)) {
-      i = 1001;
-    }
-    for (String str = AvatarUtil.b(paramString);; str = paramString)
+    Object localObject;
+    if (AvatarUtil.a(paramString))
     {
-      if (paramBoolean2) {
-        this.this$0.onUpdateHead(paramBoolean1, i, str, this.this$0.mDisObserver);
-      }
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.i("Q.qqhead.FaceDrawableImpl", 2, "====faceDrawableImpl onUpdateDiscussionFaceIcon === isSuccess: " + paramBoolean1 + ", isComplete: " + paramBoolean2 + ",disUin: " + paramString + ",type: " + i);
-        }
-        return;
-        this.this$0.onUpdateHead(paramBoolean1, i, str, null);
-      }
+      i = 1001;
+      localObject = AvatarUtil.b(paramString);
+    }
+    else
+    {
       i = 101;
+      localObject = paramString;
+    }
+    if (paramBoolean2)
+    {
+      FaceDrawableImpl localFaceDrawableImpl = this.this$0;
+      localFaceDrawableImpl.onUpdateHead(paramBoolean1, i, (String)localObject, localFaceDrawableImpl.mDisObserver);
+    }
+    else
+    {
+      this.this$0.onUpdateHead(paramBoolean1, i, (String)localObject, null);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("====faceDrawableImpl onUpdateDiscussionFaceIcon === isSuccess: ");
+      ((StringBuilder)localObject).append(paramBoolean1);
+      ((StringBuilder)localObject).append(", isComplete: ");
+      ((StringBuilder)localObject).append(paramBoolean2);
+      ((StringBuilder)localObject).append(",disUin: ");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(",type: ");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("Q.qqhead.FaceDrawableImpl", 2, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.face.FaceDrawableImpl.InternalDiscussionObserver
  * JD-Core Version:    0.7.0.1
  */

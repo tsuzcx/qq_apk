@@ -58,33 +58,25 @@ public class MiniGamePluginInfo
   
   public boolean equals(Object paramObject)
   {
-    boolean bool2 = false;
-    boolean bool1;
     if (this == paramObject) {
-      bool1 = true;
+      return true;
     }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return bool1;
-              bool1 = bool2;
-            } while (!(paramObject instanceof MiniGamePluginInfo));
-            paramObject = (MiniGamePluginInfo)paramObject;
-            bool1 = bool2;
-          } while (this.packageSize != paramObject.packageSize);
-          bool1 = bool2;
-        } while (!this.name.equals(paramObject.name));
-        bool1 = bool2;
-      } while (!this.id.equals(paramObject.id));
-      bool1 = bool2;
-    } while (!this.version.equals(paramObject.version));
+    if (!(paramObject instanceof MiniGamePluginInfo)) {
+      return false;
+    }
+    paramObject = (MiniGamePluginInfo)paramObject;
+    if (this.packageSize != paramObject.packageSize) {
+      return false;
+    }
+    if (!this.name.equals(paramObject.name)) {
+      return false;
+    }
+    if (!this.id.equals(paramObject.id)) {
+      return false;
+    }
+    if (!this.version.equals(paramObject.version)) {
+      return false;
+    }
     return this.url.equals(paramObject.url);
   }
   
@@ -95,7 +87,23 @@ public class MiniGamePluginInfo
   
   public String toString()
   {
-    return "MiniGamePluginInfo{name='" + this.name + '\'' + ", id='" + this.id + '\'' + ", version='" + this.version + '\'' + ", url='" + this.url + '\'' + ", packageSize=" + this.packageSize + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MiniGamePluginInfo{name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", id='");
+    localStringBuilder.append(this.id);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", version='");
+    localStringBuilder.append(this.version);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", url='");
+    localStringBuilder.append(this.url);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", packageSize=");
+    localStringBuilder.append(this.packageSize);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -109,7 +117,7 @@ public class MiniGamePluginInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.apkg.MiniGamePluginInfo
  * JD-Core Version:    0.7.0.1
  */

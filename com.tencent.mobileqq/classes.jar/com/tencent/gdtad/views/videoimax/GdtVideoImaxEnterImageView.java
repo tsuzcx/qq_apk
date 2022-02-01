@@ -28,9 +28,12 @@ public class GdtVideoImaxEnterImageView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    GdtLog.a("GdtVideoImaxEnterImageView", "onDraw() called with: hashcode = " + System.identityHashCode(this));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDraw() called with: hashcode = ");
+    localStringBuilder.append(System.identityHashCode(this));
+    GdtLog.a("GdtVideoImaxEnterImageView", localStringBuilder.toString());
     if (this.a != null)
     {
       int i = paramCanvas.save();
@@ -49,7 +52,7 @@ public class GdtVideoImaxEnterImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoimax.GdtVideoImaxEnterImageView
  * JD-Core Version:    0.7.0.1
  */

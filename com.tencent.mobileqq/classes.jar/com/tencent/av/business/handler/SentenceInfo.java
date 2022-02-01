@@ -24,12 +24,25 @@ public class SentenceInfo
   
   public String toString()
   {
-    return "SentenceInfo{uin='" + this.jdField_a_of_type_JavaLangString + '\'' + ", src_text='" + this.jdField_a_of_type_JavaLangCharSequence + '\'' + ", tra_text='" + this.b + '\'' + ", status=" + this.jdField_a_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SentenceInfo{uin='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", src_text='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", tra_text='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.handler.SentenceInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<selector
+<shape android:shape="rectangle"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:state_pressed="true" android:drawable="@drawable/ggz" />
-    <item android:drawable="@drawable/ggy" />
-</selector>
+    <corners android:radius="7.5dip" />
+    <gradient android:startColor="#0cffffff" android:endColor="#ccffffff" android:angle="270.0" />
+    <stroke android:width="1.0dip" android:color="@color/al3" />
+</shape>

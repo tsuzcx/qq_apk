@@ -24,13 +24,16 @@ public class BitmapTexture
   private FloatBuffer textureBuffer;
   private int textureId;
   private FloatBuffer vertexBuffer;
-  private final int vertexCount = vertexData.length / 3;
-  private final int vertexStride = 12;
+  private final int vertexCount;
+  private final int vertexStride;
   
   public BitmapTexture(Context paramContext)
   {
+    float[] arrayOfFloat = vertexData;
+    this.vertexCount = (arrayOfFloat.length / 3);
+    this.vertexStride = 12;
     this.context = paramContext;
-    this.vertexBuffer = ByteBuffer.allocateDirect(vertexData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertexData);
+    this.vertexBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertexData);
     this.vertexBuffer.position(0);
     this.textureBuffer = ByteBuffer.allocateDirect(textureData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(textureData);
     this.textureBuffer.position(0);
@@ -38,8 +41,11 @@ public class BitmapTexture
   
   public BitmapTexture(Context paramContext, Bitmap paramBitmap)
   {
+    float[] arrayOfFloat = vertexData;
+    this.vertexCount = (arrayOfFloat.length / 3);
+    this.vertexStride = 12;
     this.context = paramContext;
-    this.vertexBuffer = ByteBuffer.allocateDirect(vertexData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertexData);
+    this.vertexBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(vertexData);
     this.vertexBuffer.position(0);
     this.textureBuffer = ByteBuffer.allocateDirect(textureData.length * 4).order(ByteOrder.nativeOrder()).asFloatBuffer().put(textureData);
     this.textureBuffer.position(0);
@@ -72,31 +78,30 @@ public class BitmapTexture
   public void onSurfaceCreated()
   {
     this.program = ShaderUtil.createProgram(ShaderUtil.readRawTxt(this.context, R.raw.vertex_shader), ShaderUtil.readRawTxt(this.context, R.raw.fragment_shader));
-    int[] arrayOfInt;
-    if (this.program > 0)
+    int i = this.program;
+    if (i > 0)
     {
-      this.avPosition = GLES20.glGetAttribLocation(this.program, "av_Position");
+      this.avPosition = GLES20.glGetAttribLocation(i, "av_Position");
       this.afPosition = GLES20.glGetAttribLocation(this.program, "af_Position");
-      arrayOfInt = new int[1];
-      GLES20.glGenTextures(1, arrayOfInt, 0);
-      if (arrayOfInt[0] != 0) {
-        break label77;
+      Object localObject = new int[1];
+      GLES20.glGenTextures(1, (int[])localObject, 0);
+      if (localObject[0] == 0) {
+        return;
       }
-    }
-    label77:
-    do
-    {
-      return;
-      this.textureId = arrayOfInt[0];
+      this.textureId = localObject[0];
       GLES20.glBindTexture(3553, this.textureId);
       GLES20.glTexParameteri(3553, 10242, 10497);
       GLES20.glTexParameteri(3553, 10243, 10497);
       GLES20.glTexParameteri(3553, 10241, 9729);
       GLES20.glTexParameteri(3553, 10240, 9729);
-    } while (this.bitmap == null);
-    GLUtils.texImage2D(3553, 0, this.bitmap, 0);
-    GLES20.glEnable(3042);
-    GLES20.glBlendFunc(1, 771);
+      localObject = this.bitmap;
+      if (localObject == null) {
+        return;
+      }
+      GLUtils.texImage2D(3553, 0, (Bitmap)localObject, 0);
+      GLES20.glEnable(3042);
+      GLES20.glBlendFunc(1, 771);
+    }
   }
   
   public void updateBitmap(Bitmap paramBitmap)
@@ -107,7 +112,7 @@ public class BitmapTexture
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.BitmapTexture
  * JD-Core Version:    0.7.0.1
  */

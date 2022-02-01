@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.ChatActivityFacade;
 
 class PublicAccountChatPie$48
   implements Runnable
@@ -10,12 +9,12 @@ class PublicAccountChatPie$48
   
   public void run()
   {
-    TroopBarAssistantManager.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a, this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, true);
+    ChatActivityFacade.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.48
  * JD-Core Version:    0.7.0.1
  */

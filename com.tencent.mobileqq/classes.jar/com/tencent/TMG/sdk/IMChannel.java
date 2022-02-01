@@ -2,6 +2,7 @@ package com.tencent.TMG.sdk;
 
 import android.util.Log;
 import com.tencent.TMG.channel.AVAppChannel;
+import com.tencent.TMG.channel.AVAppChannel.CsCmdCallback;
 import com.tencent.TMG.channel.AVChannelManager;
 import com.tencent.TMG.utils.QLog;
 
@@ -28,12 +29,18 @@ public class IMChannel
   
   public long getSelfTinyId()
   {
-    long l = 0L;
-    AVAppChannel localAVAppChannel = AVChannelManager.getAppChannel();
-    if (localAVAppChannel != null) {
-      l = localAVAppChannel.getTinyId();
+    Object localObject = AVChannelManager.getAppChannel();
+    long l;
+    if (localObject != null) {
+      l = ((AVAppChannel)localObject).getTinyId();
+    } else {
+      l = 0L;
     }
-    Log.d(LOGTAG, "GetSelfTinyId selfTinyId: " + l);
+    localObject = LOGTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetSelfTinyId selfTinyId: ");
+    localStringBuilder.append(l);
+    Log.d((String)localObject, localStringBuilder.toString());
     return l;
   }
   
@@ -67,11 +74,15 @@ public class IMChannel
   
   public void multiVideoConfigRequest(byte[] paramArrayOfByte, int paramInt)
   {
-    QLog.i(LOGTAG, 0, "multiVideoConfigRequest length:" + paramArrayOfByte.length);
-    IMChannel.CsCmdCallbackImpl localCsCmdCallbackImpl = new IMChannel.CsCmdCallbackImpl(this, paramInt);
-    AVAppChannel localAVAppChannel = AVChannelManager.getAppChannel();
-    if (localAVAppChannel != null) {
-      localAVAppChannel.requestCmd("VideoCCSvc.opensdk", paramArrayOfByte, localCsCmdCallbackImpl);
+    Object localObject1 = LOGTAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("multiVideoConfigRequest length:");
+    ((StringBuilder)localObject2).append(paramArrayOfByte.length);
+    QLog.i((String)localObject1, 0, ((StringBuilder)localObject2).toString());
+    localObject1 = new IMChannel.CsCmdCallbackImpl(this, paramInt);
+    localObject2 = AVChannelManager.getAppChannel();
+    if (localObject2 != null) {
+      ((AVAppChannel)localObject2).requestCmd("VideoCCSvc.opensdk", paramArrayOfByte, (AVAppChannel.CsCmdCallback)localObject1);
     }
   }
   

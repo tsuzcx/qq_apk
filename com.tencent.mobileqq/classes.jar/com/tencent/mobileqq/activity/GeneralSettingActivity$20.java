@@ -9,16 +9,17 @@ class GeneralSettingActivity$20
   
   public void run()
   {
-    if (this.this$0.isFinishing()) {}
-    while ((!SimpleUIUtil.a()) || (this.this$0.a())) {
+    if (this.this$0.isFinishing()) {
       return;
     }
-    this.this$0.a(true, SimpleUIUtil.f());
+    if ((SimpleUIUtil.a()) && (!this.this$0.a())) {
+      this.this$0.a(true, SimpleUIUtil.f());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.GeneralSettingActivity.20
  * JD-Core Version:    0.7.0.1
  */

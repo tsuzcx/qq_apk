@@ -20,14 +20,15 @@ public final class NowSummaryCard$NearbySummaryCardRsp
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "pb_data", "id", "id_type", "ret_code", "err_msg" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro2 }, NearbySummaryCardRsp.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 32, 42 }, new String[] { "pb_data", "id", "id_type", "ret_code", "err_msg" }, new Object[] { localByteStringMicro1, Long.valueOf(0L), localInteger, localInteger, localByteStringMicro2 }, NearbySummaryCardRsp.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.nowsummarycard.NowSummaryCard.NearbySummaryCardRsp
  * JD-Core Version:    0.7.0.1
  */

@@ -1,15 +1,16 @@
 package com.tencent.avgame.gameresult;
 
+import android.app.Activity;
+import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.avgame.app.AVGameAppInterface;
-import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.IGameEngine;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.listener.SimpleGameResultListener;
-import com.tencent.avgame.ui.AVGameActivity;
 import com.tencent.avgame.ui.IAVGameRootContainer;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Locale;
+import mqq.app.AppRuntime;
 
 class GameResultHelper$1
   extends SimpleGameResultListener
@@ -18,36 +19,53 @@ class GameResultHelper$1
   
   public void a(EngineData paramEngineData, int paramInt)
   {
-    QLog.i(GameResultHelper.a(), 1, "onChangeUserStatusSuccess " + paramEngineData + " and from = " + paramInt);
+    String str = GameResultHelper.a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onChangeUserStatusSuccess ");
+    localStringBuilder.append(paramEngineData);
+    localStringBuilder.append(" and from = ");
+    localStringBuilder.append(paramInt);
+    QLog.i(str, 1, localStringBuilder.toString());
     if (paramInt == 4) {
-      this.a.a.b();
+      this.a.a.showRoom();
     }
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
   {
-    QLog.i(GameResultHelper.a(), 1, "onChangeUserStatusFailed " + paramString + " and from = " + paramInt2);
-    if ((paramInt2 == 4) && ((this.a.a instanceof AVGameActivity)))
+    String str = GameResultHelper.a();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onChangeUserStatusFailed ");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(" and from = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    QLog.i(str, 1, ((StringBuilder)localObject).toString());
+    if ((paramInt2 == 4) && ((this.a.a instanceof Activity)))
     {
-      AVGameActivity localAVGameActivity = (AVGameActivity)this.a.a;
-      if (!localAVGameActivity.isFinishing())
+      localObject = (Activity)this.a.a;
+      if (!((Activity)localObject).isFinishing())
       {
-        String str = paramString;
+        str = paramString;
         if (TextUtils.isEmpty(paramString)) {
-          str = localAVGameActivity.getString(2131690513);
+          str = ((Activity)localObject).getString(2131690438);
         }
-        QQToast.a(localAVGameActivity, 1, str, 1).a();
+        QQToast.a((Context)localObject, 1, str, 1).a();
       }
     }
   }
   
   public void a(String paramString, int paramInt, EngineData paramEngineData)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(GameResultHelper.a(), 2, "pushOnChangeUserStatus uin = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      paramEngineData = GameResultHelper.a();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pushOnChangeUserStatus uin = ");
+      localStringBuilder.append(paramString);
+      QLog.d(paramEngineData, 2, localStringBuilder.toString());
     }
-    if ((paramString.equals(GameEngine.a().a().getAccount())) && (paramInt == 1)) {
-      this.a.a.b();
+    if ((paramString.equals(IGameEngine.a().getAccount())) && (paramInt == 1)) {
+      this.a.a.showRoom();
     }
   }
   
@@ -60,7 +78,7 @@ class GameResultHelper$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultHelper.1
  * JD-Core Version:    0.7.0.1
  */

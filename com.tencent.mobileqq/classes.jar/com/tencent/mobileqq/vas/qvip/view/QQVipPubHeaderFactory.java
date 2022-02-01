@@ -15,25 +15,26 @@ public class QQVipPubHeaderFactory
       }
       try
       {
-        if (paramQQVipMsgInfo.msgType == 1)
-        {
-          paramQQVipMsgInfo = new QQVipArkHeaderView(paramActivity, null);
-          return paramQQVipMsgInfo;
+        if (paramQQVipMsgInfo.mMsgType == 1) {
+          return new QQVipArkHeaderView(paramActivity, null);
         }
+        if (paramQQVipMsgInfo.mMsgType == 2) {
+          return new ImgHeaderView(paramActivity);
+        }
+        if (paramQQVipMsgInfo.mMsgType == 3) {
+          return new TextHeaderView(paramActivity);
+        }
+        paramQQVipMsgInfo = new MoreMsgHeaderView(paramActivity);
+        return paramQQVipMsgInfo;
       }
       catch (Throwable paramQQVipMsgInfo)
       {
-        QLog.d("QQVipPubHeaderFactory", 4, "decode header(web) faile:" + paramQQVipMsgInfo.getMessage());
+        paramActivity = new StringBuilder();
+        paramActivity.append("decode header(web) faile:");
+        paramActivity.append(paramQQVipMsgInfo.getMessage());
+        QLog.d("QQVipPubHeaderFactory", 4, paramActivity.toString());
         return null;
       }
-      if (paramQQVipMsgInfo.msgType == 2) {
-        return new ImgHeaderView(paramActivity);
-      }
-      if (paramQQVipMsgInfo.msgType == 3) {
-        return new TextHeaderView(paramActivity);
-      }
-      paramQQVipMsgInfo = new MoreMsgHeaderView(paramActivity);
-      return paramQQVipMsgInfo;
     }
     QLog.d("QQVipPubHeaderFactory", 4, "createHeader fail activity is null");
     return null;
@@ -41,7 +42,7 @@ public class QQVipPubHeaderFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.qvip.view.QQVipPubHeaderFactory
  * JD-Core Version:    0.7.0.1
  */

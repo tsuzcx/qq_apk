@@ -1,12 +1,12 @@
 package com.tencent.avgame.ipc;
 
+import com.tencent.aelight.camera.download.api.AEResInfo;
+import com.tencent.aelight.camera.download.api.IAEDownloadCallBack;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResInfo;
-import dov.com.qq.im.ae.download.AEResManager.AEDownloadCallBack;
 import mqq.util.WeakReference;
 
 class AVGameServerIPCModule$PtvSoLoadCallback
-  implements AEResManager.AEDownloadCallBack
+  implements IAEDownloadCallBack
 {
   final WeakReference<AVGameServerIPCModule> a;
   
@@ -17,8 +17,17 @@ class AVGameServerIPCModule$PtvSoLoadCallback
   
   public void onAEDownloadFinish(AEResInfo paramAEResInfo, String paramString, boolean paramBoolean, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AVGameServerIPCModule", 2, "onAEResDownloadResult, package[" + paramAEResInfo.a + "], isDownloaded[" + paramBoolean + "], errorType[" + paramInt + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAEResDownloadResult, package[");
+      localStringBuilder.append(paramAEResInfo.index);
+      localStringBuilder.append("], isDownloaded[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], errorType[");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append("]");
+      QLog.i("AVGameServerIPCModule", 2, localStringBuilder.toString());
     }
     paramAEResInfo = (AVGameServerIPCModule)this.a.get();
     if (paramAEResInfo != null) {
@@ -34,13 +43,17 @@ class AVGameServerIPCModule$PtvSoLoadCallback
       if (paramLong2 != 0L) {
         f = (float)paramLong1 / (float)paramLong2;
       }
-      QLog.i("AVGameServerIPCModule", 4, "onAEProgressUpdate, [" + f + "]");
+      paramAEResInfo = new StringBuilder();
+      paramAEResInfo.append("onAEProgressUpdate, [");
+      paramAEResInfo.append(f);
+      paramAEResInfo.append("]");
+      QLog.i("AVGameServerIPCModule", 4, paramAEResInfo.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ipc.AVGameServerIPCModule.PtvSoLoadCallback
  * JD-Core Version:    0.7.0.1
  */

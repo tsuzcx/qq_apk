@@ -9,13 +9,13 @@ class RMVideoInitState$3
   {
     RMVideoStateMgr localRMVideoStateMgr = RMVideoStateMgr.a();
     if (localRMVideoStateMgr.a != null) {
-      localRMVideoStateMgr.a.o();
+      localRMVideoStateMgr.a.e();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.state.RMVideoInitState.3
  * JD-Core Version:    0.7.0.1
  */

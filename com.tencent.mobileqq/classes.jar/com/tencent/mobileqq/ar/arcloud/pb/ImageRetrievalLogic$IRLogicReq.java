@@ -19,13 +19,14 @@ public final class ImageRetrievalLogic$IRLogicReq
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40 }, new String[] { "stUserInfo", "iBusiness", "iScene", "vImage", "iModel" }, new Object[] { null, Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, IRLogicReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24, 34, 40 }, new String[] { "stUserInfo", "iBusiness", "iScene", "vImage", "iModel" }, new Object[] { null, localInteger, localInteger, localByteStringMicro, localInteger }, IRLogicReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arcloud.pb.ImageRetrievalLogic.IRLogicReq
  * JD-Core Version:    0.7.0.1
  */

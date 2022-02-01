@@ -34,11 +34,10 @@ public class TencentDocConvertConfigBean
   
   public static TencentDocConvertConfigBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    boolean bool2 = false;
-    if ((paramArrayOfQConfItem == null) || (paramArrayOfQConfItem.length <= 0)) {
-      return null;
+    TencentDocConvertConfigBean localTencentDocConvertConfigBean;
+    if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
+      localTencentDocConvertConfigBean = new TencentDocConvertConfigBean();
     }
-    TencentDocConvertConfigBean localTencentDocConvertConfigBean = new TencentDocConvertConfigBean();
     for (;;)
     {
       try
@@ -50,42 +49,42 @@ public class TencentDocConvertConfigBean
           if (paramArrayOfQConfItem.has("autoImportToSharedDocSwitch"))
           {
             if (paramArrayOfQConfItem.getInt("autoImportToSharedDocSwitch") != 1) {
-              break label571;
+              break label591;
             }
-            bool1 = true;
-            localTencentDocConvertConfigBean.jdField_a_of_type_Boolean = bool1;
+            bool = true;
+            localTencentDocConvertConfigBean.jdField_a_of_type_Boolean = bool;
           }
           if (paramArrayOfQConfItem.has("openWithSharedDocInTimSwitch"))
           {
             if (paramArrayOfQConfItem.getInt("openWithSharedDocInTimSwitch") != 1) {
-              break label576;
+              break label596;
             }
-            bool1 = true;
-            localTencentDocConvertConfigBean.jdField_b_of_type_Boolean = bool1;
+            bool = true;
+            localTencentDocConvertConfigBean.jdField_b_of_type_Boolean = bool;
           }
           if (paramArrayOfQConfItem.has("openFileInTimSwitch"))
           {
             if (paramArrayOfQConfItem.getInt("openFileInTimSwitch") != 1) {
-              break label581;
+              break label601;
             }
-            bool1 = true;
-            localTencentDocConvertConfigBean.jdField_c_of_type_Boolean = bool1;
+            bool = true;
+            localTencentDocConvertConfigBean.jdField_c_of_type_Boolean = bool;
           }
           if (paramArrayOfQConfItem.has("aioSwitch"))
           {
             if (paramArrayOfQConfItem.getInt("aioSwitch") != 1) {
-              break label586;
+              break label606;
             }
-            bool1 = true;
-            localTencentDocConvertConfigBean.jdField_d_of_type_Boolean = bool1;
+            bool = true;
+            localTencentDocConvertConfigBean.jdField_d_of_type_Boolean = bool;
           }
           if (paramArrayOfQConfItem.has("fileViewerMenuSwitch"))
           {
             if (paramArrayOfQConfItem.getInt("fileViewerMenuSwitch") != 1) {
-              break label591;
+              break label611;
             }
-            bool1 = true;
-            localTencentDocConvertConfigBean.jdField_e_of_type_Boolean = bool1;
+            bool = true;
+            localTencentDocConvertConfigBean.jdField_e_of_type_Boolean = bool;
           }
           if (paramArrayOfQConfItem.has("openFileInTimEntry")) {
             localTencentDocConvertConfigBean.jdField_a_of_type_Int = paramArrayOfQConfItem.getInt("openFileInTimEntry");
@@ -96,10 +95,10 @@ public class TencentDocConvertConfigBean
           if (paramArrayOfQConfItem.has("insertGrayTipAfterOpenWithSharedDocInTim"))
           {
             if (paramArrayOfQConfItem.getInt("insertGrayTipAfterOpenWithSharedDocInTim") != 1) {
-              break label596;
+              break label616;
             }
-            bool1 = true;
-            localTencentDocConvertConfigBean.jdField_f_of_type_Boolean = bool1;
+            bool = true;
+            localTencentDocConvertConfigBean.jdField_f_of_type_Boolean = bool;
           }
           if (paramArrayOfQConfItem.has("timVersion")) {
             localTencentDocConvertConfigBean.jdField_b_of_type_Int = paramArrayOfQConfItem.getInt("timVersion");
@@ -131,18 +130,18 @@ public class TencentDocConvertConfigBean
           if (paramArrayOfQConfItem.has("docListEntryInFileSwitch"))
           {
             if (paramArrayOfQConfItem.getInt("docListEntryInFileSwitch") != 1) {
-              break label601;
+              break label621;
             }
-            bool1 = true;
-            localTencentDocConvertConfigBean.jdField_g_of_type_Boolean = bool1;
+            bool = true;
+            localTencentDocConvertConfigBean.jdField_g_of_type_Boolean = bool;
           }
           if (paramArrayOfQConfItem.has("hideDocAuthoritySettingEntry"))
           {
-            bool1 = bool2;
-            if (paramArrayOfQConfItem.getInt("hideDocAuthoritySettingEntry") == 1) {
-              bool1 = true;
+            if (paramArrayOfQConfItem.getInt("hideDocAuthoritySettingEntry") != 1) {
+              break label626;
             }
-            localTencentDocConvertConfigBean.jdField_h_of_type_Boolean = bool1;
+            bool = true;
+            localTencentDocConvertConfigBean.jdField_h_of_type_Boolean = bool;
           }
           if (paramArrayOfQConfItem.has("docListUrl")) {
             localTencentDocConvertConfigBean.jdField_h_of_type_JavaLangString = paramArrayOfQConfItem.getString("docListUrl");
@@ -165,26 +164,30 @@ public class TencentDocConvertConfigBean
       {
         QLog.e("TencentDocConvertConfigBean", 1, paramArrayOfQConfItem.getLocalizedMessage(), paramArrayOfQConfItem);
       }
-      label571:
-      boolean bool1 = false;
-      continue;
-      label576:
-      bool1 = false;
-      continue;
-      label581:
-      bool1 = false;
-      continue;
-      label586:
-      bool1 = false;
-      continue;
+      return null;
       label591:
-      bool1 = false;
+      boolean bool = false;
       continue;
       label596:
-      bool1 = false;
+      bool = false;
       continue;
       label601:
-      bool1 = false;
+      bool = false;
+      continue;
+      label606:
+      bool = false;
+      continue;
+      label611:
+      bool = false;
+      continue;
+      label616:
+      bool = false;
+      continue;
+      label621:
+      bool = false;
+      continue;
+      label626:
+      bool = false;
     }
   }
   
@@ -280,7 +283,7 @@ public class TencentDocConvertConfigBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocConvertConfigBean
  * JD-Core Version:    0.7.0.1
  */

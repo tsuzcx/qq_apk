@@ -48,28 +48,29 @@ class PointSet
   
   public void b(PointSet paramPointSet)
   {
-    if (paramPointSet.d == this.c)
+    PointInfo localPointInfo1 = paramPointSet.d;
+    if (localPointInfo1 == this.c)
     {
       this.a = paramPointSet.a;
       this.c = paramPointSet.c;
       this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-    }
-    do
-    {
       return;
-      if (this.d == paramPointSet.c)
-      {
-        this.d.a(paramPointSet.d);
-        this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
-        return;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("TransPathJob", 2, "TransPathJob merge point error");
+    }
+    PointInfo localPointInfo2 = this.d;
+    if (localPointInfo2 == paramPointSet.c)
+    {
+      localPointInfo2.a(localPointInfo1);
+      this.b.a((this.d.jdField_a_of_type_Float + this.c.jdField_a_of_type_Float) / 2.0F, (this.d.b + this.c.b) / 2.0F, (this.d.c + this.c.c) / 2.0F, (this.d.jdField_a_of_type_Long + this.c.jdField_a_of_type_Long) / 2L);
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("TransPathJob", 2, "TransPathJob merge point error");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.doodle.PointSet
  * JD-Core Version:    0.7.0.1
  */

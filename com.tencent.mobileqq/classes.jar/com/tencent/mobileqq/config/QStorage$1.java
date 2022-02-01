@@ -19,184 +19,210 @@ class QStorage$1
     //   10: invokevirtual 42	com/tencent/mobileqq/config/QStorage:a	(Ljava/lang/String;Ljava/lang/String;)Ljava/io/File;
     //   13: astore_2
     //   14: aconst_null
-    //   15: astore 4
-    //   17: aconst_null
-    //   18: astore_1
+    //   15: astore_3
+    //   16: aconst_null
+    //   17: astore 5
     //   19: aconst_null
-    //   20: astore_3
-    //   21: new 44	java/io/ObjectOutputStream
-    //   24: dup
-    //   25: new 46	java/io/BufferedOutputStream
-    //   28: dup
-    //   29: new 48	java/io/FileOutputStream
-    //   32: dup
-    //   33: aload_2
-    //   34: invokespecial 51	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   37: invokespecial 54	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   40: invokespecial 55	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   43: astore_2
-    //   44: aload_2
-    //   45: astore_1
-    //   46: aload_2
-    //   47: aload_0
-    //   48: getfield 19	com/tencent/mobileqq/config/QStorage$1:jdField_a_of_type_JavaIoSerializable	Ljava/io/Serializable;
-    //   51: invokevirtual 59	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
-    //   54: aload_2
-    //   55: astore_1
-    //   56: aload_2
-    //   57: invokevirtual 62	java/io/ObjectOutputStream:flush	()V
-    //   60: aload_2
-    //   61: ifnull +7 -> 68
-    //   64: aload_2
-    //   65: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   68: ldc 67
-    //   70: areturn
-    //   71: astore_3
-    //   72: aconst_null
-    //   73: astore_2
-    //   74: aload_2
-    //   75: astore_1
-    //   76: ldc 69
-    //   78: iconst_1
-    //   79: new 71	java/lang/StringBuilder
-    //   82: dup
-    //   83: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   86: ldc 74
-    //   88: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   91: aload_0
-    //   92: getfield 17	com/tencent/mobileqq/config/QStorage$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   95: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   98: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   101: aload_3
-    //   102: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   105: aload_2
-    //   106: ifnull -38 -> 68
-    //   109: aload_2
-    //   110: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   113: goto -45 -> 68
-    //   116: astore_1
-    //   117: goto -49 -> 68
-    //   120: astore_1
-    //   121: aload_3
-    //   122: astore_2
-    //   123: aload_1
-    //   124: astore_3
-    //   125: aload_2
-    //   126: astore_1
-    //   127: ldc 69
-    //   129: iconst_1
-    //   130: new 71	java/lang/StringBuilder
-    //   133: dup
-    //   134: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   137: ldc 74
-    //   139: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   142: aload_0
-    //   143: getfield 17	com/tencent/mobileqq/config/QStorage$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   146: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   149: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   152: aload_3
-    //   153: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   156: aload_2
-    //   157: ifnull -89 -> 68
-    //   160: aload_2
-    //   161: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   164: goto -96 -> 68
-    //   167: astore_1
-    //   168: goto -100 -> 68
-    //   171: astore_3
-    //   172: aload 4
-    //   174: astore_2
-    //   175: aload_2
-    //   176: astore_1
-    //   177: ldc 69
-    //   179: iconst_1
-    //   180: new 71	java/lang/StringBuilder
-    //   183: dup
-    //   184: invokespecial 72	java/lang/StringBuilder:<init>	()V
-    //   187: ldc 74
-    //   189: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   192: aload_0
-    //   193: getfield 17	com/tencent/mobileqq/config/QStorage$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   196: invokevirtual 78	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   199: invokevirtual 82	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   202: aload_3
-    //   203: invokestatic 88	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   206: aload_2
-    //   207: ifnull -139 -> 68
-    //   210: aload_2
-    //   211: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   214: goto -146 -> 68
-    //   217: astore_1
-    //   218: goto -150 -> 68
-    //   221: astore_3
-    //   222: aload_1
-    //   223: astore_2
-    //   224: aload_3
-    //   225: astore_1
-    //   226: aload_2
-    //   227: ifnull +7 -> 234
-    //   230: aload_2
-    //   231: invokevirtual 65	java/io/ObjectOutputStream:close	()V
-    //   234: aload_1
-    //   235: athrow
-    //   236: astore_1
-    //   237: goto -169 -> 68
-    //   240: astore_2
-    //   241: goto -7 -> 234
-    //   244: astore_3
-    //   245: aload_1
-    //   246: astore_2
-    //   247: aload_3
-    //   248: astore_1
-    //   249: goto -23 -> 226
-    //   252: astore_3
-    //   253: goto -78 -> 175
-    //   256: astore_3
-    //   257: goto -132 -> 125
-    //   260: astore_3
-    //   261: goto -187 -> 74
+    //   20: astore 4
+    //   22: aconst_null
+    //   23: astore_1
+    //   24: new 44	java/io/ObjectOutputStream
+    //   27: dup
+    //   28: new 46	java/io/BufferedOutputStream
+    //   31: dup
+    //   32: new 48	java/io/FileOutputStream
+    //   35: dup
+    //   36: aload_2
+    //   37: invokespecial 51	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   40: invokespecial 54	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   43: invokespecial 55	java/io/ObjectOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   46: astore_2
+    //   47: aload_2
+    //   48: aload_0
+    //   49: getfield 19	com/tencent/mobileqq/config/QStorage$1:jdField_a_of_type_JavaIoSerializable	Ljava/io/Serializable;
+    //   52: invokevirtual 59	java/io/ObjectOutputStream:writeObject	(Ljava/lang/Object;)V
+    //   55: aload_2
+    //   56: invokevirtual 62	java/io/ObjectOutputStream:flush	()V
+    //   59: aload_2
+    //   60: invokevirtual 65	java/io/ObjectOutputStream:close	()V
+    //   63: goto +202 -> 265
+    //   66: astore_3
+    //   67: aload_2
+    //   68: astore_1
+    //   69: aload_3
+    //   70: astore_2
+    //   71: goto +197 -> 268
+    //   74: astore_3
+    //   75: goto +20 -> 95
+    //   78: astore_3
+    //   79: goto +78 -> 157
+    //   82: astore_3
+    //   83: goto +128 -> 211
+    //   86: astore_2
+    //   87: goto +181 -> 268
+    //   90: astore_1
+    //   91: aload_3
+    //   92: astore_2
+    //   93: aload_1
+    //   94: astore_3
+    //   95: aload_2
+    //   96: astore_1
+    //   97: new 67	java/lang/StringBuilder
+    //   100: dup
+    //   101: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   104: astore 4
+    //   106: aload_2
+    //   107: astore_1
+    //   108: aload 4
+    //   110: ldc 70
+    //   112: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: pop
+    //   116: aload_2
+    //   117: astore_1
+    //   118: aload 4
+    //   120: aload_0
+    //   121: getfield 17	com/tencent/mobileqq/config/QStorage$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   124: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   127: pop
+    //   128: aload_2
+    //   129: astore_1
+    //   130: ldc 76
+    //   132: iconst_1
+    //   133: aload 4
+    //   135: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   138: aload_3
+    //   139: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   142: aload_2
+    //   143: ifnull +122 -> 265
+    //   146: aload_2
+    //   147: invokevirtual 65	java/io/ObjectOutputStream:close	()V
+    //   150: goto +115 -> 265
+    //   153: astore_3
+    //   154: aload 5
+    //   156: astore_2
+    //   157: aload_2
+    //   158: astore_1
+    //   159: new 67	java/lang/StringBuilder
+    //   162: dup
+    //   163: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   166: astore 4
+    //   168: aload_2
+    //   169: astore_1
+    //   170: aload 4
+    //   172: ldc 70
+    //   174: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   177: pop
+    //   178: aload_2
+    //   179: astore_1
+    //   180: aload 4
+    //   182: aload_0
+    //   183: getfield 17	com/tencent/mobileqq/config/QStorage$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   186: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   189: pop
+    //   190: aload_2
+    //   191: astore_1
+    //   192: ldc 76
+    //   194: iconst_1
+    //   195: aload 4
+    //   197: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   200: aload_3
+    //   201: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   204: aload_2
+    //   205: ifnull +60 -> 265
+    //   208: goto -62 -> 146
+    //   211: aload_2
+    //   212: astore_1
+    //   213: new 67	java/lang/StringBuilder
+    //   216: dup
+    //   217: invokespecial 68	java/lang/StringBuilder:<init>	()V
+    //   220: astore 4
+    //   222: aload_2
+    //   223: astore_1
+    //   224: aload 4
+    //   226: ldc 70
+    //   228: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   231: pop
+    //   232: aload_2
+    //   233: astore_1
+    //   234: aload 4
+    //   236: aload_0
+    //   237: getfield 17	com/tencent/mobileqq/config/QStorage$1:jdField_a_of_type_JavaLangString	Ljava/lang/String;
+    //   240: invokevirtual 74	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   243: pop
+    //   244: aload_2
+    //   245: astore_1
+    //   246: ldc 76
+    //   248: iconst_1
+    //   249: aload 4
+    //   251: invokevirtual 80	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   254: aload_3
+    //   255: invokestatic 86	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   258: aload_2
+    //   259: ifnull +6 -> 265
+    //   262: goto -116 -> 146
+    //   265: ldc 88
+    //   267: areturn
+    //   268: aload_1
+    //   269: ifnull +7 -> 276
+    //   272: aload_1
+    //   273: invokevirtual 65	java/io/ObjectOutputStream:close	()V
+    //   276: goto +5 -> 281
+    //   279: aload_2
+    //   280: athrow
+    //   281: goto -2 -> 279
+    //   284: astore_1
+    //   285: goto -20 -> 265
+    //   288: astore_1
+    //   289: goto -13 -> 276
+    //   292: astore_3
+    //   293: aload 4
+    //   295: astore_2
+    //   296: goto -85 -> 211
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	264	0	this	1
-    //   0	264	1	paramFile	java.io.File
-    //   0	264	2	paramT	T
-    //   20	1	3	localObject1	Object
-    //   71	51	3	localNotSerializableException1	java.io.NotSerializableException
-    //   124	29	3	localFile	java.io.File
-    //   171	32	3	localIOException1	java.io.IOException
-    //   221	4	3	localObject2	Object
-    //   244	4	3	localObject3	Object
-    //   252	1	3	localIOException2	java.io.IOException
-    //   256	1	3	localFileNotFoundException	java.io.FileNotFoundException
-    //   260	1	3	localNotSerializableException2	java.io.NotSerializableException
-    //   15	158	4	localObject4	Object
+    //   0	299	0	this	1
+    //   0	299	1	paramFile	java.io.File
+    //   0	299	2	paramT	T
+    //   15	1	3	localObject1	Object
+    //   66	4	3	localObject2	Object
+    //   74	1	3	localIOException	java.io.IOException
+    //   78	1	3	localFileNotFoundException1	java.io.FileNotFoundException
+    //   82	10	3	localNotSerializableException1	java.io.NotSerializableException
+    //   94	45	3	localFile	java.io.File
+    //   153	102	3	localFileNotFoundException2	java.io.FileNotFoundException
+    //   292	1	3	localNotSerializableException2	java.io.NotSerializableException
+    //   20	274	4	localStringBuilder	java.lang.StringBuilder
+    //   17	138	5	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   21	44	71	java/io/NotSerializableException
-    //   109	113	116	java/io/IOException
-    //   21	44	120	java/io/FileNotFoundException
-    //   160	164	167	java/io/IOException
-    //   21	44	171	java/io/IOException
-    //   210	214	217	java/io/IOException
-    //   21	44	221	finally
-    //   127	156	221	finally
-    //   177	206	221	finally
-    //   64	68	236	java/io/IOException
-    //   230	234	240	java/io/IOException
-    //   46	54	244	finally
-    //   56	60	244	finally
-    //   76	105	244	finally
-    //   46	54	252	java/io/IOException
-    //   56	60	252	java/io/IOException
-    //   46	54	256	java/io/FileNotFoundException
-    //   56	60	256	java/io/FileNotFoundException
-    //   46	54	260	java/io/NotSerializableException
-    //   56	60	260	java/io/NotSerializableException
+    //   47	59	66	finally
+    //   47	59	74	java/io/IOException
+    //   47	59	78	java/io/FileNotFoundException
+    //   47	59	82	java/io/NotSerializableException
+    //   24	47	86	finally
+    //   97	106	86	finally
+    //   108	116	86	finally
+    //   118	128	86	finally
+    //   130	142	86	finally
+    //   159	168	86	finally
+    //   170	178	86	finally
+    //   180	190	86	finally
+    //   192	204	86	finally
+    //   213	222	86	finally
+    //   224	232	86	finally
+    //   234	244	86	finally
+    //   246	258	86	finally
+    //   24	47	90	java/io/IOException
+    //   24	47	153	java/io/FileNotFoundException
+    //   59	63	284	java/io/IOException
+    //   146	150	284	java/io/IOException
+    //   272	276	288	java/io/IOException
+    //   24	47	292	java/io/NotSerializableException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.QStorage.1
  * JD-Core Version:    0.7.0.1
  */

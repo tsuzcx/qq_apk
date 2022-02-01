@@ -23,13 +23,14 @@ public final class ResvAttrForGiftMsg$ResvAttr
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 58, 66 }, new String[] { "int32_send_score", "int32_recv_score", "bytes_charm_heroism", "uint32_button_flag", "uint32_obj_color", "uint32_animation_type", "msg_interact_gift", "activity_gift_info" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null }, ResvAttr.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40, 48, 58, 66 }, new String[] { "int32_send_score", "int32_recv_score", "bytes_charm_heroism", "uint32_button_flag", "uint32_obj_color", "uint32_animation_type", "msg_interact_gift", "activity_gift_info" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger, localInteger, localInteger, null, null }, ResvAttr.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.msg.hummer.resv.ResvAttrForGiftMsg.ResvAttr
  * JD-Core Version:    0.7.0.1
  */

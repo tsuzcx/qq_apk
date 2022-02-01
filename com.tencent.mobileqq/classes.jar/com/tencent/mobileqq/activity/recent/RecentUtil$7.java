@@ -15,17 +15,18 @@ final class RecentUtil$7
   
   public void run()
   {
-    Message localMessage = null;
-    QQMessageFacade localQQMessageFacade = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
-    if (localQQMessageFacade != null) {
-      localMessage = localQQMessageFacade.a(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade();
+    if (localObject != null) {
+      localObject = ((QQMessageFacade)localObject).getLastMessage(this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
+    } else {
+      localObject = null;
     }
-    if (localMessage != null)
+    if (localObject != null)
     {
-      if ("false".equals(localMessage.getExtInfoFromExtStr("recent_list_advertisement_message_first_click")))
+      if ("false".equals(((Message)localObject).getExtInfoFromExtStr("recent_list_advertisement_message_first_click")))
       {
-        localMessage.saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
-        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(localMessage.frienduin, localMessage.msgtype, localMessage.uniseq, "extStr", localMessage.extStr);
+        ((Message)localObject).saveExtInfoToExtStr("recent_list_advertisement_message_first_click", "true");
+        this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(((Message)localObject).frienduin, ((Message)localObject).msgtype, ((Message)localObject).uniseq, "extStr", ((Message)localObject).extStr);
         if (this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a != null) {
           ReportController.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.jdField_a_of_type_JavaLangString, "0X8008F5E", "0X8008F5E", 0, 0, this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.c, "", PublicAccountAdUtil.a(), this.jdField_a_of_type_ComTencentBizPubaccountAdvertisementDataAdvertisementItem.a.b);
         }
@@ -38,7 +39,7 @@ final class RecentUtil$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentUtil.7
  * JD-Core Version:    0.7.0.1
  */

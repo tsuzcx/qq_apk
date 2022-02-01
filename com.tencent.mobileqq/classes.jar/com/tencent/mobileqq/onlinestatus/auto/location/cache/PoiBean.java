@@ -22,12 +22,20 @@ public class PoiBean
   @NonNull
   public String toString()
   {
-    return "PoiBean{latLng=" + this.latLng + ", poiList=" + Arrays.toString(this.poiArray) + ", adInfo=" + this.adInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PoiBean{latLng=");
+    localStringBuilder.append(this.latLng);
+    localStringBuilder.append(", poiList=");
+    localStringBuilder.append(Arrays.toString(this.poiArray));
+    localStringBuilder.append(", adInfo=");
+    localStringBuilder.append(this.adInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.cache.PoiBean
  * JD-Core Version:    0.7.0.1
  */

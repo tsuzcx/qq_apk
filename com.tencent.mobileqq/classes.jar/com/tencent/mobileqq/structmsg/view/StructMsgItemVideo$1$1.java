@@ -15,15 +15,16 @@ class StructMsgItemVideo$1$1
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
     StructMsgItemVideo.a(this.jdField_a_of_type_ComTencentMobileqqStructmsgViewStructMsgItemVideo$1.a, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_AndroidViewView);
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof BaseActivity)) {
-      ReportController.b(((BaseActivity)this.jdField_a_of_type_AndroidContentContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
+    Context localContext = this.jdField_a_of_type_AndroidContentContext;
+    if ((localContext instanceof BaseActivity)) {
+      ReportController.b(((BaseActivity)localContext).app, "CliOper", "", "", "0X8005BA3", "0X8005BA3", 0, 0, "", "", "", "");
     }
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemVideo.1.1
  * JD-Core Version:    0.7.0.1
  */

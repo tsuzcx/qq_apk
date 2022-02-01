@@ -28,21 +28,23 @@ public class VideoProcessExitMonitor
     this.jdField_a_of_type_ComTencentAvAppVideoAppInterface = paramVideoAppInterface;
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     this.jdField_a_of_type_Int = 0;
-    if (QavRecordDpc.a().l == 1) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.jdField_a_of_type_Boolean = bool;
-      QLog.d("VideoProcessExitMonitor", 1, String.format("VideoProcessExitMonitor mExitProcessEnable=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
-      return;
+    boolean bool;
+    if (QavRecordDpc.a().l == 1) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    this.jdField_a_of_type_Boolean = bool;
+    QLog.d("VideoProcessExitMonitor", 1, String.format("VideoProcessExitMonitor mExitProcessEnable=%s", new Object[] { Boolean.valueOf(this.jdField_a_of_type_Boolean) }));
   }
   
   private void a(long paramLong)
   {
     QLog.d("VideoProcessExitMonitor", 1, String.format("startMsfRespTimeoutCheck timeout=%s", new Object[] { Long.valueOf(paramLong) }));
-    if (this.jdField_a_of_type_JavaLangRunnable != null)
+    Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
+    if (localRunnable != null)
     {
-      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+      this.jdField_a_of_type_AndroidOsHandler.removeCallbacks(localRunnable);
       this.jdField_a_of_type_JavaLangRunnable = null;
     }
     this.jdField_a_of_type_JavaLangRunnable = new VideoProcessExitMonitor.1(this);
@@ -140,29 +142,54 @@ public class VideoProcessExitMonitor
     if ((!paramBoolean) && (!this.jdField_a_of_type_Boolean)) {
       return;
     }
-    for (;;)
+    synchronized (jdField_a_of_type_JavaLangObject)
     {
-      synchronized (jdField_a_of_type_JavaLangObject)
+      QLog.d("VideoProcessExitMonitor", 1, String.format("processDeactive mCurStatus=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      if (this.jdField_a_of_type_Int == 0)
       {
-        QLog.d("VideoProcessExitMonitor", 1, String.format("processDeactive mCurStatus=%s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
-        if (this.jdField_a_of_type_Int == 0)
-        {
-          b(1);
-          a(2000L);
-          this.jdField_a_of_type_Int = 1;
-          c(this.jdField_a_of_type_Int);
-          return;
-        }
+        b(1);
+        a(2000L);
+        this.jdField_a_of_type_Int = 1;
       }
-      int i = this.jdField_a_of_type_Int;
-      if (i != 1) {}
+      else
+      {
+        int i = this.jdField_a_of_type_Int;
+      }
+      c(this.jdField_a_of_type_Int);
+      return;
     }
   }
   
   public boolean a()
   {
-    QLog.d("VideoProcessExitMonitor", 1, String.format("canExitProcess mAcceptMultiIncomingCall=%s mSwitch2MultiActive=%s mSwitch2MultiPassive=%s mSwitch2DoubleMeeting=%s mSwitch2OtherTerminal=%s mAllTerminalOffline=%s", new Object[] { Boolean.valueOf(this.b), Boolean.valueOf(this.c), Boolean.valueOf(this.d), Boolean.valueOf(this.e), Boolean.valueOf(this.f), Boolean.valueOf(this.g) }));
-    return (!this.b) && (!this.c) && (!this.d) && (!this.e) && (!this.f) && (!this.g);
+    boolean bool1 = this.b;
+    boolean bool2 = false;
+    QLog.d("VideoProcessExitMonitor", 1, String.format("canExitProcess mAcceptMultiIncomingCall=%s mSwitch2MultiActive=%s mSwitch2MultiPassive=%s mSwitch2DoubleMeeting=%s mSwitch2OtherTerminal=%s mAllTerminalOffline=%s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(this.c), Boolean.valueOf(this.d), Boolean.valueOf(this.e), Boolean.valueOf(this.f), Boolean.valueOf(this.g) }));
+    bool1 = bool2;
+    if (!this.b)
+    {
+      bool1 = bool2;
+      if (!this.c)
+      {
+        bool1 = bool2;
+        if (!this.d)
+        {
+          bool1 = bool2;
+          if (!this.e)
+          {
+            bool1 = bool2;
+            if (!this.f)
+            {
+              bool1 = bool2;
+              if (!this.g) {
+                bool1 = true;
+              }
+            }
+          }
+        }
+      }
+    }
+    return bool1;
   }
   
   public void b(boolean paramBoolean)
@@ -213,7 +240,7 @@ public class VideoProcessExitMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoProcessExitMonitor
  * JD-Core Version:    0.7.0.1
  */

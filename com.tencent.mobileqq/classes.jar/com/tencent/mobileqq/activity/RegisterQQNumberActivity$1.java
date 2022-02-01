@@ -14,9 +14,18 @@ class RegisterQQNumberActivity$1
   {
     if (QLog.isColorLevel())
     {
-      QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  userAccount = " + paramString + " ret=" + paramInt2);
-      if (paramErrMsg != null) {
-        QLog.d("RegisterQQNumberActivity", 2, "OnGetStViaSMSVerifyLogin  errMsg = " + paramErrMsg.getMessage());
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("OnGetStViaSMSVerifyLogin  userAccount = ");
+      paramArrayOfByte.append(paramString);
+      paramArrayOfByte.append(" ret=");
+      paramArrayOfByte.append(paramInt2);
+      QLog.d("RegisterQQNumberActivity", 2, paramArrayOfByte.toString());
+      if (paramErrMsg != null)
+      {
+        paramString = new StringBuilder();
+        paramString.append("OnGetStViaSMSVerifyLogin  errMsg = ");
+        paramString.append(paramErrMsg.getMessage());
+        QLog.d("RegisterQQNumberActivity", 2, paramString.toString());
       }
     }
     if (paramInt2 == 0) {
@@ -33,7 +42,7 @@ class RegisterQQNumberActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterQQNumberActivity.1
  * JD-Core Version:    0.7.0.1
  */

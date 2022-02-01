@@ -20,27 +20,41 @@ public class XMLMessageUtils
     String str = a(paramString, paramLong1, paramLong2);
     PAMessage localPAMessage = (PAMessage)a.get(str);
     paramString = localPAMessage;
-    if (localPAMessage == null)
+    if (localPAMessage == null) {}
+    try
     {
-      paramArrayOfByte = ((IPublicAccountMessageUtil)QRoute.api(IPublicAccountMessageUtil.class)).fromByteArray(paramArrayOfByte);
+      paramArrayOfByte = (PAMessage)((IPublicAccountMessageUtil)QRoute.api(IPublicAccountMessageUtil.class)).fromByteArray(paramArrayOfByte);
       paramString = paramArrayOfByte;
-      if (paramArrayOfByte != null)
-      {
-        a.put(str, paramArrayOfByte);
-        paramString = paramArrayOfByte;
+      if (paramArrayOfByte == null) {
+        break label73;
       }
+      a.put(str, paramArrayOfByte);
+      return paramArrayOfByte;
     }
+    catch (Exception paramString)
+    {
+      label71:
+      break label71;
+    }
+    return null;
+    label73:
     return paramString;
   }
   
   private static String a(String paramString, long paramLong1, long paramLong2)
   {
-    return paramString + "&" + paramLong1 + "&" + paramLong2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("&");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append("&");
+    localStringBuilder.append(paramLong2);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.XMLMessageUtils
  * JD-Core Version:    0.7.0.1
  */

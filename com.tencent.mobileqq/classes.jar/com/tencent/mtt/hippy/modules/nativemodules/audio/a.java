@@ -55,28 +55,19 @@ public class a
   
   public void a(Context paramContext, Uri paramUri)
   {
-    if (this.c == a.a.a) {}
-    try
+    if (this.c == a.a.a)
     {
-      this.b.setDataSource(paramContext, paramUri);
-      this.c = a.a.c;
-      return;
-    }
-    catch (IllegalStateException paramContext)
-    {
+      try
+      {
+        this.b.setDataSource(paramContext, paramUri);
+        this.c = a.a.c;
+        return;
+      }
+      catch (IOException paramContext) {}catch (IllegalStateException paramContext) {}catch (IllegalArgumentException paramContext) {}
       paramContext.printStackTrace();
       return;
-      throw new RuntimeException();
     }
-    catch (IOException paramContext)
-    {
-      break label28;
-    }
-    catch (IllegalArgumentException paramContext)
-    {
-      label28:
-      break label28;
-    }
+    throw new RuntimeException();
   }
   
   public void a(MediaPlayer.OnCompletionListener paramOnCompletionListener)
@@ -179,7 +170,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.audio.a
  * JD-Core Version:    0.7.0.1
  */

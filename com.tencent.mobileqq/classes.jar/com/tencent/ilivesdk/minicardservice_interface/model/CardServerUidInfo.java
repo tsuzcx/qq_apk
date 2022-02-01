@@ -13,12 +13,18 @@ public class CardServerUidInfo
   
   public String toString()
   {
-    return "[MiniCardUidInfo:uid=" + this.uid + ";businessUid=" + this.businessUid + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniCardUidInfo:uid=");
+    localStringBuilder.append(this.uid);
+    localStringBuilder.append(";businessUid=");
+    localStringBuilder.append(this.businessUid);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.minicardservice_interface.model.CardServerUidInfo
  * JD-Core Version:    0.7.0.1
  */

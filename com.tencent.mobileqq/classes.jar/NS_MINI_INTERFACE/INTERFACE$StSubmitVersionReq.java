@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class INTERFACE$StSubmitVersionReq
   extends MessageMicro<StSubmitVersionReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 50, 58, 64, 74, 82, 88, 96, 104, 114, 122 }, new String[] { "extInfo", "appid", "version", "versionType", "intro", "mainPkg", "subPkgs", "pkgType", "firstPage", "roomId", "supportOffline", "skipDomainCheck", "property", "usePlugin", "ideConfig" }, new Object[] { null, "", "", Integer.valueOf(0), "", null, null, Integer.valueOf(0), "", "", Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), null, null }, StSubmitVersionReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBStringField appid = PBField.initString("");
   public COMM.StCommonExt extInfo = new COMM.StCommonExt();
   public final PBStringField firstPage = PBField.initString("");
@@ -28,10 +28,16 @@ public final class INTERFACE$StSubmitVersionReq
   public INTERFACE.StUsePlugin usePlugin = new INTERFACE.StUsePlugin();
   public final PBStringField version = PBField.initString("");
   public final PBInt32Field versionType = PBField.initInt32(0);
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 50, 58, 64, 74, 82, 88, 96, 104, 114, 122 }, new String[] { "extInfo", "appid", "version", "versionType", "intro", "mainPkg", "subPkgs", "pkgType", "firstPage", "roomId", "supportOffline", "skipDomainCheck", "property", "usePlugin", "ideConfig" }, new Object[] { null, "", "", localInteger, "", null, null, localInteger, "", "", localInteger, localInteger, localInteger, null, null }, StSubmitVersionReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MINI_INTERFACE.INTERFACE.StSubmitVersionReq
  * JD-Core Version:    0.7.0.1
  */

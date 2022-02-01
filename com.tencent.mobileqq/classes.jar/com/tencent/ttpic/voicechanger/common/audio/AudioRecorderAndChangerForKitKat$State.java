@@ -33,6 +33,10 @@ public class AudioRecorderAndChangerForKitKat$State
       return bool;
     }
     finally {}
+    for (;;)
+    {
+      throw paramVarArgs;
+    }
   }
   
   public int state()
@@ -51,14 +55,24 @@ public class AudioRecorderAndChangerForKitKat$State
   
   public String toString()
   {
-    return "State[" + this.state + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("State[");
+    localStringBuilder.append(this.state);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void transfer(int paramInt)
   {
     try
     {
-      LogUtils.i(AudioRecorderCompat.TAG, "switch state: " + this.state + " -> " + paramInt);
+      String str = AudioRecorderCompat.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("switch state: ");
+      localStringBuilder.append(this.state);
+      localStringBuilder.append(" -> ");
+      localStringBuilder.append(paramInt);
+      LogUtils.i(str, localStringBuilder.toString());
       this.state = paramInt;
       this.this$0.mCurrentState.notifyAll();
       return;
@@ -72,7 +86,7 @@ public class AudioRecorderAndChangerForKitKat$State
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.AudioRecorderAndChangerForKitKat.State
  * JD-Core Version:    0.7.0.1
  */

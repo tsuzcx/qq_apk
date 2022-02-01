@@ -26,21 +26,23 @@ public class LebaSearchPart$MyFocusChangeListener
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.a.get();
     QBaseActivity localQBaseActivity = (QBaseActivity)this.b.get();
-    if ((localQQAppInterface == null) || (localQBaseActivity == null)) {
-      QLog.i("LebaQCirclePartImpl", 1, "MyFocusChangeListener onFocusChange app == null || activity == null");
-    }
-    while (!paramBoolean) {
+    if ((localQQAppInterface != null) && (localQBaseActivity != null))
+    {
+      if (paramBoolean)
+      {
+        paramView.clearFocus();
+        UniteSearchReportController.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
+        UniteSearchActivity.a(localQBaseActivity, null, 21, 0L, null, 3);
+        ReportController.b(localQQAppInterface, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
+      }
       return;
     }
-    paramView.clearFocus();
-    UniteSearchReportController.a(null, 0, 21, "0X8009D15", 0, 0, null, null);
-    UniteSearchActivity.a(localQBaseActivity, null, 21, 0L, null, 3);
-    ReportController.b(localQQAppInterface, "CliOper", "", "", "0x8004B21", "0x8004B21", 0, 0, "", "", "", "");
+    QLog.i("LebaQCirclePartImpl", 1, "MyFocusChangeListener onFocusChange app == null || activity == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaSearchPart.MyFocusChangeListener
  * JD-Core Version:    0.7.0.1
  */

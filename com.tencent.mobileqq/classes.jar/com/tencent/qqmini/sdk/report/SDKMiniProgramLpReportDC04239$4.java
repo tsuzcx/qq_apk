@@ -12,15 +12,24 @@ final class SDKMiniProgramLpReportDC04239$4
   
   public void run()
   {
-    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion()) {
-      QMLog.d("MiniProgramLpReportDC04239", "reportUserClick() called with: subActionType = [" + this.val$subActionType + "], reserves = [" + this.val$reserves + "], appType = [" + this.val$appType + "]");
+    if (((MiniAppProxy)ProxyManager.get(MiniAppProxy.class)).isDebugVersion())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportUserClick() called with: subActionType = [");
+      localStringBuilder.append(this.val$subActionType);
+      localStringBuilder.append("], reserves = [");
+      localStringBuilder.append(this.val$reserves);
+      localStringBuilder.append("], appType = [");
+      localStringBuilder.append(this.val$appType);
+      localStringBuilder.append("]");
+      QMLog.d("MiniProgramLpReportDC04239", localStringBuilder.toString());
     }
     SDKMiniProgramLpReportDC04239.access$300(this.val$miniAppConfig, this.val$appType, this.val$path, "page_view", this.val$subActionType, this.val$reserves);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.SDKMiniProgramLpReportDC04239.4
  * JD-Core Version:    0.7.0.1
  */

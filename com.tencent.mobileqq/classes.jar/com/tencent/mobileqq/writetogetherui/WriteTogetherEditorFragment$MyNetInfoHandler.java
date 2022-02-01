@@ -9,19 +9,19 @@ class WriteTogetherEditorFragment$MyNetInfoHandler
 {
   private WriteTogetherEditorFragment$MyNetInfoHandler(WriteTogetherEditorFragment paramWriteTogetherEditorFragment) {}
   
-  public void a()
+  protected void a()
   {
     ThreadManager.getUIHandlerV2().post(new WriteTogetherEditorFragment.MyNetInfoHandler.1(this));
   }
   
-  public void b()
+  protected void b()
   {
     ThreadManager.getUIHandlerV2().post(new WriteTogetherEditorFragment.MyNetInfoHandler.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.WriteTogetherEditorFragment.MyNetInfoHandler
  * JD-Core Version:    0.7.0.1
  */

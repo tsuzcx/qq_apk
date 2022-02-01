@@ -1,6 +1,7 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.content.Context;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.AbsEmoRuntimeServiceProxy;
 import mqq.app.AppRuntime;
 import mqq.app.api.IRuntimeService;
 
@@ -26,11 +27,13 @@ public abstract interface IEmoticonMainPanelApp
   
   public abstract <T extends AppRuntime> T getQQAppInterface();
   
-  public abstract IRuntimeService getService(Class paramClass);
+  public abstract AbsEmoRuntimeServiceProxy<? extends IRuntimeService> getRuntimeService(Class paramClass);
+  
+  public abstract <T extends IRuntimeService> T getService(Class<T> paramClass);
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.IEmoticonMainPanelApp
  * JD-Core Version:    0.7.0.1
  */

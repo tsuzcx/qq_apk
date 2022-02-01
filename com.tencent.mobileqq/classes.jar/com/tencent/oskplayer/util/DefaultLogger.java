@@ -9,62 +9,95 @@ public class DefaultLogger
   
   public int d(String paramString1, String paramString2)
   {
-    return Log.d("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.d(localStringBuilder.toString(), paramString2);
   }
   
   public int d(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return Log.d("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.d(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int e(String paramString1, String paramString2)
   {
-    return Log.e("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.e(localStringBuilder.toString(), paramString2);
   }
   
   public int e(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return Log.e("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.e(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int i(String paramString1, String paramString2)
   {
-    return Log.i("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.i(localStringBuilder.toString(), paramString2);
   }
   
   public int i(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return Log.i("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.i(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int v(String paramString1, String paramString2)
   {
-    return Log.v("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.v(localStringBuilder.toString(), paramString2);
   }
   
   public int v(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return Log.v("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.v(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int w(String paramString1, String paramString2)
   {
-    return Log.w("OskPlayer/" + paramString1, paramString2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.w(localStringBuilder.toString(), paramString2);
   }
   
   public int w(String paramString1, String paramString2, Throwable paramThrowable)
   {
-    return Log.w("OskPlayer/" + paramString1, paramString2, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString1);
+    return Log.w(localStringBuilder.toString(), paramString2, paramThrowable);
   }
   
   public int w(String paramString, Throwable paramThrowable)
   {
-    return Log.w("OskPlayer/" + paramString, paramThrowable);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OskPlayer/");
+    localStringBuilder.append(paramString);
+    return Log.w(localStringBuilder.toString(), paramThrowable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.util.DefaultLogger
  * JD-Core Version:    0.7.0.1
  */

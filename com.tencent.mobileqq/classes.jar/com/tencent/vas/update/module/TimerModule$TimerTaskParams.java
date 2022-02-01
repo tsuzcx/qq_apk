@@ -13,12 +13,19 @@ class TimerModule$TimerTaskParams
   @NonNull
   public String toString()
   {
-    return "timer type = " + this.mType + " delay = " + this.mDelay + " loop = " + this.mIsLoop;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("timer type = ");
+    localStringBuilder.append(this.mType);
+    localStringBuilder.append(" delay = ");
+    localStringBuilder.append(this.mDelay);
+    localStringBuilder.append(" loop = ");
+    localStringBuilder.append(this.mIsLoop);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.module.TimerModule.TimerTaskParams
  * JD-Core Version:    0.7.0.1
  */

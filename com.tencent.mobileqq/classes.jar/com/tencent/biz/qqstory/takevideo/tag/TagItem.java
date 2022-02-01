@@ -27,25 +27,6 @@ public class TagItem
     this.jdField_a_of_type_JavaLangString = paramString;
   }
   
-  public TagItem(TagItemEntry paramTagItemEntry)
-  {
-    this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase = new TagItem.TagInfoBase(paramTagItemEntry.id, paramTagItemEntry.name, paramTagItemEntry.desc, paramTagItemEntry.type);
-    this.jdField_a_of_type_Int = paramTagItemEntry.joinCount;
-    this.jdField_a_of_type_JavaLangString = paramTagItemEntry.wording;
-  }
-  
-  public TagItemEntry a()
-  {
-    TagItemEntry localTagItemEntry = new TagItemEntry();
-    localTagItemEntry.id = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_Long;
-    localTagItemEntry.name = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_JavaLangString;
-    localTagItemEntry.desc = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.b;
-    localTagItemEntry.type = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.jdField_a_of_type_Int;
-    localTagItemEntry.joinCount = this.jdField_a_of_type_Int;
-    localTagItemEntry.wording = this.jdField_a_of_type_JavaLangString;
-    return localTagItemEntry;
-  }
-  
   public String a()
   {
     Object localObject = new JSONObject();
@@ -72,37 +53,50 @@ public class TagItem
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (TagItem)paramObject;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase != null) {
-        return this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.equals(paramObject.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
+      TagItem.TagInfoBase localTagInfoBase = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase;
+      if (localTagInfoBase != null) {
+        return localTagInfoBase.equals(paramObject.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
       }
-    } while (paramObject.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase == null);
+      return paramObject.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase == null;
+    }
     return false;
   }
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase != null) {
-      return this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase.hashCode();
+    TagItem.TagInfoBase localTagInfoBase = this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase;
+    if (localTagInfoBase != null) {
+      return localTagInfoBase.hashCode();
     }
     return 0;
   }
   
   public String toString()
   {
-    return "TagItem{tagInfo=" + this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase + ", joinCount=" + this.jdField_a_of_type_Int + ", wording='" + this.jdField_a_of_type_JavaLangString + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TagItem{tagInfo=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryTakevideoTagTagItem$TagInfoBase);
+    localStringBuilder.append(", joinCount=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", wording='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.tag.TagItem
  * JD-Core Version:    0.7.0.1
  */

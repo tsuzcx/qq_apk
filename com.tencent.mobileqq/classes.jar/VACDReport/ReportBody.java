@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class ReportBody
   extends JceStruct
@@ -31,24 +32,32 @@ public final class ReportBody
   
   public String toString()
   {
-    return 64 + this.sKey + "|" + this.startTime + "|" + this.totalTime;
+    StringBuilder localStringBuilder = new StringBuilder(64);
+    localStringBuilder.append(this.sKey);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.startTime);
+    localStringBuilder.append("|");
+    localStringBuilder.append(this.totalTime);
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.sKey != null) {
-      paramJceOutputStream.write(this.sKey, 0);
+    Object localObject = this.sKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.startTime, 1);
     paramJceOutputStream.write(this.totalTime, 2);
-    if (this.reportItems != null) {
-      paramJceOutputStream.write(this.reportItems, 3);
+    localObject = this.reportItems;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     VACDReport.ReportBody
  * JD-Core Version:    0.7.0.1
  */

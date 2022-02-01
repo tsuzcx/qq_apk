@@ -1,71 +1,49 @@
 package com.huawei.hms.opendevice;
 
+import android.content.ComponentName;
 import android.content.Context;
-import android.content.Intent;
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageManager;
-import android.content.pm.PackageManager.NameNotFoundException;
+import android.content.ServiceConnection;
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.huawei.hms.aaid.HmsInstanceId;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import com.huawei.hms.support.log.HMSLog;
-import com.huawei.hms.utils.Util;
 
 public class g
-  implements Runnable
+  implements ServiceConnection
 {
-  private Context a;
+  public g(h paramh, Bundle paramBundle, Context paramContext) {}
   
-  public g(Context paramContext)
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    this.a = paramContext;
-  }
-  
-  public void run()
-  {
+    HMSLog.i("RemoteService", "remote service onConnected");
+    h.a(this.c, new Messenger(paramIBinder));
+    paramComponentName = Message.obtain();
+    paramComponentName.setData(this.a);
     try
     {
-      String str = HmsInstanceId.getInstance(this.a).getToken(Util.getAppId(this.a), "HCM");
-      if (!TextUtils.isEmpty(str))
-      {
-        HMSLog.i("AutoInit", "Push init succeed");
-        try
-        {
-          Object localObject = this.a.getPackageManager().getApplicationInfo(this.a.getPackageName(), 128);
-          if ((((ApplicationInfo)localObject).metaData != null) && (((ApplicationInfo)localObject).metaData.getString("com.huawei.hms.client.service.name:push") != null))
-          {
-            localObject = new Intent("com.huawei.push.action.MESSAGING_EVENT");
-            ((Intent)localObject).setPackage(this.a.getPackageName());
-            Bundle localBundle = new Bundle();
-            localBundle.putString("message_type", "new_token");
-            localBundle.putString("device_token", str);
-            if (!new h().a(this.a, localBundle, (Intent)localObject)) {
-              HMSLog.e("AutoInit", "start service failed");
-            }
-          }
-          else
-          {
-            HMSLog.i("AutoInit", "push kit sdk not exists");
-            return;
-          }
-        }
-        catch (PackageManager.NameNotFoundException localNameNotFoundException)
-        {
-          HMSLog.i("AutoInit", "push kit sdk not exists");
-          return;
-        }
-      }
-      return;
+      h.a(this.c).send(paramComponentName);
     }
-    catch (Exception localException)
+    catch (RemoteException paramComponentName)
     {
-      HMSLog.e("AutoInit", "Push init failed", localException);
+      label49:
+      break label49;
     }
+    HMSLog.i("RemoteService", "remote service message send failed");
+    HMSLog.i("RemoteService", "remote service unbindservice");
+    this.b.unbindService(h.b(this.c));
+  }
+  
+  public void onServiceDisconnected(ComponentName paramComponentName)
+  {
+    HMSLog.i("RemoteService", "remote service onDisconnected");
+    h.a(this.c, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.opendevice.g
  * JD-Core Version:    0.7.0.1
  */

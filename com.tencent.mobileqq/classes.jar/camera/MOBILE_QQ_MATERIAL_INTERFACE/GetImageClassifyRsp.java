@@ -24,14 +24,15 @@ public final class GetImageClassifyRsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.SingleRet != null) {
-      paramJceOutputStream.write(this.SingleRet, 0);
+    SmartFilterRspItem localSmartFilterRspItem = this.SingleRet;
+    if (localSmartFilterRspItem != null) {
+      paramJceOutputStream.write(localSmartFilterRspItem, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     camera.MOBILE_QQ_MATERIAL_INTERFACE.GetImageClassifyRsp
  * JD-Core Version:    0.7.0.1
  */

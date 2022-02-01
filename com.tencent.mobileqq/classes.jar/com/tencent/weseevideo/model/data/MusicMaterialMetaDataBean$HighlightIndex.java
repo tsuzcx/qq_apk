@@ -52,18 +52,18 @@ public final class MusicMaterialMetaDataBean$HighlightIndex
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof HighlightIndex))
       {
         paramObject = (HighlightIndex)paramObject;
-        if ((this.start != paramObject.start) || (this.len != paramObject.len)) {}
+        if ((this.start == paramObject.start) && (this.len == paramObject.len)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final int getLen()
@@ -94,7 +94,13 @@ public final class MusicMaterialMetaDataBean$HighlightIndex
   @NotNull
   public String toString()
   {
-    return "HighlightIndex(start=" + this.start + ", len=" + this.len + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HighlightIndex(start=");
+    localStringBuilder.append(this.start);
+    localStringBuilder.append(", len=");
+    localStringBuilder.append(this.len);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(@NotNull Parcel paramParcel, int paramInt)
@@ -106,7 +112,7 @@ public final class MusicMaterialMetaDataBean$HighlightIndex
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.data.MusicMaterialMetaDataBean.HighlightIndex
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.qqmini.sdk.launcher.ui;
 
 import android.content.Intent;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
@@ -9,8 +8,6 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.view.KeyEvent;
-import android.view.MotionEvent;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.qqmini.sdk.launcher.R.id;
 import com.tencent.qqmini.sdk.launcher.R.layout;
 import com.tencent.qqmini.sdk.launcher.log.QMLog;
@@ -27,8 +24,12 @@ public class MiniFragmentActivity
     try
     {
       Object localObject = (Class)getIntent().getSerializableExtra("public_fragment_class");
-      if (QMLog.isColorLevel()) {
-        QMLog.d("MiniFragmentActivity", "creating fragment " + localObject);
+      if (QMLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("creating fragment ");
+        localStringBuilder.append(localObject);
+        QMLog.d("MiniFragmentActivity", localStringBuilder.toString());
       }
       if (localObject != null)
       {
@@ -44,16 +45,7 @@ public class MiniFragmentActivity
     return null;
   }
   
-  @Override
-  public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
-  {
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, false, true);
-    boolean bool = super.dispatchTouchEvent(paramMotionEvent);
-    EventCollector.getInstance().onActivityDispatchTouchEvent(this, paramMotionEvent, bool, false);
-    return bool;
-  }
-  
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     this.mFrag = createFragment();
     setContentView(R.layout.mini_sdk_fragment_activity);
@@ -84,20 +76,14 @@ public class MiniFragmentActivity
   
   public void onBackPressed()
   {
-    if (this.mFrag != null) {
-      this.mFrag.onBackPressed();
+    MiniBaseFragment localMiniBaseFragment = this.mFrag;
+    if (localMiniBaseFragment != null) {
+      localMiniBaseFragment.onBackPressed();
     }
     super.onBackPressed();
   }
   
-  @Override
-  public void onConfigurationChanged(Configuration paramConfiguration)
-  {
-    super.onConfigurationChanged(paramConfiguration);
-    EventCollector.getInstance().onActivityConfigurationChanged(this, paramConfiguration);
-  }
-  
-  public void onCreate(@Nullable Bundle paramBundle)
+  protected void onCreate(@Nullable Bundle paramBundle)
   {
     if (AndroidOUIWrapperUtil.isTranslucentOrFloating(this)) {
       AndroidOUIWrapperUtil.fixOrientation(this);
@@ -109,21 +95,23 @@ public class MiniFragmentActivity
   
   public boolean onKeyDown(int paramInt, KeyEvent paramKeyEvent)
   {
-    if ((this.mFrag != null) && (this.mFrag.onKeyDown(paramInt, paramKeyEvent))) {
+    MiniBaseFragment localMiniBaseFragment = this.mFrag;
+    if ((localMiniBaseFragment != null) && (localMiniBaseFragment.onKeyDown(paramInt, paramKeyEvent))) {
       return true;
     }
     return super.onKeyDown(paramInt, paramKeyEvent);
   }
   
-  public void requestWindowFeature(Intent paramIntent)
+  protected void requestWindowFeature(Intent paramIntent)
   {
     try
     {
       paramIntent.setExtrasClassLoader(getClassLoader());
-      if (paramIntent.hasExtra("public_fragment_window_feature")) {
+      if (paramIntent.hasExtra("public_fragment_window_feature"))
+      {
         requestWindowFeature(paramIntent.getIntExtra("public_fragment_window_feature", 0));
+        return;
       }
-      return;
     }
     catch (Exception paramIntent)
     {
@@ -140,26 +128,36 @@ public class MiniFragmentActivity
   
   public String toString()
   {
-    String str2 = super.toString();
-    String str1;
-    if (this.mFrag != null) {
-      str1 = str2 + "#" + this.mFrag.getClass().getName() + "@" + Integer.toHexString(this.mFrag.hashCode());
-    }
-    do
+    String str = super.toString();
+    if (this.mFrag != null)
     {
-      do
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append("#");
+      ((StringBuilder)localObject).append(this.mFrag.getClass().getName());
+      ((StringBuilder)localObject).append("@");
+      ((StringBuilder)localObject).append(Integer.toHexString(this.mFrag.hashCode()));
+      return ((StringBuilder)localObject).toString();
+    }
+    Object localObject = str;
+    if (getIntent() != null)
+    {
+      localObject = str;
+      if (getIntent().getStringExtra("public_fragment_class") != null)
       {
-        return str1;
-        str1 = str2;
-      } while (getIntent() == null);
-      str1 = str2;
-    } while (getIntent().getStringExtra("public_fragment_class") == null);
-    return str2 + "#" + getIntent().getStringExtra("public_fragment_class");
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("#");
+        ((StringBuilder)localObject).append(getIntent().getStringExtra("public_fragment_class"));
+        localObject = ((StringBuilder)localObject).toString();
+      }
+    }
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.ui.MiniFragmentActivity
  * JD-Core Version:    0.7.0.1
  */

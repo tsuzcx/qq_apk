@@ -1,30 +1,44 @@
 package com.huawei.hms.push;
 
+import android.content.ComponentName;
 import android.content.Context;
-import com.huawei.hms.common.internal.ResponseErrorCode;
-import com.huawei.hms.support.api.client.Status;
-import com.huawei.hms.support.hianalytics.HiAnalyticsClient;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.IBinder;
+import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
+import com.huawei.hms.support.log.HMSLog;
 
-public final class g
+public class g
+  implements ServiceConnection
 {
-  public static String a(Context paramContext, String paramString)
+  public g(h paramh, Bundle paramBundle, Context paramContext) {}
+  
+  public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    return HiAnalyticsClient.reportEntry(paramContext, paramString, 50002300);
+    HMSLog.i("RemoteService", "remote service onConnected");
+    h.a(this.c, new Messenger(paramIBinder));
+    paramComponentName = Message.obtain();
+    paramComponentName.setData(this.a);
+    try
+    {
+      h.a(this.c).send(paramComponentName);
+    }
+    catch (RemoteException paramComponentName)
+    {
+      label49:
+      break label49;
+    }
+    HMSLog.i("RemoteService", "remote service message send failed");
+    HMSLog.i("RemoteService", "remote service unbindservice");
+    this.b.unbindService(h.b(this.c));
   }
   
-  public static void a(Context paramContext, String paramString, ResponseErrorCode paramResponseErrorCode)
+  public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    HiAnalyticsClient.reportExit(paramContext, paramString, paramResponseErrorCode.getTransactionId(), paramResponseErrorCode.getStatusCode(), paramResponseErrorCode.getErrorCode(), 50002300);
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, int paramInt)
-  {
-    HiAnalyticsClient.reportExit(paramContext, paramString1, paramString2, Status.SUCCESS.getStatusCode(), paramInt, 50002300);
-  }
-  
-  public static void a(Context paramContext, String paramString1, String paramString2, a parama)
-  {
-    HiAnalyticsClient.reportExit(paramContext, paramString1, paramString2, Status.SUCCESS.getStatusCode(), parama.b(), 50002300);
+    HMSLog.i("RemoteService", "remote service onDisconnected");
+    h.a(this.c, null);
   }
 }
 

@@ -21,15 +21,16 @@ public final class qqstory_710_message$StoryMedalInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50 }, new String[] { "official_uin", "is_bigv", "union_id", "push_time", "content", "cover_url" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), localByteStringMicro1, Integer.valueOf(0), localByteStringMicro2, localByteStringMicro3 }, StoryMedalInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 42, 50 }, new String[] { "official_uin", "is_bigv", "union_id", "push_time", "content", "cover_url" }, new Object[] { Long.valueOf(0L), localInteger, localByteStringMicro1, localInteger, localByteStringMicro2, localByteStringMicro3 }, StoryMedalInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryMedalInfo
  * JD-Core Version:    0.7.0.1
  */

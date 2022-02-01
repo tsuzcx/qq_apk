@@ -47,11 +47,13 @@ public final class Visitor
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.name, 2);
     paramJceOutputStream.write(this.visittime, 3);
-    if (this.portrait != null) {
-      paramJceOutputStream.write(this.portrait, 4);
+    String str = this.portrait;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this.lastmood != null) {
-      paramJceOutputStream.write(this.lastmood, 5);
+    str = this.lastmood;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
     paramJceOutputStream.write(this.viplevle, 6);
     paramJceOutputStream.write(this.sqqlevel, 7);
@@ -60,7 +62,7 @@ public final class Visitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     cannon.Visitor
  * JD-Core Version:    0.7.0.1
  */

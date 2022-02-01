@@ -28,16 +28,18 @@ public final class NotifyRegisterInfo
   public void readFrom(JceInputStream paramJceInputStream)
   {
     this.uin = paramJceInputStream.readString(1, true);
-    if (cache_notifyIds == null)
+    ArrayList localArrayList = cache_notifyIds;
+    Long localLong = Long.valueOf(0L);
+    if (localArrayList == null)
     {
       cache_notifyIds = new ArrayList();
-      cache_notifyIds.add(Long.valueOf(0L));
+      cache_notifyIds.add(localLong);
     }
     this.notifyIds = ((ArrayList)paramJceInputStream.read(cache_notifyIds, 2, true));
     if (cache_notifyProperties == null)
     {
       cache_notifyProperties = new HashMap();
-      cache_notifyProperties.put(Long.valueOf(0L), "");
+      cache_notifyProperties.put(localLong, "");
     }
     this.notifyProperties = ((Map)paramJceInputStream.read(cache_notifyProperties, 3, true));
   }
@@ -51,7 +53,7 @@ public final class NotifyRegisterInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.NotifyRegisterInfo
  * JD-Core Version:    0.7.0.1
  */

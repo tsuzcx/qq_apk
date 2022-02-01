@@ -18,14 +18,15 @@ class AssistantSettingActivity$7
         this.a.f.setChecked(paramBoolean2);
         this.a.f.setOnCheckedChangeListener(this.a);
       }
-      return;
     }
-    AssistantSettingActivity.a(this.a, 2131690784, 1);
+    else {
+      AssistantSettingActivity.a(this.a, 2131690712, 1);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.7
  * JD-Core Version:    0.7.0.1
  */

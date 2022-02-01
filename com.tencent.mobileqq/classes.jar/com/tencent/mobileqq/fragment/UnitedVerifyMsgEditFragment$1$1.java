@@ -17,26 +17,21 @@ class UnitedVerifyMsgEditFragment$1$1
     {
       if (!TextUtils.isEmpty(this.b)) {
         this.jdField_a_of_type_ComTencentMobileqqFragmentUnitedVerifyMsgEditFragment$1.this$0.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.lastIndexOf(this.b), this.jdField_a_of_type_JavaLangString.length());
-      }
-      for (;;)
-      {
-        label58:
-        this.jdField_a_of_type_ComTencentMobileqqFragmentUnitedVerifyMsgEditFragment$1.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().setSoftInputMode(4);
-        return;
-        if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-          this.jdField_a_of_type_ComTencentMobileqqFragmentUnitedVerifyMsgEditFragment$1.this$0.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.length());
-        }
+      } else if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+        this.jdField_a_of_type_ComTencentMobileqqFragmentUnitedVerifyMsgEditFragment$1.this$0.jdField_a_of_type_AndroidWidgetEditText.setSelection(this.jdField_a_of_type_JavaLangString.length());
       }
     }
     catch (Throwable localThrowable)
     {
-      break label58;
+      label91:
+      break label91;
     }
+    this.jdField_a_of_type_ComTencentMobileqqFragmentUnitedVerifyMsgEditFragment$1.this$0.jdField_a_of_type_ComTencentMobileqqAppBaseActivity.getWindow().setSoftInputMode(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.UnitedVerifyMsgEditFragment.1.1
  * JD-Core Version:    0.7.0.1
  */

@@ -13,7 +13,7 @@ public class VoiceTextRecognizer
   private static final int STATE_ERROR = 4;
   private static final int STATE_INITED = 1;
   private static final int STATE_STARTED = 2;
-  private static final String TAG = VoiceTextRecognizer.class.getSimpleName();
+  private static final String TAG = "VoiceTextRecognizer";
   private static String WX_VOICE_RECOGNIZER_APPID = "WXARS1340SNG1518003481_56355";
   private static final VoiceTextRecognizer sInstance = new VoiceTextRecognizer();
   protected HandlerThread handlerThread;
@@ -44,33 +44,39 @@ public class VoiceTextRecognizer
   
   public void destroy()
   {
-    if (this.mHandler == null) {
+    Handler localHandler = this.mHandler;
+    if (localHandler == null) {
       return;
     }
-    this.mHandler.post(new VoiceTextRecognizer.3(this));
+    localHandler.post(new VoiceTextRecognizer.3(this));
   }
   
   public void init(Context paramContext, boolean paramBoolean)
   {
-    if ((this.mState == 1) || (this.mState == 2)) {
-      LogUtils.e(TAG, "mState == STATE_INITED || mState == STATE_STARTED");
-    }
-    do
+    int i = this.mState;
+    if ((i != 1) && (i != 2))
     {
-      return;
       if (this.mHandler == null)
       {
         if (this.handlerThread == null)
         {
-          this.handlerThread = new HandlerThread("VIDEO_TEXT_RECOGNIZER_" + System.currentTimeMillis());
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("VIDEO_TEXT_RECOGNIZER_");
+          ((StringBuilder)localObject).append(System.currentTimeMillis());
+          this.handlerThread = new HandlerThread(((StringBuilder)localObject).toString());
           this.handlerThread.start();
         }
         if (this.handlerThread.getLooper() != null) {
           this.mHandler = new Handler(this.handlerThread.getLooper());
         }
       }
-    } while (this.mHandler == null);
-    this.mHandler.post(new VoiceTextRecognizer.1(this, paramBoolean, paramContext));
+      Object localObject = this.mHandler;
+      if (localObject != null) {
+        ((Handler)localObject).post(new VoiceTextRecognizer.1(this, paramBoolean, paramContext));
+      }
+      return;
+    }
+    LogUtils.e(TAG, "mState == STATE_INITED || mState == STATE_STARTED");
   }
   
   public void recognizeFromPCMBuffer(byte[] paramArrayOfByte, int paramInt)
@@ -93,15 +99,16 @@ public class VoiceTextRecognizer
   
   public void start()
   {
-    if (this.mHandler == null) {
+    Handler localHandler = this.mHandler;
+    if (localHandler == null) {
       return;
     }
-    this.mHandler.post(new VoiceTextRecognizer.2(this));
+    localHandler.post(new VoiceTextRecognizer.2(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.voicechanger.common.audio.VoiceTextRecognizer
  * JD-Core Version:    0.7.0.1
  */

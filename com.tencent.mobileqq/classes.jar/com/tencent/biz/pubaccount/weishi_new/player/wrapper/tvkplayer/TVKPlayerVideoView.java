@@ -16,22 +16,24 @@ public class TVKPlayerVideoView
   
   public View a()
   {
-    if ((this.a instanceof View)) {
-      return (View)this.a;
+    IVideoViewBase localIVideoViewBase = this.a;
+    if ((localIVideoViewBase instanceof View)) {
+      return (View)localIVideoViewBase;
     }
     return null;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    if (this.a != null) {
-      this.a.setFixedSize(paramInt1, paramInt2);
+    IVideoViewBase localIVideoViewBase = this.a;
+    if (localIVideoViewBase != null) {
+      localIVideoViewBase.setFixedSize(paramInt1, paramInt2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.wrapper.tvkplayer.TVKPlayerVideoView
  * JD-Core Version:    0.7.0.1
  */

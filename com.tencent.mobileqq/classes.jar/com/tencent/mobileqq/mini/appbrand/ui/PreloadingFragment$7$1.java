@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.mini.appbrand.ui;
 
+import android.content.Context;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
@@ -14,10 +15,19 @@ class PreloadingFragment$7$1
   {
     long l = this.val$ret.optLong("retCode");
     String str = this.val$ret.optString("errMsg");
-    QLog.e("PreloadingFragment", 1, "GetAppInfoByLink failed. retCode=" + l + " errMsg=" + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("GetAppInfoByLink failed. retCode=");
+    ((StringBuilder)localObject).append(l);
+    ((StringBuilder)localObject).append(" errMsg=");
+    ((StringBuilder)localObject).append(str);
+    QLog.e("PreloadingFragment", 1, ((StringBuilder)localObject).toString());
     try
     {
-      QQToast.a(BaseApplicationImpl.getContext(), 1, "" + str, 1).a();
+      localObject = BaseApplicationImpl.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(str);
+      QQToast.a((Context)localObject, 1, localStringBuilder.toString(), 1).a();
       return;
     }
     catch (Throwable localThrowable)
@@ -28,7 +38,7 @@ class PreloadingFragment$7$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.7.1
  * JD-Core Version:    0.7.0.1
  */

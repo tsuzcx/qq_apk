@@ -29,8 +29,9 @@ public class ProxyWebChromeClient
   
   public void getVisitedHistory(ValueCallback<String[]> paramValueCallback)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.getVisitedHistory(paramValueCallback);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.getVisitedHistory(paramValueCallback);
     }
   }
   
@@ -41,169 +42,192 @@ public class ProxyWebChromeClient
   
   public void onCloseWindow(IX5WebViewBase paramIX5WebViewBase)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onCloseWindow(paramIX5WebViewBase);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onCloseWindow(paramIX5WebViewBase);
     }
   }
   
   public void onConsoleMessage(String paramString1, int paramInt, String paramString2)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onConsoleMessage(paramString1, paramInt, paramString2);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onConsoleMessage(paramString1, paramInt, paramString2);
     }
   }
   
   public boolean onConsoleMessage(ConsoleMessage paramConsoleMessage)
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onConsoleMessage(paramConsoleMessage);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      return localIX5WebChromeClient.onConsoleMessage(paramConsoleMessage);
     }
     return false;
   }
   
   public boolean onCreateWindow(IX5WebViewBase paramIX5WebViewBase, boolean paramBoolean1, boolean paramBoolean2, Message paramMessage)
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onCreateWindow(paramIX5WebViewBase, paramBoolean1, paramBoolean2, paramMessage);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      return localIX5WebChromeClient.onCreateWindow(paramIX5WebViewBase, paramBoolean1, paramBoolean2, paramMessage);
     }
     return false;
   }
   
   public void onExceededDatabaseQuota(String paramString1, String paramString2, long paramLong1, long paramLong2, long paramLong3, QuotaUpdater paramQuotaUpdater)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onExceededDatabaseQuota(paramString1, paramString2, paramLong1, paramLong2, paramLong3, paramQuotaUpdater);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onExceededDatabaseQuota(paramString1, paramString2, paramLong1, paramLong2, paramLong3, paramQuotaUpdater);
     }
   }
   
   public void onGeolocationPermissionsHidePrompt()
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onGeolocationPermissionsHidePrompt();
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onGeolocationPermissionsHidePrompt();
     }
   }
   
   public void onGeolocationPermissionsShowPrompt(String paramString, GeolocationPermissionsCallback paramGeolocationPermissionsCallback)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onGeolocationPermissionsShowPrompt(paramString, paramGeolocationPermissionsCallback);
     }
   }
   
   public void onGeolocationStartUpdating(ValueCallback<Location> paramValueCallback, ValueCallback<Bundle> paramValueCallback1)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onGeolocationStartUpdating(paramValueCallback, paramValueCallback1);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onGeolocationStartUpdating(paramValueCallback, paramValueCallback1);
     }
   }
   
   public void onGeolocationStopUpdating()
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onGeolocationStopUpdating();
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onGeolocationStopUpdating();
     }
   }
   
   public void onHideCustomView()
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onHideCustomView();
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onHideCustomView();
     }
   }
   
   public boolean onJsAlert(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onJsAlert(paramIX5WebViewBase, paramString1, paramString2, paramJsResult);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      return localIX5WebChromeClient.onJsAlert(paramIX5WebViewBase, paramString1, paramString2, paramJsResult);
     }
     return false;
   }
   
   public boolean onJsBeforeUnload(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onJsBeforeUnload(paramIX5WebViewBase, paramString1, paramString2, paramJsResult);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      return localIX5WebChromeClient.onJsBeforeUnload(paramIX5WebViewBase, paramString1, paramString2, paramJsResult);
     }
     return false;
   }
   
   public boolean onJsConfirm(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, JsResult paramJsResult)
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onJsConfirm(paramIX5WebViewBase, paramString1, paramString2, paramJsResult);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      return localIX5WebChromeClient.onJsConfirm(paramIX5WebViewBase, paramString1, paramString2, paramJsResult);
     }
     return false;
   }
   
   public boolean onJsPrompt(IX5WebViewBase paramIX5WebViewBase, String paramString1, String paramString2, String paramString3, JsPromptResult paramJsPromptResult)
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onJsPrompt(paramIX5WebViewBase, paramString1, paramString2, paramString3, paramJsPromptResult);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      return localIX5WebChromeClient.onJsPrompt(paramIX5WebViewBase, paramString1, paramString2, paramString3, paramJsPromptResult);
     }
     return false;
   }
   
   public boolean onJsTimeout()
   {
-    if (this.mWebChromeClient != null) {
-      return this.mWebChromeClient.onJsTimeout();
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      return localIX5WebChromeClient.onJsTimeout();
     }
     return false;
   }
   
   public void onProgressChanged(IX5WebViewBase paramIX5WebViewBase, int paramInt)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onProgressChanged(paramIX5WebViewBase, paramInt);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onProgressChanged(paramIX5WebViewBase, paramInt);
     }
   }
   
   public void onReachedMaxAppCacheSize(long paramLong1, long paramLong2, QuotaUpdater paramQuotaUpdater)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onReachedMaxAppCacheSize(paramLong1, paramLong2, paramQuotaUpdater);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onReachedMaxAppCacheSize(paramLong1, paramLong2, paramQuotaUpdater);
     }
   }
   
   public void onReceivedIcon(IX5WebViewBase paramIX5WebViewBase, Bitmap paramBitmap)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onReceivedIcon(paramIX5WebViewBase, paramBitmap);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onReceivedIcon(paramIX5WebViewBase, paramBitmap);
     }
   }
   
   public void onReceivedTitle(IX5WebViewBase paramIX5WebViewBase, String paramString)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onReceivedTitle(paramIX5WebViewBase, paramString);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onReceivedTitle(paramIX5WebViewBase, paramString);
     }
   }
   
   public void onReceivedTouchIconUrl(IX5WebViewBase paramIX5WebViewBase, String paramString, boolean paramBoolean)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onReceivedTouchIconUrl(paramIX5WebViewBase, paramString, paramBoolean);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onReceivedTouchIconUrl(paramIX5WebViewBase, paramString, paramBoolean);
     }
   }
   
   public void onRequestFocus(IX5WebViewBase paramIX5WebViewBase)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onRequestFocus(paramIX5WebViewBase);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onRequestFocus(paramIX5WebViewBase);
     }
   }
   
   public void onShowCustomView(View paramView, int paramInt, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onShowCustomView(paramView, paramCustomViewCallback);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onShowCustomView(paramView, paramCustomViewCallback);
     }
   }
   
   public void onShowCustomView(View paramView, IX5WebChromeClient.CustomViewCallback paramCustomViewCallback)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.onShowCustomView(paramView, paramCustomViewCallback);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.onShowCustomView(paramView, paramCustomViewCallback);
     }
   }
   
@@ -214,8 +238,9 @@ public class ProxyWebChromeClient
   
   public void openFileChooser(ValueCallback<Uri[]> paramValueCallback, String paramString1, String paramString2, boolean paramBoolean)
   {
-    if (this.mWebChromeClient != null) {
-      this.mWebChromeClient.openFileChooser(paramValueCallback, paramString1, paramString2, paramBoolean);
+    IX5WebChromeClient localIX5WebChromeClient = this.mWebChromeClient;
+    if (localIX5WebChromeClient != null) {
+      localIX5WebChromeClient.openFileChooser(paramValueCallback, paramString1, paramString2, paramBoolean);
     }
   }
   
@@ -226,7 +251,7 @@ public class ProxyWebChromeClient
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.export.external.proxy.ProxyWebChromeClient
  * JD-Core Version:    0.7.0.1
  */

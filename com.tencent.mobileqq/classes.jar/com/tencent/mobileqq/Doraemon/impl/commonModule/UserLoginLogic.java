@@ -3,7 +3,7 @@ package com.tencent.mobileqq.Doraemon.impl.commonModule;
 import android.os.Build;
 import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.biz.ui.TouchWebView;
+import com.tencent.biz.pubaccount.CustomWebView;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.Doraemon.APICallback;
 import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
@@ -20,7 +20,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.webview.swift.SwiftWebViewFragmentSupporter;
 import com.tencent.mobileqq.webview.swift.WebViewFragment;
 import com.tencent.open.adapter.CommonDataAdapter;
-import com.tencent.open.agent.CardContainer.Permission;
+import com.tencent.open.agent.entity.Permission;
 import com.tencent.open.appcommon.OpensdkServlet;
 import com.tencent.protofile.sdkauthorize.SdkAuthorize.AuthorizeRequest;
 import com.tencent.protofile.sdkauthorize.SdkAuthorize.GetAuthApiListRequest;
@@ -46,11 +46,14 @@ public class UserLoginLogic
   protected APICallback a;
   final DoraemonAPIManager jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
   final UserInfoModule jdField_a_of_type_ComTencentMobileqqDoraemonImplCommonModuleUserInfoModule;
-  protected List<CardContainer.Permission> a;
+  protected List<Permission> a;
   
   static
   {
-    jdField_a_of_type_JavaLangString = "DoraemonOpenAPI." + UserLoginLogic.class.getSimpleName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoraemonOpenAPI.");
+    localStringBuilder.append(UserLoginLogic.class.getSimpleName());
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
   }
   
   public UserLoginLogic(DoraemonAPIManager paramDoraemonAPIManager, UserInfoModule paramUserInfoModule)
@@ -69,36 +72,38 @@ public class UserLoginLogic
     localLinkedHashMap.put("sdkp", "a");
     localLinkedHashMap.put("response_type", "token");
     MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
-    if (localMiniAppInfo == null)
-    {
+    if (localMiniAppInfo == null) {
       paramAppRuntime = "";
-      localLinkedHashMap.put("app_name", paramAppRuntime);
-      localLinkedHashMap.put("kSSOLoginTypeKey", "1");
-      localLinkedHashMap.put("scope", "get_user_info,get_simple_userinfo,add_share,get_info,server_side");
-      if (localMiniAppInfo != null) {
-        break label265;
-      }
-    }
-    label265:
-    for (paramAppRuntime = "";; paramAppRuntime = localMiniAppInfo.i)
-    {
-      localLinkedHashMap.put("bundleid", paramAppRuntime);
-      localLinkedHashMap.put("skey", paramString1);
-      localLinkedHashMap.put("state", paramString3);
-      localLinkedHashMap.put("redirect_uri", paramString2);
-      paramString2 = localLinkedHashMap.entrySet().iterator();
-      while (paramString2.hasNext())
-      {
-        paramString3 = (Map.Entry)paramString2.next();
-        paramString1 = (String)paramString3.getValue();
-        paramAppRuntime = paramString1;
-        if (paramString1 == null) {
-          paramAppRuntime = "";
-        }
-        localStringBuilder.append((String)paramString3.getKey() + "=" + URLEncoder.encode(paramAppRuntime) + "&");
-      }
+    } else {
       paramAppRuntime = localMiniAppInfo.jdField_b_of_type_JavaLangString;
-      break;
+    }
+    localLinkedHashMap.put("app_name", paramAppRuntime);
+    localLinkedHashMap.put("kSSOLoginTypeKey", "1");
+    localLinkedHashMap.put("scope", "get_user_info,get_simple_userinfo,add_share,get_info,server_side");
+    if (localMiniAppInfo == null) {
+      paramAppRuntime = "";
+    } else {
+      paramAppRuntime = localMiniAppInfo.i;
+    }
+    localLinkedHashMap.put("bundleid", paramAppRuntime);
+    localLinkedHashMap.put("skey", paramString1);
+    localLinkedHashMap.put("state", paramString3);
+    localLinkedHashMap.put("redirect_uri", paramString2);
+    paramString2 = localLinkedHashMap.entrySet().iterator();
+    while (paramString2.hasNext())
+    {
+      paramString3 = (Map.Entry)paramString2.next();
+      paramString1 = (String)paramString3.getValue();
+      paramAppRuntime = paramString1;
+      if (paramString1 == null) {
+        paramAppRuntime = "";
+      }
+      paramString1 = new StringBuilder();
+      paramString1.append((String)paramString3.getKey());
+      paramString1.append("=");
+      paramString1.append(URLEncoder.encode(paramAppRuntime));
+      paramString1.append("&");
+      localStringBuilder.append(paramString1.toString());
     }
     int i = localStringBuilder.length();
     if (i > 0) {
@@ -119,36 +124,43 @@ public class UserLoginLogic
     Object localObject1 = this.jdField_a_of_type_JavaUtilList.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      localObject2 = (CardContainer.Permission)((Iterator)localObject1).next();
-      if (((CardContainer.Permission)localObject2).jdField_a_of_type_Int > 0) {
-        localAuthorizeRequest.openapi.add(Integer.valueOf(((CardContainer.Permission)localObject2).jdField_b_of_type_Int));
+      localObject2 = (Permission)((Iterator)localObject1).next();
+      if (((Permission)localObject2).jdField_a_of_type_Int > 0) {
+        localAuthorizeRequest.openapi.add(Integer.valueOf(((Permission)localObject2).jdField_b_of_type_Int));
       }
     }
-    localAuthorizeRequest.os.set(Build.VERSION.RELEASE + "|android os|" + Build.MODEL);
+    localObject1 = localAuthorizeRequest.os;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject2).append("|android os|");
+    ((StringBuilder)localObject2).append(Build.MODEL);
+    ((PBStringField)localObject1).set(((StringBuilder)localObject2).toString());
     localAuthorizeRequest.qqv.set(CommonDataAdapter.a().d());
     localAuthorizeRequest.pf.set("openmobile_android");
     localAuthorizeRequest.sdkp.set(DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int));
     localAuthorizeRequest.sdkv.set("1.5.9");
     localAuthorizeRequest.response_type.set("token");
-    if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager instanceof DefaultDoraemonAPIManager))
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
+    if ((localObject1 instanceof DefaultDoraemonAPIManager))
     {
-      localObject1 = ((DefaultDoraemonAPIManager)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager).a();
+      localObject1 = ((DefaultDoraemonAPIManager)localObject1).a();
       if (!TextUtils.isEmpty((CharSequence)localObject1)) {
         localAuthorizeRequest.appUniqueIdentifier.set((String)localObject1);
       }
     }
     localObject1 = BaseApplicationImpl.getApplication().getRuntime();
-    Object localObject2 = ((AppRuntime)localObject1).getAccount();
+    localObject2 = ((AppRuntime)localObject1).getAccount();
     Object localObject3 = ((TicketManager)((AppRuntime)localObject1).getManager(2)).getSkey((String)localObject2);
     if (localObject3 != null) {
       localAuthorizeRequest.skey.set((String)localObject3);
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager instanceof WebViewDoraemonAPIManager))
+    Object localObject4 = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
+    if ((localObject4 instanceof WebViewDoraemonAPIManager))
     {
-      WebViewDoraemonAPIManager localWebViewDoraemonAPIManager = (WebViewDoraemonAPIManager)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
-      if (localWebViewDoraemonAPIManager.b)
+      localObject4 = (WebViewDoraemonAPIManager)localObject4;
+      if (((WebViewDoraemonAPIManager)localObject4).b)
       {
-        localObject3 = a((AppRuntime)localObject1, (String)localObject3, localWebViewDoraemonAPIManager.e, localWebViewDoraemonAPIManager.d);
+        localObject3 = a((AppRuntime)localObject1, (String)localObject3, ((WebViewDoraemonAPIManager)localObject4).e, ((WebViewDoraemonAPIManager)localObject4).d);
         localAuthorizeRequest.passData.set((String)localObject3);
       }
     }
@@ -163,36 +175,30 @@ public class UserLoginLogic
   
   private void a(String paramString)
   {
-    String str = null;
     MiniAppInfo localMiniAppInfo = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
-    Object localObject;
-    if (localMiniAppInfo == null)
-    {
-      localObject = null;
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label144;
-      }
-      localObject = BaseApplicationImpl.getApplication().getString(2131694691);
+    Object localObject3 = null;
+    Object localObject1;
+    if (localMiniAppInfo == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = localMiniAppInfo.jdField_b_of_type_JavaLangString;
     }
-    label144:
-    for (;;)
-    {
-      if (TextUtils.isEmpty(paramString))
-      {
-        a();
-        return;
-        localObject = localMiniAppInfo.jdField_b_of_type_JavaLangString;
-        break;
-      }
-      DoraemonAPIManager localDoraemonAPIManager = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
-      if (localMiniAppInfo == null) {}
-      for (;;)
-      {
-        localDoraemonAPIManager.a((String)localObject, str, BaseApplicationImpl.getApplication().getString(2131694690, new Object[] { localObject }), paramString, BaseApplicationImpl.getApplication().getString(2131720671), new UserLoginLogic.2(this), BaseApplicationImpl.getApplication().getString(2131720681), new UserLoginLogic.3(this), new UserLoginLogic.4(this));
-        return;
-        str = localMiniAppInfo.c;
-      }
+    Object localObject2 = localObject1;
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = BaseApplicationImpl.getApplication().getString(2131694660);
     }
+    if (TextUtils.isEmpty(paramString))
+    {
+      a();
+      return;
+    }
+    DoraemonAPIManager localDoraemonAPIManager = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
+    if (localMiniAppInfo == null) {
+      localObject1 = localObject3;
+    } else {
+      localObject1 = localMiniAppInfo.c;
+    }
+    localDoraemonAPIManager.a((String)localObject2, (String)localObject1, BaseApplicationImpl.getApplication().getString(2131694659, new Object[] { localObject2 }), paramString, BaseApplicationImpl.getApplication().getString(2131720390), new UserLoginLogic.2(this), BaseApplicationImpl.getApplication().getString(2131720400), new UserLoginLogic.3(this), new UserLoginLogic.4(this));
   }
   
   private void a(boolean paramBoolean)
@@ -209,59 +215,71 @@ public class UserLoginLogic
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      for (;;)
-      {
-        String str2;
-        Object localObject2;
-        Object localObject1;
-        String str3;
-        PBStringField localPBStringField;
-        continue;
-        String str1 = "all";
-      }
+      label42:
+      Object localObject1;
+      Object localObject2;
+      Object localObject3;
+      String str;
+      PBStringField localPBStringField;
+      break label42;
     }
     localGetAuthApiListRequest.client_id.set(l1);
-    localGetAuthApiListRequest.os.set(Build.VERSION.RELEASE + "|android os|" + Build.MODEL);
-    str2 = CommonDataAdapter.a().d();
-    localObject2 = localGetAuthApiListRequest.qqv;
-    localObject1 = str2;
-    if (str2 == null) {
+    localObject1 = localGetAuthApiListRequest.os;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(Build.VERSION.RELEASE);
+    ((StringBuilder)localObject2).append("|android os|");
+    ((StringBuilder)localObject2).append(Build.MODEL);
+    ((PBStringField)localObject1).set(((StringBuilder)localObject2).toString());
+    localObject2 = CommonDataAdapter.a().d();
+    localObject3 = localGetAuthApiListRequest.qqv;
+    localObject1 = localObject2;
+    if (localObject2 == null) {
       localObject1 = "";
     }
-    ((PBStringField)localObject2).set((String)localObject1);
+    ((PBStringField)localObject3).set((String)localObject1);
     localGetAuthApiListRequest.pf.set("openmobile_android");
-    if (((this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager instanceof WebViewDoraemonAPIManager)) && (((WebViewDoraemonAPIManager)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager).b))
+    localObject2 = "all";
+    localObject3 = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
+    localObject1 = localObject2;
+    if ((localObject3 instanceof WebViewDoraemonAPIManager))
     {
-      localObject1 = "all" + ",server_side";
-      localGetAuthApiListRequest.scope.set((String)localObject1);
-      localGetAuthApiListRequest.sdkp.set(DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int));
-      localGetAuthApiListRequest.sdkv.set("1.5.9");
-      localGetAuthApiListRequest.need_pay.set(1);
-      if ((this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager instanceof DefaultDoraemonAPIManager))
+      localObject1 = localObject2;
+      if (((WebViewDoraemonAPIManager)localObject3).b)
       {
-        localObject1 = ((DefaultDoraemonAPIManager)this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager).a();
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localGetAuthApiListRequest.appUniqueIdentifier.set((String)localObject1);
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("all");
+        ((StringBuilder)localObject1).append(",server_side");
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
-      localObject2 = BaseApplicationImpl.getApplication().getRuntime();
-      str3 = ((AppRuntime)localObject2).getAccount();
-      str2 = ((TicketManager)((AppRuntime)localObject2).getManager(2)).getSkey(str3);
-      localPBStringField = localGetAuthApiListRequest.skey;
-      localObject1 = str2;
-      if (str2 == null) {
-        localObject1 = "";
-      }
-      localPBStringField.set((String)localObject1);
-      localObject1 = new NewIntent(BaseApplicationImpl.getApplication(), OpensdkServlet.class);
-      ((NewIntent)localObject1).setWithouLogin(true);
-      ((NewIntent)localObject1).putExtra("uin", str3);
-      ((NewIntent)localObject1).putExtra("data", localGetAuthApiListRequest.toByteArray());
-      ((NewIntent)localObject1).putExtra("cmd", "ConnAuthSvr.get_auth_api_list");
-      ((NewIntent)localObject1).setObserver(new UserLoginLogic.1(this, str3, paramBoolean));
-      ((AppRuntime)localObject2).startServlet((NewIntent)localObject1);
-      return;
     }
+    localGetAuthApiListRequest.scope.set((String)localObject1);
+    localGetAuthApiListRequest.sdkp.set(DoraemonUtil.a(this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.jdField_a_of_type_Int));
+    localGetAuthApiListRequest.sdkv.set("1.5.9");
+    localGetAuthApiListRequest.need_pay.set(1);
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
+    if ((localObject1 instanceof DefaultDoraemonAPIManager))
+    {
+      localObject1 = ((DefaultDoraemonAPIManager)localObject1).a();
+      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+        localGetAuthApiListRequest.appUniqueIdentifier.set((String)localObject1);
+      }
+    }
+    localObject3 = BaseApplicationImpl.getApplication().getRuntime();
+    str = ((AppRuntime)localObject3).getAccount();
+    localObject2 = ((TicketManager)((AppRuntime)localObject3).getManager(2)).getSkey(str);
+    localPBStringField = localGetAuthApiListRequest.skey;
+    localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = "";
+    }
+    localPBStringField.set((String)localObject1);
+    localObject1 = new NewIntent(BaseApplicationImpl.getApplication(), OpensdkServlet.class);
+    ((NewIntent)localObject1).setWithouLogin(true);
+    ((NewIntent)localObject1).putExtra("uin", str);
+    ((NewIntent)localObject1).putExtra("data", localGetAuthApiListRequest.toByteArray());
+    ((NewIntent)localObject1).putExtra("cmd", "ConnAuthSvr.get_auth_api_list");
+    ((NewIntent)localObject1).setObserver(new UserLoginLogic.1(this, str, paramBoolean));
+    ((AppRuntime)localObject3).startServlet((NewIntent)localObject1);
   }
   
   private boolean a(SdkAuthorize.GetAuthApiListResponse paramGetAuthApiListResponse)
@@ -273,18 +291,19 @@ public class UserLoginLogic
       appType.AuthItem localAuthItem = (appType.AuthItem)paramGetAuthApiListResponse.next();
       if (localAuthItem.is_new.get() != 0)
       {
-        CardContainer.Permission localPermission = new CardContainer.Permission();
+        Permission localPermission = new Permission();
         localPermission.jdField_b_of_type_JavaLangString = localAuthItem.api_list.get();
         localPermission.jdField_a_of_type_Int = localAuthItem.default_flag.get();
         localPermission.jdField_b_of_type_Int = localAuthItem.id.get();
-        if (localAuthItem.is_new.get() != 0) {}
-        for (boolean bool = true;; bool = false)
-        {
-          localPermission.jdField_a_of_type_Boolean = bool;
-          localPermission.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
-          this.jdField_a_of_type_JavaUtilList.add(localPermission);
-          break;
+        boolean bool;
+        if (localAuthItem.is_new.get() != 0) {
+          bool = true;
+        } else {
+          bool = false;
         }
+        localPermission.jdField_a_of_type_Boolean = bool;
+        localPermission.jdField_a_of_type_JavaLangString = localAuthItem.title.get();
+        this.jdField_a_of_type_JavaUtilList.add(localPermission);
       }
     }
     return this.jdField_a_of_type_JavaUtilList.isEmpty();
@@ -292,15 +311,20 @@ public class UserLoginLogic
   
   private void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i(jdField_a_of_type_JavaLangString, 2, "openBrowserForRedirect: invoked.  url: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("openBrowserForRedirect: invoked.  url: ");
+      localStringBuilder.append(paramString);
+      QLog.i((String)localObject, 2, localStringBuilder.toString());
     }
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a();
     if ((localObject != null) && ((this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager instanceof WebViewDoraemonAPIManager)) && ((localObject instanceof SwiftWebViewFragmentSupporter)))
     {
       localObject = ((SwiftWebViewFragmentSupporter)localObject).getCurrentWebViewFragment();
       if (localObject != null) {
-        ((WebViewFragment)localObject).webView.loadUrl(paramString);
+        ((WebViewFragment)localObject).getWebView().loadUrl(paramString);
       }
     }
   }
@@ -316,7 +340,7 @@ public class UserLoginLogic
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.commonModule.UserLoginLogic
  * JD-Core Version:    0.7.0.1
  */

@@ -61,34 +61,40 @@ public final class cell_special_care
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.userinfo != null) {
-      paramJceOutputStream.write(this.userinfo, 0);
+    Object localObject = this.userinfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.intimacy, 1);
     paramJceOutputStream.write(this.rankpercent, 2);
-    if (this.icon_before_click != null) {
-      paramJceOutputStream.write(this.icon_before_click, 3);
+    localObject = this.icon_before_click;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
-    if (this.icon_after_click != null) {
-      paramJceOutputStream.write(this.icon_after_click, 4);
+    localObject = this.icon_after_click;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
-    if (this.desc_before_click != null) {
-      paramJceOutputStream.write(this.desc_before_click, 5);
+    localObject = this.desc_before_click;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
-    if (this.desc_after_click != null) {
-      paramJceOutputStream.write(this.desc_after_click, 6);
+    localObject = this.desc_after_click;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
     paramJceOutputStream.write(this.visit_count, 7);
     paramJceOutputStream.write(this.like_count, 8);
     paramJceOutputStream.write(this.comment_count, 9);
-    if (this.relation_content != null) {
-      paramJceOutputStream.write(this.relation_content, 10);
+    localObject = this.relation_content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_special_care
  * JD-Core Version:    0.7.0.1
  */

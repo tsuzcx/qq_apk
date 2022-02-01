@@ -23,9 +23,19 @@ public class b
   {
     if (e)
     {
+      boolean bool2 = false;
       e = false;
       d = null;
-      return (b != null) && (b.post(paramRunnable));
+      Handler localHandler = b;
+      boolean bool1 = bool2;
+      if (localHandler != null)
+      {
+        bool1 = bool2;
+        if (localHandler.post(paramRunnable)) {
+          bool1 = true;
+        }
+      }
+      return bool1;
     }
     d = paramRunnable;
     return true;
@@ -33,8 +43,9 @@ public class b
   
   private void c()
   {
-    if ((c != null) && (b != null)) {
-      c.addIdleHandler(new b.1(this));
+    MessageQueue localMessageQueue = c;
+    if ((localMessageQueue != null) && (b != null)) {
+      localMessageQueue.addIdleHandler(new b.1(this));
     }
   }
   
@@ -48,7 +59,7 @@ public class b
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trackrecordlib.core.b
  * JD-Core Version:    0.7.0.1
  */

@@ -28,14 +28,15 @@ public final class mobile_sub_setspecial_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.action, 0);
-    if (this.special != null) {
-      paramJceOutputStream.write(this.special, 1);
+    s_special locals_special = this.special;
+    if (locals_special != null) {
+      paramJceOutputStream.write(locals_special, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_sub_setspecial_req
  * JD-Core Version:    0.7.0.1
  */

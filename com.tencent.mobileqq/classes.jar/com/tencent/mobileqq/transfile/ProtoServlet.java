@@ -21,8 +21,12 @@ public class ProtoServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (("LongConn.OffPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd()))) {
-      QLog.d("Q.richmedia.ProtoReqManager", 1, "onRecieve." + paramFromServiceMsg.getStringForLog());
+    if (("LongConn.OffPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramFromServiceMsg.getServiceCmd())))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRecieve.");
+      localStringBuilder.append(paramFromServiceMsg.getStringForLog());
+      QLog.d("Q.richmedia.ProtoReqManager", 1, localStringBuilder.toString());
     }
     ((IProtoReqManager)getAppRuntime().getRuntimeService(IProtoReqManager.class, "")).onReceive(paramIntent, paramFromServiceMsg);
   }
@@ -42,17 +46,21 @@ public class ProtoServlet
     }
   }
   
-  public void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
+  protected void sendToMSF(Intent paramIntent, ToServiceMsg paramToServiceMsg)
   {
-    if (("LongConn.OffPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd()))) {
-      QLog.d("Q.richmedia.ProtoReqManager", 1, "onSend." + paramToServiceMsg.getStringForLog());
+    if (("LongConn.OffPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())) || ("ImgStore.GroupPicUp".equalsIgnoreCase(paramToServiceMsg.getServiceCmd())))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSend.");
+      localStringBuilder.append(paramToServiceMsg.getStringForLog());
+      QLog.d("Q.richmedia.ProtoReqManager", 1, localStringBuilder.toString());
     }
     super.sendToMSF(paramIntent, paramToServiceMsg);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ProtoServlet
  * JD-Core Version:    0.7.0.1
  */

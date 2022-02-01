@@ -65,23 +65,22 @@ public abstract class AbstractDragFloatingView
   
   private final void enterAnim()
   {
-    if (this.parentView == null) {}
-    Object localObject;
-    do
-    {
+    if (this.parentView == null) {
       return;
-      localObject = this.config.activityFloatAnimator;
-      View localView = (View)this;
-      ViewGroup localViewGroup = this.parentView;
-      if (localViewGroup == null) {
-        Intrinsics.throwNpe();
-      }
-      localObject = new FWActivityAnimatorManager((OnActivityFloatWindowAnimator)localObject, localView, localViewGroup, this.config.sidePattern).enterAnim();
-      if (localObject != null) {
-        ((Animator)localObject).addListener((Animator.AnimatorListener)new AbstractDragFloatingView.enterAnim.1(this));
-      }
-    } while (localObject == null);
-    ((Animator)localObject).start();
+    }
+    Object localObject = this.config.activityFloatAnimator;
+    View localView = (View)this;
+    ViewGroup localViewGroup = this.parentView;
+    if (localViewGroup == null) {
+      Intrinsics.throwNpe();
+    }
+    localObject = new FWActivityAnimatorManager((OnActivityFloatWindowAnimator)localObject, localView, localViewGroup, this.config.sidePattern).enterAnim();
+    if (localObject != null) {
+      ((Animator)localObject).addListener((Animator.AnimatorListener)new AbstractDragFloatingView.enterAnim.1(this));
+    }
+    if (localObject != null) {
+      ((Animator)localObject).start();
+    }
   }
   
   private final void initDistanceValue()
@@ -93,7 +92,15 @@ public abstract class AbstractDragFloatingView
     this.bottomDistance = (this.parentRect.bottom - this.floatRect.bottom);
     this.minX = Math.min(this.leftDistance, this.rightDistance);
     this.minY = Math.min(this.topDistance, this.bottomDistance);
-    Logger.i(this.leftDistance + "   " + this.rightDistance + "   " + this.topDistance + "   " + this.bottomDistance);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.leftDistance);
+    localStringBuilder.append("   ");
+    localStringBuilder.append(this.rightDistance);
+    localStringBuilder.append("   ");
+    localStringBuilder.append(this.topDistance);
+    localStringBuilder.append("   ");
+    localStringBuilder.append(this.bottomDistance);
+    Logger.i(localStringBuilder.toString());
   }
   
   private final void initParent()
@@ -101,115 +108,128 @@ public abstract class AbstractDragFloatingView
     if ((getParent() != null) && ((getParent() instanceof ViewGroup)))
     {
       Object localObject = getParent();
-      if (localObject == null) {
-        throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
+      if (localObject != null)
+      {
+        this.parentView = ((ViewGroup)localObject);
+        localObject = this.parentView;
+        if (localObject == null) {
+          Intrinsics.throwNpe();
+        }
+        this.parentHeight = ((ViewGroup)localObject).getHeight();
+        localObject = this.parentView;
+        if (localObject == null) {
+          Intrinsics.throwNpe();
+        }
+        this.parentWidth = ((ViewGroup)localObject).getWidth();
+        localObject = this.parentView;
+        if (localObject == null) {
+          Intrinsics.throwNpe();
+        }
+        ((ViewGroup)localObject).getGlobalVisibleRect(this.parentRect);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("parentRect: ");
+        ((StringBuilder)localObject).append(this.parentRect);
+        Logger.e("AbstractDragFloatingView", ((StringBuilder)localObject).toString());
+        return;
       }
-      this.parentView = ((ViewGroup)localObject);
-      localObject = this.parentView;
-      if (localObject == null) {
-        Intrinsics.throwNpe();
-      }
-      this.parentHeight = ((ViewGroup)localObject).getHeight();
-      localObject = this.parentView;
-      if (localObject == null) {
-        Intrinsics.throwNpe();
-      }
-      this.parentWidth = ((ViewGroup)localObject).getWidth();
-      localObject = this.parentView;
-      if (localObject == null) {
-        Intrinsics.throwNpe();
-      }
-      ((ViewGroup)localObject).getGlobalVisibleRect(this.parentRect);
-      Logger.e("AbstractDragFloatingView", "parentRect: " + this.parentRect);
+      throw new TypeCastException("null cannot be cast to non-null type android.view.ViewGroup");
     }
   }
   
   private final void sideAnim()
   {
-    float f1 = 0.0F;
     initDistanceValue();
-    Object localObject;
-    float f2;
-    switch (this.config.sidePattern)
+    int i = this.config.sidePattern;
+    float f1 = 0.0F;
+    Object localObject = "translationX";
+    int j;
+    switch (i)
     {
     default: 
-      localObject = "translationX";
       f2 = 0.0F;
-    }
-    for (;;)
-    {
-      localObject = ObjectAnimator.ofFloat(this, (String)localObject, new float[] { f2, f1 });
-      ((ObjectAnimator)localObject).addListener((Animator.AnimatorListener)new AbstractDragFloatingView.sideAnim.1(this));
-      ((ObjectAnimator)localObject).start();
-      return;
-      localObject = "translationX";
-      f2 = getTranslationX();
-      f1 = -this.leftDistance + getTranslationX();
-      continue;
-      localObject = "translationX";
-      f2 = getTranslationX();
-      f1 = this.rightDistance + getTranslationX();
-      continue;
-      localObject = "translationX";
-      f2 = getTranslationX();
-      if (this.leftDistance < this.rightDistance)
+      break;
+    case 15: 
+      if (this.minX < this.minY)
       {
-        f1 = -this.leftDistance + getTranslationX();
-      }
-      else
-      {
-        f1 = this.rightDistance + getTranslationX();
-        continue;
-        localObject = "translationY";
-        f2 = getTranslationY();
-        f1 = -this.topDistance + getTranslationY();
-        continue;
-        localObject = "translationY";
-        f2 = getTranslationY();
-        f1 = this.bottomDistance + getTranslationY();
-        continue;
-        localObject = "translationY";
-        f2 = getTranslationY();
-        if (this.topDistance < this.bottomDistance)
-        {
-          f1 = -this.topDistance + getTranslationY();
+        f1 = getTranslationX();
+        i = this.leftDistance;
+        j = this.rightDistance;
+        if (i < j) {
+          f2 = -i;
+        } else {
+          f2 = j;
         }
-        else
-        {
-          f1 = this.bottomDistance + getTranslationY();
-          continue;
-          if (this.minX < this.minY)
-          {
-            localObject = "translationX";
-            f2 = getTranslationX();
-            if (this.leftDistance < this.rightDistance) {
-              f1 = -this.leftDistance + getTranslationX();
-            } else {
-              f1 = this.rightDistance + getTranslationX();
-            }
-          }
-          else
-          {
-            localObject = "translationY";
-            f2 = getTranslationY();
-            if (this.topDistance < this.bottomDistance) {
-              f1 = -this.topDistance + getTranslationY();
-            } else {
-              f1 = this.bottomDistance + getTranslationY();
-            }
-          }
-        }
+        f3 = getTranslationX();
+        break label339;
       }
+      f1 = getTranslationY();
+      i = this.topDistance;
+      j = this.bottomDistance;
+      if (i < j) {
+        f2 = -i;
+      } else {
+        f2 = j;
+      }
+      f3 = getTranslationY();
+      break;
+    case 14: 
+      f1 = getTranslationY();
+      i = this.topDistance;
+      j = this.bottomDistance;
+      if (i < j) {
+        f2 = -i;
+      } else {
+        f2 = j;
+      }
+      f3 = getTranslationY();
+      break;
+    case 13: 
+      f1 = getTranslationX();
+      i = this.leftDistance;
+      j = this.rightDistance;
+      if (i < j) {
+        f2 = -i;
+      } else {
+        f2 = j;
+      }
+      f3 = getTranslationX();
+      break;
+    case 12: 
+      f1 = getTranslationY();
+      f2 = this.bottomDistance;
+      f3 = getTranslationY();
+      break;
+    case 11: 
+      f1 = getTranslationY();
+      f2 = -this.topDistance;
+      f3 = getTranslationY();
+      f2 += f3;
+      localObject = "translationY";
+      break;
+    case 10: 
+      f1 = getTranslationX();
+      f2 = this.rightDistance;
+      f3 = getTranslationX();
+      break;
     }
+    f1 = getTranslationX();
+    float f2 = -this.leftDistance;
+    float f3 = getTranslationX();
+    label339:
+    f2 += f3;
+    localObject = ObjectAnimator.ofFloat(this, (String)localObject, new float[] { f1, f2 });
+    ((ObjectAnimator)localObject).addListener((Animator.AnimatorListener)new AbstractDragFloatingView.sideAnim.1(this));
+    ((ObjectAnimator)localObject).start();
   }
   
   private final void touchOver()
   {
-    this.config.isAnim = false;
-    this.config.isDrag = false;
-    OnFloatWindowCallbacks localOnFloatWindowCallbacks = this.config.callbacks;
-    if (localOnFloatWindowCallbacks != null) {
-      localOnFloatWindowCallbacks.dragEnd((View)this);
+    Object localObject = this.config;
+    ((FloatWindowConfig)localObject).isAnim = false;
+    ((FloatWindowConfig)localObject).isDrag = false;
+    localObject = ((FloatWindowConfig)localObject).callbacks;
+    if (localObject != null) {
+      ((OnFloatWindowCallbacks)localObject).dragEnd((View)this);
     }
   }
   
@@ -219,162 +239,177 @@ public abstract class AbstractDragFloatingView
     if (localOnFloatWindowCallbacks != null) {
       localOnFloatWindowCallbacks.touchEvent((View)this, paramMotionEvent);
     }
-    if ((!this.config.dragEnable) || (this.config.isAnim))
+    if ((this.config.dragEnable) && (!this.config.isAnim))
     {
-      this.config.isDrag = false;
-      setPressed(true);
-    }
-    label59:
-    float f6;
-    float f5;
-    int i;
-    int j;
-    int k;
-    int m;
-    do
-    {
-      do
+      float f5 = this.config.horizontalMargin;
+      float f6 = this.config.verticalMargin;
+      int j = (int)paramMotionEvent.getRawX();
+      int k = (int)paramMotionEvent.getRawY();
+      int i = paramMotionEvent.getAction() & 0xFF;
+      if (i != 0)
       {
-        return;
-        f6 = this.config.horizontalMargin;
-        f5 = this.config.verticalMargin;
-        i = (int)paramMotionEvent.getRawX();
-        j = (int)paramMotionEvent.getRawY();
-        switch (paramMotionEvent.getAction() & 0xFF)
+        if (i != 1)
         {
-        default: 
-          return;
-        case 0: 
-          this.config.isDrag = false;
-          setPressed(true);
-          this.lastX = i;
-          this.lastY = j;
-          getParent().requestDisallowInterceptTouchEvent(true);
-          initParent();
-          return;
+          if (i != 2) {
+            return;
+          }
+          if (this.parentHeight > 0)
+          {
+            if (this.parentWidth <= 0) {
+              return;
+            }
+            i = j - this.lastX;
+            int m = k - this.lastY;
+            if ((!this.config.isDrag) && (i * i + m * m < 81)) {
+              return;
+            }
+            this.config.isDrag = true;
+            float f1 = getX();
+            float f2 = i + f1;
+            float f3 = getY() + m;
+            if (f2 < f5)
+            {
+              f1 = f5;
+            }
+            else
+            {
+              f1 = f2;
+              if (f2 > this.parentWidth - getWidth() - f5) {
+                f1 = this.parentWidth - getWidth() - f5;
+              }
+            }
+            if (f3 < f6)
+            {
+              f2 = f6;
+            }
+            else
+            {
+              f2 = f3;
+              if (f3 > this.parentHeight - getHeight() - f6) {
+                f2 = this.parentHeight - getHeight() - f6;
+              }
+            }
+            f3 = f6;
+            float f4 = f5;
+            switch (this.config.sidePattern)
+            {
+            case 6: 
+            default: 
+              break;
+            case 8: 
+              this.leftDistance = (j - this.parentRect.left);
+              this.rightDistance = (this.parentRect.right - j);
+              this.topDistance = (k - this.parentRect.top);
+              this.bottomDistance = (this.parentRect.bottom - k);
+              this.minX = Math.min(this.leftDistance, this.rightDistance);
+              this.minY = Math.min(this.topDistance, this.bottomDistance);
+              i = this.minX;
+              m = this.minY;
+              if (i < m)
+              {
+                if (this.leftDistance == i)
+                {
+                  f4 = f5;
+                  break label675;
+                }
+                f1 = this.parentWidth;
+                i = getWidth();
+              }
+              else if (this.topDistance == m)
+              {
+                f3 = f6;
+              }
+              else
+              {
+                f2 = this.parentHeight;
+                i = getHeight();
+              }
+              break;
+            case 7: 
+              f3 = f6;
+              if (k - this.parentRect.top > this.parentRect.bottom - k)
+              {
+                f2 = this.parentRect.bottom;
+                i = getHeight();
+              }
+              break;
+            case 5: 
+              f4 = f5;
+              if (j * 2 - this.parentRect.left > this.parentRect.right)
+              {
+                f1 = this.parentRect.right;
+                i = getWidth();
+              }
+              break;
+            case 4: 
+              f2 = this.parentRect.bottom;
+              i = getHeight();
+              f3 = f2 - i - f6;
+            case 3: 
+              f2 = f3;
+              break;
+            case 2: 
+              f1 = this.parentRect.right;
+              i = getWidth();
+              f4 = f1 - i - f5;
+            }
+            label675:
+            f1 = f4;
+            setX(f1);
+            setY(f2);
+            this.lastX = j;
+            this.lastY = k;
+            localOnFloatWindowCallbacks = this.config.callbacks;
+            if (localOnFloatWindowCallbacks == null) {
+              break label851;
+            }
+            localOnFloatWindowCallbacks.drag((View)this, paramMotionEvent);
+          }
         }
-      } while ((this.parentHeight <= 0) || (this.parentWidth <= 0));
-      k = i - this.lastX;
-      m = j - this.lastY;
-    } while ((!this.config.isDrag) && (k * k + m * m < 81));
-    this.config.isDrag = true;
-    float f3 = getX() + k;
-    float f1 = getY() + m;
-    float f2;
-    label265:
-    float f4;
-    if (f3 < f6)
-    {
-      f2 = f6;
-      if (f1 >= f5) {
-        break label432;
+        else
+        {
+          setPressed(this.config.isDrag ^ true);
+          switch (this.config.sidePattern)
+          {
+          default: 
+            if (!this.config.isDrag) {
+              break;
+            }
+            touchOver();
+            return;
+          case 9: 
+          case 10: 
+          case 11: 
+          case 12: 
+          case 13: 
+          case 14: 
+          case 15: 
+            sideAnim();
+            return;
+          }
+        }
       }
-      f4 = f5;
-      label276:
-      f3 = f4;
-      f1 = f6;
-      switch (this.config.sidePattern)
+      else
       {
-      case 6: 
-      default: 
-        f1 = f2;
-        f3 = f4;
+        this.config.isDrag = false;
+        setPressed(true);
+        this.lastX = j;
+        this.lastY = k;
+        getParent().requestDisallowInterceptTouchEvent(true);
+        initParent();
       }
-    }
-    for (;;)
-    {
-      setX(f1);
-      setY(f3);
-      this.lastX = i;
-      this.lastY = j;
-      localOnFloatWindowCallbacks = this.config.callbacks;
-      if (localOnFloatWindowCallbacks == null) {
-        break;
-      }
-      localOnFloatWindowCallbacks.drag((View)this, paramMotionEvent);
+      label851:
       return;
-      f2 = f3;
-      if (f3 <= this.parentWidth - getWidth() - f6) {
-        break label265;
-      }
-      f2 = this.parentWidth - getWidth() - f6;
-      break label265;
-      label432:
-      f4 = f1;
-      if (f1 <= this.parentHeight - getHeight() - f5) {
-        break label276;
-      }
-      f4 = this.parentHeight - getHeight() - f5;
-      break label276;
-      f1 = this.parentRect.right - getWidth() - f6;
-      f3 = f4;
-      continue;
-      f3 = f5;
-      f1 = f2;
-      continue;
-      f3 = this.parentRect.bottom - getHeight() - f5;
-      f1 = f2;
-      continue;
-      if (i * 2 - this.parentRect.left > this.parentRect.right) {}
-      for (f1 = this.parentRect.right - getWidth() - f6;; f1 = f6)
-      {
-        f3 = f4;
-        break;
-      }
-      f1 = f5;
-      if (j - this.parentRect.top > this.parentRect.bottom - j) {
-        f1 = this.parentRect.bottom - getHeight() - f5;
-      }
-      f3 = f1;
-      f1 = f2;
-      continue;
-      this.leftDistance = (i - this.parentRect.left);
-      this.rightDistance = (this.parentRect.right - i);
-      this.topDistance = (j - this.parentRect.top);
-      this.bottomDistance = (this.parentRect.bottom - j);
-      this.minX = Math.min(this.leftDistance, this.rightDistance);
-      this.minY = Math.min(this.topDistance, this.bottomDistance);
-      if (this.minX >= this.minY) {
-        break label772;
-      }
-      f3 = f4;
-      f1 = f6;
-      if (this.leftDistance != this.minX)
-      {
-        f1 = this.parentWidth - getWidth() - f6;
-        f3 = f4;
-      }
     }
-    label772:
-    if (this.topDistance == this.minY) {}
-    for (;;)
-    {
-      f3 = f5;
-      f1 = f2;
-      break;
-      f5 = this.parentHeight - getHeight() - f5;
-    }
-    if (!this.config.isDrag) {}
-    for (boolean bool = true;; bool = false)
-    {
-      setPressed(bool);
-      switch (this.config.sidePattern)
-      {
-      default: 
-        if (!this.config.isDrag) {
-          break label59;
-        }
-        touchOver();
-        return;
-      }
-    }
-    sideAnim();
+    this.config.isDrag = false;
+    setPressed(true);
   }
   
   public void _$_clearFindViewByIdCache()
   {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    HashMap localHashMap = this._$_findViewCache;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
@@ -395,27 +430,31 @@ public abstract class AbstractDragFloatingView
   
   public final void exitAnim$floatwindow_release()
   {
-    if ((this.config.isAnim) || (this.parentView == null)) {}
-    Object localObject;
-    do
+    if (!this.config.isAnim)
     {
-      return;
-      localObject = this.config.activityFloatAnimator;
+      if (this.parentView == null) {
+        return;
+      }
+      Object localObject = this.config.activityFloatAnimator;
       View localView = (View)this;
       ViewGroup localViewGroup = this.parentView;
       if (localViewGroup == null) {
         Intrinsics.throwNpe();
       }
       localObject = new FWActivityAnimatorManager((OnActivityFloatWindowAnimator)localObject, localView, localViewGroup, this.config.sidePattern).exitAnim();
-      if (localObject != null) {
-        break;
+      if (localObject == null)
+      {
+        localObject = this.parentView;
+        if (localObject != null) {
+          ((ViewGroup)localObject).removeView(localView);
+        }
       }
-      localObject = this.parentView;
-    } while (localObject == null);
-    ((ViewGroup)localObject).removeView((View)this);
-    return;
-    ((Animator)localObject).addListener((Animator.AnimatorListener)new AbstractDragFloatingView.exitAnim.1(this));
-    ((Animator)localObject).start();
+      else
+      {
+        ((Animator)localObject).addListener((Animator.AnimatorListener)new AbstractDragFloatingView.exitAnim.1(this));
+        ((Animator)localObject).start();
+      }
+    }
   }
   
   @NotNull
@@ -431,8 +470,7 @@ public abstract class AbstractDragFloatingView
   {
     Intrinsics.checkParameterIsNotNull(paramContext, "context");
     Integer localInteger = getLayoutId();
-    if (localInteger == null) {}
-    for (;;)
+    if ((localInteger == null) || (localInteger.intValue() != -1))
     {
       paramContext = LayoutInflater.from(paramContext);
       localInteger = getLayoutId();
@@ -446,14 +484,10 @@ public abstract class AbstractDragFloatingView
       if (paramContext != null) {
         paramContext.invoke((View)this);
       }
-      do
-      {
-        return;
-      } while (localInteger.intValue() == -1);
     }
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     OnFloatWindowCallbacks localOnFloatWindowCallbacks = this.config.callbacks;
@@ -471,27 +505,25 @@ public abstract class AbstractDragFloatingView
   }
   
   @SuppressLint({"DrawAllocation"})
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (!this.isCreated)
     {
       this.isCreated = true;
-      if (!(Intrinsics.areEqual(this.config.locationPair, new Point(0, 0)) ^ true)) {
-        break label90;
+      if ((true ^ Intrinsics.areEqual(this.config.locationPair, new Point(0, 0))))
+      {
+        setX(this.config.locationPair.x);
+        setY(this.config.locationPair.y);
       }
-      setX(this.config.locationPair.x);
-      setY(this.config.locationPair.y);
-    }
-    for (;;)
-    {
+      else
+      {
+        setX(getX() + this.config.offsetPair.x);
+        setY(getY() + this.config.offsetPair.y);
+      }
       initParent();
       initDistanceValue();
       enterAnim();
-      return;
-      label90:
-      setX(getX() + this.config.offsetPair.x);
-      setY(getY() + this.config.offsetPair.y);
     }
   }
   
@@ -513,7 +545,7 @@ public abstract class AbstractDragFloatingView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.activityfloat.AbstractDragFloatingView
  * JD-Core Version:    0.7.0.1
  */

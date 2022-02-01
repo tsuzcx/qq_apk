@@ -14,12 +14,14 @@ public class ThreadCenter$CoreHandler
   
   public ThreadCenter$CoreHandler(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
-      throw new RuntimeException("Handle ID empty!");
+    if (!TextUtils.isEmpty(paramString))
+    {
+      this.handlerThread = new HandlerThread(paramString);
+      this.handlerThread.start();
+      this.handler = new Handler(this.handlerThread.getLooper());
+      return;
     }
-    this.handlerThread = new HandlerThread(paramString);
-    this.handlerThread.start();
-    this.handler = new Handler(this.handlerThread.getLooper());
+    throw new RuntimeException("Handle ID empty!");
   }
   
   public Handler getHandler()
@@ -64,7 +66,7 @@ public class ThreadCenter$CoreHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.ThreadCenter.CoreHandler
  * JD-Core Version:    0.7.0.1
  */

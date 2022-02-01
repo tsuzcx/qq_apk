@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.redtouch;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
 import com.tencent.mobileqq.emosm.DataFactory;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import java.util.HashMap;
 
 class RedTouchWebviewHandler$2$1
@@ -22,7 +22,7 @@ class RedTouchWebviewHandler$2$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchWebviewHandler.2.1
  * JD-Core Version:    0.7.0.1
  */

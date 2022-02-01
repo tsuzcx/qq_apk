@@ -10,6 +10,7 @@ import com.tencent.mobileqq.emotionintegrate.EmotionPreviewData;
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
+import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
 class TroopAIOEmotionFragment$2
@@ -24,32 +25,24 @@ class TroopAIOEmotionFragment$2
     while (((Iterator)localObject).hasNext()) {
       localArrayList.add((ChatMessage)((EmotionPreviewData)((Iterator)localObject).next()).a);
     }
-    localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface)) {}
-    for (localObject = (QQAppInterface)localObject;; localObject = null)
-    {
-      if (localObject != null)
-      {
-        if (localArrayList.size() != 1) {
-          break label122;
-        }
+    localObject = null;
+    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localAppRuntime instanceof QQAppInterface)) {
+      localObject = (QQAppInterface)localAppRuntime;
+    }
+    if (localObject != null) {
+      if (localArrayList.size() == 1) {
         ((QQAppInterface)localObject).getMessageFacade().a((MessageRecord)localArrayList.get(0), false);
-      }
-      for (;;)
-      {
-        ThreadManager.getUIHandler().post(new TroopAIOEmotionFragment.2.1(this));
-        return;
-        label122:
-        if (localArrayList.size() > 1) {
-          ((QQAppInterface)localObject).getMessageFacade().a(localArrayList, false);
-        }
+      } else if (localArrayList.size() > 1) {
+        ((QQAppInterface)localObject).getMessageFacade().a(localArrayList, false);
       }
     }
+    ThreadManager.getUIHandler().post(new TroopAIOEmotionFragment.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.TroopAIOEmotionFragment.2
  * JD-Core Version:    0.7.0.1
  */

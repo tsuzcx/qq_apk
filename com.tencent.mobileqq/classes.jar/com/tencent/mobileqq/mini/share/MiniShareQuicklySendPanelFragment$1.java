@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.mini.share;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 class MiniShareQuicklySendPanelFragment$1
   implements Runnable
@@ -9,13 +9,13 @@ class MiniShareQuicklySendPanelFragment$1
   
   public void run()
   {
-    this.this$0.getActivity().finish();
-    this.this$0.getActivity().overridePendingTransition(0, 0);
+    this.this$0.getBaseActivity().finish();
+    this.this$0.getBaseActivity().overridePendingTransition(0, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.share.MiniShareQuicklySendPanelFragment.1
  * JD-Core Version:    0.7.0.1
  */

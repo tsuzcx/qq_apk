@@ -26,14 +26,15 @@ public final class VideoUrl
   
   public static VideoUrl[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new VideoUrl[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new VideoUrl[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static VideoUrl parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -60,12 +61,13 @@ public final class VideoUrl
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.level;
     int i = j;
-    if (this.level != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.level);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
     j = i;
     if (!this.url.equals("")) {
@@ -79,21 +81,25 @@ public final class VideoUrl
     if (!this.lgeId.equals("")) {
       j = i + CodedOutputByteBufferNano.computeStringSize(4, this.lgeId);
     }
+    k = this.isGrey;
     i = j;
-    if (this.isGrey != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(5, this.isGrey);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(5, k);
     }
+    k = this.vibrate;
     j = i;
-    if (this.vibrate != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(6, this.vibrate);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(6, k);
     }
+    k = this.vibrateRange;
     i = j;
-    if (this.vibrateRange != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(7, this.vibrateRange);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(7, k);
     }
+    k = this.clientType;
     j = i;
-    if (this.clientType != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(8, this.clientType);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(8, k);
     }
     return j;
   }
@@ -103,44 +109,69 @@ public final class VideoUrl
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.level = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 18: 
-        this.url = paramCodedInputByteBufferNano.readString();
-        break;
-      case 26: 
-        this.hash = paramCodedInputByteBufferNano.readString();
-        break;
-      case 34: 
-        this.lgeId = paramCodedInputByteBufferNano.readString();
-        break;
-      case 40: 
-        this.isGrey = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 48: 
-        this.vibrate = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 56: 
-        this.vibrateRange = paramCodedInputByteBufferNano.readUInt32();
+      if (i == 0) {
         break;
       }
-      this.clientType = paramCodedInputByteBufferNano.readUInt32();
+      if (i != 8)
+      {
+        if (i != 18)
+        {
+          if (i != 26)
+          {
+            if (i != 34)
+            {
+              if (i != 40)
+              {
+                if (i != 48)
+                {
+                  if (i != 56)
+                  {
+                    if (i != 64)
+                    {
+                      if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                        return this;
+                      }
+                    }
+                    else {
+                      this.clientType = paramCodedInputByteBufferNano.readUInt32();
+                    }
+                  }
+                  else {
+                    this.vibrateRange = paramCodedInputByteBufferNano.readUInt32();
+                  }
+                }
+                else {
+                  this.vibrate = paramCodedInputByteBufferNano.readUInt32();
+                }
+              }
+              else {
+                this.isGrey = paramCodedInputByteBufferNano.readUInt32();
+              }
+            }
+            else {
+              this.lgeId = paramCodedInputByteBufferNano.readString();
+            }
+          }
+          else {
+            this.hash = paramCodedInputByteBufferNano.readString();
+          }
+        }
+        else {
+          this.url = paramCodedInputByteBufferNano.readString();
+        }
+      }
+      else {
+        this.level = paramCodedInputByteBufferNano.readUInt32();
+      }
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.level != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.level);
+    int i = this.level;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
     if (!this.url.equals("")) {
       paramCodedOutputByteBufferNano.writeString(2, this.url);
@@ -151,24 +182,28 @@ public final class VideoUrl
     if (!this.lgeId.equals("")) {
       paramCodedOutputByteBufferNano.writeString(4, this.lgeId);
     }
-    if (this.isGrey != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(5, this.isGrey);
+    i = this.isGrey;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(5, i);
     }
-    if (this.vibrate != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(6, this.vibrate);
+    i = this.vibrate;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(6, i);
     }
-    if (this.vibrateRange != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(7, this.vibrateRange);
+    i = this.vibrateRange;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(7, i);
     }
-    if (this.clientType != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(8, this.clientType);
+    i = this.clientType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(8, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveLuxuryGiftVideoSvr.nano.VideoUrl
  * JD-Core Version:    0.7.0.1
  */

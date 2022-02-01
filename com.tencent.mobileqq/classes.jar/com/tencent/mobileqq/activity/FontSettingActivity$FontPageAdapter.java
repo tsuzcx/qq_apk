@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.activity;
 
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.view.View;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.ViewPager;
 import java.util.ArrayList;
 
 class FontSettingActivity$FontPageAdapter
@@ -33,7 +33,7 @@ class FontSettingActivity$FontPageAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.FontSettingActivity.FontPageAdapter
  * JD-Core Version:    0.7.0.1
  */

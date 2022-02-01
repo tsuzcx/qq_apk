@@ -15,22 +15,18 @@ class MiniAppCamera$2
     try
     {
       paramCamera.reconnect();
-      paramCamera.startPreview();
-      MiniAppCamera.access$000(this.this$0, paramArrayOfByte, this.val$adapt, this.val$quality, this.val$callback);
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Log.i("MiniAppCamera", "onPictureTaken: ", localException);
-      }
+      Log.i("MiniAppCamera", "onPictureTaken: ", localException);
     }
+    paramCamera.startPreview();
+    MiniAppCamera.access$000(this.this$0, paramArrayOfByte, this.val$adapt, this.val$quality, this.val$callback);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera.2
  * JD-Core Version:    0.7.0.1
  */

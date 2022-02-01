@@ -21,8 +21,12 @@ public class TogetherBusinessConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
       TogetherConfigureBean localTogetherConfigureBean = TogetherConfigureBean.a(paramArrayOfQConfItem[0].a);
-      if (QLog.isColorLevel()) {
-        QLog.d("TogetherBusinessConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onParsed ");
+        localStringBuilder.append(paramArrayOfQConfItem[0].a);
+        QLog.d("TogetherBusinessConfProcessor", 2, localStringBuilder.toString());
       }
       return localTogetherConfigureBean;
     }
@@ -34,8 +38,12 @@ public class TogetherBusinessConfProcessor
   
   public void a(TogetherConfigureBean paramTogetherConfigureBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("TogetherBusinessConfProcessor", 2, "onUpdate " + paramTogetherConfigureBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramTogetherConfigureBean.toString());
+      QLog.d("TogetherBusinessConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -76,7 +84,7 @@ public class TogetherBusinessConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TogetherBusinessConfProcessor
  * JD-Core Version:    0.7.0.1
  */

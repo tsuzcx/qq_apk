@@ -8,13 +8,13 @@ public class NatMemAPI
 {
   public static void a()
   {
-    if (NativeMemoryUtils.a()) {}
+    NativeMemoryUtils.a();
     c();
   }
   
   public static void a(Context paramContext)
   {
-    if (NativeMemoryUtils.c()) {}
+    NativeMemoryUtils.c();
   }
   
   public static void b()
@@ -32,7 +32,7 @@ public class NatMemAPI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.natmem.NatMemAPI
  * JD-Core Version:    0.7.0.1
  */

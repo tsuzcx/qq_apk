@@ -5,10 +5,15 @@ import android.content.Context;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoFragment;
-import com.tencent.gdtad.api.motivevideo.GdtMotiveVideoPageData;
+import com.tencent.gdtad.IGdtAPI;
+import com.tencent.gdtad.aditem.GdtAd;
+import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoModel;
+import com.tencent.gdtad.basics.motivevideo.data.GdtMotiveVideoPageData;
+import com.tencent.gdtad.basics.motivevideo.data.StartGdtMotiveVideoParams;
 import com.tencent.mobileqq.mini.appbrand.jsapi.PluginConst.AdConst;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqmini.sdk.core.manager.ActivityResultManager;
 import com.tencent.qqmini.sdk.launcher.AppLoaderFactory;
 import com.tencent.qqmini.sdk.launcher.core.BaseRuntime;
 import com.tencent.qqmini.sdk.launcher.core.IMiniAppContext;
@@ -23,7 +28,7 @@ class AdProxyImpl$SDKRewardedVideoAdView
   extends AdProxy.AbsRewardVideoAdView
 {
   int jdField_a_of_type_Int = 53;
-  GdtMotiveVideoPageData jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData;
+  GdtMotiveVideoPageData jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData;
   IMiniAppContext jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext;
   AdProxy.IRewardVideoAdListener jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener;
   String jdField_a_of_type_JavaLangString;
@@ -59,49 +64,69 @@ class AdProxyImpl$SDKRewardedVideoAdView
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AdProxyImpl", 2, "onReceiveResult() called with: resultCode = [" + paramInt + "], resultData = [" + paramBundle + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceiveResult() called with: resultCode = [");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append("], resultData = [");
+      ((StringBuilder)localObject).append(paramBundle);
+      ((StringBuilder)localObject).append("]");
+      QLog.d("AdProxyImpl", 2, ((StringBuilder)localObject).toString());
     }
     long l2 = paramBundle.getLong("duration_time");
     long l3 = paramBundle.getLong("elapsed_time");
     boolean bool = paramBundle.getBoolean("profitable_flag", false);
     long l1;
-    if (l2 > l3)
-    {
+    if (l2 > l3) {
       l1 = l3;
-      int k = (int)(l1 / 1000L);
-      int j = k;
-      if (k > 15) {
-        j = 15;
-      }
-      paramBundle = null;
-      BaseRuntime localBaseRuntime = AppLoaderFactory.g().getCommonManager().getCurrentRuntime();
-      if (localBaseRuntime != null) {
-        paramBundle = localBaseRuntime.getMiniAppInfo();
-      }
-      if (paramBundle == null) {
-        break label289;
-      }
-      paramBundle.gameAdsTotalTime += j;
-      QLog.d("AdProxyImpl", 1, "RewardedAd now gameAdsTotalTime = " + paramBundle.gameAdsTotalTime + ", reportTime = " + j);
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null)
-      {
-        if ((bool) && (paramInt == -1)) {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onReward();
-        }
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onADClose(this.jdField_a_of_type_JavaLangString);
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("AdProxyImpl", 1, "RewardedAd ActivityResultListener receive durationTime= " + l2 + " elaspedTime=" + l3 + " profitable=" + bool + ", resultCode = " + paramInt);
-      }
-      return;
+    } else {
       l1 = l2;
-      break;
-      label289:
+    }
+    int k = (int)(l1 / 1000L);
+    int j = k;
+    if (k > 15) {
+      j = 15;
+    }
+    paramBundle = null;
+    Object localObject = AppLoaderFactory.g().getCommonManager().getCurrentRuntime();
+    if (localObject != null) {
+      paramBundle = ((BaseRuntime)localObject).getMiniAppInfo();
+    }
+    if (paramBundle != null)
+    {
+      paramBundle.gameAdsTotalTime += j;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("RewardedAd now gameAdsTotalTime = ");
+      ((StringBuilder)localObject).append(paramBundle.gameAdsTotalTime);
+      ((StringBuilder)localObject).append(", reportTime = ");
+      ((StringBuilder)localObject).append(j);
+      QLog.d("AdProxyImpl", 1, ((StringBuilder)localObject).toString());
+    }
+    else
+    {
       QLog.d("AdProxyImpl", 1, "RewardedAd miniAppInfo is null");
+    }
+    paramBundle = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener;
+    if (paramBundle != null)
+    {
+      if ((bool) && (paramInt == -1)) {
+        paramBundle.onReward();
+      }
+      this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onADClose(this.jdField_a_of_type_JavaLangString);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("RewardedAd ActivityResultListener receive durationTime= ");
+      paramBundle.append(l2);
+      paramBundle.append(" elaspedTime=");
+      paramBundle.append(l3);
+      paramBundle.append(" profitable=");
+      paramBundle.append(bool);
+      paramBundle.append(", resultCode = ");
+      paramBundle.append(paramInt);
+      QLog.d("AdProxyImpl", 1, paramBundle.toString());
     }
   }
   
@@ -109,8 +134,9 @@ class AdProxyImpl$SDKRewardedVideoAdView
   {
     if (paramContext == null)
     {
-      if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null) {
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+      paramContext = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener;
+      if (paramContext != null) {
+        paramContext.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
       }
       return;
     }
@@ -120,46 +146,77 @@ class AdProxyImpl$SDKRewardedVideoAdView
   
   public void showAD(Context paramContext, String paramString)
   {
-    Object localObject = null;
-    if ((paramContext != null) && ((paramContext instanceof Activity))) {}
-    for (paramContext = (Activity)paramContext;; paramContext = null)
+    GdtMotiveVideoPageData localGdtMotiveVideoPageData = null;
+    if ((paramContext != null) && ((paramContext instanceof Activity))) {
+      paramContext = (Activity)paramContext;
+    } else {
+      paramContext = null;
+    }
+    if (paramContext != null)
     {
-      if ((paramContext == null) || (this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData == null))
+      Object localObject = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData;
+      if (localObject != null)
       {
-        QLog.d("AdProxyImpl", 1, "data is not GdtMotiveVideoPageData");
-        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener != null) {
-          this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
+        this.jdField_a_of_type_JavaLangString = paramString;
+        ((GdtMotiveVideoPageData)localObject).refId = "biz_src_miniapp";
+        boolean bool = new GdtMotiveVideoModel((GdtMotiveVideoPageData)localObject).a().isProcessInTool();
+        if (bool) {
+          this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData.containerType = 0;
+        } else {
+          this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData.containerType = 1;
+        }
+        if ((this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData.vSize != 185) && (this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData.vSize != 585))
+        {
+          paramString = new AdProxyImpl.CallbackData(this, null);
+          localObject = AdProxyImpl.CallbackData.a(paramString);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("mvBrowing dataKey = ");
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append(", data =");
+          localStringBuilder.append(AdProxyImpl.CallbackData.a(paramString));
+          QLog.i("AdProxyImpl", 1, localStringBuilder.toString());
+          if (AdProxyImpl.a() == null) {
+            AdProxyImpl.a(new HashMap());
+          }
+          this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData.motiveBrowsingKey = ((String)localObject);
+          AdProxyImpl.a().put(localObject, paramString);
+          paramString = localGdtMotiveVideoPageData;
+        }
+        else
+        {
+          paramString = new AdProxyImpl.AdResultReceiver(new Handler(Looper.getMainLooper()), this);
+        }
+        localGdtMotiveVideoPageData = this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData;
+        localObject = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData.adId);
+        localStringBuilder.append("");
+        localGdtMotiveVideoPageData.antiSpamParams = MiniAdAntiSpamReportUtil.a((IMiniAppContext)localObject, localStringBuilder.toString(), this.jdField_c_of_type_JavaLangString);
+        paramContext = StartGdtMotiveVideoParams.a(paramContext, this.jdField_a_of_type_ComTencentGdtadBasicsMotivevideoDataGdtMotiveVideoPageData, paramString);
+        paramContext.jdField_a_of_type_Boolean = bool;
+        if (bool)
+        {
+          paramContext.jdField_a_of_type_Int = 4760;
+          ActivityResultManager.g().addActivityResultListener(new AdProxyImpl.GdtMovieActResult(this));
+        }
+        ((IGdtAPI)QRoute.api(IGdtAPI.class)).startGdtMotiveVideo(paramContext);
+        paramContext = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener;
+        if (paramContext != null) {
+          paramContext.onADShow();
         }
         return;
       }
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData.refId = "biz_src_miniapp";
-      this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData.containerType = 1;
-      if ((this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData.vSize == 185) || (this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData.vSize == 585)) {}
-      for (paramString = new AdProxyImpl.AdResultReceiver(new Handler(Looper.getMainLooper()), this);; paramString = localObject)
-      {
-        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData.antiSpamParams = MiniAdAntiSpamReportUtil.a(this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreIMiniAppContext, this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData.adId + "", this.jdField_c_of_type_JavaLangString);
-        GdtMotiveVideoFragment.a(paramContext, GdtMotiveVideoFragment.class, this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData, paramString);
-        if (this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener == null) {
-          break;
-        }
-        this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener.onADShow();
-        return;
-        paramString = new AdProxyImpl.CallbackData(this, null);
-        String str = AdProxyImpl.CallbackData.a(paramString);
-        QLog.i("AdProxyImpl", 1, "mvBrowing dataKey = " + str + ", data =" + AdProxyImpl.CallbackData.a(paramString));
-        if (AdProxyImpl.a() == null) {
-          AdProxyImpl.a(new HashMap());
-        }
-        this.jdField_a_of_type_ComTencentGdtadApiMotivevideoGdtMotiveVideoPageData.motiveBrowsingKey = str;
-        AdProxyImpl.a().put(str, paramString);
-      }
+    }
+    QLog.d("AdProxyImpl", 1, "data is not GdtMotiveVideoPageData");
+    paramContext = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAdProxy$IRewardVideoAdListener;
+    if (paramContext != null) {
+      paramContext.onError(1003, PluginConst.AdConst.ERROR_MSG_INNER_ERROR);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.AdProxyImpl.SDKRewardedVideoAdView
  * JD-Core Version:    0.7.0.1
  */

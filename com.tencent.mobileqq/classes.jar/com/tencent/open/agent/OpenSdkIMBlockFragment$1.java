@@ -14,10 +14,10 @@ class OpenSdkIMBlockFragment$1
   
   public void onClick(View paramView)
   {
-    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.getActivity(), 230);
-    localQQCustomDialog.setTitle(2131698890);
-    localQQCustomDialog.setMessage(2131698888);
-    localQQCustomDialog.setPositiveButton(2131698889, new OpenSdkIMBlockFragment.1.1(this));
+    QQCustomDialog localQQCustomDialog = DialogUtil.a(this.a.getQBaseActivity(), 230);
+    localQQCustomDialog.setTitle(2131698969);
+    localQQCustomDialog.setMessage(2131698967);
+    localQQCustomDialog.setPositiveButton(2131698968, new OpenSdkIMBlockFragment.1.1(this));
     localQQCustomDialog.show();
     AuthReporter.a(OpenSdkIMBlockFragment.a(this.a), "0X800B65A");
     EventCollector.getInstance().onViewClicked(paramView);
@@ -25,7 +25,7 @@ class OpenSdkIMBlockFragment$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.OpenSdkIMBlockFragment.1
  * JD-Core Version:    0.7.0.1
  */

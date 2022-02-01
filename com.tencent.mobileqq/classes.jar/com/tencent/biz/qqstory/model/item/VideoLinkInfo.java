@@ -51,38 +51,40 @@ public class VideoLinkInfo
       paramString = (VideoLinkInfo)JsonORM.a(new JSONObject(paramString), VideoLinkInfo.class);
       return paramString;
     }
-    catch (JsonORM.JsonParseException paramString)
+    catch (JSONException paramString)
     {
       paramString.printStackTrace();
       return null;
     }
-    catch (JSONException paramString)
+    catch (JsonORM.JsonParseException paramString)
     {
-      for (;;)
-      {
-        paramString.printStackTrace();
-      }
+      paramString.printStackTrace();
     }
+    return null;
   }
   
   public String a()
   {
-    String str3 = this.jdField_a_of_type_JavaLangString;
-    String str2 = str3;
-    if (Patterns.d.matcher(str3).find())
+    String str2 = this.jdField_a_of_type_JavaLangString;
+    Object localObject = str2;
+    if (Patterns.d.matcher(str2).find())
     {
       String str1 = null;
-      int i = str3.lastIndexOf("#");
+      int i = str2.lastIndexOf("#");
       if (i > 0) {
-        str1 = str3.substring(i);
+        str1 = str2.substring(i);
       }
-      str3 = URLUtil.guessUrl(str3);
-      str2 = str3;
-      if (str1 != null) {
-        return str3 + str1;
+      str2 = URLUtil.guessUrl(str2);
+      localObject = str2;
+      if (str1 != null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str2);
+        ((StringBuilder)localObject).append(str1);
+        localObject = ((StringBuilder)localObject).toString();
       }
     }
-    return str2;
+    return localObject;
   }
   
   public String a(boolean paramBoolean)
@@ -110,42 +112,32 @@ public class VideoLinkInfo
   
   public String b()
   {
-    String str1;
-    String str2;
-    label30:
-    String str3;
-    if (this.b != null)
-    {
-      str1 = this.b.trim();
-      if (this.c == null) {
-        break label57;
-      }
-      str2 = this.c.trim();
-      if ((!TextUtils.isEmpty(str1)) || (!TextUtils.isEmpty(str2))) {
-        break label63;
-      }
-      str3 = this.jdField_a_of_type_JavaLangString;
-    }
-    label57:
-    label63:
-    do
-    {
-      return str3;
+    String str1 = this.b;
+    String str2 = "";
+    if (str1 != null) {
+      str1 = str1.trim();
+    } else {
       str1 = "";
-      break;
-      str2 = "";
-      break label30;
-      if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
-        return String.format("%s-%s", new Object[] { str1, str2 });
-      }
-      str3 = str1;
-    } while (!TextUtils.isEmpty(str1));
+    }
+    String str3 = this.c;
+    if (str3 != null) {
+      str2 = str3.trim();
+    }
+    if ((TextUtils.isEmpty(str1)) && (TextUtils.isEmpty(str2))) {
+      return this.jdField_a_of_type_JavaLangString;
+    }
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2))) {
+      return String.format("%s-%s", new Object[] { str1, str2 });
+    }
+    if (!TextUtils.isEmpty(str1)) {
+      return str1;
+    }
     return str2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.item.VideoLinkInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -29,13 +29,13 @@ public class VoicePanelContainer
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    if (Build.VERSION.SDK_INT >= 26) {}
-    for (this.jdField_a_of_type_Int = 2038;; this.jdField_a_of_type_Int = 2002)
-    {
-      setId(2131381754);
-      setBackgroundColor(paramContext.getResources().getColor(2131167305));
-      return;
+    if (Build.VERSION.SDK_INT >= 26) {
+      this.jdField_a_of_type_Int = 2038;
+    } else {
+      this.jdField_a_of_type_Int = 2002;
     }
+    setId(2131380984);
+    setBackgroundColor(paramContext.getResources().getColor(2131167333));
   }
   
   private WindowManager.LayoutParams a()
@@ -63,8 +63,8 @@ public class VoicePanelContainer
       {
         WindowManager.LayoutParams localLayoutParams = a();
         this.jdField_a_of_type_AndroidViewWindowManager.addView(this, localLayoutParams);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -76,10 +76,11 @@ public class VoicePanelContainer
   {
     try
     {
-      if (this.jdField_a_of_type_AndroidViewWindowManager != null) {
+      if (this.jdField_a_of_type_AndroidViewWindowManager != null)
+      {
         this.jdField_a_of_type_AndroidViewWindowManager.removeView(this);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -89,7 +90,7 @@ public class VoicePanelContainer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.view.VoicePanelContainer
  * JD-Core Version:    0.7.0.1
  */

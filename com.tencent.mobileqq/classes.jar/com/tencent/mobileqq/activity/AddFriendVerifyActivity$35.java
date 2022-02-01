@@ -1,44 +1,37 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.statistics.ReportController;
+import android.content.Context;
+import android.content.DialogInterface.OnClickListener;
+import com.tencent.mobileqq.utils.DialogUtil;
+import com.tencent.mobileqq.utils.QQCustomDialog;
 
 class AddFriendVerifyActivity$35
   implements Runnable
 {
-  AddFriendVerifyActivity$35(AddFriendVerifyActivity paramAddFriendVerifyActivity, int paramInt1, int paramInt2, boolean paramBoolean, String paramString, int paramInt3) {}
+  AddFriendVerifyActivity$35(AddFriendVerifyActivity paramAddFriendVerifyActivity) {}
   
   public void run()
   {
-    String str1;
-    QQAppInterface localQQAppInterface;
-    String str3;
-    if ((this.jdField_a_of_type_Int == 3004) && ((this.b == 5) || (this.b == 6) || (this.b == 7) || (this.b == 8)))
+    if (this.this$0.a != null)
     {
-      if (!this.jdField_a_of_type_Boolean) {
-        break label102;
+      if (!this.this$0.a.isShowing()) {
+        this.this$0.a.show();
       }
-      str1 = "multiMode_send";
-      localQQAppInterface = this.this$0.app;
-      str3 = this.jdField_a_of_type_JavaLangString;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label108;
-      }
-    }
-    label102:
-    label108:
-    for (String str2 = "1";; str2 = String.valueOf(this.c))
-    {
-      ReportController.b(localQQAppInterface, "dc00899", "Grp_addFrd", "", "frd_select", str1, 0, 0, str3, str2, "", "");
       return;
-      str1 = "singleMode_send";
-      break;
+    }
+    Object localObject = this.this$0;
+    ((AddFriendVerifyActivity)localObject).a = DialogUtil.a((Context)localObject, 230);
+    this.this$0.a.setMessage(2131694463);
+    localObject = new AddFriendVerifyActivity.35.1(this);
+    this.this$0.a.setPositiveButton(2131691064, (DialogInterface.OnClickListener)localObject);
+    if (!this.this$0.a.isShowing()) {
+      this.this$0.a.show();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.35
  * JD-Core Version:    0.7.0.1
  */

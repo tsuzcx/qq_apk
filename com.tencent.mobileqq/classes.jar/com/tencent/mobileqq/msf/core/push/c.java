@@ -58,40 +58,40 @@ public class c
   private boolean b()
   {
     long l1 = SystemClock.elapsedRealtime();
-    if (this.i > 0L)
+    long l2 = this.i;
+    if (l2 > 0L)
     {
-      l1 -= this.i;
-      if (l1 <= 0L) {
-        break label192;
-      }
-      if (l1 <= this.f + 30000L) {
-        break label200;
-      }
-    }
-    label192:
-    label200:
-    for (boolean bool = true;; bool = false)
-    {
-      if (this.m.getStatReporter() != null) {
-        this.m.getStatReporter().a("dim.Msf.PCActiveEcho", bool, l1, 0L, null, false, false);
-      }
-      for (;;)
+      l1 -= l2;
+      if (l1 > 0L)
       {
-        ToServiceMsg localToServiceMsg = new ToServiceMsg("MessageSvc.QueryPullUp", this.l, "MessageSvc.QueryPullUp");
-        localToServiceMsg.setRequestSsoSeq(MsfSdkUtils.getNextAppSeq());
-        localToServiceMsg.getAttributes().put("send_mode", Integer.valueOf(1));
-        localToServiceMsg.getAttributes().put("RequestEcho", Boolean.valueOf(true));
-        byte[] arrayOfByte1 = new ImMqPullup.MsgReq().toByteArray();
-        l1 = arrayOfByte1.length;
-        byte[] arrayOfByte2 = new byte[(int)l1 + 4];
-        h.a(arrayOfByte2, 0, 4L + l1);
-        h.a(arrayOfByte2, 4, arrayOfByte1, (int)l1);
-        localToServiceMsg.putWupBuffer(arrayOfByte2);
-        this.m.lightSender.a(localToServiceMsg);
-        return true;
+        boolean bool;
+        if (l1 > this.f + 30000L) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        if (this.m.getStatReporter() != null) {
+          this.m.getStatReporter().a("dim.Msf.PCActiveEcho", bool, l1, 0L, null, false, false);
+        }
+      }
+      else
+      {
         this.i = 0L;
       }
     }
+    ToServiceMsg localToServiceMsg = new ToServiceMsg("MessageSvc.QueryPullUp", this.l, "MessageSvc.QueryPullUp");
+    localToServiceMsg.setRequestSsoSeq(MsfSdkUtils.getNextAppSeq());
+    localToServiceMsg.getAttributes().put("send_mode", Integer.valueOf(1));
+    localToServiceMsg.getAttributes().put("RequestEcho", Boolean.valueOf(true));
+    byte[] arrayOfByte1 = new ImMqPullup.MsgReq().toByteArray();
+    l1 = arrayOfByte1.length;
+    int i1 = (int)l1;
+    byte[] arrayOfByte2 = new byte[i1 + 4];
+    h.a(arrayOfByte2, 0, l1 + 4L);
+    h.a(arrayOfByte2, 4, arrayOfByte1, i1);
+    localToServiceMsg.putWupBuffer(arrayOfByte2);
+    this.m.lightSender.a(localToServiceMsg);
+    return true;
   }
   
   public void a()
@@ -120,91 +120,93 @@ public class c
     boolean bool = ((Boolean)paramToServiceMsg.getAttribute("RequestEcho", Boolean.valueOf(false))).booleanValue();
     if (paramFromServiceMsg.getServiceCmd().equals("ConfigPushSvc.PushReq")) {
       QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult ssolist changed");
-    }
-    while (bool)
-    {
-      QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult succ, continue at " + this.f + " later");
-      this.i = SystemClock.elapsedRealtime();
-      this.o.sendEmptyMessageDelayed(10000, this.f);
-      label108:
-      return;
-      if (paramFromServiceMsg != null)
+    } else if (paramFromServiceMsg != null) {
+      try
       {
-        int i1;
-        try
+        if ((paramFromServiceMsg.isSuccess()) && (paramFromServiceMsg.getWupBuffer() != null) && (paramFromServiceMsg.getWupBuffer().length > 4))
         {
-          if ((!paramFromServiceMsg.isSuccess()) || (paramFromServiceMsg.getWupBuffer() == null) || (paramFromServiceMsg.getWupBuffer().length <= 4)) {
-            break label432;
-          }
           paramToServiceMsg = new byte[paramFromServiceMsg.getWupBuffer().length - 4];
           System.arraycopy(paramFromServiceMsg.getWupBuffer(), 4, paramToServiceMsg, 0, paramToServiceMsg.length);
           ImMqPullup.MsgRsp localMsgRsp = new ImMqPullup.MsgRsp();
           localMsgRsp.mergeFrom(paramToServiceMsg);
-          if (localMsgRsp.command.get() != 1) {
-            continue;
-          }
-          i1 = localMsgRsp.uint32_ret.get();
-          int i2 = localMsgRsp.uint32_itv.get();
-          if (i2 > 0) {
-            this.f = (i2 * 1000);
-          }
-          QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult ret: " + i1 + " interval: " + this.f);
-          if (i1 != 1) {
-            break label398;
-          }
-          paramToServiceMsg = new HashMap();
-          e.a(paramToServiceMsg);
-          paramToServiceMsg.put("account", paramFromServiceMsg.getUin());
-          if (!bool) {
-            break label359;
-          }
-          QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult succ, stop poll and active qq");
-          a();
-          this.m.pushManager.d(paramFromServiceMsg.getUin());
-          if (this.m.getStatReporter() == null) {
-            break label108;
-          }
-          this.m.getStatReporter().a("dim.Msf.PCActiveSuccResult", true, 0L, 0L, paramToServiceMsg, false, false);
-          return;
-        }
-        catch (Exception paramToServiceMsg)
-        {
-          paramToServiceMsg.printStackTrace();
-        }
-        continue;
-        label359:
-        if (this.m.getStatReporter() != null) {
-          this.m.getStatReporter().a("dim.Msf.PCActiveSuccResult", false, 0L, 0L, paramToServiceMsg, false, false);
-        }
-        QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, need active, ToServiceMsg's RequestEcho Flag is false");
-        return;
-        label398:
-        if (i1 == 2)
-        {
-          if (bool)
+          if (localMsgRsp.command.get() == 1)
           {
-            QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult succ, force stop poll");
-            a();
-            return;
-          }
-          QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, need stop, ToServiceMsg's RequestEcho Flag is false");
-          return;
-          label432:
-          if (bool)
-          {
-            if (a(paramFromServiceMsg.getBusinessFailCode()))
+            int i1 = localMsgRsp.uint32_ret.get();
+            int i2 = localMsgRsp.uint32_itv.get();
+            if (i2 > 0) {
+              this.f = (i2 * 1000);
+            }
+            paramToServiceMsg = new StringBuilder();
+            paramToServiceMsg.append("onRecvEchoResult ret: ");
+            paramToServiceMsg.append(i1);
+            paramToServiceMsg.append(" interval: ");
+            paramToServiceMsg.append(this.f);
+            QLog.d("PCActiveEchoManager", 1, paramToServiceMsg.toString());
+            if (i1 == 1)
             {
-              QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, tokenExpired");
-              a();
+              paramToServiceMsg = new HashMap();
+              e.a(paramToServiceMsg);
+              paramToServiceMsg.put("account", paramFromServiceMsg.getUin());
+              if (bool)
+              {
+                QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult succ, stop poll and active qq");
+                a();
+                this.m.pushManager.d(paramFromServiceMsg.getUin());
+                if (this.m.getStatReporter() == null) {
+                  return;
+                }
+                this.m.getStatReporter().a("dim.Msf.PCActiveSuccResult", true, 0L, 0L, paramToServiceMsg, false, false);
+                return;
+              }
+              if (this.m.getStatReporter() != null) {
+                this.m.getStatReporter().a("dim.Msf.PCActiveSuccResult", false, 0L, 0L, paramToServiceMsg, false, false);
+              }
+              QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, need active, ToServiceMsg's RequestEcho Flag is false");
+              return;
+            }
+            if (i1 == 2)
+            {
+              if (bool)
+              {
+                QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult succ, force stop poll");
+                a();
+                return;
+              }
+              QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, need stop, ToServiceMsg's RequestEcho Flag is false");
             }
           }
-          else {
-            QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, need stop1, ToServiceMsg's RequestEcho Flag is false");
+        }
+        else if (bool)
+        {
+          if (a(paramFromServiceMsg.getBusinessFailCode()))
+          {
+            QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, tokenExpired");
+            a();
           }
         }
+        else
+        {
+          QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, need stop1, ToServiceMsg's RequestEcho Flag is false");
+        }
+      }
+      catch (Exception paramToServiceMsg)
+      {
+        paramToServiceMsg.printStackTrace();
       }
     }
+    if (bool)
+    {
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("onRecvEchoResult succ, continue at ");
+      paramToServiceMsg.append(this.f);
+      paramToServiceMsg.append(" later");
+      QLog.d("PCActiveEchoManager", 1, paramToServiceMsg.toString());
+      this.i = SystemClock.elapsedRealtime();
+      this.o.sendEmptyMessageDelayed(10000, this.f);
+      return;
+    }
     QLog.d("PCActiveEchoManager", 1, "onRecvEchoResult failed, need continue, ToServiceMsg's RequestEcho Flag is false");
+    return;
   }
   
   public void a(String paramString)
@@ -233,48 +235,53 @@ public class c
         this.m.getStatReporter().a("dim.Msf.PCActiveDidStartEvent", true, 0L, 0L, localHashMap, false, false);
         return;
       }
+      QLog.d("msfCore", 1, "stop try report PCActiveDidStartEvent by reporter null");
+      return;
     }
     catch (Exception paramString)
     {
       paramString.printStackTrace();
       QLog.d("PCActiveEchoManager", 1, "startEcho fail", paramString);
-      return;
     }
-    QLog.d("msfCore", 1, "stop try report PCActiveDidStartEvent by reporter null");
   }
   
   public void a(String paramString, boolean paramBoolean)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("0"))) {}
-    do
+    if (!TextUtils.isEmpty(paramString))
     {
-      return;
-      localObject = MsfStore.getNativeConfigStore().getConfig("key_pcactive_opened_uins");
-    } while (TextUtils.isEmpty((CharSequence)localObject));
-    Object localObject = ((String)localObject).split(",");
-    StringBuilder localStringBuilder = new StringBuilder();
-    int i2 = localObject.length;
-    int i1 = 0;
-    while (i1 < i2)
-    {
-      String str = localObject[i1];
-      if (!str.equals(paramString)) {
-        localStringBuilder.append(str);
+      if (paramString.equals("0")) {
+        return;
       }
-      i1 += 1;
+      Object localObject = MsfStore.getNativeConfigStore().getConfig("key_pcactive_opened_uins");
+      if (!TextUtils.isEmpty((CharSequence)localObject))
+      {
+        localObject = ((String)localObject).split(",");
+        StringBuilder localStringBuilder = new StringBuilder();
+        int i2 = localObject.length;
+        int i1 = 0;
+        while (i1 < i2)
+        {
+          String str = localObject[i1];
+          if (!str.equals(paramString)) {
+            localStringBuilder.append(str);
+          }
+          i1 += 1;
+        }
+        if (paramBoolean) {
+          localStringBuilder.append(paramString);
+        }
+        MsfStore.getNativeConfigStore().setConfig("key_pcactive_opened_uins", localStringBuilder.toString());
+      }
     }
-    if (paramBoolean) {
-      localStringBuilder.append(paramString);
-    }
-    MsfStore.getNativeConfigStore().setConfig("key_pcactive_opened_uins", localStringBuilder.toString());
   }
   
   public boolean b(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (paramString.equals("0"))) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString))
     {
-      return false;
+      if (paramString.equals("0")) {
+        return false;
+      }
       String[] arrayOfString = MsfStore.getNativeConfigStore().getConfig("key_pcactive_opened_uins").split(",");
       int i2 = arrayOfString.length;
       int i1 = 0;
@@ -286,11 +293,12 @@ public class c
         i1 += 1;
       }
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.push.c
  * JD-Core Version:    0.7.0.1
  */

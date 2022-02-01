@@ -26,16 +26,15 @@ class VAudio$1
     {
       localJSONObject.put("what", paramInt1);
       localJSONObject.put("extra", paramInt2);
-      this.this$0.audioChangeFireEvent(4, localJSONObject.toString());
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        ViolaLogUtils.e("VComponent", "playError,e:" + localException.getMessage());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("playError,e:");
+      localStringBuilder.append(localException.getMessage());
+      ViolaLogUtils.e("VComponent", localStringBuilder.toString());
     }
+    this.this$0.audioChangeFireEvent(4, localJSONObject.toString());
   }
   
   public void playPaused()
@@ -60,7 +59,7 @@ class VAudio$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VAudio.1
  * JD-Core Version:    0.7.0.1
  */

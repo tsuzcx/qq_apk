@@ -13,27 +13,30 @@ class MsgPhotoView$WeakVipResourcesListener$1
   public void run()
   {
     ImageView localImageView = (ImageView)MsgPhotoView.WeakVipResourcesListener.access$500(this.this$0).get();
-    if ((localImageView != null) && (this.val$drawable != null))
+    if (localImageView != null)
     {
-      localImageView.setImageDrawable(this.val$drawable);
-      localImageView.setVisibility(0);
-      if (!MsgPhotoView.WeakVipResourcesListener.access$600(this.this$0)) {
-        if (MsgPhotoView.WeakVipResourcesListener.access$700(this.this$0) != 2) {
-          break label68;
+      Drawable localDrawable = this.val$drawable;
+      if (localDrawable != null)
+      {
+        localImageView.setImageDrawable(localDrawable);
+        localImageView.setVisibility(0);
+        if (!MsgPhotoView.WeakVipResourcesListener.access$600(this.this$0))
+        {
+          int i;
+          if (MsgPhotoView.WeakVipResourcesListener.access$700(this.this$0) == 2) {
+            i = 11;
+          } else {
+            i = 10;
+          }
+          VipReporterManager.a(i, 1);
         }
       }
-    }
-    label68:
-    for (int i = 11;; i = 10)
-    {
-      VipReporterManager.a(i, 1);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.MsgPhotoView.WeakVipResourcesListener.1
  * JD-Core Version:    0.7.0.1
  */

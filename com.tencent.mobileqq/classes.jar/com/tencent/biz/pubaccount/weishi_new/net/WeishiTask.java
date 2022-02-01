@@ -15,9 +15,9 @@ import java.util.HashMap;
 public class WeishiTask
   implements IWeishiProtocolListener
 {
-  private static Handler jdField_a_of_type_AndroidOsHandler;
+  private static Handler jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
   protected static final WeishiProtocolService a;
-  public static boolean a;
+  public static boolean a = false;
   public int a;
   public long a;
   public transient UniAttribute a;
@@ -34,8 +34,6 @@ public class WeishiTask
   
   static
   {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper());
     jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiProtocolService = WeishiProtocolService.a();
   }
   
@@ -66,30 +64,35 @@ public class WeishiTask
     switch (paramInt)
     {
     case 1000005: 
+    case 1000007: 
     default: 
       return "";
     case 1000006: 
       QZLog.i("QZLog", 1, "WeishiTask\t 网络无连接");
       return QzoneConfig.getInstance().getConfig("QZoneTextSetting", "NetWorkNotConnect", "网络无连接");
-    case 1000004: 
-      return "";
     }
     return "";
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest != null)
+    Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.a(this.d);
+      ((WeishiRequest)localObject).a(this.d);
       if (jdField_a_of_type_Boolean)
       {
-        StringBuilder localStringBuilder = new StringBuilder();
+        localObject = new StringBuilder();
         if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.a != null) {
-          this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.a.display(localStringBuilder, 0);
+          this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.a.display((StringBuilder)localObject, 0);
         }
       }
-      WSLog.a("WeishiTask", "startRunTask: " + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.getCmdString() + ", " + this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("startRunTask: ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.getCmdString());
+      ((StringBuilder)localObject).append(", ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest.toString());
+      WSLog.a("WeishiTask", ((StringBuilder)localObject).toString());
     }
     int i = jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiProtocolService.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, this);
     if (i != 0) {
@@ -108,19 +111,20 @@ public class WeishiTask
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetRspHeaderBean = paramRspHeaderBean;
     if (1000006 == paramInt1) {
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131716747);
+      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131716397);
     }
     WeishiBusinessLooper.a().b(this);
   }
   
   public boolean a()
   {
-    return (this.b == 0) || (this.b == 1000) || ((Math.abs(this.b) <= 19999) && (Math.abs(this.b) >= 19000));
+    int i = this.b;
+    return (i == 0) || (i == 1000) || ((Math.abs(i) <= 19999) && (Math.abs(this.b) >= 19000));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.net.WeishiTask
  * JD-Core Version:    0.7.0.1
  */

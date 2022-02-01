@@ -12,48 +12,30 @@ public final class GameLauncher$Companion
 {
   private final boolean isAllSuccess(List<ScriptLoadStatistic> paramList)
   {
-    int i;
-    if (!((Collection)paramList).isEmpty())
+    if ((((Collection)paramList).isEmpty() ^ true))
     {
-      i = 1;
-      if (i == 0) {
-        break label99;
-      }
       paramList = (Iterable)paramList;
-      if ((!(paramList instanceof Collection)) || (!((Collection)paramList).isEmpty())) {
-        break label55;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if (i == 0) {
-        break label99;
-      }
-      return true;
-      i = 0;
-      break;
-      label55:
-      paramList = paramList.iterator();
-      for (;;)
+      if (((paramList instanceof Collection)) && (((Collection)paramList).isEmpty())) {}
+      do
       {
-        if (paramList.hasNext()) {
-          if (!((ScriptLoadStatistic)paramList.next()).getLoadResult().isSuccess())
-          {
-            i = 0;
-            break;
-          }
+        while (!paramList.hasNext())
+        {
+          i = 1;
+          break;
+          paramList = paramList.iterator();
         }
+      } while (((ScriptLoadStatistic)paramList.next()).getLoadResult().isSuccess());
+      int i = 0;
+      if (i != 0) {
+        return true;
       }
-      i = 1;
     }
-    label99:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.game.GameLauncher.Companion
  * JD-Core Version:    0.7.0.1
  */

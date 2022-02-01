@@ -28,37 +28,45 @@ public class DTAdditionalReportHandler
   
   private boolean handleAppVstEvent()
   {
-    boolean bool1 = true;
     Object localObject = DTEventDynamicParams.getInstance().getDTParamProvider();
+    boolean bool2 = false;
     if (localObject == null) {
       return false;
     }
     int j = ((IDTParamProvider)localObject).getStartType();
     String str = ((IDTParamProvider)localObject).getCallFrom();
     localObject = ((IDTParamProvider)localObject).getCallScheme();
-    if (VideoReport.isDebugMode()) {
-      Log.i("DTAdditionalReportHandl", "handleAppVstEvent: startType=" + j + ", callFrom=" + str + ", callScheme=" + (String)localObject);
+    if (VideoReport.isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("handleAppVstEvent: startType=");
+      localStringBuilder.append(j);
+      localStringBuilder.append(", callFrom=");
+      localStringBuilder.append(str);
+      localStringBuilder.append(", callScheme=");
+      localStringBuilder.append((String)localObject);
+      Log.i("DTAdditionalReportHandl", localStringBuilder.toString());
     }
-    boolean bool2 = isStartParamsChanged(j, str, (String)localObject);
+    boolean bool3 = isStartParamsChanged(j, str, (String)localObject);
     int i;
-    if (j == 0)
-    {
+    if (j == 0) {
       i = 1;
-      if ((i != 0) || (!bool2)) {
-        break label144;
-      }
-      this.mLastStartType = j;
-      this.mLastCallFrom = str;
-      this.mLastCallScheme = ((String)localObject);
-    }
-    for (;;)
-    {
-      return bool1;
+    } else {
       i = 0;
-      break;
-      label144:
-      bool1 = false;
     }
+    boolean bool1 = bool2;
+    if (i == 0)
+    {
+      bool1 = bool2;
+      if (bool3)
+      {
+        this.mLastStartType = j;
+        this.mLastCallFrom = str;
+        this.mLastCallScheme = ((String)localObject);
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private boolean isStartParamsChanged(int paramInt, String paramString1, String paramString2)
@@ -68,22 +76,34 @@ public class DTAdditionalReportHandler
   
   private void updateAppStartParams()
   {
-    IDTParamProvider localIDTParamProvider = DTEventDynamicParams.getInstance().getDTParamProvider();
-    if (localIDTParamProvider == null) {}
-    do
-    {
+    Object localObject = DTEventDynamicParams.getInstance().getDTParamProvider();
+    if (localObject == null) {
       return;
-      this.mLastStartType = localIDTParamProvider.getStartType();
-      this.mLastCallFrom = localIDTParamProvider.getCallFrom();
-      this.mLastCallScheme = localIDTParamProvider.getCallScheme();
-    } while (!VideoReport.isDebugMode());
-    Log.i("DTAdditionalReportHandl", "updateAppStartParams: mLastStartType=" + this.mLastStartType + "， mLastCallFrom=" + this.mLastCallFrom + "， mLastCallScheme=" + this.mLastCallScheme);
+    }
+    this.mLastStartType = ((IDTParamProvider)localObject).getStartType();
+    this.mLastCallFrom = ((IDTParamProvider)localObject).getCallFrom();
+    this.mLastCallScheme = ((IDTParamProvider)localObject).getCallScheme();
+    if (VideoReport.isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateAppStartParams: mLastStartType=");
+      ((StringBuilder)localObject).append(this.mLastStartType);
+      ((StringBuilder)localObject).append("， mLastCallFrom=");
+      ((StringBuilder)localObject).append(this.mLastCallFrom);
+      ((StringBuilder)localObject).append("， mLastCallScheme=");
+      ((StringBuilder)localObject).append(this.mLastCallScheme);
+      Log.i("DTAdditionalReportHandl", ((StringBuilder)localObject).toString());
+    }
   }
   
   public void changeSession(SessionChangeReason paramSessionChangeReason)
   {
-    if (VideoReport.isDebugMode()) {
-      Log.i("DTAdditionalReportHandl", "changeSession: reason=" + paramSessionChangeReason);
+    if (VideoReport.isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("changeSession: reason=");
+      localStringBuilder.append(paramSessionChangeReason);
+      Log.i("DTAdditionalReportHandl", localStringBuilder.toString());
     }
     updateAppStartParams();
   }
@@ -105,8 +125,12 @@ public class DTAdditionalReportHandler
   
   public boolean shouldAdditionalReport(String paramString)
   {
-    if (VideoReport.isDebugMode()) {
-      Log.i("DTAdditionalReportHandl", "shouldAdditionalReport: eventKey=" + paramString);
+    if (VideoReport.isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("shouldAdditionalReport: eventKey=");
+      localStringBuilder.append(paramString);
+      Log.i("DTAdditionalReportHandl", localStringBuilder.toString());
     }
     boolean bool = false;
     if ("origin_vst".equals(paramString)) {
@@ -117,7 +141,7 @@ public class DTAdditionalReportHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.reportchannel.DTAdditionalReportHandler
  * JD-Core Version:    0.7.0.1
  */

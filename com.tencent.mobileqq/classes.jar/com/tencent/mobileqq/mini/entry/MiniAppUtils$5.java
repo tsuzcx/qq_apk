@@ -27,41 +27,40 @@ final class MiniAppUtils$5
       localWebSoCgiState = (WebSoCgiService.WebSoCgiState)paramMessage.obj;
       QLog.d("MiniAppUtils", 1, new Object[] { "handleMessage ", localWebSoCgiState });
       if (localWebSoCgiState.jdField_c_of_type_Int == 0) {
-        for (;;)
+        try
         {
-          JSONObject localJSONObject;
-          try
+          JSONObject localJSONObject = new JSONObject();
+          paramMessage = localWebSoCgiState.d;
+          if (paramMessage != null)
           {
-            localJSONObject = new JSONObject();
-            if (localWebSoCgiState.d == null) {
-              break label194;
-            }
             if (this.val$returnAsJSON)
             {
               localJSONObject.put("data", new JSONObject(localWebSoCgiState.d));
-              localJSONObject.put("statusCode", localWebSoCgiState.b);
-              localJSONObject.put("wnsCode", localWebSoCgiState.jdField_c_of_type_Int);
-              localJSONObject.put("header", localWebSoCgiState.jdField_c_of_type_JavaLangString);
-              this.val$listener.onReceiveResult(true, localJSONObject);
-              return;
             }
-            if (localWebSoCgiState.a)
+            else
             {
-              paramMessage = Base64Util.encodeToString(localWebSoCgiState.d.getBytes(), 0);
+              if (localWebSoCgiState.a) {
+                paramMessage = Base64Util.encodeToString(localWebSoCgiState.d.getBytes(), 0);
+              } else {
+                paramMessage = localWebSoCgiState.d;
+              }
               localJSONObject.put("data", paramMessage);
-              continue;
             }
-            paramMessage = localWebSoCgiState.d;
           }
-          catch (JSONException paramMessage)
-          {
-            QLog.e("MiniAppUtils", 1, "handleMessage wnsCgiRequest exception ", paramMessage);
-            this.val$listener.onReceiveResult(false, null);
-            return;
+          else {
+            localJSONObject.put("data", "");
           }
-          continue;
-          label194:
-          localJSONObject.put("data", "");
+          localJSONObject.put("statusCode", localWebSoCgiState.b);
+          localJSONObject.put("wnsCode", localWebSoCgiState.jdField_c_of_type_Int);
+          localJSONObject.put("header", localWebSoCgiState.jdField_c_of_type_JavaLangString);
+          this.val$listener.onReceiveResult(true, localJSONObject);
+          return;
+        }
+        catch (JSONException paramMessage)
+        {
+          QLog.e("MiniAppUtils", 1, "handleMessage wnsCgiRequest exception ", paramMessage);
+          this.val$listener.onReceiveResult(false, null);
+          return;
         }
       }
       paramMessage = new JSONObject();
@@ -69,7 +68,7 @@ final class MiniAppUtils$5
     try
     {
       paramMessage.put("wnsCode", localWebSoCgiState.jdField_c_of_type_Int);
-      label225:
+      label227:
       this.val$listener.onReceiveResult(false, paramMessage);
       return;
       QLog.e("MiniAppUtils", 1, new Object[] { "handleMessage wnsCgiRequest ", " invalid msg.obj" });
@@ -78,13 +77,13 @@ final class MiniAppUtils$5
     }
     catch (Exception localException)
     {
-      break label225;
+      break label227;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.MiniAppUtils.5
  * JD-Core Version:    0.7.0.1
  */

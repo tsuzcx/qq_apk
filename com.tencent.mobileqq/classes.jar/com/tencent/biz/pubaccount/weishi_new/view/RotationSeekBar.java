@@ -47,58 +47,67 @@ public class RotationSeekBar
   
   private MotionEvent a(MotionEvent paramMotionEvent)
   {
-    int i;
-    int m;
-    int k;
-    int n;
-    int j;
     if ((paramMotionEvent != null) && (paramMotionEvent.getAction() == 2))
     {
       int[] arrayOfInt = new int[2];
       getLocationOnScreen(arrayOfInt);
-      i = arrayOfInt[0];
-      m = arrayOfInt[1];
-      k = (int)paramMotionEvent.getRawX();
-      n = (int)paramMotionEvent.getRawY();
-      switch (this.jdField_a_of_type_Int)
+      int k = arrayOfInt[0];
+      int i = arrayOfInt[1];
+      int m = (int)paramMotionEvent.getRawX();
+      int j = (int)paramMotionEvent.getRawY();
+      int n = this.jdField_a_of_type_Int;
+      if (n != 90)
       {
-      default: 
-        j = (int)paramMotionEvent.getX();
-        i = (int)paramMotionEvent.getY();
+        if (n != 180)
+        {
+          if (n != 270)
+          {
+            i = (int)paramMotionEvent.getX();
+            j = (int)paramMotionEvent.getY();
+          }
+          else
+          {
+            i -= j;
+            j = m - k;
+          }
+        }
+        else
+        {
+          j = i - j;
+          i = k - m;
+        }
       }
+      else
+      {
+        i = j - i;
+        j = k - m;
+      }
+      paramMotionEvent.setLocation(i, j);
     }
-    for (;;)
-    {
-      paramMotionEvent.setLocation(j, i);
-      return paramMotionEvent;
-      j = n - m;
-      i -= k;
-      continue;
-      j = i - k;
-      i = m - n;
-      continue;
-      j = m - n;
-      i = k - i;
-    }
+    return paramMotionEvent;
   }
   
   protected int a(float paramFloat)
   {
     a();
-    return Math.round(jdField_a_of_type_Float * paramFloat);
+    return Math.round(paramFloat * jdField_a_of_type_Float);
   }
   
   void a() {}
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((paramMotionEvent.getAction() == 0) && (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener != null)) {
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener.a();
+    if (paramMotionEvent.getAction() == 0)
+    {
+      RotationSeekBar.OnRotationChangeListener localOnRotationChangeListener = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newViewRotationSeekBar$OnRotationChangeListener;
+      if (localOnRotationChangeListener != null) {
+        this.jdField_a_of_type_Int = localOnRotationChangeListener.a();
+      }
     }
     return super.dispatchTouchEvent(a(paramMotionEvent));
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     if (this.jdField_a_of_type_ArrayOfFloat != null)
@@ -143,7 +152,7 @@ public class RotationSeekBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.view.RotationSeekBar
  * JD-Core Version:    0.7.0.1
  */

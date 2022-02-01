@@ -15,8 +15,7 @@ import com.tencent.image.URLDrawable;
 import com.tencent.mobileqq.activity.aio.pluspanel.PluginData;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.mobileqq.tianshu.ui.RedTouch;
 import com.tencent.mobileqq.util.AccessibilityUtil;
@@ -43,12 +42,16 @@ public class PlusPanelAppListAdapter
   
   private BusinessInfoCheckUpdate.AppInfo a(PluginData paramPluginData)
   {
-    return ((RedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(10, String.valueOf(paramPluginData.c), paramPluginData.f);
+    return ((IRedTouchManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IRedTouchManager.class, "")).getAppInfoFilterByID(10, String.valueOf(paramPluginData.c), paramPluginData.f);
   }
   
   private void a(@NonNull PlusPanelAppListAdapter.ViewHolder paramViewHolder, PluginData paramPluginData)
   {
-    paramViewHolder.itemView.setContentDescription(paramPluginData.jdField_a_of_type_JavaLangString + HardCodeUtil.a(2131707852));
+    View localView = paramViewHolder.itemView;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramPluginData.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(HardCodeUtil.a(2131707875));
+    localView.setContentDescription(localStringBuilder.toString());
     paramViewHolder.itemView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
     paramViewHolder.itemView.setOnLongClickListener(this.jdField_a_of_type_AndroidViewView$OnLongClickListener);
     paramViewHolder.itemView.setEnabled(true);
@@ -60,14 +63,14 @@ public class PlusPanelAppListAdapter
   {
     int j = XPanelContainer.a;
     int k = XPanelContainer.b;
-    if (paramInt <= 3) {}
-    for (int i = 3;; i = 6)
-    {
-      i = (j - k) / i;
-      paramViewHolder.itemView.setPadding(0, i, 0, 0);
-      QLog.d("PlusPanelAppListAdapter", 1, new Object[] { "handleItemPadding -> position : ", Integer.valueOf(paramInt), ", XPanelContainer.mExternalPanelheight : ", Integer.valueOf(XPanelContainer.a), ", XPanelContainer.mDefaultExternalPanelheight : ", Integer.valueOf(XPanelContainer.b), ", topPadding : ", Integer.valueOf(i), ", XPanelContainer.mAddedHeight -> ", Integer.valueOf(XPanelContainer.d) });
-      return;
+    if (paramInt <= 3) {
+      i = 3;
+    } else {
+      i = 6;
     }
+    int i = (j - k) / i;
+    paramViewHolder.itemView.setPadding(0, i, 0, 0);
+    QLog.d("PlusPanelAppListAdapter", 1, new Object[] { "handleItemPadding -> position : ", Integer.valueOf(paramInt), ", XPanelContainer.mExternalPanelheight : ", Integer.valueOf(XPanelContainer.a), ", XPanelContainer.mDefaultExternalPanelheight : ", Integer.valueOf(XPanelContainer.b), ", topPadding : ", Integer.valueOf(i), ", XPanelContainer.mAddedHeight -> ", Integer.valueOf(XPanelContainer.d) });
   }
   
   private void b(@NonNull PlusPanelAppListAdapter.ViewHolder paramViewHolder, PluginData paramPluginData)
@@ -85,8 +88,9 @@ public class PlusPanelAppListAdapter
   
   private void c(@NonNull PlusPanelAppListAdapter.ViewHolder paramViewHolder, PluginData paramPluginData)
   {
+    RedTouch localRedTouch = PlusPanelAppListAdapter.ViewHolder.a(paramViewHolder);
     int i = 0;
-    PlusPanelAppListAdapter.ViewHolder.a(paramViewHolder).setVisibility(0);
+    localRedTouch.setVisibility(0);
     PlusPanelAppListAdapter.ViewHolder.a(paramViewHolder).d();
     if (!TextUtils.isEmpty(paramPluginData.c))
     {
@@ -95,22 +99,21 @@ public class PlusPanelAppListAdapter
       if (paramPluginData != null) {
         PlusPanelAppListAdapter.ViewHolder.a(paramViewHolder).a(paramPluginData);
       }
-      return;
     }
-    paramViewHolder = PlusPanelAppListAdapter.ViewHolder.b(paramViewHolder);
-    if (paramPluginData.jdField_a_of_type_Boolean) {}
-    for (;;)
+    else
     {
+      paramViewHolder = PlusPanelAppListAdapter.ViewHolder.b(paramViewHolder);
+      if (!paramPluginData.jdField_a_of_type_Boolean) {
+        i = 8;
+      }
       paramViewHolder.setVisibility(i);
-      return;
-      i = 8;
     }
   }
   
   @NonNull
   public PlusPanelAppListAdapter.ViewHolder a(@NonNull ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558944, null);
+    paramViewGroup = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131558842, null);
     paramInt = ViewUtils.b(15.0F);
     int i = (XPanelContainer.b - paramInt) / 2;
     int j = XPanelContainer.a - XPanelContainer.b;
@@ -138,15 +141,16 @@ public class PlusPanelAppListAdapter
   
   public int getItemCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.coreui.pluspanel.PlusPanelAppListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -7,12 +7,12 @@ class ChooseInterestTagActivity$14$1
   
   public void run()
   {
-    ChooseInterestTagActivity.b(this.a.a, false);
+    ChooseInterestTagActivity.access$3802(this.a.a, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.interestTag.ChooseInterestTagActivity.14.1
  * JD-Core Version:    0.7.0.1
  */

@@ -2,6 +2,7 @@ package com.tencent.mobileqq.widget;
 
 import android.content.Context;
 import android.util.AttributeSet;
+import android.widget.TextView;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.widget.MultiImageTextView;
 import kotlin.Metadata;
@@ -20,19 +21,22 @@ public final class QIDStatusFormSimpleItem
   public QIDStatusFormSimpleItem(@Nullable Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
+    paramContext = a();
+    Intrinsics.checkExpressionValueIsNotNull(paramContext, "leftTextView");
+    paramContext.getLayoutParams().width = -1;
   }
   
-  protected void b()
+  protected void a()
   {
-    super.b();
+    super.a();
     MultiImageTextView localMultiImageTextView = this.a;
     Intrinsics.checkExpressionValueIsNotNull(localMultiImageTextView, "mRightTextView");
-    localMultiImageTextView.setCompoundDrawablePadding(AIOUtils.a(12.0F, getResources()));
+    localMultiImageTextView.setCompoundDrawablePadding(AIOUtils.b(12.0F, getResources()));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.QIDStatusFormSimpleItem
  * JD-Core Version:    0.7.0.1
  */

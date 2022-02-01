@@ -8,7 +8,7 @@ import android.widget.CheckBox;
 import com.tencent.biz.qrcode.CustomAccessibilityDelegate;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.util.QQTextToSpeechHelper;
 import com.tencent.widget.ExpandableListView;
 import com.tencent.widget.PinnedHeaderExpandableListView.ExpandableListAdapter;
 import com.tencent.widget.SingleLineTextView;
@@ -40,14 +40,14 @@ public abstract class QfileBaseExpandableListAdapter
     int i = 0;
     while (localIterator.hasNext())
     {
-      str = (String)localIterator.next();
-      if (i == paramInt) {
+      String str = (String)localIterator.next();
+      if (i != paramInt) {
+        i += 1;
+      } else {
         return str;
       }
-      i += 1;
     }
-    String str = null;
-    return str;
+    return null;
   }
   
   protected List<Object> a(int paramInt)
@@ -83,25 +83,22 @@ public abstract class QfileBaseExpandableListAdapter
   
   public void configHeaderView(View paramView, int paramInt)
   {
-    QfileBaseExpandableListAdapter.QfileGroupTag localQfileGroupTag = (QfileBaseExpandableListAdapter.QfileGroupTag)paramView.getTag();
-    if (localQfileGroupTag == null)
+    QfileBaseExpandableListAdapter.QfileGroupTag localQfileGroupTag2 = (QfileBaseExpandableListAdapter.QfileGroupTag)paramView.getTag();
+    QfileBaseExpandableListAdapter.QfileGroupTag localQfileGroupTag1 = localQfileGroupTag2;
+    if (localQfileGroupTag2 == null)
     {
-      localQfileGroupTag = new QfileBaseExpandableListAdapter.QfileGroupTag();
-      localQfileGroupTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131368102));
-      paramView.findViewById(2131365230).setVisibility(8);
-      paramView.findViewById(2131369760).setVisibility(8);
-      localQfileGroupTag.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369653));
-      paramView.setTag(localQfileGroupTag);
+      localQfileGroupTag1 = new QfileBaseExpandableListAdapter.QfileGroupTag();
+      localQfileGroupTag1.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131367855));
+      paramView.findViewById(2131365107).setVisibility(8);
+      paramView.findViewById(2131369450).setVisibility(8);
+      localQfileGroupTag1.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369353));
+      paramView.setTag(localQfileGroupTag1);
     }
-    for (;;)
-    {
-      paramView.setOnClickListener(new QfileBaseExpandableListAdapter.3(this, paramInt));
-      localQfileGroupTag.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentWidgetExpandableListView.isGroupExpanded(paramInt));
-      paramView = (String)getGroup(paramInt);
-      localQfileGroupTag.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramView);
-      localQfileGroupTag.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      return;
-    }
+    paramView.setOnClickListener(new QfileBaseExpandableListAdapter.3(this, paramInt));
+    localQfileGroupTag1.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(this.jdField_a_of_type_ComTencentWidgetExpandableListView.isGroupExpanded(paramInt));
+    paramView = (String)getGroup(paramInt);
+    localQfileGroupTag1.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramView);
+    localQfileGroupTag1.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
   }
   
   public Object getChild(int paramInt1, int paramInt2)
@@ -144,39 +141,36 @@ public abstract class QfileBaseExpandableListAdapter
   
   public View getGroupView(int paramInt, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject;
     if (paramView != null)
     {
-      localObject = (QfileBaseExpandableListAdapter.QfileGroupTag)paramView.getTag();
-      paramViewGroup = paramView;
-      paramView = (View)localObject;
+      paramViewGroup = (QfileBaseExpandableListAdapter.QfileGroupTag)paramView.getTag();
     }
-    for (;;)
+    else
     {
-      paramViewGroup.setOnClickListener(new QfileBaseExpandableListAdapter.1(this, paramInt));
-      if (AppSetting.d) {
-        paramViewGroup.setAccessibilityDelegate(new CustomAccessibilityDelegate(paramViewGroup, new QfileBaseExpandableListAdapter.2(this, paramInt)));
-      }
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox.setClickable(false);
-      localObject = (String)getGroup(paramInt);
-      paramView.jdField_a_of_type_Int = paramInt;
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText((CharSequence)localObject);
-      return paramViewGroup;
-      paramViewGroup = LayoutInflater.from(this.b).inflate(2131559024, paramViewGroup, false);
-      paramView = new QfileBaseExpandableListAdapter.QfileGroupTag();
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramViewGroup.findViewById(2131368102));
-      paramView.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramViewGroup.findViewById(2131369653));
-      paramViewGroup.findViewById(2131365230).setVisibility(8);
-      paramViewGroup.findViewById(2131369760).setVisibility(8);
-      paramViewGroup.setTag(paramView);
+      paramView = LayoutInflater.from(this.b).inflate(2131560817, paramViewGroup, false);
+      paramViewGroup = new QfileBaseExpandableListAdapter.QfileGroupTag();
+      paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)paramView.findViewById(2131367855));
+      paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox = ((CheckBox)paramView.findViewById(2131369353));
+      paramView.findViewById(2131365107).setVisibility(8);
+      paramView.findViewById(2131369450).setVisibility(8);
+      paramView.setTag(paramViewGroup);
     }
+    paramView.setOnClickListener(new QfileBaseExpandableListAdapter.1(this, paramInt));
+    if (AppSetting.d) {
+      paramView.setAccessibilityDelegate(new CustomAccessibilityDelegate(paramView, new QfileBaseExpandableListAdapter.2(this, paramInt)));
+    }
+    paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setVisibility(0);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setChecked(paramBoolean);
+    paramViewGroup.jdField_a_of_type_AndroidWidgetCheckBox.setClickable(false);
+    String str = (String)getGroup(paramInt);
+    paramViewGroup.jdField_a_of_type_Int = paramInt;
+    paramViewGroup.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(str);
+    return paramView;
   }
   
   public int getHeaderViewLayoutResourceId()
   {
-    return 2131559024;
+    return 2131560817;
   }
   
   public boolean hasStableIds()
@@ -195,7 +189,10 @@ public abstract class QfileBaseExpandableListAdapter
     if (AppSetting.d)
     {
       String str = (String)getGroup(paramInt);
-      QQAppInterface.speak(str + HardCodeUtil.a(2131709580));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(HardCodeUtil.a(2131698203));
+      QQTextToSpeechHelper.a(localStringBuilder.toString());
     }
   }
   
@@ -205,13 +202,16 @@ public abstract class QfileBaseExpandableListAdapter
     if (AppSetting.d)
     {
       String str = (String)getGroup(paramInt);
-      QQAppInterface.speak(str + HardCodeUtil.a(2131709600));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(HardCodeUtil.a(2131698204));
+      QQTextToSpeechHelper.a(localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.adapter.QfileBaseExpandableListAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -13,10 +13,11 @@ class FilterChainReportSession$TimeConsumer
   
   private long getAvgTimeUs()
   {
-    if (this.count == 0L) {
+    long l = this.count;
+    if (l == 0L) {
       return 0L;
     }
-    return this.totalUs / this.count;
+    return this.totalUs / l;
   }
   
   private void tick(long paramLong)
@@ -27,7 +28,7 @@ class FilterChainReportSession$TimeConsumer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.report.FilterChainReportSession.TimeConsumer
  * JD-Core Version:    0.7.0.1
  */

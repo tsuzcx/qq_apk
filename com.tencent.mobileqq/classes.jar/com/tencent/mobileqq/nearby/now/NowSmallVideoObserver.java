@@ -9,20 +9,19 @@ public class NowSmallVideoObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
-    {
-    }
-    do
-    {
+    if (paramInt != 1000) {
       return;
-    } while (!paramBoolean);
-    paramObject = (Object[])paramObject;
-    a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
+    }
+    if (paramBoolean)
+    {
+      paramObject = (Object[])paramObject;
+      a(((Boolean)paramObject[0]).booleanValue(), (String)paramObject[1]);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.NowSmallVideoObserver
  * JD-Core Version:    0.7.0.1
  */

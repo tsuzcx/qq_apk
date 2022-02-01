@@ -15,28 +15,31 @@ class Client$IncomingHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 4)
     {
-    default: 
-      super.handleMessage(paramMessage);
-    }
-    do
-    {
-      do
+      if (i != 5)
       {
+        super.handleMessage(paramMessage);
         return;
-        this.a.onRespFromServer(paramMessage.getData());
-      } while (!QLog.isColorLevel());
-      QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
-      return;
+      }
       this.a.onPushMsgFromServer(paramMessage.getData());
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_SERVER_DOWNLOAD_STATE");
+      }
+    }
+    else
+    {
+      this.a.onRespFromServer(paramMessage.getData());
+      if (QLog.isColorLevel()) {
+        QLog.i("Q.emoji.web.Client", 2, "resp from server MSG_CLIENT_RESP");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.Client.IncomingHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -18,39 +18,46 @@ class CreateFaceToFaceDiscussionActivity$10$1
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
   {
-    if ((paramInt != 0) || (paramSosoLbsInfo == null))
+    if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
-      paramSosoLbsInfo = this.a.this$0.jdField_a_of_type_AndroidOsHandler.obtainMessage(2);
-      paramSosoLbsInfo.arg1 = 1;
-      paramSosoLbsInfo.arg2 = 2131698894;
-      paramSosoLbsInfo.sendToTarget();
+      paramSosoLbsInfo = CreateFaceToFaceDiscussionActivity.access$800(this.a.this$0, paramSosoLbsInfo);
+      NearFieldDiscussHandler localNearFieldDiscussHandler = (NearFieldDiscussHandler)this.a.this$0.app.getBusinessHandler(BusinessHandlerFactory.NEARFIELD_DISCUSS_HANDLER);
+      paramInt = this.a.a;
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3)
+            {
+              if (paramInt != 4) {
+                return;
+              }
+              localNearFieldDiscussHandler.a(this.a.this$0.digits.toString(), this.a.this$0.mSessionId, paramSosoLbsInfo);
+              return;
+            }
+            localNearFieldDiscussHandler.a(this.a.this$0.digits.toString(), this.a.this$0.mSessionId, paramSosoLbsInfo, false);
+            return;
+          }
+          localNearFieldDiscussHandler.a(this.a.this$0.digits.toString(), this.a.this$0.mSessionId, paramSosoLbsInfo, true);
+          return;
+        }
+        localNearFieldDiscussHandler.a(this.a.this$0.digits.toString(), this.a.this$0.mSessionId, paramSosoLbsInfo, 2, this.a.this$0.createSource);
+        return;
+      }
+      localNearFieldDiscussHandler.a(this.a.this$0.digits.toString(), this.a.this$0.mSessionId, paramSosoLbsInfo, this.a.this$0.TYPE_DISCUSS, this.a.this$0.createSource);
       return;
     }
-    paramSosoLbsInfo = CreateFaceToFaceDiscussionActivity.a(this.a.this$0, paramSosoLbsInfo);
-    NearFieldDiscussHandler localNearFieldDiscussHandler = (NearFieldDiscussHandler)this.a.this$0.app.getBusinessHandler(BusinessHandlerFactory.NEARFIELD_DISCUSS_HANDLER);
-    switch (this.a.jdField_a_of_type_Int)
-    {
-    default: 
-      return;
-    case 0: 
-      localNearFieldDiscussHandler.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, this.a.this$0.b, this.a.this$0.h);
-      return;
-    case 1: 
-      localNearFieldDiscussHandler.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, 2, this.a.this$0.h);
-      return;
-    case 2: 
-      localNearFieldDiscussHandler.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, true);
-      return;
-    case 3: 
-      localNearFieldDiscussHandler.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo, false);
-      return;
-    }
-    localNearFieldDiscussHandler.a(this.a.this$0.jdField_a_of_type_JavaLangStringBuffer.toString(), this.a.this$0.jdField_a_of_type_Int, paramSosoLbsInfo);
+    paramSosoLbsInfo = this.a.this$0.mHandler.obtainMessage(2);
+    paramSosoLbsInfo.arg1 = 1;
+    paramSosoLbsInfo.arg2 = 2131698973;
+    paramSosoLbsInfo.sendToTarget();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectmember.CreateFaceToFaceDiscussionActivity.10.1
  * JD-Core Version:    0.7.0.1
  */

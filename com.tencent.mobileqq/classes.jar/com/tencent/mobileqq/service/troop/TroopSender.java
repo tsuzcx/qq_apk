@@ -47,19 +47,21 @@ public class TroopSender
   
   private long a(String paramString)
   {
-    if ((paramString == null) || (paramString.length() <= 0)) {}
-    for (;;)
-    {
-      return 0L;
-      try
-      {
-        long l = Long.parseLong(paramString);
-        if (l >= 10000L) {
-          return l;
-        }
+    long l = 0L;
+    if (paramString != null) {
+      if (paramString.length() <= 0) {
+        return 0L;
       }
-      catch (NumberFormatException paramString) {}
     }
+    try
+    {
+      l = Long.parseLong(paramString);
+      if (l < 10000L) {
+        return 0L;
+      }
+      return l;
+    }
+    catch (NumberFormatException paramString) {}
     return 0L;
   }
   
@@ -78,19 +80,23 @@ public class TroopSender
       return false;
     }
     byte b1 = paramToServiceMsg.extraData.getByte("bGetMSFMsgFlag");
-    byte[] arrayOfByte = paramToServiceMsg.extraData.getByteArray("vecCookies");
+    Object localObject = paramToServiceMsg.extraData.getByteArray("vecCookies");
     ArrayList localArrayList = (ArrayList)paramToServiceMsg.extraData.getSerializable("vecGroupInfo");
     byte b2 = paramToServiceMsg.extraData.getByte("bGroupFlagExt");
     byte b3 = paramToServiceMsg.extraData.getByte("bGetLongGroupName");
     paramToServiceMsg = new GetTroopListReqV2Simplify();
     paramToServiceMsg.uin = l;
     paramToServiceMsg.bGetMSFMsgFlag = b1;
-    paramToServiceMsg.vecCookies = arrayOfByte;
+    paramToServiceMsg.vecCookies = ((byte[])localObject);
     paramToServiceMsg.vecGroupInfo = localArrayList;
     paramToServiceMsg.bGroupFlagExt = b2;
     paramToServiceMsg.bGetLongGroupName = b3;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSender", 2, "handleTroopGetList bGetLongGroupName = " + b3);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleTroopGetList bGetLongGroupName = ");
+      ((StringBuilder)localObject).append(b3);
+      QLog.d("TroopSender", 2, ((StringBuilder)localObject).toString());
     }
     paramToServiceMsg.shVersion = 9;
     paramToServiceMsg.versionNum = 1L;
@@ -106,21 +112,31 @@ public class TroopSender
     if (l == 0L) {
       return false;
     }
-    paramToServiceMsg = paramToServiceMsg.extraData;
-    GetTroopMemberListReq localGetTroopMemberListReq = new GetTroopMemberListReq();
-    localGetTroopMemberListReq.uin = l;
-    localGetTroopMemberListReq.GroupCode = paramToServiceMsg.getLong("troop_uin");
-    localGetTroopMemberListReq.GroupUin = paramToServiceMsg.getLong("troop_code");
-    localGetTroopMemberListReq.Version = paramToServiceMsg.getLong("version");
-    localGetTroopMemberListReq.NextUin = paramToServiceMsg.getLong("nextuin");
-    localGetTroopMemberListReq.ReqType = paramToServiceMsg.getInt("reqType", 0);
-    localGetTroopMemberListReq.GetListAppointTime = paramToServiceMsg.getLong("get_list_appoint_time", 0L);
-    localGetTroopMemberListReq.cRichCardNameVer = 1;
+    Bundle localBundle = paramToServiceMsg.extraData;
+    paramToServiceMsg = new GetTroopMemberListReq();
+    paramToServiceMsg.uin = l;
+    paramToServiceMsg.GroupCode = localBundle.getLong("troop_uin");
+    paramToServiceMsg.GroupUin = localBundle.getLong("troop_code");
+    paramToServiceMsg.Version = localBundle.getLong("version");
+    paramToServiceMsg.NextUin = localBundle.getLong("nextuin");
+    paramToServiceMsg.ReqType = localBundle.getInt("reqType", 0);
+    paramToServiceMsg.GetListAppointTime = localBundle.getLong("get_list_appoint_time", 0L);
+    paramToServiceMsg.cRichCardNameVer = 1;
     paramUniPacket.setServantName("mqq.IMService.FriendListServiceServantObj");
     paramUniPacket.setFuncName("GetTroopMemberListReq");
-    paramUniPacket.put("GTML", localGetTroopMemberListReq);
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSender", 2, "FriendListService.handleTroopGetMemberList, troopUin: " + localGetTroopMemberListReq.GroupCode + " |troopCode: " + localGetTroopMemberListReq.GroupUin + "|ReqType:" + localGetTroopMemberListReq.ReqType + "|GetListAppointTime:" + localGetTroopMemberListReq.GetListAppointTime);
+    paramUniPacket.put("GTML", paramToServiceMsg);
+    if (QLog.isColorLevel())
+    {
+      paramUniPacket = new StringBuilder();
+      paramUniPacket.append("FriendListService.handleTroopGetMemberList, troopUin: ");
+      paramUniPacket.append(paramToServiceMsg.GroupCode);
+      paramUniPacket.append(" |troopCode: ");
+      paramUniPacket.append(paramToServiceMsg.GroupUin);
+      paramUniPacket.append("|ReqType:");
+      paramUniPacket.append(paramToServiceMsg.ReqType);
+      paramUniPacket.append("|GetListAppointTime:");
+      paramUniPacket.append(paramToServiceMsg.GetListAppointTime);
+      QLog.d("TroopSender", 2, paramUniPacket.toString());
     }
     return true;
   }
@@ -128,23 +144,27 @@ public class TroopSender
   private boolean d(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     long l = a(paramToServiceMsg.getUin());
-    if (l == 0L) {}
-    GetTroopRemarkReq localGetTroopRemarkReq;
-    do
-    {
+    if (l == 0L) {
       return false;
-      paramToServiceMsg = paramToServiceMsg.extraData;
-      localGetTroopRemarkReq = new GetTroopRemarkReq();
-      localGetTroopRemarkReq.uin = l;
-      localGetTroopRemarkReq.GroupCode = paramToServiceMsg.getLong("troop_uin");
-      localGetTroopRemarkReq.GroupUin = paramToServiceMsg.getLong("troop_code");
-    } while ((localGetTroopRemarkReq.GroupCode == 0L) || (localGetTroopRemarkReq.GroupUin == 0L));
-    localGetTroopRemarkReq.NextUin = paramToServiceMsg.getLong("nextuin");
-    localGetTroopRemarkReq.Seq = 0L;
-    paramUniPacket.setServantName("mqq.IMService.FriendListServiceServantObj");
-    paramUniPacket.setFuncName("GetTroopRemarkReq");
-    paramUniPacket.put("GTR", localGetTroopRemarkReq);
-    return true;
+    }
+    paramToServiceMsg = paramToServiceMsg.extraData;
+    GetTroopRemarkReq localGetTroopRemarkReq = new GetTroopRemarkReq();
+    localGetTroopRemarkReq.uin = l;
+    localGetTroopRemarkReq.GroupCode = paramToServiceMsg.getLong("troop_uin");
+    localGetTroopRemarkReq.GroupUin = paramToServiceMsg.getLong("troop_code");
+    if (localGetTroopRemarkReq.GroupCode != 0L)
+    {
+      if (localGetTroopRemarkReq.GroupUin == 0L) {
+        return false;
+      }
+      localGetTroopRemarkReq.NextUin = paramToServiceMsg.getLong("nextuin");
+      localGetTroopRemarkReq.Seq = 0L;
+      paramUniPacket.setServantName("mqq.IMService.FriendListServiceServantObj");
+      paramUniPacket.setFuncName("GetTroopRemarkReq");
+      paramUniPacket.put("GTR", localGetTroopRemarkReq);
+      return true;
+    }
+    return false;
   }
   
   private boolean e(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
@@ -180,8 +200,11 @@ public class TroopSender
     {
       long l = Long.parseLong(paramToServiceMsg.getUin());
       ArrayList localArrayList = (ArrayList)paramToServiceMsg.extraData.getSerializable("vecUinList");
-      if ((localArrayList != null) && (localArrayList.size() != 0))
+      if (localArrayList != null)
       {
+        if (localArrayList.size() == 0) {
+          return false;
+        }
         Object localObject = paramToServiceMsg.extraData.getString("GroupUin");
         String str = paramToServiceMsg.extraData.getString("GroupCode");
         byte b = paramToServiceMsg.extraData.getByte("cRichInfo");
@@ -204,11 +227,11 @@ public class TroopSender
         paramUniPacket.put("GTA", paramToServiceMsg);
         return true;
       }
+      return false;
     }
     catch (Exception paramToServiceMsg)
     {
       paramToServiceMsg.printStackTrace();
-      return false;
     }
     return false;
   }
@@ -243,228 +266,228 @@ public class TroopSender
     if (l == 0L) {
       return false;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("TroopSender", 2, "handlerBatchGetGroupInfoReq：" + l + ",isMember=" + bool1 + ",isGetTroopCreditInfo=" + bool2);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handlerBatchGetGroupInfoReq：");
+      ((StringBuilder)localObject1).append(l);
+      ((StringBuilder)localObject1).append(",isMember=");
+      ((StringBuilder)localObject1).append(bool1);
+      ((StringBuilder)localObject1).append(",isGetTroopCreditInfo=");
+      ((StringBuilder)localObject1).append(bool2);
+      QLog.i("TroopSender", 2, ((StringBuilder)localObject1).toString());
     }
-    ReqBatchProcess localReqBatchProcess = new ReqBatchProcess();
-    localReqBatchProcess.batch_request_list = new ArrayList();
-    int i;
+    Object localObject1 = new ReqBatchProcess();
+    ((ReqBatchProcess)localObject1).batch_request_list = new ArrayList();
+    Object localObject3;
+    Object localObject2;
     if (bool3)
     {
-      localObject1 = new oidb_0x88d.GroupInfo();
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_group_class_ext.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).string_group_class_text.set(ByteStringMicro.EMPTY);
-      ((oidb_0x88d.GroupInfo)localObject1).string_group_name.set(ByteStringMicro.EMPTY);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_group_face.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint64_subscription_uin.set(0L);
-      ((oidb_0x88d.GroupInfo)localObject1).uint64_group_owner.set(0L);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_is_modify_conf_group_name.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_is_modify_conf_group_face.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_is_conf_group.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_group_member_num.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_no_finger_open_flag.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_no_code_finger_open_flag.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_is_group_freeze.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_group_flagext4.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_group_freeze_reason.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint64_alliance_id.set(0L);
+      localObject3 = new oidb_0x88d.GroupInfo();
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_group_class_ext.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).string_group_class_text.set(ByteStringMicro.EMPTY);
+      ((oidb_0x88d.GroupInfo)localObject3).string_group_name.set(ByteStringMicro.EMPTY);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_group_face.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint64_subscription_uin.set(0L);
+      ((oidb_0x88d.GroupInfo)localObject3).uint64_group_owner.set(0L);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_is_modify_conf_group_name.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_is_modify_conf_group_face.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_is_conf_group.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_group_member_num.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_no_finger_open_flag.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_no_code_finger_open_flag.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_is_group_freeze.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_group_flagext4.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint32_group_freeze_reason.set(0);
+      ((oidb_0x88d.GroupInfo)localObject3).uint64_alliance_id.set(0L);
       localObject2 = new oidb_0x88d.ReqGroupInfo();
       ((oidb_0x88d.ReqGroupInfo)localObject2).uint64_group_code.set(l);
       ((oidb_0x88d.ReqGroupInfo)localObject2).uint32_last_get_group_name_time.set(0);
-      ((oidb_0x88d.ReqGroupInfo)localObject2).stgroupinfo.set((MessageMicro)localObject1);
-      localObject1 = new oidb_0x88d.ReqBody();
-      ((oidb_0x88d.ReqBody)localObject1).uint32_appid.set(AppSetting.a());
-      ((oidb_0x88d.ReqBody)localObject1).stzreqgroupinfo.add((MessageMicro)localObject2);
+      ((oidb_0x88d.ReqGroupInfo)localObject2).stgroupinfo.set((MessageMicro)localObject3);
+      localObject3 = new oidb_0x88d.ReqBody();
+      ((oidb_0x88d.ReqBody)localObject3).uint32_appid.set(AppSetting.a());
+      ((oidb_0x88d.ReqBody)localObject3).stzreqgroupinfo.add((MessageMicro)localObject2);
       localObject2 = new oidb_sso.OIDBSSOPkg();
       ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2189);
       ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-      localPBUInt32Field = ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type;
-      if (bool1) {}
-      for (i = 0;; i = 1)
-      {
-        localPBUInt32Field.set(i);
-        ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x88d.ReqBody)localObject1).toByteArray()));
-        localObject1 = new BatchRequest();
-        ((BatchRequest)localObject1).type = 1;
-        ((BatchRequest)localObject1).seq = 0;
-        ((BatchRequest)localObject1).buffer = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
-        localReqBatchProcess.batch_request_list.add(localObject1);
-        paramUniPacket.setServantName("ProfileService");
-        paramUniPacket.setFuncName("ReqBatchProcess");
-        paramUniPacket.put("ReqBatchProcess", localReqBatchProcess);
-        paramToServiceMsg.putWupBuffer(paramUniPacket.encode());
-        return true;
-      }
-    }
-    if (bool2)
-    {
-      localObject1 = new oidb_0x88d.GroupInfo();
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_group_sec_level.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_group_sec_level_info.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_group_flagext4.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint32_group_freeze_reason.set(0);
-      ((oidb_0x88d.GroupInfo)localObject1).uint64_alliance_id.set(0L);
-      localObject2 = new oidb_0x88d.ReqGroupInfo();
-      ((oidb_0x88d.ReqGroupInfo)localObject2).uint64_group_code.set(l);
-      ((oidb_0x88d.ReqGroupInfo)localObject2).uint32_last_get_group_name_time.set(0);
-      ((oidb_0x88d.ReqGroupInfo)localObject2).stgroupinfo.set((MessageMicro)localObject1);
-      localObject1 = new oidb_0x88d.ReqBody();
-      ((oidb_0x88d.ReqBody)localObject1).uint32_appid.set(AppSetting.a());
-      ((oidb_0x88d.ReqBody)localObject1).stzreqgroupinfo.add((MessageMicro)localObject2);
-      localObject2 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2189);
-      localPBUInt32Field = ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type;
-      if (bool1) {}
-      for (i = 19;; i = 1)
-      {
-        localPBUInt32Field.set(i);
-        ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x88d.ReqBody)localObject1).toByteArray()));
-        localObject1 = new BatchRequest();
-        ((BatchRequest)localObject1).type = 1;
-        ((BatchRequest)localObject1).seq = 0;
-        ((BatchRequest)localObject1).buffer = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
-        localReqBatchProcess.batch_request_list.add(localObject1);
-        break;
-      }
-    }
-    Object localObject1 = new oidb_0x88d.GroupInfo();
-    ((oidb_0x88d.GroupInfo)localObject1).string_group_name.set(ByteStringMicro.EMPTY);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_grade.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_active_member_num.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_flag_ext.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_flag.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_certification_type.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).string_certification_text.set(ByteStringMicro.EMPTY);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_member_max_num.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_member_num.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_app_privilege_flag.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_type_flag.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_create_time.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint64_subscription_uin.set(0L);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_is_modify_conf_group_name.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_is_modify_conf_group_face.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_is_conf_group.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_no_finger_open_flag.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_no_code_finger_open_flag.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_is_group_freeze.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint64_alliance_id.set(0L);
-    Object localObject2 = new oidb_0x88d.GroupExInfoOnly();
-    ((oidb_0x88d.GroupExInfoOnly)localObject2).uint32_money_for_add_group.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).st_group_ex_info.set((MessageMicro)localObject2);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_is_allow_conf_group_member_modify_group_name.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_is_allow_conf_group_member_nick.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_is_allow_conf_group_member_at_all.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).string_long_group_name.set(ByteStringMicro.EMPTY);
-    if (!bool1) {
-      ((oidb_0x88d.GroupInfo)localObject1).uint64_group_owner.set(0L);
-    }
-    localObject2 = new oidb_0x88d.GroupGeoInfo();
-    ((oidb_0x88d.GroupGeoInfo)localObject2).bytes_geocontent.set(ByteStringMicro.EMPTY);
-    ((oidb_0x88d.GroupInfo)localObject1).group_geo_info.set((MessageMicro)localObject2);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_class_ext.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).string_group_class_text.set(ByteStringMicro.EMPTY);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_flagext3.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).string_group_rich_finger_memo.set(ByteStringMicro.EMPTY);
-    localObject2 = new oidb_0x88d.TagRecord();
-    ((oidb_0x88d.TagRecord)localObject2).uint32_bad_num.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).rpt_tag_record.add((MessageMicro)localObject2);
-    ((oidb_0x88d.GroupInfo)localObject1).string_group_finger_memo.set(ByteStringMicro.EMPTY);
-    ((oidb_0x88d.GroupInfo)localObject1).bytes_group_school_info.set(ByteStringMicro.EMPTY);
-    ((oidb_0x88d.GroupInfo)localObject1).uint64_subscription_uin.set(0L);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_auto_agree_join_group_user_num_for_conf_group.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_auto_agree_join_group_user_num_for_normal_group.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_flagext4.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_group_freeze_reason.set(0);
-    ((oidb_0x88d.GroupInfo)localObject1).uint32_is_allow_recall_msg.set(0);
-    localObject2 = new oidb_0x88d.ReqGroupInfo();
-    ((oidb_0x88d.ReqGroupInfo)localObject2).uint64_group_code.set(l);
-    ((oidb_0x88d.ReqGroupInfo)localObject2).uint32_last_get_group_name_time.set(0);
-    ((oidb_0x88d.ReqGroupInfo)localObject2).stgroupinfo.set((MessageMicro)localObject1);
-    localObject1 = new oidb_0x88d.ReqBody();
-    ((oidb_0x88d.ReqBody)localObject1).uint32_appid.set(200000020);
-    ((oidb_0x88d.ReqBody)localObject1).stzreqgroupinfo.add((MessageMicro)localObject2);
-    localObject2 = new oidb_sso.OIDBSSOPkg();
-    ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2189);
-    PBUInt32Field localPBUInt32Field = ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type;
-    if (bool1)
-    {
-      i = 0;
-      label1302:
-      localPBUInt32Field.set(i);
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.set(0);
-      ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x88d.ReqBody)localObject1).toByteArray()));
-      localObject1 = new BatchRequest();
-      ((BatchRequest)localObject1).type = 1;
-      ((BatchRequest)localObject1).seq = 0;
-      ((BatchRequest)localObject1).buffer = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
-      localReqBatchProcess.batch_request_list.add(localObject1);
-      localObject2 = new oidb_0x899.memberlist();
-      ((oidb_0x899.memberlist)localObject2).uint64_member_uin.set(0L);
-      localObject1 = new oidb_0x899.ReqBody();
-      ((oidb_0x899.ReqBody)localObject1).uint64_group_code.set(l);
-      ((oidb_0x899.ReqBody)localObject1).uint64_start_uin.set(0L);
-      if (!bool1) {
-        break label1766;
-      }
-      ((oidb_0x899.ReqBody)localObject1).uint32_identify_flag.set(5);
-      label1435:
-      ((oidb_0x899.ReqBody)localObject1).uint32_member_num.set(6);
-      ((oidb_0x899.ReqBody)localObject1).uint32_filter_method.set(0);
-      ((oidb_0x899.ReqBody)localObject1).memberlist_opt.set((MessageMicro)localObject2);
-      localObject2 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(2201);
-      if (!bool1) {
-        break label1778;
-      }
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(0);
+      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(bool1 ^ true);
+      ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x88d.ReqBody)localObject3).toByteArray()));
+      localObject3 = new BatchRequest();
+      ((BatchRequest)localObject3).type = 1;
+      ((BatchRequest)localObject3).seq = 0;
+      ((BatchRequest)localObject3).buffer = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
+      ((ReqBatchProcess)localObject1).batch_request_list.add(localObject3);
     }
     for (;;)
     {
-      ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x899.ReqBody)localObject1).toByteArray()));
-      localObject1 = new BatchRequest();
-      ((BatchRequest)localObject1).type = 1;
-      ((BatchRequest)localObject1).seq = 1;
-      ((BatchRequest)localObject1).buffer = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
-      localReqBatchProcess.batch_request_list.add(localObject1);
-      if (!bool1) {
-        break;
-      }
-      localObject2 = new oidb_0x787.Filter();
-      ((oidb_0x787.Filter)localObject2).uint32_sys_show_flag.set(0);
-      ((oidb_0x787.Filter)localObject2).uint32_user_show_flag.set(0);
-      ((oidb_0x787.Filter)localObject2).uint32_special_title.set(0);
-      ((oidb_0x787.Filter)localObject2).uint32_user_show_flag_new.set(0);
-      localObject1 = new oidb_0x787.ReqBody();
-      ((oidb_0x787.ReqBody)localObject1).uint64_group_code.set(l);
-      ((oidb_0x787.ReqBody)localObject1).uint64_begin_uin.set(0L);
-      ((oidb_0x787.ReqBody)localObject1).uint64_data_time.set(0L);
-      ((oidb_0x787.ReqBody)localObject1).rpt_uin_list.add(Long.valueOf(this.a.getLongAccountUin()));
-      ((oidb_0x787.ReqBody)localObject1).opt_filter.set((MessageMicro)localObject2);
-      localObject2 = new oidb_sso.OIDBSSOPkg();
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_command.set(1927);
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(1);
-      ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x787.ReqBody)localObject1).toByteArray()));
-      localObject1 = new BatchRequest();
-      ((BatchRequest)localObject1).type = 1;
-      ((BatchRequest)localObject1).seq = 2;
-      ((BatchRequest)localObject1).buffer = ((oidb_sso.OIDBSSOPkg)localObject2).toByteArray();
-      localReqBatchProcess.batch_request_list.add(localObject1);
       break;
-      i = 1;
-      break label1302;
-      label1766:
-      ((oidb_0x899.ReqBody)localObject1).uint32_identify_flag.set(2);
-      break label1435;
-      label1778:
-      ((oidb_sso.OIDBSSOPkg)localObject2).uint32_service_type.set(1);
+      if (bool2)
+      {
+        localObject2 = new oidb_0x88d.GroupInfo();
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_sec_level.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_sec_level_info.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_flagext4.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_freeze_reason.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint64_alliance_id.set(0L);
+        localObject3 = new oidb_0x88d.ReqGroupInfo();
+        ((oidb_0x88d.ReqGroupInfo)localObject3).uint64_group_code.set(l);
+        ((oidb_0x88d.ReqGroupInfo)localObject3).uint32_last_get_group_name_time.set(0);
+        ((oidb_0x88d.ReqGroupInfo)localObject3).stgroupinfo.set((MessageMicro)localObject2);
+        localObject2 = new oidb_0x88d.ReqBody();
+        ((oidb_0x88d.ReqBody)localObject2).uint32_appid.set(AppSetting.a());
+        ((oidb_0x88d.ReqBody)localObject2).stzreqgroupinfo.add((MessageMicro)localObject3);
+        localObject3 = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject3).uint32_command.set(2189);
+        PBUInt32Field localPBUInt32Field = ((oidb_sso.OIDBSSOPkg)localObject3).uint32_service_type;
+        int i;
+        if (bool1) {
+          i = 19;
+        } else {
+          i = 1;
+        }
+        localPBUInt32Field.set(i);
+        ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x88d.ReqBody)localObject2).toByteArray()));
+        localObject2 = new BatchRequest();
+        ((BatchRequest)localObject2).type = 1;
+        ((BatchRequest)localObject2).seq = 0;
+        ((BatchRequest)localObject2).buffer = ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray();
+        ((ReqBatchProcess)localObject1).batch_request_list.add(localObject2);
+      }
+      else
+      {
+        localObject2 = new oidb_0x88d.GroupInfo();
+        ((oidb_0x88d.GroupInfo)localObject2).string_group_name.set(ByteStringMicro.EMPTY);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_grade.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_active_member_num.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_flag_ext.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_flag.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_certification_type.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).string_certification_text.set(ByteStringMicro.EMPTY);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_member_max_num.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_member_num.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_app_privilege_flag.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_type_flag.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_create_time.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint64_subscription_uin.set(0L);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_is_modify_conf_group_name.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_is_modify_conf_group_face.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_is_conf_group.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_no_finger_open_flag.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_no_code_finger_open_flag.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_is_group_freeze.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint64_alliance_id.set(0L);
+        localObject3 = new oidb_0x88d.GroupExInfoOnly();
+        ((oidb_0x88d.GroupExInfoOnly)localObject3).uint32_money_for_add_group.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).st_group_ex_info.set((MessageMicro)localObject3);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_is_allow_conf_group_member_modify_group_name.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_is_allow_conf_group_member_nick.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_is_allow_conf_group_member_at_all.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).string_long_group_name.set(ByteStringMicro.EMPTY);
+        if (!bool1) {
+          ((oidb_0x88d.GroupInfo)localObject2).uint64_group_owner.set(0L);
+        }
+        localObject3 = new oidb_0x88d.GroupGeoInfo();
+        ((oidb_0x88d.GroupGeoInfo)localObject3).bytes_geocontent.set(ByteStringMicro.EMPTY);
+        ((oidb_0x88d.GroupInfo)localObject2).group_geo_info.set((MessageMicro)localObject3);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_class_ext.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).string_group_class_text.set(ByteStringMicro.EMPTY);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_flagext3.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).string_group_rich_finger_memo.set(ByteStringMicro.EMPTY);
+        localObject3 = new oidb_0x88d.TagRecord();
+        ((oidb_0x88d.TagRecord)localObject3).uint32_bad_num.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).rpt_tag_record.add((MessageMicro)localObject3);
+        ((oidb_0x88d.GroupInfo)localObject2).string_group_finger_memo.set(ByteStringMicro.EMPTY);
+        ((oidb_0x88d.GroupInfo)localObject2).bytes_group_school_info.set(ByteStringMicro.EMPTY);
+        ((oidb_0x88d.GroupInfo)localObject2).uint64_subscription_uin.set(0L);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_auto_agree_join_group_user_num_for_conf_group.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_auto_agree_join_group_user_num_for_normal_group.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_flagext4.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_group_freeze_reason.set(0);
+        ((oidb_0x88d.GroupInfo)localObject2).uint32_is_allow_recall_msg.set(0);
+        localObject3 = new oidb_0x88d.ReqGroupInfo();
+        ((oidb_0x88d.ReqGroupInfo)localObject3).uint64_group_code.set(l);
+        ((oidb_0x88d.ReqGroupInfo)localObject3).uint32_last_get_group_name_time.set(0);
+        ((oidb_0x88d.ReqGroupInfo)localObject3).stgroupinfo.set((MessageMicro)localObject2);
+        localObject2 = new oidb_0x88d.ReqBody();
+        ((oidb_0x88d.ReqBody)localObject2).uint32_appid.set(200000020);
+        ((oidb_0x88d.ReqBody)localObject2).stzreqgroupinfo.add((MessageMicro)localObject3);
+        localObject3 = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject3).uint32_command.set(2189);
+        ((oidb_sso.OIDBSSOPkg)localObject3).uint32_service_type.set(bool1 ^ true);
+        ((oidb_sso.OIDBSSOPkg)localObject3).uint32_result.set(0);
+        ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x88d.ReqBody)localObject2).toByteArray()));
+        localObject2 = new BatchRequest();
+        ((BatchRequest)localObject2).type = 1;
+        ((BatchRequest)localObject2).seq = 0;
+        ((BatchRequest)localObject2).buffer = ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray();
+        ((ReqBatchProcess)localObject1).batch_request_list.add(localObject2);
+        localObject3 = new oidb_0x899.memberlist();
+        ((oidb_0x899.memberlist)localObject3).uint64_member_uin.set(0L);
+        localObject2 = new oidb_0x899.ReqBody();
+        ((oidb_0x899.ReqBody)localObject2).uint64_group_code.set(l);
+        ((oidb_0x899.ReqBody)localObject2).uint64_start_uin.set(0L);
+        if (bool1) {
+          ((oidb_0x899.ReqBody)localObject2).uint32_identify_flag.set(5);
+        } else {
+          ((oidb_0x899.ReqBody)localObject2).uint32_identify_flag.set(2);
+        }
+        ((oidb_0x899.ReqBody)localObject2).uint32_member_num.set(6);
+        ((oidb_0x899.ReqBody)localObject2).uint32_filter_method.set(0);
+        ((oidb_0x899.ReqBody)localObject2).memberlist_opt.set((MessageMicro)localObject3);
+        localObject3 = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject3).uint32_command.set(2201);
+        if (bool1) {
+          ((oidb_sso.OIDBSSOPkg)localObject3).uint32_service_type.set(0);
+        } else {
+          ((oidb_sso.OIDBSSOPkg)localObject3).uint32_service_type.set(1);
+        }
+        ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x899.ReqBody)localObject2).toByteArray()));
+        localObject2 = new BatchRequest();
+        ((BatchRequest)localObject2).type = 1;
+        ((BatchRequest)localObject2).seq = 1;
+        ((BatchRequest)localObject2).buffer = ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray();
+        ((ReqBatchProcess)localObject1).batch_request_list.add(localObject2);
+        if (bool1)
+        {
+          localObject3 = new oidb_0x787.Filter();
+          ((oidb_0x787.Filter)localObject3).uint32_sys_show_flag.set(0);
+          ((oidb_0x787.Filter)localObject3).uint32_user_show_flag.set(0);
+          ((oidb_0x787.Filter)localObject3).uint32_special_title.set(0);
+          ((oidb_0x787.Filter)localObject3).uint32_user_show_flag_new.set(0);
+          localObject2 = new oidb_0x787.ReqBody();
+          ((oidb_0x787.ReqBody)localObject2).uint64_group_code.set(l);
+          ((oidb_0x787.ReqBody)localObject2).uint64_begin_uin.set(0L);
+          ((oidb_0x787.ReqBody)localObject2).uint64_data_time.set(0L);
+          ((oidb_0x787.ReqBody)localObject2).rpt_uin_list.add(Long.valueOf(this.a.getLongAccountUin()));
+          ((oidb_0x787.ReqBody)localObject2).opt_filter.set((MessageMicro)localObject3);
+          localObject3 = new oidb_sso.OIDBSSOPkg();
+          ((oidb_sso.OIDBSSOPkg)localObject3).uint32_command.set(1927);
+          ((oidb_sso.OIDBSSOPkg)localObject3).uint32_service_type.set(1);
+          ((oidb_sso.OIDBSSOPkg)localObject3).bytes_bodybuffer.set(ByteStringMicro.copyFrom(((oidb_0x787.ReqBody)localObject2).toByteArray()));
+          localObject2 = new BatchRequest();
+          ((BatchRequest)localObject2).type = 1;
+          ((BatchRequest)localObject2).seq = 2;
+          ((BatchRequest)localObject2).buffer = ((oidb_sso.OIDBSSOPkg)localObject3).toByteArray();
+          ((ReqBatchProcess)localObject1).batch_request_list.add(localObject2);
+        }
+      }
     }
+    paramUniPacket.setServantName("ProfileService");
+    paramUniPacket.setFuncName("ReqBatchProcess");
+    paramUniPacket.put("ReqBatchProcess", localObject1);
+    paramToServiceMsg.putWupBuffer(paramUniPacket.encode());
+    return true;
   }
   
   public boolean a(ToServiceMsg paramToServiceMsg, UniPacket paramUniPacket)
   {
     String str = paramToServiceMsg.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopSender", 2, "create wup buffer cmd: " + str);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("create wup buffer cmd: ");
+      localStringBuilder.append(str);
+      QLog.d("TroopSender", 2, localStringBuilder.toString());
     }
     if ("friendlist.GetTroopListReqV2".equalsIgnoreCase(str)) {
       return b(paramToServiceMsg, paramUniPacket);
@@ -495,7 +518,7 @@ public class TroopSender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.troop.TroopSender
  * JD-Core Version:    0.7.0.1
  */

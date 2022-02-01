@@ -1,22 +1,23 @@
 package com.huawei.hms.push;
 
 import android.content.Context;
-import com.huawei.hms.common.internal.BaseHmsClient.ConnectionCallbacks;
-import com.huawei.hms.common.internal.BaseHmsClient.OnConnectionFailedListener;
-import com.huawei.hms.common.internal.ClientSettings;
-import com.huawei.hms.common.internal.HmsClient;
+import android.content.Intent;
+import android.content.ServiceConnection;
+import android.os.Bundle;
+import android.os.Messenger;
+import com.huawei.hms.support.log.HMSLog;
 
 public class h
-  extends HmsClient
 {
-  public h(Context paramContext, ClientSettings paramClientSettings, BaseHmsClient.OnConnectionFailedListener paramOnConnectionFailedListener, BaseHmsClient.ConnectionCallbacks paramConnectionCallbacks)
-  {
-    super(paramContext, paramClientSettings, paramOnConnectionFailedListener, paramConnectionCallbacks);
-  }
+  public ServiceConnection a;
+  public Messenger b = null;
   
-  public int getMinApkVersion()
+  public boolean a(Context paramContext, Bundle paramBundle, Intent paramIntent)
   {
-    return 30000000;
+    paramContext = paramContext.getApplicationContext();
+    this.a = new g(this, paramBundle, paramContext);
+    HMSLog.i("RemoteService", "remote service bind service start");
+    return paramContext.bindService(paramIntent, this.a, 1);
   }
 }
 

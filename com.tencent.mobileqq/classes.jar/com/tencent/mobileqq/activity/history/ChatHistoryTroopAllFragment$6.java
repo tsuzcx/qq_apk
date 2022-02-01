@@ -15,13 +15,8 @@ class ChatHistoryTroopAllFragment$6
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      return;
       ThreadManager.post(new ChatHistoryTroopAllFragment.6.1(this), 5, null, false);
       this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.a(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage);
       if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.getCount() == 0) {
@@ -29,11 +24,12 @@ class ChatHistoryTroopAllFragment$6
       }
       this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopAllFragment.jdField_a_of_type_ComTencentMobileqqActivityChathistoryChatHistoryBubbleListAdapter.notifyDataSetChanged();
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopAllFragment.6
  * JD-Core Version:    0.7.0.1
  */

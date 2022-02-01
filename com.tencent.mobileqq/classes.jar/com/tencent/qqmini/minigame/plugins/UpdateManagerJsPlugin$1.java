@@ -14,52 +14,65 @@ class UpdateManagerJsPlugin$1
   
   public void onStateChange(AppRuntimeEventCenter.MiniAppStateMessage paramMiniAppStateMessage)
   {
-    JSONObject localJSONObject;
-    switch (paramMiniAppStateMessage.what)
+    int i = paramMiniAppStateMessage.what;
+    Object localObject;
+    if (i != 2054)
     {
-    default: 
-      return;
-    case 2054: 
-      paramMiniAppStateMessage = (Boolean)paramMiniAppStateMessage.obj;
-      QMLog.i("UpdateManagerJsPlugin", "checkResult hasUpdate:" + paramMiniAppStateMessage + ", currentAppInfo:" + UpdateManagerJsPlugin.access$000(this.this$0));
-      if (UpdateManagerJsPlugin.access$100(this.this$0) != null) {
-        try
-        {
-          localJSONObject = new JSONObject();
-          localJSONObject.put("hasUpdate", paramMiniAppStateMessage);
-          UpdateManagerJsPlugin.access$100(this.this$0).evaluateSubscribeJS("onUpdateCheckResult", localJSONObject.toString(), -1);
-          return;
-        }
-        catch (JSONException paramMiniAppStateMessage)
-        {
-          return;
-        }
+      if (i != 2055) {
+        return;
       }
-      UpdateManagerJsPlugin.access$202(this.this$0, paramMiniAppStateMessage);
-      return;
+      paramMiniAppStateMessage = (Boolean)paramMiniAppStateMessage.obj;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("downloadResult success:");
+      ((StringBuilder)localObject).append(paramMiniAppStateMessage);
+      ((StringBuilder)localObject).append(", currentAppInfo:");
+      ((StringBuilder)localObject).append(UpdateManagerJsPlugin.access$300(this.this$0));
+      QMLog.i("UpdateManagerJsPlugin", ((StringBuilder)localObject).toString());
+      if (UpdateManagerJsPlugin.access$100(this.this$0) == null) {}
     }
-    paramMiniAppStateMessage = (Boolean)paramMiniAppStateMessage.obj;
-    QMLog.i("UpdateManagerJsPlugin", "downloadResult success:" + paramMiniAppStateMessage + ", currentAppInfo:" + UpdateManagerJsPlugin.access$300(this.this$0));
-    if (UpdateManagerJsPlugin.access$100(this.this$0) != null) {}
-    try
+    for (;;)
     {
-      localJSONObject = new JSONObject();
-      if (paramMiniAppStateMessage.booleanValue()) {}
-      for (paramMiniAppStateMessage = "success";; paramMiniAppStateMessage = "failed")
+      try
       {
-        localJSONObject.put("updateResult", paramMiniAppStateMessage);
-        UpdateManagerJsPlugin.access$100(this.this$0).evaluateSubscribeJS("onUpdateDownloadResult", localJSONObject.toString(), -1);
+        localObject = new JSONObject();
+        if (!paramMiniAppStateMessage.booleanValue()) {
+          break label261;
+        }
+        paramMiniAppStateMessage = "success";
+        ((JSONObject)localObject).put("updateResult", paramMiniAppStateMessage);
+        UpdateManagerJsPlugin.access$100(this.this$0).evaluateSubscribeJS("onUpdateDownloadResult", ((JSONObject)localObject).toString(), -1);
+        return;
+      }
+      catch (JSONException paramMiniAppStateMessage)
+      {
         return;
       }
       UpdateManagerJsPlugin.access$402(this.this$0, paramMiniAppStateMessage);
       return;
+      paramMiniAppStateMessage = (Boolean)paramMiniAppStateMessage.obj;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkResult hasUpdate:");
+      ((StringBuilder)localObject).append(paramMiniAppStateMessage);
+      ((StringBuilder)localObject).append(", currentAppInfo:");
+      ((StringBuilder)localObject).append(UpdateManagerJsPlugin.access$000(this.this$0));
+      QMLog.i("UpdateManagerJsPlugin", ((StringBuilder)localObject).toString());
+      if (UpdateManagerJsPlugin.access$100(this.this$0) != null)
+      {
+        localObject = new JSONObject();
+        ((JSONObject)localObject).put("hasUpdate", paramMiniAppStateMessage);
+        UpdateManagerJsPlugin.access$100(this.this$0).evaluateSubscribeJS("onUpdateCheckResult", ((JSONObject)localObject).toString(), -1);
+        return;
+      }
+      UpdateManagerJsPlugin.access$202(this.this$0, paramMiniAppStateMessage);
+      return;
+      label261:
+      paramMiniAppStateMessage = "failed";
     }
-    catch (JSONException paramMiniAppStateMessage) {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.plugins.UpdateManagerJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

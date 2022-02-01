@@ -1,31 +1,33 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
+import com.tencent.mobileqq.activity.aio.stickerrecommended.impl.StickerRecManagerImpl;
 
 public abstract class BaseLocalEmoticonHandleListener
-  implements IStickerRecLocalEmoticonHandleListener
+  implements IStickerRecLocalEmoticonHandleListener<BaseSessionInfo>
 {
-  protected QQAppInterface a;
+  protected BaseQQAppInterface a;
   
-  public BaseLocalEmoticonHandleListener(QQAppInterface paramQQAppInterface)
+  public BaseLocalEmoticonHandleListener(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    this.a = paramQQAppInterface;
+    this.a = paramBaseQQAppInterface;
   }
   
   public void a() {}
   
-  public boolean a(QQAppInterface paramQQAppInterface, String paramString)
+  public boolean a(BaseQQAppInterface paramBaseQQAppInterface, String paramString)
   {
-    paramQQAppInterface = StickerRecManager.a(paramQQAppInterface);
-    if (paramQQAppInterface != null) {
-      return paramQQAppInterface.a(paramString);
+    paramBaseQQAppInterface = StickerRecManagerImpl.get(paramBaseQQAppInterface);
+    if (paramBaseQQAppInterface != null) {
+      return paramBaseQQAppInterface.isHandleKeyword(paramString);
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.BaseLocalEmoticonHandleListener
  * JD-Core Version:    0.7.0.1
  */

@@ -16,16 +16,18 @@ public class SparseArrayCompat<E>
   
   public SparseArrayCompat(int paramInt)
   {
-    if (paramInt == 0) {
-      this.mKeys = ContainerHelpers.EMPTY_INTS;
-    }
-    for (this.mValues = ContainerHelpers.EMPTY_OBJECTS;; this.mValues = new Object[paramInt])
+    if (paramInt == 0)
     {
-      this.mSize = 0;
-      return;
+      this.mKeys = ContainerHelpers.EMPTY_INTS;
+      this.mValues = ContainerHelpers.EMPTY_OBJECTS;
+    }
+    else
+    {
       paramInt = ContainerHelpers.idealIntArraySize(paramInt);
       this.mKeys = new int[paramInt];
+      this.mValues = new Object[paramInt];
     }
+    this.mSize = 0;
   }
   
   private void gc()
@@ -57,7 +59,8 @@ public class SparseArrayCompat<E>
   
   public void append(int paramInt, E paramE)
   {
-    if ((this.mSize != 0) && (paramInt <= this.mKeys[(this.mSize - 1)]))
+    int i = this.mSize;
+    if ((i != 0) && (paramInt <= this.mKeys[(i - 1)]))
     {
       put(paramInt, paramE);
       return;
@@ -65,14 +68,16 @@ public class SparseArrayCompat<E>
     if ((this.mGarbage) && (this.mSize >= this.mKeys.length)) {
       gc();
     }
-    int i = this.mSize;
+    i = this.mSize;
     if (i >= this.mKeys.length)
     {
       int j = ContainerHelpers.idealIntArraySize(i + 1);
       int[] arrayOfInt = new int[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.mKeys, 0, arrayOfInt, 0, this.mKeys.length);
-      System.arraycopy(this.mValues, 0, arrayOfObject, 0, this.mValues.length);
+      Object localObject = this.mKeys;
+      System.arraycopy(localObject, 0, arrayOfInt, 0, localObject.length);
+      localObject = this.mValues;
+      System.arraycopy(localObject, 0, arrayOfObject, 0, localObject.length);
       this.mKeys = arrayOfInt;
       this.mValues = arrayOfObject;
     }
@@ -97,13 +102,18 @@ public class SparseArrayCompat<E>
   
   public SparseArrayCompat<E> clone()
   {
-    try
+    for (;;)
     {
-      SparseArrayCompat localSparseArrayCompat = (SparseArrayCompat)super.clone();
-      return localCloneNotSupportedException1;
-    }
-    catch (CloneNotSupportedException localCloneNotSupportedException1)
-    {
+      try
+      {
+        localSparseArrayCompat = (SparseArrayCompat)super.clone();
+      }
+      catch (CloneNotSupportedException localCloneNotSupportedException1)
+      {
+        SparseArrayCompat localSparseArrayCompat;
+        continue;
+        return localCloneNotSupportedException1;
+      }
       try
       {
         localSparseArrayCompat.mKeys = ((int[])this.mKeys.clone());
@@ -111,18 +121,23 @@ public class SparseArrayCompat<E>
         return localSparseArrayCompat;
       }
       catch (CloneNotSupportedException localCloneNotSupportedException2) {}
-      localCloneNotSupportedException1 = localCloneNotSupportedException1;
-      return null;
     }
+    return null;
   }
   
   public void delete(int paramInt)
   {
     paramInt = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
-    if ((paramInt >= 0) && (this.mValues[paramInt] != DELETED))
+    if (paramInt >= 0)
     {
-      this.mValues[paramInt] = DELETED;
-      this.mGarbage = true;
+      Object[] arrayOfObject = this.mValues;
+      Object localObject1 = arrayOfObject[paramInt];
+      Object localObject2 = DELETED;
+      if (localObject1 != localObject2)
+      {
+        arrayOfObject[paramInt] = localObject2;
+        this.mGarbage = true;
+      }
     }
   }
   
@@ -134,10 +149,15 @@ public class SparseArrayCompat<E>
   public E get(int paramInt, E paramE)
   {
     paramInt = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt);
-    if ((paramInt < 0) || (this.mValues[paramInt] == DELETED)) {
-      return paramE;
+    if (paramInt >= 0)
+    {
+      Object[] arrayOfObject = this.mValues;
+      if (arrayOfObject[paramInt] == DELETED) {
+        return paramE;
+      }
+      return arrayOfObject[paramInt];
     }
-    return this.mValues[paramInt];
+    return paramE;
   }
   
   public int indexOfKey(int paramInt)
@@ -181,11 +201,16 @@ public class SparseArrayCompat<E>
       return;
     }
     int j = i ^ 0xFFFFFFFF;
-    if ((j < this.mSize) && (this.mValues[j] == DELETED))
+    Object localObject1;
+    if (j < this.mSize)
     {
-      this.mKeys[j] = paramInt;
-      this.mValues[j] = paramE;
-      return;
+      localObject1 = this.mValues;
+      if (localObject1[j] == DELETED)
+      {
+        this.mKeys[j] = paramInt;
+        localObject1[j] = paramE;
+        return;
+      }
     }
     i = j;
     if (this.mGarbage)
@@ -197,20 +222,27 @@ public class SparseArrayCompat<E>
         i = ContainerHelpers.binarySearch(this.mKeys, this.mSize, paramInt) ^ 0xFFFFFFFF;
       }
     }
-    if (this.mSize >= this.mKeys.length)
+    j = this.mSize;
+    if (j >= this.mKeys.length)
     {
-      j = ContainerHelpers.idealIntArraySize(this.mSize + 1);
-      int[] arrayOfInt = new int[j];
+      j = ContainerHelpers.idealIntArraySize(j + 1);
+      localObject1 = new int[j];
       Object[] arrayOfObject = new Object[j];
-      System.arraycopy(this.mKeys, 0, arrayOfInt, 0, this.mKeys.length);
-      System.arraycopy(this.mValues, 0, arrayOfObject, 0, this.mValues.length);
-      this.mKeys = arrayOfInt;
+      Object localObject2 = this.mKeys;
+      System.arraycopy(localObject2, 0, localObject1, 0, localObject2.length);
+      localObject2 = this.mValues;
+      System.arraycopy(localObject2, 0, arrayOfObject, 0, localObject2.length);
+      this.mKeys = ((int[])localObject1);
       this.mValues = arrayOfObject;
     }
-    if (this.mSize - i != 0)
+    j = this.mSize;
+    if (j - i != 0)
     {
-      System.arraycopy(this.mKeys, i, this.mKeys, i + 1, this.mSize - i);
-      System.arraycopy(this.mValues, i, this.mValues, i + 1, this.mSize - i);
+      localObject1 = this.mKeys;
+      int k = i + 1;
+      System.arraycopy(localObject1, i, localObject1, k, j - i);
+      localObject1 = this.mValues;
+      System.arraycopy(localObject1, i, localObject1, k, this.mSize - i);
     }
     this.mKeys[i] = paramInt;
     this.mValues[i] = paramE;
@@ -224,16 +256,19 @@ public class SparseArrayCompat<E>
   
   public void removeAt(int paramInt)
   {
-    if (this.mValues[paramInt] != DELETED)
+    Object[] arrayOfObject = this.mValues;
+    Object localObject1 = arrayOfObject[paramInt];
+    Object localObject2 = DELETED;
+    if (localObject1 != localObject2)
     {
-      this.mValues[paramInt] = DELETED;
+      arrayOfObject[paramInt] = localObject2;
       this.mGarbage = true;
     }
   }
   
   public void removeAtRange(int paramInt1, int paramInt2)
   {
-    paramInt2 = Math.min(this.mSize, paramInt1 + paramInt2);
+    paramInt2 = Math.min(this.mSize, paramInt2 + paramInt1);
     while (paramInt1 < paramInt2)
     {
       removeAt(paramInt1);
@@ -265,7 +300,7 @@ public class SparseArrayCompat<E>
     StringBuilder localStringBuilder = new StringBuilder(this.mSize * 28);
     localStringBuilder.append('{');
     int i = 0;
-    if (i < this.mSize)
+    while (i < this.mSize)
     {
       if (i > 0) {
         localStringBuilder.append(", ");
@@ -275,13 +310,10 @@ public class SparseArrayCompat<E>
       Object localObject = valueAt(i);
       if (localObject != this) {
         localStringBuilder.append(localObject);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         localStringBuilder.append("(this Map)");
       }
+      i += 1;
     }
     localStringBuilder.append('}');
     return localStringBuilder.toString();

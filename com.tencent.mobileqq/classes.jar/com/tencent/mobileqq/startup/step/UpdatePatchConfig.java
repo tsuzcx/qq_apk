@@ -17,28 +17,29 @@ public class UpdatePatchConfig
   @TargetApi(11)
   private void a(Context paramContext)
   {
-    int i = 0;
     QLog.d("PatchLogTag", 1, "UpdatePatchConfig clearPatchConfig start.");
     for (;;)
     {
+      int i;
       try
       {
         paramContext.getSharedPreferences("hotpatch_preference", 4).edit().clear().commit();
-        Object localObject1 = new File(PatchCommonUtil.getPatchPath(""));
+        localObject1 = new File(PatchCommonUtil.getPatchPath(""));
         if (((File)localObject1).exists())
         {
           localObject1 = ((File)localObject1).listFiles();
           if ((localObject1 != null) && (localObject1.length > 0))
           {
             int j = localObject1.length;
+            i = 0;
             if (i < j)
             {
               Object localObject2 = localObject1[i];
               if ((localObject2 == null) || (!localObject2.exists())) {
-                break label184;
+                break label194;
               }
               localObject2.delete();
-              break label184;
+              break label194;
             }
           }
         }
@@ -48,10 +49,13 @@ public class UpdatePatchConfig
       }
       catch (Throwable paramContext)
       {
-        QLog.d("PatchLogTag", 1, "UpdatePatchConfig clearPatchConfig exception=" + paramContext);
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("UpdatePatchConfig clearPatchConfig exception=");
+        ((StringBuilder)localObject1).append(paramContext);
+        QLog.d("PatchLogTag", 1, ((StringBuilder)localObject1).toString());
         return;
       }
-      label184:
+      label194:
       i += 1;
     }
   }
@@ -60,13 +64,22 @@ public class UpdatePatchConfig
   {
     Context localContext = BaseApplicationImpl.sApplication.getApplicationContext();
     SharedPreferences localSharedPreferences = localContext.getSharedPreferences("sp_update_version", 0);
-    String str1 = localSharedPreferences.getString("key_cur_version", "");
-    String str2 = ApkUtils.a(localContext) + "." + ApkUtils.a(localContext);
-    QLog.d("PatchLogTag", 1, "UpdatePatchConfig oldVersion=" + str1 + ", curVersion=" + str2);
-    if (!str2.equals(str1))
+    String str = localSharedPreferences.getString("key_cur_version", "");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(ApkUtils.a(localContext));
+    ((StringBuilder)localObject).append(".");
+    ((StringBuilder)localObject).append(ApkUtils.a(localContext));
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UpdatePatchConfig oldVersion=");
+    localStringBuilder.append(str);
+    localStringBuilder.append(", curVersion=");
+    localStringBuilder.append((String)localObject);
+    QLog.d("PatchLogTag", 1, localStringBuilder.toString());
+    if (!((String)localObject).equals(str))
     {
       a(localContext);
-      localSharedPreferences.edit().putString("key_cur_version", str2).commit();
+      localSharedPreferences.edit().putString("key_cur_version", (String)localObject).commit();
       Utils.a(localContext);
     }
     return true;
@@ -74,7 +87,7 @@ public class UpdatePatchConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.UpdatePatchConfig
  * JD-Core Version:    0.7.0.1
  */

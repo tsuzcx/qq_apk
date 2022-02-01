@@ -23,24 +23,28 @@ public class PlayerCommentSegment$ClickNickCallback
   {
     SLog.a("Q.qqstory.detail.DetailCommentSegment", "on nick click. unionId = %s.", paramString);
     PlayerCommentSegment localPlayerCommentSegment = (PlayerCommentSegment)this.a.get();
-    if ((localPlayerCommentSegment == null) || (paramInt == 1002) || (paramInt == 1003)) {}
-    do
+    if ((localPlayerCommentSegment != null) && (paramInt != 1002))
     {
-      return;
+      if (paramInt == 1003) {
+        return;
+      }
       StoryApi.a(PlayerCommentSegment.a(localPlayerCommentSegment), 12, paramString);
-    } while ((localPlayerCommentSegment.a == null) || (localPlayerCommentSegment.a.a == null));
-    paramInt = StoryReportor.a(localPlayerCommentSegment.a.a);
-    if (localPlayerCommentSegment.a.a.getOwner().isMe()) {}
-    for (paramString = "1";; paramString = "2")
-    {
-      StoryReportor.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, StoryReportor.a(4444), "", localPlayerCommentSegment.a.a.feedId });
-      return;
+      if ((localPlayerCommentSegment.a != null) && (localPlayerCommentSegment.a.a != null))
+      {
+        paramInt = StoryReportor.a(localPlayerCommentSegment.a.a);
+        if (localPlayerCommentSegment.a.a.getOwner().isMe()) {
+          paramString = "1";
+        } else {
+          paramString = "2";
+        }
+        StoryReportor.a("home_page", "clk_reply_nick", paramInt, 0, new String[] { paramString, StoryReportor.a(4444), "", localPlayerCommentSegment.a.a.feedId });
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.PlayerCommentSegment.ClickNickCallback
  * JD-Core Version:    0.7.0.1
  */

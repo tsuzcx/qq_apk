@@ -29,17 +29,30 @@ public class LogUtils
     if (ENABLED)
     {
       Object localObject = Thread.currentThread().getStackTrace()[3];
-      localObject = "(" + Thread.currentThread().getName() + ")" + ((StackTraceElement)localObject).getClassName() + "(" + ((StackTraceElement)localObject).getLineNumber() + ")[" + ((StackTraceElement)localObject).getMethodName() + "]";
-      paramString2 = (String)localObject + ": " + paramString2;
-      if (sLog != null) {
-        sLog.d(paramString1, paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("(");
+      localStringBuilder.append(Thread.currentThread().getName());
+      localStringBuilder.append(")");
+      localStringBuilder.append(((StackTraceElement)localObject).getClassName());
+      localStringBuilder.append("(");
+      localStringBuilder.append(((StackTraceElement)localObject).getLineNumber());
+      localStringBuilder.append(")[");
+      localStringBuilder.append(((StackTraceElement)localObject).getMethodName());
+      localStringBuilder.append("]");
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      paramString2 = localStringBuilder.toString();
+      localObject = sLog;
+      if (localObject != null)
+      {
+        ((ILog)localObject).d(paramString1, paramString2);
+        return;
       }
+      Log.d(paramString1, paramString2);
     }
-    else
-    {
-      return;
-    }
-    Log.d(paramString1, paramString2);
   }
   
   public static void d(String paramString1, String paramString2, Throwable paramThrowable, Object... paramVarArgs)
@@ -47,15 +60,14 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.d(paramString1, paramString2, paramThrowable);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.d(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.d(paramString1, paramString2, paramThrowable);
     }
-    else
-    {
-      return;
-    }
-    Log.d(paramString1, paramString2, paramThrowable);
   }
   
   public static void d(String paramString1, String paramString2, Object... paramVarArgs)
@@ -63,15 +75,14 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.d(paramString1, paramString2);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.d(paramString1, paramString2);
+        return;
       }
+      Log.d(paramString1, paramString2);
     }
-    else
-    {
-      return;
-    }
-    Log.d(paramString1, paramString2);
   }
   
   public static void e(Object paramObject, String paramString)
@@ -81,15 +92,19 @@ public class LogUtils
   
   public static void e(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    if (sLog != null)
+    if (paramString1 != null)
     {
-      sLog.e(paramString1, paramString2);
-      return;
+      if (paramString2 == null) {
+        return;
+      }
+      ILog localILog = sLog;
+      if (localILog != null)
+      {
+        localILog.e(paramString1, paramString2);
+        return;
+      }
+      Log.e(paramString1, paramString2);
     }
-    Log.e(paramString1, paramString2);
   }
   
   public static void e(String paramString1, String paramString2, Throwable paramThrowable, Object... paramVarArgs)
@@ -97,15 +112,14 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.e(paramString1, paramString2, paramThrowable);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.e(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.e(paramString1, paramString2, paramThrowable);
     }
-    else
-    {
-      return;
-    }
-    Log.e(paramString1, paramString2, paramThrowable);
   }
   
   public static void e(String paramString1, String paramString2, Object... paramVarArgs)
@@ -113,29 +127,28 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.e(paramString1, paramString2);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.e(paramString1, paramString2);
+        return;
       }
+      Log.e(paramString1, paramString2);
     }
-    else
-    {
-      return;
-    }
-    Log.e(paramString1, paramString2);
   }
   
   public static void e(String paramString, Throwable paramThrowable)
   {
     if (ENABLED)
     {
-      if (sLog != null) {
-        sLog.e(paramString, "", paramThrowable);
+      ILog localILog = sLog;
+      if (localILog != null)
+      {
+        localILog.e(paramString, "", paramThrowable);
+        return;
       }
+      Log.e(paramString, "", paramThrowable);
     }
-    else {
-      return;
-    }
-    Log.e(paramString, "", paramThrowable);
   }
   
   public static void e(Throwable paramThrowable)
@@ -151,16 +164,24 @@ public class LogUtils
     }
     int j = arrayOfStackTraceElement.length;
     int i = 0;
-    if (i < j)
+    while (i < j)
     {
       StackTraceElement localStackTraceElement = arrayOfStackTraceElement[i];
-      if (localStackTraceElement.isNativeMethod()) {}
-      while ((localStackTraceElement.getClassName().equals(Thread.class.getName())) || (!localStackTraceElement.getClassName().endsWith(paramString)))
+      if ((!localStackTraceElement.isNativeMethod()) && (!localStackTraceElement.getClassName().equals(Thread.class.getName())) && (localStackTraceElement.getClassName().endsWith(paramString)))
       {
-        i += 1;
-        break;
+        paramString = new StringBuilder();
+        paramString.append("(");
+        paramString.append(Thread.currentThread().getName());
+        paramString.append(")");
+        paramString.append(localStackTraceElement.getClassName());
+        paramString.append("(");
+        paramString.append(localStackTraceElement.getLineNumber());
+        paramString.append(")[");
+        paramString.append(localStackTraceElement.getMethodName());
+        paramString.append("]: ");
+        return paramString.toString();
       }
-      return "(" + Thread.currentThread().getName() + ")" + localStackTraceElement.getClassName() + "(" + localStackTraceElement.getLineNumber() + ")[" + localStackTraceElement.getMethodName() + "]: ";
+      i += 1;
     }
     return "";
   }
@@ -172,7 +193,10 @@ public class LogUtils
     try
     {
       str = String.format(sConfiguration.locale, paramString2, paramVarArgs);
-      return generateLogPrefix(paramString1) + str;
+      paramString2 = new StringBuilder();
+      paramString2.append(generateLogPrefix(paramString1));
+      paramString2.append(str);
+      return paramString2.toString();
     }
     catch (Exception paramVarArgs)
     {
@@ -206,15 +230,19 @@ public class LogUtils
   
   public static void i(String paramString1, String paramString2)
   {
-    if ((paramString1 == null) || (paramString2 == null)) {
-      return;
-    }
-    if (sLog != null)
+    if (paramString1 != null)
     {
-      sLog.i(paramString1, paramString2);
-      return;
+      if (paramString2 == null) {
+        return;
+      }
+      ILog localILog = sLog;
+      if (localILog != null)
+      {
+        localILog.i(paramString1, paramString2);
+        return;
+      }
+      Log.i(paramString1, paramString2);
     }
-    Log.i(paramString1, paramString2);
   }
   
   public static void i(String paramString1, String paramString2, Throwable paramThrowable, Object... paramVarArgs)
@@ -222,15 +250,14 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.i(paramString1, paramString2, paramThrowable);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.i(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.i(paramString1, paramString2, paramThrowable);
     }
-    else
-    {
-      return;
-    }
-    Log.i(paramString1, paramString2, paramThrowable);
   }
   
   public static void i(String paramString1, String paramString2, Object... paramVarArgs)
@@ -238,22 +265,22 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.i(paramString1, paramString2);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.i(paramString1, paramString2);
+        return;
       }
+      Log.i(paramString1, paramString2);
     }
-    else
-    {
-      return;
-    }
-    Log.i(paramString1, paramString2);
   }
   
   public static long initTime()
   {
     mLastTime = SystemClock.currentThreadTimeMillis();
-    mInitTime = mLastTime;
-    return mLastTime;
+    long l = mLastTime;
+    mInitTime = l;
+    return l;
   }
   
   public static boolean isEnableProfile()
@@ -268,29 +295,47 @@ public class LogUtils
   
   public static void printTime(String paramString1, String paramString2)
   {
-    if ((!ENABLED) || (!ENABLE_PROFILE) || (TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return;
-    }
-    long l1;
-    if (paramString2.contains("BEGIN"))
+    if ((ENABLED) && (ENABLE_PROFILE) && (!TextUtils.isEmpty(paramString1)))
     {
-      l1 = System.currentTimeMillis();
-      mTimeStampMap.put(paramString1, Long.valueOf(l1));
-      i("LOG_PERFORMANCE_" + paramString1, paramString2);
-      return;
-    }
-    if (paramString2.contains("END"))
-    {
-      Long localLong = (Long)mTimeStampMap.get(paramString1);
-      if (localLong != null) {}
-      for (l1 = localLong.longValue();; l1 = System.currentTimeMillis())
-      {
-        long l2 = System.currentTimeMillis();
-        i("LOG_PERFORMANCE_" + paramString1, paramString2 + " = " + (l2 - l1));
+      if (TextUtils.isEmpty(paramString2)) {
         return;
       }
+      long l1;
+      if (paramString2.contains("BEGIN"))
+      {
+        l1 = System.currentTimeMillis();
+        mTimeStampMap.put(paramString1, Long.valueOf(l1));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("LOG_PERFORMANCE_");
+        ((StringBuilder)localObject).append(paramString1);
+        i(((StringBuilder)localObject).toString(), paramString2);
+        return;
+      }
+      if (paramString2.contains("END"))
+      {
+        localObject = (Long)mTimeStampMap.get(paramString1);
+        if (localObject != null) {
+          l1 = ((Long)localObject).longValue();
+        } else {
+          l1 = System.currentTimeMillis();
+        }
+        long l2 = System.currentTimeMillis();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("LOG_PERFORMANCE_");
+        ((StringBuilder)localObject).append(paramString1);
+        paramString1 = ((StringBuilder)localObject).toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString2);
+        ((StringBuilder)localObject).append(" = ");
+        ((StringBuilder)localObject).append(l2 - l1);
+        i(paramString1, ((StringBuilder)localObject).toString());
+        return;
+      }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("LOG_PERFORMANCE_");
+      ((StringBuilder)localObject).append(paramString1);
+      i(((StringBuilder)localObject).toString(), paramString2);
     }
-    i("LOG_PERFORMANCE_" + paramString1, paramString2);
   }
   
   public static void setEnable(boolean paramBoolean)
@@ -318,17 +363,30 @@ public class LogUtils
     if (ENABLED)
     {
       Object localObject = Thread.currentThread().getStackTrace()[3];
-      localObject = "(" + Thread.currentThread().getName() + ")" + ((StackTraceElement)localObject).getClassName() + "(" + ((StackTraceElement)localObject).getLineNumber() + ")[" + ((StackTraceElement)localObject).getMethodName() + "]";
-      paramString2 = (String)localObject + ": " + paramString2;
-      if (sLog != null) {
-        sLog.v(paramString1, paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("(");
+      localStringBuilder.append(Thread.currentThread().getName());
+      localStringBuilder.append(")");
+      localStringBuilder.append(((StackTraceElement)localObject).getClassName());
+      localStringBuilder.append("(");
+      localStringBuilder.append(((StackTraceElement)localObject).getLineNumber());
+      localStringBuilder.append(")[");
+      localStringBuilder.append(((StackTraceElement)localObject).getMethodName());
+      localStringBuilder.append("]");
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      paramString2 = localStringBuilder.toString();
+      localObject = sLog;
+      if (localObject != null)
+      {
+        ((ILog)localObject).v(paramString1, paramString2);
+        return;
       }
+      Log.v(paramString1, paramString2);
     }
-    else
-    {
-      return;
-    }
-    Log.v(paramString1, paramString2);
   }
   
   public static void v(String paramString1, String paramString2, Throwable paramThrowable, Object... paramVarArgs)
@@ -336,15 +394,14 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.v(paramString1, paramString2, paramThrowable);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.v(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.v(paramString1, paramString2, paramThrowable);
     }
-    else
-    {
-      return;
-    }
-    Log.v(paramString1, paramString2, paramThrowable);
   }
   
   public static void v(String paramString1, String paramString2, Object... paramVarArgs)
@@ -352,15 +409,14 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.v(paramString1, paramString2);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.v(paramString1, paramString2);
+        return;
       }
+      Log.v(paramString1, paramString2);
     }
-    else
-    {
-      return;
-    }
-    Log.v(paramString1, paramString2);
   }
   
   public static void w(Object paramObject, String paramString)
@@ -373,17 +429,30 @@ public class LogUtils
     if (ENABLED)
     {
       Object localObject = Thread.currentThread().getStackTrace()[3];
-      localObject = "(" + Thread.currentThread().getName() + ")" + ((StackTraceElement)localObject).getClassName() + "(" + ((StackTraceElement)localObject).getLineNumber() + ")[" + ((StackTraceElement)localObject).getMethodName() + "]";
-      paramString2 = (String)localObject + ": " + paramString2;
-      if (sLog != null) {
-        sLog.w(paramString1, paramString2);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("(");
+      localStringBuilder.append(Thread.currentThread().getName());
+      localStringBuilder.append(")");
+      localStringBuilder.append(((StackTraceElement)localObject).getClassName());
+      localStringBuilder.append("(");
+      localStringBuilder.append(((StackTraceElement)localObject).getLineNumber());
+      localStringBuilder.append(")[");
+      localStringBuilder.append(((StackTraceElement)localObject).getMethodName());
+      localStringBuilder.append("]");
+      localObject = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(": ");
+      localStringBuilder.append(paramString2);
+      paramString2 = localStringBuilder.toString();
+      localObject = sLog;
+      if (localObject != null)
+      {
+        ((ILog)localObject).w(paramString1, paramString2);
+        return;
       }
+      Log.w(paramString1, paramString2);
     }
-    else
-    {
-      return;
-    }
-    Log.w(paramString1, paramString2);
   }
   
   public static void w(String paramString1, String paramString2, Throwable paramThrowable, Object... paramVarArgs)
@@ -391,15 +460,14 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.w(paramString1, paramString2, paramThrowable);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.w(paramString1, paramString2, paramThrowable);
+        return;
       }
+      Log.w(paramString1, paramString2, paramThrowable);
     }
-    else
-    {
-      return;
-    }
-    Log.w(paramString1, paramString2, paramThrowable);
   }
   
   public static void w(String paramString1, String paramString2, Object... paramVarArgs)
@@ -407,54 +475,54 @@ public class LogUtils
     if (ENABLED)
     {
       paramString2 = getFormatMessage(paramString1, paramString2, paramVarArgs);
-      if (sLog != null) {
-        sLog.w(paramString1, paramString2);
+      paramVarArgs = sLog;
+      if (paramVarArgs != null)
+      {
+        paramVarArgs.w(paramString1, paramString2);
+        return;
       }
+      Log.w(paramString1, paramString2);
     }
-    else
-    {
-      return;
-    }
-    Log.w(paramString1, paramString2);
   }
   
   public static int writeLog(Object paramObject, String paramString)
   {
-    if ((ENABLED) && (ENABLE_PROFILE)) {
+    if ((ENABLED) && (ENABLE_PROFILE))
+    {
       paramObject = getTag(paramObject);
-    }
-    try
-    {
-      paramString = paramString + "\n";
-      long l = System.currentTimeMillis();
-      FileOutputStream localFileOutputStream = new FileOutputStream("/mnt/sdcard/log.txt", true);
-      localFileOutputStream.write((String.valueOf(l) + "--\t").getBytes());
-      localFileOutputStream.write(paramObject.getBytes());
-      localFileOutputStream.write(new String("\t").getBytes());
-      localFileOutputStream.write(paramString.getBytes());
-      localFileOutputStream.flush();
-      localFileOutputStream.close();
-      return 0;
-    }
-    catch (FileNotFoundException paramObject)
-    {
-      for (;;)
+      try
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(paramString);
+        ((StringBuilder)localObject).append("\n");
+        paramString = ((StringBuilder)localObject).toString();
+        long l = System.currentTimeMillis();
+        localObject = new FileOutputStream("/mnt/sdcard/log.txt", true);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(String.valueOf(l));
+        localStringBuilder.append("--\t");
+        ((FileOutputStream)localObject).write(localStringBuilder.toString().getBytes());
+        ((FileOutputStream)localObject).write(paramObject.getBytes());
+        ((FileOutputStream)localObject).write(new String("\t").getBytes());
+        ((FileOutputStream)localObject).write(paramString.getBytes());
+        ((FileOutputStream)localObject).flush();
+        ((FileOutputStream)localObject).close();
+      }
+      catch (IOException paramObject)
+      {
+        paramObject.printStackTrace();
+      }
+      catch (FileNotFoundException paramObject)
       {
         paramObject.printStackTrace();
       }
     }
-    catch (IOException paramObject)
-    {
-      for (;;)
-      {
-        paramObject.printStackTrace();
-      }
-    }
+    return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.log.LogUtils
  * JD-Core Version:    0.7.0.1
  */

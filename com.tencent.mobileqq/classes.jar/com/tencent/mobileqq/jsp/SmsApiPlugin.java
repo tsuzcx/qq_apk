@@ -41,24 +41,23 @@ public class SmsApiPlugin
     if (TextUtils.isEmpty(paramString)) {
       return;
     }
-    for (;;)
+    try
     {
-      String str;
-      try
+      Object localObject = new JSONObject(paramString);
+      paramString = ((JSONObject)localObject).optString("senderMatcher", null);
+      String str = ((JSONObject)localObject).optString("smsContentMatcher", null);
+      int i = ((JSONObject)localObject).optInt("timeout", 0);
+      this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("callback", null);
+      if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(str)))
       {
-        Object localObject = new JSONObject(paramString);
-        paramString = ((JSONObject)localObject).optString("senderMatcher", null);
-        str = ((JSONObject)localObject).optString("smsContentMatcher", null);
-        int i = ((JSONObject)localObject).optInt("timeout", 0);
-        this.jdField_a_of_type_JavaLangString = ((JSONObject)localObject).optString("callback", null);
-        if ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (TextUtils.isEmpty(str)) || (i <= 0)) {
-          break;
+        if (i <= 0) {
+          return;
         }
         if (!this.jdField_a_of_type_Boolean)
         {
           localObject = a();
           if (localObject == null) {
-            break;
+            return;
           }
           if (this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler == null) {
             this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler = new SmsApiPlugin.MyHandler(this);
@@ -68,19 +67,19 @@ public class SmsApiPlugin
           }
           this.jdField_a_of_type_Boolean = true;
           ((Context)localObject).getContentResolver().registerContentObserver(Uri.parse("content://sms/"), true, this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$SMSContentObserver);
-          this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler.removeMessages(2);
-          this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler.sendEmptyMessageDelayed(2, i * 1000);
-          return;
         }
+        else if (this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$SMSContentObserver != null)
+        {
+          this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$SMSContentObserver.a(paramString, str);
+        }
+        this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler.removeMessages(2);
+        this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler.sendEmptyMessageDelayed(2, i * 1000);
       }
-      catch (JSONException paramString)
-      {
-        paramString.printStackTrace();
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$SMSContentObserver != null) {
-        this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$SMSContentObserver.a(paramString, str);
-      }
+      return;
+    }
+    catch (JSONException paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
@@ -105,49 +104,65 @@ public class SmsApiPlugin
     callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramString });
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {
-      return false;
-    }
-    if ("sms".equals(paramString2))
+    if ((!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString2)))
     {
-      if ("startReceiver".equals(paramString3))
+      if (TextUtils.isEmpty(paramString3)) {
+        return false;
+      }
+      if ("sms".equals(paramString2))
       {
-        if ((paramVarArgs == null) || (paramVarArgs.length <= 0)) {
+        if ("startReceiver".equals(paramString3))
+        {
+          if (paramVarArgs != null)
+          {
+            if (paramVarArgs.length <= 0) {
+              return false;
+            }
+            b(paramVarArgs[0]);
+            return true;
+          }
           return false;
         }
-        b(paramVarArgs[0]);
-        return true;
-      }
-      if ("stopReceiver".equals(paramString3))
-      {
-        b();
-        return true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i(this.TAG, 2, "can not handle objectname:" + paramString2 + " methodname:" + paramString3);
+        if ("stopReceiver".equals(paramString3))
+        {
+          b();
+          return true;
+        }
+        if (QLog.isColorLevel())
+        {
+          paramJsBridgeListener = this.TAG;
+          paramString1 = new StringBuilder();
+          paramString1.append("can not handle objectname:");
+          paramString1.append(paramString2);
+          paramString1.append(" methodname:");
+          paramString1.append(paramString3);
+          QLog.i(paramJsBridgeListener, 2, paramString1.toString());
+        }
       }
     }
     return false;
   }
   
-  public void onCreate()
+  protected void onCreate()
   {
     super.onCreate();
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     b();
-    if (this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$SMSContentObserver != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$SMSContentObserver;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$SMSContentObserver.a();
+      ((SmsApiPlugin.SMSContentObserver)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$SMSContentObserver = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler != null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler.a();
+      ((SmsApiPlugin.MyHandler)localObject).a();
       this.jdField_a_of_type_ComTencentMobileqqJspSmsApiPlugin$MyHandler = null;
     }
     super.onDestroy();
@@ -155,7 +170,7 @@ public class SmsApiPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.SmsApiPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -17,13 +17,14 @@ public final class oidb_0xf16$GroupRemarkInfoReq
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint64_group_code", "uint64_group_uin", "bytes_remark_name" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), localByteStringMicro }, GroupRemarkInfoReq.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26 }, new String[] { "uint64_group_code", "uint64_group_uin", "bytes_remark_name" }, new Object[] { localLong, localLong, localByteStringMicro }, GroupRemarkInfoReq.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xf16.oidb_0xf16.GroupRemarkInfoReq
  * JD-Core Version:    0.7.0.1
  */

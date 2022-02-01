@@ -41,20 +41,23 @@ public abstract class Timeline
   
   public int getNextWindowIndex(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    default: 
-      throw new IllegalStateException();
-    case 0: 
-      if (paramInt1 == getLastWindowIndex(paramBoolean)) {
-        return -1;
+      if (paramInt2 != 1)
+      {
+        if (paramInt2 == 2)
+        {
+          if (paramInt1 == getLastWindowIndex(paramBoolean)) {
+            return getFirstWindowIndex(paramBoolean);
+          }
+          return paramInt1 + 1;
+        }
+        throw new IllegalStateException();
       }
-      return paramInt1 + 1;
-    case 1: 
       return paramInt1;
     }
     if (paramInt1 == getLastWindowIndex(paramBoolean)) {
-      return getFirstWindowIndex(paramBoolean);
+      return -1;
     }
     return paramInt1 + 1;
   }
@@ -87,31 +90,34 @@ public abstract class Timeline
       }
     }
     paramInt = paramWindow.firstPeriodIndex;
-    paramLong2 = paramWindow.getPositionInFirstPeriodUs() + paramLong2;
-    for (paramLong1 = getPeriod(paramInt, paramPeriod).getDurationUs(); (paramLong1 != -9223372036854775807L) && (paramLong2 >= paramLong1) && (paramInt < paramWindow.lastPeriodIndex); paramLong1 = getPeriod(paramInt, paramPeriod).getDurationUs())
+    paramLong1 = paramWindow.getPositionInFirstPeriodUs() + paramLong2;
+    for (paramLong2 = getPeriod(paramInt, paramPeriod).getDurationUs(); (paramLong2 != -9223372036854775807L) && (paramLong1 >= paramLong2) && (paramInt < paramWindow.lastPeriodIndex); paramLong2 = getPeriod(paramInt, paramPeriod).getDurationUs())
     {
-      paramLong2 -= paramLong1;
+      paramLong1 -= paramLong2;
       paramInt += 1;
     }
-    return Pair.create(Integer.valueOf(paramInt), Long.valueOf(paramLong2));
+    return Pair.create(Integer.valueOf(paramInt), Long.valueOf(paramLong1));
   }
   
   public int getPreviousWindowIndex(int paramInt1, int paramInt2, boolean paramBoolean)
   {
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    default: 
-      throw new IllegalStateException();
-    case 0: 
-      if (paramInt1 == getFirstWindowIndex(paramBoolean)) {
-        return -1;
+      if (paramInt2 != 1)
+      {
+        if (paramInt2 == 2)
+        {
+          if (paramInt1 == getFirstWindowIndex(paramBoolean)) {
+            return getLastWindowIndex(paramBoolean);
+          }
+          return paramInt1 - 1;
+        }
+        throw new IllegalStateException();
       }
-      return paramInt1 - 1;
-    case 1: 
       return paramInt1;
     }
     if (paramInt1 == getFirstWindowIndex(paramBoolean)) {
-      return getLastWindowIndex(paramBoolean);
+      return -1;
     }
     return paramInt1 - 1;
   }
@@ -142,7 +148,7 @@ public abstract class Timeline
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.Timeline
  * JD-Core Version:    0.7.0.1
  */

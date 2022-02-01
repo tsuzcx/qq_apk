@@ -20,10 +20,11 @@ final class GdtDwellTimeStatisticsAfterClick
   
   private void a()
   {
-    WeakReference localWeakReference = new WeakReference(this);
+    WeakReference localWeakReference1 = new WeakReference(this);
     if (this.b)
     {
-      if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+      localWeakReference2 = this.jdField_a_of_type_JavaLangRefWeakReference;
+      if ((localWeakReference2 != null) && (localWeakReference2.get() != null))
       {
         if (((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).isShown())
         {
@@ -32,7 +33,7 @@ final class GdtDwellTimeStatisticsAfterClick
           c();
           return;
         }
-        ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference), 100L);
+        ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference1), 100L);
         return;
       }
       this.b = false;
@@ -40,16 +41,17 @@ final class GdtDwellTimeStatisticsAfterClick
       c();
       return;
     }
-    if ((this.jdField_a_of_type_JavaLangRefWeakReference != null) && (this.jdField_a_of_type_JavaLangRefWeakReference.get() != null))
+    WeakReference localWeakReference2 = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if ((localWeakReference2 != null) && (localWeakReference2.get() != null))
     {
       if (!((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).isShown())
       {
         this.b = true;
         b();
-        ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference), 100L);
+        ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference1), 100L);
         return;
       }
-      ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference), 100L);
+      ((View)this.jdField_a_of_type_JavaLangRefWeakReference.get()).postDelayed(new GdtDwellTimeStatisticsAfterClick.CheckRunnable(localWeakReference1), 100L);
       return;
     }
     this.jdField_a_of_type_Boolean = false;
@@ -80,7 +82,7 @@ final class GdtDwellTimeStatisticsAfterClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.statistics.GdtDwellTimeStatisticsAfterClick
  * JD-Core Version:    0.7.0.1
  */

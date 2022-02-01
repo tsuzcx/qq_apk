@@ -11,24 +11,24 @@ class IntimateContentItemNewDnaView$1
   
   public void a(View paramView, int paramInt, NewDnaInfo paramNewDnaInfo)
   {
-    if ((paramNewDnaInfo != null) && (!TextUtils.isEmpty(paramNewDnaInfo.b))) {
-      IntimateContentItemNewDnaView.a(this.a, paramNewDnaInfo);
-    }
-    do
+    if ((paramNewDnaInfo != null) && (!TextUtils.isEmpty(paramNewDnaInfo.b)))
     {
+      IntimateContentItemNewDnaView.a(this.a, paramNewDnaInfo);
       return;
-      if ((paramNewDnaInfo != null) && (paramNewDnaInfo.a == 23))
-      {
-        IntimateContentItemNewDnaView.b(this.a, paramNewDnaInfo);
-        return;
-      }
-    } while ((paramNewDnaInfo == null) || (TextUtils.isEmpty(paramNewDnaInfo.d)));
-    IntimateContentItemNewDnaView.c(this.a, paramNewDnaInfo);
+    }
+    if ((paramNewDnaInfo != null) && (paramNewDnaInfo.a == 23))
+    {
+      IntimateContentItemNewDnaView.b(this.a, paramNewDnaInfo);
+      return;
+    }
+    if ((paramNewDnaInfo != null) && (!TextUtils.isEmpty(paramNewDnaInfo.d))) {
+      IntimateContentItemNewDnaView.c(this.a, paramNewDnaInfo);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.intimate.view.IntimateContentItemNewDnaView.1
  * JD-Core Version:    0.7.0.1
  */

@@ -68,16 +68,19 @@ public final class ReqCondSearch
     paramJceOutputStream.write(this.iPage, 0);
     paramJceOutputStream.write(this.dwSessionID, 1);
     paramJceOutputStream.write(this.dwFlag, 2);
-    if (this.strNick != null) {
-      paramJceOutputStream.write(this.strNick, 3);
+    Object localObject = this.strNick;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
     paramJceOutputStream.write(this.cGender, 4);
-    if (this.vCityId != null) {
-      paramJceOutputStream.write(this.vCityId, 5);
+    localObject = this.vCityId;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 5);
     }
     paramJceOutputStream.write(this.cAge, 6);
-    if (this.vHomeId != null) {
-      paramJceOutputStream.write(this.vHomeId, 7);
+    localObject = this.vHomeId;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 7);
     }
     paramJceOutputStream.write(this.cConstellationId, 8);
     paramJceOutputStream.write(this.iOccupationId, 9);

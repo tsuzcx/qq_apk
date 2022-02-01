@@ -22,32 +22,28 @@ class ProfileAccountInfoV2Component$CustomImageSpan
   public void draw(@NonNull Canvas paramCanvas, CharSequence paramCharSequence, int paramInt1, int paramInt2, float paramFloat, int paramInt3, int paramInt4, int paramInt5, @NonNull Paint paramPaint)
   {
     paramCharSequence = getDrawable();
-    if (this.mVerticalAlignment == 0) {
+    if (this.mVerticalAlignment == 0)
+    {
       paramInt1 = paramInt5 - paramCharSequence.getBounds().bottom;
     }
-    for (;;)
+    else if (this.mVerticalAlignment == 1)
     {
-      paramCanvas.save();
-      paramCanvas.translate(paramFloat, paramInt1);
-      paramCharSequence.draw(paramCanvas);
-      paramCanvas.restore();
-      return;
-      if (this.mVerticalAlignment == 1)
-      {
-        paramInt1 = 0 - paramPaint.getFontMetricsInt().descent;
-      }
-      else
-      {
-        paramPaint = paramPaint.getFontMetricsInt();
-        paramInt1 = paramPaint.descent;
-        paramInt1 = (paramPaint.ascent + (paramInt1 + paramInt4 + paramInt4)) / 2 - paramCharSequence.getBounds().bottom / 2;
-      }
+      paramInt1 = 0 - paramPaint.getFontMetricsInt().descent;
     }
+    else
+    {
+      paramPaint = paramPaint.getFontMetricsInt();
+      paramInt1 = (paramPaint.descent + paramInt4 + paramInt4 + paramPaint.ascent) / 2 - paramCharSequence.getBounds().bottom / 2;
+    }
+    paramCanvas.save();
+    paramCanvas.translate(paramFloat, paramInt1);
+    paramCharSequence.draw(paramCanvas);
+    paramCanvas.restore();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.accountinfo.ProfileAccountInfoV2Component.CustomImageSpan
  * JD-Core Version:    0.7.0.1
  */

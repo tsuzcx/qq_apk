@@ -1,12 +1,13 @@
 package com.tencent.av.utils;
 
-import com.tencent.mobileqq.utils.AudioHelper;
+import android.annotation.TargetApi;
+import android.os.SystemClock;
 import com.tencent.qphone.base.util.QLog;
 
+@TargetApi(17)
 public class FramePerfData
 {
-  private static float jdField_c_of_type_Float = 0.02F;
-  private static long m = 0L;
+  private static long m;
   private float jdField_a_of_type_Float = 0.0F;
   private int jdField_a_of_type_Int = 0;
   private long jdField_a_of_type_Long = 0L;
@@ -45,16 +46,13 @@ public class FramePerfData
   
   static float a(float paramFloat, long paramLong)
   {
-    float f1;
     if (paramFloat == 0.0F) {
-      f1 = (float)paramLong;
+      return (float)paramLong;
     }
-    do
-    {
-      return f1;
-      f1 = paramFloat;
-    } while (paramLong == 0L);
-    return (1.0F - jdField_c_of_type_Float) * paramFloat + (float)paramLong * jdField_c_of_type_Float;
+    if (paramLong == 0L) {
+      return paramFloat;
+    }
+    return paramFloat * 0.98F + (float)paramLong * 0.02F;
   }
   
   static int a(float paramFloat)
@@ -67,8 +65,10 @@ public class FramePerfData
   
   static long a(long paramLong1, long paramLong2)
   {
-    if (paramLong1 == 0L) {}
-    while (paramLong2 == 0L) {
+    if (paramLong1 == 0L) {
+      return 0L;
+    }
+    if (paramLong2 == 0L) {
       return 0L;
     }
     return paramLong1 - paramLong2;
@@ -89,26 +89,110 @@ public class FramePerfData
   private void b(String paramString)
   {
     boolean bool = c();
-    if ((bool) || (AudioHelper.a(18) == 1))
+    if (bool)
     {
       int i1 = a(this.jdField_a_of_type_Float);
       int i2 = a(this.jdField_b_of_type_Float);
-      String str = "frameIndex[" + this.jdField_a_of_type_ComTencentAvUtilsFramePerfData + "->" + this.o + "], dataLen[" + this.jdField_b_of_type_Int + "], width[" + this.jdField_c_of_type_Int + "], height[" + this.jdField_d_of_type_Int + "], format[" + this.jdField_e_of_type_Int + "], CamAngle[" + this.jdField_f_of_type_Int + "], FinalAngle[" + this.jdField_h_of_type_Int + "], CamFPS[" + this.n + "], PreviewDataFPS[" + i1 + "], SendFPS[" + i2 + "], isFront[" + this.jdField_c_of_type_Boolean + "], effect[" + this.jdField_d_of_type_Boolean + "], business[" + String.format("%08x", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }) + "]";
+      paramString = new StringBuilder();
+      paramString.append("frameIndex[");
+      paramString.append(this.jdField_a_of_type_ComTencentAvUtilsFramePerfData);
+      paramString.append("->");
+      paramString.append(this.o);
+      paramString.append("], dataLen[");
+      paramString.append(this.jdField_b_of_type_Int);
+      paramString.append("], width[");
+      paramString.append(this.jdField_c_of_type_Int);
+      paramString.append("], height[");
+      paramString.append(this.jdField_d_of_type_Int);
+      paramString.append("], format[");
+      paramString.append(this.jdField_e_of_type_Int);
+      paramString.append("], CamAngle[");
+      paramString.append(this.jdField_f_of_type_Int);
+      paramString.append("], FinalAngle[");
+      paramString.append(this.jdField_h_of_type_Int);
+      paramString.append("], CamFPS[");
+      paramString.append(this.n);
+      paramString.append("], PreviewDataFPS[");
+      paramString.append(i1);
+      paramString.append("], SendFPS[");
+      paramString.append(i2);
+      paramString.append("], isFront[");
+      paramString.append(this.jdField_c_of_type_Boolean);
+      paramString.append("], effect[");
+      paramString.append(this.jdField_d_of_type_Boolean);
+      paramString.append("], business[");
+      paramString.append(String.format("%08x", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) }));
+      paramString.append("]");
+      Object localObject = paramString.toString();
       paramString = null;
-      if (b()) {
-        paramString = ", intervalPreviewData[" + this.jdField_b_of_type_Long + "], intervalSendCameraFrame2Native[" + this.l + "], render[" + a(this.j, this.jdField_c_of_type_Long) + "], CheckLowligh[" + a(this.jdField_d_of_type_Long, this.jdField_c_of_type_Long) + "], Beauty2[" + a(this.jdField_e_of_type_Long, this.jdField_d_of_type_Long) + "], DenoiseRender[" + a(this.jdField_f_of_type_Long, this.jdField_e_of_type_Long) + "], LowLightRender[" + a(this.jdField_g_of_type_Long, this.jdField_f_of_type_Long) + "], Beauty3[" + a(this.jdField_h_of_type_Long, this.jdField_g_of_type_Long) + "], RenderChain[" + a(this.i, this.jdField_h_of_type_Long) + "], post[" + a(this.j, this.i) + "], buildExtInfo[" + a(this.k, this.j) + "]";
+      if (b())
+      {
+        paramString = new StringBuilder();
+        paramString.append(", intervalPreviewData[");
+        paramString.append(this.jdField_b_of_type_Long);
+        paramString.append("], intervalSendCameraFrame2Native[");
+        paramString.append(this.l);
+        paramString.append("], render[");
+        paramString.append(a(this.j, this.jdField_c_of_type_Long));
+        paramString.append("], CheckLowligh[");
+        paramString.append(a(this.jdField_d_of_type_Long, this.jdField_c_of_type_Long));
+        paramString.append("], Beauty2[");
+        paramString.append(a(this.jdField_e_of_type_Long, this.jdField_d_of_type_Long));
+        paramString.append("], DenoiseRender[");
+        paramString.append(a(this.jdField_f_of_type_Long, this.jdField_e_of_type_Long));
+        paramString.append("], LowLightRender[");
+        paramString.append(a(this.jdField_g_of_type_Long, this.jdField_f_of_type_Long));
+        paramString.append("], Beauty3[");
+        paramString.append(a(this.jdField_h_of_type_Long, this.jdField_g_of_type_Long));
+        paramString.append("], RenderChain[");
+        paramString.append(a(this.i, this.jdField_h_of_type_Long));
+        paramString.append("], post[");
+        paramString.append(a(this.j, this.i));
+        paramString.append("], buildExtInfo[");
+        paramString.append(a(this.k, this.j));
+        paramString.append("]");
+        paramString = paramString.toString();
       }
-      paramString = "PerfLog, " + str + paramString;
-      paramString = paramString + ", onPreviewData[" + this.jdField_a_of_type_Long + "], renderBegin[" + this.jdField_c_of_type_Long + "], afterCheckLowligh[" + this.jdField_d_of_type_Long + "], afterDenoiseRender[" + this.jdField_f_of_type_Long + "], afterLowLightRender[" + this.jdField_g_of_type_Long + "], afterBeautyRender[" + this.jdField_h_of_type_Long + "], afterRenderChain[" + this.i + "], renderEnd[" + this.j + "], sendCameraFrame2Native[" + this.k + "]";
-      if (bool) {
-        QLog.w("FramePerfDataK_" + this.jdField_b_of_type_Boolean, 1, paramString);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PerfLog, ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(paramString);
+      paramString = localStringBuilder.toString();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append(", onPreviewData[");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append("], renderBegin[");
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_Long);
+      ((StringBuilder)localObject).append("], afterCheckLowligh[");
+      ((StringBuilder)localObject).append(this.jdField_d_of_type_Long);
+      ((StringBuilder)localObject).append("], afterDenoiseRender[");
+      ((StringBuilder)localObject).append(this.jdField_f_of_type_Long);
+      ((StringBuilder)localObject).append("], afterLowLightRender[");
+      ((StringBuilder)localObject).append(this.jdField_g_of_type_Long);
+      ((StringBuilder)localObject).append("], afterBeautyRender[");
+      ((StringBuilder)localObject).append(this.jdField_h_of_type_Long);
+      ((StringBuilder)localObject).append("], afterRenderChain[");
+      ((StringBuilder)localObject).append(this.i);
+      ((StringBuilder)localObject).append("], renderEnd[");
+      ((StringBuilder)localObject).append(this.j);
+      ((StringBuilder)localObject).append("], sendCameraFrame2Native[");
+      ((StringBuilder)localObject).append(this.k);
+      ((StringBuilder)localObject).append("]");
+      paramString = ((StringBuilder)localObject).toString();
+      if (bool)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("FramePerfDataK_");
+        ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+        QLog.w(((StringBuilder)localObject).toString(), 1, paramString);
+        return;
       }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("FramePerfData_");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+      QLog.w(((StringBuilder)localObject).toString(), 1, paramString);
     }
-    else
-    {
-      return;
-    }
-    QLog.w("FramePerfData_" + this.jdField_b_of_type_Boolean, 1, paramString);
   }
   
   public static boolean b()
@@ -118,36 +202,35 @@ public class FramePerfData
   
   void a()
   {
-    float f2 = 0.0F;
     for (FramePerfData localFramePerfData = this.jdField_a_of_type_ComTencentAvUtilsFramePerfData; (localFramePerfData != null) && (!localFramePerfData.jdField_a_of_type_Boolean); localFramePerfData = localFramePerfData.jdField_a_of_type_ComTencentAvUtilsFramePerfData) {
       localFramePerfData.jdField_b_of_type_Boolean = true;
     }
     this.jdField_a_of_type_ComTencentAvUtilsFramePerfData = localFramePerfData;
     if (localFramePerfData != null)
     {
-      if (localFramePerfData.jdField_a_of_type_Long != 0L) {
-        this.jdField_b_of_type_Long = (this.jdField_a_of_type_Long - localFramePerfData.jdField_a_of_type_Long);
+      long l1 = localFramePerfData.jdField_a_of_type_Long;
+      if (l1 != 0L) {
+        this.jdField_b_of_type_Long = (this.jdField_a_of_type_Long - l1);
       }
-      if (localFramePerfData.k != 0L) {
-        this.l = (this.k - localFramePerfData.k);
+      l1 = localFramePerfData.k;
+      if (l1 != 0L) {
+        this.l = (this.k - l1);
       }
     }
-    if (localFramePerfData == null)
-    {
+    float f2 = 0.0F;
+    float f1;
+    if (localFramePerfData == null) {
       f1 = 0.0F;
-      this.jdField_a_of_type_Float = a(f1, this.jdField_b_of_type_Long / 1000L);
-      if (localFramePerfData != null) {
-        break label137;
-      }
-    }
-    label137:
-    for (float f1 = f2;; f1 = localFramePerfData.jdField_b_of_type_Float)
-    {
-      this.jdField_b_of_type_Float = a(f1, this.l / 1000L);
-      return;
+    } else {
       f1 = localFramePerfData.jdField_a_of_type_Float;
-      break;
     }
+    this.jdField_a_of_type_Float = a(f1, this.jdField_b_of_type_Long / 1000L);
+    if (localFramePerfData == null) {
+      f1 = f2;
+    } else {
+      f1 = localFramePerfData.jdField_b_of_type_Float;
+    }
+    this.jdField_b_of_type_Float = a(f1, this.l / 1000L);
   }
   
   public void a(int paramInt)
@@ -168,22 +251,11 @@ public class FramePerfData
     this.jdField_d_of_type_Boolean = paramBoolean2;
   }
   
-  public void a(boolean paramBoolean)
-  {
-    if (b())
-    {
-      this.jdField_e_of_type_Long = AudioHelper.c();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int |= 0x1;
-      }
-    }
-  }
-  
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
     if (b())
     {
-      this.i = AudioHelper.c();
+      this.i = SystemClock.elapsedRealtimeNanos();
       if (paramBoolean1) {
         this.jdField_a_of_type_Int |= 0x20;
       }
@@ -202,36 +274,14 @@ public class FramePerfData
   public void b()
   {
     if (b()) {
-      this.jdField_a_of_type_Long = AudioHelper.c();
-    }
-  }
-  
-  public void b(boolean paramBoolean)
-  {
-    if (b())
-    {
-      this.jdField_f_of_type_Long = AudioHelper.c();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int |= 0x2;
-      }
+      this.jdField_a_of_type_Long = SystemClock.elapsedRealtimeNanos();
     }
   }
   
   public void c()
   {
     if (b()) {
-      this.jdField_c_of_type_Long = AudioHelper.c();
-    }
-  }
-  
-  public void c(boolean paramBoolean)
-  {
-    if (b())
-    {
-      this.jdField_g_of_type_Long = AudioHelper.c();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int |= 0x4;
-      }
+      this.jdField_c_of_type_Long = SystemClock.elapsedRealtimeNanos();
     }
   }
   
@@ -245,35 +295,20 @@ public class FramePerfData
     FramePerfData localFramePerfData = this.jdField_a_of_type_ComTencentAvUtilsFramePerfData;
     if (localFramePerfData != null)
     {
-      if ((localFramePerfData.jdField_b_of_type_Int != this.jdField_b_of_type_Int) || (localFramePerfData.jdField_c_of_type_Int != this.jdField_c_of_type_Int) || (localFramePerfData.jdField_d_of_type_Int != this.jdField_d_of_type_Int) || (localFramePerfData.jdField_e_of_type_Int != this.jdField_e_of_type_Int) || (localFramePerfData.jdField_f_of_type_Int != this.jdField_f_of_type_Int) || (localFramePerfData.jdField_g_of_type_Int != this.jdField_g_of_type_Int) || (localFramePerfData.n != this.n) || (localFramePerfData.jdField_c_of_type_Boolean != this.jdField_c_of_type_Boolean) || (localFramePerfData.jdField_d_of_type_Boolean != this.jdField_d_of_type_Boolean) || (localFramePerfData.jdField_h_of_type_Int != this.jdField_h_of_type_Int) || (localFramePerfData.jdField_a_of_type_Int != this.jdField_a_of_type_Int) || (localFramePerfData.o + 1L != this.o))
-      {
-        m = System.currentTimeMillis();
-        return true;
+      if ((localFramePerfData.jdField_b_of_type_Int == this.jdField_b_of_type_Int) && (localFramePerfData.jdField_c_of_type_Int == this.jdField_c_of_type_Int) && (localFramePerfData.jdField_d_of_type_Int == this.jdField_d_of_type_Int) && (localFramePerfData.jdField_e_of_type_Int == this.jdField_e_of_type_Int) && (localFramePerfData.jdField_f_of_type_Int == this.jdField_f_of_type_Int) && (localFramePerfData.jdField_g_of_type_Int == this.jdField_g_of_type_Int) && (localFramePerfData.n == this.n) && (localFramePerfData.jdField_c_of_type_Boolean == this.jdField_c_of_type_Boolean) && (localFramePerfData.jdField_d_of_type_Boolean == this.jdField_d_of_type_Boolean) && (localFramePerfData.jdField_h_of_type_Int == this.jdField_h_of_type_Int) && (localFramePerfData.jdField_a_of_type_Int == this.jdField_a_of_type_Int) && (localFramePerfData.o + 1L == this.o)) {
+        return false;
       }
-    }
-    else
-    {
       m = System.currentTimeMillis();
       return true;
     }
-    return false;
+    m = System.currentTimeMillis();
+    return true;
   }
   
   public void d()
   {
     if (b()) {
-      this.j = AudioHelper.c();
-    }
-  }
-  
-  public void d(boolean paramBoolean)
-  {
-    if (b())
-    {
-      this.jdField_h_of_type_Long = AudioHelper.c();
-      if (paramBoolean) {
-        this.jdField_a_of_type_Int |= 0x8;
-      }
+      this.j = SystemClock.elapsedRealtimeNanos();
     }
   }
   
@@ -289,28 +324,24 @@ public class FramePerfData
   
   public void e()
   {
-    if (b()) {
-      this.jdField_d_of_type_Long = AudioHelper.c();
-    }
-  }
-  
-  public void f()
-  {
     this.jdField_a_of_type_Boolean = true;
     if (b()) {
-      this.k = AudioHelper.c();
+      this.k = SystemClock.elapsedRealtimeNanos();
     }
     a("finish");
   }
   
   public String toString()
   {
-    return this.o + "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.o);
+    localStringBuilder.append("");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.FramePerfData
  * JD-Core Version:    0.7.0.1
  */

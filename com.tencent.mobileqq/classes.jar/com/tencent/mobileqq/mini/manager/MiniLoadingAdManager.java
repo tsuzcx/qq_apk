@@ -63,81 +63,97 @@ public class MiniLoadingAdManager
   
   private static void checkCacheFolder()
   {
-    if (FileUtils.b(MiniAppFileManager.getLoadingAdCacheFolder()) > maxAdCachedSize)
+    if (FileUtils.getFileOrFolderSize(MiniAppFileManager.getLoadingAdCacheFolder()) > maxAdCachedSize)
     {
       QLog.d("MiniLoadingAdManager", 1, "checkCacheFolder size > maxAdCachedSize ");
-      FileUtils.b(MiniAppFileManager.getLoadingAdCacheFolder());
+      FileUtils.deleteFilesInDirectory(MiniAppFileManager.getLoadingAdCacheFolder());
     }
   }
   
   private boolean checkLoadingAdFrequencyLimitation(@NonNull String paramString1, @NonNull String paramString2, @MiniLoadingAdManager.CheckLoadingAdLimitType int paramInt)
   {
-    boolean bool2 = false;
-    String str1 = getPrefix(paramInt) + paramString2;
-    String str2 = str1 + "_times";
-    paramString1 = getPrefix(paramInt) + paramString2 + "_" + paramString1;
-    paramString2 = paramString1 + "_times";
-    long l1 = StorageUtil.getPreference().getLong(str1, 0L);
-    int i = StorageUtil.getPreference().getInt(str2, 0);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(getPrefix(paramInt));
+    ((StringBuilder)localObject1).append(paramString2);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("_times");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getPrefix(paramInt));
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString1);
+    paramString1 = localStringBuilder.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("_times");
+    paramString2 = paramString2.toString();
+    long l1 = StorageUtil.getPreference().getLong((String)localObject1, 0L);
+    int i = StorageUtil.getPreference().getInt((String)localObject2, 0);
     long l2 = StorageUtil.getPreference().getLong(paramString1, 0L);
     int j = StorageUtil.getPreference().getInt(paramString2, 0);
-    boolean bool1;
-    if ((l1 != getCurZeroTimeMillis()) || (i < 1)) {
-      bool1 = true;
-    }
-    do
+    if (l1 == getCurZeroTimeMillis())
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (i >= getLimit(paramInt, false));
-      if ((l2 != getCurZeroTimeMillis()) || (j < 1)) {
+      if (i < 1) {
         return true;
       }
-      bool1 = bool2;
-    } while (j >= getLimit(paramInt, true));
+      if (i >= getLimit(paramInt, false)) {
+        return false;
+      }
+      if (l2 == getCurZeroTimeMillis())
+      {
+        if (j < 1) {
+          return true;
+        }
+        if (j >= getLimit(paramInt, true)) {
+          return false;
+        }
+      }
+    }
     return true;
   }
   
   private boolean checkSelectAdNecessity(MiniAppConfig paramMiniAppConfig, String paramString)
   {
-    if ((paramMiniAppConfig == null) || (TextUtils.isEmpty(paramString)))
+    if ((paramMiniAppConfig != null) && (!TextUtils.isEmpty(paramString)))
     {
-      QLog.d("MiniLoadingAdManager", 1, "checkSelectAdNecessity 参数不合法");
-      return false;
-    }
-    if ((paramMiniAppConfig.config == null) || (TextUtils.isEmpty(paramMiniAppConfig.config.appId)) || (!paramMiniAppConfig.config.enableLoadingAd))
-    {
+      if ((paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)) && (paramMiniAppConfig.config.enableLoadingAd))
+      {
+        if (isViaUnsupported(paramMiniAppConfig.config.via))
+        {
+          QLog.d("MiniLoadingAdManager", 1, "checkSelectAdNecessity via不支持");
+          return false;
+        }
+        if (!checkLoadingAdFrequencyLimitation(paramMiniAppConfig.config.appId, paramString, 0))
+        {
+          QLog.d("MiniLoadingAdManager", 1, "checkSelectAdNecessity 频控限制");
+          return false;
+        }
+        return true;
+      }
       QLog.d("MiniLoadingAdManager", 1, "checkSelectAdNecessity 没开广告位");
       return false;
     }
-    if (isViaUnsupported(paramMiniAppConfig.config.via))
-    {
-      QLog.d("MiniLoadingAdManager", 1, "checkSelectAdNecessity via不支持");
-      return false;
-    }
-    if (!checkLoadingAdFrequencyLimitation(paramMiniAppConfig.config.appId, paramString, 0))
-    {
-      QLog.d("MiniLoadingAdManager", 1, "checkSelectAdNecessity 频控限制");
-      return false;
-    }
-    return true;
+    QLog.d("MiniLoadingAdManager", 1, "checkSelectAdNecessity 参数不合法");
+    return false;
   }
   
   public static void downloadAndSaveLoadingAd(String paramString1, String paramString2, String paramString3)
   {
     QLog.d("MiniLoadingAdManager", 1, "downloadAndSaveLoadingAd 预加载广告缓存逻辑start");
-    Object localObject = "mini_loading_ad_preload_adjson_key_" + paramString2 + "_" + paramString3;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mini_loading_ad_preload_adjson_key_");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString3);
+    localObject = ((StringBuilder)localObject).toString();
     StorageUtil.getPreference().edit().putString((String)localObject, new JSONObject().toString()).apply();
     checkCacheFolder();
     paramString1 = AdUtils.convertJson2GdtAds(paramString1);
-    if ((paramString1 == null) || (paramString1.isEmpty())) {
-      QLog.d("MiniLoadingAdManager", 1, "downloadAndSaveLoadingAd 广告数据为空");
-    }
-    for (;;)
+    if ((paramString1 != null) && (!paramString1.isEmpty()))
     {
-      return;
       paramString1 = paramString1.iterator();
       while (paramString1.hasNext())
       {
@@ -148,84 +164,83 @@ public class MiniLoadingAdManager
           QLog.d("MiniLoadingAdManager", 1, "downloadAndSaveLoadingAd 广告数据不合法或已经下载过");
         }
       }
+      return;
     }
+    QLog.d("MiniLoadingAdManager", 1, "downloadAndSaveLoadingAd 广告数据为空");
   }
   
   private boolean extraPreloadIntervalCheck(String paramString1, String paramString2)
   {
-    paramString1 = "mini_loading_ad_extra_preload_interval_check__" + paramString2 + "_" + paramString1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mini_loading_ad_extra_preload_interval_check__");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString1);
+    paramString1 = localStringBuilder.toString();
     long l = StorageUtil.getPreference().getLong(paramString1, -1L);
     return (l <= 0L) || ((System.currentTimeMillis() - l) / 1000L > this.extraPreloadInterval);
   }
   
   private static void extraPreloadIntervalUpdate(String paramString1, String paramString2)
   {
-    paramString1 = "mini_loading_ad_extra_preload_interval_check__" + paramString2 + "_" + paramString1;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mini_loading_ad_extra_preload_interval_check__");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString1);
+    paramString1 = localStringBuilder.toString();
     StorageUtil.getPreference().edit().putLong(paramString1, System.currentTimeMillis()).apply();
   }
   
   private static MiniAppAd.StGetAdReq getAdReq(MiniAppConfig paramMiniAppConfig, String paramString, int paramInt)
   {
-    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.isEngineTypeMiniGame()))
-    {
+    int i;
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.isEngineTypeMiniGame())) {
       i = 1;
-      if (i != 0) {
-        break label222;
-      }
+    } else {
+      i = 0;
     }
+    if (i == 0) {
+      i = 14;
+    } else {
+      i = 15;
+    }
+    Object localObject1;
+    Object localObject2;
     Object localObject3;
     Object localObject4;
-    Object localObject2;
-    Object localObject1;
-    String str1;
-    int j;
-    label222:
-    for (int i = 14;; i = 15)
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.launchParam != null))
     {
-      localObject3 = "";
-      localObject4 = "";
-      String str4 = "";
-      String str2 = "";
-      String str3 = "";
-      localObject2 = localObject3;
-      localObject1 = localObject4;
-      str1 = str4;
-      if (paramMiniAppConfig != null)
-      {
-        localObject2 = localObject3;
-        localObject1 = localObject4;
-        str1 = str4;
-        if (paramMiniAppConfig.launchParam != null)
-        {
-          localObject2 = paramMiniAppConfig.launchParam.entryPath;
-          localObject1 = paramMiniAppConfig.launchParam.reportData;
-          str1 = String.valueOf(paramMiniAppConfig.launchParam.scene);
-        }
-      }
-      localObject4 = str3;
-      localObject3 = str2;
-      if (paramMiniAppConfig != null)
-      {
-        localObject4 = str3;
-        localObject3 = str2;
-        if (paramMiniAppConfig.config != null)
-        {
-          localObject3 = paramMiniAppConfig.config.via;
-          localObject4 = paramMiniAppConfig.config.appId;
-        }
-      }
-      paramMiniAppConfig = AdUtils.getSpAdGdtCookie(i);
-      j = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniGameShareRate", 53);
-      if (paramInt != 0) {
-        break label228;
-      }
-      return AdUtils.createAdRequest(BaseApplicationImpl.getContext(), Long.parseLong(paramString), "", (String)localObject4, j, i, 0, paramMiniAppConfig, (String)localObject2, (String)localObject1, str1, (String)localObject3, 1, 2, getCurCachedAdsList(paramString, (String)localObject4));
-      i = 0;
-      break;
+      localObject1 = paramMiniAppConfig.launchParam.entryPath;
+      localObject2 = paramMiniAppConfig.launchParam.reportData;
+      j = paramMiniAppConfig.launchParam.scene;
+      localObject3 = String.valueOf(j);
     }
-    label228:
+    else
+    {
+      localObject4 = "";
+      localObject1 = localObject4;
+      localObject3 = localObject1;
+      localObject2 = localObject1;
+      localObject1 = localObject4;
+    }
+    if ((paramMiniAppConfig != null) && (paramMiniAppConfig.config != null))
+    {
+      localObject4 = paramMiniAppConfig.config.via;
+      paramMiniAppConfig = paramMiniAppConfig.config.appId;
+    }
+    else
+    {
+      paramMiniAppConfig = "";
+      localObject4 = paramMiniAppConfig;
+    }
+    String str = AdUtils.getSpAdGdtCookie(i);
+    int j = QzoneConfig.getInstance().getConfig("QZoneSetting", "MiniGameShareRate", 53);
+    if (paramInt == 0) {
+      return AdUtils.createAdRequest(BaseApplicationImpl.getContext(), Long.parseLong(paramString), "", paramMiniAppConfig, j, i, 0, str, (String)localObject1, (String)localObject2, (String)localObject3, (String)localObject4, 1, 2, getCurCachedAdsList(paramString, paramMiniAppConfig));
+    }
     if (paramInt == 1) {
-      return AdUtils.createAdRequest(BaseApplicationImpl.getContext(), Long.parseLong(paramString), "", (String)localObject4, j, i, 0, paramMiniAppConfig, (String)localObject2, (String)localObject1, str1, (String)localObject3, 1, 1, null);
+      return AdUtils.createAdRequest(BaseApplicationImpl.getContext(), Long.parseLong(paramString), "", paramMiniAppConfig, j, i, 0, str, (String)localObject1, (String)localObject2, (String)localObject3, (String)localObject4, 1, 1, null);
     }
     return null;
   }
@@ -233,22 +248,26 @@ public class MiniLoadingAdManager
   public static ArrayList<MiniAppAd.SpecifiedAdsItem> getCurCachedAdsList(String paramString1, String paramString2)
   {
     cachedAidFilePathMap.clear();
-    paramString1 = "mini_loading_ad_preload_adjson_key_" + paramString1 + "_" + paramString2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("mini_loading_ad_preload_adjson_key_");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramString2);
+    paramString1 = ((StringBuilder)localObject).toString();
     paramString1 = StorageUtil.getPreference().getString(paramString1, new JSONObject().toString());
     try
     {
-      paramString1 = new JSONObject(paramString1);
-      if (paramString1 == null) {
-        return null;
-      }
-      paramString1 = paramString1.optJSONArray("adArray");
-      if ((paramString1 != null) && (paramString1.length() >= 1))
+      paramString1 = new JSONObject(paramString1).optJSONArray("adArray");
+      if (paramString1 != null)
       {
+        if (paramString1.length() < 1) {
+          return null;
+        }
         paramString2 = new ArrayList();
         int i = 0;
         while (i < paramString1.length())
         {
-          MiniAppAd.SpecifiedAdsItem localSpecifiedAdsItem = new MiniAppAd.SpecifiedAdsItem();
+          localObject = new MiniAppAd.SpecifiedAdsItem();
           JSONObject localJSONObject = paramString1.getJSONObject(i);
           if (localJSONObject != null)
           {
@@ -257,15 +276,16 @@ public class MiniLoadingAdManager
             {
               long l = localJSONObject.getLong("aid");
               cachedAidFilePathMap.put(Long.valueOf(l), str);
-              localSpecifiedAdsItem.aid.set(l);
-              localSpecifiedAdsItem.creative_id.set(localJSONObject.getLong("creativeId"));
-              paramString2.add(localSpecifiedAdsItem);
+              ((MiniAppAd.SpecifiedAdsItem)localObject).aid.set(l);
+              ((MiniAppAd.SpecifiedAdsItem)localObject).creative_id.set(localJSONObject.getLong("creativeId"));
+              paramString2.add(localObject);
             }
           }
           i += 1;
         }
         return paramString2;
       }
+      return null;
     }
     catch (JSONException paramString1)
     {
@@ -287,58 +307,64 @@ public class MiniLoadingAdManager
   
   public static MiniLoadingAdManager getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new MiniLoadingAdManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new MiniLoadingAdManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private long getLimit(@MiniLoadingAdManager.CheckLoadingAdLimitType int paramInt, boolean paramBoolean)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return 0L;
-    case 0: 
-      if (paramBoolean) {
-        return this.maxSelectCountForUinAndAppid;
+      if (paramInt != 1) {
+        return 0L;
       }
-      return this.maxSelectCountForUin;
+      if (paramBoolean) {
+        paramInt = this.maxPreloadCountForUinAndAppid;
+      } else {
+        paramInt = this.maxPreloadCountForUin;
+      }
+      return paramInt;
     }
     if (paramBoolean) {
-      return this.maxPreloadCountForUinAndAppid;
+      paramInt = this.maxSelectCountForUinAndAppid;
+    } else {
+      paramInt = this.maxSelectCountForUin;
     }
-    return this.maxPreloadCountForUin;
+    return paramInt;
   }
   
   private static String getPrefix(@MiniLoadingAdManager.CheckLoadingAdLimitType int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return "";
-    case 0: 
-      return "mini_loading_ad_select_";
+      if (paramInt != 1) {
+        return "";
+      }
+      return "mini_loading_ad_preload_";
     }
-    return "mini_loading_ad_preload_";
+    return "mini_loading_ad_select_";
   }
   
   private boolean isViaUnsupported(String paramString)
   {
-    if ((TextUtils.isEmpty(this.unsupportedViaList)) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
+    if (!TextUtils.isEmpty(this.unsupportedViaList))
     {
-      return false;
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
       try
       {
         String[] arrayOfString = this.unsupportedViaList.split(",");
         if (arrayOfString.length < 1) {
-          continue;
+          return false;
         }
         int j = arrayOfString.length;
         int i = 0;
@@ -350,82 +376,107 @@ public class MiniLoadingAdManager
           }
           i += 1;
         }
+        StringBuilder localStringBuilder;
         return false;
       }
       catch (Throwable localThrowable)
       {
-        QLog.e("MiniLoadingAdManager", 1, "isViaUnsupported exception via:" + paramString, localThrowable);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isViaUnsupported exception via:");
+        localStringBuilder.append(paramString);
+        QLog.e("MiniLoadingAdManager", 1, localStringBuilder.toString(), localThrowable);
       }
     }
   }
   
   public static void requestPreloadLoadingAd(MiniAppConfig paramMiniAppConfig, String paramString)
   {
-    if ((paramMiniAppConfig == null) || (paramMiniAppConfig.config == null)) {
-      return;
+    if (paramMiniAppConfig != null)
+    {
+      if (paramMiniAppConfig.config == null) {
+        return;
+      }
+      QLog.d("MiniLoadingAdManager", 1, "预加载接口调用");
+      MiniAppAd.StGetAdReq localStGetAdReq = getAdReq(paramMiniAppConfig, paramString, 1);
+      MiniProgramLpReportDC04239.reportMiniAppEvent(paramMiniAppConfig, MiniProgramLpReportDC04239.getAppType(paramMiniAppConfig), null, "ad", "ad_loading", "preload_call", null);
+      long l = System.currentTimeMillis();
+      MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(localStGetAdReq, new MiniLoadingAdManager.5(l, paramMiniAppConfig, paramString));
     }
-    QLog.d("MiniLoadingAdManager", 1, "预加载接口调用");
-    MiniAppAd.StGetAdReq localStGetAdReq = getAdReq(paramMiniAppConfig, paramString, 1);
-    MiniProgramLpReportDC04239.reportMiniAppEvent(paramMiniAppConfig, MiniProgramLpReportDC04239.getAppType(paramMiniAppConfig), null, "ad", "ad_loading", "preload_call", null);
-    long l = System.currentTimeMillis();
-    MiniAppCmdUtil.getInstance().getRewardedVideoADInfo(localStGetAdReq, new MiniLoadingAdManager.5(l, paramMiniAppConfig, paramString));
   }
   
   private static void updateLoadingAdFrequencyLimitationRecord(@NonNull String paramString1, @NonNull String paramString2, @MiniLoadingAdManager.CheckLoadingAdLimitType int paramInt)
   {
-    String str1 = getPrefix(paramInt) + paramString2;
-    String str2 = str1 + "_times";
-    paramString1 = getPrefix(paramInt) + paramString2 + "_" + paramString1;
-    paramString2 = paramString1 + "_times";
-    long l1 = StorageUtil.getPreference().getLong(str1, 0L);
-    paramInt = StorageUtil.getPreference().getInt(str2, 0);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(getPrefix(paramInt));
+    ((StringBuilder)localObject1).append(paramString2);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("_times");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getPrefix(paramInt));
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString1);
+    paramString1 = localStringBuilder.toString();
+    paramString2 = new StringBuilder();
+    paramString2.append(paramString1);
+    paramString2.append("_times");
+    paramString2 = paramString2.toString();
+    long l1 = StorageUtil.getPreference().getLong((String)localObject1, 0L);
+    paramInt = StorageUtil.getPreference().getInt((String)localObject2, 0);
     long l2 = StorageUtil.getPreference().getLong(paramString1, 0L);
     int i = StorageUtil.getPreference().getInt(paramString2, 0);
     long l3 = getCurZeroTimeMillis();
     if (l1 != l3)
     {
-      StorageUtil.getPreference().edit().putLong(str1, l3).apply();
-      StorageUtil.getPreference().edit().putInt(str2, 1).apply();
+      StorageUtil.getPreference().edit().putLong((String)localObject1, l3).apply();
+      StorageUtil.getPreference().edit().putInt((String)localObject2, 1).apply();
     }
-    while (l2 != l3)
+    else
+    {
+      StorageUtil.getPreference().edit().putInt((String)localObject2, paramInt + 1).apply();
+    }
+    if (l2 != l3)
     {
       StorageUtil.getPreference().edit().putLong(paramString1, l3).apply();
       StorageUtil.getPreference().edit().putInt(paramString2, 1).apply();
       return;
-      StorageUtil.getPreference().edit().putInt(str2, paramInt + 1).apply();
     }
     StorageUtil.getPreference().edit().putInt(paramString2, i + 1).apply();
   }
   
   public MiniLoadingAdLayout getLoadingAdLayout(MiniAppConfig paramMiniAppConfig, Context paramContext, boolean paramBoolean, String paramString, GdtAd paramGdtAd)
   {
-    if (paramContext == null) {}
-    do
-    {
+    if (paramContext == null) {
       return null;
-      paramContext = new MiniLoadingAdLayout(paramContext);
-    } while (!paramContext.setupUI(paramMiniAppConfig, paramBoolean, paramString, paramGdtAd));
-    return paramContext;
+    }
+    paramContext = new MiniLoadingAdLayout(paramContext);
+    if (paramContext.setupUI(paramMiniAppConfig, paramBoolean, paramString, paramGdtAd)) {
+      return paramContext;
+    }
+    return null;
   }
   
   public void preloadLoadingAd(MiniAppConfig paramMiniAppConfig, String paramString)
   {
-    if ((paramMiniAppConfig.config == null) || (TextUtils.isEmpty(paramMiniAppConfig.config.appId)) || (!paramMiniAppConfig.config.enableLoadingAd))
+    if ((paramMiniAppConfig.config != null) && (!TextUtils.isEmpty(paramMiniAppConfig.config.appId)) && (paramMiniAppConfig.config.enableLoadingAd))
     {
-      QLog.d("MiniLoadingAdManager", 1, "preloadLoadingAd 没开广告位");
+      if (!checkLoadingAdFrequencyLimitation(paramMiniAppConfig.config.appId, paramString, 1))
+      {
+        QLog.d("MiniLoadingAdManager", 1, "preloadLoadingAd 频控限制");
+        return;
+      }
+      if (!extraPreloadIntervalCheck(paramMiniAppConfig.config.appId, paramString))
+      {
+        QLog.d("MiniLoadingAdManager", 1, "preloadLoadingAd 频控限制");
+        return;
+      }
+      ThreadManager.getSubThreadHandler().post(new MiniLoadingAdManager.4(this, paramMiniAppConfig, paramString));
       return;
     }
-    if (!checkLoadingAdFrequencyLimitation(paramMiniAppConfig.config.appId, paramString, 1))
-    {
-      QLog.d("MiniLoadingAdManager", 1, "preloadLoadingAd 频控限制");
-      return;
-    }
-    if (!extraPreloadIntervalCheck(paramMiniAppConfig.config.appId, paramString))
-    {
-      QLog.d("MiniLoadingAdManager", 1, "preloadLoadingAd 频控限制");
-      return;
-    }
-    ThreadManager.getSubThreadHandler().post(new MiniLoadingAdManager.4(this, paramMiniAppConfig, paramString));
+    QLog.d("MiniLoadingAdManager", 1, "preloadLoadingAd 没开广告位");
   }
   
   public void processSelectAdWithUncachedAd(GdtAd paramGdtAd, String paramString1, String paramString2, @NonNull MiniLoadingAdManager.OnChooseAdEndListener paramOnChooseAdEndListener)
@@ -461,7 +512,7 @@ public class MiniLoadingAdManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.manager.MiniLoadingAdManager
  * JD-Core Version:    0.7.0.1
  */

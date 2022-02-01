@@ -18,32 +18,47 @@ public class NativeUpdateBusiness
   private void a(@NonNull UpdateListenerParams paramUpdateListenerParams)
   {
     Object localObject = paramUpdateListenerParams.mBusinessUpdateParams;
-    if (localObject == null) {}
-    long l;
-    String str;
-    int i;
-    int j;
-    do
-    {
+    if (localObject == null) {
       return;
-      l = ((BusinessUpdateParams)localObject).mBid;
-      str = ((BusinessUpdateParams)localObject).mScid;
-      localObject = ((BusinessUpdateParams)localObject).mFrom;
-      i = paramUpdateListenerParams.mErrorCode;
-      j = paramUpdateListenerParams.mHttpCode;
-      paramUpdateListenerParams = paramUpdateListenerParams.mErrorMessage;
-      QLog.d("VasUpdate_NativeUpdateBusiness", 1, "onCompleted bid = " + l + " scid = " + str + " from = " + (String)localObject + " message = " + paramUpdateListenerParams + " errorCode = " + i + " httpCode = " + j);
-      paramUpdateListenerParams = UpdateCallbackSelector.getCallback(l);
-    } while (paramUpdateListenerParams == null);
-    paramUpdateListenerParams.onCompleted(l, str, "", (String)localObject, i, j);
+    }
+    long l = ((BusinessUpdateParams)localObject).mBid;
+    String str = ((BusinessUpdateParams)localObject).mScid;
+    localObject = ((BusinessUpdateParams)localObject).mFrom;
+    int i = paramUpdateListenerParams.mErrorCode;
+    int j = paramUpdateListenerParams.mHttpCode;
+    paramUpdateListenerParams = paramUpdateListenerParams.mErrorMessage;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onCompleted bid = ");
+    localStringBuilder.append(l);
+    localStringBuilder.append(" scid = ");
+    localStringBuilder.append(str);
+    localStringBuilder.append(" from = ");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" message = ");
+    localStringBuilder.append(paramUpdateListenerParams);
+    localStringBuilder.append(" errorCode = ");
+    localStringBuilder.append(i);
+    localStringBuilder.append(" httpCode = ");
+    localStringBuilder.append(j);
+    QLog.d("VasUpdate_NativeUpdateBusiness", 1, localStringBuilder.toString());
+    paramUpdateListenerParams = UpdateCallbackSelector.getCallback(l);
+    if (paramUpdateListenerParams != null) {
+      paramUpdateListenerParams.onCompleted(l, str, "", (String)localObject, i, j);
+    }
   }
   
   public void deleteFile(@NonNull BusinessUpdateParams paramBusinessUpdateParams, BusinessItemInfo paramBusinessItemInfo)
   {
     long l = paramBusinessUpdateParams.mBid;
     paramBusinessUpdateParams = paramBusinessUpdateParams.mScid;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_NativeUpdateBusiness", 2, "deleteFiles bid = " + l + " scid = " + paramBusinessUpdateParams);
+    if (QLog.isColorLevel())
+    {
+      paramBusinessItemInfo = new StringBuilder();
+      paramBusinessItemInfo.append("deleteFiles bid = ");
+      paramBusinessItemInfo.append(l);
+      paramBusinessItemInfo.append(" scid = ");
+      paramBusinessItemInfo.append(paramBusinessUpdateParams);
+      QLog.d("VasUpdate_NativeUpdateBusiness", 2, paramBusinessItemInfo.toString());
     }
     paramBusinessItemInfo = UpdateCallbackSelector.getCallback(l);
     if (paramBusinessItemInfo != null) {
@@ -58,27 +73,41 @@ public class NativeUpdateBusiness
   
   public BusinessItemInfo getBusinessItemInfo(long paramLong, String paramString)
   {
-    Object localObject = UpdateCallbackSelector.getCallback(paramLong);
-    if (localObject == null) {}
-    BusinessItemInfo localBusinessItemInfo;
-    do
-    {
-      return null;
-      localBusinessItemInfo = new BusinessItemInfo();
-      localBusinessItemInfo.mIsCanUpdate = ((QuickUpdateBusinessCallback)localObject).canUpdate(paramLong, paramString, "");
-      if (QLog.isColorLevel()) {
-        QLog.d("VasUpdate_NativeUpdateBusiness", 2, "canUpdate bid = " + paramLong + " scid = " + paramString + " mIsCanUpdate = " + localBusinessItemInfo.mIsCanUpdate);
-      }
-      localObject = ((QuickUpdateBusinessCallback)localObject).getItemInfo(paramLong, paramString);
-    } while (localObject == null);
-    localBusinessItemInfo.mSavePath = ((TagItemInfo)localObject).a;
-    localBusinessItemInfo.mSaveInDir = ((TagItemInfo)localObject).b;
-    if (TextUtils.isEmpty(localBusinessItemInfo.mSavePath))
-    {
-      QLog.e("VasUpdate_NativeUpdateBusiness", 1, "getBusinessItemInfo doesn't set savePath , bid = " + paramLong + " , scid = " + paramString);
+    Object localObject2 = UpdateCallbackSelector.getCallback(paramLong);
+    if (localObject2 == null) {
       return null;
     }
-    return localBusinessItemInfo;
+    Object localObject1 = new BusinessItemInfo();
+    ((BusinessItemInfo)localObject1).mIsCanUpdate = ((QuickUpdateBusinessCallback)localObject2).canUpdate(paramLong, paramString, "");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("canUpdate bid = ");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" scid = ");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" mIsCanUpdate = ");
+      localStringBuilder.append(((BusinessItemInfo)localObject1).mIsCanUpdate);
+      QLog.d("VasUpdate_NativeUpdateBusiness", 2, localStringBuilder.toString());
+    }
+    localObject2 = ((QuickUpdateBusinessCallback)localObject2).getItemInfo(paramLong, paramString);
+    if (localObject2 != null)
+    {
+      ((BusinessItemInfo)localObject1).mSavePath = ((TagItemInfo)localObject2).a;
+      ((BusinessItemInfo)localObject1).mSaveInDir = ((TagItemInfo)localObject2).b;
+      if (TextUtils.isEmpty(((BusinessItemInfo)localObject1).mSavePath))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("getBusinessItemInfo doesn't set savePath , bid = ");
+        ((StringBuilder)localObject1).append(paramLong);
+        ((StringBuilder)localObject1).append(" , scid = ");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.e("VasUpdate_NativeUpdateBusiness", 1, ((StringBuilder)localObject1).toString());
+        return null;
+      }
+      return localObject1;
+    }
+    return null;
   }
   
   public String getFrom()
@@ -90,8 +119,14 @@ public class NativeUpdateBusiness
   {
     long l = paramBusinessUpdateParams.mBid;
     paramBusinessUpdateParams = paramBusinessUpdateParams.mScid;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_NativeUpdateBusiness", 2, "isFileExists bid = " + l + " scid = " + paramBusinessUpdateParams);
+    if (QLog.isColorLevel())
+    {
+      paramBusinessItemInfo = new StringBuilder();
+      paramBusinessItemInfo.append("isFileExists bid = ");
+      paramBusinessItemInfo.append(l);
+      paramBusinessItemInfo.append(" scid = ");
+      paramBusinessItemInfo.append(paramBusinessUpdateParams);
+      QLog.d("VasUpdate_NativeUpdateBusiness", 2, paramBusinessItemInfo.toString());
     }
     paramBusinessItemInfo = UpdateCallbackSelector.getCallback(l);
     return (paramBusinessItemInfo != null) && (paramBusinessItemInfo.isFileExists(l, paramBusinessUpdateParams));
@@ -113,28 +148,35 @@ public class NativeUpdateBusiness
   {
     super.onProgress(paramUpdateListenerParams);
     Object localObject = paramUpdateListenerParams.mBusinessUpdateParams;
-    if (localObject == null) {}
-    long l1;
-    long l2;
-    long l3;
-    do
-    {
+    if (localObject == null) {
       return;
-      l1 = ((BusinessUpdateParams)localObject).mBid;
-      localObject = ((BusinessUpdateParams)localObject).mScid;
-      l2 = paramUpdateListenerParams.mProgress;
-      l3 = paramUpdateListenerParams.mProgressMax;
-      if (QLog.isColorLevel()) {
-        QLog.d("VasUpdate_NativeUpdateBusiness", 2, "onProgress bid = " + l1 + " scid = " + (String)localObject + " dwProgress = " + l2 + " dwProgressMax = " + l3);
-      }
-      paramUpdateListenerParams = UpdateCallbackSelector.getCallback(l1);
-    } while (paramUpdateListenerParams == null);
-    paramUpdateListenerParams.onProgress(l1, (String)localObject, "", l2, l3);
+    }
+    long l1 = ((BusinessUpdateParams)localObject).mBid;
+    localObject = ((BusinessUpdateParams)localObject).mScid;
+    long l2 = paramUpdateListenerParams.mProgress;
+    long l3 = paramUpdateListenerParams.mProgressMax;
+    if (QLog.isColorLevel())
+    {
+      paramUpdateListenerParams = new StringBuilder();
+      paramUpdateListenerParams.append("onProgress bid = ");
+      paramUpdateListenerParams.append(l1);
+      paramUpdateListenerParams.append(" scid = ");
+      paramUpdateListenerParams.append((String)localObject);
+      paramUpdateListenerParams.append(" dwProgress = ");
+      paramUpdateListenerParams.append(l2);
+      paramUpdateListenerParams.append(" dwProgressMax = ");
+      paramUpdateListenerParams.append(l3);
+      QLog.d("VasUpdate_NativeUpdateBusiness", 2, paramUpdateListenerParams.toString());
+    }
+    paramUpdateListenerParams = UpdateCallbackSelector.getCallback(l1);
+    if (paramUpdateListenerParams != null) {
+      paramUpdateListenerParams.onProgress(l1, (String)localObject, "", l2, l3);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.business.NativeUpdateBusiness
  * JD-Core Version:    0.7.0.1
  */

@@ -54,8 +54,9 @@ public class LuxuryGiftData
     localLuxuryGiftData.playTimeMonitor = this.playTimeMonitor;
     localLuxuryGiftData.giftIcon = this.giftIcon;
     localLuxuryGiftData.mBusinessUid = this.mBusinessUid;
-    if (this.data != null) {
-      localLuxuryGiftData.data = new ArrayList(this.data);
+    List localList = this.data;
+    if (localList != null) {
+      localLuxuryGiftData.data = new ArrayList(localList);
     }
     localLuxuryGiftData.mMsgExtInfo = this.mMsgExtInfo;
     return localLuxuryGiftData;
@@ -63,7 +64,7 @@ public class LuxuryGiftData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.uicomponent.luxurygiftcomponent_interface.model.LuxuryGiftData
  * JD-Core Version:    0.7.0.1
  */

@@ -51,31 +51,63 @@ public class Worker<T>
   {
     try
     {
-      long l = System.currentTimeMillis();
-      if ((this.mBasePreLoadTask.mPreloadExpiredTime > 0L) && (l - this.mRspTimeStamp > this.mBasePreLoadTask.mPreloadExpiredTime * 1000L))
+      long l1 = System.currentTimeMillis();
+      long l2 = this.mBasePreLoadTask.mPreloadExpiredTime;
+      StringBuilder localStringBuilder;
+      if ((l2 > 0L) && (l1 - this.mRspTimeStamp > this.mBasePreLoadTask.mPreloadExpiredTime * 1000L))
       {
-        PreLoader.log("id=" + this.mPreloadId + ", seq=" + this.mSeq + ", response is expored! mPreloadExpiredTime " + this.mBasePreLoadTask.mPreloadExpiredTime);
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("id=");
+        paramVarArgs.append(this.mPreloadId);
+        paramVarArgs.append(", seq=");
+        paramVarArgs.append(this.mSeq);
+        paramVarArgs.append(", response is expored! mPreloadExpiredTime ");
+        paramVarArgs.append(this.mBasePreLoadTask.mPreloadExpiredTime);
+        PreLoader.log(paramVarArgs.toString());
         paramVarArgs = null;
       }
-      while (isMainThread())
+      else
       {
-        PreLoader.log("id=" + this.mPreloadId + ", seq=" + this.mSeq + ", is in mainThread");
-        paramOnTaskListener.onComplete(paramVarArgs);
-        if (!this.mBasePreLoadTask.mIsOnlyRunOnce) {
-          return;
-        }
-        PreLoader.remove(this.mPreloadId);
-        return;
-        PreLoader.log("id=" + this.mPreloadId + ", seq=" + this.mSeq + ", response isn't expored! mPreloadExpiredTime " + this.mBasePreLoadTask.mPreloadExpiredTime);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("id=");
+        localStringBuilder.append(this.mPreloadId);
+        localStringBuilder.append(", seq=");
+        localStringBuilder.append(this.mSeq);
+        localStringBuilder.append(", response isn't expored! mPreloadExpiredTime ");
+        localStringBuilder.append(this.mBasePreLoadTask.mPreloadExpiredTime);
+        PreLoader.log(localStringBuilder.toString());
       }
-      PreLoader.log("id=" + this.mPreloadId + ", seq=" + this.mSeq + ", is not in mainThread");
+      if (isMainThread())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("id=");
+        localStringBuilder.append(this.mPreloadId);
+        localStringBuilder.append(", seq=");
+        localStringBuilder.append(this.mSeq);
+        localStringBuilder.append(", is in mainThread");
+        PreLoader.log(localStringBuilder.toString());
+        paramOnTaskListener.onComplete(paramVarArgs);
+        if (this.mBasePreLoadTask.mIsOnlyRunOnce) {
+          PreLoader.remove(this.mPreloadId);
+        }
+      }
+      else
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("id=");
+        localStringBuilder.append(this.mPreloadId);
+        localStringBuilder.append(", seq=");
+        localStringBuilder.append(this.mSeq);
+        localStringBuilder.append(", is not in mainThread");
+        PreLoader.log(localStringBuilder.toString());
+        this.mMainThreadHandler.post(new Worker.2(this, paramOnTaskListener, paramVarArgs));
+        return;
+      }
     }
     catch (Exception paramOnTaskListener)
     {
       PreLoader.log(paramOnTaskListener);
-      return;
     }
-    this.mMainThreadHandler.post(new Worker.2(this, paramOnTaskListener, paramVarArgs));
   }
   
   static void setDefaultThreadPoolExecutor(ExecutorService paramExecutorService)
@@ -88,20 +120,25 @@ public class Worker<T>
   private void setState(String paramString)
   {
     this.mState = paramString;
-    PreLoader.log("id=" + this.mPreloadId + ", seq=" + this.mSeq + ", set state to " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=");
+    localStringBuilder.append(this.mPreloadId);
+    localStringBuilder.append(", seq=");
+    localStringBuilder.append(this.mSeq);
+    localStringBuilder.append(", set state to ");
+    localStringBuilder.append(paramString);
+    PreLoader.log(localStringBuilder.toString());
   }
   
   public void doPreLoad()
   {
-    if (this.mThreadPoolExecutor != null) {
-      this.mThreadPoolExecutor.execute(this);
-    }
-    for (;;)
-    {
-      setState(State.Loading);
-      return;
+    ExecutorService localExecutorService = this.mThreadPoolExecutor;
+    if (localExecutorService != null) {
+      localExecutorService.execute(this);
+    } else {
       mDefaultThreadPoolExecutor.execute(this);
     }
+    setState(State.Loading);
   }
   
   public void onLoaded(T... paramVarArgs)
@@ -114,14 +151,26 @@ public class Worker<T>
       safeListenData(this.mOnCompleteListener, paramVarArgs);
       return;
     }
-    PreLoader.log("id=" + this.mPreloadId + ", seq=" + this.mSeq + ", done but listener is null");
+    paramVarArgs = new StringBuilder();
+    paramVarArgs.append("id=");
+    paramVarArgs.append(this.mPreloadId);
+    paramVarArgs.append(", seq=");
+    paramVarArgs.append(this.mSeq);
+    paramVarArgs.append(", done but listener is null");
+    PreLoader.log(paramVarArgs.toString());
   }
   
   public void onRemove()
   {
     try
     {
-      PreLoader.log("id=" + this.mPreloadId + ", seq=" + this.mSeq + ", on remove worker");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("id=");
+      localStringBuilder.append(this.mPreloadId);
+      localStringBuilder.append(", seq=");
+      localStringBuilder.append(this.mSeq);
+      localStringBuilder.append(", on remove worker");
+      PreLoader.log(localStringBuilder.toString());
       this.mBasePreLoadTask.onRemove();
       return;
     }
@@ -133,7 +182,13 @@ public class Worker<T>
   
   public void removeListener(OnTaskListener paramOnTaskListener)
   {
-    PreLoader.log("id=" + this.mPreloadId + ", seq=" + this.mSeq + ", remove listener");
+    paramOnTaskListener = new StringBuilder();
+    paramOnTaskListener.append("id=");
+    paramOnTaskListener.append(this.mPreloadId);
+    paramOnTaskListener.append(", seq=");
+    paramOnTaskListener.append(this.mSeq);
+    paramOnTaskListener.append(", remove listener");
+    PreLoader.log(paramOnTaskListener.toString());
     this.mOnCompleteListener = null;
   }
   
@@ -152,20 +207,34 @@ public class Worker<T>
   
   public void setListener(OnTaskListener paramOnTaskListener)
   {
-    StringBuilder localStringBuilder = new StringBuilder().append("id=").append(this.mPreloadId).append(", seq=").append(this.mSeq).append(", setListener listener ");
-    if (paramOnTaskListener != null) {}
-    for (boolean bool = true;; bool = false)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id=");
+    localStringBuilder.append(this.mPreloadId);
+    localStringBuilder.append(", seq=");
+    localStringBuilder.append(this.mSeq);
+    localStringBuilder.append(", setListener listener ");
+    boolean bool;
+    if (paramOnTaskListener != null) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    PreLoader.log(localStringBuilder.toString());
+    if (paramOnTaskListener != null)
     {
-      PreLoader.log(bool);
-      if (paramOnTaskListener != null)
-      {
-        this.mOnCompleteListener = paramOnTaskListener;
-        PreLoader.log("id=" + this.mPreloadId + ", seq=" + this.mSeq + ", cur state " + this.mState);
-        if (State.Done.equals(this.mState)) {
-          safeListenData(paramOnTaskListener, this.mResponse);
-        }
+      this.mOnCompleteListener = paramOnTaskListener;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("id=");
+      localStringBuilder.append(this.mPreloadId);
+      localStringBuilder.append(", seq=");
+      localStringBuilder.append(this.mSeq);
+      localStringBuilder.append(", cur state ");
+      localStringBuilder.append(this.mState);
+      PreLoader.log(localStringBuilder.toString());
+      if (State.Done.equals(this.mState)) {
+        safeListenData(paramOnTaskListener, this.mResponse);
       }
-      return;
     }
   }
   
@@ -178,7 +247,7 @@ public class Worker<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.engineering.preload.Worker
  * JD-Core Version:    0.7.0.1
  */

@@ -9,30 +9,33 @@ public class SSOLoadBusinessObserver
 {
   public SSOLoadBusinessObserver.SSOLoadListener a;
   
-  public SSOLoadBusinessObserver(SSOLoadBusinessObserver.SSOLoadListener paramSSOLoadListener)
-  {
-    this.a = paramSSOLoadListener;
-  }
-  
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    GdtLog.b("GdtSSOLoadAD", "onReceive i " + paramInt + " success " + paramBoolean + " bundle " + paramBundle);
-    switch (paramInt)
-    {
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (!paramBoolean) {
-          break;
-        }
-      } while (this.a == null);
-      this.a.a(paramBundle);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onReceive i ");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(" success ");
+    ((StringBuilder)localObject).append(paramBoolean);
+    ((StringBuilder)localObject).append(" bundle ");
+    ((StringBuilder)localObject).append(paramBundle);
+    GdtLog.b("GdtSSOLoadAD", ((StringBuilder)localObject).toString());
+    if (paramInt != 1) {
       return;
-    } while (this.a == null);
-    this.a.a();
+    }
+    if (paramBoolean)
+    {
+      localObject = this.a;
+      if (localObject != null) {
+        ((SSOLoadBusinessObserver.SSOLoadListener)localObject).a(paramBundle);
+      }
+    }
+    else
+    {
+      paramBundle = this.a;
+      if (paramBundle != null) {
+        paramBundle.a();
+      }
+    }
   }
 }
 

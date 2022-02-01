@@ -25,23 +25,31 @@ public final class ViewConfigurationCompat
     }
     catch (Exception localException)
     {
-      Log.i("ViewConfigCompat", "Could not find method getScaledScrollFactor() on ViewConfiguration");
+      label23:
+      break label23;
     }
+    Log.i("ViewConfigCompat", "Could not find method getScaledScrollFactor() on ViewConfiguration");
   }
   
   private static float getLegacyScrollFactor(ViewConfiguration paramViewConfiguration, Context paramContext)
   {
-    if ((Build.VERSION.SDK_INT >= 25) && (sGetScaledScrollFactorMethod != null)) {
-      try
-      {
-        int i = ((Integer)sGetScaledScrollFactorMethod.invoke(paramViewConfiguration, new Object[0])).intValue();
-        return i;
-      }
-      catch (Exception paramViewConfiguration)
-      {
-        Log.i("ViewConfigCompat", "Could not find method getScaledScrollFactor() on ViewConfiguration");
-      }
+    Method localMethod;
+    if (Build.VERSION.SDK_INT >= 25)
+    {
+      localMethod = sGetScaledScrollFactorMethod;
+      if (localMethod == null) {}
     }
+    try
+    {
+      int i = ((Integer)localMethod.invoke(paramViewConfiguration, new Object[0])).intValue();
+      return i;
+    }
+    catch (Exception paramViewConfiguration)
+    {
+      label35:
+      break label35;
+    }
+    Log.i("ViewConfigCompat", "Could not find method getScaledScrollFactor() on ViewConfiguration");
     paramViewConfiguration = new TypedValue();
     if (paramContext.getTheme().resolveAttribute(16842829, paramViewConfiguration, true)) {
       return paramViewConfiguration.getDimension(paramContext.getResources().getDisplayMetrics());
@@ -97,7 +105,7 @@ public final class ViewConfigurationCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewConfigurationCompat
  * JD-Core Version:    0.7.0.1
  */

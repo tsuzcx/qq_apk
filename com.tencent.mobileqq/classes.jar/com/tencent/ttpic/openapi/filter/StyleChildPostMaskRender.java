@@ -27,13 +27,15 @@ public class StyleChildPostMaskRender
   public void ApplyGLSLFilter()
   {
     super.ApplyGLSLFilter();
-    GLES20.glGenTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void clearGLSLSelf()
   {
     super.clearGLSLSelf();
-    GLES20.glDeleteTextures(this.tex.length, this.tex, 0);
+    int[] arrayOfInt = this.tex;
+    GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
   }
   
   public void initParams(int paramInt1, int paramInt2)
@@ -74,7 +76,7 @@ public class StyleChildPostMaskRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.filter.StyleChildPostMaskRender
  * JD-Core Version:    0.7.0.1
  */

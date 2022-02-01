@@ -9,25 +9,28 @@ public class MsgBackupConfigProcessor$MsgBackupConfigData
   
   public static MsgBackupConfigData a(String paramString)
   {
-    boolean bool = true;
     if (paramString == null) {
       return null;
     }
-    try
+    for (;;)
     {
-      MsgBackupConfigData localMsgBackupConfigData = new MsgBackupConfigData();
-      if (new JSONObject(paramString).optInt("isChatMigrateEnable", 0) == 1) {}
-      for (;;)
+      try
       {
-        localMsgBackupConfigData.a = bool;
-        return localMsgBackupConfigData;
-        bool = false;
+        MsgBackupConfigData localMsgBackupConfigData = new MsgBackupConfigData();
+        int i = new JSONObject(paramString).optInt("isChatMigrateEnable", 0);
+        bool = true;
+        if (i == 1)
+        {
+          localMsgBackupConfigData.a = bool;
+          return localMsgBackupConfigData;
+        }
       }
-      return null;
-    }
-    catch (Exception paramString)
-    {
-      QLog.e("MsgBackupConfigProcessor", 2, "MsgBackupConfigData parse error", paramString);
+      catch (Exception paramString)
+      {
+        QLog.e("MsgBackupConfigProcessor", 2, "MsgBackupConfigData parse error", paramString);
+        return null;
+      }
+      boolean bool = false;
     }
   }
   
@@ -38,7 +41,7 @@ public class MsgBackupConfigProcessor$MsgBackupConfigData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.util.MsgBackupConfigProcessor.MsgBackupConfigData
  * JD-Core Version:    0.7.0.1
  */

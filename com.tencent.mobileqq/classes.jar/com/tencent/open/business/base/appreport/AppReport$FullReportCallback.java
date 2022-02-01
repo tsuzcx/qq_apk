@@ -17,15 +17,19 @@ public class AppReport$FullReportCallback
   
   public void a(Exception paramException)
   {
-    LogUtility.b("AppReport", "<AppReport> FullReportCallback onException >>> " + paramException.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("<AppReport> FullReportCallback onException >>> ");
+    localStringBuilder.append(paramException.toString());
+    LogUtility.b("AppReport", localStringBuilder.toString());
     AppReport.b(this.jdField_a_of_type_AndroidContentContext);
     if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
     {
       LogUtility.c("AppReport", "<AppReport> onException get app update list after full report");
-      SimpleAccount localSimpleAccount = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
-      paramException = "";
-      if (localSimpleAccount != null) {
-        paramException = localSimpleAccount.getUin();
+      paramException = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
+      if (paramException != null) {
+        paramException = paramException.getUin();
+      } else {
+        paramException = "";
       }
       AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, false, paramException);
     }
@@ -34,43 +38,41 @@ public class AppReport$FullReportCallback
   
   public void a(JSONObject paramJSONObject)
   {
-    Object localObject = paramJSONObject;
+    JSONObject localJSONObject = paramJSONObject;
     if (paramJSONObject == null) {
-      localObject = new JSONObject();
+      localJSONObject = new JSONObject();
     }
-    LogUtility.b("AppReport", "<AppReport> FullReportCallback onResult >>> " + ((JSONObject)localObject).toString());
-    int i = ((JSONObject)localObject).optInt("code", -1);
-    if (i == 0)
-    {
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("<AppReport> FullReportCallback onResult >>> ");
+    paramJSONObject.append(localJSONObject.toString());
+    LogUtility.b("AppReport", paramJSONObject.toString());
+    int i = localJSONObject.optInt("code", -1);
+    if (i == 0) {
       AppReport.a(this.jdField_a_of_type_AndroidContentContext);
-      if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
-      {
-        LogUtility.c("AppReport", "<AppReport> onResult get app update list after full report");
-        localObject = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
+    } else {
+      AppReport.b(this.jdField_a_of_type_AndroidContentContext);
+    }
+    if ((this.jdField_a_of_type_JavaLangString != null) && (this.jdField_a_of_type_ComTencentSmttSdkWebView != null))
+    {
+      LogUtility.c("AppReport", "<AppReport> onResult get app update list after full report");
+      paramJSONObject = BaseApplicationImpl.getApplication().getFirstSimpleAccount();
+      if (paramJSONObject != null) {
+        paramJSONObject = paramJSONObject.getUin();
+      } else {
         paramJSONObject = "";
-        if (localObject != null) {
-          paramJSONObject = ((SimpleAccount)localObject).getUin();
-        }
-        if (i != 0) {
-          break label136;
-        }
+      }
+      if (i == 0) {
         AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, true, paramJSONObject);
+      } else {
+        AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, false, paramJSONObject);
       }
     }
-    for (;;)
-    {
-      AppReport.a = false;
-      return;
-      AppReport.b(this.jdField_a_of_type_AndroidContentContext);
-      break;
-      label136:
-      AppUpdate.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentSmttSdkWebView, this.jdField_a_of_type_JavaLangString, false, paramJSONObject);
-    }
+    AppReport.a = false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.business.base.appreport.AppReport.FullReportCallback
  * JD-Core Version:    0.7.0.1
  */

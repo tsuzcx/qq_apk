@@ -14,9 +14,8 @@ import android.view.Window;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.TextView;
 import androidx.annotation.NonNull;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.theme.ThemeNavigationBarUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.utils.QQTheme;
 import com.tencent.qqlive.module.videoreport.inject.dialog.ReportDialog;
 import com.tencent.widget.immersive.ImmersiveUtils;
 
@@ -34,7 +33,7 @@ public abstract class BaseStatusCardView
   
   public BaseStatusCardView(@NonNull Context paramContext, BaseStatusCardView.OnDismissCallback paramOnDismissCallback)
   {
-    super(paramContext, 2131755235);
+    super(paramContext, 2131755400);
     this.jdField_a_of_type_Float = 0.5F;
     this.jdField_b_of_type_Float = 0.5F;
     this.jdField_a_of_type_ArrayOfInt = new int[2];
@@ -53,100 +52,89 @@ public abstract class BaseStatusCardView
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent) {}
   
-  public void a(TextView paramTextView, QQAppInterface paramQQAppInterface)
+  public void a(TextView paramTextView)
   {
-    a(paramTextView, paramQQAppInterface, 2131165628, 2131167235);
+    a(paramTextView, 2131165605, 2131167266);
   }
   
-  public void a(TextView paramTextView, QQAppInterface paramQQAppInterface, int paramInt1, int paramInt2)
+  public void a(TextView paramTextView, int paramInt1, int paramInt2)
   {
-    if (ThemeUtil.isNowThemeIsNight(paramQQAppInterface, false, null)) {}
-    for (;;)
-    {
-      paramTextView.setTextColor(paramTextView.getResources().getColor(paramInt1));
-      return;
+    if (!QQTheme.a()) {
       paramInt1 = paramInt2;
     }
+    paramTextView.setTextColor(paramTextView.getResources().getColor(paramInt1));
   }
   
   public void a(float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length != 2)) {
-      return;
+    if (paramArrayOfFloat != null)
+    {
+      if (paramArrayOfFloat.length != 2) {
+        return;
+      }
+      this.jdField_a_of_type_Float = paramArrayOfFloat[0];
+      this.jdField_b_of_type_Float = paramArrayOfFloat[1];
     }
-    this.jdField_a_of_type_Float = paramArrayOfFloat[0];
-    this.jdField_b_of_type_Float = paramArrayOfFloat[1];
   }
   
   protected abstract void a(int[] paramArrayOfInt);
   
-  public void aA_()
+  public void aL_()
   {
     show();
   }
   
-  public boolean b(boolean paramBoolean)
-  {
-    if ((this.jdField_b_of_type_AndroidViewView == null) || (this.jdField_a_of_type_AndroidViewView == null)) {
-      return false;
-    }
-    a(this.jdField_a_of_type_ArrayOfInt);
-    View localView = this.jdField_b_of_type_AndroidViewView;
-    float f = this.jdField_a_of_type_Float;
-    localView.setPivotX(this.jdField_a_of_type_ArrayOfInt[0] * f);
-    this.jdField_b_of_type_AndroidViewView.setPivotY(this.jdField_b_of_type_Float * this.jdField_a_of_type_ArrayOfInt[1]);
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
-    c(paramBoolean);
-    if (!paramBoolean) {
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this);
-    }
-    this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
-    return true;
-  }
-  
-  protected void c(boolean paramBoolean)
+  protected void b(boolean paramBoolean)
   {
     float f4 = 1.0F;
     float f1;
-    float f2;
-    label16:
-    float f3;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       f1 = 0.3F;
-      if (!paramBoolean) {
-        break label147;
-      }
-      f2 = 1.0F;
-      if (!paramBoolean) {
-        break label152;
-      }
-      f3 = 0.5F;
-      label24:
-      if (!paramBoolean) {
-        break label158;
-      }
-    }
-    for (;;)
-    {
-      ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewView, "scaleX", new float[] { f1, f2 });
-      ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewView, "scaleY", new float[] { f1, f2 });
-      ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "alpha", new float[] { f3, f4 });
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(300L);
-      this.jdField_a_of_type_AndroidAnimationAnimatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
-      return;
+    } else {
       f1 = 1.0F;
-      break;
-      label147:
+    }
+    float f2;
+    if (paramBoolean) {
+      f2 = 1.0F;
+    } else {
       f2 = 0.0F;
-      break label16;
-      label152:
+    }
+    float f3;
+    if (paramBoolean) {
+      f3 = 0.5F;
+    } else {
       f3 = 1.0F;
-      break label24;
-      label158:
+    }
+    if (!paramBoolean) {
       f4 = 0.0F;
     }
+    ObjectAnimator localObjectAnimator1 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewView, "scaleX", new float[] { f1, f2 });
+    ObjectAnimator localObjectAnimator2 = ObjectAnimator.ofFloat(this.jdField_b_of_type_AndroidViewView, "scaleY", new float[] { f1, f2 });
+    ObjectAnimator localObjectAnimator3 = ObjectAnimator.ofFloat(this.jdField_a_of_type_AndroidViewView, "alpha", new float[] { f3, f4 });
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.play(localObjectAnimator1).with(localObjectAnimator2).with(localObjectAnimator3);
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.setDuration(300L);
+    this.jdField_a_of_type_AndroidAnimationAnimatorSet.setInterpolator(new AccelerateDecelerateInterpolator());
+  }
+  
+  public boolean b(boolean paramBoolean)
+  {
+    if (this.jdField_b_of_type_AndroidViewView != null)
+    {
+      if (this.jdField_a_of_type_AndroidViewView == null) {
+        return false;
+      }
+      a(this.jdField_a_of_type_ArrayOfInt);
+      this.jdField_b_of_type_AndroidViewView.setPivotX(this.jdField_a_of_type_Float * this.jdField_a_of_type_ArrayOfInt[0]);
+      this.jdField_b_of_type_AndroidViewView.setPivotY(this.jdField_b_of_type_Float * this.jdField_a_of_type_ArrayOfInt[1]);
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet = new AnimatorSet();
+      b(paramBoolean);
+      if (!paramBoolean) {
+        this.jdField_a_of_type_AndroidAnimationAnimatorSet.addListener(this);
+      }
+      this.jdField_a_of_type_AndroidAnimationAnimatorSet.start();
+      return true;
+    }
+    return false;
   }
   
   public void dismiss()
@@ -163,7 +151,7 @@ public abstract class BaseStatusCardView
   
   protected void f() {}
   
-  public void m()
+  public void k()
   {
     f();
     super.dismiss();
@@ -184,9 +172,19 @@ public abstract class BaseStatusCardView
     paramAnimator.removeListener(this);
   }
   
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
+  }
+  
   public void onAnimationRepeat(Animator paramAnimator) {}
   
   public void onAnimationStart(Animator paramAnimator) {}
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
+  }
   
   public void show()
   {
@@ -196,7 +194,7 @@ public abstract class BaseStatusCardView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.view.BaseStatusCardView
  * JD-Core Version:    0.7.0.1
  */

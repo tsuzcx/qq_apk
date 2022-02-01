@@ -26,15 +26,16 @@ public class ThreadManager
   
   public static ThreadManager getsInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new ThreadManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new ThreadManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private void initThreadPool()
@@ -49,36 +50,47 @@ public class ThreadManager
   
   public void execute(int paramInt, Runnable paramRunnable)
   {
-    switch (paramInt)
+    ThreadPoolExecutor localThreadPoolExecutor;
+    if (paramInt != 1)
     {
-    default: 
-      throw new RuntimeException(" You should complete other types!");
-    case 3: 
-      this.mainHandler.post(paramRunnable);
-      return;
-    case 2: 
-      this.drawableExecutor.execute(paramRunnable);
-      return;
+      if (paramInt != 2)
+      {
+        if (paramInt == 3)
+        {
+          this.mainHandler.post(paramRunnable);
+          return;
+        }
+        throw new RuntimeException(" You should complete other types!");
+      }
+      localThreadPoolExecutor = this.drawableExecutor;
     }
-    this.resourceExecutor.execute(paramRunnable);
+    else
+    {
+      localThreadPoolExecutor = this.resourceExecutor;
+    }
+    localThreadPoolExecutor.execute(paramRunnable);
   }
   
   public void removeTask(Runnable paramRunnable, int paramInt)
   {
-    switch (paramInt)
+    ThreadPoolExecutor localThreadPoolExecutor;
+    if (paramInt != 1)
     {
-    default: 
-      throw new RuntimeException(" You should complete other types!");
-    case 2: 
-      this.drawableExecutor.remove(paramRunnable);
-      return;
+      if (paramInt == 2) {
+        localThreadPoolExecutor = this.drawableExecutor;
+      } else {
+        throw new RuntimeException(" You should complete other types!");
+      }
     }
-    this.resourceExecutor.remove(paramRunnable);
+    else {
+      localThreadPoolExecutor = this.resourceExecutor;
+    }
+    localThreadPoolExecutor.remove(paramRunnable);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.ThreadManager
  * JD-Core Version:    0.7.0.1
  */

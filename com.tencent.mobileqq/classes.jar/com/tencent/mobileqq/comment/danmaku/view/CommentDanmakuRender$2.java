@@ -13,15 +13,23 @@ class CommentDanmakuRender$2
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadCanceled : " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append("onLoadCanceled : ");
+      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("CommentDanmakuRender", 2, paramURLDrawable.toString());
     }
   }
   
   public void onLoadFialed(URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CommentDanmakuRender", 2, "onLoadFailed : " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramURLDrawable = new StringBuilder();
+      paramURLDrawable.append("onLoadFailed : ");
+      paramURLDrawable.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("CommentDanmakuRender", 2, paramURLDrawable.toString());
     }
   }
   
@@ -38,7 +46,7 @@ class CommentDanmakuRender$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.comment.danmaku.view.CommentDanmakuRender.2
  * JD-Core Version:    0.7.0.1
  */

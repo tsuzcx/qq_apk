@@ -27,20 +27,22 @@ public enum qh
   
   public static int b(int paramInt)
   {
-    switch (qh.1.a[a(paramInt).ordinal()])
+    paramInt = qh.1.a[a(paramInt).ordinal()];
+    if (paramInt != 1)
     {
-    case 3: 
-    default: 
-      return 5;
-    case 1: 
-      return 10;
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {}
+        return 5;
+      }
+      return 1;
     }
-    return 1;
+    return 10;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.qh
  * JD-Core Version:    0.7.0.1
  */

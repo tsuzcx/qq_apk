@@ -26,11 +26,12 @@ public abstract class CountDownTimer$CountDownTimerListener
   
   public void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer != null) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer.a(paramLong);
+    CountDownTimer localCountDownTimer = this.jdField_a_of_type_ComTencentMobileqqActivityPhotopreviewCountDownTimer;
+    if (localCountDownTimer != null) {
+      localCountDownTimer.a(paramLong);
     }
     this.b = paramLong;
-    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + 1000L * paramLong);
+    this.jdField_a_of_type_Long = (SystemClock.elapsedRealtime() + paramLong * 1000L);
   }
   
   public abstract void b();
@@ -39,7 +40,7 @@ public abstract class CountDownTimer$CountDownTimerListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photopreview.CountDownTimer.CountDownTimerListener
  * JD-Core Version:    0.7.0.1
  */

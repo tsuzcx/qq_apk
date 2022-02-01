@@ -16,38 +16,32 @@ class PagRenderWorker$1
     if (PagRenderWorker.access$000(this.this$0) == null) {
       return;
     }
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("pag start and duration is");
-    localStringBuilder.append(PagRenderWorker.access$000(this.this$0).getDuration());
-    localStringBuilder.append(", ");
-    localStringBuilder.append(this.this$0.url);
-    LogUtils.c("PagRenderWorker", localStringBuilder.toString());
-    this.this$0.loopedCount = 0;
-    if (PagRenderWorker.access$100(this.this$0) != 2) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("pag start and duration is");
+    ((StringBuilder)localObject).append(PagRenderWorker.access$000(this.this$0).getDuration());
+    ((StringBuilder)localObject).append(", ");
+    ((StringBuilder)localObject).append(this.this$0.url);
+    LogUtils.c("PagRenderWorker", ((StringBuilder)localObject).toString());
+    localObject = this.this$0;
+    ((PagRenderWorker)localObject).loopedCount = 0;
+    if (PagRenderWorker.access$100((PagRenderWorker)localObject) != 2) {
       PagRenderWorker.access$000(this.this$0).setCurrentPlayTime(0L);
     }
-    if (PagRenderWorker.access$100(this.this$0) == 2) {
-      if (Build.VERSION.SDK_INT >= 19) {
-        PagRenderWorker.access$000(this.this$0).resume();
-      }
-    }
-    for (;;)
-    {
-      PagRenderWorker.access$102(this.this$0, 1);
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("animator start");
-      localStringBuilder.append(this.this$0.url);
-      LogUtils.c("PagRenderWorker", localStringBuilder.toString());
-      return;
-      PagRenderWorker.access$000(this.this$0).start();
-      continue;
+    if ((PagRenderWorker.access$100(this.this$0) == 2) && (Build.VERSION.SDK_INT >= 19)) {
+      PagRenderWorker.access$000(this.this$0).resume();
+    } else {
       PagRenderWorker.access$000(this.this$0).start();
     }
+    PagRenderWorker.access$102(this.this$0, 1);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("animator start");
+    ((StringBuilder)localObject).append(this.this$0.url);
+    LogUtils.c("PagRenderWorker", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.peterlmeng.animate_image.renderer.PagRenderWorker.1
  * JD-Core Version:    0.7.0.1
  */

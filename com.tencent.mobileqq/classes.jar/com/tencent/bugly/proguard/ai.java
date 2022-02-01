@@ -24,8 +24,9 @@ public final class ai
   public final void a(j paramj)
   {
     paramj.a(this.a, 0);
-    if (this.b != null) {
-      paramj.a(this.b, 1);
+    ArrayList localArrayList = this.b;
+    if (localArrayList != null) {
+      paramj.a(localArrayList, 1);
     }
   }
   
@@ -33,7 +34,7 @@ public final class ai
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.bugly.proguard.ai
  * JD-Core Version:    0.7.0.1
  */

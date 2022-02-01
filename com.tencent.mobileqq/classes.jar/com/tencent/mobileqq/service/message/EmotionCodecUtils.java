@@ -15,7 +15,7 @@ public class EmotionCodecUtils
   {
     if (paramChar < '')
     {
-      paramArrayOfByte[(0 + paramInt)] = ((byte)paramChar);
+      paramArrayOfByte[(paramInt + 0)] = ((byte)paramChar);
       return 1;
     }
     if (paramChar < 'ࠀ')
@@ -36,26 +36,28 @@ public class EmotionCodecUtils
       return paramString;
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    int i = 0;
-    if (i < paramString.length())
+    int j;
+    for (int i = 0; i < paramString.length(); i = j + 1)
     {
-      if ((paramString.charAt(i) == '\024') && (i + 1 < paramString.length()))
+      if (paramString.charAt(i) == '\024')
       {
-        int k = QQSysFaceUtil.convertToServer(paramString.charAt(i + 1));
-        j = i;
-        if (k >= 0)
+        int k = i + 1;
+        if (k < paramString.length())
         {
+          int m = QQSysFaceUtil.convertToServer(paramString.charAt(k));
+          j = i;
+          if (m < 0) {
+            continue;
+          }
           localStringBuilder.append(paramString.charAt(i));
-          localStringBuilder.append((char)(k / 128 + 65));
-          localStringBuilder.append((char)(k % 128 + 65));
+          localStringBuilder.append((char)(m / 128 + 65));
+          localStringBuilder.append((char)(m % 128 + 65));
+          j = k;
+          continue;
         }
       }
-      for (int j = i + 1;; j = i)
-      {
-        i = j + 1;
-        break;
-        localStringBuilder.append(paramString.charAt(i));
-      }
+      localStringBuilder.append(paramString.charAt(i));
+      j = i;
     }
     return localStringBuilder.toString();
   }
@@ -69,31 +71,32 @@ public class EmotionCodecUtils
     byte[] arrayOfByte = new byte[m << 2];
     int k = 0;
     int j = 0;
-    if (k < m)
+    while (k < m)
     {
       int i = paramString.charAt(k);
-      if (i != 20) {
+      if (i != 20)
+      {
         j += a(i, arrayOfByte, j);
       }
-      for (;;)
+      else
       {
-        k += 1;
-        break;
         int n = j + 1;
         arrayOfByte[j] = ((byte)i);
-        i = paramString.charAt(k + 1);
-        if (i >= b.length)
+        j = k + 1;
+        i = paramString.charAt(j);
+        short[] arrayOfShort = b;
+        if (i >= arrayOfShort.length)
         {
-          j = a(i, arrayOfByte, n) + n;
+          j = n + a(i, arrayOfByte, n);
         }
         else
         {
-          int i1 = (char)(b[i] + 65);
+          arrayOfByte[n] = ((byte)(char)(arrayOfShort[i] + 65));
+          k = j;
           j = n + 1;
-          arrayOfByte[n] = ((byte)i1);
-          k += 1;
         }
       }
+      k += 1;
     }
     paramString = new byte[j];
     System.arraycopy(arrayOfByte, 0, paramString, 0, j);
@@ -104,57 +107,57 @@ public class EmotionCodecUtils
   {
     ByteBuffer localByteBuffer = ByteBuffer.allocate(paramArrayOfByte.length * 2);
     int i = 0;
-    if (i < paramArrayOfByte.length)
+    while (i < paramArrayOfByte.length)
     {
-      if (paramArrayOfByte[i] != 20) {
-        if (paramArrayOfByte[i] == 13) {
+      int j;
+      if (paramArrayOfByte[i] != 20)
+      {
+        if (paramArrayOfByte[i] == 13)
+        {
           if ((i > 0) && (paramArrayOfByte[(i - 1)] == 20))
           {
             localByteBuffer.put(paramArrayOfByte[i]);
-            j = i;
-          }
-        }
-      }
-      int k;
-      do
-      {
-        for (;;)
-        {
-          i = j + 1;
-          break;
-          if (i + 1 < paramArrayOfByte.length)
-          {
-            j = i;
-            if (paramArrayOfByte[(i + 1)] != 10)
-            {
-              localByteBuffer.put((byte)10);
-              j = i;
-            }
           }
           else
           {
-            localByteBuffer.put((byte)10);
-            j = i;
-            continue;
-            localByteBuffer.put(paramArrayOfByte[i]);
-            j = i;
+            j = i + 1;
+            if (j < paramArrayOfByte.length)
+            {
+              if (paramArrayOfByte[j] != 10) {
+                localByteBuffer.put((byte)10);
+              }
+            }
+            else {
+              localByteBuffer.put((byte)10);
+            }
           }
         }
-        k = (short)(paramArrayOfByte[(i + 1)] & 0xFF);
-        localByteBuffer.put(paramArrayOfByte[i]);
-        j = i;
-      } while (a[k] <= 0);
-      int j = a[k] - 1;
-      if (j < 128) {
-        localByteBuffer.put((byte)j);
+        else {
+          localByteBuffer.put(paramArrayOfByte[i]);
+        }
       }
-      for (;;)
+      else
       {
         j = i + 1;
-        break;
-        localByteBuffer.put((byte)(j >> 6 & 0x1F | 0xC0));
-        localByteBuffer.put((byte)(j >> 0 & 0x3F | 0x80));
+        int k = (short)(paramArrayOfByte[j] & 0xFF);
+        localByteBuffer.put(paramArrayOfByte[i]);
+        short[] arrayOfShort = a;
+        if (arrayOfShort[k] > 0)
+        {
+          i = arrayOfShort[k] - 1;
+          if (i < 128)
+          {
+            localByteBuffer.put((byte)i);
+          }
+          else
+          {
+            localByteBuffer.put((byte)(i >> 6 & 0x1F | 0xC0));
+            localByteBuffer.put((byte)(i >> 0 & 0x3F | 0x80));
+          }
+          i = j;
+        }
       }
+      i += 1;
     }
     paramArrayOfByte = new byte[localByteBuffer.position()];
     localByteBuffer.flip();
@@ -169,29 +172,33 @@ public class EmotionCodecUtils
     }
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < paramString.length())
+    while (i < paramString.length())
     {
-      if ((paramString.charAt(i) == '\024') && (i + 2 < paramString.length()))
+      if (paramString.charAt(i) == '\024')
       {
-        int k = (paramString.charAt(i + 1) - 'A') * 128 + paramString.charAt(i + 2) - 65;
-        j = i;
-        if (k >= 0) {
+        int k = i + 2;
+        if (k < paramString.length())
+        {
+          int j = i + 1;
+          k = (paramString.charAt(j) - 'A') * 128 + paramString.charAt(k) - 65;
+          if (k < 0) {
+            break label123;
+          }
           localStringBuilder.append(String.valueOf(new char[] { '\024', (char)QQSysFaceUtil.convertToLocal(k) }));
+          i = j + 1;
+          break label123;
         }
       }
-      for (int j = i + 1 + 1;; j = i)
-      {
-        i = j + 1;
-        break;
-        localStringBuilder.append(paramString.charAt(i));
-      }
+      localStringBuilder.append(paramString.charAt(i));
+      label123:
+      i += 1;
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.EmotionCodecUtils
  * JD-Core Version:    0.7.0.1
  */

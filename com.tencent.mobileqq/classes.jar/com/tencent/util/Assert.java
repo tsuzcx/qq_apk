@@ -17,12 +17,13 @@ public class Assert
   
   public static void a(String paramString, Object paramObject)
   {
-    if (paramObject != null) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(paramString, bool);
-      return;
+    boolean bool;
+    if (paramObject != null) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    a(paramString, bool);
   }
   
   public static void a(String paramString, boolean paramBoolean)
@@ -39,7 +40,7 @@ public class Assert
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.Assert
  * JD-Core Version:    0.7.0.1
  */

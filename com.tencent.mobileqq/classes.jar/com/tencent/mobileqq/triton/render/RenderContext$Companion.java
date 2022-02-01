@@ -15,22 +15,29 @@ public final class RenderContext$Companion
     try
     {
       paramContext = paramContext.getSystemService("activity");
-      if (paramContext == null) {
+      if (paramContext != null)
+      {
+        if (((ActivityManager)paramContext).getDeviceConfigurationInfo().reqGlEsVersion >= 196608) {
+          return true;
+        }
+      }
+      else {
         throw new TypeCastException("null cannot be cast to non-null type android.app.ActivityManager");
       }
     }
     catch (Exception paramContext)
     {
-      Logger.e$default("RenderContext", "get support ES3 error! " + paramContext.getMessage(), null, 4, null);
-      return false;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("get support ES3 error! ");
+      localStringBuilder.append(paramContext.getMessage());
+      Logger.e$default("RenderContext", localStringBuilder.toString(), null, 4, null);
     }
-    int i = ((ActivityManager)paramContext).getDeviceConfigurationInfo().reqGlEsVersion;
-    return i >= 196608;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.render.RenderContext.Companion
  * JD-Core Version:    0.7.0.1
  */

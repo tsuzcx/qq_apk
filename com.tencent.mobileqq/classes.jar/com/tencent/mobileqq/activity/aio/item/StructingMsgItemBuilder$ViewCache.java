@@ -7,9 +7,14 @@ import java.util.Iterator;
 
 public class StructingMsgItemBuilder$ViewCache
 {
-  private static final String jdField_a_of_type_JavaLangString = ViewCache.class.getSimpleName();
-  private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap = new StructingMsgItemBuilder.CacheMap(null);
+  private static final String jdField_a_of_type_JavaLangString = "ViewCache";
+  private StructingMsgItemBuilder.CacheMap jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap;
   private StructingMsgItemBuilder.CacheMap b = new StructingMsgItemBuilder.CacheMap(null);
+  
+  public StructingMsgItemBuilder$ViewCache()
+  {
+    this.a = new StructingMsgItemBuilder.CacheMap(null);
+  }
   
   private StructingMsgItemBuilder.ViewWrapper a(String paramString, ViewGroup paramViewGroup)
   {
@@ -17,17 +22,17 @@ public class StructingMsgItemBuilder$ViewCache
     while (localIterator.hasNext())
     {
       paramString = (StructingMsgItemBuilder.ViewWrapper)localIterator.next();
-      if (paramString != null) {
+      if (paramString != null)
+      {
         paramString.a(paramViewGroup);
+        break label45;
       }
     }
-    for (;;)
-    {
-      this.b.remove(paramString);
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(paramString);
-      return paramString;
-      paramString = null;
-    }
+    paramString = null;
+    label45:
+    this.b.remove(paramString);
+    this.a.add(paramString);
+    return paramString;
   }
   
   public View a(String paramString, ViewGroup paramViewGroup)
@@ -42,35 +47,36 @@ public class StructingMsgItemBuilder$ViewCache
   
   public void a()
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.clear();
+    this.a.clear();
     this.b.clear();
   }
   
   public void a(String paramString, View paramView, ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.add(new StructingMsgItemBuilder.ViewWrapper(paramString, paramView, paramViewGroup));
+    this.a.add(new StructingMsgItemBuilder.ViewWrapper(paramString, paramView, paramViewGroup));
   }
   
   public void a(String paramString, ViewGroup paramViewGroup)
   {
-    if (paramViewGroup == null) {}
-    StructingMsgItemBuilder.ViewWrapper localViewWrapper;
-    do
-    {
+    if (paramViewGroup == null) {
       return;
-      while (!paramString.hasNext()) {
-        paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.get(paramString).iterator();
+    }
+    paramString = this.a.get(paramString).iterator();
+    while (paramString.hasNext())
+    {
+      StructingMsgItemBuilder.ViewWrapper localViewWrapper = (StructingMsgItemBuilder.ViewWrapper)paramString.next();
+      if ((localViewWrapper != null) && (localViewWrapper.a() != null) && (localViewWrapper.a() == paramViewGroup))
+      {
+        localViewWrapper.a().removeAllViews();
+        this.a.remove(localViewWrapper);
+        this.b.add(localViewWrapper);
       }
-      localViewWrapper = (StructingMsgItemBuilder.ViewWrapper)paramString.next();
-    } while ((localViewWrapper == null) || (localViewWrapper.a() == null) || (localViewWrapper.a() != paramViewGroup));
-    localViewWrapper.a().removeAllViews();
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemStructingMsgItemBuilder$CacheMap.remove(localViewWrapper);
-    this.b.add(localViewWrapper);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.StructingMsgItemBuilder.ViewCache
  * JD-Core Version:    0.7.0.1
  */

@@ -36,46 +36,46 @@ final class FilterCreateFactory
     {
     default: 
       return null;
-    case 90: 
-      return new QQSVArtFilterNew(90, paramQQFilterRenderManager);
-    case 70: 
-      return new QQAVFilter(70, paramQQFilterRenderManager);
-    case 20: 
-      return new QQBeautyFilter(20, paramQQFilterRenderManager);
     case 1000: 
       return new QQDrawScreenFilter(1000, paramQQFilterRenderManager);
-    case 80: 
-      return new QQSpecialAVFilter(80, paramQQFilterRenderManager);
-    case 10: 
-      return new QQLowLightFilter(paramQQFilterRenderManager);
-    case 100: 
-      return new QQMovieFilter(paramQQFilterRenderManager);
+    case 999: 
+      return new QQFaceDetect(paramQQFilterRenderManager);
+    case 185: 
+      return new QQEmojiRedPackFilter(paramQQFilterRenderManager);
+    case 184: 
+      return new QQPtColorFilter(paramQQFilterRenderManager);
+    case 183: 
+      return new PKFilter(paramQQFilterRenderManager);
+    case 181: 
+      return new QQTextEjectaFilter(181, paramQQFilterRenderManager);
+    case 180: 
+      return new QQMTVFilter(180, paramQQFilterRenderManager);
+    case 170: 
+      return new QQImage2FrameFilter(paramQQFilterRenderManager);
+    case 160: 
+      return new QQTransferFilter(paramQQFilterRenderManager);
+    case 150: 
+      return new QQScaleFilter(150, paramQQFilterRenderManager);
+    case 145: 
+      return new QQGaussianBlurFilter(145, paramQQFilterRenderManager);
     case 120: 
       return new QQDynamicStickersFilter(120, paramQQFilterRenderManager);
     case 110: 
       return new QQTrackerStickersFilter(110, paramQQFilterRenderManager);
+    case 100: 
+      return new QQMovieFilter(paramQQFilterRenderManager);
+    case 90: 
+      return new QQSVArtFilterNew(90, paramQQFilterRenderManager);
+    case 80: 
+      return new QQSpecialAVFilter(80, paramQQFilterRenderManager);
+    case 70: 
+      return new QQAVFilter(70, paramQQFilterRenderManager);
+    case 20: 
+      return new QQBeautyFilter(20, paramQQFilterRenderManager);
     case 13: 
       return new QQImgHazeRmoveFilter(13, paramQQFilterRenderManager);
-    case 160: 
-      return new QQTransferFilter(paramQQFilterRenderManager);
-    case 180: 
-      return new QQMTVFilter(180, paramQQFilterRenderManager);
-    case 145: 
-      return new QQGaussianBlurFilter(145, paramQQFilterRenderManager);
-    case 150: 
-      return new QQScaleFilter(150, paramQQFilterRenderManager);
-    case 181: 
-      return new QQTextEjectaFilter(181, paramQQFilterRenderManager);
-    case 170: 
-      return new QQImage2FrameFilter(paramQQFilterRenderManager);
-    case 183: 
-      return new PKFilter(paramQQFilterRenderManager);
-    case 999: 
-      return new QQFaceDetect(paramQQFilterRenderManager);
-    case 184: 
-      return new QQPtColorFilter(paramQQFilterRenderManager);
     }
-    return new QQEmojiRedPackFilter(paramQQFilterRenderManager);
+    return new QQLowLightFilter(paramQQFilterRenderManager);
   }
   
   static String getFilterTag(int paramInt)
@@ -103,7 +103,7 @@ final class FilterCreateFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.FilterCreateFactory
  * JD-Core Version:    0.7.0.1
  */

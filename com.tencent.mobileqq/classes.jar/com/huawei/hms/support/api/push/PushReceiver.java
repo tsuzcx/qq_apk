@@ -3,12 +3,11 @@ package com.huawei.hms.support.api.push;
 import android.content.BroadcastReceiver;
 import android.content.Context;
 import android.content.Intent;
-import android.os.Bundle;
 import android.text.TextUtils;
-import com.huawei.hms.push.aa;
+import com.huawei.hms.push.s;
+import com.huawei.hms.push.u;
 import com.huawei.hms.push.utils.JsonUtil;
-import com.huawei.hms.push.w;
-import com.huawei.hms.push.z;
+import com.huawei.hms.push.v;
 import com.huawei.hms.support.log.HMSLog;
 import com.huawei.hms.utils.ResourceLoaderUtil;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -18,57 +17,36 @@ import org.json.JSONObject;
 public final class PushReceiver
   extends BroadcastReceiver
 {
-  private static JSONObject a(JSONObject paramJSONObject)
+  public static JSONObject a(JSONObject paramJSONObject)
   {
     if (paramJSONObject != null) {
-      return paramJSONObject.optJSONObject("psContent");
+      return paramJSONObject.optJSONObject("msgContent");
     }
     return null;
   }
   
-  private static JSONObject a(byte[] paramArrayOfByte)
+  public static JSONObject a(byte[] paramArrayOfByte)
   {
     try
     {
-      paramArrayOfByte = new JSONObject(aa.a(paramArrayOfByte));
+      paramArrayOfByte = new JSONObject(v.a(paramArrayOfByte));
       return paramArrayOfByte;
     }
     catch (JSONException paramArrayOfByte)
     {
-      HMSLog.w("PushReceiver", "JSONException:parse message body failed.");
+      label14:
+      break label14;
     }
+    HMSLog.w("PushReceiver", "JSONException:parse message body failed.");
     return null;
   }
   
-  private void a(Context paramContext, Intent paramIntent)
-  {
-    try
-    {
-      if (paramIntent.hasExtra("device_token"))
-      {
-        z.a().execute(new PushReceiver.b(paramContext, paramIntent, null));
-        return;
-      }
-      HMSLog.i("PushReceiver", "This message dose not sent by hwpush.");
-      return;
-    }
-    catch (RuntimeException paramContext)
-    {
-      HMSLog.e("PushReceiver", "handlePushMessageEvent execute task runtime exception.");
-      return;
-    }
-    catch (Exception paramContext)
-    {
-      HMSLog.e("PushReceiver", "handlePushTokenEvent execute task error");
-    }
-  }
-  
-  private static JSONObject b(Intent paramIntent)
+  public static JSONObject b(Intent paramIntent)
   {
     paramIntent = a(paramIntent.getByteArrayExtra("msg_data"));
-    JSONObject localJSONObject = b(paramIntent);
+    JSONObject localJSONObject = a(paramIntent);
     String str = JsonUtil.getString(localJSONObject, "data", null);
-    if (w.a(localJSONObject, a(localJSONObject), str)) {
+    if (s.a(localJSONObject, b(localJSONObject), str)) {
       return paramIntent;
     }
     if (TextUtils.isEmpty(str)) {
@@ -83,21 +61,21 @@ public final class PushReceiver
     return null;
   }
   
-  private static JSONObject b(JSONObject paramJSONObject)
+  public static JSONObject b(JSONObject paramJSONObject)
   {
     if (paramJSONObject != null) {
-      return paramJSONObject.optJSONObject("msgContent");
+      return paramJSONObject.optJSONObject("psContent");
     }
     return null;
   }
   
-  private void b(Context paramContext, Intent paramIntent)
+  public final void a(Context paramContext, Intent paramIntent)
   {
     try
     {
       if (paramIntent.hasExtra("msg_data"))
       {
-        z.a().execute(new PushReceiver.a(paramContext, paramIntent, null));
+        u.a().execute(new PushReceiver.a(paramContext, paramIntent, null));
         return;
       }
       HMSLog.i("PushReceiver", "This push message dose not sent by hwpush.");
@@ -105,65 +83,90 @@ public final class PushReceiver
     }
     catch (RuntimeException paramContext)
     {
-      HMSLog.e("PushReceiver", "handlePushMessageEvent execute task runtime exception.");
-      return;
+      break label42;
     }
     catch (Exception paramContext)
     {
-      HMSLog.e("PushReceiver", "handlePushMessageEvent execute task error");
+      label34:
+      label42:
+      break label34;
     }
+    HMSLog.e("PushReceiver", "handlePushMessageEvent execute task error");
+    return;
+    HMSLog.e("PushReceiver", "handlePushMessageEvent execute task runtime exception.");
   }
   
-  public void onPushMsg(Context paramContext, byte[] paramArrayOfByte, String paramString) {}
-  
-  public boolean onPushMsg(Context paramContext, byte[] paramArrayOfByte, Bundle paramBundle)
+  public final void b(Context paramContext, Intent paramIntent)
   {
-    String str = "";
-    if (paramBundle != null) {
-      str = paramBundle.getString("deviceToken");
+    try
+    {
+      if (paramIntent.hasExtra("device_token"))
+      {
+        u.a().execute(new PushReceiver.b(paramContext, paramIntent, null));
+        return;
+      }
+      HMSLog.i("PushReceiver", "This message dose not sent by hwpush.");
+      return;
     }
-    onPushMsg(paramContext, paramArrayOfByte, str);
-    return true;
+    catch (RuntimeException paramContext)
+    {
+      break label42;
+    }
+    catch (Exception paramContext)
+    {
+      label34:
+      label42:
+      break label34;
+    }
+    HMSLog.e("PushReceiver", "handlePushTokenEvent execute task error");
+    return;
+    HMSLog.e("PushReceiver", "handlePushMessageEvent execute task runtime exception.");
   }
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramContext == null)) {
-      return;
+    Object localObject;
+    if (paramIntent != null)
+    {
+      if (paramContext == null) {
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("push receive broadcast message, Intent:");
+      ((StringBuilder)localObject).append(paramIntent.getAction());
+      ((StringBuilder)localObject).append(" pkgName:");
+      ((StringBuilder)localObject).append(paramContext.getPackageName());
+      HMSLog.i("PushReceiver", ((StringBuilder)localObject).toString());
     }
-    HMSLog.i("PushReceiver", "push receive broadcast message, Intent:" + paramIntent.getAction() + " pkgName:" + paramContext.getPackageName());
-    String str;
     try
     {
       paramIntent.getStringExtra("TestIntent");
-      str = paramIntent.getAction();
+      localObject = paramIntent.getAction();
       if (ResourceLoaderUtil.getmContext() == null) {
         ResourceLoaderUtil.setmContext(paramContext.getApplicationContext());
       }
-      if ("com.huawei.android.push.intent.REGISTRATION".equals(str))
+      if ("com.huawei.android.push.intent.REGISTRATION".equals(localObject))
+      {
+        b(paramContext, paramIntent);
+        return;
+      }
+      if ("com.huawei.android.push.intent.RECEIVE".equals(localObject))
       {
         a(paramContext, paramIntent);
         return;
       }
+      paramContext = new StringBuilder();
+      paramContext.append("message can't be recognised:");
+      paramContext.append(paramIntent.toUri(0));
+      HMSLog.i("PushReceiver", paramContext.toString());
+      return;
     }
     catch (Exception paramContext)
     {
-      HMSLog.e("PushReceiver", "intent has some error");
-      return;
+      label150:
+      break label150;
     }
-    if ("com.huawei.android.push.intent.RECEIVE".equals(str))
-    {
-      b(paramContext, paramIntent);
-      return;
-    }
-    HMSLog.i("PushReceiver", "message can't be recognised:" + paramIntent.toUri(0));
-  }
-  
-  public void onToken(Context paramContext, String paramString) {}
-  
-  public void onToken(Context paramContext, String paramString, Bundle paramBundle)
-  {
-    onToken(paramContext, paramString);
+    HMSLog.e("PushReceiver", "intent has some error");
   }
 }
 

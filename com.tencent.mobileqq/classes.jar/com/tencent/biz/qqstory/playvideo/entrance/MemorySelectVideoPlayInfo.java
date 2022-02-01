@@ -15,12 +15,16 @@ public class MemorySelectVideoPlayInfo
   
   public String toString()
   {
-    return "MemorySelectVideoPlayInfo{childPlayInfo=" + this.childPlayInfo + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MemorySelectVideoPlayInfo{childPlayInfo=");
+    localStringBuilder.append(this.childPlayInfo);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.entrance.MemorySelectVideoPlayInfo
  * JD-Core Version:    0.7.0.1
  */

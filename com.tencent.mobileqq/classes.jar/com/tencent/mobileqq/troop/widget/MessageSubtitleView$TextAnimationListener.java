@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.troop.widget;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 import java.util.Queue;
 
 class MessageSubtitleView$TextAnimationListener
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   int jdField_a_of_type_Int;
   boolean jdField_a_of_type_Boolean = false;
@@ -37,7 +37,7 @@ class MessageSubtitleView$TextAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.MessageSubtitleView.TextAnimationListener
  * JD-Core Version:    0.7.0.1
  */

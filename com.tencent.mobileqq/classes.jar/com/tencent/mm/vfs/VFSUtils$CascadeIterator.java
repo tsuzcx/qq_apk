@@ -13,16 +13,6 @@ abstract class VFSUtils$CascadeIterator<From, To>
   private To mNext;
   private final Iterator<? extends From> mSource;
   
-  static
-  {
-    if (!VFSUtils.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   VFSUtils$CascadeIterator(Iterator<? extends From> paramIterator)
   {
     this.mSource = paramIterator;
@@ -41,14 +31,16 @@ abstract class VFSUtils$CascadeIterator<From, To>
   {
     while (this.mNext == null)
     {
-      if (this.mCurrent != null)
+      Object localObject = this.mCurrent;
+      if (localObject != null)
       {
-        this.mChildren = traversal(this.mCurrent, this.mCurrentConverted);
+        this.mChildren = traversal(localObject, this.mCurrentConverted);
         this.mCurrent = null;
       }
-      if (this.mChildren != null)
+      localObject = this.mChildren;
+      if (localObject != null)
       {
-        if (this.mChildren.hasNext())
+        if (((Iterator)localObject).hasNext())
         {
           this.mNext = this.mChildren.next();
           continue;
@@ -60,16 +52,16 @@ abstract class VFSUtils$CascadeIterator<From, To>
           continue;
         }
       }
-      assert ((this.mCurrent == null) && (this.mChildren == null) && (this.mNext == null));
       if (!this.mSource.hasNext())
       {
         this.mCurrentConverted = null;
         return false;
       }
       this.mCurrent = this.mSource.next();
-      if (this.mCurrent != null)
+      localObject = this.mCurrent;
+      if (localObject != null)
       {
-        this.mCurrentConverted = convert(this.mCurrent);
+        this.mCurrentConverted = convert(localObject);
         if (!this.mChildrenFirst) {
           this.mNext = this.mCurrentConverted;
         }
@@ -92,7 +84,7 @@ abstract class VFSUtils$CascadeIterator<From, To>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mm.vfs.VFSUtils.CascadeIterator
  * JD-Core Version:    0.7.0.1
  */

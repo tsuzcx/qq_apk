@@ -25,19 +25,19 @@ final class e<TResult>
   {
     if (this.d >= this.b)
     {
-      if (this.e != null) {
-        this.c.a(new ExecutionException("a task failed", this.e));
+      Exception localException = this.e;
+      if (localException != null)
+      {
+        this.c.a(new ExecutionException("a task failed", localException));
+        return;
       }
+      if (this.f)
+      {
+        this.c.a();
+        return;
+      }
+      this.c.a(null);
     }
-    else {
-      return;
-    }
-    if (this.f)
-    {
-      this.c.a();
-      return;
-    }
-    this.c.a(null);
   }
   
   public final void onCanceled()
@@ -74,7 +74,7 @@ final class e<TResult>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hmf.tasks.a.e
  * JD-Core Version:    0.7.0.1
  */

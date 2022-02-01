@@ -22,13 +22,14 @@ public final class msg_svc$PbThirdQQUnReadMsgNumResp$ThirdQQRespInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56 }, new String[] { "third_uin", "third_uin_cookie", "msg_num", "msg_flag", "redbag_time", "status", "last_msg_time" }, new Object[] { Long.valueOf(0L), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, ThirdQQRespInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56 }, new String[] { "third_uin", "third_uin_cookie", "msg_num", "msg_flag", "redbag_time", "status", "last_msg_time" }, new Object[] { Long.valueOf(0L), localByteStringMicro, localInteger, localInteger, localInteger, localInteger, localInteger }, ThirdQQRespInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     msf.msgsvc.msg_svc.PbThirdQQUnReadMsgNumResp.ThirdQQRespInfo
  * JD-Core Version:    0.7.0.1
  */

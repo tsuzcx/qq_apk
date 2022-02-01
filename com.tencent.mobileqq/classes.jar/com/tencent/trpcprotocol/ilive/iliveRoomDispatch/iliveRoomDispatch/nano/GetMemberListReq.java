@@ -31,60 +31,75 @@ public final class GetMemberListReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 8: 
-        this.a = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 16: 
-        this.b = paramCodedInputByteBufferNano.readUInt64();
+      if (i == 0) {
         break;
       }
-      this.c = paramCodedInputByteBufferNano.readUInt64();
+      if (i != 8)
+      {
+        if (i != 16)
+        {
+          if (i != 24)
+          {
+            if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+              return this;
+            }
+          }
+          else {
+            this.c = paramCodedInputByteBufferNano.readUInt64();
+          }
+        }
+        else {
+          this.b = paramCodedInputByteBufferNano.readUInt64();
+        }
+      }
+      else {
+        this.a = paramCodedInputByteBufferNano.readUInt64();
+      }
     }
+    return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    long l = this.a;
     int i = j;
-    if (this.a != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, this.a);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(1, l);
     }
+    l = this.b;
     j = i;
-    if (this.b != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(2, this.b);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(2, l);
     }
+    l = this.c;
     i = j;
-    if (this.c != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, this.c);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(3, l);
     }
     return i;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.a != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(1, this.a);
+    long l = this.a;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(1, l);
     }
-    if (this.b != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(2, this.b);
+    l = this.b;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(2, l);
     }
-    if (this.c != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(3, this.c);
+    l = this.c;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(3, l);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.iliveRoomDispatch.iliveRoomDispatch.nano.GetMemberListReq
  * JD-Core Version:    0.7.0.1
  */

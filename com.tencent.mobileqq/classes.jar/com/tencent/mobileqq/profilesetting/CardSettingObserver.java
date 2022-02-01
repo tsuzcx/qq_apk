@@ -8,7 +8,7 @@ import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/CardSettingObserver;", "Lcom/tencent/mobileqq/app/BusinessObserver;", "()V", "handleGetCardDisplaySettingNotify", "", "isSuccess", "", "data", "", "handleSetCardDisplaySettingNotify", "onGetCardDisplaySetting", "uin", "", "card", "Lcom/tencent/mobileqq/data/Card;", "onSetCardDisplaySetting", "items", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "Lkotlin/collections/ArrayList;", "onUpdate", "type", "", "Companion", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilesetting/CardSettingObserver;", "Lcom/tencent/mobileqq/app/BusinessObserver;", "()V", "handleGetCardDisplaySettingNotify", "", "isSuccess", "", "data", "", "handleSetCardDisplaySettingNotify", "onGetCardDisplaySetting", "uin", "", "card", "Lcom/tencent/mobileqq/data/Card;", "onSetCardDisplaySetting", "items", "Ljava/util/ArrayList;", "Lcom/tencent/mobileqq/profilesetting/ReqSetSettingItem;", "Lkotlin/collections/ArrayList;", "onUpdate", "type", "", "Companion", "profilecard-temp-api_release"}, k=1, mv={1, 1, 16})
 public class CardSettingObserver
   implements BusinessObserver
 {
@@ -18,15 +18,19 @@ public class CardSettingObserver
   
   private final void handleGetCardDisplaySettingNotify(boolean paramBoolean, Object paramObject)
   {
-    if ((paramObject instanceof Object[])) {
-      onGetCardDisplaySetting(paramBoolean, (String)((Object[])paramObject)[0], (Card)((Object[])paramObject)[1]);
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      onGetCardDisplaySetting(paramBoolean, (String)paramObject[0], (Card)paramObject[1]);
     }
   }
   
   private final void handleSetCardDisplaySettingNotify(boolean paramBoolean, Object paramObject)
   {
-    if ((paramObject instanceof Object[])) {
-      onSetCardDisplaySetting(paramBoolean, (String)((Object[])paramObject)[0], (Card)((Object[])paramObject)[1], (ArrayList)((Object[])paramObject)[2]);
+    if ((paramObject instanceof Object[]))
+    {
+      paramObject = (Object[])paramObject;
+      onSetCardDisplaySetting(paramBoolean, (String)paramObject[0], (Card)paramObject[1], (ArrayList)paramObject[2]);
     }
   }
   
@@ -37,20 +41,20 @@ public class CardSettingObserver
   public void onUpdate(int paramInt, boolean paramBoolean, @NotNull Object paramObject)
   {
     Intrinsics.checkParameterIsNotNull(paramObject, "data");
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      handleGetCardDisplaySettingNotify(paramBoolean, paramObject);
+      if (paramInt != 2) {
+        return;
+      }
+      handleSetCardDisplaySettingNotify(paramBoolean, paramObject);
       return;
     }
-    handleSetCardDisplaySettingNotify(paramBoolean, paramObject);
+    handleGetCardDisplaySettingNotify(paramBoolean, paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.CardSettingObserver
  * JD-Core Version:    0.7.0.1
  */

@@ -26,8 +26,9 @@ public class SimpleStep$GetResultSimpleStep<T>
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStep$SimpleStepResultCallback != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStep$SimpleStepResultCallback.a(this.jdField_a_of_type_JavaLangObject);
+    SimpleStep.SimpleStepResultCallback localSimpleStepResultCallback = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistModelRequestSimpleStep$SimpleStepResultCallback;
+    if (localSimpleStepResultCallback != null) {
+      localSimpleStepResultCallback.a(this.jdField_a_of_type_JavaLangObject);
     }
   }
   
@@ -42,7 +43,7 @@ public class SimpleStep$GetResultSimpleStep<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.model.request.SimpleStep.GetResultSimpleStep
  * JD-Core Version:    0.7.0.1
  */

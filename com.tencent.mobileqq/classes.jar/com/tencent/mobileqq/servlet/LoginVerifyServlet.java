@@ -6,10 +6,7 @@ import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
 import android.os.Bundle;
 import android.util.Base64;
-import com.tencent.biz.pubaccount.readinjoy.gifvideo.utils.IPUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.observer.LoginVerifyObserver;
 import com.tencent.mobileqq.pb.ByteStringMicro;
@@ -21,8 +18,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.troop.org.pb.oidb_0xe96.ReqBody;
 import com.tencent.mobileqq.troop.org.pb.oidb_0xe9a.ReqBody;
+import com.tencent.mobileqq.utils.IPUtils;
 import com.tencent.mobileqq.utils.WupUtil;
 import com.tencent.qphone.base.remote.FromServiceMsg;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import face.FaceForeignIp.AvailableRequest;
 import face.qqlogin.FaceSecureCheck.SecureCheckRequest;
@@ -65,7 +64,10 @@ public class LoginVerifyServlet
     }
     catch (JSONException paramString1)
     {
-      QLog.e("LoginVerifyServlet", 1, "sendGetTmpKey JSONException : " + paramString1.getMessage());
+      paramString2 = new StringBuilder();
+      paramString2.append("sendGetTmpKey JSONException : ");
+      paramString2.append(paramString1.getMessage());
+      QLog.e("LoginVerifyServlet", 1, paramString2.toString());
     }
   }
   
@@ -98,88 +100,6 @@ public class LoginVerifyServlet
     }
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, LoginVerifyObserver paramLoginVerifyObserver)
-  {
-    paramString = new FaceSecureCheck.SecureCheckRequest();
-    Object localObject = IPUtils.a(BaseApplicationImpl.getApplication());
-    boolean bool;
-    if (localObject != null)
-    {
-      paramString.bytes_client_addr.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
-      localObject = (WifiManager)BaseApplicationImpl.getApplication().getApplicationContext().getSystemService("wifi");
-      if (localObject == null) {
-        break label365;
-      }
-      bool = ((WifiManager)localObject).isWifiEnabled();
-      localObject = ((WifiManager)localObject).getConnectionInfo();
-      if ((!bool) || (localObject == null)) {
-        break label319;
-      }
-      paramString.uint32_client_addr.set(((WifiInfo)localObject).getIpAddress());
-      label91:
-      localObject = paramQQAppInterface.getManager(1);
-      if ((localObject != null) && ((localObject instanceof WtloginManager)))
-      {
-        localObject = ((WtloginManager)localObject).getGUID();
-        if (localObject == null) {
-          break label376;
-        }
-        paramString.bytes_guid.set(ByteStringMicro.copyFrom((byte[])localObject));
-      }
-    }
-    for (;;)
-    {
-      paramString.uint32_seq.set(a.addAndGet(1));
-      paramString.uint32_timestamp.set((int)(System.currentTimeMillis() / 1000L));
-      paramString.uint32_version.set(AppSetting.a());
-      paramString.uint64_appid.set(101810106L);
-      long l = new Random().nextLong();
-      paramString.uint64_nonce.set(l);
-      paramString = paramString.toByteArray();
-      localObject = ByteBuffer.allocate(paramString.length + 4);
-      ((ByteBuffer)localObject).putInt(paramString.length + 4);
-      ((ByteBuffer)localObject).put(paramString);
-      localObject = new NewIntent(paramQQAppInterface.getApp(), LoginVerifyServlet.class);
-      ((NewIntent)localObject).setObserver(paramLoginVerifyObserver);
-      ((NewIntent)localObject).putExtra("cmd", "FaceRecognition.SecureCheck");
-      ((NewIntent)localObject).putExtra("data", paramString);
-      paramQQAppInterface.startServlet((NewIntent)localObject);
-      return;
-      QLog.e("LoginVerifyServlet", 1, "getIpAddress error");
-      paramString.bytes_client_addr.set(ByteStringMicro.copyFrom("0.0.0.0".getBytes()));
-      break;
-      label319:
-      if (localObject == null) {}
-      for (bool = true;; bool = false)
-      {
-        QLog.e("LoginVerifyServlet", 1, new Object[] { "wifiManager.isWifiEnabled : false or connection is null : ", Boolean.valueOf(bool) });
-        paramString.uint32_client_addr.set(0);
-        break;
-      }
-      label365:
-      paramString.uint32_client_addr.set(0);
-      break label91;
-      label376:
-      QLog.e("LoginVerifyServlet", 1, "guid is null");
-    }
-  }
-  
-  public static void a(QQAppInterface paramQQAppInterface, String paramString, BusinessObserver paramBusinessObserver)
-  {
-    try
-    {
-      oidb_0x5e1.ReqBody localReqBody = new oidb_0x5e1.ReqBody();
-      localReqBody.rpt_uint64_uins.add(Long.valueOf(Long.parseLong(paramString)));
-      localReqBody.user_login_guard_face.set(1);
-      a(paramQQAppInterface, 1505, "OidbSvc.0x5e1_295", 295, localReqBody.toByteArray(), paramBusinessObserver);
-      return;
-    }
-    catch (Exception paramQQAppInterface)
-    {
-      QLog.e("LoginVerifyServlet", 1, "sendGetUserFaceStateRequest error : " + paramQQAppInterface.getMessage());
-    }
-  }
-  
   public static void a(String paramString1, long paramLong, String paramString2, BusinessObserver paramBusinessObserver)
   {
     try
@@ -193,7 +113,10 @@ public class LoginVerifyServlet
     }
     catch (JSONException paramString1)
     {
-      QLog.e("LoginVerifyServlet", 1, "sendGetAppConfigRequest error, msg : " + paramString1.getMessage());
+      paramString2 = new StringBuilder();
+      paramString2.append("sendGetAppConfigRequest error, msg : ");
+      paramString2.append(paramString1.getMessage());
+      QLog.e("LoginVerifyServlet", 1, paramString2.toString());
     }
   }
   
@@ -211,7 +134,10 @@ public class LoginVerifyServlet
   {
     if (paramAppRuntime == null)
     {
-      QLog.e("LoginVerifyServlet", 1, "sendRequest QQAppInterface is null, command is " + paramString);
+      paramAppRuntime = new StringBuilder();
+      paramAppRuntime.append("sendRequest QQAppInterface is null, command is ");
+      paramAppRuntime.append(paramString);
+      QLog.e("LoginVerifyServlet", 1, paramAppRuntime.toString());
       return;
     }
     oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
@@ -250,19 +176,94 @@ public class LoginVerifyServlet
     a(paramAppRuntime, 2478, "OidbSvc.0x9ae_13", 13, new cmd0x9ae.ReqBody().toByteArray(), paramLoginVerifyObserver);
   }
   
+  public static void a(AppRuntime paramAppRuntime, String paramString, LoginVerifyObserver paramLoginVerifyObserver)
+  {
+    paramString = new FaceSecureCheck.SecureCheckRequest();
+    Object localObject = IPUtils.a(BaseApplication.getContext());
+    if (localObject != null)
+    {
+      paramString.bytes_client_addr.set(ByteStringMicro.copyFrom(((String)localObject).getBytes()));
+    }
+    else
+    {
+      QLog.e("LoginVerifyServlet", 1, "getIpAddress error");
+      paramString.bytes_client_addr.set(ByteStringMicro.copyFrom("0.0.0.0".getBytes()));
+    }
+    localObject = (WifiManager)BaseApplication.getContext().getApplicationContext().getSystemService("wifi");
+    if (localObject != null)
+    {
+      boolean bool = ((WifiManager)localObject).isWifiEnabled();
+      localObject = ((WifiManager)localObject).getConnectionInfo();
+      if ((bool) && (localObject != null))
+      {
+        paramString.uint32_client_addr.set(((WifiInfo)localObject).getIpAddress());
+      }
+      else
+      {
+        if (localObject == null) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        QLog.e("LoginVerifyServlet", 1, new Object[] { "wifiManager.isWifiEnabled : false or connection is null : ", Boolean.valueOf(bool) });
+        paramString.uint32_client_addr.set(0);
+      }
+    }
+    else
+    {
+      paramString.uint32_client_addr.set(0);
+    }
+    localObject = paramAppRuntime.getManager(1);
+    if ((localObject != null) && ((localObject instanceof WtloginManager)))
+    {
+      localObject = ((WtloginManager)localObject).getGUID();
+      if (localObject != null) {
+        paramString.bytes_guid.set(ByteStringMicro.copyFrom((byte[])localObject));
+      } else {
+        QLog.e("LoginVerifyServlet", 1, "guid is null");
+      }
+    }
+    paramString.uint32_seq.set(a.addAndGet(1));
+    paramString.uint32_timestamp.set((int)(System.currentTimeMillis() / 1000L));
+    paramString.uint32_version.set(AppSetting.a());
+    paramString.uint64_appid.set(101810106L);
+    long l = new Random().nextLong();
+    paramString.uint64_nonce.set(l);
+    paramString = paramString.toByteArray();
+    localObject = ByteBuffer.allocate(paramString.length + 4);
+    ((ByteBuffer)localObject).putInt(paramString.length + 4);
+    ((ByteBuffer)localObject).put(paramString);
+    localObject = new NewIntent(paramAppRuntime.getApp(), LoginVerifyServlet.class);
+    ((NewIntent)localObject).setObserver(paramLoginVerifyObserver);
+    ((NewIntent)localObject).putExtra("cmd", "FaceRecognition.SecureCheck");
+    ((NewIntent)localObject).putExtra("data", paramString);
+    paramAppRuntime.startServlet((NewIntent)localObject);
+  }
+  
   public static void a(AppRuntime paramAppRuntime, String paramString, BusinessObserver paramBusinessObserver)
   {
-    oidb_0x87c.ReqBody localReqBody = new oidb_0x87c.ReqBody();
-    localReqBody.str_sms_code.set(paramString);
-    localReqBody.enum_butype.set(1);
-    a(paramAppRuntime, 2172, "OidbSvc.0x87c_108", 108, localReqBody.toByteArray(), paramBusinessObserver);
+    try
+    {
+      oidb_0x5e1.ReqBody localReqBody = new oidb_0x5e1.ReqBody();
+      localReqBody.rpt_uint64_uins.add(Long.valueOf(Long.parseLong(paramString)));
+      localReqBody.user_login_guard_face.set(1);
+      a(paramAppRuntime, 1505, "OidbSvc.0x5e1_295", 295, localReqBody.toByteArray(), paramBusinessObserver);
+      return;
+    }
+    catch (Exception paramAppRuntime)
+    {
+      paramString = new StringBuilder();
+      paramString.append("sendGetUserFaceStateRequest error : ");
+      paramString.append(paramAppRuntime.getMessage());
+      QLog.e("LoginVerifyServlet", 1, paramString.toString());
+    }
   }
   
   private static void a(AppRuntime paramAppRuntime, String paramString, byte[] paramArrayOfByte, long paramLong, BusinessObserver paramBusinessObserver)
   {
     if (paramAppRuntime == null)
     {
-      QLog.e("LoginVerifyServlet", 1, new Object[] { "sendRequest QQAppInterface is null, command is ", paramString });
+      QLog.e("LoginVerifyServlet", 1, new Object[] { "sendRequest AppRuntime is null, command is ", paramString });
       return;
     }
     Object localObject = ByteBuffer.allocate(paramArrayOfByte.length + 4);
@@ -297,6 +298,14 @@ public class LoginVerifyServlet
     a(paramAppRuntime, 2478, "OidbSvc.0x9ae_14", 14, new cmd0x9ae.ReqBody().toByteArray(), paramLoginVerifyObserver);
   }
   
+  public static void b(AppRuntime paramAppRuntime, String paramString, BusinessObserver paramBusinessObserver)
+  {
+    oidb_0x87c.ReqBody localReqBody = new oidb_0x87c.ReqBody();
+    localReqBody.str_sms_code.set(paramString);
+    localReqBody.enum_butype.set(1);
+    a(paramAppRuntime, 2172, "OidbSvc.0x87c_108", 108, localReqBody.toByteArray(), paramBusinessObserver);
+  }
+  
   public static void b(AppRuntime paramAppRuntime, BusinessObserver paramBusinessObserver)
   {
     a(paramAppRuntime, 3734, "OidbSvc.0xe96_0", 0, new oidb_0xe96.ReqBody().toByteArray(), paramBusinessObserver);
@@ -320,18 +329,20 @@ public class LoginVerifyServlet
     if (localObject2 == null) {
       localObject1 = new Bundle();
     }
-    if (paramFromServiceMsg.isSuccess()) {}
-    for (localObject2 = WupUtil.b(paramFromServiceMsg.getWupBuffer());; localObject2 = null)
+    localObject2 = null;
+    if (paramFromServiceMsg.isSuccess())
     {
-      ((Bundle)localObject1).putByteArray("data", (byte[])localObject2);
-      notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("LoginVerifyServlet", 2, "onReceive exit");
-      return;
+      localObject2 = WupUtil.b(paramFromServiceMsg.getWupBuffer());
+    }
+    else
+    {
       ((Bundle)localObject1).putString("dataErrorMsg", paramFromServiceMsg.getBusinessFailMsg());
       ((Bundle)localObject1).putInt("dataErrorCode", paramFromServiceMsg.getBusinessFailCode());
+    }
+    ((Bundle)localObject1).putByteArray("data", (byte[])localObject2);
+    notifyObserver(paramIntent, 0, paramFromServiceMsg.isSuccess(), (Bundle)localObject1, null);
+    if (QLog.isColorLevel()) {
+      QLog.i("LoginVerifyServlet", 2, "onReceive exit");
     }
   }
   
@@ -340,7 +351,10 @@ public class LoginVerifyServlet
     byte[] arrayOfByte = paramIntent.getByteArrayExtra("data");
     String str = paramIntent.getStringExtra("cmd");
     long l = paramIntent.getLongExtra("timeout", 0L);
-    QLog.i("LoginVerifyServlet", 1, "onSend, cmd is " + str);
+    paramIntent = new StringBuilder();
+    paramIntent.append("onSend, cmd is ");
+    paramIntent.append(str);
+    QLog.i("LoginVerifyServlet", 1, paramIntent.toString());
     paramPacket.setSSOCommand(str);
     paramPacket.putSendData(WupUtil.a(arrayOfByte));
     if (l > 0L) {
@@ -353,7 +367,7 @@ public class LoginVerifyServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.LoginVerifyServlet
  * JD-Core Version:    0.7.0.1
  */

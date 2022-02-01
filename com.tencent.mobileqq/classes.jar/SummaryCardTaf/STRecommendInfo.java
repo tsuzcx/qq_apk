@@ -30,11 +30,13 @@ public final class STRecommendInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iRecomCard, 1);
-    if (this.strRecomUrl != null) {
-      paramJceOutputStream.write(this.strRecomUrl, 2);
+    String str = this.strRecomUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.strDesc != null) {
-      paramJceOutputStream.write(this.strDesc, 3);
+    str = this.strDesc;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }

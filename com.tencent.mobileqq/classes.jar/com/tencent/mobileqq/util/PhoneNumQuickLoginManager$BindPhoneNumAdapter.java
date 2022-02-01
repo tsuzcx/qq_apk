@@ -48,51 +48,51 @@ class PhoneNumQuickLoginManager$BindPhoneNumAdapter
   {
     Context localContext = paramViewGroup.getContext();
     View localView;
-    Object localObject;
     if (paramView == null)
     {
-      localView = LayoutInflater.from(localContext).inflate(2131561317, null);
+      localView = LayoutInflater.from(localContext).inflate(2131561160, null);
       paramView = new PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder(null);
-      localView.setBackgroundResource(2130842072);
-      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView, (URLImageView)localView.findViewById(2131361866));
-      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView, (TextView)localView.findViewById(2131361903));
-      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.b(paramView, (TextView)localView.findViewById(2131361928));
+      localView.setBackgroundResource(2130841969);
+      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView, (URLImageView)localView.findViewById(2131361872));
+      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView, (TextView)localView.findViewById(2131361909));
+      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.b(paramView, (TextView)localView.findViewById(2131361934));
       PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView).setScaleType(ImageView.ScaleType.CENTER_CROP);
       localView.setTag(paramView);
-      localObject = (PhoneNumQuickLoginManager.AccountInfo)getItem(paramInt);
-      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView).setText(PhoneNumQuickLoginManager.AccountInfo.access$600((PhoneNumQuickLoginManager.AccountInfo)localObject));
-      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.b(paramView).setText(PhoneNumQuickLoginManager.AccountInfo.access$700((PhoneNumQuickLoginManager.AccountInfo)localObject));
-      if (!TextUtils.isEmpty(PhoneNumQuickLoginManager.AccountInfo.access$800((PhoneNumQuickLoginManager.AccountInfo)localObject))) {
-        break label205;
-      }
-      localObject = BitmapFactory.decodeResource(localContext.getResources(), 2130840792);
-      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView).setImageBitmap(AvatarUtil.a((Bitmap)localObject));
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject = (PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject;
-      break;
-      label205:
+    }
+    Object localObject = (PhoneNumQuickLoginManager.AccountInfo)getItem(paramInt);
+    PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView).setText(PhoneNumQuickLoginManager.AccountInfo.access$600((PhoneNumQuickLoginManager.AccountInfo)localObject));
+    PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.b(paramView).setText(PhoneNumQuickLoginManager.AccountInfo.access$700((PhoneNumQuickLoginManager.AccountInfo)localObject));
+    if (TextUtils.isEmpty(PhoneNumQuickLoginManager.AccountInfo.access$800((PhoneNumQuickLoginManager.AccountInfo)localObject)))
+    {
+      localObject = BitmapFactory.decodeResource(localContext.getResources(), 2130840667);
+      PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView).setImageBitmap(AvatarUtil.a((Bitmap)localObject));
+    }
+    else
+    {
       URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
       int i = Utils.a(48.0F, localContext.getResources());
       localURLDrawableOptions.mRequestWidth = i;
       localURLDrawableOptions.mRequestHeight = i;
-      localURLDrawableOptions.mLoadingDrawable = localContext.getResources().getDrawable(2131165706);
-      localURLDrawableOptions.mFailedDrawable = localContext.getResources().getDrawable(2131165706);
+      localURLDrawableOptions.mLoadingDrawable = localContext.getResources().getDrawable(2131165694);
+      localURLDrawableOptions.mFailedDrawable = localContext.getResources().getDrawable(2131165694);
       localObject = URLDrawable.getDrawable(PhoneNumQuickLoginManager.AccountInfo.access$800((PhoneNumQuickLoginManager.AccountInfo)localObject), localURLDrawableOptions);
       ((URLDrawable)localObject).setTag(new int[] { i, i });
       ((URLDrawable)localObject).setDecodeHandler(PhoneNumQuickLoginManager.a);
       PhoneNumQuickLoginManager.BindPhoneNumAdapter.ViewHolder.a(paramView).setImageDrawable((Drawable)localObject);
     }
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.PhoneNumQuickLoginManager.BindPhoneNumAdapter
  * JD-Core Version:    0.7.0.1
  */

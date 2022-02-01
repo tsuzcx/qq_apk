@@ -28,107 +28,118 @@ public class MediaFocusManager
     if (paramOnMediaFocusChangeListener == null) {
       return new String(toString());
     }
-    return new String(toString() + paramOnMediaFocusChangeListener.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(toString());
+    localStringBuilder.append(paramOnMediaFocusChangeListener.toString());
+    return new String(localStringBuilder.toString());
   }
   
   private void a(MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    String str;
     synchronized (this.jdField_a_of_type_JavaLangObject)
     {
       if (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController == null) {
         this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController = new MediaFocusController(this);
       }
-      str = a(paramOnMediaFocusChangeListener);
+      String str = a(paramOnMediaFocusChangeListener);
       if (this.b.containsKey(str))
       {
         int i = ((Integer)this.b.get(str)).intValue();
         this.b.put(str, Integer.valueOf(i + 1));
-        if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(str)) {}
       }
       else
       {
         this.b.put(str, Integer.valueOf(1));
       }
+      if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(str)) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilHashMap.put(str, paramOnMediaFocusChangeListener);
+      return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.put(str, paramOnMediaFocusChangeListener);
   }
   
   private boolean a(MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener, boolean paramBoolean)
   {
-    boolean bool = true;
-    label130:
-    label145:
-    for (;;)
+    synchronized (this.jdField_a_of_type_JavaLangObject)
     {
-      synchronized (this.jdField_a_of_type_JavaLangObject)
+      paramOnMediaFocusChangeListener = a(paramOnMediaFocusChangeListener);
+      boolean bool = true;
+      if (!paramBoolean)
       {
-        paramOnMediaFocusChangeListener = a(paramOnMediaFocusChangeListener);
-        if (!paramBoolean)
-        {
-          this.b.remove(paramOnMediaFocusChangeListener);
-          this.jdField_a_of_type_JavaUtilHashMap.remove(paramOnMediaFocusChangeListener);
-          return true;
-        }
-        if (!this.b.containsKey(paramOnMediaFocusChangeListener)) {
-          break label130;
-        }
+        this.b.remove(paramOnMediaFocusChangeListener);
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramOnMediaFocusChangeListener);
+        return true;
+      }
+      if (this.b.containsKey(paramOnMediaFocusChangeListener))
+      {
         int i = ((Integer)this.b.get(paramOnMediaFocusChangeListener)).intValue();
         if (i > 1)
         {
           this.b.put(paramOnMediaFocusChangeListener, Integer.valueOf(i - 1));
           paramBoolean = false;
-          break label145;
-          return paramBoolean;
+        }
+        else
+        {
+          this.b.remove(paramOnMediaFocusChangeListener);
+          this.jdField_a_of_type_JavaUtilHashMap.remove(paramOnMediaFocusChangeListener);
+          paramBoolean = bool;
         }
       }
-      this.b.remove(paramOnMediaFocusChangeListener);
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramOnMediaFocusChangeListener);
-      paramBoolean = true;
-      break label145;
-      this.jdField_a_of_type_JavaUtilHashMap.remove(paramOnMediaFocusChangeListener);
-      paramBoolean = bool;
+      else
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.remove(paramOnMediaFocusChangeListener);
+        paramBoolean = bool;
+      }
+      return paramBoolean;
     }
   }
   
   public int a(int paramInt, MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    if ((paramInt < 1) || (paramInt > 3))
+    if ((paramInt >= 1) && (paramInt <= 3))
     {
-      QLog.e("MediaFocusManager", 1, new Object[] { "requestMediaFocus denied, Invalid type:", Integer.valueOf(paramInt) });
-      return 1;
-    }
-    if (QLog.isColorLevel()) {
-      if (paramOnMediaFocusChangeListener != null) {
-        break label97;
+      if (QLog.isColorLevel())
+      {
+        String str;
+        if (paramOnMediaFocusChangeListener == null) {
+          str = "null";
+        } else {
+          str = paramOnMediaFocusChangeListener.toString();
+        }
+        QLog.d("MediaFocusManager", 2, new Object[] { "requestMediaFocus focusType:", Integer.valueOf(paramInt), " ,listener:", str });
       }
-    }
-    label97:
-    for (String str = "null";; str = paramOnMediaFocusChangeListener.toString())
-    {
-      QLog.d("MediaFocusManager", 2, new Object[] { "requestMediaFocus focusType:", Integer.valueOf(paramInt), " ,listener:", str });
       a(paramOnMediaFocusChangeListener);
       return this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a(paramInt, a(paramOnMediaFocusChangeListener));
     }
+    QLog.e("MediaFocusManager", 1, new Object[] { "requestMediaFocus denied, Invalid type:", Integer.valueOf(paramInt) });
+    return 1;
   }
   
   public int a(MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    if (QLog.isColorLevel()) {
-      if (paramOnMediaFocusChangeListener != null) {
-        break label61;
-      }
-    }
-    label61:
-    for (String str = "null";; str = paramOnMediaFocusChangeListener.toString())
+    boolean bool = QLog.isColorLevel();
+    int j = 1;
+    Object localObject;
+    if (bool)
     {
-      QLog.d("MediaFocusManager", 2, new Object[] { "abandonMediaFocus! listener:", str });
-      if ((!a(paramOnMediaFocusChangeListener, true)) || (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController == null)) {
-        break;
+      if (paramOnMediaFocusChangeListener == null) {
+        localObject = "null";
+      } else {
+        localObject = paramOnMediaFocusChangeListener.toString();
       }
-      return this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a(a(paramOnMediaFocusChangeListener));
+      QLog.d("MediaFocusManager", 2, new Object[] { "abandonMediaFocus! listener:", localObject });
     }
-    return 1;
+    int i = j;
+    if (a(paramOnMediaFocusChangeListener, true))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController;
+      i = j;
+      if (localObject != null) {
+        i = ((MediaFocusController)localObject).a(a(paramOnMediaFocusChangeListener));
+      }
+    }
+    return i;
   }
   
   public void a()
@@ -136,10 +147,14 @@ public class MediaFocusManager
     if (QLog.isColorLevel()) {
       QLog.d("MediaFocusManager", 2, new Object[] { "onClear map:", Integer.valueOf(this.jdField_a_of_type_JavaUtilHashMap.size()) });
     }
-    if ((this.jdField_a_of_type_JavaUtilHashMap.isEmpty()) && (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController != null))
+    if (this.jdField_a_of_type_JavaUtilHashMap.isEmpty())
     {
-      this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a();
-      this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController = null;
+      MediaFocusController localMediaFocusController = this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController;
+      if (localMediaFocusController != null)
+      {
+        localMediaFocusController.a();
+        this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController = null;
+      }
     }
   }
   
@@ -154,34 +169,42 @@ public class MediaFocusManager
   
   protected boolean a(String paramString1, String paramString2)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a(paramString1, paramString2);
+    MediaFocusController localMediaFocusController = this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController;
+    if (localMediaFocusController != null) {
+      return localMediaFocusController.a(paramString1, paramString2);
     }
     return false;
   }
   
   public int b(MediaFocusManager.OnMediaFocusChangeListener paramOnMediaFocusChangeListener)
   {
-    if (QLog.isColorLevel()) {
-      if (paramOnMediaFocusChangeListener != null) {
-        break label61;
-      }
-    }
-    label61:
-    for (String str = "null";; str = paramOnMediaFocusChangeListener.toString())
+    boolean bool = QLog.isColorLevel();
+    int j = 1;
+    Object localObject;
+    if (bool)
     {
-      QLog.d("MediaFocusManager", 2, new Object[] { "abandonMediaFocusForce! listener:", str });
-      if ((!a(paramOnMediaFocusChangeListener, false)) || (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController == null)) {
-        break;
+      if (paramOnMediaFocusChangeListener == null) {
+        localObject = "null";
+      } else {
+        localObject = paramOnMediaFocusChangeListener.toString();
       }
-      return this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController.a(a(paramOnMediaFocusChangeListener));
+      QLog.d("MediaFocusManager", 2, new Object[] { "abandonMediaFocusForce! listener:", localObject });
     }
-    return 1;
+    int i = j;
+    if (a(paramOnMediaFocusChangeListener, false))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController;
+      i = j;
+      if (localObject != null) {
+        i = ((MediaFocusController)localObject).a(a(paramOnMediaFocusChangeListener));
+      }
+    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusManager
  * JD-Core Version:    0.7.0.1
  */

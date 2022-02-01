@@ -34,34 +34,33 @@ public abstract class Cache
   
   protected void runJob()
   {
-    for (;;)
+    try
     {
-      try
+      int i = threadCount;
+      if (i >= 1) {
+        return;
+      }
+      threadCount += 1;
+      while (jobs.size() > 0)
       {
-        int i = threadCount;
-        if (i >= 1) {
-          return;
-        }
-        threadCount += 1;
-        if (jobs.size() > 0)
+        String[] arrayOfString = (String[])jobs.remove(0);
+        set(arrayOfString[0], arrayOfString[1]);
+        try
         {
-          String[] arrayOfString = (String[])jobs.remove(0);
-          set(arrayOfString[0], arrayOfString[1]);
-          try
-          {
-            Thread.sleep(100L);
-          }
-          catch (InterruptedException localInterruptedException)
-          {
-            localInterruptedException.printStackTrace();
-          }
+          Thread.sleep(100L);
         }
-        else
+        catch (InterruptedException localInterruptedException)
         {
-          threadCount -= 1;
+          localInterruptedException.printStackTrace();
         }
       }
-      finally {}
+      threadCount -= 1;
+      return;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -73,7 +72,7 @@ public abstract class Cache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.cache.Cache
  * JD-Core Version:    0.7.0.1
  */

@@ -39,12 +39,91 @@ public class WSPlayerReportData
   
   public String toString()
   {
-    return "WSPlayerReportData{mPlayerType=" + this.jdField_a_of_type_Int + ", mPlayScene='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mEnableCodecReuse='" + this.jdField_d_of_type_Boolean + '\'' + ", mPlayTime=" + this.jdField_h_of_type_Long + ", mVideoId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mVideoFormat='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mVideoFileSize=" + this.jdField_a_of_type_Long + ", mActualWidth=" + this.jdField_b_of_type_Int + ", mActualHeight=" + this.jdField_c_of_type_Int + ", mVideoBitRate=" + this.jdField_b_of_type_Long + ", mIsHitCache=" + this.jdField_a_of_type_Boolean + ", mIsPreDownloadHit=" + this.jdField_b_of_type_Boolean + ", mPreloadStatus=" + this.jdField_d_of_type_Int + ", mSecondBufferTime=" + this.jdField_c_of_type_Long + ", mSecondBufferCount=" + this.jdField_e_of_type_Int + ", mListSpeedKbs='" + this.jdField_d_of_type_JavaLangString + '\'' + ", mMaxSpeedKbs=" + this.jdField_d_of_type_Long + ", mMinSpeedKbs=" + this.jdField_e_of_type_Long + ", mAverageSpeedKbs=" + this.jdField_f_of_type_Long + ", mDownloadedDuration=" + this.jdField_g_of_type_Long + ", mHttpDNSTime=" + this.jdField_i_of_type_Long + ", mHttpRedirectTime=" + this.j + ", mHttpFirstReceiveTime=" + this.k + ", mHttpConnectTime=" + this.l + ", mMp4HeaderParseTime=" + this.m + ", mCacheFrameTime=" + this.n + ", mVideoPrepareTime=" + this.o + ", mPreparePerformanceJson='" + this.jdField_e_of_type_JavaLangString + '\'' + ", mSkipFramesTotalCount=" + this.jdField_f_of_type_Int + ", mErrorCode='" + this.jdField_f_of_type_JavaLangString + '\'' + ", mErrorDetailInfo='" + this.jdField_g_of_type_JavaLangString + '\'' + ", mHWCodecErrorCode='" + this.jdField_h_of_type_JavaLangString + '\'' + ", mIsChangeHWBackup=" + this.jdField_c_of_type_Boolean + ", mHttpConnectQualityJson=" + this.jdField_i_of_type_JavaLangString + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WSPlayerReportData{mPlayerType=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mPlayScene='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mEnableCodecReuse='");
+    localStringBuilder.append(this.jdField_d_of_type_Boolean);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mPlayTime=");
+    localStringBuilder.append(this.jdField_h_of_type_Long);
+    localStringBuilder.append(", mVideoId='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mVideoFormat='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mVideoFileSize=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mActualWidth=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mActualHeight=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", mVideoBitRate=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", mIsHitCache=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", mIsPreDownloadHit=");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(", mPreloadStatus=");
+    localStringBuilder.append(this.jdField_d_of_type_Int);
+    localStringBuilder.append(", mSecondBufferTime=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", mSecondBufferCount=");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(", mListSpeedKbs='");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mMaxSpeedKbs=");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append(", mMinSpeedKbs=");
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append(", mAverageSpeedKbs=");
+    localStringBuilder.append(this.jdField_f_of_type_Long);
+    localStringBuilder.append(", mDownloadedDuration=");
+    localStringBuilder.append(this.jdField_g_of_type_Long);
+    localStringBuilder.append(", mHttpDNSTime=");
+    localStringBuilder.append(this.jdField_i_of_type_Long);
+    localStringBuilder.append(", mHttpRedirectTime=");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append(", mHttpFirstReceiveTime=");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append(", mHttpConnectTime=");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append(", mMp4HeaderParseTime=");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append(", mCacheFrameTime=");
+    localStringBuilder.append(this.n);
+    localStringBuilder.append(", mVideoPrepareTime=");
+    localStringBuilder.append(this.o);
+    localStringBuilder.append(", mPreparePerformanceJson='");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mSkipFramesTotalCount=");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(", mErrorCode='");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mErrorDetailInfo='");
+    localStringBuilder.append(this.jdField_g_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mHWCodecErrorCode='");
+    localStringBuilder.append(this.jdField_h_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mIsChangeHWBackup=");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append(", mHttpConnectQualityJson=");
+    localStringBuilder.append(this.jdField_i_of_type_JavaLangString);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.player.report.WSPlayerReportData
  * JD-Core Version:    0.7.0.1
  */

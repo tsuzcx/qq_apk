@@ -1,7 +1,7 @@
 package com.tencent.biz.pubaccount.util.api.impl;
 
 import android.os.Bundle;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule.CallJs;
+import com.tencent.mobileqq.kandian.biz.fastweb.CallJs;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCResult;
 import eipc.EIPCResultCallback;
@@ -11,35 +11,37 @@ import org.json.JSONObject;
 final class PublicAccountH5AbilityPluginImpl$12
   implements EIPCResultCallback
 {
-  PublicAccountH5AbilityPluginImpl$12(BridgeModule.CallJs paramCallJs, String paramString) {}
+  PublicAccountH5AbilityPluginImpl$12(CallJs paramCallJs, String paramString) {}
   
   public void onCallback(EIPCResult paramEIPCResult)
   {
-    int j = 0;
-    int i = j;
-    if (paramEIPCResult != null)
-    {
-      i = j;
-      if (paramEIPCResult.data != null) {
-        i = paramEIPCResult.data.getInt("action_get_app_type");
+    int i;
+    if ((paramEIPCResult != null) && (paramEIPCResult.data != null)) {
+      i = paramEIPCResult.data.getInt("action_get_app_type");
+    } else {
+      i = 0;
+    }
+    paramEIPCResult = new StringBuilder();
+    paramEIPCResult.append("getAppType is ");
+    paramEIPCResult.append(i);
+    QLog.e("PublicAccountH5AbilityPlugin", 1, paramEIPCResult.toString());
+    paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqKandianBizFastwebCallJs;
+    if (paramEIPCResult != null) {
+      try
+      {
+        paramEIPCResult.a(this.jdField_a_of_type_JavaLangString, new JSONObject().putOpt("app_type", Integer.valueOf(i)).toString());
+        return;
       }
-    }
-    QLog.e("PublicAccountH5AbilityPlugin", 1, "getAppType is " + i);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule$CallJs != null) {}
-    try
-    {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule$CallJs.a(this.jdField_a_of_type_JavaLangString, new JSONObject().putOpt("app_type", Integer.valueOf(i)).toString());
-      return;
-    }
-    catch (JSONException paramEIPCResult)
-    {
-      QLog.e("PublicAccountH5AbilityPlugin", 1, paramEIPCResult.getMessage());
+      catch (JSONException paramEIPCResult)
+      {
+        QLog.e("PublicAccountH5AbilityPlugin", 1, paramEIPCResult.getMessage());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.impl.PublicAccountH5AbilityPluginImpl.12
  * JD-Core Version:    0.7.0.1
  */

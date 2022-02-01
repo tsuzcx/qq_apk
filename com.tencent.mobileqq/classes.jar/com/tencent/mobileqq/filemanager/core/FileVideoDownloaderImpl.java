@@ -2,6 +2,7 @@ package com.tencent.mobileqq.filemanager.core;
 
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.filemanager.api.IFMSettings;
 import com.tencent.mobileqq.filemanager.fileviewer.data.BaseVideoBiz;
 import com.tencent.mobileqq.filemanager.settings.FMSettings;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
@@ -41,7 +42,10 @@ public class FileVideoDownloaderImpl
   private void b(String paramString1, String paramString2)
   {
     String str = Md5Utils.getMD5(this.jdField_a_of_type_JavaLangString);
-    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, "----build Videoinfo---- fileid:" + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("----build Videoinfo---- fileid:");
+    localStringBuilder.append(str);
+    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, localStringBuilder.toString());
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.b();
     this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo = SuperPlayerFactory.createVideoInfoForUrl(paramString1, 104, str, this.jdField_b_of_type_JavaLangString);
     if (paramString2 != null)
@@ -65,8 +69,9 @@ public class FileVideoDownloaderImpl
   
   public void a(int paramInt, String paramString)
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadInfoListener != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadInfoListener.a(paramInt, paramString);
+    IFileVideoDownloadInfoListener localIFileVideoDownloadInfoListener = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadInfoListener;
+    if (localIFileVideoDownloadInfoListener != null) {
+      localIFileVideoDownloadInfoListener.a(paramInt, paramString);
     }
   }
   
@@ -82,18 +87,25 @@ public class FileVideoDownloaderImpl
   
   public void a(String paramString1, String paramString2)
   {
-    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader != null) && (this.jdField_a_of_type_Int > 0)) {
-      QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXOSILAS_ID", 1, "downloader exsited:" + this.jdField_a_of_type_Int);
-    }
-    do
+    if ((this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader != null) && (this.jdField_a_of_type_Int > 0))
     {
+      paramString1 = new StringBuilder();
+      paramString1.append("downloader exsited:");
+      paramString1.append(this.jdField_a_of_type_Int);
+      QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXOSILAS_ID", 1, paramString1.toString());
       return;
-      b(paramString1, paramString2);
-      this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader = SuperPlayerFactory.createDownloader(BaseApplicationImpl.getContext(), 109);
-      this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader.startOfflineDownload(this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo, this);
-      QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXOSILAS_ID", 1, "start download task:" + this.jdField_a_of_type_Int);
-    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadInfoListener == null);
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadInfoListener.a(this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo);
+    }
+    b(paramString1, paramString2);
+    this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader = SuperPlayerFactory.createDownloader(BaseApplicationImpl.getContext(), 109);
+    this.jdField_a_of_type_Int = this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader.startOfflineDownload(this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo, this);
+    paramString1 = new StringBuilder();
+    paramString1.append("start download task:");
+    paramString1.append(this.jdField_a_of_type_Int);
+    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXOSILAS_ID", 1, paramString1.toString());
+    paramString1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadInfoListener;
+    if (paramString1 != null) {
+      paramString1.a(this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo);
+    }
   }
   
   public void a(boolean paramBoolean)
@@ -108,10 +120,12 @@ public class FileVideoDownloaderImpl
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo != null)
+    Object localObject = this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo;
+    if (localObject != null)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadInfoListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadInfoListener.a(this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo);
+      IFileVideoDownloadInfoListener localIFileVideoDownloadInfoListener = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadInfoListener;
+      if (localIFileVideoDownloadInfoListener != null) {
+        localIFileVideoDownloadInfoListener.a((SuperPlayerVideoInfo)localObject);
       }
       if (this.jdField_a_of_type_Int > 0) {
         return true;
@@ -119,9 +133,9 @@ public class FileVideoDownloaderImpl
     }
     this.jdField_a_of_type_Int = 0;
     long l = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a();
-    String str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.b();
-    if (l != FileManagerUtil.a(str)) {
-      FileUtils.e(str);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.b();
+    if (l != FileManagerUtil.a((String)localObject)) {
+      FileUtils.deleteFile((String)localObject);
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a(this);
     return true;
@@ -129,38 +143,73 @@ public class FileVideoDownloaderImpl
   
   public String b()
   {
-    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, "isPlaying[" + this.jdField_a_of_type_Boolean + "], downloadSucc[" + this.jdField_b_of_type_Boolean + "]");
-    if ((this.jdField_a_of_type_Boolean) || (!this.jdField_b_of_type_Boolean)) {
-      return null;
-    }
-    String str = FileManagerUtil.b(FMSettings.a().b() + this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.c());
-    if (!FileUtil.b(this.jdField_b_of_type_JavaLangString))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("isPlaying[");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Boolean);
+    ((StringBuilder)localObject).append("], downloadSucc[");
+    ((StringBuilder)localObject).append(this.jdField_b_of_type_Boolean);
+    ((StringBuilder)localObject).append("]");
+    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, ((StringBuilder)localObject).toString());
+    if (!this.jdField_a_of_type_Boolean)
     {
-      QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a() + "],File rename faild mybe renamed");
-      return null;
+      if (!this.jdField_b_of_type_Boolean) {
+        return null;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(FMSettings.a().getDefaultRecvPath());
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.c());
+      localObject = FileManagerUtil.b(((StringBuilder)localObject).toString());
+      if (!FileUtil.a(this.jdField_b_of_type_JavaLangString))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a());
+        ((StringBuilder)localObject).append("],File rename faild mybe renamed");
+        QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, ((StringBuilder)localObject).toString());
+        return null;
+      }
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a());
+        localStringBuilder.append("],File download over rename[");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("],src[");
+        localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+        localStringBuilder.append("]");
+        QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 4, localStringBuilder.toString());
+      }
+      if (!FileUtils.renameFile(new File(this.jdField_b_of_type_JavaLangString), new File((String)localObject)))
+      {
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a(false);
+        return null;
+      }
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a());
+        localStringBuilder.append("],File download over. rename success!");
+        QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 4, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a((String)localObject);
+      FileVideoDownloadManager.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a());
+      FileVideoDownloadManager.b();
+      return localObject;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 4, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a() + "],File download over rename[" + str + "],src[" + this.jdField_b_of_type_JavaLangString + "]");
-    }
-    if (!FileUtils.b(new File(this.jdField_b_of_type_JavaLangString), new File(str)))
-    {
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a(false);
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 4, "[" + this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a() + "],File download over. rename success!");
-    }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a(str);
-    FileVideoDownloadManager.d(this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a());
-    FileVideoDownloadManager.b();
-    return str;
+    return null;
   }
   
   public void b()
   {
     if (this.jdField_a_of_type_Int > 0)
     {
-      QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXOSILAS_ID", 1, "stop download:" + this.jdField_a_of_type_Int);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("stop download:");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXOSILAS_ID", 1, localStringBuilder.toString());
       this.jdField_a_of_type_ComTencentSuperplayerApiISPlayerDownloader.stopOfflineDownload(this.jdField_a_of_type_Int);
     }
     this.jdField_a_of_type_ComTencentSuperplayerApiSuperPlayerVideoInfo = null;
@@ -186,56 +235,90 @@ public class FileVideoDownloaderImpl
   
   public void onDownloadError(int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
-    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, "onDownloadError(" + paramInt2 + "," + paramInt3 + "," + paramString + ")");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onDownloadError(");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramInt3);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramString);
+    ((StringBuilder)localObject).append(")");
+    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, ((StringBuilder)localObject).toString());
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a(false);
-    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadListener == null) {
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadListener;
+    if (localObject == null) {
       return;
     }
-    this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadListener.a(paramInt2, paramInt3, paramString);
+    ((IFileVideoDownloadListener)localObject).a(paramInt2, paramInt3, paramString);
   }
   
   public void onDownloadFinish(int paramInt)
   {
-    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, "---------->   onDownloadFinish:" + this.jdField_a_of_type_JavaLangString);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("---------->   onDownloadFinish:");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, ((StringBuilder)localObject).toString());
     this.jdField_b_of_type_Boolean = true;
-    String str = b();
+    localObject = b();
     if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadListener == null) {
       return;
     }
-    ThreadManager.getUIHandler().post(new FileVideoDownloaderImpl.1(this, str));
+    ThreadManager.getUIHandler().post(new FileVideoDownloaderImpl.1(this, (String)localObject));
   }
   
   public void onDownloadProgressUpdate(int paramInt1, int paramInt2, int paramInt3, long paramLong1, long paramLong2, String paramString)
   {
-    if (this.jdField_b_of_type_Boolean) {
+    if (this.jdField_b_of_type_Boolean)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, String.format("%s is downloaded!", new Object[] { this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a() }));
       }
-    }
-    do
-    {
       return;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a(paramLong1);
-    } while (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadListener == null);
-    if (QLog.isDebugVersion()) {
-      QLog.d("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, "onDownloadProgressUpdate(playableDurationMS:" + paramInt2 + ", downloadSpeedKBs:" + paramInt3 + ", currentDownloadSizeByte: " + paramLong1 + ", totalFileSizeByte: " + paramLong2 + ",)");
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerFileviewerDataBaseVideoBiz.a(paramLong1);
+    if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadListener == null) {
+      return;
+    }
+    if (QLog.isDebugVersion())
+    {
+      paramString = new StringBuilder();
+      paramString.append("onDownloadProgressUpdate(playableDurationMS:");
+      paramString.append(paramInt2);
+      paramString.append(", downloadSpeedKBs:");
+      paramString.append(paramInt3);
+      paramString.append(", currentDownloadSizeByte: ");
+      paramString.append(paramLong1);
+      paramString.append(", totalFileSizeByte: ");
+      paramString.append(paramLong2);
+      paramString.append(",)");
+      QLog.d("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, paramString.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreIFileVideoDownloadListener.a(paramInt2, paramInt3, paramLong1, paramLong2);
   }
   
   public void onDownloadProtocolUpdate(int paramInt, String paramString1, String paramString2)
   {
-    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, "onDownloadProtocolUpdate(" + paramString1 + "," + paramString2 + ",)");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadProtocolUpdate(");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(",)");
+    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, localStringBuilder.toString());
   }
   
   public void onDownloadStatusUpdate(int paramInt1, int paramInt2)
   {
-    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, "onDownloadStatusUpdate(" + paramInt2 + ",)");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onDownloadStatusUpdate(");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(",)");
+    QLog.i("FileVideoDownloaderImpl<FileAssistant>XOXO", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileVideoDownloaderImpl
  * JD-Core Version:    0.7.0.1
  */

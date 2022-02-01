@@ -1,12 +1,11 @@
 package com.tencent.mobileqq.hiboom;
 
-import android.content.Context;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.content.Intent;
-import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
+import android.os.Bundle;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 
 class FontBubbleManager$3
   implements DialogInterface.OnClickListener
@@ -15,16 +14,15 @@ class FontBubbleManager$3
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    BaseActivity localBaseActivity = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
-    Intent localIntent = new Intent(localBaseActivity, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", this.jdField_a_of_type_JavaLangString);
-    localBaseActivity.startActivity(localIntent);
+    ActivityURIRequest localActivityURIRequest = new ActivityURIRequest(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a(), "/vas/h5pay");
+    localActivityURIRequest.extra().putString("url", this.jdField_a_of_type_JavaLangString);
+    QRoute.startUri(localActivityURIRequest, null);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubbleManager.3
  * JD-Core Version:    0.7.0.1
  */

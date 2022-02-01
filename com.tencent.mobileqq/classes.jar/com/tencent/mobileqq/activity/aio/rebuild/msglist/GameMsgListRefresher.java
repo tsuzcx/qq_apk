@@ -16,12 +16,12 @@ public class GameMsgListRefresher
   public void a()
   {
     super.a();
-    ((GameMsgContext)this.a).c();
+    ((GameMsgContext)this.a).g();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.msglist.GameMsgListRefresher
  * JD-Core Version:    0.7.0.1
  */

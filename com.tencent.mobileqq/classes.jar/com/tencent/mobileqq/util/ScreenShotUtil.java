@@ -27,7 +27,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 public final class ScreenShotUtil
 {
-  private static Method jdField_a_of_type_JavaLangReflectMethod = null;
+  private static Method jdField_a_of_type_JavaLangReflectMethod;
   private static boolean jdField_a_of_type_Boolean = false;
   
   public static Bitmap a(int paramInt1, int paramInt2)
@@ -56,59 +56,67 @@ public final class ScreenShotUtil
   
   public static Bitmap a(WebView paramWebView, int paramInt1, int paramInt2)
   {
-    if ((paramWebView == null) || (paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return null;
-    }
-    Bitmap localBitmap = a(paramInt1, paramInt2);
-    if (localBitmap == null) {
-      return null;
-    }
-    Canvas localCanvas = new Canvas(localBitmap);
-    PaintFlagsDrawFilter localPaintFlagsDrawFilter;
-    float f;
-    if (paramWebView.getX5WebViewExtension() != null)
+    if ((paramWebView != null) && (paramInt1 > 0))
     {
-      localPaintFlagsDrawFilter = new PaintFlagsDrawFilter(134, 64);
-      paramInt2 = QbSdk.getTbsVersion(paramWebView.getContext());
-      if ((paramInt2 >= 43000) && (paramInt2 < 43105))
+      if (paramInt2 <= 0) {
+        return null;
+      }
+      Bitmap localBitmap = a(paramInt1, paramInt2);
+      if (localBitmap == null) {
+        return null;
+      }
+      Canvas localCanvas = new Canvas(localBitmap);
+      if (paramWebView.getX5WebViewExtension() != null)
       {
-        f = paramInt1 / paramWebView.getMeasuredWidth();
-        localCanvas.scale(f, f);
-        localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
-        paramWebView.getX5WebViewExtension().snapshotVisible(localCanvas, false, false, false, false);
-        if (QLog.isColorLevel()) {
-          QLog.d("ScreenShotUtil", 2, "snapshot with snapshotVisible()");
+        PaintFlagsDrawFilter localPaintFlagsDrawFilter = new PaintFlagsDrawFilter(134, 64);
+        paramInt2 = QbSdk.getTbsVersion(paramWebView.getContext());
+        if ((paramInt2 >= 43000) && (paramInt2 < 43105))
+        {
+          f = paramInt1 / paramWebView.getMeasuredWidth();
+          localCanvas.scale(f, f);
+          localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
+          paramWebView.getX5WebViewExtension().snapshotVisible(localCanvas, false, false, false, false);
+          if (QLog.isColorLevel()) {
+            QLog.d("ScreenShotUtil", 2, "snapshot with snapshotVisible()");
+          }
+        }
+        else
+        {
+          f = paramInt1 / paramWebView.getContentWidth();
+          localCanvas.scale(f, f);
+          localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
+          paramWebView.getX5WebViewExtension().snapshotWholePage(localCanvas, false, false);
+          if (QLog.isColorLevel()) {
+            QLog.d("ScreenShotUtil", 2, "snapshot with snapshotWholePage()");
+          }
         }
         localCanvas.setDrawFilter(null);
+        return localBitmap;
       }
-    }
-    for (;;)
-    {
-      return localBitmap;
-      f = paramInt1 / paramWebView.getContentWidth();
-      localCanvas.scale(f, f);
-      localCanvas.setDrawFilter(localPaintFlagsDrawFilter);
-      paramWebView.getX5WebViewExtension().snapshotWholePage(localCanvas, false, false);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("ScreenShotUtil", 2, "snapshot with snapshotWholePage()");
-      break;
-      f = paramInt1 / paramWebView.getMeasuredWidth();
+      float f = paramInt1 / paramWebView.getMeasuredWidth();
       localCanvas.scale(f, f);
       paramWebView = paramWebView.capturePicture();
       if (paramWebView != null) {
         paramWebView.draw(localCanvas);
       }
+      return localBitmap;
     }
+    return null;
   }
   
   public static String a()
   {
-    if (CheckPermission.isHasStoragePermission(BaseApplicationImpl.getContext())) {
-      return Environment.getExternalStorageDirectory() + "/Tencent/MobileQQ/web_long_shot/";
+    if (CheckPermission.isHasStoragePermission(BaseApplicationImpl.getContext()))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory());
+      localStringBuilder.append("/Tencent/MobileQQ/web_long_shot/");
+      return localStringBuilder.toString();
     }
-    return BaseApplicationImpl.getContext().getFilesDir() + "/Tencent/MobileQQ/web_long_shot/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getContext().getFilesDir());
+    localStringBuilder.append("/Tencent/MobileQQ/web_long_shot/");
+    return localStringBuilder.toString();
   }
   
   /* Error */
@@ -116,139 +124,130 @@ public final class ScreenShotUtil
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 4
-    //   3: aload 4
-    //   5: astore_3
-    //   6: aload_0
-    //   7: ifnull +20 -> 27
-    //   10: aload 4
-    //   12: astore_3
-    //   13: aload_1
-    //   14: ifnull +13 -> 27
-    //   17: aload_2
-    //   18: invokestatic 176	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   21: ifeq +8 -> 29
-    //   24: aload 4
-    //   26: astore_3
-    //   27: aload_3
-    //   28: areturn
+    //   1: astore_3
+    //   2: aconst_null
+    //   3: astore 4
+    //   5: aload_0
+    //   6: ifnull +178 -> 184
+    //   9: aload_1
+    //   10: ifnull +174 -> 184
+    //   13: aload_2
+    //   14: invokestatic 173	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   17: ifeq +5 -> 22
+    //   20: aconst_null
+    //   21: areturn
+    //   22: aload_1
+    //   23: invokevirtual 178	java/io/File:exists	()Z
+    //   26: ifne +8 -> 34
     //   29: aload_1
-    //   30: invokevirtual 181	java/io/File:exists	()Z
-    //   33: ifne +8 -> 41
-    //   36: aload_1
-    //   37: invokevirtual 184	java/io/File:mkdirs	()Z
-    //   40: pop
-    //   41: new 178	java/io/File
-    //   44: dup
-    //   45: aload_1
-    //   46: aload_2
-    //   47: invokespecial 187	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   50: astore_3
-    //   51: new 189	java/io/BufferedOutputStream
-    //   54: dup
-    //   55: new 191	java/io/FileOutputStream
-    //   58: dup
-    //   59: aload_3
-    //   60: invokespecial 194	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   63: invokespecial 197	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   66: astore_2
-    //   67: aload_2
-    //   68: astore_1
-    //   69: aload_0
-    //   70: getstatic 203	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
-    //   73: bipush 100
-    //   75: aload_2
-    //   76: invokevirtual 207	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
-    //   79: pop
+    //   30: invokevirtual 181	java/io/File:mkdirs	()Z
+    //   33: pop
+    //   34: new 175	java/io/File
+    //   37: dup
+    //   38: aload_1
+    //   39: aload_2
+    //   40: invokespecial 184	java/io/File:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   43: astore 5
+    //   45: aload 4
+    //   47: astore_1
+    //   48: new 186	java/io/BufferedOutputStream
+    //   51: dup
+    //   52: new 188	java/io/FileOutputStream
+    //   55: dup
+    //   56: aload 5
+    //   58: invokespecial 191	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   61: invokespecial 194	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   64: astore_2
+    //   65: aload_0
+    //   66: getstatic 200	android/graphics/Bitmap$CompressFormat:JPEG	Landroid/graphics/Bitmap$CompressFormat;
+    //   69: bipush 100
+    //   71: aload_2
+    //   72: invokevirtual 204	android/graphics/Bitmap:compress	(Landroid/graphics/Bitmap$CompressFormat;ILjava/io/OutputStream;)Z
+    //   75: pop
+    //   76: aload_2
+    //   77: invokevirtual 209	java/io/OutputStream:flush	()V
     //   80: aload_2
-    //   81: astore_1
-    //   82: aload_2
-    //   83: invokevirtual 212	java/io/OutputStream:flush	()V
-    //   86: aload_2
-    //   87: ifnull +7 -> 94
-    //   90: aload_2
-    //   91: invokevirtual 215	java/io/OutputStream:close	()V
-    //   94: aload_3
-    //   95: invokevirtual 218	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   98: areturn
-    //   99: astore_0
-    //   100: ldc 34
-    //   102: iconst_1
-    //   103: ldc 220
-    //   105: aload_0
-    //   106: invokestatic 42	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   109: goto -15 -> 94
-    //   112: astore_3
-    //   113: aconst_null
-    //   114: astore_0
-    //   115: aload_0
-    //   116: astore_1
-    //   117: ldc 34
-    //   119: iconst_1
-    //   120: aload_3
-    //   121: iconst_0
-    //   122: anewarray 4	java/lang/Object
-    //   125: invokestatic 223	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   128: ldc 225
-    //   130: astore_3
-    //   131: aload_0
-    //   132: ifnull -105 -> 27
-    //   135: aload_0
-    //   136: invokevirtual 215	java/io/OutputStream:close	()V
-    //   139: ldc 225
-    //   141: areturn
-    //   142: astore_0
-    //   143: ldc 34
-    //   145: iconst_1
-    //   146: ldc 220
-    //   148: aload_0
-    //   149: invokestatic 42	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   152: ldc 225
-    //   154: areturn
-    //   155: astore_0
-    //   156: aconst_null
-    //   157: astore_1
-    //   158: aload_1
-    //   159: ifnull +7 -> 166
-    //   162: aload_1
-    //   163: invokevirtual 215	java/io/OutputStream:close	()V
-    //   166: aload_0
-    //   167: athrow
-    //   168: astore_1
-    //   169: ldc 34
-    //   171: iconst_1
-    //   172: ldc 220
-    //   174: aload_1
-    //   175: invokestatic 42	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   178: goto -12 -> 166
-    //   181: astore_0
-    //   182: goto -24 -> 158
-    //   185: astore_3
-    //   186: aload_2
-    //   187: astore_0
-    //   188: goto -73 -> 115
+    //   81: invokevirtual 212	java/io/OutputStream:close	()V
+    //   84: goto +13 -> 97
+    //   87: astore_0
+    //   88: ldc 31
+    //   90: iconst_1
+    //   91: ldc 214
+    //   93: aload_0
+    //   94: invokestatic 39	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   97: aload 5
+    //   99: invokevirtual 217	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   102: areturn
+    //   103: astore_0
+    //   104: aload_2
+    //   105: astore_1
+    //   106: goto +55 -> 161
+    //   109: astore_1
+    //   110: aload_2
+    //   111: astore_0
+    //   112: aload_1
+    //   113: astore_2
+    //   114: goto +10 -> 124
+    //   117: astore_0
+    //   118: goto +43 -> 161
+    //   121: astore_2
+    //   122: aload_3
+    //   123: astore_0
+    //   124: aload_0
+    //   125: astore_1
+    //   126: ldc 31
+    //   128: iconst_1
+    //   129: aload_2
+    //   130: iconst_0
+    //   131: anewarray 4	java/lang/Object
+    //   134: invokestatic 220	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   137: aload_0
+    //   138: ifnull +20 -> 158
+    //   141: aload_0
+    //   142: invokevirtual 212	java/io/OutputStream:close	()V
+    //   145: ldc 222
+    //   147: areturn
+    //   148: astore_0
+    //   149: ldc 31
+    //   151: iconst_1
+    //   152: ldc 214
+    //   154: aload_0
+    //   155: invokestatic 39	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   158: ldc 222
+    //   160: areturn
+    //   161: aload_1
+    //   162: ifnull +20 -> 182
+    //   165: aload_1
+    //   166: invokevirtual 212	java/io/OutputStream:close	()V
+    //   169: goto +13 -> 182
+    //   172: astore_1
+    //   173: ldc 31
+    //   175: iconst_1
+    //   176: ldc 214
+    //   178: aload_1
+    //   179: invokestatic 39	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   182: aload_0
+    //   183: athrow
+    //   184: aconst_null
+    //   185: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	191	0	paramBitmap	Bitmap
-    //   0	191	1	paramFile	java.io.File
-    //   0	191	2	paramString	String
-    //   5	90	3	localObject1	Object
-    //   112	9	3	localThrowable1	java.lang.Throwable
-    //   130	1	3	str	String
-    //   185	1	3	localThrowable2	java.lang.Throwable
-    //   1	24	4	localObject2	Object
+    //   0	186	0	paramBitmap	Bitmap
+    //   0	186	1	paramFile	java.io.File
+    //   0	186	2	paramString	String
+    //   1	122	3	localObject1	Object
+    //   3	43	4	localObject2	Object
+    //   43	55	5	localFile	java.io.File
     // Exception table:
     //   from	to	target	type
-    //   90	94	99	java/io/IOException
-    //   51	67	112	java/lang/Throwable
-    //   135	139	142	java/io/IOException
-    //   51	67	155	finally
-    //   162	166	168	java/io/IOException
-    //   69	80	181	finally
-    //   82	86	181	finally
-    //   117	128	181	finally
-    //   69	80	185	java/lang/Throwable
-    //   82	86	185	java/lang/Throwable
+    //   80	84	87	java/io/IOException
+    //   65	80	103	finally
+    //   65	80	109	java/lang/Throwable
+    //   48	65	117	finally
+    //   126	137	117	finally
+    //   48	65	121	java/lang/Throwable
+    //   141	145	148	java/io/IOException
+    //   165	169	172	java/io/IOException
   }
   
   public static <T> void a(WebView paramWebView, ScreenShotUtil.ScreenLongShotCallback<T> paramScreenLongShotCallback)
@@ -269,7 +268,7 @@ public final class ScreenShotUtil
     }
     AtomicBoolean localAtomicBoolean = new AtomicBoolean(false);
     localObject1 = new TDProgressDialog((Context)localObject1);
-    ((TDProgressDialog)localObject1).a(HardCodeUtil.a(2131699101));
+    ((TDProgressDialog)localObject1).a(HardCodeUtil.a(2131699205));
     ((TDProgressDialog)localObject1).a(true);
     ((TDProgressDialog)localObject1).a(new ScreenShotUtil.3(localAtomicBoolean, (TDProgressDialog)localObject1));
     ((TDProgressDialog)localObject1).show();
@@ -289,92 +288,95 @@ public final class ScreenShotUtil
   
   public static void a(WebView paramWebView, ScreenShotUtil.ScreenshotCallback paramScreenshotCallback)
   {
-    if ((paramWebView == null) || (paramScreenshotCallback == null)) {}
-    int i;
     int j;
     Bitmap localBitmap;
-    do
+    Canvas localCanvas;
+    if (paramWebView != null)
     {
-      do
-      {
+      if (paramScreenshotCallback == null) {
         return;
-        i = paramWebView.getMeasuredWidth();
-        j = paramWebView.getMeasuredHeight();
-      } while ((i <= 0) || (j <= 0));
-      localBitmap = a(i, j);
-    } while (localBitmap == null);
-    Canvas localCanvas = new Canvas(localBitmap);
-    if (paramWebView.getX5WebViewExtension() != null)
-    {
-      Class[] arrayOfClass;
-      if ((!jdField_a_of_type_Boolean) && (jdField_a_of_type_JavaLangReflectMethod == null))
-      {
-        arrayOfClass = paramWebView.getX5WebViewExtension().getClass().getInterfaces();
-        j = arrayOfClass.length;
-        i = 0;
       }
-      for (;;)
+      i = paramWebView.getMeasuredWidth();
+      j = paramWebView.getMeasuredHeight();
+      if (i > 0)
       {
-        for (;;)
-        {
-          Class localClass;
-          if (i < j)
-          {
-            localClass = arrayOfClass[i];
-            if (!"com.tencent.smtt.export.internal.interfaces.IX5WebView".equals(localClass.getName())) {}
-          }
-          else
-          {
-            try
-            {
-              jdField_a_of_type_JavaLangReflectMethod = localClass.getDeclaredMethod("snapshotVisibleWithBitmap", new Class[] { Bitmap.class, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Float.TYPE, Float.TYPE, Runnable.class });
-              if (QLog.isColorLevel()) {
-                QLog.i("ScreenShotUtil", 2, "call snapshotVisibleWithBitmap");
-              }
-              jdField_a_of_type_Boolean = true;
-              try
-              {
-                if (jdField_a_of_type_JavaLangReflectMethod != null) {
-                  jdField_a_of_type_JavaLangReflectMethod.invoke(paramWebView.getX5WebViewExtension(), new Object[] { localBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new ScreenShotUtil.1(paramScreenshotCallback, localBitmap) });
-                }
-                i = 1;
-              }
-              catch (Exception localException2)
-              {
-                for (;;)
-                {
-                  i = 0;
-                }
-              }
-              if (i != 0) {
-                break;
-              }
-              localCanvas.setDrawFilter(new PaintFlagsDrawFilter(134, 64));
-              paramWebView.getX5WebViewExtension().snapshotVisible(localCanvas, false, false, false, false);
-              if (QLog.isColorLevel()) {
-                QLog.d("ScreenShotUtil", 2, "snapshot with snapshotVisible()");
-              }
-              localCanvas.setDrawFilter(null);
-              paramScreenshotCallback.a(localBitmap);
-              return;
-            }
-            catch (Exception localException1)
-            {
-              for (;;)
-              {
-                if (QLog.isColorLevel()) {
-                  QLog.i("ScreenShotUtil", 2, "call snapshotVisibleWithBitmap failed: " + localException1.getMessage());
-                }
-                jdField_a_of_type_JavaLangReflectMethod = null;
-              }
-            }
-          }
+        if (j <= 0) {
+          return;
         }
-        i += 1;
+        localBitmap = a(i, j);
+        if (localBitmap == null) {
+          return;
+        }
+        localCanvas = new Canvas(localBitmap);
+        if (paramWebView.getX5WebViewExtension() != null)
+        {
+          boolean bool = jdField_a_of_type_Boolean;
+          j = 1;
+          if ((!bool) && (jdField_a_of_type_JavaLangReflectMethod == null))
+          {
+            Class[] arrayOfClass = paramWebView.getX5WebViewExtension().getClass().getInterfaces();
+            int k = arrayOfClass.length;
+            i = 0;
+            while (i < k)
+            {
+              Object localObject = arrayOfClass[i];
+              if ("com.tencent.smtt.export.internal.interfaces.IX5WebView".equals(((Class)localObject).getName())) {
+                try
+                {
+                  jdField_a_of_type_JavaLangReflectMethod = ((Class)localObject).getDeclaredMethod("snapshotVisibleWithBitmap", new Class[] { Bitmap.class, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Boolean.TYPE, Float.TYPE, Float.TYPE, Runnable.class });
+                  if (!QLog.isColorLevel()) {
+                    break;
+                  }
+                  QLog.i("ScreenShotUtil", 2, "call snapshotVisibleWithBitmap");
+                }
+                catch (Exception localException1)
+                {
+                  if (QLog.isColorLevel())
+                  {
+                    localObject = new StringBuilder();
+                    ((StringBuilder)localObject).append("call snapshotVisibleWithBitmap failed: ");
+                    ((StringBuilder)localObject).append(localException1.getMessage());
+                    QLog.i("ScreenShotUtil", 2, ((StringBuilder)localObject).toString());
+                  }
+                  jdField_a_of_type_JavaLangReflectMethod = null;
+                }
+              }
+              i += 1;
+            }
+            jdField_a_of_type_Boolean = true;
+          }
+          i = j;
+        }
       }
     }
-    paramWebView.draw(localCanvas);
-    paramScreenshotCallback.a(localBitmap);
+    try
+    {
+      if (jdField_a_of_type_JavaLangReflectMethod == null) {
+        break label364;
+      }
+      jdField_a_of_type_JavaLangReflectMethod.invoke(paramWebView.getX5WebViewExtension(), new Object[] { localBitmap, Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Boolean.valueOf(true), Integer.valueOf(1), Integer.valueOf(1), new ScreenShotUtil.1(paramScreenshotCallback, localBitmap) });
+      i = j;
+    }
+    catch (Exception localException2)
+    {
+      label362:
+      break label362;
+    }
+    int i = 0;
+    label364:
+    if (i == 0)
+    {
+      localCanvas.setDrawFilter(new PaintFlagsDrawFilter(134, 64));
+      paramWebView.getX5WebViewExtension().snapshotVisible(localCanvas, false, false, false, false);
+      if (QLog.isColorLevel()) {
+        QLog.d("ScreenShotUtil", 2, "snapshot with snapshotVisible()");
+      }
+      localCanvas.setDrawFilter(null);
+      paramScreenshotCallback.a(localBitmap);
+      return;
+      paramWebView.draw(localCanvas);
+      paramScreenshotCallback.a(localBitmap);
+    }
   }
   
   public static <T> boolean a(WebView paramWebView, ScreenShotUtil.ScreenLongShotCallback<T> paramScreenLongShotCallback)
@@ -384,53 +386,50 @@ public final class ScreenShotUtil
     {
       QLog.e("ScreenShotUtil", 1, "snapshotWholePage error, mWebView is null");
       paramScreenLongShotCallback.a(new NullPointerException("mWebView is null"));
-    }
-    for (;;)
-    {
       return false;
-      int i = paramWebView.getMeasuredWidth();
-      int j = paramWebView.getContentWidth();
-      int k = paramWebView.getContentHeight();
-      if ((i <= 0) || (j <= 0) || (k <= 0))
-      {
-        QLog.e("ScreenShotUtil", 1, "measuredWidth <= 0 || contentWidth <= 0 || contentHeight <= 0");
-        paramScreenLongShotCallback.a(new IllegalStateException("measuredWidth <= 0 || contentWidth <= 0 || contentHeight <= 0"));
-        return false;
-      }
-      float f = i / j;
+    }
+    int i = paramWebView.getMeasuredWidth();
+    int j = paramWebView.getContentWidth();
+    int k = paramWebView.getContentHeight();
+    float f;
+    if ((i > 0) && (j > 0) && (k > 0))
+    {
+      f = i / j;
       j = (int)(k * f);
       if (j > 20000)
       {
         QLog.e("ScreenShotUtil", 1, "height > 20000, out of height limit");
-        paramScreenLongShotCallback.a(new IllegalStateException(HardCodeUtil.a(2131718834)));
+        paramScreenLongShotCallback.a(new IllegalStateException(HardCodeUtil.a(2131718549)));
         return false;
       }
-      try
-      {
-        Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.RGB_565);
-        if (localBitmap != null)
-        {
-          Canvas localCanvas = new Canvas(localBitmap);
-          localCanvas.scale(f, f);
-          ThreadManagerV2.executeOnNetWorkThread(new ScreenShotUtil.2(paramWebView, localCanvas, paramScreenLongShotCallback, localBitmap));
-          return true;
-        }
-      }
-      catch (OutOfMemoryError paramWebView)
-      {
-        if (0 != 0) {
-          throw new NullPointerException();
-        }
-        QLog.e("ScreenShotUtil", 1, "createBitmap out of memory");
-        paramScreenLongShotCallback.a(new IllegalStateException(HardCodeUtil.a(2131718834)));
-      }
     }
+    try
+    {
+      Bitmap localBitmap = Bitmap.createBitmap(i, j, Bitmap.Config.RGB_565);
+      if (localBitmap == null) {
+        return false;
+      }
+      Canvas localCanvas = new Canvas(localBitmap);
+      localCanvas.scale(f, f);
+      ThreadManagerV2.executeOnNetWorkThread(new ScreenShotUtil.2(paramWebView, localCanvas, paramScreenLongShotCallback, localBitmap));
+      return true;
+    }
+    catch (OutOfMemoryError paramWebView)
+    {
+      label180:
+      break label180;
+    }
+    QLog.e("ScreenShotUtil", 1, "createBitmap out of memory");
+    paramScreenLongShotCallback.a(new IllegalStateException(HardCodeUtil.a(2131718549)));
+    return false;
+    QLog.e("ScreenShotUtil", 1, "measuredWidth <= 0 || contentWidth <= 0 || contentHeight <= 0");
+    paramScreenLongShotCallback.a(new IllegalStateException("measuredWidth <= 0 || contentWidth <= 0 || contentHeight <= 0"));
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.ScreenShotUtil
  * JD-Core Version:    0.7.0.1
  */

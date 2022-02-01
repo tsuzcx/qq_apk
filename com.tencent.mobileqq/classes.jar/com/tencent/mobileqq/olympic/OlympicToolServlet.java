@@ -23,15 +23,18 @@ public class OlympicToolServlet
       paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
       paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    for (;;)
+    else
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("OlympicToolServlet", 4, "onReceive: " + paramFromServiceMsg.getServiceCmd());
-      }
-      ((OlympicToolAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
-      return;
       paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive: ");
+      localStringBuilder.append(paramFromServiceMsg.getServiceCmd());
+      QLog.i("OlympicToolServlet", 4, localStringBuilder.toString());
+    }
+    ((OlympicToolAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -48,8 +51,12 @@ public class OlympicToolServlet
         if (!paramIntent.isNeedCallback()) {
           paramPacket.setNoResponse();
         }
-        if (QLog.isDevelopLevel()) {
-          QLog.i("OlympicToolServlet", 4, "send: " + paramIntent.getServiceCmd());
+        if (QLog.isDevelopLevel())
+        {
+          paramPacket = new StringBuilder();
+          paramPacket.append("send: ");
+          paramPacket.append(paramIntent.getServiceCmd());
+          QLog.i("OlympicToolServlet", 4, paramPacket.toString());
         }
       }
     }
@@ -57,7 +64,7 @@ public class OlympicToolServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.olympic.OlympicToolServlet
  * JD-Core Version:    0.7.0.1
  */

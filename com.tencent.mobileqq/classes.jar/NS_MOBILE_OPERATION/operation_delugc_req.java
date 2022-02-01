@@ -61,27 +61,32 @@ public final class operation_delugc_req
     paramJceOutputStream.write(this.appid, 0);
     paramJceOutputStream.write(this.uin, 1);
     paramJceOutputStream.write(this.ownuin, 2);
-    if (this.srcId != null) {
-      paramJceOutputStream.write(this.srcId, 3);
+    Object localObject = this.srcId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.srcSubid != null) {
-      paramJceOutputStream.write(this.srcSubid, 4);
+    localObject = this.srcSubid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.content != null) {
-      paramJceOutputStream.write(this.content, 5);
+    localObject = this.content;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 5);
     }
     paramJceOutputStream.write(this.isverified, 6);
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 7);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 7);
     }
-    if (this.mapEx != null) {
-      paramJceOutputStream.write(this.mapEx, 8);
+    localObject = this.mapEx;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_OPERATION.operation_delugc_req
  * JD-Core Version:    0.7.0.1
  */

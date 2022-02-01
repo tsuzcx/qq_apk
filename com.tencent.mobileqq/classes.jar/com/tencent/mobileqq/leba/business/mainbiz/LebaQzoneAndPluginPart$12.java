@@ -1,15 +1,12 @@
 package com.tencent.mobileqq.leba.business.mainbiz;
 
 import android.text.TextUtils;
+import com.tencent.comic.api.IQQPluginPreloadService;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.extendfriend.utils.ExtendFriendLabelUtils;
+import com.tencent.mobileqq.qqexpand.plugin.preload.IExpandPluginPreload;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.api.IWebProcessPreload;
-import cooperation.comic.PluginPreloader;
-import cooperation.comic.QQComicPreloadManager;
-import cooperation.qqreader.QRProcessManager;
 
 class LebaQzoneAndPluginPart$12
   implements Runnable
@@ -35,21 +32,17 @@ class LebaQzoneAndPluginPart$12
         localIWebProcessPreload.preParseDns(LebaQzoneAndPluginPart.c, "key_reader_dns_parse");
       }
     }
-    localObject = (QRProcessManager)this.a.getManager(QQManagerFactory.QR_PROCESS_MANAGER);
+    localObject = (IQQPluginPreloadService)this.a.getRuntimeService(IQQPluginPreloadService.class);
     if (localObject != null) {
-      ((QRProcessManager)localObject).a(6);
+      ((IQQPluginPreloadService)localObject).preload(6, 500);
     }
-    localObject = (QQComicPreloadManager)this.a.getManager(QQManagerFactory.QQCOMIC_PRELOAD_MANAGER);
-    if (localObject != null) {
-      PluginPreloader.a(((QQComicPreloadManager)localObject).a(6), 500L);
-    }
-    ExtendFriendLabelUtils.a(this.a, 100L);
+    ((IExpandPluginPreload)QRoute.api(IExpandPluginPreload.class)).preloadProcessIfPlugin(this.a, 100L);
     ThreadManager.post(new LebaQzoneAndPluginPart.12.1(this), 5, null, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.business.mainbiz.LebaQzoneAndPluginPart.12
  * JD-Core Version:    0.7.0.1
  */

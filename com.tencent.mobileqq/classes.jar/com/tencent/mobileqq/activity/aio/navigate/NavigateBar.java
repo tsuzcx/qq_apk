@@ -44,12 +44,18 @@ public abstract class NavigateBar
   
   public String toString()
   {
-    return "NavigateBar{id=" + this.jdField_a_of_type_Int + ", priority=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("NavigateBar{id=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", priority=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.navigate.NavigateBar
  * JD-Core Version:    0.7.0.1
  */

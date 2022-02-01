@@ -30,24 +30,24 @@ class ChatHistoryC2CDateFragment$3$1
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = (MessageRecord)((List)localObject).get(0);
-        if (this.a.a.getActivity() != null) {
-          ChatHistoryActivity.a(this.a.a.getActivity(), ChatHistoryC2CDateFragment.a(this.a.a), ChatHistoryC2CDateFragment.a(this.a.a), ChatHistoryC2CDateFragment.b(this.a.a), ((MessageRecord)localObject).time, ((MessageRecord)localObject).shmsgseq, 0);
+        if (this.a.a.getBaseActivity() != null) {
+          ChatHistoryActivity.a(this.a.a.getBaseActivity(), ChatHistoryC2CDateFragment.a(this.a.a), ChatHistoryC2CDateFragment.a(this.a.a), ChatHistoryC2CDateFragment.b(this.a.a), ((MessageRecord)localObject).time, ((MessageRecord)localObject).shmsgseq, 0);
         }
       }
-      for (;;)
+      else
       {
-        ChatHistoryC2CDateFragment.a(this.a.a, null);
-        return;
         QLog.e(ChatHistoryC2CDateFragment.b(), 2, "msgList is empty");
         ThreadManager.getUIHandler().post(new ChatHistoryC2CDateFragment.3.1.1(this));
       }
+      ChatHistoryC2CDateFragment.a(this.a.a, null);
+      return;
     }
     QLog.e(ChatHistoryC2CDateFragment.b(), 2, "click day is null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CDateFragment.3.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,18 +18,26 @@ public class ViolaThread
   
   public static Handler.Callback secure(Handler.Callback paramCallback)
   {
-    if ((paramCallback == null) || ((paramCallback instanceof ViolaThread.SafeCallback))) {
-      return paramCallback;
+    if (paramCallback != null)
+    {
+      if ((paramCallback instanceof ViolaThread.SafeCallback)) {
+        return paramCallback;
+      }
+      return new ViolaThread.SafeCallback(paramCallback);
     }
-    return new ViolaThread.SafeCallback(paramCallback);
+    return paramCallback;
   }
   
   public static Runnable secure(Runnable paramRunnable)
   {
-    if ((paramRunnable == null) || ((paramRunnable instanceof ViolaThread.SafeRunnable))) {
-      return paramRunnable;
+    if (paramRunnable != null)
+    {
+      if ((paramRunnable instanceof ViolaThread.SafeRunnable)) {
+        return paramRunnable;
+      }
+      return new ViolaThread.SafeRunnable(paramRunnable);
     }
-    return new ViolaThread.SafeRunnable(paramRunnable);
+    return paramRunnable;
   }
   
   public Handler getHandler()
@@ -44,7 +52,7 @@ public class ViolaThread
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.commons.ViolaThread
  * JD-Core Version:    0.7.0.1
  */

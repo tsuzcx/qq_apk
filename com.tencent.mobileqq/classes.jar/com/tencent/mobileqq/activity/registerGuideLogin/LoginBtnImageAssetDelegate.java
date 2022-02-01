@@ -27,8 +27,12 @@ public class LoginBtnImageAssetDelegate
   {
     try
     {
-      paramLottieImageAsset = this.a.getAssets().open("login_btn_lottie_images/" + paramLottieImageAsset.getFileName());
-      Object localObject = new BitmapFactory.Options();
+      localObject = this.a.getAssets();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("login_btn_lottie_images/");
+      localStringBuilder.append(paramLottieImageAsset.getFileName());
+      paramLottieImageAsset = ((AssetManager)localObject).open(localStringBuilder.toString());
+      localObject = new BitmapFactory.Options();
       ((BitmapFactory.Options)localObject).inScaled = false;
       localObject = BitmapFactory.decodeStream(paramLottieImageAsset, (Rect)null, (BitmapFactory.Options)localObject);
       paramLottieImageAsset.close();
@@ -36,14 +40,17 @@ public class LoginBtnImageAssetDelegate
     }
     catch (Throwable paramLottieImageAsset)
     {
-      QLog.i("LoginBtnImageAssetDelegate", 2, "fetchBitmap error " + paramLottieImageAsset.getMessage());
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("fetchBitmap error ");
+      ((StringBuilder)localObject).append(paramLottieImageAsset.getMessage());
+      QLog.i("LoginBtnImageAssetDelegate", 2, ((StringBuilder)localObject).toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginBtnImageAssetDelegate
  * JD-Core Version:    0.7.0.1
  */

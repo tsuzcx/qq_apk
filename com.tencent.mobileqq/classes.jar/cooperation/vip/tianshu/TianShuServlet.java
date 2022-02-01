@@ -19,39 +19,50 @@ public class TianShuServlet
   
   public void onReceive(Intent paramIntent, FromServiceMsg paramFromServiceMsg)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onReceive cmd=" + paramIntent.getStringExtra("cmd") + ",success=" + paramFromServiceMsg.isSuccess());
-    }
-    if ((paramIntent == null) || (paramFromServiceMsg == null)) {}
-    String str2;
-    label151:
-    do
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      do
-      {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onReceive cmd=");
+      ((StringBuilder)localObject).append(paramIntent.getStringExtra("cmd"));
+      ((StringBuilder)localObject).append(",success=");
+      ((StringBuilder)localObject).append(paramFromServiceMsg.isSuccess());
+      QLog.d("MonitorServlet", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramIntent != null)
+    {
+      if (paramFromServiceMsg == null) {
         return;
-        str2 = paramFromServiceMsg.getServiceCmd();
-      } while (str2 == null);
-      StringBuilder localStringBuilder;
+      }
+      String str = paramFromServiceMsg.getServiceCmd();
+      if (str == null) {
+        return;
+      }
       if (QLog.isColorLevel())
       {
         boolean bool = paramFromServiceMsg.isSuccess();
-        localStringBuilder = new StringBuilder().append("resp:").append(str2).append(" is ");
-        if (!bool) {
-          break label151;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("resp:");
+        localStringBuilder.append(str);
+        localStringBuilder.append(" is ");
+        if (bool) {
+          localObject = "";
+        } else {
+          localObject = "not";
         }
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append(" success");
+        QLog.d("MonitorServlet", 2, localStringBuilder.toString());
       }
-      for (String str1 = "";; str1 = "not")
+      if (str.equals("TianShu.UserActionMultiReport"))
       {
-        QLog.d("MonitorServlet", 2, str1 + " success");
-        if (!str2.equals("TianShu.UserActionMultiReport")) {
-          break;
-        }
         TianShuManager.getInstance().onTianShuReport(paramIntent, paramFromServiceMsg);
         return;
       }
-    } while (!str2.equals("TianShu.GetAds"));
-    TianShuManager.getInstance().onGetTianShuAdvRsp(paramIntent, paramFromServiceMsg);
+      if (str.equals("TianShu.GetAds")) {
+        TianShuManager.getInstance().onGetTianShuAdvRsp(paramIntent, paramFromServiceMsg);
+      }
+    }
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -62,14 +73,18 @@ public class TianShuServlet
     paramPacket.setSSOCommand(str);
     paramPacket.setTimeout(l);
     paramPacket.putSendData(arrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("MonitorServlet", 2, "onSend exit cmd=" + str);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onSend exit cmd=");
+      paramIntent.append(str);
+      QLog.d("MonitorServlet", 2, paramIntent.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.tianshu.TianShuServlet
  * JD-Core Version:    0.7.0.1
  */

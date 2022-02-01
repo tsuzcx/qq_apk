@@ -81,34 +81,36 @@ public class QcircleFlutterTextCellParser
     int i3 = paramCharSequence.length();
     localObject1 = new StringBuilder(i3);
     int i1 = 0;
-    if (i1 < i3)
+    while (i1 < i3)
     {
       Object localObject2 = localArrayList2.iterator();
-      while (((Iterator)localObject2).hasNext())
+      TextMatcher localTextMatcher;
+      do
       {
-        TextMatcher localTextMatcher = (TextMatcher)((Iterator)localObject2).next();
-        if (localTextMatcher.a(i1))
-        {
-          if (((StringBuilder)localObject1).length() > 0)
-          {
-            localObject2 = new HashMap();
-            ((HashMap)localObject2).put("nodeType", Integer.valueOf(jdField_g_of_type_Int));
-            ((HashMap)localObject2).put("text", ((StringBuilder)localObject1).toString());
-            localArrayList1.add(localObject2);
-            ((StringBuilder)localObject1).delete(0, ((StringBuilder)localObject1).length());
-          }
-          localArrayList1.add(localTextMatcher.a(0, true, paramCharSequence));
-          i1 = localTextMatcher.a() - 1;
+        boolean bool = ((Iterator)localObject2).hasNext();
+        i2 = 1;
+        if (!bool) {
+          break;
         }
-      }
-      for (int i2 = 1;; i2 = 0)
+        localTextMatcher = (TextMatcher)((Iterator)localObject2).next();
+      } while (!localTextMatcher.a(i1));
+      if (((StringBuilder)localObject1).length() > 0)
       {
-        if (i2 == 0) {
-          ((StringBuilder)localObject1).append(paramCharSequence.charAt(i1));
-        }
-        i1 += 1;
-        break;
+        localObject2 = new HashMap();
+        ((HashMap)localObject2).put("nodeType", Integer.valueOf(jdField_g_of_type_Int));
+        ((HashMap)localObject2).put("text", ((StringBuilder)localObject1).toString());
+        localArrayList1.add(localObject2);
+        ((StringBuilder)localObject1).delete(0, ((StringBuilder)localObject1).length());
       }
+      localArrayList1.add(localTextMatcher.a(0, true, paramCharSequence));
+      i1 = localTextMatcher.a() - 1;
+      break label265;
+      int i2 = 0;
+      label265:
+      if (i2 == 0) {
+        ((StringBuilder)localObject1).append(paramCharSequence.charAt(i1));
+      }
+      i1 += 1;
     }
     if (((StringBuilder)localObject1).length() > 0)
     {
@@ -123,7 +125,7 @@ public class QcircleFlutterTextCellParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencent_richtext_library.richtext.QcircleFlutterTextCellParser
  * JD-Core Version:    0.7.0.1
  */

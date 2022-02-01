@@ -29,7 +29,7 @@ import javax.net.ssl.SSLSocket;
 public class TrafficSslSocket
   extends SSLSocket
 {
-  private static final String b = com.tencent.qapmsdk.socket.d.d.a() + ".OpenSSLSocketImpl";
+  private static final String b;
   c a;
   private SSLSocket c;
   private b d;
@@ -38,6 +38,14 @@ public class TrafficSslSocket
   private String g;
   private String h;
   private int i;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(com.tencent.qapmsdk.socket.d.d.a());
+    localStringBuilder.append(".OpenSSLSocketImpl");
+    b = localStringBuilder.toString();
+  }
   
   TrafficSslSocket(Socket paramSocket, String paramString, int paramInt)
   {
@@ -51,18 +59,13 @@ public class TrafficSslSocket
     this.g = paramString;
     if (paramInetAddress != null) {
       this.h = paramInetAddress.getHostAddress();
+    } else if (paramSocket.getInetAddress() != null) {
+      this.h = paramSocket.getInetAddress().getHostAddress();
+    } else {
+      this.h = "";
     }
-    for (;;)
-    {
-      this.i = paramInt;
-      a(paramString);
-      return;
-      if (paramSocket.getInetAddress() != null) {
-        this.h = paramSocket.getInetAddress().getHostAddress();
-      } else {
-        this.h = "";
-      }
-    }
+    this.i = paramInt;
+    a(paramString);
   }
   
   TrafficSslSocket(Socket paramSocket, InetAddress paramInetAddress, int paramInt)
@@ -74,83 +77,88 @@ public class TrafficSslSocket
   {
     try
     {
-      Object localObject1 = (Socket)com.tencent.qapmsdk.socket.d.d.a(b).a("socket").get(this.c);
-      localObject1 = com.tencent.qapmsdk.socket.d.d.a(Socket.class).a("impl").get(localObject1);
-      localObject1 = com.tencent.qapmsdk.socket.d.d.a(SocketImpl.class).a("fd").get(localObject1);
-      return com.tencent.qapmsdk.socket.d.d.a(localObject1);
+      localObject = (Socket)com.tencent.qapmsdk.socket.d.d.a(b).a("socket").get(this.c);
+      localObject = com.tencent.qapmsdk.socket.d.d.a(Socket.class).a("impl").get(localObject);
+      localObject = com.tencent.qapmsdk.socket.d.d.a(SocketImpl.class).a("fd").get(localObject);
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
+      Object localObject;
+      label55:
+      break label55;
     }
+    localObject = null;
+    return com.tencent.qapmsdk.socket.d.d.a(localObject);
   }
   
   private void a(String paramString)
-  {
-    try
-    {
-      Object localObject2 = com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("sslParameters").get(this.c);
-      Object localObject3 = com.tencent.qapmsdk.socket.d.d.a(localObject2.getClass());
-      if (AndroidVersion.isL()) {}
-      for (Object localObject1 = "x509TrustManager";; localObject1 = "trustManager")
-      {
-        localObject1 = ((d.a)localObject3).a((String)localObject1);
-        localObject3 = ((Field)localObject1).get(localObject2);
-        if (!(localObject3 instanceof c)) {
-          break;
-        }
-        localObject3 = (c)com.tencent.qapmsdk.socket.d.d.a(Object.class).a("clone", new Class[0]).invoke(localObject3, new Object[0]);
-        if (localObject3 == null) {
-          break;
-        }
-        ((c)localObject3).a(paramString);
-        ((Field)localObject1).set(localObject2, localObject3);
-        this.a = ((c)localObject3);
-        return;
-      }
-      return;
-    }
-    catch (Exception paramString)
-    {
-      com.tencent.qapmsdk.socket.d.d.a(paramString);
-    }
-  }
-  
-  private void a(SSLException paramSSLException)
-  {
-    if (this.a != null) {
-      this.a.a(paramSSLException);
-    }
-  }
-  
-  private int b()
   {
     for (;;)
     {
       try
       {
-        Object localObject1 = (Socket)com.tencent.qapmsdk.socket.d.d.a(b).a("socket").get(this.c);
-        localObject1 = com.tencent.qapmsdk.socket.d.d.a(Socket.class).a("impl").get(localObject1);
-        if (!(localObject1 instanceof com.tencent.qapmsdk.socket.d)) {
-          break label69;
+        Object localObject2 = com.tencent.qapmsdk.socket.d.d.a(this.c.getClass()).a("sslParameters").get(this.c);
+        Object localObject3 = com.tencent.qapmsdk.socket.d.d.a(localObject2.getClass());
+        if (!AndroidVersion.isL()) {
+          break label125;
         }
-        localObject1 = ((com.tencent.qapmsdk.socket.d)localObject1).a();
-        if (localObject1 != null) {
-          return localObject1.hashCode();
+        localObject1 = "x509TrustManager";
+        localObject1 = ((d.a)localObject3).a((String)localObject1);
+        localObject3 = ((Field)localObject1).get(localObject2);
+        if ((localObject3 instanceof c))
+        {
+          localObject3 = (c)com.tencent.qapmsdk.socket.d.d.a(Object.class).a("clone", new Class[0]).invoke(localObject3, new Object[0]);
+          if (localObject3 != null)
+          {
+            ((c)localObject3).a(paramString);
+            ((Field)localObject1).set(localObject2, localObject3);
+            this.a = ((c)localObject3);
+            return;
+          }
         }
       }
-      catch (Exception localException)
+      catch (Exception paramString)
       {
-        localObject2 = null;
-        continue;
+        com.tencent.qapmsdk.socket.d.d.a(paramString);
       }
-      return 0;
-      label69:
-      Object localObject2 = null;
+      return;
+      label125:
+      Object localObject1 = "trustManager";
     }
+  }
+  
+  private void a(SSLException paramSSLException)
+  {
+    c localc = this.a;
+    if (localc != null) {
+      localc.a(paramSSLException);
+    }
+  }
+  
+  private int b()
+  {
+    localObject3 = null;
+    try
+    {
+      localObject1 = (Socket)com.tencent.qapmsdk.socket.d.d.a(b).a("socket").get(this.c);
+      Object localObject4 = com.tencent.qapmsdk.socket.d.d.a(Socket.class).a("impl").get(localObject1);
+      localObject1 = localObject3;
+      if ((localObject4 instanceof com.tencent.qapmsdk.socket.d)) {
+        localObject1 = ((com.tencent.qapmsdk.socket.d)localObject4).a();
+      }
+    }
+    catch (Exception localException)
+    {
+      for (;;)
+      {
+        Object localObject1;
+        Object localObject2 = localObject3;
+      }
+    }
+    if (localObject1 != null) {
+      return localObject1.hashCode();
+    }
+    return 0;
   }
   
   public void addHandshakeCompletedListener(HandshakeCompletedListener paramHandshakeCompletedListener)
@@ -160,10 +168,12 @@ public class TrafficSslSocket
   
   public void bind(SocketAddress paramSocketAddress)
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
+    if (TrafficMonitor.a().c())
+    {
+      this.c.bind(paramSocketAddress);
+      return;
     }
-    this.c.bind(paramSocketAddress);
+    throw new IOException("Disable network by developer!");
   }
   
   public void close()
@@ -182,18 +192,22 @@ public class TrafficSslSocket
   
   public void connect(SocketAddress paramSocketAddress)
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
+    if (TrafficMonitor.a().c())
+    {
+      this.c.connect(paramSocketAddress);
+      return;
     }
-    this.c.connect(paramSocketAddress);
+    throw new IOException("Disable network by developer!");
   }
   
   public void connect(SocketAddress paramSocketAddress, int paramInt)
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
+    if (TrafficMonitor.a().c())
+    {
+      this.c.connect(paramSocketAddress, paramInt);
+      return;
     }
-    this.c.connect(paramSocketAddress, paramInt);
+    throw new IOException("Disable network by developer!");
   }
   
   @Keep
@@ -244,13 +258,14 @@ public class TrafficSslSocket
   
   public InputStream getInputStream()
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
+    if (TrafficMonitor.a().c())
+    {
+      if (this.d == null) {
+        this.d = new b(this.c.getInputStream(), this.f);
+      }
+      return this.d;
     }
-    if (this.d == null) {
-      this.d = new b(this.c.getInputStream(), this.f);
-    }
-    return this.d;
+    throw new IOException("Disable network by developer!");
   }
   
   public boolean getKeepAlive()
@@ -285,15 +300,16 @@ public class TrafficSslSocket
   
   public OutputStream getOutputStream()
   {
-    if (!TrafficMonitor.a().c()) {
-      throw new IOException("Disable network by developer!");
-    }
-    if (this.e == null)
+    if (TrafficMonitor.a().c())
     {
-      this.e = new com.tencent.qapmsdk.socket.c(this.c.getOutputStream(), this.f);
-      this.e.a(true, this.g, this.h, this.i, a(), b());
+      if (this.e == null)
+      {
+        this.e = new com.tencent.qapmsdk.socket.c(this.c.getOutputStream(), this.f);
+        this.e.a(true, this.g, this.h, this.i, a(), b());
+      }
+      return this.e;
     }
-    return this.e;
+    throw new IOException("Disable network by developer!");
   }
   
   public int getPort()
@@ -616,12 +632,16 @@ public class TrafficSslSocket
   
   public String toString()
   {
-    return "TrafficSslSocket[" + this.c + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("TrafficSslSocket[");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.socket.ssl.TrafficSslSocket
  * JD-Core Version:    0.7.0.1
  */

@@ -1,38 +1,31 @@
 package com.tencent.biz.pubaccount.weishi_new.presenter;
 
-import UserGrowth.stGetAIOFeedDetailRsp;
-import UserGrowth.stSimpleMetaFeed;
-import com.tencent.biz.pubaccount.weishi_new.net.IWeishiServiceListener;
-import com.tencent.biz.pubaccount.weishi_new.net.WeishiTask;
-import com.tencent.biz.pubaccount.weishi_new.report.WsBeaconReportPresenter;
-import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
+import UserGrowth.stGetTabsRsp;
+import com.qq.taf.jce.JceStruct;
+import com.tencent.biz.pubaccount.weishi_new.cache.IWeiShiCacheCallback;
+import com.tencent.biz.pubaccount.weishi_new.presenter.view.IWSHomeView;
 
 class WSHomeFragmentPresenter$5
-  implements IWeishiServiceListener
+  implements IWeiShiCacheCallback
 {
-  WSHomeFragmentPresenter$5(WSHomeFragmentPresenter paramWSHomeFragmentPresenter, long paramLong) {}
+  WSHomeFragmentPresenter$5(WSHomeFragmentPresenter paramWSHomeFragmentPresenter) {}
   
-  public void a(WeishiTask paramWeishiTask)
+  public void a(JceStruct paramJceStruct)
   {
-    long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
-    if ((!paramWeishiTask.a()) || (!(paramWeishiTask.jdField_a_of_type_JavaLangObject instanceof stGetAIOFeedDetailRsp))) {
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, paramWeishiTask.jdField_a_of_type_Int, paramWeishiTask.jdField_a_of_type_JavaLangString);
+    if ((paramJceStruct instanceof stGetTabsRsp)) {
+      paramJceStruct = (stGetTabsRsp)paramJceStruct;
+    } else {
+      paramJceStruct = null;
     }
-    stSimpleMetaFeed localstSimpleMetaFeed;
-    do
-    {
-      return;
-      WsBeaconReportPresenter.a().a(l, paramWeishiTask.jdField_a_of_type_ComTencentBizPubaccountWeishi_newNetWeishiRequest, "feeds", true);
-      paramWeishiTask = (stGetAIOFeedDetailRsp)paramWeishiTask.jdField_a_of_type_JavaLangObject;
-      localstSimpleMetaFeed = paramWeishiTask.feed;
-      WSLog.e("WSHomeFragmentPresenter", "[getAIOFeedDetail] onTaskResponse");
-    } while ((!paramWeishiTask.enable) || (localstSimpleMetaFeed == null));
-    WSHomeFragmentPresenter.a(this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPresenterWSHomeFragmentPresenter, localstSimpleMetaFeed);
+    if (this.a.a() != null) {
+      ((IWSHomeView)this.a.a()).a(paramJceStruct);
+    }
+    WSHomeFragmentPresenter.a(this.a, paramJceStruct);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.presenter.WSHomeFragmentPresenter.5
  * JD-Core Version:    0.7.0.1
  */

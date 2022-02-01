@@ -15,23 +15,25 @@ class PreloadServiceProxyImpl$4
   {
     if ((paramEIPCResult != null) && (paramEIPCResult.isSuccess()) && (paramEIPCResult.data != null))
     {
-      i = paramEIPCResult.data.getInt("result_code");
+      int i = paramEIPCResult.data.getInt("result_code");
       paramEIPCResult = (HashMap)paramEIPCResult.data.getSerializable("path_result");
-      if (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener.a(i, paramEIPCResult);
+      IPreloadService.OnGetPathsListener localOnGetPathsListener = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener;
+      if (localOnGetPathsListener != null) {
+        localOnGetPathsListener.a(i, paramEIPCResult);
       }
     }
-    while (this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener == null)
+    else
     {
-      int i;
-      return;
+      paramEIPCResult = this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener;
+      if (paramEIPCResult != null) {
+        paramEIPCResult.a(1, null);
+      }
     }
-    this.jdField_a_of_type_ComTencentMobileqqQwalletPreloadIPreloadService$OnGetPathsListener.a(1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.qwallet.preload.impl.PreloadServiceProxyImpl.4
  * JD-Core Version:    0.7.0.1
  */

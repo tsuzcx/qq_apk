@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class UniBusiUsingItem
   extends JceStruct
@@ -57,26 +58,30 @@ public final class UniBusiUsingItem
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stUniBusiItem != null) {
-      paramJceOutputStream.write(this.stUniBusiItem, 0);
+    Object localObject = this.stUniBusiItem;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.friendcnt, 1);
     paramJceOutputStream.write(this.groupcnt, 2);
-    if (this.faceurl != null) {
-      paramJceOutputStream.write(this.faceurl, 3);
+    localObject = this.faceurl;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
-    if (this.stUniBusiUsingUidList != null) {
-      paramJceOutputStream.write(this.stUniBusiUsingUidList, 4);
+    localObject = this.stUniBusiUsingUidList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 4);
     }
     paramJceOutputStream.write(this.isglobal, 5);
-    if (this.Nick != null) {
-      paramJceOutputStream.write(this.Nick, 6);
+    localObject = this.Nick;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 6);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiUsingItem
  * JD-Core Version:    0.7.0.1
  */

@@ -30,21 +30,31 @@ public class GetUserIconHandler$GetUserIconListResponse
   
   public void a(int paramInt, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse onNetError errorCode " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("GetUserIconListResponse onNetError errorCode ");
+      paramBundle.append(paramInt);
+      QLog.e("GetUserIconHandler", 2, paramBundle.toString());
     }
   }
   
   public void a(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("GetUserIconHandler", 2, "GetUserIconListResponse errorCode:" + paramInt + " errorMsg:" + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("GetUserIconListResponse errorCode:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" errorMsg:");
+      localStringBuilder.append(paramString);
+      QLog.e("GetUserIconHandler", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.GetUserIconHandler.GetUserIconListResponse
  * JD-Core Version:    0.7.0.1
  */

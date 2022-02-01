@@ -11,20 +11,26 @@ class Camera2Control$7
   
   public void onError(int paramInt)
   {
-    Camera2Utils.a(1, "[Camera2]Samsung Capture onError:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[Camera2]Samsung Capture onError:");
+    localStringBuilder.append(paramInt);
+    Camera2Utils.a(1, localStringBuilder.toString());
     Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
   }
   
   public void onPictureAvailable(ByteBuffer paramByteBuffer)
   {
-    Camera2Utils.a(1, "[Camera2]Samsung Capture cost:" + (float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[Camera2]Samsung Capture cost:");
+    ((StringBuilder)localObject).append((float)(System.currentTimeMillis() - this.jdField_a_of_type_Long) / 1000.0F);
+    Camera2Utils.a(1, ((StringBuilder)localObject).toString());
     Camera2Support.a(2, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control), System.currentTimeMillis() - this.jdField_a_of_type_Long);
     if ((Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control) != null) && (paramByteBuffer != null))
     {
-      byte[] arrayOfByte = new byte[paramByteBuffer.remaining()];
-      paramByteBuffer.get(arrayOfByte);
+      localObject = new byte[paramByteBuffer.remaining()];
+      paramByteBuffer.get((byte[])localObject);
       Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a = Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).a;
-      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).post(new Camera2Control.ImageSaveServer(arrayOfByte, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control)));
+      Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control).post(new Camera2Control.ImageSaveServer((byte[])localObject, Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control)));
     }
     Camera2Control.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, 0L);
     Camera2Control.e(this.jdField_a_of_type_ComTencentMobileqqShortvideoCamera2Camera2Control, false);
@@ -39,7 +45,7 @@ class Camera2Control$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.camera2.Camera2Control.7
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ import java.util.LinkedList;
 public class ei
   extends es
 {
-  private static ei mt = null;
+  private static ei mt;
   private Handler mHandler = new ei.1(this, ea.getLooper());
   private long mm = 0L;
   private boolean mn = false;
@@ -28,16 +28,17 @@ public class ei
   
   public static ei cI()
   {
-    if (mt == null) {}
-    try
-    {
-      if (mt == null) {
-        mt = new ei();
+    if (mt == null) {
+      try
+      {
+        if (mt == null) {
+          mt = new ei();
+        }
       }
-      mt.cL();
-      return mt;
+      finally {}
     }
-    finally {}
+    mt.cL();
+    return mt;
   }
   
   private void cJ()
@@ -70,121 +71,121 @@ public class ei
     //   0: aload_0
     //   1: monitorenter
     //   2: aload_0
-    //   3: getfield 34	wf7/ei:mn	Z
+    //   3: getfield 32	wf7/ei:mn	Z
     //   6: istore_2
     //   7: iload_2
-    //   8: ifne +74 -> 82
+    //   8: ifne +84 -> 92
     //   11: invokestatic 124	wf7/fi:getActiveNetworkInfo	()Landroid/net/NetworkInfo;
     //   14: astore_3
     //   15: aload_3
-    //   16: ifnull +69 -> 85
+    //   16: ifnull +30 -> 46
     //   19: aload_0
     //   20: aload_3
     //   21: invokevirtual 130	android/net/NetworkInfo:getState	()Landroid/net/NetworkInfo$State;
-    //   24: putfield 41	wf7/ei:mo	Landroid/net/NetworkInfo$State;
+    //   24: putfield 39	wf7/ei:mo	Landroid/net/NetworkInfo$State;
     //   27: aload_0
     //   28: aload_3
     //   29: invokevirtual 134	android/net/NetworkInfo:getTypeName	()Ljava/lang/String;
-    //   32: putfield 43	wf7/ei:mp	Ljava/lang/String;
+    //   32: putfield 41	wf7/ei:mp	Ljava/lang/String;
     //   35: aload_0
     //   36: aload_3
     //   37: invokevirtual 137	android/net/NetworkInfo:getSubtypeName	()Ljava/lang/String;
-    //   40: putfield 45	wf7/ei:mq	Ljava/lang/String;
-    //   43: new 139	android/content/IntentFilter
-    //   46: dup
-    //   47: invokespecial 140	android/content/IntentFilter:<init>	()V
-    //   50: astore_3
-    //   51: aload_3
-    //   52: ldc 142
-    //   54: invokevirtual 146	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
-    //   57: aload_3
-    //   58: ldc 147
-    //   60: invokevirtual 151	android/content/IntentFilter:setPriority	(I)V
-    //   63: aload_1
-    //   64: aload_0
-    //   65: aload_3
-    //   66: invokevirtual 157	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
-    //   69: pop
-    //   70: aload_0
-    //   71: invokestatic 163	java/lang/System:currentTimeMillis	()J
-    //   74: putfield 32	wf7/ei:mm	J
-    //   77: aload_0
-    //   78: iconst_1
-    //   79: putfield 34	wf7/ei:mn	Z
-    //   82: aload_0
-    //   83: monitorexit
-    //   84: return
-    //   85: aload_0
-    //   86: getstatic 166	android/net/NetworkInfo$State:DISCONNECTED	Landroid/net/NetworkInfo$State;
-    //   89: putfield 41	wf7/ei:mo	Landroid/net/NetworkInfo$State;
-    //   92: goto -49 -> 43
-    //   95: astore_3
-    //   96: goto -53 -> 43
-    //   99: astore_1
-    //   100: aload_0
-    //   101: monitorexit
-    //   102: aload_1
-    //   103: athrow
+    //   40: putfield 43	wf7/ei:mq	Ljava/lang/String;
+    //   43: goto +10 -> 53
+    //   46: aload_0
+    //   47: getstatic 140	android/net/NetworkInfo$State:DISCONNECTED	Landroid/net/NetworkInfo$State;
+    //   50: putfield 39	wf7/ei:mo	Landroid/net/NetworkInfo$State;
+    //   53: new 142	android/content/IntentFilter
+    //   56: dup
+    //   57: invokespecial 143	android/content/IntentFilter:<init>	()V
+    //   60: astore_3
+    //   61: aload_3
+    //   62: ldc 145
+    //   64: invokevirtual 149	android/content/IntentFilter:addAction	(Ljava/lang/String;)V
+    //   67: aload_3
+    //   68: ldc 150
+    //   70: invokevirtual 154	android/content/IntentFilter:setPriority	(I)V
+    //   73: aload_1
+    //   74: aload_0
+    //   75: aload_3
+    //   76: invokevirtual 160	android/content/Context:registerReceiver	(Landroid/content/BroadcastReceiver;Landroid/content/IntentFilter;)Landroid/content/Intent;
+    //   79: pop
+    //   80: aload_0
+    //   81: invokestatic 166	java/lang/System:currentTimeMillis	()J
+    //   84: putfield 30	wf7/ei:mm	J
+    //   87: aload_0
+    //   88: iconst_1
+    //   89: putfield 32	wf7/ei:mn	Z
+    //   92: aload_0
+    //   93: monitorexit
+    //   94: return
+    //   95: astore_1
+    //   96: aload_0
+    //   97: monitorexit
+    //   98: aload_1
+    //   99: athrow
+    //   100: astore_3
+    //   101: goto -48 -> 53
     //   104: astore_1
-    //   105: goto -23 -> 82
+    //   105: goto -13 -> 92
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	108	0	this	ei
     //   0	108	1	paramContext	Context
     //   6	2	2	bool	boolean
-    //   14	52	3	localObject	Object
-    //   95	1	3	localException	Exception
+    //   14	62	3	localObject	Object
+    //   100	1	3	localException	Exception
     // Exception table:
     //   from	to	target	type
-    //   11	15	95	java/lang/Exception
-    //   19	43	95	java/lang/Exception
-    //   85	92	95	java/lang/Exception
-    //   2	7	99	finally
-    //   11	15	99	finally
-    //   19	43	99	finally
-    //   43	82	99	finally
-    //   85	92	99	finally
-    //   43	82	104	java/lang/Throwable
+    //   2	7	95	finally
+    //   11	15	95	finally
+    //   19	43	95	finally
+    //   46	53	95	finally
+    //   53	92	95	finally
+    //   11	15	100	java/lang/Exception
+    //   19	43	100	java/lang/Exception
+    //   46	53	100	java/lang/Exception
+    //   53	92	104	java/lang/Throwable
   }
   
   public void a(Context paramContext, Intent paramIntent)
   {
-    if ((paramIntent == null) || (paramIntent.getAction() == null)) {}
-    do
+    if (paramIntent != null)
     {
-      do
+      if (paramIntent.getAction() == null) {
+        return;
+      }
+      if ("android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction()))
       {
-        do
+        if ((this.mm <= 0L) || (System.currentTimeMillis() - this.mm > 2000L))
         {
-          return;
-        } while (!"android.net.conn.CONNECTIVITY_CHANGE".equals(paramIntent.getAction()));
-        if ((this.mm <= 0L) || (System.currentTimeMillis() - this.mm > 2000L)) {
-          break;
+          eh.cE().cF();
+          this.mHandler.removeMessages(1);
+          this.mHandler.sendEmptyMessageDelayed(1, 5000L);
         }
         paramContext = paramIntent.getExtras();
-      } while (paramContext == null);
-      localObject = (NetworkInfo)paramContext.getParcelable("networkInfo");
-    } while (localObject == null);
-    paramContext = ((NetworkInfo)localObject).getState();
-    paramIntent = ((NetworkInfo)localObject).getTypeName();
-    Object localObject = ((NetworkInfo)localObject).getSubtypeName();
-    if (paramContext == NetworkInfo.State.CONNECTED) {
-      if (this.mo != NetworkInfo.State.CONNECTED) {
-        cK();
-      }
-    }
-    for (;;)
-    {
-      this.mo = paramContext;
-      this.mp = paramIntent;
-      this.mq = ((String)localObject);
-      return;
-      eh.cE().cF();
-      this.mHandler.removeMessages(1);
-      this.mHandler.sendEmptyMessageDelayed(1, 5000L);
-      break;
-      if ((paramContext == NetworkInfo.State.DISCONNECTED) && (this.mo != NetworkInfo.State.DISCONNECTED)) {
-        cJ();
+        if (paramContext == null) {
+          return;
+        }
+        Object localObject = (NetworkInfo)paramContext.getParcelable("networkInfo");
+        if (localObject == null) {
+          return;
+        }
+        paramContext = ((NetworkInfo)localObject).getState();
+        paramIntent = ((NetworkInfo)localObject).getTypeName();
+        localObject = ((NetworkInfo)localObject).getSubtypeName();
+        if (paramContext == NetworkInfo.State.CONNECTED)
+        {
+          if (this.mo != NetworkInfo.State.CONNECTED) {
+            cK();
+          }
+        }
+        else if ((paramContext == NetworkInfo.State.DISCONNECTED) && (this.mo != NetworkInfo.State.DISCONNECTED)) {
+          cJ();
+        }
+        this.mo = paramContext;
+        this.mp = paramIntent;
+        this.mq = ((String)localObject);
       }
     }
   }
@@ -219,7 +220,7 @@ public class ei
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.ei
  * JD-Core Version:    0.7.0.1
  */

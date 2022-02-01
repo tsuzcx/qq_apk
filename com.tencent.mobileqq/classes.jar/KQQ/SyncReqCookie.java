@@ -40,14 +40,15 @@ public final class SyncReqCookie
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.vServiceId, 0);
-    if (this.vCookie != null) {
-      paramJceOutputStream.write(this.vCookie, 1);
+    byte[] arrayOfByte = this.vCookie;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.SyncReqCookie
  * JD-Core Version:    0.7.0.1
  */

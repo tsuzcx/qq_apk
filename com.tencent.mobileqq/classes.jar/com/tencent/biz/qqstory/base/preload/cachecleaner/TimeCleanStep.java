@@ -16,58 +16,53 @@ public class TimeCleanStep
   
   protected void a(String[] paramArrayOfString, AbsCleanStep.CleanContext paramCleanContext)
   {
-    int n = paramArrayOfString.length;
+    int m = paramArrayOfString.length;
     int i = 0;
-    if (i < n)
+    while (i < m)
     {
       File localFile1 = new File(paramArrayOfString[i]);
-      double d = a(localFile1);
+      double d1 = a(localFile1);
       File[] arrayOfFile = localFile1.listFiles();
-      if (arrayOfFile == null) {}
-      for (;;)
+      if (arrayOfFile != null)
       {
-        i += 1;
-        break;
         long l = System.currentTimeMillis();
-        int i1 = arrayOfFile.length;
-        int k = 0;
+        int n = arrayOfFile.length;
         int j = 0;
+        int k = 0;
         for (;;)
         {
-          if (j < i1)
+          if ((j >= n) || (j % 150 == 0)) {}
+          try
           {
-            if (j % 150 == 0) {}
-            try
-            {
-              Thread.sleep(100L);
-              File localFile2 = arrayOfFile[j];
-              int m = k;
-              if (l - localFile2.lastModified() > 86400000L)
-              {
-                a(localFile2);
-                m = k + 1;
-              }
-              j += 1;
-              k = m;
-            }
-            catch (InterruptedException localInterruptedException)
-            {
-              for (;;)
-              {
-                SLog.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
-              }
-            }
+            Thread.sleep(100L);
           }
+          catch (InterruptedException localInterruptedException)
+          {
+            label89:
+            File localFile2;
+            double d2;
+            break label89;
+          }
+          SLog.e("Q.qqstory.cleaner:TimeCleanStep", "sleep error ,InterruptedException");
+          localFile2 = arrayOfFile[j];
+          if (l - localFile2.lastModified() > 86400000L)
+          {
+            a(localFile2);
+            k += 1;
+          }
+          j += 1;
         }
-        paramCleanContext.jdField_b_of_type_Double = (d - a(localFile1) + paramCleanContext.jdField_b_of_type_Double);
-        paramCleanContext.jdField_b_of_type_Int = (k + paramCleanContext.jdField_b_of_type_Int);
+        d2 = a(localFile1);
+        paramCleanContext.jdField_b_of_type_Double += d1 - d2;
+        paramCleanContext.jdField_b_of_type_Int += k;
       }
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.cachecleaner.TimeCleanStep
  * JD-Core Version:    0.7.0.1
  */

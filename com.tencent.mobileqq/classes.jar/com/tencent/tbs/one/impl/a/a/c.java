@@ -21,23 +21,21 @@ public abstract class c
       return;
     }
     this.d = true;
-    if ((this.c == null) || (this.c.size() <= 0)) {
+    Object localObject = this.c;
+    if ((localObject != null) && (((List)localObject).size() > 0)) {
+      localObject = this.c.iterator();
+    }
+    while (((Iterator)localObject).hasNext())
+    {
+      c localc = (c)((Iterator)localObject).next();
+      localc.b = this.b;
+      c.1 local1 = new c.1(this);
+      localc.f.add(local1);
+      localc.a();
+      continue;
       b();
     }
-    for (;;)
-    {
-      this.b.a();
-      return;
-      Iterator localIterator = this.c.iterator();
-      while (localIterator.hasNext())
-      {
-        c localc = (c)localIterator.next();
-        localc.b = this.b;
-        c.1 local1 = new c.1(this);
-        localc.f.add(local1);
-        localc.a();
-      }
-    }
+    this.b.a();
   }
   
   public final void a(int paramInt, String paramString, Throwable paramThrowable)
@@ -74,7 +72,7 @@ public abstract class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tbs.one.impl.a.a.c
  * JD-Core Version:    0.7.0.1
  */

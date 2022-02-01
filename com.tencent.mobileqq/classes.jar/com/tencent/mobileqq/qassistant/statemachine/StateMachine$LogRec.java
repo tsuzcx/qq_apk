@@ -23,16 +23,17 @@ public class StateMachine$LogRec
   {
     this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine = paramStateMachine;
     this.jdField_a_of_type_Long = System.currentTimeMillis();
-    if (paramMessage != null) {}
-    for (int i = paramMessage.what;; i = 0)
-    {
-      this.jdField_a_of_type_Int = i;
-      this.jdField_a_of_type_JavaLangString = paramString;
-      this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineIState = paramIState1;
-      this.b = paramIState2;
-      this.c = paramIState3;
-      return;
+    int i;
+    if (paramMessage != null) {
+      i = paramMessage.what;
+    } else {
+      i = 0;
     }
+    this.jdField_a_of_type_Int = i;
+    this.jdField_a_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineIState = paramIState1;
+    this.b = paramIState2;
+    this.c = paramIState3;
   }
   
   public String toString()
@@ -43,65 +44,59 @@ public class StateMachine$LogRec
     ((Calendar)localObject).setTimeInMillis(this.jdField_a_of_type_Long);
     localStringBuilder.append(String.format("%tm-%td %tH:%tM:%tS.%tL", new Object[] { localObject, localObject, localObject, localObject, localObject, localObject }));
     localStringBuilder.append(" processed=");
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineIState == null)
+    localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineIState;
+    String str = "<null>";
+    if (localObject == null) {
+      localObject = "<null>";
+    } else {
+      localObject = ((IState)localObject).a();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" org=");
+    localObject = this.b;
+    if (localObject == null) {
+      localObject = "<null>";
+    } else {
+      localObject = ((IState)localObject).a();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" dest=");
+    localObject = this.c;
+    if (localObject == null) {
+      localObject = str;
+    } else {
+      localObject = ((IState)localObject).a();
+    }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(" what=");
+    localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine;
+    if (localObject != null) {
+      localObject = ((StateMachine)localObject).a(this.jdField_a_of_type_Int);
+    } else {
+      localObject = "";
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject))
     {
-      localObject = "<null>";
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append(" org=");
-      if (this.b != null) {
-        break label247;
-      }
-      localObject = "<null>";
-      label106:
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append(" dest=");
-      if (this.c != null) {
-        break label260;
-      }
-      localObject = "<null>";
-      label129:
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append(" what=");
-      if (this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine == null) {
-        break label273;
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineStateMachine.a(this.jdField_a_of_type_Int);
-      label161:
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        break label279;
-      }
       localStringBuilder.append(this.jdField_a_of_type_Int);
       localStringBuilder.append("(0x");
       localStringBuilder.append(Integer.toHexString(this.jdField_a_of_type_Int));
       localStringBuilder.append(")");
     }
-    for (;;)
+    else
     {
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-      {
-        localStringBuilder.append(" ");
-        localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
-      }
-      return localStringBuilder.toString();
-      localObject = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineIState.a();
-      break;
-      label247:
-      localObject = this.b.a();
-      break label106;
-      label260:
-      localObject = this.c.a();
-      break label129;
-      label273:
-      localObject = "";
-      break label161;
-      label279:
       localStringBuilder.append((String)localObject);
     }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
+    {
+      localStringBuilder.append(" ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    }
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.StateMachine.LogRec
  * JD-Core Version:    0.7.0.1
  */

@@ -18,33 +18,30 @@ final class Completable$3
     Completable[] arrayOfCompletable = this.val$sources;
     int j = arrayOfCompletable.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      Completable localCompletable;
-      if (i < j)
-      {
-        localCompletable = arrayOfCompletable[i];
-        if (!localCompositeSubscription.isUnsubscribed()) {
-          break label73;
-        }
-      }
-      label73:
-      do
-      {
+      Completable localCompletable = arrayOfCompletable[i];
+      if (localCompositeSubscription.isUnsubscribed()) {
         return;
-        if (localCompletable == null)
+      }
+      if (localCompletable == null)
+      {
+        localObject = new NullPointerException("One of the sources is null");
+        if (localAtomicBoolean.compareAndSet(false, true))
         {
-          localObject = new NullPointerException("One of the sources is null");
-          if (localAtomicBoolean.compareAndSet(false, true))
-          {
-            localCompositeSubscription.unsubscribe();
-            paramCompletableSubscriber.onError((Throwable)localObject);
-            return;
-          }
-          Completable.ERROR_HANDLER.handleError((Throwable)localObject);
+          localCompositeSubscription.unsubscribe();
+          paramCompletableSubscriber.onError((Throwable)localObject);
           return;
         }
-      } while ((localAtomicBoolean.get()) || (localCompositeSubscription.isUnsubscribed()));
+        Completable.ERROR_HANDLER.handleError((Throwable)localObject);
+        return;
+      }
+      if (localAtomicBoolean.get()) {
+        break;
+      }
+      if (localCompositeSubscription.isUnsubscribed()) {
+        return;
+      }
       localCompletable.subscribe((Completable.CompletableSubscriber)localObject);
       i += 1;
     }
@@ -52,7 +49,7 @@ final class Completable$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.Completable.3
  * JD-Core Version:    0.7.0.1
  */

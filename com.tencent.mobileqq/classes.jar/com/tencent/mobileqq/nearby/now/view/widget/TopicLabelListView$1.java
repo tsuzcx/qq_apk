@@ -14,10 +14,10 @@ class TopicLabelListView$1
   
   public int getCount()
   {
-    if ((TopicLabelListView.a(this.a) == null) || (TopicLabelListView.a(this.a).size() == 0)) {
-      return 0;
+    if ((TopicLabelListView.a(this.a) != null) && (TopicLabelListView.a(this.a).size() != 0)) {
+      return TopicLabelListView.a(this.a).size();
     }
-    return TopicLabelListView.a(this.a).size();
+    return 0;
   }
   
   public Object getItem(int paramInt)
@@ -32,29 +32,27 @@ class TopicLabelListView$1
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    Object localObject;
+    TopicLabelListView.ViewHolder localViewHolder;
     if (paramView == null)
     {
-      paramView = new TopicLabelListView.ViewHolder(this.a, null);
-      localObject = new LabelViewItem(TopicLabelListView.a(this.a));
-      ((View)localObject).setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
-      ((View)localObject).setTag(paramView);
+      localViewHolder = new TopicLabelListView.ViewHolder(this.a, null);
+      paramView = new LabelViewItem(TopicLabelListView.a(this.a));
+      paramView.setLayoutParams(new ViewGroup.LayoutParams(-2, -2));
+      paramView.setTag(localViewHolder);
     }
-    for (;;)
+    else
     {
-      paramView.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
-      ((LabelViewItem)localObject).setText(paramView.a);
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return localObject;
-      TopicLabelListView.ViewHolder localViewHolder = (TopicLabelListView.ViewHolder)paramView.getTag();
-      localObject = paramView;
-      paramView = localViewHolder;
+      localViewHolder = (TopicLabelListView.ViewHolder)paramView.getTag();
     }
+    localViewHolder.a = ((String)TopicLabelListView.a(this.a).get(paramInt));
+    ((LabelViewItem)paramView).setText(localViewHolder.a);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.widget.TopicLabelListView.1
  * JD-Core Version:    0.7.0.1
  */

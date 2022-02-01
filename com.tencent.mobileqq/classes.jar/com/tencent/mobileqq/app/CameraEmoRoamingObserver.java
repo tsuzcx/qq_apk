@@ -17,30 +17,36 @@ public class CameraEmoRoamingObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return;
-    case 1: 
-      paramObject = (Object[])paramObject;
-      doOnAddEmoResult(((Integer)paramObject[0]).intValue(), (CameraEmotionData)paramObject[1]);
-      return;
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3)
+        {
+          if (paramInt != 4)
+          {
+            if (paramInt != 5) {
+              return;
+            }
+            onCameraEmoSend(paramBoolean, ((Integer)paramObject).intValue());
+            return;
+          }
+          onCameraEmoInsert();
+          return;
+        }
+        doOnDeleteEmoResult(((Integer)paramObject).intValue());
+        return;
+      }
       doOnGetEmoListResult(((Integer)paramObject).intValue());
       return;
-    case 3: 
-      doOnDeleteEmoResult(((Integer)paramObject).intValue());
-      return;
-    case 4: 
-      onCameraEmoInsert();
-      return;
     }
-    onCameraEmoSend(paramBoolean, ((Integer)paramObject).intValue());
+    paramObject = (Object[])paramObject;
+    doOnAddEmoResult(((Integer)paramObject[0]).intValue(), (CameraEmotionData)paramObject[1]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.CameraEmoRoamingObserver
  * JD-Core Version:    0.7.0.1
  */

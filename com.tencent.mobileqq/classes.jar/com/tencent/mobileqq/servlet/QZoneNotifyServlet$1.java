@@ -10,7 +10,12 @@ final class QZoneNotifyServlet$1
 {
   public void onConsecutiveFailure(int paramInt1, int paramInt2)
   {
-    QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "onConsecutiveFailure failCode:" + paramInt1 + ",failCount:" + paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onConsecutiveFailure failCode:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(",failCount:");
+    localStringBuilder.append(paramInt2);
+    QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", localStringBuilder.toString());
   }
   
   public void onLocationFinish(int paramInt, SosoLbsInfo paramSosoLbsInfo)
@@ -18,7 +23,10 @@ final class QZoneNotifyServlet$1
     if ((paramInt == 0) && (paramSosoLbsInfo != null))
     {
       QZoneNotifyServlet.a(LbsDataV2.convertFromSoso(paramSosoLbsInfo.mLocation));
-      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, "onLocationFinish succeed! gps=" + QZoneNotifyServlet.a());
+      paramSosoLbsInfo = new StringBuilder();
+      paramSosoLbsInfo.append("onLocationFinish succeed! gps=");
+      paramSosoLbsInfo.append(QZoneNotifyServlet.a());
+      QZLog.i("Q.lebatab.UndealCount.QZoneNotifyServlet", 1, paramSosoLbsInfo.toString());
       return;
     }
     QZLog.e("Q.lebatab.UndealCount.QZoneNotifyServlet", "onLocationFinish failed: error in force gps info update..");
@@ -26,7 +34,7 @@ final class QZoneNotifyServlet$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.QZoneNotifyServlet.1
  * JD-Core Version:    0.7.0.1
  */

@@ -29,18 +29,21 @@ public class MiniChatItemFactory
   
   public ChatItemBuilder a(ChatMessage paramChatMessage, BaseAdapter paramBaseAdapter)
   {
-    if (a(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage))) {
+    if (a(a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramChatMessage)))
+    {
       if (this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatTextItemBuilder == null) {
         this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatTextItemBuilder = new MiniChatTextItemBuilder(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramBaseAdapter, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo, this.jdField_a_of_type_ComTencentMobileqqActivityAioAnimAIOAnimationConatiner);
       }
+      paramChatMessage = a(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatTextItemBuilder, paramBaseAdapter);
     }
-    for (paramChatMessage = a(this.jdField_a_of_type_ComTencentMobileqqActivityMiniaioMiniChatTextItemBuilder, paramBaseAdapter);; paramChatMessage = super.a(paramChatMessage, paramBaseAdapter))
+    else
     {
-      if ((paramChatMessage instanceof BaseBubbleBuilder)) {
-        ((BaseBubbleBuilder)paramChatMessage).b = true;
-      }
-      return paramChatMessage;
+      paramChatMessage = super.a(paramChatMessage, paramBaseAdapter);
     }
+    if ((paramChatMessage instanceof BaseBubbleBuilder)) {
+      ((BaseBubbleBuilder)paramChatMessage).b = true;
+    }
+    return paramChatMessage;
   }
   
   public void a(boolean paramBoolean)
@@ -50,7 +53,7 @@ public class MiniChatItemFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniChatItemFactory
  * JD-Core Version:    0.7.0.1
  */

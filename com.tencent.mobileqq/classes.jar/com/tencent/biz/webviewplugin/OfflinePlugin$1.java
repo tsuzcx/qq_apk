@@ -1,7 +1,6 @@
 package com.tencent.biz.webviewplugin;
 
 import android.os.Handler;
-import android.os.Message;
 import com.tencent.biz.common.offline.AsyncBack;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
@@ -14,46 +13,56 @@ class OfflinePlugin$1
   
   public void loaded(String paramString, int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflinePluginQQ", 2, "-->offline:checkOfflineUp. result: " + paramString + ", code: " + paramInt);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("-->offline:checkOfflineUp. result: ");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(", code: ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.i("OfflinePluginQQ", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramInt == 9)
     {
+      Object localObject3 = null;
+      Object localObject2;
       try
       {
-        localObject = new JSONObject(paramString);
-        paramString = (String)localObject;
+        localObject1 = new JSONObject(paramString);
       }
       catch (JSONException localJSONException)
       {
-        for (;;)
+        localJSONException.printStackTrace();
+        localObject2 = localObject3;
+        if (QLog.isColorLevel())
         {
-          Object localObject;
-          localJSONException.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("OfflinePluginQQ", 2, "-->offline:checkUp loaded err:" + paramString);
-          }
-          paramString = null;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("-->offline:checkUp loaded err:");
+          ((StringBuilder)localObject2).append(paramString);
+          QLog.i("OfflinePluginQQ", 2, ((StringBuilder)localObject2).toString());
+          localObject2 = localObject3;
         }
       }
-      localObject = this.a.a.obtainMessage();
-      ((Message)localObject).arg1 = 3;
-      ((Message)localObject).obj = paramString;
-      this.a.a.sendMessage((Message)localObject);
-    }
-    while (paramInt != -1) {
+      paramString = this.a.a.obtainMessage();
+      paramString.arg1 = 3;
+      paramString.obj = localObject2;
+      this.a.a.sendMessage(paramString);
       return;
     }
-    paramString = this.a.a.obtainMessage();
-    paramString.arg1 = 2;
-    this.a.a.sendMessage(paramString);
+    if (paramInt == -1)
+    {
+      paramString = this.a.a.obtainMessage();
+      paramString.arg1 = 2;
+      this.a.a.sendMessage(paramString);
+    }
   }
   
   public void progress(int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.OfflinePlugin.1
  * JD-Core Version:    0.7.0.1
  */

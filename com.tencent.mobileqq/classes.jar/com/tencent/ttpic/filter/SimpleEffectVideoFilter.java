@@ -35,27 +35,39 @@ public class SimpleEffectVideoFilter
   
   public static Bitmap getBitmap(String paramString)
   {
-    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("assets://"))) {}
-    for (paramString = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), 2147483647, 2147483647);; paramString = BitmapUtils.decodeSampledBitmapFromFile(paramString, 2147483647, 2147483647))
-    {
-      String str = paramString;
-      if (!BitmapUtils.isLegal(paramString)) {
-        str = null;
-      }
-      return str;
+    if ((!TextUtils.isEmpty(paramString)) && (paramString.startsWith("assets://"))) {
+      paramString = BitmapUtils.decodeSampledBitmapFromAssets(AEModule.getContext(), FileUtils.getRealPath(paramString), 2147483647, 2147483647);
+    } else {
+      paramString = BitmapUtils.decodeSampledBitmapFromFile(paramString, 2147483647, 2147483647);
     }
+    String str = paramString;
+    if (!BitmapUtils.isLegal(paramString)) {
+      str = null;
+    }
+    return str;
   }
   
   public void initParams()
   {
     addParam(new UniformParam.FloatParam("alpha", 0.0F));
-    Object localObject = this.mDataPath + File.separator + this.mLutName;
-    if ((this.mLutName == null) || (!FileUtils.exists((String)localObject))) {}
-    for (localObject = getBitmap(this.mDataPath + File.separator + "filterEffect.lut");; localObject = getBitmap((String)localObject))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.mDataPath);
+    ((StringBuilder)localObject).append(File.separator);
+    ((StringBuilder)localObject).append(this.mLutName);
+    localObject = ((StringBuilder)localObject).toString();
+    if ((this.mLutName != null) && (FileUtils.exists((String)localObject)))
     {
-      addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject, 33986, true));
-      return;
+      localObject = getBitmap((String)localObject);
     }
+    else
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.mDataPath);
+      ((StringBuilder)localObject).append(File.separator);
+      ((StringBuilder)localObject).append("filterEffect.lut");
+      localObject = getBitmap(((StringBuilder)localObject).toString());
+    }
+    addParam(new UniformParam.TextureBitmapParam("inputImageTexture2", (Bitmap)localObject, 33986, true));
   }
   
   public void setAdjustParam(float paramFloat)
@@ -65,7 +77,7 @@ public class SimpleEffectVideoFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.SimpleEffectVideoFilter
  * JD-Core Version:    0.7.0.1
  */

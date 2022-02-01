@@ -34,14 +34,22 @@ public class VideoCollectionEntry
     }
     catch (NumberFormatException localNumberFormatException)
     {
-      SLog.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
+      label19:
+      break label19;
     }
+    SLog.e("VideoCollectionEntry", "NumberFormatException while getCollectionId. collectionKey is %s,", new Object[] { paramString });
     return -1;
   }
   
   public static String getCollectionKey(int paramInt, String paramString1, String paramString2)
   {
-    return paramInt + "_" + paramString1 + "_" + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   public static int getCollectionType(String paramString)
@@ -66,7 +74,7 @@ public class VideoCollectionEntry
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.VideoCollectionEntry
  * JD-Core Version:    0.7.0.1
  */

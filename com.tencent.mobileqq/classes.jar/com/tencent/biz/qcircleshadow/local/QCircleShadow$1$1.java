@@ -17,12 +17,15 @@ class QCircleShadow$1$1
   public void onLoadingSuccess()
   {
     QCirclePluginManager.a().b();
-    QLog.d("QCIRCLE_PLUGIN", 4, "back ground preload cost:" + (System.currentTimeMillis() - this.jdField_a_of_type_Long));
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("back ground preload cost:");
+    localStringBuilder.append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+    QLog.d("QCIRCLE_PLUGIN", 4, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCircleShadow.1.1
  * JD-Core Version:    0.7.0.1
  */

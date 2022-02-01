@@ -10,7 +10,6 @@ import android.graphics.drawable.Drawable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 import com.tencent.biz.qqstory.app.QQStoryContext;
 import com.tencent.biz.qqstory.boundaries.StoryApi;
@@ -43,9 +42,7 @@ import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.biz.qqstory.view.WeShiGuideDialog;
 import com.tencent.biz.qqstory.view.widget.InnerListView;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.theme.ThemeUtil;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tribe.async.dispatch.IEventReceiver;
 import java.util.List;
@@ -58,7 +55,6 @@ public class FeedCommentLikeLego
   public Activity a;
   protected Rect a;
   public View a;
-  public ImageView a;
   public TextView a;
   public FeedCommentEventHandler.KeyBoardUpCallback a;
   private FeedCommentLikeLego.MainWidgetClickListener jdField_a_of_type_ComTencentBizQqstoryCommentFeedCommentLikeLego$MainWidgetClickListener;
@@ -72,19 +68,15 @@ public class FeedCommentLikeLego
   private TagFlowLayout jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout;
   public InnerListView a;
   protected boolean a;
-  public ImageView b;
   public TextView b;
   protected boolean b;
-  public ImageView c;
-  private boolean c;
-  public ImageView d;
+  private boolean c = false;
   
   public FeedCommentLikeLego(Context paramContext, Activity paramActivity, ViewGroup paramViewGroup, CommentLikeHomeFeed paramCommentLikeHomeFeed, int paramInt)
   {
-    super(paramContext, 2131561804);
+    super(paramContext, 2131561660);
     this.jdField_a_of_type_Boolean = false;
     this.jdField_b_of_type_Boolean = false;
-    this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_AndroidGraphicsRect = new Rect();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed = paramCommentLikeHomeFeed;
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeHomeFeed.a();
@@ -97,10 +89,14 @@ public class FeedCommentLikeLego
     a("likeLego", paramActivity);
     paramContext.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.b());
     paramActivity.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.c());
-    j();
     i();
-    if (QLog.isColorLevel()) {
-      QLog.d("FeedCommentLikeLego", 2, "FeedID:" + this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId);
+    h();
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("FeedID:");
+      paramContext.append(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId);
+      QLog.d("FeedCommentLikeLego", 2, paramContext.toString());
     }
   }
   
@@ -111,26 +107,73 @@ public class FeedCommentLikeLego
     return paramContext;
   }
   
-  public void O_()
+  public void L_()
   {
-    StoryTagUtil.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.qim");
-    String str;
-    if (this.jdField_a_of_type_Int == 10) {
-      str = "1";
-    }
-    for (;;)
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedSourceTagType == 1)
     {
-      StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { str, "3", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
-      if (this.jdField_a_of_type_Int == 12)
+      String str = "";
+      Object localObject;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.type == 1)
+      {
+        localObject = (GeneralFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+        i = this.jdField_a_of_type_Int;
+        if (i == 10)
+        {
+          localObject = ((GeneralFeedItem)localObject).wsSchemaForMain;
+        }
+        else if (i == 12)
+        {
+          localObject = ((GeneralFeedItem)localObject).wsSchemaForMemories;
+        }
+        else
+        {
+          SLog.e("FeedCommentLikeLego", "unknown feedType: %s", new Object[] { Integer.valueOf(i) });
+          localObject = str;
+        }
+      }
+      else
+      {
+        localObject = str;
+        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.type == 3)
+        {
+          localObject = (GeneralRecommendFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
+          i = this.jdField_a_of_type_Int;
+          if (i == 10)
+          {
+            localObject = ((GeneralRecommendFeedItem)localObject).wsSchemaForMain;
+          }
+          else if (i == 12)
+          {
+            localObject = ((GeneralRecommendFeedItem)localObject).wsSchemaForMemories;
+          }
+          else
+          {
+            SLog.e("FeedCommentLikeLego", "unknown feedType: %s", new Object[] { Integer.valueOf(i) });
+            localObject = str;
+          }
+        }
+      }
+      int i = this.jdField_a_of_type_Int;
+      if (i == 10)
+      {
+        str = "1";
+      }
+      else if (i == 12)
       {
         str = "3";
       }
       else
       {
-        SLog.a("FeedCommentLikeLego", "unknown feedType: %s", Integer.valueOf(this.jdField_a_of_type_Int));
+        SLog.e("FeedCommentLikeLego", "unknown feedType: %s", new Object[] { Integer.valueOf(i) });
         str = "-1";
       }
+      WeShiGuideDialog.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId(), str, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, 2, (String)localObject);
+      if (WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext)) {
+        i = 2;
+      } else {
+        i = 1;
+      }
+      StoryReportor.a("weishi_share", "tag_clk", 0, i, new String[] { str, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId(), "weishi", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
     }
   }
   
@@ -152,42 +195,31 @@ public class FeedCommentLikeLego
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a(paramInt1, paramInt2, paramIntent);
+    StoryShare localStoryShare = this.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare;
+    if (localStoryShare != null) {
+      localStoryShare.a(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371812));
-    this.jdField_b_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131371810));
-    this.d = ((ImageView)paramView.findViewById(2131371813));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131365062));
-    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView = ((InnerListView)paramView.findViewById(2131365088));
-    this.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131374985));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374982));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365876);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout = ((TagFlowLayout)paramView.findViewById(2131378907));
-    this.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
-    this.jdField_b_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
-    this.d.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131364945));
+    this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView = ((InnerListView)paramView.findViewById(2131364969));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131374514));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131365714);
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout = ((TagFlowLayout)paramView.findViewById(2131378296));
     this.jdField_b_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
-    this.jdField_c_of_type_AndroidWidgetImageView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
     this.jdField_a_of_type_AndroidViewView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
     this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoEvenHandler);
-    this.jdField_c_of_type_Boolean = ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null);
-    if (this.jdField_c_of_type_Boolean)
+    this.c = ThemeUtil.isNowThemeIsNight(QQStoryContext.a(), false, null);
+    if (this.c)
     {
       paramView = this.jdField_a_of_type_AndroidWidgetTextView.getCompoundDrawables()[2];
       if (paramView != null) {
-        paramView.setColorFilter(paramContext.getResources().getColor(2131166516), PorterDuff.Mode.SRC_ATOP);
+        paramView.setColorFilter(paramContext.getResources().getColor(2131166530), PorterDuff.Mode.SRC_ATOP);
       }
       this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(null, null, paramView, null);
-      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131166516));
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846825);
-      this.jdField_b_of_type_AndroidWidgetImageView.setImageResource(2130846818);
-      this.d.setImageResource(2130846821);
-      this.jdField_c_of_type_AndroidWidgetImageView.setImageResource(2130846871);
+      this.jdField_b_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131166530));
     }
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter = new TagAdapter(this.jdField_a_of_type_AndroidContentContext);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout.setAdapter(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter);
@@ -209,7 +241,7 @@ public class FeedCommentLikeLego
   {
     if (paramShareGroupItem == null)
     {
-      i();
+      h();
       return;
     }
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = paramShareGroupItem;
@@ -228,197 +260,143 @@ public class FeedCommentLikeLego
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem = paramCommentLikeHomeFeed.a();
     FeedCommentLego localFeedCommentLego = (FeedCommentLego)a("commentLego");
     FeedLikeLego localFeedLikeLego = (FeedLikeLego)a("likeLego");
-    j();
     i();
+    h();
     if (paramBannerHomeFeed != null) {
       a(paramBannerHomeFeed);
+    } else if (paramShareGroupItem != null) {
+      a(paramShareGroupItem);
     }
-    for (;;)
-    {
-      localFeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, paramCommentLikeHomeFeed.a());
-      localFeedLikeLego.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      localFeedCommentLego.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.b());
-      localFeedLikeLego.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.c());
-      return;
-      if (paramShareGroupItem != null) {
-        a(paramShareGroupItem);
-      }
-    }
+    localFeedCommentLego.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, paramCommentLikeHomeFeed.a());
+    localFeedLikeLego.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
+    localFeedCommentLego.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.b());
+    localFeedLikeLego.c(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.c());
   }
   
   public void a(TagItem.TagInfoBase paramTagInfoBase)
   {
     StoryTagUtil.a(this.jdField_a_of_type_AndroidAppActivity, paramTagInfoBase);
+    int i = this.jdField_a_of_type_Int;
+    String str2 = "1";
     String str1;
-    if (this.jdField_a_of_type_Int == 10)
+    if (i == 10)
     {
       str1 = "1";
-      if (paramTagInfoBase.jdField_a_of_type_Int != 0) {
-        break label108;
-      }
     }
-    label108:
-    for (String str2 = "1";; str2 = "2")
+    else if (i == 12)
     {
-      StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { str1, str2, String.valueOf(paramTagInfoBase.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
-      if (this.jdField_a_of_type_Int == 12)
-      {
-        str1 = "3";
-        break;
-      }
-      SLog.a("FeedCommentLikeLego", "unknown feedType: %s", Integer.valueOf(this.jdField_a_of_type_Int));
-      str1 = "-1";
-      break;
+      str1 = "3";
     }
+    else
+    {
+      SLog.a("FeedCommentLikeLego", "unknown feedType: %s", Integer.valueOf(i));
+      str1 = "-1";
+    }
+    if (paramTagInfoBase.jdField_a_of_type_Int != 0) {
+      str2 = "2";
+    }
+    StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { str1, str2, String.valueOf(paramTagInfoBase.jdField_a_of_type_Long), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
   }
   
   public void a(List paramList)
   {
-    int j = 1;
-    boolean bool1;
-    boolean bool2;
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike == 1)
+    paramList = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
+    boolean bool2 = paramList.isVipButNoFriend();
+    paramList.isSubscribeButNoFriend();
+    if (!bool2) {
+      paramList.isMe();
+    }
+    Object localObject;
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mViewTotalTime > 0L) && ((paramList.isMe()) || (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem != null) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelBannerHomeFeed != null)))
     {
-      bool1 = true;
-      b(bool1);
-      paramList = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
-      bool2 = paramList.isVipButNoFriend();
-      bool1 = paramList.isSubscribeButNoFriend();
-      if ((!bool2) && (!paramList.isMe()) && (!bool1)) {
-        break label563;
-      }
-      i = 1;
-      label67:
-      if ((i == 0) && ((this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) || (!this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem.isPublic()))) {
-        break label568;
-      }
-      this.d.setVisibility(0);
-      label96:
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mViewTotalTime <= 0L) || ((!paramList.isMe()) && (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem == null) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelBannerHomeFeed == null))) {
-        break label580;
-      }
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131704433) + UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mViewTotalTime));
-      label178:
-      if (!this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.isFakeFeedItem()) {
-        break label592;
-      }
+      paramList = this.jdField_a_of_type_AndroidWidgetTextView;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131704523));
+      ((StringBuilder)localObject).append(UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mViewTotalTime));
+      paramList.setText(((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.isFakeFeedItem())
+    {
       if (!ThemeUtil.isNowThemeIsDefault(QQStoryContext.a(), false, null))
       {
-        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838980));
+        this.jdField_a_of_type_AndroidViewView.setBackgroundDrawable(this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130838740));
         this.jdField_a_of_type_AndroidViewView.setAlpha(0.89F);
       }
       this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      label237:
-      if (!(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed instanceof GeneralHomeFeed)) {
-        break label610;
-      }
-      paramList = "";
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedSourceTagType != 1) {
-        break label645;
-      }
-      paramList = VideoSourceTagInfoHelper.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedSourceTagType);
-      if ((!TextUtils.isEmpty(paramList)) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedSourceTagType != 1)) {
-        break label639;
-      }
-      paramList = "来自微视APP";
-      bool1 = true;
     }
-    for (;;)
+    else
     {
-      String str = ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem).mQimSyncWording;
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout.setVisibility(0);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter.a(((GeneralHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed).d, str, ((GeneralHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed).jdField_c_of_type_Boolean, bool1, paramList);
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter.a(this);
-      if (bool2)
+      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
+    }
+    boolean bool1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed instanceof GeneralHomeFeed;
+    int i = 1;
+    if (bool1)
+    {
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedSourceTagType == 1)
       {
-        if (this.jdField_a_of_type_Int == 10)
+        localObject = VideoSourceTagInfoHelper.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedSourceTagType);
+        paramList = (List)localObject;
+        if (TextUtils.isEmpty((CharSequence)localObject))
         {
-          paramList = "1";
-          label374:
-          StoryReportor.a("weishi_share", "tag_exp", 0, 0, new String[] { paramList, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.a().getOwner().getUnionId(), "weishi", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.a().feedId });
+          paramList = (List)localObject;
+          if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedSourceTagType == 1) {
+            paramList = "来自微视APP";
+          }
         }
+        bool1 = true;
       }
       else
       {
-        label430:
-        if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount <= 0) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount <= this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.b().size())) {
-          break label622;
-        }
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131704459) + UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount) + HardCodeUtil.a(2131704437));
-        label519:
-        if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getRelationType() != 2) {
-          break label634;
-        }
-      }
-      label563:
-      label568:
-      label580:
-      label592:
-      label610:
-      label622:
-      label634:
-      for (i = j;; i = 0)
-      {
-        if (i != 0) {
-          ((TroopNickNameManager)SuperManager.a(23)).c();
-        }
-        d();
-        return;
+        paramList = "";
         bool1 = false;
-        break;
-        i = 0;
-        break label67;
-        this.d.setVisibility(8);
-        break label96;
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        break label178;
-        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
-        break label237;
-        paramList = "3";
-        break label374;
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout.setVisibility(8);
-        break label430;
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
-        break label519;
       }
-      label639:
-      bool1 = true;
-      continue;
-      label645:
-      bool1 = false;
+      localObject = ((VideoListFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem).mQimSyncWording;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout.setVisibility(0);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter.a(((GeneralHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed).d, (String)localObject, ((GeneralHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed).c, bool1, paramList);
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagAdapter.a(this);
+      if (bool2)
+      {
+        if (this.jdField_a_of_type_Int == 10) {
+          paramList = "1";
+        } else {
+          paramList = "3";
+        }
+        StoryReportor.a("weishi_share", "tag_exp", 0, 0, new String[] { paramList, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.a().getOwner().getUnionId(), "weishi", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.a().feedId });
+      }
     }
-  }
-  
-  public void a(boolean paramBoolean)
-  {
-    if (paramBoolean)
+    else
     {
-      this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-      return;
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeTagTagFlowLayout.setVisibility(8);
     }
-    this.jdField_c_of_type_AndroidWidgetImageView.setVisibility(8);
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount > 0) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount > this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.b().size()))
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+      paramList = this.jdField_b_of_type_AndroidWidgetTextView;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131704549));
+      ((StringBuilder)localObject).append(UIUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount));
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131704527));
+      paramList.setText(((StringBuilder)localObject).toString());
+    }
+    else
+    {
+      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+    }
+    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getRelationType() != 2) {
+      i = 0;
+    }
+    if (i != 0) {
+      ((TroopNickNameManager)SuperManager.a(23)).c();
+    }
+    d();
   }
   
   public void b() {}
-  
-  public void b(boolean paramBoolean)
-  {
-    if (paramBoolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846819);
-      return;
-    }
-    if (this.jdField_c_of_type_Boolean)
-    {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846825);
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(2130846824);
-  }
   
   public void c()
   {
@@ -432,188 +410,88 @@ public class FeedCommentLikeLego
   {
     int k = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.b().size();
     int j;
-    int i;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.c().size() > 0) || (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount > 0))
-    {
+    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed.c().size() <= 0) && (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mLikeCount <= 0)) {
+      j = 0;
+    } else {
       j = 1;
-      if ((k != 0) || (j != 0)) {
-        break label124;
-      }
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount <= k) {
-        break label114;
-      }
-      i = StoryApi.a(2131427360);
     }
-    for (;;)
+    int i;
+    if ((k == 0) && (j == 0))
     {
-      this.jdField_b_of_type_AndroidViewView.setPadding(0, 0, 0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, i));
-      if ((k <= 0) || (j != 0)) {
-        break label172;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mCommentCount > k) {
+        i = StoryApi.a(2131427364);
+      } else {
+        i = StoryApi.a(2131427361);
       }
+    }
+    else if ((j != 0) && (k == 0)) {
+      i = StoryApi.a(2131427363);
+    } else if ((k > 0) && (j == 0)) {
+      i = StoryApi.a(2131427362);
+    } else {
+      i = StoryApi.a(2131427359);
+    }
+    this.jdField_b_of_type_AndroidViewView.setPadding(0, 0, 0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, i));
+    if ((k > 0) && (j == 0))
+    {
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setPadding(0, 0, 0, 0);
       return;
-      j = 0;
-      break;
-      label114:
-      i = StoryApi.a(2131427357);
-      continue;
-      label124:
-      if ((j != 0) && (k == 0)) {
-        i = StoryApi.a(2131427359);
-      } else if ((k > 0) && (j == 0)) {
-        i = StoryApi.a(2131427358);
-      } else {
-        i = StoryApi.a(2131427355);
-      }
     }
-    label172:
-    float f = StoryApi.a(2131427356);
+    float f = StoryApi.a(2131427360);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetInnerListView.setPadding(0, UIUtils.a(this.jdField_a_of_type_AndroidContentContext, f + 0.5F), 0, 0);
   }
   
-  protected void e()
+  public void e()
   {
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.isFakeFeedItem())
+    CommentLikeHomeFeed localCommentLikeHomeFeed = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed;
+    if ((localCommentLikeHomeFeed instanceof GeneralHomeFeed))
     {
-      QQToast.a(BaseApplication.getContext(), 1, HardCodeUtil.a(2131704457), 0).a();
-      return;
-    }
-    boolean bool;
-    label42:
-    int i;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.mHadLike != 1)
-    {
-      bool = true;
-      FeedLikeDataProvider.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem, bool, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getCommentLikeType(), 0);
-      ((FeedLikeLego)a("likeLego")).a(bool);
-      b(bool);
-      FeedCommentLego.a(this.jdField_a_of_type_Int, 3, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, 0);
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner();
-      i = StoryReportor.b(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem);
-      if (!(localObject instanceof ShareGroupItem)) {
-        break label211;
-      }
-    }
-    label211:
-    for (Object localObject = ((IFeedOwner)localObject).getUnionId();; localObject = "")
-    {
-      StoryReportor.a("home_page", "clk_like", StoryReportor.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem), 0, new String[] { String.valueOf(i), StoryReportor.a(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, localObject });
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("FeedCommentLikeLego", 2, "onLikeBtnClick: isLike:" + bool);
-      return;
-      bool = false;
-      break label42;
+      ((GeneralHomeFeed)localCommentLikeHomeFeed).c ^= true;
+      StoryReportor.a("home_page", "clk_tag_more", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
     }
   }
   
   public void f()
   {
-    GeneralHomeFeed localGeneralHomeFeed;
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed instanceof GeneralHomeFeed))
+    StoryTagUtil.a(this.jdField_a_of_type_AndroidContentContext, "com.tencent.qim");
+    int i = this.jdField_a_of_type_Int;
+    String str;
+    if (i == 10)
     {
-      localGeneralHomeFeed = (GeneralHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed;
-      if (((GeneralHomeFeed)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeHomeFeed).jdField_c_of_type_Boolean) {
-        break label78;
-      }
+      str = "1";
     }
-    label78:
-    for (boolean bool = true;; bool = false)
+    else if (i == 12)
     {
-      localGeneralHomeFeed.jdField_c_of_type_Boolean = bool;
-      StoryReportor.a("home_page", "clk_tag_more", 0, 0, new String[] { "", "", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
+      str = "3";
     }
+    else
+    {
+      SLog.a("FeedCommentLikeLego", "unknown feedType: %s", Integer.valueOf(i));
+      str = "-1";
+    }
+    StoryReportor.a("home_page", "clk_tag", 0, 0, new String[] { str, "3", "", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
   }
   
   public void h()
-  {
-    Object localObject;
-    String str;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedSourceTagType == 1)
-    {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.type != 1) {
-        break label193;
-      }
-      localObject = (GeneralFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-      if (this.jdField_a_of_type_Int != 10) {
-        break label149;
-      }
-      localObject = ((GeneralFeedItem)localObject).wsSchemaForMain;
-      if (this.jdField_a_of_type_Int != 10) {
-        break label273;
-      }
-      str = "1";
-      label56:
-      WeShiGuideDialog.a(this.jdField_a_of_type_AndroidAppActivity, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId(), str, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId, 2, (String)localObject);
-      if (!WeishiGuideUtils.a(this.jdField_a_of_type_AndroidContentContext)) {
-        break label315;
-      }
-    }
-    label149:
-    label315:
-    for (int i = 2;; i = 1)
-    {
-      StoryReportor.a("weishi_share", "tag_clk", 0, i, new String[] { str, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.getOwner().getUnionId(), "weishi", this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.feedId });
-      return;
-      if (this.jdField_a_of_type_Int == 12)
-      {
-        localObject = ((GeneralFeedItem)localObject).wsSchemaForMemories;
-        break;
-      }
-      SLog.e("FeedCommentLikeLego", "unknown feedType: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-      localObject = "";
-      break;
-      label193:
-      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem.type == 3)
-      {
-        localObject = (GeneralRecommendFeedItem)this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelCommentLikeFeedItem;
-        if (this.jdField_a_of_type_Int == 10)
-        {
-          localObject = ((GeneralRecommendFeedItem)localObject).wsSchemaForMain;
-          break;
-        }
-        if (this.jdField_a_of_type_Int == 12)
-        {
-          localObject = ((GeneralRecommendFeedItem)localObject).wsSchemaForMemories;
-          break;
-        }
-        SLog.e("FeedCommentLikeLego", "unknown feedType: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-      }
-      localObject = "";
-      break;
-      if (this.jdField_a_of_type_Int == 12)
-      {
-        str = "3";
-        break label56;
-      }
-      SLog.e("FeedCommentLikeLego", "unknown feedType: %s", new Object[] { Integer.valueOf(this.jdField_a_of_type_Int) });
-      str = "-1";
-      break label56;
-    }
-  }
-  
-  public void i()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryShareGroupModelShareGroupItem = null;
     FeedCommentLego localFeedCommentLego = (FeedCommentLego)a("commentLego");
     localFeedCommentLego.a(new FeedCommentEventHandler(localFeedCommentLego));
   }
   
-  public boolean isValidate()
-  {
-    return !this.jdField_a_of_type_Boolean;
-  }
-  
-  public void j()
+  public void i()
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelBannerHomeFeed = null;
+  }
+  
+  public boolean isValidate()
+  {
+    return this.jdField_a_of_type_Boolean ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentLikeLego
  * JD-Core Version:    0.7.0.1
  */

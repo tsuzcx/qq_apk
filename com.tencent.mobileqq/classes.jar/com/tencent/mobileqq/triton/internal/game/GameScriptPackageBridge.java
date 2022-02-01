@@ -25,30 +25,33 @@ public final class GameScriptPackageBridge
   public final String[] getPluginScript(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "pluginName");
-    try
+    Object localObject1 = null;
+    for (;;)
     {
-      Iterator localIterator = ((Iterable)this.gamePackage.getPlugins()).iterator();
-      Object localObject;
-      do
+      try
       {
-        if (!localIterator.hasNext()) {
-          break;
+        Iterator localIterator = ((Iterable)this.gamePackage.getPlugins()).iterator();
+        if (localIterator.hasNext())
+        {
+          Object localObject2 = localIterator.next();
+          if (!Intrinsics.areEqual(((GamePluginPackage)localObject2).getName(), paramString)) {
+            continue;
+          }
+          paramString = (String)localObject2;
+          localObject2 = (GamePluginPackage)paramString;
+          paramString = localObject1;
+          if (localObject2 != null) {
+            paramString = ScriptPackageBridgesKt.access$toNativeType(((GamePluginPackage)localObject2).getScript("plugin.js"), ((GamePluginPackage)localObject2).getId());
+          }
+          return paramString;
         }
-        localObject = localIterator.next();
-      } while (!Intrinsics.areEqual(((GamePluginPackage)localObject).getName(), paramString));
-      for (paramString = localObject;; paramString = null)
-      {
-        paramString = (GamePluginPackage)paramString;
-        if (paramString == null) {
-          break;
-        }
-        paramString = ScriptPackageBridgesKt.access$toNativeType(paramString.getScript("plugin.js"), paramString.getId());
-        return paramString;
       }
-      return null;
+      catch (TritonException paramString)
+      {
+        return null;
+      }
+      paramString = null;
     }
-    catch (TritonException paramString) {}
-    return null;
   }
   
   @Nullable
@@ -66,7 +69,7 @@ public final class GameScriptPackageBridge
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.game.GameScriptPackageBridge
  * JD-Core Version:    0.7.0.1
  */

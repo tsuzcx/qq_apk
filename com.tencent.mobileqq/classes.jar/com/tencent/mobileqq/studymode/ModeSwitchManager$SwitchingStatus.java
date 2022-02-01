@@ -40,18 +40,18 @@ public final class ModeSwitchManager$SwitchingStatus
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof SwitchingStatus))
       {
         paramObject = (SwitchingStatus)paramObject;
-        if ((this.jdField_a_of_type_Boolean != paramObject.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_Int != paramObject.jdField_a_of_type_Int) || (this.b != paramObject.b)) {}
+        if ((this.jdField_a_of_type_Boolean == paramObject.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_Int == paramObject.jdField_a_of_type_Int) && (this.b == paramObject.b)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -62,12 +62,20 @@ public final class ModeSwitchManager$SwitchingStatus
   @NotNull
   public String toString()
   {
-    return "SwitchingStatus(isSwitching=" + this.jdField_a_of_type_Boolean + ", targetMode=" + this.jdField_a_of_type_Int + ", oldMode=" + this.b + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SwitchingStatus(isSwitching=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", targetMode=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", oldMode=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studymode.ModeSwitchManager.SwitchingStatus
  * JD-Core Version:    0.7.0.1
  */

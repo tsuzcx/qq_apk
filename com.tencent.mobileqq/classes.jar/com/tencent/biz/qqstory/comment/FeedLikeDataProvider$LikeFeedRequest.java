@@ -27,15 +27,18 @@ public class FeedLikeDataProvider$LikeFeedRequest
   
   public LegoResponseBase a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspLikeFeed localRspLikeFeed = new qqstory_service.RspLikeFeed();
+    Object localObject = new qqstory_service.RspLikeFeed();
     try
     {
-      localRspLikeFeed.mergeFrom(paramArrayOfByte);
-      return new FeedLikeDataProvider.LikeFeedRespone(localRspLikeFeed);
+      ((qqstory_service.RspLikeFeed)localObject).mergeFrom(paramArrayOfByte);
+      return new FeedLikeDataProvider.LikeFeedRespone((qqstory_service.RspLikeFeed)localObject);
     }
     catch (Exception paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:FeedLikeDataProvider", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:FeedLikeDataProvider", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -45,26 +48,28 @@ public class FeedLikeDataProvider$LikeFeedRequest
     return FeedLikeDataProvider.b;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqLikeFeed localReqLikeFeed = new qqstory_service.ReqLikeFeed();
     localReqLikeFeed.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
     PBUInt32Field localPBUInt32Field = localReqLikeFeed.operation;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (int i = 1;; i = 2)
-    {
-      localPBUInt32Field.set(i);
-      localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
-      if (this.b != -1) {
-        localReqLikeFeed.type.set(this.b);
-      }
-      return localReqLikeFeed.toByteArray();
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      i = 1;
+    } else {
+      i = 2;
     }
+    localPBUInt32Field.set(i);
+    localReqLikeFeed.source.set(this.jdField_a_of_type_Int);
+    if (this.b != -1) {
+      localReqLikeFeed.type.set(this.b);
+    }
+    return localReqLikeFeed.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedLikeDataProvider.LikeFeedRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -29,45 +29,43 @@ class WebInputHandler$MyTextWatcher
     }
     WebInputHandler.access$500(this.this$0).remove(Integer.valueOf(WebInputHandler.access$300(this.this$0)));
     JSONObject localJSONObject = new JSONObject();
-    try
-    {
-      localJSONObject.put("inputId", WebInputHandler.access$300(this.this$0));
-      if (paramInt3 == 0)
-      {
-        localJSONObject.put("cursor", paramInt1);
-        localJSONObject.put("value", paramCharSequence.toString());
-        if ((paramInt2 == 0) || (paramInt3 != 0)) {
-          break label241;
-        }
-        localJSONObject.put("keyCode", 8);
-        label154:
-        localJSONObject.put("data", new JSONObject(this.req.jsonParams).optString("data"));
-        this.req.sendSubscribeJs("onKeyboardValueChange", localJSONObject.toString(), WebInputHandler.access$200(this.this$0).getWebviewId());
-        return;
-      }
-    }
-    catch (Exception paramCharSequence)
-    {
-      QMLog.e("WebInputHandler", "onTextChanged error", paramCharSequence);
-      return;
-    }
-    if (paramInt2 != 0) {
-      paramInt2 -= 1;
-    }
     for (;;)
     {
-      localJSONObject.put("cursor", paramInt1 + paramInt3 - paramInt2);
-      break;
-      label241:
-      localJSONObject.put("keyCode", paramCharSequence.charAt(paramInt1 + paramInt3 - 1));
-      break label154;
-      paramInt2 = 0;
+      try
+      {
+        localJSONObject.put("inputId", WebInputHandler.access$300(this.this$0));
+        if (paramInt3 == 0)
+        {
+          localJSONObject.put("cursor", paramInt1);
+          continue;
+          localJSONObject.put("cursor", paramInt1 + paramInt3 - paramInt2);
+          localJSONObject.put("value", paramCharSequence.toString());
+          if ((paramInt2 != 0) && (paramInt3 == 0)) {
+            localJSONObject.put("keyCode", 8);
+          } else {
+            localJSONObject.put("keyCode", paramCharSequence.charAt(paramInt1 + paramInt3 - 1));
+          }
+          localJSONObject.put("data", new JSONObject(this.req.jsonParams).optString("data"));
+          this.req.sendSubscribeJs("onKeyboardValueChange", localJSONObject.toString(), WebInputHandler.access$200(this.this$0).getWebviewId());
+          return;
+        }
+      }
+      catch (Exception paramCharSequence)
+      {
+        QMLog.e("WebInputHandler", "onTextChanged error", paramCharSequence);
+        return;
+      }
+      if (paramInt2 != 0) {
+        paramInt2 -= 1;
+      } else {
+        paramInt2 = 0;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.widget.WebInputHandler.MyTextWatcher
  * JD-Core Version:    0.7.0.1
  */

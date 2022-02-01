@@ -63,32 +63,35 @@ public class GradientStrokeContent
   
   private int[] applyDynamicColorsIfNeeded(int[] paramArrayOfInt)
   {
-    int j = 0;
-    int i = 0;
+    Object localObject = this.colorCallbackAnimation;
     int[] arrayOfInt = paramArrayOfInt;
-    if (this.colorCallbackAnimation != null)
+    if (localObject != null)
     {
-      Integer[] arrayOfInteger = (Integer[])this.colorCallbackAnimation.getValue();
-      if (paramArrayOfInt.length == arrayOfInteger.length) {
+      localObject = (Integer[])((ValueCallbackKeyframeAnimation)localObject).getValue();
+      int k = paramArrayOfInt.length;
+      int m = localObject.length;
+      int j = 0;
+      int i = 0;
+      if (k == m) {
         for (;;)
         {
           arrayOfInt = paramArrayOfInt;
           if (i >= paramArrayOfInt.length) {
             break;
           }
-          paramArrayOfInt[i] = arrayOfInteger[i].intValue();
+          paramArrayOfInt[i] = localObject[i].intValue();
           i += 1;
         }
       }
-      paramArrayOfInt = new int[arrayOfInteger.length];
+      paramArrayOfInt = new int[localObject.length];
       i = j;
       for (;;)
       {
         arrayOfInt = paramArrayOfInt;
-        if (i >= arrayOfInteger.length) {
+        if (i >= localObject.length) {
           break;
         }
-        paramArrayOfInt[i] = arrayOfInteger[i].intValue();
+        paramArrayOfInt[i] = localObject[i].intValue();
         i += 1;
       }
     }
@@ -97,28 +100,31 @@ public class GradientStrokeContent
   
   private int getGradientHash()
   {
-    int j = Math.round(this.startPointAnimation.getProgress() * this.cacheSteps);
+    int i = Math.round(this.startPointAnimation.getProgress() * this.cacheSteps);
     int m = Math.round(this.endPointAnimation.getProgress() * this.cacheSteps);
     int k = Math.round(this.colorAnimation.getProgress() * this.cacheSteps);
-    int i = 17;
-    if (j != 0) {
-      i = j * 527;
-    }
-    j = i;
-    if (m != 0) {
-      j = i * 31 * m;
+    if (i != 0) {
+      j = 527 * i;
+    } else {
+      j = 17;
     }
     i = j;
-    if (k != 0) {
-      i = j * 31 * k;
+    if (m != 0) {
+      i = j * 31 * m;
     }
-    return i;
+    int j = i;
+    if (k != 0) {
+      j = i * 31 * k;
+    }
+    return j;
   }
   
   private LinearGradient getLinearGradient()
   {
     int i = getGradientHash();
-    Object localObject1 = (LinearGradient)this.linearGradientCache.get(i);
+    Object localObject1 = this.linearGradientCache;
+    long l = i;
+    localObject1 = (LinearGradient)((LongSparseArray)localObject1).get(l);
     if (localObject1 != null) {
       return localObject1;
     }
@@ -127,21 +133,21 @@ public class GradientStrokeContent
     Object localObject2 = (GradientColor)this.colorAnimation.getValue();
     int[] arrayOfInt = applyDynamicColorsIfNeeded(((GradientColor)localObject2).getColors());
     localObject2 = ((GradientColor)localObject2).getPositions();
-    int j = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + ((PointF)localObject1).x);
-    float f1 = this.boundsRect.top;
-    float f2 = this.boundsRect.height() / 2.0F;
-    int k = (int)(((PointF)localObject1).y + (f1 + f2));
-    int m = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + localPointF.x);
-    int n = (int)(this.boundsRect.top + this.boundsRect.height() / 2.0F + localPointF.y);
-    localObject1 = new LinearGradient(j, k, m, n, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
-    this.linearGradientCache.put(i, localObject1);
+    i = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + ((PointF)localObject1).x);
+    int j = (int)(this.boundsRect.top + this.boundsRect.height() / 2.0F + ((PointF)localObject1).y);
+    int k = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + localPointF.x);
+    int m = (int)(this.boundsRect.top + this.boundsRect.height() / 2.0F + localPointF.y);
+    localObject1 = new LinearGradient(i, j, k, m, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
+    this.linearGradientCache.put(l, localObject1);
     return localObject1;
   }
   
   private RadialGradient getRadialGradient()
   {
     int i = getGradientHash();
-    Object localObject1 = (RadialGradient)this.radialGradientCache.get(i);
+    Object localObject1 = this.radialGradientCache;
+    long l = i;
+    localObject1 = (RadialGradient)((LongSparseArray)localObject1).get(l);
     if (localObject1 != null) {
       return localObject1;
     }
@@ -150,17 +156,13 @@ public class GradientStrokeContent
     Object localObject2 = (GradientColor)this.colorAnimation.getValue();
     int[] arrayOfInt = applyDynamicColorsIfNeeded(((GradientColor)localObject2).getColors());
     localObject2 = ((GradientColor)localObject2).getPositions();
-    int j = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + ((PointF)localObject1).x);
-    float f1 = this.boundsRect.top;
-    float f2 = this.boundsRect.height() / 2.0F;
-    int k = (int)(((PointF)localObject1).y + (f1 + f2));
-    int m = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + localPointF.x);
-    f1 = this.boundsRect.top;
-    f2 = this.boundsRect.height() / 2.0F;
-    int n = (int)(localPointF.y + (f1 + f2));
-    f1 = (float)Math.hypot(m - j, n - k);
-    localObject1 = new RadialGradient(j, k, f1, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
-    this.radialGradientCache.put(i, localObject1);
+    i = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + ((PointF)localObject1).x);
+    int j = (int)(this.boundsRect.top + this.boundsRect.height() / 2.0F + ((PointF)localObject1).y);
+    int k = (int)(this.boundsRect.left + this.boundsRect.width() / 2.0F + localPointF.x);
+    int m = (int)(this.boundsRect.top + this.boundsRect.height() / 2.0F + localPointF.y);
+    float f = (float)Math.hypot(k - i, m - j);
+    localObject1 = new RadialGradient(i, j, f, arrayOfInt, (float[])localObject2, Shader.TileMode.CLAMP);
+    this.radialGradientCache.put(l, localObject1);
     return localObject1;
   }
   
@@ -175,14 +177,12 @@ public class GradientStrokeContent
           this.layer.removeAnimation(this.colorCallbackAnimation);
         }
         this.colorCallbackAnimation = null;
+        return;
       }
+      this.colorCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
+      this.colorCallbackAnimation.addUpdateListener(this);
+      this.layer.addAnimation(this.colorCallbackAnimation);
     }
-    else {
-      return;
-    }
-    this.colorCallbackAnimation = new ValueCallbackKeyframeAnimation(paramLottieValueCallback);
-    this.colorCallbackAnimation.addUpdateListener(this);
-    this.layer.addAnimation(this.colorCallbackAnimation);
   }
   
   public void draw(Canvas paramCanvas, Matrix paramMatrix, int paramInt)
@@ -191,13 +191,14 @@ public class GradientStrokeContent
       return;
     }
     getBounds(this.boundsRect, paramMatrix, false);
-    if (this.type == GradientType.LINEAR) {}
-    for (Object localObject = getLinearGradient();; localObject = getRadialGradient())
-    {
-      this.paint.setShader((Shader)localObject);
-      super.draw(paramCanvas, paramMatrix, paramInt);
-      return;
+    Object localObject;
+    if (this.type == GradientType.LINEAR) {
+      localObject = getLinearGradient();
+    } else {
+      localObject = getRadialGradient();
     }
+    this.paint.setShader((Shader)localObject);
+    super.draw(paramCanvas, paramMatrix, paramInt);
   }
   
   public String getName()
@@ -207,7 +208,7 @@ public class GradientStrokeContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.animation.content.GradientStrokeContent
  * JD-Core Version:    0.7.0.1
  */

@@ -1,6 +1,6 @@
 package com.tencent.avgame.gameresult;
 
-import com.tencent.avgame.gamelogic.GameEngine;
+import com.tencent.avgame.gamelogic.IGameEngine;
 import com.tencent.avgame.gamelogic.data.EngineData;
 
 public abstract class GameResultBaseHelper
@@ -12,9 +12,12 @@ public abstract class GameResultBaseHelper
   
   public void a(boolean paramBoolean)
   {
-    EngineData localEngineData = GameEngine.a().a();
-    GameEngine.a().a(localEngineData.b());
-    GameEngine.a().a(false, 1, paramBoolean);
+    if (IGameEngine.k()) {
+      return;
+    }
+    EngineData localEngineData = IGameEngine.a().a();
+    IGameEngine.a().a(localEngineData.b());
+    IGameEngine.a().a(false, 1, paramBoolean);
   }
   
   public boolean a()
@@ -41,7 +44,7 @@ public abstract class GameResultBaseHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameresult.GameResultBaseHelper
  * JD-Core Version:    0.7.0.1
  */

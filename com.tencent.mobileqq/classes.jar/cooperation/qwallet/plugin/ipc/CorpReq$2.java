@@ -1,163 +1,60 @@
 package cooperation.qwallet.plugin.ipc;
 
 import android.os.Bundle;
-import android.text.TextUtils;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.pb.ByteStringMicro;
-import com.tencent.mobileqq.pb.PBBytesField;
-import com.tencent.mobileqq.pb.PBRepeatMessageField;
-import com.tencent.mobileqq.pb.PBUInt64Field;
-import com.tencent.mobileqq.util.MessageRecordUtil;
-import com.tencent.mobileqq.utils.ContactUtils;
-import com.tencent.qphone.base.util.QLog;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import mqq.observer.BusinessObserver;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-import tencent.im.oidb.cmd0x787.oidb_0x787.MemberLevelInfo;
-import tencent.im.oidb.cmd0x787.oidb_0x787.RspBody;
-import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
+import cooperation.qwallet.plugin.ICorpReq;
 
 class CorpReq$2
-  implements BusinessObserver
+  implements Runnable
 {
-  CorpReq$2(CorpReq paramCorpReq, CorpResp paramCorpResp, QQAppInterface paramQQAppInterface, ArrayList paramArrayList) {}
+  CorpReq$2(CorpReq paramCorpReq) {}
   
-  public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
+  public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("CorpReq.troop.get_troop_mem_card_4_tentpay", 2, "onReceive success=" + paramBoolean + " troopUin=" + this.val$resp.troopUin);
-    }
-    if (paramBoolean) {}
-    label771:
-    label805:
-    for (;;)
+    int i = CorpReq.corpReqType;
+    Object localObject;
+    if (i != 1)
     {
-      Object localObject3;
-      try
+      if (i != 2)
       {
-        Object localObject1 = new oidb_sso.OIDBSSOPkg();
-        ((oidb_sso.OIDBSSOPkg)localObject1).mergeFrom(paramBundle.getByteArray("data"));
-        Object localObject2;
-        Object localObject4;
-        Object localObject6;
-        Object localObject5;
-        Object localObject7;
-        if (((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.has())
+        if (i != 3)
         {
-          localObject1 = ((oidb_sso.OIDBSSOPkg)localObject1).bytes_bodybuffer.get().toByteArray();
-          paramBundle = new oidb_0x787.RspBody();
-          paramBundle.mergeFrom((byte[])localObject1);
-          localObject3 = new StringBuffer();
-          paramBundle = paramBundle.rpt_msg_member_level_info.get();
-          localObject2 = new HashMap(paramBundle.size());
-          localObject4 = paramBundle.iterator();
-          if (((Iterator)localObject4).hasNext())
+          if (i != 5)
           {
-            localObject6 = (oidb_0x787.MemberLevelInfo)((Iterator)localObject4).next();
-            localObject1 = "";
-            localObject5 = String.valueOf(((oidb_0x787.MemberLevelInfo)localObject6).uint64_uin.get());
-            if (QLog.isColorLevel())
-            {
-              ((StringBuffer)localObject3).append(" uin=");
-              ((StringBuffer)localObject3).append(((String)localObject5).substring(0, 4));
+            if (i != 6) {
+              return;
             }
-            localObject7 = ((oidb_0x787.MemberLevelInfo)localObject6).str_name.get().toByteArray();
-            paramBundle = (Bundle)localObject1;
-            if (localObject7 != null)
-            {
-              paramBundle = (Bundle)localObject1;
-              if (localObject7.length > 0) {
-                paramBundle = new String((byte[])localObject7);
-              }
-            }
-            localObject1 = ((oidb_0x787.MemberLevelInfo)localObject6).bytes_nick_name.get().toByteArray();
-            if ((localObject1 == null) || (localObject1.length <= 0) || (!TextUtils.isEmpty(paramBundle))) {
-              break label805;
-            }
-            localObject1 = new String((byte[])localObject1);
-            paramBundle = (Bundle)localObject1;
-            if (QLog.isColorLevel())
-            {
-              ((StringBuffer)localObject3).append(" nick=");
-              ((StringBuffer)localObject3).append(MessageRecordUtil.a((String)localObject1));
-              paramBundle = (Bundle)localObject1;
-            }
-            ((Map)localObject2).put(localObject5, paramBundle);
-            continue;
+            CorpReq.access$000(this.this$0).deleteUserNickOB();
+            return;
+          }
+          localObject = CorpReq.access$000(this.this$0).onTroopMemNick(this.this$0.troopUin, this.this$0.memUin, this.this$0.memUinArrayList, new CorpReq.2.1(this));
+          if (localObject != null) {
+            this.this$0.doCallback((Bundle)localObject);
           }
         }
-        this.val$resp.troopMemNickJson = ((JSONArray)localObject4).toString();
-      }
-      catch (Exception paramBundle)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.w("CorpReq.troop.get_troop_mem_card_4_tentpay", 2, "handleGetTroopCardDefaultNickBatch ex", paramBundle);
-        }
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("CorpReq.troop.get_troop_mem_card_4_tentpay", 2, ((StringBuffer)localObject3).toString());
-        }
-        localObject3 = new Bundle();
-        if (!TextUtils.isEmpty(this.this$0.memUin))
+        else
         {
-          this.val$resp.memUin = this.this$0.memUin;
-          localObject1 = (String)((Map)localObject2).get(this.this$0.memUin);
-          localObject2 = this.val$resp;
-          paramBundle = (Bundle)localObject1;
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = ContactUtils.g(this.val$app, this.this$0.troopUin, this.this$0.memUin);
-          }
-          ((CorpResp)localObject2).memNick = paramBundle;
-          this.val$resp.toBundle((Bundle)localObject3);
-          this.this$0.doCallback((Bundle)localObject3);
-          return;
-        }
-        try
-        {
-          localObject4 = new JSONArray(this.val$resp.troopMemNickJson);
-          localObject5 = this.val$memUins2Req.iterator();
-          if (!((Iterator)localObject5).hasNext()) {
-            break label771;
-          }
-          localObject7 = (String)((Iterator)localObject5).next();
-          localObject6 = new JSONObject();
-          localObject1 = (String)((Map)localObject2).get(localObject7);
-          ((JSONObject)localObject6).put("memUin", localObject7);
-          paramBundle = (Bundle)localObject1;
-          if (TextUtils.isEmpty((CharSequence)localObject1)) {
-            paramBundle = ContactUtils.g(this.val$app, this.this$0.troopUin, (String)localObject7);
-          }
-          ((JSONObject)localObject6).put("memNick", paramBundle);
-          ((JSONArray)localObject4).put(localObject6);
-          continue;
-          if (!QLog.isColorLevel()) {
-            continue;
+          localObject = CorpReq.access$000(this.this$0).onUserNcik(this.this$0.uin, this.this$0.channel, this.this$0.groupId, this.this$0.fromReceiver);
+          if (localObject != null) {
+            this.this$0.doCallback((Bundle)localObject);
           }
         }
-        catch (JSONException paramBundle) {}
-        QLog.d("CorpReq.troop.get_troop_mem_card_4_tentpay", 2, "onBatchTroopCardDefaultNick JSONException resp.troopMemNickJson=" + this.val$resp.troopMemNickJson);
-        continue;
       }
-      finally
+      else
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("CorpReq.troop.get_troop_mem_card_4_tentpay", 2, "handleGetTroopCardDefaultNickBatch over time=" + System.currentTimeMillis());
-        }
+        localObject = this.this$0;
+        ((CorpReq)localObject).doCallback(CorpReq.access$000((CorpReq)localObject).onIsFriend(this.this$0.uin));
       }
-      this.val$resp.toBundle((Bundle)localObject3);
-      this.this$0.doCallback((Bundle)localObject3);
+    }
+    else
+    {
+      localObject = this.this$0;
+      ((CorpReq)localObject).doCallback(CorpReq.access$000((CorpReq)localObject).onGetFaceFilePath(this.this$0.faceType, this.this$0.uin, this.this$0.subType));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qwallet.plugin.ipc.CorpReq.2
  * JD-Core Version:    0.7.0.1
  */

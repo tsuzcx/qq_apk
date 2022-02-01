@@ -14,16 +14,15 @@ public class URLImageLoader$DecodeHandler
   
   public Bitmap run(DownloadParams paramDownloadParams, Bitmap paramBitmap)
   {
-    paramDownloadParams = paramBitmap;
     if (this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation != null) {
-      paramDownloadParams = StoryListUtils.a(new BitmapDrawable(paramBitmap), this.a.jdField_a_of_type_Int, this.a.b, UIUtils.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation);
+      return StoryListUtils.a(new BitmapDrawable(paramBitmap), this.a.jdField_a_of_type_Int, this.a.b, UIUtils.a, this.a.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation);
     }
-    return paramDownloadParams;
+    return paramBitmap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.DecodeHandler
  * JD-Core Version:    0.7.0.1
  */

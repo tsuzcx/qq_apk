@@ -9,14 +9,21 @@ class TroopTransferActivity$6
 {
   TroopTransferActivity$6(TroopTransferActivity paramTroopTransferActivity) {}
   
-  public void onGetTroopMemberCardInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
+  protected void onGetTroopMemberCardInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
   {
     if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
       this.a.b(paramArrayList);
     }
   }
   
-  public void onModifyTroopInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
+  protected void onModifyTroopInfoPushResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList)
+  {
+    if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
+      this.a.b(paramArrayList);
+    }
+  }
+  
+  protected void onModifyTroopInfoResult(boolean paramBoolean, ArrayList<TroopMemberCardInfo> paramArrayList, String paramString)
   {
     if ((paramBoolean) && (paramArrayList != null) && (paramArrayList.size() > 0)) {
       this.a.b(paramArrayList);
@@ -25,7 +32,7 @@ class TroopTransferActivity$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopTransferActivity.6
  * JD-Core Version:    0.7.0.1
  */

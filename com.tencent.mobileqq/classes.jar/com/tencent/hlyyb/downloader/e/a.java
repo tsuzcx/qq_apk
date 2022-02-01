@@ -30,7 +30,7 @@ public class a
     long l2 = this.a;
     this.a = l1;
     i locali = this.b;
-    locali.j = (l1 - l2 + locali.j);
+    locali.j += l1 - l2;
     this.f.a(paramInt1);
     this.b.q = this.f.a();
   }
@@ -52,7 +52,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.e.a
  * JD-Core Version:    0.7.0.1
  */

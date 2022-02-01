@@ -27,8 +27,10 @@ public class DoubleExponentialPredictor
     paramLong = this.firstExponential.currentPredition;
     this.secondExponential.sample(paramLong);
     long l = this.secondExponential.currentPredition;
-    float f = this.weight / (1.0F - this.weight);
-    return ((float)(paramLong - l) * f + (float)(2L * paramLong - l));
+    float f1 = this.weight;
+    f1 /= (1.0F - f1);
+    float f2 = (float)(paramLong - l);
+    return ((float)(2L * paramLong - l) + f1 * f2);
   }
   
   public void reset()
@@ -40,12 +42,16 @@ public class DoubleExponentialPredictor
   
   public String toString()
   {
-    return "DoubleExponentialPredictor(" + this.weight + ')';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DoubleExponentialPredictor(");
+    localStringBuilder.append(this.weight);
+    localStringBuilder.append(')');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.bandwidth.DoubleExponentialPredictor
  * JD-Core Version:    0.7.0.1
  */

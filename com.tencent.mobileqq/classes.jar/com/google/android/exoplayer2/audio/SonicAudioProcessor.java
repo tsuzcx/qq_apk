@@ -31,17 +31,22 @@ public final class SonicAudioProcessor
   
   public boolean configure(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt3 != 2) {
-      throw new AudioProcessor.UnhandledFormatException(paramInt1, paramInt2, paramInt3);
+    if (paramInt3 == 2)
+    {
+      int i = this.pendingOutputSampleRateHz;
+      paramInt3 = i;
+      if (i == -1) {
+        paramInt3 = paramInt1;
+      }
+      if ((this.sampleRateHz == paramInt1) && (this.channelCount == paramInt2) && (this.outputSampleRateHz == paramInt3)) {
+        return false;
+      }
+      this.sampleRateHz = paramInt1;
+      this.channelCount = paramInt2;
+      this.outputSampleRateHz = paramInt3;
+      return true;
     }
-    if (this.pendingOutputSampleRateHz == -1) {}
-    for (paramInt3 = paramInt1; (this.sampleRateHz == paramInt1) && (this.channelCount == paramInt2) && (this.outputSampleRateHz == paramInt3); paramInt3 = this.pendingOutputSampleRateHz) {
-      return false;
-    }
-    this.sampleRateHz = paramInt1;
-    this.channelCount = paramInt2;
-    this.outputSampleRateHz = paramInt3;
-    return true;
+    throw new AudioProcessor.UnhandledFormatException(paramInt1, paramInt2, paramInt3);
   }
   
   public void flush()
@@ -82,7 +87,14 @@ public final class SonicAudioProcessor
   
   public boolean isEnded()
   {
-    return (this.inputEnded) && ((this.sonic == null) || (this.sonic.getSamplesAvailable() == 0));
+    if (this.inputEnded)
+    {
+      Sonic localSonic = this.sonic;
+      if ((localSonic == null) || (localSonic.getSamplesAvailable() == 0)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   public void queueEndOfStream()
@@ -104,22 +116,20 @@ public final class SonicAudioProcessor
     int i = this.sonic.getSamplesAvailable() * this.channelCount * 2;
     if (i > 0)
     {
-      if (this.buffer.capacity() >= i) {
-        break label142;
+      if (this.buffer.capacity() < i)
+      {
+        this.buffer = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder());
+        this.shortBuffer = this.buffer.asShortBuffer();
       }
-      this.buffer = ByteBuffer.allocateDirect(i).order(ByteOrder.nativeOrder());
-      this.shortBuffer = this.buffer.asShortBuffer();
-    }
-    for (;;)
-    {
+      else
+      {
+        this.buffer.clear();
+        this.shortBuffer.clear();
+      }
       this.sonic.getOutput(this.shortBuffer);
       this.outputBytes += i;
       this.buffer.limit(i);
       this.outputBuffer = this.buffer;
-      return;
-      label142:
-      this.buffer.clear();
-      this.shortBuffer.clear();
     }
   }
   
@@ -140,17 +150,21 @@ public final class SonicAudioProcessor
   
   public long scaleDurationForSpeedup(long paramLong)
   {
-    if (this.outputBytes >= 1024L)
+    long l = this.outputBytes;
+    if (l >= 1024L)
     {
-      if (this.outputSampleRateHz == this.sampleRateHz) {
-        return Util.scaleLargeTimestamp(paramLong, this.inputBytes, this.outputBytes);
+      int i = this.outputSampleRateHz;
+      int j = this.sampleRateHz;
+      if (i == j) {
+        return Util.scaleLargeTimestamp(paramLong, this.inputBytes, l);
       }
-      long l1 = this.inputBytes;
-      long l2 = this.outputSampleRateHz;
-      long l3 = this.outputBytes;
-      return Util.scaleLargeTimestamp(paramLong, l2 * l1, this.sampleRateHz * l3);
+      return Util.scaleLargeTimestamp(paramLong, this.inputBytes * i, l * j);
     }
-    return (this.speed * paramLong);
+    double d1 = this.speed;
+    double d2 = paramLong;
+    Double.isNaN(d1);
+    Double.isNaN(d2);
+    return (d1 * d2);
   }
   
   public void setOutputSampleRateHz(int paramInt)
@@ -172,7 +186,7 @@ public final class SonicAudioProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.audio.SonicAudioProcessor
  * JD-Core Version:    0.7.0.1
  */

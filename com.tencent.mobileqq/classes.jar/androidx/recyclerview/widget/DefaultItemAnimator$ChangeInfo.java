@@ -26,12 +26,26 @@ class DefaultItemAnimator$ChangeInfo
   
   public String toString()
   {
-    return "ChangeInfo{oldHolder=" + this.oldHolder + ", newHolder=" + this.newHolder + ", fromX=" + this.fromX + ", fromY=" + this.fromY + ", toX=" + this.toX + ", toY=" + this.toY + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ChangeInfo{oldHolder=");
+    localStringBuilder.append(this.oldHolder);
+    localStringBuilder.append(", newHolder=");
+    localStringBuilder.append(this.newHolder);
+    localStringBuilder.append(", fromX=");
+    localStringBuilder.append(this.fromX);
+    localStringBuilder.append(", fromY=");
+    localStringBuilder.append(this.fromY);
+    localStringBuilder.append(", toX=");
+    localStringBuilder.append(this.toX);
+    localStringBuilder.append(", toY=");
+    localStringBuilder.append(this.toY);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.DefaultItemAnimator.ChangeInfo
  * JD-Core Version:    0.7.0.1
  */

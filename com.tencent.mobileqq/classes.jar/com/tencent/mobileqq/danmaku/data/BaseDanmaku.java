@@ -75,8 +75,10 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
     }
     catch (Exception localException)
     {
-      while (!DanmakuDependImp.a().a().a()) {}
-      throw new RuntimeException("IDanmakuUIConfig should been provided by IDanmakuUIConfigCreator in DanmakuContext");
+      if (!DanmakuDependImp.a().a().a()) {
+        return;
+      }
+      throw new RuntimeException("IDanmakuUIConfig should been provided by IDanmakuUIConfigCreator in DanmakuContext", localException);
     }
   }
   
@@ -97,14 +99,16 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
     this.jdField_f_of_type_Boolean = true;
     this.jdField_d_of_type_Float = -1.0F;
     this.jdField_e_of_type_Float = -1.0F;
-    if (this.jdField_a_of_type_JavaUtilHashMap != null)
+    this.jdField_c_of_type_Boolean = false;
+    Object localObject1 = this.jdField_a_of_type_JavaUtilHashMap;
+    if (localObject1 != null)
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((HashMap)localObject1).values().iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        Object localObject = localIterator.next();
-        if ((localObject instanceof BaseDanmaku.IRecyclableExtraObject)) {
-          ((BaseDanmaku.IRecyclableExtraObject)localObject).a();
+        Object localObject2 = ((Iterator)localObject1).next();
+        if ((localObject2 instanceof BaseDanmaku.IRecyclableExtraObject)) {
+          ((BaseDanmaku.IRecyclableExtraObject)localObject2).a();
         }
       }
       this.jdField_a_of_type_JavaUtilHashMap.clear();
@@ -112,16 +116,21 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
     }
   }
   
-  public abstract float a();
+  public float a()
+  {
+    return this.jdField_e_of_type_Float;
+  }
   
   public abstract int a();
   
   public int a(int paramInt)
   {
-    if (this.g > paramInt) {
-      return paramInt - 1;
+    int j = this.g;
+    int i = j;
+    if (j > paramInt) {
+      i = paramInt - 1;
     }
-    return this.g;
+    return i;
   }
   
   public long a()
@@ -137,6 +146,11 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   public Canvas a()
   {
     return this.jdField_a_of_type_AndroidGraphicsCanvas;
+  }
+  
+  public CONFIG a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectIDanmakuUIConfig;
   }
   
   public ClickResult a(TouchPoint paramTouchPoint)
@@ -233,42 +247,59 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   
   public boolean a(float paramFloat1, float paramFloat2, float paramFloat3, long paramLong)
   {
-    boolean bool = true;
     float[] arrayOfFloat = b(paramLong);
+    boolean bool2 = false;
     if (arrayOfFloat == null) {
       return false;
     }
-    if ((arrayOfFloat[0] <= paramFloat1) && (paramFloat1 <= arrayOfFloat[2] + paramFloat3) && (arrayOfFloat[1] <= paramFloat2) && (paramFloat2 <= arrayOfFloat[3])) {}
-    for (;;)
+    boolean bool1 = bool2;
+    if (arrayOfFloat[0] <= paramFloat1)
     {
-      return bool;
-      bool = false;
+      bool1 = bool2;
+      if (paramFloat1 <= arrayOfFloat[2] + paramFloat3)
+      {
+        bool1 = bool2;
+        if (arrayOfFloat[1] <= paramFloat2)
+        {
+          bool1 = bool2;
+          if (paramFloat2 <= arrayOfFloat[3]) {
+            bool1 = true;
+          }
+        }
+      }
     }
+    return bool1;
   }
   
   public boolean a(int paramInt)
   {
-    if ((h()) || (this.jdField_e_of_type_Int - paramInt >= 0))
-    {
-      this.jdField_e_of_type_Int -= paramInt;
-      this.jdField_a_of_type_Long += paramInt;
-      return true;
+    if ((!h()) && (this.jdField_e_of_type_Int - paramInt < 0)) {
+      return false;
     }
-    return false;
+    this.jdField_e_of_type_Int -= paramInt;
+    this.jdField_a_of_type_Long += paramInt;
+    return true;
   }
   
   public boolean a(long paramLong)
   {
-    if (this.jdField_c_of_type_Boolean) {}
-    while (paramLong - this.jdField_b_of_type_Long < this.jdField_a_of_type_ComTencentMobileqqDanmakuToolDuration.a()) {
+    boolean bool2 = this.jdField_c_of_type_Boolean;
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    return true;
+    if (paramLong - this.jdField_b_of_type_Long >= this.jdField_a_of_type_ComTencentMobileqqDanmakuToolDuration.a()) {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public abstract float[] a(long paramLong);
   
-  public abstract float b();
+  public float b()
+  {
+    return this.jdField_d_of_type_Float;
+  }
   
   public int b()
   {
@@ -277,10 +308,12 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   
   public int b(int paramInt)
   {
-    if (this.jdField_f_of_type_Int >= paramInt) {
-      return paramInt - 1;
+    int j = this.jdField_f_of_type_Int;
+    int i = j;
+    if (j >= paramInt) {
+      i = paramInt - 1;
     }
-    return this.jdField_f_of_type_Int;
+    return i;
   }
   
   public long b()
@@ -312,7 +345,8 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   
   public boolean b(long paramLong)
   {
-    return (this.jdField_a_of_type_Long > 0L) && (paramLong - this.jdField_a_of_type_Long >= this.jdField_a_of_type_ComTencentMobileqqDanmakuToolDuration.a());
+    long l = this.jdField_a_of_type_Long;
+    return (l > 0L) && (paramLong - l >= this.jdField_a_of_type_ComTencentMobileqqDanmakuToolDuration.a());
   }
   
   public abstract float[] b(long paramLong);
@@ -356,7 +390,8 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   
   public boolean c(long paramLong)
   {
-    return (this.jdField_a_of_type_Long > 0L) && (paramLong - this.jdField_a_of_type_Long < 0L);
+    long l = this.jdField_a_of_type_Long;
+    return (l > 0L) && (paramLong - l < 0L);
   }
   
   public abstract float d();
@@ -430,25 +465,25 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (BaseDanmaku)paramObject;
-      if (this.jdField_a_of_type_JavaLangObject != null) {
-        return this.jdField_a_of_type_JavaLangObject.equals(paramObject.jdField_a_of_type_JavaLangObject);
+      Object localObject = this.jdField_a_of_type_JavaLangObject;
+      if (localObject != null) {
+        return localObject.equals(paramObject.jdField_a_of_type_JavaLangObject);
       }
-    } while (paramObject.jdField_a_of_type_JavaLangObject == null);
+      return paramObject.jdField_a_of_type_JavaLangObject == null;
+    }
     return false;
   }
   
-  public float f()
-  {
-    return this.jdField_a_of_type_Float;
-  }
+  public abstract float f();
   
   public int f()
   {
@@ -457,16 +492,20 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   
   public void f()
   {
-    float f1 = b();
+    float f1 = d();
     if ((!this.jdField_d_of_type_Boolean) && (f1 < f()))
     {
-      Logger.c("BaseDanmaku", "onFirstExposure, danmaku = " + toString());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onFirstExposure, danmaku = ");
+      ((StringBuilder)localObject).append(toString());
+      Logger.c("BaseDanmaku", ((StringBuilder)localObject).toString());
       i();
       this.jdField_d_of_type_Boolean = true;
     }
-    if ((this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku$IHitLeftSideListener != null) && (f1 <= 0.0F))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku$IHitLeftSideListener;
+    if ((localObject != null) && (f1 <= 0.0F))
     {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku$IHitLeftSideListener.a(this);
+      ((BaseDanmaku.IHitLeftSideListener)localObject).a(this);
       this.jdField_a_of_type_ComTencentMobileqqDanmakuDataBaseDanmaku$IHitLeftSideListener = null;
     }
   }
@@ -481,10 +520,7 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
     return this.jdField_f_of_type_Boolean;
   }
   
-  public float g()
-  {
-    return this.jdField_b_of_type_Float;
-  }
+  public abstract float g();
   
   public int g()
   {
@@ -504,7 +540,7 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   
   public float h()
   {
-    return b() + DanmakuContext.a().g();
+    return this.jdField_a_of_type_Float;
   }
   
   public void h()
@@ -519,32 +555,64 @@ public abstract class BaseDanmaku<DATA, CONFIG extends IDanmakuUIConfig>
   
   public int hashCode()
   {
-    if (this.jdField_a_of_type_JavaLangObject == null) {
+    Object localObject = this.jdField_a_of_type_JavaLangObject;
+    if (localObject == null) {
       return 0;
     }
-    return this.jdField_a_of_type_JavaLangObject.hashCode();
+    return localObject.hashCode();
   }
   
   public float i()
   {
-    return c() + d();
+    return this.jdField_b_of_type_Float;
   }
   
   protected void i()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext.a(this);
+    DanmakuContext localDanmakuContext = this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext;
+    if (localDanmakuContext != null) {
+      localDanmakuContext.a(this);
     }
+  }
+  
+  public float j()
+  {
+    return d() + DanmakuContext.a().g();
+  }
+  
+  public float k()
+  {
+    return e() + d();
   }
   
   public String toString()
   {
-    return "BaseDanmaku" + this.jdField_a_of_type_Int + "[left:" + b() + ",top:" + c() + ",right:" + d() + ",bottom:" + e() + ", time:" + this.jdField_b_of_type_Long + ", mData=" + String.valueOf(this.jdField_a_of_type_JavaLangObject) + ", mType=" + a() + ", playerTime=" + this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext.a() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseDanmaku");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("[left:");
+    localStringBuilder.append(d());
+    localStringBuilder.append(",top:");
+    localStringBuilder.append(e());
+    localStringBuilder.append(",right:");
+    localStringBuilder.append(f());
+    localStringBuilder.append(",bottom:");
+    localStringBuilder.append(g());
+    localStringBuilder.append(", time:");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", mData=");
+    localStringBuilder.append(String.valueOf(this.jdField_a_of_type_JavaLangObject));
+    localStringBuilder.append(", mType=");
+    localStringBuilder.append(a());
+    localStringBuilder.append(", playerTime=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqDanmakuInjectDanmakuContext.a());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.data.BaseDanmaku
  * JD-Core Version:    0.7.0.1
  */

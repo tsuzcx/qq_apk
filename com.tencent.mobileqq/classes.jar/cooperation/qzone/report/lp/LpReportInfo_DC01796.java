@@ -31,8 +31,9 @@ public class LpReportInfo_DC01796
   public String getStringDate()
   {
     Date localDate = new Date();
-    if (this.reportObj != null) {
-      localDate.setTime(this.reportObj.endTime);
+    ReportHandler.DownloadReportObject localDownloadReportObject = this.reportObj;
+    if (localDownloadReportObject != null) {
+      localDate.setTime(localDownloadReportObject.endTime);
     }
     return new SimpleDateFormat("yyyy-MM-dd HH:mm:ss.SSS").format(localDate);
   }
@@ -58,39 +59,46 @@ public class LpReportInfo_DC01796
       localHashMap.put("flow", String.valueOf(this.reportObj.flow));
       LpReportUtils.safePut(localHashMap, "content_type", this.reportObj.content_type);
       localHashMap.put("TotalTime", String.valueOf(this.reportObj.totaltime));
-      i = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadLinkReportSample", 2);
-      if (this.reportObj.retCode != 0) {
-        break label499;
+      int i = QzoneConfig.getInstance().getConfig("PhotoSvrList", "DownloadLinkReportSample", 2);
+      if (this.reportObj.retCode == 0) {
+        i = 100 / i;
+      } else {
+        i = 1;
       }
-    }
-    label499:
-    for (int i = 100 / i;; i = 1)
-    {
       localHashMap.put("freq", String.valueOf(i));
       LpReportUtils.safePut(localHashMap, "sip", this.reportObj.serverIp);
-      String str1 = "";
-      if (!TextUtils.isEmpty(this.reportObj.strategyInfo)) {
-        str1 = "" + this.reportObj.strategyInfo + "|";
+      Object localObject1 = "";
+      if (!TextUtils.isEmpty(this.reportObj.strategyInfo))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("");
+        ((StringBuilder)localObject1).append(this.reportObj.strategyInfo);
+        ((StringBuilder)localObject1).append("|");
+        localObject1 = ((StringBuilder)localObject1).toString();
       }
-      Object localObject = str1;
+      Object localObject2 = localObject1;
       if (this.reportObj.t != null)
       {
-        String str2 = Log.getStackTraceString(this.reportObj.t);
-        localObject = str2;
-        if (!TextUtils.isEmpty(str2)) {
-          localObject = str2.replaceAll("\n\t", "--");
+        Object localObject3 = Log.getStackTraceString(this.reportObj.t);
+        localObject2 = localObject3;
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+          localObject2 = ((String)localObject3).replaceAll("\n\t", "--");
         }
-        localObject = str1 + (String)localObject + "|";
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append((String)localObject2);
+        ((StringBuilder)localObject3).append("|");
+        localObject2 = ((StringBuilder)localObject3).toString();
       }
-      LpReportUtils.safePut(localHashMap, "extend", (String)localObject);
+      LpReportUtils.safePut(localHashMap, "extend", (String)localObject2);
       LpReportUtils.safePut(localHashMap, "client_log", URLEncoder.encode(this.reportObj.logInfo));
-      return localHashMap;
     }
+    return localHashMap;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC01796
  * JD-Core Version:    0.7.0.1
  */

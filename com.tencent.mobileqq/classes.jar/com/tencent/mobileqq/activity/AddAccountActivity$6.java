@@ -9,12 +9,12 @@ class AddAccountActivity$6
   
   public void run()
   {
-    AddAccountActivity.a(this.this$0.app, this.this$0.app.getAccount());
+    AddAccountActivity.loginSuccessInit(this.this$0.app, this.this$0.app.getAccount());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddAccountActivity.6
  * JD-Core Version:    0.7.0.1
  */

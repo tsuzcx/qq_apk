@@ -25,7 +25,7 @@ public class BlessWording
   
   public boolean hasEditingWording()
   {
-    return !TextUtils.isEmpty(this.editingWording);
+    return TextUtils.isEmpty(this.editingWording) ^ true;
   }
   
   public void setEditingWording(String paramString)
@@ -35,7 +35,7 @@ public class BlessWording
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.bless.BlessWording
  * JD-Core Version:    0.7.0.1
  */

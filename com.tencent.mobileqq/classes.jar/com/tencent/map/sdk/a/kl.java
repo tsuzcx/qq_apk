@@ -58,8 +58,9 @@ public final class kl
     this.E = ((kd)paramlg.e());
     this.j = paramlg.h();
     this.a = new kf(this);
-    this.a.f = this;
-    a(this.a);
+    Object localObject = this.a;
+    ((kf)localObject).f = this;
+    a((lh)localObject);
     this.b = new ie(paramlg);
     this.e = new CopyOnWriteArrayList();
     this.x = new CopyOnWriteArrayList();
@@ -73,7 +74,7 @@ public final class kl
     paramlg = fs.a;
     if (c())
     {
-      Object localObject = this.j;
+      localObject = this.j;
       GeoPoint localGeoPoint1 = new GeoPoint(paramlg.top, paramlg.left);
       GeoPoint localGeoPoint2 = new GeoPoint(paramlg.bottom, paramlg.right);
       Rect localRect = new Rect();
@@ -103,7 +104,8 @@ public final class kl
     if (paramDouble == 0.0D) {
       return;
     }
-    this.i.a(this.i.p.q() + (float)paramDouble);
+    kc localkc = this.i;
+    localkc.a(localkc.p.q() + (float)paramDouble);
     d();
     q();
   }
@@ -117,7 +119,7 @@ public final class kl
   {
     Iterator localIterator = this.C.iterator();
     while (localIterator.hasNext()) {
-      if ((gz)localIterator.next() != null) {}
+      gz localgz = (gz)localIterator.next();
     }
   }
   
@@ -150,7 +152,7 @@ public final class kl
   {
     Iterator localIterator = this.u.iterator();
     while (localIterator.hasNext()) {
-      if ((gy)localIterator.next() != null) {}
+      gy localgy = (gy)localIterator.next();
     }
     d();
   }
@@ -190,36 +192,33 @@ public final class kl
     float f1 = this.h.h().width() / 2.0F;
     float f2 = this.h.h().height() / 2.0F;
     kc.b localb = this.i.r;
-    double d2;
     double d1;
-    if (this.r) {
+    if (this.r)
+    {
       if (localb != null)
       {
-        paramDouble3 = f1 + localb.a * f1 * 2.0F;
-        paramDouble2 = localb.b * f2 * 2.0F + f2;
-        d2 = paramDouble2;
-        d1 = paramDouble3;
-        paramDouble5 = paramDouble3;
-        paramDouble4 = paramDouble2;
+        paramDouble2 = f1 + localb.a * f1 * 2.0F;
+        paramDouble3 = f2 + localb.b * f2 * 2.0F;
       }
-    }
-    for (;;)
-    {
-      a(new nv(101, new double[] { paramDouble1, d1, d2, paramDouble5, paramDouble4 }));
-      paramRunnable = new nv(paramRunnable);
-      paramRunnable.m = false;
-      paramRunnable.k = 0L;
-      a(paramRunnable);
-      return;
-      paramDouble3 = f1;
-      paramDouble2 = f2;
-      break;
+      else
+      {
+        paramDouble2 = f1;
+        paramDouble3 = f2;
+      }
+      paramDouble4 = paramDouble3;
+      paramDouble5 = paramDouble2;
       d1 = paramDouble4;
-      paramDouble4 = paramDouble5;
-      paramDouble5 = d1;
-      d1 = paramDouble2;
-      d2 = paramDouble3;
     }
+    else
+    {
+      d1 = paramDouble5;
+      paramDouble5 = paramDouble4;
+    }
+    a(new nv(101, new double[] { paramDouble1, paramDouble2, paramDouble3, paramDouble5, d1 }));
+    paramRunnable = new nv(paramRunnable);
+    paramRunnable.m = false;
+    paramRunnable.k = 0L;
+    a(paramRunnable);
   }
   
   public final void a(float paramFloat)
@@ -309,24 +308,25 @@ public final class kl
   
   public final void a(Runnable paramRunnable)
   {
-    if (!l()) {}
-    do
-    {
+    if (!l()) {
       return;
-      float f1 = this.h.h().width() / 2.0F;
-      float f2 = this.h.h().height() / 2.0F;
-      this.h.g().d(f1, f2);
-    } while (paramRunnable == null);
-    paramRunnable.run();
+    }
+    float f1 = this.h.h().width() / 2.0F;
+    float f2 = this.h.h().height() / 2.0F;
+    this.h.g().d(f1, f2);
+    if (paramRunnable != null) {
+      paramRunnable.run();
+    }
   }
   
   public final void a(boolean paramBoolean)
   {
     if (paramBoolean)
     {
-      if (this.I != null)
+      Runnable localRunnable = this.I;
+      if (localRunnable != null)
       {
-        this.I.run();
+        localRunnable.run();
         this.I = null;
       }
       d();
@@ -335,41 +335,46 @@ public final class kl
   
   public final PointF b()
   {
-    int i1 = 0;
-    int i2;
-    if (this.j != null)
+    Rect localRect = this.j;
+    int i2 = 0;
+    int i1;
+    if (localRect != null)
     {
-      i2 = this.j.width();
+      i2 = localRect.width();
       i1 = this.j.height();
     }
-    for (;;)
+    else
     {
-      int i3 = this.n;
-      int i4 = (i2 - i3 - this.p) / 2;
-      int i5 = this.o;
-      int i6 = (i1 - i5 - this.q) / 2;
-      if ((i2 != 0) && (i1 != 0)) {
-        return new PointF((i4 + i3) * 1.0F / i2, (i6 + i5) * 1.0F / i1);
-      }
-      return new PointF(0.5F, 0.5F);
-      i2 = 0;
+      i1 = 0;
     }
+    int i3 = this.n;
+    int i4 = (i2 - i3 - this.p) / 2;
+    int i5 = this.o;
+    int i6 = (i1 - i5 - this.q) / 2;
+    if ((i2 != 0) && (i1 != 0)) {
+      return new PointF((i3 + i4) * 1.0F / i2, (i5 + i6) * 1.0F / i1);
+    }
+    return new PointF(0.5F, 0.5F);
   }
   
   public final void b(double paramDouble)
   {
-    double d2 = (paramDouble - this.i.p.q()) % 360.0D;
-    double d1;
-    if (d2 > 180.0D) {
+    double d1 = this.i.p.q();
+    Double.isNaN(d1);
+    double d2 = (paramDouble - d1) % 360.0D;
+    if (d2 > 180.0D)
+    {
       d1 = d2 - 360.0D;
     }
-    while (d1 == 0.0D)
+    else
     {
-      return;
       d1 = d2;
       if (d2 < -180.0D) {
         d1 = d2 + 360.0D;
       }
+    }
+    if (d1 == 0.0D) {
+      return;
     }
     this.i.a((float)paramDouble);
     d();
@@ -382,7 +387,7 @@ public final class kl
     {
       Iterator localIterator = this.B.iterator();
       while (localIterator.hasNext()) {
-        if ((gx)localIterator.next() != null) {}
+        gx localgx = (gx)localIterator.next();
       }
       d();
     }
@@ -399,106 +404,156 @@ public final class kl
   
   public final void b(nv paramnv)
   {
-    if (paramnv != null) {
-      switch (paramnv.i)
+    if (paramnv != null)
+    {
+      int i1 = paramnv.i;
+      if (i1 != 2)
       {
+        if (i1 != 3)
+        {
+          if (i1 != 4)
+          {
+            if (i1 != 6)
+            {
+              if (i1 != 120)
+              {
+                if (i1 != 10000)
+                {
+                  int i2;
+                  double d1;
+                  double d3;
+                  double d2;
+                  double d4;
+                  switch (i1)
+                  {
+                  default: 
+                    switch (i1)
+                    {
+                    default: 
+                      return;
+                    case 110: 
+                      a(paramnv.j[0]);
+                      return;
+                    case 109: 
+                      b(paramnv.j[0]);
+                      return;
+                    }
+                    a((float)paramnv.j[0]);
+                    return;
+                  case 104: 
+                    this.i.a(0.0F);
+                    this.i.b(0.0F);
+                    q();
+                    r();
+                    d();
+                    return;
+                  case 103: 
+                    i1 = this.h.h().width() / 2;
+                    i2 = this.h.h().height() / 2;
+                    d1 = i1;
+                    d3 = paramnv.j[1];
+                    Double.isNaN(d1);
+                    d2 = i2;
+                    d4 = paramnv.j[2];
+                    Double.isNaN(d2);
+                    a(d1 - d3, d2 - d4);
+                    d(paramnv.j[0]);
+                    d3 = paramnv.j[3];
+                    Double.isNaN(d1);
+                    d4 = paramnv.j[4];
+                    Double.isNaN(d2);
+                    a(d3 - d1, d4 - d2);
+                    return;
+                  case 102: 
+                    d(paramnv.j[0]);
+                    d1 = paramnv.j[1];
+                    if (d1 != 0.0D)
+                    {
+                      paramnv = this.i;
+                      paramnv.b(paramnv.p.p() + (float)d1);
+                      d();
+                      r();
+                    }
+                    return;
+                  case 101: 
+                    int i6 = this.h.h().width();
+                    int i5 = this.h.h().height();
+                    int i4 = i6 / 2;
+                    int i3 = i5 / 2;
+                    localObject = this.i.r;
+                    i2 = i4;
+                    i1 = i3;
+                    if (localObject != null)
+                    {
+                      i2 = (int)(i4 + ((kc.b)localObject).a * i6);
+                      i1 = (int)(i3 + ((kc.b)localObject).b * i5);
+                    }
+                    d1 = i2;
+                    d2 = paramnv.j[1];
+                    Double.isNaN(d1);
+                    d3 = i1;
+                    d4 = paramnv.j[2];
+                    Double.isNaN(d3);
+                    double d5 = paramnv.j[3];
+                    Double.isNaN(d1);
+                    double d6 = paramnv.j[4];
+                    Double.isNaN(d3);
+                    a(d1 - d2, d3 - d4);
+                    e(paramnv.j[0]);
+                    a(d5 - d1, d6 - d3);
+                    return;
+                  }
+                  e(paramnv.j[0]);
+                  return;
+                }
+                Object localObject = this.l;
+                if (localObject != null) {
+                  ((kl.a)localObject).a(paramnv);
+                }
+              }
+              else
+              {
+                a((float)paramnv.j[0]);
+                a((int)paramnv.j[1], (int)paramnv.j[2], 1);
+              }
+            }
+            else if (paramnv.n != null) {
+              paramnv.n.run();
+            }
+          }
+          else
+          {
+            if (paramnv.j.length > 2) {
+              i1 = (int)paramnv.j[2];
+            } else {
+              i1 = 1;
+            }
+            a((int)paramnv.j[0], (int)paramnv.j[1], i1);
+          }
+        }
+        else {
+          a(paramnv.j[0], paramnv.j[1]);
+        }
+      }
+      else
+      {
+        paramnv = this.D;
+        if ((paramnv != null) && (paramnv.get() != null)) {
+          ((lf)this.D.get()).onRedraw();
+        }
       }
     }
-    do
-    {
-      do
-      {
-        double d1;
-        do
-        {
-          do
-          {
-            return;
-          } while ((this.D == null) || (this.D.get() == null));
-          ((lf)this.D.get()).onRedraw();
-          return;
-          a(paramnv.j[0], paramnv.j[1]);
-          return;
-          e(paramnv.j[0]);
-          return;
-          a((float)paramnv.j[0]);
-          return;
-          int i6 = this.h.h().width();
-          int i5 = this.h.h().height();
-          int i4 = i6 / 2;
-          int i3 = i5 / 2;
-          kc.b localb = this.i.r;
-          i2 = i3;
-          i1 = i4;
-          if (localb != null)
-          {
-            f1 = i4;
-            float f2 = localb.a;
-            i1 = (int)(f1 + i6 * f2);
-            i2 = (int)(i3 + localb.b * i5);
-          }
-          d1 = i1;
-          double d2 = paramnv.j[1];
-          double d3 = i2;
-          double d4 = paramnv.j[2];
-          double d5 = paramnv.j[3];
-          double d6 = i1;
-          double d7 = paramnv.j[4];
-          double d8 = i2;
-          a(d1 - d2, d3 - d4);
-          e(paramnv.j[0]);
-          a(d5 - d6, d7 - d8);
-          return;
-          d(paramnv.j[0]);
-          d1 = paramnv.j[1];
-        } while (d1 == 0.0D);
-        paramnv = this.i;
-        float f1 = this.i.p.p();
-        paramnv.b((float)d1 + f1);
-        d();
-        r();
-        return;
-        int i1 = this.h.h().width() / 2;
-        int i2 = this.h.h().height() / 2;
-        a(i1 - paramnv.j[1], i2 - paramnv.j[2]);
-        d(paramnv.j[0]);
-        a(paramnv.j[3] - i1, paramnv.j[4] - i2);
-        return;
-        b(paramnv.j[0]);
-        return;
-        a(paramnv.j[0]);
-        return;
-        this.i.a(0.0F);
-        this.i.b(0.0F);
-        q();
-        r();
-        d();
-        return;
-        if (paramnv.j.length > 2) {}
-        for (i1 = (int)paramnv.j[2];; i1 = 1)
-        {
-          a((int)paramnv.j[0], (int)paramnv.j[1], i1);
-          return;
-        }
-        a((float)paramnv.j[0]);
-        a((int)paramnv.j[1], (int)paramnv.j[2], 1);
-        return;
-      } while (paramnv.n == null);
-      paramnv.n.run();
-      return;
-    } while (this.l == null);
-    this.l.a(paramnv);
   }
   
   public final void b(Runnable paramRunnable)
   {
-    if (!s()) {}
-    do
-    {
+    if (!s()) {
       return;
-      this.h.g().n();
-    } while (paramRunnable == null);
-    paramRunnable.run();
+    }
+    this.h.g().n();
+    if (paramRunnable != null) {
+      paramRunnable.run();
+    }
   }
   
   public final void c(double paramDouble)
@@ -509,27 +564,31 @@ public final class kl
   
   public final void c(int paramInt)
   {
-    if (paramInt == kc.c.a) {}
-    while (this.F == null) {
+    if (paramInt == kc.c.a) {
       return;
     }
-    this.F.post(new kl.3(this, paramInt));
+    Handler localHandler = this.F;
+    if (localHandler != null) {
+      localHandler.post(new kl.3(this, paramInt));
+    }
   }
   
   public final boolean c()
   {
-    return (this.j != null) && (this.j.width() > 0) && (this.j.height() > 0);
+    Rect localRect = this.j;
+    return (localRect != null) && (localRect.width() > 0) && (this.j.height() > 0);
   }
   
   public final void d()
   {
-    if (this.z == null) {
+    Object localObject = this.z;
+    if (localObject == null) {
       return;
     }
-    Iterator localIterator = this.z.iterator();
-    while (localIterator.hasNext())
+    localObject = ((List)localObject).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      lh locallh = (lh)localIterator.next();
+      lh locallh = (lh)((Iterator)localObject).next();
       if (locallh != null) {
         try
         {
@@ -551,48 +610,43 @@ public final class kl
       kc localkc1 = (kc)this.g.pop();
       if (localkc1.b.f != this.i.b.f) {
         c(kc.c.c);
+      } else if (localkc1.b.e != this.i.b.e) {
+        c(kc.c.b);
       }
-      for (;;)
+      if (localkc1.p.q() != this.i.p.q())
       {
-        if (localkc1.p.q() != this.i.p.q())
-        {
-          localkc1.p.q();
-          q();
-        }
-        if (localkc1.p.p() != this.i.p.p())
-        {
-          localkc1.p.p();
-          r();
-        }
-        kc localkc2 = this.i;
-        localkc2.a = localkc1.a;
-        kc.a locala1 = localkc2.b;
-        kc.a locala2 = localkc1.b;
-        locala1.a = locala2.a;
-        locala1.b = locala2.b;
-        locala1.c = locala2.c;
-        locala1.d = locala2.d;
-        locala1.e = locala2.e;
-        locala1.f = locala2.f;
-        localkc2.c.set(localkc1.c);
-        localkc2.d = localkc1.d;
-        localkc2.e = localkc1.e;
-        localkc2.f = localkc1.f;
-        localkc2.g = localkc1.g;
-        localkc2.h = localkc1.h;
-        localkc2.i = localkc1.i;
-        localkc2.j = localkc1.j;
-        localkc2.k = localkc1.k;
-        localkc2.l = localkc1.l;
-        localkc2.m.setGeoPoint(localkc1.m);
-        localkc2.q.set(localkc1.q.x, localkc1.q.y);
-        localkc2.n = localkc1.n;
-        d();
-        return;
-        if (localkc1.b.e != this.i.b.e) {
-          c(kc.c.b);
-        }
+        localkc1.p.q();
+        q();
       }
+      if (localkc1.p.p() != this.i.p.p())
+      {
+        localkc1.p.p();
+        r();
+      }
+      kc localkc2 = this.i;
+      localkc2.a = localkc1.a;
+      kc.a locala1 = localkc2.b;
+      kc.a locala2 = localkc1.b;
+      locala1.a = locala2.a;
+      locala1.b = locala2.b;
+      locala1.c = locala2.c;
+      locala1.d = locala2.d;
+      locala1.e = locala2.e;
+      locala1.f = locala2.f;
+      localkc2.c.set(localkc1.c);
+      localkc2.d = localkc1.d;
+      localkc2.e = localkc1.e;
+      localkc2.f = localkc1.f;
+      localkc2.g = localkc1.g;
+      localkc2.h = localkc1.h;
+      localkc2.i = localkc1.i;
+      localkc2.j = localkc1.j;
+      localkc2.k = localkc1.k;
+      localkc2.l = localkc1.l;
+      localkc2.m.setGeoPoint(localkc1.m);
+      localkc2.q.set(localkc1.q.x, localkc1.q.y);
+      localkc2.n = localkc1.n;
+      d();
       return;
     }
     catch (Exception localException)
@@ -669,7 +723,7 @@ public final class kl
   {
     Iterator localIterator = this.v.iterator();
     while (localIterator.hasNext()) {
-      if ((gu)localIterator.next() != null) {}
+      gu localgu = (gu)localIterator.next();
     }
     t();
   }
@@ -678,7 +732,7 @@ public final class kl
   {
     Iterator localIterator = this.x.iterator();
     while (localIterator.hasNext()) {
-      if ((ha)localIterator.next() != null) {}
+      ha localha = (ha)localIterator.next();
     }
   }
   
@@ -693,7 +747,7 @@ public final class kl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.kl
  * JD-Core Version:    0.7.0.1
  */

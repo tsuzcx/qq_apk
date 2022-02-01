@@ -27,14 +27,16 @@ public final class e
   
   public void draw(Canvas paramCanvas)
   {
-    Rect localRect = getBounds();
-    int i = localRect.width();
-    int j = localRect.height();
+    Object localObject = getBounds();
+    int i = ((Rect)localObject).width();
+    int j = ((Rect)localObject).height();
     if ((i > 0) && (j > 0))
     {
       paramCanvas.save();
-      c.set(localRect);
-      paramCanvas.drawRoundRect(c, this.b, this.b, this.a);
+      c.set((Rect)localObject);
+      localObject = c;
+      float f = this.b;
+      paramCanvas.drawRoundRect((RectF)localObject, f, f, this.a);
       paramCanvas.restore();
     }
   }
@@ -50,7 +52,7 @@ public final class e
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.widget.e
  * JD-Core Version:    0.7.0.1
  */

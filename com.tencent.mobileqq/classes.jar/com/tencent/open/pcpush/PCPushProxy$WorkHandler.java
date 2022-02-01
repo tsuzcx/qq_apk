@@ -17,69 +17,90 @@ class PCPushProxy$WorkHandler
   
   public void handleMessage(Message paramMessage)
   {
-    String str1 = null;
-    LogUtility.b("PCPushProxy", "handleMessage msg.what = " + paramMessage.what + ", msg.obj = " + paramMessage.obj);
-    String str2;
-    PCPushProxy.PkgEntry localPkgEntry;
-    switch (paramMessage.what)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handleMessage msg.what = ");
+    ((StringBuilder)localObject).append(paramMessage.what);
+    ((StringBuilder)localObject).append(", msg.obj = ");
+    ((StringBuilder)localObject).append(paramMessage.obj);
+    LogUtility.b("PCPushProxy", ((StringBuilder)localObject).toString());
+    int i = paramMessage.what;
+    if (i != 115)
     {
-    default: 
-      str2 = (String)paramMessage.obj;
-      if (str2 != null)
+      if (i != 116)
       {
-        localPkgEntry = (PCPushProxy.PkgEntry)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str2);
-        if (localPkgEntry == null) {
-          LogUtility.e("PCPushProxy", "handleMessage get entry = null, key = " + str2);
-        }
-      }
-      break;
-    }
-    do
-    {
-      do
-      {
-        return;
-        StaticAnalyz.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        StaticAnalyz.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
-        return;
-        if (localPkgEntry.jdField_b_of_type_Int != 1) {
-          str1 = localPkgEntry.jdField_b_of_type_JavaLangString.substring(localPkgEntry.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
-        }
-        for (;;)
+        String str = (String)paramMessage.obj;
+        PCPushProxy.PkgEntry localPkgEntry = null;
+        if (str != null)
         {
-          switch (paramMessage.what)
+          localPkgEntry = (PCPushProxy.PkgEntry)this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(str);
+          if (localPkgEntry == null)
           {
-          default: 
+            paramMessage = new StringBuilder();
+            paramMessage.append("handleMessage get entry = null, key = ");
+            paramMessage.append(str);
+            LogUtility.e("PCPushProxy", paramMessage.toString());
             return;
-          case 1: 
-            this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
-            return;
-            str1 = localPkgEntry.jdField_b_of_type_JavaLangString;
-            continue;
-            LogUtility.e("PCPushProxy", "handleMessage get key = null");
-            localPkgEntry = null;
+          }
+          if (localPkgEntry.jdField_b_of_type_Int != 1) {
+            localObject = localPkgEntry.jdField_b_of_type_JavaLangString.substring(localPkgEntry.jdField_b_of_type_JavaLangString.indexOf("#") + 1);
+          } else {
+            localObject = localPkgEntry.jdField_b_of_type_JavaLangString;
           }
         }
-      } while (localPkgEntry == null);
-      if (localPkgEntry.c.startsWith("ANDROIDQQ.PCPUSH.")) {
-        StaticAnalyz.a("100", localPkgEntry.c, str1);
-      }
-      for (;;)
-      {
-        this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(localPkgEntry);
+        else
+        {
+          LogUtility.e("PCPushProxy", "handleMessage get key = null");
+          localObject = null;
+        }
+        i = paramMessage.what;
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3)
+            {
+              if (i != 4) {
+                return;
+              }
+              if (localPkgEntry != null) {
+                StaticAnalyz.a("500", localPkgEntry.c, (String)localObject);
+              }
+            }
+            else
+            {
+              this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(str);
+            }
+          }
+          else if (localPkgEntry != null)
+          {
+            if (localPkgEntry.c.startsWith("ANDROIDQQ.PCPUSH."))
+            {
+              StaticAnalyz.a("100", localPkgEntry.c, (String)localObject);
+            }
+            else
+            {
+              paramMessage = new StringBuilder();
+              paramMessage.append("ANDROIDQQ.PCPUSH.");
+              paramMessage.append(localPkgEntry.c);
+              StaticAnalyz.a("100", paramMessage.toString(), (String)localObject);
+            }
+            this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(localPkgEntry);
+          }
+        }
+        else {
+          this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(this.a.jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap);
+        }
         return;
-        StaticAnalyz.a("100", "ANDROIDQQ.PCPUSH." + localPkgEntry.c, str1);
       }
-      this.a.jdField_a_of_type_ComTencentOpenPcpushPCPushDBHelper.a(str2);
+      StaticAnalyz.a("200", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
       return;
-    } while (localPkgEntry == null);
-    StaticAnalyz.a("500", localPkgEntry.c, str1);
+    }
+    StaticAnalyz.a("100", "ANDROIDQQ.PCPUSH.UNREADPOP", "10");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.pcpush.PCPushProxy.WorkHandler
  * JD-Core Version:    0.7.0.1
  */

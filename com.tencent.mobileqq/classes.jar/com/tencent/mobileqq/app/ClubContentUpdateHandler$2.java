@@ -32,7 +32,7 @@ class ClubContentUpdateHandler$2
         Object localObject = new File(this.a.a.getApplication().getApplicationContext().getFilesDir(), ClubContentJsonTask.e.a);
         if ((((File)localObject).exists()) && (((File)localObject).isFile()))
         {
-          localObject = FileUtils.a((File)localObject);
+          localObject = FileUtils.readFileContent((File)localObject);
           try
           {
             localObject = new JSONObject((String)localObject);
@@ -50,7 +50,10 @@ class ClubContentUpdateHandler$2
                 bool1 = bool2;
                 if (QLog.isColorLevel())
                 {
-                  QLog.i("ClubContentUpdateHandler", 2, "json file got isEnableX5Report: " + bool2);
+                  paramDownloadTask = new StringBuilder();
+                  paramDownloadTask.append("json file got isEnableX5Report: ");
+                  paramDownloadTask.append(bool2);
+                  QLog.i("ClubContentUpdateHandler", 2, paramDownloadTask.toString());
                   bool1 = bool2;
                 }
               }
@@ -58,20 +61,21 @@ class ClubContentUpdateHandler$2
               paramDownloadTask.edit().putBoolean("enableX5Report", bool1).commit();
               paramDownloadTask.edit().putLong("read_vas_asyncCookie", 0L).commit();
             }
-            for (;;)
+            else if (QLog.isColorLevel())
             {
-              ClubContentUpdateHandler.a(this.a, (JSONObject)localObject);
-              return;
-              if (QLog.isColorLevel()) {
-                QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
-              }
+              QLog.i("ClubContentUpdateHandler", 2, "json file update get old file!");
             }
+            ClubContentUpdateHandler.a(this.a, (JSONObject)localObject);
             return;
           }
           catch (Exception paramDownloadTask)
           {
-            if (QLog.isColorLevel()) {
-              QLog.e("ClubContentUpdateHandler", 2, "Parse webview josn Exception:" + paramDownloadTask.toString());
+            if (QLog.isColorLevel())
+            {
+              localObject = new StringBuilder();
+              ((StringBuilder)localObject).append("Parse webview josn Exception:");
+              ((StringBuilder)localObject).append(paramDownloadTask.toString());
+              QLog.e("ClubContentUpdateHandler", 2, ((StringBuilder)localObject).toString());
             }
           }
         }
@@ -81,7 +85,7 @@ class ClubContentUpdateHandler$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.ClubContentUpdateHandler.2
  * JD-Core Version:    0.7.0.1
  */

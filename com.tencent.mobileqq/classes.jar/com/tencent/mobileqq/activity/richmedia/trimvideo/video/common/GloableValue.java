@@ -36,20 +36,32 @@ public class GloableValue
   
   public static boolean a(long paramLong)
   {
-    if ((jdField_a_of_type_Long > 0L) && (jdField_a_of_type_Long == paramLong)) {}
-    Object localObject;
-    do
-    {
+    long l = jdField_a_of_type_Long;
+    if ((l > 0L) && (l == paramLong)) {
       return true;
-      localObject = StorageManager.a().a();
-      if (TextUtils.isEmpty((CharSequence)localObject)) {
-        return false;
-      }
-      jdField_a_of_type_JavaLangString = (String)localObject + File.separator + "cover" + File.separator + paramLong;
-      localObject = new File(jdField_a_of_type_JavaLangString);
-    } while ((((File)localObject).mkdirs()) || (((File)localObject).isDirectory()));
-    QLog.e("GloableValue", 2, "make cover dir: " + jdField_a_of_type_JavaLangString + " failed.");
-    return false;
+    }
+    Object localObject = StorageManager.a().a();
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return false;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("cover");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramLong);
+    jdField_a_of_type_JavaLangString = localStringBuilder.toString();
+    localObject = new File(jdField_a_of_type_JavaLangString);
+    if ((!((File)localObject).mkdirs()) && (!((File)localObject).isDirectory()))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("make cover dir: ");
+      ((StringBuilder)localObject).append(jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject).append(" failed.");
+      QLog.e("GloableValue", 2, ((StringBuilder)localObject).toString());
+      return false;
+    }
+    return true;
   }
   
   public static void b()
@@ -67,7 +79,7 @@ public class GloableValue
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.trimvideo.video.common.GloableValue
  * JD-Core Version:    0.7.0.1
  */

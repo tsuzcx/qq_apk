@@ -55,14 +55,15 @@ public final class ProfUsrFullInfoRes
     paramJceOutputStream.write(this.strPfileSmpInfoRes, 1);
     paramJceOutputStream.write(this.sSigInfo, 2);
     paramJceOutputStream.write(this.sRemarkInfo, 3);
-    if (this.sTagInfo != null) {
-      paramJceOutputStream.write(this.sTagInfo, 4);
+    ArrayList localArrayList = this.sTagInfo;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.ProfUsrFullInfoRes
  * JD-Core Version:    0.7.0.1
  */

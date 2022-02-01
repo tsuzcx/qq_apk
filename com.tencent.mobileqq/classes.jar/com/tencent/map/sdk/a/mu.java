@@ -15,8 +15,9 @@ public abstract class mu
   
   public final void a(IndoorBuilding paramIndoorBuilding)
   {
-    if (this.N != null) {
-      this.M = this.N.toString().equals(paramIndoorBuilding.toString());
+    IndoorInfo localIndoorInfo = this.N;
+    if (localIndoorInfo != null) {
+      this.M = localIndoorInfo.toString().equals(paramIndoorBuilding.toString());
     }
     d();
   }
@@ -48,7 +49,7 @@ public abstract class mu
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.mu
  * JD-Core Version:    0.7.0.1
  */

@@ -43,19 +43,28 @@ public final class UByteArray
   {
     Intrinsics.checkParameterIsNotNull(paramCollection, "elements");
     paramCollection = (Iterable)paramCollection;
-    if (((Collection)paramCollection).isEmpty()) {
+    boolean bool1 = ((Collection)paramCollection).isEmpty();
+    boolean bool2 = true;
+    if (bool1) {
       return true;
     }
     paramCollection = paramCollection.iterator();
-    while (paramCollection.hasNext())
+    int i;
+    do
     {
-      Object localObject = paramCollection.next();
-      if (((localObject instanceof UByte)) && (ArraysKt.contains(paramArrayOfByte, ((UByte)localObject).unbox-impl()))) {}
-      for (int i = 1; i == 0; i = 0) {
-        return false;
+      bool1 = bool2;
+      if (!paramCollection.hasNext()) {
+        break;
       }
-    }
-    return true;
+      Object localObject = paramCollection.next();
+      if (((localObject instanceof UByte)) && (ArraysKt.contains(paramArrayOfByte, ((UByte)localObject).unbox-impl()))) {
+        i = 1;
+      } else {
+        i = 0;
+      }
+    } while (i != 0);
+    bool1 = false;
+    return bool1;
   }
   
   public static boolean equals-impl(byte[] paramArrayOfByte, @Nullable Object paramObject)
@@ -105,7 +114,11 @@ public final class UByteArray
   @NotNull
   public static String toString-impl(byte[] paramArrayOfByte)
   {
-    return "UByteArray(storage=" + Arrays.toString(paramArrayOfByte) + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("UByteArray(storage=");
+    localStringBuilder.append(Arrays.toString(paramArrayOfByte));
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
   
   public boolean add-7apg3OU(byte paramByte)
@@ -204,7 +217,7 @@ public final class UByteArray
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.UByteArray
  * JD-Core Version:    0.7.0.1
  */

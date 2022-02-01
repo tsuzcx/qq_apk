@@ -29,33 +29,29 @@ public class WhiteListDownloadButton
   
   protected void a(String paramString, boolean paramBoolean)
   {
-    QQAppInterface localQQAppInterface;
     if ((paramBoolean) && (("900".equals(paramString)) || ("400".equals(paramString))))
     {
-      localQQAppInterface = ((BaseActivity)getContext()).app;
-      if (this.a.h != null) {
-        break label70;
+      QQAppInterface localQQAppInterface = ((BaseActivity)getContext()).app;
+      if (this.a.h == null) {
+        paramString = "";
+      } else {
+        paramString = this.a.h;
       }
-    }
-    label70:
-    for (paramString = "";; paramString = this.a.h)
-    {
       ReportController.b(localQQAppInterface, "dc00898", "", "", "0X8009AC6", "0X8009AC6", 0, 0, "", "", paramString, "");
-      return;
     }
   }
   
   protected String b(int paramInt)
   {
     if (paramInt == 4) {
-      return HardCodeUtil.a(2131716785);
+      return HardCodeUtil.a(2131716435);
     }
-    return HardCodeUtil.a(2131716786);
+    return HardCodeUtil.a(2131716436);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.open.filedownload.ui.WhiteListDownloadButton
  * JD-Core Version:    0.7.0.1
  */

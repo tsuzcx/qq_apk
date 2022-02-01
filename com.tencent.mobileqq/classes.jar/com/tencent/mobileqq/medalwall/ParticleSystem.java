@@ -51,41 +51,39 @@ public class ParticleSystem
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 2);
     if ((this.jdField_a_of_type_Int & 0x1) == 1) {
       this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(150);
+    } else {
+      this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(1);
     }
+    this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 3);
+    paramInt1 = 0;
+    this.jdField_c_of_type_Int = 0;
+    this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[paramArrayOfInt.length];
     for (;;)
     {
-      this.jdField_b_of_type_JavaUtilArrayList = new ArrayList(this.jdField_b_of_type_Int / 3);
-      this.jdField_c_of_type_Int = 0;
-      this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap = new Bitmap[paramArrayOfInt.length];
-      paramInt1 = k;
-      label180:
-      if (paramInt1 < this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length) {
-        try
-        {
-          this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap[paramInt1] = BitmapFactory.decodeResource(paramView, paramArrayOfInt[paramInt1]);
-          paramInt1 += 1;
-          break label180;
-          this.jdField_c_of_type_JavaUtilArrayList = new ArrayList(1);
-        }
-        catch (OutOfMemoryError localOutOfMemoryError)
-        {
-          for (;;)
-          {
-            localOutOfMemoryError.printStackTrace();
-          }
-        }
+      Bitmap[] arrayOfBitmap = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap;
+      if (paramInt1 >= arrayOfBitmap.length) {
+        break;
       }
+      try
+      {
+        arrayOfBitmap[paramInt1] = BitmapFactory.decodeResource(paramView, paramArrayOfInt[paramInt1]);
+      }
+      catch (OutOfMemoryError localOutOfMemoryError)
+      {
+        localOutOfMemoryError.printStackTrace();
+      }
+      paramInt1 += 1;
     }
     this.f = ((int)(this.f * f1));
     this.g = ((int)(this.g * f1));
     this.h = ((int)(this.h * f1));
     this.i = ((int)(this.i * f1));
-    this.j = ((int)(this.j * f1));
+    this.j = ((int)(f1 * this.j));
   }
   
   public static double a(double paramDouble1, double paramDouble2)
   {
-    return (paramDouble2 - paramDouble1) * Math.random() + paramDouble1;
+    return paramDouble1 + (paramDouble2 - paramDouble1) * Math.random();
   }
   
   public void a()
@@ -112,11 +110,18 @@ public class ParticleSystem
       double d3 = a(0.0D, 6.283185307179586D);
       double d2 = Math.cos(d3);
       d3 = Math.sin(d3);
-      int k = (int)(Math.random() * this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length);
-      paramParticle.jdField_a_of_type_Float = ((float)(d2 * d1 + paramFloat1));
-      paramParticle.jdField_b_of_type_Float = ((float)(d1 * d3 + paramFloat2));
-      paramParticle.jdField_c_of_type_Float = ((float)(a(5.0D, 10.0D) * d2));
-      paramParticle.jdField_d_of_type_Float = ((float)(a(5.0D, 10.0D) * d3));
+      double d4 = Math.random();
+      double d5 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length;
+      Double.isNaN(d5);
+      int k = (int)(d4 * d5);
+      d4 = paramFloat1;
+      Double.isNaN(d4);
+      paramParticle.jdField_a_of_type_Float = ((float)(d2 * d1 + d4));
+      d4 = paramFloat2;
+      Double.isNaN(d4);
+      paramParticle.jdField_b_of_type_Float = ((float)(d1 * d3 + d4));
+      paramParticle.jdField_c_of_type_Float = ((float)(d2 * a(5.0D, 10.0D)));
+      paramParticle.jdField_d_of_type_Float = ((float)(d3 * a(5.0D, 10.0D)));
       paramParticle.jdField_c_of_type_Int = k;
       paramParticle.jdField_d_of_type_Int = ((int)a(this.g, this.f));
       paramParticle.e = ((float)a(0.9800000190734863D, 0.9900000095367432D));
@@ -127,12 +132,13 @@ public class ParticleSystem
   
   public void a(int paramInt1, int paramInt2)
   {
-    int k = 0;
     this.jdField_d_of_type_Int = paramInt1;
     this.e = paramInt2;
     this.h = ((int)(Math.min(this.jdField_d_of_type_Int, this.e) * 0.4F));
-    this.i = ((int)(this.h * 0.6F));
-    this.j = ((int)(this.h * 0.8F));
+    paramInt1 = this.h;
+    this.i = ((int)(paramInt1 * 0.6F));
+    this.j = ((int)(paramInt1 * 0.8F));
+    paramInt2 = 0;
     this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_JavaUtilArrayList.clear();
     this.jdField_c_of_type_JavaUtilArrayList.clear();
@@ -145,14 +151,14 @@ public class ParticleSystem
       while (paramInt1 < 150)
       {
         ParticleSystem.Particle localParticle = new ParticleSystem.Particle();
-        a(0.5F * f1, 0.4F * f2, localParticle);
+        a(f1 * 0.5F, f2 * 0.4F, localParticle);
         this.jdField_c_of_type_JavaUtilArrayList.add(localParticle);
         paramInt1 += 1;
       }
     }
     if ((this.jdField_a_of_type_Int & 0x2) == 2)
     {
-      paramInt1 = k;
+      paramInt1 = paramInt2;
       while (paramInt1 < 40)
       {
         d();
@@ -181,14 +187,11 @@ public class ParticleSystem
     }
     Object localObject = this.jdField_a_of_type_AndroidGraphicsRect;
     k = 0;
-    if (k < this.jdField_c_of_type_JavaUtilArrayList.size())
+    while (k < this.jdField_c_of_type_JavaUtilArrayList.size())
     {
       ParticleSystem.Particle localParticle = (ParticleSystem.Particle)this.jdField_c_of_type_JavaUtilArrayList.get(k);
-      if (localParticle == null) {}
-      for (;;)
+      if (localParticle != null)
       {
-        k += 1;
-        break;
         this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_Float * localParticle.f * 2.0F * 255.0F) % 256);
         ((Rect)localObject).left = ((int)(localParticle.jdField_a_of_type_Float - localParticle.jdField_d_of_type_Int * 0.5F));
         ((Rect)localObject).top = ((int)(localParticle.jdField_b_of_type_Float - localParticle.jdField_d_of_type_Int * 0.5F));
@@ -201,36 +204,60 @@ public class ParticleSystem
         localParticle.jdField_d_of_type_Float = (localParticle.jdField_d_of_type_Float * 0.98F + this.jdField_b_of_type_Float);
         localParticle.f *= localParticle.g;
       }
+      k += 1;
     }
   }
   
   public void a(Canvas paramCanvas, int paramInt)
   {
-    if (this.jdField_a_of_type_Float <= 0.05F) {}
-    do
-    {
+    if (this.jdField_a_of_type_Float <= 0.05F) {
       return;
-      if ((paramInt == 1) && ((this.jdField_a_of_type_Int & 0x1) == 1) && (this.jdField_c_of_type_JavaUtilArrayList.size() > 0)) {
-        a(paramCanvas);
-      }
-    } while ((paramInt != 2) || ((this.jdField_a_of_type_Int & 0x2) != 2));
-    b(paramCanvas);
+    }
+    if ((paramInt == 1) && ((this.jdField_a_of_type_Int & 0x1) == 1) && (this.jdField_c_of_type_JavaUtilArrayList.size() > 0)) {
+      a(paramCanvas);
+    }
+    if ((paramInt == 2) && ((this.jdField_a_of_type_Int & 0x2) == 2)) {
+      b(paramCanvas);
+    }
   }
   
   public boolean a(ParticleSystem.Particle paramParticle)
   {
-    if (paramParticle == null) {}
-    while ((paramParticle.jdField_d_of_type_Int < 1) || (paramParticle.f <= 0.05F) || (paramParticle.jdField_a_of_type_Float + paramParticle.jdField_d_of_type_Int * 0.5F < 0.0F) || (paramParticle.jdField_b_of_type_Float + paramParticle.jdField_d_of_type_Int * 0.5F < 0.0F) || (paramParticle.jdField_a_of_type_Float - paramParticle.jdField_d_of_type_Int * 0.5F > this.jdField_d_of_type_Int) || (paramParticle.jdField_b_of_type_Float - paramParticle.jdField_d_of_type_Int * 0.5F > this.e)) {
+    boolean bool2 = false;
+    if (paramParticle == null) {
       return false;
     }
-    return true;
+    if (paramParticle.jdField_d_of_type_Int < 1) {
+      return false;
+    }
+    if (paramParticle.f <= 0.05F) {
+      return false;
+    }
+    boolean bool1 = bool2;
+    if (paramParticle.jdField_a_of_type_Float + paramParticle.jdField_d_of_type_Int * 0.5F >= 0.0F)
+    {
+      bool1 = bool2;
+      if (paramParticle.jdField_b_of_type_Float + paramParticle.jdField_d_of_type_Int * 0.5F >= 0.0F)
+      {
+        bool1 = bool2;
+        if (paramParticle.jdField_a_of_type_Float - paramParticle.jdField_d_of_type_Int * 0.5F <= this.jdField_d_of_type_Int)
+        {
+          if (paramParticle.jdField_b_of_type_Float - paramParticle.jdField_d_of_type_Int * 0.5F > this.e) {
+            return false;
+          }
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_AndroidAnimationValueAnimator != null)
+    ValueAnimator localValueAnimator = this.jdField_a_of_type_AndroidAnimationValueAnimator;
+    if (localValueAnimator != null)
     {
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
+      localValueAnimator.cancel();
       this.jdField_a_of_type_AndroidAnimationValueAnimator.removeUpdateListener(this);
       this.jdField_a_of_type_AndroidAnimationValueAnimator.removeAllUpdateListeners();
     }
@@ -263,11 +290,19 @@ public class ParticleSystem
       ParticleSystem.Particle localParticle = (ParticleSystem.Particle)this.jdField_b_of_type_JavaUtilArrayList.get(k);
       if (localParticle != null)
       {
-        float f1 = (float)Math.abs(Math.cos(localParticle.h) * localParticle.f);
+        double d1 = Math.cos(localParticle.h);
+        double d2 = localParticle.f;
+        Double.isNaN(d2);
+        float f1 = (float)Math.abs(d1 * d2);
         if (f1 >= 0.01F)
         {
-          this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(f1 * this.jdField_a_of_type_Float * 255.0F));
-          ((Rect)localObject).left = ((int)(Math.cos(localParticle.k) * localParticle.j + (localParticle.jdField_a_of_type_Float - localParticle.jdField_d_of_type_Int * 0.5F)));
+          this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(this.jdField_a_of_type_Float * f1 * 255.0F));
+          d1 = Math.cos(localParticle.k);
+          d2 = localParticle.j;
+          Double.isNaN(d2);
+          double d3 = localParticle.jdField_a_of_type_Float - localParticle.jdField_d_of_type_Int * 0.5F;
+          Double.isNaN(d3);
+          ((Rect)localObject).left = ((int)(d3 + d1 * d2));
           ((Rect)localObject).top = ((int)(localParticle.jdField_b_of_type_Float - localParticle.jdField_d_of_type_Int * 0.5F));
           ((Rect)localObject).bottom = (((Rect)localObject).top + localParticle.jdField_d_of_type_Int);
           ((Rect)localObject).right = (((Rect)localObject).left + localParticle.jdField_d_of_type_Int);
@@ -294,55 +329,67 @@ public class ParticleSystem
   
   public void d()
   {
-    ParticleSystem.Particle localParticle = null;
-    double d1 = a(this.h, -this.h);
-    double d2 = a(this.h, -this.h);
-    int k = (int)(Math.random() * this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length);
+    int k = this.h;
+    double d2 = a(k, -k);
+    k = this.h;
+    double d1 = a(k, -k);
+    double d3 = Math.random();
+    double d4 = this.jdField_a_of_type_ArrayOfAndroidGraphicsBitmap.length;
+    Double.isNaN(d4);
+    k = (int)(d3 * d4);
     float f1 = this.jdField_d_of_type_Int;
     float f2 = this.e;
+    Object localObject;
     if (this.jdField_c_of_type_Int < this.jdField_b_of_type_Int)
     {
-      localParticle = new ParticleSystem.Particle();
+      localObject = new ParticleSystem.Particle();
       this.jdField_c_of_type_Int += 1;
     }
-    for (;;)
+    else if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0)
     {
-      if (localParticle != null)
-      {
-        localParticle.jdField_a_of_type_Float = ((float)(d1 + f1 * 0.5F));
-        localParticle.jdField_b_of_type_Float = ((float)(f2 * 0.4F + d2));
-        localParticle.jdField_c_of_type_Float = 0.0F;
-        localParticle.jdField_d_of_type_Float = ((float)a(-1.0D, -2.0D));
-        localParticle.jdField_c_of_type_Int = k;
-        localParticle.jdField_d_of_type_Int = ((int)a(this.g, this.f));
-        localParticle.e = ((float)a(0.9950000047683716D, 0.9980000257492065D));
-        localParticle.f = ((float)a(1.0D, 1.0D));
-        localParticle.g = ((float)a(0.9900000095367432D, 0.9800000190734863D));
-        localParticle.h = ((float)a(0.0D, 3.141592653589793D));
-        localParticle.i = ((float)a(0.01D, 0.001D));
-        localParticle.j = ((float)a(20.0D, 5.0D));
-        localParticle.k = ((float)a(0.0D, 3.141592653589793D));
-        localParticle.l = ((float)a(0.01D, 0.1D));
-        localParticle.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-        this.jdField_b_of_type_JavaUtilArrayList.add(localParticle);
-      }
-      return;
-      if (this.jdField_a_of_type_JavaUtilArrayList.size() > 0) {
-        localParticle = (ParticleSystem.Particle)this.jdField_a_of_type_JavaUtilArrayList.remove(this.jdField_a_of_type_JavaUtilArrayList.size() - 1);
-      }
+      localObject = this.jdField_a_of_type_JavaUtilArrayList;
+      localObject = (ParticleSystem.Particle)((ArrayList)localObject).remove(((ArrayList)localObject).size() - 1);
+    }
+    else
+    {
+      localObject = null;
+    }
+    if (localObject != null)
+    {
+      d3 = f1 * 0.5F;
+      Double.isNaN(d3);
+      ((ParticleSystem.Particle)localObject).jdField_a_of_type_Float = ((float)(d2 + d3));
+      d2 = f2 * 0.4F;
+      Double.isNaN(d2);
+      ((ParticleSystem.Particle)localObject).jdField_b_of_type_Float = ((float)(d1 + d2));
+      ((ParticleSystem.Particle)localObject).jdField_c_of_type_Float = 0.0F;
+      ((ParticleSystem.Particle)localObject).jdField_d_of_type_Float = ((float)a(-1.0D, -2.0D));
+      ((ParticleSystem.Particle)localObject).jdField_c_of_type_Int = k;
+      ((ParticleSystem.Particle)localObject).jdField_d_of_type_Int = ((int)a(this.g, this.f));
+      ((ParticleSystem.Particle)localObject).e = ((float)a(0.9950000047683716D, 0.9980000257492065D));
+      ((ParticleSystem.Particle)localObject).f = ((float)a(1.0D, 1.0D));
+      ((ParticleSystem.Particle)localObject).g = ((float)a(0.9900000095367432D, 0.9800000190734863D));
+      ((ParticleSystem.Particle)localObject).h = ((float)a(0.0D, 3.141592653589793D));
+      ((ParticleSystem.Particle)localObject).i = ((float)a(0.01D, 0.001D));
+      ((ParticleSystem.Particle)localObject).j = ((float)a(20.0D, 5.0D));
+      ((ParticleSystem.Particle)localObject).k = ((float)a(0.0D, 3.141592653589793D));
+      ((ParticleSystem.Particle)localObject).l = ((float)a(0.01D, 0.1D));
+      ((ParticleSystem.Particle)localObject).jdField_a_of_type_Long = SystemClock.elapsedRealtime();
+      this.jdField_b_of_type_JavaUtilArrayList.add(localObject);
     }
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.jdField_a_of_type_AndroidViewView != null) {
-      this.jdField_a_of_type_AndroidViewView.postInvalidate();
+    paramValueAnimator = this.jdField_a_of_type_AndroidViewView;
+    if (paramValueAnimator != null) {
+      paramValueAnimator.postInvalidate();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.medalwall.ParticleSystem
  * JD-Core Version:    0.7.0.1
  */

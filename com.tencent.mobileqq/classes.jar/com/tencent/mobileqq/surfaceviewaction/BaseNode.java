@@ -66,33 +66,31 @@ public abstract class BaseNode
   public void a(Point paramPoint)
   {
     float f1 = this.jdField_c_of_type_Float;
-    float f3 = this.jdField_d_of_type_Float;
-    float f2;
-    switch (this.jdField_b_of_type_Int)
+    float f2 = this.jdField_d_of_type_Float;
+    int i = this.jdField_b_of_type_Int;
+    if (i != 1)
     {
-    default: 
-      f2 = f3;
-      switch (this.jdField_c_of_type_Int)
-      {
-      default: 
-        f2 = f3;
+      if (i == 2) {
+        f1 += this.jdField_e_of_type_Int / this.jdField_f_of_type_Float / 2.0F;
       }
-      break;
     }
-    for (;;)
-    {
-      for (BaseNode localBaseNode = (BaseNode)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer; localBaseNode != null; localBaseNode = (BaseNode)localBaseNode.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer)
-      {
-        f1 += localBaseNode.jdField_c_of_type_Float;
-        f2 += localBaseNode.jdField_d_of_type_Float;
-      }
+    else {
       f1 = this.jdField_e_of_type_Int / this.jdField_f_of_type_Float - f1;
-      break;
-      f1 += this.jdField_e_of_type_Int / this.jdField_f_of_type_Float / 2.0F;
-      break;
-      f2 = this.jdField_f_of_type_Int / this.jdField_f_of_type_Float - f3;
-      continue;
-      f2 = this.jdField_f_of_type_Int / this.jdField_f_of_type_Float / 2.0F + f3;
+    }
+    i = this.jdField_c_of_type_Int;
+    if (i != 0)
+    {
+      if (i == 2) {
+        f2 += this.jdField_f_of_type_Int / this.jdField_f_of_type_Float / 2.0F;
+      }
+    }
+    else {
+      f2 = this.jdField_f_of_type_Int / this.jdField_f_of_type_Float - f2;
+    }
+    for (BaseNode localBaseNode = (BaseNode)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer; localBaseNode != null; localBaseNode = (BaseNode)localBaseNode.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer)
+    {
+      f1 += localBaseNode.jdField_c_of_type_Float;
+      f2 += localBaseNode.jdField_d_of_type_Float;
     }
     paramPoint.jdField_a_of_type_Float = f1;
     paramPoint.jdField_b_of_type_Float = f2;
@@ -123,18 +121,24 @@ public abstract class BaseNode
   
   public float b()
   {
+    BaseNode localBaseNode = (BaseNode)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer;
     float f1 = 1.0F;
-    for (BaseNode localBaseNode = (BaseNode)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer; localBaseNode != null; localBaseNode = (BaseNode)localBaseNode.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer) {
+    while (localBaseNode != null)
+    {
       f1 *= localBaseNode.jdField_e_of_type_Float;
+      localBaseNode = (BaseNode)localBaseNode.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer;
     }
     return f1;
   }
   
   public int b()
   {
+    BaseNode localBaseNode = (BaseNode)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer;
     float f1 = 1.0F;
-    for (BaseNode localBaseNode = (BaseNode)this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer; localBaseNode != null; localBaseNode = (BaseNode)localBaseNode.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer) {
+    while (localBaseNode != null)
+    {
       f1 *= localBaseNode.jdField_a_of_type_Int / 255.0F;
+      localBaseNode = (BaseNode)localBaseNode.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionILayer;
     }
     return (int)(f1 * 255.0F);
   }
@@ -164,7 +168,7 @@ public abstract class BaseNode
     int i = 0;
     boolean bool1 = false;
     int j;
-    if (i < this.jdField_a_of_type_JavaUtilList.size())
+    while (i < this.jdField_a_of_type_JavaUtilList.size())
     {
       Action localAction = (Action)this.jdField_a_of_type_JavaUtilList.get(i);
       if (localAction.a())
@@ -186,20 +190,19 @@ public abstract class BaseNode
         bool1 = true;
       }
       j = i;
-      if (localAction.jdField_b_of_type_Boolean)
-      {
-        if (!localAction.jdField_a_of_type_Boolean) {
-          break label161;
+      if (localAction.jdField_b_of_type_Boolean) {
+        if (localAction.jdField_a_of_type_Boolean)
+        {
+          localAction.a();
+          j = i;
         }
-        localAction.a();
+        else
+        {
+          this.jdField_a_of_type_JavaUtilList.remove(i);
+          j = i - 1;
+        }
       }
-      for (j = i;; j = i - 1)
-      {
-        i = j + 1;
-        break;
-        label161:
-        this.jdField_a_of_type_JavaUtilList.remove(i);
-      }
+      i = j + 1;
     }
     boolean bool2 = bool1;
     if (this.jdField_a_of_type_ComTencentMobileqqSurfaceviewactionFrame != null)
@@ -259,14 +262,14 @@ public abstract class BaseNode
     this.jdField_f_of_type_Float = paramFloat;
   }
   
-  public int e_()
+  public int g_()
   {
     return this.jdField_d_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.surfaceviewaction.BaseNode
  * JD-Core Version:    0.7.0.1
  */

@@ -30,12 +30,12 @@ public abstract class AppInterface
   extends AppRuntime
 {
   private final ConcurrentHashMap<String, BusinessHandler> allHandler = new ConcurrentHashMap();
-  public MobileQQ app;
+  protected MobileQQ app;
   private final List<BusinessObserver> bgObservers = new Vector();
   private MqqHandler defaultHandler = new MqqHandler(Looper.getMainLooper());
   private final List<BusinessObserver> defaultObservers = new Vector();
   protected final ConcurrentHashMap<Class, MqqHandler> handlerMap = new ConcurrentHashMap();
-  public HwEngine mHwEngine;
+  protected HwEngine mHwEngine;
   protected String processName = "";
   private final List<BusinessObserver> uiObservers = new Vector();
   
@@ -56,39 +56,39 @@ public abstract class AppInterface
       synchronized (this.bgObservers)
       {
         this.bgObservers.clear();
-      }
-    }
-    synchronized (this.defaultObservers)
-    {
-      this.defaultObservers.clear();
-      synchronized (this.allHandler)
-      {
-        Iterator localIterator = this.allHandler.entrySet().iterator();
-        for (;;)
+        synchronized (this.defaultObservers)
         {
-          boolean bool = localIterator.hasNext();
-          if (!bool) {
-            break label229;
-          }
-          try
+          this.defaultObservers.clear();
+          synchronized (this.allHandler)
           {
-            BusinessHandler localBusinessHandler = (BusinessHandler)((Map.Entry)localIterator.next()).getValue();
-            if (localBusinessHandler != null) {
-              localBusinessHandler.onDestroy();
+            Iterator localIterator = this.allHandler.entrySet().iterator();
+            for (;;)
+            {
+              boolean bool = localIterator.hasNext();
+              if (!bool) {
+                break;
+              }
+              try
+              {
+                BusinessHandler localBusinessHandler = (BusinessHandler)((Map.Entry)localIterator.next()).getValue();
+                if (localBusinessHandler != null) {
+                  localBusinessHandler.onDestroy();
+                }
+              }
+              catch (Exception localException)
+              {
+                QLog.d("mqq", 1, "handler destroy fail", localException);
+              }
             }
-          }
-          catch (Exception localException)
-          {
-            QLog.d("mqq", 1, "handler destroy fail", localException);
+            return;
           }
         }
       }
-      localObject3 = finally;
-      throw localObject3;
-      localObject4 = finally;
-      throw localObject4;
     }
-    label229:
+    for (;;)
+    {
+      throw localObject5;
+    }
   }
   
   private void removeOriginObserver(List<BusinessObserver> paramList, QQLifecycleBusinessObserver paramQQLifecycleBusinessObserver)
@@ -160,68 +160,62 @@ public abstract class AppInterface
   
   protected BusinessHandler createHandler(String paramString)
   {
-    Object localObject2 = null;
-    BusinessHandler localBusinessHandler = null;
-    Object localObject1 = localObject2;
+    Object localObject1;
     try
     {
-      arrayOfConstructor = Class.forName(paramString).getDeclaredConstructors();
-      localObject1 = localObject2;
-      j = arrayOfConstructor.length;
-      i = 0;
+      Constructor[] arrayOfConstructor = Class.forName(paramString).getDeclaredConstructors();
+      int j = arrayOfConstructor.length;
+      localObject1 = null;
+      int i = 0;
+      for (;;)
+      {
+        localObject2 = localObject1;
+        if (i >= j) {
+          break label173;
+        }
+        Constructor localConstructor = arrayOfConstructor[i];
+        try
+        {
+          Class[] arrayOfClass = localConstructor.getParameterTypes();
+          localObject2 = localObject1;
+          if (arrayOfClass.length == 1)
+          {
+            localObject2 = localObject1;
+            if (AppInterface.class.isAssignableFrom(arrayOfClass[0]))
+            {
+              localConstructor.setAccessible(true);
+              localObject2 = (BusinessHandler)localConstructor.newInstance(new Object[] { this });
+              try
+              {
+                Cmd2HandlerMapHelper.a(paramString, ((BusinessHandler)localObject2).getCommandList());
+              }
+              catch (Exception paramString)
+              {
+                localObject1 = localObject2;
+                break label130;
+              }
+            }
+          }
+          i += 1;
+          localObject1 = localObject2;
+        }
+        catch (Exception paramString) {}
+      }
+      QLog.e("mqq", 1, paramString, new Object[0]);
     }
     catch (Exception paramString)
     {
-      try
-      {
-        Constructor[] arrayOfConstructor;
-        int j;
-        int i;
-        Class[] arrayOfClass;
-        Cmd2HandlerMapHelper.a(paramString, localBusinessHandler.getCommandList());
-        i += 1;
-      }
-      catch (Exception paramString)
-      {
-        for (;;)
-        {
-          localObject1 = localBusinessHandler;
-        }
-      }
-      paramString = paramString;
-      QLog.e("mqq", 1, paramString, new Object[0]);
-      localObject2 = localObject1;
-      if (!(paramString instanceof InvocationTargetException)) {
-        break label174;
-      }
+      localObject1 = null;
+    }
+    label130:
+    Object localObject2 = localObject1;
+    if ((paramString instanceof InvocationTargetException))
+    {
       QLog.e("mqq", 1, ((InvocationTargetException)paramString).getTargetException(), new Object[0]);
       localObject2 = localObject1;
     }
-    localObject2 = localBusinessHandler;
-    if (i < j)
-    {
-      localObject2 = arrayOfConstructor[i];
-      localObject1 = localBusinessHandler;
-      arrayOfClass = localObject2.getParameterTypes();
-      localObject1 = localBusinessHandler;
-      if (arrayOfClass.length != 1) {
-        break label185;
-      }
-      localObject1 = localBusinessHandler;
-      if (!AppInterface.class.isAssignableFrom(arrayOfClass[0])) {
-        break label185;
-      }
-      localObject1 = localBusinessHandler;
-      localObject2.setAccessible(true);
-      localObject1 = localBusinessHandler;
-      localBusinessHandler = (BusinessHandler)localObject2.newInstance(new Object[] { this });
-    }
-    label174:
-    label185:
-    for (;;)
-    {
-      return localObject2;
-    }
+    label173:
+    return localObject2;
   }
   
   public abstract BaseApplication getApp();
@@ -301,12 +295,12 @@ public abstract class AppInterface
     return null;
   }
   
-  public void onCreate(Bundle paramBundle)
+  protected void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
   }
   
-  public void onDestroy()
+  protected void onDestroy()
   {
     super.onDestroy();
     this.handlerMap.clear();
@@ -358,7 +352,7 @@ public abstract class AppInterface
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.app.AppInterface
  * JD-Core Version:    0.7.0.1
  */

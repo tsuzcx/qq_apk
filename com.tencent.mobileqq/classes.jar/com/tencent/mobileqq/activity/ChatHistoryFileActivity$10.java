@@ -20,25 +20,30 @@ class ChatHistoryFileActivity$10
   
   public void a(FileSaveResult paramFileSaveResult)
   {
-    if ((paramFileSaveResult != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.isFinishing())) {
-      switch (paramFileSaveResult.a)
-      {
-      }
-    }
-    for (;;)
+    if ((paramFileSaveResult != null) && (!this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.isFinishing()))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.isShowing()) {
-        this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.dismiss();
+      int i = paramFileSaveResult.a;
+      if (i != -1)
+      {
+        if (i != 0)
+        {
+          if (i == 3) {
+            FileSaveToastUtils.c(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+          }
+        }
+        else {
+          FileSaveToastUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+        }
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
-      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.b();
-      return;
-      FileSaveToastUtils.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-      continue;
-      FileSaveToastUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
-      continue;
-      FileSaveToastUtils.c(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+      else {
+        FileSaveToastUtils.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity);
+      }
     }
+    if (this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.isShowing()) {
+      this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveFileSaveDialog.dismiss();
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityChatHistoryFileActivity.a();
+    this.jdField_a_of_type_ComTencentMobileqqMultimsgSaveMultiRichMediaSaveManager.b();
   }
   
   public void a(FileSaveResult paramFileSaveResult, int paramInt)
@@ -62,7 +67,7 @@ class ChatHistoryFileActivity$10
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatHistoryFileActivity.10
  * JD-Core Version:    0.7.0.1
  */

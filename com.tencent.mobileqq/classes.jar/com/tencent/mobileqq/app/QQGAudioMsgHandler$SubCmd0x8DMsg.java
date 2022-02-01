@@ -22,27 +22,41 @@ class QQGAudioMsgHandler$SubCmd0x8DMsg
   {
     StringBuilder localStringBuilder = new StringBuilder(100);
     localStringBuilder.append("{");
-    localStringBuilder.append("wSubCmd: ").append(this.jdField_a_of_type_Int);
-    localStringBuilder.append(", llAccount: ").append(this.jdField_a_of_type_Long);
-    localStringBuilder.append(", cKeyLen: ").append(this.jdField_b_of_type_Int);
-    localStringBuilder.append(", dwRoomNum: ").append(this.jdField_b_of_type_Long);
-    localStringBuilder.append(", dwClientSeq: ").append(this.jdField_c_of_type_Long);
-    localStringBuilder.append(", llFromAccount: ").append(this.d);
-    localStringBuilder.append(", dwFlag: ").append(this.jdField_c_of_type_Int);
-    localStringBuilder.append(", cRelationBufLen: ").append(this.jdField_e_of_type_Int);
-    localStringBuilder.append(", dwRelationId: ").append(this.jdField_e_of_type_Long);
-    localStringBuilder.append(", wCount: ").append(this.jdField_f_of_type_Int);
-    localStringBuilder.append(", dwSendTime: ").append(this.jdField_f_of_type_Long);
-    localStringBuilder.append(", wReverseLen: ").append(this.jdField_g_of_type_Int);
-    localStringBuilder.append(", cOriginalType: ").append(this.h);
-    localStringBuilder.append(", dwMsgSeq: ").append(this.jdField_g_of_type_Long);
+    localStringBuilder.append("wSubCmd: ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", llAccount: ");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", cKeyLen: ");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", dwRoomNum: ");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", dwClientSeq: ");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", llFromAccount: ");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", dwFlag: ");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append(", cRelationBufLen: ");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append(", dwRelationId: ");
+    localStringBuilder.append(this.jdField_e_of_type_Long);
+    localStringBuilder.append(", wCount: ");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(", dwSendTime: ");
+    localStringBuilder.append(this.jdField_f_of_type_Long);
+    localStringBuilder.append(", wReverseLen: ");
+    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append(", cOriginalType: ");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", dwMsgSeq: ");
+    localStringBuilder.append(this.jdField_g_of_type_Long);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QQGAudioMsgHandler.SubCmd0x8DMsg
  * JD-Core Version:    0.7.0.1
  */

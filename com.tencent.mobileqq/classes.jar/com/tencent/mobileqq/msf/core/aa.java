@@ -11,40 +11,56 @@ final class aa
 {
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (paramIntent.getAction().equals("android.intent.action.ACTION_SHUTDOWN")) {}
-    do
+    if (paramIntent.getAction().equals("android.intent.action.ACTION_SHUTDOWN"))
     {
-      do
-      {
-        do
-        {
-          try
-          {
-            u.a(u.Q);
-            return;
-          }
-          catch (Exception paramContext)
-          {
-            while (!QLog.isColorLevel()) {}
-            QLog.e("health_manager", 2, "setTodayOffSet Exception:" + paramContext.toString());
-            return;
-          }
-        } while (!paramIntent.getAction().equals("MSF_Action_Refresh_Steps"));
-        QLog.i("health_manager", 1, "AlarmManager 23:59 action received:" + u.M);
-      } while ((!u.M) || (u.L == null) || (u.al == null));
       try
       {
-        u.L.flush(u.al);
+        u.a(u.Q);
         return;
       }
-      catch (Exception paramContext) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("health_manager", 2, "Exception:" + paramContext.toString());
+      catch (Exception paramContext)
+      {
+        if (!QLog.isColorLevel()) {
+          return;
+        }
+      }
+      paramIntent = new StringBuilder();
+      paramIntent.append("setTodayOffSet Exception:");
+      paramIntent.append(paramContext.toString());
+      QLog.e("health_manager", 2, paramIntent.toString());
+    }
+    else if (paramIntent.getAction().equals("MSF_Action_Refresh_Steps"))
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("AlarmManager 23:59 action received:");
+      paramContext.append(u.M);
+      QLog.i("health_manager", 1, paramContext.toString());
+      if (!u.M) {
+        return;
+      }
+      if ((u.L != null) && (u.al != null)) {
+        try
+        {
+          u.L.flush(u.al);
+          return;
+        }
+        catch (Exception paramContext)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramIntent = new StringBuilder();
+            paramIntent.append("Exception:");
+            paramIntent.append(paramContext.toString());
+            QLog.e("health_manager", 2, paramIntent.toString());
+          }
+        }
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.aa
  * JD-Core Version:    0.7.0.1
  */

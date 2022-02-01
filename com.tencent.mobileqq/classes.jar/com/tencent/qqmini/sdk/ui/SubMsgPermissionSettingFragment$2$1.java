@@ -13,7 +13,6 @@ class SubMsgPermissionSettingFragment$2$1
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    boolean bool = true;
     if (paramBoolean)
     {
       SubMsgPermissionSettingFragment.access$200(this.this$1.this$0).updateSubMsgItem(this.val$curSubItem, this.val$isChecked);
@@ -21,18 +20,12 @@ class SubMsgPermissionSettingFragment$2$1
     }
     MiniToast.makeText(this.this$1.this$0.getActivity(), "请求失败，请稍后重试", 0).show();
     SubMsgPermissionSettingFragment.access$002(this.this$1.this$0, true);
-    paramJSONObject = this.val$buttonView;
-    if (!this.val$isChecked) {}
-    for (paramBoolean = bool;; paramBoolean = false)
-    {
-      paramJSONObject.setChecked(paramBoolean);
-      return;
-    }
+    this.val$buttonView.setChecked(true ^ this.val$isChecked);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.SubMsgPermissionSettingFragment.2.1
  * JD-Core Version:    0.7.0.1
  */

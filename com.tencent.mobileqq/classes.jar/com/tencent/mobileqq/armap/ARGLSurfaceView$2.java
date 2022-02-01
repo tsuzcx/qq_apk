@@ -12,25 +12,22 @@ class ARGLSurfaceView$2
   {
     if (QLog.isDevelopLevel()) {
       ARGLSurfaceView.nativeSetLogLevel(4);
+    } else if (QLog.isColorLevel()) {
+      ARGLSurfaceView.nativeSetLogLevel(2);
+    } else {
+      ARGLSurfaceView.nativeSetLogLevel(1);
     }
-    for (;;)
-    {
-      this.this$0.mEngineHandler = ARGLSurfaceView.access$400(this.this$0, this.val$activity, this.val$activity.getAssets(), this.val$resPath, this.val$code);
-      if (ARGLSurfaceView.access$100(this.this$0) != null) {
-        ARGLSurfaceView.access$100(this.this$0).onInit(this.this$0.mEngineHandler);
-      }
-      return;
-      if (QLog.isColorLevel()) {
-        ARGLSurfaceView.nativeSetLogLevel(2);
-      } else {
-        ARGLSurfaceView.nativeSetLogLevel(1);
-      }
+    ARGLSurfaceView localARGLSurfaceView = this.this$0;
+    Activity localActivity = this.val$activity;
+    localARGLSurfaceView.mEngineHandler = ARGLSurfaceView.access$400(localARGLSurfaceView, localActivity, localActivity.getAssets(), this.val$resPath, this.val$code);
+    if (ARGLSurfaceView.access$100(this.this$0) != null) {
+      ARGLSurfaceView.access$100(this.this$0).onInit(this.this$0.mEngineHandler);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.ARGLSurfaceView.2
  * JD-Core Version:    0.7.0.1
  */

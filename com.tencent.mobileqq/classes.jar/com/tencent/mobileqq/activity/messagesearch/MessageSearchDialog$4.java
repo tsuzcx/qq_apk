@@ -20,36 +20,39 @@ class MessageSearchDialog$4
   public void onClick(View paramView)
   {
     int i = paramView.getId();
-    if (QLog.isColorLevel()) {
-      QLog.i(MessageSearchDialog.jdField_a_of_type_JavaLangString, 2, "onClick, id = " + i);
-    }
-    Object localObject = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem;
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem == null) {}
-    for (;;)
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      switch (i)
+      localObject1 = MessageSearchDialog.jdField_a_of_type_JavaLangString;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("onClick, id = ");
+      ((StringBuilder)localObject2).append(i);
+      QLog.i((String)localObject1, 2, ((StringBuilder)localObject2).toString());
+    }
+    Object localObject2 = this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem;
+    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityMessagesearchMessageItem != null) {
+      if (i != 2131365311)
       {
-      default: 
-        break;
-      case 2131365448: 
-        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((MessageItem)localObject).a.msg);
-        break;
-      case 2131367398: 
-        Bundle localBundle = new Bundle();
-        localBundle.putInt("forward_type", -1);
-        localBundle.putString("forward_text", ((MessageItem)localObject).a.msg);
-        localObject = new Intent();
-        ((Intent)localObject).putExtras(localBundle);
-        ForwardBaseOption.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject, 21);
+        if (i == 2131367180)
+        {
+          localObject1 = new Bundle();
+          ((Bundle)localObject1).putInt("forward_type", -1);
+          ((Bundle)localObject1).putString("forward_text", ((MessageItem)localObject2).a.msg);
+          localObject2 = new Intent();
+          ((Intent)localObject2).putExtras((Bundle)localObject1);
+          ForwardBaseOption.a((Activity)this.a.jdField_a_of_type_AndroidContentContext, (Intent)localObject2, 21);
+        }
+      }
+      else {
+        ((ClipboardManager)this.a.jdField_a_of_type_AndroidContentContext.getSystemService("clipboard")).setText(((MessageItem)localObject2).a.msg);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.messagesearch.MessageSearchDialog.4
  * JD-Core Version:    0.7.0.1
  */

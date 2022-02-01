@@ -13,33 +13,27 @@ class FPSCalculator$2
   @TargetApi(16)
   public void run()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        if (FPSCalculator.a(this.this$0) == null) {
-          continue;
-        }
+      if (FPSCalculator.a(this.this$0) != null) {
         FPSCalculator.a(this.this$0).removeFrameCallback(FPSCalculator.a(this.this$0));
-        FPSCalculator.a(this.this$0).postFrameCallback(FPSCalculator.a(this.this$0));
+      } else {
+        FPSCalculator.a(this.this$0, Choreographer.getInstance());
       }
-      catch (Exception localException)
-      {
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.d("FPSCalculator", 2, "Choreographer.getInstance", localException);
-        continue;
-      }
-      FPSCalculator.a(this.this$0).removeCallbacks(FPSCalculator.a(this.this$0));
-      return;
-      FPSCalculator.a(this.this$0, Choreographer.getInstance());
+      FPSCalculator.a(this.this$0).postFrameCallback(FPSCalculator.a(this.this$0));
     }
+    catch (Exception localException)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("FPSCalculator", 2, "Choreographer.getInstance", localException);
+      }
+    }
+    FPSCalculator.a(this.this$0).removeCallbacks(FPSCalculator.a(this.this$0));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.util.FPSCalculator.2
  * JD-Core Version:    0.7.0.1
  */

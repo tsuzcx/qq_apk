@@ -7,6 +7,7 @@ import android.net.Uri;
 import android.provider.MediaStore.Images.Media;
 import com.tencent.tkd.topicsdk.bean.Media;
 import com.tencent.tkd.topicsdk.bean.MediaType;
+import com.tencent.tkd.topicsdk.common.FileUtils;
 import com.tencent.tkd.topicsdk.framework.ThreadManagerKt;
 import java.io.File;
 import java.util.ArrayList;
@@ -39,28 +40,32 @@ final class MediaDataManager$loadPhotos$1
     {
       while (localCursor.moveToNext())
       {
-        Media localMedia = new Media(MediaType.PHOTO);
         localObject1 = localCursor.getString(localCursor.getColumnIndex("_data"));
-        Intrinsics.checkExpressionValueIsNotNull(localObject1, "mCursor.getString(mCurso…Store.Images.Media.DATA))");
-        localMedia.setFilePath((String)localObject1);
-        localMedia.setSize(localCursor.getLong(localCursor.getColumnIndex("_size")));
-        localArrayList.add(localMedia);
-        localObject1 = new File(localMedia.getFilePath());
-        if ((((File)localObject1).exists()) && (((File)localObject1).getParentFile() != null))
+        if (FileUtils.a.a((String)localObject1))
         {
-          localObject1 = ((File)localObject1).getParentFile();
-          Intrinsics.checkExpressionValueIsNotNull(localObject1, "mediaFile.parentFile");
-          String str = ((File)localObject1).getAbsolutePath();
-          Object localObject2 = (ArrayList)localHashMap.get(str);
-          localObject1 = localObject2;
-          if (localObject2 == null)
+          Media localMedia = new Media(MediaType.PHOTO);
+          localObject1 = localCursor.getString(localCursor.getColumnIndex("_data"));
+          Intrinsics.checkExpressionValueIsNotNull(localObject1, "cursor.getString(cursor.…Store.Images.Media.DATA))");
+          localMedia.setFilePath((String)localObject1);
+          localMedia.setSize(localCursor.getLong(localCursor.getColumnIndex("_size")));
+          localArrayList.add(localMedia);
+          localObject1 = new File(localMedia.getFilePath());
+          if ((((File)localObject1).exists()) && (((File)localObject1).getParentFile() != null))
           {
-            localObject1 = new ArrayList();
-            localObject2 = (Map)localHashMap;
-            Intrinsics.checkExpressionValueIsNotNull(str, "dirPath");
-            ((Map)localObject2).put(str, localObject1);
+            localObject1 = ((File)localObject1).getParentFile();
+            Intrinsics.checkExpressionValueIsNotNull(localObject1, "mediaFile.parentFile");
+            String str = ((File)localObject1).getAbsolutePath();
+            Object localObject2 = (ArrayList)localHashMap.get(str);
+            localObject1 = localObject2;
+            if (localObject2 == null)
+            {
+              localObject1 = new ArrayList();
+              localObject2 = (Map)localHashMap;
+              Intrinsics.checkExpressionValueIsNotNull(str, "dirPath");
+              ((Map)localObject2).put(str, localObject1);
+            }
+            ((ArrayList)localObject1).add(localMedia);
           }
-          ((ArrayList)localObject1).add(localMedia);
         }
       }
       localCursor.close();
@@ -71,7 +76,7 @@ final class MediaDataManager$loadPhotos$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.MediaDataManager.loadPhotos.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,24 +1,24 @@
 package com.tencent.mobileqq.emosm;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 
 public final class EmosmStrategyFactory
 {
-  public static BaseEmosmStrategy a(QQAppInterface paramQQAppInterface, FavEmosmViewPage paramFavEmosmViewPage, int paramInt)
+  public static BaseEmosmStrategy a(BaseQQAppInterface paramBaseQQAppInterface, FavEmosmViewPage paramFavEmosmViewPage, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return new FavRoamingStrategy(paramQQAppInterface, paramFavEmosmViewPage);
-    case 0: 
-      return new FavRoamingStrategy(paramQQAppInterface, paramFavEmosmViewPage);
+      if (paramInt != 1) {
+        return new FavRoamingStrategy(paramBaseQQAppInterface, paramFavEmosmViewPage);
+      }
+      return new CameraRoamingStrategy(paramBaseQQAppInterface, paramFavEmosmViewPage);
     }
-    return new CameraRoamingStrategy(paramQQAppInterface, paramFavEmosmViewPage);
+    return new FavRoamingStrategy(paramBaseQQAppInterface, paramFavEmosmViewPage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.EmosmStrategyFactory
  * JD-Core Version:    0.7.0.1
  */

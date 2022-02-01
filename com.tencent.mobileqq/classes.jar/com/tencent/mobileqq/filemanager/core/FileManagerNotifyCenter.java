@@ -29,33 +29,54 @@ public class FileManagerNotifyCenter
     ((HashMap)localObject).put("averageSpeed", String.valueOf(0.0F));
     ((HashMap)localObject).put("peerUin", String.valueOf(paramFileManagerEntity.peerUin));
     ((HashMap)localObject).put("fileType", FileUtil.a(paramFileManagerEntity.fileName));
-    switch (paramInt)
+    if (paramInt != 5)
     {
-    default: 
-      QLog.e("FileManagerNotifyCenter<FileAssistant>", 1, "what type is report?!nSessionId[" + String.valueOf(paramFileManagerEntity.nSessionId) + "],may be not report!");
-      return;
-    case 5: 
-      return;
-    case 6: 
-      localObject = "actFileOf2Of";
-    }
-    for (;;)
-    {
+      if (paramInt != 6)
+      {
+        if (paramInt != 7)
+        {
+          if (paramInt != 8)
+          {
+            if (paramInt != 10) {
+              switch (paramInt)
+              {
+              default: 
+                paramString = new StringBuilder();
+                paramString.append("what type is report?!nSessionId[");
+                paramString.append(String.valueOf(paramFileManagerEntity.nSessionId));
+                paramString.append("],may be not report!");
+                QLog.e("FileManagerNotifyCenter<FileAssistant>", 1, paramString.toString());
+                return;
+              case 64: 
+                localObject = "actFileTroop2Disc";
+                break;
+              case 63: 
+                localObject = "actFileTroop2Of";
+                break;
+              case 62: 
+                localObject = "actFileDisc2Disc";
+                break;
+              case 61: 
+                localObject = "actFileDisc2Of";
+                break;
+              }
+            } else {
+              localObject = "actFileFav2Disc";
+            }
+          }
+          else {
+            localObject = "actFileWy2Of";
+          }
+        }
+        else {
+          localObject = "actFileOf2Wy";
+        }
+      }
+      else {
+        localObject = "actFileOf2Of";
+      }
       FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramFileManagerEntity.nSessionId, (String)localObject, 1L, paramString, paramFileManagerEntity.peerUin, paramFileManagerEntity.Uuid, paramFileManagerEntity.strFileMd5, 0L, 0L, paramFileManagerEntity.fileSize, 0, null);
       return;
-      localObject = "actFileOf2Wy";
-      continue;
-      localObject = "actFileWy2Of";
-      continue;
-      localObject = "actFileDisc2Of";
-      continue;
-      localObject = "actFileDisc2Disc";
-      continue;
-      localObject = "actFileTroop2Of";
-      continue;
-      localObject = "actFileTroop2Disc";
-      continue;
-      localObject = "actFileFav2Disc";
     }
   }
   
@@ -93,7 +114,7 @@ public class FileManagerNotifyCenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.FileManagerNotifyCenter
  * JD-Core Version:    0.7.0.1
  */

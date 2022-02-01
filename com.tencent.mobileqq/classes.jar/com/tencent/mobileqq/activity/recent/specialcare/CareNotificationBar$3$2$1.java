@@ -17,18 +17,18 @@ class CareNotificationBar$3$2$1
       if (QLog.isColorLevel()) {
         QLog.i("CareNotificationBar", 2, "onAnimationEnd-->clearAnimation");
       }
-      Object localObject = this.a.a.a.getTag(2131375425);
+      Object localObject = this.a.a.a.getTag(2131374943);
       if ((localObject instanceof Drawable))
       {
         this.a.a.a.setBackgroundDrawable((Drawable)localObject);
-        this.a.a.a.setTag(2131375425, null);
+        this.a.a.a.setTag(2131374943, null);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.specialcare.CareNotificationBar.3.2.1
  * JD-Core Version:    0.7.0.1
  */

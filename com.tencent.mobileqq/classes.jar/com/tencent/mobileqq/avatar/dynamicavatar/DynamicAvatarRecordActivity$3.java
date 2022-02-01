@@ -11,9 +11,7 @@ class DynamicAvatarRecordActivity$3
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
-    {
-    default: 
+    if (paramInt != 0) {
       return;
     }
     this.a.a.a("DynamicAvatarRecordActivity");
@@ -22,7 +20,7 @@ class DynamicAvatarRecordActivity$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.dynamicavatar.DynamicAvatarRecordActivity.3
  * JD-Core Version:    0.7.0.1
  */

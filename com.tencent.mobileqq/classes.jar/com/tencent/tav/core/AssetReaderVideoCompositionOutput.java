@@ -1,9 +1,12 @@
 package com.tencent.tav.core;
 
+import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.tav.asset.AssetTrack;
 import com.tencent.tav.core.compositing.VideoCompositing;
 import com.tencent.tav.core.composition.VideoComposition;
+import com.tencent.tav.coremedia.CMSampleBuffer;
+import com.tencent.tav.coremedia.CMSampleState;
 import com.tencent.tav.coremedia.CMTime;
 import com.tencent.tav.coremedia.CMTimeRange;
 import com.tencent.tav.decoder.IDecoderTrack;
@@ -45,26 +48,30 @@ public class AssetReaderVideoCompositionOutput
   
   private void tryStartDecoder()
   {
-    Object localObject = null;
     if (!this.decoderStarted)
     {
       this.decoderStarted = true;
-      if ((this.assetReader == null) || (this.assetReader.getTimeRange() == null)) {
-        break label106;
-      }
-    }
-    label106:
-    for (CMTimeRange localCMTimeRange = new CMTimeRange(this.assetReader.getTimeRange().getStart(), this.assetReader.getTimeRange().getDuration());; localCMTimeRange = null)
-    {
       this.videoDecoderTrack.setFrameRate(this.frameRate);
-      IDecoderTrack localIDecoderTrack = this.videoDecoderTrack;
-      if (this.contextCreate == null) {}
-      for (;;)
-      {
-        localIDecoderTrack.start((IDecoderTrack.SurfaceCreator)localObject, localCMTimeRange);
-        return;
-        localObject = this.contextCreate.renderContext();
+      Object localObject1 = this.contextCreate;
+      if (localObject1 == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = ((IContextCreate)localObject1).renderContext();
       }
+      Object localObject2 = this.assetReader;
+      if ((localObject2 != null) && (((AssetReader)localObject2).getTimeRange() != null))
+      {
+        localObject2 = this.assetReader.getTimeRange().getStart();
+        if (((CMTime)localObject2).equals(CMTime.CMTimeZero))
+        {
+          this.videoDecoderTrack.start((IDecoderTrack.SurfaceCreator)localObject1, this.assetReader.getTimeRange());
+          return;
+        }
+        this.videoDecoderTrack.start((IDecoderTrack.SurfaceCreator)localObject1);
+        this.videoDecoderTrack.seekTo((CMTime)localObject2, false, false);
+        return;
+      }
+      this.videoDecoderTrack.start((IDecoderTrack.SurfaceCreator)localObject1);
     }
   }
   
@@ -87,75 +94,28 @@ public class AssetReaderVideoCompositionOutput
   
   public void markConfigurationAsFinal() {}
   
-  /* Error */
-  @android.support.annotation.NonNull
-  public com.tencent.tav.coremedia.CMSampleBuffer nextSampleBuffer()
+  @NonNull
+  public CMSampleBuffer nextSampleBuffer()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   6: ifnull +74 -> 80
-    //   9: aload_0
-    //   10: invokespecial 133	com/tencent/tav/core/AssetReaderVideoCompositionOutput:tryStartDecoder	()V
-    //   13: aload_0
-    //   14: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   17: ifnonnull +50 -> 67
-    //   20: new 135	com/tencent/tav/coremedia/CMSampleBuffer
-    //   23: dup
-    //   24: ldc2_w 136
-    //   27: invokestatic 143	com/tencent/tav/coremedia/CMSampleState:fromError	(J)Lcom/tencent/tav/coremedia/CMSampleState;
-    //   30: invokespecial 146	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMSampleState;)V
-    //   33: astore_1
-    //   34: aload_1
-    //   35: astore_2
-    //   36: aload_1
-    //   37: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   40: invokevirtual 155	com/tencent/tav/coremedia/CMTime:getTimeUs	()J
-    //   43: lconst_0
-    //   44: lcmp
-    //   45: iflt +18 -> 63
-    //   48: aload_0
-    //   49: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   52: aload_1
-    //   53: invokevirtual 149	com/tencent/tav/coremedia/CMSampleBuffer:getTime	()Lcom/tencent/tav/coremedia/CMTime;
-    //   56: invokeinterface 159 2 0
-    //   61: aload_1
-    //   62: astore_2
-    //   63: aload_0
-    //   64: monitorexit
-    //   65: aload_2
-    //   66: areturn
-    //   67: aload_0
-    //   68: getfield 98	com/tencent/tav/core/AssetReaderVideoCompositionOutput:videoDecoderTrack	Lcom/tencent/tav/decoder/IDecoderTrack;
-    //   71: invokeinterface 162 1 0
-    //   76: astore_1
-    //   77: goto -43 -> 34
-    //   80: new 135	com/tencent/tav/coremedia/CMSampleBuffer
-    //   83: dup
-    //   84: ldc2_w 136
-    //   87: invokestatic 143	com/tencent/tav/coremedia/CMSampleState:fromError	(J)Lcom/tencent/tav/coremedia/CMSampleState;
-    //   90: invokespecial 146	com/tencent/tav/coremedia/CMSampleBuffer:<init>	(Lcom/tencent/tav/coremedia/CMSampleState;)V
-    //   93: astore_2
-    //   94: goto -31 -> 63
-    //   97: astore_1
-    //   98: aload_0
-    //   99: monitorexit
-    //   100: aload_1
-    //   101: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	102	0	this	AssetReaderVideoCompositionOutput
-    //   33	44	1	localCMSampleBuffer1	com.tencent.tav.coremedia.CMSampleBuffer
-    //   97	4	1	localObject	Object
-    //   35	59	2	localCMSampleBuffer2	com.tencent.tav.coremedia.CMSampleBuffer
-    // Exception table:
-    //   from	to	target	type
-    //   2	34	97	finally
-    //   36	61	97	finally
-    //   67	77	97	finally
-    //   80	94	97	finally
+    try
+    {
+      if (this.videoDecoderTrack != null)
+      {
+        tryStartDecoder();
+        if (this.videoDecoderTrack == null) {
+          localCMSampleBuffer = new CMSampleBuffer(CMSampleState.fromError(-100L));
+        } else {
+          localCMSampleBuffer = this.videoDecoderTrack.readSample();
+        }
+        if (localCMSampleBuffer.getTime().getTimeUs() >= 0L) {
+          this.videoDecoderTrack.asyncReadNextSample(localCMSampleBuffer.getTime());
+        }
+        return localCMSampleBuffer;
+      }
+      CMSampleBuffer localCMSampleBuffer = new CMSampleBuffer(CMSampleState.fromError(-100L));
+      return localCMSampleBuffer;
+    }
+    finally {}
   }
   
   void release()
@@ -197,45 +157,36 @@ public class AssetReaderVideoCompositionOutput
     paramAssetReader = new VideoCompositionDecoderTrack(paramAssetReader.getAsset(), this.assetExtension, 1);
     int i = this.frameRate;
     Iterator localIterator = this.videoTracks.iterator();
-    if (localIterator.hasNext())
+    while (localIterator.hasNext())
     {
       AssetTrack localAssetTrack = (AssetTrack)localIterator.next();
-      if ((localAssetTrack == null) || (!localAssetTrack.isEnabled())) {
-        break label187;
-      }
-      paramAssetReader.addTrack(localAssetTrack);
-      if ((localAssetTrack.getNominalFrameRate() <= 0.0F) || (this.frameRate >= 0)) {
-        break label187;
-      }
-      i = (int)Math.min(localAssetTrack.getNominalFrameRate(), i);
-    }
-    label187:
-    for (;;)
-    {
-      break;
-      if (i > 0) {}
-      for (;;)
+      if ((localAssetTrack != null) && (localAssetTrack.isEnabled()))
       {
-        paramAssetReader.setVideoComposition(this.videoComposition);
-        paramAssetReader.setVideoCompositing(this.videoCompositing);
-        paramAssetReader.setFrameRate(i);
-        paramAssetReader.setFrameDuration(new CMTime(1L, i));
-        this.contextCreate = paramIContextCreate;
-        if (!this.revertMode) {
-          break;
+        paramAssetReader.addTrack(localAssetTrack);
+        if ((localAssetTrack.getNominalFrameRate() > 0.0F) && (this.frameRate < 0)) {
+          i = (int)Math.min(localAssetTrack.getNominalFrameRate(), i);
         }
-        this.videoDecoderTrack = new CachedVideoDecoderTrack(paramAssetReader, true);
-        return;
-        i = 30;
       }
-      this.videoDecoderTrack = paramAssetReader;
+    }
+    if (i <= 0) {
+      i = 30;
+    }
+    paramAssetReader.setVideoComposition(this.videoComposition);
+    paramAssetReader.setVideoCompositing(this.videoCompositing);
+    paramAssetReader.setFrameRate(i);
+    paramAssetReader.setFrameDuration(new CMTime(1L, i));
+    this.contextCreate = paramIContextCreate;
+    if (this.revertMode)
+    {
+      this.videoDecoderTrack = new CachedVideoDecoderTrack(paramAssetReader, true);
       return;
     }
+    this.videoDecoderTrack = paramAssetReader;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.core.AssetReaderVideoCompositionOutput
  * JD-Core Version:    0.7.0.1
  */

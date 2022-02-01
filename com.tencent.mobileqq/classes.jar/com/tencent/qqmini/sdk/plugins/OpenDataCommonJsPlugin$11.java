@@ -19,40 +19,54 @@ class OpenDataCommonJsPlugin$11
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.d("OpenDataCommonJsPlugin", "getPotentialFriendList receive isSuc= " + paramBoolean + " ret=" + String.valueOf(paramJSONObject));
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("getPotentialFriendList receive isSuc= ");
+    ((StringBuilder)localObject1).append(paramBoolean);
+    ((StringBuilder)localObject1).append(" ret=");
+    ((StringBuilder)localObject1).append(String.valueOf(paramJSONObject));
+    QMLog.d("OpenDataCommonJsPlugin", ((StringBuilder)localObject1).toString());
     if (paramJSONObject == null)
     {
       QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , ret == null");
       this.val$req.fail();
       return;
     }
-    if (paramBoolean)
-    {
-      int i;
-      Object localObject1;
+    if (paramBoolean) {
       try
       {
         Object localObject2 = (CloudStorage.StGetPotentialFriendListRsp)paramJSONObject.get("response");
-        i = paramJSONObject.getInt("retCode");
+        int i = paramJSONObject.getInt("retCode");
         localObject1 = paramJSONObject.getString("errMsg");
         localObject2 = ((CloudStorage.StGetPotentialFriendListRsp)localObject2).data.get();
-        QMLog.d("OpenDataCommonJsPlugin", "getPotentialFriendList receive retCode= " + i + " errMsg=" + (String)localObject1);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("getPotentialFriendList receive retCode= ");
+        paramJSONObject.append(i);
+        paramJSONObject.append(" errMsg=");
+        paramJSONObject.append((String)localObject1);
+        QMLog.d("OpenDataCommonJsPlugin", paramJSONObject.toString());
         paramJSONObject = new JSONObject();
-        if ((i != 0) || (localObject2 == null) || (((List)localObject2).size() <= 0)) {
-          break label306;
-        }
-        localObject1 = new JSONArray();
-        localObject2 = ((List)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext())
+        if ((i == 0) && (localObject2 != null) && (((List)localObject2).size() > 0))
         {
-          CloudStorage.StUserGameData localStUserGameData = (CloudStorage.StUserGameData)((Iterator)localObject2).next();
-          JSONObject localJSONObject = new JSONObject();
-          localJSONObject.put("avatarUrl", localStUserGameData.avatarUrl.get());
-          localJSONObject.put("nickname", localStUserGameData.nickname.get());
-          localJSONObject.put("openid", localStUserGameData.openid.get());
-          ((JSONArray)localObject1).put(localJSONObject);
+          localObject1 = new JSONArray();
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
+          {
+            CloudStorage.StUserGameData localStUserGameData = (CloudStorage.StUserGameData)((Iterator)localObject2).next();
+            JSONObject localJSONObject = new JSONObject();
+            localJSONObject.put("avatarUrl", localStUserGameData.avatarUrl.get());
+            localJSONObject.put("nickname", localStUserGameData.nickname.get());
+            localJSONObject.put("openid", localStUserGameData.openid.get());
+            ((JSONArray)localObject1).put(localJSONObject);
+          }
+          paramJSONObject.put("list", localObject1);
+          this.val$req.ok(paramJSONObject);
+          return;
         }
-        paramJSONObject.put("list", localObject1);
+        paramJSONObject.put("retErrMsg", localObject1);
+        paramJSONObject.put("errCode", i);
+        QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , retCode!=0 or userGameDataList is empty");
+        this.val$req.fail(paramJSONObject, "retCode!=0 or userGameDataList is empty");
+        return;
       }
       catch (Exception paramJSONObject)
       {
@@ -60,14 +74,6 @@ class OpenDataCommonJsPlugin$11
         this.val$req.fail(paramJSONObject.getMessage());
         return;
       }
-      this.val$req.ok(paramJSONObject);
-      return;
-      label306:
-      paramJSONObject.put("retErrMsg", localObject1);
-      paramJSONObject.put("errCode", i);
-      QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , retCode!=0 or userGameDataList is empty");
-      this.val$req.fail(paramJSONObject, "retCode!=0 or userGameDataList is empty");
-      return;
     }
     QMLog.e("OpenDataCommonJsPlugin", "handleNativeRequest API_GET_POTENTIAL_FRIEND_LIST error , isSuc false");
     this.val$req.fail("getPotentialFriendList failed.");
@@ -75,7 +81,7 @@ class OpenDataCommonJsPlugin$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.11
  * JD-Core Version:    0.7.0.1
  */

@@ -11,19 +11,17 @@ class EmotionInputDetector$3
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    if (paramKeyEvent.getAction() == 0) {}
-    switch (paramInt)
+    if ((paramKeyEvent.getAction() == 0) && ((paramInt == 23) || (paramInt == 66)))
     {
-    default: 
-      return false;
+      EmotionInputDetector.b(this.a);
+      return true;
     }
-    EmotionInputDetector.b(this.a);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.chatroom.EmotionInputDetector.3
  * JD-Core Version:    0.7.0.1
  */

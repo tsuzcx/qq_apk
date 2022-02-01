@@ -11,14 +11,14 @@ class StoryMessageListActivity$4
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.f();
+    this.a.d();
     paramDialogInterface.dismiss();
     StoryReportor.a(this.a.a(), "clk_sure", 0, 0, new String[] { "2", "", "", "" });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.messagenotify.StoryMessageListActivity.4
  * JD-Core Version:    0.7.0.1
  */

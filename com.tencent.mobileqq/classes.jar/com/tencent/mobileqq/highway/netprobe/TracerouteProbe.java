@@ -47,151 +47,197 @@ public class TracerouteProbe
   
   private String parseDestIp(String paramString)
   {
-    String str = "";
     if (paramString.contains("ping")) {
-      str = paramString.substring(paramString.indexOf("(") + 1, paramString.indexOf(")"));
+      return paramString.substring(paramString.indexOf("(") + 1, paramString.indexOf(")"));
     }
-    return str;
+    return "";
   }
   
   private String parseRespIp(String paramString)
   {
-    String str2 = "*";
     int i = paramString.indexOf("from");
-    String str1 = str2;
     if (i >= 0)
     {
-      int j = paramString.indexOf(" ", i + 5);
-      str1 = str2;
-      if (j > 0) {
-        str1 = paramString.substring(i + 5, j);
+      i += 5;
+      int j = paramString.indexOf(" ", i);
+      if (j > 0)
+      {
+        paramString = paramString.substring(i, j);
+        break label40;
       }
     }
-    str1 = str1.trim();
-    paramString = str1;
-    if (str1.endsWith(":")) {
-      paramString = str1.substring(0, str1.length() - 1).trim();
+    paramString = "*";
+    label40:
+    String str = paramString.trim();
+    paramString = str;
+    if (str.endsWith(":")) {
+      paramString = str.substring(0, str.length() - 1).trim();
     }
-    str1 = paramString;
+    str = paramString;
     if (TextUtils.isEmpty(paramString)) {
-      str1 = "*";
+      str = "*";
     }
-    return str1;
+    return str;
   }
   
   /* Error */
   private String pingNode(String paramString, int paramInt)
   {
     // Byte code:
-    //   0: invokestatic 104	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
-    //   3: new 106	java/lang/StringBuilder
-    //   6: dup
-    //   7: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   10: ldc 109
-    //   12: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   15: aload_0
-    //   16: getfield 39	com/tencent/mobileqq/highway/netprobe/TracerouteProbe:mTimeout	I
-    //   19: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   22: ldc 118
-    //   24: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   27: iload_2
-    //   28: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   31: ldc 78
-    //   33: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   36: aload_1
-    //   37: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   43: invokevirtual 125	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
-    //   46: astore 4
-    //   48: new 127	java/io/BufferedReader
-    //   51: dup
-    //   52: new 129	java/io/InputStreamReader
-    //   55: dup
-    //   56: aload 4
-    //   58: invokevirtual 135	java/lang/Process:getInputStream	()Ljava/io/InputStream;
-    //   61: invokespecial 138	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
-    //   64: invokespecial 141	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
-    //   67: astore 5
-    //   69: new 56	java/lang/String
-    //   72: dup
-    //   73: invokespecial 142	java/lang/String:<init>	()V
-    //   76: pop
-    //   77: ldc 31
-    //   79: astore_1
-    //   80: aload 5
-    //   82: invokevirtual 145	java/io/BufferedReader:readLine	()Ljava/lang/String;
-    //   85: astore_3
-    //   86: aload_3
-    //   87: ifnull +27 -> 114
-    //   90: new 106	java/lang/StringBuilder
-    //   93: dup
-    //   94: invokespecial 107	java/lang/StringBuilder:<init>	()V
-    //   97: aload_1
-    //   98: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   101: aload_3
-    //   102: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   105: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   108: astore_3
-    //   109: aload_3
-    //   110: astore_1
-    //   111: goto -31 -> 80
-    //   114: aload 4
-    //   116: invokevirtual 148	java/lang/Process:destroy	()V
-    //   119: aload_1
-    //   120: invokevirtual 151	java/lang/String:toLowerCase	()Ljava/lang/String;
-    //   123: areturn
-    //   124: astore_3
-    //   125: aload_3
-    //   126: invokevirtual 154	java/lang/Exception:printStackTrace	()V
-    //   129: goto -10 -> 119
-    //   132: astore_3
-    //   133: ldc 31
-    //   135: astore_1
-    //   136: aload_3
-    //   137: invokevirtual 154	java/lang/Exception:printStackTrace	()V
-    //   140: aload 4
-    //   142: invokevirtual 148	java/lang/Process:destroy	()V
-    //   145: goto -26 -> 119
-    //   148: astore_3
-    //   149: aload_3
-    //   150: invokevirtual 154	java/lang/Exception:printStackTrace	()V
-    //   153: goto -34 -> 119
-    //   156: astore_1
-    //   157: aload 4
-    //   159: invokevirtual 148	java/lang/Process:destroy	()V
-    //   162: aload_1
-    //   163: athrow
-    //   164: astore_3
-    //   165: aload_3
-    //   166: invokevirtual 154	java/lang/Exception:printStackTrace	()V
-    //   169: goto -7 -> 162
-    //   172: astore_3
-    //   173: goto -37 -> 136
+    //   0: ldc 31
+    //   2: astore 4
+    //   4: invokestatic 104	java/lang/Runtime:getRuntime	()Ljava/lang/Runtime;
+    //   7: astore_3
+    //   8: new 106	java/lang/StringBuilder
+    //   11: dup
+    //   12: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   15: astore 5
+    //   17: aload 5
+    //   19: ldc 109
+    //   21: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   24: pop
+    //   25: aload 5
+    //   27: aload_0
+    //   28: getfield 39	com/tencent/mobileqq/highway/netprobe/TracerouteProbe:mTimeout	I
+    //   31: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   34: pop
+    //   35: aload 5
+    //   37: ldc 118
+    //   39: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   42: pop
+    //   43: aload 5
+    //   45: iload_2
+    //   46: invokevirtual 116	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   49: pop
+    //   50: aload 5
+    //   52: ldc 76
+    //   54: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   57: pop
+    //   58: aload 5
+    //   60: aload_1
+    //   61: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   64: pop
+    //   65: aload_3
+    //   66: aload 5
+    //   68: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   71: invokevirtual 125	java/lang/Runtime:exec	(Ljava/lang/String;)Ljava/lang/Process;
+    //   74: astore 5
+    //   76: aload 4
+    //   78: astore_3
+    //   79: new 127	java/io/BufferedReader
+    //   82: dup
+    //   83: new 129	java/io/InputStreamReader
+    //   86: dup
+    //   87: aload 5
+    //   89: invokevirtual 135	java/lang/Process:getInputStream	()Ljava/io/InputStream;
+    //   92: invokespecial 138	java/io/InputStreamReader:<init>	(Ljava/io/InputStream;)V
+    //   95: invokespecial 141	java/io/BufferedReader:<init>	(Ljava/io/Reader;)V
+    //   98: astore 6
+    //   100: aload 4
+    //   102: astore_3
+    //   103: new 56	java/lang/String
+    //   106: dup
+    //   107: invokespecial 142	java/lang/String:<init>	()V
+    //   110: pop
+    //   111: aload 4
+    //   113: astore_1
+    //   114: aload_1
+    //   115: astore_3
+    //   116: aload 6
+    //   118: invokevirtual 145	java/io/BufferedReader:readLine	()Ljava/lang/String;
+    //   121: astore 4
+    //   123: aload 4
+    //   125: ifnull +44 -> 169
+    //   128: aload_1
+    //   129: astore_3
+    //   130: new 106	java/lang/StringBuilder
+    //   133: dup
+    //   134: invokespecial 107	java/lang/StringBuilder:<init>	()V
+    //   137: astore 7
+    //   139: aload_1
+    //   140: astore_3
+    //   141: aload 7
+    //   143: aload_1
+    //   144: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   147: pop
+    //   148: aload_1
+    //   149: astore_3
+    //   150: aload 7
+    //   152: aload 4
+    //   154: invokevirtual 113	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   157: pop
+    //   158: aload_1
+    //   159: astore_3
+    //   160: aload 7
+    //   162: invokevirtual 121	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   165: astore_1
+    //   166: goto -52 -> 114
+    //   169: aload_1
+    //   170: astore 4
+    //   172: aload 5
+    //   174: invokevirtual 148	java/lang/Process:destroy	()V
+    //   177: goto +33 -> 210
+    //   180: astore_1
+    //   181: aload_1
+    //   182: invokevirtual 151	java/lang/Exception:printStackTrace	()V
+    //   185: aload 4
+    //   187: astore_1
+    //   188: goto +22 -> 210
+    //   191: astore_1
+    //   192: goto +23 -> 215
+    //   195: astore_1
+    //   196: aload_1
+    //   197: invokevirtual 151	java/lang/Exception:printStackTrace	()V
+    //   200: aload_3
+    //   201: astore 4
+    //   203: aload 5
+    //   205: invokevirtual 148	java/lang/Process:destroy	()V
+    //   208: aload_3
+    //   209: astore_1
+    //   210: aload_1
+    //   211: invokevirtual 154	java/lang/String:toLowerCase	()Ljava/lang/String;
+    //   214: areturn
+    //   215: aload 5
+    //   217: invokevirtual 148	java/lang/Process:destroy	()V
+    //   220: goto +8 -> 228
+    //   223: astore_3
+    //   224: aload_3
+    //   225: invokevirtual 151	java/lang/Exception:printStackTrace	()V
+    //   228: goto +5 -> 233
+    //   231: aload_1
+    //   232: athrow
+    //   233: goto -2 -> 231
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	176	0	this	TracerouteProbe
-    //   0	176	1	paramString	String
-    //   0	176	2	paramInt	int
-    //   85	25	3	str	String
-    //   124	2	3	localException1	Exception
-    //   132	5	3	localException2	Exception
-    //   148	2	3	localException3	Exception
-    //   164	2	3	localException4	Exception
-    //   172	1	3	localException5	Exception
-    //   46	112	4	localProcess	java.lang.Process
-    //   67	14	5	localBufferedReader	java.io.BufferedReader
+    //   0	236	0	this	TracerouteProbe
+    //   0	236	1	paramString	String
+    //   0	236	2	paramInt	int
+    //   7	202	3	localObject1	Object
+    //   223	2	3	localException	Exception
+    //   2	200	4	localObject2	Object
+    //   15	201	5	localObject3	Object
+    //   98	19	6	localBufferedReader	java.io.BufferedReader
+    //   137	24	7	localStringBuilder	StringBuilder
     // Exception table:
     //   from	to	target	type
-    //   114	119	124	java/lang/Exception
-    //   48	77	132	java/lang/Exception
-    //   140	145	148	java/lang/Exception
-    //   48	77	156	finally
-    //   80	86	156	finally
-    //   90	109	156	finally
-    //   136	140	156	finally
-    //   157	162	164	java/lang/Exception
-    //   80	86	172	java/lang/Exception
-    //   90	109	172	java/lang/Exception
+    //   172	177	180	java/lang/Exception
+    //   203	208	180	java/lang/Exception
+    //   79	100	191	finally
+    //   103	111	191	finally
+    //   116	123	191	finally
+    //   130	139	191	finally
+    //   141	148	191	finally
+    //   150	158	191	finally
+    //   160	166	191	finally
+    //   196	200	191	finally
+    //   79	100	195	java/lang/Exception
+    //   103	111	195	java/lang/Exception
+    //   116	123	195	java/lang/Exception
+    //   130	139	195	java/lang/Exception
+    //   141	148	195	java/lang/Exception
+    //   150	158	195	java/lang/Exception
+    //   160	166	195	java/lang/Exception
+    //   215	220	223	java/lang/Exception
   }
   
   public void doProbe()
@@ -207,105 +253,123 @@ public class TracerouteProbe
   
   public void logProgress(String paramString)
   {
-    if (this.cb != null) {
-      this.cb.progress(paramString);
+    TracerouteProbe.TraceroutCallback localTraceroutCallback = this.cb;
+    if (localTraceroutCallback != null) {
+      localTraceroutCallback.progress(paramString);
     }
   }
   
   public void process()
   {
-    String str1 = "Traceroute to " + this.mHost + ", " + this.mMaxTTL + " hops max, " + this.mTimeout + "s timeout";
-    logProgress(str1 + "\n");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Traceroute to ");
+    ((StringBuilder)localObject1).append(this.mHost);
+    ((StringBuilder)localObject1).append(", ");
+    ((StringBuilder)localObject1).append(this.mMaxTTL);
+    ((StringBuilder)localObject1).append(" hops max, ");
+    ((StringBuilder)localObject1).append(this.mTimeout);
+    ((StringBuilder)localObject1).append("s timeout");
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("\n");
+    logProgress(((StringBuilder)localObject2).toString());
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(str1).append("\n");
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("\n");
     this.mResult.success = false;
-    str1 = "";
+    localObject1 = "";
     int i = 0;
-    String str2 = str1;
-    if (i <= this.mMaxTTL) {
-      str2 = str1;
-    }
-    for (;;)
+    localObject2 = localObject1;
+    Object localObject3;
+    if (i <= this.mMaxTTL)
     {
       try
       {
         long l1 = SystemClock.elapsedRealtime();
-        str2 = str1;
-        str3 = pingNode(getDestation(), i);
-        str2 = str1;
+        localObject2 = pingNode(getDestation(), i);
         long l2 = SystemClock.elapsedRealtime();
-        str2 = str1;
-        String str4 = parseDestIp(str3);
-        str2 = str1;
-        if (TextUtils.isEmpty(this.mIp))
-        {
-          str2 = str1;
-          if (!TextUtils.isEmpty(str4))
-          {
-            str2 = str1;
-            this.mIp = str4;
-          }
+        localObject4 = parseDestIp((String)localObject2);
+        if ((TextUtils.isEmpty(this.mIp)) && (!TextUtils.isEmpty((CharSequence)localObject4))) {
+          this.mIp = ((String)localObject4);
         }
-        str2 = str1;
-        str4 = parseRespIp(str3);
-        str2 = str1;
-        if (!"*".equals(str4))
+        localObject4 = parseRespIp((String)localObject2);
+        if (!"*".equals(localObject4))
         {
-          str2 = str1;
-          str1 = String.format("(%d) %s %5dms\n", new Object[] { Integer.valueOf(i), str4, Long.valueOf(l2 - l1) }).toString();
-          str3 = str1;
-          str2 = str1;
-          logProgress(str3);
-          str2 = str1;
-          localStringBuilder.append(str3);
-          str2 = str1;
-          if (!this.mHost.equals(str4))
-          {
-            str2 = str1;
-            str3 = str1;
-            if (!this.mIp.equals(str4)) {}
-          }
-          else
-          {
-            str2 = str1;
-            this.mResult.success = true;
-            str2 = str1;
-            if (!this.mResult.success) {
-              break label566;
-            }
-            str1 = "Traceroute succ host: " + this.mHost + "(" + this.mIp + ") hops: " + i;
-            this.mResult.appendResult(str1);
-            logProgress(str1 + "\n");
-            localStringBuilder.append(str1).append("\n");
-            this.mResult.extra = localStringBuilder.toString();
-          }
+          localObject2 = String.format("(%d) %s %5dms\n", new Object[] { Integer.valueOf(i), localObject4, Long.valueOf(l2 - l1) }).toString();
+          localObject1 = localObject2;
         }
         else
         {
-          str2 = str1;
-          str3 = String.format("(%d) %s \n", new Object[] { Integer.valueOf(i), str4 }).toString();
-          continue;
+          localObject2 = String.format("(%d) %s \n", new Object[] { Integer.valueOf(i), localObject4 }).toString();
         }
+        try
+        {
+          logProgress((String)localObject2);
+          localStringBuilder.append((String)localObject2);
+          if (!this.mHost.equals(localObject4)) {
+            if (!this.mIp.equals(localObject4)) {
+              break label669;
+            }
+          }
+          this.mResult.success = true;
+          localObject2 = localObject1;
+        }
+        catch (Exception localException1) {}
+        localException2.printStackTrace();
       }
-      catch (Exception localException)
+      catch (Exception localException2) {}
+      Object localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("traceroute error: ");
+      ((StringBuilder)localObject4).append(localException2.getMessage());
+      localObject3 = ((StringBuilder)localObject4).toString();
+      this.mResult.errDesc = ((String)localObject3);
+      localStringBuilder.append((String)localObject3);
+      localStringBuilder.append("\n");
+    }
+    label669:
+    for (;;)
+    {
+      i += 1;
+      break;
+      if (this.mResult.success)
       {
-        localException.printStackTrace();
-        localObject = "traceroute error: " + localException.getMessage();
-        this.mResult.errDesc = ((String)localObject);
-        localStringBuilder.append((String)localObject).append("\n");
-        String str3 = str2;
-        i += 1;
-        localObject = str3;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Traceroute succ host: ");
+        ((StringBuilder)localObject1).append(this.mHost);
+        ((StringBuilder)localObject1).append("(");
+        ((StringBuilder)localObject1).append(this.mIp);
+        ((StringBuilder)localObject1).append(") hops: ");
+        ((StringBuilder)localObject1).append(i);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        this.mResult.appendResult((String)localObject1);
       }
-      label566:
-      Object localObject = "Traceroute fail host: " + this.mHost + "(" + this.mIp + ") hops: " + this.mMaxTTL;
-      this.mResult.errDesc = str2;
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Traceroute fail host: ");
+        ((StringBuilder)localObject1).append(this.mHost);
+        ((StringBuilder)localObject1).append("(");
+        ((StringBuilder)localObject1).append(this.mIp);
+        ((StringBuilder)localObject1).append(") hops: ");
+        ((StringBuilder)localObject1).append(this.mMaxTTL);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        this.mResult.errDesc = ((String)localObject3);
+      }
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append("\n");
+      logProgress(((StringBuilder)localObject3).toString());
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("\n");
+      this.mResult.extra = localStringBuilder.toString();
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.TracerouteProbe
  * JD-Core Version:    0.7.0.1
  */

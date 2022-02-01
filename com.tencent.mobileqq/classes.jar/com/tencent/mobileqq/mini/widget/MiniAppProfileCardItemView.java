@@ -45,57 +45,59 @@ public class MiniAppProfileCardItemView
   {
     this.mContext = paramContext;
     this.mLayoutInflater = LayoutInflater.from(paramContext);
-    this.mLayoutInflater.inflate(2131561511, this, true);
-    this.mIconView = ((ImageView)findViewById(2131371510));
-    this.mNameView = ((TextView)findViewById(2131371511));
-    this.mGapView = findViewById(2131371507);
+    this.mLayoutInflater.inflate(2131561352, this, true);
+    this.mIconView = ((ImageView)findViewById(2131371130));
+    this.mNameView = ((TextView)findViewById(2131371131));
+    this.mGapView = findViewById(2131371127);
   }
   
   public void setData(MiniAppInfo paramMiniAppInfo, int paramInt)
   {
-    if ((paramMiniAppInfo == null) || (TextUtils.isEmpty(paramMiniAppInfo.iconUrl)) || (TextUtils.isEmpty(paramMiniAppInfo.name)) || (TextUtils.isEmpty(paramMiniAppInfo.appId))) {
-      return;
-    }
-    if (this.mGapView != null)
+    if ((paramMiniAppInfo != null) && (!TextUtils.isEmpty(paramMiniAppInfo.iconUrl)) && (!TextUtils.isEmpty(paramMiniAppInfo.name)))
     {
-      if (paramInt != 0) {
-        break label120;
+      if (TextUtils.isEmpty(paramMiniAppInfo.appId)) {
+        return;
       }
-      this.mGapView.setVisibility(8);
-    }
-    for (;;)
-    {
-      if (this.mIconView != null) {
-        this.mIconView.setImageDrawable(MiniAppUtils.getIcon(this.mContext, paramMiniAppInfo.iconUrl, true));
+      Object localObject = this.mGapView;
+      if (localObject != null) {
+        if (paramInt == 0) {
+          ((View)localObject).setVisibility(8);
+        } else {
+          ((View)localObject).setVisibility(0);
+        }
       }
-      if (this.mNameView != null) {
-        this.mNameView.setText(paramMiniAppInfo.name);
+      localObject = this.mIconView;
+      if (localObject != null) {
+        ((ImageView)localObject).setImageDrawable(MiniAppUtils.getIcon(this.mContext, paramMiniAppInfo.iconUrl, true));
+      }
+      localObject = this.mNameView;
+      if (localObject != null) {
+        ((TextView)localObject).setText(paramMiniAppInfo.name);
       }
       this.mAppid = paramMiniAppInfo.appId;
       setOnClickListener(new MiniAppProfileCardItemView.1(this));
-      return;
-      label120:
-      this.mGapView.setVisibility(0);
     }
   }
   
   public void setTextColor(int paramInt)
   {
-    if (this.mNameView != null) {
-      this.mNameView.setTextColor(paramInt);
+    TextView localTextView = this.mNameView;
+    if (localTextView != null) {
+      localTextView.setTextColor(paramInt);
     }
   }
   
   public void setTextColor(ColorStateList paramColorStateList)
   {
-    if (this.mNameView != null) {
-      this.mNameView.setTextColor(paramColorStateList);
+    TextView localTextView = this.mNameView;
+    if (localTextView != null) {
+      localTextView.setTextColor(paramColorStateList);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.widget.MiniAppProfileCardItemView
  * JD-Core Version:    0.7.0.1
  */

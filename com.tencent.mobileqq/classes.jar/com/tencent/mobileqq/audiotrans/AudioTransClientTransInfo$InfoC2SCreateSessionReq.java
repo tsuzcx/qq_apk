@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 public final class AudioTransClientTransInfo$InfoC2SCreateSessionReq
   extends MessageMicro<InfoC2SCreateSessionReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 74 }, new String[] { "enum_business_type", "rpt_member_list", "enum_business_direction", "uint32_session_test_flag", "uint32_client_ver", "enum_term", "enum_net_type", "bool_translate", "result_report_addr" }, new Object[] { Integer.valueOf(1), "", Integer.valueOf(1), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(1), Integer.valueOf(1), Boolean.valueOf(false), null }, InfoC2SCreateSessionReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBBoolField bool_translate = PBField.initBool(false);
   public final PBEnumField enum_business_direction = PBField.initEnum(1);
   public final PBEnumField enum_business_type = PBField.initEnum(1);
@@ -22,10 +22,17 @@ public final class AudioTransClientTransInfo$InfoC2SCreateSessionReq
   public final PBRepeatField<String> rpt_member_list = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBUInt32Field uint32_client_ver = PBField.initUInt32(0);
   public final PBUInt32Field uint32_session_test_flag = PBField.initUInt32(0);
+  
+  static
+  {
+    Integer localInteger1 = Integer.valueOf(0);
+    Integer localInteger2 = Integer.valueOf(1);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 40, 48, 56, 64, 74 }, new String[] { "enum_business_type", "rpt_member_list", "enum_business_direction", "uint32_session_test_flag", "uint32_client_ver", "enum_term", "enum_net_type", "bool_translate", "result_report_addr" }, new Object[] { localInteger2, "", localInteger2, localInteger1, localInteger1, localInteger2, localInteger2, Boolean.valueOf(false), null }, InfoC2SCreateSessionReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.audiotrans.AudioTransClientTransInfo.InfoC2SCreateSessionReq
  * JD-Core Version:    0.7.0.1
  */

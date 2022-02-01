@@ -14,14 +14,23 @@ class AEModule$2$1
   public void onFailed(String paramString)
   {
     AEOpenRenderConfig.checkStrictMode(false, "phone_attrs_config.dat decrypt faild.");
-    LogUtils.w("AEKitModule", "[DeviceAttrs update][onFailed] errorMsg = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[DeviceAttrs update][onFailed] errorMsg = ");
+    localStringBuilder.append(paramString);
+    LogUtils.w("AEKitModule", localStringBuilder.toString());
   }
   
   public void onSuccess(String paramString)
   {
-    DeviceInstance.SOC_CLASS localSOC_CLASS = DeviceUtils.getDeviceSocClass(AEModule.getContext());
-    LogUtils.e("AEKitModule", "updateDeviceInfo socClass = " + localSOC_CLASS.desc);
-    LogUtils.d("AEKitModule", "[DeviceAttrs update][onSuccess] okMsg = " + paramString);
+    Object localObject = DeviceUtils.getDeviceSocClass(AEModule.getContext());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateDeviceInfo socClass = ");
+    localStringBuilder.append(((DeviceInstance.SOC_CLASS)localObject).desc);
+    LogUtils.e("AEKitModule", localStringBuilder.toString());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[DeviceAttrs update][onSuccess] okMsg = ");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtils.d("AEKitModule", ((StringBuilder)localObject).toString());
   }
 }
 

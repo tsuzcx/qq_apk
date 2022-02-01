@@ -61,15 +61,34 @@ public class PreCacheManager$PreCacheDescData
   
   public String getCacheKey(String paramString)
   {
+    StringBuilder localStringBuilder;
     if ("periodic".equals(paramString))
     {
-      paramString = this.appid + "_" + this.url;
-      return "" + paramString.hashCode();
+      paramString = new StringBuilder();
+      paramString.append(this.appid);
+      paramString.append("_");
+      paramString.append(this.url);
+      paramString = paramString.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramString.hashCode());
+      return localStringBuilder.toString();
     }
     if (TextUtils.isEmpty(this.cacheKey))
     {
-      paramString = this.appid + "_" + this.url + "_" + this.scene + "_" + this.path;
-      this.cacheKey = ("" + paramString.hashCode());
+      paramString = new StringBuilder();
+      paramString.append(this.appid);
+      paramString.append("_");
+      paramString.append(this.url);
+      paramString.append("_");
+      paramString.append(this.scene);
+      paramString.append("_");
+      paramString.append(this.path);
+      paramString = paramString.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramString.hashCode());
+      this.cacheKey = localStringBuilder.toString();
     }
     return this.cacheKey;
   }
@@ -79,8 +98,10 @@ public class PreCacheManager$PreCacheDescData
     if (TextUtils.isEmpty(this.path)) {
       return "";
     }
-    if (this.path.contains("?")) {
-      return this.path.substring(this.path.indexOf("?") + 1);
+    if (this.path.contains("?"))
+    {
+      String str = this.path;
+      return str.substring(str.indexOf("?") + 1);
     }
     return "";
   }
@@ -97,7 +118,7 @@ public class PreCacheManager$PreCacheDescData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.PreCacheManager.PreCacheDescData
  * JD-Core Version:    0.7.0.1
  */

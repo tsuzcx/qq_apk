@@ -15,9 +15,7 @@ class em$3
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
     em.b(this.nm, (em.d)paramMessage.obj);
@@ -25,7 +23,7 @@ class em$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.em.3
  * JD-Core Version:    0.7.0.1
  */

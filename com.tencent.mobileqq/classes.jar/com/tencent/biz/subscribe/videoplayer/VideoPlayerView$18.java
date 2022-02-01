@@ -23,44 +23,40 @@ class VideoPlayerView$18
       VideoPlayerView.e(this.this$0);
       VideoPlayerView.a(this.this$0, true);
     }
-    if (!VideoPlayerView.d(this.this$0)) {
-      if (VideoPlayerView.a(this.this$0) != null)
-      {
-        if (!this.this$0.d()) {
-          break label128;
+    if (!VideoPlayerView.d(this.this$0))
+    {
+      if (VideoPlayerView.a(this.this$0) != null) {
+        if (this.this$0.d())
+        {
+          VideoPlayerView.a(this.this$0).a();
         }
-        VideoPlayerView.a(this.this$0).a();
+        else if ((VideoPlayerView.a(this.this$0).a()) && (this.this$0.b != null))
+        {
+          this.this$0.b.setBackgroundResource(2131165336);
+          this.this$0.b.setImageDrawable(null);
+          this.this$0.b.setVisibility(0);
+          if (VideoPlayerView.a(this.this$0) != null) {
+            VSReporter.b(VideoPlayerView.a(this.this$0).poster.id.get(), "auth_video", "finish_exp", 0, 0, new String[] { "", "", VideoPlayerView.a(this.this$0).poster.nick.get(), VideoPlayerView.a(this.this$0).title.get() });
+          }
+        }
       }
     }
-    for (;;)
+    else
     {
-      if (VideoPlayerView.e(this.this$0) != null) {
-        VideoPlayerView.e(this.this$0).setVisibility(8);
-      }
-      if (VideoPlayerView.a(this.this$0) != null) {
-        VideoPlayerView.a(this.this$0).onVideoComplete(false);
-      }
-      return;
-      label128:
-      if ((VideoPlayerView.a(this.this$0).a()) && (this.this$0.b != null))
-      {
-        this.this$0.b.setBackgroundResource(2131165368);
-        this.this$0.b.setImageDrawable(null);
-        this.this$0.b.setVisibility(0);
-        if (VideoPlayerView.a(this.this$0) != null)
-        {
-          VSReporter.b(VideoPlayerView.a(this.this$0).poster.id.get(), "auth_video", "finish_exp", 0, 0, new String[] { "", "", VideoPlayerView.a(this.this$0).poster.nick.get(), VideoPlayerView.a(this.this$0).title.get() });
-          continue;
-          VideoPlayerView.f(this.this$0);
-          this.this$0.i();
-        }
-      }
+      VideoPlayerView.f(this.this$0);
+      this.this$0.i();
+    }
+    if (VideoPlayerView.e(this.this$0) != null) {
+      VideoPlayerView.e(this.this$0).setVisibility(8);
+    }
+    if (VideoPlayerView.a(this.this$0) != null) {
+      VideoPlayerView.a(this.this$0).onVideoComplete(false);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.videoplayer.VideoPlayerView.18
  * JD-Core Version:    0.7.0.1
  */

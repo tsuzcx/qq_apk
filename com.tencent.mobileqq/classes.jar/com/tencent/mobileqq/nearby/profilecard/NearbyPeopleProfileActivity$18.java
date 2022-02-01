@@ -1,27 +1,18 @@
 package com.tencent.mobileqq.nearby.profilecard;
 
-import com.tencent.mobileqq.app.ConditionSearchManager.IConfigListener;
+import android.view.View;
+import com.tencent.mobileqq.nearby.widget.NearbyCustomDialog.OnClickListener;
 
 class NearbyPeopleProfileActivity$18
-  implements ConditionSearchManager.IConfigListener
+  implements NearbyCustomDialog.OnClickListener
 {
   NearbyPeopleProfileActivity$18(NearbyPeopleProfileActivity paramNearbyPeopleProfileActivity) {}
   
-  public void a(int paramInt, boolean paramBoolean)
-  {
-    this.a.b();
-    if (!paramBoolean) {
-      this.a.b(this.a.getString(2131691137));
-    }
-    while ((this.a.e != 1) || (paramInt != 2)) {
-      return;
-    }
-    NearbyPeopleProfileActivity.a(this.a).c();
-  }
+  public void onClick(View paramView) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.profilecard.NearbyPeopleProfileActivity.18
  * JD-Core Version:    0.7.0.1
  */

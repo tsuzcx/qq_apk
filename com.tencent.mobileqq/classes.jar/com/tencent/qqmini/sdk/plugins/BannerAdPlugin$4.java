@@ -7,12 +7,12 @@ class BannerAdPlugin$4
   
   public void run()
   {
-    BannerAdPlugin.access$1000(this.this$0);
+    BannerAdPlugin.access$1100(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.BannerAdPlugin.4
  * JD-Core Version:    0.7.0.1
  */

@@ -9,21 +9,22 @@ import android.graphics.Canvas;
 import android.graphics.Paint;
 import android.graphics.Paint.Style;
 import android.graphics.Rect;
+import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.support.logging.SLog;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.activity.QQVasH5PayBrowserActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.config.business.qvip.QVIPPrettyTroopProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipDiyTemplateConfig;
-import com.tencent.mobileqq.config.business.qvip.QVipDiyTemplateProcessor;
-import com.tencent.mobileqq.config.business.qvip.QVipPrettyTroopConfig;
 import com.tencent.mobileqq.data.Card;
 import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.util.ProfileCardUtil;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
-import com.tencent.mobileqq.vip.QVipConfigManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
+import com.tencent.mobileqq.vas.config.business.qvip.QVIPPrettyTroopProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipDiyTemplateConfig;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipDiyTemplateProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.QVipPrettyTroopConfig;
+import com.tencent.mobileqq.vas.vip.QVipConfigManager;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONArray;
@@ -34,47 +35,50 @@ public class QVipUtils
 {
   public static float a(int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0)) {
-      return 0.0F;
+    if ((paramInt1 != 0) && (paramInt2 != 0)) {
+      return Math.round(paramInt1 * 1.0F / paramInt2 * 100.0F) / 100.0F;
     }
-    return Math.round(paramInt1 * 1.0F / paramInt2 * 100.0F) / 100.0F;
+    return 0.0F;
   }
   
   public static Bitmap a(Bitmap paramBitmap, int paramInt1, int paramInt2)
   {
     Bitmap localBitmap2 = null;
-    Bitmap localBitmap1;
-    if ((paramBitmap == null) || (paramBitmap.isRecycled())) {
-      localBitmap1 = null;
-    }
-    do
+    if (paramBitmap != null)
     {
-      return localBitmap1;
-      localBitmap1 = paramBitmap;
-    } while (a(paramBitmap.getWidth(), paramBitmap.getHeight()) == a(paramInt1, paramInt2));
-    Paint localPaint = new Paint();
-    localPaint.setStyle(Paint.Style.STROKE);
-    localPaint.setAntiAlias(true);
-    int i;
-    int j;
-    if (paramInt1 >= paramBitmap.getWidth())
-    {
-      localBitmap1 = paramBitmap;
-      if (paramInt2 >= paramBitmap.getHeight()) {}
-    }
-    else
-    {
-      if (a(paramBitmap.getWidth(), paramInt1) < a(paramBitmap.getHeight(), paramInt2)) {
-        break label964;
+      if (paramBitmap.isRecycled()) {
+        return null;
       }
-      i = (int)(paramBitmap.getHeight() * 1.0F / paramBitmap.getWidth() * paramInt1);
-      j = paramInt1;
-    }
-    for (;;)
-    {
-      localBitmap2 = Bitmap.createBitmap(j, i, Bitmap.Config.ARGB_8888);
-      new Canvas(localBitmap2).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, localBitmap2.getWidth(), localBitmap2.getHeight()), localPaint);
-      localBitmap1 = localBitmap2;
+      if (a(paramBitmap.getWidth(), paramBitmap.getHeight()) == a(paramInt1, paramInt2)) {
+        return paramBitmap;
+      }
+      Paint localPaint = new Paint();
+      localPaint.setStyle(Paint.Style.STROKE);
+      localPaint.setAntiAlias(true);
+      Bitmap localBitmap1;
+      if (paramInt1 >= paramBitmap.getWidth())
+      {
+        localBitmap1 = paramBitmap;
+        if (paramInt2 >= paramBitmap.getHeight()) {}
+      }
+      else
+      {
+        int j;
+        int i;
+        if (a(paramBitmap.getWidth(), paramInt1) >= a(paramBitmap.getHeight(), paramInt2))
+        {
+          j = (int)(paramBitmap.getHeight() * 1.0F / paramBitmap.getWidth() * paramInt1);
+          i = paramInt1;
+        }
+        else
+        {
+          i = (int)(paramBitmap.getWidth() * 1.0F / paramBitmap.getHeight() * paramInt2);
+          j = paramInt2;
+        }
+        localBitmap2 = Bitmap.createBitmap(i, j, Bitmap.Config.ARGB_8888);
+        new Canvas(localBitmap2).drawBitmap(paramBitmap, new Rect(0, 0, paramBitmap.getWidth(), paramBitmap.getHeight()), new Rect(0, 0, localBitmap2.getWidth(), localBitmap2.getHeight()), localPaint);
+        localBitmap1 = localBitmap2;
+      }
       paramBitmap = Bitmap.createBitmap(paramInt1, paramInt2, Bitmap.Config.ARGB_8888);
       Canvas localCanvas = new Canvas(paramBitmap);
       localCanvas.drawBitmap(localBitmap1, new Rect(0, 0, localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), new Rect(0, 0, localBitmap1.getWidth() / 3, localBitmap1.getHeight() / 3), localPaint);
@@ -90,79 +94,92 @@ public class QVipUtils
         localBitmap2.recycle();
       }
       return paramBitmap;
-      label964:
-      j = (int)(paramBitmap.getWidth() * 1.0F / paramBitmap.getHeight() * paramInt2);
-      i = paramInt2;
     }
+    return null;
   }
   
   public static String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {
+    if (TextUtils.isEmpty(paramString))
+    {
       SLog.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json is null");
+      return null;
     }
     for (;;)
     {
-      return null;
+      int i;
       try
       {
         paramString = new JSONObject(paramString).optJSONArray("bg");
-        if (paramString == null)
-        {
-          SLog.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json bg array is null");
-          return null;
+        if (paramString != null) {
+          break label132;
         }
+        SLog.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json bg array is null");
+        return null;
       }
       catch (JSONException paramString)
       {
-        SLog.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json is illegal:" + paramString);
-        return null;
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getDiyTemplateBackground but json is illegal:");
+        ((StringBuilder)localObject).append(paramString);
+        SLog.b("DIYProfileTemplate.QVipUtils", ((StringBuilder)localObject).toString());
       }
-      int i = 0;
-      while (i < paramString.length())
+      if (i < paramString.length())
       {
-        JSONObject localJSONObject = paramString.getJSONObject(i);
-        if (localJSONObject != null)
+        localObject = paramString.getJSONObject(i);
+        if (localObject != null)
         {
-          if ("image_view".equals(localJSONObject.optString("type"))) {
-            return localJSONObject.optString("content");
+          if ("image_view".equals(((JSONObject)localObject).optString("type"))) {
+            return ((JSONObject)localObject).optString("content");
           }
           SLog.b("DIYProfileTemplate.QVipUtils", "getDiyTemplateBackground but json bg array don't have image view");
         }
         i += 1;
       }
+      else
+      {
+        return null;
+        label132:
+        i = 0;
+      }
     }
+  }
+  
+  private static String a(boolean paramBoolean, long paramLong)
+  {
+    StringBuilder localStringBuilder = new StringBuilder("https://club.vip.qq.com/profile/custom?_wv=131072&_fv=0");
+    if (paramBoolean) {
+      localStringBuilder.append("&from=guest");
+    }
+    localStringBuilder.append("&templateId=");
+    localStringBuilder.append(paramLong);
+    return localStringBuilder.toString();
   }
   
   public static void a(Context paramContext, String paramString)
   {
-    Intent localIntent = new Intent(paramContext, QQVasH5PayBrowserActivity.class);
-    localIntent.putExtra("url", paramString);
-    paramContext.startActivity(localIntent);
+    paramContext = new ActivityURIRequest(paramContext, "/vas/h5pay");
+    paramContext.extra().putString("url", paramString);
+    QRoute.startUri(paramContext, null);
   }
   
   public static void a(Card paramCard, QQAppInterface paramQQAppInterface, Activity paramActivity)
   {
     if (!QVipDiyTemplateProcessor.c().a)
     {
-      QQToast.a(paramActivity, 0, HardCodeUtil.a(2131711369), 0).a();
+      QQToast.a(paramActivity, 0, HardCodeUtil.a(2131711344), 0).a();
       return;
     }
-    if (!TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), paramCard.uin)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramCard = ProfileCardUtil.a(bool, paramCard.cardId);
-      Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
-      localIntent.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
-      localIntent.putExtra("isShowAd", false);
-      localIntent.putExtra("hide_more_button", true);
-      localIntent.putExtra("has_red_dot", false);
-      localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
-      localIntent.putExtra("individuation_url_type", 40203);
-      localIntent.putExtra("url", paramCard);
-      VasWebviewUtil.openQQBrowserWithoutAD(paramActivity, paramCard, -1L, localIntent, true, 1036);
-      return;
-    }
+    paramCard = a(TextUtils.equals(paramQQAppInterface.getCurrentAccountUin(), paramCard.uin) ^ true, paramCard.cardId);
+    Intent localIntent = new Intent(paramActivity, QQBrowserActivity.class);
+    localIntent.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
+    localIntent.putExtra("isShowAd", false);
+    localIntent.putExtra("hide_more_button", true);
+    localIntent.putExtra("has_red_dot", false);
+    localIntent.putExtra("startOpenPageTime", System.currentTimeMillis());
+    localIntent.putExtra("individuation_url_type", 40203);
+    localIntent.putExtra("url", paramCard);
+    VasWebviewUtil.b(paramActivity, paramCard, -1L, localIntent, true, 1036);
   }
   
   public static void a(TroopInfo paramTroopInfo, String paramString, Activity paramActivity)
@@ -193,21 +210,20 @@ public class QVipUtils
     localIntent.putExtra("individuation_url_type", 40402);
     localIntent.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
     localIntent.putExtra("url", paramString1);
-    VasWebviewUtil.openQQBrowserWithoutAD(paramContext, paramString1, -1L, localIntent, false, 0);
+    VasWebviewUtil.b(paramContext, paramString1, -1L, localIntent, false, 0);
   }
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = false;
     if (!QVipConfigManager.a(paramQQAppInterface, "hide_diy_template_guide", false)) {
-      bool = QVipDiyTemplateProcessor.c().a;
+      return QVipDiyTemplateProcessor.c().a;
     }
-    return bool;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.QVipUtils
  * JD-Core Version:    0.7.0.1
  */

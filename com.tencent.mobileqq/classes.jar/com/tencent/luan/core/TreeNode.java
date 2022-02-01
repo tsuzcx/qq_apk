@@ -25,23 +25,23 @@ public class TreeNode<E>
   public TreeNode<E> addChild(E paramE)
   {
     paramE = new TreeNode(paramE, this.selfNode);
-    if (this.tailChildNode == null) {
+    SingleLinkedListNode localSingleLinkedListNode = this.tailChildNode;
+    if (localSingleLinkedListNode == null) {
       this.headChildNode = paramE.selfNode;
+    } else {
+      localSingleLinkedListNode.setNext(paramE.selfNode);
     }
-    for (;;)
-    {
-      this.tailChildNode = paramE.selfNode;
-      return paramE;
-      this.tailChildNode.setNext(paramE.selfNode);
-    }
+    this.tailChildNode = paramE.selfNode;
+    return paramE;
   }
   
   public TreeNode<E> getParent()
   {
-    if (this.parentNode == null) {
+    SingleLinkedListNode localSingleLinkedListNode = this.parentNode;
+    if (localSingleLinkedListNode == null) {
       return null;
     }
-    return (TreeNode)this.parentNode.element;
+    return (TreeNode)localSingleLinkedListNode.element;
   }
   
   public Iterator<E> iterator()
@@ -51,7 +51,7 @@ public class TreeNode<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.luan.core.TreeNode
  * JD-Core Version:    0.7.0.1
  */

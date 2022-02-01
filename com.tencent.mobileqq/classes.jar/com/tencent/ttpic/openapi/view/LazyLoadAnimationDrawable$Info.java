@@ -9,14 +9,15 @@ public class LazyLoadAnimationDrawable$Info
   public int[] durations = null;
   public String[] filenames = null;
   public Resources res;
-  public int totalDuration = 0;
+  public int totalDuration;
   
   public LazyLoadAnimationDrawable$Info(Resources paramResources, ArrayList<File> paramArrayList, int[] paramArrayOfInt, Integer[] paramArrayOfInteger)
   {
+    int i = 0;
+    this.totalDuration = 0;
     this.res = paramResources;
     this.filenames = new String[paramArrayList.size()];
     this.durations = new int[paramArrayList.size()];
-    int i = 0;
     while (i < paramArrayList.size())
     {
       this.filenames[i] = ((File)paramArrayList.get(paramArrayOfInteger[i].intValue())).getAbsolutePath();
@@ -28,7 +29,7 @@ public class LazyLoadAnimationDrawable$Info
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.view.LazyLoadAnimationDrawable.Info
  * JD-Core Version:    0.7.0.1
  */

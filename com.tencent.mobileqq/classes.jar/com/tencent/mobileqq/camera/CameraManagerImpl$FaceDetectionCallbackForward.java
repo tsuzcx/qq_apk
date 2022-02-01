@@ -17,13 +17,18 @@ class CameraManagerImpl$FaceDetectionCallbackForward
   
   public void onFaceDetection(Camera.Face[] paramArrayOfFace, Camera paramCamera)
   {
-    QLog.d("Q.camera.CameraManagerImpl", 2, "[onFaceDetection] faces = " + paramArrayOfFace + ", length = " + paramArrayOfFace.length);
+    paramCamera = new StringBuilder();
+    paramCamera.append("[onFaceDetection] faces = ");
+    paramCamera.append(paramArrayOfFace);
+    paramCamera.append(", length = ");
+    paramCamera.append(paramArrayOfFace.length);
+    QLog.d("Q.camera.CameraManagerImpl", 2, paramCamera.toString());
     this.jdField_a_of_type_AndroidOsHandler.post(new CameraManagerImpl.FaceDetectionCallbackForward.1(this, paramArrayOfFace));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.camera.CameraManagerImpl.FaceDetectionCallbackForward
  * JD-Core Version:    0.7.0.1
  */

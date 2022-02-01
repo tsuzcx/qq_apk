@@ -43,7 +43,7 @@ public class ProteusParser
       paramObject = paramObject.toString();
       if (paramObject.startsWith("$"))
       {
-        paramValueBean.putDynamicValue(paramObject.substring("$".length(), paramObject.length()), paramString);
+        paramValueBean.putDynamicValue(paramObject.substring(1, paramObject.length()), paramString);
         return true;
       }
       paramObject = parse$Value(paramObject);
@@ -55,12 +55,9 @@ public class ProteusParser
         }
         return true;
       }
+      return false;
     }
-    else
-    {
-      return deal$AttrValue(paramValueBean, paramString, paramObject);
-    }
-    return false;
+    return deal$AttrValue(paramValueBean, paramString, paramObject);
   }
   
   private static int compare(List<Integer> paramList1, List<Integer> paramList2)
@@ -82,18 +79,16 @@ public class ProteusParser
   
   private boolean deal$AttrValue(ValueBean paramValueBean, String paramString, Object paramObject)
   {
+    boolean bool3 = paramObject instanceof JSONArray;
+    boolean bool1 = false;
+    boolean bool2 = false;
     int i = 0;
-    boolean bool1;
-    if ((paramObject instanceof JSONArray))
+    if (bool3)
     {
       paramObject = (JSONArray)paramObject;
       bool1 = false;
-      for (;;)
+      while (i < paramObject.length())
       {
-        bool2 = bool1;
-        if (i >= paramObject.length()) {
-          break label155;
-        }
         try
         {
           bool2 = check$ValueItem(paramValueBean, paramString, paramObject.get(i));
@@ -101,60 +96,49 @@ public class ProteusParser
         }
         catch (JSONException localJSONException1)
         {
-          for (;;)
-          {
-            localJSONException1.printStackTrace();
-          }
+          localJSONException1.printStackTrace();
         }
         i += 1;
       }
+      return bool1;
     }
     if ((paramObject instanceof JSONObject))
     {
       paramObject = (JSONObject)paramObject;
       Iterator localIterator = paramObject.keys();
-      bool1 = false;
       for (;;)
       {
         bool2 = bool1;
         if (!localIterator.hasNext()) {
-          break label155;
+          break;
         }
         String str = (String)localIterator.next();
         try
         {
           bool2 = check$ValueItem(paramValueBean, paramString, paramObject.get(str));
-          bool1 = bool2 | bool1;
+          bool1 |= bool2;
         }
         catch (JSONException localJSONException2)
         {
-          for (;;)
-          {
-            localJSONException2.printStackTrace();
-          }
+          localJSONException2.printStackTrace();
         }
       }
     }
-    boolean bool2 = false;
-    label155:
     return bool2;
   }
   
   private void dealStyleMapArray(ValueBean paramValueBean, String paramString1, String paramString2, JSONArray paramJSONArray)
   {
     int i = 0;
-    if (i < paramJSONArray.length())
+    while (i < paramJSONArray.length())
     {
       Object localObject = paramJSONArray.get(i);
       if ((localObject instanceof String)) {
         paramValueBean.putDynamicValue((String)localObject, paramString1);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         dealStyleMapArray(paramValueBean, paramString1, paramString2, (JSONArray)localObject);
       }
+      i += 1;
     }
   }
   
@@ -170,25 +154,23 @@ public class ProteusParser
       if (((JSONObject)localObject).has("type"))
       {
         localObject = ((JSONObject)localObject).getString("type");
-        if (((String)localObject).equals("relative")) {
+        if (((String)localObject).equals("relative"))
+        {
           paramObject.valueType = 1003;
+          return paramObject;
         }
+        if (((String)localObject).equals("absolutely"))
+        {
+          paramObject.valueType = 1004;
+          return paramObject;
+        }
+        if (((String)localObject).equals("match_parent"))
+        {
+          paramObject.valueType = 1001;
+          return paramObject;
+        }
+        paramObject.valueType = 1002;
       }
-      else
-      {
-        return paramObject;
-      }
-      if (((String)localObject).equals("absolutely"))
-      {
-        paramObject.valueType = 1004;
-        return paramObject;
-      }
-      if (((String)localObject).equals("match_parent"))
-      {
-        paramObject.valueType = 1001;
-        return paramObject;
-      }
-      paramObject.valueType = 1002;
       return paramObject;
     }
     return getParamValue(paramObject);
@@ -196,9 +178,10 @@ public class ProteusParser
   
   private int getPriority(String paramString1, String paramString2, String paramString3, String paramString4)
   {
-    int j = 0;
     if (!TextUtils.isEmpty(paramString1)) {
       j = 10;
+    } else {
+      j = 0;
     }
     int i;
     if (TextUtils.isEmpty(paramString2))
@@ -210,7 +193,7 @@ public class ProteusParser
     {
       i = j + 100;
     }
-    j = i;
+    int j = i;
     if (!TextUtils.isEmpty(paramString4)) {
       j = i + 1000;
     }
@@ -224,18 +207,25 @@ public class ProteusParser
   
   public static TemplateBean getTemplateBean(BaseTemplateFactory paramBaseTemplateFactory, JSONObject paramJSONObject)
   {
-    if ((paramJSONObject == null) || (paramBaseTemplateFactory == null)) {
-      return null;
-    }
-    String str = paramJSONObject.getString("style_ID");
-    paramBaseTemplateFactory = paramBaseTemplateFactory.getTemplate(str);
-    if (paramBaseTemplateFactory == null)
+    if (paramJSONObject != null)
     {
-      LogUtil.QLog.e("readinjoy.proteus", 2, "proteus error : there is not Template: " + str);
-      return null;
+      if (paramBaseTemplateFactory == null) {
+        return null;
+      }
+      String str = paramJSONObject.getString("style_ID");
+      paramBaseTemplateFactory = paramBaseTemplateFactory.getTemplate(str);
+      if (paramBaseTemplateFactory == null)
+      {
+        paramBaseTemplateFactory = new StringBuilder();
+        paramBaseTemplateFactory.append("proteus error : there is not Template: ");
+        paramBaseTemplateFactory.append(str);
+        LogUtil.QLog.e("readinjoy.proteus", 2, paramBaseTemplateFactory.toString());
+        return null;
+      }
+      paramBaseTemplateFactory.bindData(paramJSONObject);
+      return paramBaseTemplateFactory;
     }
-    paramBaseTemplateFactory.bindData(paramJSONObject);
-    return paramBaseTemplateFactory;
+    return null;
   }
   
   private static List<Integer> getVersionArr(String paramString)
@@ -246,129 +236,114 @@ public class ProteusParser
     }
     paramString = paramString.split("\\.");
     int i = 0;
-    for (;;)
+    while (i < paramString.length)
     {
-      if (i < paramString.length) {
-        try
-        {
-          localArrayList.add(Integer.valueOf(Integer.parseInt(paramString[i])));
-          i += 1;
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            LogUtil.QLog.d("readinjoy.proteus", 2, "", localException);
-          }
-        }
+      try
+      {
+        localArrayList.add(Integer.valueOf(Integer.parseInt(paramString[i])));
       }
+      catch (Exception localException)
+      {
+        LogUtil.QLog.d("readinjoy.proteus", 2, "", localException);
+      }
+      i += 1;
     }
     return localArrayList;
   }
   
   private boolean isAlladinValid(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while (this.aladdinKey.contains(paramString)) {
+    if (TextUtils.isEmpty(paramString)) {
       return true;
     }
-    return false;
+    return this.aladdinKey.contains(paramString);
   }
   
   private boolean isPlatformValid(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ("android".equalsIgnoreCase(paramString)) {
+    if (TextUtils.isEmpty(paramString)) {
       return true;
     }
-    return false;
+    return "android".equalsIgnoreCase(paramString);
   }
   
   private boolean isStyleValid(BaseTemplateFactory paramBaseTemplateFactory, JSONObject paramJSONObject)
   {
-    boolean bool = true;
     String str1 = paramJSONObject.optString("platform");
     String str2 = paramJSONObject.optString("min_version");
     String str3 = paramJSONObject.optString("max_version");
     String str4 = paramJSONObject.optString("aladdin_key");
-    if (!isPlatformValid(str1)) {}
-    do
-    {
-      do
-      {
-        return false;
-      } while (!isVersionValid(str2, str3));
-      if (!TextUtils.isEmpty(str4)) {
-        return isAlladinValid(str4);
-      }
-      paramJSONObject = getStyleId(paramJSONObject);
-    } while (paramJSONObject == null);
+    if (!isPlatformValid(str1)) {
+      return false;
+    }
+    if (!isVersionValid(str2, str3)) {
+      return false;
+    }
+    if (!TextUtils.isEmpty(str4)) {
+      return isAlladinValid(str4);
+    }
+    paramJSONObject = getStyleId(paramJSONObject);
+    if (paramJSONObject == null) {
+      return false;
+    }
     int i = getPriority(str1, str2, str3, str4);
     paramBaseTemplateFactory = paramBaseTemplateFactory.getParseData(paramJSONObject);
     if (paramBaseTemplateFactory == null) {
       return true;
     }
-    if (i > paramBaseTemplateFactory.priority) {}
-    for (;;)
-    {
-      return bool;
-      bool = false;
-    }
+    return i > paramBaseTemplateFactory.priority;
   }
   
   private boolean isVersionValid(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(this.version)) {}
-    List localList;
-    do
-    {
+    if (TextUtils.isEmpty(this.version)) {
       return true;
-      localList = getVersionArr(this.version);
-      paramString1 = getVersionArr(paramString1);
-      paramString2 = getVersionArr(paramString2);
-      if ((!paramString1.isEmpty()) && (compare(localList, paramString1) < 0)) {
-        return false;
-      }
-    } while ((paramString2.isEmpty()) || (compare(localList, paramString2) <= 0));
-    return false;
+    }
+    List localList = getVersionArr(this.version);
+    paramString1 = getVersionArr(paramString1);
+    paramString2 = getVersionArr(paramString2);
+    if ((!paramString1.isEmpty()) && (compare(localList, paramString1) < 0)) {
+      return false;
+    }
+    return (paramString2.isEmpty()) || (compare(localList, paramString2) <= 0);
   }
   
   private void logStyleConfig(JSONObject paramJSONObject)
   {
-    StringBuilder localStringBuilder = new StringBuilder();
+    StringBuilder localStringBuilder1 = new StringBuilder();
     String str = getStyleId(paramJSONObject);
-    localStringBuilder.append("" + str);
-    localStringBuilder.append(":");
-    localStringBuilder.append(paramJSONObject.optString("min_version"));
-    localStringBuilder.append(":");
-    localStringBuilder.append(paramJSONObject.optString("max_version"));
-    localStringBuilder.append(":");
-    localStringBuilder.append(paramJSONObject.optString("aladdin_key"));
-    localStringBuilder.append(":");
-    localStringBuilder.append(paramJSONObject.optString("platform"));
-    LogUtil.QLog.w("readinjoy.proteus", 1, "logStyleConfig: " + localStringBuilder.toString());
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("");
+    localStringBuilder2.append(str);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder1.append(":");
+    localStringBuilder1.append(paramJSONObject.optString("min_version"));
+    localStringBuilder1.append(":");
+    localStringBuilder1.append(paramJSONObject.optString("max_version"));
+    localStringBuilder1.append(":");
+    localStringBuilder1.append(paramJSONObject.optString("aladdin_key"));
+    localStringBuilder1.append(":");
+    localStringBuilder1.append(paramJSONObject.optString("platform"));
+    paramJSONObject = new StringBuilder();
+    paramJSONObject.append("logStyleConfig: ");
+    paramJSONObject.append(localStringBuilder1.toString());
+    LogUtil.QLog.w("readinjoy.proteus", 1, paramJSONObject.toString());
   }
   
   private JSONObject maybeIncludeComponent(JSONObject paramJSONObject, ComplementFileStringLoader paramComplementFileStringLoader)
   {
-    JSONObject localJSONObject = paramJSONObject;
     if (paramJSONObject.has("$includeComponet"))
     {
-      if (paramComplementFileStringLoader == null) {
-        break label47;
+      if (paramComplementFileStringLoader != null)
+      {
+        paramJSONObject = paramComplementFileStringLoader.loadFileAsString(paramJSONObject.getString("$includeComponet"));
+        if (paramJSONObject != null) {
+          return new JSONObject(paramJSONObject);
+        }
       }
-      paramJSONObject = paramComplementFileStringLoader.loadFileAsString(paramJSONObject.getString("$includeComponet"));
-      if (paramJSONObject != null) {
-        localJSONObject = new JSONObject(paramJSONObject);
-      }
+      return null;
     }
-    else
-    {
-      return localJSONObject;
-    }
-    return null;
-    label47:
-    return null;
+    return paramJSONObject;
   }
   
   private ArrayList<String> parse$Value(String paramString)
@@ -430,46 +405,49 @@ public class ProteusParser
     {
       Object localObject1 = (String)localIterator.next();
       Object localObject2 = paramJSONObject.get((String)localObject1);
-      if (paramJSONObject.has("view_id")) {
+      Object localObject3;
+      if (paramJSONObject.has("view_id"))
+      {
         localViewBean.viewId = paramJSONObject.getString("view_id");
       }
-      for (;;)
+      else
       {
-        if (((String)localObject1).equals("view_type"))
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("$default_view_id");
+        ((StringBuilder)localObject3).append(defaultId.getAndIncrement());
+        localViewBean.viewId = ((StringBuilder)localObject3).toString();
+      }
+      if (((String)localObject1).equals("view_type"))
+      {
+        localObject1 = paramJSONObject.getString("view_type");
+        if ((!TextUtils.equals((CharSequence)localObject1, "cell")) && (!TextUtils.equals((CharSequence)localObject1, "container")))
         {
-          localObject1 = paramJSONObject.getString("view_type");
-          if ((TextUtils.equals((CharSequence)localObject1, "cell")) || (TextUtils.equals((CharSequence)localObject1, "container")))
-          {
-            if (TextUtils.equals("layout_relative", paramJSONObject.optString("layout_type")))
-            {
-              localViewBean.viewType = "RelativeLayout";
-              break;
-              localViewBean.viewId = ("$default_view_id" + defaultId.getAndIncrement());
-              continue;
-            }
-            localViewBean.viewType = "LinearLayout";
-            break;
-          }
           if (TextUtils.equals((CharSequence)localObject1, "UIView"))
           {
             if (paramJSONObject.optJSONArray("subviews") != null)
             {
-              if (TextUtils.equals("layout_relative", paramJSONObject.optString("layout_type")))
-              {
+              if (TextUtils.equals("layout_relative", paramJSONObject.optString("layout_type"))) {
                 localViewBean.viewType = "NativeRelativeLayout";
-                break;
+              } else {
+                localViewBean.viewType = "NativeLinearLayout";
               }
-              localViewBean.viewType = "NativeLinearLayout";
-              break;
             }
-            localViewBean.viewType = "NativeLinearLayout";
-            break;
+            else {
+              localViewBean.viewType = "NativeLinearLayout";
+            }
           }
-          localViewBean.viewType = ((String)localObject1);
-          break;
+          else {
+            localViewBean.viewType = ((String)localObject1);
+          }
+        }
+        else if (TextUtils.equals("layout_relative", paramJSONObject.optString("layout_type"))) {
+          localViewBean.viewType = "RelativeLayout";
+        } else {
+          localViewBean.viewType = "LinearLayout";
         }
       }
-      if (!((String)localObject1).equals("view_id")) {
+      else if (!((String)localObject1).equals("view_id"))
+      {
         if (((String)localObject1).equals("subviews"))
         {
           localObject1 = paramJSONObject.getJSONArray((String)localObject1);
@@ -477,9 +455,9 @@ public class ProteusParser
           int i = 0;
           while (i < ((JSONArray)localObject1).length())
           {
-            JSONObject localJSONObject = maybeIncludeComponent(((JSONArray)localObject1).getJSONObject(i), paramComplementFileStringLoader);
-            if (localJSONObject != null) {
-              ((List)localObject2).add(parseItemView(localJSONObject, paramComplementFileStringLoader, paramArrayList1, paramArrayList2));
+            localObject3 = maybeIncludeComponent(((JSONArray)localObject1).getJSONObject(i), paramComplementFileStringLoader);
+            if (localObject3 != null) {
+              ((List)localObject2).add(parseItemView((JSONObject)localObject3, paramComplementFileStringLoader, paramArrayList1, paramArrayList2));
             }
             i += 1;
           }
@@ -529,7 +507,10 @@ public class ProteusParser
       }
       catch (Exception paramString)
       {
-        LogUtil.QLog.e("readinjoy.proteus", 1, "trim$String error! msg=" + paramString);
+        paramArrayList = new StringBuilder();
+        paramArrayList.append("trim$String error! msg=");
+        paramArrayList.append(paramString);
+        LogUtil.QLog.e("readinjoy.proteus", 1, paramArrayList.toString());
       }
     }
   }
@@ -559,7 +540,11 @@ public class ProteusParser
     }
     catch (IllegalArgumentException paramBaseTemplateFactory)
     {
-      throw new IllegalArgumentException("问题源:" + str + paramBaseTemplateFactory.getMessage());
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("问题源:");
+      paramJSONObject.append(str);
+      paramJSONObject.append(paramBaseTemplateFactory.getMessage());
+      throw new IllegalArgumentException(paramJSONObject.toString());
     }
   }
   
@@ -567,36 +552,46 @@ public class ProteusParser
   
   void dealMethod(ValueBean paramValueBean, String paramString, Object paramObject, ProteusParser.HasDynamicDataCallback paramHasDynamicDataCallback)
   {
-    String str = null;
+    String str;
     if ((paramObject instanceof String)) {
       str = (String)paramObject;
+    } else {
+      str = null;
     }
-    if ((paramObject == null) || ("-1".equals(paramObject))) {
-      return;
-    }
-    if ((str != null) && (str.startsWith("$")))
+    if (paramObject != null)
     {
-      paramHasDynamicDataCallback.onCallBack(true);
-      paramValueBean.putDynamicValue(str.substring("$".length(), str.length()), paramString);
-      return;
+      if ("-1".equals(paramObject)) {
+        return;
+      }
+      if ((str != null) && (str.startsWith("$")))
+      {
+        paramHasDynamicDataCallback.onCallBack(true);
+        paramValueBean.putDynamicValue(str.substring(1, str.length()), paramString);
+        return;
+      }
+      paramHasDynamicDataCallback.onCallBack(deal$AttrValue(paramValueBean, paramString, paramObject));
     }
-    paramHasDynamicDataCallback.onCallBack(deal$AttrValue(paramValueBean, paramString, paramObject));
   }
   
   protected List<String> getDollarName(Object paramObject)
   {
     ArrayList localArrayList = new ArrayList();
-    if (((paramObject instanceof String)) && (((String)paramObject).startsWith("$")))
+    Object localObject;
+    if ((paramObject instanceof String))
     {
-      localArrayList.add(((String)paramObject).substring("$".length()));
-      return localArrayList;
+      localObject = (String)paramObject;
+      if (((String)localObject).startsWith("$"))
+      {
+        localArrayList.add(((String)localObject).substring(1));
+        return localArrayList;
+      }
     }
     if ((paramObject instanceof JSONObject))
     {
       paramObject = (JSONObject)paramObject;
-      Iterator localIterator = paramObject.keys();
-      while (localIterator.hasNext()) {
-        localArrayList.addAll(getDollarName(paramObject.opt((String)localIterator.next())));
+      localObject = paramObject.keys();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.addAll(getDollarName(paramObject.opt((String)((Iterator)localObject).next())));
       }
     }
     if ((paramObject instanceof JSONArray))
@@ -616,19 +611,17 @@ public class ProteusParser
   {
     ArrayMap localArrayMap = new ArrayMap();
     Iterator localIterator = paramJSONObject.keys();
-    label76:
     while (localIterator.hasNext())
     {
       String str = (String)localIterator.next();
       Object localObject = getParamValue(paramJSONObject.get(str));
-      if (localObject != null) {}
-      for (localObject = localObject.toString();; localObject = null)
-      {
-        if (localObject == null) {
-          break label76;
-        }
+      if (localObject != null) {
+        localObject = localObject.toString();
+      } else {
+        localObject = null;
+      }
+      if (localObject != null) {
         localArrayMap.put(str, localObject);
-        break;
       }
     }
     return localArrayMap;
@@ -641,42 +634,40 @@ public class ProteusParser
   
   protected Object getParamValue(Object paramObject, boolean paramBoolean)
   {
-    Object localObject1;
+    Object localObject;
     if ((paramObject instanceof JSONObject))
     {
       paramObject = (JSONObject)paramObject;
       if (paramObject.has("value")) {
-        localObject1 = paramObject.getString("value");
+        return paramObject.getString("value");
+      }
+      if (paramObject.has("type")) {
+        return paramObject.getString("type");
+      }
+      localObject = paramObject.keys();
+      if (((Iterator)localObject).hasNext()) {
+        return paramObject.getString((String)((Iterator)localObject).next());
       }
     }
-    Object localObject2;
-    do
+    else
     {
-      do
-      {
-        return localObject1;
-        if (paramObject.has("type")) {
-          return paramObject.getString("type");
-        }
-        localObject1 = paramObject.keys();
-        if (!((Iterator)localObject1).hasNext()) {
-          break;
-        }
-        return paramObject.getString((String)((Iterator)localObject1).next());
-        if ((paramObject instanceof String)) {
-          return (String)paramObject;
-        }
-        if (!(paramObject instanceof JSONArray)) {
-          break;
-        }
-        localObject1 = paramObject;
-      } while (!paramBoolean);
-      localObject2 = ((JSONArray)paramObject).get(0);
-      if ((localObject2 instanceof String)) {
-        return (String)localObject2;
+      if ((paramObject instanceof String)) {
+        return (String)paramObject;
       }
-      localObject1 = paramObject;
-    } while ((localObject2 instanceof JSONArray));
+      if ((paramObject instanceof JSONArray))
+      {
+        if (!paramBoolean) {
+          return paramObject;
+        }
+        localObject = ((JSONArray)paramObject).get(0);
+        if ((localObject instanceof String)) {
+          return (String)localObject;
+        }
+        if ((localObject instanceof JSONArray)) {
+          return paramObject;
+        }
+      }
+    }
     return null;
   }
   
@@ -685,30 +676,36 @@ public class ProteusParser
     Iterator localIterator = paramJSONObject.keys();
     while ((localIterator != null) && (localIterator.hasNext()))
     {
-      String str = (String)localIterator.next();
+      Object localObject1 = (String)localIterator.next();
       try
       {
-        Object localObject = paramJSONObject.get(str);
-        if ((localObject instanceof JSONObject))
-        {
-          boolean bool = ((JSONObject)localObject).has("view_type");
-          if (bool) {
-            return str;
-          }
+        Object localObject2 = paramJSONObject.get((String)localObject1);
+        if (!(localObject2 instanceof JSONObject)) {
+          continue;
         }
+        boolean bool = ((JSONObject)localObject2).has("view_type");
+        if (!bool) {
+          continue;
+        }
+        return localObject1;
       }
       catch (JSONException localJSONException)
       {
-        LogUtil.QLog.d("readinjoy.proteus", 2, "getStyleId : " + paramJSONObject);
+        label64:
+        break label64;
       }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getStyleId : ");
+      ((StringBuilder)localObject1).append(paramJSONObject);
+      LogUtil.QLog.d("readinjoy.proteus", 2, ((StringBuilder)localObject1).toString());
     }
     return null;
   }
   
   protected ArrayMap<String, Object> getTemplateGloabalVar(ArrayList<String> paramArrayList1, ArrayList<String> paramArrayList2)
   {
-    int j = 0;
     ArrayMap localArrayMap = new ArrayMap();
+    int j = 0;
     int i = 0;
     String str;
     while (i < paramArrayList1.size())
@@ -746,13 +743,9 @@ public class ProteusParser
         }
       }
       else if ("setRemoteInfo:".equals(str)) {
-        if ((localObject instanceof JSONObject))
-        {
+        if ((localObject instanceof JSONObject)) {
           parseDataAttrSetRemoteData((JSONObject)localObject, paramViewBean, paramArrayList);
-        }
-        else if (((localObject instanceof String)) && (((String)localObject).startsWith("$")))
-        {
-          str = (String)localObject;
+        } else if (((localObject instanceof String)) && (((String)localObject).startsWith("$"))) {
           dealMethod(paramViewBean.valueBean, "$setRemoteInfo:", localObject, new ProteusParser.2(this, paramViewBean, localObject, paramArrayList));
         }
       }
@@ -762,18 +755,22 @@ public class ProteusParser
   public void parseDataMap(String paramString)
   {
     paramString = new JSONObject(paramString);
+    Object localObject2;
     if (paramString.has("version"))
     {
-      localObject = paramString.getString("version");
-      LogUtil.QLog.d("readinjoy.proteus", 2, "proteus version : " + (String)localObject);
+      localObject1 = paramString.getString("version");
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("proteus version : ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      LogUtil.QLog.d("readinjoy.proteus", 2, ((StringBuilder)localObject2).toString());
     }
     paramString = paramString.getJSONObject("data_map");
-    Object localObject = paramString.keys();
-    while (((Iterator)localObject).hasNext())
+    Object localObject1 = paramString.keys();
+    while (((Iterator)localObject1).hasNext())
     {
-      String str = (String)((Iterator)localObject).next();
-      JSONObject localJSONObject = paramString.getJSONObject(str);
-      this.dynamicValueKeyMap.put(str, getKeyValue(localJSONObject));
+      localObject2 = (String)((Iterator)localObject1).next();
+      JSONObject localJSONObject = paramString.getJSONObject((String)localObject2);
+      this.dynamicValueKeyMap.put(localObject2, getKeyValue(localJSONObject));
     }
   }
   
@@ -782,15 +779,23 @@ public class ProteusParser
     ArrayMap localArrayMap = new ArrayMap();
     paramString2 = new JSONObject(paramString2);
     Iterator localIterator = paramString2.keys();
-    paramString1 = new StringBuilder("globaleVariable[" + paramString1 + "] : ");
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("globaleVariable[");
+    ((StringBuilder)localObject1).append(paramString1);
+    ((StringBuilder)localObject1).append("] : ");
+    paramString1 = new StringBuilder(((StringBuilder)localObject1).toString());
     while (localIterator.hasNext())
     {
-      String str = (String)localIterator.next();
-      Object localObject = paramString2.get(str);
-      if (localObject != null)
+      localObject1 = (String)localIterator.next();
+      Object localObject2 = paramString2.get((String)localObject1);
+      if (localObject2 != null)
       {
-        paramString1.append("key : ").append(str).append(", value : ").append(localObject).append(";");
-        localArrayMap.put(str, localObject);
+        paramString1.append("key : ");
+        paramString1.append((String)localObject1);
+        paramString1.append(", value : ");
+        paramString1.append(localObject2);
+        paramString1.append(";");
+        localArrayMap.put(localObject1, localObject2);
       }
     }
     LogUtil.QLog.d("ProteusParser", 1, paramString1.toString());
@@ -821,33 +826,34 @@ public class ProteusParser
   
   void putStyleMapValueKey(ValueBean paramValueBean, String paramString1, String paramString2)
   {
-    for (;;)
+    try
     {
-      try
+      if (paramString2.contains("["))
       {
-        if (paramString2.contains("[")) {
-          localJSONArray = new JSONArray(paramString2);
-        }
-      }
-      catch (Exception localException1) {}
-      try
-      {
-        dealStyleMapArray(paramValueBean, paramString1, paramString2, (JSONArray)localJSONArray);
-        paramString2 = localJSONArray;
-        paramValueBean.putAttributeDynamicValue(paramString1, paramString2);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
+        JSONArray localJSONArray = new JSONArray(paramString2);
+        try
         {
+          dealStyleMapArray(paramValueBean, paramString1, paramString2, (JSONArray)localJSONArray);
           paramString2 = localJSONArray;
         }
+        catch (Exception paramString2)
+        {
+          String str = paramString2;
+          paramString2 = localJSONArray;
+          break label59;
+        }
       }
-      paramValueBean.putDynamicValue(paramString2, paramString1);
-      continue;
-      LogUtil.QLog.e("readinjoy.proteus", 1, "style_map只支持Json字符串/数组,用$都支持:", localException1);
+      else
+      {
+        paramValueBean.putDynamicValue(paramString2, paramString1);
+      }
     }
+    catch (Exception localException)
+    {
+      label59:
+      LogUtil.QLog.e("readinjoy.proteus", 1, "style_map只支持Json字符串/数组,用$都支持:", localException);
+    }
+    paramValueBean.putAttributeDynamicValue(paramString1, paramString2);
   }
   
   public void setAladdinKey(Set<String> paramSet)
@@ -862,7 +868,7 @@ public class ProteusParser
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.parse.ProteusParser
  * JD-Core Version:    0.7.0.1
  */

@@ -46,25 +46,28 @@ public class FeedCommentDataProvider$AddFeedCommentRequest
     this.d = paramString4;
     this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack = paramLegoResponseCallBack;
     paramString1 = StoryReportor.a("home_page-comment_suc-d1");
-    if (TextUtils.isEmpty(paramString1)) {}
-    for (paramInt1 = 0;; paramInt1 = Integer.parseInt(paramString1))
-    {
-      this.jdField_a_of_type_Int = paramInt1;
-      return;
+    if (TextUtils.isEmpty(paramString1)) {
+      paramInt1 = 0;
+    } else {
+      paramInt1 = Integer.parseInt(paramString1);
     }
+    this.jdField_a_of_type_Int = paramInt1;
   }
   
   public LegoResponseBase a(byte[] paramArrayOfByte)
   {
-    qqstory_service.RspAddFeedComment localRspAddFeedComment = new qqstory_service.RspAddFeedComment();
+    Object localObject = new qqstory_service.RspAddFeedComment();
     try
     {
-      localRspAddFeedComment.mergeFrom(paramArrayOfByte);
-      return new FeedCommentDataProvider.AddFeedCommentResponse(localRspAddFeedComment, this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack);
+      ((qqstory_service.RspAddFeedComment)localObject).mergeFrom(paramArrayOfByte);
+      return new FeedCommentDataProvider.AddFeedCommentResponse((qqstory_service.RspAddFeedComment)localObject, this.jdField_a_of_type_ComTencentBizQqstoryCommentLegoLegoResponseCallBack);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      SLog.d("Q.qqstory:FeedCommentDataProvider", "" + paramArrayOfByte);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramArrayOfByte);
+      SLog.d("Q.qqstory:FeedCommentDataProvider", ((StringBuilder)localObject).toString());
     }
     return null;
   }
@@ -74,7 +77,7 @@ public class FeedCommentDataProvider$AddFeedCommentRequest
     return FeedCommentDataProvider.jdField_a_of_type_JavaLangString;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqAddFeedComment localReqAddFeedComment = new qqstory_service.ReqAddFeedComment();
     localReqAddFeedComment.feed_id.set(ByteStringMicro.copyFromUtf8(this.jdField_a_of_type_JavaLangString));
@@ -86,21 +89,19 @@ public class FeedCommentDataProvider$AddFeedCommentRequest
     }
     if (this.jdField_b_of_type_Int == 1) {
       localReqAddFeedComment.type.set(1);
-    }
-    for (;;)
-    {
-      localReqAddFeedComment.comment_type.set(this.jdField_c_of_type_Int);
-      if (!TextUtils.isEmpty(this.d)) {
-        localReqAddFeedComment.extras.set(ByteStringMicro.copyFromUtf8(this.d));
-      }
-      return localReqAddFeedComment.toByteArray();
+    } else {
       localReqAddFeedComment.type.set(0);
     }
+    localReqAddFeedComment.comment_type.set(this.jdField_c_of_type_Int);
+    if (!TextUtils.isEmpty(this.d)) {
+      localReqAddFeedComment.extras.set(ByteStringMicro.copyFromUtf8(this.d));
+    }
+    return localReqAddFeedComment.toByteArray();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.comment.FeedCommentDataProvider.AddFeedCommentRequest
  * JD-Core Version:    0.7.0.1
  */

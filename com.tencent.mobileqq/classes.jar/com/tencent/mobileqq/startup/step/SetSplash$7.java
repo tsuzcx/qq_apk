@@ -3,23 +3,22 @@ package com.tencent.mobileqq.startup.step;
 import com.tencent.mobileqq.startup.director.StartupDirector;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer;
-import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnErrorListener;
+import com.tencent.qqlive.mediaplayer.api.TVK_IMediaPlayer.OnCompletionListener;
 
 final class SetSplash$7
-  implements TVK_IMediaPlayer.OnErrorListener
+  implements TVK_IMediaPlayer.OnCompletionListener
 {
   SetSplash$7(StartupDirector paramStartupDirector) {}
   
-  public boolean onError(TVK_IMediaPlayer paramTVK_IMediaPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString, Object paramObject)
+  public void onCompletion(TVK_IMediaPlayer paramTVK_IMediaPlayer)
   {
-    QLog.i("QSplash@QbossSplashUtil", 1, "splash_logoerro+ errotype" + paramInt1 + "errcode =" + paramInt2);
+    QLog.i("QSplash@VasSplashUtil", 1, "video finish");
     this.a.a(15, 1, 0L);
-    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.SetSplash.7
  * JD-Core Version:    0.7.0.1
  */

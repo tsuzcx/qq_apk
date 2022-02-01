@@ -7,12 +7,12 @@ class HuaweiApiManager$ConnectionManager$3
   
   public void run()
   {
-    HuaweiApiManager.ConnectionManager.c(this.a);
+    HuaweiApiManager.ConnectionManager.access$600(this.this$1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.common.internal.HuaweiApiManager.ConnectionManager.3
  * JD-Core Version:    0.7.0.1
  */

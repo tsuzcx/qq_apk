@@ -1,9 +1,14 @@
 package com.tencent.mobileqq.filemanager.api.impl;
 
-import com.tencent.mobileqq.config.business.qfile.IExcitingC2CDownloadConfig;
-import com.tencent.mobileqq.config.business.qfile.IExcitingC2CUploadConfig;
-import com.tencent.mobileqq.config.business.qfile.IExcitingGroupDownloadConfig;
-import com.tencent.mobileqq.config.business.qfile.IExcitingGroupUploadConfig;
+import com.tencent.mobileqq.config.business.qfile.IConfigMgr;
+import com.tencent.mobileqq.config.business.qfile.IQFileAppStorePromoteConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileAppStorePromoteDialogConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileDatalineConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingC2CDownloadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingC2CUploadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingGroupDownloadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileExcitingGroupUploadConfigBean;
+import com.tencent.mobileqq.config.business.qfile.IQFileFileReaderConfigBean;
 import com.tencent.mobileqq.filemanager.api.IFileAssistantTipsConfig;
 import com.tencent.mobileqq.filemanager.api.IQFileConfigManager;
 import com.tencent.mobileqq.filemanager.app.QFileConfigManager;
@@ -13,207 +18,228 @@ import mqq.app.AppRuntime;
 public class QFileConfigManagerImpl
   implements IQFileConfigManager
 {
+  private AppRuntime mApp;
+  private QFileConfigManager mQFileConfigManager;
+  
   public boolean getC2CFileIPv6Switch()
   {
-    return QFileConfigManager.a().e();
+    return QFileConfigManager.a(this.mApp).e();
+  }
+  
+  public IQFileDatalineConfigBean getDatalineConfig()
+  {
+    return QFileConfigManager.a(this.mApp).a();
   }
   
   public boolean getDatalineFileIPv6Switch()
   {
-    return QFileConfigManager.a().h();
+    return QFileConfigManager.a(this.mApp).h();
   }
   
   public int getDebugDatalineSettingDevice()
   {
-    return QFileConfigManager.a().b();
+    return QFileConfigManager.a(this.mApp).b();
   }
   
   public String getDebugDatalineSettingUin()
   {
-    return QFileConfigManager.a().a();
+    return QFileConfigManager.a(this.mApp).a();
   }
   
   public boolean getDebugTroopAIOVideoDownloadPlay()
   {
-    return QFileConfigManager.a().m();
+    return QFileConfigManager.a(this.mApp).m();
   }
   
   public boolean getDiscFileIPv6Switch()
   {
-    return QFileConfigManager.a().g();
+    return QFileConfigManager.a(this.mApp).g();
   }
   
-  public IExcitingC2CDownloadConfig getExcitingC2CDownloadConfig()
+  public IQFileExcitingC2CDownloadConfigBean getExcitingC2CDownloadConfig()
   {
-    return QFileConfigManager.a().a();
+    return QFileConfigManager.a(this.mApp).a();
   }
   
-  public IExcitingC2CUploadConfig getExcitingC2CUploadConfig()
+  public IQFileExcitingC2CUploadConfigBean getExcitingC2CUploadConfig()
   {
-    return QFileConfigManager.a().a();
+    return QFileConfigManager.a(this.mApp).a();
   }
   
-  public IExcitingGroupDownloadConfig getExcitingGroupDownloadConfig()
+  public IQFileExcitingGroupDownloadConfigBean getExcitingGroupDownloadConfig()
   {
-    return QFileConfigManager.a().a();
+    return QFileConfigManager.a(this.mApp).a();
   }
   
-  public IExcitingGroupUploadConfig getExcitingGroupUploadConfig()
+  public IQFileExcitingGroupUploadConfigBean getExcitingGroupUploadConfig()
   {
-    return QFileConfigManager.a().a();
+    return QFileConfigManager.a(this.mApp).a();
   }
   
   public IFileAssistantTipsConfig getFileAssistantTipsConfig()
   {
-    return QFileConfigManager.a().a();
+    return QFileConfigManager.a(this.mApp).a();
   }
   
   public DownloadFileConfig getFileAutoDownloadConfig(String paramString)
   {
-    return QFileConfigManager.a().a(paramString);
+    return QFileConfigManager.a(this.mApp).a(paramString);
   }
   
   public int getFileIPv6Strategy()
   {
-    return QFileConfigManager.a().a();
+    return QFileConfigManager.a(this.mApp).a();
   }
   
   public boolean getFileIPv6Switch()
   {
-    return QFileConfigManager.a().d();
+    return QFileConfigManager.a(this.mApp).d();
+  }
+  
+  public IQFileFileReaderConfigBean getFileReaderConfig()
+  {
+    return QFileConfigManager.a(this.mApp).a();
   }
   
   public boolean getGroupFileIPv6Switch()
   {
-    return QFileConfigManager.a().f();
+    return QFileConfigManager.a(this.mApp).f();
   }
   
   public String getHarcodeIP()
   {
-    return QFileConfigManager.a().b();
+    return QFileConfigManager.a(this.mApp).b();
+  }
+  
+  public IConfigMgr getQFileConfigManager()
+  {
+    if (this.mQFileConfigManager == null) {
+      this.mQFileConfigManager = new QFileConfigManager(this.mApp);
+    }
+    return this.mQFileConfigManager;
   }
   
   public boolean getTroopVideoFileSVIPSwitch()
   {
-    return QFileConfigManager.a().b();
+    return QFileConfigManager.a(this.mApp).b();
   }
   
   public boolean getTroopVideoFileSwitch()
   {
-    return QFileConfigManager.a().a();
+    return QFileConfigManager.a(this.mApp).a();
   }
   
   public boolean getTroopVideoFileYearSVIPSwitch()
   {
-    return QFileConfigManager.a().c();
+    return QFileConfigManager.a(this.mApp).c();
   }
   
-  public boolean isAppNull()
+  public IQFileAppStorePromoteConfigBean getYYBPromoteConfig()
   {
-    return QFileConfigManager.a().a() == null;
+    return QFileConfigManager.a(this.mApp).a();
+  }
+  
+  public IQFileAppStorePromoteDialogConfigBean getYYBPromoteDialogConfig()
+  {
+    return QFileConfigManager.a(this.mApp).a();
   }
   
   public boolean isHarcodeIP()
   {
-    return QFileConfigManager.a().o();
+    return QFileConfigManager.a(this.mApp).o();
   }
   
   public boolean isMMApkFileCheckEnable()
   {
-    return QFileConfigManager.a().n();
+    return QFileConfigManager.a(this.mApp).n();
   }
   
   public boolean isMediaPlatformEnabled()
   {
-    return QFileConfigManager.a().j();
+    return QFileConfigManager.a(this.mApp).j();
   }
   
   public boolean isMediaPlatformLocalEnabled()
   {
-    return QFileConfigManager.a().l();
+    return QFileConfigManager.a(this.mApp).l();
   }
   
   public boolean isUseMediaPlatformLocalConfig()
   {
-    return QFileConfigManager.a().k();
+    return QFileConfigManager.a(this.mApp).k();
   }
   
   public boolean isWlanOnly()
   {
-    return QFileConfigManager.a().i();
-  }
-  
-  public void onAppInit(AppRuntime paramAppRuntime)
-  {
-    QFileConfigManager.a().a(paramAppRuntime);
+    return QFileConfigManager.a(this.mApp).i();
   }
   
   public void onCreate(AppRuntime paramAppRuntime)
   {
-    QFileConfigManager.a().a(paramAppRuntime);
-    QFileConfigManager.a().a();
+    this.mApp = paramAppRuntime;
+    this.mQFileConfigManager = new QFileConfigManager(this.mApp);
   }
   
   public void onDestroy() {}
   
   public void setDatalineConfig()
   {
-    QFileConfigManager.a().c();
+    QFileConfigManager.a(this.mApp).b();
   }
   
   public void setDebugDatalineSettingDevice(int paramInt)
   {
-    QFileConfigManager.a().a(paramInt);
+    QFileConfigManager.a(this.mApp).a(paramInt);
   }
   
   public void setDebugDatalineSettingUin(String paramString)
   {
-    QFileConfigManager.a().a(paramString);
+    QFileConfigManager.a(this.mApp).a(paramString);
   }
   
   public void setDebugTroopAIOVideoDownloadPlay(boolean paramBoolean)
   {
-    QFileConfigManager.a().d(paramBoolean);
+    QFileConfigManager.a(this.mApp).d(paramBoolean);
   }
   
   public void setFileReaderConfig()
   {
-    QFileConfigManager.a().b();
+    QFileConfigManager.a(this.mApp).a();
   }
   
   public void setHarcodeIP(String paramString)
   {
-    QFileConfigManager.a().b(paramString);
+    QFileConfigManager.a(this.mApp).b(paramString);
   }
   
   public void setHarcodeIP(boolean paramBoolean)
   {
-    QFileConfigManager.a().f(paramBoolean);
+    QFileConfigManager.a(this.mApp).f(paramBoolean);
   }
   
   public void setMMApkFileCheckEnable(boolean paramBoolean)
   {
-    QFileConfigManager.a().e(paramBoolean);
+    QFileConfigManager.a(this.mApp).e(paramBoolean);
   }
   
   public void setMediaPlatformLocalEnabled(boolean paramBoolean)
   {
-    QFileConfigManager.a().c(paramBoolean);
+    QFileConfigManager.a(this.mApp).c(paramBoolean);
   }
   
   public void setUseMediaPlatformLocalConfig(boolean paramBoolean)
   {
-    QFileConfigManager.a().b(paramBoolean);
+    QFileConfigManager.a(this.mApp).b(paramBoolean);
   }
   
   public void setWlanOnly(boolean paramBoolean)
   {
-    QFileConfigManager.a().a(paramBoolean);
+    QFileConfigManager.a(this.mApp).a(paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.api.impl.QFileConfigManagerImpl
  * JD-Core Version:    0.7.0.1
  */

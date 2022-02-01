@@ -9,60 +9,66 @@ class ShapePathParser
 {
   static ShapePath parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    AnimatableShapeValue localAnimatableShapeValue = null;
-    boolean bool = false;
-    int j = 0;
     String str1 = null;
-    label11:
+    AnimatableShapeValue localAnimatableShapeValue = null;
+    int j = 0;
+    boolean bool = false;
     while (paramJsonReader.hasNext())
     {
       String str2 = paramJsonReader.nextName();
       int i = -1;
-      switch (str2.hashCode())
+      int k = str2.hashCode();
+      if (k != 3324)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (k != 3432)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label11;
-          if (str2.equals("nm"))
+          if (k != 3519)
           {
-            i = 0;
-            continue;
-            if (str2.equals("ind"))
-            {
+            if ((k == 104415) && (str2.equals("ind"))) {
               i = 1;
-              continue;
-              if (str2.equals("ks"))
-              {
-                i = 2;
-                continue;
-                if (str2.equals("hd")) {
-                  i = 3;
-                }
-              }
             }
           }
-          break;
+          else if (str2.equals("nm")) {
+            i = 0;
+          }
+        }
+        else if (str2.equals("ks")) {
+          i = 2;
         }
       }
-      str1 = paramJsonReader.nextString();
-      continue;
-      j = paramJsonReader.nextInt();
-      continue;
-      localAnimatableShapeValue = AnimatableValueParser.parseShapeData(paramJsonReader, paramLottieComposition);
-      continue;
-      bool = paramJsonReader.nextBoolean();
+      else if (str2.equals("hd")) {
+        i = 3;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              paramJsonReader.skipValue();
+            } else {
+              bool = paramJsonReader.nextBoolean();
+            }
+          }
+          else {
+            localAnimatableShapeValue = AnimatableValueParser.parseShapeData(paramJsonReader, paramLottieComposition);
+          }
+        }
+        else {
+          j = paramJsonReader.nextInt();
+        }
+      }
+      else {
+        str1 = paramJsonReader.nextString();
+      }
     }
     return new ShapePath(str1, j, localAnimatableShapeValue, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ShapePathParser
  * JD-Core Version:    0.7.0.1
  */

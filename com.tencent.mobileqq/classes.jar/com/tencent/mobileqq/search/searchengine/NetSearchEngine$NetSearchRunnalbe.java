@@ -3,6 +3,7 @@ package com.tencent.mobileqq.search.searchengine;
 import com.tencent.mobileqq.activity.contact.addcontact.ContactSearchFacade;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.search.base.engine.ISearchListener;
 import java.util.concurrent.CountDownLatch;
 
 class NetSearchEngine$NetSearchRunnalbe
@@ -10,7 +11,7 @@ class NetSearchEngine$NetSearchRunnalbe
 {
   private int jdField_a_of_type_Int;
   FriendListObserver jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = new NetSearchEngine.NetSearchRunnalbe.1(this);
-  private ISearchListener jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener;
+  private ISearchListener jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener;
   private String jdField_a_of_type_JavaLangString;
   public CountDownLatch a;
   private boolean jdField_a_of_type_Boolean;
@@ -19,7 +20,7 @@ class NetSearchEngine$NetSearchRunnalbe
   public NetSearchEngine$NetSearchRunnalbe(NetSearchEngine paramNetSearchEngine, String paramString, int[] paramArrayOfInt, int paramInt, ISearchListener paramISearchListener)
   {
     this.jdField_a_of_type_ArrayOfInt = paramArrayOfInt;
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = paramISearchListener;
+    this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = paramISearchListener;
     this.jdField_a_of_type_JavaLangString = paramString;
     this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch = new CountDownLatch(1);
@@ -28,7 +29,7 @@ class NetSearchEngine$NetSearchRunnalbe
   public void a()
   {
     this.jdField_a_of_type_Boolean = true;
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchengineISearchListener = null;
+    this.jdField_a_of_type_ComTencentMobileqqSearchBaseEngineISearchListener = null;
     NetSearchEngine.a(this.this$0).removeObserver(this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver);
     this.jdField_a_of_type_ComTencentMobileqqAppFriendListObserver = null;
     this.jdField_a_of_type_JavaUtilConcurrentCountDownLatch.countDown();
@@ -48,7 +49,7 @@ class NetSearchEngine$NetSearchRunnalbe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.NetSearchEngine.NetSearchRunnalbe
  * JD-Core Version:    0.7.0.1
  */

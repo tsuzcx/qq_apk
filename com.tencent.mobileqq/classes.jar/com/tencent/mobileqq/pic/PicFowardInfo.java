@@ -23,40 +23,52 @@ public class PicFowardInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nPicFowardInfo");
-    if (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo != null) {}
-    for (String str = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.a();; str = "\n |-upInfo=null")
-    {
-      localStringBuilder.append(str);
-      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo);
-      return localStringBuilder.toString();
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo;
+    if (localObject != null) {
+      localObject = ((PicUploadInfo)localObject).a();
+    } else {
+      localObject = "\n |-upInfo=null";
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo);
+    return localStringBuilder.toString();
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo == null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo;
+    if (localObject == null)
     {
       a("PicFowardInfo.check", "upInfo == null");
       return false;
     }
-    if (((this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1000) || (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1020) || (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1004)) && (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.d == null))
+    if (((((PicUploadInfo)localObject).b == 1000) || (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1020) || (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b == 1004)) && (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.d == null))
     {
-      a("PicFowardInfo.check", "secondId invalid,uinType:" + this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b + ",secondId:" + this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.d);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("secondId invalid,uinType:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.b);
+      ((StringBuilder)localObject).append(",secondId:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.d);
+      a("PicFowardInfo.check", ((StringBuilder)localObject).toString());
       return false;
     }
     if (this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_Int == -1)
     {
-      a("PicFowardInfo.check", "protocolType invalid,protocolType:" + this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_Int);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("protocolType invalid,protocolType:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_Int);
+      a("PicFowardInfo.check", ((StringBuilder)localObject).toString());
       return false;
     }
-    if (!FileUtils.b(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString))
+    if (!FileUtils.fileExistsAndNotEmpty(this.jdField_a_of_type_ComTencentMobileqqPicPicUploadInfo.jdField_g_of_type_JavaLangString))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo == null)
+      localObject = this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo;
+      if (localObject == null)
       {
         a("PicFowardInfo.check", "downInfo == null");
         return false;
       }
-      if (!this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.a())
+      if (!((PicDownloadInfo)localObject).a())
       {
         this.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo = this.jdField_a_of_type_ComTencentMobileqqPicPicDownloadInfo.jdField_a_of_type_ComTencentMobileqqPicPicInfoInterface$ErrInfo;
         return false;
@@ -87,7 +99,7 @@ public class PicFowardInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.PicFowardInfo
  * JD-Core Version:    0.7.0.1
  */

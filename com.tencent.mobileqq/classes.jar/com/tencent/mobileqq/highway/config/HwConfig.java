@@ -70,44 +70,65 @@ public class HwConfig
   
   public String ipList2String()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("IP= ");
-    Object localObject;
-    if ((this.ipList != null) && (this.ipList.size() > 0))
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("IP= ");
+    Object localObject1 = this.ipList;
+    Object localObject2;
+    StringBuilder localStringBuilder2;
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
     {
-      localIterator = this.ipList.iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.ipList.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (EndPoint)localIterator.next();
-        localStringBuilder.append(((EndPoint)localObject).toString() + "  ");
+        localObject2 = (EndPoint)((Iterator)localObject1).next();
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(((EndPoint)localObject2).toString());
+        localStringBuilder2.append("  ");
+        localStringBuilder1.append(localStringBuilder2.toString());
       }
     }
-    localStringBuilder.append("IPv6= ");
-    if ((this.ipv6List != null) && (this.ipv6List.size() > 0))
+    localStringBuilder1.append("IPv6= ");
+    localObject1 = this.ipv6List;
+    if ((localObject1 != null) && (((ArrayList)localObject1).size() > 0))
     {
-      localIterator = this.ipv6List.iterator();
-      while (localIterator.hasNext())
+      localObject1 = this.ipv6List.iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (EndPoint)localIterator.next();
-        localStringBuilder.append(((EndPoint)localObject).toString() + "  ");
+        localObject2 = (EndPoint)((Iterator)localObject1).next();
+        localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append(((EndPoint)localObject2).toString());
+        localStringBuilder2.append("  ");
+        localStringBuilder1.append(localStringBuilder2.toString());
       }
     }
-    localStringBuilder.append("   Segment Info= ");
-    Iterator localIterator = this.netSegConfList.iterator();
-    while (localIterator.hasNext())
+    localStringBuilder1.append("   Segment Info= ");
+    localObject1 = this.netSegConfList.iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      localObject = (HwNetSegConf)localIterator.next();
-      localStringBuilder.append(" NetType= " + ((HwNetSegConf)localObject).netType);
-      localStringBuilder.append(" SegSize= " + ((HwNetSegConf)localObject).segSize);
-      localStringBuilder.append(" SegNum= " + ((HwNetSegConf)localObject).segNum);
-      localStringBuilder.append(" CommNUm= " + ((HwNetSegConf)localObject).curConnNum);
+      localObject2 = (HwNetSegConf)((Iterator)localObject1).next();
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" NetType= ");
+      localStringBuilder2.append(((HwNetSegConf)localObject2).netType);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" SegSize= ");
+      localStringBuilder2.append(((HwNetSegConf)localObject2).segSize);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" SegNum= ");
+      localStringBuilder2.append(((HwNetSegConf)localObject2).segNum);
+      localStringBuilder1.append(localStringBuilder2.toString());
+      localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append(" CommNUm= ");
+      localStringBuilder2.append(((HwNetSegConf)localObject2).curConnNum);
+      localStringBuilder1.append(localStringBuilder2.toString());
     }
-    return localStringBuilder.toString();
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.config.HwConfig
  * JD-Core Version:    0.7.0.1
  */

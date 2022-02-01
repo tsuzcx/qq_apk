@@ -45,13 +45,16 @@ class ForwardTroopMemberControllerForMiniPie$1
         }
       }
     }
-    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, "loadDiscussionMember discussion mem list size is: " + localArrayList.size());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("loadDiscussionMember discussion mem list size is: ");
+    ((StringBuilder)localObject1).append(localArrayList.size());
+    QLog.i("ForwardTroopMemberControllerForMiniPie", 1, ((StringBuilder)localObject1).toString());
     ThreadManager.getUIHandler().post(new ForwardTroopMemberControllerForMiniPie.1.1(this, localArrayList));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.forward.ForwardTroopMemberControllerForMiniPie.1
  * JD-Core Version:    0.7.0.1
  */

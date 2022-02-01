@@ -113,19 +113,19 @@ public class FilterBusinessOperation
   private void setQmcfArtFilter(FilterDesc paramFilterDesc)
   {
     List localList = this.mCommonOperation.getQQFilters(90);
-    if ((localList != null) && (localList.size() == 1))
-    {
-      if (paramFilterDesc != null) {
-        break label46;
+    if ((localList != null) && (localList.size() == 1)) {
+      if (paramFilterDesc == null)
+      {
+        if (QmcfManager.getInstance().getCurrQmcfMode() == 1) {
+          QmcfManager.getInstance().setCurrQmcfMode(0);
+        }
       }
-      if (QmcfManager.getInstance().getCurrQmcfMode() == 1) {
-        QmcfManager.getInstance().setCurrQmcfMode(0);
+      else
+      {
+        int i = QmcfManager.getInstance().getMatchQmcfMode(paramFilterDesc.type);
+        QmcfManager.getInstance().switchQmcfModel(i, paramFilterDesc.getResFold(SdkContext.getInstance().getResources().getArtFilterResource().getFilterResPath()));
       }
     }
-    return;
-    label46:
-    int i = QmcfManager.getInstance().getMatchQmcfMode(paramFilterDesc.type);
-    QmcfManager.getInstance().switchQmcfModel(i, paramFilterDesc.getResFold(SdkContext.getInstance().getResources().getArtFilterResource().getFilterResPath()));
   }
   
   private void setSelectedFilterDesc(List<FilterDesc> paramList)
@@ -214,12 +214,14 @@ public class FilterBusinessOperation
   
   public float getCurrentMusicGain()
   {
-    QQSpecialAVFilter.MusicWaveformSupporter localMusicWaveformSupporter = null;
-    if (this.musicWaveformSupporterWeakReference != null) {
-      localMusicWaveformSupporter = (QQSpecialAVFilter.MusicWaveformSupporter)this.musicWaveformSupporterWeakReference.get();
+    Object localObject = this.musicWaveformSupporterWeakReference;
+    if (localObject != null) {
+      localObject = (QQSpecialAVFilter.MusicWaveformSupporter)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
     }
-    if (localMusicWaveformSupporter != null) {
-      return localMusicWaveformSupporter.getCurrentMusicGain();
+    if (localObject != null) {
+      return ((QQSpecialAVFilter.MusicWaveformSupporter)localObject).getCurrentMusicGain();
     }
     return -1.0F;
   }
@@ -265,34 +267,34 @@ public class FilterBusinessOperation
   
   public boolean isRunningMovieFilter()
   {
-    boolean bool2 = false;
     List localList = this.mCommonOperation.getQQFilters(100);
-    boolean bool1 = bool2;
-    if (localList != null)
-    {
-      bool1 = bool2;
-      if (localList.size() > 0) {
-        bool1 = ((QQMovieFilter)localList.get(0)).isFilterWork();
-      }
+    if ((localList != null) && (localList.size() > 0)) {
+      return ((QQMovieFilter)localList.get(0)).isFilterWork();
     }
-    return bool1;
+    return false;
   }
   
   public void playMovie(String paramString1, String paramString2, boolean paramBoolean, HWDecodeListener paramHWDecodeListener, float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    float f1 = 0.0F;
-    float f2 = 0.0F;
-    if ((paramFloat1 != 0.0F) || (paramFloat2 != 0.0F) || (paramFloat3 != 0.0F) || (paramFloat4 != 0.0F))
+    if ((paramFloat1 == 0.0F) && (paramFloat2 == 0.0F) && (paramFloat3 == 0.0F) && (paramFloat4 == 0.0F))
     {
-      f1 = (paramFloat3 / 2.0F - paramFloat1) / (paramFloat3 / 2.0F) * 0.5F;
-      f2 = (paramFloat2 - paramFloat4 / 2.0F) / (paramFloat4 / 2.0F) * 0.5F;
+      paramFloat1 = 0.0F;
+      paramFloat2 = 0.0F;
+    }
+    else
+    {
+      paramFloat3 /= 2.0F;
+      paramFloat1 = (paramFloat3 - paramFloat1) / paramFloat3;
+      paramFloat3 = paramFloat4 / 2.0F;
+      paramFloat2 = (paramFloat2 - paramFloat3) / paramFloat3 * 0.5F;
+      paramFloat1 *= 0.5F;
     }
     Object localObject = this.mCommonOperation.getQQFilters(100);
     if ((localObject != null) && (((List)localObject).size() > 0))
     {
       localObject = ((List)localObject).iterator();
       while (((Iterator)localObject).hasNext()) {
-        ((QQMovieFilter)((Iterator)localObject).next()).startPlay(paramString1, paramString2, paramBoolean, f1, f2, paramHWDecodeListener);
+        ((QQMovieFilter)((Iterator)localObject).next()).startPlay(paramString1, paramString2, paramBoolean, paramFloat1, paramFloat2, paramHWDecodeListener);
       }
     }
   }
@@ -312,9 +314,9 @@ public class FilterBusinessOperation
   
   public void setFilterEffect(FilterDesc paramFilterDesc)
   {
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(paramFilterDesc);
-    setSelectedFilterDesc(localArrayList);
+    Object localObject = new ArrayList();
+    ((List)localObject).add(paramFilterDesc);
+    setSelectedFilterDesc((List)localObject);
     if (paramFilterDesc == null)
     {
       setAvSingleFilter(null);
@@ -324,7 +326,10 @@ public class FilterBusinessOperation
       SLog.i("FilterRender", "set currentFilter null");
       return;
     }
-    SLog.i("FilterRender", "set currentFilter " + paramFilterDesc.name);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("set currentFilter ");
+    ((StringBuilder)localObject).append(paramFilterDesc.name);
+    SLog.i("FilterRender", ((StringBuilder)localObject).toString());
     if (paramFilterDesc.type == 0)
     {
       setAvSingleFilter(paramFilterDesc);
@@ -341,23 +346,23 @@ public class FilterBusinessOperation
       setPtColorFilter(null);
       return;
     }
-    if ((paramFilterDesc.type == 1) || (paramFilterDesc.type == 3))
+    if ((paramFilterDesc.type != 1) && (paramFilterDesc.type != 3))
     {
-      setAvSingleFilter(null);
-      setSpecialSingleFilter(null);
-      setQmcfArtFilter(paramFilterDesc);
-      setPtColorFilter(null);
+      if (paramFilterDesc.type == 5)
+      {
+        setQmcfArtFilter(null);
+        setSpecialSingleFilter(null);
+        setAvSingleFilter(null);
+        setPtColorFilter(paramFilterDesc);
+        return;
+      }
+      SLog.e("FilterRender", "set currentFilter unKnown");
       return;
     }
-    if (paramFilterDesc.type == 5)
-    {
-      setQmcfArtFilter(null);
-      setSpecialSingleFilter(null);
-      setAvSingleFilter(null);
-      setPtColorFilter(paramFilterDesc);
-      return;
-    }
-    SLog.e("FilterRender", "set currentFilter unKnown");
+    setAvSingleFilter(null);
+    setSpecialSingleFilter(null);
+    setQmcfArtFilter(paramFilterDesc);
+    setPtColorFilter(null);
   }
   
   public void setFilterEffectList(List<FilterDesc> paramList)
@@ -366,14 +371,8 @@ public class FilterBusinessOperation
     setAvSingleFilter(null);
     setSpecialSingleFilter(null);
     setSingleMTVFilter(null);
-    if ((paramList == null) || (paramList.size() == 0))
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      setQmcfArtFilter(null);
-      setPtColorFilter(null);
-    }
-    for (;;)
-    {
-      return;
       paramList = paramList.iterator();
       while (paramList.hasNext())
       {
@@ -410,7 +409,10 @@ public class FilterBusinessOperation
           }
         }
       }
+      return;
     }
+    setQmcfArtFilter(null);
+    setPtColorFilter(null);
   }
   
   public void setFilterEffectList(List<FilterDesc> paramList, boolean paramBoolean)
@@ -418,7 +420,6 @@ public class FilterBusinessOperation
     if (paramList == null) {
       return;
     }
-    label16:
     FilterDesc localFilterDesc1;
     int i;
     FilterDesc localFilterDesc2;
@@ -431,72 +432,68 @@ public class FilterBusinessOperation
         if (localFilterDesc1 != null)
         {
           i = QQAVImageFilterConstants.getFilterType(localFilterDesc1.id);
-          if (!QQAVImageFilterConstants.isNormalFilterSpecialCases(localFilterDesc1.id, localFilterDesc1.name)) {
-            break label127;
+          if (QQAVImageFilterConstants.isNormalFilterSpecialCases(localFilterDesc1.id, localFilterDesc1.name))
+          {
+            setQmcfArtFilter(null);
+            localFilterDesc2 = getSelectedTypeFilter(1);
+            if (localFilterDesc2 != null) {
+              removeSelectedFilterDesc(localFilterDesc2);
+            }
+            setSpecialSingleFilter(null);
+            localFilterDesc2 = getSelectedTypeFilter(2);
+            if (localFilterDesc2 != null) {
+              removeSelectedFilterDesc(localFilterDesc2);
+            }
+            setAvSingleFilter(localFilterDesc1);
           }
-          setQmcfArtFilter(null);
-          localFilterDesc2 = getSelectedTypeFilter(1);
-          if (localFilterDesc2 != null) {
-            removeSelectedFilterDesc(localFilterDesc2);
+          else if (i == 0)
+          {
+            setAvSingleFilter(localFilterDesc1);
           }
-          setSpecialSingleFilter(null);
-          localFilterDesc2 = getSelectedTypeFilter(2);
-          if (localFilterDesc2 != null) {
-            removeSelectedFilterDesc(localFilterDesc2);
+          else if (i == 2)
+          {
+            setSpecialSingleFilter(localFilterDesc1);
           }
-          setAvSingleFilter(localFilterDesc1);
+          else if (i == 1)
+          {
+            setQmcfArtFilter(localFilterDesc1);
+          }
+          else if (i == 4)
+          {
+            setSingleMTVFilter(localFilterDesc1);
+          }
+          addSelectedFilterDesc(localFilterDesc1);
         }
-      }
-      for (;;)
-      {
-        addSelectedFilterDesc(localFilterDesc1);
-        break label16;
-        break;
-        label127:
-        if (i == 0) {
-          setAvSingleFilter(localFilterDesc1);
-        } else if (i == 2) {
-          setSpecialSingleFilter(localFilterDesc1);
-        } else if (i == 1) {
-          setQmcfArtFilter(localFilterDesc1);
-        } else if (i == 4) {
-          setSingleMTVFilter(localFilterDesc1);
-        } else if (i != 5) {}
       }
     }
     paramList = paramList.iterator();
-    for (;;)
+    while (paramList.hasNext())
     {
-      label197:
-      if (paramList.hasNext())
+      localFilterDesc1 = (FilterDesc)paramList.next();
+      if (localFilterDesc1 != null)
       {
-        localFilterDesc1 = (FilterDesc)paramList.next();
-        if (localFilterDesc1 != null)
+        i = QQAVImageFilterConstants.getFilterType(localFilterDesc1.id);
+        if (i == 0)
         {
-          i = QQAVImageFilterConstants.getFilterType(localFilterDesc1.id);
-          if (i != 0) {
-            break label277;
-          }
           localFilterDesc2 = getSelectedTypeFilter(i);
           if ((localFilterDesc2 != null) && (localFilterDesc2.name.equals(localFilterDesc1.name))) {
             setAvSingleFilter(null);
           }
         }
+        else if (i == 2)
+        {
+          setSpecialSingleFilter(null);
+        }
+        else if (i == 1)
+        {
+          setQmcfArtFilter(null);
+        }
+        else if (i == 4)
+        {
+          setSingleMTVFilter(null);
+        }
+        removeSelectedFilterDesc(localFilterDesc1);
       }
-    }
-    for (;;)
-    {
-      removeSelectedFilterDesc(localFilterDesc1);
-      break label197;
-      break;
-      label277:
-      if (i == 2) {
-        setSpecialSingleFilter(null);
-      } else if (i == 1) {
-        setQmcfArtFilter(null);
-      } else if (i == 4) {
-        setSingleMTVFilter(null);
-      } else if (i != 5) {}
     }
   }
   
@@ -510,13 +507,17 @@ public class FilterBusinessOperation
   
   public void setMovieEffectPoint(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4)
   {
-    if ((this.movieMaterial == null) || (!FileUtil.fileExistsAndNotEmpty(this.movieMaterial.doodleVideoPath))) {}
-    for (;;)
+    Object localObject = this.movieMaterial;
+    if (localObject != null)
     {
-      return;
-      paramFloat1 = (paramFloat3 / 2.0F - paramFloat1) / (paramFloat3 / 2.0F);
-      paramFloat2 = (paramFloat2 - paramFloat4 / 2.0F) / (paramFloat4 / 2.0F);
-      Object localObject = this.mCommonOperation.getQQFilters(100);
+      if (!FileUtil.fileExistsAndNotEmpty(((MovieMaterial)localObject).doodleVideoPath)) {
+        return;
+      }
+      paramFloat3 /= 2.0F;
+      paramFloat1 = (paramFloat3 - paramFloat1) / paramFloat3;
+      paramFloat3 = paramFloat4 / 2.0F;
+      paramFloat2 = (paramFloat2 - paramFloat3) / paramFloat3;
+      localObject = this.mCommonOperation.getQQFilters(100);
       if ((localObject != null) && (((List)localObject).size() > 0))
       {
         localObject = ((List)localObject).iterator();
@@ -577,7 +578,7 @@ public class FilterBusinessOperation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.FilterBusinessOperation
  * JD-Core Version:    0.7.0.1
  */

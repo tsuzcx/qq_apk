@@ -13,19 +13,23 @@ public class OpenSdkSwitchConfBean$OpenSdkSwitchConfig
   
   public void a(String paramString)
   {
-    boolean bool = false;
-    if (TextUtils.isEmpty(paramString)) {
+    if (TextUtils.isEmpty(paramString))
+    {
       QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config content is empty");
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OpenVirtual.switch.config.parse=");
+    localStringBuilder.append(paramString);
+    QLog.i("OpenSdkSwitchConfig", 1, localStringBuilder.toString());
     for (;;)
     {
-      return;
-      QLog.i("OpenSdkSwitchConfig", 1, "OpenVirtual.switch.config.parse=" + paramString);
       try
       {
-        if (new JSONObject(paramString).optInt("enable", 0) == 1) {
-          bool = true;
+        if (new JSONObject(paramString).optInt("enable", 0) != 1) {
+          break label115;
         }
+        bool = true;
         this.a = bool;
         if (QLog.isColorLevel())
         {
@@ -37,20 +41,24 @@ public class OpenSdkSwitchConfBean$OpenSdkSwitchConfig
       {
         QLog.e("OpenSdkSwitchConfig", 1, "OpenVirtual.config.getException.", paramString);
       }
+      return;
+      label115:
+      boolean bool = false;
     }
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("OpenSdkSwitchConfig={");
-    localStringBuilder.append("enable:").append(this.a);
+    localStringBuilder.append("enable:");
+    localStringBuilder.append(this.a);
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.OpenSdkSwitchConfBean.OpenSdkSwitchConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -14,12 +14,17 @@ public class DiffUtils$ReplacePatch
   
   public String toString()
   {
-    return "ReplacePatch oldId:" + this.oldId + " newId:" + this.newId;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ReplacePatch oldId:");
+    localStringBuilder.append(this.oldId);
+    localStringBuilder.append(" newId:");
+    localStringBuilder.append(this.newId);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.DiffUtils.ReplacePatch
  * JD-Core Version:    0.7.0.1
  */

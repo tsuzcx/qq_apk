@@ -26,21 +26,28 @@ public class LoginUserGuideHelper$GuideRunnable
   {
     QQAppInterface localQQAppInterface = (QQAppInterface)this.b.get();
     Activity localActivity = (Activity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if ((localQQAppInterface == null) || (localActivity == null)) {
-      return;
+    if (localQQAppInterface != null)
+    {
+      if (localActivity == null) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("GuideRunnable : ");
+        localStringBuilder.append(this.jdField_a_of_type_Boolean);
+        QLog.i("LoginUserGuideHelper", 2, localStringBuilder.toString());
+      }
+      if (this.jdField_a_of_type_Boolean) {
+        ThreadManager.excute(new LoginUserGuideHelper.GuideRunnable.1(this, localQQAppInterface), 16, null, false);
+      }
+      LoginUserGuideHelper.a(localActivity, localQQAppInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("LoginUserGuideHelper", 2, "GuideRunnable : " + this.jdField_a_of_type_Boolean);
-    }
-    if (this.jdField_a_of_type_Boolean) {
-      ThreadManager.excute(new LoginUserGuideHelper.GuideRunnable.1(this, localQQAppInterface), 16, null, false);
-    }
-    LoginUserGuideHelper.a(localActivity, localQQAppInterface, this.jdField_a_of_type_Boolean, this.jdField_a_of_type_ComTencentMobileqqLoginwelcomeLoginUserGuideHelper$LocationListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.loginwelcome.LoginUserGuideHelper.GuideRunnable
  * JD-Core Version:    0.7.0.1
  */

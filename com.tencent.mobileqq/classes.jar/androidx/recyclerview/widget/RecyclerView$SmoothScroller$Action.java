@@ -39,9 +39,10 @@ public class RecyclerView$SmoothScroller$Action
     if ((this.mInterpolator != null) && (this.mDuration < 1)) {
       throw new IllegalStateException("If you provide an interpolator, you must set a positive duration");
     }
-    if (this.mDuration < 1) {
-      throw new IllegalStateException("Scroll duration must be a positive number");
+    if (this.mDuration >= 1) {
+      return;
     }
+    throw new IllegalStateException("Scroll duration must be a positive number");
   }
   
   public int getDuration()
@@ -79,9 +80,9 @@ public class RecyclerView$SmoothScroller$Action
   
   void runIfNecessary(RecyclerView paramRecyclerView)
   {
-    if (this.mJumpToPosition >= 0)
+    int i = this.mJumpToPosition;
+    if (i >= 0)
     {
-      int i = this.mJumpToPosition;
       this.mJumpToPosition = -1;
       paramRecyclerView.jumpToPositionForSmoothScroller(i);
       this.mChanged = false;
@@ -136,7 +137,7 @@ public class RecyclerView$SmoothScroller$Action
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.SmoothScroller.Action
  * JD-Core Version:    0.7.0.1
  */

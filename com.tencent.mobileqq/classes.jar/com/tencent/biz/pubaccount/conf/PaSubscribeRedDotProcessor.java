@@ -72,7 +72,7 @@ public class PaSubscribeRedDotProcessor
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      return SharedPreUtils.z(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
+      return SharedPreUtils.x(((QQAppInterface)localObject).getApp(), ((QQAppInterface)localObject).getAccount());
     }
     return 0;
   }
@@ -86,7 +86,7 @@ public class PaSubscribeRedDotProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PaSubscribeRedDotProcessor
  * JD-Core Version:    0.7.0.1
  */

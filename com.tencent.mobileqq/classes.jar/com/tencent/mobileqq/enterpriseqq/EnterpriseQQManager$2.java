@@ -17,16 +17,21 @@ class EnterpriseQQManager$2
   
   public void onLocationFinish(int paramInt, SosoLbsInfo arg2)
   {
-    int i = 1;
-    if (QLog.isColorLevel()) {
-      QLog.d("EnterpriseQQManager", 2, "onLocationFinish() errCode=" + paramInt);
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onLocationFinish() errCode=");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("EnterpriseQQManager", 2, ((StringBuilder)localObject1).toString());
     }
     if (paramInt == 0) {
-      paramInt = i;
+      paramInt = 1;
+    } else {
+      paramInt = 0;
     }
     EnterpriseQQManager.EventRequest localEventRequest;
-    label219:
-    while (paramInt != 0)
+    if (paramInt != 0)
     {
       ??? = ???.mLocation;
       double d1 = ???.mLat02;
@@ -36,50 +41,47 @@ class EnterpriseQQManager$2
       EnterpriseQQManager.a(this.a, System.currentTimeMillis());
       synchronized (EnterpriseQQManager.a())
       {
-        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-          break label219;
-        }
-        Iterator localIterator1 = EnterpriseQQManager.a(this.a).iterator();
-        do
+        if ((EnterpriseQQManager.a(this.a) != null) && (EnterpriseQQManager.a(this.a).size() > 0))
         {
-          if (!localIterator1.hasNext()) {
-            break;
+          localObject1 = EnterpriseQQManager.a(this.a).iterator();
+          while (((Iterator)localObject1).hasNext())
+          {
+            localEventRequest = (EnterpriseQQManager.EventRequest)((Iterator)localObject1).next();
+            if (localEventRequest != null) {
+              this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localEventRequest.a, localEventRequest.b, true, d1, d2);
+            }
           }
-          localEventRequest = (EnterpriseQQManager.EventRequest)localIterator1.next();
-        } while (localEventRequest == null);
-        this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localEventRequest.a, localEventRequest.b, true, d1, d2);
-      }
-      paramInt = 0;
-      continue;
-      EnterpriseQQManager.a(this.a).clear();
-    }
-    label362:
-    for (;;)
-    {
-      EnterpriseQQManager.a(this.a, null);
-      EnterpriseQQManager.a(this.a, null);
-      return;
-      synchronized (EnterpriseQQManager.a())
-      {
-        if ((EnterpriseQQManager.a(this.a) == null) || (EnterpriseQQManager.a(this.a).size() <= 0)) {
-          break label362;
+          EnterpriseQQManager.a(this.a).clear();
         }
-        Iterator localIterator2 = EnterpriseQQManager.a(this.a).iterator();
-        while (localIterator2.hasNext())
+      }
+    }
+    synchronized (EnterpriseQQManager.a())
+    {
+      if ((EnterpriseQQManager.a(this.a) != null) && (EnterpriseQQManager.a(this.a).size() > 0))
+      {
+        Iterator localIterator = EnterpriseQQManager.a(this.a).iterator();
+        while (localIterator.hasNext())
         {
-          localEventRequest = (EnterpriseQQManager.EventRequest)localIterator2.next();
+          localEventRequest = (EnterpriseQQManager.EventRequest)localIterator.next();
           if (localEventRequest != null) {
             this.a.a(EnterpriseQQManager.a(this.a), EnterpriseQQManager.a(this.a), localEventRequest.a, localEventRequest.b, false, 0.0D, 0.0D);
           }
         }
+        EnterpriseQQManager.a(this.a).clear();
       }
-      EnterpriseQQManager.a(this.a).clear();
+      EnterpriseQQManager.a(this.a, null);
+      EnterpriseQQManager.a(this.a, null);
+      return;
+    }
+    for (;;)
+    {
+      throw localObject3;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.enterpriseqq.EnterpriseQQManager.2
  * JD-Core Version:    0.7.0.1
  */

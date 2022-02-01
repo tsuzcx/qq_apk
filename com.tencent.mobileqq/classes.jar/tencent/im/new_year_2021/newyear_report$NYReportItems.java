@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class newyear_report$NYReportItems
   extends MessageMicro<NYReportItems>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 58 }, new String[] { "optime", "event", "action", "result", "param_array", "count", "str_action" }, new Object[] { Long.valueOf(0L), "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), "" }, NYReportItems.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field action = PBField.initUInt32(0);
   public final PBUInt32Field count = PBField.initUInt32(0);
   public final PBStringField event = PBField.initString("");
@@ -18,10 +18,16 @@ public final class newyear_report$NYReportItems
   public final PBStringField param_array = PBField.initString("");
   public final PBUInt32Field result = PBField.initUInt32(0);
   public final PBStringField str_action = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 32, 42, 48, 58 }, new String[] { "optime", "event", "action", "result", "param_array", "count", "str_action" }, new Object[] { Long.valueOf(0L), "", localInteger, localInteger, "", localInteger, "" }, NYReportItems.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.new_year_2021.newyear_report.NYReportItems
  * JD-Core Version:    0.7.0.1
  */

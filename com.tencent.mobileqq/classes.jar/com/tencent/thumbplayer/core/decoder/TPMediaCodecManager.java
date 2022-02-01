@@ -1,9 +1,9 @@
 package com.tencent.thumbplayer.core.decoder;
 
 import android.os.Build.VERSION;
-import android.support.annotation.RequiresApi;
 import android.util.SparseArray;
 import android.view.Surface;
+import androidx.annotation.RequiresApi;
 import com.tencent.thumbplayer.core.common.TPMethodCalledByNative;
 import com.tencent.thumbplayer.core.common.TPNativeLog;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -18,6 +18,8 @@ public class TPMediaCodecManager
   private static native void _onMediaCodecException(int paramInt, String paramString);
   
   private static native void _onMediaCodecReady(int paramInt, String paramString);
+  
+  private static native void _onMediaDrmInfo(int paramInt, Object paramObject);
   
   private static void addCodecToList(int paramInt, ITPMediaCodecDecoder paramITPMediaCodecDecoder)
   {
@@ -36,12 +38,14 @@ public class TPMediaCodecManager
       codecNum.set(0);
     }
     int i = codecNum.getAndIncrement();
-    if (paramBoolean) {}
-    for (Object localObject = new TPMediaCodecAudioDecoder(i);; localObject = new TPMediaCodecVideoDecoder(i))
-    {
-      addCodecToList(i, (ITPMediaCodecDecoder)localObject);
-      return i;
+    Object localObject;
+    if (paramBoolean) {
+      localObject = new TPMediaCodecAudioDecoder(i);
+    } else {
+      localObject = new TPMediaCodecVideoDecoder(i);
     }
+    addCodecToList(i, (ITPMediaCodecDecoder)localObject);
+    return i;
   }
   
   @TPMethodCalledByNative
@@ -60,14 +64,16 @@ public class TPMediaCodecManager
   {
     try
     {
-      ITPMediaCodecDecoder localITPMediaCodecDecoder2 = (ITPMediaCodecDecoder)mCodecList.get(paramInt);
-      ITPMediaCodecDecoder localITPMediaCodecDecoder1 = localITPMediaCodecDecoder2;
-      if (localITPMediaCodecDecoder2 == null)
+      Object localObject1 = (ITPMediaCodecDecoder)mCodecList.get(paramInt);
+      if (localObject1 == null)
       {
-        TPNativeLog.printLog(3, "TPMediaCodecManager", "No such codec by id:" + paramInt);
-        localITPMediaCodecDecoder1 = null;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("No such codec by id:");
+        ((StringBuilder)localObject1).append(paramInt);
+        TPNativeLog.printLog(3, "TPMediaCodecManager", ((StringBuilder)localObject1).toString());
+        return null;
       }
-      return localITPMediaCodecDecoder1;
+      return localObject1;
     }
     finally {}
   }
@@ -116,6 +122,11 @@ public class TPMediaCodecManager
   public static void onMediaCodecReady(int paramInt, String paramString)
   {
     _onMediaCodecReady(paramInt, paramString);
+  }
+  
+  public static void onMediaDrmInfo(int paramInt, Object paramObject)
+  {
+    _onMediaDrmInfo(paramInt, paramObject);
   }
   
   @TPMethodCalledByNative
@@ -299,7 +310,7 @@ public class TPMediaCodecManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.decoder.TPMediaCodecManager
  * JD-Core Version:    0.7.0.1
  */

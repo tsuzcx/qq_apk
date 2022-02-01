@@ -21,27 +21,25 @@ class NewUpgradeDialog$3
     AppCircleReportManager.a().a(17, STUtils.a(10010, NewUpgradeDialog.a(), 2, 200));
     if (NewUpgradeDialog.a() == 2) {
       ReportController.b(null, "dc00898", "", "", "0X8008F80", "0X8008F80", 0, 0, "", "", "", "");
-    }
-    for (;;)
-    {
-      if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-        this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog, 0);
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        DownloadManager.a().b(NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog));
-        this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog.dismiss();
-      }
-      NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog, true);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       ReportController.b(null, "dc00898", "", "", "0X8008F83", "0X8008F83", 0, 0, "", "", "", "");
     }
+    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog, 0);
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      DownloadManager.a().b(NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog));
+      this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog.dismiss();
+    }
+    NewUpgradeDialog.a(this.jdField_a_of_type_ComTencentMobileqqUpgradeNewUpgradeDialog, true);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.upgrade.NewUpgradeDialog.3
  * JD-Core Version:    0.7.0.1
  */

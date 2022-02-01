@@ -13,11 +13,12 @@ public abstract class BaseDanmakuRender<D extends BaseDanmaku>
   
   private void c(Canvas paramCanvas, D paramD, DanmakuContext paramDanmakuContext, float paramFloat1, float paramFloat2)
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      Iterator localIterator = this.a.iterator();
-      while (localIterator.hasNext()) {
-        ((IDanmakuOverlayDrawer)localIterator.next()).a(paramCanvas, paramD, paramDanmakuContext, paramFloat1, paramFloat2);
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((IDanmakuOverlayDrawer)((Iterator)localObject).next()).a(paramCanvas, paramD, paramDanmakuContext, paramFloat1, paramFloat2);
       }
     }
   }
@@ -40,7 +41,7 @@ public abstract class BaseDanmakuRender<D extends BaseDanmaku>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.render.BaseDanmakuRender
  * JD-Core Version:    0.7.0.1
  */

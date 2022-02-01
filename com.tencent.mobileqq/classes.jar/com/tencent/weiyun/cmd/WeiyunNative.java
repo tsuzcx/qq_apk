@@ -18,51 +18,49 @@ class WeiyunNative
   
   protected static boolean loadLibrary(String paramString)
   {
-    bool2 = true;
-    bool3 = true;
-    bool1 = true;
     if (sIsLoaded) {
       return true;
     }
-    for (;;)
+    boolean bool2 = false;
+    boolean bool1 = false;
+    try
     {
-      try
-      {
-        if (TextUtils.isEmpty(paramString)) {
-          System.loadLibrary("wlc_data_cmd_qq_v1.0.1");
-        }
-      }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
-      {
-        bool1 = false;
-        WyLog.e("WeiyunNative", "System.loadLibrary failed..", localUnsatisfiedLinkError1);
-        continue;
-      }
-      catch (Exception localException1)
-      {
-        bool1 = false;
-        WyLog.e("WeiyunNative", "System.loadLibrary failed..", localException1);
-        continue;
+      if (TextUtils.isEmpty(paramString)) {
+        System.loadLibrary("wlc_data_cmd_qq_v1.0.1");
+      } else {
+        System.load(paramString);
       }
       try
       {
         WyLog.v("WeiyunNative", "System.loadLibrary wlc_data_cmd_qq_v1.0.1 finish.");
-        WyLog.i("WeiyunNative", "loadLibrary libwlc_data_cmd_qq_v1.0.1.so result " + bool1 + ", path=" + paramString);
-        sIsLoaded = bool1;
-        return bool1;
+        bool1 = true;
       }
-      catch (Exception localException2)
+      catch (Exception localException1)
       {
-        bool1 = bool3;
-        continue;
+        bool1 = true;
       }
-      catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+      catch (UnsatisfiedLinkError localUnsatisfiedLinkError1)
       {
-        bool1 = bool2;
-        continue;
+        bool1 = true;
       }
-      System.load(paramString);
+      WyLog.e("WeiyunNative", "System.loadLibrary failed..", localUnsatisfiedLinkError2);
     }
+    catch (Exception localException2)
+    {
+      WyLog.e("WeiyunNative", "System.loadLibrary failed..", localException2);
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError2)
+    {
+      bool1 = bool2;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("loadLibrary libwlc_data_cmd_qq_v1.0.1.so result ");
+    localStringBuilder.append(bool1);
+    localStringBuilder.append(", path=");
+    localStringBuilder.append(paramString);
+    WyLog.i("WeiyunNative", localStringBuilder.toString());
+    sIsLoaded = bool1;
+    return bool1;
   }
   
   protected native void nativeCheckShareFile(DirItem[] paramArrayOfDirItem, FileItem[] paramArrayOfFileItem, String[] paramArrayOfString, long paramLong);
@@ -89,7 +87,7 @@ class WeiyunNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.cmd.WeiyunNative
  * JD-Core Version:    0.7.0.1
  */

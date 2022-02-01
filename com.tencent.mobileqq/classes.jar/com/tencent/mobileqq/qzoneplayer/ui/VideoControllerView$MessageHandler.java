@@ -20,49 +20,59 @@ class VideoControllerView$MessageHandler
   public void handleMessage(Message paramMessage)
   {
     VideoControllerView localVideoControllerView = (VideoControllerView)this.mView.get();
-    if ((localVideoControllerView == null) || (localVideoControllerView.mPlayer == null)) {}
-    do
+    if (localVideoControllerView != null)
     {
-      return;
-      switch (paramMessage.what)
-      {
-      default: 
+      if (localVideoControllerView.mPlayer == null) {
         return;
-      case 1: 
-        PlayerUtils.runOnUiThread(new VideoControllerView.MessageHandler.1(this, localVideoControllerView));
-        return;
-      case 2: 
-        if (localVideoControllerView.mPlayer.isPlayComplete()) {
-          break label137;
-        }
-        i = VideoControllerView.access$500(localVideoControllerView);
       }
-    } while ((VideoControllerView.access$300(localVideoControllerView)) || (localVideoControllerView.getParent() == null) || ((!localVideoControllerView.mShowing) && (localVideoControllerView.getVisibility() != 0)));
-    removeMessages(2);
-    sendMessageDelayed(obtainMessage(2), 1000 - i % 1000);
-    return;
-    label137:
-    int i = localVideoControllerView.mPlayer.getDuration();
-    if (i > 0) {
-      localVideoControllerView.mVideoDuration = i;
+      int i = paramMessage.what;
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3) {
+            return;
+          }
+          VideoControllerView.access$500(localVideoControllerView);
+          return;
+        }
+        if (!localVideoControllerView.mPlayer.isPlayComplete())
+        {
+          i = VideoControllerView.access$500(localVideoControllerView);
+          if ((!VideoControllerView.access$300(localVideoControllerView)) && (localVideoControllerView.getParent() != null) && ((localVideoControllerView.mShowing) || (localVideoControllerView.getVisibility() == 0)))
+          {
+            removeMessages(2);
+            sendMessageDelayed(obtainMessage(2), 1000 - i % 1000);
+          }
+        }
+        else
+        {
+          i = localVideoControllerView.mPlayer.getDuration();
+          if (i > 0) {
+            localVideoControllerView.mVideoDuration = i;
+          }
+          localVideoControllerView.setProgress(localVideoControllerView.mVideoDuration);
+        }
+      }
+      else
+      {
+        PlayerUtils.runOnUiThread(new VideoControllerView.MessageHandler.1(this, localVideoControllerView));
+      }
     }
-    localVideoControllerView.setProgress(localVideoControllerView.mVideoDuration);
-    return;
-    VideoControllerView.access$500(localVideoControllerView);
   }
   
   public boolean sendMessageAtTime(Message paramMessage, long paramLong)
   {
     VideoControllerView localVideoControllerView = (VideoControllerView)this.mView.get();
-    if ((localVideoControllerView == null) || (localVideoControllerView.mPlayer == null)) {
-      return false;
+    if ((localVideoControllerView != null) && (localVideoControllerView.mPlayer != null)) {
+      return super.sendMessageAtTime(paramMessage, paramLong);
     }
-    return super.sendMessageAtTime(paramMessage, paramLong);
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qzoneplayer.ui.VideoControllerView.MessageHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -35,16 +35,17 @@ public class RoundRectView
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     RectF localRectF = new RectF(0.0F, 0.0F, this.b, this.c);
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
-    paramCanvas.drawRoundRect(localRectF, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, this.jdField_a_of_type_AndroidGraphicsPaint);
+    int i = this.jdField_a_of_type_Int;
+    paramCanvas.drawRoundRect(localRectF, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
   @SuppressLint({"DrawAllocation"})
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     paramInt1 = getWidth();
@@ -80,7 +81,7 @@ public class RoundRectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.ui.RoundRectView
  * JD-Core Version:    0.7.0.1
  */

@@ -25,16 +25,18 @@ final class CompletableOnSubscribeConcatArray$ConcatInnerSubscriber
   
   void next()
   {
-    if (this.sd.isUnsubscribed()) {}
+    if (this.sd.isUnsubscribed()) {
+      return;
+    }
+    if (getAndIncrement() != 0) {
+      return;
+    }
+    Completable[] arrayOfCompletable = this.sources;
     do
     {
-      Completable[] arrayOfCompletable;
-      do
-      {
+      if (this.sd.isUnsubscribed()) {
         return;
-        while (getAndIncrement() != 0) {}
-        arrayOfCompletable = this.sources;
-      } while (this.sd.isUnsubscribed());
+      }
       int i = this.index;
       this.index = (i + 1);
       if (i == arrayOfCompletable.length)
@@ -63,7 +65,7 @@ final class CompletableOnSubscribeConcatArray$ConcatInnerSubscriber
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.CompletableOnSubscribeConcatArray.ConcatInnerSubscriber
  * JD-Core Version:    0.7.0.1
  */

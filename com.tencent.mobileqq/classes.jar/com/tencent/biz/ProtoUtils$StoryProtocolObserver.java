@@ -32,6 +32,7 @@ public abstract class ProtoUtils$StoryProtocolObserver
   {
     long l = System.currentTimeMillis() - this.jdField_a_of_type_Long;
     String str = paramBundle.getString("cmd");
+    Integer localInteger = Integer.valueOf(-1);
     if (paramBoolean)
     {
       localObject = paramBundle.getByteArray("data");
@@ -44,27 +45,33 @@ public abstract class ProtoUtils$StoryProtocolObserver
           paramBundle = paramBundle.error_desc.get().toStringUtf8();
           if (paramInt == 0) {
             SLog.a("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s success take time:%d data length=%d", str, Long.valueOf(l), Integer.valueOf(localObject.length));
-          }
-          for (;;)
-          {
-            a(str, 0, paramInt, new String[] { paramBundle, String.valueOf(l) });
-            return;
+          } else {
             SLog.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error:%d msg:%s take time:%d data length%d", new Object[] { str, Integer.valueOf(paramInt), paramBundle, Long.valueOf(l), Integer.valueOf(localObject.length) });
           }
+          a(str, 0, paramInt, new String[] { paramBundle, String.valueOf(l) });
+          return;
         }
         SLog.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:%s error. response is null", new Object[] { str });
         a(str, 0, 940002, new String[] { "response is null", String.valueOf(l) });
         return;
       }
       a(-1, null, paramBundle);
-      SLog.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+      paramBundle = new StringBuilder();
+      paramBundle.append("get cmd:");
+      paramBundle.append(str);
+      paramBundle.append(" channel error:%d, take time:%d");
+      SLog.d("Q.qqstory.net:StoryProtocolObserver", paramBundle.toString(), new Object[] { localInteger, Long.valueOf(l) });
       a(str, 0, 940002, new String[] { "rsp data error", String.valueOf(l) });
       return;
     }
     paramInt = paramBundle.getInt("data_error_code");
     Object localObject = paramBundle.getString("data_error_msg");
     a(paramInt, null, paramBundle);
-    SLog.d("Q.qqstory.net:StoryProtocolObserver", "get cmd:" + str + " channel error:%d, take time:%d", new Object[] { Integer.valueOf(-1), Long.valueOf(l) });
+    paramBundle = new StringBuilder();
+    paramBundle.append("get cmd:");
+    paramBundle.append(str);
+    paramBundle.append(" channel error:%d, take time:%d");
+    SLog.d("Q.qqstory.net:StoryProtocolObserver", paramBundle.toString(), new Object[] { localInteger, Long.valueOf(l) });
     a(str, 0, paramInt, new String[] { localObject, String.valueOf(l) });
   }
   
@@ -77,14 +84,20 @@ public abstract class ProtoUtils$StoryProtocolObserver
       ((IProtoUtils)((Class)ProtoUtils.a.get(0)).newInstance()).a(paramString, paramInt1, paramInt2, paramVarArgs);
       return;
     }
-    catch (IllegalAccessException paramString)
-    {
-      QLog.e("Q.qqstory.net:StoryProtocolObserver", 1, "reportDevEvent error:" + paramString);
-      return;
-    }
     catch (InstantiationException paramString)
     {
-      QLog.e("Q.qqstory.net:StoryProtocolObserver", 1, "reportDevEvent error:" + paramString);
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("reportDevEvent error:");
+      paramVarArgs.append(paramString);
+      QLog.e("Q.qqstory.net:StoryProtocolObserver", 1, paramVarArgs.toString());
+      return;
+    }
+    catch (IllegalAccessException paramString)
+    {
+      paramVarArgs = new StringBuilder();
+      paramVarArgs.append("reportDevEvent error:");
+      paramVarArgs.append(paramString);
+      QLog.e("Q.qqstory.net:StoryProtocolObserver", 1, paramVarArgs.toString());
     }
   }
   
@@ -100,7 +113,7 @@ public abstract class ProtoUtils$StoryProtocolObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.ProtoUtils.StoryProtocolObserver
  * JD-Core Version:    0.7.0.1
  */

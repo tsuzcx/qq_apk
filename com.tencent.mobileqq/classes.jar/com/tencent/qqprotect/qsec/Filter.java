@@ -9,14 +9,17 @@ import org.json.JSONObject;
 
 public class Filter
 {
-  private int jdField_a_of_type_Int = 0;
+  private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long = 3600L;
   private String jdField_a_of_type_JavaLangString = "";
   private List<Predicate> jdField_a_of_type_JavaUtilList = new ArrayList();
-  private List<String> b = new ArrayList();
+  private List<String> b;
   
   public Filter(JSONObject paramJSONObject)
   {
+    int j = 0;
+    this.jdField_a_of_type_Int = 0;
+    this.b = new ArrayList();
     if (paramJSONObject != null) {}
     for (;;)
     {
@@ -96,7 +99,9 @@ public class Filter
   
   public boolean a(Object paramObject)
   {
-    if (!this.jdField_a_of_type_JavaUtilList.isEmpty())
+    boolean bool2 = this.jdField_a_of_type_JavaUtilList.isEmpty();
+    boolean bool1 = false;
+    if (!bool2)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
       while (localIterator.hasNext())
@@ -109,14 +114,14 @@ public class Filter
           return false;
         }
       }
-      return true;
+      bool1 = true;
     }
-    return false;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.Filter
  * JD-Core Version:    0.7.0.1
  */

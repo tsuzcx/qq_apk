@@ -28,18 +28,27 @@ public class CheckBindingStateServlet
   {
     INTERFACE.StCheckBindingStateRsp localStCheckBindingStateRsp = new INTERFACE.StCheckBindingStateRsp();
     long l = paramBundle.getLong("retCode");
-    if ((localStCheckBindingStateRsp != null) && (l == 0L))
+    if (l == 0L)
     {
       localStCheckBindingStateRsp.mergeFrom(paramArrayOfByte);
       paramBundle.putInt("key_check_State", localStCheckBindingStateRsp.bindingState.get());
       paramBundle.putString("key_Msg", localStCheckBindingStateRsp.msg.get());
       notifyObserver(paramIntent, 1083, true, paramBundle, MiniAppObserver.class);
       paramIntent = localStCheckBindingStateRsp.msg.get();
-      QLog.i("CheckBindingStateServlet", 1, "CheckBindingStateServlet retCode : " + l + "; Msg : " + paramIntent);
+      paramBundle = new StringBuilder();
+      paramBundle.append("CheckBindingStateServlet retCode : ");
+      paramBundle.append(l);
+      paramBundle.append("; Msg : ");
+      paramBundle.append(paramIntent);
+      QLog.i("CheckBindingStateServlet", 1, paramBundle.toString());
       return;
     }
     notifyObserver(paramIntent, 1083, false, paramBundle, MiniAppObserver.class);
-    QLog.e("CheckBindingStateServlet", 1, "CheckBindingStateServlet retCode : " + l + "; errMsg : result is null");
+    paramIntent = new StringBuilder();
+    paramIntent.append("CheckBindingStateServlet retCode : ");
+    paramIntent.append(l);
+    paramIntent.append("; errMsg : result is null");
+    QLog.e("CheckBindingStateServlet", 1, paramIntent.toString());
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -57,7 +66,7 @@ public class CheckBindingStateServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.CheckBindingStateServlet
  * JD-Core Version:    0.7.0.1
  */

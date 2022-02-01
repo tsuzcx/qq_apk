@@ -19,18 +19,22 @@ public class QQHuaweiPushService
   public void onNewToken(String paramString)
   {
     super.onNewToken(paramString);
-    PushNoticeUtil.a = paramString;
+    PushNoticeUtil.a(paramString);
     if (!TextUtils.isEmpty(PushNoticeUtil.a)) {
-      PushNoticeUtil.b();
+      PushNoticeUtil.a();
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("HPush", 2, "HPush_Huawei Push Token-QQHuaweiPushService.onNewToken : " + TextUtils.isEmpty(paramString));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("HPush_Huawei Push Token-QQHuaweiPushService.onNewToken : ");
+      localStringBuilder.append(TextUtils.isEmpty(paramString));
+      QLog.d("HPush", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pushnotice.QQHuaweiPushService
  * JD-Core Version:    0.7.0.1
  */

@@ -22,19 +22,22 @@ public class NativeSubPatch
   
   public static ArrayList<NativeSubPatch> a(String paramString)
   {
-    ArrayList localArrayList = new ArrayList();
+    Object localObject1 = new ArrayList();
     try
     {
       paramString = new JSONArray(Utils.a(paramString));
       int i = 0;
       while (i < paramString.length())
       {
-        Common.Log.b("KingKongSubPatch", "Parsing sub patch " + i);
-        NativeSubPatch localNativeSubPatch = new NativeSubPatch();
-        if (localNativeSubPatch.a(paramString.getJSONObject(i)))
+        Object localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("Parsing sub patch ");
+        ((StringBuilder)localObject2).append(i);
+        Common.Log.b("KingKongSubPatch", ((StringBuilder)localObject2).toString());
+        localObject2 = new NativeSubPatch();
+        if (((NativeSubPatch)localObject2).a(paramString.getJSONObject(i)))
         {
-          localNativeSubPatch.a();
-          localArrayList.add(localNativeSubPatch);
+          ((NativeSubPatch)localObject2).a();
+          ((ArrayList)localObject1).add(localObject2);
           i += 1;
         }
         else
@@ -43,11 +46,14 @@ public class NativeSubPatch
           return null;
         }
       }
-      return localArrayList;
+      return localObject1;
     }
     catch (Exception paramString)
     {
-      Common.Log.a("KingKongSubPatch", "Parse SubPatch List exception : " + paramString);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Parse SubPatch List exception : ");
+      ((StringBuilder)localObject1).append(paramString);
+      Common.Log.a("KingKongSubPatch", ((StringBuilder)localObject1).toString());
     }
     return null;
   }
@@ -56,9 +62,13 @@ public class NativeSubPatch
   {
     int k = 0;
     int i = 0;
+    StringBuilder localStringBuilder;
     while (i < this.c.size())
     {
-      Common.Log.b("KingKongSubPatch", "--> HookPoints : " + this.c.get(i));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--> HookPoints : ");
+      localStringBuilder.append(this.c.get(i));
+      Common.Log.b("KingKongSubPatch", localStringBuilder.toString());
       i += 1;
     }
     i = 0;
@@ -69,12 +79,20 @@ public class NativeSubPatch
       if (i >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
         break;
       }
-      Common.Log.b("KingKongSubPatch", "--> Parameters : " + ((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--> Parameters : ");
+      localStringBuilder.append(((Integer)this.jdField_a_of_type_JavaUtilArrayList.get(i)).toString());
+      Common.Log.b("KingKongSubPatch", localStringBuilder.toString());
       i += 1;
     }
     while (j < this.b.size())
     {
-      Common.Log.b("KingKongSubPatch", "--> FingerPrint : " + (String)this.b.get(j) + ", " + this.d.get(j));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("--> FingerPrint : ");
+      localStringBuilder.append((String)this.b.get(j));
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.d.get(j));
+      Common.Log.b("KingKongSubPatch", localStringBuilder.toString());
       j += 1;
     }
   }
@@ -87,35 +105,43 @@ public class NativeSubPatch
       try
       {
         this.jdField_a_of_type_JavaLangString = paramJSONObject.getString("patch_file").trim();
-        JSONArray localJSONArray1 = paramJSONObject.getJSONArray("parameters");
-        localJSONArray2 = paramJSONObject.getJSONArray("fingerprints");
-        localJSONArray3 = paramJSONObject.getJSONArray("hook_point");
-        localJSONArray4 = paramJSONObject.getJSONArray("fingerprints_value");
-        int m = localJSONArray1.length();
-        k = localJSONArray2.length();
-        int n = localJSONArray4.length();
-        j = localJSONArray3.length();
+        localObject = paramJSONObject.getJSONArray("parameters");
+        localJSONArray1 = paramJSONObject.getJSONArray("fingerprints");
+        localJSONArray2 = paramJSONObject.getJSONArray("hook_point");
+        localJSONArray3 = paramJSONObject.getJSONArray("fingerprints_value");
+        int m = ((JSONArray)localObject).length();
+        k = localJSONArray1.length();
+        int n = localJSONArray3.length();
+        j = localJSONArray2.length();
         i = 0;
         if (i < m)
         {
-          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(localJSONArray1.getInt(i)));
+          this.jdField_a_of_type_JavaUtilArrayList.add(Integer.valueOf(((JSONArray)localObject).getInt(i)));
           i += 1;
           continue;
         }
         if (n == k) {
           break;
         }
-        Common.Log.a("KingKongSubPatch", "Fingerprint value count mismatch " + n + ", " + k);
+        paramJSONObject = new StringBuilder();
+        paramJSONObject.append("Fingerprint value count mismatch ");
+        paramJSONObject.append(n);
+        paramJSONObject.append(", ");
+        paramJSONObject.append(k);
+        Common.Log.a("KingKongSubPatch", paramJSONObject.toString());
         return false;
       }
       catch (JSONException paramJSONObject)
       {
+        JSONArray localJSONArray1;
         JSONArray localJSONArray2;
         JSONArray localJSONArray3;
-        JSONArray localJSONArray4;
         int k;
         int j;
-        Common.Log.a("KingKongSubPatch", "Parse SubPatch error : " + paramJSONObject);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Parse SubPatch error : ");
+        ((StringBuilder)localObject).append(paramJSONObject);
+        Common.Log.a("KingKongSubPatch", ((StringBuilder)localObject).toString());
         return false;
       }
       catch (Exception paramJSONObject)
@@ -123,17 +149,17 @@ public class NativeSubPatch
         return false;
       }
       if (i >= k) {
-        break label272;
+        break label292;
       }
-      this.b.add(localJSONArray2.getString(i).trim());
-      this.d.add(Integer.valueOf(localJSONArray4.getInt(i)));
+      this.b.add(localJSONArray1.getString(i).trim());
+      this.d.add(Integer.valueOf(localJSONArray3.getInt(i)));
       i += 1;
     }
     for (;;)
     {
       if (i < j)
       {
-        this.c.add(Integer.valueOf(localJSONArray3.getInt(i)));
+        this.c.add(Integer.valueOf(localJSONArray2.getInt(i)));
         i += 1;
       }
       else
@@ -142,7 +168,7 @@ public class NativeSubPatch
         return true;
         i = 0;
         break;
-        label272:
+        label292:
         i = 0;
       }
     }
@@ -150,7 +176,7 @@ public class NativeSubPatch
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kingkong.NativeSubPatch
  * JD-Core Version:    0.7.0.1
  */

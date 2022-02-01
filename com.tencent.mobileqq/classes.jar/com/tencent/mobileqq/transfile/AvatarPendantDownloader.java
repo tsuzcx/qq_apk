@@ -18,83 +18,93 @@ public class AvatarPendantDownloader
   
   public File downloadImage(OutputStream paramOutputStream, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    if ((paramDownloadParams == null) || (paramDownloadParams.url == null)) {
-      paramOutputStream = null;
-    }
-    String str;
+    Object localObject1;
     Object localObject2;
-    do
+    if (paramDownloadParams != null)
     {
-      return paramOutputStream;
-      paramOutputStream = paramDownloadParams.url.getHost();
-      str = paramDownloadParams.url.getFile();
-      if (!"DEFAULT_HEAD".equals(paramOutputStream)) {
-        break;
+      if (paramDownloadParams.url == null) {
+        return null;
       }
-      localObject2 = AppConstants.SDCARD_PATH + "avatarPendantDefaultHead" + str;
-      localObject1 = new File((String)localObject2);
-      paramOutputStream = (OutputStream)localObject1;
-    } while (((File)localObject1).exists());
-    Object localObject1 = "https://i.gtimg.cn/qqshow/admindata/comdata/mobileDefaultHead/" + str;
-    paramOutputStream = (OutputStream)localObject2;
-    for (;;)
-    {
-      for (;;)
+      localObject1 = paramDownloadParams.url.getHost();
+      paramOutputStream = paramDownloadParams.url.getFile();
+      if ("DEFAULT_HEAD".equals(localObject1))
       {
-        if (localObject1 != null)
-        {
-          paramDownloadParams.url = new URL((String)localObject1);
-          if (QLog.isDevelopLevel()) {
-            QLog.d("AvatarPendantDownloader", 4, "downloadImage pendant: " + (String)localObject1 + " -> " + paramOutputStream);
-          }
-          paramURLDrawableHandler.publishProgress(0);
-          localObject2 = new FileOutputStream(paramOutputStream);
-          try
-          {
-            new HttpDownloader().downloadImage((OutputStream)localObject2, paramDownloadParams, paramURLDrawableHandler);
-            ((FileOutputStream)localObject2).close();
-            paramDownloadParams = new File(paramOutputStream);
-            paramOutputStream = paramDownloadParams;
-            if (paramDownloadParams.exists()) {
-              break;
-            }
-            if (QLog.isDevelopLevel()) {
-              QLog.d("AvatarPendantDownloader", 2, "downloadImage pendant fail.-> " + (String)localObject1);
-            }
-            return null;
-            if ((!"AIO_STATIC".equals(paramOutputStream)) || (TextUtils.isEmpty(str))) {
-              break label410;
-            }
-            paramOutputStream = new File(AppConstants.SDCARD_PENDANT_ROOT + str);
-            if (!paramOutputStream.exists()) {
-              paramOutputStream.mkdir();
-            }
-            long l = Long.valueOf(str.split("/")[1]).longValue();
-            localObject1 = AvatarPendantUtil.b(l, 5);
-            localObject2 = new File((String)localObject1);
-            paramOutputStream = (OutputStream)localObject2;
-            if (((File)localObject2).exists()) {
-              break;
-            }
-            localObject2 = AvatarPendantUtil.c(l, 5);
-            paramOutputStream = (OutputStream)localObject1;
-            localObject1 = localObject2;
-          }
-          catch (Exception paramDownloadParams)
-          {
-            for (;;)
-            {
-              ((FileOutputStream)localObject2).close();
-              new File(paramOutputStream).delete();
-            }
-          }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(AppConstants.SDCARD_PATH);
+        ((StringBuilder)localObject1).append("avatarPendantDefaultHead");
+        ((StringBuilder)localObject1).append(paramOutputStream);
+        localObject1 = ((StringBuilder)localObject1).toString();
+        localObject2 = new File((String)localObject1);
+        if (((File)localObject2).exists()) {
+          return localObject2;
         }
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("https://i.gtimg.cn/qqshow/admindata/comdata/mobileDefaultHead/");
+        ((StringBuilder)localObject2).append(paramOutputStream);
+        paramOutputStream = ((StringBuilder)localObject2).toString();
       }
-      return null;
-      label410:
-      paramOutputStream = null;
-      localObject1 = null;
+      else if (("AIO_STATIC".equals(localObject1)) && (!TextUtils.isEmpty(paramOutputStream)))
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(AppConstants.SDCARD_PENDANT_ROOT);
+        ((StringBuilder)localObject1).append(paramOutputStream);
+        localObject1 = new File(((StringBuilder)localObject1).toString());
+        if (!((File)localObject1).exists()) {
+          ((File)localObject1).mkdir();
+        }
+        long l = Long.valueOf(paramOutputStream.split("/")[1]).longValue();
+        localObject1 = AvatarPendantUtil.b(l, 5);
+        paramOutputStream = new File((String)localObject1);
+        if (paramOutputStream.exists()) {
+          return paramOutputStream;
+        }
+        paramOutputStream = AvatarPendantUtil.c(l, 5);
+      }
+      else
+      {
+        paramOutputStream = null;
+        localObject1 = paramOutputStream;
+      }
+      if (paramOutputStream != null)
+      {
+        paramDownloadParams.url = new URL(paramOutputStream);
+        if (QLog.isDevelopLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("downloadImage pendant: ");
+          ((StringBuilder)localObject2).append(paramOutputStream);
+          ((StringBuilder)localObject2).append(" -> ");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          QLog.d("AvatarPendantDownloader", 4, ((StringBuilder)localObject2).toString());
+        }
+        paramURLDrawableHandler.publishProgress(0);
+        localObject2 = new FileOutputStream((String)localObject1);
+      }
     }
+    try
+    {
+      new HttpDownloader().downloadImage((OutputStream)localObject2, paramDownloadParams, paramURLDrawableHandler);
+      ((FileOutputStream)localObject2).close();
+    }
+    catch (Exception paramDownloadParams)
+    {
+      label377:
+      break label377;
+    }
+    ((FileOutputStream)localObject2).close();
+    new File((String)localObject1).delete();
+    paramDownloadParams = new File((String)localObject1);
+    if (paramDownloadParams.exists()) {
+      return paramDownloadParams;
+    }
+    if (QLog.isDevelopLevel())
+    {
+      paramDownloadParams = new StringBuilder();
+      paramDownloadParams.append("downloadImage pendant fail.-> ");
+      paramDownloadParams.append(paramOutputStream);
+      QLog.d("AvatarPendantDownloader", 2, paramDownloadParams.toString());
+    }
+    return null;
   }
   
   public boolean useDiskCache()
@@ -104,7 +114,7 @@ public class AvatarPendantDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AvatarPendantDownloader
  * JD-Core Version:    0.7.0.1
  */

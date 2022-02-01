@@ -3,17 +3,15 @@ package com.tencent.widget;
 import android.content.Context;
 import android.content.res.ColorStateList;
 import android.content.res.Resources;
-import android.content.res.TypedArray;
 import android.graphics.drawable.Drawable;
 import android.text.TextUtils.TruncateAt;
 import android.util.AttributeSet;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.ImageView.ScaleType;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
-import com.tencent.mobileqq.R.styleable;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -52,144 +50,214 @@ public class FormMultiLineItem
   
   public static Drawable a(Resources paramResources, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return paramResources.getDrawable(2130839575);
-    case 0: 
-      return paramResources.getDrawable(2130839575);
-    case 1: 
-      return paramResources.getDrawable(2130839591);
-    case 2: 
-      return paramResources.getDrawable(2130839585);
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return paramResources.getDrawable(2130839433);
+          }
+          return paramResources.getDrawable(2130839440);
+        }
+        return paramResources.getDrawable(2130839443);
+      }
+      return paramResources.getDrawable(2130839449);
     }
-    return paramResources.getDrawable(2130839582);
+    return paramResources.getDrawable(2130839433);
   }
   
   private void a()
   {
-    if ((this.b < 2) && (this.b > 0)) {
+    int j = this.b;
+    if ((j < 2) && (j > 0)) {
       throw new RuntimeException("mLineNum < 2, recommend to use FormSimpleItem");
     }
-    int n = getResources().getDimensionPixelSize(2131296784);
-    int k = getResources().getDimensionPixelSize(2131296793);
-    int m = getResources().getDimensionPixelSize(2131296782);
-    int j;
-    MultiImageTextView localMultiImageTextView;
-    RelativeLayout.LayoutParams localLayoutParams;
-    if (this.b == 2)
+    int n = getResources().getDimensionPixelSize(2131296764);
+    int k = getResources().getDimensionPixelSize(2131296773);
+    int m = getResources().getDimensionPixelSize(2131296762);
+    if (this.b == 2) {
+      j = getResources().getDimensionPixelSize(2131296747);
+    } else {
+      j = getResources().getDimensionPixelSize(2131296763);
+    }
+    this.c = m;
+    setBackgroundDrawable(a(getResources(), this.jdField_a_of_type_Int));
+    setMinimumHeight(this.d);
+    setPadding(this.g, 0, this.h, 0);
+    this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131367165);
+    this.jdField_a_of_type_AndroidWidgetImageView.setFocusable(false);
+    this.jdField_a_of_type_AndroidWidgetImageView.setClickable(false);
+    this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
+    addView(this.jdField_a_of_type_AndroidWidgetImageView);
+    this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+    MultiImageTextView localMultiImageTextView = new MultiImageTextView(getContext());
+    localMultiImageTextView.setId(2131367163);
+    localMultiImageTextView.setTextSize(0, n);
+    localMultiImageTextView.setTextColor(getResources().getColor(2131167124));
+    localMultiImageTextView.setSingleLine(true);
+    localMultiImageTextView.setDuplicateParentStateEnabled(true);
+    localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
+    localMultiImageTextView.setText(HardCodeUtil.a(2131704824));
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+    localLayoutParams.addRule(1, 2131367165);
+    localLayoutParams.bottomMargin = j;
+    localLayoutParams.leftMargin = this.i;
+    this.jdField_a_of_type_JavaUtilArrayList.add(localMultiImageTextView);
+    addView(localMultiImageTextView, localLayoutParams);
+    j = 1;
+    while (j < this.b)
     {
-      j = getResources().getDimensionPixelSize(2131296767);
-      this.c = m;
-      setBackgroundDrawable(a(getResources(), this.jdField_a_of_type_Int));
-      setMinimumHeight(this.d);
-      setPadding(this.g, 0, this.h, 0);
-      this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-      this.jdField_a_of_type_AndroidWidgetImageView.setId(2131367383);
-      this.jdField_a_of_type_AndroidWidgetImageView.setFocusable(false);
-      this.jdField_a_of_type_AndroidWidgetImageView.setClickable(false);
-      this.jdField_a_of_type_AndroidWidgetImageView.setScaleType(ImageView.ScaleType.FIT_XY);
-      addView(this.jdField_a_of_type_AndroidWidgetImageView);
-      this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-      localMultiImageTextView = new MultiImageTextView(getContext());
-      localMultiImageTextView.setId(2131367381);
-      localMultiImageTextView.setTextSize(0, n);
-      localMultiImageTextView.setTextColor(getResources().getColor(2131167100));
-      localMultiImageTextView.setSingleLine(true);
-      localMultiImageTextView.setDuplicateParentStateEnabled(true);
-      localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localMultiImageTextView.setText(HardCodeUtil.a(2131704748));
-      localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      localLayoutParams.addRule(1, 2131367383);
-      localLayoutParams.bottomMargin = j;
-      localLayoutParams.leftMargin = this.i;
-      this.jdField_a_of_type_JavaUtilArrayList.add(localMultiImageTextView);
-      addView(localMultiImageTextView, localLayoutParams);
-      j = 1;
-      label314:
-      if (j >= this.b) {
-        return;
-      }
       localMultiImageTextView = new MultiImageTextView(getContext());
       localMultiImageTextView.setTextSize(0, k);
-      localMultiImageTextView.setTextColor(getResources().getColor(2131167119));
+      localMultiImageTextView.setTextColor(getResources().getColor(2131167144));
       localMultiImageTextView.setSingleLine(true);
       localMultiImageTextView.setDuplicateParentStateEnabled(true);
       localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-      localMultiImageTextView.setText(HardCodeUtil.a(2131704750));
+      localMultiImageTextView.setText(HardCodeUtil.a(2131704826));
       localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
       localLayoutParams.leftMargin = this.i;
-      localLayoutParams.addRule(1, 2131367383);
-      if (j != 1) {
-        break label483;
+      localLayoutParams.addRule(1, 2131367165);
+      if (j == 1) {
+        localMultiImageTextView.setId(2131367169);
+      } else if (j == 2) {
+        localMultiImageTextView.setId(2131367170);
       }
-      localMultiImageTextView.setId(2131367387);
-    }
-    for (;;)
-    {
       if (j != this.b - 1) {
         localLayoutParams.bottomMargin = m;
       }
       addView(localMultiImageTextView, localLayoutParams);
       this.jdField_a_of_type_JavaUtilArrayList.add(localMultiImageTextView);
       j += 1;
-      break label314;
-      j = getResources().getDimensionPixelSize(2131296783);
-      break;
-      label483:
-      if (j == 2) {
-        localMultiImageTextView.setId(2131367388);
-      }
     }
   }
   
   private void a(int paramInt1, int paramInt2, int paramInt3)
   {
-    paramInt3 = 0;
-    paramInt2 = paramInt1;
-    paramInt1 = paramInt3;
-    while (paramInt1 < this.b)
+    paramInt2 = 0;
+    while (paramInt2 < this.b)
     {
-      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).getLayoutParams();
-      localLayoutParams.topMargin = paramInt2;
+      RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2)).getLayoutParams();
+      localLayoutParams.topMargin = paramInt1;
       localLayoutParams.leftMargin = this.i;
-      paramInt2 += ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).getMeasuredHeight();
-      ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt1)).setLayoutParams(localLayoutParams);
-      paramInt1 += 1;
+      paramInt1 += ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2)).getMeasuredHeight();
+      ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt2)).setLayoutParams(localLayoutParams);
+      paramInt2 += 1;
     }
   }
   
+  /* Error */
   private void a(AttributeSet paramAttributeSet)
   {
-    paramAttributeSet = getContext().obtainStyledAttributes(paramAttributeSet, R.styleable.MultiLineItem);
-    try
-    {
-      if (this.b < 0) {
-        this.b = paramAttributeSet.getInt(5, 2);
-      }
-      this.f = paramAttributeSet.getDimensionPixelSize(3, 0);
-      this.e = paramAttributeSet.getDimensionPixelSize(2, 0);
-      this.d = paramAttributeSet.getDimensionPixelSize(6, 0);
-      int j = getResources().getDimensionPixelSize(2131296774);
-      int k = getResources().getDimensionPixelSize(2131296776);
-      int m = getResources().getDimensionPixelSize(2131296772);
-      this.g = paramAttributeSet.getDimensionPixelSize(4, j);
-      this.h = paramAttributeSet.getDimensionPixelSize(8, k);
-      this.i = paramAttributeSet.getDimensionPixelSize(7, m);
-      this.jdField_a_of_type_Int = paramAttributeSet.getInteger(0, 0);
-      return;
-    }
-    catch (Exception localException)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("FormMultiLineItem", 2, localException.toString());
-      }
-      return;
-    }
-    finally
-    {
-      paramAttributeSet.recycle();
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: invokevirtual 105	com/tencent/widget/FormMultiLineItem:getContext	()Landroid/content/Context;
+    //   4: aload_1
+    //   5: getstatic 235	com/tencent/mobileqq/R$styleable:MultiLineItem	[I
+    //   8: invokevirtual 241	android/content/Context:obtainStyledAttributes	(Landroid/util/AttributeSet;[I)Landroid/content/res/TypedArray;
+    //   11: astore_1
+    //   12: aload_0
+    //   13: getfield 30	com/tencent/widget/FormMultiLineItem:b	I
+    //   16: ifge +13 -> 29
+    //   19: aload_0
+    //   20: aload_1
+    //   21: iconst_5
+    //   22: iconst_2
+    //   23: invokevirtual 247	android/content/res/TypedArray:getInt	(II)I
+    //   26: putfield 30	com/tencent/widget/FormMultiLineItem:b	I
+    //   29: aload_0
+    //   30: aload_1
+    //   31: iconst_3
+    //   32: iconst_0
+    //   33: invokevirtual 249	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   36: putfield 40	com/tencent/widget/FormMultiLineItem:f	I
+    //   39: aload_0
+    //   40: aload_1
+    //   41: iconst_2
+    //   42: iconst_0
+    //   43: invokevirtual 249	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   46: putfield 38	com/tencent/widget/FormMultiLineItem:e	I
+    //   49: aload_0
+    //   50: aload_1
+    //   51: bipush 6
+    //   53: iconst_0
+    //   54: invokevirtual 249	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   57: putfield 36	com/tencent/widget/FormMultiLineItem:d	I
+    //   60: aload_0
+    //   61: invokevirtual 74	com/tencent/widget/FormMultiLineItem:getResources	()Landroid/content/res/Resources;
+    //   64: ldc 250
+    //   66: invokevirtual 79	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   69: istore_2
+    //   70: aload_0
+    //   71: invokevirtual 74	com/tencent/widget/FormMultiLineItem:getResources	()Landroid/content/res/Resources;
+    //   74: ldc 251
+    //   76: invokevirtual 79	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   79: istore_3
+    //   80: aload_0
+    //   81: invokevirtual 74	com/tencent/widget/FormMultiLineItem:getResources	()Landroid/content/res/Resources;
+    //   84: ldc 252
+    //   86: invokevirtual 79	android/content/res/Resources:getDimensionPixelSize	(I)I
+    //   89: istore 4
+    //   91: aload_0
+    //   92: aload_1
+    //   93: iconst_4
+    //   94: iload_2
+    //   95: invokevirtual 249	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   98: putfield 42	com/tencent/widget/FormMultiLineItem:g	I
+    //   101: aload_0
+    //   102: aload_1
+    //   103: bipush 8
+    //   105: iload_3
+    //   106: invokevirtual 249	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   109: putfield 44	com/tencent/widget/FormMultiLineItem:h	I
+    //   112: aload_0
+    //   113: aload_1
+    //   114: bipush 7
+    //   116: iload 4
+    //   118: invokevirtual 249	android/content/res/TypedArray:getDimensionPixelSize	(II)I
+    //   121: putfield 46	com/tencent/widget/FormMultiLineItem:i	I
+    //   124: aload_0
+    //   125: aload_1
+    //   126: iconst_0
+    //   127: iconst_0
+    //   128: invokevirtual 255	android/content/res/TypedArray:getInteger	(II)I
+    //   131: putfield 85	com/tencent/widget/FormMultiLineItem:jdField_a_of_type_Int	I
+    //   134: goto +28 -> 162
+    //   137: astore 5
+    //   139: goto +28 -> 167
+    //   142: astore 5
+    //   144: invokestatic 261	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   147: ifeq +15 -> 162
+    //   150: ldc_w 263
+    //   153: iconst_2
+    //   154: aload 5
+    //   156: invokevirtual 267	java/lang/Exception:toString	()Ljava/lang/String;
+    //   159: invokestatic 270	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   162: aload_1
+    //   163: invokevirtual 273	android/content/res/TypedArray:recycle	()V
+    //   166: return
+    //   167: aload_1
+    //   168: invokevirtual 273	android/content/res/TypedArray:recycle	()V
+    //   171: aload 5
+    //   173: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	174	0	this	FormMultiLineItem
+    //   0	174	1	paramAttributeSet	AttributeSet
+    //   69	26	2	j	int
+    //   79	27	3	k	int
+    //   89	28	4	m	int
+    //   137	1	5	localObject	Object
+    //   142	30	5	localException	java.lang.Exception
+    // Exception table:
+    //   from	to	target	type
+    //   12	29	137	finally
+    //   29	134	137	finally
+    //   144	162	137	finally
+    //   12	29	142	java/lang/Exception
+    //   29	134	142	java/lang/Exception
   }
   
   public ImageView a()
@@ -199,75 +267,56 @@ public class FormMultiLineItem
   
   public MultiImageTextView a(int paramInt)
   {
-    if ((paramInt >= this.b) || (paramInt < 0)) {
-      throw new RuntimeException("Qui MultiLineItem array index out of range");
+    if ((paramInt < this.b) && (paramInt >= 0)) {
+      return (MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
-    return (MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
+    throw new RuntimeException("Qui MultiLineItem array index out of range");
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.e == 0)
-    {
+    if (this.e == 0) {
       if (this.b == 2) {
-        this.e = getResources().getDimensionPixelSize(2131296766);
+        this.e = getResources().getDimensionPixelSize(2131296746);
+      } else {
+        this.e = getResources().getDimensionPixelSize(2131296761);
       }
     }
-    else
-    {
-      if (this.f == 0)
-      {
-        if (this.b != 2) {
-          break label226;
-        }
-        this.f = getResources().getDimensionPixelSize(2131296766);
-      }
-      label58:
-      if (this.d == 0) {
-        if (this.b != 2) {
-          break label243;
-        }
+    if (this.f == 0) {
+      if (this.b == 2) {
+        this.f = getResources().getDimensionPixelSize(2131296746);
+      } else {
+        this.f = getResources().getDimensionPixelSize(2131296761);
       }
     }
-    RelativeLayout.LayoutParams localLayoutParams;
-    int k;
-    int j;
-    label226:
-    label243:
-    for (this.d = getResources().getDimensionPixelSize(2131296765);; this.d = getResources().getDimensionPixelSize(2131296780))
-    {
-      setMinimumHeight(this.d);
-      setPadding(this.g, 0, this.h, 0);
-      localLayoutParams = new RelativeLayout.LayoutParams(this.f, this.e);
-      this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
-      localLayoutParams.addRule(9, -1);
-      localLayoutParams.addRule(15, -1);
-      k = 0;
-      j = 0;
-      while (k < this.b)
-      {
-        ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(k)).measure(paramInt1, paramInt2);
-        j += ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(k)).getMeasuredHeight();
-        k += 1;
+    if (this.d == 0) {
+      if (this.b == 2) {
+        this.d = getResources().getDimensionPixelSize(2131296745);
+      } else {
+        this.d = getResources().getDimensionPixelSize(2131296760);
       }
-      this.e = getResources().getDimensionPixelSize(2131296781);
-      break;
-      this.f = getResources().getDimensionPixelSize(2131296781);
-      break label58;
+    }
+    setMinimumHeight(this.d);
+    int j = this.g;
+    int m = this.h;
+    int k = 0;
+    setPadding(j, 0, m, 0);
+    RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(this.f, this.e);
+    this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
+    localLayoutParams.addRule(9, -1);
+    localLayoutParams.addRule(15, -1);
+    j = 0;
+    while (k < this.b)
+    {
+      ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(k)).measure(paramInt1, paramInt2);
+      j += ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(k)).getMeasuredHeight();
+      k += 1;
     }
     this.jdField_a_of_type_AndroidWidgetImageView.measure(paramInt1, paramInt2);
-    if ((this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredHeight() > j) || (this.b <= 3))
+    if ((this.jdField_a_of_type_AndroidWidgetImageView.getMeasuredHeight() <= j) && (this.b > 3))
     {
-      k = this.c;
-      int m = this.b;
-      a((this.d - (k * (m - 1) + j)) / 2, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      super.onMeasure(paramInt1, paramInt2);
-      return;
-      j = getResources().getDimensionPixelSize(2131296778);
-      k = getResources().getDimensionPixelSize(2131296773);
+      j = getResources().getDimensionPixelSize(2131296758);
+      k = getResources().getDimensionPixelSize(2131296753);
       localLayoutParams = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetImageView.getLayoutParams();
       localLayoutParams.topMargin = j;
       this.jdField_a_of_type_AndroidWidgetImageView.setLayoutParams(localLayoutParams);
@@ -276,6 +325,13 @@ public class FormMultiLineItem
       localLayoutParams.bottomMargin = k;
       ((MultiImageTextView)this.jdField_a_of_type_JavaUtilArrayList.get(this.b - 1)).setLayoutParams(localLayoutParams);
     }
+    else
+    {
+      k = this.c;
+      m = this.b;
+      a((this.d - (j + k * (m - 1))) / 2, paramInt1, paramInt2);
+    }
+    super.onMeasure(paramInt1, paramInt2);
   }
   
   public void setAllTextColor(int paramInt)
@@ -302,8 +358,9 @@ public class FormMultiLineItem
   
   public void setHeaderView(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidWidgetImageView != null) {
-      this.jdField_a_of_type_AndroidWidgetImageView.setImageResource(paramInt);
+    ImageView localImageView = this.jdField_a_of_type_AndroidWidgetImageView;
+    if (localImageView != null) {
+      localImageView.setImageResource(paramInt);
     }
   }
   
@@ -315,48 +372,50 @@ public class FormMultiLineItem
   
   public void setLineNum(int paramInt)
   {
-    if (paramInt < 2) {
-      throw new RuntimeException("recommend to use >=2 lineNum, or use FormSingleItem widget");
-    }
-    if (this.b == paramInt) {}
-    for (;;)
+    if (paramInt >= 2)
     {
+      int j = this.b;
+      if (j != paramInt) {
+        if (j < paramInt)
+        {
+          int k = getResources().getDimensionPixelSize(2131296773);
+          int m = this.b;
+          j = 0;
+          while (j < paramInt - m)
+          {
+            localObject = new MultiImageTextView(getContext());
+            ((MultiImageTextView)localObject).setTextSize(0, k);
+            ((MultiImageTextView)localObject).setTextColor(getResources().getColor(2131167144));
+            ((MultiImageTextView)localObject).setSingleLine(true);
+            ((MultiImageTextView)localObject).setDuplicateParentStateEnabled(true);
+            ((MultiImageTextView)localObject).setEllipsize(TextUtils.TruncateAt.END);
+            ((MultiImageTextView)localObject).setText(HardCodeUtil.a(2131704825));
+            RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
+            localLayoutParams.leftMargin = this.i;
+            localLayoutParams.addRule(1, 2131367165);
+            this.jdField_a_of_type_JavaUtilArrayList.add(localObject);
+            addView((View)localObject, localLayoutParams);
+            j += 1;
+          }
+          this.b = paramInt;
+        }
+        else if (j > paramInt)
+        {
+          while (j > paramInt)
+          {
+            this.jdField_a_of_type_JavaUtilArrayList.remove(this.b - 1);
+            j -= 1;
+          }
+          this.b = paramInt;
+        }
+      }
       postInvalidate();
       return;
-      int j;
-      if (this.b < paramInt)
-      {
-        int k = getResources().getDimensionPixelSize(2131296793);
-        int m = this.b;
-        j = 0;
-        while (j < paramInt - m)
-        {
-          MultiImageTextView localMultiImageTextView = new MultiImageTextView(getContext());
-          localMultiImageTextView.setTextSize(0, k);
-          localMultiImageTextView.setTextColor(getResources().getColor(2131167119));
-          localMultiImageTextView.setSingleLine(true);
-          localMultiImageTextView.setDuplicateParentStateEnabled(true);
-          localMultiImageTextView.setEllipsize(TextUtils.TruncateAt.END);
-          localMultiImageTextView.setText(HardCodeUtil.a(2131704749));
-          RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-          localLayoutParams.leftMargin = this.i;
-          localLayoutParams.addRule(1, 2131367383);
-          this.jdField_a_of_type_JavaUtilArrayList.add(localMultiImageTextView);
-          addView(localMultiImageTextView, localLayoutParams);
-          j += 1;
-        }
-        this.b = paramInt;
-      }
-      else if (this.b > paramInt)
-      {
-        j = this.b;
-        while (j > paramInt)
-        {
-          this.jdField_a_of_type_JavaUtilArrayList.remove(this.b - 1);
-          j -= 1;
-        }
-        this.b = paramInt;
-      }
+    }
+    Object localObject = new RuntimeException("recommend to use >=2 lineNum, or use FormSingleItem widget");
+    for (;;)
+    {
+      throw ((Throwable)localObject);
     }
   }
   
@@ -373,7 +432,7 @@ public class FormMultiLineItem
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.FormMultiLineItem
  * JD-Core Version:    0.7.0.1
  */

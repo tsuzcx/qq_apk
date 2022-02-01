@@ -34,22 +34,42 @@ public class ConfigProtocol$SharpInfoTLV
   
   public boolean Unpack(ByteBuffer paramByteBuffer)
   {
-    if ((this.m_length != getLength()) || (paramByteBuffer.length() < this.m_length)) {
-      return false;
+    if (this.m_length == getLength())
+    {
+      if (paramByteBuffer.length() < this.m_length) {
+        return false;
+      }
+      this.m_TRAE_Source = paramByteBuffer.ReadUInt8();
+      this.m_TRAE_Interface = paramByteBuffer.ReadUInt8();
+      this.m_TRAE_Stream_Type = paramByteBuffer.ReadUInt8();
+      this.m_TRAE_Volume = paramByteBuffer.ReadUInt8();
+      this.m_TRAE_Mode = paramByteBuffer.ReadUInt8();
+      this.m_ARM_Version = paramByteBuffer.ReadUInt8();
+      this.m_CPU_Frequence = paramByteBuffer.ReadUInt16();
+      paramByteBuffer.ReadUInt32();
+      paramByteBuffer.ReadUInt32();
+      if (QLog.isColorLevel())
+      {
+        paramByteBuffer = new StringBuilder();
+        paramByteBuffer.append("SharpInfo ");
+        paramByteBuffer.append(this.m_TRAE_Source);
+        paramByteBuffer.append(" ");
+        paramByteBuffer.append(this.m_TRAE_Interface);
+        paramByteBuffer.append(" ");
+        paramByteBuffer.append(this.m_TRAE_Stream_Type);
+        paramByteBuffer.append(" ");
+        paramByteBuffer.append(this.m_TRAE_Volume);
+        paramByteBuffer.append(" ");
+        paramByteBuffer.append(this.m_TRAE_Mode);
+        paramByteBuffer.append(" ");
+        paramByteBuffer.append(this.m_ARM_Version);
+        paramByteBuffer.append(" ");
+        paramByteBuffer.append(this.m_CPU_Frequence);
+        QLog.d("sevenzhu", 0, paramByteBuffer.toString());
+      }
+      return true;
     }
-    this.m_TRAE_Source = paramByteBuffer.ReadUInt8();
-    this.m_TRAE_Interface = paramByteBuffer.ReadUInt8();
-    this.m_TRAE_Stream_Type = paramByteBuffer.ReadUInt8();
-    this.m_TRAE_Volume = paramByteBuffer.ReadUInt8();
-    this.m_TRAE_Mode = paramByteBuffer.ReadUInt8();
-    this.m_ARM_Version = paramByteBuffer.ReadUInt8();
-    this.m_CPU_Frequence = paramByteBuffer.ReadUInt16();
-    paramByteBuffer.ReadUInt32();
-    paramByteBuffer.ReadUInt32();
-    if (QLog.isColorLevel()) {
-      QLog.d("sevenzhu", 0, "SharpInfo " + this.m_TRAE_Source + " " + this.m_TRAE_Interface + " " + this.m_TRAE_Stream_Type + " " + this.m_TRAE_Volume + " " + this.m_TRAE_Mode + " " + this.m_ARM_Version + " " + this.m_CPU_Frequence);
-    }
-    return true;
+    return false;
   }
 }
 

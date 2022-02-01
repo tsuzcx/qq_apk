@@ -19,18 +19,18 @@ public class StudyRoomStatus
   
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, RecentBaseData paramRecentBaseData)
   {
-    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {}
-    do
+    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {
+      return false;
+    }
+    if ((paramRecentBaseData.getRecentUserType() == 3000) || (paramRecentBaseData.getRecentUserType() == 1))
     {
-      do
-      {
-        return false;
-      } while ((paramRecentBaseData.getRecentUserType() != 3000) && (paramRecentBaseData.getRecentUserType() != 1));
       paramBaseQQAppInterface = (QQAppInterface)paramBaseQQAppInterface;
       String str = paramRecentBaseData.getRecentUserUin();
       paramBaseQQAppInterface = ((TroopManager)paramBaseQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).a(str);
-    } while ((paramBaseQQAppInterface == null) || (!paramBaseQQAppInterface.getStudyRoomOpen()));
-    paramRecentBaseData.mStatus = 11;
+      if ((paramBaseQQAppInterface != null) && (paramBaseQQAppInterface.getStudyRoomOpen())) {
+        paramRecentBaseData.mStatus = 11;
+      }
+    }
     return false;
   }
   
@@ -41,7 +41,7 @@ public class StudyRoomStatus
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.statusIcon.StudyRoomStatus
  * JD-Core Version:    0.7.0.1
  */

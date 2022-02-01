@@ -15,25 +15,30 @@ public final class Unsafe
     try
     {
       unsafeClass = Class.forName("sun.misc.Unsafe");
-      Field localField1 = unsafeClass.getDeclaredField("theUnsafe");
-      localField1.setAccessible(true);
-      unsafe = localField1.get(null);
+      localField = unsafeClass.getDeclaredField("theUnsafe");
+      localField.setAccessible(true);
+      unsafe = localField.get(null);
       return;
     }
     catch (Exception localException1)
     {
-      try
-      {
-        Field localField2 = unsafeClass.getDeclaredField("THE_ONE");
-        localField2.setAccessible(true);
-        unsafe = localField2.get(null);
-        return;
-      }
-      catch (Exception localException2)
-      {
-        Log.w("Unsafe", "Unsafe not found o.O");
-      }
+      Field localField;
+      label31:
+      label54:
+      break label31;
     }
+    try
+    {
+      localField = unsafeClass.getDeclaredField("THE_ONE");
+      localField.setAccessible(true);
+      unsafe = localField.get(null);
+      return;
+    }
+    catch (Exception localException2)
+    {
+      break label54;
+    }
+    Log.w("Unsafe", "Unsafe not found o.O");
   }
   
   public static int arrayBaseOffset(Class paramClass)
@@ -98,12 +103,10 @@ public final class Unsafe
     long l = arrayBaseOffset([Ljava.lang.Object.class);
     if (Runtime.is64Bit()) {
       putLong(arrayOfObject, l, paramLong);
-    }
-    for (;;)
-    {
-      return arrayOfObject[0];
+    } else {
       putInt(arrayOfObject, l, (int)paramLong);
     }
+    return arrayOfObject[0];
   }
   
   public static long getObjectAddress(Object paramObject)
@@ -116,7 +119,7 @@ public final class Unsafe
         return getLong(arrayOfObject, arrayBaseOffset([Ljava.lang.Object.class));
       }
       int i = getInt(arrayOfObject, arrayBaseOffset([Ljava.lang.Object.class));
-      return i & 0xFFFFFFFF;
+      return 0xFFFFFFFF & i;
     }
     catch (Exception paramObject)
     {
@@ -146,18 +149,18 @@ public final class Unsafe
       unsafeClass.getDeclaredMethod("putIntVolatile", new Class[] { Object.class, Long.TYPE, Integer.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
       return;
     }
-    catch (Exception localException)
+    catch (Exception localException) {}
+    try
     {
-      try
-      {
-        unsafeClass.getDeclaredMethod("putIntVolatile", new Class[] { Object.class, Long.TYPE, Integer.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        Log.w("Unsafe", localException);
-      }
+      unsafeClass.getDeclaredMethod("putIntVolatile", new Class[] { Object.class, Long.TYPE, Integer.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong), Integer.valueOf(paramInt) });
+      return;
     }
+    catch (Exception paramObject)
+    {
+      label120:
+      break label120;
+    }
+    Log.w("Unsafe", localException);
   }
   
   public static void putLong(Object paramObject, long paramLong1, long paramLong2)
@@ -167,18 +170,18 @@ public final class Unsafe
       unsafeClass.getDeclaredMethod("putLongVolatile", new Class[] { Object.class, Long.TYPE, Long.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
       return;
     }
-    catch (Exception localException)
+    catch (Exception localException) {}
+    try
     {
-      try
-      {
-        unsafeClass.getDeclaredMethod("putLong", new Class[] { Object.class, Long.TYPE, Long.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
-        return;
-      }
-      catch (Exception paramObject)
-      {
-        Log.w("Unsafe", localException);
-      }
+      unsafeClass.getDeclaredMethod("putLong", new Class[] { Object.class, Long.TYPE, Long.TYPE }).invoke(unsafe, new Object[] { paramObject, Long.valueOf(paramLong1), Long.valueOf(paramLong2) });
+      return;
     }
+    catch (Exception paramObject)
+    {
+      label120:
+      break label120;
+    }
+    Log.w("Unsafe", localException);
   }
 }
 

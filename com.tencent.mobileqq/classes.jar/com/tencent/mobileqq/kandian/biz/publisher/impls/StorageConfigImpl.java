@@ -27,7 +27,11 @@ public final class StorageConfigImpl
     StringBuilder localStringBuilder = new StringBuilder();
     File localFile = AppContext.a.a().getFilesDir();
     Intrinsics.checkExpressionValueIsNotNull(localFile, "AppContext.instance.filesDir");
-    return localFile.getAbsolutePath() + "/Tencent/TKPublisher/" + TKDPublisherUtils.a.a().a() + '/';
+    localStringBuilder.append(localFile.getAbsolutePath());
+    localStringBuilder.append("/Tencent/TKPublisher/");
+    localStringBuilder.append(TKDPublisherUtils.a.a().a());
+    localStringBuilder.append('/');
+    return localStringBuilder.toString();
   }
   
   @NotNull
@@ -36,18 +40,27 @@ public final class StorageConfigImpl
     StringBuilder localStringBuilder = new StringBuilder();
     File localFile = AppContext.a.a().getFilesDir();
     Intrinsics.checkExpressionValueIsNotNull(localFile, "AppContext.instance.filesDir");
-    return localFile.getAbsolutePath() + "/Tencent/TKPublisher/temp/" + TKDPublisherUtils.a.a().a() + '/';
+    localStringBuilder.append(localFile.getAbsolutePath());
+    localStringBuilder.append("/Tencent/TKPublisher/temp/");
+    localStringBuilder.append(TKDPublisherUtils.a.a().a());
+    localStringBuilder.append('/');
+    return localStringBuilder.toString();
   }
   
   @NotNull
   public String d()
   {
-    return AppConstants.SDCARD_PATH + "/TKDPublisher/" + TKDPublisherUtils.a.a().a() + '/';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("/TKDPublisher/");
+    localStringBuilder.append(TKDPublisherUtils.a.a().a());
+    localStringBuilder.append('/');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.kandian.biz.publisher.impls.StorageConfigImpl
  * JD-Core Version:    0.7.0.1
  */

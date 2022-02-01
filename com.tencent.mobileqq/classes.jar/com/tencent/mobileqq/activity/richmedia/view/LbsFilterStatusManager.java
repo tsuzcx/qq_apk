@@ -3,13 +3,9 @@ package com.tencent.mobileqq.activity.richmedia.view;
 import android.os.Handler;
 import android.util.SparseArray;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.richmedia.FlowCameraMqqAction;
 import com.tencent.mobileqq.activity.richmedia.LBSDetetor;
 import com.tencent.mobileqq.activity.richmedia.LBSDetetor.LBSTemplateListener;
-import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
-import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.shortvideo.PtvTemplateManager.PtvTemplateInfo;
-import com.tencent.mobileqq.shortvideo.VideoEnvironment;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 
@@ -17,123 +13,99 @@ public class LbsFilterStatusManager
   implements LBSDetetor.LBSTemplateListener
 {
   public static AppInterface a;
-  private static LbsFilterStatusManager jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager;
-  private int jdField_a_of_type_Int = 2;
+  private int jdField_a_of_type_Int;
   private long jdField_a_of_type_Long;
   private Handler jdField_a_of_type_AndroidOsHandler;
-  private SparseArray<LbsFilterStatusManager.LbsRequestStatus> jdField_a_of_type_AndroidUtilSparseArray = new SparseArray(1);
+  private SparseArray<LbsFilterStatusManager.LbsRequestStatus> jdField_a_of_type_AndroidUtilSparseArray;
   private LbsFilterStatusManager.LbsUpdateFilter jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsUpdateFilter;
-  private INetInfoHandler jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler = new LbsFilterStatusManager.3(this);
   private PtvTemplateManager.PtvTemplateInfo jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
-  private boolean jdField_a_of_type_Boolean = true;
+  private boolean jdField_a_of_type_Boolean;
   private AppInterface jdField_b_of_type_ComTencentCommonAppAppInterface;
-  private boolean jdField_b_of_type_Boolean = false;
-  
-  static
-  {
-    jdField_a_of_type_ComTencentCommonAppAppInterface = null;
-  }
-  
-  private LbsFilterStatusManager(AppInterface paramAppInterface)
-  {
-    if (paramAppInterface == null) {
-      throw new RuntimeException("new LbsFilterStatusManager app==null");
-    }
-    this.jdField_b_of_type_ComTencentCommonAppAppInterface = paramAppInterface;
-    this.jdField_a_of_type_AndroidOsHandler = new Handler();
-    this.jdField_a_of_type_AndroidUtilSparseArray.put(1, LbsFilterStatusManager.LbsRequestStatus.a());
-    this.jdField_a_of_type_Long = Thread.currentThread().getId();
-    AppNetConnInfo.registerConnectionChangeReceiver(VideoEnvironment.getContext(), this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-  }
-  
-  public static long a()
-  {
-    return -1L;
-  }
-  
-  public static LbsFilterStatusManager a(AppInterface paramAppInterface)
-  {
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager == null)
-      {
-        AppInterface localAppInterface = paramAppInterface;
-        if (paramAppInterface == null) {
-          localAppInterface = jdField_a_of_type_ComTencentCommonAppAppInterface;
-        }
-        jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager = new LbsFilterStatusManager(localAppInterface);
-        LBSDetetor.a(localAppInterface).a(jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager);
-      }
-      paramAppInterface = jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager;
-      return paramAppInterface;
-    }
-    finally {}
-  }
+  private boolean jdField_b_of_type_Boolean;
   
   private String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 1)
     {
-    default: 
-      return "LBS_FILTER_UNINIT_KIND";
-    case 1: 
-      return "LBS_FILTER_LOADING_KIND";
-    case 2: 
+      if (paramInt != 2)
+      {
+        if (paramInt != 3) {
+          return "LBS_FILTER_UNINIT_KIND";
+        }
+        return "LBS_FILTER_SPECIAL_KIND";
+      }
       return "LBS_FILTER_NOMAL_KIND";
     }
-    return "LBS_FILTER_SPECIAL_KIND";
+    return "LBS_FILTER_LOADING_KIND";
+  }
+  
+  private void a()
+  {
+    LbsFilterStatusManager.LbsRequestStatus localLbsRequestStatus = (LbsFilterStatusManager.LbsRequestStatus)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+    a("startLocationUsingActivity", String.format("activityType=%s", new Object[] { ((PtvTemplateManager.PtvTemplateInfo)localObject).getLbsActivityType(((PtvTemplateManager.PtvTemplateInfo)localObject).activityType) }), null);
+    if (localLbsRequestStatus != null)
+    {
+      if (!this.jdField_a_of_type_Boolean) {
+        return;
+      }
+      a("startLocationUsingActivity", String.format("mRequestStatus=%s", new Object[] { localLbsRequestStatus.a() }), null);
+      if (localLbsRequestStatus.jdField_a_of_type_Int == 3)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(localLbsRequestStatus.jdField_a_of_type_Long);
+        a("startLocationUsingActivity", String.format("mRequestBeginTime=%s", new Object[] { ((StringBuilder)localObject).toString() }), null);
+        if (localLbsRequestStatus.jdField_a_of_type_Long > 0L)
+        {
+          long l = System.currentTimeMillis() - localLbsRequestStatus.jdField_a_of_type_Long;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("");
+          ((StringBuilder)localObject).append(l);
+          a("startLocationUsingActivity", String.format("diffTime=%s", new Object[] { ((StringBuilder)localObject).toString() }), null);
+          if (l < 30000L)
+          {
+            bool = false;
+            break label231;
+          }
+        }
+        boolean bool = true;
+        label231:
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        ((StringBuilder)localObject).append(bool);
+        a("startLocationUsingActivity", String.format("timeOK=%s", new Object[] { ((StringBuilder)localObject).toString() }), null);
+        if (bool)
+        {
+          localLbsRequestStatus.b();
+          localLbsRequestStatus.a();
+          localLbsRequestStatus.jdField_a_of_type_Int = 1;
+          localLbsRequestStatus.jdField_a_of_type_Long = System.currentTimeMillis();
+          LBSDetetor.a(this.jdField_b_of_type_ComTencentCommonAppAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType);
+        }
+      }
+    }
   }
   
   private void a(int paramInt)
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(paramInt);
-    a("sendLoadingFilterMsg", String.format("[%s]acitvityName=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name, str }), null);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(paramInt);
+    a("sendLoadingFilterMsg", String.format("[%s]acitvityName=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name, localObject }), null);
     if ((this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.usable) && (a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType)) && (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType == paramInt))
     {
       boolean bool = b(paramInt);
-      a("sendLoadingFilterMsg", String.format("needRefresh=%s", new Object[] { "" + bool }), null);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(bool);
+      a("sendLoadingFilterMsg", String.format("needRefresh=%s", new Object[] { ((StringBuilder)localObject).toString() }), null);
       if ((this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsUpdateFilter != null) && (bool))
       {
-        a("sendLoadingFilterMsg", "refreshed filterName=" + this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name, null);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("refreshed filterName=");
+        ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name);
+        a("sendLoadingFilterMsg", ((StringBuilder)localObject).toString(), null);
         this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsUpdateFilter.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name);
       }
-    }
-  }
-  
-  public static void a(AppInterface paramAppInterface, String paramString)
-  {
-    a(paramAppInterface).a(paramString);
-  }
-  
-  private void a(String paramString)
-  {
-    String str1 = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.name;
-    int i = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType;
-    String str2 = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(i);
-    a("reportLbsSendData", String.format("[%s-%s]acitvityName=%s,White[%s]", new Object[] { paramString, str1, str2, "" + this.jdField_a_of_type_Boolean }), null);
-    if ((paramString == null) || (str1.equals(paramString)))
-    {
-      if ((LbsFilterStatusManager.LbsRequestStatus)this.jdField_a_of_type_AndroidUtilSparseArray.get(i) != null)
-      {
-        if (this.jdField_a_of_type_Int != 2) {
-          break label121;
-        }
-        a("", "0X8008139");
-      }
-      label121:
-      while (this.jdField_a_of_type_Int != 3) {
-        return;
-      }
-      a("", "0X8008137");
-      return;
-    }
-    a("reportLbsSendData", String.format("filterName=%s,currentName=%s [%s]", new Object[] { paramString, str1, str2 }), null);
-  }
-  
-  private static void a(String paramString1, String paramString2)
-  {
-    if ((paramString2 != null) && (!"".equals(paramString2))) {
-      FlowCameraMqqAction.b(paramString1, paramString2);
     }
   }
   
@@ -141,14 +113,21 @@ public class LbsFilterStatusManager
   {
     if (QLog.isColorLevel())
     {
-      if (paramThrowable != null) {
-        QLog.i("LbsFilterStatusManager", 2, paramString1 + "_" + paramString2, paramThrowable);
+      if (paramThrowable != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramString1);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramString2);
+        QLog.i("LbsFilterStatusManager", 2, localStringBuilder.toString(), paramThrowable);
+        return;
       }
+      paramThrowable = new StringBuilder();
+      paramThrowable.append(paramString1);
+      paramThrowable.append("_");
+      paramThrowable.append(paramString2);
+      QLog.i("LbsFilterStatusManager", 2, paramThrowable.toString());
     }
-    else {
-      return;
-    }
-    QLog.i("LbsFilterStatusManager", 2, paramString1 + "_" + paramString2);
   }
   
   private boolean a(int paramInt)
@@ -156,33 +135,45 @@ public class LbsFilterStatusManager
     return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt) != null;
   }
   
+  private void b()
+  {
+    PtvTemplateManager.PtvTemplateInfo localPtvTemplateInfo = this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo;
+    if (localPtvTemplateInfo != null)
+    {
+      a("processMobile2WifiNet", String.format("activityType=%s", new Object[] { localPtvTemplateInfo.getLbsActivityType(localPtvTemplateInfo.activityType) }), null);
+      if (!this.jdField_b_of_type_Boolean) {
+        a();
+      }
+    }
+  }
+  
   private void b(int paramInt, boolean paramBoolean)
   {
     LbsFilterStatusManager.LbsRequestStatus localLbsRequestStatus = (LbsFilterStatusManager.LbsRequestStatus)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localLbsRequestStatus != null)
     {
-      a("processLocationPermission", String.format("[%s]acitvityName=%s", new Object[] { "" + paramBoolean, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(paramInt) }), null);
-      if (localLbsRequestStatus.jdField_a_of_type_Int == 3) {
-        break label98;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramBoolean);
+      a("processLocationPermission", String.format("[%s]acitvityName=%s", new Object[] { localStringBuilder.toString(), this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(paramInt) }), null);
+      if (localLbsRequestStatus.jdField_a_of_type_Int != 3)
+      {
+        localLbsRequestStatus.jdField_a_of_type_Boolean = paramBoolean;
+        if (paramBoolean)
+        {
+          localLbsRequestStatus.jdField_a_of_type_Int = 2;
+          return;
+        }
+        localLbsRequestStatus.jdField_a_of_type_Int = 3;
+        a(paramInt);
+        return;
       }
+      a("processLocationPermission", String.format("[Error]Status=%s", new Object[] { localLbsRequestStatus.a() }), null);
       localLbsRequestStatus.jdField_a_of_type_Boolean = paramBoolean;
-      if (paramBoolean) {
-        localLbsRequestStatus.jdField_a_of_type_Int = 2;
-      }
+      localLbsRequestStatus.jdField_a_of_type_JavaUtilArrayList.clear();
+      localLbsRequestStatus.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus.jdField_a_of_type_JavaUtilArrayList.clear();
+      a(paramInt);
     }
-    else
-    {
-      return;
-    }
-    localLbsRequestStatus.jdField_a_of_type_Int = 3;
-    a(paramInt);
-    return;
-    label98:
-    a("processLocationPermission", String.format("[Error]Status=%s", new Object[] { localLbsRequestStatus.a() }), null);
-    localLbsRequestStatus.jdField_a_of_type_Boolean = paramBoolean;
-    localLbsRequestStatus.jdField_a_of_type_JavaUtilArrayList.clear();
-    localLbsRequestStatus.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsRequestStatus.jdField_a_of_type_JavaUtilArrayList.clear();
-    a(paramInt);
   }
   
   private void b(int paramInt, boolean paramBoolean, ArrayList<String> paramArrayList)
@@ -190,7 +181,10 @@ public class LbsFilterStatusManager
     LbsFilterStatusManager.LbsRequestStatus localLbsRequestStatus = (LbsFilterStatusManager.LbsRequestStatus)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
     if (localLbsRequestStatus != null)
     {
-      a("processLocationForTemplate", String.format("[%s]acitvityName=%s", new Object[] { "" + paramBoolean, this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(paramInt) }), null);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("");
+      localStringBuilder.append(paramBoolean);
+      a("processLocationForTemplate", String.format("[%s]acitvityName=%s", new Object[] { localStringBuilder.toString(), this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(paramInt) }), null);
       if (localLbsRequestStatus.jdField_a_of_type_Int != 3)
       {
         if (paramBoolean)
@@ -200,105 +194,22 @@ public class LbsFilterStatusManager
         }
         localLbsRequestStatus.jdField_a_of_type_Int = 3;
         a(paramInt);
+        return;
       }
+      a("processLocationForTemplate", String.format("[Error]templateIds= %s,Status=%s", new Object[] { paramArrayList.toString(), localLbsRequestStatus.a() }), null);
     }
-    else
-    {
-      return;
-    }
-    a("processLocationForTemplate", String.format("[Error]templateIds= %s,Status=%s", new Object[] { paramArrayList.toString(), localLbsRequestStatus.a() }), null);
   }
   
   private boolean b(int paramInt)
   {
     LbsFilterStatusManager.LbsRequestStatus localLbsRequestStatus = (LbsFilterStatusManager.LbsRequestStatus)this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
-    if ((localLbsRequestStatus.jdField_a_of_type_Boolean) && (localLbsRequestStatus.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id))) {}
-    for (paramInt = 3;; paramInt = 2)
-    {
-      a("filterNeedRefresh", String.format("newKindName=%s,currentKindName=%s", new Object[] { a(paramInt), a(this.jdField_a_of_type_Int) }), null);
-      if (paramInt == this.jdField_a_of_type_Int) {
-        break;
-      }
-      return true;
+    if ((localLbsRequestStatus.jdField_a_of_type_Boolean) && (localLbsRequestStatus.a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.id))) {
+      paramInt = 3;
+    } else {
+      paramInt = 2;
     }
-    return false;
-  }
-  
-  public static void c()
-  {
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager != null)
-      {
-        jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager.e();
-        jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager = null;
-      }
-      LBSDetetor.a();
-      return;
-    }
-    finally {}
-  }
-  
-  private void d()
-  {
-    LbsFilterStatusManager.LbsRequestStatus localLbsRequestStatus = (LbsFilterStatusManager.LbsRequestStatus)this.jdField_a_of_type_AndroidUtilSparseArray.get(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType);
-    a("startLocationUsingActivity", String.format("activityType=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType) }), null);
-    if ((localLbsRequestStatus == null) || (!this.jdField_a_of_type_Boolean)) {}
-    do
-    {
-      return;
-      a("startLocationUsingActivity", String.format("mRequestStatus=%s", new Object[] { localLbsRequestStatus.a() }), null);
-    } while (localLbsRequestStatus.jdField_a_of_type_Int != 3);
-    a("startLocationUsingActivity", String.format("mRequestBeginTime=%s", new Object[] { "" + localLbsRequestStatus.jdField_a_of_type_Long }), null);
-    if (localLbsRequestStatus.jdField_a_of_type_Long > 0L)
-    {
-      long l = System.currentTimeMillis() - localLbsRequestStatus.jdField_a_of_type_Long;
-      a("startLocationUsingActivity", String.format("diffTime=%s", new Object[] { "" + l }), null);
-      if (l >= 30000L) {}
-    }
-    for (boolean bool = false;; bool = true)
-    {
-      a("startLocationUsingActivity", String.format("timeOK=%s", new Object[] { "" + bool }), null);
-      if (!bool) {
-        break;
-      }
-      localLbsRequestStatus.c();
-      localLbsRequestStatus.b();
-      localLbsRequestStatus.jdField_a_of_type_Int = 1;
-      localLbsRequestStatus.jdField_a_of_type_Long = System.currentTimeMillis();
-      LBSDetetor.a(this.jdField_b_of_type_ComTencentCommonAppAppInterface).a(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType);
-      return;
-    }
-  }
-  
-  private void e()
-  {
-    this.jdField_b_of_type_Boolean = false;
-    AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqMsfSdkHandlerINetInfoHandler);
-  }
-  
-  private void f()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null)
-    {
-      a("processMobile2WifiNet", String.format("activityType=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType) }), null);
-      if (!this.jdField_b_of_type_Boolean) {
-        d();
-      }
-    }
-  }
-  
-  public void a()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo != null)
-    {
-      a("refreshLocateInfoFromBack", String.format("activityType=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType) }), null);
-      if (this.jdField_b_of_type_Boolean)
-      {
-        this.jdField_b_of_type_Boolean = false;
-        d();
-      }
-    }
+    a("filterNeedRefresh", String.format("newKindName=%s,currentKindName=%s", new Object[] { a(paramInt), a(this.jdField_a_of_type_Int) }), null);
+    return paramInt != this.jdField_a_of_type_Int;
   }
   
   public void a(int paramInt, boolean paramBoolean)
@@ -322,27 +233,10 @@ public class LbsFilterStatusManager
     }
     this.jdField_a_of_type_AndroidOsHandler.post(new LbsFilterStatusManager.2(this, paramInt, paramBoolean, paramArrayList));
   }
-  
-  public void a(LbsFilterStatusManager.LbsUpdateFilter paramLbsUpdateFilter)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaViewLbsFilterStatusManager$LbsUpdateFilter = paramLbsUpdateFilter;
-  }
-  
-  public void a(PtvTemplateManager.PtvTemplateInfo paramPtvTemplateInfo)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo = paramPtvTemplateInfo;
-    a("startLocation", String.format("activityType=%s", new Object[] { this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.getLbsActivityType(this.jdField_a_of_type_ComTencentMobileqqShortvideoPtvTemplateManager$PtvTemplateInfo.activityType) }), null);
-    d();
-  }
-  
-  public void b()
-  {
-    this.jdField_b_of_type_Boolean = true;
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.view.LbsFilterStatusManager
  * JD-Core Version:    0.7.0.1
  */

@@ -18,28 +18,21 @@ class PermisionPrivacyActivity$5
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    boolean bool = true;
-    if (!NetworkUtil.g(this.a))
+    if (!NetworkUtil.isNetworkAvailable(this.a))
     {
-      QQToast.a(BaseApplication.getContext(), 1, 2131694511, 0).b(this.a.getTitleBarHeight());
-      FormSwitchItem localFormSwitchItem = this.a.j;
-      if (!paramBoolean) {
-        localFormSwitchItem.setChecked(bool);
-      }
+      QQToast.a(BaseApplication.getContext(), 1, 2131694476, 0).b(this.a.getTitleBarHeight());
+      this.a.j.setChecked(paramBoolean ^ true);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
-      return;
-      bool = false;
-      break;
       ((CardHandler)this.a.app.getBusinessHandler(BusinessHandlerFactory.CARD_HANLDER)).g(paramBoolean);
     }
+    EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.PermisionPrivacyActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -43,23 +43,19 @@ public class LpReportInfo_DC02543
   
   public Map<String, String> toMap()
   {
-    localObject3 = "";
+    HashMap localHashMap = this.msgMap;
+    Object localObject3 = "";
     Object localObject1 = localObject3;
-    if (this.msgMap != null) {}
-    try
-    {
-      JSONObject localJSONObject = new JSONObject(this.msgMap);
-      localObject1 = localObject3;
-      if (localJSONObject != null) {
-        localObject1 = localJSONObject.toString();
+    Object localObject2;
+    if (localHashMap != null) {
+      try
+      {
+        localObject1 = new JSONObject(localHashMap).toString();
       }
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Exception localException)
       {
         QZLog.d("QZLog", 4, "", localException);
-        Object localObject2 = localObject3;
+        localObject2 = localObject3;
       }
     }
     localObject3 = new HashMap();
@@ -67,7 +63,7 @@ public class LpReportInfo_DC02543
     ((HashMap)localObject3).put("Event", this.envent);
     ((HashMap)localObject3).put("RetCode", this.retcode);
     ((HashMap)localObject3).put("TimeCost", String.valueOf(this.timeCost));
-    ((HashMap)localObject3).put("msg", localObject1);
+    ((HashMap)localObject3).put("msg", localObject2);
     ((HashMap)localObject3).put("QUA", QUA);
     ((HashMap)localObject3).put("clientTime", String.valueOf(this.clientTime));
     ((HashMap)localObject3).put("serverTime", String.valueOf(this.serverTime));
@@ -76,7 +72,7 @@ public class LpReportInfo_DC02543
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.report.lp.LpReportInfo_DC02543
  * JD-Core Version:    0.7.0.1
  */

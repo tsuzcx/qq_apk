@@ -3,7 +3,8 @@ package cooperation.ilive;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.kingkong.Utils;
-import com.tencent.mobileqq.intervideo.DataLocalTmpPmUpdater;
+import com.tencent.mobileqq.intervideo.IDataLocalTmpPmUpdaterFactory;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.vip.DownloadListener;
 import com.tencent.mobileqq.vip.DownloadTask;
 import com.tencent.mobileqq.vip.DownloaderFactory;
@@ -11,6 +12,7 @@ import com.tencent.mobileqq.vip.DownloaderInterface;
 import com.tencent.open.base.MD5Utils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.PluginManagerUpdater;
 import cooperation.ilive.config.IliveConfigBean;
 import cooperation.ilive.manager.IliveDbManager;
 import java.io.File;
@@ -19,8 +21,8 @@ import java.util.LinkedList;
 public class IlivePluginDownloadManager
 {
   private static IlivePluginDownloadManager jdField_a_of_type_CooperationIliveIlivePluginDownloadManager;
-  private DataLocalTmpPmUpdater jdField_a_of_type_ComTencentMobileqqIntervideoDataLocalTmpPmUpdater = new DataLocalTmpPmUpdater("ilive");
   private DownloaderFactory jdField_a_of_type_ComTencentMobileqqVipDownloaderFactory = new DownloaderFactory(BaseApplicationImpl.getApplication().getRuntime());
+  private PluginManagerUpdater jdField_a_of_type_ComTencentShadowDynamicHostPluginManagerUpdater = ((IDataLocalTmpPmUpdaterFactory)QRoute.api(IDataLocalTmpPmUpdaterFactory.class)).createDataLocalTmpPmUpdater("ilive");
   private IliveDownloadCallback jdField_a_of_type_CooperationIliveIliveDownloadCallback;
   private IlivePluginDownloadManager.IliveDownloadListener jdField_a_of_type_CooperationIliveIlivePluginDownloadManager$IliveDownloadListener;
   private IliveConfigBean jdField_a_of_type_CooperationIliveConfigIliveConfigBean;
@@ -35,34 +37,56 @@ public class IlivePluginDownloadManager
   
   public static IlivePluginDownloadManager a()
   {
-    if (jdField_a_of_type_CooperationIliveIlivePluginDownloadManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_CooperationIliveIlivePluginDownloadManager == null) {
-        jdField_a_of_type_CooperationIliveIlivePluginDownloadManager = new IlivePluginDownloadManager();
+    if (jdField_a_of_type_CooperationIliveIlivePluginDownloadManager == null) {
+      try
+      {
+        if (jdField_a_of_type_CooperationIliveIlivePluginDownloadManager == null) {
+          jdField_a_of_type_CooperationIliveIlivePluginDownloadManager = new IlivePluginDownloadManager();
+        }
       }
-      return jdField_a_of_type_CooperationIliveIlivePluginDownloadManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_CooperationIliveIlivePluginDownloadManager;
   }
   
   public static String a()
   {
-    return BaseApplicationImpl.getContext().getFilesDir() + File.separator + "pddata" + File.separator + "vas" + File.separator + "qq_ilive";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(BaseApplicationImpl.getContext().getFilesDir());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("pddata");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("vas");
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("qq_ilive");
+    return localStringBuilder.toString();
   }
   
   private void a(DownloadTask paramDownloadTask)
   {
-    if (paramDownloadTask == null) {}
-    while (this.jdField_a_of_type_CooperationIliveIliveDownloadCallback == null) {
+    if (paramDownloadTask == null) {
       return;
     }
-    this.jdField_a_of_type_CooperationIliveIliveDownloadCallback.onFail(105, "plugin download fail , type = " + paramDownloadTask.jdField_a_of_type_JavaLangString + " , msg = " + paramDownloadTask.b + " , code = " + paramDownloadTask.f + " , errorCode=" + paramDownloadTask.jdField_a_of_type_Int);
+    IliveDownloadCallback localIliveDownloadCallback = this.jdField_a_of_type_CooperationIliveIliveDownloadCallback;
+    if (localIliveDownloadCallback != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("plugin download fail , type = ");
+      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_JavaLangString);
+      localStringBuilder.append(" , msg = ");
+      localStringBuilder.append(paramDownloadTask.b);
+      localStringBuilder.append(" , code = ");
+      localStringBuilder.append(paramDownloadTask.f);
+      localStringBuilder.append(" , errorCode=");
+      localStringBuilder.append(paramDownloadTask.jdField_a_of_type_Int);
+      localIliveDownloadCallback.onFail(105, localStringBuilder.toString());
+    }
   }
   
   private boolean c()
   {
-    return (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.c()));
+    IliveConfigBean localIliveConfigBean = this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean;
+    return (localIliveConfigBean != null) && (!TextUtils.isEmpty(localIliveConfigBean.c()));
   }
   
   private void d()
@@ -77,37 +101,42 @@ public class IlivePluginDownloadManager
   
   private boolean d()
   {
-    boolean bool = false;
-    File localFile = new File(c());
-    if (QLog.isColorLevel()) {
-      QLog.i("IlivePluginDownloadManager", 2, "checkPluginFileIsNeedDownload  pluginFilePath = " + localFile.getAbsolutePath());
-    }
-    if (!localFile.exists()) {
-      bool = true;
-    }
-    do
+    Object localObject = new File(c());
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return bool;
-        if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean != null) {
-          break;
-        }
-      } while (this.jdField_a_of_type_CooperationIliveIliveDownloadCallback == null);
-      this.jdField_a_of_type_CooperationIliveIliveDownloadCallback.onFail(104, "preload check config bean = null");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkPluginFileIsNeedDownload  pluginFilePath = ");
+      localStringBuilder.append(((File)localObject).getAbsolutePath());
+      QLog.i("IlivePluginDownloadManager", 2, localStringBuilder.toString());
+    }
+    if (!((File)localObject).exists()) {
+      return true;
+    }
+    localObject = this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean;
+    if (localObject == null)
+    {
+      localObject = this.jdField_a_of_type_CooperationIliveIliveDownloadCallback;
+      if (localObject != null) {
+        ((IliveDownloadCallback)localObject).onFail(104, "preload check config bean = null");
+      }
       return false;
-    } while (!TextUtils.isEmpty(this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.b()));
+    }
+    if (TextUtils.isEmpty(((IliveConfigBean)localObject).b())) {}
     return false;
   }
   
   private String e()
   {
-    String str2 = c();
-    String str1 = str2;
-    if (this.jdField_a_of_type_Boolean) {
-      str1 = str2 + ".tmp";
+    String str = c();
+    Object localObject = str;
+    if (this.jdField_a_of_type_Boolean)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(str);
+      ((StringBuilder)localObject).append(".tmp");
+      localObject = ((StringBuilder)localObject).toString();
     }
-    return str1;
+    return localObject;
   }
   
   private void e()
@@ -130,39 +159,40 @@ public class IlivePluginDownloadManager
   
   private boolean e()
   {
-    boolean bool1 = true;
-    boolean bool2 = true;
-    if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean == null) {
-      return bool2;
+    Object localObject = this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean;
+    boolean bool = true;
+    if (localObject == null) {
+      return true;
     }
-    if (TextUtils.isEmpty(this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.b())) {}
-    for (;;)
+    if ((!TextUtils.isEmpty(((IliveConfigBean)localObject).b())) && (!this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.b().equalsIgnoreCase(MD5Utils.encodeFileHexStr(e())))) {
+      bool = false;
+    }
+    if (QLog.isColorLevel())
     {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("IlivePluginDownloadManager", 2, "download success check file valid , isPluginValid = " + bool1);
-      return bool1;
-      if (!this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.b().equalsIgnoreCase(MD5Utils.encodeFileHexStr(e()))) {
-        bool1 = false;
-      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("download success check file valid , isPluginValid = ");
+      ((StringBuilder)localObject).append(bool);
+      QLog.i("IlivePluginDownloadManager", 2, ((StringBuilder)localObject).toString());
     }
+    return bool;
   }
   
   private void f()
   {
-    if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean == null) {}
-    File localFile;
-    do
-    {
+    if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean == null) {
       return;
-      localFile = new File(e());
-      if (QLog.isColorLevel()) {
-        QLog.i("IlivePluginDownloadManager", 2, "deleteLocalIliveFile , pluginFile = " + e());
-      }
-    } while (!localFile.exists());
-    localFile.delete();
+    }
+    File localFile = new File(e());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deleteLocalIliveFile , pluginFile = ");
+      localStringBuilder.append(e());
+      QLog.i("IlivePluginDownloadManager", 2, localStringBuilder.toString());
+    }
+    if (localFile.exists()) {
+      localFile.delete();
+    }
   }
   
   private void g()
@@ -181,17 +211,20 @@ public class IlivePluginDownloadManager
         return;
       }
       String str = e();
-      File localFile1 = new File(str);
-      File localFile2 = new File(c());
-      if (localFile2.exists()) {
-        localFile2.delete();
+      Object localObject = new File(str);
+      File localFile = new File(c());
+      if (localFile.exists()) {
+        localFile.delete();
       }
-      if (localFile1.exists()) {
-        localFile1.renameTo(localFile2);
+      if (((File)localObject).exists()) {
+        ((File)localObject).renameTo(localFile);
       }
       if (QLog.isColorLevel())
       {
-        QLog.i("IlivePluginDownloadManager", 2, "download success copy file , downloadFile = " + str);
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("download success copy file , downloadFile = ");
+        ((StringBuilder)localObject).append(str);
+        QLog.i("IlivePluginDownloadManager", 2, ((StringBuilder)localObject).toString());
         return;
       }
     }
@@ -211,28 +244,34 @@ public class IlivePluginDownloadManager
   
   private void j()
   {
-    if ((this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean == null) || (this.b == null)) {}
-    File localFile;
-    do
+    if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean != null)
     {
-      do
-      {
-        do
-        {
-          return;
-        } while (TextUtils.isEmpty(this.b.c()));
-        if (!this.b.c().equals(this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.c())) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("IlivePluginDownloadManager", 2, "stop deletePluginFile file equal ");
-      return;
-      localFile = new File(this.b.a());
-      if (QLog.isColorLevel()) {
-        QLog.i("IlivePluginDownloadManager", 2, "deletePluginFile , pluginFile = " + this.b.a());
+      Object localObject = this.b;
+      if (localObject == null) {
+        return;
       }
-    } while (!localFile.exists());
-    localFile.delete();
+      if (!TextUtils.isEmpty(((IliveConfigBean)localObject).c()))
+      {
+        if (this.b.c().equals(this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.c()))
+        {
+          if (QLog.isColorLevel()) {
+            QLog.i("IlivePluginDownloadManager", 2, "stop deletePluginFile file equal ");
+          }
+          return;
+        }
+        localObject = new File(this.b.a());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("deletePluginFile , pluginFile = ");
+          localStringBuilder.append(this.b.a());
+          QLog.i("IlivePluginDownloadManager", 2, localStringBuilder.toString());
+        }
+        if (((File)localObject).exists()) {
+          ((File)localObject).delete();
+        }
+      }
+    }
   }
   
   private void k()
@@ -240,25 +279,30 @@ public class IlivePluginDownloadManager
     if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean == null) {
       return;
     }
-    QLog.i("IlivePluginDownloadManager", 2, "saveConfigBean , config = " + this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("saveConfigBean , config = ");
+    localStringBuilder.append(this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.toString());
+    QLog.i("IlivePluginDownloadManager", 2, localStringBuilder.toString());
     IliveDbManager.saveIliveConfigBean(2, this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean);
-  }
-  
-  public DataLocalTmpPmUpdater a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqIntervideoDataLocalTmpPmUpdater;
   }
   
   public DownloadTask a(File paramFile)
   {
-    if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean == null) {
+    Object localObject = this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean;
+    if (localObject == null) {
       return null;
     }
-    String str = this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.c();
-    if (QLog.isColorLevel()) {
-      QLog.i("IlivePluginDownloadManager", 2, "createDownloadTask url = " + str + " saveFile = " + paramFile.getAbsolutePath());
+    localObject = ((IliveConfigBean)localObject).c();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createDownloadTask url = ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" saveFile = ");
+      localStringBuilder.append(paramFile.getAbsolutePath());
+      QLog.i("IlivePluginDownloadManager", 2, localStringBuilder.toString());
     }
-    paramFile = new DownloadTask(str, paramFile);
+    paramFile = new DownloadTask((String)localObject, paramFile);
     paramFile.e = true;
     paramFile.p = true;
     paramFile.r = true;
@@ -269,6 +313,11 @@ public class IlivePluginDownloadManager
     return paramFile;
   }
   
+  public PluginManagerUpdater a()
+  {
+    return this.jdField_a_of_type_ComTencentShadowDynamicHostPluginManagerUpdater;
+  }
+  
   public IliveConfigBean a()
   {
     return this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean;
@@ -276,8 +325,11 @@ public class IlivePluginDownloadManager
   
   public void a()
   {
-    QLog.e("IlivePluginDownloadManager", 1, "cancelDownloadFile size = " + this.jdField_a_of_type_JavaUtilLinkedList.size());
-    a().a(true, null);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancelDownloadFile size = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilLinkedList.size());
+    QLog.e("IlivePluginDownloadManager", 1, localStringBuilder.toString());
+    a().cancelTask(true, null);
   }
   
   public void a(DownloadTask paramDownloadTask, DownloadListener paramDownloadListener)
@@ -286,7 +338,7 @@ public class IlivePluginDownloadManager
       return;
     }
     cooperation.ilive.time.TimeMonitorConfig.jdField_a_of_type_Boolean = true;
-    a().a(paramDownloadTask, paramDownloadListener, null);
+    a().startDownload(paramDownloadTask, paramDownloadListener, null);
   }
   
   public void a(IliveDownloadCallback paramIliveDownloadCallback)
@@ -313,7 +365,11 @@ public class IlivePluginDownloadManager
   
   public String b()
   {
-    return a() + File.separator + "ilive_plugin_v7.apk";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append("ilive_plugin_v7.apk");
+    return localStringBuilder.toString();
   }
   
   public void b()
@@ -321,88 +377,100 @@ public class IlivePluginDownloadManager
     this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean = IliveConfigBean.a();
     this.b = b();
     this.b.jdField_a_of_type_Boolean = this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.jdField_a_of_type_Boolean;
-    if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean != null) {
-      QLog.e("IlivePluginDownloadManager", 1, "readIliveConfig , current config = " + this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.toString());
+    StringBuilder localStringBuilder;
+    if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readIliveConfig , current config = ");
+      localStringBuilder.append(this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.toString());
+      QLog.e("IlivePluginDownloadManager", 1, localStringBuilder.toString());
     }
-    if (this.b != null) {
-      QLog.e("IlivePluginDownloadManager", 1, "readIliveConfig , last config = " + this.b.toString());
+    if (this.b != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("readIliveConfig , last config = ");
+      localStringBuilder.append(this.b.toString());
+      QLog.e("IlivePluginDownloadManager", 1, localStringBuilder.toString());
     }
   }
   
   public boolean b()
   {
-    if (a()) {}
-    for (;;)
-    {
+    if (a()) {
       return true;
-      File localFile = new File(b());
-      if (!localFile.exists())
-      {
-        QLog.e("IlivePluginDownloadManager", 1, "isPluginFileExist copy apkFile");
-        Utils.a(BaseApplicationImpl.getContext(), "live_shopping_manager.apk", b());
-      }
-      boolean bool = localFile.exists();
-      if (!d()) {}
-      for (int i = 1; (!bool) || (i == 0); i = 0) {
-        return false;
-      }
     }
+    File localFile = new File(b());
+    if (!localFile.exists())
+    {
+      QLog.e("IlivePluginDownloadManager", 1, "isPluginFileExist copy apkFile");
+      Utils.a(BaseApplicationImpl.getContext(), "live_shopping_manager.apk", b());
+    }
+    boolean bool1 = localFile.exists();
+    boolean bool2 = d();
+    return (bool1) && ((bool2 ^ true));
   }
   
   public String c()
   {
-    if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean != null) {
-      return this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.a();
+    IliveConfigBean localIliveConfigBean = this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean;
+    if (localIliveConfigBean != null) {
+      return localIliveConfigBean.a();
     }
     return "";
   }
   
   public void c()
   {
-    if (!c()) {
-      if (this.jdField_a_of_type_CooperationIliveIliveDownloadCallback != null) {
-        this.jdField_a_of_type_CooperationIliveIliveDownloadCallback.onFail(103, "download fail , config data = null");
-      }
-    }
-    do
+    if (!c())
     {
-      do
-      {
-        return;
-        if (!a()) {
-          break;
-        }
-      } while (this.jdField_a_of_type_CooperationIliveIliveDownloadCallback == null);
-      this.jdField_a_of_type_CooperationIliveIliveDownloadCallback.onSuccess();
+      localObject = this.jdField_a_of_type_CooperationIliveIliveDownloadCallback;
+      if (localObject != null) {
+        ((IliveDownloadCallback)localObject).onFail(103, "download fail , config data = null");
+      }
       return;
-      this.jdField_a_of_type_JavaUtilLinkedList.clear();
-      if (d())
-      {
-        DownloadTask localDownloadTask = a(new File(e()));
-        this.jdField_a_of_type_JavaUtilLinkedList.add(localDownloadTask);
+    }
+    if (a())
+    {
+      localObject = this.jdField_a_of_type_CooperationIliveIliveDownloadCallback;
+      if (localObject != null) {
+        ((IliveDownloadCallback)localObject).onSuccess();
       }
-      QLog.e("IlivePluginDownloadManager", 1, "downloadFile count = " + this.jdField_a_of_type_JavaUtilLinkedList.size());
-      if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
-      {
-        this.jdField_a_of_type_CooperationIliveIlivePluginDownloadManager$IliveDownloadListener = new IlivePluginDownloadManager.IliveDownloadListener(this, null);
-        d();
-        return;
-      }
-    } while (this.jdField_a_of_type_CooperationIliveIliveDownloadCallback == null);
-    this.jdField_a_of_type_CooperationIliveIliveDownloadCallback.onSuccess();
+      return;
+    }
+    this.jdField_a_of_type_JavaUtilLinkedList.clear();
+    if (d())
+    {
+      localObject = a(new File(e()));
+      this.jdField_a_of_type_JavaUtilLinkedList.add(localObject);
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("downloadFile count = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaUtilLinkedList.size());
+    QLog.e("IlivePluginDownloadManager", 1, ((StringBuilder)localObject).toString());
+    if (this.jdField_a_of_type_JavaUtilLinkedList.size() > 0)
+    {
+      this.jdField_a_of_type_CooperationIliveIlivePluginDownloadManager$IliveDownloadListener = new IlivePluginDownloadManager.IliveDownloadListener(this, null);
+      d();
+      return;
+    }
+    localObject = this.jdField_a_of_type_CooperationIliveIliveDownloadCallback;
+    if (localObject != null) {
+      ((IliveDownloadCallback)localObject).onSuccess();
+    }
   }
   
   public String d()
   {
-    if (this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean != null) {
-      return this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean.b();
+    IliveConfigBean localIliveConfigBean = this.jdField_a_of_type_CooperationIliveConfigIliveConfigBean;
+    if (localIliveConfigBean != null) {
+      return localIliveConfigBean.b();
     }
     return "";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.IlivePluginDownloadManager
  * JD-Core Version:    0.7.0.1
  */

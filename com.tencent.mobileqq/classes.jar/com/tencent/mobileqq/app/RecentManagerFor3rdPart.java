@@ -13,55 +13,12 @@ public class RecentManagerFor3rdPart
   
   public RecentManagerFor3rdPart(QQAppInterface paramQQAppInterface)
   {
-    if (paramQQAppInterface == null) {
-      throw new NullPointerException("RecentManagerFor3rdPart, app is null");
-    }
-    this.a = paramQQAppInterface;
-  }
-  
-  public boolean a(String paramString, int paramInt)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
+    if (paramQQAppInterface != null)
     {
-      bool1 = bool2;
-      if (this.a.isAccLoginSuccess())
-      {
-        RecentUserProxy localRecentUserProxy = this.a.getProxyManager().a();
-        paramString = localRecentUserProxy.b(paramString, paramInt);
-        bool1 = bool2;
-        if (paramString != null)
-        {
-          localRecentUserProxy.a(paramString);
-          bool1 = true;
-        }
-      }
+      this.a = paramQQAppInterface;
+      return;
     }
-    return bool1;
-  }
-  
-  public boolean a(String paramString, int paramInt, long paramLong)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      bool1 = bool2;
-      if (this.a.isAccLoginSuccess())
-      {
-        RecentUserProxy localRecentUserProxy = this.a.getProxyManager().a();
-        paramString = localRecentUserProxy.b(paramString, paramInt);
-        bool1 = bool2;
-        if (paramString != null)
-        {
-          paramString.lastmsgtime = paramLong;
-          localRecentUserProxy.b(paramString);
-          bool1 = true;
-        }
-      }
-    }
-    return bool1;
+    throw new NullPointerException("RecentManagerFor3rdPart, app is null");
   }
   
   public boolean a(String paramString1, int paramInt, String paramString2, long paramLong1, long paramLong2)
@@ -69,16 +26,17 @@ public class RecentManagerFor3rdPart
     if (TextUtils.isEmpty(paramString1)) {
       return false;
     }
-    if ((this.a != null) && (this.a.isAccLoginSuccess()))
+    Object localObject = this.a;
+    if ((localObject != null) && (((QQAppInterface)localObject).isAccLoginSuccess()))
     {
-      RecentUserProxy localRecentUserProxy = this.a.getProxyManager().a();
-      RecentUser localRecentUser = localRecentUserProxy.a(paramString1, paramInt);
+      localObject = this.a.getProxyManager().a();
+      RecentUser localRecentUser = ((RecentUserProxy)localObject).a(paramString1, paramInt);
       localRecentUser.uin = paramString1;
       localRecentUser.setType(paramInt);
       localRecentUser.displayName = paramString2;
       localRecentUser.lastmsgtime = paramLong1;
       localRecentUser.lastmsgdrafttime = paramLong2;
-      localRecentUserProxy.b(localRecentUser);
+      ((RecentUserProxy)localObject).b(localRecentUser);
     }
     return true;
   }
@@ -90,7 +48,7 @@ public class RecentManagerFor3rdPart
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.RecentManagerFor3rdPart
  * JD-Core Version:    0.7.0.1
  */

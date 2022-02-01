@@ -10,6 +10,7 @@ import android.view.Surface;
 import android.view.SurfaceHolder;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.LayoutParams;
 import android.view.ViewStub;
 import android.widget.FrameLayout;
 import android.widget.FrameLayout.LayoutParams;
@@ -79,27 +80,28 @@ public class TPPlayerVideoView
   
   private void callOnSurfaceChanged(Object paramObject)
   {
-    Iterator localIterator;
-    Object localObject;
-    if (this.mVideoViewCallBackList != null)
+    Object localObject1 = this.mVideoViewCallBackList;
+    Object localObject2;
+    if (localObject1 != null)
     {
-      localIterator = this.mVideoViewCallBackList.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (ITPPlayerVideoViewBase.IVideoViewCallback)localIterator.next();
-        if (localObject != null) {
-          ((ITPPlayerVideoViewBase.IVideoViewCallback)localObject).onSurfaceChanged(paramObject);
+        localObject2 = (ITPPlayerVideoViewBase.IVideoViewCallback)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          ((ITPPlayerVideoViewBase.IVideoViewCallback)localObject2).onSurfaceChanged(paramObject);
         }
       }
     }
-    if (this.mVideoSurfaceBackList != null)
+    localObject1 = this.mVideoSurfaceBackList;
+    if (localObject1 != null)
     {
-      localIterator = this.mVideoSurfaceBackList.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (ITPPlayerVideoViewBase.IVideoSurfaceCallback)localIterator.next();
-        if (localObject != null) {
-          ((ITPPlayerVideoViewBase.IVideoSurfaceCallback)localObject).onSurfaceChanged(paramObject);
+        localObject2 = (ITPPlayerVideoViewBase.IVideoSurfaceCallback)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          ((ITPPlayerVideoViewBase.IVideoSurfaceCallback)localObject2).onSurfaceChanged(paramObject);
         }
       }
     }
@@ -107,27 +109,28 @@ public class TPPlayerVideoView
   
   private void callOnSurfaceCreate(Object paramObject)
   {
-    Iterator localIterator;
-    Object localObject;
-    if (this.mVideoViewCallBackList != null)
+    Object localObject1 = this.mVideoViewCallBackList;
+    Object localObject2;
+    if (localObject1 != null)
     {
-      localIterator = this.mVideoViewCallBackList.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (ITPPlayerVideoViewBase.IVideoViewCallback)localIterator.next();
-        if (localObject != null) {
-          ((ITPPlayerVideoViewBase.IVideoViewCallback)localObject).onSurfaceCreated(paramObject);
+        localObject2 = (ITPPlayerVideoViewBase.IVideoViewCallback)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          ((ITPPlayerVideoViewBase.IVideoViewCallback)localObject2).onSurfaceCreated(paramObject);
         }
       }
     }
-    if (this.mVideoSurfaceBackList != null)
+    localObject1 = this.mVideoSurfaceBackList;
+    if (localObject1 != null)
     {
-      localIterator = this.mVideoSurfaceBackList.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (ITPPlayerVideoViewBase.IVideoSurfaceCallback)localIterator.next();
-        if (localObject != null) {
-          ((ITPPlayerVideoViewBase.IVideoSurfaceCallback)localObject).onSurfaceCreated(paramObject);
+        localObject2 = (ITPPlayerVideoViewBase.IVideoSurfaceCallback)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          ((ITPPlayerVideoViewBase.IVideoSurfaceCallback)localObject2).onSurfaceCreated(paramObject);
         }
       }
     }
@@ -135,27 +138,28 @@ public class TPPlayerVideoView
   
   private void callOnSurfaceDestroy(Object paramObject)
   {
-    Iterator localIterator;
-    Object localObject;
-    if (this.mVideoViewCallBackList != null)
+    Object localObject1 = this.mVideoViewCallBackList;
+    Object localObject2;
+    if (localObject1 != null)
     {
-      localIterator = this.mVideoViewCallBackList.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (ITPPlayerVideoViewBase.IVideoViewCallback)localIterator.next();
-        if (localObject != null) {
-          ((ITPPlayerVideoViewBase.IVideoViewCallback)localObject).onSurfaceDestroy(paramObject);
+        localObject2 = (ITPPlayerVideoViewBase.IVideoViewCallback)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          ((ITPPlayerVideoViewBase.IVideoViewCallback)localObject2).onSurfaceDestroy(paramObject);
         }
       }
     }
-    if (this.mVideoSurfaceBackList != null)
+    localObject1 = this.mVideoSurfaceBackList;
+    if (localObject1 != null)
     {
-      localIterator = this.mVideoSurfaceBackList.iterator();
-      while (localIterator.hasNext())
+      localObject1 = ((List)localObject1).iterator();
+      while (((Iterator)localObject1).hasNext())
       {
-        localObject = (ITPPlayerVideoViewBase.IVideoSurfaceCallback)localIterator.next();
-        if (localObject != null) {
-          ((ITPPlayerVideoViewBase.IVideoSurfaceCallback)localObject).onSurfaceDestroy(paramObject);
+        localObject2 = (ITPPlayerVideoViewBase.IVideoSurfaceCallback)((Iterator)localObject1).next();
+        if (localObject2 != null) {
+          ((ITPPlayerVideoViewBase.IVideoSurfaceCallback)localObject2).onSurfaceDestroy(paramObject);
         }
       }
     }
@@ -172,28 +176,28 @@ public class TPPlayerVideoView
   
   public void addSurfaceCallback(ITPPlayerVideoViewBase.IVideoSurfaceCallback paramIVideoSurfaceCallback)
   {
-    if (paramIVideoSurfaceCallback == null) {}
-    do
-    {
+    if (paramIVideoSurfaceCallback == null) {
       return;
-      if (this.mVideoSurfaceBackList == null) {
-        this.mVideoSurfaceBackList = new CopyOnWriteArrayList();
-      }
-    } while (this.mVideoSurfaceBackList.contains(paramIVideoSurfaceCallback));
-    this.mVideoSurfaceBackList.add(paramIVideoSurfaceCallback);
+    }
+    if (this.mVideoSurfaceBackList == null) {
+      this.mVideoSurfaceBackList = new CopyOnWriteArrayList();
+    }
+    if (!this.mVideoSurfaceBackList.contains(paramIVideoSurfaceCallback)) {
+      this.mVideoSurfaceBackList.add(paramIVideoSurfaceCallback);
+    }
   }
   
   public void addVideoViewCallback(ITPPlayerVideoViewBase.IVideoViewCallback paramIVideoViewCallback)
   {
-    if (paramIVideoViewCallback == null) {}
-    do
-    {
+    if (paramIVideoViewCallback == null) {
       return;
-      if (this.mVideoViewCallBackList == null) {
-        this.mVideoViewCallBackList = new CopyOnWriteArrayList();
-      }
-    } while (this.mVideoViewCallBackList.contains(paramIVideoViewCallback));
-    this.mVideoViewCallBackList.add(paramIVideoViewCallback);
+    }
+    if (this.mVideoViewCallBackList == null) {
+      this.mVideoViewCallBackList = new CopyOnWriteArrayList();
+    }
+    if (!this.mVideoViewCallBackList.contains(paramIVideoViewCallback)) {
+      this.mVideoViewCallBackList.add(paramIVideoViewCallback);
+    }
   }
   
   public View getCurrentDisplayView()
@@ -204,8 +208,9 @@ public class TPPlayerVideoView
   public Rect getDisplayViewRect()
   {
     Rect localRect = new Rect();
-    if ((this.mDisplayView != null) && ((this.mDisplayView instanceof View))) {
-      ((View)this.mDisplayView).getGlobalVisibleRect(localRect);
+    ITPViewBase localITPViewBase = this.mDisplayView;
+    if ((localITPViewBase != null) && ((localITPViewBase instanceof View))) {
+      ((View)localITPViewBase).getGlobalVisibleRect(localRect);
     }
     return localRect;
   }
@@ -260,36 +265,46 @@ public class TPPlayerVideoView
   
   public boolean isSurfaceReady()
   {
-    boolean bool = false;
-    if (this.viewIsReady) {
-      bool = true;
-    }
-    return bool;
+    return this.viewIsReady;
   }
   
   public void readyRender()
   {
-    TPLogUtil.i("TPPlayer[TPPlayerVideoView]", "readyRender, , NO: " + this.serialNO + ", w: " + ((View)this.mDisplayView).getWidth() + ", h: " + ((View)this.mDisplayView).getHeight() + ", pw: " + getWidth() + ", ph: " + getHeight());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("readyRender, , NO: ");
+    ((StringBuilder)localObject).append(this.serialNO);
+    ((StringBuilder)localObject).append(", w: ");
+    ((StringBuilder)localObject).append(((View)this.mDisplayView).getWidth());
+    ((StringBuilder)localObject).append(", h: ");
+    ((StringBuilder)localObject).append(((View)this.mDisplayView).getHeight());
+    ((StringBuilder)localObject).append(", pw: ");
+    ((StringBuilder)localObject).append(getWidth());
+    ((StringBuilder)localObject).append(", ph: ");
+    ((StringBuilder)localObject).append(getHeight());
+    TPLogUtil.i("TPPlayer[TPPlayerVideoView]", ((StringBuilder)localObject).toString());
     this.haveUsedView = true;
-    if (Looper.myLooper() == Looper.getMainLooper()) {
+    if (Looper.myLooper() == Looper.getMainLooper())
+    {
       if (this.resetDeleteView)
       {
         this.lastDisplayView = null;
-        this.mDisplayView.setOpaqueInfo(true);
-        ((View)this.mDisplayView).requestFocus();
       }
+      else
+      {
+        localObject = this.lastDisplayView;
+        if (localObject != null) {
+          removeView((View)localObject);
+        }
+        this.lastDisplayView = null;
+      }
+      this.mDisplayView.setOpaqueInfo(true);
+      ((View)this.mDisplayView).requestFocus();
     }
-    for (;;)
+    else
     {
-      this.mDisplayView.setRadio(0, 0);
-      return;
-      if (this.lastDisplayView != null) {
-        removeView((View)this.lastDisplayView);
-      }
-      this.lastDisplayView = null;
-      break;
       TPThreadUtil.postRunnableOnMainThreadFront(new TPPlayerVideoView.2(this));
     }
+    this.mDisplayView.setRadio(0, 0);
   }
   
   public void release()
@@ -300,15 +315,17 @@ public class TPPlayerVideoView
   
   public void removeSurfaceCallback(ITPPlayerVideoViewBase.IVideoSurfaceCallback paramIVideoSurfaceCallback)
   {
-    if ((this.mVideoSurfaceBackList != null) && (paramIVideoSurfaceCallback != null)) {
-      this.mVideoSurfaceBackList.remove(paramIVideoSurfaceCallback);
+    List localList = this.mVideoSurfaceBackList;
+    if ((localList != null) && (paramIVideoSurfaceCallback != null)) {
+      localList.remove(paramIVideoSurfaceCallback);
     }
   }
   
   public void removeVideoViewCallback(ITPPlayerVideoViewBase.IVideoViewCallback paramIVideoViewCallback)
   {
-    if ((this.mVideoViewCallBackList != null) && (paramIVideoViewCallback != null)) {
-      this.mVideoViewCallBackList.remove(paramIVideoViewCallback);
+    List localList = this.mVideoViewCallBackList;
+    if ((localList != null) && (paramIVideoViewCallback != null)) {
+      localList.remove(paramIVideoViewCallback);
     }
   }
   
@@ -324,44 +341,47 @@ public class TPPlayerVideoView
       TPThreadUtil.postRunnableOnMainThreadFront(new TPPlayerVideoView.6(this, paramBoolean));
       return;
     }
-    FrameLayout.LayoutParams localLayoutParams;
-    ITPViewBase localITPViewBase;
     if ((this.viewIsReady) && (this.haveUsedView) && (paramBoolean))
     {
-      localLayoutParams = new FrameLayout.LayoutParams(-1, -1);
-      localLayoutParams.gravity = 17;
+      localObject = new FrameLayout.LayoutParams(-1, -1);
+      ((FrameLayout.LayoutParams)localObject).gravity = 17;
       this.viewIsReady = false;
       this.surfaceOrHolder = null;
       this.mDisplayView.setViewCallBack(null);
-      localITPViewBase = TPViewFactory.createPlayView(this.context, this.isSupportTextureView, this.isZOrderOnTop, this.isZOderMediaOverlay);
-      localITPViewBase.setViewCallBack(this.mViewCallBack);
-      ((View)localITPViewBase).setVisibility(0);
-      localITPViewBase.setOpaqueInfo(true);
-      localITPViewBase.setXYAxis(this.type);
+      ITPViewBase localITPViewBase1 = TPViewFactory.createPlayView(this.context, this.isSupportTextureView, this.isZOrderOnTop, this.isZOderMediaOverlay);
+      localITPViewBase1.setViewCallBack(this.mViewCallBack);
+      View localView = (View)localITPViewBase1;
+      localView.setVisibility(0);
+      localITPViewBase1.setOpaqueInfo(true);
+      localITPViewBase1.setXYAxis(this.type);
       this.mDisplayView.setOpaqueInfo(false);
-      if (!this.resetDeleteView) {
-        break label230;
-      }
-      removeView((View)this.mDisplayView);
-    }
-    for (this.lastDisplayView = null;; this.lastDisplayView = this.mDisplayView)
-    {
-      addView((View)localITPViewBase, localLayoutParams);
-      this.mDisplayView = localITPViewBase;
-      if (paramBoolean)
+      if (this.resetDeleteView)
       {
-        this.haveUsedView = false;
-        TPLogUtil.i("TPPlayer[TPPlayerVideoView]", "resetView , NO: " + this.serialNO);
+        removeView((View)this.mDisplayView);
+        this.lastDisplayView = null;
       }
-      if (this.subView == null) {
-        break;
+      else
+      {
+        ITPViewBase localITPViewBase2 = this.lastDisplayView;
+        if (localITPViewBase2 != null) {
+          removeView((View)localITPViewBase2);
+        }
+        this.lastDisplayView = this.mDisplayView;
       }
-      this.subView.removeAllViews();
-      return;
-      label230:
-      if (this.lastDisplayView != null) {
-        removeView((View)this.lastDisplayView);
-      }
+      addView(localView, (ViewGroup.LayoutParams)localObject);
+      this.mDisplayView = localITPViewBase1;
+    }
+    if (paramBoolean)
+    {
+      this.haveUsedView = false;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("resetView , NO: ");
+      ((StringBuilder)localObject).append(this.serialNO);
+      TPLogUtil.i("TPPlayer[TPPlayerVideoView]", ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.subView;
+    if (localObject != null) {
+      ((ViewGroup)localObject).removeAllViews();
     }
   }
   
@@ -374,49 +394,60 @@ public class TPPlayerVideoView
   
   public void setFixedSize(int paramInt1, int paramInt2)
   {
-    TPLogUtil.i("TPPlayer[TPPlayerVideoView]", "setFixedSize, vW: " + paramInt1 + ", vH: " + paramInt2 + ", NO: " + this.serialNO);
-    if ((paramInt1 <= 0) || (paramInt2 <= 0)) {
-      return;
-    }
-    this.mDisplayView.setVideoWidthAndHeight(paramInt1, paramInt2);
-    if (Looper.getMainLooper() == Looper.myLooper())
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setFixedSize, vW: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", vH: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", NO: ");
+    localStringBuilder.append(this.serialNO);
+    TPLogUtil.i("TPPlayer[TPPlayerVideoView]", localStringBuilder.toString());
+    if (paramInt1 > 0)
     {
-      ((View)this.mDisplayView).requestLayout();
-      return;
+      if (paramInt2 <= 0) {
+        return;
+      }
+      this.mDisplayView.setVideoWidthAndHeight(paramInt1, paramInt2);
+      if (Looper.getMainLooper() == Looper.myLooper())
+      {
+        ((View)this.mDisplayView).requestLayout();
+        return;
+      }
+      TPThreadUtil.postRunnableOnMainThread(new TPPlayerVideoView.3(this));
     }
-    TPThreadUtil.postRunnableOnMainThread(new TPPlayerVideoView.3(this));
   }
   
   public void setMidLayout(View paramView)
   {
     if (paramView != null)
     {
-      if (!(paramView instanceof ViewStub)) {
-        break label26;
+      if ((paramView instanceof ViewStub))
+      {
+        this.subView = ((ViewGroup)((ViewStub)paramView).inflate());
+        return;
       }
-      this.subView = ((ViewGroup)((ViewStub)paramView).inflate());
+      if ((paramView instanceof ViewGroup)) {
+        this.subView = ((ViewGroup)paramView);
+      }
     }
-    label26:
-    while (!(paramView instanceof ViewGroup)) {
-      return;
-    }
-    this.subView = ((ViewGroup)paramView);
   }
   
   public void setRadio(int paramInt1, int paramInt2)
   {
-    if (this.mDisplayView != null) {
-      this.mDisplayView.setRadio(paramInt1, paramInt2);
+    ITPViewBase localITPViewBase = this.mDisplayView;
+    if (localITPViewBase != null) {
+      localITPViewBase.setRadio(paramInt1, paramInt2);
     }
   }
   
   public void setRenderGravity(int paramInt)
   {
-    if (this.mDisplayView != null)
+    Object localObject = this.mDisplayView;
+    if (localObject != null)
     {
-      FrameLayout.LayoutParams localLayoutParams = (FrameLayout.LayoutParams)((View)this.mDisplayView).getLayoutParams();
-      localLayoutParams.gravity = paramInt;
-      setLayoutParams(localLayoutParams);
+      localObject = (FrameLayout.LayoutParams)((View)localObject).getLayoutParams();
+      ((FrameLayout.LayoutParams)localObject).gravity = paramInt;
+      setLayoutParams((ViewGroup.LayoutParams)localObject);
     }
   }
   
@@ -442,7 +473,7 @@ public class TPPlayerVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.livesdk.livesdkplayer.renderview.TPPlayerVideoView
  * JD-Core Version:    0.7.0.1
  */

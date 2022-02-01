@@ -87,43 +87,41 @@ public class AbsShareMsg$Builder
     try
     {
       this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg = ((AbsShareMsg)this.jdField_a_of_type_JavaLangClass.newInstance());
-      label14:
-      if (this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg != null)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgTemplateID = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgServiceID = this.jdField_b_of_type_Int;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mVersion = this.jdField_c_of_type_Int;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgAction = this.jdField_a_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgActionData = this.jdField_b_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsg_A_ActionData = this.jdField_c_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsg_I_ActionData = this.jdField_d_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgUrl = this.jdField_e_of_type_JavaLangString;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mMsgBrief = this.f;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mCompatibleText = this.g;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mFlag = this.jdField_e_of_type_Int;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceAction = this.i;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceUrl = this.h;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceActionData = this.j;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_A_ActionData = this.k;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSource_I_ActionData = this.l;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceName = this.n;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSourceIcon = this.m;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mHasSource = this.jdField_a_of_type_Boolean;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mResid = this.o;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mFileName = this.p;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mFileSize = this.jdField_b_of_type_Long;
-        this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg.mSType = this.q;
-      }
-      return this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
     }
-    catch (InstantiationException localInstantiationException)
+    catch (IllegalAccessException|InstantiationException localIllegalAccessException)
     {
-      break label14;
+      label17:
+      AbsShareMsg localAbsShareMsg;
+      break label17;
     }
-    catch (IllegalAccessException localIllegalAccessException)
+    localAbsShareMsg = this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
+    if (localAbsShareMsg != null)
     {
-      break label14;
+      localAbsShareMsg.mMsgTemplateID = this.jdField_a_of_type_Int;
+      localAbsShareMsg.mMsgServiceID = this.jdField_b_of_type_Int;
+      localAbsShareMsg.mVersion = this.jdField_c_of_type_Int;
+      localAbsShareMsg.mMsgAction = this.jdField_a_of_type_JavaLangString;
+      localAbsShareMsg.mMsgActionData = this.jdField_b_of_type_JavaLangString;
+      localAbsShareMsg.mMsg_A_ActionData = this.jdField_c_of_type_JavaLangString;
+      localAbsShareMsg.mMsg_I_ActionData = this.jdField_d_of_type_JavaLangString;
+      localAbsShareMsg.mMsgUrl = this.jdField_e_of_type_JavaLangString;
+      localAbsShareMsg.mMsgBrief = this.f;
+      localAbsShareMsg.mCompatibleText = this.g;
+      localAbsShareMsg.mFlag = this.jdField_e_of_type_Int;
+      localAbsShareMsg.mSourceAction = this.i;
+      localAbsShareMsg.mSourceUrl = this.h;
+      localAbsShareMsg.mSourceActionData = this.j;
+      localAbsShareMsg.mSource_A_ActionData = this.k;
+      localAbsShareMsg.mSource_I_ActionData = this.l;
+      localAbsShareMsg.mSourceName = this.n;
+      localAbsShareMsg.mSourceIcon = this.m;
+      localAbsShareMsg.mHasSource = this.jdField_a_of_type_Boolean;
+      localAbsShareMsg.mResid = this.o;
+      localAbsShareMsg.mFileName = this.p;
+      localAbsShareMsg.mFileSize = this.jdField_b_of_type_Long;
+      localAbsShareMsg.mSType = this.q;
     }
+    return this.jdField_a_of_type_ComTencentMobileqqStructmsgAbsShareMsg;
   }
   
   public Builder b(int paramInt)
@@ -178,7 +176,7 @@ public class AbsShareMsg$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsShareMsg.Builder
  * JD-Core Version:    0.7.0.1
  */

@@ -17,19 +17,16 @@ class NetStateBannerProcessor$1
   {
     if (VersionUtils.e()) {
       NetStateBannerProcessor.a(this.a).startActivity(new Intent("android.settings.SETTINGS"));
-    }
-    for (;;)
-    {
-      ReportController.a(NetStateBannerProcessor.c(this.a).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       NetStateBannerProcessor.b(this.a).startActivity(new Intent("android.settings.WIRELESS_SETTINGS"));
     }
+    ReportController.a(NetStateBannerProcessor.c(this.a).getAppRuntime(), "dc00898", "", "", "0X8009EE2", "0X8009EE2", 1, 0, "", "", "", "");
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.NetStateBannerProcessor.1
  * JD-Core Version:    0.7.0.1
  */

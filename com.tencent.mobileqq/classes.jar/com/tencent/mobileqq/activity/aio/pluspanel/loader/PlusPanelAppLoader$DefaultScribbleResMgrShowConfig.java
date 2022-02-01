@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity.aio.pluspanel.loader;
 import android.content.Context;
 import com.tencent.mobileqq.scribble.ScribbleResMgr;
 
-public class PlusPanelAppLoader$DefaultScribbleResMgrShowConfig
+class PlusPanelAppLoader$DefaultScribbleResMgrShowConfig
   implements PlusPanelAppLoader.ScribbleResMgrShowConfig
 {
   public boolean a(Context paramContext, String paramString)
@@ -13,7 +13,7 @@ public class PlusPanelAppLoader$DefaultScribbleResMgrShowConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.pluspanel.loader.PlusPanelAppLoader.DefaultScribbleResMgrShowConfig
  * JD-Core Version:    0.7.0.1
  */

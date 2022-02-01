@@ -5,13 +5,13 @@ import android.content.res.TypedArray;
 import android.graphics.Matrix;
 import android.graphics.Point;
 import android.graphics.Rect;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
 import android.view.animation.Transformation;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.mobileqq.R.styleable;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
@@ -86,10 +86,12 @@ public class VipScaledViewPager
     Matrix localMatrix = paramTransformation.getMatrix();
     float f = a(paramView);
     localMatrix.setScale(f, f);
-    int i = paramView.getHeight();
-    int j = paramView.getWidth();
-    localMatrix.preTranslate(-(j / 2), -(i / 2));
-    localMatrix.postTranslate(j / 2, i / 2);
+    int j = paramView.getHeight();
+    int i = paramView.getWidth() / 2;
+    f = -i;
+    j /= 2;
+    localMatrix.preTranslate(f, -j);
+    localMatrix.postTranslate(i, j);
     paramTransformation.setAlpha(b(paramView));
   }
   
@@ -102,9 +104,10 @@ public class VipScaledViewPager
       i = 0;
     }
     float f2 = (getWidth() - i) / getWidth();
+    float f3 = this.jdField_a_of_type_Float;
     float f1 = f2;
-    if (f2 < this.jdField_a_of_type_Float) {
-      f1 = this.jdField_a_of_type_Float;
+    if (f2 < f3) {
+      f1 = f3;
     }
     return f1;
   }
@@ -120,31 +123,38 @@ public class VipScaledViewPager
   
   protected void a(int paramInt1, int paramInt2)
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
+    if (!this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    if (this.e == 0)
     {
-      do
-      {
-        return;
-        if (this.e == 0)
-        {
-          this.jdField_a_of_type_Boolean = false;
-          return;
-        }
-      } while (getChildCount() <= 0);
+      this.jdField_a_of_type_Boolean = false;
+      return;
+    }
+    if (getChildCount() > 0)
+    {
       View localView = getChildAt(0);
       localView.measure(paramInt1, paramInt2);
       paramInt1 = localView.getMeasuredWidth();
       localView = localView.findViewById(this.e);
-      if (localView == null) {
+      if (localView != null)
+      {
+        paramInt2 = localView.getMeasuredWidth();
+        if (paramInt2 > 0)
+        {
+          this.jdField_a_of_type_Boolean = false;
+          float f1 = paramInt1 - paramInt2;
+          float f2 = paramInt2;
+          setPageMargin(-(int)(f1 + (1.0F - this.jdField_a_of_type_Float) * f2 * 0.5F - this.jdField_b_of_type_Int));
+          setOffscreenPageLimit((int)Math.ceil(paramInt1 / f2) + 1);
+          requestLayout();
+        }
+      }
+      else
+      {
         throw new NullPointerException("MatchWithChildResId did not find that ID in the first fragment of the ViewPager; is that view defined in the child view's layout? Note that MultiViewPager only measures the child for index 0.");
       }
-      paramInt2 = localView.getMeasuredWidth();
-    } while (paramInt2 <= 0);
-    this.jdField_a_of_type_Boolean = false;
-    setPageMargin(-(int)(paramInt1 - paramInt2 + paramInt2 * (1.0F - this.jdField_a_of_type_Float) * 0.5F - this.jdField_b_of_type_Int));
-    setOffscreenPageLimit((int)Math.ceil(paramInt1 / paramInt2) + 1);
-    requestLayout();
+    }
   }
   
   public float b(View paramView)
@@ -186,33 +196,45 @@ public class VipScaledViewPager
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.requestDisallowInterceptTouchEvent(true);
+    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(true);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
-  public boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
+  protected boolean getChildStaticTransformation(View paramView, Transformation paramTransformation)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VipScaledViewPager", 2, "getChildStaticTransformation child = " + paramView.hashCode() + ", mIsScroll = " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean + ", mInvalidateMap = " + this.jdField_a_of_type_JavaUtilHashMap);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getChildStaticTransformation child = ");
+      localStringBuilder.append(paramView.hashCode());
+      localStringBuilder.append(", mIsScroll = ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean);
+      localStringBuilder.append(", mInvalidateMap = ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilHashMap);
+      QLog.d("VipScaledViewPager", 2, localStringBuilder.toString());
     }
     int i = paramView.hashCode();
     a(paramView, paramTransformation);
-    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get()) {
-      paramView.invalidate();
-    }
-    do
+    if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicBoolean.get())
     {
+      paramView.invalidate();
       return true;
-      if (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(i))) {
-        break;
+    }
+    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(i)))
+    {
+      if (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i))).intValue() < 1)
+      {
+        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(1));
+        paramView.invalidate();
+        return true;
       }
-    } while (((Integer)this.jdField_a_of_type_JavaUtilHashMap.get(Integer.valueOf(i))).intValue() >= 1);
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(1));
-    paramView.invalidate();
-    return true;
-    this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(0));
+    }
+    else {
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(i), Integer.valueOf(0));
+    }
     return true;
   }
   
@@ -221,8 +243,9 @@ public class VipScaledViewPager
     if (QLog.isColorLevel()) {
       QLog.d("VipScaledViewPager", 2, "onInterceptTouchEvent");
     }
-    if (this.jdField_a_of_type_AndroidViewViewGroup != null) {
-      this.jdField_a_of_type_AndroidViewViewGroup.requestDisallowInterceptTouchEvent(true);
+    ViewGroup localViewGroup = this.jdField_a_of_type_AndroidViewViewGroup;
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(true);
     }
     try
     {
@@ -233,7 +256,7 @@ public class VipScaledViewPager
     return false;
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     Point localPoint = new Point(View.MeasureSpec.getSize(paramInt1), View.MeasureSpec.getSize(paramInt2));
     if ((this.jdField_c_of_type_Int >= 0) || (this.d >= 0))
@@ -246,7 +269,7 @@ public class VipScaledViewPager
     a(paramInt1, paramInt2);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     this.jdField_a_of_type_Int = a();
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
@@ -260,7 +283,11 @@ public class VipScaledViewPager
       boolean bool = super.onTouchEvent(paramMotionEvent);
       return bool;
     }
-    catch (Exception paramMotionEvent) {}
+    catch (Exception paramMotionEvent)
+    {
+      label8:
+      break label8;
+    }
     return false;
   }
   
@@ -300,7 +327,7 @@ public class VipScaledViewPager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipScaledViewPager
  * JD-Core Version:    0.7.0.1
  */

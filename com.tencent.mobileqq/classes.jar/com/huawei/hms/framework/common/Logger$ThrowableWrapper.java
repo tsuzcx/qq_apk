@@ -1,5 +1,9 @@
 package com.huawei.hms.framework.common;
 
+import java.io.IOException;
+import java.util.Arrays;
+import org.json.JSONException;
+
 class Logger$ThrowableWrapper
   extends Throwable
 {
@@ -11,6 +15,19 @@ class Logger$ThrowableWrapper
   private Logger$ThrowableWrapper(Throwable paramThrowable)
   {
     this.ownerThrowable = paramThrowable;
+    StackTraceElement[] arrayOfStackTraceElement = paramThrowable.getStackTrace();
+    int i;
+    if ((!(paramThrowable instanceof IOException)) && (!(paramThrowable instanceof JSONException))) {
+      i = 20;
+    } else {
+      i = 8;
+    }
+    if (arrayOfStackTraceElement.length > i) {
+      setStackTrace((StackTraceElement[])Arrays.copyOf(arrayOfStackTraceElement, i));
+    } else {
+      setStackTrace(arrayOfStackTraceElement);
+    }
+    setMessage(StringUtils.anonymizeMessage(paramThrowable.getMessage()));
   }
   
   private void setCause(Throwable paramThrowable)
@@ -20,10 +37,12 @@ class Logger$ThrowableWrapper
   
   public Throwable getCause()
   {
-    if (this.thisCause == this) {
-      return null;
+    Throwable localThrowable2 = this.thisCause;
+    Throwable localThrowable1 = localThrowable2;
+    if (localThrowable2 == this) {
+      localThrowable1 = null;
     }
-    return this.thisCause;
+    return localThrowable1;
   }
   
   public String getMessage()
@@ -38,26 +57,32 @@ class Logger$ThrowableWrapper
   
   public String toString()
   {
-    if (this.ownerThrowable == null) {
-      localObject = "";
+    Object localObject1 = this.ownerThrowable;
+    if (localObject1 == null) {
+      return "";
     }
-    String str;
-    do
+    Object localObject2 = localObject1.getClass().getName();
+    localObject1 = localObject2;
+    if (this.message != null)
     {
-      return localObject;
-      str = this.ownerThrowable.getClass().getName();
-      localObject = str;
-    } while (this.message == null);
-    Object localObject = str + ": ";
-    if (this.message.startsWith((String)localObject)) {
-      return this.message;
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append(": ");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      if (this.message.startsWith((String)localObject1)) {
+        return this.message;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(this.message);
+      localObject1 = ((StringBuilder)localObject2).toString();
     }
-    return (String)localObject + this.message;
+    return localObject1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.framework.common.Logger.ThrowableWrapper
  * JD-Core Version:    0.7.0.1
  */

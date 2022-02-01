@@ -45,18 +45,19 @@ class JsonWebSignature
   {
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < paramVarArgs.length)
+    while (i < paramVarArgs.length)
     {
-      if (paramVarArgs[i] == null) {}
-      for (String str = "";; str = paramVarArgs[i])
-      {
-        localStringBuilder.append(str);
-        if (i != paramVarArgs.length - 1) {
-          localStringBuilder.append(".");
-        }
-        i += 1;
-        break;
+      String str;
+      if (paramVarArgs[i] == null) {
+        str = "";
+      } else {
+        str = paramVarArgs[i];
       }
+      localStringBuilder.append(str);
+      if (i != paramVarArgs.length - 1) {
+        localStringBuilder.append(".");
+      }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
@@ -69,7 +70,11 @@ class JsonWebSignature
       localObject = ((String)localObject).getBytes("US-ASCII");
       return localObject;
     }
-    catch (UnsupportedEncodingException localUnsupportedEncodingException) {}
+    catch (UnsupportedEncodingException localUnsupportedEncodingException)
+    {
+      label31:
+      break label31;
+    }
     return null;
   }
   
@@ -86,17 +91,18 @@ class JsonWebSignature
   public boolean a()
   {
     RsaUsingShaAlgorithm localRsaUsingShaAlgorithm = new RsaUsingShaAlgorithm();
-    if (((this.jdField_a_of_type_JavaSecurityKey instanceof RSAKey)) && (((RSAKey)this.jdField_a_of_type_JavaSecurityKey).getModulus().bitLength() < 2048)) {
+    Object localObject = this.jdField_a_of_type_JavaSecurityKey;
+    if (((localObject instanceof RSAKey)) && (((RSAKey)localObject).getModulus().bitLength() < 2048)) {
       return false;
     }
-    byte[] arrayOfByte1 = Base64.decode(this.f, 11);
-    byte[] arrayOfByte2 = a();
-    return localRsaUsingShaAlgorithm.a(arrayOfByte1, this.jdField_a_of_type_JavaSecurityKey, arrayOfByte2);
+    localObject = Base64.decode(this.f, 11);
+    byte[] arrayOfByte = a();
+    return localRsaUsingShaAlgorithm.a((byte[])localObject, this.jdField_a_of_type_JavaSecurityKey, arrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.identity.jwt.JsonWebSignature
  * JD-Core Version:    0.7.0.1
  */

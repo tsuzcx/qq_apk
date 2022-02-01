@@ -12,9 +12,14 @@ class MobileQQServiceBase$1
   
   public void run()
   {
-    Object localObject = this.val$request.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("MobileQQServiceBase", 2, "req cmd: " + (String)localObject);
+    localObject = this.val$request.getServiceCmd();
+    StringBuilder localStringBuilder1;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("req cmd: ");
+      localStringBuilder1.append((String)localObject);
+      QLog.d("MobileQQServiceBase", 2, localStringBuilder1.toString());
     }
     if ("MessageSvc.PbSendMsg".equalsIgnoreCase((String)localObject))
     {
@@ -33,9 +38,13 @@ class MobileQQServiceBase$1
     }
     catch (Exception localException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("MobileQQServiceBase", 2, "handleRequest Exception. cmd = " + (String)localObject, localException);
+      if (!QLog.isColorLevel()) {
+        break label259;
       }
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("handleRequest Exception. cmd = ");
+      localStringBuilder2.append((String)localObject);
+      QLog.e("MobileQQServiceBase", 2, localStringBuilder2.toString(), localException);
       localObject = new FromServiceMsg(this.val$request.getUin(), (String)localObject);
       ((FromServiceMsg)localObject).setMsgFail();
       this.this$0.handleResponse(false, this.val$request, (FromServiceMsg)localObject, localException);
@@ -43,18 +52,24 @@ class MobileQQServiceBase$1
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("MobileQQServiceBase", 2, "handleRequest OutOfMemoryError. cmd = " + (String)localObject);
-      }
-      localObject = new FromServiceMsg(this.val$request.getUin(), (String)localObject);
-      ((FromServiceMsg)localObject).setMsgFail();
-      this.this$0.handleResponse(false, this.val$request, (FromServiceMsg)localObject, null);
+      label132:
+      break label132;
     }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("handleRequest OutOfMemoryError. cmd = ");
+      localStringBuilder1.append((String)localObject);
+      QLog.d("MobileQQServiceBase", 2, localStringBuilder1.toString());
+    }
+    localObject = new FromServiceMsg(this.val$request.getUin(), (String)localObject);
+    ((FromServiceMsg)localObject).setMsgFail();
+    this.this$0.handleResponse(false, this.val$request, (FromServiceMsg)localObject, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.MobileQQServiceBase.1
  * JD-Core Version:    0.7.0.1
  */

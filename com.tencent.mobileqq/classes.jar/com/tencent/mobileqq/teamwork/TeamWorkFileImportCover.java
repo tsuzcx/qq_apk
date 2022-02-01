@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.dinifly.DiniFlyAnimationView;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.ITeamWorkUtils;
+import com.tencent.mobileqq.teamwork.bean.TeamWorkFileImportInfo;
 import com.tencent.mobileqq.teamwork.tencentdocreport.TenDocLogReportHelper;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.mobileqq.utils.QQCustomDialog;
@@ -37,7 +40,7 @@ public class TeamWorkFileImportCover
   private TextView jdField_a_of_type_AndroidWidgetTextView;
   public AppInterface a;
   DiniFlyAnimationView jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
-  private TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo;
+  private TeamWorkFileImportInfo jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
   private QQCustomDialog jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
   private AutoVerticalScrollTextView jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView;
   private String[] jdField_a_of_type_ArrayOfJavaLangString = new String[2];
@@ -58,25 +61,29 @@ public class TeamWorkFileImportCover
   
   private void c()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog == null) || (this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.isShowing())) {}
-    try
+    QQCustomDialog localQQCustomDialog = this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog;
+    if (localQQCustomDialog != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
-      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
-      {
-        QLog.e("TeamWorkFileImportCover", 1, " dismiss exception: " + localException.toString());
+      if (localQQCustomDialog.isShowing()) {
+        try
+        {
+          this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog.dismiss();
+        }
+        catch (Exception localException)
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(" dismiss exception: ");
+          localStringBuilder.append(localException.toString());
+          QLog.e("TeamWorkFileImportCover", 1, localStringBuilder.toString());
+        }
       }
+      this.jdField_a_of_type_ComTencentMobileqqUtilsQQCustomDialog = null;
     }
   }
   
   public int a()
   {
-    return this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299166);
+    return this.jdField_a_of_type_AndroidAppActivity.getResources().getDimensionPixelSize(2131299168);
   }
   
   public View a(int paramInt)
@@ -86,54 +93,60 @@ public class TeamWorkFileImportCover
   
   public View a(Bundle paramBundle)
   {
-    this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131563088, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
+    this.jdField_c_of_type_AndroidViewView = LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131562915, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false);
     paramBundle = new RelativeLayout.LayoutParams(-1, -1);
-    paramBundle.addRule(3, 2131377159);
+    paramBundle.addRule(3, 2131376636);
     paramBundle.topMargin = (-a());
     this.jdField_c_of_type_AndroidViewView.setLayoutParams(paramBundle);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_c_of_type_AndroidViewView, 1);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377159).setBackgroundColor(-1);
-    this.jdField_a_of_type_AndroidViewView = a(2131378968);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378965));
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131378964));
-    this.jdField_b_of_type_AndroidViewView = a(2131378969);
-    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131362741));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376636).setBackgroundColor(-1);
+    this.jdField_a_of_type_AndroidViewView = a(2131378345);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)a(2131378342));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)a(2131378341));
+    this.jdField_b_of_type_AndroidViewView = a(2131378346);
+    this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = ((DiniFlyAnimationView)a(2131362696));
     paramBundle = (LinearLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.getLayoutParams();
     paramBundle.height = ViewUtils.b(60.0F);
     paramBundle.width = ViewUtils.b(60.0F);
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setLayoutParams(paramBundle);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131378970));
-    this.d = ((TextView)a(2131378973));
-    this.e = ((TextView)a(2131378971));
-    this.f = ((TextView)a(2131378972));
-    this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView = ((AutoVerticalScrollTextView)a(2131378966));
-    this.jdField_a_of_type_ArrayOfJavaLangString[0] = this.jdField_a_of_type_AndroidAppActivity.getString(2131719793);
-    this.jdField_a_of_type_ArrayOfJavaLangString[1] = this.jdField_a_of_type_AndroidAppActivity.getString(2131719794);
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)a(2131378347));
+    this.d = ((TextView)a(2131378350));
+    this.e = ((TextView)a(2131378348));
+    this.f = ((TextView)a(2131378349));
+    this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView = ((AutoVerticalScrollTextView)a(2131378343));
+    this.jdField_a_of_type_ArrayOfJavaLangString[0] = this.jdField_a_of_type_AndroidAppActivity.getString(2131719517);
+    this.jdField_a_of_type_ArrayOfJavaLangString[1] = this.jdField_a_of_type_AndroidAppActivity.getString(2131719518);
     this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.setTextArray(this.jdField_a_of_type_ArrayOfJavaLangString);
     a(this.jdField_a_of_type_AndroidAppActivity.getIntent(), this.jdField_a_of_type_AndroidAppActivity);
-    if (QLog.isColorLevel()) {
-      QLog.i("teamConvert", 2, "show loading view start time [" + System.currentTimeMillis() / 1000L + "]");
+    if (QLog.isColorLevel())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("show loading view start time [");
+      paramBundle.append(System.currentTimeMillis() / 1000L);
+      paramBundle.append("]");
+      QLog.i("teamConvert", 2, paramBundle.toString());
     }
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131563084, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)LayoutInflater.from(BaseApplicationImpl.getApplication()).inflate(2131562911, this.jdField_a_of_type_AndroidWidgetRelativeLayout, false));
     paramBundle = new RelativeLayout.LayoutParams(-2, -2);
     paramBundle.addRule(14, -1);
     paramBundle.addRule(12, -1);
     paramBundle.bottomMargin = ViewUtils.b(12.0F);
     this.jdField_a_of_type_AndroidWidgetRelativeLayout.addView(this.jdField_a_of_type_AndroidWidgetLinearLayout, paramBundle);
-    TeamWorkUtils.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, null, "0X8009ED4");
+    ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, null, "0X8009ED4");
     return this.jdField_c_of_type_AndroidViewView;
   }
   
   public void a()
   {
     if (a()) {
-      TeamWorkUtils.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, null, "0X8009ED5");
+      ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, null, "0X8009ED5");
     }
     this.jdField_a_of_type_ComTencentCommonAppAppInterface = null;
     this.jdField_a_of_type_AndroidAppActivity = null;
     this.jdField_a_of_type_AndroidWidgetRelativeLayout = null;
-    if (this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView != null) {
-      this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.b();
+    AutoVerticalScrollTextView localAutoVerticalScrollTextView = this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView;
+    if (localAutoVerticalScrollTextView != null) {
+      localAutoVerticalScrollTextView.b();
     }
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
     this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView = null;
@@ -145,15 +158,16 @@ public class TeamWorkFileImportCover
   public void a(int paramInt, String paramString)
   {
     this.jdField_a_of_type_Int = 4;
-    TeamWorkUtils.a(this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo, null, "0X800A2F2");
+    ((ITeamWorkUtils)QRoute.api(ITeamWorkUtils.class)).reportOnlinePreview(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo, null, "0X800A2F2");
     if (this.jdField_a_of_type_AndroidAppActivity == null)
     {
       QLog.i("teamConvert", 1, "showFailedView, but activity is null");
       return;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.cancelAnimation();
+      ((DiniFlyAnimationView)localObject).cancelAnimation();
       this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(8);
     }
     this.jdField_c_of_type_AndroidWidgetTextView.setVisibility(8);
@@ -161,59 +175,56 @@ public class TeamWorkFileImportCover
     this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.setVisibility(8);
     this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-    label146:
-    String str;
-    if ((paramInt == 116) || (paramInt == -116))
+    if ((paramInt != 116) && (paramInt != -116))
     {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      if (paramInt == 116)
-      {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719796));
-        if (!TextUtils.isEmpty(paramString)) {
-          break label281;
-        }
-        str = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719803);
-        label167:
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
-      }
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377159).setBackgroundColor(Color.parseColor("#f6f7f9"));
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.i("teamConvert", 2, "tencentdoc log:show failed view finish time [" + System.currentTimeMillis() / 1000L + "] error code = " + paramInt + " errorStr = " + paramString);
-      return;
-      if (paramInt != -116) {
-        break label146;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719823));
-      break label146;
-      label281:
-      str = paramString;
-      break label167;
       if (paramInt == 106)
       {
-        str = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719824);
+        localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719548);
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+      }
+      else if ((Math.abs(paramInt) >= 100) && (Math.abs(paramInt) < 116))
+      {
+        if (TextUtils.isEmpty(paramString)) {
+          localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719527);
+        } else {
+          localObject = paramString;
+        }
+        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
+        this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
       }
       else
       {
-        if ((Math.abs(paramInt) >= 100) && (Math.abs(paramInt) < 116))
-        {
-          if (TextUtils.isEmpty(paramString)) {}
-          for (str = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719803);; str = paramString)
-          {
-            this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-            this.jdField_b_of_type_AndroidWidgetTextView.setText(str);
-            break;
-          }
-        }
         this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
-        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719803));
+        this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719527));
       }
+    }
+    else
+    {
+      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+      if (paramInt == 116) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719520));
+      } else if (paramInt == -116) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719547));
+      }
+      if (TextUtils.isEmpty(paramString)) {
+        localObject = this.jdField_a_of_type_AndroidAppActivity.getResources().getString(2131719527);
+      } else {
+        localObject = paramString;
+      }
+      this.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject);
+    }
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376636).setBackgroundColor(Color.parseColor("#f6f7f9"));
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("tencentdoc log:show failed view finish time [");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() / 1000L);
+      ((StringBuilder)localObject).append("] error code = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" errorStr = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.i("teamConvert", 2, ((StringBuilder)localObject).toString());
     }
   }
   
@@ -222,91 +233,104 @@ public class TeamWorkFileImportCover
     if ((paramIntent != null) && (paramIntent.getExtras() != null))
     {
       paramIntent.getExtras().setClassLoader(TeamWorkFileImportInfo.class.getClassLoader());
-      this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo = ((TeamWorkFileImportInfo)paramIntent.getParcelableExtra("key_team_work_file_import_info"));
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null)
+      this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo = ((TeamWorkFileImportInfo)paramIntent.getParcelableExtra("key_team_work_file_import_info"));
+      paramIntent = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
+      if (paramIntent != null)
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d()) {
-          break label213;
+        if (paramIntent.d())
+        {
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719536));
+          this.d.setText(paramContext.getString(2131719539));
         }
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719812));
-        this.d.setText(paramContext.getString(2131719815));
+        else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.g == 6)
+        {
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719535));
+          this.d.setText(paramContext.getString(2131719538));
+        }
+        else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.d == 12)
+        {
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719574));
+          this.d.setText(paramContext.getString(2131719539));
+        }
+        else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.d == 13)
+        {
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719559));
+          this.d.setVisibility(8);
+          this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.setVisibility(8);
+          this.e.setVisibility(0);
+          this.f.setVisibility(0);
+        }
+        else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b())
+        {
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719574));
+          this.d.setText(paramContext.getString(2131719539));
+        }
+        else
+        {
+          this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719534));
+          this.d.setText(paramContext.getString(2131719537));
+        }
+        this.jdField_a_of_type_Int = 2;
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("teamwork/tim_data_loading.json");
+        this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(true);
+        if (NetworkUtil.isNetSupport(BaseApplicationImpl.getContext()))
+        {
+          if (QLog.isColorLevel())
+          {
+            paramIntent = new StringBuilder();
+            paramIntent.append("tencentdoc log:---FileImport start, fileName： ");
+            paramIntent.append(this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.b);
+            paramIntent.append(" ---");
+            QLog.i("TeamWorkFileImportCover", 2, paramIntent.toString());
+          }
+          TenDocLogReportHelper.a("cover_loading_time");
+          TenDocLogReportHelper.a("get_url_time");
+          this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
+          this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
+          paramIntent = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
+          if ((paramIntent != null) && (paramIntent.d == 9)) {
+            TenDocLogReportHelper.a(null, "0X800A4B4");
+          }
+        }
+        else
+        {
+          QQToast.a(paramContext, 2131694424, 0).b(a());
+          a(-1, null);
+        }
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Int = 2;
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setAnimation("teamwork/tim_data_loading.json");
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.loop(true);
-      if (!NetworkUtil.d(BaseApplicationImpl.getContext())) {
-        break;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.i("TeamWorkFileImportCover", 2, "tencentdoc log:---FileImport start, fileName： " + this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b + " ---");
-      }
-      TenDocLogReportHelper.a("cover_loading_time");
-      TenDocLogReportHelper.a("get_url_time");
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.setVisibility(0);
-      this.jdField_a_of_type_ComTencentMobileqqDiniflyDiniFlyAnimationView.playAnimation();
-      if ((this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo != null) && (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d == 9)) {
-        TenDocLogReportHelper.a(null, "0X800A4B4");
-      }
-      return;
-      label213:
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.g == 6)
-      {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719811));
-        this.d.setText(paramContext.getString(2131719814));
-      }
-      else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d == 12)
-      {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719849));
-        this.d.setText(paramContext.getString(2131719815));
-      }
-      else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.d == 13)
-      {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719835));
-        this.d.setVisibility(8);
-        this.jdField_a_of_type_ComTencentWidgetAutoVerticalScrollTextView.setVisibility(8);
-        this.e.setVisibility(0);
-        this.f.setVisibility(0);
-      }
-      else if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.b())
-      {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719849));
-        this.d.setText(paramContext.getString(2131719815));
-      }
-      else
-      {
-        this.jdField_c_of_type_AndroidWidgetTextView.setText(paramContext.getString(2131719810));
-        this.d.setText(paramContext.getString(2131719813));
-      }
-    }
-    QQToast.a(paramContext, 2131694459, 0).b(a());
-    a(-1, null);
   }
   
   public boolean a()
   {
-    return (this.jdField_c_of_type_AndroidViewView != null) && (this.jdField_c_of_type_AndroidViewView.getVisibility() == 0);
+    View localView = this.jdField_c_of_type_AndroidViewView;
+    return (localView != null) && (localView.getVisibility() == 0);
   }
   
   public void b()
   {
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131377159).setBackgroundColor(Color.parseColor("#f6f7f9"));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout.findViewById(2131376636).setBackgroundColor(Color.parseColor("#f6f7f9"));
     this.jdField_c_of_type_AndroidViewView.setVisibility(8);
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-    if (QLog.isColorLevel()) {
-      QLog.i("teamConvert", 2, "hide loading view finish time [" + System.currentTimeMillis() / 1000L + "]");
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hide loading view finish time [");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() / 1000L);
+      ((StringBuilder)localObject).append("]");
+      QLog.i("teamConvert", 2, ((StringBuilder)localObject).toString());
     }
     long l = TenDocLogReportHelper.a("cover_loading_time");
-    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null) {}
-    for (String str = "";; str = this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo;
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = ((TeamWorkFileImportInfo)localObject).k;
+    }
+    TenDocLogReportHelper.a(null, (String)localObject, "0X8009E9C", String.valueOf(l), "", "");
+    if (this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo != null)
     {
-      TenDocLogReportHelper.a(null, str, "0X8009E9C", String.valueOf(l), "", "");
-      if (this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo == null) {
-        break;
-      }
-      TenDocLogReportHelper.a("TeamWorkFileImportCover", "cover_loading_time", String.valueOf(l), this.jdField_a_of_type_ComTencentMobileqqTeamworkTeamWorkFileImportInfo.k);
+      TenDocLogReportHelper.a("TeamWorkFileImportCover", "cover_loading_time", String.valueOf(l), this.jdField_a_of_type_ComTencentMobileqqTeamworkBeanTeamWorkFileImportInfo.k);
       return;
     }
     TenDocLogReportHelper.a("TeamWorkFileImportCover", "cover_loading_time", String.valueOf(l));
@@ -314,7 +338,7 @@ public class TeamWorkFileImportCover
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkFileImportCover
  * JD-Core Version:    0.7.0.1
  */

@@ -1,17 +1,17 @@
 package com.tencent.mobileqq.emoticonview.ipc.proxy;
 
 import android.os.Bundle;
-import com.tencent.imcore.message.QQMessageFacade;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.emoticonview.IQQMessageFacadeProxy;
+import com.tencent.mobileqq.emoticonview.api.IEmosmService;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
 
 public class QQMessageFacadeProxy
-  extends AbsManagerProxy<QQMessageFacade>
+  extends AbsManagerProxy
   implements IQQMessageFacadeProxy
 {
   public static final String ACTION_QQMESSAGEFACADE_CURRCHATUIN = "qqmessagefacade_currchatuin";
@@ -20,31 +20,31 @@ public class QQMessageFacadeProxy
   private static final String CURR_CHAT_UIN = "currchat_uin";
   public static final String TAG = "QQMessageFacadeProxy";
   
-  public QQMessageFacadeProxy(QQAppInterface paramQQAppInterface)
+  public QQMessageFacadeProxy(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    super(paramQQAppInterface, QQManagerFactory.MGR_MSG_FACADE);
+    super(paramBaseQQAppInterface, ((IEmosmService)QRoute.api(IEmosmService.class)).getManagerID("MGR_MSG_FACADE"));
   }
   
-  public static EIPCResult onGetCurrChatType(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onGetCurrChatType(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    paramInt = paramQQAppInterface.getMessageFacade().a();
-    paramQQAppInterface = new Bundle();
-    paramQQAppInterface.putInt("currchat_type", paramInt);
-    return EIPCResult.createSuccessResult(paramQQAppInterface);
+    paramInt = ((IEmosmService)QRoute.api(IEmosmService.class)).getCurrChatType(paramBaseQQAppInterface);
+    paramBaseQQAppInterface = new Bundle();
+    paramBaseQQAppInterface.putInt("currchat_type", paramInt);
+    return EIPCResult.createSuccessResult(paramBaseQQAppInterface);
   }
   
-  public static EIPCResult onGetCurrChatUin(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onGetCurrChatUin(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    paramQQAppInterface = paramQQAppInterface.getMessageFacade().a();
+    paramBaseQQAppInterface = ((IEmosmService)QRoute.api(IEmosmService.class)).getCurrChatUin(paramBaseQQAppInterface);
     paramString = new Bundle();
-    paramString.putString("currchat_uin", paramQQAppInterface);
+    paramString.putString("currchat_uin", paramBaseQQAppInterface);
     return EIPCResult.createSuccessResult(paramString);
   }
   
   public int getCurrChatType()
   {
     if (this.manager != null) {
-      return ((QQMessageFacade)this.manager).a();
+      return ((IEmosmService)QRoute.api(IEmosmService.class)).getCurrChatType(this.mApp);
     }
     EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "qqmessagefacade_getcurrchattype", null);
     if ((localEIPCResult != null) && (localEIPCResult.isSuccess())) {
@@ -57,7 +57,7 @@ public class QQMessageFacadeProxy
   public String getCurrChatUin()
   {
     if (this.manager != null) {
-      return ((QQMessageFacade)this.manager).a();
+      return ((IEmosmService)QRoute.api(IEmosmService.class)).getCurrChatUin(this.mApp);
     }
     EIPCResult localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "qqmessagefacade_currchatuin", null);
     if ((localEIPCResult != null) && (localEIPCResult.isSuccess())) {
@@ -69,7 +69,7 @@ public class QQMessageFacadeProxy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.proxy.QQMessageFacadeProxy
  * JD-Core Version:    0.7.0.1
  */

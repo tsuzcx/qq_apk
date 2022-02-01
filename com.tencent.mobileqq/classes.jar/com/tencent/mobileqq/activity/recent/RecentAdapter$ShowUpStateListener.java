@@ -4,11 +4,11 @@ public abstract interface RecentAdapter$ShowUpStateListener
 {
   public abstract void m();
   
-  public abstract void o();
+  public abstract void n();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.RecentAdapter.ShowUpStateListener
  * JD-Core Version:    0.7.0.1
  */

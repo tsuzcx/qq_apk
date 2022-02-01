@@ -19,42 +19,37 @@ class ChatSettingActivity$16
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-      return;
-      if (NetworkUtil.d(BaseApplication.getContext()))
-      {
-        ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).delFriend(this.jdField_a_of_type_JavaLangString, (byte)2);
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getHandler(ChatActivity.class);
-        if (paramView != null)
-        {
-          paramView.removeMessages(16711681);
-          paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
-        }
-        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
-        if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
-      }
-      else
-      {
-        ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131691543, 1);
-        continue;
-        if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
-        }
+      if ((paramInt == 1) && (Utils.b(this.jdField_a_of_type_JavaLangString))) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
       }
     }
+    else if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
+    {
+      ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).delFriend(this.jdField_a_of_type_JavaLangString, (byte)2);
+      paramView = this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app.getHandler(ChatActivity.class);
+      if (paramView != null)
+      {
+        paramView.removeMessages(16711681);
+        paramView.sendMessage(paramView.obtainMessage(16711681, this.jdField_a_of_type_JavaLangString));
+      }
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "CliOper", "", "", "AIO", "AIO_delete_frd", 0, 0, "", "", "", "");
+      if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
+      }
+      this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity.finish();
+    }
+    else
+    {
+      ChatSettingActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityChatSettingActivity, 2131691464, 1);
+    }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatSettingActivity.16
  * JD-Core Version:    0.7.0.1
  */

@@ -63,42 +63,38 @@ public class NiceImageView
   {
     super(paramContext, paramAttributeSet, paramInt);
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.NiceImageView, 0, 0);
-    paramInt = m;
-    if (paramInt < paramContext.getIndexCount())
+    int[] arrayOfInt = R.styleable.NiceImageView;
+    paramInt = 0;
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, arrayOfInt, 0, 0);
+    while (paramInt < paramContext.getIndexCount())
     {
-      m = paramContext.getIndex(paramInt);
+      int m = paramContext.getIndex(paramInt);
       if (m == 10) {
         this.jdField_b_of_type_Boolean = paramContext.getBoolean(m, this.jdField_b_of_type_Boolean);
+      } else if (m == 9) {
+        this.jdField_a_of_type_Boolean = paramContext.getBoolean(m, this.jdField_a_of_type_Boolean);
+      } else if (m == 1) {
+        this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(m, this.jdField_a_of_type_Int);
+      } else if (m == 0) {
+        this.jdField_b_of_type_Int = paramContext.getColor(m, this.jdField_b_of_type_Int);
+      } else if (m == 8) {
+        this.c = paramContext.getDimensionPixelSize(m, this.c);
+      } else if (m == 7) {
+        this.d = paramContext.getColor(m, this.d);
+      } else if (m == 4) {
+        this.e = paramContext.getDimensionPixelSize(m, this.e);
+      } else if (m == 5) {
+        this.f = paramContext.getDimensionPixelSize(m, this.f);
+      } else if (m == 6) {
+        this.g = paramContext.getDimensionPixelSize(m, this.g);
+      } else if (m == 2) {
+        this.h = paramContext.getDimensionPixelSize(m, this.h);
+      } else if (m == 3) {
+        this.i = paramContext.getDimensionPixelSize(m, this.i);
+      } else if (m == 11) {
+        this.j = paramContext.getColor(m, this.j);
       }
-      for (;;)
-      {
-        paramInt += 1;
-        break;
-        if (m == 9) {
-          this.jdField_a_of_type_Boolean = paramContext.getBoolean(m, this.jdField_a_of_type_Boolean);
-        } else if (m == 1) {
-          this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(m, this.jdField_a_of_type_Int);
-        } else if (m == 0) {
-          this.jdField_b_of_type_Int = paramContext.getColor(m, this.jdField_b_of_type_Int);
-        } else if (m == 8) {
-          this.c = paramContext.getDimensionPixelSize(m, this.c);
-        } else if (m == 7) {
-          this.d = paramContext.getColor(m, this.d);
-        } else if (m == 4) {
-          this.e = paramContext.getDimensionPixelSize(m, this.e);
-        } else if (m == 5) {
-          this.f = paramContext.getDimensionPixelSize(m, this.f);
-        } else if (m == 6) {
-          this.g = paramContext.getDimensionPixelSize(m, this.g);
-        } else if (m == 2) {
-          this.h = paramContext.getDimensionPixelSize(m, this.h);
-        } else if (m == 3) {
-          this.i = paramContext.getDimensionPixelSize(m, this.i);
-        } else if (m == 11) {
-          this.j = paramContext.getColor(m, this.j);
-        }
-      }
+      paramInt += 1;
     }
     paramContext.recycle();
     this.jdField_a_of_type_ArrayOfFloat = new float[8];
@@ -107,28 +103,31 @@ public class NiceImageView
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    if (Build.VERSION.SDK_INT <= 27) {
+    if (Build.VERSION.SDK_INT <= 27)
+    {
       this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_IN);
     }
-    for (;;)
+    else
     {
-      c();
-      d();
-      return;
       this.jdField_a_of_type_AndroidGraphicsXfermode = new PorterDuffXfermode(PorterDuff.Mode.DST_OUT);
       this.jdField_b_of_type_AndroidGraphicsPath = new Path();
     }
+    c();
+    d();
   }
   
   private int a(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private void a()
   {
-    if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_b_of_type_AndroidGraphicsRectF.set(this.jdField_a_of_type_Int / 2.0F, this.jdField_a_of_type_Int / 2.0F, this.k - this.jdField_a_of_type_Int / 2.0F, this.l - this.jdField_a_of_type_Int / 2.0F);
+    if (!this.jdField_a_of_type_Boolean)
+    {
+      RectF localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+      int m = this.jdField_a_of_type_Int;
+      localRectF.set(m / 2.0F, m / 2.0F, this.k - m / 2.0F, this.l - m / 2.0F);
     }
   }
   
@@ -142,19 +141,25 @@ public class NiceImageView
   
   private void a(Canvas paramCanvas)
   {
+    int m;
     if (this.jdField_a_of_type_Boolean)
     {
-      if (this.jdField_a_of_type_Int > 0) {
-        a(paramCanvas, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float - this.jdField_a_of_type_Int / 2.0F);
+      m = this.jdField_a_of_type_Int;
+      if (m > 0) {
+        a(paramCanvas, m, this.jdField_b_of_type_Int, this.jdField_a_of_type_Float - m / 2.0F);
       }
-      if (this.c > 0) {
-        a(paramCanvas, this.c, this.d, this.jdField_a_of_type_Float - this.jdField_a_of_type_Int - this.c / 2.0F);
+      m = this.c;
+      if (m > 0) {
+        a(paramCanvas, m, this.d, this.jdField_a_of_type_Float - this.jdField_a_of_type_Int - m / 2.0F);
       }
     }
-    while (this.jdField_a_of_type_Int <= 0) {
-      return;
+    else
+    {
+      m = this.jdField_a_of_type_Int;
+      if (m > 0) {
+        a(paramCanvas, m, this.jdField_b_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat);
+      }
     }
-    a(paramCanvas, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, this.jdField_b_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_ArrayOfFloat);
   }
   
   private void a(Canvas paramCanvas, int paramInt1, int paramInt2, float paramFloat)
@@ -186,73 +191,72 @@ public class NiceImageView
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Float = (Math.min(this.k, this.l) / 2.0F);
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(this.k / 2.0F - this.jdField_a_of_type_Float, this.l / 2.0F - this.jdField_a_of_type_Float, this.k / 2.0F + this.jdField_a_of_type_Float, this.l / 2.0F + this.jdField_a_of_type_Float);
-    }
-    do
-    {
+      RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+      int m = this.k;
+      float f1 = m / 2.0F;
+      float f2 = this.jdField_a_of_type_Float;
+      int n = this.l;
+      localRectF.set(f1 - f2, n / 2.0F - f2, m / 2.0F + f2, n / 2.0F + f2);
       return;
-      this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.k, this.l);
-    } while (!this.jdField_b_of_type_Boolean);
-    this.jdField_a_of_type_AndroidGraphicsRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    }
+    this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, this.k, this.l);
+    if (this.jdField_b_of_type_Boolean) {
+      this.jdField_a_of_type_AndroidGraphicsRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    }
   }
   
   private void c()
   {
-    int m = 0;
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      if (this.e <= 0) {
-        break;
-      }
-      while (m < this.jdField_a_of_type_ArrayOfFloat.length)
+    }
+    int n = this.e;
+    int m = 0;
+    if (n > 0) {
+      for (;;)
       {
-        this.jdField_a_of_type_ArrayOfFloat[m] = this.e;
-        this.jdField_b_of_type_ArrayOfFloat[m] = (this.e - this.jdField_a_of_type_Int / 2.0F);
+        arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+        if (m >= arrayOfFloat.length) {
+          break;
+        }
+        n = this.e;
+        arrayOfFloat[m] = n;
+        this.jdField_b_of_type_ArrayOfFloat[m] = (n - this.jdField_a_of_type_Int / 2.0F);
         m += 1;
       }
     }
-    float[] arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    float[] arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
-    float f1 = this.f;
-    arrayOfFloat2[1] = f1;
-    arrayOfFloat1[0] = f1;
-    arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
-    f1 = this.g;
-    arrayOfFloat2[3] = f1;
-    arrayOfFloat1[2] = f1;
-    arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
-    f1 = this.i;
-    arrayOfFloat2[5] = f1;
-    arrayOfFloat1[4] = f1;
-    arrayOfFloat1 = this.jdField_a_of_type_ArrayOfFloat;
-    arrayOfFloat2 = this.jdField_a_of_type_ArrayOfFloat;
-    f1 = this.h;
-    arrayOfFloat2[7] = f1;
-    arrayOfFloat1[6] = f1;
-    arrayOfFloat1 = this.jdField_b_of_type_ArrayOfFloat;
-    arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
-    f1 = this.f - this.jdField_a_of_type_Int / 2.0F;
-    arrayOfFloat2[1] = f1;
-    arrayOfFloat1[0] = f1;
-    arrayOfFloat1 = this.jdField_b_of_type_ArrayOfFloat;
-    arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
-    f1 = this.g - this.jdField_a_of_type_Int / 2.0F;
-    arrayOfFloat2[3] = f1;
-    arrayOfFloat1[2] = f1;
-    arrayOfFloat1 = this.jdField_b_of_type_ArrayOfFloat;
-    arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
-    f1 = this.i - this.jdField_a_of_type_Int / 2.0F;
-    arrayOfFloat2[5] = f1;
-    arrayOfFloat1[4] = f1;
-    arrayOfFloat1 = this.jdField_b_of_type_ArrayOfFloat;
-    arrayOfFloat2 = this.jdField_b_of_type_ArrayOfFloat;
-    f1 = this.h - this.jdField_a_of_type_Int / 2.0F;
-    arrayOfFloat2[7] = f1;
-    arrayOfFloat1[6] = f1;
+    float[] arrayOfFloat = this.jdField_a_of_type_ArrayOfFloat;
+    int i2 = this.f;
+    float f1 = i2;
+    arrayOfFloat[1] = f1;
+    arrayOfFloat[0] = f1;
+    m = this.g;
+    f1 = m;
+    arrayOfFloat[3] = f1;
+    arrayOfFloat[2] = f1;
+    n = this.i;
+    f1 = n;
+    arrayOfFloat[5] = f1;
+    arrayOfFloat[4] = f1;
+    int i1 = this.h;
+    f1 = i1;
+    arrayOfFloat[7] = f1;
+    arrayOfFloat[6] = f1;
+    arrayOfFloat = this.jdField_b_of_type_ArrayOfFloat;
+    f1 = i2;
+    i2 = this.jdField_a_of_type_Int;
+    f1 -= i2 / 2.0F;
+    arrayOfFloat[1] = f1;
+    arrayOfFloat[0] = f1;
+    f1 = m - i2 / 2.0F;
+    arrayOfFloat[3] = f1;
+    arrayOfFloat[2] = f1;
+    f1 = n - i2 / 2.0F;
+    arrayOfFloat[5] = f1;
+    arrayOfFloat[4] = f1;
+    f1 = i1 - i2 / 2.0F;
+    arrayOfFloat[7] = f1;
+    arrayOfFloat[6] = f1;
   }
   
   private void d()
@@ -262,47 +266,51 @@ public class NiceImageView
     }
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     paramCanvas.saveLayer(this.jdField_a_of_type_AndroidGraphicsRectF, null, 31);
-    if (!this.jdField_b_of_type_Boolean) {
-      paramCanvas.scale((this.k - this.jdField_a_of_type_Int * 2 - this.c * 2) * 1.0F / this.k, (this.l - this.jdField_a_of_type_Int * 2 - this.c * 2) * 1.0F / this.l, this.k / 2.0F, this.l / 2.0F);
+    if (!this.jdField_b_of_type_Boolean)
+    {
+      m = this.k;
+      int n = this.jdField_a_of_type_Int;
+      int i1 = this.c;
+      float f1 = (m - n * 2 - i1 * 2) * 1.0F / m;
+      int i2 = this.l;
+      paramCanvas.scale(f1, (i2 - n * 2 - i1 * 2) * 1.0F / i2, m / 2.0F, i2 / 2.0F);
     }
     super.onDraw(paramCanvas);
     this.jdField_a_of_type_AndroidGraphicsPaint.reset();
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    if (this.jdField_a_of_type_Boolean)
-    {
+    if (this.jdField_a_of_type_Boolean) {
       this.jdField_a_of_type_AndroidGraphicsPath.addCircle(this.k / 2.0F, this.l / 2.0F, this.jdField_a_of_type_Float, Path.Direction.CCW);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsXfermode);
-      if (Build.VERSION.SDK_INT > 27) {
-        break label265;
-      }
+    } else {
+      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_ArrayOfFloat, Path.Direction.CCW);
+    }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(this.jdField_a_of_type_AndroidGraphicsXfermode);
+    if (Build.VERSION.SDK_INT <= 27)
+    {
       paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
-      if (this.j != 0)
-      {
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.j);
-        paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
-      }
-      paramCanvas.restore();
-      a(paramCanvas);
-      return;
-      this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_b_of_type_ArrayOfFloat, Path.Direction.CCW);
-      break;
-      label265:
       this.jdField_b_of_type_AndroidGraphicsPath.addRect(this.jdField_a_of_type_AndroidGraphicsRectF, Path.Direction.CCW);
       this.jdField_b_of_type_AndroidGraphicsPath.op(this.jdField_a_of_type_AndroidGraphicsPath, Path.Op.DIFFERENCE);
       paramCanvas.drawPath(this.jdField_b_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
+    this.jdField_a_of_type_AndroidGraphicsPaint.setXfermode(null);
+    int m = this.j;
+    if (m != 0)
+    {
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(m);
+      paramCanvas.drawPath(this.jdField_a_of_type_AndroidGraphicsPath, this.jdField_a_of_type_AndroidGraphicsPaint);
+    }
+    paramCanvas.restore();
+    a(paramCanvas);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     this.k = paramInt1;
@@ -374,7 +382,7 @@ public class NiceImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.now.widget.NiceImageView
  * JD-Core Version:    0.7.0.1
  */

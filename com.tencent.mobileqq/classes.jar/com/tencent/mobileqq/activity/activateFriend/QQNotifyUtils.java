@@ -1,13 +1,19 @@
 package com.tencent.mobileqq.activity.activateFriend;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.mini.api.IMiniAppService;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.reminder.api.IQQReminderService;
+import com.tencent.mobileqq.reminder.biz.entity.CalendarEntity;
+import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
+import cooperation.qwallet.plugin.FakeUrl;
 import mqq.app.AppRuntime;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -80,6 +86,39 @@ public class QQNotifyUtils
     return "";
   }
   
+  public static void a(Activity paramActivity, CalendarEntity paramCalendarEntity)
+  {
+    Object localObject1 = paramCalendarEntity.jump_url;
+    if (localObject1 == null) {
+      QLog.e("QQNotifyUtils", 1, "jumpUrl is null");
+    }
+    if (a((String)localObject1))
+    {
+      ((IMiniAppService)QRoute.api(IMiniAppService.class)).startMiniApp(paramActivity, (String)localObject1, 2102, null);
+      return;
+    }
+    paramCalendarEntity = (CalendarEntity)localObject1;
+    if (StringUtil.a((String)localObject1)) {
+      paramCalendarEntity = "https://act.qzone.qq.com/vip/meteor/blockly/p/4403xdf3cc";
+    }
+    Object localObject2 = Uri.parse(paramCalendarEntity);
+    if (localObject2 != null)
+    {
+      localObject1 = new FakeUrl();
+      ((FakeUrl)localObject1).init(paramActivity);
+      localObject2 = ((Uri)localObject2).getScheme();
+      if (!StringUtil.a((String)localObject2))
+      {
+        if ((((String)localObject2).startsWith("http")) || (((String)localObject2).startsWith("https"))) {
+          ((FakeUrl)localObject1).gotoH5(paramActivity, paramCalendarEntity, true, true);
+        }
+        if (((String)localObject2).startsWith("mqqapi")) {
+          ((FakeUrl)localObject1).gotoMqq(paramActivity, paramCalendarEntity);
+        }
+      }
+    }
+  }
+  
   public static void a(Activity paramActivity, String paramString1, String paramString2, String paramString3, int paramInt)
   {
     if (TextUtils.isEmpty(paramString1))
@@ -100,24 +139,30 @@ public class QQNotifyUtils
       if (QLog.isColorLevel()) {
         QLog.d("QQNotifyUtils", 1, "hasBusinessSetNotify msgId is empty");
       }
-    }
-    do
-    {
       return;
-      if (BaseApplicationImpl.sProcessId != 1) {
-        break;
-      }
+    }
+    if (BaseApplicationImpl.sProcessId == 1)
+    {
       paramString2 = (IQQReminderService)BaseApplicationImpl.getApplication().getRuntime().getRuntimeService(IQQReminderService.class, "");
-    } while (paramString2 == null);
-    paramString2.queryNotifyIsSubscribed(paramString1, new QQNotifyIPCModule.QQNotifyObserver(paramQQNotifyListener, null));
-    return;
-    paramString1 = a(paramString1, paramString2, paramString3);
-    QIPCClientHelper.getInstance().callServer("QQNotifyIPCModule", "query", paramString1, new QQNotifyIPCModule.QQNotifyObserver(paramQQNotifyListener, null));
+      if (paramString2 != null) {
+        paramString2.queryNotifyIsSubscribed(paramString1, new QQNotifyIPCModule.QQNotifyObserver(paramQQNotifyListener, null));
+      }
+    }
+    else
+    {
+      paramString1 = a(paramString1, paramString2, paramString3);
+      QIPCClientHelper.getInstance().callServer("QQNotifyIPCModule", "query", paramString1, new QQNotifyIPCModule.QQNotifyObserver(paramQQNotifyListener, null));
+    }
+  }
+  
+  private static boolean a(String paramString)
+  {
+    return (!StringUtil.a(paramString)) && (((IMiniAppService)QRoute.api(IMiniAppService.class)).isMiniAppUrl(paramString));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQNotifyUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -27,9 +27,9 @@ import com.tencent.widget.XEditTextEx;
 public class ZhituPanelView
   extends RichTextPanelView
 {
-  public static int a;
+  public static int a = 0;
   private static String jdField_a_of_type_JavaLangString = "ZhituManager.PanelView";
-  private static String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131716856);
+  private static String jdField_b_of_type_JavaLangString = HardCodeUtil.a(2131716506);
   private ColorDrawable jdField_a_of_type_AndroidGraphicsDrawableColorDrawable = new ColorDrawable();
   GridLayoutManager jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager;
   private Button jdField_a_of_type_AndroidWidgetButton;
@@ -69,11 +69,11 @@ public class ZhituPanelView
     if (localRichTextChatManager.b())
     {
       this.jdField_a_of_type_AndroidWidgetTextView = new TextView(getContext());
-      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131382142);
+      this.jdField_a_of_type_AndroidWidgetTextView.setId(2131381346);
       this.jdField_a_of_type_AndroidWidgetTextView.setText(localRichTextChatManager.b());
       this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(-8947849);
       this.jdField_a_of_type_AndroidWidgetTextView.setTextSize(2, 14.0F);
-      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, AIOUtils.a(8.0F, getResources()), 0, AIOUtils.a(6.0F, getResources()));
+      this.jdField_a_of_type_AndroidWidgetTextView.setPadding(0, AIOUtils.b(8.0F, getResources()), 0, AIOUtils.b(6.0F, getResources()));
       this.jdField_a_of_type_AndroidWidgetTextView.setGravity(1);
       localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetTextView);
     }
@@ -84,7 +84,7 @@ public class ZhituPanelView
   private View a(String paramString)
   {
     TextView localTextView = new TextView(getContext());
-    localTextView.setId(2131382140);
+    localTextView.setId(2131381344);
     localTextView.setText(paramString);
     localTextView.setTextColor(Color.parseColor("#878B99"));
     localTextView.setTextSize(2, 14.0F);
@@ -96,11 +96,11 @@ public class ZhituPanelView
   
   public int a()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null) {
-      i = RichTextChatManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a()).a();
+    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localBaseChatPie != null) {
+      return RichTextChatManager.a(localBaseChatPie.a()).a();
     }
-    return i;
+    return 0;
   }
   
   public Button a()
@@ -121,7 +121,7 @@ public class ZhituPanelView
     this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager = new GridLayoutManager(getContext(), 3);
     this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetGridLayoutManager);
     RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-1, -1);
-    localLayoutParams.addRule(3, 2131382142);
+    localLayoutParams.addRule(3, 2131381346);
     addView(this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView, localLayoutParams);
     this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView$ZhituPanelAdapter = new ZhituPanelView.ZhituPanelAdapter(this);
     this.jdField_a_of_type_ComTencentMobileqqHiboomRichTextPanelRecyclerView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPanelView$ZhituPanelAdapter);
@@ -149,17 +149,20 @@ public class ZhituPanelView
   public void b()
   {
     ZhituPicData localZhituPicData = this.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituPicData;
-    if ((localZhituPicData == null) || (localZhituPicData.jdField_a_of_type_JavaLangString == null) || (localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData == null)) {
-      return;
+    if ((localZhituPicData != null) && (localZhituPicData.jdField_a_of_type_JavaLangString != null))
+    {
+      if (localZhituPicData.jdField_a_of_type_ComTencentMobileqqActivityAioZhituZhituReportData == null) {
+        return;
+      }
+      ThreadManager.post(new ZhituPanelView.1(this, localZhituPicData), 8, null, false);
+      ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localZhituPicData);
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D5", "0X80094D5", 0, 0, "", "", "", "");
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.Y();
     }
-    ThreadManager.post(new ZhituPanelView.1(this, localZhituPicData), 8, null, false);
-    ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a(localZhituPicData);
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X80094D5", "0X80094D5", 0, 0, "", "", "", "");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentWidgetXEditTextEx.setText("");
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.ax();
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     ZhituManager localZhituManager = ZhituManager.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
@@ -169,7 +172,7 @@ public class ZhituPanelView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.zhitu.ZhituPanelView
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ class OfflineFileBubbleModel$2
     paramView = FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, OfflineFileBubbleModel.a(this.jdField_a_of_type_ComTencentMobileqqFilemanagerBubbleOfflineFileBubbleModel));
     if (paramView.status == 16)
     {
-      FMToastUtil.a(2131692760);
+      FMToastUtil.a(2131692717);
       this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
       return;
     }
@@ -33,7 +33,7 @@ class OfflineFileBubbleModel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.bubble.OfflineFileBubbleModel.2
  * JD-Core Version:    0.7.0.1
  */

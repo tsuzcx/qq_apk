@@ -16,14 +16,15 @@ public class PTSReportUtil
   
   public static void reportEvent(String paramString1, String paramString2, int paramInt)
   {
-    if (sPtsReport != null) {
-      sPtsReport.reportEvent(paramString1, paramString2, paramInt);
+    PTSReportUtil.IPTSReport localIPTSReport = sPtsReport;
+    if (localIPTSReport != null) {
+      localIPTSReport.reportEvent(paramString1, paramString2, paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pts.utils.PTSReportUtil
  * JD-Core Version:    0.7.0.1
  */

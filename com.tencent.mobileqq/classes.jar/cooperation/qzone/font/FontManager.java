@@ -6,7 +6,7 @@ import com.etrump.mixlayout.FontSoLoader;
 import com.etrump.mixlayout.VasFontIPCModule;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.earlydownload.EarlyDownloadManager.EarlyDownLoadListener;
+import com.tencent.mobileqq.earlydownload.EarlyDownLoadListener;
 import com.tencent.mobileqq.lyric.util.Singleton;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
 import com.tencent.qphone.base.util.QLog;
@@ -63,28 +63,31 @@ public class FontManager
   
   private void callbackResult(int paramInt)
   {
-    if (this.downloadingFontIDs == null) {}
+    Object localObject1 = this.downloadingFontIDs;
+    if (localObject1 == null) {
+      return;
+    }
+    try
+    {
+      Object localObject2 = (ArrayList)this.downloadingFontIDs.remove(Integer.valueOf(paramInt));
+      if (localObject2 == null) {
+        return;
+      }
+      localObject1 = ((ArrayList)localObject2).iterator();
+      while (((Iterator)localObject1).hasNext())
+      {
+        localObject2 = (FontManager.DownLoadFontTask)((Iterator)localObject1).next();
+        FontInterface.FontResult localFontResult = (FontInterface.FontResult)((FontManager.DownLoadFontTask)localObject2).result.get();
+        if (localFontResult != null) {
+          localFontResult.result(paramInt, getFontPathIfExist(paramInt, ((FontManager.DownLoadFontTask)localObject2).fontType), ((FontManager.DownLoadFontTask)localObject2).extend);
+        }
+      }
+      return;
+    }
+    finally {}
     for (;;)
     {
-      return;
-      synchronized (this.downloadingFontIDs)
-      {
-        Object localObject2 = (ArrayList)this.downloadingFontIDs.remove(Integer.valueOf(paramInt));
-        if (localObject2 == null) {
-          continue;
-        }
-        ??? = ((ArrayList)localObject2).iterator();
-        FontInterface.FontResult localFontResult;
-        do
-        {
-          if (!((Iterator)???).hasNext()) {
-            break;
-          }
-          localObject2 = (FontManager.DownLoadFontTask)((Iterator)???).next();
-          localFontResult = (FontInterface.FontResult)((FontManager.DownLoadFontTask)localObject2).result.get();
-        } while (localFontResult == null);
-        localFontResult.result(paramInt, getFontPathIfExist(paramInt, ((FontManager.DownLoadFontTask)localObject2).fontType), ((FontManager.DownLoadFontTask)localObject2).extend);
-      }
+      throw localObject3;
     }
   }
   
@@ -95,39 +98,51 @@ public class FontManager
   
   private boolean convertFontFile(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {
-      return false;
-    }
-    Object localObject = paramString2 + "." + getProcessName() + ".tmp";
-    boolean bool;
-    try
+    if (!TextUtils.isEmpty(paramString1))
     {
-      ETEngine.getInstanceForSpace();
-      bool = ETEngine.native_ftf2ttf(paramString1, (String)localObject);
-      if (!bool) {
-        break label174;
+      if (TextUtils.isEmpty(paramString2)) {
+        return false;
       }
-      paramString1 = new File((String)localObject);
-      localObject = new File(paramString2);
-      if (!((File)localObject).exists()) {
-        bool = paramString1.renameTo((File)localObject);
-      }
-      if (!bool)
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(".");
+      ((StringBuilder)localObject).append(getProcessName());
+      ((StringBuilder)localObject).append(".tmp");
+      localObject = ((StringBuilder)localObject).toString();
+      try
       {
-        QLog.e("FontManager", 1, "failed to move trueType font file, from path = " + paramString1.getAbsolutePath());
+        ETEngine.getInstanceForSpace();
+        boolean bool = ETEngine.native_ftf2ttf(paramString1, (String)localObject);
+        if (bool)
+        {
+          paramString1 = new File((String)localObject);
+          localObject = new File(paramString2);
+          if (!((File)localObject).exists()) {
+            bool = paramString1.renameTo((File)localObject);
+          }
+          if (!bool)
+          {
+            paramString2 = new StringBuilder();
+            paramString2.append("failed to move trueType font file, from path = ");
+            paramString2.append(paramString1.getAbsolutePath());
+            QLog.e("FontManager", 1, paramString2.toString());
+            return bool;
+          }
+          getFileCache().updateLruFile(paramString2, true);
+          return bool;
+        }
+        QLog.e("FontManager", 1, "call native_ftf2ttf error");
         return bool;
       }
+      catch (Throwable paramString1)
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("call native_ftf2ttf error, errMsg = ");
+        paramString2.append(paramString1.toString());
+        QLog.e("FontManager", 1, paramString2.toString());
+      }
     }
-    catch (Throwable paramString1)
-    {
-      QLog.e("FontManager", 1, "call native_ftf2ttf error, errMsg = " + paramString1.toString());
-      return false;
-    }
-    getFileCache().updateLruFile(paramString2, true);
-    return bool;
-    label174:
-    QLog.e("FontManager", 1, "call native_ftf2ttf error");
-    return bool;
+    return false;
   }
   
   private boolean doRealDownload(int paramInt1, String paramString1, int paramInt2, String arg4, FontInterface.FontResult paramFontResult)
@@ -150,8 +165,12 @@ public class FontManager
       paramFontResult = (ArrayList)this.downloadingFontIDs.get(Integer.valueOf(paramInt1));
       if (paramFontResult == null)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("FontManager", 4, "add new download task. fontId =" + paramInt1);
+        if (QLog.isDevelopLevel())
+        {
+          paramFontResult = new StringBuilder();
+          paramFontResult.append("add new download task. fontId =");
+          paramFontResult.append(paramInt1);
+          QLog.d("FontManager", 4, paramFontResult.toString());
         }
         paramFontResult = new ArrayList();
         paramFontResult.add(localDownLoadFontTask);
@@ -159,8 +178,12 @@ public class FontManager
         ThreadManager.post(new FontManager.4(this, paramString1, paramInt1), 5, null, false);
         return true;
       }
-      if (QLog.isDevelopLevel()) {
-        QLog.d("FontManager", 4, "attache download task. fontId =" + paramInt1);
+      if (QLog.isDevelopLevel())
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append("attache download task. fontId =");
+        paramString1.append(paramInt1);
+        QLog.d("FontManager", 4, paramString1.toString());
       }
       paramFontResult.add(localDownLoadFontTask);
       return true;
@@ -172,22 +195,22 @@ public class FontManager
     if (paramFontResult == null) {
       return;
     }
-    if ((!NetworkState.isNetSupport()) || (getETEngine() == null))
+    if ((NetworkState.isNetSupport()) && (getETEngine() != null))
     {
-      paramFontResult.result(paramInt1, null, paramString2);
+      if (!paramBoolean)
+      {
+        paramBoolean = NetworkState.isWifiConn();
+        int i = QzoneConfig.getInstance().getConfig("QzCustomFont", "DownloadFontAnyway", 0);
+        if ((!paramBoolean) && (i == 0))
+        {
+          paramFontResult.result(paramInt1, null, paramString2);
+          return;
+        }
+      }
+      addDownloadTask(paramInt1, paramString1, paramInt2, paramString2, paramFontResult);
       return;
     }
-    if (!paramBoolean)
-    {
-      paramBoolean = NetworkState.isWifiConn();
-      int i = QzoneConfig.getInstance().getConfig("QzCustomFont", "DownloadFontAnyway", 0);
-      if ((!paramBoolean) && (i == 0))
-      {
-        paramFontResult.result(paramInt1, null, paramString2);
-        return;
-      }
-    }
-    addDownloadTask(paramInt1, paramString1, paramInt2, paramString2, paramFontResult);
+    paramFontResult.result(paramInt1, null, paramString2);
   }
   
   private File[] getAllFontInFolder(File paramFile)
@@ -197,20 +220,34 @@ public class FontManager
   
   private String getDownLoadDir()
   {
-    if (!TextUtils.isEmpty(this.fontDownloadDir)) {
-      return this.fontDownloadDir + File.separator;
+    if (!TextUtils.isEmpty(this.fontDownloadDir))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.fontDownloadDir);
+      ((StringBuilder)localObject).append(File.separator);
+      return ((StringBuilder)localObject).toString();
     }
-    this.fontDownloadDir = (getFontDir() + getProcessName());
-    File localFile = new File(this.fontDownloadDir);
-    if (!localFile.isDirectory()) {
-      localFile.mkdirs();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(getFontDir());
+    ((StringBuilder)localObject).append(getProcessName());
+    this.fontDownloadDir = ((StringBuilder)localObject).toString();
+    localObject = new File(this.fontDownloadDir);
+    if (!((File)localObject).isDirectory()) {
+      ((File)localObject).mkdirs();
     }
-    return this.fontDownloadDir + File.separator;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.fontDownloadDir);
+    ((StringBuilder)localObject).append(File.separator);
+    return ((StringBuilder)localObject).toString();
   }
   
   private String getDownloadZipPath(int paramInt)
   {
-    return getDownLoadDir() + paramInt + ".zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getDownLoadDir());
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
   }
   
   private static FileCacheService getFileCache()
@@ -223,15 +260,22 @@ public class FontManager
   
   private String getFontDir()
   {
-    if (!TextUtils.isEmpty(this.fontDir)) {
-      return this.fontDir + File.separator;
+    if (!TextUtils.isEmpty(this.fontDir))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(this.fontDir);
+      ((StringBuilder)localObject).append(File.separator);
+      return ((StringBuilder)localObject).toString();
     }
     this.fontDir = CacheManager.getPersonaliseFontDir();
-    File localFile = new File(this.fontDir);
-    if (!localFile.isDirectory()) {
-      localFile.mkdirs();
+    Object localObject = new File(this.fontDir);
+    if (!((File)localObject).isDirectory()) {
+      ((File)localObject).mkdirs();
     }
-    return this.fontDir + File.separator;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.fontDir);
+    ((StringBuilder)localObject).append(File.separator);
+    return ((StringBuilder)localObject).toString();
   }
   
   private int getFontIDFromFile(File paramFile)
@@ -242,28 +286,44 @@ public class FontManager
       int i = Integer.parseInt(paramFile.substring(0, paramFile.indexOf('.')));
       return i;
     }
-    catch (Exception paramFile) {}
+    catch (Exception paramFile)
+    {
+      label22:
+      break label22;
+    }
     return -1;
   }
   
   private String getFontName(int paramInt1, int paramInt2)
   {
-    if (paramInt2 == 1) {}
-    for (String str = ".ttf";; str = ".ftf")
+    if (paramInt2 == 1)
     {
-      StringBuilder localStringBuilder = new StringBuilder();
-      localStringBuilder.append(paramInt1).append(str);
-      return localStringBuilder.toString();
-      if (paramInt2 != 0) {
-        break;
-      }
+      localObject = ".ttf";
     }
-    throw new IllegalArgumentException("fontType = " + paramInt2);
+    else
+    {
+      if (paramInt2 != 0) {
+        break label47;
+      }
+      localObject = ".ftf";
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append((String)localObject);
+    return localStringBuilder.toString();
+    label47:
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("fontType = ");
+    ((StringBuilder)localObject).append(paramInt2);
+    throw new IllegalArgumentException(((StringBuilder)localObject).toString());
   }
   
   private String getFontPath(int paramInt1, int paramInt2)
   {
-    return getFontDir() + getFontName(paramInt1, paramInt2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getFontDir());
+    localStringBuilder.append(getFontName(paramInt1, paramInt2));
+    return localStringBuilder.toString();
   }
   
   private String getFontPathIfExist(int paramInt1, int paramInt2)
@@ -283,30 +343,33 @@ public class FontManager
   
   private String getProcessName()
   {
-    String str;
-    int i;
     if (TextUtils.isEmpty(this.processName))
     {
-      str = BaseApplicationImpl.getApplication().getQQProcessName();
-      i = str.indexOf(':');
-      if ((i <= 0) || (i >= str.length() - 1)) {
-        break label54;
+      String str = BaseApplicationImpl.getApplication().getQQProcessName();
+      int i = str.indexOf(':');
+      if ((i > 0) && (i < str.length() - 1)) {
+        this.processName = str.substring(i + 1);
+      } else {
+        this.processName = str;
       }
     }
-    label54:
-    for (this.processName = str.substring(i + 1);; this.processName = str) {
-      return this.processName;
-    }
+    return this.processName;
   }
   
   private String getUnzipDir(int paramInt)
   {
-    String str = getDownLoadDir() + paramInt;
-    File localFile = new File(str);
-    if (!localFile.isDirectory()) {
-      localFile.mkdirs();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(getDownLoadDir());
+    ((StringBuilder)localObject1).append(paramInt);
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new File((String)localObject1);
+    if (!((File)localObject2).isDirectory()) {
+      ((File)localObject2).mkdirs();
     }
-    return str + File.separator;
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(File.separator);
+    return ((StringBuilder)localObject2).toString();
   }
   
   private void loadFontInfo()
@@ -336,7 +399,10 @@ public class FontManager
         addFontInfoToCatch(((Integer)((Iterator)localObject).next()).intValue());
       }
     }
-    QLog.d("FontManager", 1, "cache font size = " + this.catchFontInfoMap.size());
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("cache font size = ");
+    ((StringBuilder)localObject).append(this.catchFontInfoMap.size());
+    QLog.d("FontManager", 1, ((StringBuilder)localObject).toString());
   }
   
   /* Error */
@@ -346,316 +412,345 @@ public class FontManager
     //   0: aload_0
     //   1: iload_1
     //   2: invokespecial 101	cooperation/qzone/font/FontManager:getDownloadZipPath	(I)Ljava/lang/String;
-    //   5: astore 5
+    //   5: astore 6
     //   7: aload_0
     //   8: iload_1
     //   9: invokespecial 435	cooperation/qzone/font/FontManager:getUnzipDir	(I)Ljava/lang/String;
-    //   12: astore 6
-    //   14: new 224	java/io/File
-    //   17: dup
-    //   18: aload 5
-    //   20: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   23: new 224	java/io/File
-    //   26: dup
-    //   27: aload 6
-    //   29: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   32: invokestatic 441	cooperation/qzone/util/FileUtils:unzip	(Ljava/io/File;Ljava/io/File;)Z
-    //   35: istore 4
-    //   37: iload 4
-    //   39: ifeq +440 -> 479
-    //   42: new 224	java/io/File
-    //   45: dup
-    //   46: aload 6
-    //   48: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   51: invokevirtual 444	java/io/File:listFiles	()[Ljava/io/File;
-    //   54: astore 7
-    //   56: aload 7
-    //   58: ifnull +375 -> 433
-    //   61: aload 7
-    //   63: arraylength
-    //   64: ifle +369 -> 433
-    //   67: aload 7
-    //   69: iconst_0
-    //   70: aaload
-    //   71: astore 7
-    //   73: invokestatic 219	com/etrump/mixlayout/ETEngine:getInstanceForSpace	()Lcom/etrump/mixlayout/ETEngine;
-    //   76: pop
-    //   77: aload 7
-    //   79: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   82: invokestatic 447	com/etrump/mixlayout/ETEngine:native_getFontType	(Ljava/lang/String;)I
-    //   85: istore_2
-    //   86: iload_2
-    //   87: iconst_2
-    //   88: if_icmpne +192 -> 280
-    //   91: new 224	java/io/File
-    //   94: dup
-    //   95: aload_0
-    //   96: iload_1
-    //   97: iconst_1
-    //   98: invokespecial 78	cooperation/qzone/font/FontManager:getFontPath	(II)Ljava/lang/String;
-    //   101: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   104: astore 8
-    //   106: aload 8
-    //   108: invokevirtual 230	java/io/File:exists	()Z
-    //   111: ifne +12 -> 123
-    //   114: aload 7
-    //   116: aload 8
-    //   118: invokevirtual 234	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   121: istore 4
-    //   123: iload 4
-    //   125: istore_3
+    //   12: astore 7
+    //   14: iconst_0
+    //   15: istore 5
+    //   17: new 224	java/io/File
+    //   20: dup
+    //   21: aload 6
+    //   23: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   26: new 224	java/io/File
+    //   29: dup
+    //   30: aload 7
+    //   32: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   35: invokestatic 441	cooperation/qzone/util/FileUtils:unzip	(Ljava/io/File;Ljava/io/File;)Z
+    //   38: istore 4
+    //   40: iload 4
+    //   42: ifeq +363 -> 405
+    //   45: new 224	java/io/File
+    //   48: dup
+    //   49: aload 7
+    //   51: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   54: invokevirtual 444	java/io/File:listFiles	()[Ljava/io/File;
+    //   57: astore 8
+    //   59: aload 8
+    //   61: ifnull +329 -> 390
+    //   64: aload 8
+    //   66: arraylength
+    //   67: ifle +323 -> 390
+    //   70: aload 8
+    //   72: iconst_0
+    //   73: aaload
+    //   74: astore 8
+    //   76: invokestatic 219	com/etrump/mixlayout/ETEngine:getInstanceForSpace	()Lcom/etrump/mixlayout/ETEngine;
+    //   79: pop
+    //   80: aload 8
+    //   82: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   85: invokestatic 447	com/etrump/mixlayout/ETEngine:native_getFontType	(Ljava/lang/String;)I
+    //   88: istore_2
+    //   89: iload_2
+    //   90: iconst_2
+    //   91: if_icmpne +61 -> 152
+    //   94: new 224	java/io/File
+    //   97: dup
+    //   98: aload_0
+    //   99: iload_1
+    //   100: iconst_1
+    //   101: invokespecial 78	cooperation/qzone/font/FontManager:getFontPath	(II)Ljava/lang/String;
+    //   104: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   107: astore 9
+    //   109: aload 9
+    //   111: invokevirtual 230	java/io/File:exists	()Z
+    //   114: ifne +12 -> 126
+    //   117: aload 8
+    //   119: aload 9
+    //   121: invokevirtual 234	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   124: istore 4
     //   126: iload 4
-    //   128: ifeq +18 -> 146
-    //   131: invokestatic 83	cooperation/qzone/font/FontManager:getFileCache	()Lcooperation/qzone/cache/FileCacheService;
-    //   134: aload 8
-    //   136: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   139: iconst_1
-    //   140: invokevirtual 254	cooperation/qzone/cache/FileCacheService:updateLruFile	(Ljava/lang/String;Z)V
-    //   143: iload 4
-    //   145: istore_3
-    //   146: iload_3
-    //   147: ifeq +209 -> 356
-    //   150: new 127	cooperation/qzone/font/FontInfo
-    //   153: dup
-    //   154: invokespecial 448	cooperation/qzone/font/FontInfo:<init>	()V
-    //   157: astore 7
-    //   159: aload 7
-    //   161: iload_1
-    //   162: putfield 451	cooperation/qzone/font/FontInfo:fontId	I
-    //   165: aload_0
-    //   166: getfield 52	cooperation/qzone/font/FontManager:catchFontInfoMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   169: aload 7
-    //   171: getfield 451	cooperation/qzone/font/FontInfo:fontId	I
-    //   174: invokestatic 135	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   177: aload 7
-    //   179: invokevirtual 139	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   182: pop
-    //   183: new 224	java/io/File
-    //   186: dup
-    //   187: aload 5
-    //   189: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   192: invokestatic 454	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
-    //   195: pop
-    //   196: new 224	java/io/File
-    //   199: dup
-    //   200: aload 6
-    //   202: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   205: invokestatic 454	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
-    //   208: pop
-    //   209: iload_3
-    //   210: ireturn
-    //   211: astore 7
-    //   213: ldc 20
-    //   215: iconst_1
-    //   216: new 197	java/lang/StringBuilder
-    //   219: dup
-    //   220: invokespecial 198	java/lang/StringBuilder:<init>	()V
-    //   223: ldc_w 456
-    //   226: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   229: aload 7
-    //   231: invokevirtual 248	java/lang/Throwable:toString	()Ljava/lang/String;
-    //   234: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   237: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   240: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   243: new 224	java/io/File
-    //   246: dup
-    //   247: aload 5
-    //   249: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   252: invokestatic 454	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
-    //   255: pop
-    //   256: new 224	java/io/File
-    //   259: dup
-    //   260: aload 6
-    //   262: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   265: invokestatic 454	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
-    //   268: pop
-    //   269: iconst_0
-    //   270: ireturn
-    //   271: astore 5
-    //   273: aload 5
-    //   275: invokevirtual 459	java/lang/Exception:printStackTrace	()V
-    //   278: iconst_0
-    //   279: ireturn
-    //   280: iload_2
-    //   281: iconst_1
-    //   282: if_icmpne +262 -> 544
-    //   285: new 224	java/io/File
-    //   288: dup
-    //   289: aload_0
-    //   290: iload_1
-    //   291: iconst_0
-    //   292: invokespecial 78	cooperation/qzone/font/FontManager:getFontPath	(II)Ljava/lang/String;
-    //   295: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   298: astore 8
-    //   300: aload 8
-    //   302: invokevirtual 230	java/io/File:exists	()Z
-    //   305: ifne +12 -> 317
-    //   308: aload 7
-    //   310: aload 8
-    //   312: invokevirtual 234	java/io/File:renameTo	(Ljava/io/File;)Z
-    //   315: istore 4
-    //   317: iload 4
-    //   319: istore_3
-    //   320: iload 4
-    //   322: ifeq -176 -> 146
-    //   325: invokestatic 83	cooperation/qzone/font/FontManager:getFileCache	()Lcooperation/qzone/cache/FileCacheService;
-    //   328: aload 8
-    //   330: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   333: iconst_1
-    //   334: invokevirtual 254	cooperation/qzone/cache/FileCacheService:updateLruFile	(Ljava/lang/String;Z)V
-    //   337: aload_0
-    //   338: aload 8
-    //   340: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   343: aload_0
-    //   344: iload_1
-    //   345: iconst_1
-    //   346: invokespecial 78	cooperation/qzone/font/FontManager:getFontPath	(II)Ljava/lang/String;
-    //   349: invokespecial 89	cooperation/qzone/font/FontManager:convertFontFile	(Ljava/lang/String;Ljava/lang/String;)Z
-    //   352: istore_3
-    //   353: goto -207 -> 146
-    //   356: ldc 20
-    //   358: iconst_1
-    //   359: new 197	java/lang/StringBuilder
-    //   362: dup
-    //   363: invokespecial 198	java/lang/StringBuilder:<init>	()V
-    //   366: ldc_w 461
-    //   369: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   372: aload 7
-    //   374: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
-    //   377: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   380: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   383: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   386: goto -203 -> 183
-    //   389: astore 7
-    //   391: ldc 20
-    //   393: iconst_1
-    //   394: ldc_w 463
-    //   397: aload 7
-    //   399: invokestatic 467	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   402: new 224	java/io/File
-    //   405: dup
-    //   406: aload 5
-    //   408: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   411: invokestatic 454	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
-    //   414: pop
-    //   415: new 224	java/io/File
-    //   418: dup
-    //   419: aload 6
-    //   421: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   424: invokestatic 454	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
-    //   427: pop
-    //   428: iconst_0
-    //   429: istore_3
-    //   430: goto -221 -> 209
-    //   433: ldc 20
-    //   435: iconst_1
-    //   436: ldc_w 469
+    //   128: istore_3
+    //   129: iload 4
+    //   131: ifeq +97 -> 228
+    //   134: invokestatic 83	cooperation/qzone/font/FontManager:getFileCache	()Lcooperation/qzone/cache/FileCacheService;
+    //   137: aload 9
+    //   139: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   142: iconst_1
+    //   143: invokevirtual 251	cooperation/qzone/cache/FileCacheService:updateLruFile	(Ljava/lang/String;Z)V
+    //   146: iload 4
+    //   148: istore_3
+    //   149: goto +79 -> 228
+    //   152: iload_2
+    //   153: iconst_1
+    //   154: if_icmpne +429 -> 583
+    //   157: new 224	java/io/File
+    //   160: dup
+    //   161: aload_0
+    //   162: iload_1
+    //   163: iconst_0
+    //   164: invokespecial 78	cooperation/qzone/font/FontManager:getFontPath	(II)Ljava/lang/String;
+    //   167: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   170: astore 9
+    //   172: aload 9
+    //   174: invokevirtual 230	java/io/File:exists	()Z
+    //   177: ifne +12 -> 189
+    //   180: aload 8
+    //   182: aload 9
+    //   184: invokevirtual 234	java/io/File:renameTo	(Ljava/io/File;)Z
+    //   187: istore 4
+    //   189: iload 4
+    //   191: istore_3
+    //   192: iload 4
+    //   194: ifeq +34 -> 228
+    //   197: invokestatic 83	cooperation/qzone/font/FontManager:getFileCache	()Lcooperation/qzone/cache/FileCacheService;
+    //   200: aload 9
+    //   202: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   205: iconst_1
+    //   206: invokevirtual 251	cooperation/qzone/cache/FileCacheService:updateLruFile	(Ljava/lang/String;Z)V
+    //   209: aload_0
+    //   210: aload 9
+    //   212: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   215: aload_0
+    //   216: iload_1
+    //   217: iconst_1
+    //   218: invokespecial 78	cooperation/qzone/font/FontManager:getFontPath	(II)Ljava/lang/String;
+    //   221: invokespecial 89	cooperation/qzone/font/FontManager:convertFontFile	(Ljava/lang/String;Ljava/lang/String;)Z
+    //   224: istore_3
+    //   225: goto +3 -> 228
+    //   228: iload_3
+    //   229: ifeq +39 -> 268
+    //   232: new 127	cooperation/qzone/font/FontInfo
+    //   235: dup
+    //   236: invokespecial 448	cooperation/qzone/font/FontInfo:<init>	()V
+    //   239: astore 8
+    //   241: aload 8
+    //   243: iload_1
+    //   244: putfield 451	cooperation/qzone/font/FontInfo:fontId	I
+    //   247: aload_0
+    //   248: getfield 52	cooperation/qzone/font/FontManager:catchFontInfoMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   251: aload 8
+    //   253: getfield 451	cooperation/qzone/font/FontInfo:fontId	I
+    //   256: invokestatic 135	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
+    //   259: aload 8
+    //   261: invokevirtual 139	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
+    //   264: pop
+    //   265: goto +180 -> 445
+    //   268: new 197	java/lang/StringBuilder
+    //   271: dup
+    //   272: invokespecial 198	java/lang/StringBuilder:<init>	()V
+    //   275: astore 9
+    //   277: aload 9
+    //   279: ldc_w 453
+    //   282: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   285: pop
+    //   286: aload 9
+    //   288: aload 8
+    //   290: invokevirtual 239	java/io/File:getAbsolutePath	()Ljava/lang/String;
+    //   293: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   296: pop
+    //   297: ldc 20
+    //   299: iconst_1
+    //   300: aload 9
+    //   302: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   305: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   308: goto +137 -> 445
+    //   311: astore 8
+    //   313: new 197	java/lang/StringBuilder
+    //   316: dup
+    //   317: invokespecial 198	java/lang/StringBuilder:<init>	()V
+    //   320: astore 9
+    //   322: aload 9
+    //   324: ldc_w 455
+    //   327: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   330: pop
+    //   331: aload 9
+    //   333: aload 8
+    //   335: invokevirtual 256	java/lang/Throwable:toString	()Ljava/lang/String;
+    //   338: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   341: pop
+    //   342: ldc 20
+    //   344: iconst_1
+    //   345: aload 9
+    //   347: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   350: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   353: new 224	java/io/File
+    //   356: dup
+    //   357: aload 6
+    //   359: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   362: invokestatic 458	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
+    //   365: pop
+    //   366: new 224	java/io/File
+    //   369: dup
+    //   370: aload 7
+    //   372: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   375: invokestatic 458	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
+    //   378: pop
+    //   379: iconst_0
+    //   380: ireturn
+    //   381: astore 6
+    //   383: aload 6
+    //   385: invokevirtual 461	java/lang/Exception:printStackTrace	()V
+    //   388: iconst_0
+    //   389: ireturn
+    //   390: ldc 20
+    //   392: iconst_1
+    //   393: ldc_w 463
+    //   396: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   399: iload 4
+    //   401: istore_3
+    //   402: goto +43 -> 445
+    //   405: new 197	java/lang/StringBuilder
+    //   408: dup
+    //   409: invokespecial 198	java/lang/StringBuilder:<init>	()V
+    //   412: astore 8
+    //   414: aload 8
+    //   416: ldc_w 465
+    //   419: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   422: pop
+    //   423: aload 8
+    //   425: aload 6
+    //   427: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   430: pop
+    //   431: ldc 20
+    //   433: iconst_1
+    //   434: aload 8
+    //   436: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
     //   439: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
     //   442: iload 4
     //   444: istore_3
-    //   445: goto -262 -> 183
-    //   448: astore 7
-    //   450: new 224	java/io/File
-    //   453: dup
-    //   454: aload 5
-    //   456: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   459: invokestatic 454	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
-    //   462: pop
-    //   463: new 224	java/io/File
-    //   466: dup
-    //   467: aload 6
-    //   469: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
-    //   472: invokestatic 454	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
-    //   475: pop
-    //   476: aload 7
-    //   478: athrow
-    //   479: ldc 20
-    //   481: iconst_1
-    //   482: new 197	java/lang/StringBuilder
-    //   485: dup
-    //   486: invokespecial 198	java/lang/StringBuilder:<init>	()V
-    //   489: ldc_w 471
-    //   492: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   495: aload 5
-    //   497: invokevirtual 202	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   500: invokevirtual 213	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   503: invokestatic 245	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   506: iload 4
-    //   508: istore_3
-    //   509: goto -326 -> 183
-    //   512: astore 5
-    //   514: aload 5
-    //   516: invokevirtual 459	java/lang/Exception:printStackTrace	()V
-    //   519: goto -310 -> 209
-    //   522: astore 5
-    //   524: aload 5
-    //   526: invokevirtual 459	java/lang/Exception:printStackTrace	()V
-    //   529: iconst_0
-    //   530: istore_3
-    //   531: goto -322 -> 209
-    //   534: astore 5
-    //   536: aload 5
-    //   538: invokevirtual 459	java/lang/Exception:printStackTrace	()V
-    //   541: goto -65 -> 476
-    //   544: iconst_0
-    //   545: istore_3
-    //   546: goto -400 -> 146
+    //   445: iload_3
+    //   446: istore 4
+    //   448: iload 4
+    //   450: istore_3
+    //   451: new 224	java/io/File
+    //   454: dup
+    //   455: aload 6
+    //   457: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   460: invokestatic 458	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
+    //   463: pop
+    //   464: iload 4
+    //   466: istore_3
+    //   467: new 224	java/io/File
+    //   470: dup
+    //   471: aload 7
+    //   473: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   476: invokestatic 458	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
+    //   479: pop
+    //   480: iload 4
+    //   482: ireturn
+    //   483: astore 6
+    //   485: aload 6
+    //   487: invokevirtual 461	java/lang/Exception:printStackTrace	()V
+    //   490: iload_3
+    //   491: ireturn
+    //   492: astore 8
+    //   494: goto +50 -> 544
+    //   497: astore 8
+    //   499: ldc 20
+    //   501: iconst_1
+    //   502: ldc_w 467
+    //   505: aload 8
+    //   507: invokestatic 471	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   510: iload 5
+    //   512: istore_3
+    //   513: new 224	java/io/File
+    //   516: dup
+    //   517: aload 6
+    //   519: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   522: invokestatic 458	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
+    //   525: pop
+    //   526: iload 5
+    //   528: istore_3
+    //   529: new 224	java/io/File
+    //   532: dup
+    //   533: aload 7
+    //   535: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   538: invokestatic 458	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
+    //   541: pop
+    //   542: iconst_0
+    //   543: ireturn
+    //   544: new 224	java/io/File
+    //   547: dup
+    //   548: aload 6
+    //   550: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   553: invokestatic 458	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
+    //   556: pop
+    //   557: new 224	java/io/File
+    //   560: dup
+    //   561: aload 7
+    //   563: invokespecial 227	java/io/File:<init>	(Ljava/lang/String;)V
+    //   566: invokestatic 458	cooperation/qzone/util/FileUtils:deleteFile	(Ljava/io/File;)Z
+    //   569: pop
+    //   570: goto +10 -> 580
+    //   573: astore 6
+    //   575: aload 6
+    //   577: invokevirtual 461	java/lang/Exception:printStackTrace	()V
+    //   580: aload 8
+    //   582: athrow
+    //   583: iconst_0
+    //   584: istore_3
+    //   585: goto -357 -> 228
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	549	0	this	FontManager
-    //   0	549	1	paramInt	int
-    //   85	198	2	i	int
-    //   125	421	3	bool1	boolean
-    //   35	472	4	bool2	boolean
-    //   5	243	5	str1	String
-    //   271	225	5	localException1	Exception
-    //   512	3	5	localException2	Exception
-    //   522	3	5	localException3	Exception
-    //   534	3	5	localException4	Exception
-    //   12	456	6	str2	String
-    //   54	124	7	localObject1	Object
-    //   211	162	7	localThrowable	Throwable
-    //   389	9	7	localException5	Exception
-    //   448	29	7	localObject2	Object
-    //   104	235	8	localFile	File
+    //   0	588	0	this	FontManager
+    //   0	588	1	paramInt	int
+    //   88	67	2	i	int
+    //   128	457	3	bool1	boolean
+    //   38	443	4	bool2	boolean
+    //   15	512	5	bool3	boolean
+    //   5	353	6	str1	String
+    //   381	75	6	localException1	Exception
+    //   483	66	6	localException2	Exception
+    //   573	3	6	localException3	Exception
+    //   12	550	7	str2	String
+    //   57	232	8	localObject1	Object
+    //   311	23	8	localThrowable	Throwable
+    //   412	23	8	localStringBuilder	StringBuilder
+    //   492	1	8	localObject2	Object
+    //   497	84	8	localException4	Exception
+    //   107	239	9	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   73	86	211	java/lang/Throwable
-    //   243	269	271	java/lang/Exception
-    //   14	37	389	java/lang/Exception
-    //   42	56	389	java/lang/Exception
-    //   61	67	389	java/lang/Exception
-    //   73	86	389	java/lang/Exception
-    //   91	106	389	java/lang/Exception
-    //   106	123	389	java/lang/Exception
-    //   131	143	389	java/lang/Exception
-    //   150	183	389	java/lang/Exception
-    //   213	243	389	java/lang/Exception
-    //   285	300	389	java/lang/Exception
-    //   300	317	389	java/lang/Exception
-    //   325	353	389	java/lang/Exception
-    //   356	386	389	java/lang/Exception
-    //   433	442	389	java/lang/Exception
-    //   479	506	389	java/lang/Exception
-    //   14	37	448	finally
-    //   42	56	448	finally
-    //   61	67	448	finally
-    //   73	86	448	finally
-    //   91	106	448	finally
-    //   106	123	448	finally
-    //   131	143	448	finally
-    //   150	183	448	finally
-    //   213	243	448	finally
-    //   285	300	448	finally
-    //   300	317	448	finally
-    //   325	353	448	finally
-    //   356	386	448	finally
-    //   391	402	448	finally
-    //   433	442	448	finally
-    //   479	506	448	finally
-    //   183	209	512	java/lang/Exception
-    //   402	428	522	java/lang/Exception
-    //   450	476	534	java/lang/Exception
+    //   76	89	311	java/lang/Throwable
+    //   353	379	381	java/lang/Exception
+    //   451	464	483	java/lang/Exception
+    //   467	480	483	java/lang/Exception
+    //   513	526	483	java/lang/Exception
+    //   529	542	483	java/lang/Exception
+    //   17	40	492	finally
+    //   45	59	492	finally
+    //   64	70	492	finally
+    //   76	89	492	finally
+    //   94	109	492	finally
+    //   109	126	492	finally
+    //   134	146	492	finally
+    //   157	172	492	finally
+    //   172	189	492	finally
+    //   197	225	492	finally
+    //   232	265	492	finally
+    //   268	308	492	finally
+    //   313	353	492	finally
+    //   390	399	492	finally
+    //   405	442	492	finally
+    //   499	510	492	finally
+    //   17	40	497	java/lang/Exception
+    //   45	59	497	java/lang/Exception
+    //   64	70	497	java/lang/Exception
+    //   76	89	497	java/lang/Exception
+    //   94	109	497	java/lang/Exception
+    //   109	126	497	java/lang/Exception
+    //   134	146	497	java/lang/Exception
+    //   157	172	497	java/lang/Exception
+    //   172	189	497	java/lang/Exception
+    //   197	225	497	java/lang/Exception
+    //   232	265	497	java/lang/Exception
+    //   268	308	497	java/lang/Exception
+    //   313	353	497	java/lang/Exception
+    //   390	399	497	java/lang/Exception
+    //   405	442	497	java/lang/Exception
+    //   544	570	573	java/lang/Exception
   }
   
   public boolean ETEngineLoaded()
@@ -663,194 +758,202 @@ public class FontManager
     return FontSoLoader.b();
   }
   
-  public FontManager.DefaultBarrageEffectInfo getDefaultBarrageEffectInfo(long paramLong)
+  public DefaultBarrageEffectInfo getDefaultBarrageEffectInfo(long paramLong)
   {
     Object localObject1 = LocalMultiProcConfig.getString4Uin("qzone_barrage_effect_save_data", "", paramLong);
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    String[] arrayOfString;
-    do
-    {
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return null;
-      arrayOfString = ((String)localObject1).split(";");
-    } while ((arrayOfString == null) || (arrayOfString.length < 2));
-    localObject1 = new FontManager.DefaultBarrageEffectInfo();
-    try
-    {
-      ((FontManager.DefaultBarrageEffectInfo)localObject1).itemId = Integer.valueOf(arrayOfString[0]).intValue();
-      ((FontManager.DefaultBarrageEffectInfo)localObject1).jsonStr = arrayOfString[1];
-      return localObject1;
     }
-    catch (Throwable localThrowable)
+    localObject1 = ((String)localObject1).split(";");
+    if (localObject1 != null)
     {
-      for (;;)
+      if (localObject1.length < 2) {
+        return null;
+      }
+      Object localObject2 = new DefaultBarrageEffectInfo();
+      try
       {
-        QLog.e("FontManager", 1, "loadDefaultFontData Throwable, errMsg = " + localThrowable.getMessage());
-        Object localObject2 = null;
+        ((DefaultBarrageEffectInfo)localObject2).itemId = Integer.valueOf(localObject1[0]).intValue();
+        ((DefaultBarrageEffectInfo)localObject2).jsonStr = localObject1[1];
+        return localObject2;
+      }
+      catch (Throwable localThrowable)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("loadDefaultFontData Throwable, errMsg = ");
+        ((StringBuilder)localObject2).append(localThrowable.getMessage());
+        QLog.e("FontManager", 1, ((StringBuilder)localObject2).toString());
+        return null;
       }
     }
+    return null;
   }
   
-  public FontManager.DefaultFontInfo getDefaultFont(long paramLong)
+  public DefaultFontInfo getDefaultFont(long paramLong)
   {
     String str = LocalMultiProcConfig.getString4Uin("qzone_font_save_data", "", paramLong);
     if (TextUtils.isEmpty(str)) {
       return null;
     }
-    FontManager.DefaultFontInfo localDefaultFontInfo = new FontManager.DefaultFontInfo();
+    DefaultFontInfo localDefaultFontInfo = new DefaultFontInfo();
     localDefaultFontInfo.readFrom(str);
     return localDefaultFontInfo;
   }
   
-  public FontManager.DefaultSuperFontInfo getDefaultSuperFont(long paramLong)
+  public DefaultSuperFontInfo getDefaultSuperFont(long paramLong)
   {
     Object localObject1 = LocalMultiProcConfig.getString4Uin("qzone_super_font_save_data", "", paramLong);
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    String[] arrayOfString;
-    do
-    {
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return null;
-      arrayOfString = ((String)localObject1).split(";");
-    } while ((arrayOfString == null) || (arrayOfString.length < 2));
-    localObject1 = new FontManager.DefaultSuperFontInfo();
-    try
-    {
-      ((FontManager.DefaultSuperFontInfo)localObject1).fontId = Integer.valueOf(arrayOfString[0]).intValue();
-      ((FontManager.DefaultSuperFontInfo)localObject1).jsonStr = arrayOfString[1];
-      return localObject1;
     }
-    catch (Throwable localThrowable)
+    localObject1 = ((String)localObject1).split(";");
+    if (localObject1 != null)
     {
-      for (;;)
+      if (localObject1.length < 2) {
+        return null;
+      }
+      Object localObject2 = new DefaultSuperFontInfo();
+      try
       {
-        QLog.e("FontManager", 1, "loadDefaultFontData Throwable, errMsg = " + localThrowable.getMessage());
-        Object localObject2 = null;
+        ((DefaultSuperFontInfo)localObject2).fontId = Integer.valueOf(localObject1[0]).intValue();
+        ((DefaultSuperFontInfo)localObject2).jsonStr = localObject1[1];
+        return localObject2;
+      }
+      catch (Throwable localThrowable)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("loadDefaultFontData Throwable, errMsg = ");
+        ((StringBuilder)localObject2).append(localThrowable.getMessage());
+        QLog.e("FontManager", 1, ((StringBuilder)localObject2).toString());
+        return null;
       }
     }
+    return null;
   }
   
   public ETEngine getETEngine()
   {
-    boolean bool = true;
+    boolean bool2 = FontSoLoader.b();
+    boolean bool1 = true;
     ETEngine localETEngine = null;
-    if ((!FontSoLoader.b()) && (FontSoLoader.a())) {
-      bool = FontSoLoader.c();
-    }
-    while (FontSoLoader.a())
+    if ((!bool2) && (FontSoLoader.a()))
     {
-      if (bool) {
-        localETEngine = ETEngine.getInstanceForSpace();
-      }
-      return localETEngine;
+      bool1 = FontSoLoader.c();
     }
-    startFontSoDownload(null);
-    QLog.d("FontManager", 1, "initEngine but libvipfont.so didn't download, start download.");
-    return null;
+    else if (!FontSoLoader.a())
+    {
+      startFontSoDownload(null);
+      QLog.d("FontManager", 1, "initEngine but libvipfont.so didn't download, start download.");
+      return null;
+    }
+    if (bool1) {
+      localETEngine = ETEngine.getInstanceForSpace();
+    }
+    return localETEngine;
   }
   
   public String getFullTypeFont(int paramInt, String paramString1, String paramString2, FontInterface.FullTypeResult paramFullTypeResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FontManager", 2, "getFullTypeFont fontId:" + paramInt + ", strUrl = " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getFullTypeFont fontId:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", strUrl = ");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d("FontManager", 2, ((StringBuilder)localObject).toString());
     }
     if (!checkFontIDValidity(paramInt)) {
       return null;
     }
-    String str = getFontPath(paramInt, 0);
-    if (!new File(str).exists())
+    Object localObject = getFontPath(paramInt, 0);
+    if (!new File((String)localObject).exists())
     {
       downloadTaskAndCheckNetwork(paramInt, paramString1, 0, paramString2, false, paramFullTypeResult);
       return null;
     }
-    getFileCache().updateLruFile(str, true);
-    return str;
+    getFileCache().updateLruFile((String)localObject, true);
+    return localObject;
   }
   
   public String getTrueTypeFont(int paramInt, String paramString1, String paramString2, boolean paramBoolean, FontInterface.TrueTypeResult paramTrueTypeResult)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FontManager", 2, "getTrueTypeFont fontId:" + paramInt + ", strUrl = " + paramString1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTrueTypeFont fontId:");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(", strUrl = ");
+      ((StringBuilder)localObject).append(paramString1);
+      QLog.d("FontManager", 2, ((StringBuilder)localObject).toString());
     }
     if (!checkFontIDValidity(paramInt)) {
       return null;
     }
-    String str = getFontPath(paramInt, 1);
-    if (!new File(str).exists())
+    Object localObject = getFontPath(paramInt, 1);
+    if (!new File((String)localObject).exists())
     {
       downloadTaskAndCheckNetwork(paramInt, paramString1, 1, paramString2, paramBoolean, paramTrueTypeResult);
       return null;
     }
-    getFileCache().updateLruFile(str, true);
-    return str;
+    getFileCache().updateLruFile((String)localObject, true);
+    return localObject;
   }
   
-  public void setDefaultBarrageEffect(long paramLong, FontManager.DefaultBarrageEffectInfo paramDefaultBarrageEffectInfo)
+  public void setDefaultBarrageEffect(long paramLong, DefaultBarrageEffectInfo paramDefaultBarrageEffectInfo)
   {
-    String str = "";
-    Object localObject = str;
-    if (paramDefaultBarrageEffectInfo != null)
+    if ((paramDefaultBarrageEffectInfo != null) && (paramDefaultBarrageEffectInfo.itemId > 0) && (!TextUtils.isEmpty(paramDefaultBarrageEffectInfo.jsonStr)))
     {
-      localObject = str;
-      if (paramDefaultBarrageEffectInfo.itemId > 0)
-      {
-        localObject = str;
-        if (!TextUtils.isEmpty(paramDefaultBarrageEffectInfo.jsonStr))
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(paramDefaultBarrageEffectInfo.itemId).append(";");
-          ((StringBuilder)localObject).append(paramDefaultBarrageEffectInfo.jsonStr).append(";");
-          localObject = ((StringBuilder)localObject).toString();
-          setDefaultFont(paramLong, null);
-          setDefaultSuperFont(paramLong, null);
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramDefaultBarrageEffectInfo.itemId);
+      localStringBuilder.append(";");
+      localStringBuilder.append(paramDefaultBarrageEffectInfo.jsonStr);
+      localStringBuilder.append(";");
+      paramDefaultBarrageEffectInfo = localStringBuilder.toString();
+      setDefaultFont(paramLong, null);
+      setDefaultSuperFont(paramLong, null);
     }
-    LocalMultiProcConfig.putString4Uin("qzone_barrage_effect_save_data", (String)localObject, paramLong);
+    else
+    {
+      paramDefaultBarrageEffectInfo = "";
+    }
+    LocalMultiProcConfig.putString4Uin("qzone_barrage_effect_save_data", paramDefaultBarrageEffectInfo, paramLong);
   }
   
-  public void setDefaultFont(long paramLong, FontManager.DefaultFontInfo paramDefaultFontInfo)
+  public void setDefaultFont(long paramLong, DefaultFontInfo paramDefaultFontInfo)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramDefaultFontInfo != null)
+    if ((paramDefaultFontInfo != null) && (paramDefaultFontInfo.fontId > 0) && (!TextUtils.isEmpty(paramDefaultFontInfo.fontUrl)))
     {
-      str1 = str2;
-      if (paramDefaultFontInfo.fontId > 0)
-      {
-        str1 = str2;
-        if (!TextUtils.isEmpty(paramDefaultFontInfo.fontUrl))
-        {
-          str1 = paramDefaultFontInfo.toString();
-          setDefaultBarrageEffect(paramLong, null);
-        }
-      }
+      paramDefaultFontInfo = paramDefaultFontInfo.toString();
+      setDefaultBarrageEffect(paramLong, null);
     }
-    LocalMultiProcConfig.putString4Uin("qzone_font_save_data", str1, paramLong);
+    else
+    {
+      paramDefaultFontInfo = "";
+    }
+    LocalMultiProcConfig.putString4Uin("qzone_font_save_data", paramDefaultFontInfo, paramLong);
   }
   
-  public void setDefaultSuperFont(long paramLong, FontManager.DefaultSuperFontInfo paramDefaultSuperFontInfo)
+  public void setDefaultSuperFont(long paramLong, DefaultSuperFontInfo paramDefaultSuperFontInfo)
   {
-    String str = "";
-    Object localObject = str;
-    if (paramDefaultSuperFontInfo != null)
+    if ((paramDefaultSuperFontInfo != null) && (paramDefaultSuperFontInfo.fontId > 0) && (!TextUtils.isEmpty(paramDefaultSuperFontInfo.jsonStr)))
     {
-      localObject = str;
-      if (paramDefaultSuperFontInfo.fontId > 0)
-      {
-        localObject = str;
-        if (!TextUtils.isEmpty(paramDefaultSuperFontInfo.jsonStr))
-        {
-          localObject = new StringBuilder();
-          ((StringBuilder)localObject).append(paramDefaultSuperFontInfo.fontId).append(";");
-          ((StringBuilder)localObject).append(paramDefaultSuperFontInfo.jsonStr).append(";");
-          localObject = ((StringBuilder)localObject).toString();
-          setDefaultBarrageEffect(paramLong, null);
-        }
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramDefaultSuperFontInfo.fontId);
+      localStringBuilder.append(";");
+      localStringBuilder.append(paramDefaultSuperFontInfo.jsonStr);
+      localStringBuilder.append(";");
+      paramDefaultSuperFontInfo = localStringBuilder.toString();
+      setDefaultBarrageEffect(paramLong, null);
     }
-    LocalMultiProcConfig.putString4Uin("qzone_super_font_save_data", (String)localObject, paramLong);
+    else
+    {
+      paramDefaultSuperFontInfo = "";
+    }
+    LocalMultiProcConfig.putString4Uin("qzone_super_font_save_data", paramDefaultSuperFontInfo, paramLong);
   }
   
-  public void startFontSoDownload(EarlyDownloadManager.EarlyDownLoadListener paramEarlyDownLoadListener)
+  public void startFontSoDownload(EarlyDownLoadListener paramEarlyDownLoadListener)
   {
     paramEarlyDownLoadListener = new FontManager.2(this);
     QIPCClientHelper.getInstance().callServer("VasFontIPCModule", VasFontIPCModule.a, null, paramEarlyDownLoadListener);
@@ -858,7 +961,7 @@ public class FontManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.font.FontManager
  * JD-Core Version:    0.7.0.1
  */

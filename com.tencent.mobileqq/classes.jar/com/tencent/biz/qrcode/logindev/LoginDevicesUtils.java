@@ -4,17 +4,15 @@ public class LoginDevicesUtils
 {
   public static int a(int paramInt)
   {
-    int i = 3;
     if (paramInt == 65793) {
-      i = 1;
+      return 1;
     }
-    do
-    {
-      return i;
-      if (paramInt == 5) {
-        return 2;
-      }
-    } while (paramInt == 3);
+    if (paramInt == 5) {
+      return 2;
+    }
+    if (paramInt == 3) {
+      return 3;
+    }
     if (b(paramInt)) {
       return 5;
     }
@@ -56,7 +54,7 @@ public class LoginDevicesUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.logindev.LoginDevicesUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -31,19 +31,19 @@ public final class CodedInputStreamMicro
   private CodedInputStreamMicro(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     this.buffer = paramArrayOfByte;
-    this.bufferSize = (paramInt1 + paramInt2);
+    this.bufferSize = (paramInt2 + paramInt1);
     this.bufferPos = paramInt1;
     this.input = null;
   }
   
   public static int decodeZigZag32(int paramInt)
   {
-    return paramInt >>> 1 ^ -(paramInt & 0x1);
+    return -(paramInt & 0x1) ^ paramInt >>> 1;
   }
   
   public static long decodeZigZag64(long paramLong)
   {
-    return paramLong >>> 1 ^ -(1L & paramLong);
+    return -(paramLong & 1L) ^ paramLong >>> 1;
   }
   
   public static CodedInputStreamMicro newInstance(InputStream paramInputStream)
@@ -63,48 +63,57 @@ public final class CodedInputStreamMicro
   
   static int readRawVarint32(InputStream paramInputStream)
   {
-    int j = 0;
     int i = 0;
-    if (j >= 32) {}
+    int j = 0;
     for (;;)
     {
-      int k;
-      if (j >= 64)
+      if (i >= 32)
       {
+        while (i < 64)
+        {
+          k = paramInputStream.read();
+          if (k != -1)
+          {
+            if ((k & 0x80) == 0) {
+              return j;
+            }
+            i += 7;
+          }
+          else
+          {
+            throw InvalidProtocolBufferMicroException.truncatedMessage();
+          }
+        }
         throw InvalidProtocolBufferMicroException.malformedVarint();
-        k = paramInputStream.read();
-        if (k == -1) {
-          throw InvalidProtocolBufferMicroException.truncatedMessage();
-        }
-        i |= (k & 0x7F) << j;
-        if ((k & 0x80) == 0) {
-          k = i;
-        }
       }
-      int m;
-      do
-      {
-        return k;
-        j += 7;
+      int k = paramInputStream.read();
+      if (k == -1) {
         break;
-        m = paramInputStream.read();
-        if (m == -1) {
-          throw InvalidProtocolBufferMicroException.truncatedMessage();
-        }
-        k = i;
-      } while ((m & 0x80) == 0);
-      j += 7;
+      }
+      j |= (k & 0x7F) << i;
+      if ((k & 0x80) == 0) {
+        return j;
+      }
+      i += 7;
+    }
+    paramInputStream = InvalidProtocolBufferMicroException.truncatedMessage();
+    for (;;)
+    {
+      throw paramInputStream;
     }
   }
   
   private void recomputeBufferSizeAfterLimit()
   {
     this.bufferSize += this.bufferSizeAfterLimit;
-    int i = this.totalBytesRetired + this.bufferSize;
-    if (i > this.currentLimit)
+    int j = this.totalBytesRetired;
+    int i = this.bufferSize;
+    j += i;
+    int k = this.currentLimit;
+    if (j > k)
     {
-      this.bufferSizeAfterLimit = (i - this.currentLimit);
-      this.bufferSize -= this.bufferSizeAfterLimit;
+      this.bufferSizeAfterLimit = (j - k);
+      this.bufferSize = (i - this.bufferSizeAfterLimit);
       return;
     }
     this.bufferSizeAfterLimit = 0;
@@ -112,72 +121,73 @@ public final class CodedInputStreamMicro
   
   private boolean refillBuffer(boolean paramBoolean)
   {
-    if (this.bufferPos < this.bufferSize) {
-      throw new IllegalStateException("refillBuffer() called when buffer wasn't empty.");
-    }
-    if (this.totalBytesRetired + this.bufferSize == this.currentLimit)
+    int j = this.bufferPos;
+    int i = this.bufferSize;
+    if (j >= i)
     {
-      if (paramBoolean) {
+      j = this.totalBytesRetired;
+      if (j + i == this.currentLimit)
+      {
+        if (!paramBoolean) {
+          return false;
+        }
         throw InvalidProtocolBufferMicroException.truncatedMessage();
       }
-      return false;
-    }
-    this.totalBytesRetired += this.bufferSize;
-    this.bufferPos = 0;
-    if (this.input == null) {}
-    for (int i = -1;; i = this.input.read(this.buffer))
-    {
+      this.totalBytesRetired = (j + i);
+      this.bufferPos = 0;
+      Object localObject = this.input;
+      if (localObject == null) {
+        i = -1;
+      } else {
+        i = ((InputStream)localObject).read(this.buffer);
+      }
       this.bufferSize = i;
-      if ((this.bufferSize != 0) && (this.bufferSize >= -1)) {
-        break;
+      i = this.bufferSize;
+      if ((i != 0) && (i >= -1))
+      {
+        if (i == -1)
+        {
+          this.bufferSize = 0;
+          if (!paramBoolean) {
+            return false;
+          }
+          throw InvalidProtocolBufferMicroException.truncatedMessage();
+        }
+        recomputeBufferSizeAfterLimit();
+        i = this.totalBytesRetired + this.bufferSize + this.bufferSizeAfterLimit;
+        if ((i <= this.sizeLimit) && (i >= 0)) {
+          return true;
+        }
+        throw InvalidProtocolBufferMicroException.sizeLimitExceeded();
       }
-      throw new IllegalStateException("InputStream#read(byte[]) returned invalid result: " + this.bufferSize + "\nThe InputStream implementation is buggy.");
+      localObject = new StringBuilder("InputStream#read(byte[]) returned invalid result: ");
+      ((StringBuilder)localObject).append(this.bufferSize);
+      ((StringBuilder)localObject).append("\nThe InputStream implementation is buggy.");
+      throw new IllegalStateException(((StringBuilder)localObject).toString());
     }
-    if (this.bufferSize == -1)
-    {
-      this.bufferSize = 0;
-      if (paramBoolean) {
-        throw InvalidProtocolBufferMicroException.truncatedMessage();
-      }
-      return false;
-    }
-    recomputeBufferSizeAfterLimit();
-    i = this.totalBytesRetired + this.bufferSize + this.bufferSizeAfterLimit;
-    if ((i > this.sizeLimit) || (i < 0)) {
-      throw InvalidProtocolBufferMicroException.sizeLimitExceeded();
-    }
-    return true;
+    throw new IllegalStateException("refillBuffer() called when buffer wasn't empty.");
   }
   
   public void checkLastTagWas(int paramInt)
   {
-    if (this.lastTag != paramInt) {
-      throw InvalidProtocolBufferMicroException.invalidEndTag();
+    if (this.lastTag == paramInt) {
+      return;
     }
+    throw InvalidProtocolBufferMicroException.invalidEndTag();
   }
   
   public int getBytesUntilLimit()
   {
-    if (this.currentLimit == 2147483647) {
+    int i = this.currentLimit;
+    if (i == 2147483647) {
       return -1;
     }
-    int i = this.totalBytesRetired;
-    int j = this.bufferPos;
-    return this.currentLimit - (i + j);
+    return i - (this.totalBytesRetired + this.bufferPos);
   }
   
   public boolean isAtEnd()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.bufferPos == this.bufferSize)
-    {
-      bool1 = bool2;
-      if (!refillBuffer(false)) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (this.bufferPos == this.bufferSize) && (!refillBuffer(false));
   }
   
   public void popLimit(int paramInt)
@@ -188,17 +198,19 @@ public final class CodedInputStreamMicro
   
   public int pushLimit(int paramInt)
   {
-    if (paramInt < 0) {
-      throw InvalidProtocolBufferMicroException.negativeSize();
-    }
-    paramInt = this.totalBytesRetired + this.bufferPos + paramInt;
-    int i = this.currentLimit;
-    if (paramInt > i) {
+    if (paramInt >= 0)
+    {
+      paramInt += this.totalBytesRetired + this.bufferPos;
+      int i = this.currentLimit;
+      if (paramInt <= i)
+      {
+        this.currentLimit = paramInt;
+        recomputeBufferSizeAfterLimit();
+        return i;
+      }
       throw InvalidProtocolBufferMicroException.truncatedMessage();
     }
-    this.currentLimit = paramInt;
-    recomputeBufferSizeAfterLimit();
-    return i;
+    throw InvalidProtocolBufferMicroException.negativeSize();
   }
   
   public boolean readBool()
@@ -209,10 +221,12 @@ public final class CodedInputStreamMicro
   public ByteStringMicro readBytes()
   {
     int i = readRawVarint32();
-    if ((i <= this.bufferSize - this.bufferPos) && (i > 0))
+    int j = this.bufferSize;
+    int k = this.bufferPos;
+    if ((i <= j - k) && (i > 0))
     {
-      ByteStringMicro localByteStringMicro = ByteStringMicro.copyFrom(this.buffer, this.bufferPos, i);
-      this.bufferPos = (i + this.bufferPos);
+      ByteStringMicro localByteStringMicro = ByteStringMicro.copyFrom(this.buffer, k, i);
+      this.bufferPos += i;
       return localByteStringMicro;
     }
     return ByteStringMicro.copyFrom(readRawBytes(i));
@@ -245,13 +259,16 @@ public final class CodedInputStreamMicro
   
   public void readGroup(MessageMicro<?> paramMessageMicro, int paramInt)
   {
-    if (this.recursionDepth >= this.recursionLimit) {
-      throw InvalidProtocolBufferMicroException.recursionLimitExceeded();
+    int i = this.recursionDepth;
+    if (i < this.recursionLimit)
+    {
+      this.recursionDepth = (i + 1);
+      paramMessageMicro.mergeFrom(this);
+      checkLastTagWas(WireFormatMicro.makeTag(paramInt, 4));
+      this.recursionDepth -= 1;
+      return;
     }
-    this.recursionDepth += 1;
-    paramMessageMicro.mergeFrom(this);
-    checkLastTagWas(WireFormatMicro.makeTag(paramInt, 4));
-    this.recursionDepth -= 1;
+    throw InvalidProtocolBufferMicroException.recursionLimitExceeded();
   }
   
   public int readInt32()
@@ -267,15 +284,17 @@ public final class CodedInputStreamMicro
   public void readMessage(MessageMicro<?> paramMessageMicro)
   {
     int i = readRawVarint32();
-    if (this.recursionDepth >= this.recursionLimit) {
-      throw InvalidProtocolBufferMicroException.recursionLimitExceeded();
+    if (this.recursionDepth < this.recursionLimit)
+    {
+      i = pushLimit(i);
+      this.recursionDepth += 1;
+      paramMessageMicro.mergeFrom(this);
+      checkLastTagWas(0);
+      this.recursionDepth -= 1;
+      popLimit(i);
+      return;
     }
-    i = pushLimit(i);
-    this.recursionDepth += 1;
-    paramMessageMicro.mergeFrom(this);
-    checkLastTagWas(0);
-    this.recursionDepth -= 1;
-    popLimit(i);
+    throw InvalidProtocolBufferMicroException.recursionLimitExceeded();
   }
   
   public byte readRawByte()
@@ -291,85 +310,99 @@ public final class CodedInputStreamMicro
   
   public byte[] readRawBytes(int paramInt)
   {
-    if (paramInt < 0) {
-      throw InvalidProtocolBufferMicroException.negativeSize();
-    }
-    if (this.totalBytesRetired + this.bufferPos + paramInt > this.currentLimit)
+    if (paramInt >= 0)
     {
-      skipRawBytes(this.currentLimit - this.totalBytesRetired - this.bufferPos);
-      throw InvalidProtocolBufferMicroException.truncatedMessage();
-    }
-    if (paramInt <= this.bufferSize - this.bufferPos)
-    {
-      localObject = new byte[paramInt];
-      System.arraycopy(this.buffer, this.bufferPos, localObject, 0, paramInt);
-      this.bufferPos += paramInt;
-      return localObject;
-    }
-    if (paramInt < 4096)
-    {
-      localObject = new byte[paramInt];
-      i = this.bufferSize - this.bufferPos;
-      System.arraycopy(this.buffer, this.bufferPos, localObject, 0, i);
-      this.bufferPos = this.bufferSize;
-      refillBuffer(true);
-      for (;;)
+      int i = this.totalBytesRetired;
+      int n = this.bufferPos;
+      int j = this.currentLimit;
+      if (i + n + paramInt <= j)
       {
-        if (paramInt - i <= this.bufferSize)
+        j = this.bufferSize;
+        if (paramInt <= j - n)
         {
-          System.arraycopy(this.buffer, 0, localObject, i, paramInt - i);
-          this.bufferPos = (paramInt - i);
-          return localObject;
+          localObject1 = new byte[paramInt];
+          System.arraycopy(this.buffer, n, localObject1, 0, paramInt);
+          this.bufferPos += paramInt;
+          return localObject1;
         }
-        System.arraycopy(this.buffer, 0, localObject, i, this.bufferSize);
-        i += this.bufferSize;
-        this.bufferPos = this.bufferSize;
-        refillBuffer(true);
-      }
-    }
-    int m = this.bufferPos;
-    int n = this.bufferSize;
-    this.totalBytesRetired += this.bufferSize;
-    this.bufferPos = 0;
-    this.bufferSize = 0;
-    Object localObject = new ArrayList();
-    int i = paramInt - (n - m);
-    byte[] arrayOfByte1;
-    if (i <= 0)
-    {
-      arrayOfByte1 = new byte[paramInt];
-      i = n - m;
-      System.arraycopy(this.buffer, m, arrayOfByte1, 0, i);
-      paramInt = 0;
-    }
-    for (;;)
-    {
-      if (paramInt >= ((ArrayList)localObject).size())
-      {
-        return arrayOfByte1;
-        arrayOfByte1 = new byte[Math.min(i, 4096)];
-        int j = 0;
+        int k;
+        if (paramInt < 4096)
+        {
+          localObject1 = new byte[paramInt];
+          i = j - n;
+          System.arraycopy(this.buffer, n, localObject1, 0, i);
+          for (this.bufferPos = this.bufferSize;; this.bufferPos = j)
+          {
+            refillBuffer(true);
+            j = paramInt - i;
+            k = this.bufferSize;
+            if (j <= k)
+            {
+              System.arraycopy(this.buffer, 0, localObject1, i, j);
+              this.bufferPos = j;
+              return localObject1;
+            }
+            System.arraycopy(this.buffer, 0, localObject1, i, k);
+            j = this.bufferSize;
+            i += j;
+          }
+        }
+        this.totalBytesRetired = (i + j);
+        this.bufferPos = 0;
+        this.bufferSize = 0;
+        int m = j - n;
+        i = paramInt - m;
+        localObject1 = new ArrayList();
+        Object localObject2;
+        if (i <= 0)
+        {
+          arrayOfByte = new byte[paramInt];
+          System.arraycopy(this.buffer, n, arrayOfByte, 0, m);
+          paramInt = 0;
+          i = m;
+          for (;;)
+          {
+            if (paramInt >= ((ArrayList)localObject1).size()) {
+              return arrayOfByte;
+            }
+            localObject2 = (byte[])((ArrayList)localObject1).get(paramInt);
+            System.arraycopy(localObject2, 0, arrayOfByte, i, localObject2.length);
+            i += localObject2.length;
+            paramInt += 1;
+          }
+        }
+        byte[] arrayOfByte = new byte[Math.min(i, 4096)];
+        j = 0;
         for (;;)
         {
-          if (j >= arrayOfByte1.length)
+          if (j >= arrayOfByte.length)
           {
-            j = arrayOfByte1.length;
-            ((ArrayList)localObject).add(arrayOfByte1);
-            i -= j;
+            i -= arrayOfByte.length;
+            ((ArrayList)localObject1).add(arrayOfByte);
             break;
           }
-          if (this.input == null) {}
-          for (int k = -1; k == -1; k = this.input.read(arrayOfByte1, j, arrayOfByte1.length - j)) {
-            throw InvalidProtocolBufferMicroException.truncatedMessage();
+          localObject2 = this.input;
+          if (localObject2 == null) {
+            k = -1;
+          } else {
+            k = ((InputStream)localObject2).read(arrayOfByte, j, arrayOfByte.length - j);
+          }
+          if (k == -1) {
+            break label391;
           }
           this.totalBytesRetired += k;
           j += k;
         }
+        label391:
+        throw InvalidProtocolBufferMicroException.truncatedMessage();
       }
-      byte[] arrayOfByte2 = (byte[])((ArrayList)localObject).get(paramInt);
-      System.arraycopy(arrayOfByte2, 0, arrayOfByte1, i, arrayOfByte2.length);
-      i += arrayOfByte2.length;
-      paramInt += 1;
+      skipRawBytes(j - i - n);
+      throw InvalidProtocolBufferMicroException.truncatedMessage();
+    }
+    Object localObject1 = InvalidProtocolBufferMicroException.negativeSize();
+    for (;;)
+    {
+      throw ((Throwable)localObject1);
     }
   }
   
@@ -395,59 +428,67 @@ public final class CodedInputStreamMicro
   public int readRawVarint32()
   {
     int i = readRawByte();
-    if (i >= 0) {}
-    int k;
-    do
-    {
+    if (i >= 0) {
       return i;
-      i &= 0x7F;
-      j = readRawByte();
-      if (j >= 0) {
-        return i | j << 7;
-      }
-      i |= (j & 0x7F) << 7;
-      j = readRawByte();
-      if (j >= 0) {
-        return i | j << 14;
-      }
-      i |= (j & 0x7F) << 14;
-      k = readRawByte();
-      if (k >= 0) {
-        return i | k << 21;
-      }
-      j = readRawByte();
-      k = i | (k & 0x7F) << 21 | j << 28;
-      i = k;
-    } while (j >= 0);
-    int j = 0;
+    }
+    i &= 0x7F;
+    int j = readRawByte();
+    if (j >= 0) {
+      j <<= 7;
+    }
     for (;;)
     {
-      if (j >= 5) {
-        throw InvalidProtocolBufferMicroException.malformedVarint();
+      return i | j;
+      i |= (j & 0x7F) << 7;
+      j = readRawByte();
+      if (j >= 0)
+      {
+        j <<= 14;
       }
-      i = k;
-      if (readRawByte() >= 0) {
-        break;
+      else
+      {
+        i |= (j & 0x7F) << 14;
+        j = readRawByte();
+        if (j < 0) {
+          break;
+        }
+        j <<= 21;
       }
-      j += 1;
     }
+    int k = readRawByte();
+    j = i | (j & 0x7F) << 21 | k << 28;
+    if (k < 0)
+    {
+      i = 0;
+      while (i < 5)
+      {
+        if (readRawByte() >= 0) {
+          return j;
+        }
+        i += 1;
+      }
+      throw InvalidProtocolBufferMicroException.malformedVarint();
+    }
+    return j;
   }
   
   public long readRawVarint64()
   {
     int i = 0;
     long l = 0L;
-    for (;;)
+    while (i < 64)
     {
-      if (i >= 64) {
-        throw InvalidProtocolBufferMicroException.malformedVarint();
-      }
       int j = readRawByte();
       l |= (j & 0x7F) << i;
       if ((j & 0x80) == 0) {
         return l;
       }
       i += 7;
+    }
+    InvalidProtocolBufferMicroException localInvalidProtocolBufferMicroException = InvalidProtocolBufferMicroException.malformedVarint();
+    for (;;)
+    {
+      throw localInvalidProtocolBufferMicroException;
     }
   }
   
@@ -474,10 +515,12 @@ public final class CodedInputStreamMicro
   public String readString()
   {
     int i = readRawVarint32();
-    if ((i <= this.bufferSize - this.bufferPos) && (i > 0))
+    int j = this.bufferSize;
+    int k = this.bufferPos;
+    if ((i <= j - k) && (i > 0))
     {
-      String str = new String(this.buffer, this.bufferPos, i, "UTF-8");
-      this.bufferPos = (i + this.bufferPos);
+      String str = new String(this.buffer, k, i, "UTF-8");
+      this.bufferPos += i;
       return str;
     }
     return new String(readRawBytes(i), "UTF-8");
@@ -491,10 +534,11 @@ public final class CodedInputStreamMicro
       return 0;
     }
     this.lastTag = readRawVarint32();
-    if (this.lastTag == 0) {
-      throw InvalidProtocolBufferMicroException.invalidTag();
+    int i = this.lastTag;
+    if (i != 0) {
+      return i;
     }
-    return this.lastTag;
+    throw InvalidProtocolBufferMicroException.invalidTag();
   }
   
   public int readUInt32()
@@ -514,47 +558,63 @@ public final class CodedInputStreamMicro
   
   public int setRecursionLimit(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Recursion limit cannot be negative: " + paramInt);
+    if (paramInt >= 0)
+    {
+      int i = this.recursionLimit;
+      this.recursionLimit = paramInt;
+      return i;
     }
-    int i = this.recursionLimit;
-    this.recursionLimit = paramInt;
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder("Recursion limit cannot be negative: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public int setSizeLimit(int paramInt)
   {
-    if (paramInt < 0) {
-      throw new IllegalArgumentException("Size limit cannot be negative: " + paramInt);
+    if (paramInt >= 0)
+    {
+      int i = this.sizeLimit;
+      this.sizeLimit = paramInt;
+      return i;
     }
-    int i = this.sizeLimit;
-    this.sizeLimit = paramInt;
-    return i;
+    StringBuilder localStringBuilder = new StringBuilder("Size limit cannot be negative: ");
+    localStringBuilder.append(paramInt);
+    throw new IllegalArgumentException(localStringBuilder.toString());
   }
   
   public boolean skipField(int paramInt)
   {
-    switch (WireFormatMicro.getTagWireType(paramInt))
+    int i = WireFormatMicro.getTagWireType(paramInt);
+    if (i != 0)
     {
-    default: 
-      throw InvalidProtocolBufferMicroException.invalidWireType();
-    case 0: 
-      readInt32();
-      return true;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i == 5)
+              {
+                readRawLittleEndian32();
+                return true;
+              }
+              throw InvalidProtocolBufferMicroException.invalidWireType();
+            }
+            return false;
+          }
+          skipMessage();
+          checkLastTagWas(WireFormatMicro.makeTag(WireFormatMicro.getTagFieldNumber(paramInt), 4));
+          return true;
+        }
+        skipRawBytes(readRawVarint32());
+        return true;
+      }
       readRawLittleEndian64();
       return true;
-    case 2: 
-      skipRawBytes(readRawVarint32());
-      return true;
-    case 3: 
-      skipMessage();
-      checkLastTagWas(WireFormatMicro.makeTag(WireFormatMicro.getTagFieldNumber(paramInt), 4));
-      return true;
-    case 4: 
-      return false;
     }
-    readRawLittleEndian32();
+    readInt32();
     return true;
   }
   
@@ -569,39 +629,55 @@ public final class CodedInputStreamMicro
   
   public void skipRawBytes(int paramInt)
   {
-    if (paramInt < 0) {
-      throw InvalidProtocolBufferMicroException.negativeSize();
-    }
-    if (this.totalBytesRetired + this.bufferPos + paramInt > this.currentLimit)
+    if (paramInt >= 0)
     {
-      skipRawBytes(this.currentLimit - this.totalBytesRetired - this.bufferPos);
+      int j = this.totalBytesRetired;
+      int i = this.bufferPos;
+      int k = this.currentLimit;
+      if (j + i + paramInt <= k)
+      {
+        k = this.bufferSize;
+        if (paramInt <= k - i)
+        {
+          this.bufferPos = (i + paramInt);
+          return;
+        }
+        i = k - i;
+        this.totalBytesRetired = (j + i);
+        this.bufferPos = 0;
+        this.bufferSize = 0;
+        for (;;)
+        {
+          if (i >= paramInt) {
+            return;
+          }
+          localObject = this.input;
+          if (localObject == null) {
+            j = -1;
+          } else {
+            j = (int)((InputStream)localObject).skip(paramInt - i);
+          }
+          if (j <= 0) {
+            break;
+          }
+          i += j;
+          this.totalBytesRetired += j;
+        }
+        throw InvalidProtocolBufferMicroException.truncatedMessage();
+      }
+      skipRawBytes(k - j - i);
       throw InvalidProtocolBufferMicroException.truncatedMessage();
     }
-    if (paramInt <= this.bufferSize - this.bufferPos) {
-      this.bufferPos += paramInt;
-    }
+    Object localObject = InvalidProtocolBufferMicroException.negativeSize();
     for (;;)
     {
-      return;
-      int i = this.bufferSize - this.bufferPos;
-      this.totalBytesRetired += i;
-      this.bufferPos = 0;
-      this.bufferSize = 0;
-      while (i < paramInt)
-      {
-        if (this.input == null) {}
-        for (int j = -1; j <= 0; j = (int)this.input.skip(paramInt - i)) {
-          throw InvalidProtocolBufferMicroException.truncatedMessage();
-        }
-        i += j;
-        this.totalBytesRetired = (j + this.totalBytesRetired);
-      }
+      throw ((Throwable)localObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pb.CodedInputStreamMicro
  * JD-Core Version:    0.7.0.1
  */

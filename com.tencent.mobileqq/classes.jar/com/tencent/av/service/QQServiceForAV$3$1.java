@@ -1,22 +1,22 @@
 package com.tencent.av.service;
 
-import cooperation.groupvideo.GroupVideoWrapper;
-import cooperation.groupvideo.GroupVideoWrapper.OnGVideoReadyListener;
+import cooperation.groupvideo.api.IGroupVideoWrapper;
+import cooperation.groupvideo.api.IGroupVideoWrapper.OnGVideoReadyListener;
 
 class QQServiceForAV$3$1
-  implements GroupVideoWrapper.OnGVideoReadyListener
+  implements IGroupVideoWrapper.OnGVideoReadyListener
 {
   QQServiceForAV$3$1(QQServiceForAV.3 param3) {}
   
-  public void a(GroupVideoWrapper paramGroupVideoWrapper)
+  public void a(IGroupVideoWrapper paramIGroupVideoWrapper)
   {
-    paramGroupVideoWrapper.b();
-    paramGroupVideoWrapper.a();
+    paramIGroupVideoWrapper.onUpdateTroopList();
+    paramIGroupVideoWrapper.uninitialize();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.QQServiceForAV.3.1
  * JD-Core Version:    0.7.0.1
  */

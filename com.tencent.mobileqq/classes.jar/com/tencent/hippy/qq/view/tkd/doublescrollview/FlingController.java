@@ -31,8 +31,9 @@ public class FlingController
   
   public int computeDistance()
   {
-    int i = this.mVelocity - this.a;
-    int j = ImmersiveUtils.PxToDp(this.mVelocity + i >> 1);
+    int j = this.mVelocity;
+    int i = j - this.a;
+    j = ImmersiveUtils.PxToDp(j + i >> 1);
     this.mVelocity = i;
     if ((Math.abs(-j) < 5) || (Math.abs(this.mVelocity) < 10)) {
       finish();
@@ -52,14 +53,21 @@ public class FlingController
   
   public void startFling()
   {
-    this.mVelocity = (this.myVelocity.getVelocity() / this.fps * 3);
-    if (this.mVelocity < 0) {}
-    for (this.a = (-300 / this.fps);; this.a = (300 / this.fps))
-    {
-      Log.d("FlingController", "mVelocity: " + this.mVelocity + "  a: " + this.a);
-      this.isFling = true;
-      return;
+    int i = this.myVelocity.getVelocity();
+    int j = this.fps;
+    this.mVelocity = (i / j * 3);
+    if (this.mVelocity < 0) {
+      this.a = (-300 / j);
+    } else {
+      this.a = (300 / j);
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mVelocity: ");
+    localStringBuilder.append(this.mVelocity);
+    localStringBuilder.append("  a: ");
+    localStringBuilder.append(this.a);
+    Log.d("FlingController", localStringBuilder.toString());
+    this.isFling = true;
   }
   
   public void stop()
@@ -69,7 +77,7 @@ public class FlingController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.doublescrollview.FlingController
  * JD-Core Version:    0.7.0.1
  */

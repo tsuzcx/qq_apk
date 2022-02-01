@@ -48,9 +48,9 @@ public class CommodityListView
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public int a()
+  protected int a()
   {
-    return 2131558838;
+    return 2131558736;
   }
   
   public String a()
@@ -60,51 +60,53 @@ public class CommodityListView
     }
     StringBuilder localStringBuilder = new StringBuilder();
     int i = 0;
-    if (i < ((ArrayList)a()).size())
+    while (i < ((ArrayList)a()).size())
     {
       Object localObject = ((ArrayList)a()).get(i);
       if ((localObject instanceof CommodityBean))
       {
+        localObject = (CommodityBean)localObject;
         long l = ((CommodityBean)localObject).mItemID;
         if (l > 0L) {
           localObject = String.valueOf(l);
+        } else {
+          localObject = ((CommodityBean)localObject).mAlias;
         }
       }
-      for (;;)
+      else
       {
-        localStringBuilder.append((String)localObject);
-        if (i != ((ArrayList)a()).size() - 1) {
-          localStringBuilder.append(",");
-        }
-        i += 1;
-        break;
-        localObject = ((CommodityBean)localObject).mAlias;
-        continue;
+        localObject = (CertifiedAccountMeta.StYouZanGood)localObject;
         if (((CertifiedAccountMeta.StYouZanGood)localObject).itemID.get() > 0L) {
           localObject = String.valueOf(((CertifiedAccountMeta.StYouZanGood)localObject).itemID.get());
         } else {
           localObject = ((CertifiedAccountMeta.StYouZanGood)localObject).alias.get();
         }
       }
+      localStringBuilder.append((String)localObject);
+      if (i != ((ArrayList)a()).size() - 1) {
+        localStringBuilder.append(",");
+      }
+      i += 1;
     }
     return localStringBuilder.toString();
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter != null)
+    CommodityListView.CommodityAdapter localCommodityAdapter = this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter;
+    if (localCommodityAdapter != null)
     {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter.a();
+      localCommodityAdapter.a();
       this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter.notifyDataSetChanged();
     }
   }
   
-  public void a(Context paramContext, View paramView)
+  protected void a(Context paramContext, View paramView)
   {
-    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131377423));
-    this.b = ((TextView)paramView.findViewById(2131380651));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380573));
-    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131381105);
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView = ((RecyclerView)paramView.findViewById(2131376871));
+    this.b = ((TextView)paramView.findViewById(2131379930));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379857));
+    this.jdField_a_of_type_AndroidViewView = paramView.findViewById(2131380360);
     this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager = new LinearLayoutManager(getContext(), 0, false);
     this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.setLayoutManager(this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager);
     this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter = new CommodityListView.CommodityAdapter(this);
@@ -116,8 +118,9 @@ public class CommodityListView
   public void setData(ArrayList paramArrayList)
   {
     super.setData(paramArrayList);
-    if (this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter != null) {
-      this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter.a(paramArrayList);
+    CommodityListView.CommodityAdapter localCommodityAdapter = this.jdField_a_of_type_ComTencentBizSubscribeWidgetCommodityCommodityListView$CommodityAdapter;
+    if (localCommodityAdapter != null) {
+      localCommodityAdapter.a(paramArrayList);
     }
   }
   
@@ -128,61 +131,53 @@ public class CommodityListView
   
   public void setOrientation(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager != null) {
-      this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.setOrientation(paramInt);
+    LinearLayoutManager localLinearLayoutManager = this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager;
+    if (localLinearLayoutManager != null) {
+      localLinearLayoutManager.setOrientation(paramInt);
     }
   }
   
   public void setPublishUI(boolean paramBoolean)
   {
+    Object localObject = this.b;
     int j = 8;
-    Object localObject;
-    if (this.b != null)
+    int i;
+    if (localObject != null)
     {
-      localObject = this.b;
-      if (paramBoolean)
-      {
+      if (paramBoolean) {
         i = 8;
-        ((TextView)localObject).setVisibility(i);
+      } else {
+        i = 0;
       }
+      ((TextView)localObject).setVisibility(i);
     }
-    else
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localObject != null)
     {
-      if (this.jdField_a_of_type_AndroidWidgetTextView != null)
-      {
-        localObject = this.jdField_a_of_type_AndroidWidgetTextView;
-        if (!paramBoolean) {
-          break label122;
-        }
+      if (paramBoolean) {
         i = 8;
-        label49:
-        ((TextView)localObject).setVisibility(i);
+      } else {
+        i = 0;
       }
-      if (this.jdField_a_of_type_AndroidViewView != null)
-      {
-        localObject = this.jdField_a_of_type_AndroidViewView;
-        if (!paramBoolean) {
-          break label127;
-        }
-      }
+      ((TextView)localObject).setVisibility(i);
     }
-    label122:
-    label127:
-    for (int i = j;; i = 0)
+    localObject = this.jdField_a_of_type_AndroidViewView;
+    if (localObject != null)
     {
+      if (paramBoolean) {
+        i = j;
+      } else {
+        i = 0;
+      }
       ((View)localObject).setVisibility(i);
-      setOrientation(1);
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      if (this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView != null)
-      {
-        this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getLayoutParams().height = ImmersiveUtils.dpToPx(250.0F);
-        requestLayout();
-      }
-      return;
-      i = 0;
-      break;
-      i = 0;
-      break label49;
+    }
+    setOrientation(1);
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    localObject = this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView;
+    if (localObject != null)
+    {
+      ((RecyclerView)localObject).getLayoutParams().height = ImmersiveUtils.dpToPx(250.0F);
+      requestLayout();
     }
   }
   
@@ -190,30 +185,29 @@ public class CommodityListView
   {
     CertifiedAccountMeta.StUser localStUser = paramStFeed.poster;
     this.jdField_a_of_type_NS_CERTIFIED_ACCOUNTCertifiedAccountMeta$StFeed = paramStFeed;
-    TextView localTextView;
-    String str;
     if ((this.jdField_a_of_type_AndroidWidgetTextView != null) && (localStUser.youZhan.size() > 0) && (((CertifiedAccountMeta.StYouZanShop)localStUser.youZhan.get(0)).goodNum.get() > 0))
     {
-      VSReporter.a(localStUser.id.get(), "auth_" + SubscribeShareHelper.a(a()), "exp_shop", 0, 0, new String[0]);
+      paramStFeed = localStUser.id.get();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("auth_");
+      ((StringBuilder)localObject).append(SubscribeShareHelper.a(a()));
+      VSReporter.a(paramStFeed, ((StringBuilder)localObject).toString(), "exp_shop", 0, 0, new String[0]);
       this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
-      localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-      str = HardCodeUtil.a(2131719635);
-      if (!SubscribeUtils.a(localStUser.attr.get())) {
-        break label164;
+      localObject = this.jdField_a_of_type_AndroidWidgetTextView;
+      String str = HardCodeUtil.a(2131719354);
+      if (SubscribeUtils.a(localStUser.attr.get())) {
+        paramStFeed = HardCodeUtil.a(2131702405);
+      } else {
+        paramStFeed = localStUser.nick.get();
       }
-    }
-    label164:
-    for (paramStFeed = HardCodeUtil.a(2131702273);; paramStFeed = localStUser.nick.get())
-    {
-      localTextView.setText(String.format(str, new Object[] { paramStFeed }));
+      ((TextView)localObject).setText(String.format(str, new Object[] { paramStFeed }));
       this.jdField_a_of_type_AndroidWidgetTextView.setOnClickListener(new CommodityListView.1(this, localStUser));
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.commodity.CommodityListView
  * JD-Core Version:    0.7.0.1
  */

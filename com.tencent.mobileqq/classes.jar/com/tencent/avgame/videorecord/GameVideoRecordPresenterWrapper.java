@@ -13,6 +13,8 @@ import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gameroom.stage.IStagePresenter;
 import com.tencent.avgame.gameroom.stage.IStageRecordPresenter;
 import com.tencent.avgame.gameroom.video.AVGameBusinessVideoLayer;
+import com.tencent.avgame.qav.videorecord.IGameVideoRecordPresenterWrapper;
+import com.tencent.avgame.qav.videorecord.IGuessPictureGameRecordCtrl;
 import com.tencent.avgame.util.AvGameMachineLevelUtils;
 import com.tencent.qav.log.AVLog;
 import com.tencent.ttpic.openapi.filter.RenderBuffer;
@@ -20,7 +22,7 @@ import com.tencent.ttpic.openapi.filter.TextureRender;
 
 @RequiresApi(api=18)
 public class GameVideoRecordPresenterWrapper
-  implements IStageRecordPresenter
+  implements IGameVideoRecordPresenterWrapper
 {
   private int jdField_a_of_type_Int;
   private IStagePresenter jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
@@ -41,21 +43,24 @@ public class GameVideoRecordPresenterWrapper
   {
     this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameBusinessVideoLayer = paramAVGameBusinessVideoLayer;
     int i = AvGameMachineLevelUtils.a();
-    AVLog.d("GameVideoRecordPresenterWrapper", "machineLevel " + i);
-    if ((i == 1) || (i == 0))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("machineLevel ");
+    localStringBuilder.append(i);
+    AVLog.d("GameVideoRecordPresenterWrapper", localStringBuilder.toString());
+    if ((i != 1) && (i != 0))
     {
-      AVLog.d("GameVideoRecordPresenterWrapper", "machineLevel low, don't init ctrl");
+      if (GameEngine.a().f())
+      {
+        AVLog.d("GameVideoRecordPresenterWrapper", "survival not record");
+        return;
+      }
+      this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl = new ShowAndGuessGameVideoRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
+      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl = new GuessPictureGameRecordCtrl(paramContext);
+      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl = new GuessVideoGameRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
+      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl = new GuessSongGameRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
       return;
     }
-    if (GameEngine.a().f())
-    {
-      AVLog.d("GameVideoRecordPresenterWrapper", "survival not record");
-      return;
-    }
-    this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl = new ShowAndGuessGameVideoRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
-    this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl = new GuessPictureGameRecordCtrl(paramContext);
-    this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl = new GuessVideoGameRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
-    this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl = new GuessSongGameRecordCtrl(paramContext, paramAVGameBusinessVideoLayer);
+    AVLog.d("GameVideoRecordPresenterWrapper", "machineLevel low, don't init ctrl");
   }
   
   private void a(RectF paramRectF, float paramFloat1, float paramFloat2)
@@ -93,7 +98,7 @@ public class GameVideoRecordPresenterWrapper
     return null;
   }
   
-  public GuessPictureGameRecordCtrl a()
+  public IGuessPictureGameRecordCtrl a()
   {
     return this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl;
   }
@@ -125,29 +130,31 @@ public class GameVideoRecordPresenterWrapper
   public void a(GLCanvas paramGLCanvas)
   {
     int i = GameEngine.a().a().c();
-    if (i == 1) {
-      c(paramGLCanvas);
-    }
-    do
+    if (i == 1)
     {
+      c(paramGLCanvas);
       return;
-      if (i == 3)
-      {
-        d(paramGLCanvas);
-        return;
-      }
-    } while (i != 4);
-    b(paramGLCanvas);
+    }
+    if (i == 3)
+    {
+      d(paramGLCanvas);
+      return;
+    }
+    if (i == 4) {
+      b(paramGLCanvas);
+    }
   }
   
   public void a(IStagePresenter paramIStagePresenter)
   {
     this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter = paramIStagePresenter;
-    if (this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.a(paramIStagePresenter);
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl;
+    if (localObject != null) {
+      ((ShowAndGuessGameVideoRecordCtrl)localObject).a(paramIStagePresenter);
     }
-    if (this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.a(paramIStagePresenter);
+    localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl;
+    if (localObject != null) {
+      ((GuessVideoGameRecordCtrl)localObject).a(paramIStagePresenter);
     }
   }
   
@@ -161,26 +168,58 @@ public class GameVideoRecordPresenterWrapper
   public boolean a()
   {
     int i = GameEngine.a().a().c();
-    if (i == 1) {
-      if ((this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl == null) || ((!this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.d()) && (!this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.g()))) {}
-    }
-    do
+    boolean bool3 = false;
+    boolean bool4 = false;
+    boolean bool2 = false;
+    Object localObject;
+    if (i == 1)
     {
-      do
-      {
-        return true;
-        return false;
-        if (i != 3) {
-          break;
+      localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl;
+      bool1 = bool2;
+      if (localObject != null) {
+        if (!((ShowAndGuessGameVideoRecordCtrl)localObject).d())
+        {
+          bool1 = bool2;
+          if (!this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.g()) {}
         }
-      } while ((this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl != null) && ((this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.d()) || (this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.f())));
-      return false;
-      if (i != 4) {
-        break;
+        else
+        {
+          bool1 = true;
+        }
       }
-    } while ((this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl != null) && (this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl.d()));
-    return false;
-    return false;
+      return bool1;
+    }
+    if (i == 3)
+    {
+      localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl;
+      bool1 = bool3;
+      if (localObject != null) {
+        if (!((GuessVideoGameRecordCtrl)localObject).d())
+        {
+          bool1 = bool3;
+          if (!this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.f()) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
+      }
+      return bool1;
+    }
+    boolean bool1 = bool4;
+    if (i == 4)
+    {
+      localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl;
+      bool1 = bool4;
+      if (localObject != null)
+      {
+        bool1 = bool4;
+        if (((GuessSongGameRecordCtrl)localObject).d()) {
+          bool1 = true;
+        }
+      }
+    }
+    return bool1;
   }
   
   public void b()
@@ -231,25 +270,36 @@ public class GameVideoRecordPresenterWrapper
   
   protected void c(GLCanvas paramGLCanvas)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter != null))
+    if (!this.jdField_a_of_type_Boolean)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a();
-      if (localObject == null)
+      Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
+      if (localObject != null)
       {
-        AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessShow init fail. no stage rect");
-        return;
+        localObject = ((IStagePresenter)localObject).a();
+        if (localObject == null)
+        {
+          AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessShow init fail. no stage rect");
+          return;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        int i = (int)(((RectF)localObject).right - ((RectF)localObject).left);
+        int j = (int)(((RectF)localObject).bottom - ((RectF)localObject).top);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("dealWithRecordFBORenderForGuessShow init:");
+        localStringBuilder.append(paramGLCanvas.a());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramGLCanvas.b());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(localObject);
+        AVLog.d("GameVideoRecordPresenterWrapper", localStringBuilder.toString());
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramGLCanvas.a(), paramGLCanvas.b(), 33984);
+        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(i, j, 33985);
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+        a((RectF)localObject, paramGLCanvas.a(), paramGLCanvas.b());
+        localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.a(i, j);
+        this.jdField_a_of_type_Int = localObject[0];
+        this.jdField_b_of_type_Int = localObject[1];
       }
-      this.jdField_a_of_type_Boolean = true;
-      int i = (int)(((RectF)localObject).right - ((RectF)localObject).left);
-      int j = (int)(((RectF)localObject).bottom - ((RectF)localObject).top);
-      AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessShow init:" + paramGLCanvas.a() + " " + paramGLCanvas.b() + " " + localObject);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramGLCanvas.a(), paramGLCanvas.b(), 33984);
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(i, j, 33985);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-      a((RectF)localObject, paramGLCanvas.a(), paramGLCanvas.b());
-      localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.a(i, j);
-      this.jdField_a_of_type_Int = localObject[0];
-      this.jdField_b_of_type_Int = localObject[1];
     }
     if (this.jdField_a_of_type_Boolean)
     {
@@ -281,25 +331,36 @@ public class GameVideoRecordPresenterWrapper
   
   protected void d(GLCanvas paramGLCanvas)
   {
-    if ((!this.jdField_a_of_type_Boolean) && (this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter != null))
+    if (!this.jdField_a_of_type_Boolean)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter.a();
-      if (localObject == null)
+      Object localObject = this.jdField_a_of_type_ComTencentAvgameGameroomStageIStagePresenter;
+      if (localObject != null)
       {
-        AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessVideo init fail. no stage rect");
-        return;
+        localObject = ((IStagePresenter)localObject).a();
+        if (localObject == null)
+        {
+          AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessVideo init fail. no stage rect");
+          return;
+        }
+        this.jdField_a_of_type_Boolean = true;
+        int i = (int)(((RectF)localObject).right - ((RectF)localObject).left);
+        int j = (int)(((RectF)localObject).bottom - ((RectF)localObject).top);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("dealWithRecordFBORenderForGuessVideo init:");
+        localStringBuilder.append(paramGLCanvas.a());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(paramGLCanvas.b());
+        localStringBuilder.append(" ");
+        localStringBuilder.append(localObject);
+        AVLog.d("GameVideoRecordPresenterWrapper", localStringBuilder.toString());
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramGLCanvas.a(), paramGLCanvas.b(), 33984);
+        this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(i, j, 33985);
+        this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
+        a((RectF)localObject, paramGLCanvas.a(), paramGLCanvas.b());
+        localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.a(i, j);
+        this.jdField_a_of_type_Int = localObject[0];
+        this.jdField_b_of_type_Int = localObject[1];
       }
-      this.jdField_a_of_type_Boolean = true;
-      int i = (int)(((RectF)localObject).right - ((RectF)localObject).left);
-      int j = (int)(((RectF)localObject).bottom - ((RectF)localObject).top);
-      AVLog.d("GameVideoRecordPresenterWrapper", "dealWithRecordFBORenderForGuessVideo init:" + paramGLCanvas.a() + " " + paramGLCanvas.b() + " " + localObject);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(paramGLCanvas.a(), paramGLCanvas.b(), 33984);
-      this.jdField_b_of_type_ComTencentTtpicOpenapiFilterRenderBuffer = new RenderBuffer(i, j, 33985);
-      this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = new TextureRender();
-      a((RectF)localObject, paramGLCanvas.a(), paramGLCanvas.b());
-      localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.a(i, j);
-      this.jdField_a_of_type_Int = localObject[0];
-      this.jdField_b_of_type_Int = localObject[1];
     }
     if (this.jdField_a_of_type_Boolean)
     {
@@ -339,7 +400,6 @@ public class GameVideoRecordPresenterWrapper
   
   public void g()
   {
-    int i;
     if (this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = false;
@@ -351,44 +411,45 @@ public class GameVideoRecordPresenterWrapper
       this.jdField_a_of_type_ComTencentTtpicOpenapiFilterTextureRender = null;
       this.jdField_a_of_type_Int = 0;
       this.jdField_b_of_type_Int = 0;
-      i = GameEngine.a().a().c();
-      if (i != 1) {
-        break label108;
-      }
-      this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.p();
-    }
-    for (;;)
-    {
-      if ((GameEngine.a().a().c() == 4) && (this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl != null)) {
-        this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl.q();
-      }
-      return;
-      label108:
-      if (i == 3) {
+      int i = GameEngine.a().a().c();
+      if (i == 1) {
+        this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.p();
+      } else if (i == 3) {
         this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.p();
+      }
+    }
+    if (GameEngine.a().a().c() == 4)
+    {
+      GuessSongGameRecordCtrl localGuessSongGameRecordCtrl = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl;
+      if (localGuessSongGameRecordCtrl != null) {
+        localGuessSongGameRecordCtrl.q();
       }
     }
   }
   
   public void h()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl.l();
+    Object localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordShowAndGuessGameVideoRecordCtrl;
+    if (localObject != null) {
+      ((ShowAndGuessGameVideoRecordCtrl)localObject).l();
     }
-    if (this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl.l();
+    localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessPictureGameRecordCtrl;
+    if (localObject != null) {
+      ((GuessPictureGameRecordCtrl)localObject).l();
     }
-    if (this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl.l();
+    localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessVideoGameRecordCtrl;
+    if (localObject != null) {
+      ((GuessVideoGameRecordCtrl)localObject).l();
     }
-    if (this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl != null) {
-      this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl.l();
+    localObject = this.jdField_a_of_type_ComTencentAvgameVideorecordGuessSongGameRecordCtrl;
+    if (localObject != null) {
+      ((GuessSongGameRecordCtrl)localObject).l();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.videorecord.GameVideoRecordPresenterWrapper
  * JD-Core Version:    0.7.0.1
  */

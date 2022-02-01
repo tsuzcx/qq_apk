@@ -20,7 +20,8 @@ public class BubbleContextMenu
     paramContext = new QQCustomMenuNoIconLayout(paramContext);
     paramContext.setGravity(17);
     paramContext.setPadding(0, 0, 0, 0);
-    paramContext.setPopupWindow(paramBubblePopupWindow);
+    paramContext.setPopupWindow(paramBubblePopupWindow, new BubbleContextMenu.1());
+    paramContext.setMenuCreateOrClickCallback(new BubbleMenuReporter());
     paramContext.setMenu(paramQQCustomMenu);
     paramContext.setMenuIconClickListener(paramOnClickListener);
     paramContext.a();
@@ -30,16 +31,16 @@ public class BubbleContextMenu
   public static BubblePopupWindow a(View paramView, int paramInt1, int paramInt2, int paramInt3, QQCustomMenu paramQQCustomMenu, View.OnClickListener paramOnClickListener)
   {
     BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), paramQQCustomMenu, paramOnClickListener));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(false);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.c(1);
-    localBubblePopupWindow.b(2);
-    localBubblePopupWindow.e(false);
-    localBubblePopupWindow.f(paramInt3);
-    localBubblePopupWindow.a(0);
-    localBubblePopupWindow.b(paramView, paramInt1, paramInt2);
+    localBubblePopupWindow.setContentView(a(localBubblePopupWindow, paramView.getContext(), paramQQCustomMenu, paramOnClickListener));
+    localBubblePopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+    localBubblePopupWindow.setOutsideTouchable(false);
+    localBubblePopupWindow.setFocusable(true);
+    localBubblePopupWindow.setSoftInputMode(1);
+    localBubblePopupWindow.setInputMethodMode(2);
+    localBubblePopupWindow.setTouchModal(false);
+    localBubblePopupWindow.setAnchorOffset(paramInt3);
+    localBubblePopupWindow.setAnimationStyle(0);
+    localBubblePopupWindow.showAtLocation(paramView, paramInt1, paramInt2);
     return localBubblePopupWindow;
   }
   
@@ -49,42 +50,42 @@ public class BubbleContextMenu
     paramQQCustomMenu = a(localBubblePopupWindow, paramView.getContext(), paramQQCustomMenu, paramOnClickListener);
     paramQQCustomMenu.setIgnoreTouchLocation(true);
     paramQQCustomMenu.setContainerBottom(paramInteger);
-    localBubblePopupWindow.a(paramQQCustomMenu);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.c(1);
-    localBubblePopupWindow.b(2);
-    localBubblePopupWindow.a(paramView, paramInt1, paramInt2, true);
+    localBubblePopupWindow.setContentView(paramQQCustomMenu);
+    localBubblePopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+    localBubblePopupWindow.setOutsideTouchable(true);
+    localBubblePopupWindow.setFocusable(true);
+    localBubblePopupWindow.setSoftInputMode(1);
+    localBubblePopupWindow.setInputMethodMode(2);
+    localBubblePopupWindow.showAtLocation(paramView, paramInt1, paramInt2, true);
     return localBubblePopupWindow;
   }
   
   public static BubblePopupWindow a(View paramView, QQCustomMenu paramQQCustomMenu, View.OnClickListener paramOnClickListener)
   {
     BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), paramQQCustomMenu, paramOnClickListener));
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.b(paramView);
+    localBubblePopupWindow.setContentView(a(localBubblePopupWindow, paramView.getContext(), paramQQCustomMenu, paramOnClickListener));
+    localBubblePopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+    localBubblePopupWindow.setOutsideTouchable(true);
+    localBubblePopupWindow.setFocusable(true);
+    localBubblePopupWindow.showAsDropDown(paramView);
     return localBubblePopupWindow;
   }
   
   public static BubblePopupWindow a(View paramView, QQCustomMenu paramQQCustomMenu, View.OnClickListener paramOnClickListener, BubblePopupWindow.OnDismissListener paramOnDismissListener)
   {
     BubblePopupWindow localBubblePopupWindow = new BubblePopupWindow(-2, -2);
-    localBubblePopupWindow.a(a(localBubblePopupWindow, paramView.getContext(), paramQQCustomMenu, paramOnClickListener));
-    localBubblePopupWindow.a(paramOnDismissListener);
-    localBubblePopupWindow.a(new ColorDrawable(0));
-    localBubblePopupWindow.c(true);
-    localBubblePopupWindow.a(true);
-    localBubblePopupWindow.b(paramView);
+    localBubblePopupWindow.setContentView(a(localBubblePopupWindow, paramView.getContext(), paramQQCustomMenu, paramOnClickListener));
+    localBubblePopupWindow.setOnDismissListener(paramOnDismissListener);
+    localBubblePopupWindow.setBackgroundDrawable(new ColorDrawable(0));
+    localBubblePopupWindow.setOutsideTouchable(true);
+    localBubblePopupWindow.setFocusable(true);
+    localBubblePopupWindow.showAsDropDown(paramView);
     return localBubblePopupWindow;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.BubbleContextMenu
  * JD-Core Version:    0.7.0.1
  */

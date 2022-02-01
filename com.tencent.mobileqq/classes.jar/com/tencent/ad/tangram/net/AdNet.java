@@ -15,6 +15,8 @@ import com.tencent.ad.tangram.log.AdLog;
 import com.tencent.ad.tangram.system.a;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.ad.tangram.util.e;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
 import java.net.Inet4Address;
 import java.net.Inet6Address;
 import java.net.InetAddress;
@@ -34,231 +36,114 @@ public final class AdNet
   
   public static String getBSSID(Context paramContext, boolean paramBoolean)
   {
-    if (paramBoolean) {
-      if (e.checkPermission(paramContext, "android.permission.ACCESS_WIFI_STATE")) {}
-    }
-    label87:
-    do
+    if (paramBoolean)
     {
-      do
-      {
-        do
+      if (!e.checkPermission(paramContext, "android.permission.ACCESS_WIFI_STATE")) {
+        return null;
+      }
+      if (Build.VERSION.SDK_INT > 26) {
+        if ((Build.VERSION.SDK_INT != 27) && (Build.VERSION.SDK_INT != 28))
         {
-          for (;;)
-          {
+          if (!e.checkPermission(paramContext, "android.permission.ACCESS_FINE_LOCATION")) {
             return null;
-            if (Build.VERSION.SDK_INT > 26) {
-              break label87;
-            }
-            if (paramContext != null)
-            {
-              paramContext = paramContext.getApplicationContext();
-              if (paramContext != null)
-              {
-                paramContext = paramContext.getSystemService("wifi");
-                if ((paramContext instanceof WifiManager))
-                {
-                  paramContext = (WifiManager)WifiManager.class.cast(paramContext);
-                  if (paramContext == null) {}
-                }
-              }
-            }
-            try
-            {
-              paramContext = paramContext.getConnectionInfo();
-              if (paramContext != null) {
-                paramContext = paramContext.getBSSID();
-              }
-            }
-            catch (Throwable paramContext)
-            {
-              for (;;)
-              {
-                AdLog.e("AdNet", "getBSSID", paramContext);
-                paramContext = null;
-              }
-            }
           }
-        } while (!isValidBSSID(paramContext));
-        return paramContext;
-        if ((Build.VERSION.SDK_INT != 27) && (Build.VERSION.SDK_INT != 28)) {
-          break;
         }
-      } while ((e.checkPermission(paramContext, "android.permission.ACCESS_COARSE_LOCATION")) || (e.checkPermission(paramContext, "android.permission.ACCESS_FINE_LOCATION")));
+        else if ((!e.checkPermission(paramContext, "android.permission.ACCESS_COARSE_LOCATION")) && (!e.checkPermission(paramContext, "android.permission.ACCESS_FINE_LOCATION"))) {
+          return null;
+        }
+      }
+    }
+    if (paramContext == null) {
       return null;
-    } while (e.checkPermission(paramContext, "android.permission.ACCESS_FINE_LOCATION"));
-    return null;
+    }
+    paramContext = paramContext.getApplicationContext();
+    if (paramContext == null) {
+      return null;
+    }
+    paramContext = paramContext.getSystemService("wifi");
+    if (!(paramContext instanceof WifiManager)) {
+      return null;
+    }
+    paramContext = (WifiManager)WifiManager.class.cast(paramContext);
+    if (paramContext == null) {
+      return null;
+    }
+    try
+    {
+      paramContext = paramContext.getConnectionInfo();
+      if (paramContext == null) {
+        return null;
+      }
+      paramContext = paramContext.getBSSID();
+    }
+    catch (Throwable paramContext)
+    {
+      AdLog.e("AdNet", "getBSSID", paramContext);
+      paramContext = null;
+    }
+    if (!isValidBSSID(paramContext)) {
+      return null;
+    }
+    return paramContext;
   }
   
-  /* Error */
   private static int getDataTypeOnAndroidQ(int paramInt)
   {
-    // Byte code:
-    //   0: new 113	java/lang/Integer
-    //   3: dup
-    //   4: iconst_1
-    //   5: invokespecial 116	java/lang/Integer:<init>	(I)V
-    //   8: astore_3
-    //   9: new 113	java/lang/Integer
-    //   12: dup
-    //   13: iconst_2
-    //   14: invokespecial 116	java/lang/Integer:<init>	(I)V
-    //   17: astore 6
-    //   19: new 113	java/lang/Integer
-    //   22: dup
-    //   23: iconst_3
-    //   24: invokespecial 116	java/lang/Integer:<init>	(I)V
-    //   27: astore 7
-    //   29: new 113	java/lang/Integer
-    //   32: dup
-    //   33: iconst_4
-    //   34: invokespecial 116	java/lang/Integer:<init>	(I)V
-    //   37: astore 8
-    //   39: aload 7
-    //   41: astore 4
-    //   43: aload 6
-    //   45: astore_2
-    //   46: ldc 118
-    //   48: ldc 120
-    //   50: invokevirtual 124	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   53: ldc 118
-    //   55: invokevirtual 129	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   58: astore 5
-    //   60: aload 7
-    //   62: astore 4
-    //   64: aload 6
-    //   66: astore_2
-    //   67: aload 5
-    //   69: astore_3
-    //   70: ldc 118
-    //   72: ldc 131
-    //   74: invokevirtual 124	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   77: ldc 118
-    //   79: invokevirtual 129	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   82: astore 6
-    //   84: aload 7
-    //   86: astore 4
-    //   88: aload 6
-    //   90: astore_2
-    //   91: aload 5
-    //   93: astore_3
-    //   94: ldc 118
-    //   96: ldc 133
-    //   98: invokevirtual 124	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   101: ldc 118
-    //   103: invokevirtual 129	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   106: astore 7
-    //   108: aload 7
-    //   110: astore 4
-    //   112: aload 6
-    //   114: astore_2
-    //   115: aload 5
-    //   117: astore_3
-    //   118: ldc 118
-    //   120: ldc 135
-    //   122: invokevirtual 124	java/lang/Class:getDeclaredField	(Ljava/lang/String;)Ljava/lang/reflect/Field;
-    //   125: ldc 118
-    //   127: invokevirtual 129	java/lang/reflect/Field:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   130: astore 9
-    //   132: aload 9
-    //   134: astore 8
-    //   136: aload 5
-    //   138: astore_3
-    //   139: aload 6
-    //   141: astore_2
-    //   142: aload 7
-    //   144: astore 4
-    //   146: aload 8
-    //   148: astore 5
-    //   150: ldc 118
-    //   152: ldc 137
-    //   154: iconst_1
-    //   155: anewarray 82	java/lang/Class
-    //   158: dup
-    //   159: iconst_0
-    //   160: getstatic 141	java/lang/Integer:TYPE	Ljava/lang/Class;
-    //   163: aastore
-    //   164: invokevirtual 145	java/lang/Class:getDeclaredMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   167: ldc 118
-    //   169: iconst_1
-    //   170: anewarray 4	java/lang/Object
-    //   173: dup
-    //   174: iconst_0
-    //   175: iload_0
-    //   176: invokestatic 149	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   179: aastore
-    //   180: invokevirtual 155	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   183: astore 6
-    //   185: aload 6
-    //   187: aload_3
-    //   188: invokevirtual 159	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   191: istore_1
-    //   192: iload_1
-    //   193: ifeq +23 -> 216
-    //   196: iconst_2
-    //   197: ireturn
-    //   198: astore 5
-    //   200: ldc 16
-    //   202: ldc 160
-    //   204: aload 5
-    //   206: invokestatic 163	com/tencent/ad/tangram/log/AdLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   209: aload 8
-    //   211: astore 5
-    //   213: goto -63 -> 150
-    //   216: aload 6
-    //   218: aload_2
-    //   219: invokevirtual 159	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   222: ifeq +5 -> 227
-    //   225: iconst_3
-    //   226: ireturn
-    //   227: aload 6
-    //   229: aload 4
-    //   231: invokevirtual 159	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   234: ifeq +5 -> 239
-    //   237: iconst_4
-    //   238: ireturn
-    //   239: aload 6
-    //   241: aload 5
-    //   243: invokevirtual 159	java/lang/Object:equals	(Ljava/lang/Object;)Z
-    //   246: istore_1
-    //   247: iload_1
-    //   248: ifeq +6 -> 254
-    //   251: bipush 7
-    //   253: ireturn
-    //   254: iconst_0
-    //   255: ireturn
-    //   256: astore_2
-    //   257: ldc 16
-    //   259: ldc 160
-    //   261: aload_2
-    //   262: invokestatic 163	com/tencent/ad/tangram/log/AdLog:i	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   265: iconst_0
-    //   266: ireturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	267	0	paramInt	int
-    //   191	57	1	bool	boolean
-    //   45	174	2	localObject1	Object
-    //   256	6	2	localThrowable1	Throwable
-    //   8	180	3	localObject2	Object
-    //   41	189	4	localObject3	Object
-    //   58	91	5	localObject4	Object
-    //   198	7	5	localThrowable2	Throwable
-    //   211	31	5	localObject5	Object
-    //   17	223	6	localObject6	Object
-    //   27	116	7	localObject7	Object
-    //   37	173	8	localObject8	Object
-    //   130	3	9	localObject9	Object
-    // Exception table:
-    //   from	to	target	type
-    //   46	60	198	java/lang/Throwable
-    //   70	84	198	java/lang/Throwable
-    //   94	108	198	java/lang/Throwable
-    //   118	132	198	java/lang/Throwable
-    //   150	192	256	java/lang/Throwable
-    //   216	225	256	java/lang/Throwable
-    //   227	237	256	java/lang/Throwable
-    //   239	247	256	java/lang/Throwable
+    Object localObject1 = new Integer(1);
+    Object localObject5 = new Integer(2);
+    Object localObject6 = new Integer(3);
+    Integer localInteger2 = new Integer(4);
+    Object localObject2 = localObject5;
+    Object localObject3 = localObject6;
+    Integer localInteger1;
+    try
+    {
+      Object localObject4 = TelephonyManager.class.getDeclaredField("NETWORK_CLASS_2_G").get(TelephonyManager.class);
+      localObject1 = localObject4;
+      localObject2 = localObject5;
+      localObject3 = localObject6;
+      localObject5 = TelephonyManager.class.getDeclaredField("NETWORK_CLASS_3_G").get(TelephonyManager.class);
+      localObject1 = localObject4;
+      localObject2 = localObject5;
+      localObject3 = localObject6;
+      localObject6 = TelephonyManager.class.getDeclaredField("NETWORK_CLASS_4_G").get(TelephonyManager.class);
+      localObject1 = localObject4;
+      localObject2 = localObject5;
+      localObject3 = localObject6;
+      Object localObject7 = TelephonyManager.class.getDeclaredField("NETWORK_CLASS_5_G").get(TelephonyManager.class);
+      localObject1 = localObject4;
+      localObject2 = localObject5;
+      localObject3 = localObject6;
+      localObject4 = localObject7;
+    }
+    catch (Throwable localThrowable2)
+    {
+      AdLog.i("AdNet", "getDataTypeOnAndroidQ", localThrowable2);
+      localInteger1 = localInteger2;
+    }
+    try
+    {
+      localObject5 = TelephonyManager.class.getDeclaredMethod("getNetworkClass", new Class[] { Integer.TYPE }).invoke(TelephonyManager.class, new Object[] { Integer.valueOf(paramInt) });
+      if (localObject5.equals(localObject1)) {
+        return 2;
+      }
+      if (localObject5.equals(localObject2)) {
+        return 3;
+      }
+      if (localObject5.equals(localObject3)) {
+        return 4;
+      }
+      boolean bool = localObject5.equals(localInteger1);
+      if (bool) {
+        return 7;
+      }
+      return 0;
+    }
+    catch (Throwable localThrowable1)
+    {
+      AdLog.i("AdNet", "getDataTypeOnAndroidQ", localThrowable1);
+    }
+    return 0;
   }
   
   private static int getDataTypeOnAndroidR(int paramInt)
@@ -335,17 +220,20 @@ public final class AdNet
     ((AdHttp.Params)localObject).method = "GET";
     AdHttp.send((AdHttp.Params)localObject);
     AdLog.i("AdNet", String.format("getIpV4Address responseCode:%d", new Object[] { Integer.valueOf(((AdHttp.Params)localObject).responseCode) }));
-    if ((!((AdHttp.Params)localObject).canSend()) || (((AdHttp.Params)localObject).responseCode != 200)) {
-      return null;
-    }
-    try
+    if (((AdHttp.Params)localObject).canSend())
     {
-      localObject = new String(((AdHttp.Params)localObject).responseData, "UTF-8");
-      return localObject;
-    }
-    catch (Throwable localThrowable)
-    {
-      AdLog.e("AdNet", "getIpV4Address", localThrowable);
+      if (((AdHttp.Params)localObject).responseCode != 200) {
+        return null;
+      }
+      try
+      {
+        localObject = new String(((AdHttp.Params)localObject).responseData, "UTF-8");
+        return localObject;
+      }
+      catch (Throwable localThrowable)
+      {
+        AdLog.e("AdNet", "getIpV4Address", localThrowable);
+      }
     }
     return null;
   }
@@ -358,27 +246,22 @@ public final class AdNet
   
   private static int getNetIpFamily(InetAddress paramInetAddress)
   {
-    if (paramInetAddress == null) {}
-    do
+    if ((paramInetAddress != null) && (!paramInetAddress.isLoopbackAddress()) && (!paramInetAddress.isLinkLocalAddress()) && (!paramInetAddress.isAnyLocalAddress()))
     {
-      do
-      {
-        return 0;
-      } while ((paramInetAddress.isLoopbackAddress()) || (paramInetAddress.isLinkLocalAddress()) || (paramInetAddress.isAnyLocalAddress()));
       if ((paramInetAddress instanceof Inet6Address)) {
         return 2;
       }
-    } while (!(paramInetAddress instanceof Inet4Address));
-    return 1;
+      if ((paramInetAddress instanceof Inet4Address)) {
+        return 1;
+      }
+    }
+    return 0;
   }
   
   public static int getNetworkType(Context paramContext)
   {
-    if (paramContext == null) {}
-    for (;;)
+    if (paramContext != null)
     {
-      AdLog.e("AdNet", "getNetworkType error");
-      return -2147483648;
       paramContext = paramContext.getApplicationContext();
       if (paramContext != null) {
         try
@@ -396,6 +279,8 @@ public final class AdNet
         }
       }
     }
+    AdLog.e("AdNet", "getNetworkType error");
+    return -2147483648;
   }
   
   public static int getType(Context paramContext)
@@ -486,7 +371,10 @@ public final class AdNet
       return false;
     }
     paramContext = paramContext.getActiveNetworkInfo();
-    return (paramContext != null) && (paramContext.isAvailable());
+    if (paramContext != null) {
+      return paramContext.isAvailable();
+    }
+    return false;
   }
   
   private static boolean isValidBSSID(String paramString)

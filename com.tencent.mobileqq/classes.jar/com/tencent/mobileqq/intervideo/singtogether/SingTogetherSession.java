@@ -49,14 +49,15 @@ public class SingTogetherSession
   
   private String c(QQAppInterface paramQQAppInterface)
   {
-    if (this.a == 1) {
-      return paramQQAppInterface.getApp().getString(2131699321);
+    int i = this.a;
+    if (i == 1) {
+      return paramQQAppInterface.getApp().getString(2131699426);
     }
-    if (this.a == 3) {
-      return paramQQAppInterface.getApp().getString(2131699329);
+    if (i == 3) {
+      return paramQQAppInterface.getApp().getString(2131699434);
     }
-    if (this.a == 2) {
-      return paramQQAppInterface.getApp().getString(2131699327);
+    if (i == 2) {
+      return paramQQAppInterface.getApp().getString(2131699432);
     }
     return d(paramQQAppInterface);
   }
@@ -69,15 +70,18 @@ public class SingTogetherSession
       str = a(paramQQAppInterface, this.jdField_f_of_type_JavaLangString);
       if (!TextUtils.isEmpty(str)) {
         str = TogetherUtils.a(16, str);
+      } else {
+        str = paramQQAppInterface.getApp().getString(2131699422);
       }
     }
-    for (;;)
+    else
     {
-      return str + paramQQAppInterface.getApp().getString(2131699318);
-      str = paramQQAppInterface.getApp().getString(2131699317);
-      continue;
-      str = paramQQAppInterface.getApp().getString(2131699317);
+      str = paramQQAppInterface.getApp().getString(2131699422);
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(str);
+    localStringBuilder.append(paramQQAppInterface.getApp().getString(2131699423));
+    return localStringBuilder.toString();
   }
   
   public int a()
@@ -96,82 +100,92 @@ public class SingTogetherSession
   public String a(QQAppInterface paramQQAppInterface)
   {
     if (this.h == 4) {
-      return paramQQAppInterface.getApp().getString(2131699322);
+      return paramQQAppInterface.getApp().getString(2131699427);
     }
-    String str2 = "";
-    String str1;
-    if (this.jdField_f_of_type_Int == 2)
+    int i = this.jdField_f_of_type_Int;
+    Object localObject2 = "";
+    Object localObject1;
+    if (i == 2)
     {
-      if (this.b > 0L) {
-        str2 = a(paramQQAppInterface, this.b + "");
+      if (this.b > 0L)
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(this.b);
+        ((StringBuilder)localObject1).append("");
+        localObject2 = a(paramQQAppInterface, ((StringBuilder)localObject1).toString());
       }
-      str1 = str2;
-      if (TextUtils.isEmpty(str2)) {
-        str1 = paramQQAppInterface.getApp().getString(2131699317);
-      }
-      if (!TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
-        break label197;
+      localObject1 = localObject2;
+      if (TextUtils.isEmpty((CharSequence)localObject2)) {
+        localObject1 = paramQQAppInterface.getApp().getString(2131699422);
       }
     }
-    label197:
-    for (paramQQAppInterface = paramQQAppInterface.getApp().getString(2131699328);; paramQQAppInterface = String.format(paramQQAppInterface.getApp().getString(2131699325), new Object[] { this.jdField_d_of_type_JavaLangString }))
+    else
     {
-      return str1 + paramQQAppInterface;
-      str1 = str2;
-      if (this.jdField_f_of_type_Int != 1) {
-        break;
+      localObject1 = localObject2;
+      if (this.jdField_f_of_type_Int == 1)
+      {
+        if (this.b > 0L)
+        {
+          localObject1 = this.jdField_e_of_type_JavaLangString;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(this.b);
+          ((StringBuilder)localObject2).append("");
+          localObject2 = a(paramQQAppInterface, (String)localObject1, ((StringBuilder)localObject2).toString());
+        }
+        localObject1 = localObject2;
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          localObject1 = paramQQAppInterface.getApp().getString(2131699450);
+        }
       }
-      if (this.b > 0L) {
-        str2 = a(paramQQAppInterface, this.jdField_e_of_type_JavaLangString, this.b + "");
-      }
-      str1 = str2;
-      if (!TextUtils.isEmpty(str2)) {
-        break;
-      }
-      str1 = paramQQAppInterface.getApp().getString(2131699345);
-      break;
     }
+    if (TextUtils.isEmpty(this.jdField_d_of_type_JavaLangString)) {
+      paramQQAppInterface = paramQQAppInterface.getApp().getString(2131699433);
+    } else {
+      paramQQAppInterface = String.format(paramQQAppInterface.getApp().getString(2131699430), new Object[] { this.jdField_d_of_type_JavaLangString });
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(paramQQAppInterface);
+    return ((StringBuilder)localObject2).toString();
   }
   
   public String a(boolean paramBoolean, QQAppInterface paramQQAppInterface)
   {
-    Object localObject;
     if (paramBoolean) {
-      localObject = paramQQAppInterface.getApp().getString(2131699331);
+      return paramQQAppInterface.getApp().getString(2131699436);
     }
-    do
-    {
-      String str;
-      do
-      {
-        return localObject;
-        str = "";
-        localObject = str;
-      } while (this.h == 3);
-      if (this.jdField_f_of_type_Int == 2) {
-        return c(paramQQAppInterface);
-      }
-      localObject = str;
-    } while (this.jdField_f_of_type_Int != 1);
-    return a(paramQQAppInterface, 2131699324, 2131699320, 2131699318);
+    String str = "";
+    if (this.h == 3) {
+      return "";
+    }
+    if (this.jdField_f_of_type_Int == 2) {
+      return c(paramQQAppInterface);
+    }
+    if (this.jdField_f_of_type_Int == 1) {
+      str = a(paramQQAppInterface, 2131699429, 2131699425, 2131699423);
+    }
+    return str;
   }
   
   public int b()
   {
-    return 2130838403;
+    return 2130838233;
   }
   
   public String b(QQAppInterface paramQQAppInterface)
   {
-    if (this.h == 3) {}
-    do
-    {
+    int i = this.h;
+    String str = "";
+    if (i == 3) {
       return "";
-      if (this.jdField_f_of_type_Int == 2) {
-        return c(paramQQAppInterface);
-      }
-    } while (this.jdField_f_of_type_Int != 1);
-    return a(paramQQAppInterface, 2131699323, 2131699319);
+    }
+    if (this.jdField_f_of_type_Int == 2) {
+      return c(paramQQAppInterface);
+    }
+    if (this.jdField_f_of_type_Int == 1) {
+      str = a(paramQQAppInterface, 2131699428, 2131699424);
+    }
+    return str;
   }
   
   public int describeContents()
@@ -181,7 +195,40 @@ public class SingTogetherSession
   
   public String toString()
   {
-    return "ListenTogetherSession{type=" + this.jdField_f_of_type_Int + ", uin='" + this.jdField_e_of_type_JavaLangString + '\'' + ", status=" + this.h + ", timeStamp=" + this.jdField_c_of_type_Long + ", userState=" + this.i + ", creator='" + this.jdField_f_of_type_JavaLangString + '\'' + ", joinNum='" + this.g + '\'' + ", serviceType='" + this.jdField_e_of_type_Int + '\'' + ", roomCover='" + this.jdField_c_of_type_JavaLangString + '\'' + ", singerUin='" + this.b + '\'' + ", songName='" + this.jdField_d_of_type_JavaLangString + '\'' + ", identifyId=" + this.jdField_d_of_type_Long + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ListenTogetherSession{type=");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append(", uin='");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", timeStamp=");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append(", userState=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append(", creator='");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", joinNum='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", serviceType='");
+    localStringBuilder.append(this.jdField_e_of_type_Int);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", roomCover='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", singerUin='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", songName='");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", identifyId=");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -202,7 +249,7 @@ public class SingTogetherSession
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.singtogether.SingTogetherSession
  * JD-Core Version:    0.7.0.1
  */

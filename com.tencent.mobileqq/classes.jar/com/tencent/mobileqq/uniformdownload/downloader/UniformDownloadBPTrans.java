@@ -5,7 +5,7 @@ import com.tencent.qphone.base.util.QLog;
 
 public class UniformDownloadBPTrans
 {
-  private static UniformDownloadBPTrans a = null;
+  private static UniformDownloadBPTrans a;
   
   public static UniformDownloadBPTrans a()
   {
@@ -22,60 +22,104 @@ public class UniformDownloadBPTrans
   
   public UniformDownloadBPTrans.BreakpointTransInfo a(String paramString)
   {
-    if (UniformDownloadMgr.a().a() == null) {
-      QLog.e("UniformDownloadBPTrans", 1, "[UniformDL] getBPTransItem failed APP=null. url[" + paramString + "]");
-    }
-    for (;;)
+    Object localObject;
+    if (UniformDownloadMgr.a().a() == null)
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[UniformDL] getBPTransItem failed APP=null. url[");
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("]");
+      QLog.e("UniformDownloadBPTrans", 1, ((StringBuilder)localObject).toString());
       return null;
-      if (UniformDownloadBPTransProxy.a() != null) {}
-      for (paramString = UniformDownloadBPTransProxy.a().a(paramString); paramString != null; paramString = null)
-      {
-        UniformDownloadBPTrans.BreakpointTransInfo localBreakpointTransInfo = new UniformDownloadBPTrans.BreakpointTransInfo();
-        localBreakpointTransInfo.jdField_a_of_type_JavaLangString = paramString.mFileName;
-        localBreakpointTransInfo.jdField_a_of_type_Long = paramString.mFileSize;
-        localBreakpointTransInfo.c = paramString.mFilePath;
-        localBreakpointTransInfo.b = paramString.mTempPath;
-        return localBreakpointTransInfo;
-        QLog.e("UniformDownloadBPTrans", 1, "[UniformDL] getUDLBPTransProxy=null.");
-      }
     }
+    if (UniformDownloadBPTransProxy.a() != null)
+    {
+      paramString = UniformDownloadBPTransProxy.a().a(paramString);
+    }
+    else
+    {
+      QLog.e("UniformDownloadBPTrans", 1, "[UniformDL] getUDLBPTransProxy=null.");
+      paramString = null;
+    }
+    if (paramString != null)
+    {
+      localObject = new UniformDownloadBPTrans.BreakpointTransInfo();
+      ((UniformDownloadBPTrans.BreakpointTransInfo)localObject).jdField_a_of_type_JavaLangString = paramString.mFileName;
+      ((UniformDownloadBPTrans.BreakpointTransInfo)localObject).jdField_a_of_type_Long = paramString.mFileSize;
+      ((UniformDownloadBPTrans.BreakpointTransInfo)localObject).c = paramString.mFilePath;
+      ((UniformDownloadBPTrans.BreakpointTransInfo)localObject).b = paramString.mTempPath;
+      return localObject;
+    }
+    return null;
   }
   
   public void a(String paramString)
   {
-    QLog.i("UniformDownloadBPTrans", 1, "[UniformDL] delBPTransItem. url[" + paramString + "]");
-    if (UniformDownloadMgr.a().a() == null) {
-      QLog.e("UniformDownloadBPTrans", 1, "[UniformDL] delBPTransItem failed APP=null. url[" + paramString + "]");
-    }
-    while (UniformDownloadBPTransProxy.a() == null) {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[UniformDL] delBPTransItem. url[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("]");
+    QLog.i("UniformDownloadBPTrans", 1, localStringBuilder.toString());
+    if (UniformDownloadMgr.a().a() == null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[UniformDL] delBPTransItem failed APP=null. url[");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append("]");
+      QLog.e("UniformDownloadBPTrans", 1, localStringBuilder.toString());
       return;
     }
-    UniformDownloadBPTransProxy.a().a(paramString);
+    if (UniformDownloadBPTransProxy.a() != null) {
+      UniformDownloadBPTransProxy.a().a(paramString);
+    }
   }
   
   public void a(String paramString1, String paramString2, long paramLong, String paramString3, String paramString4)
   {
-    UniformDownloadBPTransEntity localUniformDownloadBPTransEntity = new UniformDownloadBPTransEntity();
-    localUniformDownloadBPTransEntity.mUrl = paramString1;
-    localUniformDownloadBPTransEntity.mFileName = paramString2;
-    localUniformDownloadBPTransEntity.mFileSize = paramLong;
-    localUniformDownloadBPTransEntity.mFilePath = paramString4;
-    localUniformDownloadBPTransEntity.mTempPath = paramString3;
+    Object localObject = new UniformDownloadBPTransEntity();
+    ((UniformDownloadBPTransEntity)localObject).mUrl = paramString1;
+    ((UniformDownloadBPTransEntity)localObject).mFileName = paramString2;
+    ((UniformDownloadBPTransEntity)localObject).mFileSize = paramLong;
+    ((UniformDownloadBPTransEntity)localObject).mFilePath = paramString4;
+    ((UniformDownloadBPTransEntity)localObject).mTempPath = paramString3;
     if (UniformDownloadMgr.a().a() == null)
     {
-      QLog.e("UniformDownloadBPTrans", 1, "[UniformDL] addBPTransItem.failed APP=null, filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("[UniformDL] addBPTransItem.failed APP=null, filename[");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append("] fillesize[");
+      ((StringBuilder)localObject).append(paramLong);
+      ((StringBuilder)localObject).append("] tempPath[");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append("] strPath[");
+      ((StringBuilder)localObject).append(paramString4);
+      ((StringBuilder)localObject).append("] url[");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("]");
+      QLog.e("UniformDownloadBPTrans", 1, ((StringBuilder)localObject).toString());
       return;
     }
     if (UniformDownloadBPTransProxy.a() != null) {
-      UniformDownloadBPTransProxy.a().a(localUniformDownloadBPTransEntity);
+      UniformDownloadBPTransProxy.a().a((UniformDownloadBPTransEntity)localObject);
     }
-    QLog.i("UniformDownloadBPTrans", 1, "[UniformDL] addBPTransItem.filename[" + paramString2 + "] fillesize[" + paramLong + "] tempPath[" + paramString3 + "] strPath[" + paramString4 + "] url[" + paramString1 + "]");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[UniformDL] addBPTransItem.filename[");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append("] fillesize[");
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append("] tempPath[");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append("] strPath[");
+    ((StringBuilder)localObject).append(paramString4);
+    ((StringBuilder)localObject).append("] url[");
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("]");
+    QLog.i("UniformDownloadBPTrans", 1, ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.uniformdownload.downloader.UniformDownloadBPTrans
  * JD-Core Version:    0.7.0.1
  */

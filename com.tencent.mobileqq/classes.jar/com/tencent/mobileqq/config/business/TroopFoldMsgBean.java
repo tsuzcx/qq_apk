@@ -41,7 +41,10 @@ public class TroopFoldMsgBean
           if (localTroopFoldMsgBean.b > 40) {
             localTroopFoldMsgBean.b = 40;
           }
-          QLog.d("TogetherEntryConfProcessor", 2, "confBean = " + localTroopFoldMsgBean.toString());
+          paramString = new StringBuilder();
+          paramString.append("confBean = ");
+          paramString.append(localTroopFoldMsgBean.toString());
+          QLog.d("TogetherEntryConfProcessor", 2, paramString.toString());
           return localTroopFoldMsgBean;
         }
       }
@@ -59,13 +62,16 @@ public class TroopFoldMsgBean
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder(50);
-    localStringBuilder.append("openSwitch = ").append(this.jdField_a_of_type_Boolean).append(",sameMsgCount = ").append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("openSwitch = ");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",sameMsgCount = ");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TroopFoldMsgBean
  * JD-Core Version:    0.7.0.1
  */

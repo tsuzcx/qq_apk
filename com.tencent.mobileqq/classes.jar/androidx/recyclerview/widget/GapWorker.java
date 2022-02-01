@@ -21,99 +21,84 @@ final class GapWorker
   private void buildTaskList()
   {
     int m = this.mRecyclerViews.size();
-    int j = 0;
     int i = 0;
     Object localObject;
-    if (j < m)
+    int k;
+    for (int j = 0; i < m; j = k)
     {
-      localObject = (RecyclerView)this.mRecyclerViews.get(j);
-      if (((RecyclerView)localObject).getWindowVisibility() != 0) {
-        break label292;
+      localObject = (RecyclerView)this.mRecyclerViews.get(i);
+      k = j;
+      if (((RecyclerView)localObject).getWindowVisibility() == 0)
+      {
+        ((RecyclerView)localObject).mPrefetchRegistry.collectPrefetchPositionsFromView((RecyclerView)localObject, false);
+        k = j + ((RecyclerView)localObject).mPrefetchRegistry.mCount;
       }
-      ((RecyclerView)localObject).mPrefetchRegistry.collectPrefetchPositionsFromView((RecyclerView)localObject, false);
-      i = ((RecyclerView)localObject).mPrefetchRegistry.mCount + i;
+      i += 1;
     }
-    label272:
-    label292:
-    for (;;)
+    this.mTasks.ensureCapacity(j);
+    j = 0;
+    i = 0;
+    while (j < m)
     {
-      j += 1;
-      break;
-      this.mTasks.ensureCapacity(i);
-      j = 0;
-      i = 0;
-      RecyclerView localRecyclerView;
-      if (j < m)
+      RecyclerView localRecyclerView = (RecyclerView)this.mRecyclerViews.get(j);
+      if (localRecyclerView.getWindowVisibility() == 0)
       {
-        localRecyclerView = (RecyclerView)this.mRecyclerViews.get(j);
-        if (localRecyclerView.getWindowVisibility() == 0) {}
-      }
-      for (;;)
-      {
-        j += 1;
-        break;
         GapWorker.LayoutPrefetchRegistryImpl localLayoutPrefetchRegistryImpl = localRecyclerView.mPrefetchRegistry;
         int n = Math.abs(localLayoutPrefetchRegistryImpl.mPrefetchDx) + Math.abs(localLayoutPrefetchRegistryImpl.mPrefetchDy);
-        int k = 0;
-        if (k < localLayoutPrefetchRegistryImpl.mCount * 2)
+        k = 0;
+        while (k < localLayoutPrefetchRegistryImpl.mCount * 2)
         {
-          label184:
-          int i1;
           if (i >= this.mTasks.size())
           {
             localObject = new GapWorker.Task();
             this.mTasks.add(localObject);
-            i1 = localLayoutPrefetchRegistryImpl.mPrefetchArray[(k + 1)];
-            if (i1 > n) {
-              break label272;
-            }
           }
-          for (boolean bool = true;; bool = false)
+          else
           {
-            ((GapWorker.Task)localObject).immediate = bool;
-            ((GapWorker.Task)localObject).viewVelocity = n;
-            ((GapWorker.Task)localObject).distanceToItem = i1;
-            ((GapWorker.Task)localObject).view = localRecyclerView;
-            ((GapWorker.Task)localObject).position = localLayoutPrefetchRegistryImpl.mPrefetchArray[k];
-            i += 1;
-            k += 2;
-            break;
             localObject = (GapWorker.Task)this.mTasks.get(i);
-            break label184;
           }
-          Collections.sort(this.mTasks, sTaskComparator);
-          return;
+          int i1 = localLayoutPrefetchRegistryImpl.mPrefetchArray[(k + 1)];
+          boolean bool;
+          if (i1 <= n) {
+            bool = true;
+          } else {
+            bool = false;
+          }
+          ((GapWorker.Task)localObject).immediate = bool;
+          ((GapWorker.Task)localObject).viewVelocity = n;
+          ((GapWorker.Task)localObject).distanceToItem = i1;
+          ((GapWorker.Task)localObject).view = localRecyclerView;
+          ((GapWorker.Task)localObject).position = localLayoutPrefetchRegistryImpl.mPrefetchArray[k];
+          i += 1;
+          k += 2;
         }
       }
+      j += 1;
     }
+    Collections.sort(this.mTasks, sTaskComparator);
   }
   
   private void flushTaskWithDeadline(GapWorker.Task paramTask, long paramLong)
   {
-    if (paramTask.immediate) {}
-    for (long l = 9223372036854775807L;; l = paramLong)
-    {
-      paramTask = prefetchPositionWithDeadline(paramTask.view, paramTask.position, l);
-      if ((paramTask != null) && (paramTask.mNestedRecyclerView != null) && (paramTask.isBound()) && (!paramTask.isInvalid())) {
-        prefetchInnerRecyclerViewWithDeadline((RecyclerView)paramTask.mNestedRecyclerView.get(), paramLong);
-      }
-      return;
+    long l;
+    if (paramTask.immediate) {
+      l = 9223372036854775807L;
+    } else {
+      l = paramLong;
+    }
+    paramTask = prefetchPositionWithDeadline(paramTask.view, paramTask.position, l);
+    if ((paramTask != null) && (paramTask.mNestedRecyclerView != null) && (paramTask.isBound()) && (!paramTask.isInvalid())) {
+      prefetchInnerRecyclerViewWithDeadline((RecyclerView)paramTask.mNestedRecyclerView.get(), paramLong);
     }
   }
   
   private void flushTasksWithDeadline(long paramLong)
   {
     int i = 0;
-    for (;;)
+    while (i < this.mTasks.size())
     {
-      GapWorker.Task localTask;
-      if (i < this.mTasks.size())
-      {
-        localTask = (GapWorker.Task)this.mTasks.get(i);
-        if (localTask.view != null) {}
-      }
-      else
-      {
+      GapWorker.Task localTask = (GapWorker.Task)this.mTasks.get(i);
+      if (localTask.view == null) {
         return;
       }
       flushTaskWithDeadline(localTask, paramLong);
@@ -124,121 +109,72 @@ final class GapWorker
   
   static boolean isPrefetchPositionAttached(RecyclerView paramRecyclerView, int paramInt)
   {
-    boolean bool2 = false;
     int j = paramRecyclerView.mChildHelper.getUnfilteredChildCount();
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      boolean bool1 = bool2;
-      if (i < j)
-      {
-        RecyclerView.ViewHolder localViewHolder = RecyclerView.getChildViewHolderInt(paramRecyclerView.mChildHelper.getUnfilteredChildAt(i));
-        if ((localViewHolder.mPosition == paramInt) && (!localViewHolder.isInvalid())) {
-          bool1 = true;
-        }
-      }
-      else
-      {
-        return bool1;
+      RecyclerView.ViewHolder localViewHolder = RecyclerView.getChildViewHolderInt(paramRecyclerView.mChildHelper.getUnfilteredChildAt(i));
+      if ((localViewHolder.mPosition == paramInt) && (!localViewHolder.isInvalid())) {
+        return true;
       }
       i += 1;
     }
+    return false;
   }
   
   private void prefetchInnerRecyclerViewWithDeadline(@Nullable RecyclerView paramRecyclerView, long paramLong)
   {
-    if (paramRecyclerView == null) {}
-    GapWorker.LayoutPrefetchRegistryImpl localLayoutPrefetchRegistryImpl;
-    do
-    {
-      return;
-      if ((paramRecyclerView.mDataSetHasChangedAfterLayout) && (paramRecyclerView.mChildHelper.getUnfilteredChildCount() != 0)) {
-        paramRecyclerView.removeAndRecycleViews();
-      }
-      localLayoutPrefetchRegistryImpl = paramRecyclerView.mPrefetchRegistry;
-      localLayoutPrefetchRegistryImpl.collectPrefetchPositionsFromView(paramRecyclerView, true);
-    } while (localLayoutPrefetchRegistryImpl.mCount == 0);
-    try
-    {
-      TraceCompat.beginSection("RV Nested Prefetch");
-      paramRecyclerView.mState.prepareForNestedPrefetch(paramRecyclerView.mAdapter);
-      int i = 0;
-      while (i < localLayoutPrefetchRegistryImpl.mCount * 2)
-      {
-        prefetchPositionWithDeadline(paramRecyclerView, localLayoutPrefetchRegistryImpl.mPrefetchArray[i], paramLong);
-        i += 2;
-      }
+    if (paramRecyclerView == null) {
       return;
     }
-    finally
-    {
-      TraceCompat.endSection();
+    if ((paramRecyclerView.mDataSetHasChangedAfterLayout) && (paramRecyclerView.mChildHelper.getUnfilteredChildCount() != 0)) {
+      paramRecyclerView.removeAndRecycleViews();
+    }
+    GapWorker.LayoutPrefetchRegistryImpl localLayoutPrefetchRegistryImpl = paramRecyclerView.mPrefetchRegistry;
+    localLayoutPrefetchRegistryImpl.collectPrefetchPositionsFromView(paramRecyclerView, true);
+    if (localLayoutPrefetchRegistryImpl.mCount != 0) {
+      try
+      {
+        TraceCompat.beginSection("RV Nested Prefetch");
+        paramRecyclerView.mState.prepareForNestedPrefetch(paramRecyclerView.mAdapter);
+        int i = 0;
+        while (i < localLayoutPrefetchRegistryImpl.mCount * 2)
+        {
+          prefetchPositionWithDeadline(paramRecyclerView, localLayoutPrefetchRegistryImpl.mPrefetchArray[i], paramLong);
+          i += 2;
+        }
+        return;
+      }
+      finally
+      {
+        TraceCompat.endSection();
+      }
     }
   }
   
-  /* Error */
   private RecyclerView.ViewHolder prefetchPositionWithDeadline(RecyclerView paramRecyclerView, int paramInt, long paramLong)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: iload_2
-    //   2: invokestatic 215	androidx/recyclerview/widget/GapWorker:isPrefetchPositionAttached	(Landroidx/recyclerview/widget/RecyclerView;I)Z
-    //   5: ifeq +5 -> 10
-    //   8: aconst_null
-    //   9: areturn
-    //   10: aload_1
-    //   11: getfield 219	androidx/recyclerview/widget/RecyclerView:mRecycler	Landroidx/recyclerview/widget/RecyclerView$Recycler;
-    //   14: astore 5
-    //   16: aload_1
-    //   17: invokevirtual 222	androidx/recyclerview/widget/RecyclerView:onEnterLayoutOrScroll	()V
-    //   20: aload 5
-    //   22: iload_2
-    //   23: iconst_0
-    //   24: lload_3
-    //   25: invokevirtual 228	androidx/recyclerview/widget/RecyclerView$Recycler:tryGetViewHolderForPositionByDeadline	(IZJ)Landroidx/recyclerview/widget/RecyclerView$ViewHolder;
-    //   28: astore 6
-    //   30: aload 6
-    //   32: ifnull +29 -> 61
-    //   35: aload 6
-    //   37: invokevirtual 139	androidx/recyclerview/widget/RecyclerView$ViewHolder:isBound	()Z
-    //   40: ifeq +29 -> 69
-    //   43: aload 6
-    //   45: invokevirtual 142	androidx/recyclerview/widget/RecyclerView$ViewHolder:isInvalid	()Z
-    //   48: ifne +21 -> 69
-    //   51: aload 5
-    //   53: aload 6
-    //   55: getfield 232	androidx/recyclerview/widget/RecyclerView$ViewHolder:itemView	Landroid/view/View;
-    //   58: invokevirtual 236	androidx/recyclerview/widget/RecyclerView$Recycler:recycleView	(Landroid/view/View;)V
-    //   61: aload_1
-    //   62: iconst_0
-    //   63: invokevirtual 240	androidx/recyclerview/widget/RecyclerView:onExitLayoutOrScroll	(Z)V
-    //   66: aload 6
-    //   68: areturn
-    //   69: aload 5
-    //   71: aload 6
-    //   73: iconst_0
-    //   74: invokevirtual 244	androidx/recyclerview/widget/RecyclerView$Recycler:addViewHolderToRecycledViewPool	(Landroidx/recyclerview/widget/RecyclerView$ViewHolder;Z)V
-    //   77: goto -16 -> 61
-    //   80: astore 5
-    //   82: aload_1
-    //   83: iconst_0
-    //   84: invokevirtual 240	androidx/recyclerview/widget/RecyclerView:onExitLayoutOrScroll	(Z)V
-    //   87: aload 5
-    //   89: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	90	0	this	GapWorker
-    //   0	90	1	paramRecyclerView	RecyclerView
-    //   0	90	2	paramInt	int
-    //   0	90	3	paramLong	long
-    //   14	56	5	localRecycler	RecyclerView.Recycler
-    //   80	8	5	localObject	Object
-    //   28	44	6	localViewHolder	RecyclerView.ViewHolder
-    // Exception table:
-    //   from	to	target	type
-    //   16	30	80	finally
-    //   35	61	80	finally
-    //   69	77	80	finally
+    if (isPrefetchPositionAttached(paramRecyclerView, paramInt)) {
+      return null;
+    }
+    RecyclerView.Recycler localRecycler = paramRecyclerView.mRecycler;
+    try
+    {
+      paramRecyclerView.onEnterLayoutOrScroll();
+      RecyclerView.ViewHolder localViewHolder = localRecycler.tryGetViewHolderForPositionByDeadline(paramInt, false, paramLong);
+      if (localViewHolder != null) {
+        if ((localViewHolder.isBound()) && (!localViewHolder.isInvalid())) {
+          localRecycler.recycleView(localViewHolder.itemView);
+        } else {
+          localRecycler.addViewHolderToRecycledViewPool(localViewHolder, false);
+        }
+      }
+      return localViewHolder;
+    }
+    finally
+    {
+      paramRecyclerView.onExitLayoutOrScroll(false);
+    }
   }
   
   public void add(RecyclerView paramRecyclerView)
@@ -269,47 +205,61 @@ final class GapWorker
   
   public void run()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        TraceCompat.beginSection("RV Prefetch");
-        boolean bool = this.mRecyclerViews.isEmpty();
-        if (bool) {
-          return;
-        }
-        int j = this.mRecyclerViews.size();
-        int i = 0;
-        long l = 0L;
-        if (i < j)
-        {
-          RecyclerView localRecyclerView = (RecyclerView)this.mRecyclerViews.get(i);
-          if (localRecyclerView.getWindowVisibility() == 0)
-          {
-            l = Math.max(localRecyclerView.getDrawingTime(), l);
-            i += 1;
-          }
-        }
-        else
-        {
-          if (l == 0L) {
-            return;
-          }
-          prefetch(TimeUnit.MILLISECONDS.toNanos(l) + this.mFrameIntervalNs);
-          return;
-        }
+      TraceCompat.beginSection("RV Prefetch");
+      boolean bool = this.mRecyclerViews.isEmpty();
+      if (!bool) {
+        break label27;
       }
-      finally
+    }
+    finally
+    {
+      for (;;)
       {
+        label27:
+        int j;
+        int i;
+        RecyclerView localRecyclerView;
+        long l2;
         this.mPostTimeNs = 0L;
         TraceCompat.endSection();
+        for (;;)
+        {
+          throw localObject;
+        }
+        label130:
+        i += 1;
+        long l1 = l2;
+        continue;
+        if (l1 != 0L) {}
+      }
+    }
+    this.mPostTimeNs = 0L;
+    TraceCompat.endSection();
+    return;
+    j = this.mRecyclerViews.size();
+    i = 0;
+    l1 = 0L;
+    if (i < j)
+    {
+      localRecyclerView = (RecyclerView)this.mRecyclerViews.get(i);
+      l2 = l1;
+      if (localRecyclerView.getWindowVisibility() == 0)
+      {
+        l2 = Math.max(localRecyclerView.getDrawingTime(), l1);
+        break label130;
+        prefetch(TimeUnit.MILLISECONDS.toNanos(l1) + this.mFrameIntervalNs);
+        this.mPostTimeNs = 0L;
+        TraceCompat.endSection();
+        return;
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.GapWorker
  * JD-Core Version:    0.7.0.1
  */

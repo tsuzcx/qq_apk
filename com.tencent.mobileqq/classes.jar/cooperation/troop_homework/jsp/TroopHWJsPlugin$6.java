@@ -22,35 +22,36 @@ class TroopHWJsPlugin$6
     if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (!TextUtils.isEmpty(this.a)) && (!TextUtils.isEmpty(this.this$0.h)))
     {
       localObject1 = TroopHomeworkHelper.a(this.this$0.h, this.a, (String)localObject2, (String)localObject1, 1234567L);
-      if (localObject1 == null) {}
-    }
-    try
-    {
-      localObject1 = new JSONObject((String)localObject1);
-      if (((JSONObject)localObject1).optInt("retcode", -1) == 0)
-      {
-        localObject1 = ((JSONObject)localObject1).optJSONObject("data");
-        if (localObject1 != null)
+      if (localObject1 != null) {
+        try
         {
-          localObject1 = ((JSONObject)localObject1).optString("url");
-          localObject2 = new JSONObject();
-          ((JSONObject)localObject2).put("id", this.this$0.d - 1);
-          ((JSONObject)localObject2).put("state", "uploaded");
-          ((JSONObject)localObject2).put("url", localObject1);
-          this.this$0.callJs(this.this$0.b, new String[] { ((JSONObject)localObject2).toString() });
+          localObject1 = new JSONObject((String)localObject1);
+          if (((JSONObject)localObject1).optInt("retcode", -1) == 0)
+          {
+            localObject1 = ((JSONObject)localObject1).optJSONObject("data");
+            if (localObject1 != null)
+            {
+              localObject1 = ((JSONObject)localObject1).optString("url");
+              localObject2 = new JSONObject();
+              ((JSONObject)localObject2).put("id", this.this$0.d - 1);
+              ((JSONObject)localObject2).put("state", "uploaded");
+              ((JSONObject)localObject2).put("url", localObject1);
+              this.this$0.callJs(this.this$0.b, new String[] { ((JSONObject)localObject2).toString() });
+              return;
+            }
+          }
+        }
+        catch (JSONException localJSONException)
+        {
+          localJSONException.printStackTrace();
         }
       }
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      localJSONException.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.troop_homework.jsp.TroopHWJsPlugin.6
  * JD-Core Version:    0.7.0.1
  */

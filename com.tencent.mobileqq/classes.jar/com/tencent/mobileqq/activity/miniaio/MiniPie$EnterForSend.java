@@ -22,54 +22,45 @@ class MiniPie$EnterForSend
   
   public boolean onKey(View paramView, int paramInt, KeyEvent paramKeyEvent)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramKeyEvent.getKeyCode() == 67)
+    if ((paramKeyEvent.getKeyCode() == 67) && (paramKeyEvent.getAction() == 0))
     {
-      bool1 = bool2;
-      if (paramKeyEvent.getAction() == 0)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.i(this.a.jdField_a_of_type_JavaLangString, 2, "on delete, start: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() + ", end: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() + ", span: " + this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131374320));
-        }
-        if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() != 0) || (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() != 0)) {
-          break label243;
-        }
-        bool1 = bool2;
-        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131374320) != null)
+        paramKeyEvent = this.a.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("on delete, start: ");
+        localStringBuilder.append(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart());
+        localStringBuilder.append(", end: ");
+        localStringBuilder.append(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd());
+        localStringBuilder.append(", span: ");
+        localStringBuilder.append(this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373876));
+        QLog.i(paramKeyEvent, 2, localStringBuilder.toString());
+      }
+      if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionStart() == 0) && (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getSelectionEnd() == 0))
+      {
+        if (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373876) != null)
         {
           paramKeyEvent = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getCompoundDrawables();
           this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setCompoundDrawables(paramKeyEvent[0], null, paramKeyEvent[2], paramKeyEvent[3]);
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131374320, null);
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setTag(2131373876, null);
           this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setSelection(0);
-          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(AIOUtils.a(36.0F, paramView.getResources()));
+          this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(AIOUtils.b(36.0F, paramView.getResources()));
           this.a.jdField_a_of_type_ComTencentMobileqqDataMessageForReplyText$SourceMsgInfo = null;
-          bool1 = true;
+          return true;
         }
       }
-    }
-    label243:
-    do
-    {
-      do
+      else if ((this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131373876) != null) && (Build.VERSION.SDK_INT >= 21) && (AIOUtils.b(36.0F, paramView.getResources()) == this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMinHeight()))
       {
-        do
-        {
-          return bool1;
-          bool1 = bool2;
-        } while (this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getTag(2131374320) == null);
-        bool1 = bool2;
-      } while (Build.VERSION.SDK_INT < 21);
-      bool1 = bool2;
-    } while (AIOUtils.a(36.0F, paramView.getResources()) != this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMinHeight());
-    paramInt = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMeasuredHeight();
-    this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(paramInt);
+        paramInt = this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.getMeasuredHeight();
+        this.a.jdField_a_of_type_ComTencentWidgetXEditTextEx.setMinHeight(paramInt);
+      }
+    }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.miniaio.MiniPie.EnterForSend
  * JD-Core Version:    0.7.0.1
  */

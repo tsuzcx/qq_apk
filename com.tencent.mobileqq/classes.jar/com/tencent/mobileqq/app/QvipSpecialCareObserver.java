@@ -9,20 +9,20 @@ public class QvipSpecialCareObserver
   
   public void onUpdate(int paramInt, boolean paramBoolean, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 1000)
     {
-    default: 
-      return;
-    case 1000: 
-      a(paramObject);
+      if (paramInt != 1001) {
+        return;
+      }
+      b(paramObject);
       return;
     }
-    b(paramObject);
+    a(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.QvipSpecialCareObserver
  * JD-Core Version:    0.7.0.1
  */

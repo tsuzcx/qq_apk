@@ -41,40 +41,37 @@ public class TkdConstraintWidthLayout
     return new TkdConstraintWidthLayout.LayoutParams(this, paramLayoutParams);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
-    Object localObject1 = null;
     int i = getChildCount();
-    paramInt2 = 0;
     paramInt1 = 0;
-    while (paramInt2 < i)
+    Object localObject1 = null;
+    paramInt2 = 0;
+    while (paramInt1 < i)
     {
-      View localView = getChildAt(paramInt2);
+      View localView = getChildAt(paramInt1);
       TkdConstraintWidthLayout.LayoutParams localLayoutParams = (TkdConstraintWidthLayout.LayoutParams)localView.getLayoutParams();
       Object localObject2 = localObject1;
-      if (localLayoutParams.constrainedWidth)
-      {
-        if (localObject1 != null) {
+      if (localLayoutParams.constrainedWidth) {
+        if (localObject1 == null) {
+          localObject2 = localView;
+        } else {
           throw new IllegalStateException("count of constrained children must be less than 1");
         }
-        localObject2 = localView;
       }
-      int j = localView.getMeasuredWidth();
-      int k = localLayoutParams.leftMargin;
-      int m = localLayoutParams.rightMargin;
-      paramInt2 += 1;
-      paramInt1 += m + (j + k);
+      paramInt2 += localView.getMeasuredWidth() + localLayoutParams.leftMargin + localLayoutParams.rightMargin;
+      paramInt1 += 1;
       localObject1 = localObject2;
     }
-    if ((paramInt1 > getMeasuredWidth()) && (localObject1 != null)) {
-      localObject1.measure(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth() - (paramInt1 - localObject1.getMeasuredWidth()), 1073741824), View.MeasureSpec.makeMeasureSpec(localObject1.getMeasuredHeight(), 1073741824));
+    if ((paramInt2 > getMeasuredWidth()) && (localObject1 != null)) {
+      localObject1.measure(View.MeasureSpec.makeMeasureSpec(getMeasuredWidth() - (paramInt2 - localObject1.getMeasuredWidth()), 1073741824), View.MeasureSpec.makeMeasureSpec(localObject1.getMeasuredHeight(), 1073741824));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.publisher.qq.widget.TkdConstraintWidthLayout
  * JD-Core Version:    0.7.0.1
  */

@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.minigame.publicaccount.view;
 
 import android.content.Context;
-import android.support.v4.view.ViewPager;
 import android.util.AttributeSet;
 import android.view.MotionEvent;
 import android.view.View.MeasureSpec;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.ViewPager;
 import com.tencent.qphone.base.util.QLog;
 
 public class MiniGamePubViewpager
@@ -26,16 +26,18 @@ public class MiniGamePubViewpager
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.parent != null) {
-      this.parent.requestDisallowInterceptTouchEvent(true);
+    ViewGroup localViewGroup = this.parent;
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(true);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
   
   public boolean onInterceptTouchEvent(MotionEvent paramMotionEvent)
   {
-    if (this.parent != null) {
-      this.parent.requestDisallowInterceptTouchEvent(true);
+    ViewGroup localViewGroup = this.parent;
+    if (localViewGroup != null) {
+      localViewGroup.requestDisallowInterceptTouchEvent(true);
     }
     return super.onInterceptTouchEvent(paramMotionEvent);
   }
@@ -52,7 +54,10 @@ public class MiniGamePubViewpager
     }
     catch (Throwable paramMotionEvent)
     {
-      QLog.d("QQGamePubViewpager", 1, "QQGamePubViewpager onTouchEvent throwable:" + paramMotionEvent.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("QQGamePubViewpager onTouchEvent throwable:");
+      localStringBuilder.append(paramMotionEvent.getMessage());
+      QLog.d("QQGamePubViewpager", 1, localStringBuilder.toString());
     }
     return true;
   }
@@ -70,7 +75,7 @@ public class MiniGamePubViewpager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.view.MiniGamePubViewpager
  * JD-Core Version:    0.7.0.1
  */

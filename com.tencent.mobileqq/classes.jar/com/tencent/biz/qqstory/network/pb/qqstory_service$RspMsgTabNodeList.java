@@ -21,14 +21,15 @@ public final class qqstory_service$RspMsgTabNodeList
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48 }, new String[] { "result", "list_seq", "next_cookie", "is_end", "node_list", "is_animate" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), null, Integer.valueOf(0) }, RspMsgTabNodeList.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 42, 48 }, new String[] { "result", "list_seq", "next_cookie", "is_end", "node_list", "is_animate" }, new Object[] { null, localByteStringMicro1, localByteStringMicro2, localInteger, null, localInteger }, RspMsgTabNodeList.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.RspMsgTabNodeList
  * JD-Core Version:    0.7.0.1
  */

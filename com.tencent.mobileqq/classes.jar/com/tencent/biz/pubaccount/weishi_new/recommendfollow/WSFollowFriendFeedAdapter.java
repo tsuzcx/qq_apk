@@ -20,54 +20,61 @@ public class WSFollowFriendFeedAdapter
     this.a = paramWSFollowAdapter;
   }
   
-  public int a(int paramInt)
-  {
-    return 0;
-  }
-  
   public Activity a()
   {
-    if (this.a != null) {
-      return this.a.a();
+    WSFollowAdapter localWSFollowAdapter = this.a;
+    if (localWSFollowAdapter != null) {
+      return localWSFollowAdapter.a();
     }
     return null;
-  }
-  
-  public BaseViewHolder<WSFriendItemData> a(ViewGroup paramViewGroup, int paramInt)
-  {
-    return WSFollowFriendFeedHolder.a(paramViewGroup, this);
   }
   
   public void a(BaseViewHolder<WSFriendItemData> paramBaseViewHolder)
   {
     super.onViewAttachedToWindow(paramBaseViewHolder);
-    if (((paramBaseViewHolder instanceof WSFollowFriendFeedHolder)) && (this.a != null) && (this.a.a().getUserVisibleHint()) && (this.a.a().isResumed())) {
-      ((WSFollowFriendFeedHolder)paramBaseViewHolder).b();
+    boolean bool = paramBaseViewHolder instanceof WSFollowFriendFeedHolder;
+    if (bool)
+    {
+      WSFollowAdapter localWSFollowAdapter = this.a;
+      if ((localWSFollowAdapter != null) && (localWSFollowAdapter.a().getUserVisibleHint()) && (this.a.a().isResumed())) {
+        ((WSFollowFriendFeedHolder)paramBaseViewHolder).b();
+      }
     }
-    if ((paramBaseViewHolder instanceof WSFollowFriendFeedHolder)) {
+    if (bool) {
       ((WSFollowFriendFeedHolder)paramBaseViewHolder).a();
     }
-  }
-  
-  public void a(BaseViewHolder<WSFriendItemData> paramBaseViewHolder, int paramInt)
-  {
-    WSFriendItemData localWSFriendItemData = (WSFriendItemData)a(paramInt);
-    if (localWSFriendItemData == null) {}
-    while (!(paramBaseViewHolder instanceof WSFollowFriendFeedHolder)) {
-      return;
-    }
-    ((WSFollowFriendFeedHolder)paramBaseViewHolder).a(localWSFriendItemData, paramInt);
   }
   
   public void b(BaseViewHolder<WSFriendItemData> paramBaseViewHolder)
   {
     super.onViewDetachedFromWindow(paramBaseViewHolder);
-    paramBaseViewHolder.h();
+    paramBaseViewHolder.onViewDetachedFromWindow();
+  }
+  
+  public int getCustomItemViewType(int paramInt)
+  {
+    return 0;
+  }
+  
+  public void onBindCustomViewHolder(BaseViewHolder<WSFriendItemData> paramBaseViewHolder, int paramInt)
+  {
+    WSFriendItemData localWSFriendItemData = (WSFriendItemData)getItem(paramInt);
+    if (localWSFriendItemData == null) {
+      return;
+    }
+    if ((paramBaseViewHolder instanceof WSFollowFriendFeedHolder)) {
+      ((WSFollowFriendFeedHolder)paramBaseViewHolder).a(localWSFriendItemData, paramInt);
+    }
+  }
+  
+  public BaseViewHolder<WSFriendItemData> onCreateCustomViewHolder(ViewGroup paramViewGroup, int paramInt)
+  {
+    return WSFollowFriendFeedHolder.a(paramViewGroup, this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.recommendfollow.WSFollowFriendFeedAdapter
  * JD-Core Version:    0.7.0.1
  */

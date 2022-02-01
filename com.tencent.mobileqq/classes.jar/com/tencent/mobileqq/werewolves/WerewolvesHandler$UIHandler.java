@@ -24,35 +24,29 @@ public class WerewolvesHandler$UIHandler
     WeakReference localWeakReference = (WeakReference)WerewolvesHandler.a.remove(localObject);
     if ((localWeakReference != null) && (localWeakReference.get() != null))
     {
-      if (!(((TextView)localWeakReference.get()).getTag() instanceof String[])) {
-        break label142;
-      }
-      paramMessage = (String[])((TextView)localWeakReference.get()).getTag();
-    }
-    for (;;)
-    {
-      if ((paramMessage != null) && (paramMessage.length == 2) && (paramMessage[0].equals(localObject))) {}
-      try
-      {
-        ((TextView)localWeakReference.get()).setText(String.format(paramMessage[1], new Object[] { localCharSequence }));
-        ((TextView)localWeakReference.get()).setText(localCharSequence);
-        return;
-        label142:
+      if ((((TextView)localWeakReference.get()).getTag() instanceof String[])) {
+        paramMessage = (String[])((TextView)localWeakReference.get()).getTag();
+      } else {
         paramMessage = null;
       }
-      catch (Exception paramMessage)
-      {
-        for (;;)
-        {
-          ((TextView)localWeakReference.get()).setText(localCharSequence);
-        }
-      }
+      if ((paramMessage == null) || (paramMessage.length != 2) || (!paramMessage[0].equals(localObject))) {}
     }
+    try
+    {
+      ((TextView)localWeakReference.get()).setText(String.format(paramMessage[1], new Object[] { localCharSequence }));
+    }
+    catch (Exception paramMessage)
+    {
+      label137:
+      break label137;
+    }
+    ((TextView)localWeakReference.get()).setText(localCharSequence);
+    ((TextView)localWeakReference.get()).setText(localCharSequence);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.werewolves.WerewolvesHandler.UIHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -1,25 +1,22 @@
 package com.tencent.mobileqq.filemanager.util;
 
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.mobileqq.vip.CUKingCardHelper.CUKingDialogListener;
 
 final class QFileUtils$1
-  implements View.OnClickListener
+  implements CUKingCardHelper.CUKingDialogListener
 {
-  QFileUtils$1(FileManagerUtil.TipsClickedInterface paramTipsClickedInterface) {}
+  QFileUtils$1(IFileWifiCheckCallback paramIFileWifiCheckCallback) {}
   
-  public void onClick(View paramView)
+  public void callback(int paramInt)
   {
-    if (this.a != null) {
-      this.a.onClick(paramView);
+    if ((paramInt == 1) || (paramInt == 2)) {
+      this.a.a();
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.QFileUtils.1
  * JD-Core Version:    0.7.0.1
  */

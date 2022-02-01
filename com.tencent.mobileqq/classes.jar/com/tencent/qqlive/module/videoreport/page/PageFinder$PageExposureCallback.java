@@ -39,35 +39,41 @@ class PageFinder$PageExposureCallback
   public void onExposed(View paramView, DetectionData paramDetectionData, @NonNull AreaInfo paramAreaInfo)
   {
     double d = VideoReportInner.getInstance().getConfiguration().getPageExposureMinRate();
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("PageFinder", "onExposed: view = " + paramView + ", exposureInfo = " + paramAreaInfo + ", exposureMinRate = " + d);
-    }
-    if (paramAreaInfo.exposureRate < Math.max(d, 0.0D)) {}
-    do
+    if (VideoReportInner.getInstance().isDebugMode())
     {
+      paramDetectionData = new StringBuilder();
+      paramDetectionData.append("onExposed: view = ");
+      paramDetectionData.append(paramView);
+      paramDetectionData.append(", exposureInfo = ");
+      paramDetectionData.append(paramAreaInfo);
+      paramDetectionData.append(", exposureMinRate = ");
+      paramDetectionData.append(d);
+      Log.d("PageFinder", paramDetectionData.toString());
+    }
+    if (paramAreaInfo.exposureRate < Math.max(d, 0.0D)) {
       return;
-      paramView = PageFinder.findRelatedPage(paramView);
-    } while (paramView == null);
-    if (this.tailPageInfo == null) {
+    }
+    paramView = PageFinder.findRelatedPage(paramView);
+    if (paramView == null) {
+      return;
+    }
+    paramDetectionData = this.tailPageInfo;
+    if (paramDetectionData == null)
+    {
       this.tailPageInfo = paramView;
     }
-    for (;;)
+    else if (!this.mShouldTerminate)
     {
-      if (this.targetPageInfo == null)
-      {
-        this.targetPageInfo = paramView;
-        this.pageAndParentViewSet = UIUtils.getParentViews(paramView.getPageView());
-      }
-      if (!PageFinder.access$100(paramView)) {
-        break;
-      }
+      paramDetectionData.setParentPage(paramView);
+      this.tailPageInfo = paramView;
+    }
+    if (this.targetPageInfo == null)
+    {
+      this.targetPageInfo = paramView;
+      this.pageAndParentViewSet = UIUtils.getParentViews(paramView.getPageView());
+    }
+    if (PageFinder.access$100(paramView)) {
       this.mShouldTerminate = true;
-      return;
-      if (!this.mShouldTerminate)
-      {
-        this.tailPageInfo.setParentPage(paramView);
-        this.tailPageInfo = paramView;
-      }
     }
   }
   
@@ -75,7 +81,7 @@ class PageFinder$PageExposureCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.page.PageFinder.PageExposureCallback
  * JD-Core Version:    0.7.0.1
  */

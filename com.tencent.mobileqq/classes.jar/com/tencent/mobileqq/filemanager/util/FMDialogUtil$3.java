@@ -14,22 +14,24 @@ final class FMDialogUtil$3
   
   public void run()
   {
-    if (((this.jdField_a_of_type_AndroidContentContext instanceof Activity)) && (((Activity)this.jdField_a_of_type_AndroidContentContext).isFinishing())) {}
-    do
-    {
+    Object localObject = this.jdField_a_of_type_AndroidContentContext;
+    if (((localObject instanceof Activity)) && (((Activity)localObject).isFinishing())) {
       return;
-      if ((this.jdField_a_of_type_JavaLangCharSequence instanceof String))
-      {
-        DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, (String)this.jdField_a_of_type_JavaLangCharSequence, 2131692335, 2131692339, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
-        return;
-      }
-    } while (!(this.jdField_a_of_type_JavaLangCharSequence instanceof SpannableString));
-    DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaLangCharSequence, 2131692335, 2131692339, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
+    }
+    localObject = this.jdField_a_of_type_JavaLangCharSequence;
+    if ((localObject instanceof String))
+    {
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, (String)localObject, 2131692263, 2131692267, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
+      return;
+    }
+    if ((localObject instanceof SpannableString)) {
+      DialogUtil.a(this.jdField_a_of_type_AndroidContentContext, 230, this.jdField_a_of_type_JavaLangString, (CharSequence)localObject, 2131692263, 2131692267, this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener, this.b).show();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.util.FMDialogUtil.3
  * JD-Core Version:    0.7.0.1
  */

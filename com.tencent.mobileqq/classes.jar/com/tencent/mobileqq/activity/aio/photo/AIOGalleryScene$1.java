@@ -12,10 +12,10 @@ class AIOGalleryScene$1
   {
     try
     {
-      this.a.a(true);
+      this.a.c(true);
       this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress.jdField_a_of_type_Long, this.a.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoAIOGalleryScene$RawPhotoProgress.jdField_a_of_type_Int, 20);
-      AIOGalleryScene.a(this.a).b(true);
-      AIOGalleryScene.b(this.a).a(true);
+      AIOGalleryScene.a(this.a).enableDoubleTap(true);
+      AIOGalleryScene.b(this.a).enableScaleGesture(true);
       return;
     }
     catch (Exception localException) {}
@@ -23,13 +23,13 @@ class AIOGalleryScene$1
   
   public void b()
   {
-    this.a.a(false);
-    this.a.c(true);
+    this.a.c(false);
+    this.a.d(true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOGalleryScene.1
  * JD-Core Version:    0.7.0.1
  */

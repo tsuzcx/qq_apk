@@ -15,7 +15,7 @@ public class MediaQueryHelper
 {
   public static final int DEFAULT_EACH_COUNT = 300;
   private static final String[] PERMS_STORAGE = { "android.permission.WRITE_EXTERNAL_STORAGE", "android.permission.READ_EXTERNAL_STORAGE" };
-  public static final String TAG = "MediaQuery";
+  public static final String TAG = "QQAlbum";
   private static boolean sHasStorageReadAndWritePermission;
   public int cursorsCount = -1;
   public int cursorsVideoCount = -1;
@@ -36,9 +36,10 @@ public class MediaQueryHelper
   private void init(List<ICursor> paramList, int paramInt1, int paramInt2)
   {
     this.mCursors = paramList;
-    if (this.mCursors != null)
+    paramList = this.mCursors;
+    if (paramList != null)
     {
-      paramList = this.mCursors.iterator();
+      paramList = paramList.iterator();
       while (paramList.hasNext()) {
         ((ICursor)paramList.next()).setListener(this.mListener);
       }
@@ -63,30 +64,31 @@ public class MediaQueryHelper
   {
     boolean bool2 = sHasStorageReadAndWritePermission;
     boolean bool1 = bool2;
-    if (!bool2)
-    {
-      if (Build.VERSION.SDK_INT < 23) {
-        break label62;
-      }
-      bool1 = bool2;
-      if (paramContext != null)
+    if (!bool2) {
+      if (Build.VERSION.SDK_INT >= 23)
       {
         bool1 = bool2;
-        if (paramContext.checkSelfPermission(PERMS_STORAGE[0]) == 0)
+        if (paramContext != null)
         {
           bool1 = bool2;
-          if (paramContext.checkSelfPermission(PERMS_STORAGE[1]) == 0)
+          if (paramContext.checkSelfPermission(PERMS_STORAGE[0]) == 0)
           {
-            sHasStorageReadAndWritePermission = true;
-            bool1 = sHasStorageReadAndWritePermission;
+            bool1 = bool2;
+            if (paramContext.checkSelfPermission(PERMS_STORAGE[1]) == 0)
+            {
+              sHasStorageReadAndWritePermission = true;
+              return sHasStorageReadAndWritePermission;
+            }
           }
         }
       }
+      else
+      {
+        sHasStorageReadAndWritePermission = true;
+        bool1 = sHasStorageReadAndWritePermission;
+      }
     }
     return bool1;
-    label62:
-    sHasStorageReadAndWritePermission = true;
-    return sHasStorageReadAndWritePermission;
   }
   
   public void close()
@@ -99,7 +101,8 @@ public class MediaQueryHelper
   
   public LocalMediaInfo getFirstInfo()
   {
-    if ((this.mediaList != null) && (!this.mediaList.isEmpty())) {
+    List localList = this.mediaList;
+    if ((localList != null) && (!localList.isEmpty())) {
       return (LocalMediaInfo)this.mediaList.get(0);
     }
     return null;
@@ -119,56 +122,57 @@ public class MediaQueryHelper
   
   public boolean queryNext(int paramInt)
   {
-    if (this.isQuerying.compareAndSet(false, true)) {}
-    try
-    {
-      if (this.mTraversalDone) {
-        break label61;
-      }
-      i = 0;
-      j = 0;
-    }
-    catch (StaleDataException localStaleDataException)
-    {
-      for (;;)
+    if (this.isQuerying.compareAndSet(false, true)) {
+      try
       {
-        label61:
-        label74:
-        int m;
-        if (QLog.isColorLevel()) {
-          QLog.w("MediaQuery", 2, "queryNext():" + localStaleDataException.getMessage());
+        if (!this.mTraversalDone)
+        {
+          int j = 0;
+          int i = 0;
+          while (checkQueryCondition(paramInt, j, i))
+          {
+            if ((this.mLimit > 0) && (this.mediaList.size() >= this.mLimit))
+            {
+              this.mTraversalDone = true;
+              break;
+            }
+            MediaQueryHelper.MergeSlot localMergeSlot = (MediaQueryHelper.MergeSlot)this.mQueue.poll();
+            int m = i + 1;
+            if (localMergeSlot == null)
+            {
+              this.mTraversalDone = true;
+              break;
+            }
+            int k = j;
+            if (localMergeSlot.need)
+            {
+              k = j + 1;
+              this.mediaList.add(localMergeSlot.mImage);
+            }
+            j = k;
+            i = m;
+            if (localMergeSlot.next())
+            {
+              this.mQueue.add(localMergeSlot);
+              j = k;
+              i = m;
+            }
+          }
+        }
+        StringBuilder localStringBuilder;
+        return this.mTraversalDone;
+      }
+      catch (StaleDataException localStaleDataException)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("queryNext():");
+          localStringBuilder.append(localStaleDataException.getMessage());
+          QLog.w("QQAlbum", 2, localStringBuilder.toString());
         }
         this.mTraversalDone = true;
-        continue;
-        int k = j;
-        if (localStaleDataException.need)
-        {
-          k = j + 1;
-          this.mediaList.add(localStaleDataException.mImage);
-        }
-        int j = k;
-        int i = m;
-        if (localStaleDataException.next())
-        {
-          this.mQueue.add(localStaleDataException);
-          j = k;
-          i = m;
-        }
-      }
-    }
-    if (checkQueryCondition(paramInt, j, i)) {
-      if ((this.mLimit <= 0) || (this.mediaList.size() < this.mLimit)) {
-        break label74;
-      }
-    }
-    for (this.mTraversalDone = true;; this.mTraversalDone = true)
-    {
-      this.isQuerying.set(false);
-      return this.mTraversalDone;
-      MediaQueryHelper.MergeSlot localMergeSlot = (MediaQueryHelper.MergeSlot)this.mQueue.poll();
-      m = i + 1;
-      if (localMergeSlot != null) {
-        break;
+        this.isQuerying.set(false);
       }
     }
   }
@@ -176,11 +180,12 @@ public class MediaQueryHelper
   public void setListener(ICursor.FilterListener paramFilterListener)
   {
     this.mListener = paramFilterListener;
-    if (this.mCursors != null)
+    Object localObject = this.mCursors;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mCursors.iterator();
-      while (localIterator.hasNext()) {
-        ((ICursor)localIterator.next()).setListener(paramFilterListener);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((ICursor)((Iterator)localObject).next()).setListener(paramFilterListener);
       }
     }
   }
@@ -206,7 +211,7 @@ public class MediaQueryHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.album.querymedia.MediaQueryHelper
  * JD-Core Version:    0.7.0.1
  */

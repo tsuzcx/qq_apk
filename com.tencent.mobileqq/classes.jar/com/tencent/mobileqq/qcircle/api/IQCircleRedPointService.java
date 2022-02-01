@@ -38,10 +38,12 @@ public abstract interface IQCircleRedPointService
   public abstract void setOuterEntranceRedPointReaded(String paramString, List<Integer> paramList);
   
   public abstract void setSmallRedPointReaded(String paramString);
+  
+  public abstract void updateRedPoint();
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.IQCircleRedPointService
  * JD-Core Version:    0.7.0.1
  */

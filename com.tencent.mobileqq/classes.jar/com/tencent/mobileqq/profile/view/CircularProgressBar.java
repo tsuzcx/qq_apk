@@ -49,10 +49,11 @@ public class CircularProgressBar
   private void b()
   {
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(0.0F, 0.0F, getLayoutParams().width, getLayoutParams().height);
-    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(this.jdField_b_of_type_Int, this.jdField_b_of_type_Int, getLayoutParams().width - this.jdField_b_of_type_Int, getLayoutParams().height - this.jdField_b_of_type_Int);
+    int i = this.jdField_b_of_type_Int;
+    this.jdField_b_of_type_AndroidGraphicsRectF = new RectF(i, i, getLayoutParams().width - this.jdField_b_of_type_Int, getLayoutParams().height - this.jdField_b_of_type_Int);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, 360.0F, 360.0F, false, this.jdField_b_of_type_AndroidGraphicsPaint);
@@ -64,7 +65,7 @@ public class CircularProgressBar
     paramCanvas.drawArc(this.jdField_b_of_type_AndroidGraphicsRectF, -90.0F, this.h, false, this.jdField_a_of_type_AndroidGraphicsPaint);
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     b();
@@ -121,7 +122,7 @@ public class CircularProgressBar
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.CircularProgressBar
  * JD-Core Version:    0.7.0.1
  */

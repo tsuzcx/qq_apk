@@ -15,26 +15,22 @@ class DatalineRemoteManager$11
   public Bundle invoke(Bundle paramBundle, RemoteCommand.OnInvokeFinishLinstener paramOnInvokeFinishLinstener)
   {
     if (paramBundle == null) {
-      paramBundle = null;
+      return null;
     }
-    Bundle localBundle;
-    do
-    {
-      return paramBundle;
+    paramBundle.setClassLoader(getClass().getClassLoader());
+    paramBundle = DatalineRemoteManager.a(this.a, paramBundle);
+    if (paramBundle != null) {
       paramBundle.setClassLoader(getClass().getClassLoader());
-      localBundle = DatalineRemoteManager.a(this.a, paramBundle);
-      if (localBundle != null) {
-        localBundle.setClassLoader(getClass().getClassLoader());
-      }
-      paramBundle = localBundle;
-    } while (paramOnInvokeFinishLinstener == null);
-    paramOnInvokeFinishLinstener.onInvokeFinish(localBundle);
-    return localBundle;
+    }
+    if (paramOnInvokeFinishLinstener != null) {
+      paramOnInvokeFinishLinstener.onInvokeFinish(paramBundle);
+    }
+    return paramBundle;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqdataline.ipc.DatalineRemoteManager.11
  * JD-Core Version:    0.7.0.1
  */

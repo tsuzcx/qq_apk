@@ -33,14 +33,13 @@ public class CommandRecognizeState
   
   public boolean a(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 4) {
       return super.a(paramMessage);
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine != null)
+    VoiceAssistantStateMachine localVoiceAssistantStateMachine = this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine;
+    if (localVoiceAssistantStateMachine != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine.c(5);
+      localVoiceAssistantStateMachine.c(5);
       this.jdField_a_of_type_ComTencentMobileqqQassistantStatemachineVoiceAssistantStateMachine.a(paramMessage);
     }
     return true;
@@ -49,16 +48,17 @@ public class CommandRecognizeState
   public void b()
   {
     super.b();
-    if (this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController != null)
+    AudioNewController localAudioNewController = this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController;
+    if (localAudioNewController != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController.a();
+      localAudioNewController.a();
       this.jdField_a_of_type_ComTencentMobileqqQassistantAudioAudioNewController = null;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.CommandRecognizeState
  * JD-Core Version:    0.7.0.1
  */

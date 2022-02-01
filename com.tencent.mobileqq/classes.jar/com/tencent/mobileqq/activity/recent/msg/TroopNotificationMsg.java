@@ -19,16 +19,16 @@ public class TroopNotificationMsg
   
   public TroopNotificationMsg(Context paramContext, boolean paramBoolean)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131719913);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131719645);
     if (paramBoolean) {
-      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131719914);
+      this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131719646);
     }
     this.jdField_b_of_type_JavaLangString = this.jdField_a_of_type_JavaLangString;
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
   {
-    if (paramInt == 29)
+    if (paramInt == 28)
     {
       paramMessageInfo = new TroopNotificationMsg(BaseApplication.getContext(), false);
       paramMessageInfo.c = 1;
@@ -88,20 +88,17 @@ public class TroopNotificationMsg
       if (this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo != null) {
         localJSONObject.put("messageNavInfo", this.jdField_a_of_type_ComTencentMobileqqTroopDataMessageNavInfo.a());
       }
-      return localJSONObject.toString().getBytes();
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
+      localJSONException.printStackTrace();
     }
+    return localJSONObject.toString().getBytes();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopNotificationMsg
  * JD-Core Version:    0.7.0.1
  */

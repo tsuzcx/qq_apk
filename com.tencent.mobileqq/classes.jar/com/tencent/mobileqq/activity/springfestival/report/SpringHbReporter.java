@@ -18,27 +18,31 @@ public class SpringHbReporter
   public static void a(String paramString1, int paramInt1, int paramInt2, Map<String, String> paramMap, String paramString2, boolean paramBoolean)
   {
     paramString1 = SpringHbReportManager.ReportInfo.create(paramString1, paramInt1, paramInt2, paramMap, paramString2, paramBoolean);
-    if ((paramString1 == null) || (!paramString1.isValid()))
+    if ((paramString1 != null) && (paramString1.isValid()))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("shua2021report_SpringHbReporter", 2, "[report] reportInfo is invalid" + paramString1);
+      paramMap = BaseApplicationImpl.getApplication().getRuntime();
+      if ((paramMap instanceof QQAppInterface))
+      {
+        ((SpringHbReportManager)((QQAppInterface)paramMap).getManager(QQManagerFactory.SPRING_HB_REPORT_MANAGER)).a(paramString1);
+        return;
       }
+      paramMap = new Bundle();
+      paramMap.putSerializable("key1", paramString1);
+      QIPCClientHelper.getInstance().callServer("SpringHbIPCModule", "ReportData", paramMap, null);
       return;
     }
-    paramMap = BaseApplicationImpl.getApplication().getRuntime();
-    if ((paramMap instanceof QQAppInterface))
+    if (QLog.isColorLevel())
     {
-      ((SpringHbReportManager)((QQAppInterface)paramMap).getManager(QQManagerFactory.SPRING_HB_REPORT_MANAGER)).a(paramString1);
-      return;
+      paramMap = new StringBuilder();
+      paramMap.append("[report] reportInfo is invalid");
+      paramMap.append(paramString1);
+      QLog.i("shua2021report_SpringHbReporter", 2, paramMap.toString());
     }
-    paramMap = new Bundle();
-    paramMap.putSerializable("key1", paramString1);
-    QIPCClientHelper.getInstance().callServer("SpringHbIPCModule", "ReportData", paramMap, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.report.SpringHbReporter
  * JD-Core Version:    0.7.0.1
  */

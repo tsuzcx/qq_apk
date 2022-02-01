@@ -15,12 +15,17 @@ class TroopGiftPanel$12
   {
     this.jdField_a_of_type_ComTencentBizTroopgiftTroopGiftPanel.a.a(paramList);
     long l = System.currentTimeMillis();
-    QLog.d("TroopGiftPanel.time", 1, "setGiftData, reqTime=" + (l - this.jdField_a_of_type_Long) + ", total=" + (l - this.b));
+    paramList = new StringBuilder();
+    paramList.append("setGiftData, reqTime=");
+    paramList.append(l - this.jdField_a_of_type_Long);
+    paramList.append(", total=");
+    paramList.append(l - this.b);
+    QLog.d("TroopGiftPanel.time", 1, paramList.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopgift.TroopGiftPanel.12
  * JD-Core Version:    0.7.0.1
  */

@@ -13,12 +13,12 @@ class ShortVideoPreviewActivity$20
   public void handleMessage(Message paramMessage)
   {
     paramMessage = ShortVideoUtils.stringForTime(paramMessage.arg1);
-    this.a.c.setText(paramMessage);
+    this.a.progressTimeMp.setText(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.20
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,10 @@ class TimeBase
   
   private long b()
   {
-    return (System.nanoTime() / 1000L * this.jdField_a_of_type_Double);
+    double d1 = System.nanoTime() / 1000L;
+    double d2 = this.jdField_a_of_type_Double;
+    Double.isNaN(d1);
+    return (d1 * d2);
   }
   
   public double a()
@@ -42,7 +45,7 @@ class TimeBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.mediaplayer.TimeBase
  * JD-Core Version:    0.7.0.1
  */

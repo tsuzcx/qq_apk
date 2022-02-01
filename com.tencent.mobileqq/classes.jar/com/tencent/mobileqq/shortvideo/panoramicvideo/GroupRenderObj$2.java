@@ -10,19 +10,20 @@ class GroupRenderObj$2
   
   public void run()
   {
-    Iterator localIterator = this.val$renderObjList.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.val$renderObjList.iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      BaseRenderObj localBaseRenderObj = (BaseRenderObj)localIterator.next();
+      BaseRenderObj localBaseRenderObj = (BaseRenderObj)((Iterator)localObject).next();
       localBaseRenderObj.init();
       this.this$0.renderObjLists.add(localBaseRenderObj);
     }
-    this.this$0.onRenderObjChanged(this.this$0.surfaceWidth, this.this$0.surfaceHeight);
+    localObject = this.this$0;
+    ((GroupRenderObj)localObject).onRenderObjChanged(((GroupRenderObj)localObject).surfaceWidth, this.this$0.surfaceHeight);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.panoramicvideo.GroupRenderObj.2
  * JD-Core Version:    0.7.0.1
  */

@@ -17,40 +17,40 @@ public class TaskFlowEngine$DependFlow
   
   public boolean isDepend(BaseTask paramBaseTask)
   {
-    return (this.mDependTasks != null) && (this.mDependTasks.contains(paramBaseTask));
+    List localList = this.mDependTasks;
+    return (localList != null) && (localList.contains(paramBaseTask));
   }
   
   public void onDependCompleted()
   {
-    if (this.mDependTasks != null)
+    Object localObject = this.mDependTasks;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mDependTasks.iterator();
-      do
-      {
-        if (!localIterator.hasNext()) {
-          break;
-        }
-      } while (((BaseTask)localIterator.next()).isSucceed());
-    }
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0)
-      {
-        if ((this.mTask.isDone()) && (this.mTask.isSucceed())) {
-          this.this$0.updateFlow(this.mTask);
+      localObject = ((List)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        if (!((BaseTask)((Iterator)localObject).next()).isSucceed())
+        {
+          i = 1;
+          break label47;
         }
       }
-      else {
+    }
+    int i = 0;
+    label47:
+    if (i == 0)
+    {
+      if ((this.mTask.isDone()) && (this.mTask.isSucceed()))
+      {
+        this.this$0.updateFlow(this.mTask);
         return;
       }
       this.mTask.run();
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.TaskFlowEngine.DependFlow
  * JD-Core Version:    0.7.0.1
  */

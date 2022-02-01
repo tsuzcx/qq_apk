@@ -10,60 +10,64 @@ class ShapeGroupParser
 {
   static ShapeGroup parse(JsonReader paramJsonReader, LottieComposition paramLottieComposition)
   {
-    String str = null;
     ArrayList localArrayList = new ArrayList();
+    String str = null;
     boolean bool = false;
-    label14:
     while (paramJsonReader.hasNext())
     {
       Object localObject = paramJsonReader.nextName();
       int i = -1;
-      switch (((String)localObject).hashCode())
+      int j = ((String)localObject).hashCode();
+      if (j != 3324)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (j != 3371)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label14;
-          if (((String)localObject).equals("nm"))
-          {
+          if ((j == 3519) && (((String)localObject).equals("nm"))) {
             i = 0;
-            continue;
-            if (((String)localObject).equals("hd"))
+          }
+        }
+        else if (((String)localObject).equals("it")) {
+          i = 2;
+        }
+      }
+      else if (((String)localObject).equals("hd")) {
+        i = 1;
+      }
+      if (i != 0)
+      {
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            paramJsonReader.skipValue();
+          }
+          else
+          {
+            paramJsonReader.beginArray();
+            while (paramJsonReader.hasNext())
             {
-              i = 1;
-              continue;
-              if (((String)localObject).equals("it")) {
-                i = 2;
+              localObject = ContentModelParser.parse(paramJsonReader, paramLottieComposition);
+              if (localObject != null) {
+                localArrayList.add(localObject);
               }
             }
+            paramJsonReader.endArray();
           }
-          break;
+        }
+        else {
+          bool = paramJsonReader.nextBoolean();
         }
       }
-      str = paramJsonReader.nextString();
-      continue;
-      bool = paramJsonReader.nextBoolean();
-      continue;
-      paramJsonReader.beginArray();
-      while (paramJsonReader.hasNext())
-      {
-        localObject = ContentModelParser.parse(paramJsonReader, paramLottieComposition);
-        if (localObject != null) {
-          localArrayList.add(localObject);
-        }
+      else {
+        str = paramJsonReader.nextString();
       }
-      paramJsonReader.endArray();
     }
     return new ShapeGroup(str, localArrayList, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.ShapeGroupParser
  * JD-Core Version:    0.7.0.1
  */

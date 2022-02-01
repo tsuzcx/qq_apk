@@ -4,11 +4,11 @@ import android.content.Intent;
 import android.view.View;
 import com.tencent.mobileqq.activity.ChatActivity;
 import com.tencent.mobileqq.activity.ChatSettingActivity;
-import com.tencent.mobileqq.activity.ProfileActivity;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.FriendListHandler;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.utils.ProfileEntryUtils;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.util.Utils;
 import com.tencent.mobileqq.utils.NetworkUtil;
@@ -24,15 +24,16 @@ class ProfileCardMoreActivity$3
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if ((paramInt == 1) && (Utils.b(this.jdField_a_of_type_JavaLangString))) {
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
+      }
     }
-    for (;;)
+    else
     {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
-      return;
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.h), 0, Integer.toString(ProfileActivity.a(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)), "", "", "");
-      if (NetworkUtil.d(BaseApplication.getContext()))
+      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app, "CliOper", "", "", "P_prof", "Pp_more_delete", ProfileEntryUtils.getProfileEntryType(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne.profileEntryType), 0, Integer.toString(ProfileEntryUtils.getIdentityFlag(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_ComTencentMobileqqProfilecardDataAllInOne)), "", "", "");
+      if (NetworkUtil.isNetSupport(BaseApplication.getContext()))
       {
         ((FriendListHandler)this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app.getBusinessHandler(BusinessHandlerFactory.FRIENDLIST_HANDLER)).delFriend(this.jdField_a_of_type_JavaLangString, (byte)2);
         paramView = this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app.getHandler(ChatActivity.class);
@@ -47,7 +48,8 @@ class ProfileCardMoreActivity$3
           this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent = new Intent();
         }
         this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent.putExtra("finchat", true);
-        this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.setResult(-1, this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.jdField_a_of_type_AndroidContentIntent);
+        paramView = this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity;
+        paramView.setResult(-1, paramView.jdField_a_of_type_AndroidContentIntent);
         if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
           ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FDF", "0X8007FDF", 0, 0, "", "", "", "");
         }
@@ -55,18 +57,15 @@ class ProfileCardMoreActivity$3
       }
       else
       {
-        this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.notifyUser(2131691543, 1);
-        continue;
-        if (Utils.b(this.jdField_a_of_type_JavaLangString)) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.app, "dc00898", "", "", "0X8007FE0", "0X8007FE0", 0, 0, "", "", "", "");
-        }
+        this.jdField_a_of_type_ComTencentMobileqqProfilesettingProfileCardMoreActivity.notifyUser(2131691464, 1);
       }
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.superDismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilesetting.ProfileCardMoreActivity.3
  * JD-Core Version:    0.7.0.1
  */

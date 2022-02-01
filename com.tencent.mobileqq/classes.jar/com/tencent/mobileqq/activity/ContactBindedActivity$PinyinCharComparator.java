@@ -11,22 +11,21 @@ final class ContactBindedActivity$PinyinCharComparator
   {
     boolean bool1 = TextUtils.isEmpty(paramPhoneContact1.pinyinFirst);
     boolean bool2 = TextUtils.isEmpty(paramPhoneContact2.pinyinFirst);
-    if ((bool1) || (bool2))
-    {
-      if ((bool1) && (bool2)) {
-        return 0;
-      }
-      if (bool2) {
-        return -1;
-      }
-      return 1;
+    if ((!bool1) && (!bool2)) {
+      return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
     }
-    return paramPhoneContact1.pinyinFirst.toLowerCase().charAt(0) - paramPhoneContact2.pinyinFirst.toLowerCase().charAt(0);
+    if ((bool1) && (bool2)) {
+      return 0;
+    }
+    if (bool2) {
+      return -1;
+    }
+    return 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ContactBindedActivity.PinyinCharComparator
  * JD-Core Version:    0.7.0.1
  */

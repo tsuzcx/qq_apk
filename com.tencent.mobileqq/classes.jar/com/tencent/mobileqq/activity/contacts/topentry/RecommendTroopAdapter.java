@@ -19,8 +19,8 @@ import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.troop.data.RecentRecommendTroopItem;
-import com.tencent.mobileqq.troop.data.RecommendTroopItem;
+import com.tencent.mobileqq.troop.recommend.data.RecentRecommendTroopItem;
+import com.tencent.mobileqq.troop.recommend.data.RecommendTroopItem;
 import com.tencent.mobileqq.troop.utils.TroopUtils;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.ListView;
@@ -51,15 +51,20 @@ public class RecommendTroopAdapter
   {
     paramRecTroopViewHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setText(paramRecentRecommendTroopItem.name);
     paramRecTroopViewHolder.b.setText(paramRecentRecommendTroopItem.labelStr);
-    paramRecTroopViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131713223));
+    paramRecTroopViewHolder.jdField_a_of_type_AndroidWidgetButton.setText(HardCodeUtil.a(2131713191));
     paramRecTroopViewHolder.jdField_c_of_type_AndroidWidgetImageView.setImageBitmap(a(4, paramRecentRecommendTroopItem.uin));
-    paramRecTroopViewHolder.jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem = paramRecentRecommendTroopItem;
+    paramRecTroopViewHolder.jdField_a_of_type_ComTencentMobileqqTroopRecommendDataRecentRecommendTroopItem = paramRecentRecommendTroopItem;
     paramRecTroopViewHolder.jdField_a_of_type_JavaLangString = paramRecentRecommendTroopItem.uin;
     paramRecTroopViewHolder.jdField_c_of_type_Int = 4;
     ReportController.b(null, "dc00899", "Grp_recom", "", "link_top", "exp_grp", 0, 0, paramRecentRecommendTroopItem.uin, paramRecentRecommendTroopItem.recomAlgol, "", "");
     if (AppSetting.d)
     {
-      paramRecTroopViewHolder.jdField_a_of_type_AndroidViewView.setContentDescription(paramRecentRecommendTroopItem.name + " " + paramRecentRecommendTroopItem.labelStr);
+      View localView = paramRecTroopViewHolder.jdField_a_of_type_AndroidViewView;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramRecentRecommendTroopItem.name);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramRecentRecommendTroopItem.labelStr);
+      localView.setContentDescription(localStringBuilder.toString());
       paramRecTroopViewHolder.jdField_a_of_type_ComTencentWidgetSingleLineTextView.setContentDescription(paramRecentRecommendTroopItem.name);
       paramRecTroopViewHolder.b.setContentDescription(paramRecentRecommendTroopItem.labelStr);
     }
@@ -84,12 +89,15 @@ public class RecommendTroopAdapter
   
   public void a(List<RecentRecommendTroopItem> paramList)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return;
+    if (paramList != null)
+    {
+      if (paramList.isEmpty()) {
+        return;
+      }
+      this.jdField_a_of_type_JavaUtilList.clear();
+      this.jdField_a_of_type_JavaUtilList.addAll(paramList);
+      notifyDataSetChanged();
     }
-    this.jdField_a_of_type_JavaUtilList.clear();
-    this.jdField_a_of_type_JavaUtilList.addAll(paramList);
-    notifyDataSetChanged();
   }
   
   public void a(boolean paramBoolean)
@@ -128,13 +136,13 @@ public class RecommendTroopAdapter
     if (paramView == null)
     {
       paramView = new RecommendTroopAdapter.RecTroopViewHolder();
-      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559040, null);
-      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131361796));
-      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131372288));
-      paramView.b = ((SingleLineTextView)localView.findViewById(2131377005));
-      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131376990));
-      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131377001));
-      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365650));
+      localView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558934, null);
+      paramView.jdField_c_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131361799));
+      paramView.jdField_a_of_type_ComTencentWidgetSingleLineTextView = ((SingleLineTextView)localView.findViewById(2131371877));
+      paramView.b = ((SingleLineTextView)localView.findViewById(2131376487));
+      paramView.jdField_a_of_type_AndroidWidgetButton = ((Button)localView.findViewById(2131376477));
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131376485));
+      paramView.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)localView.findViewById(2131365494));
       paramView.jdField_a_of_type_AndroidViewView = localView;
       ((ThemeImageView)paramView.jdField_c_of_type_AndroidWidgetImageView).setSupportMaskView(true);
       paramView.jdField_a_of_type_AndroidWidgetImageView.setOnClickListener(this);
@@ -145,72 +153,84 @@ public class RecommendTroopAdapter
       paramView.jdField_a_of_type_AndroidWidgetButton.setTag(paramView);
       localObject = paramView;
     }
-    for (;;)
+    else
     {
-      if (RecommendTroopEntryController.a)
-      {
-        ReportController.b(null, "dc00899", "Grp_recom", "", "link_top", "exp", 0, 0, "", "", "", "");
-        RecommendTroopEntryController.a = false;
-      }
-      a((RecommendTroopAdapter.RecTroopViewHolder)localObject, a(paramInt));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject = (RecommendTroopAdapter.RecTroopViewHolder)paramView.getTag();
       localView = paramView;
     }
+    if (RecommendTroopEntryController.a)
+    {
+      ReportController.b(null, "dc00899", "Grp_recom", "", "link_top", "exp", 0, 0, "", "", "", "");
+      RecommendTroopEntryController.a = false;
+    }
+    a((RecommendTroopAdapter.RecTroopViewHolder)localObject, a(paramInt));
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject1 = ((RecommendTroopAdapter.RecTroopViewHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem;
-      Object localObject2 = "mqqapi://app/joinImmediately?source_id=3&version=1.0&src_type=app&pkg=com.tencent.mobileqq&cmp=com.tencent.biz.JoinGroupTransitActivity&group_code=" + ((RecentRecommendTroopItem)localObject1).uin + "&subsource_id=10019";
-      Object localObject3 = new Intent(this.jdField_a_of_type_AndroidContentContext, JoinGroupTransitActivity.class);
-      ((Intent)localObject3).putExtra("source_scheme", (String)localObject2);
-      this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject3);
-      ReportController.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_add", 0, 0, ((RecentRecommendTroopItem)localObject1).uin, ((RecentRecommendTroopItem)localObject1).recomAlgol, "", "");
-      continue;
-      localObject1 = ((RecommendTroopAdapter.RecTroopViewHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem;
-      localObject2 = new GroupInfo();
-      try
+    int i = paramView.getId();
+    if (i != 2131365494) {
+      if (i != 2131376477)
       {
-        ((GroupInfo)localObject2).lCode = Long.valueOf(((RecentRecommendTroopItem)localObject1).uin).longValue();
-        ((GroupInfo)localObject2).strName = ((RecentRecommendTroopItem)localObject1).name;
-        if (TextUtils.isEmpty(((RecentRecommendTroopItem)localObject1).recommendReason)) {}
-        for (((GroupInfo)localObject2).strIntro = ((RecentRecommendTroopItem)localObject1).intro;; ((GroupInfo)localObject2).strIntro = ((RecentRecommendTroopItem)localObject1).recommendReason)
-        {
-          ((GroupInfo)localObject2).iMemberCnt = ((RecentRecommendTroopItem)localObject1).memberNum;
-          localObject3 = GroupViewAdapter.a((RecommendTroopItem)localObject1);
-          if (localObject3 != null) {
-            ((GroupInfo)localObject2).labels = ((ArrayList)localObject3);
-          }
-          ((GroupInfo)localObject2).strJoinSig = ((RecentRecommendTroopItem)localObject1).authSig;
-          localObject2 = TroopUtils.a(108, (GroupInfo)localObject2, 10020, false);
-          TroopUtils.a(this.jdField_a_of_type_AndroidContentContext, (Bundle)localObject2, 2);
-          ReportController.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_grp", 0, 0, ((RecentRecommendTroopItem)localObject1).uin, ((RecentRecommendTroopItem)localObject1).recomAlgol, "", "");
-          break;
+        if (i != 2131376644) {
+          break label411;
         }
-        localObject1 = (RecommendTroopAdapter.RecTroopViewHolder)paramView.getTag();
-        this.jdField_a_of_type_JavaUtilList.remove(((RecommendTroopAdapter.RecTroopViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem);
-        notifyDataSetChanged();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryRecommendTroopAdapter$IRecommendTroopAdapterCallback != null) {
-          this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryRecommendTroopAdapter$IRecommendTroopAdapterCallback.a(((RecommendTroopAdapter.RecTroopViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem.uin, this.jdField_a_of_type_JavaUtilList.size());
-        }
-        ReportController.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_delete", 0, 0, ((RecommendTroopAdapter.RecTroopViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem.uin, ((RecommendTroopAdapter.RecTroopViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTroopDataRecentRecommendTroopItem.recomAlgol, "", "");
+        localObject1 = ((RecommendTroopAdapter.RecTroopViewHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqTroopRecommendDataRecentRecommendTroopItem;
+        localObject2 = new GroupInfo();
       }
-      catch (Exception localException) {}
     }
+    try
+    {
+      ((GroupInfo)localObject2).lCode = Long.valueOf(((RecentRecommendTroopItem)localObject1).uin).longValue();
+      ((GroupInfo)localObject2).strName = ((RecentRecommendTroopItem)localObject1).name;
+      if (TextUtils.isEmpty(((RecentRecommendTroopItem)localObject1).recommendReason)) {
+        ((GroupInfo)localObject2).strIntro = ((RecentRecommendTroopItem)localObject1).intro;
+      } else {
+        ((GroupInfo)localObject2).strIntro = ((RecentRecommendTroopItem)localObject1).recommendReason;
+      }
+      ((GroupInfo)localObject2).iMemberCnt = ((RecentRecommendTroopItem)localObject1).memberNum;
+      localObject3 = GroupViewAdapter.a((RecommendTroopItem)localObject1);
+      if (localObject3 != null) {
+        ((GroupInfo)localObject2).labels = ((ArrayList)localObject3);
+      }
+      ((GroupInfo)localObject2).strJoinSig = ((RecentRecommendTroopItem)localObject1).authSig;
+      localObject2 = TroopUtils.a(108, (GroupInfo)localObject2, 10020, false);
+      TroopUtils.a(this.jdField_a_of_type_AndroidContentContext, (Bundle)localObject2, 2);
+      ReportController.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_grp", 0, 0, ((RecentRecommendTroopItem)localObject1).uin, ((RecentRecommendTroopItem)localObject1).recomAlgol, "", "");
+    }
+    catch (Exception localException)
+    {
+      Object localObject3;
+      break label411;
+    }
+    Object localObject1 = ((RecommendTroopAdapter.RecTroopViewHolder)paramView.getTag()).jdField_a_of_type_ComTencentMobileqqTroopRecommendDataRecentRecommendTroopItem;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("mqqapi://app/joinImmediately?source_id=3&version=1.0&src_type=app&pkg=com.tencent.mobileqq&cmp=com.tencent.biz.JoinGroupTransitActivity&group_code=");
+    ((StringBuilder)localObject2).append(((RecentRecommendTroopItem)localObject1).uin);
+    ((StringBuilder)localObject2).append("&subsource_id=10019");
+    localObject2 = ((StringBuilder)localObject2).toString();
+    localObject3 = new Intent(this.jdField_a_of_type_AndroidContentContext, JoinGroupTransitActivity.class);
+    ((Intent)localObject3).putExtra("source_scheme", (String)localObject2);
+    this.jdField_a_of_type_AndroidContentContext.startActivity((Intent)localObject3);
+    ReportController.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_add", 0, 0, ((RecentRecommendTroopItem)localObject1).uin, ((RecentRecommendTroopItem)localObject1).recomAlgol, "", "");
+    break label411;
+    localObject1 = (RecommendTroopAdapter.RecTroopViewHolder)paramView.getTag();
+    this.jdField_a_of_type_JavaUtilList.remove(((RecommendTroopAdapter.RecTroopViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTroopRecommendDataRecentRecommendTroopItem);
+    notifyDataSetChanged();
+    localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityContactsTopentryRecommendTroopAdapter$IRecommendTroopAdapterCallback;
+    if (localObject2 != null) {
+      ((RecommendTroopAdapter.IRecommendTroopAdapterCallback)localObject2).a(((RecommendTroopAdapter.RecTroopViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTroopRecommendDataRecentRecommendTroopItem.uin, this.jdField_a_of_type_JavaUtilList.size());
+    }
+    ReportController.b(null, "dc00899", "Grp_recom", "", "link_top", "clk_delete", 0, 0, ((RecommendTroopAdapter.RecTroopViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTroopRecommendDataRecentRecommendTroopItem.uin, ((RecommendTroopAdapter.RecTroopViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqTroopRecommendDataRecentRecommendTroopItem.recomAlgol, "", "");
+    label411:
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.RecommendTroopAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -18,10 +18,11 @@ public final class CustomScrollView
     super(paramContext, paramAttributeSet);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    if (this.a > 0) {
-      paramInt2 = View.MeasureSpec.makeMeasureSpec(this.a, -2147483648);
+    int i = this.a;
+    if (i > 0) {
+      paramInt2 = View.MeasureSpec.makeMeasureSpec(i, -2147483648);
     }
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -33,7 +34,7 @@ public final class CustomScrollView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.CustomScrollView
  * JD-Core Version:    0.7.0.1
  */

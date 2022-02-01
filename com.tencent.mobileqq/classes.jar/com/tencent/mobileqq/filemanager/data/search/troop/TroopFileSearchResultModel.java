@@ -8,6 +8,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.TroopManager;
 import com.tencent.mobileqq.data.troop.TroopMemberInfo;
+import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.QFileUtils;
 import com.tencent.mobileqq.search.ContactSearchableFriend;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
@@ -44,156 +45,144 @@ public class TroopFileSearchResultModel
   
   private CharSequence a(TroopFileInfo paramTroopFileInfo)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList != null)
+    ArrayList localArrayList = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList;
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
+    if (localArrayList != null)
     {
-      str1 = str2;
+      localObject1 = localObject2;
       if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList.size() > 0)
       {
-        str1 = str2;
+        localObject1 = localObject2;
         if (!TextUtils.isEmpty(paramTroopFileInfo.jdField_c_of_type_JavaLangString))
         {
-          str1 = str2;
+          localObject1 = localObject2;
           if (paramTroopFileInfo.jdField_c_of_type_JavaLangString.toLowerCase().contains("".toLowerCase())) {
-            str1 = (String)this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList.get(0);
+            localObject1 = (String)this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList.get(0);
           }
         }
       }
     }
-    str2 = paramTroopFileInfo.jdField_c_of_type_JavaLangString;
-    if (!TextUtils.isEmpty(str1)) {
-      return SearchUtils.a(paramTroopFileInfo.jdField_c_of_type_JavaLangString, str1);
+    localObject2 = paramTroopFileInfo.jdField_c_of_type_JavaLangString;
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+      localObject2 = SearchUtils.a(paramTroopFileInfo.jdField_c_of_type_JavaLangString, (String)localObject1);
     }
-    return str2;
+    return localObject2;
   }
   
   private void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData == null) {
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData;
+    if (localObject1 == null) {
       return;
     }
-    Object localObject4 = "";
-    long l1 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_Long;
+    String str2 = "";
+    long l1 = ((TroopFileSearchItemData)localObject1).jdField_a_of_type_Long;
     long l2 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_b_of_type_Long;
     long l3 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_Long;
     TroopFileInfo localTroopFileInfo = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo;
-    Object localObject1 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(l1), String.valueOf(l2));
+    localObject1 = ((TroopManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_MANAGER)).b(String.valueOf(l1), String.valueOf(l2));
     int i;
-    Object localObject2;
-    label108:
-    Object localObject3;
-    if ((localObject1 != null) && (ContactUtils.a(((TroopMemberInfo)localObject1).troopnick, String.valueOf(l3))))
-    {
+    if ((localObject1 != null) && (ContactUtils.a(((TroopMemberInfo)localObject1).troopnick, String.valueOf(l3)))) {
       i = 1;
-      if (i == 0) {
-        break label355;
-      }
-      localObject2 = ((TroopMemberInfo)localObject1).troopnick;
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_Long <= 0L) {
-        break label504;
-      }
-      localObject3 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_Long);
-      localObject4 = TroopFileSearchManager.a();
-      localObject1 = ((TroopFileSearchManager)localObject4).a((String)localObject3);
-      if (localObject1 == null) {
-        break label361;
-      }
-      i = TroopFileSearchManager.a(this.jdField_a_of_type_JavaLangString, (String)localObject2, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString, ((ContactSearchableFriend)localObject1).jdField_c_of_type_JavaLangString, ((ContactSearchableFriend)localObject1).d, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d, ((ContactSearchableFriend)localObject1).jdField_a_of_type_JavaLangString, ((ContactSearchableFriend)localObject1).jdField_b_of_type_JavaLangString);
-      localObject1 = TroopFileSearchManager.a((String)localObject2, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d, i);
-      label217:
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label426;
-      }
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString)) {
-        break label414;
-      }
-      localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d;
-      label247:
-      localObject3 = "";
-      localObject2 = localObject1;
-      localObject1 = localObject3;
+    } else {
+      i = 0;
     }
-    for (;;)
+    if (i != 0) {
+      str1 = ((TroopMemberInfo)localObject1).troopnick;
+    } else {
+      str1 = null;
+    }
+    Object localObject2;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_Long > 0L)
     {
-      label259:
-      localObject3 = localObject2;
-      localObject2 = localTroopFileInfo.a();
-      localObject4 = localTroopFileInfo.m;
-      Object localObject5 = new SpannableStringBuilder();
-      ((SpannableStringBuilder)localObject5).append((CharSequence)localObject4).append("  ");
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        ((SpannableStringBuilder)localObject5).append(SearchUtils.a((String)localObject3, (String)localObject1)).append("  ");
-      }
-      for (;;)
+      localObject3 = String.valueOf(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_Long);
+      TroopFileSearchManager localTroopFileSearchManager = TroopFileSearchManager.a();
+      localObject1 = localTroopFileSearchManager.a((String)localObject3);
+      if (localObject1 != null)
       {
-        ((SpannableStringBuilder)localObject5).append((CharSequence)localObject2);
-        this.b = ((CharSequence)localObject5);
-        this.jdField_a_of_type_JavaLangCharSequence = a(localTroopFileInfo);
-        return;
-        i = 0;
-        break;
-        label355:
-        localObject2 = null;
-        break label108;
-        label361:
-        i = TroopFileSearchManager.a(this.jdField_a_of_type_JavaLangString, (String)localObject2, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString, null, null, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d, null, null);
-        localObject1 = TroopFileSearchManager.a((String)localObject2, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d, i);
-        break label217;
-        label414:
-        localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString;
-        break label247;
-        label426:
-        if ((i == 1) || (i == 4) || (i == 7))
-        {
-          localObject3 = this.jdField_a_of_type_JavaLangString;
-          localObject2 = localObject1;
-          localObject1 = localObject3;
-          break label259;
-        }
-        if ((i != 5) && (i != 6) && (i != 2) && (i != 3)) {
-          break label642;
-        }
-        localObject3 = ((TroopFileSearchManager)localObject4).a(this.jdField_a_of_type_JavaLangString, (String)localObject3);
-        localObject2 = localObject1;
-        localObject1 = localObject3;
-        break label259;
-        label504:
-        if (i != 0) {}
-        for (;;)
-        {
-          localObject3 = localObject2;
-          localObject1 = localObject4;
-          if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList == null) {
-            break;
-          }
-          localObject3 = localObject2;
-          localObject1 = localObject4;
-          if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList.size() <= 0) {
-            break;
-          }
-          localObject5 = (String)this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList.get(0);
-          localObject3 = localObject2;
-          localObject1 = localObject4;
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break;
-          }
-          localObject3 = localObject2;
-          localObject1 = localObject4;
-          if (!((String)localObject2).toLowerCase().contains(((String)localObject5).toLowerCase())) {
-            break;
-          }
-          localObject1 = localObject5;
-          localObject3 = localObject2;
-          break;
-          localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_b_of_type_JavaLangString;
-        }
-        ((SpannableStringBuilder)localObject5).append((CharSequence)localObject3).append("  ");
+        i = TroopFileSearchManager.a(this.jdField_a_of_type_JavaLangString, str1, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString, ((ContactSearchableFriend)localObject1).jdField_c_of_type_JavaLangString, ((ContactSearchableFriend)localObject1).d, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d, ((ContactSearchableFriend)localObject1).jdField_a_of_type_JavaLangString, ((ContactSearchableFriend)localObject1).jdField_b_of_type_JavaLangString);
+        str1 = TroopFileSearchManager.a(str1, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d, i);
       }
-      label642:
-      localObject2 = localObject1;
-      localObject1 = "";
+      else
+      {
+        i = TroopFileSearchManager.a(this.jdField_a_of_type_JavaLangString, str1, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString, null, null, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d, null, null);
+        str1 = TroopFileSearchManager.a(str1, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d, i);
+      }
+      if (TextUtils.isEmpty(str1))
+      {
+        if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString))
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.d;
+          localObject2 = str2;
+        }
+        else
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_c_of_type_JavaLangString;
+          localObject2 = str2;
+        }
+      }
+      else if ((i != 1) && (i != 4) && (i != 7))
+      {
+        if ((i != 5) && (i != 6) && (i != 2))
+        {
+          localObject1 = str1;
+          localObject2 = str2;
+          if (i != 3) {}
+        }
+        else
+        {
+          localObject2 = localTroopFileSearchManager.a(this.jdField_a_of_type_JavaLangString, (String)localObject3);
+          localObject1 = str1;
+        }
+      }
+      else
+      {
+        localObject2 = this.jdField_a_of_type_JavaLangString;
+        localObject1 = str1;
+      }
     }
+    else
+    {
+      if (i == 0) {
+        str1 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_b_of_type_JavaLangString;
+      }
+      localObject1 = str1;
+      localObject2 = str2;
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList != null)
+      {
+        localObject1 = str1;
+        localObject2 = str2;
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList.size() > 0)
+        {
+          localObject3 = (String)this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_JavaUtilArrayList.get(0);
+          localObject1 = str1;
+          localObject2 = str2;
+          if (!TextUtils.isEmpty(str1))
+          {
+            localObject1 = str1;
+            localObject2 = str2;
+            if (str1.toLowerCase().contains(((String)localObject3).toLowerCase()))
+            {
+              localObject2 = localObject3;
+              localObject1 = str1;
+            }
+          }
+        }
+      }
+    }
+    String str1 = localTroopFileInfo.a();
+    str2 = localTroopFileInfo.m;
+    Object localObject3 = new SpannableStringBuilder();
+    ((SpannableStringBuilder)localObject3).append(str2).append("  ");
+    if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+      ((SpannableStringBuilder)localObject3).append(SearchUtils.a((String)localObject1, (String)localObject2)).append("  ");
+    } else {
+      ((SpannableStringBuilder)localObject3).append((CharSequence)localObject1).append("  ");
+    }
+    ((SpannableStringBuilder)localObject3).append(str1);
+    this.b = ((CharSequence)localObject3);
+    this.jdField_a_of_type_JavaLangCharSequence = a(localTroopFileInfo);
   }
   
   public int a()
@@ -203,12 +192,12 @@ public class TroopFileSearchResultModel
   
   public CharSequence a()
   {
-    return this.jdField_a_of_type_JavaLangCharSequence;
+    return this.b;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return null;
   }
   
   public void a(int paramInt1, int paramInt2) {}
@@ -229,7 +218,13 @@ public class TroopFileSearchResultModel
     if ((localObject != null) && (((TroopFileStatusInfo)localObject).jdField_c_of_type_Long == 0L)) {
       ((TroopFileStatusInfo)localObject).jdField_c_of_type_Long = localTroopFileInfo.jdField_a_of_type_Long;
     }
-    paramView = QFileUtils.a(paramView.findViewById(2131366919), localTroopFileInfo.jdField_c_of_type_JavaLangString);
+    int i = FileManagerUtil.a(((TroopFileStatusInfo)localObject).g);
+    if ((i != 0) && (i != 2))
+    {
+      QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, null, (TroopFileStatusInfo)localObject, localTroopFileInfo.f, localTroopFileInfo.jdField_c_of_type_Int, 4, false);
+      return;
+    }
+    paramView = QFileUtils.a(paramView.findViewById(2131366781), localTroopFileInfo.jdField_c_of_type_JavaLangString);
     QFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_AndroidContentContext, null, null, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_Long, (TroopFileStatusInfo)localObject, localTroopFileInfo.f, localTroopFileInfo.jdField_c_of_type_Int, 2, 4, paramView, false, false);
   }
   
@@ -245,42 +240,38 @@ public class TroopFileSearchResultModel
   
   public CharSequence b()
   {
-    return null;
+    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
   public String b()
   {
-    return null;
-  }
-  
-  public int c()
-  {
-    return 0;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public CharSequence c()
   {
-    return this.b;
+    return null;
   }
   
   public String c()
   {
-    String str = "";
-    Object localObject = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_Long);
-    TroopFileInfo localTroopFileInfo = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo;
-    TroopFileStatusInfo localTroopFileStatusInfo = ((TroopFileTransferManager)localObject).a(localTroopFileInfo.jdField_b_of_type_JavaLangString);
-    if (localTroopFileStatusInfo != null) {
-      str = localTroopFileStatusInfo.jdField_b_of_type_JavaLangString;
-    }
-    for (;;)
+    Object localObject1 = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_Long);
+    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo;
+    TroopFileStatusInfo localTroopFileStatusInfo = ((TroopFileTransferManager)localObject1).a(((TroopFileInfo)localObject2).jdField_b_of_type_JavaLangString);
+    if (localTroopFileStatusInfo != null)
     {
-      localObject = str;
-      if (!FileUtils.b(str)) {
-        localObject = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.j;
-      }
-      return localObject;
-      ((TroopFileTransferManager)localObject).a(localTroopFileInfo.jdField_a_of_type_JavaUtilUUID, 128);
+      localObject1 = localTroopFileStatusInfo.jdField_b_of_type_JavaLangString;
     }
+    else
+    {
+      ((TroopFileTransferManager)localObject1).a(((TroopFileInfo)localObject2).jdField_a_of_type_JavaUtilUUID, 128);
+      localObject1 = "";
+    }
+    localObject2 = localObject1;
+    if (!FileUtils.fileExistsAndNotEmpty((String)localObject1)) {
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerDataTroopFileSearchItemData.jdField_a_of_type_ComTencentMobileqqTroopDataTroopFileInfo.j;
+    }
+    return localObject2;
   }
   
   public CharSequence d()
@@ -295,10 +286,15 @@ public class TroopFileSearchResultModel
     }
     return "";
   }
+  
+  public int f_()
+  {
+    return 0;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.troop.TroopFileSearchResultModel
  * JD-Core Version:    0.7.0.1
  */

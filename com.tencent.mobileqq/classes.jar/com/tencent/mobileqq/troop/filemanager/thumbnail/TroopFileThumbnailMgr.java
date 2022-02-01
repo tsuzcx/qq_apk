@@ -47,130 +47,113 @@ public class TroopFileThumbnailMgr
     if (paramItem == null) {
       return;
     }
-    StringBuilder localStringBuilder;
     if (paramInt == 128)
     {
       paramItem.ThumbnailDownloading_Small = true;
       paramItem.ThumbnailFileTimeMS_Small = SystemClock.uptimeMillis();
-      localStringBuilder = new StringBuilder();
-      if (paramItem.Id == null) {
-        break label142;
-      }
     }
-    label142:
-    for (paramItem = paramItem.Id.toString();; paramItem = "")
+    else if (paramInt == 640)
     {
-      paramItem = paramItem + "_" + paramInt;
-      TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", TroopFileTransferUtil.Log.a, "[" + paramItem + "] setGettingStatus. ");
-      return;
-      if (paramInt == 640)
-      {
-        paramItem.ThumbnailDownloading_Large = true;
-        paramItem.ThumbnailFileTimeMS_Large = SystemClock.uptimeMillis();
-        break;
-      }
-      if (paramInt != 383) {
-        break;
-      }
+      paramItem.ThumbnailDownloading_Large = true;
+      paramItem.ThumbnailFileTimeMS_Large = SystemClock.uptimeMillis();
+    }
+    else if (paramInt == 383)
+    {
       paramItem.ThumbnailDownloading_Middle = true;
       paramItem.ThumbnailFileTimeMS_Middle = SystemClock.uptimeMillis();
-      break;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramItem.Id != null) {
+      paramItem = paramItem.Id.toString();
+    } else {
+      paramItem = "";
+    }
+    localStringBuilder.append(paramItem);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    paramItem = localStringBuilder.toString();
+    paramInt = TroopFileTransferUtil.Log.a;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramItem);
+    localStringBuilder.append("] setGettingStatus. ");
+    TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", paramInt, localStringBuilder.toString());
   }
   
   public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
   {
-    if ((paramLong == 0L) || (paramItem == null)) {}
-    while (!a(paramLong, paramItem, paramInt, paramItem.getThumbnailFile(paramLong, paramInt))) {
-      return false;
+    if (paramLong != 0L)
+    {
+      if (paramItem == null) {
+        return false;
+      }
+      if (a(paramLong, paramItem, paramInt, paramItem.getThumbnailFile(paramLong, paramInt))) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
   
   public static final boolean a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt, String paramString)
   {
+    boolean bool1 = TextUtils.isEmpty(paramString);
     int i = 0;
-    int j = 0;
-    boolean bool3 = false;
-    int k = 0;
-    int m = 0;
-    boolean bool2 = false;
-    boolean bool4 = true;
-    boolean bool1 = true;
-    if (TextUtils.isEmpty(paramString)) {
-      return bool2;
+    if (bool1) {
+      return false;
     }
+    bool1 = true;
+    boolean bool2;
     if (paramInt == 128)
     {
-      if (!FileUtils.b(paramString)) {
-        break label260;
-      }
-      paramInt = i;
-      if (!paramItem.HasThumbnailFile_Small) {
-        paramInt = 1;
-      }
-      paramItem.HasThumbnailFile_Small = true;
-      if (!paramString.equalsIgnoreCase(paramItem.smallThumbFile)) {
-        paramInt = 1;
-      }
-      paramItem.smallThumbFile = paramString;
-      paramItem.ThumbnailFileTimeMS_Small = 0L;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (paramInt == 0) {
-        break;
-      }
-      TroopFileDataCenter.a(paramLong, paramItem);
-      return bool1;
-      if (paramInt == 640)
+      if (FileUtils.fileExistsAndNotEmpty(paramString))
       {
-        if (!FileUtils.b(paramString)) {
-          break label251;
-        }
-        paramInt = k;
-        if (!paramItem.HasThumbnailFile_Large) {
+        bool2 = paramItem.HasThumbnailFile_Small;
+        paramItem.HasThumbnailFile_Small = true;
+        if (!paramString.equalsIgnoreCase(paramItem.smallThumbFile)) {
           paramInt = 1;
+        } else {
+          paramInt = bool2 ^ true;
         }
+        paramItem.smallThumbFile = paramString;
+        paramItem.ThumbnailFileTimeMS_Small = 0L;
+        break label210;
+      }
+    }
+    else if (paramInt == 640)
+    {
+      if (FileUtils.fileExistsAndNotEmpty(paramString))
+      {
+        bool2 = paramItem.HasThumbnailFile_Large;
         paramItem.HasThumbnailFile_Large = true;
         if (!paramString.equalsIgnoreCase(paramItem.largeThumbnailFile)) {
           paramInt = 1;
+        } else {
+          paramInt = bool2 ^ true;
         }
         paramItem.largeThumbnailFile = paramString;
         paramItem.ThumbnailFileTimeMS_Large = 0L;
-        bool1 = bool4;
+        break label210;
       }
-      for (;;)
-      {
-        break;
-        if ((paramInt == 383) && (FileUtils.b(paramString)))
-        {
-          if (!paramItem.HasThumbnailFile_Middle) {}
-          for (paramInt = 1;; paramInt = 0)
-          {
-            paramItem.HasThumbnailFile_Middle = true;
-            if (!paramString.equalsIgnoreCase(paramItem.middleThumbnailFile)) {
-              paramInt = 1;
-            }
-            paramItem.middleThumbnailFile = paramString;
-            paramItem.ThumbnailFileTimeMS_Middle = 0L;
-            paramItem.ThumbnailDownloading_Middle_Fail = false;
-            bool1 = true;
-            break;
-          }
-        }
-        paramInt = 0;
-        bool1 = bool3;
-        break;
-        label251:
-        bool1 = false;
-        paramInt = m;
-      }
-      label260:
-      bool1 = false;
-      paramInt = j;
     }
+    else if ((paramInt == 383) && (FileUtils.fileExistsAndNotEmpty(paramString)))
+    {
+      paramInt = paramItem.HasThumbnailFile_Middle ^ true;
+      paramItem.HasThumbnailFile_Middle = true;
+      if (!paramString.equalsIgnoreCase(paramItem.middleThumbnailFile)) {
+        paramInt = 1;
+      }
+      paramItem.middleThumbnailFile = paramString;
+      paramItem.ThumbnailFileTimeMS_Middle = 0L;
+      paramItem.ThumbnailDownloading_Middle_Fail = false;
+      break label210;
+    }
+    bool1 = false;
+    paramInt = i;
+    label210:
+    if (paramInt != 0) {
+      TroopFileDataCenter.a(paramLong, paramItem);
+    }
+    return bool1;
   }
   
   private void b(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
@@ -199,13 +182,14 @@ public class TroopFileThumbnailMgr
             }
           }
         }
-        if (i == 0) {
-          this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailGenMgr.a(paramLong, paramItem, paramInt, null);
+        if (i != 0) {
+          return;
         }
+        this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailGenMgr.a(paramLong, paramItem, paramInt, null);
         return;
       }
     }
-    if ((paramInt == 383) && (FileUtil.b(str)))
+    if ((paramInt == 383) && (FileUtil.a(str)))
     {
       this.jdField_a_of_type_ComTencentMobileqqTroopFilemanagerThumbnailTroopFileThumbnailGenMgr.a(paramLong, paramItem, paramInt, str);
       return;
@@ -218,32 +202,29 @@ public class TroopFileThumbnailMgr
     if (paramItem == null) {
       return;
     }
-    StringBuilder localStringBuilder;
-    if (paramInt == 128)
-    {
+    if (paramInt == 128) {
       paramItem.ThumbnailDownloading_Small = false;
-      localStringBuilder = new StringBuilder();
-      if (paramItem.Id == null) {
-        break label121;
-      }
-    }
-    label121:
-    for (paramItem = paramItem.Id.toString();; paramItem = "")
-    {
-      paramItem = paramItem + "_" + paramInt;
-      TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", TroopFileTransferUtil.Log.a, "[" + paramItem + "] setStopGetStatus. ");
-      return;
-      if (paramInt == 640)
-      {
-        paramItem.ThumbnailDownloading_Large = false;
-        break;
-      }
-      if (paramInt != 383) {
-        break;
-      }
+    } else if (paramInt == 640) {
+      paramItem.ThumbnailDownloading_Large = false;
+    } else if (paramInt == 383) {
       paramItem.ThumbnailDownloading_Middle = false;
-      break;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    if (paramItem.Id != null) {
+      paramItem = paramItem.Id.toString();
+    } else {
+      paramItem = "";
+    }
+    localStringBuilder.append(paramItem);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    paramItem = localStringBuilder.toString();
+    paramInt = TroopFileTransferUtil.Log.a;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(paramItem);
+    localStringBuilder.append("] setStopGetStatus. ");
+    TroopFileTransferUtil.Log.c("TroopFileThumbnailMgr", paramInt, localStringBuilder.toString());
   }
   
   public void a()
@@ -255,27 +236,34 @@ public class TroopFileThumbnailMgr
   
   public void a(long paramLong, TroopFileTransferManager.Item paramItem, int paramInt)
   {
-    if ((paramLong == 0L) || (paramItem == null)) {}
-    do
+    if (paramLong != 0L)
     {
-      do
-      {
+      if (paramItem == null) {
         return;
-      } while ((paramItem.Id == null) || (paramInt == 0));
-      if (paramItem.canFetchThumbnailFile(paramInt)) {
-        break;
       }
-    } while ((paramInt != 383) || (!paramItem.genThumb_Middle_OnGettedLargeOrOrigPic));
-    paramItem.genThumb_Middle_OnGettedLargeOrOrigPic = false;
-    TroopFileTransferMgr.a(new TroopFileThumbnailMgr.2(this, paramItem, paramLong, paramInt), false);
-    return;
-    if (a(paramLong, paramItem, paramInt))
-    {
-      paramItem.StatusUpdateTimeMs = 0L;
-      TroopFileDataCenter.b(paramLong, paramItem);
-      return;
+      if (paramItem.Id == null) {
+        return;
+      }
+      if (paramInt == 0) {
+        return;
+      }
+      if (!paramItem.canFetchThumbnailFile(paramInt))
+      {
+        if ((paramInt == 383) && (paramItem.genThumb_Middle_OnGettedLargeOrOrigPic))
+        {
+          paramItem.genThumb_Middle_OnGettedLargeOrOrigPic = false;
+          TroopFileTransferMgr.a(new TroopFileThumbnailMgr.2(this, paramItem, paramLong, paramInt), false);
+        }
+        return;
+      }
+      if (a(paramLong, paramItem, paramInt))
+      {
+        paramItem.StatusUpdateTimeMs = 0L;
+        TroopFileDataCenter.b(paramLong, paramItem);
+        return;
+      }
+      TroopFileTransferMgr.a(new TroopFileThumbnailMgr.3(this, paramLong, paramItem, paramInt), false);
     }
-    TroopFileTransferMgr.a(new TroopFileThumbnailMgr.3(this, paramLong, paramItem, paramInt), false);
   }
   
   public void b()
@@ -292,7 +280,7 @@ public class TroopFileThumbnailMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.thumbnail.TroopFileThumbnailMgr
  * JD-Core Version:    0.7.0.1
  */

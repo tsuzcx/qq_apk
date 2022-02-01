@@ -16,15 +16,16 @@ class GameCenterAPIJavaScript$2
   
   public boolean dispatchTouchEvent(MotionEvent paramMotionEvent)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView instanceof View)) {
-      this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView.dispatchTouchEvent(paramMotionEvent);
+    CustomWebView localCustomWebView = this.jdField_a_of_type_ComTencentBizPubaccountCustomWebView;
+    if ((localCustomWebView instanceof View)) {
+      localCustomWebView.dispatchTouchEvent(paramMotionEvent);
     }
     return super.dispatchTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.common.util.GameCenterAPIJavaScript.2
  * JD-Core Version:    0.7.0.1
  */

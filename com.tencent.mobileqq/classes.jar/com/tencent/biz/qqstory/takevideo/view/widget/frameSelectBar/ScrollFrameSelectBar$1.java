@@ -17,19 +17,20 @@ class ScrollFrameSelectBar$1
     default: 
     case 4098: 
     case 4099: 
-      do
+      if (ScrollFrameSelectBar.a(this.a).isPlaying())
       {
+        ScrollFrameSelectBar.a(this.a).b();
         return;
-      } while (!ScrollFrameSelectBar.a(this.a).isPlaying());
-      ScrollFrameSelectBar.a(this.a).c();
-      return;
+      }
+      break;
+    case 4097: 
+      this.a.c();
     }
-    this.a.c();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.view.widget.frameSelectBar.ScrollFrameSelectBar.1
  * JD-Core Version:    0.7.0.1
  */

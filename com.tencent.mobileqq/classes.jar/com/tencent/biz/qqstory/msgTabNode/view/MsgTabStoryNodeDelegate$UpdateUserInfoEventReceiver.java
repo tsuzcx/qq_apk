@@ -18,13 +18,21 @@ public class MsgTabStoryNodeDelegate$UpdateUserInfoEventReceiver
   
   public void a(@NonNull MsgTabStoryNodeDelegate paramMsgTabStoryNodeDelegate, @NonNull GetUserInfoHandler.UpdateUserInfoEvent paramUpdateUserInfoEvent)
   {
-    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.isEmpty())) {
+    if ((paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage.isSuccess()) && (paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList != null) && (!paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList.isEmpty()))
+    {
       paramMsgTabStoryNodeDelegate.a.b(paramUpdateUserInfoEvent);
-    }
-    while (!QLog.isColorLevel()) {
       return;
     }
-    QLog.i(this.TAG, 2, "MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: " + paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage + ", userUIItems = " + paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+    if (QLog.isColorLevel())
+    {
+      paramMsgTabStoryNodeDelegate = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MsgTabStoryNodeDelegate#UpdateUserInfoEventReceiver errorInfo: ");
+      localStringBuilder.append(paramUpdateUserInfoEvent.jdField_a_of_type_ComTencentBizQqstoryBaseErrorMessage);
+      localStringBuilder.append(", userUIItems = ");
+      localStringBuilder.append(paramUpdateUserInfoEvent.jdField_a_of_type_JavaUtilList);
+      QLog.i(paramMsgTabStoryNodeDelegate, 2, localStringBuilder.toString());
+    }
   }
   
   public Class acceptEventClass()
@@ -34,7 +42,7 @@ public class MsgTabStoryNodeDelegate$UpdateUserInfoEventReceiver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.MsgTabStoryNodeDelegate.UpdateUserInfoEventReceiver
  * JD-Core Version:    0.7.0.1
  */

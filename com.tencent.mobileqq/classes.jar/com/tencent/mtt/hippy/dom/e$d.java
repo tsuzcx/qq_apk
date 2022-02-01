@@ -14,23 +14,26 @@ final class e$d
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.a.a(System.nanoTime(), 0);
-      return;
-    case 1: 
+      if (i != 1)
+      {
+        if (i != 2) {
+          return;
+        }
+        this.a.a(paramMessage.arg1);
+        return;
+      }
       this.a.b();
       return;
     }
-    this.a.a(paramMessage.arg1);
+    this.a.a(System.nanoTime(), 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.dom.e.d
  * JD-Core Version:    0.7.0.1
  */

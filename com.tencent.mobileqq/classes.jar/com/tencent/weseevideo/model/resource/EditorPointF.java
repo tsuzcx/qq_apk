@@ -41,18 +41,18 @@ public final class EditorPointF
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof EditorPointF))
       {
         paramObject = (EditorPointF)paramObject;
-        if ((Float.compare(this.x, paramObject.x) != 0) || (Float.compare(this.y, paramObject.y) != 0)) {}
+        if ((Float.compare(this.x, paramObject.x) == 0) && (Float.compare(this.y, paramObject.y) == 0)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public final float getX()
@@ -73,12 +73,18 @@ public final class EditorPointF
   @NotNull
   public String toString()
   {
-    return "EditorPointF(x=" + this.x + ", y=" + this.y + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EditorPointF(x=");
+    localStringBuilder.append(this.x);
+    localStringBuilder.append(", y=");
+    localStringBuilder.append(this.y);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.resource.EditorPointF
  * JD-Core Version:    0.7.0.1
  */

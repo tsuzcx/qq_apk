@@ -18,66 +18,61 @@ class TranslateController$ImageTranslateTask$1
   
   public void a(int paramInt, String paramString, ARCloudRecogResult paramARCloudRecogResult)
   {
-    Object localObject;
-    label82:
-    boolean bool;
     if (QLog.isColorLevel())
     {
-      if (paramARCloudRecogResult != null)
-      {
+      if (paramARCloudRecogResult != null) {
         localObject = paramARCloudRecogResult.a;
-        QLog.d("TranslateController", 2, "imageTranslate, retCode:" + paramInt + ",sessionId:" + paramString + ",result: " + localObject);
+      } else {
+        localObject = null;
       }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("imageTranslate, retCode:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(",sessionId:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(",result: ");
+      localStringBuilder.append(localObject);
+      QLog.d("TranslateController", 2, localStringBuilder.toString());
+    }
+    boolean bool = true;
+    int i;
+    if ((paramARCloudRecogResult != null) && (paramARCloudRecogResult.a != null))
+    {
+      paramString = paramARCloudRecogResult.a;
+      i = 1;
     }
     else
     {
-      int i = 0;
-      if ((paramARCloudRecogResult == null) || (paramARCloudRecogResult.a == null)) {
-        break label241;
-      }
-      paramString = paramARCloudRecogResult.a;
-      i = 1;
-      paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.b;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.a;
-      paramString.c = paramARCloudRecogResult;
-      if ((FileUtil.a((String)localObject)) && (!((String)localObject).equals(paramARCloudRecogResult))) {
-        FileUtil.c((String)localObject);
-      }
-      localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController$ImageTranslateTask.this$0;
-      if (paramInt != 0) {
-        break label260;
-      }
-      bool = true;
-      label149:
-      TranslateController.a((TranslateController)localObject, bool, paramARCloudRecogResult, paramString);
-      paramARCloudRecogResult = new HashMap();
-      paramARCloudRecogResult.put("costTime", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.c));
-      paramARCloudRecogResult.put("retCode", String.valueOf(paramInt));
-      if (i == 0) {
-        break label266;
-      }
-    }
-    label260:
-    label266:
-    for (paramString = "1";; paramString = "0")
-    {
-      paramARCloudRecogResult.put("hasResult", paramString);
-      StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "SCAN_IMAGE_TRANSLATE_COST", true, 0L, 0L, paramARCloudRecogResult, "", false);
-      return;
-      localObject = null;
-      break;
-      label241:
       paramString = new TranslateResult(2);
       paramString.b = 1002;
-      break label82;
-      bool = false;
-      break label149;
+      i = 0;
     }
+    paramARCloudRecogResult = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.b;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.a.a;
+    paramString.c = paramARCloudRecogResult;
+    if ((FileUtil.b((String)localObject)) && (!((String)localObject).equals(paramARCloudRecogResult))) {
+      FileUtil.c((String)localObject);
+    }
+    localObject = this.jdField_a_of_type_ComTencentMobileqqOcrTranslateController$ImageTranslateTask.this$0;
+    if (paramInt != 0) {
+      bool = false;
+    }
+    TranslateController.a((TranslateController)localObject, bool, paramARCloudRecogResult, paramString);
+    paramARCloudRecogResult = new HashMap();
+    paramARCloudRecogResult.put("costTime", String.valueOf(System.currentTimeMillis() - this.jdField_a_of_type_ComTencentMobileqqArArengineARCloudReqInfo.c));
+    paramARCloudRecogResult.put("retCode", String.valueOf(paramInt));
+    if (i != 0) {
+      paramString = "1";
+    } else {
+      paramString = "0";
+    }
+    paramARCloudRecogResult.put("hasResult", paramString);
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "SCAN_IMAGE_TRANSLATE_COST", true, 0L, 0L, paramARCloudRecogResult, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.TranslateController.ImageTranslateTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -22,10 +22,10 @@ public final class NotificationCompat$BubbleMetadata$Builder
   {
     if (paramBoolean)
     {
-      this.mFlags |= paramInt;
+      this.mFlags = (paramInt | this.mFlags);
       return this;
     }
-    this.mFlags &= (paramInt ^ 0xFFFFFFFF);
+    this.mFlags = ((paramInt ^ 0xFFFFFFFF) & this.mFlags);
     return this;
   }
   
@@ -33,13 +33,16 @@ public final class NotificationCompat$BubbleMetadata$Builder
   @NonNull
   public NotificationCompat.BubbleMetadata build()
   {
-    if (this.mPendingIntent == null) {
-      throw new IllegalStateException("Must supply pending intent to bubble");
-    }
-    if (this.mIcon == null) {
+    PendingIntent localPendingIntent = this.mPendingIntent;
+    if (localPendingIntent != null)
+    {
+      IconCompat localIconCompat = this.mIcon;
+      if (localIconCompat != null) {
+        return new NotificationCompat.BubbleMetadata(localPendingIntent, this.mDeleteIntent, localIconCompat, this.mDesiredHeight, this.mDesiredHeightResId, this.mFlags, null);
+      }
       throw new IllegalStateException("Must supply an icon for the bubble");
     }
-    return new NotificationCompat.BubbleMetadata(this.mPendingIntent, this.mDeleteIntent, this.mIcon, this.mDesiredHeight, this.mDesiredHeightResId, this.mFlags, null);
+    throw new IllegalStateException("Must supply pending intent to bubble");
   }
   
   @NonNull
@@ -75,24 +78,27 @@ public final class NotificationCompat$BubbleMetadata$Builder
   @NonNull
   public Builder setIcon(@NonNull IconCompat paramIconCompat)
   {
-    if (paramIconCompat == null) {
-      throw new IllegalArgumentException("Bubbles require non-null icon");
-    }
-    if (paramIconCompat.getType() == 1) {
+    if (paramIconCompat != null)
+    {
+      if (paramIconCompat.getType() != 1)
+      {
+        this.mIcon = paramIconCompat;
+        return this;
+      }
       throw new IllegalArgumentException("When using bitmap based icons, Bubbles require TYPE_ADAPTIVE_BITMAP, please use IconCompat#createWithAdaptiveBitmap instead");
     }
-    this.mIcon = paramIconCompat;
-    return this;
+    throw new IllegalArgumentException("Bubbles require non-null icon");
   }
   
   @NonNull
   public Builder setIntent(@NonNull PendingIntent paramPendingIntent)
   {
-    if (paramPendingIntent == null) {
-      throw new IllegalArgumentException("Bubble requires non-null pending intent");
+    if (paramPendingIntent != null)
+    {
+      this.mPendingIntent = paramPendingIntent;
+      return this;
     }
-    this.mPendingIntent = paramPendingIntent;
-    return this;
+    throw new IllegalArgumentException("Bubble requires non-null pending intent");
   }
   
   @NonNull
@@ -104,7 +110,7 @@ public final class NotificationCompat$BubbleMetadata$Builder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.app.NotificationCompat.BubbleMetadata.Builder
  * JD-Core Version:    0.7.0.1
  */

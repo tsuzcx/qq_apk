@@ -34,18 +34,15 @@ public class EmoJiEmotionViewHolder
       {
         this.a.setImageDrawable(paramEmotion);
         this.a.setVisibility(0);
+        return;
       }
+      this.a.setVisibility(8);
     }
-    else
-    {
-      return;
-    }
-    this.a.setVisibility(8);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.comment.panel.emoji.list.EmoJiEmotionViewHolder
  * JD-Core Version:    0.7.0.1
  */

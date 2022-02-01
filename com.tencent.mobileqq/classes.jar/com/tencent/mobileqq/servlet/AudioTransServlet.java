@@ -19,12 +19,11 @@ public class AudioTransServlet
       paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
       paramFromServiceMsg.attributes.put(FromServiceMsg.class.getSimpleName(), paramIntent);
     }
-    for (;;)
+    else
     {
-      ((PeakAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
-      return;
       paramIntent = new ToServiceMsg("", paramFromServiceMsg.getUin(), paramFromServiceMsg.getServiceCmd());
     }
+    ((PeakAppInterface)getAppRuntime()).receiveToService(paramIntent, paramFromServiceMsg);
   }
   
   public void onSend(Intent paramIntent, Packet paramPacket)
@@ -32,8 +31,12 @@ public class AudioTransServlet
     if (paramIntent != null)
     {
       paramIntent = (ToServiceMsg)paramIntent.getParcelableExtra(ToServiceMsg.class.getSimpleName());
-      if (QLog.isColorLevel()) {
-        QLog.d("AudioTransServlet", 2, " onSend runhw:" + paramIntent);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" onSend runhw:");
+        localStringBuilder.append(paramIntent);
+        QLog.d("AudioTransServlet", 2, localStringBuilder.toString());
       }
       if (paramIntent != null)
       {
@@ -50,7 +53,7 @@ public class AudioTransServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.servlet.AudioTransServlet
  * JD-Core Version:    0.7.0.1
  */

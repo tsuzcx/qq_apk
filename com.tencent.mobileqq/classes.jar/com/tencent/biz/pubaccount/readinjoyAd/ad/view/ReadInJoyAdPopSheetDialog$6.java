@@ -15,7 +15,7 @@ class ReadInJoyAdPopSheetDialog$6
   {
     if (System.currentTimeMillis() - ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog) > 500L)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = AIOUtils.a(140.5F, ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).getResources());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = AIOUtils.b(140.5F, ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).getResources());
       ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       ReadInJoyAdPopSheetDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog, System.currentTimeMillis());
     }
@@ -25,7 +25,7 @@ class ReadInJoyAdPopSheetDialog$6
   {
     if (System.currentTimeMillis() - ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog) > 500L)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = AIOUtils.a(40.0F, ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).getResources());
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams.topMargin = AIOUtils.b(40.0F, ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).getResources());
       ReadInJoyAdPopSheetDialog.a(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog).setLayoutParams(this.jdField_a_of_type_AndroidWidgetRelativeLayout$LayoutParams);
       ReadInJoyAdPopSheetDialog.b(this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdPopSheetDialog, System.currentTimeMillis());
     }
@@ -33,7 +33,7 @@ class ReadInJoyAdPopSheetDialog$6
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdPopSheetDialog.6
  * JD-Core Version:    0.7.0.1
  */

@@ -40,21 +40,24 @@ public final class SetSelectedSkinReq
   {
     paramJceOutputStream.write(this.op_uin, 0);
     paramJceOutputStream.write(this.app_type, 1);
-    if (this.qq_version != null) {
-      paramJceOutputStream.write(this.qq_version, 2);
+    String str = this.qq_version;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
-    if (this.phone_os != null) {
-      paramJceOutputStream.write(this.phone_os, 3);
+    str = this.phone_os;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
-    if (this.phone_model != null) {
-      paramJceOutputStream.write(this.phone_model, 4);
+    str = this.phone_model;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
     paramJceOutputStream.write(this.skin_id, 5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.SetSelectedSkinReq
  * JD-Core Version:    0.7.0.1
  */

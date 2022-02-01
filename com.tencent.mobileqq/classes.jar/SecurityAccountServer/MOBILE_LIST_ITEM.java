@@ -75,24 +75,30 @@ public final class MOBILE_LIST_ITEM
     paramJceOutputStream.write(this._name, 1);
     paramJceOutputStream.write(this._bind_uin, 2);
     paramJceOutputStream.write(this._isRecommend, 3);
-    if (this._value != null) {
-      paramJceOutputStream.write(this._value, 4);
+    String str = this._value;
+    if (str != null) {
+      paramJceOutputStream.write(str, 4);
     }
-    if (this._nationCode != null) {
-      paramJceOutputStream.write(this._nationCode, 5);
+    str = this._nationCode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 5);
     }
-    if (this._mobileCode != null) {
-      paramJceOutputStream.write(this._mobileCode, 6);
+    str = this._mobileCode;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
-    if (this._nick_name != null) {
-      paramJceOutputStream.write(this._nick_name, 7);
+    str = this._nick_name;
+    if (str != null) {
+      paramJceOutputStream.write(str, 7);
     }
     paramJceOutputStream.write(this._isFriend, 8);
-    if (this._mobileInDCache != null) {
-      paramJceOutputStream.write(this._mobileInDCache, 9);
+    str = this._mobileInDCache;
+    if (str != null) {
+      paramJceOutputStream.write(str, 9);
     }
-    if (this._nameInDCache != null) {
-      paramJceOutputStream.write(this._nameInDCache, 10);
+    str = this._nameInDCache;
+    if (str != null) {
+      paramJceOutputStream.write(str, 10);
     }
     paramJceOutputStream.write(this._recommendDate, 11);
     paramJceOutputStream.write(this._originBinder, 12);
@@ -104,7 +110,7 @@ public final class MOBILE_LIST_ITEM
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.MOBILE_LIST_ITEM
  * JD-Core Version:    0.7.0.1
  */

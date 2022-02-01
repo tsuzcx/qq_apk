@@ -44,7 +44,11 @@ public class QCircleSampleInfo
   public QCircleSampleInfo b(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    this.jdField_b_of_type_Int = MobileQQ.context.getSharedPreferences("QCircle_crash_share", 0).getInt("QCircle_crash_count_" + paramInt, 0);
+    SharedPreferences localSharedPreferences = MobileQQ.context.getSharedPreferences("QCircle_crash_share", 0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCircle_crash_count_");
+    localStringBuilder.append(paramInt);
+    this.jdField_b_of_type_Int = localSharedPreferences.getInt(localStringBuilder.toString(), 0);
     return this;
   }
   
@@ -97,12 +101,32 @@ public class QCircleSampleInfo
   
   public String toString()
   {
-    return "QCircleSampleInfo{mVersionCode=" + this.jdField_a_of_type_Int + ", mPluginZipPath='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mPluginMangerApkPath='" + this.jdField_b_of_type_JavaLangString + '\'' + ", mConfigJsonPath='" + this.jdField_c_of_type_JavaLangString + '\'' + ", mType='" + this.d + '\'' + ", mCrashCount=" + this.jdField_b_of_type_Int + ", mSupportMinHostVersion=" + this.jdField_c_of_type_Int + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QCircleSampleInfo{mVersionCode=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", mPluginZipPath='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mPluginMangerApkPath='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mConfigJsonPath='");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mType='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mCrashCount=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", mSupportMinHostVersion=");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qcircleshadow.local.QCircleSampleInfo
  * JD-Core Version:    0.7.0.1
  */

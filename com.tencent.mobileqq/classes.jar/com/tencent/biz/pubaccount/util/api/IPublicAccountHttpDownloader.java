@@ -3,7 +3,6 @@ package com.tencent.biz.pubaccount.util.api;
 import com.tencent.mobileqq.qroute.QRouteApi;
 import com.tencent.mobileqq.qroute.annotation.QAPI;
 import com.tencent.mobileqq.qroute.annotation.QRouteFactory;
-import com.tencent.mobileqq.transfile.HttpDownloader;
 import java.net.URL;
 
 @QAPI(process={"all"})
@@ -19,7 +18,7 @@ public abstract interface IPublicAccountHttpDownloader
   public static final int PUB_ACCOUNT_IMAGE_FROM_NATIVE_WEB = 4;
   public static final int PUB_ACCOUNT_IMAGE_FROM_SUBSCRIPT = 1;
   
-  public abstract HttpDownloader getHttpDownloader();
+  public abstract Object getHttpDownloader();
   
   public abstract URL makeURL(String paramString, int paramInt);
   
@@ -29,7 +28,7 @@ public abstract interface IPublicAccountHttpDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.util.api.IPublicAccountHttpDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -8,189 +8,141 @@ import android.graphics.Paint;
 import android.graphics.Rect;
 import android.support.v4.util.MQLruCache;
 import android.util.AttributeSet;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.GlobalImageCache;
 import com.tencent.mobileqq.util.BitmapManager;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class FixSizeImageView
   extends ThemeImageView
   implements IRecentImgv
 {
-  protected float a;
-  protected long a;
-  protected Bitmap a;
-  protected Paint a;
-  protected Rect a;
-  protected boolean a;
-  protected float b;
-  protected Paint b;
-  protected boolean b;
-  protected float c = 0.0F;
+  protected boolean isShowMask = false;
+  protected boolean isShowTroopCreditStatusIcon = false;
+  protected Paint mBmpPaint = null;
+  protected float mContentCenterX = -1.0F;
+  protected float mContentCenterY = -1.0F;
+  protected float mContentRadius = 0.0F;
+  protected Paint mMaskPaint = null;
+  protected long mTroopCreditLevel = 5L;
+  protected Bitmap mTroopCreditStatusBmp = null;
+  protected Rect mTroopCreditStatusIconRect = null;
   
   public FixSizeImageView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_b_of_type_Float = -1.0F;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_b_of_type_AndroidGraphicsPaint = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Long = 5L;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   public FixSizeImageView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_b_of_type_Float = -1.0F;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_b_of_type_AndroidGraphicsPaint = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Long = 5L;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
   public FixSizeImageView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    this.jdField_a_of_type_Float = -1.0F;
-    this.jdField_b_of_type_Float = -1.0F;
-    this.jdField_a_of_type_AndroidGraphicsPaint = null;
-    this.jdField_b_of_type_AndroidGraphicsPaint = null;
-    this.jdField_a_of_type_Boolean = false;
-    this.jdField_b_of_type_Boolean = false;
-    this.jdField_a_of_type_AndroidGraphicsRect = null;
-    this.jdField_a_of_type_Long = 5L;
-    this.jdField_a_of_type_AndroidGraphicsBitmap = null;
   }
   
-  protected static Bitmap a(long paramLong)
+  protected static Bitmap getTroopCreditStatusIcon(long paramLong)
   {
-    Bitmap localBitmap2 = null;
-    Bitmap localBitmap1 = null;
     long l = System.currentTimeMillis();
-    int i = -1;
-    Object localObject = "";
+    int i;
+    Object localObject;
     if (paramLong == 1L)
     {
-      i = 2130850878;
+      i = 2130850815;
       localObject = "StatusIcon_TroopPermanentBlockStatusBigIconKey";
-      if (i >= 0) {
-        break label58;
-      }
-      localObject = localBitmap1;
     }
-    label58:
-    do
+    else if (paramLong == 2L)
     {
-      return localObject;
-      if (paramLong != 2L) {
-        break;
-      }
-      i = 2130850880;
+      i = 2130850817;
       localObject = "StatusIcon_TroopTmpBlockStatusBigIcon";
-      break;
-      if (GlobalImageCache.a != null) {
-        localBitmap2 = (Bitmap)GlobalImageCache.a.get(localObject);
-      }
-      localBitmap1 = localBitmap2;
-      if (localBitmap2 == null)
+    }
+    else
+    {
+      i = -1;
+      localObject = "";
+    }
+    Bitmap localBitmap1 = null;
+    if (i < 0) {
+      return null;
+    }
+    if (GlobalImageCache.a != null) {
+      localBitmap1 = (Bitmap)GlobalImageCache.a.get(localObject);
+    }
+    Bitmap localBitmap2 = localBitmap1;
+    if (localBitmap1 == null)
+    {
+      localBitmap1 = BitmapManager.b(BaseApplication.getContext().getResources(), i);
+      localBitmap2 = localBitmap1;
+      if (localBitmap1 != null)
       {
-        localBitmap2 = BitmapManager.b(BaseApplicationImpl.getApplication().getResources(), i);
-        localBitmap1 = localBitmap2;
-        if (localBitmap2 != null)
+        localBitmap2 = localBitmap1;
+        if (GlobalImageCache.a != null)
         {
-          localBitmap1 = localBitmap2;
-          if (GlobalImageCache.a != null)
-          {
-            GlobalImageCache.a.put(localObject, localBitmap2);
-            localBitmap1 = localBitmap2;
-          }
+          GlobalImageCache.a.put(localObject, localBitmap1);
+          localBitmap2 = localBitmap1;
         }
       }
-      localObject = localBitmap1;
-    } while (!QLog.isColorLevel());
-    QLog.i("FixSizeImageView", 2, "getTroopCreditStatusIcon:" + (System.currentTimeMillis() - l));
-    return localBitmap1;
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getTroopCreditStatusIcon:");
+      ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+      QLog.i("FixSizeImageView", 2, ((StringBuilder)localObject).toString());
+    }
+    return localBitmap2;
   }
   
-  public void a(long paramLong)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_Long == paramLong) {
-      return;
-    }
-    this.jdField_a_of_type_Long = paramLong;
-    if (QLog.isColorLevel()) {
-      QLog.i("FixSizeImageView", 2, "showTroopCreditStatus:" + paramLong);
-    }
-    if ((paramLong == 2L) || (paramLong == 1L))
-    {
-      this.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = true;
-    }
-    for (this.jdField_a_of_type_AndroidGraphicsBitmap = a(paramLong);; this.jdField_a_of_type_AndroidGraphicsBitmap = null)
-    {
-      invalidate();
-      return;
-      this.jdField_a_of_type_Boolean = false;
-      this.jdField_b_of_type_Boolean = false;
+    super.dispatchDraw(paramCanvas);
+    if ((this.isShowMask) || (this.isShowTroopCreditStatusIcon)) {
+      doExtraDraw(paramCanvas);
     }
   }
   
-  protected void a(Canvas paramCanvas)
+  protected void doExtraDraw(Canvas paramCanvas)
   {
     int i;
     int j;
-    if (this.jdField_a_of_type_Boolean)
+    if (this.isShowMask)
     {
-      if ((this.jdField_a_of_type_Float == -1.0F) || (this.jdField_b_of_type_Float == -1.0F))
+      if ((this.mContentCenterX == -1.0F) || (this.mContentCenterY == -1.0F))
       {
         i = getWidth() - getPaddingLeft() - getPaddingRight();
-        this.jdField_a_of_type_Float = (getPaddingLeft() + i * 0.5F);
+        this.mContentCenterX = (getPaddingLeft() + i * 0.5F);
         j = getHeight() - getPaddingTop() - getPaddingBottom();
-        this.jdField_b_of_type_Float = (getPaddingTop() + j * 0.5F);
-        this.c = (Math.max(i, j) / 2);
+        this.mContentCenterY = (getPaddingTop() + j * 0.5F);
+        this.mContentRadius = (Math.max(i, j) / 2);
       }
-      if (this.jdField_a_of_type_AndroidGraphicsPaint == null)
+      if (this.mMaskPaint == null)
       {
-        this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-        this.jdField_a_of_type_AndroidGraphicsPaint.setColor(Color.parseColor("#B2000000"));
+        this.mMaskPaint = new Paint();
+        this.mMaskPaint.setAntiAlias(true);
+        this.mMaskPaint.setColor(Color.parseColor("#B2000000"));
       }
-      paramCanvas.drawCircle(this.jdField_a_of_type_Float, this.jdField_b_of_type_Float, this.c, this.jdField_a_of_type_AndroidGraphicsPaint);
+      paramCanvas.drawCircle(this.mContentCenterX, this.mContentCenterY, this.mContentRadius, this.mMaskPaint);
     }
-    if (this.jdField_b_of_type_Boolean)
+    if (this.isShowTroopCreditStatusIcon)
     {
-      if (this.jdField_b_of_type_AndroidGraphicsPaint == null)
+      if (this.mBmpPaint == null)
       {
-        this.jdField_b_of_type_AndroidGraphicsPaint = new Paint();
-        this.jdField_b_of_type_AndroidGraphicsPaint.setAntiAlias(true);
-        this.jdField_b_of_type_AndroidGraphicsPaint.setFilterBitmap(true);
+        this.mBmpPaint = new Paint();
+        this.mBmpPaint.setAntiAlias(true);
+        this.mBmpPaint.setFilterBitmap(true);
       }
-      if (this.jdField_a_of_type_AndroidGraphicsBitmap != null)
+      if (this.mTroopCreditStatusBmp != null)
       {
-        if (this.jdField_a_of_type_AndroidGraphicsRect == null)
+        if (this.mTroopCreditStatusIconRect == null)
         {
           i = getWidth() - getPaddingRight();
           j = getHeight() - getPaddingBottom();
-          this.jdField_a_of_type_AndroidGraphicsRect = new Rect(i - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth(), j - this.jdField_a_of_type_AndroidGraphicsBitmap.getHeight(), i, j);
+          this.mTroopCreditStatusIconRect = new Rect(i - this.mTroopCreditStatusBmp.getWidth(), j - this.mTroopCreditStatusBmp.getHeight(), i, j);
         }
-        paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, null, this.jdField_a_of_type_AndroidGraphicsRect, this.jdField_b_of_type_AndroidGraphicsPaint);
+        paramCanvas.drawBitmap(this.mTroopCreditStatusBmp, null, this.mTroopCreditStatusIconRect, this.mBmpPaint);
       }
-    }
-  }
-  
-  public void dispatchDraw(Canvas paramCanvas)
-  {
-    super.dispatchDraw(paramCanvas);
-    if ((this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean)) {
-      a(paramCanvas);
     }
   }
   
@@ -200,10 +152,38 @@ public class FixSizeImageView
   }
   
   public void requestLayout() {}
+  
+  public void showTroopCreditStatus(long paramLong)
+  {
+    if (this.mTroopCreditLevel == paramLong) {
+      return;
+    }
+    this.mTroopCreditLevel = paramLong;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showTroopCreditStatus:");
+      localStringBuilder.append(paramLong);
+      QLog.i("FixSizeImageView", 2, localStringBuilder.toString());
+    }
+    if ((paramLong != 2L) && (paramLong != 1L))
+    {
+      this.isShowMask = false;
+      this.isShowTroopCreditStatusIcon = false;
+      this.mTroopCreditStatusBmp = null;
+    }
+    else
+    {
+      this.isShowMask = true;
+      this.isShowTroopCreditStatusIcon = true;
+      this.mTroopCreditStatusBmp = getTroopCreditStatusIcon(paramLong);
+    }
+    invalidate();
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.FixSizeImageView
  * JD-Core Version:    0.7.0.1
  */

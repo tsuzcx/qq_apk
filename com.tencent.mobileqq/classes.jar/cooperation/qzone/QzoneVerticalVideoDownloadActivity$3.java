@@ -2,7 +2,6 @@ package cooperation.qzone;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class QzoneVerticalVideoDownloadActivity$3
   implements View.OnClickListener
@@ -16,12 +15,11 @@ class QzoneVerticalVideoDownloadActivity$3
       QzoneVerticalVideoDownloadActivity.access$300(this.this$0, false, false);
       QzoneVerticalVideoDownloadActivity.access$400(this.this$0);
     }
-    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.QzoneVerticalVideoDownloadActivity.3
  * JD-Core Version:    0.7.0.1
  */

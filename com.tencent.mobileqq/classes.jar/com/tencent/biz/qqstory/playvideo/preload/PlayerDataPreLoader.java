@@ -52,146 +52,132 @@ public class PlayerDataPreLoader
     if (i2 == 0) {
       return localResult;
     }
-    int j = 0;
+    int i;
+    int k;
     if (paramGroupId != null)
     {
       i = paramData.jdField_a_of_type_JavaUtilList.indexOf(new IDataProvider.GroupInfo(paramGroupId));
-      j = i;
-      if (i < 0)
-      {
+      k = i;
+      if (i < 0) {
         SLog.e("Q.qqstory.player.data.PlayerDataPreLoader", "can't find center group:%s", new Object[] { paramGroupId });
-        j = 0;
       }
     }
-    int i1 = j - 1;
-    int n = j + 1;
-    int k = 0;
-    int i = 0;
-    int m;
-    if (i1 >= 0)
+    else
     {
-      m = i1;
-      for (;;)
-      {
-        k = i;
-        if (m < 0) {
-          break label277;
-        }
-        k = i;
-        if (m <= i1 - paramInt1) {
-          break label277;
-        }
-        if (((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_JavaUtilList.size() != 0) {
-          break;
-        }
-        m -= 1;
-      }
-      paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_JavaUtilList.get(0);
-      if (a(paramGroupId)) {
-        break label707;
-      }
-      localResult.jdField_a_of_type_JavaUtilList.add(paramGroupId);
+      k = 0;
     }
-    label277:
-    label535:
-    label697:
-    label700:
-    label707:
-    for (k = i + 1;; k = i)
+    int n = k - 1;
+    int m = k + 1;
+    if (n >= 0)
     {
-      paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(m)).jdField_a_of_type_JavaUtilMap.get(paramGroupId);
-      i = k;
-      if (b(paramGroupId)) {
-        break;
-      }
-      localResult.a(paramGroupId);
-      i = k;
-      break;
-      i = k;
-      if (n < i2)
+      i = 0;
+      int i1;
+      for (j = n;; j = i1 - 1)
       {
-        i = n;
-        paramInt1 = k;
-        for (;;)
-        {
-          k = i;
-          i = paramInt1;
-          if (k >= i2) {
-            break label464;
-          }
-          i = paramInt1;
-          if (k <= n + paramInt2) {
-            break label464;
-          }
-          if (((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaUtilList.size() != 0) {
-            break;
-          }
-          i = k - 1;
-        }
-        paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaUtilList.get(0);
-        if (a(paramGroupId)) {
-          break label700;
-        }
-        localResult.jdField_a_of_type_JavaUtilList.add(paramGroupId);
-      }
-      for (i = paramInt1 + 1;; i = paramInt1)
-      {
-        paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(k)).jdField_a_of_type_JavaUtilMap.get(paramGroupId);
-        paramInt1 = i;
-        if (b(paramGroupId)) {
+        i1 = j;
+        j = i;
+        if (i1 < 0) {
           break;
         }
-        localResult.a(paramGroupId);
-        paramInt1 = i;
-        break;
-        label464:
-        paramInt2 = j;
-        String str;
-        if (paramInt2 < i2)
+        j = i;
+        if (i1 <= n - paramInt1) {
+          break;
+        }
+        if (((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i1)).jdField_a_of_type_JavaUtilList.size() != 0)
         {
-          paramGroupId = ((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(paramInt2)).jdField_a_of_type_JavaUtilList;
-          paramInt1 = 0;
-          if (j == paramInt2)
+          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i1)).jdField_a_of_type_JavaUtilList.get(0);
+          j = i;
+          if (!a(paramGroupId))
           {
-            k = paramGroupId.indexOf(paramString) - paramInt3;
-            paramInt1 = k;
-            if (k < 0) {
-              paramInt1 = 0;
-            }
+            localResult.jdField_a_of_type_JavaUtilList.add(paramGroupId);
+            j = i + 1;
           }
-          k = paramInt1;
-          paramInt1 = i;
-          if (k < paramGroupId.size())
+          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i1)).jdField_a_of_type_JavaUtilMap.get(paramGroupId);
+          i = j;
+          if (!b(paramGroupId))
           {
-            str = (String)paramGroupId.get(k);
-            if ((a(str)) || (localResult.jdField_a_of_type_JavaUtilList.contains(str))) {
-              break label697;
-            }
+            localResult.a(paramGroupId);
+            i = j;
+          }
+        }
+      }
+    }
+    int j = 0;
+    paramInt1 = j;
+    if (m < i2) {
+      for (paramInt1 = m;; paramInt1 = i - 1)
+      {
+        i = paramInt1;
+        paramInt1 = j;
+        if (i >= i2) {
+          break;
+        }
+        paramInt1 = j;
+        if (i <= paramInt2 + m) {
+          break;
+        }
+        if (((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaUtilList.size() != 0)
+        {
+          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaUtilList.get(0);
+          paramInt1 = j;
+          if (!a(paramGroupId))
+          {
+            localResult.jdField_a_of_type_JavaUtilList.add(paramGroupId);
+            paramInt1 = j + 1;
+          }
+          paramGroupId = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(i)).jdField_a_of_type_JavaUtilMap.get(paramGroupId);
+          j = paramInt1;
+          if (!b(paramGroupId))
+          {
+            localResult.a(paramGroupId);
+            j = paramInt1;
+          }
+        }
+      }
+    }
+    paramInt2 = k;
+    for (j = paramInt1; paramInt2 < i2; j = i)
+    {
+      paramGroupId = ((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(paramInt2)).jdField_a_of_type_JavaUtilList;
+      if (k == paramInt2)
+      {
+        m = paramGroupId.indexOf(paramString) - paramInt3;
+        i = j;
+        paramInt1 = m;
+        if (m >= 0) {}
+      }
+      else
+      {
+        paramInt1 = 0;
+      }
+      for (i = j; paramInt1 < paramGroupId.size(); i = j)
+      {
+        String str = (String)paramGroupId.get(paramInt1);
+        j = i;
+        if (!a(str))
+        {
+          j = i;
+          if (!localResult.jdField_a_of_type_JavaUtilList.contains(str))
+          {
             localResult.jdField_a_of_type_JavaUtilList.add(str);
-            paramInt1 += 1;
+            j = i + 1;
           }
         }
-        for (;;)
+        if (localResult.b.size() < paramInt4)
         {
-          if (localResult.b.size() < paramInt4)
-          {
-            str = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(paramInt2)).jdField_a_of_type_JavaUtilMap.get(str);
-            if (!b(str)) {
-              localResult.a(str);
-            }
+          str = (String)((IDataProvider.GroupInfo)paramData.jdField_a_of_type_JavaUtilList.get(paramInt2)).jdField_a_of_type_JavaUtilMap.get(str);
+          if (!b(str)) {
+            localResult.a(str);
           }
-          if (paramInt1 > paramInt4) {
-            return localResult;
-          }
-          k += 1;
-          break label535;
-          paramInt2 += 1;
-          i = paramInt1;
-          break;
+        }
+        if (j > paramInt4) {
           return localResult;
         }
+        paramInt1 += 1;
       }
+      paramInt2 += 1;
     }
+    return localResult;
   }
   
   private void a(List<String> paramList)
@@ -242,78 +228,79 @@ public class PlayerDataPreLoader
   
   private void e()
   {
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data == null) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.size() == 0) || (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId == null) || (this.jdField_a_of_type_JavaLangString == null))
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data;
+    if ((localObject1 != null) && (((IDataProvider.Data)localObject1).jdField_a_of_type_JavaUtilList.size() != 0) && (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId != null) && (this.jdField_a_of_type_JavaLangString != null))
     {
-      SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:data empty , cannot preload feature info");
-      return;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.indexOf(new IDataProvider.GroupInfo(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId));
-    if (i < 0)
-    {
-      SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center group:%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId });
-      return;
-    }
-    Object localObject1 = (IDataProvider.GroupInfo)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.get(i);
-    int j = ((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilList.indexOf(this.jdField_a_of_type_JavaLangString);
-    if (j < 0)
-    {
-      SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center vid:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
-      return;
-    }
-    int k = j + 1;
-    if (k < ((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilList.size())
-    {
-      localObject2 = (String)((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilList.get(k));
-      if (!TextUtils.isEmpty((CharSequence)localObject2)) {
-        localArrayList.add(localObject2);
-      }
-    }
-    j -= 1;
-    if (j >= 0)
-    {
-      localObject1 = (String)((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilList.get(j));
-      if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-        localArrayList.add(localObject1);
-      }
-    }
-    j = i + 1;
-    if ((j >= 0) && (j < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.size()))
-    {
-      localObject1 = (IDataProvider.GroupInfo)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.get(j);
-      if (((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilList.size() > 0)
+      localObject1 = new ArrayList();
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.indexOf(new IDataProvider.GroupInfo(this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId));
+      if (i < 0)
       {
-        localObject1 = (String)((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilList.get(0));
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localArrayList.add(localObject1);
+        SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center group:%s", new Object[] { this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId });
+        return;
+      }
+      Object localObject2 = (IDataProvider.GroupInfo)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.get(i);
+      int j = ((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.indexOf(this.jdField_a_of_type_JavaLangString);
+      if (j < 0)
+      {
+        SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:can't find center vid:%s", new Object[] { this.jdField_a_of_type_JavaLangString });
+        return;
+      }
+      int k = j + 1;
+      if (k < ((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.size())
+      {
+        localObject3 = (String)((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.get(k));
+        if (!TextUtils.isEmpty((CharSequence)localObject3)) {
+          ((Collection)localObject1).add(localObject3);
         }
       }
-    }
-    i -= 1;
-    if ((i >= 0) && (i < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.size()))
-    {
-      localObject1 = (IDataProvider.GroupInfo)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.get(i);
-      if (((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilList.size() > 0)
+      j -= 1;
+      if (j >= 0)
       {
-        localObject1 = (String)((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject1).jdField_a_of_type_JavaUtilList.get(0));
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          localArrayList.add(localObject1);
+        localObject2 = (String)((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.get(j));
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          ((Collection)localObject1).add(localObject2);
         }
       }
-    }
-    localObject1 = new ArrayList();
-    Object localObject2 = (FeedManager)SuperManager.a(11);
-    Iterator localIterator = localArrayList.iterator();
-    while (localIterator.hasNext())
-    {
-      String str = (String)localIterator.next();
-      if ((!FeedItem.isFakeFeedId(str)) && (!((ArrayList)localObject1).contains(str)))
+      j = i + 1;
+      if ((j >= 0) && (j < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.size()))
       {
-        ((ArrayList)localObject1).add(str);
-        ((FeedManager)localObject2).a(str);
+        localObject2 = (IDataProvider.GroupInfo)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.get(j);
+        if (((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.size() > 0)
+        {
+          localObject2 = (String)((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.get(0));
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            ((Collection)localObject1).add(localObject2);
+          }
+        }
       }
+      i -= 1;
+      if ((i >= 0) && (i < this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.size()))
+      {
+        localObject2 = (IDataProvider.GroupInfo)this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$Data.jdField_a_of_type_JavaUtilList.get(i);
+        if (((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.size() > 0)
+        {
+          localObject2 = (String)((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilMap.get(((IDataProvider.GroupInfo)localObject2).jdField_a_of_type_JavaUtilList.get(0));
+          if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+            ((Collection)localObject1).add(localObject2);
+          }
+        }
+      }
+      localObject2 = new ArrayList();
+      Object localObject3 = (FeedManager)SuperManager.a(11);
+      Iterator localIterator = ((Collection)localObject1).iterator();
+      while (localIterator.hasNext())
+      {
+        String str = (String)localIterator.next();
+        if ((!FeedItem.isFakeFeedId(str)) && (!((ArrayList)localObject2).contains(str)))
+        {
+          ((ArrayList)localObject2).add(str);
+          ((FeedManager)localObject3).a(str);
+        }
+      }
+      SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:feed id list:%s , preload feature count:%d", new Object[] { localObject1, Integer.valueOf(((ArrayList)localObject2).size()) });
+      return;
     }
-    SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:feed id list:%s , preload feature count:%d", new Object[] { localArrayList, Integer.valueOf(((ArrayList)localObject1).size()) });
+    SLog.d("Q.qqstory.player.data.PlayerDataPreLoader", "preload feature info:data empty , cannot preload feature info");
   }
   
   public void a()
@@ -349,7 +336,7 @@ public class PlayerDataPreLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.preload.PlayerDataPreLoader
  * JD-Core Version:    0.7.0.1
  */

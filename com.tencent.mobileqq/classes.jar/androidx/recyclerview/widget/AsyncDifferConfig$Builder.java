@@ -23,15 +23,16 @@ public final class AsyncDifferConfig$Builder<T>
   @NonNull
   public AsyncDifferConfig<T> build()
   {
-    if (this.mBackgroundThreadExecutor == null) {}
-    synchronized (sExecutorLock)
-    {
-      if (sDiffExecutor == null) {
-        sDiffExecutor = Executors.newFixedThreadPool(2);
+    if (this.mBackgroundThreadExecutor == null) {
+      synchronized (sExecutorLock)
+      {
+        if (sDiffExecutor == null) {
+          sDiffExecutor = Executors.newFixedThreadPool(2);
+        }
+        this.mBackgroundThreadExecutor = sDiffExecutor;
       }
-      this.mBackgroundThreadExecutor = sDiffExecutor;
-      return new AsyncDifferConfig(this.mMainThreadExecutor, this.mBackgroundThreadExecutor, this.mDiffCallback);
     }
+    return new AsyncDifferConfig(this.mMainThreadExecutor, this.mBackgroundThreadExecutor, this.mDiffCallback);
   }
   
   @NonNull
@@ -51,7 +52,7 @@ public final class AsyncDifferConfig$Builder<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.AsyncDifferConfig.Builder
  * JD-Core Version:    0.7.0.1
  */

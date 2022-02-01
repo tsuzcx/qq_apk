@@ -24,15 +24,16 @@ public final class qqstory_710_message$StoryChallengeInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 74 }, new String[] { "challenge_uid", "challenge_time", "is_bigv", "union_id", "content", "comment_id", "comment_del", "video_del", "challenge_feed_id" }, new Object[] { Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro3 }, StoryChallengeInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 42, 48, 56, 64, 74 }, new String[] { "challenge_uid", "challenge_time", "is_bigv", "union_id", "content", "comment_id", "comment_del", "video_del", "challenge_feed_id" }, new Object[] { Long.valueOf(0L), localInteger, localInteger, localByteStringMicro1, localByteStringMicro2, localInteger, localInteger, localInteger, localByteStringMicro3 }, StoryChallengeInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_710_message.StoryChallengeInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -53,57 +53,63 @@ public class UKYOApple
     String str;
     if (f >= 0.83F) {
       str = "state001";
+    } else if (f >= 0.56F) {
+      str = "state002";
+    } else if (f >= 0.25F) {
+      str = "state003";
+    } else {
+      str = "state004";
     }
-    for (;;)
-    {
-      TriggerStateManager.getInstance().getTriggerStateItem(this.mRenderID).forceUpdateState(str);
-      return;
-      if (f >= 0.56F) {
-        str = "state002";
-      } else if (f >= 0.25F) {
-        str = "state003";
-      } else {
-        str = "state004";
-      }
-    }
+    TriggerStateManager.getInstance().getTriggerStateItem(this.mRenderID).forceUpdateState(str);
   }
   
   private double getLeft(double paramDouble)
   {
     if (paramDouble < 0.3D) {
-      paramDouble = 0.667D * paramDouble;
+      d = 0.667D;
     }
-    double d;
-    do
+    for (;;)
     {
-      return paramDouble;
+      return paramDouble * d;
       if (paramDouble <= 0.7D) {
         break;
       }
-      d = (paramDouble - 0.7D) * 0.66D + 0.65D;
-      paramDouble = d;
-    } while (this.mOriginAppleSetting == null);
-    return d * this.mOriginAppleSetting.maxWidth;
-    return (paramDouble - 0.3D) * 1.5D + 0.2D;
+      paramDouble = (paramDouble - 0.7D) * 0.66D + 0.65D;
+      AppleItemSetting localAppleItemSetting = this.mOriginAppleSetting;
+      d = paramDouble;
+      if (localAppleItemSetting == null) {
+        return d;
+      }
+      d = localAppleItemSetting.maxWidth;
+      Double.isNaN(d);
+    }
+    double d = (paramDouble - 0.3D) * 1.5D + 0.2D;
+    return d;
   }
   
   private void initAudioAttack()
   {
-    if (this.mPlayerAudioattack != null) {}
-    for (;;)
-    {
+    if (this.mPlayerAudioattack != null) {
       return;
-      Object localObject = this.mOriginAppleSetting.audioattack;
-      String str = this.mOriginAppleSetting.dataPath;
-      if ((localObject != null) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(((StickerItem)localObject).id)) && (!TextUtils.isEmpty(((StickerItem)localObject).audio)))
-      {
-        localObject = str + File.separator + ((StickerItem)localObject).id + File.separator + ((StickerItem)localObject).audio;
-        if (((String)localObject).startsWith("assets://")) {}
-        for (this.mPlayerAudioattack = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), ((String)localObject).replace("assets://", ""), false); this.mPlayerAudioattack != null; this.mPlayerAudioattack = PlayerUtil.createPlayerFromUri(AEModule.getContext(), (String)localObject, false))
-        {
-          TouchTriggerManager.getInstance().setMusicDuration(this.mPlayerAudioattack.getDuration());
-          return;
-        }
+    }
+    Object localObject = this.mOriginAppleSetting.audioattack;
+    String str = this.mOriginAppleSetting.dataPath;
+    if ((localObject != null) && (!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(((StickerItem)localObject).id)) && (!TextUtils.isEmpty(((StickerItem)localObject).audio)))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(((StickerItem)localObject).id);
+      localStringBuilder.append(File.separator);
+      localStringBuilder.append(((StickerItem)localObject).audio);
+      localObject = localStringBuilder.toString();
+      if (((String)localObject).startsWith("assets://")) {
+        this.mPlayerAudioattack = PlayerUtil.createPlayerFromAssets(AEModule.getContext(), ((String)localObject).replace("assets://", ""), false);
+      } else {
+        this.mPlayerAudioattack = PlayerUtil.createPlayerFromUri(AEModule.getContext(), (String)localObject, false);
+      }
+      if (this.mPlayerAudioattack != null) {
+        TouchTriggerManager.getInstance().setMusicDuration(this.mPlayerAudioattack.getDuration());
       }
     }
   }
@@ -118,15 +124,16 @@ public class UKYOApple
       if (localAppleStatus.isAppear())
       {
         localUKYOFilter.setImageID(UKYOApple.AppleStatus.access$200(localAppleStatus));
-        if (localAppleStatus.frameIndex >= 0) {}
-        for (int i = localAppleStatus.frameIndex;; i = 0)
-        {
-          localUKYOFilter.setFrameIndex(i);
-          localUKYOFilter.setPositions(localAppleStatus.mAdjustPoints);
-          localUKYOFilter.updatePreview(this.mInfoObjext);
-          paramFrame = this.mRenderListener.RenderProcessForFilter(paramFrame, null, localUKYOFilter);
-          break;
+        int i;
+        if (localAppleStatus.frameIndex >= 0) {
+          i = localAppleStatus.frameIndex;
+        } else {
+          i = 0;
         }
+        localUKYOFilter.setFrameIndex(i);
+        localUKYOFilter.setPositions(localAppleStatus.mAdjustPoints);
+        localUKYOFilter.updatePreview(this.mInfoObjext);
+        paramFrame = this.mRenderListener.RenderProcessForFilter(paramFrame, null, localUKYOFilter);
       }
     }
     return paramFrame;
@@ -134,83 +141,70 @@ public class UKYOApple
   
   private Frame rendFlash(Frame paramFrame)
   {
-    Object localObject2 = paramFrame;
-    if (this.mFlashStatus != null)
+    Object localObject1 = this.mFlashStatus;
+    if (localObject1 != null)
     {
-      if (this.mFlashStatus.size() == 0) {
-        localObject2 = paramFrame;
+      if (((HashMap)localObject1).size() == 0) {
+        return paramFrame;
       }
-    }
-    else {
-      return localObject2;
-    }
-    UKYOFilter localUKYOFilter = (UKYOFilter)this.filter;
-    Iterator localIterator = this.mFlashStatus.keySet().iterator();
-    localObject2 = null;
-    Object localObject1 = paramFrame;
-    paramFrame = (Frame)localObject2;
-    label57:
-    int i;
-    UKYOApple.FlashStatus localFlashStatus;
-    if (localIterator.hasNext())
-    {
-      i = ((Integer)localIterator.next()).intValue();
-      localFlashStatus = (UKYOApple.FlashStatus)this.mFlashStatus.get(Integer.valueOf(i));
-      if (localFlashStatus == null)
-      {
-        if (paramFrame != null) {
-          break label288;
-        }
-        paramFrame = new ArrayList();
-      }
-    }
-    label288:
-    for (;;)
-    {
-      paramFrame.add(Integer.valueOf(i));
-      break label57;
-      localUKYOFilter.setImageID(UKYOApple.FlashStatus.access$000(localFlashStatus).mImageID);
-      localUKYOFilter.setFrameIndex(localFlashStatus.frameIndex);
-      localUKYOFilter.setPositions(localFlashStatus.mAdjustPoints);
-      localUKYOFilter.updatePreview(this.mInfoObjext);
-      localObject2 = this.mRenderListener.RenderProcessForFilter((Frame)localObject1, null, localUKYOFilter);
-      localObject1 = localObject2;
-      if (!UKYOApple.FlashStatus.access$100(localFlashStatus)) {
-        break label57;
-      }
+      UKYOFilter localUKYOFilter = (UKYOFilter)this.filter;
+      Iterator localIterator = this.mFlashStatus.keySet().iterator();
       localObject1 = paramFrame;
-      if (paramFrame == null) {
-        localObject1 = new ArrayList();
-      }
-      ((ArrayList)localObject1).add(Integer.valueOf(i));
-      paramFrame = (Frame)localObject1;
-      localObject1 = localObject2;
-      break label57;
-      localObject2 = localObject1;
-      if (paramFrame == null) {
-        break;
-      }
-      localObject2 = localObject1;
-      if (paramFrame.size() <= 0) {
-        break;
-      }
-      paramFrame = paramFrame.iterator();
-      for (;;)
+      paramFrame = null;
+      int i;
+      while (localIterator.hasNext())
       {
-        localObject2 = localObject1;
-        if (!paramFrame.hasNext()) {
-          break;
+        i = ((Integer)localIterator.next()).intValue();
+        Object localObject2 = (UKYOApple.FlashStatus)this.mFlashStatus.get(Integer.valueOf(i));
+        if (localObject2 == null)
+        {
+          localObject2 = paramFrame;
+          if (paramFrame == null) {
+            localObject2 = new ArrayList();
+          }
+          ((ArrayList)localObject2).add(Integer.valueOf(i));
+          paramFrame = (Frame)localObject2;
         }
-        i = ((Integer)paramFrame.next()).intValue();
-        this.mFlashStatus.remove(Integer.valueOf(i));
+        else
+        {
+          localUKYOFilter.setImageID(UKYOApple.FlashStatus.access$000((UKYOApple.FlashStatus)localObject2).mImageID);
+          localUKYOFilter.setFrameIndex(((UKYOApple.FlashStatus)localObject2).frameIndex);
+          localUKYOFilter.setPositions(((UKYOApple.FlashStatus)localObject2).mAdjustPoints);
+          localUKYOFilter.updatePreview(this.mInfoObjext);
+          Frame localFrame = this.mRenderListener.RenderProcessForFilter((Frame)localObject1, null, localUKYOFilter);
+          localObject1 = localFrame;
+          if (UKYOApple.FlashStatus.access$100((UKYOApple.FlashStatus)localObject2))
+          {
+            localObject2 = paramFrame;
+            if (paramFrame == null) {
+              localObject2 = new ArrayList();
+            }
+            ((ArrayList)localObject2).add(Integer.valueOf(i));
+            localObject1 = localFrame;
+            paramFrame = (Frame)localObject2;
+          }
+        }
       }
+      if ((paramFrame != null) && (paramFrame.size() > 0))
+      {
+        paramFrame = paramFrame.iterator();
+        while (paramFrame.hasNext())
+        {
+          i = ((Integer)paramFrame.next()).intValue();
+          this.mFlashStatus.remove(Integer.valueOf(i));
+        }
+      }
+      return localObject1;
     }
+    return paramFrame;
   }
   
   public Frame RenderProcess(Frame paramFrame)
   {
-    if (this.filter == null) {}
-    while ((this.triggerCtrlItem != null) && (!this.triggerCtrlItem.isTriggered())) {
+    if (this.filter == null) {
+      return paramFrame;
+    }
+    if ((this.triggerCtrlItem != null) && (!this.triggerCtrlItem.isTriggered())) {
       return paramFrame;
     }
     Frame localFrame = rendApples(paramFrame);
@@ -228,8 +222,9 @@ public class UKYOApple
   public void clear()
   {
     reset();
-    if (this.mAppleList != null) {
-      this.mAppleList.clear();
+    ArrayList localArrayList = this.mAppleList;
+    if (localArrayList != null) {
+      localArrayList.clear();
     }
     ((UKYOFilter)this.filter).clear();
     destroyAudio();
@@ -237,9 +232,10 @@ public class UKYOApple
   
   public void destroyAudio()
   {
-    if (this.mPlayerAudioattack != null)
+    PlayerUtil.Player localPlayer = this.mPlayerAudioattack;
+    if (localPlayer != null)
     {
-      PlayerUtil.destroyPlayer(this.mPlayerAudioattack);
+      PlayerUtil.destroyPlayer(localPlayer);
       this.mPlayerAudioattack = null;
     }
   }
@@ -266,20 +262,24 @@ public class UKYOApple
   public void initAppStatus(AppleItemSetting paramAppleItemSetting)
   {
     this.mOriginAppleSetting = paramAppleItemSetting;
-    if ((this.mOriginAppleSetting == null) || (this.mOriginAppleSetting.mAppleAppearTime == null) || (this.mOriginAppleSetting.mAppleAppearTime.size() == 0)) {
-      return;
-    }
-    if (this.mAppleList == null) {
-      this.mAppleList = new ArrayList();
-    }
-    paramAppleItemSetting = this.mOriginAppleSetting.mAppleAppearTime.iterator();
-    while (paramAppleItemSetting.hasNext())
+    paramAppleItemSetting = this.mOriginAppleSetting;
+    if ((paramAppleItemSetting != null) && (paramAppleItemSetting.mAppleAppearTime != null))
     {
-      float f = ((Float)paramAppleItemSetting.next()).floatValue();
-      UKYOApple.AppleStatus localAppleStatus = new UKYOApple.AppleStatus(this, this.mOriginAppleSetting, (int)(f * 1000.0F));
-      this.mAppleList.add(localAppleStatus);
+      if (this.mOriginAppleSetting.mAppleAppearTime.size() == 0) {
+        return;
+      }
+      if (this.mAppleList == null) {
+        this.mAppleList = new ArrayList();
+      }
+      paramAppleItemSetting = this.mOriginAppleSetting.mAppleAppearTime.iterator();
+      while (paramAppleItemSetting.hasNext())
+      {
+        float f = ((Float)paramAppleItemSetting.next()).floatValue();
+        UKYOApple.AppleStatus localAppleStatus = new UKYOApple.AppleStatus(this, this.mOriginAppleSetting, (int)(f * 1000.0F));
+        this.mAppleList.add(localAppleStatus);
+      }
+      initAudioAttack();
     }
-    initAudioAttack();
   }
   
   public void initFlashSetting(FlashItemSetting paramFlashItemSetting)
@@ -289,20 +289,22 @@ public class UKYOApple
   
   public boolean isPlaying()
   {
-    return !this.mIsAllDisappear;
+    return this.mIsAllDisappear ^ true;
   }
   
   public void reset()
   {
-    if (this.mAppleList != null)
+    Object localObject = this.mAppleList;
+    if (localObject != null)
     {
-      Iterator localIterator = this.mAppleList.iterator();
-      while (localIterator.hasNext()) {
-        ((UKYOApple.AppleStatus)localIterator.next()).reset();
+      localObject = ((ArrayList)localObject).iterator();
+      while (((Iterator)localObject).hasNext()) {
+        ((UKYOApple.AppleStatus)((Iterator)localObject).next()).reset();
       }
     }
-    if (this.mFlashStatus != null) {
-      this.mFlashStatus.clear();
+    localObject = this.mFlashStatus;
+    if (localObject != null) {
+      ((HashMap)localObject).clear();
     }
     this.mInitedTime = -1L;
     this.mDisapearCount = 0;
@@ -333,10 +335,11 @@ public class UKYOApple
     if (!VideoPrefsUtil.getMaterialMute())
     {
       initAudioAttack();
-      if (this.mPlayerAudioattack == null) {
+      PlayerUtil.Player localPlayer = this.mPlayerAudioattack;
+      if (localPlayer == null) {
         return;
       }
-      PlayerUtil.startPlayer(this.mPlayerAudioattack, paramBoolean);
+      PlayerUtil.startPlayer(localPlayer, paramBoolean);
       return;
     }
     PlayerUtil.stopPlayer(this.mPlayerAudioattack);
@@ -344,74 +347,80 @@ public class UKYOApple
   
   public void updatePreview(Object paramObject)
   {
-    if ((paramObject == null) || (!(paramObject instanceof PTDetectInfo))) {
-      return;
-    }
-    this.mCurrentTime = ((PTDetectInfo)paramObject).timestamp;
-    if (this.mInitedTime < 0L) {
-      this.mInitedTime = this.mCurrentTime;
-    }
-    int i;
-    if ((this.mFlashStatus != null) && (this.mFlashStatus.size() > 0))
+    if (paramObject != null)
     {
-      localIterator = this.mFlashStatus.keySet().iterator();
-      while (localIterator.hasNext())
+      if (!(paramObject instanceof PTDetectInfo)) {
+        return;
+      }
+      this.mCurrentTime = ((PTDetectInfo)paramObject).timestamp;
+      if (this.mInitedTime < 0L) {
+        this.mInitedTime = this.mCurrentTime;
+      }
+      Object localObject = this.mFlashStatus;
+      int i;
+      if ((localObject != null) && (((HashMap)localObject).size() > 0))
       {
-        i = ((Integer)localIterator.next()).intValue();
-        if (this.mFlashStatus.get(Integer.valueOf(i)) != null) {
-          ((UKYOApple.FlashStatus)this.mFlashStatus.get(Integer.valueOf(i))).updateIndex(this.mCurrentTime);
+        localObject = this.mFlashStatus.keySet().iterator();
+        while (((Iterator)localObject).hasNext())
+        {
+          i = ((Integer)((Iterator)localObject).next()).intValue();
+          if (this.mFlashStatus.get(Integer.valueOf(i)) != null) {
+            ((UKYOApple.FlashStatus)this.mFlashStatus.get(Integer.valueOf(i))).updateIndex(this.mCurrentTime);
+          }
         }
       }
-    }
-    Iterator localIterator = this.mAppleList.iterator();
-    while (localIterator.hasNext())
-    {
-      UKYOApple.AppleStatus localAppleStatus = (UKYOApple.AppleStatus)localIterator.next();
-      if (localAppleStatus != null)
+      localObject = this.mAppleList.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localAppleStatus.updateAppearStatus(this.mCurrentTime - this.mInitedTime);
-        if (localAppleStatus.isAppear())
+        UKYOApple.AppleStatus localAppleStatus = (UKYOApple.AppleStatus)((Iterator)localObject).next();
+        if (localAppleStatus != null)
         {
-          localAppleStatus.updatePosition(this.mCurrentTime);
-          if (UKYOApple.AppleStatus.access$300(localAppleStatus) == 0) {
-            this.mComboCount = 0;
-          }
-          if (UKYOApple.AppleStatus.access$300(localAppleStatus) >= 0)
+          localAppleStatus.updateAppearStatus(this.mCurrentTime - this.mInitedTime);
+          if (localAppleStatus.isAppear())
           {
-            this.mDisapearCount += 1;
-            if (this.mDisapearCount == this.mAppleList.size()) {
-              allDisappear();
+            localAppleStatus.updatePosition(this.mCurrentTime);
+            int j = UKYOApple.AppleStatus.access$300(localAppleStatus);
+            i = 0;
+            if (j == 0) {
+              this.mComboCount = 0;
             }
-          }
-          if ((localAppleStatus.isHitting()) && (this.mComboCount > this.mOriginFlashSeting.COMBO_FLASH_COUNT))
-          {
-            if (this.mFlashStatus == null) {
-              this.mFlashStatus = new HashMap();
-            }
-            if (this.mFlashStatus.get(Integer.valueOf(localAppleStatus.hashCode())) == null)
+            if (UKYOApple.AppleStatus.access$300(localAppleStatus) >= 0)
             {
-              UKYOApple.FlashStatus localFlashStatus = new UKYOApple.FlashStatus(this, this.mOriginFlashSeting, this.mCurrentTime);
-              float[] arrayOfFloat = new float[8];
-              i = 0;
-              while (i < localAppleStatus.mAdjustPoints.length)
-              {
-                arrayOfFloat[i] = localAppleStatus.mAdjustPoints[i];
-                i += 1;
+              this.mDisapearCount += 1;
+              if (this.mDisapearCount == this.mAppleList.size()) {
+                allDisappear();
               }
-              if (UKYOApple.FlashStatus.access$000(localFlashStatus) != null) {}
-              for (float f = UKYOApple.FlashStatus.access$000(localFlashStatus).audioScaleFactor;; f = 1.0F)
+            }
+            if ((localAppleStatus.isHitting()) && (this.mComboCount > this.mOriginFlashSeting.COMBO_FLASH_COUNT))
+            {
+              if (this.mFlashStatus == null) {
+                this.mFlashStatus = new HashMap();
+              }
+              if (this.mFlashStatus.get(Integer.valueOf(localAppleStatus.hashCode())) == null)
               {
+                UKYOApple.FlashStatus localFlashStatus = new UKYOApple.FlashStatus(this, this.mOriginFlashSeting, this.mCurrentTime);
+                float[] arrayOfFloat = new float[8];
+                while (i < localAppleStatus.mAdjustPoints.length)
+                {
+                  arrayOfFloat[i] = localAppleStatus.mAdjustPoints[i];
+                  i += 1;
+                }
+                float f;
+                if (UKYOApple.FlashStatus.access$000(localFlashStatus) != null) {
+                  f = UKYOApple.FlashStatus.access$000(localFlashStatus).audioScaleFactor;
+                } else {
+                  f = 1.0F;
+                }
                 localFlashStatus.mAdjustPoints = AlgoUtils.adjustPosition(arrayOfFloat, f);
                 this.mFlashStatus.put(Integer.valueOf(localAppleStatus.hashCode()), localFlashStatus);
-                break;
               }
             }
           }
         }
       }
+      ((NormalVideoFilter)this.filter).setTriggered(true);
+      this.mInfoObjext = paramObject;
     }
-    ((NormalVideoFilter)this.filter).setTriggered(true);
-    this.mInfoObjext = paramObject;
   }
   
   public void updateVideoSize(int paramInt1, int paramInt2, double paramDouble)
@@ -420,18 +429,20 @@ public class UKYOApple
       return;
     }
     ((UKYOFilter)this.filter).updateVideoSize(paramInt1, paramInt2, paramDouble);
-    if ((this.mOriginAppleSetting != null) && (this.mOriginAppleSetting.mWidth == 0))
+    AppleItemSetting localAppleItemSetting = this.mOriginAppleSetting;
+    if ((localAppleItemSetting != null) && (localAppleItemSetting.mWidth == 0))
     {
-      this.mOriginAppleSetting.mWidth = paramInt1;
-      this.mOriginAppleSetting.mHeight = paramInt2;
-      this.mOriginAppleSetting.updateItemWidth(paramInt1);
+      localAppleItemSetting = this.mOriginAppleSetting;
+      localAppleItemSetting.mWidth = paramInt1;
+      localAppleItemSetting.mHeight = paramInt2;
+      localAppleItemSetting.updateItemWidth(paramInt1);
     }
     this.mDisapearLine = ((int)(this.mOriginAppleSetting.mDeadY * paramInt2));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.juyoujinggame.UKYOApple
  * JD-Core Version:    0.7.0.1
  */

@@ -16,35 +16,26 @@ class QFileBubbleDownloadHandler$1
   public void onClick(View paramView)
   {
     BaseBubbleBuilder.ViewHolder localViewHolder = (BaseBubbleBuilder.ViewHolder)AIOUtils.a(paramView);
-    int i;
-    ChatMessage localChatMessage;
     if (localViewHolder != null)
     {
-      i = -1;
-      localChatMessage = FileManagerUtil.a(localViewHolder.a);
-      if (!this.a.b(localChatMessage)) {
-        break label83;
+      int i = -1;
+      ChatMessage localChatMessage = FileManagerUtil.a(localViewHolder.a);
+      if (this.a.b(localChatMessage)) {
+        i = 0;
+      } else if (this.a.a(localChatMessage)) {
+        i = 1;
       }
-      i = 0;
-    }
-    for (;;)
-    {
       this.a.a(paramView, localViewHolder, localChatMessage, i);
       if (this.a.a != null) {
         this.a.a.b(localViewHolder.a);
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label83:
-      if (this.a.a(localChatMessage)) {
-        i = 1;
-      }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.aioitem.QFileBubbleDownloadHandler.1
  * JD-Core Version:    0.7.0.1
  */

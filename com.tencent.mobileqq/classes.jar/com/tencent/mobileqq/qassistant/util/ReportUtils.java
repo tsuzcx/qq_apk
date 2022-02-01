@@ -27,43 +27,55 @@ public class ReportUtils
   
   public static void a(JumpInfo paramJumpInfo)
   {
-    int i;
-    if (paramJumpInfo != null) {
-      switch (paramJumpInfo.a)
-      {
-      case 101: 
-      case 102: 
-      case 104: 
-      case 106: 
-      case 108: 
-      case 109: 
-      default: 
-        i = 0;
-      }
-    }
-    for (;;)
+    if (paramJumpInfo != null)
     {
+      int i = paramJumpInfo.a;
+      if (i != 100)
+      {
+        if (i != 103)
+        {
+          if (i != 105)
+          {
+            if (i != 107) {
+              switch (i)
+              {
+              default: 
+                i = 0;
+                break;
+              case 114: 
+                i = 10;
+                break;
+              case 113: 
+                i = 9;
+                break;
+              case 112: 
+                i = 8;
+                break;
+              case 111: 
+                i = 6;
+                break;
+              case 110: 
+                i = 5;
+                break;
+              }
+            } else {
+              i = 12;
+            }
+          }
+          else {
+            i = 11;
+          }
+        }
+        else {
+          i = 13;
+        }
+      }
+      else {
+        i = 7;
+      }
       if (i > 0) {
         ReportController.b(null, "dc00898", "", "", "0X800B177", "0X800B177", i, 0, "", "", "", "");
       }
-      return;
-      i = 5;
-      continue;
-      i = 6;
-      continue;
-      i = 7;
-      continue;
-      i = 8;
-      continue;
-      i = 9;
-      continue;
-      i = 10;
-      continue;
-      i = 11;
-      continue;
-      i = 12;
-      continue;
-      i = 13;
     }
   }
   
@@ -124,7 +136,7 @@ public class ReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.util.ReportUtils
  * JD-Core Version:    0.7.0.1
  */

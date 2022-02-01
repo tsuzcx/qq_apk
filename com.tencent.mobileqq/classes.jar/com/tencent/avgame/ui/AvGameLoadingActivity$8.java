@@ -2,14 +2,14 @@ package com.tencent.avgame.ui;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import com.tencent.avgame.util.AVGameNodeReportUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.avgame.report.AVGameNodeReportUtil;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 class AvGameLoadingActivity$8
   implements DialogInterface.OnClickListener
 {
-  AvGameLoadingActivity$8(AvGameLoadingActivity paramAvGameLoadingActivity, QQAppInterface paramQQAppInterface, boolean paramBoolean, int paramInt) {}
+  AvGameLoadingActivity$8(AvGameLoadingActivity paramAvGameLoadingActivity, AppRuntime paramAppRuntime, boolean paramBoolean, int paramInt) {}
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
@@ -17,7 +17,7 @@ class AvGameLoadingActivity$8
     if (paramInt == 1)
     {
       paramDialogInterface.cancel();
-      if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface != null)
+      if (this.jdField_a_of_type_MqqAppAppRuntime != null)
       {
         Object localObject2 = null;
         Object localObject1 = null;
@@ -32,42 +32,41 @@ class AvGameLoadingActivity$8
           }
           else
           {
-            paramDialogInterface = localObject1;
+            paramDialogInterface = (DialogInterface)localObject1;
             if (AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity) != null)
             {
               AvGameLoadingActivity.b(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, 6);
               paramDialogInterface = AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity);
             }
-            QLog.e("AvGameManagerAvGameLoadingActivity", 2, "join failed alert DIALOG change to troop  with  troop UIN " + paramDialogInterface);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("join failed alert DIALOG change to troop  with  troop UIN ");
+            ((StringBuilder)localObject1).append(paramDialogInterface);
+            QLog.e("AvGameLoadingActivity", 2, ((StringBuilder)localObject1).toString());
           }
         }
-        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, AvGameLoadingActivity.c(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity), paramDialogInterface);
+        localObject1 = this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity;
+        AvGameLoadingActivity.a((AvGameLoadingActivity)localObject1, AvGameLoadingActivity.c((AvGameLoadingActivity)localObject1), paramDialogInterface);
         return;
       }
-      QLog.e("AvGameManagerAvGameLoadingActivity", 2, "alertDialogWithRetCode createAvGameRoom app null ");
-      if (this.jdField_a_of_type_Boolean) {}
-      for (;;)
-      {
-        AVGameNodeReportUtil.b(i);
-        AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
-        return;
+      QLog.e("AvGameLoadingActivity", 2, "alertDialogWithRetCode createAvGameRoom app null ");
+      if (!this.jdField_a_of_type_Boolean) {
         i = -103;
       }
-    }
-    paramDialogInterface.cancel();
-    if (this.jdField_a_of_type_Boolean) {}
-    for (;;)
-    {
       AVGameNodeReportUtil.b(i);
       AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
       return;
+    }
+    paramDialogInterface.cancel();
+    if (!this.jdField_a_of_type_Boolean) {
       i = -103;
     }
+    AVGameNodeReportUtil.b(i);
+    AvGameLoadingActivity.a(this.jdField_a_of_type_ComTencentAvgameUiAvGameLoadingActivity, false, this.jdField_a_of_type_Int);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AvGameLoadingActivity.8
  * JD-Core Version:    0.7.0.1
  */

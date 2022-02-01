@@ -3,12 +3,13 @@ package com.tencent.mobileqq.nearby.now.model;
 import android.net.Uri;
 import android.os.Bundle;
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.now.protocol.NowShortVideoProtoManager;
+import com.tencent.mobileqq.nearby.now.protocol.INowShortVideoProtoManager;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.pb.now.FeedsProtocol.GetMediaDetailRsp;
 import com.tencent.pb.now.FeedsProtocol.LiveAggregateInfo;
 import com.tencent.pb.now.FeedsProtocol.MediaInfo;
@@ -41,29 +42,42 @@ public class InfinitePlayListDataModel
       return;
     }
     VideoData localVideoData = new VideoData();
-    localVideoData.jdField_a_of_type_Int = 1;
+    localVideoData.jdField_b_of_type_Int = 1;
     localVideoData.jdField_a_of_type_JavaLangString = paramVideoItem.id.get().toStringUtf8();
-    localVideoData.jdField_e_of_type_JavaLangString = paramVideoItem.jump_url.get().toStringUtf8();
+    localVideoData.e = paramVideoItem.jump_url.get().toStringUtf8();
     localVideoData.jdField_a_of_type_Long = paramVideoItem.user_info.uid.get();
-    localVideoData.b = paramVideoItem.user_info.explicit_uid.get();
-    localVideoData.jdField_c_of_type_Int = paramVideoItem.user_info.id_type.get();
+    localVideoData.jdField_b_of_type_Long = paramVideoItem.user_info.tinyid.get();
+    localVideoData.jdField_c_of_type_Long = paramVideoItem.user_info.explicit_uid.get();
+    localVideoData.d = paramVideoItem.user_info.id_type.get();
     localVideoData.jdField_c_of_type_JavaLangString = paramVideoItem.video_cover_url.get().toStringUtf8();
-    localVideoData.f = ((FeedsProtocol.UserInfo)paramVideoItem.user_info.get()).head_img_url.get().toStringUtf8();
+    localVideoData.jdField_f_of_type_JavaLangString = ((FeedsProtocol.UserInfo)paramVideoItem.user_info.get()).head_img_url.get().toStringUtf8();
     localVideoData.g = ((FeedsProtocol.UserInfo)paramVideoItem.user_info.get()).anchor_name.get().toStringUtf8();
-    localVideoData.jdField_e_of_type_Long = paramVideoItem.video_start_time.get();
-    localVideoData.m = paramInt;
+    localVideoData.jdField_f_of_type_Long = paramVideoItem.video_start_time.get();
+    localVideoData.n = paramInt;
     localVideoData.j = "";
     paramVideoItem = paramVideoItem.rpt_msg_rich_title.get().iterator();
     while (paramVideoItem.hasNext())
     {
       FeedsProtocol.RichTitleElement localRichTitleElement = (FeedsProtocol.RichTitleElement)paramVideoItem.next();
-      if (localRichTitleElement.type.get() == 1) {
-        localVideoData.j += localRichTitleElement.text.get().toStringUtf8();
-      } else if (localRichTitleElement.type.get() == 2) {
-        localVideoData.j = (localVideoData.j + "#" + localRichTitleElement.text.get().toStringUtf8() + "#");
+      StringBuilder localStringBuilder;
+      if (localRichTitleElement.type.get() == 1)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localVideoData.j);
+        localStringBuilder.append(localRichTitleElement.text.get().toStringUtf8());
+        localVideoData.j = localStringBuilder.toString();
+      }
+      else if (localRichTitleElement.type.get() == 2)
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append(localVideoData.j);
+        localStringBuilder.append("#");
+        localStringBuilder.append(localRichTitleElement.text.get().toStringUtf8());
+        localStringBuilder.append("#");
+        localVideoData.j = localStringBuilder.toString();
       }
     }
-    paramArrayList.add(TopicInfo.a(paramList, localVideoData));
+    paramArrayList.add(((IModelUtil)QRoute.api(IModelUtil.class)).parseTopicInfoToVideoData(paramList, localVideoData));
     paramArrayList.add(localVideoData);
   }
   
@@ -80,11 +94,11 @@ public class InfinitePlayListDataModel
       } else if (localMediaInfo.type.get() == 2) {
         a(localMediaInfo, this.jdField_a_of_type_JavaUtilArrayList);
       } else if (localMediaInfo.type.get() == 3) {
-        a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
+        ((IModelUtil)QRoute.api(IModelUtil.class)).parseShortVideoData(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), localMediaInfo.short_video.get(), this.jdField_a_of_type_JavaUtilArrayList);
       } else if (localMediaInfo.type.get() == 5) {
-        a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.PicFeedsInfo)localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
+        ((IModelUtil)QRoute.api(IModelUtil.class)).parseImageData(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), localMediaInfo.pic_info.get(), this.jdField_a_of_type_JavaUtilArrayList);
       } else if (localMediaInfo.type.get() == 6) {
-        a(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), (FeedsProtocol.TextFeed)localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
+        ((IModelUtil)QRoute.api(IModelUtil.class)).parseTextFeeds(localMediaInfo.is_my_feeds.get(), localMediaInfo.topic_cfg.get(), localMediaInfo.text_feed.get(), this.jdField_a_of_type_JavaUtilArrayList);
       }
     }
   }
@@ -99,20 +113,18 @@ public class InfinitePlayListDataModel
   {
     Object localObject1 = (FeedsProtocol.LiveAggregateInfo)paramMediaInfo.live_aggregate.get();
     FeedsProtocol.VideoItem localVideoItem = (FeedsProtocol.VideoItem)((FeedsProtocol.LiveAggregateInfo)localObject1).video.get();
-    if ((((FeedsProtocol.LiveAggregateInfo)localObject1).total_short_size.get() == 0) && (localVideoItem != null) && (!TextUtils.isEmpty(localVideoItem.jump_url.get().toString()))) {
-      a(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), localVideoItem, paramArrayList);
-    }
-    for (;;)
+    if ((((FeedsProtocol.LiveAggregateInfo)localObject1).total_short_size.get() == 0) && (localVideoItem != null) && (!TextUtils.isEmpty(localVideoItem.jump_url.get().toString())))
     {
+      a(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), localVideoItem, paramArrayList);
       return;
-      localObject1 = ((FeedsProtocol.LiveAggregateInfo)localObject1).short_video.get().iterator();
-      while (((Iterator)localObject1).hasNext())
-      {
-        Object localObject2 = (FeedsProtocol.ShortVideoInfo)((Iterator)localObject1).next();
-        localObject2 = a(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), (FeedsProtocol.ShortVideoInfo)localObject2, paramArrayList);
-        ((VideoData)localObject2).jdField_e_of_type_JavaLangString = localVideoItem.jump_url.get().toStringUtf8();
-        ((VideoData)localObject2).jdField_a_of_type_Int = 3;
-      }
+    }
+    localObject1 = ((FeedsProtocol.LiveAggregateInfo)localObject1).short_video.get().iterator();
+    while (((Iterator)localObject1).hasNext())
+    {
+      Object localObject2 = (FeedsProtocol.ShortVideoInfo)((Iterator)localObject1).next();
+      localObject2 = ((IModelUtil)QRoute.api(IModelUtil.class)).parseShortVideoData(paramMediaInfo.is_my_feeds.get(), paramMediaInfo.topic_cfg.get(), localObject2, paramArrayList);
+      ((VideoData)localObject2).e = localVideoItem.jump_url.get().toStringUtf8();
+      ((VideoData)localObject2).jdField_b_of_type_Int = 3;
     }
   }
   
@@ -126,15 +138,24 @@ public class InfinitePlayListDataModel
     if (this.jdField_a_of_type_Boolean) {
       return;
     }
-    new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new InfinitePlayListDataModel.2(this));
+    INowShortVideoProtoManager localINowShortVideoProtoManager = ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&num=");
+    localStringBuilder.append(10);
+    localINowShortVideoProtoManager.getMediaDetailInfo(localStringBuilder.toString(), new InfinitePlayListDataModel.2(this));
   }
   
   public void a(Bundle paramBundle)
   {
     paramBundle = paramBundle.getString("raw_url");
     this.jdField_a_of_type_JavaLangString = Uri.parse(paramBundle).getQuery();
-    if (QLog.isColorLevel()) {
-      QLog.d("InfinitePlayListDataModel", 2, "InfinitePlayListDataModel, url=" + paramBundle);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("InfinitePlayListDataModel, url=");
+      localStringBuilder.append(paramBundle);
+      QLog.d("InfinitePlayListDataModel", 2, localStringBuilder.toString());
     }
   }
   
@@ -156,12 +177,17 @@ public class InfinitePlayListDataModel
     if (this.jdField_b_of_type_Boolean) {
       return;
     }
-    new NowShortVideoProtoManager(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).b(this.jdField_a_of_type_JavaLangString + "&num=" + 10, new InfinitePlayListDataModel.1(this));
+    INowShortVideoProtoManager localINowShortVideoProtoManager = ((INowShortVideoProtoManager)QRoute.api(INowShortVideoProtoManager.class)).init(this.jdField_a_of_type_ComTencentCommonAppAppInterface);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("&num=");
+    localStringBuilder.append(10);
+    localINowShortVideoProtoManager.getMediaDetailInfo(localStringBuilder.toString(), new InfinitePlayListDataModel.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.model.InfinitePlayListDataModel
  * JD-Core Version:    0.7.0.1
  */

@@ -2,15 +2,15 @@ package com.tencent.mobileqq.startup.step;
 
 import android.os.Looper;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.common.app.SafeModeUtil;
 import com.tencent.common.config.AppSetting;
 import com.tencent.hotpatch.config.PatchConfigServlet;
-import com.tencent.mobileqq.app.GuardManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.guard.GuardManager;
 import com.tencent.mobileqq.config.splashlogo.ConfigServlet;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.safemode.SafeModeUtil;
 import com.tencent.qqperf.opt.clearmemory.MemoryClearManager;
 import java.io.File;
 import mqq.app.AppRuntime;
@@ -22,36 +22,40 @@ public class NewRuntime
   protected boolean doStep()
   {
     int i;
-    if (BaseApplicationImpl.sProcessId == 1)
-    {
+    if (BaseApplicationImpl.sProcessId == 1) {
       i = 41;
-      Step.AmStepFactory.b(i, this.mDirector, null).step();
-      if (BaseApplicationImpl.sProcessId != 1) {}
+    } else {
+      i = 43;
     }
-    for (;;)
+    Step.AmStepFactory.b(i, this.mDirector, null).step();
+    if (BaseApplicationImpl.sProcessId == 1) {}
+    try
     {
-      try
-      {
-        if (new File(BaseApplicationImpl.getContext().getFilesDir(), "disableSmallLock").exists()) {
-          continue;
-        }
-        bool = true;
-        AppSetting.b = bool;
+      if (new File(BaseApplicationImpl.getContext().getFilesDir(), "disableSmallLock").exists()) {
+        break label394;
       }
-      catch (Exception localException)
+      bool = true;
+    }
+    catch (Exception localException)
+    {
+      for (;;)
       {
-        boolean bool;
         Object localObject;
         String str;
-        AppSetting.b = false;
         continue;
-        BaseApplicationImpl.sApplication.doInit(false);
-        continue;
+        boolean bool = false;
       }
-      QLog.i("QQAppInterface", 1, "enableManagerSmallLock " + AppSetting.b);
-      if ((BaseApplicationImpl.sProcessId != 1) || (!SafeModeUtil.a(BaseApplicationImpl.sApplication))) {
-        continue;
-      }
+    }
+    AppSetting.b = bool;
+    break label73;
+    AppSetting.b = false;
+    label73:
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("enableManagerSmallLock ");
+    ((StringBuilder)localObject).append(AppSetting.b);
+    QLog.i("QQAppInterface", 1, ((StringBuilder)localObject).toString());
+    if ((BaseApplicationImpl.sProcessId == 1) && (SafeModeUtil.a(BaseApplicationImpl.sApplication)))
+    {
       BaseApplicationImpl.sApplication.doInit(true);
       localObject = BaseApplicationImpl.getApplication().getRuntime();
       if ((localObject != null) && ((localObject instanceof QQAppInterface)))
@@ -71,32 +75,33 @@ public class NewRuntime
           SafeModeUtil.b();
         }
       }
-      if ((GuardManager.a == null) && ("com.tencent.mobileqq".equals(BaseApplicationImpl.processName))) {
-        GuardManager.a = new GuardManager(BaseApplicationImpl.sApplication, 0);
-      }
-      if ((BaseApplicationImpl.sProcessId == 2) || (BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 9) || (BaseApplicationImpl.sProcessId == 11) || (BaseApplicationImpl.sProcessId == 10))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("MemoryClearManagerNew_NewRuntime", 2, "setAppStateChangeListener");
-        }
-        localObject = BaseApplicationImpl.getApplication().getRuntime();
-        if (localObject != null) {
-          ((AppRuntime)localObject).setAppStateChangeListener(MemoryClearManager.a());
-        }
-      }
-      if ((BaseApplicationImpl.sProcessId != 1) && (BaseApplicationImpl.sProcessId != 4) && (BaseApplicationImpl.sProcessId != -1)) {
-        ThreadManager.getSubThreadHandler().postDelayed(new NewRuntime.1(this), 5000L);
-      }
-      return true;
-      i = 43;
-      break;
-      bool = false;
     }
+    else
+    {
+      BaseApplicationImpl.sApplication.doInit(false);
+    }
+    if ((GuardManager.a == null) && ("com.tencent.mobileqq".equals(BaseApplicationImpl.processName))) {
+      GuardManager.a = new GuardManager(BaseApplicationImpl.sApplication, 0);
+    }
+    if ((BaseApplicationImpl.sProcessId == 2) || (BaseApplicationImpl.sProcessId == 5) || (BaseApplicationImpl.sProcessId == 7) || (BaseApplicationImpl.sProcessId == 9) || (BaseApplicationImpl.sProcessId == 11) || (BaseApplicationImpl.sProcessId == 10))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("MemoryClearManagerNew_NewRuntime", 2, "setAppStateChangeListener");
+      }
+      localObject = BaseApplicationImpl.getApplication().getRuntime();
+      if (localObject != null) {
+        ((AppRuntime)localObject).setAppStateChangeListener(MemoryClearManager.a());
+      }
+    }
+    if ((BaseApplicationImpl.sProcessId != 1) && (BaseApplicationImpl.sProcessId != 4) && (BaseApplicationImpl.sProcessId != -1)) {
+      ThreadManager.getSubThreadHandler().postDelayed(new NewRuntime.1(this), 5000L);
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.startup.step.NewRuntime
  * JD-Core Version:    0.7.0.1
  */

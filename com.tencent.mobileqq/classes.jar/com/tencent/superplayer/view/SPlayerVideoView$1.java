@@ -12,7 +12,17 @@ class SPlayerVideoView$1
     if ((SPlayerVideoView.access$300(this.this$0) == paramInt1) && (SPlayerVideoView.access$400(this.this$0) == paramInt2)) {
       return;
     }
-    LogUtil.i(SPlayerVideoView.access$000(this.this$0), "blockCallback, onViewChanged, w: " + paramInt1 + ", h: " + paramInt2 + ", pw: " + this.this$0.getWidth() + ", ph: " + this.this$0.getHeight());
+    String str = SPlayerVideoView.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("blockCallback, onViewChanged, w: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", h: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", pw: ");
+    localStringBuilder.append(this.this$0.getWidth());
+    localStringBuilder.append(", ph: ");
+    localStringBuilder.append(this.this$0.getHeight());
+    LogUtil.i(str, localStringBuilder.toString());
     SPlayerVideoView.access$302(this.this$0, paramInt1);
     SPlayerVideoView.access$402(this.this$0, paramInt2);
     SPlayerVideoView.access$200(this.this$0, paramObject);
@@ -20,7 +30,19 @@ class SPlayerVideoView$1
   
   public void onViewCreated(Object paramObject, int paramInt1, int paramInt2)
   {
-    LogUtil.i(SPlayerVideoView.access$000(this.this$0), "blockCallback , onViewCreated, is textrueview: " + SPlayerVideoView.access$100(this.this$0) + ", w: " + paramInt1 + ", h: " + paramInt2 + ", pw: " + this.this$0.getWidth() + ", ph: " + this.this$0.getHeight());
+    String str = SPlayerVideoView.access$000(this.this$0);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("blockCallback , onViewCreated, is textrueview: ");
+    localStringBuilder.append(SPlayerVideoView.access$100(this.this$0));
+    localStringBuilder.append(", w: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", h: ");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", pw: ");
+    localStringBuilder.append(this.this$0.getWidth());
+    localStringBuilder.append(", ph: ");
+    localStringBuilder.append(this.this$0.getHeight());
+    LogUtil.i(str, localStringBuilder.toString());
     SPlayerVideoView.access$200(this.this$0, paramObject);
   }
   
@@ -29,7 +51,8 @@ class SPlayerVideoView$1
     LogUtil.i(SPlayerVideoView.access$000(this.this$0), "blockCallback, surfaceDestroyed");
     if ((SPlayerVideoView.access$500(this.this$0) instanceof SPlayerTextureView))
     {
-      SPlayerVideoView.access$602(this.this$0, new SPlayerVideoView.SurfaceObject(this.this$0));
+      paramObject = this.this$0;
+      SPlayerVideoView.access$602(paramObject, new SPlayerVideoView.SurfaceObject(paramObject));
       SPlayerVideoView.access$600(this.this$0).surfaceTexture = ((SPlayerTextureView)SPlayerVideoView.access$500(this.this$0)).getSurfaceTexture();
       SPlayerVideoView.access$600(this.this$0).surface = SPlayerVideoView.access$700(this.this$0).surface;
     }
@@ -38,7 +61,7 @@ class SPlayerVideoView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.view.SPlayerVideoView.1
  * JD-Core Version:    0.7.0.1
  */

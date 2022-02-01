@@ -20,80 +20,112 @@ class ApolloStoreActivity$3
   
   public void run()
   {
-    int i = 0;
-    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
-      if (QLog.isColorLevel()) {
-        QLog.d("ApolloStoreActivity", 2, "[saveImage] failed bitmap null");
-      }
-    }
-    String str;
-    do
+    if (this.jdField_a_of_type_AndroidGraphicsBitmap == null)
     {
-      for (;;)
-      {
-        return;
-        if (QLog.isColorLevel()) {
-          QLog.d("ApolloStoreActivity", 2, "[saveImage] consume time " + (System.currentTimeMillis() - this.jdField_a_of_type_Long) + " ms");
-        }
-        Message localMessage = Message.obtain();
-        localMessage.what = 256;
-        try
-        {
-          str = Environment.getExternalStorageDirectory().toString();
-          Object localObject = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(Long.valueOf(System.currentTimeMillis()));
-          if (ApolloStoreActivity.a(this.this$0) != null) {
-            i = ApolloStoreActivity.a(this.this$0).a();
-          }
-          str = str + "/cmshow/" + i + "_" + (String)localObject + ".png";
-          localObject = new File(str);
-          if (!TextUtils.isEmpty(str))
-          {
-            try
-            {
-              ImageUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject);
-              if ((!TextUtils.isEmpty(str)) && (FileUtils.c(str))) {
-                break label275;
-              }
-              if (!QLog.isColorLevel()) {
-                continue;
-              }
-              QLog.d("ApolloStoreActivity", 2, "[saveImage] failed invalid path");
-              return;
-            }
-            catch (Throwable localThrowable1) {}
-            if (QLog.isColorLevel())
-            {
-              QLog.d("ApolloStoreActivity", 2, "[saveImage] failed save to disk");
-              return;
-            }
-          }
-        }
-        catch (Throwable localThrowable2) {}
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("ApolloStoreActivity", 2, "[saveImage] failed create path" + localThrowable2.getMessage());
-    return;
-    try
-    {
-      label275:
-      MediaScannerConnection.scanFile(this.this$0.getApplicationContext(), new String[] { str }, new String[] { "image/png" }, null);
       if (QLog.isColorLevel()) {
-        QLog.d("ApolloStoreActivity", 2, "[saveImage] to media db " + str);
+        QLog.d("[cmshow]ApolloStoreActivity", 2, "[saveImage] failed bitmap null");
       }
-      localThrowable2.obj = this.jdField_a_of_type_JavaLangString;
-      localThrowable2.arg1 = 0;
-      this.this$0.a.sendMessage(localThrowable2);
       return;
     }
-    catch (Throwable localThrowable3)
+    if (QLog.isColorLevel())
     {
-      QLog.e("ApolloStoreActivity", 2, "[saveImage] failed exception " + localThrowable3.getMessage());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("[saveImage] consume time ");
+      ((StringBuilder)localObject1).append(System.currentTimeMillis() - this.jdField_a_of_type_Long);
+      ((StringBuilder)localObject1).append(" ms");
+      QLog.d("[cmshow]ApolloStoreActivity", 2, ((StringBuilder)localObject1).toString());
+    }
+    Object localObject1 = Message.obtain();
+    ((Message)localObject1).what = 256;
+    for (;;)
+    {
+      try
+      {
+        localObject2 = Environment.getExternalStorageDirectory().toString();
+        localObject3 = new SimpleDateFormat("yyyy-MM-dd", Locale.CHINA).format(Long.valueOf(System.currentTimeMillis()));
+        if (ApolloStoreActivity.a(this.this$0) == null) {
+          break label469;
+        }
+        i = ApolloStoreActivity.a(this.this$0).a();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject2);
+        localStringBuilder.append("/cmshow/");
+        localStringBuilder.append(i);
+        localStringBuilder.append("_");
+        localStringBuilder.append((String)localObject3);
+        localStringBuilder.append(".png");
+        localObject2 = localStringBuilder.toString();
+        localObject3 = new File((String)localObject2);
+        if (TextUtils.isEmpty((CharSequence)localObject2)) {
+          return;
+        }
+      }
+      catch (Throwable localThrowable2)
+      {
+        Object localObject2;
+        Object localObject3;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("[saveImage] failed create path");
+          ((StringBuilder)localObject2).append(localThrowable2.getMessage());
+          QLog.d("[cmshow]ApolloStoreActivity", 2, ((StringBuilder)localObject2).toString());
+        }
+        return;
+      }
+      try
+      {
+        ImageUtil.a(this.jdField_a_of_type_AndroidGraphicsBitmap, (File)localObject3);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          boolean bool = FileUtils.c((String)localObject2);
+          if (bool) {
+            try
+            {
+              MediaScannerConnection.scanFile(this.this$0.getApplicationContext(), new String[] { localObject2 }, new String[] { "image/png" }, null);
+              if (QLog.isColorLevel())
+              {
+                localObject3 = new StringBuilder();
+                ((StringBuilder)localObject3).append("[saveImage] to media db ");
+                ((StringBuilder)localObject3).append((String)localObject2);
+                QLog.d("[cmshow]ApolloStoreActivity", 2, ((StringBuilder)localObject3).toString());
+              }
+              ((Message)localObject1).obj = this.jdField_a_of_type_JavaLangString;
+              ((Message)localObject1).arg1 = 0;
+              this.this$0.a.sendMessage((Message)localObject1);
+              return;
+            }
+            catch (Throwable localThrowable1)
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("[saveImage] failed exception ");
+              ((StringBuilder)localObject2).append(localThrowable1.getMessage());
+              QLog.e("[cmshow]ApolloStoreActivity", 2, ((StringBuilder)localObject2).toString());
+              return;
+            }
+          }
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d("[cmshow]ApolloStoreActivity", 2, "[saveImage] failed invalid path");
+        }
+        return;
+      }
+      catch (Throwable localThrowable3)
+      {
+        continue;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d("[cmshow]ApolloStoreActivity", 2, "[saveImage] failed save to disk");
+      }
+      return;
+      label469:
+      int i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.store.ApolloStoreActivity.3
  * JD-Core Version:    0.7.0.1
  */

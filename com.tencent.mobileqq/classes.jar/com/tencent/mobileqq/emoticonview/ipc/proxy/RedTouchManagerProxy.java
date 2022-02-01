@@ -1,18 +1,17 @@
 package com.tencent.mobileqq.emoticonview.ipc.proxy;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.qipc.QIPCClientHelper;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
 import eipc.EIPCClient;
 import eipc.EIPCResult;
 
 public class RedTouchManagerProxy
-  extends AbsManagerProxy<RedTouchManager>
+  extends AbsEmoRuntimeServiceProxy<IRedTouchManager>
 {
   public static final String ACTION_REDTOUCHMANAGER_GETAPPINFOBYPATH = "redtouchmanager_getappinfobypath";
   public static final String ACTION_REDTOUCHMANAGER_ONREDTOUCHITEMCLICK = "redtouchmanager_onredtouchitemclick";
@@ -20,26 +19,27 @@ public class RedTouchManagerProxy
   private static final String PARAM_MYPATH = "param_mypath";
   public static final String TAG = "RedTouchManagerProxy";
   
-  public RedTouchManagerProxy(QQAppInterface paramQQAppInterface)
+  public RedTouchManagerProxy(BaseQQAppInterface paramBaseQQAppInterface)
   {
-    super(paramQQAppInterface, QQManagerFactory.MGR_RED_TOUCH);
+    super(paramBaseQQAppInterface, IRedTouchManager.class);
   }
   
-  public static EIPCResult onGetAppInfoNewFlagByPath(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onGetAppInfoNewFlagByPath(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    paramQQAppInterface = ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(paramBundle.getString("param_mypath"));
+    paramBaseQQAppInterface = ((IRedTouchManager)paramBaseQQAppInterface.getRuntimeService(IRedTouchManager.class)).getAppInfoByPath(paramBundle.getString("param_mypath"));
     paramString = new Bundle();
-    if (paramQQAppInterface != null) {}
-    for (paramInt = paramQQAppInterface.iNewFlag.get();; paramInt = 0)
-    {
-      paramString.putInt("inewflag", paramInt);
-      return EIPCResult.createSuccessResult(paramString);
+    if (paramBaseQQAppInterface != null) {
+      paramInt = paramBaseQQAppInterface.iNewFlag.get();
+    } else {
+      paramInt = 0;
     }
+    paramString.putInt("inewflag", paramInt);
+    return EIPCResult.createSuccessResult(paramString);
   }
   
-  public static EIPCResult onOnRedTouchItemClick(QQAppInterface paramQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
+  public static EIPCResult onOnRedTouchItemClick(BaseQQAppInterface paramBaseQQAppInterface, String paramString, Bundle paramBundle, int paramInt)
   {
-    ((RedTouchManager)paramQQAppInterface.getManager(QQManagerFactory.MGR_RED_TOUCH)).b(paramBundle.getString("param_mypath"));
+    ((IRedTouchManager)paramBaseQQAppInterface.getRuntimeService(IRedTouchManager.class)).onRedTouchItemClick(paramBundle.getString("param_mypath"));
     return EIPCResult.createSuccessResult(null);
   }
   
@@ -47,7 +47,7 @@ public class RedTouchManagerProxy
   {
     if (this.manager != null)
     {
-      paramString = ((RedTouchManager)this.manager).a(paramString);
+      paramString = ((IRedTouchManager)this.manager).getAppInfoByPath(paramString);
       if (paramString != null) {
         return paramString.iNewFlag.get();
       }
@@ -65,27 +65,28 @@ public class RedTouchManagerProxy
   
   public void onRedTouchItemClick(String paramString)
   {
-    if (this.manager != null) {
-      ((RedTouchManager)this.manager).b(paramString);
-    }
-    do
+    if (this.manager != null)
     {
+      ((IRedTouchManager)this.manager).onRedTouchItemClick(paramString);
       return;
-      Bundle localBundle = new Bundle();
-      localBundle.putString("param_mypath", paramString);
-      paramString = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "redtouchmanager_onredtouchitemclick", localBundle);
-      if ((paramString == null) || (!paramString.isSuccess())) {
-        break;
+    }
+    Bundle localBundle = new Bundle();
+    localBundle.putString("param_mypath", paramString);
+    paramString = QIPCClientHelper.getInstance().getClient().callServer("module_emoticon_mainpanel", "redtouchmanager_onredtouchitemclick", localBundle);
+    if ((paramString != null) && (paramString.isSuccess()))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("RedTouchManagerProxy", 4, "onRedTouchItemClick suc.");
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("RedTouchManagerProxy", 4, "onRedTouchItemClick suc.");
-    return;
-    QLog.e("RedTouchManagerProxy", 4, "onRedTouchItemClick fail.");
+    }
+    else {
+      QLog.e("RedTouchManagerProxy", 4, "onRedTouchItemClick fail.");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ipc.proxy.RedTouchManagerProxy
  * JD-Core Version:    0.7.0.1
  */

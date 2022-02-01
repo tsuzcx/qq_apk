@@ -19,63 +19,61 @@ public class MQBottomCell
   
   private static JSONArray convertAvatarToJsonArray(ArrayList<String> paramArrayList)
   {
-    if ((paramArrayList == null) || (paramArrayList.size() == 0)) {
-      return null;
+    if ((paramArrayList != null) && (paramArrayList.size() != 0))
+    {
+      JSONArray localJSONArray = new JSONArray();
+      paramArrayList = paramArrayList.iterator();
+      while (paramArrayList.hasNext()) {
+        localJSONArray.put((String)paramArrayList.next());
+      }
+      return localJSONArray;
     }
-    JSONArray localJSONArray = new JSONArray();
-    paramArrayList = paramArrayList.iterator();
-    while (paramArrayList.hasNext()) {
-      localJSONArray.put((String)paramArrayList.next());
-    }
-    return localJSONArray;
+    return null;
   }
   
   private static ArrayList<String> parseAvatarArrayList(JSONArray paramJSONArray)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
+    if ((paramJSONArray != null) && (paramJSONArray.length() != 0))
     {
-      if (i < paramJSONArray.length()) {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
         try
         {
           localArrayList.add(paramJSONArray.getString(i));
-          i += 1;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            QZLog.e("QZoneMsgManager.MQBottomCell", "parseArrayList error", localException);
-          }
+          QZLog.e("QZoneMsgManager.MQBottomCell", "parseArrayList error", localException);
         }
+        i += 1;
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public static MQBottomCell parseFromJson(JSONObject paramJSONObject)
   {
-    if ((paramJSONObject == null) || (paramJSONObject.length() == 0)) {
-      return null;
-    }
-    MQBottomCell localMQBottomCell = new MQBottomCell();
-    try
+    if ((paramJSONObject != null) && (paramJSONObject.length() != 0))
     {
-      localMQBottomCell.total = paramJSONObject.optInt("total");
-      localMQBottomCell.content = paramJSONObject.optString("content");
-      localMQBottomCell.jumpUrl = paramJSONObject.optString("jumpUrl");
-      localMQBottomCell.userAvatar = parseAvatarArrayList(paramJSONObject.optJSONArray("userAvatar"));
-      return localMQBottomCell;
+      MQBottomCell localMQBottomCell = new MQBottomCell();
+      try
+      {
+        localMQBottomCell.total = paramJSONObject.optInt("total");
+        localMQBottomCell.content = paramJSONObject.optString("content");
+        localMQBottomCell.jumpUrl = paramJSONObject.optString("jumpUrl");
+        localMQBottomCell.userAvatar = parseAvatarArrayList(paramJSONObject.optJSONArray("userAvatar"));
+        return localMQBottomCell;
+      }
+      catch (Exception paramJSONObject)
+      {
+        QZLog.e("QZoneMsgManager.MQBottomCell", "parseFromJson error", paramJSONObject);
+        return localMQBottomCell;
+      }
     }
-    catch (Exception paramJSONObject)
-    {
-      QZLog.e("QZoneMsgManager.MQBottomCell", "parseFromJson error", paramJSONObject);
-    }
-    return localMQBottomCell;
+    return null;
   }
   
   public static MQBottomCell readFrom(BottomCell paramBottomCell)
@@ -108,7 +106,7 @@ public class MQBottomCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQBottomCell
  * JD-Core Version:    0.7.0.1
  */

@@ -19,33 +19,42 @@ class ShortVideoPreviewActivity$6
   
   public void a(IMediaPlayer paramIMediaPlayer)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "mMediaPlayer onPrepared: mDuration=" + this.a.b);
-    }
-    SurfaceHolder localSurfaceHolder = this.a.jdField_a_of_type_AndroidViewSurfaceView.getHolder();
-    if ((localSurfaceHolder == null) || (!localSurfaceHolder.getSurface().isValid())) {
-      FMToastUtil.a(2131691383);
-    }
-    do
+    if (QLog.isColorLevel())
     {
-      do
-      {
-        return;
-        SurfaceViewUtil.a(this.a.jdField_a_of_type_AndroidViewSurfaceView, this.a.e, this.a.f, this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.d(), this.a.jdField_a_of_type_ComTencentMobileqqVideoIMediaPlayer.e());
-      } while (this.a.j != 10);
-      paramIMediaPlayer.a(localSurfaceHolder);
-      this.a.jdField_a_of_type_Int = paramIMediaPlayer.c();
-    } while (this.a.jdField_a_of_type_Int <= 0);
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPreviewActivity", 2, "此时的时长为" + ShortVideoUtils.stringForTime(this.a.jdField_a_of_type_Int));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("mMediaPlayer onPrepared: mDuration=");
+      ((StringBuilder)localObject).append(this.a.mDuration);
+      QLog.d("ShortVideoPreviewActivity", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.d.setText(ShortVideoUtils.stringForTime(this.a.jdField_a_of_type_Int));
-    this.a.jdField_a_of_type_AndroidWidgetSeekBar.setMax(this.a.jdField_a_of_type_Int);
+    Object localObject = this.a.mSurfaceView.getHolder();
+    if ((localObject != null) && (((SurfaceHolder)localObject).getSurface().isValid()))
+    {
+      SurfaceViewUtil.a(this.a.mSurfaceView, this.a.mSurfaceViewWidth, this.a.mSurfaceViewHeight, this.a.mMediaPlayer.d(), this.a.mMediaPlayer.e());
+      if (this.a.mDestType == 10)
+      {
+        paramIMediaPlayer.a((SurfaceHolder)localObject);
+        this.a.duration = paramIMediaPlayer.c();
+        if (this.a.duration > 0)
+        {
+          if (QLog.isColorLevel())
+          {
+            paramIMediaPlayer = new StringBuilder();
+            paramIMediaPlayer.append("此时的时长为");
+            paramIMediaPlayer.append(ShortVideoUtils.stringForTime(this.a.duration));
+            QLog.d("ShortVideoPreviewActivity", 2, paramIMediaPlayer.toString());
+          }
+          this.a.totalTimeMp.setText(ShortVideoUtils.stringForTime(this.a.duration));
+          this.a.seekBarMp.setMax(this.a.duration);
+        }
+      }
+      return;
+    }
+    FMToastUtil.a(2131691305);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPreviewActivity.6
  * JD-Core Version:    0.7.0.1
  */

@@ -15,14 +15,15 @@ class AssistantSettingActivity$19
   public void onClick(View paramView)
   {
     Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity, ArkAppListActivity.class);
-    localIntent.putExtra("intent_extra_authority_app_list", (String[])this.jdField_a_of_type_JavaUtilArrayList.toArray(new String[this.jdField_a_of_type_JavaUtilArrayList.size()]));
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    localIntent.putExtra("intent_extra_authority_app_list", (String[])localArrayList.toArray(new String[localArrayList.size()]));
     this.jdField_a_of_type_ComTencentMobileqqActivityAssistantSettingActivity.startActivity(localIntent);
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AssistantSettingActivity.19
  * JD-Core Version:    0.7.0.1
  */

@@ -31,14 +31,15 @@ public final class mobile_set_visitreq_req
   {
     paramJceOutputStream.write(this.op_type, 0);
     paramJceOutputStream.write(this.visit_uin, 1);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 2);
+    String str = this.msg;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_set_visitreq_req
  * JD-Core Version:    0.7.0.1
  */

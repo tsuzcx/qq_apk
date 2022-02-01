@@ -25,33 +25,36 @@ class StoryPickerFragment$6
   
   protected Object a(@NonNull JobContext paramJobContext, Void... paramVarArgs)
   {
-    boolean bool = true;
     paramJobContext = QQStoryContext.a().b();
     Object localObject = (MemoryManager)SuperManager.a(19);
     paramVarArgs = new ArrayList();
     ArrayList localArrayList1 = ((MemoryManager)localObject).a(paramJobContext, paramVarArgs);
-    if ((localArrayList1 == null) || (localArrayList1.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList2 = new ArrayList();
-    localArrayList2.add(this.jdField_a_of_type_JavaLangString);
-    if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a != null) {
-      this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a.b(localArrayList2, true);
-    }
-    int i = localArrayList1.indexOf(this.jdField_a_of_type_JavaLangString);
-    localObject = ((MemoryManager)localObject).a(paramJobContext);
-    if ((localObject != null) && (((MemoryInfoEntry)localObject).isEnd == 1)) {}
-    for (;;)
+    if (localArrayList1 != null)
     {
+      if (localArrayList1.size() == 0) {
+        return null;
+      }
+      ArrayList localArrayList2 = new ArrayList();
+      localArrayList2.add(this.jdField_a_of_type_JavaLangString);
+      if (this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a != null) {
+        this.jdField_a_of_type_ComTencentBizQqstoryShareGroupWidgetStoryPickerFragment.a.b(localArrayList2, true);
+      }
+      int i = localArrayList1.indexOf(this.jdField_a_of_type_JavaLangString);
+      localObject = ((MemoryManager)localObject).a(paramJobContext);
+      boolean bool;
+      if ((localObject != null) && (((MemoryInfoEntry)localObject).isEnd == 1)) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       ThreadManager.getUIHandler().post(new StoryPickerFragment.6.1(this, paramJobContext, localArrayList1, i, paramVarArgs, bool));
-      return null;
-      bool = false;
     }
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.widget.StoryPickerFragment.6
  * JD-Core Version:    0.7.0.1
  */

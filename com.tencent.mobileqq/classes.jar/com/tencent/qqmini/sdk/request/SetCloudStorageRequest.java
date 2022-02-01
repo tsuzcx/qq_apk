@@ -50,32 +50,27 @@ public class SetCloudStorageRequest
   public JSONObject getResponse(byte[] paramArrayOfByte, JSONObject paramJSONObject)
   {
     if (paramArrayOfByte == null) {
-      paramJSONObject = null;
+      return null;
     }
-    for (;;)
+    CloudStorage.StSetUserCloudStorageRsp localStSetUserCloudStorageRsp = new CloudStorage.StSetUserCloudStorageRsp();
+    try
     {
+      localStSetUserCloudStorageRsp.mergeFrom(paramArrayOfByte);
       return paramJSONObject;
-      CloudStorage.StSetUserCloudStorageRsp localStSetUserCloudStorageRsp = new CloudStorage.StSetUserCloudStorageRsp();
-      try
-      {
-        localStSetUserCloudStorageRsp.mergeFrom(paramArrayOfByte);
-        if (localStSetUserCloudStorageRsp == null)
-        {
-          QMLog.d("SetCloudStorageRequest", "onResponse fail.rsp = null");
-          return null;
-        }
-      }
-      catch (Exception paramArrayOfByte)
-      {
-        QMLog.d("SetCloudStorageRequest", "onResponse fail." + paramArrayOfByte);
-      }
+    }
+    catch (Exception paramArrayOfByte)
+    {
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("SetCloudStorageRequest", paramJSONObject.toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.SetCloudStorageRequest
  * JD-Core Version:    0.7.0.1
  */

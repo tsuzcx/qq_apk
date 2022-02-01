@@ -19,16 +19,12 @@ class ProfileMusicBoxController$3
     if ((paramBoolean) && ((paramObject instanceof GetQzoneMusicInfoRsp)))
     {
       paramObject = (GetQzoneMusicInfoRsp)paramObject;
-      if ((ProfileMusicBoxController.a(this.a)) || (!paramObject.mMusicList.containsKey(ProfileMusicBoxController.a(this.a).g))) {
-        break label101;
+      if ((!ProfileMusicBoxController.a(this.a)) && (paramObject.mMusicList.containsKey(ProfileMusicBoxController.a(this.a).g)))
+      {
+        ProfileMusicBoxController.a(this.a).b = ((MusicInfo)paramObject.mMusicList.get(ProfileMusicBoxController.a(this.a).g)).sSongUrl;
+        this.a.a(BaseApplicationImpl.getContext(), ProfileMusicBoxController.a(this.a));
+        return;
       }
-      ProfileMusicBoxController.a(this.a).b = ((MusicInfo)paramObject.mMusicList.get(ProfileMusicBoxController.a(this.a).g)).sSongUrl;
-      this.a.a(BaseApplicationImpl.getContext(), ProfileMusicBoxController.a(this.a));
-    }
-    for (;;)
-    {
-      return;
-      label101:
       SongInfo[] arrayOfSongInfo = QQPlayerService.a();
       if (arrayOfSongInfo != null)
       {
@@ -38,8 +34,14 @@ class ProfileMusicBoxController$3
           if (paramObject.mMusicList.containsKey(arrayOfSongInfo[paramInt].g))
           {
             arrayOfSongInfo[paramInt].b = ((MusicInfo)paramObject.mMusicList.get(arrayOfSongInfo[paramInt].g)).sSongUrl;
-            if (QLog.isColorLevel()) {
-              QLog.d("ProfileMusicBoxController", 2, "requestMusicSongUrl mid:" + arrayOfSongInfo[paramInt].g + " url:" + arrayOfSongInfo[paramInt].b);
+            if (QLog.isColorLevel())
+            {
+              StringBuilder localStringBuilder = new StringBuilder();
+              localStringBuilder.append("requestMusicSongUrl mid:");
+              localStringBuilder.append(arrayOfSongInfo[paramInt].g);
+              localStringBuilder.append(" url:");
+              localStringBuilder.append(arrayOfSongInfo[paramInt].b);
+              QLog.d("ProfileMusicBoxController", 2, localStringBuilder.toString());
             }
           }
           paramInt += 1;
@@ -50,7 +52,7 @@ class ProfileMusicBoxController$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.musicbox.ProfileMusicBoxController.3
  * JD-Core Version:    0.7.0.1
  */

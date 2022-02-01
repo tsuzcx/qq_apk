@@ -22,10 +22,8 @@ public class CartoonFilter
       this.glslProgramShader = "precision highp float;\nvarying vec2 textureCoordinate;\nuniform sampler2D inputImageTexture;\nvoid main() \n{\ngl_FragColor = texture2D (inputImageTexture, textureCoordinate);\n}\n";
       setNextFilter(null, null);
     }
-    for (;;)
+    else
     {
-      super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
-      return;
       this.glslProgramShader = BaseFilter.getFragmentShader(78);
       BaseFilter localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(77));
       setNextFilter(localBaseFilter2, null);
@@ -50,7 +48,8 @@ public class CartoonFilter
       localBaseFilter1 = new BaseFilter(BaseFilter.getFragmentShader(74));
       localBaseFilter1.addParam(new UniformParam.FloatParam("inv_2sigma", 12.0F));
       localBaseFilter2.setNextFilter(localBaseFilter1, new int[] { 4 });
-      if (this.type == 1)
+      int i = this.type;
+      if (i == 1)
       {
         localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(71));
         localBaseFilter2.addParam(new UniformParam.FloatParam("inv_2sigma2", 144.5F));
@@ -62,7 +61,7 @@ public class CartoonFilter
         localBaseFilter2.setNextFilter(localBaseFilter1, new int[] { 4 });
         localBaseFilter1.setNextFilter(new BaseFilter(BaseFilter.getFragmentShader(80)), new int[] { 8 });
       }
-      else if (this.type == 2)
+      else if (i == 2)
       {
         localBaseFilter2 = new BaseFilter(BaseFilter.getFragmentShader(71));
         localBaseFilter2.addParam(new UniformParam.FloatParam("inv_2sigma2", 144.5F));
@@ -75,11 +74,12 @@ public class CartoonFilter
         localBaseFilter1.setNextFilter(new BaseFilter(BaseFilter.getFragmentShader(81)), new int[] { 8 });
       }
     }
+    super.applyFilterChain(paramBoolean, paramFloat1, paramFloat2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.filter.art.CartoonFilter
  * JD-Core Version:    0.7.0.1
  */

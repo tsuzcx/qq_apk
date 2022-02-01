@@ -17,7 +17,7 @@ public abstract class StoryHomeFeed<T extends FeedItem>
   
   public StoryHomeFeed(@NonNull T paramT)
   {
-    AssertUtils.a(paramT);
+    AssertUtils.checkNotNull(paramT);
     this.a = paramT;
   }
   
@@ -50,25 +50,29 @@ public abstract class StoryHomeFeed<T extends FeedItem>
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if ((paramObject == null) || (getClass() != paramObject.getClass())) {
+    }
+    if (paramObject != null)
+    {
+      if (getClass() != paramObject.getClass()) {
         return false;
       }
       paramObject = (StoryHomeFeed)paramObject;
-      if (this.a != null) {
-        return this.a.equals(paramObject.a);
+      FeedItem localFeedItem = this.a;
+      if (localFeedItem != null) {
+        return localFeedItem.equals(paramObject.a);
       }
-    } while (paramObject.a == null);
+      return paramObject.a == null;
+    }
     return false;
   }
   
   public int hashCode()
   {
-    if (this.a != null) {
-      return this.a.hashCode();
+    FeedItem localFeedItem = this.a;
+    if (localFeedItem != null) {
+      return localFeedItem.hashCode();
     }
     return 0;
   }
@@ -80,7 +84,7 @@ public abstract class StoryHomeFeed<T extends FeedItem>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.StoryHomeFeed
  * JD-Core Version:    0.7.0.1
  */

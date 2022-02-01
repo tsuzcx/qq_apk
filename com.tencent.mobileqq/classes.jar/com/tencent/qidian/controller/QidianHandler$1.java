@@ -33,21 +33,22 @@ class QidianHandler$1
             ((MessageForUniteGrayTip)localObject).tipParam.a();
             ((MessageForUniteGrayTip)localObject).updateUniteGrayTipMsgData(QidianHandler.a(this.this$0));
             this.this$0.notifyUI(1005, true, this.jdField_a_of_type_JavaUtilHashMap);
+            return;
           }
         }
       }
-      return;
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(QidianHandler.a(), 2, "handleBlockBulkMsg ", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d(QidianHandler.a(), 2, "handleBlockBulkMsg ", localException);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qidian.controller.QidianHandler.1
  * JD-Core Version:    0.7.0.1
  */

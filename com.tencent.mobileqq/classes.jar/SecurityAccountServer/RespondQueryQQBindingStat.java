@@ -50,7 +50,27 @@ public final class RespondQueryQQBindingStat
   
   public String toString()
   {
-    return "[" + this.MobileUniqueNo + ", " + this.nationCode + ", " + this.mobileNo + ", " + this.lastUsedFlag + ", " + this.isStopFindMatch + ", " + this.isPhoneSwitched + ", " + this.noBindUploadContacts + ", " + this.noBindUploadContactsLocal + ", " + this.continueUploadNotbind + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[");
+    localStringBuilder.append(this.MobileUniqueNo);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.nationCode);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.mobileNo);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.lastUsedFlag);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.isStopFindMatch);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.isPhoneSwitched);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.noBindUploadContacts);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.noBindUploadContactsLocal);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.continueUploadNotbind);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)
@@ -67,7 +87,7 @@ public final class RespondQueryQQBindingStat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     SecurityAccountServer.RespondQueryQQBindingStat
  * JD-Core Version:    0.7.0.1
  */

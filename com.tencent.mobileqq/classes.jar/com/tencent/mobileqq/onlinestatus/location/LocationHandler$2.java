@@ -27,38 +27,44 @@ class LocationHandler$2
           localLatLng1 = LocationHandler.a;
         }
       }
-      if ((localLatLng1.getLatitude() == 0.0D) && (localLatLng1.getLongitude() == 0.0D)) {
+      if ((localLatLng1.getLatitude() == 0.0D) && (localLatLng1.getLongitude() == 0.0D))
+      {
         if (this.jdField_a_of_type_Boolean)
         {
           this.jdField_a_of_type_Boolean = false;
           QLog.e("LocationHandler", 1, "[LocationManager] onLocationChanged: invoked. (0,0) detected");
         }
+        return;
       }
-    }
-    do
-    {
-      return;
       LocationHandler.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler, paramTencentLocation);
-      if (this.b != null)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. remove over time runnable");
-        }
-        this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.b);
-        this.b = null;
+    }
+    if (this.b != null)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. remove over time runnable");
       }
-      if (paramInt == 0) {
-        LocationHandler.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler, true);
-      }
-    } while (!QLog.isColorLevel());
-    QLog.d("LocationHandler", 2, "[LocationManager] onLocationChanged: invoked. errorCode: " + paramInt + " errorMsg: " + paramString);
+      this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacks(this.b);
+      this.b = null;
+    }
+    if (paramInt == 0) {
+      LocationHandler.a(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusLocationLocationHandler, true);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramTencentLocation = new StringBuilder();
+      paramTencentLocation.append("[LocationManager] onLocationChanged: invoked. errorCode: ");
+      paramTencentLocation.append(paramInt);
+      paramTencentLocation.append(" errorMsg: ");
+      paramTencentLocation.append(paramString);
+      QLog.d("LocationHandler", 2, paramTencentLocation.toString());
+    }
   }
   
   public void onStatusUpdate(String paramString1, int paramInt, String paramString2) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.location.LocationHandler.2
  * JD-Core Version:    0.7.0.1
  */

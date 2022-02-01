@@ -21,7 +21,7 @@ import mqq.app.MobileQQ;
 public class NetworkMonitor
   implements NetworkMonitorCallback
 {
-  private static NetworkMonitor jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor = null;
+  private static NetworkMonitor jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor;
   private ConcurrentLinkedQueue<NetworkMonitor.DownloadURLBean> jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
   
   public NetworkMonitor()
@@ -33,10 +33,10 @@ public class NetworkMonitor
         QLog.d("NetworkMonitor", 2, new Object[] { "NetworkMonitor init Success! Current ProcessID=", Integer.valueOf(MobileQQ.sProcessId) });
       }
     }
-    while (!QLog.isColorLevel()) {
-      return;
+    else if (QLog.isColorLevel())
+    {
+      QLog.d("NetworkMonitor", 2, "BaseApplication.mNetworkMonitorCallback!=null");
     }
-    QLog.d("NetworkMonitor", 2, "BaseApplication.mNetworkMonitorCallback!=null");
   }
   
   private int a(String paramString1, String paramString2)
@@ -44,50 +44,46 @@ public class NetworkMonitor
     int n = paramString1.length();
     int i1 = paramString2.length();
     int[][] arrayOfInt = (int[][])Array.newInstance(Integer.TYPE, new int[] { n, i1 });
-    int i = 0;
     int j = 0;
-    while (i < n)
+    int i = 0;
+    while (j < n)
     {
       int k = 0;
-      if (k < i1)
+      while (k < i1)
       {
-        int m = j;
-        if (paramString1.charAt(i) == paramString2.charAt(k))
+        int m = i;
+        if (paramString1.charAt(j) == paramString2.charAt(k))
         {
-          if ((i != 0) && (k != 0)) {
-            break label130;
+          if ((j != 0) && (k != 0)) {
+            arrayOfInt[j][k] = (arrayOfInt[(j - 1)][(k - 1)] + 1);
+          } else {
+            arrayOfInt[j][k] = 1;
           }
-          arrayOfInt[i][k] = 1;
-        }
-        for (;;)
-        {
-          m = j;
-          if (j < arrayOfInt[i][k]) {
-            m = arrayOfInt[i][k];
+          m = i;
+          if (i < arrayOfInt[j][k]) {
+            m = arrayOfInt[j][k];
           }
-          k += 1;
-          j = m;
-          break;
-          label130:
-          arrayOfInt[i][k] = (arrayOfInt[(i - 1)][(k - 1)] + 1);
         }
+        k += 1;
+        i = m;
       }
-      i += 1;
+      j += 1;
     }
-    return j;
+    return i;
   }
   
   public static NetworkMonitor a()
   {
-    if (jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor != null) {
-      return jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor;
+    NetworkMonitor localNetworkMonitor = jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor;
+    if (localNetworkMonitor != null) {
+      return localNetworkMonitor;
     }
     try
     {
       if (jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor == null) {
         jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor = new NetworkMonitor();
       }
-      NetworkMonitor localNetworkMonitor = jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor;
+      localNetworkMonitor = jdField_a_of_type_ComTencentQqperfMonitorNetworkNetworkMonitor;
       return localNetworkMonitor;
     }
     finally {}
@@ -95,56 +91,63 @@ public class NetworkMonitor
   
   public static void a(Context paramContext, MonitorHttpInfo paramMonitorHttpInfo, boolean paramBoolean, String paramString1, String paramString2)
   {
-    if ((paramMonitorHttpInfo == null) || (paramContext == null))
+    if ((paramMonitorHttpInfo != null) && (paramContext != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NetworkMonitor", 2, "httpInfo is null");
+      HashMap localHashMap = new HashMap();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMonitorHttpInfo.getHost());
+      localStringBuilder.append(":");
+      localStringBuilder.append(paramMonitorHttpInfo.getPort());
+      localStringBuilder.append("/");
+      localStringBuilder.append(paramMonitorHttpInfo.getUrl());
+      localHashMap.put("url", localStringBuilder.toString());
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramMonitorHttpInfo.getResponseLength());
+      localStringBuilder.append("");
+      localHashMap.put("fileSize", localStringBuilder.toString());
+      localHashMap.put("mimeType", paramMonitorHttpInfo.getMimeType());
+      localHashMap.put("method", paramMonitorHttpInfo.getMethod());
+      localHashMap.put("ResponseBodyHex", paramMonitorHttpInfo.getResponseBodyHex());
+      localHashMap.put("type", paramMonitorHttpInfo.getType());
+      localHashMap.put("ResponseCode", paramMonitorHttpInfo.getResponseCode());
+      localHashMap.put("processName", paramString1);
+      if (paramString2 == null) {
+        paramString2 = "null";
+      }
+      localHashMap.put("CurrentActivity", paramString2);
+      localHashMap.put("reportVia", "4");
+      if (paramBoolean) {
+        StatisticCollector.getInstance(paramContext).collectPerformance(null, "MonitorApkDownload", true, 0L, 0L, localHashMap, "");
+      } else {
+        StatisticCollector.getInstance(paramContext).collectPerformance(null, "UnMonitorApkDownload", true, 0L, 0L, localHashMap, "");
+      }
+      if (QLog.isColorLevel())
+      {
+        if (paramBoolean) {
+          paramContext = "MonitorApkDownload{";
+        } else {
+          paramContext = "UnMonitorApkDownload{";
+        }
+        paramContext = new StringBuilder(paramContext);
+        paramContext.append(" ProcessName=");
+        paramContext.append(paramString1);
+        paramContext.append(" ");
+        paramMonitorHttpInfo = localHashMap.keySet().iterator();
+        while (paramMonitorHttpInfo.hasNext())
+        {
+          paramString1 = (String)paramMonitorHttpInfo.next();
+          paramContext.append(paramString1);
+          paramContext.append("=");
+          paramContext.append((String)localHashMap.get(paramString1));
+          paramContext.append("\n");
+        }
+        QLog.d("NetworkMonitor", 2, paramContext.toString());
       }
       return;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("url", paramMonitorHttpInfo.getHost() + ":" + paramMonitorHttpInfo.getPort() + "/" + paramMonitorHttpInfo.getUrl());
-    localHashMap.put("fileSize", paramMonitorHttpInfo.getResponseLength() + "");
-    localHashMap.put("mimeType", paramMonitorHttpInfo.getMimeType());
-    localHashMap.put("method", paramMonitorHttpInfo.getMethod());
-    localHashMap.put("ResponseBodyHex", paramMonitorHttpInfo.getResponseBodyHex());
-    localHashMap.put("type", paramMonitorHttpInfo.getType());
-    localHashMap.put("ResponseCode", paramMonitorHttpInfo.getResponseCode());
-    localHashMap.put("processName", paramString1);
-    paramMonitorHttpInfo = paramString2;
-    if (paramString2 == null) {
-      paramMonitorHttpInfo = "null";
+    if (QLog.isColorLevel()) {
+      QLog.d("NetworkMonitor", 2, "httpInfo is null");
     }
-    localHashMap.put("CurrentActivity", paramMonitorHttpInfo);
-    localHashMap.put("reportVia", "4");
-    if (paramBoolean)
-    {
-      StatisticCollector.getInstance(paramContext).collectPerformance(null, "MonitorApkDownload", true, 0L, 0L, localHashMap, "");
-      label231:
-      if (!QLog.isColorLevel()) {
-        break label348;
-      }
-      if (!paramBoolean) {
-        break label350;
-      }
-    }
-    label348:
-    label350:
-    for (paramContext = "MonitorApkDownload{";; paramContext = "UnMonitorApkDownload{")
-    {
-      paramContext = new StringBuilder(paramContext);
-      paramContext.append(" ProcessName=").append(paramString1).append(" ");
-      paramMonitorHttpInfo = localHashMap.keySet().iterator();
-      while (paramMonitorHttpInfo.hasNext())
-      {
-        paramString1 = (String)paramMonitorHttpInfo.next();
-        paramContext.append(paramString1).append("=").append((String)localHashMap.get(paramString1)).append("\n");
-      }
-      StatisticCollector.getInstance(paramContext).collectPerformance(null, "UnMonitorApkDownload", true, 0L, 0L, localHashMap, "");
-      break label231;
-      break;
-    }
-    QLog.d("NetworkMonitor", 2, paramContext.toString());
   }
   
   private static boolean a(String paramString)
@@ -154,52 +157,51 @@ public class NetworkMonitor
   
   private void b(MonitorHttpInfo paramMonitorHttpInfo, String paramString1, String paramString2)
   {
-    String str = paramMonitorHttpInfo.getHost() + ":" + paramMonitorHttpInfo.getPort() + "/" + paramMonitorHttpInfo.getUrl();
-    if (a(str)) {
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(paramMonitorHttpInfo.getHost());
+    ((StringBuilder)localObject1).append(":");
+    ((StringBuilder)localObject1).append(paramMonitorHttpInfo.getPort());
+    ((StringBuilder)localObject1).append("/");
+    ((StringBuilder)localObject1).append(paramMonitorHttpInfo.getUrl());
+    localObject1 = ((StringBuilder)localObject1).toString();
+    if (a((String)localObject1)) {
       return;
     }
-    if (this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue != null)
+    Object localObject2 = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue;
+    if (localObject2 != null)
     {
-      Object[] arrayOfObject = this.jdField_a_of_type_JavaUtilConcurrentConcurrentLinkedQueue.toArray();
-      int m = arrayOfObject.length;
+      localObject2 = ((ConcurrentLinkedQueue)localObject2).toArray();
+      int k = localObject2.length;
       int i = 0;
-      while (i < m)
+      while (i < k)
       {
-        Object localObject = arrayOfObject[i];
-        if ((localObject instanceof NetworkMonitor.DownloadURLBean))
+        NetworkMonitor.DownloadURLBean localDownloadURLBean = localObject2[i];
+        if ((localDownloadURLBean instanceof NetworkMonitor.DownloadURLBean))
         {
-          localObject = (NetworkMonitor.DownloadURLBean)localObject;
-          int k = 0;
+          localDownloadURLBean = (NetworkMonitor.DownloadURLBean)localDownloadURLBean;
+          int j;
           try
           {
-            j = a(str, ((NetworkMonitor.DownloadURLBean)localObject).a());
-            if (QLog.isColorLevel()) {
-              QLog.d("NetworkMonitor", 2, new Object[] { "url=", str, " bean's url=", ((NetworkMonitor.DownloadURLBean)localObject).a(), " lcs length=", Integer.valueOf(j) });
-            }
-            if (j < 10) {
-              break label258;
-            }
-            a(MobileQQ.context, paramMonitorHttpInfo, true, paramString1, paramString2);
-            return;
+            j = a((String)localObject1, localDownloadURLBean.a());
           }
           catch (Throwable localThrowable)
           {
-            for (;;)
-            {
-              int j = k;
-              if (QLog.isColorLevel())
-              {
-                QLog.d("NetworkMonitor", 2, "Exception", localThrowable);
-                j = k;
-              }
+            if (QLog.isColorLevel()) {
+              QLog.d("NetworkMonitor", 2, "Exception", localThrowable);
             }
+            j = 0;
+          }
+          if (QLog.isColorLevel()) {
+            QLog.d("NetworkMonitor", 2, new Object[] { "url=", localObject1, " bean's url=", localDownloadURLBean.a(), " lcs length=", Integer.valueOf(j) });
+          }
+          if (j >= 10) {
+            a(MobileQQ.context, paramMonitorHttpInfo, true, paramString1, paramString2);
           }
         }
         else if (QLog.isColorLevel())
         {
-          QLog.d("NetworkMonitor", 2, new Object[] { "class=", localObject.getClass().getSimpleName() });
+          QLog.d("NetworkMonitor", 2, new Object[] { "class=", localDownloadURLBean.getClass().getSimpleName() });
         }
-        label258:
         i += 1;
       }
     }
@@ -286,17 +288,18 @@ public class NetworkMonitor
       if (localObject1 == null) {
         localObject3 = "Null";
       }
-      try
-      {
-        a(paramMonitorHttpInfo, "com.tencent.mobileqq", (String)localObject3);
-        return;
-      }
-      catch (Throwable paramMonitorHttpInfo) {}
     }
     catch (Throwable localThrowable)
     {
       for (;;)
       {
+        try
+        {
+          a(paramMonitorHttpInfo, "com.tencent.mobileqq", (String)localObject3);
+          return;
+        }
+        catch (Throwable paramMonitorHttpInfo) {}
+        localThrowable = localThrowable;
         Object localObject2 = localObject3;
       }
     }
@@ -304,7 +307,7 @@ public class NetworkMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqperf.monitor.network.NetworkMonitor
  * JD-Core Version:    0.7.0.1
  */

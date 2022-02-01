@@ -11,7 +11,10 @@ public class QFlutterLog
   public QFlutterLog(String paramString)
   {
     this.a = paramString;
-    QLog.d("QFlutterLog", 1, "mSoPath: " + this.a);
+    paramString = new StringBuilder();
+    paramString.append("mSoPath: ");
+    paramString.append(this.a);
+    QLog.d("QFlutterLog", 1, paramString.toString());
   }
   
   public void d(String paramString)
@@ -28,10 +31,10 @@ public class QFlutterLog
   
   public int getLogLevel()
   {
-    if ((QLog.isColorLevel()) || (QLog.isDevelopLevel())) {
-      return 5;
+    if ((!QLog.isColorLevel()) && (!QLog.isDevelopLevel())) {
+      return 2;
     }
-    return 2;
+    return 5;
   }
   
   public void i(String paramString)
@@ -60,7 +63,7 @@ public class QFlutterLog
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.plugin.QFlutterLog
  * JD-Core Version:    0.7.0.1
  */

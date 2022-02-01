@@ -14,40 +14,42 @@ class ReceiptMessageDetailFragment$7
   {
     if (ReceiptMessageDetailFragment.c(this.a) == paramLong1)
     {
-      if (paramInt != 0) {
-        break label109;
-      }
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c succs with readtime: " + paramLong2);
-      if (paramLong2 > 0L) {
-        ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
-      }
-      if (this.a.isAdded())
+      if (paramInt == 0)
       {
-        ReceiptMessageDetailFragment localReceiptMessageDetailFragment = this.a;
-        if (paramLong2 <= 0L) {
-          break label104;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("get read status in c2c succs with readtime: ");
+        ((StringBuilder)localObject).append(paramLong2);
+        QLog.d("ReceiptMessageDetailFragment", 4, ((StringBuilder)localObject).toString());
+        if (paramLong2 > 0L) {
+          ReceiptMessageDetailFragment.a(this.a, 1, 1, true);
         }
-        paramInt = 1;
-        ReceiptMessageDetailFragment.a(localReceiptMessageDetailFragment, paramInt, true);
+        if (this.a.isAdded())
+        {
+          localObject = this.a;
+          if (paramLong2 > 0L) {
+            paramInt = 1;
+          } else {
+            paramInt = 0;
+          }
+          ReceiptMessageDetailFragment.a((ReceiptMessageDetailFragment)localObject, paramInt, true);
+        }
+        ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+        return;
       }
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("get read status in c2c fail with reply code: ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.d("ReceiptMessageDetailFragment", 4, ((StringBuilder)localObject).toString());
       ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
+      if (this.a.isAdded()) {
+        ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
+      }
     }
-    label104:
-    label109:
-    do
-    {
-      return;
-      paramInt = 0;
-      break;
-      QLog.d("ReceiptMessageDetailFragment", 4, "get read status in c2c fail with reply code: " + paramInt);
-      ReceiptMessageDetailFragment.a(this.a).removeObserver(this);
-    } while (!this.a.isAdded());
-    ReceiptMessageDetailFragment.a(this.a).sendEmptyMessage(20);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.receipt.ReceiptMessageDetailFragment.7
  * JD-Core Version:    0.7.0.1
  */

@@ -176,37 +176,55 @@ public class Fragment
       }
       return paramContext;
     }
-    catch (InstantiationException paramContext)
+    catch (InvocationTargetException paramContext)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramContext);
-    }
-    catch (IllegalAccessException paramContext)
-    {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": make sure class name exists, is public, and has an empty constructor that is public", paramContext);
+      paramBundle = new StringBuilder();
+      paramBundle.append("Unable to instantiate fragment ");
+      paramBundle.append(paramString);
+      paramBundle.append(": calling Fragment constructor caused an exception");
+      throw new Fragment.InstantiationException(paramBundle.toString(), paramContext);
     }
     catch (NoSuchMethodException paramContext)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": could not find Fragment constructor", paramContext);
+      paramBundle = new StringBuilder();
+      paramBundle.append("Unable to instantiate fragment ");
+      paramBundle.append(paramString);
+      paramBundle.append(": could not find Fragment constructor");
+      throw new Fragment.InstantiationException(paramBundle.toString(), paramContext);
     }
-    catch (InvocationTargetException paramContext)
+    catch (IllegalAccessException paramContext)
     {
-      throw new Fragment.InstantiationException("Unable to instantiate fragment " + paramString + ": calling Fragment constructor caused an exception", paramContext);
+      paramBundle = new StringBuilder();
+      paramBundle.append("Unable to instantiate fragment ");
+      paramBundle.append(paramString);
+      paramBundle.append(": make sure class name exists, is public, and has an empty constructor that is public");
+      throw new Fragment.InstantiationException(paramBundle.toString(), paramContext);
+    }
+    catch (InstantiationException paramContext)
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("Unable to instantiate fragment ");
+      paramBundle.append(paramString);
+      paramBundle.append(": make sure class name exists, is public, and has an empty constructor that is public");
+      throw new Fragment.InstantiationException(paramBundle.toString(), paramContext);
     }
   }
   
   void callStartTransitionListener()
   {
-    Fragment.OnStartEnterTransitionListener localOnStartEnterTransitionListener = null;
-    if (this.mAnimationInfo == null) {}
-    for (;;)
+    Object localObject = this.mAnimationInfo;
+    if (localObject == null)
     {
-      if (localOnStartEnterTransitionListener != null) {
-        localOnStartEnterTransitionListener.onStartEnterTransition();
-      }
-      return;
-      this.mAnimationInfo.mEnterTransitionPostponed = false;
-      localOnStartEnterTransitionListener = this.mAnimationInfo.mStartEnterTransitionListener;
+      localObject = null;
+    }
+    else
+    {
+      ((Fragment.AnimationInfo)localObject).mEnterTransitionPostponed = false;
+      localObject = ((Fragment.AnimationInfo)localObject).mStartEnterTransitionListener;
       this.mAnimationInfo.mStartEnterTransitionListener = null;
+    }
+    if (localObject != null) {
+      ((Fragment.OnStartEnterTransitionListener)localObject).onStartEnterTransition();
     }
   }
   
@@ -285,12 +303,12 @@ public class Fragment
       paramPrintWriter.print("mSavedViewState=");
       paramPrintWriter.println(this.mSavedViewState);
     }
-    Fragment localFragment = getTargetFragment();
-    if (localFragment != null)
+    Object localObject = getTargetFragment();
+    if (localObject != null)
     {
       paramPrintWriter.print(paramString);
       paramPrintWriter.print("mTarget=");
-      paramPrintWriter.print(localFragment);
+      paramPrintWriter.print(localObject);
       paramPrintWriter.print(" mTargetRequestCode=");
       paramPrintWriter.println(this.mTargetRequestCode);
     }
@@ -325,8 +343,16 @@ public class Fragment
       LoaderManager.getInstance(this).dump(paramString, paramFileDescriptor, paramPrintWriter, paramArrayOfString);
     }
     paramPrintWriter.print(paramString);
-    paramPrintWriter.println("Child " + this.mChildFragmentManager + ":");
-    this.mChildFragmentManager.dump(paramString + "  ", paramFileDescriptor, paramPrintWriter, paramArrayOfString);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Child ");
+    ((StringBuilder)localObject).append(this.mChildFragmentManager);
+    ((StringBuilder)localObject).append(":");
+    paramPrintWriter.println(((StringBuilder)localObject).toString());
+    localObject = this.mChildFragmentManager;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("  ");
+    ((FragmentManager)localObject).dump(localStringBuilder.toString(), paramFileDescriptor, paramPrintWriter, paramArrayOfString);
   }
   
   public final boolean equals(@Nullable Object paramObject)
@@ -346,42 +372,47 @@ public class Fragment
   @Nullable
   public final FragmentActivity getActivity()
   {
-    if (this.mHost == null) {
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if (localFragmentHostCallback == null) {
       return null;
     }
-    return (FragmentActivity)this.mHost.getActivity();
+    return (FragmentActivity)localFragmentHostCallback.getActivity();
   }
   
   public boolean getAllowEnterTransitionOverlap()
   {
-    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.mAllowEnterTransitionOverlap == null)) {
-      return true;
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if ((localAnimationInfo != null) && (localAnimationInfo.mAllowEnterTransitionOverlap != null)) {
+      return this.mAnimationInfo.mAllowEnterTransitionOverlap.booleanValue();
     }
-    return this.mAnimationInfo.mAllowEnterTransitionOverlap.booleanValue();
+    return true;
   }
   
   public boolean getAllowReturnTransitionOverlap()
   {
-    if ((this.mAnimationInfo == null) || (this.mAnimationInfo.mAllowReturnTransitionOverlap == null)) {
-      return true;
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if ((localAnimationInfo != null) && (localAnimationInfo.mAllowReturnTransitionOverlap != null)) {
+      return this.mAnimationInfo.mAllowReturnTransitionOverlap.booleanValue();
     }
-    return this.mAnimationInfo.mAllowReturnTransitionOverlap.booleanValue();
+    return true;
   }
   
   View getAnimatingAway()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.mAnimatingAway;
+    return localAnimationInfo.mAnimatingAway;
   }
   
   Animator getAnimator()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.mAnimator;
+    return localAnimationInfo.mAnimator;
   }
   
   @Nullable
@@ -393,65 +424,75 @@ public class Fragment
   @NonNull
   public final FragmentManager getChildFragmentManager()
   {
-    if (this.mHost == null) {
-      throw new IllegalStateException("Fragment " + this + " has not been attached yet.");
+    if (this.mHost != null) {
+      return this.mChildFragmentManager;
     }
-    return this.mChildFragmentManager;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Fragment ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" has not been attached yet.");
+    throw new IllegalStateException(localStringBuilder.toString());
   }
   
   @Nullable
   public Context getContext()
   {
-    if (this.mHost == null) {
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if (localFragmentHostCallback == null) {
       return null;
     }
-    return this.mHost.getContext();
+    return localFragmentHostCallback.getContext();
   }
   
   @NonNull
   public ViewModelProvider.Factory getDefaultViewModelProviderFactory()
   {
-    if (this.mFragmentManager == null) {
-      throw new IllegalStateException("Can't access ViewModels from detached fragment");
+    if (this.mFragmentManager != null)
+    {
+      if (this.mDefaultFactory == null) {
+        this.mDefaultFactory = new SavedStateViewModelFactory(requireActivity().getApplication(), this, getArguments());
+      }
+      return this.mDefaultFactory;
     }
-    if (this.mDefaultFactory == null) {
-      this.mDefaultFactory = new SavedStateViewModelFactory(requireActivity().getApplication(), this, getArguments());
-    }
-    return this.mDefaultFactory;
+    throw new IllegalStateException("Can't access ViewModels from detached fragment");
   }
   
   @Nullable
   public Object getEnterTransition()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.mEnterTransition;
+    return localAnimationInfo.mEnterTransition;
   }
   
   SharedElementCallback getEnterTransitionCallback()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.mEnterTransitionCallback;
+    return localAnimationInfo.mEnterTransitionCallback;
   }
   
   @Nullable
   public Object getExitTransition()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.mExitTransition;
+    return localAnimationInfo.mExitTransition;
   }
   
   SharedElementCallback getExitTransitionCallback()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.mExitTransitionCallback;
+    return localAnimationInfo.mExitTransitionCallback;
   }
   
   @Deprecated
@@ -464,10 +505,11 @@ public class Fragment
   @Nullable
   public final Object getHost()
   {
-    if (this.mHost == null) {
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if (localFragmentHostCallback == null) {
       return null;
     }
-    return this.mHost.onGetHost();
+    return localFragmentHostCallback.onGetHost();
   }
   
   public final int getId()
@@ -478,10 +520,12 @@ public class Fragment
   @NonNull
   public final LayoutInflater getLayoutInflater()
   {
-    if (this.mLayoutInflater == null) {
-      return performGetLayoutInflater(null);
+    LayoutInflater localLayoutInflater2 = this.mLayoutInflater;
+    LayoutInflater localLayoutInflater1 = localLayoutInflater2;
+    if (localLayoutInflater2 == null) {
+      localLayoutInflater1 = performGetLayoutInflater(null);
     }
-    return this.mLayoutInflater;
+    return localLayoutInflater1;
   }
   
   @Deprecated
@@ -489,12 +533,14 @@ public class Fragment
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public LayoutInflater getLayoutInflater(@Nullable Bundle paramBundle)
   {
-    if (this.mHost == null) {
-      throw new IllegalStateException("onGetLayoutInflater() cannot be executed until the Fragment is attached to the FragmentManager.");
+    paramBundle = this.mHost;
+    if (paramBundle != null)
+    {
+      paramBundle = paramBundle.onGetLayoutInflater();
+      LayoutInflaterCompat.setFactory2(paramBundle, this.mChildFragmentManager.getLayoutInflaterFactory());
+      return paramBundle;
     }
-    paramBundle = this.mHost.onGetLayoutInflater();
-    LayoutInflaterCompat.setFactory2(paramBundle, this.mChildFragmentManager.getLayoutInflaterFactory());
-    return paramBundle;
+    throw new IllegalStateException("onGetLayoutInflater() cannot be executed until the Fragment is attached to the FragmentManager.");
   }
   
   @NonNull
@@ -512,18 +558,20 @@ public class Fragment
   
   int getNextAnim()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.mNextAnim;
+    return localAnimationInfo.mNextAnim;
   }
   
   int getNextTransition()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.mNextTransition;
+    return localAnimationInfo.mNextTransition;
   }
   
   @Nullable
@@ -535,20 +583,25 @@ public class Fragment
   @NonNull
   public final FragmentManager getParentFragmentManager()
   {
-    FragmentManager localFragmentManager = this.mFragmentManager;
-    if (localFragmentManager == null) {
-      throw new IllegalStateException("Fragment " + this + " not associated with a fragment manager.");
+    Object localObject = this.mFragmentManager;
+    if (localObject != null) {
+      return localObject;
     }
-    return localFragmentManager;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Fragment ");
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" not associated with a fragment manager.");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   @Nullable
   public Object getReenterTransition()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    if (this.mAnimationInfo.mReenterTransition == USE_DEFAULT_TRANSITION) {
+    if (localAnimationInfo.mReenterTransition == USE_DEFAULT_TRANSITION) {
       return getExitTransition();
     }
     return this.mAnimationInfo.mReenterTransition;
@@ -568,10 +621,11 @@ public class Fragment
   @Nullable
   public Object getReturnTransition()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    if (this.mAnimationInfo.mReturnTransition == USE_DEFAULT_TRANSITION) {
+    if (localAnimationInfo.mReturnTransition == USE_DEFAULT_TRANSITION) {
       return getEnterTransition();
     }
     return this.mAnimationInfo.mReturnTransition;
@@ -586,19 +640,21 @@ public class Fragment
   @Nullable
   public Object getSharedElementEnterTransition()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    return this.mAnimationInfo.mSharedElementEnterTransition;
+    return localAnimationInfo.mSharedElementEnterTransition;
   }
   
   @Nullable
   public Object getSharedElementReturnTransition()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return null;
     }
-    if (this.mAnimationInfo.mSharedElementReturnTransition == USE_DEFAULT_TRANSITION) {
+    if (localAnimationInfo.mSharedElementReturnTransition == USE_DEFAULT_TRANSITION) {
       return getSharedElementEnterTransition();
     }
     return this.mAnimationInfo.mSharedElementReturnTransition;
@@ -606,10 +662,11 @@ public class Fragment
   
   int getStateAfterAnimating()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return 0;
     }
-    return this.mAnimationInfo.mStateAfterAnimating;
+    return localAnimationInfo.mStateAfterAnimating;
   }
   
   @NonNull
@@ -633,11 +690,17 @@ public class Fragment
   @Nullable
   public final Fragment getTargetFragment()
   {
-    if (this.mTarget != null) {
-      return this.mTarget;
+    Object localObject = this.mTarget;
+    if (localObject != null) {
+      return localObject;
     }
-    if ((this.mFragmentManager != null) && (this.mTargetWho != null)) {
-      return this.mFragmentManager.findActiveFragment(this.mTargetWho);
+    localObject = this.mFragmentManager;
+    if (localObject != null)
+    {
+      String str = this.mTargetWho;
+      if (str != null) {
+        return ((FragmentManager)localObject).findActiveFragment(str);
+      }
     }
     return null;
   }
@@ -669,10 +732,11 @@ public class Fragment
   @NonNull
   public LifecycleOwner getViewLifecycleOwner()
   {
-    if (this.mViewLifecycleOwner == null) {
-      throw new IllegalStateException("Can't access the Fragment View's LifecycleOwner when getView() is null i.e., before onCreateView() or after onDestroyView()");
+    FragmentViewLifecycleOwner localFragmentViewLifecycleOwner = this.mViewLifecycleOwner;
+    if (localFragmentViewLifecycleOwner != null) {
+      return localFragmentViewLifecycleOwner;
     }
-    return this.mViewLifecycleOwner;
+    throw new IllegalStateException("Can't access the Fragment View's LifecycleOwner when getView() is null i.e., before onCreateView() or after onDestroyView()");
   }
   
   @NonNull
@@ -684,10 +748,11 @@ public class Fragment
   @NonNull
   public ViewModelStore getViewModelStore()
   {
-    if (this.mFragmentManager == null) {
-      throw new IllegalStateException("Can't access ViewModels from detached fragment");
+    FragmentManager localFragmentManager = this.mFragmentManager;
+    if (localFragmentManager != null) {
+      return localFragmentManager.getViewModelStore(this);
     }
-    return this.mFragmentManager.getViewModelStore(this);
+    throw new IllegalStateException("Can't access ViewModels from detached fragment");
   }
   
   @SuppressLint({"KotlinPropertyAccess"})
@@ -739,10 +804,11 @@ public class Fragment
   
   boolean isHideReplaced()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return false;
     }
-    return this.mAnimationInfo.mIsHideReplaced;
+    return localAnimationInfo.mIsHideReplaced;
   }
   
   final boolean isInBackStack()
@@ -758,15 +824,23 @@ public class Fragment
   @RestrictTo({androidx.annotation.RestrictTo.Scope.LIBRARY_GROUP_PREFIX})
   public final boolean isMenuVisible()
   {
-    return (this.mMenuVisible) && ((this.mFragmentManager == null) || (this.mFragmentManager.isParentMenuVisible(this.mParentFragment)));
+    if (this.mMenuVisible)
+    {
+      FragmentManager localFragmentManager = this.mFragmentManager;
+      if ((localFragmentManager == null) || (localFragmentManager.isParentMenuVisible(this.mParentFragment))) {
+        return true;
+      }
+    }
+    return false;
   }
   
   boolean isPostponed()
   {
-    if (this.mAnimationInfo == null) {
+    Fragment.AnimationInfo localAnimationInfo = this.mAnimationInfo;
+    if (localAnimationInfo == null) {
       return false;
     }
-    return this.mAnimationInfo.mEnterTransitionPostponed;
+    return localAnimationInfo.mEnterTransitionPostponed;
   }
   
   public final boolean isRemoving()
@@ -787,15 +861,23 @@ public class Fragment
   
   public final boolean isStateSaved()
   {
-    if (this.mFragmentManager == null) {
+    FragmentManager localFragmentManager = this.mFragmentManager;
+    if (localFragmentManager == null) {
       return false;
     }
-    return this.mFragmentManager.isStateSaved();
+    return localFragmentManager.isStateSaved();
   }
   
   public final boolean isVisible()
   {
-    return (isAdded()) && (!isHidden()) && (this.mView != null) && (this.mView.getWindowToken() != null) && (this.mView.getVisibility() == 0);
+    if ((isAdded()) && (!isHidden()))
+    {
+      View localView = this.mView;
+      if ((localView != null) && (localView.getWindowToken() != null) && (this.mView.getVisibility() == 0)) {
+        return true;
+      }
+    }
+    return false;
   }
   
   void noteStateNotSaved()
@@ -825,15 +907,16 @@ public class Fragment
   public void onAttach(@NonNull Context paramContext)
   {
     this.mCalled = true;
-    if (this.mHost == null) {}
-    for (paramContext = null;; paramContext = this.mHost.getActivity())
+    paramContext = this.mHost;
+    if (paramContext == null) {
+      paramContext = null;
+    } else {
+      paramContext = paramContext.getActivity();
+    }
+    if (paramContext != null)
     {
-      if (paramContext != null)
-      {
-        this.mCalled = false;
-        onAttach(paramContext);
-      }
-      return;
+      this.mCalled = false;
+      onAttach(paramContext);
     }
   }
   
@@ -890,12 +973,14 @@ public class Fragment
   @Nullable
   public View onCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
   {
-    if (this.mContentLayoutId != 0) {}
-    for (paramLayoutInflater = paramLayoutInflater.inflate(this.mContentLayoutId, paramViewGroup, false);; paramLayoutInflater = null)
-    {
-      AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
+    int i = this.mContentLayoutId;
+    if (i != 0) {
+      paramLayoutInflater = paramLayoutInflater.inflate(i, paramViewGroup, false);
+    } else {
+      paramLayoutInflater = null;
     }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
   
   @CallSuper
@@ -944,15 +1029,16 @@ public class Fragment
   public void onInflate(@NonNull Context paramContext, @NonNull AttributeSet paramAttributeSet, @Nullable Bundle paramBundle)
   {
     this.mCalled = true;
-    if (this.mHost == null) {}
-    for (paramContext = null;; paramContext = this.mHost.getActivity())
+    paramContext = this.mHost;
+    if (paramContext == null) {
+      paramContext = null;
+    } else {
+      paramContext = paramContext.getActivity();
+    }
+    if (paramContext != null)
     {
-      if (paramContext != null)
-      {
-        this.mCalled = false;
-        onInflate(paramContext, paramAttributeSet, paramBundle);
-      }
-      return;
+      this.mCalled = false;
+      onInflate(paramContext, paramAttributeSet, paramBundle);
     }
   }
   
@@ -1031,10 +1117,16 @@ public class Fragment
     this.mState = 2;
     this.mCalled = false;
     onActivityCreated(paramBundle);
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onActivityCreated()");
+    if (this.mCalled)
+    {
+      this.mChildFragmentManager.dispatchActivityCreated();
+      return;
     }
-    this.mChildFragmentManager.dispatchActivityCreated();
+    paramBundle = new StringBuilder();
+    paramBundle.append("Fragment ");
+    paramBundle.append(this);
+    paramBundle.append(" did not call through to super.onActivityCreated()");
+    throw new SuperNotCalledException(paramBundle.toString());
   }
   
   void performAttach()
@@ -1043,9 +1135,14 @@ public class Fragment
     this.mState = 0;
     this.mCalled = false;
     onAttach(this.mHost.getContext());
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onAttach()");
+    if (this.mCalled) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Fragment ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" did not call through to super.onAttach()");
+    throw new SuperNotCalledException(localStringBuilder.toString());
   }
   
   void performConfigurationChanged(@NonNull Configuration paramConfiguration)
@@ -1058,8 +1155,10 @@ public class Fragment
   {
     if (!this.mHidden)
     {
-      if (onContextItemSelected(paramMenuItem)) {}
-      while (this.mChildFragmentManager.dispatchContextItemSelected(paramMenuItem)) {
+      if (onContextItemSelected(paramMenuItem)) {
+        return true;
+      }
+      if (this.mChildFragmentManager.dispatchContextItemSelected(paramMenuItem)) {
         return true;
       }
     }
@@ -1074,17 +1173,24 @@ public class Fragment
     this.mSavedStateRegistryController.performRestore(paramBundle);
     onCreate(paramBundle);
     this.mIsCreated = true;
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onCreate()");
+    if (this.mCalled)
+    {
+      this.mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+      return;
     }
-    this.mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+    paramBundle = new StringBuilder();
+    paramBundle.append("Fragment ");
+    paramBundle.append(this);
+    paramBundle.append(" did not call through to super.onCreate()");
+    throw new SuperNotCalledException(paramBundle.toString());
   }
   
   boolean performCreateOptionsMenu(@NonNull Menu paramMenu, @NonNull MenuInflater paramMenuInflater)
   {
-    boolean bool = false;
+    boolean bool2 = this.mHidden;
+    boolean bool1 = false;
     int j = 0;
-    if (!this.mHidden)
+    if (!bool2)
     {
       int i = j;
       if (this.mHasMenu)
@@ -1096,9 +1202,9 @@ public class Fragment
           onCreateOptionsMenu(paramMenu, paramMenuInflater);
         }
       }
-      bool = i | this.mChildFragmentManager.dispatchCreateOptionsMenu(paramMenu, paramMenuInflater);
+      bool1 = i | this.mChildFragmentManager.dispatchCreateOptionsMenu(paramMenu, paramMenuInflater);
     }
-    return bool;
+    return bool1;
   }
   
   void performCreateView(@NonNull LayoutInflater paramLayoutInflater, @Nullable ViewGroup paramViewGroup, @Nullable Bundle paramBundle)
@@ -1113,10 +1219,12 @@ public class Fragment
       this.mViewLifecycleOwnerLiveData.setValue(this.mViewLifecycleOwner);
       return;
     }
-    if (this.mViewLifecycleOwner.isInitialized()) {
-      throw new IllegalStateException("Called getViewLifecycleOwner() but onCreateView() returned null");
+    if (!this.mViewLifecycleOwner.isInitialized())
+    {
+      this.mViewLifecycleOwner = null;
+      return;
     }
-    this.mViewLifecycleOwner = null;
+    throw new IllegalStateException("Called getViewLifecycleOwner() but onCreateView() returned null");
   }
   
   void performDestroy()
@@ -1127,9 +1235,14 @@ public class Fragment
     this.mCalled = false;
     this.mIsCreated = false;
     onDestroy();
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onDestroy()");
+    if (this.mCalled) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Fragment ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" did not call through to super.onDestroy()");
+    throw new SuperNotCalledException(localStringBuilder.toString());
   }
   
   void performDestroyView()
@@ -1141,11 +1254,17 @@ public class Fragment
     this.mState = 1;
     this.mCalled = false;
     onDestroyView();
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onDestroyView()");
+    if (this.mCalled)
+    {
+      LoaderManager.getInstance(this).markForRedelivery();
+      this.mPerformedCreateView = false;
+      return;
     }
-    LoaderManager.getInstance(this).markForRedelivery();
-    this.mPerformedCreateView = false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Fragment ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" did not call through to super.onDestroyView()");
+    throw new SuperNotCalledException(localStringBuilder.toString());
   }
   
   void performDetach()
@@ -1154,14 +1273,20 @@ public class Fragment
     this.mCalled = false;
     onDetach();
     this.mLayoutInflater = null;
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onDetach()");
-    }
-    if (!this.mChildFragmentManager.isDestroyed())
+    if (this.mCalled)
     {
-      this.mChildFragmentManager.dispatchDestroy();
-      this.mChildFragmentManager = new FragmentManagerImpl();
+      if (!this.mChildFragmentManager.isDestroyed())
+      {
+        this.mChildFragmentManager.dispatchDestroy();
+        this.mChildFragmentManager = new FragmentManagerImpl();
+      }
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Fragment ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" did not call through to super.onDetach()");
+    throw new SuperNotCalledException(localStringBuilder.toString());
   }
   
   @NonNull
@@ -1187,8 +1312,10 @@ public class Fragment
   {
     if (!this.mHidden)
     {
-      if ((this.mHasMenu) && (this.mMenuVisible) && (onOptionsItemSelected(paramMenuItem))) {}
-      while (this.mChildFragmentManager.dispatchOptionsItemSelected(paramMenuItem)) {
+      if ((this.mHasMenu) && (this.mMenuVisible) && (onOptionsItemSelected(paramMenuItem))) {
+        return true;
+      }
+      if (this.mChildFragmentManager.dispatchOptionsItemSelected(paramMenuItem)) {
         return true;
       }
     }
@@ -1216,9 +1343,14 @@ public class Fragment
     this.mState = 3;
     this.mCalled = false;
     onPause();
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onPause()");
+    if (this.mCalled) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Fragment ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" did not call through to super.onPause()");
+    throw new SuperNotCalledException(localStringBuilder.toString());
   }
   
   void performPictureInPictureModeChanged(boolean paramBoolean)
@@ -1229,9 +1361,10 @@ public class Fragment
   
   boolean performPrepareOptionsMenu(@NonNull Menu paramMenu)
   {
-    boolean bool = false;
+    boolean bool2 = this.mHidden;
+    boolean bool1 = false;
     int j = 0;
-    if (!this.mHidden)
+    if (!bool2)
     {
       int i = j;
       if (this.mHasMenu)
@@ -1243,15 +1376,16 @@ public class Fragment
           onPrepareOptionsMenu(paramMenu);
         }
       }
-      bool = i | this.mChildFragmentManager.dispatchPrepareOptionsMenu(paramMenu);
+      bool1 = i | this.mChildFragmentManager.dispatchPrepareOptionsMenu(paramMenu);
     }
-    return bool;
+    return bool1;
   }
   
   void performPrimaryNavigationFragmentChanged()
   {
     boolean bool = this.mFragmentManager.isPrimaryNavigation(this);
-    if ((this.mIsPrimaryNavigationFragment == null) || (this.mIsPrimaryNavigationFragment.booleanValue() != bool))
+    Boolean localBoolean = this.mIsPrimaryNavigationFragment;
+    if ((localBoolean == null) || (localBoolean.booleanValue() != bool))
     {
       this.mIsPrimaryNavigationFragment = Boolean.valueOf(bool);
       onPrimaryNavigationFragmentChanged(bool);
@@ -1266,14 +1400,20 @@ public class Fragment
     this.mState = 4;
     this.mCalled = false;
     onResume();
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onResume()");
+    if (this.mCalled)
+    {
+      this.mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+      if (this.mView != null) {
+        this.mViewLifecycleOwner.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
+      }
+      this.mChildFragmentManager.dispatchResume();
+      return;
     }
-    this.mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-    if (this.mView != null) {
-      this.mViewLifecycleOwner.handleLifecycleEvent(Lifecycle.Event.ON_RESUME);
-    }
-    this.mChildFragmentManager.dispatchResume();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Fragment ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" did not call through to super.onResume()");
+    throw new SuperNotCalledException(localStringBuilder.toString());
   }
   
   void performSaveInstanceState(Bundle paramBundle)
@@ -1293,14 +1433,20 @@ public class Fragment
     this.mState = 3;
     this.mCalled = false;
     onStart();
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onStart()");
+    if (this.mCalled)
+    {
+      this.mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
+      if (this.mView != null) {
+        this.mViewLifecycleOwner.handleLifecycleEvent(Lifecycle.Event.ON_START);
+      }
+      this.mChildFragmentManager.dispatchStart();
+      return;
     }
-    this.mLifecycleRegistry.handleLifecycleEvent(Lifecycle.Event.ON_START);
-    if (this.mView != null) {
-      this.mViewLifecycleOwner.handleLifecycleEvent(Lifecycle.Event.ON_START);
-    }
-    this.mChildFragmentManager.dispatchStart();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Fragment ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" did not call through to super.onStart()");
+    throw new SuperNotCalledException(localStringBuilder.toString());
   }
   
   void performStop()
@@ -1313,9 +1459,14 @@ public class Fragment
     this.mState = 2;
     this.mCalled = false;
     onStop();
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onStop()");
+    if (this.mCalled) {
+      return;
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Fragment ");
+    localStringBuilder.append(this);
+    localStringBuilder.append(" did not call through to super.onStop()");
+    throw new SuperNotCalledException(localStringBuilder.toString());
   }
   
   public void postponeEnterTransition()
@@ -1326,13 +1477,14 @@ public class Fragment
   public final void postponeEnterTransition(long paramLong, @NonNull TimeUnit paramTimeUnit)
   {
     ensureAnimationInfo().mEnterTransitionPostponed = true;
-    if (this.mFragmentManager != null) {}
-    for (Handler localHandler = this.mFragmentManager.mHost.getHandler();; localHandler = new Handler(Looper.getMainLooper()))
-    {
-      localHandler.removeCallbacks(this.mPostponedDurationRunnable);
-      localHandler.postDelayed(this.mPostponedDurationRunnable, paramTimeUnit.toMillis(paramLong));
-      return;
+    Object localObject = this.mFragmentManager;
+    if (localObject != null) {
+      localObject = ((FragmentManager)localObject).mHost.getHandler();
+    } else {
+      localObject = new Handler(Looper.getMainLooper());
     }
+    ((Handler)localObject).removeCallbacks(this.mPostponedDurationRunnable);
+    ((Handler)localObject).postDelayed(this.mPostponedDurationRunnable, paramTimeUnit.toMillis(paramLong));
   }
   
   public void registerForContextMenu(@NonNull View paramView)
@@ -1342,40 +1494,59 @@ public class Fragment
   
   public final void requestPermissions(@NonNull String[] paramArrayOfString, int paramInt)
   {
-    if (this.mHost == null) {
-      throw new IllegalStateException("Fragment " + this + " not attached to Activity");
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if (localFragmentHostCallback != null)
+    {
+      localFragmentHostCallback.onRequestPermissionsFromFragment(this, paramArrayOfString, paramInt);
+      return;
     }
-    this.mHost.onRequestPermissionsFromFragment(this, paramArrayOfString, paramInt);
+    paramArrayOfString = new StringBuilder();
+    paramArrayOfString.append("Fragment ");
+    paramArrayOfString.append(this);
+    paramArrayOfString.append(" not attached to Activity");
+    throw new IllegalStateException(paramArrayOfString.toString());
   }
   
   @NonNull
   public final FragmentActivity requireActivity()
   {
-    FragmentActivity localFragmentActivity = getActivity();
-    if (localFragmentActivity == null) {
-      throw new IllegalStateException("Fragment " + this + " not attached to an activity.");
+    Object localObject = getActivity();
+    if (localObject != null) {
+      return localObject;
     }
-    return localFragmentActivity;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Fragment ");
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" not attached to an activity.");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   @NonNull
   public final Bundle requireArguments()
   {
-    Bundle localBundle = getArguments();
-    if (localBundle == null) {
-      throw new IllegalStateException("Fragment " + this + " does not have any arguments.");
+    Object localObject = getArguments();
+    if (localObject != null) {
+      return localObject;
     }
-    return localBundle;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Fragment ");
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" does not have any arguments.");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   @NonNull
   public final Context requireContext()
   {
-    Context localContext = getContext();
-    if (localContext == null) {
-      throw new IllegalStateException("Fragment " + this + " not attached to a context.");
+    Object localObject = getContext();
+    if (localObject != null) {
+      return localObject;
     }
-    return localContext;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Fragment ");
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" not attached to a context.");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   @Deprecated
@@ -1389,34 +1560,52 @@ public class Fragment
   public final Object requireHost()
   {
     Object localObject = getHost();
-    if (localObject == null) {
-      throw new IllegalStateException("Fragment " + this + " not attached to a host.");
+    if (localObject != null) {
+      return localObject;
     }
-    return localObject;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Fragment ");
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" not attached to a host.");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   @NonNull
   public final Fragment requireParentFragment()
   {
-    Fragment localFragment = getParentFragment();
-    if (localFragment == null)
+    Object localObject = getParentFragment();
+    if (localObject == null)
     {
-      if (getContext() == null) {
-        throw new IllegalStateException("Fragment " + this + " is not attached to any Fragment or host");
+      if (getContext() == null)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Fragment ");
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append(" is not attached to any Fragment or host");
+        throw new IllegalStateException(((StringBuilder)localObject).toString());
       }
-      throw new IllegalStateException("Fragment " + this + " is not a child Fragment, it is directly attached to " + getContext());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Fragment ");
+      ((StringBuilder)localObject).append(this);
+      ((StringBuilder)localObject).append(" is not a child Fragment, it is directly attached to ");
+      ((StringBuilder)localObject).append(getContext());
+      throw new IllegalStateException(((StringBuilder)localObject).toString());
     }
-    return localFragment;
+    return localObject;
   }
   
   @NonNull
   public final View requireView()
   {
-    View localView = getView();
-    if (localView == null) {
-      throw new IllegalStateException("Fragment " + this + " did not return a View from onCreateView() or this was called before onCreateView().");
+    Object localObject = getView();
+    if (localObject != null) {
+      return localObject;
     }
-    return localView;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Fragment ");
+    ((StringBuilder)localObject).append(this);
+    ((StringBuilder)localObject).append(" did not return a View from onCreateView() or this was called before onCreateView().");
+    throw new IllegalStateException(((StringBuilder)localObject).toString());
   }
   
   void restoreChildFragmentState(@Nullable Bundle paramBundle)
@@ -1434,19 +1623,26 @@ public class Fragment
   
   final void restoreViewState(Bundle paramBundle)
   {
-    if (this.mSavedViewState != null)
+    SparseArray localSparseArray = this.mSavedViewState;
+    if (localSparseArray != null)
     {
-      this.mView.restoreHierarchyState(this.mSavedViewState);
+      this.mView.restoreHierarchyState(localSparseArray);
       this.mSavedViewState = null;
     }
     this.mCalled = false;
     onViewStateRestored(paramBundle);
-    if (!this.mCalled) {
-      throw new SuperNotCalledException("Fragment " + this + " did not call through to super.onViewStateRestored()");
+    if (this.mCalled)
+    {
+      if (this.mView != null) {
+        this.mViewLifecycleOwner.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
+      }
+      return;
     }
-    if (this.mView != null) {
-      this.mViewLifecycleOwner.handleLifecycleEvent(Lifecycle.Event.ON_CREATE);
-    }
+    paramBundle = new StringBuilder();
+    paramBundle.append("Fragment ");
+    paramBundle.append(this);
+    paramBundle.append(" did not call through to super.onViewStateRestored()");
+    throw new SuperNotCalledException(paramBundle.toString());
   }
   
   public void setAllowEnterTransitionOverlap(boolean paramBoolean)
@@ -1515,15 +1711,17 @@ public class Fragment
   
   public void setInitialSavedState(@Nullable Fragment.SavedState paramSavedState)
   {
-    if (this.mFragmentManager != null) {
-      throw new IllegalStateException("Fragment already added");
-    }
-    if ((paramSavedState != null) && (paramSavedState.mState != null)) {}
-    for (paramSavedState = paramSavedState.mState;; paramSavedState = null)
+    if (this.mFragmentManager == null)
     {
+      if ((paramSavedState != null) && (paramSavedState.mState != null)) {
+        paramSavedState = paramSavedState.mState;
+      } else {
+        paramSavedState = null;
+      }
       this.mSavedFragmentState = paramSavedState;
       return;
     }
+    throw new IllegalStateException("Fragment already added");
   }
   
   public void setMenuVisibility(boolean paramBoolean)
@@ -1557,18 +1755,22 @@ public class Fragment
   void setOnStartEnterTransitionListener(Fragment.OnStartEnterTransitionListener paramOnStartEnterTransitionListener)
   {
     ensureAnimationInfo();
-    if (paramOnStartEnterTransitionListener == this.mAnimationInfo.mStartEnterTransitionListener) {}
-    do
-    {
+    if (paramOnStartEnterTransitionListener == this.mAnimationInfo.mStartEnterTransitionListener) {
       return;
-      if ((paramOnStartEnterTransitionListener != null) && (this.mAnimationInfo.mStartEnterTransitionListener != null)) {
-        throw new IllegalStateException("Trying to set a replacement startPostponedEnterTransition on " + this);
-      }
-      if (this.mAnimationInfo.mEnterTransitionPostponed) {
-        this.mAnimationInfo.mStartEnterTransitionListener = paramOnStartEnterTransitionListener;
-      }
-    } while (paramOnStartEnterTransitionListener == null);
-    paramOnStartEnterTransitionListener.startListening();
+    }
+    if ((paramOnStartEnterTransitionListener != null) && (this.mAnimationInfo.mStartEnterTransitionListener != null))
+    {
+      paramOnStartEnterTransitionListener = new StringBuilder();
+      paramOnStartEnterTransitionListener.append("Trying to set a replacement startPostponedEnterTransition on ");
+      paramOnStartEnterTransitionListener.append(this);
+      throw new IllegalStateException(paramOnStartEnterTransitionListener.toString());
+    }
+    if (this.mAnimationInfo.mEnterTransitionPostponed) {
+      this.mAnimationInfo.mStartEnterTransitionListener = paramOnStartEnterTransitionListener;
+    }
+    if (paramOnStartEnterTransitionListener != null) {
+      paramOnStartEnterTransitionListener.startListening();
+    }
   }
   
   public void setReenterTransition(@Nullable Object paramObject)
@@ -1579,14 +1781,15 @@ public class Fragment
   public void setRetainInstance(boolean paramBoolean)
   {
     this.mRetainInstance = paramBoolean;
-    if (this.mFragmentManager != null)
+    FragmentManager localFragmentManager = this.mFragmentManager;
+    if (localFragmentManager != null)
     {
       if (paramBoolean)
       {
-        this.mFragmentManager.addRetainedFragment(this);
+        localFragmentManager.addRetainedFragment(this);
         return;
       }
-      this.mFragmentManager.removeRetainedFragment(this);
+      localFragmentManager.removeRetainedFragment(this);
       return;
     }
     this.mRetainInstanceChangedWhileDetached = true;
@@ -1615,13 +1818,34 @@ public class Fragment
   public void setTargetFragment(@Nullable Fragment paramFragment, int paramInt)
   {
     FragmentManager localFragmentManager = this.mFragmentManager;
-    if (paramFragment != null) {}
-    for (Object localObject = paramFragment.mFragmentManager; (localFragmentManager != null) && (localObject != null) && (localFragmentManager != localObject); localObject = null) {
-      throw new IllegalArgumentException("Fragment " + paramFragment + " must share the same FragmentManager to be set as a target fragment");
+    if (paramFragment != null) {
+      localObject = paramFragment.mFragmentManager;
+    } else {
+      localObject = null;
     }
-    for (localObject = paramFragment; localObject != null; localObject = ((Fragment)localObject).getTargetFragment()) {
-      if (localObject == this) {
-        throw new IllegalArgumentException("Setting " + paramFragment + " as the target of " + this + " would create a target cycle");
+    if ((localFragmentManager != null) && (localObject != null) && (localFragmentManager != localObject))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("Fragment ");
+      ((StringBuilder)localObject).append(paramFragment);
+      ((StringBuilder)localObject).append(" must share the same FragmentManager to be set as a target fragment");
+      throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+    }
+    Object localObject = paramFragment;
+    while (localObject != null) {
+      if (localObject != this)
+      {
+        localObject = ((Fragment)localObject).getTargetFragment();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("Setting ");
+        ((StringBuilder)localObject).append(paramFragment);
+        ((StringBuilder)localObject).append(" as the target of ");
+        ((StringBuilder)localObject).append(this);
+        ((StringBuilder)localObject).append(" would create a target cycle");
+        throw new IllegalArgumentException(((StringBuilder)localObject).toString());
       }
     }
     if (paramFragment == null)
@@ -1629,21 +1853,17 @@ public class Fragment
       this.mTargetWho = null;
       this.mTarget = null;
     }
-    for (;;)
+    else if ((this.mFragmentManager != null) && (paramFragment.mFragmentManager != null))
     {
-      this.mTargetRequestCode = paramInt;
-      return;
-      if ((this.mFragmentManager != null) && (paramFragment.mFragmentManager != null))
-      {
-        this.mTargetWho = paramFragment.mWho;
-        this.mTarget = null;
-      }
-      else
-      {
-        this.mTargetWho = null;
-        this.mTarget = paramFragment;
-      }
+      this.mTargetWho = paramFragment.mWho;
+      this.mTarget = null;
     }
+    else
+    {
+      this.mTargetWho = null;
+      this.mTarget = paramFragment;
+    }
+    this.mTargetRequestCode = paramInt;
   }
   
   @Deprecated
@@ -1653,21 +1873,23 @@ public class Fragment
       this.mFragmentManager.performPendingDeferredStart(this);
     }
     this.mUserVisibleHint = paramBoolean;
-    if ((this.mState < 3) && (!paramBoolean)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mDeferStart = bool;
-      if (this.mSavedFragmentState != null) {
-        this.mSavedUserVisibleHint = Boolean.valueOf(paramBoolean);
-      }
-      return;
+    boolean bool;
+    if ((this.mState < 3) && (!paramBoolean)) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    this.mDeferStart = bool;
+    if (this.mSavedFragmentState != null) {
+      this.mSavedUserVisibleHint = Boolean.valueOf(paramBoolean);
     }
   }
   
   public boolean shouldShowRequestPermissionRationale(@NonNull String paramString)
   {
-    if (this.mHost != null) {
-      return this.mHost.onShouldShowRequestPermissionRationale(paramString);
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if (localFragmentHostCallback != null) {
+      return localFragmentHostCallback.onShouldShowRequestPermissionRationale(paramString);
     }
     return false;
   }
@@ -1679,10 +1901,17 @@ public class Fragment
   
   public void startActivity(@SuppressLint({"UnknownNullness"}) Intent paramIntent, @Nullable Bundle paramBundle)
   {
-    if (this.mHost == null) {
-      throw new IllegalStateException("Fragment " + this + " not attached to Activity");
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if (localFragmentHostCallback != null)
+    {
+      localFragmentHostCallback.onStartActivityFromFragment(this, paramIntent, -1, paramBundle);
+      return;
     }
-    this.mHost.onStartActivityFromFragment(this, paramIntent, -1, paramBundle);
+    paramIntent = new StringBuilder();
+    paramIntent.append("Fragment ");
+    paramIntent.append(this);
+    paramIntent.append(" not attached to Activity");
+    throw new IllegalStateException(paramIntent.toString());
   }
   
   public void startActivityForResult(@SuppressLint({"UnknownNullness"}) Intent paramIntent, int paramInt)
@@ -1692,33 +1921,48 @@ public class Fragment
   
   public void startActivityForResult(@SuppressLint({"UnknownNullness"}) Intent paramIntent, int paramInt, @Nullable Bundle paramBundle)
   {
-    if (this.mHost == null) {
-      throw new IllegalStateException("Fragment " + this + " not attached to Activity");
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if (localFragmentHostCallback != null)
+    {
+      localFragmentHostCallback.onStartActivityFromFragment(this, paramIntent, paramInt, paramBundle);
+      return;
     }
-    this.mHost.onStartActivityFromFragment(this, paramIntent, paramInt, paramBundle);
+    paramIntent = new StringBuilder();
+    paramIntent.append("Fragment ");
+    paramIntent.append(this);
+    paramIntent.append(" not attached to Activity");
+    throw new IllegalStateException(paramIntent.toString());
   }
   
   public void startIntentSenderForResult(@SuppressLint({"UnknownNullness"}) IntentSender paramIntentSender, int paramInt1, @Nullable Intent paramIntent, int paramInt2, int paramInt3, int paramInt4, @Nullable Bundle paramBundle)
   {
-    if (this.mHost == null) {
-      throw new IllegalStateException("Fragment " + this + " not attached to Activity");
+    FragmentHostCallback localFragmentHostCallback = this.mHost;
+    if (localFragmentHostCallback != null)
+    {
+      localFragmentHostCallback.onStartIntentSenderFromFragment(this, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+      return;
     }
-    this.mHost.onStartIntentSenderFromFragment(this, paramIntentSender, paramInt1, paramIntent, paramInt2, paramInt3, paramInt4, paramBundle);
+    paramIntentSender = new StringBuilder();
+    paramIntentSender.append("Fragment ");
+    paramIntentSender.append(this);
+    paramIntentSender.append(" not attached to Activity");
+    throw new IllegalStateException(paramIntentSender.toString());
   }
   
   public void startPostponedEnterTransition()
   {
-    if ((this.mFragmentManager == null) || (this.mFragmentManager.mHost == null))
+    FragmentManager localFragmentManager = this.mFragmentManager;
+    if ((localFragmentManager != null) && (localFragmentManager.mHost != null))
     {
-      ensureAnimationInfo().mEnterTransitionPostponed = false;
+      if (Looper.myLooper() != this.mFragmentManager.mHost.getHandler().getLooper())
+      {
+        this.mFragmentManager.mHost.getHandler().postAtFrontOfQueue(new Fragment.3(this));
+        return;
+      }
+      callStartTransitionListener();
       return;
     }
-    if (Looper.myLooper() != this.mFragmentManager.mHost.getHandler().getLooper())
-    {
-      this.mFragmentManager.mHost.getHandler().postAtFrontOfQueue(new Fragment.3(this));
-      return;
-    }
-    callStartTransitionListener();
+    ensureAnimationInfo().mEnterTransitionPostponed = false;
   }
   
   @NonNull
@@ -1753,7 +1997,7 @@ public class Fragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.Fragment
  * JD-Core Version:    0.7.0.1
  */

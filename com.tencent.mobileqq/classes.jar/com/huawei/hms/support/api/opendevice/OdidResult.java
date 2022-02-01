@@ -5,7 +5,7 @@ import com.huawei.hms.support.api.client.Result;
 public class OdidResult
   extends Result
 {
-  private String id;
+  public String id;
   
   public String getId()
   {
@@ -19,7 +19,7 @@ public class OdidResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.support.api.opendevice.OdidResult
  * JD-Core Version:    0.7.0.1
  */

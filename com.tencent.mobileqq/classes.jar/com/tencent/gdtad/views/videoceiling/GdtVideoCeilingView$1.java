@@ -19,19 +19,28 @@ class GdtVideoCeilingView$1
   public void onPageFinished(WebView paramWebView, String paramString)
   {
     super.onPageFinished(paramWebView, paramString);
-    GdtLog.b("GdtVideoCeilingView", "onPageFinished:" + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("onPageFinished:");
+    paramWebView.append(paramString);
+    GdtLog.b("GdtVideoCeilingView", paramWebView.toString());
   }
   
   public void onPageStarted(WebView paramWebView, String paramString, Bitmap paramBitmap)
   {
     super.onPageStarted(paramWebView, paramString, paramBitmap);
-    GdtLog.b("GdtVideoCeilingView", "onPageStarted:" + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("onPageStarted:");
+    paramWebView.append(paramString);
+    GdtLog.b("GdtVideoCeilingView", paramWebView.toString());
   }
   
   public void onReceivedTitle(WebView paramWebView, String paramString)
   {
     super.onReceivedTitle(paramWebView, paramString);
-    GdtLog.b("GdtVideoCeilingView", "onReceivedTitle: " + paramString);
+    paramWebView = new StringBuilder();
+    paramWebView.append("onReceivedTitle: ");
+    paramWebView.append(paramString);
+    GdtLog.b("GdtVideoCeilingView", paramWebView.toString());
     GdtVideoCeilingView.a(this.a).setWebBarTitle(paramString);
   }
   
@@ -42,7 +51,7 @@ class GdtVideoCeilingView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingView.1
  * JD-Core Version:    0.7.0.1
  */

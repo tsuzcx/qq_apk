@@ -8,7 +8,6 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.util.Utils;
-import com.tencent.mobileqq.vashealth.SportManager;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import common.config.service.QzoneConfig;
@@ -43,9 +42,7 @@ public class QZoneDistributedAppCtrl
   private static final long HalfHourMills = 1800000L;
   public static final String KEY_AVSDK_ENDTIME = "key_avsdk_endTime";
   public static final String KEY_AVSDK_STARTTIME = "key_avsdk_startTime";
-  public static final String KEY_CTRL_CMD = "key_ctrl_cmd";
   public static final String KEY_CTRL_PARAM_ENABLE = "key_ctrl_param_enable";
-  public static final String KEY_DESC = "key_desc";
   public static final String KEY_PATH_DATA = "key_path_data";
   public static final String KEY_PATH_TENCENT = "key_path_tencent";
   public static final String KEY_QZAPP_VERSION_CODE = "key_qzapp_versioncode";
@@ -76,110 +73,216 @@ public class QZoneDistributedAppCtrl
   private void execCmd(QZoneDistributedAppCtrl.Control paramControl)
   {
     int i = paramControl.cmd;
-    switch (i)
+    if ((i != 5) && (QLog.isDevelopLevel()))
     {
-    default: 
-      if (QLog.isDevelopLevel()) {
-        QLog.e("QZoneDistributedAppCtrl", 4, "unknown ctrl cmd " + i);
-      }
-      break;
+      paramControl = new StringBuilder();
+      paramControl.append("unknown ctrl cmd ");
+      paramControl.append(i);
+      QLog.e("QZoneDistributedAppCtrl", 4, paramControl.toString());
     }
   }
   
   private void execCtrl(QZoneDistributedAppCtrl.Control paramControl)
   {
-    boolean bool2 = false;
     int i = paramControl.cmd;
-    if (QLog.isColorLevel()) {
-      QLog.i("QZoneDistributedAppCtrl", 2, "execCtrl cmd:" + i);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("execCtrl cmd:");
+      ((StringBuilder)localObject1).append(i);
+      QLog.i("QZoneDistributedAppCtrl", 2, ((StringBuilder)localObject1).toString());
     }
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    long l1;
+    Object localObject2 = BaseApplicationImpl.getApplication().getRuntime();
+    Object localObject1 = "";
+    boolean bool1 = false;
+    long l3;
     long l2;
+    long l1;
     switch (i)
     {
     case 6: 
     default: 
-      if (QLog.isDevelopLevel()) {
-        QLog.w("QZoneDistributedAppCtrl", 4, "unknown ctrl cmd " + i);
+      if (!QLog.isDevelopLevel()) {
+        break label1315;
       }
-    case 4: 
-    case 1: 
-    case 2: 
-    case 3: 
-    case 5: 
-      do
-      {
-        do
-        {
-          return;
-          killQZoneProcess();
-          return;
-          QZoneHelper.clearFeedsCache(BaseApplicationImpl.getContext(), mUin);
-          return;
-        } while (!(localObject instanceof QQAppInterface));
-        QZoneHelper.clearCache((AppRuntime)localObject, true);
+      paramControl = new StringBuilder();
+      paramControl.append("unknown ctrl cmd ");
+      paramControl.append(i);
+      QLog.w("QZoneDistributedAppCtrl", 4, paramControl.toString());
+      return;
+    case 18: 
+      localObject1 = (String)paramControl.data.get("key_avsdk_startTime");
+      paramControl = (String)paramControl.data.get("key_avsdk_endTime");
+      l3 = QZoneAppCtrlUploadFileLogic.getAvsdkTimeFromServer((String)localObject1);
+      l2 = QZoneAppCtrlUploadFileLogic.getAvsdkTimeFromServer(paramControl);
+      if (l3 == -1L) {
         return;
-        killQZoneProcess();
-      } while (!(localObject instanceof QQAppInterface));
-      QZoneHelper.preloadQzone((QQAppInterface)localObject, "QZoneDistributedAppCtrl");
-      return;
-    case 7: 
-      paramControl = (String)paramControl.data.get("key_upload_dbname");
-      QZoneAppCtrlUploadFileLogic.uploadDB(BaseApplicationImpl.getContext(), mUin, paramControl);
-      return;
-    case 8: 
-      QZoneAppCtrlUploadFileLogic.uploadANR(BaseApplicationImpl.getContext(), mUin);
-      return;
-    case 9: 
-      localObject = (String)paramControl.data.get("key_trace_baseTime");
-      paramControl = (String)paramControl.data.get("key_trace_offset");
-      if (TextUtils.isEmpty((CharSequence)localObject))
+      }
+      l1 = l2;
+      if (l2 == -1L) {
+        l1 = System.currentTimeMillis();
+      }
+      l2 = l1;
+      if (l3 > l1) {
+        l2 = System.currentTimeMillis();
+      }
+      QZoneAppCtrlUploadFileLogic.uploadAvsdk(BaseApplicationImpl.getContext(), mUin, l3, l2);
+      if (QLog.isDevelopLevel())
       {
-        l1 = System.currentTimeMillis();
-        if (!TextUtils.isEmpty(paramControl)) {
-          break label454;
-        }
-        l2 = 1800000L;
-        label311:
-        if (l1 > 0L) {
-          break label1183;
-        }
-        l1 = System.currentTimeMillis();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("avsdk log push, starttime=");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(",endTime=");
+        ((StringBuilder)localObject2).append(paramControl);
+        QLog.d("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 4, ((StringBuilder)localObject2).toString());
       }
       break;
-    }
-    label454:
-    boolean bool1;
-    label1183:
-    for (;;)
-    {
+    case 17: 
+      handleReactDev(paramControl.data);
+      break;
+    case 16: 
+      paramControl = (String)paramControl.data.get("key_url");
+      QZoneAppCtrlUploadFileLogic.showDirFileList(BaseApplicationImpl.getContext(), paramControl);
+      break;
+    case 15: 
+      localObject1 = (String)paramControl.data.get("key_wns_config_main");
+      paramControl = (String)paramControl.data.get("key_wns_config_second");
+      QzoneConfig.getInstance().printWNSConfig((String)localObject1, paramControl);
+      break;
+    case 14: 
+      localObject1 = (String)paramControl.data.get("key_path_tencent");
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        localObject1 = (String)paramControl.data.get("key_path_data");
+        bool1 = true;
+      }
+      else
+      {
+        bool1 = false;
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        return;
+      }
+      paramControl = (String)paramControl.data.get("key_upload_maxsize");
       for (;;)
       {
-        for (;;)
+        try
         {
-          l3 = l2;
-          if (l2 <= 0L) {
-            l3 = 1800000L;
-          }
-          l2 = l1 - l3;
-          if (QLog.isDevelopLevel()) {
-            QLog.d("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 4, "trace startTime: " + l2 + "ms\t offsettime: " + l3 + "\t trace endTime: " + l1 + "ms");
-          }
-          QZoneAppCtrlUploadFileLogic.uploadTrace(BaseApplicationImpl.getContext(), mUin, l2, l1);
-          return;
-          try
-          {
-            l1 = Long.valueOf((String)localObject).longValue();
-            l1 *= 1000L;
-          }
-          catch (NumberFormatException localNumberFormatException)
-          {
-            localNumberFormatException.printStackTrace();
-            l1 = 0L;
-          }
+          l1 = Long.valueOf(paramControl).longValue();
         }
-        break;
+        catch (Exception localException)
+        {
+          int j;
+          boolean bool2;
+          continue;
+        }
+        if (QLog.isDevelopLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("CMD_UPLOAD_CUSTOM, param：");
+          ((StringBuilder)localObject2).append(paramControl);
+          ((StringBuilder)localObject2).append(",error:Not long");
+          QLog.w("QZoneDistributedAppCtrl", 4, ((StringBuilder)localObject2).toString());
+        }
+        l1 = 1048576L;
+      }
+      if (QLog.isDevelopLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("CMD_UPLOAD_CUSTOM, param：");
+        if (bool1) {
+          paramControl = "dataPath";
+        } else {
+          paramControl = "tencentPath";
+        }
+        ((StringBuilder)localObject2).append(paramControl);
+        ((StringBuilder)localObject2).append(",");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        QLog.w("QZoneDistributedAppCtrl", 4, ((StringBuilder)localObject2).toString());
+      }
+      QZoneAppCtrlUploadFileLogic.uploadByCustom(BaseApplicationImpl.getContext(), (String)localObject1, mUin, l1, bool1);
+      break;
+    case 13: 
+      paramControl = (String)paramControl.data.get("key_ctrl_param_enable");
+      if (!TextUtils.isEmpty(paramControl)) {
+        if (Boolean.valueOf(paramControl).booleanValue())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append(System.currentTimeMillis());
+          ((StringBuilder)localObject1).append("");
+          LocalMultiProcConfig.putString("LooperMonitor", ((StringBuilder)localObject1).toString());
+        }
+        else
+        {
+          LocalMultiProcConfig.putString("LooperMonitor", "-1");
+        }
+      }
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("CMD_ENABLE_PERFORMANCE_MONITOR, param：");
+        ((StringBuilder)localObject1).append(paramControl);
+        QLog.w("QZoneDistributedAppCtrl", 4, ((StringBuilder)localObject1).toString());
+      }
+      break;
+    case 12: 
+      paramControl = (String)paramControl.data.get("key_ctrl_param_enable");
+      if (!TextUtils.isEmpty(paramControl)) {
+        ServerListProvider.enableDebug(Boolean.valueOf(paramControl).booleanValue());
+      }
+      if (QLog.isDevelopLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("CMD_ENABLE_DEBUG, param：");
+        ((StringBuilder)localObject1).append(paramControl);
+        QLog.w("QZoneDistributedAppCtrl", 4, ((StringBuilder)localObject1).toString());
+      }
+      break;
+    case 11: 
+      j = 82;
+      i = j;
+      try
+      {
+        bool2 = Boolean.parseBoolean((String)paramControl.data.get("key_qzcombo_protect"));
+        i = j;
+        bool1 = bool2;
+        j = Integer.parseInt((String)paramControl.data.get("key_qzapp_versioncode"));
+        i = j;
+        bool1 = bool2;
+        paramControl = (String)paramControl.data.get("key_qzh5_url");
+        i = j;
+        bool1 = bool2;
+      }
+      catch (Throwable paramControl)
+      {
+        QLog.e("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 1, "error: execute CMD_COMBQZ_PROTECT", paramControl);
+        paramControl = (QZoneDistributedAppCtrl.Control)localObject1;
+      }
+      onHandleComboQzProtect(bool1, i, paramControl);
+      return;
+    case 10: 
+      QZoneAppCtrlUploadFileLogic.saveLogcatToFileV2(BaseApplicationImpl.getContext(), mUin);
+      return;
+    case 9: 
+      localObject1 = (String)paramControl.data.get("key_trace_baseTime");
+      paramControl = (String)paramControl.data.get("key_trace_offset");
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        l1 = System.currentTimeMillis();
+      } else {
+        try
+        {
+          l1 = Long.valueOf((String)localObject1).longValue();
+          l1 *= 1000L;
+        }
+        catch (NumberFormatException localNumberFormatException)
+        {
+          localNumberFormatException.printStackTrace();
+          l1 = 0L;
+        }
+      }
+      if (TextUtils.isEmpty(paramControl)) {
+        l2 = 1800000L;
+      } else {
         try
         {
           l2 = Long.valueOf(paramControl).longValue();
@@ -191,153 +294,70 @@ public class QZoneDistributedAppCtrl
           l2 = 0L;
         }
       }
-      break label311;
-      String str = (String)paramControl.data.get("key_avsdk_startTime");
-      paramControl = (String)paramControl.data.get("key_avsdk_endTime");
-      long l3 = QZoneAppCtrlUploadFileLogic.getAvsdkTimeFromServer(str);
-      l2 = QZoneAppCtrlUploadFileLogic.getAvsdkTimeFromServer(paramControl);
-      if (l3 == -1L) {
-        break;
+      l3 = l1;
+      if (l1 <= 0L) {
+        l3 = System.currentTimeMillis();
       }
       l1 = l2;
-      if (l2 == -1L) {
-        l1 = System.currentTimeMillis();
+      if (l2 <= 0L) {
+        l1 = 1800000L;
       }
-      l2 = l1;
-      if (l3 > l1) {
-        l2 = System.currentTimeMillis();
+      l2 = l3 - l1;
+      if (QLog.isDevelopLevel())
+      {
+        paramControl = new StringBuilder();
+        paramControl.append("trace startTime: ");
+        paramControl.append(l2);
+        paramControl.append("ms\t offsettime: ");
+        paramControl.append(l1);
+        paramControl.append("\t trace endTime: ");
+        paramControl.append(l3);
+        paramControl.append("ms");
+        QLog.d("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 4, paramControl.toString());
       }
-      QZoneAppCtrlUploadFileLogic.uploadAvsdk(BaseApplicationImpl.getContext(), mUin, l3, l2);
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.d("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 4, "avsdk log push, starttime=" + str + ",endTime=" + paramControl);
+      QZoneAppCtrlUploadFileLogic.uploadTrace(BaseApplicationImpl.getContext(), mUin, l2, l3);
       return;
-      QZoneAppCtrlUploadFileLogic.saveLogcatToFileV2(BaseApplicationImpl.getContext(), mUin);
+    case 8: 
+      QZoneAppCtrlUploadFileLogic.uploadANR(BaseApplicationImpl.getContext(), mUin);
       return;
-      try
-      {
-        bool1 = Boolean.parseBoolean((String)paramControl.data.get("key_qzcombo_protect"));
-        paramControl = (String)paramControl.data.get("key_ctrl_param_enable");
-      }
-      catch (Throwable paramControl)
-      {
-        for (;;)
-        {
-          try
-          {
-            i = Integer.parseInt((String)paramControl.data.get("key_qzapp_versioncode"));
-          }
-          catch (Throwable paramControl)
-          {
-            i = 82;
-            continue;
-          }
-          try
-          {
-            paramControl = (String)paramControl.data.get("key_qzh5_url");
-            onHandleComboQzProtect(bool1, i, paramControl);
-            return;
-          }
-          catch (Throwable paramControl)
-          {
-            continue;
-            bool1 = false;
-            continue;
-          }
-          paramControl = paramControl;
-          i = 82;
-          bool1 = bool2;
-          QLog.e("QZoneDistributedAppCtrlQZoneAppCtrlUploadFileLogic", 1, "error: execute CMD_COMBQZ_PROTECT", paramControl);
-          paramControl = "";
-        }
-      }
-      if (!TextUtils.isEmpty(paramControl)) {
-        ServerListProvider.enableDebug(Boolean.valueOf(paramControl).booleanValue());
-      }
-      if (!QLog.isDevelopLevel()) {
-        break;
-      }
-      QLog.w("QZoneDistributedAppCtrl", 4, "CMD_ENABLE_DEBUG, param：" + paramControl);
+    case 7: 
+      paramControl = (String)paramControl.data.get("key_upload_dbname");
+      QZoneAppCtrlUploadFileLogic.uploadDB(BaseApplicationImpl.getContext(), mUin, paramControl);
       return;
-      paramControl = (String)paramControl.data.get("key_ctrl_param_enable");
-      if (!TextUtils.isEmpty(paramControl))
-      {
-        if (!Boolean.valueOf(paramControl).booleanValue()) {
-          break label881;
-        }
-        LocalMultiProcConfig.putString("LooperMonitor", System.currentTimeMillis() + "");
+    case 5: 
+      killQZoneProcess();
+      if (!(localObject2 instanceof QQAppInterface)) {
+        break label1315;
       }
-      while (QLog.isDevelopLevel())
-      {
-        QLog.w("QZoneDistributedAppCtrl", 4, "CMD_ENABLE_PERFORMANCE_MONITOR, param：" + paramControl);
-        return;
-        label881:
-        LocalMultiProcConfig.putString("LooperMonitor", "-1");
+      QZoneHelper.preloadQzone((QQAppInterface)localObject2, "QZoneDistributedAppCtrl");
+      return;
+    case 4: 
+      return;
+    case 3: 
+      if (!(localObject2 instanceof QQAppInterface)) {
+        break label1315;
       }
-      str = (String)paramControl.data.get("key_path_tencent");
-      if (TextUtils.isEmpty(str))
-      {
-        str = (String)paramControl.data.get("key_path_data");
-        bool1 = true;
-        if (TextUtils.isEmpty(str)) {
-          break;
-        }
-        paramControl = (String)paramControl.data.get("key_upload_maxsize");
-        try
-        {
-          l1 = Long.valueOf(paramControl).longValue();
-          if (QLog.isDevelopLevel())
-          {
-            StringBuilder localStringBuilder = new StringBuilder().append("CMD_UPLOAD_CUSTOM, param：");
-            if (bool1)
-            {
-              paramControl = "dataPath";
-              QLog.w("QZoneDistributedAppCtrl", 4, paramControl + "," + str);
-            }
-          }
-          else
-          {
-            QZoneAppCtrlUploadFileLogic.uploadByCustom(BaseApplicationImpl.getContext(), str, mUin, l1, bool1);
-            return;
-          }
-        }
-        catch (Exception localException)
-        {
-          for (;;)
-          {
-            if (QLog.isDevelopLevel()) {
-              QLog.w("QZoneDistributedAppCtrl", 4, "CMD_UPLOAD_CUSTOM, param：" + paramControl + ",error:Not long");
-            }
-            l1 = 1048576L;
-            continue;
-            paramControl = "tencentPath";
-          }
-        }
-        str = (String)paramControl.data.get("key_wns_config_main");
-        paramControl = (String)paramControl.data.get("key_wns_config_second");
-        QzoneConfig.getInstance().printWNSConfig(str, paramControl);
-        SportManager.d();
-        return;
-        paramControl = (String)paramControl.data.get("key_url");
-        QZoneAppCtrlUploadFileLogic.showDirFileList(BaseApplicationImpl.getContext(), paramControl);
-        return;
-        handleReactDev(paramControl.data);
-        return;
-      }
+      QZoneHelper.clearCache((AppRuntime)localObject2, true);
+      return;
+    case 2: 
+      QZoneHelper.clearFeedsCache(BaseApplicationImpl.getContext(), mUin);
+      return;
     }
+    killQZoneProcess();
+    label1315:
   }
   
   public static QZoneDistributedAppCtrl getInstance(String paramString)
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new QZoneDistributedAppCtrl(paramString);
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new QZoneDistributedAppCtrl(paramString);
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   public static void handleReactDev(Map<String, String> paramMap)
@@ -346,7 +366,12 @@ public class QZoneDistributedAppCtrl
     paramMap = (String)paramMap.get("key_rndev_bundle_on");
     LocalMultiProcConfig.putString("Qzone.React.DevBundleUrl", str);
     LocalMultiProcConfig.putString("Qzone.React.DevBundleOn", paramMap);
-    QLog.i("QZoneDistributedAppCtrl", 1, "rnbundleurl=" + str + ",rndevon=" + paramMap);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("rnbundleurl=");
+    localStringBuilder.append(str);
+    localStringBuilder.append(",rndevon=");
+    localStringBuilder.append(paramMap);
+    QLog.i("QZoneDistributedAppCtrl", 1, localStringBuilder.toString());
   }
   
   public static void killQZoneProcess()
@@ -372,21 +397,24 @@ public class QZoneDistributedAppCtrl
   
   public boolean handleMessage(Message paramMessage)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("QZoneDistributedAppCtrl", 4, "recv msg " + paramMessage);
-    }
-    switch (paramMessage.what)
+    if (QLog.isDevelopLevel())
     {
-    default: 
-      return false;
-    case 1: 
-      execCtrl((QZoneDistributedAppCtrl.Control)paramMessage.obj);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("recv msg ");
+      localStringBuilder.append(paramMessage);
+      QLog.d("QZoneDistributedAppCtrl", 4, localStringBuilder.toString());
     }
-    for (;;)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-      return true;
+      if (i != 2) {
+        return false;
+      }
       execCmd((QZoneDistributedAppCtrl.Control)paramMessage.obj);
+      return true;
     }
+    execCtrl((QZoneDistributedAppCtrl.Control)paramMessage.obj);
+    return true;
   }
   
   public void submitCtrl(QZoneDistributedAppCtrl.Control paramControl)
@@ -398,7 +426,7 @@ public class QZoneDistributedAppCtrl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.util.QZoneDistributedAppCtrl
  * JD-Core Version:    0.7.0.1
  */

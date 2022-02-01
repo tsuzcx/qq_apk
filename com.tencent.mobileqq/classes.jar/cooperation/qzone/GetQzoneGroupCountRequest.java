@@ -23,15 +23,13 @@ public class GetQzoneGroupCountRequest
   public static mobile_group_count_rsp onResponse(byte[] paramArrayOfByte, int[] paramArrayOfInt)
   {
     if (paramArrayOfByte == null) {
-      paramArrayOfByte = null;
+      return null;
     }
-    do
-    {
-      return paramArrayOfByte;
-      paramArrayOfInt = (mobile_group_count_rsp)decode(paramArrayOfByte, "getgroupcount", paramArrayOfInt);
-      paramArrayOfByte = paramArrayOfInt;
-    } while (paramArrayOfInt != null);
-    return null;
+    paramArrayOfByte = (mobile_group_count_rsp)decode(paramArrayOfByte, "getgroupcount", paramArrayOfInt);
+    if (paramArrayOfByte == null) {
+      return null;
+    }
+    return paramArrayOfByte;
   }
   
   public String getCmdString()
@@ -51,7 +49,7 @@ public class GetQzoneGroupCountRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.GetQzoneGroupCountRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -58,8 +58,12 @@ public class AppBrandPage
   
   public View createContentView()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandPage", 4, "createContentView apkgInfo=" + this.apkgInfo$5475ea27);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("createContentView apkgInfo=");
+      localStringBuilder.append(this.apkgInfo$5475ea27);
+      QLog.d("AppBrandPage", 4, localStringBuilder.toString());
     }
     if ((this.rootView == null) && (this.apkgInfo$5475ea27.b.h != null))
     {
@@ -122,12 +126,17 @@ public class AppBrandPage
   
   public void hideToastView()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandPage", 2, "hideToastView toastView=" + this.toastView);
-    }
-    if (this.toastView != null)
+    if (QLog.isColorLevel())
     {
-      this.toastView.a();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hideToastView toastView=");
+      ((StringBuilder)localObject).append(this.toastView);
+      QLog.d("AppBrandPage", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = this.toastView;
+    if (localObject != null)
+    {
+      ((g)localObject).a();
       this.toastView = null;
     }
   }
@@ -144,59 +153,70 @@ public class AppBrandPage
   
   public void loadUrl(String paramString1, String paramString2)
   {
-    if (paramString1.equals(this.mUrl)) {
-      onAppRoute(paramString2, paramString1);
-    }
-    do
+    if (paramString1.equals(this.mUrl))
     {
+      onAppRoute(paramString2, paramString1);
       return;
-      this.mUrl = paramString1;
-      Object localObject;
-      if (!this.webViewMap.containsKey(paramString1))
+    }
+    this.mUrl = paramString1;
+    Object localObject;
+    if (!this.webViewMap.containsKey(paramString1))
+    {
+      this.appBrandPageContainer.appBrandRuntime.i.loadAppServiceJs(paramString1);
+      localObject = h.a().b(this.apkgInfo$5475ea27.d);
+      ((PageWebview)localObject).apkgInfo$5475ea27 = this.apkgInfo$5475ea27;
+      ((PageWebview)localObject).appBrandRuntime = this.appBrandPageContainer.appBrandRuntime;
+      ((PageWebview)localObject).eventListener = this.appBrandPageContainer.appBrandRuntime.h;
+      ((PageWebview)localObject).openType = paramString2;
+      ((PageWebview)localObject).mRouteUrl = paramString1;
+      ((PageWebview)localObject).listener = this;
+      ((PageWebview)localObject).loadPageWebviewJs$164d4c8c(this.apkgInfo$5475ea27);
+      if (QLog.isColorLevel())
       {
-        this.appBrandPageContainer.appBrandRuntime.i.loadAppServiceJs(paramString1);
-        localObject = h.a().b(this.apkgInfo$5475ea27.d);
-        ((PageWebview)localObject).apkgInfo$5475ea27 = this.apkgInfo$5475ea27;
-        ((PageWebview)localObject).appBrandRuntime = this.appBrandPageContainer.appBrandRuntime;
-        ((PageWebview)localObject).eventListener = this.appBrandPageContainer.appBrandRuntime.h;
-        ((PageWebview)localObject).openType = paramString2;
-        ((PageWebview)localObject).mRouteUrl = paramString1;
-        ((PageWebview)localObject).listener = this;
-        ((PageWebview)localObject).loadPageWebviewJs$164d4c8c(this.apkgInfo$5475ea27);
-        if (QLog.isColorLevel()) {
-          QLog.d("AppBrandPage", 4, "loadUrl put webViewContainer url=" + paramString1);
-        }
+        paramString2 = new StringBuilder();
+        paramString2.append("loadUrl put webViewContainer url=");
+        paramString2.append(paramString1);
+        QLog.d("AppBrandPage", 4, paramString2.toString());
       }
-      for (;;)
+    }
+    else
+    {
+      localObject = this.webViewMap.entrySet().iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        int i = this.appBrandPageContainer.getPageCount();
-        if (QLog.isColorLevel()) {
-          QLog.d("AppBrandPage", 4, "loadUrl url=" + paramString1 + ",pageCnt=" + i);
-        }
-        if (!isTabPage()) {
-          break;
-        }
-        this.tabView.setVisibility(0);
-        this.tabView.a(paramString1);
-        return;
-        localObject = this.webViewMap.entrySet().iterator();
-        while (((Iterator)localObject).hasNext())
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
+        WebviewContainer localWebviewContainer = (WebviewContainer)localEntry.getValue();
+        if (((String)localEntry.getKey()).equals(paramString1))
         {
-          Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-          WebviewContainer localWebviewContainer = (WebviewContainer)localEntry.getValue();
-          if (((String)localEntry.getKey()).equals(paramString1))
-          {
-            localWebviewContainer.setVisibility(0);
-            onAppRoute(paramString2, paramString1);
-          }
-          else
-          {
-            localWebviewContainer.setVisibility(8);
-          }
+          localWebviewContainer.setVisibility(0);
+          onAppRoute(paramString2, paramString1);
+        }
+        else
+        {
+          localWebviewContainer.setVisibility(8);
         }
       }
-    } while (this.tabView == null);
-    this.tabView.setVisibility(8);
+    }
+    int i = this.appBrandPageContainer.getPageCount();
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("loadUrl url=");
+      paramString2.append(paramString1);
+      paramString2.append(",pageCnt=");
+      paramString2.append(i);
+      QLog.d("AppBrandPage", 4, paramString2.toString());
+    }
+    if (isTabPage())
+    {
+      this.tabView.setVisibility(0);
+      this.tabView.a(paramString1);
+      return;
+    }
+    paramString1 = this.tabView;
+    if (paramString1 != null) {
+      paramString1.setVisibility(8);
+    }
   }
   
   public void notifyChangePullDownRefreshStyle()
@@ -249,7 +269,7 @@ public class AppBrandPage
     {
       localJSONObject.put("page", c.n(paramString));
       label37:
-      VACDReportUtil.a(this.appBrandPageContainer.appBrandRuntime.l, null, "PageVisit", localJSONObject.toString(), 0, null);
+      VACDReportUtil.addReportItem(this.appBrandPageContainer.appBrandRuntime.l, null, "PageVisit", localJSONObject.toString(), 0, null);
       return;
     }
     catch (Throwable paramString)
@@ -260,8 +280,12 @@ public class AppBrandPage
   
   public void showToastView(String paramString1, String paramString2, CharSequence paramCharSequence, int paramInt, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AppBrandPage", 2, "showToastView toastView=" + this.toastView);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("showToastView toastView=");
+      localStringBuilder.append(this.toastView);
+      QLog.d("AppBrandPage", 2, localStringBuilder.toString());
     }
     this.toastView.a(paramString1, paramString2, paramCharSequence, paramInt, paramBoolean);
   }
@@ -276,7 +300,7 @@ public class AppBrandPage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.microapp.appbrand.page.AppBrandPage
  * JD-Core Version:    0.7.0.1
  */

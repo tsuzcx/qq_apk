@@ -75,9 +75,10 @@ public class FlutterSurfaceView
   
   private void disconnectSurfaceFromRenderer()
   {
-    if (this.flutterRenderer != null)
+    FlutterRenderer localFlutterRenderer = this.flutterRenderer;
+    if (localFlutterRenderer != null)
     {
-      this.flutterRenderer.stopRenderingToSurface();
+      localFlutterRenderer.stopRenderingToSurface();
       return;
     }
     throw new IllegalStateException("disconnectSurfaceFromRenderer() should only be called when flutterRenderer is non-null.");
@@ -150,7 +151,7 @@ public class FlutterSurfaceView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.android.FlutterSurfaceView
  * JD-Core Version:    0.7.0.1
  */

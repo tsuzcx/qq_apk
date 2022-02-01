@@ -66,32 +66,33 @@ class PropertyValuesHolder$IntPropertyValuesHolder
   
   void setAnimatedValue(Object paramObject)
   {
-    if (this.mIntProperty != null) {
-      this.mIntProperty.setValue(paramObject, this.mIntAnimatedValue);
-    }
-    do
+    IntProperty localIntProperty = this.mIntProperty;
+    if (localIntProperty != null)
     {
+      localIntProperty.setValue(paramObject, this.mIntAnimatedValue);
       return;
-      if (this.mProperty != null)
+    }
+    if (this.mProperty != null)
+    {
+      this.mProperty.set(paramObject, Integer.valueOf(this.mIntAnimatedValue));
+      return;
+    }
+    if (this.mSetter != null) {
+      try
       {
-        this.mProperty.set(paramObject, Integer.valueOf(this.mIntAnimatedValue));
+        this.mTmpValueArray[0] = Integer.valueOf(this.mIntAnimatedValue);
+        this.mSetter.invoke(paramObject, this.mTmpValueArray);
         return;
       }
-    } while (this.mSetter == null);
-    try
-    {
-      this.mTmpValueArray[0] = Integer.valueOf(this.mIntAnimatedValue);
-      this.mSetter.invoke(paramObject, this.mTmpValueArray);
-      return;
-    }
-    catch (InvocationTargetException paramObject)
-    {
-      Log.e("PropertyValuesHolder", paramObject.toString());
-      return;
-    }
-    catch (IllegalAccessException paramObject)
-    {
-      Log.e("PropertyValuesHolder", paramObject.toString());
+      catch (IllegalAccessException paramObject)
+      {
+        Log.e("PropertyValuesHolder", paramObject.toString());
+        return;
+      }
+      catch (InvocationTargetException paramObject)
+      {
+        Log.e("PropertyValuesHolder", paramObject.toString());
+      }
     }
   }
   
@@ -111,7 +112,7 @@ class PropertyValuesHolder$IntPropertyValuesHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nineoldandroids.animation.PropertyValuesHolder.IntPropertyValuesHolder
  * JD-Core Version:    0.7.0.1
  */

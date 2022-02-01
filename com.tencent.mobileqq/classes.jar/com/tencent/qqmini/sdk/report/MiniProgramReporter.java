@@ -97,69 +97,57 @@ public class MiniProgramReporter
   private void performReportApiReportToServer()
   {
     this.lastMiniApiReportTimeMillis = System.currentTimeMillis();
-    ArrayList localArrayList;
-    Object localObject2;
-    Object localObject1;
     if (!this.apiReportDcDataListPool.isEmpty())
     {
-      localArrayList = new ArrayList(this.apiReportDcDataListPool);
+      ArrayList localArrayList = new ArrayList(this.apiReportDcDataListPool);
       this.apiReportDcDataListPool.clear();
-      localObject2 = MiniProgramReportHelper.newDcReportReq(localArrayList);
-      if (localObject2 != null) {
-        localObject1 = null;
-      }
-    }
-    try
-    {
-      localObject2 = ((REPORT.StDcReportReq)localObject2).toByteArray();
-      localObject1 = localObject2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      Object localObject2 = MiniProgramReportHelper.newDcReportReq(localArrayList);
+      if (localObject2 != null)
       {
-        QMLog.e("MiniProgramReporter", "performReportToServer", localException);
-      }
-      if (localObject1.length > 262144) {
-        break label108;
-      }
-      performReportViaSSO((byte[])localObject1, localArrayList, "mini_app_apireport", "DcReport");
-      return;
-      label108:
-      i = localObject1.length / 262144 + 1;
-      k = localArrayList.size() / i;
-      QMLog.d("MiniProgramReporter", "performReportToServer: split into " + i + " count");
-      j = 0;
-      i = k;
-    }
-    if (localObject1 == null) {}
-    for (;;)
-    {
-      return;
-      int i;
-      int k;
-      int j;
-      while (i <= localArrayList.size())
-      {
-        if ((j < i) && (j >= 0) && (i <= localArrayList.size()))
+        Object localObject1 = null;
+        try
         {
-          localObject1 = localArrayList.subList(j, i);
-          REPORT.StDcReportReq localStDcReportReq = MiniProgramReportHelper.newDcReportReq((List)localObject1);
-          if (localStDcReportReq != null) {
-            performReportViaSSO(localStDcReportReq.toByteArray(), (List)localObject1, "mini_app_apireport", "DcReport");
+          localObject2 = ((REPORT.StDcReportReq)localObject2).toByteArray();
+          localObject1 = localObject2;
+        }
+        catch (Exception localException)
+        {
+          QMLog.e("MiniProgramReporter", "performReportToServer", localException);
+        }
+        if (localObject1 == null) {
+          return;
+        }
+        if (localObject1.length <= 262144)
+        {
+          performReportViaSSO((byte[])localObject1, localArrayList, "mini_app_apireport", "DcReport");
+          return;
+        }
+        int i = localObject1.length / 262144 + 1;
+        int m = localArrayList.size() / i;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("performReportToServer: split into ");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(" count");
+        QMLog.d("MiniProgramReporter", ((StringBuilder)localObject1).toString());
+        i = m;
+        int k = 0;
+        while (i <= localArrayList.size())
+        {
+          if ((k < i) && (k >= 0) && (i <= localArrayList.size()))
+          {
+            localObject1 = localArrayList.subList(k, i);
+            REPORT.StDcReportReq localStDcReportReq = MiniProgramReportHelper.newDcReportReq((List)localObject1);
+            if (localStDcReportReq != null) {
+              performReportViaSSO(localStDcReportReq.toByteArray(), (List)localObject1, "mini_app_apireport", "DcReport");
+            }
           }
-        }
-        int m = i + k;
-        if (m > localArrayList.size())
-        {
-          m = localArrayList.size();
-          j = i;
-          i = m;
-        }
-        else
-        {
-          j = i;
-          i = m;
+          k = i + m;
+          int j = k;
+          if (k > localArrayList.size()) {
+            j = localArrayList.size();
+          }
+          k = i;
+          i = j;
         }
       }
     }
@@ -168,69 +156,57 @@ public class MiniProgramReporter
   private void performReportLaunchDcDataToServer()
   {
     this.lastReportLaunchDcDataTime = System.currentTimeMillis();
-    ArrayList localArrayList;
-    Object localObject2;
-    Object localObject1;
     if (!this.launchDcDataList.isEmpty())
     {
-      localArrayList = new ArrayList(this.launchDcDataList);
+      ArrayList localArrayList = new ArrayList(this.launchDcDataList);
       this.launchDcDataList.clear();
-      localObject2 = MiniProgramReportHelper.newDataReportReq(localArrayList);
-      if (localObject2 != null) {
-        localObject1 = null;
-      }
-    }
-    try
-    {
-      localObject2 = ((APP_REPORT_TRANSFER.StDataReportReq)localObject2).toByteArray();
-      localObject1 = localObject2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      Object localObject2 = MiniProgramReportHelper.newDataReportReq(localArrayList);
+      if (localObject2 != null)
       {
-        QMLog.e("MiniProgramReporter", "performReportLaunchDcDataToServer", localException);
-      }
-      if (localObject1.length > 262144) {
-        break label104;
-      }
-      performDataReportViaSSO((byte[])localObject1, localArrayList);
-      return;
-      label104:
-      i = localObject1.length / 262144 + 1;
-      k = localArrayList.size() / i;
-      QMLog.d("MiniProgramReporter", "performReportLaunchDcDataToServer: split into " + i + " count");
-      j = 0;
-      i = k;
-    }
-    if (localObject1 == null) {}
-    for (;;)
-    {
-      return;
-      int i;
-      int k;
-      int j;
-      while (i <= localArrayList.size())
-      {
-        if ((j < i) && (j >= 0) && (i <= localArrayList.size()))
+        Object localObject1 = null;
+        try
         {
-          localObject1 = localArrayList.subList(j, i);
-          APP_REPORT_TRANSFER.StDataReportReq localStDataReportReq = MiniProgramReportHelper.newDataReportReq((List)localObject1);
-          if (localStDataReportReq != null) {
-            performDataReportViaSSO(localStDataReportReq.toByteArray(), (List)localObject1);
+          localObject2 = ((APP_REPORT_TRANSFER.StDataReportReq)localObject2).toByteArray();
+          localObject1 = localObject2;
+        }
+        catch (Exception localException)
+        {
+          QMLog.e("MiniProgramReporter", "performReportLaunchDcDataToServer", localException);
+        }
+        if (localObject1 == null) {
+          return;
+        }
+        if (localObject1.length <= 262144)
+        {
+          performDataReportViaSSO((byte[])localObject1, localArrayList);
+          return;
+        }
+        int i = localObject1.length / 262144 + 1;
+        int m = localArrayList.size() / i;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("performReportLaunchDcDataToServer: split into ");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(" count");
+        QMLog.d("MiniProgramReporter", ((StringBuilder)localObject1).toString());
+        i = m;
+        int k = 0;
+        while (i <= localArrayList.size())
+        {
+          if ((k < i) && (k >= 0) && (i <= localArrayList.size()))
+          {
+            localObject1 = localArrayList.subList(k, i);
+            APP_REPORT_TRANSFER.StDataReportReq localStDataReportReq = MiniProgramReportHelper.newDataReportReq((List)localObject1);
+            if (localStDataReportReq != null) {
+              performDataReportViaSSO(localStDataReportReq.toByteArray(), (List)localObject1);
+            }
           }
-        }
-        int m = i + k;
-        if (m > localArrayList.size())
-        {
-          m = localArrayList.size();
-          j = i;
-          i = m;
-        }
-        else
-        {
-          j = i;
-          i = m;
+          k = i + m;
+          int j = k;
+          if (k > localArrayList.size()) {
+            j = localArrayList.size();
+          }
+          k = i;
+          i = j;
         }
       }
     }
@@ -239,69 +215,57 @@ public class MiniProgramReporter
   private void performReportToServer()
   {
     this.lastReportTimeMillis = System.currentTimeMillis();
-    ArrayList localArrayList;
-    Object localObject2;
-    Object localObject1;
     if (!this.singleDcDataListPool.isEmpty())
     {
-      localArrayList = new ArrayList(this.singleDcDataListPool);
+      ArrayList localArrayList = new ArrayList(this.singleDcDataListPool);
       this.singleDcDataListPool.clear();
-      localObject2 = MiniProgramReportHelper.newDataReportReq(localArrayList);
-      if (localObject2 != null) {
-        localObject1 = null;
-      }
-    }
-    try
-    {
-      localObject2 = ((APP_REPORT_TRANSFER.StDataReportReq)localObject2).toByteArray();
-      localObject1 = localObject2;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      Object localObject2 = MiniProgramReportHelper.newDataReportReq(localArrayList);
+      if (localObject2 != null)
       {
-        QMLog.e("MiniProgramReporter", "performReportToServer", localException);
-      }
-      if (localObject1.length > 262144) {
-        break label104;
-      }
-      performDataReportViaSSO((byte[])localObject1, localArrayList);
-      return;
-      label104:
-      i = localObject1.length / 262144 + 1;
-      k = localArrayList.size() / i;
-      QMLog.d("MiniProgramReporter", "performReportToServer: split into " + i + " count");
-      j = 0;
-      i = k;
-    }
-    if (localObject1 == null) {}
-    for (;;)
-    {
-      return;
-      int i;
-      int k;
-      int j;
-      while (i <= localArrayList.size())
-      {
-        if ((j < i) && (j >= 0) && (i <= localArrayList.size()))
+        Object localObject1 = null;
+        try
         {
-          localObject1 = localArrayList.subList(j, i);
-          APP_REPORT_TRANSFER.StDataReportReq localStDataReportReq = MiniProgramReportHelper.newDataReportReq((List)localObject1);
-          if (localStDataReportReq != null) {
-            performDataReportViaSSO(localStDataReportReq.toByteArray(), (List)localObject1);
+          localObject2 = ((APP_REPORT_TRANSFER.StDataReportReq)localObject2).toByteArray();
+          localObject1 = localObject2;
+        }
+        catch (Exception localException)
+        {
+          QMLog.e("MiniProgramReporter", "performReportToServer", localException);
+        }
+        if (localObject1 == null) {
+          return;
+        }
+        if (localObject1.length <= 262144)
+        {
+          performDataReportViaSSO((byte[])localObject1, localArrayList);
+          return;
+        }
+        int i = localObject1.length / 262144 + 1;
+        int m = localArrayList.size() / i;
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("performReportToServer: split into ");
+        ((StringBuilder)localObject1).append(i);
+        ((StringBuilder)localObject1).append(" count");
+        QMLog.d("MiniProgramReporter", ((StringBuilder)localObject1).toString());
+        i = m;
+        int k = 0;
+        while (i <= localArrayList.size())
+        {
+          if ((k < i) && (k >= 0) && (i <= localArrayList.size()))
+          {
+            localObject1 = localArrayList.subList(k, i);
+            APP_REPORT_TRANSFER.StDataReportReq localStDataReportReq = MiniProgramReportHelper.newDataReportReq((List)localObject1);
+            if (localStDataReportReq != null) {
+              performDataReportViaSSO(localStDataReportReq.toByteArray(), (List)localObject1);
+            }
           }
-        }
-        int m = i + k;
-        if (m > localArrayList.size())
-        {
-          m = localArrayList.size();
-          j = i;
-          i = m;
-        }
-        else
-        {
-          j = i;
-          i = m;
+          k = i + m;
+          int j = k;
+          if (k > localArrayList.size()) {
+            j = localArrayList.size();
+          }
+          k = i;
+          i = j;
         }
       }
     }
@@ -388,25 +352,23 @@ public class MiniProgramReporter
   public void checkLaunchDcDataConditionAndReport()
   {
     k = 64;
-    i = 10;
+    int i = 10;
     try
     {
       j = WnsConfig.getConfig("qqminiapp", "mini_app_report_time_threshold", 10);
       i = j;
       int m = WnsConfig.getConfig("qqminiapp", "mini_app_report_count_threshold", 64);
-      i = m;
-      k = j;
-      j = i;
+      i = j;
+      j = m;
     }
     catch (Exception localException)
     {
       for (;;)
       {
         int j = k;
-        k = i;
       }
     }
-    if ((System.currentTimeMillis() - this.lastReportLaunchDcDataTime > TimeUnit.SECONDS.toMillis(k * 60)) || (this.launchDcDataList.size() >= j) || (this.reportLaunchNeedflush))
+    if ((System.currentTimeMillis() - this.lastReportLaunchDcDataTime > TimeUnit.SECONDS.toMillis(i * 60)) || (this.launchDcDataList.size() >= j) || (this.reportLaunchNeedflush))
     {
       reportImmediatelyLaunchDcData();
       this.reportLaunchNeedflush = false;
@@ -445,7 +407,7 @@ public class MiniProgramReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.report.MiniProgramReporter
  * JD-Core Version:    0.7.0.1
  */

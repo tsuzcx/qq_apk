@@ -2,6 +2,8 @@ package com.tencent.mobileqq.log;
 
 import android.content.Context;
 import android.net.NetworkInfo;
+import android.os.Build;
+import android.os.Build.VERSION;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.biz.common.util.Util;
@@ -9,9 +11,12 @@ import com.tencent.mobileqq.app.AppConstants;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage;
+import com.tencent.smtt.export.external.interfaces.ConsoleMessage.MessageLevel;
 import com.tencent.smtt.export.external.interfaces.WebResourceRequest;
 import com.tencent.smtt.export.external.interfaces.WebResourceResponse;
 import java.io.File;
+import java.net.URLEncoder;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.Map;
@@ -22,17 +27,17 @@ import org.json.JSONObject;
 
 public class VipWebViewReportLog
 {
-  public static int a;
+  public static int a = 0;
   private static Context jdField_a_of_type_AndroidContentContext;
-  public static final String a;
+  public static final String a = "VipWebViewReportLog";
   static Thread jdField_a_of_type_JavaLangThread = null;
-  static Set<String> jdField_a_of_type_JavaUtilSet;
+  static Set<String> jdField_a_of_type_JavaUtilSet = new HashSet();
   static AtomicInteger jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger;
   private static AppRuntime jdField_a_of_type_MqqAppAppRuntime;
-  static boolean jdField_a_of_type_Boolean;
+  static boolean jdField_a_of_type_Boolean = false;
   private static int jdField_b_of_type_Int;
   public static final String b;
-  static boolean jdField_b_of_type_Boolean;
+  static boolean jdField_b_of_type_Boolean = false;
   private static int c;
   public static final String c;
   private static int d;
@@ -43,17 +48,20 @@ public class VipWebViewReportLog
   
   static
   {
-    jdField_a_of_type_JavaLangString = VipWebViewReportLog.class.getSimpleName();
-    jdField_a_of_type_JavaUtilSet = new HashSet();
-    jdField_a_of_type_Boolean = false;
-    jdField_b_of_type_Boolean = false;
     jdField_a_of_type_AndroidContentContext = null;
     jdField_a_of_type_MqqAppAppRuntime = null;
     jdField_b_of_type_Int = 1;
     jdField_c_of_type_Int = 2;
     jdField_a_of_type_Int = 0;
-    jdField_b_of_type_JavaLangString = AppConstants.SDCARD_PATH + "WebViewCheck" + File.separator;
-    jdField_c_of_type_JavaLangString = "WebViewCheck" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(AppConstants.SDCARD_PATH);
+    localStringBuilder.append("WebViewCheck");
+    localStringBuilder.append(File.separator);
+    jdField_b_of_type_JavaLangString = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WebViewCheck");
+    localStringBuilder.append(File.separator);
+    jdField_c_of_type_JavaLangString = localStringBuilder.toString();
     jdField_d_of_type_JavaLangString = null;
     e = "null";
     f = "null";
@@ -63,11 +71,16 @@ public class VipWebViewReportLog
   
   public static void a()
   {
-    if ((jdField_a_of_type_JavaLangThread == null) || (!jdField_a_of_type_JavaLangThread.isAlive()))
+    Object localObject = jdField_a_of_type_JavaLangThread;
+    if ((localObject == null) || (!((Thread)localObject).isAlive()))
     {
       jdField_a_of_type_JavaLangThread = ThreadManager.newFreeThread(new VipWebViewReportLog.LoadConfigRbl(), "WebviewLoadConfig", 8);
-      if (QLog.isColorLevel()) {
-        QLog.d("WebCoreDump", 1, "ready to load config at:" + System.currentTimeMillis());
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("ready to load config at:");
+        ((StringBuilder)localObject).append(System.currentTimeMillis());
+        QLog.d("WebCoreDump", 1, ((StringBuilder)localObject).toString());
       }
       jdField_a_of_type_JavaLangThread.start();
     }
@@ -77,8 +90,14 @@ public class VipWebViewReportLog
   {
     if (jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.compareAndSet(0, 1))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebCoreDump", 2, "VipWebViewReportLog init by context=" + paramContext + ", AppInterface=" + paramAppRuntime);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("VipWebViewReportLog init by context=");
+        localStringBuilder.append(paramContext);
+        localStringBuilder.append(", AppInterface=");
+        localStringBuilder.append(paramAppRuntime);
+        QLog.d("WebCoreDump", 2, localStringBuilder.toString());
       }
       jdField_a_of_type_AndroidContentContext = paramContext.getApplicationContext();
       jdField_a_of_type_MqqAppAppRuntime = paramAppRuntime;
@@ -89,524 +108,426 @@ public class VipWebViewReportLog
   
   private static void a(TelephonyManager paramTelephonyManager)
   {
-    if (paramTelephonyManager == null) {}
-    NetworkInfo localNetworkInfo;
-    do
-    {
+    if (paramTelephonyManager == null) {
       return;
-      e = "null";
-      f = "null";
-      g = "null";
-      localNetworkInfo = AppNetConnInfo.getRecentNetworkInfo();
-    } while ((localNetworkInfo == null) || (!localNetworkInfo.isAvailable()));
-    switch (localNetworkInfo.getType())
+    }
+    e = "null";
+    f = "null";
+    g = "null";
+    NetworkInfo localNetworkInfo = AppNetConnInfo.getRecentNetworkInfo();
+    if ((localNetworkInfo != null) && (localNetworkInfo.isAvailable()))
     {
-    case 7: 
-    case 8: 
-    default: 
-      f = "unknown";
-      g = "unknown";
-      return;
-    case 9: 
+      int i = localNetworkInfo.getType();
+      if (i != 9)
+      {
+        switch (i)
+        {
+        default: 
+          f = "unknown";
+          g = "unknown";
+          return;
+        case 1: 
+        case 6: 
+          f = "WIFI";
+          return;
+        }
+        e = paramTelephonyManager.getNetworkOperatorName();
+        switch (paramTelephonyManager.getNetworkType())
+        {
+        default: 
+          f = "2G";
+          g = "unknown";
+          return;
+        case 15: 
+          f = "3G";
+          g = "HSPAP";
+          return;
+        case 14: 
+          f = "3G";
+          g = "EHRPD";
+          return;
+        case 13: 
+          f = "4G";
+          g = "LTE";
+          return;
+        case 12: 
+          f = "3G";
+          g = "EVDO_B";
+          return;
+        case 11: 
+          f = "2G";
+          g = "IDEN";
+          return;
+        case 10: 
+          f = "3G";
+          g = "HSPA";
+          return;
+        case 9: 
+          f = "3G";
+          g = "HSUPA";
+          return;
+        case 8: 
+          f = "3G";
+          g = "SDPA";
+          return;
+        case 7: 
+          f = "2G";
+          g = "1xRTT";
+          return;
+        case 6: 
+          f = "3G";
+          g = "EVDO_A";
+          return;
+        case 5: 
+          f = "3G";
+          g = "EVDO_0";
+          return;
+        case 4: 
+          f = "2G";
+          g = "CDMA";
+          return;
+        case 3: 
+          f = "3G";
+          g = "UMTS";
+          return;
+        case 2: 
+          f = "2G";
+          g = "EDGE";
+          return;
+        case 1: 
+          f = "2G";
+          g = "GPRS";
+          return;
+        }
+        f = "2G";
+        g = "unknown";
+        return;
+      }
       f = "cable";
-      return;
-    case 1: 
-    case 6: 
-      f = "WIFI";
-      return;
     }
-    e = paramTelephonyManager.getNetworkOperatorName();
-    switch (paramTelephonyManager.getNetworkType())
-    {
-    default: 
-      f = "2G";
-      g = "unknown";
-      return;
-    case 13: 
-      f = "4G";
-      g = "LTE";
-      return;
-    case 3: 
-      f = "3G";
-      g = "UMTS";
-      return;
-    case 5: 
-      f = "3G";
-      g = "EVDO_0";
-      return;
-    case 6: 
-      f = "3G";
-      g = "EVDO_A";
-      return;
-    case 8: 
-      f = "3G";
-      g = "SDPA";
-      return;
-    case 9: 
-      f = "3G";
-      g = "HSUPA";
-      return;
-    case 10: 
-      f = "3G";
-      g = "HSPA";
-      return;
-    case 12: 
-      f = "3G";
-      g = "EVDO_B";
-      return;
-    case 14: 
-      f = "3G";
-      g = "EHRPD";
-      return;
-    case 15: 
-      f = "3G";
-      g = "HSPAP";
-      return;
-    case 1: 
-      f = "2G";
-      g = "GPRS";
-      return;
-    case 2: 
-      f = "2G";
-      g = "EDGE";
-      return;
-    case 4: 
-      f = "2G";
-      g = "CDMA";
-      return;
-    case 7: 
-      f = "2G";
-      g = "1xRTT";
-      return;
-    case 11: 
-      f = "2G";
-      g = "IDEN";
-      return;
-    }
-    f = "2G";
-    g = "unknown";
   }
   
-  /* Error */
-  public static void a(com.tencent.smtt.export.external.interfaces.ConsoleMessage paramConsoleMessage)
+  public static void a(ConsoleMessage paramConsoleMessage)
   {
-    // Byte code:
-    //   0: getstatic 45	com/tencent/mobileqq/log/VipWebViewReportLog:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   3: ifnonnull +4 -> 7
-    //   6: return
-    //   7: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   10: ifne +30 -> 40
-    //   13: getstatic 102	com/tencent/mobileqq/log/VipWebViewReportLog:jdField_d_of_type_Int	I
-    //   16: getstatic 49	com/tencent/mobileqq/log/VipWebViewReportLog:jdField_c_of_type_Int	I
-    //   19: if_icmpne +9 -> 28
-    //   22: getstatic 39	com/tencent/mobileqq/log/VipWebViewReportLog:jdField_a_of_type_Boolean	Z
-    //   25: ifeq +649 -> 674
-    //   28: aload_0
-    //   29: invokeinterface 238 1 0
-    //   34: getstatic 244	com/tencent/smtt/export/external/interfaces/ConsoleMessage$MessageLevel:ERROR	Lcom/tencent/smtt/export/external/interfaces/ConsoleMessage$MessageLevel;
-    //   37: if_acmpne +637 -> 674
-    //   40: new 53	java/lang/StringBuilder
-    //   43: dup
-    //   44: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   47: ldc 246
-    //   49: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: ldc 248
-    //   54: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   57: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   60: astore_1
-    //   61: new 53	java/lang/StringBuilder
-    //   64: dup
-    //   65: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   68: aload_1
-    //   69: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   72: ldc 250
-    //   74: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   77: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   80: astore_1
-    //   81: new 53	java/lang/StringBuilder
-    //   84: dup
-    //   85: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   88: aload_1
-    //   89: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   92: ldc 252
-    //   94: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   97: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   100: astore_1
-    //   101: new 53	java/lang/StringBuilder
-    //   104: dup
-    //   105: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   108: aload_1
-    //   109: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   112: ldc 254
-    //   114: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   117: getstatic 259	android/os/Build$VERSION:SDK	Ljava/lang/String;
-    //   120: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   123: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   126: astore_1
-    //   127: getstatic 45	com/tencent/mobileqq/log/VipWebViewReportLog:jdField_a_of_type_MqqAppAppRuntime	Lmqq/app/AppRuntime;
-    //   130: invokevirtual 264	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   133: astore_2
-    //   134: new 53	java/lang/StringBuilder
-    //   137: dup
-    //   138: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   141: aload_1
-    //   142: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   145: ldc_w 266
-    //   148: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   151: aload_2
-    //   152: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   155: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   158: astore_1
-    //   159: aload_0
-    //   160: invokeinterface 269 1 0
-    //   165: ifnull +381 -> 546
-    //   168: new 53	java/lang/StringBuilder
-    //   171: dup
-    //   172: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   175: aload_1
-    //   176: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   179: ldc_w 271
-    //   182: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   185: aload_0
-    //   186: invokeinterface 269 1 0
-    //   191: invokestatic 277	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
-    //   194: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   197: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   200: astore_1
-    //   201: new 53	java/lang/StringBuilder
-    //   204: dup
-    //   205: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   208: aload_1
-    //   209: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   212: ldc_w 279
-    //   215: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   218: aload_0
-    //   219: invokeinterface 282 1 0
-    //   224: invokestatic 288	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   227: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   230: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   233: astore_1
-    //   234: aload_0
-    //   235: invokeinterface 291 1 0
-    //   240: ifnull +330 -> 570
-    //   243: new 53	java/lang/StringBuilder
-    //   246: dup
-    //   247: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   250: aload_1
-    //   251: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   254: ldc_w 293
-    //   257: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   260: aload_0
-    //   261: invokeinterface 291 1 0
-    //   266: invokestatic 277	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
-    //   269: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   272: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   275: astore_1
-    //   276: new 53	java/lang/StringBuilder
-    //   279: dup
-    //   280: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   283: aload_1
-    //   284: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   287: ldc_w 295
-    //   290: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   293: invokestatic 135	java/lang/System:currentTimeMillis	()J
-    //   296: invokevirtual 138	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   299: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   302: astore_1
-    //   303: getstatic 79	com/tencent/mobileqq/log/VipWebViewReportLog:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   306: ifnull +288 -> 594
-    //   309: new 53	java/lang/StringBuilder
-    //   312: dup
-    //   313: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   316: aload_1
-    //   317: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   320: ldc_w 297
-    //   323: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   326: getstatic 79	com/tencent/mobileqq/log/VipWebViewReportLog:jdField_d_of_type_JavaLangString	Ljava/lang/String;
-    //   329: invokestatic 277	java/net/URLEncoder:encode	(Ljava/lang/String;)Ljava/lang/String;
-    //   332: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   335: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   338: astore_1
-    //   339: aload_0
-    //   340: invokeinterface 238 1 0
-    //   345: ifnull +273 -> 618
-    //   348: new 53	java/lang/StringBuilder
-    //   351: dup
-    //   352: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   355: aload_1
-    //   356: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   359: ldc_w 299
-    //   362: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   365: aload_0
-    //   366: invokeinterface 238 1 0
-    //   371: invokevirtual 300	com/tencent/smtt/export/external/interfaces/ConsoleMessage$MessageLevel:toString	()Ljava/lang/String;
-    //   374: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   377: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   380: astore_0
-    //   381: new 53	java/lang/StringBuilder
-    //   384: dup
-    //   385: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   388: aload_0
-    //   389: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   392: ldc_w 302
-    //   395: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   398: getstatic 307	android/os/Build:MODEL	Ljava/lang/String;
-    //   401: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   404: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   407: astore_0
-    //   408: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   411: ifeq +231 -> 642
-    //   414: new 53	java/lang/StringBuilder
-    //   417: dup
-    //   418: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   421: aload_0
-    //   422: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   425: ldc_w 309
-    //   428: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   431: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   434: astore_0
-    //   435: getstatic 43	com/tencent/mobileqq/log/VipWebViewReportLog:jdField_a_of_type_AndroidContentContext	Landroid/content/Context;
-    //   438: ldc_w 311
-    //   441: invokevirtual 315	android/content/Context:getSystemService	(Ljava/lang/String;)Ljava/lang/Object;
-    //   444: checkcast 187	android/telephony/TelephonyManager
-    //   447: invokestatic 317	com/tencent/mobileqq/log/VipWebViewReportLog:a	(Landroid/telephony/TelephonyManager;)V
-    //   450: new 53	java/lang/StringBuilder
-    //   453: dup
-    //   454: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   457: aload_0
-    //   458: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   461: ldc_w 319
-    //   464: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   467: getstatic 83	com/tencent/mobileqq/log/VipWebViewReportLog:e	Ljava/lang/String;
-    //   470: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   473: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   476: astore_0
-    //   477: new 53	java/lang/StringBuilder
-    //   480: dup
-    //   481: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   484: aload_0
-    //   485: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   488: ldc_w 321
-    //   491: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   494: getstatic 85	com/tencent/mobileqq/log/VipWebViewReportLog:f	Ljava/lang/String;
-    //   497: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   500: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   503: astore_0
-    //   504: new 53	java/lang/StringBuilder
-    //   507: dup
-    //   508: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   511: aload_0
-    //   512: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   515: ldc_w 323
-    //   518: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   521: getstatic 87	com/tencent/mobileqq/log/VipWebViewReportLog:g	Ljava/lang/String;
-    //   524: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   527: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   530: astore_0
-    //   531: getstatic 30	com/tencent/mobileqq/log/VipWebViewReportLog:jdField_a_of_type_JavaLangString	Ljava/lang/String;
-    //   534: iconst_1
-    //   535: aload_0
-    //   536: invokestatic 141	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   539: return
-    //   540: astore_0
-    //   541: aload_0
-    //   542: invokevirtual 326	java/lang/Exception:printStackTrace	()V
-    //   545: return
-    //   546: new 53	java/lang/StringBuilder
-    //   549: dup
-    //   550: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   553: aload_1
-    //   554: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   557: ldc_w 328
-    //   560: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   563: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   566: astore_1
-    //   567: goto -366 -> 201
-    //   570: new 53	java/lang/StringBuilder
-    //   573: dup
-    //   574: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   577: aload_1
-    //   578: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   581: ldc_w 330
-    //   584: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   587: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   590: astore_1
-    //   591: goto -315 -> 276
-    //   594: new 53	java/lang/StringBuilder
-    //   597: dup
-    //   598: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   601: aload_1
-    //   602: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   605: ldc_w 332
-    //   608: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   611: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   614: astore_1
-    //   615: goto -276 -> 339
-    //   618: new 53	java/lang/StringBuilder
-    //   621: dup
-    //   622: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   625: aload_1
-    //   626: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   629: ldc_w 334
-    //   632: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   635: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   638: astore_0
-    //   639: goto -258 -> 381
-    //   642: new 53	java/lang/StringBuilder
-    //   645: dup
-    //   646: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   649: aload_0
-    //   650: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   653: ldc_w 336
-    //   656: invokevirtual 63	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   659: invokevirtual 73	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   662: astore_0
-    //   663: goto -228 -> 435
-    //   666: astore_1
-    //   667: aload_1
-    //   668: invokevirtual 326	java/lang/Exception:printStackTrace	()V
-    //   671: goto -221 -> 450
-    //   674: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	675	0	paramConsoleMessage	com.tencent.smtt.export.external.interfaces.ConsoleMessage
-    //   60	566	1	str1	String
-    //   666	2	1	localException	Exception
-    //   133	19	2	str2	String
-    // Exception table:
-    //   from	to	target	type
-    //   0	6	540	java/lang/Exception
-    //   7	28	540	java/lang/Exception
-    //   28	40	540	java/lang/Exception
-    //   40	201	540	java/lang/Exception
-    //   201	276	540	java/lang/Exception
-    //   276	339	540	java/lang/Exception
-    //   339	381	540	java/lang/Exception
-    //   381	435	540	java/lang/Exception
-    //   450	539	540	java/lang/Exception
-    //   546	567	540	java/lang/Exception
-    //   570	591	540	java/lang/Exception
-    //   594	615	540	java/lang/Exception
-    //   618	639	540	java/lang/Exception
-    //   642	663	540	java/lang/Exception
-    //   667	671	540	java/lang/Exception
-    //   435	450	666	java/lang/Exception
+    try
+    {
+      if (jdField_a_of_type_MqqAppAppRuntime == null) {
+        return;
+      }
+      if (!QLog.isColorLevel())
+      {
+        if ((jdField_d_of_type_Int == jdField_c_of_type_Int) && (!jdField_a_of_type_Boolean)) {
+          return;
+        }
+        if (paramConsoleMessage.messageLevel() != ConsoleMessage.MessageLevel.ERROR) {
+          return;
+        }
+      }
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("");
+      ((StringBuilder)localObject1).append("protocol_ver=1");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&client_plat_id=109");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&client_ver=8.7.0");
+      localObject1 = ((StringBuilder)localObject2).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&os_ver=");
+      ((StringBuilder)localObject2).append(Build.VERSION.SDK);
+      localObject1 = ((StringBuilder)localObject2).toString();
+      localObject2 = jdField_a_of_type_MqqAppAppRuntime.getAccount();
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append((String)localObject1);
+      localStringBuilder2.append("&uin=");
+      localStringBuilder2.append((String)localObject2);
+      localObject1 = localStringBuilder2.toString();
+      if (paramConsoleMessage.sourceId() != null)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&err_file=");
+        ((StringBuilder)localObject2).append(URLEncoder.encode(paramConsoleMessage.sourceId()));
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&err_file=null");
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&err_line=");
+      ((StringBuilder)localObject2).append(String.valueOf(paramConsoleMessage.lineNumber()));
+      localObject1 = ((StringBuilder)localObject2).toString();
+      if (paramConsoleMessage.message() != null)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&err_message=");
+        ((StringBuilder)localObject2).append(URLEncoder.encode(paramConsoleMessage.message()));
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&err_message=null");
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("&err_timestamp=");
+      ((StringBuilder)localObject2).append(System.currentTimeMillis());
+      localObject1 = ((StringBuilder)localObject2).toString();
+      if (jdField_d_of_type_JavaLangString != null)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&err_page_url=");
+        ((StringBuilder)localObject2).append(URLEncoder.encode(jdField_d_of_type_JavaLangString));
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      else
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&err_page_url=null");
+        localObject1 = ((StringBuilder)localObject2).toString();
+      }
+      if (paramConsoleMessage.messageLevel() != null)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&err_level=");
+        ((StringBuilder)localObject2).append(paramConsoleMessage.messageLevel().toString());
+        paramConsoleMessage = ((StringBuilder)localObject2).toString();
+      }
+      else
+      {
+        paramConsoleMessage = new StringBuilder();
+        paramConsoleMessage.append((String)localObject1);
+        paramConsoleMessage.append("&err_level=null");
+        paramConsoleMessage = paramConsoleMessage.toString();
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramConsoleMessage);
+      ((StringBuilder)localObject1).append("&phone_model=");
+      ((StringBuilder)localObject1).append(Build.MODEL);
+      paramConsoleMessage = ((StringBuilder)localObject1).toString();
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramConsoleMessage);
+        ((StringBuilder)localObject1).append("&user_status=COLORUSER");
+        paramConsoleMessage = ((StringBuilder)localObject1).toString();
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramConsoleMessage);
+        ((StringBuilder)localObject1).append("&user_status=COMMONUSER");
+        paramConsoleMessage = ((StringBuilder)localObject1).toString();
+      }
+      try
+      {
+        a((TelephonyManager)jdField_a_of_type_AndroidContentContext.getSystemService("phone"));
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(paramConsoleMessage);
+      localStringBuilder1.append("&networkOperator=");
+      localStringBuilder1.append(e);
+      paramConsoleMessage = localStringBuilder1.toString();
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(paramConsoleMessage);
+      localStringBuilder1.append("&mNetworkType=");
+      localStringBuilder1.append(f);
+      paramConsoleMessage = localStringBuilder1.toString();
+      localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(paramConsoleMessage);
+      localStringBuilder1.append("&mobileType=");
+      localStringBuilder1.append(g);
+      paramConsoleMessage = localStringBuilder1.toString();
+      QLog.d(jdField_a_of_type_JavaLangString, 1, paramConsoleMessage);
+      return;
+    }
+    catch (Exception paramConsoleMessage)
+    {
+      paramConsoleMessage.printStackTrace();
+    }
   }
   
   public static void a(JSONObject paramJSONObject, WebResourceRequest paramWebResourceRequest, WebResourceResponse paramWebResourceResponse, int paramInt)
   {
-    StringBuilder localStringBuilder = new StringBuilder(4096);
-    if ("null".equals(f)) {}
-    try
-    {
-      a((TelephonyManager)jdField_a_of_type_AndroidContentContext.getSystemService("phone"));
-      localStringBuilder.append("==> SUMMARY INFO <==\nNET_TYPE:").append(f).append("\n").append("ERROR_CODE:").append(paramInt).append("\n");
-      if (paramJSONObject != null)
+    StringBuilder localStringBuilder1 = new StringBuilder(4096);
+    if ("null".equals(f)) {
+      try
       {
-        long l2 = paramJSONObject.optLong("dns_start");
-        long l8 = paramJSONObject.optLong("dns_end");
-        l3 = paramJSONObject.optLong("connect_start");
-        long l9 = paramJSONObject.optLong("connect_end");
-        l4 = paramJSONObject.optLong("ssl_handshake_start");
-        long l10 = paramJSONObject.optLong("ssl_handshake_end");
-        l5 = paramJSONObject.optLong("send_start");
-        long l11 = paramJSONObject.optLong("send_end");
-        l6 = paramJSONObject.optLong("recv_start");
-        l7 = paramJSONObject.optLong("recv_end");
-        if (0L != l2)
-        {
-          l1 = l2;
-          localStringBuilder.append("DNS cost=").append(l8 - l2).append("\n");
-          localStringBuilder.append("Create connect cost=").append(l9 - l3).append("\n");
-          localStringBuilder.append("SSL handshake cost=").append(l10 - l4).append("\n");
-          localStringBuilder.append("Send cost=").append(l11 - l5).append("\n");
-          localStringBuilder.append("Receive cost=").append(l7 - l6).append("\n");
-          localStringBuilder.append("Total Duration=").append(l7 - l1).append("\n");
-          localStringBuilder.append("Original Data:\n").append(paramJSONObject);
-        }
+        a((TelephonyManager)jdField_a_of_type_AndroidContentContext.getSystemService("phone"));
       }
-      else
+      catch (Exception localException)
       {
-        QLog.d("WebCoreDump", 1, localStringBuilder.toString());
-        if (paramWebResourceRequest == null) {
-          break label732;
-        }
-        localStringBuilder.setLength(0);
-        localStringBuilder.append("HAS_GESTURE:" + paramWebResourceRequest.hasGesture() + "\n");
-        localStringBuilder.append("IS_FOR_MAINFRAME:" + paramWebResourceRequest.isForMainFrame() + "\n");
-        localStringBuilder.append(paramWebResourceRequest.getMethod()).append(" ").append(paramWebResourceRequest.getUrl()).append("\n");
-        paramJSONObject = paramWebResourceRequest.getRequestHeaders();
-        if ((paramJSONObject == null) || (paramJSONObject.size() <= 0)) {
-          break label702;
-        }
-        paramWebResourceRequest = paramJSONObject.keySet().iterator();
-        for (;;)
-        {
-          if (!paramWebResourceRequest.hasNext()) {
-            break label702;
-          }
-          String str = (String)paramWebResourceRequest.next();
-          if (!str.equalsIgnoreCase("cookie")) {
-            break;
-          }
-          localStringBuilder.append(str + ":" + Util.c((String)paramJSONObject.get(str), new String[0]) + "\n");
-        }
+        localException.printStackTrace();
       }
     }
-    catch (Exception localException)
+    localStringBuilder1.append("==> SUMMARY INFO <==\nNET_TYPE:");
+    localStringBuilder1.append(f);
+    localStringBuilder1.append("\n");
+    localStringBuilder1.append("ERROR_CODE:");
+    localStringBuilder1.append(paramInt);
+    localStringBuilder1.append("\n");
+    Object localObject;
+    if (paramJSONObject != null)
     {
-      for (;;)
-      {
-        long l3;
-        long l4;
-        long l5;
-        long l6;
-        long l7;
-        long l1;
-        localException.printStackTrace();
-        continue;
-        if (0L != l3)
-        {
-          l1 = l3;
-        }
-        else if (0L != l4)
-        {
-          l1 = l4;
-        }
-        else if (0L != l5)
-        {
-          l1 = l5;
-        }
-        else if (0L != l6)
-        {
-          l1 = l6;
-        }
-        else
-        {
-          l1 = l7;
-          continue;
-          localStringBuilder.append(localException + ":" + (String)paramJSONObject.get(localException) + "\n");
-        }
+      long l2 = paramJSONObject.optLong("dns_start");
+      long l8 = paramJSONObject.optLong("dns_end");
+      long l3 = paramJSONObject.optLong("connect_start");
+      long l9 = paramJSONObject.optLong("connect_end");
+      long l4 = paramJSONObject.optLong("ssl_handshake_start");
+      long l10 = paramJSONObject.optLong("ssl_handshake_end");
+      long l5 = paramJSONObject.optLong("send_start");
+      long l11 = paramJSONObject.optLong("send_end");
+      long l6 = paramJSONObject.optLong("recv_start");
+      long l7 = paramJSONObject.optLong("recv_end");
+      long l1;
+      if (0L != l2) {
+        l1 = l2;
+      } else if (0L != l3) {
+        l1 = l3;
+      } else if (0L != l4) {
+        l1 = l4;
+      } else if (0L != l5) {
+        l1 = l5;
+      } else if (0L != l6) {
+        l1 = l6;
+      } else {
+        l1 = l7;
       }
-      label702:
-      QLog.d("WebCoreDump", 1, "-->HTTP REQUEST\n" + localStringBuilder.toString());
-      label732:
-      if (paramWebResourceResponse != null)
+      localStringBuilder1.append("DNS cost=");
+      localStringBuilder1.append(l8 - l2);
+      localObject = "\n";
+      localStringBuilder1.append((String)localObject);
+      localStringBuilder1.append("Create connect cost=");
+      localStringBuilder1.append(l9 - l3);
+      localStringBuilder1.append((String)localObject);
+      localStringBuilder1.append("SSL handshake cost=");
+      localStringBuilder1.append(l10 - l4);
+      localStringBuilder1.append((String)localObject);
+      localStringBuilder1.append("Send cost=");
+      localStringBuilder1.append(l11 - l5);
+      localStringBuilder1.append((String)localObject);
+      localStringBuilder1.append("Receive cost=");
+      localStringBuilder1.append(l7 - l6);
+      localStringBuilder1.append((String)localObject);
+      localStringBuilder1.append("Total Duration=");
+      localStringBuilder1.append(l7 - l1);
+      localStringBuilder1.append((String)localObject);
+      localStringBuilder1.append("Original Data:\n");
+      localStringBuilder1.append(paramJSONObject);
+    }
+    QLog.d("WebCoreDump", 1, localStringBuilder1.toString());
+    if (paramWebResourceRequest != null)
+    {
+      localStringBuilder1.setLength(0);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("HAS_GESTURE:");
+      paramJSONObject.append(paramWebResourceRequest.hasGesture());
+      paramJSONObject.append("\n");
+      localStringBuilder1.append(paramJSONObject.toString());
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("IS_FOR_MAINFRAME:");
+      paramJSONObject.append(paramWebResourceRequest.isForMainFrame());
+      paramJSONObject.append("\n");
+      localStringBuilder1.append(paramJSONObject.toString());
+      localStringBuilder1.append(paramWebResourceRequest.getMethod());
+      localStringBuilder1.append(" ");
+      localStringBuilder1.append(paramWebResourceRequest.getUrl());
+      localStringBuilder1.append("\n");
+      paramJSONObject = paramWebResourceRequest.getRequestHeaders();
+      if ((paramJSONObject != null) && (paramJSONObject.size() > 0))
       {
-        localStringBuilder.setLength(0);
-        localStringBuilder.append("STATUS_CODE:" + paramWebResourceResponse.getStatusCode() + "\n").append("CONTENT_ENCODING:" + paramWebResourceResponse.getEncoding() + "\n").append("MIME_TYPE:" + paramWebResourceResponse.getMimeType() + "\n").append("REASON_PHRASE:" + paramWebResourceResponse.getReasonPhrase() + "\n");
-        paramJSONObject = paramWebResourceResponse.getResponseHeaders();
-        if ((paramJSONObject != null) && (paramJSONObject.size() > 0))
+        paramWebResourceRequest = paramJSONObject.keySet().iterator();
+        while (paramWebResourceRequest.hasNext())
         {
-          paramWebResourceRequest = paramJSONObject.keySet().iterator();
-          while (paramWebResourceRequest.hasNext())
+          localObject = (String)paramWebResourceRequest.next();
+          StringBuilder localStringBuilder2;
+          if (((String)localObject).equalsIgnoreCase("cookie"))
           {
-            paramWebResourceResponse = (String)paramWebResourceRequest.next();
-            localStringBuilder.append(paramWebResourceResponse + ":" + (String)paramJSONObject.get(paramWebResourceResponse) + "\n");
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append((String)localObject);
+            localStringBuilder2.append(":");
+            localStringBuilder2.append(Util.c((String)paramJSONObject.get(localObject), new String[0]));
+            localStringBuilder2.append("\n");
+            localStringBuilder1.append(localStringBuilder2.toString());
+          }
+          else
+          {
+            localStringBuilder2 = new StringBuilder();
+            localStringBuilder2.append((String)localObject);
+            localStringBuilder2.append(":");
+            localStringBuilder2.append((String)paramJSONObject.get(localObject));
+            localStringBuilder2.append("\n");
+            localStringBuilder1.append(localStringBuilder2.toString());
           }
         }
-        QLog.d("WebCoreDump", 1, "<--HTTP RESPONSE\n" + localStringBuilder.toString());
       }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("-->HTTP REQUEST\n");
+      paramJSONObject.append(localStringBuilder1.toString());
+      QLog.d("WebCoreDump", 1, paramJSONObject.toString());
+    }
+    if (paramWebResourceResponse != null)
+    {
+      localStringBuilder1.setLength(0);
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("STATUS_CODE:");
+      paramJSONObject.append(paramWebResourceResponse.getStatusCode());
+      paramJSONObject.append("\n");
+      localStringBuilder1.append(paramJSONObject.toString());
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("CONTENT_ENCODING:");
+      paramJSONObject.append(paramWebResourceResponse.getEncoding());
+      paramJSONObject.append("\n");
+      localStringBuilder1.append(paramJSONObject.toString());
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("MIME_TYPE:");
+      paramJSONObject.append(paramWebResourceResponse.getMimeType());
+      paramJSONObject.append("\n");
+      localStringBuilder1.append(paramJSONObject.toString());
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("REASON_PHRASE:");
+      paramJSONObject.append(paramWebResourceResponse.getReasonPhrase());
+      paramJSONObject.append("\n");
+      localStringBuilder1.append(paramJSONObject.toString());
+      paramJSONObject = paramWebResourceResponse.getResponseHeaders();
+      if ((paramJSONObject != null) && (paramJSONObject.size() > 0))
+      {
+        paramWebResourceRequest = paramJSONObject.keySet().iterator();
+        while (paramWebResourceRequest.hasNext())
+        {
+          paramWebResourceResponse = (String)paramWebResourceRequest.next();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(paramWebResourceResponse);
+          ((StringBuilder)localObject).append(":");
+          ((StringBuilder)localObject).append((String)paramJSONObject.get(paramWebResourceResponse));
+          ((StringBuilder)localObject).append("\n");
+          localStringBuilder1.append(((StringBuilder)localObject).toString());
+        }
+      }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("<--HTTP RESPONSE\n");
+      paramJSONObject.append(localStringBuilder1.toString());
+      QLog.d("WebCoreDump", 1, paramJSONObject.toString());
     }
   }
   
@@ -619,18 +540,26 @@ public class VipWebViewReportLog
   {
     if (!TextUtils.isEmpty(paramString))
     {
-      Iterator localIterator = jdField_a_of_type_JavaUtilSet.iterator();
-      while (localIterator.hasNext())
+      localObject = jdField_a_of_type_JavaUtilSet.iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        String str = (String)localIterator.next();
+        String str = (String)((Iterator)localObject).next();
         if ((!TextUtils.isEmpty(str)) && (paramString.contains(str)))
         {
-          QLog.d("WebCoreDump", 1, "-->url:" + Util.b(paramString, new String[0]) + " is in white list");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("-->url:");
+          ((StringBuilder)localObject).append(Util.b(paramString, new String[0]));
+          ((StringBuilder)localObject).append(" is in white list");
+          QLog.d("WebCoreDump", 1, ((StringBuilder)localObject).toString());
           return true;
         }
       }
     }
-    QLog.d("WebCoreDump", 1, "-->url:" + Util.b(paramString, new String[0]) + " is not in white list");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("-->url:");
+    ((StringBuilder)localObject).append(Util.b(paramString, new String[0]));
+    ((StringBuilder)localObject).append(" is not in white list");
+    QLog.d("WebCoreDump", 1, ((StringBuilder)localObject).toString());
     return false;
   }
   
@@ -641,13 +570,16 @@ public class VipWebViewReportLog
   
   public static boolean b()
   {
-    QLog.d("WebCoreDump", 1, "-->uin in white list:" + jdField_b_of_type_Boolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("-->uin in white list:");
+    localStringBuilder.append(jdField_b_of_type_Boolean);
+    QLog.d("WebCoreDump", 1, localStringBuilder.toString());
     return jdField_b_of_type_Boolean;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.log.VipWebViewReportLog
  * JD-Core Version:    0.7.0.1
  */

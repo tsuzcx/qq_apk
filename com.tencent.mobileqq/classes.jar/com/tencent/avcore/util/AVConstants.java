@@ -69,7 +69,7 @@ public abstract interface AVConstants
   public static final int TYPE_MULTI_VIDEO_KICKOUT = 20;
   public static final int TYPE_MULTI_VIDEO_NETERROR = 15;
   public static final int TYPE_MULTI_VIDEO_NOTCONNECTED_NETERROR = 22;
-  public static final int TYPE_MULTI_VIDEO_QUIT_ERROR = 19;
+  public static final int TYPE_MULTI_VIDEO_QUIT_ROOM_ERROR = 19;
   public static final int TYPE_MULTI_VIDEO_START = 13;
   public static final int TYPE_MULTI_VIDEO_STOP = 14;
   public static final int TYPE_MULTI_VIDEO_STOP_MUTEXT_GROUPCALL = 60;
@@ -113,7 +113,7 @@ public abstract interface AVConstants
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avcore.util.AVConstants
  * JD-Core Version:    0.7.0.1
  */

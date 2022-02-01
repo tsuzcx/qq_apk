@@ -22,7 +22,12 @@ class AppBoxPlugin$MiniAppBox$2
   
   public void onError(int paramInt, String paramString)
   {
-    QMLog.i("SDK_MiniAppBox", "gdtBox onError, errCode = " + paramInt + ", errMsg = " + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("gdtBox onError, errCode = ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(", errMsg = ");
+    localStringBuilder.append(paramString);
+    QMLog.i("SDK_MiniAppBox", localStringBuilder.toString());
     AppBoxPlugin.MiniAppBox.access$100(this.this$1, true, "operateAppBox", this.val$compId, paramInt, this.val$callbackId);
     AppBoxPlugin.MiniAppBox.access$502(this.this$1, false);
   }
@@ -41,7 +46,7 @@ class AppBoxPlugin$MiniAppBox$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.AppBoxPlugin.MiniAppBox.2
  * JD-Core Version:    0.7.0.1
  */

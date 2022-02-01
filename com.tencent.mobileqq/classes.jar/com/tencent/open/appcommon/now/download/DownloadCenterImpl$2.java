@@ -1,6 +1,7 @@
 package com.tencent.open.appcommon.now.download;
 
-import com.tencent.mobileqq.intervideo.now.NowUtil;
+import com.tencent.mobileqq.intervideo.now.api.INowUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.open.downloadnew.DownloadInfo;
 import com.tencent.open.downloadnew.DownloadListener;
 import com.tencent.open.downloadnew.DownloadManager;
@@ -39,12 +40,12 @@ class DownloadCenterImpl$2
   
   public void onDownloadFinish(DownloadInfo paramDownloadInfo)
   {
-    if (NowUtil.a(paramDownloadInfo.l, paramDownloadInfo.c, paramDownloadInfo.e))
+    if (((INowUtil)QRoute.api(INowUtil.class)).copyNowApkToCommonDir(paramDownloadInfo.l, paramDownloadInfo.c, paramDownloadInfo.e))
     {
-      if (!NowUtil.b().equals(paramDownloadInfo.l))
+      if (!((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath().equals(paramDownloadInfo.l))
       {
-        NowUtil.a(paramDownloadInfo.l);
-        paramDownloadInfo.l = NowUtil.b();
+        ((INowUtil)QRoute.api(INowUtil.class)).delete(paramDownloadInfo.l);
+        paramDownloadInfo.l = ((INowUtil)QRoute.api(INowUtil.class)).getCommonNowPath();
       }
       DownloadManager.a().e(paramDownloadInfo);
     }
@@ -96,7 +97,7 @@ class DownloadCenterImpl$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.now.download.DownloadCenterImpl.2
  * JD-Core Version:    0.7.0.1
  */

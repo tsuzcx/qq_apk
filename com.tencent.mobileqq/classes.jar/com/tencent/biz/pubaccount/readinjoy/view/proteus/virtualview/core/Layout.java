@@ -31,88 +31,86 @@ public abstract class Layout
   
   public static int getChildMeasureSpec(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 0;
     int j = View.MeasureSpec.getMode(paramInt1);
     paramInt1 = Math.max(0, View.MeasureSpec.getSize(paramInt1) - paramInt2);
-    switch (j)
+    int i = 1073741824;
+    if (j != -2147483648)
     {
-    default: 
-      paramInt1 = 0;
-      paramInt2 = i;
-    }
-    for (;;)
-    {
-      return View.MeasureSpec.makeMeasureSpec(paramInt2, paramInt1);
-      if (paramInt3 >= 0)
+      if (j != 0)
       {
-        paramInt2 = paramInt3;
-        if (paramInt1 > 0)
-        {
-          paramInt2 = paramInt3;
-          if (paramInt3 > paramInt1) {
-            paramInt2 = paramInt1;
-          }
+        if (j != 1073741824) {
+          break label142;
         }
-        paramInt1 = 1073741824;
-      }
-      else if (paramInt3 == -1)
-      {
-        paramInt2 = paramInt1;
-        paramInt1 = 1073741824;
-      }
-      else
-      {
-        if (paramInt3 != -2) {
-          break;
-        }
-        paramInt2 = paramInt1;
-        paramInt1 = -2147483648;
-        continue;
         if (paramInt3 >= 0)
         {
-          paramInt1 = 1073741824;
           paramInt2 = paramInt3;
-        }
-        else if (paramInt3 == -1)
-        {
-          paramInt2 = paramInt1;
-          paramInt1 = -2147483648;
+          if (paramInt1 > 0)
+          {
+            paramInt2 = paramInt3;
+            if (paramInt3 > paramInt1) {
+              paramInt2 = paramInt1;
+            }
+          }
         }
         else
         {
+          if (paramInt3 == -1)
+          {
+            paramInt2 = i;
+            break label146;
+          }
           if (paramInt3 != -2) {
-            break;
+            break label142;
           }
-          paramInt2 = paramInt1;
-          paramInt1 = -2147483648;
-          continue;
-          if (paramInt3 >= 0)
-          {
-            paramInt1 = 1073741824;
-            paramInt2 = paramInt3;
-          }
-          else if (paramInt3 == -1)
-          {
-            paramInt2 = paramInt1;
-            paramInt1 = 0;
-          }
-          else
-          {
-            if (paramInt3 != -2) {
-              break;
-            }
-            paramInt2 = paramInt1;
-            paramInt1 = 0;
-          }
+          break label127;
         }
       }
+      else if (paramInt3 >= 0)
+      {
+        paramInt2 = paramInt3;
+      }
+      else
+      {
+        if (paramInt3 == -1) {
+          break label144;
+        }
+        while (paramInt3 == -2) {}
+      }
     }
+    else
+    {
+      if (paramInt3 < 0) {
+        break label122;
+      }
+      paramInt2 = paramInt3;
+    }
+    paramInt1 = paramInt2;
+    paramInt2 = i;
+    break label146;
+    label122:
+    if (paramInt3 == -1) {}
+    label127:
+    while (paramInt3 == -2)
+    {
+      paramInt2 = -2147483648;
+      break;
+    }
+    label142:
+    paramInt1 = 0;
+    label144:
+    paramInt2 = 0;
+    label146:
+    return View.MeasureSpec.makeMeasureSpec(paramInt1, paramInt2);
   }
   
   public void addView(ViewBase paramViewBase)
   {
-    if (LogUtils.shouldLog()) {
-      LogUtils.d("Layout_TMTEST", "[addView] " + paramViewBase.mName);
+    if (LogUtils.shouldLog())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[addView] ");
+      localStringBuilder.append(paramViewBase.mName);
+      LogUtils.d("Layout_TMTEST", localStringBuilder.toString());
     }
     if (paramViewBase != null)
     {
@@ -203,8 +201,9 @@ public abstract class Layout
       this.mBorderPaint.setStrokeWidth(this.mBorderWidth);
       VirtualViewUtils.drawBorder(paramCanvas, this.mBorderPaint, this.mMeasuredWidth, this.mMeasuredHeight, this.mBorderWidth, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomRightRadius);
     }
-    if (this.mGradientColorBg != null) {
-      setBackgroundColor(this.mGradientColorBg);
+    paramCanvas = this.mGradientColorBg;
+    if (paramCanvas != null) {
+      setBackgroundColor(paramCanvas);
     }
   }
   
@@ -240,49 +239,48 @@ public abstract class Layout
   
   protected boolean setAttribute(int paramInt, Object paramObject)
   {
-    switch (paramInt)
+    if ((paramInt == 56) || (paramInt == 57))
     {
-    }
-    for (;;)
-    {
-      return super.setAttribute(paramInt, paramObject);
       try
       {
         if (!(paramObject instanceof JSONArray)) {
-          break;
+          break label295;
         }
         localJSONArray = (JSONArray)paramObject;
-        if (localJSONArray.length() < 4) {
-          break;
+        if (localJSONArray.length() < 3) {
+          break label295;
         }
         localGradientColorBg = new Layout.GradientColorBg();
-        Float localFloat1 = Utils.toFloat(localJSONArray.get(0));
-        Float localFloat2 = Utils.toFloat(localJSONArray.get(1));
-        j = Utils.parseColor(localJSONArray.get(2).toString());
-        localGradientColorBg.isHorizontal = "0".equals(localJSONArray.get(3).toString());
-        i = Color.argb((int)(localFloat1.floatValue() * 255.0F), Color.red(j), Color.green(j), Color.blue(j));
-        j = Color.argb((int)(localFloat2.floatValue() * 255.0F), Color.red(j), Color.green(j), Color.blue(j));
+        localGradientColorBg.isHorizontal = "0".equals(localJSONArray.get(2).toString());
+        i = Utils.parseColor(localJSONArray.get(0).toString());
+        j = Utils.parseColor(localJSONArray.get(1).toString());
         localGradientColorBg.startColor = i;
         localGradientColorBg.endColor = j;
         this.mGradientColorBg = localGradientColorBg;
+        return true;
       }
       catch (Exception localException)
       {
         JSONArray localJSONArray;
         Layout.GradientColorBg localGradientColorBg;
-        int j;
         int i;
+        int j;
+        Float localFloat1;
+        Float localFloat2;
         localException.printStackTrace();
       }
       if ((paramObject instanceof JSONArray))
       {
         localJSONArray = (JSONArray)paramObject;
-        if (localJSONArray.length() >= 3)
+        if (localJSONArray.length() >= 4)
         {
           localGradientColorBg = new Layout.GradientColorBg();
-          localGradientColorBg.isHorizontal = "0".equals(localJSONArray.get(2).toString());
-          i = Utils.parseColor(localJSONArray.get(0).toString());
-          j = Utils.parseColor(localJSONArray.get(1).toString());
+          localFloat1 = Utils.toFloat(localJSONArray.get(0));
+          localFloat2 = Utils.toFloat(localJSONArray.get(1));
+          j = Utils.parseColor(localJSONArray.get(2).toString());
+          localGradientColorBg.isHorizontal = "0".equals(localJSONArray.get(3).toString());
+          i = Color.argb((int)(localFloat1.floatValue() * 255.0F), Color.red(j), Color.green(j), Color.blue(j));
+          j = Color.argb((int)(localFloat2.floatValue() * 255.0F), Color.red(j), Color.green(j), Color.blue(j));
           localGradientColorBg.startColor = i;
           localGradientColorBg.endColor = j;
           this.mGradientColorBg = localGradientColorBg;
@@ -290,6 +288,11 @@ public abstract class Layout
       }
       return true;
     }
+    else
+    {
+      return super.setAttribute(paramInt, paramObject);
+    }
+    label295:
     return true;
   }
   
@@ -305,34 +308,36 @@ public abstract class Layout
   
   protected void setBackgroundColor(Layout.GradientColorBg paramGradientColorBg)
   {
-    if ((paramGradientColorBg == null) || (paramGradientColorBg.hasSetBg)) {}
-    View localView;
-    do
+    if (paramGradientColorBg != null)
     {
-      return;
-      paramGradientColorBg.hasSetBg = true;
-      localView = getNativeView();
-    } while (localView == null);
-    PaintDrawable localPaintDrawable = new PaintDrawable();
-    int j;
-    int i;
-    if (paramGradientColorBg.isHorizontal)
-    {
-      j = getWidth();
-      i = 0;
-    }
-    for (;;)
-    {
-      localPaintDrawable.setCornerRadii(new float[] { this.mBorderTopLeftRadius, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderTopRightRadius, this.mBorderBottomRightRadius, this.mBorderBottomRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomLeftRadius });
-      paramGradientColorBg = new LinearGradient(0.0F, 0.0F, j, i, paramGradientColorBg.startColor, paramGradientColorBg.endColor, Shader.TileMode.CLAMP);
-      Paint localPaint = localPaintDrawable.getPaint();
-      if (localPaint != null) {
-        localPaint.setShader(paramGradientColorBg);
+      if (paramGradientColorBg.hasSetBg) {
+        return;
       }
-      localView.setBackgroundDrawable(localPaintDrawable);
-      return;
-      i = getHeight();
-      j = 0;
+      paramGradientColorBg.hasSetBg = true;
+      View localView = getNativeView();
+      if (localView != null)
+      {
+        PaintDrawable localPaintDrawable = new PaintDrawable();
+        int i;
+        int j;
+        if (paramGradientColorBg.isHorizontal)
+        {
+          i = getWidth();
+          j = 0;
+        }
+        else
+        {
+          j = getHeight();
+          i = 0;
+        }
+        localPaintDrawable.setCornerRadii(new float[] { this.mBorderTopLeftRadius, this.mBorderTopLeftRadius, this.mBorderTopRightRadius, this.mBorderTopRightRadius, this.mBorderBottomRightRadius, this.mBorderBottomRightRadius, this.mBorderBottomLeftRadius, this.mBorderBottomLeftRadius });
+        paramGradientColorBg = new LinearGradient(0.0F, 0.0F, i, j, paramGradientColorBg.startColor, paramGradientColorBg.endColor, Shader.TileMode.CLAMP);
+        Paint localPaint = localPaintDrawable.getPaint();
+        if (localPaint != null) {
+          localPaint.setShader(paramGradientColorBg);
+        }
+        localView.setBackgroundDrawable(localPaintDrawable);
+      }
     }
   }
   
@@ -345,7 +350,7 @@ public abstract class Layout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.Layout
  * JD-Core Version:    0.7.0.1
  */

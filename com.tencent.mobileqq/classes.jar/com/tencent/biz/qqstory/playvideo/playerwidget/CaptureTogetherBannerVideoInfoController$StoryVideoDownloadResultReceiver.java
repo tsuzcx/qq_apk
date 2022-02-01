@@ -18,25 +18,32 @@ public class CaptureTogetherBannerVideoInfoController$StoryVideoDownloadResultRe
   
   public void a(@NonNull CaptureTogetherBannerVideoInfoController paramCaptureTogetherBannerVideoInfoController, @NonNull StoryPlayerGroupHolder.DownloadVideoResultEvent paramDownloadVideoResultEvent)
   {
-    if (paramDownloadVideoResultEvent.jdField_a_of_type_Boolean) {
-      if ((paramDownloadVideoResultEvent.jdField_a_of_type_JavaLangString != null) && (this.a != null))
+    if (paramDownloadVideoResultEvent.jdField_a_of_type_Boolean)
+    {
+      if (paramDownloadVideoResultEvent.jdField_a_of_type_JavaLangString != null)
       {
-        paramCaptureTogetherBannerVideoInfoController = (BannerVideoInfoWidget3.VideoDownloadListener)this.a.get();
-        if (paramCaptureTogetherBannerVideoInfoController != null) {
-          paramCaptureTogetherBannerVideoInfoController.a(paramDownloadVideoResultEvent.jdField_a_of_type_JavaLangString);
+        paramCaptureTogetherBannerVideoInfoController = this.a;
+        if (paramCaptureTogetherBannerVideoInfoController != null)
+        {
+          paramCaptureTogetherBannerVideoInfoController = (BannerVideoInfoWidget3.VideoDownloadListener)paramCaptureTogetherBannerVideoInfoController.get();
+          if (paramCaptureTogetherBannerVideoInfoController != null) {
+            paramCaptureTogetherBannerVideoInfoController.a(paramDownloadVideoResultEvent.jdField_a_of_type_JavaLangString);
+          }
         }
       }
     }
-    do
+    else
     {
-      do
+      SLog.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramDownloadVideoResultEvent.jdField_a_of_type_JavaLangString });
+      paramCaptureTogetherBannerVideoInfoController = this.a;
+      if (paramCaptureTogetherBannerVideoInfoController != null)
       {
-        return;
-        SLog.e(this.TAG, "StoryVideoDownloadResultReceiver, onEvent download failed, vid:%s", new Object[] { paramDownloadVideoResultEvent.jdField_a_of_type_JavaLangString });
-      } while (this.a == null);
-      paramCaptureTogetherBannerVideoInfoController = (BannerVideoInfoWidget3.VideoDownloadListener)this.a.get();
-    } while (paramCaptureTogetherBannerVideoInfoController == null);
-    paramCaptureTogetherBannerVideoInfoController.a();
+        paramCaptureTogetherBannerVideoInfoController = (BannerVideoInfoWidget3.VideoDownloadListener)paramCaptureTogetherBannerVideoInfoController.get();
+        if (paramCaptureTogetherBannerVideoInfoController != null) {
+          paramCaptureTogetherBannerVideoInfoController.a();
+        }
+      }
+    }
   }
   
   public Class acceptEventClass()
@@ -46,7 +53,7 @@ public class CaptureTogetherBannerVideoInfoController$StoryVideoDownloadResultRe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.CaptureTogetherBannerVideoInfoController.StoryVideoDownloadResultReceiver
  * JD-Core Version:    0.7.0.1
  */

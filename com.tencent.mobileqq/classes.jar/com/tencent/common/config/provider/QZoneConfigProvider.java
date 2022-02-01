@@ -7,9 +7,13 @@ import android.content.Context;
 import android.content.UriMatcher;
 import android.database.Cursor;
 import android.net.Uri;
+import android.text.TextUtils;
+import com.tencent.common.app.BaseApplicationImpl;
+import com.tencent.mobileqq.app.PrivacyPolicyHelper;
 import com.tencent.qphone.base.util.QLog;
 import cooperation.qzone.util.QZLog;
 import java.util.concurrent.ConcurrentHashMap;
+import mqq.app.AppRuntime;
 
 public class QZoneConfigProvider
   extends ContentProvider
@@ -76,161 +80,85 @@ public class QZoneConfigProvider
     return paramUri;
   }
   
-  /* Error */
   private QZConfigSqliteManager a()
   {
-    // Byte code:
-    //   0: ldc 114
-    //   2: astore_2
-    //   3: ldc 116
-    //   5: getstatic 122	com/tencent/common/app/BaseApplicationImpl:sInjectResult	Ljava/lang/String;
-    //   8: invokevirtual 128	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   11: ifne +43 -> 54
-    //   14: ldc 130
-    //   16: iconst_1
-    //   17: new 132	java/lang/StringBuilder
-    //   20: dup
-    //   21: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   24: ldc 135
-    //   26: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   29: getstatic 122	com/tencent/common/app/BaseApplicationImpl:sInjectResult	Ljava/lang/String;
-    //   32: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   35: ldc 141
-    //   37: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   40: invokestatic 146	com/tencent/mobileqq/app/PrivacyPolicyHelper:a	()Z
-    //   43: invokevirtual 149	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   46: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   49: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   52: aconst_null
-    //   53: areturn
-    //   54: invokestatic 163	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   57: ifnull +161 -> 218
-    //   60: invokestatic 163	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   63: invokevirtual 167	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   66: ifnull +152 -> 218
-    //   69: invokestatic 163	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   72: invokevirtual 167	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   75: invokevirtual 172	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   78: invokestatic 178	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   81: ifne +137 -> 218
-    //   84: invokestatic 163	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   87: invokevirtual 167	com/tencent/common/app/BaseApplicationImpl:getRuntime	()Lmqq/app/AppRuntime;
-    //   90: invokevirtual 172	mqq/app/AppRuntime:getAccount	()Ljava/lang/String;
-    //   93: astore_1
-    //   94: getstatic 20	com/tencent/common/config/provider/QZoneConfigProvider:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   97: aload_1
-    //   98: invokevirtual 182	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   101: ifnull +14 -> 115
-    //   104: getstatic 20	com/tencent/common/config/provider/QZoneConfigProvider:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   107: aload_1
-    //   108: invokevirtual 182	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   111: checkcast 38	com/tencent/common/config/provider/QZConfigSqliteManager
-    //   114: areturn
-    //   115: aload_0
-    //   116: getfield 32	com/tencent/common/config/provider/QZoneConfigProvider:jdField_a_of_type_JavaLangObject	Ljava/lang/Object;
-    //   119: astore_2
-    //   120: aload_2
-    //   121: monitorenter
-    //   122: ldc 130
-    //   124: iconst_1
-    //   125: new 132	java/lang/StringBuilder
-    //   128: dup
-    //   129: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   132: ldc 184
-    //   134: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   137: aload_1
-    //   138: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   141: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   144: invokestatic 159	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   147: new 38	com/tencent/common/config/provider/QZConfigSqliteManager
-    //   150: dup
-    //   151: aload_0
-    //   152: invokevirtual 46	com/tencent/common/config/provider/QZoneConfigProvider:getContext	()Landroid/content/Context;
-    //   155: aload_1
-    //   156: invokespecial 187	com/tencent/common/config/provider/QZConfigSqliteManager:<init>	(Landroid/content/Context;Ljava/lang/String;)V
-    //   159: astore_3
-    //   160: getstatic 20	com/tencent/common/config/provider/QZoneConfigProvider:jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   163: aload_1
-    //   164: aload_3
-    //   165: invokevirtual 190	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   168: pop
-    //   169: aload_2
-    //   170: monitorexit
-    //   171: aload_3
-    //   172: areturn
-    //   173: astore_3
-    //   174: aload_2
-    //   175: monitorexit
-    //   176: aload_3
-    //   177: athrow
-    //   178: astore_2
-    //   179: ldc 130
-    //   181: iconst_1
-    //   182: iconst_2
-    //   183: anewarray 29	java/lang/Object
-    //   186: dup
-    //   187: iconst_0
-    //   188: ldc 192
-    //   190: aastore
-    //   191: dup
-    //   192: iconst_1
-    //   193: new 132	java/lang/StringBuilder
-    //   196: dup
-    //   197: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   200: ldc 194
-    //   202: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   205: aload_1
-    //   206: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   209: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   212: aastore
-    //   213: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   216: aconst_null
-    //   217: areturn
-    //   218: ldc 130
-    //   220: iconst_1
-    //   221: iconst_2
-    //   222: anewarray 29	java/lang/Object
-    //   225: dup
-    //   226: iconst_0
-    //   227: ldc 199
-    //   229: aastore
-    //   230: dup
-    //   231: iconst_1
-    //   232: new 132	java/lang/StringBuilder
-    //   235: dup
-    //   236: invokespecial 133	java/lang/StringBuilder:<init>	()V
-    //   239: ldc 201
-    //   241: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   244: ldc 114
-    //   246: invokevirtual 139	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   249: invokevirtual 153	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   252: aastore
-    //   253: invokestatic 197	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;I[Ljava/lang/Object;)V
-    //   256: aconst_null
-    //   257: areturn
-    //   258: astore_1
-    //   259: aload_2
-    //   260: astore_1
-    //   261: goto -82 -> 179
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	264	0	this	QZoneConfigProvider
-    //   93	113	1	str	String
-    //   258	1	1	localThrowable1	Throwable
-    //   260	1	1	localThrowable2	Throwable
-    //   178	82	2	localThrowable3	Throwable
-    //   159	13	3	localQZConfigSqliteManager	QZConfigSqliteManager
-    //   173	4	3	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   122	171	173	finally
-    //   174	176	173	finally
-    //   94	115	178	java/lang/Throwable
-    //   115	122	178	java/lang/Throwable
-    //   176	178	178	java/lang/Throwable
-    //   3	52	258	java/lang/Throwable
-    //   54	94	258	java/lang/Throwable
-    //   218	256	258	java/lang/Throwable
+    Object localObject2 = "";
+    Object localObject1 = localObject2;
+    try
+    {
+      if (!"Success".equals(BaseApplicationImpl.sInjectResult))
+      {
+        localObject1 = localObject2;
+        localObject3 = new StringBuilder();
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append(" sIsDexInjectFinish = ");
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append(BaseApplicationImpl.sInjectResult);
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append("  isUserAllow = ");
+        localObject1 = localObject2;
+        ((StringBuilder)localObject3).append(PrivacyPolicyHelper.a());
+        localObject1 = localObject2;
+        QLog.e("QZoneConfigProvider", 1, ((StringBuilder)localObject3).toString());
+        return null;
+      }
+      localObject1 = localObject2;
+      if (BaseApplicationImpl.getApplication() != null)
+      {
+        localObject1 = localObject2;
+        if (BaseApplicationImpl.getApplication().getRuntime() != null)
+        {
+          localObject1 = localObject2;
+          if (!TextUtils.isEmpty(BaseApplicationImpl.getApplication().getRuntime().getAccount()))
+          {
+            localObject1 = localObject2;
+            localObject2 = BaseApplicationImpl.getApplication().getRuntime().getAccount();
+            localObject1 = localObject2;
+            if (jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2) != null)
+            {
+              localObject1 = localObject2;
+              return (QZConfigSqliteManager)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.get(localObject2);
+            }
+            localObject1 = localObject2;
+            localObject3 = this.jdField_a_of_type_JavaLangObject;
+            localObject1 = localObject2;
+            try
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("new QZConfigSqliteManager  uin=");
+              ((StringBuilder)localObject1).append((String)localObject2);
+              QLog.e("QZoneConfigProvider", 1, ((StringBuilder)localObject1).toString());
+              localObject1 = new QZConfigSqliteManager(getContext(), (String)localObject2);
+              jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(localObject2, localObject1);
+              return localObject1;
+            }
+            finally
+            {
+              localObject1 = localObject2;
+            }
+          }
+        }
+      }
+      localObject1 = localObject2;
+      Object localObject3 = new StringBuilder();
+      localObject1 = localObject2;
+      ((StringBuilder)localObject3).append("  uin=");
+      localObject1 = localObject2;
+      ((StringBuilder)localObject3).append("");
+      localObject1 = localObject2;
+      QLog.e("QZoneConfigProvider", 1, new Object[] { "getmSqlManager", ((StringBuilder)localObject3).toString() });
+      return null;
+    }
+    catch (Throwable localThrowable)
+    {
+      label282:
+      break label282;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("  uin= ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QLog.e("QZoneConfigProvider", 1, new Object[] { "getmSqlManager init erro", ((StringBuilder)localObject2).toString() });
+    return null;
   }
   
   private int b(Uri paramUri, ContentValues[] paramArrayOfContentValues)
@@ -311,14 +239,18 @@ public class QZoneConfigProvider
   
   public int bulkInsert(Uri paramUri, ContentValues[] paramArrayOfContentValues)
   {
-    switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+    int i = jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
+    if (i != 1)
     {
-    default: 
-      QZLog.e("QZoneConfigProvider", 1, new Object[] { "uri:", paramUri, "not used right" });
-      return 0;
-    case 9: 
-      return a(paramUri, paramArrayOfContentValues);
-    case 8: 
+      if (i != 8)
+      {
+        if (i != 9)
+        {
+          QZLog.e("QZoneConfigProvider", 1, new Object[] { "uri:", paramUri, "not used right" });
+          return 0;
+        }
+        return a(paramUri, paramArrayOfContentValues);
+      }
       return b(paramUri, paramArrayOfContentValues);
     }
     return a().a(paramUri, "qz_configs", paramArrayOfContentValues);
@@ -331,22 +263,22 @@ public class QZoneConfigProvider
     case 7: 
     default: 
       return 0;
-    case 1: 
-      return a().a(paramString, paramArrayOfString);
-    case 2: 
-      return a().a();
-    case 3: 
-      return a().c();
-    case 4: 
-      return a().b(paramString, paramArrayOfString);
+    case 9: 
+      return a(paramUri, paramString, paramArrayOfString);
+    case 8: 
+      return a().c(paramString, paramArrayOfString);
     case 6: 
       return a().d();
     case 5: 
       return a().b();
-    case 8: 
-      return a().c(paramString, paramArrayOfString);
+    case 4: 
+      return a().b(paramString, paramArrayOfString);
+    case 3: 
+      return a().c();
+    case 2: 
+      return a().a();
     }
-    return a(paramUri, paramString, paramArrayOfString);
+    return a().a(paramString, paramArrayOfString);
   }
   
   public String getType(Uri paramUri)
@@ -356,26 +288,35 @@ public class QZoneConfigProvider
   
   public Uri insert(Uri paramUri, ContentValues paramContentValues)
   {
-    switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+    int i = jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
+    if (i != 1)
     {
-    case 6: 
-    case 7: 
-    default: 
-      return null;
-    case 1: 
-      return d(paramUri, paramContentValues);
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 3)
+        {
+          if (i != 4)
+          {
+            if (i != 5)
+            {
+              if (i != 8)
+              {
+                if (i != 9) {
+                  return null;
+                }
+                return g(paramUri, paramContentValues);
+              }
+              return f(paramUri, paramContentValues);
+            }
+            return b(paramUri, paramContentValues);
+          }
+          return e(paramUri, paramContentValues);
+        }
+        return c(paramUri, paramContentValues);
+      }
       return a(paramUri, paramContentValues);
-    case 3: 
-      return c(paramUri, paramContentValues);
-    case 4: 
-      return e(paramUri, paramContentValues);
-    case 5: 
-      return b(paramUri, paramContentValues);
-    case 8: 
-      return f(paramUri, paramContentValues);
     }
-    return g(paramUri, paramContentValues);
+    return d(paramUri, paramContentValues);
   }
   
   public boolean onCreate()
@@ -387,28 +328,43 @@ public class QZoneConfigProvider
   {
     try
     {
-      switch (jdField_a_of_type_AndroidContentUriMatcher.match(paramUri))
+      int i = jdField_a_of_type_AndroidContentUriMatcher.match(paramUri);
+      if (i != 1)
       {
-      case 1: 
-        return a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+        if (i != 2)
+        {
+          if (i != 3)
+          {
+            if (i != 4)
+            {
+              if (i != 5)
+              {
+                if (i != 8)
+                {
+                  if (i != 9) {
+                    return null;
+                  }
+                  return d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+                }
+                return c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+              }
+              return c(paramArrayOfString1);
+            }
+            return b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+          }
+          return a(paramArrayOfString1);
+        }
+        return b(paramArrayOfString1);
       }
+      paramUri = a(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
+      return paramUri;
     }
     catch (Throwable paramUri)
     {
-      if (!QLog.isColorLevel()) {
-        break label139;
+      if (QLog.isColorLevel()) {
+        QLog.w("QZoneConfigProvider", 2, "query异常", paramUri);
       }
-      QLog.e("QZoneConfigProvider", 2, "query异常", paramUri);
-      return null;
     }
-    return b(paramArrayOfString1);
-    return a(paramArrayOfString1);
-    return b(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
-    return c(paramArrayOfString1);
-    return c(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
-    paramUri = d(paramArrayOfString1, paramString1, paramArrayOfString2, paramString2);
-    return paramUri;
-    label139:
     return null;
   }
   
@@ -419,7 +375,7 @@ public class QZoneConfigProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.config.provider.QZoneConfigProvider
  * JD-Core Version:    0.7.0.1
  */

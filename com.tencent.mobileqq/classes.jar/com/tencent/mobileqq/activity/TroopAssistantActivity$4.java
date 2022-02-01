@@ -15,41 +15,39 @@ class TroopAssistantActivity$4
   
   public void onClick(View paramView)
   {
-    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {}
-    for (;;)
-    {
+    if (System.currentTimeMillis() - this.a.jdField_a_of_type_Long >= 1500L) {
       try
       {
         this.a.jdField_a_of_type_Long = System.currentTimeMillis();
-        int i = paramView.getId();
-        switch (i)
+        if (paramView.getId() == 2131379169)
         {
+          TroopStoryMainActivity.a(this.a);
+          if (QLog.isColorLevel()) {
+            QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:https://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
+          }
+          if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
+            this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
+          }
+          StoryReportor.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
         }
       }
       catch (Exception localException)
       {
-        if (!QLog.isColorLevel()) {
-          continue;
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("feedsTitle onClick:");
+          localStringBuilder.append(localException.toString());
+          QLog.e("TroopAssistantFeedsJsHandler", 2, localStringBuilder.toString());
         }
-        QLog.e("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick:" + localException.toString());
-        continue;
       }
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      TroopStoryMainActivity.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopAssistantFeedsJsHandler", 2, "feedsTitle onClick, url:https://qqweb.qq.com/m/qunfeeds/index.html?_wv=1031&_bid=200");
-      }
-      if (this.a.jdField_a_of_type_AndroidWidgetImageView != null) {
-        this.a.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
-      }
-      StoryReportor.a("grp_help", "clk_video", 0, 0, new String[] { "", "", "", "" });
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.4
  * JD-Core Version:    0.7.0.1
  */

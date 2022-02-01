@@ -12,15 +12,19 @@ class s
   {
     c.a().onServiceConnected();
     int i = this.a.registerMsfService(false, true);
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.D.ProxyNew", 2, "registerMsfService result:" + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("registerMsfService result:");
+      localStringBuilder.append(i);
+      QLog.d("MSF.D.ProxyNew", 2, localStringBuilder.toString());
     }
     this.a.h();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.sdk.s
  * JD-Core Version:    0.7.0.1
  */

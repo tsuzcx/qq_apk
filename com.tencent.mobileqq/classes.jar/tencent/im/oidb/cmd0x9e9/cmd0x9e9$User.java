@@ -17,13 +17,14 @@ public final class cmd0x9e9$User
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_client", "bytes_version", "uint32_portal" }, new Object[] { Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0) }, User.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24 }, new String[] { "uint32_client", "bytes_version", "uint32_portal" }, new Object[] { localInteger, localByteStringMicro, localInteger }, User.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x9e9.cmd0x9e9.User
  * JD-Core Version:    0.7.0.1
  */

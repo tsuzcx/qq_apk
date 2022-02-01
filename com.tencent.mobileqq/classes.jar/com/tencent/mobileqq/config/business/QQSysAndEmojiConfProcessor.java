@@ -5,11 +5,33 @@ import android.support.annotation.Nullable;
 import com.tencent.mobileqq.config.IQConfigProcessor;
 import com.tencent.mobileqq.config.QConfItem;
 import com.tencent.mobileqq.emoticon.QQSysAndEmojiResMgr;
+import com.tencent.mobileqq.utils.abtest.ABTestController;
+import com.tencent.mobileqq.utils.abtest.ABTestUtil;
+import com.tencent.mobileqq.utils.abtest.ExpEntityInfo;
 import com.tencent.qphone.base.util.QLog;
 
 public class QQSysAndEmojiConfProcessor
   extends IQConfigProcessor<QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean>
 {
+  public static int a()
+  {
+    ExpEntityInfo localExpEntityInfo = ABTestController.a().a(545);
+    Object localObject = (QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localExpEntityInfo.a();
+    localExpEntityInfo.a();
+    if (localObject != null)
+    {
+      int i = ((QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean)localObject).a;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("expGrpLineCnt=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("expInfo:");
+      ((StringBuilder)localObject).append(localExpEntityInfo.a());
+      ABTestUtil.a("QQSysAndEmojiConfProcessor", ((StringBuilder)localObject).toString());
+      return i;
+    }
+    return 3;
+  }
+  
   @NonNull
   public QQSysAndEmojiConfProcessor.SystemAndEmojiConfBean a(int paramInt)
   {
@@ -70,7 +92,7 @@ public class QQSysAndEmojiConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QQSysAndEmojiConfProcessor
  * JD-Core Version:    0.7.0.1
  */

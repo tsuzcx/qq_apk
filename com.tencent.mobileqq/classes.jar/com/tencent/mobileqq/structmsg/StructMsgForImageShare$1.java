@@ -4,9 +4,11 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.text.TextUtils;
 import android.view.View;
 import android.view.View.OnClickListener;
+import com.tencent.comic.api.IQQDcReporter;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.galleryactivity.AnimationUtils;
 import com.tencent.image.URLDrawable;
@@ -16,7 +18,6 @@ import com.tencent.mobileqq.activity.ChatHistory;
 import com.tencent.mobileqq.activity.MultiForwardActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.SplashActivity;
-import com.tencent.mobileqq.activity.aio.ForwardUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.item.PicItemBuilder;
@@ -29,17 +30,17 @@ import com.tencent.mobileqq.activity.history.ChatHistoryActivity;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.data.MessageForPic;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.gamecenter.share.GameShareUtil;
+import com.tencent.mobileqq.qqgamepub.api.IGameShareUtil;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.service.message.remote.MessageRecordInfo;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.structmsg.view.StructMsgItemImage;
+import com.tencent.open.sdk.report.SdkShareReporter;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.util.BinderWarpper;
-import cooperation.comic.VipComicReportUtils;
 import java.io.File;
 import mqq.app.AccountNotMatchException;
 import mqq.app.AppRuntime;
@@ -51,230 +52,269 @@ final class StructMsgForImageShare$1
 {
   public void onClick(View paramView)
   {
-    Object localObject3 = paramView.findViewById(2131378578);
-    if (localObject3 == null) {}
+    Object localObject3 = paramView.findViewById(2131377989);
+    Object localObject1;
     StructMsgForImageShare localStructMsgForImageShare;
     Context localContext;
-    int i;
-    Intent localIntent;
-    for (;;)
+    if (localObject3 != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      Object localObject1 = ((View)localObject3).getTag(2131378578);
-      if ((localObject1 instanceof StructMsgForImageShare))
+      do
       {
-        localStructMsgForImageShare = (StructMsgForImageShare)localObject1;
-        localContext = ((View)localObject3).getContext();
-        try
-        {
-          localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(localStructMsgForImageShare.currentAccountUin);
-          AbsShareMsg.doReport((QQAppInterface)localObject1, localStructMsgForImageShare);
-          if (localStructMsgForImageShare.msgId > 0L)
-          {
-            ReportController.b((AppRuntime)localObject1, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(localStructMsgForImageShare.msgId), "");
-            ThreadManager.getSubThreadHandler().postDelayed(new StructMsgForImageShare.1.1(this, localStructMsgForImageShare, (QQAppInterface)localObject1), 0L);
-          }
-          if ((localStructMsgForImageShare.getFirstImageElement() != null) && (localStructMsgForImageShare.getFirstImageElement().a()))
-          {
-            ReportController.b(null, "dc00898", "", "", "0X800A428", "0X800A428", 0, 0, "", ForwardUtils.b(localStructMsgForImageShare.uinType), Long.toString(localStructMsgForImageShare.mSourceAppid), localStructMsgForImageShare.getTitleFromBrief());
-            if (QLog.isColorLevel()) {
-              QLog.d("StructMsg", 2, new Object[] { "大图点击=0X800A428, appid=" + localStructMsgForImageShare.mSourceAppid + ", fileType=4, briefTitle=", localStructMsgForImageShare.getTitleFromBrief() });
-            }
-          }
-          ReportController.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, localStructMsgForImageShare.mMsgServiceID + "", "", "", "");
-          ReportController.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
-          i = 0;
-          localObject4 = localStructMsgForImageShare.getFirstImageElement();
-          if (localObject4 == null) {
-            break label1249;
-          }
-          if ((!MessageRecordInfo.b(localStructMsgForImageShare.mIsSend)) && (((StructMsgItemImage)localObject4).a != null))
-          {
-            localObject1 = PicItemBuilder.a(localContext, ((StructMsgItemImage)localObject4).a);
-            if (localObject1 != null) {
-              if (((URLDrawable)localObject1).getStatus() == 2) {
-                ((URLDrawable)localObject1).restartDownload();
-              }
-            }
-          }
-        }
-        catch (AccountNotMatchException localAccountNotMatchException)
-        {
-          for (;;)
-          {
-            if (QLog.isColorLevel()) {
-              QLog.d("StructMsg", 2, localAccountNotMatchException.getStackTrace().toString());
-            }
-          }
-          if ((localAccountNotMatchException.getStatus() == 0) && (!localAccountNotMatchException.isDownloadStarted()))
-          {
-            localAccountNotMatchException.startDownload();
-          }
-          else
-          {
-            localIntent = new Intent(localContext, AIOGalleryActivity.class);
-            localIntent.putExtra("curType", localStructMsgForImageShare.uinType);
-            localIntent.putExtra("_id", localStructMsgForImageShare.uniseq);
-            localIntent.putExtra("appid", localStructMsgForImageShare.mSourceAppid);
-            localIntent.putExtra("image_share_by_server", ((StructMsgItemImage)localObject4).a());
-            localIntent.putExtra("urlAtServer", ((StructMsgItemImage)localObject4).ad);
-            localIntent.putExtra("KEY_FILE_ID", ((StructMsgItemImage)localObject4).c);
-            localIntent.putExtra("picMD5", ((StructMsgItemImage)localObject4).ae);
-            localIntent.putExtra("url", ((StructMsgItemImage)localObject4).ac);
-            localIntent.putExtra("friendUin", localStructMsgForImageShare.uin);
-            localIntent.putExtra("KEY_MSG_VERSION_CODE", localStructMsgForImageShare.messageVersion);
-            localIntent.putExtra("isSend", localStructMsgForImageShare.mIsSend);
-            localIntent.putExtra("KEY_BUSI_TYPE", 1030);
-            localIntent.putExtra("IS_FROMOTHER_TERMINAL_KEY", MessageRecordInfo.c(localStructMsgForImageShare.mIsSend));
-            localIntent.putExtra("uin", localStructMsgForImageShare.uin);
-            if (localStructMsgForImageShare.mIsSend != 1) {
-              break label1434;
-            }
-          }
-        }
-      }
+        localObject1 = ((View)localObject3).getTag(2131377989);
+      } while (!(localObject1 instanceof StructMsgForImageShare));
+      localStructMsgForImageShare = (StructMsgForImageShare)localObject1;
+      localContext = ((View)localObject3).getContext();
     }
-    Object localObject2 = localStructMsgForImageShare.currentAccountUin;
-    label658:
-    localIntent.putExtra("KEY_TROOP_CODE", (String)localObject2);
-    localIntent.putExtra("fileSize", ((StructMsgItemImage)localObject4).d);
-    localIntent.putExtra("KEY_TIME", ((StructMsgItemImage)localObject4).e);
-    localIntent.putExtra("KEY_SUB_VERSION", 5);
-    localIntent.putExtra("KEY_FILE_SIZE_FLAG", 0);
-    localIntent.putExtra("uniSeq", localStructMsgForImageShare.uniseq);
-    localIntent.putExtra("KEY_THUMBNAL_BOUND", AnimationUtils.a((View)localObject3));
-    localIntent.putExtra("title", localStructMsgForImageShare.getTitleFromBrief());
-    Object localObject4 = ((StructMsgItemImage)localObject4).a;
-    if (localObject4 != null)
-    {
-      localIntent.addFlags(603979776);
-      localObject2 = ((MessageForPic)localObject4).selfuin;
-      if (!((MessageForPic)localObject4).isMultiMsg) {
-        break label1713;
-      }
-    }
-    label1434:
-    label1713:
+    Object localObject4;
+    label198:
+    Object localObject2;
+    label1758:
+    label1774:
     for (;;)
     {
       try
       {
-        localObject5 = MobileQQ.sMobileQQ.waitAppRuntime(null);
-        localObject3 = localObject2;
-        if ((localObject5 instanceof QQAppInterface)) {
-          localObject3 = ((AppRuntime)localObject5).getAccount();
+        localObject1 = (QQAppInterface)BaseApplicationImpl.getApplication().getAppRuntime(localStructMsgForImageShare.currentAccountUin);
+        AbsShareMsg.doReport((QQAppInterface)localObject1, localStructMsgForImageShare);
+        if (localStructMsgForImageShare.msgId <= 0L) {
+          break label1774;
         }
-        localObject2 = localObject3;
+        ReportController.b((AppRuntime)localObject1, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "mp_msg_msgpic_click", "aio_morpic_click", 0, 0, "", "", Long.toString(localStructMsgForImageShare.msgId), "");
+        localObject4 = ThreadManager.getSubThreadHandler();
+        try
+        {
+          ((MqqHandler)localObject4).postDelayed(new StructMsgForImageShare.1.1(this, localStructMsgForImageShare, (QQAppInterface)localObject1), 0L);
+          if ((localStructMsgForImageShare.getFirstImageElement() == null) || (!localStructMsgForImageShare.getFirstImageElement().a())) {
+            break label198;
+          }
+          SdkShareReporter.b(localStructMsgForImageShare.uinType, localStructMsgForImageShare.mSourceAppid, localStructMsgForImageShare.getTitleFromBrief());
+        }
+        catch (AccountNotMatchException localAccountNotMatchException1) {}
+        if (!QLog.isColorLevel()) {
+          break label198;
+        }
+      }
+      catch (AccountNotMatchException localAccountNotMatchException2) {}
+      QLog.d("StructMsg", 2, localAccountNotMatchException2.getStackTrace().toString());
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(localStructMsgForImageShare.mMsgServiceID);
+      ((StringBuilder)localObject2).append("");
+      ReportController.b(null, "CliOper", "", "", "0X800567A", "0X800567A", 0, 0, ((StringBuilder)localObject2).toString(), "", "", "");
+      ReportController.b(null, "CliOper", "", "", "0X8004B5C", "0X8004B5C", 1, 0, "", "", "", "");
+      localObject4 = localStructMsgForImageShare.getFirstImageElement();
+      int i = 0;
+      MessageForPic localMessageForPic;
+      if (localObject4 != null)
+      {
+        if ((!MessageRecordInfo.b(localStructMsgForImageShare.mIsSend)) && (((StructMsgItemImage)localObject4).a != null))
+        {
+          localObject2 = PicItemBuilder.a(localContext, ((StructMsgItemImage)localObject4).a);
+          if (localObject2 != null)
+          {
+            if (((URLDrawable)localObject2).getStatus() == 2)
+            {
+              ((URLDrawable)localObject2).restartDownload();
+              break label1758;
+            }
+            if ((((URLDrawable)localObject2).getStatus() == 0) && (!((URLDrawable)localObject2).isDownloadStarted()))
+            {
+              ((URLDrawable)localObject2).startDownload();
+              break label1758;
+            }
+          }
+        }
+        localObject5 = new Intent(localContext, AIOGalleryActivity.class);
+        ((Intent)localObject5).putExtra("curType", localStructMsgForImageShare.uinType);
+        ((Intent)localObject5).putExtra("_id", localStructMsgForImageShare.uniseq);
+        ((Intent)localObject5).putExtra("appid", localStructMsgForImageShare.mSourceAppid);
+        ((Intent)localObject5).putExtra("image_share_by_server", ((StructMsgItemImage)localObject4).a());
+        ((Intent)localObject5).putExtra("urlAtServer", ((StructMsgItemImage)localObject4).ad);
+        ((Intent)localObject5).putExtra("KEY_FILE_ID", ((StructMsgItemImage)localObject4).c);
+        ((Intent)localObject5).putExtra("picMD5", ((StructMsgItemImage)localObject4).ae);
+        ((Intent)localObject5).putExtra("url", ((StructMsgItemImage)localObject4).ac);
+        ((Intent)localObject5).putExtra("friendUin", localStructMsgForImageShare.uin);
+        ((Intent)localObject5).putExtra("KEY_MSG_VERSION_CODE", localStructMsgForImageShare.messageVersion);
+        ((Intent)localObject5).putExtra("isSend", localStructMsgForImageShare.mIsSend);
+        ((Intent)localObject5).putExtra("KEY_BUSI_TYPE", 1030);
+        ((Intent)localObject5).putExtra("IS_FROMOTHER_TERMINAL_KEY", MessageRecordInfo.c(localStructMsgForImageShare.mIsSend));
+        ((Intent)localObject5).putExtra("uin", localStructMsgForImageShare.uin);
+        if (localStructMsgForImageShare.mIsSend == 1) {
+          localObject2 = localStructMsgForImageShare.currentAccountUin;
+        } else {
+          localObject2 = localStructMsgForImageShare.uin;
+        }
+        ((Intent)localObject5).putExtra("KEY_TROOP_CODE", (String)localObject2);
+        ((Intent)localObject5).putExtra("fileSize", ((StructMsgItemImage)localObject4).d);
+        ((Intent)localObject5).putExtra("KEY_TIME", ((StructMsgItemImage)localObject4).e);
+        ((Intent)localObject5).putExtra("KEY_SUB_VERSION", 5);
+        ((Intent)localObject5).putExtra("KEY_FILE_SIZE_FLAG", 0);
+        ((Intent)localObject5).putExtra("uniSeq", localStructMsgForImageShare.uniseq);
+        ((Intent)localObject5).putExtra("KEY_THUMBNAL_BOUND", AnimationUtils.a((View)localObject3));
+        ((Intent)localObject5).putExtra("title", localStructMsgForImageShare.getTitleFromBrief());
+        localMessageForPic = ((StructMsgItemImage)localObject4).a;
+        if (localMessageForPic != null)
+        {
+          ((Intent)localObject5).addFlags(603979776);
+          localObject2 = localMessageForPic.selfuin;
+          localObject4 = localObject2;
+          if (!localMessageForPic.isMultiMsg) {}
+        }
+      }
+      try
+      {
+        localObject3 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+        localObject4 = localObject2;
+        if ((localObject3 instanceof QQAppInterface)) {
+          localObject4 = ((AppRuntime)localObject3).getAccount();
+        }
       }
       catch (Exception localException)
       {
-        Object localObject5;
-        AIOImageData localAIOImageData;
-        label1249:
-        int j;
-        continue;
-        if ((!localObject4[7].equals("scrawl_link")) || (localObject4.length < 9)) {
-          continue;
+        for (;;)
+        {
+          AIOImageProviderService localAIOImageProviderService;
+          Object localObject6;
+          localObject4 = localObject2;
         }
-        String str = localObject4[8];
-        continue;
-        if ((localStructMsgForImageShare.mMsgActionData == null) || (!localStructMsgForImageShare.mMsgActionData.startsWith("ScreenShotShare"))) {
-          continue;
-        }
-        localAIOImageData.jdField_b_of_type_Int = 2;
-        localAIOImageData.a = localStructMsgForImageShare.getBytes();
-        if ((!MessageRecordInfo.b(((MessageForPic)localObject4).issend)) || (TextUtils.isEmpty(((MessageForPic)localObject4).path)) || (!new File(((MessageForPic)localObject4).path).exists())) {
-          continue;
-        }
-        localAIOImageData.jdField_b_of_type_JavaLangString = ((MessageForPic)localObject4).path;
-        continue;
-        if (localStructMsgForImageShare.mImageBizType != 2) {
-          continue;
-        }
-        if ((!MessageRecordInfo.b(((MessageForPic)localObject4).issend)) || (TextUtils.isEmpty(((MessageForPic)localObject4).path)) || (!TextUtils.isEmpty(((MessageForPic)localObject4).md5)) || (!new File(((MessageForPic)localObject4).path).exists())) {
-          continue;
-        }
-        localAIOImageData.jdField_b_of_type_JavaLangString = ((MessageForPic)localObject4).path;
-        localAIOImageData.jdField_b_of_type_Int = 4;
-        continue;
-        if (!GameShareUtil.a(localStructMsgForImageShare)) {
-          continue;
-        }
-        localAIOImageData.jdField_b_of_type_Int = 5;
-        GameShareUtil.a(localAIOImageData, localStructMsgForImageShare);
-        continue;
-        ((Bundle)localObject2).putBoolean("extra.FROM_AIO", true);
-        ((Bundle)localObject2).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ((Activity)localContext).getClass().getName());
-        continue;
-        str = "";
-        continue;
       }
-      localObject5 = new AIOImageProviderService((String)localObject2, ((MessageForPic)localObject4).frienduin, ((MessageForPic)localObject4).istroop, (ChatMessage)localObject4);
-      localAIOImageData = AIOGalleryUtils.a((MessageForPic)localObject4);
+      localAIOImageProviderService = new AIOImageProviderService((String)localObject4, localMessageForPic.frienduin, localMessageForPic.istroop, localMessageForPic);
+      localObject2 = AIOGalleryUtils.a(localMessageForPic);
       if (localStructMsgForImageShare.message != null)
       {
-        localAIOImageData.g = localStructMsgForImageShare.message.time;
-        localAIOImageData.i = localStructMsgForImageShare.message.shmsgseq;
+        ((AIOImageData)localObject2).g = localStructMsgForImageShare.message.time;
+        ((AIOImageData)localObject2).i = localStructMsgForImageShare.message.shmsgseq;
       }
       if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("comic_plugin.apk")))
       {
-        localAIOImageData.jdField_b_of_type_Int = 1;
-        localAIOImageData.a = localStructMsgForImageShare.getBytes();
-        localObject4 = AIOGallerySceneWithBusiness.a(localStructMsgForImageShare);
-        localAIOImageData.d = AIOGallerySceneWithBusiness.a((String[])localObject4);
-        if ((localObject4 != null) && (localObject4.length >= 8))
+        ((AIOImageData)localObject2).jdField_b_of_type_Int = 1;
+        ((AIOImageData)localObject2).a = localStructMsgForImageShare.getBytes();
+        localObject6 = AIOGallerySceneWithBusiness.a(localStructMsgForImageShare);
+        ((AIOImageData)localObject2).d = AIOGallerySceneWithBusiness.a((String[])localObject6);
+        if ((localObject6 != null) && (localObject6.length >= 8))
         {
-          if (localObject4[7].equals("link"))
+          if (localObject6[7].equals("link")) {
+            localObject3 = localObject6[4];
+          } else if ((localObject6[7].equals("scrawl_link")) && (localObject6.length >= 9)) {
+            localObject3 = localObject6[8];
+          } else {
+            localObject3 = "";
+          }
+          ((IQQDcReporter)QRoute.api(IQQDcReporter.class)).reportDC00145(null, (String)localObject4, localContext, "3009", "2", "40054", localObject6[0], new String[] { localObject6[2], localObject6[4], localObject3 });
+        }
+        localObject3 = "uin";
+      }
+      else
+      {
+        localObject6 = "uin";
+        if ((localStructMsgForImageShare.mMsgActionData != null) && (localStructMsgForImageShare.mMsgActionData.startsWith("ScreenShotShare")))
+        {
+          localObject4 = localObject2;
+          ((AIOImageData)localObject4).jdField_b_of_type_Int = 2;
+          ((AIOImageData)localObject4).a = localStructMsgForImageShare.getBytes();
+          localObject3 = localObject6;
+          localObject2 = localObject4;
+          if (MessageRecordInfo.b(localMessageForPic.issend))
           {
-            localObject3 = localObject4[4];
-            VipComicReportUtils.a(null, (String)localObject2, localContext, "3009", "2", "40054", localObject4[0], new String[] { localObject4[2], localObject4[4], localObject3 });
+            localObject3 = localObject6;
+            localObject2 = localObject4;
+            if (!TextUtils.isEmpty(localMessageForPic.path))
+            {
+              localObject3 = localObject6;
+              localObject2 = localObject4;
+              if (new File(localMessageForPic.path).exists())
+              {
+                ((AIOImageData)localObject4).jdField_b_of_type_JavaLangString = localMessageForPic.path;
+                localObject3 = localObject6;
+                localObject2 = localObject4;
+              }
+            }
           }
         }
         else
         {
-          localObject2 = new Bundle();
-          ((Bundle)localObject2).putParcelable("extra.IMAGE_PROVIDER", new BinderWarpper(((AIOImageProviderService)localObject5).asBinder()));
-          ((Bundle)localObject2).putParcelable("extra.EXTRA_CURRENT_IMAGE", localAIOImageData);
-          ((Bundle)localObject2).putInt("forward_source_uin_type", localStructMsgForImageShare.uinType);
-          if (((localContext instanceof SplashActivity)) || ((localContext instanceof ChatActivity)) || ((localContext instanceof ChatHistoryActivity)) || ((localContext instanceof PublicFragmentActivity)) || ((localContext instanceof ChatHistory)))
+          localObject4 = localObject2;
+          if (localStructMsgForImageShare.mImageBizType == 2)
           {
-            if (!(localContext instanceof MultiForwardActivity)) {
-              continue;
+            if ((MessageRecordInfo.b(localMessageForPic.issend)) && (!TextUtils.isEmpty(localMessageForPic.path)) && (TextUtils.isEmpty(localMessageForPic.md5)) && (new File(localMessageForPic.path).exists())) {
+              ((AIOImageData)localObject4).jdField_b_of_type_JavaLangString = localMessageForPic.path;
             }
-            localObject3 = ((BaseActivity)localContext).getAppInterface();
-            if ((localObject3 instanceof QQAppInterface))
+            ((AIOImageData)localObject4).jdField_b_of_type_Int = 4;
+            localObject3 = localObject6;
+            localObject2 = localObject4;
+          }
+          else
+          {
+            localObject3 = localObject6;
+            localObject2 = localObject4;
+            if (((IGameShareUtil)QRoute.api(IGameShareUtil.class)).isGameShare(localStructMsgForImageShare))
             {
-              ((Bundle)localObject2).putBoolean("extra.FROM_AIO", true);
-              ((Bundle)localObject2).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
-              ((Bundle)localObject2).putString("uin", ((MultiForwardActivity)localContext).getChatFragment().a().a().a);
-              localObject4 = ((Bundle)localObject2).getString("extra.GROUP_UIN");
-              if ((localObject4 != null) && (((QQAppInterface)localObject3).getTroopMask((String)localObject4) == 2)) {
-                ((Bundle)localObject2).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ChatActivity.class.getName());
-              }
+              ((AIOImageData)localObject4).jdField_b_of_type_Int = 5;
+              ((IGameShareUtil)QRoute.api(IGameShareUtil.class)).convertDataForGallery(localObject4, localStructMsgForImageShare);
+              localObject2 = localObject4;
+              localObject3 = localObject6;
             }
           }
-          localIntent.putExtras((Bundle)localObject2);
-          localContext.startActivity(localIntent);
-          i = 1;
-          j = 0;
-          if (i != 0) {
-            j = 1;
-          }
-          ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "0X80055C7", "0X80055C7", 0, j, "" + localStructMsgForImageShare.msgId, "" + localStructMsgForImageShare.templateIDForPortal, "", localStructMsgForImageShare.mMsgUrl);
-          localObject2 = new StringBuilder().append("MSGID=").append(Long.toString(localStructMsgForImageShare.msgId)).append(";TEPLATEID=").append(localStructMsgForImageShare.templateIDForPortal).append(";ARTICALID=").append("").append(";REFERRER=").append(AbsStructMsgElement.a(localStructMsgForImageShare.mMsgUrl));
-          ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "0X8005D49", "0X8005D49", 0, j, ((StringBuilder)localObject2).toString(), "", "", "");
-          break;
-          localObject2 = localStructMsgForImageShare.uin;
-          break label658;
         }
       }
+      localObject4 = localObject5;
+      Object localObject5 = new Bundle();
+      ((Bundle)localObject5).putParcelable("extra.IMAGE_PROVIDER", new BinderWarpper(localAIOImageProviderService.asBinder()));
+      ((Bundle)localObject5).putParcelable("extra.EXTRA_CURRENT_IMAGE", (Parcelable)localObject2);
+      ((Bundle)localObject5).putInt("forward_source_uin_type", localStructMsgForImageShare.uinType);
+      if ((!(localContext instanceof SplashActivity)) && (!(localContext instanceof ChatActivity)) && (!(localContext instanceof ChatHistoryActivity)) && (!(localContext instanceof PublicFragmentActivity)) && (!(localContext instanceof ChatHistory))) {
+        break label1521;
+      }
+      if ((localContext instanceof MultiForwardActivity))
+      {
+        localObject2 = ((BaseActivity)localContext).getAppInterface();
+        if ((localObject2 instanceof QQAppInterface))
+        {
+          ((Bundle)localObject5).putBoolean("extra.FROM_AIO", true);
+          ((Bundle)localObject5).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", SplashActivity.class.getName());
+          ((Bundle)localObject5).putString((String)localObject3, ((MultiForwardActivity)localContext).getChatFragment().a().a().a);
+          localObject3 = ((Bundle)localObject5).getString("extra.GROUP_UIN");
+          if ((localObject3 == null) || (((QQAppInterface)localObject2).getTroopMask((String)localObject3) != 2)) {
+            break label1521;
+          }
+          ((Bundle)localObject5).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ChatActivity.class.getName());
+        }
+      }
+      else
+      {
+        ((Bundle)localObject5).putBoolean("extra.FROM_AIO", true);
+        ((Bundle)localObject5).putString("PhotoConst.INIT_ACTIVITY_CLASS_NAME", ((Activity)localContext).getClass().getName());
+      }
+      label1521:
+      ((Intent)localObject4).putExtras((Bundle)localObject5);
+      localContext.startActivity((Intent)localObject4);
+      i = 1;
+      localObject2 = localStructMsgForImageShare.uin;
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("");
+      ((StringBuilder)localObject3).append(localStructMsgForImageShare.msgId);
+      localObject3 = ((StringBuilder)localObject3).toString();
+      localObject4 = new StringBuilder();
+      ((StringBuilder)localObject4).append("");
+      ((StringBuilder)localObject4).append(localStructMsgForImageShare.templateIDForPortal);
+      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", (String)localObject2, "0X80055C7", "0X80055C7", 0, i, (String)localObject3, ((StringBuilder)localObject4).toString(), "", localStructMsgForImageShare.mMsgUrl);
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("MSGID=");
+      ((StringBuilder)localObject2).append(Long.toString(localStructMsgForImageShare.msgId));
+      ((StringBuilder)localObject2).append(";TEPLATEID=");
+      ((StringBuilder)localObject2).append(localStructMsgForImageShare.templateIDForPortal);
+      ((StringBuilder)localObject2).append(";ARTICALID=");
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(";REFERRER=");
+      ((StringBuilder)localObject2).append(AbsStructMsgElement.a(localStructMsgForImageShare.mMsgUrl));
+      ReportController.b(null, "P_CliOper", "Pb_account_lifeservice", localStructMsgForImageShare.uin, "0X8005D49", "0X8005D49", 0, i, ((StringBuilder)localObject2).toString(), "", "", "");
+      EventCollector.getInstance().onViewClicked(paramView);
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForImageShare.1
  * JD-Core Version:    0.7.0.1
  */

@@ -15,46 +15,51 @@ public class QQVoiceAudioPlayerProxy
   
   public boolean isDestroy()
   {
-    return (this.a == null) || (this.a.isDestroy());
+    QQVoiceRtmpPlayer localQQVoiceRtmpPlayer = this.a;
+    return (localQQVoiceRtmpPlayer == null) || (localQQVoiceRtmpPlayer.isDestroy());
   }
   
   public boolean isPlayerReady()
   {
-    if (this.a == null) {
+    QQVoiceRtmpPlayer localQQVoiceRtmpPlayer = this.a;
+    if (localQQVoiceRtmpPlayer == null) {
       return false;
     }
-    return this.a.isPlayerReady();
+    return localQQVoiceRtmpPlayer.isPlayerReady();
   }
   
   public boolean isPlaying()
   {
-    if (this.a == null) {
+    QQVoiceRtmpPlayer localQQVoiceRtmpPlayer = this.a;
+    if (localQQVoiceRtmpPlayer == null) {
       return false;
     }
-    return this.a.isPlaying();
+    return localQQVoiceRtmpPlayer.isPlaying();
   }
   
   public void release()
   {
-    if (this.a == null) {
+    QQVoiceRtmpPlayer localQQVoiceRtmpPlayer = this.a;
+    if (localQQVoiceRtmpPlayer == null) {
       return;
     }
-    this.a.release();
+    localQQVoiceRtmpPlayer.release();
     this.a = null;
   }
   
   public void startPlay(String paramString, IQQVoiceAudioListener paramIQQVoiceAudioListener)
   {
-    if (this.a == null) {
+    QQVoiceRtmpPlayer localQQVoiceRtmpPlayer = this.a;
+    if (localQQVoiceRtmpPlayer == null) {
       return;
     }
-    this.a.setPlayAudioListener(paramIQQVoiceAudioListener);
+    localQQVoiceRtmpPlayer.setPlayAudioListener(paramIQQVoiceAudioListener);
     this.a.play(paramString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.player.QQVoiceAudioPlayerProxy
  * JD-Core Version:    0.7.0.1
  */

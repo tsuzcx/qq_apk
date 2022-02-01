@@ -23,44 +23,48 @@ public class UVEditFilter
   
   public void setUVValue(String paramString, float paramFloat)
   {
-    int i = -1;
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    if (i != 117)
     {
-    }
-    for (;;)
-    {
-      switch (i)
+      if ((i == 118) && (paramString.equals("v")))
       {
-      default: 
-        return;
-        if (paramString.equals("v"))
-        {
-          i = 0;
-          continue;
-          if (paramString.equals("u")) {
-            i = 1;
-          }
-        }
-        break;
+        i = 0;
+        break label50;
       }
     }
+    else if (paramString.equals("u"))
+    {
+      i = 1;
+      break label50;
+    }
+    i = -1;
+    label50:
+    if (i != 0)
+    {
+      if (i != 1) {
+        return;
+      }
+      addParam(new UniformParam.FloatParam("u_value", normalizeFromPiexlValue(paramFloat)));
+      return;
+    }
     addParam(new UniformParam.FloatParam("v_value", normalizeFromPiexlValue(paramFloat)));
-    return;
-    addParam(new UniformParam.FloatParam("u_value", normalizeFromPiexlValue(paramFloat)));
   }
   
   public void setUVValue(float[] paramArrayOfFloat)
   {
-    if ((paramArrayOfFloat == null) || (paramArrayOfFloat.length < 2)) {
-      return;
+    if (paramArrayOfFloat != null)
+    {
+      if (paramArrayOfFloat.length < 2) {
+        return;
+      }
+      addParam(new UniformParam.FloatParam("v_value", normalizeFromPiexlValue(paramArrayOfFloat[1])));
+      addParam(new UniformParam.FloatParam("u_value", normalizeFromPiexlValue(paramArrayOfFloat[0])));
     }
-    addParam(new UniformParam.FloatParam("v_value", normalizeFromPiexlValue(paramArrayOfFloat[1])));
-    addParam(new UniformParam.FloatParam("u_value", normalizeFromPiexlValue(paramArrayOfFloat[0])));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.UVEditFilter
  * JD-Core Version:    0.7.0.1
  */

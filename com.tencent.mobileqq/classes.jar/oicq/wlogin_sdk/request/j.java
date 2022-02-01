@@ -31,68 +31,122 @@ public class j
   
   public int b(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return 0;
-    }
-    util.LOGI(getClass().getName() + ":snd_rcv_req_error ...", "" + this.a.f);
-    int i = new Random().nextInt();
-    int j = 0;
-    while (j < 2)
+    int i = 0;
+    int k = 0;
+    if (paramArrayOfByte != null)
     {
-      util.LOGI("try http connect " + j + " ...", "" + this.a.f);
-      Object localObject = a(i);
-      try
-      {
-        localObject = new URL("https://" + (String)localObject + "/cgi-bin/wlogin_proxy_log");
-        util.LOGI("url=" + localObject, "" + this.a.f);
-        localObject = (HttpURLConnection)((URL)localObject).openConnection();
-        ((HttpURLConnection)localObject).setRequestMethod("POST");
-        ((HttpURLConnection)localObject).setRequestProperty("Content-Type", "application/octet-stream");
-        ((HttpURLConnection)localObject).setRequestProperty("Content-Disposition", "attachment; filename=micromsgresp.dat");
-        ((HttpURLConnection)localObject).setRequestProperty("Content-Length", new Integer(paramArrayOfByte.length).toString());
-        ((HttpURLConnection)localObject).setConnectTimeout(this.a.l);
-        ((HttpURLConnection)localObject).setReadTimeout(this.a.l);
-        ((HttpURLConnection)localObject).setDoOutput(true);
-        util.LOGI("http request connect ...", "" + this.a.f);
-        if (!i.a((HttpURLConnection)localObject, this.a.l))
-        {
-          util.LOGI("http request connect failed", "" + this.a.f);
-          j += 1;
-          i += 1;
-        }
-        else
-        {
-          util.LOGI("http request write ...", "" + this.a.f);
-          OutputStream localOutputStream = ((HttpURLConnection)localObject).getOutputStream();
-          localOutputStream.write(paramArrayOfByte, 0, paramArrayOfByte.length);
-          localOutputStream.flush();
-          int k = ((HttpURLConnection)localObject).getResponseCode();
-          util.LOGI("http request response code=" + k, "" + this.a.f);
-          if (200 == k) {
-            break;
-          }
-          j += 1;
-          i += 1;
-        }
+      if (paramArrayOfByte.length == 0) {
+        return 0;
       }
-      catch (Exception localException)
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(getClass().getName());
+      ((StringBuilder)localObject1).append(":snd_rcv_req_error ...");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("");
+      ((StringBuilder)localObject2).append(this.a.f);
+      util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+      i = new Random().nextInt();
+      int j = 0;
+      while (j < 2)
       {
-        util.printException(localException, "" + this.a.f);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("try http connect ");
+        ((StringBuilder)localObject1).append(j);
+        ((StringBuilder)localObject1).append(" ...");
+        localObject1 = ((StringBuilder)localObject1).toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("");
+        ((StringBuilder)localObject2).append(this.a.f);
+        util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+        localObject1 = a(i);
+        try
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("https://");
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append("/cgi-bin/wlogin_proxy_log");
+          localObject1 = new URL(((StringBuilder)localObject2).toString());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("url=");
+          ((StringBuilder)localObject2).append(localObject1);
+          localObject2 = ((StringBuilder)localObject2).toString();
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("");
+          localStringBuilder2.append(this.a.f);
+          util.LOGI((String)localObject2, localStringBuilder2.toString());
+          localObject1 = (HttpURLConnection)((URL)localObject1).openConnection();
+          ((HttpURLConnection)localObject1).setRequestMethod("POST");
+          ((HttpURLConnection)localObject1).setRequestProperty("Content-Type", "application/octet-stream");
+          ((HttpURLConnection)localObject1).setRequestProperty("Content-Disposition", "attachment; filename=micromsgresp.dat");
+          ((HttpURLConnection)localObject1).setRequestProperty("Content-Length", new Integer(paramArrayOfByte.length).toString());
+          ((HttpURLConnection)localObject1).setConnectTimeout(this.a.l);
+          ((HttpURLConnection)localObject1).setReadTimeout(this.a.l);
+          ((HttpURLConnection)localObject1).setDoOutput(true);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("");
+          ((StringBuilder)localObject2).append(this.a.f);
+          util.LOGI("http request connect ...", ((StringBuilder)localObject2).toString());
+          if (!i.a((HttpURLConnection)localObject1, this.a.l))
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("");
+            ((StringBuilder)localObject1).append(this.a.f);
+            util.LOGI("http request connect failed", ((StringBuilder)localObject1).toString());
+          }
+          else
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("");
+            ((StringBuilder)localObject2).append(this.a.f);
+            util.LOGI("http request write ...", ((StringBuilder)localObject2).toString());
+            localObject2 = ((HttpURLConnection)localObject1).getOutputStream();
+            ((OutputStream)localObject2).write(paramArrayOfByte, 0, paramArrayOfByte.length);
+            ((OutputStream)localObject2).flush();
+            int m = ((HttpURLConnection)localObject1).getResponseCode();
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("http request response code=");
+            ((StringBuilder)localObject1).append(m);
+            localObject1 = ((StringBuilder)localObject1).toString();
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("");
+            ((StringBuilder)localObject2).append(this.a.f);
+            util.LOGI((String)localObject1, ((StringBuilder)localObject2).toString());
+            if (200 == m) {
+              break;
+            }
+          }
+        }
+        catch (Exception localException)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("");
+          ((StringBuilder)localObject2).append(this.a.f);
+          util.printException(localException, ((StringBuilder)localObject2).toString());
+        }
         j += 1;
         i += 1;
       }
+      i = k;
+      if (j >= 1) {
+        i = -1000;
+      }
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append(getClass().getName());
+      paramArrayOfByte.append(":snd_rcv_req_error ret=");
+      paramArrayOfByte.append(i);
+      paramArrayOfByte = paramArrayOfByte.toString();
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("");
+      localStringBuilder1.append(this.a.f);
+      util.LOGI(paramArrayOfByte, localStringBuilder1.toString());
     }
-    if (j >= 1) {}
-    for (i = -1000;; i = 0)
-    {
-      util.LOGI(getClass().getName() + ":snd_rcv_req_error ret=" + i, "" + this.a.f);
-      return i;
-    }
+    return i;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.j
  * JD-Core Version:    0.7.0.1
  */

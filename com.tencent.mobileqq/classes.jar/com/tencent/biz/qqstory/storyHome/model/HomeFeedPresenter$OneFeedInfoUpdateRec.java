@@ -21,19 +21,19 @@ public class HomeFeedPresenter$OneFeedInfoUpdateRec
       SLog.d("Q.qqstory.home.data.HomeFeedPresenter", "can't find feedId:%s", new Object[] { ((StoryHomeFeed)localObject).a.feedId });
       return;
     }
-    if ((!(localObject instanceof VideoListHomeFeed)) || (!(paramSingleFeedInfoEvent instanceof VideoListHomeFeed)))
+    if (((localObject instanceof VideoListHomeFeed)) && ((paramSingleFeedInfoEvent instanceof VideoListHomeFeed)))
     {
-      SLog.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
+      localObject = (VideoListHomeFeed)localObject;
+      paramSingleFeedInfoEvent = (VideoListHomeFeed)paramSingleFeedInfoEvent;
+      paramSingleFeedInfoEvent.a = ((VideoListHomeFeed)localObject).a;
+      paramSingleFeedInfoEvent.a(((VideoListHomeFeed)localObject).b(), false);
+      paramSingleFeedInfoEvent.b(((VideoListHomeFeed)localObject).c(), false);
+      paramSingleFeedInfoEvent.c(((VideoListHomeFeed)localObject).a(), false);
+      HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramSingleFeedInfoEvent.a.feedId);
+      SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramSingleFeedInfoEvent);
       return;
     }
-    localObject = (VideoListHomeFeed)localObject;
-    paramSingleFeedInfoEvent = (VideoListHomeFeed)paramSingleFeedInfoEvent;
-    paramSingleFeedInfoEvent.a = ((VideoListHomeFeed)localObject).a;
-    paramSingleFeedInfoEvent.a(((VideoListHomeFeed)localObject).b(), false);
-    paramSingleFeedInfoEvent.b(((VideoListHomeFeed)localObject).c(), false);
-    paramSingleFeedInfoEvent.c(((VideoListHomeFeed)localObject).a(), false);
-    HomeFeedPresenter.a(paramHomeFeedPresenter).b(paramSingleFeedInfoEvent.a.feedId);
-    SLog.a("Q.qqstory.home.data.HomeFeedPresenter", "single feed update from server %s", paramSingleFeedInfoEvent);
+    SLog.e("Q.qqstory.home.data.HomeFeedPresenter", "SingleFeedInfoEvent error!!");
   }
   
   public Class acceptEventClass()
@@ -45,7 +45,7 @@ public class HomeFeedPresenter$OneFeedInfoUpdateRec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.HomeFeedPresenter.OneFeedInfoUpdateRec
  * JD-Core Version:    0.7.0.1
  */

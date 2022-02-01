@@ -24,45 +24,46 @@ class Conversation$TPHInCon
   
   public void handleMessage(Message paramMessage)
   {
-    int j = 0;
     Conversation localConversation = (Conversation)this.a.get();
-    if (localConversation == null) {}
-    do
+    if (localConversation == null) {
+      return;
+    }
+    FileMsg localFileMsg = (FileMsg)paramMessage.obj;
+    if ((Conversation.a(localConversation) != null) && (localFileMsg != null))
     {
-      FileMsg localFileMsg;
-      int k;
-      int i;
-      do
+      if (TextUtils.isEmpty(localFileMsg.mUin)) {
+        return;
+      }
+      int k = paramMessage.what;
+      int i = localFileMsg.fileType;
+      int j = 0;
+      if (i != 1)
       {
-        do
-        {
-          return;
-          localFileMsg = (FileMsg)paramMessage.obj;
-        } while ((Conversation.a(localConversation) == null) || (localFileMsg == null) || (TextUtils.isEmpty(localFileMsg.mUin)));
-        k = paramMessage.what;
-        if (localFileMsg.fileType != 1)
-        {
-          i = j;
-          if (localFileMsg.fileType != 2) {}
+        i = j;
+        if (localFileMsg.fileType != 2) {}
+      }
+      else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
+      {
+        i = j;
+        if (k != 1003) {}
+      }
+      else
+      {
+        i = 1;
+      }
+      if ((i != 0) || (((k == 1003) || (k == 2003)) && ((localFileMsg.fileType == 2) || (localConversation.e))))
+      {
+        localConversation.a(8, localFileMsg.mUin, -2147483648);
+        if (QLog.isColorLevel()) {
+          QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
         }
-        else if ((k != 1001) && (k != 1002) && (k != 1000) && (k != 1005))
-        {
-          i = j;
-          if (k != 1003) {}
-        }
-        else
-        {
-          i = 1;
-        }
-      } while ((i == 0) && (((k != 1003) && (k != 2003)) || ((localFileMsg.fileType != 2) && (!localConversation.f))));
-      localConversation.a(8, localFileMsg.mUin, -2147483648);
-    } while (!QLog.isColorLevel());
-    QLog.i("Q.recent", 2, "refresh recent, from_transferListener2");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.TPHInCon
  * JD-Core Version:    0.7.0.1
  */

@@ -29,15 +29,13 @@ class OperatorRetryWithPredicate$SourceSubscriber$1$1
     if (!this.done)
     {
       this.done = true;
-      if ((((Boolean)this.this$1.this$0.predicate.call(Integer.valueOf(this.this$1.this$0.attempts.get()), paramThrowable)).booleanValue()) && (!this.this$1.this$0.inner.isUnsubscribed())) {
+      if ((((Boolean)this.this$1.this$0.predicate.call(Integer.valueOf(this.this$1.this$0.attempts.get()), paramThrowable)).booleanValue()) && (!this.this$1.this$0.inner.isUnsubscribed()))
+      {
         this.this$1.this$0.inner.schedule(this.val$_self);
+        return;
       }
+      this.this$1.this$0.child.onError(paramThrowable);
     }
-    else
-    {
-      return;
-    }
-    this.this$1.this$0.child.onError(paramThrowable);
   }
   
   public void onNext(T paramT)
@@ -56,7 +54,7 @@ class OperatorRetryWithPredicate$SourceSubscriber$1$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     rx.internal.operators.OperatorRetryWithPredicate.SourceSubscriber.1.1
  * JD-Core Version:    0.7.0.1
  */

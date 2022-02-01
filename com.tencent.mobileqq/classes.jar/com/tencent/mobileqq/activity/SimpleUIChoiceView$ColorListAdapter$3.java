@@ -15,11 +15,8 @@ class SimpleUIChoiceView$ColorListAdapter$3
   
   public void onClick(View paramView)
   {
-    if (!SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a)) {}
-    for (;;)
+    if (SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a(this.jdField_a_of_type_Int);
       if (localObject != null)
       {
@@ -31,11 +28,12 @@ class SimpleUIChoiceView$ColorListAdapter$3
         ReportController.b(SimpleUIChoiceView.a(this.jdField_a_of_type_ComTencentMobileqqActivitySimpleUIChoiceView$ColorListAdapter.a).app, "dc00898", "", "", "qq_vip", "0X800B15C", Integer.decode((String)localObject).intValue(), 0, "", "", "", "");
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SimpleUIChoiceView.ColorListAdapter.3
  * JD-Core Version:    0.7.0.1
  */

@@ -21,24 +21,33 @@ class ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener
   public ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener(ProfileColorScreenComponent.ColorScreenLoader paramColorScreenLoader, long paramLong)
   {
     this.mDuration = paramLong;
-    this.mTotalTime = ((ProfileColorScreenComponent.ColorScreenLoader.access$1000(paramColorScreenLoader).jdField_a_of_type_Int + 1) * paramLong);
-    if (Build.VERSION.SDK_INT == 15) {}
-    for (boolean bool = true;; bool = false)
-    {
-      this.mForbidAlpha = bool;
-      return;
+    int i = ProfileColorScreenComponent.ColorScreenLoader.access$1000(paramColorScreenLoader).jdField_a_of_type_Int;
+    boolean bool = true;
+    this.mTotalTime = (paramLong * (i + 1));
+    if (Build.VERSION.SDK_INT != 15) {
+      bool = false;
     }
+    this.mForbidAlpha = bool;
   }
   
   public void onAnimationCancel(Animator paramAnimator) {}
   
   public void onAnimationEnd(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ColorScreenManager", 2, "onAnimationEnd: " + ProfileColorScreenComponent.ColorScreenLoader.access$600(this.this$1));
+    if (QLog.isColorLevel())
+    {
+      paramAnimator = new StringBuilder();
+      paramAnimator.append("onAnimationEnd: ");
+      paramAnimator.append(ProfileColorScreenComponent.ColorScreenLoader.access$600(this.this$1));
+      QLog.d("ProfileColorScreenComponent", 2, paramAnimator.toString());
     }
     ProfileColorScreenComponent.access$400(this.this$1.this$0).setVisibility(8);
     ProfileColorScreenComponent.access$800(this.this$1.this$0).post(new ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener.1(this));
+  }
+  
+  public void onAnimationEnd(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationEnd(paramAnimator);
   }
   
   public void onAnimationRepeat(Animator paramAnimator)
@@ -48,9 +57,18 @@ class ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener
   
   public void onAnimationStart(Animator paramAnimator)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ProfileColorScreenComponent", 2, "onAnimationStart: " + ProfileColorScreenComponent.ColorScreenLoader.access$600(this.this$1));
+    if (QLog.isColorLevel())
+    {
+      paramAnimator = new StringBuilder();
+      paramAnimator.append("onAnimationStart: ");
+      paramAnimator.append(ProfileColorScreenComponent.ColorScreenLoader.access$600(this.this$1));
+      QLog.d("ProfileColorScreenComponent", 2, paramAnimator.toString());
     }
+  }
+  
+  public void onAnimationStart(Animator paramAnimator, boolean paramBoolean)
+  {
+    onAnimationStart(paramAnimator);
   }
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
@@ -80,7 +98,7 @@ class ProfileColorScreenComponent$ColorScreenLoader$ColorScreenListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.colorscreen.ProfileColorScreenComponent.ColorScreenLoader.ColorScreenListener
  * JD-Core Version:    0.7.0.1
  */

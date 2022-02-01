@@ -29,8 +29,12 @@ public class SubAccountConfProcessor
   
   public void a(SubAccountConfigBean paramSubAccountConfigBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SubAccountConfProcessor", 2, "onUpdate " + paramSubAccountConfigBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramSubAccountConfigBean.toString());
+      QLog.d("SubAccountConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -71,7 +75,7 @@ public class SubAccountConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.SubAccountConfProcessor
  * JD-Core Version:    0.7.0.1
  */

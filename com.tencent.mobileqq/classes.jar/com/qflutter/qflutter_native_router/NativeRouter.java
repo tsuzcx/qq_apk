@@ -13,7 +13,7 @@ public abstract interface NativeRouter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qflutter_native_router.NativeRouter
  * JD-Core Version:    0.7.0.1
  */

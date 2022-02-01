@@ -18,12 +18,12 @@ class VoiceTextSttProcessController$2
   {
     VoiceTextSttProcessController.a(this.this$0).f();
     VoiceTextSttProcessController.a(this.this$0).a().a(5);
-    QQToast.a(VoiceTextSttProcessController.a(this.this$0).getContext(), HardCodeUtil.a(2131716683), 0).b(VoiceTextSttProcessController.a(this.this$0).getContext().getResources().getDimensionPixelSize(2131299166));
+    QQToast.a(VoiceTextSttProcessController.a(this.this$0).getContext(), HardCodeUtil.a(2131716334), 0).b(VoiceTextSttProcessController.a(this.this$0).getContext().getResources().getDimensionPixelSize(2131299168));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.voicetextpanel.controller.VoiceTextSttProcessController.2
  * JD-Core Version:    0.7.0.1
  */

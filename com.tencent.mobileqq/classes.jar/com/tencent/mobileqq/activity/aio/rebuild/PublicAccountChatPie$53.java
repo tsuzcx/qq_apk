@@ -1,29 +1,34 @@
 package com.tencent.mobileqq.activity.aio.rebuild;
 
-import com.tencent.common.app.BaseApplicationImpl;
+import android.widget.ImageView;
+import com.tencent.av.ui.AIOTopRightButtonConfig;
+import com.tencent.biz.pubaccount.ecshopassit.EcShopObserver;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.webview.api.IWebProcessManagerService;
+import com.tencent.mobileqq.widget.navbar.NavBarAIO;
 
 class PublicAccountChatPie$53
-  implements Runnable
+  extends EcShopObserver
 {
   PublicAccountChatPie$53(PublicAccountChatPie paramPublicAccountChatPie) {}
   
-  public void run()
+  protected void d(boolean paramBoolean, Object paramObject)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localObject instanceof QQAppInterface))
+    if ((paramBoolean) && (PublicAccountChatPie.a(this.a).getVisibility() != 0))
     {
-      localObject = (IWebProcessManagerService)((QQAppInterface)localObject).getRuntimeService(IWebProcessManagerService.class, "");
-      if ((localObject != null) && (((IWebProcessManagerService)localObject).enablePreloadInBusiness(9))) {
-        ((IWebProcessManagerService)localObject).startWebProcess(-1, new PublicAccountChatPie.53.1(this));
+      if (AIOTopRightButtonConfig.a().a(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin()))
+      {
+        PublicAccountChatPie.b(this.a).setVisibility(0);
+        PublicAccountChatPie.c(this.a).setOnClickListener(this.a);
+        this.a.jdField_a_of_type_ComTencentMobileqqWidgetNavbarNavBarAIO.setRight2Icon(2130847320, 2130847321);
+        return;
       }
+      PublicAccountChatPie.d(this.a).setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.53
  * JD-Core Version:    0.7.0.1
  */

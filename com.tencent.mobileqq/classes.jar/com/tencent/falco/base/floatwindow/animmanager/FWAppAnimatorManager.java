@@ -31,24 +31,26 @@ public class FWAppAnimatorManager
   @Nullable
   public Animator enterAnim()
   {
-    if ((this.fwConfig == null) || (this.fwConfig.appFloatAnimator == null)) {
-      return null;
+    FloatWindowConfig localFloatWindowConfig = this.fwConfig;
+    if ((localFloatWindowConfig != null) && (localFloatWindowConfig.appFloatAnimator != null)) {
+      return this.fwConfig.appFloatAnimator.enterAnim(this.targetView, this.layoutParams, this.windowManager, this.fwConfig.sidePattern);
     }
-    return this.fwConfig.appFloatAnimator.enterAnim(this.targetView, this.layoutParams, this.windowManager, this.fwConfig.sidePattern);
+    return null;
   }
   
   @Nullable
   public Animator exitAnim()
   {
-    if ((this.fwConfig == null) || (this.fwConfig.appFloatAnimator == null)) {
-      return null;
+    FloatWindowConfig localFloatWindowConfig = this.fwConfig;
+    if ((localFloatWindowConfig != null) && (localFloatWindowConfig.appFloatAnimator != null)) {
+      return this.fwConfig.appFloatAnimator.exitAnim(this.targetView, this.layoutParams, this.windowManager, this.fwConfig.sidePattern);
     }
-    return this.fwConfig.appFloatAnimator.exitAnim(this.targetView, this.layoutParams, this.windowManager, this.fwConfig.sidePattern);
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.animmanager.FWAppAnimatorManager
  * JD-Core Version:    0.7.0.1
  */

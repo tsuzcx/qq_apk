@@ -1,57 +1,62 @@
 package com.tencent.mobileqq.activity;
 
 import android.view.View;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter;
 import com.tencent.mobileqq.data.troop.TroopInfo;
-import com.tencent.mobileqq.search.model.ContactSearchModelDiscussionMember;
-import com.tencent.mobileqq.search.model.ContactSearchModelFriend;
-import com.tencent.mobileqq.search.model.ContactSearchModelNewTroop;
-import com.tencent.mobileqq.search.model.ContactSearchModelTroop;
-import com.tencent.mobileqq.search.model.IContactSearchModel;
-import com.tencent.mobileqq.search.presenter.ContactSearchResultPresenter.OnActionListener;
+import com.tencent.mobileqq.search.business.contact.model.ContactSearchModelDiscussionMember;
+import com.tencent.mobileqq.search.business.contact.model.ContactSearchModelFriend;
+import com.tencent.mobileqq.search.business.contact.model.ContactSearchModelNewTroop;
+import com.tencent.mobileqq.search.business.contact.model.ContactSearchModelTroop;
+import com.tencent.mobileqq.search.business.contact.model.IContactSearchModel;
+import com.tencent.mobileqq.search.business.contact.presenter.ContactSearchResultPresenter.OnActionListener;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 
 class ForwardFriendListActivity$7
   implements ContactSearchResultPresenter.OnActionListener
 {
   ForwardFriendListActivity$7(ForwardFriendListActivity paramForwardFriendListActivity) {}
   
-  public void a(View paramView)
+  public void onAction(View paramView)
   {
-    int i = 1;
-    IContactSearchModel localIContactSearchModel = (IContactSearchModel)paramView.getTag(2131381651);
-    if (localIContactSearchModel == null) {}
-    for (;;)
-    {
+    paramView = (IContactSearchModel)paramView.getTag(2131380884);
+    if (paramView == null) {
       return;
-      String str1 = localIContactSearchModel.b();
-      String str2 = localIContactSearchModel.a().toString();
+    }
+    String str1 = paramView.a();
+    String str2 = paramView.b().toString();
+    boolean bool = paramView instanceof ContactSearchModelDiscussionMember;
+    int i = 1;
+    if (bool)
+    {
+      paramView = ((ContactSearchModelDiscussionMember)paramView).e();
+      i = 3000;
+    }
+    else if ((paramView instanceof ContactSearchModelNewTroop))
+    {
+      paramView = ((ContactSearchModelNewTroop)paramView).a;
+    }
+    else if ((paramView instanceof ContactSearchModelTroop))
+    {
+      paramView = ((ContactSearchModelTroop)paramView).a().troopuin;
+    }
+    else if ((paramView instanceof ContactSearchModelFriend))
+    {
       paramView = "-1";
-      if ((localIContactSearchModel instanceof ContactSearchModelDiscussionMember))
-      {
-        paramView = ((ContactSearchModelDiscussionMember)localIContactSearchModel).e();
-        i = 3000;
-      }
-      while ((i != -1) && (ForwardFriendListActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, ""))))
-      {
-        ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
-        return;
-        if ((localIContactSearchModel instanceof ContactSearchModelNewTroop)) {
-          paramView = ((ContactSearchModelNewTroop)localIContactSearchModel).a;
-        } else if ((localIContactSearchModel instanceof ContactSearchModelTroop)) {
-          paramView = ((ContactSearchModelTroop)localIContactSearchModel).a().troopuin;
-        } else if ((localIContactSearchModel instanceof ContactSearchModelFriend)) {
-          i = 0;
-        } else {
-          i = -1;
-        }
-      }
+      i = 0;
+    }
+    else
+    {
+      paramView = "-1";
+      i = -1;
+    }
+    if ((i != -1) && (ForwardFriendListActivity.a(this.a, new ResultRecord(str1, str2, i, paramView, "")))) {
+      ForwardFriendListActivity.a(this.a).notifyDataSetChanged();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ForwardFriendListActivity.7
  * JD-Core Version:    0.7.0.1
  */

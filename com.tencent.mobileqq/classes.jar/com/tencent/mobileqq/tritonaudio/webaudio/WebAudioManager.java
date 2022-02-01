@@ -77,36 +77,34 @@ public class WebAudioManager
     }
     catch (Throwable localThrowable)
     {
-      while (this.logDelegate == null) {}
-      this.logDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "createAudioContext error:", localThrowable);
+      LogDelegate localLogDelegate = this.logDelegate;
+      if (localLogDelegate != null) {
+        localLogDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "createAudioContext error:", localThrowable);
+      }
     }
     return localObject;
   }
   
   public JSONObject createBuffer(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    Object localObject;
     if ((AudioContext)this.audioContextHashMap.get(Integer.valueOf(paramInt1)) == null) {
-      localObject = null;
+      return null;
     }
-    JSONObject localJSONObject;
-    do
+    paramInt1 = AudioNativeManager.createBuffer(paramInt2, paramInt3 * paramInt2 * 2, paramInt4);
+    this.audioBufferList.add(Integer.valueOf(paramInt1));
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      return localObject;
-      paramInt1 = AudioNativeManager.createBuffer(paramInt2, paramInt3 * paramInt2 * 2, paramInt4);
-      this.audioBufferList.add(Integer.valueOf(paramInt1));
-      localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("bufferId", paramInt1);
-        return localJSONObject;
+      localJSONObject.put("bufferId", paramInt1);
+      return localJSONObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      LogDelegate localLogDelegate = this.logDelegate;
+      if (localLogDelegate != null) {
+        localLogDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "createBuffer error:", localThrowable);
       }
-      catch (Throwable localThrowable)
-      {
-        localObject = localJSONObject;
-      }
-    } while (this.logDelegate == null);
-    this.logDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "createBuffer error:", localThrowable);
+    }
     return localJSONObject;
   }
   
@@ -114,26 +112,23 @@ public class WebAudioManager
   {
     Object localObject = (AudioContext)this.audioContextHashMap.get(Integer.valueOf(paramInt));
     if (localObject == null) {
-      localObject = null;
+      return null;
     }
-    JSONObject localJSONObject;
-    do
+    paramInt = ((AudioContext)localObject).createBufferSource();
+    localObject = new JSONObject();
+    try
     {
+      ((JSONObject)localObject).put("channelId", paramInt);
       return localObject;
-      paramInt = ((AudioContext)localObject).createBufferSource();
-      localJSONObject = new JSONObject();
-      try
-      {
-        localJSONObject.put("channelId", paramInt);
-        return localJSONObject;
+    }
+    catch (Throwable localThrowable)
+    {
+      LogDelegate localLogDelegate = this.logDelegate;
+      if (localLogDelegate != null) {
+        localLogDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "createBufferSource error:", localThrowable);
       }
-      catch (Throwable localThrowable)
-      {
-        localObject = localJSONObject;
-      }
-    } while (this.logDelegate == null);
-    this.logDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "createBufferSource error:", localThrowable);
-    return localJSONObject;
+    }
+    return localObject;
   }
   
   public void createScriptProcessor(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -150,18 +145,20 @@ public class WebAudioManager
   
   public boolean deleteFile(String paramString)
   {
-    boolean bool = true;
     paramString = new File(paramString);
     if (paramString.exists()) {
-      bool = paramString.delete();
+      return paramString.delete();
     }
-    return bool;
+    return true;
   }
   
   public double getAudioContextCurrentTime(int paramInt)
   {
-    if (this.audioContextHashMap.get(Integer.valueOf(paramInt)) != null) {
-      return ((AudioContext)this.audioContextHashMap.get(Integer.valueOf(paramInt))).getCurrentTime() / 1000.0D;
+    if (this.audioContextHashMap.get(Integer.valueOf(paramInt)) != null)
+    {
+      double d = ((AudioContext)this.audioContextHashMap.get(Integer.valueOf(paramInt))).getCurrentTime();
+      Double.isNaN(d);
+      return d / 1000.0D;
     }
     return -1.0D;
   }
@@ -182,22 +179,25 @@ public class WebAudioManager
   
   public boolean loadWebAudioSo(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return false;
-      if (this.hasLoadedSo) {
-        return true;
+    }
+    if (this.hasLoadedSo) {
+      return true;
+    }
+    try
+    {
+      System.load(paramString);
+      this.hasLoadedSo = true;
+      return true;
+    }
+    catch (UnsatisfiedLinkError paramString)
+    {
+      LogDelegate localLogDelegate = this.logDelegate;
+      if (localLogDelegate != null) {
+        localLogDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "UnsatisfiedLinkError:", paramString);
       }
-      try
-      {
-        System.load(paramString);
-        this.hasLoadedSo = true;
-        return true;
-      }
-      catch (UnsatisfiedLinkError paramString) {}
-    } while (this.logDelegate == null);
-    this.logDelegate.printLog(LogDelegate.Level.ERROR, "WebAudioManager", "UnsatisfiedLinkError:", paramString);
+    }
     return false;
   }
   
@@ -228,42 +228,45 @@ public class WebAudioManager
   
   public JSONObject setDecodingQueueBuffer(int paramInt1, int paramInt2)
   {
-    for (;;)
+    try
     {
-      Object localObject2;
-      try
+      if ((this.decodeBufferIdStatusMap != null) && (this.decodeBufferIdStatusMap.containsKey(Integer.valueOf(paramInt2))))
       {
-        if ((this.decodeBufferIdStatusMap != null) && (this.decodeBufferIdStatusMap.containsKey(Integer.valueOf(paramInt2))))
+        Object localObject1 = (WebAudioManager.DecodeAsPlayStatus)this.decodeBufferIdStatusMap.get(Integer.valueOf(paramInt2));
+        if ((localObject1 != null) && (this.decodeBufferIdArrayMap != null) && (this.decodeBufferIdArrayMap.containsKey(Integer.valueOf(paramInt2))))
         {
-          localObject1 = (WebAudioManager.DecodeAsPlayStatus)this.decodeBufferIdStatusMap.get(Integer.valueOf(paramInt2));
-          if ((localObject1 != null) && (this.decodeBufferIdArrayMap != null) && (this.decodeBufferIdArrayMap.containsKey(Integer.valueOf(paramInt2))))
+          Object localObject3 = (ArrayList)this.decodeBufferIdArrayMap.get(Integer.valueOf(paramInt2));
+          if ((localObject3 != null) && (!((ArrayList)localObject3).isEmpty()))
           {
-            localObject2 = (ArrayList)this.decodeBufferIdArrayMap.get(Integer.valueOf(paramInt2));
-            if ((localObject2 == null) || (((ArrayList)localObject2).isEmpty())) {}
+            paramInt2 = WebAudioManager.DecodeAsPlayStatus.access$300((WebAudioManager.DecodeAsPlayStatus)localObject1);
+            if ((paramInt2 != 1) && (paramInt2 != 2))
+            {
+              if (paramInt2 == 3) {
+                localObject1 = ((ArrayList)localObject3).iterator();
+              }
+            }
+            else {
+              while (((Iterator)localObject1).hasNext())
+              {
+                AudioNativeManager.setQueueBuffer(paramInt1, ((Integer)((Iterator)localObject1).next()).intValue());
+                continue;
+                localObject3 = ((ArrayList)localObject3).iterator();
+                while (((Iterator)localObject3).hasNext()) {
+                  AudioNativeManager.setQueueBuffer(paramInt1, ((Integer)((Iterator)localObject3).next()).intValue());
+                }
+                WebAudioManager.DecodeAsPlayStatus.access$302((WebAudioManager.DecodeAsPlayStatus)localObject1, 2);
+                WebAudioManager.DecodeAsPlayStatus.access$400((WebAudioManager.DecodeAsPlayStatus)localObject1).add(Integer.valueOf(paramInt1));
+              }
+            }
           }
         }
-        switch (WebAudioManager.DecodeAsPlayStatus.access$300((WebAudioManager.DecodeAsPlayStatus)localObject1))
-        {
-        case 3: 
-          return new JSONObject();
-        }
       }
-      finally {}
-      Object localObject1 = ((ArrayList)localObject2).iterator();
-      if (((Iterator)localObject1).hasNext())
-      {
-        AudioNativeManager.setQueueBuffer(paramInt1, ((Integer)((Iterator)localObject1).next()).intValue());
-      }
-      else
-      {
-        continue;
-        localObject2 = ((ArrayList)localObject2).iterator();
-        while (((Iterator)localObject2).hasNext()) {
-          AudioNativeManager.setQueueBuffer(paramInt1, ((Integer)((Iterator)localObject2).next()).intValue());
-        }
-        WebAudioManager.DecodeAsPlayStatus.access$302(localDecodeAsPlayStatus, 2);
-        WebAudioManager.DecodeAsPlayStatus.access$400(localDecodeAsPlayStatus).add(Integer.valueOf(paramInt1));
-      }
+      return new JSONObject();
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -289,25 +292,24 @@ public class WebAudioManager
       return null;
     }
     long l2 = localAudioContext.getCurrentTime();
-    long l1 = paramInt3 * 1000 - l2;
-    if (l1 > 0L)
+    long l1 = paramInt3 * 1000;
+    long l3 = l1 - l2;
+    if (l3 > 0L)
     {
-      TritonAudioThreadPool.getAudioThreadPool().schedule(new WebAudioManager.1(this, paramInt2, paramInt4, paramArgument, paramInt1), l1, TimeUnit.MILLISECONDS);
-      if (l1 <= 0L) {
-        break label152;
-      }
+      TritonAudioThreadPool.getAudioThreadPool().schedule(new WebAudioManager.1(this, paramInt2, paramInt4, paramArgument, paramInt1), l3, TimeUnit.MILLISECONDS);
     }
-    label152:
-    for (l1 = paramInt3 * 1000;; l1 = l2)
+    else
     {
-      if (paramInt5 > 0) {
-        TritonAudioThreadPool.getAudioThreadPool().schedule(new WebAudioManager.2(this, paramInt2), l1 - l2 + paramInt5 * 1000, TimeUnit.MILLISECONDS);
-      }
-      return new JSONObject();
       AudioNativeManager.play(paramInt2, paramInt4);
       startTimer(paramArgument, paramInt2, paramInt1);
-      break;
     }
+    if (l3 <= 0L) {
+      l1 = l2;
+    }
+    if (paramInt5 > 0) {
+      TritonAudioThreadPool.getAudioThreadPool().schedule(new WebAudioManager.2(this, paramInt2), l1 - l2 + paramInt5 * 1000, TimeUnit.MILLISECONDS);
+    }
+    return new JSONObject();
   }
   
   public JSONObject sourceStop(int paramInt1, int paramInt2, int paramInt3)
@@ -320,12 +322,10 @@ public class WebAudioManager
     l = paramInt3 * 1000 - l;
     if (l > 0L) {
       TritonAudioThreadPool.getAudioThreadPool().schedule(new WebAudioManager.4(this, paramInt2), l, TimeUnit.MILLISECONDS);
-    }
-    for (;;)
-    {
-      return new JSONObject();
+    } else {
       AudioNativeManager.stopSource(paramInt2);
     }
+    return new JSONObject();
   }
   
   public void startAudioProcess(Argument paramArgument, int paramInt)
@@ -345,111 +345,102 @@ public class WebAudioManager
   public boolean writeFile(byte[] paramArrayOfByte, String paramString, boolean paramBoolean, int paramInt)
   {
     // Byte code:
-    //   0: iconst_0
-    //   1: istore 5
-    //   3: aconst_null
-    //   4: astore 6
-    //   6: new 202	java/io/File
-    //   9: dup
-    //   10: aload_2
-    //   11: invokespecial 205	java/io/File:<init>	(Ljava/lang/String;)V
-    //   14: astore_2
+    //   0: new 200	java/io/File
+    //   3: dup
+    //   4: aload_2
+    //   5: invokespecial 203	java/io/File:<init>	(Ljava/lang/String;)V
+    //   8: astore_2
+    //   9: aconst_null
+    //   10: astore 6
+    //   12: aconst_null
+    //   13: astore 5
     //   15: aload_2
-    //   16: invokevirtual 208	java/io/File:exists	()Z
+    //   16: invokevirtual 206	java/io/File:exists	()Z
     //   19: ifne +26 -> 45
     //   22: aload_2
-    //   23: invokevirtual 356	java/io/File:getParentFile	()Ljava/io/File;
-    //   26: invokevirtual 208	java/io/File:exists	()Z
+    //   23: invokevirtual 360	java/io/File:getParentFile	()Ljava/io/File;
+    //   26: invokevirtual 206	java/io/File:exists	()Z
     //   29: ifne +11 -> 40
     //   32: aload_2
-    //   33: invokevirtual 356	java/io/File:getParentFile	()Ljava/io/File;
-    //   36: invokevirtual 359	java/io/File:mkdirs	()Z
+    //   33: invokevirtual 360	java/io/File:getParentFile	()Ljava/io/File;
+    //   36: invokevirtual 363	java/io/File:mkdirs	()Z
     //   39: pop
     //   40: aload_2
-    //   41: invokevirtual 362	java/io/File:createNewFile	()Z
+    //   41: invokevirtual 366	java/io/File:createNewFile	()Z
     //   44: pop
-    //   45: new 364	java/io/FileOutputStream
+    //   45: new 368	java/io/FileOutputStream
     //   48: dup
     //   49: aload_2
     //   50: iload_3
-    //   51: invokespecial 367	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   51: invokespecial 371	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
     //   54: astore_2
     //   55: aload_2
     //   56: aload_1
     //   57: iconst_0
     //   58: iload 4
-    //   60: invokevirtual 371	java/io/FileOutputStream:write	([BII)V
+    //   60: invokevirtual 375	java/io/FileOutputStream:write	([BII)V
     //   63: aload_2
-    //   64: invokevirtual 374	java/io/FileOutputStream:flush	()V
+    //   64: invokevirtual 378	java/io/FileOutputStream:flush	()V
     //   67: aload_2
-    //   68: ifnull +7 -> 75
-    //   71: aload_2
-    //   72: invokevirtual 377	java/io/FileOutputStream:close	()V
-    //   75: iconst_1
-    //   76: istore_3
-    //   77: iload_3
-    //   78: ireturn
-    //   79: astore_1
-    //   80: aconst_null
-    //   81: astore_1
-    //   82: iload 5
-    //   84: istore_3
-    //   85: aload_1
-    //   86: ifnull -9 -> 77
-    //   89: aload_1
-    //   90: invokevirtual 377	java/io/FileOutputStream:close	()V
-    //   93: iconst_0
-    //   94: ireturn
-    //   95: astore_1
-    //   96: iconst_0
-    //   97: ireturn
-    //   98: astore_1
-    //   99: aload 6
-    //   101: astore_2
-    //   102: aload_2
-    //   103: ifnull +7 -> 110
-    //   106: aload_2
-    //   107: invokevirtual 377	java/io/FileOutputStream:close	()V
-    //   110: aload_1
-    //   111: athrow
-    //   112: astore_1
-    //   113: iconst_0
-    //   114: ireturn
-    //   115: astore_2
-    //   116: goto -6 -> 110
-    //   119: astore_1
-    //   120: goto -18 -> 102
-    //   123: astore_1
-    //   124: aload_2
-    //   125: astore_1
-    //   126: goto -44 -> 82
+    //   68: invokevirtual 381	java/io/FileOutputStream:close	()V
+    //   71: iconst_1
+    //   72: ireturn
+    //   73: astore_1
+    //   74: goto +10 -> 84
+    //   77: goto +17 -> 94
+    //   80: astore_1
+    //   81: aload 5
+    //   83: astore_2
+    //   84: aload_2
+    //   85: ifnull +7 -> 92
+    //   88: aload_2
+    //   89: invokevirtual 381	java/io/FileOutputStream:close	()V
+    //   92: aload_1
+    //   93: athrow
+    //   94: aload_2
+    //   95: ifnull +7 -> 102
+    //   98: aload_2
+    //   99: invokevirtual 381	java/io/FileOutputStream:close	()V
+    //   102: iconst_0
+    //   103: ireturn
+    //   104: astore_1
+    //   105: aload 6
+    //   107: astore_2
+    //   108: goto -14 -> 94
+    //   111: astore_1
+    //   112: goto -35 -> 77
+    //   115: astore_1
+    //   116: iconst_0
+    //   117: ireturn
+    //   118: astore_2
+    //   119: goto -27 -> 92
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	129	0	this	WebAudioManager
-    //   0	129	1	paramArrayOfByte	byte[]
-    //   0	129	2	paramString	String
-    //   0	129	3	paramBoolean	boolean
-    //   0	129	4	paramInt	int
-    //   1	82	5	bool	boolean
-    //   4	96	6	localObject	Object
+    //   0	122	0	this	WebAudioManager
+    //   0	122	1	paramArrayOfByte	byte[]
+    //   0	122	2	paramString	String
+    //   0	122	3	paramBoolean	boolean
+    //   0	122	4	paramInt	int
+    //   13	69	5	localObject1	Object
+    //   10	96	6	localObject2	Object
     // Exception table:
     //   from	to	target	type
-    //   15	40	79	java/io/IOException
-    //   40	45	79	java/io/IOException
-    //   45	55	79	java/io/IOException
-    //   89	93	95	java/io/IOException
-    //   15	40	98	finally
-    //   40	45	98	finally
-    //   45	55	98	finally
-    //   71	75	112	java/io/IOException
-    //   106	110	115	java/io/IOException
-    //   55	67	119	finally
-    //   55	67	123	java/io/IOException
+    //   55	67	73	finally
+    //   15	40	80	finally
+    //   40	45	80	finally
+    //   45	55	80	finally
+    //   15	40	104	java/io/IOException
+    //   40	45	104	java/io/IOException
+    //   45	55	104	java/io/IOException
+    //   55	67	111	java/io/IOException
+    //   67	71	115	java/io/IOException
+    //   98	102	115	java/io/IOException
+    //   88	92	118	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.webaudio.WebAudioManager
  * JD-Core Version:    0.7.0.1
  */

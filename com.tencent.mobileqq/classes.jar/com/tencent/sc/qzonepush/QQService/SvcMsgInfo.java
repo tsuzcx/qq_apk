@@ -20,16 +20,6 @@ public final class SvcMsgInfo
   public String strOther = "";
   public int tTimeStamp = 0;
   
-  static
-  {
-    if (!SvcMsgInfo.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public SvcMsgInfo() {}
   
   public SvcMsgInfo(long paramLong, int paramInt1, int paramInt2, String paramString, Map<String, String> paramMap, Map<String, byte[]> paramMap1)
@@ -49,18 +39,17 @@ public final class SvcMsgInfo
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -108,17 +97,19 @@ public final class SvcMsgInfo
     paramJceOutputStream.write(this.tTimeStamp, 1);
     paramJceOutputStream.write(this.iMsgType, 2);
     paramJceOutputStream.write(this.strOther, 3);
-    if (this.msgInfos != null) {
-      paramJceOutputStream.write(this.msgInfos, 4);
+    Map localMap = this.msgInfos;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 4);
     }
-    if (this.msgByteInfos != null) {
-      paramJceOutputStream.write(this.msgByteInfos, 5);
+    localMap = this.msgByteInfos;
+    if (localMap != null) {
+      paramJceOutputStream.write(localMap, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.sc.qzonepush.QQService.SvcMsgInfo
  * JD-Core Version:    0.7.0.1
  */

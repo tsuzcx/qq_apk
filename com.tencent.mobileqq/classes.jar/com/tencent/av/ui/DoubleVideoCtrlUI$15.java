@@ -7,8 +7,9 @@ class DoubleVideoCtrlUI$15
   
   public void a()
   {
-    this.a.j = true;
-    this.a.O();
+    DoubleVideoCtrlUI localDoubleVideoCtrlUI = this.a;
+    localDoubleVideoCtrlUI.j = true;
+    localDoubleVideoCtrlUI.O();
   }
   
   public void b()
@@ -18,7 +19,7 @@ class DoubleVideoCtrlUI$15
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.DoubleVideoCtrlUI.15
  * JD-Core Version:    0.7.0.1
  */

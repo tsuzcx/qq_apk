@@ -29,40 +29,39 @@ public abstract class IQQServiceLocationCallback$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.av.service.IQQServiceLocationCallback");
-      return true;
-    case 1: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 1598968902) {
+          return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+        }
+        paramParcel2.writeString("com.tencent.av.service.IQQServiceLocationCallback");
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-      a(paramParcel1.readInt(), paramParcel1.readString());
+      boolean bool;
+      if (paramParcel1.readInt() != 0) {
+        bool = true;
+      } else {
+        bool = false;
+      }
+      if (paramParcel1.readInt() != 0) {
+        paramParcel1 = (LBSInfo)LBSInfo.CREATOR.createFromParcel(paramParcel1);
+      } else {
+        paramParcel1 = null;
+      }
+      a(bool, paramParcel1);
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.av.service.IQQServiceLocationCallback");
-    boolean bool;
-    if (paramParcel1.readInt() != 0)
-    {
-      bool = true;
-      if (paramParcel1.readInt() == 0) {
-        break label125;
-      }
-    }
-    label125:
-    for (paramParcel1 = (LBSInfo)LBSInfo.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      a(bool, paramParcel1);
-      return true;
-      bool = false;
-      break;
-    }
+    a(paramParcel1.readInt(), paramParcel1.readString());
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.IQQServiceLocationCallback.Stub
  * JD-Core Version:    0.7.0.1
  */

@@ -22,15 +22,15 @@ class RecyclerView$4
   public void processPersistent(RecyclerView.ViewHolder paramViewHolder, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo1, @NonNull RecyclerView.ItemAnimator.ItemHolderInfo paramItemHolderInfo2)
   {
     paramViewHolder.setIsRecyclable(false);
-    if (this.this$0.mDataSetHasChangedAfterLayout) {
+    if (this.this$0.mDataSetHasChangedAfterLayout)
+    {
       if (this.this$0.mItemAnimator.animateChange(paramViewHolder, paramViewHolder, paramItemHolderInfo1, paramItemHolderInfo2)) {
         this.this$0.postAnimationRunner();
       }
     }
-    while (!this.this$0.mItemAnimator.animatePersistence(paramViewHolder, paramItemHolderInfo1, paramItemHolderInfo2)) {
-      return;
+    else if (this.this$0.mItemAnimator.animatePersistence(paramViewHolder, paramItemHolderInfo1, paramItemHolderInfo2)) {
+      this.this$0.postAnimationRunner();
     }
-    this.this$0.postAnimationRunner();
   }
   
   public void unused(RecyclerView.ViewHolder paramViewHolder)
@@ -40,7 +40,7 @@ class RecyclerView$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.recyclerview.widget.RecyclerView.4
  * JD-Core Version:    0.7.0.1
  */

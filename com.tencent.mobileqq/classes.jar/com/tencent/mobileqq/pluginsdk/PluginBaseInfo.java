@@ -18,6 +18,7 @@ public class PluginBaseInfo
   public static final int STATE_INSTALLING = 3;
   public static final int STATE_NODOWNLOAD = 0;
   public static final int STATE_WAITING_INST_OR_DOWN = 5;
+  public static final int SUB_TYPE_DYNAMIC_FEATURE_PLUGIN = 2;
   public static final int SUB_TYPE_QQ_PLUGIN = 0;
   public static final int SUB_TYPE_SHADOW_PLUGIN = 1;
   public static final int TYPE_APP = 2;
@@ -30,6 +31,8 @@ public class PluginBaseInfo
   public long costDex2Oat;
   public long costDownload;
   public long costLib;
+  public long downloadDuration = 0L;
+  public int installCode = 0;
   public long mCurVersion = 0L;
   public float mDownloadProgress;
   public String mFingerPrint = "";
@@ -48,10 +51,11 @@ public class PluginBaseInfo
   public String mURL = "";
   public int mUpdateType = 1;
   public String mVersion = "";
+  public int startDownloadNetType;
   
   public PluginBaseInfo() {}
   
-  public PluginBaseInfo(Parcel paramParcel)
+  protected PluginBaseInfo(Parcel paramParcel)
   {
     this.mProcesses = paramParcel.createStringArray();
     this.mID = paramParcel.readString();
@@ -64,12 +68,16 @@ public class PluginBaseInfo
     this.mSubType = paramParcel.readInt();
     this.mCurVersion = paramParcel.readLong();
     this.mPackageName = paramParcel.readString();
-    this.mState = paramParcel.readInt();
-    this.mDownloadProgress = paramParcel.readFloat();
+    this.mInstalledPath = paramParcel.readString();
     this.mUpdateType = paramParcel.readInt();
     this.mInstallType = paramParcel.readInt();
-    this.mInstalledPath = paramParcel.readString();
+    this.mState = paramParcel.readInt();
+    this.mDownloadProgress = paramParcel.readFloat();
+    this.mForceUrl = paramParcel.readInt();
     this.mFingerPrint = paramParcel.readString();
+    this.startDownloadNetType = paramParcel.readInt();
+    this.installCode = paramParcel.readInt();
+    this.downloadDuration = paramParcel.readLong();
     this.costDex2Oat = paramParcel.readLong();
     this.costApk = paramParcel.readLong();
     this.costLib = paramParcel.readLong();
@@ -83,7 +91,11 @@ public class PluginBaseInfo
       PluginBaseInfo localPluginBaseInfo = (PluginBaseInfo)super.clone();
       return localPluginBaseInfo;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -94,7 +106,14 @@ public class PluginBaseInfo
   
   public String toString()
   {
-    return "" + this.mID + ", " + this.mPackageName + ", " + super.hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.mID);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(this.mPackageName);
+    localStringBuilder.append(", ");
+    localStringBuilder.append(super.hashCode());
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -110,12 +129,16 @@ public class PluginBaseInfo
     paramParcel.writeInt(this.mSubType);
     paramParcel.writeLong(this.mCurVersion);
     paramParcel.writeString(this.mPackageName);
-    paramParcel.writeInt(this.mState);
-    paramParcel.writeFloat(this.mDownloadProgress);
+    paramParcel.writeString(this.mInstalledPath);
     paramParcel.writeInt(this.mUpdateType);
     paramParcel.writeInt(this.mInstallType);
-    paramParcel.writeString(this.mInstalledPath);
+    paramParcel.writeInt(this.mState);
+    paramParcel.writeFloat(this.mDownloadProgress);
+    paramParcel.writeInt(this.mForceUrl);
     paramParcel.writeString(this.mFingerPrint);
+    paramParcel.writeInt(this.startDownloadNetType);
+    paramParcel.writeInt(this.installCode);
+    paramParcel.writeLong(this.downloadDuration);
     paramParcel.writeLong(this.costDex2Oat);
     paramParcel.writeLong(this.costApk);
     paramParcel.writeLong(this.costLib);
@@ -124,7 +147,7 @@ public class PluginBaseInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluginsdk.PluginBaseInfo
  * JD-Core Version:    0.7.0.1
  */

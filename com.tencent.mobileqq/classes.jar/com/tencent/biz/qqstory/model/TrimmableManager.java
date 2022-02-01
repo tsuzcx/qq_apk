@@ -20,9 +20,7 @@ public class TrimmableManager
   private void b(int paramInt)
   {
     SLog.d("TrimmableManager", "trimMemory : level = %d", new Object[] { Integer.valueOf(paramInt) });
-    switch (paramInt)
-    {
-    default: 
+    if ((paramInt != 0) && (paramInt != 1) && (paramInt != 2)) {
       return;
     }
     Iterator localIterator = this.jdField_a_of_type_JavaUtilConcurrentCopyOnWriteArraySet.iterator();
@@ -53,7 +51,7 @@ public class TrimmableManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.model.TrimmableManager
  * JD-Core Version:    0.7.0.1
  */

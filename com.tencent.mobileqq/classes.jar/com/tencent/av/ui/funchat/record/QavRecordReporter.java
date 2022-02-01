@@ -14,9 +14,9 @@ public class QavRecordReporter
   private static long jdField_a_of_type_Long = 0L;
   private static Throwable jdField_a_of_type_JavaLangThrowable;
   private static boolean jdField_a_of_type_Boolean = false;
-  private static int jdField_b_of_type_Int = 0;
-  private static long jdField_b_of_type_Long = 0L;
-  private static int c = 0;
+  private static int jdField_b_of_type_Int;
+  private static long jdField_b_of_type_Long;
+  private static int c;
   
   public static void a()
   {
@@ -36,53 +36,47 @@ public class QavRecordReporter
     long l3 = jdField_b_of_type_Long;
     int i = jdField_a_of_type_Int;
     int j = jdField_b_of_type_Int;
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "onRecordEnd cores=" + paramInt1 + ", fqc=" + paramInt2 + ", start=" + l2 + ", end=" + l1 + ", frames=" + i + ", stopType=" + paramInt3 + ", mp4Start=" + l3 + ", mp4Frames=" + j);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRecordEnd cores=");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", fqc=");
+      localStringBuilder.append(paramInt2);
+      localStringBuilder.append(", start=");
+      localStringBuilder.append(l2);
+      localStringBuilder.append(", end=");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(", frames=");
+      localStringBuilder.append(i);
+      localStringBuilder.append(", stopType=");
+      localStringBuilder.append(paramInt3);
+      localStringBuilder.append(", mp4Start=");
+      localStringBuilder.append(l3);
+      localStringBuilder.append(", mp4Frames=");
+      localStringBuilder.append(j);
+      QLog.i("QavRecordReporter", 2, localStringBuilder.toString());
     }
     ThreadManager.post(new QavRecordReporter.1(paramInt2, i, l1, l2, j, l3, paramLong, paramInt1, paramInt3), 5, null, false);
   }
   
   public static void a(int paramInt, Throwable paramThrowable)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "onError " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onError ");
+      localStringBuilder.append(paramInt);
+      QLog.i("QavRecordReporter", 2, localStringBuilder.toString());
     }
     jdField_a_of_type_Boolean = true;
     c = paramInt;
     jdField_a_of_type_JavaLangThrowable = paramThrowable;
   }
   
-  public static void a(long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "reportConvertPcmCostTime cost=" + paramLong);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_model", DeviceInfoUtil.d());
-    localHashMap.put("api", DeviceInfoUtil.e());
-    localHashMap.put("manufacture", DeviceInfoUtil.h());
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
-    if (!jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance("", "av_record_convert_pcm_cost", bool, paramLong / 1000L, 0L, localHashMap, "", false);
-      return;
-    }
-  }
-  
   public static void a(String paramString)
   {
     ReportController.b(null, "CliOper", "", "", paramString, paramString, 0, 0, "", "", "", "");
-  }
-  
-  public static void a(boolean paramBoolean, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "reportPCMSuccess success=" + paramBoolean + ", errcode=" + paramInt);
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "av_record_convert_pcm_success", paramBoolean, 0L, 0L, localHashMap, "", false);
   }
   
   public static void b()
@@ -110,16 +104,14 @@ public class QavRecordReporter
     localHashMap.put("manufacture", DeviceInfoUtil.h());
     localHashMap.put("throwable", String.valueOf(jdField_a_of_type_JavaLangThrowable));
     jdField_a_of_type_JavaLangThrowable = null;
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "reportEnd params=" + localHashMap);
-    }
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
-    if (!jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel())
     {
-      localStatisticCollector.collectPerformance("", "av_record_report_end", bool, 0L, 0L, localHashMap, "", false);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("reportEnd params=");
+      localStringBuilder.append(localHashMap);
+      QLog.i("QavRecordReporter", 2, localStringBuilder.toString());
     }
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "av_record_report_end", jdField_a_of_type_Boolean ^ true, 0L, 0L, localHashMap, "", false);
   }
   
   public static void e()
@@ -131,39 +123,19 @@ public class QavRecordReporter
     localHashMap.put("device_model", DeviceInfoUtil.d());
     localHashMap.put("api", DeviceInfoUtil.e());
     localHashMap.put("manufacture", DeviceInfoUtil.h());
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "onAudioTrackInitFail  params=" + localHashMap);
-    }
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
-    if (!jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
+    if (QLog.isColorLevel())
     {
-      localStatisticCollector.collectPerformance("", "av_record_audio_fail", bool, 0L, 0L, localHashMap, "", false);
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onAudioTrackInitFail  params=");
+      localStringBuilder.append(localHashMap);
+      QLog.i("QavRecordReporter", 2, localStringBuilder.toString());
     }
-  }
-  
-  public static void f()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.i("QavRecordReporter", 2, "reportConvertPcmTimeout");
-    }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("device_model", DeviceInfoUtil.d());
-    localHashMap.put("api", DeviceInfoUtil.e());
-    localHashMap.put("manufacture", DeviceInfoUtil.h());
-    StatisticCollector localStatisticCollector = StatisticCollector.getInstance(BaseApplicationImpl.getContext());
-    if (!jdField_a_of_type_Boolean) {}
-    for (boolean bool = true;; bool = false)
-    {
-      localStatisticCollector.collectPerformance("", "av_record_convert_pcm_timeout", bool, 0L, 0L, localHashMap, "", false);
-      return;
-    }
+    StatisticCollector.getInstance(BaseApplicationImpl.getContext()).collectPerformance("", "av_record_audio_fail", jdField_a_of_type_Boolean ^ true, 0L, 0L, localHashMap, "", false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.record.QavRecordReporter
  * JD-Core Version:    0.7.0.1
  */

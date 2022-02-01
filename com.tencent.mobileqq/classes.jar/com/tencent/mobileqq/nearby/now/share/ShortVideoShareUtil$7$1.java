@@ -15,23 +15,21 @@ class ShortVideoShareUtil$7$1
     if ((paramBaseResp != null) && (TextUtils.equals(this.a.jdField_a_of_type_JavaLangString, paramBaseResp.transaction)))
     {
       WXShareHelper.a().b(this);
-      if (paramBaseResp.errCode != 0) {
-        break label59;
+      if (paramBaseResp.errCode == 0)
+      {
+        if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowShareIShortVideoShareUtil$OnShareCallBack != null) {
+          this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowShareIShortVideoShareUtil$OnShareCallBack.a(true);
+        }
       }
-      if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowShareShortVideoShareUtil$OnShareCallBack != null) {
-        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowShareShortVideoShareUtil$OnShareCallBack.a(true);
+      else if (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowShareIShortVideoShareUtil$OnShareCallBack != null) {
+        this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowShareIShortVideoShareUtil$OnShareCallBack.a(false);
       }
     }
-    label59:
-    while (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowShareShortVideoShareUtil$OnShareCallBack == null) {
-      return;
-    }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNowShareShortVideoShareUtil$OnShareCallBack.a(false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.share.ShortVideoShareUtil.7.1
  * JD-Core Version:    0.7.0.1
  */

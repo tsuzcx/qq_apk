@@ -9,11 +9,6 @@ public class CallBackEvent
   protected List<CallBackEvent.CallBackEventListener> a;
   protected boolean a;
   
-  static
-  {
-    jdField_a_of_type_ComTencentOpenAppcommonCallBackEvent = null;
-  }
-  
   public CallBackEvent()
   {
     this.jdField_a_of_type_Boolean = true;
@@ -54,22 +49,24 @@ public class CallBackEvent
     {
       CallBackEvent.CallBackEventListener[] arrayOfCallBackEventListener = new CallBackEvent.CallBackEventListener[this.jdField_a_of_type_JavaUtilList.size()];
       this.jdField_a_of_type_JavaUtilList.toArray(arrayOfCallBackEventListener);
-      if (arrayOfCallBackEventListener != null)
+      int j = arrayOfCallBackEventListener.length;
+      int i = 0;
+      while (i < j)
       {
-        int j = arrayOfCallBackEventListener.length;
-        int i = 0;
-        if (i < j)
-        {
-          arrayOfCallBackEventListener[i].a(paramBoolean);
-          i += 1;
-        }
+        arrayOfCallBackEventListener[i].a(paramBoolean);
+        i += 1;
       }
+      return;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.CallBackEvent
  * JD-Core Version:    0.7.0.1
  */

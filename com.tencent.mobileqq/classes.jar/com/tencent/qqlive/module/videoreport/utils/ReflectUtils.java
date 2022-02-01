@@ -41,7 +41,11 @@ public class ReflectUtils
       paramString = paramString.get(paramObject);
       return paramString;
     }
-    catch (Exception paramString) {}
+    catch (Exception paramString)
+    {
+      label22:
+      break label22;
+    }
     return null;
   }
   
@@ -54,7 +58,7 @@ public class ReflectUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.ReflectUtils
  * JD-Core Version:    0.7.0.1
  */

@@ -21,15 +21,16 @@ public final class oidb_cmd0xd46$KsTopicInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 88, 96, 104 }, new String[] { "uint32_id", "bytes_title", "bytes_icon_url", "bytes_web_url", "uint32_subscribe_ts", "uint32_update_ts", "uint32_update_cnt" }, new Object[] { Integer.valueOf(0), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, KsTopicInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 88, 96, 104 }, new String[] { "uint32_id", "bytes_title", "bytes_icon_url", "bytes_web_url", "uint32_subscribe_ts", "uint32_update_ts", "uint32_update_cnt" }, new Object[] { localInteger, localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger, localInteger }, KsTopicInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xd46.oidb_cmd0xd46.KsTopicInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,6 +6,7 @@ import android.widget.AutoCompleteTextView;
 import com.tencent.mobileqq.activity.RegisterByNicknameAndPwdActivity;
 import com.tencent.mobileqq.activity.RegisterPhoneNumActivity;
 import com.tencent.mobileqq.app.LoginFailedHelper;
+import com.tencent.mobileqq.app.LoginForbiddenDialogReporter;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.loginregister.LoginErrorInfo;
 import com.tencent.mobileqq.loginregister.LoginProxy;
@@ -31,8 +32,14 @@ class LoginView$30
   public void onCheckQuickRegisterAccount(boolean paramBoolean, int paramInt, byte[] paramArrayOfByte)
   {
     super.onCheckQuickRegisterAccount(paramBoolean, paramInt, paramArrayOfByte);
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_LoginActivity.LoginView", 2, "onCheckQuickRegisterAccount|isSuccess= " + paramBoolean + ",code=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfByte = new StringBuilder();
+      paramArrayOfByte.append("onCheckQuickRegisterAccount|isSuccess= ");
+      paramArrayOfByte.append(paramBoolean);
+      paramArrayOfByte.append(",code=");
+      paramArrayOfByte.append(paramInt);
+      QLog.d("Login_Optimize_LoginActivity.LoginView", 2, paramArrayOfByte.toString());
     }
     LoginView.a(this.a, 4);
     if ((paramBoolean) && (paramInt == 0))
@@ -50,46 +57,56 @@ class LoginView$30
     this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.startActivity(paramArrayOfByte);
   }
   
-  public void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
+  protected void onLoginFailed(String paramString1, String paramString2, String paramString3, int paramInt1, byte[] paramArrayOfByte1, int paramInt2, byte[] paramArrayOfByte2, String paramString4)
   {
-    QLog.d("login", 1, "LoginActivity onLoginFailed ret=" + paramInt1);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("LoginActivity onLoginFailed ret=");
+    ((StringBuilder)localObject).append(paramInt1);
+    QLog.d("login", 1, ((StringBuilder)localObject).toString());
     LoginView.a(this.a, 0);
     this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.runOnUiThread(new LoginView.30.1(this));
-    if (QLog.isColorLevel()) {
-      QLog.d("LoginActivity.LoginView", 2, "onLoginFailed errorMsg = " + paramString2 + " ret=" + paramInt1);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onLoginFailed errorMsg = ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(" ret=");
+      ((StringBuilder)localObject).append(paramInt1);
+      QLog.d("LoginActivity.LoginView", 2, ((StringBuilder)localObject).toString());
     }
     if (!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString))
     {
-      List localList = MobileQQ.sMobileQQ.getAllAccounts();
-      if ((localList != null) && (localList.size() > 0))
+      localObject = MobileQQ.sMobileQQ.getAllAccounts();
+      if ((localObject != null) && (((List)localObject).size() > 0))
       {
         String str = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
         int i = 0;
-        if (i < localList.size())
+        while (i < ((List)localObject).size())
         {
-          SimpleAccount localSimpleAccount = (SimpleAccount)localList.get(i);
-          if (localSimpleAccount == null) {}
-          while (!str.equals(LoginUtils.a(localSimpleAccount.getUin())))
+          SimpleAccount localSimpleAccount = (SimpleAccount)((List)localObject).get(i);
+          if ((localSimpleAccount != null) && (str.equals(LoginUtils.a(localSimpleAccount.getUin()))))
           {
-            i += 1;
+            LoginSharedPreUtils.a(BaseApplication.getContext(), this.a.jdField_a_of_type_JavaLangString, true);
             break;
           }
-          LoginSharedPreUtils.a(BaseApplication.getContext(), this.a.jdField_a_of_type_JavaLangString, true);
+          i += 1;
         }
       }
     }
+    localObject = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
+    LoginForbiddenDialogReporter.a(this.a.jdField_a_of_type_MqqAppAppRuntime, (String)localObject, 1, String.valueOf(paramInt1), paramInt1, paramString2);
     if (paramInt1 == 1)
     {
-      LoginView.a(this.a).a(this.a.jdField_a_of_type_MqqAppAppRuntime, this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString(), 1, paramString2, new LoginView.30.2(this));
+      LoginView.a(this.a).a(this.a.jdField_a_of_type_MqqAppAppRuntime, this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, (String)localObject, 1, paramString2, new LoginView.30.2(this));
       return;
     }
-    if ((paramString2 == null) || (paramString2.equals("")))
+    if ((paramString2 != null) && (!paramString2.equals("")))
     {
-      QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131694457, 0).a();
+      paramString1 = new LoginErrorInfo(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2, paramString4, this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString(), this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().toString(), LoginView.h(this.a));
+      LoginView.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.a.jdField_a_of_type_MqqAppAppRuntime, paramString1);
       return;
     }
-    paramString1 = new LoginErrorInfo(paramString1, paramString2, paramString3, paramInt1, paramArrayOfByte1, paramInt2, paramArrayOfByte2, paramString4, this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString(), this.a.jdField_a_of_type_ComTencentMobileqqWidgetPastablePwdEditText.getText().toString(), LoginView.h(this.a));
-    LoginView.a(this.a).a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.a.jdField_a_of_type_MqqAppAppRuntime, paramString1);
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131694422, 0).a();
   }
   
   public void onLoginSuccess(String paramString1, String paramString2, byte[] paramArrayOfByte)
@@ -103,7 +120,7 @@ class LoginView$30
     GatewayUtil.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, this.a.jdField_a_of_type_MqqAppAppRuntime);
   }
   
-  public void onLoginTimeout(String paramString)
+  protected void onLoginTimeout(String paramString)
   {
     QLog.d("login", 1, "LoginActivity onLoginTimeout");
     LoginView.a(this.a, 0);
@@ -114,23 +131,22 @@ class LoginView$30
       {
         String str = this.a.jdField_a_of_type_AndroidWidgetAutoCompleteTextView.getText().toString();
         int i = 0;
-        if (i < paramString.size())
+        while (i < paramString.size())
         {
           SimpleAccount localSimpleAccount = (SimpleAccount)paramString.get(i);
-          if (localSimpleAccount == null) {}
-          while (!str.equals(LoginUtils.a(localSimpleAccount.getUin())))
+          if ((localSimpleAccount != null) && (str.equals(LoginUtils.a(localSimpleAccount.getUin()))))
           {
-            i += 1;
+            LoginSharedPreUtils.a(BaseApplication.getContext(), this.a.jdField_a_of_type_JavaLangString, true);
             break;
           }
-          LoginSharedPreUtils.a(BaseApplication.getContext(), this.a.jdField_a_of_type_JavaLangString, true);
+          i += 1;
         }
       }
     }
-    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131694457, 0).a();
+    QQToast.a(this.a.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131694422, 0).a();
   }
   
-  public void onUserCancel(String paramString)
+  protected void onUserCancel(String paramString)
   {
     super.onUserCancel(paramString);
     LoginView.a(this.a, 0);
@@ -138,7 +154,7 @@ class LoginView$30
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.registerGuideLogin.LoginView.30
  * JD-Core Version:    0.7.0.1
  */

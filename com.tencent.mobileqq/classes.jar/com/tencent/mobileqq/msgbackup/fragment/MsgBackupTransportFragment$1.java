@@ -13,48 +13,61 @@ class MsgBackupTransportFragment$1
   
   public void onItemSelect(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 2)
     {
-    default: 
-      return;
-    case 2: 
-      MsgBackupTransportFragment.a(this.a);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click cancel btn! sIsShouQiBtnClick= " + MsgBackupManager.jdField_a_of_type_Boolean + ", isStart = " + this.a.jdField_a_of_type_Boolean);
-      }
-      if (MsgBackupTransportFragment.a(this.a) == 2)
-      {
-        if (!this.a.jdField_d_of_type_Boolean) {
-          break label129;
-        }
-        MsgBackupReporter.a("0X800A243", 2);
-      }
-      while (this.a.jdField_a_of_type_Boolean)
-      {
-        this.a.k();
+      if (paramInt != 8) {
         return;
-        label129:
+      }
+      MsgBackupManager.jdField_a_of_type_Boolean = true;
+      if (QLog.isColorLevel())
+      {
+        paramView = new StringBuilder();
+        paramView.append("transfer is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= ");
+        paramView.append(MsgBackupManager.jdField_a_of_type_Boolean);
+        paramView.append(", curSpeed = ");
+        paramView.append(this.a.jdField_a_of_type_Long);
+        paramView.append(", hasFinishedCount = ");
+        paramView.append(this.a.d);
+        QLog.d("MsgBackup.MsgBackupTransportFragment", 2, paramView.toString());
+      }
+      MsgBackupManager.a().a(this.a.jdField_a_of_type_Long, this.a.d, 3, this.a.getQBaseActivity());
+      MsgBackupReporter.a("0X800A249");
+      return;
+    }
+    MsgBackupTransportFragment.a(this.a);
+    if (QLog.isColorLevel())
+    {
+      paramView = new StringBuilder();
+      paramView.append("transfer is going, page is in link page! click cancel btn! sIsShouQiBtnClick= ");
+      paramView.append(MsgBackupManager.jdField_a_of_type_Boolean);
+      paramView.append(", isStart = ");
+      paramView.append(this.a.jdField_a_of_type_Boolean);
+      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, paramView.toString());
+    }
+    if (MsgBackupTransportFragment.a(this.a) == 2) {
+      if (this.a.e) {
+        MsgBackupReporter.a("0X800A243", 2);
+      } else {
         MsgBackupReporter.a("0X800A243", 1);
       }
-      if (MsgBackupTransportFragment.a(this.a) == 1)
-      {
-        this.a.onBackEvent();
-        return;
-      }
-      this.a.a(this.a.getActivity());
+    }
+    if (this.a.jdField_a_of_type_Boolean)
+    {
+      this.a.l();
       return;
     }
-    MsgBackupManager.jdField_a_of_type_Boolean = true;
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupTransportFragment", 2, "transfer is going, page is in link page! click 收起按钮! sIsShouQiBtnClick= " + MsgBackupManager.jdField_a_of_type_Boolean + ", curSpeed = " + this.a.jdField_a_of_type_Long + ", hasFinishedCount = " + this.a.jdField_d_of_type_Int);
+    if (MsgBackupTransportFragment.a(this.a) == 1)
+    {
+      this.a.onBackEvent();
+      return;
     }
-    MsgBackupManager.a().a(this.a.jdField_a_of_type_Long, this.a.jdField_d_of_type_Int, 3, this.a.getActivity());
-    MsgBackupReporter.a("0X800A249");
+    paramView = this.a;
+    paramView.a(paramView.getActivity());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupTransportFragment.1
  * JD-Core Version:    0.7.0.1
  */

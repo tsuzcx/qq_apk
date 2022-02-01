@@ -63,21 +63,21 @@ public class MiniAppSearchDataManager
   
   private void appendSearchResultData(List<STORE_APP_CLIENT.StoreAppInfo> paramList)
   {
-    if ((paramList == null) || (paramList.size() <= 0))
+    if ((paramList != null) && (paramList.size() > 0))
     {
-      QLog.d("MiniAppSearchDataManager", 1, "updateSearchResultData, data is null!");
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        STORE_APP_CLIENT.StoreAppInfo localStoreAppInfo = (STORE_APP_CLIENT.StoreAppInfo)paramList.next();
+        if ((localStoreAppInfo != null) && (localStoreAppInfo.userAppInfo.get() != null)) {
+          localArrayList.add(new SearchInfo(localStoreAppInfo));
+        }
+      }
+      runOnMainThread(new MiniAppSearchDataManager.8(this, localArrayList));
       return;
     }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
-    {
-      STORE_APP_CLIENT.StoreAppInfo localStoreAppInfo = (STORE_APP_CLIENT.StoreAppInfo)paramList.next();
-      if ((localStoreAppInfo != null) && (localStoreAppInfo.userAppInfo.get() != null)) {
-        localArrayList.add(new SearchInfo(localStoreAppInfo));
-      }
-    }
-    runOnMainThread(new MiniAppSearchDataManager.8(this, localArrayList));
+    QLog.d("MiniAppSearchDataManager", 1, "updateSearchResultData, data is null!");
   }
   
   private void checkNetwork()
@@ -92,63 +92,66 @@ public class MiniAppSearchDataManager
   
   private void updateGuessYouLikeData(List<STORE_APP_CLIENT.StoreAppInfo> arg1)
   {
-    if (??? == null) {
-      QLog.d("MiniAppSearchDataManager", 1, "updateGuessYouLikeData, data is null!");
-    }
-    Object localObject1;
-    Object localObject2;
-    do
+    if (??? == null)
     {
-      do
+      QLog.d("MiniAppSearchDataManager", 1, "updateGuessYouLikeData, data is null!");
+      return;
+    }
+    ArrayList localArrayList = new ArrayList();
+    if ((??? != null) && (!???.isEmpty()))
+    {
+      Object localObject2 = (List)this.mSearchResultMap.get(Integer.valueOf(3));
+      Object localObject3;
+      if ((localObject2 != null) && (!((List)localObject2).isEmpty()))
       {
-        return;
-        localArrayList = new ArrayList();
-      } while ((??? == null) || (???.isEmpty()));
-      localObject1 = (List)this.mSearchResultMap.get(Integer.valueOf(3));
-      if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
-      {
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          localObject2 = (ItemInfo)((Iterator)localObject1).next();
-          if ((localObject2 instanceof TitleInfo)) {
-            localArrayList.add(localObject2);
+          localObject3 = (ItemInfo)((Iterator)localObject2).next();
+          if ((localObject3 instanceof TitleInfo)) {
+            localArrayList.add(localObject3);
           }
         }
       }
       ??? = ???.iterator();
       while (???.hasNext())
       {
-        localObject1 = (STORE_APP_CLIENT.StoreAppInfo)???.next();
-        if ((localObject1 != null) && (((STORE_APP_CLIENT.StoreAppInfo)localObject1).userAppInfo.get() != null)) {
-          localArrayList.add(new GuessYouLikeItem((STORE_APP_CLIENT.StoreAppInfo)localObject1));
+        localObject2 = (STORE_APP_CLIENT.StoreAppInfo)???.next();
+        if ((localObject2 != null) && (((STORE_APP_CLIENT.StoreAppInfo)localObject2).userAppInfo.get() != null)) {
+          localArrayList.add(new GuessYouLikeItem((STORE_APP_CLIENT.StoreAppInfo)localObject2));
         }
       }
-    } while (localArrayList.isEmpty());
-    this.mSearchResultMap.put(Integer.valueOf(3), localArrayList);
-    ArrayList localArrayList = new ArrayList();
-    synchronized (this.mLock)
-    {
-      QLog.d("MiniAppSearchDataManager", 1, "updateGuessYouLikeData, sortList: " + this.mSortList);
-      if ((this.mSortList != null) && (!this.mSortList.isEmpty()))
+      if (!localArrayList.isEmpty())
       {
-        localObject1 = this.mSortList.iterator();
-        while (((Iterator)localObject1).hasNext())
+        this.mSearchResultMap.put(Integer.valueOf(3), localArrayList);
+        localArrayList = new ArrayList();
+        synchronized (this.mLock)
         {
-          int i = ((Integer)((Iterator)localObject1).next()).intValue();
-          localObject2 = (List)this.mSearchResultMap.get(Integer.valueOf(i));
-          if ((localObject2 != null) && (!((List)localObject2).isEmpty())) {
-            localArrayList.addAll((Collection)localObject2);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("updateGuessYouLikeData, sortList: ");
+          ((StringBuilder)localObject2).append(this.mSortList);
+          QLog.d("MiniAppSearchDataManager", 1, ((StringBuilder)localObject2).toString());
+          if ((this.mSortList != null) && (!this.mSortList.isEmpty()))
+          {
+            localObject2 = this.mSortList.iterator();
+            while (((Iterator)localObject2).hasNext())
+            {
+              int i = ((Integer)((Iterator)localObject2).next()).intValue();
+              localObject3 = (List)this.mSearchResultMap.get(Integer.valueOf(i));
+              if ((localObject3 != null) && (!((List)localObject3).isEmpty())) {
+                localArrayList.addAll((Collection)localObject3);
+              }
+            }
           }
+          runOnMainThread(new MiniAppSearchDataManager.7(this, localArrayList));
+          return;
         }
       }
     }
-    runOnMainThread(new MiniAppSearchDataManager.7(this, localList));
   }
   
   private void updateHotSearchData(MiniAppSearch.StGetHotSearchAppsRsp arg1)
   {
-    int j = 0;
     if (??? == null)
     {
       QLog.e("MiniAppSearchDataManager", 1, "updateHotSearchData, response is null!");
@@ -159,97 +162,101 @@ public class MiniAppSearchDataManager
     ArrayList localArrayList1 = new ArrayList();
     ArrayList localArrayList2 = new ArrayList();
     Object localObject3 = ???.appList.get();
+    int j = 0;
     int i;
-    Object localObject4;
     if ((localObject3 != null) && (((List)localObject3).size() > 0))
     {
       ((List)localObject1).add(new TitleInfo(???.title.get()));
       localObject3 = ((List)localObject3).iterator();
       i = 0;
-      if (((Iterator)localObject3).hasNext())
+      while (((Iterator)localObject3).hasNext())
       {
         localObject4 = (STORE_APP_CLIENT.StoreAppInfo)((Iterator)localObject3).next();
-        if ((localObject4 == null) || (((STORE_APP_CLIENT.StoreAppInfo)localObject4).userAppInfo.get() == null)) {
-          break label711;
+        if ((localObject4 != null) && (((STORE_APP_CLIENT.StoreAppInfo)localObject4).userAppInfo.get() != null))
+        {
+          localObject4 = new SearchInfo((STORE_APP_CLIENT.StoreAppInfo)localObject4);
+          ((SearchInfo)localObject4).setPosition(i);
+          ((List)localObject1).add(localObject4);
+          i += 1;
         }
-        localObject4 = new SearchInfo((STORE_APP_CLIENT.StoreAppInfo)localObject4);
-        ((SearchInfo)localObject4).setPosition(i);
-        ((List)localObject1).add(localObject4);
-        i += 1;
       }
-    }
-    label671:
-    label711:
-    for (;;)
-    {
-      break;
       this.mSearchResultMap.put(Integer.valueOf(1), localObject1);
-      localObject3 = ???.watchingList.get();
-      if ((localObject3 != null) && (((List)localObject3).size() > 0))
+    }
+    localObject3 = ???.watchingList.get();
+    if ((localObject3 != null) && (((List)localObject3).size() > 0))
+    {
+      localArrayList1.add(new TitleInfo(???.watchTitle.get()));
+      localObject3 = ((List)localObject3).iterator();
+      i = j;
+      while (((Iterator)localObject3).hasNext())
       {
-        localArrayList1.add(new TitleInfo(???.watchTitle.get()));
-        localObject3 = ((List)localObject3).iterator();
-        i = j;
-        while (((Iterator)localObject3).hasNext())
+        localObject4 = (MiniAppSearch.StHotWatching)((Iterator)localObject3).next();
+        if (localObject4 != null)
         {
-          localObject4 = (MiniAppSearch.StHotWatching)((Iterator)localObject3).next();
-          if (localObject4 != null)
-          {
-            localObject4 = new LiveInfo((MiniAppSearch.StHotWatching)localObject4);
-            ((LiveInfo)localObject4).setPosition(i);
-            localArrayList1.add(localObject4);
-            i += 1;
-          }
+          localObject4 = new LiveInfo((MiniAppSearch.StHotWatching)localObject4);
+          ((LiveInfo)localObject4).setPosition(i);
+          localArrayList1.add(localObject4);
+          i += 1;
         }
-        this.mSearchResultMap.put(Integer.valueOf(2), localArrayList1);
       }
-      localObject3 = ???.guessYouList.get();
-      if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
+      this.mSearchResultMap.put(Integer.valueOf(2), localArrayList1);
+    }
+    localObject3 = ???.guessYouList.get();
+    if ((localObject3 != null) && (!((List)localObject3).isEmpty()))
+    {
+      localObject4 = new TitleInfo(???.guessTitle.get());
+      ((TitleInfo)localObject4).setRefreshButtonVisibility(true);
+      localArrayList2.add(localObject4);
+      localObject3 = ((List)localObject3).iterator();
+      while (((Iterator)localObject3).hasNext())
       {
-        localObject4 = new TitleInfo(???.guessTitle.get());
-        ((TitleInfo)localObject4).setRefreshButtonVisibility(true);
-        localArrayList2.add(localObject4);
-        localObject3 = ((List)localObject3).iterator();
-        while (((Iterator)localObject3).hasNext())
-        {
-          localObject4 = (STORE_APP_CLIENT.StoreAppInfo)((Iterator)localObject3).next();
-          if ((localObject4 != null) && (((STORE_APP_CLIENT.StoreAppInfo)localObject4).userAppInfo.get() != null)) {
-            localArrayList2.add(new GuessYouLikeItem((STORE_APP_CLIENT.StoreAppInfo)localObject4));
-          }
+        localObject4 = (STORE_APP_CLIENT.StoreAppInfo)((Iterator)localObject3).next();
+        if ((localObject4 != null) && (((STORE_APP_CLIENT.StoreAppInfo)localObject4).userAppInfo.get() != null)) {
+          localArrayList2.add(new GuessYouLikeItem((STORE_APP_CLIENT.StoreAppInfo)localObject4));
         }
-        this.mSearchResultMap.put(Integer.valueOf(3), localArrayList2);
       }
-      localObject3 = new ArrayList();
-      localObject4 = ???.sortList.get();
-      QLog.d("MiniAppSearchDataManager", 1, "updateHotSearchData, sortList: " + localObject4);
-      if ((localObject4 != null) && (!((List)localObject4).isEmpty())) {
-        ??? = ((List)localObject4).iterator();
-      }
-      while (???.hasNext())
+      this.mSearchResultMap.put(Integer.valueOf(3), localArrayList2);
+    }
+    localObject3 = new ArrayList();
+    Object localObject4 = ???.sortList.get();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("updateHotSearchData, sortList: ");
+    localStringBuilder.append(localObject4);
+    QLog.d("MiniAppSearchDataManager", 1, localStringBuilder.toString());
+    if ((localObject4 != null) && (!((List)localObject4).isEmpty())) {
+      ??? = ((List)localObject4).iterator();
+    }
+    while (???.hasNext())
+    {
+      i = ((Integer)???.next()).intValue();
+      localObject1 = (List)this.mSearchResultMap.get(Integer.valueOf(i));
+      if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
       {
-        i = ((Integer)???.next()).intValue();
-        localObject1 = (List)this.mSearchResultMap.get(Integer.valueOf(i));
-        if ((localObject1 != null) && (!((List)localObject1).isEmpty()))
+        ((List)localObject3).addAll((Collection)localObject1);
+        continue;
+        if (???.sort.get() == 2)
         {
-          ((List)localObject3).addAll((Collection)localObject1);
-          continue;
-          if (???.sort.get() != 2) {
-            break label671;
-          }
           ((List)localObject3).addAll(localArrayList1);
           ((List)localObject3).addAll((Collection)localObject1);
           ((List)localObject3).addAll(localArrayList2);
         }
+        else
+        {
+          ((List)localObject3).addAll((Collection)localObject1);
+          ((List)localObject3).addAll(localArrayList1);
+          ((List)localObject3).addAll(localArrayList2);
+        }
       }
-      synchronized (this.mLock)
-      {
-        this.mSortList = ((List)localObject4);
-        runOnMainThread(new MiniAppSearchDataManager.5(this, (List)localObject3));
-        return;
-        ((List)localObject3).addAll((Collection)localObject1);
-        ((List)localObject3).addAll(localArrayList1);
-        ((List)localObject3).addAll(localArrayList2);
-      }
+    }
+    synchronized (this.mLock)
+    {
+      this.mSortList = ((List)localObject4);
+      runOnMainThread(new MiniAppSearchDataManager.5(this, (List)localObject3));
+      return;
+    }
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
@@ -262,6 +269,7 @@ public class MiniAppSearchDataManager
     }
     this.isNoResult = false;
     HashMap localHashMap = new HashMap();
+    Object localObject2;
     if ((paramList != null) && (paramList.size() > 0))
     {
       paramList = paramList.iterator();
@@ -271,7 +279,10 @@ public class MiniAppSearchDataManager
         if ((localObject1 != null) && (((MiniAppSearch.SearchExtInfo)localObject1).appid != null))
         {
           localHashMap.put(((MiniAppSearch.SearchExtInfo)localObject1).appid.get(), localObject1);
-          QLog.d("MiniAppSearchDataManager", 1, "updateSearchResultData, appid: " + ((MiniAppSearch.SearchExtInfo)localObject1).appid.get());
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("updateSearchResultData, appid: ");
+          ((StringBuilder)localObject2).append(((MiniAppSearch.SearchExtInfo)localObject1).appid.get());
+          QLog.d("MiniAppSearchDataManager", 1, ((StringBuilder)localObject2).toString());
         }
       }
     }
@@ -279,7 +290,7 @@ public class MiniAppSearchDataManager
     Object localObject1 = paramList1.iterator();
     while (((Iterator)localObject1).hasNext())
     {
-      Object localObject2 = (STORE_APP_CLIENT.StoreAppInfo)((Iterator)localObject1).next();
+      localObject2 = (STORE_APP_CLIENT.StoreAppInfo)((Iterator)localObject1).next();
       if ((localObject2 != null) && (((STORE_APP_CLIENT.StoreAppInfo)localObject2).userAppInfo.get() != null))
       {
         localObject2 = new SearchInfo((STORE_APP_CLIENT.StoreAppInfo)localObject2);
@@ -312,7 +323,12 @@ public class MiniAppSearchDataManager
     if (localObject != null)
     {
       localObject = ((AppInterface)localObject).getCurrentAccountUin();
-      BaseApplication.getContext().getSharedPreferences((String)localObject + "_" + "mini_app_native_search", 0).edit().remove("key_mini_app_native_search_history").apply();
+      BaseApplication localBaseApplication = BaseApplication.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("_");
+      localStringBuilder.append("mini_app_native_search");
+      localBaseApplication.getSharedPreferences(localStringBuilder.toString(), 0).edit().remove("key_mini_app_native_search_history").apply();
     }
   }
   
@@ -323,22 +339,28 @@ public class MiniAppSearchDataManager
   
   public List<String> getCachedHistorySearchList()
   {
-    int i = 0;
     this.mHistorySearchList.clear();
     Object localObject = MiniAppUtils.getAppInterface();
     if (localObject != null)
     {
-      localObject = ((AppInterface)localObject).getCurrentAccountUin();
-      localObject = BaseApplication.getContext().getSharedPreferences((String)localObject + "_" + "mini_app_native_search", 0).getString("key_mini_app_native_search_history", null);
+      String str = ((AppInterface)localObject).getCurrentAccountUin();
+      localObject = BaseApplication.getContext();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("_");
+      localStringBuilder.append("mini_app_native_search");
+      str = localStringBuilder.toString();
+      int i = 0;
+      localObject = ((BaseApplication)localObject).getSharedPreferences(str, 0).getString("key_mini_app_native_search_history", null);
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
         localObject = ((String)localObject).split("_");
         int j = localObject.length;
         while (i < j)
         {
-          CharSequence localCharSequence = localObject[i];
-          if (!TextUtils.isEmpty(localCharSequence)) {
-            this.mHistorySearchList.add(localCharSequence);
+          str = localObject[i];
+          if (!TextUtils.isEmpty(str)) {
+            this.mHistorySearchList.add(str);
           }
           i += 1;
         }
@@ -376,13 +398,21 @@ public class MiniAppSearchDataManager
   {
     synchronized (this.mLock)
     {
-      if ((this.isFinished) || (this.isLoading)) {
+      if ((!this.isFinished) && (!this.isLoading))
+      {
+        this.isLoading = true;
+        COMM.StCommonExt localStCommonExt = this.mExtInfo;
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("loadMoreSearchAppDataRequest, isFinished: ");
+        ((StringBuilder)???).append(this.isFinished);
+        ((StringBuilder)???).append(", isLoading: ");
+        ((StringBuilder)???).append(this.isLoading);
+        ((StringBuilder)???).append(", keyWord: ");
+        ((StringBuilder)???).append(paramString);
+        QLog.d("MiniAppSearchDataManager", 1, ((StringBuilder)???).toString());
+        MiniAppCmdUtil.getInstance().searchApp(localStCommonExt, paramString, new MiniAppSearchDataManager.4(this));
         return;
       }
-      this.isLoading = true;
-      COMM.StCommonExt localStCommonExt = this.mExtInfo;
-      QLog.d("MiniAppSearchDataManager", 1, "loadMoreSearchAppDataRequest, isFinished: " + this.isFinished + ", isLoading: " + this.isLoading + ", keyWord: " + paramString);
-      MiniAppCmdUtil.getInstance().searchApp(localStCommonExt, paramString, new MiniAppSearchDataManager.4(this));
       return;
     }
   }
@@ -391,8 +421,9 @@ public class MiniAppSearchDataManager
   {
     this.mHotSearchDataChangedListener = null;
     this.mResultDataChangedListener = null;
-    if (this.mSearchResultList != null) {
-      this.mSearchResultList.clear();
+    List localList = this.mSearchResultList;
+    if (localList != null) {
+      localList.clear();
     }
   }
   
@@ -437,25 +468,33 @@ public class MiniAppSearchDataManager
     paramString = MiniAppUtils.getAppInterface();
     if (paramString != null)
     {
-      paramString = paramString.getCurrentAccountUin();
-      paramString = BaseApplication.getContext().getSharedPreferences(paramString + "_" + "mini_app_native_search", 0);
-      StringBuilder localStringBuilder = new StringBuilder();
+      Object localObject1 = paramString.getCurrentAccountUin();
+      paramString = BaseApplication.getContext();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("_");
+      ((StringBuilder)localObject2).append("mini_app_native_search");
+      localObject1 = ((StringBuilder)localObject2).toString();
       int i = 0;
+      paramString = paramString.getSharedPreferences((String)localObject1, 0);
+      localObject1 = new StringBuilder();
       while ((i < 20) && (i < this.mHistorySearchList.size()))
       {
-        String str = (String)this.mHistorySearchList.get(i);
-        if (!TextUtils.isEmpty(str)) {
-          localStringBuilder.append(str).append("_");
+        localObject2 = (String)this.mHistorySearchList.get(i);
+        if (!TextUtils.isEmpty((CharSequence)localObject2))
+        {
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append("_");
         }
         i += 1;
       }
-      paramString.edit().putString("key_mini_app_native_search_history", localStringBuilder.toString()).apply();
+      paramString.edit().putString("key_mini_app_native_search_history", ((StringBuilder)localObject1).toString()).apply();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.data.MiniAppSearchDataManager
  * JD-Core Version:    0.7.0.1
  */

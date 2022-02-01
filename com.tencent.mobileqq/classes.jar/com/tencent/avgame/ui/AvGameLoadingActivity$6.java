@@ -18,62 +18,71 @@ class AvGameLoadingActivity$6
   public void a()
   {
     if (QLog.isColorLevel()) {
-      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "onResDownloadStart");
+      QLog.i("AvGameLoadingActivity", 2, "onResDownloadStart");
     }
-    this.a.jdField_a_of_type_Int = 0;
-    AvGameLoadingActivity.a(this.a, this.a.jdField_a_of_type_Int);
+    AvGameLoadingActivity localAvGameLoadingActivity = this.a;
+    localAvGameLoadingActivity.jdField_a_of_type_Int = 0;
+    AvGameLoadingActivity.a(localAvGameLoadingActivity, localAvGameLoadingActivity.jdField_a_of_type_Int);
     AvGameLoadingActivity.c(this.a, true);
   }
   
   public void a(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "onResDownloadProgress and percent is " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResDownloadProgress and percent is ");
+      ((StringBuilder)localObject).append(paramInt);
+      QLog.i("AvGameLoadingActivity", 2, ((StringBuilder)localObject).toString());
     }
-    this.a.jdField_a_of_type_Int = (paramInt / this.a.b);
-    AvGameLoadingActivity.a(this.a, this.a.jdField_a_of_type_Int);
+    Object localObject = this.a;
+    ((AvGameLoadingActivity)localObject).jdField_a_of_type_Int = (paramInt / ((AvGameLoadingActivity)localObject).b);
+    localObject = this.a;
+    AvGameLoadingActivity.a((AvGameLoadingActivity)localObject, ((AvGameLoadingActivity)localObject).jdField_a_of_type_Int);
   }
   
   public void a(String paramString)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("AvGameManagerAvGameLoadingActivity", 2, "onResDownloadReady");
+      QLog.i("AvGameLoadingActivity", 2, "onResDownloadReady");
     }
-    SharedPreferences localSharedPreferences;
     if (AvGameLoadingActivity.h(this.a))
     {
       AvGameLoadingActivity.a(this.a);
       AvGameLoadingActivity.c(this.a, false);
-      localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("av_game_sp", 4);
-      if (!paramString.endsWith("/")) {
-        break label129;
-      }
     }
-    for (;;)
+    else
     {
-      localSharedPreferences.edit().putString("resPath", paramString).commit();
-      com.tencent.avgame.gamelogic.gameres.AvGameResDownloadManager.a = paramString;
-      ReportController.b(null, "dc00898", "", "", "0X800B043", "0X800B043", 0, 0, "", "", "", "");
-      return;
       ThreadManager.getUIHandlerV2().postDelayed(new AvGameLoadingActivity.6.1(this), 150L);
-      break;
-      label129:
-      paramString = paramString + File.separator;
     }
+    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("av_game_sp", 4);
+    if (!paramString.endsWith("/"))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(File.separator);
+      paramString = localStringBuilder.toString();
+    }
+    localSharedPreferences.edit().putString("resPath", paramString).commit();
+    com.tencent.avgame.gamelogic.gameres.AvGameResDownloadManager.a = paramString;
+    ReportController.b(null, "dc00898", "", "", "0X800B043", "0X800B043", 0, 0, "", "", "", "");
   }
   
   public void b(int paramInt)
   {
     if (QLog.isColorLevel()) {
-      QLog.i("AvGameManagerAvGameLoadingActivity", 1, "onResDownloadFailed");
+      QLog.i("AvGameLoadingActivity", 1, "onResDownloadFailed");
     }
     this.a.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-    ReportController.b(null, "dc00898", "", "", "0X800B044", "0X800B044", 0, 0, "" + paramInt, "", "", "");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramInt);
+    ReportController.b(null, "dc00898", "", "", "0X800B044", "0X800B044", 0, 0, localStringBuilder.toString(), "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.ui.AvGameLoadingActivity.6
  * JD-Core Version:    0.7.0.1
  */

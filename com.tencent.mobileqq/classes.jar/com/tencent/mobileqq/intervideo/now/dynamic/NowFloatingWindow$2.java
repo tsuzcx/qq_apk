@@ -8,7 +8,10 @@ class NowFloatingWindow$2
 {
   public void notifyVideoClose(int paramInt)
   {
-    QLog.i("NowFloatingWindow", 1, "FloatingVideoListener -- notifyVideoClose closeReason=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FloatingVideoListener -- notifyVideoClose closeReason=");
+    localStringBuilder.append(paramInt);
+    QLog.i("NowFloatingWindow", 1, localStringBuilder.toString());
     if ((this.a.a != null) && (paramInt == 1)) {
       this.a.a.b();
     }
@@ -16,7 +19,10 @@ class NowFloatingWindow$2
   
   public void notifyVideoSeek(int paramInt)
   {
-    QLog.i("NowFloatingWindow", 1, "FloatingVideoListener -- notifyVideoSeek seek=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FloatingVideoListener -- notifyVideoSeek seek=");
+    localStringBuilder.append(paramInt);
+    QLog.i("NowFloatingWindow", 1, localStringBuilder.toString());
   }
   
   public void notifyVideoStart()
@@ -31,7 +37,7 @@ class NowFloatingWindow$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.dynamic.NowFloatingWindow.2
  * JD-Core Version:    0.7.0.1
  */

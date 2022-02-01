@@ -32,57 +32,58 @@ public class TableQueryViewer
   private TableQueryController jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryController;
   private TableQueryViewer.TableQueryAdapter jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer$TableQueryAdapter;
   private TableQueryViewer jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer;
-  private List jdField_a_of_type_JavaUtilList = new LinkedList();
+  private List jdField_a_of_type_JavaUtilList;
   private boolean jdField_a_of_type_Boolean = true;
   private Button jdField_b_of_type_AndroidWidgetButton;
   private boolean jdField_b_of_type_Boolean = true;
   private Button jdField_c_of_type_AndroidWidgetButton;
-  private boolean jdField_c_of_type_Boolean = false;
+  private boolean jdField_c_of_type_Boolean;
   private Button d;
   
   public TableQueryViewer(Context paramContext)
   {
     super(paramContext);
-    LayoutInflater.from(paramContext).inflate(2131563080, this);
+    int i = 0;
+    this.jdField_c_of_type_Boolean = false;
+    this.jdField_a_of_type_JavaUtilList = new LinkedList();
+    LayoutInflater.from(paramContext).inflate(2131562907, this);
     this.jdField_a_of_type_AndroidViewWindowManager = ((WindowManager)paramContext.getSystemService("window"));
-    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131375219));
-    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131378860));
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368428));
-    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364777));
-    this.d = ((Button)findViewById(2131365887));
+    this.jdField_a_of_type_AndroidWidgetHorizontalScrollView = ((HorizontalScrollView)findViewById(2131374734));
+    this.jdField_a_of_type_AndroidWidgetListView = ((ListView)findViewById(2131378249));
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)findViewById(2131368179));
+    this.jdField_b_of_type_AndroidWidgetButton = ((Button)findViewById(2131364665));
+    this.d = ((Button)findViewById(2131365725));
     Button localButton = this.d;
-    if (TableQueryController.jdField_b_of_type_Boolean)
-    {
-      localObject = paramContext.getString(2131690710);
-      localButton.setText((CharSequence)localObject);
-      this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131376656));
-      localButton = this.jdField_c_of_type_AndroidWidgetButton;
-      if (!TableQueryController.jdField_c_of_type_Boolean) {
-        break label277;
-      }
+    Object localObject;
+    if (TableQueryController.jdField_b_of_type_Boolean) {
+      localObject = paramContext.getString(2131690638);
+    } else {
+      localObject = paramContext.getString(2131690642);
     }
-    label277:
-    for (Object localObject = paramContext.getString(2131690712);; localObject = paramContext.getString(2131690713))
+    localButton.setText((CharSequence)localObject);
+    this.jdField_c_of_type_AndroidWidgetButton = ((Button)findViewById(2131376160));
+    localButton = this.jdField_c_of_type_AndroidWidgetButton;
+    if (TableQueryController.jdField_c_of_type_Boolean) {
+      localObject = paramContext.getString(2131690640);
+    } else {
+      localObject = paramContext.getString(2131690641);
+    }
+    localButton.setText((CharSequence)localObject);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378251));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(getResources().getColor(2131165321));
+    while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
     {
-      localButton.setText((CharSequence)localObject);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)findViewById(2131378862));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setBackgroundColor(getResources().getColor(2131165351));
-      int i = 0;
-      while (i < this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildCount())
+      localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
+      if ((localObject instanceof TextView))
       {
-        localObject = this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i);
-        if ((localObject instanceof TextView))
-        {
-          ((TextView)localObject).setTextColor(-1);
-          ((TextView)localObject).setTypeface(Typeface.defaultFromStyle(1));
-        }
-        i += 1;
+        localObject = (TextView)localObject;
+        ((TextView)localObject).setTextColor(-1);
+        ((TextView)localObject).setTypeface(Typeface.defaultFromStyle(1));
       }
-      localObject = paramContext.getString(2131690714);
-      break;
+      i += 1;
     }
-    this.jdField_a_of_type_AndroidViewView = findViewById(2131376950);
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131366064));
+    this.jdField_a_of_type_AndroidViewView = findViewById(2131376440);
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)findViewById(2131365894));
     this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryController = TableQueryController.a();
     this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer$TableQueryAdapter = new TableQueryViewer.TableQueryAdapter(this);
     this.jdField_a_of_type_AndroidWidgetListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqTablequeryTableQueryViewer$TableQueryAdapter);
@@ -130,60 +131,62 @@ public class TableQueryViewer
   {
     switch (paramView.getId())
     {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    default: 
+      break;
+    case 2131376160: 
+      if (TableQueryController.jdField_c_of_type_Boolean)
+      {
+        this.jdField_c_of_type_AndroidWidgetButton.setText(getContext().getString(2131690641));
+        TableQueryController.jdField_c_of_type_Boolean = false;
+      }
+      else
+      {
+        this.jdField_c_of_type_AndroidWidgetButton.setText(getContext().getString(2131690640));
+        TableQueryController.jdField_c_of_type_Boolean = true;
+      }
+      break;
+    case 2131368179: 
       if (this.jdField_b_of_type_Boolean)
       {
         this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setVisibility(8);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(getContext().getString(2131690720));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(getContext().getString(2131690648));
         this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setEnabled(false);
         this.jdField_b_of_type_Boolean = false;
       }
       else
       {
         this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setVisibility(0);
-        this.jdField_a_of_type_AndroidWidgetButton.setText(getContext().getString(2131690711));
+        this.jdField_a_of_type_AndroidWidgetButton.setText(getContext().getString(2131690639));
         this.jdField_a_of_type_AndroidWidgetHorizontalScrollView.setEnabled(true);
         this.jdField_b_of_type_Boolean = true;
-        continue;
-        a();
-        continue;
-        if (TableQueryController.jdField_c_of_type_Boolean)
-        {
-          this.jdField_c_of_type_AndroidWidgetButton.setText(getContext().getString(2131690713));
-          TableQueryController.jdField_c_of_type_Boolean = false;
-        }
-        else
-        {
-          this.jdField_c_of_type_AndroidWidgetButton.setText(getContext().getString(2131690712));
-          TableQueryController.jdField_c_of_type_Boolean = true;
-          continue;
-          if (TableQueryController.jdField_b_of_type_Boolean)
-          {
-            this.d.setText(getContext().getString(2131690714));
-            TableQueryController.jdField_b_of_type_Boolean = false;
-          }
-          else
-          {
-            this.d.setText(getContext().getString(2131690710));
-            TableQueryController.jdField_b_of_type_Boolean = true;
-          }
-        }
       }
+      break;
+    case 2131365725: 
+      if (TableQueryController.jdField_b_of_type_Boolean)
+      {
+        this.d.setText(getContext().getString(2131690642));
+        TableQueryController.jdField_b_of_type_Boolean = false;
+      }
+      else
+      {
+        this.d.setText(getContext().getString(2131690638));
+        TableQueryController.jdField_b_of_type_Boolean = true;
+      }
+      break;
+    case 2131364665: 
+      a();
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tablequery.TableQueryViewer
  * JD-Core Version:    0.7.0.1
  */

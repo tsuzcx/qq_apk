@@ -20,10 +20,10 @@ import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.app.TroopHandler;
 import com.tencent.mobileqq.simpleui.SimpleUIUtil;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.studymode.StudyModeManager;
+import com.tencent.mobileqq.troop.troopphoto.api.ITroopPhotoHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
@@ -39,7 +39,7 @@ public class PicAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130839287;
+    return 2130839142;
   }
   
   public int getAppID()
@@ -68,84 +68,84 @@ public class PicAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131720011);
+    return BaseApplicationImpl.getContext().getString(2131719743);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
-    int i = 0;
-    if (paramSessionInfo.jdField_a_of_type_Int == 9501) {}
-    for (;;)
-    {
+    int i;
+    if (paramSessionInfo.jdField_a_of_type_Int == 9501) {
       try
       {
         paramPlusPanelViewModel = SmartDeviceProxyMgr.a(paramBaseChatPie.a, Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString));
         if (paramPlusPanelViewModel != null) {
           i = paramPlusPanelViewModel.productId;
         }
-        if ((!SimpleUIUtil.a()) && (!(paramBaseChatPie instanceof RobotChatPie)) && (!StudyModeManager.a())) {
-          break;
-        }
-        paramBaseChatPie.a(Integer.valueOf(4));
-        if (QLog.isColorLevel()) {
-          QLog.d("PicAppInfo", 2, "report() called with plus from simple!");
-        }
-        if (SimpleUIUtil.a()) {
-          ReportController.b(null, "dc00898", "", "", "0X800A113", "0X800A113", 0, 0, "", "", "", "");
-        }
-        if ((paramBaseChatPie instanceof RobotChatPie)) {
-          ReportController.b(null, "dc00898", "", "", "0X800A489", "0X800A489", 0, 0, "", "", "", "");
-        }
-        return;
       }
       catch (Exception paramPlusPanelViewModel)
       {
         QLog.d("PicAppInfo", 1, paramPlusPanelViewModel, new Object[0]);
       }
+    } else {
       i = 0;
     }
-    QQAppInterface localQQAppInterface = paramBaseChatPie.a;
-    if (paramSessionInfo.jdField_a_of_type_Int == 9501)
+    if ((!SimpleUIUtil.a()) && (!(paramBaseChatPie instanceof RobotChatPie)) && (!StudyModeManager.a()))
     {
-      paramPlusPanelViewModel = new Intent();
-      if (!DeviceMsgChatPie.R) {}
-      for (boolean bool = true;; bool = false)
+      QQAppInterface localQQAppInterface = paramBaseChatPie.a;
+      int j = paramSessionInfo.jdField_a_of_type_Int;
+      Object localObject = null;
+      if (j == 9501)
       {
-        paramPlusPanelViewModel.putExtra("isdevicesupportmultiupload", bool);
+        paramPlusPanelViewModel = new Intent();
+        paramPlusPanelViewModel.putExtra("isdevicesupportmultiupload", DeviceMsgChatPie.H ^ true);
         PlusPanelUtils.a(localQQAppInterface, paramBaseChatPie.a(), paramSessionInfo, null, paramPlusPanelViewModel);
         SmartDeviceReport.a(localQQAppInterface, Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString), "Usr_AIO_SendMsg", 3, 0, i);
-        paramPlusPanelViewModel = (TroopHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_HANDLER);
-        if ((!TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) && (paramSessionInfo.jdField_a_of_type_Int == 1)) {
-          paramPlusPanelViewModel.d(paramSessionInfo.jdField_a_of_type_JavaLangString, true);
+      }
+      else
+      {
+        paramPlusPanelViewModel = localObject;
+        if (paramSessionInfo.jdField_a_of_type_Int == 1)
+        {
+          paramPlusPanelViewModel = localObject;
+          if (((HotChatManager)localQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString))
+          {
+            paramPlusPanelViewModel = new Intent();
+            paramPlusPanelViewModel.putExtra("filter_photolist_troopalbum_toolbar", true);
+          }
         }
-        paramBaseChatPie.a().setCanLock(false);
-        AIOPanelUtiles.a(localQQAppInterface, "0X8004079", paramSessionInfo.jdField_a_of_type_Int);
-        if (paramSessionInfo.jdField_a_of_type_Int == 9501) {
-          SmartDeviceReport.a(localQQAppInterface, Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString), "Usr_AIO_SendMsg", 3, 0, i);
-        }
-        if (!AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
-          break;
-        }
+        PlusPanelUtils.a(paramBaseChatPie.a(), paramSessionInfo, localQQAppInterface, paramPlusPanelViewModel);
+      }
+      paramPlusPanelViewModel = (ITroopPhotoHandler)localQQAppInterface.getBusinessHandler(BusinessHandlerFactory.TROOP_PHOTO_HANDLER);
+      if ((!TextUtils.isEmpty(paramSessionInfo.jdField_a_of_type_JavaLangString)) && (paramSessionInfo.jdField_a_of_type_Int == 1)) {
+        paramPlusPanelViewModel.a(paramSessionInfo.jdField_a_of_type_JavaLangString, true);
+      }
+      paramBaseChatPie.a().setCanLock(false);
+      AIOPanelUtiles.a(localQQAppInterface, "0X8004079", paramSessionInfo.jdField_a_of_type_Int);
+      if (paramSessionInfo.jdField_a_of_type_Int == 9501) {
+        SmartDeviceReport.a(localQQAppInterface, Long.parseLong(paramSessionInfo.jdField_a_of_type_JavaLangString), "Usr_AIO_SendMsg", 3, 0, i);
+      }
+      if (AnonymousChatHelper.a().a(paramSessionInfo.jdField_a_of_type_JavaLangString)) {
         ReportController.b(localQQAppInterface, "P_CliOper", "Grp_anon", "", "anon_aio", "Clk_pic", 0, 0, paramSessionInfo.jdField_a_of_type_JavaLangString, "", "", "");
-        return;
       }
     }
-    if ((paramSessionInfo.jdField_a_of_type_Int == 1) && (((HotChatManager)localQQAppInterface.getManager(QQManagerFactory.HOT_CHAT_MANAGER)).b(paramSessionInfo.jdField_a_of_type_JavaLangString)))
+    else
     {
-      paramPlusPanelViewModel = new Intent();
-      paramPlusPanelViewModel.putExtra("filter_photolist_troopalbum_toolbar", true);
-    }
-    for (;;)
-    {
-      PlusPanelUtils.a(paramBaseChatPie.a(), paramSessionInfo, localQQAppInterface, paramPlusPanelViewModel);
-      break;
-      paramPlusPanelViewModel = null;
+      paramBaseChatPie.a(4);
+      if (QLog.isColorLevel()) {
+        QLog.d("PicAppInfo", 2, "report() called with plus from simple!");
+      }
+      if (SimpleUIUtil.a()) {
+        ReportController.b(null, "dc00898", "", "", "0X800A113", "0X800A113", 0, 0, "", "", "", "");
+      }
+      if ((paramBaseChatPie instanceof RobotChatPie)) {
+        ReportController.b(null, "dc00898", "", "", "0X800A489", "0X800A489", 0, 0, "", "", "", "");
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.PicAppInfo
  * JD-Core Version:    0.7.0.1
  */

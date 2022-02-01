@@ -20,33 +20,40 @@ class MergeForwardRevokeHelper$RevokeMessageObserver
   public void onMsgRevokeNotice(boolean paramBoolean1, List<MessageRecord> paramList, boolean paramBoolean2)
   {
     super.onMsgRevokeNotice(paramBoolean1, paramList, paramBoolean2);
-    if ((MergeForwardRevokeHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper, paramList)) && (paramBoolean1)) {}
-    for (paramBoolean2 = true;; paramBoolean2 = false)
+    if ((MergeForwardRevokeHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper, paramList)) && (paramBoolean1)) {
+      paramBoolean2 = true;
+    } else {
+      paramBoolean2 = false;
+    }
+    paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (QLog.isColorLevel())
     {
-      paramList = (BaseActivity)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (QLog.isColorLevel()) {
-        QLog.d("MergeForwardRevokeHelper", 2, "onMsgRevokeNotice  hasMsgRevoked:" + paramBoolean2 + "; isSuccess:" + paramBoolean1);
-      }
-      if ((paramBoolean2) && (paramList != null))
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onMsgRevokeNotice  hasMsgRevoked:");
+      localStringBuilder.append(paramBoolean2);
+      localStringBuilder.append("; isSuccess:");
+      localStringBuilder.append(paramBoolean1);
+      QLog.d("MergeForwardRevokeHelper", 2, localStringBuilder.toString());
+    }
+    if ((paramBoolean2) && (paramList != null))
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper.a)
       {
-        if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper.a) {
-          break;
-        }
         paramList.finish();
+        return;
       }
-      return;
+      if (MergeForwardRevokeHelper.a() == paramList)
+      {
+        MergeForwardRevokeHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper, paramList);
+        return;
+      }
+      paramList.finish();
     }
-    if (MergeForwardRevokeHelper.a() == paramList)
-    {
-      MergeForwardRevokeHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioForwardMergeForwardRevokeHelper, paramList);
-      return;
-    }
-    paramList.finish();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.forward.MergeForwardRevokeHelper.RevokeMessageObserver
  * JD-Core Version:    0.7.0.1
  */

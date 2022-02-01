@@ -31,6 +31,21 @@ public abstract class IResultReceiver$Stub
     return new IResultReceiver.Stub.Proxy(paramIBinder);
   }
   
+  public static IResultReceiver getDefaultImpl()
+  {
+    return IResultReceiver.Stub.Proxy.sDefaultImpl;
+  }
+  
+  public static boolean setDefaultImpl(IResultReceiver paramIResultReceiver)
+  {
+    if ((IResultReceiver.Stub.Proxy.sDefaultImpl == null) && (paramIResultReceiver != null))
+    {
+      IResultReceiver.Stub.Proxy.sDefaultImpl = paramIResultReceiver;
+      return true;
+    }
+    return false;
+  }
+  
   public IBinder asBinder()
   {
     return this;
@@ -38,27 +53,28 @@ public abstract class IResultReceiver$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
+      if (paramInt1 != 1598968902) {
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      }
       paramParcel2.writeString("android.support.v4.os.IResultReceiver");
       return true;
     }
     paramParcel1.enforceInterface("android.support.v4.os.IResultReceiver");
     paramInt1 = paramParcel1.readInt();
-    if (paramParcel1.readInt() != 0) {}
-    for (paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);; paramParcel1 = null)
-    {
-      send(paramInt1, paramParcel1);
-      return true;
+    if (paramParcel1.readInt() != 0) {
+      paramParcel1 = (Bundle)Bundle.CREATOR.createFromParcel(paramParcel1);
+    } else {
+      paramParcel1 = null;
     }
+    send(paramInt1, paramParcel1);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     android.support.v4.os.IResultReceiver.Stub
  * JD-Core Version:    0.7.0.1
  */

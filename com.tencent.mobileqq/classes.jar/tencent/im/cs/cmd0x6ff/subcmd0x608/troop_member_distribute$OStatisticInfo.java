@@ -21,13 +21,14 @@ public final class troop_member_distribute$OStatisticInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_desc", "uint32_count", "uint32_statistic_type" }, new Object[] { localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, OStatisticInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 16, 24 }, new String[] { "bytes_desc", "uint32_count", "uint32_statistic_type" }, new Object[] { localByteStringMicro, localInteger, localInteger }, OStatisticInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.cmd0x6ff.subcmd0x608.troop_member_distribute.OStatisticInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -5,7 +5,7 @@ import com.tencent.widget.ScrollView;
 
 public class WebViewTouchHelper
 {
-  private static final String jdField_a_of_type_JavaLangString = WebViewTouchHelper.class.getSimpleName();
+  private static final String jdField_a_of_type_JavaLangString = "WebViewTouchHelper";
   private float jdField_a_of_type_Float;
   public int a;
   private TouchWebView jdField_a_of_type_ComTencentBizUiTouchWebView;
@@ -27,16 +27,21 @@ public class WebViewTouchHelper
   public void a(int paramInt)
   {
     this.jdField_a_of_type_Int = paramInt;
-    if ((this.jdField_a_of_type_ComTencentWidgetScrollView == null) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView == null)) {}
-    while ((this.jdField_a_of_type_Float <= 0.0F) || (this.jdField_a_of_type_ComTencentBizUiTouchWebView.canScrollVertically(-1)) || (paramInt != 0) || (!this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
-      return;
+    if (this.jdField_a_of_type_ComTencentWidgetScrollView != null)
+    {
+      TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentBizUiTouchWebView;
+      if (localTouchWebView == null) {
+        return;
+      }
+      if ((this.jdField_a_of_type_Float > 0.0F) && (!localTouchWebView.canScrollVertically(-1)) && (paramInt == 0) && (this.jdField_a_of_type_ComTencentWidgetScrollView.canScrollVertically(-1))) {
+        this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
+      }
     }
-    this.jdField_a_of_type_ComTencentWidgetScrollView.fling((int)-this.jdField_a_of_type_Float);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.ui.WebViewTouchHelper
  * JD-Core Version:    0.7.0.1
  */

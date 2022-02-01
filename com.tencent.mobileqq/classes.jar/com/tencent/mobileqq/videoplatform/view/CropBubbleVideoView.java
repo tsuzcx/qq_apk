@@ -16,21 +16,32 @@ public class CropBubbleVideoView
 {
   private static final float[] DEFAULT_EDGE_CORDS = { 7.0F, 9.0F, 0.0F, 6.0F, 2.5F, 9.0F, 5.5F, 15.0F, 0.5F, 13.0F };
   private static final String TAG = "CropBubbleVideoView";
-  private static final float ax = DEFAULT_EDGE_CORDS[0];
-  private static final float ay = DEFAULT_EDGE_CORDS[1];
-  private static final float bx = DEFAULT_EDGE_CORDS[2];
-  private static final float by = DEFAULT_EDGE_CORDS[3];
-  private static final float cx = DEFAULT_EDGE_CORDS[6];
-  private static final float cy = DEFAULT_EDGE_CORDS[7];
-  private static final float mx = DEFAULT_EDGE_CORDS[4];
-  private static final float my = DEFAULT_EDGE_CORDS[5];
-  private static final float nx = DEFAULT_EDGE_CORDS[8];
-  private static final float ny = DEFAULT_EDGE_CORDS[9];
+  private static final float ax;
+  private static final float ay;
+  private static final float bx;
+  private static final float by;
+  private static final float cx = arrayOfFloat[6];
+  private static final float cy = arrayOfFloat[7];
+  private static final float mx;
+  private static final float my;
+  private static final float nx = arrayOfFloat[8];
+  private static final float ny = arrayOfFloat[9];
   private Path mCropPath;
   private boolean mDrawTri = true;
   public boolean mIsSend;
   private float mRectRadius = 15.0F;
   public float triWidth = Math.abs(bx - cx);
+  
+  static
+  {
+    float[] arrayOfFloat = DEFAULT_EDGE_CORDS;
+    ax = arrayOfFloat[0];
+    ay = arrayOfFloat[1];
+    bx = arrayOfFloat[2];
+    by = arrayOfFloat[3];
+    mx = arrayOfFloat[4];
+    my = arrayOfFloat[5];
+  }
   
   public CropBubbleVideoView(Context paramContext, long paramLong, VideoPlayParam paramVideoPlayParam, boolean paramBoolean)
   {
@@ -40,34 +51,33 @@ public class CropBubbleVideoView
   
   private void buildCropShape(boolean paramBoolean, int paramInt1, int paramInt2, Resources paramResources, float paramFloat)
   {
-    RectF localRectF;
-    float f1;
-    label60:
-    float[] arrayOfFloat;
+    Object localObject = this.mCropPath;
+    if (localObject != null) {
+      ((Path)localObject).reset();
+    } else {
+      this.mCropPath = new Path();
+    }
+    localObject = new RectF();
+    float f1 = dp2px(this.triWidth, paramResources);
+    if (this.mDrawTri)
+    {
+      if (paramBoolean) {
+        ((RectF)localObject).set(0.0F, 0.0F, paramInt1 - f1, paramInt2);
+      } else {
+        ((RectF)localObject).set(f1, 0.0F, paramInt1, paramInt2);
+      }
+    }
+    else {
+      ((RectF)localObject).set(0.0F, 0.0F, paramInt1, paramInt2);
+    }
+    f1 = dp2px(by, paramResources);
+    float[] arrayOfFloat = new float[8];
+    Arrays.fill(arrayOfFloat, dp2px(paramFloat, paramResources));
     float f2;
     float f3;
-    if (this.mCropPath != null)
+    if (paramBoolean)
     {
-      this.mCropPath.reset();
-      localRectF = new RectF();
-      f1 = dp2px(this.triWidth, paramResources);
-      if (!this.mDrawTri) {
-        break label311;
-      }
-      if (!paramBoolean) {
-        break label296;
-      }
-      localRectF.set(0.0F, 0.0F, paramInt1 - f1, paramInt2);
-      f1 = dp2px(by, paramResources);
-      arrayOfFloat = new float[8];
-      paramFloat = dp2px(paramFloat, paramResources);
-      if (arrayOfFloat != null) {
-        Arrays.fill(arrayOfFloat, paramFloat);
-      }
-      if (!paramBoolean) {
-        break label325;
-      }
-      this.mCropPath.addRoundRect(localRectF, arrayOfFloat, Path.Direction.CW);
+      this.mCropPath.addRoundRect((RectF)localObject, arrayOfFloat, Path.Direction.CW);
       if (this.mDrawTri)
       {
         paramFloat = paramInt1 - dp2px(ax, paramResources);
@@ -84,20 +94,9 @@ public class CropBubbleVideoView
         this.mCropPath.quadTo(f2, f3, paramFloat, f1);
       }
     }
-    for (;;)
+    else
     {
-      this.mCropPath.close();
-      return;
-      this.mCropPath = new Path();
-      break;
-      label296:
-      localRectF.set(f1, 0.0F, paramInt1, paramInt2);
-      break label60;
-      label311:
-      localRectF.set(0.0F, 0.0F, paramInt1, paramInt2);
-      break label60;
-      label325:
-      this.mCropPath.addRoundRect(localRectF, arrayOfFloat, Path.Direction.CCW);
+      this.mCropPath.addRoundRect((RectF)localObject, arrayOfFloat, Path.Direction.CCW);
       if (this.mDrawTri)
       {
         paramFloat = dp2px(ax, paramResources);
@@ -114,6 +113,7 @@ public class CropBubbleVideoView
         this.mCropPath.quadTo(f2, f3, paramFloat, f1);
       }
     }
+    this.mCropPath.close();
   }
   
   public static int dp2px(float paramFloat, Resources paramResources)
@@ -121,14 +121,15 @@ public class CropBubbleVideoView
     return (int)(paramResources.getDisplayMetrics().density * paramFloat + 0.5F);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
     int i = getWidth();
     int j = getHeight();
-    Resources localResources = this.mContext.getResources();
-    buildCropShape(this.mIsSend, i, j, localResources, this.mRectRadius);
-    if (this.mCropPath != null) {
-      paramCanvas.clipPath(this.mCropPath);
+    Object localObject = this.mContext.getResources();
+    buildCropShape(this.mIsSend, i, j, (Resources)localObject, this.mRectRadius);
+    localObject = this.mCropPath;
+    if (localObject != null) {
+      paramCanvas.clipPath((Path)localObject);
     }
     super.dispatchDraw(paramCanvas);
   }
@@ -138,7 +139,7 @@ public class CropBubbleVideoView
     return this.triWidth;
   }
   
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     if (Build.VERSION.SDK_INT < 18)
@@ -161,7 +162,7 @@ public class CropBubbleVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.videoplatform.view.CropBubbleVideoView
  * JD-Core Version:    0.7.0.1
  */

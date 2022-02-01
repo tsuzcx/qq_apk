@@ -18,59 +18,70 @@ public class PlayerCommentSegment$OnChildViewClickListener
   
   public void a(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(PlayerCommentSegment.a(this.a)).size())) {}
-    do
+    if (paramInt >= 0)
     {
-      return;
+      if (paramInt > this.a.a.a(PlayerCommentSegment.a(this.a)).size()) {
+        return;
+      }
       paramObject = (CommentEntry)this.a.a.a(PlayerCommentSegment.a(this.a)).get(paramInt);
       switch (paramView.getId())
       {
       default: 
         return;
+      case 2131364943: 
+        if (PlayerCommentSegment.a(this.a) != null) {
+          PlayerCommentSegment.a(this.a).a(paramObject, paramInt, PlayerCommentSegment.a(this.a).a());
+        }
+      case 2131370353: 
+        PlayerCommentSegment.a(this.a).a(PlayerCommentSegment.a(this.a).a());
+        return;
       }
-    } while ((paramObject.authorRole == 1002) || (paramObject.authorRole == 1003));
-    StoryApi.a(paramView.getContext(), 12, paramObject.authorUnionId);
-    return;
-    if (PlayerCommentSegment.a(this.a) != null) {
-      PlayerCommentSegment.a(this.a).a(paramObject, paramInt, PlayerCommentSegment.a(this.a).a());
+      if (paramObject.authorRole != 1002)
+      {
+        if (paramObject.authorRole == 1003) {
+          return;
+        }
+        StoryApi.a(paramView.getContext(), 12, paramObject.authorUnionId);
+      }
     }
-    PlayerCommentSegment.a(this.a).a(PlayerCommentSegment.a(this.a).a());
   }
   
   public void b(int paramInt, View paramView, Object paramObject, BaseViewHolder paramBaseViewHolder)
   {
-    if ((paramInt < 0) || (paramInt > this.a.a.a(PlayerCommentSegment.a(this.a)).size())) {
-      return;
-    }
-    paramObject = (CommentEntry)this.a.a.a(PlayerCommentSegment.a(this.a)).get(paramInt);
-    switch (paramView.getId())
+    if (paramInt >= 0)
     {
-    default: 
-      return;
-    case 2131365060: 
-      paramView = PlayerCommentSegment.a(this.a).a();
-      if ((paramView != null) && (paramView.a != null)) {
-        if (!paramView.a.getOwner().isMe()) {
-          break label194;
-        }
-      }
-      label194:
-      for (paramView = "2";; paramView = "1")
-      {
-        StoryReportor.a("home_page", "press_reply", 0, 0, new String[] { paramView, StoryReportor.a(PlayerCommentSegment.a(this.a)) });
-        if (PlayerCommentSegment.a(this.a) == null) {
-          break;
-        }
-        PlayerCommentSegment.a(this.a).b(paramObject, paramInt, PlayerCommentSegment.a(this.a).a());
+      if (paramInt > this.a.a.a(PlayerCommentSegment.a(this.a)).size()) {
         return;
       }
+      paramObject = (CommentEntry)this.a.a.a(PlayerCommentSegment.a(this.a)).get(paramInt);
+      int i = paramView.getId();
+      if (i != 2131364943)
+      {
+        if (i != 2131370353) {
+          return;
+        }
+        PlayerCommentSegment.a(this.a).a(PlayerCommentSegment.a(this.a).a());
+        return;
+      }
+      paramView = PlayerCommentSegment.a(this.a).a();
+      if ((paramView != null) && (paramView.a != null))
+      {
+        if (paramView.a.getOwner().isMe()) {
+          paramView = "2";
+        } else {
+          paramView = "1";
+        }
+        StoryReportor.a("home_page", "press_reply", 0, 0, new String[] { paramView, StoryReportor.a(PlayerCommentSegment.a(this.a)) });
+      }
+      if (PlayerCommentSegment.a(this.a) != null) {
+        PlayerCommentSegment.a(this.a).b(paramObject, paramInt, PlayerCommentSegment.a(this.a).a());
+      }
     }
-    PlayerCommentSegment.a(this.a).a(PlayerCommentSegment.a(this.a).a());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.floatdialog.PlayerCommentSegment.OnChildViewClickListener
  * JD-Core Version:    0.7.0.1
  */

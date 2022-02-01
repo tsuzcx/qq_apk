@@ -24,24 +24,28 @@ public class MappedLogWriter
   
   public void close()
   {
-    if (this.fileOutputStream != null) {
-      this.fileOutputStream.close();
+    FileOutputStream localFileOutputStream = this.fileOutputStream;
+    if (localFileOutputStream != null) {
+      localFileOutputStream.close();
     }
   }
   
   public void writeThroughByteArray(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length <= 0)) {
-      return;
-    }
-    try
+    if (paramArrayOfByte != null)
     {
-      this.fileOutputStream.getChannel().write(ByteBuffer.wrap(paramArrayOfByte));
-      return;
-    }
-    catch (Throwable paramArrayOfByte)
-    {
-      Log.e("MappedLogWriter", "writeThroughByteArray failed. ", paramArrayOfByte);
+      if (paramArrayOfByte.length <= 0) {
+        return;
+      }
+      try
+      {
+        this.fileOutputStream.getChannel().write(ByteBuffer.wrap(paramArrayOfByte));
+        return;
+      }
+      catch (Throwable paramArrayOfByte)
+      {
+        Log.e("MappedLogWriter", "writeThroughByteArray failed. ", paramArrayOfByte);
+      }
     }
   }
   
@@ -60,7 +64,7 @@ public class MappedLogWriter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.util.log.utils.MappedLogWriter
  * JD-Core Version:    0.7.0.1
  */

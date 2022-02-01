@@ -12,22 +12,26 @@ class VcControllerImpl$2
   public void run()
   {
     QLog.d("VcControllerImpl", 1, "closeVideo start.");
-    VcControllerImpl.access$002(this.this$0, this.this$0.close(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int));
-    ThreadManager.getUIHandler().removeCallbacks(VcControllerImpl.access$300(this.this$0));
+    ??? = this.this$0;
+    VcControllerImpl.access$002((VcControllerImpl)???, ((VcControllerImpl)???).close(this.jdField_a_of_type_Long, this.jdField_a_of_type_Int));
+    ThreadManager.getUIHandler().removeCallbacks(VcControllerImpl.access$400(this.this$0));
     VcControllerImpl.access$202(this.this$0, -1);
     VcControllerImpl.access$102(this.this$0, null);
-    VcControllerImpl.access$400(this.this$0).a(this.jdField_a_of_type_Long);
-    QLog.d("VcControllerImpl", 1, "closeVideo end. mCloseResult = " + VcControllerImpl.access$000(this.this$0));
-    synchronized (VcControllerImpl.access$500(this.this$0))
+    VcControllerImpl.access$500(this.this$0).a(this.jdField_a_of_type_Long);
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("closeVideo end. mCloseResult = ");
+    ((StringBuilder)???).append(VcControllerImpl.access$000(this.this$0));
+    QLog.d("VcControllerImpl", 1, ((StringBuilder)???).toString());
+    synchronized (VcControllerImpl.access$600(this.this$0))
     {
-      VcControllerImpl.access$500(this.this$0).notify();
+      VcControllerImpl.access$600(this.this$0).notify();
       return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.core.VcControllerImpl.2
  * JD-Core Version:    0.7.0.1
  */

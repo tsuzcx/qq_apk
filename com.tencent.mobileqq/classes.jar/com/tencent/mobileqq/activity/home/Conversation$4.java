@@ -1,30 +1,29 @@
 package com.tencent.mobileqq.activity.home;
 
-import android.content.Intent;
-import com.tencent.mobileqq.apollo.ApolloRender;
-import com.tencent.mobileqq.apollo.ApolloSurfaceView;
-import com.tencent.mobileqq.apollo.IApolloRunnableTask;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.qphone.base.util.QLog;
+import mqq.app.AppRuntime;
 
 class Conversation$4
-  extends IApolloRunnableTask
+  implements Runnable
 {
-  Conversation$4(Conversation paramConversation, ApolloSurfaceView paramApolloSurfaceView, int paramInt1, int paramInt2, Intent paramIntent) {}
-  
-  public String a()
-  {
-    return "Conversation_selectPhotoFromSystem";
-  }
+  Conversation$4(Conversation paramConversation) {}
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloApolloSurfaceView.getRender() != null) {
-      ApolloRender.selectPhotoFromSystem(this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_AndroidContentIntent);
+    boolean bool = ((IPhoneContactService)this.this$0.a.getRuntimeService(IPhoneContactService.class, "")).checkAndUploadContact(true);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("REQ_FOR_SETTING : ");
+      localStringBuilder.append(bool);
+      QLog.i("BindMsgConstant", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.home.Conversation.4
  * JD-Core Version:    0.7.0.1
  */

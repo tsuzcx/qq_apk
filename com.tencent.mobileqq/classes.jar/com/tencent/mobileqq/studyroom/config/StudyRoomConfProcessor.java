@@ -42,24 +42,29 @@ public class StudyRoomConfProcessor
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0))
     {
       paramArrayOfQConfItem = paramArrayOfQConfItem[0];
-      if ((paramArrayOfQConfItem == null) || (TextUtils.isEmpty(paramArrayOfQConfItem.a))) {}
-    }
-    try
-    {
-      localStudyRoomConfBean.a = new JSONObject(paramArrayOfQConfItem.a);
-      return localStudyRoomConfBean;
-    }
-    catch (JSONException paramArrayOfQConfItem)
-    {
-      QLog.e("StudyRoomConfProcessor", 4, paramArrayOfQConfItem, new Object[0]);
+      if ((paramArrayOfQConfItem != null) && (!TextUtils.isEmpty(paramArrayOfQConfItem.a))) {
+        try
+        {
+          localStudyRoomConfBean.a = new JSONObject(paramArrayOfQConfItem.a);
+          return localStudyRoomConfBean;
+        }
+        catch (JSONException paramArrayOfQConfItem)
+        {
+          QLog.e("StudyRoomConfProcessor", 4, paramArrayOfQConfItem, new Object[0]);
+        }
+      }
     }
     return localStudyRoomConfBean;
   }
   
   public void a(StudyRoomConfBean paramStudyRoomConfBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomConfProcessor", 2, "[onUpdate] newConf:" + paramStudyRoomConfBean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onUpdate] newConf:");
+      localStringBuilder.append(paramStudyRoomConfBean);
+      QLog.d("StudyRoomConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -88,15 +93,25 @@ public class StudyRoomConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomConfProcessor", 2, "[onReqFailed] failCode=" + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[onReqFailed] failCode=");
+      localStringBuilder.append(paramInt);
+      QLog.d("StudyRoomConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
   public void onReqNoReceive()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("StudyRoomConfProcessor", 2, "onReqNoReceive: type=" + type() + "curContent:" + a());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqNoReceive: type=");
+      localStringBuilder.append(type());
+      localStringBuilder.append("curContent:");
+      localStringBuilder.append(a());
+      QLog.d("StudyRoomConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -107,7 +122,7 @@ public class StudyRoomConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.studyroom.config.StudyRoomConfProcessor
  * JD-Core Version:    0.7.0.1
  */

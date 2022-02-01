@@ -16,10 +16,14 @@ public class CharmRange
   
   public void hit(double paramDouble)
   {
-    if ((paramDouble >= this.min) && ((paramDouble < this.max) || ((this.max == 1.0D) && (paramDouble <= this.max))))
+    if (paramDouble >= this.min)
     {
-      this.status = 1;
-      return;
+      double d = this.max;
+      if ((paramDouble < d) || ((d == 1.0D) && (paramDouble <= d)))
+      {
+        this.status = 1;
+        return;
+      }
     }
     this.status = 2;
   }
@@ -31,7 +35,7 @@ public class CharmRange
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.model.CharmRange
  * JD-Core Version:    0.7.0.1
  */

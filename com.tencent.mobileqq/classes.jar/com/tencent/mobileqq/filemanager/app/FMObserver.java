@@ -3,21 +3,21 @@ package com.tencent.mobileqq.filemanager.app;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
-import android.support.v4.util.ArrayMap;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.OfflineFileInfo;
 import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanageraux.data.WeiYunFileInfo;
 import com.tencent.qphone.base.util.QLog;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.Observable;
 import java.util.Observer;
 
 public class FMObserver
   implements Observer
 {
-  private ArrayMap<Integer, FMObserver.FileEventOperator> a;
+  private Map<Integer, FMObserver.FileEventOperator> a;
   
   private void a(Object paramObject)
   {
@@ -30,7 +30,11 @@ public class FMObserver
       localFileEventOperator.a(paramObject);
       return;
     }
-    QLog.e("FMObserver<FileAssistant>", 1, "OnUpdate : Status[" + i + "] not processed");
+    paramObject = new StringBuilder();
+    paramObject.append("OnUpdate : Status[");
+    paramObject.append(i);
+    paramObject.append("] not processed");
+    QLog.e("FMObserver<FileAssistant>", 1, paramObject.toString());
   }
   
   private void a(Object[] paramArrayOfObject)
@@ -41,14 +45,21 @@ public class FMObserver
     int i = ((Integer)localObject[1]).intValue();
     paramArrayOfObject = (String)localObject[2];
     localObject = (String)localObject[3];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnZipImageThumbDownloadCompleted thumbUrl[" + (String)localObject + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnZipImageThumbDownloadCompleted thumbUrl[");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     a(bool, i, l, (String)localObject, paramArrayOfObject);
   }
   
   private void b(Object paramObject)
   {
     paramObject = (Long)((Object[])(Object[])paramObject)[0];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnOnlineFileQueryUpProgressTimeOut, nSessionId=" + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnOnlineFileQueryUpProgressTimeOut, nSessionId=");
+    localStringBuilder.append(paramObject);
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     c(paramObject.longValue());
   }
   
@@ -66,14 +77,31 @@ public class FMObserver
     String str5 = (String)localObject[7];
     long l = ((Long)localObject[8]).longValue();
     localObject = (Bundle)localObject[9];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnGetDiscVideoThumbInfo retCode[" + String.valueOf(i) + "],retMsg[" + paramArrayOfObject + "], downloadKey[" + str2 + "], downloadIp[" + str3 + "], downloadDomain[" + str4 + "], port[" + String.valueOf(j) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnGetDiscVideoThumbInfo retCode[");
+    localStringBuilder.append(String.valueOf(i));
+    localStringBuilder.append("],retMsg[");
+    localStringBuilder.append(paramArrayOfObject);
+    localStringBuilder.append("], downloadKey[");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("], downloadIp[");
+    localStringBuilder.append(str3);
+    localStringBuilder.append("], downloadDomain[");
+    localStringBuilder.append(str4);
+    localStringBuilder.append("], port[");
+    localStringBuilder.append(String.valueOf(j));
+    localStringBuilder.append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     b(bool, i, paramArrayOfObject, str1, str2, str3, str4, j, str5, l, (Bundle)localObject);
   }
   
   private void c(Object paramObject)
   {
     paramObject = (Long)((Object[])(Object[])paramObject)[0];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnOnlineFileRecvButSenderReplayTimeOut, nSessionId=" + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnOnlineFileRecvButSenderReplayTimeOut, nSessionId=");
+    localStringBuilder.append(paramObject);
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     b(paramObject.longValue());
   }
   
@@ -91,14 +119,31 @@ public class FMObserver
     String str5 = (String)localObject[7];
     long l = ((Long)localObject[8]).longValue();
     localObject = (Bundle)localObject[9];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnGetOfflineVideoThumbInfo retCode[" + String.valueOf(i) + "],retMsg[" + paramArrayOfObject + "], downloadKey[" + str2 + "], downloadIp[" + str3 + "], downloadDomain[" + str4 + "], port[" + String.valueOf(j) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnGetOfflineVideoThumbInfo retCode[");
+    localStringBuilder.append(String.valueOf(i));
+    localStringBuilder.append("],retMsg[");
+    localStringBuilder.append(paramArrayOfObject);
+    localStringBuilder.append("], downloadKey[");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("], downloadIp[");
+    localStringBuilder.append(str3);
+    localStringBuilder.append("], downloadDomain[");
+    localStringBuilder.append(str4);
+    localStringBuilder.append("], port[");
+    localStringBuilder.append(String.valueOf(j));
+    localStringBuilder.append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     a(bool, i, paramArrayOfObject, str1, str2, str3, str4, j, str5, l, (Bundle)localObject);
   }
   
   private void d(Object paramObject)
   {
     paramObject = (Long)((Object[])(Object[])paramObject)[0];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnOnlineFileProgressDirectDone, nSessionId=" + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnOnlineFileProgressDirectDone, nSessionId=");
+    localStringBuilder.append(paramObject);
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     a(paramObject.longValue());
   }
   
@@ -126,40 +171,35 @@ public class FMObserver
   {
     boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
     Object localObject = (Object[])paramArrayOfObject[2];
+    int i = 0;
     paramArrayOfObject = (FileManagerEntity)localObject[0];
-    if (localObject.length > 1) {}
-    for (int i = ((Integer)localObject[1]).intValue();; i = 0)
+    if (localObject.length > 1) {
+      i = ((Integer)localObject[1]).intValue();
+    }
+    if (bool)
     {
-      if (bool)
-      {
-        localObject = new ThumbnailInfo();
-        ((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject = paramArrayOfObject;
-        ((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangString = paramArrayOfObject.Uuid;
-        ((ThumbnailInfo)localObject).jdField_b_of_type_Int = i;
-        if (i == 7) {
-          ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString = paramArrayOfObject.strLargeThumPath;
-        }
-        for (;;)
-        {
-          ((ThumbnailInfo)localObject).jdField_a_of_type_Long = paramArrayOfObject.nSessionId;
-          a((ThumbnailInfo)localObject);
-          return;
-          if (i == 5) {
-            ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString = paramArrayOfObject.strMiddleThumPath;
-          } else {
-            ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString = paramArrayOfObject.strThumbPath;
-          }
-        }
-      }
       localObject = new ThumbnailInfo();
       ((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject = paramArrayOfObject;
       ((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangString = paramArrayOfObject.Uuid;
-      ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString = null;
       ((ThumbnailInfo)localObject).jdField_b_of_type_Int = i;
+      if (i == 7) {
+        ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString = paramArrayOfObject.strLargeThumPath;
+      } else if (i == 5) {
+        ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString = paramArrayOfObject.strMiddleThumPath;
+      } else {
+        ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString = paramArrayOfObject.strThumbPath;
+      }
       ((ThumbnailInfo)localObject).jdField_a_of_type_Long = paramArrayOfObject.nSessionId;
       a((ThumbnailInfo)localObject);
       return;
     }
+    localObject = new ThumbnailInfo();
+    ((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject = paramArrayOfObject;
+    ((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangString = paramArrayOfObject.Uuid;
+    ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString = null;
+    ((ThumbnailInfo)localObject).jdField_b_of_type_Int = i;
+    ((ThumbnailInfo)localObject).jdField_a_of_type_Long = paramArrayOfObject.nSessionId;
+    a((ThumbnailInfo)localObject);
   }
   
   private void f(Object[] paramArrayOfObject)
@@ -182,50 +222,90 @@ public class FMObserver
   {
     boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
     paramArrayOfObject = (Object[])paramArrayOfObject[2];
-    Integer localInteger = (Integer)paramArrayOfObject[0];
+    Object localObject = (Integer)paramArrayOfObject[0];
     String str = (String)paramArrayOfObject[1];
     if (!bool)
     {
       QLog.i("FMObserver<FileAssistant>", 1, "OnNeedVerifyPwdFailed");
-      b(localInteger.intValue(), str);
+      b(((Integer)localObject).intValue(), str);
       return;
     }
     paramArrayOfObject = (Boolean)paramArrayOfObject[2];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnNeedVerifyPwdSuccess,  need verify[" + paramArrayOfObject + "]");
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("OnNeedVerifyPwdSuccess,  need verify[");
+    ((StringBuilder)localObject).append(paramArrayOfObject);
+    ((StringBuilder)localObject).append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     a(paramArrayOfObject.booleanValue());
   }
   
   private void h(Object[] paramArrayOfObject)
   {
     boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-    Object localObject = (Object[])paramArrayOfObject[2];
-    paramArrayOfObject = (Integer)localObject[0];
-    String str1 = (String)localObject[1];
-    String str2 = (String)localObject[2];
-    String str3 = (String)localObject[3];
-    localObject = (Boolean)localObject[4];
+    Object localObject2 = (Object[])paramArrayOfObject[2];
+    Object localObject1 = (Integer)localObject2[0];
+    String str2 = (String)localObject2[1];
+    paramArrayOfObject = (String)localObject2[2];
+    String str1 = (String)localObject2[3];
+    localObject2 = (Boolean)localObject2[4];
     if (!bool)
     {
-      QLog.i("FMObserver<FileAssistant>", 1, "OnDelClouldFileFaild,  uuid[" + str2 + "]strFileName[" + String.valueOf(str3) + "]errorCode[" + String.valueOf(paramArrayOfObject) + "],retMsg[" + str1 + "],bOffline[" + String.valueOf(localObject) + "]");
-      a(str2, str3, paramArrayOfObject, str1, ((Boolean)localObject).booleanValue());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnDelClouldFileFaild,  uuid[");
+      localStringBuilder.append(paramArrayOfObject);
+      localStringBuilder.append("]strFileName[");
+      localStringBuilder.append(String.valueOf(str1));
+      localStringBuilder.append("]errorCode[");
+      localStringBuilder.append(String.valueOf(localObject1));
+      localStringBuilder.append("],retMsg[");
+      localStringBuilder.append(str2);
+      localStringBuilder.append("],bOffline[");
+      localStringBuilder.append(String.valueOf(localObject2));
+      localStringBuilder.append("]");
+      QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
+      a(paramArrayOfObject, str1, (Integer)localObject1, str2, ((Boolean)localObject2).booleanValue());
       return;
     }
-    QLog.i("FMObserver<FileAssistant>", 1, "OnDelClouldFileSuccess,  uuid[" + str2 + "]strFileName[" + String.valueOf(str3) + "],bOffline[" + String.valueOf(localObject) + "]");
-    a(str2, str3, ((Boolean)localObject).booleanValue());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("OnDelClouldFileSuccess,  uuid[");
+    ((StringBuilder)localObject1).append(paramArrayOfObject);
+    ((StringBuilder)localObject1).append("]strFileName[");
+    ((StringBuilder)localObject1).append(String.valueOf(str1));
+    ((StringBuilder)localObject1).append("],bOffline[");
+    ((StringBuilder)localObject1).append(String.valueOf(localObject2));
+    ((StringBuilder)localObject1).append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
+    a(paramArrayOfObject, str1, ((Boolean)localObject2).booleanValue());
   }
   
   private void i(Object[] paramArrayOfObject)
   {
     boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-    paramArrayOfObject = (Object[])paramArrayOfObject[2];
-    int i = ((Integer)paramArrayOfObject[0]).intValue();
-    String str1 = (String)paramArrayOfObject[1];
-    long l1 = ((Long)paramArrayOfObject[2]).longValue();
-    long l2 = ((Long)paramArrayOfObject[3]).longValue();
-    String str2 = (String)paramArrayOfObject[4];
-    long l3 = ((Long)paramArrayOfObject[5]).longValue();
-    QLog.i("FMObserver<FileAssistant>", 1, "OnForwardOfflineFile, bSuccess[" + String.valueOf(bool) + "], retCode[" + String.valueOf(i) + "], retMsg[" + String.valueOf(str1) + "], totalSpace[" + String.valueOf(l1) + "], usedSpace[" + String.valueOf(l2) + "], strUuid[" + String.valueOf(str2) + "], nSessionId[" + String.valueOf(l3) + "]");
-    a(bool, i, str1, l1, l2, str2, l3);
+    Object localObject = (Object[])paramArrayOfObject[2];
+    int i = ((Integer)localObject[0]).intValue();
+    paramArrayOfObject = (String)localObject[1];
+    long l1 = ((Long)localObject[2]).longValue();
+    long l2 = ((Long)localObject[3]).longValue();
+    String str = (String)localObject[4];
+    long l3 = ((Long)localObject[5]).longValue();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("OnForwardOfflineFile, bSuccess[");
+    ((StringBuilder)localObject).append(String.valueOf(bool));
+    ((StringBuilder)localObject).append("], retCode[");
+    ((StringBuilder)localObject).append(String.valueOf(i));
+    ((StringBuilder)localObject).append("], retMsg[");
+    ((StringBuilder)localObject).append(String.valueOf(paramArrayOfObject));
+    ((StringBuilder)localObject).append("], totalSpace[");
+    ((StringBuilder)localObject).append(String.valueOf(l1));
+    ((StringBuilder)localObject).append("], usedSpace[");
+    ((StringBuilder)localObject).append(String.valueOf(l2));
+    ((StringBuilder)localObject).append("], strUuid[");
+    ((StringBuilder)localObject).append(String.valueOf(str));
+    ((StringBuilder)localObject).append("], nSessionId[");
+    ((StringBuilder)localObject).append(String.valueOf(l3));
+    ((StringBuilder)localObject).append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    a(bool, i, paramArrayOfObject, l1, l2, str, l3);
   }
   
   private void j(Object[] paramArrayOfObject)
@@ -233,20 +313,19 @@ public class FMObserver
     try
     {
       bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-      if (bool) {
-        b();
-      }
-      return;
     }
     catch (Exception paramArrayOfObject)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("FMObserver<FileAssistant>", 1, "OnRefreshList param error!");
-        }
-        boolean bool = false;
-      }
+      boolean bool;
+      label13:
+      break label13;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("FMObserver<FileAssistant>", 1, "OnRefreshList param error!");
+    }
+    bool = false;
+    if (bool) {
+      b();
     }
   }
   
@@ -254,65 +333,81 @@ public class FMObserver
   {
     if (((Boolean)paramArrayOfObject[1]).booleanValue())
     {
-      paramArrayOfObject = (Object[])paramArrayOfObject[2];
-      localObject = new ThumbnailInfo();
-      ((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangString = ((String)paramArrayOfObject[0]);
-      ((ThumbnailInfo)localObject).jdField_a_of_type_Int = ((Integer)paramArrayOfObject[1]).intValue();
-      ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString = ((String)paramArrayOfObject[2]);
-      ((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject = paramArrayOfObject[3];
-      QLog.i("FMObserver<FileAssistant>", 1, "OnThumbDownLoadSuccess,fileId[" + ((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangString + "],filePath[" + ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString + "]");
-      if ((((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject != null) && (((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString != null) && (((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString.length() > 0))
-      {
-        if (!(((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject instanceof WeiYunFileInfo)) {
-          break label171;
-        }
-        ((WeiYunFileInfo)((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject).h = ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString;
-      }
-      for (;;)
-      {
-        a((ThumbnailInfo)localObject);
-        return;
-        label171:
-        if ((((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject instanceof OfflineFileInfo)) {
-          ((OfflineFileInfo)((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject).e = ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString;
-        } else if ((((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject instanceof FileManagerEntity)) {
-          ((FileManagerEntity)((ThumbnailInfo)localObject).jdField_a_of_type_JavaLangObject).strThumbPath = ((ThumbnailInfo)localObject).jdField_b_of_type_JavaLangString;
+      localObject1 = (Object[])paramArrayOfObject[2];
+      paramArrayOfObject = new ThumbnailInfo();
+      paramArrayOfObject.jdField_a_of_type_JavaLangString = ((String)localObject1[0]);
+      paramArrayOfObject.jdField_a_of_type_Int = ((Integer)localObject1[1]).intValue();
+      paramArrayOfObject.jdField_b_of_type_JavaLangString = ((String)localObject1[2]);
+      paramArrayOfObject.jdField_a_of_type_JavaLangObject = localObject1[3];
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("OnThumbDownLoadSuccess,fileId[");
+      ((StringBuilder)localObject1).append(paramArrayOfObject.jdField_a_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append("],filePath[");
+      ((StringBuilder)localObject1).append(paramArrayOfObject.jdField_b_of_type_JavaLangString);
+      ((StringBuilder)localObject1).append("]");
+      QLog.i("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
+      if ((paramArrayOfObject.jdField_a_of_type_JavaLangObject != null) && (paramArrayOfObject.jdField_b_of_type_JavaLangString != null) && (paramArrayOfObject.jdField_b_of_type_JavaLangString.length() > 0)) {
+        if ((paramArrayOfObject.jdField_a_of_type_JavaLangObject instanceof WeiYunFileInfo)) {
+          ((WeiYunFileInfo)paramArrayOfObject.jdField_a_of_type_JavaLangObject).h = paramArrayOfObject.jdField_b_of_type_JavaLangString;
+        } else if ((paramArrayOfObject.jdField_a_of_type_JavaLangObject instanceof OfflineFileInfo)) {
+          ((OfflineFileInfo)paramArrayOfObject.jdField_a_of_type_JavaLangObject).e = paramArrayOfObject.jdField_b_of_type_JavaLangString;
+        } else if ((paramArrayOfObject.jdField_a_of_type_JavaLangObject instanceof FileManagerEntity)) {
+          ((FileManagerEntity)paramArrayOfObject.jdField_a_of_type_JavaLangObject).strThumbPath = paramArrayOfObject.jdField_b_of_type_JavaLangString;
         }
       }
+      a(paramArrayOfObject);
+      return;
     }
-    Object localObject = (Object[])paramArrayOfObject[2];
-    String str = (String)localObject[0];
+    Object localObject1 = (Object[])paramArrayOfObject[2];
+    Object localObject2 = (String)localObject1[0];
     paramArrayOfObject = new ThumbnailInfo();
     paramArrayOfObject.jdField_b_of_type_JavaLangString = null;
-    paramArrayOfObject.jdField_a_of_type_JavaLangString = str;
-    paramArrayOfObject.jdField_a_of_type_JavaLangObject = localObject[1];
-    localObject = new Handler();
-    QLog.i("FMObserver<FileAssistant>", 1, "OnThumbDownLoadSuccess(faild),fileId[" + paramArrayOfObject.jdField_a_of_type_JavaLangString + "],delay 1000ms");
-    ((Handler)localObject).postDelayed(new FMObserver.43(this, paramArrayOfObject), 1000L);
+    paramArrayOfObject.jdField_a_of_type_JavaLangString = ((String)localObject2);
+    paramArrayOfObject.jdField_a_of_type_JavaLangObject = localObject1[1];
+    localObject1 = new Handler();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("OnThumbDownLoadSuccess(faild),fileId[");
+    ((StringBuilder)localObject2).append(paramArrayOfObject.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject2).append("],delay 1000ms");
+    QLog.i("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
+    ((Handler)localObject1).postDelayed(new FMObserver.43(this, paramArrayOfObject), 1000L);
   }
   
   private void l(Object[] paramArrayOfObject)
   {
     if (((Boolean)paramArrayOfObject[1]).booleanValue())
     {
-      paramArrayOfObject = (Object[])paramArrayOfObject[2];
-      i = ((Integer)paramArrayOfObject[0]).intValue();
-      str1 = (String)paramArrayOfObject[1];
-      str2 = (String)paramArrayOfObject[2];
-      l = ((Long)paramArrayOfObject[3]).longValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("FMObserver<FileAssistant>", 2, "OnOfflineSendToWeiYunSuccess, nSessionId[" + String.valueOf(l) + "]");
+      localObject2 = (Object[])paramArrayOfObject[2];
+      i = ((Integer)localObject2[0]).intValue();
+      paramArrayOfObject = (String)localObject2[1];
+      localObject1 = (String)localObject2[2];
+      l = ((Long)localObject2[3]).longValue();
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("OnOfflineSendToWeiYunSuccess, nSessionId[");
+        ((StringBuilder)localObject2).append(String.valueOf(l));
+        ((StringBuilder)localObject2).append("]");
+        QLog.d("FMObserver<FileAssistant>", 2, ((StringBuilder)localObject2).toString());
       }
-      a(l, str2, i, str1);
+      a(l, (String)localObject1, i, paramArrayOfObject);
       return;
     }
-    paramArrayOfObject = (Object[])paramArrayOfObject[2];
-    int i = ((Integer)paramArrayOfObject[0]).intValue();
-    String str1 = (String)paramArrayOfObject[1];
-    String str2 = (String)paramArrayOfObject[2];
-    long l = ((Long)paramArrayOfObject[3]).longValue();
-    QLog.e("FMObserver<FileAssistant>", 1, "OnWeiYunSendToOfflineFaild, , nSessionId[" + String.valueOf(l) + "], errorCode[" + String.valueOf(i) + "], strErrMsg[" + String.valueOf(str1) + "]");
-    a(i, l, str1);
+    Object localObject1 = (Object[])paramArrayOfObject[2];
+    int i = ((Integer)localObject1[0]).intValue();
+    paramArrayOfObject = (String)localObject1[1];
+    Object localObject2 = (String)localObject1[2];
+    long l = ((Long)localObject1[3]).longValue();
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("OnWeiYunSendToOfflineFaild, , nSessionId[");
+    ((StringBuilder)localObject1).append(String.valueOf(l));
+    ((StringBuilder)localObject1).append("], errorCode[");
+    ((StringBuilder)localObject1).append(String.valueOf(i));
+    ((StringBuilder)localObject1).append("], strErrMsg[");
+    ((StringBuilder)localObject1).append(String.valueOf(paramArrayOfObject));
+    ((StringBuilder)localObject1).append("]");
+    QLog.e("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
+    a(i, l, paramArrayOfObject);
   }
   
   private void m(Object[] paramArrayOfObject)
@@ -332,34 +427,41 @@ public class FMObserver
       d();
       return;
     }
-    paramArrayOfObject = (Object[])paramArrayOfObject[2];
-    int i = ((Integer)paramArrayOfObject[0]).intValue();
-    String str = (String)paramArrayOfObject[1];
-    long l = ((Long)paramArrayOfObject[2]).longValue();
-    QLog.e("FMObserver<FileAssistant>", 1, "OnWeiYunSendToOfflineFaild, , nSessionId[" + String.valueOf(l) + "], errorCode[" + String.valueOf(i) + "], strErrMsg[" + String.valueOf(str) + "]");
-    a(Integer.valueOf(i), l, str);
+    Object localObject = (Object[])paramArrayOfObject[2];
+    int i = ((Integer)localObject[0]).intValue();
+    paramArrayOfObject = (String)localObject[1];
+    long l = ((Long)localObject[2]).longValue();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("OnWeiYunSendToOfflineFaild, , nSessionId[");
+    ((StringBuilder)localObject).append(String.valueOf(l));
+    ((StringBuilder)localObject).append("], errorCode[");
+    ((StringBuilder)localObject).append(String.valueOf(i));
+    ((StringBuilder)localObject).append("], strErrMsg[");
+    ((StringBuilder)localObject).append(String.valueOf(paramArrayOfObject));
+    ((StringBuilder)localObject).append("]");
+    QLog.e("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    a(Integer.valueOf(i), l, paramArrayOfObject);
   }
   
   private void o(Object[] paramArrayOfObject)
   {
-    boolean bool;
-    StringBuilder localStringBuilder;
     if (((Boolean)paramArrayOfObject[1]).booleanValue())
     {
       paramArrayOfObject = (Object[])paramArrayOfObject[2];
-      bool = ((Boolean)paramArrayOfObject[0]).booleanValue();
+      int i = 0;
+      boolean bool = ((Boolean)paramArrayOfObject[0]).booleanValue();
       paramArrayOfObject = (List)paramArrayOfObject[1];
-      localStringBuilder = new StringBuilder().append("OnWeiYunOfflineListSucess, , isEnd[").append(String.valueOf(bool)).append("], List<OfflineFileInfo> size[");
-      if (paramArrayOfObject == null) {
-        break label111;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnWeiYunOfflineListSucess, , isEnd[");
+      localStringBuilder.append(String.valueOf(bool));
+      localStringBuilder.append("], List<OfflineFileInfo> size[");
+      if (paramArrayOfObject != null) {
+        i = paramArrayOfObject.size();
       }
-    }
-    label111:
-    for (int i = paramArrayOfObject.size();; i = 0)
-    {
-      QLog.i("FMObserver<FileAssistant>", 1, String.valueOf(i) + "]");
+      localStringBuilder.append(String.valueOf(i));
+      localStringBuilder.append("]");
+      QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
       a(Boolean.valueOf(bool), paramArrayOfObject);
-      return;
     }
   }
   
@@ -367,46 +469,78 @@ public class FMObserver
   {
     if (((Boolean)paramArrayOfObject[1]).booleanValue())
     {
-      paramArrayOfObject = (Object[])paramArrayOfObject[2];
-      localObject = (String)paramArrayOfObject[0];
-      boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-      i = ((Integer)paramArrayOfObject[2]).intValue();
-      String str = (String)paramArrayOfObject[3];
-      List localList = (List)paramArrayOfObject[4];
-      int j = ((Integer)paramArrayOfObject[5]).intValue();
-      QLog.i("FMObserver<FileAssistant>", 1, "OnWeiYunOneClassificationInfoSuccess, categoryId[" + (String)localObject + "], isEnd[" + String.valueOf(bool) + "], count[" + String.valueOf(i) + "], localVersion[" + str + "], List<WeiYunFileInfo> size[" + localList.size() + "], index[" + String.valueOf(j) + "]");
-      a((String)localObject, bool, i, str, localList, j);
+      Object localObject3 = (Object[])paramArrayOfObject[2];
+      paramArrayOfObject = (String)localObject3[0];
+      boolean bool = ((Boolean)localObject3[1]).booleanValue();
+      i = ((Integer)localObject3[2]).intValue();
+      localObject1 = (String)localObject3[3];
+      localObject2 = (List)localObject3[4];
+      int j = ((Integer)localObject3[5]).intValue();
+      localObject3 = new StringBuilder();
+      ((StringBuilder)localObject3).append("OnWeiYunOneClassificationInfoSuccess, categoryId[");
+      ((StringBuilder)localObject3).append(paramArrayOfObject);
+      ((StringBuilder)localObject3).append("], isEnd[");
+      ((StringBuilder)localObject3).append(String.valueOf(bool));
+      ((StringBuilder)localObject3).append("], count[");
+      ((StringBuilder)localObject3).append(String.valueOf(i));
+      ((StringBuilder)localObject3).append("], localVersion[");
+      ((StringBuilder)localObject3).append((String)localObject1);
+      ((StringBuilder)localObject3).append("], List<WeiYunFileInfo> size[");
+      ((StringBuilder)localObject3).append(((List)localObject2).size());
+      ((StringBuilder)localObject3).append("], index[");
+      ((StringBuilder)localObject3).append(String.valueOf(j));
+      ((StringBuilder)localObject3).append("]");
+      QLog.i("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject3).toString());
+      a(paramArrayOfObject, bool, i, (String)localObject1, (List)localObject2, j);
       return;
     }
-    Object localObject = (Object[])paramArrayOfObject[2];
-    int i = ((Integer)localObject[0]).intValue();
-    paramArrayOfObject = (String)localObject[1];
-    localObject = (String)localObject[2];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnWeiYunOneClassificationInfoFaild, , errorCode[" + String.valueOf(i) + "], strErrMsg[" + String.valueOf(paramArrayOfObject) + "], strCategoryId[" + String.valueOf(localObject) + "]");
-    a(i, paramArrayOfObject, (String)localObject);
+    Object localObject1 = (Object[])paramArrayOfObject[2];
+    int i = ((Integer)localObject1[0]).intValue();
+    paramArrayOfObject = (String)localObject1[1];
+    localObject1 = (String)localObject1[2];
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("OnWeiYunOneClassificationInfoFaild, , errorCode[");
+    ((StringBuilder)localObject2).append(String.valueOf(i));
+    ((StringBuilder)localObject2).append("], strErrMsg[");
+    ((StringBuilder)localObject2).append(String.valueOf(paramArrayOfObject));
+    ((StringBuilder)localObject2).append("], strCategoryId[");
+    ((StringBuilder)localObject2).append(String.valueOf(localObject1));
+    ((StringBuilder)localObject2).append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
+    a(i, paramArrayOfObject, (String)localObject1);
   }
   
   private void q(Object[] paramArrayOfObject)
   {
     boolean bool = ((Boolean)paramArrayOfObject[1]).booleanValue();
-    Object[] arrayOfObject = (Object[])paramArrayOfObject[2];
-    int i = ((Integer)arrayOfObject[0]).intValue();
-    String str1 = (String)arrayOfObject[1];
-    String str2 = (String)arrayOfObject[2];
-    String str3 = (String)arrayOfObject[3];
-    String str4 = (String)arrayOfObject[4];
-    String str5 = (String)arrayOfObject[5];
-    int j = ((Integer)arrayOfObject[6]).intValue();
-    Object localObject = null;
-    paramArrayOfObject = localObject;
-    if (arrayOfObject.length > 7)
-    {
-      paramArrayOfObject = localObject;
-      if (arrayOfObject[7] != null) {
-        paramArrayOfObject = (String)arrayOfObject[7];
-      }
+    paramArrayOfObject = (Object[])paramArrayOfObject[2];
+    int i = ((Integer)paramArrayOfObject[0]).intValue();
+    String str1 = (String)paramArrayOfObject[1];
+    String str2 = (String)paramArrayOfObject[2];
+    String str3 = (String)paramArrayOfObject[3];
+    String str4 = (String)paramArrayOfObject[4];
+    String str5 = (String)paramArrayOfObject[5];
+    int j = ((Integer)paramArrayOfObject[6]).intValue();
+    if ((paramArrayOfObject.length > 7) && (paramArrayOfObject[7] != null)) {
+      paramArrayOfObject = (String)paramArrayOfObject[7];
+    } else {
+      paramArrayOfObject = null;
     }
-    QLog.i("FMObserver<FileAssistant>", 1, "OnWeiYunFilePreview retCode[" + String.valueOf(i) + "],retMsg[" + str1 + "], downloadKey[" + str2 + "], downloadIp[" + str4 + "], downloadDomain[" + str5 + "], port[" + String.valueOf(j) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnWeiYunFilePreview retCode[");
+    localStringBuilder.append(String.valueOf(i));
+    localStringBuilder.append("],retMsg[");
+    localStringBuilder.append(str1);
+    localStringBuilder.append("], downloadKey[");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("], downloadIp[");
+    localStringBuilder.append(str4);
+    localStringBuilder.append("], downloadDomain[");
+    localStringBuilder.append(str5);
+    localStringBuilder.append("], port[");
+    localStringBuilder.append(String.valueOf(j));
+    localStringBuilder.append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     a(bool, i, str1, str2, str3, str4, str5, j, paramArrayOfObject);
   }
   
@@ -422,7 +556,21 @@ public class FMObserver
     String str4 = (String)localObject[5];
     int j = ((Integer)localObject[6]).intValue();
     localObject = (Bundle)localObject[7];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnDiscFilePreview retCode[" + String.valueOf(i) + "],retMsg[" + paramArrayOfObject + "], downloadKey[" + str2 + "], downloadIp[" + str3 + "], downloadDomain[" + str4 + "], port[" + String.valueOf(j) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnDiscFilePreview retCode[");
+    localStringBuilder.append(String.valueOf(i));
+    localStringBuilder.append("],retMsg[");
+    localStringBuilder.append(paramArrayOfObject);
+    localStringBuilder.append("], downloadKey[");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("], downloadIp[");
+    localStringBuilder.append(str3);
+    localStringBuilder.append("], downloadDomain[");
+    localStringBuilder.append(str4);
+    localStringBuilder.append("], port[");
+    localStringBuilder.append(String.valueOf(j));
+    localStringBuilder.append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     a(bool, i, paramArrayOfObject, str1, str2, str3, str4, j, null, (Bundle)localObject);
   }
   
@@ -438,7 +586,21 @@ public class FMObserver
     String str4 = (String)localObject[5];
     int j = ((Integer)localObject[6]).intValue();
     localObject = (Bundle)localObject[7];
-    QLog.i("FMObserver<FileAssistant>", 1, "OnFileOfflinePreview retCode[" + String.valueOf(i) + "],retMsg[" + paramArrayOfObject + "], downloadKey[" + str2 + "], downloadIp[" + str3 + "], downloadDomain[" + str4 + "], port[" + String.valueOf(j) + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnFileOfflinePreview retCode[");
+    localStringBuilder.append(String.valueOf(i));
+    localStringBuilder.append("],retMsg[");
+    localStringBuilder.append(paramArrayOfObject);
+    localStringBuilder.append("], downloadKey[");
+    localStringBuilder.append(str2);
+    localStringBuilder.append("], downloadIp[");
+    localStringBuilder.append(str3);
+    localStringBuilder.append("], downloadDomain[");
+    localStringBuilder.append(str4);
+    localStringBuilder.append("], port[");
+    localStringBuilder.append(String.valueOf(j));
+    localStringBuilder.append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     b(bool, i, str1, paramArrayOfObject, str2, str3, str4, j, null, (Bundle)localObject);
   }
   
@@ -446,17 +608,29 @@ public class FMObserver
   {
     long l1 = ((Long)paramArrayOfObject[1]).longValue();
     long l2 = ((Long)paramArrayOfObject[2]).longValue();
-    String str = (String)paramArrayOfObject[3];
+    Object localObject = (String)paramArrayOfObject[3];
     int i = ((Integer)paramArrayOfObject[4]).intValue();
     int j = ((Integer)paramArrayOfObject[5]).intValue();
-    if (paramArrayOfObject[6] == null) {}
-    for (paramArrayOfObject = null;; paramArrayOfObject = (String)paramArrayOfObject[6])
-    {
-      a();
-      QLog.i("FMObserver<FileAssistant>", 1, "OnFileTransferEnd uniseq[" + String.valueOf(l1) + "],nSessionId[" + String.valueOf(l2) + "],errCode[" + String.valueOf(j) + "],errMsg[" + String.valueOf(paramArrayOfObject) + "], peerType[" + String.valueOf(i) + "]");
-      c(j, paramArrayOfObject);
-      return;
+    if (paramArrayOfObject[6] == null) {
+      paramArrayOfObject = null;
+    } else {
+      paramArrayOfObject = (String)paramArrayOfObject[6];
     }
+    a();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("OnFileTransferEnd uniseq[");
+    ((StringBuilder)localObject).append(String.valueOf(l1));
+    ((StringBuilder)localObject).append("],nSessionId[");
+    ((StringBuilder)localObject).append(String.valueOf(l2));
+    ((StringBuilder)localObject).append("],errCode[");
+    ((StringBuilder)localObject).append(String.valueOf(j));
+    ((StringBuilder)localObject).append("],errMsg[");
+    ((StringBuilder)localObject).append(String.valueOf(paramArrayOfObject));
+    ((StringBuilder)localObject).append("], peerType[");
+    ((StringBuilder)localObject).append(String.valueOf(i));
+    ((StringBuilder)localObject).append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+    c(j, paramArrayOfObject);
   }
   
   private void u(Object[] paramArrayOfObject)
@@ -466,14 +640,26 @@ public class FMObserver
     String str = (String)paramArrayOfObject[3];
     int i = ((Integer)paramArrayOfObject[4]).intValue();
     int j = ((Integer)paramArrayOfObject[5]).intValue();
-    if (paramArrayOfObject[6] == null) {}
-    for (paramArrayOfObject = null;; paramArrayOfObject = (String)paramArrayOfObject[6])
-    {
-      a();
-      QLog.i("FMObserver<FileAssistant>", 1, "OnFileTransferEnd uniseq[" + String.valueOf(l1) + "],nSessionId[" + String.valueOf(l2) + "],errCode[" + String.valueOf(j) + "],errMsg[" + String.valueOf(paramArrayOfObject) + "], peerType[" + String.valueOf(i) + "]");
-      a(false, l1, l2, str, i, j, paramArrayOfObject);
-      return;
+    if (paramArrayOfObject[6] == null) {
+      paramArrayOfObject = null;
+    } else {
+      paramArrayOfObject = (String)paramArrayOfObject[6];
     }
+    a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnFileTransferEnd uniseq[");
+    localStringBuilder.append(String.valueOf(l1));
+    localStringBuilder.append("],nSessionId[");
+    localStringBuilder.append(String.valueOf(l2));
+    localStringBuilder.append("],errCode[");
+    localStringBuilder.append(String.valueOf(j));
+    localStringBuilder.append("],errMsg[");
+    localStringBuilder.append(String.valueOf(paramArrayOfObject));
+    localStringBuilder.append("], peerType[");
+    localStringBuilder.append(String.valueOf(i));
+    localStringBuilder.append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
+    a(false, l1, l2, str, i, j, paramArrayOfObject);
   }
   
   private void v(Object[] paramArrayOfObject)
@@ -483,7 +669,15 @@ public class FMObserver
     String str = (String)paramArrayOfObject[3];
     int i = ((Integer)paramArrayOfObject[4]).intValue();
     a();
-    QLog.i("FMObserver<FileAssistant>", 1, "OnFileTransferEnd uniseq[" + l1 + "],nSessionId[" + l2 + "], peerType[" + i + "]");
+    paramArrayOfObject = new StringBuilder();
+    paramArrayOfObject.append("OnFileTransferEnd uniseq[");
+    paramArrayOfObject.append(l1);
+    paramArrayOfObject.append("],nSessionId[");
+    paramArrayOfObject.append(l2);
+    paramArrayOfObject.append("], peerType[");
+    paramArrayOfObject.append(i);
+    paramArrayOfObject.append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, paramArrayOfObject.toString());
     a(true, l1, l2, str, i, 0, null);
   }
   
@@ -507,7 +701,20 @@ public class FMObserver
     long l2 = ((Long)paramArrayOfObject[2]).longValue();
     String str = (String)paramArrayOfObject[3];
     int i = ((Integer)paramArrayOfObject[4]).intValue();
-    QLog.i("FMObserver<FileAssistant>", 1, "OnFileTransferStart uniseq[" + String.valueOf(l1) + "],nSessionId[" + String.valueOf(l2) + "], strUin[" + FileManagerUtil.e(str) + "], peerType[" + String.valueOf(i) + "]");
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfObject = new StringBuilder();
+      paramArrayOfObject.append("OnFileTransferStart uniseq[");
+      paramArrayOfObject.append(String.valueOf(l1));
+      paramArrayOfObject.append("],nSessionId[");
+      paramArrayOfObject.append(String.valueOf(l2));
+      paramArrayOfObject.append("], strUin[");
+      paramArrayOfObject.append(str);
+      paramArrayOfObject.append("], peerType[");
+      paramArrayOfObject.append(String.valueOf(i));
+      paramArrayOfObject.append("]");
+      QLog.i("FMObserver<FileAssistant>", 1, paramArrayOfObject.toString());
+    }
     a(l1, l2, str, i);
   }
   
@@ -517,7 +724,20 @@ public class FMObserver
     long l2 = ((Long)paramArrayOfObject[2]).longValue();
     String str = (String)paramArrayOfObject[3];
     int i = ((Integer)paramArrayOfObject[4]).intValue();
-    QLog.i("FMObserver<FileAssistant>", 1, "OnFileCome uniseq[" + String.valueOf(l1) + "],nSessionId[" + String.valueOf(l2) + "], strUin[" + FileManagerUtil.e(str) + "], peerType[" + String.valueOf(i) + "]");
+    if (QLog.isColorLevel())
+    {
+      paramArrayOfObject = new StringBuilder();
+      paramArrayOfObject.append("OnFileCome uniseq[");
+      paramArrayOfObject.append(String.valueOf(l1));
+      paramArrayOfObject.append("],nSessionId[");
+      paramArrayOfObject.append(String.valueOf(l2));
+      paramArrayOfObject.append("], strUin[");
+      paramArrayOfObject.append(str);
+      paramArrayOfObject.append("], peerType[");
+      paramArrayOfObject.append(String.valueOf(i));
+      paramArrayOfObject.append("]");
+      QLog.i("FMObserver<FileAssistant>", 1, paramArrayOfObject.toString());
+    }
     b(l1, l2, str, i);
   }
   
@@ -530,7 +750,19 @@ public class FMObserver
     paramArrayOfObject = (String)localObject[3];
     String str = (String)localObject[4];
     localObject = (Bundle)localObject[5];
-    QLog.i("FMObserver<FileAssistant>", 1, "onMMApkFileSafeCheckResult sessionId[" + l + "] errCode[" + i + "] safeLevel [" + j + "] tipString [" + paramArrayOfObject + "] jumpDetailUrl [" + str + "]");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onMMApkFileSafeCheckResult sessionId[");
+    localStringBuilder.append(l);
+    localStringBuilder.append("] errCode[");
+    localStringBuilder.append(i);
+    localStringBuilder.append("] safeLevel [");
+    localStringBuilder.append(j);
+    localStringBuilder.append("] tipString [");
+    localStringBuilder.append(paramArrayOfObject);
+    localStringBuilder.append("] jumpDetailUrl [");
+    localStringBuilder.append(str);
+    localStringBuilder.append("]");
+    QLog.i("FMObserver<FileAssistant>", 1, localStringBuilder.toString());
     a(l, i, j, paramArrayOfObject, str, (Bundle)localObject);
   }
   
@@ -611,7 +843,7 @@ public class FMObserver
     if (this.a != null) {
       return;
     }
-    this.a = new ArrayMap();
+    this.a = new HashMap();
     this.a.put(Integer.valueOf(17), new FMObserver.2(this));
     this.a.put(Integer.valueOf(0), new FMObserver.3(this));
     this.a.put(Integer.valueOf(25), new FMObserver.4(this));
@@ -668,7 +900,7 @@ public class FMObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.app.FMObserver
  * JD-Core Version:    0.7.0.1
  */

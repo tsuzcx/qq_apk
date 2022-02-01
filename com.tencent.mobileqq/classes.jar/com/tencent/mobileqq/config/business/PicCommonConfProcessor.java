@@ -21,8 +21,12 @@ public class PicCommonConfProcessor
   @Nullable
   public PicCommonBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onParsed " + paramArrayOfQConfItem.length);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onParsed ");
+      ((StringBuilder)localObject1).append(paramArrayOfQConfItem.length);
+      QLog.d("PicCommonConfProcessor", 2, ((StringBuilder)localObject1).toString());
     }
     Object localObject2 = null;
     Object localObject1 = localObject2;
@@ -38,8 +42,12 @@ public class PicCommonConfProcessor
   
   public void a(PicCommonBean paramPicCommonBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onUpdate " + paramPicCommonBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramPicCommonBean.toString());
+      QLog.d("PicCommonConfProcessor", 2, localStringBuilder.toString());
     }
     SafeBitmapFactory.setNeedRegionDecode(paramPicCommonBean.jdField_a_of_type_Boolean);
     SafeBitmapFactory.setPxThreshoidToSp(paramPicCommonBean.jdField_a_of_type_Long);
@@ -77,8 +85,12 @@ public class PicCommonConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PicCommonConfProcessor", 2, "onReqFailed " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReqFailed ");
+      localStringBuilder.append(paramInt);
+      QLog.d("PicCommonConfProcessor", 2, localStringBuilder.toString());
     }
   }
   
@@ -89,7 +101,7 @@ public class PicCommonConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.PicCommonConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -29,12 +29,11 @@ public final class StructMsgForHypertext$HyperTextView
   
   public boolean a()
   {
-    if ((this.jdField_a_of_type_Boolean) || (a(this)))
-    {
-      this.jdField_a_of_type_Boolean = false;
-      return false;
+    if ((!this.jdField_a_of_type_Boolean) && (!a(this))) {
+      return true;
     }
-    return true;
+    this.jdField_a_of_type_Boolean = false;
+    return false;
   }
   
   public boolean a(Object paramObject)
@@ -46,41 +45,32 @@ public final class StructMsgForHypertext$HyperTextView
       boolean bool = ((Boolean)localField.get(paramObject)).booleanValue();
       return bool;
     }
+    catch (Exception paramObject)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("StructMsg", 2, paramObject.getMessage(), paramObject);
+      }
+    }
     catch (NoSuchFieldException paramObject)
     {
       if (QLog.isColorLevel()) {
         QLog.d("StructMsg", 2, paramObject.getMessage(), paramObject);
       }
-      return false;
     }
-    catch (Exception paramObject)
-    {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("StructMsg", 2, paramObject.getMessage(), paramObject);
-        }
-      }
-    }
+    return false;
   }
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag(2131378578);
+    Object localObject = paramView.getTag(2131377989);
     if ((localObject != null) && ((localObject instanceof StructMsgForHypertext)))
     {
       localObject = (StructMsgForHypertext)localObject;
-      if (!((StructMsgForHypertext)localObject).mHyperClick) {
-        break label43;
+      if (((StructMsgForHypertext)localObject).mHyperClick)
+      {
+        ((StructMsgForHypertext)localObject).mHyperClick = false;
       }
-      ((StructMsgForHypertext)localObject).mHyperClick = false;
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label43:
-      if ("web".equals(((StructMsgForHypertext)localObject).mMsgAction))
+      else if ("web".equals(((StructMsgForHypertext)localObject).mMsgAction))
       {
         Context localContext = paramView.getContext();
         Intent localIntent = new Intent(localContext, QQBrowserActivity.class);
@@ -91,6 +81,7 @@ public final class StructMsgForHypertext$HyperTextView
         this.jdField_a_of_type_Boolean = true;
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public boolean onTouchEvent(MotionEvent paramMotionEvent)
@@ -103,7 +94,7 @@ public final class StructMsgForHypertext$HyperTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgForHypertext.HyperTextView
  * JD-Core Version:    0.7.0.1
  */

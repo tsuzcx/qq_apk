@@ -2,9 +2,10 @@ package com.tencent.biz.pubaccount.readinjoyAd.ad.view;
 
 import android.graphics.Bitmap;
 import android.os.Handler;
-import com.tencent.biz.pubaccount.readinjoy.proteus.view.impl.NativeReadInjoyImageView;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.AdBlurUtils;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.kandian.biz.common.widget.NativeReadInjoyImageView;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.CommonImageCacheHelper;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 
@@ -15,61 +16,64 @@ class ReadInJoyAdCommonBlurImageView$2
   
   public void run()
   {
-    Bitmap localBitmap3 = AdBlurUtils.a.a(this.a);
-    if (localBitmap3 == null)
+    Bitmap localBitmap = AdBlurUtils.a.a(this.a);
+    if (localBitmap == null)
     {
-      ReadInJoyAdLog.a("ReadInJoyAdCommonBlurImageView", "urlBitmap is empty");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdCommonBlurImageView", "urlBitmap is empty");
       return;
     }
-    int k = ReadInJoyAdCommonBlurImageView.a(this.this$0).getComMeasuredWidth();
-    int m = ReadInJoyAdCommonBlurImageView.a(this.this$0).getComMeasuredHeight();
-    int i = localBitmap3.getWidth();
-    int j = localBitmap3.getHeight();
-    float f;
-    if (i * 1.0F / j < k * 1.0F / m)
+    int m = ReadInJoyAdCommonBlurImageView.a(this.this$0).getComMeasuredWidth();
+    int n = ReadInJoyAdCommonBlurImageView.a(this.this$0).getComMeasuredHeight();
+    int i = localBitmap.getWidth();
+    int j = localBitmap.getHeight();
+    float f3 = i;
+    float f4 = j;
+    float f5 = f3 * 1.0F / f4;
+    float f1 = m;
+    float f2 = n;
+    int k;
+    if (f5 < f1 * 1.0F / f2)
     {
-      f = m;
-      i = (int)(i * 1.0F / j * f);
-      j = m;
+      j = (int)(f5 * f2);
+      i = n;
+      k = i;
     }
-    for (;;)
+    else
     {
-      f = Math.max(k / (j * 1.0F), m / (j * 1.0F));
-      try
-      {
-        if (DeviceInfoUtil.a() >= 26)
-        {
-          Bitmap localBitmap1 = AdBlurUtils.a.a(localBitmap3, ReadInJoyAdCommonBlurImageView.a(this.this$0), i, j, k, m, f);
-          if (localBitmap1 != null) {
-            break label224;
-          }
-          ReadInJoyAdLog.a("ReadInJoyAdCommonBlurImageView", "adBlurBitmap is empty");
-          CommonImageCacheHelper.a(this.b, localBitmap3);
-          ReadInJoyAdCommonBlurImageView.a(this.this$0).sendEmptyMessage(1);
-          return;
-          f = k;
-          j = (int)(j * 1.0F * f / i);
-          i = k;
-        }
-      }
-      catch (Exception localException)
-      {
-        Bitmap localBitmap2;
-        for (;;)
-        {
-          ReadInJoyAdLog.a("ReadInJoyAdCommonBlurImageView", localException.getMessage());
-          localBitmap2 = null;
-        }
-        label224:
-        CommonImageCacheHelper.a(this.b, localBitmap2);
-        ReadInJoyAdCommonBlurImageView.a(this.this$0).sendEmptyMessage(1);
+      k = (int)(f4 * 1.0F * f1 / f3);
+      i = m;
+      j = i;
+    }
+    f3 = k * 1.0F;
+    f1 = Math.max(f1 / f3, f2 / f3);
+    Object localObject3 = null;
+    Object localObject1 = localObject3;
+    Object localObject2;
+    try
+    {
+      if (DeviceInfoUtil.a() >= 26) {
+        localObject1 = AdBlurUtils.a.a(localBitmap, ReadInJoyAdCommonBlurImageView.a(this.this$0), j, k, m, n, f1);
       }
     }
+    catch (Exception localException)
+    {
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdCommonBlurImageView", localException.getMessage());
+      localObject2 = localObject3;
+    }
+    if (localObject2 == null)
+    {
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdCommonBlurImageView", "adBlurBitmap is empty");
+      CommonImageCacheHelper.a(this.b, localBitmap);
+      ReadInJoyAdCommonBlurImageView.a(this.this$0).sendEmptyMessage(1);
+      return;
+    }
+    CommonImageCacheHelper.a(this.b, localObject2);
+    ReadInJoyAdCommonBlurImageView.a(this.this$0).sendEmptyMessage(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdCommonBlurImageView.2
  * JD-Core Version:    0.7.0.1
  */

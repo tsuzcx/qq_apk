@@ -11,20 +11,26 @@ public class FormResHelper
   
   public static ColorStateList a(Resources paramResources, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return paramResources.getColorStateList(2131167033);
-    case 0: 
-      return paramResources.getColorStateList(2131167033);
-    case 2: 
-      return paramResources.getColorStateList(2131167113);
-    case 1: 
-      return paramResources.getColorStateList(2131167041);
-    case 3: 
-      return paramResources.getColorStateList(2131167127);
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 4) {
+              return paramResources.getColorStateList(2131167056);
+            }
+            return paramResources.getColorStateList(2131167190);
+          }
+          return paramResources.getColorStateList(2131167152);
+        }
+        return paramResources.getColorStateList(2131167138);
+      }
+      return paramResources.getColorStateList(2131167064);
     }
-    return paramResources.getColorStateList(2131167165);
+    return paramResources.getColorStateList(2131167056);
   }
   
   public static Drawable a(Resources paramResources, int paramInt, boolean paramBoolean)
@@ -32,34 +38,38 @@ public class FormResHelper
     if (paramBoolean)
     {
       if (a) {
-        return paramResources.getDrawable(2130839575);
+        return paramResources.getDrawable(2130839433);
       }
-      return paramResources.getDrawable(2130850777);
+      return paramResources.getDrawable(2130850703);
     }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return paramResources.getDrawable(2130839575);
-    case 0: 
-      if (a) {
-        return paramResources.getDrawable(2130839575);
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            return paramResources.getDrawable(2130839433);
+          }
+          if (a) {
+            return paramResources.getDrawable(2130839440);
+          }
+          return paramResources.getDrawable(2130850708);
+        }
+        if (a) {
+          return paramResources.getDrawable(2130839443);
+        }
+        return paramResources.getDrawable(2130850717);
       }
-      return paramResources.getDrawable(2130850777);
-    case 1: 
       if (a) {
-        return paramResources.getDrawable(2130839585);
+        return paramResources.getDrawable(2130839443);
       }
-      return paramResources.getDrawable(2130850791);
-    case 2: 
-      if (a) {
-        return paramResources.getDrawable(2130839585);
-      }
-      return paramResources.getDrawable(2130850791);
+      return paramResources.getDrawable(2130850717);
     }
     if (a) {
-      return paramResources.getDrawable(2130839582);
+      return paramResources.getDrawable(2130839433);
     }
-    return paramResources.getDrawable(2130850782);
+    return paramResources.getDrawable(2130850703);
   }
   
   public static void a(boolean paramBoolean)
@@ -69,7 +79,7 @@ public class FormResHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FormResHelper
  * JD-Core Version:    0.7.0.1
  */

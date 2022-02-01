@@ -15,51 +15,71 @@ import common.config.service.QzoneConfig;
 public class NotifyQZoneServer
   extends AsyncStep
 {
-  public int a()
+  protected int doStep()
   {
-    if (!this.a.a.isBackgroundPause)
+    if (!this.mAutomator.a.isBackgroundPause)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("NotifyQZoneServer", 2, "isBackground_Pause:" + this.a.a.isBackgroundPause);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("isBackground_Pause:");
+        ((StringBuilder)localObject1).append(this.mAutomator.a.isBackgroundPause);
+        QLog.d("NotifyQZoneServer", 2, ((StringBuilder)localObject1).toString());
       }
-      return super.a();
+      return super.doStep();
     }
     int i = QzoneConfig.getInstance().getConfig("QZoneSetting", "ClientOnlineColdTime", 300);
     Object localObject2 = BaseApplicationImpl.getApplication().getSharedPreferences("QZoneOnLineServlet", 0);
-    Object localObject1 = this.a.getCurrentAccountUin();
-    long l1 = ((SharedPreferences)localObject2).getLong("lastReqTime" + (String)localObject1, 0L);
+    Object localObject1 = this.mAutomator.getCurrentAccountUin();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("lastReqTime");
+    localStringBuilder.append((String)localObject1);
+    long l1 = ((SharedPreferences)localObject2).getLong(localStringBuilder.toString(), 0L);
     long l2 = System.currentTimeMillis();
     long l3 = l2 - l1;
-    if (QLog.isDevelopLevel()) {
-      QLog.d("NotifyQZoneServer", 4, "lastReqTime(ms):" + l1 + ",currentTime(ms):" + l2 + "divTime(ms):" + l3 + ",coldTime(ms):" + i * 1000);
+    if (QLog.isDevelopLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("lastReqTime(ms):");
+      localStringBuilder.append(l1);
+      localStringBuilder.append(",currentTime(ms):");
+      localStringBuilder.append(l2);
+      localStringBuilder.append("divTime(ms):");
+      localStringBuilder.append(l3);
+      localStringBuilder.append(",coldTime(ms):");
+      localStringBuilder.append(i * 1000);
+      QLog.d("NotifyQZoneServer", 4, localStringBuilder.toString());
     }
     if (l3 > i * 1000)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("NotifyQZoneServer", 4, "saveReqTime:" + l2);
+      if (QLog.isDevelopLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("saveReqTime:");
+        localStringBuilder.append(l2);
+        QLog.d("NotifyQZoneServer", 4, localStringBuilder.toString());
       }
       localObject2 = ((SharedPreferences)localObject2).edit();
-      ((SharedPreferences.Editor)localObject2).putLong("lastReqTime" + (String)localObject1, l2);
-      if (Build.VERSION.SDK_INT < 9) {
-        break label329;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("lastReqTime");
+      localStringBuilder.append((String)localObject1);
+      ((SharedPreferences.Editor)localObject2).putLong(localStringBuilder.toString(), l2);
+      if (Build.VERSION.SDK_INT >= 9) {
+        ((SharedPreferences.Editor)localObject2).apply();
+      } else {
+        ((SharedPreferences.Editor)localObject2).commit();
       }
-      ((SharedPreferences.Editor)localObject2).apply();
-    }
-    for (;;)
-    {
-      localObject1 = (QZoneManager)this.a.a.getManager(QQManagerFactory.QZONE_MANAGER);
+      localObject1 = (QZoneManager)this.mAutomator.a.getManager(QQManagerFactory.QZONE_MANAGER);
       if (localObject1 != null) {
         ((QZoneManager)localObject1).a();
       }
-      return super.a();
-      label329:
-      ((SharedPreferences.Editor)localObject2).commit();
     }
+    return super.doStep();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.automator.step.NotifyQZoneServer
  * JD-Core Version:    0.7.0.1
  */

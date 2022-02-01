@@ -13,13 +13,22 @@ class HttpCommunicator$2
   public boolean verify(String paramString, SSLSession paramSSLSession)
   {
     boolean bool = HttpsURLConnection.getDefaultHostnameVerifier().verify(this.val$reqHost, paramSSLSession);
-    this.this$0.logHttpCommunicator(this.val$msg, "httpsSSLProcess,HostnameVerifier", "reqhost = " + this.val$reqHost + ",address = " + paramSSLSession.getPeerHost() + "result:isverify = " + bool);
+    paramString = this.this$0;
+    HttpMsg localHttpMsg = this.val$msg;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("reqhost = ");
+    localStringBuilder.append(this.val$reqHost);
+    localStringBuilder.append(",address = ");
+    localStringBuilder.append(paramSSLSession.getPeerHost());
+    localStringBuilder.append("result:isverify = ");
+    localStringBuilder.append(bool);
+    paramString.logHttpCommunicator(localHttpMsg, "httpsSSLProcess,HostnameVerifier", localStringBuilder.toString());
     return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HttpCommunicator.2
  * JD-Core Version:    0.7.0.1
  */

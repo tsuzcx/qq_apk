@@ -17,7 +17,7 @@ class ImageInfo$UploadMediaSegment$MediaUploadCallback$1
   public void run()
   {
     ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).e = 95;
-    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).g = -2147483648;
+    ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).f = -2147483648;
     XMediaEditor localXMediaEditor = (XMediaEditor)ImageInfo.UploadMediaSegment.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkXmediaeditorModelImageInfo$UploadMediaSegment$MediaUploadCallback.a).get();
     if (localXMediaEditor != null)
     {
@@ -34,7 +34,7 @@ class ImageInfo$UploadMediaSegment$MediaUploadCallback$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.xmediaeditor.model.ImageInfo.UploadMediaSegment.MediaUploadCallback.1
  * JD-Core Version:    0.7.0.1
  */

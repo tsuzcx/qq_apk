@@ -25,21 +25,21 @@ class MemoriesFeedListPageLoader$FeedIdPullSegment
   protected void a(JobContext paramJobContext, Integer paramInteger)
   {
     Object localObject = this.a.a(paramInteger.intValue(), 5);
-    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() > 0) || (((FeedListPageLoaderBase.GetFeedIdListResult)localObject).b))
+    if ((((FeedListPageLoaderBase.GetFeedIdListResult)localObject).a.size() <= 0) && (!((FeedListPageLoaderBase.GetFeedIdListResult)localObject).b))
     {
-      SLog.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
-      notifyResult(localObject);
+      localObject = new GetProfileFeedIdListRequest();
+      ((GetProfileFeedIdListRequest)localObject).a = this.a.a();
+      ((GetProfileFeedIdListRequest)localObject).b = QQStoryContext.a().b();
+      CmdTaskManger.a().a((NetworkRequest)localObject, new MemoriesFeedListPageLoader.FeedIdPullSegment.1(this, paramJobContext, paramInteger));
       return;
     }
-    localObject = new GetProfileFeedIdListRequest();
-    ((GetProfileFeedIdListRequest)localObject).a = this.a.a();
-    ((GetProfileFeedIdListRequest)localObject).b = QQStoryContext.a().b();
-    CmdTaskManger.a().a((NetworkRequest)localObject, new MemoriesFeedListPageLoader.FeedIdPullSegment.1(this, paramJobContext, paramInteger));
+    SLog.b("Q.qqstory.home.data.FeedListPageLoaderBase", "hit feed id cache");
+    notifyResult(localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesFeedListPageLoader.FeedIdPullSegment
  * JD-Core Version:    0.7.0.1
  */

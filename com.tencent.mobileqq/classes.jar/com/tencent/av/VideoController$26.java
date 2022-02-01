@@ -12,23 +12,25 @@ class VideoController$26
   
   public void run()
   {
-    this.this$0.j = null;
-    this.this$0.a().a("startGAudioChat.1", 0);
-    boolean bool = NetworkUtil.g(this.this$0.a.getApplication().getApplicationContext());
     VideoController localVideoController = this.this$0;
+    localVideoController.j = null;
+    localVideoController.a().a("startGAudioChat.1", 0);
+    boolean bool = NetworkUtil.isNetworkAvailable(this.this$0.a.getApplication().getApplicationContext());
+    localVideoController = this.this$0;
     int j = this.jdField_a_of_type_Int;
     long l = this.jdField_a_of_type_Long;
-    if (bool) {}
-    for (int i = 71;; i = 70)
-    {
-      localVideoController.onGAudioSDKError(j, l, i, 0);
-      return;
+    int i;
+    if (bool) {
+      i = 71;
+    } else {
+      i = 70;
     }
+    localVideoController.onGAudioSDKError(j, l, i, 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.VideoController.26
  * JD-Core Version:    0.7.0.1
  */

@@ -13,6 +13,7 @@ import com.tencent.mobileqq.app.proxy.ProxyManager;
 import com.tencent.mobileqq.app.proxy.RecentUserProxy;
 import com.tencent.mobileqq.banner.Banner;
 import com.tencent.mobileqq.banner.BannerManager;
+import com.tencent.mobileqq.banner.BannerTypeCollections;
 import com.tencent.mobileqq.banner.processor.BaseBannerProcessor;
 import com.tencent.mobileqq.banner.processor.IBannerLifecycle;
 import com.tencent.mobileqq.data.RecentUser;
@@ -29,9 +30,15 @@ public class TroopAssistBannerProcessor
   extends BaseBannerProcessor
   implements Handler.Callback, IBannerLifecycle
 {
+  public static final int a;
   private String jdField_a_of_type_JavaLangString = "";
   private boolean jdField_a_of_type_Boolean = true;
   private boolean b = false;
+  
+  static
+  {
+    jdField_a_of_type_Int = BannerTypeCollections.s;
+  }
   
   public TroopAssistBannerProcessor(QBaseActivity paramQBaseActivity)
   {
@@ -41,8 +48,8 @@ public class TroopAssistBannerProcessor
   
   public View a(Banner paramBanner)
   {
-    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131559049, null);
-    View localView = paramBanner.findViewById(2131365372);
+    paramBanner = View.inflate(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity, 2131558943, null);
+    View localView = paramBanner.findViewById(2131365236);
     paramBanner.setOnClickListener(new TroopAssistBannerProcessor.1(this));
     localView.setVisibility(8);
     return paramBanner;
@@ -50,7 +57,7 @@ public class TroopAssistBannerProcessor
   
   public void a()
   {
-    BannerManager.a().a(19, 0);
+    BannerManager.a().a(jdField_a_of_type_Int, 0);
     this.jdField_a_of_type_Boolean = true;
     this.b = false;
     this.jdField_a_of_type_JavaLangString = "";
@@ -58,93 +65,89 @@ public class TroopAssistBannerProcessor
   
   public void a(String paramString)
   {
-    if ((BannerManager.a().a(19)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
+    if ((BannerManager.a().a(jdField_a_of_type_Int)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (!TextUtils.isEmpty(paramString)) && (this.jdField_a_of_type_JavaLangString.equals(paramString)))
     {
       this.jdField_a_of_type_JavaLangString = "";
       this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessageDelayed(1000, 1000L);
     }
   }
   
-  public void b() {}
-  
-  public void b(AppRuntime paramAppRuntime)
+  public void a(AppRuntime paramAppRuntime)
   {
     this.jdField_a_of_type_MqqOsMqqHandler.removeCallbacksAndMessages(null);
   }
   
+  public int b()
+  {
+    return jdField_a_of_type_Int;
+  }
+  
+  public void b() {}
+  
   public void c()
   {
-    int m = 0;
     if (QLog.isColorLevel()) {
       QLog.d("Q.recent.banner", 2, "checkIsShowTroopTip");
     }
     QQAppInterface localQQAppInterface;
-    List localList;
-    int i;
-    label86:
-    int j;
-    label88:
-    int k;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null)
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity != null) {
       localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getAppRuntime();
-      if ((localQQAppInterface != null) && ((TroopAssistantManager.a().c(localQQAppInterface, this.jdField_a_of_type_JavaLangString)) || (this.b)))
-      {
-        localList = localQQAppInterface.getProxyManager().a().a(false);
-        if (localList != null) {
-          break label141;
-        }
+    } else {
+      localQQAppInterface = null;
+    }
+    if ((localQQAppInterface != null) && ((TroopAssistantManager.a().c(localQQAppInterface, this.jdField_a_of_type_JavaLangString)) || (this.b)))
+    {
+      Object localObject = localQQAppInterface.getProxyManager().a();
+      int m = 0;
+      localObject = ((RecentUserProxy)localObject).a(false);
+      int i;
+      if (localObject == null) {
         i = 0;
-        j = 0;
+      } else {
+        i = ((List)localObject).size();
+      }
+      int j = 0;
+      int k;
+      for (;;)
+      {
         k = m;
         if (j >= i) {
-          break label159;
+          break;
         }
-        if (((RecentUser)localList.get(j)).getType() != 5000) {
-          break label152;
-        }
-        if (this.b) {
-          this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1000);
-        }
-      }
-    }
-    label141:
-    label152:
-    label159:
-    do
-    {
-      return;
-      localQQAppInterface = null;
-      break;
-      i = localList.size();
-      break label86;
-      j += 1;
-      break label88;
-      if (k < i)
-      {
-        RecentUser localRecentUser = (RecentUser)localList.get(k);
-        if (localRecentUser.getType() != 1) {}
-        do
+        if (((RecentUser)((List)localObject).get(j)).getType() == 5000)
         {
-          do
-          {
-            k += 1;
-            break;
-          } while ((TextUtils.isEmpty(localRecentUser.uin)) || (TroopAssistantManager.a().b(localQQAppInterface, localRecentUser.uin)) || (TroopAssistantManager.a().a(localQQAppInterface, localRecentUser.uin) != 1));
+          if (this.b) {
+            this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1000);
+          }
+          return;
+        }
+        j += 1;
+      }
+      while (k < i)
+      {
+        RecentUser localRecentUser = (RecentUser)((List)localObject).get(k);
+        if ((localRecentUser.getType() == 1) && (!TextUtils.isEmpty(localRecentUser.uin)) && (!TroopAssistantManager.a().b(localQQAppInterface, localRecentUser.uin)) && (TroopAssistantManager.a().a(localQQAppInterface, localRecentUser.uin) == 1))
+        {
           if (localQQAppInterface.getConversationFacade().a(localRecentUser.uin, localRecentUser.getType()) > 99)
           {
             if ((this.b) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(localRecentUser.uin))) {
-              break;
+              return;
             }
             this.jdField_a_of_type_JavaLangString = localRecentUser.uin;
             return;
           }
-        } while ((TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) || (!this.jdField_a_of_type_JavaLangString.equals(localRecentUser.uin)));
-        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1000);
-        return;
+          if ((!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) && (this.jdField_a_of_type_JavaLangString.equals(localRecentUser.uin)))
+          {
+            this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1000);
+            return;
+          }
+        }
+        k += 1;
       }
-    } while ((!this.b) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)));
-    this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1000);
+      if ((this.b) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
+        this.jdField_a_of_type_MqqOsMqqHandler.sendEmptyMessage(1000);
+      }
+    }
   }
   
   public boolean handleMessage(Message paramMessage)
@@ -152,22 +155,22 @@ public class TroopAssistBannerProcessor
     if (paramMessage.what == 1000)
     {
       this.jdField_a_of_type_JavaLangString = "";
-      BannerManager.a().a(19, 0, paramMessage);
+      BannerManager.a().a(jdField_a_of_type_Int, 0, paramMessage);
     }
-    for (;;)
+    else if (paramMessage.what == 2000)
     {
-      return true;
-      if (paramMessage.what == 2000) {
-        c();
-      } else if (paramMessage.what == 2001) {
-        a(paramMessage.getData().getString("troopUin"));
-      }
+      c();
     }
+    else if (paramMessage.what == 2001)
+    {
+      a(paramMessage.getData().getString("troopUin"));
+    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.TroopAssistBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

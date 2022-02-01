@@ -9,7 +9,15 @@ public class RoomUtil
   
   public static boolean b(int paramInt)
   {
-    return (paramInt == 1) || (paramInt == 3);
+    boolean bool = true;
+    if (paramInt != 1)
+    {
+      if (paramInt == 3) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public static boolean c(int paramInt)
@@ -19,7 +27,7 @@ public class RoomUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.room.RoomUtil
  * JD-Core Version:    0.7.0.1
  */

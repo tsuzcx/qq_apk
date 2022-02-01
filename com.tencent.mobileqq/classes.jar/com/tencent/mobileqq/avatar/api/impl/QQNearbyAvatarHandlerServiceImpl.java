@@ -18,15 +18,17 @@ public class QQNearbyAvatarHandlerServiceImpl
     if (this.mNearbyAvatarHandler == null) {
       initNearbyAvatarHandler();
     }
-    if (this.mNearbyAvatarHandler != null) {
-      this.mNearbyAvatarHandler.a(paramFaceInfo);
+    FaceHandler localFaceHandler = this.mNearbyAvatarHandler;
+    if (localFaceHandler != null) {
+      localFaceHandler.a(paramFaceInfo);
     }
   }
   
   void initNearbyAvatarHandler()
   {
-    if (this.mApp != null) {
-      this.mNearbyAvatarHandler = ((FaceHandler)this.mApp.getBusinessHandler(FaceConstant.Nearby.NEAR_BY_FACE_HANDLER));
+    AppInterface localAppInterface = this.mApp;
+    if (localAppInterface != null) {
+      this.mNearbyAvatarHandler = ((FaceHandler)localAppInterface.getBusinessHandler(FaceConstant.Nearby.NEAR_BY_FACE_HANDLER));
     }
   }
   
@@ -43,7 +45,7 @@ public class QQNearbyAvatarHandlerServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.avatar.api.impl.QQNearbyAvatarHandlerServiceImpl
  * JD-Core Version:    0.7.0.1
  */

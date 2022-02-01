@@ -11,16 +11,16 @@ class HeaderAndFooterAdapter$1
   
   public void onClick(View paramView)
   {
-    int i = this.jdField_a_of_type_ComTencentWidgetPull2refreshBaseViewHolder.getPosition();
+    int i = this.val$holder.getPosition();
     if (i >= 0) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshHeaderAndFooterAdapter.a.a(this.jdField_a_of_type_ComTencentWidgetPull2refreshBaseViewHolder.itemView, i);
+      this.this$0.mOnItemClickListener.onItemClick(this.val$holder.itemView, i);
     }
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.HeaderAndFooterAdapter.1
  * JD-Core Version:    0.7.0.1
  */

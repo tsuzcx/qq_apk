@@ -9,10 +9,12 @@ import com.tencent.tav.asset.CompositionTrackSegment;
 import com.tencent.tav.coremedia.CGSize;
 import com.tencent.tav.extractor.AssetExtractor;
 import com.tencent.tav.extractor.ExtractorUtils;
+import java.util.HashMap;
 
 public class DecoderAssetTrack
 {
   public String assetPath;
+  public HashMap<String, Object> extraInfo;
   public int frameRate;
   public int mediaType;
   public int preferRotation;
@@ -33,11 +35,11 @@ public class DecoderAssetTrack
   @Nullable
   private static DecoderAssetTrack createFromCompositionTrackSegment(AssetTrack paramAssetTrack, CompositionTrackSegment paramCompositionTrackSegment)
   {
-    DecoderAssetTrack localDecoderAssetTrack = null;
     if (!paramCompositionTrackSegment.isEmpty())
     {
-      localDecoderAssetTrack = new DecoderAssetTrack();
+      DecoderAssetTrack localDecoderAssetTrack = new DecoderAssetTrack();
       localDecoderAssetTrack.assetPath = paramCompositionTrackSegment.getSourcePath();
+      localDecoderAssetTrack.extraInfo = paramCompositionTrackSegment.getExtraInfo();
       localDecoderAssetTrack.trackId = paramCompositionTrackSegment.getSourceTrackID();
       localDecoderAssetTrack.mediaType = paramAssetTrack.getMediaType();
       if (!TextUtils.isEmpty(paramCompositionTrackSegment.getSourcePath()))
@@ -51,17 +53,18 @@ public class DecoderAssetTrack
       }
       localDecoderAssetTrack.preferredVolume = 1.0F;
       localDecoderAssetTrack.frameRate = 30;
+      return localDecoderAssetTrack;
     }
-    return localDecoderAssetTrack;
+    return null;
   }
   
   private static DecoderAssetTrack createFromTrackSegment(AssetTrack paramAssetTrack, AssetTrackSegment paramAssetTrackSegment)
   {
-    DecoderAssetTrack localDecoderAssetTrack = null;
     if (!paramAssetTrackSegment.isEmpty())
     {
-      localDecoderAssetTrack = new DecoderAssetTrack();
+      DecoderAssetTrack localDecoderAssetTrack = new DecoderAssetTrack();
       localDecoderAssetTrack.assetPath = paramAssetTrack.getSourcePath();
+      localDecoderAssetTrack.extraInfo = paramAssetTrack.getExtraInfo();
       localDecoderAssetTrack.trackId = paramAssetTrack.getTrackID();
       localDecoderAssetTrack.mediaType = paramAssetTrack.getMediaType();
       if ((paramAssetTrackSegment instanceof CompositionTrackSegment)) {
@@ -72,13 +75,14 @@ public class DecoderAssetTrack
       localDecoderAssetTrack.preferredVolume = paramAssetTrack.getPreferredVolume();
       localDecoderAssetTrack.preferRotation = paramAssetTrack.getPreferredRotation();
       localDecoderAssetTrack.frameRate = ((int)paramAssetTrack.getNominalFrameRate());
+      return localDecoderAssetTrack;
     }
-    return localDecoderAssetTrack;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.DecoderAssetTrack
  * JD-Core Version:    0.7.0.1
  */

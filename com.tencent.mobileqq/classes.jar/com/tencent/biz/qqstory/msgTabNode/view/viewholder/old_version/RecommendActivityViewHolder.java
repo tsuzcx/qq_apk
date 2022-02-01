@@ -22,7 +22,7 @@ public class RecommendActivityViewHolder
   
   public void a()
   {
-    this.itemView.setTag(2131375066, null);
+    this.itemView.setTag(2131374589, null);
   }
   
   public void a(MsgTabNodeInfo paramMsgTabNodeInfo)
@@ -30,52 +30,54 @@ public class RecommendActivityViewHolder
     super.a(paramMsgTabNodeInfo);
     PlayModeUtils.b(this.jdField_a_of_type_AndroidWidgetImageView, paramMsgTabNodeInfo.jdField_b_of_type_JavaLangString, true, (int)DisplayUtils.a(this.jdField_a_of_type_AndroidWidgetTextView.getContext(), 50.0F));
     TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
-    String str;
+    if (TextUtils.isEmpty(paramMsgTabNodeInfo.c)) {
+      localObject = HardCodeUtil.a(2131713189);
+    } else {
+      localObject = paramMsgTabNodeInfo.c;
+    }
+    localTextView.setText((CharSequence)localObject);
+    this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
+    this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
+    this.c.setVisibility(0);
     int i;
-    if (TextUtils.isEmpty(paramMsgTabNodeInfo.c))
-    {
-      str = HardCodeUtil.a(2131713221);
-      localTextView.setText(str);
-      this.jdField_b_of_type_AndroidWidgetImageView.setVisibility(8);
-      this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(0);
-      this.c.setVisibility(0);
-      if (paramMsgTabNodeInfo.jdField_b_of_type_Int <= 0) {
-        break label247;
-      }
+    if (paramMsgTabNodeInfo.jdField_b_of_type_Int > 0) {
       i = 1;
-      label92:
-      a(1, i);
-      if (QLog.isColorLevel()) {
-        QLog.e("zivonchen", 2, "FollowPersonViewHolder userItem = " + paramMsgTabNodeInfo.c + ", faceDrawable = " + paramMsgTabNodeInfo.jdField_b_of_type_JavaLangString);
-      }
-      str = (String)this.itemView.getTag(2131375066);
-      if (!TextUtils.equals(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, str)) {
-        switch (paramMsgTabNodeInfo.jdField_a_of_type_Int)
-        {
-        default: 
-          str = "unknown";
+    } else {
+      i = 0;
+    }
+    a(1, i);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("FollowPersonViewHolder userItem = ");
+      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.c);
+      ((StringBuilder)localObject).append(", faceDrawable = ");
+      ((StringBuilder)localObject).append(paramMsgTabNodeInfo.jdField_b_of_type_JavaLangString);
+      QLog.e("zivonchen", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = (String)this.itemView.getTag(2131374589);
+    if (!TextUtils.equals(paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, (CharSequence)localObject))
+    {
+      i = paramMsgTabNodeInfo.jdField_a_of_type_Int;
+      if (i != 10)
+      {
+        if (i != 11) {
+          localObject = "unknown";
+        } else {
+          localObject = "3";
         }
       }
-    }
-    for (;;)
-    {
-      StoryReportor.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, str });
-      this.itemView.setTag(2131375066, paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
-      return;
-      str = paramMsgTabNodeInfo.c;
-      break;
-      label247:
-      i = 0;
-      break label92;
-      str = "2";
-      continue;
-      str = "3";
+      else {
+        localObject = "2";
+      }
+      StoryReportor.a("PGC_story", "video_exp", "exp_newsrecommend", 0, 0, new String[] { paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString, localObject });
+      this.itemView.setTag(2131374589, paramMsgTabNodeInfo.jdField_a_of_type_JavaLangString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.view.viewholder.old_version.RecommendActivityViewHolder
  * JD-Core Version:    0.7.0.1
  */

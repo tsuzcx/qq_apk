@@ -5,24 +5,25 @@ import android.os.Looper;
 
 public class HandlerUtils
 {
-  private static Handler mMainHandler = null;
+  private static Handler mMainHandler;
   private static final Object mMainHandlerLock = new Object();
   
   public static Handler getMainHandler()
   {
-    synchronized (mMainHandlerLock)
-    {
-      if (mMainHandler == null) {
-        mMainHandler = new Handler(Looper.getMainLooper());
+    if (mMainHandler == null) {
+      synchronized (mMainHandlerLock)
+      {
+        if (mMainHandler == null) {
+          mMainHandler = new Handler(Looper.getMainLooper());
+        }
       }
-      Handler localHandler = mMainHandler;
-      return localHandler;
     }
+    return mMainHandler;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.editor.utils.HandlerUtils
  * JD-Core Version:    0.7.0.1
  */

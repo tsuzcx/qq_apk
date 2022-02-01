@@ -14,19 +14,22 @@ class NavigationJsPlugin$5
   {
     if (paramBoolean)
     {
-      if ((this.jdField_a_of_type_AndroidAppActivity != null) && (!this.jdField_a_of_type_AndroidAppActivity.isFinishing()))
+      paramBundle = this.jdField_a_of_type_AndroidAppActivity;
+      if ((paramBundle != null) && (!paramBundle.isFinishing()))
       {
         QLog.d("NavigationJsPlugin", 1, "navigateBackMiniApp ok, finish current.");
         this.jdField_a_of_type_AndroidAppActivity.finish();
       }
-      return;
     }
-    QLog.e("NavigationJsPlugin", 1, "navigateBackMiniApp failed");
+    else
+    {
+      QLog.e("NavigationJsPlugin", 1, "navigateBackMiniApp failed");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.NavigationJsPlugin.5
  * JD-Core Version:    0.7.0.1
  */

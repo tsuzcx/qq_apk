@@ -6,27 +6,28 @@ import com.tencent.imcore.message.UinTypesUtil;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.persistence.notColumn;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import java.util.HashMap;
 import mqq.app.AppRuntime;
 
 public class ConversationInfoErrorReporter
 {
   @notColumn
-  static boolean REPORT_UINTYPE_ERROR;
-  static HashMap<String, Boolean> mReportUnreadError;
+  static boolean REPORT_UINTYPE_ERROR = false;
+  static HashMap<String, Boolean> mReportUnreadError = new HashMap();
   @notColumn
   public static boolean publicaccountTypeErrorReported = false;
   
   static
   {
-    mReportUnreadError = new HashMap();
-    mReportUnreadError.put(" UNREAD ERROR ", Boolean.valueOf(false));
-    mReportUnreadError.put(" SUB_ACCOUNT_TROOP_UNREAD ERROR ", Boolean.valueOf(false));
-    mReportUnreadError.put(" UNREAD_GIFT_COUNT ERROR ", Boolean.valueOf(false));
-    mReportUnreadError.put(" UNREAD_MARK ERROR ", Boolean.valueOf(false));
-    mReportUnreadError.put(" UNREAD_RED_PACK ERROR ", Boolean.valueOf(false));
+    HashMap localHashMap = mReportUnreadError;
+    Boolean localBoolean = Boolean.valueOf(false);
+    localHashMap.put(" UNREAD ERROR ", localBoolean);
+    mReportUnreadError.put(" SUB_ACCOUNT_TROOP_UNREAD ERROR ", localBoolean);
+    mReportUnreadError.put(" UNREAD_GIFT_COUNT ERROR ", localBoolean);
+    mReportUnreadError.put(" UNREAD_MARK ERROR ", localBoolean);
+    mReportUnreadError.put(" UNREAD_RED_PACK ERROR ", localBoolean);
   }
   
   public static boolean reportPublicaccoutTypeError(String paramString, int paramInt)
@@ -54,60 +55,50 @@ public class ConversationInfoErrorReporter
   public static void reportTypeError(int paramInt, String paramString)
   {
     Object localObject = UinTypesUtil.a();
-    IllegalStateException localIllegalStateException;
     if ((paramInt == 6) || (!ArrayUtils.contains((int[])localObject, paramInt)))
     {
-      localObject = " UIN_TYPE ERROR " + paramString;
-      localIllegalStateException = new IllegalStateException((String)localObject);
-      if (!REPORT_UINTYPE_ERROR) {
-        break label77;
-      }
-    }
-    label77:
-    for (paramInt = 0;; paramInt = 1)
-    {
-      if (paramInt != 0)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" UIN_TYPE ERROR ");
+      ((StringBuilder)localObject).append(paramString);
+      localObject = ((StringBuilder)localObject).toString();
+      IllegalStateException localIllegalStateException = new IllegalStateException((String)localObject);
+      if ((REPORT_UINTYPE_ERROR ^ true))
       {
         CaughtExceptionReport.a(localIllegalStateException, (String)localObject);
         REPORT_UINTYPE_ERROR = true;
       }
       QLog.e("ConversationInfo_UinType", 1, paramString, localIllegalStateException);
-      return;
     }
   }
   
   public static void reportUnreadError(int paramInt, String paramString1, String paramString2)
   {
-    String str;
-    IllegalStateException localIllegalStateException;
-    Boolean localBoolean;
     if (paramInt > 100000)
     {
-      str = paramString2 + paramString1;
-      localIllegalStateException = new IllegalStateException(str);
-      localBoolean = (Boolean)mReportUnreadError.get(paramString2);
-      if (localBoolean != null) {}
-    }
-    else
-    {
-      return;
-    }
-    if (localBoolean.booleanValue()) {}
-    for (paramInt = 0;; paramInt = 1)
-    {
-      if (paramInt != 0)
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(paramString1);
+      Object localObject2 = ((StringBuilder)localObject1).toString();
+      localObject1 = new IllegalStateException((String)localObject2);
+      Boolean localBoolean = (Boolean)mReportUnreadError.get(paramString2);
+      if (localBoolean == null) {
+        return;
+      }
+      if ((localBoolean.booleanValue() ^ true))
       {
-        CaughtExceptionReport.a(localIllegalStateException, str);
+        CaughtExceptionReport.a((Throwable)localObject1, (String)localObject2);
         mReportUnreadError.put(paramString2, Boolean.valueOf(true));
       }
-      QLog.e("ConversationInfo_" + paramString2, 1, paramString1, localIllegalStateException);
-      return;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("ConversationInfo_");
+      ((StringBuilder)localObject2).append(paramString2);
+      QLog.e(((StringBuilder)localObject2).toString(), 1, paramString1, (Throwable)localObject1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.ConversationInfoErrorReporter
  * JD-Core Version:    0.7.0.1
  */

@@ -22,7 +22,7 @@ public final class VipTagView
   extends TextView
   implements DragAndDropDetector.Draggable
 {
-  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131298642, 2131298643, 2131298644, 2131298645, 2131298646 };
+  private static final int[] jdField_a_of_type_ArrayOfInt = { 2131298637, 2131298638, 2131298639, 2131298640, 2131298641 };
   private float jdField_a_of_type_Float;
   private int jdField_a_of_type_Int = 0;
   private Bitmap jdField_a_of_type_AndroidGraphicsBitmap;
@@ -46,28 +46,29 @@ public final class VipTagView
   public VipTagView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    if (!isInEditMode()) {
+    if (!isInEditMode())
+    {
       paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, new int[] { 16843087 });
-    }
-    try
-    {
-      paramAttributeSet = paramContext.getString(0);
-      paramContext.recycle();
-      if (paramAttributeSet != null) {
-        setLabelText(paramAttributeSet);
+      try
+      {
+        paramAttributeSet = paramContext.getString(0);
+        paramContext.recycle();
+        if (paramAttributeSet != null) {
+          setLabelText(paramAttributeSet);
+        }
+        b();
+        return;
       }
-      b();
-      return;
-    }
-    finally
-    {
-      paramContext.recycle();
+      finally
+      {
+        paramContext.recycle();
+      }
     }
   }
   
   private void a(int paramInt)
   {
-    setBackgroundResource(2130847775);
+    setBackgroundResource(2130847642);
     if ((paramInt > 0) && (paramInt <= 5))
     {
       Object localObject = getBackground();
@@ -91,9 +92,8 @@ public final class VipTagView
       float f1 = this.jdField_a_of_type_Float;
       paramCanvas.save();
       float f2 = getWidth() - this.jdField_a_of_type_AndroidGraphicsBitmap.getWidth();
-      float f3 = i;
-      float f4 = j;
-      paramCanvas.translate(f2, -(i * 0.8F + j) * this.jdField_a_of_type_Float + (f3 * 0.8F + f4));
+      float f3 = i * 0.8F + j;
+      paramCanvas.translate(f2, f3 + -f3 * this.jdField_a_of_type_Float);
       this.jdField_a_of_type_AndroidGraphicsPaint.setAlpha((int)(255.0F - this.jdField_a_of_type_Float * 200.0F));
       paramCanvas.scale(f1, f1);
       paramCanvas.drawBitmap(this.jdField_a_of_type_AndroidGraphicsBitmap, 0.0F, 0.0F, this.jdField_a_of_type_AndroidGraphicsPaint);
@@ -104,15 +104,17 @@ public final class VipTagView
   private void b()
   {
     setClickable(true);
-    Resources localResources = getResources();
-    setTextSize(0, localResources.getDimensionPixelSize(2131298633));
-    int i = localResources.getDimensionPixelSize(2131298638);
+    Object localObject = getResources();
+    setTextSize(0, ((Resources)localObject).getDimensionPixelSize(2131298628));
+    int i = ((Resources)localObject).getDimensionPixelSize(2131298633);
     this.jdField_a_of_type_AndroidGraphicsPaint = new Paint();
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(-16777216);
-    this.jdField_a_of_type_AndroidGraphicsPaint.setTextSize(i);
+    localObject = this.jdField_a_of_type_AndroidGraphicsPaint;
+    float f = i;
+    ((Paint)localObject).setTextSize(f);
     this.jdField_a_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.LEFT);
     this.jdField_a_of_type_AndroidGraphicsBitmap = Bitmap.createBitmap((int)this.jdField_a_of_type_AndroidGraphicsPaint.measureText("+1"), i, Bitmap.Config.ARGB_4444);
-    new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawText("+1", 0.0F, i, this.jdField_a_of_type_AndroidGraphicsPaint);
+    new Canvas(this.jdField_a_of_type_AndroidGraphicsBitmap).drawText("+1", 0.0F, f, this.jdField_a_of_type_AndroidGraphicsPaint);
     this.jdField_a_of_type_ComTencentMobileqqProfileViewHelperShakeEffectGenerator = new ShakeEffectGenerator(this);
     this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation = new ValueAnimation(Float.valueOf(0.0F), Float.valueOf(1.0F), new VipTagView.1(this));
     this.jdField_a_of_type_ComTencentMobileqqUtilsValueAnimation.setDuration(800L);
@@ -122,16 +124,23 @@ public final class VipTagView
   
   private void c()
   {
-    if (this.jdField_a_of_type_Int <= 99) {}
-    for (String str1 = String.valueOf(this.jdField_a_of_type_Int);; str1 = "99+")
+    int i = this.jdField_a_of_type_Int;
+    String str1;
+    if (i <= 99) {
+      str1 = String.valueOf(i);
+    } else {
+      str1 = "99+";
+    }
+    if ((getText() instanceof String))
     {
-      if ((getText() instanceof String))
-      {
-        String str2 = (String)getText();
-        str2 = str2.substring(0, str2.indexOf('('));
-        setText(str2 + "(" + str1 + ")");
-      }
-      return;
+      String str2 = (String)getText();
+      str2 = str2.substring(0, str2.indexOf('('));
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str2);
+      localStringBuilder.append("(");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(")");
+      setText(localStringBuilder.toString());
     }
   }
   
@@ -159,7 +168,7 @@ public final class VipTagView
     return true;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
     a(paramCanvas);
@@ -174,9 +183,10 @@ public final class VipTagView
   
   public void setLabelText(String paramString)
   {
+    int j = paramString.length();
     int i = 0;
     String str = paramString;
-    if (paramString.length() > 5) {
+    if (j > 5) {
       str = paramString.substring(0, 5);
     }
     paramString = str.toCharArray();
@@ -218,7 +228,7 @@ public final class VipTagView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.view.VipTagView
  * JD-Core Version:    0.7.0.1
  */

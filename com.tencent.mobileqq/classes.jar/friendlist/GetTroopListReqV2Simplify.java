@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class GetTroopListReqV2Simplify
   extends JceStruct
@@ -60,11 +61,13 @@ public final class GetTroopListReqV2Simplify
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.bGetMSFMsgFlag, 1);
-    if (this.vecCookies != null) {
-      paramJceOutputStream.write(this.vecCookies, 2);
+    Object localObject = this.vecCookies;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 2);
     }
-    if (this.vecGroupInfo != null) {
-      paramJceOutputStream.write(this.vecGroupInfo, 3);
+    localObject = this.vecGroupInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 3);
     }
     paramJceOutputStream.write(this.bGroupFlagExt, 4);
     paramJceOutputStream.write(this.shVersion, 5);
@@ -75,7 +78,7 @@ public final class GetTroopListReqV2Simplify
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     friendlist.GetTroopListReqV2Simplify
  * JD-Core Version:    0.7.0.1
  */

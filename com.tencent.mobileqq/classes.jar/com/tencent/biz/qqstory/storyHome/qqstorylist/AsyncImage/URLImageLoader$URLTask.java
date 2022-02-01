@@ -2,6 +2,7 @@ package com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage;
 
 import android.graphics.Bitmap;
 import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.widget.ImageView;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.common.InfoPrinter;
 import com.tencent.biz.qqstory.storyHome.qqstorylist.common.StoryListUtils;
@@ -47,22 +48,26 @@ public class URLImageLoader$URLTask
         onLoadSuccessed(this.jdField_a_of_type_ComTencentImageURLDrawable);
         return;
       }
+      if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 2) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() != 3))
+      {
+        InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "drawable startDownload" });
+        this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
+        return;
+      }
+      InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "drawable restartDownload" });
+      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
+      return;
     }
     catch (MalformedURLException localMalformedURLException)
     {
       localMalformedURLException.printStackTrace();
       InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { localMalformedURLException.getMessage() });
-      a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_AndroidGraphicsDrawableDrawable, "url is error:" + localMalformedURLException);
-      return;
+      Drawable localDrawable = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("url is error:");
+      localStringBuilder.append(localMalformedURLException);
+      a(localDrawable, localStringBuilder.toString());
     }
-    if ((this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 2) || (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 3))
-    {
-      InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "drawable restartDownload" });
-      this.jdField_a_of_type_ComTencentImageURLDrawable.restartDownload();
-      return;
-    }
-    InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "drawable startDownload" });
-    this.jdField_a_of_type_ComTencentImageURLDrawable.startDownload(true);
   }
   
   public void onLoadCanceled(URLDrawable paramURLDrawable)
@@ -90,16 +95,16 @@ public class URLImageLoader$URLTask
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation != null)
     {
       Bitmap localBitmap = StoryListUtils.a(paramURLDrawable.getCurrDrawable(), this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.b, UIUtils.a, this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageURLImageLoader$Config.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistAsyncImageTransformation);
-      if ((localBitmap == null) || (localBitmap.isRecycled()))
+      if ((localBitmap != null) && (!localBitmap.isRecycled()))
       {
-        super.a(paramURLDrawable, "drawable transform failed!");
+        paramURLDrawable = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+        if (paramURLDrawable != null) {
+          paramURLDrawable.setTag(2131369673, localBitmap);
+        }
+        super.a(new BitmapDrawable(localBitmap));
         return;
       }
-      paramURLDrawable = (ImageView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-      if (paramURLDrawable != null) {
-        paramURLDrawable.setTag(2131369988, localBitmap);
-      }
-      super.a(new BitmapDrawable(localBitmap));
+      super.a(paramURLDrawable, "drawable transform failed!");
       return;
     }
     super.a(paramURLDrawable);
@@ -107,7 +112,7 @@ public class URLImageLoader$URLTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.AsyncImage.URLImageLoader.URLTask
  * JD-Core Version:    0.7.0.1
  */

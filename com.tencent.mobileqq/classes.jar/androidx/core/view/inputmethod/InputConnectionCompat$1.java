@@ -5,7 +5,7 @@ import android.view.inputmethod.InputConnection;
 import android.view.inputmethod.InputConnectionWrapper;
 import android.view.inputmethod.InputContentInfo;
 
-final class InputConnectionCompat$1
+class InputConnectionCompat$1
   extends InputConnectionWrapper
 {
   InputConnectionCompat$1(InputConnection paramInputConnection, boolean paramBoolean, InputConnectionCompat.OnCommitContentListener paramOnCommitContentListener)
@@ -23,7 +23,7 @@ final class InputConnectionCompat$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.inputmethod.InputConnectionCompat.1
  * JD-Core Version:    0.7.0.1
  */

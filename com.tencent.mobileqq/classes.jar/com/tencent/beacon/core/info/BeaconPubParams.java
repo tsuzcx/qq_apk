@@ -1,200 +1,179 @@
 package com.tencent.beacon.core.info;
 
 import android.content.Context;
+import android.os.Build;
 import android.text.TextUtils;
-import com.tencent.beacon.event.UserAction;
+import com.tencent.beacon.a.c.b;
+import com.tencent.beacon.a.c.c;
+import com.tencent.beacon.a.c.f;
+import com.tencent.beacon.base.net.c.d;
 import com.tencent.beacon.qimei.QimeiSDK;
 
 public class BeaconPubParams
 {
   private static BeaconPubParams sParamsHolder;
-  private String all_ssid;
-  private String android_id;
-  private String app_first_install_time;
-  private String app_last_updated_time;
-  private String app_version;
-  private String beacon_id;
-  private String boundle_id;
+  private String allSsid;
+  private String androidId;
+  private String appFirstInstallTime;
+  private String appLastUpdatedTime;
+  private String appVersion;
+  private String beaconId;
+  private String boundleId;
   private String brand;
   private String cid;
+  private Context context;
   private String dpi;
-  private String dt_imei2;
-  private String dt_meid;
-  private String dt_mf;
+  private String dtImei2;
+  private String dtMeid;
+  private String dtMf;
   private String fingerprint;
   private String gpu;
-  private String hardware_os;
-  private String host_app_version;
+  private String hardwareOs;
   private String imei;
   private String imsi;
-  private String is_rooted;
+  private String isRooted;
   private String language;
   private String mac;
   private String model;
-  private String model_apn;
-  private String network_type;
-  private String os_version;
+  private String modelApn;
+  private String networkType;
+  private String osVersion;
   private String platform;
-  private String product_id;
+  private String productId;
   private String qimei;
   private String resolution;
-  private String sdk_id;
-  private String sdk_version;
-  private String wifi_mac;
-  private String wifi_ssid;
+  private String sdkId;
+  private String sdkVersion;
+  private String wifiMac;
+  private String wifiSsid;
   
-  private BeaconPubParams(String paramString)
+  private BeaconPubParams(Context paramContext)
   {
-    init(paramString);
+    this.context = paramContext;
+    init(paramContext);
   }
   
-  /* Error */
-  public static BeaconPubParams getPubParams(String paramString)
+  public static BeaconPubParams getPubParams(Context paramContext)
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 54	com/tencent/beacon/core/info/BeaconPubParams:sParamsHolder	Lcom/tencent/beacon/core/info/BeaconPubParams;
-    //   6: ifnonnull +26 -> 32
-    //   9: ldc 2
-    //   11: monitorenter
-    //   12: getstatic 54	com/tencent/beacon/core/info/BeaconPubParams:sParamsHolder	Lcom/tencent/beacon/core/info/BeaconPubParams;
-    //   15: ifnonnull +14 -> 29
-    //   18: new 2	com/tencent/beacon/core/info/BeaconPubParams
-    //   21: dup
-    //   22: aload_0
-    //   23: invokespecial 56	com/tencent/beacon/core/info/BeaconPubParams:<init>	(Ljava/lang/String;)V
-    //   26: putstatic 54	com/tencent/beacon/core/info/BeaconPubParams:sParamsHolder	Lcom/tencent/beacon/core/info/BeaconPubParams;
-    //   29: ldc 2
-    //   31: monitorexit
-    //   32: getstatic 54	com/tencent/beacon/core/info/BeaconPubParams:sParamsHolder	Lcom/tencent/beacon/core/info/BeaconPubParams;
-    //   35: invokespecial 59	com/tencent/beacon/core/info/BeaconPubParams:refresh	()V
-    //   38: getstatic 54	com/tencent/beacon/core/info/BeaconPubParams:sParamsHolder	Lcom/tencent/beacon/core/info/BeaconPubParams;
-    //   41: astore_0
-    //   42: ldc 2
-    //   44: monitorexit
-    //   45: aload_0
-    //   46: areturn
-    //   47: astore_0
-    //   48: ldc 2
-    //   50: monitorexit
-    //   51: aload_0
-    //   52: athrow
-    //   53: astore_0
-    //   54: ldc 2
-    //   56: monitorexit
-    //   57: aload_0
-    //   58: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	59	0	paramString	String
-    // Exception table:
-    //   from	to	target	type
-    //   12	29	47	finally
-    //   29	32	47	finally
-    //   48	51	47	finally
-    //   3	12	53	finally
-    //   32	42	53	finally
-    //   51	53	53	finally
-  }
-  
-  private void init(String paramString)
-  {
-    Context localContext = UserAction.mContext;
-    g localg = g.b(localContext);
-    e locale = e.d(localContext);
-    c localc = c.a(localContext);
-    this.app_version = localg.a(paramString);
-    this.boundle_id = localg.b();
-    this.host_app_version = a.a(localContext);
-    this.sdk_id = localg.h();
-    this.sdk_version = b.i();
-    this.product_id = paramString;
-    this.beacon_id = QimeiSDK.getInstance().getBeaconIdInfo(localContext);
-    this.app_first_install_time = com.tencent.beacon.core.e.b.b(localContext);
-    this.app_last_updated_time = locale.c(localContext);
-    this.platform = String.valueOf(localg.g());
-    this.dt_mf = locale.k();
-    this.os_version = locale.n();
-    this.hardware_os = (locale.f() + "_" + locale.e());
-    this.brand = locale.d();
-    this.model = localg.e();
-    this.language = locale.j();
-    this.resolution = locale.m(localContext);
-    this.dpi = String.valueOf(locale.n(localContext));
-    this.gpu = "";
-    if (locale.i()) {}
-    for (paramString = "1";; paramString = "0")
+    try
     {
-      this.is_rooted = paramString;
-      this.fingerprint = locale.p();
-      this.qimei = QimeiSDK.getInstance().getQimeiInternal(localContext);
-      this.mac = locale.i(localContext);
-      this.wifi_mac = locale.p(localContext);
-      this.wifi_ssid = locale.q(localContext);
-      this.all_ssid = locale.a(localContext);
-      this.cid = localc.b();
-      return;
+      if (sParamsHolder == null) {
+        try
+        {
+          if (sParamsHolder == null) {
+            sParamsHolder = new BeaconPubParams(paramContext);
+          }
+        }
+        finally {}
+      }
+      sParamsHolder.refresh();
+      paramContext = sParamsHolder;
+      return paramContext;
     }
+    finally {}
+  }
+  
+  private void init(Context paramContext)
+  {
+    Context localContext = paramContext;
+    if (paramContext != paramContext.getApplicationContext()) {
+      localContext = paramContext.getApplicationContext();
+    }
+    paramContext = c.d();
+    paramContext.a(localContext);
+    this.appVersion = b.a();
+    this.boundleId = b.b();
+    this.sdkId = paramContext.h();
+    this.sdkVersion = paramContext.i();
+    this.productId = paramContext.f();
+    this.beaconId = QimeiSDK.getInstance().getBeaconIdInfo();
+    this.appFirstInstallTime = b.a(localContext);
+    f localf = f.p();
+    this.appLastUpdatedTime = localf.a(localContext);
+    this.platform = String.valueOf(paramContext.g());
+    this.dtMf = localf.t();
+    this.osVersion = localf.z();
+    paramContext = new StringBuilder();
+    paramContext.append(localf.g());
+    paramContext.append("_");
+    paramContext.append(localf.f());
+    this.hardwareOs = paramContext.toString();
+    this.brand = Build.BRAND;
+    this.model = Build.MODEL;
+    this.language = localf.r();
+    this.resolution = localf.B();
+    this.dpi = String.valueOf(localf.F());
+    this.gpu = "";
+    if (localf.q()) {
+      paramContext = "1";
+    } else {
+      paramContext = "0";
+    }
+    this.isRooted = paramContext;
+    this.fingerprint = localf.C();
+    this.qimei = QimeiSDK.getInstance().getQimeiInternal();
+    this.mac = localf.s();
+    this.wifiMac = localf.J();
+    this.wifiSsid = localf.K();
+    this.allSsid = localf.d();
+    this.cid = localf.v();
   }
   
   private void refresh()
   {
-    Context localContext = UserAction.mContext;
-    e locale = e.d(localContext);
-    c localc = c.a(localContext);
-    this.network_type = locale.k(localContext);
-    this.model_apn = com.tencent.beacon.core.e.e.b(localContext);
+    f localf = f.p();
+    this.networkType = localf.w();
+    this.modelApn = d.c();
     if (TextUtils.isEmpty(this.imei)) {
-      this.imei = localc.c();
+      this.imei = localf.m();
     }
-    if (TextUtils.isEmpty(this.dt_imei2)) {
-      this.dt_imei2 = locale.g(localContext);
+    if (TextUtils.isEmpty(this.dtImei2)) {
+      this.dtImei2 = localf.n();
     }
-    if (TextUtils.isEmpty(this.dt_meid)) {
-      this.dt_meid = locale.j(localContext);
+    if (TextUtils.isEmpty(this.dtMeid)) {
+      this.dtMeid = localf.u();
     }
     if (TextUtils.isEmpty(this.imsi)) {
-      this.imsi = locale.h(localContext);
+      this.imsi = localf.o();
     }
-    if (TextUtils.isEmpty(this.android_id)) {
-      this.android_id = locale.b(localContext);
+    if (TextUtils.isEmpty(this.androidId)) {
+      this.androidId = localf.e();
     }
   }
   
-  public String getAll_ssid()
+  public String getAllSsid()
   {
-    return this.all_ssid;
+    return this.allSsid;
   }
   
-  public String getAndroid_id()
+  public String getAndroidId()
   {
-    return this.android_id;
+    return this.androidId;
   }
   
-  public String getApp_first_install_time()
+  public String getAppFirstInstallTime()
   {
-    return this.app_first_install_time;
+    return this.appFirstInstallTime;
   }
   
-  public String getApp_last_updated_time()
+  public String getAppLastUpdatedTime()
   {
-    return this.app_last_updated_time;
+    return this.appLastUpdatedTime;
   }
   
-  public String getApp_version()
+  public String getAppVersion()
   {
-    return this.app_version;
+    return this.appVersion;
   }
   
-  public String getBeacon_id()
+  public String getBeaconId()
   {
-    return this.beacon_id;
+    return this.beaconId;
   }
   
-  public String getBoundle_id()
+  public String getBoundleId()
   {
-    return this.boundle_id;
+    return this.boundleId;
   }
   
   public String getBrand()
@@ -212,19 +191,19 @@ public class BeaconPubParams
     return this.dpi;
   }
   
-  public String getDt_imei2()
+  public String getDtImei2()
   {
-    return this.dt_imei2;
+    return this.dtImei2;
   }
   
-  public String getDt_meid()
+  public String getDtMeid()
   {
-    return this.dt_meid;
+    return this.dtMeid;
   }
   
-  public String getDt_mf()
+  public String getDtMf()
   {
-    return this.dt_mf;
+    return this.dtMf;
   }
   
   public String getFingerprint()
@@ -232,14 +211,9 @@ public class BeaconPubParams
     return this.fingerprint;
   }
   
-  public String getHardware_os()
+  public String getHardwareOs()
   {
-    return this.hardware_os;
-  }
-  
-  public String getHost_app_version()
-  {
-    return this.host_app_version;
+    return this.hardwareOs;
   }
   
   public String getImei()
@@ -252,9 +226,9 @@ public class BeaconPubParams
     return this.imsi;
   }
   
-  public String getIs_rooted()
+  public String getIsRooted()
   {
-    return this.is_rooted;
+    return this.isRooted;
   }
   
   public String getLanguage()
@@ -272,19 +246,19 @@ public class BeaconPubParams
     return this.model;
   }
   
-  public String getModel_apn()
+  public String getModelApn()
   {
-    return this.model_apn;
+    return this.modelApn;
   }
   
-  public String getNetwork_type()
+  public String getNetworkType()
   {
-    return this.network_type;
+    return this.networkType;
   }
   
-  public String getOs_version()
+  public String getOsVersion()
   {
-    return this.os_version;
+    return this.osVersion;
   }
   
   public String getPlatform()
@@ -292,9 +266,9 @@ public class BeaconPubParams
     return this.platform;
   }
   
-  public String getProduct_id()
+  public String getProductId()
   {
-    return this.product_id;
+    return this.productId;
   }
   
   public String getQimei()
@@ -307,24 +281,24 @@ public class BeaconPubParams
     return this.resolution;
   }
   
-  public String getSdk_id()
+  public String getSdkId()
   {
-    return this.sdk_id;
+    return this.sdkId;
   }
   
-  public String getSdk_version()
+  public String getSdkVersion()
   {
-    return this.sdk_version;
+    return this.sdkVersion;
   }
   
-  public String getWifi_mac()
+  public String getWifiMac()
   {
-    return this.wifi_mac;
+    return this.wifiMac;
   }
   
-  public String getWifi_ssid()
+  public String getWifiSsid()
   {
-    return this.wifi_ssid;
+    return this.wifiSsid;
   }
   
   public String toString()
@@ -334,7 +308,7 @@ public class BeaconPubParams
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.beacon.core.info.BeaconPubParams
  * JD-Core Version:    0.7.0.1
  */

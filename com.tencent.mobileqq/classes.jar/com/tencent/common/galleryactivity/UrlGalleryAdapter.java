@@ -1,7 +1,6 @@
 package com.tencent.common.galleryactivity;
 
 import android.content.Context;
-import android.graphics.drawable.Drawable;
 import android.graphics.drawable.Drawable.ConstantState;
 import android.view.View;
 import android.view.ViewGroup;
@@ -66,40 +65,37 @@ public class UrlGalleryAdapter
   {
     paramView = (URLImageView)paramView;
     URLDrawable localURLDrawable = (URLDrawable)paramView.getDrawable();
-    if ((localURLDrawable.getStatus() != 1) && (localURLDrawable.getStatus() != 2))
+    int i = localURLDrawable.getStatus();
+    boolean bool = true;
+    if ((i != 1) && (localURLDrawable.getStatus() != 2))
     {
-      int i = localURLDrawable.getProgress();
+      i = localURLDrawable.getProgress();
       if (i == 0) {
         return;
       }
       a(paramInt, i / 100);
-      paramView.setMinimumHeight(10);
-      paramView.setMinimumWidth(10);
-      return;
     }
-    if (localURLDrawable.getStatus() == 1) {}
-    for (boolean bool = true;; bool = false)
+    else
     {
+      if (localURLDrawable.getStatus() != 1) {
+        bool = false;
+      }
       a(paramInt, bool);
-      break;
     }
+    paramView.setMinimumHeight(10);
+    paramView.setMinimumWidth(10);
   }
   
   protected void a(View paramView, URLDrawable paramURLDrawable)
   {
-    if (!paramURLDrawable.isAnim()) {}
-    for (boolean bool = true;; bool = false)
+    paramView.setTag(2131296390, Boolean.valueOf(paramURLDrawable.isAnim() ^ true));
+    String str = paramURLDrawable.getURL().toString();
+    if ((paramURLDrawable.getStatus() == 1) && (AbsDownloader.hasFile(str)))
     {
-      paramView.setTag(2131296390, Boolean.valueOf(bool));
-      String str = paramURLDrawable.getURL().toString();
-      if ((paramURLDrawable.getStatus() == 1) && (AbsDownloader.hasFile(str)))
-      {
-        paramURLDrawable = AbsDownloader.getFile(str);
-        if ((paramURLDrawable != null) && (paramURLDrawable.exists())) {
-          paramView.setTag(2131296389, Integer.valueOf(ImageUtil.e(paramURLDrawable.getAbsolutePath())));
-        }
+      paramURLDrawable = AbsDownloader.getFile(str);
+      if ((paramURLDrawable != null) && (paramURLDrawable.exists())) {
+        paramView.setTag(2131296389, Integer.valueOf(ImageUtil.e(paramURLDrawable.getAbsolutePath())));
       }
-      return;
     }
   }
   
@@ -109,49 +105,51 @@ public class UrlGalleryAdapter
     if (paramView != null)
     {
       localObject = paramView;
-      EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
-      return paramView;
     }
-    paramView = new URLImageView(paramViewGroup.getContext());
-    paramView.setAdjustViewBounds(true);
-    URLGalleryImage localURLGalleryImage = (URLGalleryImage)getItem(paramInt);
-    if (localURLGalleryImage != null)
+    else
     {
-      localObject = a(localURLGalleryImage.a(), paramViewGroup);
-      if (localObject != null) {
-        break label198;
+      URLImageView localURLImageView = new URLImageView(paramViewGroup.getContext());
+      boolean bool = true;
+      localURLImageView.setAdjustViewBounds(true);
+      URLGalleryImage localURLGalleryImage = (URLGalleryImage)getItem(paramInt);
+      localObject = localURLImageView;
+      if (localURLGalleryImage != null)
+      {
+        localObject = a(localURLGalleryImage.a(), paramViewGroup);
+        paramView = (View)localObject;
+        if (localObject == null) {
+          paramView = (URLDrawable)localURLGalleryImage.b();
+        }
+        localURLImageView.setImageDrawable(paramView);
+        if ((paramView != null) && (paramView.getStatus() != 1) && (paramView.getStatus() != 4) && (paramView.getStatus() != 2))
+        {
+          int i = paramView.getProgress();
+          localURLImageView.setURLDrawableDownListener(new UrlGalleryAdapter.1(this, paramInt, paramViewGroup));
+          a(paramInt, i / 100);
+          localObject = localURLImageView;
+        }
+        else
+        {
+          localObject = localURLImageView;
+          if (paramView != null)
+          {
+            if (paramView.getStatus() != 1) {
+              bool = false;
+            }
+            a(paramInt, bool);
+            a(localURLImageView, paramView);
+            localObject = localURLImageView;
+          }
+        }
       }
-      localObject = (URLDrawable)localURLGalleryImage.b();
     }
-    label198:
-    for (;;)
-    {
-      paramView.setImageDrawable((Drawable)localObject);
-      if ((localObject != null) && (((URLDrawable)localObject).getStatus() != 1) && (((URLDrawable)localObject).getStatus() != 4) && (((URLDrawable)localObject).getStatus() != 2))
-      {
-        i = ((URLDrawable)localObject).getProgress();
-        paramView.setURLDrawableDownListener(new UrlGalleryAdapter.1(this, paramInt, paramViewGroup));
-        a(paramInt, i / 100);
-      }
-      while (localObject == null)
-      {
-        int i;
-        localObject = paramView;
-        break;
-      }
-      if (((URLDrawable)localObject).getStatus() == 1) {}
-      for (boolean bool = true;; bool = false)
-      {
-        a(paramInt, bool);
-        a(paramView, (URLDrawable)localObject);
-        break;
-      }
-    }
+    EventCollector.getInstance().onListGetView(paramInt, (View)localObject, paramViewGroup, getItemId(paramInt));
+    return localObject;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.common.galleryactivity.UrlGalleryAdapter
  * JD-Core Version:    0.7.0.1
  */

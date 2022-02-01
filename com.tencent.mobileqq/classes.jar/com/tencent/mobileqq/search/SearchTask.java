@@ -4,6 +4,7 @@ import android.annotation.TargetApi;
 import android.os.AsyncTask;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
@@ -45,143 +46,142 @@ public class SearchTask
   
   private void a(List<ISearchable> paramList, String paramString)
   {
-    if (paramList.size() > 20) {}
-    for (int i = 20;; i = paramList.size())
+    int j = paramList.size();
+    int i = 20;
+    if (j <= 20) {
+      i = paramList.size();
+    }
+    j = 0;
+    while (j < i)
     {
-      int j = 0;
-      while (j < i)
-      {
-        IContactSearchable localIContactSearchable = (IContactSearchable)paramList.get(j);
-        if (QLog.isColorLevel()) {
-          QLog.d("SearchTask", 2, "printSearchResultData " + paramString + "matchDegree : " + localIContactSearchable.c() + " message time : " + localIContactSearchable.Y);
-        }
-        j += 1;
-      }
+      paramString = (IContactSearchable)paramList.get(j);
+      QLog.isColorLevel();
+      j += 1;
     }
   }
   
   protected Void a(Void... paramVarArgs)
   {
-    int j;
     if (this.jdField_a_of_type_JavaUtilList != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchTask", 2, "Start doInBackground , keyword = " + this.jdField_a_of_type_JavaLangString);
+      if (QLog.isColorLevel())
+      {
+        paramVarArgs = new StringBuilder();
+        paramVarArgs.append("Start doInBackground , keyword = ");
+        paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("SearchTask", 2, paramVarArgs.toString());
       }
       int k = this.jdField_a_of_type_JavaUtilList.size();
-      int m = k / 300;
+      int n = k / 300;
       int i = 0;
-      int n;
-      if (i < m + 1)
+      int j;
+      while (i < n + 1)
       {
-        n = i * 300;
-        if (n + 300 <= k) {
-          break label168;
+        int i1 = i * 300;
+        int m = i1 + 300;
+        j = m;
+        if (m > k) {
+          j = k;
         }
-        j = k;
-        label91:
-        if ((!isCancelled()) && (!this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
-          break label178;
+        if ((isCancelled()) || (this.jdField_a_of_type_JavaUtilConcurrentExecutorService.isShutdown())) {
+          break;
         }
+        paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new SearchTask.2(this, i1, j));
+        this.jdField_b_of_type_JavaUtilList.add(paramVarArgs);
+        i += 1;
       }
-      for (;;)
+      try
       {
-        try
+        this.c.clear();
+        long l1 = System.currentTimeMillis();
+        i = 0;
+        while ((i < this.jdField_b_of_type_JavaUtilList.size()) && (!isCancelled()))
         {
-          this.c.clear();
-          l1 = System.currentTimeMillis();
-          i = 0;
-          if ((i >= this.jdField_b_of_type_JavaUtilList.size()) || (isCancelled()))
-          {
-            this.jdField_b_of_type_JavaUtilList.clear();
-            boolean bool = isCancelled();
-            if (!bool) {
-              continue;
-            }
-            return null;
-            label168:
-            j = n + 300;
-            break label91;
-            label178:
-            paramVarArgs = this.jdField_a_of_type_JavaUtilConcurrentExecutorService.submit(new SearchTask.2(this, n, j));
-            this.jdField_b_of_type_JavaUtilList.add(paramVarArgs);
-            i += 1;
-            break;
-          }
           paramVarArgs = (List)((Future)this.jdField_b_of_type_JavaUtilList.get(i)).get();
           if (i == 0)
           {
             this.c.addAll(paramVarArgs);
-            paramVarArgs.clear();
-            i += 1;
-            continue;
           }
-          localIterator = paramVarArgs.iterator();
-        }
-        catch (InterruptedException paramVarArgs)
-        {
-          Iterator localIterator;
-          ISearchable localISearchable;
-          paramVarArgs.printStackTrace();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("SearchTask", 2, "InterruptedException happens, keyword = " + this.jdField_a_of_type_JavaLangString + " : ");
-          this.jdField_a_of_type_Boolean = false;
-          return null;
-          if (((ISearchable)this.c.get(j)).c() >= localISearchable.c()) {
-            continue;
-          }
-          this.c.set(j, localISearchable);
-          continue;
-        }
-        catch (ExecutionException paramVarArgs)
-        {
-          long l1;
-          paramVarArgs.printStackTrace();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("SearchTask", 2, "InterruptedException happens, keyword = " + this.jdField_a_of_type_JavaLangString + " : ");
-          continue;
-          a(this.c);
-          l2 = System.currentTimeMillis();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("SearchTask", 2, "SearchTask ======= doInBackground time = " + (l2 - l1) + " , keyword = " + this.jdField_a_of_type_JavaLangString);
-          continue;
-        }
-        if (localIterator.hasNext())
-        {
-          localISearchable = (ISearchable)localIterator.next();
-          if (!isCancelled())
+          else
           {
-            j = this.c.indexOf(localISearchable);
-            if (-1 != j) {
-              continue;
+            Iterator localIterator = paramVarArgs.iterator();
+            while (localIterator.hasNext())
+            {
+              ISearchable localISearchable = (ISearchable)localIterator.next();
+              if (isCancelled()) {
+                break;
+              }
+              j = this.c.indexOf(localISearchable);
+              if (-1 == j) {
+                this.c.add(localISearchable);
+              } else if (((ISearchable)this.c.get(j)).c() < localISearchable.c()) {
+                this.c.set(j, localISearchable);
+              }
             }
-            this.c.add(localISearchable);
           }
+          paramVarArgs.clear();
+          i += 1;
+        }
+        this.jdField_b_of_type_JavaUtilList.clear();
+        if (isCancelled()) {
+          return null;
+        }
+        a(this.c);
+        long l2 = System.currentTimeMillis();
+        if (QLog.isColorLevel())
+        {
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append("SearchTask ======= doInBackground time = ");
+          paramVarArgs.append(l2 - l1);
+          paramVarArgs.append(" , keyword = ");
+          paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+          QLog.d("SearchTask", 2, paramVarArgs.toString());
         }
       }
-    }
-    for (;;)
-    {
-      long l2;
-      this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("SearchTask", 2, "doInBackground:: inputSet is null.");
+      catch (ExecutionException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append("InterruptedException happens, keyword = ");
+          paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+          paramVarArgs.append(" : ");
+          QLog.d("SearchTask", 2, paramVarArgs.toString());
+        }
       }
+      catch (InterruptedException paramVarArgs)
+      {
+        paramVarArgs.printStackTrace();
+        if (QLog.isColorLevel())
+        {
+          paramVarArgs = new StringBuilder();
+          paramVarArgs.append("InterruptedException happens, keyword = ");
+          paramVarArgs.append(this.jdField_a_of_type_JavaLangString);
+          paramVarArgs.append(" : ");
+          QLog.d("SearchTask", 2, paramVarArgs.toString());
+        }
+      }
+      this.jdField_a_of_type_Boolean = false;
+      return null;
     }
+    this.jdField_a_of_type_Boolean = true;
+    if (QLog.isColorLevel()) {
+      QLog.d("SearchTask", 2, "doInBackground:: inputSet is null.");
+    }
+    return null;
   }
   
   @TargetApi(11)
   public void a()
   {
     executeOnExecutor(jdField_a_of_type_JavaUtilConcurrentThreadPoolExecutor, new Void[0]);
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchTask", 2, "Start execute , keyword = " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Start execute , keyword = ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("SearchTask", 2, localStringBuilder.toString());
     }
   }
   
@@ -194,40 +194,48 @@ public class SearchTask
       if (QLog.isColorLevel()) {
         QLog.d("SearchTask", 2, "onPostExecute:: isCancelled.");
       }
-    }
-    while (this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask$SearchTaskCallBack == null) {
       return;
     }
-    int i = 1;
-    if (this.jdField_a_of_type_Boolean) {
-      i = 0;
+    paramVoid = this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask$SearchTaskCallBack;
+    if (paramVoid != null)
+    {
+      paramVoid.a(this.jdField_a_of_type_Boolean ^ true, this.c);
+      this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
     }
-    this.jdField_a_of_type_ComTencentMobileqqSearchSearchTask$SearchTaskCallBack.a(i, this.c);
-    this.jdField_a_of_type_JavaUtilConcurrentExecutorService.shutdown();
   }
   
   protected void a(List<ISearchable> paramList)
   {
     long l = System.currentTimeMillis();
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchTask", 2, "start sortResultSet(), keyword = " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("start sortResultSet(), keyword = ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("SearchTask", 2, ((StringBuilder)localObject).toString());
     }
     Collections.sort(paramList, jdField_a_of_type_JavaUtilComparator);
     int i = Math.min(paramList.size(), 30);
-    List localList = paramList.subList(0, i);
-    Collections.sort(localList, jdField_b_of_type_JavaUtilComparator);
+    Object localObject = paramList.subList(0, i);
+    Collections.sort((List)localObject, jdField_b_of_type_JavaUtilComparator);
     ArrayList localArrayList = new ArrayList();
-    localArrayList.addAll(localList);
+    localArrayList.addAll((Collection)localObject);
     localArrayList.addAll(paramList.subList(i, paramList.size()));
     a(paramList, "after sort ");
-    if (QLog.isColorLevel()) {
-      QLog.d("SearchTask", 2, "sortResultSet() time = " + (System.currentTimeMillis() - l) + " , keyword = " + this.jdField_a_of_type_JavaLangString);
+    if (QLog.isColorLevel())
+    {
+      paramList = new StringBuilder();
+      paramList.append("sortResultSet() time = ");
+      paramList.append(System.currentTimeMillis() - l);
+      paramList.append(" , keyword = ");
+      paramList.append(this.jdField_a_of_type_JavaLangString);
+      QLog.d("SearchTask", 2, paramList.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.SearchTask
  * JD-Core Version:    0.7.0.1
  */

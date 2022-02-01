@@ -66,14 +66,18 @@ public class MessageForReplyText$SourceMsgInfo
   
   public void packSourceMsg(QQAppInterface paramQQAppInterface, MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord == null) || ((paramMessageRecord instanceof MessageForReplyText))) {}
-    do
+    if (paramMessageRecord != null)
     {
-      return;
+      if ((paramMessageRecord instanceof MessageForReplyText)) {
+        return;
+      }
       paramQQAppInterface = MsgBackupMsgProxy.a(paramQQAppInterface, paramMessageRecord);
-    } while (paramQQAppInterface == null);
-    setSourceMsgByte(paramQQAppInterface);
-    setUniSeq(paramMessageRecord.uniseq, false);
+      if (paramQQAppInterface == null) {
+        return;
+      }
+      setSourceMsgByte(paramQQAppInterface);
+      setUniSeq(paramMessageRecord.uniseq, false);
+    }
   }
   
   public void setSourceMsgByte(byte[] paramArrayOfByte)
@@ -90,29 +94,39 @@ public class MessageForReplyText$SourceMsgInfo
   
   public void setUniSeq(long paramLong, boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("SourceMsgInfo", 2, "uniSeq has value curUniSq=" + this.uniseq + " expectSeq=" + paramLong + " forceToReset=" + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uniSeq has value curUniSq=");
+      localStringBuilder.append(this.uniseq);
+      localStringBuilder.append(" expectSeq=");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append(" forceToReset=");
+      localStringBuilder.append(paramBoolean);
+      QLog.d("SourceMsgInfo", 2, localStringBuilder.toString());
     }
-    if (paramBoolean) {
+    if (paramBoolean)
+    {
       this.uniseq = paramLong;
-    }
-    while (this.uniseq != 0L) {
       return;
     }
-    this.uniseq = paramLong;
+    if (this.uniseq == 0L) {
+      this.uniseq = paramLong;
+    }
   }
   
   public MessageRecord unPackSourceMsg(QQAppInterface paramQQAppInterface)
   {
-    if (this.mSourceMessageByte == null) {
+    byte[] arrayOfByte = this.mSourceMessageByte;
+    if (arrayOfByte == null) {
       return null;
     }
-    return MsgBackupMsgProxy.a(paramQQAppInterface, this.mSourceMessageByte);
+    return MsgBackupMsgProxy.a(paramQQAppInterface, arrayOfByte);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForReplyText.SourceMsgInfo
  * JD-Core Version:    0.7.0.1
  */

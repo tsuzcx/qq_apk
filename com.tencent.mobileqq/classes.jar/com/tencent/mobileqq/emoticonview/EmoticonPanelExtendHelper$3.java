@@ -1,25 +1,32 @@
 package com.tencent.mobileqq.emoticonview;
 
-import android.text.Editable;
-import android.text.TextWatcher;
+import android.animation.ValueAnimator;
+import android.animation.ValueAnimator.AnimatorUpdateListener;
+import android.view.ViewParent;
+import com.tencent.widget.XPanelContainer;
 
 class EmoticonPanelExtendHelper$3
-  implements TextWatcher
+  implements ValueAnimator.AnimatorUpdateListener
 {
-  EmoticonPanelExtendHelper$3(EmoticonPanelExtendHelper paramEmoticonPanelExtendHelper) {}
+  EmoticonPanelExtendHelper$3(EmoticonPanelExtendHelper paramEmoticonPanelExtendHelper, int paramInt) {}
   
-  public void afterTextChanged(Editable paramEditable)
+  public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    this.this$0.updateDeleteBtnVisibility(paramEditable.toString());
+    if (EmoticonPanelExtendHelper.access$300(this.this$0) == null) {
+      return;
+    }
+    XPanelContainer.a = ((Integer)paramValueAnimator.getAnimatedValue()).intValue();
+    if (EmoticonPanelExtendHelper.access$000(this.this$0).getParent() != null) {
+      EmoticonPanelExtendHelper.access$000(this.this$0).getParent().requestLayout();
+    }
+    if ((this.val$targetH == EmoticonPanelExtendHelper.access$100(this.this$0)) && (XPanelContainer.a == EmoticonPanelExtendHelper.access$100(this.this$0))) {
+      this.this$0.abortFling();
+    }
   }
-  
-  public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
-  
-  public void onTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonPanelExtendHelper.3
  * JD-Core Version:    0.7.0.1
  */

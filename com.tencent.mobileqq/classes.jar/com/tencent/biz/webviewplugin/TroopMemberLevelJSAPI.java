@@ -16,7 +16,7 @@ public class TroopMemberLevelJSAPI
     this.mPluginNameSpace = "troop_member_level_JS_API";
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if (!"troop_member_level_JS_API".equals(paramString2)) {
       return false;
@@ -40,7 +40,7 @@ public class TroopMemberLevelJSAPI
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.webviewplugin.TroopMemberLevelJSAPI
  * JD-Core Version:    0.7.0.1
  */

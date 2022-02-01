@@ -1,5 +1,6 @@
 package com.tencent.weseevideo.model;
 
+import com.tencent.weseevideo.common.utils.GsonUtils;
 import com.tencent.weseevideo.model.effect.MediaEffectModel;
 import com.tencent.weseevideo.model.resource.MediaResourceModel;
 import com.tencent.weseevideo.model.template.MediaTemplateModel;
@@ -7,9 +8,8 @@ import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/weseevideo/model/MediaModel;", "Lcom/tencent/weseevideo/model/BaseMediaModel;", "()V", "mediaEffectModel", "Lcom/tencent/weseevideo/model/effect/MediaEffectModel;", "getMediaEffectModel", "()Lcom/tencent/weseevideo/model/effect/MediaEffectModel;", "setMediaEffectModel", "(Lcom/tencent/weseevideo/model/effect/MediaEffectModel;)V", "mediaResourceModel", "Lcom/tencent/weseevideo/model/resource/MediaResourceModel;", "getMediaResourceModel", "()Lcom/tencent/weseevideo/model/resource/MediaResourceModel;", "setMediaResourceModel", "(Lcom/tencent/weseevideo/model/resource/MediaResourceModel;)V", "mediaTemplateModel", "Lcom/tencent/weseevideo/model/template/MediaTemplateModel;", "getMediaTemplateModel", "()Lcom/tencent/weseevideo/model/template/MediaTemplateModel;", "setMediaTemplateModel", "(Lcom/tencent/weseevideo/model/template/MediaTemplateModel;)V", "libtavcut_debug"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/weseevideo/model/MediaModel;", "", "()V", "mediaEffectModel", "Lcom/tencent/weseevideo/model/effect/MediaEffectModel;", "getMediaEffectModel", "()Lcom/tencent/weseevideo/model/effect/MediaEffectModel;", "setMediaEffectModel", "(Lcom/tencent/weseevideo/model/effect/MediaEffectModel;)V", "mediaResourceModel", "Lcom/tencent/weseevideo/model/resource/MediaResourceModel;", "getMediaResourceModel", "()Lcom/tencent/weseevideo/model/resource/MediaResourceModel;", "setMediaResourceModel", "(Lcom/tencent/weseevideo/model/resource/MediaResourceModel;)V", "mediaTemplateModel", "Lcom/tencent/weseevideo/model/template/MediaTemplateModel;", "getMediaTemplateModel", "()Lcom/tencent/weseevideo/model/template/MediaTemplateModel;", "setMediaTemplateModel", "(Lcom/tencent/weseevideo/model/template/MediaTemplateModel;)V", "toString", "", "libtavcut_debug"}, k=1, mv={1, 1, 16})
 public final class MediaModel
-  extends BaseMediaModel
 {
   @NotNull
   private MediaEffectModel mediaEffectModel = new MediaEffectModel();
@@ -53,10 +53,18 @@ public final class MediaModel
     Intrinsics.checkParameterIsNotNull(paramMediaTemplateModel, "<set-?>");
     this.mediaTemplateModel = paramMediaTemplateModel;
   }
+  
+  @NotNull
+  public String toString()
+  {
+    String str = GsonUtils.obj2Json(this);
+    Intrinsics.checkExpressionValueIsNotNull(str, "GsonUtils.obj2Json(this)");
+    return str;
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.MediaModel
  * JD-Core Version:    0.7.0.1
  */

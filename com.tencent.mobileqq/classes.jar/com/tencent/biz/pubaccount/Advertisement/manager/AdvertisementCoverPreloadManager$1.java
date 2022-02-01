@@ -17,24 +17,34 @@ class AdvertisementCoverPreloadManager$1
       AdvertisementCoverPreloadManager.a(this.a).remove(0);
       if (AdvertisementCoverPreloadManager.b(this.a) != null)
       {
-        if (!AdvertisementCoverPreloadManager.b(this.a).contains(str)) {
-          break label119;
+        StringBuilder localStringBuilder;
+        if (AdvertisementCoverPreloadManager.b(this.a).contains(str))
+        {
+          AdvertisementCoverPreloadManager.b(this.a).remove(str);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onFileDownloadFailed(delete) url:");
+            localStringBuilder.append(str);
+            QLog.d("AdvertisementCoverPreloadManager", 2, localStringBuilder.toString());
+          }
         }
-        AdvertisementCoverPreloadManager.b(this.a).remove(str);
-        if (QLog.isColorLevel()) {
-          QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(delete) url:" + str);
+        else
+        {
+          AdvertisementCoverPreloadManager.a(this.a).add(str);
+          AdvertisementCoverPreloadManager.b(this.a).add(str);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("onFileDownloadFailed(retry) url:");
+            localStringBuilder.append(str);
+            QLog.d("AdvertisementCoverPreloadManager", 2, localStringBuilder.toString());
+          }
         }
       }
-      label119:
-      do
-      {
-        AdvertisementCoverPreloadManager.a(this.a, null);
-        AdvertisementCoverPreloadManager.a(this.a);
-        return;
-        AdvertisementCoverPreloadManager.a(this.a).add(str);
-        AdvertisementCoverPreloadManager.b(this.a).add(str);
-      } while (!QLog.isColorLevel());
-      QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadFailed(retry) url:" + str);
+      AdvertisementCoverPreloadManager.a(this.a, null);
+      AdvertisementCoverPreloadManager.a(this.a);
+      return;
     }
   }
   
@@ -49,8 +59,12 @@ class AdvertisementCoverPreloadManager$1
       if ((AdvertisementCoverPreloadManager.b(this.a) != null) && (AdvertisementCoverPreloadManager.b(this.a).contains(str))) {
         AdvertisementCoverPreloadManager.b(this.a).remove(str);
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("AdvertisementCoverPreloadManager", 2, "onFileDownloadSucceed url:" + str);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onFileDownloadSucceed url:");
+        localStringBuilder.append(str);
+        QLog.d("AdvertisementCoverPreloadManager", 2, localStringBuilder.toString());
       }
       AdvertisementCoverPreloadManager.a(this.a, null);
       AdvertisementCoverPreloadManager.a(this.a);
@@ -60,7 +74,7 @@ class AdvertisementCoverPreloadManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.Advertisement.manager.AdvertisementCoverPreloadManager.1
  * JD-Core Version:    0.7.0.1
  */

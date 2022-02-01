@@ -35,8 +35,9 @@ public final class ParentFrameLayout
   
   public void _$_clearFindViewByIdCache()
   {
-    if (this._$_findViewCache != null) {
-      this._$_findViewCache.clear();
+    HashMap localHashMap = this._$_findViewCache;
+    if (localHashMap != null) {
+      localHashMap.clear();
     }
   }
   
@@ -67,7 +68,7 @@ public final class ParentFrameLayout
     return this.touchListener;
   }
   
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     OnFloatWindowCallbacks localOnFloatWindowCallbacks = this.config.callbacks;
@@ -88,7 +89,7 @@ public final class ParentFrameLayout
     return (this.config.isDrag) || (super.onInterceptTouchEvent(paramMotionEvent));
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if (!this.isCreated)
@@ -126,7 +127,7 @@ public final class ParentFrameLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.widget.appfloat.ParentFrameLayout
  * JD-Core Version:    0.7.0.1
  */

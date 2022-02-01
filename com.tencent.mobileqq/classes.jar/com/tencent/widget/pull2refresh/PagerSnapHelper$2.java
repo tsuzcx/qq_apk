@@ -17,17 +17,17 @@ class PagerSnapHelper$2
     super(paramContext);
   }
   
-  public float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
+  protected float calculateSpeedPerPixel(DisplayMetrics paramDisplayMetrics)
   {
     return PagerSnapHelper.a(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper) / paramDisplayMetrics.densityDpi;
   }
   
-  public int calculateTimeForDeceleration(int paramInt)
+  protected int calculateTimeForDeceleration(int paramInt)
   {
     return super.calculateTimeForDeceleration(paramInt);
   }
   
-  public int calculateTimeForScrolling(int paramInt)
+  protected int calculateTimeForScrolling(int paramInt)
   {
     return super.calculateTimeForScrolling(paramInt);
   }
@@ -37,7 +37,7 @@ class PagerSnapHelper$2
     return this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager.computeScrollVectorForPosition(paramInt);
   }
   
-  public void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
+  protected void onTargetFound(View paramView, RecyclerView.State paramState, RecyclerView.SmoothScroller.Action paramAction)
   {
     paramView = PagerSnapHelper.a(this.jdField_a_of_type_ComTencentWidgetPull2refreshPagerSnapHelper, this.jdField_a_of_type_AndroidSupportV7WidgetLinearLayoutManager, paramView);
     int i = paramView[0];
@@ -53,7 +53,7 @@ class PagerSnapHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.PagerSnapHelper.2
  * JD-Core Version:    0.7.0.1
  */

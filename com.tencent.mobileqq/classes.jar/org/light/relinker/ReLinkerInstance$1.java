@@ -15,20 +15,20 @@ class ReLinkerInstance$1
       this.val$listener.success();
       return;
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      this.val$listener.failure(localUnsatisfiedLinkError);
-      return;
-    }
     catch (MissingLibraryException localMissingLibraryException)
     {
       this.val$listener.failure(localMissingLibraryException);
+      return;
+    }
+    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
+    {
+      this.val$listener.failure(localUnsatisfiedLinkError);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     org.light.relinker.ReLinkerInstance.1
  * JD-Core Version:    0.7.0.1
  */

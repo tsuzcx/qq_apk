@@ -14,7 +14,7 @@ class AuthorityAccountView$2
   
   public void onGlobalLayout()
   {
-    View localView = AuthorityAccountView.a(this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView).findViewById(2131361865);
+    View localView = this.jdField_a_of_type_ComTencentOpenAgentAuthorityAccountView.a.findViewById(2131361871);
     RelativeLayout.LayoutParams localLayoutParams = (RelativeLayout.LayoutParams)localView.getLayoutParams();
     localLayoutParams.topMargin = (this.jdField_a_of_type_AndroidWidgetImageView.getHeight() / 2 + this.jdField_a_of_type_AndroidWidgetImageView.getTop() - localView.getHeight() / 2);
     localView.setLayoutParams(localLayoutParams);
@@ -28,7 +28,7 @@ class AuthorityAccountView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.AuthorityAccountView.2
  * JD-Core Version:    0.7.0.1
  */

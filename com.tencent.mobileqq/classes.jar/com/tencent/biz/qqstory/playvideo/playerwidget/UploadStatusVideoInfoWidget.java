@@ -43,10 +43,10 @@ public class UploadStatusVideoInfoWidget
   
   public void a(View paramView)
   {
-    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131381535));
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131381537));
-    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131381536));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131381538));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131380770));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131380772));
+    this.jdField_a_of_type_AndroidWidgetProgressBar = ((ProgressBar)paramView.findViewById(2131380771));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380773));
     this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
   }
   
@@ -57,17 +57,16 @@ public class UploadStatusVideoInfoWidget
       j();
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(8);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(0);
-      switch (paramStoryVideoItem.mUpLoadFailedError)
-      {
-      default: 
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699793);
+      if (paramStoryVideoItem.mUpLoadFailedError != 10404) {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699934);
+      } else {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699936);
       }
-      while (this.f)
+      if (this.f)
       {
         this.f = false;
         StoryReportor.a("play_video", "retrypub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
         return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(2131699795);
       }
       StoryReportor.a("play_video", "exp_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from), "", "", paramStoryVideoItem.mVid });
       return;
@@ -78,15 +77,21 @@ public class UploadStatusVideoInfoWidget
       this.jdField_a_of_type_AndroidWidgetProgressBar.setVisibility(0);
       this.jdField_a_of_type_AndroidWidgetImageView.setVisibility(8);
       int i = StoryVideoUploadProgressManager.a().a(paramStoryVideoItem.mVid);
-      if (i >= 0) {
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131715770) + i + "%");
-      }
-      for (;;)
+      if (i >= 0)
       {
-        StoryVideoUploadProgressManager.a().a(paramStoryVideoItem.mVid, new UploadStatusVideoInfoWidget.1(this));
-        return;
-        this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131715772));
+        TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(HardCodeUtil.a(2131715694));
+        localStringBuilder.append(i);
+        localStringBuilder.append("%");
+        localTextView.setText(localStringBuilder.toString());
       }
+      else
+      {
+        this.jdField_a_of_type_AndroidWidgetTextView.setText(HardCodeUtil.a(2131715696));
+      }
+      StoryVideoUploadProgressManager.a().a(paramStoryVideoItem.mVid, new UploadStatusVideoInfoWidget.1(this));
+      return;
     }
     k();
   }
@@ -108,7 +113,7 @@ public class UploadStatusVideoInfoWidget
   
   public int b()
   {
-    return 2131561986;
+    return 2131561822;
   }
   
   protected void f() {}
@@ -118,47 +123,35 @@ public class UploadStatusVideoInfoWidget
   public void onClick(View paramView)
   {
     StoryVideoItem localStoryVideoItem;
-    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData != null)
-    {
+    if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData != null) {
       localStoryVideoItem = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetStoryPlayerVideoData.a();
-      if (localStoryVideoItem != null) {
-        break label41;
-      }
+    } else {
+      localStoryVideoItem = null;
+    }
+    if (localStoryVideoItem == null)
+    {
       SLog.d(this.b, "video item not found ,click error..");
     }
-    for (;;)
+    else if (paramView.getId() == 2131380770)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localStoryVideoItem = null;
-      break;
-      label41:
-      switch (paramView.getId())
+      int i = localStoryVideoItem.mUploadStatus;
+      if ((i == 3) || (i == 6))
       {
-      default: 
-        break;
-      case 2131381535: 
-        switch (localStoryVideoItem.mUploadStatus)
-        {
+        if (!PlayModeUtils.a(localStoryVideoItem, b())) {
+          StoryReportor.a("play_video", "retrypub_fail", 0, 0, new String[0]);
+        } else {
+          this.f = true;
         }
-        break;
+        StoryReportor.a("play_video", "clk_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from) });
+        SLog.b(this.b, "on retry click !");
       }
     }
-    if (!PlayModeUtils.a(localStoryVideoItem, b())) {
-      StoryReportor.a("play_video", "retrypub_fail", 0, 0, new String[0]);
-    }
-    for (;;)
-    {
-      StoryReportor.a("play_video", "clk_pub_fail", 0, 0, new String[] { String.valueOf(a().mReportData.from) });
-      SLog.b(this.b, "on retry click !");
-      break;
-      this.f = true;
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.UploadStatusVideoInfoWidget
  * JD-Core Version:    0.7.0.1
  */

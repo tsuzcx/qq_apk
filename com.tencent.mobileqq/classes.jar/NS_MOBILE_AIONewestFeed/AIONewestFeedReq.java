@@ -40,8 +40,9 @@ public final class AIONewestFeedReq
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.uOpUin, 0);
-    if (this.uHostUin != null) {
-      paramJceOutputStream.write(this.uHostUin, 1);
+    ArrayList localArrayList = this.uHostUin;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 1);
     }
     paramJceOutputStream.write(this.uLastTime, 2);
     paramJceOutputStream.write(this.src, 3);
@@ -49,7 +50,7 @@ public final class AIONewestFeedReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_AIONewestFeed.AIONewestFeedReq
  * JD-Core Version:    0.7.0.1
  */

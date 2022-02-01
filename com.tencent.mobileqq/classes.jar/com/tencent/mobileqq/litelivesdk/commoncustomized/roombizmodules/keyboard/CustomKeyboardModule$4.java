@@ -14,20 +14,22 @@ class CustomKeyboardModule$4
   
   public void afterTextChanged(Editable paramEditable)
   {
-    if (CustomKeyboardModule.a(this.a) == null) {}
-    while (EditorUtil.getLength(paramEditable.toString()) <= 140) {
+    if (CustomKeyboardModule.a(this.a) == null) {
       return;
     }
-    ToastUtil.a().a("小主评论字数已达上限，请精简");
-    int j = Selection.getSelectionEnd(paramEditable);
-    paramEditable = EditorUtil.clip(paramEditable.toString(), 0, 140).toString();
-    CustomKeyboardModule.a(this.a).setText(paramEditable);
-    paramEditable = CustomKeyboardModule.a(this.a).getText();
-    int i = j;
-    if (j > paramEditable.length()) {
-      i = paramEditable.length();
+    if (EditorUtil.getLength(paramEditable.toString()) > 140)
+    {
+      ToastUtil.a().a("小主评论字数已达上限，请精简");
+      int j = Selection.getSelectionEnd(paramEditable);
+      paramEditable = EditorUtil.clip(paramEditable.toString(), 0, 140).toString();
+      CustomKeyboardModule.a(this.a).setText(paramEditable);
+      paramEditable = CustomKeyboardModule.a(this.a).getText();
+      int i = j;
+      if (j > paramEditable.length()) {
+        i = paramEditable.length();
+      }
+      Selection.setSelection(paramEditable, i);
     }
-    Selection.setSelection(paramEditable, i);
   }
   
   public void beforeTextChanged(CharSequence paramCharSequence, int paramInt1, int paramInt2, int paramInt3) {}
@@ -36,7 +38,7 @@ class CustomKeyboardModule$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.commoncustomized.roombizmodules.keyboard.CustomKeyboardModule.4
  * JD-Core Version:    0.7.0.1
  */

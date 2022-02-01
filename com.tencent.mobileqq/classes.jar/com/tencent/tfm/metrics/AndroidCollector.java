@@ -20,13 +20,17 @@ public class AndroidCollector
   
   public void push(LogItem paramLogItem)
   {
-    if ((paramLogItem == null) || (this.handler == null)) {
-      return;
+    if (paramLogItem != null)
+    {
+      Object localObject = this.handler;
+      if (localObject == null) {
+        return;
+      }
+      localObject = ((AndroidCollector.CollectorHandler)localObject).obtainMessage();
+      ((Message)localObject).what = 0;
+      ((Message)localObject).obj = paramLogItem;
+      this.handler.sendMessage((Message)localObject);
     }
-    Message localMessage = this.handler.obtainMessage();
-    localMessage.what = 0;
-    localMessage.obj = paramLogItem;
-    this.handler.sendMessage(localMessage);
   }
   
   public void setReporter(Reporter paramReporter)
@@ -41,7 +45,7 @@ public class AndroidCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.AndroidCollector
  * JD-Core Version:    0.7.0.1
  */

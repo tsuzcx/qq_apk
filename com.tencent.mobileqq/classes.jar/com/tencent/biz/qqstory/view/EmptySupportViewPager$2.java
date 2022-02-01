@@ -1,6 +1,6 @@
 package com.tencent.biz.qqstory.view;
 
-import android.support.v4.view.ViewPager.OnPageChangeListener;
+import androidx.viewpager.widget.ViewPager.OnPageChangeListener;
 import java.util.Iterator;
 import java.util.List;
 
@@ -44,7 +44,7 @@ class EmptySupportViewPager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.EmptySupportViewPager.2
  * JD-Core Version:    0.7.0.1
  */

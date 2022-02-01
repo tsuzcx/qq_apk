@@ -35,30 +35,32 @@ public class VasDbManagerImpl
   
   private boolean a(Entity paramEntity)
   {
-    boolean bool2 = false;
+    Object localObject = a();
+    boolean bool2 = ((EntityManager)localObject).isOpen();
     boolean bool1 = false;
-    EntityManager localEntityManager = a();
-    if (localEntityManager.isOpen()) {
+    if (bool2)
+    {
       if (paramEntity.getStatus() == 1000)
       {
-        localEntityManager.persistOrReplace(paramEntity);
+        ((EntityManager)localObject).persistOrReplace(paramEntity);
         if (paramEntity.getStatus() == 1001) {
           bool1 = true;
         }
-        localEntityManager.close();
       }
-    }
-    do
-    {
+      else if ((paramEntity.getStatus() == 1001) || (paramEntity.getStatus() == 1002))
+      {
+        bool1 = ((EntityManager)localObject).update(paramEntity);
+      }
+      ((EntityManager)localObject).close();
       return bool1;
-      if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
-        break;
-      }
-      bool1 = localEntityManager.update(paramEntity);
-      break;
-      bool1 = bool2;
-    } while (!QLog.isColorLevel());
-    QLog.d("VasUpdate_DbImpl", 2, "updateEntity em closed e=" + paramEntity.getTableName());
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateEntity em closed e=");
+      ((StringBuilder)localObject).append(paramEntity.getTableName());
+      QLog.d("VasUpdate_DbImpl", 2, ((StringBuilder)localObject).toString());
+    }
     return false;
   }
   
@@ -75,169 +77,275 @@ public class VasDbManagerImpl
   
   public void deleteItem(int paramInt, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_DbImpl", 2, "DBdeleteItem: table = " + paramInt + " itemId = " + paramString);
-    }
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
-    default: 
-      return;
-    case 0: 
-      a().delete(LocalUpdateEntity.TABLE_NAME, "mItemId=?", new String[] { paramString });
-      return;
-    case 1: 
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("DBdeleteItem: table = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" itemId = ");
+      localStringBuilder.append(paramString);
+      QLog.d("VasUpdate_DbImpl", 2, localStringBuilder.toString());
+    }
+    if (paramInt != 0)
+    {
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        a().delete(LocalFileMd5Entity.TABLE_NAME, "mItemId=?", new String[] { paramString });
+        return;
+      }
       a().delete(ShouldUpdateEntity.TABLE_NAME, "mItemId=?", new String[] { paramString });
       return;
     }
-    a().delete(LocalFileMd5Entity.TABLE_NAME, "mItemId=?", new String[] { paramString });
+    a().delete(LocalUpdateEntity.TABLE_NAME, "mItemId=?", new String[] { paramString });
   }
   
   public List<IDbManager.ItemInfo> selectAllItem(int paramInt)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_DbImpl", 2, "DBselectAllItems: table = " + paramInt);
-    }
-    ArrayList localArrayList = new ArrayList();
-    switch (paramInt)
+    if (QLog.isColorLevel())
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("DBselectAllItems: table = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("VasUpdate_DbImpl", 2, ((StringBuilder)localObject1).toString());
     }
-    while (QLog.isColorLevel())
+    Object localObject1 = new ArrayList();
+    Object localObject2;
+    Object localObject3;
+    Object localObject4;
+    if (paramInt != 0)
     {
-      Object localObject1 = localArrayList.iterator();
-      Object localObject2;
-      while (((Iterator)localObject1).hasNext())
+      if (paramInt != 1)
       {
-        localObject2 = (IDbManager.ItemInfo)((Iterator)localObject1).next();
-        if (localObject2 != null) {
-          QLog.d("VasUpdate_DbImpl", 2, "DBselectAllItems table = " + paramInt + " itemId = " + ((IDbManager.ItemInfo)localObject2).itemId + " content = " + ((IDbManager.ItemInfo)localObject2).content);
-        }
-      }
-      localObject1 = a().query(LocalUpdateEntity.class);
-      if (localObject1 == null) {}
-      IDbManager.ItemInfo localItemInfo;
-      do
-      {
-        do
+        if (paramInt == 2)
         {
-          return null;
-          localObject1 = ((List)localObject1).iterator();
-          while (((Iterator)localObject1).hasNext())
+          localObject2 = a().query(LocalFileMd5Entity.class);
+          if (localObject2 == null) {
+            return null;
+          }
+          localObject2 = ((List)localObject2).iterator();
+          while (((Iterator)localObject2).hasNext())
           {
-            localObject2 = (LocalUpdateEntity)((Iterator)localObject1).next();
-            if (localObject2 != null)
+            localObject3 = (LocalFileMd5Entity)((Iterator)localObject2).next();
+            if (localObject3 != null)
             {
-              localItemInfo = new IDbManager.ItemInfo();
-              localItemInfo.itemId = ((LocalUpdateEntity)localObject2).mItemId;
-              localItemInfo.content = ((LocalUpdateEntity)localObject2).mContent;
-              localArrayList.add(localItemInfo);
+              localObject4 = new IDbManager.ItemInfo();
+              ((IDbManager.ItemInfo)localObject4).itemId = ((LocalFileMd5Entity)localObject3).mItemId;
+              ((IDbManager.ItemInfo)localObject4).content = ((LocalFileMd5Entity)localObject3).mContent;
+              ((ArrayList)localObject1).add(localObject4);
             }
           }
-          localObject1 = a().query(ShouldUpdateEntity.class);
-        } while (localObject1 == null);
-        localObject1 = ((List)localObject1).iterator();
-        while (((Iterator)localObject1).hasNext())
-        {
-          localObject2 = (ShouldUpdateEntity)((Iterator)localObject1).next();
-          if (localObject2 != null)
-          {
-            localItemInfo = new IDbManager.ItemInfo();
-            localItemInfo.itemId = ((ShouldUpdateEntity)localObject2).mItemId;
-            localItemInfo.content = ((ShouldUpdateEntity)localObject2).mContent;
-            localArrayList.add(localItemInfo);
-          }
         }
-        localObject1 = a().query(LocalFileMd5Entity.class);
-      } while (localObject1 == null);
-      localObject1 = ((List)localObject1).iterator();
-      while (((Iterator)localObject1).hasNext())
+      }
+      else
       {
-        localObject2 = (LocalFileMd5Entity)((Iterator)localObject1).next();
-        if (localObject2 != null)
+        localObject2 = a().query(ShouldUpdateEntity.class);
+        if (localObject2 == null) {
+          return null;
+        }
+        localObject2 = ((List)localObject2).iterator();
+        while (((Iterator)localObject2).hasNext())
         {
-          localItemInfo = new IDbManager.ItemInfo();
-          localItemInfo.itemId = ((LocalFileMd5Entity)localObject2).mItemId;
-          localItemInfo.content = ((LocalFileMd5Entity)localObject2).mContent;
-          localArrayList.add(localItemInfo);
+          localObject3 = (ShouldUpdateEntity)((Iterator)localObject2).next();
+          if (localObject3 != null)
+          {
+            localObject4 = new IDbManager.ItemInfo();
+            ((IDbManager.ItemInfo)localObject4).itemId = ((ShouldUpdateEntity)localObject3).mItemId;
+            ((IDbManager.ItemInfo)localObject4).content = ((ShouldUpdateEntity)localObject3).mContent;
+            ((ArrayList)localObject1).add(localObject4);
+          }
         }
       }
     }
-    return localArrayList;
+    else
+    {
+      localObject2 = a().query(LocalUpdateEntity.class);
+      if (localObject2 == null) {
+        return null;
+      }
+      localObject2 = ((List)localObject2).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (LocalUpdateEntity)((Iterator)localObject2).next();
+        if (localObject3 != null)
+        {
+          localObject4 = new IDbManager.ItemInfo();
+          ((IDbManager.ItemInfo)localObject4).itemId = ((LocalUpdateEntity)localObject3).mItemId;
+          ((IDbManager.ItemInfo)localObject4).content = ((LocalUpdateEntity)localObject3).mContent;
+          ((ArrayList)localObject1).add(localObject4);
+        }
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject2 = ((ArrayList)localObject1).iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        localObject3 = (IDbManager.ItemInfo)((Iterator)localObject2).next();
+        if (localObject3 != null)
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append("DBselectAllItems table = ");
+          ((StringBuilder)localObject4).append(paramInt);
+          ((StringBuilder)localObject4).append(" itemId = ");
+          ((StringBuilder)localObject4).append(((IDbManager.ItemInfo)localObject3).itemId);
+          ((StringBuilder)localObject4).append(" content = ");
+          ((StringBuilder)localObject4).append(((IDbManager.ItemInfo)localObject3).content);
+          QLog.d("VasUpdate_DbImpl", 2, ((StringBuilder)localObject4).toString());
+        }
+      }
+    }
+    return localObject1;
   }
   
   public String selectItem(int paramInt, String paramString)
   {
-    switch (paramInt)
+    Object localObject = "";
+    List localList;
+    if (paramInt != 0)
     {
-    default: 
-      paramString = "";
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3) {
+            paramString = (String)localObject;
+          } else {
+            paramString = MobileQQ.getContext().getSharedPreferences("quick_update_common", 0).getString(paramString, "");
+          }
+        }
+        else
+        {
+          localList = a().query(LocalFileMd5Entity.class, false, "mItemId=?", new String[] { paramString }, null, null, null, "1");
+          paramString = (String)localObject;
+          if (localList != null)
+          {
+            paramString = (String)localObject;
+            if (localList.size() >= 1)
+            {
+              paramString = (String)localObject;
+              if (localList.get(0) != null) {
+                paramString = ((LocalFileMd5Entity)localList.get(0)).mContent;
+              }
+            }
+          }
+        }
+      }
+      else
+      {
+        localList = a().query(ShouldUpdateEntity.class, false, "mItemId=?", new String[] { paramString }, null, null, null, "1");
+        paramString = (String)localObject;
+        if (localList != null)
+        {
+          paramString = (String)localObject;
+          if (localList.size() >= 1)
+          {
+            paramString = (String)localObject;
+            if (localList.get(0) != null) {
+              paramString = ((ShouldUpdateEntity)localList.get(0)).mContent;
+            }
+          }
+        }
+      }
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("VasUpdate_DbImpl", 2, "DBselectItem table = " + paramInt + " , result = " + paramString);
+      localList = a().query(LocalUpdateEntity.class, false, "mItemId=?", new String[] { paramString }, null, null, null, "1");
+      paramString = (String)localObject;
+      if (localList != null)
+      {
+        paramString = (String)localObject;
+        if (localList.size() >= 1)
+        {
+          paramString = (String)localObject;
+          if (localList.get(0) != null) {
+            paramString = ((LocalUpdateEntity)localList.get(0)).mContent;
+          }
+        }
       }
-      return paramString;
-      paramString = a().query(LocalUpdateEntity.class, false, "mItemId=?", new String[] { paramString }, null, null, null, "1");
-      if ((paramString == null) || (paramString.size() < 1) || (paramString.get(0) == null)) {
-        break;
-      }
-      paramString = ((LocalUpdateEntity)paramString.get(0)).mContent;
-      continue;
-      paramString = a().query(ShouldUpdateEntity.class, false, "mItemId=?", new String[] { paramString }, null, null, null, "1");
-      if ((paramString == null) || (paramString.size() < 1) || (paramString.get(0) == null)) {
-        break;
-      }
-      paramString = ((ShouldUpdateEntity)paramString.get(0)).mContent;
-      continue;
-      paramString = a().query(LocalFileMd5Entity.class, false, "mItemId=?", new String[] { paramString }, null, null, null, "1");
-      if ((paramString == null) || (paramString.size() < 1) || (paramString.get(0) == null)) {
-        break;
-      }
-      paramString = ((LocalFileMd5Entity)paramString.get(0)).mContent;
-      continue;
-      paramString = MobileQQ.getContext().getSharedPreferences("quick_update_common", 0).getString(paramString, "");
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DBselectItem table = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" , result = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("VasUpdate_DbImpl", 2, ((StringBuilder)localObject).toString());
+    }
+    return paramString;
   }
   
   public void updateItem(int paramInt, String paramString1, String paramString2)
   {
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DBupdateItem: table = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" itemId = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" content = ");
+      ((StringBuilder)localObject).append(paramString2);
+      QLog.d("VasUpdate_DbImpl", 2, ((StringBuilder)localObject).toString());
+    }
     boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.d("VasUpdate_DbImpl", 2, "DBupdateItem: table = " + paramInt + " itemId = " + paramString1 + " content = " + paramString2);
-    }
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    }
-    for (;;)
-    {
-      if (!bool) {
-        QLog.e("VasUpdate_DbImpl", 1, "DBupdateItem table = " + paramInt + " itemId = " + paramString1 + " content = " + paramString2 + " fail");
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt == 3)
+          {
+            localObject = MobileQQ.getContext().getSharedPreferences("quick_update_common", 0).edit();
+            ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
+            bool = ((SharedPreferences.Editor)localObject).commit();
+          }
+        }
+        else
+        {
+          localObject = new LocalFileMd5Entity();
+          ((LocalFileMd5Entity)localObject).mItemId = paramString1;
+          ((LocalFileMd5Entity)localObject).mContent = paramString2;
+          bool = a((Entity)localObject);
+        }
       }
-      return;
-      Object localObject = new LocalUpdateEntity();
+      else
+      {
+        localObject = new ShouldUpdateEntity();
+        ((ShouldUpdateEntity)localObject).mItemId = paramString1;
+        ((ShouldUpdateEntity)localObject).mContent = paramString2;
+        bool = a((Entity)localObject);
+      }
+    }
+    else
+    {
+      localObject = new LocalUpdateEntity();
       ((LocalUpdateEntity)localObject).mItemId = paramString1;
       ((LocalUpdateEntity)localObject).mContent = paramString2;
       bool = a((Entity)localObject);
-      continue;
-      localObject = new ShouldUpdateEntity();
-      ((ShouldUpdateEntity)localObject).mItemId = paramString1;
-      ((ShouldUpdateEntity)localObject).mContent = paramString2;
-      bool = a((Entity)localObject);
-      continue;
-      localObject = new LocalFileMd5Entity();
-      ((LocalFileMd5Entity)localObject).mItemId = paramString1;
-      ((LocalFileMd5Entity)localObject).mContent = paramString2;
-      bool = a((Entity)localObject);
-      continue;
-      localObject = MobileQQ.getContext().getSharedPreferences("quick_update_common", 0).edit();
-      ((SharedPreferences.Editor)localObject).putString(paramString1, paramString2);
-      bool = ((SharedPreferences.Editor)localObject).commit();
+    }
+    if (!bool)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("DBupdateItem table = ");
+      ((StringBuilder)localObject).append(paramInt);
+      ((StringBuilder)localObject).append(" itemId = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" content = ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(" fail");
+      QLog.e("VasUpdate_DbImpl", 1, ((StringBuilder)localObject).toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.updatesystem.impl.VasDbManagerImpl
  * JD-Core Version:    0.7.0.1
  */

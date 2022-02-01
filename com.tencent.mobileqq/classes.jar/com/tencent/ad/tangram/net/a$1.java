@@ -13,14 +13,15 @@ class a$1
   {
     a.access$002(this.this$0, new a.a());
     a.a locala = a.access$000(this.this$0);
-    if (this.val$weakContext != null) {}
-    for (Context localContext = (Context)this.val$weakContext.get();; localContext = null)
-    {
-      locala.ip = a.access$100(localContext);
-      if (!TextUtils.isEmpty(a.access$000(this.this$0).ip)) {
-        a.access$000(this.this$0).timeMillis = System.currentTimeMillis();
-      }
-      return;
+    Object localObject = this.val$weakContext;
+    if (localObject != null) {
+      localObject = (Context)((WeakReference)localObject).get();
+    } else {
+      localObject = null;
+    }
+    locala.ip = a.access$100((Context)localObject);
+    if (!TextUtils.isEmpty(a.access$000(this.this$0).ip)) {
+      a.access$000(this.this$0).timeMillis = System.currentTimeMillis();
     }
   }
 }

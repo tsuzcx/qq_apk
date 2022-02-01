@@ -6,7 +6,7 @@ import android.os.Parcelable.Creator;
 import android.text.TextUtils;
 import com.tencent.biz.qqstory.album.model.StoryAlbum;
 import com.tencent.mobileqq.activity.photo.LocalMediaInfo;
-import com.tencent.mobileqq.utils.AlbumUtil;
+import com.tencent.mobileqq.activity.photo.album.QAlbumUtil;
 import java.net.URL;
 
 public class SlideItemInfo
@@ -40,6 +40,7 @@ public class SlideItemInfo
     this.jdField_b_of_type_Long = 0L;
     this.jdField_c_of_type_Long = 0L;
     this.jdField_e_of_type_JavaLangString = "LinearBlur";
+    boolean bool2 = false;
     this.jdField_b_of_type_Boolean = false;
     this.jdField_c_of_type_Boolean = false;
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = ((LocalMediaInfo)paramParcel.readParcelable(LocalMediaInfo.class.getClassLoader()));
@@ -52,36 +53,28 @@ public class SlideItemInfo
     this.jdField_c_of_type_Long = paramParcel.readLong();
     this.jdField_c_of_type_JavaLangString = paramParcel.readString();
     this.jdField_d_of_type_JavaLangString = paramParcel.readString();
-    if (paramParcel.readByte() != 0)
-    {
+    if (paramParcel.readByte() != 0) {
       bool1 = true;
-      this.jdField_a_of_type_Boolean = bool1;
-      this.jdField_c_of_type_Int = paramParcel.readInt();
-      this.jdField_d_of_type_Int = paramParcel.readInt();
-      this.jdField_e_of_type_Int = paramParcel.readInt();
-      this.f = paramParcel.readInt();
-      this.jdField_e_of_type_JavaLangString = paramParcel.readString();
-      if (paramParcel.readByte() == 0) {
-        break label213;
-      }
+    } else {
+      bool1 = false;
+    }
+    this.jdField_a_of_type_Boolean = bool1;
+    this.jdField_c_of_type_Int = paramParcel.readInt();
+    this.jdField_d_of_type_Int = paramParcel.readInt();
+    this.jdField_e_of_type_Int = paramParcel.readInt();
+    this.f = paramParcel.readInt();
+    this.jdField_e_of_type_JavaLangString = paramParcel.readString();
+    if (paramParcel.readByte() != 0) {
       bool1 = true;
-      label188:
-      this.jdField_b_of_type_Boolean = bool1;
-      if (paramParcel.readByte() == 0) {
-        break label218;
-      }
-    }
-    label213:
-    label218:
-    for (boolean bool1 = bool2;; bool1 = false)
-    {
-      this.jdField_c_of_type_Boolean = bool1;
-      return;
+    } else {
       bool1 = false;
-      break;
-      bool1 = false;
-      break label188;
     }
+    this.jdField_b_of_type_Boolean = bool1;
+    boolean bool1 = bool2;
+    if (paramParcel.readByte() != 0) {
+      bool1 = true;
+    }
+    this.jdField_c_of_type_Boolean = bool1;
   }
   
   public SlideItemInfo(LocalMediaInfo paramLocalMediaInfo)
@@ -96,7 +89,7 @@ public class SlideItemInfo
     {
       this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo = paramLocalMediaInfo;
       this.jdField_b_of_type_JavaLangString = paramLocalMediaInfo.path;
-      this.jdField_b_of_type_Int = AlbumUtil.getMediaType(paramLocalMediaInfo);
+      this.jdField_b_of_type_Int = QAlbumUtil.getMediaType(paramLocalMediaInfo);
       if (!TextUtils.isEmpty(paramLocalMediaInfo.mTransId)) {
         this.jdField_e_of_type_JavaLangString = paramLocalMediaInfo.mTransId;
       }
@@ -104,13 +97,28 @@ public class SlideItemInfo
         this.jdField_a_of_type_JavaLangString = paramLocalMediaInfo.mTextStr;
       }
       this.jdField_a_of_type_Int = paramLocalMediaInfo.mTextId;
-      switch (this.jdField_b_of_type_Int)
+      int i = this.jdField_b_of_type_Int;
+      if (i != 0)
       {
-      case 0: 
+        if (i != 1) {
+          return;
+        }
+        if (paramLocalMediaInfo.isSystemMeidaStore == true) {
+          this.jdField_a_of_type_JavaNetURL = QAlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo, "VIDEO");
+        } else {
+          this.jdField_a_of_type_JavaNetURL = QAlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo, "APP_VIDEO");
+        }
+        this.jdField_a_of_type_Long = paramLocalMediaInfo.mDuration;
+        if (this.jdField_c_of_type_Long == 0L) {
+          this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
+        }
+      }
+      else
+      {
         StringBuilder localStringBuilder = new StringBuilder("albumthumb");
         localStringBuilder.append("://");
         localStringBuilder.append(paramLocalMediaInfo.path);
-        this.jdField_a_of_type_JavaNetURL = AlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo);
+        this.jdField_a_of_type_JavaNetURL = QAlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo);
         this.jdField_a_of_type_Long = 2000L;
         this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
         return;
@@ -119,17 +127,6 @@ public class SlideItemInfo
     catch (Exception paramLocalMediaInfo)
     {
       paramLocalMediaInfo.printStackTrace();
-      return;
-    }
-    if (paramLocalMediaInfo.isSystemMeidaStore == true) {}
-    for (this.jdField_a_of_type_JavaNetURL = AlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo, "VIDEO");; this.jdField_a_of_type_JavaNetURL = AlbumUtil.generateAlbumThumbURL(paramLocalMediaInfo, "APP_VIDEO"))
-    {
-      this.jdField_a_of_type_Long = paramLocalMediaInfo.mDuration;
-      if (this.jdField_c_of_type_Long != 0L) {
-        break;
-      }
-      this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
-      return;
     }
   }
   
@@ -138,13 +135,16 @@ public class SlideItemInfo
     if (this.jdField_b_of_type_Long <= 0L) {
       this.jdField_b_of_type_Long = 0L;
     }
-    if ((this.jdField_c_of_type_Long <= 0L) || (this.jdField_c_of_type_Long >= this.jdField_a_of_type_Long)) {
+    long l1 = this.jdField_c_of_type_Long;
+    if ((l1 <= 0L) || (l1 >= this.jdField_a_of_type_Long)) {
       this.jdField_c_of_type_Long = this.jdField_a_of_type_Long;
     }
-    if (this.jdField_c_of_type_Long <= this.jdField_b_of_type_Long) {
+    l1 = this.jdField_c_of_type_Long;
+    long l2 = this.jdField_b_of_type_Long;
+    if (l1 <= l2) {
       return this.jdField_a_of_type_Long;
     }
-    return this.jdField_c_of_type_Long - this.jdField_b_of_type_Long;
+    return l1 - l2;
   }
   
   public int describeContents()
@@ -164,7 +164,6 @@ public class SlideItemInfo
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    int i = 1;
     paramParcel.writeParcelable(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoLocalMediaInfo, paramInt);
     paramParcel.writeInt(this.jdField_a_of_type_Int);
     paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
@@ -175,41 +174,19 @@ public class SlideItemInfo
     paramParcel.writeLong(this.jdField_c_of_type_Long);
     paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
     paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-    if (this.jdField_a_of_type_Boolean)
-    {
-      paramInt = 1;
-      paramParcel.writeByte((byte)paramInt);
-      paramParcel.writeInt(this.jdField_c_of_type_Int);
-      paramParcel.writeInt(this.jdField_d_of_type_Int);
-      paramParcel.writeInt(this.jdField_e_of_type_Int);
-      paramParcel.writeInt(this.f);
-      paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
-      if (!this.jdField_b_of_type_Boolean) {
-        break label174;
-      }
-      paramInt = 1;
-      label147:
-      paramParcel.writeByte((byte)paramInt);
-      if (!this.jdField_c_of_type_Boolean) {
-        break label179;
-      }
-    }
-    label174:
-    label179:
-    for (paramInt = i;; paramInt = 0)
-    {
-      paramParcel.writeByte((byte)paramInt);
-      return;
-      paramInt = 0;
-      break;
-      paramInt = 0;
-      break label147;
-    }
+    paramParcel.writeByte((byte)this.jdField_a_of_type_Boolean);
+    paramParcel.writeInt(this.jdField_c_of_type_Int);
+    paramParcel.writeInt(this.jdField_d_of_type_Int);
+    paramParcel.writeInt(this.jdField_e_of_type_Int);
+    paramParcel.writeInt(this.f);
+    paramParcel.writeString(this.jdField_e_of_type_JavaLangString);
+    paramParcel.writeByte((byte)this.jdField_b_of_type_Boolean);
+    paramParcel.writeByte((byte)this.jdField_c_of_type_Boolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.takevideo.slideshow.SlideItemInfo
  * JD-Core Version:    0.7.0.1
  */

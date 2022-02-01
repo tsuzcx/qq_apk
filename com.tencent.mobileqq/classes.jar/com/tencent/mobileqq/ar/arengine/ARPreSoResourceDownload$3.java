@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.ar.arengine;
 
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.transfile.HttpNetReq;
 import com.tencent.mobileqq.transfile.predownload.HttpEngineTask;
 import com.tencent.mobileqq.transfile.predownload.HttpEngineTask.IHttpEngineTask;
@@ -10,12 +10,12 @@ import java.util.HashMap;
 class ARPreSoResourceDownload$3
   extends HttpEngineTask
 {
-  ARPreSoResourceDownload$3(ARPreSoResourceDownload paramARPreSoResourceDownload, QQAppInterface paramQQAppInterface, String paramString, HttpEngineTask.IHttpEngineTask paramIHttpEngineTask, HttpNetReq paramHttpNetReq, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
+  ARPreSoResourceDownload$3(ARPreSoResourceDownload paramARPreSoResourceDownload, BaseQQAppInterface paramBaseQQAppInterface, String paramString, HttpEngineTask.IHttpEngineTask paramIHttpEngineTask, HttpNetReq paramHttpNetReq, ARPreSoResourceDownload.DownloadInfo paramDownloadInfo, ARPreSoResourceDownload.ARResourceDownloadCallback paramARResourceDownloadCallback)
   {
-    super(paramQQAppInterface, paramString, paramIHttpEngineTask, paramHttpNetReq);
+    super(paramBaseQQAppInterface, paramString, paramIHttpEngineTask, paramHttpNetReq);
   }
   
-  public void realCancel()
+  protected void realCancel()
   {
     QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask realCancel");
     synchronized (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload))
@@ -29,7 +29,7 @@ class ARPreSoResourceDownload$3
     }
   }
   
-  public void realStart()
+  protected void realStart()
   {
     QLog.i("AREngine_ARPreSoResourceDownload", 1, " HttpEngineTask  realStart");
     synchronized (ARPreSoResourceDownload.a(this.jdField_a_of_type_ComTencentMobileqqArArengineARPreSoResourceDownload))
@@ -45,7 +45,7 @@ class ARPreSoResourceDownload$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.arengine.ARPreSoResourceDownload.3
  * JD-Core Version:    0.7.0.1
  */

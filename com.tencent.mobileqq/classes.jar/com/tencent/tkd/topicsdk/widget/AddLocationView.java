@@ -31,8 +31,8 @@ public final class AddLocationView
   public AddLocationView(@NotNull Context paramContext, @Nullable AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    LayoutInflater.from(paramContext).inflate(R.layout.w, (ViewGroup)this, true);
-    paramContext = findViewById(R.id.bG);
+    LayoutInflater.from(paramContext).inflate(R.layout.v, (ViewGroup)this, true);
+    paramContext = findViewById(R.id.bc);
     Intrinsics.checkExpressionValueIsNotNull(paramContext, "findViewById(R.id.tv_location)");
     this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramContext);
   }
@@ -42,18 +42,17 @@ public final class AddLocationView
     if ((paramLocationInfo1 == null) && (paramLocationInfo2 != null))
     {
       paramLocationInfo1 = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-      if (paramLocationInfo1 == null) {}
+      if (paramLocationInfo1 != null) {
+        paramLocationInfo1 = (Unit)paramLocationInfo1.invoke(Boolean.valueOf(true));
+      }
     }
-    do
+    else if ((paramLocationInfo1 != null) && (paramLocationInfo2 == null))
     {
-      paramLocationInfo1 = (Unit)paramLocationInfo1.invoke(Boolean.valueOf(true));
-      do
-      {
-        return;
-      } while ((paramLocationInfo1 == null) || (paramLocationInfo2 != null));
       paramLocationInfo1 = this.jdField_a_of_type_KotlinJvmFunctionsFunction1;
-    } while (paramLocationInfo1 == null);
-    paramLocationInfo1 = (Unit)paramLocationInfo1.invoke(Boolean.valueOf(false));
+      if (paramLocationInfo1 != null) {
+        paramLocationInfo1 = (Unit)paramLocationInfo1.invoke(Boolean.valueOf(false));
+      }
+    }
   }
   
   @Nullable
@@ -70,15 +69,15 @@ public final class AddLocationView
     if (paramLocationInfo != null)
     {
       paramLocationInfo = paramLocationInfo.getName();
-      if (paramLocationInfo == null) {}
+      if (paramLocationInfo != null) {}
     }
-    for (paramLocationInfo = (CharSequence)paramLocationInfo;; paramLocationInfo = (CharSequence)paramLocationInfo.getResources().getString(R.string.a))
+    else
     {
-      localTextView.setText(paramLocationInfo);
-      return;
       paramLocationInfo = getContext();
       Intrinsics.checkExpressionValueIsNotNull(paramLocationInfo, "context");
+      paramLocationInfo = paramLocationInfo.getResources().getString(R.string.a);
     }
+    localTextView.setText((CharSequence)paramLocationInfo);
   }
   
   public final void setOnLocationChangeCallback(@Nullable Function1<? super Boolean, Unit> paramFunction1)
@@ -88,7 +87,7 @@ public final class AddLocationView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.AddLocationView
  * JD-Core Version:    0.7.0.1
  */

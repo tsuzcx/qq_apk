@@ -1,5 +1,6 @@
 package com.tencent.avgame.gameroom.festivalstage.questionoption;
 
+import android.widget.BaseAdapter;
 import com.tencent.avgame.gamelogic.data.AnswerInfo;
 import com.tencent.avgame.gamelogic.data.EngineData;
 import com.tencent.avgame.gamelogic.data.TopicBase;
@@ -11,11 +12,11 @@ public abstract interface IQuestionOptionPresenter
   
   public abstract void a(int paramInt, AnswerInfo paramAnswerInfo);
   
+  public abstract void a(BaseAdapter paramBaseAdapter);
+  
   public abstract void a(EngineData paramEngineData);
   
   public abstract void a(TopicBase paramTopicBase);
-  
-  public abstract void a(QuestionOptionsAdapter paramQuestionOptionsAdapter);
   
   public abstract void a(QuestionOptionsDataSource paramQuestionOptionsDataSource);
   
@@ -27,7 +28,7 @@ public abstract interface IQuestionOptionPresenter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.festivalstage.questionoption.IQuestionOptionPresenter
  * JD-Core Version:    0.7.0.1
  */

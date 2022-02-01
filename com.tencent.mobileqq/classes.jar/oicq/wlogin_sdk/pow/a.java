@@ -32,11 +32,11 @@ public class a
     this.b = paramArrayOfByte[1];
     this.c = paramArrayOfByte[2];
     this.d = paramArrayOfByte[3];
-    this.e = paramArrayOfByte[4];
-    this.f = new int[3];
-    int i1 = 5;
+    this.e = a(paramArrayOfByte[4], paramArrayOfByte[5]);
+    this.f = new int[2];
     int i2 = 0;
-    while (i2 < 3)
+    int i1 = 6;
+    while (i2 < 2)
     {
       this.f[i2] = paramArrayOfByte[i1];
       i2 += 1;
@@ -46,87 +46,90 @@ public class a
     byte b1 = paramArrayOfByte[i1];
     i1 = i2 + 1;
     this.g = a(b1, paramArrayOfByte[i2]);
-    if (this.g > 0)
+    int i3 = this.g;
+    i2 = i1;
+    if (i3 > 0)
     {
-      this.h = new byte[this.g];
-      i2 = 0;
+      this.h = new byte[i3];
+      i3 = 0;
       for (;;)
       {
-        i3 = i1;
-        if (i2 >= this.g) {
+        i2 = i1;
+        if (i3 >= this.g) {
           break;
         }
-        this.h[i2] = paramArrayOfByte[i1];
-        i2 += 1;
+        this.h[i3] = paramArrayOfByte[i1];
+        i3 += 1;
         i1 += 1;
       }
     }
-    int i3 = i1;
-    i2 = i3 + 1;
-    b1 = paramArrayOfByte[i3];
-    i1 = i2 + 1;
-    this.i = a(b1, paramArrayOfByte[i2]);
-    if (this.i > 0)
+    i3 = i2 + 1;
+    b1 = paramArrayOfByte[i2];
+    i1 = i3 + 1;
+    this.i = a(b1, paramArrayOfByte[i3]);
+    i3 = this.i;
+    i2 = i1;
+    if (i3 > 0)
     {
-      this.j = new byte[this.i];
-      i2 = 0;
+      this.j = new byte[i3];
+      i3 = 0;
       for (;;)
       {
-        i3 = i1;
-        if (i2 >= this.i) {
+        i2 = i1;
+        if (i3 >= this.i) {
           break;
         }
-        this.j[i2] = paramArrayOfByte[i1];
-        i2 += 1;
+        this.j[i3] = paramArrayOfByte[i1];
+        i3 += 1;
         i1 += 1;
       }
     }
-    i3 = i1;
-    i2 = i3 + 1;
-    b1 = paramArrayOfByte[i3];
-    i1 = i2 + 1;
-    this.k = a(b1, paramArrayOfByte[i2]);
-    if (this.k > 0)
+    i3 = i2 + 1;
+    b1 = paramArrayOfByte[i2];
+    i1 = i3 + 1;
+    this.k = a(b1, paramArrayOfByte[i3]);
+    i3 = this.k;
+    i2 = i1;
+    if (i3 > 0)
     {
-      this.l = new byte[this.k];
-      i2 = 0;
+      this.l = new byte[i3];
+      i3 = 0;
       for (;;)
       {
-        i3 = i1;
-        if (i2 >= this.k) {
+        i2 = i1;
+        if (i3 >= this.k) {
           break;
         }
-        this.l[i2] = paramArrayOfByte[i1];
-        i2 += 1;
+        this.l[i3] = paramArrayOfByte[i1];
+        i3 += 1;
         i1 += 1;
       }
     }
-    i3 = i1;
-    if (this.e == 1)
+    if (this.d == 1)
     {
-      i2 = i3 + 1;
-      b1 = paramArrayOfByte[i3];
-      i1 = i2 + 1;
-      this.m = a(b1, paramArrayOfByte[i2]);
-      if (this.m > 0)
+      i3 = i2 + 1;
+      b1 = paramArrayOfByte[i2];
+      i1 = i3 + 1;
+      this.m = a(b1, paramArrayOfByte[i3]);
+      i3 = this.m;
+      i2 = i1;
+      if (i3 > 0)
       {
-        this.n = new byte[this.m];
-        i2 = 0;
+        this.n = new byte[i3];
+        i3 = 0;
         for (;;)
         {
-          i3 = i1;
-          if (i2 >= this.m) {
+          i2 = i1;
+          if (i3 >= this.m) {
             break;
           }
-          this.n[i2] = paramArrayOfByte[i1];
-          i2 += 1;
+          this.n[i3] = paramArrayOfByte[i1];
+          i3 += 1;
           i1 += 1;
         }
       }
-      i3 = i1;
-      this.o = a(paramArrayOfByte, i3);
-      i1 = i3 + 4;
-      this.p = a(paramArrayOfByte, i1);
+      this.o = a(paramArrayOfByte, i2);
+      this.p = a(paramArrayOfByte, i2 + 4);
     }
     return 0;
   }
@@ -143,11 +146,15 @@ public class a
     localByteBuffer.put((byte)this.b);
     localByteBuffer.put((byte)this.c);
     localByteBuffer.put((byte)this.d);
-    localByteBuffer.put((byte)this.e);
+    localByteBuffer.putShort((short)this.e);
     int i1 = 0;
-    while (i1 < this.f.length)
+    for (;;)
     {
-      localByteBuffer.put((byte)this.f[i1]);
+      int[] arrayOfInt = this.f;
+      if (i1 >= arrayOfInt.length) {
+        break;
+      }
+      localByteBuffer.put((byte)arrayOfInt[i1]);
       i1 += 1;
     }
     localByteBuffer.putShort((short)this.g);
@@ -162,7 +169,7 @@ public class a
     if (this.k > 0) {
       localByteBuffer.put(this.l);
     }
-    if (this.e == 1)
+    if (this.d == 1)
     {
       localByteBuffer.putShort((short)this.m);
       localByteBuffer.put(this.n);
@@ -174,7 +181,7 @@ public class a
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.pow.a
  * JD-Core Version:    0.7.0.1
  */

@@ -34,13 +34,17 @@ public final class DisplayUtils
   
   private final int getNavigationBarHeight(Context paramContext)
   {
-    int i = 0;
     paramContext = paramContext.getResources();
-    int j = paramContext.getIdentifier("navigation_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getDimensionPixelSize(j);
+    int i = paramContext.getIdentifier("navigation_bar_height", "dimen", "android");
+    if (i > 0) {
+      i = paramContext.getDimensionPixelSize(i);
+    } else {
+      i = 0;
     }
-    Log.d("DisplayUtils", "getNavigationBarHeight = " + i);
+    paramContext = new StringBuilder();
+    paramContext.append("getNavigationBarHeight = ");
+    paramContext.append(i);
+    Log.d("DisplayUtils", paramContext.toString());
     return i;
   }
   
@@ -48,20 +52,29 @@ public final class DisplayUtils
   {
     Point localPoint = new Point();
     paramContext = paramContext.getSystemService("window");
-    if (paramContext == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.view.WindowManager");
+    if (paramContext != null)
+    {
+      paramContext = ((WindowManager)paramContext).getDefaultDisplay();
+      if (paramContext != null) {
+        paramContext.getRealSize(localPoint);
+      }
+      return localPoint;
     }
-    paramContext = ((WindowManager)paramContext).getDefaultDisplay();
-    if (paramContext != null) {
-      paramContext.getRealSize(localPoint);
-    }
-    return localPoint;
+    throw new TypeCastException("null cannot be cast to non-null type android.view.WindowManager");
   }
   
   private final boolean hasNavigationBar(Context paramContext)
   {
-    if (getNavigationBarHeight(paramContext) == 0) {}
-    while (((PhoneRomUtils.INSTANCE.checkIsHuaweiRom()) && (isHuaWeiHideNav(paramContext))) || ((PhoneRomUtils.INSTANCE.checkIsMiuiRom()) && (isMiuiFullScreen(paramContext))) || ((PhoneRomUtils.INSTANCE.checkIsVivoRom()) && (isVivoFullScreen(paramContext)))) {
+    if (getNavigationBarHeight(paramContext) == 0) {
+      return false;
+    }
+    if ((PhoneRomUtils.INSTANCE.checkIsHuaweiRom()) && (isHuaWeiHideNav(paramContext))) {
+      return false;
+    }
+    if ((PhoneRomUtils.INSTANCE.checkIsMiuiRom()) && (isMiuiFullScreen(paramContext))) {
+      return false;
+    }
+    if ((PhoneRomUtils.INSTANCE.checkIsVivoRom()) && (isVivoFullScreen(paramContext))) {
       return false;
     }
     return isHasNavigationBar(paramContext);
@@ -70,55 +83,61 @@ public final class DisplayUtils
   private final boolean isHasNavigationBar(Context paramContext)
   {
     Object localObject = paramContext.getSystemService("window");
-    if (localObject == null) {
-      throw new TypeCastException("null cannot be cast to non-null type android.view.WindowManager");
-    }
-    localObject = ((WindowManager)localObject).getDefaultDisplay();
-    int i;
-    int j;
-    int k;
-    int m;
     if (localObject != null)
     {
-      DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-      if (Build.VERSION.SDK_INT >= 17) {
-        ((Display)localObject).getRealMetrics(localDisplayMetrics);
+      localObject = ((WindowManager)localObject).getDefaultDisplay();
+      boolean bool2 = false;
+      boolean bool1 = bool2;
+      if (localObject != null)
+      {
+        DisplayMetrics localDisplayMetrics = new DisplayMetrics();
+        if (Build.VERSION.SDK_INT >= 17) {
+          ((Display)localObject).getRealMetrics(localDisplayMetrics);
+        }
+        int i = localDisplayMetrics.heightPixels;
+        int j = localDisplayMetrics.widthPixels;
+        localDisplayMetrics = new DisplayMetrics();
+        ((Display)localObject).getMetrics(localDisplayMetrics);
+        int k = localDisplayMetrics.heightPixels;
+        int m = localDisplayMetrics.widthPixels;
+        if (getNavigationBarHeight(paramContext) + k > i) {
+          return false;
+        }
+        if (j - m <= 0)
+        {
+          bool1 = bool2;
+          if (i - k <= 0) {}
+        }
+        else
+        {
+          bool1 = true;
+        }
       }
-      i = localDisplayMetrics.heightPixels;
-      j = localDisplayMetrics.widthPixels;
-      localDisplayMetrics = new DisplayMetrics();
-      ((Display)localObject).getMetrics(localDisplayMetrics);
-      k = localDisplayMetrics.heightPixels;
-      m = localDisplayMetrics.widthPixels;
-      if (getNavigationBarHeight(paramContext) + k <= i) {}
+      return bool1;
     }
-    else
-    {
-      return false;
-    }
-    if ((j - m > 0) || (i - k > 0)) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
-    }
+    throw new TypeCastException("null cannot be cast to non-null type android.view.WindowManager");
   }
   
   private final boolean isHuaWeiHideNav(Context paramContext)
   {
+    int i = Build.VERSION.SDK_INT;
     boolean bool = false;
-    if (Build.VERSION.SDK_INT < 21) {}
-    for (int i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);; i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0))
-    {
-      if (i != 0) {
-        bool = true;
-      }
-      return bool;
+    if (i < 21) {
+      i = Settings.System.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
+    } else {
+      i = Settings.Global.getInt(paramContext.getContentResolver(), "navigationbar_is_min", 0);
     }
+    if (i != 0) {
+      bool = true;
+    }
+    return bool;
   }
   
   private final boolean isMiuiFullScreen(Context paramContext)
   {
+    paramContext = paramContext.getContentResolver();
     boolean bool = false;
-    if (Settings.Global.getInt(paramContext.getContentResolver(), "force_fsg_nav_bar", 0) != 0) {
+    if (Settings.Global.getInt(paramContext, "force_fsg_nav_bar", 0) != 0) {
       bool = true;
     }
     return bool;
@@ -126,8 +145,9 @@ public final class DisplayUtils
   
   private final boolean isVivoFullScreen(Context paramContext)
   {
+    paramContext = paramContext.getContentResolver();
     boolean bool = false;
-    if (Settings.Secure.getInt(paramContext.getContentResolver(), "navigation_gesture_on", 0) != 0) {
+    if (Settings.Secure.getInt(paramContext, "navigation_gesture_on", 0) != 0) {
       bool = true;
     }
     return bool;
@@ -146,7 +166,7 @@ public final class DisplayUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.utils.DisplayUtils
  * JD-Core Version:    0.7.0.1
  */

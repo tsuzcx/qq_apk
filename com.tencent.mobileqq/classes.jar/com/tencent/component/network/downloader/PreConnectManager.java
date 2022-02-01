@@ -26,31 +26,39 @@ public class PreConnectManager
   
   private static void tryConnectHost(OkHttpClient paramOkHttpClient, String paramString1, String paramString2)
   {
-    if ((paramOkHttpClient == null) || (TextUtils.isEmpty(paramString1))) {
-      QDLog.e("downloader", "pre-connect fail, url:" + paramString1);
-    }
-    do
+    if ((paramOkHttpClient != null) && (!TextUtils.isEmpty(paramString1)))
     {
-      return;
-      QDLog.i("downloader", "pre-connect:" + paramString1 + " method:" + paramString2);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("pre-connect:");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(" method:");
+      ((StringBuilder)localObject).append(paramString2);
+      QDLog.i("downloader", ((StringBuilder)localObject).toString());
       long l = System.currentTimeMillis();
-      String str = paramString2;
+      localObject = paramString2;
       if (!paramString2.equals("HEAD"))
       {
-        str = paramString2;
+        localObject = paramString2;
         if (!paramString2.equals("GET")) {
-          str = "HEAD";
+          localObject = "HEAD";
         }
       }
-      paramString2 = new Request.Builder().url(paramString1).method(str, null).addHeader("Connection", "keep-alive");
+      paramString2 = new Request.Builder().url(paramString1).method((String)localObject, null).addHeader("Connection", "keep-alive");
       paramString1 = new PreConnectManager.1(paramString1, l);
-    } while (paramOkHttpClient == null);
-    paramOkHttpClient.newCall(paramString2.build()).enqueue(paramString1);
+      if (paramOkHttpClient != null) {
+        paramOkHttpClient.newCall(paramString2.build()).enqueue(paramString1);
+      }
+      return;
+    }
+    paramOkHttpClient = new StringBuilder();
+    paramOkHttpClient.append("pre-connect fail, url:");
+    paramOkHttpClient.append(paramString1);
+    QDLog.e("downloader", paramOkHttpClient.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.downloader.PreConnectManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.intervideo.now;
 
 import android.os.Bundle;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 
 class NowWebViewPlugin$1
-  implements TroopMemberApiClient.Callback
+  implements ITroopMemberApiClientApi.Callback
 {
   NowWebViewPlugin$1(NowWebViewPlugin paramNowWebViewPlugin) {}
   
@@ -14,19 +14,21 @@ class NowWebViewPlugin$1
     if (i == 90)
     {
       NowWebViewPlugin.a(this.a, paramBundle.getInt("state"));
-      NowWebViewPlugin.a(this.a, NowWebViewPlugin.a(this.a), NowWebViewPlugin.b(this.a));
-    }
-    while (i != 91) {
+      paramBundle = this.a;
+      NowWebViewPlugin.a(paramBundle, NowWebViewPlugin.a(paramBundle), NowWebViewPlugin.b(this.a));
       return;
     }
-    i = paramBundle.getInt("errCode");
-    paramBundle = paramBundle.getString("desc");
-    NowWebViewPlugin.a(this.a, i, paramBundle);
+    if (i == 91)
+    {
+      i = paramBundle.getInt("errCode");
+      paramBundle = paramBundle.getString("desc");
+      NowWebViewPlugin.a(this.a, i, paramBundle);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.now.NowWebViewPlugin.1
  * JD-Core Version:    0.7.0.1
  */

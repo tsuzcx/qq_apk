@@ -30,13 +30,13 @@ public class TroopNickAdapter
   
   public TroopNickAdapter(VasResDrawable paramVasResDrawable)
   {
-    this(paramVasResDrawable, null, 2130846437);
+    this(paramVasResDrawable, null, 2130846313);
   }
   
   public TroopNickAdapter(VasResDrawable paramVasResDrawable, AppRuntime paramAppRuntime, int paramInt)
   {
     this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController = paramVasResDrawable.a();
-    paramVasResDrawable.a().jdField_a_of_type_Int = 2130847798;
+    paramVasResDrawable.a().jdField_a_of_type_Int = 2130847665;
     paramVasResDrawable.a().b = paramInt;
     paramVasResDrawable.a().e = 104;
     if (paramAppRuntime != null) {
@@ -53,35 +53,70 @@ public class TroopNickAdapter
     return new File(this.jdField_a_of_type_JavaLangString, "bg.9.png").getAbsolutePath();
   }
   
+  public void a()
+  {
+    VasResController localVasResController = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController;
+    if (localVasResController == null) {
+      return;
+    }
+    try
+    {
+      if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController == null) {
+        return;
+      }
+      int j = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a();
+      boolean bool = ((TroopNickNameBusiness)QQVasUpdateBusiness.a(TroopNickNameBusiness.class)).a(j);
+      int i = -1;
+      if (bool)
+      {
+        this.jdField_a_of_type_JavaLangString = ((TroopNickNameBusiness)QQVasUpdateBusiness.a(TroopNickNameBusiness.class)).b(j);
+        TroopNickNameBusiness.Config localConfig = TroopNickNameBusiness.a(this.jdField_a_of_type_JavaLangString);
+        if (localConfig != null)
+        {
+          this.jdField_a_of_type_Int = localConfig.fontId;
+          this.b = localConfig.fontType;
+          String str = this.jdField_a_of_type_JavaLangString;
+          j = localConfig.delay;
+          if (!this.jdField_a_of_type_Boolean) {
+            i = localConfig.repeatCount;
+          }
+          a(str, j, i);
+        }
+      }
+      else
+      {
+        ((IEmoticonManager)RemoteProxy.getProxy(EmoticonManagerIPC.class)).startTroopNickDownload(j, null, -1, new TroopNickAdapter.1(this));
+      }
+      return;
+    }
+    finally {}
+  }
+  
   public void a(int paramInt, Bundle paramBundle)
   {
+    boolean bool = QLog.isColorLevel();
     int i = 0;
-    boolean bool;
-    if (QLog.isColorLevel())
+    if (bool)
     {
-      StringBuilder localStringBuilder = new StringBuilder().append("downloadDone isMainThread:");
-      if (Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId())
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("downloadDone isMainThread:");
+      if (Looper.getMainLooper().getThread().getId() == Thread.currentThread().getId()) {
         bool = true;
-        QLog.d("TroopNickAdapter", 2, bool);
+      } else {
+        bool = false;
       }
+      localStringBuilder.append(bool);
+      QLog.d("TroopNickAdapter", 2, localStringBuilder.toString());
     }
-    else
-    {
-      if (paramBundle != null) {
-        i = paramBundle.getInt("resType");
-      }
-      switch (i)
-      {
-      }
+    if (paramBundle != null) {
+      i = paramBundle.getInt("resType");
     }
-    do
-    {
+    if (i != 2) {
       return;
-      bool = false;
-      break;
-    } while ((3 != paramInt) && (paramInt != 0));
-    ThreadManager.excute(new TroopNickAdapter.3(this, paramBundle), 128, null, true);
+    }
+    if ((3 == paramInt) || (paramInt == 0)) {
+      ThreadManager.excute(new TroopNickAdapter.3(this, paramBundle), 128, null, true);
+    }
   }
   
   public void a(String paramString, int paramInt1, int paramInt2)
@@ -103,42 +138,44 @@ public class TroopNickAdapter
   {
     ArrayList localArrayList = new ArrayList();
     Object localObject1 = new File(paramString);
-    if ((localObject1 == null) || (!((File)localObject1).exists()) || (!((File)localObject1).isDirectory()))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopNickAdapter", 2, "SignatureView DynamicItem png file path error.");
-      }
-      return null;
+    if ((((File)localObject1).exists()) && (((File)localObject1).isDirectory())) {
+      localObject1 = ((File)localObject1).listFiles();
     }
-    localObject1 = ((File)localObject1).listFiles();
     for (;;)
     {
       try
       {
         Object localObject2 = new StringBuilder();
-        StringBuilder localStringBuilder = ((StringBuilder)localObject2).append(paramString).append(File.separator);
+        ((StringBuilder)localObject2).append(paramString);
+        ((StringBuilder)localObject2).append(File.separator);
         if (!new File(paramString, "01.9.png").exists()) {
-          break label254;
+          break label268;
         }
         paramString = "%s.9.png";
-        localStringBuilder.append(paramString);
+        ((StringBuilder)localObject2).append(paramString);
         localObject2 = ((StringBuilder)localObject2).toString();
         int i = 1;
         if (i < localObject1.length)
         {
           if (i < 10)
           {
-            paramString = "0" + i;
-            paramString = String.format((String)localObject2, new Object[] { paramString });
-            if (new File(paramString).exists())
-            {
-              localArrayList.add(paramString);
-              i += 1;
-            }
+            paramString = new StringBuilder();
+            paramString.append("0");
+            paramString.append(i);
+            paramString = paramString.toString();
           }
           else
           {
-            paramString = i + "";
+            paramString = new StringBuilder();
+            paramString.append(i);
+            paramString.append("");
+            continue;
+          }
+          paramString = String.format((String)localObject2, new Object[] { paramString });
+          if (new File(paramString).exists())
+          {
+            localArrayList.add(paramString);
+            i += 1;
             continue;
           }
           paramString = (String[])localArrayList.toArray(new String[localArrayList.size()]);
@@ -150,65 +187,31 @@ public class TroopNickAdapter
         paramString.printStackTrace();
       }
       return (String[])localArrayList.toArray(new String[localArrayList.size()]);
-      label254:
+      if (QLog.isColorLevel()) {
+        QLog.d("TroopNickAdapter", 2, "SignatureView DynamicItem png file path error.");
+      }
+      return null;
+      label268:
       paramString = "%s.png";
     }
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController == null) {
-      return;
-    }
-    synchronized (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController)
-    {
-      if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController == null) {
-        return;
-      }
-    }
-    int i = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a();
-    TroopNickNameBusiness.Config localConfig;
-    if (((TroopNickNameBusiness)QQVasUpdateBusiness.a(TroopNickNameBusiness.class)).a(i))
-    {
-      this.jdField_a_of_type_JavaLangString = ((TroopNickNameBusiness)QQVasUpdateBusiness.a(TroopNickNameBusiness.class)).b(i);
-      localConfig = TroopNickNameBusiness.a(this.jdField_a_of_type_JavaLangString);
-      if (localConfig != null)
-      {
-        this.jdField_a_of_type_Int = localConfig.fontId;
-        this.b = localConfig.fontType;
-        String str = this.jdField_a_of_type_JavaLangString;
-        int j = localConfig.delay;
-        if (!this.jdField_a_of_type_Boolean) {
-          break label135;
-        }
-        i = -1;
-        a(str, j, i);
-      }
-    }
-    for (;;)
-    {
-      return;
-      label135:
-      i = localConfig.repeatCount;
-      break;
-      ((IEmoticonManager)RemoteProxy.getProxy(EmoticonManagerIPC.class)).startTroopNickDownload(i, null, -1, new TroopNickAdapter.1(this));
-    }
-  }
-  
-  public void c()
-  {
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController != null) {
-      synchronized (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController)
+    VasResController localVasResController = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController;
+    if (localVasResController != null) {
+      try
       {
         this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController = null;
         return;
       }
+      finally {}
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.troopnick.TroopNickAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -79,7 +79,51 @@ public class HBEntryBannerData
   
   public String b()
   {
-    return "HBEntryBannerData{miniDesktopBackUrl='" + this.jdField_a_of_type_JavaLangString + '\'' + ", bannerBackgroundUrl='" + this.jdField_b_of_type_JavaLangString + '\'' + ", bannerPlaqueUrl='" + this.d + '\'' + ", bannerMerchantsIconUrl='" + this.e + '\'' + ", bannerIcon1Url='" + this.f + '\'' + ", bannerIcon2Url='" + this.g + '\'' + ", bannerText1='" + this.h + '\'' + ", bannerText2='" + this.i + '\'' + ", entryActivityId='" + this.m + '\'' + ", bannerIconScheme1='" + this.j + '\'' + ", bannerIconScheme2='" + this.k + '\'' + ", bannerClickScheme='" + this.l + '\'' + ", bannerLayoutStyle='" + this.jdField_b_of_type_Int + '\'' + ", entryActivityType='" + this.jdField_c_of_type_Int + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("HBEntryBannerData{miniDesktopBackUrl='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerBackgroundUrl='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerPlaqueUrl='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerMerchantsIconUrl='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerIcon1Url='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerIcon2Url='");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerText1='");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerText2='");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", entryActivityId='");
+    localStringBuilder.append(this.m);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerIconScheme1='");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerIconScheme2='");
+    localStringBuilder.append(this.k);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerClickScheme='");
+    localStringBuilder.append(this.l);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", bannerLayoutStyle='");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", entryActivityType='");
+    localStringBuilder.append(this.jdField_c_of_type_Int);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public int c()
@@ -149,7 +193,7 @@ public class HBEntryBannerData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.springfestival.HBEntryBannerData
  * JD-Core Version:    0.7.0.1
  */

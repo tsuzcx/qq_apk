@@ -20,17 +20,13 @@ import java.util.concurrent.atomic.AtomicLong;
 public class MsgBackupUtil
 {
   public static AtomicLong a;
-  public static boolean a;
-  public static boolean b;
-  public static boolean c;
-  public static boolean d;
+  public static boolean a = true;
+  public static boolean b = true;
+  public static boolean c = true;
+  public static boolean d = false;
   
   static
   {
-    jdField_a_of_type_Boolean = true;
-    b = true;
-    c = true;
-    d = false;
     jdField_a_of_type_JavaUtilConcurrentAtomicAtomicLong = new AtomicLong(1L);
   }
   
@@ -44,12 +40,13 @@ public class MsgBackupUtil
   
   public static int a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return 0;
-      paramString = paramString.split("\\.");
-    } while (paramString.length != 4);
+    }
+    paramString = paramString.split("\\.");
+    if (paramString.length != 4) {
+      return 0;
+    }
     try
     {
       int i = Integer.parseInt(paramString[0]);
@@ -74,10 +71,10 @@ public class MsgBackupUtil
   
   public static long a(MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)) {
-      return paramMessageRecord.shmsgseq;
+    if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000)) {
+      return (short)(int)paramMessageRecord.shmsgseq & 0xFFFF;
     }
-    return 0xFFFF & (short)(int)paramMessageRecord.shmsgseq;
+    return paramMessageRecord.shmsgseq;
   }
   
   public static String a(double paramDouble)
@@ -89,30 +86,30 @@ public class MsgBackupUtil
       localStringBuilder.append('-');
       d1 = -paramDouble;
     }
-    long l3 = (100.0D * d1 + 0.5D);
+    long l3 = (d1 * 100.0D + 0.5D);
     long l1 = 100L;
     int i = 3;
-    int j;
     long l2;
+    int j;
     for (;;)
     {
+      l2 = l1 * 10L;
       j = i;
-      l2 = l1;
-      if (l1 * 10L > l3) {
+      if (l2 > l3) {
         break;
       }
-      l1 *= 10L;
       i += 1;
+      l1 = l2;
     }
     while (j > 0)
     {
       if (j == 2) {
         localStringBuilder.append('.');
       }
-      l1 = l3 / l2 % 10L;
-      l2 /= 10L;
-      if ((j != 1) || (l1 != 0L)) {
-        localStringBuilder.append((char)(int)(l1 + 48L));
+      l2 = l3 / l1 % 10L;
+      l1 /= 10L;
+      if ((j != 1) || (l2 != 0L)) {
+        localStringBuilder.append((char)(int)(l2 + 48L));
       }
       j -= 1;
     }
@@ -135,42 +132,84 @@ public class MsgBackupUtil
   private static String a(long paramLong, boolean paramBoolean)
   {
     if (paramLong == 0L) {
-      str = "0K";
+      return "0K";
     }
-    do
+    if (paramLong <= 1024L)
     {
-      return str;
-      if (paramLong <= 1024L)
-      {
-        if (paramBoolean) {
-          return "1.00K";
-        }
-        return "1.0K";
+      if (paramBoolean) {
+        return "1.00K";
       }
-      str = "";
-      if (paramLong >= 1073741824L)
-      {
-        str = "" + a(paramLong / 1073741824.0D, paramBoolean);
-        return str + "G";
-      }
-      if (paramLong >= 1048576L)
-      {
-        if (paramLong >= 1048576000L)
-        {
-          str = "" + a(paramLong / 1048576.0D / 1024.0D, paramBoolean);
-          return str + "G";
-        }
-        str = "" + a(paramLong / 1048576.0D, paramBoolean);
-        return str + "M";
-      }
-    } while (paramLong < 1024L);
-    if (paramLong >= 1024000L)
-    {
-      str = "" + a(paramLong / 1024.0D / 1024.0D, paramBoolean);
-      return str + "M";
+      return "1.0K";
     }
-    String str = "" + a(paramLong / 1024.0D, paramBoolean);
-    return str + "K";
+    Object localObject = "";
+    double d1;
+    StringBuilder localStringBuilder;
+    if (paramLong >= 1073741824L)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      d1 = paramLong;
+      Double.isNaN(d1);
+      ((StringBuilder)localObject).append(a(d1 / 1073741824.0D, paramBoolean));
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("G");
+      return localStringBuilder.toString();
+    }
+    if (paramLong >= 1048576L)
+    {
+      if (paramLong >= 1048576000L)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        d1 = paramLong;
+        Double.isNaN(d1);
+        ((StringBuilder)localObject).append(a(d1 / 1048576.0D / 1024.0D, paramBoolean));
+        localObject = ((StringBuilder)localObject).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("G");
+        return localStringBuilder.toString();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      d1 = paramLong;
+      Double.isNaN(d1);
+      ((StringBuilder)localObject).append(a(d1 / 1048576.0D, paramBoolean));
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("M");
+      return localStringBuilder.toString();
+    }
+    if (paramLong >= 1024L)
+    {
+      if (paramLong >= 1024000L)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("");
+        d1 = paramLong;
+        Double.isNaN(d1);
+        ((StringBuilder)localObject).append(a(d1 / 1024.0D / 1024.0D, paramBoolean));
+        localObject = ((StringBuilder)localObject).toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("M");
+        return localStringBuilder.toString();
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      d1 = paramLong;
+      Double.isNaN(d1);
+      ((StringBuilder)localObject).append(a(d1 / 1024.0D, paramBoolean));
+      localObject = ((StringBuilder)localObject).toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append("K");
+      localObject = localStringBuilder.toString();
+    }
+    return localObject;
   }
   
   public static String a(MsgBackupSessionRequest paramMsgBackupSessionRequest)
@@ -179,7 +218,11 @@ public class MsgBackupUtil
     if (!TextUtils.isEmpty(paramMsgBackupSessionRequest.b)) {
       str = String.format("%s_%d_%s", new Object[] { paramMsgBackupSessionRequest.jdField_a_of_type_JavaLangString, Integer.valueOf(b(paramMsgBackupSessionRequest.jdField_a_of_type_Int)), paramMsgBackupSessionRequest.b });
     }
-    return MsgBackupConstant.c + str + ".db";
+    paramMsgBackupSessionRequest = new StringBuilder();
+    paramMsgBackupSessionRequest.append(MsgBackupConstant.c);
+    paramMsgBackupSessionRequest.append(str);
+    paramMsgBackupSessionRequest.append(".db");
+    return paramMsgBackupSessionRequest.toString();
   }
   
   public static String a(String paramString)
@@ -189,9 +232,11 @@ public class MsgBackupUtil
   
   public static String a(String paramString, int paramInt)
   {
-    String str = "http://%s:%d/";
+    String str;
     if (IPAddressUtil.isIPv6LiteralAddress(paramString)) {
       str = "http://[%s]:%d/";
+    } else {
+      str = "http://%s:%d/";
     }
     return String.format(str, new Object[] { paramString, Integer.valueOf(paramInt) });
   }
@@ -202,7 +247,11 @@ public class MsgBackupUtil
     if (!TextUtils.isEmpty(paramString2)) {
       str = String.format("%s_%d_%s", new Object[] { paramString1, Integer.valueOf(paramInt), paramString2 });
     }
-    return MsgBackupConstant.c + str + ".db";
+    paramString1 = new StringBuilder();
+    paramString1.append(MsgBackupConstant.c);
+    paramString1.append(str);
+    paramString1.append(".db");
+    return paramString1.toString();
   }
   
   public static String a(String paramString1, String paramString2)
@@ -225,7 +274,10 @@ public class MsgBackupUtil
           if (arrayOfString.length == 2)
           {
             paramString1 = MsgBackupJniProxy.decryptFromString(arrayOfString[1], paramString2);
-            str = "/" + paramString1;
+            paramString2 = new StringBuilder();
+            paramString2.append("/");
+            paramString2.append(paramString1);
+            str = paramString2.toString();
             a("MsgBackup", "decryptUrl = %s", new Object[] { str });
           }
         }
@@ -239,29 +291,37 @@ public class MsgBackupUtil
     if (TextUtils.isEmpty(paramString3)) {
       a("MsgBackup", "decrptUrlPathParams key is null", new Object[0]);
     }
-    if ((b) && (!TextUtils.isEmpty(paramString1)) && (!TextUtils.isEmpty(paramString3)))
+    boolean bool = b;
+    String str2 = "";
+    String str1 = str2;
+    if (bool)
     {
-      a("MsgBackup", "decrptUrlPathParams originUrl = %s, ip = %s, port = %d, encryptkey is not null!", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
-      paramString1 = paramString1.split(a(paramString2, paramInt));
-      if (paramString1.length == 2)
+      str1 = str2;
+      if (!TextUtils.isEmpty(paramString1))
       {
-        paramString2 = (String)a(MsgBackupJniProxy.decryptFromString(paramString1[1], paramString3)).get("filepath");
-        if (TextUtils.isEmpty(paramString2)) {
-          return "";
+        str1 = str2;
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          a("MsgBackup", "decrptUrlPathParams originUrl = %s, ip = %s, port = %d, encryptkey is not null!", new Object[] { paramString1, paramString2, Integer.valueOf(paramInt) });
+          paramString1 = paramString1.split(a(paramString2, paramInt));
+          str1 = str2;
+          if (paramString1.length == 2)
+          {
+            paramString2 = (String)a(MsgBackupJniProxy.decryptFromString(paramString1[1], paramString3)).get("filepath");
+            if (TextUtils.isEmpty(paramString2)) {
+              return "";
+            }
+            paramString1 = paramString2;
+            if (c) {
+              paramString1 = Uri.decode(paramString2);
+            }
+            str1 = a(paramString1);
+            a("decrptUrlPathParams filepath = %s", str1, new Object[0]);
+          }
         }
-        paramString1 = paramString2;
-        if (c) {
-          paramString1 = Uri.decode(paramString2);
-        }
-        paramString1 = a(paramString1);
-        a("decrptUrlPathParams filepath = %s", paramString1, new Object[0]);
       }
     }
-    for (;;)
-    {
-      return paramString1;
-      paramString1 = "";
-    }
+    return str1;
   }
   
   public static Map<String, String> a(String paramString)
@@ -275,17 +335,14 @@ public class MsgBackupUtil
         paramString = paramString[1].split("&");
         int j = paramString.length;
         int i = 0;
-        if (i < j)
+        while (i < j)
         {
           Object localObject = paramString[i];
           int k = localObject.indexOf("=");
-          if (k == -1) {}
-          for (;;)
-          {
-            i += 1;
-            break;
+          if (k != -1) {
             localHashMap.put(localObject.substring(0, k), localObject.substring(k + 1));
           }
+          i += 1;
         }
       }
     }
@@ -299,14 +356,14 @@ public class MsgBackupUtil
   
   public static void a(MessageRecord paramMessageRecord, MsgBackupResEntity paramMsgBackupResEntity)
   {
-    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000))
+    if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000))
     {
-      paramMsgBackupResEntity.msgSeq = paramMessageRecord.shmsgseq;
+      int i = MessageUtils.b(paramMessageRecord.msgUid);
+      paramMsgBackupResEntity.msgSeq = ((short)(int)paramMessageRecord.shmsgseq & 0xFFFF);
+      paramMsgBackupResEntity.msgRandom = i;
       return;
     }
-    int i = MessageUtils.b(paramMessageRecord.msgUid);
-    paramMsgBackupResEntity.msgSeq = (0xFFFF & (short)(int)paramMessageRecord.shmsgseq);
-    paramMsgBackupResEntity.msgRandom = i;
+    paramMsgBackupResEntity.msgSeq = paramMessageRecord.shmsgseq;
   }
   
   public static void a(MsgBackupMsgEntity paramMsgBackupMsgEntity)
@@ -344,58 +401,55 @@ public class MsgBackupUtil
   
   public static void a(String paramString1, String paramString2, Object... paramVarArgs)
   {
-    if (!jdField_a_of_type_Boolean) {}
-    String str;
-    do
-    {
+    if (!jdField_a_of_type_Boolean) {
       return;
-      str = paramString1;
-      if (TextUtils.isEmpty(paramString1)) {
-        str = "MsgBackup";
-      }
-    } while (!QLog.isDevelopLevel());
-    QLog.d(str, 4, String.format(paramString2, paramVarArgs));
+    }
+    String str = paramString1;
+    if (TextUtils.isEmpty(paramString1)) {
+      str = "MsgBackup";
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d(str, 4, String.format(paramString2, paramVarArgs));
+    }
   }
   
   public static void a(String paramString, Object... paramVarArgs)
   {
-    if (!jdField_a_of_type_Boolean) {}
-    while (!QLog.isDevelopLevel()) {
+    if (!jdField_a_of_type_Boolean) {
       return;
     }
-    QLog.d("MsgBackup", 4, String.format(paramString, paramVarArgs));
+    if (QLog.isDevelopLevel()) {
+      QLog.d("MsgBackup", 4, String.format(paramString, paramVarArgs));
+    }
   }
   
   public static boolean a()
   {
     String str = MsgBackupConstant.c;
     Object localObject = new File(str);
-    boolean bool2 = ((File)localObject).exists();
-    if (!bool2) {
+    boolean bool1 = ((File)localObject).exists();
+    boolean bool2 = bool1;
+    if (!bool1) {
       bool2 = ((File)localObject).mkdirs();
     }
-    for (;;)
+    if (bool2)
     {
-      boolean bool1;
-      if (bool2)
+      File localFile = new File(MsgBackupConstant.b);
+      boolean bool3 = localFile.exists();
+      localObject = localFile;
+      bool1 = bool3;
+      if (!bool3)
       {
-        File localFile = new File(MsgBackupConstant.b);
-        boolean bool3 = localFile.exists();
-        bool1 = bool3;
+        bool1 = localFile.mkdirs();
         localObject = localFile;
-        if (!bool3)
-        {
-          bool1 = localFile.mkdirs();
-          localObject = localFile;
-        }
-      }
-      for (;;)
-      {
-        a("Manager.init.file mkdirs result = %b,dbDirExist = %b,filePath = %s,multimsgDirExist = %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(((File)localObject).exists()), str, Boolean.valueOf(bool1) });
-        return bool2;
-        bool1 = false;
       }
     }
+    else
+    {
+      bool1 = false;
+    }
+    a("Manager.init.file mkdirs result = %b,dbDirExist = %b,filePath = %s,multimsgDirExist = %b", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(((File)localObject).exists()), str, Boolean.valueOf(bool1) });
+    return bool2;
   }
   
   public static boolean a(long paramLong)
@@ -416,10 +470,10 @@ public class MsgBackupUtil
   
   public static long b(MessageRecord paramMessageRecord)
   {
-    if ((paramMessageRecord.istroop == 1) || (paramMessageRecord.istroop == 3000)) {
-      return 0L;
+    if ((paramMessageRecord.istroop != 1) && (paramMessageRecord.istroop != 3000)) {
+      return MessageUtils.b(paramMessageRecord.msgUid);
     }
-    return MessageUtils.b(paramMessageRecord.msgUid);
+    return 0L;
   }
   
   public static String b(double paramDouble)
@@ -431,29 +485,29 @@ public class MsgBackupUtil
       localStringBuilder.append('-');
       d1 = -paramDouble;
     }
-    long l3 = (100.0D * d1 + 0.5D);
+    long l3 = (d1 * 100.0D + 0.5D);
     long l1 = 100L;
     int i = 3;
-    int j;
     long l2;
+    int j;
     for (;;)
     {
+      l2 = l1 * 10L;
       j = i;
-      l2 = l1;
-      if (l1 * 10L > l3) {
+      if (l2 > l3) {
         break;
       }
-      l1 *= 10L;
       i += 1;
+      l1 = l2;
     }
     while (j > 0)
     {
       if (j == 2) {
         localStringBuilder.append('.');
       }
-      l1 = l3 / l2;
-      l2 /= 10L;
-      localStringBuilder.append((char)(int)(l1 % 10L + 48L));
+      l2 = l3 / l1;
+      l1 /= 10L;
+      localStringBuilder.append((char)(int)(l2 % 10L + 48L));
       j -= 1;
     }
     return localStringBuilder.toString();
@@ -461,12 +515,19 @@ public class MsgBackupUtil
   
   public static String b(String paramString)
   {
-    return MsgBackupConstant.b + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(MsgBackupConstant.b);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
   
   public static String b(String paramString, int paramInt)
   {
-    return paramString + "_" + paramInt;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramInt);
+    return localStringBuilder.toString();
   }
   
   public static String b(String paramString1, String paramString2)
@@ -512,7 +573,10 @@ public class MsgBackupUtil
           if (localObject.length == 2)
           {
             paramString1 = MsgBackupJniProxy.decryptFromString(localObject[1], paramString3);
-            paramString1 = paramString2 + paramString1;
+            paramString3 = new StringBuilder();
+            paramString3.append(paramString2);
+            paramString3.append(paramString1);
+            paramString1 = paramString3.toString();
           }
           a("MsgBackup", "decryptUrl = %s", new Object[] { paramString1 });
           localObject = paramString1;
@@ -581,7 +645,7 @@ public class MsgBackupUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.util.MsgBackupUtil
  * JD-Core Version:    0.7.0.1
  */

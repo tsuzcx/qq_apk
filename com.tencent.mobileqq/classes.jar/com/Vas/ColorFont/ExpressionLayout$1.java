@@ -3,8 +3,7 @@ package com.Vas.ColorFont;
 import android.animation.ValueAnimator;
 import android.animation.ValueAnimator.AnimatorUpdateListener;
 import com.etrump.mixlayout.ETFont;
-import com.etrump.mixlayout.ETTextView;
-import com.etrump.mixlayout.ETTextView.TextAnimationListener;
+import com.tencent.mobileqq.vas.font.api.IETextView;
 
 class ExpressionLayout$1
   implements ValueAnimator.AnimatorUpdateListener
@@ -17,23 +16,24 @@ class ExpressionLayout$1
     if (i >= this.a.i[0])
     {
       this.a.jdField_a_of_type_AndroidAnimationValueAnimator.cancel();
-      this.a.e = 0;
-      this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
+      paramValueAnimator = this.a;
+      paramValueAnimator.e = 0;
+      paramValueAnimator.jdField_a_of_type_ComEtrumpMixlayoutETFont.mShouldDisplayAnimation = false;
       ExpressionLayout.a(this.a).invalidate();
-      if (ExpressionLayout.a(this.a).mAnimationListener != null) {
-        ExpressionLayout.a(this.a).mAnimationListener.a(ExpressionLayout.a(this.a).mMessage, this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
-      }
-    }
-    while (i <= this.a.e) {
+      ExpressionLayout.a(this.a).onAnimationEnd(this.a.jdField_a_of_type_ComEtrumpMixlayoutETFont.mFontId);
       return;
     }
-    this.a.e = i;
-    ExpressionLayout.a(this.a).invalidate();
+    if (i > this.a.e)
+    {
+      paramValueAnimator = this.a;
+      paramValueAnimator.e = i;
+      ExpressionLayout.a(paramValueAnimator).invalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.Vas.ColorFont.ExpressionLayout.1
  * JD-Core Version:    0.7.0.1
  */

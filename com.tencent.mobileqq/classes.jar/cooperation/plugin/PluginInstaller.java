@@ -1,5 +1,6 @@
 package cooperation.plugin;
 
+import android.app.Application;
 import android.content.Context;
 import android.os.Build;
 import android.os.Handler;
@@ -13,8 +14,8 @@ import com.tencent.commonsdk.soload.DexReleasor;
 import com.tencent.commonsdk.soload.SoLoadCore;
 import com.tencent.commonsdk.zip.QZipFile;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.compact.LoadCompactDynamicFeature;
 import com.tencent.mobileqq.pluginsdk.PluginUtils;
-import com.tencent.mobileqq.qshadow.constant.Constant;
 import com.tencent.mobileqq.qshadow.core.QShadow;
 import com.tencent.mobileqq.qshadow.utils.PluginIdUtil;
 import com.tencent.mobileqq.qshadow.utils.QShadowRepository;
@@ -24,6 +25,7 @@ import com.tencent.mobileqq.statistics.PluginStatisticsCollector;
 import com.tencent.mobileqq.utils.FileUtils;
 import com.tencent.mobileqq.utils.TripleGraySwitchUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.shadow.dynamic.host.Constant;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -45,7 +47,6 @@ public class PluginInstaller
   
   static
   {
-    jdField_a_of_type_AndroidOsHandlerThread = null;
     jdField_a_of_type_JavaLangString = Build.FINGERPRINT;
   }
   
@@ -61,17 +62,18 @@ public class PluginInstaller
   
   public static HandlerThread a()
   {
-    if (jdField_a_of_type_AndroidOsHandlerThread == null) {}
-    try
-    {
-      if (jdField_a_of_type_AndroidOsHandlerThread == null)
+    if (jdField_a_of_type_AndroidOsHandlerThread == null) {
+      try
       {
-        jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("QQ_PLUGIN", 0);
-        jdField_a_of_type_AndroidOsHandlerThread.start();
+        if (jdField_a_of_type_AndroidOsHandlerThread == null)
+        {
+          jdField_a_of_type_AndroidOsHandlerThread = ThreadManager.newFreeHandlerThread("QQ_PLUGIN", 0);
+          jdField_a_of_type_AndroidOsHandlerThread.start();
+        }
       }
-      return jdField_a_of_type_AndroidOsHandlerThread;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_AndroidOsHandlerThread;
   }
   
   static File a(Context paramContext)
@@ -81,10 +83,12 @@ public class PluginInstaller
   
   public static String a()
   {
-    if (jdField_a_of_type_JavaLangString == null) {
-      return "";
+    String str2 = jdField_a_of_type_JavaLangString;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    return jdField_a_of_type_JavaLangString;
+    return str1;
   }
   
   private void a(String paramString)
@@ -94,51 +98,71 @@ public class PluginInstaller
   
   private boolean a()
   {
-    boolean bool = false;
-    if (TextUtils.isEmpty(this.b)) {}
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "verifyDownloadPath." + this.b + ", " + bool);
-      }
-      return bool;
-      if (new File(this.b).exists()) {
-        bool = true;
-      }
+    boolean bool;
+    if ((TextUtils.isEmpty(this.b)) || (!new File(this.b).exists())) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("verifyDownloadPath.");
+      localStringBuilder.append(this.b);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(bool);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
+    }
+    return bool;
   }
   
   private boolean a(PluginInfo paramPluginInfo)
   {
-    boolean bool1 = true;
-    boolean bool2 = true;
+    boolean bool1 = false;
+    boolean bool3 = false;
     if ((paramPluginInfo != null) && (paramPluginInfo.mType == 0) && (paramPluginInfo.mSubType == 1)) {
-      return bool2;
+      return paramPluginInfo.mState == 4;
     }
-    if ((paramPluginInfo != null) && (paramPluginInfo.mInstalledPath != null))
+    boolean bool2 = bool1;
+    if (paramPluginInfo != null)
     {
-      File localFile = new File(paramPluginInfo.mInstalledPath);
-      if ((localFile != null) && (localFile.exists()) && (localFile.isFile())) {
-        if (PluginInfoUtil.a(paramPluginInfo, localFile))
-        {
-          paramPluginInfo.mState = 4;
-          paramPluginInfo.mInstalledPath = localFile.getAbsolutePath();
-        }
-      }
-      for (;;)
+      bool2 = bool1;
+      if (paramPluginInfo.mInstalledPath != null)
       {
-        bool2 = bool1;
-        if (!QLog.isColorLevel()) {
-          break;
+        Object localObject = new File(paramPluginInfo.mInstalledPath);
+        bool1 = bool3;
+        if (((File)localObject).exists())
+        {
+          bool1 = bool3;
+          if (((File)localObject).isFile()) {
+            if (PluginInfoUtil.a(paramPluginInfo, (File)localObject))
+            {
+              paramPluginInfo.mState = 4;
+              paramPluginInfo.mInstalledPath = ((File)localObject).getAbsolutePath();
+              bool1 = true;
+            }
+            else
+            {
+              d(paramPluginInfo.mID);
+              paramPluginInfo.mState = 0;
+              bool1 = bool3;
+            }
+          }
         }
-        QLog.d("plugin_tag", 2, "verifyInstalledPlugin :" + paramPluginInfo.mID + "," + bool1);
-        return bool1;
-        d(paramPluginInfo.mID);
-        paramPluginInfo.mState = 0;
-        bool1 = false;
+        bool2 = bool1;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("verifyInstalledPlugin :");
+          ((StringBuilder)localObject).append(paramPluginInfo.mID);
+          ((StringBuilder)localObject).append(",");
+          ((StringBuilder)localObject).append(bool1);
+          QLog.d("plugin_tag", 2, ((StringBuilder)localObject).toString());
+          bool2 = bool1;
+        }
       }
     }
-    return false;
+    return bool2;
   }
   
   /* Error */
@@ -146,280 +170,277 @@ public class PluginInstaller
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore 5
+    //   1: astore 7
     //   3: aconst_null
-    //   4: astore 6
+    //   4: astore 5
     //   6: aconst_null
     //   7: astore 8
     //   9: aconst_null
-    //   10: astore 7
-    //   12: iconst_1
-    //   13: istore 4
-    //   15: aload_1
-    //   16: aload_2
-    //   17: invokevirtual 180	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
-    //   20: astore_1
-    //   21: aload_1
-    //   22: astore 6
-    //   24: aload 7
-    //   26: astore 5
-    //   28: aload 8
-    //   30: astore_1
-    //   31: aload 6
-    //   33: astore_2
-    //   34: aload_0
-    //   35: invokevirtual 136	java/io/File:exists	()Z
-    //   38: ifne +53 -> 91
-    //   41: aload 7
-    //   43: astore 5
-    //   45: aload 8
-    //   47: astore_1
-    //   48: aload 6
-    //   50: astore_2
-    //   51: aload_0
-    //   52: invokevirtual 184	java/io/File:getParentFile	()Ljava/io/File;
-    //   55: astore 9
-    //   57: aload 7
-    //   59: astore 5
-    //   61: aload 8
+    //   10: astore 6
+    //   12: aload_1
+    //   13: aload_2
+    //   14: invokevirtual 180	com/tencent/commonsdk/zip/QZipFile:getInputStream	(Ljava/util/zip/ZipEntry;)Ljava/io/InputStream;
+    //   17: astore 4
+    //   19: aload 6
+    //   21: astore_2
+    //   22: aload 7
+    //   24: astore_1
+    //   25: aload_0
+    //   26: invokevirtual 108	java/io/File:exists	()Z
+    //   29: ifne +41 -> 70
+    //   32: aload 6
+    //   34: astore_2
+    //   35: aload 7
+    //   37: astore_1
+    //   38: aload_0
+    //   39: invokevirtual 184	java/io/File:getParentFile	()Ljava/io/File;
+    //   42: astore 5
+    //   44: aload 6
+    //   46: astore_2
+    //   47: aload 7
+    //   49: astore_1
+    //   50: aload 5
+    //   52: invokevirtual 108	java/io/File:exists	()Z
+    //   55: ifne +15 -> 70
+    //   58: aload 6
+    //   60: astore_2
+    //   61: aload 7
     //   63: astore_1
-    //   64: aload 6
-    //   66: astore_2
-    //   67: aload 9
-    //   69: invokevirtual 136	java/io/File:exists	()Z
-    //   72: ifne +19 -> 91
-    //   75: aload 7
-    //   77: astore 5
-    //   79: aload 8
-    //   81: astore_1
-    //   82: aload 6
-    //   84: astore_2
-    //   85: aload 9
-    //   87: invokevirtual 187	java/io/File:mkdirs	()Z
-    //   90: pop
-    //   91: aload 7
-    //   93: astore 5
-    //   95: aload 8
-    //   97: astore_1
-    //   98: aload 6
-    //   100: astore_2
-    //   101: new 189	java/io/BufferedOutputStream
-    //   104: dup
-    //   105: new 191	java/io/FileOutputStream
-    //   108: dup
-    //   109: aload_0
-    //   110: invokespecial 194	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   113: invokespecial 197	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   116: invokestatic 203	cooperation/qzone/util/RecycleableBufferedOutputStream:obtain	(Ljava/io/OutputStream;)Lcooperation/qzone/util/RecycleableBufferedOutputStream;
-    //   119: astore_0
-    //   120: aload_0
-    //   121: astore 5
-    //   123: aload_0
-    //   124: astore_1
-    //   125: aload 6
-    //   127: astore_2
-    //   128: sipush 8192
-    //   131: newarray byte
-    //   133: astore 7
-    //   135: aload_0
-    //   136: astore 5
-    //   138: aload_0
-    //   139: astore_1
-    //   140: aload 6
-    //   142: astore_2
-    //   143: aload 6
-    //   145: aload 7
-    //   147: invokevirtual 209	java/io/InputStream:read	([B)I
-    //   150: istore_3
-    //   151: iload_3
-    //   152: ifle +66 -> 218
-    //   155: aload_0
-    //   156: astore 5
-    //   158: aload_0
-    //   159: astore_1
-    //   160: aload 6
-    //   162: astore_2
-    //   163: aload_0
-    //   164: aload 7
-    //   166: iconst_0
-    //   167: iload_3
-    //   168: invokevirtual 215	java/io/OutputStream:write	([BII)V
-    //   171: goto -36 -> 135
+    //   64: aload 5
+    //   66: invokevirtual 187	java/io/File:mkdirs	()Z
+    //   69: pop
+    //   70: aload 6
+    //   72: astore_2
+    //   73: aload 7
+    //   75: astore_1
+    //   76: new 189	java/io/BufferedOutputStream
+    //   79: dup
+    //   80: new 191	java/io/FileOutputStream
+    //   83: dup
+    //   84: aload_0
+    //   85: invokespecial 194	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   88: invokespecial 197	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   91: invokestatic 203	cooperation/qzone/util/RecycleableBufferedOutputStream:obtain	(Ljava/io/OutputStream;)Lcooperation/qzone/util/RecycleableBufferedOutputStream;
+    //   94: astore_0
+    //   95: aload_0
+    //   96: astore_2
+    //   97: aload_0
+    //   98: astore_1
+    //   99: sipush 8192
+    //   102: newarray byte
+    //   104: astore 5
+    //   106: aload_0
+    //   107: astore_2
+    //   108: aload_0
+    //   109: astore_1
+    //   110: aload 4
+    //   112: aload 5
+    //   114: invokevirtual 209	java/io/InputStream:read	([B)I
+    //   117: istore_3
+    //   118: iload_3
+    //   119: ifle +18 -> 137
+    //   122: aload_0
+    //   123: astore_2
+    //   124: aload_0
+    //   125: astore_1
+    //   126: aload_0
+    //   127: aload 5
+    //   129: iconst_0
+    //   130: iload_3
+    //   131: invokevirtual 215	java/io/OutputStream:write	([BII)V
+    //   134: goto -28 -> 106
+    //   137: aload 4
+    //   139: ifnull +11 -> 150
+    //   142: aload 4
+    //   144: invokevirtual 218	java/io/InputStream:close	()V
+    //   147: goto +3 -> 150
+    //   150: aload_0
+    //   151: ifnull +7 -> 158
+    //   154: aload_0
+    //   155: invokevirtual 219	java/io/OutputStream:close	()V
+    //   158: iconst_1
+    //   159: ireturn
+    //   160: astore_0
+    //   161: aload 4
+    //   163: astore_1
+    //   164: goto +66 -> 230
+    //   167: astore_2
+    //   168: aload 4
+    //   170: astore_0
+    //   171: goto +18 -> 189
     //   174: astore_0
-    //   175: aload 5
-    //   177: astore_1
-    //   178: aload 6
-    //   180: astore_2
-    //   181: ldc 108
-    //   183: iconst_1
-    //   184: aload_0
-    //   185: iconst_0
-    //   186: anewarray 4	java/lang/Object
-    //   189: invokestatic 219	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
-    //   192: aload 6
-    //   194: ifnull +8 -> 202
-    //   197: aload 6
-    //   199: invokevirtual 222	java/io/InputStream:close	()V
-    //   202: aload 5
-    //   204: ifnull +8 -> 212
-    //   207: aload 5
-    //   209: invokevirtual 223	java/io/OutputStream:close	()V
-    //   212: iconst_0
-    //   213: istore 4
-    //   215: iload 4
-    //   217: ireturn
-    //   218: aload 6
-    //   220: ifnull +8 -> 228
-    //   223: aload 6
-    //   225: invokevirtual 222	java/io/InputStream:close	()V
-    //   228: aload_0
-    //   229: ifnull -14 -> 215
-    //   232: aload_0
-    //   233: invokevirtual 223	java/io/OutputStream:close	()V
-    //   236: iconst_1
-    //   237: ireturn
-    //   238: astore_0
-    //   239: iconst_1
-    //   240: ireturn
-    //   241: astore_0
-    //   242: aconst_null
-    //   243: astore_2
-    //   244: aload 6
-    //   246: astore_1
-    //   247: aload_2
-    //   248: ifnull +7 -> 255
-    //   251: aload_2
-    //   252: invokevirtual 222	java/io/InputStream:close	()V
-    //   255: aload_1
-    //   256: ifnull +7 -> 263
-    //   259: aload_1
-    //   260: invokevirtual 223	java/io/OutputStream:close	()V
-    //   263: aload_0
-    //   264: athrow
-    //   265: astore_1
-    //   266: goto -38 -> 228
-    //   269: astore_0
-    //   270: goto -68 -> 202
-    //   273: astore_0
-    //   274: goto -62 -> 212
-    //   277: astore_2
-    //   278: goto -23 -> 255
-    //   281: astore_1
-    //   282: goto -19 -> 263
-    //   285: astore_0
-    //   286: goto -39 -> 247
-    //   289: astore_0
-    //   290: aconst_null
-    //   291: astore 6
-    //   293: goto -118 -> 175
+    //   175: aconst_null
+    //   176: astore_1
+    //   177: aload 8
+    //   179: astore_2
+    //   180: goto +50 -> 230
+    //   183: astore_2
+    //   184: aconst_null
+    //   185: astore_1
+    //   186: aload 5
+    //   188: astore_0
+    //   189: ldc 129
+    //   191: iconst_1
+    //   192: aload_2
+    //   193: iconst_0
+    //   194: anewarray 4	java/lang/Object
+    //   197: invokestatic 223	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/Throwable;[Ljava/lang/Object;)V
+    //   200: aload_0
+    //   201: ifnull +10 -> 211
+    //   204: aload_0
+    //   205: invokevirtual 218	java/io/InputStream:close	()V
+    //   208: goto +3 -> 211
+    //   211: aload_1
+    //   212: ifnull +7 -> 219
+    //   215: aload_1
+    //   216: invokevirtual 219	java/io/OutputStream:close	()V
+    //   219: iconst_0
+    //   220: ireturn
+    //   221: astore 4
+    //   223: aload_1
+    //   224: astore_2
+    //   225: aload_0
+    //   226: astore_1
+    //   227: aload 4
+    //   229: astore_0
+    //   230: aload_1
+    //   231: ifnull +10 -> 241
+    //   234: aload_1
+    //   235: invokevirtual 218	java/io/InputStream:close	()V
+    //   238: goto +3 -> 241
+    //   241: aload_2
+    //   242: ifnull +7 -> 249
+    //   245: aload_2
+    //   246: invokevirtual 219	java/io/OutputStream:close	()V
+    //   249: goto +5 -> 254
+    //   252: aload_0
+    //   253: athrow
+    //   254: goto -2 -> 252
+    //   257: astore_1
+    //   258: goto -108 -> 150
+    //   261: astore_0
+    //   262: iconst_1
+    //   263: ireturn
+    //   264: astore_0
+    //   265: goto -54 -> 211
+    //   268: astore_0
+    //   269: iconst_0
+    //   270: ireturn
+    //   271: astore_1
+    //   272: goto -31 -> 241
+    //   275: astore_1
+    //   276: goto -27 -> 249
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	296	0	paramFile	File
-    //   0	296	1	paramQZipFile	QZipFile
-    //   0	296	2	paramZipEntry	ZipEntry
-    //   150	18	3	i	int
-    //   13	203	4	bool	boolean
-    //   1	207	5	localObject1	Object
-    //   4	288	6	localQZipFile	QZipFile
-    //   10	155	7	arrayOfByte	byte[]
-    //   7	89	8	localObject2	Object
-    //   55	31	9	localFile	File
+    //   0	279	0	paramFile	File
+    //   0	279	1	paramQZipFile	QZipFile
+    //   0	279	2	paramZipEntry	ZipEntry
+    //   117	14	3	i	int
+    //   17	152	4	localInputStream	java.io.InputStream
+    //   221	7	4	localObject1	Object
+    //   4	183	5	localObject2	Object
+    //   10	61	6	localObject3	Object
+    //   1	73	7	localObject4	Object
+    //   7	171	8	localObject5	Object
     // Exception table:
     //   from	to	target	type
-    //   34	41	174	java/io/IOException
-    //   51	57	174	java/io/IOException
-    //   67	75	174	java/io/IOException
-    //   85	91	174	java/io/IOException
-    //   101	120	174	java/io/IOException
-    //   128	135	174	java/io/IOException
-    //   143	151	174	java/io/IOException
-    //   163	171	174	java/io/IOException
-    //   232	236	238	java/io/IOException
-    //   15	21	241	finally
-    //   223	228	265	java/io/IOException
-    //   197	202	269	java/io/IOException
-    //   207	212	273	java/io/IOException
-    //   251	255	277	java/io/IOException
-    //   259	263	281	java/io/IOException
-    //   34	41	285	finally
-    //   51	57	285	finally
-    //   67	75	285	finally
-    //   85	91	285	finally
-    //   101	120	285	finally
-    //   128	135	285	finally
-    //   143	151	285	finally
-    //   163	171	285	finally
-    //   181	192	285	finally
-    //   15	21	289	java/io/IOException
+    //   25	32	160	finally
+    //   38	44	160	finally
+    //   50	58	160	finally
+    //   64	70	160	finally
+    //   76	95	160	finally
+    //   99	106	160	finally
+    //   110	118	160	finally
+    //   126	134	160	finally
+    //   25	32	167	java/io/IOException
+    //   38	44	167	java/io/IOException
+    //   50	58	167	java/io/IOException
+    //   64	70	167	java/io/IOException
+    //   76	95	167	java/io/IOException
+    //   99	106	167	java/io/IOException
+    //   110	118	167	java/io/IOException
+    //   126	134	167	java/io/IOException
+    //   12	19	174	finally
+    //   12	19	183	java/io/IOException
+    //   189	200	221	finally
+    //   142	147	257	java/io/IOException
+    //   154	158	261	java/io/IOException
+    //   204	208	264	java/io/IOException
+    //   215	219	268	java/io/IOException
+    //   234	238	271	java/io/IOException
+    //   245	249	275	java/io/IOException
   }
   
   public static boolean a(String paramString1, String paramString2)
   {
-    if (!PluginUtils.isOsNeedReleaseDex()) {
+    boolean bool3 = PluginUtils.isOsNeedReleaseDex();
+    boolean bool1 = true;
+    boolean bool2 = true;
+    if (!bool3) {
       return true;
     }
-    int j = PluginAdapterImpl.a(paramString1);
-    Object localObject2;
-    Object localObject1;
-    label280:
-    boolean bool;
-    if (j > 1)
+    int k = PluginAdapterImpl.a(paramString1);
+    if (k > 1)
     {
       BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
-      DexReleasor localDexReleasor = new DexReleasor(paramString2, PluginUtils.getPluginInstallDir(localBaseApplicationImpl).getAbsolutePath() + File.separator);
-      int i = 1;
-      for (;;)
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(PluginUtils.getPluginInstallDir(localBaseApplicationImpl).getAbsolutePath());
+      ((StringBuilder)localObject1).append(File.separator);
+      localObject1 = new DexReleasor(paramString2, ((StringBuilder)localObject1).toString());
+      int j;
+      for (int i = 1;; i = j)
       {
-        if (i < j)
+        bool1 = bool2;
+        if (i >= k) {
+          break;
+        }
+        j = i + 1;
+        Object localObject2 = String.format("classes%d.dex", new Object[] { Integer.valueOf(j) });
+        Object localObject3 = PluginUtils.getMultiDexName(paramString1, j);
+        if (-1L == ((DexReleasor)localObject1).getEntryCrcCode((String)localObject2))
         {
-          localObject2 = String.format("classes%d.dex", new Object[] { Integer.valueOf(i + 1) });
-          localObject1 = PluginUtils.getMultiDexName(paramString1, i + 1);
-          if (-1L == localDexReleasor.getEntryCrcCode((String)localObject2))
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("releaseMultiDexIfNeeded noDex ");
+          ((StringBuilder)localObject3).append((String)localObject2);
+          ((StringBuilder)localObject3).append(" ");
+          ((StringBuilder)localObject3).append(paramString1);
+          QLog.d("plugin_tag", 1, ((StringBuilder)localObject3).toString());
+        }
+        else
+        {
+          localObject3 = new File(PluginUtils.getPluginInstallDir(localBaseApplicationImpl).getAbsolutePath(), (String)localObject3);
+          if (((File)localObject3).exists())
           {
-            QLog.d("plugin_tag", 1, "releaseMultiDexIfNeeded noDex " + (String)localObject2 + " " + paramString1);
-            i += 1;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("releaseMultiDexIfNeeded  ");
+            localStringBuilder.append(((File)localObject3).getAbsolutePath());
+            localStringBuilder.append(" exsit,delete first");
+            QLog.d("plugin_tag", 1, localStringBuilder.toString());
+            ((File)localObject3).delete();
           }
-          else
+          a(paramString2, (String)localObject2, (File)localObject3);
+          if (!((File)localObject3).exists())
           {
-            localObject1 = new File(PluginUtils.getPluginInstallDir(localBaseApplicationImpl).getAbsolutePath(), (String)localObject1);
-            if (((File)localObject1).exists())
-            {
-              QLog.d("plugin_tag", 1, "releaseMultiDexIfNeeded  " + ((File)localObject1).getAbsolutePath() + " exsit,delete first");
-              ((File)localObject1).delete();
-            }
-            a(paramString2, (String)localObject2, (File)localObject1);
-            if ((localObject1 == null) || (!((File)localObject1).exists()))
-            {
-              paramString2 = new StringBuilder().append("releaseMultiDexIfNeeded failed ").append(i).append(" ");
-              if (localObject1 != null)
-              {
-                paramString1 = ((File)localObject1).getAbsolutePath();
-                QLog.d("plugin_tag", 1, paramString1);
-                bool = false;
-                label297:
-                localDexReleasor.destroy();
-              }
-            }
+            paramString1 = new StringBuilder();
+            paramString1.append("releaseMultiDexIfNeeded failed ");
+            paramString1.append(i);
+            paramString1.append(" ");
+            paramString1.append(((File)localObject3).getAbsolutePath());
+            QLog.d("plugin_tag", 1, paramString1.toString());
+            bool1 = false;
+            break;
           }
+          localObject2 = new StringBuilder(256);
+          ((StringBuilder)localObject2).append("releaseMultiDexIfNeeded ");
+          ((StringBuilder)localObject2).append(true);
+          ((StringBuilder)localObject2).append(" ");
+          ((StringBuilder)localObject2).append(((File)localObject3).getAbsolutePath());
+          QLog.d("plugin_tag", 1, ((StringBuilder)localObject2).toString());
         }
       }
+      ((DexReleasor)localObject1).destroy();
     }
-    for (;;)
-    {
-      return bool;
-      paramString1 = " ";
-      break label280;
-      localObject2 = new StringBuilder(256);
-      ((StringBuilder)localObject2).append("releaseMultiDexIfNeeded ");
-      ((StringBuilder)localObject2).append(true);
-      ((StringBuilder)localObject2).append(" ");
-      ((StringBuilder)localObject2).append(((File)localObject1).getAbsolutePath());
-      QLog.d("plugin_tag", 1, ((StringBuilder)localObject2).toString());
-      break;
-      bool = true;
-      break label297;
-      bool = true;
-    }
+    return bool1;
   }
   
   private static boolean a(String paramString1, String paramString2, File paramFile)
@@ -435,34 +456,33 @@ public class PluginInstaller
     }
     catch (IOException localIOException)
     {
-      for (;;)
-      {
-        QLog.e("plugin_tag", 1, localIOException, new Object[0]);
-      }
-      paramString1 = localObject.entries();
-      ZipEntry localZipEntry;
-      do
-      {
-        if (!paramString1.hasMoreElements()) {
-          break;
-        }
-        localZipEntry = (ZipEntry)paramString1.nextElement();
-      } while ((localZipEntry.getName().contains("..")) || (!localZipEntry.getName().equals(paramString2)));
-      return a(paramFile, localObject, localZipEntry);
+      QLog.e("plugin_tag", 1, localIOException, new Object[0]);
     }
     if (localObject == null)
     {
       QLog.e("plugin_tag", 1, String.format("unzip %s error", new Object[] { paramString1 }));
       return false;
     }
+    paramString1 = localObject.entries();
+    while (paramString1.hasMoreElements())
+    {
+      ZipEntry localZipEntry = (ZipEntry)paramString1.nextElement();
+      if ((!localZipEntry.getName().contains("..")) && (localZipEntry.getName().equals(paramString2))) {
+        if (a(paramFile, localObject, localZipEntry)) {
+          return true;
+        }
+      }
+    }
     return false;
   }
   
   private void c(PluginInfo paramPluginInfo, PluginInstaller.OnPluginSetupListener paramOnPluginSetupListener)
   {
-    int i = 1;
     String str = paramPluginInfo.mID;
-    QLog.d("plugin_tag", 1, "doSetupPlugin." + str);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("doSetupPlugin.");
+    localStringBuilder.append(str);
+    QLog.d("plugin_tag", 1, localStringBuilder.toString());
     if (PluginInfoUtil.a(paramPluginInfo, this.jdField_a_of_type_AndroidContentContext))
     {
       QLog.d("plugin_tag", 1, "plugin still running");
@@ -471,25 +491,31 @@ public class PluginInstaller
       }
       return;
     }
-    if (!c(str)) {}
-    while (i != 0)
+    if ((c(str) ^ true))
     {
       a(str, paramOnPluginSetupListener);
       return;
-      i = 0;
     }
     a(paramPluginInfo, paramOnPluginSetupListener);
   }
   
   private boolean c(String paramString)
   {
-    if (!a()) {}
-    do
-    {
+    boolean bool1 = a();
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
-      paramString = new File(this.b).list(new PluginInstaller.1(this, paramString));
-    } while ((paramString == null) || (paramString.length <= 0));
-    return true;
+    }
+    paramString = new File(this.b).list(new PluginInstaller.1(this, paramString));
+    bool1 = bool2;
+    if (paramString != null)
+    {
+      bool1 = bool2;
+      if (paramString.length > 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private boolean d(String paramString)
@@ -527,70 +553,79 @@ public class PluginInstaller
   
   public void a()
   {
-    File localFile1 = a(this.jdField_a_of_type_AndroidContentContext);
-    boolean bool = PluginInfoUtil.a(localFile1);
-    File[] arrayOfFile = PluginInfoUtil.a(localFile1);
+    Object localObject1 = a(this.jdField_a_of_type_AndroidContentContext);
+    boolean bool = PluginInfoUtil.a((File)localObject1);
+    File[] arrayOfFile = PluginInfoUtil.a((File)localObject1);
     if (arrayOfFile != null)
     {
-      int n = arrayOfFile.length;
+      int k = arrayOfFile.length;
       int i = 0;
-      if (i < n)
+      while (i < k)
       {
-        File localFile2 = arrayOfFile[i];
-        Object localObject;
-        int j;
-        if (localFile2.isFile())
+        Object localObject2 = arrayOfFile[i];
+        if (((File)localObject2).isFile())
         {
-          if (!bool) {
-            break label157;
-          }
-          int m = 0;
-          localObject = UpdatePluginVersion.a;
-          int i1 = localObject.length;
-          j = 0;
-          label75:
-          int k = m;
-          if (j < i1)
+          Object localObject3;
+          if (bool)
           {
-            String str = localObject[j];
-            if ((InstallPlugins.a(str)) || (!localFile2.getName().equals(str + ".cfg"))) {
-              break label150;
-            }
-            d(str);
-            k = 1;
-          }
-          if (k == 0) {
-            break label157;
-          }
-        }
-        for (;;)
-        {
-          i += 1;
-          break;
-          label150:
-          j += 1;
-          break label75;
-          label157:
-          localObject = PluginInfoUtil.a(localFile2);
-          if (localObject != null)
-          {
-            if ((a((PluginInfo)localObject)) || ((("expand.apk".equals(((PluginInfo)localObject).mID)) || (!TripleGraySwitchUtil.b(this.jdField_a_of_type_AndroidContentContext, "KEY_DISABLE_SAVE_PLUGIN_INFO", true))) && (((PluginInfo)localObject).mState == 2)))
+            localObject3 = UpdatePluginVersion.a;
+            int m = localObject3.length;
+            int j = 0;
+            while (j < m)
             {
-              QLog.d("plugin_tag", 1, "put " + ((PluginInfo)localObject).mID + " in to mInstalledPlugins, state: " + ((PluginInfo)localObject).mState);
-              this.jdField_a_of_type_JavaUtilHashMap.put(((PluginInfo)localObject).mID, localObject);
+              String str1 = localObject3[j];
+              if (!InstallPlugins.a(str1))
+              {
+                String str2 = ((File)localObject2).getName();
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append(str1);
+                localStringBuilder.append(".cfg");
+                if (str2.equals(localStringBuilder.toString()))
+                {
+                  d(str1);
+                  j = 1;
+                  break label157;
+                }
+              }
+              j += 1;
+            }
+            j = 0;
+            label157:
+            if (j != 0) {}
+          }
+          else
+          {
+            localObject3 = PluginInfoUtil.a((File)localObject2);
+            if (localObject3 != null)
+            {
+              if ((a((PluginInfo)localObject3)) || ((("expand.apk".equals(((PluginInfo)localObject3).mID)) || (!TripleGraySwitchUtil.b(this.jdField_a_of_type_AndroidContentContext, "KEY_DISABLE_SAVE_PLUGIN_INFO", true))) && (((PluginInfo)localObject3).mState == 2)))
+              {
+                localObject2 = new StringBuilder();
+                ((StringBuilder)localObject2).append("put ");
+                ((StringBuilder)localObject2).append(((PluginInfo)localObject3).mID);
+                ((StringBuilder)localObject2).append(" in to mInstalledPlugins, state: ");
+                ((StringBuilder)localObject2).append(((PluginInfo)localObject3).mState);
+                QLog.d("plugin_tag", 1, ((StringBuilder)localObject2).toString());
+                this.jdField_a_of_type_JavaUtilHashMap.put(((PluginInfo)localObject3).mID, localObject3);
+              }
+            }
+            else {
+              ((File)localObject2).delete();
             }
           }
-          else {
-            localFile2.delete();
-          }
         }
+        i += 1;
       }
     }
     if (bool) {
-      PluginInfoUtil.a(localFile1);
+      PluginInfoUtil.a((File)localObject1);
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "load installed plugin info. size:" + this.jdField_a_of_type_JavaUtilHashMap.size());
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("load installed plugin info. size:");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaUtilHashMap.size());
+      QLog.d("plugin_tag", 2, ((StringBuilder)localObject1).toString());
     }
     this.jdField_a_of_type_Boolean = true;
   }
@@ -608,10 +643,11 @@ public class PluginInstaller
   
   public void a(String paramString, File paramFile, PluginInstaller.OnPluginSetupListener paramOnPluginSetupListener)
   {
-    int i = 1;
     ArrayList localArrayList = new ArrayList();
     localArrayList.add(paramFile);
-    if ((PluginUtils.isOsNeedReleaseDex()) && (PluginAdapterImpl.a(paramString) > 1)) {
+    boolean bool = PluginUtils.isOsNeedReleaseDex();
+    int i = 1;
+    if ((bool) && (PluginAdapterImpl.a(paramString) > 1)) {
       localArrayList.add(PluginUtils.getMultiDexSecondDex(this.jdField_a_of_type_AndroidContentContext, paramString));
     }
     for (;;)
@@ -620,14 +656,24 @@ public class PluginInstaller
       {
         long l1 = System.currentTimeMillis();
         paramFile = Dex2Oat.a();
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "dex2Oat targetISA = " + paramFile + " " + paramString + " " + localArrayList.size());
+        bool = QLog.isColorLevel();
+        Object localObject;
+        if (bool)
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("dex2Oat targetISA = ");
+          ((StringBuilder)localObject).append(paramFile);
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(" ");
+          ((StringBuilder)localObject).append(localArrayList.size());
+          QLog.d("plugin_tag", 2, ((StringBuilder)localObject).toString());
         }
         if (!TextUtils.isEmpty(paramFile))
         {
-          File localFile = new File(PluginUtils.getOptimizedDexPath(this.jdField_a_of_type_AndroidContentContext).getCanonicalPath());
-          long l2 = System.currentTimeMillis();
-          boolean bool = Dex2Oat.a(localArrayList, localFile, true, paramFile, new PluginInstaller.2(this));
+          localObject = new File(PluginUtils.getOptimizedDexPath(this.jdField_a_of_type_AndroidContentContext).getCanonicalPath());
+          l2 = System.currentTimeMillis();
+          bool = Dex2Oat.a(localArrayList, (File)localObject, true, paramFile, new PluginInstaller.2(this));
           l2 = System.currentTimeMillis() - l2;
           paramFile = new StringBuilder("dex2Oat ");
           paramFile.append(l2);
@@ -637,29 +683,33 @@ public class PluginInstaller
           paramFile.append(paramString);
           QLog.w("plugin_tag", 1, paramFile.toString());
           if (!bool) {
-            break label310;
+            break label349;
           }
           PluginStatisticsCollector.a(paramString, i, l2);
-          l2 = System.currentTimeMillis();
-          if (paramOnPluginSetupListener != null) {
-            paramOnPluginSetupListener.a(paramString, "pluginOatCost", l2 - l1);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("plugin_tag", 2, "install finish " + paramString);
-          }
         }
         else
         {
           PluginStatisticsCollector.a(paramString, 3, 0L);
-          continue;
         }
-        return;
+        long l2 = System.currentTimeMillis();
+        if (paramOnPluginSetupListener != null) {
+          paramOnPluginSetupListener.a(paramString, "pluginOatCost", l2 - l1);
+        }
+        if (QLog.isColorLevel())
+        {
+          paramFile = new StringBuilder();
+          paramFile.append("install finish ");
+          paramFile.append(paramString);
+          QLog.d("plugin_tag", 2, paramFile.toString());
+          return;
+        }
       }
       catch (Exception paramString)
       {
         paramString.printStackTrace();
       }
-      label310:
+      return;
+      label349:
       i = 2;
     }
   }
@@ -674,8 +724,12 @@ public class PluginInstaller
       throw new NullPointerException("specified PluginInfo is null");
     }
     String str1 = paramPluginInfo.mID;
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "installDownLoadPlugin." + str1);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("installDownLoadPlugin.");
+      ((StringBuilder)localObject1).append(str1);
+      QLog.d("plugin_tag", 2, ((StringBuilder)localObject1).toString());
     }
     if (!this.jdField_a_of_type_Boolean)
     {
@@ -684,172 +738,195 @@ public class PluginInstaller
       }
       return false;
     }
-    File localFile = new File(PluginUtils.getPluginInstallDir(this.jdField_a_of_type_AndroidContentContext), str1);
-    Object localObject = (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(str1);
-    int i;
-    if ((localObject != null) && (!paramPluginInfo.mMD5.equals(((PluginInfo)localObject).mMD5)))
-    {
-      i = 1;
-      label144:
-      if (!localFile.exists()) {
-        break label711;
-      }
+    Object localObject1 = new File(PluginUtils.getPluginInstallDir(this.jdField_a_of_type_AndroidContentContext), str1);
+    Object localObject2 = (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(str1);
+    boolean bool1;
+    if ((localObject2 != null) && (!paramPluginInfo.mMD5.equals(((PluginInfo)localObject2).mMD5))) {
+      bool1 = true;
+    } else {
+      bool1 = false;
     }
-    label706:
-    label711:
-    for (boolean bool = a((PluginInfo)localObject);; bool = false)
+    boolean bool3;
+    if (((File)localObject1).exists()) {
+      bool3 = a((PluginInfo)localObject2);
+    } else {
+      bool3 = false;
+    }
+    if ((bool3) && (!bool1))
     {
-      if ((bool) && (i == 0))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "plugin installed.");
-        }
-        if (paramOnPluginSetupListener == null) {
-          break;
-        }
-        paramOnPluginSetupListener.e(str1);
-        return false;
-        i = 0;
-        break label144;
-      }
-      if (!a())
-      {
-        if (paramOnPluginSetupListener == null) {
-          break;
-        }
-        paramOnPluginSetupListener.e(str1);
-        return false;
-      }
-      localObject = new File(new File(this.b), str1);
-      if (!PluginInfoUtil.a(paramPluginInfo, (File)localObject))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "install fail. download file invalid.");
-        }
-        ((File)localObject).delete();
-        if (paramOnPluginSetupListener == null) {
-          break;
-        }
-        paramOnPluginSetupListener.e(str1);
-        return false;
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "plugin installed.");
       }
       if (paramOnPluginSetupListener != null) {
-        paramOnPluginSetupListener.f(str1);
+        paramOnPluginSetupListener.e(str1);
       }
-      paramPluginInfo.mState = 3;
+      return false;
+    }
+    if (!a())
+    {
+      if (paramOnPluginSetupListener != null) {
+        paramOnPluginSetupListener.e(str1);
+      }
+      return false;
+    }
+    localObject2 = new File(new File(this.b), str1);
+    if (!PluginInfoUtil.a(paramPluginInfo, (File)localObject2))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "install fail. download file invalid.");
+      }
+      ((File)localObject2).delete();
+      if (paramOnPluginSetupListener != null) {
+        paramOnPluginSetupListener.e(str1);
+      }
+      return false;
+    }
+    if (paramOnPluginSetupListener != null) {
+      paramOnPluginSetupListener.f(str1);
+    }
+    paramPluginInfo.mState = 3;
+    this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
+    FileUtils.copyFile((File)localObject2, (File)localObject1);
+    if (!PluginInfoUtil.a(paramPluginInfo, (File)localObject1))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "install fail. copy file invalid.");
+      }
+      ((File)localObject1).delete();
+      if (paramOnPluginSetupListener != null) {
+        paramOnPluginSetupListener.b(false, str1);
+      }
       this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
-      FileUtils.a((File)localObject, localFile);
-      if (!PluginInfoUtil.a(paramPluginInfo, localFile))
+      return false;
+    }
+    String str2;
+    long l;
+    if (paramPluginInfo.mSubType == 1)
+    {
+      str2 = PluginIdUtil.convertQPluginId2QShadowId(paramPluginInfo.mID);
+      l = System.currentTimeMillis();
+      if ((QShadow.getInstance().preInstall(str2, (File)localObject1)) && (QShadow.getInstance().installPlugin(str2))) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      paramPluginInfo.costDex2Oat = (System.currentTimeMillis() - l);
+      if (!bool1)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "install fail. copy file invalid.");
-        }
-        localFile.delete();
+        ((File)localObject1).delete();
         if (paramOnPluginSetupListener != null) {
           paramOnPluginSetupListener.b(false, str1);
         }
         this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
         return false;
       }
-      String str2;
-      if (paramPluginInfo.mSubType == 1)
+    }
+    else if (paramPluginInfo.mSubType == 2)
+    {
+      l = System.currentTimeMillis();
+      bool3 = LoadCompactDynamicFeature.a().a(str1, (Application)this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+      paramPluginInfo.costDex2Oat = (System.currentTimeMillis() - l);
+      if (!bool3)
       {
-        str2 = PluginIdUtil.convertQPluginId2QShadowId(paramPluginInfo.mID);
-        if ((QShadow.getInstance().preInstall(str2, localFile)) && (QShadow.getInstance().installPlugin(str2))) {}
-        for (i = 1; i == 0; i = 0)
-        {
-          localFile.delete();
-          if (paramOnPluginSetupListener != null) {
-            paramOnPluginSetupListener.b(false, str1);
-          }
-          this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
-          return false;
+        ((File)localObject1).delete();
+        if (paramOnPluginSetupListener != null) {
+          paramOnPluginSetupListener.b(false, str1);
         }
+        this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
+        return false;
       }
-      for (;;)
+    }
+    else
+    {
+      try
       {
-        try
+        str2 = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, str1).getCanonicalPath();
+        str2 = PluginUtils.extractLibs(((File)localObject1).getCanonicalPath(), str2);
+        if (str2 != null)
         {
-          str2 = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, str1).getCanonicalPath();
-          str2 = PluginUtils.extractLibs(localFile.getCanonicalPath(), str2);
-          if (str2 == null) {
-            break label706;
-          }
-          QLog.d("plugin_tag", 1, "extractLibs " + str2);
-          i = 1;
-        }
-        catch (Throwable localThrowable)
-        {
-          QLog.d("plugin_tag", 1, "extractLibs ", localThrowable);
-          i = 1;
-          continue;
-          int j = 0;
-          continue;
-          if (!PluginManagerV2.a()) {
-            break label625;
-          }
-          a(str1, localFile, paramOnPluginSetupListener);
-        }
-        j = i;
-        if (i == 0)
-        {
-          if (!a(str1, localFile.getAbsolutePath())) {
-            j = 1;
-          }
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("extractLibs ");
+          localStringBuilder.append(str2);
+          QLog.d("plugin_tag", 1, localStringBuilder.toString());
         }
         else
         {
-          if (j == 0) {
-            continue;
-          }
-          localFile.delete();
-          if (paramOnPluginSetupListener != null) {
-            paramOnPluginSetupListener.b(false, str1);
-          }
-          this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
-          return false;
+          bool1 = false;
         }
-        label625:
-        paramPluginInfo.mState = 4;
-        paramPluginInfo.mInstalledPath = localFile.getAbsolutePath();
-        paramPluginInfo.mFingerPrint = a();
-        this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
-        a(paramPluginInfo);
-        if (((File)localObject).exists()) {
-          ((File)localObject).delete();
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "install finish.");
-        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.d("plugin_tag", 1, "extractLibs ", localThrowable);
+        bool1 = true;
+      }
+      boolean bool2 = bool1;
+      if (!bool1) {
+        bool2 = a(str1, ((File)localObject1).getAbsolutePath()) ^ true;
+      }
+      if (bool2)
+      {
+        ((File)localObject1).delete();
         if (paramOnPluginSetupListener != null) {
-          paramOnPluginSetupListener.b(true, str1);
+          paramOnPluginSetupListener.b(false, str1);
         }
-        return true;
-        i = 0;
+        this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
+        return false;
+      }
+      if (PluginManagerV2.a()) {
+        a(str1, (File)localObject1, paramOnPluginSetupListener);
       }
     }
+    paramPluginInfo.mState = 4;
+    paramPluginInfo.mInstalledPath = ((File)localObject1).getAbsolutePath();
+    paramPluginInfo.mFingerPrint = a();
+    this.jdField_a_of_type_JavaUtilHashMap.put(str1, paramPluginInfo);
+    a(paramPluginInfo);
+    if (((File)localObject2).exists()) {
+      ((File)localObject2).delete();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("plugin_tag", 2, "install finish.");
+    }
+    if (paramOnPluginSetupListener != null) {
+      paramOnPluginSetupListener.b(true, str1);
+    }
+    return true;
   }
   
   public boolean a(String paramString)
   {
-    if (!this.jdField_a_of_type_Boolean) {
+    boolean bool1 = this.jdField_a_of_type_Boolean;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
     paramString = (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    if ((paramString != null) && (paramString.mState == 4)) {}
-    for (boolean bool = true;; bool = false)
+    bool1 = bool2;
+    if (paramString != null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("plugin_tag", 2, "isPluginInstalled installed = " + bool);
+      bool1 = bool2;
+      if (paramString.mState == 4) {
+        bool1 = true;
       }
-      return bool;
     }
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("isPluginInstalled installed = ");
+      paramString.append(bool1);
+      QLog.d("plugin_tag", 2, paramString.toString());
+    }
+    return bool1;
   }
   
   public boolean a(String paramString, PluginInstaller.OnPluginSetupListener paramOnPluginSetupListener)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "installBuiltinPlugin." + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("installBuiltinPlugin.");
+      ((StringBuilder)localObject1).append(paramString);
+      QLog.d("plugin_tag", 2, ((StringBuilder)localObject1).toString());
     }
     if (!this.jdField_a_of_type_Boolean)
     {
@@ -870,9 +947,8 @@ public class PluginInstaller
     }
     Object localObject1 = new File(PluginUtils.getPluginInstallDir(this.jdField_a_of_type_AndroidContentContext), paramString);
     PluginInfo localPluginInfo2 = (PluginInfo)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-    boolean bool = false;
-    Object localObject3 = this.jdField_a_of_type_CooperationPluginBuiltinPluginManager.a(paramString);
-    if (localObject3 == null)
+    Object localObject5 = this.jdField_a_of_type_CooperationPluginBuiltinPluginManager.a(paramString);
+    if (localObject5 == null)
     {
       QLog.d("plugin_tag", 1, "plugin not builtin");
       if (paramOnPluginSetupListener != null) {
@@ -880,15 +956,19 @@ public class PluginInstaller
       }
       return false;
     }
-    if ((localObject3 != null) && (localPluginInfo2 != null) && (!((PluginInfo)localObject3).mMD5.equals(localPluginInfo2.mMD5))) {}
-    for (int i = 1;; i = 0)
+    if ((localObject5 != null) && (localPluginInfo2 != null) && (!((PluginInfo)localObject5).mMD5.equals(localPluginInfo2.mMD5))) {
+      i = 1;
+    } else {
+      i = 0;
+    }
+    boolean bool2;
+    if (((File)localObject1).exists()) {
+      bool2 = a(localPluginInfo2);
+    } else {
+      bool2 = false;
+    }
+    if ((bool2) && (i == 0))
     {
-      if (((File)localObject1).exists()) {
-        bool = a(localPluginInfo2);
-      }
-      if ((!bool) || (i != 0)) {
-        break;
-      }
       if (QLog.isColorLevel()) {
         QLog.d("plugin_tag", 2, "plugin already installed.");
       }
@@ -900,15 +980,20 @@ public class PluginInstaller
     if (paramOnPluginSetupListener != null) {
       paramOnPluginSetupListener.f(paramString);
     }
-    PluginInfo localPluginInfo1 = ((PluginInfo)localObject3).a();
+    PluginInfo localPluginInfo1 = ((PluginInfo)localObject5).a();
     localPluginInfo1.mState = 3;
     this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo1);
-    Object localObject5 = "";
-    Object localObject7;
-    if (((PluginInfo)localObject3).mSubType == 1)
+    int i = ((PluginInfo)localObject5).mSubType;
+    Object localObject3 = "";
+    long l1;
+    Object localObject9;
+    if (i == 1)
     {
-      localObject1 = PluginIdUtil.convertQPluginId2QShadowId(((PluginInfo)localObject3).mID);
-      if (!QShadow.getInstance().installPlugin((String)localObject1))
+      localObject1 = PluginIdUtil.convertQPluginId2QShadowId(((PluginInfo)localObject5).mID);
+      l1 = System.currentTimeMillis();
+      bool2 = QShadow.getInstance().installPlugin((String)localObject1);
+      localPluginInfo1.costDex2Oat = (System.currentTimeMillis() - l1);
+      if (!bool2)
       {
         if (paramOnPluginSetupListener != null) {
           paramOnPluginSetupListener.b(false, paramString);
@@ -916,15 +1001,169 @@ public class PluginInstaller
         this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo2);
         return false;
       }
-      localObject7 = QShadowRepository.getInstalledPlugin(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, "");
+      String str1 = QShadowRepository.getInstalledPlugin(this.jdField_a_of_type_AndroidContentContext, (String)localObject1, "");
       localObject5 = new File(Constant.getPluginInstalledPath(this.jdField_a_of_type_AndroidContentContext, (String)localObject1));
     }
-    for (;;)
+    else if (((PluginInfo)localObject5).mSubType == 2)
     {
-      localPluginInfo1.mLength = ((File)localObject5).length();
+      localObject5 = localObject3;
+      try
+      {
+        l1 = System.currentTimeMillis();
+        localObject5 = localObject3;
+        localObject3 = PluginUtils.extractPluginAndGetMd5Code(this.jdField_a_of_type_AndroidContentContext, paramString, (File)localObject1);
+        localObject5 = localObject3;
+        bool2 = LoadCompactDynamicFeature.a().a(paramString, (Application)this.jdField_a_of_type_AndroidContentContext.getApplicationContext());
+        try
+        {
+          localPluginInfo1.costDex2Oat = (System.currentTimeMillis() - l1);
+        }
+        catch (Exception localException3) {}
+        QLog.e("plugin_tag", 1, "install df plugin failed ", (Throwable)localObject6);
+      }
+      catch (Exception localException5)
+      {
+        bool2 = false;
+        localObject3 = localException3;
+        localObject6 = localException5;
+      }
+      localObject6 = localObject1;
+      localObject9 = localObject3;
+      if (!bool2)
+      {
+        if (paramOnPluginSetupListener != null) {
+          paramOnPluginSetupListener.b(false, paramString);
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo2);
+        return false;
+      }
+    }
+    else
+    {
+      l1 = System.currentTimeMillis();
+    }
+    try
+    {
+      String str2 = paramString.substring(0, paramString.indexOf(".apk"));
+      localObject9 = SoLoadCore.getReleasedSoFilePath(this.jdField_a_of_type_AndroidContentContext, str2);
+      localObject6 = localObject9;
+      if (localObject9 == null) {
+        localObject6 = SoLoadCore.releaseSo(this.jdField_a_of_type_AndroidContentContext, str2);
+      }
+      if (localObject6 != null) {
+        localObject6 = new File((String)localObject6);
+      }
+    }
+    catch (Exception localException4)
+    {
+      for (;;)
+      {
+        label639:
+        Object localObject4;
+        long l2;
+        int j;
+        boolean bool1;
+        Object localObject7;
+        localObject8 = localObject4;
+      }
+    }
+    try
+    {
+      localObject1 = localPluginInfo1.mMD5;
+      localObject3 = localObject1;
+      localObject1 = localObject6;
+    }
+    catch (Exception localException1)
+    {
+      Object localObject2 = localObject8;
+      break label639;
+    }
+    Object localObject6 = localObject3;
+    localObject3 = localObject6;
+    if (TextUtils.isEmpty((CharSequence)localObject6)) {
+      try
+      {
+        localObject3 = PluginUtils.extractPluginAndGetMd5Code(this.jdField_a_of_type_AndroidContentContext, paramString, (File)localObject1);
+      }
+      catch (Exception localException2)
+      {
+        float f = FileUtils.getAvailableInnernalMemorySize();
+        localObject9 = new StringBuilder();
+        ((StringBuilder)localObject9).append("extractPluginAndGetMd5Code failed installPath = ");
+        ((StringBuilder)localObject9).append(localObject1);
+        ((StringBuilder)localObject9).append(", leftSpace = ");
+        ((StringBuilder)localObject9).append(f);
+        QLog.d("plugin_tag", 1, ((StringBuilder)localObject9).toString(), localException2);
+        localObject4 = localObject6;
+      }
+    }
+    localObject6 = localPluginInfo1.mMD5;
+    if (QLog.isColorLevel())
+    {
+      localObject9 = new StringBuilder();
+      ((StringBuilder)localObject9).append("md5:");
+      ((StringBuilder)localObject9).append((String)localObject6);
+      ((StringBuilder)localObject9).append(" vs ");
+      ((StringBuilder)localObject9).append(localObject4);
+      QLog.d("plugin_tag", 2, ((StringBuilder)localObject9).toString());
+    }
+    if (localObject4.equals(localObject6))
+    {
+      l2 = System.currentTimeMillis();
+      if (paramOnPluginSetupListener != null) {
+        paramOnPluginSetupListener.a(paramString, "pluginApkCost", l2 - l1);
+      }
+      try
+      {
+        localObject6 = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, paramString).getCanonicalPath();
+        l1 = System.currentTimeMillis();
+        localObject6 = PluginUtils.extractLibs(((File)localObject1).getCanonicalPath(), (String)localObject6);
+        l2 = System.currentTimeMillis();
+        if (paramOnPluginSetupListener != null) {
+          paramOnPluginSetupListener.a(paramString, "pluginLibCost", l2 - l1);
+        }
+        if (localObject6 != null)
+        {
+          localObject9 = new StringBuilder();
+          ((StringBuilder)localObject9).append("extractLibs ");
+          ((StringBuilder)localObject9).append((String)localObject6);
+          QLog.d("plugin_tag", 1, ((StringBuilder)localObject9).toString());
+        }
+        else
+        {
+          i = 0;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        QLog.d("plugin_tag", 1, "extractLibs ", localThrowable);
+        i = 1;
+      }
+      j = i;
+      if (i == 0) {
+        bool1 = a(paramString, ((File)localObject1).getAbsolutePath()) ^ true;
+      }
+      if (bool1)
+      {
+        ((File)localObject1).delete();
+        if (paramOnPluginSetupListener != null) {
+          paramOnPluginSetupListener.b(false, paramString);
+        }
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo2);
+        return false;
+      }
+      localObject7 = localObject1;
+      localObject9 = localObject4;
+      if (PluginManagerV2.a())
+      {
+        a(paramString, (File)localObject1, paramOnPluginSetupListener);
+        localObject9 = localObject4;
+        localObject7 = localObject1;
+      }
+      localPluginInfo1.mLength = localObject7.length();
       localPluginInfo1.mState = 4;
-      localPluginInfo1.mInstalledPath = ((File)localObject5).getAbsolutePath();
-      localPluginInfo1.mMD5 = ((String)localObject7);
+      localPluginInfo1.mInstalledPath = localObject7.getAbsolutePath();
+      localPluginInfo1.mMD5 = ((String)localObject9);
       localPluginInfo1.mFingerPrint = a();
       this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo1);
       a(localPluginInfo1);
@@ -935,130 +1174,12 @@ public class PluginInstaller
         paramOnPluginSetupListener.b(true, paramString);
       }
       return true;
-      long l1 = System.currentTimeMillis();
-      try
-      {
-        localObject7 = paramString.substring(0, paramString.indexOf(".apk"));
-        localObject3 = SoLoadCore.getReleasedSoFilePath(this.jdField_a_of_type_AndroidContentContext, (String)localObject7);
-        if (localObject3 != null) {
-          break label962;
-        }
-        localObject3 = SoLoadCore.releaseSo(this.jdField_a_of_type_AndroidContentContext, (String)localObject7);
-      }
-      catch (Exception localException3)
-      {
-        for (;;)
-        {
-          continue;
-        }
-      }
-      if (localObject3 == null) {
-        break label959;
-      }
-      localObject3 = new File((String)localObject3);
-      try
-      {
-        localObject7 = localPluginInfo1.mMD5;
-        localObject1 = localObject3;
-        localObject5 = localObject7;
-      }
-      catch (Exception localException1)
-      {
-        for (;;)
-        {
-          Object localObject4;
-          Object localObject6;
-          Object localObject2 = localException3;
-        }
-      }
-      localObject3 = localObject5;
-      if (TextUtils.isEmpty((CharSequence)localObject5)) {}
-      try
-      {
-        localObject3 = PluginUtils.extractPluginAndGetMd5Code(this.jdField_a_of_type_AndroidContentContext, paramString, (File)localObject1);
-        localObject5 = localPluginInfo1.mMD5;
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "md5:" + (String)localObject5 + " vs " + (String)localObject3);
-        }
-        bool = ((String)localObject3).equals(localObject5);
-        if ((0 == 0) && (bool))
-        {
-          long l2 = System.currentTimeMillis();
-          if (paramOnPluginSetupListener != null) {
-            paramOnPluginSetupListener.a(paramString, "pluginApkCost", l2 - l1);
-          }
-          i = 0;
-          try
-          {
-            localObject5 = PluginUtils.getPluginLibPath(this.jdField_a_of_type_AndroidContentContext, paramString).getCanonicalPath();
-            l1 = System.currentTimeMillis();
-            localObject5 = PluginUtils.extractLibs(((File)localObject1).getCanonicalPath(), (String)localObject5);
-            l2 = System.currentTimeMillis();
-            if (paramOnPluginSetupListener != null) {
-              paramOnPluginSetupListener.a(paramString, "pluginLibCost", l2 - l1);
-            }
-            if (localObject5 != null)
-            {
-              QLog.d("plugin_tag", 1, "extractLibs " + (String)localObject5);
-              i = 1;
-            }
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              float f;
-              QLog.d("plugin_tag", 1, "extractLibs ", localThrowable);
-              i = 1;
-              continue;
-              int j = 0;
-            }
-          }
-          j = i;
-          if (i == 0)
-          {
-            if (!a(paramString, ((File)localObject1).getAbsolutePath())) {
-              j = 1;
-            }
-          }
-          else
-          {
-            if (j == 0) {
-              break label912;
-            }
-            ((File)localObject1).delete();
-            if (paramOnPluginSetupListener != null) {
-              paramOnPluginSetupListener.b(false, paramString);
-            }
-            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo2);
-            return false;
-          }
-        }
-      }
-      catch (Exception localException2)
-      {
-        for (;;)
-        {
-          f = FileUtils.a();
-          QLog.d("plugin_tag", 1, "extractPluginAndGetMd5Code failed installPath = " + localObject1 + ", leftSpace = " + f, localException2);
-          localObject4 = localObject5;
-        }
-        if (paramOnPluginSetupListener != null) {
-          paramOnPluginSetupListener.b(false, paramString);
-        }
-        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo2);
-        return false;
-      }
-      label912:
-      localObject7 = localObject4;
-      localObject6 = localObject1;
-      if (PluginManagerV2.a())
-      {
-        a(paramString, (File)localObject1, paramOnPluginSetupListener);
-        localObject7 = localObject4;
-        localObject6 = localObject1;
-      }
     }
+    if (paramOnPluginSetupListener != null) {
+      paramOnPluginSetupListener.b(false, paramString);
+    }
+    this.jdField_a_of_type_JavaUtilHashMap.put(paramString, localPluginInfo2);
+    return false;
   }
   
   void b(PluginInfo paramPluginInfo)
@@ -1076,40 +1197,52 @@ public class PluginInstaller
   public boolean b(PluginInfo paramPluginInfo, PluginInstaller.OnPluginSetupListener paramOnPluginSetupListener)
   {
     String str = paramPluginInfo.mID;
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "doDex2OatPlugin." + str);
-    }
-    PluginInfo localPluginInfo = a(str);
-    if ((localPluginInfo != null) && (localPluginInfo.mState == 4)) {
-      QLog.d("plugin_tag", 1, "doDex2OatPlugin. already " + str);
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      if (paramOnPluginSetupListener != null) {
-        paramOnPluginSetupListener.b(true, str);
-      }
-      return true;
-      if (PluginInfoUtil.a(paramPluginInfo, this.jdField_a_of_type_AndroidContentContext))
-      {
-        QLog.d("plugin_tag", 1, "doDex2OatPlugin. isPluginRunning " + str);
-      }
-      else
-      {
-        a(str, new File(PluginUtils.getPluginInstallDir(this.jdField_a_of_type_AndroidContentContext), str), paramOnPluginSetupListener);
-        paramPluginInfo.mState = 4;
-        paramPluginInfo.mFingerPrint = a();
-        a(paramPluginInfo);
-        if (QLog.isColorLevel()) {
-          QLog.d("plugin_tag", 2, "doDex2OatPlugin finish");
-        }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("doDex2OatPlugin.");
+      ((StringBuilder)localObject).append(str);
+      QLog.d("plugin_tag", 2, ((StringBuilder)localObject).toString());
+    }
+    Object localObject = a(str);
+    if ((localObject != null) && (((PluginInfo)localObject).mState == 4))
+    {
+      paramPluginInfo = new StringBuilder();
+      paramPluginInfo.append("doDex2OatPlugin. already ");
+      paramPluginInfo.append(str);
+      QLog.d("plugin_tag", 1, paramPluginInfo.toString());
+    }
+    else if (PluginInfoUtil.a(paramPluginInfo, this.jdField_a_of_type_AndroidContentContext))
+    {
+      paramPluginInfo = new StringBuilder();
+      paramPluginInfo.append("doDex2OatPlugin. isPluginRunning ");
+      paramPluginInfo.append(str);
+      QLog.d("plugin_tag", 1, paramPluginInfo.toString());
+    }
+    else
+    {
+      a(str, new File(PluginUtils.getPluginInstallDir(this.jdField_a_of_type_AndroidContentContext), str), paramOnPluginSetupListener);
+      paramPluginInfo.mState = 4;
+      paramPluginInfo.mFingerPrint = a();
+      a(paramPluginInfo);
+      if (QLog.isColorLevel()) {
+        QLog.d("plugin_tag", 2, "doDex2OatPlugin finish");
       }
     }
+    if (paramOnPluginSetupListener != null) {
+      paramOnPluginSetupListener.b(true, str);
+    }
+    return true;
   }
   
   public boolean b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("plugin_tag", 2, "uninstallPlugin." + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("uninstallPlugin.");
+      localStringBuilder.append(paramString);
+      QLog.d("plugin_tag", 2, localStringBuilder.toString());
     }
     if (!this.jdField_a_of_type_Boolean) {
       return false;
@@ -1119,23 +1252,24 @@ public class PluginInstaller
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 66816)
     {
-    default: 
-      return false;
-    case 66816: 
+      if (i != 67072) {
+        return false;
+      }
       paramMessage = (Pair)paramMessage.obj;
-      c((PluginInfo)paramMessage.first, (PluginInstaller.OnPluginSetupListener)paramMessage.second);
+      b((PluginInfo)paramMessage.first, (PluginInstaller.OnPluginSetupListener)paramMessage.second);
       return true;
     }
     paramMessage = (Pair)paramMessage.obj;
-    b((PluginInfo)paramMessage.first, (PluginInstaller.OnPluginSetupListener)paramMessage.second);
+    c((PluginInfo)paramMessage.first, (PluginInstaller.OnPluginSetupListener)paramMessage.second);
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.plugin.PluginInstaller
  * JD-Core Version:    0.7.0.1
  */

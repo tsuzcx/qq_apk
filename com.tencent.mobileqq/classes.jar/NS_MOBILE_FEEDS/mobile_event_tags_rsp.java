@@ -31,14 +31,15 @@ public final class mobile_event_tags_rsp
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.event_tags != null) {
-      paramJceOutputStream.write(this.event_tags, 0);
+    ArrayList localArrayList = this.event_tags;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_event_tags_rsp
  * JD-Core Version:    0.7.0.1
  */

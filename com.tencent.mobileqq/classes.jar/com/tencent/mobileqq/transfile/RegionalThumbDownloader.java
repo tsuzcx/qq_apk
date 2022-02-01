@@ -44,11 +44,10 @@ public class RegionalThumbDownloader
     }
     catch (MalformedURLException paramString)
     {
-      for (;;)
-      {
-        paramString = null;
-      }
+      label82:
+      break label82;
     }
+    return null;
   }
   
   public static URL generateURLForNew(String paramString, int paramInt1, int paramInt2)
@@ -58,41 +57,34 @@ public class RegionalThumbDownloader
   
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
-    paramFile = null;
-    paramURLDrawableHandler = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    if (paramURLDrawableHandler != null) {
-      if (!paramURLDrawableHandler.isRegionThumbUseNewDecoder) {
-        break label66;
-      }
-    }
-    label66:
-    for (paramFile = new NewRegionalThumbDecoder();; paramFile = new RegionalThumbDecoder())
+    paramFile = LocalMediaInfo.parseUrl(paramDownloadParams.url);
+    if (paramFile != null)
     {
+      if (paramFile.isRegionThumbUseNewDecoder) {
+        paramFile = new NewRegionalThumbDecoder();
+      } else {
+        paramFile = new RegionalThumbDecoder();
+      }
       paramURLDrawableHandler = paramFile.getBitmap(paramDownloadParams.url);
       paramFile = paramURLDrawableHandler;
       if (paramURLDrawableHandler != null)
       {
         paramDownloadParams.outWidth = paramURLDrawableHandler.getWidth();
         paramDownloadParams.outHeight = paramURLDrawableHandler.getHeight();
-        paramFile = paramURLDrawableHandler;
+        return paramURLDrawableHandler;
       }
-      return paramFile;
     }
+    else
+    {
+      paramFile = null;
+    }
+    return paramFile;
   }
   
   public boolean hasDiskFile(DownloadParams paramDownloadParams)
   {
-    boolean bool2 = false;
     paramDownloadParams = LocalMediaInfo.parseUrl(paramDownloadParams.url);
-    boolean bool1 = bool2;
-    if (paramDownloadParams != null)
-    {
-      bool1 = bool2;
-      if (new File(paramDownloadParams.path).exists()) {
-        bool1 = true;
-      }
-    }
-    return bool1;
+    return (paramDownloadParams != null) && (new File(paramDownloadParams.path).exists());
   }
   
   public File loadImageFile(DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
@@ -110,7 +102,7 @@ public class RegionalThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.RegionalThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

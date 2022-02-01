@@ -2,22 +2,21 @@ package com.tencent.biz.pubaccount.serviceAccountFolder;
 
 import android.content.res.Resources;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.subscript.SubscriptionFeed;
-import com.tencent.biz.pubaccount.subscript.SubscriptionFeedItem;
+import com.tencent.biz.pubaccount.accountdetail.api.IPublicAccountDetail;
+import com.tencent.biz.pubaccount.api.IPublicAccountDataManager;
 import com.tencent.biz.pubaccount.troopbarassit.TroopBarAssistantManager;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.imcore.message.ConversationFacade;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.recent.TimeManager;
 import com.tencent.mobileqq.activity.recent.data.RecentItemPublicAccountChatMsgData;
-import com.tencent.mobileqq.app.PublicAccountDataManager;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.data.AccountDetail;
 import com.tencent.mobileqq.data.DraftSummaryInfo;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.data.PublicAccountInfo;
 import com.tencent.mobileqq.data.RecentUser;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.SubscriptionFeed;
+import com.tencent.mobileqq.kandian.repo.feeds.entity.SubscriptionFeedItem;
 import com.tencent.mobileqq.persistence.notColumn;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
@@ -48,8 +47,38 @@ public class ServiceAccountFolderFeed
   {
     this.jdField_a_of_type_Int = 0;
     this.jdField_b_of_type_Boolean = true;
-    this.jdField_d_of_type_Int = BaseApplicationImpl.getApplication().getResources().getColor(2131167145);
+    this.jdField_d_of_type_Int = BaseApplicationImpl.getApplication().getResources().getColor(2131167170);
     this.jdField_b_of_type_Long = 0L;
+  }
+  
+  public static ServiceAccountFolderFeed a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
+  {
+    RecentItemPublicAccountChatMsgData localRecentItemPublicAccountChatMsgData = new RecentItemPublicAccountChatMsgData(paramRecentUser);
+    localRecentItemPublicAccountChatMsgData.a(paramQQAppInterface, paramQQAppInterface.getApplication());
+    paramRecentUser = new ServiceAccountFolderFeed();
+    paramRecentUser.jdField_a_of_type_Boolean = true;
+    paramRecentUser.jdField_a_of_type_JavaLangString = localRecentItemPublicAccountChatMsgData.getRecentUserUin();
+    paramRecentUser.jdField_b_of_type_Int = localRecentItemPublicAccountChatMsgData.mUnreadNum;
+    paramRecentUser.jdField_c_of_type_Int = localRecentItemPublicAccountChatMsgData.mAuthenIconId;
+    paramRecentUser.jdField_a_of_type_Long = localRecentItemPublicAccountChatMsgData.mDisplayTime;
+    paramRecentUser.jdField_b_of_type_JavaLangString = localRecentItemPublicAccountChatMsgData.mShowTime;
+    paramRecentUser.jdField_b_of_type_Long = localRecentItemPublicAccountChatMsgData.getLastMsgTime();
+    paramRecentUser.jdField_c_of_type_JavaLangString = localRecentItemPublicAccountChatMsgData.mTitleName;
+    paramRecentUser.jdField_a_of_type_JavaLangCharSequence = localRecentItemPublicAccountChatMsgData.mLastMsg;
+    paramRecentUser.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramQQAppInterface.getMessageFacade().b(paramRecentUser.jdField_a_of_type_JavaLangString, 1008);
+    paramRecentUser.jdField_d_of_type_JavaLangString = ServiceAccountFolderManager.a(paramQQAppInterface, paramRecentUser.jdField_a_of_type_JavaLangString);
+    paramRecentUser.jdField_e_of_type_JavaLangString = localRecentItemPublicAccountChatMsgData.mReportKeyBytesOacMsgxtend;
+    a(paramQQAppInterface, paramRecentUser);
+    b(paramQQAppInterface, paramRecentUser);
+    c(paramQQAppInterface, paramRecentUser);
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("createFromRecentUser->");
+      paramQQAppInterface.append(paramRecentUser.toString());
+      QLog.d("ServiceAccountFolderFeed", 2, paramQQAppInterface.toString());
+    }
+    return paramRecentUser;
   }
   
   public static ServiceAccountFolderFeed a(QQAppInterface paramQQAppInterface, SubscriptionFeed paramSubscriptionFeed)
@@ -75,88 +104,64 @@ public class ServiceAccountFolderFeed
     a(paramQQAppInterface, localServiceAccountFolderFeed);
     b(paramQQAppInterface, localServiceAccountFolderFeed);
     c(paramQQAppInterface, localServiceAccountFolderFeed);
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeed", 2, "createFromSubscriptionFeed->" + localServiceAccountFolderFeed.toString());
-    }
-    return localServiceAccountFolderFeed;
-  }
-  
-  public static ServiceAccountFolderFeed a(QQAppInterface paramQQAppInterface, RecentUser paramRecentUser)
-  {
-    paramRecentUser = new RecentItemPublicAccountChatMsgData(paramRecentUser);
-    paramRecentUser.a(paramQQAppInterface, paramQQAppInterface.getApplication());
-    ServiceAccountFolderFeed localServiceAccountFolderFeed = new ServiceAccountFolderFeed();
-    localServiceAccountFolderFeed.jdField_a_of_type_Boolean = true;
-    localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString = paramRecentUser.getRecentUserUin();
-    localServiceAccountFolderFeed.jdField_b_of_type_Int = paramRecentUser.mUnreadNum;
-    localServiceAccountFolderFeed.jdField_c_of_type_Int = paramRecentUser.mAuthenIconId;
-    localServiceAccountFolderFeed.jdField_a_of_type_Long = paramRecentUser.mDisplayTime;
-    localServiceAccountFolderFeed.jdField_b_of_type_JavaLangString = paramRecentUser.mShowTime;
-    localServiceAccountFolderFeed.jdField_b_of_type_Long = paramRecentUser.getLastMsgTime();
-    localServiceAccountFolderFeed.jdField_c_of_type_JavaLangString = paramRecentUser.mTitleName;
-    localServiceAccountFolderFeed.jdField_a_of_type_JavaLangCharSequence = paramRecentUser.mLastMsg;
-    localServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord = paramQQAppInterface.getMessageFacade().b(localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, 1008);
-    localServiceAccountFolderFeed.jdField_d_of_type_JavaLangString = ServiceAccountFolderManager.a(paramQQAppInterface, localServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
-    localServiceAccountFolderFeed.jdField_e_of_type_JavaLangString = paramRecentUser.mReportKeyBytesOacMsgxtend;
-    a(paramQQAppInterface, localServiceAccountFolderFeed);
-    b(paramQQAppInterface, localServiceAccountFolderFeed);
-    c(paramQQAppInterface, localServiceAccountFolderFeed);
-    if (QLog.isColorLevel()) {
-      QLog.d("ServiceAccountFolderFeed", 2, "createFromRecentUser->" + localServiceAccountFolderFeed.toString());
+    if (QLog.isColorLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("createFromSubscriptionFeed->");
+      paramQQAppInterface.append(localServiceAccountFolderFeed.toString());
+      QLog.d("ServiceAccountFolderFeed", 2, paramQQAppInterface.toString());
     }
     return localServiceAccountFolderFeed;
   }
   
   private static void a(QQAppInterface paramQQAppInterface, ServiceAccountFolderFeed paramServiceAccountFolderFeed)
   {
-    paramQQAppInterface = (PublicAccountDataManager)paramQQAppInterface.getManager(QQManagerFactory.PUBLICACCOUNTDATA_MANAGER);
+    paramQQAppInterface = (IPublicAccountDataManager)paramQQAppInterface.getRuntimeService(IPublicAccountDataManager.class, "all");
     if (paramQQAppInterface != null)
     {
-      PublicAccountInfo localPublicAccountInfo = paramQQAppInterface.b(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
-      if (localPublicAccountInfo == null) {
-        break label60;
+      PublicAccountInfo localPublicAccountInfo = (PublicAccountInfo)paramQQAppInterface.findPublicAccountInfo(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+      if (localPublicAccountInfo != null)
+      {
+        if (!TextUtils.isEmpty(localPublicAccountInfo.name)) {
+          paramServiceAccountFolderFeed.jdField_c_of_type_JavaLangString = localPublicAccountInfo.name;
+        }
+        paramServiceAccountFolderFeed.jdField_b_of_type_Boolean = localPublicAccountInfo.isVisible();
+        paramServiceAccountFolderFeed.jdField_c_of_type_Int = 0;
+        return;
       }
-      if (!TextUtils.isEmpty(localPublicAccountInfo.name)) {
-        paramServiceAccountFolderFeed.jdField_c_of_type_JavaLangString = localPublicAccountInfo.name;
+      paramQQAppInterface = paramQQAppInterface.findAccountDetailInfo(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
+      if (paramQQAppInterface != null)
+      {
+        if (!TextUtils.isEmpty(paramQQAppInterface.getName())) {
+          paramServiceAccountFolderFeed.jdField_c_of_type_JavaLangString = paramQQAppInterface.getName();
+        }
+        int i = paramQQAppInterface.getShowFlag();
+        boolean bool = true;
+        if (1 != i) {
+          bool = false;
+        }
+        paramServiceAccountFolderFeed.jdField_b_of_type_Boolean = bool;
+        paramServiceAccountFolderFeed.jdField_c_of_type_Int = 0;
       }
-      paramServiceAccountFolderFeed.jdField_b_of_type_Boolean = localPublicAccountInfo.isVisible();
-      paramServiceAccountFolderFeed.jdField_c_of_type_Int = 0;
-    }
-    label60:
-    do
-    {
-      return;
-      paramQQAppInterface = paramQQAppInterface.a(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString);
-    } while (paramQQAppInterface == null);
-    if (!TextUtils.isEmpty(paramQQAppInterface.name)) {
-      paramServiceAccountFolderFeed.jdField_c_of_type_JavaLangString = paramQQAppInterface.name;
-    }
-    if (1 == paramQQAppInterface.showFlag) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramServiceAccountFolderFeed.jdField_b_of_type_Boolean = bool;
-      paramServiceAccountFolderFeed.jdField_c_of_type_Int = 0;
-      return;
     }
   }
   
   private static void b(QQAppInterface paramQQAppInterface, ServiceAccountFolderFeed paramServiceAccountFolderFeed)
   {
     int i = paramQQAppInterface.getConversationFacade().g(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, 1008);
-    if (paramServiceAccountFolderFeed.jdField_b_of_type_Int > 0)
+    int j = paramServiceAccountFolderFeed.jdField_b_of_type_Int;
+    if (j > 0)
     {
-      if ((paramServiceAccountFolderFeed.jdField_b_of_type_Int != 1) || (i <= 0)) {
-        break label40;
+      if ((j == 1) && (i > 0))
+      {
+        paramServiceAccountFolderFeed.jdField_a_of_type_Int = 2;
+        return;
       }
-      paramServiceAccountFolderFeed.jdField_a_of_type_Int = 2;
-    }
-    label40:
-    do
-    {
-      return;
       paramServiceAccountFolderFeed.jdField_a_of_type_Int = 1;
-    } while (i <= 0);
-    paramServiceAccountFolderFeed.jdField_b_of_type_Int -= 1;
+      if (i > 0) {
+        paramServiceAccountFolderFeed.jdField_b_of_type_Int -= 1;
+      }
+    }
   }
   
   private static void c(QQAppInterface paramQQAppInterface, ServiceAccountFolderFeed paramServiceAccountFolderFeed)
@@ -168,50 +173,93 @@ public class ServiceAccountFolderFeed
       paramQQAppInterface = paramQQAppInterface.getDraftSummaryInfo(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, 1008);
       if ((paramQQAppInterface != null) && (!TextUtils.isEmpty(paramQQAppInterface.getSummary())))
       {
-        if (paramServiceAccountFolderFeed.jdField_a_of_type_Long != paramQQAppInterface.getTime()) {
-          break label58;
+        if (paramServiceAccountFolderFeed.jdField_a_of_type_Long == paramQQAppInterface.getTime())
+        {
+          paramServiceAccountFolderFeed.jdField_e_of_type_Int = 4;
+          return;
         }
-        paramServiceAccountFolderFeed.jdField_e_of_type_Int = 4;
+        if ((paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord == null) || (paramQQAppInterface.getTime() > paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time))
+        {
+          paramServiceAccountFolderFeed.jdField_e_of_type_Int = 4;
+          paramServiceAccountFolderFeed.jdField_a_of_type_Long = paramQQAppInterface.getTime();
+          paramServiceAccountFolderFeed.jdField_b_of_type_JavaLangString = TimeManager.a().a(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, paramQQAppInterface.getTime());
+          paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangCharSequence = paramQQAppInterface.getSummary();
+        }
       }
     }
-    label58:
-    while ((paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord != null) && (paramQQAppInterface.getTime() <= paramServiceAccountFolderFeed.jdField_a_of_type_ComTencentMobileqqDataMessageRecord.time)) {
-      return;
-    }
-    paramServiceAccountFolderFeed.jdField_e_of_type_Int = 4;
-    paramServiceAccountFolderFeed.jdField_a_of_type_Long = paramQQAppInterface.getTime();
-    paramServiceAccountFolderFeed.jdField_b_of_type_JavaLangString = TimeManager.a().a(paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangString, paramQQAppInterface.getTime());
-    paramServiceAccountFolderFeed.jdField_a_of_type_JavaLangCharSequence = paramQQAppInterface.getSummary();
   }
   
   public final boolean a()
   {
-    return (this.jdField_a_of_type_Int == 1) || (this.jdField_a_of_type_Int == 4);
+    int i = this.jdField_a_of_type_Int;
+    if (i != 1) {
+      return i == 4;
+    }
+    return true;
   }
   
   public String toString()
   {
-    StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("ServiceAccountFolderFeed content->");
-    localStringBuilder.append("mIsCreateFromMessageTab:" + this.jdField_a_of_type_Boolean);
-    localStringBuilder.append(", mUin:" + this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append(", mUnreadFlag:" + this.jdField_a_of_type_Int);
-    localStringBuilder.append(", mUnreadNum:" + this.jdField_b_of_type_Int);
-    localStringBuilder.append(", mAuthenIconId:" + this.jdField_c_of_type_Int);
-    localStringBuilder.append(", mShowTime:" + this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append(", mTitleName:" + this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append(", mMsgBrief:" + this.jdField_a_of_type_JavaLangCharSequence);
-    localStringBuilder.append(", mMsgExtraInfo:" + this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append(", mDraft:" + this.jdField_b_of_type_JavaLangCharSequence);
-    localStringBuilder.append(", mStatus:" + this.jdField_e_of_type_Int);
-    localStringBuilder.append(", mDisplayTime:" + this.jdField_a_of_type_Long);
-    localStringBuilder.append(", mOperationTime:" + this.jdField_b_of_type_Long);
-    return localStringBuilder.toString();
+    StringBuilder localStringBuilder1 = new StringBuilder();
+    localStringBuilder1.append("ServiceAccountFolderFeed content->");
+    StringBuilder localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append("mIsCreateFromMessageTab:");
+    localStringBuilder2.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mUin:");
+    localStringBuilder2.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mUnreadFlag:");
+    localStringBuilder2.append(this.jdField_a_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mUnreadNum:");
+    localStringBuilder2.append(this.jdField_b_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mAuthenIconId:");
+    localStringBuilder2.append(this.jdField_c_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mShowTime:");
+    localStringBuilder2.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mTitleName:");
+    localStringBuilder2.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mMsgBrief:");
+    localStringBuilder2.append(this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mMsgExtraInfo:");
+    localStringBuilder2.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mDraft:");
+    localStringBuilder2.append(this.jdField_b_of_type_JavaLangCharSequence);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mStatus:");
+    localStringBuilder2.append(this.jdField_e_of_type_Int);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mDisplayTime:");
+    localStringBuilder2.append(this.jdField_a_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    localStringBuilder2 = new StringBuilder();
+    localStringBuilder2.append(", mOperationTime:");
+    localStringBuilder2.append(this.jdField_b_of_type_Long);
+    localStringBuilder1.append(localStringBuilder2.toString());
+    return localStringBuilder1.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.pubaccount.serviceAccountFolder.ServiceAccountFolderFeed
  * JD-Core Version:    0.7.0.1
  */

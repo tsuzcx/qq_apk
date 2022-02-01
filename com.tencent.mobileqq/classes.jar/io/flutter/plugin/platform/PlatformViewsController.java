@@ -69,7 +69,7 @@ public class PlatformViewsController
     int i = 0;
     int j;
     Object localObject;
-    if (i < this.overlayLayerViews.size())
+    while (i < this.overlayLayerViews.size())
     {
       j = this.overlayLayerViews.keyAt(i);
       localObject = (FlutterImageView)this.overlayLayerViews.valueAt(i);
@@ -78,30 +78,26 @@ public class PlatformViewsController
         ((FlutterView)this.flutterView).attachOverlaySurfaceToRender((FlutterImageView)localObject);
         paramBoolean &= ((FlutterImageView)localObject).acquireLatestImage();
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break;
         if (!this.flutterViewConvertedToImageView) {
           ((FlutterImageView)localObject).detachFromRenderer();
         }
         ((FlutterImageView)localObject).setVisibility(8);
       }
+      i += 1;
     }
     i = 0;
-    if (i < this.platformViewParent.size())
+    while (i < this.platformViewParent.size())
     {
       j = this.platformViewParent.keyAt(i);
       localObject = (View)this.platformViewParent.get(j);
       if ((paramBoolean) && (this.currentFrameUsedPlatformViewIds.contains(Integer.valueOf(j)))) {
         ((View)localObject).setVisibility(0);
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
+      } else {
         ((View)localObject).setVisibility(8);
       }
+      i += 1;
     }
   }
   
@@ -133,10 +129,11 @@ public class PlatformViewsController
   
   private void lockInputConnection(@NonNull VirtualDisplayController paramVirtualDisplayController)
   {
-    if (this.textInputPlugin == null) {
+    TextInputPlugin localTextInputPlugin = this.textInputPlugin;
+    if (localTextInputPlugin == null) {
       return;
     }
-    this.textInputPlugin.lockPlatformViewInputConnection();
+    localTextInputPlugin.lockPlatformViewInputConnection();
     paramVirtualDisplayController.onInputConnectionLocked();
   }
   
@@ -191,21 +188,31 @@ public class PlatformViewsController
   {
     double d = getDisplayDensity();
     Double.isNaN(d);
-    return (int)Math.round(d * paramDouble);
+    Double.isNaN(d);
+    return (int)Math.round(paramDouble * d);
   }
   
   private void unlockInputConnection(@NonNull VirtualDisplayController paramVirtualDisplayController)
   {
-    if (this.textInputPlugin == null) {
+    TextInputPlugin localTextInputPlugin = this.textInputPlugin;
+    if (localTextInputPlugin == null) {
       return;
     }
-    this.textInputPlugin.unlockPlatformViewInputConnection();
+    localTextInputPlugin.unlockPlatformViewInputConnection();
     paramVirtualDisplayController.onInputConnectionUnlocked();
   }
   
   private static boolean validateDirection(int paramInt)
   {
-    return (paramInt == 0) || (paramInt == 1);
+    boolean bool = true;
+    if (paramInt != 0)
+    {
+      if (paramInt == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   private void validateVirtualDisplayDimensions(int paramInt1, int paramInt2)
@@ -266,8 +273,10 @@ public class PlatformViewsController
   
   public boolean checkInputConnectionProxy(@Nullable View paramView)
   {
-    if (paramView == null) {}
-    while (!this.contextToPlatformView.containsKey(paramView.getContext())) {
+    if (paramView == null) {
+      return false;
+    }
+    if (!this.contextToPlatformView.containsKey(paramView.getContext())) {
       return false;
     }
     View localView = (View)this.contextToPlatformView.get(paramView.getContext());
@@ -365,10 +374,11 @@ public class PlatformViewsController
       {
         if (localPlatformView.getView().getParent() == null)
         {
-          FlutterMutatorView localFlutterMutatorView = new FlutterMutatorView(this.context, this.context.getResources().getDisplayMetrics().density, this.androidTouchProcessor);
-          this.platformViewParent.put(paramInt, localFlutterMutatorView);
-          localFlutterMutatorView.addView(localPlatformView.getView());
-          ((FlutterView)this.flutterView).addView(localFlutterMutatorView);
+          Object localObject = this.context;
+          localObject = new FlutterMutatorView((Context)localObject, ((Context)localObject).getResources().getDisplayMetrics().density, this.androidTouchProcessor);
+          this.platformViewParent.put(paramInt, localObject);
+          ((FlutterMutatorView)localObject).addView(localPlatformView.getView());
+          ((FlutterView)this.flutterView).addView((View)localObject);
           return;
         }
         throw new IllegalStateException("The Android view returned from PlatformView#getView() was already added to a parent view.");
@@ -428,18 +438,23 @@ public class PlatformViewsController
   public void onEndFrame()
   {
     FlutterView localFlutterView = (FlutterView)this.flutterView;
-    if ((this.flutterViewConvertedToImageView) && (this.currentFrameUsedPlatformViewIds.isEmpty()))
+    boolean bool1 = this.flutterViewConvertedToImageView;
+    boolean bool2 = false;
+    if ((bool1) && (this.currentFrameUsedPlatformViewIds.isEmpty()))
     {
       this.flutterViewConvertedToImageView = false;
       localFlutterView.revertImageView(new PlatformViewsController.2(this));
       return;
     }
-    if ((this.flutterViewConvertedToImageView) && (localFlutterView.acquireLatestImageViewFrame())) {}
-    for (boolean bool = true;; bool = false)
+    bool1 = bool2;
+    if (this.flutterViewConvertedToImageView)
     {
-      finishFrame(bool);
-      return;
+      bool1 = bool2;
+      if (localFlutterView.acquireLatestImageViewFrame()) {
+        bool1 = true;
+      }
     }
+    finishFrame(bool1);
   }
   
   public void onPreEngineRestart()
@@ -462,7 +477,7 @@ public class PlatformViewsController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.plugin.platform.PlatformViewsController
  * JD-Core Version:    0.7.0.1
  */

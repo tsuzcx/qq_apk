@@ -4,9 +4,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.tianshu.observer.RedpointObserver;
 import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
 import com.tencent.qphone.base.util.QLog;
@@ -21,9 +20,11 @@ class TogetherControlHelper$2
     if (QLog.isColorLevel()) {
       QLog.d("RedpointHandler", 2, "troopChatPie RedpointObserver  onDataChange");
     }
-    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((RedTouchManager)TogetherControlHelper.a(this.a).a.getManager(QQManagerFactory.MGR_RED_TOUCH)).a(4, String.valueOf(130500));
-    if (this.a.b == null) {
-      this.a.b = ((ImageView)TogetherControlHelper.a(this.a).c.findViewById(2131376828));
+    BusinessInfoCheckUpdate.AppInfo localAppInfo = ((IRedTouchManager)TogetherControlHelper.a(this.a).a.getRuntimeService(IRedTouchManager.class, "")).getAppInfo(4, String.valueOf(130500));
+    if (this.a.b == null)
+    {
+      TogetherControlHelper localTogetherControlHelper = this.a;
+      localTogetherControlHelper.b = ((ImageView)TogetherControlHelper.a(localTogetherControlHelper).c.findViewById(2131376320));
     }
     if (this.a.b == null) {
       return;
@@ -38,7 +39,7 @@ class TogetherControlHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TogetherControlHelper.2
  * JD-Core Version:    0.7.0.1
  */

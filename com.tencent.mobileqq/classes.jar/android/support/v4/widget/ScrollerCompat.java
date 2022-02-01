@@ -15,17 +15,12 @@ public class ScrollerCompat
   {
     if (paramInt >= 14) {
       this.mImpl = new ScrollerCompat.ScrollerCompatImplIcs();
+    } else if (paramInt >= 9) {
+      this.mImpl = new ScrollerCompat.ScrollerCompatImplGingerbread();
+    } else {
+      this.mImpl = new ScrollerCompat.ScrollerCompatImplBase();
     }
-    for (;;)
-    {
-      this.mScroller = this.mImpl.createScroller(paramContext, paramInterpolator);
-      return;
-      if (paramInt >= 9) {
-        this.mImpl = new ScrollerCompat.ScrollerCompatImplGingerbread();
-      } else {
-        this.mImpl = new ScrollerCompat.ScrollerCompatImplBase();
-      }
-    }
+    this.mScroller = this.mImpl.createScroller(paramContext, paramInterpolator);
   }
   
   ScrollerCompat(Context paramContext, Interpolator paramInterpolator)

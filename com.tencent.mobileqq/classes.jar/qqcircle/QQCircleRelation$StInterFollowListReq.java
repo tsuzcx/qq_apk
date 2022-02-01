@@ -19,7 +19,7 @@ public final class QQCircleRelation$StInterFollowListReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     qqcircle.QQCircleRelation.StInterFollowListReq
  * JD-Core Version:    0.7.0.1
  */

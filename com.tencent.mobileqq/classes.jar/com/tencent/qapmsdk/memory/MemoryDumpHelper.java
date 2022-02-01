@@ -35,14 +35,9 @@ public class MemoryDumpHelper
   private static final String TAG = "QAPM_memory_MemoryDumpHelper";
   private static IHeapDumper dumper = null;
   @NonNull
-  private static HashMap<String, String> extraInfoMap;
+  private static HashMap<String, String> extraInfoMap = new HashMap();
   @Nullable
-  private static volatile MemoryDumpHelper sInstance = null;
-  
-  static
-  {
-    extraInfoMap = new HashMap();
-  }
+  private static volatile MemoryDumpHelper sInstance;
   
   private boolean canDumpMemory()
   {
@@ -67,55 +62,55 @@ public class MemoryDumpHelper
   
   static DumpResult dump(String paramString, IMemoryDumpListener paramIMemoryDumpListener)
   {
-    Object localObject1 = null;
     if (paramIMemoryDumpListener != null) {
       localObject1 = paramIMemoryDumpListener.onPrepareDump(paramString);
+    } else {
+      localObject1 = null;
     }
+    Object localObject2 = localObject1;
     if (localObject1 == null) {
-      localObject1 = new ArrayList();
+      localObject2 = new ArrayList();
     }
-    for (;;)
+    Object localObject3 = DumpMemInfoHandler.generateHprof(paramString, dumper);
+    if (paramIMemoryDumpListener != null) {
+      paramIMemoryDumpListener.onHprofDumped(paramString);
+    }
+    Object localObject1 = new DumpResult();
+    ((DumpResult)localObject1).success = ((Boolean)localObject3[0]).booleanValue();
+    if ((((DumpResult)localObject1).success) && (localObject3[1] != null))
     {
-      Object localObject2 = DumpMemInfoHandler.generateHprof(paramString, dumper);
-      if (paramIMemoryDumpListener != null) {
-        paramIMemoryDumpListener.onHprofDumped(paramString);
+      localObject3 = (String)localObject3[1];
+      if (((List)localObject2).isEmpty()) {
+        Logger.INSTANCE.e(new String[] { "QAPM_memory_MemoryDumpHelper", "prepareFiles is none" });
       }
-      DumpResult localDumpResult = new DumpResult();
-      localDumpResult.success = ((Boolean)localObject2[0]).booleanValue();
-      if ((localDumpResult.success) && (localObject2[1] != null))
-      {
-        localObject2 = (String)localObject2[1];
-        if (((List)localObject1).isEmpty()) {
-          Logger.INSTANCE.e(new String[] { "QAPM_memory_MemoryDumpHelper", "prepareFiles is none" });
-        }
-        ((List)localObject1).add(localObject2);
-        localDumpResult.hprofFileSize = new File((String)localObject2).length();
-      }
-      for (;;)
-      {
-        localObject1 = DumpMemInfoHandler.zipFiles((List)localObject1, paramString);
-        localDumpResult.zipFilePath = ((String)localObject1[1]);
-        localDumpResult.success = ((Boolean)localObject1[0]).booleanValue();
-        if (paramIMemoryDumpListener != null) {
-          paramIMemoryDumpListener.onFinishDump(localDumpResult.success, paramString, localDumpResult.zipFilePath);
-        }
-        return localDumpResult;
-        Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryDumpHelper", "failed dump memory" });
-      }
+      ((List)localObject2).add(localObject3);
+      ((DumpResult)localObject1).hprofFileSize = new File((String)localObject3).length();
     }
+    else
+    {
+      Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryDumpHelper", "failed dump memory" });
+    }
+    localObject2 = DumpMemInfoHandler.zipFiles((List)localObject2, paramString);
+    ((DumpResult)localObject1).zipFilePath = ((String)localObject2[1]);
+    ((DumpResult)localObject1).success = ((Boolean)localObject2[0]).booleanValue();
+    if (paramIMemoryDumpListener != null) {
+      paramIMemoryDumpListener.onFinishDump(((DumpResult)localObject1).success, paramString, ((DumpResult)localObject1).zipFilePath);
+    }
+    return localObject1;
   }
   
   public static MemoryDumpHelper getInstance()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new MemoryDumpHelper();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new MemoryDumpHelper();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   static void reportHprofFile(DumpResult paramDumpResult)
@@ -172,13 +167,13 @@ public class MemoryDumpHelper
         }
       }
       paramString = new ResultObject(0, "MemoryCelling target", true, 1L, 1L, paramString, true, true, BaseInfo.userMeta.uin);
+      ReporterMachine.INSTANCE.addResultObj(paramString);
+      return;
     }
     catch (JSONException paramString)
     {
       Logger.INSTANCE.exception("QAPM_memory_MemoryDumpHelper", paramString);
-      return;
     }
-    ReporterMachine.INSTANCE.addResultObj(paramString);
   }
   
   public void setDumper(IHeapDumper paramIHeapDumper)
@@ -188,17 +183,18 @@ public class MemoryDumpHelper
   
   public void setExtraInfo(@Nullable String paramString1, @Nullable String paramString2)
   {
-    if (extraInfoMap == null)
+    HashMap localHashMap = extraInfoMap;
+    if (localHashMap == null)
     {
       Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryDumpHelper", "extraInfoMap need init" });
       return;
     }
-    if ((paramString1 == null) || (paramString2 == null))
+    if ((paramString1 != null) && (paramString2 != null))
     {
-      Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryDumpHelper", "field and content must be not null" });
+      localHashMap.put(paramString1, paramString2);
       return;
     }
-    extraInfoMap.put(paramString1, paramString2);
+    Logger.INSTANCE.d(new String[] { "QAPM_memory_MemoryDumpHelper", "field and content must be not null" });
   }
   
   public void startDumpingMemory(String paramString, IMemoryDumpListener paramIMemoryDumpListener)
@@ -219,7 +215,7 @@ public class MemoryDumpHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.memory.MemoryDumpHelper
  * JD-Core Version:    0.7.0.1
  */

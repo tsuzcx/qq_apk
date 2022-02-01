@@ -50,13 +50,13 @@ class HorizontalListView$PositionScroller
   public void run()
   {
     this.this$0.getHeight();
-    if (!this.this$0.isFromRightToLeft) {}
-    for (int j = this.this$0.mLeftViewAdapterIndex;; j = this.this$0.mRightViewAdapterIndex) {
-      switch (this.mMode)
-      {
-      default: 
-        return;
-      }
+    if (!this.this$0.isFromRightToLeft) {
+      j = this.this$0.mLeftViewAdapterIndex;
+    } else {
+      j = this.this$0.mRightViewAdapterIndex;
+    }
+    if (this.mMode != 5) {
+      return;
     }
     if (this.mLastSeenPos == j)
     {
@@ -64,58 +64,48 @@ class HorizontalListView$PositionScroller
       return;
     }
     this.mLastSeenPos = j;
-    int n = this.this$0.getChildCount();
-    int k = this.mTargetPos;
-    int m = j + n - 1;
+    int i1 = this.this$0.getChildCount();
+    int m = this.mTargetPos;
+    int k = 1;
+    int n = j + i1 - 1;
     int i = 0;
-    float f1;
-    if (k < j)
-    {
-      i = j - k + 1;
-      f1 = Math.min(Math.abs(i / n), 1.0F);
-      if (this.this$0.isFromRightToLeft) {
-        break label220;
-      }
+    if (m < j) {
+      i = j - m + 1;
+    } else if (m > n) {
+      i = m - n;
     }
-    float f2;
-    label220:
-    for (i = 1;; i = -1)
-    {
-      f1 = i * f1;
-      if (k >= j) {
-        break label225;
-      }
-      i = (int)(this.this$0.getWidth() * f1);
-      f2 = this.mScrollDuration;
-      j = (int)(Math.abs(f1) * f2);
-      this.this$0.smoothScrollBy(i, j);
-      postOnAnimation(this);
-      return;
-      if (k <= m) {
-        break;
-      }
-      i = k - m;
-      break;
+    float f = Math.min(Math.abs(i / i1), 1.0F);
+    if (!this.this$0.isFromRightToLeft) {
+      i = k;
+    } else {
+      i = -1;
     }
-    label225:
-    if (k > m)
+    f *= i;
+    if (m < j)
     {
-      i = (int)(-this.this$0.getWidth() * f1);
-      f2 = this.mScrollDuration;
-      j = (int)(Math.abs(f1) * f2);
+      i = (int)(this.this$0.getWidth() * f);
+      j = (int)(this.mScrollDuration * Math.abs(f));
       this.this$0.smoothScrollBy(i, j);
       postOnAnimation(this);
       return;
     }
-    View localView = this.this$0.getChildAt(k - j);
-    if (!this.this$0.isFromRightToLeft) {}
-    for (i = -localView.getLeft();; i = this.this$0.getWidth() - localView.getRight())
+    if (m > n)
     {
-      i -= this.mOffsetFromStart;
-      j = (int)(this.mScrollDuration * (Math.abs(i) / this.this$0.getWidth()));
+      i = (int)(-this.this$0.getWidth() * f);
+      j = (int)(this.mScrollDuration * Math.abs(f));
       this.this$0.smoothScrollBy(i, j);
+      postOnAnimation(this);
       return;
     }
+    View localView = this.this$0.getChildAt(m - j);
+    if (!this.this$0.isFromRightToLeft) {
+      i = -localView.getLeft();
+    } else {
+      i = this.this$0.getWidth() - localView.getRight();
+    }
+    i -= this.mOffsetFromStart;
+    int j = (int)(this.mScrollDuration * (Math.abs(i) / this.this$0.getWidth()));
+    this.this$0.smoothScrollBy(i, j);
   }
   
   void scrollToVisible(int paramInt1, int paramInt2)
@@ -128,8 +118,12 @@ class HorizontalListView$PositionScroller
     int i = this.this$0.mLeftViewAdapterIndex;
     int j = this.this$0.getChildCount();
     View localView = this.this$0.getChildAt(0);
-    if ((paramInt1 < i) || (paramInt1 > j + i - 1)) {}
-    for (paramInt1 = (paramInt1 - i) * (this.this$0.getChildAt(1).getLeft() - localView.getLeft()) + localView.getLeft(); paramInt1 == 0; paramInt1 = this.this$0.getChildAt(paramInt1 - i).getLeft() - Math.abs(localView.getLeft())) {
+    if ((paramInt1 >= i) && (paramInt1 <= j + i - 1)) {
+      paramInt1 = this.this$0.getChildAt(paramInt1 - i).getLeft() - Math.abs(localView.getLeft());
+    } else {
+      paramInt1 = (paramInt1 - i) * (this.this$0.getChildAt(1).getLeft() - localView.getLeft()) + localView.getLeft();
+    }
+    if (paramInt1 == 0) {
       return;
     }
     this.this$0.smoothScrollBy(-(paramInt1 + paramInt2), paramInt3);
@@ -148,116 +142,101 @@ class HorizontalListView$PositionScroller
   void start(int paramInt1, int paramInt2, int paramInt3)
   {
     stop();
-    if (this.this$0.mDataChanged) {
+    if (this.this$0.mDataChanged)
+    {
       this.this$0.mPositionScrollAfterLayout = new HorizontalListView.PositionScroller.1(this, paramInt1, paramInt2);
-    }
-    int j;
-    do
-    {
       return;
-      j = this.this$0.getChildCount();
-    } while (j == 0);
+    }
+    int j = this.this$0.getChildCount();
+    if (j == 0) {
+      return;
+    }
     int i;
-    int k;
-    if (!this.this$0.isFromRightToLeft)
-    {
+    if (!this.this$0.isFromRightToLeft) {
       i = this.this$0.mLeftViewAdapterIndex;
-      j = j + i - 1;
-      k = Math.max(0, Math.min(this.this$0.mAdapter.getCount() - 1, paramInt1));
-      if (k >= i) {
-        break label162;
-      }
-      paramInt1 = i - k + 1;
-      label113:
-      if (paramInt1 <= 0) {
-        break label188;
-      }
-    }
-    label162:
-    label188:
-    for (this.mScrollDuration = (paramInt1 / (j - i) * paramInt3);; this.mScrollDuration = paramInt3)
-    {
-      this.mTargetPos = k;
-      scrollToVisible(this.mTargetPos, paramInt2, this.mScrollDuration);
-      return;
+    } else {
       i = this.this$0.mRightViewAdapterIndex;
-      break;
-      if (k > j)
-      {
-        paramInt1 = k - j + 1;
-        break label113;
-      }
-      scrollToVisible(k, paramInt3);
-      return;
     }
+    j = j + i - 1;
+    int k = Math.max(0, Math.min(this.this$0.mAdapter.getCount() - 1, paramInt1));
+    if (k < i) {}
+    for (paramInt1 = i - k;; paramInt1 = k - j)
+    {
+      paramInt1 += 1;
+      break;
+      if (k <= j) {
+        break label192;
+      }
+    }
+    if (paramInt1 > 0) {
+      this.mScrollDuration = (paramInt3 * (paramInt1 / (j - i)));
+    } else {
+      this.mScrollDuration = paramInt3;
+    }
+    this.mTargetPos = k;
+    scrollToVisible(this.mTargetPos, paramInt2, this.mScrollDuration);
+    return;
+    label192:
+    scrollToVisible(k, paramInt3);
   }
   
   void startWithOffset(int paramInt1, int paramInt2, int paramInt3)
   {
     stop();
-    if (this.this$0.mDataChanged) {
+    if (this.this$0.mDataChanged)
+    {
       this.this$0.mPositionScrollAfterLayout = new HorizontalListView.PositionScroller.2(this, paramInt1, paramInt2, paramInt3);
-    }
-    int j;
-    do
-    {
       return;
-      j = this.this$0.getChildCount();
-    } while (j == 0);
-    int i;
-    label135:
-    label158:
-    float f;
-    if (!this.this$0.isFromRightToLeft)
-    {
+    }
+    int j = this.this$0.getChildCount();
+    if (j == 0) {
+      return;
+    }
+    if (!this.this$0.isFromRightToLeft) {
       i = this.this$0.getPaddingLeft();
-      paramInt2 += i;
-      this.mTargetPos = Math.max(0, Math.min(this.this$0.mAdapter.getCount() - 1, paramInt1));
-      this.mOffsetFromStart = paramInt2;
-      this.mBoundPos = -1;
-      this.mLastSeenPos = -1;
-      this.mMode = 5;
-      if (this.this$0.isFromRightToLeft) {
-        break label201;
-      }
-      paramInt1 = this.this$0.mLeftViewAdapterIndex;
-      i = paramInt1 + j - 1;
-      if (this.mTargetPos >= paramInt1) {
-        break label212;
-      }
-      paramInt1 -= this.mTargetPos;
-      f = paramInt1 / j;
-      if (f >= 1.0F) {
-        break label293;
-      }
-    }
-    for (;;)
-    {
-      this.mScrollDuration = paramInt3;
-      this.mLastSeenPos = -1;
-      postOnAnimation(this);
-      return;
+    } else {
       i = this.this$0.getPaddingRight();
-      break;
-      label201:
+    }
+    paramInt2 += i;
+    this.mTargetPos = Math.max(0, Math.min(this.this$0.mAdapter.getCount() - 1, paramInt1));
+    this.mOffsetFromStart = paramInt2;
+    this.mBoundPos = -1;
+    this.mLastSeenPos = -1;
+    this.mMode = 5;
+    if (!this.this$0.isFromRightToLeft) {
+      paramInt1 = this.this$0.mLeftViewAdapterIndex;
+    } else {
       paramInt1 = this.this$0.mRightViewAdapterIndex;
-      break label135;
-      label212:
-      if (this.mTargetPos > i)
-      {
-        paramInt1 = this.mTargetPos - i;
-        break label158;
+    }
+    int i = paramInt1 + j - 1;
+    int k = this.mTargetPos;
+    if (k < paramInt1)
+    {
+      paramInt1 -= k;
+    }
+    else
+    {
+      if (k <= i) {
+        break label241;
       }
-      View localView = this.this$0.getChildAt(this.mTargetPos - paramInt1);
-      if (!this.this$0.isFromRightToLeft) {}
-      for (paramInt1 = -localView.getLeft();; paramInt1 = this.this$0.getWidth() - localView.getRight())
-      {
-        this.this$0.smoothScrollBy(paramInt1 - paramInt2, paramInt3);
-        return;
-      }
-      label293:
+      paramInt1 = k - i;
+    }
+    float f = paramInt1 / j;
+    if (f >= 1.0F) {
       paramInt3 = (int)(paramInt3 / f);
     }
+    this.mScrollDuration = paramInt3;
+    this.mLastSeenPos = -1;
+    postOnAnimation(this);
+    return;
+    label241:
+    View localView = this.this$0.getChildAt(k - paramInt1);
+    if (!this.this$0.isFromRightToLeft) {
+      paramInt1 = -localView.getLeft();
+    } else {
+      paramInt1 = this.this$0.getWidth() - localView.getRight();
+    }
+    this.this$0.smoothScrollBy(paramInt1 - paramInt2, paramInt3);
   }
   
   void stop()
@@ -267,7 +246,7 @@ class HorizontalListView$PositionScroller
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.HorizontalListView.PositionScroller
  * JD-Core Version:    0.7.0.1
  */

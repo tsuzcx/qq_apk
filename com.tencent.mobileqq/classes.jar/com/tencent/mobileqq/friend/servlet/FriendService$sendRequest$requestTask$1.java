@@ -21,46 +21,49 @@ final class FriendService$sendRequest$requestTask$1
   
   public final void run()
   {
-    int i = 1;
     Object localObject1 = this.a.getServiceCmd();
-    if (QLog.isColorLevel()) {
-      QLog.d("IMCore.friend.FriendServlet", 2, "sendToService: " + (String)localObject1);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("sendToService: ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("IMCore.friend.FriendServlet", 2, ((StringBuilder)localObject2).toString());
     }
+    int j = 0;
     Object localObject2 = this.this$0;
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "cmd");
     localObject2 = FriendService.a((FriendService)localObject2, (String)localObject1);
+    int i = j;
     if (localObject2 != null)
     {
       UniPacket localUniPacket = new UniPacket(true);
       localUniPacket.setEncodeName("utf-8");
       FriendService localFriendService = this.this$0;
-      int j = FriendService.a(localFriendService);
-      FriendService.a(localFriendService, j + 1);
-      localUniPacket.setRequestId(j);
-      if (((BaseJCECoder)localObject2).a(this.a, localUniPacket)) {
-        this.a.putWupBuffer(localUniPacket.encode());
-      }
-    }
-    for (;;)
-    {
-      if (i != 0)
+      i = FriendService.a(localFriendService);
+      FriendService.a(localFriendService, i + 1);
+      localUniPacket.setRequestId(i);
+      i = j;
+      if (((BaseJCECoder)localObject2).a(this.a, localUniPacket))
       {
-        this.a.extraData.putLong("KEY_REQUEST_TIME", System.currentTimeMillis());
-        localObject1 = new NewIntent((Context)FriendService.a(this.this$0).getApplication(), FriendServlet.class);
-        ((NewIntent)localObject1).putExtra(ToServiceMsg.class.getSimpleName(), (Parcelable)this.a);
-        FriendService.a(this.this$0).startServlet((NewIntent)localObject1);
-        return;
+        this.a.putWupBuffer(localUniPacket.encode());
+        i = 1;
       }
-      localObject1 = new FromServiceMsg(this.a.getUin(), (String)localObject1);
-      FriendService.a(this.this$0, this.a, (FromServiceMsg)localObject1, null);
-      return;
-      i = 0;
     }
+    if (i != 0)
+    {
+      this.a.extraData.putLong("KEY_REQUEST_TIME", System.currentTimeMillis());
+      localObject1 = new NewIntent((Context)FriendService.a(this.this$0).getApplication(), FriendServlet.class);
+      ((NewIntent)localObject1).putExtra(ToServiceMsg.class.getSimpleName(), (Parcelable)this.a);
+      FriendService.a(this.this$0).startServlet((NewIntent)localObject1);
+      return;
+    }
+    localObject1 = new FromServiceMsg(this.a.getUin(), (String)localObject1);
+    FriendService.a(this.this$0, this.a, (FromServiceMsg)localObject1, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friend.servlet.FriendService.sendRequest.requestTask.1
  * JD-Core Version:    0.7.0.1
  */

@@ -12,7 +12,7 @@ import java.util.Vector;
 public abstract class AbstractVideoImage
 {
   private static final int PENDING_ACTION_CAPACITY = 100;
-  private static final String TAG = AbstractVideoImage.class.getSimpleName();
+  private static final String TAG = "AbstractVideoImage";
   public static boolean loopEnable;
   protected static Object sPauseLock = new Object();
   protected static volatile boolean sPaused;
@@ -54,7 +54,7 @@ public abstract class AbstractVideoImage
         sPaused = false;
         sPauseLock.notifyAll();
         int i = sPendingActions.size() - 1;
-        if (i >= 0)
+        while (i >= 0)
         {
           ??? = (AbstractVideoImage)((WeakReference)sPendingActions.get(i)).get();
           if (??? != null) {
@@ -62,17 +62,23 @@ public abstract class AbstractVideoImage
           }
           i -= 1;
         }
+        sPendingActions.clear();
+        return;
       }
-      sPendingActions.clear();
     }
   }
   
   public static int scaleFromDensity(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((paramInt2 == 0) || (paramInt2 == paramInt3)) {
-      return paramInt1;
+    int i = paramInt1;
+    if (paramInt2 != 0)
+    {
+      if (paramInt2 == paramInt3) {
+        return paramInt1;
+      }
+      i = (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
     }
-    return (paramInt1 * paramInt3 + (paramInt2 >> 1)) / paramInt2;
+    return i;
   }
   
   protected abstract void applyNextFrame();
@@ -92,37 +98,35 @@ public abstract class AbstractVideoImage
   
   public void detachDrawable(VideoDrawable paramVideoDrawable)
   {
-    if (paramVideoDrawable != null)
+    Vector localVector;
+    if (paramVideoDrawable != null) {
+      localVector = this.mDrawableList;
+    }
+    int j;
+    for (int i = 0;; i = j + 1)
     {
-      Vector localVector = this.mDrawableList;
-      int i = 0;
-      for (;;)
+      try
       {
-        try
+        if (i < this.mDrawableList.size())
         {
-          if (i < this.mDrawableList.size())
+          WeakReference localWeakReference = (WeakReference)this.mDrawableList.get(i);
+          if ((localWeakReference != null) && (localWeakReference.get() != paramVideoDrawable))
           {
-            Object localObject = (WeakReference)this.mDrawableList.get(i);
-            if ((localObject == null) || (((WeakReference)localObject).get() == paramVideoDrawable))
-            {
-              localObject = this.mDrawableList;
-              int j = i - 1;
-              ((Vector)localObject).remove(i);
-              i = j;
+            j = i;
+            if (localWeakReference.get() != paramVideoDrawable) {
+              continue;
             }
-            else if (((WeakReference)localObject).get() == paramVideoDrawable)
-            {
-              this.mDrawableList.remove(i);
-            }
-          }
-          else
-          {
+            this.mDrawableList.remove(i);
             return;
           }
+          this.mDrawableList.remove(i);
+          j = i - 1;
+          continue;
         }
-        finally {}
-        i += 1;
+        return;
       }
+      finally {}
+      return;
     }
   }
   
@@ -133,17 +137,21 @@ public abstract class AbstractVideoImage
     applyNextFrame();
     if (this.mSupportGlobalPause)
     {
-      if (!sPaused) {
+      if (!sPaused)
+      {
         invalidateSelf();
-      }
-      while (this.mIsInPendingAction) {
         return;
       }
-      sPendingActions.add(new WeakReference(this));
-      this.mIsInPendingAction = true;
-      return;
+      if (!this.mIsInPendingAction)
+      {
+        sPendingActions.add(new WeakReference(this));
+        this.mIsInPendingAction = true;
+      }
     }
-    invalidateSelf();
+    else
+    {
+      invalidateSelf();
+    }
   }
   
   protected abstract void draw(Canvas paramCanvas, Rect paramRect, Paint paramPaint, boolean paramBoolean);
@@ -174,17 +182,15 @@ public abstract class AbstractVideoImage
       {
         if (i < this.mDrawableList.size())
         {
-          Object localObject1 = (WeakReference)this.mDrawableList.get(i);
-          if ((localObject1 == null) || (((WeakReference)localObject1).get() == null))
+          WeakReference localWeakReference = (WeakReference)this.mDrawableList.get(i);
+          if ((localWeakReference != null) && (localWeakReference.get() != null))
           {
-            localObject1 = this.mDrawableList;
-            int j = i - 1;
-            ((Vector)localObject1).remove(i);
-            i = j;
+            ((VideoDrawable)localWeakReference.get()).invalidateSelf();
           }
           else
           {
-            ((VideoDrawable)((WeakReference)localObject1).get()).invalidateSelf();
+            this.mDrawableList.remove(i);
+            i -= 1;
           }
         }
         else
@@ -192,8 +198,13 @@ public abstract class AbstractVideoImage
           return;
         }
       }
-      finally {}
-      i += 1;
+      finally
+      {
+        continue;
+        throw localObject;
+        continue;
+        i += 1;
+      }
     }
   }
   
@@ -207,25 +218,26 @@ public abstract class AbstractVideoImage
   
   public void removeOnPlayRepeatListener(VideoDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
-    if (paramOnPlayRepeatListener != null) {
-      for (;;)
+    if (paramOnPlayRepeatListener != null) {}
+    for (;;)
+    {
+      int i;
+      synchronized (this.mListener)
       {
-        int i;
-        synchronized (this.mListener)
+        i = this.mListener.size() - 1;
+        if (i >= 0)
         {
-          i = this.mListener.size() - 1;
-          if (i >= 0)
-          {
-            if (((WeakReference)this.mListener.get(i)).get() == paramOnPlayRepeatListener) {
-              this.mListener.remove(i);
-            }
+          if (((WeakReference)this.mListener.get(i)).get() != paramOnPlayRepeatListener) {
+            break label64;
           }
-          else {
-            return;
-          }
+          this.mListener.remove(i);
+          break label64;
         }
-        i -= 1;
+        return;
       }
+      return;
+      label64:
+      i -= 1;
     }
   }
   
@@ -241,33 +253,34 @@ public abstract class AbstractVideoImage
   public void setOnPlayRepeatListener(VideoDrawable.OnPlayRepeatListener paramOnPlayRepeatListener)
   {
     ArrayList localArrayList;
+    int k;
     int i;
     if (paramOnPlayRepeatListener != null)
     {
       localArrayList = this.mListener;
+      k = 0;
       i = 0;
     }
     for (;;)
     {
+      int j = k;
       try
       {
         if (i < this.mListener.size())
         {
           if (((WeakReference)this.mListener.get(i)).get() != paramOnPlayRepeatListener) {
-            break label78;
+            break label86;
           }
-          i = 1;
-          if (i == 0) {
-            this.mListener.add(new WeakReference(paramOnPlayRepeatListener));
-          }
-          return;
+          j = 1;
         }
+        if (j == 0) {
+          this.mListener.add(new WeakReference(paramOnPlayRepeatListener));
+        }
+        return;
       }
       finally {}
-      i = 0;
-      continue;
       return;
-      label78:
+      label86:
       i += 1;
     }
   }
@@ -276,7 +289,7 @@ public abstract class AbstractVideoImage
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.AbstractVideoImage
  * JD-Core Version:    0.7.0.1
  */

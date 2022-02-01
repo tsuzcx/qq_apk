@@ -28,12 +28,18 @@ public class NativeImageDecoder
         {
           paramArrayOfByte = Bitmap.createBitmap(localBitmap2.getWidth(), localBitmap2.getHeight(), Bitmap.Config.ARGB_8888);
           new Canvas(paramArrayOfByte).drawBitmap(localBitmap2, 0.0F, 0.0F, null);
+          return paramArrayOfByte;
         }
-        return paramArrayOfByte;
       }
-      return localBitmap2;
+      else
+      {
+        return localBitmap2;
+      }
     }
-    return null;
+    else {
+      paramArrayOfByte = null;
+    }
+    return paramArrayOfByte;
   }
   
   @TritonKeep
@@ -44,37 +50,43 @@ public class NativeImageDecoder
   
   public static Bitmap decodeImageBuffer(byte[] paramArrayOfByte, int paramInt1, int paramInt2, int paramInt3)
   {
-    int i = 1;
     try
     {
-      BitmapFactory.Options localOptions = new BitmapFactory.Options();
-      localOptions.inJustDecodeBounds = true;
+      localObject = new BitmapFactory.Options();
+      int i = 1;
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = true;
       BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramInt1);
-      int j = localOptions.outWidth;
-      int k = localOptions.outHeight;
+      int j = ((BitmapFactory.Options)localObject).outWidth;
+      int k = ((BitmapFactory.Options)localObject).outHeight;
       if ((j > paramInt2) || (k > paramInt3)) {
         i = Math.min(Math.round(j / paramInt2), Math.round(k / paramInt3));
       }
-      localOptions.inSampleSize = i;
-      localOptions.inJustDecodeBounds = false;
+      ((BitmapFactory.Options)localObject).inSampleSize = i;
+      ((BitmapFactory.Options)localObject).inJustDecodeBounds = false;
       paramArrayOfByte = BitmapFactory.decodeByteArray(paramArrayOfByte, 0, paramInt1);
       return paramArrayOfByte;
     }
-    catch (OutOfMemoryError paramArrayOfByte)
-    {
-      Logger.e("NativeImageDecoder", "decodeJpgBuffer oom:" + paramArrayOfByte.getMessage());
-      return null;
-    }
     catch (Exception paramArrayOfByte)
     {
-      Logger.e("NativeImageDecoder", "decodeJpgBuffer failed:" + paramArrayOfByte.getMessage());
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decodeJpgBuffer failed:");
+      ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+      Logger.e("NativeImageDecoder", ((StringBuilder)localObject).toString());
+      return null;
+    }
+    catch (OutOfMemoryError paramArrayOfByte)
+    {
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("decodeJpgBuffer oom:");
+      ((StringBuilder)localObject).append(paramArrayOfByte.getMessage());
+      Logger.e("NativeImageDecoder", ((StringBuilder)localObject).toString());
     }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.utils.NativeImageDecoder
  * JD-Core Version:    0.7.0.1
  */

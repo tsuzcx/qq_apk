@@ -5,7 +5,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
-import com.tencent.mobileqq.search.view.ISearchResultView;
+import com.tencent.mobileqq.search.base.view.ISearchResultView;
 import com.tencent.mobileqq.text.QQTextBuilder;
 
 public class FileSearchResultView
@@ -21,7 +21,7 @@ public class FileSearchResultView
   
   public FileSearchResultView(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_Int = 2131562980;
+    this.jdField_a_of_type_Int = 2131562799;
     this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(paramViewGroup.getContext()).inflate(this.jdField_a_of_type_Int, paramViewGroup, false);
     a();
   }
@@ -48,11 +48,11 @@ public class FileSearchResultView
   
   protected void a()
   {
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368729));
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131379432));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)this.jdField_a_of_type_AndroidViewView.findViewById(2131368461));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131378784));
     this.jdField_a_of_type_AndroidWidgetTextView.setEditableFactory(QQTextBuilder.EMOCTATION_FACORY);
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365699));
-    this.jdField_a_of_type_AndroidViewView.findViewById(2131379511).setVisibility(8);
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131365536));
+    this.jdField_a_of_type_AndroidViewView.findViewById(2131378860).setVisibility(8);
   }
   
   public ImageView b()
@@ -77,7 +77,7 @@ public class FileSearchResultView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.FileSearchResultView
  * JD-Core Version:    0.7.0.1
  */

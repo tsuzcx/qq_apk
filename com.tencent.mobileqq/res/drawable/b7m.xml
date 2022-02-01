@@ -1,29 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layer-list
+<selector android:constantSize="true"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:id="@android:id/background">
-        <shape>
-            <size android:height="3.0dip" />
-            <corners android:radius="3.0dip" />
-            <gradient android:startColor="@color/al3" android:endColor="@color/al3" android:angle="45.0" android:centerY="0.75" android:centerColor="@color/al3" />
-        </shape>
+    <item android:state_enabled="false" android:state_pressed="true">
+        <bitmap android:gravity="center" android:src="@drawable/fw3" />
     </item>
-    <item android:id="@android:id/secondaryProgress">
-        <clip>
-            <shape>
-                <size android:height="3.0dip" />
-                <corners android:radius="3.0dip" />
-                <gradient android:startColor="@color/al3" android:endColor="@color/al3" android:angle="45.0" android:centerY="0.75" android:centerColor="@color/al3" />
-            </shape>
-        </clip>
+    <item android:state_enabled="false">
+        <bitmap android:gravity="center" android:src="@drawable/fw3" />
     </item>
-    <item android:id="@android:id/progress">
-        <clip>
-            <shape>
-                <size android:height="3.0dip" />
-                <corners android:radius="3.0dip" />
-                <gradient android:startColor="#ff6d75ff" android:endColor="#ff4789ff" android:angle="45.0" android:centerY="0.75" />
-            </shape>
-        </clip>
+    <item android:state_pressed="true">
+        <bitmap android:gravity="center" android:src="@drawable/fxq" />
     </item>
-</layer-list>
+    <item>
+        <bitmap android:gravity="center" android:src="@drawable/fwl" />
+    </item>
+</selector>

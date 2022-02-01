@@ -21,11 +21,8 @@ class QQStoryCommentItemBuilder$1
   public void onClick(View paramView)
   {
     long l = System.currentTimeMillis();
-    if (l - this.jdField_a_of_type_Long < 50L) {}
-    for (;;)
+    if (l - this.jdField_a_of_type_Long >= 50L)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.jdField_a_of_type_Long = l;
       MessageForQQStoryComment localMessageForQQStoryComment = (MessageForQQStoryComment)((BaseBubbleBuilder.ViewHolder)AIOUtils.a(paramView)).a;
       if (TroopStoryUtil.a(localMessageForQQStoryComment.vid))
@@ -38,11 +35,12 @@ class QQStoryCommentItemBuilder$1
         StoryPlayerLauncher.b((Activity)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemQQStoryCommentItemBuilder.a, localMessageForQQStoryComment.vid, "CommentItemBuilder_Feed_Id_NOT_GS", 7);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QQStoryCommentItemBuilder.1
  * JD-Core Version:    0.7.0.1
  */

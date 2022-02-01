@@ -3,7 +3,7 @@ package com.tencent.mobileqq.activity;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 
 final class ChatActivityUtils$12
   implements ChatActivityUtils.OnDownloadAsyncTaskListener
@@ -12,7 +12,7 @@ final class ChatActivityUtils$12
   
   public void a(int paramInt1, int paramInt2)
   {
-    AudioHelper.b("发起音视频_获取会议id_rsp");
+    QQAudioHelper.b("发起音视频_获取会议id_rsp");
     Bundle localBundle2 = this.jdField_a_of_type_AndroidOsBundle;
     Bundle localBundle1 = localBundle2;
     if (localBundle2 == null) {
@@ -25,7 +25,7 @@ final class ChatActivityUtils$12
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.ChatActivityUtils.12
  * JD-Core Version:    0.7.0.1
  */

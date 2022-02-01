@@ -19,20 +19,19 @@ class EditLocalVideoActivity$13
       EditLocalVideoActivity.a(this.a).pause();
       EditLocalVideoActivity.a(this.a).setVisibility(0);
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       EditLocalVideoActivity.b(this.a, true);
       EditLocalVideoActivity.b(this.a).setVisibility(8);
       EditLocalVideoActivity.a(this.a).start();
       EditLocalVideoActivity.a(this.a).setVisibility(4);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.13
  * JD-Core Version:    0.7.0.1
  */

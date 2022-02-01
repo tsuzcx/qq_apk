@@ -14,7 +14,12 @@ class EditLocalVideoActivity$8
   
   public void OnClick(View paramView, int paramInt)
   {
-    paramView = "[Actvity]" + getClass().getSimpleName() + " QQCustomDialog click :" + HardCodeUtil.a(2131703693);
+    paramView = new StringBuilder();
+    paramView.append("[Actvity]");
+    paramView.append(getClass().getSimpleName());
+    paramView.append(" QQCustomDialog click :");
+    paramView.append(HardCodeUtil.a(2131703821));
+    paramView = paramView.toString();
     RDMEtraMsgCollector.getInstance().addUserAction(paramView);
     EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity).dismiss();
     EditLocalVideoActivity.a(this.jdField_a_of_type_ComTencentMobileqqActivityRichmediaEditLocalVideoActivity, this.jdField_a_of_type_AndroidOsBundle);
@@ -22,7 +27,7 @@ class EditLocalVideoActivity$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.richmedia.EditLocalVideoActivity.8
  * JD-Core Version:    0.7.0.1
  */

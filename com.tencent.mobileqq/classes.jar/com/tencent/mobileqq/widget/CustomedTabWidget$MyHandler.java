@@ -23,6 +23,8 @@ class CustomedTabWidget$MyHandler
     }
     if (localCustomedTabWidget.jdField_a_of_type_Float < 0.0F) {
       localCustomedTabWidget.invalidate((int)(localCustomedTabWidget.b.left + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.top, localCustomedTabWidget.b.right, localCustomedTabWidget.b.bottom);
+    } else {
+      localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
     }
     synchronized (localCustomedTabWidget.jdField_a_of_type_ComTencentMobileqqWidgetCustomedTabWidget$MyHandler)
     {
@@ -34,15 +36,15 @@ class CustomedTabWidget$MyHandler
       {
         sendEmptyMessage(0);
         return;
-        localCustomedTabWidget.invalidate(localCustomedTabWidget.b.left, localCustomedTabWidget.b.top, (int)(localCustomedTabWidget.b.right + localCustomedTabWidget.jdField_a_of_type_Float), localCustomedTabWidget.b.bottom);
       }
+      localCustomedTabWidget.b.set(localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.left, localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.top, localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.right, localCustomedTabWidget.jdField_a_of_type_AndroidGraphicsRect.bottom);
+      return;
     }
-    localObject.b.set(localObject.jdField_a_of_type_AndroidGraphicsRect.left, localObject.jdField_a_of_type_AndroidGraphicsRect.top, localObject.jdField_a_of_type_AndroidGraphicsRect.right, localObject.jdField_a_of_type_AndroidGraphicsRect.bottom);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.CustomedTabWidget.MyHandler
  * JD-Core Version:    0.7.0.1
  */

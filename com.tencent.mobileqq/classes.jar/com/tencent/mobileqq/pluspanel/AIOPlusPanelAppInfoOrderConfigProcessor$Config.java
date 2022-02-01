@@ -16,31 +16,37 @@ public final class AIOPlusPanelAppInfoOrderConfigProcessor$Config
   
   private void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AIOPlusPanelAppInfoOrderConfigProcessor", 2, "Config parse configText: " + paramString);
-    }
-    if (!TextUtils.isEmpty(paramString)) {}
-    try
+    if (QLog.isColorLevel())
     {
-      paramString = new JSONObject(paramString);
-      if (paramString.has("c2c"))
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Config parse configText: ");
+      localStringBuilder.append(paramString);
+      QLog.d("AIOPlusPanelAppInfoOrderConfigProcessor", 2, localStringBuilder.toString());
+    }
+    if (!TextUtils.isEmpty(paramString)) {
+      try
       {
-        paramString = paramString.optJSONObject("c2c");
-        if (paramString != null)
+        paramString = new JSONObject(paramString);
+        if (paramString.has("c2c"))
         {
-          if (paramString.has("defaultTheme")) {
-            a(paramString.optJSONObject("defaultTheme"), this.a);
-          }
-          if (paramString.has("conciseTheme")) {
-            a(paramString.optJSONObject("conciseTheme"), this.b);
+          paramString = paramString.optJSONObject("c2c");
+          if (paramString != null)
+          {
+            if (paramString.has("defaultTheme")) {
+              a(paramString.optJSONObject("defaultTheme"), this.a);
+            }
+            if (paramString.has("conciseTheme"))
+            {
+              a(paramString.optJSONObject("conciseTheme"), this.b);
+              return;
+            }
           }
         }
       }
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("AIOPlusPanelAppInfoOrderConfigProcessor", 1, paramString, new Object[0]);
+      catch (JSONException paramString)
+      {
+        QLog.e("AIOPlusPanelAppInfoOrderConfigProcessor", 1, paramString, new Object[0]);
+      }
     }
   }
   
@@ -67,7 +73,7 @@ public final class AIOPlusPanelAppInfoOrderConfigProcessor$Config
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.AIOPlusPanelAppInfoOrderConfigProcessor.Config
  * JD-Core Version:    0.7.0.1
  */

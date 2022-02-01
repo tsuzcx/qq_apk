@@ -1,9 +1,11 @@
 package com.tencent.qqlive.module.videoreport.dtreport.video.data;
 
 import android.support.annotation.Nullable;
+import android.view.View;
 import com.tencent.qqlive.module.videoreport.Log;
-import java.util.HashMap;
+import java.lang.ref.WeakReference;
 import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class VideoBaseEntity
 {
@@ -15,6 +17,7 @@ public class VideoBaseEntity
   protected int pageId = 0;
   protected Map<String, Object> videoCustomParams;
   protected int videoDuration = 0;
+  protected WeakReference<View> videoView;
   
   public VideoBaseEntity()
   {
@@ -40,7 +43,7 @@ public class VideoBaseEntity
   public Map<String, Object> getVideoCustomParams()
   {
     if (this.videoCustomParams == null) {
-      this.videoCustomParams = new HashMap();
+      this.videoCustomParams = new ConcurrentHashMap();
     }
     return this.videoCustomParams;
   }
@@ -48,6 +51,11 @@ public class VideoBaseEntity
   public long getVideoDuration()
   {
     return this.videoDuration;
+  }
+  
+  public WeakReference<View> getVideoView()
+  {
+    return this.videoView;
   }
   
   public boolean isBizReady()
@@ -62,7 +70,7 @@ public class VideoBaseEntity
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.dtreport.video.data.VideoBaseEntity
  * JD-Core Version:    0.7.0.1
  */

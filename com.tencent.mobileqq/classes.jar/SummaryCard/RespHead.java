@@ -41,8 +41,9 @@ public final class RespHead
     paramJceOutputStream.write(this.iVersion, 0);
     paramJceOutputStream.write(this.iResult, 1);
     paramJceOutputStream.write(this.strErrorMsg, 2);
-    if (this.vCookies != null) {
-      paramJceOutputStream.write(this.vCookies, 3);
+    byte[] arrayOfByte = this.vCookies;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
   }
 }

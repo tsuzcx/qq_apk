@@ -25,13 +25,15 @@ public final class oidb_cmd0xbd3$FeedParam
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 58 }, new String[] { "feed_type", "uint64_feed_id", "bytes_subscribe_name", "multi_level_info", "uint64_uin", "uint32_share_type", "feed_ext_info" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro, null, Long.valueOf(0L), Integer.valueOf(0), null }, FeedParam.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 40, 48, 58 }, new String[] { "feed_type", "uint64_feed_id", "bytes_subscribe_name", "multi_level_info", "uint64_uin", "uint32_share_type", "feed_ext_info" }, new Object[] { localInteger, localLong, localByteStringMicro, null, localLong, localInteger, null }, FeedParam.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xbd3.oidb_cmd0xbd3.FeedParam
  * JD-Core Version:    0.7.0.1
  */

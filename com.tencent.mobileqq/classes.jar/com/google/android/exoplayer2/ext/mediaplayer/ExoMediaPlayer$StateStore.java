@@ -13,10 +13,13 @@ class ExoMediaPlayer$StateStore
   
   int getState(boolean paramBoolean, int paramInt)
   {
-    if (paramBoolean) {}
-    for (int i = -268435456;; i = 0) {
-      return i | paramInt;
+    int i;
+    if (paramBoolean) {
+      i = -268435456;
+    } else {
+      i = 0;
     }
+    return i | paramInt;
   }
   
   boolean isLastReportedPlayWhenReady()
@@ -27,29 +30,28 @@ class ExoMediaPlayer$StateStore
   boolean matchesHistory(int[] paramArrayOfInt, boolean paramBoolean)
   {
     int i;
-    int j;
-    if (paramBoolean)
-    {
+    if (paramBoolean) {
       i = 268435455;
-      int k = this.prevStates.length - paramArrayOfInt.length;
-      j = k;
-      paramBoolean = true;
-      label23:
-      if (j >= this.prevStates.length) {
-        return paramBoolean;
-      }
-      if ((this.prevStates[j] & i) != (paramArrayOfInt[(j - k)] & i)) {
-        break label76;
-      }
+    } else {
+      i = -1;
     }
-    label76:
-    for (boolean bool = true;; bool = false)
+    int k = this.prevStates.length - paramArrayOfInt.length;
+    int j = k;
+    paramBoolean = true;
+    for (;;)
     {
+      int[] arrayOfInt = this.prevStates;
+      if (j >= arrayOfInt.length) {
+        break;
+      }
+      boolean bool;
+      if ((arrayOfInt[j] & i) == (paramArrayOfInt[(j - k)] & i)) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       paramBoolean &= bool;
       j += 1;
-      break label23;
-      i = -1;
-      break;
     }
     return paramBoolean;
   }
@@ -62,20 +64,42 @@ class ExoMediaPlayer$StateStore
   void setMostRecentState(boolean paramBoolean, int paramInt)
   {
     int i = getState(paramBoolean, paramInt);
-    ExoMediaPlayer.getLogger().v("ExoMediaPlayer", "request setMostRecentState [" + paramBoolean + "," + paramInt + "], lastState=" + this.prevStates[3] + ",newState=" + i);
-    if (this.prevStates[3] == i) {
+    Object localObject = ExoMediaPlayer.getLogger();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("request setMostRecentState [");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append("], lastState=");
+    localStringBuilder.append(this.prevStates[3]);
+    localStringBuilder.append(",newState=");
+    localStringBuilder.append(i);
+    ((ILogger)localObject).v("ExoMediaPlayer", localStringBuilder.toString());
+    localObject = this.prevStates;
+    if (localObject[3] == i) {
       return;
     }
-    this.prevStates[0] = this.prevStates[1];
-    this.prevStates[1] = this.prevStates[2];
-    this.prevStates[2] = this.prevStates[3];
-    this.prevStates[3] = i;
-    ExoMediaPlayer.getLogger().v("ExoMediaPlayer", "MostRecentState [" + this.prevStates[0] + "," + this.prevStates[1] + "," + this.prevStates[2] + "," + this.prevStates[3] + "]");
+    localObject[0] = localObject[1];
+    localObject[1] = localObject[2];
+    localObject[2] = localObject[3];
+    localObject[3] = i;
+    localObject = ExoMediaPlayer.getLogger();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MostRecentState [");
+    localStringBuilder.append(this.prevStates[0]);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.prevStates[1]);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.prevStates[2]);
+    localStringBuilder.append(",");
+    localStringBuilder.append(this.prevStates[3]);
+    localStringBuilder.append("]");
+    ((ILogger)localObject).v("ExoMediaPlayer", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.ext.mediaplayer.ExoMediaPlayer.StateStore
  * JD-Core Version:    0.7.0.1
  */

@@ -11,9 +11,9 @@ public class LebaRedTouchSwitchBean
   
   public static LebaRedTouchSwitchBean a(QConfItem[] paramArrayOfQConfItem)
   {
-    boolean bool = false;
     LebaRedTouchSwitchBean localLebaRedTouchSwitchBean = new LebaRedTouchSwitchBean();
     Object localObject2 = null;
+    boolean bool = false;
     Object localObject1 = localObject2;
     if (paramArrayOfQConfItem != null) {
       localObject1 = localObject2;
@@ -32,7 +32,11 @@ public class LebaRedTouchSwitchBean
         bool = true;
       }
       localLebaRedTouchSwitchBean.a = bool;
-      QLog.i("LebaRedTouchSwitchBean", 1, "parse config=" + (String)localObject1 + ",mRedTouchAllTianshu=" + localLebaRedTouchSwitchBean.a);
+      paramArrayOfQConfItem = new StringBuilder("parse config=");
+      paramArrayOfQConfItem.append((String)localObject1);
+      paramArrayOfQConfItem.append(",mRedTouchAllTianshu=");
+      paramArrayOfQConfItem.append(localLebaRedTouchSwitchBean.a);
+      QLog.i("LebaRedTouchSwitchBean", 1, paramArrayOfQConfItem.toString());
       return localLebaRedTouchSwitchBean;
     }
     catch (Exception paramArrayOfQConfItem)
@@ -44,7 +48,7 @@ public class LebaRedTouchSwitchBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.config.LebaRedTouchSwitchBean
  * JD-Core Version:    0.7.0.1
  */

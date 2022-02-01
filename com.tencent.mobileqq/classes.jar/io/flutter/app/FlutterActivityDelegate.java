@@ -48,23 +48,24 @@ public final class FlutterActivityDelegate
   
   private void addLaunchView()
   {
-    if (this.launchView == null) {
+    View localView = this.launchView;
+    if (localView == null) {
       return;
     }
-    this.activity.addContentView(this.launchView, matchParent);
+    this.activity.addContentView(localView, matchParent);
     this.flutterView.addFirstFrameListener(new FlutterActivityDelegate.1(this));
     this.activity.setTheme(16973833);
   }
   
   private View createLaunchView()
   {
-    if (!showSplashScreenUntilFirstFrame().booleanValue()) {}
-    Drawable localDrawable;
-    do
-    {
+    if (!showSplashScreenUntilFirstFrame().booleanValue()) {
       return null;
-      localDrawable = getLaunchScreenDrawableFromActivityTheme();
-    } while (localDrawable == null);
+    }
+    Drawable localDrawable = getLaunchScreenDrawableFromActivityTheme();
+    if (localDrawable == null) {
+      return null;
+    }
     View localView = new View(this.activity);
     localView.setLayoutParams(matchParent);
     localView.setBackground(localDrawable);
@@ -144,8 +145,10 @@ public final class FlutterActivityDelegate
   private Drawable getLaunchScreenDrawableFromActivityTheme()
   {
     Object localObject = new TypedValue();
-    if (!this.activity.getTheme().resolveAttribute(16842836, (TypedValue)localObject, true)) {}
-    while (((TypedValue)localObject).resourceId == 0) {
+    if (!this.activity.getTheme().resolveAttribute(16842836, (TypedValue)localObject, true)) {
+      return null;
+    }
+    if (((TypedValue)localObject).resourceId == 0) {
       return null;
     }
     try
@@ -155,8 +158,10 @@ public final class FlutterActivityDelegate
     }
     catch (Resources.NotFoundException localNotFoundException)
     {
-      Log.e("FlutterActivityDelegate", "Referenced launch screen windowBackground resource does not exist");
+      label53:
+      break label53;
     }
+    Log.e("FlutterActivityDelegate", "Referenced launch screen windowBackground resource does not exist");
     return null;
   }
   
@@ -212,7 +217,11 @@ public final class FlutterActivityDelegate
       }
       return Boolean.valueOf(bool1);
     }
-    catch (PackageManager.NameNotFoundException localNameNotFoundException) {}
+    catch (PackageManager.NameNotFoundException localNameNotFoundException)
+    {
+      label55:
+      break label55;
+    }
     return Boolean.valueOf(false);
   }
   
@@ -233,9 +242,10 @@ public final class FlutterActivityDelegate
   
   public boolean onBackPressed()
   {
-    if (this.flutterView != null)
+    FlutterView localFlutterView = this.flutterView;
+    if (localFlutterView != null)
     {
-      this.flutterView.popRoute();
+      localFlutterView.popRoute();
       return true;
     }
     return false;
@@ -266,13 +276,13 @@ public final class FlutterActivityDelegate
         addLaunchView();
       }
     }
-    if (loadIntent(this.activity.getIntent())) {}
-    do
-    {
+    if (loadIntent(this.activity.getIntent())) {
       return;
-      paramBundle = FlutterMain.findAppBundlePath();
-    } while (paramBundle == null);
-    runBundle(paramBundle);
+    }
+    paramBundle = FlutterMain.findAppBundlePath();
+    if (paramBundle != null) {
+      runBundle(paramBundle);
+    }
   }
   
   public void onDestroy()
@@ -285,16 +295,16 @@ public final class FlutterActivityDelegate
         ((FlutterApplication)localObject).setCurrentActivity(null);
       }
     }
-    if (this.flutterView != null)
+    localObject = this.flutterView;
+    if (localObject != null)
     {
-      if ((this.flutterView.getPluginRegistry().onViewDestroy(this.flutterView.getFlutterNativeView())) || (this.viewFactory.retainFlutterNativeView())) {
-        this.flutterView.detach();
+      if ((!((FlutterView)localObject).getPluginRegistry().onViewDestroy(this.flutterView.getFlutterNativeView())) && (!this.viewFactory.retainFlutterNativeView()))
+      {
+        this.flutterView.destroy();
+        return;
       }
+      this.flutterView.detach();
     }
-    else {
-      return;
-    }
-    this.flutterView.destroy();
   }
   
   public void onLowMemory()
@@ -319,15 +329,17 @@ public final class FlutterActivityDelegate
         ((FlutterApplication)localObject).setCurrentActivity(null);
       }
     }
-    if (this.flutterView != null) {
-      this.flutterView.onPause();
+    localObject = this.flutterView;
+    if (localObject != null) {
+      ((FlutterView)localObject).onPause();
     }
   }
   
   public void onPostResume()
   {
-    if (this.flutterView != null) {
-      this.flutterView.onPostResume();
+    FlutterView localFlutterView = this.flutterView;
+    if (localFlutterView != null) {
+      localFlutterView.onPostResume();
     }
   }
   
@@ -346,8 +358,9 @@ public final class FlutterActivityDelegate
   
   public void onStart()
   {
-    if (this.flutterView != null) {
-      this.flutterView.onStart();
+    FlutterView localFlutterView = this.flutterView;
+    if (localFlutterView != null) {
+      localFlutterView.onStart();
     }
   }
   
@@ -380,7 +393,7 @@ public final class FlutterActivityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.app.FlutterActivityDelegate
  * JD-Core Version:    0.7.0.1
  */

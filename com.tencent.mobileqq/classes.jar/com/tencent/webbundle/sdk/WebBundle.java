@@ -41,9 +41,10 @@ public class WebBundle
   {
     ThreadManager.getUiHandler().removeCallbacks(this.mPreloadTimeOutChecker);
     resetContext(this.mContext.getApplicationContext());
-    if (this.webView != null)
+    IWebBundleWebView localIWebBundleWebView = this.webView;
+    if (localIWebBundleWebView != null)
     {
-      this.webView.destroy();
+      localIWebBundleWebView.destroy();
       this.webView = null;
     }
     this.mListeners.clear();
@@ -109,9 +110,10 @@ public class WebBundle
     ThreadManager.getUiHandler().postDelayed(this.mPreloadTimeOutChecker, l);
     setPreloadState(WebBundle.WebBundlePreloadState.CREATE_WEBVIEW);
     this.webView = localIWebBundleRuntime.createWebView(this.mContext);
-    if (this.webView != null)
+    paramPreloadStateListener = this.webView;
+    if (paramPreloadStateListener != null)
     {
-      this.webView.enableJavaScript(true);
+      paramPreloadStateListener.enableJavaScript(true);
       this.webView.addJavascriptInterface(this.mWebBundleInterface, "webbundle");
       this.webView.setOnPageFinishedListener(new WebBundle.3(this, paramJSONObject));
       setPreloadState(WebBundle.WebBundlePreloadState.LOAD_PAGE);
@@ -123,23 +125,25 @@ public class WebBundle
   public void use(@NotNull JSONObject paramJSONObject)
   {
     ThreadManager.checkMainThread("use");
-    String str = "";
-    JSONObject localJSONObject = paramJSONObject.optJSONObject("data");
-    if (localJSONObject != null) {
-      str = localJSONObject.toString();
+    Object localObject = paramJSONObject.optJSONObject("data");
+    if (localObject != null) {
+      localObject = ((JSONObject)localObject).toString();
+    } else {
+      localObject = "";
     }
-    this.mWebBundleInterface.setJson(str);
+    this.mWebBundleInterface.setJson((String)localObject);
     this.realUrl = paramJSONObject.optString("url");
     paramJSONObject.remove("data");
-    if (this.webView != null) {
-      this.webView.dispatchJsEvent("vashybrid_bundle_message", paramJSONObject, null);
+    localObject = this.webView;
+    if (localObject != null) {
+      ((IWebBundleWebView)localObject).dispatchJsEvent("vashybrid_bundle_message", paramJSONObject, null);
     }
     WebBundleManager.getInstance(this.mBizId).log(3, "WebBundle.WebBundle", new String[] { "[use][step 1][#", String.valueOf(hashCode()), "] send message to h5 for push view. url = ", this.realUrl, ", data = ", WebBundle.WebBundleInterface.access$100(this.mWebBundleInterface) });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.webbundle.sdk.WebBundle
  * JD-Core Version:    0.7.0.1
  */

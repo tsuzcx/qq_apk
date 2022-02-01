@@ -5,6 +5,7 @@ import com.tencent.av.app.VideoAppInterface;
 import com.tencent.av.business.manager.filter.EffectFilterTools;
 import com.tencent.av.business.manager.magicface.EffectFaceManager;
 import com.tencent.av.business.manager.makeup.MakeupMng;
+import com.tencent.av.business.manager.material.EffectMaterialManager;
 import com.tencent.av.business.manager.pendant.EffectPendantTools;
 import com.tencent.av.business.manager.pendant.VirtualBgMng;
 import com.tencent.av.business.manager.report.VideoNodeReporter;
@@ -12,16 +13,14 @@ import com.tencent.av.business.manager.support.EffectSupportManager;
 import com.tencent.av.business.manager.tips.TipsManager;
 import com.tencent.av.business.manager.voiceRecog.VoiceRecogManager;
 import com.tencent.av.business.manager.zimu.EffectZimuManager;
-import com.tencent.av.redpacket.AVRedPacketManager;
 import com.tencent.av.screenshare.ScreenShareManager;
-import com.tencent.av.ui.redbag.AVRedBagMgr;
 import com.tencent.av.wtogether.WTogetherMng;
 
 public class BusinessManagerFactory
 {
   private VideoAppInterface jdField_a_of_type_ComTencentAvAppVideoAppInterface;
   private Object jdField_a_of_type_JavaLangObject = new Object();
-  private BusinessManager[] jdField_a_of_type_ArrayOfComTencentAvBusinessManagerBusinessManager = new BusinessManager[17];
+  private BusinessManager[] jdField_a_of_type_ArrayOfComTencentAvBusinessManagerBusinessManager = new BusinessManager[18];
   
   public BusinessManagerFactory(VideoAppInterface paramVideoAppInterface)
   {
@@ -58,62 +57,80 @@ public class BusinessManagerFactory
   
   protected BusinessManager a(VideoAppInterface paramVideoAppInterface, int paramInt)
   {
-    Object localObject = null;
     long l1 = System.currentTimeMillis();
     switch (paramInt)
     {
+    case 6: 
+    case 7: 
     case 9: 
     default: 
-      AVLog.printColorLog("BusinessManagerFactory", "error-->create Manager unknown name :" + paramInt);
-      paramVideoAppInterface = localObject;
-    }
-    for (;;)
-    {
-      if (paramVideoAppInterface != null) {
-        paramVideoAppInterface.a();
-      }
-      long l2 = System.currentTimeMillis();
-      AVLog.printColorLog("BusinessManagerFactory", "create Manager,cost time:" + (l2 - l1));
-      return paramVideoAppInterface;
-      paramVideoAppInterface = new EffectZimuManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new EffectFilterTools(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new EffectPendantTools(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new VideoNodeReporter(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new EffectSupportManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new EffectFaceManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new AVRedPacketManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new AVRedBagMgr(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new EffectOperateManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new VoiceRecogManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new TipsManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new EffectMutexManager(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new MakeupMng(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new VirtualBgMng(paramVideoAppInterface);
-      continue;
-      paramVideoAppInterface = new WTogetherMng(paramVideoAppInterface);
-      continue;
+      paramVideoAppInterface = new StringBuilder();
+      paramVideoAppInterface.append("error-->create Manager unknown name :");
+      paramVideoAppInterface.append(paramInt);
+      AVLog.printColorLog("BusinessManagerFactory", paramVideoAppInterface.toString());
+      paramVideoAppInterface = null;
+      break;
+    case 17: 
       paramVideoAppInterface = new ScreenShareManager(paramVideoAppInterface);
+      break;
+    case 16: 
+      paramVideoAppInterface = new WTogetherMng(paramVideoAppInterface);
+      break;
+    case 15: 
+      paramVideoAppInterface = new EffectMaterialManager(paramVideoAppInterface);
+      break;
+    case 14: 
+      paramVideoAppInterface = new VirtualBgMng(paramVideoAppInterface);
+      break;
+    case 13: 
+      paramVideoAppInterface = new MakeupMng(paramVideoAppInterface);
+      break;
+    case 12: 
+      paramVideoAppInterface = new EffectMutexManager(paramVideoAppInterface);
+      break;
+    case 11: 
+      paramVideoAppInterface = new TipsManager(paramVideoAppInterface);
+      break;
+    case 10: 
+      paramVideoAppInterface = new VoiceRecogManager(paramVideoAppInterface);
+      break;
+    case 8: 
+      paramVideoAppInterface = new EffectOperateManager(paramVideoAppInterface);
+      break;
+    case 5: 
+      paramVideoAppInterface = new EffectSupportManager(paramVideoAppInterface);
+      break;
+    case 4: 
+      paramVideoAppInterface = new VideoNodeReporter(paramVideoAppInterface);
+      break;
+    case 3: 
+      paramVideoAppInterface = new EffectFaceManager(paramVideoAppInterface);
+      break;
+    case 2: 
+      paramVideoAppInterface = new EffectPendantTools(paramVideoAppInterface);
+      break;
+    case 1: 
+      paramVideoAppInterface = new EffectFilterTools(paramVideoAppInterface);
+      break;
+    case 0: 
+      paramVideoAppInterface = new EffectZimuManager(paramVideoAppInterface);
     }
+    if (paramVideoAppInterface != null) {
+      paramVideoAppInterface.a();
+    }
+    long l2 = System.currentTimeMillis();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("create Manager,cost time:");
+    localStringBuilder.append(l2 - l1);
+    AVLog.printColorLog("BusinessManagerFactory", localStringBuilder.toString());
+    return paramVideoAppInterface;
   }
   
   public void a(int paramInt) {}
   
   public void a(int paramInt, String paramString)
   {
-    if ((paramInt >= 0) && (paramInt < 17) && (!BusinessManager.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) && (a(paramInt).a(paramString))) {
+    if ((paramInt >= 0) && (paramInt < 18) && (!BusinessManager.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface, paramInt)) && (a(paramInt).a(paramString))) {
       BusinessManager.a("BusinessManagerFactory", this.jdField_a_of_type_ComTencentAvAppVideoAppInterface.getApplication(), paramInt, true);
     }
   }
@@ -125,7 +142,7 @@ public class BusinessManagerFactory
     if (paramInt >= 0)
     {
       bool1 = bool2;
-      if (paramInt < 17)
+      if (paramInt < 18)
       {
         bool1 = bool2;
         if (this.jdField_a_of_type_ArrayOfComTencentAvBusinessManagerBusinessManager[paramInt] != null) {
@@ -138,7 +155,7 @@ public class BusinessManagerFactory
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.BusinessManagerFactory
  * JD-Core Version:    0.7.0.1
  */

@@ -24,37 +24,40 @@ final class BottomSelectorLayout$addMediaPanel$4
   
   public final void invoke()
   {
+    Object localObject;
+    Object[] arrayOfObject;
     if (this.$panelType == PanelType.PHOTO)
     {
       localObject = StringCompanionObject.INSTANCE;
       localObject = this.this$0.getContext();
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-      localObject = ((Context)localObject).getResources().getString(R.string.K);
+      localObject = ((Context)localObject).getResources().getString(R.string.F);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getStr…lect_photo_reach_max_tip)");
       arrayOfObject = new Object[1];
       arrayOfObject[0] = Integer.valueOf(this.$maxSelectCount);
       localObject = String.format((String)localObject, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
       Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
       TopicSDKHelperKt.a((String)localObject, false, null, 6, null);
-    }
-    while (this.$panelType != PanelType.VIDEO) {
       return;
     }
-    Object localObject = StringCompanionObject.INSTANCE;
-    localObject = this.this$0.getContext();
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
-    localObject = ((Context)localObject).getResources().getString(R.string.L);
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getStr…lect_video_reach_max_tip)");
-    Object[] arrayOfObject = new Object[1];
-    arrayOfObject[0] = Integer.valueOf(this.$maxSelectCount);
-    localObject = String.format((String)localObject, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
-    Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
-    TopicSDKHelperKt.a((String)localObject, false, null, 6, null);
+    if (this.$panelType == PanelType.VIDEO)
+    {
+      localObject = StringCompanionObject.INSTANCE;
+      localObject = this.this$0.getContext();
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "context");
+      localObject = ((Context)localObject).getResources().getString(R.string.G);
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "context.resources.getStr…lect_video_reach_max_tip)");
+      arrayOfObject = new Object[1];
+      arrayOfObject[0] = Integer.valueOf(this.$maxSelectCount);
+      localObject = String.format((String)localObject, Arrays.copyOf(arrayOfObject, arrayOfObject.length));
+      Intrinsics.checkExpressionValueIsNotNull(localObject, "java.lang.String.format(format, *args)");
+      TopicSDKHelperKt.a((String)localObject, false, null, 6, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.addMediaPanel.4
  * JD-Core Version:    0.7.0.1
  */

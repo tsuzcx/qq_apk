@@ -13,25 +13,26 @@ class BaseActivityInjectImpl$MyShakeListener
   public void a()
   {
     Object localObject = QBaseActivity.sTopActivity;
-    if (localObject == null) {
-      ScreenShot.a("MyShakeListener - top activity is null");
-    }
-    do
+    if (localObject == null)
     {
+      ScreenShot.a("MyShakeListener - top activity is null");
       return;
-      if (!((QBaseActivity)localObject).mCurrentActivityShakeFlag)
-      {
-        ScreenShot.a("MyShakeListener - shake flag is false");
-        return;
-      }
-    } while (ThreadManager.getSubThreadHandler().hasMessages(1001));
+    }
+    if (!((QBaseActivity)localObject).mCurrentActivityShakeFlag)
+    {
+      ScreenShot.a("MyShakeListener - shake flag is false");
+      return;
+    }
+    if (ThreadManager.getSubThreadHandler().hasMessages(1001)) {
+      return;
+    }
     localObject = ThreadManager.getSubThreadHandler().obtainMessage(1001, new BaseActivityInjectImpl.MyShakeListener.1(this, (QBaseActivity)localObject));
     ThreadManager.getSubThreadHandler().sendMessage((Message)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.lifecycle.BaseActivityInjectImpl.MyShakeListener
  * JD-Core Version:    0.7.0.1
  */

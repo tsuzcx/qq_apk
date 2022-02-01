@@ -18,14 +18,19 @@ final class SensorReport$2
     }
     catch (Exception localException)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d("SensorReport", 2, "registonUserActionReceiver e = " + localException);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("registonUserActionReceiver e = ");
+        localStringBuilder.append(localException);
+        QLog.d("SensorReport", 2, localStringBuilder.toString());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.SensorReport.2
  * JD-Core Version:    0.7.0.1
  */

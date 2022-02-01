@@ -7,7 +7,7 @@ public class TroopFragment$MyAvatarObserver
 {
   protected TroopFragment$MyAvatarObserver(TroopFragment paramTroopFragment) {}
   
-  public void onUpdateTroopHead(boolean paramBoolean, String paramString)
+  protected void onUpdateTroopHead(boolean paramBoolean, String paramString)
   {
     if (paramBoolean) {
       this.a.h();
@@ -16,7 +16,7 @@ public class TroopFragment$MyAvatarObserver
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.troop.TroopFragment.MyAvatarObserver
  * JD-Core Version:    0.7.0.1
  */

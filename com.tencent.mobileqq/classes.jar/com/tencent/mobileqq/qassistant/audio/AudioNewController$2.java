@@ -16,7 +16,12 @@ class AudioNewController$2
   
   public void a(long paramLong)
   {
-    AssistantUtils.a("AudioNewController", "onRecordFinish, Duration:" + paramLong + ", CacheSize:" + this.a.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onRecordFinish, Duration:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", CacheSize:");
+    localStringBuilder.append(this.a.jdField_a_of_type_ComTencentMobileqqQassistantAudioVoiceCacheHolder.a());
+    AssistantUtils.a("AudioNewController", localStringBuilder.toString());
     if (paramLong > 0L) {
       this.a.b.set(paramLong);
     }
@@ -33,7 +38,8 @@ class AudioNewController$2
       this.a.b.set(paramLong);
     }
     int i = this.a.a(paramArrayOfByte);
-    this.a.a(this.a.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam, i);
+    paramArrayOfByte = this.a;
+    paramArrayOfByte.a(paramArrayOfByte.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam, i);
   }
   
   public int b()
@@ -43,13 +49,17 @@ class AudioNewController$2
   
   public void b(long paramLong)
   {
-    AssistantUtils.a("AudioNewController", "IRecordEventListener, onRecordStart:" + paramLong);
-    this.a.b(this.a.jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam, b());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("IRecordEventListener, onRecordStart:");
+    ((StringBuilder)localObject).append(paramLong);
+    AssistantUtils.a("AudioNewController", ((StringBuilder)localObject).toString());
+    localObject = this.a;
+    ((AudioNewController)localObject).b(((AudioNewController)localObject).jdField_a_of_type_ComTencentMobileqqUtilsRecordParams$RecorderParam, b());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.audio.AudioNewController.2
  * JD-Core Version:    0.7.0.1
  */

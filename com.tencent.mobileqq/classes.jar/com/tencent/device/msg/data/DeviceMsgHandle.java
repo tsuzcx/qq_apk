@@ -16,6 +16,7 @@ import com.tencent.device.file.DeviceAVFileMsgObserver;
 import com.tencent.device.file.DeviceFileObserver;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.activity.ChatActivityConstants;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
@@ -26,8 +27,6 @@ import com.tencent.mobileqq.app.SecSvcHandler;
 import com.tencent.mobileqq.app.SecSvcObserver;
 import com.tencent.mobileqq.data.MessageForDeviceFile;
 import com.tencent.mobileqq.data.MessageForDeviceText;
-import com.tencent.mobileqq.data.MessageForGrayTips;
-import com.tencent.mobileqq.data.MessageForNewGrayTips;
 import com.tencent.mobileqq.data.MessageRecord;
 import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.service.message.MessageCache;
@@ -151,26 +150,22 @@ public class DeviceMsgHandle
   public static MessageRecord a(String paramString, long paramLong)
   {
     List localList = (List)jdField_b_of_type_JavaUtilHashMap.get(paramString);
+    paramString = null;
     if (localList == null) {
       return null;
     }
-    paramString = null;
     int i = 0;
-    for (;;)
+    while (i < localList.size())
     {
-      if (i < localList.size())
+      paramString = (MessageRecord)localList.get(i);
+      if (paramString.uniseq == paramLong)
       {
-        paramString = (MessageRecord)localList.get(i);
-        if (paramString.uniseq == paramLong) {
-          localList.remove(i);
-        }
-      }
-      else
-      {
+        localList.remove(i);
         return paramString;
       }
       i += 1;
     }
+    return paramString;
   }
   
   private void a()
@@ -205,19 +200,47 @@ public class DeviceMsgHandle
   {
     paramString4 = SubString.a(paramString4, 45, "UTF-8", "...");
     paramString5 = SubString.a(paramString5, 90, "UTF-8", "...");
-    String str = ChatActivityConstants.jdField_a_of_type_JavaLangString + "http://maps.google.com/maps?q=" + paramString2 + "," + paramString3 + "&iwloc=A&hl=zh-CN (" + paramString5 + ")";
-    if (!paramContext.getResources().getString(2131696077).equals(paramString4)) {}
-    for (paramContext = paramContext.getResources().getString(2131691364) + " " + paramString4;; paramContext = paramContext.getResources().getString(2131691364))
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(ChatActivityConstants.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append("http://maps.google.com/maps?q=");
+    ((StringBuilder)localObject).append(paramString2);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(paramString3);
+    ((StringBuilder)localObject).append("&iwloc=A&hl=zh-CN (");
+    ((StringBuilder)localObject).append(paramString5);
+    ((StringBuilder)localObject).append(")");
+    localObject = ((StringBuilder)localObject).toString();
+    if (!paramContext.getResources().getString(2131696092).equals(paramString4))
     {
-      paramString2 = "mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.PoiMapActivity&type=sharedmap&lat=" + paramString2 + "&lon=" + paramString3 + "&title=" + paramString4 + "&loc=" + paramString5 + "&dpid=" + paramString6;
-      paramContext = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(32).a(paramContext).d(str).a("plugin", paramString2, paramString2, paramString2, paramString2).a();
-      paramString2 = StructMsgElementFactory.a(2);
-      paramString2.a("https://pub.idqqimg.com/pc/misc/lbsshare_icon.jpg", paramString4, paramString5);
-      paramContext.addItem(paramString2);
-      paramContext = MessageRecordFactory.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 9501, 100L, paramContext);
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-      return;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramContext.getResources().getString(2131691285));
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString4);
+      paramContext = localStringBuilder.toString();
     }
+    else
+    {
+      paramContext = paramContext.getResources().getString(2131691285);
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mqqapi://app/action?pkg=com.tencent.mobileqq&cmp=com.tencent.biz.PoiMapActivity&type=sharedmap&lat=");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("&lon=");
+    localStringBuilder.append(paramString3);
+    localStringBuilder.append("&title=");
+    localStringBuilder.append(paramString4);
+    localStringBuilder.append("&loc=");
+    localStringBuilder.append(paramString5);
+    localStringBuilder.append("&dpid=");
+    localStringBuilder.append(paramString6);
+    paramString2 = localStringBuilder.toString();
+    paramContext = new AbsShareMsg.Builder(StructMsgForGeneralShare.class).c(32).a(paramContext).d((String)localObject).a("plugin", paramString2, paramString2, paramString2, paramString2).a();
+    paramString2 = StructMsgElementFactory.a(2);
+    paramString2.a("https://pub.idqqimg.com/pc/misc/lbsshare_icon.jpg", paramString4, paramString5);
+    paramContext.addItem(paramString2);
+    paramString2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    paramContext = MessageRecordFactory.a(paramString2, paramString2.getCurrentAccountUin(), paramString1, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 9501, 100L, paramContext);
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramContext, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
   }
   
   public static void a(MessageRecord paramMessageRecord)
@@ -246,34 +269,33 @@ public class DeviceMsgHandle
   {
     long l = System.currentTimeMillis();
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramList, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    if (QLog.isDevelopLevel()) {
-      QLog.d(jdField_a_of_type_JavaLangString, 4, "cost:" + (System.currentTimeMillis() - l));
+    if (QLog.isDevelopLevel())
+    {
+      paramList = jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("cost:");
+      localStringBuilder.append(System.currentTimeMillis() - l);
+      QLog.d(paramList, 4, localStringBuilder.toString());
     }
   }
   
   private boolean a(String paramString)
   {
-    bool = true;
-    if (TextUtils.isEmpty(paramString)) {
+    boolean bool2 = TextUtils.isEmpty(paramString);
+    boolean bool1 = false;
+    if (bool2) {
       return false;
     }
-    for (;;)
+    try
     {
-      try
-      {
-        int i = new JSONObject(paramString).optInt("nodisturb", 0);
-        if (i != 1) {
-          continue;
-        }
+      int i = new JSONObject(paramString).optInt("nodisturb", 0);
+      if (i == 1) {
+        bool1 = true;
       }
-      catch (Exception paramString)
-      {
-        bool = false;
-        continue;
-      }
-      return bool;
-      bool = false;
+      return bool1;
     }
+    catch (Exception paramString) {}
+    return false;
   }
   
   private void b(String paramString, long paramLong)
@@ -314,7 +336,7 @@ public class DeviceMsgHandle
   {
     try
     {
-      Object localObject = new JSONObject(paramDataPoint.mValue);
+      localObject = new JSONObject(paramDataPoint.mValue);
       long l = ((JSONObject)localObject).optLong("msg_time", MessageCache.a());
       localObject = ((JSONObject)localObject).optString("text", " ");
       a(Long.toString(paramDataPoint.mDin), (String)localObject, l, null);
@@ -322,68 +344,73 @@ public class DeviceMsgHandle
     }
     catch (Exception paramDataPoint)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.d(jdField_a_of_type_JavaLangString, 2, "onRecvRawTextMsg parse from json error:" + paramDataPoint.getMessage());
+      Object localObject;
+      if (QLog.isColorLevel())
+      {
+        localObject = jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onRecvRawTextMsg parse from json error:");
+        localStringBuilder.append(paramDataPoint.getMessage());
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
     }
   }
   
   public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo, MessageForDeviceText paramMessageForDeviceText)
   {
     paramQQAppInterface.getMessageFacade().b(paramSessionInfo.jdField_a_of_type_JavaLangString, paramSessionInfo.jdField_a_of_type_Int, paramMessageForDeviceText.uniseq);
-    if ("device_groupchat".equals(paramMessageForDeviceText.extStr)) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a(paramQQAppInterface, paramSessionInfo, paramMessageForDeviceText.msg, bool);
-      return;
-    }
+    boolean bool = "device_groupchat".equals(paramMessageForDeviceText.extStr);
+    a(paramQQAppInterface, paramSessionInfo, paramMessageForDeviceText.msg, bool);
   }
   
-  public void a(QQAppInterface paramQQAppInterface, SessionInfo paramSessionInfo, String paramString, boolean paramBoolean)
+  public void a(QQAppInterface paramQQAppInterface, BaseSessionInfo paramBaseSessionInfo, String paramString, boolean paramBoolean)
   {
     ArrayList localArrayList = BusinessUtils.a(paramString, 560, 20, null, new ArrayList());
     int i = 0;
-    if (i < localArrayList.size())
+    while (i < localArrayList.size())
     {
-      String str1 = (String)localArrayList.get(i);
-      paramString = "";
-      if (str1 != null) {
-        paramString = MessageUtils.a(str1, true, null);
+      paramString = (String)localArrayList.get(i);
+      if (paramString != null) {
+        paramString = MessageUtils.a(paramString, true, null);
+      } else {
+        paramString = "";
       }
       int j = (int)MessageCache.a();
-      str1 = paramQQAppInterface.getCurrentAccountUin();
-      String str2 = paramSessionInfo.jdField_a_of_type_JavaLangString;
-      long l = MessageUtils.a(i);
+      String str1 = paramQQAppInterface.getCurrentAccountUin();
+      String str2 = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+      long l1 = MessageUtils.a(i);
       MessageForDeviceText localMessageForDeviceText = (MessageForDeviceText)MessageRecordFactory.a(-4508);
-      localMessageForDeviceText.init(str1, paramSessionInfo.jdField_a_of_type_JavaLangString, str2, paramString, j, -4508, paramSessionInfo.jdField_a_of_type_Int, i);
+      String str3 = paramBaseSessionInfo.jdField_a_of_type_JavaLangString;
+      long l2 = j;
+      j = paramBaseSessionInfo.jdField_a_of_type_Int;
+      long l3 = i;
+      localMessageForDeviceText.init(str1, str3, str2, paramString, l2, -4508, j, l3);
       localMessageForDeviceText.longMsgCount = localArrayList.size();
       localMessageForDeviceText.longMsgIndex = ((byte)i);
       localMessageForDeviceText.longMsgId = i;
       localMessageForDeviceText.isread = true;
-      localMessageForDeviceText.msgUid = l;
-      localMessageForDeviceText.shmsgseq = MessageUtils.a(i, paramSessionInfo.jdField_a_of_type_Int);
+      localMessageForDeviceText.msgUid = l1;
+      localMessageForDeviceText.shmsgseq = MessageUtils.a(l3, paramBaseSessionInfo.jdField_a_of_type_Int);
       localMessageForDeviceText.issend = 1;
       localMessageForDeviceText.mAnimFlag = true;
       localMessageForDeviceText.mNewAnimFlag = true;
       if (paramBoolean) {
         localMessageForDeviceText.extStr = "device_groupchat";
       }
-      if (!NetworkUtil.g(BaseApplicationImpl.getContext())) {
+      if (!NetworkUtil.isNetworkAvailable(BaseApplicationImpl.getContext())) {
         localMessageForDeviceText.extraflag = 32768;
       }
       paramQQAppInterface.getMessageFacade().a(localMessageForDeviceText, str1);
       a(localMessageForDeviceText);
-      if (localMessageForDeviceText.extraflag == 32768) {}
-      for (;;)
-      {
-        if (localMessageForDeviceText.extraflag != 32768)
-        {
-          l = NetConnInfoCenter.getServerTimeMillis() / 1000L;
-          ((SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(localMessageForDeviceText.msg, Long.parseLong(localMessageForDeviceText.frienduin), l, localMessageForDeviceText.msgseq);
-        }
-        i += 1;
-        break;
+      if (localMessageForDeviceText.extraflag != 32768) {
         paramQQAppInterface.getMsgCache().a(localMessageForDeviceText);
       }
+      if (localMessageForDeviceText.extraflag != 32768)
+      {
+        l1 = NetConnInfoCenter.getServerTimeMillis() / 1000L;
+        ((SmartDeviceProxyMgr)paramQQAppInterface.getBusinessHandler(BusinessHandlerFactory.DEVICEPROXYMGR_HANDLER)).a(localMessageForDeviceText.msg, Long.parseLong(localMessageForDeviceText.frienduin), l1, localMessageForDeviceText.msgseq);
+      }
+      i += 1;
     }
   }
   
@@ -407,64 +434,12 @@ public class DeviceMsgHandle
   
   public void a(String paramString1, String paramString2, long paramLong, boolean paramBoolean1, boolean paramBoolean2, int paramInt)
   {
-    if (paramInt == -1) {
-      return;
-    }
-    int i = 0;
-    MessageForGrayTips localMessageForGrayTips;
-    switch (paramInt)
-    {
-    default: 
-      paramInt = i;
-      localMessageForGrayTips = (MessageForGrayTips)MessageRecordFactory.a(paramInt);
-      localMessageForGrayTips.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramString2, paramLong, paramInt, 9501, paramLong);
-      localMessageForGrayTips.isread = paramBoolean1;
-      if (!paramBoolean2) {
-        break;
-      }
-    }
-    for (paramInt = 1;; paramInt = 0)
-    {
-      localMessageForGrayTips.issend = paramInt;
-      paramString1 = new ArrayList();
-      paramString1.add(localMessageForGrayTips);
-      a(paramString1);
-      return;
-      paramInt = -4505;
-      break;
-      paramInt = -4507;
-      break;
-      paramInt = -4506;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public void a(String paramString1, String paramString2, long paramLong, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
   {
-    MessageForNewGrayTips localMessageForNewGrayTips;
-    if (paramBoolean3)
-    {
-      i = -5001;
-      localMessageForNewGrayTips = (MessageForNewGrayTips)MessageRecordFactory.a(i);
-      localMessageForNewGrayTips.init(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramString1, paramString1, paramString2, paramLong, i, 9501, paramLong);
-      localMessageForNewGrayTips.isread = paramBoolean1;
-      if (!paramBoolean2) {
-        break label104;
-      }
-    }
-    label104:
-    for (int i = 1;; i = 0)
-    {
-      localMessageForNewGrayTips.issend = i;
-      localMessageForNewGrayTips.spans = null;
-      localMessageForNewGrayTips.updateMsgData();
-      paramString1 = new ArrayList();
-      paramString1.add(localMessageForNewGrayTips);
-      a(paramString1);
-      return;
-      i = -5000;
-      break;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
   
   public boolean a(String paramString, DeviceFileObserver paramDeviceFileObserver)
@@ -491,7 +466,7 @@ public class DeviceMsgHandle
     return true;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return BusinessObserver.class;
   }
@@ -526,7 +501,7 @@ public class DeviceMsgHandle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.device.msg.data.DeviceMsgHandle
  * JD-Core Version:    0.7.0.1
  */

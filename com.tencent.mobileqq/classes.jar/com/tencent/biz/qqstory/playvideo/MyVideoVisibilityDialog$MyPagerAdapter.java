@@ -1,8 +1,8 @@
 package com.tencent.biz.qqstory.playvideo;
 
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
+import androidx.viewpager.widget.PagerAdapter;
 import java.util.List;
 
 class MyVideoVisibilityDialog$MyPagerAdapter
@@ -39,7 +39,7 @@ class MyVideoVisibilityDialog$MyPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.MyVideoVisibilityDialog.MyPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

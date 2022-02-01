@@ -2,8 +2,6 @@ package com.tencent.mobileqq.adapter;
 
 import android.view.View;
 import android.view.View.OnClickListener;
-import com.tencent.mobileqq.statistics.ReportTask;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 
 class TroopListAdapter2$4
   implements View.OnClickListener
@@ -12,26 +10,12 @@ class TroopListAdapter2$4
   
   public void onClick(View paramView)
   {
-    Object localObject = paramView.getTag();
-    if (!(localObject instanceof TroopListAdapter2.TroopListViewItemTag)) {}
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localObject = (TroopListAdapter2.TroopListViewItemTag)localObject;
-      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).a != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataTroopTroopInfo, ((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_Int);
-      }
-      if ((((TroopListAdapter2.TroopListViewItemTag)localObject).a != null) && (((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo != null)) {
-        this.a.jdField_a_of_type_ComTencentMobileqqAdapterTroopListAdapter2$OnTroopListClickListener.a(((TroopListAdapter2.TroopListViewItemTag)localObject).a.jdField_a_of_type_ComTencentMobileqqDataDiscussionInfo);
-      }
-      new ReportTask(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).a("dc00899").b("Grp_listNew").c("send_to").d("clk_grp").a(new String[] { "1" }).a();
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.copyTypes(TypeTransformer.java:311)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.fixTypes(TypeTransformer.java:226)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:207)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.TroopListAdapter2.4
  * JD-Core Version:    0.7.0.1
  */

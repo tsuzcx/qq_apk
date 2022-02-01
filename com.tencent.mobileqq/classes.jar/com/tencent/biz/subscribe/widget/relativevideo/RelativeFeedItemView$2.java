@@ -21,11 +21,8 @@ class RelativeFeedItemView$2
   public void onClick(View paramView)
   {
     CertifiedAccountMeta.StFeed localStFeed = (CertifiedAccountMeta.StFeed)this.a.a();
-    if (localStFeed == null) {}
-    for (;;)
+    if (localStFeed != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       SubscribeLaucher.a(this.a.getContext(), localStFeed, 0, TransitionAnimHelper.a(this.a.a, localStFeed.cover.width.get(), localStFeed.cover.height.get()));
       ExtraTypeInfo localExtraTypeInfo = this.a.a();
       if ((localExtraTypeInfo != null) && (localStFeed != null)) {
@@ -36,11 +33,12 @@ class RelativeFeedItemView$2
         }
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativeFeedItemView.2
  * JD-Core Version:    0.7.0.1
  */

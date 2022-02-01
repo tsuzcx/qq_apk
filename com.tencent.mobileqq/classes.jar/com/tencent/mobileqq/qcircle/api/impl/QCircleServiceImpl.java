@@ -23,16 +23,15 @@ import com.tencent.mobileqq.jump.api.IJumpApi;
 import com.tencent.mobileqq.mqq.api.IAccountRuntime;
 import com.tencent.mobileqq.msg.api.IConversationFacade;
 import com.tencent.mobileqq.msg.api.IMessageFacade;
-import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.qcircle.api.IQCircleService;
+import com.tencent.mobileqq.qcircle.api.constant.QCirclePeriodCollect;
 import com.tencent.mobileqq.qcircle.api.data.Option;
 import com.tencent.mobileqq.qcircle.api.data.QCircleRecentDataInterface;
 import com.tencent.mobileqq.qcircle.api.interfaces.QCirclePicStateListener;
 import com.tencent.mobileqq.qcircle.api.requests.QCircleGetMainPageRequest;
 import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.studymode.api.IStudyModeManager;
 import com.tencent.mobileqq.wxapi.api.IWXShareHelper;
@@ -128,14 +127,6 @@ public class QCircleServiceImpl
     return (IQQBaseService)QRoute.api(IQQBaseService.class);
   }
   
-  public static IQZoneService getQZoneService()
-  {
-    if (getAppRunTime() != null) {
-      return (IQZoneService)getAppRunTime().getRuntimeService(IQZoneService.class, "all");
-    }
-    return (IQZoneService)MobileQQ.sMobileQQ.waitAppRuntime(null).getRuntimeService(IQZoneService.class, "all");
-  }
-  
   public static IStudyModeManager getStudyModeMgr()
   {
     return (IStudyModeManager)QRoute.api(IStudyModeManager.class);
@@ -158,15 +149,21 @@ public class QCircleServiceImpl
   
   public void enterBySchemeAction(Context paramContext, String paramString, HashMap<String, String> paramHashMap)
   {
+    if ("openfolder".equals(paramString)) {
+      QCirclePeriodCollect.record("enter_click");
+    }
     QCirclePluginEnter.enterBySchemeAction(paramContext, paramString, paramHashMap, null);
   }
   
   public void enterBySchemeAction(Context paramContext, String paramString, HashMap<String, String> paramHashMap, HashMap<String, byte[]> paramHashMap1)
   {
+    if ("openfolder".equals(paramString)) {
+      QCirclePeriodCollect.record("enter_click");
+    }
     QCirclePluginEnter.enterBySchemeAction(paramContext, paramString, paramHashMap, paramHashMap1);
   }
   
-  public List<Entity> getAllMessages()
+  public List<MessageRecord> getAllMessages()
   {
     return ((IMessageFacade)getAppRunTime().getRuntimeService(IMessageFacade.class, "")).getAllMessages(AppConstants.QCIRCLE_CHAT_UIN, 10008, null);
   }
@@ -174,25 +171,35 @@ public class QCircleServiceImpl
   public Pair<Integer, List<String>> getQCircleChatRedPointInfoFromMessageList()
   {
     ArrayList localArrayList = new ArrayList();
-    if (this.mMessageRecord == null)
+    Object localObject = this.mMessageRecord;
+    int i = 0;
+    if (localObject == null)
     {
       RFLog.i("QCircleServiceImpl", RFLog.USR, "getQCircleChatList null");
       return new Pair(Integer.valueOf(0), localArrayList);
     }
-    IConversationFacade localIConversationFacade = (IConversationFacade)getAppRunTime().getRuntimeService(IConversationFacade.class, "");
+    localObject = (IConversationFacade)getAppRunTime().getRuntimeService(IConversationFacade.class, "");
     Iterator localIterator = this.mMessageRecord.iterator();
-    int i = 0;
     while (localIterator.hasNext())
     {
       MessageRecord localMessageRecord = (MessageRecord)localIterator.next();
       String str = localMessageRecord.senderuin;
-      int j = localIConversationFacade.getUnreadCount(str, localMessageRecord.istroop);
-      if (j > 0) {
+      int k = ((IConversationFacade)localObject).getUnreadCount(str, localMessageRecord.istroop);
+      j = i + k;
+      i = j;
+      if (k > 0)
+      {
         localArrayList.add(str);
+        i = j;
       }
-      i += j;
     }
-    RFLog.i("QCircleServiceImpl", RFLog.USR, "getQCircleChatRedPointNum num:" + i + "getSenderList:" + localArrayList.toString());
+    int j = RFLog.USR;
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("getQCircleChatRedPointNum num:");
+    ((StringBuilder)localObject).append(i);
+    ((StringBuilder)localObject).append("getSenderList:");
+    ((StringBuilder)localObject).append(localArrayList.toString());
+    RFLog.i("QCircleServiceImpl", j, ((StringBuilder)localObject).toString());
     return new Pair(Integer.valueOf(i), localArrayList);
   }
   
@@ -221,19 +228,22 @@ public class QCircleServiceImpl
   protected ArrayList<QCircleRecentDataInterface> makeRecentBaseDataListInner(List<MessageRecord> paramList)
   {
     ArrayList localArrayList = new ArrayList();
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return localArrayList;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      MessageRecord localMessageRecord = (MessageRecord)paramList.next();
-      if (localMessageRecord != null)
+      if (paramList.size() == 0) {
+        return localArrayList;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
       {
-        QCircleRecentChatListData localQCircleRecentChatListData = new QCircleRecentChatListData(localMessageRecord);
-        localQCircleRecentChatListData.update((BaseQQAppInterface)getAppRunTime(), MobileQQ.sMobileQQ.getApplicationContext());
-        localQCircleRecentChatListData.setGiftInfo(QCircleChatGiftManager.getInstance().getUserGiftInfo(localMessageRecord.senderuin));
-        localArrayList.add(localQCircleRecentChatListData);
+        MessageRecord localMessageRecord = (MessageRecord)paramList.next();
+        if (localMessageRecord != null)
+        {
+          QCircleRecentChatListData localQCircleRecentChatListData = new QCircleRecentChatListData(localMessageRecord);
+          localQCircleRecentChatListData.update((BaseQQAppInterface)getAppRunTime(), MobileQQ.sMobileQQ.getApplicationContext());
+          localQCircleRecentChatListData.setGiftInfo(QCircleChatGiftManager.getInstance().getUserGiftInfo(localMessageRecord.senderuin));
+          localArrayList.add(localQCircleRecentChatListData);
+        }
       }
     }
     return localArrayList;
@@ -279,7 +289,7 @@ public class QCircleServiceImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl
  * JD-Core Version:    0.7.0.1
  */

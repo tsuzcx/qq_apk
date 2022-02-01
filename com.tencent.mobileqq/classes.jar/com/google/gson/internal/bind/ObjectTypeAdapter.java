@@ -28,14 +28,15 @@ public final class ObjectTypeAdapter
     {
     default: 
       throw new IllegalStateException();
-    case 1: 
-      localObject = new ArrayList();
-      paramJsonReader.beginArray();
-      while (paramJsonReader.hasNext()) {
-        ((List)localObject).add(read(paramJsonReader));
-      }
-      paramJsonReader.endArray();
-      return localObject;
+    case 6: 
+      paramJsonReader.nextNull();
+      return null;
+    case 5: 
+      return Boolean.valueOf(paramJsonReader.nextBoolean());
+    case 4: 
+      return Double.valueOf(paramJsonReader.nextDouble());
+    case 3: 
+      return paramJsonReader.nextString();
     case 2: 
       localObject = new LinkedTreeMap();
       paramJsonReader.beginObject();
@@ -44,15 +45,14 @@ public final class ObjectTypeAdapter
       }
       paramJsonReader.endObject();
       return localObject;
-    case 3: 
-      return paramJsonReader.nextString();
-    case 4: 
-      return Double.valueOf(paramJsonReader.nextDouble());
-    case 5: 
-      return Boolean.valueOf(paramJsonReader.nextBoolean());
     }
-    paramJsonReader.nextNull();
-    return null;
+    localObject = new ArrayList();
+    paramJsonReader.beginArray();
+    while (paramJsonReader.hasNext()) {
+      ((List)localObject).add(read(paramJsonReader));
+    }
+    paramJsonReader.endArray();
+    return localObject;
   }
   
   public void write(JsonWriter paramJsonWriter, Object paramObject)
@@ -74,7 +74,7 @@ public final class ObjectTypeAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.ObjectTypeAdapter
  * JD-Core Version:    0.7.0.1
  */

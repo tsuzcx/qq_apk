@@ -11,126 +11,160 @@ public class DocumentDataParser
   
   public DocumentData parse(JsonReader paramJsonReader, float paramFloat)
   {
-    String str2 = null;
-    String str1 = null;
-    double d4 = 0.0D;
     DocumentData.Justification localJustification = DocumentData.Justification.CENTER;
+    paramJsonReader.beginObject();
+    String str2 = null;
+    String str1 = str2;
+    double d4 = 0.0D;
+    double d1 = d4;
+    double d2 = d1;
+    double d3 = d2;
     int m = 0;
-    double d3 = 0.0D;
-    double d2 = 0.0D;
     int k = 0;
     int j = 0;
-    double d1 = 0.0D;
     boolean bool = true;
-    paramJsonReader.beginObject();
-    label38:
     while (paramJsonReader.hasNext())
     {
       String str3 = paramJsonReader.nextName();
-      int i = -1;
-      switch (str3.hashCode())
+      int i = str3.hashCode();
+      if (i != 102)
       {
-      }
-      for (;;)
-      {
-        switch (i)
+        if (i != 106)
         {
-        default: 
-          paramJsonReader.skipValue();
-          break label38;
-          if (str3.equals("t"))
+          if (i != 3261)
           {
-            i = 0;
-            continue;
-            if (str3.equals("f"))
+            if (i != 3452)
             {
-              i = 1;
-              continue;
-              if (str3.equals("s"))
+              if (i != 3463)
               {
-                i = 2;
-                continue;
-                if (str3.equals("j"))
+                if (i != 3543)
                 {
-                  i = 3;
-                  continue;
-                  if (str3.equals("tr"))
+                  if (i != 3664)
                   {
-                    i = 4;
-                    continue;
-                    if (str3.equals("lh"))
+                    if (i != 3684)
                     {
-                      i = 5;
-                      continue;
-                      if (str3.equals("ls"))
+                      if (i != 3710)
                       {
-                        i = 6;
-                        continue;
-                        if (str3.equals("fc"))
+                        if (i != 115)
                         {
-                          i = 7;
-                          continue;
-                          if (str3.equals("sc"))
+                          if ((i == 116) && (str3.equals("t")))
                           {
-                            i = 8;
-                            continue;
-                            if (str3.equals("sw"))
-                            {
-                              i = 9;
-                              continue;
-                              if (str3.equals("of")) {
-                                i = 10;
-                              }
-                            }
+                            i = 0;
+                            break label332;
                           }
                         }
+                        else if (str3.equals("s"))
+                        {
+                          i = 2;
+                          break label332;
+                        }
+                      }
+                      else if (str3.equals("tr"))
+                      {
+                        i = 4;
+                        break label332;
                       }
                     }
+                    else if (str3.equals("sw"))
+                    {
+                      i = 9;
+                      break label332;
+                    }
+                  }
+                  else if (str3.equals("sc"))
+                  {
+                    i = 8;
+                    break label332;
                   }
                 }
+                else if (str3.equals("of"))
+                {
+                  i = 10;
+                  break label332;
+                }
+              }
+              else if (str3.equals("ls"))
+              {
+                i = 6;
+                break label332;
               }
             }
+            else if (str3.equals("lh"))
+            {
+              i = 5;
+              break label332;
+            }
           }
-          break;
+          else if (str3.equals("fc"))
+          {
+            i = 7;
+            break label332;
+          }
+        }
+        else if (str3.equals("j"))
+        {
+          i = 3;
+          break label332;
         }
       }
-      str2 = paramJsonReader.nextString();
-      continue;
-      str1 = paramJsonReader.nextString();
-      continue;
-      d4 = paramJsonReader.nextDouble();
-      continue;
-      i = paramJsonReader.nextInt();
-      if ((i > DocumentData.Justification.CENTER.ordinal()) || (i < 0))
+      else if (str3.equals("f"))
       {
-        localJustification = DocumentData.Justification.CENTER;
+        i = 1;
+        break label332;
       }
-      else
+      i = -1;
+      switch (i)
       {
-        localJustification = DocumentData.Justification.values()[i];
-        continue;
-        m = paramJsonReader.nextInt();
-        continue;
-        d3 = paramJsonReader.nextDouble();
-        continue;
-        d2 = paramJsonReader.nextDouble();
-        continue;
-        k = JsonUtils.jsonToColor(paramJsonReader);
-        continue;
-        j = JsonUtils.jsonToColor(paramJsonReader);
-        continue;
-        d1 = paramJsonReader.nextDouble();
-        continue;
+      default: 
+        paramJsonReader.skipValue();
+        break;
+      case 10: 
         bool = paramJsonReader.nextBoolean();
+        break;
+      case 9: 
+        d3 = paramJsonReader.nextDouble();
+        break;
+      case 8: 
+        j = JsonUtils.jsonToColor(paramJsonReader);
+        break;
+      case 7: 
+        k = JsonUtils.jsonToColor(paramJsonReader);
+        break;
+      case 6: 
+        d2 = paramJsonReader.nextDouble();
+        break;
+      case 5: 
+        d1 = paramJsonReader.nextDouble();
+        break;
+      case 4: 
+        m = paramJsonReader.nextInt();
+        break;
+      case 3: 
+        i = paramJsonReader.nextInt();
+        if ((i <= DocumentData.Justification.CENTER.ordinal()) && (i >= 0)) {
+          localJustification = DocumentData.Justification.values()[i];
+        } else {
+          localJustification = DocumentData.Justification.CENTER;
+        }
+        break;
+      case 2: 
+        d4 = paramJsonReader.nextDouble();
+        break;
+      case 1: 
+        str1 = paramJsonReader.nextString();
+        break;
+      case 0: 
+        label332:
+        str2 = paramJsonReader.nextString();
       }
     }
     paramJsonReader.endObject();
-    return new DocumentData(str2, str1, d4, localJustification, m, d3, d2, k, j, d1, bool);
+    return new DocumentData(str2, str1, d4, localJustification, m, d1, d2, k, j, d3, bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.parser.DocumentDataParser
  * JD-Core Version:    0.7.0.1
  */

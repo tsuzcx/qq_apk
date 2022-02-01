@@ -20,16 +20,18 @@ public class DefaultDbManagerImpl
 {
   private String getTableName(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return null;
-    case 0: 
-      return "table_local";
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return null;
+        }
+        return "table_file_md5";
+      }
       return "table_should_update";
     }
-    return "table_file_md5";
+    return "table_local";
   }
   
   public void deleteItem(int paramInt, String paramString)
@@ -46,23 +48,25 @@ public class DefaultDbManagerImpl
   public List<IDbManager.ItemInfo> selectAllItem(int paramInt)
   {
     Object localObject1 = getTableName(paramInt);
-    if (TextUtils.isEmpty((CharSequence)localObject1)) {}
-    do
-    {
+    if (TextUtils.isEmpty((CharSequence)localObject1)) {
       return null;
-      localObject2 = VasUpdateWrapper.getCommonManager().getApplicationContext().getSharedPreferences((String)localObject1, 0).getAll();
-    } while ((localObject2 == null) || (((Map)localObject2).size() <= 0));
-    localObject1 = new ArrayList();
-    Object localObject2 = ((Map)localObject2).entrySet().iterator();
-    while (((Iterator)localObject2).hasNext())
-    {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-      IDbManager.ItemInfo localItemInfo = new IDbManager.ItemInfo();
-      localItemInfo.itemId = ((String)localEntry.getKey());
-      localItemInfo.content = ((String)localEntry.getValue());
-      ((ArrayList)localObject1).add(localItemInfo);
     }
-    return localObject1;
+    Object localObject2 = VasUpdateWrapper.getCommonManager().getApplicationContext().getSharedPreferences((String)localObject1, 0).getAll();
+    if ((localObject2 != null) && (((Map)localObject2).size() > 0))
+    {
+      localObject1 = new ArrayList();
+      localObject2 = ((Map)localObject2).entrySet().iterator();
+      while (((Iterator)localObject2).hasNext())
+      {
+        Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+        IDbManager.ItemInfo localItemInfo = new IDbManager.ItemInfo();
+        localItemInfo.itemId = ((String)localEntry.getKey());
+        localItemInfo.content = ((String)localEntry.getValue());
+        ((ArrayList)localObject1).add(localItemInfo);
+      }
+      return localObject1;
+    }
+    return null;
   }
   
   public String selectItem(int paramInt, String paramString)
@@ -87,7 +91,7 @@ public class DefaultDbManagerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.vas.update.module.impl.DefaultDbManagerImpl
  * JD-Core Version:    0.7.0.1
  */

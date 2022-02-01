@@ -27,12 +27,12 @@ class SearchResultAdapter$Item
   SearchResultAdapter$Item(View paramView)
   {
     this.mContainer = paramView;
-    this.mIcon = ((ImageView)paramView.findViewById(2131371497));
-    this.mCrown = ((ImageView)paramView.findViewById(2131371498));
-    this.mName = ((TextView)paramView.findViewById(2131371500));
-    this.mRanking = ((TextView)paramView.findViewById(2131371501));
-    this.mScore = ((TextView)paramView.findViewById(2131371502));
-    this.mUnit = ((TextView)paramView.findViewById(2131371493));
+    this.mIcon = ((ImageView)paramView.findViewById(2131371117));
+    this.mCrown = ((ImageView)paramView.findViewById(2131371118));
+    this.mName = ((TextView)paramView.findViewById(2131371120));
+    this.mRanking = ((TextView)paramView.findViewById(2131371121));
+    this.mScore = ((TextView)paramView.findViewById(2131371122));
+    this.mUnit = ((TextView)paramView.findViewById(2131371113));
   }
   
   public void gone()
@@ -45,22 +45,30 @@ class SearchResultAdapter$Item
     this.mContainer.setVisibility(0);
     try
     {
-      paramContext = paramContext.getResources().getDrawable(2130840452);
-      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-      localURLDrawableOptions.mLoadingDrawable = paramContext;
-      localURLDrawableOptions.mFailedDrawable = paramContext;
+      paramContext = paramContext.getResources().getDrawable(2130840321);
+      Object localObject = URLDrawable.URLDrawableOptions.obtain();
+      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = paramContext;
+      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = paramContext;
       int i = ViewUtils.a(30.0F);
-      localURLDrawableOptions.mRequestHeight = i;
-      localURLDrawableOptions.mRequestWidth = i;
-      paramContext = URLDrawable.getDrawable(paramStRankingList.avatar.get(), localURLDrawableOptions);
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestHeight = i;
+      ((URLDrawable.URLDrawableOptions)localObject).mRequestWidth = i;
+      paramContext = URLDrawable.getDrawable(paramStRankingList.avatar.get(), (URLDrawable.URLDrawableOptions)localObject);
       paramContext.setTag(URLDrawableDecodeHandler.a(ViewUtils.a(30.0F), ViewUtils.a(30.0F)));
-      paramContext.setDecodeHandler(URLDrawableDecodeHandler.p);
+      paramContext.setDecodeHandler(URLDrawableDecodeHandler.n);
       this.mIcon.setImageDrawable(paramContext);
       label98:
       this.mName.setText(paramStRankingList.nick.get());
-      this.mScore.setText("" + paramStRankingList.score.get());
+      paramContext = this.mScore;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("");
+      ((StringBuilder)localObject).append(paramStRankingList.score.get());
+      paramContext.setText(((StringBuilder)localObject).toString());
       this.mUnit.setText(paramStRankingList.unit.get());
-      this.mRanking.setText(paramStRankingList.ranks.get() + "");
+      paramContext = this.mRanking;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramStRankingList.ranks.get());
+      ((StringBuilder)localObject).append("");
+      paramContext.setText(((StringBuilder)localObject).toString());
       return;
     }
     catch (IllegalArgumentException paramContext)
@@ -78,7 +86,7 @@ class SearchResultAdapter$Item
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.search.ui.SearchResultAdapter.Item
  * JD-Core Version:    0.7.0.1
  */

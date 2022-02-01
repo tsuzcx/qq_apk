@@ -15,10 +15,10 @@ public class SplitFilter
   
   private void updatePosition()
   {
-    float f1 = this.xPos * 2.0F - 1.0F;
-    float f2 = this.xPos;
-    setPositions(new float[] { f1, -1.0F, f1, 1.0F, 1.0F, 1.0F, 1.0F, -1.0F });
-    setTexCords(new float[] { f2, 0.0F, f2, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F });
+    float f1 = this.xPos;
+    float f2 = 2.0F * f1 - 1.0F;
+    setPositions(new float[] { f2, -1.0F, f2, 1.0F, 1.0F, 1.0F, 1.0F, -1.0F });
+    setTexCords(new float[] { f1, 0.0F, f1, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F });
   }
   
   public void RenderProcess(int paramInt1, int paramInt2, int paramInt3, int paramInt4, double paramDouble, Frame paramFrame)
@@ -34,7 +34,7 @@ public class SplitFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.filter.SplitFilter
  * JD-Core Version:    0.7.0.1
  */

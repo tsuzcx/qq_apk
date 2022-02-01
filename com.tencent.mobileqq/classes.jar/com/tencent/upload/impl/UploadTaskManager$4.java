@@ -17,17 +17,22 @@ class UploadTaskManager$4
       synchronized (UploadTaskManager.access$200(this.this$0))
       {
         Iterator localIterator = UploadTaskManager.access$200(this.this$0).iterator();
-        if (localIterator.hasNext()) {
+        while (localIterator.hasNext()) {
           ((AbstractUploadTask)localIterator.next()).cancel();
         }
+        UploadTaskManager.access$200(this.this$0).clear();
+        return;
       }
     }
-    UploadTaskManager.access$200(this.this$0).clear();
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.impl.UploadTaskManager.4
  * JD-Core Version:    0.7.0.1
  */

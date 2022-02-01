@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.mini.launch;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
@@ -23,42 +22,42 @@ class AppBrandProxyImpl$3
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    Intent localIntent;
     if (paramInt == 1)
     {
-      localIntent = new Intent();
-      localIntent.addFlags(805371904);
       paramBundle.setClassLoader(getClass().getClassLoader());
-      localIntent.setComponent((ComponentName)paramBundle.getParcelable("Activity"));
-      paramBundle.remove("receiver");
-      paramBundle.putParcelable("receiver", this.val$resultReceiver);
-      localIntent.putExtras(paramBundle);
-    }
-    try
-    {
-      if (this.val$activity != null) {
-        this.val$activity.startActivity(localIntent);
-      }
-      while ((this.val$appConfig != null) && (this.val$appConfig.isEngineTypeMiniGame()))
+      try
       {
-        AnimUtil.clearAnim(this.val$activity);
+        paramBundle = (Intent)paramBundle.getParcelable("LAUNCH_ACTIVITY_INTENT");
+        if (paramBundle == null)
+        {
+          QLog.e("miniapp-process_AppBrandProxy", 1, "startMiniApp failed, intent = null");
+          return;
+        }
+        paramBundle.setExtrasClassLoader(getClass().getClassLoader());
+        paramBundle.putExtra("receiver", this.val$resultReceiver);
+        if (this.val$activity != null) {
+          this.val$activity.startActivity(paramBundle);
+        } else {
+          BaseApplicationImpl.getApplication().startActivity(paramBundle);
+        }
+        if ((this.val$appConfig != null) && (this.val$appConfig.isEngineTypeMiniGame()))
+        {
+          AnimUtil.clearAnim(this.val$activity);
+          return;
+        }
+        AnimUtil.setOpenAnim(this.val$activity);
         return;
-        BaseApplicationImpl.getApplication().startActivity(localIntent);
       }
-    }
-    catch (Throwable paramBundle)
-    {
-      for (;;)
+      catch (Throwable paramBundle)
       {
-        QLog.e("miniapp-process_AppBrandProxy", 1, "startMiniApp startActivity exception!", paramBundle);
+        QLog.e("miniapp-process_AppBrandProxy", 1, "startMiniApp exception.", paramBundle);
       }
-      AnimUtil.setOpenAnim(this.val$activity);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.AppBrandProxyImpl.3
  * JD-Core Version:    0.7.0.1
  */

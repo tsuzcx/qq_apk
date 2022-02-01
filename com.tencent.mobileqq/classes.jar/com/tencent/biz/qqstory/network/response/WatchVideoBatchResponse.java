@@ -21,29 +21,33 @@ public class WatchVideoBatchResponse
     super(paramRspWatchVideoBatch.result);
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
     paramRspWatchVideoBatch = paramRspWatchVideoBatch.succ_video_list.get();
-    if (paramRspWatchVideoBatch == null) {}
-    for (;;)
-    {
+    if (paramRspWatchVideoBatch == null) {
       return;
-      paramRspWatchVideoBatch = paramRspWatchVideoBatch.iterator();
-      while (paramRspWatchVideoBatch.hasNext())
-      {
-        qqstory_service.VideoItem localVideoItem = (qqstory_service.VideoItem)paramRspWatchVideoBatch.next();
-        ReportWatchVideoManager.InnerVideoItem localInnerVideoItem = new ReportWatchVideoManager.InnerVideoItem();
-        localInnerVideoItem.a = localVideoItem.vid.get().toStringUtf8();
-        this.jdField_a_of_type_JavaUtilList.add(localInnerVideoItem);
-      }
+    }
+    paramRspWatchVideoBatch = paramRspWatchVideoBatch.iterator();
+    while (paramRspWatchVideoBatch.hasNext())
+    {
+      qqstory_service.VideoItem localVideoItem = (qqstory_service.VideoItem)paramRspWatchVideoBatch.next();
+      ReportWatchVideoManager.InnerVideoItem localInnerVideoItem = new ReportWatchVideoManager.InnerVideoItem();
+      localInnerVideoItem.a = localVideoItem.vid.get().toStringUtf8();
+      this.jdField_a_of_type_JavaUtilList.add(localInnerVideoItem);
     }
   }
   
   public String toString()
   {
-    return "WatchVideoBatchResponse{ errorCode=" + this.jdField_a_of_type_Int + " succList=" + this.jdField_a_of_type_JavaUtilList + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("WatchVideoBatchResponse{ errorCode=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(" succList=");
+    localStringBuilder.append(this.jdField_a_of_type_JavaUtilList);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.WatchVideoBatchResponse
  * JD-Core Version:    0.7.0.1
  */

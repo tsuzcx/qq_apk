@@ -39,14 +39,15 @@ public final class GivePayGiftReq
   
   public static GivePayGiftReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new GivePayGiftReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new GivePayGiftReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static GivePayGiftReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -85,45 +86,51 @@ public final class GivePayGiftReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int m = 0;
     int j = super.computeSerializedSize() + CodedOutputByteBufferNano.computeUInt64Size(1, this.anchorUin) + CodedOutputByteBufferNano.computeUInt64Size(2, this.roomId) + CodedOutputByteBufferNano.computeUInt64Size(3, this.subRoomId) + CodedOutputByteBufferNano.computeUInt32Size(4, this.giftType) + CodedOutputByteBufferNano.computeUInt32Size(5, this.giftId) + CodedOutputByteBufferNano.computeUInt32Size(6, this.giftNum);
+    int k = this.fromType;
     int i = j;
-    if (this.fromType != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(7, this.fromType);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(7, k);
     }
+    long l = this.fromWhere;
     j = i;
-    if (this.fromWhere != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(8, this.fromWhere);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(8, l);
     }
+    k = this.comboSeq;
     i = j;
-    if (this.comboSeq != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(9, this.comboSeq);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(9, k);
     }
+    k = this.comboCount;
     j = i;
-    if (this.comboCount != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(10, this.comboCount);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(10, k);
     }
     i = j;
     if (!Arrays.equals(this.headKey, WireFormatNano.EMPTY_BYTES)) {
       i = j + CodedOutputByteBufferNano.computeBytesSize(11, this.headKey);
     }
+    l = this.logoTimestamp;
     j = i;
-    if (this.logoTimestamp != 0L) {
-      j = i + CodedOutputByteBufferNano.computeUInt64Size(12, this.logoTimestamp);
+    if (l != 0L) {
+      j = i + CodedOutputByteBufferNano.computeUInt64Size(12, l);
     }
     i = j;
     if (!Arrays.equals(this.imei, WireFormatNano.EMPTY_BYTES)) {
       i = j + CodedOutputByteBufferNano.computeBytesSize(13, this.imei);
     }
+    k = this.refererId;
     j = i;
-    if (this.refererId != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(14, this.refererId);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(14, k);
     }
+    l = this.playUid;
     i = j;
-    if (this.playUid != 0L) {
-      i = j + CodedOutputByteBufferNano.computeUInt64Size(15, this.playUid);
+    if (l != 0L) {
+      i = j + CodedOutputByteBufferNano.computeUInt64Size(15, l);
     }
     j = i;
     if (!this.billNo.equals("")) {
@@ -133,17 +140,22 @@ public final class GivePayGiftReq
     if (!this.programId.equals("")) {
       i = j + CodedOutputByteBufferNano.computeStringSize(17, this.programId);
     }
+    Object localObject = this.iLiveGiftSites;
+    int m = 0;
     j = i;
-    Object localObject;
-    if (this.iLiveGiftSites != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.iLiveGiftSites.length > 0)
+      if (localObject.length > 0)
       {
         j = 0;
-        while (j < this.iLiveGiftSites.length)
+        for (;;)
         {
-          localObject = this.iLiveGiftSites[j];
+          localObject = this.iLiveGiftSites;
+          if (j >= localObject.length) {
+            break;
+          }
+          localObject = localObject[j];
           k = i;
           if (localObject != null) {
             k = i + CodedOutputByteBufferNano.computeMessageSize(18, (MessageNano)localObject);
@@ -158,20 +170,22 @@ public final class GivePayGiftReq
     if (!Arrays.equals(this.msgTransparent, WireFormatNano.EMPTY_BYTES)) {
       i = j + CodedOutputByteBufferNano.computeBytesSize(19, this.msgTransparent);
     }
-    int k = i;
-    if (this.msgComTrans != null)
+    localObject = this.msgComTrans;
+    k = i;
+    if (localObject != null)
     {
       k = i;
-      if (this.msgComTrans.length > 0)
+      if (localObject.length > 0)
       {
         j = m;
         for (;;)
         {
+          localObject = this.msgComTrans;
           k = i;
-          if (j >= this.msgComTrans.length) {
+          if (j >= localObject.length) {
             break;
           }
-          localObject = this.msgComTrans[j];
+          localObject = localObject[j];
           k = i;
           if (localObject != null) {
             k = i + CodedOutputByteBufferNano.computeMessageSize(20, (MessageNano)localObject);
@@ -189,98 +203,23 @@ public final class GivePayGiftReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
+      int j;
       Object localObject;
       switch (i)
       {
       default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          return this;
         }
-      case 0: 
-        return this;
-      case 8: 
-        this.anchorUin = paramCodedInputByteBufferNano.readUInt64();
         break;
-      case 16: 
-        this.roomId = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 24: 
-        this.subRoomId = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 32: 
-        this.giftType = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 40: 
-        this.giftId = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 48: 
-        this.giftNum = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 56: 
-        this.fromType = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 64: 
-        this.fromWhere = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 72: 
-        this.comboSeq = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 80: 
-        this.comboCount = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 90: 
-        this.headKey = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 96: 
-        this.logoTimestamp = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 106: 
-        this.imei = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 112: 
-        this.refererId = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 120: 
-        this.playUid = paramCodedInputByteBufferNano.readUInt64();
-        break;
-      case 130: 
-        this.billNo = paramCodedInputByteBufferNano.readString();
-        break;
-      case 138: 
-        this.programId = paramCodedInputByteBufferNano.readString();
-        break;
-      case 146: 
-        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 146);
-        if (this.iLiveGiftSites == null) {}
-        for (i = 0;; i = this.iLiveGiftSites.length)
-        {
-          localObject = new ILiveGiftSite[j + i];
-          j = i;
-          if (i != 0)
-          {
-            System.arraycopy(this.iLiveGiftSites, 0, localObject, 0, i);
-            j = i;
-          }
-          while (j < localObject.length - 1)
-          {
-            localObject[j] = new ILiveGiftSite();
-            paramCodedInputByteBufferNano.readMessage(localObject[j]);
-            paramCodedInputByteBufferNano.readTag();
-            j += 1;
-          }
+      case 162: 
+        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 162);
+        localObject = this.msgComTrans;
+        if (localObject == null) {
+          i = 0;
+        } else {
+          i = localObject.length;
         }
-        localObject[j] = new ILiveGiftSite();
-        paramCodedInputByteBufferNano.readMessage(localObject[j]);
-        this.iLiveGiftSites = ((ILiveGiftSite[])localObject);
-        break;
-      case 154: 
-        this.msgTransparent = paramCodedInputByteBufferNano.readBytes();
-        break;
-      }
-      int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 162);
-      if (this.msgComTrans == null) {}
-      for (i = 0;; i = this.msgComTrans.length)
-      {
         localObject = new TransparentMsg[j + i];
         j = i;
         if (i != 0)
@@ -295,48 +234,135 @@ public final class GivePayGiftReq
           paramCodedInputByteBufferNano.readTag();
           j += 1;
         }
+        localObject[j] = new TransparentMsg();
+        paramCodedInputByteBufferNano.readMessage(localObject[j]);
+        this.msgComTrans = ((TransparentMsg[])localObject);
+        break;
+      case 154: 
+        this.msgTransparent = paramCodedInputByteBufferNano.readBytes();
+        break;
+      case 146: 
+        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 146);
+        localObject = this.iLiveGiftSites;
+        if (localObject == null) {
+          i = 0;
+        } else {
+          i = localObject.length;
+        }
+        localObject = new ILiveGiftSite[j + i];
+        j = i;
+        if (i != 0)
+        {
+          System.arraycopy(this.iLiveGiftSites, 0, localObject, 0, i);
+          j = i;
+        }
+        while (j < localObject.length - 1)
+        {
+          localObject[j] = new ILiveGiftSite();
+          paramCodedInputByteBufferNano.readMessage(localObject[j]);
+          paramCodedInputByteBufferNano.readTag();
+          j += 1;
+        }
+        localObject[j] = new ILiveGiftSite();
+        paramCodedInputByteBufferNano.readMessage(localObject[j]);
+        this.iLiveGiftSites = ((ILiveGiftSite[])localObject);
+        break;
+      case 138: 
+        this.programId = paramCodedInputByteBufferNano.readString();
+        break;
+      case 130: 
+        this.billNo = paramCodedInputByteBufferNano.readString();
+        break;
+      case 120: 
+        this.playUid = paramCodedInputByteBufferNano.readUInt64();
+        break;
+      case 112: 
+        this.refererId = paramCodedInputByteBufferNano.readUInt32();
+        break;
+      case 106: 
+        this.imei = paramCodedInputByteBufferNano.readBytes();
+        break;
+      case 96: 
+        this.logoTimestamp = paramCodedInputByteBufferNano.readUInt64();
+        break;
+      case 90: 
+        this.headKey = paramCodedInputByteBufferNano.readBytes();
+        break;
+      case 80: 
+        this.comboCount = paramCodedInputByteBufferNano.readUInt32();
+        break;
+      case 72: 
+        this.comboSeq = paramCodedInputByteBufferNano.readUInt32();
+        break;
+      case 64: 
+        this.fromWhere = paramCodedInputByteBufferNano.readUInt64();
+        break;
+      case 56: 
+        this.fromType = paramCodedInputByteBufferNano.readUInt32();
+        break;
+      case 48: 
+        this.giftNum = paramCodedInputByteBufferNano.readUInt32();
+        break;
+      case 40: 
+        this.giftId = paramCodedInputByteBufferNano.readUInt32();
+        break;
+      case 32: 
+        this.giftType = paramCodedInputByteBufferNano.readUInt32();
+        break;
+      case 24: 
+        this.subRoomId = paramCodedInputByteBufferNano.readUInt64();
+        break;
+      case 16: 
+        this.roomId = paramCodedInputByteBufferNano.readUInt64();
+        break;
+      case 8: 
+        this.anchorUin = paramCodedInputByteBufferNano.readUInt64();
       }
-      localObject[j] = new TransparentMsg();
-      paramCodedInputByteBufferNano.readMessage(localObject[j]);
-      this.msgComTrans = ((TransparentMsg[])localObject);
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    int j = 0;
     paramCodedOutputByteBufferNano.writeUInt64(1, this.anchorUin);
     paramCodedOutputByteBufferNano.writeUInt64(2, this.roomId);
     paramCodedOutputByteBufferNano.writeUInt64(3, this.subRoomId);
     paramCodedOutputByteBufferNano.writeUInt32(4, this.giftType);
     paramCodedOutputByteBufferNano.writeUInt32(5, this.giftId);
     paramCodedOutputByteBufferNano.writeUInt32(6, this.giftNum);
-    if (this.fromType != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(7, this.fromType);
+    int i = this.fromType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(7, i);
     }
-    if (this.fromWhere != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(8, this.fromWhere);
+    long l = this.fromWhere;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(8, l);
     }
-    if (this.comboSeq != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(9, this.comboSeq);
+    i = this.comboSeq;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(9, i);
     }
-    if (this.comboCount != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(10, this.comboCount);
+    i = this.comboCount;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(10, i);
     }
     if (!Arrays.equals(this.headKey, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(11, this.headKey);
     }
-    if (this.logoTimestamp != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(12, this.logoTimestamp);
+    l = this.logoTimestamp;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(12, l);
     }
     if (!Arrays.equals(this.imei, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(13, this.imei);
     }
-    if (this.refererId != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(14, this.refererId);
+    i = this.refererId;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(14, i);
     }
-    if (this.playUid != 0L) {
-      paramCodedOutputByteBufferNano.writeUInt64(15, this.playUid);
+    l = this.playUid;
+    if (l != 0L) {
+      paramCodedOutputByteBufferNano.writeUInt64(15, l);
     }
     if (!this.billNo.equals("")) {
       paramCodedOutputByteBufferNano.writeString(16, this.billNo);
@@ -344,14 +370,18 @@ public final class GivePayGiftReq
     if (!this.programId.equals("")) {
       paramCodedOutputByteBufferNano.writeString(17, this.programId);
     }
-    int i;
-    Object localObject;
-    if ((this.iLiveGiftSites != null) && (this.iLiveGiftSites.length > 0))
+    Object localObject = this.iLiveGiftSites;
+    int j = 0;
+    if ((localObject != null) && (localObject.length > 0))
     {
       i = 0;
-      while (i < this.iLiveGiftSites.length)
+      for (;;)
       {
-        localObject = this.iLiveGiftSites[i];
+        localObject = this.iLiveGiftSites;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
         if (localObject != null) {
           paramCodedOutputByteBufferNano.writeMessage(18, (MessageNano)localObject);
         }
@@ -361,12 +391,17 @@ public final class GivePayGiftReq
     if (!Arrays.equals(this.msgTransparent, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(19, this.msgTransparent);
     }
-    if ((this.msgComTrans != null) && (this.msgComTrans.length > 0))
+    localObject = this.msgComTrans;
+    if ((localObject != null) && (localObject.length > 0))
     {
       i = j;
-      while (i < this.msgComTrans.length)
+      for (;;)
       {
-        localObject = this.msgComTrans[i];
+        localObject = this.msgComTrans;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
         if (localObject != null) {
           paramCodedOutputByteBufferNano.writeMessage(20, (MessageNano)localObject);
         }
@@ -378,7 +413,7 @@ public final class GivePayGiftReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.payGiftSvr.nano.GivePayGiftReq
  * JD-Core Version:    0.7.0.1
  */

@@ -11,47 +11,39 @@ class GameRoomChatPie$21
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
+      if (paramInt != 1)
+      {
+        if ((paramInt == 2) && (this.jdField_a_of_type_Boolean)) {
+          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ax();
+        }
+      }
+      else if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ay();
+      } else {
+        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ax();
+      }
     }
-    for (;;)
+    else if (this.jdField_a_of_type_Boolean) {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.aA();
+    } else {
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.ay();
+    }
+    try
     {
-      try
-      {
-        this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-        return;
-      }
-      catch (Exception paramView)
-      {
-        paramView.printStackTrace();
-      }
-      if (this.jdField_a_of_type_Boolean)
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bu();
-      }
-      else
-      {
-        this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bs();
-        continue;
-        if (this.jdField_a_of_type_Boolean)
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.bs();
-        }
-        else
-        {
-          this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.br();
-          continue;
-          if (this.jdField_a_of_type_Boolean) {
-            this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildGameRoomChatPie.br();
-          }
-        }
-      }
+      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
+      return;
+    }
+    catch (Exception paramView)
+    {
+      paramView.printStackTrace();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.GameRoomChatPie.21
  * JD-Core Version:    0.7.0.1
  */

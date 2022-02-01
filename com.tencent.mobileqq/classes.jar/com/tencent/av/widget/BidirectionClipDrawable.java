@@ -32,14 +32,15 @@ public class BidirectionClipDrawable
   
   private float a(float paramFloat1, float paramFloat2)
   {
-    return a(0.0F, paramFloat2, paramFloat1, this.jdField_b_of_type_Int / 2 + 0, paramFloat2 - this.jdField_b_of_type_Int / 2);
+    int i = this.jdField_b_of_type_Int;
+    return a(0.0F, paramFloat2, paramFloat1, i / 2 + 0, paramFloat2 - i / 2);
   }
   
   private float a(float paramFloat1, float paramFloat2, float paramFloat3, float paramFloat4, float paramFloat5)
   {
-    paramFloat2 = (paramFloat1 + paramFloat2) / 2.0F;
-    paramFloat5 = (paramFloat4 + paramFloat5) / 2.0F;
-    return (paramFloat3 - paramFloat2) * (paramFloat5 - paramFloat4) / (paramFloat2 - paramFloat1) + paramFloat5;
+    paramFloat2 = (paramFloat2 + paramFloat1) / 2.0F;
+    paramFloat5 = (paramFloat5 + paramFloat4) / 2.0F;
+    return paramFloat5 + (paramFloat3 - paramFloat2) * (paramFloat5 - paramFloat4) / (paramFloat2 - paramFloat1);
   }
   
   public void draw(Canvas paramCanvas)
@@ -50,17 +51,15 @@ public class BidirectionClipDrawable
     float f1 = getLevel() / 10000.0F;
     localRect1.set(localRect3);
     localRect2.set(localRect3);
-    float f2;
     if ((this.jdField_a_of_type_Int & 0x1) != 0)
     {
-      f2 = a(localRect3.left + localRect3.width() * f1, localRect3.width());
+      float f2 = a(localRect3.left + localRect3.width() * f1, localRect3.width());
       localRect1.right = ((int)(f2 - this.jdField_b_of_type_Int / 2) + localRect3.width() / 45);
       localRect2.left = ((int)(f2 + this.jdField_b_of_type_Int / 2) - localRect3.width() / 45);
     }
     if ((this.jdField_a_of_type_Int & 0x2) != 0)
     {
-      f2 = localRect3.top;
-      f1 = a(f1 * localRect3.height() + f2, localRect3.height());
+      f1 = a(localRect3.top + localRect3.height() * f1, localRect3.height());
       localRect1.bottom = ((int)(f1 - this.jdField_b_of_type_Int / 2) + localRect3.height() / 45);
       localRect2.top = ((int)(f1 + this.jdField_b_of_type_Int / 2) - localRect3.height() / 45);
     }
@@ -112,7 +111,7 @@ public class BidirectionClipDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.widget.BidirectionClipDrawable
  * JD-Core Version:    0.7.0.1
  */

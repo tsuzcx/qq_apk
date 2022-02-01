@@ -32,9 +32,10 @@ public class LocationSheet
   
   private void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localBaseChatPie != null)
     {
-      this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
+      this.jdField_a_of_type_AndroidContentContext = localBaseChatPie.a();
       this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a();
     }
   }
@@ -47,9 +48,10 @@ public class LocationSheet
   
   private void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null)
+    BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+    if (localBaseChatPie != null)
     {
-      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a());
+      PlusPanelUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localBaseChatPie.a());
       this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.a().setCanLock(false);
     }
     AIOPanelUtiles.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "0X800407F", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int);
@@ -60,26 +62,29 @@ public class LocationSheet
     if (QLog.isColorLevel()) {
       QLog.d("LocationSheet", 2, new Object[] { "show: invoked. ", " sessionInfo: ", this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo });
     }
-    if ((this.jdField_a_of_type_AndroidContentContext == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null)) {
-      return;
-    }
-    Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
-    if (((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof DiscussChatPie)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) || ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int == 0) && (!((FriendsManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+    if ((this.jdField_a_of_type_AndroidContentContext != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie != null))
     {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) {
+        return;
+      }
+      Object localObject = (FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if ((!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof DiscussChatPie)) && (!this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin())) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int != 0) || (((FriendsManager)localObject).b(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString))))
+      {
+        localObject = ActionSheet.create(this.jdField_a_of_type_AndroidContentContext);
+        ((ActionSheet)localObject).addButton(2131718744, 0);
+        ((ActionSheet)localObject).addButton(2131719021, 0);
+        ((ActionSheet)localObject).addCancelButton(2131690728);
+        ((ActionSheet)localObject).setOnButtonClickListener(new LocationSheet.1(this, (ActionSheet)localObject));
+        ((ActionSheet)localObject).show();
+        return;
+      }
       d();
-      return;
     }
-    localObject = ActionSheet.create(this.jdField_a_of_type_AndroidContentContext);
-    ((ActionSheet)localObject).addButton(2131719028, 0);
-    ((ActionSheet)localObject).addButton(2131719303, 0);
-    ((ActionSheet)localObject).addCancelButton(2131690800);
-    ((ActionSheet)localObject).setOnButtonClickListener(new LocationSheet.1(this, (ActionSheet)localObject));
-    ((ActionSheet)localObject).show();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.pluspanel.LocationSheet
  * JD-Core Version:    0.7.0.1
  */

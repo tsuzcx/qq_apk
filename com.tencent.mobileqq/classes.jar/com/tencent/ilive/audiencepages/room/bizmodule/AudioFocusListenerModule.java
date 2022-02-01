@@ -53,6 +53,7 @@ public class AudioFocusListenerModule
   private boolean isFloatWindowShow;
   private boolean isGetAudioFocus;
   private boolean isLittleWindowResume = false;
+  private boolean isNativePageDeactive = false;
   private boolean isNeedBackgroundPlay;
   private AudioManager mAudioManager;
   private AVPlayerServiceInterface mAvPlayer;
@@ -73,79 +74,107 @@ public class AudioFocusListenerModule
       return this.mHostProxyInterface.getHostAppResInterface().getBackgroundPlayNotificationBuilder().setAutoCancel(true).setContentIntent(localPendingIntent);
     }
     int i;
-    StringBuilder localStringBuilder;
-    label186:
-    NotificationCompat.Builder localBuilder;
-    if ((this.mHostProxyInterface.getHostAppResInterface() != null) && (this.mHostProxyInterface.getHostAppResInterface().getHostAppIconId() != 0))
-    {
+    if ((this.mHostProxyInterface.getHostAppResInterface() != null) && (this.mHostProxyInterface.getHostAppResInterface().getHostAppIconId() != 0)) {
       i = this.mHostProxyInterface.getHostAppResInterface().getHostAppIconId();
-      localStringBuilder = new StringBuilder();
-      localStringBuilder.append("【");
-      if ((this.mHostProxyInterface.getHostAppResInterface() == null) || (TextUtils.isEmpty(this.mHostProxyInterface.getHostAppResInterface().getHostAppName()))) {
-        break label284;
-      }
+    } else {
+      i = 2131167394;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("【");
+    if ((this.mHostProxyInterface.getHostAppResInterface() != null) && (!TextUtils.isEmpty(this.mHostProxyInterface.getHostAppResInterface().getHostAppName()))) {
       localObject = this.mHostProxyInterface.getHostAppResInterface().getHostAppName();
-      localStringBuilder.append((String)localObject);
-      localStringBuilder.append("】");
-      localStringBuilder.append("直播正在后台播放音频");
-      localBuilder = this.mNotificationInterface.getNotificationBuilder(this.mContext, NotificationChannelConstant.BACKGROUND_AUDIO).setSmallIcon(i);
-      if ((this.mLiveAnchorInfo != null) && (!TextUtils.isEmpty(this.mLiveAnchorInfo.nickName))) {
-        break label290;
-      }
-    }
-    label284:
-    label290:
-    for (localObject = " 主播正在直播中";; localObject = " " + this.mLiveAnchorInfo.nickName)
-    {
-      return localBuilder.setContentTitle((CharSequence)localObject).setContentText(localStringBuilder).setAutoCancel(true).setContentIntent(localPendingIntent).setPriority(0);
-      i = 2131167374;
-      break;
+    } else {
       localObject = " ";
-      break label186;
     }
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("】");
+    localStringBuilder.append("直播正在后台播放音频");
+    NotificationCompat.Builder localBuilder = this.mNotificationInterface.getNotificationBuilder(this.mContext, NotificationChannelConstant.BACKGROUND_AUDIO).setSmallIcon(i);
+    localObject = this.mLiveAnchorInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((LiveAnchorInfo)localObject).nickName)))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(this.mLiveAnchorInfo.nickName);
+      localObject = ((StringBuilder)localObject).toString();
+    }
+    else
+    {
+      localObject = " 主播正在直播中";
+    }
+    return localBuilder.setContentTitle((CharSequence)localObject).setContentText(localStringBuilder).setAutoCancel(true).setContentIntent(localPendingIntent).setPriority(0);
   }
   
   private boolean isFloatWindowCanShow()
   {
-    if (!this.mHostProxyInterface.getSdkInfoInterface().isFloatWindowEnabled()) {}
-    while (((!this.mFloatWindowConfigInterface.getFloatWindowEnabledAllTime()) && (!this.mFloatWindowConfigInterface.getFloatWindowEnabledOnce())) || (!this.mFloatWindowPermissionInterface.hasFWPermission())) {
+    boolean bool1 = this.mHostProxyInterface.getSdkInfoInterface().isFloatWindowEnabled();
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    return true;
+    if (!this.mFloatWindowConfigInterface.getFloatWindowEnabledAllTime())
+    {
+      bool1 = bool2;
+      if (!this.mFloatWindowConfigInterface.getFloatWindowEnabledOnce()) {}
+    }
+    else
+    {
+      bool1 = bool2;
+      if (this.mFloatWindowPermissionInterface.hasFWPermission()) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private int requestAudioFocus()
   {
     this.onAudioFocusChangeListener = new AudioFocusListenerModule.5(this);
-    return this.mAudioManager.requestAudioFocus(this.onAudioFocusChangeListener, 3, 1);
+    return this.mAudioManager.requestAudioFocus(this.onAudioFocusChangeListener, 3, 2);
   }
   
-  public void onActivityDestroy(LifecycleOwner paramLifecycleOwner)
+  protected void audioFocusGain() {}
+  
+  protected void audioFocusLoss() {}
+  
+  protected boolean isGetAudioFocus()
   {
-    if (this.onAudioFocusChangeListener != null) {
-      this.mAudioManager.abandonAudioFocus(this.onAudioFocusChangeListener);
-    }
-    this.mNotificationInterface.cancel(NotificationIdConstant.BACKGROUND_AUDIO.getValue());
-    ((ActivityLifeService)BizEngineMgr.getInstance().getLiveEngine().getService(ActivityLifeService.class)).removeAppStatusListener(this.appStatusListener);
+    return this.isGetAudioFocus;
   }
   
   public void onActivityStart(LifecycleOwner paramLifecycleOwner)
   {
-    if (!this.isUserVisibleHint) {}
-    do
+    this.isAppBackground = false;
+    paramLifecycleOwner = getLog();
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("Player -- onActivityStart  isUserVisibleHint = ");
+    ((StringBuilder)localObject).append(this.isUserVisibleHint);
+    ((StringBuilder)localObject).append(" isNativePageDeactive = ");
+    ((StringBuilder)localObject).append(this.isNativePageDeactive);
+    ((StringBuilder)localObject).append(" isGetAudioFocus = ");
+    ((StringBuilder)localObject).append(this.isGetAudioFocus);
+    paramLifecycleOwner.i("AudioFocusListener", ((StringBuilder)localObject).toString(), new Object[0]);
+    if (this.isUserVisibleHint)
     {
-      do
-      {
+      if (this.isNativePageDeactive) {
         return;
-      } while ((this.mAudioManager == null) || (this.isGetAudioFocus));
-      if (this.onAudioFocusChangeListener != null) {
-        this.mAudioManager.abandonAudioFocus(this.onAudioFocusChangeListener);
       }
-      requestAudioFocus();
-      this.isGetAudioFocus = true;
-    } while ((this.roomBizContext.getEnterRoomInfo().videoType == VideoType.VIDEO.ordinal()) && (this.mAvPlayer.isPaused()) && (!this.isLittleWindowResume));
-    this.mAvPlayer.resumePlay();
-    this.isLittleWindowResume = false;
+      paramLifecycleOwner = this.mAudioManager;
+      if ((paramLifecycleOwner != null) && (!this.isGetAudioFocus))
+      {
+        localObject = this.onAudioFocusChangeListener;
+        if (localObject != null) {
+          paramLifecycleOwner.abandonAudioFocus((AudioManager.OnAudioFocusChangeListener)localObject);
+        }
+        requestAudioFocus();
+        this.isGetAudioFocus = true;
+        if ((this.roomBizContext.getEnterRoomInfo().videoType == VideoType.VIDEO.ordinal()) && (this.mAvPlayer.isPaused()) && (!this.isLittleWindowResume)) {
+          return;
+        }
+        this.mAvPlayer.resumePlay();
+        this.isLittleWindowResume = false;
+      }
+    }
   }
   
   public void onActivityStop(LifecycleOwner paramLifecycleOwner)
@@ -186,6 +215,11 @@ public class AudioFocusListenerModule
   public void onDestroy()
   {
     super.onDestroy();
+    AudioManager.OnAudioFocusChangeListener localOnAudioFocusChangeListener = this.onAudioFocusChangeListener;
+    if (localOnAudioFocusChangeListener != null) {
+      this.mAudioManager.abandonAudioFocus(localOnAudioFocusChangeListener);
+    }
+    this.mNotificationInterface.cancel(NotificationIdConstant.BACKGROUND_AUDIO.getValue());
     ((ActivityLifeService)BizEngineMgr.getInstance().getLiveEngine().getService(ActivityLifeService.class)).removeAppStatusListener(this.appStatusListener);
   }
   
@@ -202,16 +236,19 @@ public class AudioFocusListenerModule
   public void onExtActive()
   {
     getLog().i("AudioFocusListener", "Player -- onExtActive", new Object[0]);
+    this.isNativePageDeactive = false;
+    this.isAppBackground = false;
     onActivityStart(this.mLifecycleOwner);
   }
   
   public void onExtDeActive()
   {
     getLog().i("AudioFocusListener", "Player -- onExtDeActive", new Object[0]);
+    this.isNativePageDeactive = true;
     onActivityStop(this.mLifecycleOwner);
   }
   
-  public void onInitComponentEvent()
+  protected void onInitComponentEvent()
   {
     super.onInitComponentEvent();
     getEvent().observe(FloatWindowStateEvent.class, new AudioFocusListenerModule.3(this));
@@ -221,10 +258,12 @@ public class AudioFocusListenerModule
   
   public void onSwitchRoom(SwitchRoomInfo paramSwitchRoomInfo)
   {
-    if ((this.mAudioManager != null) && (!this.isGetAudioFocus))
+    paramSwitchRoomInfo = this.mAudioManager;
+    if ((paramSwitchRoomInfo != null) && (!this.isGetAudioFocus))
     {
-      if (this.onAudioFocusChangeListener != null) {
-        this.mAudioManager.abandonAudioFocus(this.onAudioFocusChangeListener);
+      AudioManager.OnAudioFocusChangeListener localOnAudioFocusChangeListener = this.onAudioFocusChangeListener;
+      if (localOnAudioFocusChangeListener != null) {
+        paramSwitchRoomInfo.abandonAudioFocus(localOnAudioFocusChangeListener);
       }
       requestAudioFocus();
       this.isGetAudioFocus = true;
@@ -233,7 +272,7 @@ public class AudioFocusListenerModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.AudioFocusListenerModule
  * JD-Core Version:    0.7.0.1
  */

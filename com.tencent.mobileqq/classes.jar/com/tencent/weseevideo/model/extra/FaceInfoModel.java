@@ -65,18 +65,18 @@ public final class FaceInfoModel
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof FaceInfoModel))
       {
         paramObject = (FaceInfoModel)paramObject;
-        if ((this.mWidth != paramObject.mWidth) || (this.mHeight != paramObject.mHeight) || (!Intrinsics.areEqual(this.mFacePoints, paramObject.mFacePoints)) || (Double.compare(this.mFaceDetectScale, paramObject.mFaceDetectScale) != 0)) {}
+        if ((this.mWidth == paramObject.mWidth) && (this.mHeight == paramObject.mHeight) && (Intrinsics.areEqual(this.mFacePoints, paramObject.mFacePoints)) && (Double.compare(this.mFaceDetectScale, paramObject.mFaceDetectScale) == 0)) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
@@ -84,23 +84,35 @@ public final class FaceInfoModel
     int j = this.mWidth;
     int k = this.mHeight;
     List localList = this.mFacePoints;
-    if (localList != null) {}
-    for (int i = localList.hashCode();; i = 0)
-    {
-      long l = Double.doubleToLongBits(this.mFaceDetectScale);
-      return (i + (j * 31 + k) * 31) * 31 + (int)(l ^ l >>> 32);
+    int i;
+    if (localList != null) {
+      i = localList.hashCode();
+    } else {
+      i = 0;
     }
+    long l = Double.doubleToLongBits(this.mFaceDetectScale);
+    return ((j * 31 + k) * 31 + i) * 31 + (int)(l ^ l >>> 32);
   }
   
   @NotNull
   public String toString()
   {
-    return "FaceInfoModel(mWidth=" + this.mWidth + ", mHeight=" + this.mHeight + ", mFacePoints=" + this.mFacePoints + ", mFaceDetectScale=" + this.mFaceDetectScale + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FaceInfoModel(mWidth=");
+    localStringBuilder.append(this.mWidth);
+    localStringBuilder.append(", mHeight=");
+    localStringBuilder.append(this.mHeight);
+    localStringBuilder.append(", mFacePoints=");
+    localStringBuilder.append(this.mFacePoints);
+    localStringBuilder.append(", mFaceDetectScale=");
+    localStringBuilder.append(this.mFaceDetectScale);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.extra.FaceInfoModel
  * JD-Core Version:    0.7.0.1
  */

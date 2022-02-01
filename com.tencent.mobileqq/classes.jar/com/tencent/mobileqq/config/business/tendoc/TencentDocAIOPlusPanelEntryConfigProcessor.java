@@ -54,7 +54,10 @@ public class TencentDocAIOPlusPanelEntryConfigProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, "AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("AIO_PLUSPENAL_TENCENTDOC_ENRTY_CONFIG failed, resultCode:");
+    localStringBuilder.append(paramInt);
+    QLog.d("TencentDocAIOPlusPanelEntryConfigProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -64,7 +67,7 @@ public class TencentDocAIOPlusPanelEntryConfigProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.tendoc.TencentDocAIOPlusPanelEntryConfigProcessor
  * JD-Core Version:    0.7.0.1
  */

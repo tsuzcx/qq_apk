@@ -8,10 +8,10 @@ public final class PathUtils
 {
   public static String getCacheDirectory(Context paramContext)
   {
-    if (Build.VERSION.SDK_INT >= 21) {
-      return paramContext.getCodeCacheDir().getPath();
+    if (Build.VERSION.SDK_INT >= 21) {}
+    for (paramContext = paramContext.getCodeCacheDir();; paramContext = paramContext.getCacheDir()) {
+      return paramContext.getPath();
     }
-    return paramContext.getCacheDir().getPath();
   }
   
   public static String getDataDirectory(Context paramContext)
@@ -26,7 +26,7 @@ public final class PathUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.util.PathUtils
  * JD-Core Version:    0.7.0.1
  */

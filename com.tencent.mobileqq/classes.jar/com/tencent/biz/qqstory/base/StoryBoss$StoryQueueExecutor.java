@@ -31,12 +31,22 @@ class StoryBoss$StoryQueueExecutor
   {
     this.jdField_a_of_type_JavaUtilQueue.offer(paramRunnable);
     int i = this.jdField_a_of_type_JavaUtilQueue.size();
-    if (i > Runtime.getRuntime().availableProcessors()) {
-      SLog.b(this.jdField_a_of_type_JavaLangString, "too many runnable remained in the queue, size " + i);
+    StringBuilder localStringBuilder;
+    if (i > Runtime.getRuntime().availableProcessors())
+    {
+      paramRunnable = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("too many runnable remained in the queue, size ");
+      localStringBuilder.append(i);
+      SLog.b(paramRunnable, localStringBuilder.toString());
     }
     if (this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get() <= this.jdField_a_of_type_Int)
     {
-      SLog.b(this.jdField_a_of_type_JavaLangString, "current number of task threshold is " + this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      paramRunnable = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("current number of task threshold is ");
+      localStringBuilder.append(this.jdField_a_of_type_JavaUtilConcurrentAtomicAtomicInteger.get());
+      SLog.b(paramRunnable, localStringBuilder.toString());
       while (!this.jdField_a_of_type_JavaUtilQueue.isEmpty())
       {
         paramRunnable = (Runnable)this.jdField_a_of_type_JavaUtilQueue.poll();
@@ -49,7 +59,7 @@ class StoryBoss$StoryQueueExecutor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.StoryBoss.StoryQueueExecutor
  * JD-Core Version:    0.7.0.1
  */

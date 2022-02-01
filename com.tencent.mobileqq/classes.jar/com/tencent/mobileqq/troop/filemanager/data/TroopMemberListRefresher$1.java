@@ -11,18 +11,23 @@ class TroopMemberListRefresher$1
 {
   TroopMemberListRefresher$1(TroopMemberListRefresher paramTroopMemberListRefresher) {}
   
-  public void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
+  protected void onUpdateTroopGetMemberList(String paramString, boolean paramBoolean, List<TroopMemberInfo> paramList, int paramInt1, long paramLong, int paramInt2)
   {
-    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {}
-    while ((!paramBoolean) || (this.a.jdField_a_of_type_AndroidOsHandler == null)) {
+    if ((!TextUtils.isEmpty(this.a.jdField_a_of_type_JavaLangString)) && (!this.a.jdField_a_of_type_JavaLangString.equals(paramString))) {
       return;
     }
-    ThreadManager.post(new TroopMemberListRefresher.1.1(this), 5, null, true);
+    if (paramBoolean)
+    {
+      if (this.a.jdField_a_of_type_AndroidOsHandler == null) {
+        return;
+      }
+      ThreadManager.post(new TroopMemberListRefresher.1.1(this), 5, null, true);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.filemanager.data.TroopMemberListRefresher.1
  * JD-Core Version:    0.7.0.1
  */

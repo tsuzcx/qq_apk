@@ -2,7 +2,6 @@ package com.tencent.mobileqq.shortvideo.mediacodec;
 
 import android.content.Context;
 import android.os.Build.VERSION;
-import com.tencent.av.core.VcControllerImpl;
 import com.tencent.av.mediacodec.AndroidCodec;
 import com.tencent.av.mediacodec.DeviceCheck;
 
@@ -14,14 +13,14 @@ public class ShortVideoCodec
   
   public static int checkSupportMediaCodecFeature(Context paramContext)
   {
-    if (mMediaCodecFeature >= 0) {
-      return mMediaCodecFeature;
+    int i = mMediaCodecFeature;
+    if (i >= 0) {
+      return i;
     }
     mMediaCodecFeature = 0;
     if (paramContext == null) {
       return mMediaCodecFeature;
     }
-    VcControllerImpl.loadLibrary(paramContext);
     if (Build.VERSION.SDK_INT < 16) {
       return mMediaCodecFeature;
     }
@@ -45,7 +44,7 @@ public class ShortVideoCodec
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.mediacodec.ShortVideoCodec
  * JD-Core Version:    0.7.0.1
  */

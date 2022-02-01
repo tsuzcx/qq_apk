@@ -12,23 +12,19 @@ class SubscribeDraftManager$7
   
   public void OnClick(View paramView, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt == 0)
     {
-    }
-    for (;;)
-    {
-      this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
-      do
-      {
+      if (FastClickUtils.a("subScribe_delete_draft")) {
         return;
-      } while (FastClickUtils.a("subScribe_delete_draft"));
+      }
       this.jdField_a_of_type_ComTencentBizSubscribeUtilsSubscribeDraftManager.a(this.jdField_a_of_type_JavaLangString, this.b, new SubscribeDraftManager.7.1(this));
     }
+    this.jdField_a_of_type_ComTencentWidgetActionSheet.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.SubscribeDraftManager.7
  * JD-Core Version:    0.7.0.1
  */

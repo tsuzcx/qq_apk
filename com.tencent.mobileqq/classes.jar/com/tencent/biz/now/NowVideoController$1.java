@@ -14,18 +14,17 @@ class NowVideoController$1
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
-    this.a.a = true;
-    NowVideoController.a(this.a);
+    paramMessage = this.a;
+    paramMessage.a = true;
+    NowVideoController.a(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.now.NowVideoController.1
  * JD-Core Version:    0.7.0.1
  */

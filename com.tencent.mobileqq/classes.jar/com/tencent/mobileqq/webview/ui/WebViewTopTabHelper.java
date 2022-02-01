@@ -20,28 +20,22 @@ public class WebViewTopTabHelper
   public void a(int paramInt)
   {
     TouchWebView localTouchWebView = this.jdField_a_of_type_ComTencentMobileqqWebviewSwiftComponentSwiftBrowserUIStyleHandler.a();
-    JSONObject localJSONObject1;
-    JSONObject localJSONObject2;
     if ((localTouchWebView != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      localJSONObject1 = new JSONObject();
-      localJSONObject2 = new JSONObject();
-    }
-    try
-    {
-      localJSONObject1.put("code", 0);
-      localJSONObject1.put("message", "ok");
-      localJSONObject2.put("subIndex", paramInt);
-      localJSONObject1.put("data", localJSONObject2);
-      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      JSONObject localJSONObject1 = new JSONObject();
+      JSONObject localJSONObject2 = new JSONObject();
+      try
+      {
+        localJSONObject1.put("code", 0);
+        localJSONObject1.put("message", "ok");
+        localJSONObject2.put("subIndex", paramInt);
+        localJSONObject1.put("data", localJSONObject2);
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
+      localTouchWebView.callJs(WebViewPlugin.toJsScript(this.jdField_a_of_type_JavaLangString, localJSONObject1, null));
     }
   }
   
@@ -52,14 +46,15 @@ public class WebViewTopTabHelper
       if (!TextUtils.isEmpty(paramString)) {
         this.jdField_a_of_type_JavaLangString = paramString;
       }
-      return;
     }
-    this.jdField_a_of_type_JavaLangString = paramString;
+    else {
+      this.jdField_a_of_type_JavaLangString = paramString;
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.ui.WebViewTopTabHelper
  * JD-Core Version:    0.7.0.1
  */

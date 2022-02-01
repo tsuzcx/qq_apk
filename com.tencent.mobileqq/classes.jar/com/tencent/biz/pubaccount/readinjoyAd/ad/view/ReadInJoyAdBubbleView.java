@@ -9,7 +9,8 @@ import android.widget.TextView;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.VafContext;
 import com.tencent.biz.pubaccount.readinjoy.view.proteus.virtualview.core.ViewBase;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -30,6 +31,7 @@ public class ReadInJoyAdBubbleView
   private ReadInJoyAdBubbleView.UpdateUIHandler jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBubbleView$UpdateUIHandler;
   private List<ReadInJoyAdBubbleView.SingleBubble> jdField_a_of_type_JavaUtilList = new ArrayList();
   private Queue<String> jdField_a_of_type_JavaUtilQueue = new LinkedList();
+  private boolean jdField_a_of_type_Boolean = true;
   private TextView b;
   private TextView c;
   
@@ -37,15 +39,15 @@ public class ReadInJoyAdBubbleView
   {
     super(paramVafContext);
     this.jdField_a_of_type_AndroidContentContext = paramVafContext.getContext();
-    a();
+    b();
   }
   
-  private void a()
+  private void b()
   {
-    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131560170, null);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362048));
-    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362049));
-    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362050));
+    this.jdField_a_of_type_AndroidViewView = ((LayoutInflater)this.jdField_a_of_type_AndroidContentContext.getSystemService("layout_inflater")).inflate(2131560056, null);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362063));
+    this.b = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362064));
+    this.c = ((TextView)this.jdField_a_of_type_AndroidViewView.findViewById(2131362065));
     ReadInJoyAdBubbleView.SingleBubble localSingleBubble1 = new ReadInJoyAdBubbleView.SingleBubble(this.jdField_a_of_type_AndroidWidgetTextView, 0, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilQueue);
     ReadInJoyAdBubbleView.SingleBubble localSingleBubble2 = new ReadInJoyAdBubbleView.SingleBubble(this.b, -1, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilQueue);
     ReadInJoyAdBubbleView.SingleBubble localSingleBubble3 = new ReadInJoyAdBubbleView.SingleBubble(this.c, -2, this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaUtilQueue);
@@ -55,7 +57,7 @@ public class ReadInJoyAdBubbleView
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBubbleView$UpdateUIHandler = new ReadInJoyAdBubbleView.UpdateUIHandler(this);
   }
   
-  private void b()
+  private void c()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     while (localIterator.hasNext()) {
@@ -63,47 +65,58 @@ public class ReadInJoyAdBubbleView
     }
   }
   
-  private void c()
+  private void d()
   {
-    d();
+    e();
     this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBubbleView$UpdateUIHandler.removeCallbacksAndMessages(null);
     this.jdField_a_of_type_JavaUtilQueue.clear();
     Object localObject = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo.mAdExtInfo;
     if (localObject == null)
     {
-      ReadInJoyAdLog.a("ReadInJoyAdBubbleView", "adExtInfo is empty");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdBubbleView", "adExtInfo is empty");
       return;
-    }
-    try
-    {
-      localObject = new JSONObject((String)localObject).optJSONArray("ad_bubble_texts");
-      if ((localObject == null) || (((JSONArray)localObject).length() == 0))
-      {
-        ReadInJoyAdLog.a("ReadInJoyAdBubbleView", "parseBuuble JSONArray is empty");
-        return;
-      }
-    }
-    catch (Exception localException)
-    {
-      localException.printStackTrace();
     }
     for (;;)
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBubbleView$UpdateUIHandler.sendEmptyMessage(2);
-      return;
-      int i = 0;
-      while (i < localException.length())
+      try
       {
-        String str = (String)localException.get(i);
-        if (!TextUtils.isEmpty(str)) {
+        localObject = new JSONObject((String)localObject).optJSONArray("ad_bubble_texts");
+        if (localObject != null)
+        {
+          if (((JSONArray)localObject).length() != 0) {
+            break label157;
+          }
+          continue;
+          if (i >= ((JSONArray)localObject).length()) {
+            continue;
+          }
+          String str = (String)((JSONArray)localObject).get(i);
+          if (TextUtils.isEmpty(str)) {
+            break label162;
+          }
           this.jdField_a_of_type_JavaUtilQueue.offer(str);
+          break label162;
         }
-        i += 1;
+        ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoyAdBubbleView", "parseBuuble JSONArray is empty");
+        return;
       }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+        if (this.jdField_a_of_type_Boolean) {
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyAdAdViewReadInJoyAdBubbleView$UpdateUIHandler.sendEmptyMessage(2);
+        }
+        return;
+      }
+      label157:
+      int i = 0;
+      continue;
+      label162:
+      i += 1;
     }
   }
   
-  private void d()
+  private void e()
   {
     Iterator localIterator = this.jdField_a_of_type_JavaUtilList.iterator();
     int i = 0;
@@ -114,6 +127,27 @@ public class ReadInJoyAdBubbleView
       localSingleBubble.jdField_a_of_type_Int = i;
       i -= 1;
     }
+  }
+  
+  public void a()
+  {
+    this.jdField_a_of_type_Boolean = true;
+    try
+    {
+      d();
+      return;
+    }
+    catch (Exception localException)
+    {
+      label10:
+      break label10;
+    }
+    QLog.d("ReadInJoyAdBubbleView", 2, "ReadInJoyAdBubbleView startBubble failed");
+  }
+  
+  public void a(boolean paramBoolean)
+  {
+    this.jdField_a_of_type_Boolean = false;
   }
   
   public int getComMeasuredHeight()
@@ -148,36 +182,28 @@ public class ReadInJoyAdBubbleView
     super.onParseValueFinished();
   }
   
-  public boolean setAttribute(int paramInt, Object paramObject)
+  protected boolean setAttribute(int paramInt, Object paramObject)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    switch (paramInt)
-    {
-    default: 
-      bool1 = super.setAttribute(paramInt, paramObject);
+    if (paramInt != 1042) {
+      return super.setAttribute(paramInt, paramObject);
     }
-    for (;;)
-    {
-      return bool1;
-      bool1 = bool2;
-      if (paramObject != null)
+    if (paramObject != null) {
+      try
       {
-        bool1 = bool2;
-        try
+        if ((paramObject instanceof AdvertisementInfo))
         {
-          if ((paramObject instanceof AdvertisementInfo))
-          {
-            this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((AdvertisementInfo)paramObject);
-            c();
-            return true;
-          }
+          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = ((AdvertisementInfo)paramObject);
+          d();
+          return true;
         }
-        catch (Exception paramObject)
-        {
-          this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = null;
-          QLog.d("ReadInJoyAdBubbleView", 1, "setAttribute STR_ID_SET_AD_BANNER exception " + paramObject.toString());
-        }
+      }
+      catch (Exception paramObject)
+      {
+        this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyStructAdvertisementInfo = null;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("setAttribute STR_ID_SET_AD_BANNER exception ");
+        localStringBuilder.append(paramObject.toString());
+        QLog.d("ReadInJoyAdBubbleView", 1, localStringBuilder.toString());
       }
     }
     return true;
@@ -185,7 +211,7 @@ public class ReadInJoyAdBubbleView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoyAd.ad.view.ReadInJoyAdBubbleView
  * JD-Core Version:    0.7.0.1
  */

@@ -41,8 +41,8 @@ public class WebUiStrategy2HeaderAdapter
           localJSONObject2.put("msgTime", l);
         }
         paramQQGameMsgInfo.arkMetaList = localJSONObject1.toString();
+        return;
       }
-      return;
     }
     catch (JSONException paramQQGameMsgInfo)
     {
@@ -78,41 +78,40 @@ public class WebUiStrategy2HeaderAdapter
   
   public Object instantiateItem(ViewGroup paramViewGroup, int paramInt)
   {
-    if ((this.mMsgInfoList == null) || (this.mMsgInfoList.size() == 0))
+    if ((this.mMsgInfoList != null) && (this.mMsgInfoList.size() != 0))
     {
-      localObject = createEmptyView();
-      paramViewGroup.addView((View)localObject);
-      paramViewGroup = (ViewGroup)localObject;
-      return paramViewGroup;
-    }
-    Object localObject = (IHeaderView)this.mHeaderRecords.get(paramInt);
-    if (localObject == null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("WebUiStrategy2HeaderAdapter", 2, "headerView = null");
+      localObject1 = (IHeaderView)this.mHeaderRecords.get(paramInt);
+      if (localObject1 == null)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("WebUiStrategy2HeaderAdapter", 2, "headerView = null");
+        }
+        return null;
       }
-      return null;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("WebUiStrategy2HeaderAdapter", 2, "headerView = " + localObject.getClass().getSimpleName());
-    }
-    if (((View)localObject).getParent() != null) {
-      ((ViewGroup)((View)localObject).getParent()).removeView((View)localObject);
-    }
-    if ((localObject instanceof GameArkView)) {
-      modifyArkViewLayout((GameArkView)localObject, paramViewGroup, paramInt);
-    }
-    for (;;)
-    {
-      paramViewGroup = (ViewGroup)localObject;
-      if (paramInt != 0) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("headerView = ");
+        ((StringBuilder)localObject2).append(localObject1.getClass().getSimpleName());
+        QLog.d("WebUiStrategy2HeaderAdapter", 2, ((StringBuilder)localObject2).toString());
       }
-      initArk(0);
-      return localObject;
-      RelativeLayout.LayoutParams localLayoutParams = new RelativeLayout.LayoutParams(-2, -2);
-      paramViewGroup.addView((View)localObject, localLayoutParams);
+      Object localObject2 = (View)localObject1;
+      if (((View)localObject2).getParent() != null) {
+        ((ViewGroup)((View)localObject2).getParent()).removeView((View)localObject2);
+      }
+      if ((localObject1 instanceof GameArkView)) {
+        modifyArkViewLayout((GameArkView)localObject1, paramViewGroup, paramInt);
+      } else {
+        paramViewGroup.addView((View)localObject2, new RelativeLayout.LayoutParams(-2, -2));
+      }
+      if (paramInt == 0) {
+        initArk(0);
+      }
+      return localObject1;
     }
+    Object localObject1 = createEmptyView();
+    paramViewGroup.addView((View)localObject1);
+    return localObject1;
   }
   
   public boolean isViewFromObject(View paramView, Object paramObject)
@@ -141,7 +140,7 @@ public class WebUiStrategy2HeaderAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.minigame.publicaccount.adapter.WebUiStrategy2HeaderAdapter
  * JD-Core Version:    0.7.0.1
  */

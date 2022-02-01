@@ -8,30 +8,30 @@ class HiddenChatFragment$4
 {
   HiddenChatFragment$4(HiddenChatFragment paramHiddenChatFragment) {}
   
-  public void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
+  protected void onSetHiddenChatSwitch(boolean paramBoolean, Object[] paramArrayOfObject)
   {
-    if ((paramArrayOfObject == null) || (paramArrayOfObject.length < 2)) {
-      QLog.e("tag_hidden_chat", 1, "data not right");
-    }
-    do
+    if ((paramArrayOfObject != null) && (paramArrayOfObject.length >= 2))
     {
-      do
+      String[] arrayOfString = (String[])paramArrayOfObject[0];
+      paramArrayOfObject = (boolean[])paramArrayOfObject[1];
+      if (QLog.isColorLevel()) {
+        QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
+      }
+      if (paramBoolean)
       {
-        return;
-        String[] arrayOfString = (String[])paramArrayOfObject[0];
-        paramArrayOfObject = (boolean[])paramArrayOfObject[1];
+        this.a.a();
         if (QLog.isColorLevel()) {
-          QLog.d("tag_hidden_chat", 2, new Object[] { "res:", Boolean.valueOf(paramBoolean), " len1:", Integer.valueOf(arrayOfString.length), " len2:", Integer.valueOf(paramArrayOfObject.length) });
+          QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
         }
-      } while (!paramBoolean);
-      this.a.a();
-    } while (!QLog.isColorLevel());
-    QLog.d("tag_hidden_chat", 2, "onSetHiddenChatSwitch");
+      }
+      return;
+    }
+    QLog.e("tag_hidden_chat", 1, "data not right");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.hiddenchat.HiddenChatFragment.4
  * JD-Core Version:    0.7.0.1
  */

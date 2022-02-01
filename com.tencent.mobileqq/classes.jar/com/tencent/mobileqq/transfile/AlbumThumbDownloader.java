@@ -27,44 +27,34 @@ public class AlbumThumbDownloader
   public Object decodeFile(File paramFile, DownloadParams paramDownloadParams, URLDrawableHandler paramURLDrawableHandler)
   {
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (!LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
-      throw new RuntimeException("Decode info is invalide");
+    if (LocalMediaInfo.class.isInstance(paramDownloadParams.tag)) {
+      paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
     }
-    paramURLDrawableHandler = (LocalMediaInfo)paramDownloadParams.tag;
-    for (;;)
+    try
     {
-      try
-      {
-        paramFile = paramDownloadParams.url.getRef();
-        if ("VIDEO".equals(paramFile))
-        {
-          paramFile = new VideoDecoder(localBaseApplication, paramURLDrawableHandler);
-          paramFile = AlbumThumbManager.getInstance(localBaseApplication).getThumb(paramDownloadParams.url, paramFile, paramDownloadParams);
-          if ((paramFile == null) || (paramURLDrawableHandler == null)) {
-            break;
-          }
-          paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
-          return paramFile;
-        }
-        if ("FLOW_THUMB".equals(paramFile))
-        {
-          paramFile = new FlowThumbDecoder(localBaseApplication, paramURLDrawableHandler);
-          continue;
-        }
-        if (!"APP_VIDEO".equals(paramFile)) {
-          break label153;
-        }
+      paramFile = paramDownloadParams.url.getRef();
+      if ("VIDEO".equals(paramFile)) {
+        paramFile = new VideoDecoder(localBaseApplication, paramURLDrawableHandler);
+      } else if ("FLOW_THUMB".equals(paramFile)) {
+        paramFile = new FlowThumbDecoder(localBaseApplication, paramURLDrawableHandler);
+      } else if ("APP_VIDEO".equals(paramFile)) {
+        paramFile = new AppVideoDecoder(localBaseApplication, paramURLDrawableHandler);
+      } else {
+        paramFile = new ThumbDecoder(localBaseApplication, paramURLDrawableHandler);
       }
-      catch (NumberFormatException paramFile)
-      {
-        throw new RuntimeException("Decode type is invalid");
+      paramFile = AlbumThumbManager.getInstance(localBaseApplication).getThumb(paramDownloadParams.url, paramFile, paramDownloadParams);
+      if ((paramFile != null) && (paramURLDrawableHandler != null)) {
+        paramURLDrawableHandler.thumbSize = paramFile.getByteCount();
       }
-      paramFile = new AppVideoDecoder(localBaseApplication, paramURLDrawableHandler);
-      continue;
-      label153:
-      paramFile = new ThumbDecoder(localBaseApplication, paramURLDrawableHandler);
+      return paramFile;
     }
-    return paramFile;
+    catch (NumberFormatException paramFile)
+    {
+      label146:
+      break label146;
+    }
+    throw new RuntimeException("Decode type is invalid");
+    throw new RuntimeException("Decode info is invalide");
   }
   
   public boolean hasDiskFile(DownloadParams paramDownloadParams)
@@ -79,7 +69,7 @@ public class AlbumThumbDownloader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AlbumThumbDownloader
  * JD-Core Version:    0.7.0.1
  */

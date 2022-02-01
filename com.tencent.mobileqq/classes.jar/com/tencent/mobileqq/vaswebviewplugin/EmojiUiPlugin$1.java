@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.vaswebviewplugin;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.emosm.Client.OnRemoteRespObserver;
+import com.tencent.mobileqq.emosm.OnRemoteRespObserver;
 import com.tencent.qphone.base.util.QLog;
 
 class EmojiUiPlugin$1
-  extends Client.OnRemoteRespObserver
+  extends OnRemoteRespObserver
 {
   EmojiUiPlugin$1(EmojiUiPlugin paramEmojiUiPlugin) {}
   
@@ -22,37 +22,37 @@ class EmojiUiPlugin$1
   
   public void onResponse(Bundle paramBundle)
   {
-    int i = -1;
-    int j;
     if ((paramBundle != null) && (paramBundle.getInt("respkey", 0) == this.key))
     {
-      String str = paramBundle.getString("cmd");
+      Object localObject = paramBundle.getString("cmd");
       Bundle localBundle = paramBundle.getBundle("response");
       int k = paramBundle.getInt("failcode");
-      if ((str != null) && ("writeQFaceResult".equals(str)))
+      if ((localObject != null) && ("writeQFaceResult".equals(localObject)))
       {
-        j = localBundle.getInt("result", -1);
+        int i = -1;
+        int j = localBundle.getInt("result", -1);
         paramBundle = localBundle.getString("messge");
-        if (k == 1000) {
-          break label128;
+        if (k != 1000) {
+          paramBundle = "QFaceResult error";
+        } else {
+          i = j;
         }
-        paramBundle = "QFaceResult error";
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("write qface result, result:");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" msg:");
+          ((StringBuilder)localObject).append(paramBundle);
+          QLog.d("Q.emoji.EmoQFace", 2, ((StringBuilder)localObject).toString());
+        }
       }
-    }
-    for (;;)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.emoji.EmoQFace", 2, "write qface result, result:" + i + " msg:" + paramBundle);
-      }
-      return;
-      label128:
-      i = j;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.EmojiUiPlugin.1
  * JD-Core Version:    0.7.0.1
  */

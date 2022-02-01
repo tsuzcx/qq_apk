@@ -23,8 +23,9 @@ public class ImageLoaderModule
   @HippyMethod(name="getSize")
   public void getSize(String paramString, Promise paramPromise)
   {
-    if (this.a != null) {
-      this.a.fetchImage(paramString, new ImageLoaderModule.1(this, paramPromise, paramString), null);
+    HippyImageLoader localHippyImageLoader = this.a;
+    if (localHippyImageLoader != null) {
+      localHippyImageLoader.fetchImage(paramString, new ImageLoaderModule.1(this, paramPromise, paramString), null);
     }
   }
   
@@ -36,7 +37,7 @@ public class ImageLoaderModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.modules.nativemodules.image.ImageLoaderModule
  * JD-Core Version:    0.7.0.1
  */

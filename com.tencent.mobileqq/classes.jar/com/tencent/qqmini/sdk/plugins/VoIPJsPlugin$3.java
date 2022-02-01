@@ -22,16 +22,12 @@ class VoIPJsPlugin$3
     {
       localJSONObject.put("errCode", paramInt);
       localJSONObject.put("errMsg", paramInt);
-      this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, ApiUtil.wrapCallbackFail(this.val$req.event, localJSONObject).toString());
-      return;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        QMLog.e("[mini] VoIPJsPlugin", "JSONException", localJSONException);
-      }
+      QMLog.e("[mini] VoIPJsPlugin", "JSONException", localJSONException);
     }
+    this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, ApiUtil.wrapCallbackFail(this.val$req.event, localJSONObject).toString());
   }
   
   public void onJoinRoom(JSONArray paramJSONArray)
@@ -41,22 +37,18 @@ class VoIPJsPlugin$3
     {
       localJSONObject.put("openIdList", paramJSONArray);
       localJSONObject.put("errCode", 0);
-      this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, ApiUtil.wrapCallbackOk(this.val$req.event, localJSONObject).toString());
-      VoIPManager.getInstance().setEventListener(new VoIPJsPlugin.3.1(this));
-      return;
     }
     catch (JSONException paramJSONArray)
     {
-      for (;;)
-      {
-        QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
-      }
+      QMLog.e("[mini] VoIPJsPlugin", "JSONException", paramJSONArray);
     }
+    this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, ApiUtil.wrapCallbackOk(this.val$req.event, localJSONObject).toString());
+    VoIPManager.getInstance().setEventListener(new VoIPJsPlugin.3.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.VoIPJsPlugin.3
  * JD-Core Version:    0.7.0.1
  */

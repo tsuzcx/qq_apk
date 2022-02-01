@@ -22,68 +22,69 @@ public class CacheDrawManager
   
   public Bitmap a(BaseDanmaku paramBaseDanmaku, DanmakuContext paramDanmakuContext)
   {
-    if (paramBaseDanmaku == null) {
-      throw new RuntimeException("fetchBitmapCache NullPointException, BaseDanmaku is null");
-    }
-    try
-    {
-      if (paramBaseDanmaku.f())
+    if (paramBaseDanmaku != null) {
+      try
       {
-        Object localObject2 = paramBaseDanmaku.a();
-        Object localObject1;
-        if (localObject2 == null) {
-          localObject1 = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolBitmapCacheManager.a((int)paramBaseDanmaku.f(), (int)paramBaseDanmaku.g());
-        }
-        for (;;)
+        if (paramBaseDanmaku.f())
         {
-          paramBaseDanmaku.a((Bitmap)localObject1);
-          if (localObject1 != null) {
-            break;
+          Object localObject2 = paramBaseDanmaku.a();
+          Object localObject1;
+          if (localObject2 == null)
+          {
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolBitmapCacheManager.a((int)paramBaseDanmaku.h(), (int)paramBaseDanmaku.i());
           }
-          return null;
-          if (((Bitmap)localObject2).getWidth() >= (int)paramBaseDanmaku.f())
+          else if (((Bitmap)localObject2).getWidth() >= (int)paramBaseDanmaku.h())
           {
             localObject1 = localObject2;
-            if (((Bitmap)localObject2).getHeight() >= (int)paramBaseDanmaku.g()) {}
+            if (((Bitmap)localObject2).getHeight() >= (int)paramBaseDanmaku.i()) {}
           }
           else
           {
             this.jdField_a_of_type_ComTencentMobileqqDanmakuToolBitmapCacheManager.a((Bitmap)localObject2);
-            localObject1 = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolBitmapCacheManager.a((int)paramBaseDanmaku.f(), (int)paramBaseDanmaku.g());
+            localObject1 = this.jdField_a_of_type_ComTencentMobileqqDanmakuToolBitmapCacheManager.a((int)paramBaseDanmaku.h(), (int)paramBaseDanmaku.i());
           }
-        }
-        localObject2 = paramBaseDanmaku.a();
-        if (localObject2 == null)
-        {
-          localObject2 = new Canvas((Bitmap)localObject1);
-          paramBaseDanmaku.a((Canvas)localObject2);
-        }
-        for (;;)
-        {
+          paramBaseDanmaku.a((Bitmap)localObject1);
+          if (localObject1 == null) {
+            return null;
+          }
+          localObject2 = paramBaseDanmaku.a();
+          if (localObject2 == null)
+          {
+            localObject2 = new Canvas((Bitmap)localObject1);
+            paramBaseDanmaku.a((Canvas)localObject2);
+          }
+          else
+          {
+            ((Canvas)localObject2).setBitmap((Bitmap)localObject1);
+          }
           ((Bitmap)localObject1).eraseColor(0);
           paramBaseDanmaku.c(false);
           paramDanmakuContext.a(paramBaseDanmaku).a((Canvas)localObject2, paramBaseDanmaku, paramDanmakuContext, DanmakuContext.a().g(), DanmakuContext.a().c());
           return localObject1;
-          ((Canvas)localObject2).setBitmap((Bitmap)localObject1);
         }
+        paramBaseDanmaku = paramBaseDanmaku.a();
+        return paramBaseDanmaku;
       }
-      paramBaseDanmaku = paramBaseDanmaku.a();
+      finally {}
     }
-    finally {}
-    return paramBaseDanmaku;
+    throw new RuntimeException("fetchBitmapCache NullPointException, BaseDanmaku is null");
   }
   
   public void a()
   {
-    if ((this.jdField_a_of_type_AndroidOsHandlerThread == null) || (!this.jdField_a_of_type_AndroidOsHandlerThread.isAlive())) {
-      return;
-    }
-    if (DanmakuUtils.a())
+    HandlerThread localHandlerThread = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localHandlerThread != null)
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
-      return;
+      if (!localHandlerThread.isAlive()) {
+        return;
+      }
+      if (DanmakuUtils.a())
+      {
+        this.jdField_a_of_type_AndroidOsHandlerThread.quitSafely();
+        return;
+      }
+      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
     }
-    this.jdField_a_of_type_AndroidOsHandlerThread.quit();
   }
   
   public void a(Bitmap paramBitmap)
@@ -110,7 +111,7 @@ public class CacheDrawManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.danmaku.core.CacheDrawManager
  * JD-Core Version:    0.7.0.1
  */

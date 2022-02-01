@@ -1,6 +1,9 @@
 package com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy;
 
+import android.graphics.PointF;
+import com.tencent.tav.coremedia.CGRect;
 import com.tencent.tavkit.ciimage.CIImage;
+import com.tencent.tavkit.composition.model.TAVVideoConfiguration.TAVVideoConfigurationContentMode;
 import com.tencent.tavkit.composition.video.ImageCollection;
 import com.tencent.tavkit.composition.video.ImageCollection.TrackImagePair;
 import com.tencent.tavkit.composition.video.RenderInfo;
@@ -65,15 +68,16 @@ class TavMixerEffect$DispatcherFilter
     while (paramTAVVideoMixEffect.hasNext()) {
       ((BaseEffectNode.Filter)paramTAVVideoMixEffect.next()).a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams, paramRenderInfo);
     }
-    if (this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyBaseEffectNode$Filter != null) {
-      this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyBaseEffectNode$Filter.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams, paramRenderInfo);
+    paramTAVVideoMixEffect = this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyBaseEffectNode$Filter;
+    if (paramTAVVideoMixEffect != null) {
+      paramTAVVideoMixEffect.a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams, paramRenderInfo);
     }
     paramTAVVideoMixEffect = this.jdField_a_of_type_JavaUtilList.iterator();
     while (paramTAVVideoMixEffect.hasNext()) {
       ((BaseEffectNode.Filter)paramTAVVideoMixEffect.next()).a(this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams, paramRenderInfo);
     }
     if (this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams.jdField_a_of_type_JavaUtilList.size() > 0) {
-      return ((ImageParams.ImageTrackPair)this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams.jdField_a_of_type_JavaUtilList.get(0)).a();
+      return ((ImageParams.ImageTrackPair)this.jdField_a_of_type_ComTencentQqminiProxyimplTavkitpluginApiproxyImageParams.jdField_a_of_type_JavaUtilList.get(0)).a().imageApplyFillInFrame(new CGRect(new PointF(), paramRenderInfo.getRenderSize()), TAVVideoConfiguration.TAVVideoConfigurationContentMode.aspectFit);
     }
     return null;
   }
@@ -89,7 +93,7 @@ class TavMixerEffect$DispatcherFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.tavkitplugin.apiproxy.TavMixerEffect.DispatcherFilter
  * JD-Core Version:    0.7.0.1
  */

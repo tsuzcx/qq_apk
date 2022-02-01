@@ -16,18 +16,17 @@ public final class c
   public final void a(b paramb)
   {
     Iterator localIterator = this.a.iterator();
-    do
-    {
-      if (!localIterator.hasNext()) {
-        break;
+    while (localIterator.hasNext()) {
+      if (((b)localIterator.next()).equals(paramb))
+      {
+        i = 1;
+        break label42;
       }
-    } while (!((b)localIterator.next()).equals(paramb));
-    for (int i = 1;; i = 0)
-    {
-      if (i == 0) {
-        this.a.add(paramb);
-      }
-      return;
+    }
+    int i = 0;
+    label42:
+    if (i == 0) {
+      this.a.add(paramb);
     }
   }
   
@@ -59,7 +58,7 @@ public final class c
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hlyyb.downloader.a.a.c
  * JD-Core Version:    0.7.0.1
  */

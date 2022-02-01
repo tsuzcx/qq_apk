@@ -55,8 +55,9 @@ public final class UploadFriendInfo
   {
     paramJceOutputStream.write(this.lFromMID, 0);
     paramJceOutputStream.write(this.nType, 1);
-    if (this.vToMID != null) {
-      paramJceOutputStream.write(this.vToMID, 2);
+    byte[] arrayOfByte = this.vToMID;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 2);
     }
     paramJceOutputStream.write(this.lGroupMID, 3);
     paramJceOutputStream.write(this.lAppID, 4);
@@ -66,7 +67,7 @@ public final class UploadFriendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     KQQ.UploadFriendInfo
  * JD-Core Version:    0.7.0.1
  */

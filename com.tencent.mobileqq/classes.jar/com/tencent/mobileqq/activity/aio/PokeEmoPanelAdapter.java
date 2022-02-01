@@ -40,7 +40,7 @@ public class PokeEmoPanelAdapter
   public PokeEmoPanelAdapter(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841661);
+    this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = paramContext.getResources().getDrawable(2130841546);
   }
   
   private int a()
@@ -51,8 +51,9 @@ public class PokeEmoPanelAdapter
   public Drawable a(String paramString)
   {
     URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
-    localURLDrawableOptions.mLoadingDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
-    localURLDrawableOptions.mFailedDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    Drawable localDrawable = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    localURLDrawableOptions.mLoadingDrawable = localDrawable;
+    localURLDrawableOptions.mFailedDrawable = localDrawable;
     localURLDrawableOptions.mPlayGifImage = true;
     return URLDrawable.getDrawable(new File(paramString), localURLDrawableOptions);
   }
@@ -78,7 +79,8 @@ public class PokeEmoPanelAdapter
   
   public Object getItem(int paramInt)
   {
-    if ((this.jdField_a_of_type_JavaUtilArrayList != null) && (this.jdField_a_of_type_JavaUtilArrayList.size() > paramInt)) {
+    ArrayList localArrayList = this.jdField_a_of_type_JavaUtilArrayList;
+    if ((localArrayList != null) && (localArrayList.size() > paramInt)) {
       return this.jdField_a_of_type_JavaUtilArrayList.get(paramInt);
     }
     return null;
@@ -91,105 +93,94 @@ public class PokeEmoPanelAdapter
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
-    int k = a();
-    int i = (XPanelContainer.jdField_a_of_type_Int - AIOUtils.a(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) - AIOUtils.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2) / 3;
-    int j;
-    if (i >= 0)
-    {
-      j = AIOUtils.a(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-      if (i >= j) {
-        break label611;
-      }
-      i = j;
+    int m = a();
+    int i = (XPanelContainer.jdField_a_of_type_Int - AIOUtils.b(70.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) - AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 2) / 3;
+    if (i < 0) {
+      i = 0;
     }
-    label419:
-    label576:
-    label585:
-    label611:
-    for (;;)
+    int k = AIOUtils.b(10.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+    int j = i;
+    if (i < k) {
+      j = k;
+    }
+    i = (this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 4) / 8;
+    Object localObject2;
+    Object localObject3;
+    Object localObject4;
+    if (paramView == null)
     {
-      j = (this.jdField_a_of_type_AndroidContentContext.getResources().getDisplayMetrics().widthPixels - AIOUtils.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) * 4) / 8;
-      Object localObject2;
-      Object localObject3;
-      if (paramView == null)
+      paramView = new StickerBubbleLinearLayout(this.jdField_a_of_type_AndroidContentContext);
+      paramView.setMinimumHeight(AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + j);
+      paramView.setOrientation(0);
+      i = 0;
+      while (i < m)
       {
-        localObject1 = new StickerBubbleLinearLayout(this.jdField_a_of_type_AndroidContentContext);
-        ((LinearLayout)localObject1).setMinimumHeight(AIOUtils.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()) + i);
-        ((LinearLayout)localObject1).setOrientation(0);
-        j = 0;
-        for (;;)
-        {
-          paramView = (View)localObject1;
-          if (j >= k) {
-            break;
-          }
-          paramView = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
-          paramView.setGravity(17);
-          localObject2 = new LinearLayout.LayoutParams(-2, -2);
-          if (j == 0) {}
-          paramView.setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
-          localObject2 = new LinearLayout.LayoutParams(AIOUtils.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
-          ((LinearLayout.LayoutParams)localObject2).topMargin = (i / 2);
-          ((LinearLayout.LayoutParams)localObject2).bottomMargin = (i / 2);
-          localObject3 = new StickerBubbleImageView(this.jdField_a_of_type_AndroidContentContext);
-          ((View)localObject3).setPadding(14, 14, 14, 14);
-          int m = AIOUtils.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-          int n = AIOUtils.a(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
-          ShapeDrawable localShapeDrawable = new ShapeDrawable(new OvalShape());
-          localShapeDrawable.setIntrinsicHeight(m);
-          localShapeDrawable.setIntrinsicWidth(n);
-          localShapeDrawable.getPaint().setColor(1728053247);
-          ((View)localObject3).setBackgroundDrawable(localShapeDrawable);
-          ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject2);
-          paramView.addView((View)localObject3);
-          ((LinearLayout)localObject1).addView(paramView);
-          j += 1;
-        }
-        i = 0;
-        break;
+        localObject1 = new LinearLayout(this.jdField_a_of_type_AndroidContentContext);
+        ((LinearLayout)localObject1).setGravity(17);
+        localObject2 = new LinearLayout.LayoutParams(-2, -2);
+        ((LinearLayout)localObject1).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        ((LinearLayout.LayoutParams)localObject2).weight = 1.0F;
+        localObject2 = new LinearLayout.LayoutParams(AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()), AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources()));
+        k = j / 2;
+        ((LinearLayout.LayoutParams)localObject2).topMargin = k;
+        ((LinearLayout.LayoutParams)localObject2).bottomMargin = k;
+        localObject3 = new StickerBubbleImageView(this.jdField_a_of_type_AndroidContentContext);
+        ((View)localObject3).setPadding(14, 14, 14, 14);
+        k = AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        int n = AIOUtils.b(64.0F, this.jdField_a_of_type_AndroidContentContext.getResources());
+        localObject4 = new ShapeDrawable(new OvalShape());
+        ((ShapeDrawable)localObject4).setIntrinsicHeight(k);
+        ((ShapeDrawable)localObject4).setIntrinsicWidth(n);
+        ((ShapeDrawable)localObject4).getPaint().setColor(1728053247);
+        ((View)localObject3).setBackgroundDrawable((Drawable)localObject4);
+        ((View)localObject3).setLayoutParams((ViewGroup.LayoutParams)localObject2);
+        ((LinearLayout)localObject1).addView((View)localObject3);
+        paramView.addView((View)localObject1);
+        i += 1;
       }
-      Object localObject1 = (ViewGroup)paramView;
-      if (paramInt == 0)
+    }
+    Object localObject1 = (ViewGroup)paramView;
+    if (paramInt == 0) {
+      ((ViewGroup)localObject1).setPadding(0, j / 2, 0, 0);
+    } else {
+      ((ViewGroup)localObject1).setPadding(0, 0, 0, 0);
+    }
+    i = 0;
+    while (i < m)
+    {
+      j = m * paramInt + i;
+      localObject2 = ((ViewGroup)((ViewGroup)localObject1).getChildAt(i)).getChildAt(0);
+      if (j < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
-        ((ViewGroup)localObject1).setPadding(0, i / 2, 0, 0);
-        i = 0;
-        if (i >= k) {
-          break label585;
-        }
-        j = k * paramInt + i;
-        localObject2 = ((ViewGroup)((ViewGroup)localObject1).getChildAt(i)).getChildAt(0);
-        if (j >= this.jdField_a_of_type_JavaUtilArrayList.size()) {
-          break label576;
-        }
         ((View)localObject2).setVisibility(0);
         localObject3 = (PEItemData)this.jdField_a_of_type_JavaUtilArrayList.get(j);
         if (localObject3 != null) {
           ((ImageView)localObject2).setImageDrawable(a(((PEItemData)localObject3).jdField_a_of_type_JavaLangString));
         }
         ((View)localObject2).setTag(Integer.valueOf(j));
-        if (AppSetting.d) {
-          ((View)localObject2).setContentDescription(PEPanelHelper.a(((PEItemData)localObject3).jdField_a_of_type_Int) + HardCodeUtil.a(2131708306));
+        if (AppSetting.d)
+        {
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(PEPanelHelper.a(((PEItemData)localObject3).jdField_a_of_type_Int));
+          ((StringBuilder)localObject4).append(HardCodeUtil.a(2131708315));
+          ((View)localObject2).setContentDescription(((StringBuilder)localObject4).toString());
         }
       }
-      for (;;)
+      else
       {
-        i += 1;
-        break label419;
-        ((ViewGroup)localObject1).setPadding(0, 0, 0, 0);
-        break;
         ((View)localObject2).setVisibility(4);
       }
-      paramView.setOnLongClickListener(null);
-      AccessibilityUtil.a(paramView, false);
-      EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
-      return paramView;
+      i += 1;
     }
+    paramView.setOnLongClickListener(null);
+    AccessibilityUtil.a(paramView, false);
+    EventCollector.getInstance().onListGetView(paramInt, paramView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.PokeEmoPanelAdapter
  * JD-Core Version:    0.7.0.1
  */

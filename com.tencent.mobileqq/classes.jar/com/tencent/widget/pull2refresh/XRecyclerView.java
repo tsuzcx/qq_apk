@@ -8,183 +8,209 @@ import android.graphics.drawable.ColorDrawable;
 import android.util.AttributeSet;
 import android.view.LayoutInflater;
 import android.view.View;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoyAnimBaseManager;
-import com.tencent.biz.pubaccount.readinjoy.view.pullrefresh.ReadInJoySkinAnimManager;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.widget.pull2refresh.anim.IAnimManager;
 
 public class XRecyclerView
   extends AbsPullToRefreshView2
   implements LoadingMoreHelper.OnLoadMoreListener, PullToRefreshListener
 {
-  private int jdField_a_of_type_Int = 0;
-  private LoadingMoreHelper jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper;
-  protected RecyclerViewWithHeaderFooter a;
-  private XLoadMoreLayout jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout;
-  private XRecyclerView.RefreshCallback jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback;
-  private ThreadLocal<Boolean> jdField_a_of_type_JavaLangThreadLocal = new XRecyclerView.1(this);
-  private int b = 0;
-  private int c = 0;
+  public static final boolean DEBUG = false;
+  public static final String TAG = "XRecyclerView";
+  private ThreadLocal<Boolean> mIsMachineRefresh = new XRecyclerView.1(this);
+  private int mLastScrollState = 0;
+  private XLoadMoreLayout mLoadMoreLayout;
+  private LoadingMoreHelper mLoadMoreLayoutHelper;
+  protected RecyclerViewWithHeaderFooter mRecyclerView;
+  private XRecyclerView.RefreshCallback mRefreshCallback;
+  private int mScrollX = 0;
+  private int mScrollY = 0;
   
   public XRecyclerView(Context paramContext)
   {
     super(paramContext);
-    e();
+    init();
   }
   
   public XRecyclerView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    e();
+    init();
   }
   
   public XRecyclerView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
   {
     super(paramContext, paramAttributeSet, paramInt);
-    e();
+    init();
   }
   
-  private void e()
+  private void init()
   {
-    a(this);
-    LayoutInflater.from(getContext()).inflate(2131563262, this, true);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout = new XLoadMoreLayout(getContext());
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter = ((RecyclerViewWithHeaderFooter)findViewById(2131374768));
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper = new LoadingMoreHelper(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout, getContext());
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper.a(true);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper.a(this);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.c(this.jdField_a_of_type_ComTencentWidgetPull2refreshXLoadMoreLayout);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.addOnScrollListener(new XRecyclerView.2(this));
+    setPullToRefreshListener(this);
+    LayoutInflater.from(getContext()).inflate(2131563086, this, true);
+    this.mLoadMoreLayout = new XLoadMoreLayout(getContext());
+    this.mRecyclerView = ((RecyclerViewWithHeaderFooter)findViewById(2131374304));
+    this.mLoadMoreLayoutHelper = new LoadingMoreHelper(this.mLoadMoreLayout, getContext());
+    this.mLoadMoreLayoutHelper.setLoadMoreEnabled(true);
+    this.mLoadMoreLayoutHelper.setOnLoadMoreListener(this);
+    this.mRecyclerView.addFooterView(this.mLoadMoreLayout);
+    this.mRecyclerView.addOnScrollListener(new XRecyclerView.2(this));
   }
   
-  protected int a()
+  public void backToTopAtOnce()
   {
-    return this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a();
+    this.mRecyclerView.stopScroll();
+    this.mRecyclerView.scrollToPosition(0);
   }
   
-  protected View a()
+  protected void clearContentViewClickEvent(boolean paramBoolean)
   {
-    View localView = this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(this);
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager instanceof ReadInJoySkinAnimManager))
+    this.mRecyclerView.mInterceptTouchEvent = paramBoolean;
+  }
+  
+  protected int configHeaderVisibleHeight()
+  {
+    return this.mAnimManager.getPullRefreshAreaHeight();
+  }
+  
+  protected View generateFooterView()
+  {
+    return null;
+  }
+  
+  protected View generateHeaderView()
+  {
+    View localView = this.mAnimManager.getRefreshView(this);
+    if (this.mAnimManager.isSkinAnimManager())
     {
       setPullHeaderBgDrawable(new ColorDrawable(Color.parseColor("#F7F7F7")));
       return localView;
     }
-    setPullHeaderBgDrawable(getResources().getDrawable(2130839540));
+    setPullHeaderBgDrawable(getResources().getDrawable(2130839396));
     return localView;
   }
   
-  public LoadingMoreHelper a()
+  public LoadingMoreHelper getLoadMoreLayoutHelper()
   {
-    return this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper;
+    return this.mLoadMoreLayoutHelper;
   }
   
-  public RecyclerViewWithHeaderFooter a()
+  public RecyclerViewWithHeaderFooter getRecyclerView()
   {
-    return this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter;
+    return this.mRecyclerView;
   }
   
-  public void a(View paramView)
+  public int getScrollPositionX()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager != null) && (paramView == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(this))) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(100, this.jdField_a_of_type_Boolean);
-    }
+    return this.mScrollX;
   }
   
-  public void a(View paramView, int paramInt)
+  public int getScrollPositionY()
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager != null) && (paramView == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(this))) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(paramInt, this.jdField_a_of_type_Boolean);
-    }
-  }
-  
-  public void a(View paramView, boolean paramBoolean) {}
-  
-  public void a(boolean paramBoolean)
-  {
-    super.a(paramBoolean);
-    if (this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(paramBoolean, "");
-    }
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback != null) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback.a();
-    }
-  }
-  
-  public void a(boolean paramBoolean1, boolean paramBoolean2)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("XRecyclerView", 2, "loadMoreComplete(): hasMoreData=" + paramBoolean2);
-    }
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper.a(paramBoolean1, paramBoolean2);
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshLoadingMoreHelper.a(paramBoolean2);
+    return this.mScrollY;
   }
   
   @TargetApi(14)
-  protected boolean a()
+  protected boolean isScroll2Bottom()
   {
-    return !this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.canScrollVertically(-1);
+    return this.mRecyclerView.canScrollVertically(1) ^ true;
   }
   
-  public boolean a(View paramView)
+  @TargetApi(14)
+  protected boolean isScroll2Top()
   {
-    boolean bool = ((Boolean)this.jdField_a_of_type_JavaLangThreadLocal.get()).booleanValue();
-    this.jdField_a_of_type_JavaLangThreadLocal.set(Boolean.valueOf(false));
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager != null) && (paramView == this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(this)))
+    return this.mRecyclerView.canScrollVertically(-1) ^ true;
+  }
+  
+  public void loadMoreComplete(boolean paramBoolean1, boolean paramBoolean2)
+  {
+    if (QLog.isColorLevel())
     {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViewPullrefreshReadInJoyAnimBaseManager.a(bool);
-      if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback != null) {
-        this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback.a(this, bool);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadMoreComplete(): hasMoreData=");
+      localStringBuilder.append(paramBoolean2);
+      QLog.d("XRecyclerView", 2, localStringBuilder.toString());
+    }
+    this.mLoadMoreLayoutHelper.setLoadMoreComplete(paramBoolean1, paramBoolean2);
+    this.mLoadMoreLayoutHelper.setLoadMoreEnabled(paramBoolean2);
+  }
+  
+  public boolean onLoadMore(boolean paramBoolean)
+  {
+    XRecyclerView.RefreshCallback localRefreshCallback = this.mRefreshCallback;
+    if (localRefreshCallback != null) {
+      localRefreshCallback.startLoadMore(this, 0);
+    }
+    return true;
+  }
+  
+  public void onLoadMoreComplete() {}
+  
+  public void onNotCompleteVisable(View paramView, int paramInt)
+  {
+    if ((this.mAnimManager != null) && (paramView == this.mAnimManager.getRefreshView(this))) {
+      this.mAnimManager.onPullRefreshing(paramInt, this.isRefreshing);
+    }
+  }
+  
+  public void onRefreshCompleted(View paramView, boolean paramBoolean) {}
+  
+  public void onViewCompleteVisable(View paramView)
+  {
+    if ((this.mAnimManager != null) && (paramView == this.mAnimManager.getRefreshView(this))) {
+      this.mAnimManager.onPullRefreshing(100, this.isRefreshing);
+    }
+  }
+  
+  public boolean onViewCompleteVisableAndReleased(View paramView)
+  {
+    boolean bool = ((Boolean)this.mIsMachineRefresh.get()).booleanValue();
+    this.mIsMachineRefresh.set(Boolean.valueOf(false));
+    if ((this.mAnimManager != null) && (paramView == this.mAnimManager.getRefreshView(this)))
+    {
+      this.mAnimManager.onPullRefreshComplete(bool);
+      paramView = this.mRefreshCallback;
+      if (paramView != null) {
+        paramView.startTopRefresh(this, bool);
       }
     }
     return true;
   }
   
-  public boolean a(boolean paramBoolean)
+  public void onViewNotCompleteVisableAndReleased(View paramView) {}
+  
+  public void pullRefreshCompleted(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback != null) {
-      this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback.a(this, 0);
+    super.pullRefreshCompleted(paramBoolean);
+    if (this.mAnimManager != null) {
+      this.mAnimManager.showRefreshResult(paramBoolean, "");
     }
-    return true;
+    XRecyclerView.RefreshCallback localRefreshCallback = this.mRefreshCallback;
+    if (localRefreshCallback != null) {
+      localRefreshCallback.endOfRefresh();
+    }
   }
   
-  protected View b()
+  public void scrollToTop()
   {
-    return null;
-  }
-  
-  public void b()
-  {
-    this.jdField_a_of_type_JavaLangThreadLocal.set(Boolean.valueOf(true));
-    a(1);
-  }
-  
-  protected void b(boolean paramBoolean)
-  {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.jdField_a_of_type_Boolean = paramBoolean;
-  }
-  
-  @TargetApi(14)
-  protected boolean b()
-  {
-    return !this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.canScrollVertically(1);
-  }
-  
-  public void c() {}
-  
-  public void d()
-  {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.stopScroll();
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshRecyclerViewWithHeaderFooter.scrollToPosition(0);
+    this.mRecyclerView.stopScroll();
+    this.mRecyclerView.smoothScrollToPosition(0);
   }
   
   public void setRefreshCallback(XRecyclerView.RefreshCallback paramRefreshCallback)
   {
-    this.jdField_a_of_type_ComTencentWidgetPull2refreshXRecyclerView$RefreshCallback = paramRefreshCallback;
+    this.mRefreshCallback = paramRefreshCallback;
+  }
+  
+  public void startMachineRefresh()
+  {
+    this.mIsMachineRefresh.set(Boolean.valueOf(true));
+    changeToState(1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.pull2refresh.XRecyclerView
  * JD-Core Version:    0.7.0.1
  */

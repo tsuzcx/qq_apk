@@ -18,57 +18,60 @@ class TroopAvatarBigPhotoAdapter$1
   
   public void onLoadCancelled(View paramView, URLDrawable paramURLDrawable)
   {
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramView = paramURLDrawable.getURL().toString();
+    } else {
+      paramView = "";
     }
-    QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadCancelled urlStr : " + paramView);
+    paramURLDrawable = new StringBuilder();
+    paramURLDrawable.append("onLoadCancelled urlStr : ");
+    paramURLDrawable.append(paramView);
+    QLog.e("TroopAvatarBigPhotoAdapter", 1, paramURLDrawable.toString());
     ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_cancel", 0, 1, 0, paramView, "", "", "");
   }
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
     String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramView = paramURLDrawable.getURL().toString();
+    } else {
+      paramView = "";
     }
-    if (paramThrowable == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramThrowable.getMessage())
-    {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadFailed urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
+    if (paramThrowable == null) {
+      paramURLDrawable = str;
+    } else {
+      paramURLDrawable = paramThrowable.getMessage();
     }
+    paramThrowable = new StringBuilder();
+    paramThrowable.append("onLoadFailed urlStr : ");
+    paramThrowable.append(paramView);
+    paramThrowable.append("; errorMsg : ");
+    paramThrowable.append(paramURLDrawable);
+    QLog.e("TroopAvatarBigPhotoAdapter", 1, paramThrowable.toString());
+    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_failed", 0, 1, 0, paramView, paramURLDrawable, "", "");
   }
   
   public void onLoadInterrupted(View paramView, URLDrawable paramURLDrawable, InterruptedException paramInterruptedException)
   {
     String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramView = paramURLDrawable.getURL().toString();
+    } else {
+      paramView = "";
     }
-    if (paramInterruptedException == null) {}
-    for (paramURLDrawable = "";; paramURLDrawable = paramInterruptedException.getMessage())
-    {
-      QLog.e("TroopAvatarBigPhotoAdapter", 1, "onLoadInterrupted urlStr : " + paramView + "; errorMsg : " + paramURLDrawable);
-      ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
-      return;
+    if (paramInterruptedException == null) {
+      paramURLDrawable = str;
+    } else {
+      paramURLDrawable = paramInterruptedException.getMessage();
     }
+    paramInterruptedException = new StringBuilder();
+    paramInterruptedException.append("onLoadInterrupted urlStr : ");
+    paramInterruptedException.append(paramView);
+    paramInterruptedException.append("; errorMsg : ");
+    paramInterruptedException.append(paramURLDrawable);
+    QLog.e("TroopAvatarBigPhotoAdapter", 1, paramInterruptedException.toString());
+    ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_interrupt", 0, 1, 0, paramView, paramURLDrawable, "", "");
   }
   
   public void onLoadProgressed(View paramView, URLDrawable paramURLDrawable, int paramInt)
@@ -86,26 +89,23 @@ class TroopAvatarBigPhotoAdapter$1
   {
     this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a(this.jdField_a_of_type_ComTencentMobileqqWidgetImageProgressCircle);
     this.jdField_a_of_type_ComTencentImageURLImageView.setImageDrawable(paramURLDrawable);
-    String str = "";
-    paramView = str;
-    if (paramURLDrawable != null)
-    {
-      paramView = str;
-      if (paramURLDrawable.getURL() != null) {
-        paramView = paramURLDrawable.getURL().toString();
-      }
+    if ((paramURLDrawable != null) && (paramURLDrawable.getURL() != null)) {
+      paramView = paramURLDrawable.getURL().toString();
+    } else {
+      paramView = "";
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get() != null)) {
       ((TextView)this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a.get()).setVisibility(8);
     }
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.a = null;
-    this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter.c = false;
+    paramURLDrawable = this.jdField_a_of_type_ComTencentMobileqqTroopWidgetTroopAvatarBigPhotoAdapter;
+    paramURLDrawable.a = null;
+    paramURLDrawable.c = false;
     ReportController.b(null, "dc00899", "BizTechReport", "", "Grp_avatar", "load_success", 0, 1, 0, paramView, "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.TroopAvatarBigPhotoAdapter.1
  * JD-Core Version:    0.7.0.1
  */

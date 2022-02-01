@@ -30,14 +30,15 @@ public final class AVInfo
   
   public static AVInfo[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new AVInfo[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new AVInfo[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static AVInfo parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -67,54 +68,63 @@ public final class AVInfo
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int j = super.computeSerializedSize();
+    int k = this.videoStatus;
     int i = j;
-    if (this.videoStatus != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, this.videoStatus);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(1, k);
     }
+    k = this.mode;
     j = i;
-    if (this.mode != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, this.mode);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(2, k);
     }
     i = j;
     if (!Arrays.equals(this.sig, WireFormatNano.EMPTY_BYTES)) {
       i = j + CodedOutputByteBufferNano.computeBytesSize(3, this.sig);
     }
+    k = this.time;
     j = i;
-    if (this.time != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, this.time);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(4, k);
     }
     i = j;
     if (!Arrays.equals(this.extInfo, WireFormatNano.EMPTY_BYTES)) {
       i = j + CodedOutputByteBufferNano.computeBytesSize(5, this.extInfo);
     }
+    Object localObject = this.rtmp;
     j = i;
-    if (this.rtmp != null) {
-      j = i + CodedOutputByteBufferNano.computeMessageSize(6, this.rtmp);
+    if (localObject != null) {
+      j = i + CodedOutputByteBufferNano.computeMessageSize(6, (MessageNano)localObject);
     }
+    localObject = this.hls;
     i = j;
-    if (this.hls != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(7, this.hls);
+    if (localObject != null) {
+      i = j + CodedOutputByteBufferNano.computeMessageSize(7, (MessageNano)localObject);
     }
+    localObject = this.flv;
+    k = i;
+    if (localObject != null) {
+      k = i + CodedOutputByteBufferNano.computeMessageSize(8, (MessageNano)localObject);
+    }
+    localObject = this.streamInfo;
+    j = k;
+    if (localObject != null) {
+      j = k + CodedOutputByteBufferNano.computeMessageSize(9, (MessageNano)localObject);
+    }
+    k = this.avType;
+    i = j;
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeUInt32Size(10, k);
+    }
+    k = this.bitrate;
     j = i;
-    if (this.flv != null) {
-      j = i + CodedOutputByteBufferNano.computeMessageSize(8, this.flv);
+    if (k != 0) {
+      j = i + CodedOutputByteBufferNano.computeUInt32Size(11, k);
     }
-    i = j;
-    if (this.streamInfo != null) {
-      i = j + CodedOutputByteBufferNano.computeMessageSize(9, this.streamInfo);
-    }
-    j = i;
-    if (this.avType != 0) {
-      j = i + CodedOutputByteBufferNano.computeUInt32Size(10, this.avType);
-    }
-    i = j;
-    if (this.bitrate != 0) {
-      i = j + CodedOutputByteBufferNano.computeUInt32Size(11, this.bitrate);
-    }
-    return i;
+    return j;
   }
   
   public AVInfo mergeFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -125,43 +135,15 @@ public final class AVInfo
       switch (i)
       {
       default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          return this;
         }
-      case 0: 
-        return this;
-      case 8: 
-        this.videoStatus = paramCodedInputByteBufferNano.readUInt32();
         break;
-      case 16: 
-        this.mode = paramCodedInputByteBufferNano.readUInt32();
+      case 88: 
+        this.bitrate = paramCodedInputByteBufferNano.readUInt32();
         break;
-      case 26: 
-        this.sig = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 32: 
-        this.time = paramCodedInputByteBufferNano.readUInt32();
-        break;
-      case 42: 
-        this.extInfo = paramCodedInputByteBufferNano.readBytes();
-        break;
-      case 50: 
-        if (this.rtmp == null) {
-          this.rtmp = new OpenSdkUrl();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.rtmp);
-        break;
-      case 58: 
-        if (this.hls == null) {
-          this.hls = new OpenSdkUrl();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.hls);
-        break;
-      case 66: 
-        if (this.flv == null) {
-          this.flv = new OpenSdkUrl();
-        }
-        paramCodedInputByteBufferNano.readMessage(this.flv);
+      case 80: 
+        this.avType = paramCodedInputByteBufferNano.readUInt32();
         break;
       case 74: 
         if (this.streamInfo == null) {
@@ -169,55 +151,93 @@ public final class AVInfo
         }
         paramCodedInputByteBufferNano.readMessage(this.streamInfo);
         break;
-      case 80: 
-        this.avType = paramCodedInputByteBufferNano.readUInt32();
+      case 66: 
+        if (this.flv == null) {
+          this.flv = new OpenSdkUrl();
+        }
+        paramCodedInputByteBufferNano.readMessage(this.flv);
         break;
+      case 58: 
+        if (this.hls == null) {
+          this.hls = new OpenSdkUrl();
+        }
+        paramCodedInputByteBufferNano.readMessage(this.hls);
+        break;
+      case 50: 
+        if (this.rtmp == null) {
+          this.rtmp = new OpenSdkUrl();
+        }
+        paramCodedInputByteBufferNano.readMessage(this.rtmp);
+        break;
+      case 42: 
+        this.extInfo = paramCodedInputByteBufferNano.readBytes();
+        break;
+      case 32: 
+        this.time = paramCodedInputByteBufferNano.readUInt32();
+        break;
+      case 26: 
+        this.sig = paramCodedInputByteBufferNano.readBytes();
+        break;
+      case 16: 
+        this.mode = paramCodedInputByteBufferNano.readUInt32();
+        break;
+      case 8: 
+        this.videoStatus = paramCodedInputByteBufferNano.readUInt32();
       }
-      this.bitrate = paramCodedInputByteBufferNano.readUInt32();
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if (this.videoStatus != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(1, this.videoStatus);
+    int i = this.videoStatus;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(1, i);
     }
-    if (this.mode != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(2, this.mode);
+    i = this.mode;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(2, i);
     }
     if (!Arrays.equals(this.sig, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(3, this.sig);
     }
-    if (this.time != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(4, this.time);
+    i = this.time;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(4, i);
     }
     if (!Arrays.equals(this.extInfo, WireFormatNano.EMPTY_BYTES)) {
       paramCodedOutputByteBufferNano.writeBytes(5, this.extInfo);
     }
-    if (this.rtmp != null) {
-      paramCodedOutputByteBufferNano.writeMessage(6, this.rtmp);
+    Object localObject = this.rtmp;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(6, (MessageNano)localObject);
     }
-    if (this.hls != null) {
-      paramCodedOutputByteBufferNano.writeMessage(7, this.hls);
+    localObject = this.hls;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(7, (MessageNano)localObject);
     }
-    if (this.flv != null) {
-      paramCodedOutputByteBufferNano.writeMessage(8, this.flv);
+    localObject = this.flv;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(8, (MessageNano)localObject);
     }
-    if (this.streamInfo != null) {
-      paramCodedOutputByteBufferNano.writeMessage(9, this.streamInfo);
+    localObject = this.streamInfo;
+    if (localObject != null) {
+      paramCodedOutputByteBufferNano.writeMessage(9, (MessageNano)localObject);
     }
-    if (this.avType != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(10, this.avType);
+    i = this.avType;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(10, i);
     }
-    if (this.bitrate != 0) {
-      paramCodedOutputByteBufferNano.writeUInt32(11, this.bitrate);
+    i = this.bitrate;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeUInt32(11, i);
     }
     super.writeTo(paramCodedOutputByteBufferNano);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.AVInfo
  * JD-Core Version:    0.7.0.1
  */

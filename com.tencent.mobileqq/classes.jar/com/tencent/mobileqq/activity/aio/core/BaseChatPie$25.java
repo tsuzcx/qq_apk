@@ -1,29 +1,55 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.widget.TextView;
-import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
+import com.tencent.mobileqq.activity.aio.helper.AIOJubaoDialogHelper;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.CardObserver;
+import com.tencent.qphone.base.util.QLog;
 
 class BaseChatPie$25
-  implements Runnable
+  extends CardObserver
 {
   BaseChatPie$25(BaseChatPie paramBaseChatPie) {}
   
-  public void run()
+  protected void onGetCalReactiveDays(boolean paramBoolean1, boolean paramBoolean2)
   {
-    this.this$0.e.setText(this.this$0.a.d);
-    if (AppSetting.d)
+    if (paramBoolean1)
     {
-      String str = this.this$0.e.getText().toString();
-      this.this$0.e.setContentDescription(str);
-      this.this$0.a().setTitle(this.this$0.e.getText());
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(" baechatpie onGetCalReactiveDays isAllow= ");
+        localStringBuilder.append(paramBoolean2);
+        QLog.d("interactive", 2, localStringBuilder.toString());
+      }
+      this.a.af();
+    }
+  }
+  
+  protected void onImpeach(boolean paramBoolean, String paramString)
+  {
+    ((AIOJubaoDialogHelper)this.a.a(70)).a();
+    if (paramBoolean)
+    {
+      this.a.a.showDialog(232);
+      return;
+    }
+    this.a.a.showDialog(233);
+  }
+  
+  protected void onSetCalReactiveDays(boolean paramBoolean)
+  {
+    if (paramBoolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("interactive", 2, " baechatpie onGetCalReactiveDays");
+      }
+      this.a.af();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.BaseChatPie.25
  * JD-Core Version:    0.7.0.1
  */

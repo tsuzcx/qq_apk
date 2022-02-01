@@ -1,29 +1,25 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import com.tencent.mobileqq.activity.aio.coreui.pluspanel.PlusPanel;
-import com.tencent.mobileqq.activity.aio.panel.PanelManager;
-import com.tencent.mobileqq.troop.aioapp.GroupAppsObserver;
+import android.text.TextUtils;
+import com.tencent.biz.anonymous.AnonymousChatHelper.AnonymousStatusListener;
+import com.tencent.mobileqq.activity.aio.SessionInfo;
+import mqq.os.MqqHandler;
 
 class TroopChatPie$22
-  extends GroupAppsObserver
+  implements AnonymousChatHelper.AnonymousStatusListener
 {
   TroopChatPie$22(TroopChatPie paramTroopChatPie) {}
   
-  public void a(long paramLong)
+  public void a(String paramString1, String paramString2)
   {
-    if (!String.valueOf(paramLong).equals(this.a.d())) {}
-    PlusPanel localPlusPanel;
-    do
-    {
-      return;
-      localPlusPanel = (PlusPanel)this.a.a.b(8);
-    } while (localPlusPanel == null);
-    localPlusPanel.a();
+    if ((!TextUtils.isEmpty(paramString1)) && (paramString1.equals(this.a.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))) {
+      this.a.jdField_a_of_type_MqqOsMqqHandler.post(new TroopChatPie.22.1(this, paramString2));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.TroopChatPie.22
  * JD-Core Version:    0.7.0.1
  */

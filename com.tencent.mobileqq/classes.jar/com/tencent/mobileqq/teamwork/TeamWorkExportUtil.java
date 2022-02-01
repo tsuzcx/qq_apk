@@ -6,8 +6,8 @@ import android.os.Bundle;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ForwardFileInfo;
-import com.tencent.mobileqq.filemanager.fileviewer.FileBrowserActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.teamwork.api.IGetExternalInterface;
 
 public class TeamWorkExportUtil
 {
@@ -15,7 +15,7 @@ public class TeamWorkExportUtil
   {
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
     localFileManagerEntity.fileName = paramForwardFileInfo.d();
-    localFileManagerEntity.nFileType = FileManagerUtil.a(localFileManagerEntity.fileName);
+    localFileManagerEntity.nFileType = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).getFileType(localFileManagerEntity.fileName);
     localFileManagerEntity.nSessionId = paramForwardFileInfo.b();
     localFileManagerEntity.cloudType = paramForwardFileInfo.d();
     return localFileManagerEntity;
@@ -27,32 +27,31 @@ public class TeamWorkExportUtil
     localForwardFileInfo.d(9);
     localForwardFileInfo.b(10001);
     localForwardFileInfo.d(paramString);
-    localForwardFileInfo.b(FileManagerUtil.a().longValue());
+    localForwardFileInfo.b(CommonUtils.a().longValue());
     return localForwardFileInfo;
   }
   
   public static String a(int paramInt)
   {
-    String str = HardCodeUtil.a(2131714671);
+    String str = HardCodeUtil.a(2131714600);
     if (paramInt == 3) {
-      str = "word";
+      return "word";
     }
-    do
-    {
-      return str;
-      if (paramInt == 6) {
-        return "excel";
-      }
-      if (paramInt == 7) {
-        return "ppt";
-      }
-    } while (paramInt != 9);
-    return "pdf";
+    if (paramInt == 6) {
+      return "excel";
+    }
+    if (paramInt == 7) {
+      return "ppt";
+    }
+    if (paramInt == 9) {
+      str = "pdf";
+    }
+    return str;
   }
   
   public static void a(Activity paramActivity, ForwardFileInfo paramForwardFileInfo, Bundle paramBundle)
   {
-    Intent localIntent = new Intent(paramActivity, FileBrowserActivity.class);
+    Intent localIntent = ((IGetExternalInterface)QRoute.api(IGetExternalInterface.class)).getFileBrowserActivityClassIntent(paramActivity);
     if (paramForwardFileInfo != null) {
       localIntent.putExtra("fileinfo", paramForwardFileInfo);
     }
@@ -77,7 +76,7 @@ public class TeamWorkExportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.teamwork.TeamWorkExportUtil
  * JD-Core Version:    0.7.0.1
  */

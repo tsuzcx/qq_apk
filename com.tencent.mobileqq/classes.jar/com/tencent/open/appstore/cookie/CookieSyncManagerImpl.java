@@ -15,17 +15,19 @@ public class CookieSyncManagerImpl
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager != null) {
-      this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager.sync();
+    Object localObject = this.jdField_a_of_type_ComTencentSmttSdkCookieSyncManager;
+    if (localObject != null) {
+      ((com.tencent.smtt.sdk.CookieSyncManager)localObject).sync();
     }
-    if (this.jdField_a_of_type_AndroidWebkitCookieSyncManager != null) {
-      this.jdField_a_of_type_AndroidWebkitCookieSyncManager.sync();
+    localObject = this.jdField_a_of_type_AndroidWebkitCookieSyncManager;
+    if (localObject != null) {
+      ((android.webkit.CookieSyncManager)localObject).sync();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appstore.cookie.CookieSyncManagerImpl
  * JD-Core Version:    0.7.0.1
  */

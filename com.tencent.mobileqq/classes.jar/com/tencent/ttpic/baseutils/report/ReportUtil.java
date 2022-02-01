@@ -6,8 +6,9 @@ public class ReportUtil
   
   public static void report(String paramString)
   {
-    if (listener != null) {
-      listener.report(paramString);
+    ReportUtil.ReportListener localReportListener = listener;
+    if (localReportListener != null) {
+      localReportListener.report(paramString);
     }
   }
   
@@ -18,7 +19,7 @@ public class ReportUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.baseutils.report.ReportUtil
  * JD-Core Version:    0.7.0.1
  */

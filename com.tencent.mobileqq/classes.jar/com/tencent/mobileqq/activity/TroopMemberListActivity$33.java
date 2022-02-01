@@ -1,17 +1,21 @@
 package com.tencent.mobileqq.activity;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.proxy.ProxyManager;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.proxy.QProxyManager;
 import com.tencent.mobileqq.data.troop.TroopInfo;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.troop.api.IChatSettingForTroopApi;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 class TroopMemberListActivity$33
@@ -21,162 +25,211 @@ class TroopMemberListActivity$33
   
   public void handleMessage(Message paramMessage)
   {
-    if (this.a.isFinishing()) {}
-    label1087:
-    label1137:
-    do
-    {
-      boolean bool;
-      do
-      {
-        do
-        {
-          do
-          {
-            return;
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage,msg.what:" + paramMessage.what);
-            }
-            switch (paramMessage.what)
-            {
-            case 3: 
-            case 4: 
-            case 10: 
-            default: 
-              return;
-            case 1: 
-            case 2: 
-              for (;;)
-              {
-                TroopMemberListActivity.a(this.a, paramMessage);
-                return;
-                this.a.k();
-              }
-            case 13: 
-              paramMessage = this.a;
-              paramMessage.jdField_a_of_type_Double += TroopMemberListActivity.jdField_b_of_type_Double;
-            }
-          } while ((this.a.jdField_a_of_type_Double <= this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress()) || (this.a.jdField_a_of_type_Double >= 90.0D) || (TroopMemberListActivity.a(this.a) <= 0));
-          int i = (int)this.a.jdField_a_of_type_Double;
-          int j = (int)(TroopMemberListActivity.a(this.a) * this.a.jdField_a_of_type_Double / 100.0D);
-          TroopMemberListActivity.a(this.a, j, TroopMemberListActivity.a(this.a), i);
-          this.a.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(this.a.jdField_a_of_type_AndroidOsHandler.obtainMessage(13), 800L);
-          return;
-          List localList;
-          synchronized (this.a)
-          {
-            TroopMemberListActivity.b(this.a);
-            localList = (List)paramMessage.obj;
-            if ((localList == null) && (this.a.jdField_d_of_type_Int != 14)) {
-              return;
-            }
-          }
-          if (this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.getVisibility() == 0)
-          {
-            this.a.jdField_a_of_type_AndroidOsHandler.removeMessages(13);
-            double d = Math.min(0.9D + paramMessage.arg1 * 1.0D / TroopMemberListActivity.a(this.a), 1.0D);
-            i = (int)(100.0D * d);
-            if (i > this.a.jdField_a_of_type_AndroidWidgetProgressBar.getProgress())
-            {
-              j = (int)(d * TroopMemberListActivity.a(this.a));
-              TroopMemberListActivity.a(this.a, j, TroopMemberListActivity.a(this.a), i);
-            }
-          }
-          if (localList != null) {
-            this.a.jdField_a_of_type_JavaUtilList.addAll(localList);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage, mJobCount left:" + TroopMemberListActivity.c(this.a) + "mATroopMemberList.size():" + this.a.jdField_a_of_type_JavaUtilList.size());
-          }
-          if (TroopMemberListActivity.c(this.a) <= 0) {
-            TroopMemberListActivity.b(this.a, true);
-          }
-          if ((TroopMemberListActivity.b(this.a)) && (TroopMemberListActivity.d(this.a)))
-          {
-            if (this.a.jdField_a_of_type_JavaUtilList.isEmpty()) {
-              return;
-            }
-            this.a.k();
-            if (QLog.isColorLevel()) {
-              QLog.d("TroopMemberListActivityget_troop_member", 2, "handleMessage real totalTime:" + (System.currentTimeMillis() - TroopMemberListActivity.a(this.a)) + "start refreshUI");
-            }
-            if (this.a.app.getProxyManager() != null) {
-              this.a.app.getProxyManager().notifyRefreshTroopMember();
-            }
-            paramMessage.obj = this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
-            TroopMemberListActivity.a(this.a, paramMessage);
-          }
-          return;
-          this.a.k();
-          return;
-          if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null)
-          {
-            if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.b != null) {
-              this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.b.clear();
-            }
-            this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
-          }
-          if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-            this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-          }
-          QQToast.a(this.a, this.a.getString(2131691553), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-          TroopMemberListActivity.a(this.a);
-          return;
-          if ((this.a.jdField_a_of_type_AndroidAppDialog != null) && (this.a.jdField_a_of_type_AndroidAppDialog.isShowing())) {
-            this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-          }
-          QQToast.a(this.a, this.a.getString(2131691552), 0).b(this.a.jdField_a_of_type_AndroidViewView.getHeight());
-          return;
-        } while ((this.a.jdField_a_of_type_AndroidAppDialog == null) || (!this.a.jdField_a_of_type_AndroidAppDialog.isShowing()));
-        this.a.jdField_a_of_type_AndroidAppDialog.dismiss();
-        return;
-        paramMessage = (Object[])paramMessage.obj;
-        bool = ((Boolean)paramMessage[0]).booleanValue();
-        paramMessage = (ArrayList)paramMessage[1];
-        ChatSettingForTroop.a(this.a, this.a.jdField_b_of_type_JavaLangString, bool, paramMessage);
-        return;
-      } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter == null);
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
+    if (this.a.isFinishing()) {
       return;
+    }
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("handleMessage,msg.what:");
+      ((StringBuilder)???).append(paramMessage.what);
+      QLog.d("TroopMemberListActivityget_troop_member", 2, ((StringBuilder)???).toString());
+    }
+    int i = paramMessage.what;
+    boolean bool2 = true;
+    double d1;
+    double d2;
+    int j;
+    Object localObject2;
+    boolean bool1;
+    switch (i)
+    {
+    case 3: 
+    case 4: 
+    case 10: 
+    default: 
+    case 16: 
+      if (this.a.mAdapter != null)
+      {
+        if (this.a.mAdapter.b != null) {
+          this.a.mAdapter.b.clear();
+        }
+        this.a.mAdapter.a();
+        return;
+      }
+      break;
+    case 15: 
+      if ((this.a.mProgressDialog != null) && (this.a.mProgressDialog.isShowing()))
+      {
+        this.a.mProgressDialog.dismiss();
+        return;
+      }
+      break;
+    case 14: 
+      this.a.mLoadingLayout.setVisibility(0);
+      return;
+    case 13: 
+      paramMessage = this.a;
+      paramMessage.mFakeProgess += TroopMemberListActivity.FAKE_PROGRESS_DELTA;
+      if ((this.a.mFakeProgess > this.a.mProgressBar.getProgress()) && (this.a.mFakeProgess < 90.0D) && (TroopMemberListActivity.access$2000(this.a) > 0))
+      {
+        i = (int)this.a.mFakeProgess;
+        d1 = TroopMemberListActivity.access$2000(this.a);
+        d2 = this.a.mFakeProgess;
+        Double.isNaN(d1);
+        j = (int)(d1 * d2 / 100.0D);
+        paramMessage = this.a;
+        TroopMemberListActivity.access$2100(paramMessage, j, TroopMemberListActivity.access$2000(paramMessage), i);
+        this.a.mHandler.sendMessageDelayed(this.a.mHandler.obtainMessage(13), 800L);
+        return;
+      }
+      break;
+    case 12: 
+      synchronized (this.a)
+      {
+        TroopMemberListActivity.access$2210(this.a);
+        localObject2 = (List)paramMessage.obj;
+        if ((localObject2 == null) && (this.a.mFrom != 14)) {
+          return;
+        }
+        if (this.a.mLoadingLayout.getVisibility() == 0)
+        {
+          this.a.mHandler.removeMessages(13);
+          i = paramMessage.arg1;
+          d1 = i;
+          Double.isNaN(d1);
+          i = TroopMemberListActivity.access$2000(this.a);
+          d2 = i;
+          Double.isNaN(d2);
+          d1 = d1 * 1.0D / d2;
+          d1 = Math.min(d1 + 0.9D, 1.0D);
+          i = (int)(100.0D * d1);
+          if (i > this.a.mProgressBar.getProgress())
+          {
+            j = TroopMemberListActivity.access$2000(this.a);
+            d2 = j;
+            Double.isNaN(d2);
+            j = (int)(d2 * d1);
+            TroopMemberListActivity.access$2100(this.a, j, TroopMemberListActivity.access$2000(this.a), i);
+          }
+        }
+        if (localObject2 != null) {
+          this.a.mListData.addAll((Collection)localObject2);
+        }
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("handleMessage, mJobCount left:");
+          ((StringBuilder)localObject2).append(TroopMemberListActivity.access$2200(this.a));
+          ((StringBuilder)localObject2).append("mATroopMemberList.size():");
+          ((StringBuilder)localObject2).append(this.a.mListData.size());
+          QLog.d("TroopMemberListActivityget_troop_member", 2, ((StringBuilder)localObject2).toString());
+        }
+        if (TroopMemberListActivity.access$2200(this.a) <= 0) {
+          TroopMemberListActivity.access$1602(this.a, true);
+        }
+        if ((TroopMemberListActivity.access$1600(this.a)) && (TroopMemberListActivity.access$1500(this.a)))
+        {
+          if (this.a.mListData.isEmpty()) {
+            return;
+          }
+          this.a.stopTitleProgress();
+          if (QLog.isColorLevel())
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append("handleMessage real totalTime:");
+            ((StringBuilder)localObject2).append(System.currentTimeMillis() - TroopMemberListActivity.access$2300(this.a));
+            ((StringBuilder)localObject2).append("start refreshUI");
+            QLog.d("TroopMemberListActivityget_troop_member", 2, ((StringBuilder)localObject2).toString());
+          }
+          localObject2 = (QProxyManager)this.a.app.getProxyManagerInner();
+          if (localObject2 != null) {
+            ((QProxyManager)localObject2).notifyRefreshTroopMember();
+          }
+          paramMessage.obj = this.a.mAdapter.a();
+          TroopMemberListActivity.access$1900(this.a, paramMessage);
+        }
+        return;
+      }
+    case 11: 
       paramMessage = (TroopInfo)paramMessage.obj;
       if (paramMessage.troopowneruin != null) {
-        this.a.e = paramMessage.troopowneruin;
+        this.a.mTroopOwnerUin = paramMessage.troopowneruin;
       }
       if (paramMessage.Administrator != null) {
-        this.a.f = paramMessage.Administrator;
+        this.a.mTroopAdminUins = paramMessage.Administrator;
       }
       ??? = this.a;
-      if ((this.a.app.getCurrentAccountUin().equals(paramMessage.troopowneruin)) || ((this.a.f != null) && (this.a.f.contains(this.a.app.getCurrentAccountUin()))))
-      {
-        bool = true;
-        ???.jdField_a_of_type_Boolean = bool;
-        if ((this.a.e == null) || (!this.a.e.equals(this.a.app.getCurrentAccountUin()))) {
-          break label1164;
+      bool1 = bool2;
+      if (!((TroopMemberListActivity)???).app.getCurrentAccountUin().equals(paramMessage.troopowneruin)) {
+        if ((this.a.mTroopAdminUins != null) && (this.a.mTroopAdminUins.contains(this.a.app.getCurrentAccountUin()))) {
+          bool1 = bool2;
+        } else {
+          bool1 = false;
         }
       }
-      for (this.a.n = "0"; this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter != null; this.a.n = "1")
+      ((TroopMemberListActivity)???).mIsTroopAdmin = bool1;
+      if ((this.a.mTroopOwnerUin != null) && (this.a.mTroopOwnerUin.equals(this.a.app.getCurrentAccountUin()))) {
+        this.a.mMyTroopRole = "0";
+      } else if ((this.a.mTroopAdminUins != null) && (this.a.mTroopAdminUins.contains(this.a.app.getCurrentAccountUin()))) {
+        this.a.mMyTroopRole = "1";
+      }
+      if (this.a.mAdapter != null)
       {
-        this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
+        this.a.mAdapter.a();
         return;
-        bool = false;
-        break label1087;
-        if ((this.a.f == null) || (!this.a.f.contains(this.a.app.getCurrentAccountUin()))) {
-          break label1137;
-        }
       }
-      this.a.jdField_d_of_type_AndroidWidgetRelativeLayout.setVisibility(0);
+      break;
+    case 9: 
+      if (this.a.mAdapter != null)
+      {
+        this.a.mAdapter.a();
+        return;
+      }
+      break;
+    case 8: 
+      paramMessage = (Object[])paramMessage.obj;
+      bool1 = ((Boolean)paramMessage[0]).booleanValue();
+      paramMessage = (ArrayList)paramMessage[1];
+      ??? = (IChatSettingForTroopApi)QRoute.api(IChatSettingForTroopApi.class);
+      localObject2 = this.a;
+      ((IChatSettingForTroopApi)???).inviteMember((Activity)localObject2, ((TroopMemberListActivity)localObject2).mTroopUin, bool1, paramMessage, 1);
       return;
-    } while (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter == null);
-    label1164:
-    if (this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.b != null) {
-      this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.b.clear();
+    case 7: 
+      if ((this.a.mProgressDialog != null) && (this.a.mProgressDialog.isShowing())) {
+        this.a.mProgressDialog.dismiss();
+      }
+      paramMessage = this.a;
+      QQToast.a(paramMessage, paramMessage.getString(2131691473), 0).b(this.a.mTitleBar.getHeight());
+      return;
+    case 6: 
+      if (this.a.mAdapter != null)
+      {
+        if (this.a.mAdapter.b != null) {
+          this.a.mAdapter.b.clear();
+        }
+        this.a.mAdapter.a();
+      }
+      if ((this.a.mProgressDialog != null) && (this.a.mProgressDialog.isShowing())) {
+        this.a.mProgressDialog.dismiss();
+      }
+      paramMessage = this.a;
+      QQToast.a(paramMessage, paramMessage.getString(2131691474), 0).b(this.a.mTitleBar.getHeight());
+      TroopMemberListActivity.access$200(this.a);
+      return;
+    case 5: 
+      this.a.stopTitleProgress();
+      return;
+    case 2: 
+      this.a.stopTitleProgress();
+    case 1: 
+      TroopMemberListActivity.access$1900(this.a, paramMessage);
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqActivityTroopMemberListActivity$ListAdapter.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopMemberListActivity.33
  * JD-Core Version:    0.7.0.1
  */

@@ -17,21 +17,26 @@ public class TimeAndCountHelper
   
   public static TimeAndCountHelper a()
   {
-    if (jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper == null) {
-        jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper = new TimeAndCountHelper();
+    if (jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper == null) {
+          jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper = new TimeAndCountHelper();
+        }
       }
-      return jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizSubscribeUtilsTimeAndCountHelper;
   }
   
   private String a(String paramString)
   {
     String str = BaseApplicationImpl.getApplication().getRuntime().getAccount();
-    return paramString + "_" + str;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("_");
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   private void a(Context paramContext, String paramString, TimeAndCountHelper.CountResult paramCountResult)
@@ -87,7 +92,7 @@ public class TimeAndCountHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.utils.TimeAndCountHelper
  * JD-Core Version:    0.7.0.1
  */

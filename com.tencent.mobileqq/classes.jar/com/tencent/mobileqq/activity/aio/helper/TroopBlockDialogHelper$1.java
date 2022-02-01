@@ -12,13 +12,13 @@ class TroopBlockDialogHelper$1
   public void a()
   {
     if (TroopBlockDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopBlockDialogHelper).a.jdField_a_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-      TroopBlockDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopBlockDialogHelper).K();
+      TroopBlockDialogHelper.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioHelperTroopBlockDialogHelper).q();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopBlockDialogHelper.1
  * JD-Core Version:    0.7.0.1
  */

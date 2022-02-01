@@ -18,31 +18,28 @@ class DatalineSessionAdapterUseNewFileBubble$2
   public void onClick(View paramView)
   {
     ItemHolder localItemHolder = (ItemHolder)paramView.getTag();
-    if (localItemHolder == null) {}
-    DataLineMsgSet localDataLineMsgSet;
-    do
+    if (localItemHolder != null)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      localDataLineMsgSet = localItemHolder.a();
-    } while (localDataLineMsgSet == null);
-    long l = 0L;
-    if (localDataLineMsgSet.getFirstItem() != null) {
-      l = localDataLineMsgSet.getFirstItem().sessionid;
+      DataLineMsgSet localDataLineMsgSet = localItemHolder.a();
+      if (localDataLineMsgSet != null)
+      {
+        long l = 0L;
+        if (localDataLineMsgSet.getFirstItem() != null) {
+          l = localDataLineMsgSet.getFirstItem().sessionid;
+        } else {
+          QLog.e("DatalineSessionAdapterUseNewFileBubble", 1, "stop recv but no sessionid");
+        }
+        localDataLineMsgSet.setPaused(true);
+        ((DataLineHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(localDataLineMsgSet.getGroupId(), l, false);
+        DatalineSessionAdapterUseNewFileBubble.a(this.a, localItemHolder, localDataLineMsgSet);
+      }
     }
-    for (;;)
-    {
-      localDataLineMsgSet.setPaused(true);
-      ((DataLineHandler)this.a.a.getBusinessHandler(BusinessHandlerFactory.DATALINE_HANDLER)).a(localDataLineMsgSet.getGroupId(), l, false);
-      DatalineSessionAdapterUseNewFileBubble.a(this.a, localItemHolder, localDataLineMsgSet);
-      break;
-      QLog.e("DatalineSessionAdapterUseNewFileBubble", 1, "stop recv but no sessionid");
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.DatalineSessionAdapterUseNewFileBubble.2
  * JD-Core Version:    0.7.0.1
  */

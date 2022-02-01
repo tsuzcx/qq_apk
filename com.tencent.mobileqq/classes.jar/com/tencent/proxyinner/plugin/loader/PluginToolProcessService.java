@@ -5,7 +5,8 @@ import android.os.IBinder;
 import android.os.Process;
 import android.os.RemoteException;
 import android.os.SystemClock;
-import com.tencent.mobileqq.intervideo.now.dynamic.DynamicNowManager;
+import com.tencent.mobileqq.intervideo.now.dynamic.IDynamicNowManagerApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.shadow.dynamic.host.MultiLoaderPluginProcessService;
 import com.tencent.shadow.dynamic.host.MultiLoaderPpsController;
@@ -27,24 +28,25 @@ public class PluginToolProcessService
   {
     super.onCreate();
     this.jdField_a_of_type_Long = SystemClock.elapsedRealtime();
-    DynamicNowManager.d();
+    ((IDynamicNowManagerApi)QRoute.api(IDynamicNowManagerApi.class)).addJumpCallback();
   }
   
   public void onDestroy()
   {
     super.onDestroy();
     Process.killProcess(Process.myPid());
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController != null) {}
+    MultiLoaderPpsController localMultiLoaderPpsController = this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController;
+    if (localMultiLoaderPpsController != null) {}
     try
     {
-      this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController.exit();
-      label24:
+      localMultiLoaderPpsController.exit();
+      label23:
       this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController = null;
       return;
     }
     catch (RemoteException localRemoteException)
     {
-      break label24;
+      break label23;
     }
   }
   
@@ -57,10 +59,11 @@ public class PluginToolProcessService
       return;
     }
     QLog.i("QTProxyService", 2, "onTaskRemoved");
-    if (this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController != null) {
+    paramIntent = this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController;
+    if (paramIntent != null) {
       try
       {
-        this.jdField_a_of_type_ComTencentShadowDynamicHostMultiLoaderPpsController.exit();
+        paramIntent.exit();
         return;
       }
       catch (RemoteException paramIntent)
@@ -74,7 +77,7 @@ public class PluginToolProcessService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.proxyinner.plugin.loader.PluginToolProcessService
  * JD-Core Version:    0.7.0.1
  */

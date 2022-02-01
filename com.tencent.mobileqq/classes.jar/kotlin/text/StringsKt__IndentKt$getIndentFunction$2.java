@@ -20,12 +20,15 @@ final class StringsKt__IndentKt$getIndentFunction$2
   public final String invoke(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "line");
-    return this.$indent + paramString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.$indent);
+    localStringBuilder.append(paramString);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.text.StringsKt__IndentKt.getIndentFunction.2
  * JD-Core Version:    0.7.0.1
  */

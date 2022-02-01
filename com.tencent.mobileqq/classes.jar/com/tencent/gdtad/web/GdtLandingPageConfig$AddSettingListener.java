@@ -1,24 +1,20 @@
 package com.tencent.gdtad.web;
 
-import android.content.Context;
-import com.tencent.ad.tangram.settings.AdSettingsUtil.a;
-import java.lang.ref.WeakReference;
+import com.tencent.ad.tangram.settings.AdSettingsManager.Listener;
 
 class GdtLandingPageConfig$AddSettingListener
-  implements AdSettingsUtil.a
+  implements AdSettingsManager.Listener
 {
   private GdtLandingPageConfig$AddSettingListener(GdtLandingPageConfig paramGdtLandingPageConfig) {}
   
-  public void onUpdated(WeakReference<Context> paramWeakReference, boolean paramBoolean)
+  public void onUpdated()
   {
-    if (paramBoolean) {
-      GdtLandingPageConfig.b(this.a, paramWeakReference);
-    }
+    GdtLandingPageConfig.b(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.web.GdtLandingPageConfig.AddSettingListener
  * JD-Core Version:    0.7.0.1
  */

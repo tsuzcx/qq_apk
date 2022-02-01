@@ -53,101 +53,97 @@ public class StructMsgItemTag
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    Object localObject = paramContext.getResources();
+    Resources localResources = paramContext.getResources();
+    Object localObject1;
     if ((paramView != null) && ((paramView instanceof LinearLayout)))
     {
-      paramView = (LinearLayout)paramView;
-      paramBundle = (URLImageView)paramView.findViewById(2131368937);
-      paramContext = (TextView)paramView.findViewById(2131380636);
+      paramContext = (LinearLayout)paramView;
+      paramBundle = (URLImageView)paramContext.findViewById(2131368658);
+      paramView = (TextView)paramContext.findViewById(2131379918);
     }
-    for (;;)
+    else
     {
-      if (!TextUtils.isEmpty(this.ac)) {}
+      localObject1 = new LinearLayout(paramContext);
+      ((LinearLayout)localObject1).setOrientation(0);
+      ((LinearLayout)localObject1).setMinimumHeight(AIOUtils.b(14.0F, localResources));
+      ((LinearLayout)localObject1).setLayoutParams(new LinearLayout.LayoutParams(-2, -1));
+      ((LinearLayout)localObject1).setGravity(16);
+      ((LinearLayout)localObject1).setPadding(AIOUtils.b(5.0F, localResources), AIOUtils.b(2.0F, localResources), AIOUtils.b(5.0F, localResources), AIOUtils.b(2.0F, localResources));
+      paramBundle = new URLImageView(paramContext);
+      paramBundle.setScaleType(ImageView.ScaleType.CENTER_CROP);
+      paramView = new LinearLayout.LayoutParams(AIOUtils.b(9.0F, localResources), AIOUtils.b(9.0F, localResources));
+      paramBundle.setId(2131368658);
+      ((LinearLayout)localObject1).addView(paramBundle, paramView);
+      paramView = new TextView(paramContext);
+      paramContext = new LinearLayout.LayoutParams(-2, -1);
+      paramContext.setMargins(AIOUtils.b(2.0F, localResources), 0, 0, 0);
+      paramView.setSingleLine(true);
+      paramView.setMaxLines(1);
+      paramView.setEllipsize(TextUtils.TruncateAt.END);
+      paramView.setGravity(16);
+      paramView.setId(2131379918);
+      ((LinearLayout)localObject1).addView(paramView, paramContext);
+      paramContext = (Context)localObject1;
+    }
+    if (!TextUtils.isEmpty(this.ac)) {
       try
       {
-        localObject = new GradientDrawable();
-        ((GradientDrawable)localObject).setColor(Color.parseColor(this.ac));
+        localObject1 = new GradientDrawable();
+        ((GradientDrawable)localObject1).setColor(Color.parseColor(this.ac));
         if (this.p > 0) {
-          ((GradientDrawable)localObject).setCornerRadius(this.p);
+          ((GradientDrawable)localObject1).setCornerRadius(this.p);
         }
-        ((GradientDrawable)localObject).setGradientType(0);
-        paramView.setBackgroundDrawable((Drawable)localObject);
-        if (!TextUtils.isEmpty(this.ad))
-        {
-          localObject = new ColorDrawable(2131167305);
-          localObject = URLDrawable.getDrawable(this.ad, (Drawable)localObject, (Drawable)localObject);
-          if (((URLDrawable)localObject).getStatus() != 1) {
-            ((URLDrawable)localObject).restartDownload();
-          }
-          paramBundle.setImageDrawable((Drawable)localObject);
-          paramBundle.setVisibility(0);
-          if (TextUtils.isEmpty(this.ah)) {
-            break label465;
-          }
-          paramContext.setText(this.ah);
-        }
+        ((GradientDrawable)localObject1).setGradientType(0);
+        paramContext.setBackgroundDrawable((Drawable)localObject1);
       }
-      catch (IllegalArgumentException paramBundle)
+      catch (IllegalArgumentException localIllegalArgumentException)
       {
-        try
-        {
-          paramContext.setTextColor(Color.parseColor(this.ae));
+        if (QLog.isColorLevel()) {
+          QLog.e("Q..troop.faceScore.StructMsgItemTag", 2, "StructMsgItemTag fromXml bgColor is not a color value.", localIllegalArgumentException);
         }
-        catch (Exception paramBundle)
-        {
-          try
-          {
-            for (;;)
-            {
-              paramContext.setTextSize(Integer.parseInt(this.ag));
-              paramContext.setVisibility(0);
-              return paramView;
-              paramView = new LinearLayout(paramContext);
-              paramView.setOrientation(0);
-              paramView.setMinimumHeight(AIOUtils.a(14.0F, (Resources)localObject));
-              paramView.setLayoutParams(new LinearLayout.LayoutParams(-2, -1));
-              paramView.setGravity(16);
-              paramView.setPadding(AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(2.0F, (Resources)localObject), AIOUtils.a(5.0F, (Resources)localObject), AIOUtils.a(2.0F, (Resources)localObject));
-              paramBundle = new URLImageView(paramContext);
-              paramBundle.setScaleType(ImageView.ScaleType.CENTER_CROP);
-              LinearLayout.LayoutParams localLayoutParams = new LinearLayout.LayoutParams(AIOUtils.a(9.0F, (Resources)localObject), AIOUtils.a(9.0F, (Resources)localObject));
-              paramBundle.setId(2131368937);
-              paramView.addView(paramBundle, localLayoutParams);
-              paramContext = new TextView(paramContext);
-              localLayoutParams = new LinearLayout.LayoutParams(-2, -1);
-              localLayoutParams.setMargins(AIOUtils.a(2.0F, (Resources)localObject), 0, 0, 0);
-              paramContext.setSingleLine(true);
-              paramContext.setMaxLines(1);
-              paramContext.setEllipsize(TextUtils.TruncateAt.END);
-              paramContext.setGravity(16);
-              paramContext.setId(2131380636);
-              paramView.addView(paramContext, localLayoutParams);
-              break;
-              localIllegalArgumentException = localIllegalArgumentException;
-              if (QLog.isColorLevel())
-              {
-                QLog.e("Q..troop.faceScore.StructMsgItemTag", 2, "StructMsgItemTag fromXml bgColor is not a color value.", localIllegalArgumentException);
-                continue;
-                paramBundle.setVisibility(8);
-                continue;
-                paramBundle = paramBundle;
-                paramContext.setTextColor(b());
-              }
-            }
-          }
-          catch (Exception paramBundle)
-          {
-            for (;;)
-            {
-              paramContext.setTextSize(c());
-            }
-          }
-        }
-        label465:
-        paramContext.setVisibility(8);
       }
     }
-    return paramView;
+    if (!TextUtils.isEmpty(this.ad))
+    {
+      Object localObject2 = new ColorDrawable(2131167333);
+      localObject2 = URLDrawable.getDrawable(this.ad, (Drawable)localObject2, (Drawable)localObject2);
+      if (((URLDrawable)localObject2).getStatus() != 1) {
+        ((URLDrawable)localObject2).restartDownload();
+      }
+      paramBundle.setImageDrawable((Drawable)localObject2);
+      paramBundle.setVisibility(0);
+    }
+    else
+    {
+      paramBundle.setVisibility(8);
+    }
+    if (!TextUtils.isEmpty(this.ah)) {
+      paramView.setText(this.ah);
+    }
+    try
+    {
+      paramView.setTextColor(Color.parseColor(this.ae));
+    }
+    catch (Exception paramBundle)
+    {
+      label430:
+      label453:
+      break label430;
+    }
+    paramView.setTextColor(b());
+    try
+    {
+      paramView.setTextSize(Integer.parseInt(this.ag));
+    }
+    catch (Exception paramBundle)
+    {
+      break label453;
+    }
+    paramView.setTextSize(c());
+    paramView.setVisibility(0);
+    return paramContext;
+    paramView.setVisibility(8);
+    return paramContext;
   }
   
   public String a()
@@ -169,59 +165,43 @@ public class StructMsgItemTag
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    String str;
-    if (this.ae == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.ag != null) {
-        break label116;
-      }
-      str = "";
-      label32:
-      paramObjectOutput.writeUTF(str);
-      if (this.ah != null) {
-        break label124;
-      }
-      str = "";
-      label49:
-      paramObjectOutput.writeUTF(str);
-      if (this.ac != null) {
-        break label136;
-      }
-      str = "";
-      label66:
-      paramObjectOutput.writeUTF(str);
-      if (this.ad != null) {
-        break label144;
-      }
-      str = "";
-      label83:
-      paramObjectOutput.writeUTF(str);
-      if (this.p > 0) {
-        break label152;
-      }
+    String str2 = this.ae;
+    String str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
-    label136:
-    label144:
-    label152:
-    for (int i = 10;; i = this.p)
-    {
-      paramObjectOutput.writeInt(i);
-      return;
-      str = this.ae;
-      break;
-      label116:
-      str = this.ag;
-      break label32;
-      label124:
-      str = MessageUtils.a(this.ah, false);
-      break label49;
-      str = this.ac;
-      break label66;
-      str = this.ad;
-      break label83;
+    paramObjectOutput.writeUTF(str1);
+    str2 = this.ag;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
     }
+    paramObjectOutput.writeUTF(str1);
+    str1 = this.ah;
+    if (str1 == null) {
+      str1 = "";
+    } else {
+      str1 = MessageUtils.a(str1, false);
+    }
+    paramObjectOutput.writeUTF(str1);
+    str2 = this.ac;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    paramObjectOutput.writeUTF(str1);
+    str2 = this.ad;
+    str1 = str2;
+    if (str2 == null) {
+      str1 = "";
+    }
+    paramObjectOutput.writeUTF(str1);
+    int j = this.p;
+    int i = j;
+    if (j <= 0) {
+      i = 10;
+    }
+    paramObjectOutput.writeInt(i);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
@@ -245,8 +225,12 @@ public class StructMsgItemTag
       if (!TextUtils.isEmpty(this.ad)) {
         paramXmlSerializer.attribute(null, "icon", this.ad);
       }
-      if (this.p > 0) {
-        paramXmlSerializer.attribute(null, "radius", this.p + "");
+      if (this.p > 0)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(this.p);
+        localStringBuilder.append("");
+        paramXmlSerializer.attribute(null, "radius", localStringBuilder.toString());
       }
     }
     paramXmlSerializer.endTag(null, this.a);
@@ -254,25 +238,27 @@ public class StructMsgItemTag
   
   public boolean a(StructMsgNode paramStructMsgNode)
   {
-    if (paramStructMsgNode == null) {}
-    do
-    {
+    if (paramStructMsgNode == null) {
       return true;
-      this.ae = paramStructMsgNode.a("color");
-      this.af = paramStructMsgNode.a("style");
-      this.ag = paramStructMsgNode.a("size");
-      this.ah = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
-      this.ac = paramStructMsgNode.a("bgColor");
-      this.ad = paramStructMsgNode.a("icon");
-      paramStructMsgNode = paramStructMsgNode.a("radius");
-      try
-      {
-        this.p = Integer.valueOf(paramStructMsgNode).intValue();
-        return true;
+    }
+    this.ae = paramStructMsgNode.a("color");
+    this.af = paramStructMsgNode.a("style");
+    this.ag = paramStructMsgNode.a("size");
+    this.ah = MessageUtils.a(StructMsgFactory.a(paramStructMsgNode), false);
+    this.ac = paramStructMsgNode.a("bgColor");
+    this.ad = paramStructMsgNode.a("icon");
+    paramStructMsgNode = paramStructMsgNode.a("radius");
+    try
+    {
+      this.p = Integer.valueOf(paramStructMsgNode).intValue();
+      return true;
+    }
+    catch (NumberFormatException paramStructMsgNode)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("Q..troop.faceScore.StructMsgItemTag", 2, "StructMsgItemTag fromXml radius is not a integer value.", paramStructMsgNode);
       }
-      catch (NumberFormatException paramStructMsgNode) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("Q..troop.faceScore.StructMsgItemTag", 2, "StructMsgItemTag fromXml radius is not a integer value.", paramStructMsgNode);
+    }
     return true;
   }
   
@@ -288,7 +274,7 @@ public class StructMsgItemTag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.StructMsgItemTag
  * JD-Core Version:    0.7.0.1
  */

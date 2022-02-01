@@ -27,10 +27,11 @@ public class QQFaceNativeData
   
   public byte[] getRawData()
   {
-    if ((this.rawData == null) || (this.rawData.length == 0)) {
-      return null;
+    byte[] arrayOfByte = this.rawData;
+    if ((arrayOfByte != null) && (arrayOfByte.length != 0)) {
+      return arrayOfByte;
     }
-    return this.rawData;
+    return null;
   }
   
   public boolean isEmpty()
@@ -56,7 +57,7 @@ public class QQFaceNativeData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.qflutter.qqface.data.QQFaceNativeData
  * JD-Core Version:    0.7.0.1
  */

@@ -24,12 +24,15 @@ class AddFriendVerifyActivity$PobingTemplateObserver
       localAddFriendVerifyActivity.a(paramInt, paramBoolean, paramObject, this.jdField_a_of_type_Int);
       return;
     }
-    QLog.e("AddFriendVerifyActivity", 1, "onUpdate: activity is null, type=" + paramInt);
+    paramObject = new StringBuilder();
+    paramObject.append("onUpdate: activity is null, type=");
+    paramObject.append(paramInt);
+    QLog.e("AddFriendVerifyActivity", 1, paramObject.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AddFriendVerifyActivity.PobingTemplateObserver
  * JD-Core Version:    0.7.0.1
  */

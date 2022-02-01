@@ -13,7 +13,7 @@ public class TroopReplyMsg
 {
   public TroopReplyMsg(Context paramContext)
   {
-    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697691);
+    this.jdField_a_of_type_JavaLangString = HardCodeUtil.a(2131697697);
   }
   
   public Object a(int paramInt, MessageInfo paramMessageInfo, Object paramObject, MessageRecord paramMessageRecord, QQAppInterface paramQQAppInterface)
@@ -31,7 +31,7 @@ public class TroopReplyMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msg.TroopReplyMsg
  * JD-Core Version:    0.7.0.1
  */

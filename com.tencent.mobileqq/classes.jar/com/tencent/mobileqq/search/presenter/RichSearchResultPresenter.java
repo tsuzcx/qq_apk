@@ -5,15 +5,16 @@ import android.view.View;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.search.adapter.GroupSearchAdapter;
+import com.tencent.mobileqq.search.base.presenter.SearchResultPresenter;
+import com.tencent.mobileqq.search.base.view.ISearchResultView;
+import com.tencent.mobileqq.search.business.net.model.RichSearchModelNode;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.model.RichSearchModelNode;
 import com.tencent.mobileqq.search.rich.ArkRichNode;
 import com.tencent.mobileqq.search.rich.IRichNode;
 import com.tencent.mobileqq.search.rich.IRichNodeEvent;
 import com.tencent.mobileqq.search.rich.IRichNodeView;
 import com.tencent.mobileqq.search.rich.RichNodeViewBase;
-import com.tencent.mobileqq.search.view.ISearchResultView;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import java.lang.ref.WeakReference;
 
 public class RichSearchResultPresenter
@@ -32,14 +33,15 @@ public class RichSearchResultPresenter
   
   private void a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {}
-    GroupSearchAdapter localGroupSearchAdapter;
-    do
-    {
+    Object localObject = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localObject == null) {
       return;
-      localGroupSearchAdapter = (GroupSearchAdapter)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    } while (localGroupSearchAdapter == null);
-    localGroupSearchAdapter.notifyDataSetChanged();
+    }
+    localObject = (GroupSearchAdapter)((WeakReference)localObject).get();
+    if (localObject == null) {
+      return;
+    }
+    ((GroupSearchAdapter)localObject).notifyDataSetChanged();
   }
   
   private void a(int paramInt1, int paramInt2, IRichNodeView paramIRichNodeView)
@@ -48,24 +50,45 @@ public class RichSearchResultPresenter
       return;
     }
     boolean bool = ThemeUtil.isNowThemeIsNight(BaseApplicationImpl.getApplication().getRuntime(), false, null);
-    ((RichNodeViewBase)paramIRichNodeView).b(bool);
+    paramIRichNodeView = (RichNodeViewBase)paramIRichNodeView;
+    paramIRichNodeView.b(bool);
     if (paramInt1 == 1)
     {
-      ((RichNodeViewBase)paramIRichNodeView).a(true);
+      paramIRichNodeView.a(true);
       return;
     }
-    switch (paramInt2)
+    if (paramInt2 != 0)
     {
-    default: 
-      return;
-    case 0: 
-      ((RichNodeViewBase)paramIRichNodeView).a(true);
-      return;
-    case 1: 
-      ((RichNodeViewBase)paramIRichNodeView).a(true);
+      if (paramInt2 != 1)
+      {
+        if (paramInt2 != 2) {
+          return;
+        }
+        paramIRichNodeView.a(true);
+        return;
+      }
+      paramIRichNodeView.a(true);
       return;
     }
-    ((RichNodeViewBase)paramIRichNodeView).a(true);
+    paramIRichNodeView.a(true);
+  }
+  
+  public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
+  {
+    super.a(paramISearchResultModel, paramISearchResultView);
+    if (!(paramISearchResultModel instanceof RichSearchModelNode)) {
+      return;
+    }
+    if (!(paramISearchResultView instanceof IRichNodeView)) {
+      return;
+    }
+    paramISearchResultView = ((IRichNodeView)paramISearchResultView).a();
+    paramISearchResultModel = (RichSearchModelNode)paramISearchResultModel;
+    paramISearchResultView.a(paramISearchResultModel.c(), paramISearchResultModel.d(), paramISearchResultModel.e());
+    paramISearchResultView.a(this);
+    if ((paramISearchResultView instanceof ArkRichNode)) {
+      ((ArkRichNode)paramISearchResultView).a(true);
+    }
   }
   
   public void a(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView, Bitmap paramBitmap)
@@ -80,23 +103,6 @@ public class RichSearchResultPresenter
   
   public void a(IRichNode paramIRichNode, String paramString1, String paramString2) {}
   
-  public void b(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
-  {
-    super.b(paramISearchResultModel, paramISearchResultView);
-    if (!(paramISearchResultModel instanceof RichSearchModelNode)) {}
-    do
-    {
-      do
-      {
-        return;
-      } while (!(paramISearchResultView instanceof IRichNodeView));
-      paramISearchResultView = ((IRichNodeView)paramISearchResultView).a();
-      paramISearchResultView.a(((RichSearchModelNode)paramISearchResultModel).c(), ((RichSearchModelNode)paramISearchResultModel).d(), ((RichSearchModelNode)paramISearchResultModel).e());
-      paramISearchResultView.a(this);
-    } while (!(paramISearchResultView instanceof ArkRichNode));
-    ((ArkRichNode)paramISearchResultView).a(true);
-  }
-  
   protected void c(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
     if (this.jdField_a_of_type_ComTencentMobileqqSearchPresenterRichSearchResultPresenter$OnActionListener != null)
@@ -104,23 +110,25 @@ public class RichSearchResultPresenter
       if (paramISearchResultView.a() != null) {
         paramISearchResultView.a().setOnClickListener(new RichSearchResultPresenter.1(this));
       }
-      return;
     }
-    super.c(paramISearchResultModel, paramISearchResultView);
+    else {
+      super.c(paramISearchResultModel, paramISearchResultView);
+    }
   }
   
   public void d(ISearchResultModel paramISearchResultModel, ISearchResultView paramISearchResultView)
   {
-    if (!(paramISearchResultView instanceof IRichNodeView)) {}
-    while (!this.jdField_a_of_type_Boolean) {
+    if (!(paramISearchResultView instanceof IRichNodeView)) {
       return;
     }
-    a(paramISearchResultModel.a(), paramISearchResultModel.b(), (IRichNodeView)paramISearchResultView);
+    if (this.jdField_a_of_type_Boolean) {
+      a(paramISearchResultModel.b(), paramISearchResultModel.f_(), (IRichNodeView)paramISearchResultView);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.presenter.RichSearchResultPresenter
  * JD-Core Version:    0.7.0.1
  */

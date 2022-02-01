@@ -31,43 +31,56 @@ public abstract class UploadRequest
   
   public byte[] encode()
   {
-    try
+    for (;;)
     {
-      Object localObject = createJceRequest();
-      if (localObject == null)
+      try
       {
-        UploadLog.e("UploadRequest", "createJceRequest return null");
+        localObject = createJceRequest();
+        if (localObject == null)
+        {
+          UploadLog.e("UploadRequest", "createJceRequest return null");
+          return null;
+        }
+      }
+      catch (Throwable localThrowable)
+      {
+        byte[] arrayOfByte;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("encode exception. reqId=");
+        ((StringBuilder)localObject).append(getRequestId());
+        UploadLog.e("UploadRequest", ((StringBuilder)localObject).toString(), localThrowable);
+        return null;
+      }
+      catch (IOException localIOException)
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("encode exception. reqId=");
+        ((StringBuilder)localObject).append(getRequestId());
+        UploadLog.e("UploadRequest", ((StringBuilder)localObject).toString(), localIOException);
+        throw localIOException;
+      }
+      catch (FileNotFoundException localFileNotFoundException)
+      {
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("encode exception. reqId=");
+        ((StringBuilder)localObject).append(getRequestId());
+        UploadLog.e("UploadRequest", ((StringBuilder)localObject).toString(), localFileNotFoundException);
         return null;
       }
       try
       {
-        byte[] arrayOfByte = JceEncoder.encode((JceStruct)localObject);
+        arrayOfByte = JceEncoder.encode((JceStruct)localObject);
         arrayOfByte = PDUtil.encode(getCmdId(), this.mRequestId, arrayOfByte);
         return arrayOfByte;
       }
       catch (OutOfMemoryError localOutOfMemoryError)
       {
-        UploadLog.e("UploadRequest", "encode request OOM. gc, then retry");
-        System.gc();
-        localObject = JceEncoder.encode((JceStruct)localObject);
-        localObject = PDUtil.encode(getCmdId(), this.mRequestId, (byte[])localObject);
-        return localObject;
+        continue;
       }
-      return null;
-    }
-    catch (FileNotFoundException localFileNotFoundException)
-    {
-      UploadLog.e("UploadRequest", "encode exception. reqId=" + getRequestId(), localFileNotFoundException);
-      return null;
-    }
-    catch (IOException localIOException)
-    {
-      UploadLog.e("UploadRequest", "encode exception. reqId=" + getRequestId(), localIOException);
-      throw localIOException;
-    }
-    catch (Throwable localThrowable)
-    {
-      UploadLog.e("UploadRequest", "encode exception. reqId=" + getRequestId(), localThrowable);
+      UploadLog.e("UploadRequest", "encode request OOM. gc, then retry");
+      System.gc();
+      arrayOfByte = JceEncoder.encode((JceStruct)localObject);
+      arrayOfByte = PDUtil.encode(getCmdId(), this.mRequestId, arrayOfByte);
     }
   }
   
@@ -119,13 +132,18 @@ public abstract class UploadRequest
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("taskId=").append(getTaskId()).append(" reqId=").append(getRequestId()).append(" cmd=").append(getCmdId());
+    localStringBuilder.append("taskId=");
+    localStringBuilder.append(getTaskId());
+    localStringBuilder.append(" reqId=");
+    localStringBuilder.append(getRequestId());
+    localStringBuilder.append(" cmd=");
+    localStringBuilder.append(getCmdId());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.request.UploadRequest
  * JD-Core Version:    0.7.0.1
  */

@@ -34,37 +34,43 @@ public class LinkTouchMovementMethod
     if (paramMotionEvent.getAction() == 0)
     {
       this.a = a(paramTextView, paramSpannable, paramMotionEvent);
-      if (this.a != null)
+      paramTextView = this.a;
+      if (paramTextView != null)
       {
-        this.a.a(true);
+        paramTextView.a(true);
         Selection.setSelection(paramSpannable, paramSpannable.getSpanStart(this.a), paramSpannable.getSpanEnd(this.a));
+        return true;
       }
     }
-    do
+    else if (paramMotionEvent.getAction() == 2)
     {
-      return true;
-      if (paramMotionEvent.getAction() != 2) {
-        break;
-      }
       paramTextView = a(paramTextView, paramSpannable, paramMotionEvent);
-    } while ((this.a == null) || (paramTextView == this.a));
-    this.a.a(false);
-    this.a = null;
-    Selection.removeSelection(paramSpannable);
-    return true;
-    if (this.a != null)
-    {
-      this.a.a(false);
-      super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      paramMotionEvent = this.a;
+      if ((paramMotionEvent != null) && (paramTextView != paramMotionEvent))
+      {
+        paramMotionEvent.a(false);
+        this.a = null;
+        Selection.removeSelection(paramSpannable);
+        return true;
+      }
     }
-    this.a = null;
-    Selection.removeSelection(paramSpannable);
+    else
+    {
+      TouchableSpan localTouchableSpan = this.a;
+      if (localTouchableSpan != null)
+      {
+        localTouchableSpan.a(false);
+        super.onTouchEvent(paramTextView, paramSpannable, paramMotionEvent);
+      }
+      this.a = null;
+      Selection.removeSelection(paramSpannable);
+    }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.span.LinkTouchMovementMethod
  * JD-Core Version:    0.7.0.1
  */

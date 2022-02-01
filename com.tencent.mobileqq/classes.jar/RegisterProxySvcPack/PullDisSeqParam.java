@@ -13,16 +13,6 @@ public final class PullDisSeqParam
   public long lDisCode = 0L;
   public long lLastSeqId = 0L;
   
-  static
-  {
-    if (!PullDisSeqParam.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   public PullDisSeqParam() {}
   
   public PullDisSeqParam(long paramLong1, long paramLong2)
@@ -33,18 +23,17 @@ public final class PullDisSeqParam
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -63,13 +52,20 @@ public final class PullDisSeqParam
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (PullDisSeqParam)paramObject;
-    } while ((!JceUtil.equals(this.lDisCode, paramObject.lDisCode)) || (!JceUtil.equals(this.lLastSeqId, paramObject.lLastSeqId)));
-    return true;
+    }
+    paramObject = (PullDisSeqParam)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.lDisCode, paramObject.lDisCode))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.lLastSeqId, paramObject.lLastSeqId)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public int hashCode()
@@ -99,7 +95,7 @@ public final class PullDisSeqParam
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     RegisterProxySvcPack.PullDisSeqParam
  * JD-Core Version:    0.7.0.1
  */

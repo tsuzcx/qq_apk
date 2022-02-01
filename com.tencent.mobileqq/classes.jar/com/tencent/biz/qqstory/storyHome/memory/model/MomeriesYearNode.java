@@ -47,12 +47,18 @@ public class MomeriesYearNode
   
   public String toString()
   {
-    return "MomeriesYearNode{year=" + this.year + ", videoCount=" + this.videoCount + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MomeriesYearNode{year=");
+    localStringBuilder.append(this.year);
+    localStringBuilder.append(", videoCount=");
+    localStringBuilder.append(this.videoCount);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.model.MomeriesYearNode
  * JD-Core Version:    0.7.0.1
  */

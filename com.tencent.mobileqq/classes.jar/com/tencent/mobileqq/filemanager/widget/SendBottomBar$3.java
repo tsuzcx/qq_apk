@@ -16,23 +16,32 @@ class SendBottomBar$3
   
   public void onClick(View paramView)
   {
-    String str2 = HardCodeUtil.a(2131713739) + FMDataCache.b() + HardCodeUtil.a(2131713745);
-    String str1 = null;
-    String str3 = HardCodeUtil.a(2131713757);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131698205));
+    ((StringBuilder)localObject).append(FMDataCache.b());
+    ((StringBuilder)localObject).append(HardCodeUtil.a(2131698206));
+    localObject = ((StringBuilder)localObject).toString();
+    String str2 = HardCodeUtil.a(2131698177);
+    String str1;
     if (SendBottomBar.a(this.a).g() != -1)
     {
-      str2 = HardCodeUtil.a(2131713763);
-      str1 = HardCodeUtil.a(2131713759);
-      str3 = HardCodeUtil.a(2131713756);
+      localObject = HardCodeUtil.a(2131698178);
+      str1 = HardCodeUtil.a(2131698180);
+      str2 = HardCodeUtil.a(2131698179);
     }
-    this.a.a = DialogUtil.a(SendBottomBar.a(this.a), 230, str1, str2, HardCodeUtil.a(2131713755), str3, new SendBottomBar.3.1(this), new SendBottomBar.3.2(this));
+    else
+    {
+      str1 = null;
+    }
+    SendBottomBar localSendBottomBar = this.a;
+    localSendBottomBar.a = DialogUtil.a(SendBottomBar.a(localSendBottomBar), 230, str1, (CharSequence)localObject, HardCodeUtil.a(2131690728), str2, new SendBottomBar.3.1(this), new SendBottomBar.3.2(this));
     this.a.a.show();
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.widget.SendBottomBar.3
  * JD-Core Version:    0.7.0.1
  */

@@ -29,16 +29,21 @@ public final class ex
   {
     paramex = paramex.b;
     List localList = this.b;
-    if ((paramex.size() == 0) || (localList.size() == 0)) {}
-    while (co.a(paramex, localList)) {
-      return false;
+    if (paramex.size() != 0)
+    {
+      if (localList.size() == 0) {
+        return false;
+      }
+      if (!co.a(paramex, localList)) {
+        return true;
+      }
     }
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ex
  * JD-Core Version:    0.7.0.1
  */

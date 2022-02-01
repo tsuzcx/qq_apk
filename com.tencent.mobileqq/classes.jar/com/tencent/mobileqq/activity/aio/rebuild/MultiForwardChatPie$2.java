@@ -12,15 +12,15 @@ class MultiForwardChatPie$2
   
   public void run()
   {
-    List localList = MultiMsgManager.a().a(this.this$0.a, this.this$0.jdField_b_of_type_Long);
-    Message localMessage = this.this$0.jdField_b_of_type_MqqOsMqqHandler.obtainMessage(0);
+    List localList = MultiMsgManager.a().a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_Long);
+    Message localMessage = this.this$0.b.obtainMessage(0);
     localMessage.obj = localList;
-    this.this$0.jdField_b_of_type_MqqOsMqqHandler.sendMessage(localMessage);
+    this.this$0.b.sendMessage(localMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.MultiForwardChatPie.2
  * JD-Core Version:    0.7.0.1
  */

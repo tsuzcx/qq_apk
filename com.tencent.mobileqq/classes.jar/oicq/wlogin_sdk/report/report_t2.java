@@ -55,7 +55,8 @@ public class report_t2
   {
     this._rlen += paramreport_t3._rlen;
     this._slen += paramreport_t3._slen;
-    this._log.put(Integer.valueOf(this._log.size()), paramreport_t3);
+    TreeMap localTreeMap = this._log;
+    localTreeMap.put(Integer.valueOf(localTreeMap.size()), paramreport_t3);
   }
   
   public void clear_t3()
@@ -74,80 +75,86 @@ public class report_t2
   
   public JSONObject toJasonObj()
   {
-    try
+    label591:
+    label598:
+    for (;;)
     {
-      localObject3 = new JSONObject();
-    }
-    catch (Exception localException1)
-    {
+      JSONObject localJSONObject;
+      int i;
       Object localObject2;
-      label231:
-      localObject1 = null;
-      label345:
-      label497:
-      localObject3 = new StringWriter();
-      PrintWriter localPrintWriter = new PrintWriter((Writer)localObject3, true);
-      localException1.printStackTrace(localPrintWriter);
-      localPrintWriter.flush();
-      ((StringWriter)localObject3).flush();
-      util.LOGD("exception", ((StringWriter)localObject3).toString());
-      return localObject1;
-    }
-    try
-    {
-      ((JSONObject)localObject3).put("type", this._type);
-      ((JSONObject)localObject3).put("oper", this._oper);
-      ((JSONObject)localObject3).put("start", String.format("%d", new Object[] { Long.valueOf(this._start / 1000L & 0xFFFFFFFF) }));
-      ((JSONObject)localObject3).put("used", String.format("%d", new Object[] { Long.valueOf(this._used & 0xFFFFFFFF) }));
-      ((JSONObject)localObject3).put("uin", String.format("%d", new Object[] { Long.valueOf(this._uin & 0xFFFFFFFF) }));
-      ((JSONObject)localObject3).put("app", String.format("%d", new Object[] { Long.valueOf(this._app & 0xFFFFFFFF) }));
-      ((JSONObject)localObject3).put("subapp", String.format("%d", new Object[] { Long.valueOf(this._sub_app & 0xFFFFFFFF) }));
-      ((JSONObject)localObject3).put("email", this._name);
-      ((JSONObject)localObject3).put("attr", this.attr);
-      localObject1 = "";
-      localObject2 = localObject1;
-      if (this._app_list == null) {
-        break label345;
-      }
-      i = 0;
-    }
-    catch (Exception localException2)
-    {
-      localObject1 = localObject3;
-      break label497;
-      i += 1;
-      break label231;
-    }
-    localObject2 = localObject1;
-    if (i < this._app_list.length)
-    {
-      if (i == this._app_list.length - 1) {
-        localObject1 = (String)localObject1 + String.format("%d", new Object[] { Long.valueOf(this._app_list[i] & 0xFFFFFFFF) });
-      } else {
-        localObject1 = (String)localObject1 + String.format("%d,", new Object[] { Long.valueOf(this._app_list[i] & 0xFFFFFFFF) });
-      }
-    }
-    else
-    {
-      ((JSONObject)localObject3).put("applist", localObject2);
-      ((JSONObject)localObject3).put("rst1", String.format("%d", new Object[] { Long.valueOf(this._rst1 & 0xFFFFFFFF) }));
-      ((JSONObject)localObject3).put("rst2", String.format("%d", new Object[] { Long.valueOf(this._rst2 & 0xFFFFFFFF) }));
-      localObject1 = new JSONArray();
-      localObject2 = this._log.keySet().iterator();
-      i = 0;
-      while (((Iterator)localObject2).hasNext())
+      try
       {
-        ((JSONArray)localObject1).put(i, ((report_t3)this._log.get(((Iterator)localObject2).next())).toJasonObj());
-        i += 1;
+        localJSONObject = new JSONObject();
+        try
+        {
+          localJSONObject.put("type", this._type);
+          localJSONObject.put("oper", this._oper);
+          long l = this._start / 1000L;
+          int j = 0;
+          localJSONObject.put("start", String.format("%d", new Object[] { Long.valueOf(l & 0xFFFFFFFF) }));
+          localJSONObject.put("used", String.format("%d", new Object[] { Long.valueOf(this._used & 0xFFFFFFFF) }));
+          localJSONObject.put("uin", String.format("%d", new Object[] { Long.valueOf(this._uin & 0xFFFFFFFF) }));
+          localJSONObject.put("app", String.format("%d", new Object[] { Long.valueOf(this._app & 0xFFFFFFFF) }));
+          localJSONObject.put("subapp", String.format("%d", new Object[] { Long.valueOf(this._sub_app & 0xFFFFFFFF) }));
+          localJSONObject.put("email", this._name);
+          localJSONObject.put("attr", this.attr);
+          Object localObject1 = "";
+          if (this._app_list != null)
+          {
+            localObject1 = "";
+            i = 0;
+            if (i >= this._app_list.length) {
+              break label598;
+            }
+            if (i == this._app_list.length - 1)
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append((String)localObject1);
+              ((StringBuilder)localObject2).append(String.format("%d", new Object[] { Long.valueOf(this._app_list[i] & 0xFFFFFFFF) }));
+              localObject1 = ((StringBuilder)localObject2).toString();
+              break label591;
+            }
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append(String.format("%d,", new Object[] { Long.valueOf(this._app_list[i] & 0xFFFFFFFF) }));
+            localObject1 = ((StringBuilder)localObject2).toString();
+            break label591;
+          }
+          localJSONObject.put("applist", localObject1);
+          localJSONObject.put("rst1", String.format("%d", new Object[] { Long.valueOf(this._rst1 & 0xFFFFFFFF) }));
+          localJSONObject.put("rst2", String.format("%d", new Object[] { Long.valueOf(0xFFFFFFFF & this._rst2) }));
+          localObject1 = new JSONArray();
+          localObject2 = this._log.keySet().iterator();
+          i = j;
+          if (((Iterator)localObject2).hasNext())
+          {
+            ((JSONArray)localObject1).put(i, ((report_t3)this._log.get(((Iterator)localObject2).next())).toJasonObj());
+            i += 1;
+            continue;
+          }
+          localJSONObject.put("log", localObject1);
+          return localJSONObject;
+        }
+        catch (Exception localException1) {}
+        localObject2 = new StringWriter();
       }
-      ((JSONObject)localObject3).put("log", localObject1);
-      return localObject3;
+      catch (Exception localException2)
+      {
+        localJSONObject = null;
+      }
+      PrintWriter localPrintWriter = new PrintWriter((Writer)localObject2, true);
+      localException2.printStackTrace(localPrintWriter);
+      localPrintWriter.flush();
+      ((StringWriter)localObject2).flush();
+      util.LOGD("exception", ((StringWriter)localObject2).toString());
+      return localJSONObject;
+      i += 1;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.report.report_t2
  * JD-Core Version:    0.7.0.1
  */

@@ -13,9 +13,9 @@ import android.widget.FrameLayout.LayoutParams;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.qflutter.nativeresources.QFlutterSkinEnginePlugin;
-import com.qflutter.tencent_vista_image.TencentVistaImagePlugin;
+import com.qflutter.vistaimage.VistaImagePlugin;
 import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.flutter.channel.ChannelRegistrar;
 import com.tencent.mobileqq.flutter.launch.LaunchListener;
 import com.tencent.mobileqq.flutter.launch.LaunchResult;
@@ -24,7 +24,7 @@ import com.tencent.mobileqq.flutter.report.FirstFrameTrace;
 import com.tencent.mobileqq.flutter.report.MemoryReporter;
 import com.tencent.mobileqq.flutter.router.SerializableMap;
 import com.tencent.mobileqq.flutter.vistaimage.VistaImageProxy;
-import com.tencent.mobileqq.theme.ThemeUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.immersive.ImmersiveUtils;
@@ -38,7 +38,6 @@ import io.flutter.embedding.engine.FlutterShellArgs;
 import io.flutter.embedding.engine.dart.DartExecutor;
 import io.flutter.embedding.engine.dart.DartExecutor.DartEntrypoint;
 import io.flutter.embedding.engine.loader.FlutterLoader;
-import io.flutter.embedding.engine.plugins.FlutterPlugin;
 import io.flutter.embedding.engine.plugins.PluginRegistry;
 import io.flutter.embedding.engine.plugins.activity.ActivityControlSurface;
 import io.flutter.embedding.engine.renderer.FlutterUiDisplayListener;
@@ -82,19 +81,31 @@ public class QFlutterContainerDelegate
   {
     this.jdField_a_of_type_ComTencentMobileqqFlutterReportFirstFrameTrace.b();
     Object localObject = (SerializableMap)this.jdField_a_of_type_AndroidOsBundle.getSerializable("params");
-    if (localObject != null) {}
-    for (localObject = ((SerializableMap)localObject).toJson();; localObject = "")
-    {
-      String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("page_name", "unknown");
-      String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("unique_id", "-1");
-      QLog.d("QFlutterContainerDelegate", 1, "setupFlutterEngine, pageName: " + str1 + ", uniqueId: " + str2 + ", paramsJson: " + (String)localObject);
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine = new FlutterEngine(BaseApplicationImpl.getContext(), FlutterLoader.getInstance(), new FlutterJNI(), new PlatformViewsController(), this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a().toArray(), true, false, new String[] { str1, localObject, str2 });
-      this.jdField_a_of_type_IoFlutterPluginPlatformPlatformPlugin = new PlatformPlugin(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a(), this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getPlatformChannel());
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().attachToActivity(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a(), this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.getLifecycle());
-      l();
-      this.jdField_a_of_type_ComTencentMobileqqFlutterReportFirstFrameTrace.c();
-      return;
+    if (localObject != null) {
+      localObject = ((SerializableMap)localObject).toJson();
+    } else {
+      localObject = "";
     }
+    String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("page_name", "unknown");
+    String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("unique_id", "-1");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("setupFlutterEngine, pageName: ");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(", uniqueId: ");
+    localStringBuilder.append(str2);
+    QLog.d("QFlutterContainerDelegate", 1, localStringBuilder.toString());
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setupFlutterEngine, paramsJson: ");
+      localStringBuilder.append((String)localObject);
+      QLog.d("QFlutterContainerDelegate", 2, localStringBuilder.toString());
+    }
+    this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine = new FlutterEngine(BaseApplicationImpl.getContext(), FlutterLoader.getInstance(), new FlutterJNI(), new PlatformViewsController(), this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a().toArray(), true, false, new String[] { str1, localObject, str2 });
+    this.jdField_a_of_type_IoFlutterPluginPlatformPlatformPlugin = new PlatformPlugin(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a(), this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getPlatformChannel());
+    this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().attachToActivity(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a(), this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.getLifecycle());
+    l();
+    this.jdField_a_of_type_ComTencentMobileqqFlutterReportFirstFrameTrace.c();
   }
   
   private void l()
@@ -103,32 +114,28 @@ public class QFlutterContainerDelegate
     {
       this.jdField_a_of_type_ComTencentMobileqqFlutterChannelChannelRegistrar = new ChannelRegistrar();
       this.jdField_a_of_type_ComTencentMobileqqFlutterChannelChannelRegistrar.a(this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine);
-      TencentVistaImagePlugin.init(VistaImageProxy.a());
+      VistaImagePlugin.init(VistaImageProxy.a());
     }
   }
   
   private void m()
   {
     Activity localActivity = this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a();
-    Object localObject;
-    if (this.jdField_a_of_type_Boolean)
-    {
+    if (this.jdField_a_of_type_Boolean) {
       localObject = FlutterView.RenderMode.texture;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label87;
-      }
-    }
-    label87:
-    for (FlutterView.TransparencyMode localTransparencyMode = FlutterView.TransparencyMode.transparent;; localTransparencyMode = FlutterView.TransparencyMode.opaque)
-    {
-      this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView = new FlutterView(localActivity, (FlutterView.RenderMode)localObject, localTransparencyMode);
-      this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView.addOnFirstFrameRenderedListener(this.jdField_a_of_type_IoFlutterEmbeddingEngineRendererFlutterUiDisplayListener);
-      localObject = new FrameLayout.LayoutParams(-1, -1);
-      this.jdField_b_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView, (ViewGroup.LayoutParams)localObject);
-      return;
+    } else {
       localObject = FlutterView.RenderMode.surface;
-      break;
     }
+    FlutterView.TransparencyMode localTransparencyMode;
+    if (this.jdField_a_of_type_Boolean) {
+      localTransparencyMode = FlutterView.TransparencyMode.transparent;
+    } else {
+      localTransparencyMode = FlutterView.TransparencyMode.opaque;
+    }
+    this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView = new FlutterView(localActivity, (FlutterView.RenderMode)localObject, localTransparencyMode);
+    this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView.addOnFirstFrameRenderedListener(this.jdField_a_of_type_IoFlutterEmbeddingEngineRendererFlutterUiDisplayListener);
+    Object localObject = new FrameLayout.LayoutParams(-1, -1);
+    this.jdField_b_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView, (ViewGroup.LayoutParams)localObject);
   }
   
   private void n()
@@ -138,7 +145,14 @@ public class QFlutterContainerDelegate
     Object localObject = FlutterMain.findAppBundlePath();
     String str1 = this.jdField_a_of_type_AndroidOsBundle.getString("entry_point", "main");
     String str2 = this.jdField_a_of_type_AndroidOsBundle.getString("init_route");
-    QLog.d("QFlutterContainerDelegate", 1, "initFlutterView, appBundlePath: " + (String)localObject + ", entryPoint: " + str1 + ", initRoute: " + str2);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initFlutterView, appBundlePath: ");
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(", entryPoint: ");
+    localStringBuilder.append(str1);
+    localStringBuilder.append(", initRoute: ");
+    localStringBuilder.append(str2);
+    QLog.d("QFlutterContainerDelegate", 1, localStringBuilder.toString());
     if (!TextUtils.isEmpty(str2)) {
       this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getNavigationChannel().setInitialRoute(str2);
     }
@@ -156,7 +170,7 @@ public class QFlutterContainerDelegate
     }
     this.jdField_a_of_type_ComTencentMobileqqFlutterReportFirstFrameTrace.a(this.d);
     if (this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchResult.jdField_b_of_type_Boolean) {
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a(), 0, 2131698253, 1).a();
+      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.getContext(), 0, 2131698318, 1).a();
     }
     MemoryReporter.a().a(this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchResult.jdField_a_of_type_Boolean);
   }
@@ -164,12 +178,12 @@ public class QFlutterContainerDelegate
   private void p()
   {
     Object localObject = this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a();
-    if ((localObject instanceof BaseActivity))
+    if ((localObject instanceof QBaseActivity))
     {
-      localObject = (BaseActivity)localObject;
+      localObject = (QBaseActivity)localObject;
       if (this.jdField_b_of_type_Boolean)
       {
-        SystemBarCompact localSystemBarCompact = ((BaseActivity)localObject).mSystemBarComp;
+        SystemBarCompact localSystemBarCompact = ((QBaseActivity)localObject).mSystemBarComp;
         if (localSystemBarCompact != null)
         {
           localSystemBarCompact.setStatusDrawable(null);
@@ -177,34 +191,32 @@ public class QFlutterContainerDelegate
           localSystemBarCompact.setStatusColor(0);
         }
       }
-      ImmersiveUtils.setStatusTextColor(this.c, ((BaseActivity)localObject).getWindow());
+      ImmersiveUtils.setStatusTextColor(this.c, ((QBaseActivity)localObject).getWindow());
     }
   }
   
   public View a(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     QLog.d("QFlutterContainerDelegate", 1, "onCreateView");
-    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a());
+    this.jdField_a_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.getContext());
     if (!this.jdField_a_of_type_Boolean) {
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130850432);
-    }
-    for (;;)
-    {
-      paramLayoutInflater = new FrameLayout.LayoutParams(-1, -1);
-      this.jdField_b_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a());
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_b_of_type_AndroidWidgetFrameLayout, paramLayoutInflater);
-      this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a();
-      if (this.jdField_a_of_type_AndroidViewView == null) {
-        this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a()).inflate(2131560975, null);
-      }
-      this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, paramLayoutInflater);
-      this.f = true;
-      if (this.e) {
-        m();
-      }
-      return this.jdField_a_of_type_AndroidWidgetFrameLayout;
+      this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundResource(2130850359);
+    } else {
       this.jdField_a_of_type_AndroidWidgetFrameLayout.setBackgroundColor(0);
     }
+    paramLayoutInflater = new FrameLayout.LayoutParams(-1, -1);
+    this.jdField_b_of_type_AndroidWidgetFrameLayout = new FrameLayout(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.getContext());
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_b_of_type_AndroidWidgetFrameLayout, paramLayoutInflater);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a();
+    if (this.jdField_a_of_type_AndroidViewView == null) {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.getContext()).inflate(2131560850, null);
+    }
+    this.jdField_a_of_type_AndroidWidgetFrameLayout.addView(this.jdField_a_of_type_AndroidViewView, paramLayoutInflater);
+    this.f = true;
+    if (this.e) {
+      m();
+    }
+    return this.jdField_a_of_type_AndroidWidgetFrameLayout;
   }
   
   public void a()
@@ -214,50 +226,57 @@ public class QFlutterContainerDelegate
       this.jdField_a_of_type_AndroidOsBundle = new Bundle();
     }
     this.h = this.jdField_a_of_type_AndroidOsBundle.getBoolean("KEY_SETUP_FLUTTER", true);
-    QLog.d("QFlutterContainerDelegate", 1, "onAttach, needSetupEngine: " + this.h);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("onAttach, needSetupEngine: ");
+    ((StringBuilder)localObject).append(this.h);
+    QLog.d("QFlutterContainerDelegate", 1, ((StringBuilder)localObject).toString());
     boolean bool = this.jdField_a_of_type_AndroidOsBundle.getBoolean("preload_process");
     long l = this.jdField_a_of_type_AndroidOsBundle.getLong("open_page_time");
-    String str = this.jdField_a_of_type_AndroidOsBundle.getString("page_name", "unknown");
+    localObject = this.jdField_a_of_type_AndroidOsBundle.getString("page_name", "unknown");
     this.jdField_b_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("status_bar_transparent");
     this.c = this.jdField_a_of_type_AndroidOsBundle.getBoolean("status_text_dark");
     this.jdField_a_of_type_Boolean = this.jdField_a_of_type_AndroidOsBundle.getBoolean("background_transparent");
     if (this.h)
     {
-      this.jdField_a_of_type_ComTencentMobileqqFlutterReportFirstFrameTrace = new FirstFrameTrace(str, bool, l);
+      this.jdField_a_of_type_ComTencentMobileqqFlutterReportFirstFrameTrace = new FirstFrameTrace((String)localObject, bool, l);
       this.jdField_a_of_type_ComTencentMobileqqFlutterReportFirstFrameTrace.a();
-      MemoryReporter.a().a(str);
+      MemoryReporter.a().a((String)localObject);
       QFlutterLauncher.a().a(this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchListener, bool, true);
     }
   }
   
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null) {
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().onActivityResult(paramInt1, paramInt2, paramIntent);
+    FlutterEngine localFlutterEngine = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localFlutterEngine != null) {
+      localFlutterEngine.getActivityControlSurface().onActivityResult(paramInt1, paramInt2, paramIntent);
     }
   }
   
   public void a(@NonNull Intent paramIntent)
   {
     this.d = false;
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null) {
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().onNewIntent(paramIntent);
+    FlutterEngine localFlutterEngine = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localFlutterEngine != null) {
+      localFlutterEngine.getActivityControlSurface().onNewIntent(paramIntent);
     }
   }
   
   public void a(@Nullable Bundle paramBundle)
   {
     QLog.d("QFlutterContainerDelegate", 1, "onActivityCreated()");
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null) {
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().onRestoreInstanceState(paramBundle);
+    FlutterEngine localFlutterEngine = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localFlutterEngine != null) {
+      localFlutterEngine.getActivityControlSurface().onRestoreInstanceState(paramBundle);
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null)
+    FlutterEngine localFlutterEngine = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localFlutterEngine != null)
     {
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getNavigationChannel().popRoute();
+      localFlutterEngine.getNavigationChannel().popRoute();
       return true;
     }
     return false;
@@ -275,8 +294,9 @@ public class QFlutterContainerDelegate
   public void b(@Nullable Bundle paramBundle)
   {
     QLog.d("QFlutterContainerDelegate", 1, "onSaveInstanceState");
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null) {
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().onSaveInstanceState(paramBundle);
+    FlutterEngine localFlutterEngine = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localFlutterEngine != null) {
+      localFlutterEngine.getActivityControlSurface().onSaveInstanceState(paramBundle);
     }
     this.jdField_a_of_type_AndroidOsBundle.putBoolean("KEY_SETUP_FLUTTER", false);
   }
@@ -289,8 +309,9 @@ public class QFlutterContainerDelegate
   public void c()
   {
     QLog.d("QFlutterContainerDelegate", 1, "onResume()");
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null) {
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getLifecycleChannel().appIsResumed();
+    FlutterEngine localFlutterEngine = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localFlutterEngine != null) {
+      localFlutterEngine.getLifecycleChannel().appIsResumed();
     }
     p();
   }
@@ -299,9 +320,10 @@ public class QFlutterContainerDelegate
   {
     QLog.d("QFlutterContainerDelegate", 1, "onPause()");
     this.d = false;
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null)
+    FlutterEngine localFlutterEngine = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localFlutterEngine != null)
     {
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getLifecycleChannel().appIsInactive();
+      localFlutterEngine.getLifecycleChannel().appIsInactive();
       MemoryReporter.a().a();
     }
   }
@@ -309,19 +331,22 @@ public class QFlutterContainerDelegate
   public void e()
   {
     QLog.d("QFlutterContainerDelegate", 1, "onStop()");
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null) {
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getLifecycleChannel().appIsPaused();
+    Object localObject = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localObject != null) {
+      ((FlutterEngine)localObject).getLifecycleChannel().appIsPaused();
     }
-    if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView != null) {
-      this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView.detachFromFlutterEngine();
+    localObject = this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView;
+    if (localObject != null) {
+      ((FlutterView)localObject).detachFromFlutterEngine();
     }
   }
   
   public void f()
   {
     QLog.d("QFlutterContainerDelegate", 1, "onDestroyView()");
-    if (this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView != null) {
-      this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView.removeOnFirstFrameRenderedListener(this.jdField_a_of_type_IoFlutterEmbeddingEngineRendererFlutterUiDisplayListener);
+    FlutterView localFlutterView = this.jdField_a_of_type_IoFlutterEmbeddingAndroidFlutterView;
+    if (localFlutterView != null) {
+      localFlutterView.removeOnFirstFrameRenderedListener(this.jdField_a_of_type_IoFlutterEmbeddingEngineRendererFlutterUiDisplayListener);
     }
     QFlutterLauncher.a().a(this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchListener);
   }
@@ -329,32 +354,29 @@ public class QFlutterContainerDelegate
   public void g()
   {
     QLog.d("QFlutterContainerDelegate", 1, "onDetach()");
-    if (this.jdField_a_of_type_IoFlutterPluginPlatformPlatformPlugin != null)
+    Object localObject = this.jdField_a_of_type_IoFlutterPluginPlatformPlatformPlugin;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_IoFlutterPluginPlatformPlatformPlugin.destroy();
+      ((PlatformPlugin)localObject).destroy();
       this.jdField_a_of_type_IoFlutterPluginPlatformPlatformPlugin = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqFlutterChannelChannelRegistrar != null) {
-      this.jdField_a_of_type_ComTencentMobileqqFlutterChannelChannelRegistrar.a();
+    localObject = this.jdField_a_of_type_ComTencentMobileqqFlutterChannelChannelRegistrar;
+    if (localObject != null) {
+      ((ChannelRegistrar)localObject).a();
     }
     if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null)
     {
-      if (!this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a().isChangingConfigurations()) {
-        break label119;
+      if (this.jdField_a_of_type_ComTencentMobileqqFlutterContainerIQFlutterContainerHost.a().isChangingConfigurations()) {
+        this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().detachFromActivityForConfigChanges();
+      } else {
+        this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().detachFromActivity();
       }
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().detachFromActivityForConfigChanges();
-    }
-    for (;;)
-    {
       this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getLifecycleChannel().appIsDetached();
       this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.destroy();
       this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine = null;
-      if (this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchResult != null) {
-        MemoryReporter.a().b(this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchResult.jdField_a_of_type_Boolean);
-      }
-      return;
-      label119:
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getActivityControlSurface().detachFromActivity();
+    }
+    if (this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchResult != null) {
+      MemoryReporter.a().b(this.jdField_a_of_type_ComTencentMobileqqFlutterLaunchLaunchResult.jdField_a_of_type_Boolean);
     }
   }
   
@@ -369,33 +391,32 @@ public class QFlutterContainerDelegate
   public void i()
   {
     QLog.d("QFlutterContainerDelegate", 1, "onLowMemory");
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null) {
-      this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getSystemChannel().sendMemoryPressureWarning();
+    FlutterEngine localFlutterEngine = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localFlutterEngine != null) {
+      localFlutterEngine.getSystemChannel().sendMemoryPressureWarning();
     }
   }
   
   public void j()
   {
     String str = ThemeUtil.getCurrentThemeId();
-    if (this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine != null)
+    Object localObject = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine;
+    if (localObject != null)
     {
-      FlutterPlugin localFlutterPlugin = this.jdField_a_of_type_IoFlutterEmbeddingEngineFlutterEngine.getPlugins().get(QFlutterSkinEnginePlugin.class);
-      if ((localFlutterPlugin instanceof QFlutterSkinEnginePlugin))
+      localObject = ((FlutterEngine)localObject).getPlugins().get(QFlutterSkinEnginePlugin.class);
+      if ((localObject instanceof QFlutterSkinEnginePlugin))
       {
-        ((QFlutterSkinEnginePlugin)localFlutterPlugin).updateTheme(str);
+        ((QFlutterSkinEnginePlugin)localObject).updateTheme(str);
         QLog.d("QFlutterContainerDelegate", 1, "skinPlugin");
+        return;
       }
+      QLog.e("QFlutterContainerDelegate", 1, "skinPlugin == null");
     }
-    else
-    {
-      return;
-    }
-    QLog.e("QFlutterContainerDelegate", 1, "skinPlugin == null");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.container.QFlutterContainerDelegate
  * JD-Core Version:    0.7.0.1
  */

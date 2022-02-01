@@ -18,27 +18,24 @@ import android.widget.ImageView;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.EmotionInjectionInfo;
-import com.tencent.mobileqq.EmotionPanelManager;
-import com.tencent.mobileqq.abtest.ABTestController;
-import com.tencent.mobileqq.abtest.ExpEntityInfo;
-import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil;
-import com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil.DtReportParamsBuilder;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
+import com.tencent.mobileqq.EmotionPanelInjectionInfoManager;
 import com.tencent.mobileqq.app.ThreadManager;
-import com.tencent.mobileqq.config.business.EmoticonTabSortConfProcessor;
-import com.tencent.mobileqq.emoticonview.ipc.QQEmoticonMainPanelApp;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingManagerProxy;
-import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerProxy;
-import com.tencent.mobileqq.pb.PBInt32Field;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
-import com.tencent.mobileqq.tianshu.pb.BusinessInfoCheckUpdate.AppInfo;
-import com.tencent.mobileqq.utils.SharedPreUtils;
+import com.tencent.mobileqq.emosm.api.ICameraEmoRoamingManagerService;
+import com.tencent.mobileqq.emosm.api.IEmoticonManagerService;
+import com.tencent.mobileqq.emoticon.EmotionInjectionInfo;
+import com.tencent.mobileqq.emoticon.IEmotionTabCreateListener;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.CameraEmoRoamingManagerServiceProxy;
+import com.tencent.mobileqq.emoticonview.ipc.proxy.EmoticonManagerServiceProxy;
 import com.tencent.mobileqq.utils.ViewUtils;
-import com.tencent.mobileqq.vaswebviewplugin.VasWebviewUtil;
+import com.tencent.mobileqq.utils.abtest.ABTestController;
+import com.tencent.mobileqq.utils.abtest.ABTestUtil;
+import com.tencent.mobileqq.utils.abtest.ExpEntityInfo;
+import com.tencent.mobileqq.vas.webview.util.VasWebviewUtil;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.VideoReport;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import com.tencent.qqlive.module.videoreport.constants.ClickPolicy;
+import com.tencent.qqlive.module.videoreport.constants.ExposurePolicy;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -49,74 +46,97 @@ public class EmoticonTabAdapter
   extends BaseAdapter
 {
   public static LruCache<String, URL> urlCache = new LruCache(50);
-  QQEmoticonMainPanelApp app;
+  IEmoticonMainPanelApp app;
   private int mBusinessType;
-  private int mCmShowPosition = -1;
-  private ImageView mCmShowRedDot;
   protected Context mContext;
   List<EmoticonTabAdapter.EmoticonTabItem> mData;
   private Drawable mGifEntranceIconDrawable = null;
   LayoutInflater mInflater;
-  private boolean mIsEmojiTabCmshowRedDotOn = false;
   Drawable mItemNormalDrawable;
   Drawable mItemSelectedDrawable;
   Drawable mNormalDrawable;
+  private EmotionPanelInjectionInfoManager mPanelInjectionInfoManager;
   Drawable mSelectedDrawable;
   private boolean mStyleChange;
   
-  public EmoticonTabAdapter(QQEmoticonMainPanelApp paramQQEmoticonMainPanelApp, Context paramContext, int paramInt)
+  public EmoticonTabAdapter(IEmoticonMainPanelApp paramIEmoticonMainPanelApp, EmotionPanelInjectionInfoManager paramEmotionPanelInjectionInfoManager, Context paramContext, int paramInt)
   {
-    this.app = paramQQEmoticonMainPanelApp;
+    this.app = paramIEmoticonMainPanelApp;
     this.mContext = paramContext;
+    this.mPanelInjectionInfoManager = paramEmotionPanelInjectionInfoManager;
     this.mInflater = ((LayoutInflater)paramContext.getSystemService("layout_inflater"));
     this.mData = new ArrayList();
-    this.mNormalDrawable = paramContext.getResources().getDrawable(2130838129);
-    this.mSelectedDrawable = paramContext.getResources().getDrawable(2130838130);
-    this.mItemSelectedDrawable = ViewUtils.a(this.mContext.getResources().getColor(2131166539), ViewUtils.a(18.0F));
+    this.mNormalDrawable = paramContext.getResources().getDrawable(2130837978);
+    this.mSelectedDrawable = paramContext.getResources().getDrawable(2130837979);
+    this.mItemSelectedDrawable = ViewUtils.a(this.mContext.getResources().getColor(2131166553), ViewUtils.a(18.0F));
     this.mItemNormalDrawable = new ColorDrawable(0);
     this.mBusinessType = paramInt;
   }
   
   public static URL generateTabUrl(String paramString, boolean paramBoolean)
   {
-    Object localObject2;
-    if (paramString == null)
-    {
-      localObject2 = null;
-      return localObject2;
+    Object localObject1 = null;
+    if (paramString == null) {
+      return null;
     }
-    label98:
-    for (;;)
+    try
     {
+      Object localObject2 = urlCache;
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append(paramString);
+      localStringBuilder1.append("_");
+      localStringBuilder1.append(paramBoolean);
+      localObject2 = (URL)((LruCache)localObject2).get(localStringBuilder1.toString());
+      if (localObject2 != null) {
+        return localObject2;
+      }
       try
       {
-        Object localObject1 = (URL)urlCache.get(paramString + "_" + paramBoolean);
-        localObject2 = localObject1;
-        if (localObject1 != null) {
-          break;
-        }
-        QLog.e("EmoticonTabAdapter", 2, "generateTabUrl error = " + localMalformedURLException1.getMessage());
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append("_");
+        ((StringBuilder)localObject1).append(paramBoolean);
+        localObject1 = new URL("protocol_vas_extension_image", "EMOTICON_TAB", ((StringBuilder)localObject1).toString());
       }
-      catch (MalformedURLException localMalformedURLException1)
+      catch (MalformedURLException localMalformedURLException2)
       {
-        try
-        {
-          localObject2 = new URL("protocol_vas_extension_image", "EMOTICON_TAB", paramString + "_" + paramBoolean);
-          localObject1 = localObject2;
-          urlCache.put(paramString, localObject1);
-          return localObject1;
-        }
-        catch (MalformedURLException localMalformedURLException2)
-        {
-          break label98;
-        }
-        localMalformedURLException1 = localMalformedURLException1;
-        localObject1 = null;
+        localObject1 = localObject2;
+        localObject2 = localMalformedURLException2;
       }
+      localStringBuilder2 = new StringBuilder();
     }
+    catch (MalformedURLException localMalformedURLException1) {}
+    StringBuilder localStringBuilder2;
+    localStringBuilder2.append("generateTabUrl error = ");
+    localStringBuilder2.append(localMalformedURLException1.getMessage());
+    QLog.e("EmoticonTabAdapter", 2, localStringBuilder2.toString());
+    urlCache.put(paramString, localObject1);
+    return localObject1;
   }
   
   public static void removeTabDrawableCache(String paramString) {}
+  
+  private void setEmoMallDTReport(View paramView)
+  {
+    if (this.mBusinessType != 0) {
+      return;
+    }
+    VideoReport.setElementId(paramView, "em_aio_stickers_mall_below_textbox");
+    VideoReport.setElementExposePolicy(paramView, ExposurePolicy.REPORT_ALL);
+    VideoReport.setElementClickPolicy(paramView, ClickPolicy.REPORT_ALL);
+    VideoReport.setElementReuseIdentifier(paramView, "em_aio_stickers_mall_below_textbox");
+  }
+  
+  private void setEmoSettingDTReport(View paramView)
+  {
+    if (this.mBusinessType != 0) {
+      return;
+    }
+    VideoReport.setElementId(paramView, "em_aio_setting_below_textbox");
+    VideoReport.setElementExposePolicy(paramView, ExposurePolicy.REPORT_ALL);
+    VideoReport.setElementClickPolicy(paramView, ClickPolicy.REPORT_ALL);
+    VideoReport.setElementReuseIdentifier(paramView, "em_aio_setting_below_textbox");
+  }
   
   public int getCount()
   {
@@ -125,12 +145,11 @@ public class EmoticonTabAdapter
   
   public Object getItem(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= this.mData.size()))
-    {
-      QLog.e("EmoticonTabAdapter", 1, "getItem error");
-      return null;
+    if ((paramInt >= 0) && (paramInt < this.mData.size())) {
+      return this.mData.get(paramInt);
     }
-    return this.mData.get(paramInt);
+    QLog.e("EmoticonTabAdapter", 1, "getItem error");
+    return null;
   }
   
   public long getItemId(int paramInt)
@@ -140,181 +159,193 @@ public class EmoticonTabAdapter
   
   public Drawable getTabDrawable(EmoticonTabAdapter.EmoticonTabItem paramEmoticonTabItem)
   {
-    URL localURL = generateTabUrl(paramEmoticonTabItem.epId, paramEmoticonTabItem.completed);
-    Object localObject = null;
-    if (localURL != null)
+    Object localObject1 = generateTabUrl(paramEmoticonTabItem.epId, paramEmoticonTabItem.completed);
+    if (localObject1 != null)
     {
-      localObject = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject).mFailedDrawable = this.mNormalDrawable;
-      ((URLDrawable.URLDrawableOptions)localObject).mLoadingDrawable = this.mNormalDrawable;
-      if (10 != paramEmoticonTabItem.type) {
-        break label130;
+      URLDrawable.URLDrawableOptions localURLDrawableOptions = URLDrawable.URLDrawableOptions.obtain();
+      Object localObject2 = this.mNormalDrawable;
+      localURLDrawableOptions.mFailedDrawable = ((Drawable)localObject2);
+      localURLDrawableOptions.mLoadingDrawable = ((Drawable)localObject2);
+      boolean bool;
+      if (10 == paramEmoticonTabItem.type) {
+        bool = true;
+      } else {
+        bool = false;
       }
-    }
-    label130:
-    for (boolean bool = true;; bool = false)
-    {
-      ((URLDrawable.URLDrawableOptions)localObject).mExtraInfo = Boolean.valueOf(bool);
-      if (QLog.isColorLevel()) {
-        QLog.d("EmoticonTabAdapter", 2, "getTabDrawable, completed = " + paramEmoticonTabItem.completed + ", epId = " + paramEmoticonTabItem.epId);
-      }
-      paramEmoticonTabItem = URLDrawable.getDrawable(localURL, (URLDrawable.URLDrawableOptions)localObject);
-      localObject = paramEmoticonTabItem;
-      if (paramEmoticonTabItem.getStatus() == 2)
+      localURLDrawableOptions.mExtraInfo = Boolean.valueOf(bool);
+      if (QLog.isColorLevel())
       {
-        paramEmoticonTabItem.restartDownload();
-        localObject = paramEmoticonTabItem;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getTabDrawable, completed = ");
+        ((StringBuilder)localObject2).append(paramEmoticonTabItem.completed);
+        ((StringBuilder)localObject2).append(", epId = ");
+        ((StringBuilder)localObject2).append(paramEmoticonTabItem.epId);
+        QLog.d("EmoticonTabAdapter", 2, ((StringBuilder)localObject2).toString());
       }
-      return localObject;
+      localObject1 = URLDrawable.getDrawable((URL)localObject1, localURLDrawableOptions);
+      paramEmoticonTabItem = (EmoticonTabAdapter.EmoticonTabItem)localObject1;
+      if (((URLDrawable)localObject1).getStatus() == 2)
+      {
+        ((URLDrawable)localObject1).restartDownload();
+        return localObject1;
+      }
     }
+    else
+    {
+      paramEmoticonTabItem = null;
+    }
+    return paramEmoticonTabItem;
   }
   
   public View getView(int paramInt, View paramView, ViewGroup paramViewGroup)
   {
     EmoticonTabAdapter.ViewHolder localViewHolder;
+    View localView;
     if (paramView == null)
     {
       localViewHolder = new EmoticonTabAdapter.ViewHolder(this);
-      paramView = HorizontalListViewEx.consumeView();
-      if (paramView != null) {
-        break label849;
+      localView = HorizontalListViewEx.consumeView();
+      if (localView == null) {
+        localView = this.mInflater.inflate(2131561591, paramViewGroup, false);
       }
-      paramView = this.mInflater.inflate(2131559214, paramViewGroup, false);
+      localViewHolder.tabImage = ((URLImageView)localView.findViewById(2131378211));
+      localViewHolder.redImage = ((ImageView)localView.findViewById(2131376328));
+      localViewHolder.emoContainer = localView.findViewById(2131366116);
+      localView.setTag(localViewHolder);
     }
-    label849:
-    for (;;)
+    else
     {
-      localViewHolder.tabImage = ((URLImageView)paramView.findViewById(2131378822));
-      localViewHolder.redImage = ((ImageView)paramView.findViewById(2131376837));
-      localViewHolder.emoContainer = paramView.findViewById(2131366227);
-      paramView.setTag(localViewHolder);
-      Object localObject;
-      for (View localView = paramView;; localView = paramView)
-      {
-        localObject = (EmoticonTabAdapter.EmoticonTabItem)getItem(paramInt);
-        if (localObject != null) {
-          break;
-        }
-        QLog.e("EmoticonTabAdapter", 1, "getView item is null ,position = " + paramInt);
-        paramView = null;
-        EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-        return paramView;
-        localViewHolder = (EmoticonTabAdapter.ViewHolder)paramView.getTag();
-      }
+      localViewHolder = (EmoticonTabAdapter.ViewHolder)paramView.getTag();
+      localView = paramView;
+    }
+    Object localObject3 = (EmoticonTabAdapter.EmoticonTabItem)getItem(paramInt);
+    Object localObject2 = null;
+    paramView = null;
+    Object localObject1 = null;
+    if (localObject3 == null)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getView item is null ,position = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.e("EmoticonTabAdapter", 1, ((StringBuilder)localObject1).toString());
+    }
+    else
+    {
       localViewHolder.redImage.setVisibility(8);
-      Drawable localDrawable;
+      Object localObject4;
       if (this.mStyleChange)
       {
         localView.setBackgroundDrawable(null);
         paramView = new StateListDrawable();
-        localDrawable = this.mItemSelectedDrawable;
-        paramView.addState(new int[] { 16842913 }, localDrawable);
-        localDrawable = this.mItemNormalDrawable;
-        paramView.addState(new int[0], localDrawable);
+        localObject4 = this.mItemSelectedDrawable;
+        paramView.addState(new int[] { 16842913 }, (Drawable)localObject4);
+        localObject4 = this.mItemNormalDrawable;
+        paramView.addState(new int[0], (Drawable)localObject4);
         localViewHolder.emoContainer.setBackgroundDrawable(paramView);
-        label236:
-        switch (((EmoticonTabAdapter.EmoticonTabItem)localObject).type)
-        {
-        case 5: 
-        default: 
-          paramView = EmoticonTabSortConfProcessor.a(((EmoticonTabAdapter.EmoticonTabItem)localObject).type);
-          paramView = EmotionPanelManager.a().a(paramView);
-          if ((paramView != null) && (paramView.c > 0)) {
-            paramView = this.mContext.getResources().getDrawable(paramView.c);
-          }
-          break;
-        }
       }
-      for (;;)
+      else
       {
-        if (paramView != null) {
-          localViewHolder.tabImage.setImageDrawable(paramView);
-        }
-        paramView = localView;
-        break;
         localViewHolder.emoContainer.setBackgroundDrawable(null);
-        localView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130839775));
-        break label236;
-        paramView = this.mContext.getResources().getDrawable(2130847517);
-        if (this.app != null)
-        {
-          localObject = (EmoticonManagerProxy)this.app.getManager(QQManagerFactory.EMOTICON_MANAGER);
-          if ((localObject != null) && (((EmoticonManagerProxy)localObject).isShowRecommendTabRedPoint(this.mBusinessType)))
-          {
-            localViewHolder.redImage.setVisibility(0);
-            this.app.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).edit().putBoolean("recommemd_red_effect", true).apply();
-            VasWebviewUtil.reportCommercialDrainage(this.app.getCurrentUin(), "ep_mall", "j_redshow", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
-          }
-          else
-          {
-            continue;
-            paramView = this.mContext.getResources().getDrawable(2130847499);
-            continue;
-            paramView = this.mContext.getResources().getDrawable(2130847498);
-            continue;
-            if (((CameraEmoRoamingManagerProxy)this.app.getManager(QQManagerFactory.CAMERA_EMOTION_MANAGER)).getIsNeedShowGuide()) {
-              localViewHolder.redImage.setVisibility(0);
-            }
-            paramView = this.mContext.getResources().getDrawable(2130838109);
-            continue;
-            paramView = this.mContext.getResources().getDrawable(2130838128);
-            continue;
-            if (this.mGifEntranceIconDrawable != null)
-            {
-              paramView = this.mGifEntranceIconDrawable;
-            }
-            else
-            {
-              paramView = this.mContext.getResources().getDrawable(2130838113);
-              continue;
-              paramView = getTabDrawable((EmoticonTabAdapter.EmoticonTabItem)localObject);
-              if (paramView == null)
-              {
-                paramView = new StateListDrawable();
-                localDrawable = this.mSelectedDrawable;
-                paramView.addState(new int[] { 16842913 }, localDrawable);
-                localDrawable = this.mNormalDrawable;
-                paramView.addState(new int[0], localDrawable);
-                ThreadManager.post(new EmoticonTabAdapter.1(this, (EmoticonTabAdapter.EmoticonTabItem)localObject), 5, null, false);
-                continue;
-                if (EmoticonStoreTabEntryUtils.checkIsMergeStoryEntry())
-                {
-                  paramView = this.mContext.getResources().getDrawable(2130839789);
-                }
-                else
-                {
-                  paramView = this.mContext.getResources().getDrawable(2130847509);
-                  continue;
-                  paramView = this.mContext.getResources().getDrawable(2130847510);
-                  continue;
-                  paramView = this.mContext.getResources().getDrawable(2130838111);
-                  this.mCmShowRedDot = localViewHolder.redImage;
-                  this.mCmShowPosition = paramInt;
-                  updateCmShowRedDot();
-                  continue;
-                  paramView = null;
-                }
-              }
-              else {}
-            }
-          }
-        }
+        localView.setBackgroundDrawable(this.mContext.getResources().getDrawable(2130846443));
       }
+      switch (((EmoticonTabAdapter.EmoticonTabItem)localObject3).type)
+      {
+      case 5: 
+      default: 
+        localObject4 = this.mPanelInjectionInfoManager;
+        paramView = (View)localObject2;
+        if (localObject4 == null) {
+          break label863;
+        }
+        localObject3 = ((EmotionPanelInjectionInfoManager)localObject4).a(((EmoticonTabAdapter.EmoticonTabItem)localObject3).type);
+        paramView = (View)localObject2;
+        if (localObject3 == null) {
+          break label863;
+        }
+        if (((EmotionInjectionInfo)localObject3).iconResId > 0) {
+          localObject1 = this.mContext.getResources().getDrawable(((EmotionInjectionInfo)localObject3).iconResId);
+        }
+        break;
+      case 14: 
+        paramView = this.mContext.getResources().getDrawable(2130846463);
+        setEmoSettingDTReport(localViewHolder.emoContainer);
+        break;
+      case 13: 
+        paramView = this.mContext.getResources().getDrawable(2130846445);
+        setEmoMallDTReport(localViewHolder.emoContainer);
+        break;
+      case 12: 
+        paramView = this.mGifEntranceIconDrawable;
+        if (paramView != null) {
+          break label863;
+        }
+        paramView = this.mContext.getResources().getDrawable(2130837963);
+        break;
+      case 11: 
+        if (((CameraEmoRoamingManagerServiceProxy)this.app.getRuntimeService(ICameraEmoRoamingManagerService.class)).getIsNeedShowGuide()) {
+          localViewHolder.redImage.setVisibility(0);
+        }
+        paramView = this.mContext.getResources().getDrawable(2130837959);
+        break;
+      case 9: 
+        paramView = this.mContext.getResources().getDrawable(2130847369);
+        break;
+      case 8: 
+        localObject1 = this.mContext.getResources().getDrawable(2130847385);
+        localObject2 = this.app;
+        paramView = (View)localObject1;
+        if (localObject2 == null) {
+          break label863;
+        }
+        localObject2 = (EmoticonManagerServiceProxy)((IEmoticonMainPanelApp)localObject2).getRuntimeService(IEmoticonManagerService.class);
+        paramView = (View)localObject1;
+        if (localObject2 == null) {
+          break label863;
+        }
+        paramView = (View)localObject1;
+        if (!((EmoticonManagerServiceProxy)localObject2).isShowRecommendTabRedPoint(this.mBusinessType)) {
+          break label863;
+        }
+        localViewHolder.redImage.setVisibility(0);
+        this.app.getApplication().getSharedPreferences("recommendEmotion_sp_name", 0).edit().putBoolean("recommemd_red_effect", true).apply();
+        VasWebviewUtil.a(this.app.getCurrentUin(), "ep_mall", "j_redshow", "", 0, 0, 0, "", "", "", "", "", "", "", 0, 0, 0, 0);
+        paramView = (View)localObject1;
+        break;
+      case 7: 
+        paramView = this.mContext.getResources().getDrawable(2130837977);
+        break;
+      case 6: 
+      case 10: 
+        localObject1 = getTabDrawable((EmoticonTabAdapter.EmoticonTabItem)localObject3);
+        paramView = (View)localObject1;
+        if (localObject1 == null)
+        {
+          paramView = new StateListDrawable();
+          localObject1 = this.mSelectedDrawable;
+          paramView.addState(new int[] { 16842913 }, (Drawable)localObject1);
+          localObject1 = this.mNormalDrawable;
+          paramView.addState(new int[0], (Drawable)localObject1);
+          ThreadManager.post(new EmoticonTabAdapter.1(this, (EmoticonTabAdapter.EmoticonTabItem)localObject3), 5, null, false);
+        }
+        break;
+      case 4: 
+        paramView = this.mContext.getResources().getDrawable(2130847368);
+        break;
+      }
+      paramView = (View)localObject1;
+      if (((EmotionInjectionInfo)localObject3).emotionTabListener != null)
+      {
+        ((EmotionInjectionInfo)localObject3).emotionTabListener.onCreateTabView(localView, localViewHolder.tabImage, localViewHolder.redImage, paramInt);
+        paramView = (View)localObject1;
+      }
+      label863:
+      if (paramView != null) {
+        localViewHolder.tabImage.setImageDrawable(paramView);
+      }
+      paramView = localView;
     }
-  }
-  
-  public void onCmShowRedDotClick(int paramInt)
-  {
-    if ((this.mCmShowRedDot == null) || (this.app == null) || (this.app.getQQAppInterface() == null) || (this.mCmShowPosition != paramInt)) {
-      return;
-    }
-    QLog.i("EmoticonTabAdapter", 1, "onCmShowRedDotClick");
-    if (this.mIsEmojiTabCmshowRedDotOn) {
-      SharedPreUtils.b(this.mContext);
-    }
-    ((RedTouchManager)this.app.getQQAppInterface().getManager(QQManagerFactory.MGR_RED_TOUCH)).b("130105001");
-    this.mCmShowRedDot.setVisibility(8);
-    ApolloDtReportUtil.a("aio", "emojicmtab", "click", new ApolloDtReportUtil.DtReportParamsBuilder().a(ApolloDtReportUtil.a(this.app.getQQAppInterface())).a());
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return paramView;
   }
   
   public void setAIOShowStyleChange(boolean paramBoolean)
@@ -325,56 +356,32 @@ public class EmoticonTabAdapter
   @SuppressLint({"UseCompatLoadingForDrawables"})
   public void setGifEntranceIconUrl(String paramString)
   {
-    ExpEntityInfo localExpEntityInfo = ABTestController.a("exp_qq_msg_marketface_gif_icon");
-    Map localMap = localExpEntityInfo.getParams();
-    if (QLog.isColorLevel()) {
-      QLog.d("EmoticonTabAdapter", 2, "setGifEntranceIconUrl:" + paramString + ", exp:" + localExpEntityInfo.a());
+    ExpEntityInfo localExpEntityInfo = ABTestController.a().a("exp_qq_msg_marketface_gif_icon");
+    Map localMap = localExpEntityInfo.a();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setGifEntranceIconUrl:");
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(", exp:");
+      localStringBuilder.append(localExpEntityInfo.a());
+      QLog.d("EmoticonTabAdapter", 2, localStringBuilder.toString());
     }
-    this.mGifEntranceIconDrawable = this.mContext.getResources().getDrawable(2130838113);
+    this.mGifEntranceIconDrawable = this.mContext.getResources().getDrawable(2130837963);
     if ((localExpEntityInfo.c()) && (localMap != null) && (localMap.containsKey("gif_entrance_icon_url")))
     {
-      paramString = ABTestController.a((String)localMap.get("gif_entrance_icon_url"), 48, 48);
+      paramString = ABTestUtil.a((String)localMap.get("gif_entrance_icon_url"), 48, 48);
       if ((paramString != null) && (paramString.getCurrDrawable() != null)) {
         this.mGifEntranceIconDrawable = paramString;
       }
     }
-    do
+    else if (!TextUtils.isEmpty(paramString))
     {
-      do
-      {
-        return;
-      } while (TextUtils.isEmpty(paramString));
-      paramString = ABTestController.a(paramString, 48, 48);
-    } while ((paramString == null) || (paramString.getCurrDrawable() == null));
-    this.mGifEntranceIconDrawable = paramString;
-  }
-  
-  public void updateCmShowRedDot()
-  {
-    if ((this.mCmShowRedDot == null) || (this.app == null) || (this.app.getQQAppInterface() == null)) {}
-    RedTouchManager localRedTouchManager;
-    BusinessInfoCheckUpdate.AppInfo localAppInfo;
-    do
-    {
-      return;
-      this.mIsEmojiTabCmshowRedDotOn = SharedPreUtils.a(this.mContext);
-      if (this.mIsEmojiTabCmshowRedDotOn)
-      {
-        this.mCmShowRedDot.setVisibility(0);
-        QLog.i("EmoticonTabAdapter", 1, "updateCmShowRedDot");
-        return;
+      paramString = ABTestUtil.a(paramString, 48, 48);
+      if ((paramString != null) && (paramString.getCurrDrawable() != null)) {
+        this.mGifEntranceIconDrawable = paramString;
       }
-      localRedTouchManager = (RedTouchManager)this.app.getQQAppInterface().getManager(QQManagerFactory.MGR_RED_TOUCH);
-      localAppInfo = localRedTouchManager.a("130105001");
-    } while (localAppInfo == null);
-    QLog.i("EmoticonTabAdapter", 1, "updateCmShowRedDot2 " + localAppInfo.iNewFlag.get());
-    if (localAppInfo.iNewFlag.get() == 1)
-    {
-      this.mCmShowRedDot.setVisibility(0);
-      localRedTouchManager.b(localAppInfo, "");
-      return;
     }
-    this.mCmShowRedDot.setVisibility(8);
   }
   
   public void updateData(List<EmoticonTabAdapter.EmoticonTabItem> paramList)
@@ -386,7 +393,7 @@ public class EmoticonTabAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.EmoticonTabAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -57,33 +57,29 @@ public abstract class LuminanceSource
   
   public final String toString()
   {
-    byte[] arrayOfByte = new byte[this.width];
-    StringBuilder localStringBuilder = new StringBuilder(this.height * (this.width + 1));
-    int i = 0;
+    int i = this.width;
+    byte[] arrayOfByte = new byte[i];
+    StringBuilder localStringBuilder = new StringBuilder(this.height * (i + 1));
+    i = 0;
     while (i < this.height)
     {
       arrayOfByte = getRow(i, arrayOfByte);
       int j = 0;
-      if (j < this.width)
+      while (j < this.width)
       {
         int k = arrayOfByte[j] & 0xFF;
         char c;
         if (k < 64) {
           c = '#';
+        } else if (k < 128) {
+          c = '+';
+        } else if (k < 192) {
+          c = '.';
+        } else {
+          c = ' ';
         }
-        for (;;)
-        {
-          localStringBuilder.append(c);
-          j += 1;
-          break;
-          if (k < 128) {
-            c = '+';
-          } else if (k < 192) {
-            c = '.';
-          } else {
-            c = ' ';
-          }
-        }
+        localStringBuilder.append(c);
+        j += 1;
       }
       localStringBuilder.append('\n');
       i += 1;
@@ -93,7 +89,7 @@ public abstract class LuminanceSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.zxing.LuminanceSource
  * JD-Core Version:    0.7.0.1
  */

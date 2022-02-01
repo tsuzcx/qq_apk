@@ -20,13 +20,14 @@ public final class ApolloMsgExtend$ThreeDBaseInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint32_action_id", "action_type", "bytes_action_name", "int32_sender_status", "int32_peer_status" }, new Object[] { Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro, Integer.valueOf(0), Integer.valueOf(0) }, ThreeDBaseInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 32, 40 }, new String[] { "uint32_action_id", "action_type", "bytes_action_name", "int32_sender_status", "int32_peer_status" }, new Object[] { localInteger, localInteger, localByteStringMicro, localInteger, localInteger }, ThreeDBaseInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.apollomsgextend.ApolloMsgExtend.ThreeDBaseInfo
  * JD-Core Version:    0.7.0.1
  */

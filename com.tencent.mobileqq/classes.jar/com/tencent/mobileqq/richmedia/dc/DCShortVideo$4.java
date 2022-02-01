@@ -12,8 +12,24 @@ class DCShortVideo$4
   {
     Object localObject = new DCShortVideo.DCShortVideoSaveData();
     this.this$0.a(this.jdField_a_of_type_ComTencentCommonAppAppInterface, this.jdField_a_of_type_Int, this.b, this.jdField_a_of_type_JavaLangString, (DCShortVideo.DCShortVideoReportData)localObject);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("DCShortVideo", 4, "[reportSave]shortVideoType=" + ((DCShortVideo.DCShortVideoSaveData)localObject).f + ",uinType = " + ((DCShortVideo.DCShortVideoSaveData)localObject).b + ",groupMemCount = " + ((DCShortVideo.DCShortVideoSaveData)localObject).c + ",age = " + ((DCShortVideo.DCShortVideoSaveData)localObject).d + ",gender = " + ((DCShortVideo.DCShortVideoSaveData)localObject).e + ",reprotHour = " + ((DCShortVideo.DCShortVideoSaveData)localObject).g + ",netType = " + ((DCShortVideo.DCShortVideoSaveData)localObject).h);
+    if (QLog.isDevelopLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[reportSave]shortVideoType=");
+      localStringBuilder.append(((DCShortVideo.DCShortVideoSaveData)localObject).f);
+      localStringBuilder.append(",uinType = ");
+      localStringBuilder.append(((DCShortVideo.DCShortVideoSaveData)localObject).b);
+      localStringBuilder.append(",groupMemCount = ");
+      localStringBuilder.append(((DCShortVideo.DCShortVideoSaveData)localObject).c);
+      localStringBuilder.append(",age = ");
+      localStringBuilder.append(((DCShortVideo.DCShortVideoSaveData)localObject).d);
+      localStringBuilder.append(",gender = ");
+      localStringBuilder.append(((DCShortVideo.DCShortVideoSaveData)localObject).e);
+      localStringBuilder.append(",reprotHour = ");
+      localStringBuilder.append(((DCShortVideo.DCShortVideoSaveData)localObject).g);
+      localStringBuilder.append(",netType = ");
+      localStringBuilder.append(((DCShortVideo.DCShortVideoSaveData)localObject).h);
+      QLog.d("DCShortVideo", 4, localStringBuilder.toString());
     }
     localObject = new DataReport.ReportTask("ShortVideo.Save", ((DCShortVideo.DCShortVideoSaveData)localObject).a("ShortVideo.Save"));
     DataReport.a().a((DataReport.ReportTask)localObject);
@@ -21,7 +37,7 @@ class DCShortVideo$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richmedia.dc.DCShortVideo.4
  * JD-Core Version:    0.7.0.1
  */

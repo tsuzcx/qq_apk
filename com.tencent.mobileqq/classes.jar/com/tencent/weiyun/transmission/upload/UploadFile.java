@@ -73,10 +73,10 @@ public class UploadFile
   
   public static UploadFile createUploadFile(int paramInt1, String paramString1, String paramString2, String paramString3, String paramString4, String paramString5, boolean paramBoolean, UploadFile.UploadBatch paramUploadBatch, int paramInt2)
   {
-    if ((TextUtils.isEmpty(paramString5)) || (paramUploadBatch == null) || (paramInt2 < 1) || (paramInt2 > UploadFile.UploadBatch.access$100(paramUploadBatch))) {
-      throw new IllegalArgumentException("The params localPath, batch and batchIndex should be valid.");
+    if ((!TextUtils.isEmpty(paramString5)) && (paramUploadBatch != null) && (paramInt2 >= 1) && (paramInt2 <= UploadFile.UploadBatch.access$100(paramUploadBatch))) {
+      return new UploadFile(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean, paramUploadBatch, paramInt2);
     }
-    return new UploadFile(paramInt1, paramString1, paramString2, paramString3, paramString4, paramString5, paramBoolean, paramUploadBatch, paramInt2);
+    throw new IllegalArgumentException("The params localPath, batch and batchIndex should be valid.");
   }
   
   public UploadFile clone()
@@ -86,7 +86,11 @@ public class UploadFile
       UploadFile localUploadFile = (UploadFile)super.clone();
       return localUploadFile;
     }
-    catch (CloneNotSupportedException localCloneNotSupportedException) {}
+    catch (CloneNotSupportedException localCloneNotSupportedException)
+    {
+      label10:
+      break label10;
+    }
     return null;
   }
   
@@ -102,7 +106,7 @@ public class UploadFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weiyun.transmission.upload.UploadFile
  * JD-Core Version:    0.7.0.1
  */

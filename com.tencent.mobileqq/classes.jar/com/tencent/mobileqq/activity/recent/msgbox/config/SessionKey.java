@@ -13,12 +13,18 @@ public class SessionKey
   
   public String toString()
   {
-    return "SessionKey{c2CType=" + this.a + ", serviceType=" + this.b + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("SessionKey{c2CType=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", serviceType=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.msgbox.config.SessionKey
  * JD-Core Version:    0.7.0.1
  */

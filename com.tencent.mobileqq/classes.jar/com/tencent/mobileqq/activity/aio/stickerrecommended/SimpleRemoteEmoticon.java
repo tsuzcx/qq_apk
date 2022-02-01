@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.activity.aio.stickerrecommended;
 
 import android.content.Context;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.activity.aio.BaseSessionInfo;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -32,30 +32,30 @@ public abstract class SimpleRemoteEmoticon
   
   public URL a()
   {
+    URL localURL2;
     try
     {
       URL localURL1 = new URL("sticker_recommended_pic", "fromAIO", ((StickerRecData)this).l());
-      if (localURL1 == null)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
-        return null;
-      }
     }
     catch (MalformedURLException localMalformedURLException)
     {
-      URL localURL2;
-      for (;;)
-      {
-        QLog.e("SimpleRemoteEmoticon", 1, "getURL create url exception e = " + localMalformedURLException.getMessage());
-        localURL2 = null;
-      }
-      return localURL2;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getURL create url exception e = ");
+      localStringBuilder.append(localMalformedURLException.getMessage());
+      QLog.e("SimpleRemoteEmoticon", 1, localStringBuilder.toString());
+      localURL2 = null;
     }
+    if (localURL2 == null)
+    {
+      QLog.e("SimpleRemoteEmoticon", 1, "getURL url = null");
+      return null;
+    }
+    return localURL2;
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt) {}
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, int paramInt) {}
   
-  public void a(QQAppInterface paramQQAppInterface, Context paramContext, SessionInfo paramSessionInfo) {}
+  public void a(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, BaseSessionInfo paramBaseSessionInfo) {}
   
   public boolean a()
   {
@@ -74,7 +74,7 @@ public abstract class SimpleRemoteEmoticon
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.stickerrecommended.SimpleRemoteEmoticon
  * JD-Core Version:    0.7.0.1
  */

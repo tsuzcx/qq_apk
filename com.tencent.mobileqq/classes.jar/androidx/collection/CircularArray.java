@@ -14,50 +14,61 @@ public final class CircularArray<E>
   
   public CircularArray(int paramInt)
   {
-    if (paramInt < 1) {
-      throw new IllegalArgumentException("capacity must be >= 1");
-    }
-    if (paramInt > 1073741824) {
+    if (paramInt >= 1)
+    {
+      if (paramInt <= 1073741824)
+      {
+        int i = paramInt;
+        if (Integer.bitCount(paramInt) != 1) {
+          i = Integer.highestOneBit(paramInt - 1) << 1;
+        }
+        this.mCapacityBitmask = (i - 1);
+        this.mElements = ((Object[])new Object[i]);
+        return;
+      }
       throw new IllegalArgumentException("capacity must be <= 2^30");
     }
-    int i = paramInt;
-    if (Integer.bitCount(paramInt) != 1) {
-      i = Integer.highestOneBit(paramInt - 1) << 1;
-    }
-    this.mCapacityBitmask = (i - 1);
-    this.mElements = ((Object[])new Object[i]);
+    throw new IllegalArgumentException("capacity must be >= 1");
   }
   
   private void doubleCapacity()
   {
-    int i = this.mElements.length;
-    int j = i - this.mHead;
-    int k = i << 1;
-    if (k < 0) {
-      throw new RuntimeException("Max array capacity exceeded");
+    Object[] arrayOfObject1 = this.mElements;
+    int i = arrayOfObject1.length;
+    int j = this.mHead;
+    int k = i - j;
+    int m = i << 1;
+    if (m >= 0)
+    {
+      Object[] arrayOfObject2 = new Object[m];
+      System.arraycopy(arrayOfObject1, j, arrayOfObject2, 0, k);
+      System.arraycopy(this.mElements, 0, arrayOfObject2, k, this.mHead);
+      this.mElements = ((Object[])arrayOfObject2);
+      this.mHead = 0;
+      this.mTail = i;
+      this.mCapacityBitmask = (m - 1);
+      return;
     }
-    Object[] arrayOfObject = new Object[k];
-    System.arraycopy(this.mElements, this.mHead, arrayOfObject, 0, j);
-    System.arraycopy(this.mElements, 0, arrayOfObject, j, this.mHead);
-    this.mElements = ((Object[])arrayOfObject);
-    this.mHead = 0;
-    this.mTail = i;
-    this.mCapacityBitmask = (k - 1);
+    throw new RuntimeException("Max array capacity exceeded");
   }
   
   public void addFirst(E paramE)
   {
     this.mHead = (this.mHead - 1 & this.mCapacityBitmask);
-    this.mElements[this.mHead] = paramE;
-    if (this.mHead == this.mTail) {
+    Object[] arrayOfObject = this.mElements;
+    int i = this.mHead;
+    arrayOfObject[i] = paramE;
+    if (i == this.mTail) {
       doubleCapacity();
     }
   }
   
   public void addLast(E paramE)
   {
-    this.mElements[this.mTail] = paramE;
-    this.mTail = (this.mTail + 1 & this.mCapacityBitmask);
+    Object[] arrayOfObject = this.mElements;
+    int i = this.mTail;
+    arrayOfObject[i] = paramE;
+    this.mTail = (this.mCapacityBitmask & i + 1);
     if (this.mTail == this.mHead) {
       doubleCapacity();
     }
@@ -70,26 +81,32 @@ public final class CircularArray<E>
   
   public E get(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= size())) {
-      throw new ArrayIndexOutOfBoundsException();
+    if ((paramInt >= 0) && (paramInt < size()))
+    {
+      Object[] arrayOfObject = this.mElements;
+      int i = this.mHead;
+      return arrayOfObject[(this.mCapacityBitmask & i + paramInt)];
     }
-    return this.mElements[(this.mHead + paramInt & this.mCapacityBitmask)];
+    throw new ArrayIndexOutOfBoundsException();
   }
   
   public E getFirst()
   {
-    if (this.mHead == this.mTail) {
-      throw new ArrayIndexOutOfBoundsException();
+    int i = this.mHead;
+    if (i != this.mTail) {
+      return this.mElements[i];
     }
-    return this.mElements[this.mHead];
+    throw new ArrayIndexOutOfBoundsException();
   }
   
   public E getLast()
   {
-    if (this.mHead == this.mTail) {
-      throw new ArrayIndexOutOfBoundsException();
+    int i = this.mHead;
+    int j = this.mTail;
+    if (i != j) {
+      return this.mElements[(j - 1 & this.mCapacityBitmask)];
     }
-    return this.mElements[(this.mTail - 1 & this.mCapacityBitmask)];
+    throw new ArrayIndexOutOfBoundsException();
   }
   
   public boolean isEmpty()
@@ -99,75 +116,93 @@ public final class CircularArray<E>
   
   public E popFirst()
   {
-    if (this.mHead == this.mTail) {
-      throw new ArrayIndexOutOfBoundsException();
+    int i = this.mHead;
+    if (i != this.mTail)
+    {
+      Object[] arrayOfObject = this.mElements;
+      Object localObject = arrayOfObject[i];
+      arrayOfObject[i] = null;
+      this.mHead = (i + 1 & this.mCapacityBitmask);
+      return localObject;
     }
-    Object localObject = this.mElements[this.mHead];
-    this.mElements[this.mHead] = null;
-    this.mHead = (this.mHead + 1 & this.mCapacityBitmask);
-    return localObject;
+    throw new ArrayIndexOutOfBoundsException();
   }
   
   public E popLast()
   {
-    if (this.mHead == this.mTail) {
-      throw new ArrayIndexOutOfBoundsException();
+    int i = this.mHead;
+    int j = this.mTail;
+    if (i != j)
+    {
+      i = this.mCapacityBitmask & j - 1;
+      Object[] arrayOfObject = this.mElements;
+      Object localObject = arrayOfObject[i];
+      arrayOfObject[i] = null;
+      this.mTail = i;
+      return localObject;
     }
-    int i = this.mTail - 1 & this.mCapacityBitmask;
-    Object localObject = this.mElements[i];
-    this.mElements[i] = null;
-    this.mTail = i;
-    return localObject;
+    throw new ArrayIndexOutOfBoundsException();
   }
   
   public void removeFromEnd(int paramInt)
   {
-    if (paramInt <= 0) {}
-    do
-    {
+    if (paramInt <= 0) {
       return;
-      if (paramInt > size()) {
-        throw new ArrayIndexOutOfBoundsException();
+    }
+    if (paramInt <= size())
+    {
+      int i = 0;
+      int j = this.mTail;
+      if (paramInt < j) {
+        i = j - paramInt;
       }
-      i = 0;
-      if (paramInt < this.mTail) {
-        i = this.mTail - paramInt;
-      }
-      int j = i;
-      while (j < this.mTail)
+      j = i;
+      int k;
+      for (;;)
       {
+        k = this.mTail;
+        if (j >= k) {
+          break;
+        }
         this.mElements[j] = null;
         j += 1;
       }
-      i = this.mTail - i;
+      i = k - i;
       paramInt -= i;
-      this.mTail -= i;
-    } while (paramInt <= 0);
-    this.mTail = this.mElements.length;
-    int i = this.mTail - paramInt;
-    paramInt = i;
-    while (paramInt < this.mTail)
-    {
-      this.mElements[paramInt] = null;
-      paramInt += 1;
+      this.mTail = (k - i);
+      if (paramInt > 0)
+      {
+        this.mTail = this.mElements.length;
+        i = this.mTail - paramInt;
+        paramInt = i;
+        while (paramInt < this.mTail)
+        {
+          this.mElements[paramInt] = null;
+          paramInt += 1;
+        }
+        this.mTail = i;
+      }
+      return;
     }
-    this.mTail = i;
+    ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException = new ArrayIndexOutOfBoundsException();
+    for (;;)
+    {
+      throw localArrayIndexOutOfBoundsException;
+    }
   }
   
   public void removeFromStart(int paramInt)
   {
-    if (paramInt <= 0) {}
-    int i;
-    do
-    {
+    if (paramInt <= 0) {
       return;
-      if (paramInt > size()) {
-        throw new ArrayIndexOutOfBoundsException();
-      }
+    }
+    if (paramInt <= size())
+    {
       int j = this.mElements.length;
-      i = j;
-      if (paramInt < j - this.mHead) {
-        i = this.mHead + paramInt;
+      int k = this.mHead;
+      int i = j;
+      if (paramInt < j - k) {
+        i = k + paramInt;
       }
       j = this.mHead;
       while (j < i)
@@ -175,17 +210,27 @@ public final class CircularArray<E>
         this.mElements[j] = null;
         j += 1;
       }
-      j = i - this.mHead;
-      i = paramInt - j;
-      this.mHead = (j + this.mHead & this.mCapacityBitmask);
-    } while (i <= 0);
-    paramInt = 0;
-    while (paramInt < i)
-    {
-      this.mElements[paramInt] = null;
-      paramInt += 1;
+      j = this.mHead;
+      k = i - j;
+      i = paramInt - k;
+      this.mHead = (this.mCapacityBitmask & j + k);
+      if (i > 0)
+      {
+        paramInt = 0;
+        while (paramInt < i)
+        {
+          this.mElements[paramInt] = null;
+          paramInt += 1;
+        }
+        this.mHead = i;
+      }
+      return;
     }
-    this.mHead = i;
+    ArrayIndexOutOfBoundsException localArrayIndexOutOfBoundsException = new ArrayIndexOutOfBoundsException();
+    for (;;)
+    {
+      throw localArrayIndexOutOfBoundsException;
+    }
   }
   
   public int size()
@@ -195,7 +240,7 @@ public final class CircularArray<E>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.collection.CircularArray
  * JD-Core Version:    0.7.0.1
  */

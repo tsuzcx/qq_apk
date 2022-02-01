@@ -25,14 +25,15 @@ public final class stQQGetFeedCommentListV2Req
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.req != null) {
-      paramJceOutputStream.write(this.req, 0);
+    stGetFeedCommentListV2Req localstGetFeedCommentListV2Req = this.req;
+    if (localstGetFeedCommentListV2Req != null) {
+      paramJceOutputStream.write(localstGetFeedCommentListV2Req, 0);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stQQGetFeedCommentListV2Req
  * JD-Core Version:    0.7.0.1
  */

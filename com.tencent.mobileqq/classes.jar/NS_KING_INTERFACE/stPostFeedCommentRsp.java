@@ -11,20 +11,9 @@ public final class stPostFeedCommentRsp
   extends JceStruct
   implements Cloneable
 {
-  static stMetaComment cache_comment;
+  static stMetaComment cache_comment = new stMetaComment();
   public stMetaComment comment = null;
   public int prompt = 0;
-  
-  static
-  {
-    if (!stPostFeedCommentRsp.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      cache_comment = new stMetaComment();
-      return;
-    }
-  }
   
   public stPostFeedCommentRsp() {}
   
@@ -41,18 +30,17 @@ public final class stPostFeedCommentRsp
   
   public Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while ($assertionsDisabled) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    return null;
   }
   
   public void display(StringBuilder paramStringBuilder, int paramInt)
@@ -71,13 +59,20 @@ public final class stPostFeedCommentRsp
   
   public boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    boolean bool2 = false;
+    if (paramObject == null) {
       return false;
-      paramObject = (stPostFeedCommentRsp)paramObject;
-    } while ((!JceUtil.equals(this.comment, paramObject.comment)) || (!JceUtil.equals(this.prompt, paramObject.prompt)));
-    return true;
+    }
+    paramObject = (stPostFeedCommentRsp)paramObject;
+    boolean bool1 = bool2;
+    if (JceUtil.equals(this.comment, paramObject.comment))
+    {
+      bool1 = bool2;
+      if (JceUtil.equals(this.prompt, paramObject.prompt)) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   public String fullClassName()
@@ -132,7 +127,7 @@ public final class stPostFeedCommentRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_INTERFACE.stPostFeedCommentRsp
  * JD-Core Version:    0.7.0.1
  */

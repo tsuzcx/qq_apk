@@ -3,21 +3,23 @@ package com.tencent.mobileqq.flutter.channel.qqcircle;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import androidx.annotation.Nullable;
+import androidx.fragment.app.FragmentActivity;
 import com.qflutter.qqcircle.TencentQQCirclePlugin;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.flutter.container.QFlutterContainerDelegate;
 import com.tencent.mobileqq.flutter.container.QFlutterContainerFragment;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
-import com.tencent.mobileqq.qcircle.api.constant.QCircleDTParamBuilder;
+import com.tencent.mobileqq.qcircle.tempapi.api.IQQBaseService;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.VideoReport;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
+import cooperation.qqcircle.report.datong.QCircleDTParamBuilder;
 
 public class QCircleFlutterContainerFragment
   extends QFlutterContainerFragment
@@ -27,10 +29,23 @@ public class QCircleFlutterContainerFragment
   
   private void a(View paramView)
   {
-    VideoReport.addToDetectionWhitelist(getActivity());
-    VideoReport.setPageId(paramView, "small_world_base");
-    VideoReport.setPageParams(paramView, new QCircleDTParamBuilder().setPageSubclass("QCircleFlutterContainerFragment").buildPageParams());
-    QLog.i("QCircleFlutterContainerFragment", 1, "reportDaTongRegister  subPage: QCircleFlutterContainerFragment");
+    if ((getActivity() != null) && (getActivity().getIntent() != null))
+    {
+      VideoReport.addToDetectionWhitelist(getActivity());
+      String str = getActivity().getIntent().getStringExtra("page_name");
+      if (TextUtils.equals(str, "QQCirSearchDetailWidget")) {
+        str = "pg_xsj_search_page";
+      } else if (TextUtils.equals(str, "QQCircleFloatLayer")) {
+        str = "pg_xsj_layer_page";
+      } else {
+        str = "small_world_base";
+      }
+      VideoReport.setPageId(paramView, str);
+      VideoReport.setPageParams(paramView, new QCircleDTParamBuilder().buildPageParams("QCircleFlutterContainerFragment"));
+      QLog.i("QCircleFlutterContainerFragment", 1, "reportDaTongRegister  subPage: QCircleFlutterContainerFragment");
+      return;
+    }
+    QLog.e("QCircleFlutterContainerFragment", 1, "reportDaTongRegister  getActivity() == null || getActivity().getIntent() == null");
   }
   
   @Nullable
@@ -38,7 +53,7 @@ public class QCircleFlutterContainerFragment
   {
     if ((this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate != null) && (this.jdField_a_of_type_ComTencentMobileqqFlutterContainerQFlutterContainerDelegate.b()))
     {
-      View localView = new View(a());
+      View localView = new View(getContext());
       localView.setBackgroundColor(0);
       return localView;
     }
@@ -57,9 +72,9 @@ public class QCircleFlutterContainerFragment
   public void onCreate(Bundle paramBundle)
   {
     super.onCreate(paramBundle);
-    if (getActivity().getIntent() != null)
+    if (getQBaseActivity().getIntent() != null)
     {
-      paramBundle = getActivity().getIntent();
+      paramBundle = getQBaseActivity().getIntent();
       this.jdField_a_of_type_JavaLangString = paramBundle.getStringExtra("qcircle_flutter_page_back_behavior");
       if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
         this.jdField_a_of_type_JavaLangString = "0";
@@ -69,34 +84,40 @@ public class QCircleFlutterContainerFragment
     this.jdField_a_of_type_ComTencentMobileqqFlutterChannelQqcircleQCircleBroadcastReceiver = new QCircleBroadcastReceiver();
     paramBundle = new IntentFilter();
     paramBundle.addAction("action_update_web_user_follow_state");
-    getActivity().registerReceiver(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelQqcircleQCircleBroadcastReceiver, paramBundle);
+    getQBaseActivity().registerReceiver(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelQqcircleQCircleBroadcastReceiver, paramBundle);
+    if ((getActivity() != null) && (getActivity().getIntent() != null) && (TextUtils.equals(getActivity().getIntent().getStringExtra("page_name"), "QQCirEditProfileWidget"))) {
+      ((IQQBaseService)QRoute.api(IQQBaseService.class)).attachConditionSearchManager();
+    }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
     paramLayoutInflater = super.onCreateView(paramLayoutInflater, paramViewGroup, paramBundle);
     a(paramLayoutInflater);
-    V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
     return paramLayoutInflater;
   }
   
   public void onDestroy()
   {
     QLog.d("QCircleFlutterContainerFragment", 4, "QCircleFlutterContainerFragment qcircle_flutter_activity_destroy");
-    getActivity().sendBroadcast(new Intent("qcircle_flutter_activity_destroy"));
+    getQBaseActivity().sendBroadcast(new Intent("qcircle_flutter_activity_destroy"));
     super.onDestroy();
-    getActivity().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelQqcircleQCircleBroadcastReceiver);
+    getQBaseActivity().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqFlutterChannelQqcircleQCircleBroadcastReceiver);
+    if ((getActivity() != null) && (getActivity().getIntent() != null) && (TextUtils.equals(getActivity().getIntent().getStringExtra("page_name"), "QQCirEditProfileWidget"))) {
+      ((IQQBaseService)QRoute.api(IQQBaseService.class)).detachConditionSearchManager();
+    }
   }
   
   public void onResume()
   {
-    getActivity().sendBroadcast(new Intent("qcircle_flutter_activity_resume"));
+    getQBaseActivity().sendBroadcast(new Intent("qcircle_flutter_activity_resume"));
     super.onResume();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.flutter.channel.qqcircle.QCircleFlutterContainerFragment
  * JD-Core Version:    0.7.0.1
  */

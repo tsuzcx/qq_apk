@@ -9,12 +9,22 @@ public class LinkMicLocationInfoNative$LocationItem
   
   public String toString()
   {
-    return "LocationItem{width=" + this.a + ", height=" + this.b + ", x=" + this.c + ", y=" + this.d + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LocationItem{width=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", height=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", x=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", y=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.linkmicbizserviceinterface.LinkMicLocationInfoNative.LocationItem
  * JD-Core Version:    0.7.0.1
  */

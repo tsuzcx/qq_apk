@@ -1,12 +1,12 @@
 package com.tencent.mobileqq.profilecard.vas;
 
-import com.tencent.mobileqq.profile.ProfileCardTemplate;
+import com.tencent.mobileqq.profilecard.template.ProfileCardTemplate;
 import kotlin.Metadata;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "", "mCurUseStyleId", "", "mCurUseTemplateVersion", "currentTemplate", "Lcom/tencent/mobileqq/profile/ProfileCardTemplate;", "cardData", "Lcom/tencent/mobileqq/profilecard/vas/VasCardData;", "diyData", "Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;", "diyTextData", "Lcom/tencent/mobileqq/profilecard/vas/VasDiyTextData;", "(JJLcom/tencent/mobileqq/profile/ProfileCardTemplate;Lcom/tencent/mobileqq/profilecard/vas/VasCardData;Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;Lcom/tencent/mobileqq/profilecard/vas/VasDiyTextData;)V", "getCardData", "()Lcom/tencent/mobileqq/profilecard/vas/VasCardData;", "getCurrentTemplate", "()Lcom/tencent/mobileqq/profile/ProfileCardTemplate;", "getDiyData", "()Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;", "getDiyTextData", "()Lcom/tencent/mobileqq/profilecard/vas/VasDiyTextData;", "getMCurUseStyleId", "()J", "getMCurUseTemplateVersion", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/profilecard/vas/VasProfileData;", "", "mCurUseStyleId", "", "mCurUseTemplateVersion", "currentTemplate", "Lcom/tencent/mobileqq/profilecard/template/ProfileCardTemplate;", "cardData", "Lcom/tencent/mobileqq/profilecard/vas/VasCardData;", "diyData", "Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;", "diyTextData", "Lcom/tencent/mobileqq/profilecard/vas/VasDiyTextData;", "(JJLcom/tencent/mobileqq/profilecard/template/ProfileCardTemplate;Lcom/tencent/mobileqq/profilecard/vas/VasCardData;Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;Lcom/tencent/mobileqq/profilecard/vas/VasDiyTextData;)V", "getCardData", "()Lcom/tencent/mobileqq/profilecard/vas/VasCardData;", "getCurrentTemplate", "()Lcom/tencent/mobileqq/profilecard/template/ProfileCardTemplate;", "getDiyData", "()Lcom/tencent/mobileqq/profilecard/vas/VasDiyData;", "getDiyTextData", "()Lcom/tencent/mobileqq/profilecard/vas/VasDiyTextData;", "getMCurUseStyleId", "()J", "getMCurUseTemplateVersion", "component1", "component2", "component3", "component4", "component5", "component6", "copy", "equals", "", "other", "hashCode", "", "toString", "", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
 public final class VasProfileData
 {
   @NotNull
@@ -79,18 +79,18 @@ public final class VasProfileData
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof VasProfileData))
       {
         paramObject = (VasProfileData)paramObject;
-        if ((this.mCurUseStyleId != paramObject.mCurUseStyleId) || (this.mCurUseTemplateVersion != paramObject.mCurUseTemplateVersion) || (!Intrinsics.areEqual(this.currentTemplate, paramObject.currentTemplate)) || (!Intrinsics.areEqual(this.cardData, paramObject.cardData)) || (!Intrinsics.areEqual(this.diyData, paramObject.diyData)) || (!Intrinsics.areEqual(this.diyTextData, paramObject.diyTextData))) {}
+        if ((this.mCurUseStyleId == paramObject.mCurUseStyleId) && (this.mCurUseTemplateVersion == paramObject.mCurUseTemplateVersion) && (Intrinsics.areEqual(this.currentTemplate, paramObject.currentTemplate)) && (Intrinsics.areEqual(this.cardData, paramObject.cardData)) && (Intrinsics.areEqual(this.diyData, paramObject.diyData)) && (Intrinsics.areEqual(this.diyTextData, paramObject.diyTextData))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -129,53 +129,62 @@ public final class VasProfileData
   
   public int hashCode()
   {
-    int m = 0;
     long l = this.mCurUseStyleId;
     int n = (int)(l ^ l >>> 32);
     l = this.mCurUseTemplateVersion;
     int i1 = (int)(l ^ l >>> 32);
     Object localObject = this.currentTemplate;
+    int m = 0;
     int i;
-    int j;
-    if (localObject != null)
-    {
+    if (localObject != null) {
       i = localObject.hashCode();
-      localObject = this.cardData;
-      if (localObject == null) {
-        break label141;
-      }
-      j = localObject.hashCode();
-      label71:
-      localObject = this.diyData;
-      if (localObject == null) {
-        break label146;
-      }
-    }
-    label141:
-    label146:
-    for (int k = localObject.hashCode();; k = 0)
-    {
-      localObject = this.diyTextData;
-      if (localObject != null) {
-        m = localObject.hashCode();
-      }
-      return (k + (j + (i + (n * 31 + i1) * 31) * 31) * 31) * 31 + m;
+    } else {
       i = 0;
-      break;
-      j = 0;
-      break label71;
     }
+    localObject = this.cardData;
+    int j;
+    if (localObject != null) {
+      j = localObject.hashCode();
+    } else {
+      j = 0;
+    }
+    localObject = this.diyData;
+    int k;
+    if (localObject != null) {
+      k = localObject.hashCode();
+    } else {
+      k = 0;
+    }
+    localObject = this.diyTextData;
+    if (localObject != null) {
+      m = localObject.hashCode();
+    }
+    return ((((n * 31 + i1) * 31 + i) * 31 + j) * 31 + k) * 31 + m;
   }
   
   @NotNull
   public String toString()
   {
-    return "VasProfileData(mCurUseStyleId=" + this.mCurUseStyleId + ", mCurUseTemplateVersion=" + this.mCurUseTemplateVersion + ", currentTemplate=" + this.currentTemplate + ", cardData=" + this.cardData + ", diyData=" + this.diyData + ", diyTextData=" + this.diyTextData + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("VasProfileData(mCurUseStyleId=");
+    localStringBuilder.append(this.mCurUseStyleId);
+    localStringBuilder.append(", mCurUseTemplateVersion=");
+    localStringBuilder.append(this.mCurUseTemplateVersion);
+    localStringBuilder.append(", currentTemplate=");
+    localStringBuilder.append(this.currentTemplate);
+    localStringBuilder.append(", cardData=");
+    localStringBuilder.append(this.cardData);
+    localStringBuilder.append(", diyData=");
+    localStringBuilder.append(this.diyData);
+    localStringBuilder.append(", diyTextData=");
+    localStringBuilder.append(this.diyTextData);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.VasProfileData
  * JD-Core Version:    0.7.0.1
  */

@@ -21,14 +21,9 @@ public class VasCommonJsPlugin$ChooseFriendReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if ((paramInt != 0) || (paramBundle == null)) {
-      VasCommonJsPlugin.access$000(this.mJsPlugin);
-    }
-    Object localObject;
-    do
+    if ((paramInt == 0) && (paramBundle != null))
     {
-      return;
-      localObject = paramBundle.getStringArrayList("choose_friend_uins");
+      Object localObject = paramBundle.getStringArrayList("choose_friend_uins");
       ArrayList localArrayList1 = paramBundle.getStringArrayList("choose_friend_phones");
       ArrayList localArrayList2 = paramBundle.getStringArrayList("choose_friend_names");
       ArrayList localArrayList3 = paramBundle.getStringArrayList("choose_friend_group_uins");
@@ -36,14 +31,20 @@ public class VasCommonJsPlugin$ChooseFriendReceiver
       ArrayList localArrayList5 = paramBundle.getIntegerArrayList("choose_friend_group_counts");
       ArrayList localArrayList6 = paramBundle.getIntegerArrayList("choose_friend_group_types");
       localObject = this.mJsPlugin.getJsBackJson(null, (List)localObject, localArrayList1, localArrayList2, null, localArrayList3, localArrayList4, localArrayList5, localArrayList6);
-    } while (localObject == null);
-    paramBundle = VasCommonJsPlugin.access$100(this.mJsPlugin, paramBundle, (JSONObject)localObject);
-    VasCommonJsPlugin.access$200(this.mJsPlugin, this.mJsPlugin.mCallback, paramBundle.toString());
+      if (localObject != null)
+      {
+        paramBundle = VasCommonJsPlugin.access$100(this.mJsPlugin, paramBundle, (JSONObject)localObject);
+        localObject = this.mJsPlugin;
+        VasCommonJsPlugin.access$200((VasCommonJsPlugin)localObject, ((VasCommonJsPlugin)localObject).mCallback, paramBundle.toString());
+      }
+      return;
+    }
+    VasCommonJsPlugin.access$000(this.mJsPlugin);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin.ChooseFriendReceiver
  * JD-Core Version:    0.7.0.1
  */

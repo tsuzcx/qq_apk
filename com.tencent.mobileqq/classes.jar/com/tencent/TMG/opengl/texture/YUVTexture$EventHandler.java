@@ -15,37 +15,41 @@ class YUVTexture$EventHandler
   
   public void handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    }
-    do
-    {
-      do
+      if (i != 1)
       {
-        do
+        if (i != 2)
         {
-          do
-          {
+          if (i != 3) {
             return;
-          } while (YUVTexture.access$000(this.this$0) == null);
-          YUVTexture.access$000(this.this$0).onRenderFrame();
-          return;
-        } while (YUVTexture.access$000(this.this$0) == null);
-        YUVTexture.access$000(this.this$0).onRenderReset();
-        return;
-      } while (YUVTexture.access$000(this.this$0) == null);
-      YUVTexture.access$000(this.this$0).onRenderFlush();
-      return;
-    } while (YUVTexture.access$000(this.this$0) == null);
-    if (YUVTexture.access$100(this.this$0) == null) {
-      YUVTexture.access$102(this.this$0, new GlStringParser('=', ';'));
+          }
+          if (YUVTexture.access$000(this.this$0) != null)
+          {
+            if (YUVTexture.access$100(this.this$0) == null) {
+              YUVTexture.access$102(this.this$0, new GlStringParser('=', ';'));
+            }
+            paramMessage = (String)paramMessage.obj;
+            YUVTexture.access$100(this.this$0).unflatten(paramMessage);
+            i = YUVTexture.access$100(this.this$0).getInt("width");
+            int j = YUVTexture.access$100(this.this$0).getInt("height");
+            int k = YUVTexture.access$100(this.this$0).getInt("angle");
+            YUVTexture.access$000(this.this$0).onRenderInfoNotify(i, j, k);
+          }
+        }
+        else if (YUVTexture.access$000(this.this$0) != null)
+        {
+          YUVTexture.access$000(this.this$0).onRenderReset();
+        }
+      }
+      else if (YUVTexture.access$000(this.this$0) != null) {
+        YUVTexture.access$000(this.this$0).onRenderFlush();
+      }
     }
-    paramMessage = (String)paramMessage.obj;
-    YUVTexture.access$100(this.this$0).unflatten(paramMessage);
-    int i = YUVTexture.access$100(this.this$0).getInt("width");
-    int j = YUVTexture.access$100(this.this$0).getInt("height");
-    int k = YUVTexture.access$100(this.this$0).getInt("angle");
-    YUVTexture.access$000(this.this$0).onRenderInfoNotify(i, j, k);
+    else if (YUVTexture.access$000(this.this$0) != null) {
+      YUVTexture.access$000(this.this$0).onRenderFrame();
+    }
   }
 }
 

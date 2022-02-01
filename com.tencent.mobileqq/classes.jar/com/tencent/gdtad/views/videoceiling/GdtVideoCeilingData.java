@@ -1,7 +1,7 @@
 package com.tencent.gdtad.views.videoceiling;
 
 import android.text.TextUtils;
-import com.tencent.ad.tangram.canvas.views.canvas.AdCanvasData;
+import com.tencent.ad.tangram.views.canvas.AdCanvasData;
 import com.tencent.gdtad.aditem.GdtAd;
 import com.tencent.gdtad.views.video.GdtVideoData;
 import java.io.Serializable;
@@ -21,11 +21,29 @@ public class GdtVideoCeilingData
   
   private boolean a()
   {
-    if (this.mStyle == -2147483648) {}
-    while (((this.mStyle == 2) && (TextUtils.isEmpty(this.ad.getAppPackageName()))) || ((this.mStyle == 3) && (TextUtils.isEmpty(this.ad.getAppDeeplink()))) || ((this.mStyle == 4) && ((this.canvasData == null) || (!this.canvasData.isValid())))) {
+    int i = this.mStyle;
+    boolean bool = false;
+    if (i == -2147483648) {
       return false;
     }
-    return true;
+    if ((i == 2) && (TextUtils.isEmpty(this.ad.getAppPackageName()))) {
+      return false;
+    }
+    if ((this.mStyle == 3) && (TextUtils.isEmpty(this.ad.getAppDeeplink()))) {
+      return false;
+    }
+    if (this.mStyle == 4)
+    {
+      AdCanvasData localAdCanvasData = this.canvasData;
+      if (localAdCanvasData == null) {
+        return bool;
+      }
+      if (!localAdCanvasData.isValid()) {
+        return false;
+      }
+    }
+    bool = true;
+    return bool;
   }
   
   public GdtAd getAd()
@@ -55,18 +73,20 @@ public class GdtVideoCeilingData
   
   public boolean isValid()
   {
-    return (this.videoData != null) && (this.videoData.isValid()) && (!TextUtils.isEmpty(this.webUrl)) && (a());
+    GdtVideoData localGdtVideoData = this.videoData;
+    return (localGdtVideoData != null) && (localGdtVideoData.isValid()) && (!TextUtils.isEmpty(this.webUrl)) && (a());
   }
   
   public void setAd(GdtAd paramGdtAd)
   {
-    if (paramGdtAd == null) {}
-    do
-    {
+    if (paramGdtAd == null) {
       return;
-      this.ad = paramGdtAd;
-    } while (this.videoData == null);
-    this.videoData.setAd(paramGdtAd);
+    }
+    this.ad = paramGdtAd;
+    GdtVideoData localGdtVideoData = this.videoData;
+    if (localGdtVideoData != null) {
+      localGdtVideoData.setAd(paramGdtAd);
+    }
   }
   
   public void setCanvasData(AdCanvasData paramAdCanvasData)
@@ -94,7 +114,7 @@ public class GdtVideoCeilingData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.views.videoceiling.GdtVideoCeilingData
  * JD-Core Version:    0.7.0.1
  */

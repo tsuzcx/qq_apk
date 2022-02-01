@@ -26,7 +26,12 @@ public final class Wifi
   
   public String toString()
   {
-    return "Wifi[mac=" + this.lMac + ",rssi=" + this.shRssi + "]\n";
+    StringBuilder localStringBuilder = new StringBuilder("Wifi[mac=");
+    localStringBuilder.append(this.lMac);
+    localStringBuilder.append(",rssi=");
+    localStringBuilder.append(this.shRssi);
+    localStringBuilder.append("]\n");
+    return localStringBuilder.toString();
   }
   
   public void writeTo(JceOutputStream paramJceOutputStream)

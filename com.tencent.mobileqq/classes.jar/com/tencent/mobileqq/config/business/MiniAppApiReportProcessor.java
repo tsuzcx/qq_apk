@@ -36,8 +36,12 @@ public class MiniAppApiReportProcessor
   
   public void a(MiniAppApiReportBean paramMiniAppApiReportBean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MiniAppApiReportProcessor", 2, "onUpdate " + paramMiniAppApiReportBean.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onUpdate ");
+      localStringBuilder.append(paramMiniAppApiReportBean.toString());
+      QLog.d("MiniAppApiReportProcessor", 2, localStringBuilder.toString());
     }
     paramMiniAppApiReportBean = BaseApplicationImpl.getApplication().getRuntime();
     if ((paramMiniAppApiReportBean instanceof QQAppInterface))
@@ -83,7 +87,7 @@ public class MiniAppApiReportProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.MiniAppApiReportProcessor
  * JD-Core Version:    0.7.0.1
  */

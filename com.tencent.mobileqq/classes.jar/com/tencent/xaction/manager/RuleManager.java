@@ -1,9 +1,12 @@
 package com.tencent.xaction.manager;
 
+import androidx.annotation.Keep;
 import com.tencent.xaction.api.IRuleManager;
 import com.tencent.xaction.api.base.BaseAnim;
 import com.tencent.xaction.api.base.BaseRule;
 import com.tencent.xaction.api.data.ViewData;
+import com.tencent.xaction.api.util.ReflectUtil;
+import com.tencent.xaction.api.util.ReflectUtil.Companion;
 import java.lang.reflect.Field;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,174 +20,161 @@ import kotlin.text.StringsKt;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/manager/RuleManager;", "Lcom/tencent/xaction/api/IRuleManager;", "()V", "ruleNameMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "getRuleNameMap", "()Ljava/util/HashMap;", "rules", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseRule;", "Lkotlin/collections/ArrayList;", "getRules", "()Ljava/util/ArrayList;", "setRules", "(Ljava/util/ArrayList;)V", "getField", "Ljava/lang/reflect/Field;", "clazz", "Ljava/lang/Class;", "propName", "getRuleValue", "rule", "parseRuleMap", "", "ruleName", "ruleKey", "viewData", "refreshAnimRuleValue", "", "anim", "Lcom/tencent/xaction/api/base/BaseAnim;", "key", "value", "refreshRuleValue", "Lcom/tencent/xaction/api/data/ViewData;", "registerGlobalRuleLine", "registerRule", "registerRuleLine", "unregisterRule", "Companion", "XActionEngine_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/xaction/manager/RuleManager;", "Lcom/tencent/xaction/api/IRuleManager;", "()V", "ruleNameMap", "Ljava/util/HashMap;", "", "", "Lkotlin/collections/HashMap;", "getRuleNameMap", "()Ljava/util/HashMap;", "rules", "Ljava/util/ArrayList;", "Lcom/tencent/xaction/api/base/BaseRule;", "Lkotlin/collections/ArrayList;", "getRules", "()Ljava/util/ArrayList;", "setRules", "(Ljava/util/ArrayList;)V", "getRuleValue", "rule", "parseRuleMap", "", "ruleName", "ruleKey", "viewData", "refreshAnimRuleValue", "", "anim", "Lcom/tencent/xaction/api/base/BaseAnim;", "key", "value", "refreshRuleValue", "Lcom/tencent/xaction/api/data/ViewData;", "registerRule", "registerRuleLine", "unregisterRule", "Companion", "XActionCore_release"}, k=1, mv={1, 1, 16})
+@Keep
 public final class RuleManager
   implements IRuleManager
 {
-  public static final RuleManager.Companion a;
+  public static final RuleManager.Companion Companion = new RuleManager.Companion(null);
   @NotNull
-  private static final HashMap<String, Object> b = new HashMap();
+  private static final HashMap<String, Object> globalRuleNameMap = new HashMap();
   @NotNull
-  private ArrayList<BaseRule> jdField_a_of_type_JavaUtilArrayList = new ArrayList();
+  private final HashMap<String, Object> ruleNameMap = new HashMap();
   @NotNull
-  private final HashMap<String, Object> jdField_a_of_type_JavaUtilHashMap = new HashMap();
+  private ArrayList<BaseRule> rules = new ArrayList();
   
-  static
+  private final boolean parseRuleMap(HashMap<String, Object> paramHashMap, String paramString1, String paramString2, Object paramObject)
   {
-    jdField_a_of_type_ComTencentXactionManagerRuleManager$Companion = new RuleManager.Companion(null);
-  }
-  
-  private final Field a(Class<?> paramClass, String paramString)
-  {
-    try
-    {
-      Field localField = paramClass.getDeclaredField(paramString);
-      return localField;
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      if (paramClass.getClass().getSuperclass() != null)
-      {
-        paramClass = paramClass.getSuperclass();
-        Intrinsics.checkExpressionValueIsNotNull(paramClass, "clazz.superclass");
-        return a(paramClass, paramString);
-      }
-    }
-    return null;
-  }
-  
-  private final boolean a(HashMap<String, Object> paramHashMap, String paramString1, String paramString2, Object paramObject)
-  {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    Iterator localIterator;
-    int i;
     if (paramHashMap.containsKey(paramString1))
     {
-      paramString1 = paramHashMap.get(paramString1);
-      if (StringsKt.contains$default((CharSequence)paramString2, '.', false, 2, null))
+      Object localObject = paramHashMap.get(paramString1);
+      paramHashMap = (CharSequence)paramString2;
+      if (StringsKt.contains$default(paramHashMap, '.', false, 2, null))
       {
-        paramString2 = StringsKt.split$default((CharSequence)paramString2, new char[] { '.' }, false, 0, 6, null);
-        localIterator = ((Iterable)paramString2).iterator();
-        i = 0;
-      }
-    }
-    for (;;)
-    {
-      if (localIterator.hasNext())
-      {
-        paramHashMap = localIterator.next();
-        if (i < 0) {
-          CollectionsKt.throwIndexOverflow();
-        }
-        paramHashMap = (String)paramHashMap;
-        try
+        paramString2 = StringsKt.split$default(paramHashMap, new char[] { '.' }, false, 0, 6, null);
+        Iterator localIterator = ((Iterable)paramString2).iterator();
+        paramHashMap = paramObject;
+        int i = 0;
+        while (localIterator.hasNext())
         {
-          paramHashMap = a(paramObject.getClass(), paramHashMap);
-          bool1 = bool2;
-          if (paramHashMap != null)
+          paramString1 = localIterator.next();
+          if (i < 0) {
+            CollectionsKt.throwIndexOverflow();
+          }
+          paramString1 = (String)paramString1;
+          try
           {
-            paramHashMap.setAccessible(true);
-            if (i < paramString2.size() - 1)
+            paramString1 = ReflectUtil.a.a(paramHashMap.getClass(), paramString1);
+            if (paramString1 != null)
             {
-              paramHashMap = paramHashMap.get(paramObject);
-              Intrinsics.checkExpressionValueIsNotNull(paramHashMap, "field.get(lastObj)");
+              paramString1.setAccessible(true);
+              if (i < paramString2.size() - 1)
+              {
+                paramString1 = paramString1.get(paramHashMap);
+                Intrinsics.checkExpressionValueIsNotNull(paramString1, "field.get(lastObj)");
+                paramHashMap = paramString1;
+              }
+              else
+              {
+                paramString1.set(paramHashMap, localObject);
+              }
             }
             else
             {
-              paramHashMap.set(paramObject, paramString1);
-              paramHashMap = paramObject;
+              return false;
             }
           }
-        }
-        catch (Exception paramHashMap)
-        {
-          paramHashMap.printStackTrace();
-          paramHashMap = paramObject;
+          catch (Exception paramString1)
+          {
+            paramString1.printStackTrace();
+            i += 1;
+          }
         }
       }
       try
       {
-        paramHashMap = a(paramObject.getClass(), paramString2);
-        bool1 = bool2;
-        if (paramHashMap == null) {
-          break label213;
-        }
-        paramHashMap.setAccessible(true);
-        paramHashMap.set(paramObject, paramString1);
+        ReflectUtil.a.a(paramObject, paramString2, localObject);
+        return true;
       }
       catch (Exception paramHashMap)
       {
-        for (;;)
-        {
-          paramHashMap.printStackTrace();
-        }
+        paramHashMap.printStackTrace();
       }
-      bool1 = true;
-      label213:
-      return bool1;
-      i += 1;
-      paramObject = paramHashMap;
+      return true;
     }
+    return false;
+  }
+  
+  @NotNull
+  public final HashMap<String, Object> getRuleNameMap()
+  {
+    return this.ruleNameMap;
   }
   
   @Nullable
-  public Object a(@NotNull String paramString)
+  public Object getRuleValue(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "rule");
-    if (this.jdField_a_of_type_JavaUtilHashMap.containsKey(paramString)) {
-      return this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+    if (this.ruleNameMap.containsKey(paramString)) {
+      return this.ruleNameMap.get(paramString);
     }
-    return b.get(paramString);
+    return globalRuleNameMap.get(paramString);
   }
   
-  public void a(@NotNull BaseAnim paramBaseAnim, @NotNull String paramString1, @NotNull String paramString2)
+  @NotNull
+  public final ArrayList<BaseRule> getRules()
+  {
+    return this.rules;
+  }
+  
+  public void refreshAnimRuleValue(@NotNull BaseAnim paramBaseAnim, @NotNull String paramString1, @NotNull String paramString2)
   {
     Intrinsics.checkParameterIsNotNull(paramBaseAnim, "anim");
     Intrinsics.checkParameterIsNotNull(paramString1, "key");
     Intrinsics.checkParameterIsNotNull(paramString2, "value");
-    Iterator localIterator = ((Iterable)this.jdField_a_of_type_JavaUtilArrayList).iterator();
+    Iterator localIterator = ((Iterable)this.rules).iterator();
     while (localIterator.hasNext()) {
       ((BaseRule)localIterator.next()).ruleAnimParse(paramBaseAnim, paramString1, paramString2);
     }
-    if (!a(this.jdField_a_of_type_JavaUtilHashMap, paramString2, paramString1, paramBaseAnim)) {
-      a(b, paramString2, paramString1, paramBaseAnim);
+    if (!parseRuleMap(this.ruleNameMap, paramString2, paramString1, paramBaseAnim)) {
+      parseRuleMap(globalRuleNameMap, paramString2, paramString1, paramBaseAnim);
     }
   }
   
-  public void a(@NotNull ViewData paramViewData, @NotNull String paramString1, @NotNull String paramString2)
+  public void refreshRuleValue(@NotNull ViewData paramViewData, @NotNull String paramString1, @NotNull String paramString2)
   {
     Intrinsics.checkParameterIsNotNull(paramViewData, "viewData");
     Intrinsics.checkParameterIsNotNull(paramString1, "key");
     Intrinsics.checkParameterIsNotNull(paramString2, "value");
-    Iterator localIterator = ((Iterable)this.jdField_a_of_type_JavaUtilArrayList).iterator();
-    if (localIterator.hasNext()) {
-      if (!((BaseRule)localIterator.next()).ruleParse(paramViewData, paramString1, paramString2)) {}
+    Iterator localIterator = ((Iterable)this.rules).iterator();
+    while (localIterator.hasNext()) {
+      if (((BaseRule)localIterator.next()).ruleParse(paramViewData, paramString1, paramString2)) {
+        return;
+      }
     }
-    while (a(this.jdField_a_of_type_JavaUtilHashMap, paramString2, paramString1, paramViewData))
-    {
-      return;
-      break;
+    if (!parseRuleMap(this.ruleNameMap, paramString2, paramString1, paramViewData)) {
+      parseRuleMap(globalRuleNameMap, paramString2, paramString1, paramViewData);
     }
-    a(b, paramString2, paramString1, paramViewData);
   }
   
-  public void a(@NotNull String paramString, @NotNull Object paramObject)
+  public boolean registerRule(@NotNull BaseRule paramBaseRule)
+  {
+    Intrinsics.checkParameterIsNotNull(paramBaseRule, "rule");
+    return this.rules.add(paramBaseRule);
+  }
+  
+  public void registerRuleLine(@NotNull String paramString, @NotNull Object paramObject)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "ruleName");
     Intrinsics.checkParameterIsNotNull(paramObject, "value");
-    ((Map)this.jdField_a_of_type_JavaUtilHashMap).put(paramString, paramObject);
+    ((Map)this.ruleNameMap).put(paramString, paramObject);
   }
   
-  public boolean a(@NotNull BaseRule paramBaseRule)
+  public final void setRules(@NotNull ArrayList<BaseRule> paramArrayList)
+  {
+    Intrinsics.checkParameterIsNotNull(paramArrayList, "<set-?>");
+    this.rules = paramArrayList;
+  }
+  
+  public boolean unregisterRule(@NotNull BaseRule paramBaseRule)
   {
     Intrinsics.checkParameterIsNotNull(paramBaseRule, "rule");
-    return this.jdField_a_of_type_JavaUtilArrayList.add(paramBaseRule);
+    return this.rules.remove(paramBaseRule);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.xaction.manager.RuleManager
  * JD-Core Version:    0.7.0.1
  */

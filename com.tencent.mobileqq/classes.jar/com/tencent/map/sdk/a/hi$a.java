@@ -13,21 +13,19 @@ final class hi$a
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      if (paramObject == this) {
-        return true;
-      }
-      paramObject = (a)paramObject;
-    } while ((paramObject.a != this.a) || (paramObject.b != this.b));
-    return true;
+    }
+    if (paramObject == this) {
+      return true;
+    }
+    paramObject = (a)paramObject;
+    return (paramObject.a == this.a) && (paramObject.b == this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.hi.a
  * JD-Core Version:    0.7.0.1
  */

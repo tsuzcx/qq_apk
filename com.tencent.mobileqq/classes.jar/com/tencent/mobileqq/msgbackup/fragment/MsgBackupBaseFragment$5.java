@@ -2,7 +2,7 @@ package com.tencent.mobileqq.msgbackup.fragment;
 
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
-import android.support.v4.app.FragmentActivity;
+import androidx.fragment.app.FragmentActivity;
 
 class MsgBackupBaseFragment$5
   implements DialogInterface.OnClickListener
@@ -20,7 +20,7 @@ class MsgBackupBaseFragment$5
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.fragment.MsgBackupBaseFragment.5
  * JD-Core Version:    0.7.0.1
  */

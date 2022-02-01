@@ -20,13 +20,16 @@ class NativeViewContainer$6
     }
     catch (Throwable localThrowable)
     {
-      QMLog.e("NativeViewContainer", this.val$req.event + " error.", localThrowable);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.val$req.event);
+      localStringBuilder.append(" error.");
+      QMLog.e("NativeViewContainer", localStringBuilder.toString(), localThrowable);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.core.page.NativeViewContainer.6
  * JD-Core Version:    0.7.0.1
  */

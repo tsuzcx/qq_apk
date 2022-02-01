@@ -10,13 +10,14 @@ class BeautyView$1
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    this.a.onClick(this.a.a);
+    BeautyView localBeautyView = this.a;
+    localBeautyView.onClick(localBeautyView.a);
     paramDialogInterface.dismiss();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.beauty.BeautyView.1
  * JD-Core Version:    0.7.0.1
  */

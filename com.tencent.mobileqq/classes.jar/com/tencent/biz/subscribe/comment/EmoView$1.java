@@ -10,23 +10,23 @@ class EmoView$1
   
   public void handleMessage(Message paramMessage)
   {
-    int i;
     if (paramMessage.what == 0)
     {
-      i = EmoView.a(this.a) + 1;
-      if ((i <= 4) && (EmoView.a(this.a)[EmoView.a(this.a)] == 0)) {}
+      int i = EmoView.a(this.a) + 1;
+      if (i <= 4)
+      {
+        if (EmoView.a(this.a)[EmoView.a(this.a)] != 0) {
+          return;
+        }
+        EmoView.a(this.a, i);
+        EmoView.a(this.a)[EmoView.a(this.a)] = 1;
+      }
     }
-    else
-    {
-      return;
-    }
-    EmoView.a(this.a, i);
-    EmoView.a(this.a)[EmoView.a(this.a)] = 1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.comment.EmoView.1
  * JD-Core Version:    0.7.0.1
  */

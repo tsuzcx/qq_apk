@@ -25,7 +25,7 @@ public class RoundedVignetteBitmapDisplayer$RoundedVignetteDrawable
     float f2 = this.mRect.centerY() * 1.0F / 0.7F;
     float f3 = this.mRect.centerX();
     paramRect = Shader.TileMode.CLAMP;
-    paramRect = new RadialGradient(f1, f2, f3 * 1.3F, new int[] { 0, 0, 2130706432 }, new float[] { 0.0F, 0.7F, 1.0F }, paramRect);
+    paramRect = new RadialGradient(f1, f2, 1.3F * f3, new int[] { 0, 0, 2130706432 }, new float[] { 0.0F, 0.7F, 1.0F }, paramRect);
     Matrix localMatrix = new Matrix();
     localMatrix.setScale(1.0F, 0.7F);
     paramRect.setLocalMatrix(localMatrix);
@@ -34,7 +34,7 @@ public class RoundedVignetteBitmapDisplayer$RoundedVignetteDrawable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.nostra13.universalimageloader.core.display.RoundedVignetteBitmapDisplayer.RoundedVignetteDrawable
  * JD-Core Version:    0.7.0.1
  */

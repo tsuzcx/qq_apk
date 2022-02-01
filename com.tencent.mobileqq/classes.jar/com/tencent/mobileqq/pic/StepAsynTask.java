@@ -14,15 +14,16 @@ public class StepAsynTask
   
   protected void onPostExecute(Object paramObject)
   {
-    if (this.a != null) {
-      this.a.execute(new Object[0]);
+    StepAsynTask localStepAsynTask = this.a;
+    if (localStepAsynTask != null) {
+      localStepAsynTask.execute(new Object[0]);
     }
     super.onPostExecute(paramObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.StepAsynTask
  * JD-Core Version:    0.7.0.1
  */

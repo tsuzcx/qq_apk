@@ -6,21 +6,24 @@ import android.view.View;
 import android.widget.BaseAdapter;
 import android.widget.ListAdapter;
 import android.widget.RelativeLayout;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.core.msglist.item.ItemBuilderFactory;
-import com.tencent.mobileqq.apollo.api.aio.item.impl.ApolloGameItemBuilder;
-import com.tencent.mobileqq.apollo.api.aio.item.impl.ApolloItemBuilder;
-import com.tencent.mobileqq.apollo.api.model.MessageForApollo;
-import com.tencent.mobileqq.apollo.api.script.ISpriteUIHandler;
-import com.tencent.mobileqq.apollo.api.script.SpriteTaskParam;
-import com.tencent.mobileqq.apollo.api.uitls.IApolloActionHelper;
-import com.tencent.mobileqq.apollo.api.uitls.IApolloUtil;
-import com.tencent.mobileqq.apollo.script.callback.ISpriteUICallback;
+import com.tencent.mobileqq.apollo.aio.item.ApolloItemBuilder;
+import com.tencent.mobileqq.apollo.handler.IApolloExtensionHandler;
+import com.tencent.mobileqq.apollo.model.ApolloBaseInfo;
+import com.tencent.mobileqq.apollo.model.MessageForApollo;
+import com.tencent.mobileqq.apollo.persistence.api.IApolloDaoManagerService;
+import com.tencent.mobileqq.apollo.utils.api.IApolloActionHelper;
+import com.tencent.mobileqq.apollo.utils.api.IApolloUtil;
+import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.cmshow.engine.ICMShowEngine;
+import com.tencent.mobileqq.cmshow.engine.render.IRenderService;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.VipUtils;
@@ -28,94 +31,81 @@ import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.widget.ListView;
+import com.tencent.widget.XListAdapter;
 import com.tencent.widget.XListView;
 import common.config.service.QzoneConfig;
 import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 import mqq.os.MqqHandler;
 
 public class SpriteUIHandler
-  implements ISpriteUIHandler, ISpriteUICallback
+  implements ISpriteUIHandler
 {
   private SpriteContext jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext;
   private SpriteUIHandler.SpriteVisibleRunnable jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteUIHandler$SpriteVisibleRunnable;
   private WeakReference<XListView> jdField_a_of_type_JavaLangRefWeakReference;
-  private WeakReference<ChatAdapter1> b;
+  private WeakReference<XListAdapter> b;
   
   public SpriteUIHandler(SpriteContext paramSpriteContext)
   {
     this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext = paramSpriteContext;
   }
   
-  private ChatAdapter1 a()
+  private XListAdapter a()
   {
-    if (this.b == null) {
+    WeakReference localWeakReference = this.b;
+    if (localWeakReference == null) {
       return null;
     }
-    return (ChatAdapter1)this.b.get();
+    return (XListAdapter)localWeakReference.get();
   }
   
   private XListView a()
   {
-    if (this.jdField_a_of_type_JavaLangRefWeakReference == null) {
+    WeakReference localWeakReference = this.jdField_a_of_type_JavaLangRefWeakReference;
+    if (localWeakReference == null) {
       return null;
     }
-    return (XListView)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    return (XListView)localWeakReference.get();
   }
   
   private void a(long paramLong, int paramInt)
   {
+    Object localObject1 = a();
+    if (!(localObject1 instanceof ChatAdapter1))
+    {
+      QLog.e("[cmshow][scripted]SpriteUIHandler", 1, "adatper is null.");
+      return;
+    }
+    Object localObject3 = (ChatAdapter1)localObject1;
     Object localObject2 = a();
     if (localObject2 == null) {
-      QLog.e("cmshow_scripted_SpriteUIHandler", 1, "adatper is null.");
-    }
-    label189:
-    label204:
-    label226:
-    for (;;)
-    {
       return;
-      Object localObject1 = a();
-      if (localObject1 != null)
+    }
+    int i = AIOUtils.a(paramLong, (ListAdapter)localObject3);
+    if (i < 0) {
+      return;
+    }
+    localObject1 = (ChatMessage)((ChatAdapter1)localObject3).getItem(i);
+    localObject3 = ((ChatAdapter1)localObject3).a.a((ChatMessage)localObject1, (BaseAdapter)localObject3);
+    if (((localObject3 instanceof ApolloItemBuilder)) && ((localObject1 instanceof MessageForApollo)))
+    {
+      localObject3 = (ApolloItemBuilder)localObject3;
+      i = AIOUtils.a(paramLong, ((XListView)localObject2).getAdapter());
+      View localView = AIOUtils.a((ListView)localObject2, i);
+      if ((localView instanceof BaseChatItemLayout))
       {
-        int i = AIOUtils.a(paramLong, (ListAdapter)localObject2);
-        if (i >= 0)
+        localObject2 = (BaseChatItemLayout)AIOUtils.a((ListView)localObject2, i);
+        if (paramInt == 1)
         {
-          ChatMessage localChatMessage = (ChatMessage)((ChatAdapter1)localObject2).getItem(i);
-          localObject2 = ((ChatAdapter1)localObject2).a.a(localChatMessage, (BaseAdapter)localObject2);
-          ApolloItemBuilder localApolloItemBuilder;
-          View localView;
-          if (((localObject2 instanceof ApolloItemBuilder)) && ((localChatMessage instanceof MessageForApollo)))
-          {
-            localApolloItemBuilder = (ApolloItemBuilder)localObject2;
-            i = AIOUtils.a(paramLong, ((XListView)localObject1).getAdapter());
-            localView = AIOUtils.a((ListView)localObject1, i);
-            if (!(localView instanceof BaseChatItemLayout)) {
-              break label204;
-            }
-            localObject1 = (BaseChatItemLayout)AIOUtils.a((ListView)localObject1, i);
-            if (paramInt != 1) {
-              break label189;
-            }
-            localApolloItemBuilder.a((View)localObject1, (MessageForApollo)localChatMessage);
-          }
-          for (;;)
-          {
-            if ((!(localObject2 instanceof ApolloGameItemBuilder)) || (!(localChatMessage instanceof MessageForApollo))) {
-              break label226;
-            }
-            localObject1 = (ApolloGameItemBuilder)localObject2;
-            if (paramInt != 1) {
-              break;
-            }
-            ((ApolloGameItemBuilder)localObject1).a((MessageForApollo)localChatMessage);
-            return;
-            localApolloItemBuilder.b((View)localObject1, (MessageForApollo)localChatMessage);
-            continue;
-            if ((localView == null) && (paramInt == 1)) {
-              localApolloItemBuilder.a(null, (MessageForApollo)localChatMessage);
-            }
-          }
+          ((ApolloItemBuilder)localObject3).a((View)localObject2, (MessageForApollo)localObject1);
+          return;
         }
+        ((ApolloItemBuilder)localObject3).b((View)localObject2, (MessageForApollo)localObject1);
+        return;
+      }
+      if ((localView == null) && (paramInt == 1)) {
+        ((ApolloItemBuilder)localObject3).a(null, (MessageForApollo)localObject1);
       }
     }
   }
@@ -132,63 +122,38 @@ public class SpriteUIHandler
   
   public void a(int paramInt1, int paramInt2, long paramLong)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteUIHandler", 2, new Object[] { "[onActionDownloadNotify], downloadStatus:", Integer.valueOf(paramInt2), ",msgId:", Long.valueOf(paramLong) });
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append(", downloadStatus:");
+      QLog.d("[cmshow][scripted]SpriteUIHandler", 2, new Object[] { "[onActionDownloadNotify], ret:", localStringBuilder.toString(), Integer.valueOf(paramInt2), ", msgId:", Long.valueOf(paramLong) });
     }
     ThreadManager.getUIHandler().post(new SpriteUIHandler.1(this, paramLong, paramInt2, paramInt1));
   }
   
-  public void a(QQAppInterface paramQQAppInterface, int paramInt, String paramString)
+  public void a(SpriteTaskParam paramSpriteTaskParam, long paramLong)
   {
-    if (!SpriteUtil.b(paramQQAppInterface, paramInt, paramString))
-    {
-      QLog.i("cmshow_scripted_SpriteUIHandler", 1, "[onDoubleTap], condition NOT meet.");
-      return;
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][scripted]SpriteUIHandler", 2, new Object[] { "[onTaskStart], msgId:", Long.valueOf(paramLong) });
     }
-    if (((IApolloActionHelper)QRoute.api(IApolloActionHelper.class)).getApolloFuncSwitch(paramQQAppInterface.getCurrentUin(), paramQQAppInterface) == 0)
-    {
-      QLog.i("cmshow_scripted_SpriteUIHandler", 1, "[onDoubleTap] sava onDoubleTap user is init status return");
-      return;
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d == 1)
-    {
-      paramInt = 1;
-      if (paramInt != 0) {
-        break label216;
-      }
-      bool = true;
-      label68:
-      a(bool, true, null);
-      if (QLog.isColorLevel()) {
-        if (paramInt != 0) {
-          break label222;
-        }
-      }
-    }
-    label216:
-    label222:
-    for (boolean bool = true;; bool = false)
-    {
-      QLog.d("cmshow_scripted_SpriteUIHandler", 2, new Object[] { "isShow:", Boolean.valueOf(bool) });
-      if (paramInt != 0) {
-        break label228;
-      }
-      QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690133), 1).a();
-      VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_disappear_clk", this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_JavaLangString, 0, 0, new String[] { Integer.toString(((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int)), "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
-      return;
-      paramInt = 0;
-      break;
-      bool = false;
-      break label68;
-    }
-    label228:
-    VipUtils.a(paramQQAppInterface, "cmshow", "Apollo", "aio_double_show_clk", 0, 0, new String[] { Integer.toString(((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int)), "0" });
+    paramSpriteTaskParam = new SpriteUIHandler.2(this, paramLong);
+    ThreadManager.getUIHandler().post(paramSpriteTaskParam);
   }
   
-  public void a(XListView paramXListView, ChatAdapter1 paramChatAdapter1)
+  public void a(SpriteTaskParam paramSpriteTaskParam, long paramLong, int paramInt)
+  {
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][scripted]SpriteUIHandler", 2, new Object[] { "[onTaskComplete], msgId:", Long.valueOf(paramLong), ",type:", Integer.valueOf(paramInt) });
+    }
+    paramSpriteTaskParam = new SpriteUIHandler.3(this, paramLong, paramInt);
+    ThreadManager.getUIHandler().post(paramSpriteTaskParam);
+  }
+  
+  public void a(XListView paramXListView, XListAdapter paramXListAdapter)
   {
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramXListView);
-    this.b = new WeakReference(paramChatAdapter1);
+    this.b = new WeakReference(paramXListAdapter);
   }
   
   public void a(String paramString)
@@ -196,13 +161,61 @@ public class SpriteUIHandler
     ThreadManager.getUIHandler().post(new SpriteUIHandler.7(this, paramString));
   }
   
+  public void a(AppRuntime paramAppRuntime, int paramInt, String paramString)
+  {
+    if (!(paramAppRuntime instanceof QQAppInterface)) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = (QQAppInterface)paramAppRuntime;
+    if (!SpriteUtil.b(localQQAppInterface, paramInt, paramString))
+    {
+      QLog.i("[cmshow][scripted]SpriteUIHandler", 1, "[onDoubleTap], condition NOT meet.");
+      return;
+    }
+    if (((IApolloActionHelper)QRoute.api(IApolloActionHelper.class)).getApolloFuncSwitch(localQQAppInterface.getCurrentUin(), localQQAppInterface) == 0)
+    {
+      QLog.i("[cmshow][scripted]SpriteUIHandler", 1, "[onDoubleTap] sava onDoubleTap user is init status return");
+      return;
+    }
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+    a(paramAppRuntime, bool ^ true);
+    a(bool ^ true, true, null);
+    if (QLog.isColorLevel()) {
+      QLog.d("[cmshow][scripted]SpriteUIHandler", 2, new Object[] { "onDoubleTap isShow:", Boolean.valueOf(bool ^ true) });
+    }
+    if (!bool)
+    {
+      QQToast.a(BaseApplicationImpl.getContext(), BaseApplicationImpl.getContext().getResources().getString(2131690050), 1).a();
+      VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "aio_double_disappear_clk", this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_JavaLangString, 0, 0, new String[] { Integer.toString(((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int)), "", "", String.valueOf(System.currentTimeMillis() / 1000L) });
+      return;
+    }
+    VipUtils.a(localQQAppInterface, "cmshow", "Apollo", "aio_double_show_clk", 0, 0, new String[] { Integer.toString(((IApolloUtil)QRoute.api(IApolloUtil.class)).getReportSessiontype(this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.jdField_a_of_type_Int)), "0" });
+  }
+  
+  public void a(AppRuntime paramAppRuntime, boolean paramBoolean)
+  {
+    Object localObject = (AppInterface)paramAppRuntime;
+    IApolloExtensionHandler localIApolloExtensionHandler = (IApolloExtensionHandler)((AppInterface)localObject).getBusinessHandler(BusinessHandlerFactory.APOLLO_EXTENSION_HANDLER);
+    paramAppRuntime = (IApolloDaoManagerService)paramAppRuntime.getRuntimeService(IApolloDaoManagerService.class, "all");
+    localObject = paramAppRuntime.getApolloBaseInfo(((AppInterface)localObject).getCurrentUin());
+    ((ApolloBaseInfo)localObject).apolloAIOStatus = (paramBoolean ^ true);
+    paramAppRuntime.saveOrUpdateApolloBaseInfo((ApolloBaseInfo)localObject);
+    if (localIApolloExtensionHandler != null) {
+      localIApolloExtensionHandler.a((ApolloBaseInfo)localObject);
+    }
+  }
+  
   public void a(boolean paramBoolean, String paramString)
   {
     if (!"none_apollo_play_action".equals(paramString)) {
       return;
     }
-    QLog.d("cmshow_scripted_SpriteUIHandler", 1, new Object[] { "showOrHideSurfaceView isHide:", Boolean.valueOf(paramBoolean) });
-    paramString = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+    QLog.d("[cmshow][scripted]SpriteUIHandler", 1, new Object[] { "showOrHideSurfaceView isHide:", Boolean.valueOf(paramBoolean) });
+    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a() != null) {
+      paramString = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a().a().a();
+    } else {
+      paramString = null;
+    }
     ThreadManager.getUIHandler().post(new SpriteUIHandler.6(this, paramString, paramBoolean));
   }
   
@@ -217,56 +230,24 @@ public class SpriteUIHandler
   
   public boolean a(MotionEvent paramMotionEvent, RelativeLayout paramRelativeLayout)
   {
-    int i;
-    float f3;
-    float f1;
-    if (this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.d == 1)
-    {
-      i = 0;
-      f3 = paramMotionEvent.getY();
-      f1 = 0.0F;
-      if (paramRelativeLayout != null) {
-        f1 = paramRelativeLayout.getHeight();
-      }
-      if (i == 0) {
-        break label74;
-      }
+    boolean bool = this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteContext.a();
+    float f3 = paramMotionEvent.getY();
+    float f1 = 0.0F;
+    if (paramRelativeLayout != null) {
+      f1 = paramRelativeLayout.getHeight();
     }
-    label74:
-    for (float f2 = QzoneConfig.getInstance().getConfig("CMShow", "AioCMShowDisappearHeight", 0.3F);; f2 = QzoneConfig.getInstance().getConfig("CMShow", "AioCMShowDisplayHeight", 0.3F))
-    {
-      if (f3 < (1.0F - f2) * f1) {
-        break label94;
-      }
-      return true;
-      i = 1;
-      break;
+    float f2;
+    if ((bool ^ true)) {
+      f2 = QzoneConfig.getInstance().getConfig("CMShow", "AioCMShowDisappearHeight", 0.3F);
+    } else {
+      f2 = QzoneConfig.getInstance().getConfig("CMShow", "AioCMShowDisplayHeight", 0.3F);
     }
-    label94:
-    return false;
-  }
-  
-  public void onTaskComplete(SpriteTaskParam paramSpriteTaskParam, long paramLong, int paramInt)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteUIHandler", 2, new Object[] { "[onTaskComplete], msgId:", Long.valueOf(paramLong), ",type:", Integer.valueOf(paramInt) });
-    }
-    paramSpriteTaskParam = new SpriteUIHandler.3(this, paramLong, paramInt);
-    ThreadManager.getUIHandler().post(paramSpriteTaskParam);
-  }
-  
-  public void onTaskStart(SpriteTaskParam paramSpriteTaskParam, long paramLong)
-  {
-    if (QLog.isColorLevel()) {
-      QLog.d("cmshow_scripted_SpriteUIHandler", 2, new Object[] { "[onTaskStart], msgId:", Long.valueOf(paramLong) });
-    }
-    paramSpriteTaskParam = new SpriteUIHandler.2(this, paramLong);
-    ThreadManager.getUIHandler().post(paramSpriteTaskParam);
+    return f3 >= (1.0F - f2) * f1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.script.SpriteUIHandler
  * JD-Core Version:    0.7.0.1
  */

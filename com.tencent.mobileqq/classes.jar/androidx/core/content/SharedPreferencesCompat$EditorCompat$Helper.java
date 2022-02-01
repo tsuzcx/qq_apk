@@ -14,13 +14,15 @@ class SharedPreferencesCompat$EditorCompat$Helper
     }
     catch (AbstractMethodError localAbstractMethodError)
     {
-      paramEditor.commit();
+      label7:
+      break label7;
     }
+    paramEditor.commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.content.SharedPreferencesCompat.EditorCompat.Helper
  * JD-Core Version:    0.7.0.1
  */

@@ -1,13 +1,15 @@
 package com.tencent.open.data;
 
+import android.annotation.TargetApi;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import android.os.Build.VERSION;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.open.OpenConst;
 import com.tencent.open.agent.util.AuthorityUtil;
 import com.tencent.qphone.base.remote.SimpleAccount;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -25,51 +27,32 @@ public class SharedPrefs
   private static HashMap<String, JSONObject> jdField_a_of_type_JavaUtilHashMap;
   private static boolean jdField_a_of_type_Boolean;
   
-  /* Error */
-  @android.annotation.TargetApi(11)
+  @TargetApi(11)
   public static SharedPreferences a()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 22	com/tencent/open/data/SharedPrefs:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   6: ifnonnull +27 -> 33
-    //   9: invokestatic 28	com/tencent/common/app/BaseApplicationImpl:getApplication	()Lcom/tencent/common/app/BaseApplicationImpl;
-    //   12: astore_1
-    //   13: getstatic 34	android/os/Build$VERSION:SDK_INT	I
-    //   16: bipush 10
-    //   18: if_icmple +24 -> 42
-    //   21: iconst_4
-    //   22: istore_0
-    //   23: aload_1
-    //   24: ldc 36
-    //   26: iload_0
-    //   27: invokevirtual 40	com/tencent/common/app/BaseApplicationImpl:getSharedPreferences	(Ljava/lang/String;I)Landroid/content/SharedPreferences;
-    //   30: putstatic 22	com/tencent/open/data/SharedPrefs:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   33: getstatic 22	com/tencent/open/data/SharedPrefs:jdField_a_of_type_AndroidContentSharedPreferences	Landroid/content/SharedPreferences;
-    //   36: astore_1
-    //   37: ldc 2
-    //   39: monitorexit
-    //   40: aload_1
-    //   41: areturn
-    //   42: iconst_0
-    //   43: istore_0
-    //   44: goto -21 -> 23
-    //   47: astore_1
-    //   48: ldc 2
-    //   50: monitorexit
-    //   51: aload_1
-    //   52: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   22	22	0	i	int
-    //   12	29	1	localObject1	Object
-    //   47	5	1	localObject2	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	21	47	finally
-    //   23	33	47	finally
-    //   33	37	47	finally
+    for (;;)
+    {
+      try
+      {
+        Object localObject1;
+        if (jdField_a_of_type_AndroidContentSharedPreferences == null)
+        {
+          localObject1 = BaseApplication.getContext();
+          if (Build.VERSION.SDK_INT > 10)
+          {
+            i = 4;
+            jdField_a_of_type_AndroidContentSharedPreferences = ((BaseApplication)localObject1).getSharedPreferences("shared_prefs_open", i);
+          }
+        }
+        else
+        {
+          localObject1 = jdField_a_of_type_AndroidContentSharedPreferences;
+          return localObject1;
+        }
+      }
+      finally {}
+      int i = 0;
+    }
   }
   
   public static String a()
@@ -89,186 +72,175 @@ public class SharedPrefs
   
   private static ArrayList<String> a(String paramString)
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject3 = a().getString(paramString, "");
-      if (((String)localObject3).length() > 0)
+      localObject1 = a().getString(paramString, "");
+      if (((String)localObject1).length() <= 0) {
+        break label84;
+      }
+      String[] arrayOfString = ((String)localObject1).split(",");
+      ArrayList localArrayList = new ArrayList();
+      int j = arrayOfString.length;
+      int i = 0;
+      for (;;)
       {
-        String[] arrayOfString = ((String)localObject3).split(",");
-        localObject3 = new ArrayList();
-        int j = arrayOfString.length;
-        int i = 0;
+        localObject1 = localArrayList;
+        if (i >= j) {
+          break;
+        }
+        localArrayList.add(arrayOfString[i]);
+        i += 1;
+      }
+    }
+    finally
+    {
+      for (;;)
+      {
+        Object localObject1;
         for (;;)
         {
-          localObject1 = localObject3;
-          if (i >= j) {
-            break;
-          }
-          ((ArrayList)localObject3).add(arrayOfString[i]);
-          i += 1;
+          throw localObject2;
         }
+        label84:
+        Object localObject3 = null;
       }
-      return localObject1;
     }
-    finally {}
+    return localObject1;
   }
   
   private static JSONObject a(String paramString)
   {
-    JSONObject localJSONObject = null;
-    for (;;)
+    Object localObject1 = null;
+    try
     {
-      Object localObject2;
-      try
-      {
-        if (jdField_a_of_type_JavaUtilHashMap == null)
-        {
-          jdField_a_of_type_JavaUtilHashMap = new HashMap();
-          if (localJSONObject != null) {
-            break label95;
-          }
-          localObject2 = a().getString(paramString, "{}");
-        }
+      if (jdField_a_of_type_JavaUtilHashMap == null) {
+        jdField_a_of_type_JavaUtilHashMap = new HashMap();
+      } else {
+        localObject1 = (JSONObject)jdField_a_of_type_JavaUtilHashMap.get(paramString);
       }
-      finally {}
-      for (;;)
+      Object localObject2 = localObject1;
+      if (localObject1 == null)
       {
+        localObject2 = a().getString(paramString, "{}");
         try
         {
           localObject2 = new JSONObject((String)localObject2);
+          try
+          {
+            jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject2);
+          }
+          catch (JSONException paramString)
+          {
+            localObject1 = localObject2;
+          }
+          paramString.printStackTrace();
         }
-        catch (JSONException localJSONException2)
-        {
-          paramString = localJSONException1;
-          Object localObject1 = localJSONException2;
-          break;
-        }
-        try
-        {
-          jdField_a_of_type_JavaUtilHashMap.put(paramString, localObject2);
-          paramString = (String)localObject2;
-          return paramString;
-        }
-        catch (JSONException localJSONException1)
-        {
-          paramString = (String)localObject2;
-          break;
-        }
+        catch (JSONException paramString) {}
+        localObject2 = localObject1;
       }
-      localJSONObject = (JSONObject)jdField_a_of_type_JavaUtilHashMap.get(paramString);
-      continue;
-      localJSONObject.printStackTrace();
-      continue;
-      label95:
-      paramString = localJSONException1;
+      return localObject2;
     }
+    finally {}
   }
   
   private static void a()
   {
-    Object localObject1;
-    String str1;
-    Object localObject2;
-    int j;
-    int i;
-    Object localObject3;
     if (!a())
     {
-      localObject1 = BaseApplicationImpl.getApplication().getSharedPreferences("accountList", 0);
-      str1 = ((SharedPreferences)localObject1).getString("last_account", null);
-      localObject1 = ((SharedPreferences)localObject1).getString("accList", null);
-      if (TextUtils.isEmpty((CharSequence)localObject1)) {
-        break label345;
-      }
-      localObject2 = ((String)localObject1).split(",");
-      if (localObject2 == null) {
-        break label345;
-      }
-      localObject1 = new ArrayList(localObject2.length);
-      j = localObject2.length;
-      i = 0;
-      while (i < j)
+      Object localObject1 = BaseApplication.getContext();
+      int k = 0;
+      int j = 0;
+      Object localObject2 = ((BaseApplication)localObject1).getSharedPreferences("accountList", 0);
+      localObject1 = ((SharedPreferences)localObject2).getString("last_account", null);
+      localObject2 = ((SharedPreferences)localObject2).getString("accList", null);
+      if (!TextUtils.isEmpty((CharSequence)localObject2))
       {
-        localObject3 = localObject2[i];
-        if ((!TextUtils.isEmpty((CharSequence)localObject3)) && (!((String)localObject3).equals(str1))) {
-          ((ArrayList)localObject1).add(localObject3);
-        }
-        i += 1;
-      }
-    }
-    for (;;)
-    {
-      localObject2 = MsfSdkUtils.getLoginedAccountList();
-      if (localObject2 != null)
-      {
-        localObject2 = ((ArrayList)localObject2).iterator();
-        i = 0;
-        if (((Iterator)localObject2).hasNext())
+        localObject4 = ((String)localObject2).split(",");
+        if (localObject4 != null)
         {
-          localObject3 = (SimpleAccount)((Iterator)localObject2).next();
-          if (((SimpleAccount)localObject3).isLogined())
-          {
-            a(((SimpleAccount)localObject3).getUin(), "login_history", true);
-            i = 1;
-          }
+          localObject3 = new ArrayList(localObject4.length);
+          int m = localObject4.length;
+          i = 0;
           for (;;)
           {
-            break;
-            if (!((SimpleAccount)localObject3).getUin().equals(str1)) {
-              break label337;
-            }
-            str1 = null;
-            label194:
-            if (localObject1 == null) {
-              break label334;
-            }
-            Iterator localIterator = ((ArrayList)localObject1).iterator();
-            String str2;
-            do
-            {
-              if (!localIterator.hasNext()) {
-                break;
-              }
-              str2 = (String)localIterator.next();
-            } while (!((SimpleAccount)localObject3).getUin().equals(str2));
-            ((ArrayList)localObject1).remove(str2);
-          }
-        }
-      }
-      for (;;)
-      {
-        j = i;
-        if (localObject1 != null)
-        {
-          localObject1 = ((ArrayList)localObject1).iterator();
-          for (;;)
-          {
-            j = i;
-            if (!((Iterator)localObject1).hasNext()) {
+            localObject2 = localObject3;
+            if (i >= m) {
               break;
             }
-            a((String)((Iterator)localObject1).next(), "login_history", true);
-            i = 1;
+            localObject2 = localObject4[i];
+            if ((!TextUtils.isEmpty((CharSequence)localObject2)) && (!((String)localObject2).equals(localObject1))) {
+              ((ArrayList)localObject3).add(localObject2);
+            }
+            i += 1;
           }
         }
-        if (!TextUtils.isEmpty(str1))
-        {
-          a(str1, "login_history", true);
-          j = 1;
-        }
-        if (j != 0) {
-          a().edit().putBoolean("have_ever_login", true).commit();
-        }
-        return;
-        label334:
-        break;
-        label337:
-        break label194;
-        i = 0;
       }
-      label345:
-      localObject1 = null;
+      localObject2 = null;
+      Object localObject4 = MsfSdkUtils.getLoginedAccountList();
+      int i = k;
+      Object localObject3 = localObject1;
+      if (localObject4 != null)
+      {
+        localObject4 = ((ArrayList)localObject4).iterator();
+        for (;;)
+        {
+          i = j;
+          localObject3 = localObject1;
+          if (!((Iterator)localObject4).hasNext()) {
+            break;
+          }
+          SimpleAccount localSimpleAccount = (SimpleAccount)((Iterator)localObject4).next();
+          if (localSimpleAccount.isLogined())
+          {
+            a(localSimpleAccount.getUin(), "login_history", true);
+            j = 1;
+          }
+          else
+          {
+            localObject3 = localObject1;
+            if (localSimpleAccount.getUin().equals(localObject1)) {
+              localObject3 = null;
+            }
+            localObject1 = localObject3;
+            if (localObject2 != null)
+            {
+              Iterator localIterator = ((ArrayList)localObject2).iterator();
+              do
+              {
+                localObject1 = localObject3;
+                if (!localIterator.hasNext()) {
+                  break;
+                }
+                localObject1 = (String)localIterator.next();
+              } while (!localSimpleAccount.getUin().equals(localObject1));
+              ((ArrayList)localObject2).remove(localObject1);
+              localObject1 = localObject3;
+            }
+          }
+        }
+      }
+      j = i;
+      if (localObject2 != null)
+      {
+        localObject1 = ((ArrayList)localObject2).iterator();
+        for (;;)
+        {
+          j = i;
+          if (!((Iterator)localObject1).hasNext()) {
+            break;
+          }
+          a((String)((Iterator)localObject1).next(), "login_history", true);
+          i = 1;
+        }
+      }
+      if (!TextUtils.isEmpty((CharSequence)localObject3))
+      {
+        a((String)localObject3, "login_history", true);
+        j = 1;
+      }
+      if (j != 0) {
+        a().edit().putBoolean("have_ever_login", true).commit();
+      }
     }
   }
   
@@ -286,83 +258,106 @@ public class SharedPrefs
   public static void a(String paramString, long paramLong)
   {
     JSONObject localJSONObject = a("last_skey_update_time");
-    if (localJSONObject != null) {}
-    try
-    {
-      localJSONObject.put(paramString, paramLong);
-      a("last_skey_update_time", localJSONObject);
-      QLog.e("open_log", 1, new Object[] { "saveUpdateSkeyTime uin=", AuthorityUtil.a(paramString) });
-      return;
-    }
-    catch (JSONException paramString)
-    {
-      QLog.e("open_log", 1, "saveUpdateSkeyTime", paramString);
+    if (localJSONObject != null) {
+      try
+      {
+        localJSONObject.put(paramString, paramLong);
+        a("last_skey_update_time", localJSONObject);
+        QLog.e("open_log", 1, new Object[] { "saveUpdateSkeyTime uin=", AuthorityUtil.a(paramString) });
+        return;
+      }
+      catch (JSONException paramString)
+      {
+        QLog.e("open_log", 1, "saveUpdateSkeyTime", paramString);
+      }
     }
   }
   
   private static void a(String paramString1, String paramString2)
   {
-    if (!TextUtils.isEmpty(paramString1)) {
-      for (;;)
+    if (!TextUtils.isEmpty(paramString1)) {}
+    for (;;)
+    {
+      try
       {
-        try
+        String str = a().getString(paramString2, "");
+        if (str.length() > 0)
         {
-          String str = a().getString(paramString2, "");
-          if (str.length() > 0)
+          Object localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("(^|,)");
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append("($|,)");
+          localObject = Pattern.compile(((StringBuilder)localObject).toString()).matcher(str);
+          if (((Matcher)localObject).find())
           {
-            Matcher localMatcher = Pattern.compile("(^|,)" + paramString1 + "($|,)").matcher(str);
-            if (localMatcher.find())
-            {
-              paramString1 = ",";
-              if ((localMatcher.start() == 0) || (localMatcher.end() == str.length())) {
-                break label126;
-              }
-              paramString1 = localMatcher.replaceFirst(paramString1);
-              a().edit().putString(paramString2, paramString1).commit();
+            paramString1 = ",";
+            if ((((Matcher)localObject).start() == 0) || (((Matcher)localObject).end() == str.length())) {
+              break label135;
             }
+            paramString1 = ((Matcher)localObject).replaceFirst(paramString1);
+            a().edit().putString(paramString2, paramString1).commit();
           }
-          return;
         }
-        finally {}
-        label126:
-        paramString1 = "";
+        return;
       }
+      finally {}
+      return;
+      label135:
+      paramString1 = "";
     }
   }
   
   private static void a(String paramString1, String paramString2, boolean paramBoolean)
   {
-    int i = 1;
     if (!TextUtils.isEmpty(paramString1)) {}
-    label169:
     for (;;)
     {
       String str;
       try
       {
         str = a().getString(paramString2, "");
-        if (str.length() <= 0) {
-          break label169;
-        }
-        if (!Pattern.compile("(^|,)" + paramString1 + "($|,)").matcher(str).find())
+        int k = str.length();
+        int j = 1;
+        i = j;
+        localObject = paramString1;
+        if (k > 0)
         {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("(^|,)");
+          ((StringBuilder)localObject).append(paramString1);
+          ((StringBuilder)localObject).append("($|,)");
+          if (Pattern.compile(((StringBuilder)localObject).toString()).matcher(str).find()) {
+            break label223;
+          }
           if (paramBoolean)
           {
-            paramString1 = paramString1 + "," + str;
-            if (i != 0) {
-              a().edit().putString(paramString2, paramString1).commit();
-            }
-            return;
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(paramString1);
+            ((StringBuilder)localObject).append(",");
+            ((StringBuilder)localObject).append(str);
+            localObject = ((StringBuilder)localObject).toString();
+            i = j;
           }
-          paramString1 = str + "," + paramString1;
-          continue;
+          else
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append(str);
+            ((StringBuilder)localObject).append(",");
+            ((StringBuilder)localObject).append(paramString1);
+            localObject = ((StringBuilder)localObject).toString();
+            i = j;
+          }
         }
-        i = 0;
+        if (i != 0) {
+          a().edit().putString(paramString2, (String)localObject).commit();
+        }
+        return;
       }
       finally {}
-      paramString1 = str;
-      continue;
       return;
+      label223:
+      Object localObject = str;
+      int i = 0;
     }
   }
   
@@ -390,28 +385,25 @@ public class SharedPrefs
   public static boolean a(String paramString)
   {
     JSONObject localJSONObject = a("last_skey_update_time");
-    if (localJSONObject != null) {}
-    for (;;)
-    {
+    boolean bool;
+    if (localJSONObject != null) {
       try
       {
         long l1 = localJSONObject.getLong(paramString);
         long l2 = System.currentTimeMillis();
-        if (l2 - l1 > 43200000L)
-        {
-          bool = true;
-          QLog.e("open_log", 1, new Object[] { "shouldUpdateSkey ret=", Boolean.valueOf(bool) });
-          return bool;
+        if (l2 - l1 <= 43200000L) {
+          bool = false;
         }
-        boolean bool = false;
-        continue;
-        bool = true;
       }
       catch (JSONException paramString)
       {
         QLog.e("open_log", 1, "shouldUpdateSkey", paramString);
       }
+    } else {
+      bool = true;
     }
+    QLog.e("open_log", 1, new Object[] { "shouldUpdateSkey ret=", Boolean.valueOf(bool) });
+    return bool;
   }
   
   public static void b(String paramString)
@@ -434,7 +426,7 @@ public class SharedPrefs
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.data.SharedPrefs
  * JD-Core Version:    0.7.0.1
  */

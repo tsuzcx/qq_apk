@@ -17,25 +17,23 @@ public class PathDataUtils
   
   private static boolean isExistElementId(@Nullable DataEntity paramDataEntity)
   {
-    if (paramDataEntity == null) {}
-    while (TextUtils.isEmpty(DataEntityOperator.getElementId(paramDataEntity))) {
+    if (paramDataEntity == null) {
       return false;
     }
-    return true;
+    return TextUtils.isEmpty(DataEntityOperator.getElementId(paramDataEntity)) ^ true;
   }
   
   public static boolean shouldStop(@Nullable DataEntity paramDataEntity)
   {
-    if (paramDataEntity == null) {}
-    while (TextUtils.isEmpty(DataEntityOperator.getPageId(paramDataEntity))) {
+    if (paramDataEntity == null) {
       return false;
     }
-    return true;
+    return TextUtils.isEmpty(DataEntityOperator.getPageId(paramDataEntity)) ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.reportdata.PathDataUtils
  * JD-Core Version:    0.7.0.1
  */

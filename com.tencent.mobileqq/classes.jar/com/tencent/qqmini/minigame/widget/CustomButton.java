@@ -40,119 +40,124 @@ public class CustomButton
   
   private void setImageButton(CustomButton.ButtonParam paramButtonParam)
   {
-    if ((this.mImageButton == null) || (paramButtonParam == null)) {
-      return;
-    }
-    if ((paramButtonParam.style == null) || (!TextUtils.isEmpty(paramButtonParam.style.borderColor))) {}
-    for (;;)
+    if (this.mImageButton != null)
     {
-      try
-      {
-        i = Color.parseColor(paramButtonParam.style.borderColor);
-        if (Build.VERSION.SDK_INT < 16) {
-          break label139;
-        }
-        this.mImageButton.setBackground(getBackgroundDrawable(0, paramButtonParam.style.borderWidth, i, paramButtonParam.style.borderRadius));
-        this.mImageButton.setPadding(paramButtonParam.style.borderWidth, paramButtonParam.style.borderWidth, paramButtonParam.style.borderWidth, paramButtonParam.style.borderWidth);
-        this.mImageButton.setScaleType(ImageView.ScaleType.FIT_XY);
+      if (paramButtonParam == null) {
         return;
       }
-      catch (Throwable localThrowable)
+      if (paramButtonParam.style != null)
       {
-        QMLog.e("CustomButton", "setmImageButton strokeColor error ", localThrowable);
+        int i;
+        if (!TextUtils.isEmpty(paramButtonParam.style.borderColor)) {
+          try
+          {
+            i = Color.parseColor(paramButtonParam.style.borderColor);
+          }
+          catch (Throwable localThrowable)
+          {
+            QMLog.e("CustomButton", "setmImageButton strokeColor error ", localThrowable);
+          }
+        } else {
+          i = 0;
+        }
+        if (Build.VERSION.SDK_INT >= 16) {
+          this.mImageButton.setBackground(getBackgroundDrawable(0, paramButtonParam.style.borderWidth, i, paramButtonParam.style.borderRadius));
+        } else {
+          this.mImageButton.setBackgroundDrawable(getBackgroundDrawable(0, paramButtonParam.style.borderWidth, i, paramButtonParam.style.borderRadius));
+        }
+        this.mImageButton.setPadding(paramButtonParam.style.borderWidth, paramButtonParam.style.borderWidth, paramButtonParam.style.borderWidth, paramButtonParam.style.borderWidth);
       }
-      int i = 0;
-      continue;
-      label139:
-      this.mImageButton.setBackgroundDrawable(getBackgroundDrawable(0, paramButtonParam.style.borderWidth, i, paramButtonParam.style.borderRadius));
+      this.mImageButton.setScaleType(ImageView.ScaleType.FIT_XY);
     }
   }
   
   private void setTextAlign(CustomButton.ButtonParam paramButtonParam)
   {
-    if ("left".equals(paramButtonParam.style.textAlign)) {
-      this.mTextButton.setGravity(8388611);
-    }
-    do
+    if ("left".equals(paramButtonParam.style.textAlign))
     {
+      this.mTextButton.setGravity(8388611);
       return;
-      if ("center".equals(paramButtonParam.style.textAlign))
-      {
-        this.mTextButton.setGravity(1);
-        return;
-      }
-    } while (!"right".equals(paramButtonParam.style.textAlign));
-    this.mTextButton.setGravity(8388613);
+    }
+    if ("center".equals(paramButtonParam.style.textAlign))
+    {
+      this.mTextButton.setGravity(1);
+      return;
+    }
+    if ("right".equals(paramButtonParam.style.textAlign)) {
+      this.mTextButton.setGravity(8388613);
+    }
   }
   
   private void setTextButton(CustomButton.ButtonParam paramButtonParam)
   {
-    if ((this.mTextButton == null) || (paramButtonParam == null)) {}
-    do
+    Button localButton = this.mTextButton;
+    if (localButton != null)
     {
-      return;
-      this.mTextButton.setText(paramButtonParam.text);
+      if (paramButtonParam == null) {
+        return;
+      }
+      localButton.setText(paramButtonParam.text);
       this.mTextButton.setPadding(0, 0, 0, 0);
-    } while (paramButtonParam.style == null);
-    if (!TextUtils.isEmpty(paramButtonParam.style.backgroundColor)) {}
-    for (;;)
-    {
-      try
+      if (paramButtonParam.style != null)
       {
-        i = ColorUtils.parseColor(paramButtonParam.style.backgroundColor);
-        if (TextUtils.isEmpty(paramButtonParam.style.borderColor)) {
-          break label277;
-        }
-      }
-      catch (Throwable localThrowable1)
-      {
-        QMLog.e("CustomButton", "setmTextButton bgColor error ", localThrowable1);
-      }
-      try
-      {
-        j = ColorUtils.parseColor(paramButtonParam.style.borderColor);
-        if (Build.VERSION.SDK_INT >= 16)
-        {
-          this.mTextButton.setBackground(getBackgroundDrawable(i, paramButtonParam.style.borderWidth, j, paramButtonParam.style.borderRadius));
-          if (!TextUtils.isEmpty(paramButtonParam.style.color)) {
-            i = -16777216;
+        int i;
+        if (!TextUtils.isEmpty(paramButtonParam.style.backgroundColor)) {
+          try
+          {
+            i = ColorUtils.parseColor(paramButtonParam.style.backgroundColor);
           }
+          catch (Throwable localThrowable1)
+          {
+            QMLog.e("CustomButton", "setmTextButton bgColor error ", localThrowable1);
+          }
+        } else {
+          i = 0;
+        }
+        int j;
+        if (!TextUtils.isEmpty(paramButtonParam.style.borderColor)) {
+          try
+          {
+            j = ColorUtils.parseColor(paramButtonParam.style.borderColor);
+          }
+          catch (Throwable localThrowable2)
+          {
+            QMLog.e("CustomButton", "setmTextButton strokeColor error ", localThrowable2);
+          }
+        } else {
+          j = 0;
+        }
+        if (Build.VERSION.SDK_INT >= 16) {
+          this.mTextButton.setBackground(getBackgroundDrawable(i, paramButtonParam.style.borderWidth, j, paramButtonParam.style.borderRadius));
+        } else {
+          this.mTextButton.setBackgroundDrawable(getBackgroundDrawable(i, paramButtonParam.style.borderWidth, j, paramButtonParam.style.borderRadius));
+        }
+        if (!TextUtils.isEmpty(paramButtonParam.style.color))
+        {
+          i = -16777216;
+          try
+          {
+            j = ColorUtils.parseColor(paramButtonParam.style.color);
+            i = j;
+          }
+          catch (Throwable localThrowable3)
+          {
+            QMLog.e("CustomButton", "setmTextButton textColor error ", localThrowable3);
+          }
+          this.mTextButton.setTextColor(i);
+        }
+        setTextAlign(paramButtonParam);
+        if (paramButtonParam.style.fontSize > 0) {
+          this.mTextButton.setTextSize(paramButtonParam.style.fontSize);
+        }
+        if (paramButtonParam.style.lineHeight >= 0)
+        {
+          i = this.mTextButton.getPaint().getFontMetricsInt(null);
+          i = paramButtonParam.style.lineHeight - i;
+          this.mTextButton.setLineSpacing(i, 1.0F);
+          i /= 2;
+          this.mTextButton.setPadding(0, i, 0, 0);
         }
       }
-      catch (Throwable localThrowable2)
-      {
-        QMLog.e("CustomButton", "setmTextButton strokeColor error ", localThrowable2);
-      }
-      try
-      {
-        j = ColorUtils.parseColor(paramButtonParam.style.color);
-        i = j;
-      }
-      catch (Throwable localThrowable3)
-      {
-        QMLog.e("CustomButton", "setmTextButton textColor error ", localThrowable3);
-        continue;
-      }
-      this.mTextButton.setTextColor(i);
-      setTextAlign(paramButtonParam);
-      if (paramButtonParam.style.fontSize > 0) {
-        this.mTextButton.setTextSize(paramButtonParam.style.fontSize);
-      }
-      if (paramButtonParam.style.lineHeight < 0) {
-        break;
-      }
-      int i = this.mTextButton.getPaint().getFontMetricsInt(null);
-      i = paramButtonParam.style.lineHeight - i;
-      this.mTextButton.setLineSpacing(i, 1.0F);
-      i /= 2;
-      this.mTextButton.setPadding(0, i, 0, 0);
-      return;
-      i = 0;
-      continue;
-      label277:
-      int j = 0;
-      continue;
-      this.mTextButton.setBackgroundDrawable(getBackgroundDrawable(i, paramButtonParam.style.borderWidth, j, paramButtonParam.style.borderRadius));
     }
   }
   
@@ -165,71 +170,69 @@ public class CustomButton
   
   public View getButton()
   {
-    if (this.mTextButton != null) {
-      return this.mTextButton;
+    Object localObject = this.mTextButton;
+    if (localObject != null) {
+      return localObject;
     }
-    if (this.mImageButton != null) {
-      return this.mImageButton;
+    localObject = this.mImageButton;
+    if (localObject != null) {
+      return localObject;
     }
     return null;
   }
   
   public void setImageDrawable(Drawable paramDrawable)
   {
-    if ((this.mImageButton != null) && (paramDrawable != null)) {
-      this.mImageButton.setImageDrawable(paramDrawable);
+    ImageButton localImageButton = this.mImageButton;
+    if ((localImageButton != null) && (paramDrawable != null)) {
+      localImageButton.setImageDrawable(paramDrawable);
     }
   }
   
   public void setParam(CustomButton.ButtonParam paramButtonParam, View.OnClickListener paramOnClickListener)
   {
     this.mParams = paramButtonParam;
-    if (this.mParams != null)
-    {
-      if ((!"text".equals(this.mParams.type)) || (this.mTextButton != null)) {
-        break label73;
-      }
-      this.mTextButton = new Button(this.mContext);
-      this.mTextButton.setOnClickListener(paramOnClickListener);
-    }
-    label73:
-    do
-    {
-      while (this.mTextButton != null)
+    paramButtonParam = this.mParams;
+    if (paramButtonParam != null) {
+      if (("text".equals(paramButtonParam.type)) && (this.mTextButton == null))
       {
-        setTextButton(this.mParams);
-        return;
-        if (("image".equals(this.mParams.type)) && (this.mImageButton == null))
-        {
-          this.mImageButton = new ImageButton(this.mContext);
-          this.mImageButton.setOnClickListener(paramOnClickListener);
-        }
+        this.mTextButton = new Button(this.mContext);
+        this.mTextButton.setOnClickListener(paramOnClickListener);
       }
-    } while (this.mImageButton == null);
-    setImageButton(this.mParams);
+      else if (("image".equals(this.mParams.type)) && (this.mImageButton == null))
+      {
+        this.mImageButton = new ImageButton(this.mContext);
+        this.mImageButton.setOnClickListener(paramOnClickListener);
+      }
+    }
+    if (this.mTextButton != null)
+    {
+      setTextButton(this.mParams);
+      return;
+    }
+    if (this.mImageButton != null) {
+      setImageButton(this.mParams);
+    }
   }
   
   public void setVisible(boolean paramBoolean)
   {
-    View localView;
     if (getButton() != null)
     {
-      localView = getButton();
-      if (!paramBoolean) {
-        break label24;
+      View localView = getButton();
+      int i;
+      if (paramBoolean) {
+        i = 0;
+      } else {
+        i = 8;
       }
-    }
-    label24:
-    for (int i = 0;; i = 8)
-    {
       localView.setVisibility(i);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.widget.CustomButton
  * JD-Core Version:    0.7.0.1
  */

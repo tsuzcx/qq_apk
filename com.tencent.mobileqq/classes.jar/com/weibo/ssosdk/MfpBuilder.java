@@ -42,21 +42,22 @@ public class MfpBuilder
   
   private static String bytesToString(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
-    }
-    StringBuilder localStringBuilder = new StringBuilder();
-    int j = paramArrayOfByte.length;
-    int i = 0;
-    while (i < j)
+    if ((paramArrayOfByte != null) && (paramArrayOfByte.length != 0))
     {
-      localStringBuilder.append(String.format("%02X:", new Object[] { Byte.valueOf(paramArrayOfByte[i]) }));
-      i += 1;
+      StringBuilder localStringBuilder = new StringBuilder();
+      int j = paramArrayOfByte.length;
+      int i = 0;
+      while (i < j)
+      {
+        localStringBuilder.append(String.format("%02X:", new Object[] { Byte.valueOf(paramArrayOfByte[i]) }));
+        i += 1;
+      }
+      if (localStringBuilder.length() > 0) {
+        localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
+      }
+      return localStringBuilder.toString();
     }
-    if (localStringBuilder.length() > 0) {
-      localStringBuilder.deleteCharAt(localStringBuilder.length() - 1);
-    }
-    return localStringBuilder.toString();
+    return null;
   }
   
   private static String genMfpString(Context paramContext)
@@ -64,95 +65,99 @@ public class MfpBuilder
     JSONObject localJSONObject = new JSONObject();
     try
     {
-      Object localObject = getOS();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("os", localObject);
+      String str1 = getOS();
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("os", str1);
       }
-      localObject = getImei(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("imei", localObject);
+      str1 = getImei(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("imei", str1);
       }
-      localObject = getMeid(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("meid", localObject);
+      str1 = getMeid(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("meid", str1);
       }
-      localObject = getImsi(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("imsi", localObject);
+      str1 = getImsi(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("imsi", str1);
       }
-      localObject = getMac(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("mac", localObject);
+      str1 = getMac(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("mac", str1);
       }
-      localObject = getIccid(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("iccid", localObject);
+      str1 = getIccid(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("iccid", str1);
       }
-      localObject = getSerialNo();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("serial", localObject);
+      str1 = getSerialNo();
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("serial", str1);
       }
-      localObject = getAndroidId(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("androidid", localObject);
+      str1 = getAndroidId(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("androidid", str1);
       }
-      localObject = getCpu();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("cpu", localObject);
+      str1 = getCpu();
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("cpu", str1);
       }
-      localObject = getModel();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("model", localObject);
+      str1 = getModel();
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("model", str1);
       }
-      localObject = getSdSize();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("sdcard", localObject);
+      str1 = getSdSize();
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("sdcard", str1);
       }
-      localObject = getResolution(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("resolution", localObject);
+      str1 = getResolution(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("resolution", str1);
       }
-      localObject = getSsid(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("ssid", localObject);
+      str1 = getSsid(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("ssid", str1);
       }
-      localObject = getWifiBssid(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("bssid", localObject);
+      str1 = getWifiBssid(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("bssid", str1);
       }
-      localObject = getDeviceName();
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("deviceName", localObject);
+      str1 = getDeviceName();
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("deviceName", str1);
       }
-      localObject = getConnectType(paramContext);
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("connecttype", localObject);
+      str1 = getConnectType(paramContext);
+      if (!TextUtils.isEmpty(str1)) {
+        localJSONObject.put("connecttype", str1);
       }
-      localObject = "";
+      String str2;
       try
       {
-        String str = generateUAAid(paramContext);
-        localObject = str;
+        str1 = generateUAAid(paramContext);
       }
       catch (Exception localException)
       {
-        for (;;)
-        {
-          double d;
-          localException.printStackTrace();
-        }
+        localException.printStackTrace();
+        str2 = "";
       }
-      if (!TextUtils.isEmpty((CharSequence)localObject)) {
-        localJSONObject.put("ua", localObject);
+      if (!TextUtils.isEmpty(str2)) {
+        localJSONObject.put("ua", str2);
       }
-      d = getBatteryCapacity(paramContext);
-      localJSONObject.put("batterymaxcapacity", String.valueOf(d));
-      localJSONObject.put("batterycurrentcapacity", String.valueOf(d));
+      double d1 = getBatteryCapacity(paramContext);
+      localJSONObject.put("batterymaxcapacity", String.valueOf(d1));
+      localJSONObject.put("batterycurrentcapacity", String.valueOf(d1));
       paramContext = new MfpBuilder.BatteryInfo(paramContext, null);
       localJSONObject.put("batterycurrentvoltage", MfpBuilder.BatteryInfo.access$100(paramContext));
       localJSONObject.put("batterycurrenttemperature", MfpBuilder.BatteryInfo.access$200(paramContext));
-      localJSONObject.put("batterycurrentcapacity", d * MfpBuilder.BatteryInfo.access$300(paramContext) / MfpBuilder.BatteryInfo.access$400(paramContext));
-      return localJSONObject.toString();
+      int i = MfpBuilder.BatteryInfo.access$300(paramContext);
+      double d2 = i;
+      Double.isNaN(d2);
+      i = MfpBuilder.BatteryInfo.access$400(paramContext);
+      double d3 = i;
+      Double.isNaN(d3);
+      d1 = d1 * d2 / d3;
+      localJSONObject.put("batterycurrentcapacity", d1);
+      paramContext = localJSONObject.toString();
+      return paramContext;
     }
     catch (JSONException paramContext) {}
     return "";
@@ -161,33 +166,31 @@ public class MfpBuilder
   private static String generateUAAid(Context paramContext)
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    String str2 = paramContext.getPackageName();
-    String str1 = "ssosdk";
-    paramContext = str1;
-    if (!TextUtils.isEmpty(str2))
-    {
-      paramContext = str1;
-      if (str2.contains("com.sina.weibo")) {
-        paramContext = "weibo";
-      }
+    paramContext = paramContext.getPackageName();
+    if ((!TextUtils.isEmpty(paramContext)) && (paramContext.contains("com.sina.weibo"))) {
+      paramContext = "weibo";
+    } else {
+      paramContext = "ssosdk";
     }
-    localStringBuilder.append(Build.MANUFACTURER).append("-").append(Build.MODEL);
+    localStringBuilder.append(Build.MANUFACTURER);
+    localStringBuilder.append("-");
+    localStringBuilder.append(Build.MODEL);
     localStringBuilder.append("__");
     localStringBuilder.append(paramContext);
     localStringBuilder.append("__");
     try
     {
       localStringBuilder.append("1.0".replaceAll("\\s+", "_"));
-      localStringBuilder.append("__android__android").append(Build.VERSION.RELEASE);
-      return localStringBuilder.toString();
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        localStringBuilder.append("unknown");
-      }
+      label98:
+      break label98;
     }
+    localStringBuilder.append("unknown");
+    localStringBuilder.append("__android__android");
+    localStringBuilder.append(Build.VERSION.RELEASE);
+    return localStringBuilder.toString();
   }
   
   private static String getAndroidId(Context paramContext)
@@ -197,59 +200,67 @@ public class MfpBuilder
       paramContext = Settings.Secure.getString(paramContext.getContentResolver(), "android_id");
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label13:
+      break label13;
+    }
     return "";
   }
   
   private static double getBatteryCapacity(Context paramContext)
   {
-    Object localObject = null;
     try
     {
       paramContext = Class.forName("com.android.internal.os.PowerProfile").getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
-      try
-      {
-        double d = ((Double)Class.forName("com.android.internal.os.PowerProfile").getMethod("getAveragePower", new Class[] { String.class }).invoke(paramContext, new Object[] { "battery.capacity" })).doubleValue();
-        return d;
-      }
-      catch (Exception paramContext)
-      {
-        return 0.0D;
-      }
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        paramContext = localObject;
-      }
+      label33:
+      label79:
+      break label33;
     }
+    paramContext = null;
+    try
+    {
+      double d = ((Double)Class.forName("com.android.internal.os.PowerProfile").getMethod("getAveragePower", new Class[] { String.class }).invoke(paramContext, new Object[] { "battery.capacity" })).doubleValue();
+      return d;
+    }
+    catch (Exception paramContext)
+    {
+      break label79;
+    }
+    return 0.0D;
   }
   
   private static String getConnectType(Context paramContext)
   {
+    String str = "none";
     try
     {
-      paramContext = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
-      if (paramContext != null)
+      NetworkInfo localNetworkInfo = ((ConnectivityManager)paramContext.getSystemService("connectivity")).getActiveNetworkInfo();
+      paramContext = str;
+      if (localNetworkInfo != null) {
+        if (localNetworkInfo.getType() != 0) {}
+      }
+      switch (localNetworkInfo.getSubtype())
       {
-        if (paramContext.getType() == 0) {}
-        switch (paramContext.getSubtype())
-        {
-        default: 
-          if (paramContext.getType() == 1) {
-            return "wifi";
-          }
-          break;
+      default: 
+        paramContext = str;
+        if (localNetworkInfo.getType() == 1) {
+          paramContext = "wifi";
         }
+        return paramContext;
       }
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      return "none";
+    }
     return "none";
-    return "none";
-    return "2G";
-    return "3G";
     return "4G";
+    return "3G";
+    return "2G";
   }
   
   private static String getCpu()
@@ -259,7 +270,11 @@ public class MfpBuilder
       String str = Build.CPU_ABI;
       return str;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label6:
+      break label6;
+    }
     return "";
   }
   
@@ -270,7 +285,11 @@ public class MfpBuilder
       String str = Build.BRAND;
       return str;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label6:
+      break label6;
+    }
     return "";
   }
   
@@ -281,7 +300,11 @@ public class MfpBuilder
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSimSerialNumber();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label16:
+      break label16;
+    }
     return "";
   }
   
@@ -292,7 +315,11 @@ public class MfpBuilder
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label16:
+      break label16;
+    }
     return "";
   }
   
@@ -303,7 +330,11 @@ public class MfpBuilder
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getSubscriberId();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label16:
+      break label16;
+    }
     return "";
   }
   
@@ -319,8 +350,10 @@ public class MfpBuilder
         return "";
       }
       paramContext = paramContext.getConnectionInfo();
-      if (paramContext != null) {
-        return paramContext.getMacAddress();
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getMacAddress();
+        return paramContext;
       }
       return "";
     }
@@ -330,33 +363,35 @@ public class MfpBuilder
   
   private static String getMacAddr()
   {
+    Object localObject2 = "";
     try
     {
-      Object localObject1 = Collections.list(NetworkInterface.getNetworkInterfaces()).iterator();
-      while (((Iterator)localObject1).hasNext())
+      Iterator localIterator = Collections.list(NetworkInterface.getNetworkInterfaces()).iterator();
+      do
       {
-        Object localObject2 = (NetworkInterface)((Iterator)localObject1).next();
-        if (((NetworkInterface)localObject2).getName().equalsIgnoreCase("wlan0"))
-        {
-          localObject1 = ((NetworkInterface)localObject2).getHardwareAddress();
-          if (localObject1 == null) {
-            return "";
-          }
-          localObject2 = new StringBuilder();
-          int j = localObject1.length;
-          int i = 0;
-          while (i < j)
-          {
-            ((StringBuilder)localObject2).append(String.format("%02X:", new Object[] { Byte.valueOf(localObject1[i]) }));
-            i += 1;
-          }
-          if (((StringBuilder)localObject2).length() > 0) {
-            ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
-          }
-          localObject1 = ((StringBuilder)localObject2).toString();
-          return localObject1;
+        localObject1 = localObject2;
+        if (!localIterator.hasNext()) {
+          break;
         }
+        localObject1 = (NetworkInterface)localIterator.next();
+      } while (!((NetworkInterface)localObject1).getName().equalsIgnoreCase("wlan0"));
+      Object localObject1 = ((NetworkInterface)localObject1).getHardwareAddress();
+      if (localObject1 == null) {
+        return "";
       }
+      localObject2 = new StringBuilder();
+      int j = localObject1.length;
+      int i = 0;
+      while (i < j)
+      {
+        ((StringBuilder)localObject2).append(String.format("%02X:", new Object[] { Byte.valueOf(localObject1[i]) }));
+        i += 1;
+      }
+      if (((StringBuilder)localObject2).length() > 0) {
+        ((StringBuilder)localObject2).deleteCharAt(((StringBuilder)localObject2).length() - 1);
+      }
+      localObject1 = ((StringBuilder)localObject2).toString();
+      return localObject1;
     }
     catch (Exception localException) {}
     return "";
@@ -369,7 +404,11 @@ public class MfpBuilder
       paramContext = ((TelephonyManager)paramContext.getSystemService("phone")).getDeviceId();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label16:
+      break label16;
+    }
     return "";
   }
   
@@ -381,7 +420,11 @@ public class MfpBuilder
       paramContext = new String(paramContext.getBytes(), "UTF-8");
       return paramContext;
     }
-    catch (UnsupportedEncodingException paramContext) {}
+    catch (UnsupportedEncodingException paramContext)
+    {
+      label22:
+      break label22;
+    }
     return "";
   }
   
@@ -392,7 +435,11 @@ public class MfpBuilder
       String str = Build.MODEL;
       return str;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label6:
+      break label6;
+    }
     return "";
   }
   
@@ -400,10 +447,16 @@ public class MfpBuilder
   {
     try
     {
-      String str = "Android " + Build.VERSION.RELEASE;
-      return str;
+      Object localObject = new StringBuilder("Android ");
+      ((StringBuilder)localObject).append(Build.VERSION.RELEASE);
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label26:
+      break label26;
+    }
     return "";
   }
   
@@ -419,10 +472,18 @@ public class MfpBuilder
     {
       DisplayMetrics localDisplayMetrics = new DisplayMetrics();
       ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay().getMetrics(localDisplayMetrics);
-      paramContext = String.valueOf(localDisplayMetrics.widthPixels) + "*" + String.valueOf(localDisplayMetrics.heightPixels);
+      paramContext = new StringBuilder();
+      paramContext.append(String.valueOf(localDisplayMetrics.widthPixels));
+      paramContext.append("*");
+      paramContext.append(String.valueOf(localDisplayMetrics.heightPixels));
+      paramContext = paramContext.toString();
       return paramContext;
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label74:
+      break label74;
+    }
     return "";
   }
   
@@ -435,7 +496,11 @@ public class MfpBuilder
       localObject = Long.toString(((StatFs)localObject).getBlockCount() * l);
       return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label33:
+      break label33;
+    }
     return "";
   }
   
@@ -450,7 +515,11 @@ public class MfpBuilder
       localObject = (String)((Class)localObject).getMethod("get", new Class[] { String.class, String.class }).invoke(localObject, new Object[] { "ro.serialno", "unknown" });
       return localObject;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label68:
+      break label68;
+    }
     return "";
   }
   
@@ -481,7 +550,11 @@ public class MfpBuilder
         return paramContext;
       }
     }
-    catch (Exception paramContext) {}
+    catch (Exception paramContext)
+    {
+      label30:
+      break label30;
+    }
     return "";
   }
   
@@ -497,7 +570,11 @@ public class MfpBuilder
         return paramContext;
       }
     }
-    catch (SecurityException paramContext) {}
+    catch (SecurityException paramContext)
+    {
+      label30:
+      break label30;
+    }
     return "";
   }
   
@@ -513,7 +590,7 @@ public class MfpBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.weibo.ssosdk.MfpBuilder
  * JD-Core Version:    0.7.0.1
  */

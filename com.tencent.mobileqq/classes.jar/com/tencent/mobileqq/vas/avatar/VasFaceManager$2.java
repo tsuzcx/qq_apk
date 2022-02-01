@@ -12,14 +12,18 @@ class VasFaceManager$2
   
   public void run()
   {
-    ExtensionInfo localExtensionInfo = this.this$0.a.getExtensionInfo(this.a, true);
-    if ((localExtensionInfo != null) && (localExtensionInfo.faceIdUpdateTime != 0L))
+    Object localObject = this.this$0.a.getExtensionInfo(this.a, true);
+    if ((localObject != null) && (((ExtensionInfo)localObject).faceIdUpdateTime != 0L))
     {
       this.this$0.a(this.a, null);
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.qqhead.VasFaceManager", 2, "requestFaceId uin: " + this.a);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("requestFaceId uin: ");
+      ((StringBuilder)localObject).append(this.a);
+      QLog.d("Q.qqhead.VasFaceManager", 2, ((StringBuilder)localObject).toString());
     }
     AvatarPendantUtil.a(this.a);
     AvatarPendantUtil.a(this.this$0.a);
@@ -27,7 +31,7 @@ class VasFaceManager$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.avatar.VasFaceManager.2
  * JD-Core Version:    0.7.0.1
  */

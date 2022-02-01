@@ -13,14 +13,16 @@ public class FontBubblePanelView$FontBubbleAdapter
   
   public FontBubblePanelView<T>.FontBubbleHolder a(ViewGroup paramViewGroup, int paramInt)
   {
-    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131563208, paramViewGroup, false);
+    paramViewGroup = LayoutInflater.from(this.a.getContext()).inflate(2131563032, paramViewGroup, false);
     return new FontBubblePanelView.FontBubbleHolder(this.a, paramViewGroup);
   }
   
   public void a(FontBubblePanelView<T>.FontBubbleHolder paramFontBubblePanelView, int paramInt)
   {
-    if (paramInt < FontBubblePanelView.a(this.a).size()) {
-      this.a.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.a(this.a).get(paramInt));
+    if (paramInt < FontBubblePanelView.a(this.a).size())
+    {
+      FontBubblePanelView localFontBubblePanelView = this.a;
+      localFontBubblePanelView.a(paramFontBubblePanelView, (FontBubble)FontBubblePanelView.a(localFontBubblePanelView).get(paramInt));
     }
     EventCollector.getInstance().onRecyclerBindViewHolder(paramFontBubblePanelView, paramInt, getItemId(paramInt));
   }
@@ -37,7 +39,7 @@ public class FontBubblePanelView$FontBubbleAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.hiboom.FontBubblePanelView.FontBubbleAdapter
  * JD-Core Version:    0.7.0.1
  */

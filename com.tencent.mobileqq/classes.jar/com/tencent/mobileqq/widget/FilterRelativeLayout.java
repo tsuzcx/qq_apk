@@ -28,10 +28,11 @@ public class FilterRelativeLayout
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.a != null) {
-      paramCanvas.saveLayer(null, this.a, 31);
+    Paint localPaint = this.a;
+    if (localPaint != null) {
+      paramCanvas.saveLayer(null, localPaint, 31);
     }
     super.dispatchDraw(paramCanvas);
     if (this.a != null) {
@@ -49,7 +50,7 @@ public class FilterRelativeLayout
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.FilterRelativeLayout
  * JD-Core Version:    0.7.0.1
  */

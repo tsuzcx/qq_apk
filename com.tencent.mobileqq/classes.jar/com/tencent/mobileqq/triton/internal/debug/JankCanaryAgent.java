@@ -30,11 +30,17 @@ public final class JankCanaryAgent
     this.nativeInstancePointer = paramLong;
     this.gameThreadExecutor = paramExecutor1;
     this.mainThreadExecutor = paramExecutor2;
-    if (this.nativeInstancePointer == 0L) {
-      throw ((Throwable)new TritonInitException("pointer " + "JankCanaryAgent::nativeInstancePointer" + " is nullptr", ErrorCodes.NATIVE_FUNCTION_CALL, null, 4, null));
+    if (this.nativeInstancePointer != 0L)
+    {
+      paramValueHolder.observe((Function1)new JankCanaryAgent.1(this));
+      paramValueHolder1.observe((Function1)new JankCanaryAgent.2(this, paramValueHolder1));
+      return;
     }
-    paramValueHolder.observe((Function1)new JankCanaryAgent.1(this));
-    paramValueHolder1.observe((Function1)new JankCanaryAgent.2(this, paramValueHolder1));
+    paramExecutor1 = new StringBuilder();
+    paramExecutor1.append("pointer ");
+    paramExecutor1.append("JankCanaryAgent::nativeInstancePointer");
+    paramExecutor1.append(" is nullptr");
+    throw ((Throwable)new TritonInitException(paramExecutor1.toString(), ErrorCodes.NATIVE_FUNCTION_CALL, null, 4, null));
   }
   
   private final void getTraceInfo(GetTraceInfoCallback paramGetTraceInfoCallback)
@@ -50,7 +56,7 @@ public final class JankCanaryAgent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.debug.JankCanaryAgent
  * JD-Core Version:    0.7.0.1
  */

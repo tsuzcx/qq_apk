@@ -25,7 +25,10 @@ public class MutualMarkManger
   
   public String a(String paramString1, String paramString2)
   {
-    return ZipResourcesDownloader.a(paramString1, paramString2) + "/";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ZipResourcesDownloader.a(paramString1, paramString2));
+    localStringBuilder.append("/");
+    return localStringBuilder.toString();
   }
   
   public void a(String paramString1, String paramString2)
@@ -33,16 +36,28 @@ public class MutualMarkManger
     if (a(paramString1, paramString2)) {
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkManger", 2, "checkDownloadCartoonResource download url:" + paramString1 + " md5:" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("checkDownloadCartoonResource download url:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" md5:");
+      localStringBuilder.append(paramString2);
+      QLog.d("MutualMarkManger", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10089, "prd", paramString1, paramString2, jdField_a_of_type_ArrayOfJavaLangString, null);
   }
   
   public void a(String paramString1, String paramString2, ZipResourcesDownloader.OnZipResourcesDownloadCallback paramOnZipResourcesDownloadCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkManger", 2, "prepareCartoonResources url:" + paramString1 + " md5:" + paramString2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("prepareCartoonResources url:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" md5:");
+      localStringBuilder.append(paramString2);
+      QLog.d("MutualMarkManger", 2, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqMutualmarkZipResourcesDownloader.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, 10089, "prd", paramString1, paramString2, jdField_a_of_type_ArrayOfJavaLangString, paramOnZipResourcesDownloadCallback);
   }
@@ -50,8 +65,16 @@ public class MutualMarkManger
   public boolean a(String paramString1, String paramString2)
   {
     boolean bool = ZipResourcesDownloader.a(paramString1, paramString2, jdField_a_of_type_ArrayOfJavaLangString);
-    if (QLog.isColorLevel()) {
-      QLog.d("MutualMarkManger", 2, "isCartoonResourceReady url:" + paramString1 + " md5:" + paramString2 + " res:" + bool);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isCartoonResourceReady url:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(" md5:");
+      localStringBuilder.append(paramString2);
+      localStringBuilder.append(" res:");
+      localStringBuilder.append(bool);
+      QLog.d("MutualMarkManger", 2, localStringBuilder.toString());
     }
     return bool;
   }
@@ -63,7 +86,7 @@ public class MutualMarkManger
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mutualmark.MutualMarkManger
  * JD-Core Version:    0.7.0.1
  */

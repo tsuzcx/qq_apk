@@ -19,14 +19,20 @@ class ChatHistoryC2CAllFragment$7
     paramDialogInterface.a();
     int i = paramDialogInterface.a();
     paramDialogInterface = (MessageRoamManager)this.a.a.getManager(QQManagerFactory.MESSAGE_ROAM_MANAGER);
-    if (QLog.isColorLevel()) {
-      QLog.i("Q.history.C2CAllFragment", 2, "onDismiss, recordCount : " + i + ",showRoamFlag" + paramDialogInterface.e());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDismiss, recordCount : ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(",showRoamFlag");
+      localStringBuilder.append(paramDialogInterface.e());
+      QLog.i("Q.history.C2CAllFragment", 2, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.7
  * JD-Core Version:    0.7.0.1
  */

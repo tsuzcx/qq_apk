@@ -36,41 +36,43 @@ public class LebaListMgrActivity
   
   private void b()
   {
-    Object localObject = getAppRuntime();
+    Object localObject1 = getAppRuntime();
+    Object localObject2;
     if (this.jdField_a_of_type_ComTencentWidgetXListView == null)
     {
-      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2131561302, null));
+      this.jdField_a_of_type_ComTencentWidgetXListView = ((XListView)View.inflate(this, 2131561145, null));
       this.jdField_a_of_type_ComTencentWidgetXListView.setDivider(null);
       this.jdField_a_of_type_ComTencentWidgetXListView.setVerticalScrollBarEnabled(false);
-      View localView = View.inflate(this, 2131561300, null);
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)localView.findViewById(2131379432));
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131693641);
-      this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView(localView, null, false);
+      localObject2 = View.inflate(this, 2131561143, null);
+      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)((View)localObject2).findViewById(2131378784));
+      this.jdField_a_of_type_AndroidWidgetTextView.setText(2131693594);
+      this.jdField_a_of_type_ComTencentWidgetXListView.addHeaderView((View)localObject2, null, false);
     }
     if (this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter == null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter = new LebaListMgrAdapter((AppRuntime)localObject, this, LebaShowListManager.a().a(), this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaListMgrItemBizProxy);
+      this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter = new LebaListMgrAdapter((AppRuntime)localObject1, this, LebaShowListManager.a().a(), this.jdField_a_of_type_ComTencentMobileqqLebaBusinessLebaListMgrItemBizProxy);
       this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter.registerDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
       this.jdField_a_of_type_AndroidDatabaseDataSetObserver.onChanged();
     }
     super.setContentView(this.jdField_a_of_type_ComTencentWidgetXListView);
     this.jdField_a_of_type_ComTencentWidgetXListView.setAdapter(this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter);
     this.centerView.setTextSize(1, 17.0F);
-    setTitle(2131693640);
-    if (QLog.isDevelopLevel()) {
-      QLog.i("Q.lebatab.mgr", 4, "initUi, " + LebaShowListManager.a().jdField_a_of_type_Boolean);
-    }
-    localObject = (ILebaHelperService)((AppRuntime)localObject).getRuntimeService(ILebaHelperService.class, "multi");
-    if (localObject != null) {
-      ((ILebaHelperService)localObject).initLebaHelper();
-    }
-    for (;;)
+    setTitle(2131693593);
+    if (QLog.isDevelopLevel())
     {
-      if (!LebaShowListManager.a().jdField_a_of_type_Boolean) {
-        ThreadManager.post(new LebaListMgrActivity.1(this), 5, null, true);
-      }
-      return;
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("initUi, ");
+      ((StringBuilder)localObject2).append(LebaShowListManager.a().jdField_a_of_type_Boolean);
+      QLog.i("Q.lebatab.mgr", 4, ((StringBuilder)localObject2).toString());
+    }
+    localObject1 = (ILebaHelperService)((AppRuntime)localObject1).getRuntimeService(ILebaHelperService.class, "multi");
+    if (localObject1 != null) {
+      ((ILebaHelperService)localObject1).initLebaHelper();
+    } else {
       QLog.d("Q.lebatab.mgr", 1, "initLebaHelper lebaHelperService == null");
+    }
+    if (!LebaShowListManager.a().jdField_a_of_type_Boolean) {
+      ThreadManager.post(new LebaListMgrActivity.1(this), 5, null, true);
     }
   }
   
@@ -88,7 +90,7 @@ public class LebaListMgrActivity
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
     LebaShowListManager.jdField_a_of_type_Int |= 0x1;
@@ -102,22 +104,23 @@ public class LebaListMgrActivity
     return true;
   }
   
-  public void doOnDestroy()
+  protected void doOnDestroy()
   {
     super.doOnDestroy();
     this.jdField_a_of_type_ComTencentWidgetXListView = null;
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter != null)
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter.unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
+      ((LebaListMgrAdapter)localObject).unregisterDataSetObserver(this.jdField_a_of_type_AndroidDatabaseDataSetObserver);
       this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter = null;
     }
-    AppRuntime localAppRuntime = getAppRuntime();
-    if ((localAppRuntime instanceof AppInterface)) {
-      ((AppInterface)localAppRuntime).removeObserver(this.jdField_a_of_type_ComTencentMobileqqLebaObserverLebaSettingObserver);
+    localObject = getAppRuntime();
+    if ((localObject instanceof AppInterface)) {
+      ((AppInterface)localObject).removeObserver(this.jdField_a_of_type_ComTencentMobileqqLebaObserverLebaSettingObserver);
     }
   }
   
-  public void doOnPause()
+  protected void doOnPause()
   {
     super.doOnPause();
   }
@@ -133,14 +136,15 @@ public class LebaListMgrActivity
   {
     super.onPostThemeChanged();
     QLog.i("IphoneTitleBarActivity", 4, "onPostThemeChanged");
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter.a();
+    LebaListMgrAdapter localLebaListMgrAdapter = this.jdField_a_of_type_ComTencentMobileqqLebaMgrListLebaListMgrAdapter;
+    if (localLebaListMgrAdapter != null) {
+      localLebaListMgrAdapter.a();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.mgr.list.LebaListMgrActivity
  * JD-Core Version:    0.7.0.1
  */

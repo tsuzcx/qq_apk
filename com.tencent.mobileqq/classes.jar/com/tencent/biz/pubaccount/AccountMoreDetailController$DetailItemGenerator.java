@@ -11,9 +11,9 @@ class AccountMoreDetailController$DetailItemGenerator
   
   public AccountMoreDetailController$DetailItemGenerator(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, String paramString1, String paramString2)
   {
-    this.a = ((ViewGroup)paramLayoutInflater.inflate(2131558434, paramViewGroup));
-    paramLayoutInflater = (TextView)this.a.findViewById(2131361921);
-    paramViewGroup = (TextView)this.a.findViewById(2131361920);
+    this.a = ((ViewGroup)paramLayoutInflater.inflate(2131558462, paramViewGroup));
+    paramLayoutInflater = (TextView)this.a.findViewById(2131361927);
+    paramViewGroup = (TextView)this.a.findViewById(2131361926);
     paramLayoutInflater.setText(paramString1);
     paramViewGroup.setText(paramString2);
   }
@@ -25,7 +25,7 @@ class AccountMoreDetailController$DetailItemGenerator
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.AccountMoreDetailController.DetailItemGenerator
  * JD-Core Version:    0.7.0.1
  */

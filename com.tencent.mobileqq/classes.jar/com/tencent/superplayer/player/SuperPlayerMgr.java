@@ -91,54 +91,74 @@ public class SuperPlayerMgr
   private void handleOnError(ISuperPlayer paramISuperPlayer, int paramInt1, int paramInt2, int paramInt3, String paramString)
   {
     this.mPlayState.changeStateAndNotify(9);
-    this.mReporter.onError(paramInt1 + ":" + paramInt3, paramInt1 + ":" + paramInt3 + ":" + paramInt2 + ":" + paramString);
+    paramISuperPlayer = this.mReporter;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(":");
+    ((StringBuilder)localObject).append(paramInt3);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramString);
+    paramISuperPlayer.onError((String)localObject, localStringBuilder.toString());
   }
   
   private void handleOnInfo(ISuperPlayer paramISuperPlayer, int paramInt, long paramLong1, long paramLong2, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 105)
     {
-    default: 
-    case 207: 
-    case 105: 
-    case 112: 
-    case 113: 
-      do
+      if (paramInt != 250)
       {
-        do
+        if (paramInt != 112)
         {
-          do
+          if (paramInt != 113)
           {
-            return;
-          } while (!(paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo));
-          this.mReporter.onDownloadProgressUpdate((TPPlayerMsg.TPDownLoadProgressInfo)paramObject);
-          return;
-          this.mReporter.onFirstVideoFrameRendered();
-          this.mFrameCheckHelper.onFirstFrameRendered();
-          return;
-        } while (this.mIsSeeking);
-        this.mReporter.onVideoBufferStart();
-        return;
-      } while (this.mIsSeeking);
-      this.mReporter.onVideoBufferEnd();
-      return;
-    case 208: 
-      if (!(paramObject instanceof TPPlayerMsg.TPMediaCodecInfo)) {
-        break;
+            switch (paramInt)
+            {
+            default: 
+              return;
+            case 208: 
+              paramISuperPlayer = null;
+              if ((paramObject instanceof TPPlayerMsg.TPMediaCodecInfo)) {
+                paramISuperPlayer = (TPPlayerMsg.TPMediaCodecInfo)paramObject;
+              }
+              if (paramISuperPlayer != null) {
+                this.mReporter.onCodecReuseInfo(paramISuperPlayer);
+              }
+            case 209: 
+              this.mReporter.onVideoFrameCheckResult((int)paramLong1);
+              return;
+            }
+            if ((paramObject instanceof TPPlayerMsg.TPDownLoadProgressInfo)) {
+              this.mReporter.onDownloadProgressUpdate((TPPlayerMsg.TPDownLoadProgressInfo)paramObject);
+            }
+          }
+          else if (!this.mIsSeeking)
+          {
+            this.mReporter.onVideoBufferEnd();
+          }
+        }
+        else if (!this.mIsSeeking) {
+          this.mReporter.onVideoBufferStart();
+        }
+      }
+      else if ((paramObject instanceof String))
+      {
+        paramISuperPlayer = (String)paramObject;
+        if (!TextUtils.isEmpty(paramISuperPlayer)) {
+          this.mReporter.onQuicInfoUpdate(paramISuperPlayer);
+        }
       }
     }
-    for (paramISuperPlayer = (TPPlayerMsg.TPMediaCodecInfo)paramObject;; paramISuperPlayer = null)
+    else
     {
-      if (paramISuperPlayer != null) {
-        this.mReporter.onCodecReuseInfo(paramISuperPlayer);
-      }
-      this.mReporter.onVideoFrameCheckResult((int)paramLong1);
-      return;
-      if ((!(paramObject instanceof String)) || (TextUtils.isEmpty((String)paramObject))) {
-        break;
-      }
-      this.mReporter.onQuicInfoUpdate((String)paramObject);
-      return;
+      this.mReporter.onFirstVideoFrameRendered();
+      this.mFrameCheckHelper.onFirstFrameRendered();
     }
   }
   
@@ -163,7 +183,10 @@ public class SuperPlayerMgr
   {
     initTagAndToken();
     this.mPlayState = new SuperPlayerState(this.mPlayerTag);
-    this.mHandlerThread = new HandlerThread("SuperPlayer-" + this.mPlayerTag);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("SuperPlayer-");
+    ((StringBuilder)localObject).append(this.mPlayerTag);
+    this.mHandlerThread = new HandlerThread(((StringBuilder)localObject).toString());
     this.mHandlerThread.start();
     this.mLooper = this.mHandlerThread.getLooper();
     this.mPlayerMgrInternal = new SuperPlayerMgrInternal(this.mTAG, this.mLooper, this);
@@ -171,8 +194,17 @@ public class SuperPlayerMgr
     this.mListenerMgr = new SuperPlayerListenerMgr(this.mPlayerTag);
     if (this.mVideoView != null)
     {
-      LogUtil.i(this.mTAG, "updatePlayerVideoView when init, mVideoView = " + this.mVideoView);
-      LogUtil.d(this.mTAG, "日志过滤(View): 【" + this.mVideoView.getLogTag() + "】, updatePlayerVideoView when init");
+      localObject = this.mTAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("updatePlayerVideoView when init, mVideoView = ");
+      localStringBuilder.append(this.mVideoView);
+      LogUtil.i((String)localObject, localStringBuilder.toString());
+      localObject = this.mTAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("日志过滤(View): 【");
+      localStringBuilder.append(this.mVideoView.getLogTag());
+      localStringBuilder.append("】, updatePlayerVideoView when init");
+      LogUtil.d((String)localObject, localStringBuilder.toString());
       this.mVideoView.addViewCallBack(this);
     }
     this.mReporter.init(this, this.mSceneId);
@@ -199,34 +231,48 @@ public class SuperPlayerMgr
   private void initTagAndToken()
   {
     this.mPlayerTag = CommonUtil.a();
-    this.mTAG = (this.mPlayerTag + "-" + "SuperPlayerMgr.java");
-    this.mToken = TVKUtils.getMd5(SystemClock.uptimeMillis() + "-" + Math.random());
-    if ((this.mToken != null) && (this.mToken.length() > 24)) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.mPlayerTag);
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append("SuperPlayerMgr.java");
+    this.mTAG = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(SystemClock.uptimeMillis());
+    ((StringBuilder)localObject).append("-");
+    ((StringBuilder)localObject).append(Math.random());
+    this.mToken = TVKUtils.getMd5(((StringBuilder)localObject).toString());
+    localObject = this.mToken;
+    if ((localObject != null) && (((String)localObject).length() > 24)) {
       this.mToken = this.mToken.substring(8, 24);
     }
-    LogUtil.d(this.mTAG, "initToken:" + this.mToken);
+    localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("initToken:");
+    localStringBuilder.append(this.mToken);
+    LogUtil.d((String)localObject, localStringBuilder.toString());
   }
   
   private void onPlayerOpen(SuperPlayerOption paramSuperPlayerOption)
   {
-    if (paramSuperPlayerOption.enableVideoFrameCheck) {
-      if ((this.mFrameCheckHelper instanceof VideoFrameCheckHelper)) {
-        this.mFrameCheckHelper.onPlayerReset();
+    if (paramSuperPlayerOption.enableVideoFrameCheck)
+    {
+      paramSuperPlayerOption = this.mFrameCheckHelper;
+      if ((paramSuperPlayerOption instanceof VideoFrameCheckHelper)) {
+        paramSuperPlayerOption.onPlayerReset();
+      } else {
+        this.mFrameCheckHelper = new VideoFrameCheckHelper();
       }
     }
-    for (;;)
+    else
     {
-      this.mFrameCheckHelper.setOnVideoFrameCheckListener(this);
-      paramSuperPlayerOption = this.mVideoView;
-      if ((paramSuperPlayerOption != null) && (paramSuperPlayerOption.isSurfaceReady()))
-      {
-        this.mPlayerWrapper.setSurface(paramSuperPlayerOption.getSurface());
-        this.mFrameCheckHelper.updatePlayerVideoView(paramSuperPlayerOption);
-      }
-      return;
-      this.mFrameCheckHelper = new VideoFrameCheckHelper();
-      continue;
       this.mFrameCheckHelper = EmptyVideoFrameCheckHelper.getInstance();
+    }
+    this.mFrameCheckHelper.setOnVideoFrameCheckListener(this);
+    paramSuperPlayerOption = this.mVideoView;
+    if ((paramSuperPlayerOption != null) && (paramSuperPlayerOption.isSurfaceReady()))
+    {
+      this.mPlayerWrapper.setSurface(paramSuperPlayerOption.getSurface());
+      this.mFrameCheckHelper.updatePlayerVideoView(paramSuperPlayerOption);
     }
   }
   
@@ -247,13 +293,35 @@ public class SuperPlayerMgr
   
   public int captureImageInTime(long paramLong, int paramInt1, int paramInt2)
   {
-    LogUtil.i(this.mTAG, "api call : captureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : captureImageInTime, positionMs:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", width:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", height:");
+    localStringBuilder.append(paramInt2);
+    LogUtil.i(str, localStringBuilder.toString());
     return this.mPlayerMgrInternal.captureImageInTime(paramLong, paramInt1, paramInt2);
   }
   
   public int captureImageInTime(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    LogUtil.i(this.mTAG, "api call : captureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2 + ", requestedTimeMsToleranceBefore:" + paramInt3 + ", requestedTimeMsToleranceAfter:" + paramInt4 + ", requestedTimeLimit:" + paramInt5);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : captureImageInTime, positionMs:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", width:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", height:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", requestedTimeMsToleranceBefore:");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(", requestedTimeMsToleranceAfter:");
+    localStringBuilder.append(paramInt4);
+    localStringBuilder.append(", requestedTimeLimit:");
+    localStringBuilder.append(paramInt5);
+    LogUtil.i(str, localStringBuilder.toString());
     return this.mPlayerMgrInternal.captureImageInTime(paramLong, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
   }
   
@@ -269,8 +337,9 @@ public class SuperPlayerMgr
   
   public int getCurrentPlayerState()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getCurrentPlayerState();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getCurrentPlayerState();
     }
     return 0;
   }
@@ -292,8 +361,9 @@ public class SuperPlayerMgr
   
   public String getFlowId()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getFlowId();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getFlowId();
     }
     return null;
   }
@@ -346,189 +416,237 @@ public class SuperPlayerMgr
   
   public void handleAddSubtitleSource(String paramString1, String paramString2, String paramString3)
   {
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.addSubtitleSource(paramString1, paramString2, paramString3);
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.addSubtitleSource(paramString1, paramString2, paramString3);
     }
   }
   
   public int handleCaptureImageInTime(long paramLong, int paramInt1, int paramInt2)
   {
-    LogUtil.i(this.mTAG, "api handle : handleCaptureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2);
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.captureImageInTime(paramLong, paramInt1, paramInt2);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleCaptureImageInTime, positionMs:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", width:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", height:");
+    localStringBuilder.append(paramInt2);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      return ((SuperPlayerWrapper)localObject).captureImageInTime(paramLong, paramInt1, paramInt2);
     }
     return -1;
   }
   
   public int handleCaptureImageInTime(long paramLong, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    LogUtil.i(this.mTAG, "api handle : handleCaptureImageInTime, positionMs:" + paramLong + ", width:" + paramInt1 + ", height:" + paramInt2 + ", requestedTimeMsToleranceBefore:" + paramInt3 + ", requestedTimeMsToleranceAfter:" + paramInt4 + ", requestedTimeLimit:" + paramInt5);
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.captureImageInTime(paramLong, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleCaptureImageInTime, positionMs:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", width:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", height:");
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append(", requestedTimeMsToleranceBefore:");
+    localStringBuilder.append(paramInt3);
+    localStringBuilder.append(", requestedTimeMsToleranceAfter:");
+    localStringBuilder.append(paramInt4);
+    localStringBuilder.append(", requestedTimeLimit:");
+    localStringBuilder.append(paramInt5);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      return ((SuperPlayerWrapper)localObject).captureImageInTime(paramLong, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
     return -1;
   }
   
   public void handleDeselectTrack(int paramInt, long paramLong)
   {
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.deselectTrack(paramInt, paramLong);
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.deselectTrack(paramInt, paramLong);
     }
   }
   
   public int handleGetBufferPercent()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getBufferPercent();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getBufferPercent();
     }
     return 0;
   }
   
   public long handleGetCurrentPosition()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getCurrentPositionMs();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getCurrentPositionMs();
     }
     return 0L;
   }
   
   public long handleGetDuration()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getDurationMs();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getDurationMs();
     }
     return 0L;
   }
   
   public long handleGetFileSizeBytes()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getFileSizeBytes();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getFileSizeBytes();
     }
     return 0L;
   }
   
   public MediaInfo handleGetMediaInfo()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getMediaInfo();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getMediaInfo();
     }
     return null;
   }
   
   public TPProgramInfo[] handleGetProgramInfo()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getProgramInfo();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getProgramInfo();
     }
     return null;
   }
   
   public String handleGetStreamDumpInfo()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getStreamDumpInfo();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getStreamDumpInfo();
     }
     return null;
   }
   
   public TPTrackInfo[] handleGetTrackInfo()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getTrackInfo();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getTrackInfo();
     }
     return null;
   }
   
   public int handleGetVideoHeight()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getVideoHeight();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getVideoHeight();
     }
     return 0;
   }
   
   public int handleGetVideoRotation()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getVideoRotation();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getVideoRotation();
     }
     return 0;
   }
   
   public int handleGetVideoWidth()
   {
-    if (this.mPlayerWrapper != null) {
-      return this.mPlayerWrapper.getVideoWidth();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      return localSuperPlayerWrapper.getVideoWidth();
     }
     return 0;
   }
   
   public boolean handleIsBuffering()
   {
-    return (this.mPlayerWrapper != null) && (this.mPlayerWrapper.isBuffering());
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    return (localSuperPlayerWrapper != null) && (localSuperPlayerWrapper.isBuffering());
   }
   
   public void handleOpenMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong, SuperPlayerOption paramSuperPlayerOption)
   {
-    LogUtil.i(this.mTAG, "api handle : handleOpenMediaPlayer, playerVideoInfo:" + paramSuperPlayerVideoInfo + ", startPostionMilsec:" + paramLong);
+    Object localObject1 = this.mTAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("api handle : handleOpenMediaPlayer, playerVideoInfo:");
+    ((StringBuilder)localObject2).append(paramSuperPlayerVideoInfo);
+    ((StringBuilder)localObject2).append(", startPostionMilsec:");
+    ((StringBuilder)localObject2).append(paramLong);
+    LogUtil.i((String)localObject1, ((StringBuilder)localObject2).toString());
+    localObject1 = paramSuperPlayerOption;
     if (paramSuperPlayerOption == null) {
-      paramSuperPlayerOption = SuperPlayerOption.obtain();
+      localObject1 = SuperPlayerOption.obtain();
     }
-    for (;;)
+    int i = 1;
+    paramSuperPlayerOption = PreloadPlayerMgr.getInstance().getPlayerFromPool(this.mSceneId, paramSuperPlayerVideoInfo);
+    localObject2 = this.mVideoView;
+    if (paramSuperPlayerOption != null)
     {
-      int i = 1;
-      PreloadPlayerInfo localPreloadPlayerInfo = PreloadPlayerMgr.getInstance().getPlayerFromPool(this.mSceneId, paramSuperPlayerVideoInfo);
-      ISPlayerVideoView localISPlayerVideoView = this.mVideoView;
-      if (localPreloadPlayerInfo != null)
-      {
-        LogUtil.i(this.mTAG, "复用预加载播放器, PlayerTag = 【" + localPreloadPlayerInfo.player.getPlayerTag() + "】");
-        this.mPlayerWrapper = localPreloadPlayerInfo.player;
-        this.mPlayerWrapper.updatePlayerTag(this.mPlayerTag);
-        if (localISPlayerVideoView != null) {
-          localISPlayerVideoView.changeSurfaceObject(localPreloadPlayerInfo.videoView.getStoredSurfaceObject());
-        }
+      String str = this.mTAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("复用预加载播放器, PlayerTag = 【");
+      localStringBuilder.append(paramSuperPlayerOption.player.getPlayerTag());
+      localStringBuilder.append("】");
+      LogUtil.i(str, localStringBuilder.toString());
+      this.mPlayerWrapper = paramSuperPlayerOption.player;
+      this.mPlayerWrapper.updatePlayerTag(this.mPlayerTag);
+      if (localObject2 != null) {
+        ((ISPlayerVideoView)localObject2).changeSurfaceObject(paramSuperPlayerOption.videoView.getStoredSurfaceObject());
+      } else {
+        this.mSurfaceObjectForChange = paramSuperPlayerOption.videoView.getStoredSurfaceObject();
       }
-      for (;;)
-      {
-        initListenerForWrapper();
-        this.mPlayerMgrInternal.setIsNeedBlockMessage(false);
-        this.mPlayerWrapper.updateIsPreloadingStatus(false);
-        this.mPlayerWrapper.setBusinessDownloadStrategy(this.mEmergencyTime, this.mSafePlayTime, this.mEmergencyTimeForPrePlay, this.mSafePlayTimeForPrePlay);
-        if (i == 0)
-        {
-          onPlayerOpen(paramSuperPlayerOption);
-          this.mPlayerWrapper.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
-        }
-        return;
-        this.mSurfaceObjectForChange = localPreloadPlayerInfo.videoView.getStoredSurfaceObject();
-        continue;
-        LogUtil.i(this.mTAG, "不复用预加载播放器");
-        if (this.mPlayerWrapper == null) {
-          this.mPlayerWrapper = new SuperPlayerWrapper(this.mContext, this.mSceneId, this.mPlayerTag, this.mLooper);
-        }
-        if ((localISPlayerVideoView != null) && (localISPlayerVideoView.isSurfaceReady()))
-        {
-          this.mPlayerWrapper.setSurface(localISPlayerVideoView.getSurface());
-          this.mFrameCheckHelper.updatePlayerVideoView(localISPlayerVideoView);
-        }
-        i = 0;
+    }
+    else
+    {
+      LogUtil.i(this.mTAG, "不复用预加载播放器");
+      if (this.mPlayerWrapper == null) {
+        this.mPlayerWrapper = new SuperPlayerWrapper(this.mContext, this.mSceneId, this.mPlayerTag, this.mLooper);
       }
+      if ((localObject2 != null) && (((ISPlayerVideoView)localObject2).isSurfaceReady()))
+      {
+        this.mPlayerWrapper.setSurface(((ISPlayerVideoView)localObject2).getSurface());
+        this.mFrameCheckHelper.updatePlayerVideoView((ISPlayerVideoView)localObject2);
+      }
+      i = 0;
+    }
+    initListenerForWrapper();
+    this.mPlayerMgrInternal.setIsNeedBlockMessage(false);
+    this.mPlayerWrapper.updateIsPreloadingStatus(false);
+    this.mPlayerWrapper.setBusinessDownloadStrategy(this.mEmergencyTime, this.mSafePlayTime, this.mEmergencyTimeForPrePlay, this.mSafePlayTimeForPrePlay);
+    if (i == 0)
+    {
+      onPlayerOpen((SuperPlayerOption)localObject1);
+      this.mPlayerWrapper.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, (SuperPlayerOption)localObject1);
     }
   }
   
   public void handlePause()
   {
     LogUtil.i(this.mTAG, "api handle : handlePause:");
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.pause();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.pause();
     }
   }
   
   public void handlePauseDownload()
   {
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.pauseDownload();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.pauseDownload();
     }
   }
   
@@ -536,169 +654,215 @@ public class SuperPlayerMgr
   {
     LogUtil.i(this.mTAG, "api handle : handleRelease:");
     this.mContext = null;
-    if (this.mFrameCheckHelper != null) {
-      this.mFrameCheckHelper.onPlayerRelease();
+    Object localObject = this.mFrameCheckHelper;
+    if (localObject != null) {
+      ((IVideoFrameCheckHelper)localObject).onPlayerRelease();
     }
-    if (this.mListenerMgr != null) {
-      this.mListenerMgr.release();
+    localObject = this.mListenerMgr;
+    if (localObject != null) {
+      ((SuperPlayerListenerMgr)localObject).release();
     }
-    if (this.mVideoView != null) {
-      this.mVideoView.removeViewCallBack(null);
+    localObject = this.mVideoView;
+    if (localObject != null) {
+      ((ISPlayerVideoView)localObject).removeViewCallBack(this);
     }
-    if (this.mPlayerWrapper != null)
+    localObject = this.mPlayerWrapper;
+    if (localObject != null)
     {
-      this.mPlayerWrapper.release();
+      ((SuperPlayerWrapper)localObject).release();
       this.mPlayerWrapper = null;
     }
     if (this.mHandlerThread != null)
     {
-      if (Build.VERSION.SDK_INT < 18) {
-        break label110;
+      if (Build.VERSION.SDK_INT >= 18) {
+        this.mHandlerThread.quitSafely();
+      } else {
+        this.mHandlerThread.quit();
       }
-      this.mHandlerThread.quitSafely();
-    }
-    for (;;)
-    {
       this.mHandlerThread = null;
-      return;
-      label110:
-      this.mHandlerThread.quit();
     }
   }
   
   public void handleReset()
   {
     LogUtil.i(this.mTAG, "api handle : handleReset:");
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.reset();
+    Object localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).reset();
     }
-    if (this.mFrameCheckHelper != null) {
-      this.mFrameCheckHelper.onPlayerReset();
+    localObject = this.mFrameCheckHelper;
+    if (localObject != null) {
+      ((IVideoFrameCheckHelper)localObject).onPlayerReset();
     }
   }
   
   public void handleResumeDownload()
   {
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.resumeDownload();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.resumeDownload();
     }
   }
   
   public void handleSeekTo(int paramInt)
   {
-    LogUtil.i(this.mTAG, "api handle : handleSeekTo, positionMilsec:" + paramInt);
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.seekTo(paramInt);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleSeekTo, positionMilsec:");
+    localStringBuilder.append(paramInt);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).seekTo(paramInt);
     }
   }
   
   public void handleSeekTo(int paramInt1, int paramInt2)
   {
-    LogUtil.i(this.mTAG, "api handle : handleSeekToAccuratePos, positionMilsec:" + paramInt1 + ", mode:" + paramInt2);
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.seekTo(paramInt1, paramInt2);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleSeekToAccuratePos, positionMilsec:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", mode:");
+    localStringBuilder.append(paramInt2);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).seekTo(paramInt1, paramInt2);
     }
   }
   
   public void handleSelectProgram(int paramInt, long paramLong)
   {
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.selectProgram(paramInt, paramLong);
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.selectProgram(paramInt, paramLong);
     }
   }
   
   public void handleSelectTrack(int paramInt, long paramLong)
   {
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.selectTrack(paramInt, paramLong);
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.selectTrack(paramInt, paramLong);
     }
   }
   
   public void handleSetBusinessDownloadStrategy(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    if (this.mPlayerWrapper != null) {}
-    try
-    {
-      if (this.mPlayerWrapper != null) {
-        this.mPlayerWrapper.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4);
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if ((localSuperPlayerWrapper != null) && (localSuperPlayerWrapper != null)) {
+      try
+      {
+        localSuperPlayerWrapper.setBusinessDownloadStrategy(paramInt1, paramInt2, paramInt3, paramInt4);
+        return;
       }
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      LogUtil.e(this.mTAG, localThrowable);
+      catch (Throwable localThrowable)
+      {
+        LogUtil.e(this.mTAG, localThrowable);
+      }
     }
   }
   
   public void handleSetLoopback(boolean paramBoolean)
   {
-    LogUtil.i(this.mTAG, "api handle : handleSetLoopback, isLoopback:" + paramBoolean);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleSetLoopback, isLoopback:");
+    localStringBuilder.append(paramBoolean);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
     this.mIsLoopback = paramBoolean;
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.setLoopback(paramBoolean);
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).setLoopback(paramBoolean);
     }
   }
   
   public void handleSetLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    LogUtil.i(this.mTAG, "api handle : handleSetLoopback, isLoopback:" + paramBoolean + ", loopStartPositionMs:" + paramLong1 + ", loopEndPositionMs:" + paramLong2);
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.setLoopback(paramBoolean, paramLong1, paramLong2);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleSetLoopback, isLoopback:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", loopStartPositionMs:");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", loopEndPositionMs:");
+    localStringBuilder.append(paramLong2);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).setLoopback(paramBoolean, paramLong1, paramLong2);
     }
   }
   
   public boolean handleSetOutputMute(boolean paramBoolean)
   {
-    LogUtil.i(this.mTAG, "api handle : handleSetOutputMute, isMute:" + paramBoolean);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleSetOutputMute, isMute:");
+    localStringBuilder.append(paramBoolean);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
     this.mIsOutputMute = paramBoolean;
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.setOutputMute(paramBoolean);
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).setOutputMute(paramBoolean);
     }
     return true;
   }
   
   public void handleSetPlaySpeedRatio(float paramFloat)
   {
-    LogUtil.i(this.mTAG, "api handle : handleSetPlaySpeedRatio, speedRatio:" + paramFloat);
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.setPlaySpeedRatio(paramFloat);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : handleSetPlaySpeedRatio, speedRatio:");
+    localStringBuilder.append(paramFloat);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).setPlaySpeedRatio(paramFloat);
     }
   }
   
   public void handleSetSurface(Surface paramSurface)
   {
     LogUtil.i(this.mTAG, "api handle : handleSetSurface");
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.setSurface(paramSurface);
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.setSurface(paramSurface);
     }
   }
   
   public void handleStart()
   {
     LogUtil.i(this.mTAG, "api handle : handleStart:");
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.start();
+    Object localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).start();
     }
-    if (this.mFrameCheckHelper != null) {
-      this.mFrameCheckHelper.onPlayerStart();
+    localObject = this.mFrameCheckHelper;
+    if (localObject != null) {
+      ((IVideoFrameCheckHelper)localObject).onPlayerStart();
     }
   }
   
   public void handleStop()
   {
     LogUtil.i(this.mTAG, "api handle : handleStop:");
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.stop();
+    Object localObject = this.mPlayerWrapper;
+    if (localObject != null) {
+      ((SuperPlayerWrapper)localObject).stop();
     }
-    if (this.mFrameCheckHelper != null) {
-      this.mFrameCheckHelper.onPlayerStop();
+    localObject = this.mFrameCheckHelper;
+    if (localObject != null) {
+      ((IVideoFrameCheckHelper)localObject).onPlayerStop();
     }
   }
   
   public void handleSwitchDefinition(String paramString)
   {
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.switchDefinition(paramString);
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.switchDefinition(paramString);
     }
   }
   
@@ -711,13 +875,11 @@ public class SuperPlayerMgr
       {
         this.mPlayerWrapper.setSurface(paramISPlayerVideoView.getSurface());
         this.mFrameCheckHelper.updatePlayerVideoView(paramISPlayerVideoView);
+        return;
       }
+      this.mPlayerWrapper.setSurface(null);
+      this.mFrameCheckHelper.updatePlayerVideoView(null);
     }
-    else {
-      return;
-    }
-    this.mPlayerWrapper.setSurface(null);
-    this.mFrameCheckHelper.updatePlayerVideoView(null);
   }
   
   public boolean isBuffering()
@@ -754,14 +916,31 @@ public class SuperPlayerMgr
   
   public void onSurfaceCreated(Object paramObject)
   {
-    LogUtil.i(this.mTAG, "api handle : onSurfaceCreated");
-    paramObject = this.mVideoView;
-    if ((paramObject != null) && (paramObject.getSurface() != null) && (this.mPlayerWrapper != null))
+    ISPlayerVideoView localISPlayerVideoView = this.mVideoView;
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api handle : onSurfaceCreated, mPlayerWrapper=");
+    localStringBuilder.append(this.mPlayerWrapper);
+    localStringBuilder.append(", videoView=");
+    localStringBuilder.append(localISPlayerVideoView);
+    localStringBuilder.append(", surface=");
+    if (localISPlayerVideoView != null) {
+      paramObject = localISPlayerVideoView.getSurface();
+    } else {
+      paramObject = null;
+    }
+    localStringBuilder.append(paramObject);
+    LogUtil.i(str, localStringBuilder.toString());
+    if ((localISPlayerVideoView != null) && (localISPlayerVideoView.getSurface() != null))
     {
-      this.mPlayerWrapper.setSurface(paramObject.getSurface());
-      this.mFrameCheckHelper.updatePlayerVideoView(paramObject);
-      LogUtil.i(this.mTAG, "onSurfaceCreated view created. mediaPlayer.setSurface:");
-      return;
+      paramObject = this.mPlayerWrapper;
+      if (paramObject != null)
+      {
+        paramObject.setSurface(localISPlayerVideoView.getSurface());
+        this.mFrameCheckHelper.updatePlayerVideoView(localISPlayerVideoView);
+        LogUtil.i(this.mTAG, "onSurfaceCreated view created. mediaPlayer.setSurface:");
+        return;
+      }
     }
     LogUtil.e(this.mTAG, "onSurfaceCreated view created. mVideoView.getViewSurface() = null");
   }
@@ -769,8 +948,9 @@ public class SuperPlayerMgr
   public void onSurfaceDestroy(Object paramObject)
   {
     LogUtil.i(this.mTAG, "api handle : onSurfaceDestroy");
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.setSurface(null);
+    paramObject = this.mPlayerWrapper;
+    if (paramObject != null) {
+      paramObject.setSurface(null);
     }
   }
   
@@ -781,7 +961,13 @@ public class SuperPlayerMgr
   
   public void openMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong)
   {
-    LogUtil.i(this.mTAG, "api call : openMediaPlayer, videoInfo:" + paramSuperPlayerVideoInfo + ", startPositionMilsec:" + paramLong);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : openMediaPlayer, videoInfo:");
+    localStringBuilder.append(paramSuperPlayerVideoInfo);
+    localStringBuilder.append(", startPositionMilsec:");
+    localStringBuilder.append(paramLong);
+    LogUtil.i(str, localStringBuilder.toString());
     this.mPlayState.changeStateAndNotify(3);
     this.mReporter.onOpenMediaPlayer(paramSuperPlayerVideoInfo, paramLong, null);
     this.mPlayerMgrInternal.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, SuperPlayerOption.obtain());
@@ -789,7 +975,15 @@ public class SuperPlayerMgr
   
   public void openMediaPlayer(Context paramContext, SuperPlayerVideoInfo paramSuperPlayerVideoInfo, long paramLong, SuperPlayerOption paramSuperPlayerOption)
   {
-    LogUtil.i(this.mTAG, "api call : openMediaPlayer, videoInfo:" + paramSuperPlayerVideoInfo + ", startPositionMilsec:" + paramLong + ", playerOption:" + paramSuperPlayerOption);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : openMediaPlayer, videoInfo:");
+    localStringBuilder.append(paramSuperPlayerVideoInfo);
+    localStringBuilder.append(", startPositionMilsec:");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", playerOption:");
+    localStringBuilder.append(paramSuperPlayerOption);
+    LogUtil.i(str, localStringBuilder.toString());
     this.mPlayState.changeStateAndNotify(3);
     this.mReporter.onOpenMediaPlayer(paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
     this.mPlayerMgrInternal.openMediaPlayer(paramContext, paramSuperPlayerVideoInfo, paramLong, paramSuperPlayerOption);
@@ -813,7 +1007,11 @@ public class SuperPlayerMgr
     LogUtil.i(this.mTAG, "api call : release");
     if (this.mPlayState.getCurState() == 10)
     {
-      LogUtil.e(this.mTAG, "api call : release, failed, mPlayState.getCurState() == " + this.mPlayState.getCurState());
+      String str = this.mTAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("api call : release, failed, mPlayState.getCurState() == ");
+      localStringBuilder.append(this.mPlayState.getCurState());
+      LogUtil.e(str, localStringBuilder.toString());
       return;
     }
     this.mPlayState.changeStateAndNotify(10);
@@ -846,7 +1044,11 @@ public class SuperPlayerMgr
   
   public void seekTo(int paramInt)
   {
-    LogUtil.i(this.mTAG, "api call : seekTo, positionMilsec:" + paramInt);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : seekTo, positionMilsec:");
+    localStringBuilder.append(paramInt);
+    LogUtil.i(str, localStringBuilder.toString());
     this.mIsSeeking = true;
     this.mReporter.onSeek(getCurrentPositionMs(), paramInt);
     this.mPlayerMgrInternal.seekTo(paramInt);
@@ -854,7 +1056,13 @@ public class SuperPlayerMgr
   
   public void seekTo(int paramInt1, int paramInt2)
   {
-    LogUtil.i(this.mTAG, "api call : seekTo, positionMs:" + paramInt1 + ", mode:" + paramInt2);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : seekTo, positionMs:");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append(", mode:");
+    localStringBuilder.append(paramInt2);
+    LogUtil.i(str, localStringBuilder.toString());
     this.mIsSeeking = true;
     this.mReporter.onSeek(getCurrentPositionMs(), paramInt1);
     this.mPlayerMgrInternal.seekTo(paramInt1, paramInt2);
@@ -881,13 +1089,25 @@ public class SuperPlayerMgr
   
   public void setLoopback(boolean paramBoolean)
   {
-    LogUtil.i(this.mTAG, "api call : setLoopback, isLoopback:" + paramBoolean);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : setLoopback, isLoopback:");
+    localStringBuilder.append(paramBoolean);
+    LogUtil.i(str, localStringBuilder.toString());
     this.mPlayerMgrInternal.setLoopback(paramBoolean);
   }
   
   public void setLoopback(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    LogUtil.i(this.mTAG, "api call : setLoopback, isLoopback:" + paramBoolean + ", loopStartPositionMs:" + paramLong1 + ", loopEndPositionMs:" + paramLong2);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : setLoopback, isLoopback:");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(", loopStartPositionMs:");
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append(", loopEndPositionMs:");
+    localStringBuilder.append(paramLong2);
+    LogUtil.i(str, localStringBuilder.toString());
     this.mPlayerMgrInternal.setLoopback(paramBoolean, paramLong1, paramLong2);
   }
   
@@ -953,7 +1173,11 @@ public class SuperPlayerMgr
   
   public void setOutputMute(boolean paramBoolean)
   {
-    LogUtil.i(this.mTAG, "api call : setOutputMute:" + paramBoolean);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : setOutputMute:");
+    localStringBuilder.append(paramBoolean);
+    LogUtil.i(str, localStringBuilder.toString());
     this.mPlayerMgrInternal.setOutputMute(paramBoolean);
   }
   
@@ -965,15 +1189,17 @@ public class SuperPlayerMgr
   
   public void setPlayerActive()
   {
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.setPlayerActive();
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.setPlayerActive();
     }
   }
   
   public void setReportContentId(String paramString)
   {
-    if (this.mPlayerWrapper != null) {
-      this.mPlayerWrapper.setReportContentId(paramString);
+    SuperPlayerWrapper localSuperPlayerWrapper = this.mPlayerWrapper;
+    if (localSuperPlayerWrapper != null) {
+      localSuperPlayerWrapper.setReportContentId(paramString);
     }
   }
   
@@ -985,10 +1211,15 @@ public class SuperPlayerMgr
   
   public void setXYaxis(int paramInt)
   {
-    LogUtil.i(this.mTAG, "api call : setXYaxis, type=" + paramInt);
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : setXYaxis, type=");
+    localStringBuilder.append(paramInt);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
     this.mXYaxis = paramInt;
-    if (this.mVideoView != null) {
-      this.mVideoView.setXYaxis(paramInt);
+    localObject = this.mVideoView;
+    if (localObject != null) {
+      ((ISPlayerVideoView)localObject).setXYaxis(paramInt);
     }
   }
   
@@ -1003,51 +1234,74 @@ public class SuperPlayerMgr
   public void stop()
   {
     LogUtil.i(this.mTAG, "api call : stop");
-    if ((this.mPlayState.getCurState() == 8) || (this.mPlayState.getCurState() == 0) || (this.mPlayState.getCurState() == 10))
+    if ((this.mPlayState.getCurState() != 8) && (this.mPlayState.getCurState() != 0) && (this.mPlayState.getCurState() != 10))
     {
-      LogUtil.e(this.mTAG, "api call : stop, failed, mPlayState.getCurState() == " + this.mPlayState.getCurState());
+      this.mPlayState.changeStateAndNotify(8);
+      this.mReporter.onStop();
+      this.mPlayerMgrInternal.stop();
       return;
     }
-    this.mPlayState.changeStateAndNotify(8);
-    this.mReporter.onStop();
-    this.mPlayerMgrInternal.stop();
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : stop, failed, mPlayState.getCurState() == ");
+    localStringBuilder.append(this.mPlayState.getCurState());
+    LogUtil.e(str, localStringBuilder.toString());
   }
   
   public void switchDefinition(String paramString)
   {
-    LogUtil.i(this.mTAG, "api call : switchDefinition, definition:" + paramString);
+    String str = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : switchDefinition, definition:");
+    localStringBuilder.append(paramString);
+    LogUtil.i(str, localStringBuilder.toString());
     this.mPlayerMgrInternal.switchDefinition(paramString);
   }
   
   public void updatePlayerVideoView(ISPlayerVideoView paramISPlayerVideoView)
   {
-    String str = this.mTAG;
-    StringBuilder localStringBuilder = new StringBuilder().append("api call : updatePlayerVideoView, mVideoView == videoView is ");
-    if (this.mVideoView == paramISPlayerVideoView) {}
-    for (boolean bool = true;; bool = false)
+    Object localObject = this.mTAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("api call : updatePlayerVideoView, mVideoView == videoView is ");
+    boolean bool;
+    if (this.mVideoView == paramISPlayerVideoView) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localStringBuilder.append(bool);
+    localStringBuilder.append(", videoView=");
+    localStringBuilder.append(paramISPlayerVideoView);
+    LogUtil.i((String)localObject, localStringBuilder.toString());
+    if (paramISPlayerVideoView != null)
     {
-      LogUtil.i(str, bool + ", videoView=" + paramISPlayerVideoView);
-      if (paramISPlayerVideoView != null) {
-        LogUtil.d(this.mTAG, "日志过滤(View): 【" + paramISPlayerVideoView.getLogTag() + "】, updatePlayerVideoView");
-      }
-      if (this.mVideoView != paramISPlayerVideoView) {
-        break;
-      }
+      localObject = this.mTAG;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("日志过滤(View): 【");
+      localStringBuilder.append(paramISPlayerVideoView.getLogTag());
+      localStringBuilder.append("】, updatePlayerVideoView");
+      LogUtil.d((String)localObject, localStringBuilder.toString());
+    }
+    localObject = this.mVideoView;
+    if (localObject == paramISPlayerVideoView) {
       return;
     }
-    if (this.mVideoView != null) {
-      this.mVideoView.removeViewCallBack(null);
+    if (localObject != null) {
+      ((ISPlayerVideoView)localObject).removeViewCallBack(null);
     }
     this.mVideoView = paramISPlayerVideoView;
-    if (this.mVideoView != null)
+    localObject = this.mVideoView;
+    if (localObject != null)
     {
-      this.mVideoView.addViewCallBack(this);
+      ((ISPlayerVideoView)localObject).addViewCallBack(this);
       this.mVideoView.setXYaxis(this.mXYaxis);
     }
-    if (this.mSurfaceObjectForChange != null)
+    localObject = this.mSurfaceObjectForChange;
+    if (localObject != null)
     {
-      if (this.mVideoView != null) {
-        this.mVideoView.changeSurfaceObject(this.mSurfaceObjectForChange);
+      paramISPlayerVideoView = this.mVideoView;
+      if (paramISPlayerVideoView != null) {
+        paramISPlayerVideoView.changeSurfaceObject((SPlayerVideoView.SurfaceObject)localObject);
       }
       this.mSurfaceObjectForChange = null;
       return;
@@ -1057,7 +1311,7 @@ public class SuperPlayerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.player.SuperPlayerMgr
  * JD-Core Version:    0.7.0.1
  */

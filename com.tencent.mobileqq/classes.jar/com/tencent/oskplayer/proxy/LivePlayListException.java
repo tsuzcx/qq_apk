@@ -10,11 +10,14 @@ public class LivePlayListException
     super(paramString);
   }
   
-  public LivePlayListException(Throwable paramThrowable) {}
+  public LivePlayListException(Throwable paramThrowable)
+  {
+    super(str, paramThrowable);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.oskplayer.proxy.LivePlayListException
  * JD-Core Version:    0.7.0.1
  */

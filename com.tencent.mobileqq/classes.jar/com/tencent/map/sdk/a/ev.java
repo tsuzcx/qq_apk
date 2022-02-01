@@ -45,7 +45,8 @@ public final class ev
   
   private dt f()
   {
-    return (dt)this.a.get(this.a.size() - 1);
+    List localList = this.a;
+    return (dt)localList.get(localList.size() - 1);
   }
   
   public final fg a()
@@ -80,13 +81,14 @@ public final class ev
   
   public final fg a(String paramString)
   {
-    if ((this.a.isEmpty()) || (this.g != null)) {
-      throw new IllegalStateException();
-    }
-    if ((f() instanceof dw))
+    if ((!this.a.isEmpty()) && (this.g == null))
     {
-      this.g = paramString;
-      return this;
+      if ((f() instanceof dw))
+      {
+        this.g = paramString;
+        return this;
+      }
+      throw new IllegalStateException();
     }
     throw new IllegalStateException();
   }
@@ -99,13 +101,15 @@ public final class ev
   
   public final fg b()
   {
-    if ((this.a.isEmpty()) || (this.g != null)) {
-      throw new IllegalStateException();
-    }
-    if ((f() instanceof dq))
+    if ((!this.a.isEmpty()) && (this.g == null))
     {
-      this.a.remove(this.a.size() - 1);
-      return this;
+      if ((f() instanceof dq))
+      {
+        List localList = this.a;
+        localList.remove(localList.size() - 1);
+        return this;
+      }
+      throw new IllegalStateException();
     }
     throw new IllegalStateException();
   }
@@ -129,21 +133,25 @@ public final class ev
   
   public final void close()
   {
-    if (!this.a.isEmpty()) {
-      throw new IOException("Incomplete document");
+    if (this.a.isEmpty())
+    {
+      this.a.add(f);
+      return;
     }
-    this.a.add(f);
+    throw new IOException("Incomplete document");
   }
   
   public final fg d()
   {
-    if ((this.a.isEmpty()) || (this.g != null)) {
-      throw new IllegalStateException();
-    }
-    if ((f() instanceof dw))
+    if ((!this.a.isEmpty()) && (this.g == null))
     {
-      this.a.remove(this.a.size() - 1);
-      return this;
+      if ((f() instanceof dw))
+      {
+        List localList = this.a;
+        localList.remove(localList.size() - 1);
+        return this;
+      }
+      throw new IllegalStateException();
     }
     throw new IllegalStateException();
   }
@@ -158,7 +166,7 @@ public final class ev
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ev
  * JD-Core Version:    0.7.0.1
  */

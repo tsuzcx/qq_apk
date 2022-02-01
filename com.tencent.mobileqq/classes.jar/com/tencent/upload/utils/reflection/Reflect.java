@@ -35,28 +35,19 @@ public class Reflect
   
   public static <T extends AccessibleObject> T accessible(T paramT)
   {
-    T ?;
     if (paramT == null) {
-      ? = null;
+      return null;
     }
-    do
+    if ((paramT instanceof Member))
     {
-      Member localMember;
-      do
-      {
-        return ?;
-        if (!(paramT instanceof Member)) {
-          break;
-        }
-        localMember = (Member)paramT;
-        if (!Modifier.isPublic(localMember.getModifiers())) {
-          break;
-        }
-        ? = paramT;
-      } while (Modifier.isPublic(localMember.getDeclaringClass().getModifiers()));
-      ? = paramT;
-    } while (paramT.isAccessible());
-    paramT.setAccessible(true);
+      Member localMember = (Member)paramT;
+      if ((Modifier.isPublic(localMember.getModifiers())) && (Modifier.isPublic(localMember.getDeclaringClass().getModifiers()))) {
+        return paramT;
+      }
+    }
+    if (!paramT.isAccessible()) {
+      paramT.setAccessible(true);
+    }
     return paramT;
   }
   
@@ -67,105 +58,107 @@ public class Reflect
       Class.forName(paramString);
       return true;
     }
-    catch (ClassNotFoundException paramString) {}
+    catch (ClassNotFoundException paramString)
+    {
+      label7:
+      break label7;
+    }
     return false;
   }
   
   private Method exactMethod(String paramString, Class<?>[] paramArrayOfClass)
   {
     Class localClass = type();
-    try
+    label69:
+    do
     {
-      i = localClass.hashCode();
-      j = paramString.hashCode();
-      i = Arrays.hashCode(paramArrayOfClass) + (i + j);
-      if (mMethodMap.get(i) != null) {
-        return (Method)mMethodMap.get(i);
-      }
-      Method localMethod1 = localClass.getMethod(paramString, paramArrayOfClass);
-      if (localMethod1 != null)
+      try
       {
-        mMethodMap.put(i, localMethod1);
-        return localMethod1;
-      }
-    }
-    catch (NoSuchMethodException localNoSuchMethodException1)
-    {
-      for (;;)
-      {
-        try
-        {
-          int i = localClass.hashCode();
-          int j = paramString.hashCode();
-          i = Arrays.hashCode(paramArrayOfClass) + (i + j);
-          if (mMethodMap.get(i) != null) {
-            return (Method)mMethodMap.get(i);
-          }
-          Method localMethod2 = (Method)accessible(localClass.getDeclaredMethod(paramString, paramArrayOfClass));
-          if (localMethod2 != null)
-          {
-            mMethodMap.put(i, localMethod2);
-            return localMethod2;
-          }
+        i = localClass.hashCode() + paramString.hashCode() + Arrays.hashCode(paramArrayOfClass);
+        if (mMethodMap.get(i) != null) {
+          return (Method)mMethodMap.get(i);
         }
-        catch (NoSuchMethodException localNoSuchMethodException2)
+        localMethod = localClass.getMethod(paramString, paramArrayOfClass);
+        if (localMethod != null) {
+          mMethodMap.put(i, localMethod);
+        }
+        return localMethod;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException1)
+      {
+        int i;
+        Method localMethod;
+        break label69;
+      }
+      try
+      {
+        i = localClass.hashCode() + paramString.hashCode() + Arrays.hashCode(paramArrayOfClass);
+        if (mMethodMap.get(i) != null) {
+          return (Method)mMethodMap.get(i);
+        }
+        localMethod = (Method)accessible(localClass.getDeclaredMethod(paramString, paramArrayOfClass));
+        if (localMethod != null)
         {
-          localClass = localClass.getSuperclass();
-          if (localClass == null) {
-            throw new NoSuchMethodException();
-          }
+          mMethodMap.put(i, localMethod);
+          return localMethod;
         }
       }
-      return localNoSuchMethodException2;
+      catch (NoSuchMethodException localNoSuchMethodException2)
+      {
+        break label138;
+      }
+      localClass = localClass.getSuperclass();
+    } while (localClass != null);
+    label138:
+    paramString = new NoSuchMethodException();
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
   private Field field0(String paramString)
   {
     Class localClass = type();
+    int i;
     try
     {
-      i = localClass.hashCode();
-      i = paramString.hashCode() + i;
+      i = localClass.hashCode() + paramString.hashCode();
       if (mFieldMap.get(i) != null) {
         return (Field)mFieldMap.get(i);
       }
-      localField2 = localClass.getField(paramString);
-      localField1 = localField2;
-      if (localField2 != null)
+      Field localField1 = localClass.getField(paramString);
+      if (localField1 != null) {
+        mFieldMap.put(i, localField1);
+      }
+      return localField1;
+    }
+    catch (NoSuchFieldException localNoSuchFieldException1) {}
+    label123:
+    do
+    {
+      try
       {
-        mFieldMap.put(i, localField2);
+        i = localClass.hashCode() + paramString.hashCode();
+        if (mFieldMap.get(i) != null) {
+          return (Field)mFieldMap.get(i);
+        }
+        Field localField2 = (Field)accessible(localClass.getDeclaredField(paramString));
+        if (localField2 != null) {
+          mFieldMap.put(i, localField2);
+        }
         return localField2;
       }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException2)
-    {
-      for (;;)
+      catch (NoSuchFieldException localNoSuchFieldException2)
       {
-        try
-        {
-          int i = localClass.hashCode();
-          i = paramString.hashCode() + i;
-          if (mFieldMap.get(i) != null) {
-            return (Field)mFieldMap.get(i);
-          }
-          Field localField2 = (Field)accessible(localClass.getDeclaredField(paramString));
-          Field localField1 = localField2;
-          if (localField2 == null) {
-            break;
-          }
-          mFieldMap.put(i, localField2);
-          return localField2;
-        }
-        catch (NoSuchFieldException localNoSuchFieldException1)
-        {
-          localClass = localClass.getSuperclass();
-          if (localClass == null) {
-            throw new ReflectException(localNoSuchFieldException2);
-          }
-        }
+        break label123;
       }
-      return localNoSuchFieldException1;
+      localClass = localClass.getSuperclass();
+    } while (localClass != null);
+    paramString = new ReflectException(localNoSuchFieldException1);
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -178,17 +171,15 @@ public class Reflect
         return (Class)mClassMap.get(i);
       }
       paramString = Class.forName(paramString);
-      if (paramString != null)
-      {
+      if (paramString != null) {
         mClassMap.put(i, paramString);
-        return paramString;
       }
+      return paramString;
     }
     catch (Exception paramString)
     {
       throw new ReflectException(paramString);
     }
-    return paramString;
   }
   
   private static Class<?> forName(String paramString, ClassLoader paramClassLoader)
@@ -214,21 +205,16 @@ public class Reflect
     if (paramArrayOfClass1.length == paramArrayOfClass2.length)
     {
       int i = 0;
-      if (i < paramArrayOfClass2.length)
-      {
-        if (paramArrayOfClass2[i] == Reflect.NULL.class) {}
-        while (wrapper(paramArrayOfClass1[i]).isAssignableFrom(wrapper(paramArrayOfClass2[i])))
-        {
+      while (i < paramArrayOfClass2.length) {
+        if ((paramArrayOfClass2[i] == Reflect.NULL.class) || (wrapper(paramArrayOfClass1[i]).isAssignableFrom(wrapper(paramArrayOfClass2[i])))) {
           i += 1;
-          break;
+        } else {
+          return false;
         }
       }
+      return true;
     }
-    else
-    {
-      return false;
-    }
-    return true;
+    return false;
   }
   
   public static Reflect on(Class<?> paramClass)
@@ -291,7 +277,10 @@ public class Reflect
     if (i == 1) {
       return paramString.toLowerCase();
     }
-    return paramString.substring(0, 1).toLowerCase() + paramString.substring(1);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramString.substring(0, 1).toLowerCase());
+    localStringBuilder.append(paramString.substring(1));
+    return localStringBuilder.toString();
   }
   
   private Method similarMethod(String paramString, Class<?>[] paramArrayOfClass)
@@ -300,7 +289,6 @@ public class Reflect
     Method[] arrayOfMethod = ((Class)localObject2).getMethods();
     int j = arrayOfMethod.length;
     int i = 0;
-    Object localObject1;
     for (;;)
     {
       localObject1 = localObject2;
@@ -326,10 +314,21 @@ public class Reflect
         }
         i += 1;
       }
-      localObject2 = ((Class)localObject1).getSuperclass();
-      localObject1 = localObject2;
-    } while (localObject2 != null);
-    throw new NoSuchMethodException("No similar method " + paramString + " with params " + Arrays.toString(paramArrayOfClass) + " could be found on type " + type() + ".");
+      localObject1 = ((Class)localObject1).getSuperclass();
+    } while (localObject1 != null);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("No similar method ");
+    ((StringBuilder)localObject1).append(paramString);
+    ((StringBuilder)localObject1).append(" with params ");
+    ((StringBuilder)localObject1).append(Arrays.toString(paramArrayOfClass));
+    ((StringBuilder)localObject1).append(" could be found on type ");
+    ((StringBuilder)localObject1).append(type());
+    ((StringBuilder)localObject1).append(".");
+    paramString = new NoSuchMethodException(((StringBuilder)localObject1).toString());
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   private static Class<?>[] types(Object... paramVarArgs)
@@ -339,16 +338,16 @@ public class Reflect
       return new Class[0];
     }
     Class[] arrayOfClass = new Class[paramVarArgs.length];
-    if (i < paramVarArgs.length)
+    while (i < paramVarArgs.length)
     {
       Object localObject = paramVarArgs[i];
-      if (localObject == null) {}
-      for (localObject = Reflect.NULL.class;; localObject = localObject.getClass())
-      {
-        arrayOfClass[i] = localObject;
-        i += 1;
-        break;
+      if (localObject == null) {
+        localObject = Reflect.NULL.class;
+      } else {
+        localObject = localObject.getClass();
       }
+      arrayOfClass[i] = localObject;
+      i += 1;
     }
     return arrayOfClass;
   }
@@ -364,17 +363,12 @@ public class Reflect
   
   public static Class<?> wrapper(Class<?> paramClass)
   {
-    Class<?> localClass;
     if (paramClass == null) {
-      localClass = null;
+      return null;
     }
-    do
+    Object localObject = paramClass;
+    if (paramClass.isPrimitive())
     {
-      do
-      {
-        return localClass;
-        localClass = paramClass;
-      } while (!paramClass.isPrimitive());
       if (Boolean.TYPE == paramClass) {
         return Boolean.class;
       }
@@ -399,9 +393,12 @@ public class Reflect
       if (Character.TYPE == paramClass) {
         return Character.class;
       }
-      localClass = paramClass;
-    } while (Void.TYPE != paramClass);
-    return Void.class;
+      localObject = paramClass;
+      if (Void.TYPE == paramClass) {
+        localObject = Void.class;
+      }
+    }
+    return localObject;
   }
   
   public <P> P as(Class<P> paramClass)
@@ -418,13 +415,17 @@ public class Reflect
   public Reflect call(String paramString, Object... paramVarArgs)
   {
     Class[] arrayOfClass = types(paramVarArgs);
-    try
+    for (;;)
     {
-      Reflect localReflect = on(exactMethod(paramString, arrayOfClass), this.object, paramVarArgs);
-      return localReflect;
-    }
-    catch (NoSuchMethodException localNoSuchMethodException)
-    {
+      try
+      {
+        Reflect localReflect = on(exactMethod(paramString, arrayOfClass), this.object, paramVarArgs);
+        return localReflect;
+      }
+      catch (NoSuchMethodException localNoSuchMethodException)
+      {
+        continue;
+      }
       try
       {
         paramString = on((Method)accessible(similarMethod(paramString, arrayOfClass)), this.object, paramVarArgs);
@@ -442,101 +443,44 @@ public class Reflect
     return create(new Object[0]);
   }
   
-  /* Error */
   public Reflect create(Object... paramVarArgs)
   {
-    // Byte code:
-    //   0: aload_1
-    //   1: invokestatic 341	com/tencent/upload/utils/reflection/Reflect:types	([Ljava/lang/Object;)[Ljava/lang/Class;
-    //   4: astore 5
-    //   6: aload_0
-    //   7: invokevirtual 96	com/tencent/upload/utils/reflection/Reflect:type	()Ljava/lang/Class;
-    //   10: astore 4
-    //   12: aload 5
-    //   14: invokevirtual 99	java/lang/Object:hashCode	()I
-    //   17: aload_1
-    //   18: invokestatic 107	java/util/Arrays:hashCode	([Ljava/lang/Object;)I
-    //   21: iadd
-    //   22: istore_2
-    //   23: getstatic 30	com/tencent/upload/utils/reflection/Reflect:mConsMap	Landroid/util/SparseArray;
-    //   26: iload_2
-    //   27: invokevirtual 111	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   30: ifnull +22 -> 52
-    //   33: getstatic 30	com/tencent/upload/utils/reflection/Reflect:mConsMap	Landroid/util/SparseArray;
-    //   36: iload_2
-    //   37: invokevirtual 111	android/util/SparseArray:get	(I)Ljava/lang/Object;
-    //   40: checkcast 203	java/lang/reflect/Constructor
-    //   43: astore 4
-    //   45: aload 4
-    //   47: aload_1
-    //   48: invokestatic 354	com/tencent/upload/utils/reflection/Reflect:on	(Ljava/lang/reflect/Constructor;[Ljava/lang/Object;)Lcom/tencent/upload/utils/reflection/Reflect;
-    //   51: areturn
-    //   52: aload 4
-    //   54: aload 5
-    //   56: invokevirtual 358	java/lang/Class:getDeclaredConstructor	([Ljava/lang/Class;)Ljava/lang/reflect/Constructor;
-    //   59: invokestatic 125	com/tencent/upload/utils/reflection/Reflect:accessible	(Ljava/lang/reflect/AccessibleObject;)Ljava/lang/reflect/AccessibleObject;
-    //   62: checkcast 203	java/lang/reflect/Constructor
-    //   65: astore 4
-    //   67: getstatic 30	com/tencent/upload/utils/reflection/Reflect:mConsMap	Landroid/util/SparseArray;
-    //   70: iload_2
-    //   71: aload 4
-    //   73: invokevirtual 120	android/util/SparseArray:put	(ILjava/lang/Object;)V
-    //   76: goto -31 -> 45
-    //   79: astore 4
-    //   81: aload_0
-    //   82: invokevirtual 96	com/tencent/upload/utils/reflection/Reflect:type	()Ljava/lang/Class;
-    //   85: invokevirtual 362	java/lang/Class:getDeclaredConstructors	()[Ljava/lang/reflect/Constructor;
-    //   88: astore 6
-    //   90: aload 6
-    //   92: arraylength
-    //   93: istore_3
-    //   94: iconst_0
-    //   95: istore_2
-    //   96: iload_2
-    //   97: iload_3
-    //   98: if_icmpge +43 -> 141
-    //   101: aload 6
-    //   103: iload_2
-    //   104: aaload
-    //   105: astore 7
-    //   107: aload_0
-    //   108: aload 7
-    //   110: invokevirtual 363	java/lang/reflect/Constructor:getParameterTypes	()[Ljava/lang/Class;
-    //   113: aload 5
-    //   115: invokespecial 173	com/tencent/upload/utils/reflection/Reflect:match	([Ljava/lang/Class;[Ljava/lang/Class;)Z
-    //   118: ifeq +16 -> 134
-    //   121: aload 7
-    //   123: invokestatic 125	com/tencent/upload/utils/reflection/Reflect:accessible	(Ljava/lang/reflect/AccessibleObject;)Ljava/lang/reflect/AccessibleObject;
-    //   126: checkcast 203	java/lang/reflect/Constructor
-    //   129: aload_1
-    //   130: invokestatic 354	com/tencent/upload/utils/reflection/Reflect:on	(Ljava/lang/reflect/Constructor;[Ljava/lang/Object;)Lcom/tencent/upload/utils/reflection/Reflect;
-    //   133: areturn
-    //   134: iload_2
-    //   135: iconst_1
-    //   136: iadd
-    //   137: istore_2
-    //   138: goto -42 -> 96
-    //   141: new 144	com/tencent/upload/utils/reflection/ReflectException
-    //   144: dup
-    //   145: aload 4
-    //   147: invokespecial 147	com/tencent/upload/utils/reflection/ReflectException:<init>	(Ljava/lang/Throwable;)V
-    //   150: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	151	0	this	Reflect
-    //   0	151	1	paramVarArgs	Object[]
-    //   22	116	2	i	int
-    //   93	6	3	j	int
-    //   10	62	4	localObject	Object
-    //   79	67	4	localNoSuchMethodException	NoSuchMethodException
-    //   4	110	5	arrayOfClass	Class[]
-    //   88	14	6	arrayOfConstructor	Constructor[]
-    //   105	17	7	localConstructor	Constructor
-    // Exception table:
-    //   from	to	target	type
-    //   6	45	79	java/lang/NoSuchMethodException
-    //   45	52	79	java/lang/NoSuchMethodException
-    //   52	76	79	java/lang/NoSuchMethodException
+    Class[] arrayOfClass = types(paramVarArgs);
+    try
+    {
+      Object localObject = type();
+      i = arrayOfClass.hashCode() + Arrays.hashCode(paramVarArgs);
+      if (mConsMap.get(i) != null)
+      {
+        localObject = (Constructor)mConsMap.get(i);
+      }
+      else
+      {
+        localObject = (Constructor)accessible(((Class)localObject).getDeclaredConstructor(arrayOfClass));
+        mConsMap.put(i, localObject);
+      }
+      localObject = on((Constructor)localObject, paramVarArgs);
+      return localObject;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      Constructor[] arrayOfConstructor = type().getDeclaredConstructors();
+      int j = arrayOfConstructor.length;
+      int i = 0;
+      while (i < j)
+      {
+        Constructor localConstructor = arrayOfConstructor[i];
+        if (match(localConstructor.getParameterTypes(), arrayOfClass)) {
+          return on((Constructor)accessible(localConstructor), paramVarArgs);
+        }
+        i += 1;
+      }
+      paramVarArgs = new ReflectException(localNoSuchMethodException);
+    }
+    for (;;)
+    {
+      throw paramVarArgs;
+    }
   }
   
   public boolean equals(Object paramObject)
@@ -568,24 +512,19 @@ public class Reflect
     do
     {
       localObject2 = ((Class)localObject1).getDeclaredFields();
-      int k = localObject2.length;
+      int j = localObject2.length;
       int i = 0;
-      if (i < k)
+      while (i < j)
       {
         String str = localObject2[i];
-        if (!this.isClass) {}
-        for (int j = 1;; j = 0)
+        if ((this.isClass ^ true ^ Modifier.isStatic(str.getModifiers())))
         {
-          if ((j ^ Modifier.isStatic(str.getModifiers())) != 0)
-          {
-            str = str.getName();
-            if (!localLinkedHashMap.containsKey(str)) {
-              localLinkedHashMap.put(str, field(str));
-            }
+          str = str.getName();
+          if (!localLinkedHashMap.containsKey(str)) {
+            localLinkedHashMap.put(str, field(str));
           }
-          i += 1;
-          break;
         }
+        i += 1;
       }
       localObject2 = ((Class)localObject1).getSuperclass();
       localObject1 = localObject2;
@@ -636,7 +575,7 @@ public class Reflect
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.utils.reflection.Reflect
  * JD-Core Version:    0.7.0.1
  */

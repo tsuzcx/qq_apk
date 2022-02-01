@@ -2,12 +2,12 @@ package com.tencent.biz.pubaccount.weishi_new.push.biz;
 
 import android.content.Context;
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.engine.WeishiManager;
 import com.tencent.biz.pubaccount.weishi_new.WeishiActivityHelper;
 import com.tencent.biz.pubaccount.weishi_new.push.WSPushStrategyInfo;
 import com.tencent.biz.pubaccount.weishi_new.push.WSRedDotPushMsg;
 import com.tencent.biz.pubaccount.weishi_new.report.WSReportDc00898;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
+import com.tencent.mobileqq.app.WeishiManager;
 
 public class WSH5BrowserBiz
   extends WSBasePushBiz<WSRedDotPushMsg, WSPushStrategyInfo>
@@ -22,13 +22,11 @@ public class WSH5BrowserBiz
   
   public boolean a(Context paramContext, WSPushStrategyInfo paramWSPushStrategyInfo)
   {
-    int i = 2;
-    boolean bool1 = true;
     if (paramWSPushStrategyInfo == null) {
       return false;
     }
-    boolean bool2 = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
-    if (!bool2)
+    boolean bool = TextUtils.isEmpty(paramWSPushStrategyInfo.mScheme);
+    if (!bool)
     {
       WeishiActivityHelper.a(paramContext, paramWSPushStrategyInfo.mScheme);
       paramContext = WeishiUtils.a();
@@ -37,48 +35,33 @@ public class WSH5BrowserBiz
       }
       WeishiUtils.b();
     }
-    if (this.jdField_a_of_type_Int == 2) {
-      if (bool2)
-      {
-        i = 2;
-        if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSBasePushMsg != null) {
-          break label93;
-        }
-        paramContext = "";
-        label74:
-        WSReportDc00898.a(i, 1, paramContext);
-        label80:
-        if (bool2) {
-          break label133;
-        }
-      }
-    }
-    for (;;)
+    int j = this.jdField_a_of_type_Int;
+    int i = 2;
+    if (j == 2)
     {
-      return bool1;
-      i = 1;
-      break;
-      label93:
-      paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSBasePushMsg).mFeedIds;
-      break label74;
-      if (this.jdField_a_of_type_Int != 6) {
-        break label80;
-      }
-      if (bool2) {}
-      for (;;)
-      {
-        WSReportDc00898.c(i);
-        break;
+      if (!bool) {
         i = 1;
       }
-      label133:
-      bool1 = false;
+      if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSBasePushMsg == null) {
+        paramContext = "";
+      } else {
+        paramContext = ((WSRedDotPushMsg)this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newPushWSBasePushMsg).mFeedIds;
+      }
+      WSReportDc00898.a(i, 1, paramContext);
     }
+    else if (j == 6)
+    {
+      if (!bool) {
+        i = 1;
+      }
+      WSReportDc00898.c(i);
+    }
+    return bool ^ true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.push.biz.WSH5BrowserBiz
  * JD-Core Version:    0.7.0.1
  */

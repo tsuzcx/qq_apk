@@ -11,14 +11,15 @@ final class SDKSetEmotionHelper$1
   
   public void onAnimationUpdate(ValueAnimator paramValueAnimator)
   {
-    if (this.a != null) {
-      this.a.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
+    ProgressBar localProgressBar = this.a;
+    if (localProgressBar != null) {
+      localProgressBar.setProgress(((Integer)paramValueAnimator.getAnimatedValue()).intValue());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.emogroupstore.SDKSetEmotionHelper.1
  * JD-Core Version:    0.7.0.1
  */

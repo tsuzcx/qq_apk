@@ -26,7 +26,10 @@ final class CloudAVEngineImpl$AVEngineCache
   {
     super(paramInt);
     this.jdField_a_of_type_JavaIoFile = new File(paramString);
-    this.jdField_b_of_type_JavaIoFile = new File(this.jdField_a_of_type_JavaIoFile.getPath() + ".bak");
+    paramString = new StringBuilder();
+    paramString.append(this.jdField_a_of_type_JavaIoFile.getPath());
+    paramString.append(".bak");
+    this.jdField_b_of_type_JavaIoFile = new File(paramString.toString());
     b();
   }
   
@@ -42,8 +45,12 @@ final class CloudAVEngineImpl$AVEngineCache
       int i = 0;
       if (this.jdField_a_of_type_JavaIoFile.length() > 10485760L)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Cache file too big: " + this.jdField_a_of_type_JavaIoFile.length());
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("Cache file too big: ");
+          localStringBuilder.append(this.jdField_a_of_type_JavaIoFile.length());
+          QLog.d("QSec.AVEngine", 2, localStringBuilder.toString());
         }
         i = 1;
       }
@@ -58,12 +65,15 @@ final class CloudAVEngineImpl$AVEngineCache
   
   private void a(String paramString, ICloudAVEngine.ResultBundle paramResultBundle, XmlSerializer paramXmlSerializer)
   {
-    if (paramResultBundle.jdField_a_of_type_Long > new Date().getTime()) {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Write entry: " + paramResultBundle.toString());
+    if (paramResultBundle.jdField_a_of_type_Long > new Date().getTime())
+    {
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("Write entry: ");
+        localStringBuilder.append(paramResultBundle.toString());
+        QLog.d("QSec.AVEngine", 2, localStringBuilder.toString());
       }
-    }
-    while (!QLog.isColorLevel()) {
       try
       {
         paramXmlSerializer.startTag(null, "CacheEntry");
@@ -85,7 +95,13 @@ final class CloudAVEngineImpl$AVEngineCache
         return;
       }
     }
-    QLog.d("QSec.AVEngine", 2, "Discard expired entry for write: " + paramResultBundle.toString());
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("Discard expired entry for write: ");
+      paramString.append(paramResultBundle.toString());
+      QLog.d("QSec.AVEngine", 2, paramString.toString());
+    }
   }
   
   private boolean a()
@@ -119,55 +135,70 @@ final class CloudAVEngineImpl$AVEngineCache
   
   public ICloudAVEngine.ResultBundle a(String paramString)
   {
-    Object localObject;
     if (paramString == null) {
-      localObject = null;
+      return null;
     }
-    ICloudAVEngine.ResultBundle localResultBundle;
-    do
+    Object localObject1 = (ICloudAVEngine.ResultBundle)super.get(paramString);
+    Object localObject2;
+    if (localObject1 != null)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        do
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("Hit memory cache for key: ");
+        ((StringBuilder)localObject2).append(paramString);
+        QLog.d("QSec.AVEngine", 2, ((StringBuilder)localObject2).toString());
+      }
+      if (((ICloudAVEngine.ResultBundle)localObject1).jdField_a_of_type_Long < new Date().getTime())
+      {
+        if (QLog.isColorLevel())
         {
-          return localObject;
-          localResultBundle = (ICloudAVEngine.ResultBundle)super.get(paramString);
-          if (localResultBundle == null) {
-            break;
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("QSec.AVEngine", 2, "Hit memory cache for key: " + paramString);
-          }
-          localObject = localResultBundle;
-        } while (localResultBundle.jdField_a_of_type_Long >= new Date().getTime());
-        if (QLog.isColorLevel()) {
-          QLog.d("QSec.AVEngine", 2, "Memory cache expired for key: " + paramString);
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Memory cache expired for key: ");
+          ((StringBuilder)localObject1).append(paramString);
+          QLog.d("QSec.AVEngine", 2, ((StringBuilder)localObject1).toString());
         }
         remove(paramString);
         return null;
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-        localObject = localResultBundle;
-      } while (this.jdField_b_of_type_Boolean != true);
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "Look from cache file for key: " + paramString);
       }
-      localResultBundle = b(paramString);
-      localObject = localResultBundle;
-    } while (localResultBundle == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("QSec.AVEngine", 2, "Hit file cache for key: " + paramString);
+      return localObject1;
     }
-    if (localResultBundle.jdField_a_of_type_Long < new Date().getTime())
+    if ((!this.jdField_a_of_type_Boolean) || (this.jdField_b_of_type_Boolean == true))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("QSec.AVEngine", 2, "File cache expired for key: " + paramString);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("Look from cache file for key: ");
+        ((StringBuilder)localObject1).append(paramString);
+        QLog.d("QSec.AVEngine", 2, ((StringBuilder)localObject1).toString());
       }
-      return null;
+      localObject2 = b(paramString);
+      localObject1 = localObject2;
+      if (localObject2 != null)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Hit file cache for key: ");
+          ((StringBuilder)localObject1).append(paramString);
+          QLog.d("QSec.AVEngine", 2, ((StringBuilder)localObject1).toString());
+        }
+        if (((ICloudAVEngine.ResultBundle)localObject2).jdField_a_of_type_Long < new Date().getTime())
+        {
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("File cache expired for key: ");
+            ((StringBuilder)localObject1).append(paramString);
+            QLog.d("QSec.AVEngine", 2, ((StringBuilder)localObject1).toString());
+          }
+          return null;
+        }
+        put(paramString, localObject2);
+        localObject1 = localObject2;
+      }
     }
-    put(paramString, localResultBundle);
-    return localResultBundle;
+    return localObject1;
   }
   
   public void a()
@@ -211,7 +242,7 @@ final class CloudAVEngineImpl$AVEngineCache
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.AVEngineCache
  * JD-Core Version:    0.7.0.1
  */

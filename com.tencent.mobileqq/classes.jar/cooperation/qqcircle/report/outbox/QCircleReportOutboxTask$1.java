@@ -15,12 +15,20 @@ class QCircleReportOutboxTask$1
     this.this$0.setResultCode(paramLong);
     this.this$0.setResultMsg(paramString);
     QCircleReportOutboxTaskQueue.getInstance().completeTask(this.this$0, paramBoolean);
-    RFLog.i("QCircleReportOutboxTask", RFLog.USR, "doResend id:" + this.this$0.getTaskId() + " ,resultCode:" + paramLong + " ,trace_id:" + paramBaseRequest.getTraceId());
+    int i = RFLog.USR;
+    paramString = new StringBuilder();
+    paramString.append("doResend id:");
+    paramString.append(this.this$0.getTaskId());
+    paramString.append(" ,resultCode:");
+    paramString.append(paramLong);
+    paramString.append(" ,trace_id:");
+    paramString.append(paramBaseRequest.getTraceId());
+    RFLog.i("QCircleReportOutboxTask", i, paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqcircle.report.outbox.QCircleReportOutboxTask.1
  * JD-Core Version:    0.7.0.1
  */

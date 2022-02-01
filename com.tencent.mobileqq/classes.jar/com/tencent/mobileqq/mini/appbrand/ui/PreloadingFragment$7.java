@@ -21,62 +21,70 @@ class PreloadingFragment$7
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    long l;
     Object localObject1;
     if ((paramBoolean) && (paramJSONObject != null))
     {
-      l = paramJSONObject.optLong("retCode");
+      long l = paramJSONObject.optLong("retCode");
       localObject1 = paramJSONObject.optString("errMsg");
-      QLog.d("PreloadingFragment", 2, "getAppInfoByLink, retCode = " + l + ",errMsg = " + (String)localObject1);
-      if (l != 0L) {
-        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
-          break label746;
-        }
-      }
-    }
-    label298:
-    label438:
-    label746:
-    for (paramJSONObject = this.this$0.getString(2131718550);; paramJSONObject = (JSONObject)localObject1)
-    {
-      if (PreloadingFragment.access$300(this.this$0) != null)
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("getAppInfoByLink, retCode = ");
+      ((StringBuilder)localObject2).append(l);
+      ((StringBuilder)localObject2).append(",errMsg = ");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.d("PreloadingFragment", 2, ((StringBuilder)localObject2).toString());
+      if (l != 0L)
       {
-        localObject1 = new Bundle();
-        ((Bundle)localObject1).putLong("retCode", l);
-        ((Bundle)localObject1).putString("errMsg", paramJSONObject);
-        PreloadingFragment.access$300(this.this$0).send(1, (Bundle)localObject1);
+        paramJSONObject = (JSONObject)localObject1;
+        if (TextUtils.isEmpty((CharSequence)localObject1)) {
+          paramJSONObject = this.this$0.getString(2131718218);
+        }
+        if (PreloadingFragment.access$300(this.this$0) != null)
+        {
+          localObject1 = new Bundle();
+          ((Bundle)localObject1).putLong("retCode", l);
+          ((Bundle)localObject1).putString("errMsg", paramJSONObject);
+          PreloadingFragment.access$300(this.this$0).send(1, (Bundle)localObject1);
+        }
+        PreloadingFragment.access$500(this.this$0, paramJSONObject);
+        PreloadingFragment.access$400(this.this$0);
+        return;
       }
-      PreloadingFragment.access$500(this.this$0, paramJSONObject);
-      PreloadingFragment.access$400(this.this$0);
-      return;
-      Object localObject2 = (MiniAppInfo)paramJSONObject.opt("appInfo");
-      String str = paramJSONObject.optString("shareTicket", "");
+      localObject2 = (MiniAppInfo)paramJSONObject.opt("appInfo");
+      Object localObject3 = paramJSONObject.optString("shareTicket", "");
       if ((l == 0L) && (localObject2 != null) && (!TextUtils.isEmpty(((MiniAppInfo)localObject2).appId)))
       {
         paramJSONObject = new MiniAppConfig((MiniAppInfo)localObject2);
-        if (this.val$param == null)
-        {
+        Object localObject4 = this.val$param;
+        if (localObject4 == null) {
           paramJSONObject.launchParam = new LaunchParam();
-          paramJSONObject.launchParam.miniAppId = ((MiniAppInfo)localObject2).appId;
-          paramJSONObject.launchParam.shareTicket = str;
-          paramJSONObject.launchParam.navigateExtData = ((MiniAppInfo)localObject2).extraData;
-          if (!TextUtils.isEmpty(paramJSONObject.launchParam.shareTicket)) {
-            paramJSONObject.launchParam.scene = 1044;
-          }
-          if (!TextUtils.isEmpty(paramJSONObject.launchParam.reportData)) {
-            break label438;
-          }
-          paramJSONObject.launchParam.reportData = ((MiniAppInfo)localObject2).reportData;
-          if ((((MiniAppInfo)localObject2).verType != 3) && (((MiniAppInfo)localObject2).verType != 1)) {
-            paramJSONObject.forceReroad = 3;
-          }
-          if ((((MiniAppInfo)localObject2).clearAuths == 1) && (CommonDataAdapter.a().a() > 0L)) {
-            paramJSONObject.config.clearAuths = 0;
-          }
+        } else {
+          paramJSONObject.launchParam = ((LaunchParam)localObject4);
         }
-      }
-      for (;;)
-      {
+        paramJSONObject.launchParam.miniAppId = ((MiniAppInfo)localObject2).appId;
+        paramJSONObject.launchParam.shareTicket = ((String)localObject3);
+        paramJSONObject.launchParam.navigateExtData = ((MiniAppInfo)localObject2).extraData;
+        if (!TextUtils.isEmpty(paramJSONObject.launchParam.shareTicket)) {
+          paramJSONObject.launchParam.scene = 1044;
+        }
+        if (TextUtils.isEmpty(paramJSONObject.launchParam.reportData))
+        {
+          paramJSONObject.launchParam.reportData = ((MiniAppInfo)localObject2).reportData;
+        }
+        else if (!TextUtils.isEmpty(((MiniAppInfo)localObject2).reportData))
+        {
+          localObject3 = paramJSONObject.launchParam;
+          localObject4 = new StringBuilder();
+          ((StringBuilder)localObject4).append(paramJSONObject.launchParam.reportData);
+          ((StringBuilder)localObject4).append("&");
+          ((StringBuilder)localObject4).append(((MiniAppInfo)localObject2).reportData);
+          ((LaunchParam)localObject3).reportData = ((StringBuilder)localObject4).toString();
+        }
+        if ((((MiniAppInfo)localObject2).verType != 3) && (((MiniAppInfo)localObject2).verType != 1)) {
+          paramJSONObject.forceReroad = 3;
+        }
+        if ((((MiniAppInfo)localObject2).clearAuths == 1) && (CommonDataAdapter.a().a() > 0L)) {
+          paramJSONObject.config.clearAuths = 0;
+        }
         try
         {
           PreloadingFragment.access$200(this.this$0, paramJSONObject);
@@ -92,52 +100,60 @@ class PreloadingFragment$7
         catch (Throwable paramJSONObject)
         {
           QLog.e("PreloadingFragment", 1, "MiniAppController.startApp exception ", paramJSONObject);
-          continue;
         }
-        PreloadingFragment.access$400(this.this$0);
-        return;
-        paramJSONObject.launchParam = this.val$param;
-        break;
-        if (TextUtils.isEmpty(((MiniAppInfo)localObject2).reportData)) {
-          break label298;
-        }
-        paramJSONObject.launchParam.reportData = (paramJSONObject.launchParam.reportData + "&" + ((MiniAppInfo)localObject2).reportData);
-        break label298;
-        if (localObject2 == null) {
-          QLog.e("PreloadingFragment", 1, "getAppInfoByLink  onCmdListener appinfo==null retCode= " + l);
-        }
-        for (;;)
+      }
+      else
+      {
+        if (localObject2 == null)
         {
-          ThreadManager.getUIHandler().post(new PreloadingFragment.7.1(this, paramJSONObject));
-          if (PreloadingFragment.access$300(this.this$0) == null) {
-            break;
-          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("getAppInfoByLink  onCmdListener appinfo==null retCode= ");
+          ((StringBuilder)localObject2).append(l);
+          QLog.e("PreloadingFragment", 1, ((StringBuilder)localObject2).toString());
+        }
+        else
+        {
+          localObject3 = new StringBuilder();
+          ((StringBuilder)localObject3).append("getAppInfoByLink  onCmdListener retCode= ");
+          ((StringBuilder)localObject3).append(l);
+          ((StringBuilder)localObject3).append(" appid=");
+          ((StringBuilder)localObject3).append(((MiniAppInfo)localObject2).appId);
+          QLog.e("PreloadingFragment", 1, ((StringBuilder)localObject3).toString());
+        }
+        ThreadManager.getUIHandler().post(new PreloadingFragment.7.1(this, paramJSONObject));
+        if (PreloadingFragment.access$300(this.this$0) != null)
+        {
           paramJSONObject = new Bundle();
           paramJSONObject.putLong("retCode", l);
           paramJSONObject.putString("errMsg", (String)localObject1);
           PreloadingFragment.access$300(this.this$0).send(1, paramJSONObject);
-          break;
-          QLog.e("PreloadingFragment", 1, "getAppInfoByLink  onCmdListener retCode= " + l + " appid=" + ((MiniAppInfo)localObject2).appId);
         }
-        ThreadManager.getUIHandler().post(new PreloadingFragment.7.2(this, paramJSONObject));
-        if (PreloadingFragment.access$300(this.this$0) != null)
-        {
-          localObject1 = new Bundle();
-          if (paramJSONObject != null)
-          {
-            ((Bundle)localObject1).putLong("retCode", paramJSONObject.optLong("retCode"));
-            ((Bundle)localObject1).putString("errMsg", paramJSONObject.optString("errMsg"));
-          }
-          PreloadingFragment.access$300(this.this$0).send(1, (Bundle)localObject1);
-        }
-        QLog.e("PreloadingFragment", 1, "GetAppInfoByLink failed. isSuc=" + paramBoolean);
       }
     }
+    else
+    {
+      ThreadManager.getUIHandler().post(new PreloadingFragment.7.2(this, paramJSONObject));
+      if (PreloadingFragment.access$300(this.this$0) != null)
+      {
+        localObject1 = new Bundle();
+        if (paramJSONObject != null)
+        {
+          ((Bundle)localObject1).putLong("retCode", paramJSONObject.optLong("retCode"));
+          ((Bundle)localObject1).putString("errMsg", paramJSONObject.optString("errMsg"));
+        }
+        PreloadingFragment.access$300(this.this$0).send(1, (Bundle)localObject1);
+      }
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("GetAppInfoByLink failed. isSuc=");
+      paramJSONObject.append(paramBoolean);
+      QLog.e("PreloadingFragment", 1, paramJSONObject.toString());
+    }
+    PreloadingFragment.access$400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.appbrand.ui.PreloadingFragment.7
  * JD-Core Version:    0.7.0.1
  */

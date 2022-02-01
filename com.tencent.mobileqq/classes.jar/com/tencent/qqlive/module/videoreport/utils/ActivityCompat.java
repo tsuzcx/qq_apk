@@ -8,31 +8,37 @@ public class ActivityCompat
   
   public static boolean isResumed(Activity paramActivity)
   {
-    if (!sCanGetResumeField) {
+    boolean bool1 = sCanGetResumeField;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
     try
     {
       paramActivity = ReflectUtils.getFieldWithException(Activity.class, "mResumed", paramActivity);
+      bool1 = bool2;
       if ((paramActivity instanceof Boolean))
       {
-        bool = ((Boolean)paramActivity).booleanValue();
-        if (!bool) {}
+        boolean bool3 = ((Boolean)paramActivity).booleanValue();
+        bool1 = bool2;
+        if (bool3) {
+          bool1 = true;
+        }
       }
-      for (boolean bool = true;; bool = false) {
-        return bool;
-      }
-      return false;
+      return bool1;
     }
     catch (Exception paramActivity)
     {
-      sCanGetResumeField = false;
+      label48:
+      break label48;
     }
+    sCanGetResumeField = false;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.utils.ActivityCompat
  * JD-Core Version:    0.7.0.1
  */

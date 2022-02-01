@@ -1,9 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:layout_width="wrap_content" android:layout_height="wrap_content"
+<RelativeLayout android:layout_gravity="center_horizontal" android:layout_width="122.0dip" android:layout_height="50.0dip"
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <ImageView android:id="@id/a31" android:layout_width="22.0dip" android:layout_height="22.0dip" android:src="@drawable/avd" android:layout_centerInParent="true" />
-    <ImageView android:id="@id/a35" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true" />
-    <RelativeLayout android:id="@id/a33" android:background="@drawable/ave" android:visibility="gone" android:layout_width="20.0dip" android:layout_height="20.0dip" android:layout_centerInParent="true">
-        <ImageView android:layout_width="10.0dip" android:layout_height="10.0dip" android:src="@drawable/g_8" android:scaleType="centerCrop" android:layout_centerInParent="true" />
-    </RelativeLayout>
+    <ImageView android:id="@id/nii" android:layout_width="28.0dip" android:layout_height="28.0dip" android:layout_marginLeft="10.0dip" android:layout_marginRight="6.0dip" android:scaleType="centerCrop" android:layout_centerVertical="true" />
+    <TextView android:textSize="16.0dip" android:textColor="@color/bp" android:id="@id/ogv" android:layout_width="wrap_content" android:layout_height="wrap_content" android:includeFontPadding="false" android:layout_toRightOf="@id/nii" android:layout_centerVertical="true" />
+    <ImageView android:id="@id/oq3" android:background="@drawable/erw" android:layout_width="8.0dip" android:layout_height="8.0dip" android:layout_marginLeft="-4.0dip" android:layout_marginTop="-4.0dip" android:layout_toRightOf="@id/ogv" android:layout_alignTop="@id/ogv" />
 </RelativeLayout>

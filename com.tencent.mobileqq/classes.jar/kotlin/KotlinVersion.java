@@ -12,7 +12,7 @@ public final class KotlinVersion
 {
   @JvmField
   @NotNull
-  public static final KotlinVersion CURRENT = new KotlinVersion(1, 3, 72);
+  public static final KotlinVersion CURRENT = new KotlinVersion(1, 3, 70);
   public static final KotlinVersion.Companion Companion = new KotlinVersion.Companion(null);
   public static final int MAX_COMPONENT_VALUE = 255;
   private final int major;
@@ -35,19 +35,23 @@ public final class KotlinVersion
   
   private final int versionOf(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt1 < 0) {}
-    for (int i = 0;; i = 1)
-    {
-      if (i != 0) {
-        break label98;
-      }
-      throw ((Throwable)new IllegalArgumentException(("Version components are out of range: " + paramInt1 + '.' + paramInt2 + '.' + paramInt3).toString()));
-      if ((255 < paramInt1) || (paramInt2 < 0) || (255 < paramInt2) || (paramInt3 < 0) || (255 < paramInt3)) {
-        break;
-      }
+    int i;
+    if ((paramInt1 >= 0) && (255 >= paramInt1) && (paramInt2 >= 0) && (255 >= paramInt2) && (paramInt3 >= 0) && (255 >= paramInt3)) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    label98:
-    return (paramInt1 << 16) + (paramInt2 << 8) + paramInt3;
+    if (i != 0) {
+      return (paramInt1 << 16) + (paramInt2 << 8) + paramInt3;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Version components are out of range: ");
+    localStringBuilder.append(paramInt1);
+    localStringBuilder.append('.');
+    localStringBuilder.append(paramInt2);
+    localStringBuilder.append('.');
+    localStringBuilder.append(paramInt3);
+    throw ((Throwable)new IllegalArgumentException(localStringBuilder.toString().toString()));
   }
   
   public int compareTo(@NotNull KotlinVersion paramKotlinVersion)
@@ -61,24 +65,21 @@ public final class KotlinVersion
     if ((KotlinVersion)this == paramObject) {
       return true;
     }
+    Object localObject = paramObject;
     if (!(paramObject instanceof KotlinVersion)) {
-      paramObject = null;
+      localObject = null;
     }
-    for (;;)
+    paramObject = (KotlinVersion)localObject;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (paramObject != null)
     {
-      paramObject = (KotlinVersion)paramObject;
-      if (paramObject != null) {
-        if (this.version != paramObject.version) {
-          break label45;
-        }
-      }
-      label45:
-      for (boolean bool = true;; bool = false)
-      {
-        return bool;
-        return false;
+      bool1 = bool2;
+      if (this.version == paramObject.version) {
+        bool1 = true;
       }
     }
+    return bool1;
   }
   
   public final int getMajor()
@@ -103,23 +104,42 @@ public final class KotlinVersion
   
   public final boolean isAtLeast(int paramInt1, int paramInt2)
   {
-    return (this.major > paramInt1) || ((this.major == paramInt1) && (this.minor >= paramInt2));
+    int i = this.major;
+    return (i > paramInt1) || ((i == paramInt1) && (this.minor >= paramInt2));
   }
   
   public final boolean isAtLeast(int paramInt1, int paramInt2, int paramInt3)
   {
-    return (this.major > paramInt1) || ((this.major == paramInt1) && ((this.minor > paramInt2) || ((this.minor == paramInt2) && (this.patch >= paramInt3))));
+    int i = this.major;
+    if (i <= paramInt1) {
+      if (i == paramInt1)
+      {
+        paramInt1 = this.minor;
+        if ((paramInt1 > paramInt2) || ((paramInt1 == paramInt2) && (this.patch >= paramInt3))) {}
+      }
+      else
+      {
+        return false;
+      }
+    }
+    return true;
   }
   
   @NotNull
   public String toString()
   {
-    return this.major + '.' + this.minor + '.' + this.patch;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.major);
+    localStringBuilder.append('.');
+    localStringBuilder.append(this.minor);
+    localStringBuilder.append('.');
+    localStringBuilder.append(this.patch);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.KotlinVersion
  * JD-Core Version:    0.7.0.1
  */

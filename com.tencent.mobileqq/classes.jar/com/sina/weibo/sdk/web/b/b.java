@@ -16,7 +16,9 @@ public abstract class b
   public b(AuthInfo paramAuthInfo, int paramInt, String paramString1, String paramString2)
   {
     this.aI = new WebData(paramAuthInfo, paramInt, paramString1, paramString2);
-    this.aJ = System.currentTimeMillis();
+    paramAuthInfo = new StringBuilder();
+    paramAuthInfo.append(System.currentTimeMillis());
+    this.aJ = paramAuthInfo.toString();
   }
   
   protected abstract void a(Bundle paramBundle);
@@ -47,20 +49,25 @@ public abstract class b
   public final Bundle writeToBundle(Bundle paramBundle)
   {
     paramBundle.putParcelable("web_data", this.aI);
-    switch (this.aI.getType())
+    int i = this.aI.getType();
+    if (i != 1)
     {
+      if (i != 2)
+      {
+        if (i == 3) {
+          paramBundle.putInt("web_type", 3);
+        }
+      }
+      else {
+        paramBundle.putInt("web_type", 2);
+      }
     }
-    for (;;)
-    {
-      paramBundle.putString("_weibo_transaction", this.aJ);
-      a(paramBundle);
-      return paramBundle;
+    else {
       paramBundle.putInt("web_type", 1);
-      continue;
-      paramBundle.putInt("web_type", 2);
-      continue;
-      paramBundle.putInt("web_type", 3);
     }
+    paramBundle.putString("_weibo_transaction", this.aJ);
+    a(paramBundle);
+    return paramBundle;
   }
   
   public final WebData x()

@@ -12,14 +12,17 @@ class MiniAppCamera$4
   
   public void onError(MediaRecorder paramMediaRecorder, int paramInt1, int paramInt2)
   {
-    Log.i("MiniAppCamera", "onError: " + paramInt1);
+    paramMediaRecorder = new StringBuilder();
+    paramMediaRecorder.append("onError: ");
+    paramMediaRecorder.append(paramInt1);
+    Log.i("MiniAppCamera", paramMediaRecorder.toString());
     this.val$req.fail();
     MiniAppCamera.access$400(this.this$0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.camera.MiniAppCamera.4
  * JD-Core Version:    0.7.0.1
  */

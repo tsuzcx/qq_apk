@@ -55,40 +55,58 @@ public class OfflineFileInfo
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("bSend[").append(this.jdField_a_of_type_Boolean).append("]");
-    localStringBuilder.append("strUuid[").append(this.jdField_a_of_type_JavaLangString).append("]");
-    localStringBuilder.append("uFriendUin[").append(this.jdField_a_of_type_Long).append("]");
-    localStringBuilder.append("nDangerLv[").append(this.jdField_a_of_type_Int).append("]");
-    localStringBuilder.append("strFileName[").append(this.jdField_c_of_type_JavaLangString).append("]");
-    localStringBuilder.append("nFileSize[").append(this.jdField_b_of_type_Long).append("]");
-    localStringBuilder.append("nLiftTime[").append(this.jdField_c_of_type_Long).append("]");
-    localStringBuilder.append("nUploadTime[").append(this.jdField_d_of_type_Long).append("]");
-    localStringBuilder.append("md5[").append(this.jdField_d_of_type_JavaLangString).append("]");
+    localStringBuilder.append("bSend[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("]");
+    localStringBuilder.append("strUuid[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    localStringBuilder.append("uFriendUin[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("]");
+    localStringBuilder.append("nDangerLv[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("]");
+    localStringBuilder.append("strFileName[");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("]");
+    localStringBuilder.append("nFileSize[");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("]");
+    localStringBuilder.append("nLiftTime[");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    localStringBuilder.append("]");
+    localStringBuilder.append("nUploadTime[");
+    localStringBuilder.append(this.jdField_d_of_type_Long);
+    localStringBuilder.append("]");
+    localStringBuilder.append("md5[");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("]");
     return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    for (this.jdField_b_of_type_Int = 2;; this.jdField_b_of_type_Int = 1)
-    {
-      paramParcel.writeInt(this.jdField_b_of_type_Int);
-      paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
-      paramParcel.writeLong(this.jdField_a_of_type_Long);
-      paramParcel.writeInt(this.jdField_a_of_type_Int);
-      paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
-      paramParcel.writeLong(this.jdField_b_of_type_Long);
-      paramParcel.writeLong(this.jdField_c_of_type_Long);
-      paramParcel.writeLong(this.jdField_d_of_type_Long);
-      paramParcel.writeString(this.e);
-      paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
-      return;
+    if (this.jdField_a_of_type_Boolean) {
+      this.jdField_b_of_type_Int = 2;
+    } else {
+      this.jdField_b_of_type_Int = 1;
     }
+    paramParcel.writeInt(this.jdField_b_of_type_Int);
+    paramParcel.writeString(this.jdField_a_of_type_JavaLangString);
+    paramParcel.writeLong(this.jdField_a_of_type_Long);
+    paramParcel.writeInt(this.jdField_a_of_type_Int);
+    paramParcel.writeString(this.jdField_c_of_type_JavaLangString);
+    paramParcel.writeLong(this.jdField_b_of_type_Long);
+    paramParcel.writeLong(this.jdField_c_of_type_Long);
+    paramParcel.writeLong(this.jdField_d_of_type_Long);
+    paramParcel.writeString(this.e);
+    paramParcel.writeString(this.jdField_d_of_type_JavaLangString);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.OfflineFileInfo
  * JD-Core Version:    0.7.0.1
  */

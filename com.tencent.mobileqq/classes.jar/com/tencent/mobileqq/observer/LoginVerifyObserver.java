@@ -24,257 +24,294 @@ import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 public class LoginVerifyObserver
   implements BusinessObserver
 {
-  public void a() {}
+  private static final int CODE_IP_CANNOT_USE_FACE = 1;
+  private static final String TAG = "LoginVerifyObserver";
   
-  public void a(oidb_0xe96.RspBody paramRspBody) {}
+  public void checkSecureResponse(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse) {}
   
-  public void a(FaceSecureCheck.SecureCheckResponse paramSecureCheckResponse) {}
+  public void deleteFaceDataSuccess() {}
   
-  public void a(String paramString1, int paramInt, String paramString2) {}
+  public void getAccountIdentitySuccess(cmd0x9ae.RspBody paramRspBody) {}
   
-  public void a(String paramString1, String paramString2) {}
+  public void getAppConfigSuccess(byte[] paramArrayOfByte) {}
   
-  public void a(cmd0x9ae.RspBody paramRspBody) {}
+  public void getFaceStateSuccess(oidb_0x5e1.RspBody paramRspBody) {}
   
-  public void a(oidb_0x5e1.RspBody paramRspBody) {}
+  public void getPhoneUnitySuccess(cmd0x9ae.RspBody paramRspBody) {}
   
-  public void a(oidb_0x87a.RspBody paramRspBody) {}
+  public void getSecurePhoneSuccess(oidb_0xe96.RspBody paramRspBody) {}
   
-  public void a(oidb_0x87c.RspBody paramRspBody) {}
+  public void getTmpKeySuccess(String paramString1, String paramString2) {}
   
-  public void a(boolean paramBoolean, String paramString) {}
+  public void ipJudgeSuccess(boolean paramBoolean, String paramString) {}
   
-  public void a(byte[] paramArrayOfByte) {}
-  
-  public void b() {}
-  
-  public void b(cmd0x9ae.RspBody paramRspBody) {}
+  public void onFailedResponse(String paramString1, int paramInt, String paramString2) {}
   
   public void onReceive(int paramInt, boolean paramBoolean, Bundle paramBundle)
   {
-    String str = paramBundle.getString("cmd");
+    Object localObject1 = paramBundle.getString("cmd");
     if (!paramBoolean)
     {
-      localObject = paramBundle.getString("dataErrorMsg", "");
+      localObject2 = paramBundle.getString("dataErrorMsg", "");
       paramInt = paramBundle.getInt("dataErrorCode");
-      QLog.e("LoginVerifyObserver", 1, "LoginVerifyObserver onReceive error, code is : " + paramInt + ", error msg is : " + (String)localObject + " cmd is : " + str);
-      a(str, paramInt, (String)localObject);
-    }
-    do
-    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("LoginVerifyObserver onReceive error, code is : ");
+      paramBundle.append(paramInt);
+      paramBundle.append(", error msg is : ");
+      paramBundle.append((String)localObject2);
+      paramBundle.append(" cmd is : ");
+      paramBundle.append((String)localObject1);
+      QLog.e("LoginVerifyObserver", 1, paramBundle.toString());
+      onFailedResponse((String)localObject1, paramInt, (String)localObject2);
       return;
-      QLog.d("LoginVerifyObserver", 1, "LoginVerifyObserver success, cmd is : " + str);
-      paramBundle = paramBundle.getByteArray("data");
-      if (paramBundle == null)
+    }
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("LoginVerifyObserver success, cmd is : ");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    QLog.d("LoginVerifyObserver", 1, ((StringBuilder)localObject2).toString());
+    paramBundle = paramBundle.getByteArray("data");
+    if (paramBundle == null)
+    {
+      QLog.e("LoginVerifyObserver", 1, "LoginVerifyObserver onReceive success but data is null");
+      onFailedResponse((String)localObject1, -1, "data is null");
+      return;
+    }
+    if ("getTmpkey".equals(localObject1)) {
+      try
       {
-        QLog.e("LoginVerifyObserver", 1, "LoginVerifyObserver onReceive success but data is null");
-        a(str, -1, "data is null");
-        return;
-      }
-      if ("getTmpkey".equals(str))
-      {
-        try
+        paramBundle = new JSONObject(new String(paramBundle));
+        paramInt = paramBundle.optInt("ret", -1);
+        if (paramInt == 0)
         {
-          paramBundle = new JSONObject(new String(paramBundle));
-          paramInt = paramBundle.optInt("ret", -1);
-          if (paramInt == 0)
-          {
-            a(paramBundle.optString("openid"), paramBundle.optString("tmpkey"));
-            return;
-          }
-        }
-        catch (JSONException paramBundle)
-        {
-          QLog.e("LoginVerifyObserver", 1, "getTmpKey error : JSONException " + paramBundle.getMessage());
-          a(str, -1, paramBundle.getMessage());
+          getTmpKeySuccess(paramBundle.optString("openid"), paramBundle.optString("tmpkey"));
           return;
         }
         paramBundle = paramBundle.optString("errmsg");
-        a(str, paramInt, paramBundle);
-        QLog.e("LoginVerifyObserver", 1, "getTmpError, ret : " + paramInt + "  error : " + paramBundle);
+        onFailedResponse((String)localObject1, paramInt, paramBundle);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getTmpError, ret : ");
+        ((StringBuilder)localObject2).append(paramInt);
+        ((StringBuilder)localObject2).append("  error : ");
+        ((StringBuilder)localObject2).append(paramBundle);
+        QLog.e("LoginVerifyObserver", 1, ((StringBuilder)localObject2).toString());
         return;
       }
-      if ("getAppConfig".equals(str))
+      catch (JSONException paramBundle)
       {
-        try
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getTmpKey error : JSONException ");
+        ((StringBuilder)localObject2).append(paramBundle.getMessage());
+        QLog.e("LoginVerifyObserver", 1, ((StringBuilder)localObject2).toString());
+        onFailedResponse((String)localObject1, -1, paramBundle.getMessage());
+        return;
+      }
+    }
+    if ("getAppConfig".equals(localObject1)) {
+      try
+      {
+        paramBundle = new JSONObject(new String(paramBundle));
+        paramInt = paramBundle.optInt("ret", -1);
+        if (paramInt == 0)
         {
-          paramBundle = new JSONObject(new String(paramBundle));
-          paramInt = paramBundle.optInt("ret", -1);
-          if (paramInt == 0)
-          {
-            a(Base64.decode(paramBundle.optString("appconf_rsp"), 11));
-            return;
-          }
-        }
-        catch (JSONException paramBundle)
-        {
-          QLog.e("LoginVerifyObserver", 1, "getAppconf error : JSONException " + paramBundle.getMessage());
-          a(str, -1, paramBundle.getMessage());
+          getAppConfigSuccess(Base64.decode(paramBundle.optString("appconf_rsp"), 11));
           return;
         }
         paramBundle = paramBundle.optString("errmsg");
-        a(str, paramInt, paramBundle);
-        QLog.e("LoginVerifyObserver", 1, "getAppconf, ret : " + paramInt + "  error : " + paramBundle);
+        onFailedResponse((String)localObject1, paramInt, paramBundle);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getAppconf, ret : ");
+        ((StringBuilder)localObject2).append(paramInt);
+        ((StringBuilder)localObject2).append("  error : ");
+        ((StringBuilder)localObject2).append(paramBundle);
+        QLog.e("LoginVerifyObserver", 1, ((StringBuilder)localObject2).toString());
         return;
       }
-      if ("isIpForeign".equals(str))
+      catch (JSONException paramBundle)
       {
-        for (;;)
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("getAppconf error : JSONException ");
+        ((StringBuilder)localObject2).append(paramBundle.getMessage());
+        QLog.e("LoginVerifyObserver", 1, ((StringBuilder)localObject2).toString());
+        onFailedResponse((String)localObject1, -1, paramBundle.getMessage());
+        return;
+      }
+    }
+    if ("isIpForeign".equals(localObject1)) {
+      try
+      {
+        paramBundle = new JSONObject(new String(paramBundle));
+        paramInt = paramBundle.optInt("ret", -1);
+        if (paramInt == 0)
         {
-          try
-          {
-            paramBundle = new JSONObject(new String(paramBundle));
-            paramInt = paramBundle.optInt("ret", -1);
-            if (paramInt != 0) {
-              break;
-            }
-            paramBundle = Base64.decode(paramBundle.optString("available_rsp"), 11);
-            localObject = new FaceForeignIp.AvailableResponse();
-            ((FaceForeignIp.AvailableResponse)localObject).mergeFrom(paramBundle);
-            paramInt = ((FaceForeignIp.AvailableResponse)localObject).ret.get();
-            paramBundle = ((FaceForeignIp.AvailableResponse)localObject).msg.get();
-            if (paramInt != 1)
-            {
-              paramBoolean = true;
-              a(paramBoolean, paramBundle);
-              return;
-            }
+          paramBundle = Base64.decode(paramBundle.optString("available_rsp"), 11);
+          localObject2 = new FaceForeignIp.AvailableResponse();
+          ((FaceForeignIp.AvailableResponse)localObject2).mergeFrom(paramBundle);
+          paramInt = ((FaceForeignIp.AvailableResponse)localObject2).ret.get();
+          paramBundle = ((FaceForeignIp.AvailableResponse)localObject2).msg.get();
+          if (paramInt == 1) {
+            break label1295;
           }
-          catch (Exception paramBundle)
-          {
-            QLog.e("LoginVerifyObserver", 1, new Object[] { "IP_IS_FOREIGN_HTTPS error : ", paramBundle.getMessage() });
-            a(str, -1, paramBundle.getMessage());
-            return;
-          }
-          paramBoolean = false;
+          paramBoolean = true;
+          ipJudgeSuccess(paramBoolean, paramBundle);
+          return;
         }
         paramBundle = paramBundle.optString("errmsg");
         QLog.e("LoginVerifyObserver", 1, new Object[] { "IP_IS_FOREIGN_HTTPS, ret : ", Integer.valueOf(paramInt), " error : ", paramBundle });
-        a(str, paramInt, paramBundle);
+        onFailedResponse((String)localObject1, paramInt, paramBundle);
         return;
       }
-      if ("FaceRecognition.Available".equals(str))
+      catch (Exception paramBundle)
       {
-        localObject = new FaceForeignIp.AvailableResponse();
-        for (;;)
-        {
-          try
-          {
-            ((FaceForeignIp.AvailableResponse)localObject).mergeFrom(paramBundle);
-            paramInt = ((FaceForeignIp.AvailableResponse)localObject).ret.get();
-            paramBundle = ((FaceForeignIp.AvailableResponse)localObject).msg.get();
-            if (paramInt != 1)
-            {
-              paramBoolean = true;
-              a(paramBoolean, paramBundle);
-              return;
-            }
-          }
-          catch (InvalidProtocolBufferMicroException paramBundle)
-          {
-            QLog.e("LoginVerifyObserver", 1, new Object[] { "AvailableResponse merge from data error : ", paramBundle.getMessage() });
-            a(str, -1, paramBundle.getMessage());
-            return;
-          }
-          paramBoolean = false;
-        }
+        QLog.e("LoginVerifyObserver", 1, new Object[] { "IP_IS_FOREIGN_HTTPS error : ", paramBundle.getMessage() });
+        onFailedResponse((String)localObject1, -1, paramBundle.getMessage());
+        return;
       }
-      if ("FaceRecognition.SecureCheck".equals(str))
+    } else if ("FaceRecognition.Available".equals(localObject1)) {
+      localObject2 = new FaceForeignIp.AvailableResponse();
+    }
+    for (;;)
+    {
+      try
       {
-        localObject = new FaceSecureCheck.SecureCheckResponse();
+        ((FaceForeignIp.AvailableResponse)localObject2).mergeFrom(paramBundle);
+        paramInt = ((FaceForeignIp.AvailableResponse)localObject2).ret.get();
+        paramBundle = ((FaceForeignIp.AvailableResponse)localObject2).msg.get();
+        if (paramInt == 1) {
+          break label1300;
+        }
+        paramBoolean = true;
+        ipJudgeSuccess(paramBoolean, paramBundle);
+        return;
+      }
+      catch (InvalidProtocolBufferMicroException paramBundle)
+      {
+        QLog.e("LoginVerifyObserver", 1, new Object[] { "AvailableResponse merge from data error : ", paramBundle.getMessage() });
+        onFailedResponse((String)localObject1, -1, paramBundle.getMessage());
+        return;
+      }
+      if ("FaceRecognition.SecureCheck".equals(localObject1))
+      {
+        localObject2 = new FaceSecureCheck.SecureCheckResponse();
         try
         {
-          ((FaceSecureCheck.SecureCheckResponse)localObject).mergeFrom(paramBundle);
-          paramInt = ((FaceSecureCheck.SecureCheckResponse)localObject).uint32_errcode.get();
+          ((FaceSecureCheck.SecureCheckResponse)localObject2).mergeFrom(paramBundle);
+          paramInt = ((FaceSecureCheck.SecureCheckResponse)localObject2).uint32_errcode.get();
           if (paramInt != 0)
           {
-            paramBundle = ((FaceSecureCheck.SecureCheckResponse)localObject).str_err_msg.get();
-            a(str, paramInt, paramBundle);
-            QLog.e("LoginVerifyObserver", 1, "sso result error, ret : " + paramInt + "  error : " + paramBundle);
+            paramBundle = ((FaceSecureCheck.SecureCheckResponse)localObject2).str_err_msg.get();
+            onFailedResponse((String)localObject1, paramInt, paramBundle);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("sso result error, ret : ");
+            ((StringBuilder)localObject1).append(paramInt);
+            ((StringBuilder)localObject1).append("  error : ");
+            ((StringBuilder)localObject1).append(paramBundle);
+            QLog.e("LoginVerifyObserver", 1, ((StringBuilder)localObject1).toString());
             return;
           }
+          checkSecureResponse((FaceSecureCheck.SecureCheckResponse)localObject2);
+          return;
         }
         catch (InvalidProtocolBufferMicroException paramBundle)
         {
           QLog.e("LoginVerifyObserver", 1, new Object[] { "SecureCheckResponse merge from data error : ", paramBundle.getMessage() });
           return;
         }
-        a((FaceSecureCheck.SecureCheckResponse)localObject);
-        return;
       }
       try
       {
-        localObject = new oidb_sso.OIDBSSOPkg();
-        ((oidb_sso.OIDBSSOPkg)localObject).mergeFrom(paramBundle);
-        paramInt = ((oidb_sso.OIDBSSOPkg)localObject).uint32_result.get();
+        localObject2 = new oidb_sso.OIDBSSOPkg();
+        ((oidb_sso.OIDBSSOPkg)localObject2).mergeFrom(paramBundle);
+        paramInt = ((oidb_sso.OIDBSSOPkg)localObject2).uint32_result.get();
         if (paramInt != 0)
         {
-          paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).str_error_msg.get();
-          a(str, paramInt, paramBundle);
-          QLog.e("LoginVerifyObserver", 1, "sso result error, ret : " + paramInt + "  error : " + paramBundle);
+          paramBundle = ((oidb_sso.OIDBSSOPkg)localObject2).str_error_msg.get();
+          onFailedResponse((String)localObject1, paramInt, paramBundle);
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("sso result error, ret : ");
+          ((StringBuilder)localObject2).append(paramInt);
+          ((StringBuilder)localObject2).append("  error : ");
+          ((StringBuilder)localObject2).append(paramBundle);
+          QLog.e("LoginVerifyObserver", 1, ((StringBuilder)localObject2).toString());
+          return;
+        }
+        paramBundle = ((oidb_sso.OIDBSSOPkg)localObject2).bytes_bodybuffer.get().toByteArray();
+        if ("OidbSvc.0x5e1_295".equals(localObject1))
+        {
+          localObject2 = new oidb_0x5e1.RspBody();
+          ((oidb_0x5e1.RspBody)localObject2).mergeFrom(paramBundle);
+          getFaceStateSuccess((oidb_0x5e1.RspBody)localObject2);
+          return;
+        }
+        if ("OidbSvc.0x87c_108".equals(localObject1))
+        {
+          localObject2 = new oidb_0x87c.RspBody();
+          ((oidb_0x87c.RspBody)localObject2).mergeFrom(paramBundle);
+          verifySmsCodeSuccess((oidb_0x87c.RspBody)localObject2);
+          return;
+        }
+        if ("OidbSvc.0x87a_108".equals(localObject1))
+        {
+          localObject2 = new oidb_0x87a.RspBody();
+          ((oidb_0x87a.RspBody)localObject2).mergeFrom(paramBundle);
+          sendSmsCodeSuccess((oidb_0x87a.RspBody)localObject2);
+          return;
+        }
+        if ("OidbSvc.0x587_63".equals(localObject1))
+        {
+          deleteFaceDataSuccess();
+          return;
+        }
+        if ("OidbSvc.0xe96_0".equals(localObject1))
+        {
+          localObject2 = new oidb_0xe96.RspBody();
+          ((oidb_0xe96.RspBody)localObject2).mergeFrom(paramBundle);
+          getSecurePhoneSuccess((oidb_0xe96.RspBody)localObject2);
+          return;
+        }
+        if ("OidbSvc.0xe9a_0".equals(localObject1))
+        {
+          refreshPhoneSuccess();
+          return;
+        }
+        if ((!"OidbSvc.0x9ae_13".equals(localObject1)) && (!"OidbSvc.0x9ae_14".equals(localObject1)))
+        {
+          if ("OidbSvc.0x9ae_15".equals(localObject1))
+          {
+            localObject2 = new cmd0x9ae.RspBody();
+            ((cmd0x9ae.RspBody)localObject2).mergeFrom(paramBundle);
+            getPhoneUnitySuccess((cmd0x9ae.RspBody)localObject2);
+          }
+        }
+        else
+        {
+          localObject2 = new cmd0x9ae.RspBody();
+          ((cmd0x9ae.RspBody)localObject2).mergeFrom(paramBundle);
+          getAccountIdentitySuccess((cmd0x9ae.RspBody)localObject2);
           return;
         }
       }
       catch (InvalidProtocolBufferMicroException paramBundle)
       {
-        a(str, -1, paramBundle.getMessage());
-        return;
+        onFailedResponse((String)localObject1, -1, paramBundle.getMessage());
       }
-      paramBundle = ((oidb_sso.OIDBSSOPkg)localObject).bytes_bodybuffer.get().toByteArray();
-      if ("OidbSvc.0x5e1_295".equals(str))
-      {
-        localObject = new oidb_0x5e1.RspBody();
-        ((oidb_0x5e1.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0x5e1.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0x87c_108".equals(str))
-      {
-        localObject = new oidb_0x87c.RspBody();
-        ((oidb_0x87c.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0x87c.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0x87a_108".equals(str))
-      {
-        localObject = new oidb_0x87a.RspBody();
-        ((oidb_0x87a.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0x87a.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0x587_63".equals(str))
-      {
-        b();
-        return;
-      }
-      if ("OidbSvc.0xe96_0".equals(str))
-      {
-        localObject = new oidb_0xe96.RspBody();
-        ((oidb_0xe96.RspBody)localObject).mergeFrom(paramBundle);
-        a((oidb_0xe96.RspBody)localObject);
-        return;
-      }
-      if ("OidbSvc.0xe9a_0".equals(str))
-      {
-        a();
-        return;
-      }
-      if (("OidbSvc.0x9ae_13".equals(str)) || ("OidbSvc.0x9ae_14".equals(str)))
-      {
-        localObject = new cmd0x9ae.RspBody();
-        ((cmd0x9ae.RspBody)localObject).mergeFrom(paramBundle);
-        a((cmd0x9ae.RspBody)localObject);
-        return;
-      }
-    } while (!"OidbSvc.0x9ae_15".equals(str));
-    Object localObject = new cmd0x9ae.RspBody();
-    ((cmd0x9ae.RspBody)localObject).mergeFrom(paramBundle);
-    b((cmd0x9ae.RspBody)localObject);
+      return;
+      label1295:
+      paramBoolean = false;
+      break;
+      label1300:
+      paramBoolean = false;
+    }
   }
+  
+  public void refreshPhoneSuccess() {}
+  
+  public void sendSmsCodeSuccess(oidb_0x87a.RspBody paramRspBody) {}
+  
+  public void verifySmsCodeSuccess(oidb_0x87c.RspBody paramRspBody) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.observer.LoginVerifyObserver
  * JD-Core Version:    0.7.0.1
  */

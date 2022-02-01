@@ -13,14 +13,14 @@ class LiteCopyPromptHelper$4
   {
     if ((LiteCopyPromptHelper.a(this.this$0) != null) && (LiteCopyPromptHelper.a(this.this$0).getParent() != null))
     {
-      ((RelativeLayout)LiteCopyPromptHelper.a(this.this$0).findViewById(2131364598)).removeView(LiteCopyPromptHelper.a(this.this$0));
+      ((RelativeLayout)LiteCopyPromptHelper.a(this.this$0).findViewById(2131364485)).removeView(LiteCopyPromptHelper.a(this.this$0));
       LiteCopyPromptHelper.a(this.this$0, null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.copyprompt.LiteCopyPromptHelper.4
  * JD-Core Version:    0.7.0.1
  */

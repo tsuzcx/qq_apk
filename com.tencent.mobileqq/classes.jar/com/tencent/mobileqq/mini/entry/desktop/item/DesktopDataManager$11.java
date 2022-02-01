@@ -19,12 +19,17 @@ class DesktopDataManager$11
       DesktopDataManager.access$1500(this.this$0).onDataChanged();
       QLog.d("DesktopDataManager", 1, "updateData, convertData complete");
     }
-    QLog.d("DesktopDataManager", 1, "convertData, size = " + DesktopDataManager.access$1600(this.this$0).size() + ", app List: " + DesktopDataManager.access$1600(this.this$0).toString());
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("convertData, size = ");
+    localStringBuilder.append(DesktopDataManager.access$1600(this.this$0).size());
+    localStringBuilder.append(", app List: ");
+    localStringBuilder.append(DesktopDataManager.access$1600(this.this$0).toString());
+    QLog.d("DesktopDataManager", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.11
  * JD-Core Version:    0.7.0.1
  */

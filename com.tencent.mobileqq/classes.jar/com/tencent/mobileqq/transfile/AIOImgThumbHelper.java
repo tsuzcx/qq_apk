@@ -2,23 +2,27 @@ package com.tencent.mobileqq.transfile;
 
 import android.content.res.Resources;
 import android.util.DisplayMetrics;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor;
 import com.tencent.mobileqq.config.business.AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig;
+import com.tencent.mobileqq.data.MessageForPic;
+import com.tencent.mobileqq.data.ThumbWidthHeightDP;
+import com.tencent.mobileqq.pic.api.IPicHelper;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import mqq.app.MobileQQ;
 
 public class AIOImgThumbHelper
 {
   private static final String TAG = "AIOImgThumbHelper";
   private static float density = -1.0F;
   private static AIOImgThumbHelper mInstance;
-  private static int sAioImageDynamicMax;
-  private static int sAioImageDynamicMin;
-  private static int sAioImageMaxSize;
-  private static int sAioImageMaxSizeUnderLimit;
-  private static int sAioImageMinSize;
-  private static int sAioImageMinSizeUnderLimit;
+  private static int sAioImageDynamicMax = 0;
+  private static int sAioImageDynamicMin = 0;
+  private static int sAioImageMaxSize = 0;
+  private static int sAioImageMaxSizeUnderLimit = 0;
+  private static int sAioImageMinSize = 0;
+  private static int sAioImageMinSizeUnderLimit = 0;
   private static int sPicSizeLimit = 650;
   private static boolean sSizeInited = false;
   
@@ -68,7 +72,7 @@ public class AIOImgThumbHelper
   {
     if (density == -1.0F)
     {
-      density = BaseApplicationImpl.getContext().getResources().getDisplayMetrics().density;
+      density = MobileQQ.getContext().getResources().getDisplayMetrics().density;
       if (density <= 0.0F) {
         density = 1.0F;
       }
@@ -78,15 +82,34 @@ public class AIOImgThumbHelper
   
   public static AIOImgThumbHelper getInstance()
   {
-    if (mInstance == null) {}
-    try
-    {
-      if (mInstance == null) {
-        mInstance = new AIOImgThumbHelper();
+    if (mInstance == null) {
+      try
+      {
+        if (mInstance == null) {
+          mInstance = new AIOImgThumbHelper();
+        }
       }
-      return mInstance;
+      finally {}
     }
-    finally {}
+    return mInstance;
+  }
+  
+  public static ThumbWidthHeightDP getThumbWidthHeightDP(MessageForPic paramMessageForPic, boolean paramBoolean)
+  {
+    if (paramMessageForPic.thumbWidthHeightDP == null) {
+      paramMessageForPic.thumbWidthHeightDP = getThumbWidthHeightDPForPicMsg(paramBoolean, ((IPicHelper)QRoute.api(IPicHelper.class)).isEmotion(paramMessageForPic) ^ true, (int)Math.max(paramMessageForPic.width, paramMessageForPic.height));
+    }
+    return paramMessageForPic.thumbWidthHeightDP;
+  }
+  
+  public static ThumbWidthHeightDP getThumbWidthHeightDPForPicMsg(boolean paramBoolean1, boolean paramBoolean2, int paramInt)
+  {
+    if (!paramBoolean2) {
+      return CommonImgThumbHelper.getThumbWidthHeightDP(paramBoolean1);
+    }
+    int i = getAioThumbMinDp(paramBoolean1, paramBoolean2, paramInt);
+    paramInt = getAioThumbMaxDp(paramBoolean1, paramBoolean2, paramInt);
+    return new ThumbWidthHeightDP(i, i, paramInt, paramInt);
   }
   
   public static void initAioThumbSize()
@@ -96,46 +119,45 @@ public class AIOImgThumbHelper
   
   public void initAioThumbSizeInner()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        boolean bool = sSizeInited;
-        if (bool) {
-          return;
-        }
-        AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig localAIOPicThumbSizeConfig = AIOPicThumbSizeProcessor.a();
-        if ((localAIOPicThumbSizeConfig != null) && (localAIOPicThumbSizeConfig.jdField_a_of_type_Boolean))
-        {
-          sAioImageMinSize = localAIOPicThumbSizeConfig.d;
-          sAioImageMaxSize = localAIOPicThumbSizeConfig.c;
-          sAioImageDynamicMin = localAIOPicThumbSizeConfig.h;
-          sAioImageDynamicMax = localAIOPicThumbSizeConfig.g;
-          sAioImageMinSizeUnderLimit = localAIOPicThumbSizeConfig.f;
-          sAioImageMaxSizeUnderLimit = localAIOPicThumbSizeConfig.e;
-          sPicSizeLimit = localAIOPicThumbSizeConfig.jdField_b_of_type_Int;
-          QLog.d("AIOImgThumbHelper", 1, new Object[] { "maxRatio:", Double.valueOf(localAIOPicThumbSizeConfig.jdField_a_of_type_Double), ", minRatio:", Double.valueOf(localAIOPicThumbSizeConfig.jdField_b_of_type_Double), ", picSizeLimit:", Integer.valueOf(sPicSizeLimit) });
-          sSizeInited = true;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.d("AIOImgThumbHelper", 2, new Object[] { "thumbMax:", Integer.valueOf(sAioImageMaxSize), ", thumbMin:", Integer.valueOf(sAioImageMinSize) });
-          continue;
-        }
-        sAioImageMinSize = CommonImgThumbHelper.getImgThumbMinDp(false);
+      boolean bool = sSizeInited;
+      if (bool) {
+        return;
       }
-      finally {}
-      sAioImageMaxSize = CommonImgThumbHelper.getImgThumbMaxDp(false);
-      sAioImageDynamicMin = CommonImgThumbHelper.getImgThumbMinDp(true);
-      sAioImageDynamicMax = CommonImgThumbHelper.getImgThumbMaxDp(true);
-      sAioImageMinSizeUnderLimit = sAioImageMinSize;
-      sAioImageMaxSizeUnderLimit = sAioImageMaxSize;
+      AIOPicThumbSizeProcessor.AIOPicThumbSizeConfig localAIOPicThumbSizeConfig = AIOPicThumbSizeProcessor.a();
+      if ((localAIOPicThumbSizeConfig != null) && (localAIOPicThumbSizeConfig.jdField_a_of_type_Boolean))
+      {
+        sAioImageMinSize = localAIOPicThumbSizeConfig.d;
+        sAioImageMaxSize = localAIOPicThumbSizeConfig.c;
+        sAioImageDynamicMin = localAIOPicThumbSizeConfig.h;
+        sAioImageDynamicMax = localAIOPicThumbSizeConfig.g;
+        sAioImageMinSizeUnderLimit = localAIOPicThumbSizeConfig.f;
+        sAioImageMaxSizeUnderLimit = localAIOPicThumbSizeConfig.e;
+        sPicSizeLimit = localAIOPicThumbSizeConfig.jdField_b_of_type_Int;
+        QLog.d("AIOImgThumbHelper", 1, new Object[] { "maxRatio:", Double.valueOf(localAIOPicThumbSizeConfig.jdField_a_of_type_Double), ", minRatio:", Double.valueOf(localAIOPicThumbSizeConfig.jdField_b_of_type_Double), ", picSizeLimit:", Integer.valueOf(sPicSizeLimit) });
+      }
+      else
+      {
+        sAioImageMinSize = CommonImgThumbHelper.getImgThumbMinDp(false);
+        sAioImageMaxSize = CommonImgThumbHelper.getImgThumbMaxDp(false);
+        sAioImageDynamicMin = CommonImgThumbHelper.getImgThumbMinDp(true);
+        sAioImageDynamicMax = CommonImgThumbHelper.getImgThumbMaxDp(true);
+        sAioImageMinSizeUnderLimit = sAioImageMinSize;
+        sAioImageMaxSizeUnderLimit = sAioImageMaxSize;
+      }
+      sSizeInited = true;
+      if (QLog.isColorLevel()) {
+        QLog.d("AIOImgThumbHelper", 2, new Object[] { "thumbMax:", Integer.valueOf(sAioImageMaxSize), ", thumbMin:", Integer.valueOf(sAioImageMinSize) });
+      }
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.AIOImgThumbHelper
  * JD-Core Version:    0.7.0.1
  */

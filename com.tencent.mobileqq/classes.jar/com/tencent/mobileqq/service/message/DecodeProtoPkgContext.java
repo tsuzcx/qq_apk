@@ -8,6 +8,7 @@ public class DecodeProtoPkgContext
   public int a;
   public long a;
   private SparseArray<Object> a;
+  public String a;
   public boolean a;
   public int b;
   public long b;
@@ -18,9 +19,12 @@ public class DecodeProtoPkgContext
   public int d;
   public long d;
   public boolean d = false;
+  public int e;
+  public long e;
   public boolean e;
-  public boolean f = false;
-  public boolean g = true;
+  public long f;
+  public boolean f;
+  public boolean g;
   public boolean h = false;
   public boolean i = false;
   
@@ -28,8 +32,13 @@ public class DecodeProtoPkgContext
   {
     this.jdField_a_of_type_Boolean = false;
     this.jdField_e_of_type_Boolean = false;
+    this.jdField_f_of_type_Boolean = false;
+    this.jdField_g_of_type_Boolean = true;
+    this.jdField_e_of_type_Long = -1L;
+    this.jdField_f_of_type_Long = -1L;
+    this.jdField_e_of_type_Int = 0;
     this.jdField_a_of_type_Long = paramLong1;
-    this.jdField_e_of_type_Long = paramLong2;
+    this.jdField_g_of_type_Long = paramLong2;
     this.jdField_a_of_type_Boolean = paramBoolean1;
     this.b = paramBoolean2;
     this.c = paramBoolean3;
@@ -38,8 +47,9 @@ public class DecodeProtoPkgContext
   
   public Object a(int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidUtilSparseArray != null) {
-      return this.jdField_a_of_type_AndroidUtilSparseArray.get(paramInt);
+    SparseArray localSparseArray = this.jdField_a_of_type_AndroidUtilSparseArray;
+    if (localSparseArray != null) {
+      return localSparseArray.get(paramInt);
     }
     return null;
   }
@@ -54,7 +64,7 @@ public class DecodeProtoPkgContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.service.message.DecodeProtoPkgContext
  * JD-Core Version:    0.7.0.1
  */

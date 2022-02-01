@@ -9,18 +9,19 @@ class SetPwdBannerProcessor$2$1
   
   public void run()
   {
-    if (this.jdField_a_of_type_Boolean) {
-      BannerManager.a().a(20, 2, null);
-    }
-    while (!this.b) {
+    if (this.jdField_a_of_type_Boolean)
+    {
+      BannerManager.a().a(SetPwdBannerProcessor.a, 2, null);
       return;
     }
-    BannerManager.a().a(20, 0, null);
+    if (this.b) {
+      BannerManager.a().a(SetPwdBannerProcessor.a, 0, null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.SetPwdBannerProcessor.2.1
  * JD-Core Version:    0.7.0.1
  */

@@ -18,13 +18,13 @@ import mqq.os.MqqHandler;
 public class MiniAppCmdServlet
 {
   public static final String CMD_ADD_FAVORITES_TO_QQ = "cmd_add_qq_favorites";
+  public static final String CMD_CHANGE_ARK_SHARE_URL = "cmd_change_ark_share_url";
   public static final String CMD_DC_REPORT_LOG_KEY_DATA = "cmd_dc_report_log_key_data";
   public static final String CMD_EXIT_QQ = "cmd_exit_qq";
   public static final String CMD_NOTIFY_EVENT_INFO = "cmd_notify_event_info";
   public static final String CMD_ON_PRELOAD_GAME_BASELIB = "cmd_on_preload_game_baselib";
   public static final String CMD_REBIND_ENGINE_CHANNEL = "cmd_rebind_engine_channel";
   public static final String CMD_REBIND_ENGINE_CHANNEL_NEW = "cmd_rebind_engine_channel_new";
-  public static final String CMD_SHARE_ARK_ASYNC_MESSAGE = "cmd_share_ark_async_message";
   public static final String CMD_UPDATE_APP_FOR_MINI_GAME = "cmd_update_app_for_mini_game";
   public static final String CMD_UPDATE_BASELIB = "cmd_update_baselib";
   public static final String CMD_UPDATE_PULL_DOWN_ENTRY_LIST = "cmd_update_pull_down_entry_list";
@@ -37,6 +37,7 @@ public class MiniAppCmdServlet
   public static final String KEY_EVENT = "key_event";
   public static final String KEY_SCENE = "key_scene";
   public static final String KEY_TIMESTAMP = "key_timestamp";
+  public static final String KEY_URI = "key_uri";
   public static final String KEY_VIA = "key_via";
   private static final String TAG = "MiniAppCmdServlet";
   private static MiniAppCmdServlet instance;
@@ -44,14 +45,15 @@ public class MiniAppCmdServlet
   
   public static MiniAppCmdServlet g()
   {
-    if (instance == null) {}
-    synchronized (lock)
-    {
-      if (instance == null) {
-        instance = new MiniAppCmdServlet();
+    if (instance == null) {
+      synchronized (lock)
+      {
+        if (instance == null) {
+          instance = new MiniAppCmdServlet();
+        }
       }
-      return instance;
     }
+    return instance;
   }
   
   private void notifyEventInfo(String paramString, Bundle paramBundle)
@@ -69,102 +71,108 @@ public class MiniAppCmdServlet
   
   public void onMiniAppCmd(String paramString, Bundle paramBundle, CmdCallback paramCmdCallback)
   {
-    int j = 2;
-    int i = -1;
-    if (TextUtils.isEmpty(paramString)) {}
-    do
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("sendCmd cmd=");
+    ((StringBuilder)localObject).append(paramString);
+    QLog.i("MiniAppCmdServlet", 2, ((StringBuilder)localObject).toString());
+    if ("cmd_exit_qq".equals(paramString))
     {
-      do
+      Process.killProcess(Process.myPid());
+      return;
+    }
+    if ("cmd_update_baselib".equals(paramString))
+    {
+      if (paramBundle != null) {
+        paramBundle.getString("version");
+      }
+      BaseLibManager.g().forceUpdateBaseLib(new MiniAppCmdServlet.1(this, paramCmdCallback, paramString));
+      return;
+    }
+    if ("cmd_upload_ark_share_image".equals(paramString))
+    {
+      if (paramBundle != null)
       {
-        do
-        {
-          return;
-          QLog.i("MiniAppCmdServlet", 2, "sendCmd cmd=" + paramString);
-          if ("cmd_exit_qq".equals(paramString))
-          {
-            Process.killProcess(Process.myPid());
-            return;
-          }
-          if ("cmd_update_baselib".equals(paramString))
-          {
-            if (paramBundle != null) {
-              paramBundle.getString("version");
-            }
-            BaseLibManager.g().forceUpdateBaseLib(new MiniAppCmdServlet.1(this, paramCmdCallback, paramString));
-            return;
-          }
-          if ("cmd_upload_ark_share_image".equals(paramString))
-          {
-            if (paramBundle != null)
-            {
-              MiniArkShareAsyncManager.performUploadArkShareImage(paramBundle.getString("filePath"), new MiniAppCmdServlet.2(this, paramCmdCallback, paramString));
-              return;
-            }
-            QLog.e("MiniAppCmdServlet", 1, "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-            return;
-          }
-          if ("cmd_share_ark_async_message".equals(paramString))
-          {
-            if (paramBundle != null)
-            {
-              MiniArkShareAsyncManager.performShareArkAsyncMessage(paramBundle, paramCmdCallback);
-              return;
-            }
-            QLog.e("MiniAppCmdServlet", 1, "onMiniAppCmd cmd = " + paramString + ", bundle is null");
-            return;
-          }
-        } while ("cmd_dc_report_log_key_data".equals(paramString));
-        if (!"cmd_rebind_engine_channel".equals(paramString)) {
-          break;
-        }
-        if (paramBundle != null) {
-          i = paramBundle.getInt("bundle_key_app_type", -1);
-        }
-        QLog.i("MiniAppCmdServlet", 1, "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-      } while ((i != 0) && (i != 1));
+        MiniArkShareAsyncManager.performUploadArkShareImage(paramBundle.getString("key_uri"), new MiniAppCmdServlet.2(this, paramCmdCallback, paramString));
+        return;
+      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("onMiniAppCmd cmd = ");
+      paramBundle.append(paramString);
+      paramBundle.append(", bundle is null");
+      QLog.e("MiniAppCmdServlet", 1, paramBundle.toString());
+      return;
+    }
+    if ("cmd_dc_report_log_key_data".equals(paramString)) {
+      return;
+    }
+    boolean bool = "cmd_rebind_engine_channel".equals(paramString);
+    int i = 3;
+    int j = -1;
+    if (bool)
+    {
+      if (paramBundle != null) {
+        j = paramBundle.getInt("bundle_key_app_type", -1);
+      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:");
+      paramBundle.append(j);
+      QLog.i("MiniAppCmdServlet", 1, paramBundle.toString());
+      if ((j != 0) && (j != 1)) {
+        return;
+      }
       paramBundle = new Bundle();
       localObject = EngineManager.g();
-      if (i == 1) {}
-      for (i = 2;; i = 3)
+      if (j == 1) {
+        i = 2;
+      }
+      paramBundle.putParcelable("engineChannel", ((EngineManager)localObject).getChannelForType(i));
+      if (paramCmdCallback == null) {
+        return;
+      }
+      try
       {
-        paramBundle.putParcelable("engineChannel", ((EngineManager)localObject).getChannelForType(i));
-        if (paramCmdCallback == null) {
-          break;
-        }
-        try
-        {
-          paramCmdCallback.onCmdResult(true, paramBundle);
-          return;
-        }
-        catch (RemoteException paramBundle)
-        {
-          QLog.e("MiniAppCmdServlet", 1, "cmd response exception. cmd=" + paramString, paramBundle);
-          return;
-        }
+        paramCmdCallback.onCmdResult(true, paramBundle);
+        return;
       }
-      if (!"cmd_rebind_engine_channel_new".equals(paramString)) {
-        break;
-      }
-      if (paramBundle != null) {
-        i = paramBundle.getInt("bundle_key_app_type", -1);
-      }
-      QLog.i("MiniAppCmdServlet", 1, "[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:" + i);
-    } while ((i != 0) && (i != 1));
-    Object localObject = new Bundle();
-    paramBundle = AppLoaderFactory.g().getCommonManager();
-    if (paramBundle != null) {
-      if (i == 1) {
-        i = j;
+      catch (RemoteException paramBundle)
+      {
+        paramCmdCallback = new StringBuilder();
+        paramCmdCallback.append("cmd response exception. cmd=");
+        paramCmdCallback.append(paramString);
+        QLog.e("MiniAppCmdServlet", 1, paramCmdCallback.toString(), paramBundle);
+        return;
       }
     }
-    label445:
-    for (paramBundle = paramBundle.getChannelForType(i);; paramBundle = null)
+    if ("cmd_rebind_engine_channel_new".equals(paramString))
     {
+      if (paramBundle != null) {
+        j = paramBundle.getInt("bundle_key_app_type", -1);
+      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("[MiniEng] CMD_RELOAD_ENGINE_CHANNEL appType:");
+      paramBundle.append(j);
+      QLog.i("MiniAppCmdServlet", 1, paramBundle.toString());
+      if ((j != 0) && (j != 1)) {
+        return;
+      }
+      localObject = new Bundle();
+      ICommonManager localICommonManager = AppLoaderFactory.g().getCommonManager();
+      paramBundle = null;
+      if (localICommonManager != null)
+      {
+        if (j == 1) {
+          i = 2;
+        }
+        paramBundle = localICommonManager.getChannelForType(i);
+      }
       if (paramBundle != null) {
         ((Bundle)localObject).putParcelable("engineChannel", paramBundle);
       }
       if (paramCmdCallback == null) {
-        break;
+        return;
       }
       try
       {
@@ -173,33 +181,47 @@ public class MiniAppCmdServlet
       }
       catch (RemoteException paramBundle)
       {
-        QLog.e("MiniAppCmdServlet", 1, "cmd response exception. cmd=" + paramString, paramBundle);
+        paramCmdCallback = new StringBuilder();
+        paramCmdCallback.append("cmd response exception. cmd=");
+        paramCmdCallback.append(paramString);
+        QLog.e("MiniAppCmdServlet", 1, paramCmdCallback.toString(), paramBundle);
         return;
       }
-      i = 3;
-      break label445;
-      if ("cmd_update_pull_down_entry_list".equals(paramString))
+    }
+    if ("cmd_update_pull_down_entry_list".equals(paramString))
+    {
+      if (paramBundle != null)
       {
-        if (paramBundle != null)
-        {
-          MiniAppUtils.handlePullDownEntryListData(paramBundle, paramCmdCallback);
-          ThreadManager.getSubThreadHandler().postDelayed(new MiniAppCmdServlet.3(this), 600L);
-          return;
-        }
-        QLog.e("MiniAppCmdServlet", 1, "onMiniAppCmd cmd = " + paramString + ", bundle is null");
+        MiniAppUtils.handlePullDownEntryListData(paramBundle, paramCmdCallback);
+        ThreadManager.getSubThreadHandler().postDelayed(new MiniAppCmdServlet.3(this), 600L);
         return;
       }
-      if (("cmd_update_app_for_mini_game".equals(paramString)) || ("cmd_update_triton_engine".equals(paramString)) || (!"cmd_notify_event_info".equals(paramString))) {
-        break;
-      }
+      paramBundle = new StringBuilder();
+      paramBundle.append("onMiniAppCmd cmd = ");
+      paramBundle.append(paramString);
+      paramBundle.append(", bundle is null");
+      QLog.e("MiniAppCmdServlet", 1, paramBundle.toString());
+      return;
+    }
+    if ("cmd_update_app_for_mini_game".equals(paramString)) {
+      return;
+    }
+    if ("cmd_update_triton_engine".equals(paramString)) {
+      return;
+    }
+    if ("cmd_notify_event_info".equals(paramString))
+    {
       notifyEventInfo(paramString, paramBundle);
       return;
+    }
+    if ("cmd_change_ark_share_url".equals(paramString)) {
+      MiniArkShareAsyncManager.performChangeArkShareImageUrl(paramBundle.getString("key_uri"), paramCmdCallback);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.launch.MiniAppCmdServlet
  * JD-Core Version:    0.7.0.1
  */

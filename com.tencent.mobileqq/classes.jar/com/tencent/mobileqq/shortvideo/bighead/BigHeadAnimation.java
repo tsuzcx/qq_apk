@@ -30,25 +30,17 @@ public class BigHeadAnimation
     }
     float f2 = Math.min((float)(paramLong - this.mStartTime) * 1.0F / this.mTimeCycle, 1.0F);
     float f1;
-    if (this.mForward)
-    {
+    if (this.mForward) {
       f1 = this.mMinScale + this.scaleNumber * f2;
-      if (f2 >= 1.0F)
-      {
-        this.mStartTime = -1L;
-        if (this.mForward) {
-          break label104;
-        }
-      }
-    }
-    label104:
-    for (boolean bool = true;; bool = false)
-    {
-      this.mForward = bool;
-      return f1;
+    } else {
       f1 = this.mMaxScale - this.scaleNumber * f2;
-      break;
     }
+    if (f2 >= 1.0F)
+    {
+      this.mStartTime = -1L;
+      this.mForward ^= true;
+    }
+    return f1;
   }
   
   public float getMaxScale()
@@ -58,7 +50,7 @@ public class BigHeadAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.bighead.BigHeadAnimation
  * JD-Core Version:    0.7.0.1
  */

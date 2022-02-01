@@ -10,7 +10,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_0xf10$MsgContent
   extends MessageMicro<MsgContent>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 88, 98, 170, 178, 250, 258, 266, 274, 282, 290, 298, 330, 354, 360 }, new String[] { "msg_type", "text", "face_index", "face_text", "image_url", "image_thumbnail_url", "share_title", "share_summary", "share_brief", "share_url", "share_action", "share_source", "share_image_url", "file_name", "file_thumbnail_url", "file_size" }, new Object[] { Integer.valueOf(0), "", Integer.valueOf(0), "", "", "", "", "", "", "", "", "", "", "", "", Long.valueOf(0L) }, MsgContent.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt32Field face_index = PBField.initUInt32(0);
   public final PBStringField face_text = PBField.initString("");
   public final PBStringField file_name = PBField.initString("");
@@ -27,10 +27,16 @@ public final class oidb_0xf10$MsgContent
   public final PBStringField share_title = PBField.initString("");
   public final PBStringField share_url = PBField.initString("");
   public final PBStringField text = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 88, 98, 170, 178, 250, 258, 266, 274, 282, 290, 298, 330, 354, 360 }, new String[] { "msg_type", "text", "face_index", "face_text", "image_url", "image_thumbnail_url", "share_title", "share_summary", "share_brief", "share_url", "share_action", "share_source", "share_image_url", "file_name", "file_thumbnail_url", "file_size" }, new Object[] { localInteger, "", localInteger, "", "", "", "", "", "", "", "", "", "", "", "", Long.valueOf(0L) }, MsgContent.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xf10.oidb_0xf10.MsgContent
  * JD-Core Version:    0.7.0.1
  */

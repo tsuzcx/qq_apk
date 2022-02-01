@@ -30,14 +30,17 @@ public class HWVideoRecorderBuffer
     int i = 0;
     this.jdField_a_of_type_Int = 0;
     this.b = 0;
-    if (this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter != null) {
-      this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter.e();
+    Object localObject = this.jdField_a_of_type_ComTencentTkdTopicsdkVideoprocessMediacodecTtpicGPUBaseFilter;
+    if (localObject != null) {
+      ((GPUBaseFilter)localObject).e();
     }
-    GLES20.glDeleteTextures(this.jdField_a_of_type_ArrayOfInt.length, this.jdField_a_of_type_ArrayOfInt, 0);
+    localObject = this.jdField_a_of_type_ArrayOfInt;
+    GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
     while (i < 3)
     {
-      if (this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i] != null) {
-        this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame[i].clear();
+      localObject = this.jdField_a_of_type_ArrayOfComTencentAekitOpenrenderInternalFrame;
+      if (localObject[i] != null) {
+        localObject[i].clear();
       }
       i += 1;
     }
@@ -46,16 +49,15 @@ public class HWVideoRecorderBuffer
   public void a(boolean paramBoolean, int paramInt)
   {
     if (paramBoolean) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.jdField_a_of_type_Int += paramInt;
-        return;
-      }
-      finally {}
+      this.jdField_a_of_type_Int += paramInt;
+      break label29;
       this.b += paramInt;
+      label29:
+      return;
     }
+    finally {}
   }
   
   public boolean a(int paramInt)
@@ -76,7 +78,7 @@ public class HWVideoRecorderBuffer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.videoprocess.mediacodec.recorder.HWVideoRecorderBuffer
  * JD-Core Version:    0.7.0.1
  */

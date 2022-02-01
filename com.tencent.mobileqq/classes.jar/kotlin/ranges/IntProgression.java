@@ -18,20 +18,35 @@ public class IntProgression
   
   public IntProgression(int paramInt1, int paramInt2, int paramInt3)
   {
-    if (paramInt3 == 0) {
-      throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
-    }
-    if (paramInt3 == -2147483648) {
+    if (paramInt3 != 0)
+    {
+      if (paramInt3 != -2147483648)
+      {
+        this.first = paramInt1;
+        this.last = ProgressionUtilKt.getProgressionLastElement(paramInt1, paramInt2, paramInt3);
+        this.step = paramInt3;
+        return;
+      }
       throw ((Throwable)new IllegalArgumentException("Step must be greater than Int.MIN_VALUE to avoid overflow on negation."));
     }
-    this.first = paramInt1;
-    this.last = ProgressionUtilKt.getProgressionLastElement(paramInt1, paramInt2, paramInt3);
-    this.step = paramInt3;
+    throw ((Throwable)new IllegalArgumentException("Step must be non-zero."));
   }
   
   public boolean equals(@Nullable Object paramObject)
   {
-    return ((paramObject instanceof IntProgression)) && (((isEmpty()) && (((IntProgression)paramObject).isEmpty())) || ((this.first == ((IntProgression)paramObject).first) && (this.last == ((IntProgression)paramObject).last) && (this.step == ((IntProgression)paramObject).step)));
+    if ((paramObject instanceof IntProgression)) {
+      if ((!isEmpty()) || (!((IntProgression)paramObject).isEmpty()))
+      {
+        int i = this.first;
+        paramObject = (IntProgression)paramObject;
+        if ((i != paramObject.first) || (this.last != paramObject.last) || (this.step != paramObject.step)) {}
+      }
+      else
+      {
+        return true;
+      }
+    }
+    return false;
   }
   
   public final int getFirst()
@@ -59,13 +74,14 @@ public class IntProgression
   
   public boolean isEmpty()
   {
-    if (this.step > 0) {
-      if (this.first <= this.last) {}
-    }
-    while (this.first < this.last)
+    if (this.step > 0)
     {
+      if (this.first > this.last) {
+        return true;
+      }
+    }
+    else if (this.first < this.last) {
       return true;
-      return false;
     }
     return false;
   }
@@ -79,15 +95,33 @@ public class IntProgression
   @NotNull
   public String toString()
   {
-    if (this.step > 0) {
-      return this.first + ".." + this.last + " step " + this.step;
+    StringBuilder localStringBuilder;
+    int i;
+    if (this.step > 0)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.first);
+      localStringBuilder.append("..");
+      localStringBuilder.append(this.last);
+      localStringBuilder.append(" step ");
+      i = this.step;
     }
-    return this.first + " downTo " + this.last + " step " + -this.step;
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(this.first);
+      localStringBuilder.append(" downTo ");
+      localStringBuilder.append(this.last);
+      localStringBuilder.append(" step ");
+      i = -this.step;
+    }
+    localStringBuilder.append(i);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.ranges.IntProgression
  * JD-Core Version:    0.7.0.1
  */

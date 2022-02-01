@@ -14,16 +14,6 @@ public final class Tag
   public String strId = "";
   public byte[] value = null;
   
-  static
-  {
-    if (!Tag.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      b = bool;
-      return;
-    }
-  }
-  
   public Tag() {}
   
   public Tag(String paramString, byte[] paramArrayOfByte)
@@ -39,18 +29,20 @@ public final class Tag
   
   public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (b) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (b) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
@@ -69,13 +61,11 @@ public final class Tag
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (Tag)paramObject;
-    } while ((!o.a(this.strId, paramObject.strId)) || (!o.a(this.value, paramObject.value)));
-    return true;
+    }
+    paramObject = (Tag)paramObject;
+    return (o.a(this.strId, paramObject.strId)) && (o.a(this.value, paramObject.value));
   }
   
   public final byte[] getValue()
@@ -116,7 +106,7 @@ public final class Tag
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.sso.Tag
  * JD-Core Version:    0.7.0.1
  */

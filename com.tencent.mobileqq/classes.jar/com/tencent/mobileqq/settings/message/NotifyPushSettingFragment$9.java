@@ -15,9 +15,12 @@ class NotifyPushSettingFragment$9
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    LocalMultiProcConfig.putBooleanAsync(this.a.getString(2131718678) + this.a.a, paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.a.getString(2131718396));
+    localStringBuilder.append(this.a.a);
+    LocalMultiProcConfig.putBooleanAsync(localStringBuilder.toString(), paramBoolean);
     if (AppSetting.d) {
-      NotifyPushSettingFragment.e(this.a).setContentDescription(HardCodeUtil.a(2131707641));
+      NotifyPushSettingFragment.e(this.a).setContentDescription(HardCodeUtil.a(2131707666));
     }
     ReportClickEventHelper.a(NotifyPushSettingFragment.a(this.a), "0X800B84E", paramBoolean);
     EventCollector.getInstance().onCheckedChanged(paramCompoundButton, paramBoolean);
@@ -25,7 +28,7 @@ class NotifyPushSettingFragment$9
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.message.NotifyPushSettingFragment.9
  * JD-Core Version:    0.7.0.1
  */

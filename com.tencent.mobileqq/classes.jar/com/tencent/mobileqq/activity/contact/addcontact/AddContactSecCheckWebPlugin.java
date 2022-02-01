@@ -4,16 +4,18 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.text.TextUtils;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.activity.PhoneUnityBindInfoActivity;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.activity.phone.BindNumberActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.vaswebviewplugin.VasWebviewJsPlugin;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
 import com.tencent.mobileqq.webview.swift.WebViewPluginContainer;
 import com.tencent.mobileqq.webview.swift.WebViewProvider;
 import com.tencent.qphone.base.util.QLog;
+import org.jetbrains.annotations.Nullable;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -31,35 +33,72 @@ public class AddContactSecCheckWebPlugin
   private int a(Activity paramActivity, int paramInt)
   {
     WebViewProvider localWebViewProvider = this.mRuntime.a();
-    int i;
     if ((paramActivity instanceof WebViewPluginContainer)) {
-      i = ((WebViewPluginContainer)paramActivity).switchRequestCode(this, (byte)paramInt);
+      return ((WebViewPluginContainer)paramActivity).switchRequestCode(this, (byte)paramInt);
     }
-    do
-    {
-      return i;
-      i = paramInt;
-    } while (localWebViewProvider == null);
-    return localWebViewProvider.switchRequestCode(this, (byte)paramInt);
+    int i = paramInt;
+    if (localWebViewProvider != null) {
+      i = localWebViewProvider.switchRequestCode(this, (byte)paramInt);
+    }
+    return i;
   }
   
-  public static void a(QQAppInterface paramQQAppInterface, Context paramContext, int paramInt, String paramString1, String paramString2)
+  @Nullable
+  private static Intent a(AppInterface paramAppInterface, Context paramContext, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactSecCheckWebPlugin", 2, "openSecCheckWeb, requestCode=" + paramInt + ", url=" + paramString1);
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
     }
-    if (TextUtils.isEmpty(paramString1)) {
+    paramContext = new Intent(paramContext, QQBrowserActivity.class);
+    paramContext.putExtra("uin", paramAppInterface.getCurrentAccountUin());
+    paramContext.putExtra("url", paramString);
+    return paramContext;
+  }
+  
+  public static void a(AppInterface paramAppInterface, Context paramContext, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("openSecCheckWeb, requestCode=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", url=");
+      localStringBuilder.append(paramString);
+      QLog.d("AddContactSecCheckWebPlugin", 2, localStringBuilder.toString());
+    }
+    paramAppInterface = a(paramAppInterface, paramContext, paramString);
+    if (paramAppInterface == null) {
       return;
     }
-    paramString2 = new Intent(paramContext, QQBrowserActivity.class);
-    paramString2.putExtra("uin", paramQQAppInterface.getCurrentAccountUin());
-    paramString2.putExtra("url", paramString1);
     try
     {
-      ((Activity)paramContext).startActivityForResult(paramString2, paramInt);
+      ((Activity)paramContext).startActivityForResult(paramAppInterface, paramInt);
       return;
     }
-    catch (SecurityException paramQQAppInterface) {}
+    catch (SecurityException paramAppInterface) {}
+  }
+  
+  public static void a(AppInterface paramAppInterface, Context paramContext, QBaseFragment paramQBaseFragment, int paramInt, String paramString)
+  {
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("openSecCheckWeb, requestCode=");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(", url=");
+      localStringBuilder.append(paramString);
+      QLog.d("AddContactSecCheckWebPlugin", 2, localStringBuilder.toString());
+    }
+    paramAppInterface = a(paramAppInterface, paramContext, paramString);
+    if (paramAppInterface == null) {
+      return;
+    }
+    try
+    {
+      paramQBaseFragment.startActivityForResult(paramAppInterface, paramInt);
+      return;
+    }
+    catch (SecurityException paramAppInterface) {}
   }
   
   protected void a(String paramString)
@@ -70,28 +109,31 @@ public class AddContactSecCheckWebPlugin
       if (this.mRuntime.a() == null) {
         return;
       }
-      if (this.mRuntime.a() != null)
+      if (this.mRuntime.a() == null) {
+        return;
+      }
+      Object localObject = this.mRuntime.a();
+      if (localObject == null) {
+        return;
+      }
+      Intent localIntent = new Intent();
+      localIntent.putExtra("ticket", paramString);
+      ((Activity)localObject).setResult(-1, localIntent);
+      if (!((Activity)localObject).isFinishing()) {
+        ((Activity)localObject).finish();
+      }
+      if (QLog.isColorLevel())
       {
-        Object localObject = this.mRuntime.a();
-        if (localObject != null)
-        {
-          Intent localIntent = new Intent();
-          localIntent.putExtra("ticket", paramString);
-          ((Activity)localObject).setResult(-1, localIntent);
-          if (!((Activity)localObject).isFinishing()) {
-            ((Activity)localObject).finish();
-          }
-          if (QLog.isColorLevel())
-          {
-            localObject = new StringBuilder().append("setTicket, ticket_len = ");
-            if (TextUtils.isEmpty(paramString)) {}
-            for (int i = 0;; i = paramString.length())
-            {
-              QLog.d("AddContactSecCheckWebPlugin", 2, i);
-              return;
-            }
-          }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("setTicket, ticket_len = ");
+        int i;
+        if (TextUtils.isEmpty(paramString)) {
+          i = 0;
+        } else {
+          i = paramString.length();
         }
+        ((StringBuilder)localObject).append(i);
+        QLog.d("AddContactSecCheckWebPlugin", 2, ((StringBuilder)localObject).toString());
       }
       return;
     }
@@ -105,84 +147,101 @@ public class AddContactSecCheckWebPlugin
       paramString = new JSONObject(paramString);
       this.jdField_a_of_type_Int = paramString.optInt("targetAct", 0);
       this.jdField_a_of_type_JavaLangString = paramString.optString("callBackName", "");
-      if (QLog.isColorLevel()) {
-        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, mTargetAct=" + this.jdField_a_of_type_Int + ", mCallBackName=" + this.jdField_a_of_type_JavaLangString);
-      }
-      if ((this.jdField_a_of_type_Int <= 0) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      if (QLog.isColorLevel())
       {
-        if (!QLog.isColorLevel()) {
-          return;
-        }
-        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, param is illeagal");
-        return;
+        paramString = new StringBuilder();
+        paramString.append("launchAct, mTargetAct=");
+        paramString.append(this.jdField_a_of_type_Int);
+        paramString.append(", mCallBackName=");
+        paramString.append(this.jdField_a_of_type_JavaLangString);
+        QLog.d("AddContactSecCheckWebPlugin", 2, paramString.toString());
       }
-      if ((this.mRuntime == null) || (this.mRuntime.a() == null))
+      if ((this.jdField_a_of_type_Int > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
       {
-        if (!QLog.isColorLevel()) {
-          return;
+        if ((this.mRuntime != null) && (this.mRuntime.a() != null))
+        {
+          paramString = this.mRuntime.a();
+          int i = this.jdField_a_of_type_Int;
+          Intent localIntent;
+          if (i == 1)
+          {
+            localIntent = new Intent(paramString, BindNumberActivity.class);
+            localIntent.putExtra("kSrouce", 21);
+            localIntent.putExtra("cmd_param_is_from_uni", true);
+            paramString.startActivityForResult(localIntent, a(paramString, 1));
+            return;
+          }
+          if (this.jdField_a_of_type_Int == 2)
+          {
+            localIntent = new Intent(paramString, PhoneUnityBindInfoActivity.class);
+            localIntent.putExtra("kSrouce", 21);
+            localIntent.putExtra("kIsWeb", true);
+            paramString.startActivityForResult(localIntent, a(paramString, 2));
+          }
         }
-        QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, runtime is null");
+        else
+        {
+          if (!QLog.isColorLevel()) {
+            return;
+          }
+          QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, runtime is null");
+        }
+      }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("AddContactSecCheckWebPlugin", 2, "launchAct, param is illeagal");
+        }
         return;
       }
     }
     catch (JSONException paramString)
     {
       QLog.e("AddContactSecCheckWebPlugin", 2, "launchAct,", paramString);
-      return;
     }
-    paramString = this.mRuntime.a();
-    Intent localIntent;
-    if (this.jdField_a_of_type_Int == 1)
-    {
-      localIntent = new Intent(paramString, BindNumberActivity.class);
-      localIntent.putExtra("kSrouce", 21);
-      localIntent.putExtra("cmd_param_is_from_uni", true);
-      paramString.startActivityForResult(localIntent, a(paramString, 1));
-      return;
-    }
-    if (this.jdField_a_of_type_Int == 2)
-    {
-      localIntent = new Intent(paramString, PhoneUnityBindInfoActivity.class);
-      localIntent.putExtra("kSrouce", 21);
-      localIntent.putExtra("kIsWeb", true);
-      paramString.startActivityForResult(localIntent, a(paramString, 2));
-    }
+    return;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
     if ("addContact_SecCheck".equals(paramString2))
     {
-      if ((!"setTicket".equals(paramString3)) || (paramVarArgs.length != 1)) {
-        break label36;
+      if (("setTicket".equals(paramString3)) && (paramVarArgs.length == 1))
+      {
+        a(paramVarArgs[0]);
+        return false;
       }
-      a(paramVarArgs[0]);
+      if (("launchAct".equals(paramString3)) && (paramVarArgs.length == 1)) {
+        b(paramVarArgs[0]);
+      }
     }
-    label36:
-    while ((!"launchAct".equals(paramString3)) || (paramVarArgs.length != 1)) {
-      return false;
-    }
-    b(paramVarArgs[0]);
     return false;
   }
   
   public void onActivityResult(Intent paramIntent, byte paramByte, int paramInt)
   {
-    int i = 0;
-    if (QLog.isColorLevel()) {
-      QLog.d("AddContactSecCheckWebPlugin", 2, "doOnActivityResult requestCode = " + paramByte + " resultCode = " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("doOnActivityResult requestCode = ");
+      paramIntent.append(paramByte);
+      paramIntent.append(" resultCode = ");
+      paramIntent.append(paramInt);
+      QLog.d("AddContactSecCheckWebPlugin", 2, paramIntent.toString());
     }
     if (this.mRuntime.a() == null) {
       return;
     }
     if (paramInt == -1) {
-      i = 1;
+      paramInt = 1;
+    } else {
+      paramInt = 0;
     }
     paramIntent = new JSONObject();
     try
     {
       paramIntent.put("targetAct", paramByte);
-      paramIntent.put("status", i);
+      paramIntent.put("status", paramInt);
       callJs(this.jdField_a_of_type_JavaLangString, new String[] { paramIntent.toString() });
       return;
     }
@@ -194,7 +253,7 @@ public class AddContactSecCheckWebPlugin
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.AddContactSecCheckWebPlugin
  * JD-Core Version:    0.7.0.1
  */

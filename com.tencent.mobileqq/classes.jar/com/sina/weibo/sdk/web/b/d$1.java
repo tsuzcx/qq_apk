@@ -9,8 +9,9 @@ final class d$1
   
   public final void onError(Throwable paramThrowable)
   {
-    if (this.aN != null) {
-      this.aN.onError(paramThrowable.getMessage());
+    b.a locala = this.aN;
+    if (locala != null) {
+      locala.onError(paramThrowable.getMessage());
     }
   }
 }

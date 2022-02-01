@@ -10,14 +10,19 @@ import com.dataline.activities.LiteMutiPicViewerActivity;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.DataLineMsgSet;
 import com.tencent.mobileqq.data.DataLineMsgSetList;
+import com.tencent.mobileqq.filebrowser.IFileBrowserModel;
+import com.tencent.mobileqq.filebrowser.IFileBrowserParam;
+import com.tencent.mobileqq.filebrowser.IFileBrowserService;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.fileviewer.open.DatalineFileBrowserParams;
 import com.tencent.mobileqq.filemanager.fileviewer.open.FileBrowserCreator;
 import com.tencent.mobileqq.filemanager.fileviewer.open.IFileBrowserParams;
+import com.tencent.mobileqq.filemanager.openbrowser.FileBrowserParam;
+import com.tencent.mobileqq.filemanager.openbrowser.FileModelAdapter;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.QFileUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import cooperation.qqreader.QRLocalManager;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -28,11 +33,8 @@ class DatalineSessionAdapter$2
   
   public void onClick(View paramView)
   {
-    if (!this.a.a()) {}
-    for (;;)
+    if (this.a.a())
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
       this.a.a();
       Object localObject1 = (ItemHolder)paramView.getTag();
       Object localObject3 = ((ItemHolder)localObject1).a();
@@ -42,68 +44,72 @@ class DatalineSessionAdapter$2
         if (-1000 != ((DataLineMsgRecord)localObject2).msgtype)
         {
           FileManagerEntity localFileManagerEntity = FileManagerUtil.a((DataLineMsgRecord)localObject2);
-          if (QRLocalManager.a().a(localFileManagerEntity))
+          if ((((DataLineMsgRecord)localObject2).nOpType != 31) && (!FileManagerUtil.e(localFileManagerEntity)))
           {
-            QRLocalManager.a().a(this.a.jdField_a_of_type_AndroidContentContext, localFileManagerEntity.getFilePath(), true);
-          }
-          else if ((((DataLineMsgRecord)localObject2).nOpType == 31) || (FileManagerUtil.e(localFileManagerEntity)))
-          {
-            DatalineSessionAdapter.a(this.a, (DataLineMsgRecord)localObject2);
-          }
-          else if (((DataLineMsgRecord)localObject2).nOpType == 29)
-          {
-            DatalineSessionAdapter.b(this.a, (DataLineMsgRecord)localObject2);
-          }
-          else
-          {
-            localObject3 = new DatalineFileBrowserParams(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localFileManagerEntity);
-            ArrayList localArrayList = new ArrayList();
-            if (localFileManagerEntity.nFileType == 0)
+            if (((DataLineMsgRecord)localObject2).nOpType == 29)
             {
-              Iterator localIterator = DatalineSessionAdapter.a(this.a).iterator();
-              label357:
-              while (localIterator.hasNext())
+              DatalineSessionAdapter.b(this.a, (DataLineMsgRecord)localObject2);
+            }
+            else if ((localFileManagerEntity.nFileType != 0) && (localFileManagerEntity.nFileType != 2))
+            {
+              localObject1 = new FileModelAdapter(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, localFileManagerEntity, 3);
+              localObject2 = new FileBrowserParam().a(11);
+              ((IFileBrowserService)QRoute.api(IFileBrowserService.class)).browserFile(this.a.jdField_a_of_type_AndroidContentContext, (IFileBrowserModel)localObject1, (IFileBrowserParam)localObject2);
+            }
+            else
+            {
+              localObject3 = new DatalineFileBrowserParams(this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.a.jdField_a_of_type_AndroidContentContext, localFileManagerEntity);
+              ArrayList localArrayList = new ArrayList();
+              if (localFileManagerEntity.nFileType == 0)
               {
-                Object localObject4 = (DataLineMsgSet)localIterator.next();
-                if (((DataLineMsgSet)localObject4).isSingle())
+                Iterator localIterator = DatalineSessionAdapter.a(this.a).iterator();
+                label396:
+                while (localIterator.hasNext())
                 {
-                  localObject4 = ((DataLineMsgSet)localObject4).values().iterator();
-                  for (;;)
+                  Object localObject4 = (DataLineMsgSet)localIterator.next();
+                  if (((DataLineMsgSet)localObject4).isSingle())
                   {
-                    if (!((Iterator)localObject4).hasNext()) {
-                      break label357;
-                    }
-                    DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject4).next();
-                    int j = FileManagerUtil.a(localDataLineMsgRecord.filename);
-                    int i = j;
-                    if (j == -1)
+                    localObject4 = ((DataLineMsgSet)localObject4).values().iterator();
+                    for (;;)
                     {
-                      i = j;
-                      if (localDataLineMsgRecord.msgtype == -2000) {
-                        i = 0;
+                      if (!((Iterator)localObject4).hasNext()) {
+                        break label396;
                       }
-                    }
-                    if (i != localFileManagerEntity.nFileType) {
-                      break;
-                    }
-                    if (localDataLineMsgRecord != localObject2) {
-                      localArrayList.add(String.valueOf(FileManagerUtil.a(localDataLineMsgRecord).nSessionId));
-                    } else {
-                      localArrayList.add(String.valueOf(localFileManagerEntity.nSessionId));
+                      DataLineMsgRecord localDataLineMsgRecord = (DataLineMsgRecord)((Iterator)localObject4).next();
+                      int j = FileManagerUtil.a(localDataLineMsgRecord.filename);
+                      int i = j;
+                      if (j == -1)
+                      {
+                        i = j;
+                        if (localDataLineMsgRecord.msgtype == -2000) {
+                          i = 0;
+                        }
+                      }
+                      if (i != localFileManagerEntity.nFileType) {
+                        break;
+                      }
+                      if (localDataLineMsgRecord != localObject2) {
+                        localArrayList.add(String.valueOf(FileManagerUtil.a(localDataLineMsgRecord).nSessionId));
+                      } else {
+                        localArrayList.add(String.valueOf(localFileManagerEntity.nSessionId));
+                      }
                     }
                   }
                 }
+                if (localArrayList.size() == 0) {
+                  localArrayList.add(String.valueOf(localFileManagerEntity.nSessionId));
+                }
+                ((DatalineFileBrowserParams)localObject3).a(localArrayList);
               }
-              if (localArrayList.size() == 0) {
-                localArrayList.add(String.valueOf(localFileManagerEntity.nSessionId));
-              }
-              ((DatalineFileBrowserParams)localObject3).a(localArrayList);
+              localObject1 = QFileUtils.a(((ItemHolder)localObject1).a().a, localFileManagerEntity.fileName);
+              localObject2 = new FileBrowserCreator(this.a.jdField_a_of_type_AndroidContentContext, (IFileBrowserParams)localObject3);
+              ((FileBrowserCreator)localObject2).a(11);
+              ((FileBrowserCreator)localObject2).a((Rect)localObject1);
+              ((FileBrowserCreator)localObject2).a();
             }
-            localObject1 = QFileUtils.a(((ItemHolder)localObject1).a().a, localFileManagerEntity.fileName);
-            localObject2 = new FileBrowserCreator(this.a.jdField_a_of_type_AndroidContentContext, (IFileBrowserParams)localObject3);
-            ((FileBrowserCreator)localObject2).a(11);
-            ((FileBrowserCreator)localObject2).a((Rect)localObject1);
-            ((FileBrowserCreator)localObject2).a();
+          }
+          else {
+            DatalineSessionAdapter.a(this.a, (DataLineMsgRecord)localObject2);
           }
         }
       }
@@ -120,11 +126,12 @@ class DatalineSessionAdapter$2
         this.a.jdField_a_of_type_ComDatalineActivitiesLiteActivity.startActivityForResult((Intent)localObject1, 102);
       }
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.DatalineSessionAdapter.2
  * JD-Core Version:    0.7.0.1
  */

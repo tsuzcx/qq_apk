@@ -33,16 +33,16 @@ public class PreloadPlayerMgr
   
   private PreloadPlayerInfo getWrapperFromPlayerInfo(PreloadPlayerInfo paramPreloadPlayerInfo)
   {
-    PreloadPlayerInfo localPreloadPlayerInfo;
-    if ((paramPreloadPlayerInfo.player == null) || (paramPreloadPlayerInfo.videoView == null)) {
-      localPreloadPlayerInfo = null;
-    }
-    do
+    if (paramPreloadPlayerInfo.player != null)
     {
-      return localPreloadPlayerInfo;
-      localPreloadPlayerInfo = paramPreloadPlayerInfo;
-    } while (paramPreloadPlayerInfo.videoView.isSurfaceReady());
-    ThreadUtil.runOnThreadPool(new PreloadPlayerMgr.3(this, paramPreloadPlayerInfo));
+      if (paramPreloadPlayerInfo.videoView == null) {
+        return null;
+      }
+      if (paramPreloadPlayerInfo.videoView.isSurfaceReady()) {
+        return paramPreloadPlayerInfo;
+      }
+      ThreadUtil.runOnThreadPool(new PreloadPlayerMgr.3(this, paramPreloadPlayerInfo));
+    }
     return null;
   }
   
@@ -67,6 +67,10 @@ public class PreloadPlayerMgr
         }
       }
       return null;
+    }
+    for (;;)
+    {
+      throw paramSuperPlayerVideoInfo;
     }
   }
   
@@ -95,7 +99,7 @@ public class PreloadPlayerMgr
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.superplayer.preload.PreloadPlayerMgr
  * JD-Core Version:    0.7.0.1
  */

@@ -4,22 +4,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.AppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.ThreadManager;
+import com.tencent.mobileqq.app.utils.RouteUtils;
 import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.mobileqq.troop.homework.config.PublishHwkThirdPartyEntryConfig;
 import com.tencent.mobileqq.troop.homework.entry.ui.PublishHomeWorkFragment;
 import com.tencent.mobileqq.troop.homework.xmediaeditor.XMediaEditor;
-import com.tencent.mobileqq.util.TroopReportor;
+import com.tencent.mobileqq.utils.TroopReportor;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import mqq.app.MobileQQ;
 import mqq.os.MqqHandler;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -68,34 +68,27 @@ public class DocsEntranceHelper
   
   private String a()
   {
-    QQAppInterface localQQAppInterface;
-    Object localObject;
-    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity() == null)
-    {
-      localQQAppInterface = null;
-      if (localQQAppInterface != null) {
-        break label61;
-      }
-      localObject = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(localObject instanceof QQAppInterface)) {
-        break label86;
-      }
-      localQQAppInterface = (QQAppInterface)localObject;
+    if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity() == null) {
+      localObject1 = null;
+    } else {
+      localObject1 = (AppInterface)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getQBaseActivity().getAppRuntime();
     }
-    label61:
-    label86:
-    for (;;)
+    Object localObject2 = localObject1;
+    if (localObject1 == null)
     {
-      localObject = localQQAppInterface;
-      if (localQQAppInterface == null)
-      {
+      localObject2 = MobileQQ.sMobileQQ.waitAppRuntime(null);
+      if ((localObject2 instanceof AppInterface)) {
+        localObject1 = (AppInterface)localObject2;
+      }
+      localObject2 = localObject1;
+      if (localObject1 == null) {
         return "publish_hw_docs_guide_counts";
-        localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity().getAppInterface();
-        break;
-        localObject = localQQAppInterface;
       }
-      return "publish_hw_docs_guide_counts" + ((QQAppInterface)localObject).getCurrentAccountUin();
     }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("publish_hw_docs_guide_counts");
+    ((StringBuilder)localObject1).append(((AppInterface)localObject2).getCurrentAccountUin());
+    return ((StringBuilder)localObject1).toString();
   }
   
   private void a(View paramView)
@@ -111,13 +104,15 @@ public class DocsEntranceHelper
         return;
       }
       paramView = new StringBuilder(paramView);
-      paramView.append("?gc=").append(this.jdField_a_of_type_JavaLangString);
-      paramView.append("&appid=").append("101458937");
+      paramView.append("?gc=");
+      paramView.append(this.jdField_a_of_type_JavaLangString);
+      paramView.append("&appid=");
+      paramView.append("101458937");
       paramView.append("&_wwv=128&_wv=3");
       paramView = paramView.toString();
-      localObject = new Intent(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity(), QQBrowserActivity.class);
+      localObject = new Intent();
       ((Intent)localObject).putExtra("url", paramView);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity().startActivityForResult((Intent)localObject, 265);
+      RouteUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity(), (Intent)localObject, "/base/browser", 265);
       if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a() != null) {
         this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a().b();
       }
@@ -128,13 +123,13 @@ public class DocsEntranceHelper
         d(false);
       }
     }
-    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a();
-    if (this.jdField_a_of_type_JavaLangString == null) {}
-    for (paramView = "";; paramView = this.jdField_a_of_type_JavaLangString)
-    {
-      TroopReportor.a("Grp_edu", "homework", "createHW_doc_clk", 0, 0, new String[] { paramView, ((Bundle)localObject).getString("reportIdentity", ""), ((Bundle)localObject).getString("reportCourse", "") });
-      return;
+    Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a();
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    paramView = (View)localObject;
+    if (localObject == null) {
+      paramView = "";
     }
+    TroopReportor.a("Grp_edu", "homework", "createHW_doc_clk", 0, 0, new String[] { paramView, localBundle.getString("reportIdentity", ""), localBundle.getString("reportCourse", "") });
   }
   
   private void a(boolean paramBoolean, int paramInt)
@@ -151,30 +146,31 @@ public class DocsEntranceHelper
     if (paramView != null)
     {
       paramView = paramView.d();
-      if (!paramView.isEmpty()) {
-        break label44;
+      if (paramView.isEmpty()) {
+        return;
       }
-    }
-    label44:
-    do
-    {
-      return;
       paramView = new StringBuilder(paramView);
-      paramView.append("?gc=").append(this.jdField_a_of_type_JavaLangString);
-      paramView.append("&appid=").append("101458937");
-      paramView.append("&examid=").append(this.jdField_d_of_type_JavaLangString);
+      paramView.append("?gc=");
+      paramView.append(this.jdField_a_of_type_JavaLangString);
+      paramView.append("&appid=");
+      paramView.append("101458937");
+      paramView.append("&examid=");
+      paramView.append(this.jdField_d_of_type_JavaLangString);
       paramView.append("&_wwv=128&_wv=3");
       paramView = paramView.toString();
-      Intent localIntent = new Intent(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity(), QQBrowserActivity.class);
+      Intent localIntent = new Intent();
       localIntent.putExtra("url", paramView);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.startActivity(localIntent);
-    } while (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a() == null);
-    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a().b();
+      RouteUtils.a(this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.getActivity(), localIntent, "/base/browser");
+      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a() != null) {
+        this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a().b();
+      }
+    }
   }
   
   private boolean b()
   {
     PublishHwkThirdPartyEntryConfig localPublishHwkThirdPartyEntryConfig = (PublishHwkThirdPartyEntryConfig)QConfigManager.a().a(605);
+    boolean bool = false;
     if ((localPublishHwkThirdPartyEntryConfig != null) && (!localPublishHwkThirdPartyEntryConfig.b())) {
       return false;
     }
@@ -182,95 +178,90 @@ public class DocsEntranceHelper
     if (QLog.isColorLevel()) {
       QLog.d("DocsEntranceHelper", 2, String.format("needShow guide count: %s", new Object[] { Integer.valueOf(i) }));
     }
-    if (i < 3) {}
-    for (boolean bool = true;; bool = false) {
-      return bool;
+    if (i < 3) {
+      bool = true;
     }
+    return bool;
   }
   
   private void c(View paramView)
   {
     a(false);
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout != null) {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    paramView = this.jdField_a_of_type_AndroidWidgetLinearLayout;
+    if (paramView != null) {
+      paramView.setVisibility(8);
     }
     this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2);
   }
   
   private void c(boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null)
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null)
     {
       if (paramBoolean)
       {
-        this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+        localTextView.setVisibility(0);
         this.jdField_a_of_type_AndroidWidgetTextView.setText("");
         this.jdField_a_of_type_AndroidWidgetTextView.setBackgroundResource(0);
-        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130838065, 0, 0, 0);
+        this.jdField_a_of_type_AndroidWidgetTextView.setCompoundDrawablesWithIntrinsicBounds(2130837912, 0, 0, 0);
+        return;
       }
+      localTextView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(8);
   }
   
   private void d(boolean paramBoolean)
   {
-    if (this.jdField_b_of_type_AndroidViewView != null)
+    View localView = this.jdField_b_of_type_AndroidViewView;
+    if (localView != null)
     {
       if ((paramBoolean) && (!this.jdField_a_of_type_Boolean))
       {
-        this.jdField_b_of_type_AndroidViewView.setVisibility(0);
+        localView.setVisibility(0);
         this.jdField_a_of_type_Boolean = true;
+        return;
       }
+      this.jdField_b_of_type_AndroidViewView.setVisibility(8);
     }
-    else {
-      return;
-    }
-    this.jdField_b_of_type_AndroidViewView.setVisibility(8);
   }
   
   public void a()
   {
-    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2131373669);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2131373671));
-    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2131372894);
+    this.jdField_a_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2131373242);
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2131373244));
+    this.jdField_b_of_type_AndroidViewView = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2131372481);
     PublishHwkThirdPartyEntryConfig localPublishHwkThirdPartyEntryConfig = (PublishHwkThirdPartyEntryConfig)QConfigManager.a().a(605);
-    if (localPublishHwkThirdPartyEntryConfig != null)
-    {
-      if (!localPublishHwkThirdPartyEntryConfig.b()) {
-        break label225;
+    if (localPublishHwkThirdPartyEntryConfig != null) {
+      if (localPublishHwkThirdPartyEntryConfig.b())
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(0);
+        this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
+        if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.b() == 1) {
+          this.jdField_a_of_type_AndroidViewView.setClickable(true);
+        } else {
+          this.jdField_a_of_type_AndroidViewView.setClickable(false);
+        }
       }
-      this.jdField_a_of_type_AndroidViewView.setVisibility(0);
-      this.jdField_a_of_type_AndroidViewView.setOnClickListener(this);
-      if (this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a() != 1) {
-        break label214;
+      else
+      {
+        this.jdField_a_of_type_AndroidViewView.setVisibility(8);
       }
-      this.jdField_a_of_type_AndroidViewView.setClickable(true);
     }
-    for (;;)
+    this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2131379234));
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
+    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+    }
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131379383));
+    this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131379195);
+    this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
+    this.jdField_d_of_type_Boolean = b();
+    if (this.jdField_d_of_type_Boolean)
     {
-      this.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2131379905));
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setOnClickListener(this);
-      if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
-        this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-      }
-      this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131380054));
-      this.jdField_c_of_type_AndroidViewView = this.jdField_a_of_type_AndroidWidgetLinearLayout.findViewById(2131379866);
-      this.jdField_c_of_type_AndroidViewView.setOnClickListener(this);
-      this.jdField_d_of_type_Boolean = b();
-      if (!this.jdField_d_of_type_Boolean) {
-        break;
-      }
       c(true);
       a(true, 1);
       return;
-      label214:
-      this.jdField_a_of_type_AndroidViewView.setClickable(false);
-      continue;
-      label225:
-      this.jdField_a_of_type_AndroidViewView.setVisibility(8);
     }
     c(false);
     d(false);
@@ -278,19 +269,15 @@ public class DocsEntranceHelper
   
   public void a(int paramInt)
   {
-    Bundle localBundle;
     if ((this.jdField_a_of_type_JavaLangBoolean.booleanValue()) && (paramInt == 1))
     {
-      localBundle = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a();
-      if (this.jdField_a_of_type_JavaLangString != null) {
-        break label76;
+      Bundle localBundle = this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a();
+      String str2 = this.jdField_a_of_type_JavaLangString;
+      String str1 = str2;
+      if (str2 == null) {
+        str1 = "";
       }
-    }
-    label76:
-    for (String str = "";; str = this.jdField_a_of_type_JavaLangString)
-    {
-      TroopReportor.a("Grp_edu", "homework", "createHW_doc", 0, 0, new String[] { str, localBundle.getString("reportIdentity", ""), localBundle.getString("reportCourse", "") });
-      return;
+      TroopReportor.a("Grp_edu", "homework", "createHW_doc", 0, 0, new String[] { str1, localBundle.getString("reportIdentity", ""), localBundle.getString("reportCourse", "") });
     }
   }
   
@@ -304,78 +291,77 @@ public class DocsEntranceHelper
       QLog.e("DocsEntranceHelper", 2, "onActivityResult data == null");
       return;
     }
-    paramIntent = paramIntent.getStringExtra("params");
-    if (paramIntent.isEmpty())
+    Object localObject = paramIntent.getStringExtra("params");
+    if (((String)localObject).isEmpty())
     {
       QLog.e("DocsEntranceHelper", 2, "onActivityResult strData.isEmpty");
       return;
     }
+    paramIntent = null;
     try
     {
-      paramIntent = new JSONObject(paramIntent);
-      if (paramIntent == null)
-      {
-        QLog.e("DocsEntranceHelper", 2, "onActivityResult argsJson == null");
-        return;
-      }
+      localObject = new JSONObject((String)localObject);
+      paramIntent = (Intent)localObject;
     }
-    catch (JSONException paramIntent)
+    catch (JSONException localJSONException)
     {
-      for (;;)
-      {
-        paramIntent = null;
-      }
-      this.jdField_b_of_type_JavaLangString = paramIntent.optString("title");
-      this.jdField_c_of_type_JavaLangString = paramIntent.optString("course_name");
-      this.jdField_d_of_type_JavaLangString = paramIntent.optString("exam_id");
-      this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
-      this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      a(true);
-      this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2);
+      label65:
+      break label65;
     }
+    if (paramIntent == null)
+    {
+      QLog.e("DocsEntranceHelper", 2, "onActivityResult argsJson == null");
+      return;
+    }
+    this.jdField_b_of_type_JavaLangString = paramIntent.optString("title");
+    this.jdField_c_of_type_JavaLangString = paramIntent.optString("course_name");
+    this.jdField_d_of_type_JavaLangString = paramIntent.optString("exam_id");
+    this.jdField_b_of_type_AndroidWidgetTextView.setText(this.jdField_b_of_type_JavaLangString);
+    this.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+    a(true);
+    this.jdField_a_of_type_ComTencentMobileqqTroopHomeworkEntryUiPublishHomeWorkFragment.a(2);
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
     if (paramInt != 2)
     {
-      if (paramBoolean) {
+      if (paramBoolean)
+      {
         this.jdField_a_of_type_AndroidViewView.setEnabled(false);
+        return;
       }
+      this.jdField_a_of_type_AndroidViewView.setEnabled(true);
     }
-    else {
-      return;
-    }
-    this.jdField_a_of_type_AndroidViewView.setEnabled(true);
   }
   
   public void a(JSONArray paramJSONArray)
   {
     if (this.jdField_a_of_type_JavaLangBoolean.booleanValue())
     {
-      if (this.jdField_a_of_type_OrgJsonJSONObject != null) {
-        paramJSONArray.put(this.jdField_a_of_type_OrgJsonJSONObject);
+      JSONObject localJSONObject = this.jdField_a_of_type_OrgJsonJSONObject;
+      if (localJSONObject != null)
+      {
+        paramJSONArray.put(localJSONObject);
+        return;
       }
-    }
-    else {
-      return;
-    }
-    try
-    {
-      JSONObject localJSONObject = new JSONObject();
-      localJSONObject.put("type", "exam");
-      localJSONObject.put("exam_type", "1");
-      localJSONObject.put("appid", "101458937");
-      localJSONObject.put("exam_id", this.jdField_d_of_type_JavaLangString);
-      localJSONObject.put("course_name", this.jdField_c_of_type_JavaLangString);
-      localJSONObject.put("exam_count", String.valueOf(this.jdField_a_of_type_Int));
-      localJSONObject.put("title", this.jdField_b_of_type_JavaLangString);
-      paramJSONArray.put(localJSONObject);
-      return;
-    }
-    catch (JSONException paramJSONArray)
-    {
-      paramJSONArray.printStackTrace();
+      try
+      {
+        localJSONObject = new JSONObject();
+        localJSONObject.put("type", "exam");
+        localJSONObject.put("exam_type", "1");
+        localJSONObject.put("appid", "101458937");
+        localJSONObject.put("exam_id", this.jdField_d_of_type_JavaLangString);
+        localJSONObject.put("course_name", this.jdField_c_of_type_JavaLangString);
+        localJSONObject.put("exam_count", String.valueOf(this.jdField_a_of_type_Int));
+        localJSONObject.put("title", this.jdField_b_of_type_JavaLangString);
+        paramJSONArray.put(localJSONObject);
+        return;
+      }
+      catch (JSONException paramJSONArray)
+      {
+        paramJSONArray.printStackTrace();
+      }
     }
   }
   
@@ -411,19 +397,19 @@ public class DocsEntranceHelper
   public void b(boolean paramBoolean)
   {
     this.jdField_b_of_type_Boolean = paramBoolean;
-    if (!paramBoolean) {
+    if (!paramBoolean)
+    {
       d(false);
     }
-    while (!this.jdField_a_of_type_JavaLangBoolean.booleanValue())
+    else if (this.jdField_c_of_type_Boolean)
     {
-      return;
-      if (this.jdField_c_of_type_Boolean)
-      {
-        this.jdField_c_of_type_Boolean = false;
-        if (this.jdField_d_of_type_Boolean) {
-          ThreadManager.getUIHandler().postDelayed(new DocsEntranceHelper.1(this), 500L);
-        }
+      this.jdField_c_of_type_Boolean = false;
+      if (this.jdField_d_of_type_Boolean) {
+        ThreadManager.getUIHandler().postDelayed(new DocsEntranceHelper.1(this), 500L);
       }
+    }
+    if (!this.jdField_a_of_type_JavaLangBoolean.booleanValue()) {
+      return;
     }
     if (paramBoolean)
     {
@@ -436,24 +422,20 @@ public class DocsEntranceHelper
   
   public void onClick(View paramView)
   {
-    switch (paramView.getId())
-    {
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    int i = paramView.getId();
+    if (i == 2131373242) {
       a(paramView);
-      continue;
+    } else if (i == 2131379234) {
       b(paramView);
-      continue;
+    } else if (i == 2131379195) {
       c(paramView);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.logic.DocsEntranceHelper
  * JD-Core Version:    0.7.0.1
  */

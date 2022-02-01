@@ -23,17 +23,16 @@ final class VipUtils$1
       paramDialogInterface.putExtra("hide_operation_bar", true);
       this.jdField_a_of_type_AndroidContentContext.startActivity(paramDialogInterface);
     }
-    for (;;)
+    else
     {
-      ReportController.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
-      return;
       TroopManager.LiangGroupHelper.a(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_JavaLangString, "group_aio_popup");
     }
+    ReportController.b(null, "dc00898", "", "", "qq_vip", this.b, this.jdField_a_of_type_Int, 0, "", "", "", "");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.VipUtils.1
  * JD-Core Version:    0.7.0.1
  */

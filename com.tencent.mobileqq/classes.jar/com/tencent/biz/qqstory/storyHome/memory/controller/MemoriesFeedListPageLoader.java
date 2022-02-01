@@ -37,24 +37,24 @@ public class MemoriesFeedListPageLoader
     return new HomeFeedData(paramErrorMessage);
   }
   
-  public JobSegment<FeedListPageLoaderBase.GetFeedIdListResult, HomeFeedData> a()
+  protected JobSegment<FeedListPageLoaderBase.GetFeedIdListResult, HomeFeedData> a()
   {
     return new HomeFeedAllInfoPullSegment();
   }
   
-  public JobSegment<Integer, FeedListPageLoaderBase.GetFeedIdListResult> a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
+  protected JobSegment<Integer, FeedListPageLoaderBase.GetFeedIdListResult> a(FeedListPageLoaderBase.FeedIdListCache paramFeedIdListCache)
   {
     return new MemoriesFeedListPageLoader.FeedIdPullSegment(paramFeedIdListCache);
   }
   
-  public void a(List<String> paramList, boolean paramBoolean)
+  protected void a(List<String> paramList, boolean paramBoolean)
   {
     ((FeedManager)SuperManager.a(11)).c(paramList, paramBoolean);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.memory.controller.MemoriesFeedListPageLoader
  * JD-Core Version:    0.7.0.1
  */

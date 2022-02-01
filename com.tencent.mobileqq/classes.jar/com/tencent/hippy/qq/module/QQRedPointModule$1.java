@@ -1,7 +1,7 @@
 package com.tencent.hippy.qq.module;
 
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.redtouch.RedTouchWebviewHandler;
 import com.tencent.mtt.hippy.modules.Promise;
 import com.tencent.qphone.base.util.QLog;
@@ -17,45 +17,44 @@ class QQRedPointModule$1
   public void run()
   {
     Object localObject1 = this.this$0.getActivity();
-    if (!(localObject1 instanceof BaseActivity)) {
-      QLog.e("QQRedPointModule", 1, "getAppInfo activity isvnot BaseActivity");
-    }
-    BaseActivity localBaseActivity;
-    Object localObject2;
-    do
+    if (!(localObject1 instanceof QBaseActivity))
     {
+      QLog.e("QQRedPointModule", 1, "getAppInfo activity isvnot QBaseActivity");
       return;
-      localBaseActivity = (BaseActivity)localObject1;
-      localObject2 = this.this$0.getAppInterface();
-    } while (localObject2 == null);
-    for (localObject1 = null;; localObject1 = localObject2)
+    }
+    QBaseActivity localQBaseActivity = (QBaseActivity)localObject1;
+    Object localObject2 = this.this$0.getAppInterface();
+    if (localObject2 == null) {
+      return;
+    }
+    localObject1 = null;
+    try
     {
-      try
+      if (new JSONObject(this.val$param).has("pathList"))
       {
-        if (!new JSONObject(this.val$param).has("pathList")) {
-          break label95;
-        }
         localObject2 = RedTouchWebviewHandler.parseGetAppInfoList((AppInterface)localObject2, this.val$start, this.val$param);
         localObject1 = localObject2;
       }
-      catch (JSONException localJSONException)
+      else
       {
-        label77:
-        label95:
-        break label77;
+        localObject2 = RedTouchWebviewHandler.parseGetAppInfo((AppInterface)localObject2, this.val$start, this.val$param);
+        localObject1 = localObject2;
       }
-      if (localObject1 == null) {
-        break;
-      }
-      localBaseActivity.runOnUiThread(new QQRedPointModule.1.1(this, (HashMap)localObject1));
-      return;
-      localObject2 = RedTouchWebviewHandler.parseGetAppInfo((AppInterface)localObject2, this.val$start, this.val$param);
     }
+    catch (JSONException localJSONException)
+    {
+      label96:
+      break label96;
+    }
+    if (localObject1 == null) {
+      return;
+    }
+    localQBaseActivity.runOnUiThread(new QQRedPointModule.1.1(this, (HashMap)localObject1));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQRedPointModule.1
  * JD-Core Version:    0.7.0.1
  */

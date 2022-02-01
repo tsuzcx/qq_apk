@@ -20,19 +20,20 @@ class GamePartyManager$1
     if (localQQAppInterface == null) {
       return;
     }
-    switch (paramMessage.what)
-    {
-    default: 
+    if (paramMessage.what != 1) {
       return;
     }
-    paramMessage = "https://openmobile.qq.com/gameteam/get_team_context?uin=" + localQQAppInterface.getCurrentAccountUin();
+    paramMessage = new StringBuilder();
+    paramMessage.append("https://openmobile.qq.com/gameteam/get_team_context?uin=");
+    paramMessage.append(localQQAppInterface.getCurrentAccountUin());
+    paramMessage = paramMessage.toString();
     this.a.a(paramMessage, null);
     this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.gameparty.GamePartyManager.1
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,3 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout android:clipChildren="true" android:layout_width="fill_parent" android:layout_height="@dimen/n_" android:layout_marginTop="7.5dip" android:layout_marginBottom="7.5dip"
-  xmlns:android="http://schemas.android.com/apk/res/android">
-    <com.tencent.biz.pubaccount.weishi_new.view.WSRoundedImageView android:id="@id/mx5" android:layout_width="36.0dip" android:layout_height="36.0dip" android:layout_marginRight="8.0dip" />
-    <TextView android:textSize="@dimen/aw5" android:textStyle="bold" android:textColor="@color/bp" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/mx7" android:layout_width="wrap_content" android:layout_height="20.0dip" android:singleLine="true" android:layout_toRightOf="@id/mx5" android:layout_alignTop="@id/mx5" />
-    <TextView android:textSize="@dimen/aw3" android:textStyle="bold" android:textColor="#99000000" android:ellipsize="end" android:gravity="center_vertical" android:id="@id/mx6" android:layout_width="wrap_content" android:layout_height="@dimen/aw6" android:singleLine="true" android:layout_toRightOf="@id/mx5" android:layout_alignBottom="@id/mx5" />
-</RelativeLayout>
+<TextView android:textSize="14.0sp" android:ellipsize="end" android:id="@id/nas" android:paddingLeft="10.0dip" android:paddingRight="10.0dip" android:paddingBottom="7.0dip" android:layout_width="fill_parent" android:layout_height="wrap_content" android:maxLines="2" android:includeFontPadding="false" android:lineSpacingExtra="4.0dip"
+  xmlns:android="http://schemas.android.com/apk/res/android" />

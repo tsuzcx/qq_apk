@@ -2,10 +2,9 @@ package com.tencent.mobileqq.activity.phone;
 
 import android.content.Context;
 import android.content.Intent;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.phonecontact.PermissionPageUtil;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
 import com.tencent.util.VersionUtils;
 import java.lang.ref.WeakReference;
 
@@ -20,7 +19,7 @@ public class DenyRunnable$JumpSettingAction
     this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
   }
   
-  public void a(Context paramContext, boolean paramBoolean)
+  public void onCancel(Context paramContext, boolean paramBoolean)
   {
     if (!paramBoolean)
     {
@@ -28,32 +27,30 @@ public class DenyRunnable$JumpSettingAction
       {
         QQAppInterface localQQAppInterface = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
         if (localQQAppInterface != null) {
-          ((PhoneContactManagerImp)localQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER)).b(true);
+          ((IPhoneContactService)localQQAppInterface.getRuntimeService(IPhoneContactService.class, "")).markOrClearUserSettingFlag(true);
         }
         paramContext = new PermissionPageUtil(paramContext, paramContext.getPackageName());
+        try
+        {
+          paramContext.a();
+          return;
+        }
+        catch (Throwable localThrowable)
+        {
+          localThrowable.printStackTrace();
+          paramContext.b();
+          return;
+        }
       }
+      Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
+      localIntent.putExtra("fromKeyForContactBind", this.jdField_a_of_type_Int);
+      paramContext.startActivity(localIntent);
     }
-    else {
-      try
-      {
-        paramContext.a();
-        return;
-      }
-      catch (Throwable localThrowable)
-      {
-        localThrowable.printStackTrace();
-        paramContext.b();
-        return;
-      }
-    }
-    Intent localIntent = new Intent(paramContext, GuideBindPhoneActivity.class);
-    localIntent.putExtra("fromKeyForContactBind", this.jdField_a_of_type_Int);
-    paramContext.startActivity(localIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.DenyRunnable.JumpSettingAction
  * JD-Core Version:    0.7.0.1
  */

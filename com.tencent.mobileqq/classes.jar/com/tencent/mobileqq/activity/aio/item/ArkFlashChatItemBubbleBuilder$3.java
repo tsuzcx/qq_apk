@@ -18,33 +18,33 @@ class ArkFlashChatItemBubbleBuilder$3
   public void onClick(View paramView)
   {
     MessageForArkFlashChat localMessageForArkFlashChat = (MessageForArkFlashChat)paramView.getTag();
-    FlashChatManager.GlobalConfig localGlobalConfig;
-    String str1;
     if (localMessageForArkFlashChat != null)
     {
-      localGlobalConfig = ((FlashChatManager)this.a.a.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a;
-      str1 = localGlobalConfig.c;
+      FlashChatManager.GlobalConfig localGlobalConfig = ((FlashChatManager)this.a.a.getManager(QQManagerFactory.FLASH_CHAT_MANAGER)).a;
+      String str1 = localGlobalConfig.c;
       String str2 = localGlobalConfig.f;
       String str3 = localGlobalConfig.g;
-      if (QLog.isColorLevel()) {
-        QLog.d("FlashChat", 2, "mSourceOnClickListener clickAppMsg url = " + str1 + ", actionData = " + str2 + ", actionDataA = " + str3);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("mSourceOnClickListener clickAppMsg url = ");
+        localStringBuilder.append(str1);
+        localStringBuilder.append(", actionData = ");
+        localStringBuilder.append(str2);
+        localStringBuilder.append(", actionDataA = ");
+        localStringBuilder.append(str3);
+        QLog.d("FlashChat", 2, localStringBuilder.toString());
       }
       if (!this.a.a(str1, str2, str3)) {
-        break label126;
+        this.a.a(str1, localGlobalConfig.b, localMessageForArkFlashChat);
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      label126:
-      if (!this.a.a(str1, localGlobalConfig.b, localMessageForArkFlashChat)) {}
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkFlashChatItemBubbleBuilder.3
  * JD-Core Version:    0.7.0.1
  */

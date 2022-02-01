@@ -42,8 +42,13 @@ public class QfavFilePreviewController
   {
     if (3 != this.jdField_a_of_type_Int)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("QfavFilePreviewController", 4, "sendCS: oldState = " + this.jdField_a_of_type_Int + ", newState = STATE_REQUESTING.");
+      if (QLog.isDevelopLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("sendCS: oldState = ");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append(", newState = STATE_REQUESTING.");
+        QLog.i("QfavFilePreviewController", 4, localStringBuilder.toString());
       }
       this.jdField_a_of_type_Int = 1;
       return true;
@@ -54,7 +59,7 @@ public class QfavFilePreviewController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.core.QfavFilePreviewController
  * JD-Core Version:    0.7.0.1
  */

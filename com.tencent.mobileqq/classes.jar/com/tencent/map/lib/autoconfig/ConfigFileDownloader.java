@@ -44,70 +44,72 @@ public class ConfigFileDownloader
     if (paramFileUpdateRsp.iFileUpdated != 1) {
       return null;
     }
-    String str = paramFileUpdateRsp.sName;
-    Object localObject;
-    if (str.equals("mapconfig")) {
-      localObject = "mapconfig.dat";
-    }
-    for (;;)
+    Object localObject2 = paramFileUpdateRsp.sName;
+    if (((String)localObject2).equals("mapconfig")) {
+      localObject1 = "mapconfig.dat";
+    } else if ((!((String)localObject2).equals("indoormap_config")) && (!((String)localObject2).equals("indoormap_config_premium")))
     {
-      paramString = new File(paramString + (String)localObject);
-      localObject = a(paramFileUpdateRsp.sUpdateUrl, paramString);
-      if (localObject == null) {
-        break;
-      }
-      ((jg.c)localObject).a = paramFileUpdateRsp.sName;
-      return localObject;
-      if ((str.equals("indoormap_config")) || (str.equals("indoormap_config_premium")))
+      if (((String)localObject2).equals("indoorpoi_icon_3d"))
       {
-        localObject = "indoormap_config.dat";
+        localObject1 = "poi_icon_indoor_ex@2x.png";
       }
-      else if (str.equals("indoorpoi_icon_3d"))
+      else if (((String)localObject2).equals("closedroadstyle_normalmode"))
       {
-        localObject = "poi_icon_indoor_ex@2x.png";
-      }
-      else if (str.equals("closedroadstyle_normalmode"))
-      {
-        localObject = "style_normalmode.xml";
+        localObject1 = "style_normalmode.xml";
       }
       else
       {
-        localObject = str;
-        if (str.equals("closedroadstyle_trafficmode")) {
-          localObject = "style_trafficmode.xml";
+        localObject1 = localObject2;
+        if (((String)localObject2).equals("closedroadstyle_trafficmode")) {
+          localObject1 = "style_trafficmode.xml";
         }
       }
     }
+    else {
+      localObject1 = "indoormap_config.dat";
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramString);
+    ((StringBuilder)localObject2).append((String)localObject1);
+    paramString = new File(((StringBuilder)localObject2).toString());
+    Object localObject1 = a(paramFileUpdateRsp.sUpdateUrl, paramString);
+    if (localObject1 != null)
+    {
+      ((jg.c)localObject1).a = paramFileUpdateRsp.sName;
+      return localObject1;
+    }
     try
     {
-      localObject = ou.a(paramString);
-      if (!paramFileUpdateRsp.sMd5.equals(localObject))
+      localObject1 = ou.a(paramString);
+      if (!paramFileUpdateRsp.sMd5.equals(localObject1))
       {
         paramString = new jg.c();
         paramString.a = paramFileUpdateRsp.sName;
         paramString.c = paramFileUpdateRsp.sMd5;
-        paramString.d = ((String)localObject);
+        paramString.d = ((String)localObject1);
         return paramString;
       }
-    }
-    catch (Exception paramString)
-    {
-      or.b(paramString.getMessage());
-      paramString = new jg.c();
-      paramString.a = paramFileUpdateRsp.sName;
-      return paramString;
-    }
-    if (paramBoolean) {}
-    try
-    {
-      oo.a(paramString, paramString.getParent());
-      paramString.delete();
-      if ((this.a != null) && (this.a.get() != null)) {
+      if (paramBoolean) {
+        try
+        {
+          oo.a(paramString, paramString.getParent());
+          paramString.delete();
+        }
+        catch (Throwable paramString)
+        {
+          or.b(paramString.getMessage());
+          paramString = new jg.c();
+          paramString.a = paramFileUpdateRsp.sName;
+          return paramString;
+        }
+      }
+      paramFileUpdateRsp = this.a;
+      if ((paramFileUpdateRsp != null) && (paramFileUpdateRsp.get() != null)) {
         ((hz)this.a.get()).a = true;
       }
       return null;
     }
-    catch (Throwable paramString)
+    catch (Exception paramString)
     {
       or.b(paramString.getMessage());
       paramString = new jg.c();
@@ -122,174 +124,176 @@ public class ConfigFileDownloader
     // Byte code:
     //   0: aconst_null
     //   1: astore 4
-    //   3: sipush 200
-    //   6: istore_3
-    //   7: iload_3
-    //   8: istore_2
-    //   9: new 136	java/net/URL
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 137	java/net/URL:<init>	(Ljava/lang/String;)V
-    //   17: invokevirtual 141	java/net/URL:openConnection	()Ljava/net/URLConnection;
-    //   20: checkcast 143	java/net/HttpURLConnection
-    //   23: astore 5
-    //   25: iload_3
-    //   26: istore_2
-    //   27: aload 5
-    //   29: invokevirtual 147	java/net/HttpURLConnection:getResponseCode	()I
-    //   32: istore_3
-    //   33: iload_3
-    //   34: istore_2
-    //   35: aload 5
+    //   3: aconst_null
+    //   4: astore 6
+    //   6: sipush 200
+    //   9: istore_3
+    //   10: iload_3
+    //   11: istore_2
+    //   12: new 136	java/net/URL
+    //   15: dup
+    //   16: aload_0
+    //   17: invokespecial 137	java/net/URL:<init>	(Ljava/lang/String;)V
+    //   20: invokevirtual 141	java/net/URL:openConnection	()Ljava/net/URLConnection;
+    //   23: checkcast 143	java/net/HttpURLConnection
+    //   26: astore_0
+    //   27: iload_3
+    //   28: istore_2
+    //   29: aload_0
+    //   30: invokevirtual 147	java/net/HttpURLConnection:getResponseCode	()I
+    //   33: istore_3
+    //   34: iload_3
+    //   35: istore_2
+    //   36: aload_0
     //   37: invokevirtual 151	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
-    //   40: astore_0
-    //   41: aload_1
-    //   42: invokevirtual 154	java/io/File:exists	()Z
-    //   45: ifne +25 -> 70
-    //   48: aload_1
-    //   49: invokevirtual 158	java/io/File:getParentFile	()Ljava/io/File;
-    //   52: astore 6
-    //   54: aload 6
-    //   56: ifnull +9 -> 65
-    //   59: aload 6
-    //   61: invokevirtual 161	java/io/File:mkdirs	()Z
-    //   64: pop
-    //   65: aload_1
-    //   66: invokevirtual 164	java/io/File:createNewFile	()Z
-    //   69: pop
-    //   70: new 166	java/io/FileOutputStream
-    //   73: dup
-    //   74: aload_1
-    //   75: iconst_0
-    //   76: invokespecial 169	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
-    //   79: astore_1
-    //   80: aload_0
-    //   81: aload_1
-    //   82: invokestatic 174	com/tencent/map/sdk/a/on:a	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
-    //   85: pop2
-    //   86: aload 5
-    //   88: invokevirtual 177	java/net/HttpURLConnection:disconnect	()V
-    //   91: aload_0
-    //   92: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   95: aload_1
-    //   96: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   99: aconst_null
-    //   100: areturn
-    //   101: astore 4
-    //   103: aconst_null
-    //   104: astore_1
-    //   105: aconst_null
-    //   106: astore_0
-    //   107: aload 4
-    //   109: invokestatic 186	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
-    //   112: invokestatic 108	com/tencent/map/sdk/a/or:b	(Ljava/lang/String;)V
-    //   115: new 68	com/tencent/map/sdk/a/jg$c
-    //   118: dup
-    //   119: invokespecial 97	com/tencent/map/sdk/a/jg$c:<init>	()V
-    //   122: astore 4
-    //   124: aload 4
-    //   126: iload_2
-    //   127: putfield 188	com/tencent/map/sdk/a/jg$c:f	I
-    //   130: aload_1
-    //   131: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   134: aload_0
-    //   135: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   138: aload 4
-    //   140: areturn
-    //   141: astore_1
+    //   40: astore 5
+    //   42: aload_1
+    //   43: invokevirtual 154	java/io/File:exists	()Z
+    //   46: ifne +25 -> 71
+    //   49: aload_1
+    //   50: invokevirtual 158	java/io/File:getParentFile	()Ljava/io/File;
+    //   53: astore 4
+    //   55: aload 4
+    //   57: ifnull +9 -> 66
+    //   60: aload 4
+    //   62: invokevirtual 161	java/io/File:mkdirs	()Z
+    //   65: pop
+    //   66: aload_1
+    //   67: invokevirtual 164	java/io/File:createNewFile	()Z
+    //   70: pop
+    //   71: new 166	java/io/FileOutputStream
+    //   74: dup
+    //   75: aload_1
+    //   76: iconst_0
+    //   77: invokespecial 169	java/io/FileOutputStream:<init>	(Ljava/io/File;Z)V
+    //   80: astore_1
+    //   81: aload 5
+    //   83: aload_1
+    //   84: invokestatic 174	com/tencent/map/sdk/a/on:a	(Ljava/io/InputStream;Ljava/io/OutputStream;)J
+    //   87: pop2
+    //   88: aload_0
+    //   89: invokevirtual 177	java/net/HttpURLConnection:disconnect	()V
+    //   92: aload 5
+    //   94: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   97: aload_1
+    //   98: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   101: aconst_null
+    //   102: areturn
+    //   103: astore_0
+    //   104: aload_1
+    //   105: astore 4
+    //   107: goto +12 -> 119
+    //   110: astore 4
+    //   112: goto +20 -> 132
+    //   115: astore_0
+    //   116: aconst_null
+    //   117: astore 4
+    //   119: aload 5
+    //   121: astore_1
+    //   122: aload_0
+    //   123: astore 5
+    //   125: goto +76 -> 201
+    //   128: astore 4
+    //   130: aconst_null
+    //   131: astore_1
+    //   132: aload 5
+    //   134: astore_0
+    //   135: iload_3
+    //   136: istore_2
+    //   137: goto +23 -> 160
+    //   140: astore 5
     //   142: aconst_null
     //   143: astore_0
-    //   144: aload_0
-    //   145: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   148: aload 4
-    //   150: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
-    //   153: aload_1
-    //   154: athrow
-    //   155: astore_1
-    //   156: goto -12 -> 144
-    //   159: astore 5
-    //   161: aload_1
-    //   162: astore 4
-    //   164: aload 5
-    //   166: astore_1
-    //   167: goto -23 -> 144
-    //   170: astore 4
-    //   172: aload_1
-    //   173: astore 5
-    //   175: aload 4
-    //   177: astore_1
-    //   178: aload_0
-    //   179: astore 4
-    //   181: aload 5
-    //   183: astore_0
-    //   184: goto -40 -> 144
-    //   187: astore 4
-    //   189: aload_0
-    //   190: astore_1
-    //   191: iload_3
-    //   192: istore_2
-    //   193: aconst_null
-    //   194: astore_0
-    //   195: goto -88 -> 107
-    //   198: astore 4
-    //   200: iload_3
-    //   201: istore_2
-    //   202: aload_0
-    //   203: astore 5
-    //   205: aload_1
-    //   206: astore_0
-    //   207: aload 5
-    //   209: astore_1
-    //   210: goto -103 -> 107
+    //   144: aload 4
+    //   146: astore_1
+    //   147: aload_0
+    //   148: astore 4
+    //   150: goto +51 -> 201
+    //   153: astore 4
+    //   155: aconst_null
+    //   156: astore_1
+    //   157: aload 6
+    //   159: astore_0
+    //   160: aload 4
+    //   162: invokestatic 186	android/util/Log:getStackTraceString	(Ljava/lang/Throwable;)Ljava/lang/String;
+    //   165: invokestatic 120	com/tencent/map/sdk/a/or:b	(Ljava/lang/String;)V
+    //   168: new 86	com/tencent/map/sdk/a/jg$c
+    //   171: dup
+    //   172: invokespecial 97	com/tencent/map/sdk/a/jg$c:<init>	()V
+    //   175: astore 4
+    //   177: aload 4
+    //   179: iload_2
+    //   180: putfield 188	com/tencent/map/sdk/a/jg$c:f	I
+    //   183: aload_0
+    //   184: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   187: aload_1
+    //   188: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   191: aload 4
+    //   193: areturn
+    //   194: astore 5
+    //   196: aload_1
+    //   197: astore 4
+    //   199: aload_0
+    //   200: astore_1
+    //   201: aload_1
+    //   202: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   205: aload 4
+    //   207: invokestatic 180	com/tencent/map/sdk/a/on:a	(Ljava/io/Closeable;)V
+    //   210: aload 5
+    //   212: athrow
     // Local variable table:
     //   start	length	slot	name	signature
     //   0	213	0	paramString	String
     //   0	213	1	paramFile	File
-    //   8	194	2	i	int
-    //   6	195	3	j	int
-    //   1	1	4	localObject1	Object
-    //   101	7	4	localException1	Exception
-    //   122	41	4	localObject2	Object
-    //   170	6	4	localObject3	Object
-    //   179	1	4	str	String
-    //   187	1	4	localException2	Exception
-    //   198	1	4	localException3	Exception
-    //   23	64	5	localHttpURLConnection	java.net.HttpURLConnection
-    //   159	6	5	localObject4	Object
-    //   173	35	5	localObject5	Object
-    //   52	8	6	localFile	File
+    //   11	169	2	i	int
+    //   9	127	3	j	int
+    //   1	105	4	localFile	File
+    //   110	1	4	localException1	Exception
+    //   117	1	4	localObject1	Object
+    //   128	17	4	localException2	Exception
+    //   148	1	4	str	String
+    //   153	8	4	localException3	Exception
+    //   175	31	4	localObject2	Object
+    //   40	93	5	localObject3	Object
+    //   140	1	5	localObject4	Object
+    //   194	17	5	localObject5	Object
+    //   4	154	6	localObject6	Object
     // Exception table:
     //   from	to	target	type
-    //   9	25	101	java/lang/Exception
-    //   27	33	101	java/lang/Exception
-    //   35	41	101	java/lang/Exception
-    //   9	25	141	finally
-    //   27	33	141	finally
-    //   35	41	141	finally
-    //   41	54	155	finally
-    //   59	65	155	finally
-    //   65	70	155	finally
-    //   70	80	155	finally
-    //   80	91	159	finally
-    //   107	130	170	finally
-    //   41	54	187	java/lang/Exception
-    //   59	65	187	java/lang/Exception
-    //   65	70	187	java/lang/Exception
-    //   70	80	187	java/lang/Exception
-    //   80	91	198	java/lang/Exception
+    //   81	92	103	finally
+    //   81	92	110	java/lang/Exception
+    //   42	55	115	finally
+    //   60	66	115	finally
+    //   66	71	115	finally
+    //   71	81	115	finally
+    //   42	55	128	java/lang/Exception
+    //   60	66	128	java/lang/Exception
+    //   66	71	128	java/lang/Exception
+    //   71	81	128	java/lang/Exception
+    //   12	27	140	finally
+    //   29	34	140	finally
+    //   36	42	140	finally
+    //   12	27	153	java/lang/Exception
+    //   29	34	153	java/lang/Exception
+    //   36	42	153	java/lang/Exception
+    //   160	183	194	finally
   }
   
   private FileUpdateReq a(String paramString)
   {
-    if ((this.b == null) || (this.b.isEmpty())) {
-      return null;
-    }
-    Iterator localIterator = this.b.iterator();
-    while (localIterator.hasNext())
+    Object localObject = this.b;
+    if (localObject != null)
     {
-      FileUpdateReq localFileUpdateReq = (FileUpdateReq)localIterator.next();
-      if (nl.a(localFileUpdateReq.sName, paramString)) {
-        return localFileUpdateReq;
+      if (((List)localObject).isEmpty()) {
+        return null;
+      }
+      localObject = this.b.iterator();
+      while (((Iterator)localObject).hasNext())
+      {
+        FileUpdateReq localFileUpdateReq = (FileUpdateReq)((Iterator)localObject).next();
+        if (nl.a(localFileUpdateReq.sName, paramString)) {
+          return localFileUpdateReq;
+        }
       }
     }
     return null;
@@ -300,8 +304,11 @@ public class ConfigFileDownloader
     try
     {
       paramCSFileUpdateReq = ((MapDataRequest)((ng)MapServiceManager.getService(ng.class)).c()).configFileUpdate("4.2.8", fz.a(), fz.d, fz.b(), this.e, paramCSFileUpdateReq.toByteArray("UTF-8"));
-      if ((paramCSFileUpdateReq != null) && (paramCSFileUpdateReq.data != null))
+      if (paramCSFileUpdateReq != null)
       {
+        if (paramCSFileUpdateReq.data == null) {
+          return null;
+        }
         paramCSFileUpdateReq = new k(paramCSFileUpdateReq.data);
         paramCSFileUpdateReq.a("UTF-8");
         SCFileUpdateRsp localSCFileUpdateRsp = new SCFileUpdateRsp();
@@ -311,53 +318,47 @@ public class ConfigFileDownloader
           paramCSFileUpdateReq = localSCFileUpdateRsp.vItems;
           return paramCSFileUpdateReq;
         }
-        return null;
       }
+      return null;
     }
     catch (Exception paramCSFileUpdateReq)
     {
       or.b(Log.getStackTraceString(paramCSFileUpdateReq));
-      return null;
     }
     return null;
   }
   
   private void a(jg.c paramc)
   {
-    Object localObject1;
-    if (this.a != null)
+    Object localObject1 = this.a;
+    if (localObject1 != null)
     {
-      localObject1 = (hz)this.a.get();
-      if (localObject1 != null) {
-        break label23;
+      localObject1 = (hz)((WeakReference)localObject1).get();
+      if (localObject1 == null) {
+        return;
       }
-    }
-    label259:
-    for (;;)
-    {
-      return;
-      label23:
       localObject1 = (List)hz.b.get(((hz)localObject1).a());
-      if (localObject1 == null) {}
-      for (localObject1 = null;; localObject1 = (WeakReference[])((List)localObject1).toArray(new WeakReference[((List)localObject1).size()]))
+      if (localObject1 == null) {
+        localObject1 = null;
+      } else {
+        localObject1 = (WeakReference[])((List)localObject1).toArray(new WeakReference[((List)localObject1).size()]);
+      }
+      if (localObject1 == null) {
+        return;
+      }
+      int i = 0;
+      while (i < localObject1.length)
       {
-        if (localObject1 == null) {
-          break label259;
-        }
-        int i = 0;
-        for (;;)
+        if (localObject1[i] != null)
         {
-          if (i >= localObject1.length) {
-            break label237;
-          }
-          if (localObject1[i] != null)
+          Object localObject2 = (ln)localObject1[i].get();
+          if ((localObject2 != null) && (((ln)localObject2).b != null) && (((ln)localObject2).b.az != null))
           {
-            Object localObject2 = (ln)localObject1[i].get();
-            if ((localObject2 != null) && (((ln)localObject2).b != null) && (((ln)localObject2).b.az != null))
+            localObject2 = ((ln)localObject2).b.aF;
+            if (localObject2 != null)
             {
-              localObject2 = ((ln)localObject2).b.aF;
-              if ((localObject2 == null) || (((jg)localObject2).c == null)) {
-                break;
+              if (((jg)localObject2).c == null) {
+                return;
               }
               paramc.b -= ((jg)localObject2).a;
               if (((jg)localObject2).c.f == null) {
@@ -370,151 +371,162 @@ public class ConfigFileDownloader
                 ((jg)localObject2).c.f.a.add(paramc);
               }
             }
+            else
+            {
+              return;
+            }
           }
-          i += 1;
         }
-        label237:
-        break;
+        i += 1;
       }
     }
   }
   
   public List<FileUpdateRsp> downloadMapConfig(String paramString1, String paramString2, String paramString3, CSFileUpdateReq paramCSFileUpdateReq, hz paramhz)
   {
-    if ((paramCSFileUpdateReq == null) || (paramhz == null)) {
-      return null;
-    }
-    this.b = paramCSFileUpdateReq.vItems;
-    this.c = paramString1;
-    this.d = paramString2;
-    this.a = new WeakReference(paramhz);
-    this.e = paramString3;
-    paramString2 = a(paramCSFileUpdateReq);
-    if ((paramString2 == null) || (paramString2.isEmpty())) {
-      return null;
-    }
-    this.f = paramString2.size();
-    paramString3 = paramString2.iterator();
-    while (paramString3.hasNext())
+    if (paramCSFileUpdateReq != null)
     {
-      paramString1 = (FileUpdateRsp)paramString3.next();
-      if ((paramString1 == null) || (paramString1.iRet != 0))
-      {
-        paramString1 = null;
-        label120:
-        if (paramString1 == null) {
-          break label641;
-        }
-        paramString2 = a(paramString1.a);
-        if (paramString2 == null) {
-          break label633;
-        }
-      }
-      label260:
-      label633:
-      for (paramString1.e = paramString2.iVersion;; paramString1.e = -1)
-      {
-        paramString1.b = System.currentTimeMillis();
-        a(paramString1);
+      if (paramhz == null) {
         return null;
-        paramCSFileUpdateReq = paramString1.sName;
-        int i;
-        switch (paramCSFileUpdateReq.hashCode())
-        {
-        default: 
-          i = -1;
-        }
-        for (;;)
-        {
-          switch (i)
-          {
-          default: 
-            paramString1 = null;
-            break label120;
-            if (!paramCSFileUpdateReq.equals("mapconfig")) {
-              break label260;
-            }
-            i = 0;
-            continue;
-            if (!paramCSFileUpdateReq.equals("poi_icon")) {
-              break label260;
-            }
-            i = 1;
-            continue;
-            if (!paramCSFileUpdateReq.equals("map_icon")) {
-              break label260;
-            }
-            i = 2;
-            continue;
-            if (!paramCSFileUpdateReq.equals("rtt_config.json")) {
-              break label260;
-            }
-            i = 3;
-            continue;
-            if (!paramCSFileUpdateReq.equals("closedroadstyle_normalmode")) {
-              break label260;
-            }
-            i = 4;
-            continue;
-            if (!paramCSFileUpdateReq.equals("closedroadstyle_trafficmode")) {
-              break label260;
-            }
-            i = 5;
-            continue;
-            if (!paramCSFileUpdateReq.equals("indoormap_config_premium")) {
-              break label260;
-            }
-            i = 6;
-            continue;
-            if (!paramCSFileUpdateReq.equals("indoormap_config")) {
-              break label260;
-            }
-            i = 7;
-            continue;
-            if (!paramCSFileUpdateReq.equals("indoorpoi_icon_3d")) {
-              break label260;
-            }
-            i = 8;
-            continue;
-            if (!paramCSFileUpdateReq.equals("sdk_offline_city_ver.json")) {
-              break label260;
-            }
-            i = 9;
-          }
-        }
-        paramString1 = a(paramString1, this.c, false);
-        break;
-        paramString1 = a(paramString1, this.c, true);
-        break;
-        paramString1 = a(paramString1, this.d, true);
-        break;
-        paramString1 = a(paramString1, this.c, false);
-        break;
-        paramString1 = a(paramString1, this.c, false);
-        break;
-        paramString1 = a(paramString1, this.c, false);
-        break;
-        paramString1 = a(paramString1, this.c, false);
-        break;
-        paramString1 = a(paramString1, this.c, false);
-        break;
-        paramString1 = a(paramString1, this.c, false);
-        break;
-        paramString1 = a(paramString1, this.c, false);
-        break;
       }
-      label641:
-      this.f -= 1;
+      this.b = paramCSFileUpdateReq.vItems;
+      this.c = paramString1;
+      this.d = paramString2;
+      this.a = new WeakReference(paramhz);
+      this.e = paramString3;
+      paramString2 = a(paramCSFileUpdateReq);
+      if (paramString2 != null)
+      {
+        if (paramString2.isEmpty()) {
+          return null;
+        }
+        this.f = paramString2.size();
+        paramString3 = paramString2.iterator();
+        while (paramString3.hasNext())
+        {
+          paramString1 = (FileUpdateRsp)paramString3.next();
+          if ((paramString1 != null) && (paramString1.iRet == 0))
+          {
+            paramCSFileUpdateReq = paramString1.sName;
+            switch (paramCSFileUpdateReq.hashCode())
+            {
+            default: 
+              break;
+            case 1590879768: 
+              if (paramCSFileUpdateReq.equals("indoormap_config")) {
+                i = 7;
+              }
+              break;
+            case 1366209438: 
+              if (paramCSFileUpdateReq.equals("mapconfig")) {
+                i = 0;
+              }
+              break;
+            case 1221876167: 
+              if (paramCSFileUpdateReq.equals("rtt_config.json")) {
+                i = 3;
+              }
+              break;
+            case 1217119024: 
+              if (paramCSFileUpdateReq.equals("indoormap_config_premium")) {
+                i = 6;
+              }
+              break;
+            case 451944782: 
+              if (paramCSFileUpdateReq.equals("poi_icon")) {
+                i = 1;
+              }
+              break;
+            case 178735484: 
+              if (paramCSFileUpdateReq.equals("map_icon")) {
+                i = 2;
+              }
+              break;
+            case -752505210: 
+              if (paramCSFileUpdateReq.equals("closedroadstyle_trafficmode")) {
+                i = 5;
+              }
+              break;
+            case -810824476: 
+              if (paramCSFileUpdateReq.equals("closedroadstyle_normalmode")) {
+                i = 4;
+              }
+              break;
+            case -1319508241: 
+              if (paramCSFileUpdateReq.equals("indoorpoi_icon_3d")) {
+                i = 8;
+              }
+              break;
+            case -2042251002: 
+              if (paramCSFileUpdateReq.equals("sdk_offline_city_ver.json")) {
+                i = 9;
+              }
+              break;
+            }
+            int i = -1;
+            switch (i)
+            {
+            default: 
+              break;
+            case 9: 
+              paramString1 = a(paramString1, this.c, false);
+              break;
+            case 8: 
+              paramString1 = a(paramString1, this.c, false);
+              break;
+            case 7: 
+              paramString1 = a(paramString1, this.c, false);
+              break;
+            case 6: 
+              paramString1 = a(paramString1, this.c, false);
+              break;
+            case 5: 
+              paramString1 = a(paramString1, this.c, false);
+              break;
+            case 4: 
+              paramString1 = a(paramString1, this.c, false);
+              break;
+            case 3: 
+              paramString1 = a(paramString1, this.c, false);
+              break;
+            case 2: 
+              paramString1 = a(paramString1, this.d, true);
+              break;
+            case 1: 
+              paramString1 = a(paramString1, this.c, true);
+              break;
+            case 0: 
+              paramString1 = a(paramString1, this.c, false);
+              break;
+            }
+          }
+          paramString1 = null;
+          if (paramString1 != null)
+          {
+            paramString2 = a(paramString1.a);
+            if (paramString2 != null) {
+              paramString1.e = paramString2.iVersion;
+            } else {
+              paramString1.e = -1;
+            }
+            paramString1.b = System.currentTimeMillis();
+            a(paramString1);
+            return null;
+          }
+          this.f -= 1;
+        }
+        if (this.f != 0) {
+          return null;
+        }
+        return paramString2;
+      }
     }
-    if (this.f != 0) {
-      return null;
-    }
-    return paramString2;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.lib.autoconfig.ConfigFileDownloader
  * JD-Core Version:    0.7.0.1
  */

@@ -25,48 +25,62 @@ public class QZoneVideoCompressor
     }
     if (!processMap.containsKey(paramString))
     {
-      QZLog.w("QZoneVideoCompressor", "cancel: process not exists or finished. key=" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cancel: process not exists or finished. key=");
+      ((StringBuilder)localObject).append(paramString);
+      QZLog.w("QZoneVideoCompressor", ((StringBuilder)localObject).toString());
       return;
     }
-    Process localProcess = (Process)processMap.remove(paramString);
-    if (localProcess == null)
+    Object localObject = (Process)processMap.remove(paramString);
+    if (localObject == null)
     {
-      QZLog.w("QZoneVideoCompressor", "cancel: process == null. key=" + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("cancel: process == null. key=");
+      ((StringBuilder)localObject).append(paramString);
+      QZLog.w("QZoneVideoCompressor", ((StringBuilder)localObject).toString());
       return;
     }
-    QZLog.i("QZoneVideoCompressor", "cancel: killProcess. key=" + paramString);
-    localProcess.destroy();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("cancel: killProcess. key=");
+    localStringBuilder.append(paramString);
+    QZLog.i("QZoneVideoCompressor", localStringBuilder.toString());
+    ((Process)localObject).destroy();
   }
   
   private static String getFFmpegPath()
   {
-    if (Build.VERSION.SDK_INT >= 16) {}
-    for (String str = "trim_process_pie";; str = "trim_process_pic") {
-      return ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()) + str;
+    String str;
+    if (Build.VERSION.SDK_INT >= 16) {
+      str = "trim_process_pie";
+    } else {
+      str = "trim_process_pic";
     }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()));
+    localStringBuilder.append(str);
+    return localStringBuilder.toString();
   }
   
   private static String getShortVideoSoFullPath()
   {
-    return ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()) + VideoEnvironment.getShortVideoSoLibName();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ShortVideoSoLoad.getShortVideoSoPath(MobileQQ.getContext()));
+    localStringBuilder.append(VideoEnvironment.getShortVideoSoLibName());
+    return localStringBuilder.toString();
   }
   
   private static boolean setFileExecutable(File paramFile)
   {
-    boolean bool2 = true;
-    boolean bool1;
-    if ((paramFile == null) || (!paramFile.exists())) {
-      bool1 = false;
-    }
-    do
+    if (paramFile != null)
     {
-      do
-      {
-        return bool1;
-        bool1 = bool2;
-      } while (paramFile.canExecute());
-      bool1 = bool2;
-    } while (paramFile.setExecutable(true));
+      if (!paramFile.exists()) {
+        return false;
+      }
+      if (!paramFile.canExecute()) {
+        return paramFile.setExecutable(true);
+      }
+      return true;
+    }
     return false;
   }
   
@@ -126,7 +140,7 @@ public class QZoneVideoCompressor
     //   106: invokevirtual 184	java/io/BufferedReader:readLine	()Ljava/lang/String;
     //   109: astore 5
     //   111: aload 5
-    //   113: ifnull +93 -> 206
+    //   113: ifnull +20 -> 133
     //   116: invokestatic 187	cooperation/qzone/util/QZLog:isDevelopLevel	()Z
     //   119: ifeq -15 -> 104
     //   122: ldc 14
@@ -134,114 +148,123 @@ public class QZoneVideoCompressor
     //   125: aload 5
     //   127: invokestatic 190	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;ILjava/lang/String;)V
     //   130: goto -26 -> 104
-    //   133: astore_1
-    //   134: ldc 14
-    //   136: new 53	java/lang/StringBuilder
-    //   139: dup
-    //   140: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   143: ldc 192
-    //   145: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   148: aload_0
-    //   149: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   152: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   155: invokestatic 77	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;Ljava/lang/String;)V
-    //   158: iconst_0
-    //   159: istore_3
-    //   160: iload_3
-    //   161: istore_2
-    //   162: aload_0
-    //   163: invokestatic 39	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   166: ifne +13 -> 179
-    //   169: getstatic 28	cooperation/qzone/video/QZoneVideoCompressor:processMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   172: aload_0
-    //   173: invokevirtual 68	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   176: pop
-    //   177: iload_3
-    //   178: istore_2
-    //   179: ldc 14
-    //   181: iconst_1
-    //   182: new 53	java/lang/StringBuilder
-    //   185: dup
-    //   186: invokespecial 54	java/lang/StringBuilder:<init>	()V
-    //   189: ldc 194
-    //   191: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   194: iload_2
-    //   195: invokevirtual 197	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
-    //   198: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   201: invokestatic 190	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   204: iload_2
-    //   205: ireturn
-    //   206: aload_1
-    //   207: invokevirtual 201	java/lang/Process:waitFor	()I
-    //   210: istore_3
-    //   211: iload_3
-    //   212: istore_2
-    //   213: aload_0
-    //   214: invokestatic 39	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   217: ifne -38 -> 179
-    //   220: getstatic 28	cooperation/qzone/video/QZoneVideoCompressor:processMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   223: aload_0
-    //   224: invokevirtual 68	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   227: pop
-    //   228: iload_3
-    //   229: istore_2
-    //   230: goto -51 -> 179
-    //   233: astore_1
-    //   234: sipush -1111
-    //   237: istore_3
-    //   238: ldc 14
-    //   240: ldc 202
-    //   242: aload_1
-    //   243: invokestatic 206	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
-    //   246: iload_3
-    //   247: istore_2
-    //   248: aload_0
-    //   249: invokestatic 39	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   252: ifne -73 -> 179
-    //   255: getstatic 28	cooperation/qzone/video/QZoneVideoCompressor:processMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   258: aload_0
-    //   259: invokevirtual 68	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   262: pop
-    //   263: iload_3
-    //   264: istore_2
-    //   265: goto -86 -> 179
-    //   268: astore_1
-    //   269: aload_0
-    //   270: invokestatic 39	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   273: ifne +11 -> 284
-    //   276: getstatic 28	cooperation/qzone/video/QZoneVideoCompressor:processMap	Ljava/util/concurrent/ConcurrentHashMap;
-    //   279: aload_0
-    //   280: invokevirtual 68	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   283: pop
-    //   284: aload_1
-    //   285: athrow
+    //   133: aload_1
+    //   134: invokevirtual 194	java/lang/Process:waitFor	()I
+    //   137: istore_3
+    //   138: iload_3
+    //   139: istore_2
+    //   140: aload_0
+    //   141: invokestatic 39	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   144: ifne +97 -> 241
+    //   147: iload_3
+    //   148: istore_2
+    //   149: getstatic 28	cooperation/qzone/video/QZoneVideoCompressor:processMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   152: aload_0
+    //   153: invokevirtual 68	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   156: pop
+    //   157: goto +84 -> 241
+    //   160: astore_1
+    //   161: goto +113 -> 274
+    //   164: astore_1
+    //   165: ldc 14
+    //   167: ldc 195
+    //   169: aload_1
+    //   170: invokestatic 199	cooperation/qzone/util/QZLog:e	(Ljava/lang/String;Ljava/lang/String;Ljava/lang/Throwable;)V
+    //   173: aload_0
+    //   174: invokestatic 39	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   177: ifne +11 -> 188
+    //   180: getstatic 28	cooperation/qzone/video/QZoneVideoCompressor:processMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   183: aload_0
+    //   184: invokevirtual 68	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   187: pop
+    //   188: sipush -1111
+    //   191: istore_2
+    //   192: goto +49 -> 241
+    //   195: new 53	java/lang/StringBuilder
+    //   198: dup
+    //   199: invokespecial 54	java/lang/StringBuilder:<init>	()V
+    //   202: astore_1
+    //   203: aload_1
+    //   204: ldc 201
+    //   206: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   209: pop
+    //   210: aload_1
+    //   211: aload_0
+    //   212: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   215: pop
+    //   216: ldc 14
+    //   218: aload_1
+    //   219: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   222: invokestatic 77	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;Ljava/lang/String;)V
+    //   225: iconst_0
+    //   226: istore_2
+    //   227: iconst_0
+    //   228: istore_3
+    //   229: aload_0
+    //   230: invokestatic 39	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   233: ifne +8 -> 241
+    //   236: iload_3
+    //   237: istore_2
+    //   238: goto -89 -> 149
+    //   241: new 53	java/lang/StringBuilder
+    //   244: dup
+    //   245: invokespecial 54	java/lang/StringBuilder:<init>	()V
+    //   248: astore_0
+    //   249: aload_0
+    //   250: ldc 203
+    //   252: invokevirtual 60	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   255: pop
+    //   256: aload_0
+    //   257: iload_2
+    //   258: invokevirtual 206	java/lang/StringBuilder:append	(I)Ljava/lang/StringBuilder;
+    //   261: pop
+    //   262: ldc 14
+    //   264: iconst_1
+    //   265: aload_0
+    //   266: invokevirtual 64	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   269: invokestatic 190	cooperation/qzone/util/QZLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   272: iload_2
+    //   273: ireturn
+    //   274: aload_0
+    //   275: invokestatic 39	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
+    //   278: ifne +11 -> 289
+    //   281: getstatic 28	cooperation/qzone/video/QZoneVideoCompressor:processMap	Ljava/util/concurrent/ConcurrentHashMap;
+    //   284: aload_0
+    //   285: invokevirtual 68	java/util/concurrent/ConcurrentHashMap:remove	(Ljava/lang/Object;)Ljava/lang/Object;
+    //   288: pop
+    //   289: goto +5 -> 294
+    //   292: aload_1
+    //   293: athrow
+    //   294: goto -2 -> 292
+    //   297: astore_1
+    //   298: goto -103 -> 195
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	286	0	paramString	String
-    //   0	286	1	paramArrayOfString	String[]
-    //   161	104	2	i	int
-    //   159	105	3	j	int
+    //   0	301	0	paramString	String
+    //   0	301	1	paramArrayOfString	String[]
+    //   139	134	2	i	int
+    //   137	100	3	j	int
     //   21	84	4	localObject	Object
     //   109	17	5	str	String
     // Exception table:
     //   from	to	target	type
-    //   0	84	133	java/io/InterruptedIOException
-    //   84	104	133	java/io/InterruptedIOException
-    //   104	111	133	java/io/InterruptedIOException
-    //   116	130	133	java/io/InterruptedIOException
-    //   206	211	133	java/io/InterruptedIOException
-    //   0	84	233	java/lang/Throwable
-    //   84	104	233	java/lang/Throwable
-    //   104	111	233	java/lang/Throwable
-    //   116	130	233	java/lang/Throwable
-    //   206	211	233	java/lang/Throwable
-    //   0	84	268	finally
-    //   84	104	268	finally
-    //   104	111	268	finally
-    //   116	130	268	finally
-    //   134	158	268	finally
-    //   206	211	268	finally
-    //   238	246	268	finally
+    //   0	84	160	finally
+    //   84	104	160	finally
+    //   104	111	160	finally
+    //   116	130	160	finally
+    //   133	138	160	finally
+    //   165	173	160	finally
+    //   195	225	160	finally
+    //   0	84	164	java/lang/Throwable
+    //   84	104	164	java/lang/Throwable
+    //   104	111	164	java/lang/Throwable
+    //   116	130	164	java/lang/Throwable
+    //   133	138	164	java/lang/Throwable
+    //   0	84	297	java/io/InterruptedIOException
+    //   84	104	297	java/io/InterruptedIOException
+    //   104	111	297	java/io/InterruptedIOException
+    //   116	130	297	java/io/InterruptedIOException
+    //   133	138	297	java/io/InterruptedIOException
   }
   
   public static int trimByFFmpeg(String[] paramArrayOfString)
@@ -251,7 +274,7 @@ public class QZoneVideoCompressor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.video.QZoneVideoCompressor
  * JD-Core Version:    0.7.0.1
  */

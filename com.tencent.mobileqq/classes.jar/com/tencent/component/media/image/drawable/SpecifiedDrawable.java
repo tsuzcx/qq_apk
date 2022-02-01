@@ -20,9 +20,10 @@ public class SpecifiedDrawable
   public SpecifiedDrawable(Drawable paramDrawable, int paramInt1, int paramInt2)
   {
     this.mState = new SpecifiedDrawable.SpecificState(paramDrawable, this);
-    this.mState.mWidth = paramInt1;
-    this.mState.mHeight = paramInt2;
-    setConstantState(this.mState);
+    paramDrawable = this.mState;
+    paramDrawable.mWidth = paramInt1;
+    paramDrawable.mHeight = paramInt2;
+    setConstantState(paramDrawable);
   }
   
   private SpecifiedDrawable(SpecifiedDrawable.SpecificState paramSpecificState, Resources paramResources)
@@ -64,15 +65,16 @@ public class SpecifiedDrawable
   {
     if ((this.mState.mWidth != paramInt1) || (this.mState.mHeight != paramInt2))
     {
-      this.mState.mWidth = paramInt1;
-      this.mState.mHeight = paramInt2;
+      SpecifiedDrawable.SpecificState localSpecificState = this.mState;
+      localSpecificState.mWidth = paramInt1;
+      localSpecificState.mHeight = paramInt2;
       invalidateSelf();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.drawable.SpecifiedDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -25,8 +25,7 @@ final class BottomSelectorLayout$addMediaPanel$2
   public final void invoke(@NotNull List<Media> paramList)
   {
     Intrinsics.checkParameterIsNotNull(paramList, "it");
-    if (!((Collection)paramList).isEmpty()) {}
-    for (int i = 1; i != 0; i = 0)
+    if ((((Collection)paramList).isEmpty() ^ true))
     {
       localObject = ((Iterable)BottomSelectorLayout.a(this.this$0).b()).iterator();
       while (((Iterator)localObject).hasNext())
@@ -45,7 +44,7 @@ final class BottomSelectorLayout$addMediaPanel$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.mediaselector.BottomSelectorLayout.addMediaPanel.2
  * JD-Core Version:    0.7.0.1
  */

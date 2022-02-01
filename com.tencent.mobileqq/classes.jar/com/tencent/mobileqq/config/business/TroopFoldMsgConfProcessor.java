@@ -25,32 +25,32 @@ public class TroopFoldMsgConfProcessor
   public TroopFoldMsgBean a(QConfItem[] paramArrayOfQConfItem)
   {
     QLog.i("TroopFoldMsgConfProcessor", 1, "[onParsed] config");
-    TroopFoldMsgBean localTroopFoldMsgBean2 = null;
-    TroopFoldMsgBean localTroopFoldMsgBean1;
+    Object localObject;
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0) && (paramArrayOfQConfItem[0] != null))
     {
-      localTroopFoldMsgBean2 = TroopFoldMsgBean.a(paramArrayOfQConfItem[0].a);
-      localTroopFoldMsgBean1 = localTroopFoldMsgBean2;
+      TroopFoldMsgBean localTroopFoldMsgBean = TroopFoldMsgBean.a(paramArrayOfQConfItem[0].a);
+      localObject = localTroopFoldMsgBean;
       if (QLog.isColorLevel())
       {
-        QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed " + paramArrayOfQConfItem[0].a);
-        localTroopFoldMsgBean1 = localTroopFoldMsgBean2;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onParsed ");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem[0].a);
+        QLog.d("TroopFoldMsgConfProcessor", 2, ((StringBuilder)localObject).toString());
+        localObject = localTroopFoldMsgBean;
       }
     }
-    for (;;)
+    else
     {
-      paramArrayOfQConfItem = localTroopFoldMsgBean1;
-      if (localTroopFoldMsgBean1 == null) {
-        paramArrayOfQConfItem = new TroopFoldMsgBean();
-      }
-      return paramArrayOfQConfItem;
-      localTroopFoldMsgBean1 = localTroopFoldMsgBean2;
-      if (QLog.isColorLevel())
-      {
+      if (QLog.isColorLevel()) {
         QLog.d("TroopFoldMsgConfProcessor", 2, "onParsed is null");
-        localTroopFoldMsgBean1 = localTroopFoldMsgBean2;
       }
+      localObject = null;
     }
+    paramArrayOfQConfItem = (QConfItem[])localObject;
+    if (localObject == null) {
+      paramArrayOfQConfItem = new TroopFoldMsgBean();
+    }
+    return paramArrayOfQConfItem;
   }
   
   public void a(TroopFoldMsgBean paramTroopFoldMsgBean)
@@ -85,7 +85,10 @@ public class TroopFoldMsgConfProcessor
   
   public void onReqFailed(int paramInt)
   {
-    QLog.i("TroopFoldMsgConfProcessor", 1, "[onReqFailed] failCode=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[onReqFailed] failCode=");
+    localStringBuilder.append(paramInt);
+    QLog.i("TroopFoldMsgConfProcessor", 1, localStringBuilder.toString());
   }
   
   public int type()
@@ -95,7 +98,7 @@ public class TroopFoldMsgConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.TroopFoldMsgConfProcessor
  * JD-Core Version:    0.7.0.1
  */

@@ -16,8 +16,9 @@ public class RFThreadManager
   
   private static int dbType()
   {
-    if (mThreadImpl != null) {
-      return mThreadImpl.getDBType();
+    IThreadManagerDelegate localIThreadManagerDelegate = mThreadImpl;
+    if (localIThreadManagerDelegate != null) {
+      return localIThreadManagerDelegate.getDBType();
     }
     return 0;
   }
@@ -39,8 +40,9 @@ public class RFThreadManager
   
   private static int fileType()
   {
-    if (mThreadImpl != null) {
-      return mThreadImpl.getFileType();
+    IThreadManagerDelegate localIThreadManagerDelegate = mThreadImpl;
+    if (localIThreadManagerDelegate != null) {
+      return localIThreadManagerDelegate.getFileType();
     }
     return 0;
   }
@@ -71,23 +73,25 @@ public class RFThreadManager
   
   private static int networkType()
   {
-    if (mThreadImpl != null) {
-      return mThreadImpl.getNetWorkType();
+    IThreadManagerDelegate localIThreadManagerDelegate = mThreadImpl;
+    if (localIThreadManagerDelegate != null) {
+      return localIThreadManagerDelegate.getNetWorkType();
     }
     return 0;
   }
   
   private static int normalType()
   {
-    if (mThreadImpl != null) {
-      return mThreadImpl.getNormalType();
+    IThreadManagerDelegate localIThreadManagerDelegate = mThreadImpl;
+    if (localIThreadManagerDelegate != null) {
+      return localIThreadManagerDelegate.getNormalType();
     }
     return 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.delegate.impl.RFThreadManager
  * JD-Core Version:    0.7.0.1
  */

@@ -19,14 +19,15 @@ public final class BatchGetLuxuryGiftVideoConfigReq
   
   public static BatchGetLuxuryGiftVideoConfigReq[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new BatchGetLuxuryGiftVideoConfigReq[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new BatchGetLuxuryGiftVideoConfigReq[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static BatchGetLuxuryGiftVideoConfigReq parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -46,26 +47,28 @@ public final class BatchGetLuxuryGiftVideoConfigReq
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
     int i = super.computeSerializedSize();
+    Object localObject = this.videoReq;
     int k = i;
-    if (this.videoReq != null)
+    if (localObject != null)
     {
       k = i;
-      if (this.videoReq.length > 0)
+      if (localObject.length > 0)
       {
         int j = 0;
         for (;;)
         {
+          localObject = this.videoReq;
           k = i;
-          if (j >= this.videoReq.length) {
+          if (j >= localObject.length) {
             break;
           }
-          VideoReq localVideoReq = this.videoReq[j];
+          localObject = localObject[j];
           k = i;
-          if (localVideoReq != null) {
-            k = i + CodedOutputByteBufferNano.computeMessageSize(1, localVideoReq);
+          if (localObject != null) {
+            k = i + CodedOutputByteBufferNano.computeMessageSize(1, (MessageNano)localObject);
           }
           j += 1;
           i = k;
@@ -80,20 +83,24 @@ public final class BatchGetLuxuryGiftVideoConfigReq
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
+      if (i == 0) {
+        break;
       }
-      int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
-      if (this.videoReq == null) {}
-      VideoReq[] arrayOfVideoReq;
-      for (i = 0;; i = this.videoReq.length)
+      if (i != 10)
       {
+        if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+          return this;
+        }
+      }
+      else
+      {
+        int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
+        VideoReq[] arrayOfVideoReq = this.videoReq;
+        if (arrayOfVideoReq == null) {
+          i = 0;
+        } else {
+          i = arrayOfVideoReq.length;
+        }
         arrayOfVideoReq = new VideoReq[j + i];
         j = i;
         if (i != 0)
@@ -108,23 +115,29 @@ public final class BatchGetLuxuryGiftVideoConfigReq
           paramCodedInputByteBufferNano.readTag();
           j += 1;
         }
+        arrayOfVideoReq[j] = new VideoReq();
+        paramCodedInputByteBufferNano.readMessage(arrayOfVideoReq[j]);
+        this.videoReq = arrayOfVideoReq;
       }
-      arrayOfVideoReq[j] = new VideoReq();
-      paramCodedInputByteBufferNano.readMessage(arrayOfVideoReq[j]);
-      this.videoReq = arrayOfVideoReq;
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
-    if ((this.videoReq != null) && (this.videoReq.length > 0))
+    Object localObject = this.videoReq;
+    if ((localObject != null) && (localObject.length > 0))
     {
       int i = 0;
-      while (i < this.videoReq.length)
+      for (;;)
       {
-        VideoReq localVideoReq = this.videoReq[i];
-        if (localVideoReq != null) {
-          paramCodedOutputByteBufferNano.writeMessage(1, localVideoReq);
+        localObject = this.videoReq;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
+        if (localObject != null) {
+          paramCodedOutputByteBufferNano.writeMessage(1, (MessageNano)localObject);
         }
         i += 1;
       }
@@ -134,7 +147,7 @@ public final class BatchGetLuxuryGiftVideoConfigReq
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.protobuf.iliveLuxuryGiftVideoSvr.nano.BatchGetLuxuryGiftVideoConfigReq
  * JD-Core Version:    0.7.0.1
  */

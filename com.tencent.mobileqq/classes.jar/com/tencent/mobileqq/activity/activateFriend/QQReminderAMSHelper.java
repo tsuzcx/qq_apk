@@ -122,16 +122,26 @@ public class QQReminderAMSHelper
   
   public static boolean a(String paramString)
   {
-    AppRuntime localAppRuntime = BaseApplicationImpl.getApplication().getRuntime();
-    if ((localAppRuntime instanceof QQAppInterface)) {
-      return BaseApplicationImpl.getApplication().getSharedPreferences("pref_act_frd" + ((QQAppInterface)localAppRuntime).getCurrentAccountUin(), 0).getBoolean(paramString + ((QQAppInterface)localAppRuntime).getCurrentAccountUin(), false);
+    Object localObject1 = BaseApplicationImpl.getApplication().getRuntime();
+    if ((localObject1 instanceof QQAppInterface))
+    {
+      Object localObject2 = BaseApplicationImpl.getApplication();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pref_act_frd");
+      localObject1 = (QQAppInterface)localObject1;
+      localStringBuilder.append(((QQAppInterface)localObject1).getCurrentAccountUin());
+      localObject2 = ((BaseApplicationImpl)localObject2).getSharedPreferences(localStringBuilder.toString(), 0);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(((QQAppInterface)localObject1).getCurrentAccountUin());
+      return ((SharedPreferences)localObject2).getBoolean(localStringBuilder.toString(), false);
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.QQReminderAMSHelper
  * JD-Core Version:    0.7.0.1
  */

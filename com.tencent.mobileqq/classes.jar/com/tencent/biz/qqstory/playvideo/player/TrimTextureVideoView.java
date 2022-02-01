@@ -34,11 +34,6 @@ public class TrimTextureVideoView
   protected int p = 0;
   protected int q = 0;
   
-  static
-  {
-    jdField_h_of_type_Int = 0;
-  }
-  
   public TrimTextureVideoView(Context paramContext)
   {
     super(paramContext);
@@ -51,7 +46,7 @@ public class TrimTextureVideoView
     this.jdField_k_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangRunnable = new TrimTextureVideoView.1(this);
     this.jdField_b_of_type_JavaLangRunnable = new TrimTextureVideoView.2(this);
-    e();
+    d();
   }
   
   public TrimTextureVideoView(Context paramContext, AttributeSet paramAttributeSet)
@@ -66,7 +61,7 @@ public class TrimTextureVideoView
     this.jdField_k_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangRunnable = new TrimTextureVideoView.1(this);
     this.jdField_b_of_type_JavaLangRunnable = new TrimTextureVideoView.2(this);
-    e();
+    d();
   }
   
   public TrimTextureVideoView(Context paramContext, AttributeSet paramAttributeSet, int paramInt)
@@ -81,20 +76,20 @@ public class TrimTextureVideoView
     this.jdField_k_of_type_Boolean = true;
     this.jdField_a_of_type_JavaLangRunnable = new TrimTextureVideoView.1(this);
     this.jdField_b_of_type_JavaLangRunnable = new TrimTextureVideoView.2(this);
-    e();
+    d();
   }
   
-  private void e()
+  private void d()
   {
     int i1 = jdField_h_of_type_Int + 1;
     jdField_h_of_type_Int = i1;
     this.jdField_i_of_type_Int = i1;
     setOnErrorListener(new TrimTextureVideoView.3(this));
-    f();
+    e();
     super.setOnSeekCompleteListener(this);
   }
   
-  private void f()
+  private void e()
   {
     if (Build.MODEL.toUpperCase().equals("PIXEL 2 XL")) {
       this.jdField_k_of_type_Boolean = false;
@@ -132,10 +127,11 @@ public class TrimTextureVideoView
         this.jdField_k_of_type_Int = i1;
       }
     }
-    if (this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener != null) {
-      this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener.a(paramIMediaPlayer);
+    IMediaPlayer.OnSeekCompleteListener localOnSeekCompleteListener = this.jdField_b_of_type_ComTencentBizQqstoryPlayvideoPlayerMediaplayerWrapperIMediaPlayer$OnSeekCompleteListener;
+    if (localOnSeekCompleteListener != null) {
+      localOnSeekCompleteListener.a(paramIMediaPlayer);
     }
-    d();
+    c();
   }
   
   public void a(boolean paramBoolean)
@@ -146,8 +142,9 @@ public class TrimTextureVideoView
       this.m = this.jdField_j_of_type_Int;
       super.seekTo(this.m);
       this.jdField_j_of_type_Boolean = false;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView$OnPlayRecycleListener != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView$OnPlayRecycleListener.b();
+      TrimTextureVideoView.OnPlayRecycleListener localOnPlayRecycleListener = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoPlayerTrimTextureVideoView$OnPlayRecycleListener;
+      if (localOnPlayRecycleListener != null) {
+        localOnPlayRecycleListener.a();
       }
     }
     super.start();
@@ -156,34 +153,37 @@ public class TrimTextureVideoView
   @TargetApi(14)
   public boolean a(int paramInt1, int paramInt2, int paramInt3)
   {
-    if ((this.jdField_k_of_type_Boolean) && (com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.b())) {}
-    for (int i1 = 0 + paramInt1;; i1 = 0)
+    int i1;
+    if ((this.jdField_k_of_type_Boolean) && (com.tencent.biz.qqstory.playvideo.player.mediaplayer.MediaPlayer.b())) {
+      i1 = paramInt1 + 0;
+    } else {
+      i1 = 0;
+    }
+    int i2 = paramInt1 % 180;
+    float f1;
+    float f2;
+    if (((i2 > 0) && (paramInt2 < paramInt3)) || ((i2 == 0) && (paramInt2 > paramInt3)))
     {
-      float f1;
-      float f2;
-      if (((paramInt1 % 180 > 0) && (paramInt2 < paramInt3)) || ((paramInt1 % 180 == 0) && (paramInt2 > paramInt3)))
-      {
-        setRotation(i1 + 90);
-        f1 = 1.0F / TakeVideoUtils.a(getResources());
-        f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
-        setScaleX(Math.max(f1, f2));
-        setScaleY(Math.max(f1, f2));
-        SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
-        return true;
-      }
-      if (i1 != 0)
-      {
-        setRotation(i1);
-        f1 = 1.0F / TakeVideoUtils.a(getResources());
-        f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
-        setScaleX(Math.max(f1, f2));
-        setScaleY(Math.max(f1, f2));
-        SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
-        return false;
-      }
-      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      setRotation(i1 + 90);
+      f1 = 1.0F / TakeVideoUtils.a(getResources());
+      f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
+      setScaleX(Math.max(f1, f2));
+      setScaleY(Math.max(f1, f2));
+      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+      return true;
+    }
+    if (i1 != 0)
+    {
+      setRotation(i1);
+      f1 = 1.0F / TakeVideoUtils.a(getResources());
+      f2 = Math.min(paramInt3, paramInt2) * 1.0F / Math.max(paramInt3, paramInt2);
+      setScaleX(Math.max(f1, f2));
+      setScaleY(Math.max(f1, f2));
+      SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), need rotate! but return false", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
       return false;
     }
+    SLog.a(this.jdField_a_of_type_JavaLangString, "adjustRotation([rotation]%d, [width]%d, [height]%d), no need rotate!", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3));
+    return false;
   }
   
   public int b()
@@ -191,12 +191,13 @@ public class TrimTextureVideoView
     return this.jdField_j_of_type_Int;
   }
   
+  @TargetApi(14)
   public void b()
   {
-    this.jdField_i_of_type_Boolean = false;
-    removeCallbacks(this.jdField_a_of_type_JavaLangRunnable);
+    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]pausePlay()", Integer.valueOf(this.jdField_i_of_type_Int));
+    this.m = super.getCurrentPosition();
     removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]stopPlay! cancel schedule!", Integer.valueOf(this.jdField_i_of_type_Int));
+    super.pause();
   }
   
   public void b(boolean paramBoolean)
@@ -221,15 +222,6 @@ public class TrimTextureVideoView
   @TargetApi(14)
   public void c()
   {
-    SLog.a(this.jdField_a_of_type_JavaLangString, "[%d]pausePlay()", Integer.valueOf(this.jdField_i_of_type_Int));
-    this.m = super.getCurrentPosition();
-    removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
-    super.pause();
-  }
-  
-  @TargetApi(14)
-  public void d()
-  {
     if (this.l != 0)
     {
       removeCallbacks(this.jdField_b_of_type_JavaLangRunnable);
@@ -238,7 +230,7 @@ public class TrimTextureVideoView
   }
   
   @TargetApi(14)
-  public void onAttachedToWindow()
+  protected void onAttachedToWindow()
   {
     super.onAttachedToWindow();
     this.jdField_i_of_type_Boolean = true;
@@ -247,7 +239,7 @@ public class TrimTextureVideoView
   }
   
   @TargetApi(14)
-  public void onDetachedFromWindow()
+  protected void onDetachedFromWindow()
   {
     super.onDetachedFromWindow();
     this.jdField_i_of_type_Boolean = false;
@@ -269,7 +261,7 @@ public class TrimTextureVideoView
     }
   }
   
-  public void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onSizeChanged(int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onSizeChanged(paramInt1, paramInt2, paramInt3, paramInt4);
     SLog.a(this.jdField_a_of_type_JavaLangString, "onSizeChanged(%d, %d, %d, %d)", Integer.valueOf(paramInt1), Integer.valueOf(paramInt2), Integer.valueOf(paramInt3), Integer.valueOf(paramInt4));
@@ -315,7 +307,7 @@ public class TrimTextureVideoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.player.TrimTextureVideoView
  * JD-Core Version:    0.7.0.1
  */

@@ -1,9 +1,11 @@
 package com.tencent.mobileqq.nearby;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.nearby.ipc.NearbyProcManager;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.ipc.INearbyProcManager;
 import com.tencent.mobileqq.nearby.redtouch.NearbyRedNum;
-import com.tencent.mobileqq.nearby.report.ODReportTask;
+import com.tencent.mobileqq.nearby.report.IODReportTask;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin;
 import com.tencent.mobileqq.webview.swift.WebViewPlugin.PluginRuntime;
@@ -17,29 +19,26 @@ public class MatchMakerPlugin
   private static NearbyRedNum jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum;
   private static boolean jdField_a_of_type_Boolean = false;
   
-  private NearbyProcManager a()
+  private INearbyProcManager a()
   {
     Object localObject = this.mRuntime.a();
-    if (!(localObject instanceof NearbyAppInterface)) {
-      localObject = null;
+    if (!(localObject instanceof INearbyAppInterface)) {
+      return null;
     }
-    NearbyProcManager localNearbyProcManager;
-    do
-    {
+    localObject = ((INearbyAppInterface)localObject).getNearbyProcManager();
+    if (((INearbyProcManager)localObject).a()) {
       return localObject;
-      localNearbyProcManager = ((NearbyAppInterface)localObject).a();
-      localObject = localNearbyProcManager;
-    } while (localNearbyProcManager.a());
+    }
     return null;
   }
   
   private NearbyRedNum a()
   {
-    NearbyProcManager localNearbyProcManager = a();
-    if (localNearbyProcManager == null) {
+    INearbyProcManager localINearbyProcManager = a();
+    if (localINearbyProcManager == null) {
       return null;
     }
-    return localNearbyProcManager.b();
+    return localINearbyProcManager.b();
   }
   
   private String a()
@@ -51,22 +50,28 @@ public class MatchMakerPlugin
       if (jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum == null) {
         jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum = a();
       }
-      if ((jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum == null) || (TextUtils.isEmpty(jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum.a)))
+      Object localObject = jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum;
+      if ((localObject != null) && (!TextUtils.isEmpty(jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum.a)))
+      {
+        localJSONObject.put("data", new JSONObject(jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum.a));
+        jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum = null;
+      }
+      else
       {
         localJSONObject.put("data", new JSONObject());
-        return localJSONObject.toString();
+        localObject = localJSONObject.toString();
+        return localObject;
       }
-      localJSONObject.put("data", new JSONObject(jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum.a));
-      jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum = null;
     }
     catch (JSONException localJSONException)
     {
-      for (;;)
+      localJSONException.printStackTrace();
+      if (QLog.isColorLevel())
       {
-        localJSONException.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.e("XiangQinPlugin", 2, "NearbyRedNum json parse err " + localJSONException.getMessage());
-        }
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("NearbyRedNum json parse err ");
+        localStringBuilder.append(localJSONException.getMessage());
+        QLog.e("XiangQinPlugin", 2, localStringBuilder.toString());
       }
     }
     return localJSONObject.toString();
@@ -80,20 +85,26 @@ public class MatchMakerPlugin
   
   public static void a(NearbyRedNum paramNearbyRedNum)
   {
-    if ("setNearbyRedNum: nearbyRedNum  " + paramNearbyRedNum == null) {}
-    for (String str = "is null";; str = "")
-    {
-      QLog.d("XiangQinPlugin", 2, str);
-      jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum = paramNearbyRedNum;
-      return;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("setNearbyRedNum: nearbyRedNum  ");
+    ((StringBuilder)localObject).append(paramNearbyRedNum);
+    if (((StringBuilder)localObject).toString() == null) {
+      localObject = "is null";
+    } else {
+      localObject = "";
     }
+    QLog.d("XiangQinPlugin", 2, (String)localObject);
+    jdField_a_of_type_ComTencentMobileqqNearbyRedtouchNearbyRedNum = paramNearbyRedNum;
   }
   
   private void a(String paramString)
   {
     String str = a();
-    QLog.i("XiangQinPlugin", 2, "callback, json=" + str);
-    new ODReportTask().b("nearby_hongniang").c("jsbridge_callback").i(str).a();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("callback, json=");
+    localStringBuilder.append(str);
+    QLog.i("XiangQinPlugin", 2, localStringBuilder.toString());
+    ((IODReportTask)QRoute.api(IODReportTask.class)).setModule("nearby_hongniang").setAction("jsbridge_callback").setRes1(str).report();
     callJs(paramString, new String[] { str });
   }
   
@@ -110,55 +121,73 @@ public class MatchMakerPlugin
     return true;
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    boolean bool = true;
-    QLog.d("XiangQinPlugin", 2, "handleJsRequest url " + paramString1 + " pkgName=" + paramString2 + " method=" + paramString3);
+    paramJsBridgeListener = new StringBuilder();
+    paramJsBridgeListener.append("handleJsRequest url ");
+    paramJsBridgeListener.append(paramString1);
+    paramJsBridgeListener.append(" pkgName=");
+    paramJsBridgeListener.append(paramString2);
+    paramJsBridgeListener.append(" method=");
+    paramJsBridgeListener.append(paramString3);
+    QLog.d("XiangQinPlugin", 2, paramJsBridgeListener.toString());
     jdField_a_of_type_Boolean = true;
     if (!"nearbyXiangqin".equals(paramString2)) {
-      bool = false;
+      return false;
     }
-    do
+    paramString2 = WebViewPlugin.getJsonFromJSBridge(paramString1);
+    if (paramString2 == null) {
+      return true;
+    }
+    if (QLog.isColorLevel())
     {
-      return bool;
-      paramString2 = WebViewPlugin.getJsonFromJSBridge(paramString1);
-    } while (paramString2 == null);
-    if (QLog.isColorLevel()) {
-      QLog.d("XiangQinPlugin", 2, "handleJsRequest JSON = " + paramString2.toString());
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest JSON = ");
+      paramJsBridgeListener.append(paramString2.toString());
+      QLog.d("XiangQinPlugin", 2, paramJsBridgeListener.toString());
     }
     try
     {
       if (paramString2.has("callback"))
       {
         paramJsBridgeListener = paramString2.getString("callback");
+        break label227;
       }
-      else
+      int i = paramString1.indexOf("#");
+      if (i != -1)
       {
-        int i = paramString1.indexOf("#");
-        if ((i == -1) || (i + 1 > paramString1.length() - 1)) {
-          break label221;
+        i += 1;
+        if (i > paramString1.length() - 1) {
+          return false;
         }
-        paramJsBridgeListener = paramString1.substring(i + 1);
+        paramJsBridgeListener = paramString1.substring(i);
+        break label227;
       }
+      return false;
     }
     catch (JSONException paramJsBridgeListener)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("XiangQinPlugin", 2, "Failed to parse callbackid,json=" + paramString2);
-      }
-      paramJsBridgeListener = null;
+      label188:
+      label227:
+      break label188;
     }
-    while (paramJsBridgeListener != null) {
-      return a(paramString3, paramJsBridgeListener);
+    if (QLog.isColorLevel())
+    {
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("Failed to parse callbackid,json=");
+      paramJsBridgeListener.append(paramString2);
+      QLog.i("XiangQinPlugin", 2, paramJsBridgeListener.toString());
     }
-    return false;
-    label221:
-    return false;
+    paramJsBridgeListener = null;
+    if (paramJsBridgeListener == null) {
+      return false;
+    }
+    return a(paramString3, paramJsBridgeListener);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.MatchMakerPlugin
  * JD-Core Version:    0.7.0.1
  */

@@ -16,23 +16,23 @@ final class ConcatenatingMediaSource$ConcatenatedTimeline
     super(paramBoolean, paramShuffleOrder);
     paramShuffleOrder = new int[paramArrayOfTimeline.length];
     int[] arrayOfInt = new int[paramArrayOfTimeline.length];
-    int i = 0;
     long l = 0L;
+    int i = 0;
     int j = 0;
-    if (i < paramArrayOfTimeline.length)
+    while (i < paramArrayOfTimeline.length)
     {
       Timeline localTimeline = paramArrayOfTimeline[i];
       l += localTimeline.getPeriodCount();
-      if (l <= 2147483647L) {}
-      for (paramBoolean = true;; paramBoolean = false)
-      {
-        Assertions.checkState(paramBoolean, "ConcatenatingMediaSource children contain too many periods");
-        paramShuffleOrder[i] = ((int)l);
-        j += localTimeline.getWindowCount();
-        arrayOfInt[i] = j;
-        i += 1;
-        break;
+      if (l <= 2147483647L) {
+        paramBoolean = true;
+      } else {
+        paramBoolean = false;
       }
+      Assertions.checkState(paramBoolean, "ConcatenatingMediaSource children contain too many periods");
+      paramShuffleOrder[i] = ((int)l);
+      j += localTimeline.getWindowCount();
+      arrayOfInt[i] = j;
+      i += 1;
     }
     this.timelines = paramArrayOfTimeline;
     this.sourcePeriodOffsets = paramShuffleOrder;
@@ -80,7 +80,8 @@ final class ConcatenatingMediaSource$ConcatenatedTimeline
   
   public int getPeriodCount()
   {
-    return this.sourcePeriodOffsets[(this.sourcePeriodOffsets.length - 1)];
+    int[] arrayOfInt = this.sourcePeriodOffsets;
+    return arrayOfInt[(arrayOfInt.length - 1)];
   }
   
   protected Timeline getTimelineByChildIndex(int paramInt)
@@ -90,12 +91,13 @@ final class ConcatenatingMediaSource$ConcatenatedTimeline
   
   public int getWindowCount()
   {
-    return this.sourceWindowOffsets[(this.sourceWindowOffsets.length - 1)];
+    int[] arrayOfInt = this.sourceWindowOffsets;
+    return arrayOfInt[(arrayOfInt.length - 1)];
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.source.ConcatenatingMediaSource.ConcatenatedTimeline
  * JD-Core Version:    0.7.0.1
  */

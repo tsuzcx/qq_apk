@@ -35,27 +35,27 @@ public class AudioComponentProcessor
   public IAudioProcessor.ProcessData a(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData.jdField_a_of_type_Int = 0;
-    int j = paramInt2;
-    int i = paramInt1;
-    paramInt1 = j;
     while (paramInt2 > 0)
     {
+      int i;
       if (paramInt2 > 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available()) {
-        paramInt1 = 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available();
+        i = 1920 - this.jdField_a_of_type_JavaIoPipedInputStream.available();
+      } else {
+        i = paramInt2;
       }
-      a(paramArrayOfByte, i, paramInt1);
-      i += paramInt1;
-      paramInt1 = paramInt2 - paramInt1;
-      paramInt2 = paramInt1;
+      a(paramArrayOfByte, paramInt1, i);
+      paramInt1 += i;
+      paramInt2 -= i;
     }
     return this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData;
   }
   
   public void a()
   {
-    if (this.jdField_a_of_type_JavaIoPipedOutputStream != null)
+    PipedOutputStream localPipedOutputStream = this.jdField_a_of_type_JavaIoPipedOutputStream;
+    if (localPipedOutputStream != null)
     {
-      this.jdField_a_of_type_JavaIoPipedOutputStream.close();
+      localPipedOutputStream.close();
       this.jdField_a_of_type_JavaIoPipedOutputStream = null;
     }
     close();
@@ -80,15 +80,16 @@ public class AudioComponentProcessor
     {
       paramInt1 = a(this.c, this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData.jdField_a_of_type_Int);
       paramArrayOfByte = this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData;
-      paramArrayOfByte.jdField_a_of_type_Int = (paramInt1 + paramArrayOfByte.jdField_a_of_type_Int);
+      paramArrayOfByte.jdField_a_of_type_Int += paramInt1;
     }
   }
   
   public void close()
   {
-    if (this.jdField_a_of_type_JavaIoPipedInputStream != null)
+    PipedInputStream localPipedInputStream = this.jdField_a_of_type_JavaIoPipedInputStream;
+    if (localPipedInputStream != null)
     {
-      this.jdField_a_of_type_JavaIoPipedInputStream.close();
+      localPipedInputStream.close();
       this.jdField_a_of_type_JavaIoPipedInputStream = null;
     }
   }
@@ -103,7 +104,7 @@ public class AudioComponentProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qqaudio.audioprocessor.AudioComponentProcessor
  * JD-Core Version:    0.7.0.1
  */

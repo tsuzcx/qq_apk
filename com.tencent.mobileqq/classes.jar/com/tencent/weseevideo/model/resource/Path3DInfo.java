@@ -41,18 +41,18 @@ public final class Path3DInfo
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof Path3DInfo))
       {
         paramObject = (Path3DInfo)paramObject;
-        if ((!Intrinsics.areEqual(this.originalImagePath, paramObject.originalImagePath)) || (!Intrinsics.areEqual(this.depthImagePath, paramObject.depthImagePath))) {}
+        if ((Intrinsics.areEqual(this.originalImagePath, paramObject.originalImagePath)) && (Intrinsics.areEqual(this.depthImagePath, paramObject.depthImagePath))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -69,17 +69,19 @@ public final class Path3DInfo
   
   public int hashCode()
   {
-    int j = 0;
     String str = this.originalImagePath;
-    if (str != null) {}
-    for (int i = str.hashCode();; i = 0)
-    {
-      str = this.depthImagePath;
-      if (str != null) {
-        j = str.hashCode();
-      }
-      return i * 31 + j;
+    int j = 0;
+    int i;
+    if (str != null) {
+      i = str.hashCode();
+    } else {
+      i = 0;
     }
+    str = this.depthImagePath;
+    if (str != null) {
+      j = str.hashCode();
+    }
+    return i * 31 + j;
   }
   
   public final void setDepthImagePath(@NotNull String paramString)
@@ -97,12 +99,18 @@ public final class Path3DInfo
   @NotNull
   public String toString()
   {
-    return "Path3DInfo(originalImagePath=" + this.originalImagePath + ", depthImagePath=" + this.depthImagePath + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Path3DInfo(originalImagePath=");
+    localStringBuilder.append(this.originalImagePath);
+    localStringBuilder.append(", depthImagePath=");
+    localStringBuilder.append(this.depthImagePath);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.weseevideo.model.resource.Path3DInfo
  * JD-Core Version:    0.7.0.1
  */

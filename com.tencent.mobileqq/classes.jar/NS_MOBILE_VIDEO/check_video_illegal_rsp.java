@@ -42,20 +42,23 @@ public final class check_video_illegal_rsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.msg != null) {
-      paramJceOutputStream.write(this.msg, 1);
+    Object localObject = this.msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.video_urls != null) {
-      paramJceOutputStream.write(this.video_urls, 2);
+    localObject = this.video_urls;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 2);
     }
-    if (this.illegal_msg != null) {
-      paramJceOutputStream.write(this.illegal_msg, 3);
+    localObject = this.illegal_msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_VIDEO.check_video_illegal_rsp
  * JD-Core Version:    0.7.0.1
  */

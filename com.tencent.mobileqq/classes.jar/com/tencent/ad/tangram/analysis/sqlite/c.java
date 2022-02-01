@@ -33,10 +33,13 @@ class c
   
   private static String getFilename(Context paramContext)
   {
-    String str = "";
     paramContext = AdProcessManager.INSTANCE.getCurrentProcessName(paramContext);
-    if (TextUtils.isEmpty(paramContext)) {}
-    for (paramContext = str; !TextUtils.isEmpty(paramContext); paramContext = paramContext.replaceAll("(\\.|:)", "_")) {
+    if (TextUtils.isEmpty(paramContext)) {
+      paramContext = "";
+    } else {
+      paramContext = paramContext.replaceAll("(\\.|:)", "_");
+    }
+    if (!TextUtils.isEmpty(paramContext)) {
       return String.format("%s_%s.db", new Object[] { "gdt_analysis", paramContext });
     }
     return String.format("%s.db", new Object[] { "gdt_analysis" });
@@ -44,43 +47,43 @@ class c
   
   public static c getInstance(Context paramContext)
   {
-    if (instance == null) {}
-    try
-    {
-      if (instance == null) {
-        instance = new c(paramContext);
+    if (instance == null) {
+      try
+      {
+        if (instance == null) {
+          instance = new c(paramContext);
+        }
       }
-      return instance;
+      finally {}
     }
-    finally {}
+    return instance;
   }
   
   private void initialize()
   {
     AdLog.i("AdAnalysisSQLiteHelper", "initialize");
     SQLiteDatabase localSQLiteDatabase = getWritableDatabase();
-    if ((localSQLiteDatabase == null) || (a.OLD_TABLE_NAMES == null) || (a.OLD_TABLE_NAMES.length < 0))
-    {
-      AdLog.e("AdAnalysisSQLiteHelper", "initialize error");
-      return;
-    }
-    try
-    {
-      String[] arrayOfString = a.OLD_TABLE_NAMES;
-      int j = arrayOfString.length;
-      int i = 0;
-      while (i < j)
+    if ((localSQLiteDatabase != null) && (a.OLD_TABLE_NAMES != null) && (a.OLD_TABLE_NAMES.length >= 0)) {
+      try
       {
-        localSQLiteDatabase.execSQL(getDropTableSQL(arrayOfString[i]));
-        i += 1;
+        String[] arrayOfString = a.OLD_TABLE_NAMES;
+        int j = arrayOfString.length;
+        int i = 0;
+        while (i < j)
+        {
+          localSQLiteDatabase.execSQL(getDropTableSQL(arrayOfString[i]));
+          i += 1;
+        }
+        localSQLiteDatabase.execSQL(getCreateTableSQL());
+        return;
       }
-      localSQLiteDatabase.execSQL(getCreateTableSQL());
-      return;
+      catch (Throwable localThrowable)
+      {
+        AdLog.e("AdAnalysisSQLiteHelper", "throwable", localThrowable);
+        return;
+      }
     }
-    catch (Throwable localThrowable)
-    {
-      AdLog.e("AdAnalysisSQLiteHelper", "throwable", localThrowable);
-    }
+    AdLog.e("AdAnalysisSQLiteHelper", "initialize error");
   }
   
   public void onCreate(SQLiteDatabase paramSQLiteDatabase)

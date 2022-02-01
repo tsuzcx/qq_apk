@@ -6,9 +6,10 @@ import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelAppInfo;
 import com.tencent.mobileqq.activity.aio.pluspanel.PlusPanelViewModel;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.scribble.ScribbleDownloader;
+import com.tencent.mobileqq.scribble.IScribbleDownloader;
 import com.tencent.mobileqq.scribble.ScribbleResMgr;
 import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.widget.XPanelContainer;
 
 public class DoodleAppInfo
   extends PlusPanelAppInfo
@@ -22,7 +23,7 @@ public class DoodleAppInfo
   
   public int defaultDrawableID()
   {
-    return 2130838318;
+    return 2130838143;
   }
   
   public int getAppID()
@@ -51,24 +52,26 @@ public class DoodleAppInfo
   
   public String getTitle()
   {
-    return BaseApplicationImpl.getContext().getString(2131698487);
+    return BaseApplicationImpl.getContext().getString(2131698553);
   }
   
   public void onPlusPanelAppClick(PlusPanelViewModel paramPlusPanelViewModel, BaseChatPie paramBaseChatPie, SessionInfo paramSessionInfo)
   {
     QQAppInterface localQQAppInterface = paramBaseChatPie.a;
-    localQQAppInterface.getScribbleDownloader().a();
+    ((IScribbleDownloader)localQQAppInterface.getRuntimeService(IScribbleDownloader.class)).checkBDHsessionkey();
     if (((paramSessionInfo.a == 0) || (paramSessionInfo.a == 3000)) && (ScribbleResMgr.a(localQQAppInterface.getApp().getBaseContext(), localQQAppInterface.getCurrentAccountUin())))
     {
       ScribbleResMgr.a(localQQAppInterface.getApp().getBaseContext(), localQQAppInterface.getCurrentAccountUin());
       paramPlusPanelViewModel.b(paramBaseChatPie);
     }
-    paramBaseChatPie.aW();
+    if (paramBaseChatPie.a() != null) {
+      paramBaseChatPie.a().a(18);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pluspanel.appinfo.DoodleAppInfo
  * JD-Core Version:    0.7.0.1
  */

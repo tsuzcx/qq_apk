@@ -46,41 +46,41 @@ public class ClassicEmoticonPanelViewBinder
   
   protected void updatePanelView(View paramView, int paramInt)
   {
-    if (paramView == null) {}
-    int i;
-    do
-    {
-      do
-      {
-        return;
-        i = getEmoticonPanelViewType(paramInt);
-      } while (paramInt >= getPanelPageCount());
-      if (this.panelData == null) {
-        this.panelData = SystemAndEmojiEmoticonInfo.getOldEmoticonList(this.SYS_EMOTION_ORDER);
-      }
-    } while (i != 2007);
-    if (this.adapter == null)
-    {
-      this.adapter = new EmoticonPanelViewBinder.DefaultEmoticonAdapter(this, 2007);
-      this.adapter.setHasDeleteBtn(true);
-      this.adapter.setHasPlusButton(false);
-      this.adapter.setHasSettingButton(false);
-      EmoticonInfo localEmoticonInfo = new EmoticonInfo();
-      localEmoticonInfo.action = "delete";
-      this.adapter.setSpecEmoticon(localEmoticonInfo);
+    if (paramView == null) {
+      return;
     }
-    paramView = (EmoticonLinearLayout)paramView;
-    paramView.setCallBack(this.callback);
-    paramView.setAdapter(this.adapter);
-    this.adapter.setRowColumnNum(3, 7);
-    this.adapter.setPage(paramInt);
-    this.adapter.setList(this.panelData);
-    this.adapter.notifyDataChanged();
+    int i = getEmoticonPanelViewType(paramInt);
+    if (paramInt >= getPanelPageCount()) {
+      return;
+    }
+    if (this.panelData == null) {
+      this.panelData = SystemAndEmojiEmoticonInfo.getOldEmoticonList(this.SYS_EMOTION_ORDER);
+    }
+    if (i == 2007)
+    {
+      if (this.adapter == null)
+      {
+        this.adapter = new EmoticonPanelViewBinder.DefaultEmoticonAdapter(this, 2007);
+        this.adapter.setHasDeleteBtn(true);
+        this.adapter.setHasPlusButton(false);
+        this.adapter.setHasSettingButton(false);
+        EmoticonInfo localEmoticonInfo = new EmoticonInfo();
+        localEmoticonInfo.action = "delete";
+        this.adapter.setSpecEmoticon(localEmoticonInfo);
+      }
+      paramView = (EmoticonLinearLayout)paramView;
+      paramView.setCallBack(this.callback);
+      paramView.setAdapter(this.adapter);
+      this.adapter.setRowColumnNum(3, 7);
+      this.adapter.setPage(paramInt);
+      this.adapter.setList(this.panelData);
+      this.adapter.notifyDataChanged();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.ClassicEmoticonPanelViewBinder
  * JD-Core Version:    0.7.0.1
  */

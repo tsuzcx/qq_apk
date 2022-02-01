@@ -24,26 +24,41 @@ public class CommonManager
   
   private boolean checkEngineAvailable(String paramString1, String[] paramArrayOfString, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString1)) {
+    if (TextUtils.isEmpty(paramString1))
+    {
       QMLog.w("Tissue", "basePath is empty");
-    }
-    do
-    {
       return false;
-      localObject = new File(paramString1);
-    } while ((!((File)localObject).exists()) || (!((File)localObject).isDirectory()));
-    Object localObject = EngineVersion.fromFolderName(((File)localObject).getName());
-    QMLog.i("Tissue", "currentVersion:" + localObject + ",requiredVersion:" + paramString2);
-    if ((localObject != null) && (EngineVersion.compareVersion(((EngineVersion)localObject).mMinor, paramString2) >= 0)) {}
-    for (boolean bool = true;; bool = false)
+    }
+    Object localObject = new File(paramString1);
+    if (((File)localObject).exists())
     {
+      if (!((File)localObject).isDirectory()) {
+        return false;
+      }
+      localObject = EngineVersion.fromFolderName(((File)localObject).getName());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("currentVersion:");
+      localStringBuilder.append(localObject);
+      localStringBuilder.append(",requiredVersion:");
+      localStringBuilder.append(paramString2);
+      QMLog.i("Tissue", localStringBuilder.toString());
+      boolean bool;
+      if ((localObject != null) && (EngineVersion.compareVersion(((EngineVersion)localObject).mMinor, paramString2) >= 0)) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       if (!bool)
       {
-        QMLog.i("Tissue", "versionCheck:" + bool);
+        paramString1 = new StringBuilder();
+        paramString1.append("versionCheck:");
+        paramString1.append(bool);
+        QMLog.i("Tissue", paramString1.toString());
         return false;
       }
       return checkFileExists(paramString1, paramArrayOfString);
     }
+    return false;
   }
   
   private static boolean checkFileExists(String paramString, String[] paramArrayOfString)
@@ -55,22 +70,34 @@ public class CommonManager
       File localFile = new File(paramString, paramArrayOfString[i]);
       if (!localFile.exists())
       {
-        QMLog.w("Tissue", localFile.getAbsolutePath() + " not exists");
+        paramString = new StringBuilder();
+        paramString.append(localFile.getAbsolutePath());
+        paramString.append(" not exists");
+        QMLog.w("Tissue", paramString.toString());
         return false;
       }
       if (!localFile.isFile())
       {
-        QMLog.w("Tissue", localFile.getAbsolutePath() + " not a file");
+        paramString = new StringBuilder();
+        paramString.append(localFile.getAbsolutePath());
+        paramString.append(" not a file");
+        QMLog.w("Tissue", paramString.toString());
         return false;
       }
       if (!localFile.canRead())
       {
-        QMLog.w("Tissue", localFile.getAbsolutePath() + " not readable");
+        paramString = new StringBuilder();
+        paramString.append(localFile.getAbsolutePath());
+        paramString.append(" not readable");
+        QMLog.w("Tissue", paramString.toString());
         return false;
       }
       i += 1;
     }
-    QMLog.i("Tissue", paramString + " is fine");
+    paramArrayOfString = new StringBuilder();
+    paramArrayOfString.append(paramString);
+    paramArrayOfString.append(" is fine");
+    QMLog.i("Tissue", paramArrayOfString.toString());
     return true;
   }
   
@@ -123,7 +150,7 @@ public class CommonManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.CommonManager
  * JD-Core Version:    0.7.0.1
  */

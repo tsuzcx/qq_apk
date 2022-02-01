@@ -41,7 +41,34 @@ public class JoinGroupInfo
   
   public String toString()
   {
-    return "JoinGroupInfo{groupCode='" + this.jdField_a_of_type_JavaLangString + '\'' + ", reason='" + this.jdField_b_of_type_JavaLangString + '\'' + ", statOption='" + this.jdField_a_of_type_Int + '\'' + ", authKey='" + this.c + '\'' + ", authSig='" + this.d + '\'' + ", newMemberMsg=" + Arrays.toString(this.jdField_a_of_type_ArrayOfByte) + ", picUrl='" + this.e + '\'' + ", verifyType=" + this.jdField_b_of_type_Int + ", verifyToken='" + this.f + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("JoinGroupInfo{groupCode='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", reason='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", statOption='");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", authKey='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", authSig='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", newMemberMsg=");
+    localStringBuilder.append(Arrays.toString(this.jdField_a_of_type_ArrayOfByte));
+    localStringBuilder.append(", picUrl='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", verifyType=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", verifyToken='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -59,7 +86,7 @@ public class JoinGroupInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.data.JoinGroupInfo
  * JD-Core Version:    0.7.0.1
  */

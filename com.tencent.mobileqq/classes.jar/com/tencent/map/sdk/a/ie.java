@@ -26,10 +26,11 @@ public final class ie
   {
     this.h = paramlg;
     this.c = paramlg.c();
-    if ((this.c != null) && (this.c.get() != null))
+    Object localObject = this.c;
+    if ((localObject != null) && (((WeakReference)localObject).get() != null))
     {
       ((lf)this.c.get()).a(this);
-      Object localObject = ((lf)this.c.get()).b();
+      localObject = ((lf)this.c.get()).b();
       if (localObject != null)
       {
         localObject = ViewConfiguration.get((Context)localObject);
@@ -45,33 +46,41 @@ public final class ie
   
   public final boolean a(float paramFloat)
   {
-    if (this.b.d())
+    boolean bool2 = this.b.d();
+    boolean bool1 = false;
+    if (bool2)
     {
       double d1 = paramFloat / 8.0F * 2.0F;
       kl localkl = this.h.b();
       localkl.a.c();
+      bool1 = true;
       localkl.a(new nv(102, new double[] { 0.0D, d1 }));
-      return true;
     }
-    return false;
+    return bool1;
   }
   
   public final boolean a(float paramFloat1, float paramFloat2)
   {
-    kl localkl;
-    ie.1 local1;
     if (this.b.f())
     {
-      localkl = this.h.b();
-      local1 = new ie.1(this, localkl);
+      kl localkl = this.h.b();
+      ie.1 local1 = new ie.1(this, localkl);
       if (localkl.r)
       {
         kc.b localb = localkl.i.r;
-        if (localb == null) {
-          break label128;
+        if (localb != null)
+        {
+          paramFloat1 = localkl.h.h().width();
+          float f1 = localb.a;
+          paramFloat2 = localkl.h.h().height();
+          paramFloat2 = (localb.b + 0.5F) * paramFloat2;
+          paramFloat1 *= (f1 + 0.5F);
         }
-        paramFloat1 = localkl.h.h().width() * (localb.a + 0.5F);
-        paramFloat2 = localkl.h.h().height() * (localb.b + 0.5F);
+        else
+        {
+          localkl.a(local1);
+          break label153;
+        }
       }
       if (localkl.l())
       {
@@ -79,12 +88,8 @@ public final class ie
         local1.run();
       }
     }
-    for (;;)
-    {
-      return false;
-      label128:
-      localkl.a(local1);
-    }
+    label153:
+    return false;
   }
   
   public final boolean a(PointF paramPointF1, PointF paramPointF2, double paramDouble1, double paramDouble2)
@@ -154,7 +159,9 @@ public final class ie
         float f2 = paramFloat2 / 64.0F;
         if ((Math.abs(f1) >= this.l) || (Math.abs(f2) >= this.l))
         {
-          long l1 = ((Math.max(Math.abs(paramFloat1), Math.abs(paramFloat2)) - this.f) / (this.g - this.f) * 950.0F);
+          paramFloat1 = Math.max(Math.abs(paramFloat1), Math.abs(paramFloat2));
+          paramFloat2 = this.f;
+          long l1 = ((paramFloat1 - paramFloat2) / (this.g - paramFloat2) * 950.0F);
           Object localObject = new PointF(f1, f2);
           long l2 = System.currentTimeMillis();
           this.a = true;
@@ -209,8 +216,13 @@ public final class ie
   public final boolean g(float paramFloat1, float paramFloat2)
   {
     
-    if (this.b.f()) {
-      this.h.b().c(Math.pow(2.0D, 10.0F * (this.j - paramFloat2) / this.h.h().height()) * this.i);
+    if (this.b.f())
+    {
+      kl localkl = this.h.b();
+      double d1 = Math.pow(2.0D, (this.j - paramFloat2) * 10.0F / this.h.h().height());
+      double d2 = this.i;
+      Double.isNaN(d2);
+      localkl.c(d1 * d2);
     }
     return true;
   }
@@ -238,7 +250,7 @@ public final class ie
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.ie
  * JD-Core Version:    0.7.0.1
  */

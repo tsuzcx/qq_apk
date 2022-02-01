@@ -17,39 +17,61 @@ class HttpsUtil$1
   
   public void onFailure(Call paramCall, IOException paramIOException)
   {
-    HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil).c("HttpsUtil", "url = " + this.jdField_a_of_type_JavaLangString + ", onFailure e = " + paramIOException);
+    paramCall = HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("url = ");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(", onFailure e = ");
+    localStringBuilder.append(paramIOException);
+    paramCall.c("HttpsUtil", localStringBuilder.toString());
     ThreadCenter.postDefaultUITask(new HttpsUtil.1.1(this, paramIOException));
   }
   
   public void onResponse(Call paramCall, Response paramResponse)
   {
-    HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil).c("HttpsUtil", "url = " + this.jdField_a_of_type_JavaLangString + ", onResponse code = " + paramResponse.code());
-    paramCall = "";
+    paramCall = HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("url = ");
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject).append(", onResponse code = ");
+    ((StringBuilder)localObject).append(paramResponse.code());
+    paramCall.c("HttpsUtil", ((StringBuilder)localObject).toString());
     if (paramResponse.body() != null)
     {
       paramCall = paramResponse.body().string();
-      HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil).c("HttpsUtil", "onResponse result = " + paramCall);
+      paramResponse = HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onResponse result = ");
+      ((StringBuilder)localObject).append(paramCall);
+      paramResponse.c("HttpsUtil", ((StringBuilder)localObject).toString());
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsInterface$CallBack != null) {}
-    try
+    else
     {
-      paramCall = new JSONObject(paramCall);
-      ThreadCenter.postDefaultUITask(new HttpsUtil.1.2(this, paramCall));
-      return;
+      paramCall = "";
     }
-    catch (JSONException paramCall)
+    if (this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsInterface$CallBack != null)
     {
-      for (;;)
+      paramResponse = null;
+      try
       {
-        HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil).c("HttpsUtil", "onResponse JSONException e = " + paramCall);
-        paramCall = null;
+        paramCall = new JSONObject(paramCall);
       }
+      catch (JSONException paramCall)
+      {
+        localObject = HttpsUtil.a(this.jdField_a_of_type_ComTencentMobileqqLitelivesdkUtilsHttpsHttpsUtil);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("onResponse JSONException e = ");
+        localStringBuilder.append(paramCall);
+        ((LogInterface)localObject).c("HttpsUtil", localStringBuilder.toString());
+        paramCall = paramResponse;
+      }
+      ThreadCenter.postDefaultUITask(new HttpsUtil.1.2(this, paramCall));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.litelivesdk.utils.https.HttpsUtil.1
  * JD-Core Version:    0.7.0.1
  */

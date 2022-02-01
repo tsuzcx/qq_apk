@@ -17,26 +17,43 @@ public class TroopGameCardResHandler
 {
   private static String a()
   {
-    if (SystemUtil.a()) {}
-    for (String str1 = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);; str1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath())
-    {
-      String str2 = str1;
-      if (str1 != null)
-      {
-        str2 = str1;
-        if (!str1.endsWith(File.separator)) {
-          str2 = str1 + File.separator;
-        }
-      }
-      return str2 + "troopgamecard/res" + File.separator;
+    if (SystemUtil.a()) {
+      localObject1 = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH);
+    } else {
+      localObject1 = BaseApplicationImpl.getApplication().getFilesDir().getAbsolutePath();
     }
+    Object localObject2 = localObject1;
+    if (localObject1 != null)
+    {
+      localObject2 = localObject1;
+      if (!((String)localObject1).endsWith(File.separator))
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(File.separator);
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append((String)localObject2);
+    ((StringBuilder)localObject1).append("troopgamecard/res");
+    ((StringBuilder)localObject1).append(File.separator);
+    return ((StringBuilder)localObject1).toString();
   }
   
   public String a(ResDownloadManager.DownloadParam paramDownloadParam)
   {
-    paramDownloadParam = a() + paramDownloadParam.b + File.separator;
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardResHandler", 2, "getUnzipDirPath dir = " + paramDownloadParam);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(paramDownloadParam.b);
+    localStringBuilder.append(File.separator);
+    paramDownloadParam = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getUnzipDirPath dir = ");
+      localStringBuilder.append(paramDownloadParam);
+      QLog.d("TroopGameCardResHandler", 2, localStringBuilder.toString());
     }
     return paramDownloadParam;
   }
@@ -47,64 +64,88 @@ public class TroopGameCardResHandler
     if (TextUtils.isEmpty(str)) {
       return true;
     }
-    Object localObject1 = new File(str);
-    boolean bool = ((File)localObject1).exists();
-    if (QLog.isColorLevel()) {
-      QLog.d("TroopGameCardResHandler", 2, "needDownload path[" + str + "], exists[" + bool + "]");
+    Object localObject = new File(str);
+    boolean bool = ((File)localObject).exists();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("needDownload path[");
+      localStringBuilder.append(str);
+      localStringBuilder.append("], exists[");
+      localStringBuilder.append(bool);
+      localStringBuilder.append("]");
+      QLog.d("TroopGameCardResHandler", 2, localStringBuilder.toString());
     }
     if (!bool)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGameCardResHandler", 2, "needDownload exists, path[" + str + "]");
+      if (QLog.isColorLevel())
+      {
+        paramDownloadParam = new StringBuilder();
+        paramDownloadParam.append("needDownload exists, path[");
+        paramDownloadParam.append(str);
+        paramDownloadParam.append("]");
+        QLog.d("TroopGameCardResHandler", 2, paramDownloadParam.toString());
       }
       return true;
     }
-    Object localObject2 = null;
+    StringBuilder localStringBuilder = null;
     try
     {
-      localObject1 = MD5FileUtil.a((File)localObject1);
-      if (!TextUtils.equals((CharSequence)localObject1, paramDownloadParam.b))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopGameCardResHandler", 2, "needDownload exists, path[" + str + "], filemd5[" + (String)localObject1 + "], downloadMd5[" + paramDownloadParam.b + "]");
-        }
-        return true;
-      }
+      localObject = MD5FileUtil.a((File)localObject);
     }
     catch (Exception localException)
     {
-      for (;;)
+      localObject = localStringBuilder;
+      if (QLog.isColorLevel())
       {
-        localObject1 = localObject2;
-        if (QLog.isColorLevel())
-        {
-          QLog.d("TroopGameCardResHandler", 2, "needDownload Exception" + localException);
-          localObject1 = localObject2;
-        }
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("needDownload Exception");
+        ((StringBuilder)localObject).append(localException);
+        QLog.d("TroopGameCardResHandler", 2, ((StringBuilder)localObject).toString());
+        localObject = localStringBuilder;
       }
+    }
+    if (!TextUtils.equals((CharSequence)localObject, paramDownloadParam.b))
+    {
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("needDownload exists, path[");
+        localStringBuilder.append(str);
+        localStringBuilder.append("], filemd5[");
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("], downloadMd5[");
+        localStringBuilder.append(paramDownloadParam.b);
+        localStringBuilder.append("]");
+        QLog.d("TroopGameCardResHandler", 2, localStringBuilder.toString());
+      }
+      return true;
     }
     return super.a(paramDownloadParam);
   }
   
   public boolean a(ResDownloadManager.DownloadParam paramDownloadParam, boolean paramBoolean)
   {
-    long l1 = -1L;
+    paramBoolean = paramDownloadParam.a;
     boolean bool1 = true;
     boolean bool2 = true;
-    if (paramDownloadParam.a)
+    if (paramBoolean)
     {
-      long l3 = BaseApplicationImpl.getApplication().getSharedPreferences("troop_game_card_sp", 4).getLong(paramDownloadParam.b, -1L);
+      SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("troop_game_card_sp", 4);
+      String str = paramDownloadParam.b;
+      long l1 = -1L;
+      long l3 = localSharedPreferences.getLong(str, -1L);
       paramDownloadParam = new File(a(paramDownloadParam));
       paramBoolean = bool2;
       if (paramDownloadParam.exists())
       {
         long l2 = paramDownloadParam.lastModified();
-        l1 = l2;
         paramBoolean = bool2;
+        l1 = l2;
         if (l3 > 0L)
         {
-          l1 = l2;
           paramBoolean = bool2;
+          l1 = l2;
           if (l3 != l2)
           {
             paramBoolean = false;
@@ -115,7 +156,14 @@ public class TroopGameCardResHandler
       bool1 = paramBoolean;
       if (QLog.isColorLevel())
       {
-        QLog.d("TroopGameCardResHandler", 2, "verifyUnzipDir result = " + paramBoolean + ",recordedModifyTime = " + l3 + ",realModifyTime = " + l1);
+        paramDownloadParam = new StringBuilder();
+        paramDownloadParam.append("verifyUnzipDir result = ");
+        paramDownloadParam.append(paramBoolean);
+        paramDownloadParam.append(",recordedModifyTime = ");
+        paramDownloadParam.append(l3);
+        paramDownloadParam.append(",realModifyTime = ");
+        paramDownloadParam.append(l1);
+        QLog.d("TroopGameCardResHandler", 2, paramDownloadParam.toString());
         bool1 = paramBoolean;
       }
     }
@@ -124,19 +172,37 @@ public class TroopGameCardResHandler
   
   public String b(ResDownloadManager.DownloadParam paramDownloadParam)
   {
-    if (paramDownloadParam.a) {}
-    for (paramDownloadParam = a() + paramDownloadParam.b + ".end";; paramDownloadParam = a() + paramDownloadParam.b + paramDownloadParam.c)
+    StringBuilder localStringBuilder;
+    if (paramDownloadParam.a)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopGameCardResHandler", 2, "getDownloadPath path[" + paramDownloadParam + "]");
-      }
-      return paramDownloadParam;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a());
+      localStringBuilder.append(paramDownloadParam.b);
+      localStringBuilder.append(".end");
+      paramDownloadParam = localStringBuilder.toString();
     }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(a());
+      localStringBuilder.append(paramDownloadParam.b);
+      localStringBuilder.append(paramDownloadParam.c);
+      paramDownloadParam = localStringBuilder.toString();
+    }
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getDownloadPath path[");
+      localStringBuilder.append(paramDownloadParam);
+      localStringBuilder.append("]");
+      QLog.d("TroopGameCardResHandler", 2, localStringBuilder.toString());
+    }
+    return paramDownloadParam;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.troopgame.TroopGameCardResHandler
  * JD-Core Version:    0.7.0.1
  */

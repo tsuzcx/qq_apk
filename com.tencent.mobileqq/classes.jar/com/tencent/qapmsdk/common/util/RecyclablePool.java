@@ -23,70 +23,68 @@ public final class RecyclablePool
     {
       this.capacity = paramInt;
       this.head.setInPool(true);
-      int i = this.capacity;
       paramInt = 0;
-      for (;;)
+      int i = this.capacity;
+      if (paramInt < i)
       {
-        if (paramInt < i) {
-          try
-          {
-            recycle((RecyclablePool.Recyclable)paramClass.newInstance());
-            paramInt += 1;
-          }
-          catch (Throwable localThrowable)
-          {
-            for (;;)
-            {
-              Logger.INSTANCE.exception("QAPM_common_RecyclablePool", localThrowable);
-            }
-          }
+        try
+        {
+          recycle((RecyclablePool.Recyclable)paramClass.newInstance());
+        }
+        catch (Throwable localThrowable)
+        {
+          Logger.INSTANCE.exception("QAPM_common_RecyclablePool", localThrowable);
         }
       }
+      else
+      {
+        paramClass = Unit.INSTANCE;
+        return;
+      }
     }
-    paramClass = Unit.INSTANCE;
   }
   
   @Nullable
   public final RecyclablePool.Recyclable obtain(@NotNull Class<? extends RecyclablePool.Recyclable> paramClass)
   {
     Intrinsics.checkParameterIsNotNull(paramClass, "clz");
-    RecyclablePool.Recyclable localRecyclable1 = (RecyclablePool.Recyclable)null;
-    if (this.count > 0)
-    {
+    RecyclablePool.Recyclable localRecyclable = (RecyclablePool.Recyclable)null;
+    if (this.count > 0) {
       synchronized (this.head)
       {
-        localRecyclable1 = this.head.getNext();
-        if (localRecyclable1 == null) {
-          break label106;
-        }
-        if (!localRecyclable1.isInPool()) {
+        localRecyclable = this.head.getNext();
+        if (localRecyclable != null)
+        {
+          if (localRecyclable.isInPool())
+          {
+            this.head.changeNext(localRecyclable.getNext(), false);
+            localRecyclable.setInPool(false);
+            this.count -= 1;
+            int i = this.count;
+            break label170;
+          }
           throw ((Throwable)new RuntimeException("recyclable object is not in pool"));
         }
-      }
-      this.head.changeNext(localRecyclable1.getNext(), false);
-      localRecyclable1.setInPool(false);
-      this.count -= 1;
-      int i = this.count;
-      if (localRecyclable1 == null) {
-        break label162;
+        throw ((Throwable)new RuntimeException("recyclable object is null"));
       }
     }
-    for (;;)
+    ??? = Logger.INSTANCE;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("obtain ");
+    localStringBuilder.append(this.count);
+    ((Logger)???).d(new String[] { "QAPM_common_RecyclablePool", localStringBuilder.toString() });
+    label170:
+    if (localRecyclable != null) {
+      return localRecyclable;
+    }
+    try
     {
-      return localRecyclable1;
-      label106:
-      throw ((Throwable)new RuntimeException("recyclable object is null"));
-      Logger.INSTANCE.d(new String[] { "QAPM_common_RecyclablePool", "obtain " + this.count });
-      break;
-      try
-      {
-        label162:
-        localRecyclable1 = (RecyclablePool.Recyclable)paramClass.newInstance();
-      }
-      catch (Throwable paramClass)
-      {
-        Logger.INSTANCE.exception("QAPM_common_RecyclablePool", paramClass);
-      }
+      paramClass = (RecyclablePool.Recyclable)paramClass.newInstance();
+      return paramClass;
+    }
+    catch (Throwable paramClass)
+    {
+      Logger.INSTANCE.exception("QAPM_common_RecyclablePool", paramClass);
     }
     return null;
   }
@@ -98,25 +96,27 @@ public final class RecyclablePool
       paramRecyclable.reset();
       synchronized (this.head)
       {
-        if (paramRecyclable.isInPool()) {
-          throw ((Throwable)new RuntimeException("recyclableObject has in pool"));
+        if (!paramRecyclable.isInPool())
+        {
+          if (this.count < this.capacity)
+          {
+            paramRecyclable.changeNext(this.head.getNext(), false);
+            this.head.changeNext(paramRecyclable, false);
+            paramRecyclable.setInPool(true);
+            this.count += 1;
+            int i = this.count;
+          }
+          paramRecyclable = Unit.INSTANCE;
+          return;
         }
+        throw ((Throwable)new RuntimeException("recyclableObject has in pool"));
       }
-      if (this.count < this.capacity)
-      {
-        paramRecyclable.changeNext(this.head.getNext(), false);
-        this.head.changeNext(paramRecyclable, false);
-        paramRecyclable.setInPool(true);
-        this.count += 1;
-        int i = this.count;
-      }
-      paramRecyclable = Unit.INSTANCE;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.common.util.RecyclablePool
  * JD-Core Version:    0.7.0.1
  */

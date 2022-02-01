@@ -23,25 +23,23 @@ public class FullMessageSearchManager
   
   private FullMessageSearchTask a(String paramString)
   {
-    for (;;)
+    HashMap localHashMap = this.jdField_a_of_type_JavaUtilHashMap;
+    FullMessageSearchTask localFullMessageSearchTask = null;
+    try
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        localObject1 = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (localObject1 != null)
-        {
-          localObject1 = (FullMessageSearchTask)((SoftReference)localObject1).get();
-          Object localObject2 = localObject1;
-          if (localObject1 == null)
-          {
-            localObject2 = new FullMessageSearchTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new FullMessageSearchManager.1(this));
-            this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject2));
-          }
-          return localObject2;
-        }
+      Object localObject = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      if (localObject != null) {
+        localFullMessageSearchTask = (FullMessageSearchTask)((SoftReference)localObject).get();
       }
-      Object localObject1 = null;
+      localObject = localFullMessageSearchTask;
+      if (localFullMessageSearchTask == null)
+      {
+        localObject = new FullMessageSearchTask(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramString, new FullMessageSearchManager.1(this));
+        this.jdField_a_of_type_JavaUtilHashMap.put(paramString, new SoftReference(localObject));
+      }
+      return localObject;
     }
+    finally {}
   }
   
   public FullMessageSearchResult a(String paramString)
@@ -51,47 +49,57 @@ public class FullMessageSearchManager
   
   public void a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearch", 2, "stopSearch " + this.jdField_a_of_type_JavaUtilHashMap.size());
+    if (QLog.isColorLevel())
+    {
+      ??? = new StringBuilder();
+      ((StringBuilder)???).append("stopSearch ");
+      ((StringBuilder)???).append(this.jdField_a_of_type_JavaUtilHashMap.size());
+      QLog.d("Q.msg.FullMessageSearch", 2, ((StringBuilder)???).toString());
     }
     synchronized (this.jdField_a_of_type_JavaUtilHashMap)
     {
       Iterator localIterator = this.jdField_a_of_type_JavaUtilHashMap.values().iterator();
       while (localIterator.hasNext())
       {
-        Object localObject2 = (SoftReference)localIterator.next();
-        if (localObject2 != null)
+        Object localObject3 = (SoftReference)localIterator.next();
+        if (localObject3 != null)
         {
-          localObject2 = (FullMessageSearchTask)((SoftReference)localObject2).get();
-          if (localObject2 != null) {
-            ((FullMessageSearchTask)localObject2).b(2);
+          localObject3 = (FullMessageSearchTask)((SoftReference)localObject3).get();
+          if (localObject3 != null) {
+            ((FullMessageSearchTask)localObject3).b(2);
           }
         }
       }
+      this.jdField_a_of_type_JavaUtilHashMap.clear();
+      return;
     }
-    this.jdField_a_of_type_JavaUtilHashMap.clear();
+    for (;;)
+    {
+      throw localObject2;
+    }
   }
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Q.msg.FullMessageSearch", 2, "pauseSearch " + paramString);
-    }
-    for (;;)
+    if (QLog.isColorLevel())
     {
-      synchronized (this.jdField_a_of_type_JavaUtilHashMap)
-      {
-        paramString = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
-        if (paramString != null)
-        {
-          paramString = (FullMessageSearchTask)paramString.get();
-          if (paramString != null) {
-            paramString.a();
-          }
-          return;
-        }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("pauseSearch ");
+      localStringBuilder.append(paramString);
+      QLog.d("Q.msg.FullMessageSearch", 2, localStringBuilder.toString());
+    }
+    StringBuilder localStringBuilder = null;
+    synchronized (this.jdField_a_of_type_JavaUtilHashMap)
+    {
+      SoftReference localSoftReference = (SoftReference)this.jdField_a_of_type_JavaUtilHashMap.get(paramString);
+      paramString = localStringBuilder;
+      if (localSoftReference != null) {
+        paramString = (FullMessageSearchTask)localSoftReference.get();
       }
-      paramString = null;
+      if (paramString != null) {
+        paramString.a();
+      }
+      return;
     }
   }
   
@@ -107,7 +115,7 @@ public class FullMessageSearchManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.fms.FullMessageSearchManager
  * JD-Core Version:    0.7.0.1
  */

@@ -1,96 +1,71 @@
 package com.tencent.av.opengl;
 
-import com.tencent.av.opengl.effects.EffectsRenderController;
+import com.tencent.aelight.camera.download.api.IAEResUtil;
+import com.tencent.av.opengl.api.IGraphicRender;
 import com.tencent.av.opengl.texture.YUVTexture;
-import com.tencent.avcore.jni.render.RenderProxy;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.startup.step.AVSoUtils;
-import com.tencent.mobileqq.utils.AudioHelper;
-import com.tencent.mobileqq.utils.SoLoadUtil;
-import com.tencent.qphone.base.util.BaseApplication;
+import com.tencent.av.temp.IExternalUtilsApi;
+import com.tencent.av.utils.AVSoUtils;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
-import dov.com.qq.im.ae.download.AEResUtil;
 
 public class GraphicRenderMgr
-  extends RenderProxy
 {
   private static final String TAG = "GraphicRenderMgr";
   public static boolean ptuSoVersion = false;
-  private static volatile GraphicRenderMgr sGraphicRenderMgr;
-  public static boolean soloaded = false;
+  private static volatile IGraphicRender sGraphicRender;
   public static boolean soloadedPTV = false;
-  public int decoderPtrRef = 0;
   
-  private GraphicRenderMgr()
+  public static IGraphicRender getInstance()
   {
-    loadSo();
-  }
-  
-  public static GraphicRenderMgr getInstance()
-  {
-    if (sGraphicRenderMgr == null) {}
-    try
-    {
-      if (sGraphicRenderMgr == null) {
-        sGraphicRenderMgr = new GraphicRenderMgr();
+    if (sGraphicRender == null) {
+      try
+      {
+        if (sGraphicRender == null)
+        {
+          sGraphicRender = (IGraphicRender)QRoute.api(IGraphicRender.class);
+          AVSoUtils.d();
+        }
       }
-      return sGraphicRenderMgr;
+      finally {}
     }
-    finally {}
+    return sGraphicRender;
   }
   
   public static void loadPtuSO()
   {
-    if (EffectsRenderController.b())
+    if (((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).isEnableAEModuleManager())
     {
-      soloadedPTV = AEResUtil.e();
-      ptuSoVersion = AEResUtil.d();
+      soloadedPTV = ((IAEResUtil)QRoute.api(IAEResUtil.class)).loadAEBaseSo();
+      ptuSoVersion = ((IAEResUtil)QRoute.api(IAEResUtil.class)).isFilterFaceSoVersionOK();
     }
-    if (QLog.isColorLevel()) {
-      QLog.w("GraphicRenderMgr", 1, "loadPtuSO, soloadedPTV[" + soloadedPTV + "], ptuSoVersion[" + ptuSoVersion + "], isSupported[" + EffectsRenderController.b() + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("loadPtuSO, soloadedPTV[");
+      localStringBuilder.append(soloadedPTV);
+      localStringBuilder.append("], ptuSoVersion[");
+      localStringBuilder.append(ptuSoVersion);
+      localStringBuilder.append("], isSupported[");
+      localStringBuilder.append(((IExternalUtilsApi)QRoute.api(IExternalUtilsApi.class)).isEnableAEModuleManager());
+      localStringBuilder.append("]");
+      QLog.w("GraphicRenderMgr", 1, localStringBuilder.toString());
     }
   }
   
-  public static boolean loadSo()
+  public static void setGlRender(String paramString, YUVTexture paramYUVTexture)
   {
-    if (!soloaded) {}
-    try
-    {
-      long l = AudioHelper.b();
-      QLog.w("GraphicRenderMgr", 1, "loadSo, seq[" + l + "]");
-      BaseApplication localBaseApplication = BaseApplicationImpl.getContext();
-      SoLoadUtil.a(localBaseApplication, "c++_shared", 0, false);
-      SoLoadUtil.a(localBaseApplication, "xplatform", 0, false);
-      AVSoUtils.b(l, localBaseApplication, "SDKCommon", true);
-      AVSoUtils.a(l, localBaseApplication, "SDKCommon", true);
-      AVSoUtils.b(l, localBaseApplication, "qav_graphics", true);
-      AVSoUtils.a(l, localBaseApplication, "qav_graphics", true);
-      soloaded = true;
-      return soloaded;
+    IGraphicRender localIGraphicRender = getInstance();
+    if (paramYUVTexture == null) {
+      paramYUVTexture = null;
+    } else {
+      paramYUVTexture = paramYUVTexture.a();
     }
-    catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
-    {
-      for (;;)
-      {
-        localUnsatisfiedLinkError.printStackTrace();
-        QLog.w("GraphicRenderMgr", 1, "loadSo UnsatisfiedLinkError", localUnsatisfiedLinkError);
-      }
-    }
-  }
-  
-  public void setGlRender(String paramString, YUVTexture paramYUVTexture)
-  {
-    if (paramYUVTexture == null) {}
-    for (paramYUVTexture = null;; paramYUVTexture = paramYUVTexture.a())
-    {
-      setGlRender2Native(paramString, paramYUVTexture);
-      return;
-    }
+    localIGraphicRender.setGlRender2Native(paramString, paramYUVTexture);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.GraphicRenderMgr
  * JD-Core Version:    0.7.0.1
  */

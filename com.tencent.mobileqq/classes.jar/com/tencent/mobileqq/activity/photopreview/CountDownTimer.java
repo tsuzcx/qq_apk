@@ -36,7 +36,7 @@ public class CountDownTimer
   
   public void a(long paramLong)
   {
-    this.jdField_b_of_type_Long = Math.max(SystemClock.elapsedRealtime() + 1000L * paramLong, this.jdField_b_of_type_Long);
+    this.jdField_b_of_type_Long = Math.max(SystemClock.elapsedRealtime() + paramLong * 1000L, this.jdField_b_of_type_Long);
     f();
   }
   
@@ -95,24 +95,22 @@ public class CountDownTimer
   
   public void f()
   {
-    for (;;)
+    try
     {
-      try
-      {
-        boolean bool = this.jdField_b_of_type_Boolean;
-        if (bool) {
-          return;
-        }
-        if (this.jdField_b_of_type_Long <= SystemClock.elapsedRealtime())
-        {
-          a();
-          continue;
-        }
-        this.jdField_b_of_type_Boolean = true;
+      boolean bool = this.jdField_b_of_type_Boolean;
+      if (bool) {
+        return;
       }
-      finally {}
+      if (this.jdField_b_of_type_Long <= SystemClock.elapsedRealtime())
+      {
+        a();
+        return;
+      }
+      this.jdField_b_of_type_Boolean = true;
       sendMessage(obtainMessage(1));
+      return;
     }
+    finally {}
   }
   
   public void g()
@@ -124,27 +122,30 @@ public class CountDownTimer
   
   public void handleMessage(Message paramMessage)
   {
+    try
+    {
+      long l = this.jdField_b_of_type_Long - SystemClock.elapsedRealtime();
+      if (l <= 0L)
+      {
+        a();
+      }
+      else if (l < this.jdField_a_of_type_Long)
+      {
+        sendMessageDelayed(obtainMessage(1), l);
+      }
+      else
+      {
+        l = SystemClock.elapsedRealtime();
+        b();
+        for (l = l + this.jdField_a_of_type_Long - SystemClock.elapsedRealtime(); l < 0L; l += this.jdField_a_of_type_Long) {}
+        sendMessageDelayed(obtainMessage(1), l);
+      }
+      return;
+    }
+    finally {}
     for (;;)
     {
-      try
-      {
-        l = this.jdField_b_of_type_Long - SystemClock.elapsedRealtime();
-        if (l <= 0L)
-        {
-          a();
-          return;
-        }
-        if (l < this.jdField_a_of_type_Long)
-        {
-          sendMessageDelayed(obtainMessage(1), l);
-          continue;
-        }
-        l = SystemClock.elapsedRealtime();
-      }
-      finally {}
-      b();
-      for (long l = l + this.jdField_a_of_type_Long - SystemClock.elapsedRealtime(); l < 0L; l += this.jdField_a_of_type_Long) {}
-      sendMessageDelayed(obtainMessage(1), l);
+      throw paramMessage;
     }
   }
   
@@ -158,7 +159,7 @@ public class CountDownTimer
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photopreview.CountDownTimer
  * JD-Core Version:    0.7.0.1
  */

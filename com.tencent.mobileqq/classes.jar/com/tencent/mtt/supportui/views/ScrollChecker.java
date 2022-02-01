@@ -16,34 +16,53 @@ public class ScrollChecker
       while (i >= 0)
       {
         View localView = localViewGroup.getChildAt(i);
-        if ((localView.getVisibility() == 0) && (paramInt2 + j >= localView.getLeft()) && (paramInt2 + j < localView.getRight()) && (paramInt3 + k >= localView.getTop()) && (paramInt3 + k < localView.getBottom()) && (canScroll(localView, true, paramBoolean2, paramInt1, paramInt2 + j - localView.getLeft(), paramInt3 + k - localView.getTop()))) {
-          return true;
+        if (localView.getVisibility() == 0)
+        {
+          int m = paramInt2 + j;
+          if ((m >= localView.getLeft()) && (m < localView.getRight()))
+          {
+            int n = paramInt3 + k;
+            if ((n >= localView.getTop()) && (n < localView.getBottom()) && (canScroll(localView, true, paramBoolean2, paramInt1, m - localView.getLeft(), n - localView.getTop()))) {
+              return true;
+            }
+          }
         }
         i -= 1;
       }
     }
-    if ((paramView instanceof ScrollChecker.IScrollCheck))
+    boolean bool3 = paramView instanceof ScrollChecker.IScrollCheck;
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (bool3)
     {
       paramView = (ScrollChecker.IScrollCheck)paramView;
-      if (paramBoolean1) {
+      bool1 = bool2;
+      if (paramBoolean1)
+      {
         if (paramBoolean2)
         {
-          if (!paramView.verticalCanScroll(-paramInt1)) {}
-        }
-        else {
-          while (paramView.horizontalCanScroll(-paramInt1)) {
-            return true;
+          bool1 = bool2;
+          if (!paramView.verticalCanScroll(-paramInt1)) {
+            break label239;
           }
         }
+        else
+        {
+          bool1 = bool2;
+          if (!paramView.horizontalCanScroll(-paramInt1)) {
+            break label239;
+          }
+        }
+        bool1 = true;
       }
-      return false;
     }
-    return false;
+    label239:
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.supportui.views.ScrollChecker
  * JD-Core Version:    0.7.0.1
  */

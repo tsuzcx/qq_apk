@@ -11,21 +11,22 @@ class SubmitHomeWorkFragment$9
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
+      if ((i == 1) || (i == 3)) {
+        paramView.setAlpha(1.0F);
+      }
     }
-    for (;;)
-    {
-      return false;
+    else {
       paramView.setAlpha(0.5F);
-      continue;
-      paramView.setAlpha(1.0F);
     }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.homework.entry.ui.SubmitHomeWorkFragment.9
  * JD-Core Version:    0.7.0.1
  */

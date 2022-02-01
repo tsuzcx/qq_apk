@@ -54,7 +54,7 @@ public class LargeTouchAreaButton
     paramContext.recycle();
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((paramInt1 != this.a) || (paramInt2 != this.d) || (paramInt3 != this.b) || (paramInt4 != this.c))
@@ -63,13 +63,13 @@ public class LargeTouchAreaButton
       this.d = paramInt2;
       this.b = paramInt3;
       this.c = paramInt4;
-      ((View)getParent()).setTouchDelegate(new TouchDelegate(new Rect(paramInt1 - this.g, paramInt2 - this.i, this.h + paramInt3, this.f + paramInt4), this));
+      ((View)getParent()).setTouchDelegate(new TouchDelegate(new Rect(paramInt1 - this.g, paramInt2 - this.i, paramInt3 + this.h, paramInt4 + this.f), this));
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.LargeTouchAreaButton
  * JD-Core Version:    0.7.0.1
  */

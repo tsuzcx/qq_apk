@@ -6,7 +6,7 @@ import com.tencent.livesdk.servicefactory.ServiceAccessor;
 import com.tencent.livesdk.servicefactory.builder.BaseServiceBuilder;
 
 public class AudioMediaServiceBuilder
-  implements BaseServiceBuilder
+  implements BaseServiceBuilder, IAudioMediaServiceBuilder
 {
   public IAudioMediaService a(ServiceAccessor paramServiceAccessor)
   {
@@ -17,7 +17,7 @@ public class AudioMediaServiceBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.AudioMediaServiceBuilder
  * JD-Core Version:    0.7.0.1
  */

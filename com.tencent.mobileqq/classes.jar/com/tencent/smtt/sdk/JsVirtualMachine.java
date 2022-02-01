@@ -27,38 +27,39 @@ public final class JsVirtualMachine
   
   protected IX5JsContext a()
   {
-    if (this.b == null)
+    Object localObject = this.b;
+    if (localObject == null)
     {
-      JsVirtualMachine.a locala = new JsVirtualMachine.a(this.a);
-      this.c.add(new WeakReference(locala));
-      return locala;
+      localObject = new JsVirtualMachine.a(this.a);
+      this.c.add(new WeakReference(localObject));
+      return localObject;
     }
-    return this.b.createJsContext();
+    return ((IX5JsVirtualMachine)localObject).createJsContext();
   }
   
   public void destroy()
   {
-    if (this.b != null) {
-      this.b.destroy();
-    }
-    for (;;)
+    Object localObject = this.b;
+    if (localObject != null)
     {
+      ((IX5JsVirtualMachine)localObject).destroy();
       return;
-      Iterator localIterator = this.c.iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((JsVirtualMachine.a)localWeakReference.get()).destroy();
-        }
+    }
+    localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      if (localWeakReference.get() != null) {
+        ((JsVirtualMachine.a)localWeakReference.get()).destroy();
       }
     }
   }
   
   public Looper getLooper()
   {
-    if (this.b != null) {
-      return this.b.getLooper();
+    IX5JsVirtualMachine localIX5JsVirtualMachine = this.b;
+    if (localIX5JsVirtualMachine != null) {
+      return localIX5JsVirtualMachine.getLooper();
     }
     return Looper.myLooper();
   }
@@ -70,45 +71,43 @@ public final class JsVirtualMachine
   
   public void onPause()
   {
-    if (this.b != null) {
-      this.b.onPause();
-    }
-    for (;;)
+    Object localObject = this.b;
+    if (localObject != null)
     {
+      ((IX5JsVirtualMachine)localObject).onPause();
       return;
-      Iterator localIterator = this.c.iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((JsVirtualMachine.a)localWeakReference.get()).a();
-        }
+    }
+    localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      if (localWeakReference.get() != null) {
+        ((JsVirtualMachine.a)localWeakReference.get()).a();
       }
     }
   }
   
   public void onResume()
   {
-    if (this.b != null) {
-      this.b.onResume();
-    }
-    for (;;)
+    Object localObject = this.b;
+    if (localObject != null)
     {
+      ((IX5JsVirtualMachine)localObject).onResume();
       return;
-      Iterator localIterator = this.c.iterator();
-      while (localIterator.hasNext())
-      {
-        WeakReference localWeakReference = (WeakReference)localIterator.next();
-        if (localWeakReference.get() != null) {
-          ((JsVirtualMachine.a)localWeakReference.get()).b();
-        }
+    }
+    localObject = this.c.iterator();
+    while (((Iterator)localObject).hasNext())
+    {
+      WeakReference localWeakReference = (WeakReference)((Iterator)localObject).next();
+      if (localWeakReference.get() != null) {
+        ((JsVirtualMachine.a)localWeakReference.get()).b();
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.JsVirtualMachine
  * JD-Core Version:    0.7.0.1
  */

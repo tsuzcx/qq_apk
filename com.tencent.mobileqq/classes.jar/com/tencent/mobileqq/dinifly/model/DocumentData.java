@@ -37,7 +37,10 @@ public class DocumentData
   
   public int hashCode()
   {
-    int i = (int)((this.text.hashCode() * 31 + this.fontName.hashCode()) * 31 + this.size);
+    double d1 = (this.text.hashCode() * 31 + this.fontName.hashCode()) * 31;
+    double d2 = this.size;
+    Double.isNaN(d1);
+    int i = (int)(d1 + d2);
     int j = this.justification.ordinal();
     int k = this.tracking;
     long l = Double.doubleToLongBits(this.lineHeight);
@@ -46,7 +49,7 @@ public class DocumentData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.DocumentData
  * JD-Core Version:    0.7.0.1
  */

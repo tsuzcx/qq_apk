@@ -10,21 +10,23 @@ public class LocationEasterEggBean
   
   public static LocationEasterEggBean a(String paramString)
   {
-    if (paramString == null) {}
-    do
-    {
+    if (paramString == null) {
       return null;
-      try
-      {
-        LocationEasterEggBean localLocationEasterEggBean = new LocationEasterEggBean();
-        paramString = new JSONObject(paramString);
-        localLocationEasterEggBean.a = paramString.optString("dest_icon", "");
-        localLocationEasterEggBean.b = paramString.optString("avatar_pendant", "");
-        return localLocationEasterEggBean;
+    }
+    try
+    {
+      LocationEasterEggBean localLocationEasterEggBean = new LocationEasterEggBean();
+      paramString = new JSONObject(paramString);
+      localLocationEasterEggBean.a = paramString.optString("dest_icon", "");
+      localLocationEasterEggBean.b = paramString.optString("avatar_pendant", "");
+      return localLocationEasterEggBean;
+    }
+    catch (Exception paramString)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.e("LocationEasterEggBean", 1, new Object[] { "parse e:", paramString.toString() });
       }
-      catch (Exception paramString) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("LocationEasterEggBean", 1, new Object[] { "parse e:", paramString.toString() });
+    }
     return null;
   }
   
@@ -40,7 +42,7 @@ public class LocationEasterEggBean
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.location.config.LocationEasterEggBean
  * JD-Core Version:    0.7.0.1
  */

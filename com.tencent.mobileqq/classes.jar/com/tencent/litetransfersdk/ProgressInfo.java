@@ -28,10 +28,15 @@ public class ProgressInfo
   public void GetFilePath(QQAppInterface paramQQAppInterface, long paramLong)
   {
     paramQQAppInterface = paramQQAppInterface.getEntityManagerFactory().createEntityManager();
-    List localList = paramQQAppInterface.rawQuery(RouterMsgRecord.class, "select * from " + RouterMsgRecord.sBasicTableName + paramLong + " where uSessionID = ?", new String[] { String.valueOf(this.uint64_sessionid) });
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("select * from ");
+    ((StringBuilder)localObject).append(RouterMsgRecord.sBasicTableName);
+    ((StringBuilder)localObject).append(paramLong);
+    ((StringBuilder)localObject).append(" where uSessionID = ?");
+    localObject = paramQQAppInterface.rawQuery(RouterMsgRecord.class, ((StringBuilder)localObject).toString(), new String[] { String.valueOf(this.uint64_sessionid) });
     paramQQAppInterface.close();
-    if ((localList != null) && (localList.size() > 0)) {
-      this.filepath = ((RouterMsgRecord)localList.get(0)).filename;
+    if ((localObject != null) && (((List)localObject).size() > 0)) {
+      this.filepath = ((RouterMsgRecord)((List)localObject).get(0)).filename;
     }
   }
   
@@ -47,19 +52,20 @@ public class ProgressInfo
   
   public int GetWeight()
   {
-    if (this.uint32_status == 2) {
+    int i = this.uint32_status;
+    if (i == 2) {
       return 20;
     }
-    if (this.uint32_status == 1) {
+    if (i == 1) {
       return 30;
     }
-    if (this.uint32_status == 4) {
+    if (i == 4) {
       return 40;
     }
-    if (this.uint32_status == 3) {
+    if (i == 3) {
       return 50;
     }
-    if (this.uint32_status == 0) {
+    if (i == 0) {
       return 60;
     }
     return 0;
@@ -67,7 +73,8 @@ public class ProgressInfo
   
   public boolean IsComplete()
   {
-    return (this.uint32_status == 4) || (this.uint32_status == 3);
+    int i = this.uint32_status;
+    return (i == 4) || (i == 3);
   }
   
   public boolean IsPersistentTimeout()
@@ -99,7 +106,7 @@ public class ProgressInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.litetransfersdk.ProgressInfo
  * JD-Core Version:    0.7.0.1
  */

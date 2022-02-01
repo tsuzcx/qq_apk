@@ -25,7 +25,7 @@ public class VGif2
     super(paramViolaInstance, paramDomObject, paramVComponentContainer, paramInt);
   }
   
-  public boolean hasFinishEvent()
+  protected boolean hasFinishEvent()
   {
     return (this.mDomObj != null) && (this.mDomObj.getEvents().contains("beginPlay"));
   }
@@ -35,7 +35,7 @@ public class VGif2
     return true;
   }
   
-  public void tryFireEvent(boolean paramBoolean, Bundle paramBundle)
+  protected void tryFireEvent(boolean paramBoolean, Bundle paramBundle)
   {
     if (!hasFinishEvent()) {
       return;
@@ -45,23 +45,24 @@ public class VGif2
       try
       {
         Object localObject = (VImageView2)getHostView();
-        if (localObject == null) {
-          break label174;
-        }
-        i = ((VImageView2)localObject).getNaturalWidth();
-        j = ((VImageView2)localObject).getNaturalHeight();
-        if (paramBundle != null)
+        int k = 0;
+        if (localObject != null)
         {
-          i = paramBundle.getInt(ImageAdapterHolder.BUNDLE_WIDTH);
-          j = paramBundle.getInt(ImageAdapterHolder.BUNDLE_HEIGHT);
-        }
-        paramBundle = new JSONObject();
-        localObject = new JSONObject();
-        ((JSONObject)localObject).put("width", i);
-        ((JSONObject)localObject).put("height", j);
-        if (paramBoolean)
-        {
-          i = 1;
+          j = ((VImageView2)localObject).getNaturalWidth();
+          i = ((VImageView2)localObject).getNaturalHeight();
+          if (paramBundle != null)
+          {
+            j = paramBundle.getInt(ImageAdapterHolder.BUNDLE_WIDTH);
+            i = paramBundle.getInt(ImageAdapterHolder.BUNDLE_HEIGHT);
+          }
+          paramBundle = new JSONObject();
+          localObject = new JSONObject();
+          ((JSONObject)localObject).put("width", j);
+          ((JSONObject)localObject).put("height", i);
+          i = k;
+          if (paramBoolean) {
+            i = 1;
+          }
           paramBundle.put("success", i);
           paramBundle.put("image", localObject);
           localObject = new JSONArray();
@@ -79,16 +80,13 @@ public class VGif2
         return;
       }
       int i = 0;
-      continue;
-      label174:
       int j = 0;
-      i = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.ui.component.VGif2
  * JD-Core Version:    0.7.0.1
  */

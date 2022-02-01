@@ -12,12 +12,16 @@ class HotPicManager$5
   
   public void run()
   {
-    this.this$0.a.getApplication().getSharedPreferences("sp_hotpic_" + this.this$0.a.getCurrentUin(), 0).edit().putInt("hot_pic_last_click", this.a).commit();
+    MobileQQ localMobileQQ = this.this$0.a.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sp_hotpic_");
+    localStringBuilder.append(this.this$0.a.getCurrentUin());
+    localMobileQQ.getSharedPreferences(localStringBuilder.toString(), 0).edit().putInt("hot_pic_last_click", this.a).commit();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.hotpic.HotPicManager.5
  * JD-Core Version:    0.7.0.1
  */

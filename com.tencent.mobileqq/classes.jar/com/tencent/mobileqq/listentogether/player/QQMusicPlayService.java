@@ -22,9 +22,11 @@ import android.text.TextUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.listentogether.data.ISong;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
+import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.utils.NetworkUtil;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
+import com.tencent.qqlive.module.videoreport.dtreport.audio.playback.ReportMediaPlayer;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -37,7 +39,7 @@ public class QQMusicPlayService
   extends Service
   implements MediaPlayer.OnBufferingUpdateListener, MediaPlayer.OnCompletionListener, MediaPlayer.OnErrorListener, MediaPlayer.OnPreparedListener, IConst, IConst.PlayState
 {
-  private static volatile int jdField_a_of_type_Int = 0;
+  private static volatile int jdField_a_of_type_Int;
   private static MediaPlayer jdField_a_of_type_AndroidMediaMediaPlayer;
   private static volatile ISong jdField_a_of_type_ComTencentMobileqqListentogetherDataISong;
   private static volatile int jdField_b_of_type_Int;
@@ -76,7 +78,7 @@ public class QQMusicPlayService
   
   private void a()
   {
-    jdField_a_of_type_AndroidMediaMediaPlayer = new MediaPlayer();
+    jdField_a_of_type_AndroidMediaMediaPlayer = new ReportMediaPlayer();
     jdField_a_of_type_AndroidMediaMediaPlayer.setOnErrorListener(this);
     jdField_a_of_type_AndroidMediaMediaPlayer.setOnPreparedListener(this);
     jdField_a_of_type_AndroidMediaMediaPlayer.setOnCompletionListener(this);
@@ -86,16 +88,17 @@ public class QQMusicPlayService
   
   private void a(int paramInt)
   {
-    if ((jdField_a_of_type_AndroidMediaMediaPlayer != null) && ((jdField_a_of_type_Int == 2) || (jdField_a_of_type_Int == 3))) {}
-    try
-    {
-      jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(paramInt);
-      return;
-    }
-    catch (IllegalStateException localIllegalStateException)
-    {
-      localIllegalStateException.printStackTrace();
-      QLog.e("QQMusicPlay.QQMusicPlayService", 1, "seekTo", localIllegalStateException);
+    if ((jdField_a_of_type_AndroidMediaMediaPlayer != null) && ((jdField_a_of_type_Int == 2) || (jdField_a_of_type_Int == 3))) {
+      try
+      {
+        jdField_a_of_type_AndroidMediaMediaPlayer.seekTo(paramInt);
+        return;
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        localIllegalStateException.printStackTrace();
+        QLog.e("QQMusicPlay.QQMusicPlayService", 1, "seekTo", localIllegalStateException);
+      }
     }
   }
   
@@ -112,9 +115,9 @@ public class QQMusicPlayService
   
   private void a(ISong paramISong)
   {
-    int j = 1;
     ArrayList localArrayList = new ArrayList();
     String str = paramISong.c();
+    int k = 0;
     e = false;
     jdField_c_of_type_Int = 0;
     boolean bool;
@@ -125,87 +128,79 @@ public class QQMusicPlayService
       localArrayList.add(Uri.fromFile(new File(str)).toString());
       bool = true;
     }
-    for (;;)
+    else
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("QQMusicPlay.QQMusicPlayService", 2, String.format("realStartPlay urls=[%s]", new Object[] { Arrays.toString(localArrayList.toArray()) }));
-      }
-      if (!localArrayList.isEmpty()) {
-        break;
-      }
-      return;
       if (!jdField_c_of_type_Boolean)
       {
         b();
         a(paramISong.a(), 6);
-        bool = false;
       }
-      else
+      else if (paramISong.a() != null)
       {
-        if (paramISong.a() != null) {
-          localArrayList.addAll(paramISong.a());
-        }
-        bool = false;
+        localArrayList.addAll(paramISong.a());
       }
+      bool = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("QQMusicPlay.QQMusicPlayService", 2, String.format("realStartPlay urls=[%s]", new Object[] { Arrays.toString(localArrayList.toArray()) }));
+    }
+    if (localArrayList.isEmpty()) {
+      return;
     }
     int i = 0;
-    if (i < localArrayList.size()) {}
+    int j;
     for (;;)
     {
+      j = k;
+      if (i >= localArrayList.size()) {
+        break;
+      }
       try
       {
         b();
         jdField_a_of_type_AndroidMediaMediaPlayer.setDataSource((String)localArrayList.get(i));
         a(paramISong.a(), 1);
         jdField_a_of_type_AndroidMediaMediaPlayer.prepare();
-        i = j;
-        jdField_a_of_type_AndroidMediaMediaPlayer.start();
-        if (i != 0) {
-          a(paramISong.a(), 2);
-        }
-        QQMusicPlayReport.a(bool, NetworkUtil.b(this));
-        return;
-      }
-      catch (IllegalArgumentException localIllegalArgumentException)
-      {
-        localIllegalArgumentException.printStackTrace();
-        QLog.e("QQMusicPlay.QQMusicPlayService", 1, String.format("realStartPlay [index=%d] IllegalArgumentException => ", new Object[] { Integer.valueOf(i) }), localIllegalArgumentException);
-        i += 1;
-      }
-      catch (SecurityException localSecurityException)
-      {
-        localSecurityException.printStackTrace();
-        QLog.e("QQMusicPlay.QQMusicPlayService", 1, String.format("realStartPlay [index=%d] SecurityException => ", new Object[] { Integer.valueOf(i) }), localSecurityException);
-        continue;
-      }
-      catch (IllegalStateException localIllegalStateException)
-      {
-        localIllegalStateException.printStackTrace();
-        QLog.e("QQMusicPlay.QQMusicPlayService", 1, String.format("realStartPlay [index=%d] IllegalStateException => ", new Object[] { Integer.valueOf(i) }), localIllegalStateException);
-        continue;
-      }
-      catch (IOException localIOException)
-      {
-        QLog.e("QQMusicPlay.QQMusicPlayService", 1, String.format("realStartPlay [index=%d] IOException => ", new Object[] { Integer.valueOf(i) }), localIOException);
-        b();
-        if (i != localArrayList.size() - 1) {
-          continue;
-        }
-        a(paramISong.a(), 6);
-        continue;
+        j = 1;
       }
       catch (Throwable localThrowable)
       {
         QLog.e("QQMusicPlay.QQMusicPlayService", 1, String.format("realStartPlay [index=%d] Throwable => ", new Object[] { Integer.valueOf(i) }), localThrowable);
         b();
-        if (i != localArrayList.size() - 1) {
-          continue;
+        if (i == localArrayList.size() - 1) {
+          a(paramISong.a(), 6);
         }
-        a(paramISong.a(), 6);
-        continue;
       }
-      i = 0;
+      catch (IOException localIOException)
+      {
+        QLog.e("QQMusicPlay.QQMusicPlayService", 1, String.format("realStartPlay [index=%d] IOException => ", new Object[] { Integer.valueOf(i) }), localIOException);
+        b();
+        if (i == localArrayList.size() - 1) {
+          a(paramISong.a(), 6);
+        }
+      }
+      catch (IllegalStateException localIllegalStateException)
+      {
+        localIllegalStateException.printStackTrace();
+        QLog.e("QQMusicPlay.QQMusicPlayService", 1, String.format("realStartPlay [index=%d] IllegalStateException => ", new Object[] { Integer.valueOf(i) }), localIllegalStateException);
+      }
+      catch (SecurityException localSecurityException)
+      {
+        localSecurityException.printStackTrace();
+        QLog.e("QQMusicPlay.QQMusicPlayService", 1, String.format("realStartPlay [index=%d] SecurityException => ", new Object[] { Integer.valueOf(i) }), localSecurityException);
+      }
+      catch (IllegalArgumentException localIllegalArgumentException)
+      {
+        localIllegalArgumentException.printStackTrace();
+        QLog.e("QQMusicPlay.QQMusicPlayService", 1, String.format("realStartPlay [index=%d] IllegalArgumentException => ", new Object[] { Integer.valueOf(i) }), localIllegalArgumentException);
+      }
+      i += 1;
     }
+    jdField_a_of_type_AndroidMediaMediaPlayer.start();
+    if (j != 0) {
+      a(paramISong.a(), 2);
+    }
+    QQMusicPlayReport.a(bool, NetworkUtil.getNetworkType(this));
   }
   
   /* Error */
@@ -213,137 +208,133 @@ public class QQMusicPlayService
   {
     // Byte code:
     //   0: aconst_null
-    //   1: astore_3
-    //   2: new 313	java/io/RandomAccessFile
-    //   5: dup
-    //   6: new 177	java/io/File
-    //   9: dup
-    //   10: aload_0
-    //   11: invokespecial 180	java/io/File:<init>	(Ljava/lang/String;)V
-    //   14: ldc_w 315
-    //   17: invokespecial 318	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
-    //   20: astore_2
-    //   21: aload_2
-    //   22: astore_0
-    //   23: aload_2
-    //   24: invokevirtual 322	java/io/RandomAccessFile:readByte	()B
-    //   27: istore_1
-    //   28: aload_2
-    //   29: astore_0
-    //   30: aload_2
-    //   31: lconst_0
-    //   32: invokevirtual 326	java/io/RandomAccessFile:seek	(J)V
-    //   35: aload_2
-    //   36: astore_0
-    //   37: aload_2
-    //   38: iload_1
-    //   39: invokevirtual 329	java/io/RandomAccessFile:write	(I)V
-    //   42: aload_2
-    //   43: ifnull +7 -> 50
-    //   46: aload_2
-    //   47: invokevirtual 332	java/io/RandomAccessFile:close	()V
-    //   50: return
-    //   51: astore_3
-    //   52: aconst_null
-    //   53: astore_2
-    //   54: aload_2
-    //   55: astore_0
-    //   56: aload_3
-    //   57: invokevirtual 333	java/io/IOException:printStackTrace	()V
-    //   60: aload_2
-    //   61: ifnull -11 -> 50
-    //   64: aload_2
-    //   65: invokevirtual 332	java/io/RandomAccessFile:close	()V
-    //   68: return
-    //   69: astore_0
-    //   70: return
-    //   71: astore_0
-    //   72: aload_3
-    //   73: astore_2
-    //   74: aload_2
-    //   75: ifnull +7 -> 82
-    //   78: aload_2
-    //   79: invokevirtual 332	java/io/RandomAccessFile:close	()V
-    //   82: aload_0
-    //   83: athrow
-    //   84: astore_0
-    //   85: return
-    //   86: astore_2
-    //   87: goto -5 -> 82
-    //   90: astore_3
-    //   91: aload_0
-    //   92: astore_2
-    //   93: aload_3
-    //   94: astore_0
-    //   95: goto -21 -> 74
-    //   98: astore_3
-    //   99: goto -45 -> 54
+    //   1: astore 4
+    //   3: aconst_null
+    //   4: astore_2
+    //   5: new 316	java/io/RandomAccessFile
+    //   8: dup
+    //   9: new 179	java/io/File
+    //   12: dup
+    //   13: aload_0
+    //   14: invokespecial 182	java/io/File:<init>	(Ljava/lang/String;)V
+    //   17: ldc_w 318
+    //   20: invokespecial 321	java/io/RandomAccessFile:<init>	(Ljava/io/File;Ljava/lang/String;)V
+    //   23: astore_0
+    //   24: aload_0
+    //   25: invokevirtual 325	java/io/RandomAccessFile:readByte	()B
+    //   28: istore_1
+    //   29: aload_0
+    //   30: lconst_0
+    //   31: invokevirtual 329	java/io/RandomAccessFile:seek	(J)V
+    //   34: aload_0
+    //   35: iload_1
+    //   36: invokevirtual 332	java/io/RandomAccessFile:write	(I)V
+    //   39: aload_0
+    //   40: invokevirtual 335	java/io/RandomAccessFile:close	()V
+    //   43: return
+    //   44: astore_3
+    //   45: aload_0
+    //   46: astore_2
+    //   47: goto +30 -> 77
+    //   50: astore_3
+    //   51: goto +11 -> 62
+    //   54: astore_3
+    //   55: goto +22 -> 77
+    //   58: astore_3
+    //   59: aload 4
+    //   61: astore_0
+    //   62: aload_0
+    //   63: astore_2
+    //   64: aload_3
+    //   65: invokevirtual 336	java/io/IOException:printStackTrace	()V
+    //   68: aload_0
+    //   69: ifnull +7 -> 76
+    //   72: aload_0
+    //   73: invokevirtual 335	java/io/RandomAccessFile:close	()V
+    //   76: return
+    //   77: aload_2
+    //   78: ifnull +7 -> 85
+    //   81: aload_2
+    //   82: invokevirtual 335	java/io/RandomAccessFile:close	()V
+    //   85: aload_3
+    //   86: athrow
+    //   87: astore_0
+    //   88: return
+    //   89: astore_0
+    //   90: goto -5 -> 85
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	102	0	paramString	String
-    //   27	12	1	i	int
-    //   20	59	2	localObject1	Object
-    //   86	1	2	localIOException1	IOException
-    //   92	1	2	str	String
-    //   1	1	3	localObject2	Object
-    //   51	22	3	localIOException2	IOException
-    //   90	4	3	localObject3	Object
-    //   98	1	3	localIOException3	IOException
+    //   0	93	0	paramString	String
+    //   28	8	1	i	int
+    //   4	78	2	str	String
+    //   44	1	3	localObject1	Object
+    //   50	1	3	localIOException1	IOException
+    //   54	1	3	localObject2	Object
+    //   58	28	3	localIOException2	IOException
+    //   1	59	4	localObject3	Object
     // Exception table:
     //   from	to	target	type
-    //   2	21	51	java/io/IOException
-    //   64	68	69	java/io/IOException
-    //   2	21	71	finally
-    //   46	50	84	java/io/IOException
-    //   78	82	86	java/io/IOException
-    //   23	28	90	finally
-    //   30	35	90	finally
-    //   37	42	90	finally
-    //   56	60	90	finally
-    //   23	28	98	java/io/IOException
-    //   30	35	98	java/io/IOException
-    //   37	42	98	java/io/IOException
+    //   24	39	44	finally
+    //   24	39	50	java/io/IOException
+    //   5	24	54	finally
+    //   64	68	54	finally
+    //   5	24	58	java/io/IOException
+    //   39	43	87	java/io/IOException
+    //   72	76	87	java/io/IOException
+    //   81	85	89	java/io/IOException
   }
   
   private void a(String paramString, int paramInt)
   {
-    if ((paramInt < 0) || (paramInt > 8)) {
-      try
-      {
-        throw new IllegalArgumentException("playState value " + paramInt + " is illegal.");
-      }
-      finally {}
-    }
-    jdField_a_of_type_Int = paramInt;
-    if (QLog.isColorLevel()) {
-      QLog.i("QQMusicPlay.QQMusicPlayService", 2, String.format("updatePlayStateNotify %s [state=%s]", new Object[] { paramString, Const.a(paramInt) }));
-    }
-    if ((jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler.sendEmptyMessage(14);
-    }
-    if (!TextUtils.isEmpty(paramString))
+    if ((paramInt >= 0) && (paramInt <= 8)) {}
+    try
     {
-      Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashSet.iterator();
-      while (localIterator.hasNext())
+      jdField_a_of_type_Int = paramInt;
+      if (QLog.isColorLevel()) {
+        QLog.i("QQMusicPlay.QQMusicPlayService", 2, String.format("updatePlayStateNotify %s [state=%s]", new Object[] { paramString, Const.a(paramInt) }));
+      }
+      if ((jdField_a_of_type_Int == 2) && (this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler != null)) {
+        this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler.sendEmptyMessage(14);
+      }
+      if (!TextUtils.isEmpty(paramString))
       {
-        Messenger localMessenger = (Messenger)localIterator.next();
-        try
+        Iterator localIterator = this.jdField_a_of_type_JavaUtilLinkedHashSet.iterator();
+        while (localIterator.hasNext())
         {
-          if (localMessenger.getBinder().isBinderAlive())
+          Messenger localMessenger = (Messenger)localIterator.next();
+          try
           {
-            Message localMessage = Message.obtain(null, 2);
-            Bundle localBundle = new Bundle();
-            localBundle.putString("key_id", paramString);
-            localBundle.putInt("key_play_state", paramInt);
-            localMessage.setData(localBundle);
-            localMessenger.send(localMessage);
+            if (localMessenger.getBinder().isBinderAlive())
+            {
+              Message localMessage = Message.obtain(null, 2);
+              Bundle localBundle = new Bundle();
+              localBundle.putString("key_id", paramString);
+              localBundle.putInt("key_play_state", paramInt);
+              localMessage.setData(localBundle);
+              localMessenger.send(localMessage);
+            }
+          }
+          catch (RemoteException localRemoteException)
+          {
+            QLog.i("QQMusicPlay.QQMusicPlayService", 1, "updatePlayStateNotify sendToClient exception", localRemoteException);
           }
         }
-        catch (RemoteException localRemoteException)
-        {
-          QLog.i("QQMusicPlay.QQMusicPlayService", 1, "updatePlayStateNotify sendToClient exception", localRemoteException);
-        }
       }
+      return;
+    }
+    finally
+    {
+      break label241;
+    }
+    paramString = new StringBuilder();
+    paramString.append("playState value ");
+    paramString.append(paramInt);
+    paramString.append(" is illegal.");
+    throw new IllegalArgumentException(paramString.toString());
+    label241:
+    for (;;)
+    {
+      throw paramString;
     }
   }
   
@@ -373,8 +364,13 @@ public class QQMusicPlayService
           QLog.i("QQMusicPlay.QQMusicPlayService", 1, "updateProgressNotify sendToClient exception", localRemoteException);
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramString;
+    }
   }
   
   private void a(boolean paramBoolean)
@@ -405,8 +401,13 @@ public class QQMusicPlayService
           QLog.i("QQMusicPlay.QQMusicPlayService", 1, "updateNetStateNotify sendToClient exception", localRemoteException);
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   private void a(boolean paramBoolean1, boolean paramBoolean2)
@@ -438,26 +439,42 @@ public class QQMusicPlayService
           QLog.i("QQMusicPlay.QQMusicPlayService", 1, "updateFocusStateNotify sendToClient exception", localRemoteException);
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw localObject;
+    }
   }
   
   public static boolean a()
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQMusicPlay.QQMusicPlayService", 2, "isPlaying : sPlayState " + Const.a(jdField_a_of_type_Int));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("isPlaying : sPlayState ");
+      localStringBuilder.append(Const.a(jdField_a_of_type_Int));
+      QLog.d("QQMusicPlay.QQMusicPlayService", 2, localStringBuilder.toString());
     }
-    return (jdField_a_of_type_Int == 2) || (jdField_a_of_type_Int == 1);
+    int i = jdField_a_of_type_Int;
+    boolean bool = true;
+    if (i != 2)
+    {
+      if (jdField_a_of_type_Int == 1) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public static int b()
   {
-    int i = -1;
-    if ((jdField_a_of_type_AndroidMediaMediaPlayer != null) && ((jdField_a_of_type_Int == 2) || (jdField_a_of_type_Int == 3))) {}
-    while (!QLog.isColorLevel()) {
+    if ((jdField_a_of_type_AndroidMediaMediaPlayer != null) && ((jdField_a_of_type_Int == 2) || (jdField_a_of_type_Int == 3))) {
       try
       {
-        i = jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
+        int i = jdField_a_of_type_AndroidMediaMediaPlayer.getCurrentPosition();
         return i;
       }
       catch (Exception localException)
@@ -466,7 +483,13 @@ public class QQMusicPlayService
         return -1;
       }
     }
-    QLog.d("QQMusicPlay.QQMusicPlayService", 2, "getPlayPosition  " + -1);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getPlayPosition  ");
+      localStringBuilder.append(-1);
+      QLog.d("QQMusicPlay.QQMusicPlayService", 2, localStringBuilder.toString());
+    }
     return -1;
   }
   
@@ -481,10 +504,11 @@ public class QQMusicPlayService
   
   private void b()
   {
-    if (jdField_a_of_type_AndroidMediaMediaPlayer != null) {}
+    MediaPlayer localMediaPlayer = jdField_a_of_type_AndroidMediaMediaPlayer;
+    if (localMediaPlayer != null) {}
     try
     {
-      jdField_a_of_type_AndroidMediaMediaPlayer.reset();
+      localMediaPlayer.reset();
       return;
     }
     catch (Exception localException) {}
@@ -517,8 +541,13 @@ public class QQMusicPlayService
           QLog.i("QQMusicPlay.QQMusicPlayService", 1, "updateSongNotify sendToClient exception", localRemoteException);
         }
       }
+      return;
     }
     finally {}
+    for (;;)
+    {
+      throw paramISong;
+    }
   }
   
   public static void b(String paramString)
@@ -539,29 +568,69 @@ public class QQMusicPlayService
     return jdField_a_of_type_Int;
   }
   
+  /* Error */
   private boolean c()
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("QQMusicPlayService");
-    try
-    {
-      this.jdField_a_of_type_AndroidOsHandlerThread.start();
-      this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler = new QQMusicPlayService.IncomingHandler(this, this.jdField_a_of_type_AndroidOsHandlerThread.getLooper());
-      if (this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler != null) {
-        break label75;
-      }
-    }
-    catch (Throwable localThrowable)
-    {
-      localThrowable.printStackTrace();
-      QLog.e("QQMusicPlay.QQMusicPlayService", 1, "initThread exception, stop self ==>", localThrowable);
-      stopSelf();
-      return false;
-    }
-    finally
-    {
-      while (this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler == null) {}
-    }
-    return true;
+    // Byte code:
+    //   0: aload_0
+    //   1: new 499	android/os/HandlerThread
+    //   4: dup
+    //   5: ldc_w 501
+    //   8: invokespecial 502	android/os/HandlerThread:<init>	(Ljava/lang/String;)V
+    //   11: putfield 504	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   14: aload_0
+    //   15: getfield 504	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   18: invokevirtual 505	android/os/HandlerThread:start	()V
+    //   21: aload_0
+    //   22: new 347	com/tencent/mobileqq/listentogether/player/QQMusicPlayService$IncomingHandler
+    //   25: dup
+    //   26: aload_0
+    //   27: aload_0
+    //   28: getfield 504	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:jdField_a_of_type_AndroidOsHandlerThread	Landroid/os/HandlerThread;
+    //   31: invokevirtual 509	android/os/HandlerThread:getLooper	()Landroid/os/Looper;
+    //   34: invokespecial 512	com/tencent/mobileqq/listentogether/player/QQMusicPlayService$IncomingHandler:<init>	(Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService;Landroid/os/Looper;)V
+    //   37: putfield 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService$IncomingHandler;
+    //   40: aload_0
+    //   41: getfield 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService$IncomingHandler;
+    //   44: ifnonnull +37 -> 81
+    //   47: iconst_1
+    //   48: ireturn
+    //   49: astore_1
+    //   50: goto +33 -> 83
+    //   53: astore_1
+    //   54: aload_1
+    //   55: invokevirtual 513	java/lang/Throwable:printStackTrace	()V
+    //   58: ldc 114
+    //   60: iconst_1
+    //   61: ldc_w 515
+    //   64: aload_1
+    //   65: invokestatic 120	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
+    //   68: aload_0
+    //   69: invokevirtual 518	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:stopSelf	()V
+    //   72: aload_0
+    //   73: getfield 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService$IncomingHandler;
+    //   76: ifnonnull +5 -> 81
+    //   79: iconst_1
+    //   80: ireturn
+    //   81: iconst_0
+    //   82: ireturn
+    //   83: aload_0
+    //   84: getfield 64	com/tencent/mobileqq/listentogether/player/QQMusicPlayService:jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler	Lcom/tencent/mobileqq/listentogether/player/QQMusicPlayService$IncomingHandler;
+    //   87: ifnonnull +5 -> 92
+    //   90: iconst_1
+    //   91: ireturn
+    //   92: aload_1
+    //   93: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	94	0	this	QQMusicPlayService
+    //   49	1	1	localObject	Object
+    //   53	40	1	localThrowable	Throwable
+    // Exception table:
+    //   from	to	target	type
+    //   14	40	49	finally
+    //   54	72	49	finally
+    //   14	40	53	java/lang/Throwable
   }
   
   public IBinder onBind(Intent paramIntent)
@@ -606,9 +675,10 @@ public class QQMusicPlayService
   {
     super.onDestroy();
     QLog.i("QQMusicPlay.QQMusicPlayService", 1, "--->onDestroy");
+    Object localObject;
     if (this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler != null)
     {
-      Object localObject = new QQMusicPlayService.ReleaseObject(this, jdField_a_of_type_AndroidMediaMediaPlayer, jdField_a_of_type_ComTencentMobileqqListentogetherDataISong);
+      localObject = new QQMusicPlayService.ReleaseObject(this, jdField_a_of_type_AndroidMediaMediaPlayer, jdField_a_of_type_ComTencentMobileqqListentogetherDataISong);
       localObject = this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler.obtainMessage(12, localObject);
       this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler.sendMessage((Message)localObject);
       this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler = null;
@@ -618,18 +688,21 @@ public class QQMusicPlayService
     try
     {
       BaseApplicationImpl.getContext().unregisterReceiver(this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$QQMusicPlayBroadcastReceiver);
-      label92:
-      if (this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$NetInfoHandler != null) {}
-      try
-      {
-        AppNetConnInfo.unregisterNetInfoHandler(this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$NetInfoHandler);
-        return;
-      }
-      catch (Exception localException1) {}
+      localObject = this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$NetInfoHandler;
+      if (localObject == null) {}
     }
-    catch (Exception localException2)
+    catch (Exception localException1)
     {
-      break label92;
+      for (;;)
+      {
+        try
+        {
+          AppNetConnInfo.unregisterNetInfoHandler((INetInfoHandler)localObject);
+          return;
+        }
+        catch (Exception localException2) {}
+        localException1 = localException1;
+      }
     }
   }
   
@@ -638,8 +711,9 @@ public class QQMusicPlayService
     QLog.d("QQMusicPlay.QQMusicPlayService", 1, String.format("--->onError [%d %d]", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     if (paramInt1 == 100)
     {
-      if (jdField_a_of_type_AndroidMediaMediaPlayer != null) {
-        jdField_a_of_type_AndroidMediaMediaPlayer.release();
+      paramMediaPlayer = jdField_a_of_type_AndroidMediaMediaPlayer;
+      if (paramMediaPlayer != null) {
+        paramMediaPlayer.release();
       }
       a();
     }
@@ -651,34 +725,44 @@ public class QQMusicPlayService
   
   public void onPrepared(MediaPlayer paramMediaPlayer)
   {
-    if (jdField_a_of_type_AndroidMediaMediaPlayer == null)
+    paramMediaPlayer = jdField_a_of_type_AndroidMediaMediaPlayer;
+    if (paramMediaPlayer == null)
     {
       if (QLog.isColorLevel()) {
         QLog.e("QQMusicPlay.QQMusicPlayService", 2, "player is null while invoking method onPrepared");
       }
       stopSelf();
+      return;
     }
-    do
+    jdField_b_of_type_Int = paramMediaPlayer.getDuration();
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append("--->onPrepared:sDuration ");
+    paramMediaPlayer.append(jdField_b_of_type_Int);
+    QLog.d("QQMusicPlay.QQMusicPlayService", 1, paramMediaPlayer.toString());
+    paramMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler;
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.sendEmptyMessage(14);
+    }
+    paramMediaPlayer = (AudioManager)getSystemService("audio");
+    int i = paramMediaPlayer.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 1);
+    boolean bool = paramMediaPlayer.isMusicActive();
+    if (QLog.isColorLevel())
     {
-      int i;
-      do
-      {
-        return;
-        jdField_b_of_type_Int = jdField_a_of_type_AndroidMediaMediaPlayer.getDuration();
-        QLog.d("QQMusicPlay.QQMusicPlayService", 1, "--->onPrepared:sDuration " + jdField_b_of_type_Int);
-        if (this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler != null) {
-          this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler.sendEmptyMessage(14);
-        }
-        paramMediaPlayer = (AudioManager)getSystemService("audio");
-        i = paramMediaPlayer.requestAudioFocus(this.jdField_a_of_type_AndroidMediaAudioManager$OnAudioFocusChangeListener, 3, 1);
-        boolean bool = paramMediaPlayer.isMusicActive();
-        if (QLog.isColorLevel()) {
-          QLog.d("QQMusicPlay.QQMusicPlayService", 2, "--->onPrepared requestAudioFocus,result:" + i + " isMusicActive:" + bool);
-        }
-      } while (i == 1);
-      a(b(), 7);
-    } while (this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler == null);
-    this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler.sendEmptyMessage(11);
+      paramMediaPlayer = new StringBuilder();
+      paramMediaPlayer.append("--->onPrepared requestAudioFocus,result:");
+      paramMediaPlayer.append(i);
+      paramMediaPlayer.append(" isMusicActive:");
+      paramMediaPlayer.append(bool);
+      QLog.d("QQMusicPlay.QQMusicPlayService", 2, paramMediaPlayer.toString());
+    }
+    if (i == 1) {
+      return;
+    }
+    a(b(), 7);
+    paramMediaPlayer = this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler;
+    if (paramMediaPlayer != null) {
+      paramMediaPlayer.sendEmptyMessage(11);
+    }
   }
   
   public void onRebind(Intent paramIntent)
@@ -689,7 +773,10 @@ public class QQMusicPlayService
   
   public void onStart(Intent paramIntent, int paramInt)
   {
-    QLog.i("QQMusicPlay.QQMusicPlayService", 1, "--->onStart startId=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("--->onStart startId=");
+    localStringBuilder.append(paramInt);
+    QLog.i("QQMusicPlay.QQMusicPlayService", 1, localStringBuilder.toString());
     super.onStart(paramIntent, paramInt);
   }
   
@@ -709,8 +796,9 @@ public class QQMusicPlayService
       this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler.getLooper().quit();
       label79:
       c();
-      if (this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler != null) {
-        this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler.sendMessage(paramIntent);
+      QQMusicPlayService.IncomingHandler localIncomingHandler = this.jdField_a_of_type_ComTencentMobileqqListentogetherPlayerQQMusicPlayService$IncomingHandler;
+      if (localIncomingHandler != null) {
+        localIncomingHandler.sendMessage(paramIntent);
       }
       return 2;
     }
@@ -728,7 +816,7 @@ public class QQMusicPlayService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.listentogether.player.QQMusicPlayService
  * JD-Core Version:    0.7.0.1
  */

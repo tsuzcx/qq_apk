@@ -28,26 +28,24 @@ class f
   public void a(TMAssistantDownloadTaskInfo paramTMAssistantDownloadTaskInfo)
   {
     ab.c(c.b(), "onSyncSDKDownloadInfo......");
-    if (paramTMAssistantDownloadTaskInfo == null) {}
-    for (;;)
-    {
+    if (paramTMAssistantDownloadTaskInfo == null) {
       return;
-      SyncSDKDownloadTaskRequest localSyncSDKDownloadTaskRequest = new SyncSDKDownloadTaskRequest();
-      localSyncSDKDownloadTaskRequest.data = a.a(paramTMAssistantDownloadTaskInfo);
-      paramTMAssistantDownloadTaskInfo = c.a(localSyncSDKDownloadTaskRequest, "");
-      if ((paramTMAssistantDownloadTaskInfo != null) && (paramTMAssistantDownloadTaskInfo.length > 0)) {
-        try
+    }
+    SyncSDKDownloadTaskRequest localSyncSDKDownloadTaskRequest = new SyncSDKDownloadTaskRequest();
+    localSyncSDKDownloadTaskRequest.data = a.a(paramTMAssistantDownloadTaskInfo);
+    paramTMAssistantDownloadTaskInfo = c.a(localSyncSDKDownloadTaskRequest, "");
+    if ((paramTMAssistantDownloadTaskInfo != null) && (paramTMAssistantDownloadTaskInfo.length > 0)) {
+      try
+      {
+        if (c.a(this.a) != null)
         {
-          if (c.a(this.a) != null)
-          {
-            c.a(this.a).b(paramTMAssistantDownloadTaskInfo);
-            return;
-          }
+          c.a(this.a).b(paramTMAssistantDownloadTaskInfo);
+          return;
         }
-        catch (Throwable paramTMAssistantDownloadTaskInfo)
-        {
-          paramTMAssistantDownloadTaskInfo.printStackTrace();
-        }
+      }
+      catch (Throwable paramTMAssistantDownloadTaskInfo)
+      {
+        paramTMAssistantDownloadTaskInfo.printStackTrace();
       }
     }
   }
@@ -58,23 +56,25 @@ class f
     localSubScribeSDKDownloadTaskByViaRequest.viaList = ((ArrayList)paramList);
     localSubScribeSDKDownloadTaskByViaRequest.data = ((ArrayList)a.a(paramList1));
     paramList = c.a(localSubScribeSDKDownloadTaskByViaRequest, "");
-    if ((paramList != null) && (paramList.length > 0)) {}
-    try
-    {
-      if (c.a(this.a) != null) {
-        c.a(this.a).b(paramList);
+    if ((paramList != null) && (paramList.length > 0)) {
+      try
+      {
+        if (c.a(this.a) != null)
+        {
+          c.a(this.a).b(paramList);
+          return;
+        }
       }
-      return;
-    }
-    catch (Throwable paramList)
-    {
-      paramList.printStackTrace();
+      catch (Throwable paramList)
+      {
+        paramList.printStackTrace();
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmdownloader.internal.downloadclient.f
  * JD-Core Version:    0.7.0.1
  */

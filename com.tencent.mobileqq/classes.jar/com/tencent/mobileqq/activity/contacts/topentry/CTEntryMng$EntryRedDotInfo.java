@@ -13,13 +13,10 @@ public class CTEntryMng$EntryRedDotInfo
   
   public JSONObject a()
   {
+    JSONObject localJSONObject;
     try
     {
       localJSONObject = new JSONObject();
-      localJSONException1.printStackTrace();
-    }
-    catch (JSONException localJSONException1)
-    {
       try
       {
         localJSONObject.put("entryID", this.jdField_a_of_type_Int);
@@ -29,15 +26,13 @@ public class CTEntryMng$EntryRedDotInfo
         localJSONObject.put("lastCancelTime", this.jdField_a_of_type_Long);
         return localJSONObject;
       }
-      catch (JSONException localJSONException2)
-      {
-        JSONObject localJSONObject;
-        break label68;
-      }
-      localJSONException1 = localJSONException1;
+      catch (JSONException localJSONException1) {}
+      localJSONException2.printStackTrace();
+    }
+    catch (JSONException localJSONException2)
+    {
       localJSONObject = null;
     }
-    label68:
     return localJSONObject;
   }
   
@@ -55,7 +50,7 @@ public class CTEntryMng$EntryRedDotInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.topentry.CTEntryMng.EntryRedDotInfo
  * JD-Core Version:    0.7.0.1
  */

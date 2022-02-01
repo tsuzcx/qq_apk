@@ -4,7 +4,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
 import android.util.DisplayMetrics;
 import android.view.Display;
 import android.view.LayoutInflater;
@@ -21,16 +20,17 @@ import com.tencent.gdtad.aditem.GdtAdLoader.Listener;
 import com.tencent.gdtad.aditem.GdtHandler;
 import com.tencent.gdtad.aditem.GdtHandler.Options;
 import com.tencent.gdtad.api.GdtAdError;
-import com.tencent.gdtad.api.interstitial.GdtInterstitialAd;
 import com.tencent.gdtad.api.interstitial.GdtInterstitialParams;
+import com.tencent.gdtad.api.interstitial.IGdtInterstitialAd;
 import com.tencent.gdtad.json.GdtJsonPbUtil;
 import com.tencent.gdtad.log.GdtLog;
 import com.tencent.gdtad.util.GdtManager;
 import com.tencent.gdtad.util.GdtManager.Params;
 import com.tencent.mobileqq.activity.PublicFragmentActivity;
 import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 import org.json.JSONException;
 import org.json.JSONObject;
 import tencent.gdt.qq_ad_get.QQAdGet;
@@ -41,91 +41,96 @@ public class GdtInterstitialFragmentForJS
   private GdtAdLoader.Listener jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader$Listener = new GdtInterstitialFragmentForJS.5(this);
   private GdtAdLoader jdField_a_of_type_ComTencentGdtadAditemGdtAdLoader;
   private GdtAdError jdField_a_of_type_ComTencentGdtadApiGdtAdError;
-  private GdtInterstitialAd jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd;
   private GdtInterstitialParams jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams = new GdtInterstitialParams();
+  private IGdtInterstitialAd jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd;
   private qq_ad_get.QQAdGet jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet;
   
   public static void a(Activity paramActivity, Class<? extends PublicFragmentActivity> paramClass, JSONObject paramJSONObject)
   {
-    if ((paramActivity == null) || (paramJSONObject == null))
+    if ((paramActivity != null) && (paramJSONObject != null))
     {
-      GdtLog.b("GdtInterstitialFragmentForJS", "start error");
+      GdtLog.b("GdtInterstitialFragmentForJS", "start");
+      Bundle localBundle = new Bundle();
+      localBundle.putString("params", paramJSONObject.toString());
+      paramJSONObject = new Intent();
+      paramJSONObject.putExtra("public_fragment_window_feature", 1);
+      paramJSONObject.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
+      paramJSONObject.putExtras(localBundle);
+      PublicFragmentActivity.Launcher.a(paramActivity, paramJSONObject, paramClass, GdtInterstitialFragmentForJS.class);
       return;
     }
-    GdtLog.b("GdtInterstitialFragmentForJS", "start");
-    Bundle localBundle = new Bundle();
-    localBundle.putString("params", paramJSONObject.toString());
-    paramJSONObject = new Intent();
-    paramJSONObject.putExtra("public_fragment_window_feature", 1);
-    paramJSONObject.putExtra("PARAM_PLUGIN_INTERNAL_ACTIVITIES_ONLY", false);
-    paramJSONObject.putExtras(localBundle);
-    PublicFragmentActivity.Launcher.a(paramActivity, paramJSONObject, paramClass, GdtInterstitialFragmentForJS.class);
+    GdtLog.b("GdtInterstitialFragmentForJS", "start error");
   }
   
   private static int b(Activity paramActivity)
   {
-    int i = paramActivity.getWindowManager().getDefaultDisplay().getRotation();
+    int j = paramActivity.getWindowManager().getDefaultDisplay().getRotation();
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
     paramActivity.getWindowManager().getDefaultDisplay().getMetrics(localDisplayMetrics);
-    int j = localDisplayMetrics.widthPixels;
-    int k = localDisplayMetrics.heightPixels;
-    if (((i != 0) && (i != 2)) || ((k > j) || (((i == 1) || (i == 3)) && (j > k))))
+    int k = localDisplayMetrics.widthPixels;
+    int m = localDisplayMetrics.heightPixels;
+    int i = 0;
+    if (((j != 0) && (j != 2)) || ((m <= k) && (((j != 1) && (j != 3)) || (k <= m))))
     {
-      switch (i)
-      {
-      default: 
-        GdtLog.d("GdtInterstitialFragmentForJS", "Unknown screen orientation. Defaulting to portrait.");
-      case 0: 
-        return 1;
-      case 1: 
-        return 0;
-      case 2: 
-        return 9;
+      if (j == 0) {
+        return i;
       }
-      return 8;
+      if (j != 1)
+      {
+        if (j == 2) {
+          break label141;
+        }
+        if (j == 3) {
+          break label144;
+        }
+        GdtLog.d("GdtInterstitialFragmentForJS", "Unknown screen orientation. Defaulting to landscape.");
+        return 0;
+      }
     }
-    switch (i)
+    else if (j != 0)
     {
-    case 1: 
-    default: 
-      GdtLog.d("GdtInterstitialFragmentForJS", "Unknown screen orientation. Defaulting to landscape.");
-      return 0;
-    case 0: 
-      return 0;
-    case 2: 
-      return 8;
+      if (j == 1) {
+        return i;
+      }
+      if (j == 2) {
+        break label144;
+      }
+      if (j == 3) {
+        break label141;
+      }
+      GdtLog.d("GdtInterstitialFragmentForJS", "Unknown screen orientation. Defaulting to portrait.");
     }
-    return 9;
+    return 1;
+    label141:
+    return 8;
+    label144:
+    i = 9;
+    return i;
   }
   
   protected int a(GdtAd paramGdtAd, int paramInt1, int paramInt2, int paramInt3)
   {
-    int j = 6;
-    int i;
     if (paramInt1 == -2147483648) {
-      i = 3;
+      return 3;
     }
-    do
+    int i = 6;
+    if (paramInt1 != 200) {
+      return 6;
+    }
+    if (paramInt2 != 0)
     {
-      do
-      {
-        do
-        {
-          return i;
-          i = j;
-        } while (paramInt1 != 200);
-        if (paramInt2 == 0) {
-          break;
-        }
-        i = j;
-      } while (paramInt2 != 1);
-      return 4;
-      if (paramInt3 == 0) {
-        break;
+      if (paramInt2 == 1) {
+        i = 4;
       }
-      i = j;
-    } while (paramInt3 != 102006);
-    return 5;
+      return i;
+    }
+    if (paramInt3 != 0)
+    {
+      if (paramInt3 == 102006) {
+        i = 5;
+      }
+      return i;
+    }
     if (paramGdtAd == null) {
       return 1;
     }
@@ -159,88 +164,82 @@ public class GdtInterstitialFragmentForJS
     GdtLog.b("GdtInterstitialFragmentForJS", String.format("onActivityResult requestCode:%d resultCode:%d", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(paramInt2) }));
     if (paramInt1 == 10001)
     {
-      if (this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd != null) {
-        this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialAd.a(getActivity(), paramInt2, paramIntent);
+      IGdtInterstitialAd localIGdtInterstitialAd = this.jdField_a_of_type_ComTencentGdtadApiInterstitialIGdtInterstitialAd;
+      if (localIGdtInterstitialAd != null) {
+        localIGdtInterstitialAd.a(getBaseActivity(), paramInt2, paramIntent);
       }
-      if (paramInt2 != -1) {
-        break label79;
+      if (paramInt2 == -1) {
+        paramIntent = "on closed";
+      } else {
+        paramIntent = "on closed error";
       }
-    }
-    label79:
-    for (paramIntent = "on closed";; paramIntent = "on closed error")
-    {
-      Toast.makeText(getActivity().getApplicationContext(), paramIntent, 0).show();
-      return;
+      Toast.makeText(getBaseActivity().getApplicationContext(), paramIntent, 0).show();
     }
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
   {
-    GdtManager.a().a(getActivity(), new GdtManager.Params());
+    GdtManager.a().a(getBaseActivity(), new GdtManager.Params());
     paramLayoutInflater = new JSONObject();
-    for (;;)
+    try
     {
-      try
-      {
-        paramLayoutInflater.put("key1", "value1");
-        paramLayoutInflater.put("key2", "value2");
-        if (getArguments() == null)
-        {
-          paramLayoutInflater = null;
-          V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-          return paramLayoutInflater;
-        }
-      }
-      catch (Throwable paramViewGroup)
-      {
-        GdtLog.d("GdtInterstitialFragmentForJS", "onCreateView", paramViewGroup);
-        continue;
-        paramViewGroup = getArguments().getString("params");
-      }
+      paramLayoutInflater.put("key1", "value1");
+      paramLayoutInflater.put("key2", "value2");
+    }
+    catch (Throwable paramViewGroup)
+    {
+      GdtLog.d("GdtInterstitialFragmentForJS", "onCreateView", paramViewGroup);
+    }
+    if (getArguments() == null)
+    {
+      paramLayoutInflater = null;
+    }
+    else
+    {
+      paramViewGroup = getArguments().getString("params");
       try
       {
         paramBundle = new JSONObject(paramViewGroup);
         paramViewGroup = paramBundle.getJSONObject("requestParams");
-        Object localObject = paramBundle.getJSONObject("clickParams");
+        localObject = paramBundle.getJSONObject("clickParams");
         paramBundle = new JSONObject();
         paramBundle.put("options", localObject);
         this.jdField_a_of_type_TencentGdtQq_ad_get$QQAdGet = ((qq_ad_get.QQAdGet)qq_ad_get.QQAdGet.class.cast(GdtJsonPbUtil.a(new qq_ad_get.QQAdGet(), paramViewGroup)));
         paramViewGroup = new GdtHandler.Options();
         GdtHandler.a(paramViewGroup, paramBundle.toString());
         this.jdField_a_of_type_ComTencentGdtadApiInterstitialGdtInterstitialParams.a = paramViewGroup;
-        paramViewGroup = new Button(getActivity());
-        paramViewGroup.setText("load");
-        paramViewGroup.setOnClickListener(new GdtInterstitialFragmentForJS.1(this));
-        paramBundle = new Button(getActivity());
-        paramBundle.setText("show(style=0)");
-        paramBundle.setOnClickListener(new GdtInterstitialFragmentForJS.2(this));
-        localObject = new Button(getActivity());
-        ((Button)localObject).setText("show - close after 5s(style=0)");
-        ((Button)localObject).setOnClickListener(new GdtInterstitialFragmentForJS.3(this));
-        Button localButton = new Button(getActivity());
-        localButton.setText("show(style=1) with antiSpamTestParams");
-        localButton.setOnClickListener(new GdtInterstitialFragmentForJS.4(this, paramLayoutInflater));
-        paramLayoutInflater = new LinearLayout(getActivity());
-        paramLayoutInflater.setBackgroundColor(Color.parseColor("#DBDBDB"));
-        paramLayoutInflater.setOrientation(1);
-        paramLayoutInflater.addView(paramViewGroup);
-        paramLayoutInflater.addView(paramBundle);
-        paramLayoutInflater.addView((View)localObject);
-        paramLayoutInflater.addView(localButton);
       }
       catch (JSONException paramViewGroup)
       {
-        for (;;)
-        {
-          GdtLog.d("GdtInterstitialFragmentForJS", "createParams error", paramViewGroup);
-        }
+        GdtLog.d("GdtInterstitialFragmentForJS", "createParams error", paramViewGroup);
       }
+      paramViewGroup = new Button(getBaseActivity());
+      paramViewGroup.setText("load");
+      paramViewGroup.setOnClickListener(new GdtInterstitialFragmentForJS.1(this));
+      paramBundle = new Button(getBaseActivity());
+      paramBundle.setText("show");
+      paramBundle.setOnClickListener(new GdtInterstitialFragmentForJS.2(this));
+      Object localObject = new Button(getBaseActivity());
+      ((Button)localObject).setText("show - close after 5s");
+      ((Button)localObject).setOnClickListener(new GdtInterstitialFragmentForJS.3(this));
+      Button localButton = new Button(getBaseActivity());
+      localButton.setText("show with antiSpamTestParams");
+      localButton.setOnClickListener(new GdtInterstitialFragmentForJS.4(this, paramLayoutInflater));
+      paramLayoutInflater = new LinearLayout(getBaseActivity());
+      paramLayoutInflater.setBackgroundColor(Color.parseColor("#DBDBDB"));
+      paramLayoutInflater.setOrientation(1);
+      paramLayoutInflater.addView(paramViewGroup);
+      paramLayoutInflater.addView(paramBundle);
+      paramLayoutInflater.addView((View)localObject);
+      paramLayoutInflater.addView(localButton);
     }
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, paramLayoutInflater);
+    return paramLayoutInflater;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtInterstitialFragmentForJS
  * JD-Core Version:    0.7.0.1
  */

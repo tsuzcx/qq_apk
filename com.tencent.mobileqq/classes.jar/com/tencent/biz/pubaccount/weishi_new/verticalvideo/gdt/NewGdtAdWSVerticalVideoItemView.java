@@ -20,7 +20,7 @@ public class NewGdtAdWSVerticalVideoItemView
   
   private void e()
   {
-    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131381542);
+    ViewStub localViewStub = (ViewStub)this.jdField_a_of_type_AndroidViewView.findViewById(2131380777);
     localViewStub.setLayoutParams(new LinearLayout.LayoutParams(-1, -2));
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup = new GdtAdWSVerticalItemBottomUserController(this.jdField_a_of_type_AndroidContentContext, this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newVerticalvideoHolderWSVerticalVideoHolder);
     this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.a(localViewStub);
@@ -30,8 +30,9 @@ public class NewGdtAdWSVerticalVideoItemView
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup != null) {
-      this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup.d();
+    AbsWsUIGroup localAbsWsUIGroup = this.jdField_a_of_type_ComTencentBizPubaccountWeishi_newBaseuiAbsWsUIGroup;
+    if (localAbsWsUIGroup != null) {
+      localAbsWsUIGroup.d();
     }
   }
   
@@ -40,15 +41,15 @@ public class NewGdtAdWSVerticalVideoItemView
     return false;
   }
   
-  public void d()
+  public void b()
   {
-    super.d();
+    super.b();
     e();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.gdt.NewGdtAdWSVerticalVideoItemView
  * JD-Core Version:    0.7.0.1
  */

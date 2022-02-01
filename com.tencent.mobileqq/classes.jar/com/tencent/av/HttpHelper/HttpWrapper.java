@@ -8,7 +8,11 @@ public class HttpWrapper
   
   public static void send(byte[] paramArrayOfByte, String paramString)
   {
-    Log.e("HttpWrapper", "send called with Buffer" + paramString + "end");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("send called with Buffer");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("end");
+    Log.e("HttpWrapper", localStringBuilder.toString());
     new Thread(new HttpWrapper.1(paramString, paramArrayOfByte)).start();
   }
 }

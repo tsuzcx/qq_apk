@@ -2,6 +2,7 @@ package com.tencent.mobileqq.activity;
 
 import android.text.TextUtils;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.widget.VerifyCodeView;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import mqq.app.AppRuntime;
@@ -14,75 +15,83 @@ class RegisterVerifyCodeActivity$3
   
   public void onRegisterCommitSmsCodeResp(boolean paramBoolean, int paramInt, String paramString1, String paramString2, String paramString3, byte[] paramArrayOfByte, String paramString4)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp isSuccess=" + paramBoolean + ",code=" + paramInt);
-    }
-    if (this.a.isFinishing()) {}
-    label234:
-    label241:
-    do
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp isSuccess=");
+      ((StringBuilder)localObject1).append(paramBoolean);
+      ((StringBuilder)localObject1).append(",code=");
+      ((StringBuilder)localObject1).append(paramInt);
+      QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, ((StringBuilder)localObject1).toString());
+    }
+    if (this.a.isFinishing()) {
       return;
-      this.a.closeDialog();
-      try
-      {
-        paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-        AppRuntime localAppRuntime = RegisterVerifyCodeActivity.a(this.a);
-        String str2 = Integer.toString(paramInt);
-        if (TextUtils.isEmpty(this.a.inviteCode))
-        {
-          str1 = "2";
-          if (paramArrayOfByte != null) {
-            break label234;
-          }
-          localObject = "";
-          ReportController.a(localAppRuntime, "new_reg", "msg_page", "next_clk", "", 1, "", str2, str1, (String)localObject, "", "", "", "", "");
-          if ((paramBoolean) && (paramInt == 0)) {
-            break label241;
-          }
-          paramString1 = paramArrayOfByte;
-          if (TextUtils.isEmpty(paramArrayOfByte)) {
-            paramString1 = this.a.getString(2131716956);
-          }
-          if (QLog.isColorLevel()) {
-            QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp error=" + paramString1);
-          }
-          this.a.notifyToast(paramString1, 1);
-        }
+    }
+    this.a.closeDialog();
+    try
+    {
+      paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
+    }
+    catch (UnsupportedEncodingException paramArrayOfByte)
+    {
+      paramArrayOfByte.printStackTrace();
+      paramArrayOfByte = null;
+    }
+    AppRuntime localAppRuntime = RegisterVerifyCodeActivity.a(this.a);
+    String str = Integer.toString(paramInt);
+    if (TextUtils.isEmpty(this.a.inviteCode)) {
+      localObject1 = "2";
+    } else {
+      localObject1 = "1";
+    }
+    Object localObject2;
+    if (paramArrayOfByte == null) {
+      localObject2 = "";
+    } else {
+      localObject2 = paramArrayOfByte;
+    }
+    ReportController.a(localAppRuntime, "new_reg", "msg_page", "next_clk", "", 1, "", str, (String)localObject1, (String)localObject2, "", "", "", "", "");
+    if ((paramBoolean) && (paramInt == 0))
+    {
+      if (!TextUtils.isEmpty(paramString4)) {
+        RegisterVerifyCodeActivity.a(this.a, paramString4);
       }
-      catch (UnsupportedEncodingException paramArrayOfByte)
+      this.a.a();
+      ReportController.a(RegisterVerifyCodeActivity.b(this.a), "dc00898", "", "", "0X800B609", "0X800B609", 0, 0, "", "", this.a.phoneNum, "");
+      if (QLog.isColorLevel())
       {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-          continue;
-          String str1 = "1";
-          continue;
-          Object localObject = paramArrayOfByte;
-        }
-        if (!TextUtils.isEmpty(paramString1)) {
-          RegisterVerifyCodeActivity.a(this.a, paramString1);
-        }
-        if (!TextUtils.isEmpty(paramString2)) {
-          RegisterVerifyCodeActivity.b(this.a, paramString2);
-        }
-        if (!TextUtils.isEmpty(paramString3)) {
-          RegisterVerifyCodeActivity.c(this.a, paramString3);
-        }
-        if (!TextUtils.isEmpty(paramString4)) {
-          RegisterVerifyCodeActivity.d(this.a, paramString4);
-        }
-        this.a.a();
-        ReportController.a(RegisterVerifyCodeActivity.b(this.a), "dc00898", "", "", "0X800B609", "0X800B609", 0, 0, "", "", this.a.phoneNum, "");
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("onRegisterCommitSmsCodeResp code=");
+        paramArrayOfByte.append(paramInt);
+        paramArrayOfByte.append(" ,uin=");
+        paramArrayOfByte.append(paramString1);
+        paramArrayOfByte.append(" ,nick=");
+        paramArrayOfByte.append(paramString2);
+        paramArrayOfByte.append(" ,faceUrl=");
+        paramArrayOfByte.append(paramString3);
+        QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, paramArrayOfByte.toString());
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, "onRegisterCommitSmsCodeResp code=" + paramInt + " ,uin=" + paramString1 + " ,nick=" + paramString2 + " ,faceUrl=" + paramString3);
+      RegisterVerifyCodeActivity.a(this.a);
+      return;
+    }
+    paramString1 = paramArrayOfByte;
+    if (TextUtils.isEmpty(paramArrayOfByte)) {
+      paramString1 = this.a.getString(2131716609);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("RegisterVerifyCodeActivity onRegisterCommitSmsCodeResp error=");
+      paramString2.append(paramString1);
+      QLog.d("Login_Optimize_RegisterVerifyCodeActivity", 2, paramString2.toString());
+    }
+    RegisterVerifyCodeActivity.a(this.a).a();
+    this.a.notifyToast(paramString1, 1);
   }
   
   public void onRegisterSendResendSmsreqResp(boolean paramBoolean, int paramInt1, byte[] paramArrayOfByte, int paramInt2, int paramInt3)
   {
-    Object localObject = null;
     if (QLog.isColorLevel()) {
       QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp");
     }
@@ -90,61 +99,66 @@ class RegisterVerifyCodeActivity$3
       return;
     }
     this.a.closeDialog();
-    if (!paramBoolean) {
+    Object localObject = null;
+    if (!paramBoolean)
+    {
       try
       {
         paramArrayOfByte = new String(paramArrayOfByte, "utf-8");
-        localObject = paramArrayOfByte;
-        if (TextUtils.isEmpty(paramArrayOfByte)) {
-          localObject = this.a.getString(2131716956);
-        }
-        this.a.notifyToast((String)localObject, 1);
-        return;
       }
       catch (UnsupportedEncodingException paramArrayOfByte)
       {
-        for (;;)
-        {
-          paramArrayOfByte.printStackTrace();
-          paramArrayOfByte = null;
-        }
+        paramArrayOfByte.printStackTrace();
+        paramArrayOfByte = null;
       }
+      localObject = paramArrayOfByte;
+      if (TextUtils.isEmpty(paramArrayOfByte)) {
+        localObject = this.a.getString(2131716609);
+      }
+      this.a.notifyToast((String)localObject, 1);
+      return;
     }
     if (paramArrayOfByte != null) {}
     try
     {
       localObject = new String(paramArrayOfByte, "utf-8");
-      if (QLog.isColorLevel()) {
-        QLog.d("RegisterVerifyCodeActivity", 2, "RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp code = " + paramInt1 + ";strMsg = " + (String)localObject + ";next_chk_time =" + paramInt2 + ";total_time_over =" + paramInt3);
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("RegisterVerifyCodeActivity onRegisterSendResendSmsreqResp code = ");
+        paramArrayOfByte.append(paramInt1);
+        paramArrayOfByte.append(";strMsg = ");
+        paramArrayOfByte.append((String)localObject);
+        paramArrayOfByte.append(";nextChkTime =");
+        paramArrayOfByte.append(paramInt2);
+        paramArrayOfByte.append(";totalTimeOver =");
+        paramArrayOfByte.append(paramInt3);
+        QLog.d("RegisterVerifyCodeActivity", 2, paramArrayOfByte.toString());
       }
     }
     catch (Exception paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-        continue;
-        if (paramInt1 == 5)
-        {
-          paramInt1 = paramInt2;
-          if (paramInt2 <= 60) {
-            paramInt1 = 60;
-          }
-          RegisterVerifyCodeActivity.a(this.a, paramInt1);
-        }
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    paramInt3 = 60;
     if (paramInt1 == 0)
     {
       RegisterVerifyCodeActivity.a(this.a, 60);
-      RegisterVerifyCodeActivity.a(this.a, RegisterVerifyCodeActivity.c(this.a));
-      return;
     }
+    else if (paramInt1 == 5)
+    {
+      if (paramInt2 <= 60) {
+        paramInt2 = paramInt3;
+      }
+      RegisterVerifyCodeActivity.a(this.a, paramInt2);
+    }
+    paramArrayOfByte = this.a;
+    RegisterVerifyCodeActivity.a(paramArrayOfByte, RegisterVerifyCodeActivity.c(paramArrayOfByte));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.RegisterVerifyCodeActivity.3
  * JD-Core Version:    0.7.0.1
  */

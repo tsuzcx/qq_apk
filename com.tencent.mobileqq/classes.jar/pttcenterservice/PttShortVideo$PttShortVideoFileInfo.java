@@ -29,16 +29,18 @@ public final class PttShortVideo$PttShortVideoFileInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 56, 64, 72, 82, 88, 98, 104 }, new String[] { "str_file_name", "bytes_file_md5", "bytes_thumb_file_md5", "uint64_file_size", "uint32_file_res_length", "uint32_file_res_width", "uint32_file_format", "uint32_file_time", "uint64_thumb_file_size", "bytes_decrypt_video_md5", "uint64_decrypt_file_size", "bytes_decrypt_thumb_md5", "uint64_decrypt_thumb_size" }, new Object[] { "", localByteStringMicro1, localByteStringMicro2, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro3, Long.valueOf(0L), localByteStringMicro4, Long.valueOf(0L) }, PttShortVideoFileInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 32, 40, 48, 56, 64, 72, 82, 88, 98, 104 }, new String[] { "str_file_name", "bytes_file_md5", "bytes_thumb_file_md5", "uint64_file_size", "uint32_file_res_length", "uint32_file_res_width", "uint32_file_format", "uint32_file_time", "uint64_thumb_file_size", "bytes_decrypt_video_md5", "uint64_decrypt_file_size", "bytes_decrypt_thumb_md5", "uint64_decrypt_thumb_size" }, new Object[] { "", localByteStringMicro1, localByteStringMicro2, localLong, localInteger, localInteger, localInteger, localInteger, localLong, localByteStringMicro3, localLong, localByteStringMicro4, localLong }, PttShortVideoFileInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     pttcenterservice.PttShortVideo.PttShortVideoFileInfo
  * JD-Core Version:    0.7.0.1
  */

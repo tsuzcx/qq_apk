@@ -86,21 +86,24 @@ public abstract class StepMovementDetector
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] notifyCheckStatus notmoving:", Boolean.valueOf(bool), " status:", Constant.a(i) });
     }
-    if ((bool) || (i == 41042)) {
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationCheckListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationCheckListener.a();
+    if ((!bool) && (i != 41042))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] notifyCheckStatus ismoving or not right status");
       }
     }
-    while (!QLog.isColorLevel())
+    else
     {
-      do
+      AutoLocationCheckListener localAutoLocationCheckListener = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationCheckListener;
+      if (localAutoLocationCheckListener != null)
       {
+        localAutoLocationCheckListener.a();
         return;
-      } while (!QLog.isColorLevel());
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] notifyCheckStatus listener empty");
-      return;
+      }
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] notifyCheckStatus listener empty");
+      }
     }
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] notifyCheckStatus ismoving or not right status");
   }
   
   double a()
@@ -110,11 +113,19 @@ public abstract class StepMovementDetector
   
   public int a()
   {
-    double d1 = System.currentTimeMillis() - this.jdField_a_of_type_Double;
+    double d1 = System.currentTimeMillis();
+    double d2 = this.jdField_a_of_type_Double;
+    Double.isNaN(d1);
+    d1 -= d2;
     if ((this.jdField_a_of_type_Double > 0.0D) && (d1 > Constant.y * Constant.B))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] reset internal: " + d1);
+      if (QLog.isColorLevel())
+      {
+        String str = this.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][step] reset internal: ");
+        localStringBuilder.append(d1);
+        QLog.d(str, 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAverageSampler.a();
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a();
@@ -139,7 +150,10 @@ public abstract class StepMovementDetector
       long l = System.currentTimeMillis();
       if (this.jdField_a_of_type_Double > 0.0D)
       {
-        double d1 = l - this.jdField_a_of_type_Double;
+        double d1 = l;
+        double d2 = this.jdField_a_of_type_Double;
+        Double.isNaN(d1);
+        d1 -= d2;
         this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAverageSampler.a(d1);
         this.jdField_b_of_type_Double = d1;
       }
@@ -152,46 +166,72 @@ public abstract class StepMovementDetector
   
   void a(double paramDouble)
   {
+    String str;
+    StringBuilder localStringBuilder;
     if ((paramDouble > Constant.z) && (paramDouble < Constant.A))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] onTriggered stepTime: " + paramDouble + " result: STATUS_RUNNING");
+      if (QLog.isColorLevel())
+      {
+        str = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][step] onTriggered stepTime: ");
+        localStringBuilder.append(paramDouble);
+        localStringBuilder.append(" result: STATUS_RUNNING");
+        QLog.d(str, 2, localStringBuilder.toString());
       }
       this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a(41013);
     }
-    for (;;)
+    else if ((paramDouble > Constant.x) && (paramDouble < Constant.y))
     {
-      b();
-      this.jdField_c_of_type_Double = paramDouble;
-      return;
-      if ((paramDouble > Constant.x) && (paramDouble < Constant.y))
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] onTriggered stepTime: " + paramDouble + " result: STATUS_WALKING");
-        }
+        str = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][step] onTriggered stepTime: ");
+        localStringBuilder.append(paramDouble);
+        localStringBuilder.append(" result: STATUS_WALKING");
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a(41012);
+    }
+    else if ((paramDouble > Constant.A) && (paramDouble < Constant.x))
+    {
+      if (QLog.isColorLevel())
+      {
+        str = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][step] onTriggered stepTime: ");
+        localStringBuilder.append(paramDouble);
+        localStringBuilder.append(" result: STATUS_WALKING fast");
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.jdField_a_of_type_Int == 40001) {
         this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a(41012);
       }
-      else if ((paramDouble > Constant.A) && (paramDouble < Constant.x))
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] onTriggered stepTime: " + paramDouble + " result: STATUS_WALKING fast");
-        }
-        if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.jdField_a_of_type_Int == 40001) {
-          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a(41012);
-        }
-      }
-      else if (paramDouble > Constant.y)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] onTriggered stepTime: " + paramDouble + " result: STATUS_IDLE");
-        }
-        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a();
-      }
-      else if (QLog.isColorLevel())
-      {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] onTriggered too quick average: " + paramDouble);
-      }
     }
+    else if (paramDouble > Constant.y)
+    {
+      if (QLog.isColorLevel())
+      {
+        str = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][step] onTriggered stepTime: ");
+        localStringBuilder.append(paramDouble);
+        localStringBuilder.append(" result: STATUS_IDLE");
+        QLog.d(str, 2, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.a();
+    }
+    else if (QLog.isColorLevel())
+    {
+      str = this.jdField_a_of_type_JavaLangString;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[status][step] onTriggered too quick average: ");
+      localStringBuilder.append(paramDouble);
+      QLog.d(str, 2, localStringBuilder.toString());
+    }
+    b();
+    this.jdField_c_of_type_Double = paramDouble;
   }
   
   protected void a(int paramInt)
@@ -203,28 +243,26 @@ public abstract class StepMovementDetector
     {
       this.jdField_a_of_type_Long = System.currentTimeMillis();
       this.jdField_a_of_type_Int += paramInt;
-    }
-    do
-    {
-      do
-      {
-        return;
-        if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 60000L)
-        {
-          this.jdField_a_of_type_Int += paramInt;
-          return;
-        }
-        if ((System.currentTimeMillis() - this.jdField_a_of_type_Long <= 60000L) || (System.currentTimeMillis() - this.jdField_a_of_type_Long > 120000L)) {
-          break;
-        }
-        this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
-        this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-        this.jdField_a_of_type_Int = paramInt;
-        this.jdField_a_of_type_Long = System.currentTimeMillis();
-        this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
-      } while (!QLog.isColorLevel());
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] detectStepAndTime last1min: ", Integer.valueOf(this.jdField_a_of_type_Int), " last2min:", Integer.valueOf(this.jdField_b_of_type_Int), " last3min:", Integer.valueOf(this.jdField_c_of_type_Int), " time:", Long.valueOf(this.jdField_a_of_type_Long), " step:", Integer.valueOf(paramInt) });
       return;
+    }
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long < 60000L)
+    {
+      this.jdField_a_of_type_Int += paramInt;
+      return;
+    }
+    if ((System.currentTimeMillis() - this.jdField_a_of_type_Long > 60000L) && (System.currentTimeMillis() - this.jdField_a_of_type_Long <= 120000L))
+    {
+      this.jdField_c_of_type_Int = this.jdField_b_of_type_Int;
+      this.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
+      this.jdField_a_of_type_Int = paramInt;
+      this.jdField_a_of_type_Long = System.currentTimeMillis();
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(1);
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] detectStepAndTime last1min: ", Integer.valueOf(this.jdField_a_of_type_Int), " last2min:", Integer.valueOf(this.jdField_b_of_type_Int), " last3min:", Integer.valueOf(this.jdField_c_of_type_Int), " time:", Long.valueOf(this.jdField_a_of_type_Long), " step:", Integer.valueOf(paramInt) });
+      }
+    }
+    else
+    {
       this.jdField_c_of_type_Int = this.jdField_a_of_type_Int;
       this.jdField_b_of_type_Int = 0;
       this.jdField_a_of_type_Int = paramInt;
@@ -232,22 +270,35 @@ public abstract class StepMovementDetector
       if (!this.jdField_a_of_type_AndroidOsHandler.hasMessages(1)) {
         this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(1, 60000L);
       }
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] detectStepAndTime last1min: ", Integer.valueOf(this.jdField_a_of_type_Int), " last2min:", Integer.valueOf(this.jdField_b_of_type_Int), " last3min:", Integer.valueOf(this.jdField_c_of_type_Int), " time:", Long.valueOf(this.jdField_a_of_type_Long), " step:", Integer.valueOf(paramInt) });
+      if (QLog.isColorLevel()) {
+        QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] detectStepAndTime last1min: ", Integer.valueOf(this.jdField_a_of_type_Int), " last2min:", Integer.valueOf(this.jdField_b_of_type_Int), " last3min:", Integer.valueOf(this.jdField_c_of_type_Int), " time:", Long.valueOf(this.jdField_a_of_type_Long), " step:", Integer.valueOf(paramInt) });
+      }
+    }
   }
   
   void a(Application paramApplication)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] startDetect sensor: " + getClass().getSimpleName());
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[status][step] startDetect sensor: ");
+      localStringBuilder.append(getClass().getSimpleName());
+      QLog.d((String)localObject, 2, localStringBuilder.toString());
     }
     if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 180000L) {
       d();
     }
     if (this.jdField_b_of_type_Long > 0L)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] already startDetect sensor: " + getClass().getSimpleName());
+      if (QLog.isColorLevel())
+      {
+        paramApplication = this.jdField_a_of_type_JavaLangString;
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("[status][step] already startDetect sensor: ");
+        ((StringBuilder)localObject).append(getClass().getSimpleName());
+        QLog.d(paramApplication, 2, ((StringBuilder)localObject).toString());
       }
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(0);
       a(0);
@@ -274,18 +325,20 @@ public abstract class StepMovementDetector
   
   void a(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] stopDetect sensor: " + getClass().getSimpleName(), " delay:", Boolean.valueOf(paramBoolean) });
+    if (QLog.isColorLevel())
+    {
+      String str = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[status][step] stopDetect sensor: ");
+      localStringBuilder.append(getClass().getSimpleName());
+      QLog.d(str, 2, new Object[] { localStringBuilder.toString(), " delay:", Boolean.valueOf(paramBoolean) });
     }
     if (paramBoolean) {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessageDelayed(0, 300000L);
-    }
-    for (;;)
-    {
-      c();
-      return;
+    } else {
       this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(0);
     }
+    c();
   }
   
   public boolean a()
@@ -298,7 +351,10 @@ public abstract class StepMovementDetector
   
   double b()
   {
-    double d1 = System.currentTimeMillis() - this.jdField_a_of_type_Double;
+    double d1 = System.currentTimeMillis();
+    double d2 = this.jdField_a_of_type_Double;
+    Double.isNaN(d1);
+    d1 -= d2;
     if (QLog.isColorLevel()) {
       QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] getLastRealTimeInternal internal:", Double.valueOf(d1), " mLastRealTimeInternal:", Double.valueOf(this.jdField_b_of_type_Double) });
     }
@@ -310,105 +366,124 @@ public abstract class StepMovementDetector
   
   public int b()
   {
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 180000L) {
+    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 180000L)
+    {
       if (QLog.isColorLevel()) {
         QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][distance] timeout ", Long.valueOf(this.jdField_a_of_type_Long) });
       }
-    }
-    do
-    {
       return 70000;
-      if (QLog.isColorLevel()) {
-        QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][distance] check ", Integer.valueOf(this.jdField_a_of_type_Int), " ", Integer.valueOf(this.jdField_b_of_type_Int), " ", Integer.valueOf(this.jdField_c_of_type_Int) });
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][distance] check ", Integer.valueOf(this.jdField_a_of_type_Int), " ", Integer.valueOf(this.jdField_b_of_type_Int), " ", Integer.valueOf(this.jdField_c_of_type_Int) });
+    }
+    if ((this.jdField_a_of_type_Int < Constant.M) && (this.jdField_b_of_type_Int < Constant.M))
+    {
+      if (this.jdField_c_of_type_Int >= Constant.M) {
+        return 0;
       }
-    } while ((this.jdField_a_of_type_Int < Constant.M) && (this.jdField_b_of_type_Int < Constant.M) && (this.jdField_c_of_type_Int < Constant.M));
+      return 70000;
+    }
     return 0;
   }
   
   boolean b()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.jdField_a_of_type_Int == 41012) || (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.jdField_a_of_type_Int == 41013)) {
-      if (this.jdField_c_of_type_Long <= 0L)
+    StringBuilder localStringBuilder;
+    if ((this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.jdField_a_of_type_Int != 41012) && (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus.jdField_a_of_type_Int != 41013))
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][step] recordStepStartTime. stop status: ");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus);
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
+      this.jdField_c_of_type_Long = 0L;
+      return false;
+    }
+    if (this.jdField_c_of_type_Long <= 0L)
+    {
+      if (QLog.isColorLevel())
+      {
+        localObject = this.jdField_a_of_type_JavaLangString;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[status][step] recordStepStartTime. start step mStatus: ");
+        localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus);
+        QLog.d((String)localObject, 2, localStringBuilder.toString());
+      }
+      this.jdField_c_of_type_Long = System.currentTimeMillis();
+      return false;
+    }
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector$StepDurationObserver;
+    if ((localObject != null) && (((StepMovementDetector.StepDurationObserver)localObject).a()))
+    {
+      long l = System.currentTimeMillis() - this.jdField_c_of_type_Long;
+      if (l >= this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector$StepDurationObserver.a())
       {
         if (QLog.isColorLevel()) {
-          QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] recordStepStartTime. start step mStatus: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus);
+          QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] mDurationObserver onTriggered start:", Long.valueOf(this.jdField_c_of_type_Long), " duration:", Long.valueOf(l) });
         }
-        this.jdField_c_of_type_Long = System.currentTimeMillis();
+        this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector$StepDurationObserver.a(this.jdField_c_of_type_Long, l);
+        return true;
       }
     }
-    for (;;)
-    {
-      return false;
-      if ((this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector$StepDurationObserver != null) && (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector$StepDurationObserver.a()))
-      {
-        long l = System.currentTimeMillis() - this.jdField_c_of_type_Long;
-        if (l >= this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector$StepDurationObserver.a())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] mDurationObserver onTriggered start:", Long.valueOf(this.jdField_c_of_type_Long), " duration:", Long.valueOf(l) });
-          }
-          this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationStepMovementDetector$StepDurationObserver.a(this.jdField_c_of_type_Long, l);
-          return true;
-          if (QLog.isColorLevel()) {
-            QLog.d(this.jdField_a_of_type_JavaLangString, 2, "[status][step] recordStepStartTime. stop status: " + this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoAutoStatus);
-          }
-          this.jdField_c_of_type_Long = 0L;
-        }
-      }
-    }
+    return false;
   }
   
   public int c()
   {
+    long l1 = System.currentTimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
     int j = 40001;
-    if (System.currentTimeMillis() - this.jdField_a_of_type_Long > 180000L) {
+    if (l1 - l2 > 180000L)
+    {
       d();
+      return 40001;
     }
     int i;
-    do
+    if (this.jdField_a_of_type_Int < Constant.M)
     {
-      return j;
-      if (this.jdField_a_of_type_Int < Constant.M)
+      i = j;
+      if (this.jdField_b_of_type_Int < Constant.M) {}
+    }
+    else
+    {
+      l1 = System.currentTimeMillis();
+      l2 = this.jdField_b_of_type_Long;
+      i = j;
+      if (l1 - l2 > 60000L)
       {
         i = j;
-        if (this.jdField_b_of_type_Int < Constant.M) {}
-      }
-      else
-      {
-        i = j;
-        if (System.currentTimeMillis() - this.jdField_b_of_type_Long > 60000L)
-        {
-          i = j;
-          if (this.jdField_b_of_type_Long > 0L) {
-            i = 41042;
-          }
+        if (l2 > 0L) {
+          i = 41042;
         }
       }
-      j = i;
-    } while (!QLog.isColorLevel());
-    QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] getStatusNew last1min: ", Integer.valueOf(this.jdField_a_of_type_Int), " last2min:", Integer.valueOf(this.jdField_b_of_type_Int), " last3min:", Integer.valueOf(this.jdField_c_of_type_Int), " time:", Long.valueOf(this.jdField_b_of_type_Long) });
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d(this.jdField_a_of_type_JavaLangString, 2, new Object[] { "[status][step] getStatusNew last1min: ", Integer.valueOf(this.jdField_a_of_type_Int), " last2min:", Integer.valueOf(this.jdField_b_of_type_Int), " last3min:", Integer.valueOf(this.jdField_c_of_type_Int), " time:", Long.valueOf(this.jdField_b_of_type_Long) });
+    }
     return i;
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return false;
-      b();
-      continue;
-      if (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationCheckListener != null) {
+      if ((i == 1) && (this.jdField_a_of_type_ComTencentMobileqqOnlinestatusAutoLocationAutoLocationCheckListener != null)) {
         e();
       }
     }
+    else {
+      b();
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.onlinestatus.auto.location.StepMovementDetector
  * JD-Core Version:    0.7.0.1
  */

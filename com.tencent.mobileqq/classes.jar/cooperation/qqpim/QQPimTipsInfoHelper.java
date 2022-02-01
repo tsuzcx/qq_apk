@@ -12,24 +12,41 @@ public class QQPimTipsInfoHelper
       QQPimSharedPrefrenceUtil.a(paramContext, "QQPIM_TIPS_CLICK", System.currentTimeMillis());
       return;
     }
-    QQPimSharedPrefrenceUtil.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int, paramQQPimTipsInfo.jdField_a_of_type_JavaLangString + ";" + paramQQPimTipsInfo.b + ";" + System.currentTimeMillis());
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("QQPIM_TIPS_CLICK");
+    ((StringBuilder)localObject).append(paramQQPimTipsInfo.jdField_a_of_type_Int);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramQQPimTipsInfo.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(";");
+    localStringBuilder.append(paramQQPimTipsInfo.b);
+    localStringBuilder.append(";");
+    localStringBuilder.append(System.currentTimeMillis());
+    QQPimSharedPrefrenceUtil.a(paramContext, (String)localObject, localStringBuilder.toString());
   }
   
   public static void b(Context paramContext, QQPimTipsInfo paramQQPimTipsInfo)
   {
-    if (paramQQPimTipsInfo == null) {}
-    while (TextUtils.isEmpty(QQPimSharedPrefrenceUtil.a(paramContext, "QQPIM_TIPS_CLICK" + paramQQPimTipsInfo.jdField_a_of_type_Int))) {
+    if (paramQQPimTipsInfo == null) {
       return;
     }
-    switch (paramQQPimTipsInfo.jdField_a_of_type_Int)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QQPIM_TIPS_CLICK");
+    localStringBuilder.append(paramQQPimTipsInfo.jdField_a_of_type_Int);
+    if (TextUtils.isEmpty(QQPimSharedPrefrenceUtil.a(paramContext, localStringBuilder.toString()))) {
+      return;
+    }
+    int i = paramQQPimTipsInfo.jdField_a_of_type_Int;
+    if (i != 1)
     {
-    case 3: 
-    default: 
-      return;
-    case 1: 
-      paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
-      return;
-    case 2: 
+      if (i != 2)
+      {
+        if (i != 4) {
+          return;
+        }
+        paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
+        return;
+      }
       paramQQPimTipsInfo.jdField_a_of_type_Byte = 0;
       return;
     }
@@ -38,7 +55,7 @@ public class QQPimTipsInfoHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqpim.QQPimTipsInfoHelper
  * JD-Core Version:    0.7.0.1
  */

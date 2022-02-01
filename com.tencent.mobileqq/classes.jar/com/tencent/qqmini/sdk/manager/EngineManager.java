@@ -27,33 +27,37 @@ public class EngineManager
     long l = System.currentTimeMillis();
     this.mEngineInstallers = new SparseArray();
     this.mChannels = new SparseArray();
-    EngineChannel localEngineChannel = new EngineChannel();
-    localEngineChannel.setName("MainGame");
-    localEngineChannel.setReceiver(new EngineManager.EngineChannelReceiver(this));
-    this.mChannels.put(2, localEngineChannel);
-    localEngineChannel = new EngineChannel();
-    localEngineChannel.setName("MainApp");
-    localEngineChannel.setReceiver(new EngineManager.EngineChannelReceiver(this));
-    this.mChannels.put(3, localEngineChannel);
+    Object localObject = new EngineChannel();
+    ((EngineChannel)localObject).setName("MainGame");
+    ((EngineChannel)localObject).setReceiver(new EngineManager.EngineChannelReceiver(this));
+    this.mChannels.put(2, localObject);
+    localObject = new EngineChannel();
+    ((EngineChannel)localObject).setName("MainApp");
+    ((EngineChannel)localObject).setReceiver(new EngineManager.EngineChannelReceiver(this));
+    this.mChannels.put(3, localObject);
     this.mOutChannels = new SparseArray();
     EngineInstaller.updateInstalledEngine();
     EngineInstaller.removeOutDatedEngine(2);
     EngineInstaller.removeOldEngine(2);
     EngineInstaller.removeOldEngine(3);
-    QMLog.i("EngineManager", "[MiniEng]init end cost=" + (System.currentTimeMillis() - l));
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MiniEng]init end cost=");
+    ((StringBuilder)localObject).append(System.currentTimeMillis() - l);
+    QMLog.i("EngineManager", ((StringBuilder)localObject).toString());
   }
   
   public static EngineManager g()
   {
-    if (sInstance == null) {}
-    try
-    {
-      if (sInstance == null) {
-        sInstance = new EngineManager();
+    if (sInstance == null) {
+      try
+      {
+        if (sInstance == null) {
+          sInstance = new EngineManager();
+        }
       }
-      return sInstance;
+      finally {}
     }
-    finally {}
+    return sInstance;
   }
   
   private ArrayList<Integer> getRunningPidList()
@@ -76,7 +80,12 @@ public class EngineManager
   
   private void installBaseLibForChannel(BaseLibInfo paramBaseLibInfo, EngineChannel paramEngineChannel)
   {
-    QMLog.i("EngineManager", "[MiniEng] installBaseLibForChannel " + paramBaseLibInfo + "," + paramEngineChannel);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng] installBaseLibForChannel ");
+    localStringBuilder.append(paramBaseLibInfo);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramEngineChannel);
+    QMLog.i("EngineManager", localStringBuilder.toString());
     installBaseLib(paramBaseLibInfo, new EngineManager.3(this, paramEngineChannel, paramBaseLibInfo));
   }
   
@@ -92,53 +101,62 @@ public class EngineManager
   
   private void preInstallLocalGameLib()
   {
-    Iterator localIterator = getEngineList(2).iterator();
-    while (localIterator.hasNext())
+    Object localObject = getEngineList(2).iterator();
+    while (((Iterator)localObject).hasNext())
     {
-      InstalledEngine localInstalledEngine = (InstalledEngine)localIterator.next();
+      InstalledEngine localInstalledEngine = (InstalledEngine)((Iterator)localObject).next();
       if ((localInstalledEngine.isPersist) && (localInstalledEngine.isVerify))
       {
         QMLog.i("EngineManager", "[MiniEng] installLocalLib skip already installed");
         return;
       }
     }
-    QMLog.i("EngineManager", "[MiniEng] installLocalGameEngine " + LocalGameEngine.g().mLocalBaseLibInfo);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("[MiniEng] installLocalGameEngine ");
+    ((StringBuilder)localObject).append(LocalGameEngine.g().mLocalBaseLibInfo);
+    QMLog.i("EngineManager", ((StringBuilder)localObject).toString());
     installBaseLib(LocalGameEngine.g().mLocalBaseLibInfo, null);
   }
   
   private void removeDeadChannelExcept(EngineChannel paramEngineChannel)
   {
-    for (;;)
+    try
     {
-      int i;
-      try
+      ArrayList localArrayList = getRunningPidList();
+      if (this.mOutChannels != null)
       {
-        ArrayList localArrayList = getRunningPidList();
-        if (this.mOutChannels != null)
+        int i = 0;
+        while (i < this.mOutChannels.size())
         {
-          i = 0;
-          if (i < this.mOutChannels.size())
+          int j = this.mOutChannels.keyAt(i);
+          if (!localArrayList.contains(Integer.valueOf(j)))
           {
-            int j = this.mOutChannels.keyAt(i);
-            if (localArrayList.contains(Integer.valueOf(j))) {
-              break label139;
-            }
+            StringBuilder localStringBuilder;
             if (((EngineChannel)this.mOutChannels.valueAt(i)).equals(paramEngineChannel))
             {
-              QMLog.e("EngineManager", "[MiniEng] removeDeadChannelExcept error pid=" + j);
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[MiniEng] removeDeadChannelExcept error pid=");
+              localStringBuilder.append(j);
+              QMLog.e("EngineManager", localStringBuilder.toString());
             }
             else
             {
               this.mOutChannels.remove(j);
-              QMLog.i("EngineManager", "[MiniEng] removeDeadChannelExcept pid=" + j);
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append("[MiniEng] removeDeadChannelExcept pid=");
+              localStringBuilder.append(j);
+              QMLog.i("EngineManager", localStringBuilder.toString());
             }
           }
+          i += 1;
         }
       }
-      finally {}
       return;
-      label139:
-      i += 1;
+    }
+    finally {}
+    for (;;)
+    {
+      throw paramEngineChannel;
     }
   }
   
@@ -155,8 +173,12 @@ public class EngineManager
   public EngineChannel getChannelForType(int paramInt)
   {
     EngineChannel localEngineChannel = (EngineChannel)this.mChannels.get(paramInt);
-    if (localEngineChannel == null) {
-      QMLog.e("EngineManager", "[MiniEng]getChannelForType error type" + paramInt);
+    if (localEngineChannel == null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[MiniEng]getChannelForType error type");
+      localStringBuilder.append(paramInt);
+      QMLog.e("EngineManager", localStringBuilder.toString());
     }
     return localEngineChannel;
   }
@@ -185,7 +207,7 @@ public class EngineManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.manager.EngineManager
  * JD-Core Version:    0.7.0.1
  */

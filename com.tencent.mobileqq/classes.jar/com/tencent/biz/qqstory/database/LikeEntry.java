@@ -91,40 +91,40 @@ public class LikeEntry
   public static List<LikeEntry> convertFromJson(String paramString)
   {
     localArrayList = new ArrayList();
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return localArrayList;
-      try
+    }
+    try
+    {
+      paramString = new JSONArray(paramString);
+      int i = 0;
+      while (i < paramString.length())
       {
-        paramString = new JSONArray(paramString);
-        int i = 0;
-        while (i < paramString.length())
-        {
-          JSONObject localJSONObject = paramString.getJSONObject(i);
-          LikeEntry localLikeEntry = new LikeEntry();
-          localLikeEntry.uin = localJSONObject.optString("uin");
-          localLikeEntry.likeTime = localJSONObject.optLong("likeTime");
-          localLikeEntry.role = localJSONObject.optLong("role");
-          localLikeEntry.unionId = localJSONObject.optString("unionId");
-          localArrayList.add(localLikeEntry);
-          i += 1;
-        }
-        return localArrayList;
+        JSONObject localJSONObject = paramString.getJSONObject(i);
+        LikeEntry localLikeEntry = new LikeEntry();
+        localLikeEntry.uin = localJSONObject.optString("uin");
+        localLikeEntry.likeTime = localJSONObject.optLong("likeTime");
+        localLikeEntry.role = localJSONObject.optLong("role");
+        localLikeEntry.unionId = localJSONObject.optString("unionId");
+        localArrayList.add(localLikeEntry);
+        i += 1;
       }
-      catch (Exception paramString)
-      {
-        SLog.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
-      }
+      return localArrayList;
+    }
+    catch (Exception paramString)
+    {
+      SLog.e("Q.qqstory:LikeEntry", String.format("Parse json error , %s", new Object[] { paramString.getMessage() }));
     }
   }
   
   public int compareTo(@NonNull LikeEntry paramLikeEntry)
   {
-    if (this.likeTime > paramLikeEntry.likeTime) {
+    long l1 = this.likeTime;
+    long l2 = paramLikeEntry.likeTime;
+    if (l1 > l2) {
       return -1;
     }
-    if (this.likeTime < paramLikeEntry.likeTime) {
+    if (l1 < l2) {
       return 1;
     }
     return 0;
@@ -144,12 +144,20 @@ public class LikeEntry
   
   public String toString()
   {
-    return "LikeEntry{ uin=" + this.uin + ", likeTime=" + this.likeTime + ", vid=" + this.vid + "}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LikeEntry{ uin=");
+    localStringBuilder.append(this.uin);
+    localStringBuilder.append(", likeTime=");
+    localStringBuilder.append(this.likeTime);
+    localStringBuilder.append(", vid=");
+    localStringBuilder.append(this.vid);
+    localStringBuilder.append("}");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.database.LikeEntry
  * JD-Core Version:    0.7.0.1
  */

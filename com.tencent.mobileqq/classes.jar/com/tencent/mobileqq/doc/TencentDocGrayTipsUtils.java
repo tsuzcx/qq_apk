@@ -6,68 +6,95 @@ import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
 import com.tencent.mobileqq.graytip.UniteGrayTipParam;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.mobileqq.utils.QQAudioHelper;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 
 public class TencentDocGrayTipsUtils
 {
-  private static TencentDocEntryUtils.GrayTipsInfo a = null;
+  private static TencentDocEntryUtils.GrayTipsInfo a;
   
   public static void a(QQAppInterface paramQQAppInterface, String paramString1, String paramString2, int paramInt, long paramLong1, long paramLong2, long paramLong3)
   {
     paramLong1 += 1L;
     BaseApplication localBaseApplication = paramQQAppInterface.getApp();
-    String str1 = paramQQAppInterface.getAccount();
+    String str = paramQQAppInterface.getAccount();
     a = TencentDocEntryUtils.a(paramQQAppInterface);
-    int k = TencentDocGrayTipsPref.a(localBaseApplication, str1);
-    long l = TencentDocGrayTipsPref.a(localBaseApplication, str1);
-    if (QLog.isColorLevel()) {
-      QLog.d("TencentDocGrayTipsUtils", 2, "addGrayTipMsg friendUin = " + paramString1 + ", senderUin = " + paramString2 + ", uinType = " + paramInt + ", selfUin = " + str1 + ", time = " + paramLong1 + ", msgseq = " + paramLong2 + ", msgUid = " + paramLong3 + ", times = " + k + ", lastShowTime = " + l);
-    }
-    int i;
-    if (AudioHelper.a(10) == 1)
+    int i = TencentDocGrayTipsPref.a(localBaseApplication, str);
+    long l = TencentDocGrayTipsPref.a(localBaseApplication, str);
+    Object localObject1;
+    if (QLog.isColorLevel())
     {
-      i = 1;
-      j = i;
-      if (i != 0)
-      {
-        AudioHelper.a(HardCodeUtil.a(2131714699) + a.jdField_a_of_type_JavaLangString);
-        if (TextUtils.isEmpty(a.jdField_a_of_type_JavaLangString)) {
-          break label483;
-        }
-      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("addGrayTipMsg friendUin = ");
+      ((StringBuilder)localObject1).append(paramString1);
+      ((StringBuilder)localObject1).append(", senderUin = ");
+      ((StringBuilder)localObject1).append(paramString2);
+      ((StringBuilder)localObject1).append(", uinType = ");
+      ((StringBuilder)localObject1).append(paramInt);
+      ((StringBuilder)localObject1).append(", selfUin = ");
+      ((StringBuilder)localObject1).append(str);
+      ((StringBuilder)localObject1).append(", time = ");
+      ((StringBuilder)localObject1).append(paramLong1);
+      ((StringBuilder)localObject1).append(", msgseq = ");
+      ((StringBuilder)localObject1).append(paramLong2);
+      ((StringBuilder)localObject1).append(", msgUid = ");
+      ((StringBuilder)localObject1).append(paramLong3);
+      ((StringBuilder)localObject1).append(", times = ");
+      ((StringBuilder)localObject1).append(i);
+      ((StringBuilder)localObject1).append(", lastShowTime = ");
+      ((StringBuilder)localObject1).append(l);
+      QLog.d("TencentDocGrayTipsUtils", 2, ((StringBuilder)localObject1).toString());
     }
-    label483:
-    for (int j = 1;; j = 0)
+    boolean bool1;
+    if (QQAudioHelper.a(10) == 1) {
+      bool1 = true;
+    } else {
+      bool1 = false;
+    }
+    boolean bool2 = bool1;
+    if (bool1)
     {
-      if (((a.jdField_a_of_type_Boolean) && (k < a.jdField_a_of_type_Int) && (paramLong1 - l > 30L) && (!paramString2.equals(str1))) || (j != 0))
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(HardCodeUtil.a(2131714628));
+      ((StringBuilder)localObject1).append(a.jdField_a_of_type_JavaLangString);
+      QQAudioHelper.a(((StringBuilder)localObject1).toString());
+      bool2 = TextUtils.isEmpty(a.jdField_a_of_type_JavaLangString) ^ true;
+    }
+    if (((a.jdField_a_of_type_Boolean) && (i < a.jdField_a_of_type_Int) && (paramLong1 - l > 30L) && (!paramString2.equals(str))) || (bool2))
+    {
+      localObject1 = a.jdField_a_of_type_JavaLangString;
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(a.b);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      paramString1 = new UniteGrayTipParam(paramString1, paramString2, (String)localObject2, paramInt, -5040, 3276801, paramLong1);
+      paramString2 = new StringBuilder();
+      paramString2.append(String.valueOf(paramLong2));
+      paramString2.append("_");
+      paramString2.append(String.valueOf(paramLong1));
+      paramString1.d = paramString2.toString();
+      if (QLog.isColorLevel())
       {
-        String str2 = a.jdField_a_of_type_JavaLangString;
-        String str3 = str2 + a.b;
-        paramString1 = new UniteGrayTipParam(paramString1, paramString2, str3, paramInt, -5040, 3276801, paramLong1);
-        paramString1.d = (String.valueOf(paramLong2) + "_" + String.valueOf(paramLong1));
-        if (QLog.isColorLevel()) {
-          QLog.d("TencentDocGrayTipsUtils", 2, "addGrayTipMsg grayTipParam.grayTipKey = " + paramString1.d);
-        }
-        paramString2 = new Bundle();
-        paramString2.putInt("key_action", 1);
-        paramString2.putString("key_action_DATA", a.c);
-        paramString1.a(str2.length(), str3.length(), paramString2);
-        paramString2 = new MessageForUniteGrayTip();
-        paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
-        if (UniteGrayTipUtil.a(paramQQAppInterface, paramString2))
-        {
-          TencentDocGrayTipsPref.b(localBaseApplication, str1, k + 1);
-          TencentDocGrayTipsPref.b(localBaseApplication, str1, paramLong1);
-          TencentDocUtils.a("0X80094AA");
-        }
+        paramString2 = new StringBuilder();
+        paramString2.append("addGrayTipMsg grayTipParam.grayTipKey = ");
+        paramString2.append(paramString1.d);
+        QLog.d("TencentDocGrayTipsUtils", 2, paramString2.toString());
       }
-      return;
-      i = 0;
-      break;
+      paramString2 = new Bundle();
+      paramString2.putInt("key_action", 1);
+      paramString2.putString("key_action_DATA", a.c);
+      paramString1.a(((String)localObject1).length(), ((String)localObject2).length(), paramString2);
+      paramString2 = new MessageForUniteGrayTip();
+      paramString2.initGrayTipMsg(paramQQAppInterface, paramString1);
+      if (UniteGrayTipMsgUtil.a(paramQQAppInterface, paramString2))
+      {
+        TencentDocGrayTipsPref.b(localBaseApplication, str, i + 1);
+        TencentDocGrayTipsPref.b(localBaseApplication, str, paramLong1);
+        TencentDocUtils.a("0X80094AA");
+      }
     }
   }
   
@@ -83,7 +110,7 @@ public class TencentDocGrayTipsUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.doc.TencentDocGrayTipsUtils
  * JD-Core Version:    0.7.0.1
  */

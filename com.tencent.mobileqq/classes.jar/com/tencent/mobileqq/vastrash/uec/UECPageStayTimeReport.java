@@ -3,12 +3,7 @@ package com.tencent.mobileqq.vastrash.uec;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.QFragment;
-import com.tencent.hippy.qq.fragment.BaseHippyFragment;
 import com.tencent.ilive.audiencepages.room.AudienceRoomActivity;
-import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.Frame;
 import com.tencent.mobileqq.litelivesdk.LiteLiveSDKFactory;
@@ -20,7 +15,6 @@ import com.tencent.mobileqq.utils.StringUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqmini.sdk.launcher.model.MiniAppInfo;
 import java.util.HashMap;
-import org.jetbrains.annotations.NotNull;
 
 public class UECPageStayTimeReport
   implements IPageLifecycleCallback
@@ -32,35 +26,14 @@ public class UECPageStayTimeReport
     if (paramObject == null) {
       return null;
     }
-    if ((this.a.containsKey(Integer.valueOf(paramObject.hashCode()))) && (this.a.get(Integer.valueOf(paramObject.hashCode())) != null)) {}
-    for (UECPageStayTimeReport.ReportItem localReportItem = (UECPageStayTimeReport.ReportItem)this.a.get(Integer.valueOf(paramObject.hashCode()));; localReportItem = new UECPageStayTimeReport.ReportItem())
-    {
-      this.a.put(Integer.valueOf(paramObject.hashCode()), localReportItem);
-      return localReportItem;
+    UECPageStayTimeReport.ReportItem localReportItem;
+    if ((this.a.containsKey(Integer.valueOf(paramObject.hashCode()))) && (this.a.get(Integer.valueOf(paramObject.hashCode())) != null)) {
+      localReportItem = (UECPageStayTimeReport.ReportItem)this.a.get(Integer.valueOf(paramObject.hashCode()));
+    } else {
+      localReportItem = new UECPageStayTimeReport.ReportItem();
     }
-  }
-  
-  @NotNull
-  private String a(Fragment paramFragment)
-  {
-    if (paramFragment == null) {
-      return "null";
-    }
-    if ((paramFragment instanceof BaseHippyFragment)) {
-      return "Hippy_" + ((BaseHippyFragment)paramFragment).getModuleName();
-    }
-    if ((paramFragment instanceof ChatFragment)) {
-      return "Chat_" + a((ChatFragment)paramFragment);
-    }
-    return "";
-  }
-  
-  private String a(ChatFragment paramChatFragment)
-  {
-    if ((paramChatFragment == null) || (paramChatFragment.getActivity() == null) || (paramChatFragment.getActivity().getIntent() == null)) {
-      return "null";
-    }
-    return paramChatFragment.getActivity().getIntent().getIntExtra("uintype", -1) + "";
+    this.a.put(Integer.valueOf(paramObject.hashCode()), localReportItem);
+    return localReportItem;
   }
   
   public static String a(String paramString)
@@ -141,8 +114,13 @@ public class UECPageStayTimeReport
     if (a(paramActivity))
     {
       paramActivity = (MiniAppInfo)paramActivity.getIntent().getParcelableExtra("KEY_APPINFO");
-      if (paramActivity != null) {
-        return paramActivity.appId + "_" + paramActivity.name;
+      if (paramActivity != null)
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(paramActivity.appId);
+        localStringBuilder.append("_");
+        localStringBuilder.append(paramActivity.name);
+        return localStringBuilder.toString();
       }
     }
     else if (AudienceRoomActivity.class.isInstance(paramActivity))
@@ -157,37 +135,36 @@ public class UECPageStayTimeReport
   
   private String b(String paramString)
   {
-    String str;
     if (StringUtil.a(paramString)) {
-      str = "null";
+      return "null";
     }
-    int i;
-    do
-    {
-      return str;
-      i = paramString.indexOf("?");
-      str = paramString;
-    } while (i <= 0);
-    return paramString.substring(0, i);
+    int i = paramString.indexOf("?");
+    String str = paramString;
+    if (i > 0) {
+      str = paramString.substring(0, i);
+    }
+    return str;
   }
   
   private String c(Activity paramActivity)
   {
-    String str;
     if (paramActivity == null) {
-      str = "null";
+      return "null";
     }
-    do
+    String str = paramActivity.getClass().getSimpleName();
+    if ((paramActivity instanceof PluginProxyActivity))
     {
-      return str;
-      str = paramActivity.getClass().getSimpleName();
-      if ((paramActivity instanceof PluginProxyActivity))
-      {
-        paramActivity = a(((PluginProxyActivity)paramActivity).getPluginActivity());
-        return str + "_" + paramActivity;
-      }
-    } while (!a(paramActivity));
-    return "MiniAppPage";
+      paramActivity = a(((PluginProxyActivity)paramActivity).getPluginActivity());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("_");
+      localStringBuilder.append(paramActivity);
+      return localStringBuilder.toString();
+    }
+    if (a(paramActivity)) {
+      return "MiniAppPage";
+    }
+    return str;
   }
   
   protected String a(Activity paramActivity)
@@ -208,45 +185,42 @@ public class UECPageStayTimeReport
   
   public void a(String paramString, Activity paramActivity, boolean paramBoolean, Object paramObject)
   {
-    if (!(paramObject instanceof Frame)) {}
-    label129:
-    for (;;)
-    {
+    if (!(paramObject instanceof Frame)) {
       return;
-      paramActivity = c(paramActivity);
-      paramActivity = paramActivity + "_" + paramString;
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (paramBoolean)
-        {
-          paramString = "onFrameHidden";
-          QLog.i("UECPageStayTimeReport", 2, paramString + " frameKey = " + paramActivity);
-        }
-      }
-      else
-      {
-        if (!paramBoolean) {
-          break label121;
-        }
-      }
-      label121:
-      for (paramString = b(paramObject);; paramString = a(paramObject))
-      {
-        if (paramString == null) {
-          break label129;
-        }
-        if (!paramBoolean) {
-          break label131;
-        }
-        paramString.b();
-        a(paramString);
-        return;
-        paramString = "onFrameShow";
-        break;
-      }
     }
-    label131:
+    paramActivity = c(paramActivity);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramActivity);
+    localStringBuilder.append("_");
+    localStringBuilder.append(paramString);
+    paramActivity = localStringBuilder.toString();
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      if (paramBoolean) {
+        paramString = "onFrameHidden";
+      } else {
+        paramString = "onFrameShow";
+      }
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(" frameKey = ");
+      localStringBuilder.append(paramActivity);
+      QLog.i("UECPageStayTimeReport", 2, localStringBuilder.toString());
+    }
+    if (paramBoolean) {
+      paramString = b(paramObject);
+    } else {
+      paramString = a(paramObject);
+    }
+    if (paramString == null) {
+      return;
+    }
+    if (paramBoolean)
+    {
+      paramString.b();
+      a(paramString);
+      return;
+    }
     paramString.a = paramActivity;
     paramString.a();
   }
@@ -259,8 +233,14 @@ public class UECPageStayTimeReport
   {
     String str1 = c(paramActivity);
     String str2 = b(paramActivity);
-    if (QLog.isColorLevel()) {
-      QLog.e("UECPageStayTimeReport", 2, "onActivityPaused :  activityKey = " + str1 + " activitySpecialKey = " + str2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPaused :  activityKey = ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" activitySpecialKey = ");
+      localStringBuilder.append(str2);
+      QLog.e("UECPageStayTimeReport", 2, localStringBuilder.toString());
     }
     paramActivity = b(paramActivity);
     if (paramActivity != null)
@@ -274,8 +254,14 @@ public class UECPageStayTimeReport
   {
     String str1 = c(paramActivity);
     String str2 = b(paramActivity);
-    if (QLog.isColorLevel()) {
-      QLog.e("UECPageStayTimeReport", 2, "onActivityResumed :  activityKey = " + str1 + " activitySpecialKey = " + str2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityResumed :  activityKey = ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(" activitySpecialKey = ");
+      localStringBuilder.append(str2);
+      QLog.e("UECPageStayTimeReport", 2, localStringBuilder.toString());
     }
     paramActivity = a(paramActivity);
     paramActivity.a = str1;
@@ -288,123 +274,10 @@ public class UECPageStayTimeReport
   public void onActivityStarted(Activity paramActivity) {}
   
   public void onActivityStopped(Activity paramActivity) {}
-  
-  public void onFragmentHiddenChanged(Fragment paramFragment, boolean paramBoolean)
-  {
-    String str1;
-    String str3;
-    String str2;
-    if (paramFragment != null)
-    {
-      str1 = c(paramFragment.getActivity());
-      str3 = paramFragment.getClass().getSimpleName();
-      str2 = a(paramFragment);
-      str3 = str1 + "_" + str3;
-      if ((paramBoolean) || (paramFragment.getUserVisibleHint())) {
-        break label94;
-      }
-      QLog.e("UECPageStayTimeReport", 1, "Fragment status discontent , QfragmentKey = " + str3);
-    }
-    label202:
-    label209:
-    for (;;)
-    {
-      return;
-      label94:
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (paramBoolean)
-        {
-          str1 = "onFragmentHide";
-          QLog.i("UECPageStayTimeReport", 2, str1 + " fragmentKey = " + str3 + " fragmentSpecialKey = " + str2 + " fragmentState = " + paramFragment.getUserVisibleHint());
-        }
-      }
-      else
-      {
-        if (!paramBoolean) {
-          break label202;
-        }
-      }
-      for (paramFragment = b(paramFragment);; paramFragment = a(paramFragment))
-      {
-        if (paramFragment == null) {
-          break label209;
-        }
-        if (!paramBoolean) {
-          break label211;
-        }
-        paramFragment.b();
-        a(paramFragment);
-        return;
-        str1 = "onFragmentShow";
-        break;
-      }
-    }
-    label211:
-    paramFragment.a = str3;
-    paramFragment.b = str2;
-    paramFragment.a();
-  }
-  
-  public void onFragmentHiddenChanged(QFragment paramQFragment, boolean paramBoolean)
-  {
-    String str1;
-    String str2;
-    if (paramQFragment != null)
-    {
-      str1 = c(paramQFragment.getActivity());
-      str2 = paramQFragment.getClass().getSimpleName();
-      str2 = str1 + "_" + str2;
-      if ((paramBoolean) || (paramQFragment.getUserVisibleHint())) {
-        break label87;
-      }
-      QLog.e("UECPageStayTimeReport", 1, "QFragment status discontent , QfragmentKey = " + str2);
-    }
-    label184:
-    label191:
-    for (;;)
-    {
-      return;
-      label87:
-      if (QLog.isColorLevel())
-      {
-        StringBuilder localStringBuilder = new StringBuilder();
-        if (paramBoolean)
-        {
-          str1 = "onQFragmentHide";
-          QLog.i("UECPageStayTimeReport", 2, str1 + " QfragmentKey = " + str2 + " QfragmentState = " + paramQFragment.getUserVisibleHint());
-        }
-      }
-      else
-      {
-        if (!paramBoolean) {
-          break label184;
-        }
-      }
-      for (paramQFragment = b(paramQFragment);; paramQFragment = a(paramQFragment))
-      {
-        if (paramQFragment == null) {
-          break label191;
-        }
-        if (!paramBoolean) {
-          break label193;
-        }
-        paramQFragment.b();
-        a(paramQFragment);
-        return;
-        str1 = "onQFragmentShow";
-        break;
-      }
-    }
-    label193:
-    paramQFragment.a = str2;
-    paramQFragment.a();
-  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vastrash.uec.UECPageStayTimeReport
  * JD-Core Version:    0.7.0.1
  */

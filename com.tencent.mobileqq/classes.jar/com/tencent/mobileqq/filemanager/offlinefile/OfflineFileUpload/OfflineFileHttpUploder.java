@@ -10,6 +10,9 @@ import com.tencent.mobileqq.transfile.NetResp;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.HashMap;
 
@@ -37,329 +40,355 @@ public class OfflineFileHttpUploder
   {
     this.jdField_a_of_type_Boolean = true;
     this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.cancelReq(this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq);
-    if (QLog.isColorLevel()) {
-      QLog.d("OfflineFileHttpUploder<FileAssistant>", 2, "Id[" + this.jdField_c_of_type_JavaLangString + "]stop");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Id[");
+      localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+      localStringBuilder.append("]stop");
+      QLog.d("OfflineFileHttpUploder<FileAssistant>", 2, localStringBuilder.toString());
     }
   }
   
   public void a(long paramLong)
   {
-    HttpNetReq localHttpNetReq = new HttpNetReq();
-    localHttpNetReq.mCallback = this;
-    localHttpNetReq.mReqUrl = this.jdField_a_of_type_JavaLangString;
-    localHttpNetReq.mHttpMethod = 1;
-    localHttpNetReq.mReqProperties.put("Accept-Encoding", "identity");
-    localHttpNetReq.mMsgId = this.jdField_c_of_type_JavaLangString;
-    byte[] arrayOfByte;
+    Object localObject1 = new HttpNetReq();
+    ((HttpNetReq)localObject1).mCallback = this;
+    ((HttpNetReq)localObject1).mReqUrl = this.jdField_a_of_type_JavaLangString;
+    ((HttpNetReq)localObject1).mHttpMethod = 1;
+    ((HttpNetReq)localObject1).mReqProperties.put("Accept-Encoding", "identity");
+    ((HttpNetReq)localObject1).mMsgId = this.jdField_c_of_type_JavaLangString;
     try
     {
-      arrayOfByte = a(paramLong);
-      if (arrayOfByte == null)
+      localObject2 = a(paramLong);
+      if (localObject2 == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.b();
         return;
       }
-      arrayOfByte = this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.a(arrayOfByte, paramLong);
-      if (arrayOfByte == null)
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.a((byte[])localObject2, paramLong);
+      if (localObject2 == null)
       {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.b();
+        return;
+      }
+      ((HttpNetReq)localObject1).mSendData = ((byte[])localObject2);
+      this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = ((HttpNetReq)localObject1);
+      ((HttpNetReq)localObject1).mTimeoutParam = FileManagerUtil.a();
+      this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq((NetReq)localObject1);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("logID[");
+        ((StringBuilder)localObject1).append(this.jdField_c_of_type_JavaLangString);
+        ((StringBuilder)localObject1).append("]Send Http Request!");
+        QLog.i("OfflineFileHttpUploder<FileAssistant>", 1, ((StringBuilder)localObject1).toString());
         return;
       }
     }
     catch (Exception localException)
     {
-      QLog.i("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "] Exception:" + localException.toString());
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("logID[");
+      ((StringBuilder)localObject2).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject2).append("] Exception:");
+      ((StringBuilder)localObject2).append(localException.toString());
+      QLog.i("OfflineFileHttpUploder<FileAssistant>", 1, ((StringBuilder)localObject2).toString());
       this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.b();
-      return;
-    }
-    localException.mSendData = arrayOfByte;
-    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = localException;
-    localException.mTimeoutParam = FileManagerUtil.a();
-    this.jdField_a_of_type_ComTencentMobileqqTransfileApiIHttpEngineService.sendReq(localException);
-    if (QLog.isColorLevel()) {
-      QLog.i("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "]Send Http Request!");
     }
   }
   
-  /* Error */
   byte[] a(long paramLong)
   {
-    // Byte code:
-    //   0: lload_1
-    //   1: lconst_0
-    //   2: lcmp
-    //   3: ifne +8 -> 11
-    //   6: aload_0
-    //   7: lconst_0
-    //   8: putfield 143	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_b_of_type_Long	J
-    //   11: aload_0
-    //   12: getfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   15: ifnonnull +23 -> 38
-    //   18: aload_0
-    //   19: new 147	java/io/FileInputStream
-    //   22: dup
-    //   23: aload_0
-    //   24: getfield 149	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   27: invokespecial 152	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   30: putfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   33: aload_0
-    //   34: lconst_0
-    //   35: putfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   38: lload_1
-    //   39: lconst_0
-    //   40: lcmp
-    //   41: ifne +113 -> 154
-    //   44: aload_0
-    //   45: getfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   48: lconst_0
-    //   49: lcmp
-    //   50: ifeq +23 -> 73
-    //   53: aload_0
-    //   54: new 147	java/io/FileInputStream
-    //   57: dup
-    //   58: aload_0
-    //   59: getfield 149	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   62: invokespecial 152	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   65: putfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   68: aload_0
-    //   69: lconst_0
-    //   70: putfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   73: aload_0
-    //   74: lload_1
-    //   75: putfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   78: aload_0
-    //   79: getfield 156	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_ComTencentWsttSSCMSSCM	Lcom/tencent/wstt/SSCM/SSCM;
-    //   82: aload_0
-    //   83: getfield 158	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_Long	J
-    //   86: aload_0
-    //   87: getfield 143	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_b_of_type_Long	J
-    //   90: lload_1
-    //   91: invokestatic 163	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUtils:a	(Lcom/tencent/wstt/SSCM/SSCM;JJJ)I
-    //   94: istore_3
-    //   95: iload_3
-    //   96: newarray byte
-    //   98: astore 4
-    //   100: aload_0
-    //   101: getfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   104: aload 4
-    //   106: iconst_0
-    //   107: iload_3
-    //   108: invokevirtual 169	java/io/InputStream:read	([BII)I
-    //   111: pop
-    //   112: aload_0
-    //   113: aload_0
-    //   114: getfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   117: iload_3
-    //   118: i2l
-    //   119: ladd
-    //   120: putfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   123: aload 4
-    //   125: areturn
-    //   126: astore 4
-    //   128: aload_0
-    //   129: aconst_null
-    //   130: putfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   133: aload 4
-    //   135: invokevirtual 172	java/io/FileNotFoundException:printStackTrace	()V
-    //   138: aconst_null
-    //   139: areturn
-    //   140: astore 4
-    //   142: aload_0
-    //   143: aconst_null
-    //   144: putfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   147: aload 4
-    //   149: invokevirtual 172	java/io/FileNotFoundException:printStackTrace	()V
-    //   152: aconst_null
-    //   153: areturn
-    //   154: lload_1
-    //   155: aload_0
-    //   156: getfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   159: lcmp
-    //   160: ifle +29 -> 189
-    //   163: aload_0
-    //   164: getfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   167: lload_1
-    //   168: aload_0
-    //   169: getfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   172: lsub
-    //   173: invokevirtual 176	java/io/InputStream:skip	(J)J
-    //   176: pop2
-    //   177: goto -104 -> 73
-    //   180: astore 4
-    //   182: aload 4
-    //   184: invokevirtual 177	java/io/IOException:printStackTrace	()V
-    //   187: aconst_null
-    //   188: areturn
-    //   189: lload_1
-    //   190: aload_0
-    //   191: getfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   194: lcmp
-    //   195: ifge -122 -> 73
-    //   198: aload_0
-    //   199: new 147	java/io/FileInputStream
-    //   202: dup
-    //   203: aload_0
-    //   204: getfield 149	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_b_of_type_JavaLangString	Ljava/lang/String;
-    //   207: invokespecial 152	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
-    //   210: putfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   213: aload_0
-    //   214: lconst_0
-    //   215: putfield 154	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_c_of_type_Long	J
-    //   218: aload_0
-    //   219: getfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   222: lload_1
-    //   223: invokevirtual 176	java/io/InputStream:skip	(J)J
-    //   226: pop2
-    //   227: goto -154 -> 73
-    //   230: astore 4
-    //   232: aload_0
-    //   233: aconst_null
-    //   234: putfield 145	com/tencent/mobileqq/filemanager/offlinefile/OfflineFileUpload/OfflineFileHttpUploder:jdField_a_of_type_JavaIoInputStream	Ljava/io/InputStream;
-    //   237: aload 4
-    //   239: invokevirtual 177	java/io/IOException:printStackTrace	()V
-    //   242: aconst_null
-    //   243: areturn
-    //   244: astore 4
-    //   246: aconst_null
-    //   247: astore 4
-    //   249: goto -126 -> 123
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	252	0	this	OfflineFileHttpUploder
-    //   0	252	1	paramLong	long
-    //   94	24	3	i	int
-    //   98	26	4	arrayOfByte	byte[]
-    //   126	8	4	localFileNotFoundException1	java.io.FileNotFoundException
-    //   140	8	4	localFileNotFoundException2	java.io.FileNotFoundException
-    //   180	3	4	localIOException1	java.io.IOException
-    //   230	8	4	localIOException2	java.io.IOException
-    //   244	1	4	localException	Exception
-    //   247	1	4	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   18	38	126	java/io/FileNotFoundException
-    //   53	73	140	java/io/FileNotFoundException
-    //   163	177	180	java/io/IOException
-    //   198	227	230	java/io/IOException
-    //   100	123	244	java/lang/Exception
+    if (paramLong == 0L) {
+      this.jdField_b_of_type_Long = 0L;
+    }
+    if (this.jdField_a_of_type_JavaIoInputStream == null) {
+      try
+      {
+        this.jdField_a_of_type_JavaIoInputStream = new FileInputStream(this.jdField_b_of_type_JavaLangString);
+        this.jdField_c_of_type_Long = 0L;
+      }
+      catch (FileNotFoundException localFileNotFoundException1)
+      {
+        this.jdField_a_of_type_JavaIoInputStream = null;
+        localFileNotFoundException1.printStackTrace();
+        return null;
+      }
+    }
+    if (paramLong == 0L)
+    {
+      if (this.jdField_c_of_type_Long != 0L) {
+        try
+        {
+          this.jdField_a_of_type_JavaIoInputStream = new FileInputStream(this.jdField_b_of_type_JavaLangString);
+          this.jdField_c_of_type_Long = 0L;
+        }
+        catch (FileNotFoundException localFileNotFoundException2)
+        {
+          this.jdField_a_of_type_JavaIoInputStream = null;
+          localFileNotFoundException2.printStackTrace();
+          return null;
+        }
+      }
+    }
+    else
+    {
+      long l = this.jdField_c_of_type_Long;
+      if (paramLong > l) {
+        try
+        {
+          this.jdField_a_of_type_JavaIoInputStream.skip(paramLong - l);
+        }
+        catch (IOException localIOException1)
+        {
+          localIOException1.printStackTrace();
+          return null;
+        }
+      } else if (paramLong < l) {
+        try
+        {
+          this.jdField_a_of_type_JavaIoInputStream = new FileInputStream(this.jdField_b_of_type_JavaLangString);
+          this.jdField_c_of_type_Long = 0L;
+          this.jdField_a_of_type_JavaIoInputStream.skip(paramLong);
+        }
+        catch (IOException localIOException2)
+        {
+          this.jdField_a_of_type_JavaIoInputStream = null;
+          localIOException2.printStackTrace();
+          return null;
+        }
+      }
+    }
+    this.jdField_c_of_type_Long = paramLong;
+    int i = OfflineFileHttpUtils.a(this.jdField_a_of_type_ComTencentWsttSSCMSSCM, this.jdField_a_of_type_Long, this.jdField_b_of_type_Long, paramLong);
+    byte[] arrayOfByte = new byte[i];
+    try
+    {
+      this.jdField_a_of_type_JavaIoInputStream.read(arrayOfByte, 0, i);
+      this.jdField_c_of_type_Long += i;
+      return arrayOfByte;
+    }
+    catch (Exception localException)
+    {
+      label250:
+      break label250;
+    }
+    return null;
   }
   
   public void onResp(NetResp paramNetResp)
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    int i;
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      if (QLog.isColorLevel()) {
-        QLog.d("OfflineFileHttpUploder<FileAssistant>", 4, "logID[" + this.jdField_c_of_type_JavaLangString + "]onResp result:" + paramNetResp.mResult + " errCode:" + paramNetResp.mErrCode + " errDesc:" + paramNetResp.mErrDesc);
+    }
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("logID[");
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("]onResp result:");
+      ((StringBuilder)localObject).append(paramNetResp.mResult);
+      ((StringBuilder)localObject).append(" errCode:");
+      ((StringBuilder)localObject).append(paramNetResp.mErrCode);
+      ((StringBuilder)localObject).append(" errDesc:");
+      ((StringBuilder)localObject).append(paramNetResp.mErrDesc);
+      QLog.d("OfflineFileHttpUploder<FileAssistant>", 4, ((StringBuilder)localObject).toString());
+    }
+    this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
+    int i = paramNetResp.mHttpCode;
+    if ((paramNetResp.mErrCode == 9364) && (this.jdField_a_of_type_Int < 3))
+    {
+      paramNetResp = new StringBuilder();
+      paramNetResp.append("logID[");
+      paramNetResp.append(this.jdField_c_of_type_JavaLangString);
+      paramNetResp.append("]onNetChanged:mNetworkChangRetryCount[");
+      paramNetResp.append(this.jdField_a_of_type_Int);
+      paramNetResp.append("] retry!");
+      QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, paramNetResp.toString());
+      this.jdField_a_of_type_Int += 1;
+      this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
+      paramNetResp = this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink;
+      if (paramNetResp != null) {
+        paramNetResp.a(true);
       }
-      this.jdField_a_of_type_ComTencentMobileqqTransfileHttpNetReq = null;
-      i = paramNetResp.mHttpCode;
-      if ((paramNetResp.mErrCode == 9364) && (this.jdField_a_of_type_Int < 3))
+      a(this.jdField_b_of_type_Long);
+      return;
+    }
+    if (FileHttpUtils.a(paramNetResp.mErrCode))
+    {
+      localObject = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor;
+      if (localObject != null)
       {
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "]onNetChanged:mNetworkChangRetryCount[" + this.jdField_a_of_type_Int + "] retry!");
-        this.jdField_a_of_type_Int += 1;
-        this.jdField_a_of_type_ComTencentWsttSSCMSSCM.a();
-        if (this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink != null) {
-          this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.a(true);
-        }
-        a(this.jdField_b_of_type_Long);
-        return;
-      }
-      if ((FileHttpUtils.a(paramNetResp.mErrCode)) && (this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor != null))
-      {
-        str = this.jdField_a_of_type_ComTencentMobileqqFilemanagerCoreHttpUrlProcessor.a();
-        if (str != null)
+        localObject = ((HttpUrlProcessor)localObject).a();
+        if (localObject != null)
         {
-          this.jdField_a_of_type_JavaLangString = str;
+          this.jdField_a_of_type_JavaLangString = ((String)localObject);
           a(this.jdField_b_of_type_Long);
           return;
         }
       }
-      if ((i == 200) && (paramNetResp.mResult == 0)) {
-        break;
-      }
-      if ((paramNetResp.mResult == 9056) && (this.jdField_c_of_type_Int < 5))
-      {
-        this.jdField_c_of_type_Int += 1;
-        a(this.jdField_b_of_type_Long);
-        return;
-      }
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.b();
-    } while (!QLog.isColorLevel());
-    QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "]httpRetCode:" + i + "]onResp result:" + paramNetResp.mResult + " errCode:" + paramNetResp.mErrCode + " errDesc:" + paramNetResp.mErrDesc);
-    return;
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_ComTencentWsttSSCMSSCM.b();
-    String str = (String)paramNetResp.mRespProperties.get("User-ReturnCode");
-    if (str != null) {}
-    for (long l = Long.parseLong(str);; l = 0L)
+    }
+    if ((i == 200) && (paramNetResp.mResult == 0))
     {
-      if (l != 0L)
+      this.jdField_c_of_type_Int = 0;
+      this.jdField_a_of_type_ComTencentWsttSSCMSSCM.b();
+      localObject = (String)paramNetResp.mRespProperties.get("User-ReturnCode");
+      if (localObject != null) {
+        l1 = Long.parseLong((String)localObject);
+      } else {
+        l1 = 0L;
+      }
+      if (l1 != 0L)
       {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.b();
-        if (!QLog.isColorLevel()) {
-          break;
+        if (QLog.isColorLevel())
+        {
+          paramNetResp = new StringBuilder();
+          paramNetResp.append("logID[");
+          paramNetResp.append(this.jdField_c_of_type_JavaLangString);
+          paramNetResp.append("ResponCode[206]But UserCode[");
+          paramNetResp.append(l1);
+          paramNetResp.append("]");
+          QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, paramNetResp.toString());
         }
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "ResponCode[206]But UserCode[" + l + "]");
         return;
       }
-      l = this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.a(paramNetResp);
-      if (l == -1L)
+      long l1 = this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.a(paramNetResp);
+      if (l1 == -1L)
       {
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "server resp data read len -1");
+        paramNetResp = new StringBuilder();
+        paramNetResp.append("logID[");
+        paramNetResp.append(this.jdField_c_of_type_JavaLangString);
+        paramNetResp.append("server resp data read len -1");
+        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, paramNetResp.toString());
         if (QLog.isDevelopLevel()) {
           throw new IllegalArgumentException();
         }
       }
-      if (l == 0L)
+      if (l1 == 0L)
       {
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "server resp data read len 0");
+        paramNetResp = new StringBuilder();
+        paramNetResp.append("logID[");
+        paramNetResp.append(this.jdField_c_of_type_JavaLangString);
+        paramNetResp.append("server resp data read len 0");
+        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, paramNetResp.toString());
         return;
       }
-      if (l == this.jdField_a_of_type_Long)
+      long l2 = this.jdField_a_of_type_Long;
+      if (l1 == l2)
       {
         this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.a();
-        if (!QLog.isColorLevel()) {
-          break;
-        }
-        QLog.d("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "miaochuan");
-        return;
-      }
-      if (l < this.jdField_b_of_type_Long)
-      {
-        paramNetResp = "RangSizeError_rangError tSize[" + String.valueOf(l) + "]<=mSize[" + String.valueOf(this.jdField_b_of_type_Long) + "],reTryafter[" + String.valueOf(this.jdField_b_of_type_Int) + "]";
-        QLog.w("OfflineFileHttpUploder<FileAssistant>", 1, "nSessionId[" + this.jdField_c_of_type_JavaLangString + "]" + paramNetResp);
-        this.jdField_b_of_type_Int += 1;
-        if (this.jdField_b_of_type_Int < 3)
+        if (QLog.isColorLevel())
         {
-          QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "server rang error retry,mmaxRangErrorRetryCount [" + this.jdField_b_of_type_Int + "], maxRangErrorRetry[" + 3 + "]");
-          a(l);
+          paramNetResp = new StringBuilder();
+          paramNetResp.append("logID[");
+          paramNetResp.append(this.jdField_c_of_type_JavaLangString);
+          paramNetResp.append("miaochuan");
+          QLog.d("OfflineFileHttpUploder<FileAssistant>", 1, paramNetResp.toString());
+        }
+      }
+      else
+      {
+        if (l1 < this.jdField_b_of_type_Long)
+        {
+          paramNetResp = new StringBuilder();
+          paramNetResp.append("RangSizeError_rangError tSize[");
+          paramNetResp.append(String.valueOf(l1));
+          paramNetResp.append("]<=mSize[");
+          paramNetResp.append(String.valueOf(this.jdField_b_of_type_Long));
+          paramNetResp.append("],reTryafter[");
+          paramNetResp.append(String.valueOf(this.jdField_b_of_type_Int));
+          paramNetResp.append("]");
+          paramNetResp = paramNetResp.toString();
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("nSessionId[");
+          ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+          ((StringBuilder)localObject).append("]");
+          ((StringBuilder)localObject).append(paramNetResp);
+          QLog.w("OfflineFileHttpUploder<FileAssistant>", 1, ((StringBuilder)localObject).toString());
+          this.jdField_b_of_type_Int += 1;
+          if (this.jdField_b_of_type_Int < 3)
+          {
+            paramNetResp = new StringBuilder();
+            paramNetResp.append("logID[");
+            paramNetResp.append(this.jdField_c_of_type_JavaLangString);
+            paramNetResp.append("server rang error retry,mmaxRangErrorRetryCount [");
+            paramNetResp.append(this.jdField_b_of_type_Int);
+            paramNetResp.append("], maxRangErrorRetry[");
+            paramNetResp.append(3);
+            paramNetResp.append("]");
+            QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, paramNetResp.toString());
+            a(l1);
+            return;
+          }
+          paramNetResp = new StringBuilder();
+          paramNetResp.append("logID[");
+          paramNetResp.append(this.jdField_c_of_type_JavaLangString);
+          paramNetResp.append("]server rang error not retry,mmaxRangErrorRetryCount [");
+          paramNetResp.append(this.jdField_b_of_type_Int);
+          paramNetResp.append("], maxRangErrorRetry[");
+          paramNetResp.append(3);
+          paramNetResp.append("]");
+          QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, paramNetResp.toString());
+          this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.b();
           return;
         }
-        QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, "logID[" + this.jdField_c_of_type_JavaLangString + "]server rang error not retry,mmaxRangErrorRetryCount [" + this.jdField_b_of_type_Int + "], maxRangErrorRetry[" + 3 + "]");
-        this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.b();
+        this.jdField_b_of_type_Int = 0;
+        this.jdField_b_of_type_Long = l1;
+        this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.a(this.jdField_b_of_type_Long, l2);
+        a(l1);
+      }
+      return;
+    }
+    if (paramNetResp.mResult == 9056)
+    {
+      int j = this.jdField_c_of_type_Int;
+      if (j < 5)
+      {
+        this.jdField_c_of_type_Int = (j + 1);
+        a(this.jdField_b_of_type_Long);
         return;
       }
-      this.jdField_b_of_type_Int = 0;
-      this.jdField_b_of_type_Long = l;
-      this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.a(this.jdField_b_of_type_Long, this.jdField_a_of_type_Long);
-      a(l);
-      return;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqFilemanagerOfflinefileOfflineFileUploadIOfflineFileHttpUploderSink.b();
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("logID[");
+      ((StringBuilder)localObject).append(this.jdField_c_of_type_JavaLangString);
+      ((StringBuilder)localObject).append("]httpRetCode:");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append("]onResp result:");
+      ((StringBuilder)localObject).append(paramNetResp.mResult);
+      ((StringBuilder)localObject).append(" errCode:");
+      ((StringBuilder)localObject).append(paramNetResp.mErrCode);
+      ((StringBuilder)localObject).append(" errDesc:");
+      ((StringBuilder)localObject).append(paramNetResp.mErrDesc);
+      QLog.e("OfflineFileHttpUploder<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
   }
   
   public void onUpdateProgeress(NetReq paramNetReq, long paramLong1, long paramLong2)
   {
-    if (QLog.isDevelopLevel()) {
-      QLog.d("OfflineFileHttpUploder<FileAssistant>", 1, "nID[" + this.jdField_c_of_type_JavaLangString + "]onUpdateProgeress[" + paramLong1 + "]/[" + paramLong2 + "]");
+    if (QLog.isDevelopLevel())
+    {
+      paramNetReq = new StringBuilder();
+      paramNetReq.append("nID[");
+      paramNetReq.append(this.jdField_c_of_type_JavaLangString);
+      paramNetReq.append("]onUpdateProgeress[");
+      paramNetReq.append(paramLong1);
+      paramNetReq.append("]/[");
+      paramNetReq.append(paramLong2);
+      paramNetReq.append("]");
+      QLog.d("OfflineFileHttpUploder<FileAssistant>", 1, paramNetReq.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.offlinefile.OfflineFileUpload.OfflineFileHttpUploder
  * JD-Core Version:    0.7.0.1
  */

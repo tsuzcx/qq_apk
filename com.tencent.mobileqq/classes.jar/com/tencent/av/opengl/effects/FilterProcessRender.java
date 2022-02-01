@@ -3,15 +3,18 @@ package com.tencent.av.opengl.effects;
 import android.annotation.TargetApi;
 import android.content.Context;
 import android.opengl.GLES20;
+import com.tencent.aelight.camera.download.api.IAEKitForQQ;
 import com.tencent.av.camera.CameraUtils;
+import com.tencent.av.camera.api.ICameraManagerApi;
 import com.tencent.av.opengl.utils.AVGLUtils;
 import com.tencent.av.perfstat.MemoryPerfStat;
+import com.tencent.av.utils.AudioHelper;
 import com.tencent.av.utils.FramePerfData;
 import com.tencent.av.utils.PerfRecorder;
-import com.tencent.mobileqq.utils.AudioHelper;
+import com.tencent.av.utils.PerfReporter;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.sveffects.SvEffectSdkInitor;
-import dov.com.qq.im.ae.AEKitForQQ;
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
 import java.nio.FloatBuffer;
@@ -22,19 +25,16 @@ public class FilterProcessRender
   int jdField_a_of_type_Int = 0;
   protected Context a;
   private AEFilterAVWrapper jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper = null;
-  private AVSDKBeautyRender jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender = null;
   private BeautyConfig jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig = null;
   private ExtraRenderWrapper jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper = null;
   final FaceData jdField_a_of_type_ComTencentAvOpenglEffectsFaceData = new FaceData();
-  protected FilterProcessRender.FaceDataWatcher a;
   protected FilterProcessTest a;
   protected GLTexture a;
-  private LightAndNoiseDeal jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal = null;
   protected PostRender a;
   protected PreRender a;
-  private RenderInfoLog jdField_a_of_type_ComTencentAvOpenglEffectsRenderInfoLog = new RenderInfoLog();
+  private final RenderInfoLog jdField_a_of_type_ComTencentAvOpenglEffectsRenderInfoLog = new RenderInfoLog();
   protected PerfRecorder a;
-  final String jdField_a_of_type_JavaLangString = "FilterProcessRender_" + AudioHelper.b();
+  final String jdField_a_of_type_JavaLangString;
   protected FloatBuffer a;
   protected boolean a;
   int b;
@@ -45,7 +45,7 @@ public class FilterProcessRender
   int d = -1;
   private int e = 0;
   
-  public FilterProcessRender(Context paramContext, FilterProcessRender.FaceDataWatcher paramFaceDataWatcher, BeautyConfig paramBeautyConfig)
+  public FilterProcessRender(Context paramContext, BeautyConfig paramBeautyConfig)
   {
     this.jdField_b_of_type_Int = 0;
     this.jdField_a_of_type_Boolean = false;
@@ -57,129 +57,152 @@ public class FilterProcessRender
     this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender = null;
     this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender = null;
     this.jdField_b_of_type_Boolean = false;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("FilterProcessRender_");
+    localStringBuilder.append(AudioHelper.b());
+    this.jdField_a_of_type_JavaLangString = localStringBuilder.toString();
     if (QLog.isColorLevel()) {
-      this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder = new PerfRecorder();
+      this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder = new PerfRecorder(AEFilterSupport.a());
     }
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender$FaceDataWatcher = paramFaceDataWatcher;
     this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig = paramBeautyConfig;
     SvEffectSdkInitor.a();
-    AEKitForQQ.a();
+    ((IAEKitForQQ)QRoute.api(IAEKitForQQ.class)).init();
     TipsInfo.a().a();
     this.jdField_c_of_type_Int = -1;
     RenderUtil.a();
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    paramContext = CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).a();
-    if (paramContext != null) {}
-    for (this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender = new SurfacePreRender(paramContext);; this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender = new YUVPreRender())
-    {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender = new YuvPostRender(this.jdField_a_of_type_JavaLangString);
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper = new ExtraRenderWrapper(this);
-      return;
+    paramContext = CameraUtils.a(this.jdField_a_of_type_AndroidContentContext).getSurfaceTextureForRender();
+    if (paramContext != null) {
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender = new SurfacePreRender(paramContext);
+    } else {
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender = new YUVPreRender();
     }
+    this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender = new YuvPostRender(this.jdField_a_of_type_JavaLangString);
+    this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper = new ExtraRenderWrapper(this);
   }
   
   private void a(long paramLong, int paramInt1, int paramInt2)
   {
-    if ((paramInt1 == 0) || (paramInt2 == 0) || ((this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2))) {
-      return;
+    if ((paramInt1 != 0) && (paramInt2 != 0))
+    {
+      if ((this.jdField_a_of_type_Int == paramInt1) && (this.jdField_b_of_type_Int == paramInt2)) {
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject = this.jdField_a_of_type_JavaLangString;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("innerUpdatePreviewSize, width[");
+        localStringBuilder.append(this.jdField_a_of_type_Int);
+        localStringBuilder.append("->");
+        localStringBuilder.append(paramInt1);
+        localStringBuilder.append("], height[");
+        localStringBuilder.append(this.jdField_b_of_type_Int);
+        localStringBuilder.append("->");
+        localStringBuilder.append(paramInt2);
+        localStringBuilder.append("], seq[");
+        localStringBuilder.append(paramLong);
+        localStringBuilder.append("]");
+        QLog.w((String)localObject, 1, localStringBuilder.toString());
+      }
+      this.jdField_a_of_type_Int = paramInt1;
+      this.jdField_b_of_type_Int = paramInt2;
+      this.d = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.jdField_c_of_type_Int);
+      Object localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender;
+      if (localObject != null) {
+        ((PreRender)localObject).a(paramInt1, paramInt2);
+      }
+      localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender;
+      if (localObject != null) {
+        ((PostRender)localObject).a(paramInt1, paramInt2);
+      }
+      d();
+      SvEffectSdkInitor.a();
     }
-    if (QLog.isColorLevel()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "innerUpdatePreviewSize, width[" + this.jdField_a_of_type_Int + "->" + paramInt1 + "], height[" + this.jdField_b_of_type_Int + "->" + paramInt2 + "], seq[" + paramLong + "]");
-    }
-    this.jdField_a_of_type_Int = paramInt1;
-    this.jdField_b_of_type_Int = paramInt2;
-    this.d = AVGLUtils.initFrameBuffer(paramInt1, paramInt2, this.jdField_c_of_type_Int);
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a(paramInt1, paramInt2);
-    }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.a(paramInt1, paramInt2);
-    }
-    d();
-    SvEffectSdkInitor.a();
   }
   
   private void a(CameraFrame paramCameraFrame)
   {
-    if (this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture == null)
+    Object localObject = this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture;
+    if (localObject == null)
     {
       this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture = GLTexture.a(this.d, this.jdField_c_of_type_Int);
-      if ((this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender != null) && (!this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a(paramCameraFrame)))
-      {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.c();
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.b();
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender = null;
-        if (QLog.isDevelopLevel()) {
-          QLog.i("SurfaceTag", 4, "preRender, not match frame.");
-        }
+    }
+    else
+    {
+      ((GLTexture)localObject).jdField_a_of_type_Int = this.d;
+      ((GLTexture)localObject).jdField_b_of_type_Int = this.jdField_c_of_type_Int;
+    }
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender;
+    if ((localObject != null) && (!((PreRender)localObject).a(paramCameraFrame)))
+    {
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.c();
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.b();
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender = null;
+      if (QLog.isDevelopLevel()) {
+        QLog.i("SurfaceTag", 4, "preRender, not match frame.");
       }
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender == null)
+    }
+    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender == null)
+    {
+      if (paramCameraFrame.b())
       {
-        if (!paramCameraFrame.b()) {
-          break label213;
-        }
         this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender = new YUVPreRender();
         this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a();
         this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
-    }
-    for (;;)
-    {
-      if (QLog.isDevelopLevel()) {
-        QLog.i("SurfaceTag", 4, "preRender, new render for frame.");
-      }
-      if ((this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender != null) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a(paramCameraFrame)))
-      {
-        c();
-        this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture = this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a(this, paramCameraFrame, this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture);
-      }
-      return;
-      this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture.jdField_a_of_type_Int = this.d;
-      this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture.jdField_b_of_type_Int = this.jdField_c_of_type_Int;
-      break;
-      label213:
-      if (paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
+      else if (paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture != null)
       {
         this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender = new SurfacePreRender(paramCameraFrame.jdField_a_of_type_AndroidGraphicsSurfaceTexture);
         this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a();
         this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
+      if (QLog.isDevelopLevel()) {
+        QLog.i("SurfaceTag", 4, "preRender, new render for frame.");
+      }
+    }
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender;
+    if ((localObject != null) && (((PreRender)localObject).a(paramCameraFrame)))
+    {
+      c();
+      this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture = this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a(this, paramCameraFrame, this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture);
     }
   }
   
   private void a(CameraFrame paramCameraFrame, RenderParams paramRenderParams, boolean paramBoolean1, FramePerfData paramFramePerfData, boolean paramBoolean2)
   {
-    boolean bool2 = true;
     c();
-    boolean bool1;
-    boolean bool3;
-    boolean bool4;
     if ((this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper != null) && ((paramBoolean2) || (paramRenderParams.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc != null) || (paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem != null) || (paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null) || (paramBoolean1)))
     {
-      if (this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-        this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.a("drawFrameInGL");
+      Object localObject = this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder;
+      if (localObject != null) {
+        ((PerfRecorder)localObject).a("drawFrameInGL");
       }
       int i = this.jdField_a_of_type_Int;
       int j = this.jdField_b_of_type_Int;
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper != null)
+      localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper;
+      boolean bool2 = true;
+      boolean bool1;
+      if (localObject != null)
       {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper.a(paramCameraFrame, paramRenderParams, this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-        FaceData localFaceData = this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData;
-        if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper.jdField_a_of_type_Int == 0) {
-          break label462;
+        ((ExtraRenderWrapper)localObject).a(paramCameraFrame, paramRenderParams, this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture, i, j);
+        localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData;
+        if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper.jdField_a_of_type_Int != 0) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-        bool1 = true;
-        localFaceData.jdField_a_of_type_Boolean = bool1;
+        ((FaceData)localObject).jdField_a_of_type_Boolean = bool1;
       }
       this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.b(i, j);
-      bool3 = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.d();
+      boolean bool3 = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.c();
       this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(paramRenderParams.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc);
       this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem, paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial);
       this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(paramBoolean1);
       this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.c(this.d, this.jdField_c_of_type_Int);
       this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture = GLTexture.a(this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture.jdField_b_of_type_Int);
       this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture.jdField_b_of_type_Int = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture.jdField_b_of_type_Int, false, this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData, paramRenderParams.jdField_b_of_type_Boolean);
-      bool4 = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.d();
+      boolean bool4 = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.c();
       if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a()) {
         a(128);
       }
@@ -195,47 +218,39 @@ public class FilterProcessRender
       if (paramBoolean2) {
         a(8);
       }
-      if (this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-        this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.b("drawFrameInGL");
+      localObject = this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder;
+      if (localObject != null) {
+        ((PerfRecorder)localObject).b("drawFrameInGL");
       }
       if (paramFramePerfData != null)
       {
-        if (paramRenderParams.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc == null) {
-          break label468;
+        if (paramRenderParams.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc != null) {
+          bool1 = true;
+        } else {
+          bool1 = false;
         }
-        bool1 = true;
-        label383:
         if (paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial == null) {
-          break label474;
+          bool2 = false;
         }
+        paramFramePerfData.a(bool1, bool2, paramBoolean1, paramBoolean2);
+      }
+      a(2, this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture, this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture);
+      paramFramePerfData = this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper;
+      if (paramFramePerfData != null) {
+        paramFramePerfData.a(this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture, bool3, bool4, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
       }
     }
-    for (;;)
-    {
-      paramFramePerfData.a(bool1, bool2, paramBoolean1, paramBoolean2);
-      a(2, this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture, this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture);
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper != null) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper.a(this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture, bool3, bool4, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      }
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper != null) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper.a(paramCameraFrame, paramRenderParams);
-      }
-      return;
-      label462:
-      bool1 = false;
-      break;
-      label468:
-      bool1 = false;
-      break label383;
-      label474:
-      bool2 = false;
+    paramFramePerfData = this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper;
+    if (paramFramePerfData != null) {
+      paramFramePerfData.a(paramCameraFrame, paramRenderParams);
     }
   }
   
   private void a(CameraFrame paramCameraFrame, RenderResult paramRenderResult, long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.a(this, paramCameraFrame, this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture, this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData, paramRenderResult);
+    PostRender localPostRender = this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender;
+    if (localPostRender != null) {
+      localPostRender.a(this, paramCameraFrame, this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture, this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData, paramRenderResult);
     }
     this.jdField_c_of_type_Boolean = false;
     if (paramRenderResult.a == null) {
@@ -244,8 +259,9 @@ public class FilterProcessRender
     long l = System.currentTimeMillis();
     paramRenderResult.a.f = ((int)(l - paramLong));
     paramRenderResult.a.g = this.e;
-    if (this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-      this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.a(paramCameraFrame.c);
+    paramRenderResult = this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder;
+    if (paramRenderResult != null) {
+      paramRenderResult.a(paramCameraFrame.c);
     }
     MemoryPerfStat.a().a(this.e);
   }
@@ -254,17 +270,17 @@ public class FilterProcessRender
   {
     if ((paramBoolean) || (paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial != null))
     {
-      if (this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-        this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.a("faceDetect");
+      paramRenderParams = this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder;
+      if (paramRenderParams != null) {
+        paramRenderParams.a("faceDetect");
       }
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender$FaceDataWatcher != null) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender$FaceDataWatcher.a(this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData, this.jdField_c_of_type_Int, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
+      paramRenderParams = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper;
+      if (paramRenderParams != null) {
+        paramRenderParams.a(this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData);
       }
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper != null) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData);
-      }
-      if (this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-        this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.b("faceDetect");
+      paramRenderParams = this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder;
+      if (paramRenderParams != null) {
+        paramRenderParams.b("faceDetect");
       }
     }
   }
@@ -273,22 +289,26 @@ public class FilterProcessRender
   {
     paramCameraFrame.jdField_a_of_type_Int = this.jdField_b_of_type_Int;
     paramCameraFrame.jdField_b_of_type_Int = this.jdField_a_of_type_Int;
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest != null)
+    Object localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.a(this, 5, paramCameraFrame, null);
+      ((FilterProcessTest)localObject).a(this, 5, paramCameraFrame, null);
       this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.d();
     }
     this.jdField_c_of_type_Boolean = false;
     paramCameraFrame.f = ((int)(System.currentTimeMillis() - paramLong));
     paramCameraFrame.g = this.e;
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.b();
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender;
+    if (localObject != null) {
+      ((PreRender)localObject).b();
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.b();
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender;
+    if (localObject != null) {
+      ((PostRender)localObject).b();
     }
-    if (this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-      this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.a(paramCameraFrame.c);
+    localObject = this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder;
+    if (localObject != null) {
+      ((PerfRecorder)localObject).a(paramCameraFrame.c);
     }
     MemoryPerfStat.a().a(this.e);
     paramRenderResult.a(paramCameraFrame, null, null, null, (short)0, (short)0);
@@ -300,14 +320,14 @@ public class FilterProcessRender
       return;
     }
     float[] arrayOfFloat = new float[8];
-    arrayOfFloat[0] = (-0.5F + 0.0F);
-    arrayOfFloat[1] = (-0.5F + 0.0F);
-    arrayOfFloat[2] = (0.5F + 0.0F);
-    arrayOfFloat[3] = (-0.5F + 0.0F);
-    arrayOfFloat[4] = (-0.5F + 0.0F);
-    arrayOfFloat[5] = (0.5F + 0.0F);
-    arrayOfFloat[6] = (0.5F + 0.0F);
-    arrayOfFloat[7] = (0.5F + 0.0F);
+    arrayOfFloat[0] = -0.5F;
+    arrayOfFloat[1] = -0.5F;
+    arrayOfFloat[2] = 0.5F;
+    arrayOfFloat[3] = -0.5F;
+    arrayOfFloat[4] = -0.5F;
+    arrayOfFloat[5] = 0.5F;
+    arrayOfFloat[6] = 0.5F;
+    arrayOfFloat[7] = 0.5F;
     ByteBuffer localByteBuffer = ByteBuffer.allocateDirect(arrayOfFloat.length * 4);
     localByteBuffer.order(ByteOrder.nativeOrder());
     this.jdField_a_of_type_JavaNioFloatBuffer = localByteBuffer.asFloatBuffer();
@@ -317,19 +337,21 @@ public class FilterProcessRender
   
   void a()
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.c();
+    AEFilterAVWrapper localAEFilterAVWrapper = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper;
+    if (localAEFilterAVWrapper != null) {
+      localAEFilterAVWrapper.c();
     }
   }
   
   protected void a(int paramInt)
   {
-    this.e |= paramInt;
+    this.e = (paramInt | this.e);
   }
   
   public void a(int paramInt, GLTexture paramGLTexture1, GLTexture paramGLTexture2)
   {
-    if ((this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest != null) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.jdField_a_of_type_Boolean))
+    FilterProcessTest localFilterProcessTest = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest;
+    if ((localFilterProcessTest != null) && (localFilterProcessTest.jdField_a_of_type_Boolean))
     {
       this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.a(this, paramInt, null, paramGLTexture2);
       this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.a(paramInt, paramGLTexture2.jdField_a_of_type_Int, paramGLTexture2.jdField_b_of_type_Int);
@@ -341,9 +363,10 @@ public class FilterProcessRender
   
   void a(long paramLong)
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper != null)
+    AEFilterAVWrapper localAEFilterAVWrapper = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper;
+    if (localAEFilterAVWrapper != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(paramLong);
+      localAEFilterAVWrapper.a(paramLong);
       return;
     }
     TipsInfo.a().a(paramLong);
@@ -351,262 +374,244 @@ public class FilterProcessRender
   
   public void a(long paramLong, int paramInt)
   {
-    if (AudioHelper.e()) {
-      QLog.w(this.jdField_a_of_type_JavaLangString, 1, "initial, szie[" + this.jdField_a_of_type_Int + ", " + this.jdField_b_of_type_Int + "], id[" + this.jdField_c_of_type_Int + "], seq[" + paramLong + "]");
+    if (AudioHelper.b())
+    {
+      localObject = this.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("initial, szie[");
+      localStringBuilder.append(this.jdField_a_of_type_Int);
+      localStringBuilder.append(", ");
+      localStringBuilder.append(this.jdField_b_of_type_Int);
+      localStringBuilder.append("], id[");
+      localStringBuilder.append(this.jdField_c_of_type_Int);
+      localStringBuilder.append("], seq[");
+      localStringBuilder.append(paramLong);
+      localStringBuilder.append("]");
+      QLog.w((String)localObject, 1, localStringBuilder.toString());
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.a();
+    Object localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest;
+    if (localObject != null) {
+      ((FilterProcessTest)localObject).a();
     }
     this.jdField_a_of_type_Boolean = true;
     this.jdField_c_of_type_Boolean = false;
     if (this.jdField_c_of_type_Int != -1) {
       return;
     }
-    if (EffectCtrlBase.b())
+    if ((EffectCtrlBase.b()) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper == null))
     {
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper == null)
-      {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper = new AEFilterAVWrapperImpl(paramInt);
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      }
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.c()) {
-        if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender == null) {
-          this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender = new AVSDKBeautyRender();
-        }
-      }
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper = new AEFilterAVWrapperImpl(paramInt);
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
     }
-    for (;;)
-    {
-      int[] arrayOfInt = new int[1];
-      GLES20.glGenTextures(arrayOfInt.length, arrayOfInt, 0);
-      this.jdField_c_of_type_Int = arrayOfInt[0];
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender != null) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.a();
-      }
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender != null) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.a();
-      }
-      this.e = 0;
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper == null) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper.a();
-      return;
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender != null) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender.a();
-      }
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender = null;
-      continue;
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender = new AVSDKBeautyRender();
+    localObject = new int[1];
+    GLES20.glGenTextures(localObject.length, (int[])localObject, 0);
+    this.jdField_c_of_type_Int = localObject[0];
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender;
+    if (localObject != null) {
+      ((PreRender)localObject).a();
+    }
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender;
+    if (localObject != null) {
+      ((PostRender)localObject).a();
+    }
+    this.e = 0;
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper;
+    if (localObject != null) {
+      ((ExtraRenderWrapper)localObject).a();
     }
   }
   
   public void a(CameraFrame paramCameraFrame, RenderParams paramRenderParams, IEffectCtrl paramIEffectCtrl, RenderResult paramRenderResult)
   {
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.a();
+    Object localObject1 = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest;
+    if (localObject1 != null) {
+      ((FilterProcessTest)localObject1).a();
     }
-    if (this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-      this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.b();
+    localObject1 = this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder;
+    if (localObject1 != null) {
+      ((PerfRecorder)localObject1).b();
     }
     long l = System.currentTimeMillis();
     paramRenderResult.a = paramCameraFrame;
     a(0L, paramCameraFrame.jdField_b_of_type_Int, paramCameraFrame.jdField_a_of_type_Int);
     int i = paramCameraFrame.jdField_a_of_type_Int;
-    int k = paramCameraFrame.jdField_b_of_type_Int;
-    int m = RenderUtil.a(paramCameraFrame.jdField_a_of_type_Boolean);
-    boolean bool1;
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender$FaceDataWatcher != null) {
-      if ((paramRenderParams.jdField_a_of_type_Boolean) || (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessRender$FaceDataWatcher.a())) {
-        bool1 = true;
-      }
-    }
-    int j;
-    for (;;)
+    int j = paramCameraFrame.jdField_b_of_type_Int;
+    int k = RenderUtil.a(paramCameraFrame.jdField_a_of_type_Boolean);
+    boolean bool2 = paramRenderParams.jdField_a_of_type_Boolean;
+    Object localObject2;
+    if (this.jdField_b_of_type_Boolean != bool2)
     {
-      if (this.jdField_b_of_type_Boolean != bool1)
+      if (QLog.isDevelopLevel())
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.i(this.jdField_a_of_type_JavaLangString, 4, "render, needFaceData[" + bool1 + "]");
-        }
-        this.jdField_b_of_type_Boolean = bool1;
+        localObject1 = this.jdField_a_of_type_JavaLangString;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("render, needFaceData[");
+        ((StringBuilder)localObject2).append(bool2);
+        ((StringBuilder)localObject2).append("]");
+        QLog.i((String)localObject1, 4, ((StringBuilder)localObject2).toString());
       }
-      j = this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig.a("BEAUTY_SKIN");
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsRenderInfoLog.a(this.jdField_a_of_type_JavaLangString, paramCameraFrame.c, i, k, paramCameraFrame.d, paramRenderParams.jdField_a_of_type_Boolean, paramRenderParams.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc, paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial, paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem, paramCameraFrame, j);
-      if ((this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Int != 0) && (!paramCameraFrame.a()) && (this.d != -1) && (this.jdField_a_of_type_Boolean)) {
-        break;
-      }
-      return;
-      bool1 = false;
-      continue;
-      bool1 = paramRenderParams.jdField_a_of_type_Boolean;
+      this.jdField_b_of_type_Boolean = bool2;
     }
-    this.jdField_c_of_type_Boolean = true;
-    FramePerfData localFramePerfData = paramCameraFrame.jdField_a_of_type_ComTencentAvUtilsFramePerfData;
-    if (localFramePerfData != null) {
-      localFramePerfData.a(m);
-    }
-    this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData.a(i, k);
-    if ((paramCameraFrame.b()) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest != null))
+    int m = this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig.a("BEAUTY_SKIN");
+    this.jdField_a_of_type_ComTencentAvOpenglEffectsRenderInfoLog.a(this.jdField_a_of_type_JavaLangString, paramCameraFrame.c, i, j, paramCameraFrame.d, paramRenderParams.jdField_a_of_type_Boolean, paramRenderParams.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc, paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial, paramRenderParams.jdField_a_of_type_ComTencentAvBusinessManagerPendantPendantItem, paramCameraFrame, m);
+    if ((this.jdField_a_of_type_Int != 0) && (this.jdField_b_of_type_Int != 0) && (!paramCameraFrame.a()) && (this.d != -1))
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.c();
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.a(this, 0, paramCameraFrame, null);
-    }
-    boolean bool4 = false;
-    boolean bool3 = false;
-    boolean bool2;
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender != null)
-    {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender.a(j);
-      if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper != null) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(null);
-      }
-      bool2 = this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender.a(j);
-      if ((paramRenderParams.jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc == null) && (paramRenderParams.jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial == null)) {
-        break label575;
-      }
-      i = 1;
-      label397:
-      boolean bool5 = false;
-      bool4 = bool5;
-      if (paramCameraFrame.b())
-      {
-        bool4 = bool5;
-        if (this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal != null)
-        {
-          this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal.a(this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder, paramCameraFrame, localFramePerfData);
-          bool4 = this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal.jdField_a_of_type_Boolean;
-        }
-      }
-      if ((paramCameraFrame.b()) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender != null)) {
-        this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender.a(this, this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder, paramCameraFrame, localFramePerfData, paramRenderParams, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, j);
-      }
-      if ((i == 0) && (!bool1) && (!bool2) && (!bool3) && (!bool4)) {
-        break label581;
-      }
-      i = 1;
-    }
-    for (;;)
-    {
-      if ((!paramRenderParams.jdField_c_of_type_Boolean) || (i == 0))
-      {
-        if (paramCameraFrame.b())
-        {
-          b(paramCameraFrame, paramRenderResult, l);
-          return;
-          bool2 = bool4;
-          if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper == null) {
-            break;
-          }
-          bool3 = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a(this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig);
-          bool2 = bool4;
-          break;
-          label575:
-          i = 0;
-          break label397;
-          label581:
-          i = 0;
-          continue;
-        }
-        a(paramCameraFrame);
-        a(paramCameraFrame, paramRenderResult, l);
+      if (!this.jdField_a_of_type_Boolean) {
         return;
       }
+      this.jdField_c_of_type_Boolean = true;
+      localObject2 = paramCameraFrame.jdField_a_of_type_ComTencentAvUtilsFramePerfData;
+      if (localObject2 != null) {
+        ((FramePerfData)localObject2).a(k);
+      }
+      this.jdField_a_of_type_ComTencentAvOpenglEffectsFaceData.a(i, j);
+      if (paramCameraFrame.b())
+      {
+        localObject1 = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest;
+        if (localObject1 != null)
+        {
+          ((FilterProcessTest)localObject1).c();
+          this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.a(this, 0, paramCameraFrame, null);
+        }
+      }
+      localObject1 = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper;
+      boolean bool1;
+      if (localObject1 != null) {
+        bool1 = ((AEFilterAVWrapper)localObject1).a(this.jdField_a_of_type_ComTencentAvOpenglEffectsBeautyConfig);
+      } else {
+        bool1 = false;
+      }
+      localObject1 = paramRenderParams;
+      if ((((RenderParams)localObject1).jdField_a_of_type_ComTencentMobileqqRichmediaCaptureDataFilterDesc == null) && (((RenderParams)localObject1).jdField_a_of_type_ComTencentTtpicOpenapiModelVideoMaterial == null)) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if ((i == 0) && (!bool2) && (!bool1)) {
+        i = 0;
+      } else {
+        i = 1;
+      }
+      if ((((RenderParams)localObject1).jdField_c_of_type_Boolean) && (i != 0))
+      {
+        PerfReporter.a("prerender_time", 0);
+        a(paramCameraFrame);
+        PerfReporter.a("prerender_time", 1);
+        PerfReporter.a("aefilter_time", 0);
+        a(paramCameraFrame, paramRenderParams, bool2, (FramePerfData)localObject2, bool1);
+        PerfReporter.a("aefilter_time", 1);
+        a((RenderParams)localObject1, paramIEffectCtrl, bool2);
+        PerfReporter.a("postrender_time", 0);
+        a(paramCameraFrame, paramRenderResult, l);
+        PerfReporter.a("postrender_time", 1);
+        return;
+      }
+      if (paramCameraFrame.b())
+      {
+        b(paramCameraFrame, paramRenderResult, l);
+        return;
+      }
+      PerfReporter.a("prerender_time", 0);
+      a(paramCameraFrame);
+      PerfReporter.a("prerender_time", 1);
+      PerfReporter.a("postrender_time", 0);
+      a(paramCameraFrame, paramRenderResult, l);
+      PerfReporter.a("postrender_time", 1);
     }
-    a(paramCameraFrame);
-    if ((paramCameraFrame.b()) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal != null)) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal.a(this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder, localFramePerfData);
-    }
-    if ((paramCameraFrame.b()) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal != null)) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal.b(this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder, paramCameraFrame, localFramePerfData);
-    }
-    if ((paramCameraFrame.b()) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender != null)) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender.a(this, this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder, localFramePerfData, paramRenderParams, this.jdField_a_of_type_Int, this.jdField_b_of_type_Int, j);
-    }
-    a(paramCameraFrame, paramRenderParams, bool1, localFramePerfData, bool3);
-    a(paramRenderParams, paramIEffectCtrl, bool1);
-    a(paramCameraFrame, paramRenderResult, l);
   }
   
   void b()
   {
     long l = AudioHelper.b();
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "uninit, mIsInited[" + this.jdField_a_of_type_Boolean + "], mIsRendering[" + this.jdField_c_of_type_Boolean + "], seq[" + l + "]");
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("uninit, mIsInited[");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("], mIsRendering[");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append("], seq[");
+    localStringBuilder.append(l);
+    localStringBuilder.append("]");
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
     if (!this.jdField_a_of_type_Boolean) {
       return;
     }
     this.jdField_a_of_type_Boolean = false;
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest.b();
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsFilterProcessTest;
+    if (localObject != null) {
+      ((FilterProcessTest)localObject).b();
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.b();
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender;
+    if (localObject != null) {
+      ((PostRender)localObject).b();
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.b();
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender;
+    if (localObject != null) {
+      ((PreRender)localObject).b();
     }
     a(l);
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender.b();
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper;
+    if (localObject != null) {
+      ((AEFilterAVWrapper)localObject).a();
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.a();
-    }
-    if (this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder != null) {
-      this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder.a();
+    localObject = this.jdField_a_of_type_ComTencentAvUtilsPerfRecorder;
+    if (localObject != null) {
+      ((PerfRecorder)localObject).a();
     }
     TipsInfo.a().a();
   }
   
   public void b(long paramLong)
   {
-    QLog.w(this.jdField_a_of_type_JavaLangString, 1, "clear, seq[" + paramLong + "]");
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender != null)
+    Object localObject = this.jdField_a_of_type_JavaLangString;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("clear, seq[");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append("]");
+    QLog.w((String)localObject, 1, localStringBuilder.toString());
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.b();
+      ((PreRender)localObject).b();
       this.jdField_a_of_type_ComTencentAvOpenglEffectsPreRender.c();
     }
-    if (this.d != -1)
+    int i = this.d;
+    if (i != -1)
     {
-      GLES20.glDeleteFramebuffers(1, new int[] { this.d }, 0);
+      GLES20.glDeleteFramebuffers(1, new int[] { i }, 0);
       this.d = -1;
     }
-    if (this.jdField_c_of_type_Int != -1)
+    i = this.jdField_c_of_type_Int;
+    if (i != -1)
     {
-      int[] arrayOfInt = new int[1];
-      arrayOfInt[0] = this.jdField_c_of_type_Int;
-      GLES20.glDeleteTextures(arrayOfInt.length, arrayOfInt, 0);
+      localObject = new int[1];
+      localObject[0] = i;
+      GLES20.glDeleteTextures(localObject.length, (int[])localObject, 0);
       this.jdField_c_of_type_Int = -1;
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender.c();
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsPostRender;
+    if (localObject != null) {
+      ((PostRender)localObject).c();
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal != null)
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal.a();
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsLightAndNoiseDeal = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender != null)
-    {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender.a();
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAVSDKBeautyRender = null;
-    }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper != null)
-    {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper.b();
+      ((AEFilterAVWrapper)localObject).b();
       this.jdField_a_of_type_ComTencentAvOpenglEffectsAEFilterAVWrapper = null;
     }
-    if (this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper != null) {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper.b();
+    localObject = this.jdField_a_of_type_ComTencentAvOpenglEffectsExtraRenderWrapper;
+    if (localObject != null) {
+      ((ExtraRenderWrapper)localObject).b();
     }
     TipsInfo.a().a(paramLong);
   }
   
   protected void c()
   {
-    if ((this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture != this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture) && (this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture != null))
+    GLTexture localGLTexture = this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture;
+    if ((localGLTexture != this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture) && (localGLTexture != null))
     {
-      this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture.a();
+      localGLTexture.a();
       this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture = null;
     }
     this.jdField_a_of_type_ComTencentAvOpenglEffectsGLTexture = this.jdField_b_of_type_ComTencentAvOpenglEffectsGLTexture;
@@ -614,7 +619,7 @@ public class FilterProcessRender
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.opengl.effects.FilterProcessRender
  * JD-Core Version:    0.7.0.1
  */

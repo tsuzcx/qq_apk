@@ -15,7 +15,7 @@ public class QfavRemoteProxyForQQ$QfavRemoteProxyCallWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     cooperation.qqfav.ipc.QfavRemoteProxyForQQ.QfavRemoteProxyCallWrapper
  * JD-Core Version:    0.7.0.1
  */

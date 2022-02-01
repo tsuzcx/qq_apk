@@ -1,9 +1,9 @@
 package com.tencent.mobileqq.quicklogin.business;
 
 import android.os.Bundle;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandler;
 import com.tencent.mobileqq.app.BusinessObserver;
-import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.pb.ByteStringMicro;
 import com.tencent.mobileqq.pb.PBBytesField;
 import com.tencent.mobileqq.pb.PBUInt32Field;
@@ -13,18 +13,16 @@ import com.tencent.qphone.base.util.QLog;
 import java.nio.ByteBuffer;
 import java.util.HashSet;
 import java.util.Set;
-import org.jetbrains.annotations.NotNull;
 import tencent.im.oidb.oidb_sso.OIDBSSOPkg;
 
 public class QuickLoginHandler
   extends BusinessHandler
 {
-  public QuickLoginHandler(QQAppInterface paramQQAppInterface)
+  public QuickLoginHandler(AppInterface paramAppInterface)
   {
-    super(paramQQAppInterface);
+    super(paramAppInterface);
   }
   
-  @NotNull
   private ToServiceMsg a(byte paramByte, long paramLong)
   {
     oidb_sso.OIDBSSOPkg localOIDBSSOPkg = new oidb_sso.OIDBSSOPkg();
@@ -43,52 +41,54 @@ public class QuickLoginHandler
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     QLog.d("QuickLoginHandler", 1, "handleSetPCVerify");
-    boolean bool2;
-    long l;
-    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null))
-    {
-      bool2 = true;
-      l = paramToServiceMsg.extraData.getLong("mark_extra_tag");
-      bool1 = bool2;
-      if (!bool2) {}
+    boolean bool;
+    if ((paramFromServiceMsg.isSuccess()) && (paramObject != null)) {
+      bool = true;
+    } else {
+      bool = false;
     }
-    for (;;)
-    {
+    long l = paramToServiceMsg.extraData.getLong("mark_extra_tag");
+    if (bool) {
       try
       {
         paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
         paramToServiceMsg.mergeFrom((byte[])paramObject);
         int i = paramToServiceMsg.uint32_result.get();
-        if (i != 0) {
-          continue;
+        if (i == 0) {
+          bool = true;
         }
-        bool1 = true;
       }
       catch (Exception paramToServiceMsg)
       {
-        QLog.e("QuickLoginHandler", 1, "handleSetPCVerify exception: " + paramToServiceMsg.getMessage());
-        bool1 = false;
-        continue;
+        paramFromServiceMsg = new StringBuilder();
+        paramFromServiceMsg.append("handleSetPCVerify exception: ");
+        paramFromServiceMsg.append(paramToServiceMsg.getMessage());
+        QLog.e("QuickLoginHandler", 1, paramFromServiceMsg.toString());
+        bool = false;
       }
-      notifyUI(1, bool1, new Object[] { Long.valueOf(l) });
-      return;
-      bool2 = false;
-      break;
-      bool1 = false;
     }
+    notifyUI(1, bool, new Object[] { Long.valueOf(l) });
   }
   
   public void a(int paramInt, long paramLong)
   {
     try
     {
-      QLog.d("QuickLoginHandler", 1, "setPCVerify switchOn: " + paramInt + " pbMark: " + paramLong);
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("setPCVerify switchOn: ");
+      localStringBuilder1.append(paramInt);
+      localStringBuilder1.append(" pbMark: ");
+      localStringBuilder1.append(paramLong);
+      QLog.d("QuickLoginHandler", 1, localStringBuilder1.toString());
       sendPbReq(a((byte)paramInt, paramLong));
       return;
     }
     catch (Exception localException)
     {
-      QLog.e("QuickLoginHandler", 1, "setPCVerify exception: " + localException.getMessage());
+      StringBuilder localStringBuilder2 = new StringBuilder();
+      localStringBuilder2.append("setPCVerify exception: ");
+      localStringBuilder2.append(localException.getMessage());
+      QLog.e("QuickLoginHandler", 1, localStringBuilder2.toString());
     }
   }
   
@@ -102,7 +102,7 @@ public class QuickLoginHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return QuickLoginObserver.class;
   }
@@ -110,16 +110,17 @@ public class QuickLoginHandler
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     QLog.d("QuickLoginHandler", 1, "onReceive");
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {}
-    while (!"OidbSvc.0x484_15".equals(paramFromServiceMsg.getServiceCmd())) {
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
       return;
     }
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    if ("OidbSvc.0x484_15".equals(paramFromServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.quicklogin.business.QuickLoginHandler
  * JD-Core Version:    0.7.0.1
  */

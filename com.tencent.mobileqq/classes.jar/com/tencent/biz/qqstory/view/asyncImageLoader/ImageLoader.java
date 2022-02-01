@@ -43,7 +43,10 @@ public abstract class ImageLoader<T>
   
   public ImageLoader(String paramString)
   {
-    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread("ImageLoader_" + paramString);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ImageLoader_");
+    localStringBuilder.append(paramString);
+    this.jdField_a_of_type_AndroidOsHandlerThread = new HandlerThread(localStringBuilder.toString());
     this.b = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue = new TaskQueue();
     this.jdField_a_of_type_JavaUtilWeakHashMap = new WeakHashMap();
@@ -51,13 +54,19 @@ public abstract class ImageLoader<T>
   
   private void a(int paramInt, Task paramTask)
   {
-    if (this.jdField_a_of_type_Int == 0) {
-      this.jdField_a_of_type_AndroidOsHandler.sendMessageAtFrontOfQueue(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(paramInt, paramTask));
-    }
-    while (this.jdField_a_of_type_Int != 1) {
+    int i = this.jdField_a_of_type_Int;
+    Handler localHandler;
+    if (i == 0)
+    {
+      localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      localHandler.sendMessageAtFrontOfQueue(localHandler.obtainMessage(paramInt, paramTask));
       return;
     }
-    this.jdField_a_of_type_AndroidOsHandler.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(paramInt, paramTask));
+    if (i == 1)
+    {
+      localHandler = this.jdField_a_of_type_AndroidOsHandler;
+      localHandler.sendMessage(localHandler.obtainMessage(paramInt, paramTask));
+    }
   }
   
   public abstract LruCache<T, Drawable> a();
@@ -67,10 +76,11 @@ public abstract class ImageLoader<T>
   public void a()
   {
     this.jdField_a_of_type_AndroidOsHandler.removeCallbacksAndMessages(null);
-    if (this.jdField_a_of_type_AndroidOsHandlerThread != null) {}
+    HandlerThread localHandlerThread = this.jdField_a_of_type_AndroidOsHandlerThread;
+    if (localHandlerThread != null) {}
     try
     {
-      this.jdField_a_of_type_AndroidOsHandlerThread.quit();
+      localHandlerThread.quit();
       return;
     }
     catch (Exception localException) {}
@@ -96,81 +106,101 @@ public abstract class ImageLoader<T>
   {
     InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "attachView:", paramT, " ----hash:", Integer.valueOf(paramImageView.hashCode()) });
     this.jdField_a_of_type_JavaUtilWeakHashMap.remove(paramImageView);
-    if (paramT.toString().equals(paramImageView.getTag(2131369989))) {
-      InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "target have been set view,so dont need attach view" });
-    }
-    Object localObject;
-    do
+    if (paramT.toString().equals(paramImageView.getTag(2131369674)))
     {
+      InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "target have been set view,so dont need attach view" });
       return;
-      localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.b(paramImageView);
-      if (localObject != null)
+    }
+    Object localObject1 = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.b(paramImageView);
+    if (localObject1 != null)
+    {
+      if (paramT.equals(((Task)localObject1).jdField_a_of_type_JavaLangObject))
       {
-        if (paramT.equals(((Task)localObject).jdField_a_of_type_JavaLangObject))
-        {
-          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "task running no need to do again:", ((Task)localObject).jdField_a_of_type_JavaLangObject });
-          return;
-        }
-        this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a(paramImageView);
-        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "cancel: ", ((Task)localObject).jdField_a_of_type_JavaLangObject });
-        ((Task)localObject).b();
-      }
-      localObject = (Drawable)a().get(paramT);
-      if (localObject != null)
-      {
-        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "hit the cache:", paramT });
-        if ((localObject instanceof BitmapDrawable))
-        {
-          Bitmap localBitmap = ((BitmapDrawable)localObject).getBitmap();
-          if (localBitmap != null) {
-            InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "cache size=", Integer.valueOf(localBitmap.getRowBytes() * localBitmap.getHeight()), ",h=", Integer.valueOf(localBitmap.getHeight()), ",w=", Integer.valueOf(localBitmap.getWidth()), ",key=", paramT });
-          }
-        }
-        while ((this.jdField_a_of_type_Boolean) && (paramInt == 0))
-        {
-          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "save to waiting queue:", paramT });
-          paramImageView.setImageDrawable(paramDrawable);
-          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def o= ", paramImageView.getTag(2131369989), " and change to: ", paramT.toString(), " view hash:" + paramImageView.hashCode() });
-          paramImageView.setTag(2131369989, null);
-          this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, localObject);
-          return;
-          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "cache size=", Integer.valueOf(1024), ",key= ", paramT });
-        }
-        paramImageView.setImageDrawable((Drawable)localObject);
-        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI cache o= ", paramImageView.getTag(2131369989), " and change to: ", paramT.toString(), " view hash:" + paramImageView.hashCode() });
-        paramImageView.setTag(2131369989, paramT.toString());
+        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "task running no need to do again:", ((Task)localObject1).jdField_a_of_type_JavaLangObject });
         return;
       }
-      paramImageView.setImageDrawable(paramDrawable);
-      InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def 2 o= ", paramImageView.getTag(2131369989), " and change to: ", paramT.toString(), " view hash:" + paramImageView.hashCode() });
-      paramImageView.setTag(2131369989, null);
-      localObject = a(paramImageView, paramT);
-      if (localObject == null)
+      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a(paramImageView);
+      InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "cancel: ", ((Task)localObject1).jdField_a_of_type_JavaLangObject });
+      ((Task)localObject1).b();
+    }
+    localObject1 = (Drawable)a().get(paramT);
+    if (localObject1 != null)
+    {
+      InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "hit the cache:", paramT });
+      if ((localObject1 instanceof BitmapDrawable))
       {
-        InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "generateTask failed!!" });
+        localObject2 = ((BitmapDrawable)localObject1).getBitmap();
+        if (localObject2 != null) {
+          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "cache size=", Integer.valueOf(((Bitmap)localObject2).getRowBytes() * ((Bitmap)localObject2).getHeight()), ",h=", Integer.valueOf(((Bitmap)localObject2).getHeight()), ",w=", Integer.valueOf(((Bitmap)localObject2).getWidth()), ",key=", paramT });
+        }
+      }
+      else
+      {
+        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "cache size=", Integer.valueOf(1024), ",key= ", paramT });
+      }
+      if ((this.jdField_a_of_type_Boolean) && (paramInt == 0))
+      {
+        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "save to waiting queue:", paramT });
+        paramImageView.setImageDrawable(paramDrawable);
+        paramDrawable = paramImageView.getTag(2131369674);
+        paramT = paramT.toString();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(" view hash:");
+        ((StringBuilder)localObject2).append(paramImageView.hashCode());
+        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def o= ", paramDrawable, " and change to: ", paramT, ((StringBuilder)localObject2).toString() });
+        paramImageView.setTag(2131369674, null);
+        this.jdField_a_of_type_JavaUtilWeakHashMap.put(paramImageView, localObject1);
         return;
       }
-      ((Task)localObject).jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderImageLoader = this;
-      ((Task)localObject).b = paramDrawable;
-      ((Task)localObject).jdField_a_of_type_Int = paramInt;
-      ((Task)localObject).a(this);
-      ((Task)localObject).jdField_a_of_type_JavaLangObject = paramT;
-      InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "this need request hash:", Integer.valueOf(paramImageView.hashCode()) });
-      this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a(paramImageView, (Task)localObject);
-    } while (this.jdField_a_of_type_Boolean);
-    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a((Task)localObject);
-    a(1, (Task)localObject);
+      paramImageView.setImageDrawable((Drawable)localObject1);
+      paramDrawable = paramImageView.getTag(2131369674);
+      localObject1 = paramT.toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(" view hash:");
+      ((StringBuilder)localObject2).append(paramImageView.hashCode());
+      InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI cache o= ", paramDrawable, " and change to: ", localObject1, ((StringBuilder)localObject2).toString() });
+      paramImageView.setTag(2131369674, paramT.toString());
+      return;
+    }
+    paramImageView.setImageDrawable(paramDrawable);
+    localObject1 = paramImageView.getTag(2131369674);
+    Object localObject2 = paramT.toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(" view hash:");
+    localStringBuilder.append(paramImageView.hashCode());
+    InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI def 2 o= ", localObject1, " and change to: ", localObject2, localStringBuilder.toString() });
+    paramImageView.setTag(2131369674, null);
+    localObject1 = a(paramImageView, paramT);
+    if (localObject1 == null)
+    {
+      InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "generateTask failed!!" });
+      return;
+    }
+    ((Task)localObject1).jdField_a_of_type_ComTencentBizQqstoryViewAsyncImageLoaderImageLoader = this;
+    ((Task)localObject1).b = paramDrawable;
+    ((Task)localObject1).jdField_a_of_type_Int = paramInt;
+    ((Task)localObject1).a(this);
+    ((Task)localObject1).jdField_a_of_type_JavaLangObject = paramT;
+    InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "this need request hash:", Integer.valueOf(paramImageView.hashCode()) });
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a(paramImageView, (Task)localObject1);
+    if (this.jdField_a_of_type_Boolean) {
+      return;
+    }
+    this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a((Task)localObject1);
+    a(1, (Task)localObject1);
   }
   
   public void a(Task paramTask)
   {
-    this.b.sendMessage(this.b.obtainMessage(3, paramTask));
+    Handler localHandler = this.b;
+    localHandler.sendMessage(localHandler.obtainMessage(3, paramTask));
   }
   
   public void a(Task paramTask, String paramString)
   {
     InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_ERROR:,case:", paramTask.a(), paramString });
-    this.b.sendMessage(this.b.obtainMessage(2, paramTask));
+    paramString = this.b;
+    paramString.sendMessage(paramString.obtainMessage(2, paramTask));
   }
   
   public void b()
@@ -197,143 +227,154 @@ public abstract class ImageLoader<T>
     this.jdField_a_of_type_Boolean = false;
     InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "resume ui task" });
     this.b.removeMessages(4);
-    if (this.jdField_a_of_type_JavaUtilWeakHashMap.size() > 0) {
-      this.b.sendMessage(this.b.obtainMessage(4));
+    Object localObject;
+    if (this.jdField_a_of_type_JavaUtilWeakHashMap.size() > 0)
+    {
+      localObject = this.b;
+      ((Handler)localObject).sendMessage(((Handler)localObject).obtainMessage(4));
     }
     if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a() > 0)
     {
-      ListIterator localListIterator = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a();
+      localObject = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a();
       int i = 2;
-      if ((localListIterator.hasPrevious()) && (i > 0))
+      while ((((ListIterator)localObject).hasPrevious()) && (i > 0))
       {
-        Map.Entry localEntry = (Map.Entry)localListIterator.previous();
-        localListIterator.remove();
+        Map.Entry localEntry = (Map.Entry)((ListIterator)localObject).previous();
+        ((ListIterator)localObject).remove();
         if (((WeakReference)localEntry.getValue()).get() != null) {
           this.b.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, localEntry.getKey()));
-        }
-        for (;;)
-        {
-          i -= 1;
-          break;
+        } else {
           ((Task)localEntry.getKey()).b();
         }
+        i -= 1;
       }
     }
   }
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
-    {
-    }
-    Object localObject;
-    do
-    {
-      do
-      {
-        return true;
-        paramMessage = (Task)paramMessage.obj;
-        if (!paramMessage.a())
-        {
-          paramMessage.a();
-          return true;
-        }
-        InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131705757), paramMessage.a() });
-        paramMessage.c();
-        return true;
-        paramMessage = (Task)paramMessage.obj;
-        InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_COMPLETED:", paramMessage.a() });
-        if (!paramMessage.a())
-        {
-          InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_COMPLETED post ui:", paramMessage.a() });
-          paramMessage.a(this.jdField_a_of_type_JavaUtilWeakHashMap, this.jdField_a_of_type_Boolean);
-          localObject = (ImageView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-          if (localObject != null)
-          {
-            InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "completed the request,hash: ", Integer.valueOf(localObject.hashCode()) });
-            this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a((ImageView)localObject);
-          }
-          if (paramMessage.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
-            a().put(paramMessage.jdField_a_of_type_JavaLangObject, paramMessage.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
-          }
-        }
-        for (;;)
-        {
-          paramMessage.c();
-          if (this.jdField_a_of_type_Boolean) {
-            break;
-          }
-          this.b.sendMessage(this.b.obtainMessage(5));
-          return true;
-          InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_COMPLETED have been cancel:", paramMessage.a() });
-        }
-        paramMessage = (Task)paramMessage.obj;
-        InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_ERROR:", paramMessage.a() });
-        localObject = (ImageView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
-        if (localObject != null)
-        {
-          this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a((ImageView)localObject);
-          ((ImageView)localObject).setImageDrawable(paramMessage.b);
-          InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", ((ImageView)localObject).getTag(2131369989), " and change to: default", " view hash:" + localObject.hashCode() });
-          ((ImageView)localObject).setTag(2131369989, null);
-        }
-        paramMessage.c();
-        return true;
-        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "HANDLE_WAITING_UI_TASK" });
-      } while (this.jdField_a_of_type_Boolean);
-      paramMessage = this.jdField_a_of_type_JavaUtilWeakHashMap.entrySet().iterator();
-      i = 3;
-      for (;;)
-      {
-        if (paramMessage.hasNext())
-        {
-          localObject = (Map.Entry)paramMessage.next();
-          ImageView localImageView = (ImageView)((Map.Entry)localObject).getKey();
-          if (localImageView != null)
-          {
-            localImageView.setImageDrawable((Drawable)((Map.Entry)localObject).getValue());
-            InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localImageView.getTag(2131369989), " and change to: wait", " view hash:" + localImageView.hashCode() });
-            localImageView.setTag(2131369989, null);
-            paramMessage.remove();
-          }
-          i -= 1;
-          if (i > 0) {}
-        }
-        else
-        {
-          if (this.jdField_a_of_type_JavaUtilWeakHashMap.size() <= 0) {
-            break;
-          }
-          this.b.sendMessageDelayed(this.b.obtainMessage(4), 16L);
-          return true;
-        }
-      }
-    } while (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a() <= 0);
-    paramMessage = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a();
+    int j = paramMessage.what;
     int i = 2;
-    label640:
-    if ((paramMessage.hasPrevious()) && (i > 0))
-    {
-      localObject = (Map.Entry)paramMessage.previous();
-      paramMessage.remove();
-      if (((WeakReference)((Map.Entry)localObject).getValue()).get() == null) {
-        break label713;
+    if (j != 1) {
+      if (j != 2) {
+        if (j != 3) {
+          if (j != 4) {
+            if (j == 5) {}
+          }
+        }
       }
-      this.b.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, ((Map.Entry)localObject).getKey()));
     }
     for (;;)
     {
-      i -= 1;
-      break label640;
-      break;
-      label713:
-      ((Task)((Map.Entry)localObject).getKey()).b();
+      return true;
+      if (this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a() > 0)
+      {
+        paramMessage = this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a();
+        Object localObject1;
+        while ((paramMessage.hasPrevious()) && (i > 0))
+        {
+          localObject1 = (Map.Entry)paramMessage.previous();
+          paramMessage.remove();
+          if (((WeakReference)((Map.Entry)localObject1).getValue()).get() != null) {
+            this.b.sendMessage(this.jdField_a_of_type_AndroidOsHandler.obtainMessage(1, ((Map.Entry)localObject1).getKey()));
+          } else {
+            ((Task)((Map.Entry)localObject1).getKey()).b();
+          }
+          i -= 1;
+        }
+        continue;
+        InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "HANDLE_WAITING_UI_TASK" });
+        if (this.jdField_a_of_type_Boolean) {
+          return true;
+        }
+        paramMessage = this.jdField_a_of_type_JavaUtilWeakHashMap.entrySet().iterator();
+        i = 3;
+        Object localObject2;
+        StringBuilder localStringBuilder;
+        while (paramMessage.hasNext())
+        {
+          localObject2 = (Map.Entry)paramMessage.next();
+          localObject1 = (ImageView)((Map.Entry)localObject2).getKey();
+          if (localObject1 != null)
+          {
+            ((ImageView)localObject1).setImageDrawable((Drawable)((Map.Entry)localObject2).getValue());
+            localObject2 = ((ImageView)localObject1).getTag(2131369674);
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" view hash:");
+            localStringBuilder.append(localObject1.hashCode());
+            InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localObject2, " and change to: wait", localStringBuilder.toString() });
+            ((ImageView)localObject1).setTag(2131369674, null);
+            paramMessage.remove();
+          }
+          i -= 1;
+          if (i <= 0) {
+            break;
+          }
+        }
+        if (this.jdField_a_of_type_JavaUtilWeakHashMap.size() > 0)
+        {
+          paramMessage = this.b;
+          paramMessage.sendMessageDelayed(paramMessage.obtainMessage(4), 16L);
+          continue;
+          paramMessage = (Task)paramMessage.obj;
+          InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_COMPLETED:", paramMessage.a() });
+          if (!paramMessage.a())
+          {
+            InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_COMPLETED post ui:", paramMessage.a() });
+            paramMessage.a(this.jdField_a_of_type_JavaUtilWeakHashMap, this.jdField_a_of_type_Boolean);
+            localObject1 = (ImageView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (localObject1 != null)
+            {
+              InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "completed the request,hash: ", Integer.valueOf(localObject1.hashCode()) });
+              this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a((ImageView)localObject1);
+            }
+            if (paramMessage.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null) {
+              a().put(paramMessage.jdField_a_of_type_JavaLangObject, paramMessage.jdField_a_of_type_AndroidGraphicsDrawableDrawable);
+            }
+          }
+          else
+          {
+            InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_COMPLETED have been cancel:", paramMessage.a() });
+          }
+          paramMessage.c();
+          if (!this.jdField_a_of_type_Boolean)
+          {
+            paramMessage = this.b;
+            paramMessage.sendMessage(paramMessage.obtainMessage(5));
+            continue;
+            paramMessage = (Task)paramMessage.obj;
+            InfoPrinter.a("Q.qqstory.newImageLoader", new Object[] { "EXECUTE_TASK_ERROR:", paramMessage.a() });
+            localObject1 = (ImageView)paramMessage.jdField_a_of_type_JavaLangRefWeakReference.get();
+            if (localObject1 != null)
+            {
+              this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeQqstorylistCommonTaskQueue.a((ImageView)localObject1);
+              ((ImageView)localObject1).setImageDrawable(paramMessage.b);
+              localObject2 = ((ImageView)localObject1).getTag(2131369674);
+              localStringBuilder = new StringBuilder();
+              localStringBuilder.append(" view hash:");
+              localStringBuilder.append(localObject1.hashCode());
+              InfoPrinter.b("Q.qqstory.newImageLoader", new Object[] { "postToUI o= ", localObject2, " and change to: default", localStringBuilder.toString() });
+              ((ImageView)localObject1).setTag(2131369674, null);
+            }
+            paramMessage.c();
+            continue;
+            paramMessage = (Task)paramMessage.obj;
+            if (paramMessage.a()) {
+              break;
+            }
+            paramMessage.a();
+          }
+        }
+      }
     }
+    InfoPrinter.c("Q.qqstory.newImageLoader", new Object[] { HardCodeUtil.a(2131705818), paramMessage.a() });
+    paramMessage.c();
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.view.asyncImageLoader.ImageLoader
  * JD-Core Version:    0.7.0.1
  */

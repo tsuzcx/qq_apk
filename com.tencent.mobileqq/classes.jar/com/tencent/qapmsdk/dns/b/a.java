@@ -27,11 +27,12 @@ public class a
   public List<String> a()
   {
     ArrayList localArrayList = new ArrayList();
-    if ((this.b != null) && (this.b.size() > 0))
+    Object localObject = this.b;
+    if ((localObject != null) && (((CopyOnWriteArrayList)localObject).size() > 0))
     {
-      Iterator localIterator = this.b.iterator();
-      while (localIterator.hasNext()) {
-        localArrayList.add(((c)localIterator.next()).a);
+      localObject = this.b.iterator();
+      while (((Iterator)localObject).hasNext()) {
+        localArrayList.add(((c)((Iterator)localObject).next()).a);
       }
     }
     return localArrayList;
@@ -39,12 +40,30 @@ public class a
   
   public String toString()
   {
-    return "DnsCacheObj{host='" + this.a + '\'' + ", ipList=" + this.b + ", ttl=" + this.c + ", updateTime=" + this.d + ", wifi=" + this.e + ", ssid='" + this.f + '\'' + ", from=" + this.g + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("DnsCacheObj{host='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", ipList=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", ttl=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", updateTime=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", wifi=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", ssid='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", from=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.dns.b.a
  * JD-Core Version:    0.7.0.1
  */

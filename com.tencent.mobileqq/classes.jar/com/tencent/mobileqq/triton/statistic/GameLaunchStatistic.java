@@ -66,18 +66,18 @@ public final class GameLaunchStatistic
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof GameLaunchStatistic))
       {
         paramObject = (GameLaunchStatistic)paramObject;
-        if ((this.success != paramObject.success) || (!Intrinsics.areEqual(this.exception, paramObject.exception)) || (this.launchTimesMs != paramObject.launchTimesMs) || (!Intrinsics.areEqual(this.gameScriptLoadStatics, paramObject.gameScriptLoadStatics)) || (!Intrinsics.areEqual(this.engineInitStatistic, paramObject.engineInitStatistic))) {}
+        if ((this.success == paramObject.success) && (Intrinsics.areEqual(this.exception, paramObject.exception)) && (this.launchTimesMs == paramObject.launchTimesMs) && (Intrinsics.areEqual(this.gameScriptLoadStatics, paramObject.gameScriptLoadStatics)) && (Intrinsics.areEqual(this.engineInitStatistic, paramObject.engineInitStatistic))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   @NotNull
@@ -116,12 +116,24 @@ public final class GameLaunchStatistic
   @NotNull
   public String toString()
   {
-    return "GameLaunchStatistic(success=" + this.success + ", exception=" + this.exception + ", launchTimesMs=" + this.launchTimesMs + ", gameScriptLoadStatics=" + this.gameScriptLoadStatics + ", engineInitStatistic=" + this.engineInitStatistic + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GameLaunchStatistic(success=");
+    localStringBuilder.append(this.success);
+    localStringBuilder.append(", exception=");
+    localStringBuilder.append(this.exception);
+    localStringBuilder.append(", launchTimesMs=");
+    localStringBuilder.append(this.launchTimesMs);
+    localStringBuilder.append(", gameScriptLoadStatics=");
+    localStringBuilder.append(this.gameScriptLoadStatics);
+    localStringBuilder.append(", engineInitStatistic=");
+    localStringBuilder.append(this.engineInitStatistic);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.statistic.GameLaunchStatistic
  * JD-Core Version:    0.7.0.1
  */

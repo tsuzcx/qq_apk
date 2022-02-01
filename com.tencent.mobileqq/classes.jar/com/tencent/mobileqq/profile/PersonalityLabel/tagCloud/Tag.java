@@ -81,275 +81,292 @@ public class Tag
   
   private int b(int paramInt)
   {
-    Object localObject;
     boolean bool;
-    int i;
     if (QLog.isColorLevel())
     {
-      localObject = new StringBuilder().append("onMeasureHorizontal text:").append(this.jdField_a_of_type_JavaLangCharSequence).append(" hasImg:");
-      if (this.jdField_e_of_type_Int == 2)
-      {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onMeasureHorizontal text:");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangCharSequence);
+      ((StringBuilder)localObject1).append(" hasImg:");
+      if (this.jdField_e_of_type_Int == 2) {
         bool = true;
-        QLog.i("Tag", 2, bool + " ems:" + this.jdField_c_of_type_Int);
+      } else {
+        bool = false;
+      }
+      ((StringBuilder)localObject1).append(bool);
+      ((StringBuilder)localObject1).append(" ems:");
+      ((StringBuilder)localObject1).append(this.jdField_c_of_type_Int);
+      QLog.i("Tag", 2, ((StringBuilder)localObject1).toString());
+    }
+    int i;
+    if (this.jdField_e_of_type_Int == 2) {
+      i = this.jdField_c_of_type_Int;
+    } else {
+      i = 0;
+    }
+    if (TagUtil.a()) {
+      j = 0;
+    } else {
+      j = i;
+    }
+    int n = f;
+    int m = View.MeasureSpec.getMode(paramInt);
+    int i1 = View.MeasureSpec.getSize(paramInt);
+    Object localObject1 = jdField_b_of_type_AndroidTextBoringLayout$Metrics;
+    localObject1 = BoringLayout.isBoring(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, null);
+    if (localObject1 != null) {
+      this.jdField_a_of_type_AndroidTextBoringLayout$Metrics = ((BoringLayout.Metrics)localObject1);
+    }
+    if ((localObject1 != null) && (localObject1 != jdField_b_of_type_AndroidTextBoringLayout$Metrics)) {
+      i = ((BoringLayout.Metrics)localObject1).width;
+    } else {
+      i = (int)Math.ceil(Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint));
+    }
+    int k = i;
+    if (j > 0) {
+      k = Math.min(i, a() * j);
+    }
+    if (m != -2147483648)
+    {
+      i = k;
+      if (m == 1073741824) {}
+    }
+    for (;;)
+    {
+      break;
+      i = this.jdField_e_of_type_Int;
+      if (i == 2) {
+        i = Math.min(i1 - n * 3, k);
+      } else if (i == 1) {
+        i = Math.min(i1 - n * 2, k);
+      } else {
+        i = Math.min(i1, k);
+      }
+    }
+    m = Math.max(i, 0);
+    if (m <= 0) {
+      return 0;
+    }
+    this.jdField_a_of_type_AndroidTextLayout = a(m, (BoringLayout.Metrics)localObject1, m, this.jdField_a_of_type_JavaLangCharSequence, 0.92F);
+    if ((j <= 0) && (this.jdField_a_of_type_AndroidTextLayout.getLineCount() > 1))
+    {
+      this.jdField_a_of_type_Float *= 0.8F;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
+      if (QLog.isColorLevel()) {
+        QLog.i("Tag", 2, "onMeasureHorizontal maxEms=0 another round");
+      }
+      return b(paramInt);
+    }
+    k = j;
+    Object localObject2;
+    if (j == 0)
+    {
+      k = j;
+      if (this.jdField_a_of_type_AndroidTextLayout.getLineCount() > 1)
+      {
+        if (m % a() > 0) {
+          bool = true;
+        } else {
+          bool = false;
+        }
+        k = m / a();
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("onMeasureHorizontal baseEms:");
+          ((StringBuilder)localObject2).append(k);
+          ((StringBuilder)localObject2).append(" hasExtra:");
+          ((StringBuilder)localObject2).append(bool);
+          QLog.i("Tag", 2, ((StringBuilder)localObject2).toString());
+        }
+        j = k;
+        if (bool) {
+          j = k + 1;
+        }
+        k = j;
+      }
+    }
+    while ((k > 1) && (this.jdField_a_of_type_AndroidTextLayout.getLineCount() > 1))
+    {
+      k -= 1;
+      if (QLog.isDebugVersion())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("onMeasureHorizontal ems--");
+        ((StringBuilder)localObject2).append(k);
+        QLog.i("Tag", 4, ((StringBuilder)localObject2).toString());
+      }
+      j = k * a();
+      if (j > i) {
+        break;
+      }
+      localObject2 = a(j, (BoringLayout.Metrics)localObject1, j, this.jdField_a_of_type_JavaLangCharSequence, 0.92F);
+      if (((Layout)localObject2).getLineCount() != this.jdField_a_of_type_AndroidTextLayout.getLineCount()) {
+        break;
+      }
+      this.jdField_a_of_type_AndroidTextLayout = ((Layout)localObject2);
+    }
+    if (this.jdField_a_of_type_AndroidTextLayout.getLineCount() >= 1)
+    {
+      j = a(this.jdField_a_of_type_AndroidTextLayout);
+      i = j;
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onMeasureHorizontal want:");
+        ((StringBuilder)localObject1).append(m);
+        ((StringBuilder)localObject1).append(" actual:");
+        ((StringBuilder)localObject1).append(j);
+        QLog.i("Tag", 2, ((StringBuilder)localObject1).toString());
+        i = j;
       }
     }
     else
     {
-      if (this.jdField_e_of_type_Int != 2) {
-        break label243;
-      }
-      i = this.jdField_c_of_type_Int;
-      label84:
-      if (!TagUtil.a()) {
-        break label865;
-      }
+      i = m;
     }
-    label169:
-    label461:
-    label464:
-    label859:
-    label865:
-    for (int j = 0;; j = i)
+    k = this.jdField_a_of_type_AndroidTextLayout.getHeight() - this.d;
+    m = this.jdField_e_of_type_Int;
+    if (m == 1) {}
+    for (int j = n * 2;; j = n * 3 + k)
     {
-      int n = f;
-      int m = View.MeasureSpec.getMode(paramInt);
-      int i1 = View.MeasureSpec.getSize(paramInt);
-      localObject = jdField_b_of_type_AndroidTextBoringLayout$Metrics;
-      localObject = BoringLayout.isBoring(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, null);
-      if (localObject != null) {
-        this.jdField_a_of_type_AndroidTextBoringLayout$Metrics = ((BoringLayout.Metrics)localObject);
-      }
-      int k;
-      if ((localObject == null) || (localObject == jdField_b_of_type_AndroidTextBoringLayout$Metrics))
-      {
-        i = (int)Math.ceil(Layout.getDesiredWidth(this.jdField_a_of_type_JavaLangCharSequence, this.jdField_a_of_type_AndroidTextTextPaint));
-        k = i;
-        if (j > 0) {
-          k = Math.min(i, a() * j);
-        }
-        if ((m != -2147483648) && (m != 1073741824)) {
-          break label859;
-        }
-        if (this.jdField_e_of_type_Int != 2) {
-          break label257;
-        }
-        i = Math.min(i1 - n * 3, k);
-      }
-      for (;;)
-      {
-        m = Math.max(i, 0);
-        if (m <= 0)
-        {
-          return 0;
-          bool = false;
-          break;
-          label243:
-          i = 0;
-          break label84;
-          i = ((BoringLayout.Metrics)localObject).width;
-          break label169;
-          if (this.jdField_e_of_type_Int == 1)
-          {
-            i = Math.min(i1 - n * 2, k);
-            continue;
-          }
-          i = Math.min(i1, k);
-          continue;
-        }
-        this.jdField_a_of_type_AndroidTextLayout = a(m, (BoringLayout.Metrics)localObject, m, this.jdField_a_of_type_JavaLangCharSequence, 0.92F);
-        if ((j <= 0) && (this.jdField_a_of_type_AndroidTextLayout.getLineCount() > 1))
-        {
-          this.jdField_a_of_type_Float *= 0.8F;
-          this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
-          if (QLog.isColorLevel()) {
-            QLog.i("Tag", 2, "onMeasureHorizontal maxEms=0 another round");
-          }
-          return b(paramInt);
-        }
-        k = j;
-        if (j == 0)
-        {
-          k = j;
-          if (this.jdField_a_of_type_AndroidTextLayout.getLineCount() > 1)
-          {
-            if (m % a() <= 0) {
-              break label692;
-            }
-            bool = true;
-            j = m / a();
-            if (QLog.isColorLevel()) {
-              QLog.i("Tag", 2, "onMeasureHorizontal baseEms:" + j + " hasExtra:" + bool);
-            }
-            if (!bool) {
-              break label698;
-            }
-            j += 1;
-            k = j;
-          }
-        }
-        if ((k > 1) && (this.jdField_a_of_type_AndroidTextLayout.getLineCount() > 1))
-        {
-          k -= 1;
-          if (QLog.isDebugVersion()) {
-            QLog.i("Tag", 4, "onMeasureHorizontal ems--" + k);
-          }
-          j = k * a();
-          if (j <= i) {}
-        }
-        else
-        {
-          i = m;
-          if (this.jdField_a_of_type_AndroidTextLayout.getLineCount() >= 1)
-          {
-            i = a(this.jdField_a_of_type_AndroidTextLayout);
-            if (QLog.isColorLevel()) {
-              QLog.i("Tag", 2, "onMeasureHorizontal want:" + m + " actual:" + i);
-            }
-          }
-          k = this.jdField_a_of_type_AndroidTextLayout.getHeight() - this.d;
-          if (this.jdField_e_of_type_Int != 1) {
-            break label741;
-          }
-          j = i + n * 2;
-        }
-        for (;;)
-        {
-          if (j <= i1) {
-            break label764;
-          }
-          this.jdField_a_of_type_Float *= 0.8F;
-          this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
-          if (QLog.isColorLevel()) {
-            QLog.i("Tag", 2, "onMeasureHorizontal width oversize.another round " + this.jdField_a_of_type_JavaLangCharSequence);
-          }
-          return b(paramInt);
-          bool = false;
-          break;
-          break label461;
-          Layout localLayout = a(j, (BoringLayout.Metrics)localObject, j, this.jdField_a_of_type_JavaLangCharSequence, 0.92F);
-          if (localLayout.getLineCount() != this.jdField_a_of_type_AndroidTextLayout.getLineCount()) {
-            break label532;
-          }
-          this.jdField_a_of_type_AndroidTextLayout = localLayout;
-          break label464;
-          label741:
-          j = i;
-          if (this.jdField_e_of_type_Int == 2) {
-            j = i + (n * 3 + k);
-          }
-        }
-        label764:
-        if (this.jdField_e_of_type_Int > 0) {
-          this.jdField_b_of_type_AndroidGraphicsPoint.set(j, k + n * 2);
-        }
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("Tag", 2, "onMeasureHorizontal w:" + this.jdField_b_of_type_AndroidGraphicsPoint.x + " h:" + this.jdField_b_of_type_AndroidGraphicsPoint.y);
-          }
-          return this.jdField_b_of_type_AndroidGraphicsPoint.y;
-          this.jdField_b_of_type_AndroidGraphicsPoint.set(j, k);
-        }
-        i = k;
+      j = i + j;
+      break;
+      j = i;
+      if (m != 2) {
+        break;
       }
     }
+    if (j > i1)
+    {
+      this.jdField_a_of_type_Float *= 0.8F;
+      this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("onMeasureHorizontal width oversize.another round ");
+        ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangCharSequence);
+        QLog.i("Tag", 2, ((StringBuilder)localObject1).toString());
+      }
+      return b(paramInt);
+    }
+    if (this.jdField_e_of_type_Int > 0) {
+      this.jdField_b_of_type_AndroidGraphicsPoint.set(j, k + n * 2);
+    } else {
+      this.jdField_b_of_type_AndroidGraphicsPoint.set(j, k);
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("onMeasureHorizontal w:");
+      ((StringBuilder)localObject1).append(this.jdField_b_of_type_AndroidGraphicsPoint.x);
+      ((StringBuilder)localObject1).append(" h:");
+      ((StringBuilder)localObject1).append(this.jdField_b_of_type_AndroidGraphicsPoint.y);
+      QLog.i("Tag", 2, ((StringBuilder)localObject1).toString());
+    }
+    return this.jdField_b_of_type_AndroidGraphicsPoint.y;
   }
   
   private int c(int paramInt)
   {
-    int j = 0;
-    if (QLog.isColorLevel()) {
-      QLog.i("Tag", 2, "onMeasureVertical text:" + this.jdField_a_of_type_JavaLangCharSequence);
-    }
-    int i;
-    int m;
-    int n;
-    int i1;
-    label79:
-    int k;
-    if (this.jdField_e_of_type_Int == 2)
+    Object localObject;
+    if (QLog.isColorLevel())
     {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onMeasureVertical text:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_JavaLangCharSequence);
+      QLog.i("Tag", 2, ((StringBuilder)localObject).toString());
+    }
+    int i = this.jdField_e_of_type_Int;
+    int j = 0;
+    if (i == 2) {
       i = this.jdField_c_of_type_Int;
-      m = f;
-      n = View.MeasureSpec.getMode(paramInt);
-      i1 = View.MeasureSpec.getSize(paramInt);
-      if (this.jdField_a_of_type_JavaUtilList == null)
-      {
-        if (i > 0) {
-          break label317;
+    } else {
+      i = 0;
+    }
+    int m = f;
+    int n = View.MeasureSpec.getMode(paramInt);
+    int i1 = View.MeasureSpec.getSize(paramInt);
+    if (this.jdField_a_of_type_JavaUtilList == null)
+    {
+      paramInt = 1;
+      if (i > 0) {
+        if (this.jdField_a_of_type_JavaLangCharSequence.length() % i > 0) {
+          paramInt = 1 + this.jdField_a_of_type_JavaLangCharSequence.length() / i;
+        } else {
+          paramInt = this.jdField_a_of_type_JavaLangCharSequence.length() / i;
         }
-        paramInt = 1;
-        this.jdField_a_of_type_JavaUtilList = new ArrayList(paramInt);
       }
-      if ((i <= 0) || (this.jdField_a_of_type_JavaLangCharSequence.length() <= i)) {
-        break label393;
-      }
+      this.jdField_a_of_type_JavaUtilList = new ArrayList(paramInt);
+    }
+    if ((i > 0) && (this.jdField_a_of_type_JavaLangCharSequence.length() > i))
+    {
       k = this.jdField_a_of_type_JavaLangCharSequence.length() / i;
       paramInt = k;
       if (this.jdField_a_of_type_JavaLangCharSequence.length() % i > 0) {
         paramInt = k + 1;
       }
-      k = this.jdField_a_of_type_JavaLangCharSequence.length() / paramInt;
-      i = Math.min(i, this.jdField_a_of_type_JavaLangCharSequence.length() % paramInt + k);
+      k = Math.min(i, this.jdField_a_of_type_JavaLangCharSequence.length() / paramInt + this.jdField_a_of_type_JavaLangCharSequence.length() % paramInt);
       paramInt = 0;
-      label177:
-      if (paramInt < this.jdField_a_of_type_JavaLangCharSequence.length())
+    }
+    while (paramInt < this.jdField_a_of_type_JavaLangCharSequence.length())
+    {
+      i = paramInt + k;
+      if (i >= this.jdField_a_of_type_JavaLangCharSequence.length())
       {
-        if (paramInt + i < this.jdField_a_of_type_JavaLangCharSequence.length()) {
-          break label363;
-        }
-        this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramInt, this.jdField_a_of_type_JavaLangCharSequence.length()));
+        localObject = this.jdField_a_of_type_JavaUtilList;
+        CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+        ((List)localObject).add(localCharSequence.subSequence(paramInt, localCharSequence.length()));
+      }
+      else
+      {
+        this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramInt, i));
+        paramInt = i;
+        continue;
+        this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangCharSequence);
       }
     }
-    for (;;)
+    paramInt = 2147483647;
+    if ((n == 1073741824) || (n == -2147483648)) {
+      paramInt = i1 - m * 2;
+    }
+    int k = d(paramInt);
+    i = 0;
+    paramInt = j;
+    while (paramInt < this.jdField_b_of_type_JavaUtilList.size())
     {
-      paramInt = 2147483647;
-      if ((n == 1073741824) || (n == -2147483648)) {
-        paramInt = i1 - m * 2;
-      }
-      k = d(paramInt);
-      i = 0;
-      paramInt = j;
-      while (paramInt < this.jdField_b_of_type_JavaUtilList.size())
-      {
-        i = Math.max(((Layout)this.jdField_b_of_type_JavaUtilList.get(paramInt)).getHeight(), i);
-        paramInt += 1;
-      }
-      i = 0;
-      break;
-      label317:
-      if (this.jdField_a_of_type_JavaLangCharSequence.length() % i > 0)
-      {
-        paramInt = this.jdField_a_of_type_JavaLangCharSequence.length() / i + 1;
-        break label79;
-      }
-      paramInt = this.jdField_a_of_type_JavaLangCharSequence.length() / i;
-      break label79;
-      label363:
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangCharSequence.subSequence(paramInt, paramInt + i));
-      paramInt += i;
-      break label177;
-      label393:
-      this.jdField_a_of_type_JavaUtilList.add(this.jdField_a_of_type_JavaLangCharSequence);
+      i = Math.max(((Layout)this.jdField_b_of_type_JavaUtilList.get(paramInt)).getHeight(), i);
+      paramInt += 1;
     }
     paramInt = i - this.d;
-    if (this.jdField_e_of_type_Int > 0) {
-      if (this.jdField_e_of_type_Int == 2)
-      {
-        paramInt = paramInt + k + m * 3;
-        this.jdField_b_of_type_AndroidGraphicsPoint.set(m * 2 + k, paramInt);
-      }
-    }
-    for (;;)
+    i = this.jdField_e_of_type_Int;
+    if (i > 0)
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("Tag", 2, "onMeasureVertical w:" + this.jdField_b_of_type_AndroidGraphicsPoint.x + " h:" + this.jdField_b_of_type_AndroidGraphicsPoint.y);
+      if (i == 2)
+      {
+        paramInt += k;
+        i = m * 3;
       }
-      return this.jdField_b_of_type_AndroidGraphicsPoint.y;
-      paramInt += m * 2;
-      break;
+      else
+      {
+        i = m * 2;
+      }
+      this.jdField_b_of_type_AndroidGraphicsPoint.set(k + m * 2, paramInt + i);
+    }
+    else
+    {
       this.jdField_b_of_type_AndroidGraphicsPoint.set(k, paramInt);
     }
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onMeasureVertical w:");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidGraphicsPoint.x);
+      ((StringBuilder)localObject).append(" h:");
+      ((StringBuilder)localObject).append(this.jdField_b_of_type_AndroidGraphicsPoint.y);
+      QLog.i("Tag", 2, ((StringBuilder)localObject).toString());
+    }
+    return this.jdField_b_of_type_AndroidGraphicsPoint.y;
   }
   
   private int d(int paramInt)
@@ -359,34 +376,40 @@ public class Tag
     if (this.jdField_b_of_type_JavaUtilList == null) {
       this.jdField_b_of_type_JavaUtilList = new ArrayList(this.jdField_a_of_type_JavaUtilList.size());
     }
+    int m = 0;
     int j = 0;
     int i = 0;
+    int k;
     Object localObject;
-    while (j < this.jdField_a_of_type_JavaUtilList.size())
+    for (;;)
     {
+      k = m;
+      if (j >= this.jdField_a_of_type_JavaUtilList.size()) {
+        break;
+      }
       localObject = a((CharSequence)this.jdField_a_of_type_JavaUtilList.get(j));
-      int k = (int)Math.ceil(Layout.getDesiredWidth((CharSequence)localObject, this.jdField_a_of_type_AndroidTextTextPaint));
+      k = (int)Math.ceil(Layout.getDesiredWidth((CharSequence)localObject, this.jdField_a_of_type_AndroidTextTextPaint));
       i += k;
       if (((i >= paramInt) && (j < this.jdField_a_of_type_JavaUtilList.size() - 1)) || ((j == this.jdField_a_of_type_JavaUtilList.size() - 1) && (i > paramInt)))
       {
         this.jdField_a_of_type_Float *= 0.5F;
-        if (this.jdField_a_of_type_Float < 1.0F) {
+        float f1 = this.jdField_a_of_type_Float;
+        if (f1 < 1.0F) {
           return paramInt;
         }
-        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(this.jdField_a_of_type_Float);
+        this.jdField_a_of_type_AndroidTextTextPaint.setTextSize(f1);
         return d(paramInt);
       }
       localArrayList1.add(Integer.valueOf(k));
       localArrayList2.add(localObject);
       j += 1;
     }
-    paramInt = 0;
-    while (paramInt < localArrayList2.size())
+    while (k < localArrayList2.size())
     {
-      localObject = (CharSequence)localArrayList2.get(paramInt);
-      localObject = a(((Integer)localArrayList1.get(paramInt)).intValue(), null, ((Integer)localArrayList1.get(paramInt)).intValue(), (CharSequence)localObject, 0.87F);
+      localObject = (CharSequence)localArrayList2.get(k);
+      localObject = a(((Integer)localArrayList1.get(k)).intValue(), null, ((Integer)localArrayList1.get(k)).intValue(), (CharSequence)localObject, 0.87F);
       this.jdField_b_of_type_JavaUtilList.add(localObject);
-      paramInt += 1;
+      k += 1;
     }
     return i;
   }
@@ -420,27 +443,25 @@ public class Tag
     if ((paramCharSequence instanceof Spannable)) {
       return new DynamicLayout(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, false);
     }
+    BoringLayout.Metrics localMetrics = paramMetrics;
     if (paramMetrics == jdField_b_of_type_AndroidTextBoringLayout$Metrics)
     {
-      BoringLayout.Metrics localMetrics = BoringLayout.isBoring(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_AndroidTextBoringLayout$Metrics);
-      paramMetrics = localMetrics;
-      if (localMetrics != null)
-      {
-        this.jdField_a_of_type_AndroidTextBoringLayout$Metrics = localMetrics;
-        paramMetrics = localMetrics;
-      }
-    }
-    for (;;)
-    {
+      paramMetrics = BoringLayout.isBoring(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, this.jdField_a_of_type_AndroidTextBoringLayout$Metrics);
+      localMetrics = paramMetrics;
       if (paramMetrics != null)
       {
-        if (paramMetrics.width <= paramInt1) {
-          return BoringLayout.make(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, paramMetrics, false);
-        }
-        return new StaticLayout(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, false);
+        this.jdField_a_of_type_AndroidTextBoringLayout$Metrics = paramMetrics;
+        localMetrics = paramMetrics;
+      }
+    }
+    if (localMetrics != null)
+    {
+      if (localMetrics.width <= paramInt1) {
+        return BoringLayout.make(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, localMetrics, false);
       }
       return new StaticLayout(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, false);
     }
+    return new StaticLayout(paramCharSequence, this.jdField_a_of_type_AndroidTextTextPaint, paramInt1, localAlignment, paramFloat, 0.0F, false);
   }
   
   public void a()
@@ -448,24 +469,35 @@ public class Tag
     this.jdField_a_of_type_AndroidGraphicsPoint.set(-1, -1);
     this.jdField_b_of_type_AndroidGraphicsPoint.set(0, 0);
     this.jdField_a_of_type_AndroidTextLayout = null;
-    if (this.jdField_b_of_type_JavaUtilList != null) {
-      this.jdField_b_of_type_JavaUtilList.clear();
+    List localList = this.jdField_b_of_type_JavaUtilList;
+    if (localList != null) {
+      localList.clear();
     }
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      this.jdField_a_of_type_JavaUtilList.clear();
+    localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      localList.clear();
     }
   }
   
   public boolean a()
   {
-    if (this.jdField_b_of_type_Boolean) {}
-    while ((this.jdField_b_of_type_JavaUtilList != null) && (this.jdField_b_of_type_JavaUtilList.size() > 0))
+    if (this.jdField_b_of_type_Boolean)
     {
-      if ((this.jdField_a_of_type_AndroidTextLayout == null) || (this.jdField_a_of_type_AndroidGraphicsPoint.x < 0) || (this.jdField_a_of_type_AndroidGraphicsPoint.y < 0) || (this.jdField_b_of_type_AndroidGraphicsPoint.x <= 0) || (this.jdField_b_of_type_AndroidGraphicsPoint.y <= 0)) {
-        break;
+      if (this.jdField_a_of_type_AndroidTextLayout == null) {
+        break label77;
       }
+    }
+    else
+    {
+      List localList = this.jdField_b_of_type_JavaUtilList;
+      if ((localList == null) || (localList.size() <= 0)) {
+        break label77;
+      }
+    }
+    if ((this.jdField_a_of_type_AndroidGraphicsPoint.x >= 0) && (this.jdField_a_of_type_AndroidGraphicsPoint.y >= 0) && (this.jdField_b_of_type_AndroidGraphicsPoint.x > 0) && (this.jdField_b_of_type_AndroidGraphicsPoint.y > 0)) {
       return true;
     }
+    label77:
     return false;
   }
   
@@ -474,18 +506,22 @@ public class Tag
     int j = this.jdField_b_of_type_AndroidGraphicsPoint.x;
     int i = this.jdField_b_of_type_AndroidGraphicsPoint.y;
     int k = f;
-    if (this.jdField_e_of_type_Int == 2) {
+    int m = this.jdField_e_of_type_Int;
+    if (m == 2)
+    {
       if (this.jdField_b_of_type_Boolean) {
-        i = j - (i - k * 2 + k * 3);
+        return j - (i - k * 2 + k * 3);
       }
     }
-    do
+    else
     {
-      return i;
-      return j - k * 2;
       i = j;
-    } while (this.jdField_e_of_type_Int != 1);
-    return j - k * 2;
+      if (m != 1) {
+        return i;
+      }
+    }
+    i = j - k * 2;
+    return i;
   }
   
   public int c()
@@ -493,33 +529,45 @@ public class Tag
     int i = this.jdField_b_of_type_AndroidGraphicsPoint.x;
     int j = this.jdField_b_of_type_AndroidGraphicsPoint.y;
     int k = f;
-    if (this.jdField_e_of_type_Int == 2) {
-      if (this.jdField_b_of_type_Boolean) {
-        i = j - k * 2;
+    int m = this.jdField_e_of_type_Int;
+    if (m == 2)
+    {
+      if (!this.jdField_b_of_type_Boolean) {
+        return j - (i - k * 2 + k * 3);
       }
     }
-    do
+    else
     {
-      return i;
-      return j - (i - k * 2 + k * 3);
       i = j;
-    } while (this.jdField_e_of_type_Int != 1);
-    return j - k * 2;
+      if (m != 1) {
+        return i;
+      }
+    }
+    i = j - k * 2;
+    return i;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append("texts:").append(this.jdField_a_of_type_JavaLangCharSequence).append(" w:").append(this.jdField_b_of_type_AndroidGraphicsPoint.x).append(" h:").append(this.jdField_b_of_type_AndroidGraphicsPoint.y);
-    localStringBuilder.append(" textSize:").append(this.jdField_a_of_type_Float);
-    localStringBuilder.append(" cord.x:").append(this.jdField_a_of_type_AndroidGraphicsPoint.x);
-    localStringBuilder.append(" cord.y:").append(this.jdField_a_of_type_AndroidGraphicsPoint.y);
+    localStringBuilder.append("texts:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangCharSequence);
+    localStringBuilder.append(" w:");
+    localStringBuilder.append(this.jdField_b_of_type_AndroidGraphicsPoint.x);
+    localStringBuilder.append(" h:");
+    localStringBuilder.append(this.jdField_b_of_type_AndroidGraphicsPoint.y);
+    localStringBuilder.append(" textSize:");
+    localStringBuilder.append(this.jdField_a_of_type_Float);
+    localStringBuilder.append(" cord.x:");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPoint.x);
+    localStringBuilder.append(" cord.y:");
+    localStringBuilder.append(this.jdField_a_of_type_AndroidGraphicsPoint.y);
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profile.PersonalityLabel.tagCloud.Tag
  * JD-Core Version:    0.7.0.1
  */

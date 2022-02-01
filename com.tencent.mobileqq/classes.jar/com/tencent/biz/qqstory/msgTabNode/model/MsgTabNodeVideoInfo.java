@@ -46,15 +46,18 @@ public class MsgTabNodeVideoInfo
   
   public static MsgTabNodeVideoInfo a(List<MsgTabNodeVideoInfo> paramList, long paramLong)
   {
-    if ((paramList == null) || (paramList.isEmpty())) {
-      return null;
-    }
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if (paramList != null)
     {
-      MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)paramList.next();
-      if (paramLong == localMsgTabNodeVideoInfo.jdField_a_of_type_Long) {
-        return localMsgTabNodeVideoInfo;
+      if (paramList.isEmpty()) {
+        return null;
+      }
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MsgTabNodeVideoInfo localMsgTabNodeVideoInfo = (MsgTabNodeVideoInfo)paramList.next();
+        if (paramLong == localMsgTabNodeVideoInfo.jdField_a_of_type_Long) {
+          return localMsgTabNodeVideoInfo;
+        }
       }
     }
     return null;
@@ -97,57 +100,54 @@ public class MsgTabNodeVideoInfo
   {
     this.jdField_a_of_type_Long = paramMsgTabNodeVideoInfo.uint64_video_index.get();
     boolean bool;
-    if (paramMsgTabNodeVideoInfo.uint32_did_read.get() != 0)
-    {
+    if (paramMsgTabNodeVideoInfo.uint32_did_read.get() != 0) {
       bool = true;
-      this.jdField_a_of_type_Boolean = bool;
-      if (paramMsgTabNodeVideoInfo.vid.has()) {
-        this.jdField_a_of_type_JavaLangString = paramMsgTabNodeVideoInfo.vid.get().toStringUtf8();
-      }
-      if (!paramMsgTabNodeVideoInfo.feed_id.has()) {
-        break label287;
-      }
+    } else {
+      bool = false;
+    }
+    this.jdField_a_of_type_Boolean = bool;
+    if (paramMsgTabNodeVideoInfo.vid.has()) {
+      this.jdField_a_of_type_JavaLangString = paramMsgTabNodeVideoInfo.vid.get().toStringUtf8();
+    }
+    if (paramMsgTabNodeVideoInfo.feed_id.has())
+    {
       this.jdField_b_of_type_JavaLangString = paramMsgTabNodeVideoInfo.feed_id.get().toStringUtf8();
       if (!TextUtils.equals(this.jdField_b_of_type_JavaLangString, (CharSequence)paramArrayDeque.peek())) {
         paramArrayDeque.push(this.jdField_b_of_type_JavaLangString);
       }
     }
-    for (;;)
+    else
     {
-      if (paramMsgTabNodeVideoInfo.video_info.has())
-      {
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = new StoryVideoItem();
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.convertFrom(paramMsgTabNodeVideoInfo.video_info);
-      }
-      if (paramMsgTabNodeVideoInfo.recommand_id.has()) {
-        this.jdField_b_of_type_Long = paramMsgTabNodeVideoInfo.recommand_id.get();
-      }
-      if (paramMsgTabNodeVideoInfo.show_bottom.has()) {
-        this.jdField_a_of_type_Int = paramMsgTabNodeVideoInfo.show_bottom.get();
-      }
-      if (paramMsgTabNodeVideoInfo.bottom_wording.has()) {
-        this.c = paramMsgTabNodeVideoInfo.bottom_wording.get();
-      }
-      if (paramMsgTabNodeVideoInfo.bottom_link.has()) {
-        this.d = paramMsgTabNodeVideoInfo.bottom_link.get();
-      }
-      if (paramMsgTabNodeVideoInfo.show_text.has()) {
-        this.jdField_b_of_type_Int = paramMsgTabNodeVideoInfo.show_text.get();
-      }
-      if (paramMsgTabNodeVideoInfo.text_wording.has()) {
-        this.e = paramMsgTabNodeVideoInfo.text_wording.get();
-      }
-      if (paramMsgTabNodeVideoInfo.text_link.has()) {
-        this.f = paramMsgTabNodeVideoInfo.text_link.get();
-      }
-      return;
-      bool = false;
-      break;
-      label287:
       paramArrayDeque = (String)paramArrayDeque.peek();
       if (paramArrayDeque != null) {
         this.jdField_b_of_type_JavaLangString = paramArrayDeque;
       }
+    }
+    if (paramMsgTabNodeVideoInfo.video_info.has())
+    {
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = new StoryVideoItem();
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem.convertFrom(paramMsgTabNodeVideoInfo.video_info);
+    }
+    if (paramMsgTabNodeVideoInfo.recommand_id.has()) {
+      this.jdField_b_of_type_Long = paramMsgTabNodeVideoInfo.recommand_id.get();
+    }
+    if (paramMsgTabNodeVideoInfo.show_bottom.has()) {
+      this.jdField_a_of_type_Int = paramMsgTabNodeVideoInfo.show_bottom.get();
+    }
+    if (paramMsgTabNodeVideoInfo.bottom_wording.has()) {
+      this.c = paramMsgTabNodeVideoInfo.bottom_wording.get();
+    }
+    if (paramMsgTabNodeVideoInfo.bottom_link.has()) {
+      this.d = paramMsgTabNodeVideoInfo.bottom_link.get();
+    }
+    if (paramMsgTabNodeVideoInfo.show_text.has()) {
+      this.jdField_b_of_type_Int = paramMsgTabNodeVideoInfo.show_text.get();
+    }
+    if (paramMsgTabNodeVideoInfo.text_wording.has()) {
+      this.e = paramMsgTabNodeVideoInfo.text_wording.get();
+    }
+    if (paramMsgTabNodeVideoInfo.text_link.has()) {
+      this.f = paramMsgTabNodeVideoInfo.text_link.get();
     }
   }
   
@@ -166,42 +166,64 @@ public class MsgTabNodeVideoInfo
       this.jdField_b_of_type_Int = paramJSONObject.optInt("showText");
       this.e = paramJSONObject.optString("textWording", "");
       this.f = paramJSONObject.optString("textLink", "");
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
-        this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_JavaLangString);
-      }
-      return;
     }
     catch (JSONException paramJSONObject)
     {
-      for (;;)
-      {
-        paramJSONObject.printStackTrace();
-      }
+      paramJSONObject.printStackTrace();
+    }
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
+      this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem = ((StoryManager)SuperManager.a(5)).a(this.jdField_a_of_type_JavaLangString);
     }
   }
   
   public boolean equals(Object paramObject)
   {
-    if (this == paramObject) {}
-    do
-    {
+    if (this == paramObject) {
       return true;
-      if (!(paramObject instanceof MsgTabNodeVideoInfo)) {
-        return false;
-      }
-      paramObject = (MsgTabNodeVideoInfo)paramObject;
-    } while (this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long);
-    return false;
+    }
+    if (!(paramObject instanceof MsgTabNodeVideoInfo)) {
+      return false;
+    }
+    paramObject = (MsgTabNodeVideoInfo)paramObject;
+    return this.jdField_a_of_type_Long == paramObject.jdField_a_of_type_Long;
   }
   
   public String toString()
   {
-    return "MsgTabNodeVideoInfo{videoIndex=" + this.jdField_a_of_type_Long + ", didRead=" + this.jdField_a_of_type_Boolean + ", vid='" + this.jdField_a_of_type_JavaLangString + '\'' + ", feedId='" + this.jdField_b_of_type_JavaLangString + '\'' + ", storyItem=" + this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem + ", recommandId=" + this.jdField_b_of_type_Long + ", showBottom=" + this.jdField_a_of_type_Int + ", bottomWording=" + this.c + ", bottomLink=" + this.d + ", showText=" + this.jdField_b_of_type_Int + ", textWording=" + this.e + ", textLink=" + this.f + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgTabNodeVideoInfo{videoIndex=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", didRead=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(", vid='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", feedId='");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", storyItem=");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentBizQqstoryModelItemStoryVideoItem);
+    localStringBuilder.append(", recommandId=");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append(", showBottom=");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(", bottomWording=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", bottomLink=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", showText=");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(", textWording=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", textLink=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.model.MsgTabNodeVideoInfo
  * JD-Core Version:    0.7.0.1
  */

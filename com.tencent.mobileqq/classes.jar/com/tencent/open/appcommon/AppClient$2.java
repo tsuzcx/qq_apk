@@ -21,95 +21,114 @@ final class AppClient$2
   public void run()
   {
     boolean bool;
-    Object localObject1;
-    Object localObject2;
-    Intent localIntent;
-    Bundle localBundle;
-    label169:
-    Object localObject3;
-    if (Common.a(this.jdField_a_of_type_AndroidOsBundle.getString("schemaUrl")).get("auto_download") != null)
-    {
+    if (Common.a(this.jdField_a_of_type_AndroidOsBundle.getString("schemaUrl")).get("auto_download") != null) {
       bool = true;
-      if (!MyAppApi.a().a(CommonDataAdapter.a().a(), this.jdField_b_of_type_AndroidOsBundle, bool, false))
-      {
-        localObject1 = Common.g() + File.separator + "qapp_center_detail.htm";
-        localObject2 = new File((String)localObject1);
-        if (!((File)localObject2).exists())
-        {
-          LogUtility.d("AppClient", "file" + (String)localObject1 + " not exist copyassets.");
-          FileUtils.a("Page/system", Common.h());
-        }
-        localIntent = new Intent();
-        localBundle = new Bundle();
-        if (!((File)localObject2).exists()) {
-          break label461;
-        }
-        localObject2 = "file:///" + (String)localObject1;
-        localObject3 = "&from=-10&id=" + this.jdField_a_of_type_JavaLangString;
-        if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
-        {
-          localObject1 = localObject3;
-          if (this.jdField_b_of_type_JavaLangString.contains("channelId")) {}
-        }
-        else
-        {
-          localObject1 = (String)localObject3 + "&channelId=" + this.c;
-        }
-        if (!bool) {
-          break label534;
-        }
-        localObject1 = (String)localObject1 + "&auto_download=1";
-      }
+    } else {
+      bool = false;
     }
-    label523:
-    label534:
-    for (;;)
+    if (!MyAppApi.a().a(CommonDataAdapter.a().a(), this.jdField_b_of_type_AndroidOsBundle, bool, false))
     {
-      localObject3 = localObject1;
-      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+      Object localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(Common.g());
+      ((StringBuilder)localObject1).append(File.separator);
+      ((StringBuilder)localObject1).append("qapp_center_detail.htm");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      Object localObject2 = new File((String)localObject1);
+      Object localObject3;
+      if (!((File)localObject2).exists())
       {
-        if (this.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString)) {
-          localObject3 = localObject1;
-        }
+        localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("file");
+        ((StringBuilder)localObject3).append((String)localObject1);
+        ((StringBuilder)localObject3).append(" not exist copyassets.");
+        LogUtility.d("AppClient", ((StringBuilder)localObject3).toString());
+        FileUtils.a("Page/system", Common.h());
+      }
+      Intent localIntent = new Intent();
+      Bundle localBundle = new Bundle();
+      if (((File)localObject2).exists())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("file:///");
+        ((StringBuilder)localObject2).append((String)localObject1);
+        localObject3 = ((StringBuilder)localObject2).toString();
       }
       else
       {
-        label300:
-        localIntent.setClass(CommonDataAdapter.a().a(), QZoneAppListActivity.class);
-        if (!DownloadSDKConfigManager.canGotoNewDetailPage(this.d)) {
-          break label523;
-        }
-        localBundle.putInt("goto_type", 7);
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append(Common.m());
+        ((StringBuilder)localObject1).append(File.separator);
+        ((StringBuilder)localObject1).append("qapp_center_detail.htm");
+        localObject3 = ((StringBuilder)localObject1).toString();
       }
-      for (;;)
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("&from=-10&id=");
+      ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+      localObject2 = ((StringBuilder)localObject1).toString();
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
       {
-        localBundle.putString("APP_URL", (String)localObject2);
-        localBundle.putBoolean("FROM_FEED", true);
-        localBundle.putString("APP_PARAMS", (String)localObject3);
-        if (this.jdField_a_of_type_AndroidOsBundle.getInt("process_id") == 2) {
-          localBundle.putInt("process_id", 2);
+        localObject1 = localObject2;
+        if (this.jdField_b_of_type_JavaLangString.contains("channelId")) {}
+      }
+      else
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append((String)localObject2);
+        ((StringBuilder)localObject1).append("&channelId=");
+        ((StringBuilder)localObject1).append(this.c);
+        localObject1 = ((StringBuilder)localObject1).toString();
+      }
+      localObject2 = localObject1;
+      if (bool)
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append("&auto_download=1");
+        localObject2 = ((StringBuilder)localObject2).toString();
+      }
+      localObject1 = localObject2;
+      if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString)) {
+        if (this.jdField_b_of_type_JavaLangString.equals(this.jdField_a_of_type_JavaLangString))
+        {
+          localObject1 = localObject2;
         }
-        LogUtility.b("Jie", "APP_URL:" + (String)localObject2 + " |  PARAMS >>> " + localBundle.getString("APP_PARAMS"));
-        localIntent.putExtras(localBundle);
-        localIntent.putExtra("adapter_action", "action_app_detail");
-        localIntent.addFlags(872415232);
-        CommonDataAdapter.a().a().startActivity(localIntent);
-        return;
-        bool = false;
-        break;
-        label461:
-        localObject2 = Common.m() + File.separator + "qapp_center_detail.htm";
-        break label169;
-        localObject3 = (String)localObject1 + "&" + this.jdField_b_of_type_JavaLangString;
-        break label300;
+        else
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append((String)localObject2);
+          ((StringBuilder)localObject1).append("&");
+          ((StringBuilder)localObject1).append(this.jdField_b_of_type_JavaLangString);
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+      }
+      localIntent.setClass(CommonDataAdapter.a().a(), QZoneAppListActivity.class);
+      if (DownloadSDKConfigManager.canGotoNewDetailPage(this.d)) {
+        localBundle.putInt("goto_type", 7);
+      } else {
         localBundle.putInt("goto_type", 3);
       }
+      localBundle.putString("APP_URL", (String)localObject3);
+      localBundle.putBoolean("FROM_FEED", true);
+      localBundle.putString("APP_PARAMS", (String)localObject1);
+      if (this.jdField_a_of_type_AndroidOsBundle.getInt("process_id") == 2) {
+        localBundle.putInt("process_id", 2);
+      }
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("APP_URL:");
+      ((StringBuilder)localObject1).append((String)localObject3);
+      ((StringBuilder)localObject1).append(" |  PARAMS >>> ");
+      ((StringBuilder)localObject1).append(localBundle.getString("APP_PARAMS"));
+      LogUtility.b("Jie", ((StringBuilder)localObject1).toString());
+      localIntent.putExtras(localBundle);
+      localIntent.putExtra("adapter_action", "action_app_detail");
+      localIntent.addFlags(872415232);
+      CommonDataAdapter.a().a().startActivity(localIntent);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.appcommon.AppClient.2
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,7 @@ public class StoryPlayerTest
   {
     if (paramBitmap.getConfig() != Bitmap.Config.ARGB_8888)
     {
-      AssertUtils.a(false, "bitmap is not ARGB_8888");
+      AssertUtils.assertTrue(false, "bitmap is not ARGB_8888");
       return false;
     }
     int j = paramBitmap.getWidth();
@@ -42,33 +42,32 @@ public class StoryPlayerTest
     int m = j / paramInt1;
     int n = k / paramInt1;
     paramInt1 = 0;
-    for (;;)
+    while (paramInt1 < j)
     {
-      if (paramInt1 >= j) {
-        break label118;
-      }
       int i = 0;
-      for (;;)
+      while (i < k)
       {
-        if (i >= k) {
-          break label110;
-        }
         int i1 = paramBitmap.getPixel(paramInt1, i);
-        if (((i1 & 0xFF) > paramInt2) || ((i1 >> 8 & 0xFF) > paramInt2) || ((i1 >> 16 & 0xFF) > paramInt2)) {
-          break;
+        if (((i1 & 0xFF) <= paramInt2) && ((i1 >> 8 & 0xFF) <= paramInt2))
+        {
+          if ((i1 >> 16 & 0xFF) > paramInt2) {
+            return false;
+          }
+          i += n;
         }
-        i += n;
+        else
+        {
+          return false;
+        }
       }
-      label110:
       paramInt1 += m;
     }
-    label118:
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerTest
  * JD-Core Version:    0.7.0.1
  */

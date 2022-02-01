@@ -11,7 +11,7 @@ class FloatWindowModule$3
   
   public void run()
   {
-    if (FloatWindowModule.access$500(this.this$0))
+    if (FloatWindowModule.access$400(this.this$0))
     {
       this.this$0.getLog().e("FloatWindowModule", "start AudienceRoomActivity timeout", new Object[0]);
       ((ToastInterface)this.this$0.getRoomEngine().getService(ToastInterface.class)).showToast("正在返回直播间，请耐心等待", 3);
@@ -20,7 +20,7 @@ class FloatWindowModule$3
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilive.audiencepages.room.bizmodule.FloatWindowModule.3
  * JD-Core Version:    0.7.0.1
  */

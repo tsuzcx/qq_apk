@@ -1,6 +1,6 @@
 package com.tencent.mobileqq.webview.swift.component;
 
-import com.tencent.biz.pubaccount.readinjoy.view.fastweb.util.ScreenShotShareHelper;
+import com.tencent.mobileqq.kandian.biz.share.api.IScreenShotShareHelper;
 import com.tencent.mobileqq.widget.QQProgressDialog;
 
 class SwiftBrowserScreenShotHandler$6$1
@@ -15,7 +15,7 @@ class SwiftBrowserScreenShotHandler$6$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserScreenShotHandler.6.1
  * JD-Core Version:    0.7.0.1
  */

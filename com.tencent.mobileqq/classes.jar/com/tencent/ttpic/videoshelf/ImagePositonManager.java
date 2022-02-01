@@ -10,12 +10,14 @@ public class ImagePositonManager
   {
     paramDrawable = new RectF(0.0F, 0.0F, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
     paramMatrix.mapRect(paramDrawable);
-    float f1 = paramDrawable.width();
-    float f2 = paramDrawable.height();
-    if ((f1 > paramInt1) && (paramDrawable.left + paramFloat1 <= 0.0F) && (paramDrawable.right + paramFloat1 >= paramInt1)) {
+    float f2 = paramDrawable.width();
+    float f1 = paramDrawable.height();
+    float f3 = paramInt1;
+    if ((f2 > f3) && (paramDrawable.left + paramFloat1 <= 0.0F) && (paramDrawable.right + paramFloat1 >= f3)) {
       paramMatrix.postTranslate(paramFloat1, 0.0F);
     }
-    if ((f2 > paramInt2) && (paramDrawable.top + paramFloat2 <= 0.0F) && (paramDrawable.bottom + paramFloat2 >= paramInt2)) {
+    paramFloat1 = paramInt2;
+    if ((f1 > paramFloat1) && (paramDrawable.top + paramFloat2 <= 0.0F) && (paramDrawable.bottom + paramFloat2 >= paramFloat1)) {
       paramMatrix.postTranslate(0.0F, paramFloat2);
     }
   }
@@ -24,55 +26,58 @@ public class ImagePositonManager
   {
     paramDrawable = new RectF(0.0F, 0.0F, paramDrawable.getIntrinsicWidth(), paramDrawable.getIntrinsicHeight());
     paramMatrix.mapRect(paramDrawable);
-    float f6 = paramDrawable.width();
+    float f7 = paramDrawable.width();
     float f5 = paramDrawable.height();
-    if (f6 <= paramInt1) {}
-    for (float f2 = paramInt1 / 2 - f6 / 2.0F - paramDrawable.left;; f2 = 0.0F)
+    float f8 = paramInt1;
+    if (f7 <= f8) {
+      f2 = paramInt1 / 2 - f7 / 2.0F - paramDrawable.left;
+    } else {
+      f2 = 0.0F;
+    }
+    float f6 = paramInt2;
+    if (f5 <= f6) {
+      f1 = paramInt2 / 2 - f5 / 2.0F - paramDrawable.top;
+    } else {
+      f1 = 0.0F;
+    }
+    float f3 = f2;
+    if (f7 > f8)
     {
-      if (f5 <= paramInt2) {}
-      for (float f1 = paramInt2 / 2 - f5 / 2.0F - paramDrawable.top;; f1 = 0.0F)
-      {
-        float f3 = f2;
-        if (f6 > paramInt1)
-        {
-          f3 = f2;
-          if (paramDrawable.left > 0.0F) {
-            f3 = -paramDrawable.left;
-          }
-        }
-        float f4 = f3;
-        if (f6 > paramInt1)
-        {
-          f4 = f3;
-          if (paramDrawable.right < paramInt1) {
-            f4 = paramInt1 - paramDrawable.right;
-          }
-        }
-        f2 = f1;
-        if (f5 > paramInt2)
-        {
-          f2 = f1;
-          if (paramDrawable.top > 0.0F) {
-            f2 = -paramDrawable.top;
-          }
-        }
-        f1 = f2;
-        if (f5 > paramInt2)
-        {
-          f1 = f2;
-          if (paramDrawable.bottom < paramInt2) {
-            f1 = paramInt2 - paramDrawable.bottom;
-          }
-        }
-        paramMatrix.postTranslate(f4, f1);
-        return;
+      f3 = f2;
+      if (paramDrawable.left > 0.0F) {
+        f3 = -paramDrawable.left;
       }
     }
+    float f4 = f3;
+    if (f7 > f8)
+    {
+      f4 = f3;
+      if (paramDrawable.right < f8) {
+        f4 = f8 - paramDrawable.right;
+      }
+    }
+    float f2 = f1;
+    if (f5 > f6)
+    {
+      f2 = f1;
+      if (paramDrawable.top > 0.0F) {
+        f2 = -paramDrawable.top;
+      }
+    }
+    float f1 = f2;
+    if (f5 > f6)
+    {
+      f1 = f2;
+      if (paramDrawable.bottom < f6) {
+        f1 = f6 - paramDrawable.bottom;
+      }
+    }
+    paramMatrix.postTranslate(f4, f1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.videoshelf.ImagePositonManager
  * JD-Core Version:    0.7.0.1
  */

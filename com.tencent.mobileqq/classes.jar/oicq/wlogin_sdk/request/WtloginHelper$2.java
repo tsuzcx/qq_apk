@@ -12,12 +12,12 @@ class WtloginHelper$2
   
   public void run()
   {
-    new RSACrypt(WtloginHelper.access$000(this.this$0)).GenRSAKey();
+    new RSACrypt(WtloginHelper.access$100(this.this$0)).GenRSAKey();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     oicq.wlogin_sdk.request.WtloginHelper.2
  * JD-Core Version:    0.7.0.1
  */

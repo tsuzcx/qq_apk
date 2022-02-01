@@ -29,15 +29,13 @@ public abstract class AbstractConfig
   
   public int a(boolean paramBoolean1, boolean paramBoolean2)
   {
-    int j = 0;
-    if (paramBoolean1) {}
-    for (int i = 1;; i = 0)
-    {
-      if (paramBoolean2) {
-        j = 2;
-      }
-      return j | i;
+    boolean bool;
+    if (paramBoolean2) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    return paramBoolean1 | bool;
   }
   
   public abstract String a();
@@ -54,7 +52,7 @@ public abstract class AbstractConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.authorize.AbstractConfig
  * JD-Core Version:    0.7.0.1
  */

@@ -27,14 +27,15 @@ public final class mobile_host_hb_info_req
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.huin, 0);
-    if (this.ext_info != null) {
-      paramJceOutputStream.write(this.ext_info, 1);
+    String str = this.ext_info;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_MAIN_PAGE.mobile_host_hb_info_req
  * JD-Core Version:    0.7.0.1
  */

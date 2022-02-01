@@ -23,30 +23,31 @@ public class ImaxAdSharePlugin
     try
     {
       paramString = new JSONObject(paramString);
+      String str = paramString.optString("callback");
+      paramString = AdvertisementItem.a(paramString);
+      JSONObject localJSONObject = new JSONObject();
       if (paramString != null)
       {
-        String str = paramString.optString("callback");
-        paramString = AdvertisementItem.a(paramString);
-        JSONObject localJSONObject = new JSONObject();
-        if (paramString != null)
+        if ((QLog.isColorLevel()) && (paramString.a != null))
         {
-          if ((QLog.isColorLevel()) && (paramString.a != null)) {
-            QLog.d("ImaxAdvertisement", 2, "ad id  = " + paramString.a.c);
-          }
-          PublicAccountAdvertisementActivity.a(BaseApplicationImpl.getContext(), paramString);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ad id  = ");
+          localStringBuilder.append(paramString.a.c);
+          QLog.d("ImaxAdvertisement", 2, localStringBuilder.toString());
         }
-        for (paramString = localJSONObject.put("retCode", "0"); !TextUtils.isEmpty(str); paramString = localJSONObject.put("retCode", "-1"))
-        {
-          callJs(str, new String[] { paramString.toString() });
-          return;
-          if (QLog.isColorLevel()) {
-            QLog.d("ImaxAdvertisement", 2, "item == null");
-          }
-        }
+        PublicAccountAdvertisementActivity.a(BaseApplicationImpl.getContext(), paramString);
+        paramString = localJSONObject.put("retCode", "0");
       }
-      if (QLog.isColorLevel())
+      else
       {
-        QLog.d("ImaxAdvertisement", 2, "rootObject == null");
+        if (QLog.isColorLevel()) {
+          QLog.d("ImaxAdvertisement", 2, "item == null");
+        }
+        paramString = localJSONObject.put("retCode", "-1");
+      }
+      if (!TextUtils.isEmpty(str))
+      {
+        callJs(str, new String[] { paramString.toString() });
         return;
       }
     }
@@ -58,22 +59,52 @@ public class ImaxAdSharePlugin
     }
   }
   
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ImaxAdvertisement", 2, "handleJsRequest pkgName=" + paramString2 + " method=" + paramString3);
+    if (QLog.isColorLevel())
+    {
+      paramJsBridgeListener = new StringBuilder();
+      paramJsBridgeListener.append("handleJsRequest pkgName=");
+      paramJsBridgeListener.append(paramString2);
+      paramJsBridgeListener.append(" method=");
+      paramJsBridgeListener.append(paramString3);
+      QLog.d("ImaxAdvertisement", 2, paramJsBridgeListener.toString());
     }
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString3))) {}
-    while ((paramVarArgs == null) || (paramVarArgs.length == 0) || (!"qq_imax_ad".equals(paramString2)) || (!"showSharedAD".equals(paramString3))) {
-      return false;
+    boolean bool3 = TextUtils.isEmpty(paramString1);
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    if (!bool3)
+    {
+      bool1 = bool2;
+      if (!TextUtils.isEmpty(paramString2))
+      {
+        if (TextUtils.isEmpty(paramString3)) {
+          return false;
+        }
+        bool1 = bool2;
+        if (paramVarArgs != null)
+        {
+          if (paramVarArgs.length == 0) {
+            return false;
+          }
+          if (!"qq_imax_ad".equals(paramString2)) {
+            return false;
+          }
+          bool1 = bool2;
+          if ("showSharedAD".equals(paramString3))
+          {
+            a(paramVarArgs[0]);
+            bool1 = true;
+          }
+        }
+      }
     }
-    a(paramVarArgs[0]);
-    return true;
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.imaxad.ImaxAdSharePlugin
  * JD-Core Version:    0.7.0.1
  */

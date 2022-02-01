@@ -73,56 +73,38 @@ public class DatePickerView
   {
     paramDatePicker = (LinearLayout)((LinearLayout)paramDatePicker.getChildAt(0)).getChildAt(0);
     int i = 0;
-    if (i < paramDatePicker.getChildCount())
+    while (i < paramDatePicker.getChildCount())
     {
       NumberPicker localNumberPicker = (NumberPicker)paramDatePicker.getChildAt(i);
       Field[] arrayOfField = NumberPicker.class.getDeclaredFields();
       int k = arrayOfField.length;
       int j = 0;
-      for (;;)
+      while (j < k)
       {
-        for (;;)
+        Field localField = arrayOfField[j];
+        if (localField.getName().equals("mSelectionDivider"))
         {
-          Field localField;
-          if (j < k)
+          localField.setAccessible(true);
+          try
           {
-            localField = arrayOfField[j];
-            if (localField.getName().equals("mSelectionDivider")) {
-              localField.setAccessible(true);
-            }
+            localField.set(localNumberPicker, new ColorDrawable(ColorUtils.parseColor("#3CB371")));
           }
-          else
+          catch (IllegalAccessException localIllegalAccessException)
           {
-            try
-            {
-              localField.set(localNumberPicker, new ColorDrawable(ColorUtils.parseColor("#3CB371")));
-              i += 1;
-            }
-            catch (IllegalArgumentException localIllegalArgumentException)
-            {
-              for (;;)
-              {
-                localIllegalArgumentException.printStackTrace();
-              }
-            }
-            catch (Resources.NotFoundException localNotFoundException)
-            {
-              for (;;)
-              {
-                localNotFoundException.printStackTrace();
-              }
-            }
-            catch (IllegalAccessException localIllegalAccessException)
-            {
-              for (;;)
-              {
-                localIllegalAccessException.printStackTrace();
-              }
-            }
+            localIllegalAccessException.printStackTrace();
+          }
+          catch (Resources.NotFoundException localNotFoundException)
+          {
+            localNotFoundException.printStackTrace();
+          }
+          catch (IllegalArgumentException localIllegalArgumentException)
+          {
+            localIllegalArgumentException.printStackTrace();
           }
         }
         j += 1;
       }
+      i += 1;
     }
   }
   
@@ -146,56 +128,64 @@ public class DatePickerView
   
   public void onCancel(DialogInterface paramDialogInterface)
   {
-    if (this.mOnConfirmListener != null) {
-      this.mOnConfirmListener.onDateCancel();
+    paramDialogInterface = this.mOnConfirmListener;
+    if (paramDialogInterface != null) {
+      paramDialogInterface.onDateCancel();
     }
   }
   
   public void onClick(View paramView)
   {
+    Object localObject1;
     if (paramView.getId() == R.id.tv_cancel)
     {
-      if (this.mOnConfirmListener != null) {
-        this.mOnConfirmListener.onDateCancel();
+      localObject1 = this.mOnConfirmListener;
+      if (localObject1 != null) {
+        ((DatePickerView.OnConfirmListener)localObject1).onDateCancel();
       }
       dismissDlg();
     }
-    while (paramView.getId() != R.id.tv_confirm)
+    else if (paramView.getId() == R.id.tv_confirm)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-    }
-    int i;
-    String str1;
-    if (this.mOnConfirmListener != null)
-    {
-      i = this.monthOfYear + 1;
-      if (i >= 10) {
-        break label148;
+      if (this.mOnConfirmListener != null)
+      {
+        int i = this.monthOfYear + 1;
+        if (i < 10)
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("0");
+          ((StringBuilder)localObject1).append(i);
+          localObject1 = ((StringBuilder)localObject1).toString();
+        }
+        else
+        {
+          localObject1 = String.valueOf(i);
+        }
+        i = this.dayOfMonth;
+        Object localObject2;
+        if (i < 10)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("0");
+          ((StringBuilder)localObject2).append(i);
+          localObject2 = ((StringBuilder)localObject2).toString();
+        }
+        else
+        {
+          localObject2 = String.valueOf(i);
+        }
+        this.mOnConfirmListener.onDateConfirm(String.valueOf(this.year), (String)localObject1, (String)localObject2);
       }
-      str1 = "0" + i;
-      label89:
-      i = this.dayOfMonth;
-      if (i >= 10) {
-        break label156;
-      }
-    }
-    label148:
-    label156:
-    for (String str2 = "0" + i;; str2 = String.valueOf(i))
-    {
-      this.mOnConfirmListener.onDateConfirm(String.valueOf(this.year), str1, str2);
       dismissDlg();
-      break;
-      str1 = String.valueOf(i);
-      break label89;
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void setDayOfMonthVisible(int paramInt)
   {
-    if (this.mDatePicker != null) {
-      ((ViewGroup)((ViewGroup)this.mDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(2).setVisibility(paramInt);
+    DatePicker localDatePicker = this.mDatePicker;
+    if (localDatePicker != null) {
+      ((ViewGroup)((ViewGroup)localDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(2).setVisibility(paramInt);
     }
   }
   
@@ -211,15 +201,17 @@ public class DatePickerView
   
   public void setMonthOfYearVisible(int paramInt)
   {
-    if (this.mDatePicker != null) {
-      ((ViewGroup)((ViewGroup)this.mDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(1).setVisibility(paramInt);
+    DatePicker localDatePicker = this.mDatePicker;
+    if (localDatePicker != null) {
+      ((ViewGroup)((ViewGroup)localDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(1).setVisibility(paramInt);
     }
   }
   
   public void setYearVisible(int paramInt)
   {
-    if (this.mDatePicker != null) {
-      ((ViewGroup)((ViewGroup)this.mDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(0).setVisibility(paramInt);
+    DatePicker localDatePicker = this.mDatePicker;
+    if (localDatePicker != null) {
+      ((ViewGroup)((ViewGroup)localDatePicker.getChildAt(0)).getChildAt(0)).getChildAt(0).setVisibility(paramInt);
     }
   }
   
@@ -233,7 +225,7 @@ public class DatePickerView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.DatePickerView
  * JD-Core Version:    0.7.0.1
  */

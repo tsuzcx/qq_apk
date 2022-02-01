@@ -17,27 +17,27 @@ public class HippyHttpResponse
   
   public void close()
   {
-    if (this.mInputStream != null) {}
-    try
-    {
-      this.mInputStream.close();
-      if (this.mErrorStream == null) {}
-    }
-    catch (IOException localIOException1)
-    {
-      for (;;)
+    InputStream localInputStream1 = this.mInputStream;
+    if (localInputStream1 != null) {
+      try
       {
-        try
-        {
-          this.mErrorStream.close();
-          return;
-        }
-        catch (IOException localIOException2)
-        {
-          localIOException2.printStackTrace();
-        }
-        localIOException1 = localIOException1;
+        localInputStream1.close();
+      }
+      catch (IOException localIOException1)
+      {
         localIOException1.printStackTrace();
+      }
+    }
+    InputStream localInputStream2 = this.mErrorStream;
+    if (localInputStream2 != null) {
+      try
+      {
+        localInputStream2.close();
+        return;
+      }
+      catch (IOException localIOException2)
+      {
+        localIOException2.printStackTrace();
       }
     }
   }
@@ -49,22 +49,38 @@ public class HippyHttpResponse
   
   public String getHeaderField(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.mRspHeaderMap == null)) {
-      return null;
+    boolean bool = TextUtils.isEmpty(paramString);
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (!bool)
+    {
+      localObject1 = this.mRspHeaderMap;
+      if (localObject1 == null) {
+        return null;
+      }
+      paramString = (List)((Map)localObject1).get(paramString);
+      localObject1 = localObject2;
+      if (paramString != null)
+      {
+        localObject1 = localObject2;
+        if (paramString.size() > 0) {
+          localObject1 = (String)paramString.get(0);
+        }
+      }
     }
-    paramString = (List)this.mRspHeaderMap.get(paramString);
-    if ((paramString != null) && (paramString.size() > 0)) {
-      return (String)paramString.get(0);
-    }
-    return null;
+    return localObject1;
   }
   
   public List<String> getHeaderFields(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (this.mRspHeaderMap == null)) {
-      return null;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      Map localMap = this.mRspHeaderMap;
+      if (localMap != null) {
+        return (List)localMap.get(paramString);
+      }
     }
-    return (List)this.mRspHeaderMap.get(paramString);
+    return null;
   }
   
   public InputStream getInputStream()
@@ -84,8 +100,9 @@ public class HippyHttpResponse
   
   public Integer getStatusCode()
   {
-    if (this.mStatusCode != null) {
-      return this.mStatusCode;
+    Integer localInteger = this.mStatusCode;
+    if (localInteger != null) {
+      return localInteger;
     }
     return UNKNOWN_STATUS;
   }
@@ -117,7 +134,7 @@ public class HippyHttpResponse
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.adapter.http.HippyHttpResponse
  * JD-Core Version:    0.7.0.1
  */

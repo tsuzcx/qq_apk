@@ -46,11 +46,13 @@ public final class PrivilegeBaseInfo
   {
     paramJceOutputStream.write(this.strMsg, 0);
     paramJceOutputStream.write(this.strJumpUrl, 1);
-    if (this.vOpenPriv != null) {
-      paramJceOutputStream.write(this.vOpenPriv, 2);
+    ArrayList localArrayList = this.vOpenPriv;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 2);
     }
-    if (this.vClosePriv != null) {
-      paramJceOutputStream.write(this.vClosePriv, 3);
+    localArrayList = this.vClosePriv;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 3);
     }
   }
 }

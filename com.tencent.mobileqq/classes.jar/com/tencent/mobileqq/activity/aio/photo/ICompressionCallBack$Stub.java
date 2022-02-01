@@ -34,30 +34,34 @@ public abstract class ICompressionCallBack$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    switch (paramInt1)
+    if (paramInt1 != 1)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      return true;
-    case 1: 
-      paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-      a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
-      return true;
-    case 2: 
+      if (paramInt1 != 2)
+      {
+        if (paramInt1 != 3)
+        {
+          if (paramInt1 != 1598968902) {
+            return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+          }
+          paramParcel2.writeString("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+          return true;
+        }
+        paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
+        c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
       b((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
       return true;
     }
     paramParcel1.enforceInterface("com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack");
-    c((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
+    a((CompressInfo)paramParcel1.readParcelable(CompressInfo.class.getClassLoader()));
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.ICompressionCallBack.Stub
  * JD-Core Version:    0.7.0.1
  */

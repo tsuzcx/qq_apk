@@ -13,7 +13,8 @@ public final class AdAppDeeplinkLauncher$Result
   
   String getActivityName()
   {
-    if ((this.resolveInfo != null) && (this.resolveInfo.activityInfo != null)) {
+    ResolveInfo localResolveInfo = this.resolveInfo;
+    if ((localResolveInfo != null) && (localResolveInfo.activityInfo != null)) {
       return this.resolveInfo.activityInfo.name;
     }
     return null;
@@ -21,8 +22,9 @@ public final class AdAppDeeplinkLauncher$Result
   
   AdError getError()
   {
-    if (this.error != null) {
-      return this.error;
+    AdError localAdError = this.error;
+    if (localAdError != null) {
+      return localAdError;
     }
     return new AdError(1);
   }
@@ -34,7 +36,8 @@ public final class AdAppDeeplinkLauncher$Result
   
   public boolean isSuccess()
   {
-    return (this.error != null) && (this.error.isSuccess());
+    AdError localAdError = this.error;
+    return (localAdError != null) && (localAdError.isSuccess());
   }
 }
 

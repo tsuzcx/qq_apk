@@ -15,7 +15,10 @@ class VipGrayConfigHelper$2
   
   public void onLoadFailed(View paramView, URLDrawable paramURLDrawable, Throwable paramThrowable)
   {
-    QLog.e("friends_king", 1, "namePlateOfKing drawable fail url = " + this.jdField_a_of_type_JavaLangString);
+    paramView = new StringBuilder();
+    paramView.append("namePlateOfKing drawable fail url = ");
+    paramView.append(this.jdField_a_of_type_JavaLangString);
+    QLog.e("friends_king", 1, paramView.toString());
     this.jdField_a_of_type_ComTencentImageURLImageView.setVisibility(8);
   }
   
@@ -30,7 +33,7 @@ class VipGrayConfigHelper$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VipGrayConfigHelper.2
  * JD-Core Version:    0.7.0.1
  */

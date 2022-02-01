@@ -44,12 +44,18 @@ public class ShapePath
   
   public String toString()
   {
-    return "ShapePath{name=" + this.name + ", index=" + this.index + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ShapePath{name=");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", index=");
+    localStringBuilder.append(this.index);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.content.ShapePath
  * JD-Core Version:    0.7.0.1
  */

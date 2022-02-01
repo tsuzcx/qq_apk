@@ -46,15 +46,22 @@ class VasCommonJsPlugin$JsDebugDialog
     this.textView.setText("");
     String str = (String)this.textView.getText();
     Iterator localIterator = paramList.iterator();
-    for (paramList = str; localIterator.hasNext(); paramList = paramList + "log:" + str + "\n") {
+    StringBuilder localStringBuilder;
+    for (paramList = str; localIterator.hasNext(); paramList = localStringBuilder.toString())
+    {
       str = (String)localIterator.next();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramList);
+      localStringBuilder.append("log:");
+      localStringBuilder.append(str);
+      localStringBuilder.append("\n");
     }
     this.textView.setText(paramList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vaswebviewplugin.VasCommonJsPlugin.JsDebugDialog
  * JD-Core Version:    0.7.0.1
  */

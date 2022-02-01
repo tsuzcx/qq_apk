@@ -8,7 +8,7 @@ final class ViewPager$2
   public float getInterpolation(float paramFloat)
   {
     paramFloat -= 1.0F;
-    return paramFloat * (paramFloat * paramFloat * paramFloat * paramFloat) + 1.0F;
+    return paramFloat * paramFloat * paramFloat * paramFloat * paramFloat + 1.0F;
   }
 }
 

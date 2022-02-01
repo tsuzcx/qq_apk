@@ -23,29 +23,26 @@ public class WSBeaconSendRequest
     localstWeishiDengtaReportReq.eventName = paramString;
     localstWeishiDengtaReportReq.params = checkValueNotnull(paramMap);
     this.req = localstWeishiDengtaReportReq;
-    WSLog.b("BeaconSendRequest", "BeaconSendRequest = " + localstWeishiDengtaReportReq.toString());
+    paramString = new StringBuilder();
+    paramString.append("BeaconSendRequest = ");
+    paramString.append(localstWeishiDengtaReportReq.toString());
+    WSLog.b("BeaconSendRequest", paramString.toString());
   }
   
   private Map<String, String> checkValueNotnull(Map<String, String> paramMap)
   {
-    Object localObject;
-    if (paramMap == null)
-    {
-      localObject = new HashMap();
-      return localObject;
+    if (paramMap == null) {
+      return new HashMap();
     }
     Iterator localIterator = paramMap.entrySet().iterator();
-    for (;;)
+    while (localIterator.hasNext())
     {
-      localObject = paramMap;
-      if (!localIterator.hasNext()) {
-        break;
-      }
-      localObject = (Map.Entry)localIterator.next();
-      if (((Map.Entry)localObject).getValue() == null) {
-        ((Map.Entry)localObject).setValue("");
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
+      if (localEntry.getValue() == null) {
+        localEntry.setValue("");
       }
     }
+    return paramMap;
   }
   
   public Class<stWeishiDengtaReportRsp> getRspClass()
@@ -65,7 +62,7 @@ public class WSBeaconSendRequest
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.request.newreq.WSBeaconSendRequest
  * JD-Core Version:    0.7.0.1
  */

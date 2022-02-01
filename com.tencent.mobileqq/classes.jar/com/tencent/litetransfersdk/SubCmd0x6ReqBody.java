@@ -15,7 +15,7 @@ public class SubCmd0x6ReqBody
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.litetransfersdk.SubCmd0x6ReqBody
  * JD-Core Version:    0.7.0.1
  */

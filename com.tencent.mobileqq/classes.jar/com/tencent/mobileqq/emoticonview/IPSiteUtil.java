@@ -8,7 +8,6 @@ import android.text.style.ForegroundColorSpan;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.utils.VasUtils;
 import com.tencent.qphone.base.util.QLog;
 import java.net.URL;
 import java.util.regex.Matcher;
@@ -16,6 +15,8 @@ import java.util.regex.Pattern;
 
 public class IPSiteUtil
 {
+  private static final String TAG = "IPSiteUtil";
+  
   public static SpannableString dealIPSiteString(String paramString)
   {
     if (!TextUtils.isEmpty(paramString))
@@ -76,70 +77,97 @@ public class IPSiteUtil
         localObject2 = localObject5;
         localObject3 = localObject1;
         paramDrawable.mLoadingDrawable = ((Drawable)localObject1);
-        if (!paramBoolean1) {
-          continue;
+        StringBuilder localStringBuilder;
+        if (paramBoolean1)
+        {
+          try
+          {
+            paramDrawable = URLDrawable.getDrawable(new URL("protocol_vas_extension_image", "COMIC_IP_SITE_ROUND_IMAGE", paramString), paramDrawable);
+          }
+          catch (Exception paramDrawable)
+          {
+            localObject2 = localObject5;
+            localObject3 = localObject1;
+            localStringBuilder = new StringBuilder();
+            localObject2 = localObject5;
+            localObject3 = localObject1;
+            localStringBuilder.append("getIPSiteDrawable error = ");
+            localObject2 = localObject5;
+            localObject3 = localObject1;
+            localStringBuilder.append(paramDrawable);
+            localObject2 = localObject5;
+            localObject3 = localObject1;
+            QLog.e("IPSiteUtil", 1, localStringBuilder.toString());
+            paramDrawable = localObject4;
+            continue;
+          }
+        }
+        else if (paramBoolean2)
+        {
+          try
+          {
+            paramDrawable = URLDrawable.getDrawable(new URL("protocol_vas_extension_image", "COMIC_IPSITE_GAME_IMAGE", paramString), paramDrawable);
+          }
+          catch (Exception paramDrawable)
+          {
+            localObject2 = localObject5;
+            localObject3 = localObject1;
+            localStringBuilder = new StringBuilder();
+            localObject2 = localObject5;
+            localObject3 = localObject1;
+            localStringBuilder.append("getIPSiteDrawable error = ");
+            localObject2 = localObject5;
+            localObject3 = localObject1;
+            localStringBuilder.append(paramDrawable);
+            localObject2 = localObject5;
+            localObject3 = localObject1;
+            QLog.e("IPSiteUtil", 1, localStringBuilder.toString());
+            paramDrawable = localObject4;
+            continue;
+          }
+        }
+        else
+        {
+          localObject2 = localObject5;
+          localObject3 = localObject1;
+          paramDrawable = URLDrawable.getDrawable(paramString, paramDrawable);
         }
       }
       catch (Exception paramURLDrawableListener)
       {
-        QLog.e(VasUtils.a, 1, "getIPSiteDrawable error url = " + paramString + "error msg = " + paramURLDrawableListener);
-        localObject1 = localObject3;
-        paramDrawable = (Drawable)localObject2;
-        continue;
-        if (!paramBoolean2) {
-          continue;
-        }
-        try
-        {
-          paramDrawable = URLDrawable.getDrawable(new URL("protocol_vas_extension_image", "COMIC_IPSITE_GAME_IMAGE", paramString), paramDrawable);
-        }
-        catch (Exception paramDrawable)
-        {
-          localObject2 = localObject5;
-          localObject3 = localObject1;
-          QLog.e(VasUtils.a, 1, "getIPSiteDrawable error = " + paramDrawable);
-          paramDrawable = localObject4;
-        }
-        continue;
-        localObject2 = localObject5;
-        localObject3 = localObject1;
-        paramDrawable = URLDrawable.getDrawable(paramString, paramDrawable);
-        continue;
-        return paramDrawable;
-        if (paramDrawable != null) {
-          continue;
-        }
+        paramDrawable = new StringBuilder();
+        paramDrawable.append("getIPSiteDrawable error url = ");
+        paramDrawable.append(paramString);
+        paramDrawable.append("error msg = ");
+        paramDrawable.append(paramURLDrawableListener);
+        QLog.e("IPSiteUtil", 1, paramDrawable.toString());
       }
-      try
+      localObject2 = paramDrawable;
+      localObject3 = localObject1;
+      if (paramDrawable != null)
       {
-        paramDrawable = URLDrawable.getDrawable(new URL("protocol_vas_extension_image", "COMIC_IP_SITE_ROUND_IMAGE", paramString), paramDrawable);
-        if (paramDrawable != null)
+        localObject2 = paramDrawable;
+        localObject3 = localObject1;
+        if (paramDrawable.getTag() == null)
         {
           localObject2 = paramDrawable;
           localObject3 = localObject1;
-          if (paramDrawable.getTag() == null)
-          {
-            localObject2 = paramDrawable;
-            localObject3 = localObject1;
-            paramDrawable.setTag(Integer.valueOf(0));
-          }
-          localObject2 = paramDrawable;
-          localObject3 = localObject1;
-          paramDrawable.setURLDrawableListener(paramURLDrawableListener);
-          localObject2 = paramDrawable;
-          localObject3 = localObject1;
-          paramDrawable.setAutoDownload(true);
+          paramDrawable.setTag(Integer.valueOf(0));
         }
-      }
-      catch (Exception paramDrawable)
-      {
-        localObject2 = localObject5;
+        localObject2 = paramDrawable;
         localObject3 = localObject1;
-        QLog.e(VasUtils.a, 1, "getIPSiteDrawable error = " + paramDrawable);
-        paramDrawable = localObject4;
+        paramDrawable.setURLDrawableListener(paramURLDrawableListener);
+        localObject2 = paramDrawable;
+        localObject3 = localObject1;
+        paramDrawable.setAutoDownload(true);
+        localObject2 = paramDrawable;
+        localObject3 = localObject1;
       }
+      if (localObject2 == null) {
+        return localObject3;
+      }
+      return localObject2;
     }
-    return localObject1;
   }
   
   private static boolean isNumeric(String paramString)
@@ -149,7 +177,7 @@ public class IPSiteUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.IPSiteUtil
  * JD-Core Version:    0.7.0.1
  */

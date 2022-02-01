@@ -31,8 +31,8 @@ class BlinkHooker$MyHookMethodCallback
         localStringBuilder.append(" ClearableEditText@0x");
         localStringBuilder.append(Integer.toHexString(paramMethodHookParam.hashCode()));
         QLog.d("ClearableEditText", 2, localStringBuilder.toString());
+        return;
       }
-      return;
     }
     catch (Throwable paramMethodHookParam)
     {
@@ -44,7 +44,7 @@ class BlinkHooker$MyHookMethodCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.BlinkHooker.MyHookMethodCallback
  * JD-Core Version:    0.7.0.1
  */

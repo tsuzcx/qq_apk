@@ -1,9 +1,0 @@
-package com.tencent.mobileqq.activity.aio;
-
-public abstract interface AudioSenorManager$AudioNearToEarStatus {}
-
-
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
- * Qualified Name:     com.tencent.mobileqq.activity.aio.AudioSenorManager.AudioNearToEarStatus
- * JD-Core Version:    0.7.0.1
- */

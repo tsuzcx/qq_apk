@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class UniLoginCheckRsp
   extends JceStruct
@@ -42,20 +43,23 @@ public final class UniLoginCheckRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.ret, 0);
-    if (this.errmsg != null) {
-      paramJceOutputStream.write(this.errmsg, 1);
+    Object localObject = this.errmsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.stHamletList != null) {
-      paramJceOutputStream.write(this.stHamletList, 2);
+    localObject = this.stHamletList;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 2);
     }
-    if (this.stKeyWord != null) {
-      paramJceOutputStream.write(this.stKeyWord, 3);
+    localObject = this.stKeyWord;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniLoginCheckRsp
  * JD-Core Version:    0.7.0.1
  */

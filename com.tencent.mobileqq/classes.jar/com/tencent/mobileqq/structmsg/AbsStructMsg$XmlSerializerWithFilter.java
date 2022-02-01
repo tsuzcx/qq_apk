@@ -141,9 +141,11 @@ public class AbsStructMsg$XmlSerializerWithFilter
     }
     catch (Exception paramString)
     {
-      if (QLog.isDevelopLevel()) {
-        QLog.d("StructMsg", 4, "XmlSerializer . text  IllegalArgumentException。。。。。");
-      }
+      label17:
+      break label17;
+    }
+    if (QLog.isDevelopLevel()) {
+      QLog.d("StructMsg", 4, "XmlSerializer . text  IllegalArgumentException。。。。。");
     }
     return this.jdField_a_of_type_OrgXmlpullV1XmlSerializer.text("");
   }
@@ -155,7 +157,7 @@ public class AbsStructMsg$XmlSerializerWithFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AbsStructMsg.XmlSerializerWithFilter
  * JD-Core Version:    0.7.0.1
  */

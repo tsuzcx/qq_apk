@@ -2,12 +2,13 @@ package com.tencent.mobileqq.colornote.launcher;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
+import com.tencent.comic.api.IQQComicConfigApi;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.colornote.data.ColorNote;
-import com.tencent.mobileqq.config.business.QQComicConfBean;
-import com.tencent.mobileqq.config.business.QQComicConfBean.ComicReaderConfig;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.comic.VipComicJumpActivity;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -29,63 +30,67 @@ public class BoodoLauncher
   
   private void a(Context paramContext, JSONObject paramJSONObject)
   {
-    Intent localIntent = new Intent(paramContext, VipComicJumpActivity.class);
-    localIntent.addFlags(268435456);
     JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    try
     {
-      try
-      {
-        if (!a()) {
-          continue;
-        }
-        str = "com.qqcomic.reader.VipComicReadingActivityV2";
-        localJSONObject.put("jumpto", str);
-        localJSONObject.put("comic", paramJSONObject);
-        localJSONObject.put("from", Integer.parseInt("1041001"));
+      if (!a()) {
+        break label94;
       }
-      catch (Exception paramJSONObject)
-      {
-        String str;
-        continue;
-      }
-      localIntent.putExtra("options", localJSONObject.toString());
-      paramContext.startActivity(localIntent);
-      return;
-      str = "com.qqcomic.activity.reader.VipComicPortraitReadingActivity";
+      str = "com.qqcomic.reader.VipComicReadingActivityV2";
     }
+    catch (Exception paramJSONObject)
+    {
+      for (;;)
+      {
+        continue;
+        String str = "com.qqcomic.activity.reader.VipComicPortraitReadingActivity";
+      }
+    }
+    localJSONObject.put("jumpto", str);
+    localJSONObject.put("comic", paramJSONObject);
+    localJSONObject.put("from", Integer.parseInt("1041001"));
+    paramContext = new ActivityURIRequest(paramContext, "/base/vipcomic");
+    paramContext.extra().putString("options", localJSONObject.toString());
+    paramContext.setFlags(268435456);
+    QRoute.startUri(paramContext, null);
   }
   
   public static boolean a()
   {
-    return QQComicConfBean.a().enableNewVersion;
+    return ((IQQComicConfigApi)QRoute.api(IQQComicConfigApi.class)).isEnableNewReader();
   }
   
   private void b(Context paramContext, JSONObject paramJSONObject)
   {
-    Intent localIntent = new Intent(paramContext, VipComicJumpActivity.class);
-    localIntent.addFlags(268435456);
     JSONObject localJSONObject = new JSONObject();
     try
     {
       localJSONObject.put("jumpto", "com.qqcomic.activity.media.VipComicMediaPlayActivity");
       localJSONObject.put("comic", paramJSONObject);
-      label46:
-      localIntent.putExtra("options", localJSONObject.toString());
-      paramContext.startActivity(localIntent);
+      label25:
+      paramContext = new ActivityURIRequest(paramContext, "/base/vipcomic");
+      paramContext.extra().putString("options", localJSONObject.toString());
+      paramContext.setFlags(268435456);
+      QRoute.startUri(paramContext, null);
       return;
     }
     catch (Exception paramJSONObject)
     {
-      break label46;
+      break label25;
     }
+  }
+  
+  public int getType()
+  {
+    return 16908292;
   }
   
   public void launch(Context paramContext, ColorNote paramColorNote)
   {
+    JSONObject localJSONObject;
     try
     {
-      localObject = paramColorNote.getReserve();
+      Object localObject = paramColorNote.getReserve();
       if (localObject == null)
       {
         QLog.e("BoodoLauncher", 2, "color note reserve is null");
@@ -95,39 +100,33 @@ public class BoodoLauncher
     }
     catch (JSONException localJSONException)
     {
-      int i;
-      JSONObject localJSONObject;
-      for (;;)
-      {
-        Object localObject;
-        QLog.e("BoodoLauncher", 1, localJSONException, new Object[0]);
-        localJSONObject = null;
-      }
-      if (i != 1) {
-        break label97;
-      }
-      a(paramContext, localJSONObject);
-      return;
-      label97:
-      if (i != 3) {
-        return;
-      }
-      b(paramContext, localJSONObject);
+      QLog.e("BoodoLauncher", 1, localJSONException, new Object[0]);
+      localJSONObject = null;
     }
-    if (localObject != null)
+    if (localJSONObject != null)
     {
-      i = ((JSONObject)localObject).optInt("colorNoteType", 0);
+      int i = localJSONObject.optInt("colorNoteType", 0);
       if (i == 2)
       {
         a(paramContext, paramColorNote);
         return;
       }
+      if (i == 1)
+      {
+        a(paramContext, localJSONObject);
+        return;
+      }
+      if (i == 3) {
+        b(paramContext, localJSONObject);
+      }
     }
   }
+  
+  public void onCreate(Context paramContext, ColorNote paramColorNote, Bundle paramBundle) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.launcher.BoodoLauncher
  * JD-Core Version:    0.7.0.1
  */

@@ -80,51 +80,51 @@ public class RAServiceMeta
     paramMap = paramMap.get("interface");
     if (paramMap != null)
     {
-      if ((paramMap instanceof List)) {
+      if ((paramMap instanceof List))
+      {
         this.interfaces.addAll((List)paramMap);
+        return;
       }
+      if ((paramMap instanceof String))
+      {
+        this.interfaces.add((String)paramMap);
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("interface parse error :");
+      localStringBuilder.append(paramMap);
+      throw new IllegalArgumentException(localStringBuilder.toString());
     }
-    else {
-      return;
-    }
-    if ((paramMap instanceof String))
-    {
-      this.interfaces.add((String)paramMap);
-      return;
-    }
-    throw new IllegalArgumentException("interface parse error :" + paramMap);
   }
   
   private void parseMethods(Map<String, Object> paramMap)
   {
     paramMap = paramMap.get("methods");
-    if (!(paramMap instanceof List)) {}
-    for (;;)
-    {
+    if (!(paramMap instanceof List)) {
       return;
-      paramMap = ((List)paramMap).iterator();
-      while (paramMap.hasNext())
+    }
+    paramMap = ((List)paramMap).iterator();
+    while (paramMap.hasNext())
+    {
+      Object localObject1 = (Map)paramMap.next();
+      String str1 = (String)((Map)localObject1).get("name");
+      Object localObject2 = ((Map)localObject1).get("args");
+      localObject1 = new ArrayList();
+      if ((localObject2 instanceof List))
       {
-        Object localObject1 = (Map)paramMap.next();
-        String str1 = (String)((Map)localObject1).get("name");
-        Object localObject2 = ((Map)localObject1).get("args");
-        localObject1 = new ArrayList();
-        if ((localObject2 instanceof List))
+        localObject2 = (List)localObject2;
+        int i = 0;
+        while (i < ((List)localObject2).size())
         {
-          localObject2 = (List)localObject2;
-          int i = 0;
-          while (i < ((List)localObject2).size())
-          {
-            Map localMap = (Map)((List)localObject2).get(i);
-            String str2 = (String)localMap.keySet().toArray()[0];
-            ((List)localObject1).add(new RAServiceMeta.ArgsDescription(str2, (String)localMap.get(str2)));
-            i += 1;
-          }
+          Map localMap = (Map)((List)localObject2).get(i);
+          String str2 = (String)localMap.keySet().toArray()[0];
+          ((List)localObject1).add(new RAServiceMeta.ArgsDescription(str2, (String)localMap.get(str2)));
+          i += 1;
         }
-        localObject2 = new HashMap();
-        ((Map)localObject2).put(str1, localObject1);
-        this.methods.add(localObject2);
       }
+      localObject2 = new HashMap();
+      ((Map)localObject2).put(str1, localObject1);
+      this.methods.add(localObject2);
     }
   }
   
@@ -179,12 +179,33 @@ public class RAServiceMeta
   
   public String toString()
   {
-    return "RAServiceMeta{interfaces=" + this.interfaces + ", itemClass='" + this.itemClass + '\'' + ", factoryClass='" + this.factoryClass + '\'' + ", factoryMethod='" + this.factoryMethod + '\'' + ", factoryMethodArgsDesc=" + this.factoryMethodArgsDesc + ", constructorArgsDesc=" + this.constructorArgsDesc + ", properties=" + this.properties + ", methodInjection=" + this.methodInjection + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("RAServiceMeta{interfaces=");
+    localStringBuilder.append(this.interfaces);
+    localStringBuilder.append(", itemClass='");
+    localStringBuilder.append(this.itemClass);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", factoryClass='");
+    localStringBuilder.append(this.factoryClass);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", factoryMethod='");
+    localStringBuilder.append(this.factoryMethod);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", factoryMethodArgsDesc=");
+    localStringBuilder.append(this.factoryMethodArgsDesc);
+    localStringBuilder.append(", constructorArgsDesc=");
+    localStringBuilder.append(this.constructorArgsDesc);
+    localStringBuilder.append(", properties=");
+    localStringBuilder.append(this.properties);
+    localStringBuilder.append(", methodInjection=");
+    localStringBuilder.append(this.methodInjection);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.raft.codegenmeta.service.RAServiceMeta
  * JD-Core Version:    0.7.0.1
  */

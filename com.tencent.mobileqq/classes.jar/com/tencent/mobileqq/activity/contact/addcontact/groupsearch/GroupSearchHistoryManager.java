@@ -20,13 +20,17 @@ public class GroupSearchHistoryManager
   
   private ArrayList<GroupSearchHistoryManager.GroupSearchHistoryBean> b(String paramString)
   {
-    Object localObject = BaseApplicationImpl.getApplication().getSharedPreferences("group_search_local_history_" + paramString, 0).getAll();
+    Object localObject1 = BaseApplicationImpl.getApplication();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("group_search_local_history_");
+    ((StringBuilder)localObject2).append(paramString);
+    localObject1 = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0).getAll();
     paramString = new ArrayList();
-    localObject = ((Map)localObject).entrySet().iterator();
-    while (((Iterator)localObject).hasNext())
+    localObject1 = ((Map)localObject1).entrySet().iterator();
+    while (((Iterator)localObject1).hasNext())
     {
-      Map.Entry localEntry = (Map.Entry)((Iterator)localObject).next();
-      paramString.add(new GroupSearchHistoryManager.GroupSearchHistoryBean(this, (String)localEntry.getKey(), (Long)localEntry.getValue()));
+      localObject2 = (Map.Entry)((Iterator)localObject1).next();
+      paramString.add(new GroupSearchHistoryManager.GroupSearchHistoryBean(this, (String)((Map.Entry)localObject2).getKey(), (Long)((Map.Entry)localObject2).getValue()));
     }
     Collections.sort(paramString);
     return paramString;
@@ -44,38 +48,49 @@ public class GroupSearchHistoryManager
   
   public void a(String paramString1, String paramString2)
   {
-    if ((TextUtils.isEmpty(paramString2)) || (TextUtils.isEmpty(paramString2.trim()))) {
-      return;
-    }
-    SharedPreferences localSharedPreferences = BaseApplicationImpl.getApplication().getSharedPreferences("group_search_local_history_" + paramString1, 0);
-    SharedPreferences.Editor localEditor = localSharedPreferences.edit();
-    if (localSharedPreferences.getLong(paramString2, -1L) == -1L)
+    if (!TextUtils.isEmpty(paramString2))
     {
-      paramString1 = b(paramString1);
-      if ((paramString1 != null) && (paramString1.size() >= 3))
+      if (TextUtils.isEmpty(paramString2.trim())) {
+        return;
+      }
+      Object localObject1 = BaseApplicationImpl.getApplication();
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("group_search_local_history_");
+      ((StringBuilder)localObject2).append(paramString1);
+      localObject2 = ((BaseApplicationImpl)localObject1).getSharedPreferences(((StringBuilder)localObject2).toString(), 0);
+      localObject1 = ((SharedPreferences)localObject2).edit();
+      if (((SharedPreferences)localObject2).getLong(paramString2, -1L) == -1L)
       {
-        int i = 2;
-        while (i < paramString1.size())
+        paramString1 = b(paramString1);
+        if ((paramString1 != null) && (paramString1.size() >= 3))
         {
-          localEditor.remove(((GroupSearchHistoryManager.GroupSearchHistoryBean)paramString1.get(i)).a());
-          i += 1;
+          int i = 2;
+          while (i < paramString1.size())
+          {
+            ((SharedPreferences.Editor)localObject1).remove(((GroupSearchHistoryManager.GroupSearchHistoryBean)paramString1.get(i)).a());
+            i += 1;
+          }
         }
       }
+      ((SharedPreferences.Editor)localObject1).putLong(paramString2, System.currentTimeMillis());
+      ((SharedPreferences.Editor)localObject1).apply();
     }
-    localEditor.putLong(paramString2, System.currentTimeMillis());
-    localEditor.apply();
   }
   
   void b(String paramString1, String paramString2)
   {
-    paramString1 = BaseApplicationImpl.getApplication().getSharedPreferences("group_search_local_history_" + paramString1, 0).edit();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.getApplication();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("group_search_local_history_");
+    localStringBuilder.append(paramString1);
+    paramString1 = localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit();
     paramString1.remove(paramString2);
     paramString1.apply();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contact.addcontact.groupsearch.GroupSearchHistoryManager
  * JD-Core Version:    0.7.0.1
  */

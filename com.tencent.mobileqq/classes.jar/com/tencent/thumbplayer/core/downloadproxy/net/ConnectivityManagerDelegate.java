@@ -16,16 +16,6 @@ public class ConnectivityManagerDelegate
 {
   private final ConnectivityManager mConnectivityManager;
   
-  static
-  {
-    if (!ConnectivityManagerDelegate.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      $assertionsDisabled = bool;
-      return;
-    }
-  }
-  
   ConnectivityManagerDelegate(Context paramContext)
   {
     this.mConnectivityManager = ((ConnectivityManager)paramContext.getSystemService("connectivity"));
@@ -33,20 +23,18 @@ public class ConnectivityManagerDelegate
   
   private NetworkInfo getNetworkInfo(Network paramNetwork)
   {
-    Object localObject3 = null;
-    Object localObject1 = localObject3;
     try
     {
-      if (Build.VERSION.SDK_INT >= 21) {
-        localObject1 = this.mConnectivityManager.getNetworkInfo(paramNetwork);
+      if (Build.VERSION.SDK_INT >= 21)
+      {
+        NetworkInfo localNetworkInfo = this.mConnectivityManager.getNetworkInfo(paramNetwork);
+        return localNetworkInfo;
       }
-      return localObject1;
     }
     catch (NullPointerException localNullPointerException)
     {
       for (;;)
       {
-        Object localObject2 = localObject3;
         try
         {
           if (Build.VERSION.SDK_INT >= 21)
@@ -54,8 +42,10 @@ public class ConnectivityManagerDelegate
             paramNetwork = this.mConnectivityManager.getNetworkInfo(paramNetwork);
             return paramNetwork;
           }
+          return null;
         }
         catch (NullPointerException paramNetwork) {}
+        localNullPointerException = localNullPointerException;
       }
     }
     return null;
@@ -64,23 +54,19 @@ public class ConnectivityManagerDelegate
   @TargetApi(21)
   private NetworkInfo processActiveNetworkInfo(NetworkInfo paramNetworkInfo)
   {
-    NetworkInfo localNetworkInfo;
     if (paramNetworkInfo == null) {
-      localNetworkInfo = null;
+      return null;
     }
-    do
-    {
-      do
-      {
-        return localNetworkInfo;
-        localNetworkInfo = paramNetworkInfo;
-      } while (paramNetworkInfo.isConnected());
-      if (Build.VERSION.SDK_INT < 21) {
-        return null;
-      }
-      localNetworkInfo = paramNetworkInfo;
-    } while (paramNetworkInfo.getDetailedState() == NetworkInfo.DetailedState.BLOCKED);
-    return null;
+    if (paramNetworkInfo.isConnected()) {
+      return paramNetworkInfo;
+    }
+    if (Build.VERSION.SDK_INT < 21) {
+      return null;
+    }
+    if (paramNetworkInfo.getDetailedState() != NetworkInfo.DetailedState.BLOCKED) {
+      return null;
+    }
+    return paramNetworkInfo;
   }
   
   @TargetApi(21)
@@ -137,12 +123,8 @@ public class ConnectivityManagerDelegate
     Network[] arrayOfNetwork = NetworkUtil.getAllNetworksFiltered(this, null);
     int j = arrayOfNetwork.length;
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject2 = localObject1;
-      if (i >= j) {
-        break;
-      }
       Network localNetwork = arrayOfNetwork[i];
       NetworkInfo localNetworkInfo2 = getNetworkInfo(localNetwork);
       localObject2 = localObject1;
@@ -154,44 +136,51 @@ public class ConnectivityManagerDelegate
         }
         else
         {
-          assert (localObject1 == null);
           localObject2 = localNetwork;
         }
       }
       i += 1;
       localObject1 = localObject2;
     }
+    return localObject1;
   }
   
   @TargetApi(21)
   protected NetworkCapabilities getNetworkCapabilities(Network paramNetwork)
   {
-    return this.mConnectivityManager.getNetworkCapabilities(paramNetwork);
+    try
+    {
+      paramNetwork = this.mConnectivityManager.getNetworkCapabilities(paramNetwork);
+      return paramNetwork;
+    }
+    catch (SecurityException paramNetwork)
+    {
+      label11:
+      break label11;
+    }
+    return null;
   }
   
   NetworkState getNetworkState(WifiManagerDelegate paramWifiManagerDelegate)
   {
     Network localNetwork;
-    NetworkInfo localNetworkInfo;
     if (Build.VERSION.SDK_INT >= 23)
     {
       localNetwork = getDefaultNetwork();
       localNetworkInfo = this.mConnectivityManager.getNetworkInfo(localNetwork);
     }
-    for (;;)
+    else
     {
-      localNetworkInfo = processActiveNetworkInfo(localNetworkInfo);
-      if (localNetworkInfo != null) {
-        break;
-      }
-      return new NetworkState(false, -1, -1, null, false, "");
       localNetworkInfo = this.mConnectivityManager.getActiveNetworkInfo();
       localNetwork = null;
+    }
+    NetworkInfo localNetworkInfo = processActiveNetworkInfo(localNetworkInfo);
+    if (localNetworkInfo == null) {
+      return new NetworkState(false, -1, -1, null, false, "");
     }
     if (localNetwork != null) {
       return new NetworkState(true, localNetworkInfo.getType(), localNetworkInfo.getSubtype(), String.valueOf(NetworkUtil.networkToNetId(localNetwork)), false, "");
     }
-    assert (Build.VERSION.SDK_INT < 23);
     if (localNetworkInfo.getType() == 1)
     {
       if ((localNetworkInfo.getExtraInfo() != null) && (!"".equals(localNetworkInfo.getExtraInfo()))) {
@@ -230,52 +219,53 @@ public class ConnectivityManagerDelegate
   protected boolean vpnAccessible(Network paramNetwork)
   {
     // Byte code:
-    //   0: new 170	java/net/Socket
+    //   0: new 163	java/net/Socket
     //   3: dup
-    //   4: invokespecial 171	java/net/Socket:<init>	()V
+    //   4: invokespecial 164	java/net/Socket:<init>	()V
     //   7: astore_2
     //   8: aload_1
     //   9: aload_2
-    //   10: invokevirtual 175	android/net/Network:bindSocket	(Ljava/net/Socket;)V
+    //   10: invokevirtual 168	android/net/Network:bindSocket	(Ljava/net/Socket;)V
     //   13: aload_2
-    //   14: invokevirtual 178	java/net/Socket:close	()V
+    //   14: invokevirtual 171	java/net/Socket:close	()V
     //   17: iconst_1
     //   18: ireturn
     //   19: astore_1
     //   20: aload_2
-    //   21: invokevirtual 178	java/net/Socket:close	()V
-    //   24: iconst_0
-    //   25: ireturn
-    //   26: astore_1
-    //   27: iconst_0
-    //   28: ireturn
-    //   29: astore_1
-    //   30: aload_2
-    //   31: invokevirtual 178	java/net/Socket:close	()V
-    //   34: aload_1
-    //   35: athrow
+    //   21: invokevirtual 171	java/net/Socket:close	()V
+    //   24: aload_1
+    //   25: athrow
+    //   26: aload_2
+    //   27: invokevirtual 171	java/net/Socket:close	()V
+    //   30: iconst_0
+    //   31: ireturn
+    //   32: astore_1
+    //   33: goto -7 -> 26
     //   36: astore_1
     //   37: goto -20 -> 17
     //   40: astore_2
-    //   41: goto -7 -> 34
+    //   41: goto -17 -> 24
+    //   44: astore_1
+    //   45: iconst_0
+    //   46: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	44	0	this	ConnectivityManagerDelegate
-    //   0	44	1	paramNetwork	Network
-    //   7	24	2	localSocket	java.net.Socket
+    //   0	47	0	this	ConnectivityManagerDelegate
+    //   0	47	1	paramNetwork	Network
+    //   7	20	2	localSocket	java.net.Socket
     //   40	1	2	localIOException	java.io.IOException
     // Exception table:
     //   from	to	target	type
-    //   8	13	19	java/io/IOException
-    //   20	24	26	java/io/IOException
-    //   8	13	29	finally
+    //   8	13	19	finally
+    //   8	13	32	java/io/IOException
     //   13	17	36	java/io/IOException
-    //   30	34	40	java/io/IOException
+    //   20	24	40	java/io/IOException
+    //   26	30	44	java/io/IOException
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.net.ConnectivityManagerDelegate
  * JD-Core Version:    0.7.0.1
  */

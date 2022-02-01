@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<shape
+<selector
   xmlns:android="http://schemas.android.com/apk/res/android">
-    <corners android:radius="6.0dip" />
-    <solid android:color="#ffebedf5" />
-</shape>
+    <item android:state_selected="false" android:drawable="@drawable/ggi" />
+    <item android:drawable="@drawable/ggj" />
+</selector>

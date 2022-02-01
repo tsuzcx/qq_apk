@@ -28,15 +28,16 @@ public class QAPMMonitorThreadLocal
   
   public static QAPMMonitorThreadLocal getInstance()
   {
-    if (e == null) {}
-    try
-    {
-      if (e == null) {
-        e = new QAPMMonitorThreadLocal();
+    if (e == null) {
+      try
+      {
+        if (e == null) {
+          e = new QAPMMonitorThreadLocal();
+        }
       }
-      return e;
+      finally {}
     }
-    finally {}
+    return e;
   }
   
   public void d()
@@ -54,7 +55,6 @@ public class QAPMMonitorThreadLocal
   
   public void pop(boolean paramBoolean)
   {
-    j localj;
     if (g() != null)
     {
       if ((this.d.get() == null) || (((Vector)this.d.get()).size() < 20)) {
@@ -65,42 +65,41 @@ public class QAPMMonitorThreadLocal
         if (paramBoolean) {
           ((j)e().peek()).a();
         }
-        localj = (j)e().peek();
+        j localj = (j)e().peek();
         if (localj == null) {
           return;
         }
-        if ((b.e.get()) || (b.a.contains(localj.g)) || (b.b.contains(localj.h)) || (localj.h.startsWith(localj.g))) {
-          break label162;
+        if ((!b.e.get()) && (!b.a.contains(localj.g)) && (!b.b.contains(localj.h)) && (!localj.h.startsWith(localj.g)))
+        {
+          a.a().a(0L, localj);
         }
-        a.a().a(0L, localj);
+        else
+        {
+          if (("QAPM_APPLAUNCH".equals(localj.g)) && (!b.d())) {
+            return;
+          }
+          g().add(localj);
+        }
       }
     }
-    for (;;)
-    {
-      super.a();
-      return;
-      label162:
-      if (("QAPM_APPLAUNCH".equals(localj.g)) && (!b.d())) {
-        break;
-      }
-      g().add(localj);
-    }
+    super.a();
   }
   
   public void push(String paramString1, String paramString2, long paramLong)
   {
     paramString1 = new com.tencent.qapmsdk.impl.instrumentation.g(paramString1, paramString2, paramLong, paramLong, l.b.b.a());
-    if (Looper.myLooper() == Looper.getMainLooper()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      super.a(paramString1, Boolean.valueOf(bool));
-      return;
+    boolean bool;
+    if (Looper.myLooper() == Looper.getMainLooper()) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    super.a(paramString1, Boolean.valueOf(bool));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.impl.appstate.QAPMMonitorThreadLocal
  * JD-Core Version:    0.7.0.1
  */

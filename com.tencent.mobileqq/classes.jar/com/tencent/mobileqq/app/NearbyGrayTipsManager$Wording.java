@@ -11,12 +11,20 @@ public class NearbyGrayTipsManager$Wording
   
   public String toString()
   {
-    return "Wording{text='" + this.text + '\'' + ", highlightText='" + this.highlightText + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Wording{text='");
+    localStringBuilder.append(this.text);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", highlightText='");
+    localStringBuilder.append(this.highlightText);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.NearbyGrayTipsManager.Wording
  * JD-Core Version:    0.7.0.1
  */

@@ -65,49 +65,50 @@ public class SpeedStatistics
   
   private void updateAverageSpeed(int paramInt)
   {
-    int i = this.mStatisticList.size();
-    if (paramInt > 0)
-    {
-      paramInt = min(i, paramInt);
-      if (paramInt > 0) {
-        break label31;
-      }
+    int j = this.mStatisticList.size();
+    int i = j;
+    if (paramInt > 0) {
+      i = min(j, paramInt);
     }
-    label31:
-    long l1;
-    long l4;
-    do
-    {
+    if (i <= 0) {
       return;
-      paramInt = i;
-      break;
-      SpeedStatistics.StatisticsUnit localStatisticsUnit = (SpeedStatistics.StatisticsUnit)this.mStatisticList.get(paramInt - 1);
-      long l2 = localStatisticsUnit.startTime;
-      l1 = localStatisticsUnit.endTime;
-      long l3 = 0L;
-      l4 = 0L;
+    }
+    Object localObject = this.mStatisticList;
+    paramInt = i - 1;
+    localObject = (SpeedStatistics.StatisticsUnit)((SortedFixedLinkedList)localObject).get(paramInt);
+    long l3 = ((SpeedStatistics.StatisticsUnit)localObject).startTime;
+    long l2 = ((SpeedStatistics.StatisticsUnit)localObject).endTime;
+    long l1 = 0L;
+    long l4 = l1;
+    while (paramInt >= 0)
+    {
+      localObject = (SpeedStatistics.StatisticsUnit)this.mStatisticList.get(paramInt);
+      long l5 = ((SpeedStatistics.StatisticsUnit)localObject).bytesSize;
+      long l7 = ((SpeedStatistics.StatisticsUnit)localObject).startTime;
+      long l6 = ((SpeedStatistics.StatisticsUnit)localObject).endTime;
+      l4 += gapBetween(l3, l2, l7, l6);
+      l3 = min(l3, l7);
+      l2 = max(l2, l6);
       paramInt -= 1;
-      while (paramInt >= 0)
-      {
-        localStatisticsUnit = (SpeedStatistics.StatisticsUnit)this.mStatisticList.get(paramInt);
-        l4 += localStatisticsUnit.bytesSize;
-        long l6 = localStatisticsUnit.startTime;
-        long l5 = localStatisticsUnit.endTime;
-        l3 += gapBetween(l2, l1, l6, l5);
-        l2 = min(l2, l6);
-        l1 = max(l1, l5);
-        paramInt -= 1;
-      }
-      l1 = l1 - l2 - l3;
-    } while (l1 <= 0L);
-    double d1 = l4 / 1024.0D;
-    double d2 = l1 / 1000.0D;
-    if ((d1 > 0.0D) && (d2 > 0.0D)) {}
-    for (float f = (float)(d1 / d2);; f = 0.0F)
-    {
-      this.mAverageSpeed = f;
+      l1 += l5;
+    }
+    l2 = l2 - l3 - l4;
+    if (l2 <= 0L) {
       return;
     }
+    double d1 = l1;
+    Double.isNaN(d1);
+    d1 /= 1024.0D;
+    double d2 = l2;
+    Double.isNaN(d2);
+    d2 /= 1000.0D;
+    float f;
+    if ((d1 > 0.0D) && (d2 > 0.0D)) {
+      f = (float)(d1 / d2);
+    } else {
+      f = 0.0F;
+    }
+    this.mAverageSpeed = f;
   }
   
   public float getAverageSpeed()
@@ -142,7 +143,7 @@ public class SpeedStatistics
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.network.module.statistics.SpeedStatistics
  * JD-Core Version:    0.7.0.1
  */

@@ -12,31 +12,35 @@ public class ViolaDomObjectManager
   public static Class<? extends DomObject> getDomObjClz(String paramString)
   {
     if (TextUtils.isEmpty(paramString)) {
-      paramString = null;
+      return null;
     }
-    Class localClass;
-    do
-    {
-      return paramString;
-      localClass = (Class)sDomObj.get(paramString);
-      paramString = localClass;
-    } while (localClass != null);
-    return DomObject.class;
+    Class localClass = (Class)sDomObj.get(paramString);
+    paramString = localClass;
+    if (localClass == null) {
+      paramString = DomObject.class;
+    }
+    return paramString;
   }
   
   public static boolean registerDomObj(String paramString, Class<? extends DomObject> paramClass)
   {
-    if ((paramClass == null) || (TextUtils.isEmpty(paramString))) {}
-    while (sDomObj.containsKey(paramString)) {
-      return false;
+    if (paramClass != null)
+    {
+      if (TextUtils.isEmpty(paramString)) {
+        return false;
+      }
+      if (sDomObj.containsKey(paramString)) {
+        return false;
+      }
+      sDomObj.put(paramString, paramClass);
+      return true;
     }
-    sDomObj.put(paramString, paramClass);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.viola.core.ViolaDomObjectManager
  * JD-Core Version:    0.7.0.1
  */

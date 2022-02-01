@@ -8,7 +8,7 @@ import android.os.Handler;
 class CameraManagerImpl$PreviewCallbackForward
   implements Camera.PreviewCallback
 {
-  private static long jdField_a_of_type_Long = 0L;
+  private static long jdField_a_of_type_Long;
   private final Handler jdField_a_of_type_AndroidOsHandler;
   private final CameraManager.CameraPreviewDataCallback jdField_a_of_type_ComTencentMobileqqCameraCameraManager$CameraPreviewDataCallback;
   private final CameraManager.CameraProxy jdField_a_of_type_ComTencentMobileqqCameraCameraManager$CameraProxy;
@@ -21,7 +21,7 @@ class CameraManagerImpl$PreviewCallbackForward
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.camera.CameraManagerImpl.PreviewCallbackForward
  * JD-Core Version:    0.7.0.1
  */

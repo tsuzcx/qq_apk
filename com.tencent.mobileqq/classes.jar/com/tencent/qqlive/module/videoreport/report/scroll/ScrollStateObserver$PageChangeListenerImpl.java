@@ -2,6 +2,7 @@ package com.tencent.qqlive.module.videoreport.report.scroll;
 
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
+import android.view.View;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.inner.VideoReportInner;
 import java.lang.ref.WeakReference;
@@ -18,23 +19,27 @@ class ScrollStateObserver$PageChangeListenerImpl
   
   public void onPageScrollStateChanged(int paramInt)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("ScrollStateObserver", "ViewPager.onPageScrollStateChanged: state = " + paramInt);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("ViewPager.onPageScrollStateChanged: state = ");
+      ((StringBuilder)localObject).append(paramInt);
+      Log.d("ScrollStateObserver", ((StringBuilder)localObject).toString());
     }
-    ViewPager localViewPager = (ViewPager)this.mViewPagerRef.get();
-    if (localViewPager == null) {
+    Object localObject = (ViewPager)this.mViewPagerRef.get();
+    if (localObject == null) {
       return;
     }
     ScrollStateObserver localScrollStateObserver = this.this$0;
-    if (paramInt != 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      ScrollStateObserver.access$100(localScrollStateObserver, localViewPager, bool);
-      if (paramInt != 0) {
-        break;
-      }
-      this.this$0.onIdle(localViewPager);
-      return;
+    boolean bool;
+    if (paramInt != 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ScrollStateObserver.access$100(localScrollStateObserver, (View)localObject, bool);
+    if (paramInt == 0) {
+      this.this$0.onIdle((View)localObject);
     }
   }
   
@@ -44,7 +49,7 @@ class ScrollStateObserver$PageChangeListenerImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.report.scroll.ScrollStateObserver.PageChangeListenerImpl
  * JD-Core Version:    0.7.0.1
  */

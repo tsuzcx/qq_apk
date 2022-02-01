@@ -16,10 +16,11 @@ class NativeVideoImage$ReleaseTask
   
   public void run()
   {
-    if (this.mDecoder != null) {}
+    AbstractAVDecode localAbstractAVDecode = this.mDecoder;
+    if (localAbstractAVDecode != null) {}
     try
     {
-      this.mDecoder.close();
+      localAbstractAVDecode.close();
       this.mDecoder = null;
       if (URLDrawable.depImp.mLog.isColorLevel()) {
         URLDrawable.depImp.mLog.d(NativeVideoImage.TAG, 2, "..ReleaseTask close AVDecode..");
@@ -31,7 +32,7 @@ class NativeVideoImage$ReleaseTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.NativeVideoImage.ReleaseTask
  * JD-Core Version:    0.7.0.1
  */

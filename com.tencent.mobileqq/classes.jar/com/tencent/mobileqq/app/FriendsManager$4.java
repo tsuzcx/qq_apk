@@ -16,7 +16,10 @@ class FriendsManager$4
     if (localFriends == null) {
       return paramSpecialCareInfo.uin;
     }
-    return ContactUtils.a(localFriends) + localFriends.uin;
+    paramSpecialCareInfo = new StringBuilder();
+    paramSpecialCareInfo.append(ContactUtils.a(localFriends));
+    paramSpecialCareInfo.append(localFriends.uin);
+    return paramSpecialCareInfo.toString();
   }
   
   public int a(SpecialCareInfo paramSpecialCareInfo1, SpecialCareInfo paramSpecialCareInfo2)
@@ -26,7 +29,7 @@ class FriendsManager$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.FriendsManager.4
  * JD-Core Version:    0.7.0.1
  */

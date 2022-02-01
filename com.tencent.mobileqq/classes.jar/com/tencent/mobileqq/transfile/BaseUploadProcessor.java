@@ -1,11 +1,12 @@
 package com.tencent.mobileqq.transfile;
 
-import com.tencent.mobileqq.highway.openup.SessionInfo;
 import com.tencent.mobileqq.highway.transaction.TransReport;
 import com.tencent.mobileqq.highway.transaction.Transaction;
 import com.tencent.mobileqq.highway.utils.HwNetworkCenter;
 import com.tencent.mobileqq.transfile.api.IHttpEngineService;
 import com.tencent.mobileqq.transfile.protohandler.RichProtoProc;
+import com.tencent.mobileqq.transfile.report.ProcessorReport;
+import com.tencent.mobileqq.transfile.report.RMServMonitorReport;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.wstt.SSCM.SSCM;
@@ -29,7 +30,7 @@ public class BaseUploadProcessor
   int mHeight;
   ArrayList<ServerAddr> mIpList = new ArrayList();
   boolean mIsPicSecondTransfered = false;
-  byte[] mLocalMd5;
+  protected byte[] mLocalMd5;
   String mMd5Str;
   public int mPicType = -1;
   RandomAccessFile mRaf;
@@ -56,8 +57,37 @@ public class BaseUploadProcessor
   public BaseUploadProcessor(BaseTransFileController paramBaseTransFileController, TransferRequest paramTransferRequest)
   {
     super(paramBaseTransFileController, paramTransferRequest);
-    setKey(paramTransferRequest.mPeerUin + paramTransferRequest.mUniseq);
+    paramBaseTransFileController = new StringBuilder();
+    paramBaseTransFileController.append(paramTransferRequest.mPeerUin);
+    paramBaseTransFileController.append(paramTransferRequest.mUniseq);
+    setKey(paramBaseTransFileController.toString());
     this.needSendMsg = paramTransferRequest.needSendMsg;
+  }
+  
+  public static int ipToLong(String paramString)
+  {
+    if (paramString == null) {
+      return 0;
+    }
+    byte[] arrayOfByte = new byte[4];
+    try
+    {
+      paramString = paramString.split("\\.");
+      arrayOfByte[0] = ((byte)(Integer.parseInt(paramString[0]) & 0xFF));
+      arrayOfByte[1] = ((byte)(Integer.parseInt(paramString[1]) & 0xFF));
+      arrayOfByte[2] = ((byte)(Integer.parseInt(paramString[2]) & 0xFF));
+      arrayOfByte[3] = ((byte)(Integer.parseInt(paramString[3]) & 0xFF));
+      int i = arrayOfByte[3];
+      int j = arrayOfByte[2];
+      int k = arrayOfByte[1];
+      int m = arrayOfByte[0];
+      return i & 0xFF | j << 8 & 0xFF00 | k << 16 & 0xFF0000 | m << 24 & 0xFF000000;
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
+    }
+    return 0;
   }
   
   public void addBDHReportInfo(HashMap<String, String> paramHashMap)
@@ -69,69 +99,43 @@ public class BaseUploadProcessor
     String str5 = (String)paramHashMap.get("param_conf_segNum");
     String str6 = (String)paramHashMap.get("param_conf_connNum");
     String str7 = (String)paramHashMap.get("param_fin_lost");
-    this.mReportInfo.put("serverip", paramHashMap.get("ip"));
-    this.mReportInfo.put("param_bdhPort", paramHashMap.get("port"));
-    this.mReportInfo.put("X-piccachetime", str1);
-    this.mReportInfo.put("param_BdhTrans", str2);
-    this.mReportInfo.put("param_segspercnt", str3);
-    this.mReportInfo.put("param_conf_segSize", str4);
-    this.mReportInfo.put("param_conf_segNum", str5);
-    this.mReportInfo.put("param_conf_connNum", str6);
-    this.mReportInfo.put("param_fin_lost", str7);
-    this.mReportInfo.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
-    this.mReportInfo.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
-    this.mReportInfo.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
-    this.mReportInfo.put("param_retry_code", paramHashMap.get("param_retry_code"));
-    this.mReportInfo.put("param_heart_resp", paramHashMap.get("param_heart_resp"));
-    this.mReportInfo.put("param_ip_index", paramHashMap.get("param_ip_index"));
-    this.mReportInfo.put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
+    this.mProcessorReport.mReportInfo.put("serverip", paramHashMap.get("ip"));
+    this.mProcessorReport.mReportInfo.put("param_bdhPort", paramHashMap.get("port"));
+    this.mProcessorReport.mReportInfo.put("X-piccachetime", str1);
+    this.mProcessorReport.mReportInfo.put("param_BdhTrans", str2);
+    this.mProcessorReport.mReportInfo.put("param_segspercnt", str3);
+    this.mProcessorReport.mReportInfo.put("param_conf_segSize", str4);
+    this.mProcessorReport.mReportInfo.put("param_conf_segNum", str5);
+    this.mProcessorReport.mReportInfo.put("param_conf_connNum", str6);
+    this.mProcessorReport.mReportInfo.put("param_fin_lost", str7);
+    this.mProcessorReport.mReportInfo.put("param_retry_seg_count", paramHashMap.get("param_retry_seg_count"));
+    this.mProcessorReport.mReportInfo.put("param_max_retry_times", paramHashMap.get("param_max_retry_times"));
+    this.mProcessorReport.mReportInfo.put("param_total_retry_times", paramHashMap.get("param_total_retry_times"));
+    this.mProcessorReport.mReportInfo.put("param_retry_code", paramHashMap.get("param_retry_code"));
+    this.mProcessorReport.mReportInfo.put("param_heart_resp", paramHashMap.get("param_heart_resp"));
+    this.mProcessorReport.mReportInfo.put("param_ip_index", paramHashMap.get("param_ip_index"));
+    this.mProcessorReport.mReportInfo.put("param_Ip_ConnCost", paramHashMap.get("param_Ip_ConnCost"));
     this.mRSMReporter.mConnCost = ((String)paramHashMap.get("param_Ip_ConnCost"));
-    this.mReportInfo.put("param_BDH_Cache_Diff", paramHashMap.get("param_BDH_Cache_Diff"));
-    this.mReportInfo.put("param_is_ipv6", paramHashMap.get("param_is_ipv6"));
-    this.mReportInfo.put("param_hasV6List", paramHashMap.get("param_hasV6List"));
-    this.mReportInfo.put("param_ipv6First", paramHashMap.get("param_ipv6First"));
+    this.mProcessorReport.mReportInfo.put("param_BDH_Cache_Diff", paramHashMap.get("param_BDH_Cache_Diff"));
+    this.mProcessorReport.mReportInfo.put("param_is_ipv6", paramHashMap.get("param_is_ipv6"));
+    this.mProcessorReport.mReportInfo.put("param_hasV6List", paramHashMap.get("param_hasV6List"));
+    this.mProcessorReport.mReportInfo.put("param_ipv6First", paramHashMap.get("param_ipv6First"));
     this.reportTimeHt = this.mTrans.mTransReport.timeCost_Ht;
     this.reportTimePicCache = this.mTrans.mTransReport.timeCost_Cache;
   }
   
   public int cancel()
   {
-    return super.cancel();
-  }
-  
-  protected boolean checkBDHSessionValid()
-  {
-    return (this.mSigSession != null) && (this.mSigSession.length > 0) && (this.mSessionKey != null) && (this.mSessionKey.length > 0);
+    int i = super.cancel();
+    recycleFD();
+    return i;
   }
   
   protected void collectChnlCostReport()
   {
-    int i = 1;
-    if ((this.mChannelStatus == 2) && (!this.mReportInfo.containsKey("param_BdhTrans"))) {
-      if ((this.reportTimeTrans > 0L) && (this.reportTimePicCache > 0L))
-      {
-        if ((this.isReportValid) && (i != 0))
-        {
-          this.costReport = new StringBuilder();
-          this.costReport.append("s").append(this.segmentNum).append("_").append("tr").append(this.reportTimeTrans).append("_").append("ht").append(this.reportTimeHt).append("_").append("pic").append(this.reportTimePicCache).append(";");
-          this.mReportInfo.put("X-piccachetime", String.valueOf(this.reportTimePicCache));
-          this.mReportInfo.put("param_CostEach", this.costReport.toString());
-          this.mReportInfo.put("param_sliceNum", String.valueOf(this.segmentNum));
-        }
-        localStringBuilder = new StringBuilder();
-        localStringBuilder.append("sn:").append(this.segmentNum).append(";").append("tc_s:").append(this.reportTimeTrans).append(";").append("tc_h:").append(this.reportTimeHt).append(";").append("tc_p:").append(this.reportTimePicCache).append(";");
-        this.mReportInfo.put("param_BdhTrans", localStringBuilder.toString());
-      }
+    if ((this.mChannelStatus == 1) && (this.mTrans != null)) {
+      this.mProcessorReport.mReportInfo.put("X-piccachetime", String.valueOf(this.mTrans.mTransReport.timeCost_Cache));
     }
-    while ((this.mChannelStatus != 1) || (this.mTrans == null)) {
-      for (;;)
-      {
-        StringBuilder localStringBuilder;
-        return;
-        i = 0;
-      }
-    }
-    this.mReportInfo.put("X-piccachetime", String.valueOf(this.mTrans.mTransReport.timeCost_Cache));
   }
   
   protected HttpNetReq constructHttpNetReq(byte[] paramArrayOfByte)
@@ -146,34 +150,19 @@ public class BaseUploadProcessor
     localHttpNetReq.mBusiProtoType = this.mUiRequest.mUinType;
     localHttpNetReq.mFileType = this.mUiRequest.mFileType;
     localHttpNetReq.mIsNetChgAsError = true;
-    localHttpNetReq.mReqProperties.put("Range", "bytes=" + this.mTransferedSize + "-");
+    paramArrayOfByte = localHttpNetReq.mReqProperties;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("bytes=");
+    localStringBuilder.append(this.mTransferedSize);
+    localStringBuilder.append("-");
+    paramArrayOfByte.put("Range", localStringBuilder.toString());
     localHttpNetReq.mReqProperties.put("Accept-Encoding", "identity");
     return localHttpNetReq;
   }
   
-  protected void finalize()
-  {
-    super.finalize();
-    if (this.mRaf != null) {}
-    try
-    {
-      this.mRaf.close();
-      return;
-    }
-    catch (IOException localIOException)
-    {
-      localIOException.printStackTrace();
-      return;
-    }
-    finally
-    {
-      this.mRaf = null;
-    }
-  }
-  
   public void fixTimeAtPttPreSend()
   {
-    this.mStartTime = System.nanoTime();
+    this.mProcessorReport.mStartTime = System.nanoTime();
   }
   
   protected long getBlockSize(long paramLong)
@@ -192,195 +181,220 @@ public class BaseUploadProcessor
   {
     // Byte code:
     //   0: aload_0
-    //   1: getfield 312	com/tencent/mobileqq/transfile/BaseUploadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
-    //   4: getfield 384	com/tencent/mobileqq/transfile/TransferRequest:mLocalPath	Ljava/lang/String;
+    //   1: getfield 291	com/tencent/mobileqq/transfile/BaseUploadProcessor:mUiRequest	Lcom/tencent/mobileqq/transfile/TransferRequest;
+    //   4: getfield 352	com/tencent/mobileqq/transfile/TransferRequest:mLocalPath	Ljava/lang/String;
     //   7: astore 4
-    //   9: new 386	java/io/FileInputStream
+    //   9: new 354	java/io/FileInputStream
     //   12: dup
     //   13: aload 4
-    //   15: invokespecial 388	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
+    //   15: invokespecial 356	java/io/FileInputStream:<init>	(Ljava/lang/String;)V
     //   18: astore_3
     //   19: aload_3
     //   20: astore_2
     //   21: aload_0
     //   22: aload_3
     //   23: aload_0
-    //   24: getfield 392	com/tencent/mobileqq/transfile/BaseUploadProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
-    //   27: getfield 397	com/tencent/mobileqq/transfile/FileMsg:fileSize	J
-    //   30: invokestatic 403	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
-    //   33: putfield 405	com/tencent/mobileqq/transfile/BaseUploadProcessor:mLocalMd5	[B
-    //   36: aload_3
-    //   37: astore_2
-    //   38: aload_0
-    //   39: aload_0
-    //   40: getfield 405	com/tencent/mobileqq/transfile/BaseUploadProcessor:mLocalMd5	[B
-    //   43: invokestatic 410	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
-    //   46: putfield 412	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
-    //   49: aload_3
-    //   50: astore_2
-    //   51: aload_0
-    //   52: aload_0
-    //   53: getfield 412	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
-    //   56: putfield 414	com/tencent/mobileqq/transfile/BaseUploadProcessor:mMd5Str	Ljava/lang/String;
-    //   59: aload_3
-    //   60: astore_2
-    //   61: aload_0
-    //   62: getfield 392	com/tencent/mobileqq/transfile/BaseUploadProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
-    //   65: aload_0
-    //   66: getfield 412	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
-    //   69: putfield 417	com/tencent/mobileqq/transfile/FileMsg:fileMd5	Ljava/lang/String;
-    //   72: aload_3
-    //   73: astore_2
-    //   74: aload_0
-    //   75: new 98	java/lang/StringBuilder
-    //   78: dup
-    //   79: invokespecial 99	java/lang/StringBuilder:<init>	()V
-    //   82: aload_0
-    //   83: getfield 412	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
-    //   86: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   89: ldc_w 419
-    //   92: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   95: aload_0
-    //   96: getfield 421	com/tencent/mobileqq/transfile/BaseUploadProcessor:mExtName	Ljava/lang/String;
-    //   99: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   105: putfield 412	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
-    //   108: aload_3
-    //   109: ifnull +7 -> 116
-    //   112: aload_3
-    //   113: invokevirtual 422	java/io/FileInputStream:close	()V
-    //   116: iconst_1
-    //   117: istore_1
-    //   118: iload_1
-    //   119: ireturn
-    //   120: astore_2
-    //   121: aload_3
-    //   122: astore_2
-    //   123: new 424	java/io/File
-    //   126: dup
-    //   127: aload 4
-    //   129: invokespecial 425	java/io/File:<init>	(Ljava/lang/String;)V
-    //   132: astore 4
-    //   134: aload_3
-    //   135: astore_2
-    //   136: aload 4
-    //   138: invokevirtual 428	java/io/File:exists	()Z
-    //   141: istore_1
-    //   142: iload_1
-    //   143: ifeq -107 -> 36
-    //   146: aload_3
-    //   147: astore_2
-    //   148: aload 4
-    //   150: invokestatic 434	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
-    //   153: astore 4
-    //   155: aload 4
-    //   157: ifnull +17 -> 174
-    //   160: aload_3
-    //   161: astore_2
-    //   162: aload_0
-    //   163: aload 4
-    //   165: invokestatic 438	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
-    //   168: putfield 405	com/tencent/mobileqq/transfile/BaseUploadProcessor:mLocalMd5	[B
-    //   171: goto -135 -> 36
-    //   174: ldc_w 440
-    //   177: astore 4
-    //   179: goto -19 -> 160
-    //   182: astore_2
-    //   183: aload_2
-    //   184: invokevirtual 358	java/io/IOException:printStackTrace	()V
-    //   187: goto -71 -> 116
-    //   190: astore 4
-    //   192: aconst_null
-    //   193: astore_3
-    //   194: aload_3
-    //   195: astore_2
-    //   196: aload_0
-    //   197: aconst_null
-    //   198: putfield 405	com/tencent/mobileqq/transfile/BaseUploadProcessor:mLocalMd5	[B
-    //   201: aload_3
-    //   202: astore_2
-    //   203: aload_0
-    //   204: aload 4
-    //   206: invokevirtual 444	com/tencent/mobileqq/transfile/BaseUploadProcessor:analysisIOProblem	(Ljava/io/IOException;)V
-    //   209: iconst_0
-    //   210: istore_1
-    //   211: aload_3
-    //   212: ifnull -94 -> 118
-    //   215: aload_3
-    //   216: invokevirtual 422	java/io/FileInputStream:close	()V
-    //   219: iconst_0
-    //   220: ireturn
-    //   221: astore_2
-    //   222: aload_2
-    //   223: invokevirtual 358	java/io/IOException:printStackTrace	()V
-    //   226: iconst_0
-    //   227: ireturn
-    //   228: astore_3
-    //   229: aconst_null
-    //   230: astore_2
-    //   231: aload_2
-    //   232: ifnull +7 -> 239
-    //   235: aload_2
-    //   236: invokevirtual 422	java/io/FileInputStream:close	()V
-    //   239: aload_3
-    //   240: athrow
-    //   241: astore_2
-    //   242: aload_2
-    //   243: invokevirtual 358	java/io/IOException:printStackTrace	()V
-    //   246: goto -7 -> 239
+    //   24: getfield 360	com/tencent/mobileqq/transfile/BaseUploadProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
+    //   27: getfield 365	com/tencent/mobileqq/transfile/FileMsg:fileSize	J
+    //   30: invokestatic 371	com/tencent/qphone/base/util/MD5:toMD5Byte	(Ljava/io/InputStream;J)[B
+    //   33: putfield 373	com/tencent/mobileqq/transfile/BaseUploadProcessor:mLocalMd5	[B
+    //   36: goto +61 -> 97
+    //   39: astore 4
+    //   41: goto +173 -> 214
+    //   44: aload_3
+    //   45: astore_2
+    //   46: new 375	java/io/File
+    //   49: dup
+    //   50: aload 4
+    //   52: invokespecial 376	java/io/File:<init>	(Ljava/lang/String;)V
+    //   55: astore 4
+    //   57: aload_3
+    //   58: astore_2
+    //   59: aload 4
+    //   61: invokevirtual 379	java/io/File:exists	()Z
+    //   64: istore_1
+    //   65: iload_1
+    //   66: ifeq +31 -> 97
+    //   69: aload_3
+    //   70: astore_2
+    //   71: aload 4
+    //   73: invokestatic 385	com/tencent/qqprotect/singleupdate/MD5FileUtil:a	(Ljava/io/File;)Ljava/lang/String;
+    //   76: astore 4
+    //   78: aload 4
+    //   80: ifnull +199 -> 279
+    //   83: goto +3 -> 86
+    //   86: aload_3
+    //   87: astore_2
+    //   88: aload_0
+    //   89: aload 4
+    //   91: invokestatic 391	com/qq/taf/jce/HexUtil:hexStr2Bytes	(Ljava/lang/String;)[B
+    //   94: putfield 373	com/tencent/mobileqq/transfile/BaseUploadProcessor:mLocalMd5	[B
+    //   97: aload_3
+    //   98: astore_2
+    //   99: aload_0
+    //   100: aload_0
+    //   101: getfield 373	com/tencent/mobileqq/transfile/BaseUploadProcessor:mLocalMd5	[B
+    //   104: invokestatic 394	com/qq/taf/jce/HexUtil:bytes2HexStr	([B)Ljava/lang/String;
+    //   107: putfield 396	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
+    //   110: aload_3
+    //   111: astore_2
+    //   112: aload_0
+    //   113: aload_0
+    //   114: getfield 396	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
+    //   117: putfield 398	com/tencent/mobileqq/transfile/BaseUploadProcessor:mMd5Str	Ljava/lang/String;
+    //   120: aload_3
+    //   121: astore_2
+    //   122: aload_0
+    //   123: getfield 360	com/tencent/mobileqq/transfile/BaseUploadProcessor:file	Lcom/tencent/mobileqq/transfile/FileMsg;
+    //   126: aload_0
+    //   127: getfield 396	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
+    //   130: putfield 401	com/tencent/mobileqq/transfile/FileMsg:fileMd5	Ljava/lang/String;
+    //   133: aload_3
+    //   134: astore_2
+    //   135: new 98	java/lang/StringBuilder
+    //   138: dup
+    //   139: invokespecial 99	java/lang/StringBuilder:<init>	()V
+    //   142: astore 4
+    //   144: aload_3
+    //   145: astore_2
+    //   146: aload 4
+    //   148: aload_0
+    //   149: getfield 396	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
+    //   152: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   155: pop
+    //   156: aload_3
+    //   157: astore_2
+    //   158: aload 4
+    //   160: ldc_w 403
+    //   163: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   166: pop
+    //   167: aload_3
+    //   168: astore_2
+    //   169: aload 4
+    //   171: aload_0
+    //   172: getfield 405	com/tencent/mobileqq/transfile/BaseUploadProcessor:mExtName	Ljava/lang/String;
+    //   175: invokevirtual 108	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   178: pop
+    //   179: aload_3
+    //   180: astore_2
+    //   181: aload_0
+    //   182: aload 4
+    //   184: invokevirtual 118	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   187: putfield 396	com/tencent/mobileqq/transfile/BaseUploadProcessor:mFileName	Ljava/lang/String;
+    //   190: aload_3
+    //   191: invokevirtual 408	java/io/FileInputStream:close	()V
+    //   194: goto +8 -> 202
+    //   197: astore_2
+    //   198: aload_2
+    //   199: invokevirtual 409	java/io/IOException:printStackTrace	()V
+    //   202: iconst_1
+    //   203: ireturn
+    //   204: astore_2
+    //   205: aconst_null
+    //   206: astore_3
+    //   207: goto +46 -> 253
+    //   210: astore 4
+    //   212: aconst_null
+    //   213: astore_3
+    //   214: aload_3
+    //   215: astore_2
+    //   216: aload_0
+    //   217: aconst_null
+    //   218: putfield 373	com/tencent/mobileqq/transfile/BaseUploadProcessor:mLocalMd5	[B
+    //   221: aload_3
+    //   222: astore_2
+    //   223: aload_0
+    //   224: aload 4
+    //   226: invokevirtual 413	com/tencent/mobileqq/transfile/BaseUploadProcessor:analysisIOProblem	(Ljava/io/IOException;)V
+    //   229: aload_3
+    //   230: ifnull +14 -> 244
+    //   233: aload_3
+    //   234: invokevirtual 408	java/io/FileInputStream:close	()V
+    //   237: iconst_0
+    //   238: ireturn
+    //   239: astore_2
+    //   240: aload_2
+    //   241: invokevirtual 409	java/io/IOException:printStackTrace	()V
+    //   244: iconst_0
+    //   245: ireturn
+    //   246: astore 4
+    //   248: aload_2
     //   249: astore_3
-    //   250: goto -19 -> 231
-    //   253: astore 4
-    //   255: goto -61 -> 194
-    //   258: astore_2
-    //   259: goto -223 -> 36
+    //   250: aload 4
+    //   252: astore_2
+    //   253: aload_3
+    //   254: ifnull +15 -> 269
+    //   257: aload_3
+    //   258: invokevirtual 408	java/io/FileInputStream:close	()V
+    //   261: goto +8 -> 269
+    //   264: astore_3
+    //   265: aload_3
+    //   266: invokevirtual 409	java/io/IOException:printStackTrace	()V
+    //   269: aload_2
+    //   270: athrow
+    //   271: astore_2
+    //   272: goto -228 -> 44
+    //   275: astore_2
+    //   276: goto -179 -> 97
+    //   279: ldc_w 415
+    //   282: astore 4
+    //   284: goto -198 -> 86
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	262	0	this	BaseUploadProcessor
-    //   117	94	1	bool	boolean
-    //   20	54	2	localFileInputStream1	java.io.FileInputStream
-    //   120	1	2	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
-    //   122	40	2	localFileInputStream2	java.io.FileInputStream
-    //   182	2	2	localIOException1	IOException
-    //   195	8	2	localFileInputStream3	java.io.FileInputStream
-    //   221	2	2	localIOException2	IOException
-    //   230	6	2	localObject1	Object
-    //   241	2	2	localIOException3	IOException
-    //   258	1	2	localIOException4	IOException
-    //   18	198	3	localFileInputStream4	java.io.FileInputStream
-    //   228	12	3	localObject2	Object
-    //   249	1	3	localObject3	Object
-    //   7	171	4	localObject4	Object
-    //   190	15	4	localIOException5	IOException
-    //   253	1	4	localIOException6	IOException
+    //   0	287	0	this	BaseUploadProcessor
+    //   64	2	1	bool	boolean
+    //   20	161	2	localObject1	Object
+    //   197	2	2	localIOException1	IOException
+    //   204	1	2	localObject2	Object
+    //   215	8	2	localObject3	Object
+    //   239	10	2	localIOException2	IOException
+    //   252	18	2	localObject4	Object
+    //   271	1	2	localUnsatisfiedLinkError	java.lang.UnsatisfiedLinkError
+    //   275	1	2	localIOException3	IOException
+    //   18	240	3	localObject5	Object
+    //   264	2	3	localIOException4	IOException
+    //   7	7	4	str1	String
+    //   39	12	4	localIOException5	IOException
+    //   55	128	4	localObject6	Object
+    //   210	15	4	localIOException6	IOException
+    //   246	5	4	localObject7	Object
+    //   282	1	4	str2	String
     // Exception table:
     //   from	to	target	type
-    //   21	36	120	java/lang/UnsatisfiedLinkError
-    //   112	116	182	java/io/IOException
-    //   9	19	190	java/io/IOException
-    //   215	219	221	java/io/IOException
-    //   9	19	228	finally
-    //   235	239	241	java/io/IOException
-    //   21	36	249	finally
-    //   38	49	249	finally
-    //   51	59	249	finally
-    //   61	72	249	finally
-    //   74	108	249	finally
-    //   123	134	249	finally
-    //   136	142	249	finally
-    //   148	155	249	finally
-    //   162	171	249	finally
-    //   196	201	249	finally
-    //   203	209	249	finally
-    //   21	36	253	java/io/IOException
-    //   38	49	253	java/io/IOException
-    //   51	59	253	java/io/IOException
-    //   61	72	253	java/io/IOException
-    //   74	108	253	java/io/IOException
-    //   123	134	253	java/io/IOException
-    //   136	142	253	java/io/IOException
-    //   148	155	258	java/io/IOException
-    //   162	171	258	java/io/IOException
+    //   21	36	39	java/io/IOException
+    //   46	57	39	java/io/IOException
+    //   59	65	39	java/io/IOException
+    //   99	110	39	java/io/IOException
+    //   112	120	39	java/io/IOException
+    //   122	133	39	java/io/IOException
+    //   135	144	39	java/io/IOException
+    //   146	156	39	java/io/IOException
+    //   158	167	39	java/io/IOException
+    //   169	179	39	java/io/IOException
+    //   181	190	39	java/io/IOException
+    //   190	194	197	java/io/IOException
+    //   9	19	204	finally
+    //   9	19	210	java/io/IOException
+    //   233	237	239	java/io/IOException
+    //   21	36	246	finally
+    //   46	57	246	finally
+    //   59	65	246	finally
+    //   71	78	246	finally
+    //   88	97	246	finally
+    //   99	110	246	finally
+    //   112	120	246	finally
+    //   122	133	246	finally
+    //   135	144	246	finally
+    //   146	156	246	finally
+    //   158	167	246	finally
+    //   169	179	246	finally
+    //   181	190	246	finally
+    //   216	221	246	finally
+    //   223	229	246	finally
+    //   257	261	264	java/io/IOException
+    //   21	36	271	java/lang/UnsatisfiedLinkError
+    //   71	78	275	java/io/IOException
+    //   88	97	275	java/io/IOException
   }
   
   byte[] getStreamData(int paramInt1, int paramInt2)
@@ -396,8 +410,8 @@ public class BaseUploadProcessor
         int j = this.mRaf.read(arrayOfByte, i, paramInt1);
         if (j == -1)
         {
-          setError(9303, "fileSize not enough");
-          this.mStepTrans.logFinishTime();
+          this.mProcessorReport.setError(9303, "fileSize not enough", null, null);
+          this.mProcessorReport.mStepTrans.logFinishTime();
           return null;
         }
         i += j;
@@ -413,28 +427,6 @@ public class BaseUploadProcessor
     return null;
   }
   
-  protected void initBDHSession()
-  {
-    try
-    {
-      int i;
-      if (SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session() != null)
-      {
-        i = SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session().length;
-        this.mSigSession = new byte[i];
-        System.arraycopy(SessionInfo.getInstance(this.mUiRequest.mSelfUin).getHttpconn_sig_session(), 0, this.mSigSession, 0, i);
-      }
-      if (SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey() != null)
-      {
-        i = SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey().length;
-        this.mSessionKey = new byte[i];
-        System.arraycopy(SessionInfo.getInstance(this.mUiRequest.mSelfUin).getSessionKey(), 0, this.mSessionKey, 0, i);
-      }
-      return;
-    }
-    finally {}
-  }
-  
   protected boolean isNetworkAvailable()
   {
     HwNetworkCenter.getInstance(BaseApplication.getContext()).updateNetInfo(BaseApplication.getContext());
@@ -446,6 +438,18 @@ public class BaseUploadProcessor
     if (QLog.isColorLevel()) {
       QLog.d("BaseTransProcessor", 2, paramString);
     }
+  }
+  
+  void onError()
+  {
+    super.onError();
+    recycleFD();
+  }
+  
+  void onSuccess()
+  {
+    super.onSuccess();
+    recycleFD();
   }
   
   public void pause()
@@ -471,6 +475,46 @@ public class BaseUploadProcessor
     }
   }
   
+  /* Error */
+  protected void recycleFD()
+  {
+    // Byte code:
+    //   0: aload_0
+    //   1: getfield 419	com/tencent/mobileqq/transfile/BaseUploadProcessor:mRaf	Ljava/io/RandomAccessFile;
+    //   4: astore_1
+    //   5: aload_1
+    //   6: ifnull +32 -> 38
+    //   9: aload_1
+    //   10: invokevirtual 522	java/io/RandomAccessFile:close	()V
+    //   13: aload_0
+    //   14: aconst_null
+    //   15: putfield 419	com/tencent/mobileqq/transfile/BaseUploadProcessor:mRaf	Ljava/io/RandomAccessFile;
+    //   18: return
+    //   19: astore_1
+    //   20: goto +11 -> 31
+    //   23: astore_1
+    //   24: aload_1
+    //   25: invokevirtual 409	java/io/IOException:printStackTrace	()V
+    //   28: goto -15 -> 13
+    //   31: aload_0
+    //   32: aconst_null
+    //   33: putfield 419	com/tencent/mobileqq/transfile/BaseUploadProcessor:mRaf	Ljava/io/RandomAccessFile;
+    //   36: aload_1
+    //   37: athrow
+    //   38: return
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	39	0	this	BaseUploadProcessor
+    //   4	6	1	localRandomAccessFile	RandomAccessFile
+    //   19	1	1	localObject	Object
+    //   23	14	1	localIOException	IOException
+    // Exception table:
+    //   from	to	target	type
+    //   9	13	19	finally
+    //   24	28	19	finally
+    //   9	13	23	java/io/IOException
+  }
+  
   protected void reportForServerMonitor(String paramString1, boolean paramBoolean, int paramInt, String paramString2, String paramString3, String paramString4, String paramString5, String paramString6)
   {
     this.mRSMReporter.mMD5 = paramString4;
@@ -480,7 +524,7 @@ public class BaseUploadProcessor
     this.mRSMReporter.mServerIp = paramString2;
     this.mRSMReporter.mServerPort = paramString3;
     this.mRSMReporter.mFileSize = this.mFileSize;
-    doReportForServerMonitor(paramString1, paramBoolean);
+    this.mRSMReporter.doReportForServerMonitor(paramString1, paramBoolean, this.mProcessorReport.reason, this.mProcessorReport.errDesc, this.mUiRequest.mUinType, this.mUiRequest.mPeerUin, true, this.mProcessorReport.mStepTrans);
   }
   
   public int resume()
@@ -490,22 +534,28 @@ public class BaseUploadProcessor
   
   protected void sendFile()
   {
-    this.mStepTrans.logStartTime();
+    this.mProcessorReport.mStepTrans.logStartTime();
     long l1 = this.mTransferedSize;
     long l2 = getBlockSize(l1);
     Object localObject = getStreamData((int)l1, (int)l2);
-    if (localObject == null) {
-      onError();
-    }
-    do
+    if (localObject == null)
     {
+      onError();
       return;
-      logRichMediaEvent("sendingdata", "pos:" + l1 + "  transferData len:" + localObject.length);
-      localObject = constructHttpNetReq((byte[])localObject);
-      if (l1 + l2 >= this.mFileSize) {
-        ((HttpNetReq)localObject).mReqProperties.put("Connection", "close");
-      }
-    } while (!canDoNextStep());
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("pos:");
+    localStringBuilder.append(l1);
+    localStringBuilder.append("  transferData len:");
+    localStringBuilder.append(localObject.length);
+    logRichMediaEvent("sendingdata", localStringBuilder.toString());
+    localObject = constructHttpNetReq((byte[])localObject);
+    if (l1 + l2 >= this.mFileSize) {
+      ((HttpNetReq)localObject).mReqProperties.put("Connection", "close");
+    }
+    if (!canDoNextStep()) {
+      return;
+    }
     this.mNetReq = ((NetReq)localObject);
     setMtype();
     this.mNetEngine.sendReq((NetReq)localObject);
@@ -513,7 +563,7 @@ public class BaseUploadProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.BaseUploadProcessor
  * JD-Core Version:    0.7.0.1
  */

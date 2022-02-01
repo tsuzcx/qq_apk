@@ -34,17 +34,15 @@ public class BookShelfQueryServlet
     paramArrayOfByte = BookShelfQueryRequest.onResponse(paramArrayOfByte);
     if (paramArrayOfByte != null) {
       paramArrayOfByte = paramArrayOfByte.bookInfo.get();
+    } else {
+      paramArrayOfByte = null;
     }
-    JSONArray localJSONArray;
-    for (;;)
+    if (paramArrayOfByte != null)
     {
-      if (paramArrayOfByte == null) {
-        break label220;
-      }
-      localJSONArray = new JSONArray();
+      JSONArray localJSONArray = new JSONArray();
       int i = 0;
-      label33:
-      if (i < paramArrayOfByte.size()) {
+      while (i < paramArrayOfByte.size())
+      {
         try
         {
           JSONObject localJSONObject = new JSONObject();
@@ -53,23 +51,17 @@ public class BookShelfQueryServlet
           localJSONObject.putOpt("msg", ((MiniBookShelf.Information)paramArrayOfByte.get(i)).msg.get());
           localJSONObject.putOpt("exist", Integer.valueOf(((MiniBookShelf.Information)paramArrayOfByte.get(i)).existStatus.get()));
           localJSONArray.put(localJSONObject);
-          i += 1;
-          break label33;
-          paramArrayOfByte = null;
         }
         catch (Throwable localThrowable)
         {
-          for (;;)
-          {
-            QLog.i("BookShelfQueryServlet", 1, "", localThrowable);
-          }
+          QLog.i("BookShelfQueryServlet", 1, "", localThrowable);
         }
+        i += 1;
       }
+      paramBundle.putString("key_result_data", localJSONArray.toString());
+      notifyObserver(paramIntent, 1081, true, paramBundle, MiniAppObserver.class);
+      return;
     }
-    paramBundle.putString("key_result_data", localJSONArray.toString());
-    notifyObserver(paramIntent, 1081, true, paramBundle, MiniAppObserver.class);
-    return;
-    label220:
     notifyObserver(paramIntent, 1081, false, paramBundle, MiniAppObserver.class);
   }
   
@@ -91,7 +83,7 @@ public class BookShelfQueryServlet
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.servlet.BookShelfQueryServlet
  * JD-Core Version:    0.7.0.1
  */

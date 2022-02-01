@@ -12,12 +12,15 @@ class MainReceiverProxy$1
   
   public void onResult(int paramInt, String paramString, BaseRuntimeLoader paramBaseRuntimeLoader)
   {
-    QMLog.w("minisdk-start", "预加载Runtime完成 " + this.val$appInfo);
+    paramString = new StringBuilder();
+    paramString.append("预加载Runtime完成 ");
+    paramString.append(this.val$appInfo);
+    QMLog.w("minisdk-start", paramString.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.receiver.MainReceiverProxy.1
  * JD-Core Version:    0.7.0.1
  */

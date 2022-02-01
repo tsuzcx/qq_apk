@@ -29,8 +29,16 @@ public class SignInModule
     paramInt = paramBundle.getInt("type", 1);
     int i = paramBundle.getInt("result", 2);
     int j = paramBundle.getInt("day", 1);
-    if (QLog.isColorLevel()) {
-      QLog.i("DailySignIn", 2, "SignInModule onCall type = " + paramInt + ",result = " + i + ",day = " + j);
+    if (QLog.isColorLevel())
+    {
+      paramString = new StringBuilder();
+      paramString.append("SignInModule onCall type = ");
+      paramString.append(paramInt);
+      paramString.append(",result = ");
+      paramString.append(i);
+      paramString.append(",day = ");
+      paramString.append(j);
+      QLog.i("DailySignIn", 2, paramString.toString());
     }
     if (i == 0)
     {
@@ -51,7 +59,7 @@ public class SignInModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.SignInModule
  * JD-Core Version:    0.7.0.1
  */

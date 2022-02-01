@@ -20,13 +20,14 @@ public final class NowNearbyVideoCommentProto$HippoMsg
   
   static
   {
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40 }, new String[] { "uid", "comm", "action", "feeds_id", "comm_id" }, new Object[] { Long.valueOf(0L), null, Integer.valueOf(0), localByteStringMicro, Long.valueOf(0L) }, HippoMsg.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 24, 34, 40 }, new String[] { "uid", "comm", "action", "feeds_id", "comm_id" }, new Object[] { localLong, null, Integer.valueOf(0), localByteStringMicro, localLong }, HippoMsg.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.pb.now.NowNearbyVideoCommentProto.HippoMsg
  * JD-Core Version:    0.7.0.1
  */

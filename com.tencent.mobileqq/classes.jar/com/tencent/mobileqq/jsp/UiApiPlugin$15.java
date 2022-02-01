@@ -1,25 +1,24 @@
 package com.tencent.mobileqq.jsp;
 
 import android.text.TextUtils;
-import com.tencent.biz.pubaccount.readinjoy.biuAndCommentMix.RIJBiuAndCommentMixDataManager.BiuAndCommentListener;
-import com.tencent.biz.pubaccount.readinjoy.biuAndCommentMix.RIJBiuAndCommentRespData;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule.CallCommentJs;
+import com.tencent.mobileqq.kandian.biz.fastweb.CallCommentJs;
+import org.json.JSONObject;
 
-final class UiApiPlugin$15
-  implements RIJBiuAndCommentMixDataManager.BiuAndCommentListener
+class UiApiPlugin$15
+  implements CallCommentJs
 {
-  UiApiPlugin$15(BridgeModule.CallCommentJs paramCallCommentJs, String paramString1, String paramString2, String paramString3, String paramString4) {}
+  UiApiPlugin$15(UiApiPlugin paramUiApiPlugin) {}
   
-  public void a(RIJBiuAndCommentRespData paramRIJBiuAndCommentRespData)
+  public void a(String paramString, JSONObject paramJSONObject)
   {
-    if ((this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule$CallCommentJs != null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))) {
-      this.jdField_a_of_type_ComTencentBizPubaccountReadinjoyViolaModulesBridgeModule$CallCommentJs.a(this.jdField_a_of_type_JavaLangString, UiApiPlugin.a(paramRIJBiuAndCommentRespData, this.b, this.c, this.d));
+    if ((!TextUtils.isEmpty(paramString)) && (paramJSONObject != null)) {
+      this.a.callJs(paramString, new String[] { paramJSONObject.toString() });
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.jsp.UiApiPlugin.15
  * JD-Core Version:    0.7.0.1
  */

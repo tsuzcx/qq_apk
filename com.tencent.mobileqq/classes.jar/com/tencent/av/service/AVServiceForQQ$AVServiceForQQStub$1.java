@@ -17,13 +17,16 @@ class AVServiceForQQ$AVServiceForQQStub$1
     }
     catch (Exception localException)
     {
-      QLog.d("AVServiceForQQ", 1, "setAVServiceForegroud, e = " + localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setAVServiceForegroud, e = ");
+      localStringBuilder.append(localException);
+      QLog.d("AVServiceForQQ", 1, localStringBuilder.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.AVServiceForQQ.AVServiceForQQStub.1
  * JD-Core Version:    0.7.0.1
  */

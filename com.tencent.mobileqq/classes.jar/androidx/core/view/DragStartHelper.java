@@ -48,30 +48,51 @@ public class DragStartHelper
   {
     int i = (int)paramMotionEvent.getX();
     int j = (int)paramMotionEvent.getY();
-    switch (paramMotionEvent.getAction())
+    int k = paramMotionEvent.getAction();
+    if (k != 0)
     {
-    default: 
-    case 0: 
-    case 2: 
-      do
-      {
-        return false;
-        this.mLastTouchX = i;
-        this.mLastTouchY = j;
-        return false;
-      } while ((!MotionEventCompat.isFromSource(paramMotionEvent, 8194)) || ((paramMotionEvent.getButtonState() & 0x1) == 0) || (this.mDragging) || ((this.mLastTouchX == i) && (this.mLastTouchY == j)));
+      if (k != 1) {
+        if (k != 2)
+        {
+          if (k != 3) {
+            return false;
+          }
+        }
+        else
+        {
+          if (!MotionEventCompat.isFromSource(paramMotionEvent, 8194)) {
+            break label142;
+          }
+          if ((paramMotionEvent.getButtonState() & 0x1) == 0) {
+            return false;
+          }
+          if (this.mDragging) {
+            return false;
+          }
+          if ((this.mLastTouchX == i) && (this.mLastTouchY == j)) {
+            return false;
+          }
+          this.mLastTouchX = i;
+          this.mLastTouchY = j;
+          this.mDragging = this.mListener.onDragStart(paramView, this);
+          return this.mDragging;
+        }
+      }
+      this.mDragging = false;
+      return false;
+    }
+    else
+    {
       this.mLastTouchX = i;
       this.mLastTouchY = j;
-      this.mDragging = this.mListener.onDragStart(paramView, this);
-      return this.mDragging;
     }
-    this.mDragging = false;
+    label142:
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.DragStartHelper
  * JD-Core Version:    0.7.0.1
  */

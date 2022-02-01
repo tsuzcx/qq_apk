@@ -13,18 +13,18 @@ class OpenDataCommonJsPlugin$9
   
   public void onGetScreenshot(String paramString)
   {
-    if ((paramString.startsWith("http")) || (paramString.startsWith("https")))
+    if ((!paramString.startsWith("http")) && (!paramString.startsWith("https")))
     {
-      this.val$shareDataBuilder.setSharePicPath(paramString).build().shareAppMessage();
+      paramString = ((MiniAppFileManager)OpenDataCommonJsPlugin.access$700(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
+      this.val$shareDataBuilder.setSharePicPath(paramString).setIsLocalPic(true).build().shareAppMessage();
       return;
     }
-    paramString = ((MiniAppFileManager)OpenDataCommonJsPlugin.access$700(this.this$0).getManager(MiniAppFileManager.class)).getAbsolutePath(paramString);
-    this.val$shareDataBuilder.setSharePicPath(paramString).setIsLocalPic(true).build().shareAppMessage();
+    this.val$shareDataBuilder.setSharePicPath(paramString).build().shareAppMessage();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.OpenDataCommonJsPlugin.9
  * JD-Core Version:    0.7.0.1
  */

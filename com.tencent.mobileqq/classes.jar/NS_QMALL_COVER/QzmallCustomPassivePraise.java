@@ -33,18 +33,20 @@ public final class QzmallCustomPassivePraise
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iItemId, 0);
-    if (this.strFullScreenUrl != null) {
-      paramJceOutputStream.write(this.strFullScreenUrl, 1);
+    String str = this.strFullScreenUrl;
+    if (str != null) {
+      paramJceOutputStream.write(str, 1);
     }
     paramJceOutputStream.write(this.iType, 2);
-    if (this.strCmShowActionId != null) {
-      paramJceOutputStream.write(this.strCmShowActionId, 3);
+    str = this.strCmShowActionId;
+    if (str != null) {
+      paramJceOutputStream.write(str, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_QMALL_COVER.QzmallCustomPassivePraise
  * JD-Core Version:    0.7.0.1
  */

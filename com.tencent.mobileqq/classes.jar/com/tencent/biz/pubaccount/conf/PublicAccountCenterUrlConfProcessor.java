@@ -3,6 +3,7 @@ package com.tencent.biz.pubaccount.conf;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import com.tencent.biz.pubaccount.util.api.IPublicAccountConfigUtil;
+import com.tencent.common.app.AppInterface;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.config.IQConfigProcessor;
@@ -22,8 +23,8 @@ public class PublicAccountCenterUrlConfProcessor
       if ((localObject instanceof QQAppInterface))
       {
         localObject = (QQAppInterface)localObject;
-        String str = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getPublicAccountCenterUrlConfigData((QQAppInterface)localObject);
-        ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).loadPublicAccountCenterUrlConfig((QQAppInterface)localObject, str);
+        String str = ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getPublicAccountCenterUrlConfigData((AppInterface)localObject);
+        ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).loadPublicAccountCenterUrlConfig((AppInterface)localObject, str);
         return PublicAccountCenterUrlConfBean.a();
       }
     }
@@ -74,7 +75,7 @@ public class PublicAccountCenterUrlConfProcessor
     if ((localObject instanceof QQAppInterface))
     {
       localObject = (QQAppInterface)localObject;
-      return ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getPublicAccountCenterUrlConfigVersionCode((QQAppInterface)localObject);
+      return ((IPublicAccountConfigUtil)QRoute.api(IPublicAccountConfigUtil.class)).getPublicAccountCenterUrlConfigVersionCode((AppInterface)localObject);
     }
     return 0;
   }
@@ -88,7 +89,7 @@ public class PublicAccountCenterUrlConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.conf.PublicAccountCenterUrlConfProcessor
  * JD-Core Version:    0.7.0.1
  */

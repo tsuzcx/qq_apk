@@ -37,38 +37,45 @@ public final class DiyBubbleConfig$DiyBubbleTextConfig
     localDiyBubbleTextConfig.jdField_a_of_type_JavaLangString = paramJSONObject.optString("align");
     localDiyBubbleTextConfig.d = (DisplayUtil.c(localContext, paramJSONObject.optInt("text_size") / 2) + 1);
     localDiyBubbleTextConfig.jdField_c_of_type_JavaLangString = paramJSONObject.optString("text_align");
-    String str = paramJSONObject.optString("text_color");
-    Object localObject = str;
-    if (str.startsWith("0x")) {
-      localObject = str.substring(2);
+    Object localObject2 = paramJSONObject.optString("text_color");
+    Object localObject1 = localObject2;
+    if (((String)localObject2).startsWith("0x")) {
+      localObject1 = ((String)localObject2).substring(2);
     }
     try
     {
-      localDiyBubbleTextConfig.jdField_c_of_type_Int = Color.parseColor("#" + (String)localObject);
-      if (paramJSONObject.has("rect"))
-      {
-        localObject = paramJSONObject.optJSONArray("rect");
-        localDiyBubbleTextConfig.jdField_a_of_type_ArrayOfInt = new int[4];
-        int i = 0;
-        while (i < ((JSONArray)localObject).length())
-        {
-          localDiyBubbleTextConfig.jdField_a_of_type_ArrayOfInt[i] = DisplayUtil.a(localContext, ((JSONArray)localObject).optInt(i) / 2);
-          i += 1;
-        }
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("#");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      localDiyBubbleTextConfig.jdField_c_of_type_Int = Color.parseColor(((StringBuilder)localObject2).toString());
     }
     catch (Exception localException)
     {
-      for (;;)
+      label120:
+      int i;
+      break label120;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("DiyBubbleConfig", 2, "diy text_color invalid");
+    }
+    if (paramJSONObject.has("rect"))
+    {
+      localObject1 = paramJSONObject.optJSONArray("rect");
+      localDiyBubbleTextConfig.jdField_a_of_type_ArrayOfInt = new int[4];
+      i = 0;
+      while (i < ((JSONArray)localObject1).length())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("DiyBubbleConfig", 2, "diy text_color invalid");
-        }
+        localDiyBubbleTextConfig.jdField_a_of_type_ArrayOfInt[i] = DisplayUtil.a(localContext, ((JSONArray)localObject1).optInt(i) / 2);
+        i += 1;
       }
-      localDiyBubbleTextConfig.e = paramJSONObject.optInt("text_max_count");
-      if (QLog.isColorLevel()) {
-        QLog.d("DiyBubbleConfig", 2, "Resolve DiyBubbleTextConfig json->" + paramJSONObject);
-      }
+    }
+    localDiyBubbleTextConfig.e = paramJSONObject.optInt("text_max_count");
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("Resolve DiyBubbleTextConfig json->");
+      ((StringBuilder)localObject1).append(paramJSONObject);
+      QLog.d("DiyBubbleConfig", 2, ((StringBuilder)localObject1).toString());
     }
     return localDiyBubbleTextConfig;
   }
@@ -76,104 +83,103 @@ public final class DiyBubbleConfig$DiyBubbleTextConfig
   @TargetApi(11)
   public Rect a(VipBubbleDrawable paramVipBubbleDrawable, Canvas paramCanvas, Paint paramPaint)
   {
-    float f1 = 0.0F;
     paramCanvas = paramVipBubbleDrawable.getBounds();
     Object localObject = BaseApplicationImpl.getContext().getResources();
     if (b == -1) {
-      b = AIOUtils.a(48.0F, (Resources)localObject);
+      b = AIOUtils.b(48.0F, (Resources)localObject);
     }
-    float f4 = 1.0F;
-    float f3 = this.jdField_a_of_type_ArrayOfInt[3];
-    int i;
-    if (paramCanvas.height() < b)
+    float f4 = this.jdField_a_of_type_ArrayOfInt[3];
+    int i = paramCanvas.height();
+    int j = b;
+    float f3 = 1.0F;
+    if (i < j)
     {
-      i = AIOUtils.a(2.0F, (Resources)localObject);
-      int j = AIOUtils.a(9.0F, (Resources)localObject);
-      int k = AIOUtils.a(7.0F, (Resources)localObject);
-      f4 = (paramCanvas.height() - k * 2) * 1.0F / (b - j * 2);
-      f3 = this.jdField_a_of_type_ArrayOfInt[3] * f4;
+      i = AIOUtils.b(2.0F, (Resources)localObject);
+      j = AIOUtils.b(9.0F, (Resources)localObject);
+      int k = AIOUtils.b(7.0F, (Resources)localObject);
+      f3 = (paramCanvas.height() - k * 2) * 1.0F / (b - j * 2);
+      f4 = this.jdField_a_of_type_ArrayOfInt[3] * f3;
     }
-    for (;;)
+    else
     {
-      float f2;
-      if (this.jdField_a_of_type_JavaLangString.startsWith("T")) {
-        f2 = this.jdField_a_of_type_ArrayOfInt[1] - i;
-      }
-      for (;;)
-      {
-        label162:
-        float f5;
-        if (this.jdField_a_of_type_JavaLangString.endsWith("L"))
-        {
-          f1 = this.jdField_a_of_type_ArrayOfInt[0];
-          i = this.jdField_a_of_type_ArrayOfInt[2];
-          if (this.d != 0) {
-            paramPaint.setTextSize(f4 * this.d);
-          }
-          paramPaint.setAntiAlias(true);
-          paramPaint.setFakeBoldText(true);
-          localObject = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, paramVipBubbleDrawable.jdField_a_of_type_JavaLangString);
-          Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
-          f4 = DiyBubbleConfig.a(paramPaint, (String)localObject);
-          f5 = f2 + f3 / 2.0F - (localFontMetrics.bottom - localFontMetrics.top) / 2.0F - localFontMetrics.top;
-          if (!this.jdField_c_of_type_JavaLangString.equals("center")) {
-            break label403;
-          }
-          f2 = f1 + (i - f4) / 2.0F;
-        }
-        for (;;)
-        {
-          if (!paramVipBubbleDrawable.b) {
-            break label433;
-          }
-          f1 = paramCanvas.width() - f2 - f4;
-          return new Rect((int)f1, (int)f5, (int)(i + f1), (int)(f3 + f5));
-          if (!this.jdField_a_of_type_JavaLangString.startsWith("B")) {
-            break label460;
-          }
-          f2 = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height();
-          f2 = i + (f2 - f3);
-          break;
-          if (!this.jdField_a_of_type_JavaLangString.endsWith("R")) {
-            break label162;
-          }
-          f1 = this.jdField_a_of_type_ArrayOfInt[0] + paramCanvas.width();
-          break label162;
-          label403:
-          f2 = f1;
-          if (this.jdField_c_of_type_JavaLangString.equals("right")) {
-            f2 = f1 + i - f4;
-          }
-        }
-        label433:
-        return new Rect((int)f2, (int)f5, (int)(i + f2), (int)(f3 + f5));
-        label460:
-        f2 = 0.0F;
-      }
       i = 0;
     }
+    boolean bool = this.jdField_a_of_type_JavaLangString.startsWith("T");
+    float f2 = 0.0F;
+    float f1;
+    if (bool)
+    {
+      f1 = this.jdField_a_of_type_ArrayOfInt[1] - i;
+    }
+    else if (this.jdField_a_of_type_JavaLangString.startsWith("B"))
+    {
+      f1 = this.jdField_a_of_type_ArrayOfInt[1] + this.jdField_a_of_type_ArrayOfInt[3] + paramCanvas.height();
+      f1 = i + (f1 - f4);
+    }
+    else
+    {
+      f1 = 0.0F;
+    }
+    if (this.jdField_a_of_type_JavaLangString.endsWith("L")) {}
+    for (i = this.jdField_a_of_type_ArrayOfInt[0];; i = this.jdField_a_of_type_ArrayOfInt[0] + paramCanvas.width())
+    {
+      f2 = i;
+      break;
+      if (!this.jdField_a_of_type_JavaLangString.endsWith("R")) {
+        break;
+      }
+    }
+    i = this.jdField_a_of_type_ArrayOfInt[2];
+    j = this.d;
+    if (j != 0) {
+      paramPaint.setTextSize(j * f3);
+    }
+    paramPaint.setAntiAlias(true);
+    paramPaint.setFakeBoldText(true);
+    localObject = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, paramVipBubbleDrawable.jdField_a_of_type_JavaLangString);
+    Paint.FontMetrics localFontMetrics = paramPaint.getFontMetrics();
+    float f5 = DiyBubbleConfig.a(paramPaint, (String)localObject);
+    float f6 = f4 / 2.0F;
+    float f7 = (localFontMetrics.bottom - localFontMetrics.top) / 2.0F;
+    float f8 = localFontMetrics.top;
+    if (this.jdField_c_of_type_JavaLangString.equals("center"))
+    {
+      f3 = f2 + (i - f5) / 2.0F;
+    }
+    else
+    {
+      f3 = f2;
+      if (this.jdField_c_of_type_JavaLangString.equals("right")) {
+        f3 = f2 + i - f5;
+      }
+    }
+    return DiyBubbleConfig.a(paramVipBubbleDrawable, paramCanvas, f4, f3, f1 + f6 - f7 - f8, i, f5);
   }
   
   public void a(VipBubbleDrawable paramVipBubbleDrawable, Canvas paramCanvas)
   {
-    if ((paramCanvas == null) || (paramVipBubbleDrawable == null)) {}
-    String str;
-    do
+    if (paramCanvas != null)
     {
-      return;
-      str = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, paramVipBubbleDrawable.jdField_a_of_type_JavaLangString);
-    } while ((TextUtils.isEmpty(str)) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)));
-    Paint localPaint = new Paint();
-    if (this.jdField_c_of_type_Int != -1) {
-      localPaint.setColor(this.jdField_c_of_type_Int);
+      if (paramVipBubbleDrawable == null) {
+        return;
+      }
+      String str = BubbleDiyFetcher.a().a(paramVipBubbleDrawable, paramVipBubbleDrawable.jdField_a_of_type_JavaLangString);
+      if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+      {
+        Paint localPaint = new Paint();
+        int i = this.jdField_c_of_type_Int;
+        if (i != -1) {
+          localPaint.setColor(i);
+        }
+        paramVipBubbleDrawable = a(paramVipBubbleDrawable, paramCanvas, localPaint);
+        paramCanvas.drawText(str, paramVipBubbleDrawable.left, paramVipBubbleDrawable.top, localPaint);
+      }
     }
-    paramVipBubbleDrawable = a(paramVipBubbleDrawable, paramCanvas, localPaint);
-    paramCanvas.drawText(str, paramVipBubbleDrawable.left, paramVipBubbleDrawable.top, localPaint);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.bubble.DiyBubbleConfig.DiyBubbleTextConfig
  * JD-Core Version:    0.7.0.1
  */

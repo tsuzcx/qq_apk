@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.search.fragment.searchentry.nativemethod;
 
 import android.content.Context;
-import com.tencent.hippy.qq.module.tkd.TKDJsCallBack;
+import com.tencent.hippy.qq.module.tkd.TJsCallBack;
 import com.tencent.mobileqq.app.QQAppInterface;
 
 public abstract class SearchNativeMethodBase
-  implements TKDJsCallBack
+  implements TJsCallBack
 {
   protected final QQAppInterface app;
   protected final Context context;
@@ -27,7 +27,7 @@ public abstract class SearchNativeMethodBase
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.nativemethod.SearchNativeMethodBase
  * JD-Core Version:    0.7.0.1
  */

@@ -37,41 +37,40 @@ public class BasePicItemBuilder$Holder
   {
     if (!paramMessageForPic.isSendFromLocal())
     {
-      if ((this.jdField_a_of_type_ComTencentImageURLDrawable != null) && (this.jdField_a_of_type_ComTencentImageURLDrawable.getStatus() == 1)) {
+      paramMessageForPic = this.jdField_a_of_type_ComTencentImageURLDrawable;
+      if ((paramMessageForPic != null) && (paramMessageForPic.getStatus() == 1)) {
         return 1;
       }
+      return 0;
     }
-    else
+    if (paramMessageForPic.size > 0L) {
+      return 2;
+    }
+    paramMessageForPic = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a.getRuntimeService(ITransFileController.class)).findProcessor(paramMessageForPic.frienduin, paramMessageForPic.uniseq);
+    if ((paramMessageForPic instanceof BaseTransProcessor))
     {
-      if (paramMessageForPic.size > 0L) {
-        return 2;
-      }
-      paramMessageForPic = ((ITransFileController)this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder.a.getRuntimeService(ITransFileController.class)).findProcessor(paramMessageForPic.frienduin, paramMessageForPic.uniseq);
-      if ((paramMessageForPic instanceof BaseTransProcessor))
-      {
-        paramMessageForPic = (BaseTransProcessor)paramMessageForPic;
-        long l = paramMessageForPic.getFileStatus();
-        if ((l == 1005L) || (l == 1006L) || (l == 1004L) || (paramMessageForPic.getLastFileStatus() == 1003L)) {
-          return 4;
-        }
+      paramMessageForPic = (BaseTransProcessor)paramMessageForPic;
+      long l = paramMessageForPic.getFileStatus();
+      if ((l != 1005L) && (l != 1006L) && (l != 1004L) && (paramMessageForPic.getLastFileStatus() != 1003L)) {
         return 3;
       }
-      return 5;
+      return 4;
     }
-    return 0;
+    return 5;
   }
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL.b;
+    BasePicItemBuilder.DrawURL localDrawURL = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemBasePicItemBuilder$DrawURL;
+    if (localDrawURL != null) {
+      return localDrawURL.b;
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.BasePicItemBuilder.Holder
  * JD-Core Version:    0.7.0.1
  */

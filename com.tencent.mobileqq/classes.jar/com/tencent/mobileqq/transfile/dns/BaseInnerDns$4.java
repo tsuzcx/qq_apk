@@ -16,13 +16,20 @@ class BaseInnerDns$4
   
   public void run()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("InnerDns", 1, "syncAddressData called, mServerProcName=" + BaseInnerDns.access$000(this.this$0) + ", mConnected=" + BaseInnerDns.access$100(this.this$0));
+    Object localObject1;
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("syncAddressData called, mServerProcName=");
+      ((StringBuilder)localObject1).append(BaseInnerDns.access$000(this.this$0));
+      ((StringBuilder)localObject1).append(", mConnected=");
+      ((StringBuilder)localObject1).append(BaseInnerDns.access$100(this.this$0));
+      QLog.i("InnerDns", 1, ((StringBuilder)localObject1).toString());
     }
     if (BaseInnerDns.access$100(this.this$0)) {
       try
       {
-        Object localObject1 = new Bundle();
+        localObject1 = new Bundle();
         localObject1 = QIPCClientHelper.getInstance().getClient().callServer("InnerDnsModule", "syncAddressData", (Bundle)localObject1);
         if (((EIPCResult)localObject1).isSuccess())
         {
@@ -41,19 +48,25 @@ class BaseInnerDns$4
           }
           finally {}
         }
-        QLog.e("InnerDns", 1, "syncAddressData fail, mServerProcName=" + BaseInnerDns.access$000(this.this$0));
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("syncAddressData fail, mServerProcName=");
+        localStringBuilder1.append(BaseInnerDns.access$000(this.this$0));
+        QLog.e("InnerDns", 1, localStringBuilder1.toString());
+        return;
       }
       catch (Throwable localThrowable)
       {
-        QLog.e("InnerDns", 1, "syncAddressData error:" + localThrowable.getMessage());
-        return;
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("syncAddressData error:");
+        localStringBuilder2.append(localThrowable.getMessage());
+        QLog.e("InnerDns", 1, localStringBuilder2.toString());
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.dns.BaseInnerDns.4
  * JD-Core Version:    0.7.0.1
  */

@@ -27,30 +27,33 @@ public final class Mp4WebvttDecoder
   private static Cue parseVttCueBox(ParsableByteArray paramParsableByteArray, WebvttCue.Builder paramBuilder, int paramInt)
   {
     paramBuilder.reset();
-    while (paramInt > 0)
-    {
-      if (paramInt < 8) {
-        throw new SubtitleDecoderException("Incomplete vtt cue box header found.");
-      }
-      int i = paramParsableByteArray.readInt();
-      int j = paramParsableByteArray.readInt();
-      i -= 8;
-      String str = new String(paramParsableByteArray.data, paramParsableByteArray.getPosition(), i);
-      paramParsableByteArray.skipBytes(i);
-      i = paramInt - 8 - i;
-      if (j == TYPE_sttg)
+    while (paramInt > 0) {
+      if (paramInt >= 8)
       {
-        WebvttCueParser.parseCueSettingsList(str, paramBuilder);
-        paramInt = i;
+        int i = paramParsableByteArray.readInt();
+        int j = paramParsableByteArray.readInt();
+        i -= 8;
+        String str = new String(paramParsableByteArray.data, paramParsableByteArray.getPosition(), i);
+        paramParsableByteArray.skipBytes(i);
+        i = paramInt - 8 - i;
+        if (j == TYPE_sttg)
+        {
+          WebvttCueParser.parseCueSettingsList(str, paramBuilder);
+          paramInt = i;
+        }
+        else
+        {
+          paramInt = i;
+          if (j == TYPE_payl)
+          {
+            WebvttCueParser.parseCueText(null, str.trim(), paramBuilder, Collections.emptyList());
+            paramInt = i;
+          }
+        }
       }
       else
       {
-        paramInt = i;
-        if (j == TYPE_payl)
-        {
-          WebvttCueParser.parseCueText(null, str.trim(), paramBuilder, Collections.emptyList());
-          paramInt = i;
-        }
+        throw new SubtitleDecoderException("Incomplete vtt cue box header found.");
       }
     }
     return paramBuilder.build();
@@ -60,16 +63,19 @@ public final class Mp4WebvttDecoder
   {
     this.sampleData.reset(paramArrayOfByte, paramInt);
     paramArrayOfByte = new ArrayList();
-    while (this.sampleData.bytesLeft() > 0)
-    {
-      if (this.sampleData.bytesLeft() < 8) {
-        throw new SubtitleDecoderException("Incomplete Mp4Webvtt Top Level box header found.");
+    while (this.sampleData.bytesLeft() > 0) {
+      if (this.sampleData.bytesLeft() >= 8)
+      {
+        paramInt = this.sampleData.readInt();
+        if (this.sampleData.readInt() == TYPE_vttc) {
+          paramArrayOfByte.add(parseVttCueBox(this.sampleData, this.builder, paramInt - 8));
+        } else {
+          this.sampleData.skipBytes(paramInt - 8);
+        }
       }
-      paramInt = this.sampleData.readInt();
-      if (this.sampleData.readInt() == TYPE_vttc) {
-        paramArrayOfByte.add(parseVttCueBox(this.sampleData, this.builder, paramInt - 8));
-      } else {
-        this.sampleData.skipBytes(paramInt - 8);
+      else
+      {
+        throw new SubtitleDecoderException("Incomplete Mp4Webvtt Top Level box header found.");
       }
     }
     return new Mp4WebvttSubtitle(paramArrayOfByte);
@@ -77,7 +83,7 @@ public final class Mp4WebvttDecoder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.text.webvtt.Mp4WebvttDecoder
  * JD-Core Version:    0.7.0.1
  */

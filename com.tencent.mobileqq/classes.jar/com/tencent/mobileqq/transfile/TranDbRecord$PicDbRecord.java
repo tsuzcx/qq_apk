@@ -2,9 +2,6 @@ package com.tencent.mobileqq.transfile;
 
 public class TranDbRecord$PicDbRecord
 {
-  public static int EXTRA_FLAG_FOWARD_PHOTO = 10;
-  public static int EXTRA_FLAG_SEND_PHOTO;
-  public static int EXTRA_FLAG_SEND_RAW_PHOTO = EXTRA_FLAG_SEND_PHOTO + 1;
   public String bigMsgUrl;
   public String bigThumbMsgUrl;
   public int extraFlag;
@@ -35,109 +32,100 @@ public class TranDbRecord$PicDbRecord
   
   public void initFromMsg(String paramString)
   {
-    Object localObject;
     if ((paramString != null) && (paramString.length() > 0) && (paramString.charAt(0) == '\026'))
     {
-      localObject = paramString.split("\\|");
-      if (localObject != null)
+      String[] arrayOfString = paramString.split("\\|");
+      if (arrayOfString != null)
       {
         int i = 0;
-        while (i < localObject.length)
+        while (i < arrayOfString.length)
         {
-          if ((localObject[i] != null) && (localObject[i].equals("null"))) {
-            localObject[i] = null;
+          if ((arrayOfString[i] != null) && (arrayOfString[i].equals("null"))) {
+            arrayOfString[i] = null;
           }
           i += 1;
         }
-        if (localObject.length >= 1) {
-          this.path = localObject[0].trim();
+        if (arrayOfString.length >= 1) {
+          this.path = arrayOfString[0].trim();
         }
-        if (localObject.length < 2) {}
-      }
-    }
-    try
-    {
-      this.size = Long.parseLong(localObject[1]);
-      if (localObject.length < 3) {}
-    }
-    catch (NumberFormatException localException3)
-    {
-      try
-      {
-        this.type = Integer.parseInt(localObject[2]);
-        if (localObject.length < 4) {}
-      }
-      catch (NumberFormatException localException3)
-      {
-        try
-        {
-          this.isRead = Boolean.parseBoolean(localObject[3]);
-          if (localObject.length >= 5) {
-            this.uuid = localObject[4];
-          }
-          if (localObject.length >= 6) {
-            this.md5 = localObject[5];
-          }
-          if (localObject.length >= 7) {
-            this.serverStoreSource = localObject[6];
-          }
-          if (localObject.length >= 8) {
-            this.thumbMsgUrl = localObject[7];
-          }
-          if (localObject.length >= 9) {
-            this.bigMsgUrl = localObject[8];
-          }
-          if (localObject.length >= 10) {
-            this.rawMsgUrl = localObject[9];
-          }
-          if (localObject.length < 11) {}
-        }
-        catch (Exception localException3)
-        {
+        if (arrayOfString.length >= 2) {
           try
           {
-            this.fileSizeFlag = Integer.parseInt(localObject[10]);
-            if (localObject.length < 12) {}
+            this.size = Long.parseLong(arrayOfString[1]);
+          }
+          catch (NumberFormatException localNumberFormatException1)
+          {
+            this.size = 0L;
+            localNumberFormatException1.printStackTrace();
+          }
+        }
+        if (arrayOfString.length >= 3) {
+          try
+          {
+            this.type = Integer.parseInt(arrayOfString[2]);
+          }
+          catch (NumberFormatException localNumberFormatException2)
+          {
+            this.type = 0;
+            localNumberFormatException2.printStackTrace();
+          }
+        }
+        if (arrayOfString.length >= 4) {
+          try
+          {
+            this.isRead = Boolean.parseBoolean(arrayOfString[3]);
+          }
+          catch (Exception localException2)
+          {
+            this.isRead = false;
+            localException2.printStackTrace();
+          }
+        }
+        if (arrayOfString.length >= 5) {
+          this.uuid = arrayOfString[4];
+        }
+        if (arrayOfString.length >= 6) {
+          this.md5 = arrayOfString[5];
+        }
+        if (arrayOfString.length >= 7) {
+          this.serverStoreSource = arrayOfString[6];
+        }
+        if (arrayOfString.length >= 8) {
+          this.thumbMsgUrl = arrayOfString[7];
+        }
+        if (arrayOfString.length >= 9) {
+          this.bigMsgUrl = arrayOfString[8];
+        }
+        if (arrayOfString.length >= 10) {
+          this.rawMsgUrl = arrayOfString[9];
+        }
+        if (arrayOfString.length >= 11) {
+          try
+          {
+            this.fileSizeFlag = Integer.parseInt(arrayOfString[10]);
           }
           catch (Exception localException3)
           {
-            try
-            {
-              for (;;)
-              {
-                this.extraFlag = Integer.parseInt(localObject[11]);
-                if (this.extraFlag == EXTRA_FLAG_FOWARD_PHOTO)
-                {
-                  localObject = new PicFowardDbRecordData();
-                  ((PicFowardDbRecordData)localObject).initFromMsg(paramString);
-                  this.extraObject = localObject;
-                }
-                return;
-                localNumberFormatException1 = localNumberFormatException1;
-                this.size = 0L;
-                localNumberFormatException1.printStackTrace();
-                continue;
-                localNumberFormatException2 = localNumberFormatException2;
-                this.type = 0;
-                localNumberFormatException2.printStackTrace();
-                continue;
-                localException2 = localException2;
-                this.isRead = false;
-                localException2.printStackTrace();
-              }
-              localException3 = localException3;
-              this.fileSizeFlag = 0;
-              localException3.printStackTrace();
-            }
-            catch (Exception localException1)
-            {
-              for (;;)
-              {
-                this.extraFlag = 0;
-                localException1.printStackTrace();
-              }
-            }
+            this.fileSizeFlag = 0;
+            localException3.printStackTrace();
           }
+        }
+        if (arrayOfString.length >= 12) {
+          try
+          {
+            this.extraFlag = Integer.parseInt(arrayOfString[11]);
+          }
+          catch (Exception localException1)
+          {
+            this.extraFlag = 0;
+            localException1.printStackTrace();
+          }
+        }
+        if (this.extraFlag == 10)
+        {
+          PicFowardDbRecordData localPicFowardDbRecordData = new PicFowardDbRecordData();
+          localPicFowardDbRecordData.initFromMsg(paramString);
+          this.extraObject = localPicFowardDbRecordData;
         }
       }
     }
@@ -145,7 +133,7 @@ public class TranDbRecord$PicDbRecord
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.TranDbRecord.PicDbRecord
  * JD-Core Version:    0.7.0.1
  */

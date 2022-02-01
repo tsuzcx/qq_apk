@@ -16,86 +16,101 @@ class ChildAccessibilitySortHooker$MyHookMethodCallback
   @TargetApi(14)
   public void afterHookedMethod(MethodHookParam paramMethodHookParam)
   {
-    if ((paramMethodHookParam.throwable == null) || (!(paramMethodHookParam.throwable instanceof IllegalArgumentException))) {}
-    AccessibilityNodeInfo localAccessibilityNodeInfo;
-    do
+    if (paramMethodHookParam.throwable != null)
     {
-      return;
-      localAccessibilityNodeInfo = (AccessibilityNodeInfo)paramMethodHookParam.args[0];
-    } while (localAccessibilityNodeInfo == null);
-    StringBuilder localStringBuilder = new StringBuilder(" -- className=");
-    localStringBuilder.append(paramMethodHookParam.thisObject.getClass().getName());
-    View localView = (View)paramMethodHookParam.thisObject;
-    localObject1 = localView.getContext();
-    Object localObject2 = localObject1;
-    if ("android.view.ContextThemeWrapper".equals(localObject1.getClass().getName())) {}
-    try
-    {
-      localObject2 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
-      ((Field)localObject2).setAccessible(true);
-      localObject2 = ((Field)localObject2).get(localView.getContext());
-      if ((localObject2 == null) || (!(localObject2 instanceof Context))) {
-        break label365;
+      if (!(paramMethodHookParam.throwable instanceof IllegalArgumentException)) {
+        return;
       }
-      localObject2 = (Context)localObject2;
-      localObject1 = localObject2;
-    }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
+      AccessibilityNodeInfo localAccessibilityNodeInfo = (AccessibilityNodeInfo)paramMethodHookParam.args[0];
+      if (localAccessibilityNodeInfo == null) {
+        return;
+      }
+      StringBuilder localStringBuilder = new StringBuilder(" -- className=");
+      localStringBuilder.append(paramMethodHookParam.thisObject.getClass().getName());
+      View localView = (View)paramMethodHookParam.thisObject;
+      Context localContext = localView.getContext();
+      Object localObject1 = localContext;
+      if ("android.view.ContextThemeWrapper".equals(localContext.getClass().getName()))
       {
+        try
+        {
+          localObject1 = Class.forName("android.view.ContextThemeWrapper").getDeclaredField("mBase");
+          ((Field)localObject1).setAccessible(true);
+          Object localObject3 = ((Field)localObject1).get(localView.getContext());
+          localObject1 = localContext;
+          if (localObject3 == null) {
+            break label196;
+          }
+          localObject1 = localContext;
+          if (!(localObject3 instanceof Context)) {
+            break label196;
+          }
+          localObject1 = (Context)localObject3;
+        }
+        catch (IllegalAccessException localIllegalAccessException) {}catch (IllegalArgumentException localIllegalArgumentException)
+        {
+          break label172;
+        }
+        catch (NoSuchFieldException localNoSuchFieldException)
+        {
+          break label181;
+        }
+        catch (ClassNotFoundException localClassNotFoundException)
+        {
+          break label190;
+        }
         Utils.a(localClassNotFoundException);
-        Object localObject3 = localObject1;
+        localObject2 = localContext;
+        break label196;
+        label172:
+        Utils.a((Throwable)localObject2);
+        localObject2 = localContext;
+        break label196;
+        label181:
+        Utils.a((Throwable)localObject2);
+        localObject2 = localContext;
+        break label196;
+        label190:
+        Utils.a((Throwable)localObject2);
+        localObject2 = localContext;
       }
-    }
-    catch (NoSuchFieldException localNoSuchFieldException)
-    {
-      for (;;)
+      label196:
+      localStringBuilder.append(", context=");
+      localStringBuilder.append(localObject2.getClass().getName());
+      Object localObject2 = localView.getRootView();
+      if (localObject2 != null)
       {
-        Utils.a(localNoSuchFieldException);
-        Object localObject4 = localObject1;
+        localStringBuilder.append(", rootView=");
+        localStringBuilder.append(localObject2.getClass().getName());
       }
-    }
-    catch (IllegalArgumentException localIllegalArgumentException)
-    {
-      for (;;)
+      localStringBuilder.append(", view ID=");
+      localStringBuilder.append(localView.getId());
+      if (Build.VERSION.SDK_INT >= 14)
       {
-        Utils.a(localIllegalArgumentException);
-        Object localObject5 = localObject1;
+        localStringBuilder.append(" -- AccessibilityNodeInfo: className=");
+        localStringBuilder.append(localAccessibilityNodeInfo.getClassName());
+        localStringBuilder.append(", contentDescription=");
+        localStringBuilder.append(localAccessibilityNodeInfo.getContentDescription());
+        localStringBuilder.append(", text=");
+        localStringBuilder.append(localAccessibilityNodeInfo.getText());
+        if (Build.VERSION.SDK_INT >= 18)
+        {
+          localStringBuilder.append(", viewIdResourceName=");
+          localStringBuilder.append(localAccessibilityNodeInfo.getViewIdResourceName());
+        }
       }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append(paramMethodHookParam.throwable.getMessage());
+      ((StringBuilder)localObject2).append(localStringBuilder.toString());
+      paramMethodHookParam.throwable = new RuntimeException(((StringBuilder)localObject2).toString(), paramMethodHookParam.throwable);
     }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        Utils.a(localIllegalAccessException);
-        Object localObject6 = localObject1;
-      }
-    }
-    localObject2 = localObject1;
-    localStringBuilder.append(", context=").append(localObject2.getClass().getName());
-    localObject1 = localView.getRootView();
-    if (localObject1 != null) {
-      localStringBuilder.append(", rootView=").append(localObject1.getClass().getName());
-    }
-    localStringBuilder.append(", view ID=").append(localView.getId());
-    if (Build.VERSION.SDK_INT >= 14)
-    {
-      localStringBuilder.append(" -- AccessibilityNodeInfo: className=").append(localAccessibilityNodeInfo.getClassName());
-      localStringBuilder.append(", contentDescription=").append(localAccessibilityNodeInfo.getContentDescription());
-      localStringBuilder.append(", text=").append(localAccessibilityNodeInfo.getText());
-      if (Build.VERSION.SDK_INT >= 18) {
-        localStringBuilder.append(", viewIdResourceName=").append(localAccessibilityNodeInfo.getViewIdResourceName());
-      }
-    }
-    paramMethodHookParam.throwable = new RuntimeException(paramMethodHookParam.throwable.getMessage() + localStringBuilder.toString(), paramMethodHookParam.throwable);
   }
   
   public void beforeHookedMethod(MethodHookParam paramMethodHookParam) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.javahook.ChildAccessibilitySortHooker.MyHookMethodCallback
  * JD-Core Version:    0.7.0.1
  */

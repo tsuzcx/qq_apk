@@ -42,8 +42,9 @@ public final class BatchResponse
     paramJceOutputStream.write(this.type, 0);
     paramJceOutputStream.write(this.seq, 1);
     paramJceOutputStream.write(this.result, 2);
-    if (this.buffer != null) {
-      paramJceOutputStream.write(this.buffer, 3);
+    byte[] arrayOfByte = this.buffer;
+    if (arrayOfByte != null) {
+      paramJceOutputStream.write(arrayOfByte, 3);
     }
   }
 }

@@ -10,7 +10,7 @@ public abstract interface DragAndDropDetector$Draggable
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.drag_n_drop.DragAndDropDetector.Draggable
  * JD-Core Version:    0.7.0.1
  */

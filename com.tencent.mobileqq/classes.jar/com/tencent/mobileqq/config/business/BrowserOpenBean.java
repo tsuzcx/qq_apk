@@ -41,44 +41,52 @@ public final class BrowserOpenBean
   
   public boolean equals(@Nullable Object paramObject)
   {
-    if (this != paramObject)
-    {
+    if (this != paramObject) {
       if ((paramObject instanceof BrowserOpenBean))
       {
         paramObject = (BrowserOpenBean)paramObject;
-        if ((!Intrinsics.areEqual(this.a, paramObject.a)) || (!Intrinsics.areEqual(this.b, paramObject.b))) {}
+        if ((Intrinsics.areEqual(this.a, paramObject.a)) && (Intrinsics.areEqual(this.b, paramObject.b))) {}
+      }
+      else
+      {
+        return false;
       }
     }
-    else {
-      return true;
-    }
-    return false;
+    return true;
   }
   
   public int hashCode()
   {
-    int j = 0;
     List localList = this.a;
-    if (localList != null) {}
-    for (int i = localList.hashCode();; i = 0)
-    {
-      localList = this.b;
-      if (localList != null) {
-        j = localList.hashCode();
-      }
-      return i * 31 + j;
+    int j = 0;
+    int i;
+    if (localList != null) {
+      i = localList.hashCode();
+    } else {
+      i = 0;
     }
+    localList = this.b;
+    if (localList != null) {
+      j = localList.hashCode();
+    }
+    return i * 31 + j;
   }
   
   @NotNull
   public String toString()
   {
-    return "BrowserOpenBean(topBrowsers=" + this.a + ", blackListApps=" + this.b + ")";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BrowserOpenBean(topBrowsers=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", blackListApps=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(")");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.BrowserOpenBean
  * JD-Core Version:    0.7.0.1
  */

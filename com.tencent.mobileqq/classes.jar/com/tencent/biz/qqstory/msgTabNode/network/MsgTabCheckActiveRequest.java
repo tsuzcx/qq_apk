@@ -29,15 +29,12 @@ public class MsgTabCheckActiveRequest
     try
     {
       localRspCheckActivity.mergeFrom(paramArrayOfByte);
-      return new MsgTabCheckActiveRequest.MsgTabCheckActiveResponse(localRspCheckActivity);
     }
     catch (InvalidProtocolBufferMicroException paramArrayOfByte)
     {
-      for (;;)
-      {
-        paramArrayOfByte.printStackTrace();
-      }
+      paramArrayOfByte.printStackTrace();
     }
+    return new MsgTabCheckActiveRequest.MsgTabCheckActiveResponse(localRspCheckActivity);
   }
   
   public String a()
@@ -45,25 +42,33 @@ public class MsgTabCheckActiveRequest
     return a;
   }
   
-  public byte[] a()
+  protected byte[] a()
   {
     qqstory_service.ReqCheckActivity localReqCheckActivity = new qqstory_service.ReqCheckActivity();
     if (!TextUtils.isEmpty(this.c)) {
       localReqCheckActivity.adcode.set(Long.valueOf(this.c).longValue());
     }
-    SLog.a("MsgTabCheckActiveRequest", "client version=%s", "8.5.5");
-    localReqCheckActivity.version.set("8.5.5");
+    SLog.a("MsgTabCheckActiveRequest", "client version=%s", "8.7.0");
+    localReqCheckActivity.version.set("8.7.0");
     return localReqCheckActivity.toByteArray();
   }
   
   public String toString()
   {
-    return "MsgTabCheckActiveRequest{value='" + this.b + '\'' + ", adCode='" + this.c + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MsgTabCheckActiveRequest{value='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", adCode='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.msgTabNode.network.MsgTabCheckActiveRequest
  * JD-Core Version:    0.7.0.1
  */

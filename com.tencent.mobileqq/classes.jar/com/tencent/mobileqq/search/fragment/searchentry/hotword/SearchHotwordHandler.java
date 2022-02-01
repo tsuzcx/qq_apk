@@ -8,7 +8,7 @@ import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.app.UniteSearchHandler;
 import com.tencent.mobileqq.app.UniteSearchObserver;
-import com.tencent.mobileqq.search.SearchEntryConfigManager;
+import com.tencent.mobileqq.search.base.api.SearchEntryConfigManager;
 import com.tencent.mobileqq.search.fragment.searchentry.hippy.SearchHippyEventEmitter;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel;
 import com.tencent.mobileqq.search.model.HotWordSearchEntryDataModel.HotSearchItem;
@@ -71,14 +71,16 @@ public class SearchHotwordHandler
   
   public void destroy()
   {
-    if (this.app != null) {
-      this.app.removeObserver(this);
+    QQAppInterface localQQAppInterface = this.app;
+    if (localQQAppInterface != null) {
+      localQQAppInterface.removeObserver(this);
     }
   }
   
   public String getHotwordExtInfo()
   {
-    if ((this.dataModel != null) && (this.dataModel.a != null)) {
+    HotWordSearchEntryDataModel localHotWordSearchEntryDataModel = this.dataModel;
+    if ((localHotWordSearchEntryDataModel != null) && (localHotWordSearchEntryDataModel.a != null)) {
       return this.dataModel.a;
     }
     return "";
@@ -118,7 +120,7 @@ public class SearchHotwordHandler
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.fragment.searchentry.hotword.SearchHotwordHandler
  * JD-Core Version:    0.7.0.1
  */

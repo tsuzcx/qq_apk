@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class RedPackGrapInfo
   extends JceStruct
@@ -103,27 +104,33 @@ public final class RedPackGrapInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.lUin, 0);
-    if (this.sTitle != null) {
-      paramJceOutputStream.write(this.sTitle, 1);
+    Object localObject = this.sTitle;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
     paramJceOutputStream.write(this.iRedType, 2);
-    if (this.sBiilNo != null) {
-      paramJceOutputStream.write(this.sBiilNo, 3);
+    localObject = this.sBiilNo;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.sAuthKey != null) {
-      paramJceOutputStream.write(this.sAuthKey, 4);
+    localObject = this.sAuthKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
     paramJceOutputStream.write(this.iMsgType, 5);
     paramJceOutputStream.write(this.iEnvelopeId, 6);
-    if (this.sName != null) {
-      paramJceOutputStream.write(this.sName, 7);
+    localObject = this.sName;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 7);
     }
     paramJceOutputStream.write(this.iRedChannel, 8);
-    if (this.vecGrapUin != null) {
-      paramJceOutputStream.write(this.vecGrapUin, 9);
+    localObject = this.vecGrapUin;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 9);
     }
-    if (this.sContent != null) {
-      paramJceOutputStream.write(this.sContent, 10);
+    localObject = this.sContent;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 10);
     }
     paramJceOutputStream.write(this.iSoundRecordDuration, 11);
     paramJceOutputStream.write(this.iResourceType, 12);
@@ -133,23 +140,26 @@ public final class RedPackGrapInfo
     paramJceOutputStream.write(this.iConfType, 16);
     paramJceOutputStream.write(this.iSubjectId, 17);
     paramJceOutputStream.write(this.lCreateTime, 18);
-    if (this.sIndex != null) {
-      paramJceOutputStream.write(this.sIndex, 19);
+    localObject = this.sIndex;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 19);
     }
     paramJceOutputStream.write(this.iSongId, 20);
     paramJceOutputStream.write(this.iSongFlag, 21);
-    if (this.sReserve != null) {
-      paramJceOutputStream.write(this.sReserve, 22);
+    localObject = this.sReserve;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 22);
     }
     paramJceOutputStream.write(this.seq, 23);
-    if (this.hbIdiomLastPY != null) {
-      paramJceOutputStream.write(this.hbIdiomLastPY, 24);
+    localObject = this.hbIdiomLastPY;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 24);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     Wallet.RedPackGrapInfo
  * JD-Core Version:    0.7.0.1
  */

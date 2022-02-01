@@ -44,21 +44,23 @@ public class AIOShortVideoData
   public File a(int paramInt)
   {
     Object localObject;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      localObject = null;
+      if (paramInt != 1) {
+        localObject = null;
+      } else {
+        localObject = this.jdField_b_of_type_JavaLangString;
+      }
     }
-    while ((localObject != null) && (!((String)localObject).equals("I:N")))
+    else {
+      localObject = this.jdField_a_of_type_JavaLangString;
+    }
+    if ((localObject != null) && (!((String)localObject).equals("I:N")))
     {
       localObject = new File((String)localObject);
-      if (!((File)localObject).exists()) {
-        break;
+      if (((File)localObject).exists()) {
+        return localObject;
       }
-      return localObject;
-      localObject = this.jdField_a_of_type_JavaLangString;
-      continue;
-      localObject = this.jdField_b_of_type_JavaLangString;
     }
     return null;
   }
@@ -70,36 +72,40 @@ public class AIOShortVideoData
   
   public String a(int paramInt)
   {
-    Object localObject2 = null;
     String str;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      str = null;
-    }
-    for (;;)
-    {
-      Object localObject1 = localObject2;
-      if (str != null)
-      {
-        localObject1 = localObject2;
-        if (!str.equals("I:N"))
-        {
-          if (str.startsWith("/")) {
-            break;
-          }
-          localObject1 = "file:/" + str;
-        }
+      if (paramInt != 1) {
+        str = null;
+      } else {
+        str = this.jdField_b_of_type_JavaLangString;
       }
-      return localObject1;
+    }
+    else {
       str = this.jdField_a_of_type_JavaLangString;
-      continue;
-      str = this.jdField_b_of_type_JavaLangString;
     }
-    if (str.startsWith("//")) {
-      return "file:" + str;
+    if ((str != null) && (!str.equals("I:N")))
+    {
+      if (!str.startsWith("/"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("file:/");
+        localStringBuilder.append(str);
+        return localStringBuilder.toString();
+      }
+      if (str.startsWith("//"))
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("file:");
+        localStringBuilder.append(str);
+        return localStringBuilder.toString();
+      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file:");
+      localStringBuilder.append(str);
+      return localStringBuilder.toString();
     }
-    return "file:" + str;
+    return null;
   }
   
   public void a(Parcel paramParcel)
@@ -131,21 +137,14 @@ public class AIOShortVideoData
   
   public boolean a(int paramInt)
   {
-    boolean bool = true;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      bool = false;
+      if (paramInt != 1) {
+        return false;
+      }
+      return this.jdField_b_of_type_JavaLangString.equals("I:N") ^ true;
     }
-    do
-    {
-      do
-      {
-        return bool;
-      } while (!this.jdField_a_of_type_JavaLangString.equals("I:N"));
-      return false;
-    } while (!this.jdField_b_of_type_JavaLangString.equals("I:N"));
-    return false;
+    return this.jdField_a_of_type_JavaLangString.equals("I:N") ^ true;
   }
   
   public int describeContents()
@@ -177,7 +176,7 @@ public class AIOShortVideoData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.photo.AIOShortVideoData
  * JD-Core Version:    0.7.0.1
  */

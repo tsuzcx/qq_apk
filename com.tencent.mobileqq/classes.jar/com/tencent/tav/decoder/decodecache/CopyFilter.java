@@ -43,26 +43,28 @@ class CopyFilter
   
   private void initFrameBuffer(TextureInfo paramTextureInfo)
   {
-    if (paramTextureInfo.textureType != 3553) {
-      throw new RuntimeException("纹理类型不可为OES");
-    }
-    GLES20.glTexImage2D(3553, 0, 6407, this.rendererWidth, this.rendererHeight, 0, 6407, 5121, null);
-    this._textureInfo = paramTextureInfo;
-    int[] arrayOfInt = new int[1];
-    GLES20.glGenFramebuffers(1, arrayOfInt, 0);
-    int i = arrayOfInt[0];
-    GLES20.glBindFramebuffer(36160, i);
-    RenderContext.checkEglError("glBindFramebuffer frameBuffer");
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramTextureInfo.textureID, 0);
-    RenderContext.checkEglError("glCheckFramebufferStatus frameBuffer");
-    if (GLES20.glCheckFramebufferStatus(36160) != 36053)
+    if (paramTextureInfo.textureType == 3553)
     {
-      new RuntimeException("EGL error encountered: FramebufferStatus is not complete.").printStackTrace();
+      GLES20.glTexImage2D(3553, 0, 6407, this.rendererWidth, this.rendererHeight, 0, 6407, 5121, null);
+      this._textureInfo = paramTextureInfo;
+      int[] arrayOfInt = new int[1];
+      GLES20.glGenFramebuffers(1, arrayOfInt, 0);
+      int i = arrayOfInt[0];
+      GLES20.glBindFramebuffer(36160, i);
+      RenderContext.checkEglError("glBindFramebuffer frameBuffer");
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramTextureInfo.textureID, 0);
+      RenderContext.checkEglError("glCheckFramebufferStatus frameBuffer");
+      if (GLES20.glCheckFramebufferStatus(36160) != 36053)
+      {
+        new RuntimeException("EGL error encountered: FramebufferStatus is not complete.").printStackTrace();
+        return;
+      }
+      GLES20.glBindFramebuffer(36160, 0);
+      this.frameBuffer = i;
+      paramTextureInfo.setFrameBuffer(i);
       return;
     }
-    GLES20.glBindFramebuffer(36160, 0);
-    this.frameBuffer = i;
-    paramTextureInfo.setFrameBuffer(i);
+    throw new RuntimeException("纹理类型不可为OES");
   }
   
   public TextureInfo applyFilter(TextureInfo paramTextureInfo)
@@ -101,9 +103,10 @@ class CopyFilter
     this.triangleVertices.rewind();
     this.triangleVertices.put(new float[] { f3, f2, f4, f5, f1, f2, f1, f6 });
     GLES20.glGetIntegerv(2978, this.defaultViewport, 0);
-    if (this.frameBuffer != -1)
+    int i = this.frameBuffer;
+    if (i != -1)
     {
-      GLES20.glBindFramebuffer(36160, this.frameBuffer);
+      GLES20.glBindFramebuffer(36160, i);
       GLES20.glGetIntegerv(2978, this.defaultViewport, 0);
       GLES20.glViewport(0, 0, this.rendererWidth, this.rendererHeight);
     }
@@ -118,7 +121,8 @@ class CopyFilter
     if (this.frameBuffer != -1)
     {
       GLES20.glBindFramebuffer(36160, 0);
-      GLES20.glViewport(this.defaultViewport[0], this.defaultViewport[1], this.defaultViewport[2], this.defaultViewport[3]);
+      paramTextureInfo = this.defaultViewport;
+      GLES20.glViewport(paramTextureInfo[0], paramTextureInfo[1], paramTextureInfo[2], paramTextureInfo[3]);
     }
     if (!this.renderForScreen) {
       return this._textureInfo;
@@ -128,9 +132,10 @@ class CopyFilter
   
   public void clearBufferBuffer(int paramInt)
   {
-    if (this.frameBuffer != -1)
+    int i = this.frameBuffer;
+    if (i != -1)
     {
-      GLES20.glBindFramebuffer(36160, this.frameBuffer);
+      GLES20.glBindFramebuffer(36160, i);
       GLES20.glClearColor(((0xFF0000 & paramInt) >> 16) / 255.0F, ((0xFF00 & paramInt) >> 8) / 255.0F, (paramInt & 0xFF) / 255.0F, 1.0F);
       GLES20.glClear(16384);
     }
@@ -166,51 +171,52 @@ class CopyFilter
   {
     this.triangleVertices = ByteBuffer.allocateDirect(64).order(ByteOrder.nativeOrder()).asFloatBuffer();
     this.program = Program.createProgram(paramString1, paramString2, this.shaderIndexes);
-    if (this.program == 0) {
-      new RuntimeException("failed creating program").printStackTrace();
-    }
-    do
+    int i = this.program;
+    if (i == 0)
     {
+      new RuntimeException("failed creating program").printStackTrace();
       return;
-      this.aPositionHandle = GLES20.glGetAttribLocation(this.program, "aPosition");
-      RenderContext.checkEglError("glGetAttribLocation aPosition");
-      if (this.aPositionHandle == -1)
-      {
-        new RuntimeException("Could not get attribute location for aPosition").printStackTrace();
-        return;
-      }
-      this.uMatrixHandle = GLES20.glGetUniformLocation(this.program, "uMatrix");
-      RenderContext.checkEglError("glGetUniformLocation uMatrix");
-      if (this.uMatrixHandle == -1)
-      {
-        new RuntimeException("Could not get uniform location for uMatrix").printStackTrace();
-        return;
-      }
-      this.uAlphaHandle = GLES20.glGetUniformLocation(this.program, "uAlpha");
-      RenderContext.checkEglError("glGetUniformLocation uAlpha");
-      if (this.uAlphaHandle == -1)
-      {
-        new RuntimeException("Could not get uniform location for uAlpha").printStackTrace();
-        return;
-      }
-      this.stMatrixHandle = GLES20.glGetUniformLocation(this.program, "stMatrix");
-      RenderContext.checkEglError("glGetUniformLocation stMatrix");
-      if (this.stMatrixHandle == -1)
-      {
-        new RuntimeException("Could not get uniform location for stMatrix").printStackTrace();
-        return;
-      }
-      this.uScreenSizeHandle = GLES20.glGetUniformLocation(this.program, "uScreenSize");
-      RenderContext.checkEglError("glGetUniformLocation uScreenSize");
-      if (this.uScreenSizeHandle == -1)
-      {
-        new RuntimeException("Could not get uniform location for uScreenSize").printStackTrace();
-        return;
-      }
-      this.uTextureSizeHandle = GLES20.glGetUniformLocation(this.program, "uTextureSize");
-      RenderContext.checkEglError("glGetUniformLocation uTextureSize");
-    } while (this.uTextureSizeHandle != -1);
-    new RuntimeException("Could not get uniform location for uTextureSize").printStackTrace();
+    }
+    this.aPositionHandle = GLES20.glGetAttribLocation(i, "aPosition");
+    RenderContext.checkEglError("glGetAttribLocation aPosition");
+    if (this.aPositionHandle == -1)
+    {
+      new RuntimeException("Could not get attribute location for aPosition").printStackTrace();
+      return;
+    }
+    this.uMatrixHandle = GLES20.glGetUniformLocation(this.program, "uMatrix");
+    RenderContext.checkEglError("glGetUniformLocation uMatrix");
+    if (this.uMatrixHandle == -1)
+    {
+      new RuntimeException("Could not get uniform location for uMatrix").printStackTrace();
+      return;
+    }
+    this.uAlphaHandle = GLES20.glGetUniformLocation(this.program, "uAlpha");
+    RenderContext.checkEglError("glGetUniformLocation uAlpha");
+    if (this.uAlphaHandle == -1)
+    {
+      new RuntimeException("Could not get uniform location for uAlpha").printStackTrace();
+      return;
+    }
+    this.stMatrixHandle = GLES20.glGetUniformLocation(this.program, "stMatrix");
+    RenderContext.checkEglError("glGetUniformLocation stMatrix");
+    if (this.stMatrixHandle == -1)
+    {
+      new RuntimeException("Could not get uniform location for stMatrix").printStackTrace();
+      return;
+    }
+    this.uScreenSizeHandle = GLES20.glGetUniformLocation(this.program, "uScreenSize");
+    RenderContext.checkEglError("glGetUniformLocation uScreenSize");
+    if (this.uScreenSizeHandle == -1)
+    {
+      new RuntimeException("Could not get uniform location for uScreenSize").printStackTrace();
+      return;
+    }
+    this.uTextureSizeHandle = GLES20.glGetUniformLocation(this.program, "uTextureSize");
+    RenderContext.checkEglError("glGetUniformLocation uTextureSize");
+    if (this.uTextureSizeHandle == -1) {
+      new RuntimeException("Could not get uniform location for uTextureSize").printStackTrace();
+    }
   }
   
   protected void prepareDraw(TextureInfo paramTextureInfo, float[] paramArrayOfFloat)
@@ -232,11 +238,15 @@ class CopyFilter
     releaseTexture();
     releaseProgram();
     int i = 0;
-    while (i < this.shaderIndexes.length)
+    for (;;)
     {
-      if (this.shaderIndexes[i] > 0)
+      int[] arrayOfInt = this.shaderIndexes;
+      if (i >= arrayOfInt.length) {
+        break;
+      }
+      if (arrayOfInt[i] > 0)
       {
-        GLES20.glDeleteShader(this.shaderIndexes[i]);
+        GLES20.glDeleteShader(arrayOfInt[i]);
         this.shaderIndexes[i] = 0;
       }
       i += 1;
@@ -245,23 +255,26 @@ class CopyFilter
   
   public void releaseProgram()
   {
-    if (this.program > 0)
+    int i = this.program;
+    if (i > 0)
     {
-      GLES20.glDeleteProgram(this.program);
+      GLES20.glDeleteProgram(i);
       this.program = 0;
     }
   }
   
   public void releaseTexture()
   {
-    if (this.frameBuffer != -1)
+    int i = this.frameBuffer;
+    if (i != -1)
     {
-      GLES20.glDeleteFramebuffers(1, new int[] { this.frameBuffer }, 0);
+      GLES20.glDeleteFramebuffers(1, new int[] { i }, 0);
       this.frameBuffer = -1;
     }
-    if (this._textureInfo != null)
+    TextureInfo localTextureInfo = this._textureInfo;
+    if (localTextureInfo != null)
     {
-      GLES20.glDeleteTextures(1, new int[] { this._textureInfo.textureID }, 0);
+      GLES20.glDeleteTextures(1, new int[] { localTextureInfo.textureID }, 0);
       this._textureInfo = null;
     }
   }
@@ -270,13 +283,10 @@ class CopyFilter
   {
     if (paramTextureInfo.getFrameBuffer() == -1) {
       initFrameBuffer(paramTextureInfo);
-    }
-    for (;;)
-    {
-      this._textureInfo = paramTextureInfo;
-      return;
+    } else {
       this.frameBuffer = paramTextureInfo.getFrameBuffer();
     }
+    this._textureInfo = paramTextureInfo;
   }
   
   public void setRenderForScreen(boolean paramBoolean)
@@ -301,7 +311,7 @@ class CopyFilter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tav.decoder.decodecache.CopyFilter
  * JD-Core Version:    0.7.0.1
  */

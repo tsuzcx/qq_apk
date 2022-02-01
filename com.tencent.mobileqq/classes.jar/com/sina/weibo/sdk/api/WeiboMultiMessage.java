@@ -1,6 +1,7 @@
 package com.sina.weibo.sdk.api;
 
 import android.os.Bundle;
+import android.os.Parcelable;
 import java.io.Serializable;
 
 public class WeiboMultiMessage
@@ -24,43 +25,36 @@ public class WeiboMultiMessage
   
   public Bundle writeToBundle(Bundle paramBundle)
   {
-    if (this.mediaObject != null)
-    {
-      paramBundle.putParcelable("_weibo_message_media", this.mediaObject);
-      if (this.textObject == null) {
-        break label97;
-      }
-      paramBundle.putParcelable("_weibo_message_text", this.textObject);
-      label34:
-      if (this.imageObject == null) {
-        break label107;
-      }
-      paramBundle.putParcelable("_weibo_message_image", this.imageObject);
-      label51:
-      if (this.multiImageObject == null) {
-        break label117;
-      }
-      paramBundle.putParcelable("_weibo_message_multi_image", this.multiImageObject);
-    }
-    for (;;)
-    {
-      if (this.videoSourceObject == null) {
-        break label127;
-      }
-      paramBundle.putParcelable("_weibo_message_video_source", this.videoSourceObject);
-      return paramBundle;
+    Object localObject = this.mediaObject;
+    if (localObject != null) {
+      paramBundle.putParcelable("_weibo_message_media", (Parcelable)localObject);
+    } else {
       paramBundle.putParcelable("_weibo_message_media", null);
-      break;
-      label97:
+    }
+    localObject = this.textObject;
+    if (localObject != null) {
+      paramBundle.putParcelable("_weibo_message_text", (Parcelable)localObject);
+    } else {
       paramBundle.putParcelable("_weibo_message_text", null);
-      break label34;
-      label107:
+    }
+    localObject = this.imageObject;
+    if (localObject != null) {
+      paramBundle.putParcelable("_weibo_message_image", (Parcelable)localObject);
+    } else {
       paramBundle.putParcelable("_weibo_message_image", null);
-      break label51;
-      label117:
+    }
+    localObject = this.multiImageObject;
+    if (localObject != null) {
+      paramBundle.putParcelable("_weibo_message_multi_image", (Parcelable)localObject);
+    } else {
       paramBundle.putParcelable("_weibo_message_multi_image", null);
     }
-    label127:
+    localObject = this.videoSourceObject;
+    if (localObject != null)
+    {
+      paramBundle.putParcelable("_weibo_message_video_source", (Parcelable)localObject);
+      return paramBundle;
+    }
     paramBundle.putParcelable("_weibo_message_video_source", null);
     return paramBundle;
   }

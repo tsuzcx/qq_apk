@@ -5,7 +5,8 @@ import android.content.ServiceConnection;
 import android.os.IBinder;
 import android.os.Message;
 import android.os.Messenger;
-import com.tencent.mobileqq.emosm.web.WebIPCOperator;
+import com.tencent.mobileqq.emosm.api.IWebIPCOperatorApi;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.qphone.base.util.QLog;
 
 class Client$1
@@ -22,7 +23,7 @@ class Client$1
       if (QLog.isColorLevel()) {
         QLog.i("Q.emoji.web.Client", 2, "ServiceConnection Attached.");
       }
-      WebIPCOperator.a().a();
+      ((IWebIPCOperatorApi)QRoute.api(IWebIPCOperatorApi.class)).onBindSuc();
       paramComponentName = Message.obtain(null, 1);
       paramComponentName.replyTo = this.a.mMessenger;
       this.a.mService.send(paramComponentName);
@@ -30,15 +31,17 @@ class Client$1
     }
     catch (Exception paramComponentName)
     {
-      while (!QLog.isColorLevel()) {}
-      QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+      if (QLog.isColorLevel()) {
+        QLog.e("Q.emoji.web.Client", 2, paramComponentName.getMessage());
+      }
     }
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    this.a.mService = null;
-    this.a.onDisconnectWithService();
+    paramComponentName = this.a;
+    paramComponentName.mService = null;
+    paramComponentName.onDisconnectWithService();
     if (QLog.isColorLevel()) {
       QLog.i("Q.emoji.web.Client", 2, "Disconnected.");
     }
@@ -46,7 +49,7 @@ class Client$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emosm.Client.1
  * JD-Core Version:    0.7.0.1
  */

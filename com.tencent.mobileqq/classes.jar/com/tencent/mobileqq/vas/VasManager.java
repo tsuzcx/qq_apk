@@ -1,6 +1,5 @@
 package com.tencent.mobileqq.vas;
 
-import com.tencent.mobileqq.vas.watchword.VasWatchWord;
 import java.util.ArrayList;
 import java.util.Iterator;
 import mqq.manager.Manager;
@@ -9,11 +8,6 @@ public class VasManager<V>
   implements Manager
 {
   private final ArrayList<VasManager.ListenerHolder<V>> a = new ArrayList();
-  
-  static
-  {
-    VasWatchWord.a.a();
-  }
   
   public static <E> VasManager.CompleteListener<E> a(VasManager.CompleteListener<E> paramCompleteListener)
   {
@@ -39,32 +33,29 @@ public class VasManager<V>
       return;
     }
     ArrayList localArrayList = new ArrayList();
-    for (;;)
+    int i;
+    synchronized (this.a)
     {
-      int i;
-      synchronized (this.a)
+      i = this.a.size() - 1;
+      if (i >= 0)
       {
-        i = this.a.size() - 1;
-        if (i >= 0)
+        VasManager.ListenerHolder localListenerHolder = (VasManager.ListenerHolder)this.a.get(i);
+        if (paramString.equals(localListenerHolder.jdField_a_of_type_JavaLangString))
         {
-          VasManager.ListenerHolder localListenerHolder = (VasManager.ListenerHolder)this.a.get(i);
-          if (paramString.equals(localListenerHolder.jdField_a_of_type_JavaLangString))
-          {
-            this.a.remove(i);
-            localArrayList.add(localListenerHolder);
-          }
+          this.a.remove(i);
+          localArrayList.add(localListenerHolder);
         }
-        else
+      }
+      else
+      {
+        paramString = localArrayList.iterator();
+        while (paramString.hasNext())
         {
-          paramString = localArrayList.iterator();
-          if (!paramString.hasNext()) {
-            break;
-          }
           ??? = (VasManager.ListenerHolder)paramString.next();
           ((VasManager.ListenerHolder)???).jdField_a_of_type_ComTencentMobileqqVasVasManager$CompleteListener.onComplete(paramV, ((VasManager.ListenerHolder)???).jdField_a_of_type_JavaLangObject);
         }
+        return;
       }
-      i -= 1;
     }
   }
   
@@ -79,7 +70,7 @@ public class VasManager<V>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasManager
  * JD-Core Version:    0.7.0.1
  */

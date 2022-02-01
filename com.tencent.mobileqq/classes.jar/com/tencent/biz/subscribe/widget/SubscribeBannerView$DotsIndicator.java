@@ -10,7 +10,7 @@ import com.tencent.mobileqq.activity.aio.AIOUtils;
 public class SubscribeBannerView$DotsIndicator
   extends LinearLayout
 {
-  public int a = 2130839188;
+  public int a = 2130839041;
   public int b;
   public int c;
   public int d;
@@ -23,9 +23,9 @@ public class SubscribeBannerView$DotsIndicator
   
   private void a()
   {
-    this.b = AIOUtils.a(10.0F, getResources());
-    this.c = AIOUtils.a(7.0F, getResources());
-    this.d = AIOUtils.a(7.0F, getResources());
+    this.b = AIOUtils.b(10.0F, getResources());
+    this.c = AIOUtils.b(7.0F, getResources());
+    this.d = AIOUtils.b(7.0F, getResources());
     setLayoutParams(new FrameLayout.LayoutParams(-2, -2));
   }
   
@@ -49,33 +49,28 @@ public class SubscribeBannerView$DotsIndicator
   
   public void setDotsSelected(int paramInt)
   {
-    if ((paramInt < 0) || (paramInt >= getChildCount())) {
-      return;
-    }
-    int i = 0;
-    label15:
-    View localView;
-    if (i < getChildCount())
+    if (paramInt >= 0)
     {
-      localView = getChildAt(i);
-      if (i != paramInt) {
-        break label46;
+      if (paramInt >= getChildCount()) {
+        return;
       }
-      localView.setSelected(true);
-    }
-    for (;;)
-    {
-      i += 1;
-      break label15;
-      break;
-      label46:
-      localView.setSelected(false);
+      int i = 0;
+      while (i < getChildCount())
+      {
+        View localView = getChildAt(i);
+        if (i == paramInt) {
+          localView.setSelected(true);
+        } else {
+          localView.setSelected(false);
+        }
+        i += 1;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeBannerView.DotsIndicator
  * JD-Core Version:    0.7.0.1
  */

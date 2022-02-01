@@ -86,18 +86,19 @@ public class ParcelableWrapper
       return null;
     }
     paramIntent = (ParcelableListWrapper)paramIntent.getParcelableExtra(paramString);
-    if (paramIntent == null) {}
-    for (paramIntent = null;; paramIntent = paramIntent.getParcelableList()) {
-      return paramIntent;
+    if (paramIntent == null) {
+      return null;
     }
+    return paramIntent.getParcelableList();
   }
   
   private static ClassLoader getClassLoader()
   {
-    if (sClassLoader != null) {
-      return sClassLoader;
+    ClassLoader localClassLoader = sClassLoader;
+    if (localClassLoader != null) {
+      return localClassLoader;
     }
-    if (sClassLoader == null) {
+    if (localClassLoader == null) {
       sClassLoader = ParcelableWrapper.class.getClassLoader();
     }
     return sClassLoader;
@@ -118,142 +119,89 @@ public class ParcelableWrapper
       return null;
     }
     paramIntent = (ParcelableWrapper)paramIntent.getParcelableExtra(paramString);
-    if (paramIntent == null) {}
-    for (paramIntent = null;; paramIntent = paramIntent.getData()) {
-      return paramIntent;
+    if (paramIntent == null) {
+      return null;
     }
+    return paramIntent.getData();
   }
   
-  /* Error */
   private static ParcelableWrapper.ParcableInfo getParcableInfo(String paramString, Class paramClass)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: ifnonnull +13 -> 14
-    //   4: new 158	java/lang/NullPointerException
-    //   7: dup
-    //   8: ldc 160
-    //   10: invokespecial 163	java/lang/NullPointerException:<init>	(Ljava/lang/String;)V
-    //   13: athrow
-    //   14: getstatic 64	com/tencent/mobileqq/qcircle/api/db/util/ParcelableWrapper:sParcableCache	Ljava/util/concurrent/ConcurrentHashMap;
-    //   17: aload_0
-    //   18: invokevirtual 167	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   21: checkcast 169	com/tencent/mobileqq/qcircle/api/db/util/ParcelableWrapper$ParcableInfo
-    //   24: astore_3
-    //   25: aload_3
-    //   26: astore_2
-    //   27: aload_3
-    //   28: ifnonnull +54 -> 82
-    //   31: aload_1
-    //   32: astore_2
-    //   33: aload_1
-    //   34: ifnonnull +11 -> 45
-    //   37: invokestatic 102	com/tencent/mobileqq/qcircle/api/db/util/ParcelableWrapper:getClassLoader	()Ljava/lang/ClassLoader;
-    //   40: aload_0
-    //   41: invokestatic 173	com/tencent/mobileqq/qcircle/api/db/util/ParcelableWrapper:load	(Ljava/lang/ClassLoader;Ljava/lang/String;)Ljava/lang/Class;
-    //   44: astore_2
-    //   45: aload_2
-    //   46: monitorenter
-    //   47: getstatic 64	com/tencent/mobileqq/qcircle/api/db/util/ParcelableWrapper:sParcableCache	Ljava/util/concurrent/ConcurrentHashMap;
-    //   50: aload_0
-    //   51: invokevirtual 167	java/util/concurrent/ConcurrentHashMap:get	(Ljava/lang/Object;)Ljava/lang/Object;
-    //   54: checkcast 169	com/tencent/mobileqq/qcircle/api/db/util/ParcelableWrapper$ParcableInfo
-    //   57: astore_3
-    //   58: aload_3
-    //   59: astore_1
-    //   60: aload_3
-    //   61: ifnonnull +17 -> 78
-    //   64: aload_2
-    //   65: invokestatic 177	com/tencent/mobileqq/qcircle/api/db/util/ParcelableWrapper:parseParcableInfo	(Ljava/lang/Class;)Lcom/tencent/mobileqq/qcircle/api/db/util/ParcelableWrapper$ParcableInfo;
-    //   68: astore_1
-    //   69: getstatic 64	com/tencent/mobileqq/qcircle/api/db/util/ParcelableWrapper:sParcableCache	Ljava/util/concurrent/ConcurrentHashMap;
-    //   72: aload_0
-    //   73: aload_1
-    //   74: invokevirtual 181	java/util/concurrent/ConcurrentHashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   77: pop
-    //   78: aload_2
-    //   79: monitorexit
-    //   80: aload_1
-    //   81: astore_2
-    //   82: aload_2
-    //   83: areturn
-    //   84: astore_1
-    //   85: ldc 183
-    //   87: iconst_1
-    //   88: new 185	java/lang/StringBuilder
-    //   91: dup
-    //   92: invokespecial 186	java/lang/StringBuilder:<init>	()V
-    //   95: ldc 188
-    //   97: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   100: aload_0
-    //   101: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   104: invokevirtual 196	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   107: aload_1
-    //   108: invokestatic 202	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   111: new 204	java/lang/RuntimeException
-    //   114: dup
-    //   115: new 185	java/lang/StringBuilder
-    //   118: dup
-    //   119: invokespecial 186	java/lang/StringBuilder:<init>	()V
-    //   122: ldc 206
-    //   124: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: aload_0
-    //   128: invokevirtual 192	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   131: invokevirtual 196	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   134: invokespecial 207	java/lang/RuntimeException:<init>	(Ljava/lang/String;)V
-    //   137: athrow
-    //   138: astore_0
-    //   139: aload_2
-    //   140: monitorexit
-    //   141: aload_0
-    //   142: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	143	0	paramString	String
-    //   0	143	1	paramClass	Class
-    //   24	37	3	localParcableInfo	ParcelableWrapper.ParcableInfo
-    // Exception table:
-    //   from	to	target	type
-    //   37	45	84	java/lang/ClassNotFoundException
-    //   47	58	138	finally
-    //   64	78	138	finally
-    //   78	80	138	finally
-    //   139	141	138	finally
+    if (paramString != null)
+    {
+      Object localObject = (ParcelableWrapper.ParcableInfo)sParcableCache.get(paramString);
+      if (localObject == null)
+      {
+        localObject = paramClass;
+        if (paramClass == null) {
+          try
+          {
+            localObject = load(getClassLoader(), paramString);
+          }
+          catch (ClassNotFoundException paramClass)
+          {
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("getParcableInfo.forName:");
+            ((StringBuilder)localObject).append(paramString);
+            QLog.e("ParcelableWrapper", 1, ((StringBuilder)localObject).toString(), paramClass);
+            paramClass = new StringBuilder();
+            paramClass.append("class forname:");
+            paramClass.append(paramString);
+            throw new RuntimeException(paramClass.toString());
+          }
+        }
+        try
+        {
+          ParcelableWrapper.ParcableInfo localParcableInfo = (ParcelableWrapper.ParcableInfo)sParcableCache.get(paramString);
+          paramClass = localParcableInfo;
+          if (localParcableInfo == null)
+          {
+            paramClass = parseParcableInfo((Class)localObject);
+            sParcableCache.put(paramString, paramClass);
+          }
+          return paramClass;
+        }
+        finally {}
+      }
+      return localObject;
+    }
+    throw new NullPointerException("getParcableInfo.clsName can not be null!");
   }
   
   public static Class<?> load(ClassLoader paramClassLoader, String paramString)
   {
-    Class localClass = null;
     try
     {
       paramClassLoader = paramClassLoader.loadClass(paramString);
-      if (paramClassLoader != null) {
-        return paramClassLoader;
+    }
+    catch (ClassNotFoundException paramClassLoader)
+    {
+      if (LOADERS.isEmpty()) {
+        break label80;
       }
     }
-    catch (ClassNotFoundException localClassNotFoundException2)
-    {
-      do
-      {
-        paramClassLoader = localClass;
-      } while (!LOADERS.isEmpty());
-      throw localClassNotFoundException2;
+    paramClassLoader = null;
+    if (paramClassLoader != null) {
+      return paramClassLoader;
     }
     Iterator localIterator = LOADERS.iterator();
-    if (localIterator.hasNext()) {}
-    for (;;)
+    while (localIterator.hasNext())
     {
       try
       {
-        localClass = ((ClassLoader)localIterator.next()).loadClass(paramString);
-        paramClassLoader = localClass;
-        return paramClassLoader;
+        Class localClass = ((ClassLoader)localIterator.next()).loadClass(paramString);
+        return localClass;
       }
-      catch (ClassNotFoundException localClassNotFoundException1) {}
-      if (localIterator.hasNext()) {
-        break;
+      catch (ClassNotFoundException localClassNotFoundException) {}
+      if (!localIterator.hasNext()) {
+        throw localClassNotFoundException;
       }
-      throw localClassNotFoundException1;
+    }
+    return paramClassLoader;
+    for (;;)
+    {
+      label80:
+      throw paramClassLoader;
     }
   }
   
@@ -278,8 +226,16 @@ public class ParcelableWrapper
           localParcelableWrapper.obj = paramSmartParcelable;
           return localParcelableWrapper;
         }
-        finally {}
+        finally
+        {
+          break label54;
+        }
         return new ParcelableWrapper(paramSmartParcelable);
+        label54:
+        for (;;)
+        {
+          throw paramSmartParcelable;
+        }
       }
       i += 1;
     }
@@ -287,76 +243,71 @@ public class ParcelableWrapper
   
   private static ParcelableWrapper.ParcableInfo parseParcableInfo(Class paramClass)
   {
-    Field[] arrayOfField = paramClass.getDeclaredFields();
+    Object localObject1 = paramClass.getDeclaredFields();
     ParcelableWrapper.ParcableInfo localParcableInfo = new ParcelableWrapper.ParcableInfo();
     ParcelableWrapper.ParcableInfo.access$002(localParcableInfo, paramClass);
     List localList1 = ParcelableWrapper.ParcableInfo.access$100(localParcableInfo);
     List localList2 = ParcelableWrapper.ParcableInfo.access$200(localParcableInfo);
-    Object localObject = paramClass.getSuperclass();
-    if (SmartParcelable.class.isAssignableFrom((Class)localObject))
+    Object localObject2 = paramClass.getSuperclass();
+    if (SmartParcelable.class.isAssignableFrom((Class)localObject2))
     {
-      localObject = getParcableInfo(((Class)localObject).getName(), (Class)localObject);
-      localList1.addAll(ParcelableWrapper.ParcableInfo.access$100((ParcelableWrapper.ParcableInfo)localObject));
-      localList2.addAll(ParcelableWrapper.ParcableInfo.access$200((ParcelableWrapper.ParcableInfo)localObject));
+      localObject2 = getParcableInfo(((Class)localObject2).getName(), (Class)localObject2);
+      localList1.addAll(ParcelableWrapper.ParcableInfo.access$100((ParcelableWrapper.ParcableInfo)localObject2));
+      localList2.addAll(ParcelableWrapper.ParcableInfo.access$200((ParcelableWrapper.ParcableInfo)localObject2));
     }
-    if (((arrayOfField == null) || (arrayOfField.length <= 0)) && (localList2.size() <= 0))
+    if (((localObject1 == null) || (localObject1.length <= 0)) && (localList2.size() <= 0))
     {
-      QLog.e("ParcelableWrapper", 1, "SmartParcelable must have filed to Parcel:" + paramClass);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("SmartParcelable must have filed to Parcel:");
+      ((StringBuilder)localObject1).append(paramClass);
+      QLog.e("ParcelableWrapper", 1, ((StringBuilder)localObject1).toString());
       return localParcableInfo;
     }
-    int j = arrayOfField.length;
+    int j = localObject1.length;
     int i = 0;
-    label143:
-    if (i < j)
+    while (i < j)
     {
-      paramClass = arrayOfField[i];
+      paramClass = localObject1[i];
       if (paramClass.getAnnotation(NeedParcel.class) != null)
       {
         paramClass.setAccessible(true);
         localList1.add(paramClass);
         paramClass = paramClass.getType();
-        if (paramClass != Integer.TYPE) {
-          break label207;
+        if (paramClass == Integer.TYPE) {
+          localList2.add(Integer.valueOf(1));
+        } else if (paramClass == String.class) {
+          localList2.add(Integer.valueOf(5));
+        } else if (paramClass == Long.TYPE) {
+          localList2.add(Integer.valueOf(2));
+        } else if (paramClass == Double.TYPE) {
+          localList2.add(Integer.valueOf(7));
+        } else if (paramClass == Float.TYPE) {
+          localList2.add(Integer.valueOf(8));
+        } else if (paramClass == Boolean.TYPE) {
+          localList2.add(Integer.valueOf(3));
+        } else if (paramClass == Byte.TYPE) {
+          localList2.add(Integer.valueOf(9));
+        } else if (SmartParcelable.class.isAssignableFrom(paramClass)) {
+          localList2.add(Integer.valueOf(6));
+        } else if (Parcelable.class.isAssignableFrom(paramClass)) {
+          localList2.add(Integer.valueOf(4));
+        } else if (List.class.isAssignableFrom(paramClass)) {
+          localList2.add(Integer.valueOf(10));
+        } else if (Map.class.isAssignableFrom(paramClass)) {
+          localList2.add(Integer.valueOf(11));
+        } else if (Serializable.class.isAssignableFrom(paramClass)) {
+          localList2.add(Integer.valueOf(12));
+        } else if ([Ljava.lang.String.class.isAssignableFrom(paramClass)) {
+          localList2.add(Integer.valueOf(13));
+        } else if ([B.class.isAssignableFrom(paramClass)) {
+          localList2.add(Integer.valueOf(14));
+        } else {
+          localList2.add(Integer.valueOf(0));
         }
-        localList2.add(Integer.valueOf(1));
       }
-    }
-    for (;;)
-    {
       i += 1;
-      break label143;
-      break;
-      label207:
-      if (paramClass == String.class) {
-        localList2.add(Integer.valueOf(5));
-      } else if (paramClass == Long.TYPE) {
-        localList2.add(Integer.valueOf(2));
-      } else if (paramClass == Double.TYPE) {
-        localList2.add(Integer.valueOf(7));
-      } else if (paramClass == Float.TYPE) {
-        localList2.add(Integer.valueOf(8));
-      } else if (paramClass == Boolean.TYPE) {
-        localList2.add(Integer.valueOf(3));
-      } else if (paramClass == Byte.TYPE) {
-        localList2.add(Integer.valueOf(9));
-      } else if (SmartParcelable.class.isAssignableFrom(paramClass)) {
-        localList2.add(Integer.valueOf(6));
-      } else if (Parcelable.class.isAssignableFrom(paramClass)) {
-        localList2.add(Integer.valueOf(4));
-      } else if (List.class.isAssignableFrom(paramClass)) {
-        localList2.add(Integer.valueOf(10));
-      } else if (Map.class.isAssignableFrom(paramClass)) {
-        localList2.add(Integer.valueOf(11));
-      } else if (Serializable.class.isAssignableFrom(paramClass)) {
-        localList2.add(Integer.valueOf(12));
-      } else if ([Ljava.lang.String.class.isAssignableFrom(paramClass)) {
-        localList2.add(Integer.valueOf(13));
-      } else if ([B.class.isAssignableFrom(paramClass)) {
-        localList2.add(Integer.valueOf(14));
-      } else {
-        localList2.add(Integer.valueOf(0));
-      }
     }
+    return localParcableInfo;
   }
   
   public static void putArrayListToBundle(Bundle paramBundle, String paramString, ArrayList<? extends SmartParcelable> paramArrayList)
@@ -374,14 +325,13 @@ public class ParcelableWrapper
     if (paramIntent == null) {
       return null;
     }
-    if (paramArrayList == null) {
-      paramIntent.putExtra(paramString, (Parcelable)null);
-    }
-    for (;;)
+    if (paramArrayList == null)
     {
+      paramIntent.putExtra(paramString, (Parcelable)null);
       return paramIntent;
-      paramIntent.putExtra(paramString, new ParcelableListWrapper(paramArrayList));
     }
+    paramIntent.putExtra(paramString, new ParcelableListWrapper(paramArrayList));
+    return paramIntent;
   }
   
   public static void putDataToBundle(Bundle paramBundle, String paramString, SmartParcelable paramSmartParcelable)
@@ -418,36 +368,30 @@ public class ParcelableWrapper
   
   private static void readListInternal(Parcel paramParcel, List paramList, int paramInt, ClassLoader paramClassLoader)
   {
-    if (paramInt > 0)
+    while (paramInt > 0)
     {
       Object localObject = paramParcel.readValue(paramClassLoader);
       if ((localObject instanceof ParcelableWrapper)) {
         paramList.add(((ParcelableWrapper)localObject).getData());
-      }
-      for (;;)
-      {
-        paramInt -= 1;
-        break;
+      } else {
         paramList.add(localObject);
       }
+      paramInt -= 1;
     }
   }
   
   static void readMapInternal(Parcel paramParcel, Map paramMap, int paramInt, ClassLoader paramClassLoader)
   {
-    if (paramInt > 0)
+    while (paramInt > 0)
     {
       Object localObject1 = paramParcel.readValue(paramClassLoader);
       Object localObject2 = paramParcel.readValue(paramClassLoader);
       if ((localObject2 instanceof ParcelableWrapper)) {
         paramMap.put(localObject1, ((ParcelableWrapper)localObject2).getData());
-      }
-      for (;;)
-      {
-        paramInt -= 1;
-        break;
+      } else {
         paramMap.put(localObject1, localObject2);
       }
+      paramInt -= 1;
     }
   }
   
@@ -467,7 +411,7 @@ public class ParcelableWrapper
     //   14: aload_2
     //   15: iload_1
     //   16: aaload
-    //   17: ifnonnull +18 -> 35
+    //   17: ifnonnull +24 -> 41
     //   20: aload_2
     //   21: iload_1
     //   22: aload_0
@@ -481,17 +425,19 @@ public class ParcelableWrapper
     //   30: astore_0
     //   31: aload_2
     //   32: monitorexit
-    //   33: aload_0
-    //   34: athrow
-    //   35: iload_1
-    //   36: iconst_1
-    //   37: iadd
-    //   38: istore_1
-    //   39: goto -31 -> 8
+    //   33: goto +5 -> 38
+    //   36: aload_0
+    //   37: athrow
+    //   38: goto -2 -> 36
+    //   41: iload_1
+    //   42: iconst_1
+    //   43: iadd
+    //   44: istore_1
+    //   45: goto -37 -> 8
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	42	0	paramParcelableWrapper	ParcelableWrapper
-    //   7	32	1	i	int
+    //   0	48	0	paramParcelableWrapper	ParcelableWrapper
+    //   7	38	1	i	int
     //   3	29	2	arrayOfParcelableWrapper	ParcelableWrapper[]
     // Exception table:
     //   from	to	target	type
@@ -532,56 +478,49 @@ public class ParcelableWrapper
       return;
     }
     int j = paramList.size();
-    paramParcel.writeInt(j);
     int i = 0;
-    label24:
-    Object localObject;
-    if (i < j)
+    paramParcel.writeInt(j);
+    while (i < j)
     {
-      localObject = paramList.get(i);
-      if (!(localObject instanceof SmartParcelable)) {
-        break label74;
+      Object localObject = paramList.get(i);
+      if ((localObject instanceof SmartParcelable))
+      {
+        localObject = obtain((SmartParcelable)localObject);
+        paramParcel.writeValue(localObject);
+        recycle((ParcelableWrapper)localObject);
       }
-      localObject = obtain((SmartParcelable)localObject);
-      paramParcel.writeValue(localObject);
-      recycle((ParcelableWrapper)localObject);
-    }
-    for (;;)
-    {
+      else
+      {
+        paramParcel.writeValue(localObject);
+      }
       i += 1;
-      break label24;
-      break;
-      label74:
-      paramParcel.writeValue(localObject);
     }
   }
   
   public static void writeMap(Parcel paramParcel, Map<String, Object> paramMap)
   {
-    if (paramMap == null) {
-      paramParcel.writeInt(-1);
-    }
-    for (;;)
+    if (paramMap == null)
     {
+      paramParcel.writeInt(-1);
       return;
-      paramMap = paramMap.entrySet();
-      paramParcel.writeInt(paramMap.size());
-      paramMap = paramMap.iterator();
-      while (paramMap.hasNext())
+    }
+    paramMap = paramMap.entrySet();
+    paramParcel.writeInt(paramMap.size());
+    paramMap = paramMap.iterator();
+    while (paramMap.hasNext())
+    {
+      Object localObject = (Map.Entry)paramMap.next();
+      paramParcel.writeValue(((Map.Entry)localObject).getKey());
+      localObject = ((Map.Entry)localObject).getValue();
+      if ((localObject instanceof SmartParcelable))
       {
-        Object localObject = (Map.Entry)paramMap.next();
-        paramParcel.writeValue(((Map.Entry)localObject).getKey());
-        localObject = ((Map.Entry)localObject).getValue();
-        if ((localObject instanceof SmartParcelable))
-        {
-          localObject = obtain((SmartParcelable)localObject);
-          paramParcel.writeValue(localObject);
-          recycle((ParcelableWrapper)localObject);
-        }
-        else
-        {
-          paramParcel.writeValue(localObject);
-        }
+        localObject = obtain((SmartParcelable)localObject);
+        paramParcel.writeValue(localObject);
+        recycle((ParcelableWrapper)localObject);
+      }
+      else
+      {
+        paramParcel.writeValue(localObject);
       }
     }
   }
@@ -598,79 +537,96 @@ public class ParcelableWrapper
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    if (this.obj == null) {
+    Object localObject1 = this.obj;
+    if (localObject1 == null)
+    {
       paramParcel.writeString(null);
+      return;
     }
-    int i;
+    Object localObject2 = localObject1.getClass();
+    localObject1 = getParcableInfo(((Class)localObject2).getName(), (Class)localObject2);
+    Object localObject3 = ParcelableWrapper.ParcableInfo.access$100((ParcelableWrapper.ParcableInfo)localObject1);
+    localObject1 = ParcelableWrapper.ParcableInfo.access$200((ParcelableWrapper.ParcableInfo)localObject1);
     for (;;)
     {
-      return;
-      Object localObject2 = this.obj.getClass();
-      Object localObject1 = getParcableInfo(((Class)localObject2).getName(), (Class)localObject2);
-      localObject3 = ParcelableWrapper.ParcableInfo.access$100((ParcelableWrapper.ParcableInfo)localObject1);
-      localObject1 = ParcelableWrapper.ParcableInfo.access$200((ParcelableWrapper.ParcableInfo)localObject1);
       try
       {
         paramParcel.writeString(((Class)localObject2).getName());
         localObject2 = ((List)localObject3).iterator();
-        i = 0;
-        if (((Iterator)localObject2).hasNext())
-        {
+        int i = 0;
+        if (((Iterator)localObject2).hasNext()) {
           localObject3 = (Field)((Iterator)localObject2).next();
-          switch (((Integer)((List)localObject1).get(i)).intValue())
-          {
-          case 5: 
-            paramParcel.writeString((String)((Field)localObject3).get(this.obj));
+        }
+        switch (((Integer)((List)localObject1).get(i)).intValue())
+        {
+        case 14: 
+          paramParcel.writeByteArray((byte[])((Field)localObject3).get(this.obj));
+          break;
+        case 13: 
+          paramParcel.writeStringArray((String[])((Field)localObject3).get(this.obj));
+          break;
+        case 12: 
+          paramParcel.writeSerializable((Serializable)((Field)localObject3).get(this.obj));
+          break;
+        case 11: 
+          writeMap(paramParcel, (Map)((Field)localObject3).get(this.obj));
+          break;
+        case 10: 
+          writeList(paramParcel, (List)((Field)localObject3).get(this.obj));
+          break;
+        case 9: 
+          paramParcel.writeByte(((Field)localObject3).getByte(this.obj));
+          break;
+        case 8: 
+          paramParcel.writeFloat(((Field)localObject3).getFloat(this.obj));
+          break;
+        case 7: 
+          paramParcel.writeDouble(((Field)localObject3).getDouble(this.obj));
+          break;
+        case 6: 
+          localObject3 = obtain((SmartParcelable)((Field)localObject3).get(this.obj));
+          paramParcel.writeParcelable((Parcelable)localObject3, paramInt);
+          recycle((ParcelableWrapper)localObject3);
+          break;
+        case 5: 
+          paramParcel.writeString((String)((Field)localObject3).get(this.obj));
+          break;
+        case 4: 
+          paramParcel.writeParcelable((Parcelable)((Field)localObject3).get(this.obj), paramInt);
+          break;
+        case 3: 
+          if (!((Field)localObject3).getBoolean(this.obj)) {
+            break label501;
           }
+          b = 1;
+          paramParcel.writeByte(b);
+          break;
+        case 2: 
+          paramParcel.writeLong(((Field)localObject3).getLong(this.obj));
+          break;
+        case 1: 
+          paramParcel.writeInt(((Field)localObject3).getInt(this.obj));
+          break;
+        case 0: 
+          paramParcel.writeValue(((Field)localObject3).get(this.obj));
+          i += 1;
+          continue;
+          return;
         }
       }
       catch (Throwable paramParcel)
       {
         QLog.e("ParcelableWrapper", 1, "ParcelableWrapper.writeToParcel:", paramParcel);
-        return;
       }
-    }
-    Object localObject3 = obtain((SmartParcelable)((Field)localObject3).get(this.obj));
-    paramParcel.writeParcelable((Parcelable)localObject3, paramInt);
-    recycle((ParcelableWrapper)localObject3);
-    break label485;
-    paramParcel.writeInt(((Field)localObject3).getInt(this.obj));
-    break label485;
-    paramParcel.writeParcelable((Parcelable)((Field)localObject3).get(this.obj), paramInt);
-    break label485;
-    if (((Field)localObject3).getBoolean(this.obj)) {}
-    for (byte b = 1;; b = 0)
-    {
-      paramParcel.writeByte(b);
-      break label485;
-      paramParcel.writeLong(((Field)localObject3).getLong(this.obj));
-      break label485;
-      paramParcel.writeByte(((Field)localObject3).getByte(this.obj));
-      break label485;
-      paramParcel.writeDouble(((Field)localObject3).getDouble(this.obj));
-      break label485;
-      paramParcel.writeFloat(((Field)localObject3).getFloat(this.obj));
-      break label485;
-      writeList(paramParcel, (List)((Field)localObject3).get(this.obj));
-      break label485;
-      writeMap(paramParcel, (Map)((Field)localObject3).get(this.obj));
-      break label485;
-      paramParcel.writeSerializable((Serializable)((Field)localObject3).get(this.obj));
-      break label485;
-      paramParcel.writeStringArray((String[])((Field)localObject3).get(this.obj));
-      break label485;
-      paramParcel.writeByteArray((byte[])((Field)localObject3).get(this.obj));
-      break label485;
-      paramParcel.writeValue(((Field)localObject3).get(this.obj));
-      label485:
-      i += 1;
-      break;
+      continue;
+      label501:
+      byte b = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qcircle.api.db.util.ParcelableWrapper
  * JD-Core Version:    0.7.0.1
  */

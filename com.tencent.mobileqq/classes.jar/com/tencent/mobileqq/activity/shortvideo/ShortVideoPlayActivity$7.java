@@ -15,21 +15,25 @@ class ShortVideoPlayActivity$7
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.d("ShortVideoPlayActivity", 2, "onReceive ===>" + paramContext);
+    if (QLog.isColorLevel())
+    {
+      paramIntent = new StringBuilder();
+      paramIntent.append("onReceive ===>");
+      paramIntent.append(paramContext);
+      QLog.d("ShortVideoPlayActivity", 2, paramIntent.toString());
     }
     if (("android.intent.action.SCREEN_OFF".equals(paramContext)) || ("tencent.av.v2q.StartVideoChat".equals(paramContext)))
     {
-      if ((this.a.a != null) && (this.a.a.get() != null) && (((TVK_IMediaPlayer)this.a.a.get()).isPlaying())) {
-        this.a.k = true;
+      if ((this.a.mMediaPlayer != null) && (this.a.mMediaPlayer.get() != null) && (((TVK_IMediaPlayer)this.a.mMediaPlayer.get()).isPlaying())) {
+        this.a.mNeedPlay = true;
       }
-      this.a.j();
+      this.a.pause();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.shortvideo.ShortVideoPlayActivity.7
  * JD-Core Version:    0.7.0.1
  */

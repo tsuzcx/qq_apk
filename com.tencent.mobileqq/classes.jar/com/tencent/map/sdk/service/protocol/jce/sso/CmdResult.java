@@ -14,16 +14,6 @@ public final class CmdResult
   public int iSubErrCode = 0;
   public String strErrDesc = "";
   
-  static
-  {
-    if (!CmdResult.class.desiredAssertionStatus()) {}
-    for (boolean bool = true;; bool = false)
-    {
-      a = bool;
-      return;
-    }
-  }
-  
   public CmdResult() {}
   
   public CmdResult(int paramInt1, String paramString, int paramInt2)
@@ -40,18 +30,20 @@ public final class CmdResult
   
   public final Object clone()
   {
-    Object localObject1 = null;
     try
     {
-      Object localObject2 = super.clone();
-      localObject1 = localObject2;
+      Object localObject = super.clone();
+      return localObject;
     }
     catch (CloneNotSupportedException localCloneNotSupportedException)
     {
-      while (a) {}
-      throw new AssertionError();
+      label7:
+      break label7;
     }
-    return localObject1;
+    if (a) {
+      return null;
+    }
+    throw new AssertionError();
   }
   
   public final void display(StringBuilder paramStringBuilder, int paramInt)
@@ -72,13 +64,11 @@ public final class CmdResult
   
   public final boolean equals(Object paramObject)
   {
-    if (paramObject == null) {}
-    do
-    {
+    if (paramObject == null) {
       return false;
-      paramObject = (CmdResult)paramObject;
-    } while ((!o.a(this.iErrCode, paramObject.iErrCode)) || (!o.a(this.strErrDesc, paramObject.strErrDesc)) || (!o.a(this.iSubErrCode, paramObject.iSubErrCode)));
-    return true;
+    }
+    paramObject = (CmdResult)paramObject;
+    return (o.a(this.iErrCode, paramObject.iErrCode)) && (o.a(this.strErrDesc, paramObject.strErrDesc)) && (o.a(this.iSubErrCode, paramObject.iSubErrCode));
   }
   
   public final int hashCode()
@@ -110,7 +100,7 @@ public final class CmdResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.service.protocol.jce.sso.CmdResult
  * JD-Core Version:    0.7.0.1
  */

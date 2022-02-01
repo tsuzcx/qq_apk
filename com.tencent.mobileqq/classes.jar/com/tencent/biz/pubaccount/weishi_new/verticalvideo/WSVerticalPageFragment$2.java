@@ -1,54 +1,26 @@
 package com.tencent.biz.pubaccount.weishi_new.verticalvideo;
 
 import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.RecyclerView.OnScrollListener;
 import android.view.View;
-import com.tencent.biz.pubaccount.weishi_new.util.WSMonitorUtil;
-import com.tencent.biz.pubaccount.weishi_new.verticalvideo.view.WSSwipeRefreshLayout;
+import android.view.View.OnLayoutChangeListener;
+import android.widget.TextView;
 
 class WSVerticalPageFragment$2
-  extends RecyclerView.OnScrollListener
+  implements View.OnLayoutChangeListener
 {
-  WSVerticalPageFragment$2(WSVerticalPageFragment paramWSVerticalPageFragment) {}
+  WSVerticalPageFragment$2(WSVerticalPageFragment paramWSVerticalPageFragment, RecyclerView paramRecyclerView, TextView paramTextView) {}
   
-  public void onScrollStateChanged(RecyclerView paramRecyclerView, int paramInt)
+  public void onLayoutChange(View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, int paramInt6, int paramInt7, int paramInt8)
   {
-    super.onScrollStateChanged(paramRecyclerView, paramInt);
-    if (paramInt == 0)
-    {
-      WSMonitorUtil.a("weishi_video_play_list");
-      return;
-    }
-    WSMonitorUtil.a(this.a.getActivity(), "weishi_video_play_list");
-  }
-  
-  public void onScrolled(RecyclerView paramRecyclerView, int paramInt1, int paramInt2)
-  {
-    boolean bool2 = false;
-    if ((paramRecyclerView == null) || (paramRecyclerView.getChildCount() == 0)) {}
-    for (paramInt1 = 0;; paramInt1 = paramRecyclerView.getChildAt(0).getTop())
-    {
-      paramRecyclerView = WSVerticalPageFragment.a(this.a);
-      boolean bool1 = bool2;
-      if (paramInt1 >= 0)
-      {
-        bool1 = bool2;
-        if (WSVerticalPageFragment.a(this.a) != null)
-        {
-          bool1 = bool2;
-          if (((WSVerticalPageContract.Presenter)WSVerticalPageFragment.b(this.a)).a()) {
-            bool1 = true;
-          }
-        }
-      }
-      paramRecyclerView.setEnabled(bool1);
-      return;
-    }
+    this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.removeOnLayoutChangeListener(this);
+    paramInt1 = (int)((int)(this.jdField_a_of_type_AndroidSupportV7WidgetRecyclerView.getHeight() * 0.3F) - this.jdField_a_of_type_AndroidWidgetTextView.getPaddingTop() - this.jdField_a_of_type_AndroidWidgetTextView.getTextSize());
+    paramView = this.jdField_a_of_type_AndroidWidgetTextView;
+    paramView.setPadding(paramView.getPaddingLeft(), this.jdField_a_of_type_AndroidWidgetTextView.getPaddingTop(), this.jdField_a_of_type_AndroidWidgetTextView.getPaddingRight(), paramInt1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.verticalvideo.WSVerticalPageFragment.2
  * JD-Core Version:    0.7.0.1
  */

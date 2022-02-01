@@ -14,17 +14,17 @@ class ShortVideoCommentsView$25
   public void run()
   {
     int i = UITools.b(this.this$0.getContext());
-    if (ShortVideoCommentsView.a() * this.this$0.a.a.size() + ShortVideoCommentsView.b(this.this$0).getMeasuredHeight() >= i)
+    if (ShortVideoCommentsView.access$2400() * this.this$0.mComments.a.size() + ShortVideoCommentsView.access$2500(this.this$0).getMeasuredHeight() >= i)
     {
-      ShortVideoCommentsView.a(this.this$0).setSelectionFromTop(1, ShortVideoCommentsView.a() + ShortVideoCommentsView.b(this.this$0).getMeasuredHeight());
+      ShortVideoCommentsView.access$1800(this.this$0).setSelectionFromTop(1, ShortVideoCommentsView.access$2400() + ShortVideoCommentsView.access$2500(this.this$0).getMeasuredHeight());
       return;
     }
-    ShortVideoCommentsView.a(this.this$0).setSelection(this.this$0.a.a.size() + 1);
+    ShortVideoCommentsView.access$1800(this.this$0).setSelection(this.this$0.mComments.a.size() + 1);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.nearby.now.view.ShortVideoCommentsView.25
  * JD-Core Version:    0.7.0.1
  */

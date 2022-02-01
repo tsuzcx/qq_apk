@@ -14,10 +14,11 @@ class QZoneSharePictureJsPlugin$11
   {
     try
     {
-      if ((this.this$0.parentPlugin != null) && (this.this$0.parentPlugin.mRuntime != null)) {
+      if ((this.this$0.parentPlugin != null) && (this.this$0.parentPlugin.mRuntime != null))
+      {
         QQToast.a(this.this$0.parentPlugin.mRuntime.a(), this.val$icon, this.val$msg, 0).a();
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
@@ -27,7 +28,7 @@ class QZoneSharePictureJsPlugin$11
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QZoneSharePictureJsPlugin.11
  * JD-Core Version:    0.7.0.1
  */

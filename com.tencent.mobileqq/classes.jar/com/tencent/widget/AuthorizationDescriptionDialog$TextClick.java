@@ -1,14 +1,14 @@
 package com.tencent.widget;
 
 import android.content.Context;
-import android.content.Intent;
+import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.text.TextPaint;
 import android.text.style.ClickableSpan;
 import android.view.View;
-import com.tencent.mobileqq.activity.QQBrowserActivity;
-import com.tencent.raft.component.TxchPage;
-import com.tencent.raft.raftframework.RAApplicationContext;
+import com.tencent.gdtad.inject.GdtThirdProcessorProxy;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qroute.route.ActivityURIRequest;
 import mqq.util.WeakReference;
 
 final class AuthorizationDescriptionDialog$TextClick
@@ -21,30 +21,19 @@ final class AuthorizationDescriptionDialog$TextClick
     this.a = new WeakReference(paramContext);
   }
   
-  private String a(Context paramContext)
-  {
-    RAApplicationContext localRAApplicationContext = RAApplicationContext.getGlobalContext();
-    if (!localRAApplicationContext.hasStartUp()) {
-      localRAApplicationContext.startup(paramContext);
-    }
-    paramContext = (TxchPage)localRAApplicationContext.getService(TxchPage.class);
-    if (paramContext != null) {}
-    for (paramContext = paramContext.productId;; paramContext = "36028")
-    {
-      localRAApplicationContext.shutdown();
-      return paramContext;
-    }
-  }
-  
   public void onClick(@NonNull View paramView)
   {
     paramView = (Context)this.a.get();
     if (paramView != null)
     {
-      String str = "https://support.qq.com/product/" + a(paramView);
-      Intent localIntent = new Intent(paramView, QQBrowserActivity.class);
-      localIntent.putExtra("url", str);
-      paramView.startActivity(localIntent);
+      Object localObject = new GdtThirdProcessorProxy();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("https://support.qq.com/product/");
+      localStringBuilder.append(((GdtThirdProcessorProxy)localObject).a(paramView));
+      localObject = localStringBuilder.toString();
+      paramView = new ActivityURIRequest(paramView, "/base/browser");
+      paramView.extra().putString("url", (String)localObject);
+      QRoute.startUri(paramView, null);
     }
   }
   
@@ -55,7 +44,7 @@ final class AuthorizationDescriptionDialog$TextClick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.AuthorizationDescriptionDialog.TextClick
  * JD-Core Version:    0.7.0.1
  */

@@ -17,36 +17,32 @@ final class o
     if (!TextUtils.isEmpty(subscriberId)) {
       return subscriberId;
     }
-    if ((paramBoolean) && (!e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))) {}
-    for (;;)
+    if (((!paramBoolean) || (e.checkPermission(paramContext, "android.permission.READ_PHONE_STATE"))) && (Build.VERSION.SDK_INT < 29) && (paramContext != null))
     {
-      return subscriberId;
-      if ((Build.VERSION.SDK_INT < 29) && (paramContext != null))
-      {
-        paramContext = paramContext.getApplicationContext();
-        if (paramContext != null) {
-          try
+      paramContext = paramContext.getApplicationContext();
+      if (paramContext != null) {
+        try
+        {
+          paramContext = paramContext.getSystemService("phone");
+          if ((paramContext instanceof TelephonyManager))
           {
-            paramContext = paramContext.getSystemService("phone");
-            if ((paramContext instanceof TelephonyManager))
+            paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
+            if (paramContext != null)
             {
-              paramContext = (TelephonyManager)TelephonyManager.class.cast(paramContext);
-              if (paramContext != null)
-              {
-                paramContext = paramContext.getSubscriberId();
-                if (!TextUtils.isEmpty(paramContext)) {
-                  subscriberId = paramContext;
-                }
+              paramContext = paramContext.getSubscriberId();
+              if (!TextUtils.isEmpty(paramContext)) {
+                subscriberId = paramContext;
               }
             }
           }
-          catch (Throwable paramContext)
-          {
-            AdLog.i("AdSIMCard", "getSubscriberId", paramContext);
-          }
+        }
+        catch (Throwable paramContext)
+        {
+          AdLog.i("AdSIMCard", "getSubscriberId", paramContext);
         }
       }
     }
+    return subscriberId;
   }
   
   public static String getSubscriberIdCache(Context paramContext)

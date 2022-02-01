@@ -16,377 +16,264 @@ public class UiSettings
   
   public boolean isCompassEnabled()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      bool1 = bool2;
-      if (localkr.a != null) {
-        bool1 = localkr.a.b();
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      return localkr.a.b();
     }
-    return bool1;
+    return false;
   }
   
   public boolean isIndoorLevelPickerEnabled()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      bool1 = bool2;
-      if (localkr.a != null) {
-        bool1 = localkr.a.h();
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      return localkr.a.h();
     }
-    return bool1;
+    return false;
   }
   
   public boolean isMyLocationButtonEnabled()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      bool1 = bool2;
-      if (localkr.a != null) {
-        bool1 = localkr.a.c();
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      return localkr.a.c();
     }
-    return bool1;
+    return false;
   }
   
   public boolean isRotateGesturesEnabled()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      bool1 = bool2;
-      if (localkr.a != null) {
-        bool1 = localkr.a.g();
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      return localkr.a.g();
     }
-    return bool1;
+    return false;
   }
   
   public boolean isScaleViewEnabled()
   {
-    if (this.a != null) {
-      return this.a.a();
+    kr localkr = this.a;
+    if (localkr != null) {
+      return localkr.a();
     }
     return false;
   }
   
   public boolean isScrollGesturesEnabled()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      bool1 = bool2;
-      if (localkr.a != null) {
-        bool1 = localkr.a.d();
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      return localkr.a.d();
     }
-    return bool1;
+    return false;
   }
   
   public boolean isTiltGesturesEnabled()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      bool1 = bool2;
-      if (localkr.a != null) {
-        bool1 = localkr.a.f();
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      return localkr.a.f();
     }
-    return bool1;
+    return false;
   }
   
   public boolean isZoomControlsEnabled()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      bool1 = bool2;
-      if (localkr.a != null) {
-        bool1 = localkr.a.a();
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      return localkr.a.a();
     }
-    return bool1;
+    return false;
   }
   
   public boolean isZoomGesturesEnabled()
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      bool1 = bool2;
-      if (localkr.a != null) {
-        bool1 = localkr.a.e();
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      return localkr.a.e();
     }
-    return bool1;
+    return false;
   }
   
   public void setAllGesturesEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.i(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.i(paramBoolean);
     }
   }
   
   public void setCompassEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.b(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.b(paramBoolean);
     }
   }
   
   public void setCompassExtraPadding(int paramInt)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.c(paramInt);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.c(paramInt);
     }
   }
   
   public void setCompassExtraPadding(int paramInt1, int paramInt2)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.b(paramInt1, paramInt2);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.b(paramInt1, paramInt2);
     }
   }
   
   public void setFlingGestureEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.e(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.e(paramBoolean);
     }
   }
   
   public void setGestureScaleByMapCenter(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.m(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.m(paramBoolean);
     }
   }
   
   public void setIndoorLevelPickerEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.n(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.n(paramBoolean);
     }
   }
   
   public final void setLogoPosition(int paramInt)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.a(paramInt);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.a(paramInt);
     }
   }
   
   public final void setLogoPosition(int paramInt, int[] paramArrayOfInt)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.a(paramInt, paramArrayOfInt);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.a(paramInt, paramArrayOfInt);
     }
   }
   
   public final void setLogoPositionWithMargin(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.a(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
   }
   
   public void setLogoScale(float paramFloat)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.a(paramFloat);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.a(paramFloat);
     }
   }
   
   public final void setLogoSize(int paramInt)
   {
-    if ((this.a != null) && (this.a != null))
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.d(paramInt);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr != null) && (localkr.a != null)) {
+      localkr.a.d(paramInt);
     }
   }
   
   public void setMyLocationButtonEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.c(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.c(paramBoolean);
     }
   }
   
   public void setRotateGesturesEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.h(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.h(paramBoolean);
     }
   }
   
   public void setScaleViewEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.j(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.j(paramBoolean);
     }
   }
   
   public void setScaleViewPosition(int paramInt)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.b(paramInt);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.b(paramInt);
     }
   }
   
   public void setScaleViewPositionWithMargin(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.b(paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
     }
   }
   
   public void setScrollGesturesEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.d(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.d(paramBoolean);
     }
   }
   
   public void setTiltGesturesEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.g(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.g(paramBoolean);
     }
   }
   
   public void setZoomControlsEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.a(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.a(paramBoolean);
     }
   }
   
   public void setZoomGesturesEnabled(boolean paramBoolean)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.f(paramBoolean);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.f(paramBoolean);
     }
   }
   
   public final void setZoomPosition(int paramInt)
   {
-    if (this.a != null)
-    {
-      kr localkr = this.a;
-      if (localkr.a != null) {
-        localkr.a.e(paramInt);
-      }
+    kr localkr = this.a;
+    if ((localkr != null) && (localkr.a != null)) {
+      localkr.a.e(paramInt);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tencentmap.mapsdk.maps.UiSettings
  * JD-Core Version:    0.7.0.1
  */

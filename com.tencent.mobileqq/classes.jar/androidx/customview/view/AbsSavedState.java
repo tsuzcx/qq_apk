@@ -26,27 +26,23 @@ public abstract class AbsSavedState
   protected AbsSavedState(@NonNull Parcel paramParcel, @Nullable ClassLoader paramClassLoader)
   {
     paramParcel = paramParcel.readParcelable(paramClassLoader);
-    if (paramParcel != null) {}
-    for (;;)
-    {
-      this.mSuperState = paramParcel;
-      return;
+    if (paramParcel == null) {
       paramParcel = EMPTY_STATE;
     }
+    this.mSuperState = paramParcel;
   }
   
   protected AbsSavedState(@NonNull Parcelable paramParcelable)
   {
-    if (paramParcelable == null) {
-      throw new IllegalArgumentException("superState must not be null");
-    }
-    if (paramParcelable != EMPTY_STATE) {}
-    for (;;)
+    if (paramParcelable != null)
     {
+      if (paramParcelable == EMPTY_STATE) {
+        paramParcelable = null;
+      }
       this.mSuperState = paramParcelable;
       return;
-      paramParcelable = null;
     }
+    throw new IllegalArgumentException("superState must not be null");
   }
   
   public int describeContents()
@@ -67,7 +63,7 @@ public abstract class AbsSavedState
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.customview.view.AbsSavedState
  * JD-Core Version:    0.7.0.1
  */

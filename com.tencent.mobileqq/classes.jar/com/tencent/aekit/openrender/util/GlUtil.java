@@ -24,29 +24,23 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 public final class GlUtil
 {
-  public static final float[] EMPTY_POSITIONS;
-  public static final float[] EMPTY_POSITIONS_TRIANGLES;
+  public static final float[] EMPTY_POSITIONS = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
+  public static final float[] EMPTY_POSITIONS_TRIANGLES = { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
   public static final int GL_TEXTURE_EXTERNAL_OES = 36197;
   public static final float[] IDENTITY_MATRIX;
   public static final int NO_TEXTURE = -1;
-  public static final float[] ORIGIN_POSITION_COORDS;
-  public static final float[] ORIGIN_TEX_COORDS;
-  public static final float[] ORIGIN_TEX_COORDS_REVERSE;
-  public static final float[] ORIGIN_TEX_COORDS_TRIANGLES;
+  public static final float[] ORIGIN_POSITION_COORDS = { -1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, 1.0F, -1.0F };
+  public static final float[] ORIGIN_TEX_COORDS = { 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F };
+  public static final float[] ORIGIN_TEX_COORDS_REVERSE = { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F };
+  public static final float[] ORIGIN_TEX_COORDS_TRIANGLES = { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
   private static final int SIZEOF_FLOAT = 4;
-  public static final String TAG = GlUtil.class.getSimpleName();
+  public static final String TAG = "GlUtil";
   private static AtomicInteger blendModeRef = new AtomicInteger(0);
   public static boolean curBlendModeEnabled;
   private static boolean enableLog;
   
   static
   {
-    EMPTY_POSITIONS = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-    EMPTY_POSITIONS_TRIANGLES = new float[] { 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0F };
-    ORIGIN_POSITION_COORDS = new float[] { -1.0F, -1.0F, -1.0F, 1.0F, 1.0F, 1.0F, 1.0F, -1.0F };
-    ORIGIN_TEX_COORDS = new float[] { 0.0F, 0.0F, 0.0F, 1.0F, 1.0F, 1.0F, 1.0F, 0.0F };
-    ORIGIN_TEX_COORDS_REVERSE = new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 1.0F, 1.0F };
-    ORIGIN_TEX_COORDS_TRIANGLES = new float[] { 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 0.0F, 0.0F, 1.0F, 1.0F, 0.0F, 1.0F, 1.0F };
     IDENTITY_MATRIX = new float[16];
     Matrix.setIdentityM(IDENTITY_MATRIX, 0);
     enableLog = true;
@@ -64,37 +58,46 @@ public final class GlUtil
       if (i == 12288) {
         break;
       }
-      Log.e(TAG, paramString + ": eglGetError: 0x" + Integer.toHexString(i));
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": eglGetError: 0x");
+      localStringBuilder.append(Integer.toHexString(i));
+      Log.e(str, localStringBuilder.toString());
     }
   }
   
   public static void checkGlError(String paramString)
   {
-    if (!enableLog) {}
-    for (;;)
-    {
+    if (!enableLog) {
       return;
-      int i = GLES20.glGetError();
-      if (i != 0)
+    }
+    int i = GLES20.glGetError();
+    if (i != 0)
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(": glError ");
+      localStringBuilder.append(i);
+      Log.e(str, localStringBuilder.toString());
+      paramString = (StackTraceElement[])Thread.getAllStackTraces().get(Thread.currentThread());
+      int j = paramString.length;
+      i = 0;
+      while (i < j)
       {
-        Log.e(TAG, paramString + ": glError " + i);
-        paramString = (StackTraceElement[])Thread.getAllStackTraces().get(Thread.currentThread());
-        int j = paramString.length;
-        i = 0;
-        while (i < j)
-        {
-          Object localObject = paramString[i];
-          Log.e(TAG, localObject.toString());
-          i += 1;
-        }
+        str = paramString[i];
+        Log.e(TAG, str.toString());
+        i += 1;
       }
     }
   }
   
   public static void createEtcTexture(int[] paramArrayOfInt)
   {
+    int j = paramArrayOfInt.length;
     int i = 0;
-    GLES20.glGenTextures(paramArrayOfInt.length, paramArrayOfInt, 0);
+    GLES20.glGenTextures(j, paramArrayOfInt, 0);
     while (i < paramArrayOfInt.length)
     {
       GLES20.glBindTexture(3553, paramArrayOfInt[i]);
@@ -174,7 +177,10 @@ public final class GlUtil
     GLES20.glGenTextures(1, arrayOfInt, 0);
     checkGlError("glGenTextures");
     GLES20.glBindTexture(paramInt1, arrayOfInt[0]);
-    checkGlError("glBindTexture " + arrayOfInt[0]);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("glBindTexture ");
+    localStringBuilder.append(arrayOfInt[0]);
+    checkGlError(localStringBuilder.toString());
     GLES20.glTexParameterf(paramInt1, 10241, paramInt2);
     GLES20.glTexParameterf(paramInt1, 10240, paramInt3);
     GLES20.glTexParameteri(paramInt1, 10242, paramInt4);
@@ -192,16 +198,14 @@ public final class GlUtil
     int i = createTexture(3553);
     if (paramBoolean) {
       GLES31.glTexStorage2D(3553, 1, 32856, paramInt1, paramInt2);
-    }
-    for (;;)
-    {
-      GLES20.glTexParameterf(3553, 10241, 9729.0F);
-      GLES20.glTexParameterf(3553, 10240, 9729.0F);
-      GLES20.glTexParameteri(3553, 10242, 33071);
-      GLES20.glTexParameteri(3553, 10243, 33071);
-      return i;
+    } else {
       GLES20.glTexImage2D(3553, 0, 6408, paramInt1, paramInt2, 0, 6408, 5121, null);
     }
+    GLES20.glTexParameterf(3553, 10241, 9729.0F);
+    GLES20.glTexParameterf(3553, 10240, 9729.0F);
+    GLES20.glTexParameteri(3553, 10242, 33071);
+    GLES20.glTexParameteri(3553, 10243, 33071);
+    return i;
   }
   
   public static void deleteTexture(int paramInt)
@@ -213,7 +217,6 @@ public final class GlUtil
   public static void glBindTexture(int paramInt1, int paramInt2)
   {
     GLES20.glBindTexture(paramInt1, paramInt2);
-    if (paramInt1 == 3553) {}
   }
   
   public static void glDeleteTextures(int paramInt1, int[] paramArrayOfInt, int paramInt2)
@@ -281,9 +284,21 @@ public final class GlUtil
   
   public static void logVersionInfo()
   {
-    Log.i(TAG, "vendor  : " + GLES20.glGetString(7936));
-    Log.i(TAG, "renderer: " + GLES20.glGetString(7937));
-    Log.i(TAG, "version : " + GLES20.glGetString(7938));
+    String str = TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("vendor  : ");
+    localStringBuilder.append(GLES20.glGetString(7936));
+    Log.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("renderer: ");
+    localStringBuilder.append(GLES20.glGetString(7937));
+    Log.i(str, localStringBuilder.toString());
+    str = TAG;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("version : ");
+    localStringBuilder.append(GLES20.glGetString(7938));
+    Log.i(str, localStringBuilder.toString());
   }
   
   public static void resetFilterCoords(VideoFilterBase paramVideoFilterBase)
@@ -322,34 +337,40 @@ public final class GlUtil
   
   public static void saveTextureToRgbaBuffer(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, byte[] paramArrayOfByte, int paramInt6)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return;
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length == 0) {
+        return;
+      }
+      GLES20.glBindFramebuffer(36160, paramInt6);
+      checkGlError("glBindFramebuffer");
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+      checkGlError("glFramebufferTexture2D");
+      paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
+      GLES20.glPixelStorei(3333, 1);
+      GLES20.glReadPixels(paramInt2, paramInt3, paramInt4, paramInt5, 6408, 5121, paramArrayOfByte);
+      GLES20.glBindFramebuffer(36160, 0);
+      checkGlError("glBindFramebuffer");
     }
-    GLES20.glBindFramebuffer(36160, paramInt6);
-    checkGlError("glBindFramebuffer");
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-    checkGlError("glFramebufferTexture2D");
-    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
-    GLES20.glPixelStorei(3333, 1);
-    GLES20.glReadPixels(paramInt2, paramInt3, paramInt4, paramInt5, 6408, 5121, paramArrayOfByte);
-    GLES20.glBindFramebuffer(36160, 0);
-    checkGlError("glBindFramebuffer");
   }
   
   public static void saveTextureToRgbaBuffer(int paramInt1, int paramInt2, int paramInt3, byte[] paramArrayOfByte, int paramInt4)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return;
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length == 0) {
+        return;
+      }
+      GLES20.glBindFramebuffer(36160, paramInt4);
+      checkGlError("glBindFramebuffer");
+      GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
+      checkGlError("glFramebufferTexture2D");
+      paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
+      GLES20.glPixelStorei(3333, 1);
+      GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, paramArrayOfByte);
+      GLES20.glBindFramebuffer(36160, 0);
+      checkGlError("glBindFramebuffer");
     }
-    GLES20.glBindFramebuffer(36160, paramInt4);
-    checkGlError("glBindFramebuffer");
-    GLES20.glFramebufferTexture2D(36160, 36064, 3553, paramInt1, 0);
-    checkGlError("glFramebufferTexture2D");
-    paramArrayOfByte = ByteBuffer.wrap(paramArrayOfByte);
-    GLES20.glPixelStorei(3333, 1);
-    GLES20.glReadPixels(0, 0, paramInt2, paramInt3, 6408, 5121, paramArrayOfByte);
-    GLES20.glBindFramebuffer(36160, 0);
-    checkGlError("glBindFramebuffer");
   }
   
   public static void setBlendMode(boolean paramBoolean)

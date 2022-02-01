@@ -29,74 +29,77 @@ class ThirdAppProxyImpl$QueryDownloadInfoListener
   
   public void onCmdRsp(Intent paramIntent, String paramString, long paramLong, JSONObject paramJSONObject)
   {
-    paramIntent = null;
-    Object localObject = null;
-    QLog.i("ThirdAppProxyImpl", 1, "onCmdRsp ret=" + paramLong + ",cmd=" + paramString + ",dataJson=" + paramJSONObject);
-    AsyncResult localAsyncResult;
-    if ("13169".equals(paramString))
+    paramIntent = new StringBuilder();
+    paramIntent.append("onCmdRsp ret=");
+    paramIntent.append(paramLong);
+    paramIntent.append(",cmd=");
+    paramIntent.append(paramString);
+    paramIntent.append(",dataJson=");
+    paramIntent.append(paramJSONObject);
+    QLog.i("ThirdAppProxyImpl", 1, paramIntent.toString());
+    if ("13169".equals(paramString)) {}
+    for (;;)
     {
+      boolean bool1;
       try
       {
         localAsyncResult = this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult;
         if (localAsyncResult == null) {
           return;
         }
+        paramIntent = null;
+        Object localObject = null;
         this.jdField_a_of_type_ComTencentQqminiSdkLauncherCoreProxyAsyncResult = null;
+        bool2 = false;
         if (paramLong != 0L)
         {
           localAsyncResult.onReceiveResult(false, null);
           return;
         }
-      }
-      catch (Throwable paramIntent)
-      {
-        QLog.e("ThirdAppProxyImpl", 1, "exception. ", paramIntent);
-        return;
-      }
-      paramString = localObject;
-    }
-    for (;;)
-    {
-      try
-      {
-        paramJSONObject = paramJSONObject.getJSONArray("v_appd_down_load_info");
-        if (paramJSONObject == null) {
-          break label186;
-        }
         paramString = localObject;
-        paramIntent = paramJSONObject.getJSONObject(0);
+        try
+        {
+          paramJSONObject = paramJSONObject.getJSONArray("v_appd_down_load_info");
+          if (paramJSONObject == null) {
+            break label194;
+          }
+          paramString = localObject;
+          paramIntent = paramJSONObject.getJSONObject(0);
+        }
+        catch (Throwable paramIntent)
+        {
+          QLog.e("ThirdAppProxyImpl", 1, "exception. ", paramIntent);
+          bool1 = bool2;
+          if (paramString == null) {
+            continue;
+          }
+          bool1 = true;
+          localAsyncResult.onReceiveResult(bool1, paramString);
+          return;
+        }
+        paramString = paramIntent;
+        localAsyncResult.onReceiveResult(bool1, paramIntent);
+        return;
       }
       catch (Throwable paramIntent)
       {
+        AsyncResult localAsyncResult;
+        boolean bool2;
         QLog.e("ThirdAppProxyImpl", 1, "exception. ", paramIntent);
-        if (paramString == null) {
-          break label179;
-        }
       }
-      paramString = paramIntent;
-      localAsyncResult.onReceiveResult(bool, paramIntent);
       return;
-      boolean bool = true;
-      label162:
-      localAsyncResult.onReceiveResult(bool, paramString);
-      return;
-      label179:
-      label186:
-      do
-      {
-        bool = false;
-        break;
-        bool = false;
-        break label162;
-        return;
-      } while (paramIntent == null);
-      bool = true;
+      label194:
+      if (paramIntent != null) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.qqmini.proxyimpl.ThirdAppProxyImpl.QueryDownloadInfoListener
  * JD-Core Version:    0.7.0.1
  */

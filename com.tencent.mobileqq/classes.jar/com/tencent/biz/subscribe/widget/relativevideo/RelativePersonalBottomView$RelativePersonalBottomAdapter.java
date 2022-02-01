@@ -1,8 +1,8 @@
 package com.tencent.biz.subscribe.widget.relativevideo;
 
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentPagerAdapter;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentPagerAdapter;
+import com.tencent.mobileqq.app.BaseFragment;
 import java.util.List;
 
 class RelativePersonalBottomView$RelativePersonalBottomAdapter
@@ -13,17 +13,17 @@ class RelativePersonalBottomView$RelativePersonalBottomAdapter
     super(paramFragmentManager);
   }
   
+  public BaseFragment a(int paramInt)
+  {
+    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
+      return (BaseFragment)RelativePersonalBottomView.a(this.a).get(paramInt);
+    }
+    return null;
+  }
+  
   public int getCount()
   {
     return RelativePersonalBottomView.a(this.a).size();
-  }
-  
-  public Fragment getItem(int paramInt)
-  {
-    if (paramInt < RelativePersonalBottomView.a(this.a).size()) {
-      return (Fragment)RelativePersonalBottomView.a(this.a).get(paramInt);
-    }
-    return null;
   }
   
   public int getItemPosition(Object paramObject)
@@ -33,7 +33,7 @@ class RelativePersonalBottomView$RelativePersonalBottomAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.relativevideo.RelativePersonalBottomView.RelativePersonalBottomAdapter
  * JD-Core Version:    0.7.0.1
  */

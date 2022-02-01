@@ -43,25 +43,31 @@ public class ThirdPartyApp
   
   private byte[] a(long paramLong)
   {
-    for (Object localObject = this.jdField_a_of_type_JavaLangString; ((String)localObject).length() < 16; localObject = (String)localObject + (String)localObject) {}
-    byte[] arrayOfByte1 = ((String)localObject).getBytes();
-    byte[] arrayOfByte2 = String.valueOf(paramLong).getBytes();
-    if (arrayOfByte1.length > arrayOfByte2.length) {}
-    for (localObject = arrayOfByte1;; localObject = arrayOfByte2)
+    for (Object localObject1 = this.jdField_a_of_type_JavaLangString; ((String)localObject1).length() < 16; localObject1 = ((StringBuilder)localObject2).toString())
     {
-      int i = 0;
-      while (i < Math.min(arrayOfByte1.length, arrayOfByte2.length))
-      {
-        localObject[i] = ((byte)(arrayOfByte1[i] ^ arrayOfByte2[i]));
-        i += 1;
-      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append((String)localObject1);
+    }
+    Object localObject2 = ((String)localObject1).getBytes();
+    byte[] arrayOfByte = String.valueOf(paramLong).getBytes();
+    if (localObject2.length > arrayOfByte.length) {
+      localObject1 = localObject2;
+    } else {
+      localObject1 = arrayOfByte;
+    }
+    int i = 0;
+    while (i < Math.min(localObject2.length, arrayOfByte.length))
+    {
+      localObject1[i] = ((byte)(localObject2[i] ^ arrayOfByte[i]));
+      i += 1;
     }
     if (this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor == null)
     {
       this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor = new Cryptor();
       this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.enableResultRandom(false);
     }
-    return localObject;
+    return localObject1;
   }
   
   public int a()
@@ -71,37 +77,34 @@ public class ThirdPartyApp
   
   public String a(String paramString)
   {
-    Object localObject = null;
     try
     {
       paramString = HexUtil.bytes2HexStr(this.jdField_a_of_type_ComTencentQphoneBaseUtilCryptor.encrypt(paramString.getBytes(), this.jdField_a_of_type_ArrayOfByte));
       return paramString;
     }
-    catch (Exception localException)
+    catch (Exception paramString)
     {
-      do
-      {
-        paramString = localObject;
-      } while (!QLog.isColorLevel());
-      QLog.d("OpenApi.App", 2, "encrypt", localException);
+      if (QLog.isColorLevel()) {
+        QLog.d("OpenApi.App", 2, "encrypt", paramString);
+      }
     }
     return null;
   }
   
   public void a(int paramInt1, int paramInt2)
   {
-    this.jdField_b_of_type_Int = (this.d & paramInt1);
+    this.jdField_b_of_type_Int = (paramInt1 & this.d);
     this.jdField_c_of_type_Int = (this.e & paramInt2);
   }
   
   public boolean a(int paramInt)
   {
-    return (this.jdField_a_of_type_Int & paramInt) > 0;
+    return (paramInt & this.jdField_a_of_type_Int) > 0;
   }
   
   public boolean a(int paramInt1, int paramInt2)
   {
-    return ((this.e & paramInt1) > 0) && ((this.d & paramInt2) > 0);
+    return ((paramInt1 & this.e) > 0) && ((this.d & paramInt2) > 0);
   }
   
   public int b()
@@ -128,12 +131,12 @@ public class ThirdPartyApp
   
   public boolean b(int paramInt)
   {
-    return ((this.jdField_c_of_type_Int & paramInt) > 0) && ((this.jdField_b_of_type_Int & 0x40000000) > 0);
+    return ((paramInt & this.jdField_c_of_type_Int) > 0) && ((this.jdField_b_of_type_Int & 0x40000000) > 0);
   }
   
   public boolean b(int paramInt1, int paramInt2)
   {
-    return ((this.jdField_c_of_type_Int & paramInt1) > 0) && ((this.jdField_b_of_type_Int & paramInt2) > 0);
+    return ((paramInt1 & this.jdField_c_of_type_Int) > 0) && ((this.jdField_b_of_type_Int & paramInt2) > 0);
   }
   
   public String c(String paramString)
@@ -155,12 +158,12 @@ public class ThirdPartyApp
   
   public boolean c(int paramInt)
   {
-    return (this.e & paramInt) > 0;
+    return (paramInt & this.e) > 0;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.openapi.entity.ThirdPartyApp
  * JD-Core Version:    0.7.0.1
  */

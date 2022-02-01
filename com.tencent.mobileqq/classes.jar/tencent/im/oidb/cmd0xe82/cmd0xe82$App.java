@@ -11,7 +11,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class cmd0xe82$App
   extends MessageMicro<App>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 66, 72, 80, 88, 98, 106, 114, 120 }, new String[] { "appid", "type", "name", "icon", "url", "removable", "source", "desc", "added", "redpoint", "add_ts", "icon_simple_day", "icon_simple_night", "cmd_trace", "show_frame" }, new Object[] { Long.valueOf(0L), Long.valueOf(0L), "", "", "", Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), "", "", "", Integer.valueOf(0) }, App.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBUInt64Field add_ts = PBField.initUInt64(0L);
   public final PBUInt32Field added = PBField.initUInt32(0);
   public final PBUInt64Field appid = PBField.initUInt64(0L);
@@ -27,10 +27,17 @@ public final class cmd0xe82$App
   public final PBUInt32Field source = PBField.initUInt32(0);
   public final PBUInt64Field type = PBField.initUInt64(0L);
   public final PBStringField url = PBField.initString("");
+  
+  static
+  {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 66, 72, 80, 88, 98, 106, 114, 120 }, new String[] { "appid", "type", "name", "icon", "url", "removable", "source", "desc", "added", "redpoint", "add_ts", "icon_simple_day", "icon_simple_night", "cmd_trace", "show_frame" }, new Object[] { localLong, localLong, "", "", "", localInteger, localInteger, "", localInteger, localInteger, localLong, "", "", "", localInteger }, App.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe82.cmd0xe82.App
  * JD-Core Version:    0.7.0.1
  */

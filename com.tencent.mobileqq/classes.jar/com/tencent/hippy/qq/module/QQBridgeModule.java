@@ -1,27 +1,30 @@
 package com.tencent.hippy.qq.module;
 
 import android.content.Context;
-import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentActivity;
 import android.text.TextUtils;
+import androidx.fragment.app.Fragment;
 import com.tencent.ad.tangram.thread.AdThreadManager;
 import com.tencent.aladdin.config.Aladdin;
 import com.tencent.aladdin.config.AladdinConfig;
 import com.tencent.biz.common.util.HttpUtil;
-import com.tencent.biz.pubaccount.readinjoy.common.ReadInJoyUtils;
-import com.tencent.biz.pubaccount.readinjoy.model.RIJUserLevelModule;
-import com.tencent.biz.pubaccount.readinjoy.video.playfeedback.PlayFeedbackHelper;
-import com.tencent.biz.pubaccount.readinjoy.viola.ViolaFragment;
-import com.tencent.biz.pubaccount.readinjoy.viola.modules.BridgeModule;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.biz.richframework.eventbus.SimpleEventBus;
 import com.tencent.hippy.qq.app.HippyQQEngine;
 import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.HardCodeUtil;
+import com.tencent.mobileqq.app.QBaseActivity;
+import com.tencent.mobileqq.app.QBaseFragment;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.kandian.biz.framework.api.IReadInJoyUtils;
+import com.tencent.mobileqq.kandian.biz.video.feedback.api.IPlayFeedbackHelper;
+import com.tencent.mobileqq.kandian.biz.viola.api.InvokeCallJSCallback;
+import com.tencent.mobileqq.kandian.biz.viola.module.BridgeModuleProxy;
+import com.tencent.mobileqq.kandian.biz.viola.view.ViolaFragment;
+import com.tencent.mobileqq.kandian.repo.account.api.IRIJUserLevelModule;
 import com.tencent.mobileqq.msf.sdk.AppNetConnInfo;
 import com.tencent.mobileqq.msf.sdk.handler.INetInfoHandler;
 import com.tencent.mobileqq.qcircle.api.event.QCircleOpenRewardAdEvent;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.mobileqq.utils.JumpParser;
 import com.tencent.mobileqq.utils.PackageUtil;
@@ -34,11 +37,18 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 public class QQBridgeModule
-  extends BridgeModule
+  extends BridgeModuleProxy
+  implements InvokeCallJSCallback
 {
+  private static final String TAG = "QQBridgeModule";
   private HashMap<String, Object> mCallbackMap = new HashMap();
   private int mEngineId = -1;
   private INetInfoHandler netInfoHandler;
+  
+  public QQBridgeModule()
+  {
+    setInvokeCallJSCallback(this);
+  }
   
   private void addPromise(String paramString, Promise paramPromise)
   {
@@ -66,21 +76,16 @@ public class QQBridgeModule
   
   private String getCallbackId(Promise paramPromise)
   {
-    String str2 = "";
-    String str1 = str2;
-    if (paramPromise != null)
+    if ((paramPromise != null) && (paramPromise.isCallback()))
     {
-      str1 = str2;
-      if (paramPromise.isCallback())
-      {
-        str1 = paramPromise.getCallId();
-        addPromise(str1, paramPromise);
-      }
+      String str = paramPromise.getCallId();
+      addPromise(str, paramPromise);
+      return str;
     }
-    return str1;
+    return "";
   }
   
-  private Fragment getFragment()
+  private QBaseFragment getFragment()
   {
     HippyQQEngine localHippyQQEngine = HippyQQEngine.getEngineInstance(this.mEngineId);
     if (localHippyQQEngine == null) {
@@ -105,20 +110,19 @@ public class QQBridgeModule
   
   private void popBackImpl(String paramString)
   {
-    Fragment localFragment = getFragment();
-    if ((localFragment != null) && ((localFragment instanceof ViolaFragment)))
+    QBaseFragment localQBaseFragment = getFragment();
+    if (localQBaseFragment != null)
     {
-      if (!(localFragment instanceof ViolaFragment)) {
-        break label37;
+      boolean bool = localQBaseFragment instanceof ViolaFragment;
+      if (bool)
+      {
+        if (bool) {
+          ((ViolaFragment)localQBaseFragment).doOnBackPressed();
+        } else {
+          localQBaseFragment.getQBaseActivity().doOnBackPressed();
+        }
+        invokeCallJS(paramString, null);
       }
-      ((ViolaFragment)localFragment).doOnBackPressed();
-    }
-    for (;;)
-    {
-      invokeCallJS(paramString, null);
-      return;
-      label37:
-      localFragment.getActivity().doOnBackPressed();
     }
   }
   
@@ -138,8 +142,8 @@ public class QQBridgeModule
   
   private void setTitleImpl(JSONObject paramJSONObject, String paramString)
   {
-    Fragment localFragment = getFragment();
-    if ((localFragment != null) && ((localFragment instanceof ViolaFragment)))
+    QBaseFragment localQBaseFragment = getFragment();
+    if ((localQBaseFragment != null) && ((localQBaseFragment instanceof ViolaFragment)))
     {
       String str2 = paramJSONObject.optString("title");
       String str1 = str2;
@@ -148,7 +152,7 @@ public class QQBridgeModule
       }
       if (!TextUtils.isEmpty(str1))
       {
-        ((ViolaFragment)localFragment).setTitle(str1);
+        ((ViolaFragment)localQBaseFragment).setTitle(str1);
         invokeCallJS(paramString, new JSONObject());
       }
     }
@@ -182,26 +186,26 @@ public class QQBridgeModule
   public void getAllowedStateOfOperationAction(JSONObject paramJSONObject, Promise paramPromise)
   {
     Object localObject1 = getViolaInstance();
-    if (localObject1 != null) {}
-    for (localObject1 = ((ViolaInstance)localObject1).getActivity();; localObject1 = null)
+    if (localObject1 != null) {
+      localObject1 = ((ViolaInstance)localObject1).getActivity();
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject1;
+    if (localObject1 == null) {
+      localObject2 = BaseActivity.sTopActivity;
+    }
+    boolean bool = ((IRIJUserLevelModule)QRoute.api(IRIJUserLevelModule.class)).doActionsByUserLevel((Context)localObject2, paramJSONObject.optInt("operType"), null);
+    try
     {
-      Object localObject2 = localObject1;
-      if (localObject1 == null) {
-        localObject2 = BaseActivity.sTopActivity;
-      }
-      boolean bool = RIJUserLevelModule.a().a((Context)localObject2, paramJSONObject.optInt("operType"), null);
-      try
-      {
-        paramJSONObject = new JSONObject();
-        paramJSONObject.put("isAllow", bool);
-        doPromiseCallback(paramPromise, paramJSONObject);
-        return;
-      }
-      catch (JSONException paramJSONObject)
-      {
-        paramJSONObject.printStackTrace();
-        return;
-      }
+      paramJSONObject = new JSONObject();
+      paramJSONObject.put("isAllow", bool);
+      doPromiseCallback(paramPromise, paramJSONObject);
+      return;
+    }
+    catch (JSONException paramJSONObject)
+    {
+      paramJSONObject.printStackTrace();
     }
   }
   
@@ -234,27 +238,29 @@ public class QQBridgeModule
   public void getNetType(Promise paramPromise, boolean paramBoolean)
   {
     int i = HttpUtil.getNetWorkType();
-    if (QLog.isColorLevel()) {
-      QLog.d("BridgeModule", 2, "getNetType,netType:" + i);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("getNetType,netType:");
+      ((StringBuilder)localObject).append(i);
+      QLog.d("QQBridgeModule", 2, ((StringBuilder)localObject).toString());
     }
-    JSONObject localJSONObject = new JSONObject();
+    Object localObject = new JSONObject();
     try
     {
-      localJSONObject.put("result", i);
-      label56:
+      ((JSONObject)localObject).put("result", i);
+      label65:
       if (paramBoolean) {
-        invokeCallJS(paramPromise, localJSONObject);
+        invokeCallJS(paramPromise, localObject);
+      } else {
+        doPromiseCallback(paramPromise, (JSONObject)localObject);
       }
-      for (;;)
-      {
-        vaNetworkChange(paramPromise);
-        return;
-        doPromiseCallback(paramPromise, localJSONObject);
-      }
+      vaNetworkChange(paramPromise);
+      return;
     }
     catch (JSONException localJSONException)
     {
-      break label56;
+      break label65;
     }
   }
   
@@ -286,7 +292,9 @@ public class QQBridgeModule
       return;
     }
     boolean bool;
-    if (("weishi://feed".equals(paramString)) || ("weishi".equals(paramString))) {
+    if ((!"weishi://feed".equals(paramString)) && (!"weishi".equals(paramString))) {
+      bool = PackageUtil.a(localBaseActivity, paramString);
+    } else {
       bool = WeishiGuideUtils.a(localBaseActivity);
     }
     for (;;)
@@ -294,30 +302,32 @@ public class QQBridgeModule
       try
       {
         paramString = new JSONObject();
-        if (!bool) {
-          break label124;
+        if (bool)
+        {
+          i = 1;
+          paramString.put("result", i);
+          if (paramBoolean)
+          {
+            invokeCallJS(paramPromise, paramString);
+            return;
+          }
+          doPromiseCallback(paramPromise, paramString);
+          return;
         }
-        i = 1;
-        paramString.put("result", i);
-        if (!paramBoolean) {
-          break label130;
+      }
+      catch (JSONException paramString)
+      {
+        if (QLog.isColorLevel())
+        {
+          paramPromise = new StringBuilder();
+          paramPromise.append("hasApp error");
+          paramPromise.append(paramString.getMessage());
+          QLog.e("QQBridgeModule", 2, paramPromise.toString());
         }
-        invokeCallJS(paramPromise, paramString);
         return;
       }
-      catch (JSONException paramString) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e("BridgeModule", 2, "hasApp error" + paramString.getMessage());
-      return;
-      bool = PackageUtil.a(localBaseActivity, paramString);
-      continue;
-      label124:
       int i = 0;
     }
-    label130:
-    doPromiseCallback(paramPromise, paramString);
   }
   
   public void invoke(JSONObject paramJSONObject, Promise paramPromise)
@@ -325,16 +335,9 @@ public class QQBridgeModule
     paramPromise = getCallbackId(paramPromise);
     String str1 = paramJSONObject.optString("ns");
     String str2 = paramJSONObject.optString("method");
-    if ((TextUtils.isEmpty(str1)) || (TextUtils.isEmpty(str2)))
+    if ((!TextUtils.isEmpty(str1)) && (!TextUtils.isEmpty(str2)))
     {
-      invokeErrorCallJS(paramPromise, HardCodeUtil.a(2131701277));
-      QLog.d("BridgeModule", 1, "ns or method not exists");
-    }
-    Object localObject;
-    for (;;)
-    {
-      return;
-      localObject = getFragment();
+      Object localObject = getFragment();
       if (("readinjoy".equals(str1)) && ("showShareReadInJoyMenu".equals(str2)))
       {
         if ((paramJSONObject.optJSONObject("params") != null) && (localObject != null) && ((localObject instanceof ViolaFragment)))
@@ -345,62 +348,75 @@ public class QQBridgeModule
         invokeErrorCallJS(paramPromise, "fragment or params is null");
         return;
       }
-      if ((!"schema".equals(str1)) || (!"jumpAction".equals(str2))) {
-        break label343;
-      }
-      paramJSONObject = paramJSONObject.optJSONObject("params");
-      if (paramJSONObject == null)
+      if (("schema".equals(str1)) && ("jumpAction".equals(str2)))
       {
-        invokeErrorCallJS(paramPromise, "params is null");
-        return;
-      }
-      if (!paramJSONObject.has("schema"))
-      {
-        invokeErrorCallJS(paramPromise, "schema is null");
-        return;
-      }
-      if ((localObject == null) || (!(localObject instanceof ViolaFragment))) {
-        break label334;
-      }
-      localObject = ((Fragment)localObject).getActivity();
-      QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
-      if ((localObject != null) && (localQQAppInterface != null)) {
-        try
+        paramJSONObject = paramJSONObject.optJSONObject("params");
+        if (paramJSONObject == null)
         {
-          paramJSONObject = JumpParser.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
-          if (paramJSONObject != null)
-          {
-            paramJSONObject.b("viola");
-            paramJSONObject.a();
-            invokeCallJS(paramPromise, null);
-            return;
-          }
-        }
-        catch (JSONException paramJSONObject)
-        {
-          paramJSONObject.printStackTrace();
-          invokeErrorCallJS(paramPromise, "ns:" + str1 + HardCodeUtil.a(2131701273) + str2 + HardCodeUtil.a(2131701268));
+          invokeErrorCallJS(paramPromise, "params is null");
           return;
         }
+        if (!paramJSONObject.has("schema"))
+        {
+          invokeErrorCallJS(paramPromise, "schema is null");
+          return;
+        }
+        if ((localObject != null) && ((localObject instanceof ViolaFragment)))
+        {
+          localObject = ((QBaseFragment)localObject).getQBaseActivity();
+          QQAppInterface localQQAppInterface = (QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime();
+          if ((localObject != null) && (localQQAppInterface != null)) {
+            try
+            {
+              paramJSONObject = JumpParser.a(localQQAppInterface, (Context)localObject, paramJSONObject.getString("schema"));
+              if (paramJSONObject == null) {
+                break label421;
+              }
+              paramJSONObject.b("viola");
+              paramJSONObject.a();
+              invokeCallJS(paramPromise, null);
+              return;
+            }
+            catch (JSONException paramJSONObject)
+            {
+              paramJSONObject.printStackTrace();
+              paramJSONObject = new StringBuilder();
+              paramJSONObject.append("ns:");
+              paramJSONObject.append(str1);
+              paramJSONObject.append(HardCodeUtil.a(2131701413));
+              paramJSONObject.append(str2);
+              paramJSONObject.append(HardCodeUtil.a(2131701408));
+              invokeErrorCallJS(paramPromise, paramJSONObject.toString());
+              return;
+            }
+          } else {
+            invokeErrorCallJS(paramPromise, "activity or app is null");
+          }
+        }
+        else
+        {
+          invokeErrorCallJS(paramPromise, "fragment is null");
+        }
       }
-    }
-    invokeErrorCallJS(paramPromise, "activity or app is null");
-    return;
-    label334:
-    invokeErrorCallJS(paramPromise, "fragment is null");
-    return;
-    label343:
-    if (("ui".equals(str1)) && ("setNavBtn".equals(str2)))
-    {
-      if ((paramJSONObject.optJSONObject("params") != null) && (localObject != null) && ((localObject instanceof ViolaFragment)))
+      else
       {
-        setNavBtnWithFragment(paramJSONObject.optJSONObject("params"), paramPromise, (Fragment)localObject);
-        return;
+        if (("ui".equals(str1)) && ("setNavBtn".equals(str2)))
+        {
+          if ((paramJSONObject.optJSONObject("params") != null) && (localObject != null) && ((localObject instanceof ViolaFragment)))
+          {
+            setNavBtnWithFragment(paramJSONObject.optJSONObject("params"), paramPromise, (Fragment)localObject);
+            return;
+          }
+          invokeErrorCallJS(paramPromise, "fragment or params is null");
+          return;
+        }
+        invoke(paramJSONObject, paramPromise);
       }
-      invokeErrorCallJS(paramPromise, "fragment or params is null");
+      label421:
       return;
     }
-    invoke(paramJSONObject, paramPromise);
+    invokeErrorCallJS(paramPromise, HardCodeUtil.a(2131701417));
+    QLog.d("QQBridgeModule", 1, "ns or method not exists");
   }
   
   public void invokeCallJS(Promise paramPromise, Object paramObject)
@@ -524,9 +540,9 @@ public class QQBridgeModule
   protected void setNavBtn(JSONObject paramJSONObject, Promise paramPromise)
   {
     paramPromise = getCallbackId(paramPromise);
-    Fragment localFragment = getFragment();
-    if ((localFragment != null) && ((localFragment instanceof ViolaFragment))) {
-      setNavBtnWithFragment(paramJSONObject, paramPromise, localFragment);
+    QBaseFragment localQBaseFragment = getFragment();
+    if ((localQBaseFragment != null) && ((localQBaseFragment instanceof ViolaFragment))) {
+      setNavBtnWithFragment(paramJSONObject, paramPromise, localQBaseFragment);
     }
   }
   
@@ -542,42 +558,45 @@ public class QQBridgeModule
   
   public void vaNetworkChange(Promise paramPromise)
   {
-    QQAppInterface localQQAppInterface = (QQAppInterface)ReadInJoyUtils.a();
-    if (localQQAppInterface == null) {}
-    while (this.netInfoHandler != null) {
+    QQAppInterface localQQAppInterface = (QQAppInterface)((IReadInJoyUtils)QRoute.api(IReadInJoyUtils.class)).getAppRuntime();
+    if (localQQAppInterface == null) {
       return;
     }
-    this.netInfoHandler = new QQBridgeModule.1(this, paramPromise);
-    AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.netInfoHandler);
+    if (this.netInfoHandler == null)
+    {
+      this.netInfoHandler = new QQBridgeModule.1(this, paramPromise);
+      AppNetConnInfo.registerConnectionChangeReceiver(localQQAppInterface.getApplication(), this.netInfoHandler);
+    }
   }
   
   public void videoPlayFeedback(JSONObject paramJSONObject, Promise paramPromise)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("BridgeModule", 2, "do videoPlayFeedback start data: " + paramJSONObject.toString());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("do videoPlayFeedback start data: ");
+      localStringBuilder.append(paramJSONObject.toString());
+      QLog.d("QQBridgeModule", 2, localStringBuilder.toString());
     }
-    PlayFeedbackHelper.a(null, paramJSONObject);
-    if (getViolaInstance() != null) {
+    ((IPlayFeedbackHelper)QRoute.api(IPlayFeedbackHelper.class)).feedbackViolaCall(null, paramJSONObject);
+    if (getViolaInstance() != null)
+    {
       paramJSONObject = new JSONObject();
-    }
-    try
-    {
-      paramJSONObject.put("success", 1);
-      doPromiseCallback(paramPromise, paramJSONObject);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        paramJSONObject.put("success", 1);
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
+      doPromiseCallback(paramPromise, paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQBridgeModule
  * JD-Core Version:    0.7.0.1
  */

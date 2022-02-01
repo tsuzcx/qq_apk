@@ -27,21 +27,38 @@ abstract class BaseAnimatableValue<V, O>
   
   public boolean isStatic()
   {
-    return (this.keyframes.isEmpty()) || ((this.keyframes.size() == 1) && (((Keyframe)this.keyframes.get(0)).isStatic()));
+    boolean bool1 = this.keyframes.isEmpty();
+    boolean bool2 = false;
+    if (!bool1)
+    {
+      bool1 = bool2;
+      if (this.keyframes.size() == 1)
+      {
+        bool1 = bool2;
+        if (!((Keyframe)this.keyframes.get(0)).isStatic()) {}
+      }
+    }
+    else
+    {
+      bool1 = true;
+    }
+    return bool1;
   }
   
   public String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder();
-    if (!this.keyframes.isEmpty()) {
-      localStringBuilder.append("values=").append(Arrays.toString(this.keyframes.toArray()));
+    if (!this.keyframes.isEmpty())
+    {
+      localStringBuilder.append("values=");
+      localStringBuilder.append(Arrays.toString(this.keyframes.toArray()));
     }
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.dinifly.model.animatable.BaseAnimatableValue
  * JD-Core Version:    0.7.0.1
  */

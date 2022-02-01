@@ -14,13 +14,12 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
 import android.text.TextUtils;
-import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableListener;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
-import com.tencent.mobileqq.activity.aio.anim.VipPngPlayAnimationDrawable;
+import com.tencent.mobileqq.vas.ui.VipPngPlayAnimationDrawable;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.net.MalformedURLException;
 import java.net.URL;
@@ -34,17 +33,17 @@ public class VasResDrawable
   implements Handler.Callback, AbsVasRes
 {
   protected float a;
+  protected int a;
   protected Context a;
   protected Path a;
   protected RectF a;
   protected Drawable a;
+  protected Handler a;
   private URLDrawable.URLDrawableListener a;
   protected VasResController a;
   protected VasResDrawable.Options a;
   protected VasResDrawable.RefreshListener a;
   protected VasResDrawable.VasResDrawableAdapter a;
-  protected Handler b;
-  protected int i;
   
   public VasResDrawable(Context paramContext, int paramInt)
   {
@@ -57,77 +56,83 @@ public class VasResDrawable
   
   public VasResDrawable(AppRuntime paramAppRuntime, int paramInt)
   {
-    super(paramAppRuntime.getApplication().getApplicationContext().getResources());
+    super(MobileQQ.getContext().getResources());
     this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener = new VasResDrawable.1(this);
     a(paramAppRuntime.getApplication().getApplicationContext(), paramInt, new VasResDrawable.Options(this));
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
   }
   
+  @org.jetbrains.annotations.Nullable
+  private URL a(String paramString1, String paramString2)
+  {
+    try
+    {
+      if (!TextUtils.isEmpty(a().jdField_a_of_type_JavaLangString)) {
+        return new URL(a().jdField_a_of_type_JavaLangString, paramString2, paramString1);
+      }
+      paramString1 = new URL("http", paramString2, paramString1);
+      return paramString1;
+    }
+    catch (MalformedURLException paramString1)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d("VasResDrawable", 2, paramString1.getMessage());
+      }
+    }
+    return null;
+  }
+  
   private void a(Context paramContext, int paramInt, VasResDrawable.Options paramOptions)
   {
-    this.i = paramInt;
+    this.jdField_a_of_type_Int = paramInt;
     this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$Options = paramOptions;
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    this.b = new Handler(Looper.getMainLooper(), this);
-    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController = new VasResController(paramInt, this.b);
+    this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
+    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController = new VasResController(paramInt, this.jdField_a_of_type_AndroidOsHandler);
   }
   
   protected Drawable a(String paramString1, String paramString2)
   {
-    Drawable localDrawable = null;
     if (this.jdField_a_of_type_AndroidContentContext == null) {
-      this.jdField_a_of_type_AndroidContentContext = BaseApplicationImpl.getContext();
+      this.jdField_a_of_type_AndroidContentContext = MobileQQ.getContext();
     }
     if (TextUtils.isEmpty(paramString2))
     {
       if (a().b > 0) {
         return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(a().b);
       }
+      return null;
     }
-    else {
-      try
-      {
-        if (!TextUtils.isEmpty(a().jdField_a_of_type_JavaLangString)) {}
-        for (paramString1 = new URL(a().jdField_a_of_type_JavaLangString, paramString2, paramString1); paramString1 == null; paramString1 = new URL("http", paramString2, paramString1)) {
-          return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846437);
-        }
-      }
-      catch (MalformedURLException paramString2)
-      {
-        for (;;)
-        {
-          paramString1 = localDrawable;
-          if (QLog.isColorLevel())
-          {
-            QLog.d("VasResDrawable", 2, paramString2.getMessage());
-            paramString1 = localDrawable;
-          }
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("VasResDrawable", 2, "getBGDrawable url = " + paramString1.toString());
-        }
-        paramString2 = URLDrawable.URLDrawableOptions.obtain();
-        paramString2.mRequestWidth = a().c;
-        paramString2.mRequestHeight = a().d;
-        if (a().jdField_a_of_type_Int > 0)
-        {
-          localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(a().jdField_a_of_type_Int);
-          paramString2.mLoadingDrawable = localDrawable;
-          paramString2.mFailedDrawable = localDrawable;
-        }
-        paramString1 = URLDrawable.getDrawable(paramString1, paramString2);
-        if ((a().jdField_a_of_type_ArrayOfOrgApacheHttpHeader != null) && (a().jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length > 0)) {
-          paramString1.setHeaders(a().jdField_a_of_type_ArrayOfOrgApacheHttpHeader);
-        }
-        if (paramString1.getStatus() == 2) {
-          paramString1.restartDownload();
-        }
-        paramString1.setURLDrawableListener(this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener);
-        return paramString1;
-      }
+    paramString1 = a(paramString1, paramString2);
+    if (paramString1 == null) {
+      return this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(2130846313);
     }
-    return null;
+    if (QLog.isColorLevel())
+    {
+      paramString2 = new StringBuilder();
+      paramString2.append("getBGDrawable url = ");
+      paramString2.append(paramString1.toString());
+      QLog.d("VasResDrawable", 2, paramString2.toString());
+    }
+    paramString2 = URLDrawable.URLDrawableOptions.obtain();
+    paramString2.mRequestWidth = a().c;
+    paramString2.mRequestHeight = a().d;
+    if (a().jdField_a_of_type_Int > 0)
+    {
+      Drawable localDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(a().jdField_a_of_type_Int);
+      paramString2.mLoadingDrawable = localDrawable;
+      paramString2.mFailedDrawable = localDrawable;
+    }
+    paramString1 = URLDrawable.getDrawable(paramString1, paramString2);
+    if ((a().jdField_a_of_type_ArrayOfOrgApacheHttpHeader != null) && (a().jdField_a_of_type_ArrayOfOrgApacheHttpHeader.length > 0)) {
+      paramString1.setHeaders(a().jdField_a_of_type_ArrayOfOrgApacheHttpHeader);
+    }
+    if (paramString1.getStatus() == 2) {
+      paramString1.restartDownload();
+    }
+    paramString1.setURLDrawableListener(this.jdField_a_of_type_ComTencentImageURLDrawable$URLDrawableListener);
+    return paramString1;
   }
   
   public VasResAdapter a()
@@ -148,8 +153,9 @@ public class VasResDrawable
   public void a()
   {
     super.a();
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.c();
+    VasResDrawable.VasResDrawableAdapter localVasResDrawableAdapter = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter;
+    if (localVasResDrawableAdapter != null) {
+      localVasResDrawableAdapter.b();
     }
   }
   
@@ -158,15 +164,36 @@ public class VasResDrawable
     this.jdField_a_of_type_Float = paramFloat;
   }
   
+  public void a(int paramInt)
+  {
+    if (a().b > 0)
+    {
+      localObject = this.jdField_a_of_type_AndroidContentContext;
+      if (localObject != null) {
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = ((Context)localObject).getResources().getDrawable(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$Options.b);
+      }
+    }
+    super.a();
+    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(paramInt);
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter;
+    if (localObject != null) {
+      ((VasResDrawable.VasResDrawableAdapter)localObject).a();
+    }
+  }
+  
   protected void a(@NonNull Canvas paramCanvas)
   {
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     this.jdField_a_of_type_AndroidGraphicsRectF.set(getBounds());
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Float, this.jdField_a_of_type_Float, Path.Direction.CW);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    float f = this.jdField_a_of_type_Float;
+    ((Path)localObject).addRoundRect(localRectF, f, f, Path.Direction.CW);
     paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
-    if (this.jdField_a_of_type_AndroidGraphicsDrawableDrawable != null)
+    localObject = this.jdField_a_of_type_AndroidGraphicsDrawableDrawable;
+    if (localObject != null)
     {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.setBounds(getBounds());
+      ((Drawable)localObject).setBounds(getBounds());
       this.jdField_a_of_type_AndroidGraphicsDrawableDrawable.draw(paramCanvas);
     }
   }
@@ -179,8 +206,9 @@ public class VasResDrawable
   public void a(VasResDrawable.VasResDrawableAdapter paramVasResDrawableAdapter)
   {
     this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter = paramVasResDrawableAdapter;
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.b();
+    paramVasResDrawableAdapter = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter;
+    if (paramVasResDrawableAdapter != null) {
+      paramVasResDrawableAdapter.a();
     }
     invalidateSelf();
   }
@@ -196,18 +224,6 @@ public class VasResDrawable
       return;
     }
     this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$Options.jdField_a_of_type_ArrayOfOrgApacheHttpHeader = new Header[] { new BasicHeader(paramString1, paramString2) };
-  }
-  
-  public void b(int paramInt)
-  {
-    if ((a().b > 0) && (this.jdField_a_of_type_AndroidContentContext != null)) {
-      this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = this.jdField_a_of_type_AndroidContentContext.getResources().getDrawable(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$Options.b);
-    }
-    super.a();
-    this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResController.a(paramInt);
-    if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter != null) {
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.b();
-    }
   }
   
   public void draw(@NonNull Canvas paramCanvas)
@@ -230,38 +246,46 @@ public class VasResDrawable
     }
     switch (paramMessage.what)
     {
-    }
-    for (;;)
-    {
+    default: 
       return true;
+    case 10003: 
+      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.a();
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$RefreshListener;
+      if (paramMessage != null)
+      {
+        paramMessage.c();
+        return true;
+      }
+      break;
+    case 10002: 
+      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.a(paramMessage.arg1, (Bundle)paramMessage.obj);
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$RefreshListener;
+      if (paramMessage != null) {
+        paramMessage.b();
+      }
+      return true;
+    case 10001: 
       if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.a())) {
-        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(String.valueOf(this.i), this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.a());
+        this.jdField_a_of_type_AndroidGraphicsDrawableDrawable = a(String.valueOf(this.jdField_a_of_type_Int), this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.a());
       }
       paramMessage = paramMessage.getData();
       if (paramMessage.getInt("type") == 1)
       {
         String[] arrayOfString = paramMessage.getStringArray("pngs");
-        int j = paramMessage.getInt("interval");
-        int k = paramMessage.getInt("repeatTimes");
-        a(arrayOfString, j);
-        a(a().e);
-        this.f = k;
+        int i = paramMessage.getInt("interval");
+        int j = paramMessage.getInt("repeatTimes");
+        a(arrayOfString, i);
+        b(a().e);
+        this.h = j;
       }
       invalidateSelf();
-      if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$RefreshListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$RefreshListener.a();
+      paramMessage = this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$RefreshListener;
+      if (paramMessage != null) {
+        paramMessage.a();
       }
-      return true;
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.a(paramMessage.arg1, (Bundle)paramMessage.obj);
-      if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$RefreshListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$RefreshListener.b();
-      }
-      return true;
-      this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$VasResDrawableAdapter.b();
-      if (this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$RefreshListener != null) {
-        this.jdField_a_of_type_ComTencentMobileqqVasVasResEngineVasResDrawable$RefreshListener.c();
-      }
+      break;
     }
+    return true;
   }
   
   public void setAlpha(int paramInt)
@@ -269,14 +293,14 @@ public class VasResDrawable
     super.setAlpha(paramInt);
   }
   
-  public void setColorFilter(@Nullable ColorFilter paramColorFilter)
+  public void setColorFilter(@android.support.annotation.Nullable ColorFilter paramColorFilter)
   {
     super.setColorFilter(paramColorFilter);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.vas.VasResEngine.VasResDrawable
  * JD-Core Version:    0.7.0.1
  */

@@ -164,9 +164,10 @@ public class TVKPlayerVideoInfo
   
   public String getAdReportInfoValue(String paramString1, String paramString2)
   {
-    paramString1 = (String)this.mAdReportInfoMap.get(paramString1);
-    if (paramString1 == null) {
-      return paramString2;
+    String str = (String)this.mAdReportInfoMap.get(paramString1);
+    paramString1 = str;
+    if (str == null) {
+      paramString1 = paramString2;
     }
     return paramString1;
   }
@@ -193,26 +194,29 @@ public class TVKPlayerVideoInfo
   
   public String getConfigMapValue(String paramString1, String paramString2)
   {
-    paramString1 = (String)this.mConfigMap.get(paramString1);
-    if (paramString1 == null) {
-      return paramString2;
+    String str = (String)this.mConfigMap.get(paramString1);
+    paramString1 = str;
+    if (str == null) {
+      paramString1 = paramString2;
     }
     return paramString1;
   }
   
   public Object getExtraObject()
   {
-    if (this.mExtraObject != null) {
-      return this.mExtraObject.get();
+    WeakReference localWeakReference = this.mExtraObject;
+    if (localWeakReference != null) {
+      return localWeakReference.get();
     }
     return null;
   }
   
   public String getExtraRequestParamValue(String paramString1, String paramString2)
   {
-    paramString1 = (String)this.mExtraRequestParamsMap.get(paramString1);
-    if (paramString1 == null) {
-      return paramString2;
+    String str = (String)this.mExtraRequestParamsMap.get(paramString1);
+    paramString1 = str;
+    if (str == null) {
+      paramString1 = paramString2;
     }
     return paramString1;
   }
@@ -244,9 +248,10 @@ public class TVKPlayerVideoInfo
   
   public String getReportInfoValue(String paramString1, String paramString2)
   {
-    paramString1 = (String)this.mReportInfoMap.get(paramString1);
-    if (paramString1 == null) {
-      return paramString2;
+    String str = (String)this.mReportInfoMap.get(paramString1);
+    paramString1 = str;
+    if (str == null) {
+      paramString1 = paramString2;
     }
     return paramString1;
   }
@@ -330,15 +335,15 @@ public class TVKPlayerVideoInfo
   
   public void setPid(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      if (this.mPlayType == 1) {
-        this.mExtraRequestParamsMap.put("livepid", paramString);
-      }
-    } while (this.mPlayType != 1);
-    this.mAdRequestParamMap.put("livepid", paramString);
+    }
+    if (this.mPlayType == 1) {
+      this.mExtraRequestParamsMap.put("livepid", paramString);
+    }
+    if (this.mPlayType == 1) {
+      this.mAdRequestParamMap.put("livepid", paramString);
+    }
   }
   
   public void setPlatform(int paramInt)
@@ -373,7 +378,7 @@ public class TVKPlayerVideoInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.TVKPlayerVideoInfo
  * JD-Core Version:    0.7.0.1
  */

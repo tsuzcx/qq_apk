@@ -12,7 +12,7 @@ import com.tencent.mobileqq.pb.PBUInt64Field;
 public final class oidb_cmd0xc78$CheckShareExtensionReq
   extends MessageMicro<CheckShareExtensionReq>
 {
-  static final MessageMicro.FieldMap __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 56, 90, 98, 106, 114, 122 }, new String[] { "uin", "src", "ios_boundle_id", "android_package_names", "content_type", "user_flag1", "user_flag2", "texts", "imgs", "videos", "files", "app_msgs" }, new Object[] { Long.valueOf(0L), "", "", "", Integer.valueOf(0), Long.valueOf(0L), Long.valueOf(0L), null, null, null, null, null }, CheckShareExtensionReq.class);
+  static final MessageMicro.FieldMap __fieldMap__;
   public final PBRepeatField<String> android_package_names = PBField.initRepeat(PBStringField.__repeatHelper__);
   public final PBRepeatMessageField<oidb_cmd0xc78.AppMsgInfo> app_msgs = PBField.initRepeatMessage(oidb_cmd0xc78.AppMsgInfo.class);
   public final PBUInt32Field content_type = PBField.initUInt32(0);
@@ -25,10 +25,16 @@ public final class oidb_cmd0xc78$CheckShareExtensionReq
   public final PBUInt64Field user_flag1 = PBField.initUInt64(0L);
   public final PBUInt64Field user_flag2 = PBField.initUInt64(0L);
   public final PBRepeatMessageField<oidb_cmd0xc78.VideoInfo> videos = PBField.initRepeatMessage(oidb_cmd0xc78.VideoInfo.class);
+  
+  static
+  {
+    Long localLong = Long.valueOf(0L);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 48, 56, 90, 98, 106, 114, 122 }, new String[] { "uin", "src", "ios_boundle_id", "android_package_names", "content_type", "user_flag1", "user_flag2", "texts", "imgs", "videos", "files", "app_msgs" }, new Object[] { localLong, "", "", "", Integer.valueOf(0), localLong, localLong, null, null, null, null, null }, CheckShareExtensionReq.class);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xc78.oidb_cmd0xc78.CheckShareExtensionReq
  * JD-Core Version:    0.7.0.1
  */

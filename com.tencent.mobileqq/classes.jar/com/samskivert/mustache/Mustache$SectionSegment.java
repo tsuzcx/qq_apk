@@ -37,42 +37,28 @@ public class Mustache$SectionSegment
     if (localIterator != null)
     {
       int i = 0;
-      if (localIterator.hasNext())
+      while (localIterator.hasNext())
       {
         localObject = localIterator.next();
         boolean bool1;
-        if (i == 0)
-        {
+        if (i == 0) {
           bool1 = true;
-          label66:
-          if (localIterator.hasNext()) {
-            break label112;
-          }
-        }
-        label112:
-        for (boolean bool2 = true;; bool2 = false)
-        {
-          i += 1;
-          executeSegs(paramTemplate, paramContext.nest(localObject, i, bool1, bool2), paramWriter);
-          break;
+        } else {
           bool1 = false;
-          break label66;
         }
+        boolean bool2 = localIterator.hasNext();
+        i += 1;
+        executeSegs(paramTemplate, paramContext.nest(localObject, i, bool1, true ^ bool2), paramWriter);
       }
     }
-    else
+    if ((localObject instanceof Boolean))
     {
-      if (!(localObject instanceof Boolean)) {
-        break label145;
-      }
       if (((Boolean)localObject).booleanValue()) {
         executeSegs(paramTemplate, paramContext, paramWriter);
       }
     }
-    label145:
-    do
+    else
     {
-      return;
       if ((localObject instanceof Mustache.Lambda)) {
         try
         {
@@ -84,13 +70,23 @@ public class Mustache$SectionSegment
           throw new MustacheException(paramTemplate);
         }
       }
-    } while (this._comp.isFalsey(localObject));
-    executeSegs(paramTemplate, paramContext.nest(localObject), paramWriter);
+      if (this._comp.isFalsey(localObject)) {
+        return;
+      }
+      executeSegs(paramTemplate, paramContext.nest(localObject), paramWriter);
+    }
   }
   
   public String toString()
   {
-    return "Section(" + this._name + ":" + this._line + "): " + Arrays.toString(this._segs);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Section(");
+    localStringBuilder.append(this._name);
+    localStringBuilder.append(":");
+    localStringBuilder.append(this._line);
+    localStringBuilder.append("): ");
+    localStringBuilder.append(Arrays.toString(this._segs));
+    return localStringBuilder.toString();
   }
   
   public void visit(Mustache.Visitor paramVisitor)

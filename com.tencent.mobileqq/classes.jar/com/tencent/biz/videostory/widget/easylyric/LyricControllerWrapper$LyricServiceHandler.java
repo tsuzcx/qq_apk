@@ -18,55 +18,55 @@ class LyricControllerWrapper$LyricServiceHandler
   
   public void handleMessage(Message paramMessage)
   {
-    Object localObject2 = null;
-    if (this.a.get() != null) {}
-    for (LyricControllerWrapper localLyricControllerWrapper = (LyricControllerWrapper)this.a.get();; localLyricControllerWrapper = null)
+    Object localObject1 = this.a.get();
+    Object localObject3 = null;
+    if (localObject1 != null) {
+      localObject1 = (LyricControllerWrapper)this.a.get();
+    } else {
+      localObject1 = null;
+    }
+    Object localObject2 = localObject3;
+    if (paramMessage.obj != null)
     {
-      Object localObject1 = localObject2;
-      if (paramMessage.obj != null)
-      {
-        localObject1 = localObject2;
-        if ((paramMessage.obj instanceof LyricControllerWrapper.CommonData)) {
-          localObject1 = (LyricControllerWrapper.CommonData)paramMessage.obj;
-        }
-      }
-      switch (paramMessage.what)
-      {
-      }
-      for (;;)
-      {
-        super.handleMessage(paramMessage);
-        return;
-        if ((localLyricControllerWrapper != null) && (localObject1 != null))
-        {
-          ((LyricControllerWrapper)this.a.get()).d();
-          continue;
-          if ((localLyricControllerWrapper != null) && (localObject1 != null))
-          {
-            ((LyricControllerWrapper)this.a.get()).e();
-            continue;
-            if ((localLyricControllerWrapper != null) && (localObject1 != null))
-            {
-              ((LyricControllerWrapper)this.a.get()).c(((LyricControllerWrapper.CommonData)localObject1).a);
-              continue;
-              if ((localLyricControllerWrapper != null) && (localObject1 != null))
-              {
-                ((LyricControllerWrapper)this.a.get()).f();
-                continue;
-                if ((localLyricControllerWrapper != null) && (localObject1 != null)) {
-                  ((LyricControllerWrapper)this.a.get()).b(((LyricControllerWrapper.CommonData)localObject1).a);
-                }
-              }
-            }
-          }
-        }
+      localObject2 = localObject3;
+      if ((paramMessage.obj instanceof LyricControllerWrapper.CommonData)) {
+        localObject2 = (LyricControllerWrapper.CommonData)paramMessage.obj;
       }
     }
+    int i = paramMessage.what;
+    if (i != 2)
+    {
+      if (i != 3)
+      {
+        if (i != 5)
+        {
+          if (i != 6)
+          {
+            if ((i == 7) && (localObject1 != null) && (localObject2 != null)) {
+              ((LyricControllerWrapper)this.a.get()).b(((LyricControllerWrapper.CommonData)localObject2).a);
+            }
+          }
+          else if ((localObject1 != null) && (localObject2 != null)) {
+            ((LyricControllerWrapper)this.a.get()).c(((LyricControllerWrapper.CommonData)localObject2).a);
+          }
+        }
+        else if ((localObject1 != null) && (localObject2 != null)) {
+          ((LyricControllerWrapper)this.a.get()).f();
+        }
+      }
+      else if ((localObject1 != null) && (localObject2 != null)) {
+        ((LyricControllerWrapper)this.a.get()).e();
+      }
+    }
+    else if ((localObject1 != null) && (localObject2 != null)) {
+      ((LyricControllerWrapper)this.a.get()).d();
+    }
+    super.handleMessage(paramMessage);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.videostory.widget.easylyric.LyricControllerWrapper.LyricServiceHandler
  * JD-Core Version:    0.7.0.1
  */

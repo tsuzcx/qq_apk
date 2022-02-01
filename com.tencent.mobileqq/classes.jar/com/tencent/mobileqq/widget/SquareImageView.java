@@ -14,27 +14,22 @@ import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.View.MeasureSpec;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.R.styleable;
+import com.tencent.mobileqq.qqui.R.styleable;
 
 public class SquareImageView
   extends URLImageView
 {
-  public static final String a;
+  public static final String b = "SquareImageView";
   private float jdField_a_of_type_Float = 1.0F;
   protected int a;
   private Paint jdField_a_of_type_AndroidGraphicsPaint = new Paint();
   protected final Path a;
   protected final RectF a;
+  private String jdField_a_of_type_JavaLangString;
   private float jdField_b_of_type_Float = 0.0F;
   private int jdField_b_of_type_Int = -1;
-  private String jdField_b_of_type_JavaLangString;
   private int c = 20;
   private int d = -1;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = SquareImageView.class.getSimpleName();
-  }
   
   public SquareImageView(Context paramContext)
   {
@@ -48,13 +43,13 @@ public class SquareImageView
     super(paramContext, paramAttributeSet);
     this.jdField_a_of_type_AndroidGraphicsRectF = new RectF();
     this.jdField_a_of_type_AndroidGraphicsPath = new Path();
-    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.SquareImageView);
-    this.jdField_a_of_type_Float = paramContext.getFloat(4, 1.0F);
-    this.jdField_b_of_type_Float = paramContext.getFloat(5, 0.0F);
-    this.jdField_b_of_type_Int = paramContext.getColor(0, -1);
-    this.jdField_b_of_type_JavaLangString = paramContext.getString(1);
-    this.c = paramContext.getDimensionPixelSize(2, 40);
-    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(3, 0);
+    paramContext = paramContext.obtainStyledAttributes(paramAttributeSet, R.styleable.bs);
+    this.jdField_a_of_type_Float = paramContext.getFloat(R.styleable.bF, 1.0F);
+    this.jdField_b_of_type_Float = paramContext.getFloat(R.styleable.bG, 0.0F);
+    this.jdField_b_of_type_Int = paramContext.getColor(R.styleable.bB, -1);
+    this.jdField_a_of_type_JavaLangString = paramContext.getString(R.styleable.bC);
+    this.c = paramContext.getDimensionPixelSize(R.styleable.bD, 40);
+    this.jdField_a_of_type_Int = paramContext.getDimensionPixelSize(R.styleable.bE, 0);
     paramContext.recycle();
   }
   
@@ -69,8 +64,12 @@ public class SquareImageView
   {
     if (this.jdField_a_of_type_Int != 0)
     {
-      if (this.jdField_a_of_type_AndroidGraphicsPath.isEmpty()) {
-        this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, Path.Direction.CW);
+      if (this.jdField_a_of_type_AndroidGraphicsPath.isEmpty())
+      {
+        Path localPath = this.jdField_a_of_type_AndroidGraphicsPath;
+        RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+        int i = this.jdField_a_of_type_Int;
+        localPath.addRoundRect(localRectF, i, i, Path.Direction.CW);
       }
       if (Build.VERSION.SDK_INT >= 18) {
         paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
@@ -79,40 +78,44 @@ public class SquareImageView
     super.draw(paramCanvas);
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    if (this.d != -1)
+    int i = this.d;
+    if (i != -1)
     {
-      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.d);
+      this.jdField_a_of_type_AndroidGraphicsPaint.setColor(i);
       this.jdField_a_of_type_AndroidGraphicsPaint.setAntiAlias(false);
       paramCanvas.drawCircle(getWidth() / 2, getHeight() / 2, getWidth() / 2, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     super.onDraw(paramCanvas);
     Paint localPaint;
+    Object localObject;
     if (this.jdField_b_of_type_Int != -1)
     {
       localPaint = new Paint();
       localPaint.setColor(this.jdField_b_of_type_Int);
-      paramCanvas.drawRoundRect(new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight()), this.jdField_a_of_type_Int, this.jdField_a_of_type_Int, localPaint);
+      localObject = new RectF(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
+      i = this.jdField_a_of_type_Int;
+      paramCanvas.drawRoundRect((RectF)localObject, i, i, localPaint);
     }
-    if (!TextUtils.isEmpty(this.jdField_b_of_type_JavaLangString))
+    if (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
     {
       localPaint = new Paint(1);
       localPaint.setTextSize(this.c);
       localPaint.setColor(-1);
       localPaint.setTextAlign(Paint.Align.CENTER);
-      Paint.FontMetricsInt localFontMetricsInt = localPaint.getFontMetricsInt();
-      paramCanvas.drawText(this.jdField_b_of_type_JavaLangString, getMeasuredWidth() / 2, (getMeasuredHeight() - localFontMetricsInt.ascent - localFontMetricsInt.descent) / 2, localPaint);
+      localObject = localPaint.getFontMetricsInt();
+      paramCanvas.drawText(this.jdField_a_of_type_JavaLangString, getMeasuredWidth() / 2, (getMeasuredHeight() - ((Paint.FontMetricsInt)localObject).ascent - ((Paint.FontMetricsInt)localObject).descent) / 2, localPaint);
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     this.jdField_a_of_type_AndroidGraphicsRectF.set(0.0F, 0.0F, getMeasuredWidth(), getMeasuredHeight());
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt1);
     paramInt1 = getMeasuredWidth();
@@ -133,7 +136,7 @@ public class SquareImageView
   
   public void setFilterText(String paramString)
   {
-    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_JavaLangString = paramString;
     requestLayout();
   }
   
@@ -164,7 +167,7 @@ public class SquareImageView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.widget.SquareImageView
  * JD-Core Version:    0.7.0.1
  */

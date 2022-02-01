@@ -17,24 +17,24 @@ class StoryPlayerImpl$5
   
   public void onClick(View paramView)
   {
-    Context localContext = StoryPlayerImpl.a(this.a).a();
-    if (!NetworkUtil.g(localContext)) {
-      QQToast.a(localContext, 1, 2131694457, 0).a();
-    }
-    for (;;)
+    Context localContext = StoryPlayerImpl.a(this.a).getContext();
+    if (!NetworkUtil.isNetworkAvailable(localContext))
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+      QQToast.a(localContext, 1, 2131694422, 0).a();
+    }
+    else
+    {
       SLog.d("Q.qqstory.playernew.StoryPlayerImpl", "updateData error, retry, requestGroupData, currentInfo = %s", new Object[] { StoryPlayerImpl.a(this.a) });
       StoryPlayerImpl.a(this.a).setVisibility(0);
       StoryPlayerImpl.a(this.a).removeCallbacks(StoryPlayerImpl.a(this.a));
       StoryPlayerImpl.a(this.a).postDelayed(StoryPlayerImpl.a(this.a), 500L);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.StoryPlayerImpl.5
  * JD-Core Version:    0.7.0.1
  */

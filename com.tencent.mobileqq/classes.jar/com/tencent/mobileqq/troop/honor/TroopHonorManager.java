@@ -18,11 +18,12 @@ import com.tencent.mobileqq.persistence.EntityManager;
 import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.profilecard.api.IProfileDataService;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.service.troop.TroopNotificationConstants;
 import com.tencent.mobileqq.simpleui.api.ISimpleUIUtil;
+import com.tencent.mobileqq.troop.api.ITroopHandlerNameApi;
 import com.tencent.mobileqq.troop.api.ITroopInfoService;
 import com.tencent.mobileqq.troop.api.ITroopMemberInfoService;
-import com.tencent.mobileqq.troop.handler.TroopListHandler;
+import com.tencent.mobileqq.troop.api.handler.ITroopListHandler;
+import com.tencent.mobileqq.troop.api.observer.TroopObserver;
 import com.tencent.mobileqq.troop.honor.api.ITroopHonorService.IGetTroopHonorListCallback;
 import com.tencent.mobileqq.troop.honor.config.TroopHonor;
 import com.tencent.mobileqq.troop.honor.config.TroopHonorConfig;
@@ -43,7 +44,7 @@ import tencent.im.troop.honor.troop_honor.UserHonor;
 public class TroopHonorManager
   implements Manager
 {
-  private static final String jdField_a_of_type_JavaLangString = TroopListHandler.class.getName();
+  private static final String jdField_a_of_type_JavaLangString = ((ITroopHandlerNameApi)QRoute.api(ITroopHandlerNameApi.class)).getTroopListHandlerName();
   private EntityManager jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager;
   private TroopHonorConfig jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig;
   private List<oidb_0xdc9.HonorList> jdField_a_of_type_JavaUtilList;
@@ -126,27 +127,24 @@ public class TroopHonorManager
     if ((paramString != null) && (paramString.size() > 0))
     {
       Iterator localIterator = paramString.iterator();
-      label154:
       while (localIterator.hasNext())
       {
         paramString = (Integer)localIterator.next();
-        if ((paramString.intValue() == 1) || (paramString.intValue() == 2) || (paramString.intValue() == 3))
+        if ((paramString.intValue() != 1) && (paramString.intValue() != 2) && (paramString.intValue() != 3))
+        {
+          paramString = this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig.a(paramString.intValue());
+        }
+        else
         {
           int i = TroopHonorUtils.a(paramString.intValue(), paramByte.byteValue());
           if (i == 1) {
             paramString = this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig.a(paramString.intValue(), i);
+          } else {
+            paramString = this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig.a(paramString.intValue());
           }
         }
-        for (;;)
-        {
-          if (paramString == null) {
-            break label154;
-          }
+        if (paramString != null) {
           localArrayList.add(paramString);
-          break;
-          paramString = this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig.a(paramString.intValue());
-          continue;
-          paramString = this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig.a(paramString.intValue());
         }
       }
     }
@@ -155,47 +153,50 @@ public class TroopHonorManager
   
   public List<TroopHonor> a(String paramString1, String paramString2)
   {
-    if (!b(paramString1)) {
+    boolean bool = b(paramString1);
+    List localList = null;
+    if (!bool) {
       return null;
     }
-    Object localObject = ((ITroopMemberInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopMemberInfoService.class, "")).getTroopMember(paramString1, paramString2);
-    if (localObject != null) {}
-    for (localObject = a(((TroopMemberInfo)localObject).honorList, Byte.valueOf(((TroopMemberInfo)localObject).mHonorRichFlag));; localObject = null)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { paramString1, paramString2, localObject }));
-      }
-      return localObject;
+    TroopMemberInfo localTroopMemberInfo = ((ITroopMemberInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopMemberInfoService.class, "")).getTroopMember(paramString1, paramString2);
+    if (localTroopMemberInfo != null) {
+      localList = a(localTroopMemberInfo.honorList, Byte.valueOf(localTroopMemberInfo.mHonorRichFlag));
     }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHonor.manager", 2, String.format("getTroopHonorList, troopUin: %s, memberUin: %s, honorList: %s", new Object[] { paramString1, paramString2, localList }));
+    }
+    return localList;
   }
   
   public void a(TroopHonorConfig paramTroopHonorConfig, boolean paramBoolean)
   {
-    if (paramTroopHonorConfig == null) {}
-    for (;;)
-    {
+    if (paramTroopHonorConfig == null) {
       try
       {
         QLog.d("TroopHonor.manager", 1, "updateConfig, config == null");
         return;
       }
-      finally {}
-      if ((paramBoolean) && (this.jdField_a_of_type_Boolean))
+      finally
       {
-        QLog.d("TroopHonor.manager", 1, "had init config");
-      }
-      else
-      {
-        this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig = paramTroopHonorConfig;
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopHonor.manager", 2, String.format("updateConfig, isInit: %s, config: %s", new Object[] { Boolean.valueOf(paramBoolean), paramTroopHonorConfig }));
-        }
-        if (!paramBoolean) {
-          ((TroopListHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(jdField_a_of_type_JavaLangString)).notifyUI(TroopNotificationConstants.aC, true, null);
-        }
+        break label124;
       }
     }
+    if ((paramBoolean) && (this.jdField_a_of_type_Boolean))
+    {
+      QLog.d("TroopHonor.manager", 1, "had init config");
+      return;
+    }
+    this.jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig = paramTroopHonorConfig;
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHonor.manager", 2, String.format("updateConfig, isInit: %s, config: %s", new Object[] { Boolean.valueOf(paramBoolean), paramTroopHonorConfig }));
+    }
+    if (!paramBoolean) {
+      ((ITroopListHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(jdField_a_of_type_JavaLangString)).a(TroopObserver.TYPE_NOTIFY_UPDATE_RECENT_LIST, true, null);
+    }
+    return;
+    label124:
+    throw paramTroopHonorConfig;
   }
   
   public void a(String paramString1, String paramString2, ITroopHonorService.IGetTroopHonorListCallback paramIGetTroopHonorListCallback)
@@ -210,49 +211,60 @@ public class TroopHonorManager
   
   public void a(String paramString1, String paramString2, String paramString3, byte paramByte, long paramLong)
   {
-    if ((TextUtils.isEmpty(paramString1)) || (TextUtils.isEmpty(paramString2))) {}
-    for (;;)
+    if (!TextUtils.isEmpty(paramString1))
     {
-      return;
+      if (TextUtils.isEmpty(paramString2)) {
+        return;
+      }
       ITroopMemberInfoService localITroopMemberInfoService = (ITroopMemberInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopMemberInfoService.class, "");
-      Object localObject = (ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "");
+      Object localObject2 = (ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "");
       if (this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin().equals(paramString2))
       {
-        TroopInfo localTroopInfo = ((ITroopInfoService)localObject).getTroopInfo(paramString1);
-        if ((localTroopInfo != null) && (paramString3 != null) && ((!paramString3.equals(localTroopInfo.myHonorList)) || (a(paramLong, localTroopInfo.lastMsgUpdateMyHonorRichTime, paramByte, localTroopInfo.myHonorRichFlag))))
+        localObject1 = ((ITroopInfoService)localObject2).getTroopInfo(paramString1);
+        if ((localObject1 != null) && (paramString3 != null))
         {
-          localTroopInfo.myHonorList = paramString3;
-          if ((paramByte != -96) && ((paramLong == -101L) || (paramLong > localTroopInfo.lastMsgUpdateMyHonorRichTime)))
+          if ((paramString3.equals(((TroopInfo)localObject1).myHonorList)) && (!a(paramLong, ((TroopInfo)localObject1).lastMsgUpdateMyHonorRichTime, paramByte, ((TroopInfo)localObject1).myHonorRichFlag))) {}
+          for (;;)
           {
-            localTroopInfo.myHonorRichFlag = paramByte;
-            localTroopInfo.lastMsgUpdateMyHonorRichTime = paramLong;
+            break;
+            ((TroopInfo)localObject1).myHonorList = paramString3;
+            if ((paramByte != -96) && ((paramLong == -101L) || (paramLong > ((TroopInfo)localObject1).lastMsgUpdateMyHonorRichTime)))
+            {
+              ((TroopInfo)localObject1).myHonorRichFlag = paramByte;
+              ((TroopInfo)localObject1).lastMsgUpdateMyHonorRichTime = paramLong;
+            }
+            ((ITroopInfoService)localObject2).saveTroopInfo((TroopInfo)localObject1);
           }
-          ((ITroopInfoService)localObject).saveTroopInfo(localTroopInfo);
         }
       }
-      localObject = localITroopMemberInfoService.getTroopMember(paramString1, paramString2);
-      if ((localObject == null) && (!TextUtils.isEmpty(paramString3)))
+      Object localObject1 = paramString1;
+      localObject2 = localITroopMemberInfoService.getTroopMember((String)localObject1, paramString2);
+      paramString1 = (String)localObject2;
+      if (localObject2 == null)
       {
-        localObject = new TroopMemberInfo();
-        ((TroopMemberInfo)localObject).memberuin = paramString2;
-        ((TroopMemberInfo)localObject).troopuin = paramString1;
+        paramString1 = (String)localObject2;
+        if (!TextUtils.isEmpty(paramString3))
+        {
+          paramString1 = new TroopMemberInfo();
+          paramString1.memberuin = paramString2;
+          paramString1.troopuin = ((String)localObject1);
+        }
       }
-      while ((localObject != null) && ((!TextUtils.equals(paramString3, ((TroopMemberInfo)localObject).honorList)) || (a(paramLong, ((TroopMemberInfo)localObject).lastMsgUpdateHonorRichTime, paramByte, ((TroopMemberInfo)localObject).mHonorRichFlag))))
+      if ((paramString1 != null) && ((!TextUtils.equals(paramString3, paramString1.honorList)) || (a(paramLong, paramString1.lastMsgUpdateHonorRichTime, paramByte, paramString1.mHonorRichFlag))))
       {
         if (QLog.isColorLevel()) {
-          QLog.d("TroopHonor.manager", 2, String.format("updateTroopMemberHonor troopUin: %s, memberUin: %s, newHonorList: %s, oldHonorList: %s", new Object[] { paramString1, paramString2, paramString3, ((TroopMemberInfo)localObject).honorList }));
+          QLog.d("TroopHonor.manager", 2, String.format("updateTroopMemberHonor troopUin: %s, memberUin: %s, newHonorList: %s, oldHonorList: %s", new Object[] { localObject1, paramString2, paramString3, paramString1.honorList }));
         }
-        ((TroopMemberInfo)localObject).honorList = paramString3;
-        if (((paramByte != -96) && (paramLong == -101L)) || (paramLong > ((TroopMemberInfo)localObject).lastMsgUpdateHonorRichTime))
+        paramString1.honorList = paramString3;
+        if (((paramByte != -96) && (paramLong == -101L)) || (paramLong > paramString1.lastMsgUpdateHonorRichTime))
         {
-          ((TroopMemberInfo)localObject).mHonorRichFlag = paramByte;
-          ((TroopMemberInfo)localObject).lastMsgUpdateHonorRichTime = paramLong;
+          paramString1.mHonorRichFlag = paramByte;
+          paramString1.lastMsgUpdateHonorRichTime = paramLong;
         }
-        if (((TroopMemberInfo)localObject).getStatus() == 1000) {
-          localITroopMemberInfoService.saveTroopMemberInfoInLruCache(paramString1, paramString2, (TroopMemberInfo)localObject);
+        if (paramString1.getStatus() == 1000) {
+          localITroopMemberInfoService.saveTroopMemberInfoInLruCache((String)localObject1, paramString2, paramString1);
         }
-        localITroopMemberInfoService.saveTroopMemberInfoToDB(paramString1, paramString2, (TroopMemberInfo)localObject);
-        return;
+        localITroopMemberInfoService.saveTroopMemberInfoToDB((String)localObject1, paramString2, paramString1);
       }
     }
   }
@@ -261,22 +273,23 @@ public class TroopHonorManager
   {
     ITroopInfoService localITroopInfoService = (ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "");
     TroopInfo localTroopInfo = localITroopInfoService.getTroopInfo(paramString);
-    if (localTroopInfo == null) {
+    if (localTroopInfo == null)
+    {
       QLog.d("TroopHonor.manager", 1, "updateTroopHonorAIOSwitch troopInfo is null");
+      return;
     }
-    do
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHonor.manager", 2, String.format("updateTroopHonorAIOSwitch, troopUin: %s, isOpen: %s, old: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(localTroopInfo.isTroopHonorOpen()) }));
+    }
+    if ((localTroopInfo.isTroopHonorOpen() ^ paramBoolean))
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.d("TroopHonor.manager", 2, String.format("updateTroopHonorAIOSwitch, troopUin: %s, isOpen: %s, old: %s", new Object[] { paramString, Boolean.valueOf(paramBoolean), Boolean.valueOf(localTroopInfo.isTroopHonorOpen()) }));
+      if (paramBoolean) {
+        localTroopInfo.dwGroupFlagExt3 &= 0xFDFFFFFF;
+      } else {
+        localTroopInfo.dwGroupFlagExt3 |= 0x2000000;
       }
-    } while (!(localTroopInfo.isTroopHonorOpen() ^ paramBoolean));
-    if (paramBoolean) {}
-    for (localTroopInfo.dwGroupFlagExt3 &= 0xFDFFFFFF;; localTroopInfo.dwGroupFlagExt3 |= 0x2000000)
-    {
       localITroopInfoService.saveTroopInfo(localTroopInfo);
-      ((TroopListHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(jdField_a_of_type_JavaLangString)).notifyUI(TroopNotificationConstants.aC, true, null);
-      return;
+      ((ITroopListHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(jdField_a_of_type_JavaLangString)).a(TroopObserver.TYPE_NOTIFY_UPDATE_RECENT_LIST, true, null);
     }
   }
   
@@ -297,12 +310,12 @@ public class TroopHonorManager
             troop_honor.UserHonor localUserHonor = (troop_honor.UserHonor)((Iterator)localObject).next();
             String str = String.valueOf(localUserHonor.uin.get());
             if (!localUserHonor.id.has()) {
-              break label258;
+              break label263;
             }
             paramArrayOfByte = localUserHonor.id.get();
             a(paramString, str, TroopHonorUtils.a(paramArrayOfByte), TroopHonorUtils.a(localUserHonor.rich_flag));
             if ((!TextUtils.isEmpty(str)) && (str.equals(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin()))) {
-              ((TroopListHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(jdField_a_of_type_JavaLangString)).notifyUI(TroopNotificationConstants.aC, true, new Object[] { paramString, str });
+              ((ITroopListHandler)((AppInterface)MobileQQ.sMobileQQ.waitAppRuntime(null)).getBusinessHandler(jdField_a_of_type_JavaLangString)).a(TroopObserver.TYPE_NOTIFY_UPDATE_RECENT_LIST, true, new Object[] { paramString, str });
             }
             if (!QLog.isColorLevel()) {
               continue;
@@ -318,23 +331,17 @@ public class TroopHonorManager
         paramString.printStackTrace();
         QLog.d("TroopHonor.manager", 1, "updatePushTroopHonor", paramString);
       }
-      label258:
+      label263:
       paramArrayOfByte = null;
     }
   }
   
   public void a(List<oidb_0xdc9.HonorList> paramList, boolean paramBoolean)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      QLog.d("TroopHonor.manager", 1, "updateHostHonorList| honorList is empty!");
-    }
-    StringBuilder localStringBuilder;
-    label205:
-    do
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      return;
       this.jdField_a_of_type_JavaUtilList = paramList;
-      localStringBuilder = new StringBuilder();
+      StringBuilder localStringBuilder = new StringBuilder();
       String str1 = this.jdField_a_of_type_MqqAppAppRuntime.getCurrentAccountUin();
       if (TextUtils.isEmpty(str1))
       {
@@ -346,23 +353,38 @@ public class TroopHonorManager
       {
         Object localObject = (oidb_0xdc9.HonorList)paramList.next();
         String str2 = String.valueOf(((oidb_0xdc9.HonorList)localObject).group_id.get());
-        if (((oidb_0xdc9.HonorList)localObject).is_gray.has()) {}
-        for (int i = ((oidb_0xdc9.HonorList)localObject).is_gray.get();; i = 0)
+        int i;
+        if (((oidb_0xdc9.HonorList)localObject).is_gray.has()) {
+          i = ((oidb_0xdc9.HonorList)localObject).is_gray.get();
+        } else {
+          i = 0;
+        }
+        localObject = ((oidb_0xdc9.HonorList)localObject).id.get();
+        String str3 = TroopHonorUtils.a((List)localObject);
+        localStringBuilder.append(str2);
+        localStringBuilder.append(": ");
+        localStringBuilder.append(str3);
+        localStringBuilder.append("\n");
+        if (!TextUtils.isEmpty(str2))
         {
-          localObject = ((oidb_0xdc9.HonorList)localObject).id.get();
-          String str3 = TroopHonorUtils.a((List)localObject);
-          localStringBuilder.append(str2).append(": ").append(str3).append("\n");
-          if (TextUtils.isEmpty(str2)) {
-            break label205;
-          }
           a(paramBoolean, str2, i, str3);
           a(paramBoolean, str1, str2, (List)localObject, str3);
-          break;
         }
-        QLog.d("TroopHonor.manager", 1, String.format("updateHostHonorList| troopUin is empty", new Object[0]));
+        else
+        {
+          QLog.d("TroopHonor.manager", 1, String.format("updateHostHonorList| troopUin is empty", new Object[0]));
+        }
       }
-    } while (!QLog.isColorLevel());
-    QLog.d("TroopHonor.manager", 2, "updateHostHonorList, " + localStringBuilder.toString());
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("updateHostHonorList, ");
+        paramList.append(localStringBuilder.toString());
+        QLog.d("TroopHonor.manager", 2, paramList.toString());
+      }
+      return;
+    }
+    QLog.d("TroopHonor.manager", 1, "updateHostHonorList| honorList is empty!");
   }
   
   public void a(short paramShort)
@@ -377,120 +399,96 @@ public class TroopHonorManager
   
   public boolean a(long paramLong1, long paramLong2, byte paramByte1, byte paramByte2)
   {
-    if (paramByte1 == paramByte2) {}
-    while ((paramLong1 != -101L) && (paramLong1 <= paramLong2)) {
+    boolean bool = false;
+    if (paramByte1 == paramByte2) {
       return false;
     }
-    return true;
+    if ((paramLong1 == -101L) || (paramLong1 > paramLong2)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean a(Entity paramEntity)
   {
+    int i = paramEntity.getStatus();
     boolean bool = false;
-    if (paramEntity.getStatus() == 1000)
+    if (i == 1000)
     {
       this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.persistOrReplace(paramEntity);
       if (paramEntity.getStatus() == 1001) {
         bool = true;
       }
-    }
-    while ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
       return bool;
+    }
+    if ((paramEntity.getStatus() != 1001) && (paramEntity.getStatus() != 1002)) {
+      return false;
     }
     return this.jdField_a_of_type_ComTencentMobileqqPersistenceEntityManager.update(paramEntity);
   }
   
   public boolean a(String paramString)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig.jdField_a_of_type_Boolean)) {}
-    for (int i = 1;; i = 0)
-    {
-      ITroopInfoService localITroopInfoService = (ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "");
-      if (i == 0)
-      {
-        paramString = localITroopInfoService.getTroopInfo(paramString);
-        if ((paramString == null) || (paramString.troopHonorGrayFlag != 1)) {
-          break;
-        }
-      }
-      return true;
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig;
+    boolean bool = true;
+    int i;
+    if ((localObject != null) && (((TroopHonorConfig)localObject).jdField_a_of_type_Boolean)) {
+      i = 1;
+    } else {
+      i = 0;
     }
-    return false;
+    localObject = (ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "");
+    if (i == 0)
+    {
+      paramString = ((ITroopInfoService)localObject).getTroopInfo(paramString);
+      if ((paramString != null) && (paramString.troopHonorGrayFlag == 1)) {
+        return true;
+      }
+      bool = false;
+    }
+    return bool;
   }
   
   public boolean b(String paramString)
   {
-    boolean bool6 = false;
-    boolean bool2;
+    TroopHonorConfig localTroopHonorConfig = this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig;
     boolean bool1;
-    if ((this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig != null) && (this.jdField_a_of_type_ComTencentMobileqqTroopHonorConfigTroopHonorConfig.jdField_a_of_type_Boolean))
-    {
-      bool2 = true;
-      paramString = ((ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(paramString);
-      if (bool2) {
-        break label254;
-      }
-      if ((paramString == null) || (paramString.troopHonorGrayFlag != 1)) {
-        break label231;
-      }
+    if ((localTroopHonorConfig != null) && (localTroopHonorConfig.jdField_a_of_type_Boolean)) {
       bool1 = true;
-    }
-    for (;;)
-    {
-      label61:
-      boolean bool3;
-      if ((paramString != null) && ((paramString.dwGroupFlagExt3 & 0x2000000) == 0L))
-      {
-        bool3 = true;
-        label81:
-        paramString = (ISimpleUIUtil)QRoute.api(ISimpleUIUtil.class);
-        if (paramString == null) {
-          break label248;
-        }
-      }
-      label231:
-      label248:
-      for (boolean bool4 = paramString.getSimpleUISwitch();; bool4 = false)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.d("TroopHonor.manager", 2, String.format("isSupportTroopHonor, isGlobalOpen: %s, isGrayTroop: %s, isAIOOpen: %s", new Object[] { Boolean.valueOf(bool2), Boolean.valueOf(bool1), Boolean.valueOf(bool3) }));
-        }
-        paramString = ((IProfileDataService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IProfileDataService.class, "all")).getProfileCard(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), true);
-        if (paramString != null) {}
-        for (boolean bool5 = paramString.troopHonorSwitch;; bool5 = false)
-        {
-          if (!bool2)
-          {
-            bool2 = bool6;
-            if (!bool1) {}
-          }
-          else
-          {
-            bool2 = bool6;
-            if (bool3)
-            {
-              bool2 = bool6;
-              if (!bool4)
-              {
-                bool2 = bool6;
-                if (bool5) {
-                  bool2 = true;
-                }
-              }
-            }
-          }
-          return bool2;
-          bool2 = false;
-          break;
-          bool1 = false;
-          break label61;
-          bool3 = false;
-          break label81;
-        }
-      }
-      label254:
+    } else {
       bool1 = false;
     }
+    paramString = ((ITroopInfoService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(ITroopInfoService.class, "")).getTroopInfo(paramString);
+    boolean bool2;
+    if ((!bool1) && (paramString != null) && (paramString.troopHonorGrayFlag == 1)) {
+      bool2 = true;
+    } else {
+      bool2 = false;
+    }
+    boolean bool3;
+    if ((paramString != null) && ((paramString.dwGroupFlagExt3 & 0x2000000) == 0L)) {
+      bool3 = true;
+    } else {
+      bool3 = false;
+    }
+    paramString = (ISimpleUIUtil)QRoute.api(ISimpleUIUtil.class);
+    boolean bool4;
+    if (paramString != null) {
+      bool4 = paramString.getSimpleUISwitch();
+    } else {
+      bool4 = false;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("TroopHonor.manager", 2, String.format("isSupportTroopHonor, isGlobalOpen: %s, isGrayTroop: %s, isAIOOpen: %s", new Object[] { Boolean.valueOf(bool1), Boolean.valueOf(bool2), Boolean.valueOf(bool3) }));
+    }
+    paramString = ((IProfileDataService)this.jdField_a_of_type_MqqAppAppRuntime.getRuntimeService(IProfileDataService.class, "all")).getProfileCard(this.jdField_a_of_type_MqqAppAppRuntime.getCurrentUin(), true);
+    boolean bool5;
+    if (paramString != null) {
+      bool5 = paramString.troopHonorSwitch;
+    } else {
+      bool5 = false;
+    }
+    return ((bool1) || (bool2)) && (bool3) && (!bool4) && (bool5);
   }
   
   public void onDestroy()
@@ -500,7 +498,7 @@ public class TroopHonorManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.honor.TroopHonorManager
  * JD-Core Version:    0.7.0.1
  */

@@ -39,23 +39,31 @@ public final class BlackScreenMonitor
       this.lastCheckBlackTime = l;
       int i = ((Number)this.canvasWidthHolder.getValue()).intValue() / 2 - 64;
       int j = ((Number)this.canvasHeightHolder.getValue()).intValue() / 2 - 64;
-      if ((i < 0) || (j < 0)) {}
+      if ((i >= 0) && (j >= 0)) {}
       try
       {
-        Logger.e$default("BlackScreenMonitor", "checkBlackScreen params error x=" + i + " y=" + j + " w=" + 128 + " h=" + 128, null, 4, null);
+        localObject = new int[16384];
+        IntBuffer localIntBuffer = IntBuffer.wrap((int[])localObject);
+        localIntBuffer.position(0);
+        GLES30.glReadPixels(i, j, 128, 128, 6408, 5121, (Buffer)localIntBuffer);
+        this.mWorker.execute((Runnable)new BlackScreenMonitor.checkBlackScreen.1(this, (int[])localObject, l));
         return;
       }
       catch (Exception localException)
       {
-        int[] arrayOfInt;
-        IntBuffer localIntBuffer;
+        Object localObject;
         Logger.e("BlackScreenMonitor", "checkBlackScreen exception ", (Throwable)localException);
       }
-      arrayOfInt = new int[16384];
-      localIntBuffer = IntBuffer.wrap(arrayOfInt);
-      localIntBuffer.position(0);
-      GLES30.glReadPixels(i, j, 128, 128, 6408, 5121, (Buffer)localIntBuffer);
-      this.mWorker.execute((Runnable)new BlackScreenMonitor.checkBlackScreen.1(this, arrayOfInt, l));
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkBlackScreen params error x=");
+      ((StringBuilder)localObject).append(i);
+      ((StringBuilder)localObject).append(" y=");
+      ((StringBuilder)localObject).append(j);
+      ((StringBuilder)localObject).append(" w=");
+      ((StringBuilder)localObject).append(128);
+      ((StringBuilder)localObject).append(" h=");
+      ((StringBuilder)localObject).append(128);
+      Logger.e$default("BlackScreenMonitor", ((StringBuilder)localObject).toString(), null, 4, null);
       return;
     }
   }
@@ -67,7 +75,7 @@ public final class BlackScreenMonitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.render.monitor.BlackScreenMonitor
  * JD-Core Version:    0.7.0.1
  */

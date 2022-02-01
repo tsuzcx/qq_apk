@@ -7,16 +7,17 @@ public class LebaReportUtils
 {
   public static int a(boolean paramBoolean, BusinessInfoCheckUpdate.RedTypeInfo paramRedTypeInfo)
   {
-    if ((!paramBoolean) || (paramRedTypeInfo == null)) {
-      return 0;
+    if ((paramBoolean) && (paramRedTypeInfo != null))
+    {
+      if (paramRedTypeInfo.red_type.get() == 0) {
+        return 1;
+      }
+      if (paramRedTypeInfo.red_type.get() == 5) {
+        return 2;
+      }
+      return 3;
     }
-    if (paramRedTypeInfo.red_type.get() == 0) {
-      return 1;
-    }
-    if (paramRedTypeInfo.red_type.get() == 5) {
-      return 2;
-    }
-    return 3;
+    return 0;
   }
   
   public static DC03309ReportItem a(String paramString)
@@ -30,7 +31,7 @@ public class LebaReportUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.report.LebaReportUtils
  * JD-Core Version:    0.7.0.1
  */

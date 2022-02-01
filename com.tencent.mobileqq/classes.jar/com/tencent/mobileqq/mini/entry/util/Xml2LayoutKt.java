@@ -52,8 +52,14 @@ public final class Xml2LayoutKt
     localObject = System.getProperty("user.dir");
     Intrinsics.checkExpressionValueIsNotNull(localObject, "System.getProperty(\"user.dir\")");
     projectDir = StringsKt.substringBefore$default((String)localObject, "AQQLite", null, 2, null);
-    sourceXml = projectDir + "QQLite/res/layout/mini_app_desktop_popularity_list_layout.xml";
-    targetDir = projectDir + "QQLite/src/com/tencent/mobileqq/mini/entry/layout/";
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(projectDir);
+    ((StringBuilder)localObject).append("QQLite/res/layout/mini_app_desktop_popularity_list_layout.xml");
+    sourceXml = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(projectDir);
+    ((StringBuilder)localObject).append("QQLite/src/com/tencent/mobileqq/mini/entry/layout/");
+    targetDir = ((StringBuilder)localObject).toString();
   }
   
   public static final void createLayout(@NotNull XmlPullParser paramXmlPullParser)
@@ -62,58 +68,91 @@ public final class Xml2LayoutKt
     Object localObject1 = projectDir;
     System.out.println(localObject1);
     int i = paramXmlPullParser.getEventType();
-    Object localObject2 = "";
-    if (i != 1)
+    localObject1 = "";
+    while (i != 1)
     {
       String str1 = paramXmlPullParser.getName();
-      localObject1 = "Creating view: " + str1;
-      System.out.println(localObject1);
-      switch (i)
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Creating view: ");
+      ((StringBuilder)localObject2).append(str1);
+      localObject2 = ((StringBuilder)localObject2).toString();
+      System.out.println(localObject2);
+      if (i != 2)
       {
+        if (i == 3)
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append((String)localObject1);
+          ((StringBuilder)localObject2).append("}\n");
+          localObject1 = ((StringBuilder)localObject2).toString();
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append(str1);
+          ((StringBuilder)localObject2).append(" end");
+          localObject2 = ((StringBuilder)localObject2).toString();
+          System.out.println(localObject2);
+        }
       }
-      for (;;)
+      else
       {
-        i = paramXmlPullParser.next();
-        break;
-        localObject1 = (String)localObject2 + str1 + " {\n";
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append((String)localObject1);
+        ((StringBuilder)localObject2).append(str1);
+        ((StringBuilder)localObject2).append(" {\n");
+        localObject1 = ((StringBuilder)localObject2).toString();
         int j = paramXmlPullParser.getAttributeCount();
         i = 0;
-        for (;;)
+        while (i < j)
         {
-          localObject2 = localObject1;
-          if (i >= j) {
-            break;
-          }
           String str2 = paramXmlPullParser.getAttributeName(i);
           String str3 = paramXmlPullParser.getAttributeValue(i);
           Intrinsics.checkExpressionValueIsNotNull(str2, "key");
           localObject2 = localObject1;
           if (StringsKt.startsWith$default(str2, "android:", false, 2, null))
           {
-            localObject1 = new StringBuilder().append((String)localObject1).append('\t').append(getAttrName(str2)).append(" = ");
-            localObject2 = getAttrName(str2);
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append((String)localObject1);
+            ((StringBuilder)localObject2).append('\t');
+            ((StringBuilder)localObject2).append(getAttrName(str2));
+            ((StringBuilder)localObject2).append(" = ");
+            localObject1 = getAttrName(str2);
             Intrinsics.checkExpressionValueIsNotNull(str3, "value");
-            localObject2 = getAttributeData((String)localObject2, str3) + '\n';
+            ((StringBuilder)localObject2).append(getAttributeData((String)localObject1, str3));
+            ((StringBuilder)localObject2).append('\n');
+            localObject2 = ((StringBuilder)localObject2).toString();
           }
-          localObject1 = "Creating " + str1 + " attr key: " + str2 + ", value: " + str3;
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("Creating ");
+          ((StringBuilder)localObject1).append(str1);
+          ((StringBuilder)localObject1).append(" attr key: ");
+          ((StringBuilder)localObject1).append(str2);
+          ((StringBuilder)localObject1).append(", value: ");
+          ((StringBuilder)localObject1).append(str3);
+          localObject1 = ((StringBuilder)localObject1).toString();
           System.out.println(localObject1);
           i += 1;
           localObject1 = localObject2;
         }
-        localObject2 = (String)localObject2 + "}\n";
-        localObject1 = str1 + " end";
-        System.out.println(localObject1);
       }
+      i = paramXmlPullParser.next();
     }
-    if (localObject2 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+    if (localObject1 != null)
+    {
+      paramXmlPullParser = createLayoutFileTemplate("buildPopularityListLayout", StringsKt.trimStart((CharSequence)localObject1).toString());
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append(targetDir);
+      ((StringBuilder)localObject1).append("PopularityListLayout.kt");
+      localObject1 = new File(((StringBuilder)localObject1).toString());
+      if (!((File)localObject1).exists()) {
+        ((File)localObject1).createNewFile();
+      }
+      FilesKt.writeText$default((File)localObject1, paramXmlPullParser, null, 2, null);
+      return;
     }
-    paramXmlPullParser = createLayoutFileTemplate("buildPopularityListLayout", StringsKt.trimStart((CharSequence)localObject2).toString());
-    localObject1 = new File(targetDir + "PopularityListLayout.kt");
-    if (!((File)localObject1).exists()) {
-      ((File)localObject1).createNewFile();
+    paramXmlPullParser = new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+    for (;;)
+    {
+      throw paramXmlPullParser;
     }
-    FilesKt.writeText$default((File)localObject1, paramXmlPullParser, null, 2, null);
   }
   
   @NotNull
@@ -121,11 +160,17 @@ public final class Xml2LayoutKt
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "funName");
     Intrinsics.checkParameterIsNotNull(paramString2, "content");
-    paramString1 = "\npackage com.tencent.mobileqq.mini.entry.layout\n\nimport android.content.Context\nimport android.text.TextUtils\nimport android.view.Gravity\nimport android.view.View\nimport android.view.ViewGroup\nimport android.widget.ImageView\nimport com.tencent.mobileqq.R\n\ninline fun " + paramString1 + "(context: Context): View {\n    return context.run {\n        " + paramString2 + "\n    }\n}\n";
-    if (paramString1 == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("\npackage com.tencent.mobileqq.mini.entry.layout\n\nimport android.content.Context\nimport android.text.TextUtils\nimport android.view.Gravity\nimport android.view.View\nimport android.view.ViewGroup\nimport android.widget.ImageView\nimport com.tencent.mobileqq.R\n\ninline fun ");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("(context: Context): View {\n    return context.run {\n        ");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("\n    }\n}\n");
+    paramString1 = localStringBuilder.toString();
+    if (paramString1 != null) {
+      return StringsKt.trimStart((CharSequence)paramString1).toString();
     }
-    return StringsKt.trimStart((CharSequence)paramString1).toString();
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
   }
   
   @NotNull
@@ -133,25 +178,26 @@ public final class Xml2LayoutKt
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
     paramString = StringsKt.substringBefore$default(StringsKt.substringBefore$default(paramString, "dp", null, 2, null), "sp", null, 2, null);
-    if (paramString == null) {
-      throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+    if (paramString != null) {
+      return StringsKt.trim((CharSequence)paramString).toString();
     }
-    return StringsKt.trim((CharSequence)paramString).toString();
+    throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
   }
   
   @NotNull
   public static final String getAttrName(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "key");
-    paramString = paramString.substring("android:".length());
-    Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
-    if (attrTransformMap.containsKey(paramString))
+    String str1 = paramString.substring(8);
+    Intrinsics.checkExpressionValueIsNotNull(str1, "(this as java.lang.String).substring(startIndex)");
+    paramString = str1;
+    if (attrTransformMap.containsKey(str1))
     {
-      String str = (String)attrTransformMap.get(paramString);
-      if (str != null) {
-        return str;
+      String str2 = (String)attrTransformMap.get(str1);
+      paramString = str1;
+      if (str2 != null) {
+        paramString = str2;
       }
-      return paramString;
     }
     return paramString;
   }
@@ -167,31 +213,34 @@ public final class Xml2LayoutKt
   {
     Intrinsics.checkParameterIsNotNull(paramString1, "attr");
     Intrinsics.checkParameterIsNotNull(paramString2, "attrValue");
-    String str;
-    if (Intrinsics.areEqual(paramString1, "textSize")) {
-      str = extractDigital(paramString2) + 'f';
-    }
-    do
+    if (Intrinsics.areEqual(paramString1, "textSize"))
     {
-      return str;
-      if (StringsKt.endsWith$default(paramString2, "dp", false, 2, null)) {
-        return extractDigital(paramString2);
-      }
-      if (StringsKt.endsWith$default(paramString2, "sp", false, 2, null))
+      paramString1 = new StringBuilder();
+      paramString1.append(extractDigital(paramString2));
+      paramString1.append('f');
+      return paramString1.toString();
+    }
+    if (StringsKt.endsWith$default(paramString2, "dp", false, 2, null)) {
+      return extractDigital(paramString2);
+    }
+    if (StringsKt.endsWith$default(paramString2, "sp", false, 2, null))
+    {
+      paramString1 = new StringBuilder();
+      paramString2 = StringsKt.substringBefore$default(paramString2, "sp", null, 2, null);
+      if (paramString2 != null)
       {
-        paramString1 = new StringBuilder();
-        paramString2 = StringsKt.substringBefore$default(paramString2, "sp", null, 2, null);
-        if (paramString2 == null) {
-          throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
-        }
-        return StringsKt.trim((CharSequence)paramString2).toString() + "f";
+        paramString1.append(StringsKt.trim((CharSequence)paramString2).toString());
+        paramString1.append("f");
+        return paramString1.toString();
       }
-      if (isResourceReference(paramString2)) {
-        return StringsKt.replace$default(StringsKt.replace$default(StringsKt.replace$default(paramString2, "@", "R.", false, 4, null), "+", "", false, 4, null), "/", ".", false, 4, null);
-      }
-      if ((StringsKt.startsWith$default(paramString2, "#", false, 2, null)) || (Intrinsics.areEqual(paramString1, "_text"))) {
-        return '"' + paramString2 + '"';
-      }
+      throw new TypeCastException("null cannot be cast to non-null type kotlin.CharSequence");
+    }
+    if (isResourceReference(paramString2)) {
+      return StringsKt.replace$default(StringsKt.replace$default(StringsKt.replace$default(paramString2, "@", "R.", false, 4, null), "+", "", false, 4, null), "/", ".", false, 4, null);
+    }
+    String str;
+    if ((!StringsKt.startsWith$default(paramString2, "#", false, 2, null)) && (!Intrinsics.areEqual(paramString1, "_text")))
+    {
       if (Intrinsics.areEqual(paramString1, "layout_width")) {
         return getLayoutWH(paramString2);
       }
@@ -216,12 +265,28 @@ public final class Xml2LayoutKt
       if (Intrinsics.areEqual(paramString1, "ellipsize")) {
         return getLayoutEllipsize(paramString2);
       }
-      if (Intrinsics.areEqual(paramString1, "layout_weight")) {
-        break;
+      if (!Intrinsics.areEqual(paramString1, "layout_weight"))
+      {
+        str = paramString2;
+        if (!Intrinsics.areEqual(paramString1, "rotation")) {}
       }
-      str = paramString2;
-    } while (!Intrinsics.areEqual(paramString1, "rotation"));
-    return paramString2 + 'f';
+      else
+      {
+        paramString1 = new StringBuilder();
+        paramString1.append(paramString2);
+        paramString1.append('f');
+        return paramString1.toString();
+      }
+    }
+    else
+    {
+      paramString1 = new StringBuilder();
+      paramString1.append('"');
+      paramString1.append(paramString2);
+      paramString1.append('"');
+      str = paramString1.toString();
+    }
+    return str;
   }
   
   @NotNull
@@ -230,75 +295,91 @@ public final class Xml2LayoutKt
     Intrinsics.checkParameterIsNotNull(paramString, "value");
     switch (paramString.hashCode())
     {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      do
-                      {
-                        do
-                        {
-                          do
-                          {
-                            do
-                            {
-                              do
-                              {
-                                String str = paramString;
-                                if (StringsKt.contains$default((CharSequence)paramString, (CharSequence)"|", false, 2, null))
-                                {
-                                  paramString = parseGravityCompose(paramString);
-                                  str = paramString;
-                                  if (paramString == null)
-                                  {
-                                    Intrinsics.throwNpe();
-                                    str = paramString;
-                                  }
-                                }
-                                return str;
-                              } while (!paramString.equals("bottom"));
-                              return "Gravity.BOTTOM";
-                            } while (!paramString.equals("clip_horizontal"));
-                            return "Gravity.CLIP_HORIZONTAL";
-                          } while (!paramString.equals("center"));
-                          return "Gravity.CENTER";
-                        } while (!paramString.equals("clip_vertical"));
-                        return "Gravity.CLIP_VERTICAL";
-                      } while (!paramString.equals("start"));
-                      return "Gravity.START";
-                    } while (!paramString.equals("right"));
-                    return "Gravity.RIGHT";
-                  } while (!paramString.equals("center_horizontal"));
-                  return "Gravity.CENTER_HORIZONTAL";
-                } while (!paramString.equals("fill"));
-                return "Gravity.FILL";
-              } while (!paramString.equals("fill_horizontal"));
-              return "Gravity.FILL_HORIZONTAL";
-            } while (!paramString.equals("top"));
-            return "Gravity.TOP";
-          } while (!paramString.equals("left"));
-          return "Gravity.LEFT";
-        } while (!paramString.equals("center_vertical"));
+    default: 
+      break;
+    case 1063616078: 
+      if (paramString.equals("center_horizontal")) {
+        return "Gravity.CENTER_HORIZONTAL";
+      }
+      break;
+    case 109757538: 
+      if (paramString.equals("start")) {
+        return "Gravity.START";
+      }
+      break;
+    case 108511772: 
+      if (paramString.equals("right")) {
+        return "Gravity.RIGHT";
+      }
+      break;
+    case 3317767: 
+      if (paramString.equals("left")) {
+        return "Gravity.LEFT";
+      }
+      break;
+    case 3143043: 
+      if (paramString.equals("fill")) {
+        return "Gravity.FILL";
+      }
+      break;
+    case 115029: 
+      if (paramString.equals("top")) {
+        return "Gravity.TOP";
+      }
+      break;
+    case 100571: 
+      if (paramString.equals("end")) {
+        return "Gravity.END";
+      }
+      break;
+    case -55726203: 
+      if (paramString.equals("clip_vertical")) {
+        return "Gravity.CLIP_VERTICAL";
+      }
+      break;
+    case -348726240: 
+      if (paramString.equals("center_vertical")) {
         return "Gravity.CENTER_VERTICAL";
-      } while (!paramString.equals("fill_vertical"));
-      return "Gravity.FILL_VERTICAL";
-    } while (!paramString.equals("end"));
-    return "Gravity.END";
+      }
+      break;
+    case -483365792: 
+      if (paramString.equals("fill_horizontal")) {
+        return "Gravity.FILL_HORIZONTAL";
+      }
+      break;
+    case -831189901: 
+      if (paramString.equals("clip_horizontal")) {
+        return "Gravity.CLIP_HORIZONTAL";
+      }
+      break;
+    case -1364013995: 
+      if (paramString.equals("center")) {
+        return "Gravity.CENTER";
+      }
+      break;
+    case -1383228885: 
+      if (paramString.equals("bottom")) {
+        return "Gravity.BOTTOM";
+      }
+      break;
+    case -1633016142: 
+      if (paramString.equals("fill_vertical")) {
+        return "Gravity.FILL_VERTICAL";
+      }
+      break;
+    }
+    String str = paramString;
+    if (StringsKt.contains$default((CharSequence)paramString, (CharSequence)"|", false, 2, null))
+    {
+      paramString = parseGravityCompose(paramString);
+      str = paramString;
+      if (paramString == null)
+      {
+        Intrinsics.throwNpe();
+        str = paramString;
+      }
+    }
+    return str;
   }
   
   @NotNull
@@ -311,30 +392,35 @@ public final class Xml2LayoutKt
   public static final String getLayoutEllipsize(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    String str = "TextUtils.TruncateAt.START";
+    switch (i)
     {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              return "TextUtils.TruncateAt.START";
-            } while (!paramString.equals("middle"));
-            return "TextUtils.TruncateAt.MIDDLE";
-          } while (!paramString.equals("start"));
-          return "TextUtils.TruncateAt.START";
-        } while (!paramString.equals("end"));
+    default: 
+      return "TextUtils.TruncateAt.START";
+    case 839444514: 
+      if (paramString.equals("marquee")) {
+        return "TextUtils.TruncateAt.MARQUEE";
+      }
+      break;
+    case 109757538: 
+      paramString.equals("start");
+      return "TextUtils.TruncateAt.START";
+    case 3387192: 
+      paramString.equals("none");
+      return "TextUtils.TruncateAt.START";
+    case 100571: 
+      if (paramString.equals("end")) {
         return "TextUtils.TruncateAt.END";
-      } while (!paramString.equals("marquee"));
-      return "TextUtils.TruncateAt.MARQUEE";
-    } while (!paramString.equals("none"));
-    return "TextUtils.TruncateAt.START";
+      }
+      break;
+    case -1074341483: 
+      if (paramString.equals("middle")) {
+        str = "TextUtils.TruncateAt.MIDDLE";
+      }
+      break;
+    }
+    return str;
   }
   
   @NotNull
@@ -348,40 +434,64 @@ public final class Xml2LayoutKt
   public static final String getLayoutWH(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    String str;
+    if (i != 343327108)
     {
-    }
-    do
-    {
-      do
+      if (i != 1261922022)
       {
-        do
-        {
+        if (i != 1386124388) {
           return paramString;
-        } while (!paramString.equals("fill_parent"));
-        return "ViewGroup.LayoutParams.MATCH_PARENT";
-      } while (!paramString.equals("wrap_content"));
-      return "ViewGroup.LayoutParams.WRAP_CONTENT";
-    } while (!paramString.equals("match_parent"));
-    return "ViewGroup.LayoutParams.MATCH_PARENT";
+        }
+        str = paramString;
+        if (!paramString.equals("match_parent")) {}
+      }
+      else
+      {
+        for (;;)
+        {
+          return "ViewGroup.LayoutParams.MATCH_PARENT";
+          str = paramString;
+          if (!paramString.equals("fill_parent")) {
+            break;
+          }
+        }
+      }
+    }
+    else
+    {
+      str = paramString;
+      if (paramString.equals("wrap_content")) {
+        str = "ViewGroup.LayoutParams.WRAP_CONTENT";
+      }
+    }
+    return str;
   }
   
   @NotNull
   public static final String getOrientation(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    String str;
+    if (i != -1984141450)
     {
-    }
-    do
-    {
-      do
-      {
+      if (i != 1387629604) {
         return paramString;
-      } while (!paramString.equals("horizontal"));
-      return "HORIZONTAL";
-    } while (!paramString.equals("vertical"));
-    return "VERTICAL";
+      }
+      str = paramString;
+      if (paramString.equals("horizontal")) {
+        return "HORIZONTAL";
+      }
+    }
+    else
+    {
+      str = paramString;
+      if (paramString.equals("vertical")) {
+        str = "VERTICAL";
+      }
+    }
+    return str;
   }
   
   @NotNull
@@ -394,42 +504,52 @@ public final class Xml2LayoutKt
   public static final String getScaleType(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    String str = "ImageView.ScaleType.FIT_CENTER";
+    switch (i)
     {
-    }
-    do
-    {
-      do
-      {
-        do
-        {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  do
-                  {
-                    return "ImageView.ScaleType.FIT_CENTER";
-                  } while (!paramString.equals("centerInside"));
-                  return "ImageView.ScaleType.CENTER_INSIDE";
-                } while (!paramString.equals("fitStart"));
-                return "ImageView.ScaleType.FIT_START";
-              } while (!paramString.equals("fitEnd"));
-              return "ImageView.ScaleType.FIT_END";
-            } while (!paramString.equals("center"));
-            return "ImageView.ScaleType.CENTER";
-          } while (!paramString.equals("matrix"));
-          return "ImageView.ScaleType.MATRIX";
-        } while (!paramString.equals("fitXY"));
-        return "ImageView.ScaleType.FIT_XY";
-      } while (!paramString.equals("fitCenter"));
+    default: 
       return "ImageView.ScaleType.FIT_CENTER";
-    } while (!paramString.equals("centerCrop"));
-    return "ImageView.ScaleType.CENTER_CROP";
+    case 1161480325: 
+      if (paramString.equals("centerCrop")) {
+        return "ImageView.ScaleType.CENTER_CROP";
+      }
+      break;
+    case 520762310: 
+      paramString.equals("fitCenter");
+      return "ImageView.ScaleType.FIT_CENTER";
+    case 97441490: 
+      if (paramString.equals("fitXY")) {
+        return "ImageView.ScaleType.FIT_XY";
+      }
+      break;
+    case -340708175: 
+      if (paramString.equals("centerInside")) {
+        return "ImageView.ScaleType.CENTER_INSIDE";
+      }
+      break;
+    case -522179887: 
+      if (paramString.equals("fitStart")) {
+        return "ImageView.ScaleType.FIT_START";
+      }
+      break;
+    case -1081239615: 
+      if (paramString.equals("matrix")) {
+        return "ImageView.ScaleType.MATRIX";
+      }
+      break;
+    case -1274298614: 
+      if (paramString.equals("fitEnd")) {
+        return "ImageView.ScaleType.FIT_END";
+      }
+      break;
+    case -1364013995: 
+      if (paramString.equals("center")) {
+        str = "ImageView.ScaleType.CENTER";
+      }
+      break;
+    }
+    return str;
   }
   
   @NotNull
@@ -448,22 +568,27 @@ public final class Xml2LayoutKt
   public static final String getVisibility(@NotNull String paramString)
   {
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    switch (paramString.hashCode())
+    int i = paramString.hashCode();
+    String str = "View.VISIBLE";
+    if (i != -1901805651)
     {
-    }
-    do
-    {
-      do
+      if (i != 3178655)
       {
-        do
-        {
+        if (i != 466743410) {
           return "View.VISIBLE";
-        } while (!paramString.equals("visible"));
+        }
+        paramString.equals("visible");
         return "View.VISIBLE";
-      } while (!paramString.equals("invisible"));
-      return "View.INVISIBLE";
-    } while (!paramString.equals("gone"));
-    return "View.GONE";
+      }
+      if (paramString.equals("gone")) {
+        return "View.GONE";
+      }
+    }
+    else if (paramString.equals("invisible"))
+    {
+      str = "View.INVISIBLE";
+    }
+    return str;
   }
   
   public static final boolean isNull(@Nullable String paramString)
@@ -489,9 +614,10 @@ public final class Xml2LayoutKt
   @Nullable
   public static final String parseGravityCompose(@NotNull String paramString)
   {
-    int i = 0;
     Intrinsics.checkParameterIsNotNull(paramString, "value");
-    Iterator localIterator = ((Iterable)StringsKt.split$default((CharSequence)paramString, new String[] { "|" }, false, 0, 6, null)).iterator();
+    paramString = (CharSequence)paramString;
+    int i = 0;
+    Iterator localIterator = ((Iterable)StringsKt.split$default(paramString, new String[] { "|" }, false, 0, 6, null)).iterator();
     paramString = "";
     while (localIterator.hasNext())
     {
@@ -518,7 +644,7 @@ public final class Xml2LayoutKt
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.util.Xml2LayoutKt
  * JD-Core Version:    0.7.0.1
  */

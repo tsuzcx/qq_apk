@@ -108,12 +108,13 @@ public class CompressInfo
   {
     this.jdField_b_of_type_Boolean = true;
     BaseApplication localBaseApplication = BaseApplication.getContext();
-    if (paramBoolean) {}
-    for (int k = 2131691118;; k = 2131691114)
-    {
-      this.jdField_b_of_type_JavaLangString = localBaseApplication.getString(k);
-      return;
+    int k;
+    if (paramBoolean) {
+      k = 2131691038;
+    } else {
+      k = 2131691034;
     }
+    this.jdField_b_of_type_JavaLangString = localBaseApplication.getString(k);
   }
   
   public void b(boolean paramBoolean)
@@ -130,23 +131,57 @@ public class CompressInfo
   {
     StringBuilder localStringBuilder = new StringBuilder();
     localStringBuilder.append("\nCompressInfo");
-    localStringBuilder.append("\n|-").append("localUUID:").append(this.jdField_a_of_type_JavaLangString);
-    localStringBuilder.append("\n|-").append("isSuccess:").append(this.jdField_a_of_type_Boolean);
-    localStringBuilder.append("\n|-").append("isOOM:").append(this.jdField_b_of_type_Boolean);
-    localStringBuilder.append("\n|-").append("isOOS:").append(this.jdField_c_of_type_Boolean);
-    localStringBuilder.append("\n|-").append("oomMsg:").append(this.jdField_b_of_type_JavaLangString);
-    localStringBuilder.append("\n|-").append("srcPath:").append(this.jdField_c_of_type_JavaLangString);
-    localStringBuilder.append("\n|-").append("specPath:").append(this.jdField_d_of_type_JavaLangString);
-    localStringBuilder.append("\n|-").append("destPath:").append(this.jdField_e_of_type_JavaLangString);
-    localStringBuilder.append("\n|-").append("picType:").append(this.jdField_f_of_type_Int);
-    localStringBuilder.append("\n|-").append("picQuality:").append(this.jdField_g_of_type_Int);
-    localStringBuilder.append("\n|-").append("networkType:").append(this.h);
-    localStringBuilder.append("\n|-").append("sampleCompressCnt:").append(this.i);
-    localStringBuilder.append("\n|-").append("compressMsg:").append(this.jdField_f_of_type_JavaLangString);
-    localStringBuilder.append("\n|-").append("isResultOriginal:").append(this.jdField_e_of_type_Boolean);
-    localStringBuilder.append("\n|-").append("uinType:").append(this.j);
-    localStringBuilder.append("\n|-").append("mCheckJpgQualityAndSize:").append(this.jdField_g_of_type_Boolean);
-    localStringBuilder.append("\n|-").append("isOverride:").append(this.jdField_f_of_type_Boolean);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("localUUID:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("isSuccess:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("isOOM:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("isOOS:");
+    localStringBuilder.append(this.jdField_c_of_type_Boolean);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("oomMsg:");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("srcPath:");
+    localStringBuilder.append(this.jdField_c_of_type_JavaLangString);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("specPath:");
+    localStringBuilder.append(this.jdField_d_of_type_JavaLangString);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("destPath:");
+    localStringBuilder.append(this.jdField_e_of_type_JavaLangString);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("picType:");
+    localStringBuilder.append(this.jdField_f_of_type_Int);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("picQuality:");
+    localStringBuilder.append(this.jdField_g_of_type_Int);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("networkType:");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("sampleCompressCnt:");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("compressMsg:");
+    localStringBuilder.append(this.jdField_f_of_type_JavaLangString);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("isResultOriginal:");
+    localStringBuilder.append(this.jdField_e_of_type_Boolean);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("uinType:");
+    localStringBuilder.append(this.j);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("mCheckJpgQualityAndSize:");
+    localStringBuilder.append(this.jdField_g_of_type_Boolean);
+    localStringBuilder.append("\n|-");
+    localStringBuilder.append("isOverride:");
+    localStringBuilder.append(this.jdField_f_of_type_Boolean);
     return localStringBuilder.toString();
   }
   
@@ -173,7 +208,7 @@ public class CompressInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.CompressInfo
  * JD-Core Version:    0.7.0.1
  */

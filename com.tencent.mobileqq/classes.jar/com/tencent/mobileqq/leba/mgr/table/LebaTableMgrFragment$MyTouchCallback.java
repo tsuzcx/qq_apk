@@ -26,21 +26,26 @@ public class LebaTableMgrFragment$MyTouchCallback
   private void a(RecyclerView.ViewHolder paramViewHolder, boolean paramBoolean)
   {
     if ((paramViewHolder != null) && (paramViewHolder.itemView != null) && ((paramViewHolder instanceof LebaTableMgrAdpter.PluginViewHolder)) && (Build.VERSION.SDK_INT >= 21)) {}
-    try
+    for (;;)
     {
-      paramViewHolder.itemView.setOutlineProvider(ViewOutlineProvider.BOUNDS);
-      paramViewHolder = paramViewHolder.itemView;
-      if (paramBoolean) {}
-      for (float f = 20.0F;; f = 0.0F)
+      try
       {
+        paramViewHolder.itemView.setOutlineProvider(ViewOutlineProvider.BOUNDS);
+        paramViewHolder = paramViewHolder.itemView;
+        if (!paramBoolean) {
+          break label68;
+        }
+        f = 20.0F;
         paramViewHolder.setTranslationZ(f);
         return;
       }
+      catch (Exception paramViewHolder)
+      {
+        QLog.i("LebaTableMgrFragment", 1, "setItemShadow", paramViewHolder);
+      }
       return;
-    }
-    catch (Exception paramViewHolder)
-    {
-      QLog.i("LebaTableMgrFragment", 1, "setItemShadow", paramViewHolder);
+      label68:
+      float f = 0.0F;
     }
   }
   
@@ -65,40 +70,45 @@ public class LebaTableMgrFragment$MyTouchCallback
   {
     int i = paramViewHolder1.getAdapterPosition();
     int j = paramViewHolder2.getAdapterPosition();
-    if (this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaMgrDataLogic != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaMgrDataLogic.a(paramRecyclerView, i, j);
+    paramViewHolder1 = this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaMgrDataLogic;
+    if (paramViewHolder1 != null) {
+      return paramViewHolder1.a(paramRecyclerView, i, j);
     }
     return false;
   }
   
   public void onSelectedChanged(RecyclerView.ViewHolder paramViewHolder, int paramInt)
   {
-    QLog.i("LebaTableMgrFragment", 1, "onSelectedChanged" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onSelectedChanged");
+    localStringBuilder.append(paramInt);
+    QLog.i("LebaTableMgrFragment", 1, localStringBuilder.toString());
     if (paramInt == 0)
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView != null) {
-        this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView.c();
+      paramViewHolder = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView;
+      if (paramViewHolder != null) {
+        paramViewHolder.c();
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaMgrDataLogic != null) {
-        this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaMgrDataLogic.a(this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaTableMgrAdpter);
+      paramViewHolder = this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaMgrDataLogic;
+      if (paramViewHolder != null) {
+        paramViewHolder.a(this.jdField_a_of_type_ComTencentMobileqqLebaMgrTableLebaTableMgrAdpter);
       }
     }
-    do
+    else if (paramInt == 2)
     {
-      do
-      {
-        return;
-      } while (paramInt != 2);
       a(paramViewHolder, true);
-    } while (this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView == null);
-    this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView.b();
+      paramViewHolder = this.jdField_a_of_type_ComTencentMobileqqWidgetOverScrollRecyclerView;
+      if (paramViewHolder != null) {
+        paramViewHolder.b();
+      }
+    }
   }
   
   public void onSwiped(RecyclerView.ViewHolder paramViewHolder, int paramInt) {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.mgr.table.LebaTableMgrFragment.MyTouchCallback
  * JD-Core Version:    0.7.0.1
  */

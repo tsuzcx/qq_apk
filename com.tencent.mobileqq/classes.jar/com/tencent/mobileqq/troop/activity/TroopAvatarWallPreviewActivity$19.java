@@ -1,18 +1,31 @@
 package com.tencent.mobileqq.troop.activity;
 
+import android.view.animation.Animation;
+import android.view.animation.Animation.AnimationListener;
+import com.tencent.mobileqq.widget.ImageAnimationView;
+import com.tencent.widget.Gallery;
+
 class TroopAvatarWallPreviewActivity$19
-  implements Runnable
+  implements Animation.AnimationListener
 {
   TroopAvatarWallPreviewActivity$19(TroopAvatarWallPreviewActivity paramTroopAvatarWallPreviewActivity) {}
   
-  public void run()
+  public void onAnimationEnd(Animation paramAnimation)
   {
-    this.this$0.m = false;
+    this.a.mAnimationView.setVisibility(4);
+    this.a.finish();
+  }
+  
+  public void onAnimationRepeat(Animation paramAnimation) {}
+  
+  public void onAnimationStart(Animation paramAnimation)
+  {
+    this.a.mGallery.setVisibility(4);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.troop.activity.TroopAvatarWallPreviewActivity.19
  * JD-Core Version:    0.7.0.1
  */

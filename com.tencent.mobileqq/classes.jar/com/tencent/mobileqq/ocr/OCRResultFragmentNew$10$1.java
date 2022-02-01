@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.ocr;
 
-import com.tencent.mobileqq.gallery.picocr.PicOcrManager.OCRReqContext;
 import com.tencent.mobileqq.gallery.picocr.PicOcrRspResult;
+import com.tencent.mobileqq.ocr.req.OCRReqContext;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.tfm.metrics.api.Metrics;
 import com.tencent.tfm.metrics.api.MetricsApi;
@@ -24,13 +24,13 @@ class OCRResultFragmentNew$10$1
       return;
     }
     ((SuccessRateMeasure)MetricsApi.getDefault().get("OCR_REQUEST", SuccessRateMeasure.class)).recordFail(new String[] { "requestOcr", "failure" });
-    QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$10.a), 1, 2131698997, 0).a();
+    QQToast.a(OCRResultFragmentNew.a(this.jdField_a_of_type_ComTencentMobileqqOcrOCRResultFragmentNew$10.a), 1, 2131699075, 0).a();
     OCRPerformUtil.a("0X800AD1B", 0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.OCRResultFragmentNew.10.1
  * JD-Core Version:    0.7.0.1
  */

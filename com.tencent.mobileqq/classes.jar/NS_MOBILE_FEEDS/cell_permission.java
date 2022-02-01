@@ -46,25 +46,29 @@ public final class cell_permission
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.permission_info != null) {
-      paramJceOutputStream.write(this.permission_info, 0);
+    Object localObject = this.permission_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
     paramJceOutputStream.write(this.permission_mask, 1);
-    if (this.status_info != null) {
-      paramJceOutputStream.write(this.status_info, 2);
+    localObject = this.status_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
     paramJceOutputStream.write(this.permission_visit, 3);
-    if (this.permission_tips != null) {
-      paramJceOutputStream.write(this.permission_tips, 4);
+    localObject = this.permission_tips;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.map_permission_msg != null) {
-      paramJceOutputStream.write(this.map_permission_msg, 5);
+    localObject = this.map_permission_msg;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.cell_permission
  * JD-Core Version:    0.7.0.1
  */

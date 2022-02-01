@@ -15,7 +15,7 @@ public final class Oidb_0x5e0$ProfileInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0x5e0.Oidb_0x5e0.ProfileInfo
  * JD-Core Version:    0.7.0.1
  */

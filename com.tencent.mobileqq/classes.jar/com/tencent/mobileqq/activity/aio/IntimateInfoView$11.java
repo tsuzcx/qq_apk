@@ -17,23 +17,19 @@ class IntimateInfoView$11
       if ((IntimateInfoView.a(this.a) != null) && (IntimateInfoView.a(this.a).isShowing())) {
         IntimateInfoView.a(this.a).dismiss();
       }
-      if (QLog.isColorLevel()) {
-        QLog.d("intimate_relationship", 2, "disband cancel");
-      }
-      return;
     }
     catch (Exception paramDialogInterface)
     {
-      for (;;)
-      {
-        paramDialogInterface.printStackTrace();
-      }
+      paramDialogInterface.printStackTrace();
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("intimate_relationship", 2, "disband cancel");
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.IntimateInfoView.11
  * JD-Core Version:    0.7.0.1
  */

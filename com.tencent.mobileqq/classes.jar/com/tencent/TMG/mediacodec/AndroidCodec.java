@@ -22,35 +22,25 @@ import java.util.List;
 
 public class AndroidCodec
 {
-  public static String AVC_CODEC_MIME;
+  public static String AVC_CODEC_MIME = "video/avc";
   public static int DEC_CODEC = 0;
   public static int ENC_CODEC = 1;
-  public static String ForceIFrame;
+  public static String ForceIFrame = "request-sync";
   public static final int SUPPORT_AVC_DEC = 1;
   public static final int SUPPORT_AVC_ENC = 2;
   public static final int SUPPORT_HEVC_DEC = 4;
   public static final int SUPPORT_HEVC_ENC = 8;
   public static final int SUPPORT_NONE = 0;
-  public static String TAG;
+  public static String TAG = "AndroidCodec";
   public static int TIMEOUTDECFIST_US = 5000;
-  public static int TIMEOUT_US;
-  protected static boolean gfLoaded;
+  public static int TIMEOUT_US = 33000;
+  protected static boolean gfLoaded = false;
   protected ByteBuffer[] inputBuffers;
   protected int mCodecType = DEC_CODEC;
   protected MediaFormat mFormat;
   protected MediaCodec mMediaCodec;
   protected MediaFormat mOutputFormat;
   protected ByteBuffer[] outputBuffers;
-  
-  static
-  {
-    DEC_CODEC = 0;
-    AVC_CODEC_MIME = "video/avc";
-    ForceIFrame = "request-sync";
-    gfLoaded = false;
-    TAG = "AndroidCodec";
-    TIMEOUT_US = 33000;
-  }
   
   public AndroidCodec()
   {
@@ -59,41 +49,41 @@ public class AndroidCodec
   
   public static int checkSupportMediaCodecFeature()
   {
-    int i = 1;
-    if (Build.VERSION.SDK_INT < 16) {}
-    while (!gfLoaded) {
+    if (Build.VERSION.SDK_INT < 16) {
       return 0;
     }
-    int j;
-    if (DeviceCheck.isAVCDecWhitelistDevices())
+    if (!gfLoaded) {
+      return 0;
+    }
+    boolean bool = DeviceCheck.isAVCDecWhitelistDevices();
+    int i = 1;
+    CodecConfigParser localCodecConfigParser;
+    String str1;
+    String str2;
+    StringBuilder localStringBuilder;
+    if (bool)
     {
       if (QLog.isColorLevel()) {
         QLog.d(TAG, 0, "checkSupportMediaCodecFeature device is in decoder white list.");
       }
-      if (!DeviceCheck.isAVCDecSupportColorformats()) {
-        break label165;
-      }
-      if (!DeviceCheck.isAVCEncWhitelistDevices()) {
-        break label170;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d(TAG, 0, "checkSupportMediaCodecFeature device is in encoder white list.");
-      }
-      j = i;
-      if (DeviceCheck.isAVCEncSupportColorformats()) {
-        j = i + 2;
+      if (DeviceCheck.isAVCDecSupportColorformats()) {
+        break label156;
       }
     }
-    for (;;)
+    else
     {
-      return j;
-      CodecConfigParser localCodecConfigParser = new CodecConfigParser();
-      String str = localCodecConfigParser.getConfig();
-      if (!TextUtils.isEmpty(str))
+      localCodecConfigParser = new CodecConfigParser();
+      str1 = localCodecConfigParser.getConfig();
+      if (!TextUtils.isEmpty(str1))
       {
-        localCodecConfigParser.setConfig(str);
-        if (QLog.isColorLevel()) {
-          QLog.d(TAG, 0, "checkSupportMediaCodecFeature decoder sharpConfigPayload:\n" + str);
+        localCodecConfigParser.setConfig(str1);
+        if (QLog.isColorLevel())
+        {
+          str2 = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("checkSupportMediaCodecFeature decoder sharpConfigPayload:\n");
+          localStringBuilder.append(str1);
+          QLog.d(str2, 0, localStringBuilder.toString());
         }
         if (localCodecConfigParser.getAVCDecoderAbility())
         {
@@ -101,36 +91,48 @@ public class AndroidCodec
             QLog.d(TAG, 0, "checkSupportMediaCodecFeature hwcodec avc decoder enabled.");
           }
           if (DeviceCheck.isAVCDecSupportColorformats()) {
-            break;
-          }
-        }
-      }
-      label165:
-      i = 0;
-      break;
-      label170:
-      localCodecConfigParser = new CodecConfigParser();
-      str = localCodecConfigParser.getConfig();
-      j = i;
-      if (!TextUtils.isEmpty(str))
-      {
-        localCodecConfigParser.setConfig(str);
-        if (QLog.isColorLevel()) {
-          QLog.d(TAG, 0, "checkSupportMediaCodecFeature encoder sharpConfigPayload:\n" + str);
-        }
-        j = i;
-        if (localCodecConfigParser.getAVCEncoderAbility())
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d(TAG, 0, "checkSupportMediaCodecFeature hwcodec avc encoder enabled.");
-          }
-          j = i;
-          if (DeviceCheck.isAVCEncSupportColorformats()) {
-            j = i + 2;
+            break label156;
           }
         }
       }
     }
+    i = 0;
+    label156:
+    if (DeviceCheck.isAVCEncWhitelistDevices())
+    {
+      if (QLog.isColorLevel()) {
+        QLog.d(TAG, 0, "checkSupportMediaCodecFeature device is in encoder white list.");
+      }
+      if (!DeviceCheck.isAVCEncSupportColorformats()) {}
+    }
+    else
+    {
+      do
+      {
+        return i + 2;
+        localCodecConfigParser = new CodecConfigParser();
+        str1 = localCodecConfigParser.getConfig();
+        if (TextUtils.isEmpty(str1)) {
+          break;
+        }
+        localCodecConfigParser.setConfig(str1);
+        if (QLog.isColorLevel())
+        {
+          str2 = TAG;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("checkSupportMediaCodecFeature encoder sharpConfigPayload:\n");
+          localStringBuilder.append(str1);
+          QLog.d(str2, 0, localStringBuilder.toString());
+        }
+        if (!localCodecConfigParser.getAVCEncoderAbility()) {
+          break;
+        }
+        if (QLog.isColorLevel()) {
+          QLog.d(TAG, 0, "checkSupportMediaCodecFeature hwcodec avc encoder enabled.");
+        }
+      } while (DeviceCheck.isAVCEncSupportColorformats());
+    }
+    return i;
   }
   
   public static MediaCodecInfo.CodecCapabilities getCodecCapabilities(MediaCodecInfo paramMediaCodecInfo, String paramString)
@@ -167,27 +169,22 @@ public class AndroidCodec
     ArrayList localArrayList = new ArrayList();
     int k = MediaCodecList.getCodecCount();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if (localMediaCodecInfo.isEncoder()) {}
-      for (;;)
+      if ((!localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
       {
-        i += 1;
-        break;
-        if ((!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
+        String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+        int j = 0;
+        while (j < arrayOfString.length)
         {
-          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-          int j = 0;
-          while (j < arrayOfString.length)
-          {
-            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-              localArrayList.add(localMediaCodecInfo);
-            }
-            j += 1;
+          if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+            localArrayList.add(localMediaCodecInfo);
           }
+          j += 1;
         }
       }
+      i += 1;
     }
     return localArrayList;
   }
@@ -197,43 +194,37 @@ public class AndroidCodec
     ArrayList localArrayList = new ArrayList();
     int k = MediaCodecList.getCodecCount();
     int i = 0;
-    if (i < k)
+    while (i < k)
     {
       MediaCodecInfo localMediaCodecInfo = MediaCodecList.getCodecInfoAt(i);
-      if ((localMediaCodecInfo == null) || (!localMediaCodecInfo.isEncoder())) {}
-      for (;;)
+      if ((localMediaCodecInfo != null) && (localMediaCodecInfo.isEncoder()) && (!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
       {
-        i += 1;
-        break;
-        if ((!localMediaCodecInfo.getName().contains(".sw.")) && (!localMediaCodecInfo.getName().contains(".SW.")) && (!localMediaCodecInfo.getName().contains("google")) && (!localMediaCodecInfo.getName().contains("Google")) && (!localMediaCodecInfo.getName().contains("GOOGLE")))
+        String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
+        int j = 0;
+        while (j < arrayOfString.length)
         {
-          String[] arrayOfString = localMediaCodecInfo.getSupportedTypes();
-          int j = 0;
-          while (j < arrayOfString.length)
-          {
-            if (arrayOfString[j].equalsIgnoreCase(paramString)) {
-              localArrayList.add(localMediaCodecInfo);
-            }
-            j += 1;
+          if (arrayOfString[j].equalsIgnoreCase(paramString)) {
+            localArrayList.add(localMediaCodecInfo);
           }
+          j += 1;
         }
       }
+      i += 1;
     }
     return localArrayList;
   }
   
   public static void loadCodecLibrarys()
   {
-    if (!gfLoaded) {
-      if ((!SoUtil.loadSo("stlport_shared")) || (!SoUtil.loadSo("hwcodec"))) {
-        break label29;
-      }
-    }
-    label29:
-    for (boolean bool = true;; bool = false)
+    if (!gfLoaded)
     {
+      boolean bool;
+      if ((SoUtil.loadSo("stlport_shared")) && (SoUtil.loadSo("hwcodec"))) {
+        bool = true;
+      } else {
+        bool = false;
+      }
       gfLoaded = bool;
-      return;
     }
   }
   
@@ -254,175 +245,227 @@ public class AndroidCodec
   
   public static void setDeviceInfos(Context paramContext)
   {
-    int k = 1;
-    if ((SoUtil.customLibPath != null) && (new File(SoUtil.customLibPath + "/libhwcodec.so").exists())) {}
-    for (int j = 1;; j = 0)
+    Object localObject;
+    if (SoUtil.customLibPath != null)
     {
-      int i = j;
-      if (j == 0)
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(SoUtil.customLibPath);
+      ((StringBuilder)localObject).append("/libhwcodec.so");
+      if (new File(((StringBuilder)localObject).toString()).exists())
       {
-        i = j;
-        if (new File(paramContext.getApplicationInfo().nativeLibraryDir + "/libhwcodec.so").exists()) {
-          i = 1;
-        }
+        j = 1;
+        break label53;
       }
+    }
+    int j = 0;
+    label53:
+    int i = j;
+    if (j == 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getApplicationInfo().nativeLibraryDir);
+      ((StringBuilder)localObject).append("/libhwcodec.so");
+      i = j;
+      if (new File(((StringBuilder)localObject).toString()).exists()) {
+        i = 1;
+      }
+    }
+    j = i;
+    if (i == 0)
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramContext.getFilesDir().getParent());
+      ((StringBuilder)localObject).append("/txav/libhwcodec.so");
       j = i;
-      if (i == 0)
-      {
-        j = i;
-        if (new File(paramContext.getFilesDir().getParent() + "/txav/libhwcodec.so").exists()) {
-          j = 1;
-        }
+      if (new File(((StringBuilder)localObject).toString()).exists()) {
+        j = 1;
       }
-      if ((j == 0) && (new File("/system/lib/libhwcodec.so").exists())) {}
-      for (i = k;; i = j)
+    }
+    i = j;
+    if (j == 0)
+    {
+      i = j;
+      if (new File("/system/lib/libhwcodec.so").exists()) {
+        i = 1;
+      }
+    }
+    if (i == 0)
+    {
+      QLog.d(TAG, 0, "setDeviceInfos  ! soExist");
+      return;
+    }
+    if (!gfLoaded)
+    {
+      loadCodecLibrarys();
+      if (gfLoaded)
       {
-        if (i == 0) {
-          QLog.d(TAG, 0, "setDeviceInfos  ! soExist");
-        }
-        do
-        {
-          do
-          {
-            return;
-          } while (gfLoaded);
-          loadCodecLibrarys();
-        } while (!gfLoaded);
-        String str = "PRODUCT=" + Build.PRODUCT.toLowerCase() + ";";
-        str = str + "MODEL=" + Build.MODEL.toLowerCase() + ";";
-        str = str + "SDK=" + Build.VERSION.SDK_INT + ";";
-        str = str + "FINGERPRINT=" + Build.FINGERPRINT.toLowerCase() + ";";
-        str = str + "MANUFACTURER=" + Build.MANUFACTURER.toLowerCase() + ";";
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("PRODUCT=");
+        ((StringBuilder)localObject).append(Build.PRODUCT.toLowerCase());
+        ((StringBuilder)localObject).append(";");
+        localObject = ((StringBuilder)localObject).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("MODEL=");
+        localStringBuilder.append(Build.MODEL.toLowerCase());
+        localStringBuilder.append(";");
+        localObject = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("SDK=");
+        localStringBuilder.append(Build.VERSION.SDK_INT);
+        localStringBuilder.append(";");
+        localObject = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("FINGERPRINT=");
+        localStringBuilder.append(Build.FINGERPRINT.toLowerCase());
+        localStringBuilder.append(";");
+        localObject = localStringBuilder.toString();
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("MANUFACTURER=");
+        localStringBuilder.append(Build.MANUFACTURER.toLowerCase());
+        localStringBuilder.append(";");
+        localObject = localStringBuilder.toString();
         paramContext = paramContext.getApplicationInfo();
-        str = str + "DATADIR=" + paramContext.dataDir + ";";
-        if (Build.VERSION.SDK_INT >= 9) {}
-        for (paramContext = str + "LIBDIR=" + paramContext.nativeLibraryDir + ";";; paramContext = str + "LIBDIR=" + paramContext.dataDir + "/lib;")
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append((String)localObject);
+        localStringBuilder.append("DATADIR=");
+        localStringBuilder.append(paramContext.dataDir);
+        localStringBuilder.append(";");
+        localObject = localStringBuilder.toString();
+        if (Build.VERSION.SDK_INT >= 9)
         {
-          NativeCodec.set_device_infos(paramContext);
-          return;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("LIBDIR=");
+          localStringBuilder.append(paramContext.nativeLibraryDir);
+          localStringBuilder.append(";");
+          paramContext = localStringBuilder.toString();
         }
+        else
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append((String)localObject);
+          localStringBuilder.append("LIBDIR=");
+          localStringBuilder.append(paramContext.dataDir);
+          localStringBuilder.append("/lib;");
+          paramContext = localStringBuilder.toString();
+        }
+        NativeCodec.set_device_infos(paramContext);
       }
     }
   }
   
   public AndroidCodec.BufferData dequeueOutputBuffer()
   {
-    for (;;)
+    try
     {
-      AndroidCodec.BufferData localBufferData;
-      int i;
-      try
+      Object localObject1 = this.mMediaCodec;
+      if (localObject1 == null) {
+        return null;
+      }
+      localObject1 = new AndroidCodec.BufferData(this);
+      int i = this.mMediaCodec.dequeueOutputBuffer(((AndroidCodec.BufferData)localObject1).info, TIMEOUT_US);
+      if (i != -3)
       {
-        Object localObject1 = this.mMediaCodec;
-        if (localObject1 == null)
+        if (i != -2)
         {
-          localObject1 = null;
-          return localObject1;
-        }
-        localBufferData = new AndroidCodec.BufferData(this);
-        i = this.mMediaCodec.dequeueOutputBuffer(localBufferData.info, TIMEOUT_US);
-        switch (i)
-        {
-        case -3: 
-          if (i < 0) {
-            break label371;
-          }
-          if (Build.VERSION.SDK_INT > 20) {
-            break label322;
-          }
-          localBufferData.buffer = this.outputBuffers[i];
-          localBufferData.index = i;
-          localBufferData.format = this.mOutputFormat;
-          localObject1 = localBufferData;
-          continue;
-          if (!QLog.isColorLevel()) {
-            break label129;
-          }
-        }
-      }
-      finally {}
-      QLog.e(TAG, 0, "INFO_OUTPUT_BUFFERS_CHANGED");
-      label129:
-      this.outputBuffers = this.mMediaCodec.getOutputBuffers();
-      localBufferData.index = -3;
-      Object localObject3 = localBufferData;
-      continue;
-      if (QLog.isColorLevel()) {
-        QLog.e(TAG, 0, "INFO_OUTPUT_FORMAT_CHANGED");
-      }
-      localBufferData.index = -2;
-      this.mOutputFormat = this.mMediaCodec.getOutputFormat();
-      localObject3 = localBufferData;
-      if (this.mOutputFormat != null) {
-        if (this.mCodecType == DEC_CODEC)
-        {
-          i = this.mOutputFormat.getInteger("color-format");
-          localObject3 = localBufferData;
-          if (QLog.isColorLevel())
+          if (i != -1)
           {
-            QLog.e(TAG, 0, "New color format: " + i + "[0x" + Integer.toHexString(i) + "]");
-            localObject3 = localBufferData;
+            if (i >= 0)
+            {
+              if (Build.VERSION.SDK_INT <= 20)
+              {
+                ((AndroidCodec.BufferData)localObject1).buffer = this.outputBuffers[i];
+                ((AndroidCodec.BufferData)localObject1).index = i;
+                ((AndroidCodec.BufferData)localObject1).format = this.mOutputFormat;
+              }
+              else
+              {
+                ((AndroidCodec.BufferData)localObject1).index = i;
+                try
+                {
+                  ((AndroidCodec.BufferData)localObject1).format = this.mMediaCodec.getOutputFormat(i);
+                  ((AndroidCodec.BufferData)localObject1).buffer = this.mMediaCodec.getOutputBuffer(i);
+                }
+                catch (IllegalStateException localIllegalStateException)
+                {
+                  localIllegalStateException.printStackTrace();
+                  ((AndroidCodec.BufferData)localObject1).success = false;
+                }
+              }
+            }
+            else
+            {
+              ((AndroidCodec.BufferData)localObject1).index = i;
+              ((AndroidCodec.BufferData)localObject1).success = false;
+            }
+          }
+          else
+          {
+            if (QLog.isColorLevel()) {
+              QLog.e(TAG, 0, "dequeueOutputBuffer timed out!");
+            }
+            ((AndroidCodec.BufferData)localObject1).index = -1;
           }
         }
         else
         {
-          localObject3 = localBufferData;
-          if (QLog.isColorLevel())
-          {
-            QLog.e(TAG, 0, "EncCodec, INFO_OUTPUT_FORMAT_CHANGED");
-            localObject3 = localBufferData;
-            continue;
-            if (QLog.isColorLevel()) {
-              QLog.e(TAG, 0, "dequeueOutputBuffer timed out!");
-            }
-            localBufferData.index = -1;
-            localObject3 = localBufferData;
-            continue;
-            label322:
-            localBufferData.index = i;
-            try
+          if (QLog.isColorLevel()) {
+            QLog.e(TAG, 0, "INFO_OUTPUT_FORMAT_CHANGED");
+          }
+          ((AndroidCodec.BufferData)localObject1).index = -2;
+          this.mOutputFormat = this.mMediaCodec.getOutputFormat();
+          if (this.mOutputFormat != null) {
+            if (this.mCodecType == DEC_CODEC)
             {
-              localBufferData.format = this.mMediaCodec.getOutputFormat(i);
-              localBufferData.buffer = this.mMediaCodec.getOutputBuffer(i);
-              localObject3 = localBufferData;
+              i = this.mOutputFormat.getInteger("color-format");
+              if (QLog.isColorLevel())
+              {
+                String str = TAG;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("New color format: ");
+                localStringBuilder.append(i);
+                localStringBuilder.append("[0x");
+                localStringBuilder.append(Integer.toHexString(i));
+                localStringBuilder.append("]");
+                QLog.e(str, 0, localStringBuilder.toString());
+              }
             }
-            catch (IllegalStateException localIllegalStateException)
+            else if (QLog.isColorLevel())
             {
-              localIllegalStateException.printStackTrace();
-              localBufferData.success = false;
-              localObject4 = localBufferData;
+              QLog.e(TAG, 0, "EncCodec, INFO_OUTPUT_FORMAT_CHANGED");
             }
-            continue;
-            label371:
-            localBufferData.index = i;
-            localBufferData.success = false;
-            Object localObject4 = localBufferData;
           }
         }
       }
+      else
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(TAG, 0, "INFO_OUTPUT_BUFFERS_CHANGED");
+        }
+        this.outputBuffers = this.mMediaCodec.getOutputBuffers();
+        ((AndroidCodec.BufferData)localObject1).index = -3;
+      }
+      return localObject1;
     }
+    finally {}
   }
   
   public AndroidCodec.BufferData dequeueOutputBuffer_First()
   {
-    Object localObject3 = null;
-    for (;;)
+    try
     {
-      int i;
-      try
+      Object localObject1 = this.mMediaCodec;
+      if (localObject1 == null) {
+        return null;
+      }
+      while (this.mMediaCodec != null)
       {
-        Object localObject1 = this.mMediaCodec;
-        if (localObject1 == null)
-        {
-          localObject1 = localObject3;
-          return localObject1;
-        }
-        localObject1 = localObject3;
-        if (this.mMediaCodec == null) {
-          continue;
-        }
         localObject1 = new AndroidCodec.BufferData(this);
-        i = this.mMediaCodec.dequeueOutputBuffer(((AndroidCodec.BufferData)localObject1).info, TIMEOUTDECFIST_US);
+        int i = this.mMediaCodec.dequeueOutputBuffer(((AndroidCodec.BufferData)localObject1).info, TIMEOUTDECFIST_US);
         if (i == -3)
         {
           if (QLog.isColorLevel()) {
@@ -430,168 +473,129 @@ public class AndroidCodec
           }
           this.outputBuffers = this.mMediaCodec.getOutputBuffers();
           ((AndroidCodec.BufferData)localObject1).index = -3;
-          continue;
         }
-        if (i != -2) {
-          break label241;
-        }
-      }
-      finally {}
-      if (QLog.isColorLevel()) {
-        QLog.e(TAG, 0, "dequeueOutputBuffer_First INFO_OUTPUT_FORMAT_CHANGED");
-      }
-      localObject2.index = -2;
-      this.mOutputFormat = this.mMediaCodec.getOutputFormat();
-      if (this.mOutputFormat != null) {
-        if (this.mCodecType == DEC_CODEC)
+        else if (i == -2)
         {
-          i = this.mOutputFormat.getInteger("color-format");
           if (QLog.isColorLevel()) {
-            QLog.e(TAG, 0, "dequeueOutputBuffer_First New color format: " + i + "[0x" + Integer.toHexString(i) + "]");
+            QLog.e(TAG, 0, "dequeueOutputBuffer_First INFO_OUTPUT_FORMAT_CHANGED");
+          }
+          ((AndroidCodec.BufferData)localObject1).index = -2;
+          this.mOutputFormat = this.mMediaCodec.getOutputFormat();
+          if (this.mOutputFormat != null) {
+            if (this.mCodecType == DEC_CODEC)
+            {
+              i = this.mOutputFormat.getInteger("color-format");
+              if (QLog.isColorLevel())
+              {
+                localObject1 = TAG;
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("dequeueOutputBuffer_First New color format: ");
+                localStringBuilder.append(i);
+                localStringBuilder.append("[0x");
+                localStringBuilder.append(Integer.toHexString(i));
+                localStringBuilder.append("]");
+                QLog.e((String)localObject1, 0, localStringBuilder.toString());
+              }
+            }
+            else if (QLog.isColorLevel())
+            {
+              QLog.e(TAG, 0, "EncCodec, dequeueOutputBuffer_First INFO_OUTPUT_FORMAT_CHANGED");
+            }
           }
         }
-        else if (QLog.isColorLevel())
+        else
         {
-          QLog.e(TAG, 0, "EncCodec, dequeueOutputBuffer_First INFO_OUTPUT_FORMAT_CHANGED");
-          continue;
-          label241:
           if (i == -1)
           {
             if (QLog.isColorLevel()) {
               QLog.e(TAG, 0, "dequeueOutputBuffer_First dequeueOutputBuffer timed out!");
             }
-            localObject2.index = -1;
+            ((AndroidCodec.BufferData)localObject1).index = -1;
+            return localObject1;
           }
-          else if (i >= 0)
+          if (i >= 0)
           {
             if (Build.VERSION.SDK_INT <= 20)
             {
-              localObject2.buffer = this.outputBuffers[i];
-              localObject2.index = i;
-              localObject2.format = this.mOutputFormat;
+              ((AndroidCodec.BufferData)localObject1).buffer = this.outputBuffers[i];
+              ((AndroidCodec.BufferData)localObject1).index = i;
+              ((AndroidCodec.BufferData)localObject1).format = this.mOutputFormat;
             }
             else
             {
-              localObject2.index = i;
+              ((AndroidCodec.BufferData)localObject1).index = i;
               try
               {
-                localObject2.format = this.mMediaCodec.getOutputFormat(i);
-                localObject2.buffer = this.mMediaCodec.getOutputBuffer(i);
+                ((AndroidCodec.BufferData)localObject1).format = this.mMediaCodec.getOutputFormat(i);
+                ((AndroidCodec.BufferData)localObject1).buffer = this.mMediaCodec.getOutputBuffer(i);
               }
               catch (IllegalStateException localIllegalStateException)
               {
                 localIllegalStateException.printStackTrace();
-                localObject2.success = false;
+                ((AndroidCodec.BufferData)localObject1).success = false;
               }
             }
           }
           else
           {
-            localObject2.index = i;
-            localObject2.success = false;
+            ((AndroidCodec.BufferData)localObject1).index = i;
+            ((AndroidCodec.BufferData)localObject1).success = false;
           }
+          return localObject1;
         }
       }
+      return null;
+    }
+    finally {}
+    for (;;)
+    {
+      throw localObject2;
     }
   }
   
   public void flush()
   {
-    if (this.mMediaCodec != null) {
-      this.mMediaCodec.flush();
+    MediaCodec localMediaCodec = this.mMediaCodec;
+    if (localMediaCodec != null) {
+      localMediaCodec.flush();
     }
   }
   
-  /* Error */
   public AndroidCodec.BufferData getInputBuffer()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 230	com/tencent/TMG/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
-    //   4: ifnonnull +5 -> 9
-    //   7: aconst_null
-    //   8: areturn
-    //   9: new 330	com/tencent/TMG/mediacodec/AndroidCodec$BufferData
-    //   12: dup
-    //   13: aload_0
-    //   14: invokespecial 333	com/tencent/TMG/mediacodec/AndroidCodec$BufferData:<init>	(Lcom/tencent/TMG/mediacodec/AndroidCodec;)V
-    //   17: astore_2
-    //   18: aload_0
-    //   19: getfield 230	com/tencent/TMG/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
-    //   22: getstatic 57	com/tencent/TMG/mediacodec/AndroidCodec:TIMEOUT_US	I
-    //   25: i2l
-    //   26: invokevirtual 420	android/media/MediaCodec:dequeueInputBuffer	(J)I
-    //   29: istore_1
-    //   30: iload_1
-    //   31: iflt -24 -> 7
-    //   34: getstatic 75	android/os/Build$VERSION:SDK_INT	I
-    //   37: bipush 20
-    //   39: if_icmpgt +29 -> 68
-    //   42: aload_0
-    //   43: monitorenter
-    //   44: aload_2
-    //   45: iload_1
-    //   46: putfield 349	com/tencent/TMG/mediacodec/AndroidCodec$BufferData:index	I
-    //   49: aload_2
-    //   50: aload_0
-    //   51: getfield 422	com/tencent/TMG/mediacodec/AndroidCodec:inputBuffers	[Ljava/nio/ByteBuffer;
-    //   54: iload_1
-    //   55: aaload
-    //   56: putfield 346	com/tencent/TMG/mediacodec/AndroidCodec$BufferData:buffer	Ljava/nio/ByteBuffer;
-    //   59: aload_0
-    //   60: monitorexit
-    //   61: aload_2
-    //   62: areturn
-    //   63: astore_2
-    //   64: aload_0
-    //   65: monitorexit
-    //   66: aload_2
-    //   67: athrow
-    //   68: aload_0
-    //   69: monitorenter
-    //   70: aload_2
-    //   71: iload_1
-    //   72: putfield 349	com/tencent/TMG/mediacodec/AndroidCodec$BufferData:index	I
-    //   75: aload_2
-    //   76: aload_0
-    //   77: getfield 230	com/tencent/TMG/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
-    //   80: iload_1
-    //   81: invokevirtual 424	android/media/MediaCodec:getInputBuffer	(I)Ljava/nio/ByteBuffer;
-    //   84: putfield 346	com/tencent/TMG/mediacodec/AndroidCodec$BufferData:buffer	Ljava/nio/ByteBuffer;
-    //   87: aload_0
-    //   88: monitorexit
-    //   89: aload_2
-    //   90: areturn
-    //   91: astore_3
-    //   92: aload_3
-    //   93: invokevirtual 398	java/lang/IllegalStateException:printStackTrace	()V
-    //   96: aload_2
-    //   97: iconst_0
-    //   98: putfield 401	com/tencent/TMG/mediacodec/AndroidCodec$BufferData:success	Z
-    //   101: goto -14 -> 87
-    //   104: astore_2
-    //   105: aload_0
-    //   106: monitorexit
-    //   107: aload_2
-    //   108: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	109	0	this	AndroidCodec
-    //   29	52	1	i	int
-    //   17	45	2	localBufferData1	AndroidCodec.BufferData
-    //   63	34	2	localBufferData2	AndroidCodec.BufferData
-    //   104	4	2	localObject	Object
-    //   91	2	3	localIllegalStateException	IllegalStateException
-    // Exception table:
-    //   from	to	target	type
-    //   44	61	63	finally
-    //   64	66	63	finally
-    //   75	87	91	java/lang/IllegalStateException
-    //   70	75	104	finally
-    //   75	87	104	finally
-    //   87	89	104	finally
-    //   92	101	104	finally
-    //   105	107	104	finally
+    if (this.mMediaCodec == null) {
+      return null;
+    }
+    AndroidCodec.BufferData localBufferData1 = new AndroidCodec.BufferData(this);
+    int i = this.mMediaCodec.dequeueInputBuffer(TIMEOUT_US);
+    if (i >= 0)
+    {
+      if (Build.VERSION.SDK_INT <= 20) {
+        try
+        {
+          localBufferData1.index = i;
+          localBufferData1.buffer = this.inputBuffers[i];
+          return localBufferData1;
+        }
+        finally {}
+      }
+      try
+      {
+        localBufferData2.index = i;
+        try
+        {
+          localBufferData2.buffer = this.mMediaCodec.getInputBuffer(i);
+        }
+        catch (IllegalStateException localIllegalStateException)
+        {
+          localIllegalStateException.printStackTrace();
+          localBufferData2.success = false;
+        }
+        return localBufferData2;
+      }
+      finally {}
+    }
+    return null;
   }
   
   public ByteBuffer getInputBuffer(int paramInt)
@@ -647,234 +651,204 @@ public class AndroidCodec
   
   public boolean init(MediaFormat paramMediaFormat, int paramInt, IMediaCodecCallback paramIMediaCodecCallback)
   {
-    boolean bool = false;
-    if (QLog.isColorLevel()) {
-      QLog.e(TAG, 0, "init codecType: " + paramInt);
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init codecType: ");
+      localStringBuilder.append(paramInt);
+      QLog.e(str, 0, localStringBuilder.toString());
     }
     this.mFormat = paramMediaFormat;
-    if (paramInt == DEC_CODEC) {}
+    if (paramInt == DEC_CODEC) {
+      try
+      {
+        this.mMediaCodec = MediaCodec.createDecoderByType(this.mFormat.getString("mime"));
+      }
+      catch (Exception paramMediaFormat)
+      {
+        paramMediaFormat.printStackTrace();
+        if (QLog.isColorLevel()) {
+          QLog.e(TAG, 0, "init exception", paramMediaFormat);
+        }
+        return false;
+      }
+    }
     for (;;)
     {
       try
       {
-        this.mMediaCodec = MediaCodec.createDecoderByType(this.mFormat.getString("mime"));
-        this.mCodecType = paramInt;
-      }
-      catch (Exception paramMediaFormat)
-      {
-        paramMediaFormat.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e(TAG, 0, "init exception", paramMediaFormat);
-        return false;
-      }
-      try
-      {
-        if (this.mMediaCodec != null)
-        {
-          if (paramInt != ENC_CODEC) {
-            break label220;
-          }
-          paramInt = 1;
-          if ((paramIMediaCodecCallback != null) && (DeviceCheck.isSupportAsyncAPI())) {
-            setCallback(paramIMediaCodecCallback);
-          }
-          this.mMediaCodec.configure(this.mFormat, null, null, paramInt);
-        }
-        if (this.mMediaCodec != null) {
-          bool = true;
-        }
-      }
-      catch (Exception paramMediaFormat)
-      {
-        paramMediaFormat.printStackTrace();
-        if (!QLog.isColorLevel()) {
-          continue;
-        }
-        QLog.e(TAG, 0, "init exception", paramMediaFormat);
-        return false;
-      }
-      return bool;
-      try
-      {
         this.mMediaCodec = MediaCodec.createEncoderByType(this.mFormat.getString("mime"));
+        this.mCodecType = paramInt;
+        try
+        {
+          if (this.mMediaCodec != null)
+          {
+            if (paramInt == ENC_CODEC)
+            {
+              paramInt = 1;
+              if ((paramIMediaCodecCallback != null) && (DeviceCheck.isSupportAsyncAPI())) {
+                setCallback(paramIMediaCodecCallback);
+              }
+              this.mMediaCodec.configure(this.mFormat, null, null, paramInt);
+            }
+          }
+          else {
+            return this.mMediaCodec != null;
+          }
+        }
+        catch (Exception paramMediaFormat)
+        {
+          paramMediaFormat.printStackTrace();
+          if (QLog.isColorLevel()) {
+            QLog.e(TAG, 0, "init exception", paramMediaFormat);
+          }
+          return false;
+        }
+        paramInt = 0;
       }
       catch (Exception paramMediaFormat)
       {
         paramMediaFormat.printStackTrace();
-      }
-      if (QLog.isColorLevel())
-      {
-        QLog.e(TAG, 0, "init exception", paramMediaFormat);
+        if (QLog.isColorLevel()) {
+          QLog.e(TAG, 0, "init exception", paramMediaFormat);
+        }
         return false;
-        label220:
-        paramInt = 0;
       }
     }
   }
   
   public boolean init(MediaFormat paramMediaFormat, String paramString, Surface paramSurface, IMediaCodecCallback paramIMediaCodecCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(TAG, 0, "init name: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init name: ");
+      localStringBuilder.append(paramString);
+      QLog.e(str, 0, localStringBuilder.toString());
     }
     this.mFormat = paramMediaFormat;
-    for (;;)
+    try
     {
+      this.mMediaCodec = MediaCodec.createByCodecName(paramString);
+      paramMediaFormat = getCodecInfo(paramString);
+      int i;
+      if ((paramMediaFormat != null) && (paramMediaFormat.isEncoder()))
+      {
+        this.mCodecType = ENC_CODEC;
+        i = 1;
+      }
+      else
+      {
+        i = 0;
+      }
       try
       {
-        this.mMediaCodec = MediaCodec.createByCodecName(paramString);
-        paramMediaFormat = getCodecInfo(paramString);
-        if ((paramMediaFormat != null) && (paramMediaFormat.isEncoder()))
+        if (this.mMediaCodec != null)
         {
-          this.mCodecType = ENC_CODEC;
-          i = 1;
-          return false;
+          if ((paramIMediaCodecCallback != null) && (DeviceCheck.isSupportAsyncAPI())) {
+            setCallback(paramIMediaCodecCallback);
+          }
+          this.mMediaCodec.configure(this.mFormat, paramSurface, null, i);
         }
+        return this.mMediaCodec != null;
       }
       catch (Exception paramMediaFormat)
       {
-        try
-        {
-          if (this.mMediaCodec != null)
-          {
-            if ((paramIMediaCodecCallback != null) && (DeviceCheck.isSupportAsyncAPI())) {
-              setCallback(paramIMediaCodecCallback);
-            }
-            this.mMediaCodec.configure(this.mFormat, paramSurface, null, i);
-          }
-          if (this.mMediaCodec == null) {
-            break label168;
-          }
-          return true;
-        }
-        catch (Exception paramMediaFormat)
-        {
-          paramMediaFormat.printStackTrace();
-          if (!QLog.isColorLevel()) {
-            break label166;
-          }
-          QLog.e(TAG, 0, "init exception", paramMediaFormat);
-          return false;
-        }
-        paramMediaFormat = paramMediaFormat;
         paramMediaFormat.printStackTrace();
         if (QLog.isColorLevel()) {
           QLog.e(TAG, 0, "init exception", paramMediaFormat);
         }
         return false;
       }
-      label166:
-      label168:
-      int i = 0;
+      return false;
+    }
+    catch (Exception paramMediaFormat)
+    {
+      paramMediaFormat.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e(TAG, 0, "init exception", paramMediaFormat);
+      }
     }
   }
   
   public boolean init(MediaFormat paramMediaFormat, String paramString, IMediaCodecCallback paramIMediaCodecCallback)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e(TAG, 0, "init name: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      String str = TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init name: ");
+      localStringBuilder.append(paramString);
+      QLog.e(str, 0, localStringBuilder.toString());
     }
     this.mFormat = paramMediaFormat;
     paramMediaFormat = getCodecInfo(paramString);
-    if ((paramMediaFormat != null) && (paramMediaFormat.isEncoder())) {
+    int i;
+    if ((paramMediaFormat != null) && (paramMediaFormat.isEncoder()))
+    {
       this.mCodecType = ENC_CODEC;
+      i = 1;
     }
-    for (int i = 1;; i = 0) {
+    else
+    {
+      i = 0;
+    }
+    try
+    {
+      this.mMediaCodec = MediaCodec.createByCodecName(paramString);
       try
       {
-        this.mMediaCodec = MediaCodec.createByCodecName(paramString);
-        return false;
+        if (this.mMediaCodec != null)
+        {
+          if ((paramIMediaCodecCallback != null) && (DeviceCheck.isSupportAsyncAPI())) {
+            setCallback(paramIMediaCodecCallback);
+          }
+          this.mMediaCodec.configure(this.mFormat, null, null, i);
+        }
+        return this.mMediaCodec != null;
       }
       catch (Exception paramMediaFormat)
       {
-        try
-        {
-          if (this.mMediaCodec != null)
-          {
-            if ((paramIMediaCodecCallback != null) && (DeviceCheck.isSupportAsyncAPI())) {
-              setCallback(paramIMediaCodecCallback);
-            }
-            this.mMediaCodec.configure(this.mFormat, null, null, i);
-          }
-          if (this.mMediaCodec == null) {
-            continue;
-          }
-          return true;
-        }
-        catch (Exception paramMediaFormat)
-        {
-          paramMediaFormat.printStackTrace();
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.e(TAG, 0, "init exception", paramMediaFormat);
-          return false;
-        }
-        paramMediaFormat = paramMediaFormat;
         paramMediaFormat.printStackTrace();
         if (QLog.isColorLevel()) {
           QLog.e(TAG, 0, "init exception", paramMediaFormat);
         }
         return false;
       }
+      return false;
+    }
+    catch (Exception paramMediaFormat)
+    {
+      paramMediaFormat.printStackTrace();
+      if (QLog.isColorLevel()) {
+        QLog.e(TAG, 0, "init exception", paramMediaFormat);
+      }
     }
   }
   
-  /* Error */
   public void queueInputBuffer(int paramInt1, int paramInt2, long paramLong, int paramInt3)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 230	com/tencent/TMG/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
-    //   6: astore 6
-    //   8: aload 6
-    //   10: ifnonnull +6 -> 16
-    //   13: aload_0
-    //   14: monitorexit
-    //   15: return
-    //   16: aload_0
-    //   17: getfield 230	com/tencent/TMG/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
-    //   20: iload_1
-    //   21: iconst_0
-    //   22: iload_2
-    //   23: lload_3
-    //   24: iload 5
-    //   26: invokevirtual 477	android/media/MediaCodec:queueInputBuffer	(IIIJI)V
-    //   29: goto -16 -> 13
-    //   32: astore 6
-    //   34: invokestatic 86	com/tencent/TMG/utils/QLog:isColorLevel	()Z
-    //   37: ifeq -24 -> 13
-    //   40: getstatic 54	com/tencent/TMG/mediacodec/AndroidCodec:TAG	Ljava/lang/String;
-    //   43: iconst_0
-    //   44: ldc_w 479
-    //   47: aload 6
-    //   49: invokestatic 429	com/tencent/TMG/utils/QLog:e	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Exception;)V
-    //   52: goto -39 -> 13
-    //   55: astore 6
-    //   57: aload_0
-    //   58: monitorexit
-    //   59: aload 6
-    //   61: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	62	0	this	AndroidCodec
-    //   0	62	1	paramInt1	int
-    //   0	62	2	paramInt2	int
-    //   0	62	3	paramLong	long
-    //   0	62	5	paramInt3	int
-    //   6	3	6	localMediaCodec	MediaCodec
-    //   32	16	6	localException	Exception
-    //   55	5	6	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   16	29	32	java/lang/Exception
-    //   2	8	55	finally
-    //   16	29	55	finally
-    //   34	52	55	finally
+    try
+    {
+      MediaCodec localMediaCodec = this.mMediaCodec;
+      if (localMediaCodec == null) {
+        return;
+      }
+      try
+      {
+        this.mMediaCodec.queueInputBuffer(paramInt1, 0, paramInt2, paramLong, paramInt3);
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(TAG, 0, "queueInputBuffer exception", localException);
+        }
+      }
+      return;
+    }
+    finally {}
   }
   
   public void release()
@@ -897,54 +871,34 @@ public class AndroidCodec
     }
   }
   
-  /* Error */
   public void releaseOutputBuffer(int paramInt)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: monitorenter
-    //   2: aload_0
-    //   3: getfield 230	com/tencent/TMG/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
-    //   6: astore_2
-    //   7: aload_2
-    //   8: ifnonnull +6 -> 14
-    //   11: aload_0
-    //   12: monitorexit
-    //   13: return
-    //   14: aload_0
-    //   15: getfield 230	com/tencent/TMG/mediacodec/AndroidCodec:mMediaCodec	Landroid/media/MediaCodec;
-    //   18: iload_1
-    //   19: iconst_0
-    //   20: invokevirtual 487	android/media/MediaCodec:releaseOutputBuffer	(IZ)V
-    //   23: goto -12 -> 11
-    //   26: astore_2
-    //   27: aload_0
-    //   28: monitorexit
-    //   29: aload_2
-    //   30: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	31	0	this	AndroidCodec
-    //   0	31	1	paramInt	int
-    //   6	2	2	localMediaCodec	MediaCodec
-    //   26	4	2	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   2	7	26	finally
-    //   14	23	26	finally
+    try
+    {
+      MediaCodec localMediaCodec = this.mMediaCodec;
+      if (localMediaCodec == null) {
+        return;
+      }
+      this.mMediaCodec.releaseOutputBuffer(paramInt, false);
+      return;
+    }
+    finally {}
   }
   
   public void reset() {}
   
   public void setParameters(Bundle paramBundle)
   {
-    if (Build.VERSION.SDK_INT < 19) {}
-    while (this.mMediaCodec == null) {
+    if (Build.VERSION.SDK_INT < 19) {
+      return;
+    }
+    MediaCodec localMediaCodec = this.mMediaCodec;
+    if (localMediaCodec == null) {
       return;
     }
     try
     {
-      this.mMediaCodec.setParameters(paramBundle);
+      localMediaCodec.setParameters(paramBundle);
       return;
     }
     catch (IllegalStateException paramBundle)
@@ -970,23 +924,21 @@ public class AndroidCodec
           }
           finally {}
         }
-      }
-      else
-      {
-        return false;
+        return true;
       }
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
-    return true;
+    return false;
   }
   
   public void stop()
   {
-    if (this.mMediaCodec != null) {
-      this.mMediaCodec.stop();
+    MediaCodec localMediaCodec = this.mMediaCodec;
+    if (localMediaCodec != null) {
+      localMediaCodec.stop();
     }
   }
 }

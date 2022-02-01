@@ -34,14 +34,15 @@ public final class UniSetExtFriendReq
   {
     paramJceOutputStream.write(this.stLogin, 0);
     paramJceOutputStream.write(this.stUniBusinessItem, 1);
-    if (this.stExtendFriend != null) {
-      paramJceOutputStream.write(this.stExtendFriend, 2);
+    ExtendFriend localExtendFriend = this.stExtendFriend;
+    if (localExtendFriend != null) {
+      paramJceOutputStream.write(localExtendFriend, 2);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniSetExtFriendReq
  * JD-Core Version:    0.7.0.1
  */

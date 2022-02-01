@@ -56,18 +56,20 @@ public class TextInputNode
   public long measure(g paramg, float paramFloat1, f paramf1, float paramFloat2, f paramf2)
   {
     paramg = this.mEditText;
-    if (this.mFontSize == -1) {}
-    for (float f = (int)Math.ceil(PixelUtil.dp2px(14.0F));; f = this.mFontSize)
-    {
-      paramg.setTextSize(0, f);
-      this.mComputedPadding = new float[] { getPadding(4), getPadding(1), getPadding(5), getPadding(3) };
-      this.mEditText.setPadding((int)Math.floor(getPadding(4)), (int)Math.floor(getPadding(1)), (int)Math.floor(getPadding(5)), (int)Math.floor(getPadding(3)));
-      if (this.mNumberOfLines != -1) {
-        this.mEditText.setLines(this.mNumberOfLines);
-      }
-      this.mEditText.measure(getMeasureSpec(paramFloat1, paramf1), getMeasureSpec(paramFloat2, paramf2));
-      return h.a(this.mEditText.getMeasuredWidth(), this.mEditText.getMeasuredHeight());
+    int i;
+    if (this.mFontSize == -1) {
+      i = (int)Math.ceil(PixelUtil.dp2px(14.0F));
+    } else {
+      i = this.mFontSize;
     }
+    paramg.setTextSize(0, i);
+    this.mComputedPadding = new float[] { getPadding(4), getPadding(1), getPadding(5), getPadding(3) };
+    this.mEditText.setPadding((int)Math.floor(getPadding(4)), (int)Math.floor(getPadding(1)), (int)Math.floor(getPadding(5)), (int)Math.floor(getPadding(3)));
+    if (this.mNumberOfLines != -1) {
+      this.mEditText.setLines(this.mNumberOfLines);
+    }
+    this.mEditText.measure(getMeasureSpec(paramFloat1, paramf1), getMeasureSpec(paramFloat2, paramf2));
+    return h.a(this.mEditText.getMeasuredWidth(), this.mEditText.getMeasuredHeight());
   }
   
   public void setPadding(int paramInt, float paramFloat)
@@ -81,7 +83,7 @@ public class TextInputNode
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.textinput.TextInputNode
  * JD-Core Version:    0.7.0.1
  */

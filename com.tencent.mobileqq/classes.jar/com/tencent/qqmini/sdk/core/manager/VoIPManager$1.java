@@ -13,53 +13,49 @@ class VoIPManager$1
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (paramContext == null) {}
+    if (paramContext == null) {
+      return;
+    }
     int i;
-    do
+    if ("android.intent.action.HEADSET_PLUG".equals(paramContext))
     {
-      do
+      i = paramIntent.getIntExtra("state", -1);
+      QMLog.d("VoIPManager", String.format("onReceive ACTION_HEADSET_PLUG state=%s", new Object[] { Integer.valueOf(i) }));
+      if (i == 0)
       {
-        do
-        {
-          do
-          {
-            return;
-            if (!"android.intent.action.HEADSET_PLUG".equals(paramContext)) {
-              break;
-            }
-            i = paramIntent.getIntExtra("state", -1);
-            QMLog.d("VoIPManager", String.format("onReceive ACTION_HEADSET_PLUG state=%s", new Object[] { Integer.valueOf(i) }));
-            if (i == 0)
-            {
-              VoIPManager.access$000(this.this$0);
-              return;
-            }
-          } while (i != 1);
-          VoIPManager.access$100(this.this$0, 0);
-          return;
-          if (!"android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED".equals(paramContext)) {
-            break;
-          }
-          i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.CONNECTION_STATE", -1);
-          QMLog.d("VoIPManager", String.format("onReceive ACTION_CONNECTION_STATE_CHANGED state=%s", new Object[] { Integer.valueOf(i) }));
-          if (i == 2)
-          {
-            VoIPManager.access$100(this.this$0, 2);
-            return;
-          }
-        } while (i != 0);
         VoIPManager.access$000(this.this$0);
         return;
-      } while (!"android.bluetooth.adapter.action.STATE_CHANGED".equals(paramContext));
+      }
+      if (i == 1) {
+        VoIPManager.access$100(this.this$0, 0);
+      }
+    }
+    else if ("android.bluetooth.adapter.action.CONNECTION_STATE_CHANGED".equals(paramContext))
+    {
+      i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.CONNECTION_STATE", -1);
+      QMLog.d("VoIPManager", String.format("onReceive ACTION_CONNECTION_STATE_CHANGED state=%s", new Object[] { Integer.valueOf(i) }));
+      if (i == 2)
+      {
+        VoIPManager.access$100(this.this$0, 2);
+        return;
+      }
+      if (i == 0) {
+        VoIPManager.access$000(this.this$0);
+      }
+    }
+    else if ("android.bluetooth.adapter.action.STATE_CHANGED".equals(paramContext))
+    {
       i = paramIntent.getIntExtra("android.bluetooth.adapter.extra.STATE", -1);
       QMLog.d("VoIPManager", String.format("onReceive ACTION_STATE_CHANGED state=%s", new Object[] { Integer.valueOf(i) }));
-    } while ((i != 10) && (i != 13));
-    VoIPManager.access$000(this.this$0);
+      if ((i == 10) || (i == 13)) {
+        VoIPManager.access$000(this.this$0);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.manager.VoIPManager.1
  * JD-Core Version:    0.7.0.1
  */

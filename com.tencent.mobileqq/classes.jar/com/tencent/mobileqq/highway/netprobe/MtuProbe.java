@@ -19,62 +19,65 @@ public class MtuProbe
   
   private int findMaxMtu()
   {
-    int i = 56;
-    int j = 1472;
+    int j = 56;
+    int i = 1472;
     int k = 0;
-    String str;
-    if (k < MTU_COMMON_VALUES.length)
+    Object localObject;
+    int m;
+    int n;
+    for (;;)
     {
-      int i1 = MTU_COMMON_VALUES[k] - 28;
-      str = PingProbe.execPing(3, 10, i1, this.mPeerIp);
-      if (str == null) {
+      localObject = MTU_COMMON_VALUES;
+      m = j;
+      n = i;
+      if (k >= localObject.length) {
+        break;
+      }
+      int i1 = localObject[k] - 28;
+      localObject = PingProbe.execPing(3, 10, i1, this.mPeerIp);
+      if (localObject == null) {
         return -1;
       }
-      int m;
-      int n;
-      if (!isSuccess(str))
+      if (!isSuccess((String)localObject))
       {
         m = j;
         n = i;
-        if (i1 < j)
-        {
-          m = i1;
-          n = i;
-        }
-      }
-      for (;;)
-      {
-        k += 1;
-        j = m;
-        i = n;
-        break;
-        m = j;
-        n = i;
-        if (i1 >= i)
+        if (i1 < i)
         {
           n = i1;
           m = j;
         }
       }
-      if (isSuccess(str)) {
-        i = k;
-      }
-    }
-    for (;;)
-    {
-      if (i < j)
+      else if (i1 < j)
       {
-        k = (int)((i + j) / 2.0F + 0.5D);
-        str = PingProbe.execPing(3, 10, k, this.mPeerIp);
-        if (str != null) {
-          break;
-        }
-        return -1;
-        j = k - 1;
-        continue;
+        m = j;
+        n = i;
       }
-      return i + 28;
+      else
+      {
+        m = i1;
+        n = i;
+      }
+      k += 1;
+      j = m;
+      i = n;
     }
+    while (m < n)
+    {
+      double d = (m + n) / 2.0F;
+      Double.isNaN(d);
+      i = (int)(d + 0.5D);
+      localObject = PingProbe.execPing(3, 10, i, this.mPeerIp);
+      if (localObject == null) {
+        return -1;
+      }
+      if (isSuccess((String)localObject)) {
+        m = i;
+      } else {
+        n = i - 1;
+      }
+    }
+    return m + 28;
   }
   
   public void doProbe()
@@ -95,13 +98,14 @@ public class MtuProbe
   
   public int getRecvPkgNum(String paramString)
   {
-    if ((paramString == null) && (TextUtils.isEmpty(paramString))) {}
-    do
-    {
+    if ((paramString == null) && (TextUtils.isEmpty(paramString))) {
       return -1;
-      paramString = PING_RESULT_PATTERN.matcher(paramString);
-    } while ((paramString == null) || (!paramString.find()) || (paramString.groupCount() != 3));
-    return Integer.valueOf(paramString.group(2)).intValue();
+    }
+    paramString = PING_RESULT_PATTERN.matcher(paramString);
+    if ((paramString != null) && (paramString.find()) && (paramString.groupCount() == 3)) {
+      return Integer.valueOf(paramString.group(2)).intValue();
+    }
+    return -1;
   }
   
   public boolean isConnecting()
@@ -116,23 +120,32 @@ public class MtuProbe
   
   public void onFinish(int paramInt, Object paramObject)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.mResult.appendResult("successful find the max mtu : " + (Integer)paramObject);
-      this.mResult.success = true;
+      if (paramInt != 1) {
+        return;
+      }
+      paramObject = this.mResult;
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("the ip ");
+      ((StringBuilder)localObject).append(this.mPeerIp);
+      ((StringBuilder)localObject).append(" can't transmit package!");
+      paramObject.errDesc = ((StringBuilder)localObject).toString();
+      this.mResult.success = false;
+      this.mResult.errCode = 1;
       return;
     }
-    this.mResult.errDesc = ("the ip " + this.mPeerIp + " can't transmit package!");
-    this.mResult.success = false;
-    this.mResult.errCode = 1;
+    Object localObject = this.mResult;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("successful find the max mtu : ");
+    localStringBuilder.append((Integer)paramObject);
+    ((ProbeItem.ProbeResult)localObject).appendResult(localStringBuilder.toString());
+    this.mResult.success = true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.netprobe.MtuProbe
  * JD-Core Version:    0.7.0.1
  */

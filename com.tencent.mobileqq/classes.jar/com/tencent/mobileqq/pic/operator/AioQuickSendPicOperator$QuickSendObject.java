@@ -14,12 +14,24 @@ public class AioQuickSendPicOperator$QuickSendObject
   
   public String toString()
   {
-    return "QuickSendObject{mOriginMD5='" + this.jdField_a_of_type_JavaLangString + '\'' + ", mOriginSize=" + this.jdField_a_of_type_Long + ", mThumbMD5='" + this.b + '\'' + ", mQuickSendFailed=" + this.jdField_a_of_type_Boolean + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QuickSendObject{mOriginMD5='");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mOriginSize=");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append(", mThumbMD5='");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mQuickSendFailed=");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.pic.operator.AioQuickSendPicOperator.QuickSendObject
  * JD-Core Version:    0.7.0.1
  */

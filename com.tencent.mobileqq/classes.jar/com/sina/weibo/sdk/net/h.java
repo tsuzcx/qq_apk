@@ -16,31 +16,34 @@ public final class h
     StringBuilder localStringBuilder = new StringBuilder();
     Iterator localIterator = this.s.keySet().iterator();
     int i = 1;
-    label118:
     while (localIterator.hasNext())
     {
       String str1 = (String)localIterator.next();
-      if (i != 0) {
-        i = 0;
-      }
-      for (;;)
+      int j;
+      if (i != 0)
       {
-        for (;;)
-        {
-          String str2 = (String)this.s.get(str1);
-          if (TextUtils.isEmpty(str2)) {
-            break label118;
-          }
-          try
-          {
-            localStringBuilder.append(URLEncoder.encode(str1, "UTF-8")).append("=").append(URLEncoder.encode(str2, "UTF-8"));
-          }
-          catch (UnsupportedEncodingException localUnsupportedEncodingException)
-          {
-            localUnsupportedEncodingException.printStackTrace();
-          }
-        }
+        j = 0;
+      }
+      else
+      {
         localStringBuilder.append("&");
+        j = i;
+      }
+      String str2 = (String)this.s.get(str1);
+      i = j;
+      if (!TextUtils.isEmpty(str2)) {
+        try
+        {
+          localStringBuilder.append(URLEncoder.encode(str1, "UTF-8"));
+          localStringBuilder.append("=");
+          localStringBuilder.append(URLEncoder.encode(str2, "UTF-8"));
+          i = j;
+        }
+        catch (UnsupportedEncodingException localUnsupportedEncodingException)
+        {
+          localUnsupportedEncodingException.printStackTrace();
+          i = j;
+        }
       }
     }
     return localStringBuilder.toString();

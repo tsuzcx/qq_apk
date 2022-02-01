@@ -68,30 +68,34 @@ public class AccelMagnetProvider
       System.arraycopy(this.d, 0, this.g, 0, 3);
       this.jdField_a_of_type_Boolean = true;
     }
-    for (;;)
+    else if (paramSensorEvent.sensor.getType() == 1)
     {
-      if ((this.jdField_a_of_type_Boolean) && (SensorManager.getRotationMatrix(this.h, null, this.e, this.d)))
-      {
-        SensorManager.getOrientation(this.h, this.i);
-        if (this.jdField_a_of_type_Int == 1) {
-          break;
-        }
-        super.a(this.h);
-      }
-      return;
-      if (paramSensorEvent.sensor.getType() == 1)
-      {
-        System.arraycopy(paramSensorEvent.values, 0, this.e, 0, 3);
-        SensorSmoother.a(this.e, this.f);
-        System.arraycopy(this.e, 0, this.f, 0, 3);
-      }
+      System.arraycopy(paramSensorEvent.values, 0, this.e, 0, 3);
+      SensorSmoother.a(this.e, this.f);
+      System.arraycopy(this.e, 0, this.f, 0, 3);
     }
-    a((float)(Math.toDegrees(this.i[0] + a()) + 360.0D) % 360.0F, (float)(this.i[1] * 180.0F / 3.141592653589793D), (float)(this.i[2] * 180.0F / 3.141592653589793D));
+    if ((this.jdField_a_of_type_Boolean) && (SensorManager.getRotationMatrix(this.h, null, this.e, this.d)))
+    {
+      SensorManager.getOrientation(this.h, this.i);
+      if (this.jdField_a_of_type_Int != 1)
+      {
+        super.a(this.h);
+        return;
+      }
+      float f1 = (float)(Math.toDegrees(this.i[0] + a()) + 360.0D);
+      paramSensorEvent = this.i;
+      double d1 = paramSensorEvent[1] * 180.0F;
+      Double.isNaN(d1);
+      float f2 = (float)(d1 / 3.141592653589793D);
+      d1 = paramSensorEvent[2] * 180.0F;
+      Double.isNaN(d1);
+      a(f1 % 360.0F, f2, (float)(d1 / 3.141592653589793D));
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.armap.sensor.provider.AccelMagnetProvider
  * JD-Core Version:    0.7.0.1
  */

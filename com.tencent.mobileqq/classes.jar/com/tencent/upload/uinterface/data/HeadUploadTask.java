@@ -50,14 +50,25 @@ public class HeadUploadTask
     return TaskTypeConfig.HeadUploadTaskType;
   }
   
-  public void processFileUploadFinishRsp(byte[] paramArrayOfByte)
+  protected void processFileUploadFinishRsp(byte[] paramArrayOfByte)
   {
-    UploadLog.d("AbstractUploadTask", "ImageUploadTask put <" + this.mOriginFilePath + "," + this.mSessionId + ">");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("ImageUploadTask put <");
+    ((StringBuilder)localObject).append(this.mOriginFilePath);
+    ((StringBuilder)localObject).append(",");
+    ((StringBuilder)localObject).append(this.mSessionId);
+    ((StringBuilder)localObject).append(">");
+    UploadLog.d("AbstractUploadTask", ((StringBuilder)localObject).toString());
     SessionPool.recordSessionId(this.mOriginFilePath, this.mSessionId);
-    Object localObject = new UploadPicInfoRsp();
+    localObject = new UploadPicInfoRsp();
     localObject = new ImageUploadResult(this.iUin, this.flowId, getBatchId(), (UploadPicInfoRsp)localObject);
     ((ImageUploadResult)localObject).sessionId = this.mSessionId;
-    UploadLog.d("AbstractUploadTask", "onUploadSucceed flowid = " + this.flowId + " filepath = " + this.mFilePath);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onUploadSucceed flowid = ");
+    localStringBuilder.append(this.flowId);
+    localStringBuilder.append(" filepath = ");
+    localStringBuilder.append(this.mFilePath);
+    UploadLog.d("AbstractUploadTask", localStringBuilder.toString());
     onUploadSucceed(localObject);
     super.processFileUploadFinishRsp(paramArrayOfByte);
     onDestroy();
@@ -65,7 +76,7 @@ public class HeadUploadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.upload.uinterface.data.HeadUploadTask
  * JD-Core Version:    0.7.0.1
  */

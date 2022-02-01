@@ -1,5 +1,6 @@
 package com.tencent.mobileqq.msf.core.c;
 
+import android.content.ContentResolver;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -9,13 +10,13 @@ import android.net.NetworkInfo;
 import android.net.wifi.SupplicantState;
 import android.net.wifi.WifiInfo;
 import android.os.Build.VERSION;
+import android.os.Looper;
 import android.os.Process;
 import android.os.SystemClock;
 import android.provider.Settings.System;
 import android.telephony.TelephonyManager;
 import android.text.TextUtils;
 import com.tencent.beacon.event.UserAction;
-import com.tencent.beacon.upload.TunnelInfo;
 import com.tencent.feedback.anr.ANRReport;
 import com.tencent.feedback.eup.CrashHandleListener;
 import com.tencent.feedback.eup.CrashReport;
@@ -25,7 +26,6 @@ import com.tencent.mobileqq.msf.core.NetConnInfoCenter;
 import com.tencent.mobileqq.msf.core.ac;
 import com.tencent.mobileqq.msf.core.auth.b;
 import com.tencent.mobileqq.msf.core.d;
-import com.tencent.mobileqq.msf.core.i;
 import com.tencent.mobileqq.msf.core.net.m;
 import com.tencent.mobileqq.msf.core.net.n;
 import com.tencent.mobileqq.msf.core.net.n.a;
@@ -48,7 +48,6 @@ import java.util.Date;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -75,7 +74,7 @@ public class j
   static final int N = 1;
   static final String O = "param_activeIpFamily";
   static final String P = "IPv6_from_server";
-  static HashSet R = null;
+  static HashSet R;
   public static volatile boolean S = false;
   static long T = 0L;
   static long U = 0L;
@@ -83,13 +82,15 @@ public class j
   static AtomicBoolean W;
   static Thread X = new k("MsfCheckDeepSleepThread");
   static final String a = "MSF.C.StatReport";
-  private static LinkedBlockingQueue ac = new LinkedBlockingQueue(100);
-  private static ConcurrentHashMap ad = new ConcurrentHashMap();
-  private static long ae = 3600000L;
-  private static final int af = 5000;
-  private static final Object ag;
-  private static final Object ah;
-  private static SimpleDateFormat ak = new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
+  private static final String ac = "q_consume_time";
+  private static final String ad = "q_length";
+  private static LinkedBlockingQueue ae = new LinkedBlockingQueue(100);
+  private static ConcurrentHashMap af = new ConcurrentHashMap();
+  private static long ag = 3600000L;
+  private static final int ah = 5000;
+  private static final Object ai;
+  private static final Object aj;
+  private static SimpleDateFormat am = new SimpleDateFormat("MM.dd HH:mm:ss.SSS");
   public static final String b = "param_Reason";
   public static final String c = "param_connecttrycount";
   static final String d = "param_sendTime";
@@ -120,8 +121,8 @@ public class j
   boolean Z = false;
   boolean aa = false;
   boolean ab = false;
-  private j.b ai = new j.b();
-  private StringBuilder aj = new StringBuilder("\nMsf Crash Control info:\n");
+  private j.b ak = new j.b();
+  private StringBuilder al = new StringBuilder("\nMsf Crash Control info:\n");
   
   static
   {
@@ -130,8 +131,8 @@ public class j
     U = 0L;
     V = new AtomicBoolean(false);
     W = new AtomicBoolean(false);
-    ag = new Object();
-    ah = new Object();
+    ai = new Object();
+    aj = new Object();
   }
   
   public j(MsfCore paramMsfCore)
@@ -141,60 +142,59 @@ public class j
   
   public static byte a(boolean paramBoolean, long paramLong1, long paramLong2)
   {
+    int i3 = (byte)r();
+    boolean bool = q();
     int i2 = 0;
-    int i3;
-    label26:
-    int i4;
-    if (r())
-    {
-      i1 = 1;
-      i3 = (byte)i1;
-      if (!q()) {
-        break label251;
-      }
+    if (bool) {
       i1 = 2;
-      i4 = (byte)i1;
-      boolean bool = paramBoolean;
-      if (!paramBoolean)
-      {
-        bool = paramBoolean;
-        if (paramLong1 <= paramLong2)
-        {
-          Iterator localIterator = ad.entrySet().iterator();
-          Map.Entry localEntry;
-          do
-          {
-            bool = paramBoolean;
-            if (!localIterator.hasNext()) {
-              break;
-            }
-            localEntry = (Map.Entry)localIterator.next();
-          } while ((paramLong1 >= ((Long)localEntry.getValue()).longValue()) || (paramLong2 <= ((Long)localEntry.getKey()).longValue()));
-          if (QLog.isColorLevel()) {
-            QLog.d("MSF.C.StatReport", 2, "find deep sleep. report time:[" + paramLong1 + ", " + paramLong2 + "], sleep time:[" + localEntry.getKey() + ", " + localEntry.getValue() + "]");
-          }
-          bool = true;
-        }
-      }
-      if (!bool) {
-        break label257;
-      }
+    } else {
+      i1 = 0;
     }
-    label257:
-    for (int i1 = 4;; i1 = 0)
+    int i4 = (byte)i1;
+    bool = paramBoolean;
+    if (!paramBoolean)
     {
-      int i5 = (byte)i1;
-      i1 = i2;
-      if (s()) {
-        i1 = 8;
+      bool = paramBoolean;
+      if (paramLong1 <= paramLong2)
+      {
+        Object localObject = af.entrySet().iterator();
+        Map.Entry localEntry;
+        do
+        {
+          bool = paramBoolean;
+          if (!((Iterator)localObject).hasNext()) {
+            break;
+          }
+          localEntry = (Map.Entry)((Iterator)localObject).next();
+        } while ((paramLong1 >= ((Long)localEntry.getValue()).longValue()) || (paramLong2 <= ((Long)localEntry.getKey()).longValue()));
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("find deep sleep. report time:[");
+          ((StringBuilder)localObject).append(paramLong1);
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(paramLong2);
+          ((StringBuilder)localObject).append("], sleep time:[");
+          ((StringBuilder)localObject).append(localEntry.getKey());
+          ((StringBuilder)localObject).append(", ");
+          ((StringBuilder)localObject).append(localEntry.getValue());
+          ((StringBuilder)localObject).append("]");
+          QLog.d("MSF.C.StatReport", 2, ((StringBuilder)localObject).toString());
+        }
+        bool = true;
       }
-      return (byte)(i5 | i3 | i4 | (byte)i1);
-      i1 = 0;
-      break;
-      label251:
-      i1 = 0;
-      break label26;
     }
+    if (bool) {
+      i1 = 4;
+    } else {
+      i1 = 0;
+    }
+    int i5 = (byte)i1;
+    int i1 = i2;
+    if (s()) {
+      i1 = 8;
+    }
+    return (byte)(i5 | i3 | i4 | (byte)i1);
   }
   
   public static long a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg)
@@ -225,30 +225,30 @@ public class j
       return "null EndpointKey";
     }
     StringBuilder localStringBuilder = new StringBuilder();
-    localStringBuilder.append(paramd.b()).append("://");
-    localStringBuilder.append(paramd.c()).append(":").append(paramd.f());
+    localStringBuilder.append(paramd.b());
+    localStringBuilder.append("://");
+    localStringBuilder.append(paramd.c());
+    localStringBuilder.append(":");
+    localStringBuilder.append(paramd.f());
     return localStringBuilder.toString();
   }
   
   private void a(long paramLong1, long paramLong2, int paramInt)
   {
-    String str = "EvtPacketLossRat";
+    String str;
     if (paramInt == 1) {
       str = "EvtPacketLossRatV4";
+    } else if (paramInt == 2) {
+      str = "EvtPacketLossRatV6";
+    } else {
+      str = "EvtPacketLossRat";
     }
-    for (;;)
-    {
-      paramInt = NetConnInfoCenter.getActiveNetIpFamily(false);
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("packetLossRat", String.valueOf((float)paramLong1 * 0.75F / (float)paramLong2));
-      localHashMap.put("activeIpfamily", String.valueOf(paramInt));
-      if (MsfService.getCore().getStatReporter() != null) {
-        MsfService.getCore().getStatReporter().a(str, true, 0L, 0L, localHashMap, false, false);
-      }
-      return;
-      if (paramInt == 2) {
-        str = "EvtPacketLossRatV6";
-      }
+    paramInt = NetConnInfoCenter.getActiveNetIpFamily(false);
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("packetLossRat", String.valueOf((float)paramLong1 * 0.75F / (float)paramLong2));
+    localHashMap.put("activeIpfamily", String.valueOf(paramInt));
+    if (MsfService.getCore().getStatReporter() != null) {
+      MsfService.getCore().getStatReporter().a(str, true, 0L, 0L, localHashMap, false, false);
     }
   }
   
@@ -256,134 +256,154 @@ public class j
   
   public static long b(boolean paramBoolean, long paramLong1, long paramLong2)
   {
-    if (!paramBoolean) {}
-    while (paramLong1 >= paramLong2) {
+    long l1 = 0L;
+    if (!paramBoolean) {
       return 0L;
     }
-    Iterator localIterator = ad.entrySet().iterator();
-    long l1 = 0L;
-    Map.Entry localEntry;
-    if (localIterator.hasNext())
+    if (paramLong1 >= paramLong2) {
+      return 0L;
+    }
+    Iterator localIterator = af.entrySet().iterator();
+    while (localIterator.hasNext())
     {
-      localEntry = (Map.Entry)localIterator.next();
+      Map.Entry localEntry = (Map.Entry)localIterator.next();
       if ((paramLong1 >= ((Long)localEntry.getKey()).longValue()) && (paramLong1 <= ((Long)localEntry.getValue()).longValue()))
       {
         if (paramLong2 <= ((Long)localEntry.getValue()).longValue()) {
           return paramLong2 - paramLong1;
         }
-        l1 = ((Long)localEntry.getValue()).longValue() + l1 - paramLong1;
+        l1 = l1 + ((Long)localEntry.getValue()).longValue() - paramLong1;
       }
-    }
-    for (;;)
-    {
-      break;
-      if (paramLong1 < ((Long)localEntry.getKey()).longValue()) {
+      else if (paramLong1 < ((Long)localEntry.getKey()).longValue())
+      {
+        long l2;
         if ((paramLong2 >= ((Long)localEntry.getKey()).longValue()) && (paramLong2 <= ((Long)localEntry.getValue()).longValue()))
         {
-          l1 = l1 + paramLong2 - ((Long)localEntry.getKey()).longValue();
+          l1 += paramLong2;
+          l2 = ((Long)localEntry.getKey()).longValue();
         }
-        else if (paramLong2 > ((Long)localEntry.getValue()).longValue())
+        else
         {
-          l1 = l1 + ((Long)localEntry.getValue()).longValue() - ((Long)localEntry.getKey()).longValue();
-          continue;
-          return l1;
+          if (paramLong2 <= ((Long)localEntry.getValue()).longValue()) {
+            continue;
+          }
+          l1 += ((Long)localEntry.getValue()).longValue();
+          l2 = ((Long)localEntry.getKey()).longValue();
         }
+        l1 -= l2;
       }
     }
+    return l1;
   }
   
   static void b(boolean paramBoolean)
   {
-    Map localMap;
-    for (;;)
+    while (!ae.isEmpty())
     {
-      if (!ac.isEmpty())
+      RdmReq localRdmReq;
+      StringBuilder localStringBuilder;
+      Object localObject2;
+      long l1;
+      label70:
+      try
       {
-        RdmReq localRdmReq;
-        StringBuilder localStringBuilder;
-        long l1;
-        long l2;
-        label70:
-        int i1;
-        try
-        {
-          localRdmReq = (RdmReq)ac.take();
-          if (localRdmReq != null)
-          {
-            localStringBuilder = new StringBuilder();
-            localMap = localRdmReq.params;
-            if (localMap != null) {
-              l1 = SystemClock.elapsedRealtime();
-            }
-          }
+        localRdmReq = (RdmReq)ae.take();
+        if (localRdmReq == null) {
+          continue;
         }
-        catch (Exception localException) {}
+        localStringBuilder = new StringBuilder();
+        localObject2 = localRdmReq.params;
+        if (localObject2 != null) {
+          l1 = SystemClock.elapsedRealtime();
+        }
       }
-    }
-    try
-    {
-      l2 = Long.parseLong((String)localMap.get("param_reportTime"));
-      l1 = l2;
-    }
-    catch (NumberFormatException localNumberFormatException)
-    {
-      break label70;
-    }
-    l2 = l1 - localRdmReq.elapse;
-    i1 = a(paramBoolean, l2, l1);
-    localMap.put("param_runStatus", String.valueOf(i1));
-    if ((i1 & 0x4) == 0) {}
-    for (boolean bool = false;; bool = true)
-    {
-      localMap.put("param_deepSleep", String.valueOf(b(bool, l2, l1)));
-      localMap.remove("param_reportTime");
-      Iterator localIterator = localMap.entrySet().iterator();
+      catch (Exception localException) {}
+      try
+      {
+        l2 = Long.parseLong((String)((Map)localObject2).get("param_reportTime"));
+        l1 = l2;
+      }
+      catch (NumberFormatException localNumberFormatException)
+      {
+        break label70;
+        bool = true;
+        break label112;
+      }
+      long l2 = l1 - localRdmReq.elapse;
+      int i1 = a(paramBoolean, l2, l1);
+      ((Map)localObject2).put("param_runStatus", String.valueOf(i1));
+      if ((i1 & 0x4) != 0) {
+        break label652;
+      }
+      bool = false;
+      label112:
+      ((Map)localObject2).put("param_deepSleep", String.valueOf(b(bool, l2, l1)));
+      ((Map)localObject2).remove("param_reportTime");
+      Iterator localIterator = ((Map)localObject2).entrySet().iterator();
       while (localIterator.hasNext())
       {
         Map.Entry localEntry = (Map.Entry)localIterator.next();
-        localStringBuilder.append("k=").append((String)localEntry.getKey()).append(", v=").append((String)localEntry.getValue()).append("; ");
+        localStringBuilder.append("k=");
+        localStringBuilder.append((String)localEntry.getKey());
+        localStringBuilder.append(", v=");
+        localStringBuilder.append((String)localEntry.getValue());
+        localStringBuilder.append("; ");
       }
-      if (!QLog.isColorLevel()) {
-        break;
+      ((Map)localObject2).put("q_consume_time", String.valueOf(localRdmReq.elapse));
+      ((Map)localObject2).put("q_length", String.valueOf(localRdmReq.size));
+      if (("actC2CPicDownloadV1".equalsIgnoreCase(localRdmReq.eventName)) || ("actC2CPicSmallDownV1".equalsIgnoreCase(localRdmReq.eventName)) || ("actGroupPicDownloadV1".equalsIgnoreCase(localRdmReq.eventName)) || ("actGroupPicSmallDownV1".equalsIgnoreCase(localRdmReq.eventName)))
+      {
+        ((Map)localObject2).put("param_msfcheck_result", String.valueOf(localRdmReq.isSucceed));
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("check_");
+        localStringBuilder.append(localRdmReq.eventName);
+        UserAction.onUserAction(localStringBuilder.toString(), true, localRdmReq.elapse, localRdmReq.size, (Map)localObject2, localRdmReq.isRealTime);
       }
-      QLog.w("MSF.C.StatReport", 2, "report RQD error " + localException, localException);
-      break;
+      if (TextUtils.isEmpty(localRdmReq.appKey)) {
+        UserAction.onUserAction(localRdmReq.eventName, localRdmReq.isSucceed, localRdmReq.elapse, localRdmReq.size, (Map)localObject2, localRdmReq.isRealTime, localRdmReq.isImmediatelyUpload);
+      } else {
+        UserAction.onUserActionToTunnel(localRdmReq.appKey, localRdmReq.eventName, localRdmReq.isSucceed, localRdmReq.elapse, localRdmReq.size, (Map)localObject2, localRdmReq.isRealTime, localRdmReq.isImmediatelyUpload);
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("report RQD IMEI:");
+        ((StringBuilder)localObject2).append(o.d());
+        ((StringBuilder)localObject2).append(" ");
+        ((StringBuilder)localObject2).append(localRdmReq.toString());
+        QLog.d("MSF.C.StatReport", 2, ((StringBuilder)localObject2).toString());
+        continue;
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("report RQD error ");
+          ((StringBuilder)localObject2).append(localException);
+          QLog.w("MSF.C.StatReport", 2, ((StringBuilder)localObject2).toString(), localException);
+        }
+      }
     }
-    if (("actC2CPicDownloadV1".equalsIgnoreCase(localException.eventName)) || ("actC2CPicSmallDownV1".equalsIgnoreCase(localException.eventName)) || ("actGroupPicDownloadV1".equalsIgnoreCase(localException.eventName)) || ("actGroupPicSmallDownV1".equalsIgnoreCase(localException.eventName)))
+    synchronized (aj)
     {
-      localMap.put("param_msfcheck_result", String.valueOf(localException.isSucceed));
-      UserAction.onUserAction("check_" + localException.eventName, true, localException.elapse, localException.size, localMap, localException.isRealTime);
-    }
-    if (TextUtils.isEmpty(localException.appKey)) {
-      UserAction.onUserAction(localException.eventName, localException.isSucceed, localException.elapse, localException.size, localMap, localException.isRealTime, localException.isImmediatelyUpload);
-    }
-    while (QLog.isColorLevel())
-    {
-      QLog.d("MSF.C.StatReport", 2, "report RQD IMEI:" + o.d() + " " + localException.toString());
-      break;
-      UserAction.onUserActionToTunnel(localException.appKey, localException.eventName, localException.isSucceed, localException.elapse, localException.size, localMap, localException.isRealTime, localException.isImmediatelyUpload);
-    }
-    synchronized (ah)
-    {
-      ah.notifyAll();
+      aj.notifyAll();
       return;
     }
   }
   
   private static boolean q()
   {
-    return !MsfSdkUtils.isTopActivity(BaseApplication.getContext());
+    return MsfSdkUtils.isTopActivity(BaseApplication.getContext()) ^ true;
   }
   
   private static boolean r()
   {
-    return !MsfSdkUtils.isScreenOn(BaseApplication.getContext());
+    return MsfSdkUtils.isScreenOn(BaseApplication.getContext()) ^ true;
   }
   
   private static boolean s()
   {
+    ContentResolver localContentResolver = BaseApplication.getContext().getContentResolver();
     boolean bool = false;
-    if (Settings.System.getInt(BaseApplication.getContext().getContentResolver(), "airplane_mode_on", 0) != 0) {
+    if (Settings.System.getInt(localContentResolver, "airplane_mode_on", 0) != 0) {
       bool = true;
     }
     return bool;
@@ -395,45 +415,46 @@ public class j
     if (!TextUtils.isEmpty(str)) {}
     try
     {
-      Object localObject = new JSONObject(str);
-      this.ai.a = ((JSONObject)localObject).getBoolean("control_switch");
-      this.ai.b = ((JSONObject)localObject).getInt("control_window");
-      this.ai.c = ((JSONObject)localObject).getInt("control_freq");
-      localObject = this.aj.append("initCrashControl");
-      ((StringBuilder)localObject).append(",controlJson=").append(str);
-      ((StringBuilder)localObject).append(",switch=").append(this.ai.a);
-      ((StringBuilder)localObject).append(",window=").append(this.ai.b);
-      ((StringBuilder)localObject).append(",Freq=").append(this.ai.c);
-      ((StringBuilder)localObject).append("\n");
-      return;
+      localObject = new JSONObject(str);
+      this.ak.a = ((JSONObject)localObject).getBoolean("control_switch");
+      this.ak.b = ((JSONObject)localObject).getInt("control_window");
+      this.ak.c = ((JSONObject)localObject).getInt("control_freq");
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        this.ai.a();
-        QLog.d("MSF.C.StatReport", 1, "initCrashControl parse json throws an exception, so reset.");
-      }
+      Object localObject;
+      label65:
+      break label65;
     }
+    this.ak.a();
+    QLog.d("MSF.C.StatReport", 1, "initCrashControl parse json throws an exception, so reset.");
+    localObject = this.al;
+    ((StringBuilder)localObject).append("initCrashControl");
+    ((StringBuilder)localObject).append(",controlJson=");
+    ((StringBuilder)localObject).append(str);
+    ((StringBuilder)localObject).append(",switch=");
+    ((StringBuilder)localObject).append(this.ak.a);
+    ((StringBuilder)localObject).append(",window=");
+    ((StringBuilder)localObject).append(this.ak.b);
+    ((StringBuilder)localObject).append(",Freq=");
+    ((StringBuilder)localObject).append(this.ak.c);
+    ((StringBuilder)localObject).append("\n");
   }
   
   public void a(long paramLong)
   {
     int i1 = this.Q.sender.b.l().j();
-    String str = "msf_send_msg";
+    String str;
     if (i1 == 1) {
       str = "msf_IPv4_send_msg";
+    } else if (i1 == 2) {
+      str = "msf_IPv6_send_msg";
+    } else {
+      str = "msf_send_msg";
     }
-    for (;;)
-    {
-      HashMap localHashMap = new HashMap();
-      if (MsfService.getCore().getStatReporter() != null) {
-        MsfService.getCore().getStatReporter().a(str, true, paramLong, 0L, localHashMap, false, false);
-      }
-      return;
-      if (i1 == 2) {
-        str = "msf_IPv6_send_msg";
-      }
+    HashMap localHashMap = new HashMap();
+    if (MsfService.getCore().getStatReporter() != null) {
+      MsfService.getCore().getStatReporter().a(str, true, paramLong, 0L, localHashMap, false, false);
     }
   }
   
@@ -449,11 +470,26 @@ public class j
   
   public void a(long paramLong, String paramString1, String paramString2)
   {
-    String str = "" + paramLong;
-    str = str + "|";
-    paramString1 = str + paramString1;
-    paramString1 = paramString1 + "|";
-    paramString1 = paramString1 + paramString2;
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(paramLong);
+    localObject = ((StringBuilder)localObject).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append("|");
+    localObject = localStringBuilder.toString();
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject);
+    localStringBuilder.append(paramString1);
+    paramString1 = localStringBuilder.toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append("|");
+    paramString1 = ((StringBuilder)localObject).toString();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(paramString1);
+    ((StringBuilder)localObject).append(paramString2);
+    paramString1 = ((StringBuilder)localObject).toString();
     paramString2 = new HashMap();
     paramString2.put("param_connectContinuanceTime", paramString1);
     a("msf_connectContinuanceTime", false, paramLong, 0L, paramString2, false, false);
@@ -461,39 +497,30 @@ public class j
   
   public void a(WifiInfo paramWifiInfo)
   {
-    int i2;
-    label45:
-    int i3;
     if ((paramWifiInfo.getBSSID() == null) || (paramWifiInfo.getIpAddress() == 0) || (paramWifiInfo.getSupplicantState() != SupplicantState.COMPLETED))
     {
-      if (paramWifiInfo.getBSSID() != null) {
-        break label106;
+      String str = paramWifiInfo.getBSSID();
+      int i2 = 0;
+      if (str == null) {
+        i1 = 1;
+      } else {
+        i1 = 0;
       }
-      i1 = 1;
-      i2 = (byte)i1;
-      if (paramWifiInfo.getIpAddress() != 0) {
-        break label111;
+      int i3 = (byte)i1;
+      if (paramWifiInfo.getIpAddress() == 0) {
+        i1 = 2;
+      } else {
+        i1 = 0;
       }
-      i1 = 2;
-      i3 = (byte)i1;
-      if (paramWifiInfo.getSupplicantState() == SupplicantState.COMPLETED) {
-        break label116;
+      int i4 = (byte)i1;
+      int i1 = i2;
+      if (paramWifiInfo.getSupplicantState() != SupplicantState.COMPLETED) {
+        i1 = 4;
       }
-    }
-    label106:
-    label111:
-    label116:
-    for (int i1 = 4;; i1 = 0)
-    {
       i1 = (byte)i1;
       paramWifiInfo = new HashMap();
-      paramWifiInfo.put("param_FailCode", String.valueOf((i1 | i2 | i3) + 5000));
+      paramWifiInfo.put("param_FailCode", String.valueOf((i1 | i3 | i4) + 5000));
       a("dim.Msf.WifiNoConnection", false, 0L, 0L, paramWifiInfo, true, false);
-      return;
-      i1 = 0;
-      break;
-      i1 = 0;
-      break label45;
     }
   }
   
@@ -501,6 +528,7 @@ public class j
   {
     UserAction.setUserID(paramString);
     CrashReport.setUserId(BaseApplication.getContext(), paramString);
+    QLog.d("MSF.C.StatReport", 1, new Object[] { "setUserId = ", paramString });
   }
   
   public void a(String paramString, int paramInt1, long paramLong1, int paramInt2, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean)
@@ -540,11 +568,21 @@ public class j
   {
     try
     {
-      String str = String.valueOf(System.currentTimeMillis() + "_" + paramString1 + "_" + paramString2 + " " + paramString3 + "_" + paramString4);
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(System.currentTimeMillis());
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(" ");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append("_");
+      ((StringBuilder)localObject).append(paramString4);
+      localObject = String.valueOf(((StringBuilder)localObject).toString());
       HashMap localHashMap = new HashMap();
       localHashMap.put("uin", String.valueOf(paramString1));
       localHashMap.put("type", String.valueOf(paramString3));
-      localHashMap.put("msg", String.valueOf(str));
+      localHashMap.put("msg", String.valueOf(localObject));
       localHashMap.put("exception", String.valueOf(paramString4));
       localHashMap.put("processName", String.valueOf(paramString2));
       a("msf.core.DeadObjectException", true, 0L, 0L, localHashMap, false, false);
@@ -563,25 +601,34 @@ public class j
   
   public void a(String paramString1, String paramString2, boolean paramBoolean, long paramLong1, long paramLong2, long paramLong3, long paramLong4, long paramLong5, long paramLong6)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("MSF.C.StatReport", 2, "reportCloseConnForAlarm type:" + paramString1 + ",isEffective:" + paramBoolean + ",saveTime:" + paramLong1);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("reportCloseConnForAlarm type:");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(",isEffective:");
+      ((StringBuilder)localObject).append(paramBoolean);
+      ((StringBuilder)localObject).append(",saveTime:");
+      ((StringBuilder)localObject).append(paramLong1);
+      QLog.d("MSF.C.StatReport", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("param_reportType", paramString1);
-      localHashMap.put("param_uin", paramString2);
-      localHashMap.put("param_saveCost", String.valueOf(paramLong1));
-      localHashMap.put("param_isEffective", String.valueOf(paramBoolean));
+      localObject = new HashMap();
+      ((HashMap)localObject).put("param_reportType", paramString1);
+      ((HashMap)localObject).put("param_uin", paramString2);
+      ((HashMap)localObject).put("param_saveCost", String.valueOf(paramLong1));
+      ((HashMap)localObject).put("param_isEffective", String.valueOf(paramBoolean));
       if (!paramBoolean)
       {
-        localHashMap.put("param_timeforten", String.valueOf(paramLong2));
-        localHashMap.put("param_timeforsix", String.valueOf(paramLong3));
-        localHashMap.put("param_timeforalarm", String.valueOf(paramLong4));
-        localHashMap.put("param_timeforlastrecv", String.valueOf(paramLong5));
-        localHashMap.put("param_timeforcloseconn", String.valueOf(paramLong6));
+        ((HashMap)localObject).put("param_timeforten", String.valueOf(paramLong2));
+        ((HashMap)localObject).put("param_timeforsix", String.valueOf(paramLong3));
+        ((HashMap)localObject).put("param_timeforalarm", String.valueOf(paramLong4));
+        ((HashMap)localObject).put("param_timeforlastrecv", String.valueOf(paramLong5));
+        ((HashMap)localObject).put("param_timeforcloseconn", String.valueOf(paramLong6));
       }
-      a("dim.Msf.CloseConnForAlarm", false, paramLong1, 0L, localHashMap, false, false);
+      a("dim.Msf.CloseConnForAlarm", false, paramLong1, 0L, (Map)localObject, false, false);
       return;
     }
     catch (Exception paramString1)
@@ -590,295 +637,111 @@ public class j
     }
   }
   
-  /* Error */
   public void a(String arg1, String paramString2, boolean paramBoolean1, long paramLong1, long paramLong2, Map paramMap, boolean paramBoolean2, boolean paramBoolean3, boolean paramBoolean4)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 770	com/tencent/mobileqq/msf/core/c/j:c	()Z
-    //   4: ifne +4 -> 8
-    //   7: return
-    //   8: getstatic 184	com/tencent/mobileqq/msf/core/c/j:S	Z
-    //   11: ifeq +11 -> 22
-    //   14: iconst_0
-    //   15: putstatic 184	com/tencent/mobileqq/msf/core/c/j:S	Z
-    //   18: aload_0
-    //   19: invokevirtual 772	com/tencent/mobileqq/msf/core/c/j:h	()V
-    //   22: getstatic 774	com/tencent/mobileqq/msf/core/a/a:s	Ljava/util/HashSet;
-    //   25: aload_2
-    //   26: invokevirtual 780	java/util/HashSet:contains	(Ljava/lang/Object;)Z
-    //   29: ifeq +36 -> 65
-    //   32: invokestatic 284	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   35: ifeq -28 -> 7
-    //   38: ldc 63
-    //   40: iconst_2
-    //   41: new 229	java/lang/StringBuilder
-    //   44: dup
-    //   45: invokespecial 285	java/lang/StringBuilder:<init>	()V
-    //   48: aload_2
-    //   49: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   52: ldc_w 782
-    //   55: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   58: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   61: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   64: return
-    //   65: aload 8
-    //   67: ifnull +254 -> 321
-    //   70: iload_3
-    //   71: ifne +62 -> 133
-    //   74: aload_0
-    //   75: getfield 240	com/tencent/mobileqq/msf/core/c/j:Q	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   78: ifnull +55 -> 133
-    //   81: aload_0
-    //   82: getfield 240	com/tencent/mobileqq/msf/core/c/j:Q	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   85: getfield 596	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   88: ifnull +45 -> 133
-    //   91: aload_0
-    //   92: getfield 240	com/tencent/mobileqq/msf/core/c/j:Q	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   95: getfield 596	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   98: getfield 601	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
-    //   101: ifnull +32 -> 133
-    //   104: aload 8
-    //   106: ldc 132
-    //   108: aload_0
-    //   109: getfield 240	com/tencent/mobileqq/msf/core/c/j:Q	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   112: getfield 596	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   115: getfield 601	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
-    //   118: invokevirtual 606	com/tencent/mobileqq/msf/core/net/n:l	()Lcom/tencent/mobileqq/msf/core/net/m;
-    //   121: invokevirtual 783	com/tencent/mobileqq/msf/core/net/m:c	()Z
-    //   124: invokestatic 473	java/lang/String:valueOf	(Z)Ljava/lang/String;
-    //   127: invokeinterface 430 3 0
-    //   132: pop
-    //   133: aload 8
-    //   135: ldc_w 785
-    //   138: invokestatic 787	com/tencent/mobileqq/msf/core/o:l	()Ljava/lang/String;
-    //   141: invokeinterface 430 3 0
-    //   146: pop
-    //   147: invokestatic 693	com/tencent/mobileqq/msf/core/NetConnInfoCenter:getSystemNetworkType	()I
-    //   150: istore 12
-    //   152: aload 8
-    //   154: ldc_w 789
-    //   157: iload 12
-    //   159: invokestatic 374	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   162: invokeinterface 430 3 0
-    //   167: pop
-    //   168: aload 8
-    //   170: getstatic 703	com/tencent/qphone/base/BaseConstants:RDM_NoChangeFailCode	Ljava/lang/String;
-    //   173: invokeinterface 792 2 0
-    //   178: ifeq +345 -> 523
-    //   181: aload 8
-    //   183: getstatic 703	com/tencent/qphone/base/BaseConstants:RDM_NoChangeFailCode	Ljava/lang/String;
-    //   186: invokeinterface 438 2 0
-    //   191: pop
-    //   192: aload 8
-    //   194: ldc 147
-    //   196: getstatic 794	com/tencent/mobileqq/msf/core/ac:E	Ljava/lang/String;
-    //   199: invokeinterface 430 3 0
-    //   204: pop
-    //   205: aload 8
-    //   207: ldc_w 796
-    //   210: invokestatic 798	com/tencent/mobileqq/msf/core/ac:q	()Ljava/lang/String;
-    //   213: invokeinterface 430 3 0
-    //   218: pop
-    //   219: aload 8
-    //   221: ldc 20
-    //   223: invokeinterface 792 2 0
-    //   228: ifne +19 -> 247
-    //   231: aload 8
-    //   233: ldc 20
-    //   235: invokestatic 414	android/os/SystemClock:elapsedRealtime	()J
-    //   238: invokestatic 435	java/lang/String:valueOf	(J)Ljava/lang/String;
-    //   241: invokeinterface 430 3 0
-    //   246: pop
-    //   247: aload_0
-    //   248: getfield 240	com/tencent/mobileqq/msf/core/c/j:Q	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   251: invokevirtual 802	com/tencent/mobileqq/msf/core/MsfCore:getSsoListManager	()Lcom/tencent/mobileqq/msf/core/a/c;
-    //   254: invokevirtual 806	com/tencent/mobileqq/msf/core/a/c:d	()Z
-    //   257: istore 13
-    //   259: aload_0
-    //   260: getfield 240	com/tencent/mobileqq/msf/core/c/j:Q	Lcom/tencent/mobileqq/msf/core/MsfCore;
-    //   263: getfield 596	com/tencent/mobileqq/msf/core/MsfCore:sender	Lcom/tencent/mobileqq/msf/core/ac;
-    //   266: getfield 601	com/tencent/mobileqq/msf/core/ac:b	Lcom/tencent/mobileqq/msf/core/net/n;
-    //   269: invokevirtual 807	com/tencent/mobileqq/msf/core/net/n:f	()I
-    //   272: istore 12
-    //   274: iload 13
-    //   276: ifeq +268 -> 544
-    //   279: iconst_1
-    //   280: invokestatic 374	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   283: astore 14
-    //   285: aload 8
-    //   287: ldc 32
-    //   289: aload 14
-    //   291: invokeinterface 430 3 0
-    //   296: pop
-    //   297: iload 12
-    //   299: iconst_2
-    //   300: if_icmpne +253 -> 553
-    //   303: iconst_1
-    //   304: invokestatic 374	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   307: astore 14
-    //   309: aload 8
-    //   311: ldc 39
-    //   313: aload 14
-    //   315: invokeinterface 430 3 0
-    //   320: pop
-    //   321: new 405	com/tencent/mobileqq/msf/sdk/RdmReq
-    //   324: dup
-    //   325: invokespecial 808	com/tencent/mobileqq/msf/sdk/RdmReq:<init>	()V
-    //   328: astore 14
-    //   330: aload 14
-    //   332: aload_2
-    //   333: putfield 455	com/tencent/mobileqq/msf/sdk/RdmReq:eventName	Ljava/lang/String;
-    //   336: aload 14
-    //   338: lload 4
-    //   340: putfield 427	com/tencent/mobileqq/msf/sdk/RdmReq:elapse	J
-    //   343: aload 14
-    //   345: lload 6
-    //   347: putfield 478	com/tencent/mobileqq/msf/sdk/RdmReq:size	J
-    //   350: aload 14
-    //   352: iload_3
-    //   353: putfield 470	com/tencent/mobileqq/msf/sdk/RdmReq:isSucceed	Z
-    //   356: aload 14
-    //   358: iload 9
-    //   360: putfield 481	com/tencent/mobileqq/msf/sdk/RdmReq:isRealTime	Z
-    //   363: aload 14
-    //   365: iload 11
-    //   367: putfield 811	com/tencent/mobileqq/msf/sdk/RdmReq:isMerge	Z
-    //   370: aload 14
-    //   372: aload 8
-    //   374: putfield 409	com/tencent/mobileqq/msf/sdk/RdmReq:params	Ljava/util/Map;
-    //   377: aload 14
-    //   379: aload_1
-    //   380: putfield 490	com/tencent/mobileqq/msf/sdk/RdmReq:appKey	Ljava/lang/String;
-    //   383: aload 14
-    //   385: iload 10
-    //   387: putfield 498	com/tencent/mobileqq/msf/sdk/RdmReq:isImmediatelyUpload	Z
-    //   390: getstatic 172	com/tencent/mobileqq/msf/core/c/j:ac	Ljava/util/concurrent/LinkedBlockingQueue;
-    //   393: aload 14
-    //   395: invokevirtual 814	java/util/concurrent/LinkedBlockingQueue:offer	(Ljava/lang/Object;)Z
-    //   398: ifne -391 -> 7
-    //   401: invokestatic 284	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   404: ifeq +12 -> 416
-    //   407: ldc 63
-    //   409: iconst_2
-    //   410: ldc_w 816
-    //   413: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   416: getstatic 200	com/tencent/mobileqq/msf/core/c/j:ag	Ljava/lang/Object;
-    //   419: astore_1
-    //   420: aload_1
-    //   421: monitorenter
-    //   422: getstatic 200	com/tencent/mobileqq/msf/core/c/j:ag	Ljava/lang/Object;
-    //   425: invokevirtual 517	java/lang/Object:notifyAll	()V
-    //   428: aload_1
-    //   429: monitorexit
-    //   430: invokestatic 822	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   433: invokestatic 825	android/os/Looper:myLooper	()Landroid/os/Looper;
-    //   436: if_acmpeq -429 -> 7
-    //   439: getstatic 202	com/tencent/mobileqq/msf/core/c/j:ah	Ljava/lang/Object;
-    //   442: astore_1
-    //   443: aload_1
-    //   444: monitorenter
-    //   445: getstatic 202	com/tencent/mobileqq/msf/core/c/j:ah	Ljava/lang/Object;
-    //   448: ldc2_w 826
-    //   451: invokevirtual 830	java/lang/Object:wait	(J)V
-    //   454: getstatic 172	com/tencent/mobileqq/msf/core/c/j:ac	Ljava/util/concurrent/LinkedBlockingQueue;
-    //   457: aload 14
-    //   459: invokevirtual 814	java/util/concurrent/LinkedBlockingQueue:offer	(Ljava/lang/Object;)Z
-    //   462: ifne +18 -> 480
-    //   465: invokestatic 284	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   468: ifeq +12 -> 480
-    //   471: ldc 63
-    //   473: iconst_2
-    //   474: ldc_w 832
-    //   477: invokestatic 310	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   480: aload_1
-    //   481: monitorexit
-    //   482: return
-    //   483: astore_2
-    //   484: aload_1
-    //   485: monitorexit
-    //   486: aload_2
-    //   487: athrow
-    //   488: astore_1
-    //   489: invokestatic 284	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   492: ifeq -485 -> 7
-    //   495: ldc 63
-    //   497: iconst_2
-    //   498: new 229	java/lang/StringBuilder
-    //   501: dup
-    //   502: invokespecial 285	java/lang/StringBuilder:<init>	()V
-    //   505: ldc_w 447
-    //   508: invokevirtual 291	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   511: aload_1
-    //   512: invokevirtual 301	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   515: invokevirtual 307	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   518: aload_1
-    //   519: invokestatic 450	com/tencent/qphone/base/util/QLog:w	(Ljava/lang/String;ILjava/lang/String;Ljava/lang/Throwable;)V
-    //   522: return
-    //   523: iload 12
-    //   525: ifne -333 -> 192
-    //   528: aload 8
-    //   530: ldc 144
-    //   532: ldc_w 834
-    //   535: invokeinterface 430 3 0
-    //   540: pop
-    //   541: goto -349 -> 192
-    //   544: iconst_0
-    //   545: invokestatic 374	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   548: astore 14
-    //   550: goto -265 -> 285
-    //   553: iconst_0
-    //   554: invokestatic 374	java/lang/String:valueOf	(I)Ljava/lang/String;
-    //   557: astore 14
-    //   559: goto -250 -> 309
-    //   562: astore_2
-    //   563: aload_1
-    //   564: monitorexit
-    //   565: aload_2
-    //   566: athrow
-    //   567: astore_2
-    //   568: aload_2
-    //   569: invokevirtual 835	java/lang/InterruptedException:printStackTrace	()V
-    //   572: goto -118 -> 454
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	575	0	this	j
-    //   0	575	2	paramString2	String
-    //   0	575	3	paramBoolean1	boolean
-    //   0	575	4	paramLong1	long
-    //   0	575	6	paramLong2	long
-    //   0	575	8	paramMap	Map
-    //   0	575	9	paramBoolean2	boolean
-    //   0	575	10	paramBoolean3	boolean
-    //   0	575	11	paramBoolean4	boolean
-    //   150	374	12	i1	int
-    //   257	18	13	bool	boolean
-    //   283	275	14	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   445	454	483	finally
-    //   454	480	483	finally
-    //   480	482	483	finally
-    //   484	486	483	finally
-    //   568	572	483	finally
-    //   74	133	488	java/lang/Exception
-    //   133	192	488	java/lang/Exception
-    //   192	247	488	java/lang/Exception
-    //   247	274	488	java/lang/Exception
-    //   279	285	488	java/lang/Exception
-    //   285	297	488	java/lang/Exception
-    //   303	309	488	java/lang/Exception
-    //   309	321	488	java/lang/Exception
-    //   321	416	488	java/lang/Exception
-    //   416	422	488	java/lang/Exception
-    //   430	445	488	java/lang/Exception
-    //   486	488	488	java/lang/Exception
-    //   528	541	488	java/lang/Exception
-    //   544	550	488	java/lang/Exception
-    //   565	567	488	java/lang/Exception
-    //   422	430	562	finally
-    //   563	565	562	finally
-    //   445	454	567	java/lang/InterruptedException
+    if (!c()) {
+      return;
+    }
+    if (S)
+    {
+      S = false;
+      h();
+    }
+    if (com.tencent.mobileqq.msf.core.a.a.s.contains(paramString2))
+    {
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ???.append(paramString2);
+        ???.append(" is not need report.");
+        QLog.d("MSF.C.StatReport", 2, ???.toString());
+      }
+      return;
+    }
+    if ((paramMap == null) || (!paramBoolean1)) {}
+    try
+    {
+      if ((this.Q != null) && (this.Q.sender != null) && (this.Q.sender.b != null)) {
+        paramMap.put("param_isConnected", String.valueOf(this.Q.sender.b.l().c()));
+      }
+      paramMap.put("param_NetworkOperator", o.l());
+      int i1 = NetConnInfoCenter.getSystemNetworkType();
+      paramMap.put("param_NetworkInfo", String.valueOf(i1));
+      if (paramMap.containsKey(BaseConstants.RDM_NoChangeFailCode)) {
+        paramMap.remove(BaseConstants.RDM_NoChangeFailCode);
+      } else if (i1 == 0) {
+        paramMap.put("param_FailCode", "900");
+      }
+      paramMap.put("param_SsoServerIp", ac.E);
+      paramMap.put("param_GatewayrIp", ac.q());
+      if (!paramMap.containsKey("param_reportTime")) {
+        paramMap.put("param_reportTime", String.valueOf(SystemClock.elapsedRealtime()));
+      }
+      boolean bool = this.Q.getSsoListManager().d();
+      i1 = this.Q.sender.b.f();
+      if (bool) {
+        localObject = String.valueOf(1);
+      } else {
+        localObject = String.valueOf(0);
+      }
+      paramMap.put("kMsfSupportIPFlag", localObject);
+      if (i1 == 2) {
+        localObject = String.valueOf(1);
+      } else {
+        localObject = String.valueOf(0);
+      }
+      paramMap.put("kMsfConnectedIPFlag", localObject);
+      Object localObject = new RdmReq();
+      ((RdmReq)localObject).eventName = paramString2;
+      ((RdmReq)localObject).elapse = paramLong1;
+      ((RdmReq)localObject).size = paramLong2;
+      ((RdmReq)localObject).isSucceed = paramBoolean1;
+      ((RdmReq)localObject).isRealTime = paramBoolean2;
+      ((RdmReq)localObject).isMerge = paramBoolean4;
+      ((RdmReq)localObject).params = paramMap;
+      ((RdmReq)localObject).appKey = ???;
+      ((RdmReq)localObject).isImmediatelyUpload = paramBoolean3;
+      if (!ae.offer(localObject))
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("MSF.C.StatReport", 2, "wait queue is full, try notify to start report");
+        }
+        synchronized (ai)
+        {
+          ai.notifyAll();
+          if (Looper.getMainLooper() != Looper.myLooper())
+          {
+            try
+            {
+              synchronized (aj)
+              {
+                aj.wait(5000L);
+              }
+            }
+            catch (InterruptedException paramString2)
+            {
+              paramString2.printStackTrace();
+              if ((!ae.offer(localObject)) && (QLog.isColorLevel())) {
+                QLog.d("MSF.C.StatReport", 2, "offer fail finally");
+              }
+              return;
+            }
+            throw paramString2;
+          }
+        }
+      }
+      return;
+    }
+    catch (Exception ???)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramString2 = new StringBuilder();
+        paramString2.append("report RQD error ");
+        paramString2.append(???);
+        QLog.w("MSF.C.StatReport", 2, paramString2.toString(), ???);
+      }
+    }
   }
   
   public void a(String paramString, boolean paramBoolean, long paramLong1, int paramInt, long paramLong2)
@@ -888,17 +751,15 @@ public class j
       if (R == null) {
         R = new HashSet();
       }
-      if (!R.contains(paramString)) {}
+      if (R.contains(paramString)) {
+        return;
+      }
+      R.add(paramString);
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_uin", paramString);
+      localHashMap.put("param_FailCode", String.valueOf(paramInt));
+      a("dim.Msf.UserGrayfail", paramBoolean, paramLong1, paramLong2, localHashMap, false, false);
     }
-    else
-    {
-      return;
-    }
-    R.add(paramString);
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_uin", paramString);
-    localHashMap.put("param_FailCode", String.valueOf(paramInt));
-    a("dim.Msf.UserGrayfail", paramBoolean, paramLong1, paramLong2, localHashMap, false, false);
   }
   
   public void a(String paramString, boolean paramBoolean1, long paramLong1, long paramLong2, Map paramMap, boolean paramBoolean2, boolean paramBoolean3)
@@ -921,9 +782,18 @@ public class j
     int i1 = 0;
     while (i1 < paramArrayList.size())
     {
-      localHashMap.put("SSOIP" + i1, ((n.a)paramArrayList.get(i1)).a);
-      localHashMap.put("ConnTestSsoResult" + i1, String.valueOf(((n.a)paramArrayList.get(i1)).b));
-      localHashMap.put("errorDetail" + i1, ((n.a)paramArrayList.get(i1)).c);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("SSOIP");
+      localStringBuilder.append(i1);
+      localHashMap.put(localStringBuilder.toString(), ((n.a)paramArrayList.get(i1)).a);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ConnTestSsoResult");
+      localStringBuilder.append(i1);
+      localHashMap.put(localStringBuilder.toString(), String.valueOf(((n.a)paramArrayList.get(i1)).b));
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("errorDetail");
+      localStringBuilder.append(i1);
+      localHashMap.put(localStringBuilder.toString(), ((n.a)paramArrayList.get(i1)).c);
       i1 += 1;
     }
     localHashMap.put("respcode", String.valueOf(paramInt));
@@ -932,20 +802,17 @@ public class j
   
   public void a(boolean paramBoolean, long paramLong1, int paramInt, long paramLong2)
   {
-    HashMap localHashMap;
     if (NetConnInfoCenter.isWifiOrMobileConn())
     {
-      localHashMap = new HashMap();
+      HashMap localHashMap = new HashMap();
       localHashMap.put("param_FailCode", String.valueOf(paramInt + 3300));
-      if (r()) {
+      if (r())
+      {
         a("dim.Msf.BG.PushQueryResult", paramBoolean, paramLong1, paramLong2, localHashMap, false, false);
+        return;
       }
+      a("dim.Msf.PushQueryResult", paramBoolean, paramLong1, paramLong2, localHashMap, false, false);
     }
-    else
-    {
-      return;
-    }
-    a("dim.Msf.PushQueryResult", paramBoolean, paramLong1, paramLong2, localHashMap, false, false);
   }
   
   public void a(boolean paramBoolean1, long paramLong1, int paramInt, long paramLong2, String paramString1, String paramString2, boolean paramBoolean2, long paramLong3)
@@ -962,170 +829,236 @@ public class j
   
   public void a(boolean paramBoolean1, long paramLong1, int paramInt, long paramLong2, boolean paramBoolean2, String paramString)
   {
-    HashMap localHashMap;
     if (NetConnInfoCenter.isWifiOrMobileConn())
     {
-      localHashMap = new HashMap();
+      HashMap localHashMap = new HashMap();
       localHashMap.put("param_Reason", paramString);
-      if (paramBoolean2) {
-        break label85;
+      if (!paramBoolean2)
+      {
+        localHashMap.put("param_FailCode", String.valueOf(paramInt + 3100));
+        if (r())
+        {
+          a("dim.Msf.BG.RigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
+          return;
+        }
+        a("dim.Msf.RigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
+        return;
       }
-      localHashMap.put("param_FailCode", String.valueOf(paramInt + 3100));
-      if (r()) {
-        a("dim.Msf.BG.RigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
+      localHashMap.put("param_FailCode", String.valueOf(paramInt + 3200));
+      if (r())
+      {
+        a("dim.Msf.BG.UnRigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
+        return;
       }
+      a("dim.Msf.UnRigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
     }
-    else
-    {
-      return;
-    }
-    a("dim.Msf.RigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
-    return;
-    label85:
-    localHashMap.put("param_FailCode", String.valueOf(paramInt + 3200));
-    if (r())
-    {
-      a("dim.Msf.BG.UnRigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
-      return;
-    }
-    a("dim.Msf.UnRigisterPushResult", paramBoolean1, paramLong1, paramLong2, localHashMap, false, false);
   }
   
   public void a(boolean paramBoolean1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean2, ArrayList paramArrayList, int paramInt)
   {
-    if (!NetConnInfoCenter.isWifiOrMobileConn()) {}
-    Object localObject2;
-    label301:
-    label582:
-    label608:
-    label1138:
-    do
-    {
-      do
-      {
-        do
-        {
-          return;
-        } while (paramArrayList.size() <= 0);
-        Object localObject1 = "" + this.Q.getMsfAppid();
-        localObject1 = (String)localObject1 + "|1";
-        localObject2 = com.tencent.mobileqq.msf.core.c.f(BaseApplication.getContext()) + "." + com.tencent.mobileqq.msf.core.c.e(BaseApplication.getContext());
-        localObject1 = (String)localObject1 + "|" + (String)localObject2;
-        localObject2 = (com.tencent.mobileqq.msf.core.net.a)paramArrayList.get(paramArrayList.size() - 1);
-        localObject2 = (String)localObject1 + "|" + ((com.tencent.mobileqq.msf.core.net.a)localObject2).g;
-        localObject1 = o.e();
-        if ((localObject1 != null) && (((String)localObject1).length() >= 5))
-        {
-          localObject2 = (String)localObject2 + "|" + ((String)localObject1).substring(0, 3);
-          localObject1 = (String)localObject2 + ":" + ((String)localObject1).substring(3, 5);
-          localObject2 = o.i();
-          if (localObject2 == null) {
-            break label582;
-          }
-          localObject1 = (String)localObject1 + ":" + (String)localObject2;
-          localObject1 = (String)localObject1 + ":" + false;
-          localObject1 = (String)localObject1 + "|" + paramLong1;
-          localObject1 = (String)localObject1 + "|" + paramLong2;
-          localObject1 = (String)localObject1 + "|" + paramLong3;
-          localObject1 = (String)localObject1 + "|" + paramBoolean2;
-          if (!paramBoolean1) {
-            break label608;
-          }
-        }
-        for (localObject1 = (String)localObject1 + "|1";; localObject1 = (String)localObject1 + "|" + paramInt)
-        {
-          localObject2 = paramArrayList.iterator();
-          for (paramArrayList = (ArrayList)localObject1; ((Iterator)localObject2).hasNext(); paramArrayList = paramArrayList + "|" + ((com.tencent.mobileqq.msf.core.net.a)localObject1).a()) {
-            localObject1 = (com.tencent.mobileqq.msf.core.net.a)((Iterator)localObject2).next();
-          }
-          localObject1 = (String)localObject2 + "|000";
-          localObject1 = (String)localObject1 + ":00";
-          break;
-          localObject1 = (String)localObject1 + ":000";
-          break label301;
-        }
-        localObject2 = new HashMap();
-        ((HashMap)localObject2).put("param_LoginConnect", paramArrayList);
-        try
-        {
-          ((HashMap)localObject2).put("param_totalmemory", MsfSdkUtils.getTotalMemory());
-        }
-        catch (Exception paramArrayList)
-        {
-          try
-          {
-            ((HashMap)localObject2).put("param_Resolution", MsfSdkUtils.getResolutionString(BaseApplication.getContext()));
-          }
-          catch (Exception paramArrayList)
-          {
-            try
-            {
-              ((HashMap)localObject2).put("param_runStatus_new", String.valueOf(n.n));
-            }
-            catch (Exception paramArrayList)
-            {
-              try
-              {
-                for (;;)
-                {
-                  ((HashMap)localObject2).put("param_LastConnCostTime", String.valueOf(paramLong4));
-                  try
-                  {
-                    localObject1 = this.Q.getSsoListManager().f();
-                    paramArrayList = (ArrayList)localObject1;
-                    if (TextUtils.isEmpty((CharSequence)localObject1)) {
-                      paramArrayList = "policy_default";
-                    }
-                    ((HashMap)localObject2).put("policy_id", paramArrayList);
-                  }
-                  catch (Exception paramArrayList)
-                  {
-                    for (;;)
-                    {
-                      QLog.d("MSF.C.StatReport", 1, "get policy_id error " + paramArrayList.toString());
-                    }
-                  }
-                  if (QLog.isColorLevel())
-                  {
-                    QLog.d("MSF.C.StatReport", 2, "get report status " + (String)((HashMap)localObject2).get("param_runStatus"));
-                    QLog.d("MSF.C.StatReport", 2, "get report new status " + String.valueOf(n.n));
-                  }
-                  paramInt = NetConnInfoCenter.getActiveNetIpFamily(true);
-                  ((HashMap)localObject2).put("param_activeIpFamily", paramInt + "");
-                  ((HashMap)localObject2).put("IPv6_from_server", String.valueOf(this.Q.getSsoListManager().d()));
-                  if (paramLong3 == -1L) {
-                    break label1138;
-                  }
-                  a("msf_connAndRecv", paramBoolean1, paramLong1 + paramLong3, 0L, (Map)localObject2, false, false);
-                  paramInt = this.Q.sender.b.f();
-                  if (paramInt != 1) {
-                    break label1114;
-                  }
-                  a("msf_connAndRecv_ipv4", paramBoolean1, paramLong1 + paramLong3, 0L, (Map)localObject2, false, false);
-                  return;
-                  paramArrayList = paramArrayList;
-                  QLog.d("MSF.C.StatReport", 1, "getTotalMemoey error " + paramArrayList);
-                  continue;
-                  paramArrayList = paramArrayList;
-                  QLog.d("MSF.C.StatReport", 1, "getResilution error " + paramArrayList);
-                  continue;
-                  paramArrayList = paramArrayList;
-                  QLog.d("MSF.C.StatReport", 1, "get new status error " + paramArrayList.toString());
-                }
-              }
-              catch (Exception paramArrayList)
-              {
-                for (;;)
-                {
-                  QLog.d("MSF.C.StatReport", 1, "get last conncost error " + paramArrayList.toString());
-                }
-              }
-            }
-          }
-        }
-      } while (paramInt != 2);
-      a("msf_connAndRecv_ipv6", paramBoolean1, paramLong1 + paramLong3, 0L, (Map)localObject2, false, false);
+    if (!NetConnInfoCenter.isWifiOrMobileConn()) {
       return;
+    }
+    if (paramArrayList.size() <= 0) {
+      return;
+    }
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("");
+    ((StringBuilder)localObject1).append(this.Q.getMsfAppid());
+    localObject1 = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("|1");
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(com.tencent.mobileqq.msf.core.c.f(BaseApplication.getContext()));
+    ((StringBuilder)localObject2).append(".");
+    ((StringBuilder)localObject2).append(com.tencent.mobileqq.msf.core.c.e(BaseApplication.getContext()));
+    localObject2 = ((StringBuilder)localObject2).toString();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("|");
+    localStringBuilder.append((String)localObject2);
+    localObject1 = localStringBuilder.toString();
+    localObject2 = (com.tencent.mobileqq.msf.core.net.a)paramArrayList.get(paramArrayList.size() - 1);
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append((String)localObject1);
+    localStringBuilder.append("|");
+    localStringBuilder.append(((com.tencent.mobileqq.msf.core.net.a)localObject2).g);
+    localObject2 = localStringBuilder.toString();
+    localObject1 = o.e();
+    if ((localObject1 != null) && (((String)localObject1).length() >= 5))
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append("|");
+      localStringBuilder.append(((String)localObject1).substring(0, 3));
+      localObject2 = localStringBuilder.toString();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject2);
+      localStringBuilder.append(":");
+      localStringBuilder.append(((String)localObject1).substring(3, 5));
+      localObject1 = localStringBuilder.toString();
+    }
+    else
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append((String)localObject2);
+      ((StringBuilder)localObject1).append("|000");
+      localObject1 = ((StringBuilder)localObject1).toString();
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(":00");
+      localObject1 = ((StringBuilder)localObject2).toString();
+    }
+    localObject2 = o.i();
+    if (localObject2 != null)
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(":");
+      localStringBuilder.append((String)localObject2);
+      localObject1 = localStringBuilder.toString();
+    }
+    else
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append(":000");
+      localObject1 = ((StringBuilder)localObject2).toString();
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append(":");
+    ((StringBuilder)localObject2).append(false);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(paramLong1);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(paramLong2);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(paramLong3);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("|");
+    ((StringBuilder)localObject2).append(paramBoolean2);
+    localObject1 = ((StringBuilder)localObject2).toString();
+    if (paramBoolean1)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("|1");
+      localObject1 = ((StringBuilder)localObject2).toString();
+    }
+    else
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("|");
+      ((StringBuilder)localObject2).append(paramInt);
+      localObject1 = ((StringBuilder)localObject2).toString();
+    }
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      localObject2 = (com.tencent.mobileqq.msf.core.net.a)paramArrayList.next();
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append("|");
+      localStringBuilder.append(((com.tencent.mobileqq.msf.core.net.a)localObject2).a());
+      localObject1 = localStringBuilder.toString();
+    }
+    localObject2 = new HashMap();
+    ((HashMap)localObject2).put("param_LoginConnect", localObject1);
+    try
+    {
+      ((HashMap)localObject2).put("param_totalmemory", MsfSdkUtils.getTotalMemory());
+    }
+    catch (Exception paramArrayList)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getTotalMemoey error ");
+      ((StringBuilder)localObject1).append(paramArrayList);
+      QLog.d("MSF.C.StatReport", 1, ((StringBuilder)localObject1).toString());
+    }
+    try
+    {
+      ((HashMap)localObject2).put("param_Resolution", MsfSdkUtils.getResolutionString(BaseApplication.getContext()));
+    }
+    catch (Exception paramArrayList)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getResilution error ");
+      ((StringBuilder)localObject1).append(paramArrayList);
+      QLog.d("MSF.C.StatReport", 1, ((StringBuilder)localObject1).toString());
+    }
+    try
+    {
+      ((HashMap)localObject2).put("param_runStatus_new", String.valueOf(n.n));
+    }
+    catch (Exception paramArrayList)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("get new status error ");
+      ((StringBuilder)localObject1).append(paramArrayList.toString());
+      QLog.d("MSF.C.StatReport", 1, ((StringBuilder)localObject1).toString());
+    }
+    try
+    {
+      ((HashMap)localObject2).put("param_LastConnCostTime", String.valueOf(paramLong4));
+    }
+    catch (Exception paramArrayList)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("get last conncost error ");
+      ((StringBuilder)localObject1).append(paramArrayList.toString());
+      QLog.d("MSF.C.StatReport", 1, ((StringBuilder)localObject1).toString());
+    }
+    try
+    {
+      localObject1 = this.Q.getSsoListManager().f();
+      paramArrayList = (ArrayList)localObject1;
+      if (TextUtils.isEmpty((CharSequence)localObject1)) {
+        paramArrayList = "policy_default";
+      }
+      ((HashMap)localObject2).put("policy_id", paramArrayList);
+    }
+    catch (Exception paramArrayList)
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("get policy_id error ");
+      ((StringBuilder)localObject1).append(paramArrayList.toString());
+      QLog.d("MSF.C.StatReport", 1, ((StringBuilder)localObject1).toString());
+    }
+    if (QLog.isColorLevel())
+    {
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("get report status ");
+      paramArrayList.append((String)((HashMap)localObject2).get("param_runStatus"));
+      QLog.d("MSF.C.StatReport", 2, paramArrayList.toString());
+      paramArrayList = new StringBuilder();
+      paramArrayList.append("get report new status ");
+      paramArrayList.append(String.valueOf(n.n));
+      QLog.d("MSF.C.StatReport", 2, paramArrayList.toString());
+    }
+    paramInt = NetConnInfoCenter.getActiveNetIpFamily(true);
+    paramArrayList = new StringBuilder();
+    paramArrayList.append(paramInt);
+    paramArrayList.append("");
+    ((HashMap)localObject2).put("param_activeIpFamily", paramArrayList.toString());
+    ((HashMap)localObject2).put("IPv6_from_server", String.valueOf(this.Q.getSsoListManager().d()));
+    if (paramLong3 != -1L)
+    {
+      paramLong1 = paramLong3 + paramLong1;
       a("msf_connAndRecv", paramBoolean1, paramLong1, 0L, (Map)localObject2, false, false);
       paramInt = this.Q.sender.b.f();
       if (paramInt == 1)
@@ -1133,9 +1066,23 @@ public class j
         a("msf_connAndRecv_ipv4", paramBoolean1, paramLong1, 0L, (Map)localObject2, false, false);
         return;
       }
-    } while (paramInt != 2);
-    label1114:
-    a("msf_connAndRecv_ipv6", paramBoolean1, paramLong1, 0L, (Map)localObject2, false, false);
+      if (paramInt == 2) {
+        a("msf_connAndRecv_ipv6", paramBoolean1, paramLong1, 0L, (Map)localObject2, false, false);
+      }
+    }
+    else
+    {
+      a("msf_connAndRecv", paramBoolean1, paramLong1, 0L, (Map)localObject2, false, false);
+      paramInt = this.Q.sender.b.f();
+      if (paramInt == 1)
+      {
+        a("msf_connAndRecv_ipv4", paramBoolean1, paramLong1, 0L, (Map)localObject2, false, false);
+        return;
+      }
+      if (paramInt == 2) {
+        a("msf_connAndRecv_ipv6", paramBoolean1, paramLong1, 0L, (Map)localObject2, false, false);
+      }
+    }
   }
   
   public void a(boolean paramBoolean1, long paramLong1, long paramLong2, long paramLong3, long paramLong4, boolean paramBoolean2, boolean paramBoolean3)
@@ -1169,35 +1116,50 @@ public class j
     localHashMap.put("param_recvBytes", String.valueOf(paramLong4));
     localHashMap.put("param_FailCode", String.valueOf(parama.ordinal() + 4900));
     localHashMap.put("param_Reason", parama.toString());
-    paramd = "" + paramLong1;
-    paramd = paramd + "|";
-    paramd = paramd + paramString1;
-    paramd = paramd + "|";
-    localHashMap.put("param_connectContinuanceTime", paramd + paramString2);
+    paramd = new StringBuilder();
+    paramd.append("");
+    paramd.append(paramLong1);
+    paramd = paramd.toString();
+    parama = new StringBuilder();
+    parama.append(paramd);
+    parama.append("|");
+    paramd = parama.toString();
+    parama = new StringBuilder();
+    parama.append(paramd);
+    parama.append(paramString1);
+    paramd = parama.toString();
+    parama = new StringBuilder();
+    parama.append(paramd);
+    parama.append("|");
+    paramd = parama.toString();
+    parama = new StringBuilder();
+    parama.append(paramd);
+    parama.append(paramString2);
+    localHashMap.put("param_connectContinuanceTime", parama.toString());
     try
     {
       localHashMap.put("param_uin", MsfService.getCore().getAccountCenter().i());
-      if (r())
-      {
-        a("dim.Msf.BG.ConnClose", paramBoolean, paramLong1, 0, localHashMap, false, false);
-        return;
-      }
     }
     catch (Exception paramd)
     {
-      for (;;)
-      {
-        QLog.d("MSF.C.StatReport", 1, "getMainAccout error!", paramd);
-      }
-      a("dim.Msf.ConnClose", paramBoolean, paramLong1, 0, localHashMap, false, false);
+      QLog.d("MSF.C.StatReport", 1, "getMainAccout error!", paramd);
     }
+    if (r())
+    {
+      a("dim.Msf.BG.ConnClose", paramBoolean, paramLong1, 0, localHashMap, false, false);
+      return;
+    }
+    a("dim.Msf.ConnClose", paramBoolean, paramLong1, 0, localHashMap, false, false);
   }
   
   public void a(boolean paramBoolean, long paramLong, String paramString)
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put("ssolist", paramString);
-    localHashMap.put("SSOListToConnectEndTime", "" + paramLong);
+    paramString = new StringBuilder();
+    paramString.append("");
+    paramString.append(paramLong);
+    localHashMap.put("SSOListToConnectEndTime", paramString.toString());
     a("msf_justGetSSOListButCannotConn", paramBoolean, paramLong, 0L, localHashMap, true, false);
   }
   
@@ -1224,46 +1186,45 @@ public class j
     {
       try
       {
-        Object localObject2 = new StringBuilder().append(MsfCore.sCore.getAccountCenter().i()).append("_").append(String.valueOf(System.currentTimeMillis())).append("_");
-        Object localObject1;
-        if (paramBoolean)
-        {
-          localObject1 = paramToServiceMsg.getShortStringForLog();
-          localObject2 = (String)localObject1;
-          localObject1 = new HashMap();
-          ((HashMap)localObject1).put("uin", MsfCore.sCore.getAccountCenter().i());
-          ((HashMap)localObject1).put("time", String.valueOf(System.currentTimeMillis()));
-          ((HashMap)localObject1).put("msg", localObject2);
-          if (paramFromServiceMsg == null) {
-            break label218;
-          }
-          paramFromServiceMsg = paramFromServiceMsg.getStringForLog();
-          ((HashMap)localObject1).put("from", paramFromServiceMsg);
-          if (paramToServiceMsg != null)
-          {
-            paramToServiceMsg = paramToServiceMsg.getStringForLog();
-            ((HashMap)localObject1).put("to", paramToServiceMsg);
-            if (MsfService.getCore().getStatReporter() == null) {
-              break label217;
-            }
-            MsfService.getCore().getStatReporter().a("msf.cmd.Evt10008", true, 0L, 0L, (Map)localObject1, false, false);
-          }
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(MsfCore.sCore.getAccountCenter().i());
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(String.valueOf(System.currentTimeMillis()));
+        ((StringBuilder)localObject).append("_");
+        if (paramBoolean) {
+          str = paramToServiceMsg.getShortStringForLog();
+        } else {
+          str = paramFromServiceMsg.getShortStringForLog();
         }
-        else
-        {
-          localObject1 = paramFromServiceMsg.getShortStringForLog();
-          continue;
+        ((StringBuilder)localObject).append(str);
+        String str = ((StringBuilder)localObject).toString();
+        localObject = new HashMap();
+        ((HashMap)localObject).put("uin", MsfCore.sCore.getAccountCenter().i());
+        ((HashMap)localObject).put("time", String.valueOf(System.currentTimeMillis()));
+        ((HashMap)localObject).put("msg", str);
+        str = "null";
+        if (paramFromServiceMsg == null) {
+          break label237;
         }
-        paramToServiceMsg = "null";
-        continue;
-        return;
+        paramFromServiceMsg = paramFromServiceMsg.getStringForLog();
+        ((HashMap)localObject).put("from", paramFromServiceMsg);
+        paramFromServiceMsg = str;
+        if (paramToServiceMsg != null) {
+          paramFromServiceMsg = paramToServiceMsg.getStringForLog();
+        }
+        ((HashMap)localObject).put("to", paramFromServiceMsg);
+        if (MsfService.getCore().getStatReporter() != null)
+        {
+          MsfService.getCore().getStatReporter().a("msf.cmd.Evt10008", true, 0L, 0L, (Map)localObject, false, false);
+          return;
+        }
       }
       catch (Throwable paramToServiceMsg)
       {
         paramToServiceMsg.printStackTrace();
       }
-      label217:
-      label218:
+      return;
+      label237:
       paramFromServiceMsg = "null";
     }
   }
@@ -1287,45 +1248,38 @@ public class j
   public void a(boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3, long paramLong, ArrayList paramArrayList)
   {
     HashMap localHashMap = new HashMap();
-    int i3 = 0;
-    int i4 = 0;
-    int i1 = i4;
-    int i2 = i3;
-    if (!paramBoolean3)
+    if ((!paramBoolean3) && (paramArrayList.size() > 0))
     {
-      i1 = i4;
-      i2 = i3;
-      if (paramArrayList.size() > 0)
-      {
-        localHashMap.put("param_Reason", String.valueOf(((com.tencent.mobileqq.msf.core.net.a)paramArrayList.get(paramArrayList.size() - 1)).e));
-        if (((com.tencent.mobileqq.msf.core.net.a)paramArrayList.get(paramArrayList.size() - 1)).e != x.m) {
-          break label201;
-        }
-        i2 = 1;
-        i1 = i4;
-      }
-    }
-    for (;;)
-    {
-      localHashMap.put("param_GatewayIp", ac.q());
-      localHashMap.put("param_FailCode", String.valueOf(paramArrayList.size()));
-      localObject = new StringBuilder();
-      paramArrayList = paramArrayList.iterator();
-      while (paramArrayList.hasNext())
-      {
-        com.tencent.mobileqq.msf.core.net.a locala = (com.tencent.mobileqq.msf.core.net.a)paramArrayList.next();
-        ((StringBuilder)localObject).append(locala.toString() + "|");
-      }
-      label201:
-      i1 = i4;
-      i2 = i3;
-      if (((com.tencent.mobileqq.msf.core.net.a)paramArrayList.get(paramArrayList.size() - 1)).e == x.i)
+      localHashMap.put("param_Reason", String.valueOf(((com.tencent.mobileqq.msf.core.net.a)paramArrayList.get(paramArrayList.size() - 1)).e));
+      if (((com.tencent.mobileqq.msf.core.net.a)paramArrayList.get(paramArrayList.size() - 1)).e == x.m)
       {
         i1 = 1;
-        i2 = i3;
+        break label116;
+      }
+      if (((com.tencent.mobileqq.msf.core.net.a)paramArrayList.get(paramArrayList.size() - 1)).e == x.i)
+      {
+        i1 = 0;
+        i2 = 1;
+        break label119;
       }
     }
-    Object localObject = ((StringBuilder)localObject).toString();
+    int i1 = 0;
+    label116:
+    int i2 = 0;
+    label119:
+    localHashMap.put("param_GatewayIp", ac.q());
+    localHashMap.put("param_FailCode", String.valueOf(paramArrayList.size()));
+    Object localObject = new StringBuilder();
+    paramArrayList = paramArrayList.iterator();
+    while (paramArrayList.hasNext())
+    {
+      com.tencent.mobileqq.msf.core.net.a locala = (com.tencent.mobileqq.msf.core.net.a)paramArrayList.next();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(locala.toString());
+      localStringBuilder.append("|");
+      ((StringBuilder)localObject).append(localStringBuilder.toString());
+    }
+    localObject = ((StringBuilder)localObject).toString();
     paramArrayList = (ArrayList)localObject;
     if (((String)localObject).endsWith("|")) {
       paramArrayList = ((String)localObject).substring(0, ((String)localObject).length() - 1);
@@ -1358,12 +1312,12 @@ public class j
     }
     if (r())
     {
-      if (i2 != 0)
+      if (i1 != 0)
       {
         a("dim.Msf.BG.ConnFailByUnreachable", paramBoolean3, paramLong, 0, localHashMap, false, false);
         return;
       }
-      if (i1 != 0)
+      if (i2 != 0)
       {
         a("dim.Msf.BG.ConnFailByPermission", paramBoolean3, paramLong, 0, localHashMap, false, false);
         return;
@@ -1371,12 +1325,12 @@ public class j
       a("dim.Msf.BG.ConnElapsedTime", paramBoolean3, paramLong, 0, localHashMap, false, false);
       return;
     }
-    if (i2 != 0)
+    if (i1 != 0)
     {
       a("dim.Msf.ConnFailByUnreachable", paramBoolean3, paramLong, 0, localHashMap, false, false);
       return;
     }
-    if (i1 != 0)
+    if (i2 != 0)
     {
       a("dim.Msf.ConnFailByPermission", paramBoolean3, paramLong, 0, localHashMap, false, false);
       return;
@@ -1386,39 +1340,53 @@ public class j
   
   void b()
   {
-    if (!this.ai.a) {
+    if (!this.ak.a)
+    {
       QLog.d("MSF.C.StatReport", 1, "doCrashControl crash control is off..");
-    }
-    SharedPreferences localSharedPreferences;
-    do
-    {
       return;
-      localSharedPreferences = BaseApplication.getContext().getSharedPreferences("msf_crashcontrol", 0);
-    } while (localSharedPreferences == null);
-    long l1 = localSharedPreferences.getLong("starttime", 0L);
-    int i1 = localSharedPreferences.getInt("crashcount", 0);
-    long l2 = System.currentTimeMillis();
-    this.aj.append("doCrashControl startTime=").append(ak.format(new Date(l1))).append(",currenttime=").append(ak.format(new Date(l2))).append(",crashCount=").append(i1).append("\n");
-    if ((l1 <= 0L) || (l2 <= l1) || (i1 < 0) || (l2 - l1 > this.ai.b * 1000))
-    {
-      i1 = 1;
-      l1 = l2;
     }
-    for (;;)
+    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("msf_crashcontrol", 0);
+    if (localSharedPreferences != null)
     {
-      if (i1 > this.ai.c) {
+      long l1 = localSharedPreferences.getLong("starttime", 0L);
+      int i1 = localSharedPreferences.getInt("crashcount", 0);
+      long l2 = System.currentTimeMillis();
+      Object localObject = this.al;
+      ((StringBuilder)localObject).append("doCrashControl startTime=");
+      ((StringBuilder)localObject).append(am.format(new Date(l1)));
+      ((StringBuilder)localObject).append(",currenttime=");
+      ((StringBuilder)localObject).append(am.format(new Date(l2)));
+      ((StringBuilder)localObject).append(",crashCount=");
+      ((StringBuilder)localObject).append(i1);
+      ((StringBuilder)localObject).append("\n");
+      if ((l1 > 0L) && (l2 > l1) && (i1 >= 0) && (l2 - l1 <= this.ak.b * 1000))
+      {
+        i1 += 1;
+      }
+      else
+      {
+        l1 = l2;
+        i1 = 1;
+      }
+      if (i1 > this.ak.c) {
         this.Z = true;
       }
       if (this.Z)
       {
-        QLog.d("MSF.C.StatReport", 1, "doCrashControl crashCount=" + i1 + ",shouldStopMsf=" + this.Z);
-        BaseApplication localBaseApplication = BaseApplication.getContext();
-        localBaseApplication.stopService(new Intent(localBaseApplication, MsfService.class));
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("doCrashControl crashCount=");
+        ((StringBuilder)localObject).append(i1);
+        ((StringBuilder)localObject).append(",shouldStopMsf=");
+        ((StringBuilder)localObject).append(this.Z);
+        QLog.d("MSF.C.StatReport", 1, ((StringBuilder)localObject).toString());
+        localObject = BaseApplication.getContext();
+        ((Context)localObject).stopService(new Intent((Context)localObject, MsfService.class));
       }
-      this.aj.append("doCrashControl shouldStopMsf=").append(this.Z).append("\n");
+      localObject = this.al;
+      ((StringBuilder)localObject).append("doCrashControl shouldStopMsf=");
+      ((StringBuilder)localObject).append(this.Z);
+      ((StringBuilder)localObject).append("\n");
       localSharedPreferences.edit().putLong("starttime", l1).putInt("crashcount", i1).putBoolean("shouldStopMsf", this.Z).commit();
-      return;
-      i1 += 1;
     }
   }
   
@@ -1430,7 +1398,15 @@ public class j
       if (TextUtils.isEmpty(str)) {
         return;
       }
-      paramToServiceMsg = str + "_" + String.valueOf(System.currentTimeMillis()) + "_" + u.b(paramToServiceMsg) + "_" + u.a(paramFromServiceMsg);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(str);
+      localStringBuilder.append("_");
+      localStringBuilder.append(String.valueOf(System.currentTimeMillis()));
+      localStringBuilder.append("_");
+      localStringBuilder.append(u.b(paramToServiceMsg));
+      localStringBuilder.append("_");
+      localStringBuilder.append(u.a(paramFromServiceMsg));
+      paramToServiceMsg = localStringBuilder.toString();
       paramFromServiceMsg = new HashMap();
       paramFromServiceMsg.put("errmsg", paramToServiceMsg);
       a("msf_sendMsgToApp_processIsNull", true, 0L, 0L, paramFromServiceMsg, false, false);
@@ -1451,13 +1427,17 @@ public class j
         if (TextUtils.isEmpty(str)) {
           return;
         }
-        str = str + "_" + String.valueOf(System.currentTimeMillis());
-        HashMap localHashMap = new HashMap();
-        localHashMap.put("uin", MsfCore.sCore.getAccountCenter().i());
-        localHashMap.put("msg", str);
-        localHashMap.put("sockImpl", paramString);
-        localHashMap.put("androidVer", String.valueOf(Build.VERSION.SDK_INT));
-        a("msf_monitor_invalidSocket", true, 0L, 0L, localHashMap, false, false);
+        Object localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append("_");
+        ((StringBuilder)localObject).append(String.valueOf(System.currentTimeMillis()));
+        str = ((StringBuilder)localObject).toString();
+        localObject = new HashMap();
+        ((HashMap)localObject).put("uin", MsfCore.sCore.getAccountCenter().i());
+        ((HashMap)localObject).put("msg", str);
+        ((HashMap)localObject).put("sockImpl", paramString);
+        ((HashMap)localObject).put("androidVer", String.valueOf(Build.VERSION.SDK_INT));
+        a("msf_monitor_invalidSocket", true, 0L, 0L, (Map)localObject, false, false);
         return;
       }
       catch (Throwable paramString)
@@ -1470,52 +1450,41 @@ public class j
   public void b(boolean paramBoolean, long paramLong, String paramString)
   {
     int i1 = this.Q.sender.b.l().j();
-    String str = "EvtConn";
+    String str;
     if (i1 == 1) {
       str = "EvtConnV4";
+    } else if (i1 == 2) {
+      str = "EvtConnV6";
+    } else {
+      str = "EvtConn";
     }
-    for (;;)
-    {
-      HashMap localHashMap = new HashMap();
-      localHashMap.put("address", paramString);
-      localHashMap.put("connCost", String.valueOf(paramLong));
-      localHashMap.put("supportIpfamily", String.valueOf(NetConnInfoCenter.getActiveNetIpFamily(false)));
-      if (MsfService.getCore().getStatReporter() != null) {
-        MsfService.getCore().getStatReporter().a(str, paramBoolean, 0L, 0L, localHashMap, false, false);
-      }
-      return;
-      if (i1 == 2) {
-        str = "EvtConnV6";
-      }
+    HashMap localHashMap = new HashMap();
+    localHashMap.put("address", paramString);
+    localHashMap.put("connCost", String.valueOf(paramLong));
+    localHashMap.put("supportIpfamily", String.valueOf(NetConnInfoCenter.getActiveNetIpFamily(false)));
+    if (MsfService.getCore().getStatReporter() != null) {
+      MsfService.getCore().getStatReporter().a(str, paramBoolean, 0L, 0L, localHashMap, false, false);
     }
   }
   
   public void c(boolean paramBoolean)
   {
-    int i1;
-    HashMap localHashMap;
-    String str;
-    if ((this.Q != null) && (this.Q.sender != null) && (this.Q.sender.b != null))
+    Object localObject = this.Q;
+    if ((localObject != null) && (((MsfCore)localObject).sender != null) && (this.Q.sender.b != null))
     {
-      i1 = this.Q.sender.b.l().j();
+      int i1 = this.Q.sender.b.l().j();
       int i2 = NetConnInfoCenter.getActiveNetIpFamily(false);
-      localHashMap = new HashMap();
+      HashMap localHashMap = new HashMap();
       localHashMap.put("activeIpfamily", String.valueOf(i2));
-      str = "EvtRegisterProxySucc";
-      if (i1 != 1) {
-        break label117;
+      if (i1 == 1) {
+        localObject = "EvtRegisterProxySuccV4";
+      } else if (i1 == 2) {
+        localObject = "EvtRegisterProxySuccV6";
+      } else {
+        localObject = "EvtRegisterProxySucc";
       }
-      str = "EvtRegisterProxySuccV4";
-    }
-    for (;;)
-    {
       if (MsfService.getCore().getStatReporter() != null) {
-        MsfService.getCore().getStatReporter().a(str, paramBoolean, 0L, 0L, localHashMap, false, false);
-      }
-      return;
-      label117:
-      if (i1 == 2) {
-        str = "EvtRegisterProxySuccV6";
+        MsfService.getCore().getStatReporter().a((String)localObject, paramBoolean, 0L, 0L, localHashMap, false, false);
       }
     }
   }
@@ -1547,28 +1516,34 @@ public class j
       return;
     }
     long l1 = System.currentTimeMillis();
-    Object localObject = new l(this);
+    Object localObject1 = new l(this);
     try
     {
-      CrashStrategyBean localCrashStrategyBean = new CrashStrategyBean();
-      localCrashStrategyBean.setUploadSpotCrash(false);
-      localCrashStrategyBean.setMaxStackFrame(6);
-      CrashReport.initCrashReport(BaseApplication.getContext(), (CrashHandleListener)localObject, null, false, localCrashStrategyBean);
-      localObject = BaseApplication.getContext().getDir("tombs", 0).getAbsolutePath();
-      CrashReport.initNativeCrashReport(BaseApplication.getContext(), (String)localObject, true);
+      localObject2 = new CrashStrategyBean();
+      ((CrashStrategyBean)localObject2).setUploadSpotCrash(false);
+      ((CrashStrategyBean)localObject2).setMaxStackFrame(6);
+      CrashReport.initCrashReport(BaseApplication.getContext(), (CrashHandleListener)localObject1, null, false, (CrashStrategyBean)localObject2);
+      localObject1 = BaseApplication.getContext().getDir("tombs", 0).getAbsolutePath();
+      CrashReport.initNativeCrashReport(BaseApplication.getContext(), (String)localObject1, true);
       CrashReport.filterSysLog(true, true);
       W.set(true);
-      if (QLog.isColorLevel()) {
-        QLog.d("MSF.C.StatReport", 2, "init RQD finished, cost=" + (System.currentTimeMillis() - l1));
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("init RQD finished, cost=");
+        ((StringBuilder)localObject1).append(System.currentTimeMillis() - l1);
+        QLog.d("MSF.C.StatReport", 2, ((StringBuilder)localObject1).toString());
       }
-      this.aj.append("\nCurrent process id=").append(Process.myPid());
+      localObject1 = this.al;
+      ((StringBuilder)localObject1).append("\nCurrent process id=");
+      ((StringBuilder)localObject1).append(Process.myPid());
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        QLog.w("MSF.C.StatReport", 1, "init RQD error " + localThrowable, localThrowable);
-      }
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("init RQD error ");
+      ((StringBuilder)localObject2).append(localThrowable);
+      QLog.w("MSF.C.StatReport", 1, ((StringBuilder)localObject2).toString(), localThrowable);
     }
     BaseApplication.getContext().getMSFInterfaceAdapter().clearStartupPatchFailCount();
   }
@@ -1583,105 +1558,85 @@ public class j
   
   public void f()
   {
-    if (!V.get()) {
-      ae = com.tencent.mobileqq.msf.core.a.a.m();
-    }
-    try
+    long l1;
+    boolean bool;
+    if (!V.get())
     {
-      localObject = BaseApplication.getContext().getSharedPreferences("msf_crashcontrol", 0);
-      if ((localObject != null) && (((SharedPreferences)localObject).getBoolean("shouldStopMsf", false)))
+      ag = com.tencent.mobileqq.msf.core.a.a.m();
+      try
       {
-        a("actMsfStopMsf", true, 0L, 0L, null, true, false);
-        ((SharedPreferences)localObject).edit().putBoolean("shouldStopMsf", false).commit();
+        SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("msf_crashcontrol", 0);
+        if ((localSharedPreferences != null) && (localSharedPreferences.getBoolean("shouldStopMsf", false)))
+        {
+          a("actMsfStopMsf", true, 0L, 0L, null, true, false);
+          localSharedPreferences.edit().putBoolean("shouldStopMsf", false).commit();
+        }
       }
-    }
-    catch (Throwable localThrowable)
-    {
-      Object localObject;
-      Iterator localIterator;
-      QLog.w("MSF.C.StatReport", 1, "init beacon error " + localThrowable, localThrowable);
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      catch (Throwable localThrowable)
+      {
+        break label196;
+      }
+      catch (Exception localException)
       {
         localException.printStackTrace();
       }
-      if (!QLog.isColorLevel()) {
-        break label270;
-      }
-      QLog.d("MSF.C.StatReport", 2, "registerTunnel, size = " + localException.size());
+      l1 = System.currentTimeMillis();
+      BaseApplication.getContext().startBeacon();
       ANRReport.stopANRMonitor();
       X.start();
       V.set(true);
       if (o.k != 0) {
-        break label347;
+        break label236;
       }
+      bool = false;
     }
-    long l1 = System.currentTimeMillis();
-    com.tencent.beacon.upload.UploadStrategy.DEFAULT_SENSOR_ENABLE = false;
-    UserAction.initUserAction(BaseApplication.getContext(), true, 1200L);
-    localObject = BaseApplication.getContext().getAppData("channel_id");
-    if ((localObject != null) && ((localObject instanceof String))) {
-      UserAction.setChannelID((String)localObject);
-    }
-    UserAction.closeUseInfoEvent();
-    UserAction.setAutoLaunchEventUsable(true);
-    if (i.a().f())
-    {
-      localObject = BaseApplication.getContext().getRegisterBeaconTunnel();
-      localIterator = ((List)localObject).iterator();
-      while (localIterator.hasNext()) {
-        UserAction.registerTunnel((TunnelInfo)localIterator.next());
-      }
-    }
-    label270:
-    label347:
-    for (boolean bool = false;; bool = true)
+    for (;;)
     {
       a("dim.Msf.IMEIReading", bool, o.k, 0L, null, false, false);
-      if (!QLog.isColorLevel()) {
-        break;
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder1 = new StringBuilder();
+        localStringBuilder1.append("init beacon finished, cost=");
+        localStringBuilder1.append(System.currentTimeMillis() - l1);
+        QLog.d("MSF.C.StatReport", 2, localStringBuilder1.toString());
+        return;
+        label196:
+        StringBuilder localStringBuilder2 = new StringBuilder();
+        localStringBuilder2.append("init beacon error ");
+        localStringBuilder2.append(localStringBuilder1);
+        QLog.w("MSF.C.StatReport", 1, localStringBuilder2.toString(), localStringBuilder1);
       }
-      QLog.d("MSF.C.StatReport", 2, "init beacon finished, cost=" + (System.currentTimeMillis() - l1));
       return;
+      label236:
+      bool = true;
     }
   }
   
   String g()
   {
-    int i3 = 0;
-    int i2 = 0;
     NetworkInfo localNetworkInfo = ((ConnectivityManager)BaseApplication.getContext().getSystemService("connectivity")).getActiveNetworkInfo();
     if (localNetworkInfo != null)
     {
-      int i4;
-      if (localNetworkInfo.isAvailable())
-      {
-        i1 = 1;
-        i4 = (byte)i1;
-        if (!localNetworkInfo.isConnected()) {
-          break label107;
-        }
-      }
-      label107:
-      for (int i1 = 2;; i1 = 0)
-      {
-        int i5 = (byte)i1;
-        i1 = i3;
-        if (NetConnInfoCenter.isMobileNetworkInfo(localNetworkInfo))
-        {
-          i1 = i2;
-          if (((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getDataState() == 2) {
-            i1 = 4;
-          }
-          i1 = (byte)i1;
-        }
-        return String.valueOf((byte)(i5 | i4 | i1));
+      int i4 = (byte)localNetworkInfo.isAvailable();
+      boolean bool = localNetworkInfo.isConnected();
+      int i3 = 0;
+      int i2 = 0;
+      if (bool) {
+        i1 = 2;
+      } else {
         i1 = 0;
-        break;
       }
+      int i5 = (byte)i1;
+      int i1 = i3;
+      if (NetConnInfoCenter.isMobileNetworkInfo(localNetworkInfo))
+      {
+        i1 = i2;
+        if (((TelephonyManager)BaseApplication.getContext().getSystemService("phone")).getDataState() == 2) {
+          i1 = 4;
+        }
+        i1 = (byte)i1;
+      }
+      return String.valueOf((byte)(i5 | i4 | i1));
     }
     return "-1";
   }
@@ -1697,7 +1652,8 @@ public class j
   
   public void k()
   {
-    if ((this.Q != null) && (this.Q.sender != null) && (this.Q.sender.b != null)) {
+    MsfCore localMsfCore = this.Q;
+    if ((localMsfCore != null) && (localMsfCore.sender != null) && (this.Q.sender.b != null)) {
       a(this.Q.sender.b.l().l(), this.Q.sender.b.l().k(), this.Q.sender.b.l().j());
     }
   }
@@ -1720,7 +1676,7 @@ public class j
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.c.j
  * JD-Core Version:    0.7.0.1
  */

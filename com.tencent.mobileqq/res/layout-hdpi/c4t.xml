@@ -4,9 +4,9 @@
     <LinearLayout android:id="@id/h77" android:visibility="gone" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <ImageView android:layout_gravity="center_vertical" android:id="@id/g1c" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="85.0dip" />
     </LinearLayout>
-    <com.tencent.biz.pubaccount.PhotoHorizontalScrollView android:id="@id/fqi" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
+    <com.tencent.biz.ui.PhotoHorizontalScrollView android:id="@id/fqi" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:fadingEdge="none" android:layout_width="fill_parent" android:layout_height="wrap_content">
         <LinearLayout android:layout_gravity="center_vertical" android:orientation="horizontal" android:layout_width="wrap_content" android:layout_height="wrap_content">
             <com.tencent.widget.GridView android:layout_gravity="center" android:id="@id/fqh" android:focusable="false" android:focusableInTouchMode="false" android:scrollbars="none" android:fadingEdge="none" android:layout_width="wrap_content" android:layout_height="wrap_content" android:listSelector="@color/ajr" android:cacheColorHint="@null" android:horizontalSpacing="10.0dip" android:verticalSpacing="0.0dip" android:stretchMode="none" />
         </LinearLayout>
-    </com.tencent.biz.pubaccount.PhotoHorizontalScrollView>
+    </com.tencent.biz.ui.PhotoHorizontalScrollView>
 </LinearLayout>

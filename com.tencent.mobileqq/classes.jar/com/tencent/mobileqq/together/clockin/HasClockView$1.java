@@ -11,24 +11,28 @@ class HasClockView$1
   
   public boolean onTouch(View paramView, MotionEvent paramMotionEvent)
   {
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return true;
-      HasClockView.a(this.a, 0.5F);
-      continue;
+      if (i != 1)
+      {
+        if (i != 3) {
+          return true;
+        }
+        HasClockView.a(this.a, 1.0F);
+        return true;
+      }
       HasClockView.a(this.a, 1.0F);
       this.a.a();
-      continue;
-      HasClockView.a(this.a, 1.0F);
+      return true;
     }
+    HasClockView.a(this.a, 0.5F);
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.together.clockin.HasClockView.1
  * JD-Core Version:    0.7.0.1
  */

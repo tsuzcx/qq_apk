@@ -91,7 +91,7 @@ public class MsgProxyDummyCallback
   
   public boolean a(String paramString1, int paramInt, String paramString2, MsgProxy paramMsgProxy)
   {
-    return !paramMsgProxy.a().containsKey(paramString2);
+    return paramMsgProxy.a().containsKey(paramString2) ^ true;
   }
   
   public boolean a(AppRuntime paramAppRuntime, MessageRecord paramMessageRecord)
@@ -113,7 +113,7 @@ public class MsgProxyDummyCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.MsgProxyDummyCallback
  * JD-Core Version:    0.7.0.1
  */

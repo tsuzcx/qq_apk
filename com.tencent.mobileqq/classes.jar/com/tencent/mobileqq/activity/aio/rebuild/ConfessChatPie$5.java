@@ -27,60 +27,86 @@ class ConfessChatPie$5
   public void OnClick(View paramView, int paramInt)
   {
     this.jdField_a_of_type_ComTencentWidgetActionSheet.cancel();
-    switch (paramInt)
+    Object localObject1;
+    Object localObject2;
+    if (paramInt != 0)
     {
-    }
-    do
-    {
-      do
-      {
+      if (paramInt != 1) {
         return;
-        paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-      } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a() == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (TextUtils.isEmpty(paramView)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-      try
-      {
-        localObject1 = NewReportPlugin.b(paramView, NewReportPlugin.b(2));
-        if (QLog.isColorLevel()) {
-          QLog.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.b, 2, "openMoreOptions uin:" + paramView + " uinCode:" + (String)localObject1);
-        }
-        localObject2 = ConfessChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie);
-        Object localObject3 = new ArrayList();
-        if (localObject2 != null) {
-          ((List)localObject3).addAll((Collection)localObject2);
-        }
-        localObject2 = NewReportPlugin.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 21002, 10, (List)localObject3);
-        localObject3 = ((String)localObject2).replaceAll(paramView, (String)localObject1);
-        Bundle localBundle = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
-        if (QLog.isColorLevel()) {
-          QLog.i(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.b, 2, "openMoreOptions safetyReport reportMsgOrg: " + (String)localObject2 + "  reportMsg: " + (String)localObject3);
-        }
-        NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a(), paramView, (String)localObject1, null, null, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 21002, (String)localObject3, localBundle);
       }
-      catch (Throwable paramView)
-      {
-        for (;;)
-        {
-          QLog.e(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.b, 1, "openMoreOptions safetyReport error" + paramView.getMessage());
-        }
-      }
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80091A4", "0X80091A4", 0, 0, "", "", "", "");
-      return;
       paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a() == null) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (TextUtils.isEmpty(paramView)) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null));
-    Object localObject1 = (ConfessHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFESS_HANDLER);
-    Object localObject2 = ((ConfessManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
-    if (localObject2 == null) {}
-    for (paramInt = 24;; paramInt = ((ConfessConfig)localObject2).j)
+      if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (!TextUtils.isEmpty(paramView)))
+      {
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+          return;
+        }
+        try
+        {
+          localObject1 = NewReportPlugin.b(paramView, NewReportPlugin.b(2));
+          if (QLog.isColorLevel())
+          {
+            localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.b;
+            localObject3 = new StringBuilder();
+            ((StringBuilder)localObject3).append("openMoreOptions uin:");
+            ((StringBuilder)localObject3).append(paramView);
+            ((StringBuilder)localObject3).append(" uinCode:");
+            ((StringBuilder)localObject3).append((String)localObject1);
+            QLog.i((String)localObject2, 2, ((StringBuilder)localObject3).toString());
+          }
+          localObject2 = ConfessChatPie.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie);
+          Object localObject3 = new ArrayList();
+          if (localObject2 != null) {
+            ((List)localObject3).addAll((Collection)localObject2);
+          }
+          localObject2 = NewReportPlugin.a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 21002, 10, (List)localObject3);
+          localObject3 = ((String)localObject2).replaceAll(paramView, (String)localObject1);
+          Bundle localBundle = NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo);
+          if (QLog.isColorLevel())
+          {
+            String str = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.b;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("openMoreOptions safetyReport reportMsgOrg: ");
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append("  reportMsg: ");
+            localStringBuilder.append((String)localObject3);
+            QLog.i(str, 2, localStringBuilder.toString());
+          }
+          NewReportPlugin.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a(), paramView, (String)localObject1, null, null, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 21002, (String)localObject3, localBundle);
+        }
+        catch (Throwable paramView)
+        {
+          localObject1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.b;
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("openMoreOptions safetyReport error");
+          ((StringBuilder)localObject2).append(paramView.getMessage());
+          QLog.e((String)localObject1, 1, ((StringBuilder)localObject2).toString());
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X80091A4", "0X80091A4", 0, 0, "", "", "", "");
+        return;
+      }
+      return;
+    }
+    paramView = this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString;
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a() != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo != null) && (!TextUtils.isEmpty(paramView)))
     {
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null) {
+        return;
+      }
+      localObject1 = (ConfessHandler)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.CONFESS_HANDLER);
+      localObject2 = ((ConfessManager)this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONFESS_MANAGER)).b();
+      if (localObject2 == null) {
+        paramInt = 24;
+      } else {
+        paramInt = ((ConfessConfig)localObject2).j;
+      }
       ((ConfessHandler)localObject1).a(paramView, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_Int, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.e, this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.jdField_a_of_type_ComTencentMobileqqConfessConfessInfo, paramInt);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildConfessChatPie.a(0, ConfessConfig.h, 0);
-      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.ConfessChatPie.5
  * JD-Core Version:    0.7.0.1
  */

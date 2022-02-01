@@ -23,19 +23,19 @@ public class ConfessPlugin$ChooseFriendReceiver
     if (QLog.isColorLevel()) {
       QLog.i("ConfessPlugin", 2, String.format("onReceiveResult resultCode=%d", new Object[] { Integer.valueOf(paramInt) }));
     }
-    if ((paramInt != 0) || (paramBundle == null))
+    if ((paramInt == 0) && (paramBundle != null))
     {
-      this.a.a(null, null);
+      ArrayList localArrayList = paramBundle.getStringArrayList("choose_friend_uins");
+      paramBundle = paramBundle.getStringArrayList("choose_friend_names");
+      this.a.a(localArrayList, paramBundle);
       return;
     }
-    ArrayList localArrayList = paramBundle.getStringArrayList("choose_friend_uins");
-    paramBundle = paramBundle.getStringArrayList("choose_friend_names");
-    this.a.a(localArrayList, paramBundle);
+    this.a.a(null, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.confess.ConfessPlugin.ChooseFriendReceiver
  * JD-Core Version:    0.7.0.1
  */

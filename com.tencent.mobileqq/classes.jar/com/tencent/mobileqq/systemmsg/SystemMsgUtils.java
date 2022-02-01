@@ -24,7 +24,7 @@ public class SystemMsgUtils
   private static long J = I + (H - G);
   private static long a = 202000000L;
   private static long b = 213000000L;
-  private static long c = 0L;
+  private static long c;
   private static long d = c + (b - a);
   private static long e = 480000000L;
   private static long f = 489000000L;
@@ -51,167 +51,156 @@ public class SystemMsgUtils
   
   public static int a(int paramInt1, int paramInt2)
   {
-    if (paramInt1 == 1) {}
-    switch (paramInt2)
+    int i1 = paramInt1;
+    if (paramInt1 == 1)
     {
-    default: 
-      return paramInt1;
-    case 1: 
-      return 2;
-    case 2: 
-      return 3;
-    case 3: 
-      return 7;
+      if (paramInt2 != 1)
+      {
+        if (paramInt2 != 2)
+        {
+          if (paramInt2 != 3)
+          {
+            if (paramInt2 != 4) {
+              return paramInt1;
+            }
+            return 8;
+          }
+          return 7;
+        }
+        return 3;
+      }
+      i1 = 2;
     }
-    return 8;
+    return i1;
   }
   
   public static int a(int paramInt1, int paramInt2, int paramInt3)
   {
-    int i1;
     if (paramInt2 == 11)
     {
-      i1 = paramInt1;
-      if (paramInt1 == 1) {
-        switch (paramInt3)
-        {
-        default: 
-          i1 = 2;
-        }
-      }
+      if (paramInt1 != 1) {}
     }
-    do
-    {
+    else {
       do
       {
-        return i1;
         return 2;
-        if (paramInt2 != 12) {
-          break;
+        if (paramInt2 == 12)
+        {
+          if (paramInt1 != 1) {
+            break;
+          }
+          return 3;
         }
-        i1 = paramInt1;
-      } while (paramInt1 != 1);
-      switch (paramInt3)
-      {
-      default: 
-        return 3;
-      }
-      return 3;
-      if (paramInt2 == 13) {
-        return 3;
-      }
-      if (paramInt2 == 14) {
-        return 4;
-      }
-      i1 = paramInt1;
-    } while (paramInt2 != 16);
-    return 2;
+        if (paramInt2 == 13) {
+          return 3;
+        }
+        if (paramInt2 == 14) {
+          return 4;
+        }
+      } while (paramInt2 == 16);
+    }
+    return paramInt1;
   }
   
   public static String a(long paramLong)
   {
-    long l2 = 0L;
-    int i2 = -1;
-    int i1 = i2;
-    long l1 = l2;
-    if (paramLong >= c)
+    long l1 = c;
+    int i3 = 0;
+    if ((paramLong >= l1) && (paramLong < d))
     {
-      i1 = i2;
-      l1 = l2;
-      if (paramLong < d)
-      {
-        l1 = paramLong - c + a;
-        i1 = 0;
-      }
+      l2 = paramLong - l1 + a;
+      i2 = 0;
     }
-    i2 = i1;
-    l2 = l1;
-    if (paramLong >= g)
+    else
     {
-      i2 = i1;
-      l2 = l1;
+      l2 = 0L;
+      i2 = -1;
+    }
+    long l3 = g;
+    l1 = l2;
+    int i1 = i2;
+    if (paramLong >= l3)
+    {
+      l1 = l2;
+      i1 = i2;
       if (paramLong < h)
       {
-        l2 = paramLong - g + e;
-        i2 = 0;
+        l1 = paramLong - l3 + e;
+        i1 = 0;
       }
     }
-    i1 = i2;
-    l1 = l2;
-    if (paramLong >= k)
+    l3 = k;
+    long l2 = l1;
+    int i2 = i1;
+    if (paramLong >= l3)
     {
-      i1 = i2;
-      l1 = l2;
+      l2 = l1;
+      i2 = i1;
       if (paramLong < l)
       {
-        l1 = paramLong - k + i;
-        i1 = 0;
+        l2 = paramLong - l3 + i;
+        i2 = 0;
       }
     }
-    i2 = i1;
-    l2 = l1;
-    if (paramLong >= o)
+    l3 = o;
+    l1 = l2;
+    i1 = i2;
+    if (paramLong >= l3)
     {
-      i2 = i1;
-      l2 = l1;
+      l1 = l2;
+      i1 = i2;
       if (paramLong < p)
       {
-        l2 = paramLong - o + m;
-        i2 = 0;
+        l1 = paramLong - l3 + m;
+        i1 = 0;
       }
     }
-    i1 = i2;
-    l1 = l2;
-    if (paramLong >= s)
+    l3 = s;
+    l2 = l1;
+    i2 = i1;
+    if (paramLong >= l3)
     {
-      i1 = i2;
-      l1 = l2;
+      l2 = l1;
+      i2 = i1;
       if (paramLong < t)
       {
-        l1 = paramLong - s + q;
-        i1 = 0;
+        l2 = paramLong - l3 + q;
+        i2 = 0;
       }
     }
-    i2 = i1;
-    l2 = l1;
-    if (paramLong >= w)
+    l3 = w;
+    l1 = l2;
+    i1 = i2;
+    if (paramLong >= l3)
     {
-      i2 = i1;
-      l2 = l1;
+      l1 = l2;
+      i1 = i2;
       if (paramLong < x)
       {
-        l2 = paramLong - w + u;
-        i2 = 0;
-      }
-    }
-    i1 = i2;
-    l1 = l2;
-    if (paramLong >= A)
-    {
-      i1 = i2;
-      l1 = l2;
-      if (paramLong < B)
-      {
-        if ((paramLong >= E) && (paramLong < F))
-        {
-          l1 = E;
-          l1 = C;
-        }
-        l1 = paramLong - A + y;
+        l1 = paramLong - l3 + u;
         i1 = 0;
       }
     }
-    i2 = i1;
     l2 = l1;
-    if (paramLong >= I)
+    i2 = i1;
+    if (paramLong >= A)
     {
-      i2 = i1;
       l2 = l1;
-      if (paramLong < J)
+      i2 = i1;
+      if (paramLong < B)
       {
-        l2 = paramLong - I + G;
+        if ((paramLong >= E) && (paramLong < F)) {
+          l1 = C;
+        }
+        l2 = paramLong - A + y;
         i2 = 0;
       }
+    }
+    l1 = I;
+    if ((paramLong >= l1) && (paramLong < J))
+    {
+      l2 = G + (paramLong - l1);
+      i2 = i3;
     }
     if (i2 == 0) {
       return String.valueOf(l2);
@@ -221,105 +210,84 @@ public class SystemMsgUtils
   
   public static void a(structmsg.StructMsg paramStructMsg, int paramInt1, String paramString, int paramInt2)
   {
-    if (paramStructMsg != null) {
-      switch (paramStructMsg.msg_type.get())
+    if (paramStructMsg != null)
+    {
+      paramInt2 = paramStructMsg.msg_type.get();
+      List localList;
+      String str;
+      if (paramInt2 != 1)
       {
+        if (paramInt2 != 2) {
+          return;
+        }
+        localList = paramStructMsg.msg.actions.get();
+        if ((localList != null) && (localList.size() > paramInt1) && (a(paramStructMsg.msg.sub_type.get(), paramStructMsg.msg.group_msg_type.get())))
+        {
+          str = ((structmsg.SystemMsgAction)localList.get(paramInt1)).result.get();
+          paramStructMsg.msg.msg_decided.set(str);
+          paramStructMsg.msg.msg_detail.set(paramString);
+          paramInt1 = a(paramStructMsg.msg.sub_type.get(), ((structmsg.SystemMsgAction)localList.get(paramInt1)).action_info.type.get(), paramStructMsg.msg.group_msg_type.get());
+          paramStructMsg.msg.sub_type.set(paramInt1);
+          paramStructMsg.msg.actions.clear();
+        }
+      }
+      else
+      {
+        localList = paramStructMsg.msg.actions.get();
+        if ((localList != null) && (localList.size() > paramInt1))
+        {
+          str = ((structmsg.SystemMsgAction)localList.get(paramInt1)).result.get();
+          paramStructMsg.msg.msg_decided.set(str);
+          paramStructMsg.msg.msg_detail.set(paramString);
+          paramInt1 = a(paramStructMsg.msg.sub_type.get(), ((structmsg.SystemMsgAction)localList.get(paramInt1)).action_info.type.get());
+          paramStructMsg.msg.sub_type.set(paramInt1);
+          paramStructMsg.msg.actions.clear();
+        }
       }
     }
-    List localList;
-    do
-    {
-      do
-      {
-        return;
-        localList = paramStructMsg.msg.actions.get();
-      } while ((localList == null) || (localList.size() <= paramInt1));
-      str = ((structmsg.SystemMsgAction)localList.get(paramInt1)).result.get();
-      paramStructMsg.msg.msg_decided.set(str);
-      paramStructMsg.msg.msg_detail.set(paramString);
-      paramInt1 = a(paramStructMsg.msg.sub_type.get(), ((structmsg.SystemMsgAction)localList.get(paramInt1)).action_info.type.get());
-      paramStructMsg.msg.sub_type.set(paramInt1);
-      paramStructMsg.msg.actions.clear();
-      return;
-      localList = paramStructMsg.msg.actions.get();
-    } while ((localList == null) || (localList.size() <= paramInt1) || (!a(paramStructMsg.msg.sub_type.get(), paramStructMsg.msg.group_msg_type.get())));
-    String str = ((structmsg.SystemMsgAction)localList.get(paramInt1)).result.get();
-    paramStructMsg.msg.msg_decided.set(str);
-    paramStructMsg.msg.msg_detail.set(paramString);
-    paramInt1 = a(paramStructMsg.msg.sub_type.get(), ((structmsg.SystemMsgAction)localList.get(paramInt1)).action_info.type.get(), paramStructMsg.msg.group_msg_type.get());
-    paramStructMsg.msg.sub_type.set(paramInt1);
-    paramStructMsg.msg.actions.clear();
   }
   
   public static boolean a(int paramInt)
   {
-    return (paramInt == 0) || (paramInt == 1) || (paramInt == 2) || (paramInt == 3) || (paramInt == 4) || (paramInt == 5) || (paramInt == 6) || (paramInt == 7) || (paramInt == 8) || (paramInt == 9) || (paramInt == 10) || (paramInt == 12) || (paramInt == 13);
+    if ((paramInt != 0) && (paramInt != 1) && (paramInt != 2) && (paramInt != 3) && (paramInt != 4) && (paramInt != 5) && (paramInt != 6) && (paramInt != 7) && (paramInt != 8) && (paramInt != 9) && (paramInt != 10) && (paramInt != 12)) {
+      return paramInt == 13;
+    }
+    return true;
   }
   
   private static boolean a(int paramInt1, int paramInt2)
   {
-    boolean bool2 = true;
-    boolean bool1 = bool2;
-    if (paramInt1 == 3) {
-      if (paramInt2 != 10)
-      {
-        bool1 = bool2;
-        if (paramInt2 != 11) {}
-      }
-      else
-      {
-        bool1 = false;
-      }
-    }
-    return bool1;
+    return (paramInt1 != 3) || ((paramInt2 != 10) && (paramInt2 != 11));
   }
   
   public static boolean a(structmsg.StructMsg paramStructMsg, int paramInt, String paramString1, String paramString2)
   {
-    boolean bool2 = false;
-    boolean bool1 = bool2;
-    if (paramStructMsg != null)
-    {
-      bool1 = bool2;
-      if (paramInt != 0)
+    if ((paramStructMsg != null) && (paramInt != 0) && (paramInt != 3)) {
+      if (paramStructMsg.msg_type.get() == 1)
       {
-        bool1 = bool2;
-        if (paramInt != 3)
+        if ((paramStructMsg.msg.sub_type.get() == 9) || (paramStructMsg.msg.sub_type.get() == 10) || (paramStructMsg.msg.sub_type.get() == 1))
         {
-          if (paramStructMsg.msg_type.get() != 1) {
-            break label125;
-          }
-          if ((paramStructMsg.msg.sub_type.get() != 9) && (paramStructMsg.msg.sub_type.get() != 10))
-          {
-            bool1 = bool2;
-            if (paramStructMsg.msg.sub_type.get() != 1) {}
-          }
-          else
-          {
-            paramStructMsg.msg.msg_decided.set(paramString2);
-            paramStructMsg.msg.msg_detail.set(paramString1);
-            paramStructMsg.msg.actions.clear();
-            bool1 = true;
-          }
+          paramStructMsg.msg.msg_decided.set(paramString2);
+          paramStructMsg.msg.msg_detail.set(paramString1);
+          paramStructMsg.msg.actions.clear();
+          return true;
         }
       }
+      else if (paramStructMsg.msg_type.get() == 2)
+      {
+        paramStructMsg.msg.sub_type.set(5);
+        paramStructMsg.msg.msg_decided.set(paramString2);
+        paramStructMsg.msg.msg_detail.set(paramString1);
+        paramStructMsg.msg.actions.clear();
+        return true;
+      }
     }
-    label125:
-    do
-    {
-      return bool1;
-      bool1 = bool2;
-    } while (paramStructMsg.msg_type.get() != 2);
-    paramStructMsg.msg.sub_type.set(5);
-    paramStructMsg.msg.msg_decided.set(paramString2);
-    paramStructMsg.msg.msg_detail.set(paramString1);
-    paramStructMsg.msg.actions.clear();
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.systemmsg.SystemMsgUtils
  * JD-Core Version:    0.7.0.1
  */

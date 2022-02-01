@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.profilecard.vas.view;
 
 import android.widget.ImageView;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.data.ExtensionInfo;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
 import com.tencent.mobileqq.statistics.ReportController;
 import com.tencent.mobileqq.utils.AvatarPendantUtil;
 import com.tencent.mobileqq.vas.AvatarPendantManager;
@@ -18,30 +18,31 @@ class VasProfileQVipV5View$1$1
   
   public void run()
   {
-    if ((this.val$info != null) && (this.val$info.isPendantValid()))
+    Object localObject = this.val$info;
+    if ((localObject != null) && (((ExtensionInfo)localObject).isPendantValid()))
     {
       VasProfileQVipV5View.access$100(this.this$1.this$0).setVisibility(0);
       VasProfileQVipV5View.access$202(this.this$1.this$0, this.val$info.pendantId);
-      AvatarPendantManager localAvatarPendantManager = (AvatarPendantManager)VasProfileQVipV5View.access$300(this.this$1.this$0).getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
+      localObject = (AvatarPendantManager)VasProfileQVipV5View.access$300(this.this$1.this$0).getManager(QQManagerFactory.CHAT_AVATAR_PENDANT_MANAGER);
       if (AvatarPendantUtil.a(VasProfileQVipV5View.access$400(this.this$1.this$0))) {
-        localAvatarPendantManager.a(VasProfileQVipV5View.access$500(this.this$1.this$0)).a(VasProfileQVipV5View.access$100(this.this$1.this$0), 2, PendantInfo.c, this.this$1.val$cardInfo.a.a, this.val$info.pendantDiyId);
+        ((AvatarPendantManager)localObject).a(VasProfileQVipV5View.access$500(this.this$1.this$0)).a(VasProfileQVipV5View.access$100(this.this$1.this$0), 2, PendantInfo.c, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
+      } else {
+        ((AvatarPendantManager)localObject).a(VasProfileQVipV5View.access$600(this.this$1.this$0)).a(VasProfileQVipV5View.access$100(this.this$1.this$0), 1, PendantInfo.c, this.this$1.val$cardInfo.allInOne.uin, this.val$info.pendantDiyId);
       }
-      for (;;)
-      {
-        if (this.this$1.val$isInit) {
-          ReportController.b(VasProfileQVipV5View.access$700(this.this$1.this$0), "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
-        }
-        return;
-        localAvatarPendantManager.a(VasProfileQVipV5View.access$600(this.this$1.this$0)).a(VasProfileQVipV5View.access$100(this.this$1.this$0), 1, PendantInfo.c, this.this$1.val$cardInfo.a.a, this.val$info.pendantDiyId);
+      if (this.this$1.val$isInit) {
+        ReportController.b(VasProfileQVipV5View.access$700(this.this$1.this$0), "CliOper", "", "", "AvatarClick", "ppshow", 0, 0, "", "", "", "");
       }
     }
-    VasProfileQVipV5View.access$100(this.this$1.this$0).setVisibility(8);
-    VasProfileQVipV5View.access$802(this.this$1.this$0, 0L);
+    else
+    {
+      VasProfileQVipV5View.access$100(this.this$1.this$0).setVisibility(8);
+      VasProfileQVipV5View.access$802(this.this$1.this$0, 0L);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.vas.view.VasProfileQVipV5View.1.1
  * JD-Core Version:    0.7.0.1
  */

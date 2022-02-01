@@ -15,20 +15,21 @@ final class AsyncTask$b
   public final void handleMessage(Message paramMessage)
   {
     AsyncTask.a locala = (AsyncTask.a)paramMessage.obj;
-    switch (paramMessage.what)
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    default: 
-      return;
-    case 1: 
-      AsyncTask.c(locala.a, locala.b[0]);
+      if (i != 2) {
+        return;
+      }
+      locala.a.onProgressUpdate(locala.b);
       return;
     }
-    locala.a.onProgressUpdate(locala.b);
+    AsyncTask.c(locala.a, locala.b[0]);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.lib.thread.AsyncTask.b
  * JD-Core Version:    0.7.0.1
  */

@@ -14,8 +14,9 @@ public class TextBitmapInfo
   
   public void fill(byte[] paramArrayOfByte)
   {
-    boolean bool = true;
-    Arrays.fill(this.a, (byte)0);
+    byte[] arrayOfByte = this.a;
+    boolean bool = false;
+    Arrays.fill(arrayOfByte, (byte)0);
     System.arraycopy(paramArrayOfByte, 0, this.a, 0, 4);
     this.density = Float.intBitsToFloat(pa.a(this.a));
     System.arraycopy(paramArrayOfByte, 4, this.a, 0, 4);
@@ -25,18 +26,15 @@ public class TextBitmapInfo
     System.arraycopy(paramArrayOfByte, 12, this.a, 0, 4);
     this.pitch = pa.a(this.a);
     System.arraycopy(paramArrayOfByte, 16, this.a, 0, 1);
-    if (this.a[0] > 0) {}
-    for (;;)
-    {
-      this.bold = bool;
-      return;
-      bool = false;
+    if (this.a[0] > 0) {
+      bool = true;
     }
+    this.bold = bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.engine.jni.models.TextBitmapInfo
  * JD-Core Version:    0.7.0.1
  */

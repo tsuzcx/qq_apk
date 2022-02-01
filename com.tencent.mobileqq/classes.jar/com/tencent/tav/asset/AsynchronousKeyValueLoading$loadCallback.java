@@ -6,7 +6,7 @@ public abstract interface AsynchronousKeyValueLoading$loadCallback
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.tav.asset.AsynchronousKeyValueLoading.loadCallback
  * JD-Core Version:    0.7.0.1
  */

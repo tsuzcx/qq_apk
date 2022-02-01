@@ -45,8 +45,15 @@ public final class AudioPlayerManager$InnerAudioStateChangeHandler$downloadAndPl
       {
         AudioPlayerManager.InnerAudioStateChangeHandler.access$setLocalPath$p(this.this$0, this.$temp.getPathInGame());
         localObject2 = this.this$0.this$0.getLogger();
-        if (localObject2 != null) {
-          LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject2, LogDelegate.Level.INFO, "[audio] AudioPlayerManager", "download rawPath:" + this.$rawPathTemp + " success, localPath:" + AudioPlayerManager.InnerAudioStateChangeHandler.access$getLocalPath$p(this.this$0), null, 8, null);
+        if (localObject2 != null)
+        {
+          LogDelegate.Level localLevel = LogDelegate.Level.INFO;
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("download rawPath:");
+          localStringBuilder.append(this.$rawPathTemp);
+          localStringBuilder.append(" success, localPath:");
+          localStringBuilder.append(AudioPlayerManager.InnerAudioStateChangeHandler.access$getLocalPath$p(this.this$0));
+          LogDelegate.DefaultImpls.printLog$default((LogDelegate)localObject2, localLevel, "[audio] AudioPlayerManager", localStringBuilder.toString(), null, 8, null);
         }
         TritonAudioThreadPool.getAudioExecutorService().execute((Runnable)new AudioPlayerManager.InnerAudioStateChangeHandler.downloadAndPlayAudio.1.onSuccess..inlined.synchronized.lambda.1(this));
       }
@@ -57,7 +64,7 @@ public final class AudioPlayerManager$InnerAudioStateChangeHandler$downloadAndPl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.tritonaudio.inneraudio.AudioPlayerManager.InnerAudioStateChangeHandler.downloadAndPlayAudio.1
  * JD-Core Version:    0.7.0.1
  */

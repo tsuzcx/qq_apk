@@ -2,9 +2,10 @@ package com.tencent.hippy.qq.update;
 
 import android.content.Intent;
 import android.os.Bundle;
+import com.tencent.hippy.qq.api.PackageUpdateListener;
 
 class HippyUpdateManager$1
-  implements HippyQQUpdateManager.PackageUpdateListener
+  implements PackageUpdateListener
 {
   HippyUpdateManager$1(HippyUpdateManager paramHippyUpdateManager, Bundle paramBundle, String paramString) {}
   
@@ -17,7 +18,7 @@ class HippyUpdateManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.update.HippyUpdateManager.1
  * JD-Core Version:    0.7.0.1
  */

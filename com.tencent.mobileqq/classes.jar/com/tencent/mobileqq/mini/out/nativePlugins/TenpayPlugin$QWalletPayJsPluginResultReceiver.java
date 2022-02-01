@@ -4,8 +4,9 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.ResultReceiver;
 import com.tencent.common.app.AppInterface;
-import com.tencent.mobileqq.activity.qwallet.utils.H5HbUtil;
 import com.tencent.mobileqq.mini.out.nativePlugins.foundation.JSContext;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.qwallet.hb.IH5HbUtil;
 import com.tencent.qphone.base.util.QLog;
 
 public class TenpayPlugin$QWalletPayJsPluginResultReceiver
@@ -24,21 +25,30 @@ public class TenpayPlugin$QWalletPayJsPluginResultReceiver
   protected void onReceiveResult(int paramInt, Bundle paramBundle)
   {
     super.onReceiveResult(paramInt, paramBundle);
-    if (QLog.isColorLevel()) {
-      QLog.i("TenpayPlugin", 2, "resultCode = " + paramInt + " resultData = " + paramBundle);
-    }
-    if ((this.mJsPlugin == null) || (paramBundle == null)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return;
-      paramBundle = H5HbUtil.a(paramInt, paramBundle, this.mJsPlugin.getActivity());
-    } while (paramBundle == null);
-    this.mJsPlugin.evaluateCallback(true, paramBundle, "");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("resultCode = ");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" resultData = ");
+      localStringBuilder.append(paramBundle);
+      QLog.i("TenpayPlugin", 2, localStringBuilder.toString());
+    }
+    if (this.mJsPlugin != null)
+    {
+      if (paramBundle == null) {
+        return;
+      }
+      paramBundle = ((IH5HbUtil)QRoute.api(IH5HbUtil.class)).getGrapHbResult(paramInt, paramBundle, this.mJsPlugin.getActivity());
+      if (paramBundle != null) {
+        this.mJsPlugin.evaluateCallback(true, paramBundle, "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.out.nativePlugins.TenpayPlugin.QWalletPayJsPluginResultReceiver
  * JD-Core Version:    0.7.0.1
  */

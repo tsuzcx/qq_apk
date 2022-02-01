@@ -12,21 +12,25 @@ class FansTroopTipsBarHelper$1
 {
   FansTroopTipsBarHelper$1(FansTroopTipsBarHelper paramFansTroopTipsBarHelper) {}
   
-  public void onGetTroopInfoExtComplete(boolean paramBoolean, String paramString, TroopInfoExt paramTroopInfoExt)
+  protected void onGetTroopInfoExtComplete(boolean paramBoolean, String paramString, TroopInfoExt paramTroopInfoExt)
   {
     if (QLog.isColorLevel()) {
       QLog.d("FansTroopTipsBarHelper", 2, new Object[] { "onGetTroopInfoExtComplete. ", Boolean.valueOf(paramBoolean), "troopUin=", paramString });
     }
-    if ((!paramBoolean) || (TextUtils.isEmpty(paramString)) || (FansTroopTipsBarHelper.a(this.a) == null)) {}
-    while ((!TextUtils.equals(paramString, FansTroopTipsBarHelper.a(this.a).a)) || (!FansTroopUtils.a(FansTroopTipsBarHelper.a(this.a), paramString, paramTroopInfoExt))) {
-      return;
+    if ((paramBoolean) && (!TextUtils.isEmpty(paramString)))
+    {
+      if (FansTroopTipsBarHelper.a(this.a) == null) {
+        return;
+      }
+      if ((TextUtils.equals(paramString, FansTroopTipsBarHelper.a(this.a).a)) && (FansTroopUtils.a(FansTroopTipsBarHelper.a(this.a), paramString, paramTroopInfoExt))) {
+        this.a.a();
+      }
     }
-    this.a.a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FansTroopTipsBarHelper.1
  * JD-Core Version:    0.7.0.1
  */

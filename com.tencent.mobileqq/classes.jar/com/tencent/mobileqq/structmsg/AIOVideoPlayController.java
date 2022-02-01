@@ -10,10 +10,10 @@ import com.tencent.mobileqq.app.ThreadManager;
 import com.tencent.mobileqq.config.business.AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean;
 import com.tencent.mobileqq.dpc.api.IDPCApi;
 import com.tencent.mobileqq.dpc.enumname.DPCNames;
+import com.tencent.mobileqq.kandian.biz.common.api.IReadInJoyHelper;
 import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.mobileqq.widget.PAVideoView;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.readinjoy.ReadInJoyHelper;
 
 public class AIOVideoPlayController
 {
@@ -32,60 +32,60 @@ public class AIOVideoPlayController
   
   public static AIOVideoPlayController a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController == null) {
-        jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController = new AIOVideoPlayController();
+    if (jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController == null) {
+          jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController = new AIOVideoPlayController();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqStructmsgAIOVideoPlayController;
   }
   
   private boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean.jdField_a_of_type_Boolean;
+    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean;
+    if (localAIOVideoPlayConfigBean != null) {
+      return localAIOVideoPlayConfigBean.jdField_a_of_type_Boolean;
     }
     return false;
   }
   
   private boolean c()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean.b;
+    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean;
+    if (localAIOVideoPlayConfigBean != null) {
+      return localAIOVideoPlayConfigBean.b;
     }
     return false;
   }
   
   private boolean d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean.c;
+    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean;
+    if (localAIOVideoPlayConfigBean != null) {
+      return localAIOVideoPlayConfigBean.c;
     }
     return false;
   }
   
   private boolean e()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean != null) {
-      return this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean.d;
+    AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean localAIOVideoPlayConfigBean = this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean;
+    if (localAIOVideoPlayConfigBean != null) {
+      return localAIOVideoPlayConfigBean.d;
     }
     return false;
   }
   
   public void a(View paramView, StructMsgForGeneralShare paramStructMsgForGeneralShare)
   {
-    paramView = (PAVideoView)paramView.findViewById(2131378571);
+    paramView = (PAVideoView)paramView.findViewById(2131377982);
     if (paramView != null) {
       paramView.c();
     }
-  }
-  
-  public void a(AIOVideoPlayConfigProcessor.AIOVideoPlayConfigBean paramAIOVideoPlayConfigBean)
-  {
-    this.jdField_a_of_type_ComTencentMobileqqConfigBusinessAIOVideoPlayConfigProcessor$AIOVideoPlayConfigBean = paramAIOVideoPlayConfigBean;
   }
   
   public boolean a()
@@ -94,8 +94,12 @@ public class AIOVideoPlayController
     if (!this.jdField_a_of_type_Boolean)
     {
       localObject = ((IDPCApi)QRoute.api(IDPCApi.class)).getFeatureValue(DPCNames.aio_gifplay.name(), null);
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayController", 2, "isAllowDPC(): parseConfig, aio_gifplay =" + (String)localObject);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("isAllowDPC(): parseConfig, aio_gifplay =");
+        localStringBuilder.append((String)localObject);
+        QLog.d("AIOVideoPlayController", 2, localStringBuilder.toString());
       }
       if (!TextUtils.isEmpty((CharSequence)localObject))
       {
@@ -103,84 +107,98 @@ public class AIOVideoPlayController
         if (localObject.length < 8) {}
       }
     }
-    for (;;)
+    try
     {
-      try
-      {
-        if (Integer.parseInt(localObject[7]) != 0) {
-          continue;
-        }
+      if (Integer.parseInt(localObject[7]) == 0) {
         this.c = false;
-        if (Integer.parseInt(localObject[9]) != 0) {
-          continue;
-        }
-        this.b = false;
+      } else {
+        this.c = true;
       }
-      catch (Exception localException)
-      {
-        this.jdField_a_of_type_Boolean = false;
-        continue;
+      if (Integer.parseInt(localObject[9]) == 0) {
+        this.b = false;
+      } else {
         this.b = true;
-        continue;
       }
       this.jdField_a_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayController", 2, "isAllowDPC(): mDPCAllow =" + this.c + ", mEnbleAutoPlayInNotPAAIO = " + this.b);
-      }
-      return this.c;
-      this.c = true;
     }
+    catch (Exception localException)
+    {
+      label140:
+      break label140;
+    }
+    this.jdField_a_of_type_Boolean = false;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("isAllowDPC(): mDPCAllow =");
+      ((StringBuilder)localObject).append(this.c);
+      ((StringBuilder)localObject).append(", mEnbleAutoPlayInNotPAAIO = ");
+      ((StringBuilder)localObject).append(this.b);
+      QLog.d("AIOVideoPlayController", 2, ((StringBuilder)localObject).toString());
+    }
+    return this.c;
   }
   
   public boolean a(Context paramContext, int paramInt1, int paramInt2)
   {
-    boolean bool;
-    if (a())
+    boolean bool2 = a();
+    boolean bool1 = true;
+    if (bool2)
     {
-      QQAppInterface localQQAppInterface = (QQAppInterface)BaseApplicationImpl.getApplication().getRuntime();
-      if (localQQAppInterface == null) {
+      if ((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime() == null) {
         return false;
       }
       if (paramInt1 == 3)
       {
-        if ((!NetworkUtils.isWifiConnected(paramContext)) || (!ReadInJoyHelper.e(localQQAppInterface))) {
-          break label169;
+        if ((NetworkUtils.isWifiConnected(paramContext)) && (((IReadInJoyHelper)QRoute.api(IReadInJoyHelper.class)).getVideoStructMsgPlaySwitch())) {
+          break label118;
         }
-        bool = true;
+      }
+      else
+      {
+        if (paramInt1 == 1)
+        {
+          if (paramInt2 == 1)
+          {
+            bool1 = b();
+            break label118;
+          }
+          bool1 = c();
+          break label118;
+        }
+        if (paramInt1 == 2)
+        {
+          if (paramInt2 == 1)
+          {
+            bool1 = d();
+            break label118;
+          }
+          bool1 = e();
+          break label118;
+        }
       }
     }
-    for (;;)
+    bool1 = false;
+    label118:
+    if (QLog.isColorLevel())
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOVideoPlayController", 2, "allowAutoPlay(): playType=" + paramInt1 + ", uinType = " + paramInt2 + ", result = " + bool + ", mDPCAllow = " + this.c);
-      }
-      return bool;
-      if (paramInt1 == 1)
-      {
-        if (paramInt2 == 1) {
-          bool = b();
-        } else {
-          bool = c();
-        }
-      }
-      else if (paramInt1 == 2)
-      {
-        if (paramInt2 == 1) {
-          bool = d();
-        } else {
-          bool = e();
-        }
-      }
-      else {
-        label169:
-        bool = false;
-      }
+      paramContext = new StringBuilder();
+      paramContext.append("allowAutoPlay(): playType=");
+      paramContext.append(paramInt1);
+      paramContext.append(", uinType = ");
+      paramContext.append(paramInt2);
+      paramContext.append(", result = ");
+      paramContext.append(bool1);
+      paramContext.append(", mDPCAllow = ");
+      paramContext.append(this.c);
+      QLog.d("AIOVideoPlayController", 2, paramContext.toString());
     }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.AIOVideoPlayController
  * JD-Core Version:    0.7.0.1
  */

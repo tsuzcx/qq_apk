@@ -1,38 +1,36 @@
 package com.tencent.mobileqq.activity.aio.item;
 
 import android.text.TextUtils;
-import com.tencent.ark.ArkDispatchTask;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.ark.ArkAppCenter;
-import com.tencent.mobileqq.ark.ArkAppSSO;
+import com.tencent.mobileqq.ark.api.IArkQualityReport;
+import com.tencent.mobileqq.ark.api.IArkService;
+import com.tencent.mobileqq.ark.api.IArkThreadManager;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.qphone.base.util.QLog;
 import java.lang.ref.WeakReference;
+import mqq.app.AppRuntime;
 
 class ArkSSODataRequest
   extends ArkDataRequest
 {
-  private static int d = 0;
-  private WeakReference<QQAppInterface> a;
-  private int c;
+  protected ArkSSODataRequest.Request a;
+  private final WeakReference<AppRuntime> a;
   protected String c;
   
-  ArkSSODataRequest(QQAppInterface paramQQAppInterface, String paramString)
+  ArkSSODataRequest(AppRuntime paramAppRuntime, String paramString)
   {
-    this.jdField_c_of_type_Int = 0;
-    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramQQAppInterface);
-    this.jdField_c_of_type_JavaLangString = paramString;
-  }
-  
-  private void b(int paramInt)
-  {
-    WeakReference localWeakReference = new WeakReference(this);
-    ArkAppCenter.a().post(this.jdField_c_of_type_JavaLangString, new ArkSSODataRequest.2(this, localWeakReference, paramInt));
+    this.jdField_a_of_type_JavaLangRefWeakReference = new WeakReference(paramAppRuntime);
+    this.c = paramString;
   }
   
   protected String a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    while ((paramString.length() < 6) || (!paramString.substring(0, 6).equalsIgnoreCase("sso://"))) {
+    if (TextUtils.isEmpty(paramString)) {
+      return null;
+    }
+    if (paramString.length() < 6) {
+      return null;
+    }
+    if (!paramString.substring(0, 6).equalsIgnoreCase("sso://")) {
       return null;
     }
     int i = paramString.indexOf('/', 6);
@@ -44,85 +42,96 @@ class ArkSSODataRequest
   
   public void a()
   {
-    this.jdField_c_of_type_Int = 0;
     this.jdField_a_of_type_JavaLangString = null;
     this.jdField_b_of_type_Int = -1;
     this.jdField_b_of_type_JavaLangString = null;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request = null;
     a(null);
   }
   
-  protected void a(int paramInt1, int paramInt2, String paramString)
+  void a(ArkSSODataRequest.Request paramRequest)
   {
-    if (paramInt1 != this.jdField_c_of_type_Int) {
-      ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# onComplete, req canceled, cookie=%d-%d, ret=%d, rsp=%s", new Object[] { Integer.valueOf(paramInt1), Integer.valueOf(this.jdField_c_of_type_Int), Integer.valueOf(paramInt2), paramString }));
-    }
-    do
+    WeakReference localWeakReference = new WeakReference(this);
+    ((IArkThreadManager)QRoute.api(IArkThreadManager.class)).postToAppThread(this.c, new ArkSSODataRequest.2(this, localWeakReference, paramRequest));
+  }
+  
+  protected void a(ArkSSODataRequest.Request paramRequest, int paramInt, String paramString)
+  {
+    if (paramRequest != this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request)
     {
+      QLog.i("ArkApp.SSODataRequest", 1, String.format("# onComplete, req canceled, ret=%s, rsp=%s", new Object[] { Integer.valueOf(paramInt), paramString }));
       return;
-      this.jdField_b_of_type_Int = paramInt2;
-      this.jdField_b_of_type_JavaLangString = paramString;
-      this.jdField_c_of_type_Int = 0;
-      paramString = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest$IDataRequestCallback;
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest$IDataRequestCallback = null;
-    } while (paramString == null);
-    paramString.a();
+    }
+    IArkQualityReport localIArkQualityReport = (IArkQualityReport)QRoute.api(IArkQualityReport.class);
+    AppRuntime localAppRuntime = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    String str1 = this.c;
+    String str2 = paramRequest.jdField_a_of_type_JavaLangString;
+    boolean bool;
+    if (paramInt == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    localIArkQualityReport.reportAppSSOResult(localAppRuntime, str1, str2, bool, paramRequest.a());
+    this.jdField_b_of_type_Int = paramInt;
+    this.jdField_b_of_type_JavaLangString = paramString;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request = null;
+    paramRequest = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest$IDataRequestCallback;
+    this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkDataRequest$IDataRequestCallback = null;
+    if (paramRequest != null) {
+      paramRequest.a();
+    }
+  }
+  
+  protected boolean a(ArkSSODataRequest.Request paramRequest, int paramInt)
+  {
+    Object localObject = (AppRuntime)this.jdField_a_of_type_JavaLangRefWeakReference.get();
+    if (localObject == null)
+    {
+      QLog.i("ArkApp.SSODataRequest", 1, String.format("# fail to send, app is null, url=%s, cmd=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramRequest.jdField_a_of_type_JavaLangString }));
+      return false;
+    }
+    localObject = (IArkService)((AppRuntime)localObject).getRuntimeService(IArkService.class, "all");
+    WeakReference localWeakReference = new WeakReference(this);
+    ((IArkService)localObject).sendAppMsg(paramRequest.jdField_a_of_type_JavaLangString, paramRequest.jdField_b_of_type_JavaLangString, this.jdField_a_of_type_Int, 0, new ArkSSODataRequest.1(this, localWeakReference, paramRequest));
+    return true;
   }
   
   public boolean a(String paramString)
   {
     if (!super.a(paramString))
     {
-      ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to open, url=%s", new Object[] { paramString }));
+      QLog.i("ArkApp.SSODataRequest", 1, String.format("# fail to open, url=%s", new Object[] { paramString }));
       return false;
     }
     return true;
-  }
-  
-  protected boolean a(String paramString1, String paramString2, int paramInt1, int paramInt2)
-  {
-    Object localObject = (QQAppInterface)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    if (localObject == null)
-    {
-      ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to send, app is null, url=%s, req=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramString2 }));
-      return false;
-    }
-    localObject = ((ArkAppCenter)((QQAppInterface)localObject).getManager(QQManagerFactory.ARK_APP_CENTER_MANAGER)).a();
-    WeakReference localWeakReference = new WeakReference(this);
-    return ((ArkAppSSO)localObject).a(paramString1, paramString2, this.jdField_a_of_type_Int, paramInt2, new ArkSSODataRequest.1(this, localWeakReference));
   }
   
   public boolean b(String paramString)
   {
-    boolean bool = true;
-    if ((this.jdField_c_of_type_Int != 0) || (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request == null) && (!TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)))
     {
-      ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to send, cookie=%d, url=%s, req=%s", new Object[] { Integer.valueOf(this.jdField_c_of_type_Int), this.jdField_a_of_type_JavaLangString, paramString }));
-      bool = false;
-    }
-    int i;
-    String str;
-    do
-    {
-      return bool;
-      i = d + 1;
-      d = i;
-      this.jdField_c_of_type_Int = i;
-      str = a(this.jdField_a_of_type_JavaLangString);
-      if (TextUtils.isEmpty(str))
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request = new ArkSSODataRequest.Request(a(this.jdField_a_of_type_JavaLangString), paramString);
+      if (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request.jdField_a_of_type_JavaLangString))
       {
-        ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to send, cmd is empty, cookie=%d, url=%s, reqData=%s", new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString, paramString }));
-        b(i);
+        QLog.i("ArkApp.SSODataRequest", 1, String.format("# fail to send, cmd is empty, url=%s, reqData=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramString }));
+        a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request);
         return true;
       }
-    } while (a(str, paramString, this.jdField_a_of_type_Int, i));
-    ArkAppCenter.c("ArkApp.SSODataRequest", String.format("# fail to send, sso.sendAppMsg fail, cookie=%d, url=%s, reqData=%s", new Object[] { Integer.valueOf(i), this.jdField_a_of_type_JavaLangString, paramString }));
-    b(i);
-    return true;
+      if (!a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request, this.jdField_a_of_type_Int))
+      {
+        QLog.i("ArkApp.SSODataRequest", 1, String.format("# fail to send, sso.sendAppMsg fail, url=%s, reqData=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramString }));
+        a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemArkSSODataRequest$Request);
+      }
+      return true;
+    }
+    QLog.i("ArkApp.SSODataRequest", 1, String.format("# fail to send, running url=%s, req=%s", new Object[] { this.jdField_a_of_type_JavaLangString, paramString }));
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ArkSSODataRequest
  * JD-Core Version:    0.7.0.1
  */

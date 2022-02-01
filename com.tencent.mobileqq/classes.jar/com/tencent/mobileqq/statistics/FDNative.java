@@ -29,15 +29,16 @@ public class FDNative
   
   public static FDNative a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqStatisticsFDNative == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqStatisticsFDNative == null) {
-        jdField_a_of_type_ComTencentMobileqqStatisticsFDNative = new FDNative();
+    if (jdField_a_of_type_ComTencentMobileqqStatisticsFDNative == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqStatisticsFDNative == null) {
+          jdField_a_of_type_ComTencentMobileqqStatisticsFDNative = new FDNative();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqStatisticsFDNative;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqStatisticsFDNative;
   }
   
   public static void a()
@@ -106,10 +107,10 @@ public class FDNative
   
   public ArrayList<Integer> a()
   {
-    int i = 0;
     ArrayList localArrayList = (ArrayList)nativeCollectFDList();
     if (QLog.isColorLevel())
     {
+      int i = 0;
       if (localArrayList != null) {
         i = localArrayList.size();
       }
@@ -135,7 +136,7 @@ public class FDNative
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.statistics.FDNative
  * JD-Core Version:    0.7.0.1
  */

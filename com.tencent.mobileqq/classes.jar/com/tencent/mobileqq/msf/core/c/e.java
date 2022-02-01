@@ -28,7 +28,7 @@ public class e
   public static final int s = 17;
   public static final int t = 18;
   public static final int u = 100;
-  static e v = null;
+  static e v;
   static String w = "";
   Thread A = new Thread(new f(this));
   final int x = 100;
@@ -40,33 +40,40 @@ public class e
     if (v == null)
     {
       v = new e();
-      w = Environment.getExternalStorageDirectory().getPath() + "/tencent/audio/";
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(Environment.getExternalStorageDirectory().getPath());
+      localStringBuilder.append("/tencent/audio/");
+      w = localStringBuilder.toString();
     }
     return v;
   }
   
   public void a(e.a arg1, byte[] paramArrayOfByte, int paramInt)
   {
-    if (paramArrayOfByte == null) {}
-    for (;;)
-    {
+    if (paramArrayOfByte == null) {
       return;
-      String str = ??? + "_" + String.valueOf(SystemClock.elapsedRealtime()) + "_" + paramInt + ".msf";
-      synchronized (this.y)
-      {
-        this.z.put(str, paramArrayOfByte);
-        if (this.A.isAlive()) {
-          continue;
-        }
+    }
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(???);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(String.valueOf(SystemClock.elapsedRealtime()));
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append(".msf");
+    localObject = ((StringBuilder)localObject).toString();
+    synchronized (this.y)
+    {
+      this.z.put(localObject, paramArrayOfByte);
+      if (!this.A.isAlive()) {
         this.A.start();
-        return;
       }
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.core.c.e
  * JD-Core Version:    0.7.0.1
  */

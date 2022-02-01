@@ -1,10 +1,8 @@
 package com.tencent.mobileqq.filemanager.activity.cloudfile;
 
 import com.tencent.mobileqq.filemanager.activity.BaseFileAssistantActivity;
-import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
 import com.tencent.mobileqq.filemanager.util.IClickListenerVer51;
 import com.tencent.mobileqq.filemanager.util.IReportVer51;
-import com.tencent.qphone.base.util.QLog;
 
 class QfileCloudFileTabView$1
   extends IClickListenerVer51
@@ -21,12 +19,7 @@ class QfileCloudFileTabView$1
     this.a.a.a().h();
   }
   
-  public void c()
-  {
-    if (QLog.isColorLevel()) {
-      QLog.e(QfileBaseCloudFileTabView.b, 2, "wy saveto wy?" + FileManagerUtil.a());
-    }
-  }
+  public void c() {}
   
   public void d()
   {
@@ -45,7 +38,7 @@ class QfileCloudFileTabView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.activity.cloudfile.QfileCloudFileTabView.1
  * JD-Core Version:    0.7.0.1
  */

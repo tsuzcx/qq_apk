@@ -37,61 +37,61 @@ public class MiniAppEngineLoadTask
   
   private boolean isMiniAppSatisfy(InstalledEngine paramInstalledEngine, MiniAppInfo paramMiniAppInfo)
   {
-    boolean bool = true;
     if (paramInstalledEngine == null) {
-      bool = false;
+      return false;
     }
-    while (paramMiniAppInfo != null) {
-      return bool;
-    }
+    if (paramMiniAppInfo == null) {}
     return true;
   }
   
   private void loadEngine(InstalledEngine paramInstalledEngine)
   {
-    for (;;)
+    try
     {
-      try
+      if (this.mEngine == null)
       {
-        if (this.mEngine == null)
-        {
-          QMLog.i("MiniAppEngineLoadTask", "[MiniEng]mEngine == null, loadEngineTask is reset?");
-          return;
-        }
-        long l = System.currentTimeMillis();
-        QMLog.i("MiniAppEngineLoadTask", "[MiniEng]initEngine");
-        if (paramInstalledEngine != null) {
-          MiniAppSoLoader.g().setEngine(paramInstalledEngine);
-        }
-        if (!MiniAppSoLoader.g().loadAllMiniSo())
-        {
-          QMLog.e("MiniAppEngineLoadTask", "[MiniEng]initEngine fail");
-          onTaskFailed();
-          continue;
-        }
-        QMLog.e("MiniAppEngineLoadTask", "[MiniEng]loadSo cost time " + (System.currentTimeMillis() - l));
+        QMLog.i("MiniAppEngineLoadTask", "[MiniEng]mEngine == null, loadEngineTask is reset?");
+        return;
       }
-      finally {}
+      long l = System.currentTimeMillis();
+      QMLog.i("MiniAppEngineLoadTask", "[MiniEng]initEngine");
+      if (paramInstalledEngine != null) {
+        MiniAppSoLoader.g().setEngine(paramInstalledEngine);
+      }
+      if (!MiniAppSoLoader.g().loadAllMiniSo())
+      {
+        QMLog.e("MiniAppEngineLoadTask", "[MiniEng]initEngine fail");
+        onTaskFailed();
+        return;
+      }
+      paramInstalledEngine = new StringBuilder();
+      paramInstalledEngine.append("[MiniEng]loadSo cost time ");
+      paramInstalledEngine.append(System.currentTimeMillis() - l);
+      QMLog.e("MiniAppEngineLoadTask", paramInstalledEngine.toString());
       onTaskSucceed();
+      return;
     }
+    finally {}
   }
   
   private void sendCommand(int paramInt, Bundle paramBundle)
   {
     paramBundle.putInt("baseLibType", this.mLibType);
     paramBundle.putInt("enginePid", Process.myPid());
-    QMLog.i("MiniAppEngineLoadTask", "[MiniEng]installEngineRequestCount " + this.installEngineRequestCount);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng]installEngineRequestCount ");
+    localStringBuilder.append(this.installEngineRequestCount);
+    QMLog.i("MiniAppEngineLoadTask", localStringBuilder.toString());
     if (this.installEngineRequestCount >= 2)
     {
       QMLog.i("MiniAppEngineLoadTask", "[MiniEng]GET_INSTALLED_ENGINE_LIST requestCount reaches max 2");
       onTaskFailed(103, "加载引擎超时");
-    }
-    do
-    {
       return;
-      this.mEngineChannel.send(paramInt, paramBundle);
-    } while (paramInt != 3);
-    this.installEngineRequestCount += 1;
+    }
+    this.mEngineChannel.send(paramInt, paramBundle);
+    if (paramInt == 3) {
+      this.installEngineRequestCount += 1;
+    }
   }
   
   public void executeAsync()
@@ -102,11 +102,15 @@ public class MiniAppEngineLoadTask
       return;
     }
     EngineChannel localEngineChannel = new EngineChannel();
-    localEngineChannel.setName("AppEngine(" + Process.myPid() + ")");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("AppEngine(");
+    ((StringBuilder)localObject).append(Process.myPid());
+    ((StringBuilder)localObject).append(")");
+    localEngineChannel.setName(((StringBuilder)localObject).toString());
     localEngineChannel.setReceiver(this);
-    Bundle localBundle = new Bundle();
-    localBundle.putParcelable("engineChannel", localEngineChannel);
-    sendCommand(1, localBundle);
+    localObject = new Bundle();
+    ((Bundle)localObject).putParcelable("engineChannel", localEngineChannel);
+    sendCommand(1, (Bundle)localObject);
   }
   
   public InstalledEngine getEngine()
@@ -116,18 +120,25 @@ public class MiniAppEngineLoadTask
   
   public void onReceiveData(int paramInt, Bundle paramBundle)
   {
-    QMLog.i("MiniAppEngineLoadTask", "[MiniEng] onReceiveData what=" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[MiniEng] onReceiveData what=");
+    localStringBuilder.append(paramInt);
+    QMLog.i("MiniAppEngineLoadTask", localStringBuilder.toString());
     if (paramBundle != null) {
       paramBundle.setClassLoader(getClass().getClassLoader());
     }
-    if (paramInt == 51) {
+    if (paramInt == 51)
+    {
       if (paramBundle != null)
       {
         paramBundle = paramBundle.getParcelableArrayList("installedEngineList");
         if (paramBundle != null)
         {
           paramInt = paramBundle.size();
-          QMLog.i("MiniAppEngineLoadTask", "[MiniEng] getInstalledEngineList success " + paramInt);
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("[MiniEng] getInstalledEngineList success ");
+          localStringBuilder.append(paramInt);
+          QMLog.i("MiniAppEngineLoadTask", localStringBuilder.toString());
           if (paramInt > 0)
           {
             paramBundle = (InstalledEngine)paramBundle.get(0);
@@ -135,49 +146,55 @@ public class MiniAppEngineLoadTask
             {
               this.mEngine = paramBundle;
               loadEngine(paramBundle);
+              return;
             }
+            onTaskFailed(101, "未知错误");
+            return;
           }
+          QMLog.i("MiniAppEngineLoadTask", "[MiniEng] no engine installed, send cmd WHAT_INSTALL_LATEST_ENGINE");
+          sendCommand(3, new Bundle());
+          return;
         }
-      }
-    }
-    do
-    {
-      do
-      {
-        return;
-        onTaskFailed(101, "未知错误");
-        return;
-        QMLog.i("MiniAppEngineLoadTask", "[MiniEng] no engine installed, send cmd WHAT_INSTALL_LATEST_ENGINE");
-        sendCommand(3, new Bundle());
-        return;
         QMLog.i("MiniAppEngineLoadTask", "[MiniEng] getInstalledEngineList miniAppEngineList is null");
         onTaskFailed(102, "获取引擎信息失败");
         return;
-        QMLog.i("MiniAppEngineLoadTask", "[MiniEng] getInstalledEngineList data is null");
-        onTaskFailed(102, "获取引擎信息失败");
-        return;
-        if (paramInt == 52)
-        {
-          QMLog.i("MiniAppEngineLoadTask", "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_BEGIN");
-          return;
-        }
-        if (paramInt != 53) {
-          break;
-        }
-      } while (paramBundle == null);
-      paramBundle = paramBundle.getString("engineInstallerMessage");
-      QMLog.i("MiniAppEngineLoadTask", "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_PROCESS " + paramBundle);
+      }
+      QMLog.i("MiniAppEngineLoadTask", "[MiniEng] getInstalledEngineList data is null");
+      onTaskFailed(102, "获取引擎信息失败");
       return;
-    } while (paramInt != 54);
-    QMLog.i("MiniAppEngineLoadTask", "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_FINISH");
-    sendCommand(1, new Bundle());
+    }
+    if (paramInt == 52)
+    {
+      QMLog.i("MiniAppEngineLoadTask", "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_BEGIN");
+      return;
+    }
+    if (paramInt == 53)
+    {
+      if (paramBundle != null)
+      {
+        paramBundle = paramBundle.getString("engineInstallerMessage");
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("[MiniEng]EVENT_INSTALL_LATEST_ENGINE_PROCESS ");
+        localStringBuilder.append(paramBundle);
+        QMLog.i("MiniAppEngineLoadTask", localStringBuilder.toString());
+      }
+    }
+    else if (paramInt == 54)
+    {
+      QMLog.i("MiniAppEngineLoadTask", "[MiniEng]EVENT_INSTALL_LATEST_ENGINE_FINISH");
+      sendCommand(1, new Bundle());
+    }
   }
   
   public void reset()
   {
     try
     {
-      QMLog.i("MiniAppEngineLoadTask", "[MiniEng]" + this + " reset ");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("[MiniEng]");
+      localStringBuilder.append(this);
+      localStringBuilder.append(" reset ");
+      QMLog.i("MiniAppEngineLoadTask", localStringBuilder.toString());
       this.installEngineRequestCount = 0;
       this.mMiniAppInfo = null;
       this.mEngine = null;
@@ -208,7 +225,7 @@ public class MiniAppEngineLoadTask
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.task.MiniAppEngineLoadTask
  * JD-Core Version:    0.7.0.1
  */

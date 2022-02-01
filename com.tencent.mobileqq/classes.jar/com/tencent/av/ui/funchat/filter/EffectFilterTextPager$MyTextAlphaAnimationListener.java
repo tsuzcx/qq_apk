@@ -19,7 +19,12 @@ class EffectFilterTextPager$MyTextAlphaAnimationListener
   public void onAnimationEnd(Animation paramAnimation)
   {
     View localView = (View)this.jdField_a_of_type_JavaLangRefWeakReference.get();
-    AVLog.printColorLog("EffectFilterTextPager", "onAnimationEnd :" + localView + "|" + paramAnimation);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onAnimationEnd :");
+    localStringBuilder.append(localView);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramAnimation);
+    AVLog.printColorLog("EffectFilterTextPager", localStringBuilder.toString());
     if (localView != null) {
       localView.setVisibility(4);
     }
@@ -31,7 +36,7 @@ class EffectFilterTextPager$MyTextAlphaAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.funchat.filter.EffectFilterTextPager.MyTextAlphaAnimationListener
  * JD-Core Version:    0.7.0.1
  */

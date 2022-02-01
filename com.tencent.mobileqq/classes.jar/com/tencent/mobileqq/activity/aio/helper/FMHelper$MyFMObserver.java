@@ -10,159 +10,164 @@ import com.tencent.mobileqq.filemanager.core.FileManagerDataCenter;
 import com.tencent.mobileqq.filemanager.data.FileManagerEntity;
 import com.tencent.mobileqq.filemanager.data.ThumbnailInfo;
 import com.tencent.mobileqq.filemanager.util.FileManagerUtil;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.weiyun.api.IOpenWeiyunVipHelper;
+import com.tencent.mobileqq.weiyun.api.IWeiyunResponseHandler;
+import com.tencent.mobileqq.weiyun.api.IWeiyunSaveTipsHelper;
 import com.tencent.mobileqq.widget.QQToast;
 import com.tencent.qphone.base.util.QLog;
-import cooperation.weiyun.ResponseHandler;
-import cooperation.weiyun.WeiyunSaveTipsFactory;
-import cooperation.weiyun.vip.OpenWeiyunVipHelper;
 
 class FMHelper$MyFMObserver
   extends FMObserver
 {
   private FMHelper$MyFMObserver(FMHelper paramFMHelper) {}
   
-  public void a()
+  protected void a()
   {
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
   }
   
-  public void a(int paramInt, long paramLong, String paramString)
+  protected void a(int paramInt, long paramLong, String paramString)
   {
     FileManagerUtil.a(paramLong, paramInt, paramString);
-    OpenWeiyunVipHelper.a(null, paramInt);
-    FMHelper.a(this.a).bg();
+    ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(null, paramInt);
+    FMHelper.a(this.a).an();
   }
   
-  public void a(long paramLong1, long paramLong2)
+  protected void a(long paramLong1, long paramLong2)
   {
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
   }
   
-  public void a(long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
   }
   
-  public void a(long paramLong, String paramString1, int paramInt, String paramString2)
+  protected void a(long paramLong, String paramString1, int paramInt, String paramString2)
   {
     if ((paramString2 != null) && (paramString2.length() > 0))
     {
-      FileManagerUtil.c(paramString2);
+      FileManagerUtil.a(paramString2);
       return;
     }
     FileManagerUtil.a(paramLong);
   }
   
-  public void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
+  protected void a(long paramLong, boolean paramBoolean, int paramInt, String paramString)
   {
     if ((paramString != null) && (paramString.length() > 0)) {
-      FileManagerUtil.c(paramString);
+      FileManagerUtil.a(paramString);
     }
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
   }
   
-  public void a(ThumbnailInfo paramThumbnailInfo)
+  protected void a(ThumbnailInfo paramThumbnailInfo)
   {
-    if (paramThumbnailInfo == null) {}
-    FileManagerEntity localFileManagerEntity;
-    do
+    if (paramThumbnailInfo == null) {
+      return;
+    }
+    if ((paramThumbnailInfo.a instanceof FileManagerEntity))
     {
-      do
-      {
-        return;
-      } while (!(paramThumbnailInfo.a instanceof FileManagerEntity));
-      localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
+      FileManagerEntity localFileManagerEntity = (FileManagerEntity)paramThumbnailInfo.a;
       if ((paramThumbnailInfo.b != null) && (paramThumbnailInfo.b.length() > 0))
       {
         localFileManagerEntity.strThumbPath = paramThumbnailInfo.b;
         FMHelper.a(this.a).getFileManagerDataCenter().c(localFileManagerEntity);
-        FMHelper.a(this.a).bg();
+        FMHelper.a(this.a).an();
         return;
       }
-    } while (localFileManagerEntity.thumbInvalidCode != 1);
-    FMHelper.a(this.a).getFileManagerDataCenter().c(localFileManagerEntity);
-    FMHelper.a(this.a).bg();
+      if (localFileManagerEntity.thumbInvalidCode == 1)
+      {
+        FMHelper.a(this.a).getFileManagerDataCenter().c(localFileManagerEntity);
+        FMHelper.a(this.a).an();
+      }
+    }
   }
   
-  public void a(Integer paramInteger, long paramLong, String paramString)
+  protected void a(Integer paramInteger, long paramLong, String paramString)
   {
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
     FileManagerUtil.a(paramLong, paramInteger.intValue(), paramString);
-    OpenWeiyunVipHelper.a(null, paramInteger.intValue());
+    ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(null, paramInteger.intValue());
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
   }
   
-  public void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
+  protected void a(boolean paramBoolean, long paramLong1, long paramLong2, String paramString1, int paramInt1, int paramInt2, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("FMHelper", 2, "OnFileTransferEnd : isSuccess[" + paramBoolean + "], uniseq[" + paramLong1 + "], nSessionId[" + paramLong2 + paramString1 + "], peerType[" + paramInt1 + "]");
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("OnFileTransferEnd : isSuccess[");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append("], uniseq[");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append("], nSessionId[");
+      localStringBuilder.append(paramLong2);
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append("], peerType[");
+      localStringBuilder.append(paramInt1);
+      localStringBuilder.append("]");
+      QLog.d("FMHelper", 2, localStringBuilder.toString());
     }
     paramString1 = FMHelper.a(this.a).getFileManagerDataCenter().a(paramLong2);
-    if ((paramString1 != null) && (paramString1.nOpType == 6)) {
-      if (ResponseHandler.a(paramInt2))
-      {
-        if (!paramBoolean) {
-          break label158;
-        }
-        WeiyunSaveTipsFactory.a(FMHelper.a(this.a), FMHelper.a(this.a).a(), AIOUtils.a(FMHelper.a(this.a).jdField_a_of_type_AndroidContentContext));
-      }
-    }
-    for (;;)
+    if ((paramString1 != null) && (paramString1.nOpType == 6))
     {
-      FMHelper.a(this.a).bg();
-      return;
-      label158:
-      if (ResponseHandler.b())
-      {
-        ResponseHandler.a(FMHelper.a(this.a));
-      }
-      else
-      {
-        if (!TextUtils.isEmpty(paramString2)) {
-          QQToast.a(FMHelper.a(this.a).getApp(), paramString2, 1).b(AIOUtils.a(FMHelper.a(this.a).jdField_a_of_type_AndroidContentContext));
-        }
-        for (;;)
+      if (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).endSave2Weiyun(paramInt2)) {
+        if (paramBoolean)
         {
-          OpenWeiyunVipHelper.a(null, paramInt2);
-          break;
-          QQToast.a(FMHelper.a(this.a).getApp(), 2131692732, 1).b(AIOUtils.a(FMHelper.a(this.a).jdField_a_of_type_AndroidContentContext));
+          ((IWeiyunSaveTipsHelper)QRoute.api(IWeiyunSaveTipsHelper.class)).showTopTips(FMHelper.a(this.a), FMHelper.a(this.a).a(), AIOUtils.a(FMHelper.a(this.a).jdField_a_of_type_AndroidContentContext));
         }
-        if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(FMHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+        else if (((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).needShowGrayTips())
         {
-          FileManagerUtil.a(paramLong2, paramInt2, paramString2);
-          OpenWeiyunVipHelper.a(null, paramInt2);
+          ((IWeiyunResponseHandler)QRoute.api(IWeiyunResponseHandler.class)).showGrayTips(FMHelper.a(this.a));
+        }
+        else
+        {
+          if (!TextUtils.isEmpty(paramString2)) {
+            QQToast.a(FMHelper.a(this.a).getApp(), paramString2, 1).b(AIOUtils.a(FMHelper.a(this.a).jdField_a_of_type_AndroidContentContext));
+          } else {
+            QQToast.a(FMHelper.a(this.a).getApp(), 2131692689, 1).b(AIOUtils.a(FMHelper.a(this.a).jdField_a_of_type_AndroidContentContext));
+          }
+          ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(null, paramInt2);
         }
       }
     }
+    else if ((!paramBoolean) && (paramString1 != null) && (!TextUtils.isEmpty(paramString1.peerUin)) && (paramString1.peerUin.equalsIgnoreCase(FMHelper.a(this.a).jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)))
+    {
+      FileManagerUtil.a(paramLong2, paramInt2, paramString2);
+      ((IOpenWeiyunVipHelper)QRoute.api(IOpenWeiyunVipHelper.class)).showWeiYunSpaceOrFlowLimitDialog(null, paramInt2);
+    }
+    FMHelper.a(this.a).an();
   }
   
-  public void b()
+  protected void b()
   {
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
   }
   
-  public void b(long paramLong1, long paramLong2, String paramString, int paramInt)
+  protected void b(long paramLong1, long paramLong2, String paramString, int paramInt)
   {
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
   }
   
-  public void c()
+  protected void c()
   {
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
   }
   
-  public void d()
+  protected void d()
   {
-    FMHelper.a(this.a).bg();
+    FMHelper.a(this.a).an();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.FMHelper.MyFMObserver
  * JD-Core Version:    0.7.0.1
  */

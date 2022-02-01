@@ -29,40 +29,44 @@ final class ScriptTagPayloadReader
   
   private static Boolean readAmfBoolean(ParsableByteArray paramParsableByteArray)
   {
+    int i = paramParsableByteArray.readUnsignedByte();
     boolean bool = true;
-    if (paramParsableByteArray.readUnsignedByte() == 1) {}
-    for (;;)
-    {
-      return Boolean.valueOf(bool);
+    if (i != 1) {
       bool = false;
     }
+    return Boolean.valueOf(bool);
   }
   
   private static Object readAmfData(ParsableByteArray paramParsableByteArray, int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 4: 
-    case 5: 
-    case 6: 
-    case 7: 
-    case 9: 
-    default: 
-      return null;
-    case 0: 
-      return readAmfDouble(paramParsableByteArray);
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 8)
+            {
+              if (paramInt != 10)
+              {
+                if (paramInt != 11) {
+                  return null;
+                }
+                return readAmfDate(paramParsableByteArray);
+              }
+              return readAmfStrictArray(paramParsableByteArray);
+            }
+            return readAmfEcmaArray(paramParsableByteArray);
+          }
+          return readAmfObject(paramParsableByteArray);
+        }
+        return readAmfString(paramParsableByteArray);
+      }
       return readAmfBoolean(paramParsableByteArray);
-    case 2: 
-      return readAmfString(paramParsableByteArray);
-    case 3: 
-      return readAmfObject(paramParsableByteArray);
-    case 8: 
-      return readAmfEcmaArray(paramParsableByteArray);
-    case 10: 
-      return readAmfStrictArray(paramParsableByteArray);
     }
-    return readAmfDate(paramParsableByteArray);
+    return readAmfDouble(paramParsableByteArray);
   }
   
   private static Date readAmfDate(ParsableByteArray paramParsableByteArray)
@@ -142,31 +146,32 @@ final class ScriptTagPayloadReader
   
   protected void parsePayload(ParsableByteArray paramParsableByteArray, long paramLong)
   {
-    if (readAmfType(paramParsableByteArray) != 2) {
-      throw new ParserException();
-    }
-    if (!"onMetaData".equals(readAmfString(paramParsableByteArray))) {}
-    double d;
-    do
+    if (readAmfType(paramParsableByteArray) == 2)
     {
-      do
+      if (!"onMetaData".equals(readAmfString(paramParsableByteArray))) {
+        return;
+      }
+      if (readAmfType(paramParsableByteArray) != 8) {
+        return;
+      }
+      paramParsableByteArray = readAmfEcmaArray(paramParsableByteArray);
+      if (paramParsableByteArray.containsKey("duration"))
       {
-        do
-        {
-          return;
-        } while (readAmfType(paramParsableByteArray) != 8);
-        paramParsableByteArray = readAmfEcmaArray(paramParsableByteArray);
-      } while (!paramParsableByteArray.containsKey("duration"));
-      d = ((Double)paramParsableByteArray.get("duration")).doubleValue();
-    } while (d <= 0.0D);
-    this.durationUs = ((d * 1000000.0D));
+        double d = ((Double)paramParsableByteArray.get("duration")).doubleValue();
+        if (d > 0.0D) {
+          this.durationUs = ((d * 1000000.0D));
+        }
+      }
+      return;
+    }
+    throw new ParserException();
   }
   
   public void seek() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.flv.ScriptTagPayloadReader
  * JD-Core Version:    0.7.0.1
  */

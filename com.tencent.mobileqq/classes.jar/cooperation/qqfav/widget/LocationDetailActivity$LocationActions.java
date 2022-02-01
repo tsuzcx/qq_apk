@@ -56,11 +56,12 @@ public class LocationDetailActivity$LocationActions
   public void c()
   {
     LocationDetailActivity localLocationDetailActivity = (LocationDetailActivity)this.a.get();
-    if (localLocationDetailActivity == null) {}
-    while (!localLocationDetailActivity.d()) {
+    if (localLocationDetailActivity == null) {
       return;
     }
-    localLocationDetailActivity.finish();
+    if (localLocationDetailActivity.c()) {
+      localLocationDetailActivity.finish();
+    }
   }
   
   public void d()
@@ -69,7 +70,7 @@ public class LocationDetailActivity$LocationActions
     if (localLocationDetailActivity == null) {
       return;
     }
-    localLocationDetailActivity.A();
+    localLocationDetailActivity.h();
   }
   
   public void e()
@@ -84,12 +85,12 @@ public class LocationDetailActivity$LocationActions
       ForwardBaseOption.a(localLocationDetailActivity, localIntent, 103);
       return;
     }
-    QQToast.a(localLocationDetailActivity, 2131692279, 1, 2000).b(5);
+    QQToast.a(localLocationDetailActivity, 2131692205, 1, 2000).b(5);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     cooperation.qqfav.widget.LocationDetailActivity.LocationActions
  * JD-Core Version:    0.7.0.1
  */

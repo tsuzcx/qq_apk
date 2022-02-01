@@ -17,8 +17,18 @@ class QzoneWanbaJsPlugin$1
     {
       paramContext = paramIntent.getStringExtra("callback");
       int i = paramIntent.getIntExtra("ret", 1);
-      QZLog.i("QzoneWanbaJsPlugin", "收到广播消息 callback=" + paramContext + ",ret=" + i);
-      this.this$0.parentPlugin.callJs(paramContext, new String[] { "{'ret':" + i + "}" });
+      paramIntent = new StringBuilder();
+      paramIntent.append("收到广播消息 callback=");
+      paramIntent.append(paramContext);
+      paramIntent.append(",ret=");
+      paramIntent.append(i);
+      QZLog.i("QzoneWanbaJsPlugin", paramIntent.toString());
+      paramIntent = this.this$0.parentPlugin;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("{'ret':");
+      localStringBuilder.append(i);
+      localStringBuilder.append("}");
+      paramIntent.callJs(paramContext, new String[] { localStringBuilder.toString() });
       return;
     }
     catch (Exception paramContext)
@@ -29,7 +39,7 @@ class QzoneWanbaJsPlugin$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.webviewplugin.QzoneWanbaJsPlugin.1
  * JD-Core Version:    0.7.0.1
  */

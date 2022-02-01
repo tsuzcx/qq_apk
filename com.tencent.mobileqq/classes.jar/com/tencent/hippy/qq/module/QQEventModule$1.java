@@ -12,15 +12,19 @@ class QQEventModule$1
   
   public void onReceive(Context paramContext, Intent paramIntent)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("QQEventModule", 2, "init onReceive getAction:" + paramIntent.getAction());
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("init onReceive getAction:");
+      localStringBuilder.append(paramIntent.getAction());
+      QLog.d("QQEventModule", 2, localStringBuilder.toString());
     }
     QQEventModule.access$000(this.this$0, paramContext, paramIntent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQEventModule.1
  * JD-Core Version:    0.7.0.1
  */

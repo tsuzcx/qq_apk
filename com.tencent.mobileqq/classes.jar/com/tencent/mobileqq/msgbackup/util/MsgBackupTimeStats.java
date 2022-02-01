@@ -11,10 +11,10 @@ import java.util.concurrent.ConcurrentHashMap;
 
 public class MsgBackupTimeStats
 {
-  public static long a;
-  public static String a;
+  public static long a = 0L;
+  public static String a = "MsgBackup_timeStats";
   private static ConcurrentHashMap<String, Long> a;
-  public static boolean a;
+  public static boolean a = true;
   public static long b;
   private static ConcurrentHashMap<String, Long> b;
   public static boolean b;
@@ -32,8 +32,6 @@ public class MsgBackupTimeStats
   
   static
   {
-    jdField_a_of_type_Boolean = true;
-    jdField_a_of_type_JavaLangString = "MsgBackup_timeStats";
     jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(8));
     jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap = new ConcurrentHashMap(new HashMap(10));
     jdField_a_of_type_Long = 0L;
@@ -57,37 +55,40 @@ public class MsgBackupTimeStats
     MsgBackupReporter.a();
     MsgBackupReporter.a.jdField_a_of_type_Long = d;
     MsgBackupReporter.a.p = g;
-    String str1;
-    String str2;
-    if (MsgBackupTransportProcessor.a().e() == 2)
-    {
+    if (MsgBackupTransportProcessor.a().e() == 2) {
       MsgBackupReporter.a.q = e;
-      if (d > 0L) {
-        MsgBackupReporter.a.jdField_a_of_type_Double = (jdField_c_of_type_Long * 1000.0D / d);
-      }
-      if (jdField_a_of_type_Boolean)
+    } else {
+      MsgBackupReporter.a.q = f;
+    }
+    Object localObject;
+    if (d > 0L)
+    {
+      localObject = MsgBackupReporter.a;
+      double d1 = jdField_c_of_type_Long;
+      Double.isNaN(d1);
+      double d2 = d;
+      Double.isNaN(d2);
+      ((MsgBackupReportData)localObject).jdField_a_of_type_Double = (d1 * 1000.0D / d2);
+    }
+    if (jdField_a_of_type_Boolean)
+    {
+      localObject = MsgBackupUtil.a(jdField_b_of_type_Long);
+      String str1 = MsgBackupUtil.a(jdField_a_of_type_Long);
+      if (d == 0L)
       {
-        str1 = MsgBackupUtil.a(jdField_b_of_type_Long);
-        str2 = MsgBackupUtil.a(jdField_a_of_type_Long);
-        if (d != 0L) {
-          break label120;
-        }
         MsgBackupUtil.b(jdField_a_of_type_JavaLangString, "transport speed error", new Object[0]);
+        return;
+      }
+      MsgBackupUtil.b(jdField_a_of_type_JavaLangString, "transport speed sSizeCache.size = %d, sLogs.size = %d", new Object[] { Integer.valueOf(jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.size()), Integer.valueOf(jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()) });
+      long l1 = jdField_c_of_type_Long;
+      long l2 = 1000L * l1 / d;
+      MsgBackupUtil.b(jdField_a_of_type_JavaLangString, "transport speed totalLength = %d B, totalElipse = %d ms", new Object[] { Long.valueOf(l1), Long.valueOf(d) });
+      String str2 = MsgBackupUtil.a(l2);
+      MsgBackupUtil.b(jdField_a_of_type_JavaLangString, "transport speed max = %s, min = %s, average = %s", new Object[] { localObject, str1, str2 });
+      if (MsgBackupTransportProcessor.a().e() == 2) {
+        MsgBackupUtil.b(jdField_a_of_type_JavaLangString, HardCodeUtil.a(2131706953), new Object[] { Long.valueOf(e) });
       }
     }
-    label120:
-    do
-    {
-      return;
-      MsgBackupReporter.a.q = f;
-      break;
-      MsgBackupUtil.b(jdField_a_of_type_JavaLangString, "transport speed sSizeCache.size = %d, sLogs.size = %d", new Object[] { Integer.valueOf(jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.size()), Integer.valueOf(jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.size()) });
-      long l1 = jdField_c_of_type_Long * 1000L / d;
-      MsgBackupUtil.b(jdField_a_of_type_JavaLangString, "transport speed totalLength = %d B, totalElipse = %d ms", new Object[] { Long.valueOf(jdField_c_of_type_Long), Long.valueOf(d) });
-      String str3 = MsgBackupUtil.a(l1);
-      MsgBackupUtil.b(jdField_a_of_type_JavaLangString, "transport speed max = %s, min = %s, average = %s", new Object[] { str1, str2, str3 });
-    } while (MsgBackupTransportProcessor.a().e() != 2);
-    MsgBackupUtil.b(jdField_a_of_type_JavaLangString, HardCodeUtil.a(2131706931), new Object[] { Long.valueOf(e) });
   }
   
   public static void a(long paramLong)
@@ -98,8 +99,7 @@ public class MsgBackupTimeStats
       if (localLong != null)
       {
         MsgBackupUtil.b(jdField_a_of_type_JavaLangString, "transport complete complete = %d", new Object[] { localLong });
-        long l1 = jdField_c_of_type_Long;
-        jdField_c_of_type_Long = localLong.longValue() + l1;
+        jdField_c_of_type_Long += localLong.longValue();
       }
       jdField_c_of_type_JavaUtilConcurrentConcurrentHashMap.remove(Long.valueOf(paramLong));
     }
@@ -117,14 +117,12 @@ public class MsgBackupTimeStats
   
   public static void a(String paramString1, String paramString2)
   {
-    long l1;
-    Long localLong;
     if (jdField_a_of_type_Boolean)
     {
-      l1 = SystemClock.uptimeMillis();
+      long l1 = SystemClock.uptimeMillis();
       if (paramString1 != null)
       {
-        localLong = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
+        Long localLong = (Long)jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.remove(paramString1);
         if (localLong != null)
         {
           if (TextUtils.equals("total_transport_cost", paramString1)) {
@@ -139,21 +137,31 @@ public class MsgBackupTimeStats
           if (TextUtils.equals("cost_connect_total", paramString1)) {
             g += l1 - localLong.longValue();
           }
-          if (!QLog.isColorLevel()) {
-            break label178;
+          String str;
+          StringBuilder localStringBuilder;
+          if (QLog.isColorLevel())
+          {
+            str = jdField_a_of_type_JavaLangString;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString1);
+            localStringBuilder.append(", cost=");
+            localStringBuilder.append(l1 - localLong.longValue());
+            QLog.i(str, 2, localStringBuilder.toString());
           }
-          QLog.i(jdField_a_of_type_JavaLangString, 2, paramString1 + ", cost=" + (l1 - localLong.longValue()));
+          else
+          {
+            str = jdField_a_of_type_JavaLangString;
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(paramString1);
+            localStringBuilder.append(", cost=");
+            localStringBuilder.append(l1 - localLong.longValue());
+            Log.i(str, localStringBuilder.toString());
+          }
         }
       }
-    }
-    for (;;)
-    {
       if (paramString2 != null) {
         jdField_a_of_type_JavaUtilConcurrentConcurrentHashMap.put(paramString2, Long.valueOf(l1));
       }
-      return;
-      label178:
-      Log.i(jdField_a_of_type_JavaLangString, paramString1 + ", cost=" + (l1 - localLong.longValue()));
     }
   }
   
@@ -209,7 +217,8 @@ public class MsgBackupTimeStats
     if ((jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("statis_qianchums_start")) && (jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.containsKey("statis_qianchums_end")))
     {
       long l1 = ((Long)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get("statis_qianchums_start")).longValue();
-      l = ((Long)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get("statis_qianchums_end")).longValue() - l1 + l;
+      long l2 = ((Long)jdField_b_of_type_JavaUtilConcurrentConcurrentHashMap.get("statis_qianchums_end")).longValue();
+      l += l2 - l1;
     }
   }
   
@@ -226,7 +235,7 @@ public class MsgBackupTimeStats
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.util.MsgBackupTimeStats
  * JD-Core Version:    0.7.0.1
  */

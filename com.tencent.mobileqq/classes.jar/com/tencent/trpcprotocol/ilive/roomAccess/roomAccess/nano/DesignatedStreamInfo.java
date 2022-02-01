@@ -23,14 +23,15 @@ public final class DesignatedStreamInfo
   
   public static DesignatedStreamInfo[] emptyArray()
   {
-    if (_emptyArray == null) {}
-    synchronized (InternalNano.LAZY_INIT_LOCK)
-    {
-      if (_emptyArray == null) {
-        _emptyArray = new DesignatedStreamInfo[0];
+    if (_emptyArray == null) {
+      synchronized (InternalNano.LAZY_INIT_LOCK)
+      {
+        if (_emptyArray == null) {
+          _emptyArray = new DesignatedStreamInfo[0];
+        }
       }
-      return _emptyArray;
     }
+    return _emptyArray;
   }
   
   public static DesignatedStreamInfo parseFrom(CodedInputByteBufferNano paramCodedInputByteBufferNano)
@@ -54,21 +55,25 @@ public final class DesignatedStreamInfo
     return this;
   }
   
-  public int computeSerializedSize()
+  protected int computeSerializedSize()
   {
-    int m = 0;
     int i = super.computeSerializedSize();
+    Object localObject = this.streams;
+    int m = 0;
     int j = i;
-    Object localObject;
-    if (this.streams != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.streams.length > 0)
+      if (localObject.length > 0)
       {
         j = 0;
-        while (j < this.streams.length)
+        for (;;)
         {
-          localObject = this.streams[j];
+          localObject = this.streams;
+          if (j >= localObject.length) {
+            break;
+          }
+          localObject = localObject[j];
           k = i;
           if (localObject != null) {
             k = i + CodedOutputByteBufferNano.computeMessageSize(1, (MessageNano)localObject);
@@ -79,44 +84,53 @@ public final class DesignatedStreamInfo
         j = i;
       }
     }
+    int k = this.switch_;
     i = j;
-    if (this.switch_ != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(2, this.switch_);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(2, k);
     }
+    localObject = this.levelList;
     j = i;
-    if (this.levelList != null)
+    if (localObject != null)
     {
       j = i;
-      if (this.levelList.length > 0)
+      if (localObject.length > 0)
       {
         j = 0;
         k = 0;
-        while (j < this.levelList.length)
+        for (;;)
         {
-          k += CodedOutputByteBufferNano.computeInt32SizeNoTag(this.levelList[j]);
+          localObject = this.levelList;
+          if (j >= localObject.length) {
+            break;
+          }
+          k += CodedOutputByteBufferNano.computeInt32SizeNoTag(localObject[j]);
           j += 1;
         }
-        j = i + k + this.levelList.length * 1;
+        j = i + k + localObject.length * 1;
       }
     }
+    k = this.sugLevel;
     i = j;
-    if (this.sugLevel != 0) {
-      i = j + CodedOutputByteBufferNano.computeInt32Size(4, this.sugLevel);
+    if (k != 0) {
+      i = j + CodedOutputByteBufferNano.computeInt32Size(4, k);
     }
-    int k = i;
-    if (this.gearList != null)
+    localObject = this.gearList;
+    k = i;
+    if (localObject != null)
     {
       k = i;
-      if (this.gearList.length > 0)
+      if (localObject.length > 0)
       {
         j = m;
         for (;;)
         {
+          localObject = this.gearList;
           k = i;
-          if (j >= this.gearList.length) {
+          if (j >= localObject.length) {
             break;
           }
-          localObject = this.gearList[j];
+          localObject = localObject[j];
           k = i;
           if (localObject != null) {
             k = i + CodedOutputByteBufferNano.computeMessageSize(5, (MessageNano)localObject);
@@ -134,160 +148,206 @@ public final class DesignatedStreamInfo
     for (;;)
     {
       int i = paramCodedInputByteBufferNano.readTag();
-      Object localObject;
-      switch (i)
-      {
-      default: 
-        if (WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
-          continue;
-        }
-      case 0: 
-        return this;
-      case 10: 
-        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
-        if (this.streams == null) {}
-        for (i = 0;; i = this.streams.length)
-        {
-          localObject = new Stream[j + i];
-          j = i;
-          if (i != 0)
-          {
-            System.arraycopy(this.streams, 0, localObject, 0, i);
-            j = i;
-          }
-          while (j < localObject.length - 1)
-          {
-            localObject[j] = new Stream();
-            paramCodedInputByteBufferNano.readMessage(localObject[j]);
-            paramCodedInputByteBufferNano.readTag();
-            j += 1;
-          }
-        }
-        localObject[j] = new Stream();
-        paramCodedInputByteBufferNano.readMessage(localObject[j]);
-        this.streams = ((Stream[])localObject);
-        break;
-      case 16: 
-        this.switch_ = paramCodedInputByteBufferNano.readInt32();
-        break;
-      case 24: 
-        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 24);
-        if (this.levelList == null) {}
-        for (i = 0;; i = this.levelList.length)
-        {
-          localObject = new int[j + i];
-          j = i;
-          if (i != 0)
-          {
-            System.arraycopy(this.levelList, 0, localObject, 0, i);
-            j = i;
-          }
-          while (j < localObject.length - 1)
-          {
-            localObject[j] = paramCodedInputByteBufferNano.readInt32();
-            paramCodedInputByteBufferNano.readTag();
-            j += 1;
-          }
-        }
-        localObject[j] = paramCodedInputByteBufferNano.readInt32();
-        this.levelList = ((int[])localObject);
-        break;
-      case 26: 
-        int k = paramCodedInputByteBufferNano.pushLimit(paramCodedInputByteBufferNano.readRawVarint32());
-        i = paramCodedInputByteBufferNano.getPosition();
-        j = 0;
-        while (paramCodedInputByteBufferNano.getBytesUntilLimit() > 0)
-        {
-          paramCodedInputByteBufferNano.readInt32();
-          j += 1;
-        }
-        paramCodedInputByteBufferNano.rewindToPosition(i);
-        if (this.levelList == null) {}
-        for (i = 0;; i = this.levelList.length)
-        {
-          localObject = new int[j + i];
-          j = i;
-          if (i != 0)
-          {
-            System.arraycopy(this.levelList, 0, localObject, 0, i);
-            j = i;
-          }
-          while (j < localObject.length)
-          {
-            localObject[j] = paramCodedInputByteBufferNano.readInt32();
-            j += 1;
-          }
-        }
-        this.levelList = ((int[])localObject);
-        paramCodedInputByteBufferNano.popLimit(k);
-        break;
-      case 32: 
-        this.sugLevel = paramCodedInputByteBufferNano.readInt32();
+      if (i == 0) {
         break;
       }
-      int j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 42);
-      if (this.gearList == null) {}
-      for (i = 0;; i = this.gearList.length)
+      int j;
+      Object localObject;
+      if (i != 10)
       {
-        localObject = new GearInfo[j + i];
+        if (i != 16)
+        {
+          if (i != 24)
+          {
+            if (i != 26)
+            {
+              if (i != 32)
+              {
+                if (i != 42)
+                {
+                  if (!WireFormatNano.parseUnknownField(paramCodedInputByteBufferNano, i)) {
+                    return this;
+                  }
+                }
+                else
+                {
+                  j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 42);
+                  localObject = this.gearList;
+                  if (localObject == null) {
+                    i = 0;
+                  } else {
+                    i = localObject.length;
+                  }
+                  localObject = new GearInfo[j + i];
+                  j = i;
+                  if (i != 0)
+                  {
+                    System.arraycopy(this.gearList, 0, localObject, 0, i);
+                    j = i;
+                  }
+                  while (j < localObject.length - 1)
+                  {
+                    localObject[j] = new GearInfo();
+                    paramCodedInputByteBufferNano.readMessage(localObject[j]);
+                    paramCodedInputByteBufferNano.readTag();
+                    j += 1;
+                  }
+                  localObject[j] = new GearInfo();
+                  paramCodedInputByteBufferNano.readMessage(localObject[j]);
+                  this.gearList = ((GearInfo[])localObject);
+                }
+              }
+              else {
+                this.sugLevel = paramCodedInputByteBufferNano.readInt32();
+              }
+            }
+            else
+            {
+              int k = paramCodedInputByteBufferNano.pushLimit(paramCodedInputByteBufferNano.readRawVarint32());
+              i = paramCodedInputByteBufferNano.getPosition();
+              j = 0;
+              while (paramCodedInputByteBufferNano.getBytesUntilLimit() > 0)
+              {
+                paramCodedInputByteBufferNano.readInt32();
+                j += 1;
+              }
+              paramCodedInputByteBufferNano.rewindToPosition(i);
+              localObject = this.levelList;
+              if (localObject == null) {
+                i = 0;
+              } else {
+                i = localObject.length;
+              }
+              localObject = new int[j + i];
+              j = i;
+              if (i != 0)
+              {
+                System.arraycopy(this.levelList, 0, localObject, 0, i);
+                j = i;
+              }
+              while (j < localObject.length)
+              {
+                localObject[j] = paramCodedInputByteBufferNano.readInt32();
+                j += 1;
+              }
+              this.levelList = ((int[])localObject);
+              paramCodedInputByteBufferNano.popLimit(k);
+            }
+          }
+          else
+          {
+            j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 24);
+            localObject = this.levelList;
+            if (localObject == null) {
+              i = 0;
+            } else {
+              i = localObject.length;
+            }
+            localObject = new int[j + i];
+            j = i;
+            if (i != 0)
+            {
+              System.arraycopy(this.levelList, 0, localObject, 0, i);
+              j = i;
+            }
+            while (j < localObject.length - 1)
+            {
+              localObject[j] = paramCodedInputByteBufferNano.readInt32();
+              paramCodedInputByteBufferNano.readTag();
+              j += 1;
+            }
+            localObject[j] = paramCodedInputByteBufferNano.readInt32();
+            this.levelList = ((int[])localObject);
+          }
+        }
+        else {
+          this.switch_ = paramCodedInputByteBufferNano.readInt32();
+        }
+      }
+      else
+      {
+        j = WireFormatNano.getRepeatedFieldArrayLength(paramCodedInputByteBufferNano, 10);
+        localObject = this.streams;
+        if (localObject == null) {
+          i = 0;
+        } else {
+          i = localObject.length;
+        }
+        localObject = new Stream[j + i];
         j = i;
         if (i != 0)
         {
-          System.arraycopy(this.gearList, 0, localObject, 0, i);
+          System.arraycopy(this.streams, 0, localObject, 0, i);
           j = i;
         }
         while (j < localObject.length - 1)
         {
-          localObject[j] = new GearInfo();
+          localObject[j] = new Stream();
           paramCodedInputByteBufferNano.readMessage(localObject[j]);
           paramCodedInputByteBufferNano.readTag();
           j += 1;
         }
+        localObject[j] = new Stream();
+        paramCodedInputByteBufferNano.readMessage(localObject[j]);
+        this.streams = ((Stream[])localObject);
       }
-      localObject[j] = new GearInfo();
-      paramCodedInputByteBufferNano.readMessage(localObject[j]);
-      this.gearList = ((GearInfo[])localObject);
     }
+    return this;
   }
   
   public void writeTo(CodedOutputByteBufferNano paramCodedOutputByteBufferNano)
   {
+    Object localObject = this.streams;
     int j = 0;
-    int i;
-    Object localObject;
-    if ((this.streams != null) && (this.streams.length > 0))
+    if ((localObject != null) && (localObject.length > 0))
     {
       i = 0;
-      while (i < this.streams.length)
+      for (;;)
       {
-        localObject = this.streams[i];
+        localObject = this.streams;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
         if (localObject != null) {
           paramCodedOutputByteBufferNano.writeMessage(1, (MessageNano)localObject);
         }
         i += 1;
       }
     }
-    if (this.switch_ != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(2, this.switch_);
+    int i = this.switch_;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(2, i);
     }
-    if ((this.levelList != null) && (this.levelList.length > 0))
+    localObject = this.levelList;
+    if ((localObject != null) && (localObject.length > 0))
     {
       i = 0;
-      while (i < this.levelList.length)
+      for (;;)
       {
-        paramCodedOutputByteBufferNano.writeInt32(3, this.levelList[i]);
+        localObject = this.levelList;
+        if (i >= localObject.length) {
+          break;
+        }
+        paramCodedOutputByteBufferNano.writeInt32(3, localObject[i]);
         i += 1;
       }
     }
-    if (this.sugLevel != 0) {
-      paramCodedOutputByteBufferNano.writeInt32(4, this.sugLevel);
+    i = this.sugLevel;
+    if (i != 0) {
+      paramCodedOutputByteBufferNano.writeInt32(4, i);
     }
-    if ((this.gearList != null) && (this.gearList.length > 0))
+    localObject = this.gearList;
+    if ((localObject != null) && (localObject.length > 0))
     {
       i = j;
-      while (i < this.gearList.length)
+      for (;;)
       {
-        localObject = this.gearList[i];
+        localObject = this.gearList;
+        if (i >= localObject.length) {
+          break;
+        }
+        localObject = localObject[i];
         if (localObject != null) {
           paramCodedOutputByteBufferNano.writeMessage(5, (MessageNano)localObject);
         }
@@ -299,7 +359,7 @@ public final class DesignatedStreamInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.trpcprotocol.ilive.roomAccess.roomAccess.nano.DesignatedStreamInfo
  * JD-Core Version:    0.7.0.1
  */

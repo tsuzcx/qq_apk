@@ -37,20 +37,22 @@ public final class UniBusiGetUserInfoReq
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stLogin != null) {
-      paramJceOutputStream.write(this.stLogin, 0);
+    Object localObject = this.stLogin;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
     paramJceOutputStream.write(this.appid, 1);
     paramJceOutputStream.write(this.pageSize, 2);
     paramJceOutputStream.write(this.startIndex, 3);
-    if (this.relateUIDInfo != null) {
-      paramJceOutputStream.write(this.relateUIDInfo, 4);
+    localObject = this.relateUIDInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 4);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     QC.UniBusiGetUserInfoReq
  * JD-Core Version:    0.7.0.1
  */

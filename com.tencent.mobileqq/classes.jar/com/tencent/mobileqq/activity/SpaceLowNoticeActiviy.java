@@ -24,19 +24,20 @@ public class SpaceLowNoticeActiviy
   
   public static long a(QQAppInterface paramQQAppInterface, String paramString, long paramLong)
   {
-    if ((paramQQAppInterface == null) || (TextUtils.isEmpty(paramString))) {}
-    for (;;)
-    {
-      return paramLong;
-      try
-      {
-        long l = Long.parseLong(paramQQAppInterface.getServerConfigValue(ServerConfigManager.ConfigType.common, paramString));
-        if (l > 0L) {
-          return l;
-        }
+    if (paramQQAppInterface != null) {
+      if (TextUtils.isEmpty(paramString)) {
+        return paramLong;
       }
-      catch (Throwable paramQQAppInterface) {}
     }
+    try
+    {
+      long l = Long.parseLong(paramQQAppInterface.getServerConfigValue(ServerConfigManager.ConfigType.common, paramString));
+      if (l > 0L) {
+        return l;
+      }
+      return paramLong;
+    }
+    catch (Throwable paramQQAppInterface) {}
     return paramLong;
   }
   
@@ -52,12 +53,11 @@ public class SpaceLowNoticeActiviy
     long l1 = System.currentTimeMillis();
     SharedPreferences localSharedPreferences = PreferenceManager.getDefaultSharedPreferences(BaseApplicationImpl.getApplication());
     long l2 = localSharedPreferences.getLong("lastCheckTime", 0L);
-    if ((l2 <= 0L) || (l1 - l2 > paramLong))
-    {
-      localSharedPreferences.edit().putLong("lastCheckTime", l1).commit();
-      return true;
+    if ((l2 > 0L) && (l1 - l2 <= paramLong)) {
+      return false;
     }
-    return false;
+    localSharedPreferences.edit().putLong("lastCheckTime", l1).commit();
+    return true;
   }
   
   @Override
@@ -69,17 +69,18 @@ public class SpaceLowNoticeActiviy
     return bool;
   }
   
-  public boolean doOnCreate(Bundle paramBundle)
+  protected boolean doOnCreate(Bundle paramBundle)
   {
     super.doOnCreate(paramBundle);
-    super.setContentView(2131559628);
-    if ((this.a != null) && (this.a.isShowing())) {
+    super.setContentView(2131559505);
+    paramBundle = this.a;
+    if ((paramBundle != null) && (paramBundle.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
     this.a = DialogUtil.a(this, 230);
-    this.a.setContentView(2131559060);
-    this.a.setTitle(getString(2131698680)).setMessage(getString(2131698681)).setPositiveButton(2131699131, new SpaceLowNoticeActiviy.2(this)).setNegativeButton(2131690800, new SpaceLowNoticeActiviy.1(this));
+    this.a.setContentView(2131558954);
+    this.a.setTitle(getString(2131698749)).setMessage(getString(2131698750)).setPositiveButton(2131699235, new SpaceLowNoticeActiviy.2(this)).setNegativeButton(2131690728, new SpaceLowNoticeActiviy.1(this));
     this.a.setOnKeyListener(new SpaceLowNoticeActiviy.3(this));
     this.a.show();
     return false;
@@ -87,7 +88,8 @@ public class SpaceLowNoticeActiviy
   
   public void finish()
   {
-    if ((this.a != null) && (this.a.isShowing())) {
+    QQCustomDialog localQQCustomDialog = this.a;
+    if ((localQQCustomDialog != null) && (localQQCustomDialog.isShowing())) {
       this.a.dismiss();
     }
     this.a = null;
@@ -105,7 +107,7 @@ public class SpaceLowNoticeActiviy
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.SpaceLowNoticeActiviy
  * JD-Core Version:    0.7.0.1
  */

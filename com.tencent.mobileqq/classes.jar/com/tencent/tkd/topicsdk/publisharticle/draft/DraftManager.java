@@ -6,6 +6,7 @@ import android.database.sqlite.SQLiteDatabase;
 import com.tencent.tkd.topicsdk.bean.DraftArticleInfo;
 import com.tencent.tkd.topicsdk.bean.GlobalPublisherConfig;
 import com.tencent.tkd.topicsdk.bean.OriginContentInfo;
+import com.tencent.tkd.topicsdk.bean.TweetTopicItem;
 import com.tencent.tkd.topicsdk.common.SerializableKt;
 import com.tencent.tkd.topicsdk.common.db.DatabaseHelper;
 import com.tencent.tkd.topicsdk.common.db.DatabaseHelper.Companion;
@@ -13,7 +14,6 @@ import com.tencent.tkd.topicsdk.framework.TopicSDKHelperKt;
 import com.tencent.tkd.topicsdk.interfaces.IAccount;
 import com.tencent.tkd.weibo.bean.EditObject;
 import com.tencent.tkd.weibo.bean.EditObject.EditObjectType;
-import com.tencent.tkd.weibo.bean.TweetTopicItem;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
@@ -23,7 +23,7 @@ import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import org.json.JSONObject;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/publisharticle/draft/DraftManager;", "", "()V", "userId", "", "getUserId", "()Ljava/lang/String;", "clear", "", "clearDraftInfoInDB", "delete", "key", "deleteDraftInfoInDB", "getDraftInfoKey", "config", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "tweetTopicItem", "Lcom/tencent/tkd/weibo/bean/TweetTopicItem;", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "getQueryAllDraftInfoCursor", "Landroid/database/Cursor;", "db", "Landroid/database/sqlite/SQLiteDatabase;", "getQueryInfoCursor", "hasDraft", "", "hasDraftInfoInDB", "queryAllDraftInfoInDB", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/topicsdk/publisharticle/draft/DraftBoxItem;", "Lkotlin/collections/ArrayList;", "queryDraftInfoInDB", "", "restore", "Lcom/tencent/tkd/topicsdk/bean/DraftArticleInfo;", "save", "", "info", "updateDraftInfoToDB", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/tkd/topicsdk/publisharticle/draft/DraftManager;", "", "()V", "userId", "", "getUserId", "()Ljava/lang/String;", "clear", "", "clearDraftInfoInDB", "delete", "key", "deleteDraftInfoInDB", "getDraftInfoKey", "config", "Lcom/tencent/tkd/topicsdk/bean/GlobalPublisherConfig;", "tweetTopicItem", "Lcom/tencent/tkd/topicsdk/bean/TweetTopicItem;", "originContentInfo", "Lcom/tencent/tkd/topicsdk/bean/OriginContentInfo;", "getQueryAllDraftInfoCursor", "Landroid/database/Cursor;", "db", "Landroid/database/sqlite/SQLiteDatabase;", "getQueryInfoCursor", "hasDraft", "", "hasDraftInfoInDB", "queryAllDraftInfoInDB", "Ljava/util/ArrayList;", "Lcom/tencent/tkd/topicsdk/publisharticle/draft/DraftBoxItem;", "Lkotlin/collections/ArrayList;", "queryDraftInfoInDB", "", "restore", "Lcom/tencent/tkd/topicsdk/bean/DraftArticleInfo;", "save", "", "info", "updateDraftInfoToDB", "Companion", "topicsdk_release"}, k=1, mv={1, 1, 16})
 public final class DraftManager
 {
   public static final DraftManager.Companion a;
@@ -45,27 +45,19 @@ public final class DraftManager
   private final String a(TweetTopicItem paramTweetTopicItem, OriginContentInfo paramOriginContentInfo)
   {
     JSONObject localJSONObject = new JSONObject();
-    if (paramTweetTopicItem != null)
+    if ((paramTweetTopicItem != null) && (paramTweetTopicItem != null))
     {
-      if (paramTweetTopicItem != null) {
-        localJSONObject.putOpt("TweetTopic", paramTweetTopicItem.a() + paramTweetTopicItem.c());
-      }
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramTweetTopicItem.a());
+      localStringBuilder.append(paramTweetTopicItem.c());
+      localJSONObject.putOpt("TweetTopic", localStringBuilder.toString());
     }
-    else if (paramOriginContentInfo != null)
-    {
-      if (paramOriginContentInfo == null) {
-        break label82;
-      }
+    if ((paramOriginContentInfo != null) && (paramOriginContentInfo != null)) {
       localJSONObject.putOpt("OriginContentInfo", paramOriginContentInfo.getOriginContentKey());
     }
-    label82:
-    for (;;)
-    {
-      paramTweetTopicItem = localJSONObject.toString();
-      Intrinsics.checkExpressionValueIsNotNull(paramTweetTopicItem, "jsonObject.toString()");
-      return paramTweetTopicItem;
-      break;
-    }
+    paramTweetTopicItem = localJSONObject.toString();
+    Intrinsics.checkExpressionValueIsNotNull(paramTweetTopicItem, "jsonObject.toString()");
+    return paramTweetTopicItem;
   }
   
   private final byte[] a(String paramString)
@@ -74,12 +66,13 @@ public final class DraftManager
     Intrinsics.checkExpressionValueIsNotNull(localObject, "db");
     localObject = a((SQLiteDatabase)localObject, paramString);
     ((Cursor)localObject).moveToFirst();
-    if (((Cursor)localObject).getCount() > 0) {}
-    for (paramString = ((Cursor)localObject).getBlob(((Cursor)localObject).getColumnIndex("draft_info"));; paramString = null)
-    {
-      ((Cursor)localObject).close();
-      return paramString;
+    if (((Cursor)localObject).getCount() > 0) {
+      paramString = ((Cursor)localObject).getBlob(((Cursor)localObject).getColumnIndex("draft_info"));
+    } else {
+      paramString = null;
     }
+    ((Cursor)localObject).close();
+    return paramString;
   }
   
   private final long b(String paramString, DraftArticleInfo paramDraftArticleInfo)
@@ -105,12 +98,14 @@ public final class DraftManager
     Intrinsics.checkExpressionValueIsNotNull(localSQLiteDatabase, "db");
     paramString = a(localSQLiteDatabase, paramString);
     paramString.moveToFirst();
-    if (paramString.getCount() > 0) {}
-    for (boolean bool = true;; bool = false)
-    {
-      paramString.close();
-      return bool;
+    boolean bool;
+    if (paramString.getCount() > 0) {
+      bool = true;
+    } else {
+      bool = false;
     }
+    paramString.close();
+    return bool;
   }
   
   public final long a(@NotNull String paramString, @NotNull DraftArticleInfo paramDraftArticleInfo)
@@ -147,33 +142,19 @@ public final class DraftManager
       return a(null, null);
     }
     ArrayList localArrayList = paramGlobalPublisherConfig.getEditObjectListByOriginText();
-    int i;
-    if (!((Collection)localArrayList).isEmpty())
-    {
-      i = 1;
-      if ((i == 0) || (((EditObject)localArrayList.get(0)).getType() != EditObject.EditObjectType.TYPE_TOPIC)) {
-        break label77;
-      }
-      i = 1;
-      label58:
-      if (i != 0) {
-        break label82;
-      }
+    boolean bool = ((Collection)localArrayList).isEmpty();
+    int i = 1;
+    if ((!(bool ^ true)) || (((EditObject)localArrayList.get(0)).getType() != EditObject.EditObjectType.TYPE_TOPIC)) {
+      i = 0;
     }
-    for (;;)
+    if (i != 0)
     {
-      return a((TweetTopicItem)localObject, paramGlobalPublisherConfig.getOriginContentInfo());
-      i = 0;
-      break;
-      label77:
-      i = 0;
-      break label58;
-      label82:
       localObject = localArrayList.get(0);
       Intrinsics.checkExpressionValueIsNotNull(localObject, "editObjectList[0]");
       localObject = (EditObject)localObject;
       localObject = new TweetTopicItem(((EditObject)localObject).getId(), null, ((EditObject)localObject).getWording(), 0L, null, 26, null);
     }
+    return a((TweetTopicItem)localObject, paramGlobalPublisherConfig.getOriginContentInfo());
   }
   
   public final void a(@NotNull String paramString)
@@ -190,7 +171,7 @@ public final class DraftManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.publisharticle.draft.DraftManager
  * JD-Core Version:    0.7.0.1
  */

@@ -46,9 +46,6 @@ public class GetPhoneNumberRequest
     try
     {
       localStGetPhoneNumberRsp.mergeFrom(paramArrayOfByte);
-      if (localStGetPhoneNumberRsp == null) {
-        break label302;
-      }
       Object localObject = localStGetPhoneNumberRsp.phoneLists.get();
       paramArrayOfByte = new JSONArray();
       if ((localObject != null) && (((List)localObject).size() > 0))
@@ -70,27 +67,27 @@ public class GetPhoneNumberRequest
         }
       }
       paramJSONObject.put("countryCode", localStGetPhoneNumberRsp.countryCode.get());
+      paramJSONObject.put("purePhoneNumber", localStGetPhoneNumberRsp.purePhoneNumber.get());
+      paramJSONObject.put("iv", localStGetPhoneNumberRsp.iv.get());
+      paramJSONObject.put("encryptedData", localStGetPhoneNumberRsp.encryptedData.get());
+      paramJSONObject.put("cloudID", "");
+      paramJSONObject.put("phoneLists", paramArrayOfByte);
+      paramJSONObject.put("errMsg", "ok");
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("getPhoneNumberRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("getPhoneNumberRequest", paramJSONObject.toString());
     }
-    paramJSONObject.put("purePhoneNumber", localStGetPhoneNumberRsp.purePhoneNumber.get());
-    paramJSONObject.put("iv", localStGetPhoneNumberRsp.iv.get());
-    paramJSONObject.put("encryptedData", localStGetPhoneNumberRsp.encryptedData.get());
-    paramJSONObject.put("cloudID", "");
-    paramJSONObject.put("phoneLists", paramArrayOfByte);
-    paramJSONObject.put("errMsg", "ok");
-    return paramJSONObject;
-    label302:
-    QMLog.d("getPhoneNumberRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.GetPhoneNumberRequest
  * JD-Core Version:    0.7.0.1
  */

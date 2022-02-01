@@ -14,18 +14,15 @@ class WatchTogetherOrdinaryControlView$7
     WatchTogetherOrdinaryControlView.a(this.this$0, 0L);
     if (!WatchTogetherOrdinaryControlView.b(this.this$0)) {
       WatchTogetherOrdinaryControlView.a(this.this$0, 1, 1);
-    }
-    for (;;)
-    {
-      WatchTogetherOrdinaryControlView.a(this.this$0).setVisibility(0);
-      return;
+    } else {
       WatchTogetherOrdinaryControlView.a(this.this$0, 0, 1);
     }
+    WatchTogetherOrdinaryControlView.a(this.this$0).setVisibility(0);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.WatchTogetherOrdinaryControlView.7
  * JD-Core Version:    0.7.0.1
  */

@@ -24,44 +24,46 @@ public class HttpInterfaceForTVKImp
   protected int downLoadSync(String arg1, String paramString2)
   {
     this.bComPleted = false;
-    if ((??? == null) || (paramString2 == null)) {
-      return -1;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("HttpInterfaceForTVKImp", 0, "downLoadSync, url = " + ??? + ", filePath = " + paramString2);
-    }
-    HttpNetReq localHttpNetReq;
-    try
+    if ((??? != null) && (paramString2 != null))
     {
-      localHttpNetReq = new HttpNetReq();
-      localHttpNetReq.mCallback = this.mINetEngineListener;
-      localHttpNetReq.mReqUrl = ???;
-      localHttpNetReq.mHttpMethod = 0;
-      localHttpNetReq.mOutPath = paramString2;
-      localHttpNetReq.mMsgId = String.valueOf(System.currentTimeMillis());
-      ??? = BaseApplicationImpl.getApplication().getRuntime();
-      if (!(??? instanceof QQAppInterface)) {
-        throw new InvalidParameterException("can't get AppInterface");
-      }
-    }
-    catch (Exception ???)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 1", ???);
-      }
-    }
-    for (;;)
-    {
-      synchronized (this.obj)
+      Object localObject;
+      if (QLog.isColorLevel())
       {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("downLoadSync, url = ");
+        ((StringBuilder)localObject).append(???);
+        ((StringBuilder)localObject).append(", filePath = ");
+        ((StringBuilder)localObject).append(paramString2);
+        QLog.d("HttpInterfaceForTVKImp", 0, ((StringBuilder)localObject).toString());
+      }
+      try
+      {
+        localObject = new HttpNetReq();
+        ((HttpNetReq)localObject).mCallback = this.mINetEngineListener;
+        ((HttpNetReq)localObject).mReqUrl = ???;
+        ((HttpNetReq)localObject).mHttpMethod = 0;
+        ((HttpNetReq)localObject).mOutPath = paramString2;
+        ((HttpNetReq)localObject).mMsgId = String.valueOf(System.currentTimeMillis());
+        ??? = BaseApplicationImpl.getApplication().getRuntime();
+        if ((??? instanceof QQAppInterface)) {
+          ((IHttpEngineService)((QQAppInterface)???).getRuntimeService(IHttpEngineService.class, "all")).sendReq((NetReq)localObject);
+        } else {
+          throw new InvalidParameterException("can't get AppInterface");
+        }
+      }
+      catch (Exception ???)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 1", ???);
+        }
         try
         {
-          if (!this.bComPleted)
+          synchronized (this.obj)
           {
-            this.obj.wait(600000L);
-            continue;
+            if (!this.bComPleted) {
+              this.obj.wait(600000L);
+            }
           }
-          ???.put("param_isSuccess", "1");
         }
         catch (InterruptedException paramString2)
         {
@@ -69,25 +71,26 @@ public class HttpInterfaceForTVKImp
             QLog.e("HttpInterfaceForTVKImp", 0, "downLoadSync, setp 2", paramString2);
           }
           ??? = new HashMap();
-          if (this.result != 0) {
-            break label295;
+          if (this.result == 0) {
+            ???.put("param_isSuccess", "1");
+          } else {
+            ???.put("param_isSuccess", "0");
           }
+          ???.put("param_ErrorCode", String.valueOf(this.errorCode));
+          ???.put("param_ErrDesc", this.mErrDesc);
+          ???.put("param_HttpCode", String.valueOf(this.mHttpCode));
+          StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "HttpInterfaceForTVKImp", true, 0L, 0L, ???, "");
+          return this.result;
         }
-        ???.put("param_ErrorCode", String.valueOf(this.errorCode));
-        ???.put("param_ErrDesc", this.mErrDesc);
-        ???.put("param_HttpCode", String.valueOf(this.mHttpCode));
-        StatisticCollector.getInstance(BaseApplication.getContext()).collectPerformance(null, "HttpInterfaceForTVKImp", true, 0L, 0L, ???, "");
-        return this.result;
-        ((IHttpEngineService)((QQAppInterface)???).getRuntimeService(IHttpEngineService.class, "all")).sendReq(localHttpNetReq);
+        throw paramString2;
       }
-      label295:
-      ???.put("param_isSuccess", "0");
     }
+    return -1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.HttpInterfaceForTVKImp
  * JD-Core Version:    0.7.0.1
  */

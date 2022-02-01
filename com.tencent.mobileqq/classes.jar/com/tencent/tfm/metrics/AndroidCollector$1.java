@@ -13,14 +13,15 @@ class AndroidCollector$1
   public void run()
   {
     Looper.prepare();
-    AndroidCollector.access$002(this.this$0, new AndroidCollector.CollectorHandler(this.this$0));
+    AndroidCollector localAndroidCollector = this.this$0;
+    AndroidCollector.access$002(localAndroidCollector, new AndroidCollector.CollectorHandler(localAndroidCollector));
     AndroidCollector.access$000(this.this$0).schedule();
     Looper.loop();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tfm.metrics.AndroidCollector.1
  * JD-Core Version:    0.7.0.1
  */

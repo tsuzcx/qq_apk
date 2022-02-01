@@ -2,11 +2,15 @@ package com.tencent.mobileqq.activity.history;
 
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.MessageRoamManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.utils.MessageRoamHandler;
 import com.tencent.mobileqq.utils.VipUtils;
+import com.tencent.mobileqq.vas.api.IVasSingedApi;
+import com.tencent.mobileqq.vas.util.VasUtil;
+import com.tencent.mobileqq.vip.IVipStatusManager;
 import com.tencent.qphone.base.util.QLog;
 import java.util.TimeZone;
 import mqq.app.MobileQQ;
@@ -19,93 +23,118 @@ class ChatHistoryC2CAllFragment$5
   
   public void run()
   {
-    boolean bool1 = false;
-    if (VipUtils.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
+    if (VasUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getVipStatus().isSVip())
     {
-      this.this$0.jdField_b_of_type_JavaLangString = "svip";
-      this.this$0.c = "2";
-      VipUtils.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "vip", "0X8004FAB", "0X8004FAB", 0, 0, new String[] { this.this$0.jdField_b_of_type_JavaLangString });
+      localObject1 = this.this$0;
+      ((ChatHistoryC2CAllFragment)localObject1).jdField_b_of_type_JavaLangString = "svip";
+      ((ChatHistoryC2CAllFragment)localObject1).c = "2";
+    }
+    else if (VasUtil.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface).getVipStatus().isVip())
+    {
+      localObject1 = this.this$0;
+      ((ChatHistoryC2CAllFragment)localObject1).jdField_b_of_type_JavaLangString = "vip";
+      ((ChatHistoryC2CAllFragment)localObject1).c = "1";
+    }
+    else
+    {
+      localObject1 = this.this$0;
+      ((ChatHistoryC2CAllFragment)localObject1).jdField_b_of_type_JavaLangString = "notvip";
+      ((ChatHistoryC2CAllFragment)localObject1).c = "0";
+    }
+    Object localObject1 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    boolean bool = true;
+    VipUtils.a((AppInterface)localObject1, "vip", "0X8004FAB", "0X8004FAB", 0, 0, new String[] { this.this$0.jdField_b_of_type_JavaLangString });
+    try
+    {
+      localObject2 = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("setting_guide_tips_flag");
+      ((StringBuilder)localObject1).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      if (1 == ((SharedPreferences)localObject2).getInt(((StringBuilder)localObject1).toString(), -1)) {
+        break label616;
+      }
+      localObject1 = ((SharedPreferences)localObject2).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setting_guide_tips_show_time");
+      localStringBuilder.append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      j = ((SharedPreferences)localObject2).getInt(localStringBuilder.toString(), 1);
+      if (this.this$0.c.equals("2")) {
+        break label658;
+      }
+      if (this.this$0.c.equals("1")) {
+        if (this.this$0.jdField_a_of_type_Int < 3) {
+          break label663;
+        }
+      } else {
+        if (!this.a) {
+          break label663;
+        }
+      }
+    }
+    catch (Exception localException)
+    {
+      int j;
+      label415:
+      Object localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("settingGuideFlag Exception: ");
+      ((StringBuilder)localObject2).append(localException.getMessage());
+      QLog.d("Q.history.C2CAllFragment", 2, ((StringBuilder)localObject2).toString());
+    }
+    if (i != 0)
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("setting_guide_tips_flag");
+      ((StringBuilder)localObject2).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+      ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), 1);
+    }
+    int i = TimeZone.getTimeZone("GMT+8").getRawOffset();
+    i = (int)Math.ceil((System.currentTimeMillis() + i) / 86400000L);
+    if (j != i) {
+      break label415;
     }
     for (;;)
     {
-      try
+      if (QLog.isColorLevel())
       {
-        localObject = this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApplication().getSharedPreferences("vip_message_roam_banner_file", 0);
-        if (1 == ((SharedPreferences)localObject).getInt("setting_guide_tips_flag" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), -1)) {
-          continue;
-        }
-        localEditor = ((SharedPreferences)localObject).edit();
-        j = ((SharedPreferences)localObject).getInt("setting_guide_tips_show_time" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1);
-        if (!this.this$0.c.equals("2")) {
-          continue;
-        }
-        i = 1;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("settingGuideFlag isShow: ");
+        ((StringBuilder)localObject2).append(bool);
+        ((StringBuilder)localObject2).append(", showDay: ");
+        ((StringBuilder)localObject2).append(j);
+        ((StringBuilder)localObject2).append(", nowDay: ");
+        ((StringBuilder)localObject2).append(i);
+        QLog.d("Q.history.C2CAllFragment", 2, ((StringBuilder)localObject2).toString());
       }
-      catch (Exception localException)
+      if (bool)
       {
-        Object localObject;
-        SharedPreferences.Editor localEditor;
-        int j;
-        boolean bool2;
-        QLog.d("Q.history.C2CAllFragment", 2, "settingGuideFlag Exception: " + localException.getMessage());
-        continue;
-        int i = 0;
-        continue;
-      }
-      if (i != 0) {
-        localEditor.putInt("setting_guide_tips_flag" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), 1);
-      }
-      i = TimeZone.getTimeZone("GMT+8").getRawOffset();
-      i = (int)Math.ceil((System.currentTimeMillis() + i) / 86400000L);
-      if (j != i) {
-        bool1 = true;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("Q.history.C2CAllFragment", 2, "settingGuideFlag isShow: " + bool1 + ", showDay: " + j + ", nowDay: " + i);
-      }
-      if (bool1)
-      {
-        localEditor.putInt("setting_guide_tips_show_time" + this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), i).commit();
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("setting_guide_tips_show_time");
+        ((StringBuilder)localObject2).append(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
+        ((SharedPreferences.Editor)localObject1).putInt(((StringBuilder)localObject2).toString(), i).commit();
         this.this$0.jdField_a_of_type_MqqOsMqqHandler.sendMessage(this.this$0.jdField_a_of_type_MqqOsMqqHandler.obtainMessage(10, this.this$0.jdField_b_of_type_AndroidViewView));
       }
+      label616:
       if (this.this$0.jdField_a_of_type_ComTencentMobileqqAppMessageRoamManager.b() == 0)
       {
-        localObject = (MessageRoamHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
-        if (localObject != null) {
-          ((MessageRoamHandler)localObject).a();
+        MessageRoamHandler localMessageRoamHandler = (MessageRoamHandler)this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.GET_ROAMMESSAGE_HANDLER);
+        if (localMessageRoamHandler != null) {
+          localMessageRoamHandler.a();
         }
       }
       return;
-      if (VipUtils.c(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface))
-      {
-        this.this$0.jdField_b_of_type_JavaLangString = "vip";
-        this.this$0.c = "1";
-        break;
-      }
-      this.this$0.jdField_b_of_type_JavaLangString = "notvip";
-      this.this$0.c = "0";
+      label658:
+      i = 1;
       break;
-      if (this.this$0.c.equals("1"))
-      {
-        if (this.this$0.jdField_a_of_type_Int < 3) {
-          continue;
-        }
-        i = 1;
-      }
-      else
-      {
-        bool2 = this.a;
-        if (!bool2) {
-          continue;
-        }
-        i = 1;
-      }
+      label663:
+      i = 0;
+      break;
+      bool = false;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryC2CAllFragment.5
  * JD-Core Version:    0.7.0.1
  */

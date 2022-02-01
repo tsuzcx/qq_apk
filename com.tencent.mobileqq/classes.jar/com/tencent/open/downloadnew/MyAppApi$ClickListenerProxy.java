@@ -20,17 +20,19 @@ public class MyAppApi$ClickListenerProxy
   
   public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener != null) {
-      this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener.onClick(paramDialogInterface, paramInt);
+    DialogInterface.OnClickListener localOnClickListener = this.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener;
+    if (localOnClickListener != null) {
+      localOnClickListener.onClick(paramDialogInterface, paramInt);
     }
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
-    this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams = null;
+    paramDialogInterface = this.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi;
+    paramDialogInterface.jdField_a_of_type_AndroidContentDialogInterface$OnClickListener = null;
+    paramDialogInterface.jdField_a_of_type_ComTencentOpenDownloadnewMyAppApi$InstallParams = null;
     StaticAnalyz.a("710", this.jdField_a_of_type_JavaLangString, this.b);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.MyAppApi.ClickListenerProxy
  * JD-Core Version:    0.7.0.1
  */

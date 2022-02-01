@@ -22,6 +22,7 @@ import android.widget.SeekBar;
 import com.tencent.qqlive.module.videoreport.Log;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ActivityConfigurationChangedNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.DispatchTouchEventNotifier;
+import com.tencent.qqlive.module.videoreport.collect.notifier.IEventNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ListScrollNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.RecyclerViewScrollPositionNotifier;
 import com.tencent.qqlive.module.videoreport.collect.notifier.ViewClickNotifier;
@@ -56,37 +57,34 @@ public class EventCollector
     try
     {
       this.mLayoutManagerRecyclerViewField = RecyclerView.LayoutManager.class.getDeclaredField("mRecyclerView");
-      if (this.mLayoutManagerRecyclerViewField != null) {
-        this.mLayoutManagerRecyclerViewField.setAccessible(true);
-      }
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      for (;;)
-      {
-        try
-        {
-          paramLayoutManager = (RecyclerView)this.mLayoutManagerRecyclerViewField.get(paramLayoutManager);
-          return paramLayoutManager;
-        }
-        catch (IllegalAccessException paramLayoutManager)
-        {
-          if (!VideoReportInner.getInstance().isDebugMode()) {
-            continue;
-          }
-          Log.e("EventCollector", "find no mRecyclerView field");
-          return null;
-        }
-        catch (IllegalArgumentException paramLayoutManager)
-        {
-          continue;
-        }
-        localNoSuchFieldException = localNoSuchFieldException;
-        if (VideoReportInner.getInstance().isDebugMode()) {
-          Log.e("EventCollector", "find no mRecyclerView field");
-        }
-      }
+      label21:
+      Field localField;
+      break label21;
     }
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      Log.e("EventCollector", "find no mRecyclerView field");
+    }
+    localField = this.mLayoutManagerRecyclerViewField;
+    if (localField != null) {
+      localField.setAccessible(true);
+    }
+    try
+    {
+      paramLayoutManager = (RecyclerView)this.mLayoutManagerRecyclerViewField.get(paramLayoutManager);
+      return paramLayoutManager;
+    }
+    catch (IllegalAccessException|IllegalArgumentException paramLayoutManager)
+    {
+      label65:
+      break label65;
+    }
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      Log.e("EventCollector", "find no mRecyclerView field");
+    }
+    return null;
   }
   
   private ViewGroup getViewHolderOwnerView(RecyclerView.ViewHolder paramViewHolder)
@@ -95,51 +93,56 @@ public class EventCollector
     try
     {
       this.mOwnerRecyclerViewField = RecyclerView.ViewHolder.class.getDeclaredField("mOwnerRecyclerView");
-      if (this.mOwnerRecyclerViewField != null) {
-        this.mOwnerRecyclerViewField.setAccessible(true);
-      }
     }
     catch (NoSuchFieldException localNoSuchFieldException)
     {
-      for (;;)
-      {
-        try
-        {
-          paramViewHolder = (ViewGroup)this.mOwnerRecyclerViewField.get(paramViewHolder);
-          return paramViewHolder;
-        }
-        catch (IllegalAccessException paramViewHolder)
-        {
-          if (!VideoReportInner.getInstance().isDebugMode()) {
-            continue;
-          }
-          Log.e("EventCollector", "find no mOwnerRecyclerView field");
-          return null;
-        }
-        catch (IllegalArgumentException paramViewHolder)
-        {
-          continue;
-        }
-        localNoSuchFieldException = localNoSuchFieldException;
-        if (VideoReportInner.getInstance().isDebugMode()) {
-          Log.e("EventCollector", "find no mOwnerRecyclerView field");
-        }
-      }
+      label21:
+      Field localField;
+      break label21;
     }
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      Log.e("EventCollector", "find no mOwnerRecyclerView field");
+    }
+    localField = this.mOwnerRecyclerViewField;
+    if (localField != null) {
+      localField.setAccessible(true);
+    }
+    try
+    {
+      paramViewHolder = (ViewGroup)this.mOwnerRecyclerViewField.get(paramViewHolder);
+      return paramViewHolder;
+    }
+    catch (IllegalAccessException|IllegalArgumentException paramViewHolder)
+    {
+      label65:
+      break label65;
+    }
+    if (VideoReportInner.getInstance().isDebugMode()) {
+      Log.e("EventCollector", "find no mOwnerRecyclerView field");
+    }
+    return null;
   }
   
   private void notifyDispatchTouchEvent(Object paramObject, Window paramWindow, MotionEvent paramMotionEvent, boolean paramBoolean1, boolean paramBoolean2)
   {
     DispatchTouchEventNotifier localDispatchTouchEventNotifier = (DispatchTouchEventNotifier)ReusablePool.obtain(10);
     localDispatchTouchEventNotifier.init(paramObject, paramWindow, paramMotionEvent, paramBoolean1, paramBoolean2);
-    paramObject = paramObject.hashCode() + "_" + paramMotionEvent.getAction() + "_" + paramBoolean2;
+    paramWindow = new StringBuilder();
+    paramWindow.append(paramObject.hashCode());
+    paramWindow.append("_");
+    paramWindow.append(paramMotionEvent.getAction());
+    paramWindow.append("_");
+    paramWindow.append(paramBoolean2);
+    paramObject = paramWindow.toString();
     this.mNotifyManager.addEventNotifierImmediately(paramObject, localDispatchTouchEventNotifier);
   }
   
   private void onRecyclerViewItemReuse(RecyclerView.ViewHolder paramViewHolder, long paramLong)
   {
-    if (!VideoReportInner.getInstance().isDataCollectEnable()) {}
-    while (!LazyInitObserver.getInstance().mayProceedOnMain(null)) {
+    if (!VideoReportInner.getInstance().isDataCollectEnable()) {
+      return;
+    }
+    if (!LazyInitObserver.getInstance().mayProceedOnMain(null)) {
       return;
     }
     ViewReuseNotifier localViewReuseNotifier = (ViewReuseNotifier)ReusablePool.obtain(5);
@@ -149,34 +152,43 @@ public class EventCollector
   
   private void onRecyclerViewScroll(RecyclerView.LayoutManager paramLayoutManager)
   {
-    if (!VideoReportInner.getInstance().isDataCollectEnable()) {}
-    do
-    {
+    if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
-      paramLayoutManager = getRecyclerView(paramLayoutManager);
-    } while (paramLayoutManager == null);
-    RecyclerViewScrollPositionNotifier localRecyclerViewScrollPositionNotifier = (RecyclerViewScrollPositionNotifier)ReusablePool.obtain(7);
-    localRecyclerViewScrollPositionNotifier.init(paramLayoutManager);
-    this.mNotifyManager.addEventNotifier(paramLayoutManager, localRecyclerViewScrollPositionNotifier);
+    }
+    paramLayoutManager = getRecyclerView(paramLayoutManager);
+    if (paramLayoutManager != null)
+    {
+      RecyclerViewScrollPositionNotifier localRecyclerViewScrollPositionNotifier = (RecyclerViewScrollPositionNotifier)ReusablePool.obtain(7);
+      localRecyclerViewScrollPositionNotifier.init(paramLayoutManager);
+      this.mNotifyManager.addEventNotifier(paramLayoutManager, localRecyclerViewScrollPositionNotifier);
+    }
   }
   
   public void onActivityConfigurationChanged(Activity paramActivity, Configuration paramConfiguration)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onActivityConfigurationChanged: activity=" + paramActivity.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onActivityConfigurationChanged: activity=");
+      ((StringBuilder)localObject).append(paramActivity.getClass().getName());
+      Log.i("EventCollector", ((StringBuilder)localObject).toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
-    ActivityConfigurationChangedNotifier localActivityConfigurationChangedNotifier = (ActivityConfigurationChangedNotifier)ReusablePool.obtain(9);
-    localActivityConfigurationChangedNotifier.init(paramActivity, paramConfiguration);
-    this.mNotifyManager.addEventNotifier(paramActivity, localActivityConfigurationChangedNotifier);
+    Object localObject = (ActivityConfigurationChangedNotifier)ReusablePool.obtain(9);
+    ((ActivityConfigurationChangedNotifier)localObject).init(paramActivity, paramConfiguration);
+    this.mNotifyManager.addEventNotifier(paramActivity, (IEventNotifier)localObject);
   }
   
   public void onActivityCreated(Activity paramActivity, Bundle paramBundle)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.d("EventCollector", "onActivityCreated: activity=" + paramActivity.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onActivityCreated: activity=");
+      paramBundle.append(paramActivity.getClass().getName());
+      Log.d("EventCollector", paramBundle.toString());
     }
     Log.d("LazyInitSequence", "act created");
     this.mNotifyManager.onActivityCreate(paramActivity);
@@ -184,8 +196,12 @@ public class EventCollector
   
   public void onActivityDestroyed(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onActivityDestroyed: activity=" + paramActivity.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityDestroyed: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     this.mNotifyManager.onActivityDestroyed(paramActivity);
   }
@@ -197,8 +213,12 @@ public class EventCollector
   
   public void onActivityPaused(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onActivityPause: activity = " + paramActivity.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityPause: activity = ");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
@@ -208,8 +228,12 @@ public class EventCollector
   
   public void onActivityResumed(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onActivityResumed: activity = " + paramActivity.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityResumed: activity = ");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     Log.d("LazyInitSequence", "act resumed");
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
@@ -222,8 +246,12 @@ public class EventCollector
   
   public void onActivityStarted(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onActivityStarted: activity = " + paramActivity.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityStarted: activity = ");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     Log.d("LazyInitSequence", "act started");
     this.mNotifyManager.onActivityStarted(paramActivity);
@@ -231,42 +259,64 @@ public class EventCollector
   
   public void onActivityStopped(Activity paramActivity)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onActivityStopped: activity=" + paramActivity.getClass().getName());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onActivityStopped: activity=");
+      localStringBuilder.append(paramActivity.getClass().getName());
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     this.mNotifyManager.onActivityStopped(paramActivity);
   }
   
   public void onCheckedChanged(CompoundButton paramCompoundButton, boolean paramBoolean)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onCheckedChanged, view = " + UIUtils.getViewInfo(paramCompoundButton) + ", isChecked = " + paramBoolean);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCheckedChanged, view = ");
+      ((StringBuilder)localObject).append(UIUtils.getViewInfo(paramCompoundButton));
+      ((StringBuilder)localObject).append(", isChecked = ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      Log.i("EventCollector", ((StringBuilder)localObject).toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
-    ViewClickNotifier localViewClickNotifier = (ViewClickNotifier)ReusablePool.obtain(3);
-    localViewClickNotifier.init(paramCompoundButton);
-    this.mNotifyManager.addEventNotifier(paramCompoundButton, localViewClickNotifier);
+    Object localObject = (ViewClickNotifier)ReusablePool.obtain(3);
+    ((ViewClickNotifier)localObject).init(paramCompoundButton);
+    this.mNotifyManager.addEventNotifier(paramCompoundButton, (IEventNotifier)localObject);
   }
   
   public void onCheckedChanged(RadioGroup paramRadioGroup, int paramInt)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onCheckedChanged, view = " + UIUtils.getViewInfo(paramRadioGroup) + ", checkedId = " + paramInt);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onCheckedChanged, view = ");
+      ((StringBuilder)localObject).append(UIUtils.getViewInfo(paramRadioGroup));
+      ((StringBuilder)localObject).append(", checkedId = ");
+      ((StringBuilder)localObject).append(paramInt);
+      Log.i("EventCollector", ((StringBuilder)localObject).toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
-    ViewClickNotifier localViewClickNotifier = (ViewClickNotifier)ReusablePool.obtain(3);
-    localViewClickNotifier.init(paramRadioGroup);
-    this.mNotifyManager.addEventNotifier(paramRadioGroup, localViewClickNotifier);
+    Object localObject = (ViewClickNotifier)ReusablePool.obtain(3);
+    ((ViewClickNotifier)localObject).init(paramRadioGroup);
+    this.mNotifyManager.addEventNotifier(paramRadioGroup, (IEventNotifier)localObject);
   }
   
   public void onDialogClicked(DialogInterface paramDialogInterface, int paramInt)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onDialogClicked, dialog = " + BaseUtils.getClassSimpleName(paramDialogInterface) + ", which = " + paramInt);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDialogClicked, dialog = ");
+      localStringBuilder.append(BaseUtils.getClassSimpleName(paramDialogInterface));
+      localStringBuilder.append(", which = ");
+      localStringBuilder.append(paramInt);
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {}
   }
@@ -279,11 +329,21 @@ public class EventCollector
   public void onDialogFocusChanged(Dialog paramDialog, boolean paramBoolean)
   {
     Activity localActivity = DialogListUtil.getDialogActivity(paramDialog);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onDialogFocusChanged: dialog = " + paramDialog.getClass().getName() + ", hasFocus = " + paramBoolean + ", activity = " + UIUtils.getActivityInfo(localActivity));
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDialogFocusChanged: dialog = ");
+      localStringBuilder.append(paramDialog.getClass().getName());
+      localStringBuilder.append(", hasFocus = ");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", activity = ");
+      localStringBuilder.append(UIUtils.getActivityInfo(localActivity));
+      Log.i("EventCollector", localStringBuilder.toString());
     }
-    if (!VideoReportInner.getInstance().isDataCollectEnable()) {}
-    while (localActivity == null) {
+    if (!VideoReportInner.getInstance().isDataCollectEnable()) {
+      return;
+    }
+    if (localActivity == null) {
       return;
     }
     if (paramBoolean)
@@ -298,8 +358,14 @@ public class EventCollector
   public void onDialogStop(Dialog paramDialog)
   {
     Activity localActivity = DialogListUtil.getDialogActivity(paramDialog);
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onDialogStop: dialog = " + paramDialog.getClass().getName() + ", activity = " + UIUtils.getActivityInfo(localActivity));
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onDialogStop: dialog = ");
+      localStringBuilder.append(paramDialog.getClass().getName());
+      localStringBuilder.append(", activity = ");
+      localStringBuilder.append(UIUtils.getActivityInfo(localActivity));
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
@@ -310,8 +376,13 @@ public class EventCollector
   
   public void onFragmentDestroyView(FragmentCompat paramFragmentCompat)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onFragmentDestroyView: fragment = " + paramFragmentCompat.getClass().getName() + paramFragmentCompat.hashCode());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFragmentDestroyView: fragment = ");
+      localStringBuilder.append(paramFragmentCompat.getClass().getName());
+      localStringBuilder.append(paramFragmentCompat.hashCode());
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
@@ -321,8 +392,13 @@ public class EventCollector
   
   public void onFragmentPaused(FragmentCompat paramFragmentCompat)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onFragmentPaused: fragment = " + paramFragmentCompat.getClass().getName() + paramFragmentCompat.hashCode());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFragmentPaused: fragment = ");
+      localStringBuilder.append(paramFragmentCompat.getClass().getName());
+      localStringBuilder.append(paramFragmentCompat.hashCode());
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
@@ -332,8 +408,13 @@ public class EventCollector
   
   public void onFragmentResumed(FragmentCompat paramFragmentCompat)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onFragmentResumed: fragment = " + paramFragmentCompat.getClass().getName() + paramFragmentCompat.hashCode());
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFragmentResumed: fragment = ");
+      localStringBuilder.append(paramFragmentCompat.getClass().getName());
+      localStringBuilder.append(paramFragmentCompat.hashCode());
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
@@ -343,8 +424,16 @@ public class EventCollector
   
   public void onItemClick(AdapterView<?> paramAdapterView, View paramView, int paramInt, long paramLong)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onItemClick, parent = " + BaseUtils.getClassSimpleName(paramAdapterView) + ", view = " + UIUtils.getViewInfo(paramView) + ", position = " + paramInt);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onItemClick, parent = ");
+      localStringBuilder.append(BaseUtils.getClassSimpleName(paramAdapterView));
+      localStringBuilder.append(", view = ");
+      localStringBuilder.append(UIUtils.getViewInfo(paramView));
+      localStringBuilder.append(", position = ");
+      localStringBuilder.append(paramInt);
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
@@ -356,43 +445,75 @@ public class EventCollector
   
   public void onListGetView(int paramInt, View paramView, ViewGroup paramViewGroup, long paramLong)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onListGetView, parent = " + UIUtils.getViewInfo(paramViewGroup) + ", convertView = " + UIUtils.getViewInfo(paramView) + ", position = " + paramInt);
-    }
-    if (!VideoReportInner.getInstance().isDataCollectEnable()) {}
-    while ((paramView == null) || (!LazyInitObserver.getInstance().mayProceedOnMain(null))) {
-      return;
-    }
-    ViewReuseNotifier localViewReuseNotifier = (ViewReuseNotifier)ReusablePool.obtain(5);
-    localViewReuseNotifier.init(paramViewGroup, paramView, paramLong);
-    this.mNotifyManager.addEventNotifier(paramView, localViewReuseNotifier);
-  }
-  
-  public void onListScrollStateChanged(AbsListView paramAbsListView, int paramInt)
-  {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onListScrollStateChanged, view = " + UIUtils.getViewInfo(paramAbsListView) + ", scrollState = " + paramInt);
+    Object localObject;
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onListGetView, parent = ");
+      ((StringBuilder)localObject).append(UIUtils.getViewInfo(paramViewGroup));
+      ((StringBuilder)localObject).append(", convertView = ");
+      ((StringBuilder)localObject).append(UIUtils.getViewInfo(paramView));
+      ((StringBuilder)localObject).append(", position = ");
+      ((StringBuilder)localObject).append(paramInt);
+      Log.i("EventCollector", ((StringBuilder)localObject).toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
-    ListScrollNotifier localListScrollNotifier = (ListScrollNotifier)ReusablePool.obtain(1);
-    localListScrollNotifier.init(paramAbsListView, paramInt);
-    this.mNotifyManager.addEventNotifier(paramAbsListView, localListScrollNotifier);
+    if (paramView != null)
+    {
+      if (!LazyInitObserver.getInstance().mayProceedOnMain(null)) {
+        return;
+      }
+      localObject = (ViewReuseNotifier)ReusablePool.obtain(5);
+      ((ViewReuseNotifier)localObject).init(paramViewGroup, paramView, paramLong);
+      this.mNotifyManager.addEventNotifier(paramView, (IEventNotifier)localObject);
+    }
+  }
+  
+  public void onListScrollStateChanged(AbsListView paramAbsListView, int paramInt)
+  {
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onListScrollStateChanged, view = ");
+      ((StringBuilder)localObject).append(UIUtils.getViewInfo(paramAbsListView));
+      ((StringBuilder)localObject).append(", scrollState = ");
+      ((StringBuilder)localObject).append(paramInt);
+      Log.i("EventCollector", ((StringBuilder)localObject).toString());
+    }
+    if (!VideoReportInner.getInstance().isDataCollectEnable()) {
+      return;
+    }
+    Object localObject = (ListScrollNotifier)ReusablePool.obtain(1);
+    ((ListScrollNotifier)localObject).init(paramAbsListView, paramInt);
+    this.mNotifyManager.addEventNotifier(paramAbsListView, (IEventNotifier)localObject);
   }
   
   public void onRecyclerBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt, long paramLong)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onRecyclerBindViewHolder, holder = " + BaseUtils.getClassSimpleName(paramViewHolder) + ", position = " + paramInt);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onRecyclerBindViewHolder, holder = ");
+      localStringBuilder.append(BaseUtils.getClassSimpleName(paramViewHolder));
+      localStringBuilder.append(", position = ");
+      localStringBuilder.append(paramInt);
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     onRecyclerViewItemReuse(paramViewHolder, paramLong);
   }
   
   public void onRecyclerBindViewHolder(RecyclerView.ViewHolder paramViewHolder, int paramInt, List<Object> paramList, long paramLong)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onRecyclerBindViewHolder2, holder = " + BaseUtils.getClassSimpleName(paramViewHolder) + ", position = " + paramInt);
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      paramList = new StringBuilder();
+      paramList.append("onRecyclerBindViewHolder2, holder = ");
+      paramList.append(BaseUtils.getClassSimpleName(paramViewHolder));
+      paramList.append(", position = ");
+      paramList.append(paramInt);
+      Log.i("EventCollector", paramList.toString());
     }
     onRecyclerViewItemReuse(paramViewHolder, paramLong);
   }
@@ -415,8 +536,12 @@ public class EventCollector
   
   public void onSetRecyclerViewAdapter(RecyclerView paramRecyclerView)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onSetRecyclerViewAdapter, recyclerView = " + UIUtils.getViewInfo(paramRecyclerView));
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSetRecyclerViewAdapter, recyclerView = ");
+      localStringBuilder.append(UIUtils.getViewInfo(paramRecyclerView));
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
@@ -426,8 +551,12 @@ public class EventCollector
   
   public void onSetViewPagerAdapter(ViewPager paramViewPager)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onSetViewPagerAdapter, viewPager = " + UIUtils.getViewInfo(paramViewPager));
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onSetViewPagerAdapter, viewPager = ");
+      localStringBuilder.append(UIUtils.getViewInfo(paramViewPager));
+      Log.i("EventCollector", localStringBuilder.toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
@@ -437,28 +566,36 @@ public class EventCollector
   
   public void onStopTrackingTouch(SeekBar paramSeekBar)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onStopTrackingTouch, view = " + UIUtils.getViewInfo(paramSeekBar));
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onStopTrackingTouch, view = ");
+      ((StringBuilder)localObject).append(UIUtils.getViewInfo(paramSeekBar));
+      Log.i("EventCollector", ((StringBuilder)localObject).toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
-    ViewClickNotifier localViewClickNotifier = (ViewClickNotifier)ReusablePool.obtain(3);
-    localViewClickNotifier.init(paramSeekBar);
-    this.mNotifyManager.addEventNotifier(paramSeekBar, localViewClickNotifier);
+    Object localObject = (ViewClickNotifier)ReusablePool.obtain(3);
+    ((ViewClickNotifier)localObject).init(paramSeekBar);
+    this.mNotifyManager.addEventNotifier(paramSeekBar, (IEventNotifier)localObject);
   }
   
   public void onViewClicked(View paramView)
   {
-    if (VideoReportInner.getInstance().isDebugMode()) {
-      Log.i("EventCollector", "onViewClicked, view = " + UIUtils.getViewInfo(paramView));
+    if (VideoReportInner.getInstance().isDebugMode())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("onViewClicked, view = ");
+      ((StringBuilder)localObject).append(UIUtils.getViewInfo(paramView));
+      Log.i("EventCollector", ((StringBuilder)localObject).toString());
     }
     if (!VideoReportInner.getInstance().isDataCollectEnable()) {
       return;
     }
-    ViewClickNotifier localViewClickNotifier = (ViewClickNotifier)ReusablePool.obtain(3);
-    localViewClickNotifier.init(paramView);
-    this.mNotifyManager.addEventNotifier(paramView, localViewClickNotifier);
+    Object localObject = (ViewClickNotifier)ReusablePool.obtain(3);
+    ((ViewClickNotifier)localObject).init(paramView);
+    this.mNotifyManager.addEventNotifier(paramView, (IEventNotifier)localObject);
   }
   
   public void registerEventListener(IEventListener paramIEventListener)
@@ -473,7 +610,7 @@ public class EventCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.module.videoreport.collect.EventCollector
  * JD-Core Version:    0.7.0.1
  */

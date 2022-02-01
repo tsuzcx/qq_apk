@@ -48,41 +48,56 @@ public class QQDebugWebSocket
   
   private String covertProfileToIdeData(String paramString)
   {
-    return "{\"debug_message\":[{\"seq\":1,\"category\":\"performance\",\"data\":" + paramString + "}]}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"debug_message\":[{\"seq\":1,\"category\":\"performance\",\"data\":");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("}]}");
+    return localStringBuilder.toString();
   }
   
   private String covertV8ToIdeData(String paramString)
   {
-    return "{\"debug_message\":[{\"seq\":1,\"category\":\"chromeDevtools\",\"data\":" + paramString + "}]}";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"debug_message\":[{\"seq\":1,\"category\":\"chromeDevtools\",\"data\":");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("}]}");
+    return localStringBuilder.toString();
   }
   
   private void dealDebugMessageMaster(String paramString1, String paramString2)
   {
     try
     {
-      QMLog.i(this.TAG, "qq onSocketMessage cmd:" + paramString1 + ",data:" + paramString2);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("qq onSocketMessage cmd:");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(",data:");
+      localStringBuilder.append(paramString2);
+      QMLog.i(str, localStringBuilder.toString());
       paramString1 = new JSONObject(paramString2).getJSONArray("debug_message");
-      if ((paramString1 == null) || (paramString1.getJSONObject(0) == null)) {
-        return;
-      }
-      paramString1 = paramString1.getJSONObject(0);
-      if (paramString1 == null) {
-        return;
-      }
-      paramString2 = paramString1.getString("category");
-      if (TextUtils.equals(paramString2, "chromeDevtools"))
+      if ((paramString1 != null) && (paramString1.getJSONObject(0) != null))
       {
-        doChromeDevTools(paramString1);
-        return;
+        paramString1 = paramString1.getJSONObject(0);
+        if (paramString1 == null) {
+          return;
+        }
+        paramString2 = paramString1.getString("category");
+        if (TextUtils.equals(paramString2, "chromeDevtools"))
+        {
+          doChromeDevTools(paramString1);
+          return;
+        }
+        if (TextUtils.equals(paramString2, "performance"))
+        {
+          doPerformance(paramString1);
+          return;
+        }
       }
     }
     catch (JSONException paramString1)
     {
       QMLog.e(this.TAG, "qq onSocketMessage", paramString1);
-      return;
-    }
-    if (TextUtils.equals(paramString2, "performance")) {
-      doPerformance(paramString1);
     }
   }
   
@@ -94,12 +109,18 @@ public class QQDebugWebSocket
       int i = NetworkUtil.getActiveNetworkType(this.miniAppContext.getContext());
       if (!this.isQQDebugReady)
       {
-        sendQQDebugMethodMsg("DebugPong", "{\"ping_id\":" + paramString + ",\"network_type\":" + i + "}");
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("{\"ping_id\":");
+        localStringBuilder.append(paramString);
+        localStringBuilder.append(",\"network_type\":");
+        localStringBuilder.append(i);
+        localStringBuilder.append("}");
+        sendQQDebugMethodMsg("DebugPong", localStringBuilder.toString());
         this.isQQDebugReady = true;
         notifyIdeSetUp();
         checkDebuggerReady();
+        return;
       }
-      return;
     }
     catch (JSONException paramString)
     {
@@ -113,10 +134,11 @@ public class QQDebugWebSocket
     {
       paramString = new JSONObject(paramString);
       this.sessionId = paramString.getString("sessionId");
-      if (TextUtils.equals(paramString.getString("code"), "0002")) {
+      if (TextUtils.equals(paramString.getString("code"), "0002"))
+      {
         setCanSendMsg(true);
+        return;
       }
-      return;
     }
     catch (JSONException paramString)
     {
@@ -142,7 +164,13 @@ public class QQDebugWebSocket
       dealDebugMessageMaster(paramString1, paramString2);
       return;
     }
-    QMLog.i(this.TAG, "qq onSocketMessage cmd:" + paramString1 + ",data:" + paramString2);
+    String str = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("qq onSocketMessage cmd:");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append(",data:");
+    localStringBuilder.append(paramString2);
+    QMLog.i(str, localStringBuilder.toString());
   }
   
   private void doChromeDevTools(JSONObject paramJSONObject)
@@ -168,23 +196,20 @@ public class QQDebugWebSocket
   private void doPerformance(@NonNull JSONObject paramJSONObject)
   {
     paramJSONObject = paramJSONObject.getString("data");
-    String str;
-    int i;
     if (!TextUtils.isEmpty(paramJSONObject))
     {
       paramJSONObject = new JSONObject(paramJSONObject);
-      str = paramJSONObject.getString("method");
-      i = paramJSONObject.getInt("id");
-      if (!TextUtils.equals(str, "profile.start")) {
-        break label66;
+      String str = paramJSONObject.getString("method");
+      int i = paramJSONObject.getInt("id");
+      if (TextUtils.equals(str, "profile.start"))
+      {
+        AppStateEvent.obtain(2056, Integer.valueOf(i)).notifyRuntime(this.miniAppContext);
+        return;
       }
-      AppStateEvent.obtain(2056, Integer.valueOf(i)).notifyRuntime(this.miniAppContext);
+      if (TextUtils.equals(str, "profile.end")) {
+        AppStateEvent.obtain(2057, Integer.valueOf(i)).notifyRuntime(this.miniAppContext);
+      }
     }
-    label66:
-    while (!TextUtils.equals(str, "profile.end")) {
-      return;
-    }
-    AppStateEvent.obtain(2057, Integer.valueOf(i)).notifyRuntime(this.miniAppContext);
   }
   
   private long getAccount()
@@ -195,7 +220,11 @@ public class QQDebugWebSocket
       long l = Long.parseLong(str);
       return l;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label14:
+      break label14;
+    }
     return 0L;
   }
   
@@ -220,7 +249,11 @@ public class QQDebugWebSocket
     }
     catch (Exception localException)
     {
-      Log.e(this.TAG, "getSetupContexString error:" + localException);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSetupContexString error:");
+      localStringBuilder.append(localException);
+      Log.e(str, localStringBuilder.toString());
     }
     return null;
   }
@@ -237,7 +270,11 @@ public class QQDebugWebSocket
     }
     catch (Exception localException)
     {
-      Log.e(this.TAG, "getSetupContexString error:" + localException);
+      String str = this.TAG;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getSetupContexString error:");
+      localStringBuilder.append(localException);
+      Log.e(str, localStringBuilder.toString());
     }
     return null;
   }
@@ -245,17 +282,22 @@ public class QQDebugWebSocket
   private void onQQDebuggerFail(int paramInt)
   {
     setCanSendMsg(false);
+    DebugWebSocket.DebuggerStateListener localDebuggerStateListener;
     if (paramInt == 1000)
     {
-      if (this.mDebugListener != null) {
-        this.mDebugListener.onDebuggerDisconnect("真机调试断开连接");
+      localDebuggerStateListener = this.mDebugListener;
+      if (localDebuggerStateListener != null) {
+        localDebuggerStateListener.onDebuggerDisconnect("真机调试断开连接");
       }
-      return;
     }
-    if (this.mDebugListener != null) {
-      this.mDebugListener.onDebuggerReconnecting("真机调试断线重连...");
+    else
+    {
+      localDebuggerStateListener = this.mDebugListener;
+      if (localDebuggerStateListener != null) {
+        localDebuggerStateListener.onDebuggerReconnecting("真机调试断线重连...");
+      }
+      reconnectQQDebugSocket();
     }
-    reconnectQQDebugSocket();
   }
   
   private void reconnectQQDebugSocket()
@@ -265,9 +307,13 @@ public class QQDebugWebSocket
   
   private void sendQQDeviceMsgInfo()
   {
-    String str = getSendCmdString("DebugMessageClient", "setupContext", getSetupContexData());
-    QMLog.i(this.TAG, "sendQQDeviceMsgInfo deviceInfoCmd:" + str);
-    sendStringMessage(str);
+    String str1 = getSendCmdString("DebugMessageClient", "setupContext", getSetupContexData());
+    String str2 = this.TAG;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("sendQQDeviceMsgInfo deviceInfoCmd:");
+    localStringBuilder.append(str1);
+    QMLog.i(str2, localStringBuilder.toString());
+    sendStringMessage(str1);
   }
   
   private void startConnectIDE(DebugWebSocket.DebuggerStateListener paramDebuggerStateListener, boolean paramBoolean)
@@ -279,8 +325,9 @@ public class QQDebugWebSocket
   {
     if (this.isQQDebugReady)
     {
-      if (this.mDebugListener != null) {
-        this.mDebugListener.onDebuggerConnectedNormal();
+      DebugWebSocket.DebuggerStateListener localDebuggerStateListener = this.mDebugListener;
+      if (localDebuggerStateListener != null) {
+        localDebuggerStateListener.onDebuggerConnectedNormal();
       }
       sendHeartBeat();
     }
@@ -309,7 +356,11 @@ public class QQDebugWebSocket
     }
     catch (Exception paramString1)
     {
-      Log.e(this.TAG, "send Cmd error:" + paramString1);
+      paramString2 = this.TAG;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("send Cmd error:");
+      paramJSONObject.append(paramString1);
+      Log.e(paramString2, paramJSONObject.toString());
     }
     return "";
   }
@@ -333,41 +384,41 @@ public class QQDebugWebSocket
   
   public void sendMessageToDebugger(@NonNull String paramString)
   {
-    QMLog.i(this.TAG, "v8 onSocketMessage:" + paramString);
-    DebugWebSocket.DebuggerStateListener localDebuggerStateListener = this.mDebugListener;
-    if ((localDebuggerStateListener != null) && (!TextUtils.isEmpty(paramString))) {}
-    try
-    {
-      String str = new JSONObject(paramString).optString("method");
-      if (!TextUtils.isEmpty(str))
+    Object localObject1 = this.TAG;
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("v8 onSocketMessage:");
+    ((StringBuilder)localObject2).append(paramString);
+    QMLog.i((String)localObject1, ((StringBuilder)localObject2).toString());
+    localObject1 = this.mDebugListener;
+    if ((localObject1 != null) && (!TextUtils.isEmpty(paramString))) {
+      try
       {
-        if (!TextUtils.equals(str, "Debugger.paused")) {
-          break label93;
-        }
-        localDebuggerStateListener.onDebuggerBreakPointPaused();
-      }
-      for (;;)
-      {
-        sendQQDebugMethodMsg("DebugMessageClient", covertV8ToIdeData(paramString));
-        return;
-        label93:
-        if (TextUtils.equals(str, "Debugger.resumed")) {
-          localDebuggerStateListener.onDebuggerConnectedNormal();
+        localObject2 = new JSONObject(paramString).optString("method");
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          if (TextUtils.equals((CharSequence)localObject2, "Debugger.paused")) {
+            ((DebugWebSocket.DebuggerStateListener)localObject1).onDebuggerBreakPointPaused();
+          } else if (TextUtils.equals((CharSequence)localObject2, "Debugger.resumed")) {
+            ((DebugWebSocket.DebuggerStateListener)localObject1).onDebuggerConnectedNormal();
+          }
         }
       }
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
+      catch (JSONException localJSONException)
       {
         QMLog.e(this.TAG, "v8 onSocketMessage error", localJSONException);
       }
     }
+    sendQQDebugMethodMsg("DebugMessageClient", covertV8ToIdeData(paramString));
   }
   
   public void sendQQDebugMethodMsg(String paramString1, String paramString2)
   {
-    sendStringMessage("{\"cmd\":\"" + paramString1 + "\",\"data\":" + paramString2 + "}");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("{\"cmd\":\"");
+    localStringBuilder.append(paramString1);
+    localStringBuilder.append("\",\"data\":");
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append("}");
+    sendStringMessage(localStringBuilder.toString());
   }
   
   public void sendQuitDebugMsgInfo()
@@ -387,7 +438,7 @@ public class QQDebugWebSocket
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.debug.QQDebugWebSocket
  * JD-Core Version:    0.7.0.1
  */

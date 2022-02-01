@@ -1,7 +1,6 @@
 package com.tencent.mtt.hippy.uimanager;
 
 import android.text.TextUtils;
-import android.util.Log;
 import android.util.SparseArray;
 import com.tencent.mtt.hippy.HippyAPIProvider;
 import com.tencent.mtt.hippy.HippyEngineContext;
@@ -32,7 +31,12 @@ public class RenderManager
   
   private void b(RenderNode paramRenderNode)
   {
-    LogUtils.d("RenderManager", "delete RenderNode " + paramRenderNode.mId + " class " + paramRenderNode.mClassName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("delete RenderNode ");
+    localStringBuilder.append(paramRenderNode.mId);
+    localStringBuilder.append(" class ");
+    localStringBuilder.append(paramRenderNode.mClassName);
+    LogUtils.d("RenderManager", localStringBuilder.toString());
     if (paramRenderNode.mParent != null) {
       paramRenderNode.mParent.removeChild(paramRenderNode);
     }
@@ -46,11 +50,11 @@ public class RenderManager
     }
   }
   
-  public b a(String paramString, boolean paramBoolean, int paramInt)
+  public b a(String paramString, boolean paramBoolean, int paramInt1, int paramInt2)
   {
-    StyleNode localStyleNode = this.f.a(paramString, paramBoolean);
+    StyleNode localStyleNode = this.f.a(paramString, paramBoolean, paramInt2);
     localStyleNode.setViewClassName(paramString);
-    localStyleNode.setId(paramInt);
+    localStyleNode.setId(paramInt1);
     return localStyleNode;
   }
   
@@ -67,18 +71,24 @@ public class RenderManager
   
   public void a(int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5)
   {
-    LogUtils.d("RenderManager", "updateLayout ID " + paramInt1);
-    RenderNode localRenderNode = (RenderNode)this.a.get(paramInt1);
-    localRenderNode.updateLayout(paramInt2, paramInt3, paramInt4, paramInt5);
-    addUpdateNodeIfNeeded(localRenderNode);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateLayout ID ");
+    ((StringBuilder)localObject).append(paramInt1);
+    LogUtils.d("RenderManager", ((StringBuilder)localObject).toString());
+    localObject = (RenderNode)this.a.get(paramInt1);
+    ((RenderNode)localObject).updateLayout(paramInt2, paramInt3, paramInt4, paramInt5);
+    addUpdateNodeIfNeeded((RenderNode)localObject);
   }
   
   public void a(int paramInt, HippyMap paramHippyMap)
   {
-    LogUtils.d("RenderManager", "updateNode ID " + paramInt);
-    RenderNode localRenderNode = (RenderNode)this.a.get(paramInt);
-    localRenderNode.updateNode(paramHippyMap);
-    addUpdateNodeIfNeeded(localRenderNode);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateNode ID ");
+    ((StringBuilder)localObject).append(paramInt);
+    LogUtils.d("RenderManager", ((StringBuilder)localObject).toString());
+    localObject = (RenderNode)this.a.get(paramInt);
+    ((RenderNode)localObject).updateNode(paramHippyMap);
+    addUpdateNodeIfNeeded((RenderNode)localObject);
   }
   
   public void a(int paramInt, Promise paramPromise)
@@ -95,10 +105,13 @@ public class RenderManager
   
   public void a(int paramInt, Object paramObject)
   {
-    LogUtils.d("RenderManager", "updateExtra ID " + paramInt);
-    RenderNode localRenderNode = (RenderNode)this.a.get(paramInt);
-    localRenderNode.updateExtra(paramObject);
-    addUpdateNodeIfNeeded(localRenderNode);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("updateExtra ID ");
+    ((StringBuilder)localObject).append(paramInt);
+    LogUtils.d("RenderManager", ((StringBuilder)localObject).toString());
+    localObject = (RenderNode)this.a.get(paramInt);
+    ((RenderNode)localObject).updateExtra(paramObject);
+    addUpdateNodeIfNeeded((RenderNode)localObject);
   }
   
   public void a(int paramInt, String paramString, HippyArray paramHippyArray, Promise paramPromise)
@@ -110,26 +123,35 @@ public class RenderManager
       a(localRenderNode);
       return;
     }
-    Log.e("RenderManager", "dispatchUIFunction Node Null");
+    LogUtils.d("RenderManager", "dispatchUIFunction Node Null");
   }
   
   public void a(HippyRootView paramHippyRootView, int paramInt1, int paramInt2, int paramInt3, String paramString, HippyMap paramHippyMap)
   {
-    LogUtils.d("RenderManager", "createNode ID " + paramInt1 + " mParentId " + paramInt2 + " index " + paramInt3 + "className" + paramString);
-    RenderNode localRenderNode = (RenderNode)this.a.get(paramInt2);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("createNode ID ");
+    ((StringBuilder)localObject).append(paramInt1);
+    ((StringBuilder)localObject).append(" mParentId ");
+    ((StringBuilder)localObject).append(paramInt2);
+    ((StringBuilder)localObject).append(" index ");
+    ((StringBuilder)localObject).append(paramInt3);
+    ((StringBuilder)localObject).append("className");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtils.d("RenderManager", ((StringBuilder)localObject).toString());
+    localObject = (RenderNode)this.a.get(paramInt2);
     boolean bool = this.f.a(paramString);
     ControllerManager localControllerManager = this.f;
-    if ((bool) || (localRenderNode.mIsLazyLoad)) {}
-    for (bool = true;; bool = false)
-    {
-      paramHippyRootView = localControllerManager.a(paramInt1, paramHippyMap, paramString, paramHippyRootView, bool);
-      this.a.put(paramInt1, paramHippyRootView);
-      this.b.remove(paramInt1);
-      localRenderNode.addChild(paramHippyRootView, paramInt3);
-      addUpdateNodeIfNeeded(localRenderNode);
-      addUpdateNodeIfNeeded(paramHippyRootView);
-      return;
+    if ((!bool) && (!((RenderNode)localObject).mIsLazyLoad)) {
+      bool = false;
+    } else {
+      bool = true;
     }
+    paramHippyRootView = localControllerManager.a(paramInt1, paramHippyMap, paramString, paramHippyRootView, bool);
+    this.a.put(paramInt1, paramHippyRootView);
+    this.b.remove(paramInt1);
+    ((RenderNode)localObject).addChild(paramHippyRootView, paramInt3);
+    addUpdateNodeIfNeeded((RenderNode)localObject);
+    addUpdateNodeIfNeeded(paramHippyRootView);
   }
   
   void a(RenderNode paramRenderNode)
@@ -166,8 +188,11 @@ public class RenderManager
   
   public void b()
   {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("do batch size ");
+    localStringBuilder.append(this.c.size());
+    LogUtils.d("RenderManager", localStringBuilder.toString());
     int k = 0;
-    LogUtils.d("RenderManager", "do batch size " + this.c.size());
     int i = 0;
     while (i < this.c.size())
     {
@@ -215,38 +240,32 @@ public class RenderManager
       localRenderNode.mParent.addDeleteId(paramInt, localRenderNode);
       addUpdateNodeIfNeeded(localRenderNode.mParent);
     }
-    for (;;)
+    else if (TextUtils.equals("RootNode", localRenderNode.getClassName()))
     {
-      b(localRenderNode);
-      return;
-      if (TextUtils.equals("RootNode", localRenderNode.getClassName())) {
-        addUpdateNodeIfNeeded(localRenderNode);
-      }
+      addUpdateNodeIfNeeded(localRenderNode);
     }
+    b(localRenderNode);
   }
   
   public void b(HippyRootView paramHippyRootView, int paramInt1, int paramInt2, int paramInt3, String paramString, HippyMap paramHippyMap)
   {
-    boolean bool1 = false;
     boolean bool2 = this.f.a(paramString);
     RenderNode localRenderNode = (RenderNode)this.a.get(paramInt2);
-    if (localRenderNode != null) {
-      if ((bool2) || (localRenderNode.mIsLazyLoad)) {
+    boolean bool1 = false;
+    if (localRenderNode != null)
+    {
+      if ((!bool2) && (!localRenderNode.mIsLazyLoad)) {}
+    }
+    else {
+      while ((bool2) || (((Boolean)this.b.get(paramInt2)).booleanValue()))
+      {
         bool1 = true;
+        break;
       }
     }
-    for (;;)
-    {
-      this.b.put(paramInt1, Boolean.valueOf(bool1));
-      if (!bool1) {
-        this.f.a(paramHippyRootView, paramInt1, paramString, paramHippyMap);
-      }
-      return;
-      bool1 = false;
-      continue;
-      if ((bool2) || (((Boolean)this.b.get(paramInt2)).booleanValue())) {
-        bool1 = true;
-      }
+    this.b.put(paramInt1, Boolean.valueOf(bool1));
+    if (!bool1) {
+      this.f.a(paramHippyRootView, paramInt1, paramString, paramHippyMap);
     }
   }
   
@@ -262,13 +281,17 @@ public class RenderManager
       RenderNode localRenderNode = (RenderNode)this.a.get(paramInt);
       return localRenderNode;
     }
-    catch (Exception localException) {}
+    catch (Exception localException)
+    {
+      label14:
+      break label14;
+    }
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.uimanager.RenderManager
  * JD-Core Version:    0.7.0.1
  */

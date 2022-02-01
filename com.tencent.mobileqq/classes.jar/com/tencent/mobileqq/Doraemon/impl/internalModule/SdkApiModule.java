@@ -15,21 +15,21 @@ public class SdkApiModule
     {
     default: 
       return false;
+    case 33: 
+      DoraemonUtil.a(paramAPICallback, null);
+      break;
+    case 32: 
+      DoraemonUtil.a(paramAPICallback, null);
+      break;
     case 31: 
       DoraemonUtil.a(paramAPICallback, null);
     }
-    for (;;)
-    {
-      return true;
-      DoraemonUtil.a(paramAPICallback, null);
-      continue;
-      DoraemonUtil.a(paramAPICallback, null);
-    }
+    return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.Doraemon.impl.internalModule.SdkApiModule
  * JD-Core Version:    0.7.0.1
  */

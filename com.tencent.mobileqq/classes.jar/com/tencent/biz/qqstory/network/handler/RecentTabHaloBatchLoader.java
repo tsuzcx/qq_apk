@@ -63,18 +63,18 @@ public class RecentTabHaloBatchLoader
   private void c()
   {
     Object localObject = (StoryHaloManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.STORY_HALO_MANAGER);
-    if (!this.b.get()) {}
-    for (;;)
-    {
-      MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilQueue.poll();
-      if (localMsgTabNodeInfo == null)
+    if (!this.b.get()) {
+      for (;;)
       {
-        localObject = new RecentTabHaloBatchLoader.RecentTabHaloEvent(true);
-        StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
-        return;
+        MsgTabNodeInfo localMsgTabNodeInfo = (MsgTabNodeInfo)this.jdField_a_of_type_JavaUtilQueue.poll();
+        if (localMsgTabNodeInfo == null) {
+          break;
+        }
+        ((StoryHaloManager)localObject).a(localMsgTabNodeInfo);
       }
-      ((StoryHaloManager)localObject).a(localMsgTabNodeInfo);
     }
+    localObject = new RecentTabHaloBatchLoader.RecentTabHaloEvent(true);
+    StoryDispatcher.a().dispatch((Dispatcher.Dispatchable)localObject);
   }
   
   public void a()
@@ -84,20 +84,24 @@ public class RecentTabHaloBatchLoader
   
   public void a(@NonNull RecentTabHaloRequest paramRecentTabHaloRequest, @Nullable RecentTabHaloResponse paramRecentTabHaloResponse, @NonNull ErrorMessage paramErrorMessage)
   {
-    if (a()) {}
-    do
-    {
+    if (a()) {
       return;
-      this.b.set(true);
-      if ((paramRecentTabHaloResponse != null) && (!paramErrorMessage.isFail())) {
-        break;
-      }
-    } while (!QLog.isColorLevel());
-    QLog.e("RecentTabHaloBatchLoader", 2, "onEvent: failed. Message: exception: " + paramErrorMessage);
-    return;
-    a(paramRecentTabHaloRequest, paramRecentTabHaloResponse);
-    this.b.set(false);
-    c();
+    }
+    this.b.set(true);
+    if ((paramRecentTabHaloResponse != null) && (!paramErrorMessage.isFail()))
+    {
+      a(paramRecentTabHaloRequest, paramRecentTabHaloResponse);
+      this.b.set(false);
+      c();
+      return;
+    }
+    if (QLog.isColorLevel())
+    {
+      paramRecentTabHaloRequest = new StringBuilder();
+      paramRecentTabHaloRequest.append("onEvent: failed. Message: exception: ");
+      paramRecentTabHaloRequest.append(paramErrorMessage);
+      QLog.e("RecentTabHaloBatchLoader", 2, paramRecentTabHaloRequest.toString());
+    }
   }
   
   public boolean a()
@@ -107,7 +111,7 @@ public class RecentTabHaloBatchLoader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.handler.RecentTabHaloBatchLoader
  * JD-Core Version:    0.7.0.1
  */

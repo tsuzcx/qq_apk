@@ -72,17 +72,21 @@ public abstract class FragmentTransaction
   @NonNull
   private Fragment createFragment(@NonNull Class<? extends Fragment> paramClass, @Nullable Bundle paramBundle)
   {
-    if (this.mFragmentFactory == null) {
-      throw new IllegalStateException("Creating a Fragment requires that this FragmentTransaction was built with FragmentManager.beginTransaction()");
-    }
-    if (this.mClassLoader == null) {
+    FragmentFactory localFragmentFactory = this.mFragmentFactory;
+    if (localFragmentFactory != null)
+    {
+      ClassLoader localClassLoader = this.mClassLoader;
+      if (localClassLoader != null)
+      {
+        paramClass = localFragmentFactory.instantiate(localClassLoader, paramClass.getName());
+        if (paramBundle != null) {
+          paramClass.setArguments(paramBundle);
+        }
+        return paramClass;
+      }
       throw new IllegalStateException("The FragmentManager must be attached to itshost to create a Fragment");
     }
-    paramClass = this.mFragmentFactory.instantiate(this.mClassLoader, paramClass.getName());
-    if (paramBundle != null) {
-      paramClass.setArguments(paramBundle);
-    }
-    return paramClass;
+    throw new IllegalStateException("Creating a Fragment requires that this FragmentTransaction was built with FragmentManager.beginTransaction()");
   }
   
   @NonNull
@@ -145,37 +149,53 @@ public abstract class FragmentTransaction
     if (FragmentTransition.supportsTransition())
     {
       paramView = ViewCompat.getTransitionName(paramView);
-      if (paramView == null) {
-        throw new IllegalArgumentException("Unique transitionNames are required for all sharedElements");
+      if (paramView != null)
+      {
+        if (this.mSharedElementSourceNames == null)
+        {
+          this.mSharedElementSourceNames = new ArrayList();
+          this.mSharedElementTargetNames = new ArrayList();
+        }
+        else
+        {
+          if (this.mSharedElementTargetNames.contains(paramString)) {
+            break label129;
+          }
+          if (this.mSharedElementSourceNames.contains(paramView)) {
+            break label89;
+          }
+        }
+        this.mSharedElementSourceNames.add(paramView);
+        this.mSharedElementTargetNames.add(paramString);
+        return this;
+        label89:
+        paramString = new StringBuilder();
+        paramString.append("A shared element with the source name '");
+        paramString.append(paramView);
+        paramString.append("' has already been added to the transaction.");
+        throw new IllegalArgumentException(paramString.toString());
+        label129:
+        paramView = new StringBuilder();
+        paramView.append("A shared element with the target name '");
+        paramView.append(paramString);
+        paramView.append("' has already been added to the transaction.");
+        throw new IllegalArgumentException(paramView.toString());
       }
-      if (this.mSharedElementSourceNames != null) {
-        break label74;
-      }
-      this.mSharedElementSourceNames = new ArrayList();
-      this.mSharedElementTargetNames = new ArrayList();
+      throw new IllegalArgumentException("Unique transitionNames are required for all sharedElements");
     }
-    label74:
-    do
-    {
-      this.mSharedElementSourceNames.add(paramView);
-      this.mSharedElementTargetNames.add(paramString);
-      return this;
-      if (this.mSharedElementTargetNames.contains(paramString)) {
-        throw new IllegalArgumentException("A shared element with the target name '" + paramString + "' has already been added to the transaction.");
-      }
-    } while (!this.mSharedElementSourceNames.contains(paramView));
-    throw new IllegalArgumentException("A shared element with the source name '" + paramView + "' has already been added to the transaction.");
+    return this;
   }
   
   @NonNull
   public FragmentTransaction addToBackStack(@Nullable String paramString)
   {
-    if (!this.mAllowAddToBackStack) {
-      throw new IllegalStateException("This FragmentTransaction is not allowed to be added to the back stack.");
+    if (this.mAllowAddToBackStack)
+    {
+      this.mAddToBackStack = true;
+      this.mName = paramString;
+      return this;
     }
-    this.mAddToBackStack = true;
-    this.mName = paramString;
-    return this;
+    throw new IllegalStateException("This FragmentTransaction is not allowed to be added to the back stack.");
   }
   
   @NonNull
@@ -203,39 +223,71 @@ public abstract class FragmentTransaction
   @NonNull
   public FragmentTransaction disallowAddToBackStack()
   {
-    if (this.mAddToBackStack) {
-      throw new IllegalStateException("This transaction is already being added to the back stack");
+    if (!this.mAddToBackStack)
+    {
+      this.mAllowAddToBackStack = false;
+      return this;
     }
-    this.mAllowAddToBackStack = false;
-    return this;
+    throw new IllegalStateException("This transaction is already being added to the back stack");
   }
   
   void doAddOp(int paramInt1, Fragment paramFragment, @Nullable String paramString, int paramInt2)
   {
-    Class localClass = paramFragment.getClass();
-    int i = localClass.getModifiers();
-    if ((localClass.isAnonymousClass()) || (!Modifier.isPublic(i)) || ((localClass.isMemberClass()) && (!Modifier.isStatic(i)))) {
-      throw new IllegalStateException("Fragment " + localClass.getCanonicalName() + " must be a public static class to be  properly recreated from instance state.");
-    }
-    if (paramString != null)
+    Object localObject = paramFragment.getClass();
+    int i = ((Class)localObject).getModifiers();
+    if ((!((Class)localObject).isAnonymousClass()) && (Modifier.isPublic(i)) && ((!((Class)localObject).isMemberClass()) || (Modifier.isStatic(i))))
     {
-      if ((paramFragment.mTag != null) && (!paramString.equals(paramFragment.mTag))) {
-        throw new IllegalStateException("Can't change tag of fragment " + paramFragment + ": was " + paramFragment.mTag + " now " + paramString);
+      if (paramString != null)
+      {
+        if ((paramFragment.mTag != null) && (!paramString.equals(paramFragment.mTag)))
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Can't change tag of fragment ");
+          ((StringBuilder)localObject).append(paramFragment);
+          ((StringBuilder)localObject).append(": was ");
+          ((StringBuilder)localObject).append(paramFragment.mTag);
+          ((StringBuilder)localObject).append(" now ");
+          ((StringBuilder)localObject).append(paramString);
+          throw new IllegalStateException(((StringBuilder)localObject).toString());
+        }
+        paramFragment.mTag = paramString;
       }
-      paramFragment.mTag = paramString;
+      if (paramInt1 != 0) {
+        if (paramInt1 != -1)
+        {
+          if ((paramFragment.mFragmentId != 0) && (paramFragment.mFragmentId != paramInt1))
+          {
+            paramString = new StringBuilder();
+            paramString.append("Can't change container ID of fragment ");
+            paramString.append(paramFragment);
+            paramString.append(": was ");
+            paramString.append(paramFragment.mFragmentId);
+            paramString.append(" now ");
+            paramString.append(paramInt1);
+            throw new IllegalStateException(paramString.toString());
+          }
+          paramFragment.mFragmentId = paramInt1;
+          paramFragment.mContainerId = paramInt1;
+        }
+        else
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("Can't add fragment ");
+          ((StringBuilder)localObject).append(paramFragment);
+          ((StringBuilder)localObject).append(" with tag ");
+          ((StringBuilder)localObject).append(paramString);
+          ((StringBuilder)localObject).append(" to container view with no id");
+          throw new IllegalArgumentException(((StringBuilder)localObject).toString());
+        }
+      }
+      addOp(new FragmentTransaction.Op(paramInt2, paramFragment));
+      return;
     }
-    if (paramInt1 != 0)
-    {
-      if (paramInt1 == -1) {
-        throw new IllegalArgumentException("Can't add fragment " + paramFragment + " with tag " + paramString + " to container view with no id");
-      }
-      if ((paramFragment.mFragmentId != 0) && (paramFragment.mFragmentId != paramInt1)) {
-        throw new IllegalStateException("Can't change container ID of fragment " + paramFragment + ": was " + paramFragment.mFragmentId + " now " + paramInt1);
-      }
-      paramFragment.mFragmentId = paramInt1;
-      paramFragment.mContainerId = paramInt1;
-    }
-    addOp(new FragmentTransaction.Op(paramInt2, paramFragment));
+    paramFragment = new StringBuilder();
+    paramFragment.append("Fragment ");
+    paramFragment.append(((Class)localObject).getCanonicalName());
+    paramFragment.append(" must be a public static class to be  properly recreated from instance state.");
+    throw new IllegalStateException(paramFragment.toString());
   }
   
   @NonNull
@@ -271,11 +323,12 @@ public abstract class FragmentTransaction
   @NonNull
   public FragmentTransaction replace(@IdRes int paramInt, @NonNull Fragment paramFragment, @Nullable String paramString)
   {
-    if (paramInt == 0) {
-      throw new IllegalArgumentException("Must use non-zero containerViewId");
+    if (paramInt != 0)
+    {
+      doAddOp(paramInt, paramFragment, paramString, 2);
+      return this;
     }
-    doAddOp(paramInt, paramFragment, paramString, 2);
-    return this;
+    throw new IllegalArgumentException("Must use non-zero containerViewId");
   }
   
   @NonNull
@@ -404,7 +457,7 @@ public abstract class FragmentTransaction
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.fragment.app.FragmentTransaction
  * JD-Core Version:    0.7.0.1
  */

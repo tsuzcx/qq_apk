@@ -6,12 +6,13 @@ import com.tencent.mobileqq.app.IphoneTitleBarActivity;
 import com.tencent.mobileqq.app.NearbyObserver;
 import com.tencent.mobileqq.config.NearbyDataManager;
 import com.tencent.mobileqq.nearby.NearPeopleFilters;
-import com.tencent.mobileqq.nearby.NearbyAppInterface;
 import com.tencent.mobileqq.nearby.NearbyConstants;
 import com.tencent.mobileqq.nearby.NearbyFragmentEnterAdapter;
-import com.tencent.mobileqq.nearby.redtouch.NearbyRecommendPeopleInfo;
+import com.tencent.mobileqq.nearby.api.INearbyAppInterface;
+import com.tencent.mobileqq.nearby.redtouch.INearbyRecommendPeopleInfo;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.pb.now.ilive_feeds_near_anchor.NearAnchorInfo;
 import com.tencent.protobuf.nearbyPeopleRecommend.nearbyPeopleRecommend.QueryRspItem;
 import com.tencent.qphone.base.util.QLog;
@@ -27,7 +28,7 @@ class NearbyHybridFragment$18
     if ((this.a.b.getVisibility() == 0) && (paramList != null))
     {
       paramList = (nearbyPeopleRecommend.QueryRspItem)paramList.get(0);
-      NearbyRecommendPeopleInfo.a(paramList.msg_id.get(), paramList.rd_people.get());
+      ((INearbyRecommendPeopleInfo)QRoute.api(INearbyRecommendPeopleInfo.class)).setLatestRecommendList(paramList.msg_id.get(), paramList.rd_people.get());
       NearbyHybridFragment.a(this.a);
     }
   }
@@ -38,27 +39,31 @@ class NearbyHybridFragment$18
       QLog.d("nearby.NearbyHybridFragment", 2, "onSetFilterList");
     }
     NearPeopleFilters localNearPeopleFilters = new NearPeopleFilters();
-    localNearPeopleFilters.jdField_a_of_type_Int = paramInt1;
-    localNearPeopleFilters.jdField_b_of_type_Int = paramInt2;
-    localNearPeopleFilters.jdField_c_of_type_Int = paramInt3;
-    localNearPeopleFilters.jdField_d_of_type_Int = paramInt4;
-    localNearPeopleFilters.e = paramInt9;
-    localNearPeopleFilters.f = paramInt5;
-    localNearPeopleFilters.jdField_d_of_type_ArrayOfJavaLangString[0] = String.valueOf(paramInt6);
-    localNearPeopleFilters.jdField_d_of_type_ArrayOfJavaLangString[1] = String.valueOf(paramInt7);
-    localNearPeopleFilters.jdField_d_of_type_ArrayOfJavaLangString[2] = String.valueOf(paramInt8);
-    localNearPeopleFilters.jdField_b_of_type_JavaLangString = paramString1;
-    localNearPeopleFilters.jdField_c_of_type_JavaLangString = paramString2;
-    localNearPeopleFilters.jdField_d_of_type_JavaLangString = paramString3;
+    localNearPeopleFilters.a(paramInt1);
+    localNearPeopleFilters.b(paramInt2);
+    localNearPeopleFilters.c(paramInt3);
+    localNearPeopleFilters.d(paramInt4);
+    localNearPeopleFilters.e(paramInt9);
+    localNearPeopleFilters.f(paramInt5);
+    localNearPeopleFilters.a()[0] = String.valueOf(paramInt6);
+    localNearPeopleFilters.a()[1] = String.valueOf(paramInt7);
+    localNearPeopleFilters.a()[2] = String.valueOf(paramInt8);
+    localNearPeopleFilters.b = paramString1;
+    localNearPeopleFilters.c = paramString2;
+    localNearPeopleFilters.d = paramString3;
     StringBuilder localStringBuilder = new StringBuilder();
     if (!TextUtils.isEmpty(paramString1)) {
       localStringBuilder.append(paramString1);
     }
-    if (!TextUtils.isEmpty(paramString2)) {
-      localStringBuilder.append("-").append(paramString2);
+    if (!TextUtils.isEmpty(paramString2))
+    {
+      localStringBuilder.append("-");
+      localStringBuilder.append(paramString2);
     }
-    if (!TextUtils.isEmpty(paramString3)) {
-      localStringBuilder.append("-").append(paramString3);
+    if (!TextUtils.isEmpty(paramString3))
+    {
+      localStringBuilder.append("-");
+      localStringBuilder.append(paramString3);
     }
     paramString2 = localStringBuilder.toString();
     paramString1 = paramString2;
@@ -69,15 +74,19 @@ class NearbyHybridFragment$18
     if (!localNearPeopleFilters.equals(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters)) {
       localNearPeopleFilters.jdField_a_of_type_Boolean = true;
     }
-    this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters = localNearPeopleFilters;
-    if ((((NearbyDataManager)this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getManager(NearbyConstants.jdField_b_of_type_Int)).a() == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters.jdField_a_of_type_Boolean)) {
-      NearPeopleFilters.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters);
+    paramString1 = this.a;
+    paramString1.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters = localNearPeopleFilters;
+    if ((((NearbyDataManager)paramString1.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getManager(NearbyConstants.b)).a() == 0) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters != null) && (this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters.jdField_a_of_type_Boolean)) {
+      NearPeopleFilters.a(this.a.jdField_a_of_type_ComTencentMobileqqNearbyApiINearbyAppInterface.getCurrentAccountUin(), this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearPeopleFilters);
     }
   }
   
-  public void a(boolean paramBoolean, List<ilive_feeds_near_anchor.NearAnchorInfo> paramList)
+  protected void a(boolean paramBoolean, List<ilive_feeds_near_anchor.NearAnchorInfo> paramList)
   {
-    QLog.e("nearby.NearbyHybridFragment", 2, "onNearbyLiveFeedAnchor isSucc:" + paramBoolean);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onNearbyLiveFeedAnchor isSucc:");
+    localStringBuilder.append(paramBoolean);
+    QLog.e("nearby.NearbyHybridFragment", 2, localStringBuilder.toString());
     if ((paramBoolean) && (paramList.size() > 0))
     {
       this.a.jdField_a_of_type_ComTencentMobileqqNearbyNearbyFragmentEnterAdapter.b(paramList);
@@ -94,7 +103,7 @@ class NearbyHybridFragment$18
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.NearbyHybridFragment.18
  * JD-Core Version:    0.7.0.1
  */

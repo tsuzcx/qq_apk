@@ -18,52 +18,27 @@ import kotlin.reflect.KTypeProjection;
 
 public class Reflection
 {
-  private static final KClass[] EMPTY_K_CLASS_ARRAY;
+  private static final KClass[] EMPTY_K_CLASS_ARRAY = new KClass[0];
   static final String REFLECTION_NOT_AVAILABLE = " (Kotlin reflection is not available)";
   private static final ReflectionFactory factory;
   
   static
   {
+    Object localObject = null;
     try
     {
-      ReflectionFactory localReflectionFactory1 = (ReflectionFactory)Class.forName("kotlin.reflect.jvm.internal.ReflectionFactoryImpl").newInstance();
-      if (localReflectionFactory1 != null)
-      {
-        factory = localReflectionFactory1;
-        EMPTY_K_CLASS_ARRAY = new KClass[0];
-        return;
-      }
+      ReflectionFactory localReflectionFactory = (ReflectionFactory)Class.forName("kotlin.reflect.jvm.internal.ReflectionFactoryImpl").newInstance();
+      localObject = localReflectionFactory;
     }
-    catch (ClassCastException localClassCastException)
+    catch (ClassCastException|ClassNotFoundException|InstantiationException|IllegalAccessException localClassCastException)
     {
-      for (;;)
-      {
-        Object localObject1 = null;
-      }
+      label19:
+      break label19;
     }
-    catch (ClassNotFoundException localClassNotFoundException)
-    {
-      for (;;)
-      {
-        Object localObject2 = null;
-      }
+    if (localObject == null) {
+      localObject = new ReflectionFactory();
     }
-    catch (InstantiationException localInstantiationException)
-    {
-      for (;;)
-      {
-        Object localObject3 = null;
-      }
-    }
-    catch (IllegalAccessException localIllegalAccessException)
-    {
-      for (;;)
-      {
-        ReflectionFactory localReflectionFactory2 = null;
-        continue;
-        localReflectionFactory2 = new ReflectionFactory();
-      }
-    }
+    factory = (ReflectionFactory)localObject;
   }
   
   public static KClass createKotlinClass(Class paramClass)
@@ -94,23 +69,17 @@ public class Reflection
   public static KClass[] getOrCreateKotlinClasses(Class[] paramArrayOfClass)
   {
     int j = paramArrayOfClass.length;
-    Object localObject;
-    if (j == 0)
-    {
-      localObject = EMPTY_K_CLASS_ARRAY;
-      return localObject;
+    if (j == 0) {
+      return EMPTY_K_CLASS_ARRAY;
     }
     KClass[] arrayOfKClass = new KClass[j];
     int i = 0;
-    for (;;)
+    while (i < j)
     {
-      localObject = arrayOfKClass;
-      if (i >= j) {
-        break;
-      }
       arrayOfKClass[i] = getOrCreateKotlinClass(paramArrayOfClass[i]);
       i += 1;
     }
+    return arrayOfKClass;
   }
   
   public static KDeclarationContainer getOrCreateKotlinPackage(Class paramClass, String paramString)
@@ -210,7 +179,7 @@ public class Reflection
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     kotlin.jvm.internal.Reflection
  * JD-Core Version:    0.7.0.1
  */

@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import com.tencent.mobileqq.activity.QQBrowserActivity;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.utils.JumpAction;
 import com.tencent.qphone.base.util.QLog;
 import java.io.UnsupportedEncodingException;
 import java.net.URLEncoder;
@@ -12,14 +13,14 @@ import java.util.Iterator;
 import java.util.Set;
 
 public class HuaYangAction
-  extends JumpActionBase
+  extends JumpAction
 {
   public HuaYangAction(QQAppInterface paramQQAppInterface, Context paramContext)
   {
     super(paramQQAppInterface, paramContext);
   }
   
-  private boolean C()
+  private boolean c()
   {
     Object localObject1 = new StringBuilder((String)this.jdField_a_of_type_JavaUtilHashMap.get("url"));
     ((StringBuilder)localObject1).append("?a=1");
@@ -44,8 +45,12 @@ public class HuaYangAction
       }
     }
     localObject1 = ((StringBuilder)localObject1).toString();
-    if (QLog.isDevelopLevel()) {
-      QLog.e("HuaYangAction", 4, "gotoHuayang url==" + (String)localObject1);
+    if (QLog.isDevelopLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("gotoHuayang url==");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      QLog.e("HuaYangAction", 4, ((StringBuilder)localObject2).toString());
     }
     localObject2 = this.jdField_a_of_type_AndroidContentContext;
     Intent localIntent = new Intent((Context)localObject2, QQBrowserActivity.class);
@@ -59,20 +64,23 @@ public class HuaYangAction
   {
     try
     {
-      boolean bool = C();
+      boolean bool = c();
       return bool;
     }
     catch (Exception localException)
     {
-      QLog.e("HuaYangAction", 1, "doAction error: " + localException.getMessage());
-      a("HuaYangAction");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("doAction error: ");
+      localStringBuilder.append(localException.getMessage());
+      QLog.e("HuaYangAction", 1, localStringBuilder.toString());
+      b_("HuaYangAction");
     }
     return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.parser.HuaYangAction
  * JD-Core Version:    0.7.0.1
  */

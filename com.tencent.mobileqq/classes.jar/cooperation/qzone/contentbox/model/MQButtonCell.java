@@ -19,19 +19,20 @@ public class MQButtonCell
   
   public static JSONArray convertToJsonArray(List<MQButtonCell> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    JSONArray localJSONArray = new JSONArray();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      MQButtonCell localMQButtonCell = (MQButtonCell)paramList.next();
-      if (localMQButtonCell != null) {
-        localJSONArray.put(localMQButtonCell.convertToJson());
+      JSONArray localJSONArray = new JSONArray();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        MQButtonCell localMQButtonCell = (MQButtonCell)paramList.next();
+        if (localMQButtonCell != null) {
+          localJSONArray.put(localMQButtonCell.convertToJson());
+        }
       }
+      return localJSONArray;
     }
-    return localJSONArray;
+    return null;
   }
   
   public static MQButtonCell parseFromJson(JSONObject paramJSONObject)
@@ -56,29 +57,25 @@ public class MQButtonCell
   
   public static List<MQButtonCell> parseFromJsonArray(JSONArray paramJSONArray)
   {
-    if ((paramJSONArray == null) || (paramJSONArray.length() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    int i = 0;
-    for (;;)
+    if ((paramJSONArray != null) && (paramJSONArray.length() != 0))
     {
-      if (i < paramJSONArray.length()) {
+      ArrayList localArrayList = new ArrayList();
+      int i = 0;
+      while (i < paramJSONArray.length())
+      {
         try
         {
           localArrayList.add(parseFromJson(paramJSONArray.getJSONObject(i)));
-          i += 1;
         }
         catch (Exception localException)
         {
-          for (;;)
-          {
-            QZLog.e("QZoneMsgManager.MQButtonCell", "parseFromJsonArray error", localException);
-          }
+          QZLog.e("QZoneMsgManager.MQButtonCell", "parseFromJsonArray error", localException);
         }
+        i += 1;
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   public static MQButtonCell readFrom(ButtonInfo paramButtonInfo)
@@ -125,7 +122,7 @@ public class MQButtonCell
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     cooperation.qzone.contentbox.model.MQButtonCell
  * JD-Core Version:    0.7.0.1
  */

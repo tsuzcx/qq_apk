@@ -13,7 +13,7 @@ public class RichProto$RichProtoResp$C2CPttDownResp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.protohandler.RichProto.RichProtoResp.C2CPttDownResp
  * JD-Core Version:    0.7.0.1
  */

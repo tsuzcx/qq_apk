@@ -27,12 +27,16 @@ public class QuickHeartbeatConfigBean
   
   public String toString()
   {
-    return "QuickHeartbeatConfigBean{isSendQuickHBBackToForeground=" + this.a + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("QuickHeartbeatConfigBean{isSendQuickHBBackToForeground=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.QuickHeartbeatConfigBean
  * JD-Core Version:    0.7.0.1
  */

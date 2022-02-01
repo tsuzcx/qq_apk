@@ -10,34 +10,28 @@ class ActivateFriendGrid$2
 {
   ActivateFriendGrid$2(ActivateFriendGrid paramActivateFriendGrid) {}
   
-  public void onUpdateFriendInfo(String paramString, boolean paramBoolean)
+  protected void onUpdateFriendInfo(String paramString, boolean paramBoolean)
   {
     int i = 0;
-    for (;;)
+    while (i < ActivateFriendGrid.a(this.a).size())
     {
-      if (i < ActivateFriendGrid.a(this.a).size())
+      String str = String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin);
+      if (paramString.equals(str))
       {
-        String str = String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin);
-        if (paramString.equals(str))
-        {
-          paramString = ContactUtils.c(ActivateFriendGrid.a(this.a), str, false);
-          ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(paramString);
-        }
-      }
-      else
-      {
+        paramString = ContactUtils.a(ActivateFriendGrid.a(this.a), str, false);
+        ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(paramString);
         return;
       }
       i += 1;
     }
   }
   
-  public void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
+  protected void onUpdateFriendList(boolean paramBoolean1, boolean paramBoolean2)
   {
     int i = 0;
     while (i < ActivateFriendGrid.a(this.a).size())
     {
-      String str = ContactUtils.j(ActivateFriendGrid.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin));
+      String str = ContactUtils.d(ActivateFriendGrid.a(this.a), String.valueOf(((ActivateFriendItem)ActivateFriendGrid.a(this.a).get(i)).uin));
       ((ActivateFriendGridItem)ActivateFriendGrid.b(this.a).get(i)).setNickName(str);
       i += 1;
     }
@@ -45,7 +39,7 @@ class ActivateFriendGrid$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.activateFriend.ActivateFriendGrid.2
  * JD-Core Version:    0.7.0.1
  */

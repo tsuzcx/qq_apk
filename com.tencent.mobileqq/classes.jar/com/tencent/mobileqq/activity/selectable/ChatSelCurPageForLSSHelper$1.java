@@ -5,7 +5,7 @@ import android.view.ViewGroup;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.aio.helper.AIOLongShotHelper;
-import com.tencent.mobileqq.apollo.api.script.ISpriteCommFunc;
+import com.tencent.mobileqq.apollo.script.api.ISpriteCommFunc;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.ChatMessage;
 import com.tencent.mobileqq.qroute.QRoute;
@@ -21,78 +21,93 @@ class ChatSelCurPageForLSSHelper$1
   {
     int i = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getHeaderViewsCount();
     int j = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getFirstVisiblePosition();
-    List localList;
-    if (j >= i)
-    {
+    if (j >= i) {
       j -= i;
-      localList = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
-      if (j < localList.size()) {
-        break label115;
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("ChatSelCurPageForLSSHelper", 2, "selectMsgForLongScreenShot but firstPosition = " + j + "; list.size = " + localList.size());
-      }
+    } else {
+      j = 0;
     }
-    label115:
-    int k;
-    Object localObject2;
-    do
+    List localList = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1.a();
+    Object localObject1;
+    if (j >= localList.size())
     {
-      do
+      if (QLog.isColorLevel())
       {
-        return;
-        j = 0;
-        break;
-        k = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - i;
-        i = k;
-        if (k >= localList.size()) {
-          i = localList.size() - 1;
-        }
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("selectMsgForLongScreenShot but firstPosition = ");
+        ((StringBuilder)localObject1).append(j);
+        ((StringBuilder)localObject1).append("; list.size = ");
+        ((StringBuilder)localObject1).append(localList.size());
+        QLog.e("ChatSelCurPageForLSSHelper", 2, ((StringBuilder)localObject1).toString());
+      }
+      return;
+    }
+    int k = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getLastVisiblePosition() - i;
+    i = k;
+    if (k >= localList.size()) {
+      i = localList.size() - 1;
+    }
+    k = i;
+    Object localObject2;
+    if (ChatSelCurPageForLSSHelper.a(this.this$0).c != null)
+    {
+      Object localObject3 = ChatSelCurPageForLSSHelper.a(this.this$0).c.findViewById(2131367405);
+      localObject2 = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1);
+      k = i;
+      if (localObject3 != null)
+      {
         k = i;
-        if (ChatSelCurPageForLSSHelper.a(this.this$0).c != null)
+        if (localObject2 != null)
         {
-          Object localObject3 = ChatSelCurPageForLSSHelper.a(this.this$0).c.findViewById(2131367651);
-          localObject1 = ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildAt(ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqBubbleChatXListView.getChildCount() - 1);
+          localObject1 = new int[2];
+          ((View)localObject3).getLocationOnScreen((int[])localObject1);
+          localObject3 = new int[2];
+          ((View)localObject2).getLocationOnScreen((int[])localObject3);
           k = i;
-          if (localObject3 != null)
+          if (localObject3[1] >= localObject1[1])
           {
+            i -= 1;
             k = i;
-            if (localObject1 != null)
+            if (QLog.isColorLevel())
             {
-              localObject2 = new int[2];
-              ((View)localObject3).getLocationOnScreen((int[])localObject2);
-              localObject3 = new int[2];
-              ((View)localObject1).getLocationOnScreen((int[])localObject3);
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("lastPosition--, lastViewLocation[1] = ");
+              ((StringBuilder)localObject2).append(localObject3[1]);
+              ((StringBuilder)localObject2).append("; inputViewY = ");
+              ((StringBuilder)localObject2).append(localObject1[1]);
+              QLog.d("ChatSelCurPageForLSSHelper", 2, ((StringBuilder)localObject2).toString());
               k = i;
-              if (localObject3[1] >= localObject2[1])
-              {
-                i -= 1;
-                k = i;
-                if (QLog.isColorLevel())
-                {
-                  QLog.d("ChatSelCurPageForLSSHelper", 2, "lastPosition--, lastViewLocation[1] = " + localObject3[1] + "; inputViewY = " + localObject2[1]);
-                  k = i;
-                }
-              }
             }
           }
         }
-        if (QLog.isColorLevel()) {
-          QLog.d("ChatSelCurPageForLSSHelper", 2, "selectMsgForLongScreenShot: firstPosition = " + j + "; lastPosition = " + k + "; list.size = " + localList.size());
-        }
-      } while ((j < 0) || (k < j));
-      Object localObject1 = (ChatMessage)localList.get(j);
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("selectMsgForLongScreenShot: firstPosition = ");
+      ((StringBuilder)localObject1).append(j);
+      ((StringBuilder)localObject1).append("; lastPosition = ");
+      ((StringBuilder)localObject1).append(k);
+      ((StringBuilder)localObject1).append("; list.size = ");
+      ((StringBuilder)localObject1).append(localList.size());
+      QLog.d("ChatSelCurPageForLSSHelper", 2, ((StringBuilder)localObject1).toString());
+    }
+    if ((j >= 0) && (k >= j))
+    {
+      localObject1 = (ChatMessage)localList.get(j);
       localObject2 = (AIOLongShotHelper)ChatSelCurPageForLSSHelper.a(this.this$0).a(15);
       ((AIOLongShotHelper)localObject2).a((ChatMessage)localObject1);
-      ChatSelCurPageForLSSHelper.a(this.this$0).h(true);
+      ChatSelCurPageForLSSHelper.a(this.this$0).f(true);
       ((ISpriteCommFunc)QRoute.api(ISpriteCommFunc.class)).showOrHideSprite(ChatSelCurPageForLSSHelper.a(this.this$0).jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "select_more_msg", true);
-    } while (k <= j);
-    ((AIOLongShotHelper)localObject2).a((ChatMessage)localList.get(k), null, true);
+      if (k > j) {
+        ((AIOLongShotHelper)localObject2).a((ChatMessage)localList.get(k), null, true);
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.selectable.ChatSelCurPageForLSSHelper.1
  * JD-Core Version:    0.7.0.1
  */

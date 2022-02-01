@@ -9,21 +9,34 @@ import java.util.TreeMap;
 
 public class PromotionPath
 {
-  static String a = null;
+  static String a;
   
   public static String a()
   {
-    if (a == null) {
-      if (!SystemUtil.a()) {
-        break label56;
-      }
-    }
-    label56:
-    for (String str = VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH) + "pddata/prd/" + "ar_promotion" + File.separator;; str = BaseApplicationImpl.getApplication().getFilesDir() + "/pddata/prd/" + "ar_promotion" + File.separator)
+    if (a == null)
     {
-      a = str;
-      return a;
+      Object localObject;
+      if (SystemUtil.a())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(VFSAssistantUtils.getSDKPrivatePath(AppConstants.SDCARD_PATH));
+        ((StringBuilder)localObject).append("pddata/prd/");
+        ((StringBuilder)localObject).append("ar_promotion");
+        ((StringBuilder)localObject).append(File.separator);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      else
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(BaseApplicationImpl.getApplication().getFilesDir());
+        ((StringBuilder)localObject).append("/pddata/prd/");
+        ((StringBuilder)localObject).append("ar_promotion");
+        ((StringBuilder)localObject).append(File.separator);
+        localObject = ((StringBuilder)localObject).toString();
+      }
+      a = (String)localObject;
     }
+    return a;
   }
   
   public static String a(PromotionConfigInfo.PromotionItem paramPromotionItem)
@@ -40,17 +53,31 @@ public class PromotionPath
   
   public static String a(PromotionConfigInfo.ZipItem paramZipItem)
   {
-    return paramZipItem.d + "entry" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramZipItem.d);
+    localStringBuilder.append("entry");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   private static String a(String paramString, int paramInt)
   {
-    return a() + paramString + File.separator + paramInt + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a());
+    localStringBuilder.append(paramString);
+    localStringBuilder.append(File.separator);
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   static String a(String paramString1, int paramInt, String paramString2)
   {
-    return a(paramString1, paramInt) + paramString2 + ".zip";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramString1, paramInt));
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(".zip");
+    return localStringBuilder.toString();
   }
   
   public static String b(PromotionConfigInfo.PromotionItem paramPromotionItem)
@@ -64,17 +91,25 @@ public class PromotionPath
   
   public static String b(PromotionConfigInfo.ZipItem paramZipItem)
   {
-    return paramZipItem.d + "guide" + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramZipItem.d);
+    localStringBuilder.append("guide");
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
   
   static final String b(String paramString1, int paramInt, String paramString2)
   {
-    return a(paramString1, paramInt) + paramString2 + File.separator;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramString1, paramInt));
+    localStringBuilder.append(paramString2);
+    localStringBuilder.append(File.separator);
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.ARPromotionMgr.PromotionPath
  * JD-Core Version:    0.7.0.1
  */

@@ -11,7 +11,7 @@ public final class mobileqq_bmqq$CorpcardReqHead
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.bmqq.protocol.mobileqq_bmqq.CorpcardReqHead
  * JD-Core Version:    0.7.0.1
  */

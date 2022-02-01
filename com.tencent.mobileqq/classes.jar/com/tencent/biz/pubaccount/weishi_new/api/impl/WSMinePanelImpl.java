@@ -5,8 +5,6 @@ import com.tencent.biz.pubaccount.weishi_new.api.IWSMinePanel;
 import com.tencent.biz.pubaccount.weishi_new.download.WSDownloadParams;
 import com.tencent.biz.pubaccount.weishi_new.download.WeishiDownloadUtil;
 import com.tencent.biz.pubaccount.weishi_new.profilecard.WSProfileCardReport;
-import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 
 public class WSMinePanelImpl
   implements IWSMinePanel
@@ -15,13 +13,14 @@ public class WSMinePanelImpl
   {
     WSDownloadParams localWSDownloadParams = new WSDownloadParams();
     localWSDownloadParams.mScene = 3;
-    if (paramBoolean) {}
-    for (int i = 201;; i = 200)
-    {
-      localWSDownloadParams.mEventId = i;
-      WeishiDownloadUtil.a(paramActivity, localWSDownloadParams, false);
-      return;
+    int i;
+    if (paramBoolean) {
+      i = 201;
+    } else {
+      i = 200;
     }
+    localWSDownloadParams.mEventId = i;
+    WeishiDownloadUtil.a(paramActivity, localWSDownloadParams, false);
   }
   
   public void reportProfileCardExposure(boolean paramBoolean, String paramString)
@@ -29,14 +28,14 @@ public class WSMinePanelImpl
     WSProfileCardReport.a(paramBoolean, paramString);
   }
   
-  public void reportProfilePageVisitEnter(ProfileCardInfo paramProfileCardInfo, QQAppInterface paramQQAppInterface)
+  public void reportProfilePageVisitEnter(String paramString, boolean paramBoolean)
   {
-    WSProfileCardReport.a(paramProfileCardInfo, paramQQAppInterface);
+    WSProfileCardReport.a(paramString, paramBoolean);
   }
   
-  public void reportProfilePageVisitExit(ProfileCardInfo paramProfileCardInfo, QQAppInterface paramQQAppInterface)
+  public void reportProfilePageVisitExit(String paramString, boolean paramBoolean)
   {
-    WSProfileCardReport.b(paramProfileCardInfo, paramQQAppInterface);
+    WSProfileCardReport.b(paramString, paramBoolean);
   }
   
   public void reportProfileSettingBtnClick(boolean paramBoolean)
@@ -60,7 +59,7 @@ public class WSMinePanelImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.api.impl.WSMinePanelImpl
  * JD-Core Version:    0.7.0.1
  */

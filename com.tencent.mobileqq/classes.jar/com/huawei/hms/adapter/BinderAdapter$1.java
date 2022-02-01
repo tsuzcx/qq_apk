@@ -11,17 +11,18 @@ class BinderAdapter$1
   
   public boolean handleMessage(Message paramMessage)
   {
-    if ((paramMessage == null) || (paramMessage.what != 1001)) {
-      return false;
+    if ((paramMessage != null) && (paramMessage.what == 1001))
+    {
+      HMSLog.e("BinderAdapter", "In connect, bind core service time out");
+      BinderAdapter.access$000(this.this$0);
+      return true;
     }
-    HMSLog.e("BinderAdapter", "In connect, bind core service time out");
-    BinderAdapter.a(this.a);
-    return true;
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.adapter.BinderAdapter.1
  * JD-Core Version:    0.7.0.1
  */

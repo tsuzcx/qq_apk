@@ -36,7 +36,7 @@ public class BoxShadow
     this.jdField_a_of_type_Int = paramInt3;
     this.jdField_a_of_type_AndroidGraphicsPaint.setColor(this.jdField_a_of_type_Int);
     this.jdField_a_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-    paramInt1 = (int)(0.5F * paramInt1);
+    paramInt1 = (int)(paramInt1 * 0.5F);
     this.jdField_a_of_type_AndroidGraphicsPaint.setMaskFilter(new BlurMaskFilter(paramInt1, BlurMaskFilter.Blur.NORMAL));
     setLayerType(1, null);
   }
@@ -51,21 +51,25 @@ public class BoxShadow
     super(paramContext, paramAttributeSet, paramInt);
   }
   
-  public void dispatchDraw(Canvas paramCanvas)
+  protected void dispatchDraw(Canvas paramCanvas)
   {
-    if (this.jdField_a_of_type_AndroidGraphicsRectF != null) {
-      paramCanvas.drawRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.b, this.b, this.jdField_a_of_type_AndroidGraphicsPaint);
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    if (localRectF != null)
+    {
+      int i = this.b;
+      paramCanvas.drawRoundRect(localRectF, i, i, this.jdField_a_of_type_AndroidGraphicsPaint);
     }
     super.dispatchDraw(paramCanvas);
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
     if ((this.jdField_a_of_type_AndroidGraphicsRectF == null) || (this.d != getMeasuredWidth()) || (this.e != getMeasuredHeight()))
     {
-      paramInt1 = (int)(0.5F * this.c);
-      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(paramInt1, paramInt1, getMeasuredWidth() - paramInt1, getMeasuredHeight() - paramInt1 * 1.15F);
+      paramInt1 = (int)(this.c * 0.5F);
+      float f = paramInt1;
+      this.jdField_a_of_type_AndroidGraphicsRectF = new RectF(f, f, getMeasuredWidth() - paramInt1, getMeasuredHeight() - 1.15F * f);
       this.d = getMeasuredWidth();
       this.e = getMeasuredHeight();
     }
@@ -82,7 +86,7 @@ public class BoxShadow
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.sign.BoxShadow
  * JD-Core Version:    0.7.0.1
  */

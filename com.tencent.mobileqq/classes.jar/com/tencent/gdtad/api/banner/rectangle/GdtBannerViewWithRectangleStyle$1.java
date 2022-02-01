@@ -9,26 +9,29 @@ import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 class GdtBannerViewWithRectangleStyle$1
   implements View.OnClickListener
 {
+  GdtBannerViewWithRectangleStyle$1(GdtBannerViewWithRectangleStyle paramGdtBannerViewWithRectangleStyle) {}
+  
   public void onClick(View paramView)
   {
-    int i = 8;
-    if (!GdtBannerViewWithRectangleStyle.a(this.a)) {
+    if (!GdtBannerViewWithRectangleStyle.a(this.a))
+    {
       GdtLog.d("GdtBannerViewWithRectangleStyle", "optionsContainerOnClickListener.OnClickListener error");
     }
-    for (;;)
+    else
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      if (GdtBannerViewWithRectangleStyle.a(this.a).getVisibility() == 8) {
+      int j = GdtBannerViewWithRectangleStyle.a(this.a).getVisibility();
+      int i = 8;
+      if (j == 8) {
         i = 0;
       }
       GdtBannerViewWithRectangleStyle.a(this.a).setVisibility(i);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.api.banner.rectangle.GdtBannerViewWithRectangleStyle.1
  * JD-Core Version:    0.7.0.1
  */

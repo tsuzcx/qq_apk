@@ -63,29 +63,22 @@ public class AndroidNClassLoader
   
   public Class findClass(String paramString)
   {
-    Object localObject2 = null;
-    Object localObject1 = localObject2;
-    if (paramString != null) {
-      if (!paramString.startsWith("com.tencent.mobileqq.qfix."))
-      {
-        localObject1 = localObject2;
-        if (!paramString.startsWith("com.tencent.common.app.QFixApplicationImpl")) {}
-      }
-      else
-      {
-        localObject1 = this.originClassLoader.loadClass(paramString);
-      }
+    Class localClass1;
+    if ((paramString != null) && ((paramString.startsWith("com.tencent.mobileqq.qfix.")) || (paramString.startsWith("com.tencent.common.app.QFixApplicationImpl")))) {
+      localClass1 = this.originClassLoader.loadClass(paramString);
+    } else {
+      localClass1 = null;
     }
-    localObject2 = localObject1;
-    if (localObject1 == null) {
-      localObject2 = super.findClass(paramString);
+    Class localClass2 = localClass1;
+    if (localClass1 == null) {
+      localClass2 = super.findClass(paramString);
     }
-    return localObject2;
+    return localClass2;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.qfix.AndroidNClassLoader
  * JD-Core Version:    0.7.0.1
  */

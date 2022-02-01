@@ -43,91 +43,84 @@ public class FileAssistTopHandler
   private void a(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
     boolean bool1;
-    oidb_0x5eb.RspBody localRspBody;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
-    {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
       bool1 = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("FileAssistTopHandler<FileAssistant>", 1, "handleGetFileAssistTop  isSuccess: " + bool1);
-      }
-      if (bool1)
-      {
-        paramToServiceMsg = (byte[])paramObject;
-        paramFromServiceMsg = new oidb_sso.OIDBSSOPkg();
-        localRspBody = new oidb_0x5eb.RspBody();
-      }
+    } else {
+      bool1 = false;
     }
-    else
+    if (QLog.isColorLevel())
     {
-      for (;;)
+      paramToServiceMsg = new StringBuilder();
+      paramToServiceMsg.append("handleGetFileAssistTop  isSuccess: ");
+      paramToServiceMsg.append(bool1);
+      QLog.i("FileAssistTopHandler<FileAssistant>", 1, paramToServiceMsg.toString());
+    }
+    if (bool1)
+    {
+      paramToServiceMsg = (byte[])paramObject;
+      paramObject = new oidb_sso.OIDBSSOPkg();
+      oidb_0x5eb.RspBody localRspBody = new oidb_0x5eb.RspBody();
+      try
       {
+        paramToServiceMsg = (oidb_sso.OIDBSSOPkg)paramObject.mergeFrom(paramToServiceMsg);
         try
         {
-          paramToServiceMsg = (oidb_sso.OIDBSSOPkg)paramFromServiceMsg.mergeFrom(paramToServiceMsg);
+          localRspBody.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
         }
-        catch (InvalidProtocolBufferMicroException paramObject)
-        {
-          try
-          {
-            localRspBody.mergeFrom(paramToServiceMsg.bytes_bodybuffer.get().toByteArray());
-            QLog.d("FileAssistTopHandler<FileAssistant>", 1, "handleGetFileAssistTop() :" + localRspBody.rpt_msg_uin_data.size() + "，result:" + paramToServiceMsg.uint32_result.get());
-            paramToServiceMsg = localRspBody.rpt_msg_uin_data.get().iterator();
-            if (!paramToServiceMsg.hasNext()) {
-              break label293;
-            }
-            paramFromServiceMsg = (oidb_0x5eb.UdcUinData)paramToServiceMsg.next();
-            paramFromServiceMsg.uint64_uin.get();
-            if (!paramFromServiceMsg.uint32_file_assist_top.has()) {
-              continue;
-            }
-            if (paramFromServiceMsg.uint32_file_assist_top.get() != 1) {
-              break label287;
-            }
-            bool2 = true;
-            this.jdField_a_of_type_Boolean = bool2;
-            QLog.i("FileAssistTopHandler<FileAssistant>", 1, "handleGetFileAssistTop  isTop:" + this.jdField_a_of_type_Boolean);
-            notifyUI(1, bool1, Boolean.valueOf(this.jdField_a_of_type_Boolean));
-            continue;
-            bool1 = false;
-          }
-          catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
-          {
-            boolean bool2;
-            break label275;
-          }
-          paramObject = paramObject;
-          paramToServiceMsg = paramFromServiceMsg;
-          paramFromServiceMsg = paramObject;
-        }
-        label275:
+        catch (InvalidProtocolBufferMicroException paramFromServiceMsg) {}
         QLog.d("FileAssistTopHandler<FileAssistant>", 1, "handleSetFileAssistTop()  e =", paramFromServiceMsg);
-        continue;
-        label287:
-        bool2 = false;
+      }
+      catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
+      {
+        paramToServiceMsg = paramObject;
+      }
+      paramFromServiceMsg = new StringBuilder();
+      paramFromServiceMsg.append("handleGetFileAssistTop() :");
+      paramFromServiceMsg.append(localRspBody.rpt_msg_uin_data.size());
+      paramFromServiceMsg.append("，result:");
+      paramFromServiceMsg.append(paramToServiceMsg.uint32_result.get());
+      QLog.d("FileAssistTopHandler<FileAssistant>", 1, paramFromServiceMsg.toString());
+      paramToServiceMsg = localRspBody.rpt_msg_uin_data.get().iterator();
+      while (paramToServiceMsg.hasNext())
+      {
+        paramFromServiceMsg = (oidb_0x5eb.UdcUinData)paramToServiceMsg.next();
+        paramFromServiceMsg.uint64_uin.get();
+        if (paramFromServiceMsg.uint32_file_assist_top.has())
+        {
+          boolean bool2;
+          if (paramFromServiceMsg.uint32_file_assist_top.get() == 1) {
+            bool2 = true;
+          } else {
+            bool2 = false;
+          }
+          this.jdField_a_of_type_Boolean = bool2;
+          paramFromServiceMsg = new StringBuilder();
+          paramFromServiceMsg.append("handleGetFileAssistTop  isTop:");
+          paramFromServiceMsg.append(this.jdField_a_of_type_Boolean);
+          QLog.i("FileAssistTopHandler<FileAssistant>", 1, paramFromServiceMsg.toString());
+          notifyUI(1, bool1, Boolean.valueOf(this.jdField_a_of_type_Boolean));
+        }
       }
     }
-    label293:
   }
   
   private void b(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    boolean bool2 = false;
     boolean bool1;
-    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess()))
-    {
+    if ((paramFromServiceMsg != null) && (paramFromServiceMsg.isSuccess())) {
       bool1 = true;
-      boolean bool3 = ((Boolean)paramToServiceMsg.getAttribute("file_assist_top")).booleanValue();
-      if (QLog.isColorLevel()) {
-        QLog.d("FileAssistTopHandler<FileAssistant>", 2, new Object[] { "handleSetFileAssistTop() isTop = ", Boolean.valueOf(bool3), " isSuccess = ", Boolean.valueOf(bool1) });
-      }
-      if (bool1)
-      {
-        paramFromServiceMsg = (byte[])paramObject;
-        paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
-      }
+    } else {
+      bool1 = false;
     }
-    else
+    boolean bool2 = ((Boolean)paramToServiceMsg.getAttribute("file_assist_top")).booleanValue();
+    if (QLog.isColorLevel()) {
+      QLog.d("FileAssistTopHandler<FileAssistant>", 2, new Object[] { "handleSetFileAssistTop() isTop = ", Boolean.valueOf(bool2), " isSuccess = ", Boolean.valueOf(bool1) });
+    }
+    bool2 = bool1;
+    if (bool1)
     {
+      paramFromServiceMsg = (byte[])paramObject;
+      paramToServiceMsg = new oidb_sso.OIDBSSOPkg();
       try
       {
         paramFromServiceMsg = (oidb_sso.OIDBSSOPkg)paramToServiceMsg.mergeFrom(paramFromServiceMsg);
@@ -135,62 +128,56 @@ public class FileAssistTopHandler
       }
       catch (InvalidProtocolBufferMicroException paramFromServiceMsg)
       {
-        for (;;)
-        {
-          QLog.d("FileAssistTopHandler<FileAssistant>", 1, "handleSetFileAssistTop()  e =", paramFromServiceMsg);
-        }
+        QLog.d("FileAssistTopHandler<FileAssistant>", 1, "handleSetFileAssistTop()  e =", paramFromServiceMsg);
       }
-      bool1 = bool2;
-      if (paramToServiceMsg.uint32_result.has())
-      {
-        bool1 = bool2;
-        if (paramToServiceMsg.uint32_result.get() == 0) {
-          bool1 = true;
-        }
+      if ((paramToServiceMsg.uint32_result.has()) && (paramToServiceMsg.uint32_result.get() == 0)) {
+        bool2 = true;
+      } else {
+        bool2 = false;
       }
     }
-    for (;;)
-    {
-      if (!bool1) {
-        QLog.e("FileAssistTopHandler<FileAssistant>", 1, "handleSetFileAssistTop retult false!");
-      }
-      return;
-      bool1 = false;
-      break;
+    if (!bool2) {
+      QLog.e("FileAssistTopHandler<FileAssistant>", 1, "handleSetFileAssistTop retult false!");
     }
   }
   
   public void a(boolean paramBoolean)
   {
-    int i = 0;
-    if (this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface == null)
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    if (localObject1 == null)
     {
       QLog.e("FileAssistTopHandler<FileAssistant>", 1, "setFileAssistTop app null!");
       return;
     }
-    Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin();
-    Object localObject1 = new oidb_0x587.ReqBody();
-    try
+    Object localObject2 = ((QQAppInterface)localObject1).getCurrentUin();
+    localObject1 = new oidb_0x587.ReqBody();
+    for (;;)
     {
-      long l = Long.parseLong((String)localObject2);
-      ((oidb_0x587.ReqBody)localObject1).rpt_uint64_uins.add(Long.valueOf(l));
-      localObject2 = ((oidb_0x587.ReqBody)localObject1).uint32_file_assist_top;
-      if (paramBoolean) {
-        i = 1;
+      try
+      {
+        long l = Long.parseLong((String)localObject2);
+        ((oidb_0x587.ReqBody)localObject1).rpt_uint64_uins.add(Long.valueOf(l));
+        localObject2 = ((oidb_0x587.ReqBody)localObject1).uint32_file_assist_top;
+        if (paramBoolean)
+        {
+          i = 1;
+          ((PBUInt32Field)localObject2).set(i);
+          localObject1 = makeOIDBPkg("OidbSvc.oidb_0x587_fst", 1415, 74, ((oidb_0x587.ReqBody)localObject1).toByteArray());
+          ((ToServiceMsg)localObject1).addAttribute("file_assist_top", Boolean.valueOf(paramBoolean));
+          if (QLog.isColorLevel()) {
+            QLog.d("FileAssistTopHandler<FileAssistant>", 2, new Object[] { "setFileAssistTop() setTop =", Boolean.valueOf(paramBoolean) });
+          }
+          sendPbReq((ToServiceMsg)localObject1);
+          b(paramBoolean);
+          return;
+        }
       }
-      ((PBUInt32Field)localObject2).set(i);
-      localObject1 = makeOIDBPkg("OidbSvc.oidb_0x587_fst", 1415, 74, ((oidb_0x587.ReqBody)localObject1).toByteArray());
-      ((ToServiceMsg)localObject1).addAttribute("file_assist_top", Boolean.valueOf(paramBoolean));
-      if (QLog.isColorLevel()) {
-        QLog.d("FileAssistTopHandler<FileAssistant>", 2, new Object[] { "setFileAssistTop() setTop =", Boolean.valueOf(paramBoolean) });
+      catch (Exception localException)
+      {
+        QLog.d("FileAssistTopHandler<FileAssistant>", 1, "setFileAssistTop()  e =", localException);
+        return;
       }
-      sendPbReq((ToServiceMsg)localObject1);
-      b(paramBoolean);
-      return;
-    }
-    catch (Exception localException)
-    {
-      QLog.d("FileAssistTopHandler<FileAssistant>", 1, "setFileAssistTop()  e =", localException);
+      int i = 0;
     }
   }
   
@@ -201,8 +188,12 @@ public class FileAssistTopHandler
   
   public void b(boolean paramBoolean)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("FileAssistTopHandler<FileAssistant>", 1, " onPush()  isTop: " + paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" onPush()  isTop: ");
+      ((StringBuilder)localObject).append(paramBoolean);
+      QLog.i("FileAssistTopHandler<FileAssistant>", 1, ((StringBuilder)localObject).toString());
     }
     String str = QFileAssistantUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface);
     RecentUserProxy localRecentUserProxy = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRecentUserProxy();
@@ -211,18 +202,18 @@ public class FileAssistTopHandler
     if (localRecentUser == null) {
       localObject = new RecentUser(str, 0);
     }
-    if (paramBoolean) {}
-    for (((RecentUser)localObject).showUpTime = (System.currentTimeMillis() / 1000L);; ((RecentUser)localObject).showUpTime = 0L)
-    {
-      localRecentUserProxy.b((RecentUser)localObject);
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
-      if (localObject != null) {
-        ((MqqHandler)localObject).sendEmptyMessage(1009);
-      }
-      this.jdField_a_of_type_Boolean = paramBoolean;
-      notifyUI(1, true, Boolean.valueOf(paramBoolean));
-      return;
+    if (paramBoolean) {
+      ((RecentUser)localObject).showUpTime = (System.currentTimeMillis() / 1000L);
+    } else {
+      ((RecentUser)localObject).showUpTime = 0L;
     }
+    localRecentUserProxy.b((RecentUser)localObject);
+    localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getHandler(Conversation.class);
+    if (localObject != null) {
+      ((MqqHandler)localObject).sendEmptyMessage(1009);
+    }
+    this.jdField_a_of_type_Boolean = paramBoolean;
+    notifyUI(1, true, Boolean.valueOf(paramBoolean));
   }
   
   public Set<String> getCommandList()
@@ -236,34 +227,38 @@ public class FileAssistTopHandler
     return this.allowCmdSet;
   }
   
-  public Class<? extends BusinessObserver> observerClass()
+  protected Class<? extends BusinessObserver> observerClass()
   {
     return null;
   }
   
   public void onReceive(ToServiceMsg paramToServiceMsg, FromServiceMsg paramFromServiceMsg, Object paramObject)
   {
-    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd())) {
-      QLog.d("FileAssistTopHandler<FileAssistant>", 4, new Object[] { "onReceive() req.cmd = ", paramToServiceMsg.getServiceCmd() });
-    }
-    do
+    if (msgCmdFilter(paramFromServiceMsg.getServiceCmd()))
     {
+      QLog.d("FileAssistTopHandler<FileAssistant>", 4, new Object[] { "onReceive() req.cmd = ", paramToServiceMsg.getServiceCmd() });
       return;
-      if (QLog.isColorLevel()) {
-        QLog.i("FileAssistTopHandler<FileAssistant>", 1, "onReceive() req.cmd = " + paramToServiceMsg.getServiceCmd());
-      }
-      if ("OidbSvc.oidb_0x587_fst".equals(paramToServiceMsg.getServiceCmd()))
-      {
-        b(paramToServiceMsg, paramFromServiceMsg, paramObject);
-        return;
-      }
-    } while (!"OidbSvc.0x5eb_fst".equals(paramToServiceMsg.getServiceCmd()));
-    a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive() req.cmd = ");
+      localStringBuilder.append(paramToServiceMsg.getServiceCmd());
+      QLog.i("FileAssistTopHandler<FileAssistant>", 1, localStringBuilder.toString());
+    }
+    if ("OidbSvc.oidb_0x587_fst".equals(paramToServiceMsg.getServiceCmd()))
+    {
+      b(paramToServiceMsg, paramFromServiceMsg, paramObject);
+      return;
+    }
+    if ("OidbSvc.0x5eb_fst".equals(paramToServiceMsg.getServiceCmd())) {
+      a(paramToServiceMsg, paramFromServiceMsg, paramObject);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileassistant.top.FileAssistTopHandler
  * JD-Core Version:    0.7.0.1
  */

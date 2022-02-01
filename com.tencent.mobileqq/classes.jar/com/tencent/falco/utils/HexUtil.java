@@ -23,38 +23,44 @@ public class HexUtil
   
   public static byte char2Byte(char paramChar)
   {
-    if ((paramChar >= '0') && (paramChar <= '9')) {
-      return (byte)(paramChar - '0');
+    if ((paramChar >= '0') && (paramChar <= '9'))
+    {
+      paramChar -= '0';
+      return (byte)paramChar;
     }
-    if ((paramChar >= 'a') && (paramChar <= 'f')) {
-      return (byte)(paramChar - 'a' + 10);
-    }
-    if ((paramChar >= 'A') && (paramChar <= 'F')) {
-      return (byte)(paramChar - 'A' + 10);
-    }
+    char c = 'a';
+    if ((paramChar >= 'a') && (paramChar <= 'f')) {}
+    do
+    {
+      paramChar = paramChar - c + 10;
+      break;
+      c = 'A';
+    } while ((paramChar >= 'A') && (paramChar <= 'F'));
     return 0;
   }
   
   public static byte[] hexStr2Bytes(String paramString)
   {
-    if ((paramString == null) || (paramString.equals(""))) {
-      return null;
-    }
-    byte[] arrayOfByte = new byte[paramString.length() / 2];
-    int i = 0;
-    while (i < arrayOfByte.length)
+    if ((paramString != null) && (!paramString.equals("")))
     {
-      char c1 = paramString.charAt(i * 2);
-      char c2 = paramString.charAt(i * 2 + 1);
-      arrayOfByte[i] = ((byte)(char2Byte(c1) * 16 + char2Byte(c2)));
-      i += 1;
+      byte[] arrayOfByte = new byte[paramString.length() / 2];
+      int i = 0;
+      while (i < arrayOfByte.length)
+      {
+        int j = i * 2;
+        char c1 = paramString.charAt(j);
+        char c2 = paramString.charAt(j + 1);
+        arrayOfByte[i] = ((byte)(char2Byte(c1) * 16 + char2Byte(c2)));
+        i += 1;
+      }
+      return arrayOfByte;
     }
-    return arrayOfByte;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.utils.HexUtil
  * JD-Core Version:    0.7.0.1
  */

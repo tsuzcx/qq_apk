@@ -69,37 +69,45 @@ public final class mobile_detail_req
   {
     paramJceOutputStream.write(this.uin, 0);
     paramJceOutputStream.write(this.appid, 1);
-    if (this.likekey != null) {
-      paramJceOutputStream.write(this.likekey, 2);
+    Object localObject = this.likekey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.cellid != null) {
-      paramJceOutputStream.write(this.cellid, 3);
+    localObject = this.cellid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 3);
     }
-    if (this.subid != null) {
-      paramJceOutputStream.write(this.subid, 4);
+    localObject = this.subid;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 4);
     }
-    if (this.busi_param != null) {
-      paramJceOutputStream.write(this.busi_param, 5);
+    localObject = this.busi_param;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 5);
     }
     paramJceOutputStream.write(this.refresh_type, 6);
     paramJceOutputStream.write(this.count, 7);
-    if (this.attach_info != null) {
-      paramJceOutputStream.write(this.attach_info, 8);
+    localObject = this.attach_info;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 8);
     }
-    if (this.clientkey != null) {
-      paramJceOutputStream.write(this.clientkey, 9);
+    localObject = this.clientkey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 9);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 10);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 10);
     }
-    if (this.attach_info_essence != null) {
-      paramJceOutputStream.write(this.attach_info_essence, 11);
+    localObject = this.attach_info_essence;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 11);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_FEEDS.mobile_detail_req
  * JD-Core Version:    0.7.0.1
  */

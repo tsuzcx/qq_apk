@@ -21,15 +21,16 @@ public final class qqstory_struct$BigVColleciton
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 56 }, new String[] { "id", "user", "cover", "logo", "color", "desc", "fans" }, new Object[] { Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), localByteStringMicro3, Integer.valueOf(0) }, BigVColleciton.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 18, 26, 34, 40, 50, 56 }, new String[] { "id", "user", "cover", "logo", "color", "desc", "fans" }, new Object[] { localInteger, null, localByteStringMicro1, localByteStringMicro2, localInteger, localByteStringMicro3, localInteger }, BigVColleciton.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_struct.BigVColleciton
  * JD-Core Version:    0.7.0.1
  */

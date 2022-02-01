@@ -30,10 +30,11 @@ public class BottomVideoInfoWidget$MyActivityLifeCycle
   public void a(int paramInt1, int paramInt2, Intent paramIntent)
   {
     Object localObject = this.a.a();
-    if ((localObject == null) || (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.equals(localObject))) {}
-    do
+    if (localObject != null)
     {
-      return;
+      if (!this.a.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderIDataProvider$GroupId.equals(localObject)) {
+        return;
+      }
       if (paramInt1 == this.a.hashCode())
       {
         SLog.b(this.a.b, "onActivityResult, onChooseFriendResult");
@@ -47,8 +48,11 @@ public class BottomVideoInfoWidget$MyActivityLifeCycle
       }
       if ((paramInt1 == 10002) && (paramInt2 == -1))
       {
-        StoryVideoUploadManager.b(this.a.b + " onActivityResult");
-        QQToast.a(this.a.b(), this.a.b().getString(2131719317), 1).a();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(this.a.b);
+        ((StringBuilder)localObject).append(" onActivityResult");
+        StoryVideoUploadManager.b(((StringBuilder)localObject).toString());
+        QQToast.a(this.a.b(), this.a.b().getString(2131719035), 1).a();
       }
       if ((paramInt1 == 467) && (paramInt2 == -1) && (BottomVideoInfoWidget.a(this.a) != null)) {
         BottomVideoInfoWidget.a(this.a).a();
@@ -56,8 +60,10 @@ public class BottomVideoInfoWidget$MyActivityLifeCycle
       if (QLog.isColorLevel()) {
         QLog.d(this.a.b, 2, new Object[] { "BottomVideoInfoWidget.MyActivityLifeCycle onActivityResult. hashCode=", Integer.valueOf(hashCode()) });
       }
-    } while (this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare == null);
-    this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a(paramInt1, paramInt2, paramIntent);
+      if (this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare != null) {
+        this.a.jdField_a_of_type_ComTencentBizQqstoryNewshareStoryShare.a(paramInt1, paramInt2, paramIntent);
+      }
+    }
   }
   
   public void d()
@@ -70,7 +76,7 @@ public class BottomVideoInfoWidget$MyActivityLifeCycle
       {
         localObject = (DrawableContainer.DrawableContainerState)((StateListDrawable)localObject).getConstantState();
         if (localObject != null) {
-          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167380));
+          ((GradientDrawable)localObject.getChildren()[0]).setColor(this.a.jdField_a_of_type_AndroidViewView.getResources().getColor(2131167400));
         }
       }
     }
@@ -86,7 +92,7 @@ public class BottomVideoInfoWidget$MyActivityLifeCycle
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.playerwidget.BottomVideoInfoWidget.MyActivityLifeCycle
  * JD-Core Version:    0.7.0.1
  */

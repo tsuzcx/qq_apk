@@ -20,48 +20,52 @@ public class CallbackBufferAddStrategy
   
   public void fistAdd(Camera paramCamera)
   {
-    if (paramCamera == null) {
+    if (paramCamera == null)
+    {
       QLog.e("CallbackBufferAddStrategy", 0, "fistAdd, camera == null");
-    }
-    while (this.mCameraCaptureSettings.format != 17) {
       return;
     }
-    int i = getPreviewFrameCount();
-    QLog.i("CallbackBufferAddStrategy", 0, "previewFrameCount = " + i);
-    if ((i != 2) && (i != 3))
+    if (this.mCameraCaptureSettings.format == 17)
     {
-      QLog.e("CallbackBufferAddStrategy", 0, "previewFrameCount error");
-      return;
-    }
-    int j = this.mCameraCaptureSettings.width * this.mCameraCaptureSettings.height * 3 / 2;
-    if (i == 2) {}
-    for (;;)
-    {
+      int i = getPreviewFrameCount();
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("previewFrameCount = ");
+      ((StringBuilder)localObject).append(i);
+      QLog.i("CallbackBufferAddStrategy", 0, ((StringBuilder)localObject).toString());
+      if ((i != 2) && (i != 3))
+      {
+        QLog.e("CallbackBufferAddStrategy", 0, "previewFrameCount error");
+        return;
+      }
+      int j = this.mCameraCaptureSettings.width * this.mCameraCaptureSettings.height * 3 / 2;
+      if (i == 2) {}
       try
       {
+        localObject = new byte[j];
+        byte[] arrayOfByte1 = new byte[j];
+        paramCamera.addCallbackBuffer((byte[])localObject);
+        paramCamera.addCallbackBuffer(arrayOfByte1);
+        break label167;
+        localObject = new byte[j];
         arrayOfByte1 = new byte[j];
-        arrayOfByte2 = new byte[j];
+        byte[] arrayOfByte2 = new byte[j];
+        paramCamera.addCallbackBuffer((byte[])localObject);
         paramCamera.addCallbackBuffer(arrayOfByte1);
         paramCamera.addCallbackBuffer(arrayOfByte2);
+        label167:
         this.mIsUseBuffer = true;
       }
       catch (Exception paramCamera)
       {
-        byte[] arrayOfByte1;
-        byte[] arrayOfByte2;
-        byte[] arrayOfByte3;
         QLog.e("CallbackBufferAddStrategy", 0, "previewFrameCount error", paramCamera);
         this.mIsUseBuffer = false;
-        continue;
       }
-      QLog.e("CallbackBufferAddStrategy", 0, "fistAdd, len =  " + j + "is use buffer = " + this.mIsUseBuffer);
-      return;
-      arrayOfByte1 = new byte[j];
-      arrayOfByte2 = new byte[j];
-      arrayOfByte3 = new byte[j];
-      paramCamera.addCallbackBuffer(arrayOfByte1);
-      paramCamera.addCallbackBuffer(arrayOfByte2);
-      paramCamera.addCallbackBuffer(arrayOfByte3);
+      paramCamera = new StringBuilder();
+      paramCamera.append("fistAdd, len =  ");
+      paramCamera.append(j);
+      paramCamera.append("is use buffer = ");
+      paramCamera.append(this.mIsUseBuffer);
+      QLog.e("CallbackBufferAddStrategy", 0, paramCamera.toString());
     }
   }
   
@@ -78,19 +82,21 @@ public class CallbackBufferAddStrategy
   
   public void supplement(Camera paramCamera, byte[] paramArrayOfByte)
   {
-    if (paramCamera == null) {
-      QLog.e("CallbackBufferAddStrategy", 0, "supplement, camera == null");
-    }
-    while (!this.mIsUseBuffer) {
-      return;
-    }
-    int i = this.mCameraCaptureSettings.width * this.mCameraCaptureSettings.height * 3 / 2;
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length < i))
+    if (paramCamera == null)
     {
-      paramCamera.addCallbackBuffer(new byte[i]);
+      QLog.e("CallbackBufferAddStrategy", 0, "supplement, camera == null");
       return;
     }
-    paramCamera.addCallbackBuffer(paramArrayOfByte);
+    if (this.mIsUseBuffer)
+    {
+      int i = this.mCameraCaptureSettings.width * this.mCameraCaptureSettings.height * 3 / 2;
+      if ((paramArrayOfByte != null) && (paramArrayOfByte.length >= i))
+      {
+        paramCamera.addCallbackBuffer(paramArrayOfByte);
+        return;
+      }
+      paramCamera.addCallbackBuffer(new byte[i]);
+    }
   }
 }
 

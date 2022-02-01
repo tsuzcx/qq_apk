@@ -11,29 +11,49 @@ final class TdsReaderHelper$1
   
   public void onDownloadFinished(String arg1, boolean paramBoolean, int paramInt)
   {
-    if ((TextUtils.equals(???, this.val$pluginName)) && (paramBoolean)) {
-      Log.v("TdsReaderHelper", "Plugin[" + ??? + "] is downloaded.");
-    }
-    for (;;)
+    StringBuilder localStringBuilder;
+    if ((TextUtils.equals(???, this.val$pluginName)) && (paramBoolean))
     {
-      this.val$isDownloading.set(false);
-      synchronized (this.val$isDownloading)
-      {
-        this.val$isDownloading.notifyAll();
-        return;
-        Log.e("TdsReaderHelper", "Download plugin[" + ??? + "], succeed=" + paramBoolean + ", error=" + paramInt);
-      }
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Plugin[");
+      localStringBuilder.append(???);
+      localStringBuilder.append("] is downloaded.");
+      Log.v("TdsReaderHelper", localStringBuilder.toString());
+    }
+    else
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Download plugin[");
+      localStringBuilder.append(???);
+      localStringBuilder.append("], succeed=");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(", error=");
+      localStringBuilder.append(paramInt);
+      Log.e("TdsReaderHelper", localStringBuilder.toString());
+    }
+    this.val$isDownloading.set(false);
+    synchronized (this.val$isDownloading)
+    {
+      this.val$isDownloading.notifyAll();
+      return;
     }
   }
   
   public void onDownloadProgress(String paramString, long paramLong, float paramFloat)
   {
-    Log.d("TdsReaderHelper", "Downloading plugin[" + paramString + "], total=" + paramLong + ", progress=" + paramFloat);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Downloading plugin[");
+    localStringBuilder.append(paramString);
+    localStringBuilder.append("], total=");
+    localStringBuilder.append(paramLong);
+    localStringBuilder.append(", progress=");
+    localStringBuilder.append(paramFloat);
+    Log.d("TdsReaderHelper", localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.kwstudio.office.preview.TdsReaderHelper.1
  * JD-Core Version:    0.7.0.1
  */

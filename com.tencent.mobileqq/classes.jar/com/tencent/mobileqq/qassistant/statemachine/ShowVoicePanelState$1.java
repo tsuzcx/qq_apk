@@ -9,9 +9,14 @@ class ShowVoicePanelState$1
   
   public void run()
   {
-    ShowVoicePanelState.a(this.this$0, this.this$0.a());
-    if (QLog.isColorLevel()) {
-      QLog.d("ShowVoicePanelState", 2, "enterResult = " + ShowVoicePanelState.a(this.this$0));
+    Object localObject = this.this$0;
+    ShowVoicePanelState.a((ShowVoicePanelState)localObject, ((ShowVoicePanelState)localObject).a());
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("enterResult = ");
+      ((StringBuilder)localObject).append(ShowVoicePanelState.a(this.this$0));
+      QLog.d("ShowVoicePanelState", 2, ((StringBuilder)localObject).toString());
     }
     if (ShowVoicePanelState.a(this.this$0) != null) {
       ShowVoicePanelState.a(this.this$0).a(3);
@@ -20,7 +25,7 @@ class ShowVoicePanelState$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.qassistant.statemachine.ShowVoicePanelState.1
  * JD-Core Version:    0.7.0.1
  */

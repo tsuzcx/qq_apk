@@ -34,8 +34,14 @@ public class PttTransitionAnimHandler
   
   public void a(long paramLong1, long paramLong2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler onDownloadProgeress() curOffset=" + paramLong1 + " totalLen=" + paramLong2);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PttTransitionAnimHandler onDownloadProgeress() curOffset=");
+      localStringBuilder.append(paramLong1);
+      localStringBuilder.append(" totalLen=");
+      localStringBuilder.append(paramLong2);
+      QLog.d("EarlyDown", 2, localStringBuilder.toString());
     }
     super.a(paramLong1, paramLong2);
   }
@@ -50,32 +56,45 @@ public class PttTransitionAnimHandler
   
   public void a(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("EarlyDown", 2, " PttTransitionAnimHandler download success: " + paramString);
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(" PttTransitionAnimHandler download success: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("EarlyDown", 2, ((StringBuilder)localObject).toString());
     }
     try
     {
-      String str = AudioTransitionAnimManager.a;
-      if ((str != null) && (!str.equals("")))
+      localObject = AudioTransitionAnimManager.a;
+      if ((localObject != null) && (!((String)localObject).equals("")))
       {
-        FileUtils.a(str);
-        if (new File(str).mkdir())
+        FileUtils.deleteDirectory((String)localObject);
+        if (new File((String)localObject).mkdir())
         {
-          FileUtils.a(paramString, str, false);
-          if (QLog.isColorLevel()) {
-            QLog.d("EarlyDown", 2, " PttTransitionAnimHandler uncompressZip success: " + paramString + " tempPath=" + str);
+          FileUtils.uncompressZip(paramString, (String)localObject, false);
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append(" PttTransitionAnimHandler uncompressZip success: ");
+            localStringBuilder.append(paramString);
+            localStringBuilder.append(" tempPath=");
+            localStringBuilder.append((String)localObject);
+            QLog.d("EarlyDown", 2, localStringBuilder.toString());
           }
         }
       }
     }
     catch (Exception localException)
     {
-      for (;;)
+      StringBuilder localStringBuilder;
+      localException.printStackTrace();
+      if (QLog.isColorLevel())
       {
-        localException.printStackTrace();
-        if (QLog.isColorLevel()) {
-          QLog.d("EarlyDown", 2, "PttTransitionAnimHandler uncompressZip failed: " + localException.getMessage());
-        }
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("PttTransitionAnimHandler uncompressZip failed: ");
+        localStringBuilder.append(localException.getMessage());
+        QLog.d("EarlyDown", 2, localStringBuilder.toString());
       }
     }
     super.a(paramString);
@@ -107,15 +126,19 @@ public class PttTransitionAnimHandler
     if ((PttTransitonAnimData)a() == null) {
       return true;
     }
-    if (QLog.isColorLevel()) {
-      QLog.d("EarlyDown", 2, "PttTransitionAnimHandler isUserNeedDownload return " + true);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("PttTransitionAnimHandler isUserNeedDownload return ");
+      localStringBuilder.append(true);
+      QLog.d("EarlyDown", 2, localStringBuilder.toString());
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.earlydownload.handler.PttTransitionAnimHandler
  * JD-Core Version:    0.7.0.1
  */

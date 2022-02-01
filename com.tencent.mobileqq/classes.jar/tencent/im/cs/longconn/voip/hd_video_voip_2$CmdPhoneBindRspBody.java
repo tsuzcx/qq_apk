@@ -23,15 +23,16 @@ public final class hd_video_voip_2$CmdPhoneBindRspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 64 }, new String[] { "uint32_call_type", "uint64_call_id", "bytes_call_id", "bytes_call_prompt", "bytes_call_phone", "uint32_ability", "uint32_call_phone_type", "uint32_cb_line_count" }, new Object[] { Integer.valueOf(0), Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) }, CmdPhoneBindRspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 26, 34, 42, 48, 56, 64 }, new String[] { "uint32_call_type", "uint64_call_id", "bytes_call_id", "bytes_call_prompt", "bytes_call_phone", "uint32_ability", "uint32_call_phone_type", "uint32_cb_line_count" }, new Object[] { localInteger, Long.valueOf(0L), localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localInteger, localInteger, localInteger }, CmdPhoneBindRspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.cs.longconn.voip.hd_video_voip_2.CmdPhoneBindRspBody
  * JD-Core Version:    0.7.0.1
  */

@@ -40,11 +40,13 @@ public final class tGetBGVoiceWebappRsp
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iRet, 0);
-    if (this.strErrMsg != null) {
-      paramJceOutputStream.write(this.strErrMsg, 1);
+    Object localObject = this.strErrMsg;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.stBGVoice != null) {
-      paramJceOutputStream.write(this.stBGVoice, 2);
+    localObject = this.stBGVoice;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.wifi_auto_play, 3);
     paramJceOutputStream.write(this.play_mode_flag, 4);
@@ -53,7 +55,7 @@ public final class tGetBGVoiceWebappRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_BG_VOICE_LOGIC_APP.tGetBGVoiceWebappRsp
  * JD-Core Version:    0.7.0.1
  */

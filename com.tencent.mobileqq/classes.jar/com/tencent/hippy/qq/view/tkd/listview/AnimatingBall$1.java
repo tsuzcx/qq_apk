@@ -10,18 +10,21 @@ class AnimatingBall$1
   
   public void handleMessage(Message paramMessage)
   {
-    if (paramMessage.what == 0) {}
-    while (paramMessage.what != 0) {
+    if (paramMessage.what == 0) {
       return;
     }
-    this.this$0.mRefreshing = false;
-    this.this$0.mRefreshStartTime = -1L;
-    this.this$0.mCb.postInvalidate();
+    if (paramMessage.what == 0)
+    {
+      paramMessage = this.this$0;
+      paramMessage.mRefreshing = false;
+      paramMessage.mRefreshStartTime = -1L;
+      paramMessage.mCb.postInvalidate();
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.view.tkd.listview.AnimatingBall.1
  * JD-Core Version:    0.7.0.1
  */

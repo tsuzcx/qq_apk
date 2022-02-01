@@ -21,32 +21,35 @@ class MusicPlayerActivity$3
   {
     if (paramSongInfo != null)
     {
-      localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
-      if (!MusicPlayerActivity.b().containsKey(localObject)) {
-        break label64;
+      Object localObject = MusicPlayerActivity.a(this.a, paramSongInfo);
+      if (MusicPlayerActivity.b().containsKey(localObject))
+      {
+        localObject = (MusicPlayerActivity.SimpleSongInfo)MusicPlayerActivity.b().get(localObject);
+        MusicPlayerActivity localMusicPlayerActivity = this.a;
+        paramSongInfo = MusicPlayerActivity.a(localMusicPlayerActivity, MusicPlayerActivity.a(localMusicPlayerActivity), paramSongInfo, ((MusicPlayerActivity.SimpleSongInfo)localObject).a);
+        MusicPlayerActivity.a(this.a, (MusicPlayerActivity.SimpleSongInfo)localObject, paramSongInfo);
+        return;
       }
-      localObject = (MusicPlayerActivity.SimpleSongInfo)MusicPlayerActivity.b().get(localObject);
-      paramSongInfo = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, ((MusicPlayerActivity.SimpleSongInfo)localObject).a);
-      MusicPlayerActivity.a(this.a, (MusicPlayerActivity.SimpleSongInfo)localObject, paramSongInfo);
-    }
-    label64:
-    while (MusicPlayerActivity.a().containsKey(localObject)) {
-      return;
-    }
-    Object localObject = MusicPlayerActivity.a(this.a);
-    if (localObject != null) {}
-    for (int i = ((IQQPlayerService)localObject).c();; i = 0)
-    {
-      localObject = MusicPlayerActivity.a(this.a, MusicPlayerActivity.a(this.a), paramSongInfo, -1L);
-      MusicPlayerActivity.a(this.a, paramSongInfo.c, paramSongInfo.h, paramSongInfo.e, (String)localObject, false, false);
-      MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.c, paramSongInfo.h, paramSongInfo.g, String.valueOf(paramSongInfo.a), paramSongInfo.d, i);
-      return;
+      if (!MusicPlayerActivity.a().containsKey(localObject))
+      {
+        localObject = MusicPlayerActivity.a(this.a);
+        int i;
+        if (localObject != null) {
+          i = ((IQQPlayerService)localObject).c();
+        } else {
+          i = 0;
+        }
+        localObject = this.a;
+        localObject = MusicPlayerActivity.a((MusicPlayerActivity)localObject, MusicPlayerActivity.a((MusicPlayerActivity)localObject), paramSongInfo, -1L);
+        MusicPlayerActivity.a(this.a, paramSongInfo.c, paramSongInfo.h, paramSongInfo.e, (String)localObject, false, false);
+        MusicPlayerActivity.a(this.a).a(this.a.app.getLongAccountUin(), paramSongInfo.c, paramSongInfo.h, paramSongInfo.g, String.valueOf(paramSongInfo.a), paramSongInfo.d, i);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.musicgene.MusicPlayerActivity.3
  * JD-Core Version:    0.7.0.1
  */

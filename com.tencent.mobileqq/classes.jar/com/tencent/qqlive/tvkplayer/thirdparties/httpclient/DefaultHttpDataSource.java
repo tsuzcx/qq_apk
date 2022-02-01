@@ -3,6 +3,7 @@ package com.tencent.qqlive.tvkplayer.thirdparties.httpclient;
 import android.net.Uri;
 import android.os.Build.VERSION;
 import android.support.annotation.Nullable;
+import android.text.TextUtils;
 import com.tencent.qqlive.tvkplayer.tools.utils.TVKLogUtil;
 import java.io.EOFException;
 import java.io.IOException;
@@ -20,6 +21,7 @@ import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
 import java.util.concurrent.atomic.AtomicReference;
+import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 public class DefaultHttpDataSource
@@ -106,218 +108,163 @@ public class DefaultHttpDataSource
   
   private void closeConnectionQuietly()
   {
-    if (this.connection != null) {}
-    try
+    HttpURLConnection localHttpURLConnection = this.connection;
+    if (localHttpURLConnection != null)
     {
-      this.connection.disconnect();
-      this.connection = null;
-      return;
-    }
-    catch (Exception localException)
-    {
-      for (;;)
+      try
+      {
+        localHttpURLConnection.disconnect();
+      }
+      catch (Exception localException)
       {
         TVKLogUtil.e("DefaultHttpDataSource", localException, "Unexpected error while disconnecting");
       }
+      this.connection = null;
     }
   }
   
-  /* Error */
   private static long getContentLength(HttpURLConnection paramHttpURLConnection)
   {
-    // Byte code:
-    //   0: ldc2_w 152
-    //   3: lstore_3
-    //   4: aload_0
-    //   5: ldc 155
-    //   7: invokevirtual 158	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   10: astore 7
-    //   12: lload_3
-    //   13: lstore_1
-    //   14: aload 7
-    //   16: invokestatic 164	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   19: ifne +9 -> 28
-    //   22: aload 7
-    //   24: invokestatic 170	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   27: lstore_1
-    //   28: aload_0
-    //   29: ldc 172
-    //   31: invokevirtual 158	java/net/HttpURLConnection:getHeaderField	(Ljava/lang/String;)Ljava/lang/String;
-    //   34: astore_0
-    //   35: lload_1
-    //   36: lstore_3
-    //   37: aload_0
-    //   38: invokestatic 164	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   41: ifne +60 -> 101
-    //   44: getstatic 64	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:CONTENT_RANGE_HEADER	Ljava/util/regex/Pattern;
-    //   47: aload_0
-    //   48: invokevirtual 176	java/util/regex/Pattern:matcher	(Ljava/lang/CharSequence;)Ljava/util/regex/Matcher;
-    //   51: astore 8
-    //   53: lload_1
-    //   54: lstore_3
-    //   55: aload 8
-    //   57: invokevirtual 182	java/util/regex/Matcher:find	()Z
-    //   60: ifeq +41 -> 101
-    //   63: aload 8
-    //   65: iconst_2
-    //   66: invokevirtual 186	java/util/regex/Matcher:group	(I)Ljava/lang/String;
-    //   69: invokestatic 170	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   72: lstore_3
-    //   73: aload 8
-    //   75: iconst_1
-    //   76: invokevirtual 186	java/util/regex/Matcher:group	(I)Ljava/lang/String;
-    //   79: invokestatic 170	java/lang/Long:parseLong	(Ljava/lang/String;)J
-    //   82: lstore 5
-    //   84: lload_3
-    //   85: lload 5
-    //   87: lsub
-    //   88: lconst_1
-    //   89: ladd
-    //   90: lstore 5
-    //   92: lload_1
-    //   93: lconst_0
-    //   94: lcmp
-    //   95: ifge +45 -> 140
-    //   98: lload 5
-    //   100: lstore_3
-    //   101: lload_3
-    //   102: lreturn
-    //   103: astore 8
-    //   105: ldc 26
-    //   107: new 188	java/lang/StringBuilder
-    //   110: dup
-    //   111: invokespecial 189	java/lang/StringBuilder:<init>	()V
-    //   114: ldc 191
-    //   116: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   119: aload 7
-    //   121: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   124: ldc 197
-    //   126: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   129: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   132: invokestatic 204	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   135: lload_3
-    //   136: lstore_1
-    //   137: goto -109 -> 28
-    //   140: lload_1
-    //   141: lstore_3
-    //   142: lload_1
-    //   143: lload 5
-    //   145: lcmp
-    //   146: ifeq -45 -> 101
-    //   149: ldc 26
-    //   151: new 188	java/lang/StringBuilder
-    //   154: dup
-    //   155: invokespecial 189	java/lang/StringBuilder:<init>	()V
-    //   158: ldc 206
-    //   160: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   163: aload 7
-    //   165: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   168: ldc 208
-    //   170: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   173: aload_0
-    //   174: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   177: ldc 197
-    //   179: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   182: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   185: invokestatic 211	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:w	(Ljava/lang/String;Ljava/lang/String;)V
-    //   188: lload_1
-    //   189: lload 5
-    //   191: invokestatic 217	java/lang/Math:max	(JJ)J
-    //   194: lstore_3
-    //   195: lload_3
-    //   196: lreturn
-    //   197: astore 7
-    //   199: ldc 26
-    //   201: new 188	java/lang/StringBuilder
-    //   204: dup
-    //   205: invokespecial 189	java/lang/StringBuilder:<init>	()V
-    //   208: ldc 219
-    //   210: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   213: aload_0
-    //   214: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   217: ldc 197
-    //   219: invokevirtual 195	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   222: invokevirtual 201	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   225: invokestatic 204	com/tencent/qqlive/tvkplayer/tools/utils/TVKLogUtil:e	(Ljava/lang/String;Ljava/lang/String;)V
-    //   228: lload_1
-    //   229: lreturn
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	230	0	paramHttpURLConnection	HttpURLConnection
-    //   13	216	1	l1	long
-    //   3	193	3	l2	long
-    //   82	108	5	l3	long
-    //   10	154	7	str	String
-    //   197	1	7	localNumberFormatException1	java.lang.NumberFormatException
-    //   51	23	8	localMatcher	java.util.regex.Matcher
-    //   103	1	8	localNumberFormatException2	java.lang.NumberFormatException
-    // Exception table:
-    //   from	to	target	type
-    //   22	28	103	java/lang/NumberFormatException
-    //   63	84	197	java/lang/NumberFormatException
-    //   149	195	197	java/lang/NumberFormatException
+    Object localObject1 = paramHttpURLConnection.getHeaderField("Content-Length");
+    if (!TextUtils.isEmpty((CharSequence)localObject1)) {}
+    try
+    {
+      l1 = Long.parseLong((String)localObject1);
+    }
+    catch (NumberFormatException localNumberFormatException2)
+    {
+      long l1;
+      label25:
+      Object localObject2;
+      break label25;
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("Unexpected Content-Length [");
+    ((StringBuilder)localObject2).append((String)localObject1);
+    ((StringBuilder)localObject2).append("]");
+    TVKLogUtil.e("DefaultHttpDataSource", ((StringBuilder)localObject2).toString());
+    l1 = -1L;
+    paramHttpURLConnection = paramHttpURLConnection.getHeaderField("Content-Range");
+    if (!TextUtils.isEmpty(paramHttpURLConnection))
+    {
+      localObject2 = CONTENT_RANGE_HEADER.matcher(paramHttpURLConnection);
+      if (!((Matcher)localObject2).find()) {}
+    }
+    try
+    {
+      long l2 = Long.parseLong(((Matcher)localObject2).group(2)) - Long.parseLong(((Matcher)localObject2).group(1)) + 1L;
+      if (l1 < 0L) {
+        return l2;
+      }
+      if (l1 == l2) {
+        break label247;
+      }
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("Inconsistent headers [");
+      ((StringBuilder)localObject2).append((String)localObject1);
+      ((StringBuilder)localObject2).append("] [");
+      ((StringBuilder)localObject2).append(paramHttpURLConnection);
+      ((StringBuilder)localObject2).append("]");
+      TVKLogUtil.w("DefaultHttpDataSource", ((StringBuilder)localObject2).toString());
+      l2 = Math.max(l1, l2);
+      return l2;
+    }
+    catch (NumberFormatException localNumberFormatException1)
+    {
+      label205:
+      break label205;
+    }
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("Unexpected Content-Range [");
+    ((StringBuilder)localObject1).append(paramHttpURLConnection);
+    ((StringBuilder)localObject1).append("]");
+    TVKLogUtil.e("DefaultHttpDataSource", ((StringBuilder)localObject1).toString());
+    label247:
+    return l1;
   }
   
   private static URL handleRedirect(URL paramURL, String paramString)
   {
-    if (paramString == null) {
-      throw new ProtocolException("Null location redirect");
+    if (paramString != null)
+    {
+      paramString = new URL(paramURL, paramString);
+      paramURL = paramString.getProtocol();
+      if (!"https".equals(paramURL))
+      {
+        if ("http".equals(paramURL)) {
+          return paramString;
+        }
+        paramString = new StringBuilder();
+        paramString.append("Unsupported protocol redirect: ");
+        paramString.append(paramURL);
+        throw new ProtocolException(paramString.toString());
+      }
+      return paramString;
     }
-    paramURL = new URL(paramURL, paramString);
-    paramString = paramURL.getProtocol();
-    if ((!"https".equals(paramString)) && (!"http".equals(paramString))) {
-      throw new ProtocolException("Unsupported protocol redirect: " + paramString);
-    }
-    return paramURL;
+    throw new ProtocolException("Null location redirect");
   }
   
   private HttpURLConnection makeConnection(DataSpec paramDataSpec)
   {
-    Object localObject2 = new URL(paramDataSpec.uri.toString());
+    Object localObject1 = new URL(paramDataSpec.uri.toString());
     int i = paramDataSpec.httpMethod;
-    Object localObject1 = paramDataSpec.httpBody;
+    Object localObject2 = paramDataSpec.httpBody;
     long l1 = paramDataSpec.position;
     long l2 = paramDataSpec.length;
     boolean bool1 = paramDataSpec.isFlagSet(1);
     boolean bool2 = paramDataSpec.isFlagSet(2);
-    if (!this.allowCrossProtocolRedirects)
-    {
-      localObject1 = makeConnection((URL)localObject2, i, (byte[])localObject1, l1, l2, bool1, bool2, true);
-      return localObject1;
+    if (!this.allowCrossProtocolRedirects) {
+      return makeConnection((URL)localObject1, i, (byte[])localObject2, l1, l2, bool1, bool2, true);
     }
     int j = 0;
-    paramDataSpec = (DataSpec)localObject2;
-    label88:
-    int k = j + 1;
-    if (j <= 20)
+    int k;
+    for (paramDataSpec = (DataSpec)localObject2;; paramDataSpec = (DataSpec)localObject2)
     {
-      localObject2 = makeConnection(paramDataSpec, i, (byte[])localObject1, l1, l2, bool1, bool2, false);
+      k = j + 1;
+      if (j > 20) {
+        break;
+      }
+      localObject2 = makeConnection((URL)localObject1, i, paramDataSpec, l1, l2, bool1, bool2, false);
       j = ((HttpURLConnection)localObject2).getResponseCode();
       String str = ((HttpURLConnection)localObject2).getHeaderField("Location");
-      if (((i == 1) || (i == 3)) && ((j == 300) || (j == 301) || (j == 302) || (j == 303) || (j == 307) || (j == 308))) {
-        ((HttpURLConnection)localObject2).disconnect();
-      }
-      for (paramDataSpec = handleRedirect(paramDataSpec, str);; paramDataSpec = handleRedirect(paramDataSpec, str))
+      if ((i != 1) && (i != 3)) {}
+      for (;;)
       {
-        j = k;
-        break label88;
-        localObject1 = localObject2;
-        if (i != 2) {
-          break;
+        break;
+        if ((j == 300) || (j == 301) || (j == 302) || (j == 303) || (j == 307)) {
+          break label248;
         }
-        if ((j != 300) && (j != 301) && (j != 302))
-        {
-          localObject1 = localObject2;
-          if (j != 303) {
-            break;
-          }
+        if (j == 308) {
+          break label248;
         }
-        ((HttpURLConnection)localObject2).disconnect();
-        i = 1;
-        localObject1 = null;
       }
+      if ((i == 2) && ((j == 300) || (j == 301) || (j == 302) || (j == 303)))
+      {
+        ((HttpURLConnection)localObject2).disconnect();
+        paramDataSpec = handleRedirect((URL)localObject1, str);
+        localObject2 = null;
+        i = 1;
+      }
+      else
+      {
+        return localObject2;
+        label248:
+        ((HttpURLConnection)localObject2).disconnect();
+        localObject1 = handleRedirect((URL)localObject1, str);
+        localObject2 = paramDataSpec;
+        paramDataSpec = (DataSpec)localObject1;
+      }
+      j = k;
+      localObject1 = paramDataSpec;
     }
-    throw new NoRouteToHostException("Too many redirects: " + k);
+    paramDataSpec = new StringBuilder();
+    paramDataSpec.append("Too many redirects: ");
+    paramDataSpec.append(k);
+    paramDataSpec = new NoRouteToHostException(paramDataSpec.toString());
+    for (;;)
+    {
+      throw paramDataSpec;
+    }
   }
   
   private HttpURLConnection makeConnection(URL paramURL, int paramInt, byte[] paramArrayOfByte, long paramLong1, long paramLong2, boolean paramBoolean1, boolean paramBoolean2, boolean paramBoolean3)
@@ -325,10 +272,11 @@ public class DefaultHttpDataSource
     HttpURLConnection localHttpURLConnection = (HttpURLConnection)paramURL.openConnection();
     localHttpURLConnection.setConnectTimeout(this.connectTimeoutMillis);
     localHttpURLConnection.setReadTimeout(this.readTimeoutMillis);
+    paramURL = this.defaultRequestProperties;
     Object localObject;
-    if (this.defaultRequestProperties != null)
+    if (paramURL != null)
     {
-      paramURL = this.defaultRequestProperties.getSnapshot().entrySet().iterator();
+      paramURL = paramURL.getSnapshot().entrySet().iterator();
       while (paramURL.hasNext())
       {
         localObject = (Map.Entry)paramURL.next();
@@ -343,10 +291,18 @@ public class DefaultHttpDataSource
     }
     if ((paramLong1 != 0L) || (paramLong2 != -1L))
     {
-      localObject = "bytes=" + paramLong1 + "-";
+      paramURL = new StringBuilder();
+      paramURL.append("bytes=");
+      paramURL.append(paramLong1);
+      paramURL.append("-");
+      localObject = paramURL.toString();
       paramURL = (URL)localObject;
-      if (paramLong2 != -1L) {
-        paramURL = (String)localObject + (paramLong1 + paramLong2 - 1L);
+      if (paramLong2 != -1L)
+      {
+        paramURL = new StringBuilder();
+        paramURL.append((String)localObject);
+        paramURL.append(paramLong1 + paramLong2 - 1L);
+        paramURL = paramURL.toString();
       }
       localHttpURLConnection.setRequestProperty("Range", paramURL);
     }
@@ -358,14 +314,15 @@ public class DefaultHttpDataSource
       localHttpURLConnection.setRequestProperty("Icy-MetaData", "1");
     }
     localHttpURLConnection.setInstanceFollowRedirects(paramBoolean3);
-    if (paramArrayOfByte != null) {}
-    for (paramBoolean1 = true;; paramBoolean1 = false)
+    if (paramArrayOfByte != null) {
+      paramBoolean1 = true;
+    } else {
+      paramBoolean1 = false;
+    }
+    localHttpURLConnection.setDoOutput(paramBoolean1);
+    localHttpURLConnection.setRequestMethod(DataSpec.getStringForHttpMethod(paramInt));
+    if (paramArrayOfByte != null)
     {
-      localHttpURLConnection.setDoOutput(paramBoolean1);
-      localHttpURLConnection.setRequestMethod(DataSpec.getStringForHttpMethod(paramInt));
-      if (paramArrayOfByte == null) {
-        break;
-      }
       localHttpURLConnection.setFixedLengthStreamingMode(paramArrayOfByte.length);
       localHttpURLConnection.connect();
       paramURL = localHttpURLConnection.getOutputStream();
@@ -390,19 +347,19 @@ public class DefaultHttpDataSource
         if (paramLong == -1L)
         {
           if (paramHttpURLConnection.read() == -1) {
-            break;
+            return;
           }
           Object localObject = paramHttpURLConnection.getClass().getName();
-          if ((!"com.android.okhttp.internal.http.HttpTransport$ChunkedInputStream".equals(localObject)) && (!"com.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream".equals(localObject))) {
-            break;
+          if (("com.android.okhttp.internal.http.HttpTransport$ChunkedInputStream".equals(localObject)) || ("com.android.okhttp.internal.http.HttpTransport$FixedLengthInputStream".equals(localObject)))
+          {
+            localObject = paramHttpURLConnection.getClass().getSuperclass();
+            if (localObject != null)
+            {
+              localObject = ((Class)localObject).getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
+              ((Method)localObject).setAccessible(true);
+              ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
+            }
           }
-          localObject = paramHttpURLConnection.getClass().getSuperclass();
-          if (localObject == null) {
-            break;
-          }
-          localObject = ((Class)localObject).getDeclaredMethod("unexpectedEndOfInput", new Class[0]);
-          ((Method)localObject).setAccessible(true);
-          ((Method)localObject).invoke(paramHttpURLConnection, new Object[0]);
           return;
         }
       }
@@ -415,32 +372,27 @@ public class DefaultHttpDataSource
   
   private int readInternal(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
   {
-    int j = -1;
-    int i;
     if (paramInt2 == 0) {
-      i = 0;
+      return 0;
     }
-    do
+    long l = this.bytesToRead;
+    int i = paramInt2;
+    if (l != -1L)
     {
-      long l;
-      do
-      {
-        return i;
-        i = paramInt2;
-        if (this.bytesToRead == -1L) {
-          break;
-        }
-        l = this.bytesToRead - this.bytesRead;
-        i = j;
-      } while (l == 0L);
-      i = (int)Math.min(paramInt2, l);
-      paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, i);
-      if (paramInt1 != -1) {
-        break;
+      l -= this.bytesRead;
+      if (l == 0L) {
+        return -1;
       }
-      i = j;
-    } while (this.bytesToRead == -1L);
-    throw new EOFException();
+      i = (int)Math.min(paramInt2, l);
+    }
+    paramInt1 = this.inputStream.read(paramArrayOfByte, paramInt1, i);
+    if (paramInt1 == -1)
+    {
+      if (this.bytesToRead == -1L) {
+        return -1;
+      }
+      throw new EOFException();
+    }
     this.bytesRead += paramInt1;
     bytesTransferred(paramInt1);
     return paramInt1;
@@ -456,19 +408,28 @@ public class DefaultHttpDataSource
     if (arrayOfByte2 == null) {
       arrayOfByte1 = new byte[4096];
     }
-    while (this.bytesSkipped != this.bytesToSkip)
+    for (;;)
     {
-      int i = (int)Math.min(this.bytesToSkip - this.bytesSkipped, arrayOfByte1.length);
+      long l1 = this.bytesSkipped;
+      long l2 = this.bytesToSkip;
+      if (l1 == l2) {
+        break label133;
+      }
+      int i = (int)Math.min(l2 - l1, arrayOfByte1.length);
       i = this.inputStream.read(arrayOfByte1, 0, i);
       if (Thread.currentThread().isInterrupted()) {
-        throw new InterruptedIOException();
+        break label125;
       }
       if (i == -1) {
-        throw new EOFException();
+        break;
       }
       this.bytesSkipped += i;
       bytesTransferred(i);
     }
+    throw new EOFException();
+    label125:
+    throw new InterruptedIOException();
+    label133:
     skipBufferReference.set(arrayOfByte1);
   }
   
@@ -479,10 +440,11 @@ public class DefaultHttpDataSource
   
   protected final long bytesRemaining()
   {
-    if (this.bytesToRead == -1L) {
-      return this.bytesToRead;
+    long l = this.bytesToRead;
+    if (l == -1L) {
+      return l;
     }
-    return this.bytesToRead - this.bytesRead;
+    return l - this.bytesRead;
   }
   
   protected final long bytesSkipped()
@@ -501,71 +463,34 @@ public class DefaultHttpDataSource
     this.requestProperties.remove(paramString);
   }
   
-  /* Error */
   public void close()
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: getfield 452	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
-    //   4: ifnull +21 -> 25
-    //   7: aload_0
-    //   8: getfield 134	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
-    //   11: aload_0
-    //   12: invokevirtual 503	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesRemaining	()J
-    //   15: invokestatic 505	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:maybeTerminateInputStream	(Ljava/net/HttpURLConnection;J)V
-    //   18: aload_0
-    //   19: getfield 452	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
-    //   22: invokevirtual 506	java/io/InputStream:close	()V
-    //   25: aload_0
-    //   26: aconst_null
-    //   27: putfield 452	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
-    //   30: aload_0
-    //   31: invokespecial 508	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
-    //   34: aload_0
-    //   35: getfield 510	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
-    //   38: ifeq +12 -> 50
-    //   41: aload_0
-    //   42: iconst_0
-    //   43: putfield 510	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
-    //   46: aload_0
-    //   47: invokevirtual 513	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:transferEnded	()V
-    //   50: return
-    //   51: astore_1
-    //   52: new 515	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException
-    //   55: dup
-    //   56: aload_1
-    //   57: aload_0
-    //   58: getfield 517	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:dataSpec	Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;
-    //   61: iconst_3
-    //   62: invokespecial 520	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException:<init>	(Ljava/io/IOException;Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;I)V
-    //   65: athrow
-    //   66: astore_1
-    //   67: aload_0
-    //   68: aconst_null
-    //   69: putfield 452	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
-    //   72: aload_0
-    //   73: invokespecial 508	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
-    //   76: aload_0
-    //   77: getfield 510	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
-    //   80: ifeq +12 -> 92
-    //   83: aload_0
-    //   84: iconst_0
-    //   85: putfield 510	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
-    //   88: aload_0
-    //   89: invokevirtual 513	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:transferEnded	()V
-    //   92: aload_1
-    //   93: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	94	0	this	DefaultHttpDataSource
-    //   51	6	1	localIOException	IOException
-    //   66	27	1	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   18	25	51	java/io/IOException
-    //   0	18	66	finally
-    //   18	25	66	finally
-    //   52	66	66	finally
+    try
+    {
+      if (this.inputStream != null)
+      {
+        maybeTerminateInputStream(this.connection, bytesRemaining());
+        try
+        {
+          this.inputStream.close();
+        }
+        catch (IOException localIOException)
+        {
+          throw new HttpDataSource.HttpDataSourceException(localIOException, this.dataSpec, 3);
+        }
+      }
+      return;
+    }
+    finally
+    {
+      this.inputStream = null;
+      closeConnectionQuietly();
+      if (this.opened)
+      {
+        this.opened = false;
+        transferEnded();
+      }
+    }
   }
   
   @Nullable
@@ -576,114 +501,286 @@ public class DefaultHttpDataSource
   
   public Map<String, List<String>> getResponseHeaders()
   {
-    if (this.connection == null) {
+    HttpURLConnection localHttpURLConnection = this.connection;
+    if (localHttpURLConnection == null) {
       return null;
     }
-    return this.connection.getHeaderFields();
+    return localHttpURLConnection.getHeaderFields();
   }
   
   @Nullable
   public Uri getUri()
   {
-    if (this.connection == null) {
+    HttpURLConnection localHttpURLConnection = this.connection;
+    if (localHttpURLConnection == null) {
       return null;
     }
-    return Uri.parse(this.connection.getURL().toString());
+    return Uri.parse(localHttpURLConnection.getURL().toString());
   }
   
+  /* Error */
   public long open(DataSpec paramDataSpec)
   {
-    long l2 = 0L;
-    this.dataSpec = paramDataSpec;
-    this.bytesRead = 0L;
-    this.bytesSkipped = 0L;
-    transferInitializing(paramDataSpec);
-    int i;
-    try
-    {
-      this.connection = makeConnection(paramDataSpec);
-      String str1;
-      Map localMap;
-      str2 = this.connection.getContentType();
-    }
-    catch (IOException localIOException1)
-    {
-      try
-      {
-        i = this.connection.getResponseCode();
-        str1 = this.connection.getResponseMessage();
-        if ((i >= 200) && (i <= 299)) {
-          break label238;
-        }
-        localMap = this.connection.getHeaderFields();
-        closeConnectionQuietly();
-        paramDataSpec = new HttpDataSource.InvalidResponseCodeException(i, str1, localMap, paramDataSpec);
-        if (i == 416) {
-          paramDataSpec.initCause(new DataSourceException(0));
-        }
-        throw paramDataSpec;
-      }
-      catch (IOException localIOException2)
-      {
-        closeConnectionQuietly();
-        throw new HttpDataSource.HttpDataSourceException("Unable to connect to " + paramDataSpec.uri.toString(), localIOException2, paramDataSpec, 1);
-      }
-      catch (Exception localException)
-      {
-        closeConnectionQuietly();
-        throw new HttpDataSource.HttpDataSourceException("Unable to connect to " + paramDataSpec.uri.toString(), paramDataSpec, 1);
-      }
-      localIOException1 = localIOException1;
-      throw new HttpDataSource.HttpDataSourceException("Unable to connect to " + paramDataSpec.uri.toString(), localIOException1, paramDataSpec, 1);
-    }
-    label238:
-    String str2;
-    if ((this.contentTypePredicate != null) && (!this.contentTypePredicate.evaluate(str2)))
-    {
-      closeConnectionQuietly();
-      throw new HttpDataSource.InvalidContentTypeException(str2, paramDataSpec);
-    }
-    long l1 = l2;
-    if (i == 200)
-    {
-      l1 = l2;
-      if (paramDataSpec.position != 0L) {
-        l1 = paramDataSpec.position;
-      }
-    }
-    this.bytesToSkip = l1;
-    if (!paramDataSpec.isFlagSet(1)) {
-      if (paramDataSpec.length != -1L) {
-        this.bytesToRead = paramDataSpec.length;
-      }
-    }
-    for (;;)
-    {
-      try
-      {
-        this.inputStream = this.connection.getInputStream();
-        this.opened = true;
-        transferStarted(paramDataSpec);
-        return this.bytesToRead;
-      }
-      catch (IOException localIOException3)
-      {
-        closeConnectionQuietly();
-        throw new HttpDataSource.HttpDataSourceException(localIOException3, paramDataSpec, 1);
-      }
-      l1 = getContentLength(this.connection);
-      if (l1 != -1L)
-      {
-        l1 -= this.bytesToSkip;
-        this.bytesToRead = l1;
-      }
-      else
-      {
-        l1 = -1L;
-        continue;
-        this.bytesToRead = paramDataSpec.length;
-      }
-    }
+    // Byte code:
+    //   0: aload_0
+    //   1: aload_1
+    //   2: putfield 510	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:dataSpec	Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;
+    //   5: lconst_0
+    //   6: lstore 5
+    //   8: aload_0
+    //   9: lconst_0
+    //   10: putfield 447	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesRead	J
+    //   13: aload_0
+    //   14: lconst_0
+    //   15: putfield 463	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesSkipped	J
+    //   18: aload_0
+    //   19: aload_1
+    //   20: invokevirtual 545	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:transferInitializing	(Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;)V
+    //   23: aload_0
+    //   24: aload_0
+    //   25: aload_1
+    //   26: invokespecial 547	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:makeConnection	(Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;)Ljava/net/HttpURLConnection;
+    //   29: putfield 134	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   32: aload_0
+    //   33: getfield 134	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   36: invokevirtual 283	java/net/HttpURLConnection:getResponseCode	()I
+    //   39: istore_2
+    //   40: aload_0
+    //   41: getfield 134	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   44: invokevirtual 550	java/net/HttpURLConnection:getResponseMessage	()Ljava/lang/String;
+    //   47: astore 7
+    //   49: iload_2
+    //   50: sipush 200
+    //   53: if_icmplt +219 -> 272
+    //   56: iload_2
+    //   57: sipush 299
+    //   60: if_icmple +6 -> 66
+    //   63: goto +209 -> 272
+    //   66: aload_0
+    //   67: getfield 134	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   70: invokevirtual 553	java/net/HttpURLConnection:getContentType	()Ljava/lang/String;
+    //   73: astore 7
+    //   75: aload_0
+    //   76: getfield 99	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:contentTypePredicate	Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/Predicate;
+    //   79: astore 8
+    //   81: aload 8
+    //   83: ifnull +33 -> 116
+    //   86: aload 8
+    //   88: aload 7
+    //   90: invokeinterface 558 2 0
+    //   95: ifeq +6 -> 101
+    //   98: goto +18 -> 116
+    //   101: aload_0
+    //   102: invokespecial 515	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   105: new 560	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$InvalidContentTypeException
+    //   108: dup
+    //   109: aload 7
+    //   111: aload_1
+    //   112: invokespecial 563	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$InvalidContentTypeException:<init>	(Ljava/lang/String;Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;)V
+    //   115: athrow
+    //   116: lload 5
+    //   118: lstore_3
+    //   119: iload_2
+    //   120: sipush 200
+    //   123: if_icmpne +20 -> 143
+    //   126: lload 5
+    //   128: lstore_3
+    //   129: aload_1
+    //   130: getfield 269	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec:position	J
+    //   133: lconst_0
+    //   134: lcmp
+    //   135: ifeq +8 -> 143
+    //   138: aload_1
+    //   139: getfield 269	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec:position	J
+    //   142: lstore_3
+    //   143: aload_0
+    //   144: lload_3
+    //   145: putfield 465	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesToSkip	J
+    //   148: aload_1
+    //   149: iconst_1
+    //   150: invokevirtual 276	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec:isFlagSet	(I)Z
+    //   153: ifne +67 -> 220
+    //   156: aload_1
+    //   157: getfield 272	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec:length	J
+    //   160: lstore 5
+    //   162: ldc2_w 187
+    //   165: lstore_3
+    //   166: lload 5
+    //   168: ldc2_w 187
+    //   171: lcmp
+    //   172: ifeq +14 -> 186
+    //   175: aload_0
+    //   176: aload_1
+    //   177: getfield 272	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec:length	J
+    //   180: putfield 445	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesToRead	J
+    //   183: goto +45 -> 228
+    //   186: aload_0
+    //   187: getfield 134	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   190: invokestatic 565	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:getContentLength	(Ljava/net/HttpURLConnection;)J
+    //   193: lstore 5
+    //   195: lload 5
+    //   197: ldc2_w 187
+    //   200: lcmp
+    //   201: ifeq +11 -> 212
+    //   204: lload 5
+    //   206: aload_0
+    //   207: getfield 465	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesToSkip	J
+    //   210: lsub
+    //   211: lstore_3
+    //   212: aload_0
+    //   213: lload_3
+    //   214: putfield 445	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesToRead	J
+    //   217: goto +11 -> 228
+    //   220: aload_0
+    //   221: aload_1
+    //   222: getfield 272	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec:length	J
+    //   225: putfield 445	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesToRead	J
+    //   228: aload_0
+    //   229: aload_0
+    //   230: getfield 134	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   233: invokevirtual 403	java/net/HttpURLConnection:getInputStream	()Ljava/io/InputStream;
+    //   236: putfield 452	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:inputStream	Ljava/io/InputStream;
+    //   239: aload_0
+    //   240: iconst_1
+    //   241: putfield 517	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:opened	Z
+    //   244: aload_0
+    //   245: aload_1
+    //   246: invokevirtual 568	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:transferStarted	(Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;)V
+    //   249: aload_0
+    //   250: getfield 445	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:bytesToRead	J
+    //   253: lreturn
+    //   254: astore 7
+    //   256: aload_0
+    //   257: invokespecial 515	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   260: new 508	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException
+    //   263: dup
+    //   264: aload 7
+    //   266: aload_1
+    //   267: iconst_1
+    //   268: invokespecial 513	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException:<init>	(Ljava/io/IOException;Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;I)V
+    //   271: athrow
+    //   272: aload_0
+    //   273: getfield 134	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:connection	Ljava/net/HttpURLConnection;
+    //   276: invokevirtual 527	java/net/HttpURLConnection:getHeaderFields	()Ljava/util/Map;
+    //   279: astore 8
+    //   281: aload_0
+    //   282: invokespecial 515	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   285: new 570	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$InvalidResponseCodeException
+    //   288: dup
+    //   289: iload_2
+    //   290: aload 7
+    //   292: aload 8
+    //   294: aload_1
+    //   295: invokespecial 573	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$InvalidResponseCodeException:<init>	(ILjava/lang/String;Ljava/util/Map;Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;)V
+    //   298: astore_1
+    //   299: iload_2
+    //   300: sipush 416
+    //   303: if_icmpne +16 -> 319
+    //   306: aload_1
+    //   307: new 575	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSourceException
+    //   310: dup
+    //   311: iconst_0
+    //   312: invokespecial 577	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSourceException:<init>	(I)V
+    //   315: invokevirtual 581	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$InvalidResponseCodeException:initCause	(Ljava/lang/Throwable;)Ljava/lang/Throwable;
+    //   318: pop
+    //   319: aload_1
+    //   320: athrow
+    //   321: aload_0
+    //   322: invokespecial 515	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   325: new 170	java/lang/StringBuilder
+    //   328: dup
+    //   329: invokespecial 171	java/lang/StringBuilder:<init>	()V
+    //   332: astore 7
+    //   334: aload 7
+    //   336: ldc_w 583
+    //   339: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   342: pop
+    //   343: aload 7
+    //   345: aload_1
+    //   346: getfield 255	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec:uri	Landroid/net/Uri;
+    //   349: invokevirtual 258	android/net/Uri:toString	()Ljava/lang/String;
+    //   352: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   355: pop
+    //   356: new 508	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException
+    //   359: dup
+    //   360: aload 7
+    //   362: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   365: aload_1
+    //   366: iconst_1
+    //   367: invokespecial 586	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException:<init>	(Ljava/lang/String;Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;I)V
+    //   370: athrow
+    //   371: astore 7
+    //   373: aload_0
+    //   374: invokespecial 515	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DefaultHttpDataSource:closeConnectionQuietly	()V
+    //   377: new 170	java/lang/StringBuilder
+    //   380: dup
+    //   381: invokespecial 171	java/lang/StringBuilder:<init>	()V
+    //   384: astore 8
+    //   386: aload 8
+    //   388: ldc_w 583
+    //   391: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   394: pop
+    //   395: aload 8
+    //   397: aload_1
+    //   398: getfield 255	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec:uri	Landroid/net/Uri;
+    //   401: invokevirtual 258	android/net/Uri:toString	()Ljava/lang/String;
+    //   404: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   407: pop
+    //   408: new 508	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException
+    //   411: dup
+    //   412: aload 8
+    //   414: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   417: aload 7
+    //   419: aload_1
+    //   420: iconst_1
+    //   421: invokespecial 589	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException:<init>	(Ljava/lang/String;Ljava/io/IOException;Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;I)V
+    //   424: athrow
+    //   425: astore 7
+    //   427: new 170	java/lang/StringBuilder
+    //   430: dup
+    //   431: invokespecial 171	java/lang/StringBuilder:<init>	()V
+    //   434: astore 8
+    //   436: aload 8
+    //   438: ldc_w 583
+    //   441: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   444: pop
+    //   445: aload 8
+    //   447: aload_1
+    //   448: getfield 255	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec:uri	Landroid/net/Uri;
+    //   451: invokevirtual 258	android/net/Uri:toString	()Ljava/lang/String;
+    //   454: invokevirtual 177	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   457: pop
+    //   458: new 508	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException
+    //   461: dup
+    //   462: aload 8
+    //   464: invokevirtual 183	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   467: aload 7
+    //   469: aload_1
+    //   470: iconst_1
+    //   471: invokespecial 589	com/tencent/qqlive/tvkplayer/thirdparties/httpclient/HttpDataSource$HttpDataSourceException:<init>	(Ljava/lang/String;Ljava/io/IOException;Lcom/tencent/qqlive/tvkplayer/thirdparties/httpclient/DataSpec;I)V
+    //   474: athrow
+    //   475: astore 7
+    //   477: goto -156 -> 321
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	480	0	this	DefaultHttpDataSource
+    //   0	480	1	paramDataSpec	DataSpec
+    //   39	265	2	i	int
+    //   118	96	3	l1	long
+    //   6	199	5	l2	long
+    //   47	63	7	str	String
+    //   254	37	7	localIOException1	IOException
+    //   332	29	7	localStringBuilder	StringBuilder
+    //   371	47	7	localIOException2	IOException
+    //   425	43	7	localIOException3	IOException
+    //   475	1	7	localException	Exception
+    //   79	384	8	localObject	Object
+    // Exception table:
+    //   from	to	target	type
+    //   228	239	254	java/io/IOException
+    //   32	49	371	java/io/IOException
+    //   23	32	425	java/io/IOException
+    //   32	49	475	java/lang/Exception
   }
   
   public int read(byte[] paramArrayOfByte, int paramInt1, int paramInt2)
@@ -709,7 +806,7 @@ public class DefaultHttpDataSource
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.thirdparties.httpclient.DefaultHttpDataSource
  * JD-Core Version:    0.7.0.1
  */

@@ -109,12 +109,76 @@ public class EmoticonPackage
   
   public String toString()
   {
-    return "EmoticonPackage [epId=" + this.epId + ", wordingId=" + this.wordingId + ", childEpId=" + this.childEpId + ", minQQVersion=" + this.minQQVersion + ", name=" + this.name + ", mark=" + this.mark + ", type=" + this.type + ", author=" + this.author + ", expiretime=" + this.expiretime + ", status=" + this.status + ", hasSound=" + this.hasSound + ", jobType=" + this.jobType + ", kinId=" + this.kinId + ", valid=" + this.valid + ", downloadCount=" + this.downloadCount + ", mobileFeetype=" + this.mobileFeetype + ", isRecommendation=" + this.isRecommendation + ", isMagicFaceDownloading=" + this.isMagicFaceDownloading + ", firstEmotionId=" + this.firstEmotionId + ", upperLeftLable=" + this.upperLeftLable + ", localVersion=" + this.localVersion + ", latestVersion=" + this.latestVersion + ", jsonVersion=" + this.jsonVersion + ", updateFlag=" + this.updateFlag + ", updateTip=" + this.updateTip + ", hasReadUpdatePage=" + this.hasReadUpdatePage + ", rscType=" + this.rscType + ", supportSize=" + this.supportSize + ", isAPNG = " + this.isAPNG + "， aio =" + this.aio + ", kandian = " + this.kandian + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("EmoticonPackage [epId=");
+    localStringBuilder.append(this.epId);
+    localStringBuilder.append(", wordingId=");
+    localStringBuilder.append(this.wordingId);
+    localStringBuilder.append(", childEpId=");
+    localStringBuilder.append(this.childEpId);
+    localStringBuilder.append(", minQQVersion=");
+    localStringBuilder.append(this.minQQVersion);
+    localStringBuilder.append(", name=");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append(", mark=");
+    localStringBuilder.append(this.mark);
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", author=");
+    localStringBuilder.append(this.author);
+    localStringBuilder.append(", expiretime=");
+    localStringBuilder.append(this.expiretime);
+    localStringBuilder.append(", status=");
+    localStringBuilder.append(this.status);
+    localStringBuilder.append(", hasSound=");
+    localStringBuilder.append(this.hasSound);
+    localStringBuilder.append(", jobType=");
+    localStringBuilder.append(this.jobType);
+    localStringBuilder.append(", kinId=");
+    localStringBuilder.append(this.kinId);
+    localStringBuilder.append(", valid=");
+    localStringBuilder.append(this.valid);
+    localStringBuilder.append(", downloadCount=");
+    localStringBuilder.append(this.downloadCount);
+    localStringBuilder.append(", mobileFeetype=");
+    localStringBuilder.append(this.mobileFeetype);
+    localStringBuilder.append(", isRecommendation=");
+    localStringBuilder.append(this.isRecommendation);
+    localStringBuilder.append(", isMagicFaceDownloading=");
+    localStringBuilder.append(this.isMagicFaceDownloading);
+    localStringBuilder.append(", firstEmotionId=");
+    localStringBuilder.append(this.firstEmotionId);
+    localStringBuilder.append(", upperLeftLable=");
+    localStringBuilder.append(this.upperLeftLable);
+    localStringBuilder.append(", localVersion=");
+    localStringBuilder.append(this.localVersion);
+    localStringBuilder.append(", latestVersion=");
+    localStringBuilder.append(this.latestVersion);
+    localStringBuilder.append(", jsonVersion=");
+    localStringBuilder.append(this.jsonVersion);
+    localStringBuilder.append(", updateFlag=");
+    localStringBuilder.append(this.updateFlag);
+    localStringBuilder.append(", updateTip=");
+    localStringBuilder.append(this.updateTip);
+    localStringBuilder.append(", hasReadUpdatePage=");
+    localStringBuilder.append(this.hasReadUpdatePage);
+    localStringBuilder.append(", rscType=");
+    localStringBuilder.append(this.rscType);
+    localStringBuilder.append(", supportSize=");
+    localStringBuilder.append(this.supportSize);
+    localStringBuilder.append(", isAPNG = ");
+    localStringBuilder.append(this.isAPNG);
+    localStringBuilder.append("， aio =");
+    localStringBuilder.append(this.aio);
+    localStringBuilder.append(", kandian = ");
+    localStringBuilder.append(this.kandian);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.EmoticonPackage
  * JD-Core Version:    0.7.0.1
  */

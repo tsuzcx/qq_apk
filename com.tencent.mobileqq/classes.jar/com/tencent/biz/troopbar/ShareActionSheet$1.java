@@ -16,22 +16,17 @@ final class ShareActionSheet$1
     if (!TextUtils.equals(this.a, paramBaseResp.transaction)) {
       return;
     }
-    switch (paramBaseResp.errCode)
-    {
-    default: 
-      QRUtils.a(1, 2131719291);
+    if (paramBaseResp.errCode != 0) {
+      QRUtils.a(1, 2131719009);
+    } else {
+      QRUtils.a(2, 2131719027);
     }
-    for (;;)
-    {
-      WXShareHelper.a().b(this);
-      return;
-      QRUtils.a(2, 2131719309);
-    }
+    WXShareHelper.a().b(this);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troopbar.ShareActionSheet.1
  * JD-Core Version:    0.7.0.1
  */

@@ -7,23 +7,27 @@ final class dn$a<T>
   
   public final T a(fe paramfe)
   {
-    if (this.a == null) {
-      throw new IllegalStateException();
+    ee localee = this.a;
+    if (localee != null) {
+      return localee.a(paramfe);
     }
-    return this.a.a(paramfe);
+    throw new IllegalStateException();
   }
   
   public final void a(fg paramfg, T paramT)
   {
-    if (this.a == null) {
-      throw new IllegalStateException();
+    ee localee = this.a;
+    if (localee != null)
+    {
+      localee.a(paramfg, paramT);
+      return;
     }
-    this.a.a(paramfg, paramT);
+    throw new IllegalStateException();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.dn.a
  * JD-Core Version:    0.7.0.1
  */

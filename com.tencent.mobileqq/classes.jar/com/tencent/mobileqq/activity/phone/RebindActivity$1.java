@@ -2,16 +2,16 @@ package com.tencent.mobileqq.activity.phone;
 
 import android.content.Intent;
 import android.os.Bundle;
-import com.tencent.mobileqq.phonecontact.ContactBindObserver;
+import com.tencent.mobileqq.phonecontact.observer.ContactBindObserver;
 
 class RebindActivity$1
   extends ContactBindObserver
 {
   RebindActivity$1(RebindActivity paramRebindActivity) {}
   
-  public void onRebindMobile(boolean paramBoolean, Bundle paramBundle)
+  protected void onRebindMobile(boolean paramBoolean, Bundle paramBundle)
   {
-    this.a.b();
+    this.a.dismissProgressDialog();
     if (paramBoolean)
     {
       paramBundle = new Intent(this.a, BindVerifyActivity.class);
@@ -29,12 +29,12 @@ class RebindActivity$1
       this.a.startActivityForResult(paramBundle, 1);
       return;
     }
-    this.a.a(2131718550);
+    this.a.showToast(2131718218);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.phone.RebindActivity.1
  * JD-Core Version:    0.7.0.1
  */

@@ -20,32 +20,36 @@ import org.json.JSONObject;
 public class FilterManager
   implements OnScanListener
 {
-  private static volatile FilterManager jdField_a_of_type_ComTencentQqprotectQsecFilterManager = null;
+  private static volatile FilterManager jdField_a_of_type_ComTencentQqprotectQsecFilterManager;
   private static String jdField_a_of_type_JavaLangString = "qp_fm_config";
   private static String b = "_last_time";
   private Map<String, Filter> jdField_a_of_type_JavaUtilMap = new HashMap();
   
   private long a(String paramString, long paramLong)
   {
-    long l = -1L;
     SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(jdField_a_of_type_JavaLangString, 0);
-    if (localSharedPreferences != null) {
-      l = localSharedPreferences.getLong(paramString + b, paramLong);
+    if (localSharedPreferences != null)
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(b);
+      return localSharedPreferences.getLong(localStringBuilder.toString(), paramLong);
     }
-    return l;
+    return -1L;
   }
   
   public static FilterManager a()
   {
-    if (jdField_a_of_type_ComTencentQqprotectQsecFilterManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentQqprotectQsecFilterManager == null) {
-        jdField_a_of_type_ComTencentQqprotectQsecFilterManager = new FilterManager();
+    if (jdField_a_of_type_ComTencentQqprotectQsecFilterManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentQqprotectQsecFilterManager == null) {
+          jdField_a_of_type_ComTencentQqprotectQsecFilterManager = new FilterManager();
+        }
       }
-      return jdField_a_of_type_ComTencentQqprotectQsecFilterManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentQqprotectQsecFilterManager;
   }
   
   private void a(String paramString)
@@ -59,14 +63,17 @@ public class FilterManager
   
   private boolean a(String paramString, long paramLong)
   {
-    boolean bool = false;
-    SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences(jdField_a_of_type_JavaLangString, 0);
-    if (localSharedPreferences != null)
+    Object localObject = BaseApplication.getContext().getSharedPreferences(jdField_a_of_type_JavaLangString, 0);
+    if (localObject != null)
     {
-      localSharedPreferences.edit().putLong(paramString + b, paramLong).commit();
-      bool = true;
+      localObject = ((SharedPreferences)localObject).edit();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(paramString);
+      localStringBuilder.append(b);
+      ((SharedPreferences.Editor)localObject).putLong(localStringBuilder.toString(), paramLong).commit();
+      return true;
     }
-    return bool;
+    return false;
   }
   
   public Filter a(String paramString)
@@ -76,11 +83,10 @@ public class FilterManager
   
   public IScanner a(String paramString)
   {
-    PackageScanner localPackageScanner = null;
     if (paramString.equalsIgnoreCase("App")) {
-      localPackageScanner = new PackageScanner(this);
+      return new PackageScanner(this);
     }
-    return localPackageScanner;
+    return null;
   }
   
   public void a()
@@ -94,10 +100,14 @@ public class FilterManager
       {
         long l2 = new Date().getTime();
         Filter localFilter = a((String)localObject);
-        if ((localFilter != null) && (l2 - l1 < localFilter.a() * 1000L))
+        if (localFilter != null)
         {
-          QLog.d("QSFM", 1, String.format("scan not start: %s:%d-%d=%d:%d", new Object[] { localObject, Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l2 - l1), Long.valueOf(localFilter.a() * 1000L) }));
-          continue;
+          long l3 = l2 - l1;
+          if (l3 < localFilter.a() * 1000L)
+          {
+            QLog.d("QSFM", 1, String.format("scan not start: %s:%d-%d=%d:%d", new Object[] { localObject, Long.valueOf(l2), Long.valueOf(l1), Long.valueOf(l3), Long.valueOf(localFilter.a() * 1000L) }));
+            continue;
+          }
         }
       }
       localObject = a((String)localObject);
@@ -119,17 +129,14 @@ public class FilterManager
     {
       this.jdField_a_of_type_JavaUtilMap.clear();
       paramArrayOfByte = new JSONArray(new String(paramArrayOfByte));
-      if (paramArrayOfByte != null)
+      int i = 0;
+      while (i < paramArrayOfByte.length())
       {
-        int i = 0;
-        while (i < paramArrayOfByte.length())
-        {
-          JSONObject localJSONObject = paramArrayOfByte.getJSONObject(i);
-          if ((localJSONObject != null) && (localJSONObject.has("type"))) {
-            this.jdField_a_of_type_JavaUtilMap.put(localJSONObject.getString("type"), new Filter(localJSONObject));
-          }
-          i += 1;
+        JSONObject localJSONObject = paramArrayOfByte.getJSONObject(i);
+        if ((localJSONObject != null) && (localJSONObject.has("type"))) {
+          this.jdField_a_of_type_JavaUtilMap.put(localJSONObject.getString("type"), new Filter(localJSONObject));
         }
+        i += 1;
       }
       return true;
     }
@@ -152,15 +159,15 @@ public class FilterManager
         {
           QSecRptHelper localQSecRptHelper = new QSecRptHelper();
           Iterator localIterator = localFilter.a().iterator();
-          if (localIterator.hasNext())
+          while (localIterator.hasNext())
           {
             paramString = FieldHelper.b(paramObject, (String)localIterator.next());
-            if (paramString != null) {}
-            for (paramString = paramString.toString();; paramString = "")
-            {
-              localQSecRptHelper.a(paramString);
-              break;
+            if (paramString != null) {
+              paramString = paramString.toString();
+            } else {
+              paramString = "";
             }
+            localQSecRptHelper.a(paramString);
           }
           QSecRptController.a(localQSecRptHelper.toString(), localFilter.a());
         }
@@ -176,7 +183,7 @@ public class FilterManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.FilterManager
  * JD-Core Version:    0.7.0.1
  */

@@ -47,31 +47,37 @@ public final class stSimpleComment
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.id != null) {
-      paramJceOutputStream.write(this.id, 0);
+    Object localObject = this.id;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 0);
     }
-    if (this.wording != null) {
-      paramJceOutputStream.write(this.wording, 1);
+    localObject = this.wording;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.posterId != null) {
-      paramJceOutputStream.write(this.posterId, 2);
+    localObject = this.posterId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.poster != null) {
-      paramJceOutputStream.write(this.poster, 3);
+    localObject = this.poster;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 3);
     }
     paramJceOutputStream.write(this.dingNum, 4);
     paramJceOutputStream.write(this.isDing, 5);
-    if (this.feedId != null) {
-      paramJceOutputStream.write(this.feedId, 6);
+    localObject = this.feedId;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 6);
     }
-    if (this.dingSchema != null) {
-      paramJceOutputStream.write(this.dingSchema, 7);
+    localObject = this.dingSchema;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 7);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     UserGrowth.stSimpleComment
  * JD-Core Version:    0.7.0.1
  */

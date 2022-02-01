@@ -1,15 +1,18 @@
 package com.tencent.mobileqq.apollo.player.manager;
 
 import android.text.TextUtils;
-import com.tencent.mobileqq.apollo.ApolloTextureView;
-import com.tencent.mobileqq.apollo.api.channel.IRequestHandler;
-import com.tencent.mobileqq.apollo.api.handler.impl.ApolloExtensionObserverImpl;
-import com.tencent.mobileqq.apollo.api.listener.OnApolloViewListener;
-import com.tencent.mobileqq.apollo.api.player.action.CMSAction;
-import com.tencent.mobileqq.apollo.api.script.SpriteTaskParam;
+import com.tencent.mobileqq.apollo.handler.ApolloExtensionObserver;
 import com.tencent.mobileqq.apollo.player.ICMSPlayerListener;
+import com.tencent.mobileqq.apollo.player.action.CMSAction;
+import com.tencent.mobileqq.apollo.screenshot.ApolloScreenshotController;
 import com.tencent.mobileqq.apollo.screenshot.IApolloActionRecordListener;
 import com.tencent.mobileqq.apollo.script.SpriteScriptManager;
+import com.tencent.mobileqq.apollo.script.SpriteTaskParam;
+import com.tencent.mobileqq.cmshow.engine.ICMShowEngine;
+import com.tencent.mobileqq.cmshow.engine.render.IRecordFrameListener;
+import com.tencent.mobileqq.cmshow.engine.render.IRenderService;
+import com.tencent.mobileqq.cmshow.engine.render.ISurfaceStateListener;
+import com.tencent.mobileqq.cmshow.engine.script.plugin.BornPlayerPlugin;
 import java.util.LinkedHashSet;
 import java.util.Set;
 import kotlin.Lazy;
@@ -21,20 +24,24 @@ import kotlin.jvm.functions.Function1;
 import kotlin.jvm.internal.Intrinsics;
 import org.jetbrains.annotations.NotNull;
 
-@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/manager/CMSBornPlayer$CMSActionContext;", "", "action", "Lcom/tencent/mobileqq/apollo/api/player/action/CMSAction;", "ssm", "Lcom/tencent/mobileqq/apollo/script/SpriteScriptManager;", "view", "Lcom/tencent/mobileqq/apollo/ApolloTextureView;", "width", "", "height", "listener", "Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;", "start", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "context", "", "(Lcom/tencent/mobileqq/apollo/api/player/action/CMSAction;Lcom/tencent/mobileqq/apollo/script/SpriteScriptManager;Lcom/tencent/mobileqq/apollo/ApolloTextureView;IILcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;Lkotlin/jvm/functions/Function1;)V", "getAction", "()Lcom/tencent/mobileqq/apollo/api/player/action/CMSAction;", "setAction", "(Lcom/tencent/mobileqq/apollo/api/player/action/CMSAction;)V", "cacheUins", "", "", "getCacheUins", "()Ljava/util/Set;", "cmdHandler", "Lcom/tencent/mobileqq/apollo/api/channel/IRequestHandler;", "getCmdHandler", "()Lcom/tencent/mobileqq/apollo/api/channel/IRequestHandler;", "cmdHandler$delegate", "Lkotlin/Lazy;", "dressChangeListener", "Lcom/tencent/mobileqq/apollo/api/handler/impl/ApolloExtensionObserverImpl;", "getDressChangeListener", "()Lcom/tencent/mobileqq/apollo/api/handler/impl/ApolloExtensionObserverImpl;", "dressChangeListener$delegate", "getHeight", "()I", "getListener", "()Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;", "setListener", "(Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;)V", "recordListener", "Lcom/tencent/mobileqq/apollo/screenshot/IApolloActionRecordListener;", "getRecordListener", "()Lcom/tencent/mobileqq/apollo/screenshot/IApolloActionRecordListener;", "setRecordListener", "(Lcom/tencent/mobileqq/apollo/screenshot/IApolloActionRecordListener;)V", "getSsm", "()Lcom/tencent/mobileqq/apollo/script/SpriteScriptManager;", "getStart", "()Lkotlin/jvm/functions/Function1;", "timeoutRunnable", "Ljava/lang/Runnable;", "getTimeoutRunnable", "()Ljava/lang/Runnable;", "setTimeoutRunnable", "(Ljava/lang/Runnable;)V", "getView", "()Lcom/tencent/mobileqq/apollo/ApolloTextureView;", "viewListener", "Lcom/tencent/mobileqq/apollo/api/listener/OnApolloViewListener;", "getViewListener", "()Lcom/tencent/mobileqq/apollo/api/listener/OnApolloViewListener;", "viewListener$delegate", "getWidth", "addCacheUins", "reset", "AQQLiteApp_release"}, k=1, mv={1, 1, 16})
+@Metadata(bv={1, 0, 3}, d1={""}, d2={"Lcom/tencent/mobileqq/apollo/player/manager/CMSBornPlayer$CMSActionContext;", "", "action", "Lcom/tencent/mobileqq/apollo/player/action/CMSAction;", "ssm", "Lcom/tencent/mobileqq/apollo/script/SpriteScriptManager;", "engine", "Lcom/tencent/mobileqq/cmshow/engine/ICMShowEngine;", "width", "", "height", "listener", "Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;", "start", "Lkotlin/Function1;", "Lkotlin/ParameterName;", "name", "context", "", "(Lcom/tencent/mobileqq/apollo/player/action/CMSAction;Lcom/tencent/mobileqq/apollo/script/SpriteScriptManager;Lcom/tencent/mobileqq/cmshow/engine/ICMShowEngine;IILcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;Lkotlin/jvm/functions/Function1;)V", "getAction", "()Lcom/tencent/mobileqq/apollo/player/action/CMSAction;", "setAction", "(Lcom/tencent/mobileqq/apollo/player/action/CMSAction;)V", "cacheUins", "", "", "getCacheUins", "()Ljava/util/Set;", "cmdPlugin", "Lcom/tencent/mobileqq/cmshow/engine/script/plugin/BornPlayerPlugin;", "getCmdPlugin", "()Lcom/tencent/mobileqq/cmshow/engine/script/plugin/BornPlayerPlugin;", "dressChangeListener", "Lcom/tencent/mobileqq/apollo/handler/ApolloExtensionObserver;", "getDressChangeListener", "()Lcom/tencent/mobileqq/apollo/handler/ApolloExtensionObserver;", "dressChangeListener$delegate", "Lkotlin/Lazy;", "getEngine", "()Lcom/tencent/mobileqq/cmshow/engine/ICMShowEngine;", "getHeight", "()I", "getListener", "()Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;", "setListener", "(Lcom/tencent/mobileqq/apollo/player/ICMSPlayerListener;)V", "recordListener", "Lcom/tencent/mobileqq/apollo/screenshot/IApolloActionRecordListener;", "getRecordListener", "()Lcom/tencent/mobileqq/apollo/screenshot/IApolloActionRecordListener;", "setRecordListener", "(Lcom/tencent/mobileqq/apollo/screenshot/IApolloActionRecordListener;)V", "screenshotController", "Lcom/tencent/mobileqq/apollo/screenshot/ApolloScreenshotController;", "getScreenshotController", "()Lcom/tencent/mobileqq/apollo/screenshot/ApolloScreenshotController;", "getSsm", "()Lcom/tencent/mobileqq/apollo/script/SpriteScriptManager;", "getStart", "()Lkotlin/jvm/functions/Function1;", "timeoutRunnable", "Ljava/lang/Runnable;", "getTimeoutRunnable", "()Ljava/lang/Runnable;", "setTimeoutRunnable", "(Ljava/lang/Runnable;)V", "viewListener", "Lcom/tencent/mobileqq/cmshow/engine/render/ISurfaceStateListener;", "getViewListener", "()Lcom/tencent/mobileqq/cmshow/engine/render/ISurfaceStateListener;", "viewListener$delegate", "getWidth", "addCacheUins", "reset", "cmshow_impl_release"}, k=1, mv={1, 1, 16})
 final class CMSBornPlayer$CMSActionContext
 {
   private final int jdField_a_of_type_Int;
   @NotNull
-  private final ApolloTextureView jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
-  @NotNull
-  private CMSAction jdField_a_of_type_ComTencentMobileqqApolloApiPlayerActionCMSAction;
-  @NotNull
   private ICMSPlayerListener jdField_a_of_type_ComTencentMobileqqApolloPlayerICMSPlayerListener;
+  @NotNull
+  private CMSAction jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction;
+  @NotNull
+  private final ApolloScreenshotController jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloScreenshotController;
   @NotNull
   public IApolloActionRecordListener a;
   @NotNull
   private final SpriteScriptManager jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptManager;
+  @NotNull
+  private final ICMShowEngine jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+  @NotNull
+  private final BornPlayerPlugin jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginBornPlayerPlugin;
   @NotNull
   public Runnable a;
   @NotNull
@@ -46,58 +53,51 @@ final class CMSBornPlayer$CMSActionContext
   private final int jdField_b_of_type_Int;
   @NotNull
   private final Lazy jdField_b_of_type_KotlinLazy;
-  @NotNull
-  private final Lazy c;
   
-  public CMSBornPlayer$CMSActionContext(@NotNull CMSAction paramCMSAction, @NotNull SpriteScriptManager paramSpriteScriptManager, @NotNull ApolloTextureView paramApolloTextureView, int paramInt1, int paramInt2, @NotNull ICMSPlayerListener paramICMSPlayerListener, @NotNull Function1<? super CMSActionContext, Unit> paramFunction1)
+  public CMSBornPlayer$CMSActionContext(@NotNull CMSAction paramCMSAction, @NotNull SpriteScriptManager paramSpriteScriptManager, @NotNull ICMShowEngine paramICMShowEngine, int paramInt1, int paramInt2, @NotNull ICMSPlayerListener paramICMSPlayerListener, @NotNull Function1<? super CMSActionContext, Unit> paramFunction1)
   {
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiPlayerActionCMSAction = paramCMSAction;
+    this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction = paramCMSAction;
     this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptManager = paramSpriteScriptManager;
-    this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView = paramApolloTextureView;
+    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine = paramICMShowEngine;
     this.jdField_a_of_type_Int = paramInt1;
     this.jdField_b_of_type_Int = paramInt2;
     this.jdField_a_of_type_ComTencentMobileqqApolloPlayerICMSPlayerListener = paramICMSPlayerListener;
     this.jdField_a_of_type_KotlinJvmFunctionsFunction1 = paramFunction1;
     this.jdField_a_of_type_JavaUtilSet = ((Set)new LinkedHashSet());
     this.jdField_a_of_type_KotlinLazy = LazyKt.lazy((Function0)new CMSBornPlayer.CMSActionContext.viewListener.2(this));
-    this.jdField_b_of_type_KotlinLazy = LazyKt.lazy((Function0)new CMSBornPlayer.CMSActionContext.cmdHandler.2(this));
-    this.c = LazyKt.lazy((Function0)new CMSBornPlayer.CMSActionContext.dressChangeListener.2(this));
+    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginBornPlayerPlugin = new BornPlayerPlugin(this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction, this.jdField_a_of_type_ComTencentMobileqqApolloPlayerICMSPlayerListener);
+    this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloScreenshotController = new ApolloScreenshotController(this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine.a());
+    this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine.a().a((IRecordFrameListener)new CMSBornPlayer.CMSActionContext.1(this));
+    this.jdField_b_of_type_KotlinLazy = LazyKt.lazy((Function0)new CMSBornPlayer.CMSActionContext.dressChangeListener.2(this));
+  }
+  
+  public final int a()
+  {
+    return this.jdField_a_of_type_Int;
   }
   
   @NotNull
-  public final ApolloTextureView a()
+  public final ApolloExtensionObserver a()
   {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloApolloTextureView;
-  }
-  
-  @NotNull
-  public final IRequestHandler a()
-  {
-    return (IRequestHandler)this.jdField_b_of_type_KotlinLazy.getValue();
-  }
-  
-  @NotNull
-  public final ApolloExtensionObserverImpl a()
-  {
-    return (ApolloExtensionObserverImpl)this.c.getValue();
-  }
-  
-  @NotNull
-  public final OnApolloViewListener a()
-  {
-    return (OnApolloViewListener)this.jdField_a_of_type_KotlinLazy.getValue();
-  }
-  
-  @NotNull
-  public final CMSAction a()
-  {
-    return this.jdField_a_of_type_ComTencentMobileqqApolloApiPlayerActionCMSAction;
+    return (ApolloExtensionObserver)this.jdField_b_of_type_KotlinLazy.getValue();
   }
   
   @NotNull
   public final ICMSPlayerListener a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqApolloPlayerICMSPlayerListener;
+  }
+  
+  @NotNull
+  public final CMSAction a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction;
+  }
+  
+  @NotNull
+  public final ApolloScreenshotController a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotApolloScreenshotController;
   }
   
   @NotNull
@@ -114,6 +114,24 @@ final class CMSBornPlayer$CMSActionContext
   public final SpriteScriptManager a()
   {
     return this.jdField_a_of_type_ComTencentMobileqqApolloScriptSpriteScriptManager;
+  }
+  
+  @NotNull
+  public final ICMShowEngine a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineICMShowEngine;
+  }
+  
+  @NotNull
+  public final ISurfaceStateListener a()
+  {
+    return (ISurfaceStateListener)this.jdField_a_of_type_KotlinLazy.getValue();
+  }
+  
+  @NotNull
+  public final BornPlayerPlugin a()
+  {
+    return this.jdField_a_of_type_ComTencentMobileqqCmshowEngineScriptPluginBornPlayerPlugin;
   }
   
   @NotNull
@@ -141,21 +159,13 @@ final class CMSBornPlayer$CMSActionContext
   public final void a()
   {
     this.jdField_a_of_type_JavaLangRunnable = ((Runnable)new CMSBornPlayer.CMSActionContext.reset.1(this));
-    CMSAction localCMSAction = this.jdField_a_of_type_ComTencentMobileqqApolloApiPlayerActionCMSAction;
-    int i = this.jdField_a_of_type_Int;
-    int j = this.jdField_b_of_type_Int;
+    CMSAction localCMSAction = this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction;
     ICMSPlayerListener localICMSPlayerListener = this.jdField_a_of_type_ComTencentMobileqqApolloPlayerICMSPlayerListener;
     Runnable localRunnable = this.jdField_a_of_type_JavaLangRunnable;
     if (localRunnable == null) {
       Intrinsics.throwUninitializedPropertyAccessException("timeoutRunnable");
     }
-    this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener = ((IApolloActionRecordListener)new CMSBornPlayer.CMSRecordListener(localCMSAction, i, j, localICMSPlayerListener, localRunnable));
-  }
-  
-  public final void a(@NotNull CMSAction paramCMSAction)
-  {
-    Intrinsics.checkParameterIsNotNull(paramCMSAction, "<set-?>");
-    this.jdField_a_of_type_ComTencentMobileqqApolloApiPlayerActionCMSAction = paramCMSAction;
+    this.jdField_a_of_type_ComTencentMobileqqApolloScreenshotIApolloActionRecordListener = ((IApolloActionRecordListener)new CMSBornPlayer.CMSRecordListener(localCMSAction, localICMSPlayerListener, localRunnable));
   }
   
   public final void a(@NotNull ICMSPlayerListener paramICMSPlayerListener)
@@ -164,9 +174,20 @@ final class CMSBornPlayer$CMSActionContext
     this.jdField_a_of_type_ComTencentMobileqqApolloPlayerICMSPlayerListener = paramICMSPlayerListener;
   }
   
+  public final void a(@NotNull CMSAction paramCMSAction)
+  {
+    Intrinsics.checkParameterIsNotNull(paramCMSAction, "<set-?>");
+    this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction = paramCMSAction;
+  }
+  
+  public final int b()
+  {
+    return this.jdField_b_of_type_Int;
+  }
+  
   public final void b()
   {
-    String str = this.jdField_a_of_type_ComTencentMobileqqApolloApiPlayerActionCMSAction.a().a;
+    String str = this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction.a().a;
     Set localSet;
     if ((!TextUtils.isEmpty((CharSequence)str)) && (!this.jdField_a_of_type_JavaUtilSet.contains(str)))
     {
@@ -174,7 +195,7 @@ final class CMSBornPlayer$CMSActionContext
       Intrinsics.checkExpressionValueIsNotNull(str, "senderUin");
       localSet.add(str);
     }
-    str = this.jdField_a_of_type_ComTencentMobileqqApolloApiPlayerActionCMSAction.a().b;
+    str = this.jdField_a_of_type_ComTencentMobileqqApolloPlayerActionCMSAction.a().b;
     if ((!TextUtils.isEmpty((CharSequence)str)) && (!this.jdField_a_of_type_JavaUtilSet.contains(str)))
     {
       localSet = this.jdField_a_of_type_JavaUtilSet;
@@ -185,7 +206,7 @@ final class CMSBornPlayer$CMSActionContext
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.player.manager.CMSBornPlayer.CMSActionContext
  * JD-Core Version:    0.7.0.1
  */

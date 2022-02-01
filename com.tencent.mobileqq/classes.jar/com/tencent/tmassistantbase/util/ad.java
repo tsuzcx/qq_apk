@@ -7,15 +7,18 @@ final class ad
 {
   public void run()
   {
-    if ((ab.h == null) || (!ab.g()) || (ab.t.get())) {
-      return;
+    if ((ab.h != null) && (ab.g()))
+    {
+      if (ab.t.get()) {
+        return;
+      }
+      new ae(this, "TMLogInitThread").start();
     }
-    new ae(this, "TMLogInitThread").start();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tmassistantbase.util.ad
  * JD-Core Version:    0.7.0.1
  */

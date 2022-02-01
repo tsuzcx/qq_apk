@@ -19,48 +19,46 @@ public class PackageScanner
   
   private void b()
   {
-    if (this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = true;
-    } while (this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener == null);
-    this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener.a(a(), null);
+    }
+    this.jdField_a_of_type_Boolean = true;
+    OnScanListener localOnScanListener = this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener;
+    if (localOnScanListener != null) {
+      localOnScanListener.a(a(), null);
+    }
   }
   
   private void c()
   {
     Object localObject = BaseApplication.getContext().getPackageManager();
-    if (localObject != null) {
-      localObject = ((PackageManager)localObject).getInstalledPackages(8192).iterator();
-    }
-    for (;;)
+    if (localObject != null)
     {
-      PackageInfo localPackageInfo;
-      if (((Iterator)localObject).hasNext())
+      localObject = ((PackageManager)localObject).getInstalledPackages(8192).iterator();
+      while (((Iterator)localObject).hasNext())
       {
-        localPackageInfo = (PackageInfo)((Iterator)localObject).next();
-        if (this.jdField_a_of_type_Boolean) {}
-      }
-      else
-      {
-        return;
-      }
-      if (this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener != null) {
-        this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener.b(a(), localPackageInfo);
+        PackageInfo localPackageInfo = (PackageInfo)((Iterator)localObject).next();
+        if (!this.jdField_a_of_type_Boolean) {
+          return;
+        }
+        OnScanListener localOnScanListener = this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener;
+        if (localOnScanListener != null) {
+          localOnScanListener.b(a(), localPackageInfo);
+        }
       }
     }
   }
   
   private void d()
   {
-    if (!this.jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (!this.jdField_a_of_type_Boolean) {
       return;
-      this.jdField_a_of_type_Boolean = false;
-    } while (this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener == null);
-    this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener.c(a(), null);
+    }
+    this.jdField_a_of_type_Boolean = false;
+    OnScanListener localOnScanListener = this.jdField_a_of_type_ComTencentQqprotectQsecOnScanListener;
+    if (localOnScanListener != null) {
+      localOnScanListener.c(a(), null);
+    }
   }
   
   public String a()
@@ -89,7 +87,7 @@ public class PackageScanner
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.PackageScanner
  * JD-Core Version:    0.7.0.1
  */

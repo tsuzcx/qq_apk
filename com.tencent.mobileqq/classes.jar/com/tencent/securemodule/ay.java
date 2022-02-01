@@ -23,8 +23,12 @@ public class ay
   
   public static void a(Context paramContext, int paramInt)
   {
-    String str = "危险！QQ安全登录发现" + paramInt + "个病毒";
-    a(paramContext, 17301642, str, str, "");
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("危险！QQ安全登录发现");
+    ((StringBuilder)localObject).append(paramInt);
+    ((StringBuilder)localObject).append("个病毒");
+    localObject = ((StringBuilder)localObject).toString();
+    a(paramContext, 17301642, (String)localObject, (String)localObject, "");
   }
   
   public static void a(Context paramContext, int paramInt, String paramString1, String paramString2, String paramString3)
@@ -55,7 +59,6 @@ public class ay
   public static void a(Context paramContext, Bundle paramBundle)
   {
     PendingIntent localPendingIntent = PendingIntent.getActivity(paramContext, 0, new Intent(), 134217728);
-    String str = "";
     if (paramBundle != null)
     {
       long l1 = paramBundle.getLong("key_total");
@@ -66,10 +69,18 @@ public class ay
       paramBundle.append(az.a(paramContext, l2));
       paramBundle.append("/");
       paramBundle.append(az.a(paramContext, l1));
-      paramBundle.append("    " + i + "%");
-      str = paramBundle.toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("    ");
+      localStringBuilder.append(i);
+      localStringBuilder.append("%");
+      paramBundle.append(localStringBuilder.toString());
+      paramBundle = paramBundle.toString();
     }
-    paramBundle = b(paramContext, 17301633, null, "腾讯手机管家", str, localPendingIntent);
+    else
+    {
+      paramBundle = "";
+    }
+    paramBundle = b(paramContext, 17301633, null, "腾讯手机管家", paramBundle, localPendingIntent);
     if (paramBundle == null) {
       return;
     }
@@ -85,7 +96,11 @@ public class ay
     ((Intent)localObject).setAction("1000041");
     ((Intent)localObject).putExtra("data", paramAppInfo);
     localObject = PendingIntent.getActivity(paramContext, 0, (Intent)localObject, 134217728);
-    paramAppInfo = b(paramContext, 17301642, null, "QQ安全登录发现病毒", "“" + paramAppInfo.getSoftName() + "应用”已被病毒感染", (PendingIntent)localObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("“");
+    localStringBuilder.append(paramAppInfo.getSoftName());
+    localStringBuilder.append("应用”已被病毒感染");
+    paramAppInfo = b(paramContext, 17301642, null, "QQ安全登录发现病毒", localStringBuilder.toString(), (PendingIntent)localObject);
     if (paramAppInfo == null) {
       return;
     }
@@ -97,48 +112,44 @@ public class ay
   {
     try
     {
-      Object localObject2 = Class.forName("android.support.v4.app.NotificationCompat$Builder");
-      try
-      {
-        localObject1 = ((Class)localObject2).getConstructor(new Class[] { Context.class, String.class }).newInstance(new Object[] { paramContext, g(paramContext) });
-        paramContext = (Context)localObject1;
-      }
-      catch (Exception localException)
-      {
-        for (;;)
-        {
-          try
-          {
-            Object localObject1;
-            Method localMethod1;
-            Method localMethod2;
-            paramContext.icon = paramInt;
-            paramContext.when = System.currentTimeMillis();
-            paramContext.tickerText = paramString1;
-            return paramContext;
-          }
-          catch (Exception paramString1)
-          {
-            continue;
-          }
-          localException = localException;
-          paramContext = ((Class)localObject2).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
-        }
-      }
-      localObject1 = ((Class)localObject2).getDeclaredMethod("setContentTitle", new Class[] { CharSequence.class });
-      localMethod1 = ((Class)localObject2).getDeclaredMethod("setContentText", new Class[] { CharSequence.class });
-      localMethod2 = ((Class)localObject2).getDeclaredMethod("setContentIntent", new Class[] { PendingIntent.class });
-      localObject2 = ((Class)localObject2).getDeclaredMethod("build", new Class[0]);
-      ((Method)localObject1).invoke(paramContext, new Object[] { paramString2 });
-      localMethod1.invoke(paramContext, new Object[] { paramString3 });
-      localMethod2.invoke(paramContext, new Object[] { paramPendingIntent });
-      paramContext = (Notification)((Method)localObject2).invoke(paramContext, new Object[0]);
-      paramString1.printStackTrace();
+      localObject2 = Class.forName("android.support.v4.app.NotificationCompat$Builder");
     }
     catch (Exception paramString1)
     {
+      Object localObject2;
+      Object localObject1;
+      label52:
+      Method localMethod1;
+      Method localMethod2;
       paramContext = null;
     }
+    try
+    {
+      localObject1 = ((Class)localObject2).getConstructor(new Class[] { Context.class, String.class }).newInstance(new Object[] { paramContext, g(paramContext) });
+      paramContext = (Context)localObject1;
+    }
+    catch (Exception localException)
+    {
+      break label52;
+    }
+    paramContext = ((Class)localObject2).getConstructor(new Class[] { Context.class }).newInstance(new Object[] { paramContext });
+    localObject1 = ((Class)localObject2).getDeclaredMethod("setContentTitle", new Class[] { CharSequence.class });
+    localMethod1 = ((Class)localObject2).getDeclaredMethod("setContentText", new Class[] { CharSequence.class });
+    localMethod2 = ((Class)localObject2).getDeclaredMethod("setContentIntent", new Class[] { PendingIntent.class });
+    localObject2 = ((Class)localObject2).getDeclaredMethod("build", new Class[0]);
+    ((Method)localObject1).invoke(paramContext, new Object[] { paramString2 });
+    localMethod1.invoke(paramContext, new Object[] { paramString3 });
+    localMethod2.invoke(paramContext, new Object[] { paramPendingIntent });
+    paramContext = (Notification)((Method)localObject2).invoke(paramContext, new Object[0]);
+    try
+    {
+      paramContext.icon = paramInt;
+      paramContext.when = System.currentTimeMillis();
+      paramContext.tickerText = paramString1;
+      return paramContext;
+    }
+    catch (Exception paramString1) {}
+    paramString1.printStackTrace();
     return paramContext;
   }
   
@@ -177,26 +188,27 @@ public class ay
   
   private static String g(Context paramContext)
   {
+    Object localObject = null;
     try
     {
-      localObject = (NotificationManager)paramContext.getSystemService("notification");
-      paramContext = Class.forName("android.app.NotificationChannel");
-      localObject = (List)NotificationManager.class.getMethod("getNotificationChannels", new Class[0]).invoke(localObject, new Object[0]);
-      if ((localObject == null) || (((List)localObject).size() <= 0)) {
-        break label102;
+      paramContext = (NotificationManager)paramContext.getSystemService("notification");
+      Class localClass = Class.forName("android.app.NotificationChannel");
+      List localList = (List)NotificationManager.class.getMethod("getNotificationChannels", new Class[0]).invoke(paramContext, new Object[0]);
+      paramContext = (Context)localObject;
+      if (localList != null)
+      {
+        paramContext = (Context)localObject;
+        if (localList.size() > 0)
+        {
+          paramContext = localList.get(0);
+          paramContext = (String)localClass.getMethod("getId", new Class[0]).invoke(paramContext, new Object[0]);
+        }
       }
-      localObject = ((List)localObject).get(0);
-      paramContext = (String)paramContext.getMethod("getId", new Class[0]).invoke(localObject, new Object[0]);
     }
     catch (Exception paramContext)
     {
-      for (;;)
-      {
-        Object localObject;
-        paramContext.printStackTrace();
-        label102:
-        paramContext = null;
-      }
+      paramContext.printStackTrace();
+      paramContext = (Context)localObject;
     }
     localObject = paramContext;
     if (paramContext == null) {
@@ -207,7 +219,7 @@ public class ay
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.securemodule.ay
  * JD-Core Version:    0.7.0.1
  */

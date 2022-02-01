@@ -8,19 +8,18 @@ class ZipResDownloadManager$1
   public void run()
   {
     String str = this.a;
-    if (this.this$0.a(str)) {}
-    ZipResEntry localZipResEntry;
-    do
-    {
+    if (this.this$0.a(str)) {
       return;
-      localZipResEntry = ZipResDownloadManager.a(this.this$0, str, -1, null, null);
-    } while (!ZipResDownloadManager.a(this.this$0, str, localZipResEntry));
-    ZipResDownloadManager.a(this.this$0, localZipResEntry);
+    }
+    ZipResEntry localZipResEntry = ZipResDownloadManager.a(this.this$0, str, -1, null, null);
+    if (ZipResDownloadManager.a(this.this$0, str, localZipResEntry)) {
+      ZipResDownloadManager.a(this.this$0, localZipResEntry);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.vipcomponent.util.ZipResDownloadManager.1
  * JD-Core Version:    0.7.0.1
  */

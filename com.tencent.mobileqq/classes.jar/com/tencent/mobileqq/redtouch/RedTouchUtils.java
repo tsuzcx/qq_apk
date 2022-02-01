@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.redtouch;
 
-import android.support.annotation.NonNull;
 import android.text.TextUtils;
+import androidx.annotation.NonNull;
 import com.tencent.mobileqq.pb.PBInt32Field;
 import com.tencent.mobileqq.pb.PBRepeatField;
 import com.tencent.mobileqq.pb.PBRepeatMessageField;
@@ -14,7 +14,6 @@ import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
 import org.json.JSONObject;
-import tencent.im.s2c.msgtype0x210.submsgtype0x89.Submsgtype0x89.NumRedBusiInfo;
 
 public class RedTouchUtils
 {
@@ -52,10 +51,10 @@ public class RedTouchUtils
             return 1;
           }
           j = arrayOfString2.length;
-          if (j <= i) {
-            break;
+          if (j > i) {
+            return -1;
           }
-          return -1;
+          return 0;
         }
       }
       catch (NumberFormatException localNumberFormatException)
@@ -72,7 +71,6 @@ public class RedTouchUtils
   
   public static RedAppInfo a(BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    int j = 0;
     if (paramAppInfo == null)
     {
       if (QLog.isColorLevel()) {
@@ -95,21 +93,23 @@ public class RedTouchUtils
     localRedAppInfo.i(paramAppInfo.push_red_ts.get());
     localRedAppInfo.j(paramAppInfo.mission_level.get());
     localRedAppInfo.k(paramAppInfo.exposure_max.get());
-    Object localObject = new ArrayList();
+    Object localObject1 = new ArrayList();
+    Object localObject2 = paramAppInfo.missions.get();
+    int j = 0;
     int i;
-    if ((paramAppInfo.missions.get() != null) && (paramAppInfo.missions.get().size() > 0))
+    if ((localObject2 != null) && (paramAppInfo.missions.get().size() > 0))
     {
       i = 0;
       while (i < paramAppInfo.missions.get().size())
       {
-        ((ArrayList)localObject).add(paramAppInfo.missions.get().get(i));
+        ((ArrayList)localObject1).add(paramAppInfo.missions.get().get(i));
         i += 1;
       }
     }
-    localRedAppInfo.a((ArrayList)localObject);
-    localObject = new RedDisplayInfo();
+    localRedAppInfo.a((ArrayList)localObject1);
+    localObject1 = new RedDisplayInfo();
     RedTypeInfo localRedTypeInfo = new RedTypeInfo();
-    ArrayList localArrayList = new ArrayList();
+    localObject2 = new ArrayList();
     BusinessInfoCheckUpdate.RedTypeInfo localRedTypeInfo1 = (BusinessInfoCheckUpdate.RedTypeInfo)((BusinessInfoCheckUpdate.RedDisplayInfo)paramAppInfo.red_display_info.get()).tab_display_info.get();
     paramAppInfo = ((BusinessInfoCheckUpdate.RedDisplayInfo)paramAppInfo.red_display_info.get()).red_type_info.get();
     if (localRedTypeInfo1 != null)
@@ -119,7 +119,7 @@ public class RedTouchUtils
       localRedTypeInfo.setRedPriority(localRedTypeInfo1.red_priority.get());
       localRedTypeInfo.setRedType(localRedTypeInfo1.red_type.get());
     }
-    ((RedDisplayInfo)localObject).a(localRedTypeInfo);
+    ((RedDisplayInfo)localObject1).a(localRedTypeInfo);
     if ((paramAppInfo != null) && (paramAppInfo.size() > 0))
     {
       i = j;
@@ -130,12 +130,12 @@ public class RedTouchUtils
         localRedTypeInfo.setRedDesc(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_desc.get());
         localRedTypeInfo.setRedPriority(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_priority.get());
         localRedTypeInfo.setRedType(((BusinessInfoCheckUpdate.RedTypeInfo)paramAppInfo.get(i)).red_type.get());
-        localArrayList.add(localRedTypeInfo);
+        ((ArrayList)localObject2).add(localRedTypeInfo);
         i += 1;
       }
     }
-    ((RedDisplayInfo)localObject).a(localArrayList);
-    localRedAppInfo.a((RedDisplayInfo)localObject);
+    ((RedDisplayInfo)localObject1).a((ArrayList)localObject2);
+    localRedAppInfo.a((RedDisplayInfo)localObject1);
     return localRedAppInfo;
   }
   
@@ -200,60 +200,53 @@ public class RedTouchUtils
   
   public static String a(@NonNull BusinessInfoCheckUpdate.AppInfo paramAppInfo)
   {
-    String str1 = "0";
-    String str2 = paramAppInfo.buffer.get();
-    paramAppInfo = str1;
-    if (!TextUtils.isEmpty(str2)) {}
-    try
-    {
-      paramAppInfo = new JSONObject(str2).getString("ad_id");
-      return paramAppInfo;
-    }
-    catch (Exception paramAppInfo)
-    {
-      QLog.e("RedTouchUtilsgetAdIdFromAppInfo error", 1, paramAppInfo, new Object[0]);
+    paramAppInfo = paramAppInfo.buffer.get();
+    if (!TextUtils.isEmpty(paramAppInfo)) {
+      try
+      {
+        paramAppInfo = new JSONObject(paramAppInfo).getString("ad_id");
+        return paramAppInfo;
+      }
+      catch (Exception paramAppInfo)
+      {
+        QLog.e("RedTouchUtilsgetAdIdFromAppInfo error", 1, paramAppInfo, new Object[0]);
+      }
     }
     return "0";
   }
   
-  public static boolean a(Submsgtype0x89.NumRedBusiInfo paramNumRedBusiInfo)
+  public static boolean a(String paramString1, String paramString2)
   {
-    boolean bool = true;
-    String str = paramNumRedBusiInfo.str_client_ver_begin.get();
-    paramNumRedBusiInfo = paramNumRedBusiInfo.str_client_ver_end.get();
-    if ((str == null) && (paramNumRedBusiInfo == null)) {
+    boolean bool2 = false;
+    if ((paramString1 == null) && (paramString2 == null)) {
       return false;
     }
-    int i = a(str, "8.5.5");
-    int j = a("8.5.5", paramNumRedBusiInfo);
-    if ((i == -1) || (i == 0))
-    {
-      i = 1;
-      if ((j != 1) && (j != 0) && (!paramNumRedBusiInfo.equals("0.0.0"))) {
-        break label94;
-      }
-      j = 1;
-      label79:
-      if ((i == 0) || (j == 0)) {
-        break label99;
-      }
-    }
-    for (;;)
-    {
-      return bool;
+    int i = a(paramString1, "8.7.0");
+    int j = a("8.7.0", paramString2);
+    if ((i != -1) && (i != 0)) {
       i = 0;
-      break;
-      label94:
-      j = 0;
-      break label79;
-      label99:
-      bool = false;
+    } else {
+      i = 1;
     }
+    if ((j != 1) && (j != 0) && (!paramString2.equals("0.0.0"))) {
+      j = 0;
+    } else {
+      j = 1;
+    }
+    boolean bool1 = bool2;
+    if (i != 0)
+    {
+      bool1 = bool2;
+      if (j != 0) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.redtouch.RedTouchUtils
  * JD-Core Version:    0.7.0.1
  */

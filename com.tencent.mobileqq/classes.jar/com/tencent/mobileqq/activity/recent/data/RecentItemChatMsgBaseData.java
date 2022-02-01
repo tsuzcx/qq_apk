@@ -3,10 +3,10 @@ package com.tencent.mobileqq.activity.recent.data;
 import android.content.Context;
 import android.os.Bundle;
 import com.tencent.common.app.business.BaseQQAppInterface;
+import com.tencent.imcore.message.Message;
 import com.tencent.mobileqq.activity.recent.MsgSummary;
 import com.tencent.mobileqq.activity.recent.parcelUtils.annotation.ParcelAnnotation.NotParcel;
 import com.tencent.mobileqq.data.RecentUser;
-import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
 import com.tencent.mobileqq.imcore.message.QQMessageFacadeStub;
 import com.tencent.mobileqq.imcore.proxy.msg.ConversationFacadeProxy;
 import com.tencent.mobileqq.imcore.proxy.utils.ContactUtilsProxy;
@@ -17,7 +17,7 @@ public class RecentItemChatMsgBaseData
 {
   public static final String IS_ENABLE_UNREAD_STATE = "isEnableUnreadState";
   @ParcelAnnotation.NotParcel
-  protected IMCoreMessageStub mLastMessage;
+  protected Message mLastMessage;
   
   public RecentItemChatMsgBaseData(RecentUser paramRecentUser)
   {
@@ -28,39 +28,47 @@ public class RecentItemChatMsgBaseData
   {
     this.mLastMessage = null;
     Object localObject = (IMessageFacade)paramBaseQQAppInterface.getRuntimeService(IMessageFacade.class, "");
-    if ((localObject == null) || (!(((IMessageFacade)localObject).getQQMessageFacadeStub() instanceof QQMessageFacadeStub))) {
-      return;
-    }
-    localObject = (QQMessageFacadeStub)((IMessageFacade)localObject).getQQMessageFacadeStub();
-    if (localObject != null) {
-      this.mLastMessage = ((QQMessageFacadeStub)localObject).getLastMessage(this.mUser.uin, this.mUser.getType());
-    }
-    if (this.mLastMessage != null) {}
-    for (this.mUnreadNum = ConversationFacadeProxy.a(this.mLastMessage, paramBaseQQAppInterface);; this.mUnreadNum = 0)
+    if (localObject != null)
     {
+      if (!(((IMessageFacade)localObject).getQQMessageFacadeStub() instanceof QQMessageFacadeStub)) {
+        return;
+      }
+      localObject = (QQMessageFacadeStub)((IMessageFacade)localObject).getQQMessageFacadeStub();
+      if (localObject != null) {
+        this.mLastMessage = ((QQMessageFacadeStub)localObject).getLastMessage(this.mUser.uin, this.mUser.getType());
+      }
+      localObject = this.mLastMessage;
+      if (localObject != null) {
+        this.mUnreadNum = ConversationFacadeProxy.a((Message)localObject, paramBaseQQAppInterface);
+      } else {
+        this.mUnreadNum = 0;
+      }
       this.msgSummary = getMsgSummaryTemp();
-      return;
     }
   }
   
   protected final void a()
   {
-    if ((this.mLastMessage != null) && (this.mLastMessage.getTime() != 0L))
+    Message localMessage = this.mLastMessage;
+    if ((localMessage != null) && (localMessage.getTime() != 0L))
     {
       this.mDisplayTime = this.mLastMessage.getTime();
       if (this.mDisplayTime == 0L) {
         this.mDisplayTime = this.mUser.opTime;
       }
-      return;
     }
-    this.mDisplayTime = this.mUser.opTime;
+    else
+    {
+      this.mDisplayTime = this.mUser.opTime;
+    }
   }
   
   public boolean a()
   {
+    int i = this.mUser.getType();
     boolean bool2 = false;
     boolean bool1;
-    if (this.mUser.getType() != 0)
+    if (i != 0)
     {
       bool1 = bool2;
       if (this.mArgsBundle != null)
@@ -76,9 +84,9 @@ public class RecentItemChatMsgBaseData
     return bool1;
   }
   
-  public final void buildMessageBody(IMCoreMessageStub paramIMCoreMessageStub, int paramInt, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  protected final void buildMessageBody(Message paramMessage, int paramInt, BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
-    super.buildMessageBody(paramIMCoreMessageStub, paramInt, paramBaseQQAppInterface, paramContext, paramMsgSummary);
+    super.buildMessageBody(paramMessage, paramInt, paramBaseQQAppInterface, paramContext, paramMsgSummary);
   }
   
   public final void dealDraft(BaseQQAppInterface paramBaseQQAppInterface, MsgSummary paramMsgSummary)
@@ -91,7 +99,7 @@ public class RecentItemChatMsgBaseData
     super.dealStatus(paramBaseQQAppInterface);
   }
   
-  public void extraUpdate(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
+  protected void extraUpdate(BaseQQAppInterface paramBaseQQAppInterface, Context paramContext, MsgSummary paramMsgSummary)
   {
     dealStatus(paramBaseQQAppInterface);
     dealDraft(paramBaseQQAppInterface, paramMsgSummary);
@@ -113,7 +121,7 @@ public class RecentItemChatMsgBaseData
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.data.RecentItemChatMsgBaseData
  * JD-Core Version:    0.7.0.1
  */

@@ -46,30 +46,27 @@ public final class MpegAudioReader
     while (i < k)
     {
       boolean bool;
-      if ((arrayOfByte[i] & 0xFF) == 255)
-      {
+      if ((arrayOfByte[i] & 0xFF) == 255) {
         bool = true;
-        if ((!this.lastByteWasFF) || ((arrayOfByte[i] & 0xE0) != 224)) {
-          break label115;
-        }
+      } else {
+        bool = false;
       }
-      label115:
-      for (int j = 1;; j = 0)
+      int j;
+      if ((this.lastByteWasFF) && ((arrayOfByte[i] & 0xE0) == 224)) {
+        j = 1;
+      } else {
+        j = 0;
+      }
+      this.lastByteWasFF = bool;
+      if (j != 0)
       {
-        this.lastByteWasFF = bool;
-        if (j == 0) {
-          break label120;
-        }
         paramParsableByteArray.setPosition(i + 1);
         this.lastByteWasFF = false;
         this.headerScratch.data[1] = arrayOfByte[i];
         this.frameBytesRead = 2;
         this.state = 1;
         return;
-        bool = false;
-        break;
       }
-      label120:
       i += 1;
     }
     paramParsableByteArray.setPosition(k);
@@ -79,11 +76,13 @@ public final class MpegAudioReader
   {
     int i = Math.min(paramParsableByteArray.bytesLeft(), this.frameSize - this.frameBytesRead);
     this.output.sampleData(paramParsableByteArray, i);
-    this.frameBytesRead = (i + this.frameBytesRead);
-    if (this.frameBytesRead < this.frameSize) {
+    this.frameBytesRead += i;
+    i = this.frameBytesRead;
+    int j = this.frameSize;
+    if (i < j) {
       return;
     }
-    this.output.sampleMetadata(this.timeUs, 1, this.frameSize, 0, null);
+    this.output.sampleMetadata(this.timeUs, 1, j, 0, null);
     this.timeUs += this.frameDurationUs;
     this.frameBytesRead = 0;
     this.state = 0;
@@ -93,7 +92,7 @@ public final class MpegAudioReader
   {
     int i = Math.min(paramParsableByteArray.bytesLeft(), 4 - this.frameBytesRead);
     paramParsableByteArray.readBytes(this.headerScratch.data, this.frameBytesRead, i);
-    this.frameBytesRead = (i + this.frameBytesRead);
+    this.frameBytesRead += i;
     if (this.frameBytesRead < 4) {
       return;
     }
@@ -107,7 +106,7 @@ public final class MpegAudioReader
     this.frameSize = this.header.frameSize;
     if (!this.hasOutputFormat)
     {
-      this.frameDurationUs = (1000000L * this.header.samplesPerFrame / this.header.sampleRate);
+      this.frameDurationUs = (this.header.samplesPerFrame * 1000000L / this.header.sampleRate);
       paramParsableByteArray = Format.createAudioSampleFormat(this.formatId, this.header.mimeType, null, -1, 4096, this.header.channels, this.header.sampleRate, null, null, 0, this.language);
       this.output.format(paramParsableByteArray);
       this.hasOutputFormat = true;
@@ -121,18 +120,22 @@ public final class MpegAudioReader
   {
     while (paramParsableByteArray.bytesLeft() > 0)
     {
-      switch (this.state)
+      int i = this.state;
+      if (i != 0)
       {
-      default: 
-        break;
-      case 0: 
-        findHeader(paramParsableByteArray);
-        break;
-      case 1: 
-        readHeaderRemainder(paramParsableByteArray);
-        break;
+        if (i != 1)
+        {
+          if (i == 2) {
+            readFrameRemainder(paramParsableByteArray);
+          }
+        }
+        else {
+          readHeaderRemainder(paramParsableByteArray);
+        }
       }
-      readFrameRemainder(paramParsableByteArray);
+      else {
+        findHeader(paramParsableByteArray);
+      }
     }
   }
   
@@ -159,7 +162,7 @@ public final class MpegAudioReader
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.android.exoplayer2.extractor.ts.MpegAudioReader
  * JD-Core Version:    0.7.0.1
  */

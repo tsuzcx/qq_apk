@@ -10,12 +10,12 @@ class SimpleFilePresenter$InnerTeamWorkFileImportObserver$2
   
   public void run()
   {
-    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131719896, 0).a();
+    QQToast.a(BaseApplicationImpl.getApplication(), 1, 2131719628, 0).a();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.fileviewer.presenter.SimpleFilePresenter.InnerTeamWorkFileImportObserver.2
  * JD-Core Version:    0.7.0.1
  */

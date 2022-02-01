@@ -33,10 +33,10 @@ import com.tencent.mobileqq.pb.PBUInt32Field;
 import com.tencent.mobileqq.qcircle.api.IQCircleReportApi;
 import com.tencent.mobileqq.qcircle.api.IQCircleService;
 import com.tencent.mobileqq.qroute.QRoute;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.utils.ContactUtils;
 import com.tencent.mobileqq.utils.ViewUtils;
 import com.tencent.mobileqq.utils.dialogutils.QQCustomMenuItem;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import feedcloud.FeedCloudMeta.StUser;
@@ -68,134 +68,129 @@ public class QCircleChatIceBreakItemBuilder
   
   private void a(QCircleChatIceBreakItemBuilder.IceBreakViewHolder paramIceBreakViewHolder, QQCirclePrivateMsgShow.UserPMGiftInfo paramUserPMGiftInfo)
   {
-    if ((paramIceBreakViewHolder == null) || (paramUserPMGiftInfo == null) || (!paramUserPMGiftInfo.has())) {
-      return;
-    }
-    if (QLog.isColorLevel()) {
-      QLog.d("QCircleChatIceBreakItemBuilder", 2, new Object[] { "bind icebreak data,chatUin:", paramUserPMGiftInfo.uid.get(), ",relation:", Integer.valueOf(paramUserPMGiftInfo.relation.get()), ",giftInfo size:", Integer.valueOf(paramUserPMGiftInfo.giftInfos.size()) });
-    }
-    this.jdField_a_of_type_JavaLangString = paramUserPMGiftInfo.uid.get();
-    ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 45, 2, 1);
-    Object localObject1 = ContactUtils.c(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, true);
-    paramIceBreakViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleAvatarView.setAvatar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramUserPMGiftInfo.uid.get());
-    paramIceBreakViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
-    localObject1 = new FeedCloudMeta.StUser();
-    ((FeedCloudMeta.StUser)localObject1).id.set(this.jdField_a_of_type_JavaLangString);
-    paramIceBreakViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.setUserData((FeedCloudMeta.StUser)localObject1);
-    paramIceBreakViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.setItemPreClickListener(new QCircleChatIceBreakItemBuilder.2(this));
-    Object localObject2;
-    if (paramUserPMGiftInfo.giftInfos.has())
+    if ((paramIceBreakViewHolder != null) && (paramUserPMGiftInfo != null))
     {
-      localObject1 = paramUserPMGiftInfo.giftInfos.get();
-      if (paramIceBreakViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount() > 0) {
-        paramIceBreakViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
+      if (!paramUserPMGiftInfo.has()) {
+        return;
       }
-      if ((localObject1 != null) && (((List)localObject1).size() > 0))
+      if (QLog.isColorLevel()) {
+        QLog.d("QCircleChatIceBreakItemBuilder", 2, new Object[] { "bind icebreak data,chatUin:", paramUserPMGiftInfo.uid.get(), ",relation:", Integer.valueOf(paramUserPMGiftInfo.relation.get()), ",giftInfo size:", Integer.valueOf(paramUserPMGiftInfo.giftInfos.size()) });
+      }
+      this.jdField_a_of_type_JavaLangString = paramUserPMGiftInfo.uid.get();
+      ((IQCircleReportApi)QRoute.api(IQCircleReportApi.class)).report5504(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.jdField_a_of_type_JavaLangString, 45, 2, 1);
+      Object localObject1 = ContactUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_JavaLangString, true);
+      paramIceBreakViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleAvatarView.setAvatar(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramUserPMGiftInfo.uid.get());
+      paramIceBreakViewHolder.jdField_b_of_type_AndroidWidgetTextView.setText((CharSequence)localObject1);
+      localObject1 = new FeedCloudMeta.StUser();
+      ((FeedCloudMeta.StUser)localObject1).id.set(this.jdField_a_of_type_JavaLangString);
+      paramIceBreakViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.setUserData((FeedCloudMeta.StUser)localObject1);
+      paramIceBreakViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.setItemPreClickListener(new QCircleChatIceBreakItemBuilder.2(this));
+      if (paramUserPMGiftInfo.giftInfos.has())
       {
-        localObject1 = ((List)localObject1).iterator();
-        int i = 0;
-        if (((Iterator)localObject1).hasNext())
+        localObject1 = paramUserPMGiftInfo.giftInfos.get();
+        if (paramIceBreakViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout.getChildCount() > 0) {
+          paramIceBreakViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout.removeAllViews();
+        }
+        if ((localObject1 != null) && (((List)localObject1).size() > 0))
         {
-          localObject2 = (QQCirclePrivateMsgShow.PMGiftInfo)((Iterator)localObject1).next();
-          if ((localObject2 == null) || (!((QQCirclePrivateMsgShow.PMGiftInfo)localObject2).has())) {
-            break label529;
-          }
-          QCircleGiftRecordView localQCircleGiftRecordView = new QCircleGiftRecordView(this.jdField_a_of_type_AndroidContentContext);
-          QQCirclePrivateMsgShow.PMGiftDisplayInfo localPMGiftDisplayInfo = (QQCirclePrivateMsgShow.PMGiftDisplayInfo)((QQCirclePrivateMsgShow.PMGiftInfo)localObject2).display.get();
-          if ((localPMGiftDisplayInfo != null) && (localPMGiftDisplayInfo.has()))
+          localObject1 = ((List)localObject1).iterator();
+          int i = 0;
+          while (((Iterator)localObject1).hasNext())
           {
-            localQCircleGiftRecordView.setIconUrl(localPMGiftDisplayInfo.icon.get());
-            localQCircleGiftRecordView.setUIStyle(localPMGiftDisplayInfo.numberColor.get(), localPMGiftDisplayInfo.backgroudColor.get());
-          }
-          localQCircleGiftRecordView.setGiftCount(((QQCirclePrivateMsgShow.PMGiftInfo)localObject2).giftCnt.get(), false);
-          localObject2 = new LinearLayout.LayoutParams(-2, -1);
-          ((LinearLayout.LayoutParams)localObject2).gravity = 17;
-          if (i == 0)
-          {
-            ((LinearLayout.LayoutParams)localObject2).leftMargin = 0;
-            label418:
-            paramIceBreakViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localQCircleGiftRecordView, (ViewGroup.LayoutParams)localObject2);
-            i += 1;
+            Object localObject2 = (QQCirclePrivateMsgShow.PMGiftInfo)((Iterator)localObject1).next();
+            if ((localObject2 != null) && (((QQCirclePrivateMsgShow.PMGiftInfo)localObject2).has()))
+            {
+              QCircleGiftRecordView localQCircleGiftRecordView = new QCircleGiftRecordView(this.jdField_a_of_type_AndroidContentContext);
+              QQCirclePrivateMsgShow.PMGiftDisplayInfo localPMGiftDisplayInfo = (QQCirclePrivateMsgShow.PMGiftDisplayInfo)((QQCirclePrivateMsgShow.PMGiftInfo)localObject2).display.get();
+              if ((localPMGiftDisplayInfo != null) && (localPMGiftDisplayInfo.has()))
+              {
+                localQCircleGiftRecordView.setIconUrl(localPMGiftDisplayInfo.icon.get());
+                localQCircleGiftRecordView.setUIStyle(localPMGiftDisplayInfo.numberColor.get(), localPMGiftDisplayInfo.backgroudColor.get());
+              }
+              localQCircleGiftRecordView.setGiftCount(((QQCirclePrivateMsgShow.PMGiftInfo)localObject2).giftCnt.get(), false);
+              localObject2 = new LinearLayout.LayoutParams(-2, -1);
+              ((LinearLayout.LayoutParams)localObject2).gravity = 17;
+              if (i == 0) {
+                ((LinearLayout.LayoutParams)localObject2).leftMargin = 0;
+              } else {
+                ((LinearLayout.LayoutParams)localObject2).leftMargin = ViewUtils.b(8.0F);
+              }
+              paramIceBreakViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout.addView(localQCircleGiftRecordView, (ViewGroup.LayoutParams)localObject2);
+              i += 1;
+            }
           }
         }
       }
-    }
-    label529:
-    for (;;)
-    {
-      break;
-      ((LinearLayout.LayoutParams)localObject2).leftMargin = ViewUtils.b(8.0F);
-      break label418;
-      if ((paramUserPMGiftInfo.relation.get() == 1) || (paramUserPMGiftInfo.relation.get() == 2))
+      if ((paramUserPMGiftInfo.relation.get() != 1) && (paramUserPMGiftInfo.relation.get() != 2))
       {
-        paramIceBreakViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
-        ((LinearLayout.LayoutParams)paramIceBreakViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams()).height = ViewUtils.b(78.0F);
+        paramIceBreakViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
+        ((LinearLayout.LayoutParams)paramIceBreakViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams()).height = ViewUtils.b(73.0F);
         return;
       }
-      paramIceBreakViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(0);
-      ((LinearLayout.LayoutParams)paramIceBreakViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams()).height = ViewUtils.b(73.0F);
-      return;
+      paramIceBreakViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout.setVisibility(8);
+      ((LinearLayout.LayoutParams)paramIceBreakViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout.getLayoutParams()).height = ViewUtils.b(78.0F);
     }
   }
   
-  public View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
+  protected View a(MessageRecord paramMessageRecord, AbstractChatItemBuilder.ViewHolder paramViewHolder, View paramView, LinearLayout paramLinearLayout, OnLongClickAndTouchListener paramOnLongClickAndTouchListener)
   {
     ThemeUtil.isNowThemeIsNight(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, false, null);
     paramOnLongClickAndTouchListener = ((MessageForQCircleIceBreak)paramMessageRecord).getExtInfoFromExtStr("qcircle_chat_msg_data_key");
     paramMessageRecord = paramView;
-    if (!TextUtils.isEmpty(paramOnLongClickAndTouchListener)) {
+    if (!TextUtils.isEmpty(paramOnLongClickAndTouchListener))
+    {
       paramLinearLayout = new QQCirclePrivateMsgShow.UserPMGiftInfo();
-    }
-    try
-    {
-      paramLinearLayout.mergeFrom(paramOnLongClickAndTouchListener.getBytes());
-      if (!paramLinearLayout.has())
+      try
       {
-        QLog.e("QCircleChatIceBreakItemBuilder", 1, "getItemView miss userGiftInfos");
-        paramMessageRecord = null;
-        return paramMessageRecord;
+        paramLinearLayout.mergeFrom(paramOnLongClickAndTouchListener.getBytes());
       }
-    }
-    catch (InvalidProtocolBufferMicroException paramMessageRecord)
-    {
-      for (;;)
+      catch (InvalidProtocolBufferMicroException paramMessageRecord)
       {
         paramMessageRecord.printStackTrace();
       }
-    }
-    if ((paramViewHolder instanceof QCircleChatIceBreakItemBuilder.IceBreakViewHolder)) {}
-    for (paramMessageRecord = (QCircleChatIceBreakItemBuilder.IceBreakViewHolder)paramViewHolder;; paramMessageRecord = null)
-    {
-      if ((paramView == null) || (paramMessageRecord == null))
+      if (!paramLinearLayout.has())
       {
-        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560840, null);
+        QLog.e("QCircleChatIceBreakItemBuilder", 1, "getItemView miss userGiftInfos");
+        return null;
+      }
+      if ((paramViewHolder instanceof QCircleChatIceBreakItemBuilder.IceBreakViewHolder)) {
+        paramMessageRecord = (QCircleChatIceBreakItemBuilder.IceBreakViewHolder)paramViewHolder;
+      } else {
+        paramMessageRecord = null;
+      }
+      if (paramView != null)
+      {
+        paramViewHolder = paramMessageRecord;
+        if (paramMessageRecord != null) {}
+      }
+      else
+      {
+        paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131560714, null);
         paramMessageRecord = new LinearLayout.LayoutParams(ViewUtils.b(298.0F), -2);
         paramMessageRecord.topMargin = ViewUtils.b(24.0F);
         paramMessageRecord.gravity = 1;
         paramView.setLayoutParams(paramMessageRecord);
-        paramMessageRecord = new QCircleChatIceBreakItemBuilder.IceBreakViewHolder();
-        paramView.setTag(paramMessageRecord);
+        paramViewHolder = new QCircleChatIceBreakItemBuilder.IceBreakViewHolder();
+        paramView.setTag(paramViewHolder);
       }
-      for (;;)
-      {
-        paramMessageRecord.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370660);
-        paramViewHolder = a(12, -1);
-        paramMessageRecord.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(paramViewHolder);
-        paramMessageRecord.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131367077));
-        paramMessageRecord.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131369576));
-        paramMessageRecord.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleAvatarView.setOnClickListener(this);
-        paramMessageRecord.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380479));
-        paramMessageRecord.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370606));
-        paramMessageRecord.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131367076));
-        paramMessageRecord.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView = ((QCircleFollowView)paramView.findViewById(2131380366));
-        paramMessageRecord.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.setFollowStateChangeListener(new QCircleChatIceBreakItemBuilder.1(this, paramMessageRecord));
-        a(paramMessageRecord, paramLinearLayout);
-        return paramView;
-      }
+      paramViewHolder.jdField_b_of_type_AndroidViewView = paramView.findViewById(2131370302);
+      paramMessageRecord = a(12, -1);
+      paramViewHolder.jdField_b_of_type_AndroidViewView.setBackgroundDrawable(paramMessageRecord);
+      paramViewHolder.jdField_a_of_type_AndroidWidgetFrameLayout = ((FrameLayout)paramView.findViewById(2131366921));
+      paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleAvatarView = ((QCircleAvatarView)paramView.findViewById(2131369286));
+      paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleAvatarView.setOnClickListener(this);
+      paramViewHolder.jdField_b_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379782));
+      paramViewHolder.jdField_b_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131370258));
+      paramViewHolder.jdField_a_of_type_AndroidWidgetLinearLayout = ((LinearLayout)paramView.findViewById(2131366920));
+      paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView = ((QCircleFollowView)paramView.findViewById(2131379686));
+      paramViewHolder.jdField_a_of_type_ComTencentMobileqqActivityQcircleWidgetQCircleFollowView.setFollowStateChangeListener(new QCircleChatIceBreakItemBuilder.1(this, paramViewHolder));
+      a(paramViewHolder, paramLinearLayout);
+      paramMessageRecord = paramView;
     }
+    return paramMessageRecord;
   }
   
-  public AbstractChatItemBuilder.ViewHolder a()
+  protected AbstractChatItemBuilder.ViewHolder a()
   {
     return new QCircleChatIceBreakItemBuilder.IceBreakViewHolder();
   }
@@ -217,7 +212,7 @@ public class QCircleChatIceBreakItemBuilder
   
   public void onClick(View paramView)
   {
-    if (paramView.getId() == 2131369576)
+    if (paramView.getId() == 2131369286)
     {
       HashMap localHashMap = new HashMap();
       localHashMap.put("uin", this.jdField_a_of_type_JavaLangString);
@@ -229,7 +224,7 @@ public class QCircleChatIceBreakItemBuilder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QCircleChatIceBreakItemBuilder
  * JD-Core Version:    0.7.0.1
  */

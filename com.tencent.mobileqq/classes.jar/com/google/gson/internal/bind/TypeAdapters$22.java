@@ -13,41 +13,39 @@ final class TypeAdapters$22
 {
   public URI read(JsonReader paramJsonReader)
   {
-    if (paramJsonReader.peek() == JsonToken.NULL) {
-      paramJsonReader.nextNull();
-    }
-    for (;;)
+    if (paramJsonReader.peek() == JsonToken.NULL)
     {
+      paramJsonReader.nextNull();
       return null;
-      try
-      {
-        paramJsonReader = paramJsonReader.nextString();
-        if ("null".equals(paramJsonReader)) {
-          continue;
-        }
-        paramJsonReader = new URI(paramJsonReader);
-        return paramJsonReader;
+    }
+    try
+    {
+      paramJsonReader = paramJsonReader.nextString();
+      if ("null".equals(paramJsonReader)) {
+        return null;
       }
-      catch (URISyntaxException paramJsonReader)
-      {
-        throw new JsonIOException(paramJsonReader);
-      }
+      paramJsonReader = new URI(paramJsonReader);
+      return paramJsonReader;
+    }
+    catch (URISyntaxException paramJsonReader)
+    {
+      throw new JsonIOException(paramJsonReader);
     }
   }
   
   public void write(JsonWriter paramJsonWriter, URI paramURI)
   {
-    if (paramURI == null) {}
-    for (paramURI = null;; paramURI = paramURI.toASCIIString())
-    {
-      paramJsonWriter.value(paramURI);
-      return;
+    if (paramURI == null) {
+      paramURI = null;
+    } else {
+      paramURI = paramURI.toASCIIString();
     }
+    paramJsonWriter.value(paramURI);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.22
  * JD-Core Version:    0.7.0.1
  */

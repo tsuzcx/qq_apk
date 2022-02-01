@@ -6,6 +6,7 @@ import android.view.View;
 import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.banner.Banner;
 import com.tencent.mobileqq.banner.BannerManager;
+import com.tencent.mobileqq.banner.BannerTypeCollections;
 import com.tencent.mobileqq.banner.TipsBar;
 import com.tencent.mobileqq.banner.processor.BaseBannerProcessor;
 import com.tencent.mobileqq.qroute.annotation.KeepClassConstructor;
@@ -15,6 +16,13 @@ import com.tencent.qphone.base.util.QLog;
 public class MsgBackupBannerProcessor
   extends BaseBannerProcessor
 {
+  public static final int a;
+  
+  static
+  {
+    jdField_a_of_type_Int = BannerTypeCollections.P;
+  }
+  
   public MsgBackupBannerProcessor(QBaseActivity paramQBaseActivity)
   {
     super(paramQBaseActivity);
@@ -30,34 +38,44 @@ public class MsgBackupBannerProcessor
     if (QLog.isColorLevel()) {
       QLog.d("ComicBar", 2, "initComicBar");
     }
-    paramBanner = new TipsBar(this.a);
+    paramBanner = new TipsBar(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity);
     paramBanner.setVisibility(8);
     return paramBanner;
   }
   
   public void a()
   {
-    BannerManager.a().a(45, 0);
+    BannerManager.a().a(jdField_a_of_type_Int, 0);
   }
   
   public void a(Banner paramBanner, Message paramMessage)
   {
-    if (!(paramBanner.a instanceof TipsBar)) {}
-    while ((paramMessage == null) || (!(paramMessage.obj instanceof String))) {
+    if (!(paramBanner.a instanceof TipsBar)) {
       return;
     }
-    String str = (String)paramMessage.obj;
-    int i = paramMessage.arg1;
-    paramBanner = (TipsBar)paramBanner.a;
-    paramBanner.setTipsIcon(this.a.getResources().getDrawable(2130839491));
-    paramBanner.setTipsText(str);
-    paramBanner.setOnClickListener(new MsgBackupBannerProcessor.1(this, i));
-    paramBanner.setVisibility(0);
+    if (paramMessage == null) {
+      return;
+    }
+    if ((paramMessage.obj instanceof String))
+    {
+      String str = (String)paramMessage.obj;
+      int i = paramMessage.arg1;
+      paramBanner = (TipsBar)paramBanner.a;
+      paramBanner.setTipsIcon(this.jdField_a_of_type_ComTencentMobileqqAppQBaseActivity.getResources().getDrawable(2130839347));
+      paramBanner.setTipsText(str);
+      paramBanner.setOnClickListener(new MsgBackupBannerProcessor.1(this, i));
+      paramBanner.setVisibility(0);
+    }
+  }
+  
+  public int b()
+  {
+    return jdField_a_of_type_Int;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.bannerprocessor.MsgBackupBannerProcessor
  * JD-Core Version:    0.7.0.1
  */

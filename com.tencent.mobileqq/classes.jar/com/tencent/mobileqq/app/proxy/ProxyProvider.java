@@ -7,7 +7,6 @@ import com.tencent.imcore.message.MsgProxy;
 import com.tencent.imcore.message.MsgProxyContainer;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.message.MultiMsgProxy;
-import com.tencent.mobileqq.colornote.data.ColorNoteProxy;
 import com.tencent.mobileqq.confess.ConfessProxy;
 import com.tencent.mobileqq.data.entitymanager.Provider;
 import com.tencent.mobileqq.filemanager.data.FileManagerProxy;
@@ -42,7 +41,6 @@ public class ProxyProvider
       a(12, new QCallProxy(paramAppRuntime, paramBaseProxyManager));
       a(13, new ConfessProxy(paramAppRuntime, paramBaseProxyManager));
       a(14, new MsgBackupMsgProxy(paramAppRuntime, paramBaseProxyManager));
-      a(15, new ColorNoteProxy(paramAppRuntime, paramBaseProxyManager));
     }
   }
   
@@ -58,7 +56,7 @@ public class ProxyProvider
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.app.proxy.ProxyProvider
  * JD-Core Version:    0.7.0.1
  */

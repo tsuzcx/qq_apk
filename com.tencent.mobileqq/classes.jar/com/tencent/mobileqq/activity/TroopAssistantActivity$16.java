@@ -1,33 +1,21 @@
 package com.tencent.mobileqq.activity;
 
-import android.os.Message;
-import com.tencent.mobileqq.app.QQAppInterface;
-import mqq.os.MqqHandler;
+import com.tencent.mobileqq.util.AccessibilityUtil;
+import com.tencent.widget.PopupMenuDialog.OnDismissListener;
 
 class TroopAssistantActivity$16
-  extends MqqHandler
+  implements PopupMenuDialog.OnDismissListener
 {
   TroopAssistantActivity$16(TroopAssistantActivity paramTroopAssistantActivity) {}
   
-  public void handleMessage(Message paramMessage)
+  public void onDismiss()
   {
-    if (!this.a.app.isLogin()) {
-      return;
-    }
-    switch (paramMessage.what)
-    {
-    default: 
-      return;
-    case 1: 
-      this.a.c();
-      return;
-    }
-    this.a.c();
+    AccessibilityUtil.b(this.a.findViewById(2131378893), true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.TroopAssistantActivity.16
  * JD-Core Version:    0.7.0.1
  */

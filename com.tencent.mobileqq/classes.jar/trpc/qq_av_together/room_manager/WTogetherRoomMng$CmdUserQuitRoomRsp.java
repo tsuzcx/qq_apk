@@ -14,7 +14,7 @@ public final class WTogetherRoomMng$CmdUserQuitRoomRsp
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     trpc.qq_av_together.room_manager.WTogetherRoomMng.CmdUserQuitRoomRsp
  * JD-Core Version:    0.7.0.1
  */

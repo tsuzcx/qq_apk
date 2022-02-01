@@ -14,15 +14,17 @@ public final class ViewParentCompat
   
   private static int[] getTempNestedScrollConsumed()
   {
-    if (sTempNestedScrollConsumed == null) {
+    int[] arrayOfInt = sTempNestedScrollConsumed;
+    if (arrayOfInt == null)
+    {
       sTempNestedScrollConsumed = new int[2];
     }
-    for (;;)
+    else
     {
-      return sTempNestedScrollConsumed;
-      sTempNestedScrollConsumed[0] = 0;
-      sTempNestedScrollConsumed[1] = 0;
+      arrayOfInt[0] = 0;
+      arrayOfInt[1] = 0;
     }
+    return sTempNestedScrollConsumed;
   }
   
   public static void notifySubtreeAccessibilityStateChanged(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
@@ -42,13 +44,16 @@ public final class ViewParentCompat
       }
       catch (AbstractMethodError paramView)
       {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface method onNestedFling", paramView);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ViewParent ");
+        localStringBuilder.append(paramViewParent);
+        localStringBuilder.append(" does not implement interface method onNestedFling");
+        Log.e("ViewParentCompat", localStringBuilder.toString(), paramView);
       }
+    } else if ((paramViewParent instanceof NestedScrollingParent)) {
+      return ((NestedScrollingParent)paramViewParent).onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
     }
-    while (!(paramViewParent instanceof NestedScrollingParent)) {
-      return false;
-    }
-    return ((NestedScrollingParent)paramViewParent).onNestedFling(paramView, paramFloat1, paramFloat2, paramBoolean);
+    return false;
   }
   
   public static boolean onNestedPreFling(ViewParent paramViewParent, View paramView, float paramFloat1, float paramFloat2)
@@ -56,20 +61,21 @@ public final class ViewParentCompat
     if (Build.VERSION.SDK_INT >= 21) {
       try
       {
-        bool = paramViewParent.onNestedPreFling(paramView, paramFloat1, paramFloat2);
+        boolean bool = paramViewParent.onNestedPreFling(paramView, paramFloat1, paramFloat2);
         return bool;
       }
       catch (AbstractMethodError paramView)
       {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface method onNestedPreFling", paramView);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("ViewParent ");
+        localStringBuilder.append(paramViewParent);
+        localStringBuilder.append(" does not implement interface method onNestedPreFling");
+        Log.e("ViewParentCompat", localStringBuilder.toString(), paramView);
       }
+    } else if ((paramViewParent instanceof NestedScrollingParent)) {
+      return ((NestedScrollingParent)paramViewParent).onNestedPreFling(paramView, paramFloat1, paramFloat2);
     }
-    while (!(paramViewParent instanceof NestedScrollingParent))
-    {
-      boolean bool;
-      return false;
-    }
-    return ((NestedScrollingParent)paramViewParent).onNestedPreFling(paramView, paramFloat1, paramFloat2);
+    return false;
   }
   
   public static void onNestedPreScroll(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt)
@@ -79,15 +85,13 @@ public final class ViewParentCompat
   
   public static void onNestedPreScroll(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int[] paramArrayOfInt, int paramInt3)
   {
-    if ((paramViewParent instanceof NestedScrollingParent2)) {
-      ((NestedScrollingParent2)paramViewParent).onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt, paramInt3);
-    }
-    do
+    if ((paramViewParent instanceof NestedScrollingParent2))
     {
-      do
-      {
-        return;
-      } while (paramInt3 != 0);
+      ((NestedScrollingParent2)paramViewParent).onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt, paramInt3);
+      return;
+    }
+    if (paramInt3 == 0)
+    {
       if (Build.VERSION.SDK_INT >= 21) {
         try
         {
@@ -96,12 +100,18 @@ public final class ViewParentCompat
         }
         catch (AbstractMethodError paramView)
         {
-          Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface method onNestedPreScroll", paramView);
+          paramArrayOfInt = new StringBuilder();
+          paramArrayOfInt.append("ViewParent ");
+          paramArrayOfInt.append(paramViewParent);
+          paramArrayOfInt.append(" does not implement interface method onNestedPreScroll");
+          Log.e("ViewParentCompat", paramArrayOfInt.toString(), paramView);
           return;
         }
       }
-    } while (!(paramViewParent instanceof NestedScrollingParent));
-    ((NestedScrollingParent)paramViewParent).onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
+      if ((paramViewParent instanceof NestedScrollingParent)) {
+        ((NestedScrollingParent)paramViewParent).onNestedPreScroll(paramView, paramInt1, paramInt2, paramArrayOfInt);
+      }
+    }
   }
   
   public static void onNestedScroll(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
@@ -116,22 +126,20 @@ public final class ViewParentCompat
   
   public static void onNestedScroll(ViewParent paramViewParent, View paramView, int paramInt1, int paramInt2, int paramInt3, int paramInt4, int paramInt5, @NonNull int[] paramArrayOfInt)
   {
-    if ((paramViewParent instanceof NestedScrollingParent3)) {
-      ((NestedScrollingParent3)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramArrayOfInt);
-    }
-    do
+    if ((paramViewParent instanceof NestedScrollingParent3))
     {
-      do
-      {
-        return;
-        paramArrayOfInt[0] += paramInt3;
-        paramArrayOfInt[1] += paramInt4;
-        if ((paramViewParent instanceof NestedScrollingParent2))
-        {
-          ((NestedScrollingParent2)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
-          return;
-        }
-      } while (paramInt5 != 0);
+      ((NestedScrollingParent3)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5, paramArrayOfInt);
+      return;
+    }
+    paramArrayOfInt[0] += paramInt3;
+    paramArrayOfInt[1] += paramInt4;
+    if ((paramViewParent instanceof NestedScrollingParent2))
+    {
+      ((NestedScrollingParent2)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4, paramInt5);
+      return;
+    }
+    if (paramInt5 == 0)
+    {
       if (Build.VERSION.SDK_INT >= 21) {
         try
         {
@@ -140,12 +148,18 @@ public final class ViewParentCompat
         }
         catch (AbstractMethodError paramView)
         {
-          Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface method onNestedScroll", paramView);
+          paramArrayOfInt = new StringBuilder();
+          paramArrayOfInt.append("ViewParent ");
+          paramArrayOfInt.append(paramViewParent);
+          paramArrayOfInt.append(" does not implement interface method onNestedScroll");
+          Log.e("ViewParentCompat", paramArrayOfInt.toString(), paramView);
           return;
         }
       }
-    } while (!(paramViewParent instanceof NestedScrollingParent));
-    ((NestedScrollingParent)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+      if ((paramViewParent instanceof NestedScrollingParent)) {
+        ((NestedScrollingParent)paramViewParent).onNestedScroll(paramView, paramInt1, paramInt2, paramInt3, paramInt4);
+      }
+    }
   }
   
   public static void onNestedScrollAccepted(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
@@ -155,15 +169,13 @@ public final class ViewParentCompat
   
   public static void onNestedScrollAccepted(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt1, int paramInt2)
   {
-    if ((paramViewParent instanceof NestedScrollingParent2)) {
-      ((NestedScrollingParent2)paramViewParent).onNestedScrollAccepted(paramView1, paramView2, paramInt1, paramInt2);
-    }
-    do
+    if ((paramViewParent instanceof NestedScrollingParent2))
     {
-      do
-      {
-        return;
-      } while (paramInt2 != 0);
+      ((NestedScrollingParent2)paramViewParent).onNestedScrollAccepted(paramView1, paramView2, paramInt1, paramInt2);
+      return;
+    }
+    if (paramInt2 == 0)
+    {
       if (Build.VERSION.SDK_INT >= 21) {
         try
         {
@@ -172,12 +184,18 @@ public final class ViewParentCompat
         }
         catch (AbstractMethodError paramView1)
         {
-          Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface method onNestedScrollAccepted", paramView1);
+          paramView2 = new StringBuilder();
+          paramView2.append("ViewParent ");
+          paramView2.append(paramViewParent);
+          paramView2.append(" does not implement interface method onNestedScrollAccepted");
+          Log.e("ViewParentCompat", paramView2.toString(), paramView1);
           return;
         }
       }
-    } while (!(paramViewParent instanceof NestedScrollingParent));
-    ((NestedScrollingParent)paramViewParent).onNestedScrollAccepted(paramView1, paramView2, paramInt1);
+      if ((paramViewParent instanceof NestedScrollingParent)) {
+        ((NestedScrollingParent)paramViewParent).onNestedScrollAccepted(paramView1, paramView2, paramInt1);
+      }
+    }
   }
   
   public static boolean onStartNestedScroll(ViewParent paramViewParent, View paramView1, View paramView2, int paramInt)
@@ -190,28 +208,26 @@ public final class ViewParentCompat
     if ((paramViewParent instanceof NestedScrollingParent2)) {
       return ((NestedScrollingParent2)paramViewParent).onStartNestedScroll(paramView1, paramView2, paramInt1, paramInt2);
     }
-    if (paramInt2 == 0)
-    {
-      if (Build.VERSION.SDK_INT < 21) {
-        break label83;
-      }
-      try
-      {
-        bool = paramViewParent.onStartNestedScroll(paramView1, paramView2, paramInt1);
-        return bool;
-      }
-      catch (AbstractMethodError paramView1)
-      {
-        Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface method onStartNestedScroll", paramView1);
+    if (paramInt2 == 0) {
+      if (Build.VERSION.SDK_INT >= 21) {
+        try
+        {
+          boolean bool = paramViewParent.onStartNestedScroll(paramView1, paramView2, paramInt1);
+          return bool;
+        }
+        catch (AbstractMethodError paramView1)
+        {
+          paramView2 = new StringBuilder();
+          paramView2.append("ViewParent ");
+          paramView2.append(paramViewParent);
+          paramView2.append(" does not implement interface method onStartNestedScroll");
+          Log.e("ViewParentCompat", paramView2.toString(), paramView1);
+        }
+      } else if ((paramViewParent instanceof NestedScrollingParent)) {
+        return ((NestedScrollingParent)paramViewParent).onStartNestedScroll(paramView1, paramView2, paramInt1);
       }
     }
-    label83:
-    while (!(paramViewParent instanceof NestedScrollingParent))
-    {
-      boolean bool;
-      return false;
-    }
-    return ((NestedScrollingParent)paramViewParent).onStartNestedScroll(paramView1, paramView2, paramInt1);
+    return false;
   }
   
   public static void onStopNestedScroll(ViewParent paramViewParent, View paramView)
@@ -221,15 +237,13 @@ public final class ViewParentCompat
   
   public static void onStopNestedScroll(ViewParent paramViewParent, View paramView, int paramInt)
   {
-    if ((paramViewParent instanceof NestedScrollingParent2)) {
-      ((NestedScrollingParent2)paramViewParent).onStopNestedScroll(paramView, paramInt);
-    }
-    do
+    if ((paramViewParent instanceof NestedScrollingParent2))
     {
-      do
-      {
-        return;
-      } while (paramInt != 0);
+      ((NestedScrollingParent2)paramViewParent).onStopNestedScroll(paramView, paramInt);
+      return;
+    }
+    if (paramInt == 0)
+    {
       if (Build.VERSION.SDK_INT >= 21) {
         try
         {
@@ -238,12 +252,18 @@ public final class ViewParentCompat
         }
         catch (AbstractMethodError paramView)
         {
-          Log.e("ViewParentCompat", "ViewParent " + paramViewParent + " does not implement interface method onStopNestedScroll", paramView);
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("ViewParent ");
+          localStringBuilder.append(paramViewParent);
+          localStringBuilder.append(" does not implement interface method onStopNestedScroll");
+          Log.e("ViewParentCompat", localStringBuilder.toString(), paramView);
           return;
         }
       }
-    } while (!(paramViewParent instanceof NestedScrollingParent));
-    ((NestedScrollingParent)paramViewParent).onStopNestedScroll(paramView);
+      if ((paramViewParent instanceof NestedScrollingParent)) {
+        ((NestedScrollingParent)paramViewParent).onStopNestedScroll(paramView);
+      }
+    }
   }
   
   @Deprecated
@@ -254,7 +274,7 @@ public final class ViewParentCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.view.ViewParentCompat
  * JD-Core Version:    0.7.0.1
  */

@@ -1,7 +1,6 @@
 package com.tencent.mobileqq.fragment;
 
 import android.graphics.drawable.Drawable;
-import android.support.v4.app.FragmentActivity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,8 +9,9 @@ import android.widget.ImageView.ScaleType;
 import com.tencent.image.URLDrawable;
 import com.tencent.image.URLDrawable.URLDrawableOptions;
 import com.tencent.image.URLImageView;
-import com.tencent.mobileqq.pic.compress.Utils;
-import com.tencent.mobileqq.transfile.URLDrawableHelper;
+import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.urldrawable.URLDrawableHelperConstants;
+import com.tencent.mobileqq.utils.BaseImageUtil;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
 import com.tencent.widget.AbsListView.LayoutParams;
 import java.util.ArrayList;
@@ -26,7 +26,7 @@ class SDKSetEmotionPreviewFragment$PreviewGridAdapter
   public SDKSetEmotionPreviewFragment$PreviewGridAdapter(SDKSetEmotionPreviewFragment paramSDKSetEmotionPreviewFragment)
   {
     this.jdField_a_of_type_JavaUtilList = new ArrayList();
-    this.jdField_a_of_type_AndroidViewLayoutInflater = paramSDKSetEmotionPreviewFragment.getActivity().getLayoutInflater();
+    this.jdField_a_of_type_AndroidViewLayoutInflater = paramSDKSetEmotionPreviewFragment.getBaseActivity().getLayoutInflater();
   }
   
   public void a(List<String> paramList)
@@ -47,8 +47,9 @@ class SDKSetEmotionPreviewFragment$PreviewGridAdapter
   
   public int getCount()
   {
-    if (this.jdField_a_of_type_JavaUtilList != null) {
-      return this.jdField_a_of_type_JavaUtilList.size();
+    List localList = this.jdField_a_of_type_JavaUtilList;
+    if (localList != null) {
+      return localList.size();
     }
     return 0;
   }
@@ -68,36 +69,36 @@ class SDKSetEmotionPreviewFragment$PreviewGridAdapter
     View localView;
     if (paramView == null)
     {
-      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131559202, null);
+      localView = this.jdField_a_of_type_AndroidViewLayoutInflater.inflate(2131561592, null);
       localView.setLayoutParams(new AbsListView.LayoutParams(SDKSetEmotionPreviewFragment.a(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment), SDKSetEmotionPreviewFragment.b(this.jdField_a_of_type_ComTencentMobileqqFragmentSDKSetEmotionPreviewFragment)));
       paramView = new SDKSetEmotionPreviewFragment.PreviewGridAdapter.Holder(this);
-      paramView.a = ((URLImageView)localView.findViewById(2131366236));
+      paramView.a = ((URLImageView)localView.findViewById(2131366125));
       localView.setTag(paramView);
     }
-    for (;;)
+    else
     {
-      Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
-      Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
-      ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = URLDrawableHelper.TRANSPARENT;
-      ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = URLDrawableHelper.TRANSPARENT;
-      ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = Utils.a((String)localObject1);
-      ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = true;
-      localObject2 = URLDrawable.getFileDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
-      paramView.a.setScaleType(ImageView.ScaleType.FIT_CENTER);
-      paramView.a.setImageDrawable((Drawable)localObject2);
-      localObject2 = paramView.a;
-      paramView.a.setOnClickListener(new SDKSetEmotionPreviewFragment.PreviewGridAdapter.1(this, (String)localObject1, (View)localObject2));
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
       localObject1 = (SDKSetEmotionPreviewFragment.PreviewGridAdapter.Holder)paramView.getTag();
       localView = paramView;
       paramView = (View)localObject1;
     }
+    Object localObject1 = (String)this.jdField_a_of_type_JavaUtilList.get(paramInt);
+    Object localObject2 = URLDrawable.URLDrawableOptions.obtain();
+    ((URLDrawable.URLDrawableOptions)localObject2).mFailedDrawable = URLDrawableHelperConstants.a;
+    ((URLDrawable.URLDrawableOptions)localObject2).mLoadingDrawable = URLDrawableHelperConstants.a;
+    ((URLDrawable.URLDrawableOptions)localObject2).mPlayGifImage = BaseImageUtil.b((String)localObject1);
+    ((URLDrawable.URLDrawableOptions)localObject2).mUseAutoScaleParams = true;
+    localObject2 = URLDrawable.getFileDrawable((String)localObject1, (URLDrawable.URLDrawableOptions)localObject2);
+    paramView.a.setScaleType(ImageView.ScaleType.FIT_CENTER);
+    paramView.a.setImageDrawable((Drawable)localObject2);
+    localObject2 = paramView.a;
+    paramView.a.setOnClickListener(new SDKSetEmotionPreviewFragment.PreviewGridAdapter.1(this, (String)localObject1, (View)localObject2));
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.fragment.SDKSetEmotionPreviewFragment.PreviewGridAdapter
  * JD-Core Version:    0.7.0.1
  */

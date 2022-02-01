@@ -64,30 +64,33 @@ public class VConsoleView
   
   public void initWebviewEvn(Context paramContext)
   {
-    if ((paramContext == null) || (this.mInitWebView)) {
-      return;
-    }
-    try
+    if (paramContext != null)
     {
-      if (Build.VERSION.SDK_INT >= 28)
-      {
-        String str = getCurrentProcessName(paramContext);
-        if (!paramContext.getPackageName().equals(str)) {
-          WebView.setDataDirectorySuffix(str);
-        }
+      if (this.mInitWebView) {
+        return;
       }
-      this.mInitWebView = true;
-      return;
-    }
-    catch (IllegalStateException paramContext)
-    {
-      QMLog.e("VConsoleView", "Failed to initWebviewEvn", paramContext);
+      try
+      {
+        if (Build.VERSION.SDK_INT >= 28)
+        {
+          String str = getCurrentProcessName(paramContext);
+          if (!paramContext.getPackageName().equals(str)) {
+            WebView.setDataDirectorySuffix(str);
+          }
+        }
+        this.mInitWebView = true;
+        return;
+      }
+      catch (IllegalStateException paramContext)
+      {
+        QMLog.e("VConsoleView", "Failed to initWebviewEvn", paramContext);
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.ui.VConsoleView
  * JD-Core Version:    0.7.0.1
  */

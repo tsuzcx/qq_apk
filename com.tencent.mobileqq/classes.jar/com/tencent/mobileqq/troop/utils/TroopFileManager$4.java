@@ -18,56 +18,91 @@ class TroopFileManager$4
   {
     Object localObject = this.a;
     ((TroopFileManager)localObject).jdField_a_of_type_Int -= 1;
-    if ((!paramBoolean) || (paramTransFileRspBody == null)) {
-      TroopFileTransferUtil.Log.a("TroopFileManager", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "onTransFileResult:  isSuccess:false");
-    }
-    do
+    if ((paramBoolean) && (paramTransFileRspBody != null))
     {
-      return;
       localObject = paramBundle.getString("fileId");
       paramBundle = (TroopFileInfo)this.a.c.get(localObject);
-    } while (paramBundle == null);
-    int i = paramTransFileRspBody.int32_ret_code.get();
-    TroopFileTransferUtil.Log.c("TroopFileManager", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "onTransFileResult: fileId:" + (String)localObject + " isSuccess:" + paramBoolean + " errCode:" + paramInt + " retCode:" + i);
-    if (i < 0)
-    {
-      paramInt = 501;
-      switch (i)
-      {
+      if (paramBundle == null) {
+        return;
       }
-      for (;;)
+      int i = paramTransFileRspBody.int32_ret_code.get();
+      int j = TroopFileTransferUtil.Log.jdField_a_of_type_Int;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onTransFileResult: fileId:");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" isSuccess:");
+      localStringBuilder.append(paramBoolean);
+      localStringBuilder.append(" errCode:");
+      localStringBuilder.append(paramInt);
+      localStringBuilder.append(" retCode:");
+      localStringBuilder.append(i);
+      TroopFileTransferUtil.Log.c("TroopFileManager", j, localStringBuilder.toString());
+      if (i < 0)
       {
+        paramInt = 501;
+        if (i != -25086)
+        {
+          if (i != -6101)
+          {
+            if (i == -403) {
+              break label296;
+            }
+            if ((i != -107) && (i != -22))
+            {
+              if ((i == -20001) || (i == -20000)) {
+                break label296;
+              }
+              if ((i == -302) || (i == -301) || (i == -103)) {
+                break label289;
+              }
+              if (i != -102)
+              {
+                if (i != -4)
+                {
+                  if (i != -3) {
+                    break label300;
+                  }
+                  paramInt = 504;
+                  break label300;
+                }
+                paramInt = 103;
+                break label300;
+              }
+            }
+            paramInt = 101;
+            break label300;
+          }
+          label289:
+          paramInt = 502;
+          break label300;
+        }
+        label296:
+        paramInt = 503;
+        label300:
         this.a.a(paramBundle, paramInt);
         return;
-        paramInt = 504;
-        continue;
-        paramInt = 103;
-        continue;
-        paramInt = 101;
-        continue;
-        paramInt = 503;
-        continue;
-        paramInt = 502;
       }
+      paramTransFileRspBody = paramTransFileRspBody.str_save_file_path.get();
+      this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(paramBundle.jdField_a_of_type_JavaUtilUUID, paramTransFileRspBody);
+      paramBundle.b = paramTransFileRspBody;
+      paramBundle.jdField_a_of_type_Int = 102;
+      paramBundle.c = 0;
+      this.a.c.remove(localObject);
+      this.a.c.put(paramTransFileRspBody, paramBundle);
+      this.a.d(paramBundle);
+      paramTransFileRspBody = (TroopFileManager.FileManagerStatus)this.a.d.get(paramBundle.g);
+      if (paramTransFileRspBody != null) {
+        paramTransFileRspBody.a = null;
+      }
+      this.a.a(paramBundle, 505);
+      return;
     }
-    paramTransFileRspBody = paramTransFileRspBody.str_save_file_path.get();
-    this.a.jdField_a_of_type_ComTencentMobileqqTroopUtilsTroopFileTransferManager.a(paramBundle.jdField_a_of_type_JavaUtilUUID, paramTransFileRspBody);
-    paramBundle.b = paramTransFileRspBody;
-    paramBundle.jdField_a_of_type_Int = 102;
-    paramBundle.c = 0;
-    this.a.c.remove(localObject);
-    this.a.c.put(paramTransFileRspBody, paramBundle);
-    this.a.d(paramBundle);
-    paramTransFileRspBody = (TroopFileManager.FileManagerStatus)this.a.d.get(paramBundle.g);
-    if (paramTransFileRspBody != null) {
-      paramTransFileRspBody.a = null;
-    }
-    this.a.a(paramBundle, 505);
+    TroopFileTransferUtil.Log.a("TroopFileManager", TroopFileTransferUtil.Log.jdField_a_of_type_Int, "onTransFileResult:  isSuccess:false");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.utils.TroopFileManager.4
  * JD-Core Version:    0.7.0.1
  */

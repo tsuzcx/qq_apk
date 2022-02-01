@@ -15,38 +15,50 @@ class MagicFaceDataEntity$MyHandler
   
   public void handleMessage(Message paramMessage)
   {
-    AVLog.printColorLog("MagicFaceDataEntity", "MagicFaceDataEntity handleMessage A: " + this.a.a + "|" + paramMessage.what);
-    switch (paramMessage.what)
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("MagicFaceDataEntity handleMessage A: ");
+    localStringBuilder.append(this.a.a);
+    localStringBuilder.append("|");
+    localStringBuilder.append(paramMessage.what);
+    AVLog.printColorLog("MagicFaceDataEntity", localStringBuilder.toString());
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
+      if (i != 2)
       {
-        do
+        if (i != 3)
         {
-          do
-          {
+          if (i != 4) {
             return;
-          } while (this.a.a != 1);
-          MagicFaceDataEntity.a(this.a, (Object[])paramMessage.obj);
-          return;
-        } while (this.a.a != 0);
-        this.a.a = 1;
-        this.a.c();
-        return;
-      } while (this.a.a != 1);
-      this.a.a = 0;
-      this.a.d();
-      return;
-    } while (this.a.a != 1);
-    paramMessage = (Integer)paramMessage.obj;
-    this.a.a(paramMessage.intValue());
+          }
+          if (this.a.a == 1)
+          {
+            paramMessage = (Integer)paramMessage.obj;
+            this.a.a(paramMessage.intValue());
+          }
+        }
+        else if (this.a.a == 1)
+        {
+          paramMessage = this.a;
+          paramMessage.a = 0;
+          paramMessage.d();
+        }
+      }
+      else if (this.a.a == 0)
+      {
+        paramMessage = this.a;
+        paramMessage.a = 1;
+        paramMessage.c();
+      }
+    }
+    else if (this.a.a == 1) {
+      MagicFaceDataEntity.a(this.a, (Object[])paramMessage.obj);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.MagicFaceDataEntity.MyHandler
  * JD-Core Version:    0.7.0.1
  */

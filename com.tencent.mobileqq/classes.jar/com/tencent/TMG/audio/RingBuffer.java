@@ -37,53 +37,74 @@ public class RingBuffer
   
   public boolean Pop(byte[] paramArrayOfByte, int paramInt)
   {
+    byte[] arrayOfByte = this.m_pBuf;
     boolean bool = false;
-    if (this.m_pBuf == null) {}
-    while ((RemainRead() < paramInt) || (paramInt <= 0)) {
+    if (arrayOfByte == null) {
       return false;
     }
-    if (this.c_totalSize - this.m_read >= paramInt) {
-      System.arraycopy(this.m_pBuf, this.m_read, paramArrayOfByte, 0, paramInt);
-    }
-    for (;;)
+    if (RemainRead() >= paramInt)
     {
+      if (paramInt <= 0) {
+        return false;
+      }
+      int i = this.c_totalSize;
+      int j = this.m_read;
+      if (i - j >= paramInt)
+      {
+        System.arraycopy(this.m_pBuf, j, paramArrayOfByte, 0, paramInt);
+      }
+      else
+      {
+        System.arraycopy(this.m_pBuf, j, paramArrayOfByte, 0, i - j);
+        arrayOfByte = this.m_pBuf;
+        i = this.c_totalSize;
+        j = this.m_read;
+        System.arraycopy(arrayOfByte, 0, paramArrayOfByte, i - j, paramInt - (i - j));
+      }
       this.m_read = ((this.m_read + paramInt) % this.c_totalSize);
       if (this.m_read == this.m_write) {
         bool = true;
       }
       this.m_isEmpty = bool;
       return true;
-      System.arraycopy(this.m_pBuf, this.m_read, paramArrayOfByte, 0, this.c_totalSize - this.m_read);
-      System.arraycopy(this.m_pBuf, 0, paramArrayOfByte, this.c_totalSize - this.m_read, paramInt - (this.c_totalSize - this.m_read));
     }
+    return false;
   }
   
   public void Push(byte[] paramArrayOfByte, int paramInt)
   {
-    if (this.m_pBuf == null) {}
-    while (RemainWrite() < paramInt) {
+    if (this.m_pBuf == null) {
       return;
     }
-    if (this.c_totalSize - this.m_write >= paramInt) {
-      System.arraycopy(paramArrayOfByte, 0, this.m_pBuf, this.m_write, paramInt);
+    if (RemainWrite() < paramInt) {
+      return;
     }
-    for (;;)
+    int i = this.c_totalSize;
+    int j = this.m_write;
+    if (i - j >= paramInt)
     {
-      this.m_write = ((this.m_write + paramInt) % this.c_totalSize);
-      this.m_isEmpty = false;
-      return;
-      System.arraycopy(paramArrayOfByte, 0, this.m_pBuf, this.m_write, this.c_totalSize - this.m_write);
-      System.arraycopy(paramArrayOfByte, this.c_totalSize - this.m_write, this.m_pBuf, 0, paramInt - (this.c_totalSize - this.m_write));
+      System.arraycopy(paramArrayOfByte, 0, this.m_pBuf, j, paramInt);
     }
+    else
+    {
+      System.arraycopy(paramArrayOfByte, 0, this.m_pBuf, j, i - j);
+      i = this.c_totalSize;
+      j = this.m_write;
+      System.arraycopy(paramArrayOfByte, i - j, this.m_pBuf, 0, paramInt - (i - j));
+    }
+    this.m_write = ((this.m_write + paramInt) % this.c_totalSize);
+    this.m_isEmpty = false;
   }
   
   public int RemainRead()
   {
-    if (this.m_write < this.m_read) {
-      return this.c_totalSize - this.m_read + this.m_write;
+    int i = this.m_write;
+    int j = this.m_read;
+    if (i < j) {
+      return this.c_totalSize - j + i;
     }
-    if (this.m_write > this.m_read) {
-      return this.m_write - this.m_read;
+    if (i > j) {
+      return i - j;
     }
     if (this.m_isEmpty) {
       return 0;

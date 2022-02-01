@@ -39,27 +39,29 @@ public class ChatThumbView
   
   public void a(View paramView, MotionEvent paramMotionEvent)
   {
-    if (!this.b) {}
-    do
-    {
-      do
-      {
-        return;
-        switch (paramMotionEvent.getAction())
-        {
-        case 2: 
-        default: 
-          return;
-        case 0: 
-          paramView = getDrawable();
-        }
-      } while (paramView == null);
-      paramView.setColorFilter(BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter);
+    if (!this.b) {
       return;
+    }
+    int i = paramMotionEvent.getAction();
+    if (i != 0)
+    {
+      if ((i != 1) && (i != 3)) {
+        return;
+      }
       paramView = getDrawable();
-    } while (paramView == null);
-    paramView.setColorFilter(null);
-    paramView.invalidateSelf();
+      if (paramView != null)
+      {
+        paramView.setColorFilter(null);
+        paramView.invalidateSelf();
+      }
+    }
+    else
+    {
+      paramView = getDrawable();
+      if (paramView != null) {
+        paramView.setColorFilter(BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter);
+      }
+    }
   }
   
   public void a(View paramView, boolean paramBoolean)
@@ -67,28 +69,17 @@ public class ChatThumbView
     if (!this.b) {
       return;
     }
-    boolean bool;
-    if (!paramBoolean)
-    {
-      bool = true;
-      label14:
-      this.c = bool;
-      if (!paramBoolean) {
-        break label53;
-      }
+    this.c = (paramBoolean ^ true);
+    if (paramBoolean) {
+      paramView = null;
+    } else {
+      paramView = BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter;
     }
-    label53:
-    for (paramView = null;; paramView = BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter)
+    Drawable localDrawable = getDrawable();
+    if (localDrawable != null)
     {
-      Drawable localDrawable = getDrawable();
-      if (localDrawable == null) {
-        break;
-      }
       localDrawable.setColorFilter(paramView);
       localDrawable.invalidateSelf();
-      return;
-      bool = false;
-      break label14;
     }
   }
   
@@ -107,7 +98,7 @@ public class ChatThumbView
     super.onLoadSuccessed(paramURLDrawable);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     if (BaseBubbleBuilder.jdField_a_of_type_Boolean)
     {
@@ -151,33 +142,33 @@ public class ChatThumbView
     if (!this.b) {
       return super.onTouchEvent(paramMotionEvent);
     }
-    switch (paramMotionEvent.getAction())
+    int i = paramMotionEvent.getAction();
+    Drawable localDrawable;
+    if (i != 0)
     {
-    }
-    for (;;)
-    {
-      return super.onTouchEvent(paramMotionEvent);
-      Drawable localDrawable = getDrawable();
-      if (localDrawable != null)
+      if (((i == 1) || (i == 3)) && (!this.c))
       {
-        localDrawable.setColorFilter(BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter);
-        continue;
-        if (!this.c)
+        localDrawable = getDrawable();
+        if (localDrawable != null)
         {
-          localDrawable = getDrawable();
-          if (localDrawable != null)
-          {
-            localDrawable.setColorFilter(null);
-            localDrawable.invalidateSelf();
-          }
+          localDrawable.setColorFilter(null);
+          localDrawable.invalidateSelf();
         }
       }
     }
+    else
+    {
+      localDrawable = getDrawable();
+      if (localDrawable != null) {
+        localDrawable.setColorFilter(BaseBubbleBuilder.jdField_a_of_type_AndroidGraphicsColorFilter);
+      }
+    }
+    return super.onTouchEvent(paramMotionEvent);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.ChatThumbView
  * JD-Core Version:    0.7.0.1
  */

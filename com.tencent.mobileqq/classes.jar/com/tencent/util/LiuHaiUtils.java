@@ -52,7 +52,7 @@ public class LiuHaiUtils
     jdField_a_of_type_JavaUtilArrayList.add("SHARP_FS8010".toLowerCase());
     jdField_g_of_type_Boolean = false;
     h = false;
-    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "PAAM00", "Lenovo L78011", "Pixel 3 XL", "SM-G9750", "N5207", "V1932A" };
+    jdField_a_of_type_ArrayOfJavaLangString = new String[] { "PAAM00", "Lenovo L78011", "Pixel 3 XL", "SM-G9750", "N5207", "V1932A", "V1986A" };
     jdField_b_of_type_ArrayOfJavaLangString = new String[] { "HUAWEI", "OPPO", "VIVO", "XIAOMI" };
     jdField_a_of_type_Boolean = false;
     jdField_b_of_type_Boolean = false;
@@ -76,95 +76,99 @@ public class LiuHaiUtils
   
   public static int a(Activity paramActivity)
   {
-    int j = a(paramActivity);
+    int i = a(paramActivity);
     paramActivity = paramActivity.getWindow().getDecorView();
-    int i;
     if (paramActivity == null)
     {
       if (QLog.isColorLevel()) {
         QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP decorView=null ");
       }
-      i = j;
-    }
-    for (;;)
-    {
       return i;
-      try
-      {
-        paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
-        if (paramActivity == null)
-        {
-          if (!QLog.isColorLevel()) {
-            return j;
-          }
-          QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP getRootWindowInsets inserts=null ");
-          return j;
-        }
-        paramActivity = paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]);
-        if (QLog.isColorLevel()) {
-          QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP getDisplayCutout cutOut=" + paramActivity);
-        }
-        if (paramActivity != null)
-        {
-          int k = ((Integer)paramActivity.getClass().getMethod("getSafeInsetTop", new Class[0]).invoke(paramActivity, new Object[0])).intValue();
-          i = k;
-          if (!QLog.isColorLevel()) {
-            continue;
-          }
-          QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP top:" + k);
-          return k;
-        }
-      }
-      catch (Exception paramActivity)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP Exception");
-        }
-      }
     }
-    return j;
-    return j;
+    try
+    {
+      paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
+      if (paramActivity == null)
+      {
+        if (!QLog.isColorLevel()) {
+          return i;
+        }
+        QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP getRootWindowInsets inserts=null ");
+        return i;
+      }
+      paramActivity = paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]);
+      if (QLog.isColorLevel())
+      {
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("getNotchInScreenHeight_AndroidP getDisplayCutout cutOut=");
+        localStringBuilder.append(paramActivity);
+        QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
+      }
+      if (paramActivity == null) {
+        break label219;
+      }
+      int j = ((Integer)paramActivity.getClass().getMethod("getSafeInsetTop", new Class[0]).invoke(paramActivity, new Object[0])).intValue();
+      if (QLog.isColorLevel())
+      {
+        paramActivity = new StringBuilder();
+        paramActivity.append("getNotchInScreenHeight_AndroidP top:");
+        paramActivity.append(j);
+        QLog.i("LiuHaiUtils", 1, paramActivity.toString());
+      }
+      return j;
+    }
+    catch (Exception paramActivity)
+    {
+      label205:
+      label219:
+      break label205;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LiuHaiUtils", 1, "getNotchInScreenHeight_AndroidP Exception");
+    }
+    return i;
+    return i;
   }
   
   public static int a(Context paramContext)
   {
-    int i = 0;
-    int j = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
-    if (j > 0) {
-      i = paramContext.getResources().getDimensionPixelSize(j);
+    int i = paramContext.getResources().getIdentifier("status_bar_height", "dimen", "android");
+    if (i > 0) {
+      return paramContext.getResources().getDimensionPixelSize(i);
     }
-    return i;
+    return 0;
   }
   
   private static int a(String paramString, int paramInt)
   {
     try
     {
-      Object localObject = Class.forName("android.os.SystemProperties");
-      i = paramInt;
+      localObject = Class.forName("android.os.SystemProperties");
       if (localObject != null)
       {
         localObject = ((Class)localObject).getMethod("getInt", new Class[] { String.class, Integer.TYPE });
-        i = paramInt;
         if (localObject != null)
         {
           paramString = ((Method)localObject).invoke(null, new Object[] { paramString, Integer.valueOf(paramInt) });
-          i = paramInt;
-          if ((paramString instanceof Integer)) {
-            i = ((Integer)paramString).intValue();
+          if ((paramString instanceof Integer))
+          {
+            int i = ((Integer)paramString).intValue();
+            return i;
           }
         }
       }
     }
     catch (Exception paramString)
     {
-      do
+      Object localObject;
+      if (QLog.isColorLevel())
       {
-        int i = paramInt;
-      } while (!QLog.isColorLevel());
-      QLog.d("LiuHaiUtils", 2, "getSystemPropertyForXiaomi() Exception=" + paramString.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getSystemPropertyForXiaomi() Exception=");
+        ((StringBuilder)localObject).append(paramString.getMessage());
+        QLog.d("LiuHaiUtils", 2, ((StringBuilder)localObject).toString());
+      }
     }
-    return i;
     return paramInt;
   }
   
@@ -181,227 +185,313 @@ public class LiuHaiUtils
   
   public static void a(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LiuHaiUtils", 1, "initLiuHaiProperty manufacturer:" + Build.MANUFACTURER + " hasInitHasNotch:" + jdField_c_of_type_Boolean + " sHasNotch:" + jdField_a_of_type_Boolean + " sEnableNotchOK:" + jdField_b_of_type_Boolean + " sNotchHeight:" + jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("initLiuHaiProperty manufacturer:");
+      localStringBuilder1.append(Build.MANUFACTURER);
+      localStringBuilder1.append(" hasInitHasNotch:");
+      localStringBuilder1.append(jdField_c_of_type_Boolean);
+      localStringBuilder1.append(" sHasNotch:");
+      localStringBuilder1.append(jdField_a_of_type_Boolean);
+      localStringBuilder1.append(" sEnableNotchOK:");
+      localStringBuilder1.append(jdField_b_of_type_Boolean);
+      localStringBuilder1.append(" sNotchHeight:");
+      localStringBuilder1.append(jdField_a_of_type_Int);
+      QLog.e("LiuHaiUtils", 1, localStringBuilder1.toString());
     }
     if (!jdField_c_of_type_Boolean)
     {
       jdField_b_of_type_Int = ViewUtils.b();
       jdField_c_of_type_Int = ViewUtils.a();
       jdField_a_of_type_Boolean = false;
-    }
-    try
-    {
-      jdField_a_of_type_Boolean = d(paramActivity);
+      try
+      {
+        jdField_a_of_type_Boolean = d(paramActivity);
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("initLiuHaiProperty manufacturer:");
+          localStringBuilder2.append(Build.MANUFACTURER);
+          QLog.e("LiuHaiUtils", 1, localStringBuilder2.toString(), localThrowable);
+        }
+      }
       if (jdField_a_of_type_Boolean) {
         jdField_a_of_type_Int = b(paramActivity);
       }
       jdField_c_of_type_Boolean = true;
-      jdField_b_of_type_Boolean = false;
-      if (jdField_a_of_type_Boolean)
-      {
-        jdField_b_of_type_Boolean = k(paramActivity);
-        if (jdField_a_of_type_Int <= 0) {
-          jdField_b_of_type_Boolean = false;
-        }
-      }
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "initLiuHaiProperty[after] manufacturer:" + Build.MANUFACTURER + " hasInitHasNotch:" + jdField_c_of_type_Boolean + " sHasNotch:" + jdField_a_of_type_Boolean + " sEnableNotchOK:" + jdField_b_of_type_Boolean + " sNotchHeight:" + jdField_a_of_type_Int);
-      }
-      return;
     }
-    catch (Throwable localThrowable)
+    jdField_b_of_type_Boolean = false;
+    if (jdField_a_of_type_Boolean)
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "initLiuHaiProperty manufacturer:" + Build.MANUFACTURER, localThrowable);
-        }
+      jdField_b_of_type_Boolean = k(paramActivity);
+      if (jdField_a_of_type_Int <= 0) {
+        jdField_b_of_type_Boolean = false;
       }
+    }
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("initLiuHaiProperty[after] manufacturer:");
+      paramActivity.append(Build.MANUFACTURER);
+      paramActivity.append(" hasInitHasNotch:");
+      paramActivity.append(jdField_c_of_type_Boolean);
+      paramActivity.append(" sHasNotch:");
+      paramActivity.append(jdField_a_of_type_Boolean);
+      paramActivity.append(" sEnableNotchOK:");
+      paramActivity.append(jdField_b_of_type_Boolean);
+      paramActivity.append(" sNotchHeight:");
+      paramActivity.append(jdField_a_of_type_Int);
+      QLog.e("LiuHaiUtils", 1, paramActivity.toString());
     }
   }
   
   public static boolean a()
   {
-    String str = (Build.MANUFACTURER + "_" + Build.MODEL).toLowerCase();
-    return jdField_a_of_type_JavaUtilArrayList.contains(str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    ((StringBuilder)localObject).append("_");
+    ((StringBuilder)localObject).append(Build.MODEL);
+    localObject = ((StringBuilder)localObject).toString().toLowerCase();
+    return jdField_a_of_type_JavaUtilArrayList.contains(localObject);
   }
   
   public static boolean a(Activity paramActivity)
   {
     paramActivity = paramActivity.getWindow().getDecorView();
-    if (paramActivity == null) {
+    if (paramActivity == null)
+    {
       if (QLog.isColorLevel()) {
         QLog.i("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP decorView=null");
       }
+      return false;
     }
-    do
+    for (;;)
     {
-      for (;;)
+      try
       {
-        return false;
-        try
+        paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
+        if (paramActivity == null)
         {
-          paramActivity = paramActivity.getClass().getMethod("getRootWindowInsets", new Class[0]).invoke(paramActivity, new Object[0]);
-          if (paramActivity != null) {
-            break label90;
+          if (!QLog.isColorLevel()) {
+            break label162;
           }
-          if (QLog.isColorLevel())
-          {
-            QLog.i("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP getRootWindowInsets inserts=null");
-            return false;
-          }
+          QLog.i("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP getRootWindowInsets inserts=null");
+          return false;
         }
-        catch (Exception paramActivity) {}
+        if (paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]) == null) {
+          break label164;
+        }
+        bool = true;
+        if (QLog.isColorLevel())
+        {
+          paramActivity = new StringBuilder();
+          paramActivity.append("hasNotchInScreen_AndroidP getDisplayCutout  exists:");
+          paramActivity.append(bool);
+          QLog.i("LiuHaiUtils", 1, paramActivity.toString());
+        }
+        return bool;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP Exception");
-    return false;
-    label90:
-    if (paramActivity.getClass().getMethod("getDisplayCutout", new Class[0]).invoke(paramActivity, new Object[0]) != null) {}
-    for (boolean bool = true;; bool = false)
-    {
+      catch (Exception paramActivity)
+      {
+        continue;
+      }
       if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP getDisplayCutout  exists:" + bool);
+        QLog.e("LiuHaiUtils", 1, "hasNotchInScreen_AndroidP Exception");
       }
-      return bool;
+      return false;
+      label162:
+      return false;
+      label164:
+      boolean bool = false;
     }
   }
   
   public static boolean a(Context paramContext)
   {
-    do
+    boolean bool2 = false;
+    boolean bool1 = bool2;
+    boolean bool3;
+    try
     {
-      try
+      paramContext = paramContext.getClassLoader().loadClass("android.util.FtFeature");
+      bool1 = bool2;
+      bool2 = ((Boolean)paramContext.getMethod("isFeatureSupport", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(32) })).booleanValue();
+      bool1 = bool2;
+      bool3 = bool2;
+      if (QLog.isColorLevel())
       {
-        paramContext = paramContext.getClassLoader().loadClass("android.util.FtFeature");
-        bool1 = ((Boolean)paramContext.getMethod("isFeatureSupport", new Class[] { Integer.TYPE }).invoke(paramContext, new Object[] { Integer.valueOf(32) })).booleanValue();
-        boolean bool2 = bool1;
-        bool2 = bool1;
+        bool1 = bool2;
+        paramContext = new StringBuilder();
+        bool1 = bool2;
+        paramContext.append("vivoHasNotchInScreen ret=");
+        bool1 = bool2;
+        paramContext.append(bool2);
+        bool1 = bool2;
+        QLog.i("LiuHaiUtils", 1, paramContext.toString());
+        return bool2;
       }
-      catch (Exception paramContext)
+    }
+    catch (Exception paramContext)
+    {
+      bool3 = bool1;
+      if (QLog.isColorLevel())
       {
-        try
-        {
-          if (QLog.isColorLevel())
-          {
-            QLog.i("LiuHaiUtils", 1, "vivoHasNotchInScreen ret=" + bool1);
-            bool2 = bool1;
-          }
-          return bool2;
-        }
-        catch (Exception paramContext)
-        {
-          boolean bool1;
-          continue;
-        }
-        paramContext = paramContext;
-        bool1 = false;
+        QLog.e("LiuHaiUtils", 1, "vivoHasNotchInScreen Exception", paramContext);
+        bool3 = bool1;
       }
-    } while (!QLog.isColorLevel());
-    QLog.e("LiuHaiUtils", 1, "vivoHasNotchInScreen Exception", paramContext);
-    return bool1;
+    }
+    return bool3;
   }
   
   public static boolean a(View paramView1, View paramView2, int paramInt)
   {
-    if (paramView2 != null)
-    {
+    boolean bool = true;
+    if (paramView2 != null) {
       if (!b())
       {
         if (paramView1 != null) {
           paramView1.setVisibility(8);
         }
         paramView2.setVisibility(8);
-        return false;
       }
-      ViewGroup.LayoutParams localLayoutParams;
-      if (paramView1 != null)
+      else
       {
-        localLayoutParams = paramView1.getLayoutParams();
-        localLayoutParams.height = jdField_a_of_type_Int;
-        paramView1.setLayoutParams(localLayoutParams);
-        if (paramView1.getVisibility() != 0) {
-          paramView1.setVisibility(0);
+        Object localObject;
+        if (paramView1 != null)
+        {
+          localObject = paramView1.getLayoutParams();
+          ((ViewGroup.LayoutParams)localObject).height = jdField_a_of_type_Int;
+          paramView1.setLayoutParams((ViewGroup.LayoutParams)localObject);
+          if (paramView1.getVisibility() != 0) {
+            paramView1.setVisibility(0);
+          }
         }
-      }
-      int j = ViewUtils.a();
-      int i = ViewUtils.b();
-      int k = (int)(j / 9.0F * 16.0F);
-      j = i - k - jdField_a_of_type_Int;
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "initLiuHaiScreenUI_Common manufacturer:" + Build.MANUFACTURER + " version:" + Build.VERSION.SDK_INT + " remainedPixel:" + j + " srcHeight:" + i + " sNotchHeight:" + jdField_a_of_type_Int + " BOTTOM_HEIGHT_LH: " + jdField_f_of_type_Int + " surfaceMaxHeight:" + k);
-      }
-      if (j > jdField_f_of_type_Int)
-      {
-        i = j - paramInt;
-        j = (int)(jdField_f_of_type_Int * 1.2F);
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "initLiuHaiScreenUI_Common manufacturer:" + Build.MANUFACTURER + " limitMaxBottom:" + j + " remainedPixel:" + i + " sForceCenter_16_9:" + true);
+        int i = ViewUtils.a();
+        int j = ViewUtils.b();
+        int k = (int)(i / 9.0F * 16.0F);
+        i = j - k - jdField_a_of_type_Int;
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("initLiuHaiScreenUI_Common manufacturer:");
+          ((StringBuilder)localObject).append(Build.MANUFACTURER);
+          ((StringBuilder)localObject).append(" version:");
+          ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+          ((StringBuilder)localObject).append(" remainedPixel:");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" srcHeight:");
+          ((StringBuilder)localObject).append(j);
+          ((StringBuilder)localObject).append(" sNotchHeight:");
+          ((StringBuilder)localObject).append(jdField_a_of_type_Int);
+          ((StringBuilder)localObject).append(" BOTTOM_HEIGHT_LH: ");
+          ((StringBuilder)localObject).append(jdField_f_of_type_Int);
+          ((StringBuilder)localObject).append(" surfaceMaxHeight:");
+          ((StringBuilder)localObject).append(k);
+          QLog.i("LiuHaiUtils", 1, ((StringBuilder)localObject).toString());
         }
-        paramInt = i;
+        j = jdField_f_of_type_Int;
         if (i > j)
         {
-          paramInt = (i - jdField_f_of_type_Int) / 2;
-          jdField_d_of_type_Int = paramInt;
-          if (paramView1 != null)
+          i -= paramInt;
+          j = (int)(j * 1.2F);
+          if (QLog.isColorLevel())
           {
-            localLayoutParams = paramView1.getLayoutParams();
-            localLayoutParams.height = (jdField_a_of_type_Int + paramInt);
-            paramView1.setLayoutParams(localLayoutParams);
+            localObject = new StringBuilder();
+            ((StringBuilder)localObject).append("initLiuHaiScreenUI_Common manufacturer:");
+            ((StringBuilder)localObject).append(Build.MANUFACTURER);
+            ((StringBuilder)localObject).append(" limitMaxBottom:");
+            ((StringBuilder)localObject).append(j);
+            ((StringBuilder)localObject).append(" remainedPixel:");
+            ((StringBuilder)localObject).append(i);
+            ((StringBuilder)localObject).append(" sForceCenter_16_9:");
+            ((StringBuilder)localObject).append(true);
+            QLog.e("LiuHaiUtils", 1, ((StringBuilder)localObject).toString());
           }
-          paramInt += jdField_f_of_type_Int;
-        }
-        paramView1 = paramView2.getLayoutParams();
-        paramView1.height = paramInt;
-        paramView2.setLayoutParams(paramView1);
-        jdField_e_of_type_Int = paramInt;
-        if (paramView2.getVisibility() != 0) {
+          paramInt = i;
+          if (i > j)
+          {
+            paramInt = (i - jdField_f_of_type_Int) / 2;
+            jdField_d_of_type_Int = paramInt;
+            if (paramView1 != null)
+            {
+              localObject = paramView1.getLayoutParams();
+              ((ViewGroup.LayoutParams)localObject).height = (jdField_a_of_type_Int + paramInt);
+              paramView1.setLayoutParams((ViewGroup.LayoutParams)localObject);
+            }
+            paramInt += jdField_f_of_type_Int;
+          }
+          paramView1 = paramView2.getLayoutParams();
+          paramView1.height = paramInt;
+          paramView2.setLayoutParams(paramView1);
+          jdField_e_of_type_Int = paramInt;
+          if (paramView2.getVisibility() == 0) {
+            break label636;
+          }
           paramView2.setVisibility(0);
+          return true;
         }
-        return true;
-      }
-      paramInt = Math.abs(j - jdField_f_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "initLiuHaiScreenUI_Common manufacturer:" + Build.MANUFACTURER + " sIsIrregularScreen:" + jdField_d_of_type_Boolean + " remainedPixel:" + j + " diffPixels: " + paramInt);
-      }
-      if (paramInt < 5)
-      {
-        paramView1 = paramView2.getLayoutParams();
-        paramView1.height = j;
-        paramView2.setLayoutParams(paramView1);
-        jdField_e_of_type_Int = j;
-        if (paramView2.getVisibility() != 0)
+        paramInt = Math.abs(i - j);
+        if (QLog.isColorLevel())
         {
+          paramView1 = new StringBuilder();
+          paramView1.append("initLiuHaiScreenUI_Common manufacturer:");
+          paramView1.append(Build.MANUFACTURER);
+          paramView1.append(" sIsIrregularScreen:");
+          paramView1.append(jdField_d_of_type_Boolean);
+          paramView1.append(" remainedPixel:");
+          paramView1.append(i);
+          paramView1.append(" diffPixels: ");
+          paramView1.append(paramInt);
+          QLog.e("LiuHaiUtils", 1, paramView1.toString());
+        }
+        if (paramInt < 5)
+        {
+          paramView1 = paramView2.getLayoutParams();
+          paramView1.height = i;
+          paramView2.setLayoutParams(paramView1);
+          jdField_e_of_type_Int = i;
+          if (paramView2.getVisibility() == 0) {
+            break label636;
+          }
+          paramView2.setVisibility(0);
+          return true;
+        }
+        if (jdField_d_of_type_Boolean)
+        {
+          paramView2.setVisibility(8);
+        }
+        else
+        {
+          paramView1 = paramView2.getLayoutParams();
+          paramView1.height = jdField_f_of_type_Int;
+          paramView2.setLayoutParams(paramView1);
+          jdField_e_of_type_Int = jdField_f_of_type_Int;
+          if (paramView2.getVisibility() == 0) {
+            break label636;
+          }
           paramView2.setVisibility(0);
           return true;
         }
       }
-      else
-      {
-        if (jdField_d_of_type_Boolean)
-        {
-          paramView2.setVisibility(8);
-          return false;
-        }
-        paramView1 = paramView2.getLayoutParams();
-        paramView1.height = jdField_f_of_type_Int;
-        paramView2.setLayoutParams(paramView1);
-        jdField_e_of_type_Int = jdField_f_of_type_Int;
-        if (paramView2.getVisibility() != 0) {
-          paramView2.setVisibility(0);
-        }
-      }
-      return true;
     }
-    return false;
+    bool = false;
+    label636:
+    return bool;
   }
   
   public static boolean a(WindowManager.LayoutParams paramLayoutParams)
   {
     int i = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "enableNotch apiVersion: " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enableNotch apiVersion: ");
+      localStringBuilder.append(i);
+      QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
     }
     if (i > 27) {
       return c(paramLayoutParams);
@@ -411,88 +501,114 @@ public class LiuHaiUtils
   
   public static int[] a(Context paramContext)
   {
-    Display localDisplay = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
+    Object localObject = ((WindowManager)paramContext.getSystemService("window")).getDefaultDisplay();
     DisplayMetrics localDisplayMetrics = new DisplayMetrics();
-    localDisplay.getMetrics(localDisplayMetrics);
+    ((Display)localObject).getMetrics(localDisplayMetrics);
     if (Build.VERSION.SDK_INT >= 17)
     {
       paramContext = new DisplayMetrics();
-      localDisplay.getRealMetrics(paramContext);
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "getRealDisplay manufacturer:" + Build.MANUFACTURER + " version:" + Build.VERSION.SDK_INT + " width:" + paramContext.widthPixels + " height:" + paramContext.heightPixels);
+      ((Display)localObject).getRealMetrics(paramContext);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("getRealDisplay manufacturer:");
+        ((StringBuilder)localObject).append(Build.MANUFACTURER);
+        ((StringBuilder)localObject).append(" version:");
+        ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+        ((StringBuilder)localObject).append(" width:");
+        ((StringBuilder)localObject).append(paramContext.widthPixels);
+        ((StringBuilder)localObject).append(" height:");
+        ((StringBuilder)localObject).append(paramContext.heightPixels);
+        QLog.i("LiuHaiUtils", 1, ((StringBuilder)localObject).toString());
       }
       return new int[] { paramContext.widthPixels, paramContext.heightPixels };
     }
     boolean bool = SystemBarTintManager.hasNavBar(paramContext);
-    if (bool) {}
-    for (int i = SystemBarTintManager.getNavigationBarHeight(paramContext);; i = 0)
-    {
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "getRealDisplay[none] manufacturer:" + Build.MANUFACTURER + " width:" + localDisplayMetrics.widthPixels + " height:" + localDisplayMetrics.heightPixels + " mNavigationBarHeight:" + i + " hasNavBar:" + bool);
-      }
-      return new int[] { localDisplayMetrics.widthPixels, i + localDisplayMetrics.heightPixels };
+    int i;
+    if (bool) {
+      i = SystemBarTintManager.getNavigationBarHeight(paramContext);
+    } else {
+      i = 0;
     }
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("getRealDisplay[none] manufacturer:");
+      paramContext.append(Build.MANUFACTURER);
+      paramContext.append(" width:");
+      paramContext.append(localDisplayMetrics.widthPixels);
+      paramContext.append(" height:");
+      paramContext.append(localDisplayMetrics.heightPixels);
+      paramContext.append(" mNavigationBarHeight:");
+      paramContext.append(i);
+      paramContext.append(" hasNavBar:");
+      paramContext.append(bool);
+      QLog.i("LiuHaiUtils", 1, paramContext.toString());
+    }
+    return new int[] { localDisplayMetrics.widthPixels, localDisplayMetrics.heightPixels + i };
   }
   
   public static int b(Activity paramActivity)
   {
-    int k = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "getNotchInScreenHeight apiVersion: " + k);
+    int i = Build.VERSION.SDK_INT;
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getNotchInScreenHeight apiVersion: ");
+      localStringBuilder.append(i);
+      QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
     }
     int j = a(paramActivity);
-    int i = j;
     if (j <= 0)
     {
-      if (k > 27) {
-        i = a(paramActivity);
+      if (i > 27) {
+        return a(paramActivity);
       }
+      return b(paramActivity);
     }
-    else {
-      return i;
-    }
-    return b(paramActivity);
+    return j;
   }
   
   public static int b(Context paramContext)
   {
-    int j = 0;
-    Object localObject = "" + Build.MANUFACTURER;
-    if (((String)localObject).equalsIgnoreCase("HUAWEI")) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    String str = ((StringBuilder)localObject).toString();
+    boolean bool = str.equalsIgnoreCase("HUAWEI");
+    localObject = null;
+    if (bool) {
       localObject = b(paramContext);
+    } else if (str.equalsIgnoreCase("OPPO")) {
+      localObject = c(paramContext);
+    } else if ((!str.equalsIgnoreCase("VIVO")) && (str.equalsIgnoreCase("XIAOMI"))) {
+      localObject = d(paramContext);
     }
-    for (;;)
+    int j = 0;
+    int i;
+    if (localObject != null) {
+      i = localObject[0];
+    } else {
+      i = 0;
+    }
+    if (localObject != null) {
+      j = localObject[1];
+    }
+    int k = a(paramContext);
+    if (QLog.isColorLevel())
     {
-      if (localObject != null) {}
-      for (int i = localObject[0];; i = 0)
-      {
-        if (localObject != null) {
-          j = localObject[1];
-        }
-        int k = a(paramContext);
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "getNotchInScreenHeight manufacturer:" + Build.MANUFACTURER + " height:" + j + " width:" + i + " status:" + k);
-        }
-        return Math.max(j, k);
-        if (((String)localObject).equalsIgnoreCase("OPPO"))
-        {
-          localObject = c(paramContext);
-          break;
-        }
-        if (((String)localObject).equalsIgnoreCase("VIVO"))
-        {
-          localObject = null;
-          break;
-        }
-        if (!((String)localObject).equalsIgnoreCase("XIAOMI")) {
-          break label196;
-        }
-        localObject = d(paramContext);
-        break;
-      }
-      label196:
-      localObject = null;
+      paramContext = new StringBuilder();
+      paramContext.append("getNotchInScreenHeight manufacturer:");
+      paramContext.append(Build.MANUFACTURER);
+      paramContext.append(" height:");
+      paramContext.append(j);
+      paramContext.append(" width:");
+      paramContext.append(i);
+      paramContext.append(" status:");
+      paramContext.append(k);
+      QLog.e("LiuHaiUtils", 1, paramContext.toString());
     }
+    return Math.max(j, k);
   }
   
   public static void b(Activity paramActivity)
@@ -525,17 +641,20 @@ public class LiuHaiUtils
   
   public static boolean b(Context paramContext)
   {
-    String str = "" + Build.MANUFACTURER;
-    if (str.equalsIgnoreCase("HUAWEI")) {
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    localObject = ((StringBuilder)localObject).toString();
+    if (((String)localObject).equalsIgnoreCase("HUAWEI")) {
       return c(paramContext);
     }
-    if (str.equalsIgnoreCase("OPPO")) {
+    if (((String)localObject).equalsIgnoreCase("OPPO")) {
       return d(paramContext);
     }
-    if (str.equalsIgnoreCase("VIVO")) {
+    if (((String)localObject).equalsIgnoreCase("VIVO")) {
       return a(paramContext);
     }
-    if (str.equalsIgnoreCase("XIAOMI")) {
+    if (((String)localObject).equalsIgnoreCase("XIAOMI")) {
       return e(paramContext);
     }
     return false;
@@ -549,119 +668,90 @@ public class LiuHaiUtils
     return true;
   }
   
-  /* Error */
   private static int[] b(Context paramContext)
   {
-    // Byte code:
-    //   0: iconst_2
-    //   1: newarray int
-    //   3: astore_1
-    //   4: aload_1
-    //   5: dup
-    //   6: iconst_0
-    //   7: iconst_0
-    //   8: iastore
-    //   9: dup
-    //   10: iconst_1
-    //   11: iconst_0
-    //   12: iastore
-    //   13: pop
-    //   14: aload_0
-    //   15: invokevirtual 294	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   18: ldc_w 484
-    //   21: invokevirtual 301	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   24: astore_0
-    //   25: aload_0
-    //   26: ldc_w 486
-    //   29: iconst_0
-    //   30: anewarray 141	java/lang/Class
-    //   33: invokevirtual 145	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   36: aload_0
-    //   37: iconst_0
-    //   38: anewarray 4	java/lang/Object
-    //   41: invokevirtual 151	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   44: checkcast 488	[I
-    //   47: checkcast 488	[I
-    //   50: astore_0
-    //   51: aload_0
-    //   52: astore_1
-    //   53: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   56: ifeq +31 -> 87
-    //   59: ldc 127
-    //   61: iconst_1
-    //   62: new 157	java/lang/StringBuilder
-    //   65: dup
-    //   66: invokespecial 158	java/lang/StringBuilder:<init>	()V
-    //   69: ldc_w 490
-    //   72: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   75: aload_0
-    //   76: invokevirtual 167	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   79: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   82: invokestatic 133	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   85: aload_0
-    //   86: astore_1
-    //   87: aload_1
-    //   88: areturn
-    //   89: astore_0
-    //   90: aload_1
-    //   91: astore_0
-    //   92: aload_0
-    //   93: astore_1
-    //   94: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   97: ifeq -10 -> 87
-    //   100: ldc 127
-    //   102: iconst_1
-    //   103: ldc_w 492
-    //   106: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   109: aload_0
-    //   110: areturn
-    //   111: astore_0
-    //   112: aload_1
-    //   113: astore_0
-    //   114: aload_0
-    //   115: astore_1
-    //   116: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   119: ifeq -32 -> 87
-    //   122: ldc 127
-    //   124: iconst_1
-    //   125: ldc_w 494
-    //   128: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   131: aload_0
-    //   132: areturn
-    //   133: astore_0
-    //   134: aload_1
-    //   135: astore_0
-    //   136: aload_0
-    //   137: astore_1
-    //   138: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   141: ifeq -54 -> 87
-    //   144: ldc 127
-    //   146: iconst_1
-    //   147: ldc_w 496
-    //   150: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   153: aload_0
-    //   154: areturn
-    //   155: astore_1
-    //   156: goto -20 -> 136
-    //   159: astore_1
-    //   160: goto -46 -> 114
-    //   163: astore_1
-    //   164: goto -72 -> 92
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	167	0	paramContext	Context
-    //   3	135	1	localObject	Object
-    //   155	1	1	localException	Exception
-    //   159	1	1	localNoSuchMethodException	java.lang.NoSuchMethodException
-    //   163	1	1	localClassNotFoundException	java.lang.ClassNotFoundException
-    // Exception table:
-    //   from	to	target	type
-    //   14	51	89	java/lang/ClassNotFoundException
-    //   14	51	111	java/lang/NoSuchMethodException
-    //   14	51	133	java/lang/Exception
-    //   53	85	155	java/lang/Exception
-    //   53	85	159	java/lang/NoSuchMethodException
-    //   53	85	163	java/lang/ClassNotFoundException
+    Object localObject = new int[2];
+    Object tmp5_4 = localObject;
+    tmp5_4[0] = 0;
+    Object tmp9_5 = tmp5_4;
+    tmp9_5[1] = 0;
+    tmp9_5;
+    try
+    {
+      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
+      paramContext = (int[])paramContext.getMethod("getNotchSize", new Class[0]).invoke(paramContext, new Object[0]);
+      localObject = paramContext;
+    }
+    catch (ClassNotFoundException paramContext)
+    {
+      break label144;
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      label144:
+      label146:
+      label165:
+      break label123;
+    }
+    catch (Exception paramContext)
+    {
+      label93:
+      label96:
+      label99:
+      label102:
+      label104:
+      label123:
+      label125:
+      break label102;
+    }
+    try
+    {
+      if (!QLog.isColorLevel()) {
+        break label165;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hwGetNotchSize ret=");
+      ((StringBuilder)localObject).append(paramContext);
+      QLog.i("LiuHaiUtils", 1, ((StringBuilder)localObject).toString());
+      return paramContext;
+    }
+    catch (ClassNotFoundException localClassNotFoundException)
+    {
+      break label99;
+    }
+    catch (NoSuchMethodException localNoSuchMethodException)
+    {
+      break label96;
+    }
+    catch (Exception localException)
+    {
+      break label93;
+    }
+    break label104;
+    break label125;
+    break label146;
+    paramContext = (Context)localObject;
+    localObject = paramContext;
+    if (QLog.isColorLevel())
+    {
+      QLog.e("LiuHaiUtils", 1, "hasNotchInScreen Exception");
+      return paramContext;
+      paramContext = (Context)localObject;
+      localObject = paramContext;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("LiuHaiUtils", 1, "hwGetNotchSize NoSuchMethodException");
+        return paramContext;
+        paramContext = (Context)localObject;
+        localObject = paramContext;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("LiuHaiUtils", 1, "hwGetNotchSize ClassNotFoundException");
+          localObject = paramContext;
+        }
+      }
+    }
+    return localObject;
   }
   
   public static void c(Activity paramActivity)
@@ -685,118 +775,104 @@ public class LiuHaiUtils
   public static boolean c(Activity paramActivity)
   {
     int i = Build.VERSION.SDK_INT;
-    String str = "" + Build.MANUFACTURER;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "hasNotchInScreenByVersion version: " + i + " " + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    localObject = ((StringBuilder)localObject).toString();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hasNotchInScreenByVersion version: ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append((String)localObject);
+      QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
     }
     boolean bool = false;
     if (i > 27) {
-      bool = a(paramActivity);
+      return a(paramActivity);
     }
-    while (i < 26) {
-      return bool;
+    if (i >= 26) {
+      bool = b(paramActivity);
     }
-    return b(paramActivity);
+    return bool;
   }
   
-  /* Error */
   private static boolean c(Context paramContext)
   {
-    // Byte code:
-    //   0: aload_0
-    //   1: invokevirtual 294	android/content/Context:getClassLoader	()Ljava/lang/ClassLoader;
-    //   4: ldc_w 484
-    //   7: invokevirtual 301	java/lang/ClassLoader:loadClass	(Ljava/lang/String;)Ljava/lang/Class;
-    //   10: astore_0
-    //   11: aload_0
-    //   12: ldc_w 506
-    //   15: iconst_0
-    //   16: anewarray 141	java/lang/Class
-    //   19: invokevirtual 145	java/lang/Class:getMethod	(Ljava/lang/String;[Ljava/lang/Class;)Ljava/lang/reflect/Method;
-    //   22: aload_0
-    //   23: iconst_0
-    //   24: anewarray 4	java/lang/Object
-    //   27: invokevirtual 151	java/lang/reflect/Method:invoke	(Ljava/lang/Object;[Ljava/lang/Object;)Ljava/lang/Object;
-    //   30: checkcast 305	java/lang/Boolean
-    //   33: invokevirtual 308	java/lang/Boolean:booleanValue	()Z
-    //   36: istore_1
-    //   37: iload_1
-    //   38: istore_2
-    //   39: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   42: ifeq +31 -> 73
-    //   45: ldc 127
-    //   47: iconst_1
-    //   48: new 157	java/lang/StringBuilder
-    //   51: dup
-    //   52: invokespecial 158	java/lang/StringBuilder:<init>	()V
-    //   55: ldc_w 508
-    //   58: invokevirtual 164	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   61: iload_1
-    //   62: invokevirtual 250	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   65: invokevirtual 170	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   68: invokestatic 133	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   71: iload_1
-    //   72: istore_2
-    //   73: iload_2
-    //   74: ireturn
-    //   75: astore_0
-    //   76: iconst_0
-    //   77: istore_1
-    //   78: iload_1
-    //   79: istore_2
-    //   80: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   83: ifeq -10 -> 73
-    //   86: ldc 127
-    //   88: iconst_1
-    //   89: ldc_w 510
-    //   92: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   95: iload_1
-    //   96: ireturn
-    //   97: astore_0
-    //   98: iconst_0
-    //   99: istore_1
-    //   100: iload_1
-    //   101: istore_2
-    //   102: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   105: ifeq -32 -> 73
-    //   108: ldc 127
-    //   110: iconst_1
-    //   111: ldc_w 512
-    //   114: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   117: iload_1
-    //   118: ireturn
-    //   119: astore_0
-    //   120: iconst_0
-    //   121: istore_1
-    //   122: iload_1
-    //   123: istore_2
-    //   124: invokestatic 125	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   127: ifeq -54 -> 73
-    //   130: ldc 127
-    //   132: iconst_1
-    //   133: ldc_w 514
-    //   136: invokestatic 186	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   139: iload_1
-    //   140: ireturn
-    //   141: astore_0
-    //   142: goto -20 -> 122
-    //   145: astore_0
-    //   146: goto -46 -> 100
-    //   149: astore_0
-    //   150: goto -72 -> 78
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	153	0	paramContext	Context
-    //   36	104	1	bool1	boolean
-    //   38	86	2	bool2	boolean
-    // Exception table:
-    //   from	to	target	type
-    //   0	37	75	java/lang/ClassNotFoundException
-    //   0	37	97	java/lang/NoSuchMethodException
-    //   0	37	119	java/lang/Exception
-    //   39	71	141	java/lang/Exception
-    //   39	71	145	java/lang/NoSuchMethodException
-    //   39	71	149	java/lang/ClassNotFoundException
+    boolean bool2 = false;
+    boolean bool6 = false;
+    boolean bool1 = false;
+    boolean bool3 = bool1;
+    boolean bool4 = bool2;
+    boolean bool5 = bool6;
+    try
+    {
+      paramContext = paramContext.getClassLoader().loadClass("com.huawei.android.util.HwNotchSizeUtil");
+      bool3 = bool1;
+      bool4 = bool2;
+      bool5 = bool6;
+      bool1 = ((Boolean)paramContext.getMethod("hasNotchInScreen", new Class[0]).invoke(paramContext, new Object[0])).booleanValue();
+      bool2 = bool1;
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      if (!QLog.isColorLevel()) {
+        break label205;
+      }
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      paramContext = new StringBuilder();
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      paramContext.append("hwHasNotchInScreen ret=");
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      paramContext.append(bool1);
+      bool3 = bool1;
+      bool4 = bool1;
+      bool5 = bool1;
+      QLog.i("LiuHaiUtils", 1, paramContext.toString());
+      return bool1;
+    }
+    catch (ClassNotFoundException paramContext)
+    {
+      break label186;
+    }
+    catch (NoSuchMethodException paramContext)
+    {
+      break label165;
+    }
+    catch (Exception paramContext)
+    {
+      label144:
+      break label144;
+    }
+    bool2 = bool5;
+    if (QLog.isColorLevel())
+    {
+      QLog.e("LiuHaiUtils", 1, "hwHasNotchInScreen Exception");
+      return bool5;
+      label165:
+      bool2 = bool4;
+      if (QLog.isColorLevel())
+      {
+        QLog.e("LiuHaiUtils", 1, "hwHasNotchInScreen NoSuchMethodException");
+        return bool4;
+        label186:
+        bool2 = bool3;
+        if (QLog.isColorLevel())
+        {
+          QLog.e("LiuHaiUtils", 1, "hwHasNotchInScreen ClassNotFoundException");
+          bool2 = bool3;
+        }
+      }
+    }
+    label205:
+    return bool2;
   }
   
   private static boolean c(WindowManager.LayoutParams paramLayoutParams)
@@ -813,9 +889,11 @@ public class LiuHaiUtils
     }
     catch (Exception paramLayoutParams)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "enableNotchInScreen_AndroidP Exception");
-      }
+      label39:
+      break label39;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LiuHaiUtils", 1, "enableNotchInScreen_AndroidP Exception");
     }
     return false;
   }
@@ -825,80 +903,25 @@ public class LiuHaiUtils
     try
     {
       paramContext = Class.forName("android.os.SystemProperties");
-      if (paramContext == null) {
-        break label105;
+      if (paramContext != null)
+      {
+        paramContext = paramContext.getMethod("get", new Class[] { String.class });
+        if (paramContext != null)
+        {
+          paramContext.setAccessible(true);
+          paramContext = paramContext.invoke(null, new Object[] { "ro.oppo.screen.heteromorphism" });
+          if ((paramContext instanceof String)) {
+            paramContext = (String)paramContext;
+          }
+        }
       }
-      paramContext = paramContext.getMethod("get", new Class[] { String.class });
-      if (paramContext == null) {
-        break label105;
-      }
-      paramContext.setAccessible(true);
-      paramContext = paramContext.invoke(null, new Object[] { "ro.oppo.screen.heteromorphism" });
-      if (!(paramContext instanceof String)) {
-        break label105;
-      }
-      paramContext = (String)paramContext;
     }
     catch (Throwable paramContext)
     {
-      label105:
-      do
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty exp ", paramContext);
-          }
-          paramContext = null;
-          continue;
-          paramContext = paramContext.split(":");
-          if (QLog.isColorLevel()) {
-            QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values=" + paramContext);
-          }
-          if (paramContext.length >= 2)
-          {
-            String[] arrayOfString = paramContext[0].split(",");
-            if (QLog.isColorLevel()) {
-              QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values[0] size=" + arrayOfString);
-            }
-            if (arrayOfString.length >= 2) {
-              try
-              {
-                int i = Integer.valueOf(arrayOfString[0]).intValue();
-                int j = Integer.valueOf(arrayOfString[1]).intValue();
-                if (QLog.isColorLevel()) {
-                  QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values[0] left=" + i + " top=" + j);
-                }
-                arrayOfString = paramContext[1].split(",");
-                if (QLog.isColorLevel()) {
-                  QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values[1] size=" + arrayOfString);
-                }
-                int k;
-                int m;
-                if ((arrayOfString.length >= 2) && (QLog.isColorLevel())) {
-                  QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize values[0]=" + paramContext[0], localNumberFormatException1);
-                }
-              }
-              catch (NumberFormatException localNumberFormatException1)
-              {
-                try
-                {
-                  k = Integer.valueOf(arrayOfString[0]).intValue();
-                  m = Integer.valueOf(arrayOfString[1]).intValue();
-                  if (QLog.isColorLevel()) {
-                    QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty values[1] right=" + k + " bottom=" + m);
-                  }
-                  return new int[] { k - i, m - j };
-                }
-                catch (NumberFormatException localNumberFormatException2) {}
-                localNumberFormatException1 = localNumberFormatException1;
-              }
-            }
-          }
-        }
-        return null;
-      } while (!QLog.isColorLevel());
-      QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize values[1]=" + paramContext[1], localNumberFormatException2);
+      if (QLog.isColorLevel()) {
+        QLog.i("LiuHaiUtils", 1, "oppoGetNotchSize mProperty exp ", paramContext);
+      }
+      paramContext = null;
     }
     if (TextUtils.isEmpty(paramContext))
     {
@@ -907,99 +930,226 @@ public class LiuHaiUtils
       }
       return null;
     }
-    return null;
+    paramContext = paramContext.split(":");
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("oppoGetNotchSize mProperty values=");
+      ((StringBuilder)localObject).append(paramContext);
+      QLog.i("LiuHaiUtils", 1, ((StringBuilder)localObject).toString());
+    }
+    if (paramContext.length >= 2)
+    {
+      localObject = paramContext[0].split(",");
+      StringBuilder localStringBuilder;
+      if (QLog.isColorLevel())
+      {
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("oppoGetNotchSize mProperty values[0] size=");
+        localStringBuilder.append(localObject);
+        QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
+      }
+      if (localObject.length < 2) {
+        return null;
+      }
+      try
+      {
+        int i = Integer.valueOf(localObject[0]).intValue();
+        int j = Integer.valueOf(localObject[1]).intValue();
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("oppoGetNotchSize mProperty values[0] left=");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" top=");
+          ((StringBuilder)localObject).append(j);
+          QLog.i("LiuHaiUtils", 1, ((StringBuilder)localObject).toString());
+        }
+        localObject = paramContext[1].split(",");
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("oppoGetNotchSize mProperty values[1] size=");
+          localStringBuilder.append(localObject);
+          QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
+        }
+        if (localObject.length < 2) {
+          return null;
+        }
+        try
+        {
+          int k = Integer.valueOf(localObject[0]).intValue();
+          int m = Integer.valueOf(localObject[1]).intValue();
+          if (QLog.isColorLevel())
+          {
+            paramContext = new StringBuilder();
+            paramContext.append("oppoGetNotchSize mProperty values[1] right=");
+            paramContext.append(k);
+            paramContext.append(" bottom=");
+            paramContext.append(m);
+            QLog.i("LiuHaiUtils", 1, paramContext.toString());
+          }
+          return new int[] { k - i, m - j };
+        }
+        catch (NumberFormatException localNumberFormatException1)
+        {
+          if (QLog.isColorLevel())
+          {
+            localStringBuilder = new StringBuilder();
+            localStringBuilder.append("oppoGetNotchSize values[1]=");
+            localStringBuilder.append(paramContext[1]);
+            QLog.i("LiuHaiUtils", 1, localStringBuilder.toString(), localNumberFormatException1);
+          }
+          return null;
+        }
+        return null;
+      }
+      catch (NumberFormatException localNumberFormatException2)
+      {
+        if (QLog.isColorLevel())
+        {
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("oppoGetNotchSize values[0]=");
+          localStringBuilder.append(paramContext[0]);
+          QLog.i("LiuHaiUtils", 1, localStringBuilder.toString(), localNumberFormatException2);
+        }
+      }
+    }
   }
   
   public static void d(Activity paramActivity)
   {
-    if (QLog.isColorLevel()) {
-      QLog.e("LiuHaiUtils", 1, "initLiuHaiBarHeight manufacturer:" + Build.MANUFACTURER + " mHasInitHasNotch:" + jdField_e_of_type_Boolean + " mHasNotch:" + jdField_f_of_type_Boolean + " mNotchHeight:" + jdField_g_of_type_Int);
-    }
-    if (!jdField_e_of_type_Boolean) {
-      jdField_f_of_type_Boolean = false;
-    }
-    try
+    if (QLog.isColorLevel())
     {
-      jdField_f_of_type_Boolean = d(paramActivity);
+      StringBuilder localStringBuilder1 = new StringBuilder();
+      localStringBuilder1.append("initLiuHaiBarHeight manufacturer:");
+      localStringBuilder1.append(Build.MANUFACTURER);
+      localStringBuilder1.append(" mHasInitHasNotch:");
+      localStringBuilder1.append(jdField_e_of_type_Boolean);
+      localStringBuilder1.append(" mHasNotch:");
+      localStringBuilder1.append(jdField_f_of_type_Boolean);
+      localStringBuilder1.append(" mNotchHeight:");
+      localStringBuilder1.append(jdField_g_of_type_Int);
+      QLog.e("LiuHaiUtils", 1, localStringBuilder1.toString());
+    }
+    if (!jdField_e_of_type_Boolean)
+    {
+      jdField_f_of_type_Boolean = false;
+      try
+      {
+        jdField_f_of_type_Boolean = d(paramActivity);
+      }
+      catch (Throwable localThrowable)
+      {
+        if (QLog.isColorLevel())
+        {
+          StringBuilder localStringBuilder2 = new StringBuilder();
+          localStringBuilder2.append("initLiuHaiProperty manufacturer:");
+          localStringBuilder2.append(Build.MANUFACTURER);
+          QLog.e("LiuHaiUtils", 1, localStringBuilder2.toString(), localThrowable);
+        }
+      }
       if (jdField_f_of_type_Boolean) {
         jdField_g_of_type_Int = b(paramActivity);
       }
       jdField_e_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "initLiuHaiBarHeight[after] manufacturer:" + Build.MANUFACTURER + " mHasInitHasNotch:" + jdField_e_of_type_Boolean + " mHasNotch:" + jdField_f_of_type_Boolean + " mNotchHeight:" + jdField_g_of_type_Int);
-      }
-      return;
     }
-    catch (Throwable localThrowable)
+    if (QLog.isColorLevel())
     {
-      for (;;)
-      {
-        if (QLog.isColorLevel()) {
-          QLog.e("LiuHaiUtils", 1, "initLiuHaiProperty manufacturer:" + Build.MANUFACTURER, localThrowable);
-        }
-      }
+      paramActivity = new StringBuilder();
+      paramActivity.append("initLiuHaiBarHeight[after] manufacturer:");
+      paramActivity.append(Build.MANUFACTURER);
+      paramActivity.append(" mHasInitHasNotch:");
+      paramActivity.append(jdField_e_of_type_Boolean);
+      paramActivity.append(" mHasNotch:");
+      paramActivity.append(jdField_f_of_type_Boolean);
+      paramActivity.append(" mNotchHeight:");
+      paramActivity.append(jdField_g_of_type_Int);
+      QLog.e("LiuHaiUtils", 1, paramActivity.toString());
     }
   }
   
   public static boolean d()
   {
     String str = Build.MODEL.toUpperCase();
-    if (TextUtils.isEmpty(str)) {}
-    while ((!Build.MANUFACTURER.equalsIgnoreCase("huawei")) || ((!str.contains("RLI-AN00")) && (!str.contains("RLI-N29")) && (!str.contains("TAH-AN00")) && (!str.contains("TAH-N29")) && (!str.contains("unknownRLl")) && (!str.contains("HWTAH")))) {
+    boolean bool1 = TextUtils.isEmpty(str);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
     }
-    return true;
+    bool1 = bool2;
+    if (Build.MANUFACTURER.equalsIgnoreCase("huawei")) {
+      if ((!str.contains("RLI-AN00")) && (!str.contains("RLI-N29")) && (!str.contains("TAH-AN00")) && (!str.contains("TAH-N29")) && (!str.contains("unknownRLl")))
+      {
+        bool1 = bool2;
+        if (!str.contains("HWTAH")) {}
+      }
+      else
+      {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private static boolean d(Activity paramActivity)
   {
     boolean bool1 = false;
-    boolean bool2 = false;
     jdField_d_of_type_Boolean = false;
     int i = Build.VERSION.SDK_INT;
-    String str = "" + Build.MANUFACTURER;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "hasNotchInScreen version: " + i + " " + str);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    localObject = ((StringBuilder)localObject).toString();
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("hasNotchInScreen version: ");
+      localStringBuilder.append(i);
+      localStringBuilder.append(" ");
+      localStringBuilder.append((String)localObject);
+      QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
     }
     if (i < 26) {
-      return bool2;
+      return false;
     }
     if (i > 27) {
       bool1 = a(paramActivity);
     }
-    bool2 = bool1;
+    if ((!bool1) && (i >= 26)) {
+      bool1 = b(paramActivity);
+    }
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("hasNotchInScreen manufacturer = ");
+      paramActivity.append(Build.MANUFACTURER);
+      paramActivity.append(" ,brand = ");
+      paramActivity.append(Build.BRAND);
+      paramActivity.append(" ,model = ");
+      paramActivity.append(Build.MODEL);
+      QLog.i("LiuHaiUtils", 1, paramActivity.toString());
+    }
+    boolean bool2 = bool1;
     if (!bool1)
     {
-      bool2 = bool1;
-      if (i >= 26) {
-        bool2 = b(paramActivity);
-      }
-    }
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "hasNotchInScreen manufacturer = " + Build.MANUFACTURER + " ,brand = " + Build.BRAND + " ,model = " + Build.MODEL);
-    }
-    bool1 = bool2;
-    if (!bool2)
-    {
-      if (!LiuHaiWhiteListConfProcessor.a().a(Build.MANUFACTURER, Build.BRAND, Build.MODEL)) {
-        break label237;
-      }
-      bool1 = true;
-    }
-    for (;;)
-    {
-      bool2 = bool1;
-      if (!QLog.isColorLevel()) {
+      if (LiuHaiWhiteListConfProcessor.a().a(Build.MANUFACTURER, Build.BRAND, Build.MODEL)) {}
+      do
+      {
+        bool2 = true;
         break;
-      }
-      QLog.i("LiuHaiUtils", 1, "hasNotchInScreen haveNotch: " + bool1);
-      return bool1;
-      label237:
-      bool1 = bool2;
-      if (g()) {
-        bool1 = true;
-      }
+        bool2 = bool1;
+      } while (g());
     }
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("hasNotchInScreen haveNotch: ");
+      paramActivity.append(bool2);
+      QLog.i("LiuHaiUtils", 1, paramActivity.toString());
+    }
+    return bool2;
   }
   
   private static boolean d(Context paramContext)
@@ -1008,8 +1158,12 @@ public class LiuHaiUtils
       return true;
     }
     boolean bool = paramContext.getPackageManager().hasSystemFeature("com.oppo.feature.screen.heteromorphism");
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "oppoHasNotchInScreen exits:" + bool);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("oppoHasNotchInScreen exits:");
+      paramContext.append(bool);
+      QLog.i("LiuHaiUtils", 1, paramContext.toString());
     }
     return bool;
   }
@@ -1023,21 +1177,36 @@ public class LiuHaiUtils
     tmp9_5[1] = 0;
     tmp9_5;
     int i = paramContext.getResources().getIdentifier("notch_width", "dimen", "android");
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "xiaomiGetNotchSize [notch_width]resourceId: " + i);
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("xiaomiGetNotchSize [notch_width]resourceId: ");
+      localStringBuilder.append(i);
+      QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
     }
     if (i > 0) {
       arrayOfInt[0] = paramContext.getResources().getDimensionPixelSize(i);
     }
     i = paramContext.getResources().getIdentifier("notch_height", "dimen", "android");
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "xiaomiGetNotchSize [notch_height]resourceId: " + i);
+    if (QLog.isColorLevel())
+    {
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("xiaomiGetNotchSize [notch_height]resourceId: ");
+      localStringBuilder.append(i);
+      QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
     }
     if (i > 0) {
       arrayOfInt[1] = paramContext.getResources().getDimensionPixelSize(i);
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "xiaomiGetNotchSize width: " + arrayOfInt[0] + " height:" + arrayOfInt[1]);
+    if (QLog.isColorLevel())
+    {
+      paramContext = new StringBuilder();
+      paramContext.append("xiaomiGetNotchSize width: ");
+      paramContext.append(arrayOfInt[0]);
+      paramContext.append(" height:");
+      paramContext.append(arrayOfInt[1]);
+      QLog.i("LiuHaiUtils", 1, paramContext.toString());
     }
     return arrayOfInt;
   }
@@ -1045,11 +1214,20 @@ public class LiuHaiUtils
   public static boolean e()
   {
     String str = Build.MODEL.toUpperCase();
-    if (TextUtils.isEmpty(str)) {}
-    while ((!Build.MANUFACTURER.equalsIgnoreCase("samsung")) || (!str.contains("SM-F9000"))) {
+    boolean bool1 = TextUtils.isEmpty(str);
+    boolean bool2 = false;
+    if (bool1) {
       return false;
     }
-    return true;
+    bool1 = bool2;
+    if (Build.MANUFACTURER.equalsIgnoreCase("samsung"))
+    {
+      bool1 = bool2;
+      if (str.contains("SM-F9000")) {
+        bool1 = true;
+      }
+    }
+    return bool1;
   }
   
   private static boolean e(Activity paramActivity)
@@ -1075,48 +1253,59 @@ public class LiuHaiUtils
   @TargetApi(17)
   private static boolean e(Context paramContext)
   {
-    try
+    for (;;)
     {
-      if (Build.VERSION.SDK_INT >= 17)
+      try
       {
+        if (Build.VERSION.SDK_INT < 17) {
+          break label140;
+        }
         i = Settings.Global.getInt(paramContext.getContentResolver(), "force_black", 0);
         if (i == 1)
         {
           if (!QLog.isColorLevel()) {
-            break label130;
+            break;
           }
-          QLog.i("LiuHaiUtils", 1, "xiaomiHasNotchInScreen closed: " + i);
+          paramContext = new StringBuilder();
+          paramContext.append("xiaomiHasNotchInScreen closed: ");
+          paramContext.append(i);
+          QLog.i("LiuHaiUtils", 1, paramContext.toString());
           return false;
         }
         i = a("ro.miui.notch", 0);
-        if (QLog.isColorLevel()) {
-          QLog.i("LiuHaiUtils", 1, "xiaomiHasNotchInScreen isNotch: " + i);
+        if (QLog.isColorLevel())
+        {
+          paramContext = new StringBuilder();
+          paramContext.append("xiaomiHasNotchInScreen isNotch: ");
+          paramContext.append(i);
+          QLog.i("LiuHaiUtils", 1, paramContext.toString());
         }
-        if (i != 1) {
-          break label130;
+        if (i == 1) {
+          return true;
         }
-        return true;
       }
-    }
-    catch (Throwable paramContext)
-    {
-      int i;
-      while (QLog.isColorLevel())
+      catch (Throwable paramContext)
       {
-        QLog.i("LiuHaiUtils", 1, "xiaomiHasNotchInScreen crash: ", paramContext);
-        return false;
-        i = 0;
+        if (QLog.isColorLevel()) {
+          QLog.i("LiuHaiUtils", 1, "xiaomiHasNotchInScreen crash: ", paramContext);
+        }
       }
+      return false;
+      label140:
+      int i = 0;
     }
-    label130:
     return false;
   }
   
   public static boolean enableNotch(Activity paramActivity)
   {
     int i = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "enableNotch apiVersion: " + i);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("enableNotch apiVersion: ");
+      localStringBuilder.append(i);
+      QLog.i("LiuHaiUtils", 1, localStringBuilder.toString());
     }
     if (i > 27) {
       return j(paramActivity);
@@ -1134,7 +1323,7 @@ public class LiuHaiUtils
     try
     {
       paramActivity = paramActivity.getWindow().getDecorView();
-      paramActivity.setSystemUiVisibility(0x80 | paramActivity.getSystemUiVisibility());
+      paramActivity.setSystemUiVisibility(paramActivity.getSystemUiVisibility() | 0x80);
       if (QLog.isColorLevel()) {
         QLog.i("LiuHaiUtils", 1, "enableMeizuNotch true");
       }
@@ -1151,32 +1340,21 @@ public class LiuHaiUtils
   
   private static boolean g()
   {
-    boolean bool2 = false;
     String str = Build.MODEL;
-    boolean bool1 = bool2;
-    String[] arrayOfString;
-    int j;
-    int i;
     if (!TextUtils.isEmpty(str))
     {
-      arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
-      j = arrayOfString.length;
-      i = 0;
-    }
-    for (;;)
-    {
-      bool1 = bool2;
-      if (i < j)
+      String[] arrayOfString = jdField_a_of_type_ArrayOfJavaLangString;
+      int j = arrayOfString.length;
+      int i = 0;
+      while (i < j)
       {
         if (str.equalsIgnoreCase(arrayOfString[i])) {
-          bool1 = true;
+          return true;
         }
+        i += 1;
       }
-      else {
-        return bool1;
-      }
-      i += 1;
     }
+    return false;
   }
   
   private static boolean g(Activity paramActivity)
@@ -1186,70 +1364,63 @@ public class LiuHaiUtils
   
   private static boolean h(Activity paramActivity)
   {
-    boolean bool = true;
-    if ((paramActivity == null) || (paramActivity.getWindow() == null))
+    if ((paramActivity != null) && (paramActivity.getWindow() != null))
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("LiuHaiUtils", 1, "enableHuaWeiNotch invalid param");
-      }
-      bool = false;
-    }
-    for (;;)
-    {
-      return bool;
       Object localObject = paramActivity.getWindow().getAttributes();
       try
       {
         paramActivity = Class.forName("com.huawei.android.view.LayoutParamsEx");
         localObject = paramActivity.getConstructor(new Class[] { WindowManager.LayoutParams.class }).newInstance(new Object[] { localObject });
         paramActivity.getMethod("addHwFlags", new Class[] { Integer.TYPE }).invoke(localObject, new Object[] { Integer.valueOf(65536) });
-        if (QLog.isColorLevel())
-        {
+        if (QLog.isColorLevel()) {
           QLog.i("LiuHaiUtils", 1, "enableHuaWeiNotch true");
-          return true;
         }
+        return true;
       }
       catch (Exception paramActivity)
       {
         if (QLog.isColorLevel()) {
           QLog.e("LiuHaiUtils", 1, "enableHuaWeiNotch Exception", paramActivity);
         }
+        return false;
       }
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("LiuHaiUtils", 1, "enableHuaWeiNotch invalid param");
     }
     return false;
   }
   
   private static boolean i(Activity paramActivity)
   {
-    boolean bool = true;
-    String str = "" + Build.MANUFACTURER;
-    if (str.equalsIgnoreCase("HUAWEI")) {
-      bool = h(paramActivity);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("");
+    ((StringBuilder)localObject).append(Build.MANUFACTURER);
+    localObject = ((StringBuilder)localObject).toString();
+    if (((String)localObject).equalsIgnoreCase("HUAWEI")) {
+      return h(paramActivity);
     }
-    do
+    if (((String)localObject).equalsIgnoreCase("OPPO"))
     {
-      do
-      {
-        return bool;
-        if (!str.equalsIgnoreCase("OPPO")) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("LiuHaiUtils", 1, "enableNotchInScreen_AndroidO OPPO=true");
-      return true;
-      if (!str.equalsIgnoreCase("VIVO")) {
-        break;
+      if (QLog.isColorLevel()) {
+        QLog.i("LiuHaiUtils", 1, "enableNotchInScreen_AndroidO OPPO=true");
       }
-    } while (!QLog.isColorLevel());
-    QLog.i("LiuHaiUtils", 1, "enableNotchInScreen_AndroidO VIVO=true");
-    return true;
-    if (str.equalsIgnoreCase("XIAOMI")) {
+      return true;
+    }
+    if (((String)localObject).equalsIgnoreCase("VIVO"))
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("LiuHaiUtils", 1, "enableNotchInScreen_AndroidO VIVO=true");
+      }
+      return true;
+    }
+    if (((String)localObject).equalsIgnoreCase("XIAOMI")) {
       return e(paramActivity);
     }
-    if (str.equalsIgnoreCase("SAMSUNG")) {
+    if (((String)localObject).equalsIgnoreCase("SAMSUNG")) {
       return g(paramActivity);
     }
-    if (str.equalsIgnoreCase("Meizu")) {
+    if (((String)localObject).equalsIgnoreCase("Meizu")) {
       return f(paramActivity);
     }
     return false;
@@ -1271,9 +1442,11 @@ public class LiuHaiUtils
     }
     catch (Exception paramActivity)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("LiuHaiUtils", 1, "enableNotchInScreen_AndroidP Exception");
-      }
+      label55:
+      break label55;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.e("LiuHaiUtils", 1, "enableNotchInScreen_AndroidP Exception");
     }
     return false;
   }
@@ -1281,15 +1454,19 @@ public class LiuHaiUtils
   private static boolean k(Activity paramActivity)
   {
     int i = Build.VERSION.SDK_INT;
-    if (QLog.isColorLevel()) {
-      QLog.i("LiuHaiUtils", 1, "enableNotchInScreen apiVersion: " + i);
+    if (QLog.isColorLevel())
+    {
+      paramActivity = new StringBuilder();
+      paramActivity.append("enableNotchInScreen apiVersion: ");
+      paramActivity.append(i);
+      QLog.i("LiuHaiUtils", 1, paramActivity.toString());
     }
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.util.LiuHaiUtils
  * JD-Core Version:    0.7.0.1
  */

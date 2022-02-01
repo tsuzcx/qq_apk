@@ -14,13 +14,21 @@ class QQServiceForAV$5
   
   public void onServiceConnected(ComponentName paramComponentName, IBinder paramIBinder)
   {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceConnected name=" + paramComponentName + ", service=" + paramIBinder);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mBindVideoProcessConn onServiceConnected name=");
+    localStringBuilder.append(paramComponentName);
+    localStringBuilder.append(", service=");
+    localStringBuilder.append(paramIBinder);
+    QLog.i("QQServiceForAV", 1, localStringBuilder.toString());
     QQServiceForAV.b(this.a, true);
   }
   
   public void onServiceDisconnected(ComponentName paramComponentName)
   {
-    QLog.i("QQServiceForAV", 1, "mBindVideoProcessConn onServiceDisconnected name=" + paramComponentName);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("mBindVideoProcessConn onServiceDisconnected name=");
+    localStringBuilder.append(paramComponentName);
+    QLog.i("QQServiceForAV", 1, localStringBuilder.toString());
     QQServiceForAV.b(this.a, false);
     try
     {
@@ -29,13 +37,16 @@ class QQServiceForAV$5
     }
     catch (Throwable paramComponentName)
     {
-      QLog.e("QQServiceForAV", 1, "onServiceDisconnected disconnect exception:" + paramComponentName, paramComponentName);
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onServiceDisconnected disconnect exception:");
+      localStringBuilder.append(paramComponentName);
+      QLog.e("QQServiceForAV", 1, localStringBuilder.toString(), paramComponentName);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.service.QQServiceForAV.5
  * JD-Core Version:    0.7.0.1
  */

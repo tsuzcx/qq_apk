@@ -42,17 +42,54 @@ public abstract class IBaseService$Stub
   
   public boolean onTransact(int paramInt1, Parcel paramParcel1, Parcel paramParcel2, int paramInt2)
   {
-    Object localObject2 = null;
-    Object localObject1 = null;
-    switch (paramInt1)
+    if (paramInt1 != 1598968902)
     {
-    default: 
-      return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
-    case 1598968902: 
-      paramParcel2.writeString("com.tencent.qphone.base.remote.IBaseService");
-      return true;
-    case 1: 
+      boolean bool = false;
+      Object localObject2 = null;
+      Object localObject1 = null;
+      switch (paramInt1)
+      {
+      default: 
+        return super.onTransact(paramInt1, paramParcel1, paramParcel2, paramInt2);
+      case 6: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
+        paramInt1 = onKillProcess();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 5: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
+        if (paramParcel1.readInt() != 0) {
+          bool = true;
+        }
+        paramInt1 = onProcessViewableChanged(bool, paramParcel1.readLong(), paramParcel1.readString());
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 4: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
+        paramInt1 = getMsfConnectedIPFamily();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 3: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
+        paramInt1 = getMsfConnectedNetType();
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      case 2: 
+        paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
+        if (paramParcel1.readInt() != 0) {
+          localObject1 = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);
+        }
+        paramInt1 = sendToServiceMsg((ToServiceMsg)localObject1);
+        paramParcel2.writeNoException();
+        paramParcel2.writeInt(paramInt1);
+        return true;
+      }
       paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
+      localObject1 = localObject2;
       if (paramParcel1.readInt() != 0) {
         localObject1 = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);
       }
@@ -66,49 +103,14 @@ public abstract class IBaseService$Stub
       }
       paramParcel2.writeInt(0);
       return true;
-    case 2: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
-      localObject1 = localObject2;
-      if (paramParcel1.readInt() != 0) {
-        localObject1 = (ToServiceMsg)ToServiceMsg.CREATOR.createFromParcel(paramParcel1);
-      }
-      paramInt1 = sendToServiceMsg((ToServiceMsg)localObject1);
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 3: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
-      paramInt1 = getMsfConnectedNetType();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 4: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
-      paramInt1 = getMsfConnectedIPFamily();
-      paramParcel2.writeNoException();
-      paramParcel2.writeInt(paramInt1);
-      return true;
-    case 5: 
-      paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
-      if (paramParcel1.readInt() != 0) {}
-      for (boolean bool = true;; bool = false)
-      {
-        paramInt1 = onProcessViewableChanged(bool, paramParcel1.readLong(), paramParcel1.readString());
-        paramParcel2.writeNoException();
-        paramParcel2.writeInt(paramInt1);
-        return true;
-      }
     }
-    paramParcel1.enforceInterface("com.tencent.qphone.base.remote.IBaseService");
-    paramInt1 = onKillProcess();
-    paramParcel2.writeNoException();
-    paramParcel2.writeInt(paramInt1);
+    paramParcel2.writeString("com.tencent.qphone.base.remote.IBaseService");
     return true;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.remote.IBaseService.Stub
  * JD-Core Version:    0.7.0.1
  */

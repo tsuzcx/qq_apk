@@ -16,12 +16,15 @@ final class Changeset$7
       return "";
     }
     i = this.b.a(paramMatcher);
-    return '*' + Changeset.a(i);
+    paramMatcher = new StringBuilder();
+    paramMatcher.append('*');
+    paramMatcher.append(Changeset.a(i));
+    return paramMatcher.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.easysync2.Changeset.7
  * JD-Core Version:    0.7.0.1
  */

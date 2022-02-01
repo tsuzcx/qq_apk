@@ -67,18 +67,21 @@ public final class stConfInfo
   {
     paramJceOutputStream.write(this.iType, 0);
     paramJceOutputStream.write(this.iStartPos, 1);
-    if (this.strLabel != null) {
-      paramJceOutputStream.write(this.strLabel, 2);
+    String str = this.strLabel;
+    if (str != null) {
+      paramJceOutputStream.write(str, 2);
     }
     paramJceOutputStream.write(this.isCollected, 3);
     paramJceOutputStream.write(this.collectTime, 4);
     paramJceOutputStream.write(this.exclusive, 5);
-    if (this.followFeed != null) {
-      paramJceOutputStream.write(this.followFeed, 6);
+    str = this.followFeed;
+    if (str != null) {
+      paramJceOutputStream.write(str, 6);
     }
     paramJceOutputStream.write(this.useCount, 7);
-    if (this.togetherFeed != null) {
-      paramJceOutputStream.write(this.togetherFeed, 8);
+    str = this.togetherFeed;
+    if (str != null) {
+      paramJceOutputStream.write(str, 8);
     }
     paramJceOutputStream.write(this.togetherType, 9);
     paramJceOutputStream.write(this.feedUseType, 10);
@@ -90,7 +93,7 @@ public final class stConfInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_KING_SOCIALIZE_META.stConfInfo
  * JD-Core Version:    0.7.0.1
  */

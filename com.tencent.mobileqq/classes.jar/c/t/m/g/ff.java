@@ -97,20 +97,34 @@ final class ff
   public final String toString()
   {
     StringBuilder localStringBuilder = new StringBuilder("PoiData{");
-    localStringBuilder.append("name=").append(this.a).append(",");
-    localStringBuilder.append("addr=").append(this.b).append(",");
-    localStringBuilder.append("catalog=").append(this.c).append(",");
-    localStringBuilder.append("dist=").append(this.d).append(",");
-    localStringBuilder.append("latitude=").append(this.f).append(",");
-    localStringBuilder.append("longitude=").append(this.g).append(",");
-    localStringBuilder.append("direction=").append(this.h).append(",");
+    localStringBuilder.append("name=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(",");
+    localStringBuilder.append("addr=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(",");
+    localStringBuilder.append("catalog=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(",");
+    localStringBuilder.append("dist=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(",");
+    localStringBuilder.append("latitude=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(",");
+    localStringBuilder.append("longitude=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(",");
+    localStringBuilder.append("direction=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(",");
     localStringBuilder.append("}");
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.ff
  * JD-Core Version:    0.7.0.1
  */

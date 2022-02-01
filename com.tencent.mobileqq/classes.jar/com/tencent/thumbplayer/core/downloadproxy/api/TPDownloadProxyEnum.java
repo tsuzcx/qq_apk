@@ -13,6 +13,8 @@ public class TPDownloadProxyEnum
   public static final String DLPARAM_DATA_TRANSFER_MODE = "dl_param_data_transfer_mode";
   public static final String DLPARAM_ENABLE_EXPAND_DOWNLOAD_URL = "dl_param_enable_expand_donwload_url";
   public static final String DLPARAM_ENABLE_TEG_PCDN = "dl_param_enable_teg_pcdn";
+  public static final String DLPARAM_ENCRYPT_STREAM_KEY = "dl_param_encrypt_stream_key";
+  public static final String DLPARAM_ENCRYPT_STREAM_RANDOMS = "dl_param_encrypt_stream_randoms";
   public static final String DLPARAM_EXPECT_DELAY_TIME = "dl_param_expect_delay_time";
   public static final String DLPARAM_FILE_DURATION = "dl_param_file_duration";
   public static final String DLPARAM_FILE_MD5 = "dl_param_file_md5";
@@ -20,7 +22,9 @@ public class TPDownloadProxyEnum
   public static final String DLPARAM_FORMAT_INFO = "dl_param_format_info";
   public static final String DLPARAM_FORMAT_NODES = "dl_param_format_nodes";
   public static final String DLPARAM_IS_OFFLINE = "dl_param_is_offline";
+  public static final String DLPARAM_NONCE = "dl_param_nonce";
   public static final String DLPARAM_OFFLINE_PLAY_EXTRA_INFO = "dl_param_play_extra_info";
+  public static final String DLPARAM_OFFLINE_SCHEDULER_LEVEL = "dl_param_offline_schedule_level";
   public static final String DLPARAM_PACKAGE = "package";
   public static final String DLPARAM_PCDN_URLS = "dl_param_pcdn_urls";
   public static final String DLPARAM_PCDN_VTS = "dl_param_pcdn_vts";
@@ -63,6 +67,7 @@ public class TPDownloadProxyEnum
   public static final int DLTYPE_HLS_LIVE = 5;
   public static final int DLTYPE_HLS_VOD = 3;
   public static final int DLTYPE_HLS_VOD_LOOP = 4;
+  public static final int DLTYPE_HTTP_FLV_LIVE = 16;
   public static final int DLTYPE_LAN = 9;
   public static final int DLTYPE_MP4_ADV = 6;
   public static final int DLTYPE_MP4_VOD = 1;
@@ -72,10 +77,15 @@ public class TPDownloadProxyEnum
   public static final int DL_DATA_TRANSFER_MODE_AV = 1;
   public static final int DL_DATA_TRANSFER_MODE_DEFAULT = 0;
   public static final int DL_DATA_TRANSFER_MODE_FMP4_TO_TS = 2;
-  public static final String DL_PARAM_IS_ENABLE_QUIC = "dl_param_is_enable_quic";
+  public static final int DL_NATIVEINFO_TYPE_SUGGEST_BITRATE = 0;
+  public static final int DL_NATIVEINFO_TYPE_SUGGEST_DEFN = 1;
+  public static final int DL_OFFLINE_SCHEDULE_LEVEL_ALL = 0;
+  public static final int DL_OFFLINE_SCHEDULE_LEVEL_HIGH_BITRATE = 2;
+  public static final int DL_OFFLINE_SCHEDULE_LEVEL_LOW_BITRATE = 1;
   public static final String DL_PARAM_IS_ENABLE_QUIC_CONNECTION_MIGRATION = "dl_param_is_enable_quic_connection_migration";
   public static final String DL_PARAM_IS_ENABLE_QUIC_PLAINTEXT = "dl_param_is_enable_quic_plaintext";
   public static final String DL_PARAM_QUIC_CONGESTION_TYPE = "dl_param_quic_congestion_type";
+  public static final String DL_PARAM_QUIC_ENABLE_MODE = "dl_param_quic_enable_mode";
   public static final int DL_URL_TYPE_LOCAL_ABSOLUTE_URL_PRIORITY = 0;
   public static final int DL_URL_TYPE_LOCAL_PROXY_URL_CREATE_TASK = 2;
   public static final int DL_URL_TYPE_LOCAL_PROXY_URL_ONLY = 1;
@@ -107,6 +117,7 @@ public class TPDownloadProxyEnum
   public static final int NETWORK_TYPE_NONE = 0;
   public static final int NETWORK_TYPE_WIFI = 1;
   public static final int NETWORK_TYPE_WIRED = 100;
+  public static final String NET_CELLULAR_NETWORK_INTERFACE_ID = "cellular_network_interface_id";
   public static final int PLAYING_STATE_IN_SEEKING = 1;
   public static final int PLAYING_STATE_ON_BLOCKING = 2;
   public static final int PLAYING_STATE_ON_PAUSE = 5;
@@ -131,6 +142,7 @@ public class TPDownloadProxyEnum
   public static final String USER_NETWORK_TYPE = "network_type";
   public static final String USER_OS_VERSION = "os_version";
   public static final String USER_PLATFORM = "platform";
+  public static final String USER_PROXY_CONFIG = "proxy_config";
   public static final String USER_SSID = "ssid";
   public static final String USER_SYSTEM_RESERVE_MEMORY_MB = "system_reserve_memory";
   public static final String USER_TRIM_MEMORY_LEVEL = "trim_memory_level";
@@ -140,7 +152,7 @@ public class TPDownloadProxyEnum
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.thumbplayer.core.downloadproxy.api.TPDownloadProxyEnum
  * JD-Core Version:    0.7.0.1
  */

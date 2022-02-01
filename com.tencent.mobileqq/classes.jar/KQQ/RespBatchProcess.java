@@ -31,8 +31,9 @@ public final class RespBatchProcess
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.batch_response_list != null) {
-      paramJceOutputStream.write(this.batch_response_list, 0);
+    ArrayList localArrayList = this.batch_response_list;
+    if (localArrayList != null) {
+      paramJceOutputStream.write(localArrayList, 0);
     }
   }
 }

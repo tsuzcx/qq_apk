@@ -30,66 +30,64 @@ public class SubString
     if (TextUtils.isEmpty(paramString1)) {
       return 0;
     }
-    if (!TextUtils.isEmpty(paramString2)) {}
-    for (;;)
-    {
-      try
-      {
-        int i = paramString1.getBytes(paramString2).length;
-        return i;
-      }
-      catch (UnsupportedEncodingException paramString2)
-      {
-        return paramString1.length() * 3;
-      }
+    if (TextUtils.isEmpty(paramString2)) {
       paramString2 = "UTF-8";
     }
+    try
+    {
+      int i = paramString1.getBytes(paramString2).length;
+      return i;
+    }
+    catch (UnsupportedEncodingException paramString2)
+    {
+      label31:
+      break label31;
+    }
+    return paramString1.length() * 3;
   }
   
   public static String a(String paramString, int paramInt)
   {
-    int k = 0;
-    for (;;)
+    try
     {
-      int i;
-      int j;
-      try
-      {
-        paramString = paramString.getBytes("Unicode");
-        i = 2;
-        if ((i >= paramString.length) || (k >= paramInt)) {
-          break label92;
-        }
-        if (i % 2 != 1) {
-          break label75;
-        }
-        j = k + 1;
-      }
-      catch (UnsupportedEncodingException paramString)
-      {
-        return "";
-      }
-      paramString = new String(paramString, 0, paramInt, "Unicode");
-      return paramString;
-      paramInt = i + 1;
-      continue;
+      paramString = paramString.getBytes("Unicode");
+      i = 2;
+      j = 0;
+    }
+    catch (UnsupportedEncodingException paramString)
+    {
       for (;;)
       {
+        int i;
+        continue;
+        label54:
+        int k;
+        do
+        {
+          k = j + 1;
+          break;
+          k = j;
+        } while (paramString[i] != 0);
         i += 1;
-        k = j;
-        break;
-        label75:
-        j = k;
-        if (paramString[i] != 0) {
-          j = k + 1;
+        int j = k;
+        continue;
+        paramInt = i;
+        if (i % 2 == 1)
+        {
+          paramInt = i - 1;
+          if (paramString[paramInt] == 0) {
+            paramInt = i + 1;
+          }
         }
       }
-      label92:
-      paramInt = i;
-      if (i % 2 == 1) {
-        if (paramString[(i - 1)] != 0) {
-          paramInt = i - 1;
-        }
+    }
+    if ((i < paramString.length) && (j < paramInt)) {
+      if (i % 2 == 1)
+      {
+        break label54;
+        paramString = new String(paramString, 0, paramInt, "Unicode");
+        return paramString;
+        return "";
       }
     }
   }
@@ -99,69 +97,45 @@ public class SubString
     if (a(paramString1) < paramInt) {
       return paramString1;
     }
-    return a(paramString1, paramInt) + paramString2;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(a(paramString1, paramInt));
+    localStringBuilder.append(paramString2);
+    return localStringBuilder.toString();
   }
   
   public static final String a(String paramString1, int paramInt, String paramString2, String paramString3)
   {
-    if (TextUtils.isEmpty(paramString1))
-    {
-      paramString2 = "";
-      return paramString2;
+    if (TextUtils.isEmpty(paramString1)) {
+      return "";
     }
-    if (!TextUtils.isEmpty(paramString2)) {}
-    for (String str = paramString2;; str = "UTF-8")
+    if (TextUtils.isEmpty(paramString2)) {
+      paramString2 = "UTF-8";
+    }
+    if (a(paramString1, paramString2) <= paramInt) {
+      return paramString1;
+    }
+    int i = 0;
+    int j = 0;
+    while (i < paramString1.length())
     {
-      paramString2 = paramString1;
-      if (a(paramString1, str) <= paramInt) {
-        break;
-      }
-      int i = 0;
-      int j = 0;
-      for (;;)
+      int k = i + 1;
+      j += a(paramString1.substring(i, k), paramString2);
+      if (j > paramInt)
       {
-        paramString2 = paramString1;
-        if (i >= paramString1.length()) {
-          break;
-        }
-        int k = a(paramString1.substring(i, i + 1), str);
-        if (j + k > paramInt)
+        paramString2 = paramString1.substring(0, i);
+        paramString1 = paramString2;
+        if (!TextUtils.isEmpty(paramString3))
         {
-          paramString2 = paramString1.substring(0, i);
-          paramString1 = paramString2;
-          if (!TextUtils.isEmpty(paramString3)) {
-            paramString1 = paramString2 + paramString3;
-          }
-          return paramString1;
+          paramString1 = new StringBuilder();
+          paramString1.append(paramString2);
+          paramString1.append(paramString3);
+          paramString1 = paramString1.toString();
         }
-        j += k;
-        i += 1;
+        return paramString1;
       }
+      i = k;
     }
-  }
-  
-  public static String a(byte[] paramArrayOfByte, int paramInt)
-  {
-    if (paramArrayOfByte == null) {}
-    int j;
-    do
-    {
-      return null;
-      int i = paramInt - 1;
-      j = 0;
-      while ((i >= 0) && (paramArrayOfByte[i] < 0))
-      {
-        j += 1;
-        i -= 1;
-      }
-      if (j % 3 == 0) {
-        return new String(paramArrayOfByte, 0, paramInt, "utf-8");
-      }
-      if (j % 3 == 1) {
-        return new String(paramArrayOfByte, 0, paramInt - 1, "utf-8");
-      }
-    } while (j % 3 != 2);
-    return new String(paramArrayOfByte, 0, paramInt - 2, "utf-8");
+    return paramString1;
   }
   
   public static boolean a(char paramChar)
@@ -171,7 +145,7 @@ public class SubString
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.common.util.SubString
  * JD-Core Version:    0.7.0.1
  */

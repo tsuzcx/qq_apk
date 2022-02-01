@@ -20,6 +20,7 @@ import com.tencent.mobileqq.msf.sdk.MsfSdkUtils;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.TimeZone;
 import java.util.concurrent.TimeUnit;
 
@@ -51,14 +52,14 @@ public class k
   public static boolean f = false;
   public static int g = 0;
   public static int h = 0;
-  public static int i = 0;
-  public static int j = 0;
+  public static int i = 1;
+  public static int j = 2;
   public static int k = 0;
-  public static int l = 0;
-  public static int m = 0;
-  public static int n = 0;
-  public static int o = 0;
-  public static int p = 0;
+  public static int l = 1;
+  public static int m = 2;
+  public static int n = 3;
+  public static int o = 4;
+  public static int p = 5;
   public static final String q = "sp_boot_msf";
   public static final int r = 1;
   public static final int s = 2;
@@ -70,29 +71,13 @@ public class k
   private static final String y = "sp_job_ab";
   private static final String z = "sp_key_job_ab_enable";
   
-  static
-  {
-    f = false;
-    g = 0;
-    h = 0;
-    i = 1;
-    j = 2;
-    k = 0;
-    l = 1;
-    m = 2;
-    n = 3;
-    o = 4;
-    p = 5;
-  }
-  
   public static long a(long paramLong)
   {
-    return TimeUnit.MILLISECONDS.toDays(TimeZone.getDefault().getRawOffset() + paramLong);
+    return TimeUnit.MILLISECONDS.toDays(paramLong + TimeZone.getDefault().getRawOffset());
   }
   
   public static void a()
   {
-    int i1 = 1;
     if (R) {
       return;
     }
@@ -100,97 +85,113 @@ public class k
     {
       try
       {
-        if (Math.random() >= 0.009999999776482582D) {
-          break label232;
-        }
-        if ((i1 != 0) && (t) && (MsfCore.sCore != null) && (MsfService.core.sender.b.l().c()))
+        if (Math.random() < 0.009999999776482582D)
         {
-          long l1 = BaseApplication.getContext().getPackageManager().getPackageInfo("com.tencent.mobileqq", 0).lastUpdateTime;
-          l1 = System.currentTimeMillis() - l1;
-          QLog.i(c, 1, "intervalTime = " + l1 + ",model = " + Build.MODEL + ",manufacture = " + Build.MANUFACTURER + ",startupType = " + String.valueOf(K) + ",os = " + Build.VERSION.SDK_INT + ",sStartupBroadcast = " + L);
-          com.tencent.mobileqq.msf.core.c.a.a(MsfCore.sCore, "update_start_rate", "", "", "", 1, "", String.valueOf(K), L, String.valueOf(l1), "", "", "", "");
+          i1 = 1;
+          if ((i1 != 0) && (t) && (MsfCore.sCore != null) && (MsfService.core.sender.b.l().c()))
+          {
+            long l1 = BaseApplication.getContext().getPackageManager().getPackageInfo("com.tencent.mobileqq", 0).lastUpdateTime;
+            l1 = System.currentTimeMillis() - l1;
+            String str = c;
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append("intervalTime = ");
+            localStringBuilder.append(l1);
+            localStringBuilder.append(",model = ");
+            localStringBuilder.append(Build.MODEL);
+            localStringBuilder.append(",manufacture = ");
+            localStringBuilder.append(Build.MANUFACTURER);
+            localStringBuilder.append(",startupType = ");
+            localStringBuilder.append(String.valueOf(K));
+            localStringBuilder.append(",os = ");
+            localStringBuilder.append(Build.VERSION.SDK_INT);
+            localStringBuilder.append(",sStartupBroadcast = ");
+            localStringBuilder.append(L);
+            QLog.i(str, 1, localStringBuilder.toString());
+            com.tencent.mobileqq.msf.core.c.a.a(MsfCore.sCore, "update_start_rate", "", "", "", 1, "", String.valueOf(K), L, String.valueOf(l1), "", "", "", "");
+          }
+          R = true;
+          return;
         }
-        R = true;
+      }
+      catch (Exception localException)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.e(c, 2, "checkReportUpdateBoot", localException);
+        }
         return;
       }
-      catch (Exception localException) {}
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.e(c, 2, "checkReportUpdateBoot", localException);
-      return;
-      label232:
-      i1 = 0;
+      int i1 = 0;
     }
   }
   
   public static void a(Intent paramIntent, int paramInt)
   {
-    long l2;
-    long l3;
-    long l1;
-    boolean bool;
-    label111:
-    SharedPreferences.Editor localEditor;
     if (M == 0L)
     {
       J = paramInt;
       M = System.currentTimeMillis();
-      if (paramIntent != null) {
-        break label404;
+      if (paramIntent == null)
+      {
+        K = 1;
       }
-      K = 1;
-      l2 = System.currentTimeMillis();
-      O = l2 - SystemClock.elapsedRealtime();
-      paramIntent = BaseApplication.getContext().getSharedPreferences("sp_boot_msf", 0);
-      l3 = paramIntent.getLong("sp_boot_time", 0L);
-      l1 = paramIntent.getLong("sp_last_su_time", 0L);
-      if ((l3 == 0L) || (Math.abs(l3 - O) <= 120000L) || (O <= l1) || (l1 <= 0L)) {
-        break label453;
-      }
-      bool = true;
-      N = bool;
-      localEditor = paramIntent.edit();
-      localEditor.putLong("sp_boot_time", O).putLong("sp_last_su_time", l2);
-      l2 = paramIntent.getLong("sp_day_id", 0L);
-      l3 = (System.currentTimeMillis() + 28800000L) / 86400000L;
-      if ((l2 != 0L) && (l2 <= l3)) {
-        break label459;
-      }
-      localEditor.putLong("sp_day_id", 1L + l3).putInt("sp_s_times", 0);
-    }
-    for (;;)
-    {
-      localEditor.apply();
-      QLog.d(c, 1, new Object[] { "startupType = ", Integer.valueOf(K), ", firstStartup = ", Boolean.valueOf(N), ", bootTime = ", Long.valueOf(O), ", lastStartupTime = ", Long.valueOf(l1), ", isOffline = ", Boolean.valueOf(MsfCore.sCore.isOffline()), ", recordDay = ", Long.valueOf(l2), ", currentDay = ", Long.valueOf(l3), ", times=", P + ", sFromType = " + J, "sStartupBroadcast = " + L });
-      return;
-      label404:
-      if (paramIntent.getStringExtra("key_action_name") != null)
+      else if (paramIntent.getStringExtra("key_action_name") != null)
       {
         K = 4;
         L = paramIntent.getStringExtra("key_action_name");
-        break;
       }
-      if (paramIntent.getBooleanExtra("key_from_job", false))
+      else if (paramIntent.getBooleanExtra("key_from_job", false))
       {
         K = 3;
-        break;
-      }
-      K = 2;
-      break;
-      label453:
-      bool = false;
-      break label111;
-      label459:
-      if (l2 < l3)
-      {
-        P = paramIntent.getInt("sp_s_times", 0);
-        localEditor.putLong("sp_day_id", l3).putInt("sp_s_times", 1);
       }
       else
       {
-        localEditor.putInt("sp_s_times", paramIntent.getInt("sp_s_times", 0) + 1);
+        K = 2;
       }
+      long l2 = System.currentTimeMillis();
+      O = l2 - SystemClock.elapsedRealtime();
+      paramIntent = BaseApplication.getContext().getSharedPreferences("sp_boot_msf", 0);
+      long l3 = paramIntent.getLong("sp_boot_time", 0L);
+      long l1 = paramIntent.getLong("sp_last_su_time", 0L);
+      if ((l3 != 0L) && (Math.abs(l3 - O) > 120000L) && (O > l1) && (l1 > 0L)) {
+        bool1 = true;
+      } else {
+        bool1 = false;
+      }
+      N = bool1;
+      Object localObject = paramIntent.edit();
+      ((SharedPreferences.Editor)localObject).putLong("sp_boot_time", O).putLong("sp_last_su_time", l2);
+      l2 = paramIntent.getLong("sp_day_id", 0L);
+      l3 = (System.currentTimeMillis() + 28800000L) / 86400000L;
+      if ((l2 != 0L) && (l2 <= l3))
+      {
+        if (l2 < l3)
+        {
+          P = paramIntent.getInt("sp_s_times", 0);
+          ((SharedPreferences.Editor)localObject).putLong("sp_day_id", l3).putInt("sp_s_times", 1);
+        }
+        else
+        {
+          ((SharedPreferences.Editor)localObject).putInt("sp_s_times", paramIntent.getInt("sp_s_times", 0) + 1);
+        }
+      }
+      else {
+        ((SharedPreferences.Editor)localObject).putLong("sp_day_id", 1L + l3).putInt("sp_s_times", 0);
+      }
+      ((SharedPreferences.Editor)localObject).apply();
+      paramIntent = c;
+      paramInt = K;
+      boolean bool1 = N;
+      long l4 = O;
+      boolean bool2 = MsfCore.sCore.isOffline();
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(P);
+      ((StringBuilder)localObject).append(", sFromType = ");
+      ((StringBuilder)localObject).append(J);
+      localObject = ((StringBuilder)localObject).toString();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sStartupBroadcast = ");
+      localStringBuilder.append(L);
+      QLog.d(paramIntent, 1, new Object[] { "startupType = ", Integer.valueOf(paramInt), ", firstStartup = ", Boolean.valueOf(bool1), ", bootTime = ", Long.valueOf(l4), ", lastStartupTime = ", Long.valueOf(l1), ", isOffline = ", Boolean.valueOf(bool2), ", recordDay = ", Long.valueOf(l2), ", currentDay = ", Long.valueOf(l3), ", times=", localObject, localStringBuilder.toString() });
     }
   }
   
@@ -201,58 +202,80 @@ public class k
     long l4 = SystemClock.elapsedRealtime();
     long l1 = System.currentTimeMillis();
     long l2 = b(l1);
-    if (QLog.isColorLevel()) {
-      QLog.d(c, 1, "MSFAliveRecorder onMSFServiceBeginAsync " + l1);
+    String str;
+    StringBuilder localStringBuilder;
+    if (QLog.isColorLevel())
+    {
+      str = c;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("MSFAliveRecorder onMSFServiceBeginAsync ");
+      localStringBuilder.append(l1);
+      QLog.d(str, 1, localStringBuilder.toString());
     }
     a.a();
-    if ((a.d <= 0L) || (Math.abs(a.d - (l3 - l4)) > 10000L))
+    if ((a.d > 0L) && (Math.abs(a.d - (l3 - l4)) <= 10000L))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(c, 1, "reboot or bad data " + a.d);
-      }
-      a.b();
-    }
-    label337:
-    for (;;)
-    {
-      if (l2 < a) {
-        a.b();
-      }
-      if (l2 <= b) {
-        a.a(paramj);
-      }
-      return;
       l3 = a(a.c);
       l4 = a(l1);
       if (l3 != l4)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d(c, 1, "not same day report " + l3 + " " + l4);
+        if (QLog.isColorLevel())
+        {
+          str = c;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("not same day report ");
+          localStringBuilder.append(l3);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(l4);
+          QLog.d(str, 1, localStringBuilder.toString());
         }
         a.b(paramj);
       }
-      for (;;)
+      else
       {
-        if (l2 <= b) {
-          break label337;
-        }
-        a.b(paramj);
-        break;
-        if (QLog.isColorLevel()) {
-          QLog.d(c, 1, "fix data " + a.p + " " + a.c);
-        }
-        if ((l1 <= a.c) || (l1 - a.c > 39600000L))
+        if (QLog.isColorLevel())
         {
-          a.b();
+          str = c;
+          localStringBuilder = new StringBuilder();
+          localStringBuilder.append("fix data ");
+          localStringBuilder.append(a.p);
+          localStringBuilder.append(" ");
+          localStringBuilder.append(a.c);
+          QLog.d(str, 1, localStringBuilder.toString());
         }
-        else
+        if ((l1 > a.c) && (l1 - a.c <= 39600000L))
         {
           if (!a.p) {
             a.o += l1 - a.c;
           }
           a.c = l1;
         }
+        else
+        {
+          a.b();
+        }
       }
+      if (l2 > b) {
+        a.b(paramj);
+      }
+    }
+    else
+    {
+      if (QLog.isColorLevel())
+      {
+        str = c;
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("reboot or bad data ");
+        localStringBuilder.append(a.d);
+        QLog.d(str, 1, localStringBuilder.toString());
+      }
+      a.b();
+    }
+    if (l2 < a) {
+      a.b();
+    }
+    if (l2 <= b) {
+      a.a(paramj);
     }
   }
   
@@ -267,24 +290,28 @@ public class k
     if ((MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null))
     {
       HashMap localHashMap = new HashMap(8);
-      localHashMap.put("osVersion", Build.VERSION.SDK_INT + "");
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(Build.VERSION.SDK_INT);
+      ((StringBuilder)localObject).append("");
+      localHashMap.put("osVersion", ((StringBuilder)localObject).toString());
       localHashMap.put("model", Build.MODEL);
       localHashMap.put("manufacture", Build.MANUFACTURER);
-      if (paramBoolean) {}
-      for (String str = "1";; str = "0")
-      {
-        localHashMap.put("rdminit", str);
-        MsfCore.sCore.statReporter.a("EvtJobPullMsfAlive", true, 0L, 0L, localHashMap, false, false);
-        f = false;
-        return;
+      if (paramBoolean) {
+        localObject = "1";
+      } else {
+        localObject = "0";
       }
+      localHashMap.put("rdminit", localObject);
+      MsfCore.sCore.statReporter.a("EvtJobPullMsfAlive", true, 0L, 0L, localHashMap, false, false);
+      f = false;
+      return;
     }
     f = true;
   }
   
   public static long b(long paramLong)
   {
-    return TimeUnit.MILLISECONDS.toHours(TimeZone.getDefault().getRawOffset() + paramLong) % 24L;
+    return TimeUnit.MILLISECONDS.toHours(paramLong + TimeZone.getDefault().getRawOffset()) % 24L;
   }
   
   public static void b()
@@ -294,61 +321,71 @@ public class k
     }
     if ((MsfCore.sCore != null) && (MsfCore.sCore.statReporter != null) && (!MsfCore.sCore.isOffline()) && (K != 0))
     {
-      boolean bool;
-      HashMap localHashMap;
-      if (N) {
-        if (Math.random() < 0.009999999776482582D)
-        {
-          bool = true;
-          long l1 = (M - O) / 1000L;
-          i1 = MsfSdkUtils.getAutoStartMode(BaseApplication.getContext());
-          if (QLog.isColorLevel()) {
-            QLog.d(c, 2, new Object[] { "report service boot, isFirst = ", Boolean.valueOf(N), ", type = ", Integer.valueOf(K), ", bootDuration  = " + l1, "bdAction = " + L, ", report = ", Boolean.valueOf(bool), ", autoMode = " + i1 });
-          }
-          if (bool)
-          {
-            localHashMap = new HashMap(8);
-            localHashMap.put("osVersion", Build.VERSION.SDK_INT + "");
-            localHashMap.put("model", Build.MODEL);
-            localHashMap.put("manufacture", Build.MANUFACTURER);
-            localHashMap.put("startupType", String.valueOf(K));
-            localHashMap.put("startupAction", L);
-            localHashMap.put("bootDuration", String.valueOf(l1));
-            localHashMap.put("autoMode", String.valueOf(i1));
-            MsfCore.sCore.statReporter.a("EvtMSFServiceBoot", N, l1, 0L, localHashMap, false, false);
-            if ((MsfCore.sCore != null) && (N) && (MsfService.core.sender.b.l().c())) {
-              com.tencent.mobileqq.msf.core.c.a.a(MsfCore.sCore, "self_start_rate", "", "", "", 1, "", String.valueOf(K), L, String.valueOf(l1), String.valueOf(i1), "", "", "");
-            }
-          }
-          if (Math.random() >= 0.003000000026077032D) {
-            break label584;
-          }
-        }
+      boolean bool1;
+      if (N ? Math.random() < 0.009999999776482582D : Math.random() < 0.001000000047497451D) {
+        bool1 = true;
+      } else {
+        bool1 = false;
       }
-      label584:
-      for (int i1 = 1;; i1 = 0)
+      long l1 = (M - O) / 1000L;
+      int i1 = MsfSdkUtils.getAutoStartMode(BaseApplication.getContext());
+      Object localObject1;
+      Object localObject2;
+      if (QLog.isColorLevel())
       {
-        if ((i1 != 0) && (P != -1))
-        {
-          localHashMap = new HashMap(8);
-          localHashMap.put("osVersion", Build.VERSION.SDK_INT + "");
-          localHashMap.put("model", Build.MODEL);
-          localHashMap.put("manufacture", Build.MANUFACTURER);
-          localHashMap.put("startTimes", String.valueOf(P));
-          MsfCore.sCore.statReporter.a("EvtMSFStartTimes", true, 0L, 0L, localHashMap, false, false);
-        }
-        Q = true;
-        return;
-        bool = false;
-        break;
-        if (Math.random() < 0.001000000047497451D)
-        {
-          bool = true;
-          break;
-        }
-        bool = false;
-        break;
+        localObject1 = c;
+        boolean bool2 = N;
+        int i2 = K;
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(", bootDuration  = ");
+        ((StringBuilder)localObject2).append(l1);
+        localObject2 = ((StringBuilder)localObject2).toString();
+        Object localObject3 = new StringBuilder();
+        ((StringBuilder)localObject3).append("bdAction = ");
+        ((StringBuilder)localObject3).append(L);
+        localObject3 = ((StringBuilder)localObject3).toString();
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(", autoMode = ");
+        localStringBuilder.append(i1);
+        QLog.d((String)localObject1, 2, new Object[] { "report service boot, isFirst = ", Boolean.valueOf(bool2), ", type = ", Integer.valueOf(i2), localObject2, localObject3, ", report = ", Boolean.valueOf(bool1), localStringBuilder.toString() });
       }
+      if (bool1)
+      {
+        localObject1 = new HashMap(8);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(Build.VERSION.SDK_INT);
+        ((StringBuilder)localObject2).append("");
+        ((HashMap)localObject1).put("osVersion", ((StringBuilder)localObject2).toString());
+        ((HashMap)localObject1).put("model", Build.MODEL);
+        ((HashMap)localObject1).put("manufacture", Build.MANUFACTURER);
+        ((HashMap)localObject1).put("startupType", String.valueOf(K));
+        ((HashMap)localObject1).put("startupAction", L);
+        ((HashMap)localObject1).put("bootDuration", String.valueOf(l1));
+        ((HashMap)localObject1).put("autoMode", String.valueOf(i1));
+        MsfCore.sCore.statReporter.a("EvtMSFServiceBoot", N, l1, 0L, (Map)localObject1, false, false);
+        if ((MsfCore.sCore != null) && (N) && (MsfService.core.sender.b.l().c())) {
+          com.tencent.mobileqq.msf.core.c.a.a(MsfCore.sCore, "self_start_rate", "", "", "", 1, "", String.valueOf(K), L, String.valueOf(l1), String.valueOf(i1), "", "", "");
+        }
+      }
+      if (Math.random() < 0.003000000026077032D) {
+        i1 = 1;
+      } else {
+        i1 = 0;
+      }
+      if ((i1 != 0) && (P != -1))
+      {
+        localObject1 = new HashMap(8);
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(Build.VERSION.SDK_INT);
+        ((StringBuilder)localObject2).append("");
+        ((HashMap)localObject1).put("osVersion", ((StringBuilder)localObject2).toString());
+        ((HashMap)localObject1).put("model", Build.MODEL);
+        ((HashMap)localObject1).put("manufacture", Build.MANUFACTURER);
+        ((HashMap)localObject1).put("startTimes", String.valueOf(P));
+        MsfCore.sCore.statReporter.a("EvtMSFStartTimes", true, 0L, 0L, (Map)localObject1, false, false);
+      }
+      Q = true;
+      return;
     }
     QLog.e(c, 1, "boot type uninit");
   }
@@ -368,44 +405,41 @@ public class k
   
   public static void e()
   {
-    if (!g()) {
-      QLog.d(c, 1, "MSF_Alive_Log add JobScheduler not enable");
-    }
-    int i1;
-    do
+    if (!g())
     {
-      do
+      QLog.d(c, 1, "MSF_Alive_Log add JobScheduler not enable");
+      return;
+    }
+    if (Build.VERSION.SDK_INT >= 21)
+    {
+      QLog.d(c, 1, "MSF_Alive_Log add JobScheduler begin");
+      if (!x)
       {
-        do
+        JobScheduler localJobScheduler = (JobScheduler)BaseApplication.getContext().getSystemService("jobscheduler");
+        JobInfo.Builder localBuilder = new JobInfo.Builder(1, new ComponentName(BaseApplication.getContext(), MSFAliveJobService.class));
+        localBuilder.setPeriodic(900000L);
+        localBuilder.setPersisted(true);
+        int i1 = 0;
+        try
         {
-          return;
-        } while (Build.VERSION.SDK_INT < 21);
-        QLog.d(c, 1, "MSF_Alive_Log add JobScheduler begin");
-      } while (x);
-      JobScheduler localJobScheduler = (JobScheduler)BaseApplication.getContext().getSystemService("jobscheduler");
-      JobInfo.Builder localBuilder = new JobInfo.Builder(1, new ComponentName(BaseApplication.getContext(), MSFAliveJobService.class));
-      localBuilder.setPeriodic(900000L);
-      localBuilder.setPersisted(true);
-      try
-      {
-        i1 = localJobScheduler.schedule(localBuilder.build());
+          int i2 = localJobScheduler.schedule(localBuilder.build());
+          i1 = i2;
+        }
+        catch (Throwable localThrowable)
+        {
+          QLog.d(c, 1, "MSF_Alive_Log add JobScheduler Throwable:", localThrowable);
+        }
         if (i1 == 1)
         {
           QLog.d(c, 1, "MSF_Alive_Log add JobScheduler success!");
           x = true;
           return;
         }
-      }
-      catch (Throwable localThrowable)
-      {
-        for (;;)
-        {
-          QLog.d(c, 1, "MSF_Alive_Log add JobScheduler Throwable:", localThrowable);
-          i1 = 0;
+        if (i1 == 0) {
+          QLog.d(c, 1, "MSF_Alive_Log add JobScheduler fail!");
         }
       }
-    } while (i1 != 0);
-    QLog.d(c, 1, "MSF_Alive_Log add JobScheduler fail!");
+    }
   }
   
   public static void f()
@@ -419,53 +453,51 @@ public class k
   
   public static boolean g()
   {
-    if (Build.VERSION.SDK_INT < 21) {
+    int i1 = Build.VERSION.SDK_INT;
+    boolean bool = false;
+    if (i1 < 21)
+    {
       g = p;
     }
-    SharedPreferences localSharedPreferences;
-    do
+    else
     {
-      do
+      i1 = com.tencent.mobileqq.msf.core.a.a.bw();
+      if (i1 == j)
       {
-        for (;;)
+        g = m;
+      }
+      else if (i1 == h)
+      {
+        g = l;
+      }
+      else if (i1 == i)
+      {
+        SharedPreferences localSharedPreferences = BaseApplication.getContext().getSharedPreferences("sp_job_ab", 0);
+        g = localSharedPreferences.getInt("sp_key_job_ab_enable", k);
+        if (g == k)
         {
-          QLog.d(c, 1, new Object[] { "MSF_Alive_Log get job state = ", Integer.valueOf(g) });
-          if ((g != m) && (g != n)) {
-            break label212;
+          if (Math.random() <= 0.5D) {
+            i1 = n;
+          } else {
+            i1 = o;
           }
-          return true;
-          i1 = com.tencent.mobileqq.msf.core.a.a.bw();
-          if (i1 == j)
-          {
-            g = m;
-          }
-          else
-          {
-            if (i1 != h) {
-              break;
-            }
-            g = l;
-          }
+          g = i1;
+          localSharedPreferences.edit().putInt("sp_key_job_ab_enable", g).commit();
+          QLog.d(c, 1, new Object[] { "MSF_Alive_Log sample job AB Test: ", Integer.valueOf(g) });
         }
-      } while (i1 != i);
-      localSharedPreferences = BaseApplication.getContext().getSharedPreferences("sp_job_ab", 0);
-      g = localSharedPreferences.getInt("sp_key_job_ab_enable", k);
-    } while (g != k);
-    if (Math.random() <= 0.5D) {}
-    for (int i1 = n;; i1 = o)
-    {
-      g = i1;
-      localSharedPreferences.edit().putInt("sp_key_job_ab_enable", g).commit();
-      QLog.d(c, 1, new Object[] { "MSF_Alive_Log sample job AB Test: ", Integer.valueOf(g) });
-      break;
+      }
     }
-    label212:
-    return false;
+    QLog.d(c, 1, new Object[] { "MSF_Alive_Log get job state = ", Integer.valueOf(g) });
+    i1 = g;
+    if ((i1 == m) || (i1 == n)) {
+      bool = true;
+    }
+    return bool;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msf.service.k
  * JD-Core Version:    0.7.0.1
  */

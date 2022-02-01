@@ -23,10 +23,11 @@ public class SearchHistoryAdapter
   
   public int getCount()
   {
-    if (this.a == null) {
+    String[] arrayOfString = this.a;
+    if (arrayOfString == null) {
       return 0;
     }
-    return this.a.length;
+    return arrayOfString.length;
   }
   
   public long getItemId(int paramInt)
@@ -38,23 +39,25 @@ public class SearchHistoryAdapter
   {
     String str = a(paramInt);
     View localView;
-    if (paramView == null) {
-      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559460, paramViewGroup, false);
-    }
-    SearchHistoryAdapter.HistoryHolder localHistoryHolder;
-    for (paramView = new SearchHistoryAdapter.HistoryHolder(localView);; paramView = localHistoryHolder)
+    if (paramView == null)
     {
-      paramView.a.setText(str);
-      EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
-      return localView;
-      localHistoryHolder = (SearchHistoryAdapter.HistoryHolder)paramView.getTag();
-      localView = paramView;
+      localView = LayoutInflater.from(paramViewGroup.getContext()).inflate(2131559334, paramViewGroup, false);
+      paramView = new SearchHistoryAdapter.HistoryHolder(localView);
     }
+    else
+    {
+      SearchHistoryAdapter.HistoryHolder localHistoryHolder = (SearchHistoryAdapter.HistoryHolder)paramView.getTag();
+      localView = paramView;
+      paramView = localHistoryHolder;
+    }
+    paramView.a.setText(str);
+    EventCollector.getInstance().onListGetView(paramInt, localView, paramViewGroup, getItemId(paramInt));
+    return localView;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.chathistory.SearchHistoryAdapter
  * JD-Core Version:    0.7.0.1
  */

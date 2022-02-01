@@ -1,10 +1,12 @@
 package com.tencent.mobileqq.search.searchengine;
 
 import android.os.Bundle;
-import com.tencent.mobileqq.search.model.GroupSearchModelLocalContactApproximate;
+import com.tencent.mobileqq.search.base.engine.ISearchEngine;
+import com.tencent.mobileqq.search.base.model.SearchRequest;
+import com.tencent.mobileqq.search.base.util.VADHelper;
+import com.tencent.mobileqq.search.business.contact.model.GroupSearchModelLocalContactApproximate;
 import com.tencent.mobileqq.search.model.ISearchResultGroupModel;
 import com.tencent.mobileqq.search.model.ISearchResultModel;
-import com.tencent.mobileqq.search.util.VADHelper;
 import com.tencent.qphone.base.util.QLog;
 import java.util.List;
 
@@ -37,22 +39,27 @@ class GroupSearchEngine$10
       paramSearchRequest.a.putInt("SEARCH_REQUEST_EXTRA_SEARCH_TYPE", -1000);
       if (localList.size() >= 2)
       {
-        if (QLog.isDevelopLevel()) {
-          QLog.d("GroupSearchEngine", 4, "contact search result count:" + ((ISearchResultGroupModel)localList.get(1)).a().size());
+        if (QLog.isDevelopLevel())
+        {
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append("contact search result count:");
+          localStringBuilder.append(((ISearchResultGroupModel)localList.get(1)).a().size());
+          QLog.d("GroupSearchEngine", 4, localStringBuilder.toString());
         }
         paramSearchRequest.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", ((ISearchResultGroupModel)localList.get(1)).a().size());
+        return localList;
       }
     }
-    for (;;)
+    else
     {
-      return localList;
       paramSearchRequest.a.putInt("SEARCH_REQUEST_EXTRA_RESULT_COUNT", 0);
     }
+    return localList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.search.searchengine.GroupSearchEngine.10
  * JD-Core Version:    0.7.0.1
  */

@@ -13,11 +13,19 @@ class PinnedHeaderExpandableListView$1
   {
     if (paramMotionEvent.getAction() == 1)
     {
-      long l = this.this$0.getExpandableListPosition(this.this$0.getFirstVisiblePosition());
+      paramMotionEvent = this.this$0;
+      long l = paramMotionEvent.getExpandableListPosition(paramMotionEvent.getFirstVisiblePosition());
       if ((ExpandableListView.getPackedPositionType(l) == 0) || (ExpandableListView.getPackedPositionType(l) == 1))
       {
         int i = ExpandableListView.getPackedPositionGroup(l);
-        if ((PinnedHeaderExpandableListView.access$000(this.this$0) == null) || (!PinnedHeaderExpandableListView.access$000(this.this$0).onGroupClick(this.this$0, paramView, i, PinnedHeaderExpandableListView.access$100(this.this$0).getGroupId(i)))) {
+        if (PinnedHeaderExpandableListView.access$000(this.this$0) != null)
+        {
+          paramMotionEvent = PinnedHeaderExpandableListView.access$000(this.this$0);
+          PinnedHeaderExpandableListView localPinnedHeaderExpandableListView = this.this$0;
+          if (paramMotionEvent.onGroupClick(localPinnedHeaderExpandableListView, paramView, i, PinnedHeaderExpandableListView.access$100(localPinnedHeaderExpandableListView).getGroupId(i))) {}
+        }
+        else
+        {
           this.this$0.collapseGroup(i);
         }
       }
@@ -27,7 +35,7 @@ class PinnedHeaderExpandableListView$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.widget.PinnedHeaderExpandableListView.1
  * JD-Core Version:    0.7.0.1
  */

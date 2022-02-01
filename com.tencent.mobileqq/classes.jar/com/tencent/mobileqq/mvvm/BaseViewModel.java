@@ -12,17 +12,18 @@ public abstract class BaseViewModel<T extends BaseRepository>
     this.a = paramT;
   }
   
-  public void onCleared()
+  protected void onCleared()
   {
     super.onCleared();
-    if (this.a != null) {
-      this.a.b();
+    BaseRepository localBaseRepository = this.a;
+    if (localBaseRepository != null) {
+      localBaseRepository.c();
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mvvm.BaseViewModel
  * JD-Core Version:    0.7.0.1
  */

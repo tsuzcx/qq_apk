@@ -1,8 +1,8 @@
 package com.tencent.mobileqq.troop.essencemsg;
 
 import com.tencent.mobileqq.graytip.MessageForUniteGrayTip;
-import com.tencent.mobileqq.graytip.UniteGrayTipUtil;
-import com.tencent.mobileqq.troop.api.essence.data.TroopEssenceMsgItem.TroopBatchEssenceMsgPushItem;
+import com.tencent.mobileqq.graytip.UniteGrayTipMsgUtil;
+import com.tencent.mobileqq.troop.essence.data.TroopEssenceMsgItem.TroopBatchEssenceMsgPushItem;
 import java.util.ArrayList;
 
 class TroopEssenceMsgManager$8$1
@@ -12,17 +12,17 @@ class TroopEssenceMsgManager$8$1
   
   public void run()
   {
-    Object localObject = TroopEssenceUtil.a(TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager), this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopApiEssenceDataTroopEssenceMsgItem$TroopBatchEssenceMsgPushItem);
+    Object localObject = TroopEssenceUtil.a(TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager), this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem$TroopBatchEssenceMsgPushItem);
     if (localObject != null) {
-      UniteGrayTipUtil.a(TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager), (MessageForUniteGrayTip)localObject);
+      UniteGrayTipMsgUtil.a(TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager), (MessageForUniteGrayTip)localObject);
     }
     localObject = this.jdField_a_of_type_JavaUtilArrayList;
-    TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopApiEssenceDataTroopEssenceMsgItem$TroopBatchEssenceMsgPushItem.a, (ArrayList)localObject);
+    TroopEssenceMsgManager.a(this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager, this.jdField_a_of_type_ComTencentMobileqqTroopEssencemsgTroopEssenceMsgManager$8.jdField_a_of_type_ComTencentMobileqqTroopEssenceDataTroopEssenceMsgItem$TroopBatchEssenceMsgPushItem.a, (ArrayList)localObject);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.troop.essencemsg.TroopEssenceMsgManager.8.1
  * JD-Core Version:    0.7.0.1
  */

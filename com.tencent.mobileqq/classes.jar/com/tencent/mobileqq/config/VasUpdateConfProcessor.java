@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.config;
 
 import android.support.annotation.NonNull;
-import com.tencent.mobileqq.config.business.qvip.BaseQVipConfigProcessor;
+import com.tencent.mobileqq.vas.config.business.qvip.BaseQVipConfigProcessor;
 import com.tencent.qphone.base.util.QLog;
 
 public class VasUpdateConfProcessor
@@ -20,18 +20,23 @@ public class VasUpdateConfProcessor
     if (paramArrayOfQConfItem != null) {
       try
       {
+        Object localObject;
         if (paramArrayOfQConfItem.length > 0)
         {
           int j = paramArrayOfQConfItem.length;
           int i = 0;
           while (i < j)
           {
-            QConfItem localQConfItem = paramArrayOfQConfItem[i];
-            if (localQConfItem != null)
+            localObject = paramArrayOfQConfItem[i];
+            if (localObject != null)
             {
-              VasUpdateCfgBean localVasUpdateCfgBean = VasUpdateCfgBean.a(localQConfItem.a);
-              if (QLog.isColorLevel()) {
-                QLog.d("VasUpdateConfProcessor", 2, "onParsed " + localQConfItem.a);
+              VasUpdateCfgBean localVasUpdateCfgBean = VasUpdateCfgBean.a(((QConfItem)localObject).a);
+              if (QLog.isColorLevel())
+              {
+                StringBuilder localStringBuilder = new StringBuilder();
+                localStringBuilder.append("onParsed ");
+                localStringBuilder.append(((QConfItem)localObject).a);
+                QLog.d("VasUpdateConfProcessor", 2, localStringBuilder.toString());
               }
               if (localVasUpdateCfgBean != null) {
                 return localVasUpdateCfgBean;
@@ -45,7 +50,10 @@ public class VasUpdateConfProcessor
       catch (Exception paramArrayOfQConfItem)
       {
         paramArrayOfQConfItem.printStackTrace();
-        QLog.e("VasUpdateConfProcessor", 1, "onParsed Exception = " + paramArrayOfQConfItem.getMessage());
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("onParsed Exception = ");
+        ((StringBuilder)localObject).append(paramArrayOfQConfItem.getMessage());
+        QLog.e("VasUpdateConfProcessor", 1, ((StringBuilder)localObject).toString());
       }
     }
   }
@@ -68,7 +76,7 @@ public class VasUpdateConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.VasUpdateConfProcessor
  * JD-Core Version:    0.7.0.1
  */

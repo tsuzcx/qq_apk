@@ -11,10 +11,10 @@ import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.biz.qqstory.utils.WeishiGuideUtils;
 import com.tencent.common.app.BaseApplicationImpl;
 import com.tencent.common.config.AppSetting;
-import com.tencent.mobileqq.statistics.CaughtExceptionReport;
 import com.tencent.mobileqq.utils.DeviceInfoUtil;
 import com.tencent.open.business.base.MobileInfoUtil;
 import com.tencent.qphone.base.util.ROMUtil;
+import com.tencent.qqperf.monitor.crash.catchedexception.CaughtExceptionReport;
 import com.tencent.tmassistantbase.util.GlobalUtil;
 import cooperation.qzone.QUA;
 import java.util.HashMap;
@@ -25,7 +25,7 @@ public class WSStatisticsBaseCollector
   private static final String APP_VERSION = AppSetting.a(BaseApplicationImpl.getContext());
   public static final String KEY_REF_PAGE_ID = "key_ref_page_id";
   private static final String SCREEN_RES = ;
-  private static final String UI_VERSION = ROMUtil.getRomName() + ROMUtil.getRomVersion();
+  private static final String UI_VERSION;
   private String mEventName;
   private String mExtendInfo;
   private String mOperationId;
@@ -33,6 +33,14 @@ public class WSStatisticsBaseCollector
   private String mSopName;
   private String mSubSession;
   private String mTestId;
+  
+  static
+  {
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(ROMUtil.getRomName());
+    localStringBuilder.append(ROMUtil.getRomVersion());
+    UI_VERSION = localStringBuilder.toString();
+  }
   
   private String getExtendInfo()
   {
@@ -81,8 +89,8 @@ public class WSStatisticsBaseCollector
     HashMap localHashMap = new HashMap(38);
     localHashMap.put("qimei", UserAction.getQIMEI());
     localHashMap.put("imsi", DeviceInfoUtil.b());
-    localHashMap.put("imei", MobileInfoUtil.c());
-    localHashMap.put("mac", MobileInfoUtil.a());
+    localHashMap.put("imei", MobileInfoUtil.getImei());
+    localHashMap.put("mac", MobileInfoUtil.getLocalMacAddress());
     localHashMap.put("dev_brand", GlobalUtil.getInstance().getBrand());
     localHashMap.put("dev_model", Build.MODEL);
     localHashMap.put("os", "Android");
@@ -99,23 +107,25 @@ public class WSStatisticsBaseCollector
     localHashMap.put("qua", QUA.getQUA3());
     localHashMap.put("android_id", DeviceInfoUtil.f());
     localHashMap.put("qq", WeishiUtils.a());
-    if (WeishiGuideUtils.a(BaseApplicationImpl.getApplication())) {}
-    for (String str = "1";; str = "0")
-    {
-      localHashMap.put("if_install_weishi", str);
-      localHashMap.put("person_id", WeishiUtils.d());
-      localHashMap.put("time", String.valueOf(System.currentTimeMillis()));
-      localHashMap.put("network_type", WSDeviceUtils.g());
-      localHashMap.put("extended_fields", getExtendInfo());
-      localHashMap.put("scenes_from", WSReportUtils.a());
-      localHashMap.put("operation_id", getOperationId());
-      localHashMap.put("test_id", getTestId());
-      localHashMap.put("ref_page_id", getRefPageId());
-      localHashMap.put("sub_session_id", getSubSession());
-      localHashMap.put("hardware_info", WSHardwareUtil.a(BaseApplicationImpl.getContext()));
-      localHashMap.put("hardware_level", String.valueOf(WSHardwareUtil.a(BaseApplicationImpl.getContext())));
-      return localHashMap;
+    String str;
+    if (WeishiGuideUtils.a(BaseApplicationImpl.getApplication())) {
+      str = "1";
+    } else {
+      str = "0";
     }
+    localHashMap.put("if_install_weishi", str);
+    localHashMap.put("person_id", WeishiUtils.d());
+    localHashMap.put("time", String.valueOf(System.currentTimeMillis()));
+    localHashMap.put("network_type", WSDeviceUtils.g());
+    localHashMap.put("extended_fields", getExtendInfo());
+    localHashMap.put("scenes_from", WSReportUtils.a());
+    localHashMap.put("operation_id", getOperationId());
+    localHashMap.put("test_id", getTestId());
+    localHashMap.put("ref_page_id", getRefPageId());
+    localHashMap.put("sub_session_id", getSubSession());
+    localHashMap.put("hardware_info", WSHardwareUtil.a(BaseApplicationImpl.getContext()));
+    localHashMap.put("hardware_level", String.valueOf(WSHardwareUtil.a(BaseApplicationImpl.getContext())));
+    return localHashMap;
   }
   
   public String getSopName()
@@ -168,7 +178,7 @@ public class WSStatisticsBaseCollector
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.report.WSStatisticsBaseCollector
  * JD-Core Version:    0.7.0.1
  */

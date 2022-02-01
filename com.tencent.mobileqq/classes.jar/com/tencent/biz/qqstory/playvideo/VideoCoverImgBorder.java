@@ -52,21 +52,35 @@ public class VideoCoverImgBorder
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
     int i = paramCanvas.getSaveCount();
     paramCanvas.save();
-    this.jdField_a_of_type_AndroidGraphicsRectF.left = (this.d + this.f);
-    this.jdField_a_of_type_AndroidGraphicsRectF.top = (this.e + this.f);
-    this.jdField_a_of_type_AndroidGraphicsRectF.right = (getWidth() - this.f - this.d);
+    Object localObject = this.jdField_a_of_type_AndroidGraphicsRectF;
+    int j = this.d;
+    int k = this.f;
+    ((RectF)localObject).left = (j + k);
+    ((RectF)localObject).top = (this.e + k);
+    ((RectF)localObject).right = (getWidth() - this.f - this.d);
     this.jdField_a_of_type_AndroidGraphicsRectF.bottom = (getHeight() - this.f - this.e);
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.c, Path.Direction.CCW);
+    localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    RectF localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    j = this.c;
+    ((Path)localObject).addRoundRect(localRectF, j, j, Path.Direction.CCW);
     paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
     super.onDraw(paramCanvas);
     paramCanvas.restoreToCount(i);
     this.jdField_a_of_type_AndroidGraphicsPath.reset();
-    this.jdField_b_of_type_AndroidGraphicsRectF.left = this.d;
-    this.jdField_b_of_type_AndroidGraphicsRectF.top = this.e;
-    this.jdField_b_of_type_AndroidGraphicsRectF.right = (getWidth() - this.d);
+    localObject = this.jdField_b_of_type_AndroidGraphicsRectF;
+    ((RectF)localObject).left = this.d;
+    ((RectF)localObject).top = this.e;
+    ((RectF)localObject).right = (getWidth() - this.d);
     this.jdField_b_of_type_AndroidGraphicsRectF.bottom = (getHeight() - this.e);
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_a_of_type_AndroidGraphicsRectF, this.c, this.c, Path.Direction.CCW);
-    this.jdField_a_of_type_AndroidGraphicsPath.addRoundRect(this.jdField_b_of_type_AndroidGraphicsRectF, this.c + this.f, this.c + this.f, Path.Direction.CCW);
+    localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    localRectF = this.jdField_a_of_type_AndroidGraphicsRectF;
+    j = this.c;
+    ((Path)localObject).addRoundRect(localRectF, j, j, Path.Direction.CCW);
+    localObject = this.jdField_a_of_type_AndroidGraphicsPath;
+    localRectF = this.jdField_b_of_type_AndroidGraphicsRectF;
+    j = this.c;
+    k = this.f;
+    ((Path)localObject).addRoundRect(localRectF, j + k, j + k, Path.Direction.CCW);
     this.jdField_a_of_type_AndroidGraphicsPath.setFillType(Path.FillType.EVEN_ODD);
     paramCanvas.clipPath(this.jdField_a_of_type_AndroidGraphicsPath);
     paramCanvas.drawColor(this.g);
@@ -75,32 +89,36 @@ public class VideoCoverImgBorder
   
   public void setState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return;
-    case 0: 
-      this.d = this.jdField_a_of_type_Int;
-      this.e = this.jdField_a_of_type_Int;
-      this.f = this.jdField_a_of_type_Int;
-      this.g = -570319;
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2) {
+          return;
+        }
+        paramInt = this.jdField_a_of_type_Int;
+        this.d = paramInt;
+        this.e = paramInt;
+        this.f = paramInt;
+        this.g = -1;
+        return;
+      }
       this.d = 0;
       this.e = 0;
       this.f = this.jdField_b_of_type_Int;
       this.g = -15550475;
       return;
     }
-    this.d = this.jdField_a_of_type_Int;
-    this.e = this.jdField_a_of_type_Int;
-    this.f = this.jdField_a_of_type_Int;
-    this.g = -1;
+    paramInt = this.jdField_a_of_type_Int;
+    this.d = paramInt;
+    this.e = paramInt;
+    this.f = paramInt;
+    this.g = -570319;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.VideoCoverImgBorder
  * JD-Core Version:    0.7.0.1
  */

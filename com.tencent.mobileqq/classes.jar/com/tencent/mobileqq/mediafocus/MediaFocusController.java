@@ -83,20 +83,21 @@ public class MediaFocusController
   
   private void a(int paramInt)
   {
-    MediaFocusStackItem localMediaFocusStackItem;
     if ((!this.jdField_a_of_type_JavaUtilStack.empty()) && (this.jdField_a_of_type_JavaUtilStack.peek() != null))
     {
-      localMediaFocusStackItem = (MediaFocusStackItem)this.jdField_a_of_type_JavaUtilStack.peek();
-      if (!a(localMediaFocusStackItem.b())) {
-        break label64;
+      MediaFocusStackItem localMediaFocusStackItem = (MediaFocusStackItem)this.jdField_a_of_type_JavaUtilStack.peek();
+      if (a(localMediaFocusStackItem.b()))
+      {
+        MediaFocusController.IMediaFocusStatusCallback localIMediaFocusStatusCallback = this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback;
+        if (localIMediaFocusStatusCallback != null) {
+          localIMediaFocusStatusCallback.a(paramInt, localMediaFocusStackItem.a());
+        }
       }
-      if (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback != null) {
-        this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback.a(paramInt, localMediaFocusStackItem.a());
+      else
+      {
+        ThreadManager.executeOnSubThread(new MediaFocusController.1(this, localMediaFocusStackItem, paramInt));
       }
     }
-    return;
-    label64:
-    ThreadManager.executeOnSubThread(new MediaFocusController.1(this, localMediaFocusStackItem, paramInt));
   }
   
   private void a(String paramString1, String paramString2)
@@ -148,8 +149,10 @@ public class MediaFocusController
     }
     catch (NullPointerException paramString)
     {
-      QLog.d("MediaFocusController", 1, "context is null while sendMediaFocusAbandon");
+      label50:
+      break label50;
     }
+    QLog.d("MediaFocusController", 1, "context is null while sendMediaFocusAbandon");
     return 1;
   }
   
@@ -181,32 +184,36 @@ public class MediaFocusController
   public void onReceive(Context paramContext, Intent paramIntent)
   {
     paramContext = paramIntent.getAction();
-    if (QLog.isColorLevel()) {
-      QLog.i("MediaFocusController", 2, "onReceive action:" + paramContext);
-    }
-    if (paramContext != null)
+    if (QLog.isColorLevel())
     {
-      if (!paramContext.equals("tencent.mobileqq.mediafocus.request")) {
-        break label109;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onReceive action:");
+      localStringBuilder.append(paramContext);
+      QLog.i("MediaFocusController", 2, localStringBuilder.toString());
+    }
+    if (paramContext != null) {
+      if (paramContext.equals("tencent.mobileqq.mediafocus.request"))
+      {
+        paramContext = (MediaFocusStackItem)paramIntent.getExtras().getParcelable("focusItem");
+        int i = a(paramContext);
+        if ((paramContext != null) && (a(paramContext.b())) && (i == 0))
+        {
+          paramIntent = this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback;
+          if (paramIntent != null) {
+            paramIntent.a(1, paramContext.a());
+          }
+        }
       }
-      paramContext = (MediaFocusStackItem)paramIntent.getExtras().getParcelable("focusItem");
-      i = a(paramContext);
-      if ((paramContext != null) && (a(paramContext.b())) && (i == 0) && (this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback != null)) {
-        this.jdField_a_of_type_ComTencentMobileqqMediafocusMediaFocusController$IMediaFocusStatusCallback.a(1, paramContext.a());
+      else if (paramContext.equals("tencent.mobileqq.mediafocus.abandon"))
+      {
+        a(paramIntent.getStringExtra("cliendID"), paramIntent.getStringExtra("processName"));
       }
     }
-    label109:
-    while (!paramContext.equals("tencent.mobileqq.mediafocus.abandon"))
-    {
-      int i;
-      return;
-    }
-    a(paramIntent.getStringExtra("cliendID"), paramIntent.getStringExtra("processName"));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.mediafocus.MediaFocusController
  * JD-Core Version:    0.7.0.1
  */

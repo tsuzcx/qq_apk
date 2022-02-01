@@ -18,7 +18,6 @@ public final class jg$d
   final JSONObject a()
   {
     JSONObject localJSONObject1 = new JSONObject();
-    JSONArray localJSONArray;
     try
     {
       localJSONObject1.put("loadSuccess", this.a);
@@ -27,38 +26,36 @@ public final class jg$d
       if (this.d != null) {
         localJSONObject1.put("configUpdate", this.d.a());
       }
-      if ((this.e == null) || (this.e.size() <= 0)) {
-        break label159;
-      }
-      localJSONArray = new JSONArray();
-      Iterator localIterator = this.e.iterator();
-      while (localIterator.hasNext())
+      if ((this.e != null) && (this.e.size() > 0))
       {
-        JSONObject localJSONObject2 = ((jg.g)localIterator.next()).a();
-        if (localJSONObject2 != null) {
-          localJSONArray.put(localJSONObject2);
+        JSONArray localJSONArray = new JSONArray();
+        Iterator localIterator = this.e.iterator();
+        while (localIterator.hasNext())
+        {
+          JSONObject localJSONObject2 = ((jg.g)localIterator.next()).a();
+          if (localJSONObject2 != null) {
+            localJSONArray.put(localJSONObject2);
+          }
+        }
+        if (localJSONArray.length() > 0) {
+          localJSONObject1.put("tileErrors", localJSONArray);
         }
       }
-      if (localJSONArray.length() <= 0) {
-        break label159;
+      if (this.f != null) {
+        localJSONObject1.put("configError", this.f.a());
       }
+      return localJSONObject1;
     }
     catch (JSONException localJSONException)
     {
       localJSONException.printStackTrace();
-      return null;
     }
-    localJSONException.put("tileErrors", localJSONArray);
-    label159:
-    if (this.f != null) {
-      localJSONException.put("configError", this.f.a());
-    }
-    return localJSONException;
+    return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.sdk.a.jg.d
  * JD-Core Version:    0.7.0.1
  */

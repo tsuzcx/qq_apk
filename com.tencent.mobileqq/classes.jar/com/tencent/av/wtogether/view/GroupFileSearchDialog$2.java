@@ -19,32 +19,31 @@ class GroupFileSearchDialog$2
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    for (;;)
+    try
     {
-      try
-      {
-        int i = this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_Int;
-        if (i > 0) {
-          return;
-        }
-        if ((paramInt != 0) || (this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_b_of_type_JavaUtilList == null) || (this.jdField_a_of_type_Int != this.b - 2)) {
-          continue;
-        }
+      int i = this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_Int;
+      if (i > 0) {
+        return;
+      }
+      if ((paramInt == 0) && (this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_b_of_type_JavaUtilList != null) && (this.jdField_a_of_type_Int == this.b - 2)) {
         if (this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.f)
         {
           this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.c(true);
-          continue;
         }
-        this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.c(false);
+        else
+        {
+          this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.c(false);
+          this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.a(this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_b_of_type_JavaLangString);
+        }
       }
-      finally {}
-      this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.a(this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_Long, this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_ComTencentAvWtogetherViewGroupFileSearchDialog.jdField_b_of_type_JavaLangString);
+      return;
     }
+    finally {}
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.av.wtogether.view.GroupFileSearchDialog.2
  * JD-Core Version:    0.7.0.1
  */

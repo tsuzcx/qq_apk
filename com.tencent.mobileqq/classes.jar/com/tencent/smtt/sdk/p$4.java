@@ -16,32 +16,32 @@ class p$4
     TbsLog.i("TbsInstaller", "TbsInstaller--quickDexOptForThirdPartyApp thread start");
     try
     {
-      File localFile1;
+      Object localObject1;
       if (this.a == null) {
-        localFile1 = new File(TbsShareManager.getHostCorePathAppDefined());
-      }
-      for (;;)
+        localObject1 = new File(TbsShareManager.getHostCorePathAppDefined());
+      } else if (TbsShareManager.isThirdPartyApp(this.b))
       {
-        File localFile2 = this.c.q(this.b);
-        int i = Build.VERSION.SDK_INT;
-        if ((i != 19) && (i < 21)) {
-          FileUtil.a(localFile1, localFile2, new p.4.1(this));
-        }
-        FileUtil.a(localFile1, localFile2, new p.4.2(this));
-        TbsLog.i("TbsInstaller", "TbsInstaller--quickDexOptForThirdPartyApp thread done");
-        return;
-        if (TbsShareManager.isThirdPartyApp(this.b))
-        {
-          if ((TbsShareManager.c(this.b) != null) && (TbsShareManager.c(this.b).contains("decouple"))) {
-            localFile1 = this.c.p(this.a);
-          } else {
-            localFile1 = this.c.q(this.a);
-          }
-        }
-        else {
-          localFile1 = this.c.q(this.a);
+        if ((TbsShareManager.c(this.b) != null) && (TbsShareManager.c(this.b).contains("decouple"))) {
+          localObject1 = this.c.p(this.a);
+        } else {
+          localObject1 = this.c;
         }
       }
+      else {
+        for (localObject2 = this.a;; localObject2 = this.a)
+        {
+          localObject1 = ((p)localObject1).q((Context)localObject2);
+          break;
+          localObject1 = this.c;
+        }
+      }
+      Object localObject2 = this.c.q(this.b);
+      int i = Build.VERSION.SDK_INT;
+      if ((i != 19) && (i < 21)) {
+        FileUtil.a((File)localObject1, (File)localObject2, new p.4.1(this));
+      }
+      FileUtil.a((File)localObject1, (File)localObject2, new p.4.2(this));
+      TbsLog.i("TbsInstaller", "TbsInstaller--quickDexOptForThirdPartyApp thread done");
       return;
     }
     catch (Exception localException)
@@ -52,7 +52,7 @@ class p$4
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.smtt.sdk.p.4
  * JD-Core Version:    0.7.0.1
  */

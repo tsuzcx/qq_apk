@@ -10,18 +10,21 @@ class NotifyPCActiveActivity$4
 {
   NotifyPCActiveActivity$4(NotifyPCActiveActivity paramNotifyPCActiveActivity) {}
   
-  public void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
+  protected void onSetPCActiveState(boolean paramBoolean1, boolean paramBoolean2, String paramString1, String paramString2)
   {
     if (paramBoolean1)
     {
       SettingCloneUtil.writeValue(this.a.app.getApp(), paramString2, null, "qqsetting_pcactive_key", true);
-      QLog.i("CardObserver_onSetPCActiveState", 1, "Set the PC Active State " + paramBoolean1);
+      paramString1 = new StringBuilder();
+      paramString1.append("Set the PC Active State ");
+      paramString1.append(paramBoolean1);
+      QLog.i("CardObserver_onSetPCActiveState", 1, paramString1.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.NotifyPCActiveActivity.4
  * JD-Core Version:    0.7.0.1
  */

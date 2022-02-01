@@ -30,14 +30,15 @@ public class PatchConfigServlet
           PatchSharedPreUtil.updateLastTimePullPatchReconnect(BaseApplicationImpl.sApplication, l2);
         }
       }
-      return;
     }
-    ConfigServlet.a(paramQQAppInterface, paramString1, paramInt, paramString2);
+    else {
+      ConfigServlet.a(paramQQAppInterface, paramString1, paramInt, paramString2);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hotpatch.config.PatchConfigServlet
  * JD-Core Version:    0.7.0.1
  */

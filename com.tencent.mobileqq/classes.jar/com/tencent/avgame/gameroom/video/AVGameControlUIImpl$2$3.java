@@ -12,48 +12,40 @@ class AVGameControlUIImpl$2$3
   
   public void run()
   {
-    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.a()) {}
-    int i;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.a()) {
       return;
-      if (this.jdField_a_of_type_Int != 0) {
-        break;
-      }
+    }
+    int i = this.jdField_a_of_type_Int;
+    if (i == 0) {
       i = 3214;
-      AVGameControlUIImpl.a(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a, i);
-    } while (!GameEngine.a().i());
-    boolean bool;
-    label54:
-    ISeatPresenter localISeatPresenter;
-    if (this.jdField_a_of_type_Int > 0)
-    {
-      bool = true;
-      localISeatPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
-      if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin() != null) {
-        break label146;
-      }
+    } else if (i == 100) {
+      i = 9642;
+    } else {
+      i = (int)(i * 6428.5718F / 100.0F + 3214.2856F);
     }
-    label146:
-    for (String str = "0";; str = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin())
-    {
-      localISeatPresenter.a(Long.valueOf(str).longValue(), bool);
+    AVGameControlUIImpl.a(this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a, i);
+    if (!GameEngine.a().i()) {
       return;
-      if (this.jdField_a_of_type_Int == 100)
-      {
-        i = 9642;
-        break;
-      }
-      i = (int)(3214.2856F + 6428.5718F * this.jdField_a_of_type_Int / 100.0F);
-      break;
-      bool = false;
-      break label54;
     }
+    boolean bool;
+    if (this.jdField_a_of_type_Int > 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    ISeatPresenter localISeatPresenter = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameGameroomIGameRoomPresenter.a();
+    String str;
+    if (this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin() == null) {
+      str = "0";
+    } else {
+      str = this.jdField_a_of_type_ComTencentAvgameGameroomVideoAVGameControlUIImpl$2.a.jdField_a_of_type_ComTencentAvgameAppAVGameAppInterface.getCurrentAccountUin();
+    }
+    localISeatPresenter.a(Long.valueOf(str).longValue(), bool);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.avgame.gameroom.video.AVGameControlUIImpl.2.3
  * JD-Core Version:    0.7.0.1
  */

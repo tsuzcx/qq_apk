@@ -12,19 +12,34 @@ class VideoCombineHelper$2$1
   
   public void a(VideoCombineHelper.Task paramTask)
   {
-    if ((paramTask instanceof VideoCombineHelper.DownLoadTask)) {
-      this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "download failed! msg = " + paramTask.d);
-    }
-    do
+    VideoCombineHelper.Callback localCallback;
+    StringBuilder localStringBuilder;
+    if ((paramTask instanceof VideoCombineHelper.DownLoadTask))
     {
+      localCallback = this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("download failed! msg = ");
+      localStringBuilder.append(paramTask.d);
+      localCallback.a("", false, localStringBuilder.toString());
       return;
-      if ((paramTask instanceof VideoCombineHelper.CombineTask))
-      {
-        this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "combine failed! msg = " + paramTask.d);
-        return;
-      }
-    } while (!(paramTask instanceof VideoCombineHelper.SendingTask));
-    this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a("", false, "sending failed! msg = " + paramTask.d);
+    }
+    if ((paramTask instanceof VideoCombineHelper.CombineTask))
+    {
+      localCallback = this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("combine failed! msg = ");
+      localStringBuilder.append(paramTask.d);
+      localCallback.a("", false, localStringBuilder.toString());
+      return;
+    }
+    if ((paramTask instanceof VideoCombineHelper.SendingTask))
+    {
+      localCallback = this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback;
+      localStringBuilder = new StringBuilder();
+      localStringBuilder.append("sending failed! msg = ");
+      localStringBuilder.append(paramTask.d);
+      localCallback.a("", false, localStringBuilder.toString());
+    }
   }
   
   public void b(VideoCombineHelper.Task paramTask)
@@ -33,13 +48,16 @@ class VideoCombineHelper$2$1
     {
       paramTask = paramTask.a();
       this.a.jdField_a_of_type_ComTencentBizTroopVideoCombineHelper$Callback.a(paramTask.e, true, "seding success");
-      QLog.d(".troop.trace_video_combine", 2, "totalTime = " + (System.currentTimeMillis() - this.a.jdField_a_of_type_Long));
+      paramTask = new StringBuilder();
+      paramTask.append("totalTime = ");
+      paramTask.append(System.currentTimeMillis() - this.a.jdField_a_of_type_Long);
+      QLog.d(".troop.trace_video_combine", 2, paramTask.toString());
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.troop.VideoCombineHelper.2.1
  * JD-Core Version:    0.7.0.1
  */

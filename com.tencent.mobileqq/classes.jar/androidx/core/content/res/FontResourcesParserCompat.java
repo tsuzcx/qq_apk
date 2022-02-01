@@ -45,54 +45,65 @@ public class FontResourcesParserCompat
     {
       i = paramXmlPullParser.next();
     } while ((i != 2) && (i != 1));
-    if (i != 2) {
-      throw new XmlPullParserException("No start tag found");
+    if (i == 2) {
+      return readFamilies(paramXmlPullParser, paramResources);
     }
-    return readFamilies(paramXmlPullParser, paramResources);
+    paramXmlPullParser = new XmlPullParserException("No start tag found");
+    for (;;)
+    {
+      throw paramXmlPullParser;
+    }
   }
   
   public static List<List<byte[]>> readCerts(Resources paramResources, @ArrayRes int paramInt)
   {
-    int i = 0;
     if (paramInt == 0) {
       return Collections.emptyList();
     }
-    TypedArray localTypedArray = paramResources.obtainTypedArray(paramInt);
-    for (;;)
+    localTypedArray = paramResources.obtainTypedArray(paramInt);
+    try
     {
-      try
+      if (localTypedArray.length() == 0)
       {
-        if (localTypedArray.length() == 0)
-        {
-          paramResources = Collections.emptyList();
-          return paramResources;
-        }
-        ArrayList localArrayList = new ArrayList();
-        if (getType(localTypedArray, 0) == 1)
-        {
-          paramInt = i;
-          if (paramInt < localTypedArray.length())
-          {
-            i = localTypedArray.getResourceId(paramInt, 0);
-            if (i == 0) {
-              break label121;
-            }
-            localArrayList.add(toByteArrayList(paramResources.getStringArray(i)));
-            break label121;
-          }
-        }
-        else
-        {
-          localArrayList.add(toByteArrayList(paramResources.getStringArray(paramInt)));
-        }
-        return localArrayList;
-      }
-      finally
-      {
+        paramResources = Collections.emptyList();
         localTypedArray.recycle();
+        return paramResources;
       }
-      label121:
-      paramInt += 1;
+      localArrayList = new ArrayList();
+      if (getType(localTypedArray, 0) != 1) {
+        break label89;
+      }
+      paramInt = 0;
+    }
+    finally
+    {
+      for (;;)
+      {
+        ArrayList localArrayList;
+        int i;
+        label89:
+        localTypedArray.recycle();
+        for (;;)
+        {
+          throw paramResources;
+        }
+        paramInt += 1;
+      }
+    }
+    if (paramInt < localTypedArray.length())
+    {
+      i = localTypedArray.getResourceId(paramInt, 0);
+      if (i != 0)
+      {
+        localArrayList.add(toByteArrayList(paramResources.getStringArray(i)));
+        break label125;
+        localArrayList.add(toByteArrayList(paramResources.getStringArray(paramInt)));
+      }
+    }
+    else
+    {
+      localTypedArray.recycle();
+      return localArrayList;
     }
   }
   
@@ -110,13 +121,13 @@ public class FontResourcesParserCompat
   @Nullable
   private static FontResourcesParserCompat.FamilyResourceEntry readFamily(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
-    Object localObject = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), R.styleable.b);
-    String str1 = ((TypedArray)localObject).getString(R.styleable.d);
-    String str2 = ((TypedArray)localObject).getString(R.styleable.h);
-    String str3 = ((TypedArray)localObject).getString(R.styleable.i);
-    int i = ((TypedArray)localObject).getResourceId(R.styleable.e, 0);
-    int j = ((TypedArray)localObject).getInteger(R.styleable.f, 1);
-    int k = ((TypedArray)localObject).getInteger(R.styleable.g, 500);
+    Object localObject = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), R.styleable.FontFamily);
+    String str1 = ((TypedArray)localObject).getString(R.styleable.FontFamily_fontProviderAuthority);
+    String str2 = ((TypedArray)localObject).getString(R.styleable.FontFamily_fontProviderPackage);
+    String str3 = ((TypedArray)localObject).getString(R.styleable.FontFamily_fontProviderQuery);
+    int i = ((TypedArray)localObject).getResourceId(R.styleable.FontFamily_fontProviderCerts, 0);
+    int j = ((TypedArray)localObject).getInteger(R.styleable.FontFamily_fontProviderFetchStrategy, 1);
+    int k = ((TypedArray)localObject).getInteger(R.styleable.FontFamily_fontProviderFetchTimeout, 500);
     ((TypedArray)localObject).recycle();
     if ((str1 != null) && (str2 != null) && (str3 != null))
     {
@@ -143,65 +154,47 @@ public class FontResourcesParserCompat
   
   private static FontResourcesParserCompat.FontFileResourceEntry readFont(XmlPullParser paramXmlPullParser, Resources paramResources)
   {
-    boolean bool = true;
-    paramResources = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), R.styleable.c);
-    int k;
-    label53:
-    label63:
-    label77:
-    int j;
-    label91:
-    String str1;
-    if (paramResources.hasValue(R.styleable.r))
-    {
-      i = R.styleable.r;
-      k = paramResources.getInt(i, 400);
-      if (!paramResources.hasValue(R.styleable.p)) {
-        break label162;
-      }
-      i = R.styleable.p;
-      if (1 != paramResources.getInt(i, 0)) {
-        break label169;
-      }
-      if (!paramResources.hasValue(R.styleable.s)) {
-        break label175;
-      }
-      i = R.styleable.s;
-      if (!paramResources.hasValue(R.styleable.q)) {
-        break label182;
-      }
-      j = R.styleable.q;
-      str1 = paramResources.getString(j);
-      j = paramResources.getInt(i, 0);
-      if (!paramResources.hasValue(R.styleable.o)) {
-        break label189;
-      }
+    paramResources = paramResources.obtainAttributes(Xml.asAttributeSet(paramXmlPullParser), R.styleable.FontFamilyFont);
+    int i;
+    if (paramResources.hasValue(R.styleable.FontFamilyFont_fontWeight)) {
+      i = R.styleable.FontFamilyFont_fontWeight;
+    } else {
+      i = R.styleable.FontFamilyFont_android_fontWeight;
     }
-    int m;
-    String str2;
-    label162:
-    label169:
-    label175:
-    label182:
-    label189:
-    for (int i = R.styleable.o;; i = R.styleable.j)
-    {
-      m = paramResources.getResourceId(i, 0);
-      str2 = paramResources.getString(i);
-      paramResources.recycle();
-      while (paramXmlPullParser.next() != 3) {
-        skip(paramXmlPullParser);
-      }
-      i = R.styleable.k;
-      break;
-      i = R.styleable.l;
-      break label53;
+    int k = paramResources.getInt(i, 400);
+    if (paramResources.hasValue(R.styleable.FontFamilyFont_fontStyle)) {
+      i = R.styleable.FontFamilyFont_fontStyle;
+    } else {
+      i = R.styleable.FontFamilyFont_android_fontStyle;
+    }
+    boolean bool;
+    if (1 == paramResources.getInt(i, 0)) {
+      bool = true;
+    } else {
       bool = false;
-      break label63;
-      i = R.styleable.m;
-      break label77;
-      j = R.styleable.n;
-      break label91;
+    }
+    if (paramResources.hasValue(R.styleable.FontFamilyFont_ttcIndex)) {
+      i = R.styleable.FontFamilyFont_ttcIndex;
+    } else {
+      i = R.styleable.FontFamilyFont_android_ttcIndex;
+    }
+    if (paramResources.hasValue(R.styleable.FontFamilyFont_fontVariationSettings)) {
+      j = R.styleable.FontFamilyFont_fontVariationSettings;
+    } else {
+      j = R.styleable.FontFamilyFont_android_fontVariationSettings;
+    }
+    String str1 = paramResources.getString(j);
+    int j = paramResources.getInt(i, 0);
+    if (paramResources.hasValue(R.styleable.FontFamilyFont_font)) {
+      i = R.styleable.FontFamilyFont_font;
+    } else {
+      i = R.styleable.FontFamilyFont_android_font;
+    }
+    int m = paramResources.getResourceId(i, 0);
+    String str2 = paramResources.getString(i);
+    paramResources.recycle();
+    while (paramXmlPullParser.next() != 3) {
+      skip(paramXmlPullParser);
     }
     return new FontResourcesParserCompat.FontFileResourceEntry(str2, k, bool, str1, j, m);
   }
@@ -209,16 +202,17 @@ public class FontResourcesParserCompat
   private static void skip(XmlPullParser paramXmlPullParser)
   {
     int i = 1;
-    while (i > 0) {
-      switch (paramXmlPullParser.next())
+    while (i > 0)
+    {
+      int j = paramXmlPullParser.next();
+      if (j != 2)
       {
-      default: 
-        break;
-      case 2: 
+        if (j == 3) {
+          i -= 1;
+        }
+      }
+      else {
         i += 1;
-        break;
-      case 3: 
-        i -= 1;
       }
     }
   }
@@ -238,7 +232,7 @@ public class FontResourcesParserCompat
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.content.res.FontResourcesParserCompat
  * JD-Core Version:    0.7.0.1
  */

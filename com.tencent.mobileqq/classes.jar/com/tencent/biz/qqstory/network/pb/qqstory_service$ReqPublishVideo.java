@@ -62,10 +62,12 @@ public final class qqstory_service$ReqPublishVideo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro3 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro4 = ByteStringMicro.EMPTY;
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro5 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro6 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro7 = ByteStringMicro.EMPTY;
@@ -75,12 +77,12 @@ public final class qqstory_service$ReqPublishVideo
     ByteStringMicro localByteStringMicro11 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro12 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro13 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 82, 114, 122, 128, 136, 146, 152, 160, 170, 178, 184, 192, 200, 210, 216, 224, 232, 242, 248, 266, 274, 282, 288, 298, 304, 314, 320, 330, 336, 344, 354, 360 }, new String[] { "title", "vid", "video_cover", "doodle_url", "total_time", "address", "label", "create_time", "video_url", "doodle_text", "video_attr", "mention_list", "source", "reader_conf", "content_type", "content_origin", "group_list", "multi_shoot_group_id", "date", "ignore_personal_publish", "group_source", "video_label_title", "video_label_id", "video_label_type", "client_version", "extra", "qim_sync_to_qq", "poll_text", "poll_options", "interact_paster_info", "sync_to_qzone", "video_extern_link_attr", "dov_fresh_task_id", "compared_vid", "is_capture_together_video", "game_pk_vid", "compared_level", "compared_activity_id", "wording_check", "dov_from_new_version" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, Long.valueOf(0L), null, localByteStringMicro5, Long.valueOf(0L), localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, Long.valueOf(0L), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro9, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro10, Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), localByteStringMicro11, Integer.valueOf(0), "", "", null, Integer.valueOf(0), localByteStringMicro12, Integer.valueOf(0), "", Integer.valueOf(0), localByteStringMicro13, Integer.valueOf(0), Integer.valueOf(0), "", Integer.valueOf(0) }, ReqPublishVideo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 26, 34, 40, 50, 58, 64, 82, 114, 122, 128, 136, 146, 152, 160, 170, 178, 184, 192, 200, 210, 216, 224, 232, 242, 248, 266, 274, 282, 288, 298, 304, 314, 320, 330, 336, 344, 354, 360 }, new String[] { "title", "vid", "video_cover", "doodle_url", "total_time", "address", "label", "create_time", "video_url", "doodle_text", "video_attr", "mention_list", "source", "reader_conf", "content_type", "content_origin", "group_list", "multi_shoot_group_id", "date", "ignore_personal_publish", "group_source", "video_label_title", "video_label_id", "video_label_type", "client_version", "extra", "qim_sync_to_qq", "poll_text", "poll_options", "interact_paster_info", "sync_to_qzone", "video_extern_link_attr", "dov_fresh_task_id", "compared_vid", "is_capture_together_video", "game_pk_vid", "compared_level", "compared_activity_id", "wording_check", "dov_from_new_version" }, new Object[] { localByteStringMicro1, localByteStringMicro2, localByteStringMicro3, localByteStringMicro4, localLong, null, localByteStringMicro5, localLong, localByteStringMicro6, localByteStringMicro7, localByteStringMicro8, localLong, localInteger, null, localInteger, localInteger, null, localByteStringMicro9, localInteger, localInteger, localInteger, localByteStringMicro10, localLong, localInteger, localInteger, localByteStringMicro11, localInteger, "", "", null, localInteger, localByteStringMicro12, localInteger, "", localInteger, localByteStringMicro13, localInteger, localInteger, "", localInteger }, ReqPublishVideo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.pb.qqstory_service.ReqPublishVideo
  * JD-Core Version:    0.7.0.1
  */

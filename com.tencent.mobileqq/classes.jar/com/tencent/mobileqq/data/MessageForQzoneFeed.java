@@ -93,8 +93,12 @@ public class MessageForQzoneFeed
   {
     try
     {
-      if (QLog.isColorLevel()) {
-        QLog.i("AIOQzoneFeed.QZoneFeeds", 2, "MessageForQzoneFeed doParse feedMsg:" + this.msg);
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("MessageForQzoneFeed doParse feedMsg:");
+        ((StringBuilder)localObject1).append(this.msg);
+        QLog.i("AIOQzoneFeed.QZoneFeeds", 2, ((StringBuilder)localObject1).toString());
       }
       this.feedMsg = new JSONObject(this.msg);
       this.appId = this.feedMsg.optInt("appid");
@@ -148,8 +152,12 @@ public class MessageForQzoneFeed
     }
     catch (JSONException localJSONException)
     {
-      if (QLog.isColorLevel()) {
-        QLog.d("AIOQzoneFeed", 2, "convert msg to json failed,error msg is:" + localJSONException.getMessage(), localJSONException);
+      if (QLog.isColorLevel())
+      {
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append("convert msg to json failed,error msg is:");
+        ((StringBuilder)localObject2).append(localJSONException.getMessage());
+        QLog.d("AIOQzoneFeed", 2, ((StringBuilder)localObject2).toString(), localJSONException);
       }
       this.isread = true;
     }
@@ -157,7 +165,7 @@ public class MessageForQzoneFeed
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.data.MessageForQzoneFeed
  * JD-Core Version:    0.7.0.1
  */

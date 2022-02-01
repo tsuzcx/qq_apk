@@ -39,31 +39,48 @@ public class VideoPlayControllerForFile
   
   public void a(boolean paramBoolean, String paramString)
   {
-    if ((paramBoolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForFile$OnCaptureVideoFrameListener != null)) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForFile$OnCaptureVideoFrameListener.a(paramString);
+    if (paramBoolean)
+    {
+      VideoPlayControllerForFile.OnCaptureVideoFrameListener localOnCaptureVideoFrameListener = this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayControllerForFile$OnCaptureVideoFrameListener;
+      if (localOnCaptureVideoFrameListener != null) {
+        localOnCaptureVideoFrameListener.a(paramString);
+      }
     }
   }
   
   public boolean b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo == null) {
-      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPlay mInfo is null");
-    }
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo == null)
     {
-      do
-      {
-        return false;
-      } while (!super.b());
-      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Boolean = true;
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPlay id:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long + " set played flag");
-      }
-    } while ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider == null) || (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean));
-    String str = HardCodeUtil.a(2131716164) + FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Long) + "/" + FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long) + ")";
-    float f = (float)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Long / (float)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long;
-    this.b.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long, f, str);
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long, 11, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle);
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPlay mInfo is null");
+      return false;
+    }
+    if (!super.b()) {
+      return false;
+    }
+    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Boolean = true;
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OnFileVideoPlay id:");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+      ((StringBuilder)localObject).append(" set played flag");
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, ((StringBuilder)localObject).toString());
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean))
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(HardCodeUtil.a(2131716087));
+      ((StringBuilder)localObject).append(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Long));
+      ((StringBuilder)localObject).append("/");
+      ((StringBuilder)localObject).append(FileUtil.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long));
+      ((StringBuilder)localObject).append(")");
+      localObject = ((StringBuilder)localObject).toString();
+      float f = (float)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Long / (float)this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Long;
+      this.b.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long, f, (String)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long, 11, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle);
+    }
     return false;
   }
   
@@ -77,29 +94,34 @@ public class VideoPlayControllerForFile
   
   public void d()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo == null) {
-      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause mInfo is null");
-    }
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo == null)
     {
-      do
-      {
-        return;
-        if (QLog.isDevelopLevel()) {
-          QLog.i("PauseDebug", 1, "OnFileVideoPause : " + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
-        }
-        if (!this.jdField_a_of_type_Boolean) {
-          break;
-        }
-      } while (!QLog.isColorLevel());
-      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause user set cancel,igon!");
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause mInfo is null");
       return;
-    } while ((this.jdField_a_of_type_Int != 3) || (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Boolean) || (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider == null));
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Boolean = false;
-    Bundle localBundle = new Bundle();
-    localBundle.putFloat("progress", a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long));
-    this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long, 10, localBundle);
-    this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaPlayHelper.a();
+    }
+    Object localObject;
+    if (QLog.isDevelopLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("OnFileVideoPause : ");
+      ((StringBuilder)localObject).append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+      QLog.i("PauseDebug", 1, ((StringBuilder)localObject).toString());
+    }
+    if (this.jdField_a_of_type_Boolean)
+    {
+      if (QLog.isColorLevel()) {
+        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "OnFileVideoPause user set cancel,igon!");
+      }
+      return;
+    }
+    if ((this.jdField_a_of_type_Int == 3) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider != null))
+    {
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_c_of_type_Boolean = false;
+      localObject = new Bundle();
+      ((Bundle)localObject).putFloat("progress", a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long));
+      this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long, 10, (Bundle)localObject);
+      this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaPlayHelper.a();
+    }
   }
   
   public void e()
@@ -109,8 +131,12 @@ public class VideoPlayControllerForFile
       QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onFileVideoCancel mInfo is null");
       return;
     }
-    if (QLog.isColorLevel()) {
-      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "onFileVideoCancel id:" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onFileVideoCancel id:");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, localStringBuilder.toString());
     }
     this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaPlayHelper.a();
     this.jdField_a_of_type_ComTencentMobileqqActivityAioPhotoIAIOImageProvider.a(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long, 12, this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_AndroidOsBundle);
@@ -118,23 +144,27 @@ public class VideoPlayControllerForFile
   
   public void f()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo == null) {
-      super.f();
-    }
-    do
+    if (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo == null)
     {
-      return;
-      if (QLog.isColorLevel()) {
-        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "VideoPlayControllerForFile onItemClick");
-      }
-      if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean) && (c()))
-      {
-        QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "file[" + this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long + "] is downloading return!");
-        return;
-      }
       super.f();
-    } while ((!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) || (!this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.d) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString.length <= 0) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString[0])) || (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaPlayHelper.a == null));
-    b();
+      return;
+    }
+    if (QLog.isColorLevel()) {
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, "VideoPlayControllerForFile onItemClick");
+    }
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Boolean) && (c()))
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("file[");
+      localStringBuilder.append(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_Long);
+      localStringBuilder.append("] is downloading return!");
+      QLog.i("VideoPlayControllerForFile.filevideoPeek", 1, localStringBuilder.toString());
+      return;
+    }
+    super.f();
+    if ((this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_b_of_type_Boolean) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.d) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString.length > 0) && (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityPhotoVideoPlayMedioInfo.jdField_a_of_type_ArrayOfJavaLangString[0])) && (this.jdField_a_of_type_ComTencentMobileqqActivityPhotoMediaPlayHelper.a != null)) {
+      b();
+    }
   }
   
   public void k()
@@ -146,7 +176,7 @@ public class VideoPlayControllerForFile
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.VideoPlayControllerForFile
  * JD-Core Version:    0.7.0.1
  */

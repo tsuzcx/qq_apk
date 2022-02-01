@@ -33,7 +33,12 @@ public class AppBrandUtil
     }
     catch (Exception localException)
     {
-      QMLog.e("AppBrandUtil", "Failed to bindFiled " + paramObject + " " + paramString, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to bindFiled ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramString);
+      QMLog.e("AppBrandUtil", localStringBuilder.toString(), localException);
     }
     return null;
   }
@@ -57,7 +62,12 @@ public class AppBrandUtil
     }
     catch (Exception localException)
     {
-      QMLog.e("AppBrandUtil", "Failed to bindField " + paramObject + " " + paramField, localException);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Failed to bindField ");
+      localStringBuilder.append(paramObject);
+      localStringBuilder.append(" ");
+      localStringBuilder.append(paramField);
+      QMLog.e("AppBrandUtil", localStringBuilder.toString(), localException);
     }
     return null;
   }
@@ -70,43 +80,38 @@ public class AppBrandUtil
   public static JSONObject getAppLaunchInfo(String paramString, MiniAppInfo paramMiniAppInfo)
   {
     JSONObject localJSONObject = new JSONObject();
-    for (;;)
+    try
     {
-      try
+      localJSONObject.put("path", getUrlWithoutParams(paramString));
+      localJSONObject.put("query", getQueryJson(paramString));
+      localJSONObject.put("scene", getWikiScene(getScene(paramMiniAppInfo)));
+      localJSONObject.put("shareTicket", getShareTicket(paramMiniAppInfo));
+      localJSONObject.put("referrerInfo", getReferrerInfo(paramMiniAppInfo));
+      paramString = getExtendData(paramMiniAppInfo);
+      if (!TextUtils.isEmpty(paramString))
       {
-        localJSONObject.put("path", getUrlWithoutParams(paramString));
-        localJSONObject.put("query", getQueryJson(paramString));
-        localJSONObject.put("scene", getWikiScene(getScene(paramMiniAppInfo)));
-        localJSONObject.put("shareTicket", getShareTicket(paramMiniAppInfo));
-        localJSONObject.put("referrerInfo", getReferrerInfo(paramMiniAppInfo));
-        paramString = getExtendData(paramMiniAppInfo);
-        if (!TextUtils.isEmpty(paramString))
-        {
-          boolean bool = isJson(paramString);
-          if (!bool) {}
-        }
-        else
-        {
+        boolean bool = isJson(paramString);
+        if (bool) {
           try
           {
             localJSONObject.put("extendData", new JSONObject(paramString));
-            localJSONObject.put("entryDataHash", getEntryDataHash(paramMiniAppInfo));
-            return localJSONObject;
           }
           catch (JSONException paramString)
           {
             QMLog.e("AppBrandUtil", "dispatch extendData parse error", paramString);
-            continue;
           }
+        } else {
+          localJSONObject.put("extendData", paramString);
         }
-        localJSONObject.put("extendData", paramString);
       }
-      catch (Throwable paramString)
-      {
-        QMLog.e("AppBrandUtil", "getAppLaunchInfo error, ", paramString);
-        return localJSONObject;
-      }
+      localJSONObject.put("entryDataHash", getEntryDataHash(paramMiniAppInfo));
+      return localJSONObject;
     }
+    catch (Throwable paramString)
+    {
+      QMLog.e("AppBrandUtil", "getAppLaunchInfo error, ", paramString);
+    }
+    return localJSONObject;
   }
   
   private static String getEntryDataHash(MiniAppInfo paramMiniAppInfo)
@@ -127,47 +132,45 @@ public class AppBrandUtil
   
   public static JSONObject getPageLoadInfo(String paramString1, String paramString2, MiniAppInfo paramMiniAppInfo)
   {
-    localJSONObject = new JSONObject();
-    for (;;)
+    JSONObject localJSONObject = new JSONObject();
+    try
     {
-      try
+      localJSONObject.put("path", getUrlWithoutParams(paramString1));
+      localJSONObject.put("query", getQueryJson(paramString1));
+      localJSONObject.put("openType", paramString2);
+      if ("appLaunch".equals(paramString2))
       {
-        localJSONObject.put("path", getUrlWithoutParams(paramString1));
-        localJSONObject.put("query", getQueryJson(paramString1));
-        localJSONObject.put("openType", paramString2);
-        if ("appLaunch".equals(paramString2))
+        localJSONObject.put("scene", getScene(paramMiniAppInfo));
+        localJSONObject.put("shareTicket", getShareTicket(paramMiniAppInfo));
+        localJSONObject.put("referrerInfo", getReferrerInfo(paramMiniAppInfo));
+        paramString1 = getExtendData(paramMiniAppInfo);
+        if (!TextUtils.isEmpty(paramString1))
         {
-          localJSONObject.put("scene", getScene(paramMiniAppInfo));
-          localJSONObject.put("shareTicket", getShareTicket(paramMiniAppInfo));
-          localJSONObject.put("referrerInfo", getReferrerInfo(paramMiniAppInfo));
-          paramString1 = getExtendData(paramMiniAppInfo);
-          if (!TextUtils.isEmpty(paramString1))
-          {
-            boolean bool = isJson(paramString1);
-            if (!bool) {
-              continue;
+          boolean bool = isJson(paramString1);
+          if (bool) {
+            try
+            {
+              localJSONObject.put("extendData", new JSONObject(paramString1));
             }
+            catch (JSONException paramString1)
+            {
+              QMLog.e("AppBrandUtil", "dispatch extendData parse error", paramString1);
+            }
+          } else {
+            localJSONObject.put("extendData", paramString1);
           }
         }
       }
-      catch (Throwable paramString1)
-      {
-        QMLog.e("AppBrandUtil", "getPageShowInfo error, ", paramString1);
-        continue;
-        localJSONObject.put("extendData", paramString1);
-        continue;
-      }
-      try
-      {
-        localJSONObject.put("extendData", new JSONObject(paramString1));
-        QMLog.i("AppBrandUtil", "getPageLoadInfo : " + localJSONObject.toString());
-        return localJSONObject;
-      }
-      catch (JSONException paramString1)
-      {
-        QMLog.e("AppBrandUtil", "dispatch extendData parse error", paramString1);
-      }
     }
+    catch (Throwable paramString1)
+    {
+      QMLog.e("AppBrandUtil", "getPageShowInfo error, ", paramString1);
+    }
+    paramString1 = new StringBuilder();
+    paramString1.append("getPageLoadInfo : ");
+    paramString1.append(localJSONObject.toString());
+    QMLog.i("AppBrandUtil", paramString1.toString());
+    return localJSONObject;
   }
   
   public static JSONObject getQueryJson(String paramString)
@@ -178,16 +181,27 @@ public class AppBrandUtil
       String str1;
       try
       {
-        Iterator localIterator = Uri.parse("file:///" + paramString).getQueryParameterNames().iterator();
+        Object localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("file:///");
+        ((StringBuilder)localObject1).append(paramString);
+        Iterator localIterator = Uri.parse(((StringBuilder)localObject1).toString()).getQueryParameterNames().iterator();
         if (localIterator.hasNext())
         {
           str1 = (String)localIterator.next();
+          localObject1 = "[\\\\?&]";
           if (str1.startsWith("$"))
           {
             localObject2 = str1.substring(1);
-            localObject1 = "[\\\\?&]" + "\\$";
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("[\\\\?&]");
+            ((StringBuilder)localObject1).append("\\$");
+            localObject1 = ((StringBuilder)localObject1).toString();
             String str2 = "";
-            localObject2 = Pattern.compile((String)localObject1 + (String)localObject2 + "=([^&#]*)").matcher(paramString);
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append("=([^&#]*)");
+            localObject2 = Pattern.compile(localStringBuilder.toString()).matcher(paramString);
             localObject1 = str2;
             if (((Matcher)localObject2).find()) {
               localObject1 = ((Matcher)localObject2).group(1);
@@ -204,7 +218,6 @@ public class AppBrandUtil
       {
         QMLog.e("AppBrandUtil", "getQueryJson err:", paramString);
       }
-      Object localObject1 = "[\\\\?&]";
       Object localObject2 = str1;
     }
   }
@@ -212,7 +225,10 @@ public class AppBrandUtil
   public static Map<String, Object> getQueryMap(String paramString)
   {
     HashMap localHashMap = new HashMap();
-    Object localObject1 = Uri.parse("file:///" + paramString);
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("file:///");
+    ((StringBuilder)localObject1).append(paramString);
+    localObject1 = Uri.parse(((StringBuilder)localObject1).toString());
     for (;;)
     {
       String str1;
@@ -222,75 +238,72 @@ public class AppBrandUtil
         if (localIterator.hasNext())
         {
           str1 = (String)localIterator.next();
-          if (!str1.startsWith("$")) {
-            break label177;
+          localObject1 = "[\\\\?&]";
+          if (str1.startsWith("$"))
+          {
+            localObject2 = str1.substring(1);
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("[\\\\?&]");
+            ((StringBuilder)localObject1).append("\\$");
+            localObject1 = ((StringBuilder)localObject1).toString();
+            String str2 = "";
+            StringBuilder localStringBuilder = new StringBuilder();
+            localStringBuilder.append((String)localObject1);
+            localStringBuilder.append((String)localObject2);
+            localStringBuilder.append("=([^&#]*)");
+            localObject2 = Pattern.compile(localStringBuilder.toString()).matcher(paramString);
+            localObject1 = str2;
+            if (((Matcher)localObject2).find()) {
+              localObject1 = ((Matcher)localObject2).group(1);
+            }
+            localHashMap.put(str1, localObject1);
           }
-          localObject2 = str1.substring(1);
-          localObject1 = "[\\\\?&]" + "\\$";
-          String str2 = "";
-          localObject2 = Pattern.compile((String)localObject1 + (String)localObject2 + "=([^&#]*)").matcher(paramString);
-          localObject1 = str2;
-          if (((Matcher)localObject2).find()) {
-            localObject1 = ((Matcher)localObject2).group(1);
-          }
-          localHashMap.put(str1, localObject1);
         }
-        localObject1 = "[\\\\?&]";
+        else
+        {
+          return localHashMap;
+        }
       }
       catch (Throwable paramString)
       {
         return localHashMap;
       }
-      finally
-      {
-        return localHashMap;
-      }
-      label177:
       Object localObject2 = str1;
     }
   }
   
   private static JSONObject getReferrerInfo(MiniAppInfo paramMiniAppInfo)
   {
-    JSONObject localJSONObject1;
     if ((paramMiniAppInfo != null) && (paramMiniAppInfo.launchParam != null))
     {
-      JSONObject localJSONObject2 = new JSONObject();
+      JSONObject localJSONObject = new JSONObject();
       int i = paramMiniAppInfo.launchParam.scene;
       try
       {
-        localJSONObject2.put("appId", paramMiniAppInfo.launchParam.fromMiniAppId);
-        if (i != 1037)
+        localJSONObject.put("appId", paramMiniAppInfo.launchParam.fromMiniAppId);
+        if ((i == 1037) || (i == 1038))
         {
-          localJSONObject1 = localJSONObject2;
-          if (i != 1038) {
-            return localJSONObject1;
+          paramMiniAppInfo = paramMiniAppInfo.launchParam.navigateExtData;
+          if (!TextUtils.isEmpty(paramMiniAppInfo))
+          {
+            boolean bool = isJson(paramMiniAppInfo);
+            if (bool)
+            {
+              localJSONObject.put("extraData", new JSONObject(paramMiniAppInfo));
+              return localJSONObject;
+            }
+            localJSONObject.put("extraData", paramMiniAppInfo);
+            return localJSONObject;
           }
         }
-        paramMiniAppInfo = paramMiniAppInfo.launchParam.navigateExtData;
-        localJSONObject1 = localJSONObject2;
-        if (TextUtils.isEmpty(paramMiniAppInfo)) {
-          return localJSONObject1;
-        }
-        if (isJson(paramMiniAppInfo))
-        {
-          localJSONObject2.put("extraData", new JSONObject(paramMiniAppInfo));
-          return localJSONObject2;
-        }
-        localJSONObject2.put("extraData", paramMiniAppInfo);
-        return localJSONObject2;
       }
       catch (Throwable paramMiniAppInfo)
       {
         QMLog.e("getReferrerInfo", "error,", paramMiniAppInfo);
-        return localJSONObject2;
       }
+      return localJSONObject;
     }
-    else
-    {
-      localJSONObject1 = null;
-    }
-    return localJSONObject1;
+    return null;
   }
   
   private static int getScene(MiniAppInfo paramMiniAppInfo)
@@ -311,14 +324,15 @@ public class AppBrandUtil
   
   public static String getUrlWithoutParams(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    int i;
-    do
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return paramString;
-      i = paramString.indexOf("?");
-    } while (i == -1);
-    return paramString.substring(0, i);
+    }
+    int i = paramString.indexOf("?");
+    String str = paramString;
+    if (i != -1) {
+      str = paramString.substring(0, i);
+    }
+    return str;
   }
   
   public static int getWikiScene(int paramInt)
@@ -333,7 +347,11 @@ public class AppBrandUtil
       new JSONObject(paramString);
       return true;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label11:
+      break label11;
+    }
     return false;
   }
   
@@ -348,10 +366,28 @@ public class AppBrandUtil
     {
       if ((paramMiniAppInfo1.versionId != null) && (!paramMiniAppInfo1.versionId.equals(paramMiniAppInfo2.versionId)) && (paramMiniAppInfo1.versionUpdateTime > 0) && (paramMiniAppInfo2.versionUpdateTime > paramMiniAppInfo1.versionUpdateTime))
       {
-        QMLog.i("AppBrandUtil", "needUpdate=true oldVersionUpdateTime=" + paramMiniAppInfo1.versionUpdateTime + " newVersionUpdateTime=" + paramMiniAppInfo2.versionUpdateTime + " oldVersionId=" + paramMiniAppInfo1.versionId + " newVersionId=" + paramMiniAppInfo2.versionId);
+        localStringBuilder = new StringBuilder();
+        localStringBuilder.append("needUpdate=true oldVersionUpdateTime=");
+        localStringBuilder.append(paramMiniAppInfo1.versionUpdateTime);
+        localStringBuilder.append(" newVersionUpdateTime=");
+        localStringBuilder.append(paramMiniAppInfo2.versionUpdateTime);
+        localStringBuilder.append(" oldVersionId=");
+        localStringBuilder.append(paramMiniAppInfo1.versionId);
+        localStringBuilder.append(" newVersionId=");
+        localStringBuilder.append(paramMiniAppInfo2.versionId);
+        QMLog.i("AppBrandUtil", localStringBuilder.toString());
         return true;
       }
-      QMLog.i("AppBrandUtil", "needUpdate=false oldVersionUpdateTime=" + paramMiniAppInfo1.versionUpdateTime + " newVersionUpdateTime=" + paramMiniAppInfo2.versionUpdateTime + " oldVersionId=" + paramMiniAppInfo1.versionId + " newVersionId=" + paramMiniAppInfo2.versionId);
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("needUpdate=false oldVersionUpdateTime=");
+      localStringBuilder.append(paramMiniAppInfo1.versionUpdateTime);
+      localStringBuilder.append(" newVersionUpdateTime=");
+      localStringBuilder.append(paramMiniAppInfo2.versionUpdateTime);
+      localStringBuilder.append(" oldVersionId=");
+      localStringBuilder.append(paramMiniAppInfo1.versionId);
+      localStringBuilder.append(" newVersionId=");
+      localStringBuilder.append(paramMiniAppInfo2.versionId);
+      QMLog.i("AppBrandUtil", localStringBuilder.toString());
     }
     return false;
   }
@@ -366,6 +402,7 @@ public class AppBrandUtil
       localObject2 = ((Map.Entry)localObject2).getValue();
       if (((localObject1 instanceof String)) && ((localObject2 instanceof Map)))
       {
+        localObject2 = (Map)localObject2;
         parseToJsonMap((Map)localObject2);
         paramMap.put(localObject1, new JSONObject((Map)localObject2));
       }
@@ -374,13 +411,16 @@ public class AppBrandUtil
   
   public static String parseToLocalPath(String paramString)
   {
-    String str = Uri.parse("file:///" + paramString).getPath();
-    paramString = str;
-    if (str != null)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("file:///");
+    ((StringBuilder)localObject).append(paramString);
+    localObject = Uri.parse(((StringBuilder)localObject).toString()).getPath();
+    paramString = (String)localObject;
+    if (localObject != null)
     {
-      paramString = str;
-      if (str.startsWith("/")) {
-        paramString = str.substring(1);
+      paramString = (String)localObject;
+      if (((String)localObject).startsWith("/")) {
+        paramString = ((String)localObject).substring(1);
       }
     }
     if (paramString != null) {
@@ -391,7 +431,7 @@ public class AppBrandUtil
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.launcher.utils.AppBrandUtil
  * JD-Core Version:    0.7.0.1
  */

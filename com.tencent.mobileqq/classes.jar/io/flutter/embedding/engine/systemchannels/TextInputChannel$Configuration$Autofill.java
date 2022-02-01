@@ -36,244 +36,278 @@ public class TextInputChannel$Configuration$Autofill
   @NonNull
   private static String translateAutofillHint(@NonNull String paramString)
   {
+    int j = Build.VERSION.SDK_INT;
     int i = 26;
-    if (Build.VERSION.SDK_INT < 26) {
+    if (j < 26) {
       return paramString;
     }
     switch (paramString.hashCode())
     {
     default: 
-      label316:
-      i = -1;
-    }
-    for (;;)
-    {
-      switch (i)
-      {
-      default: 
-        return paramString;
-      case 0: 
-        return "addressLocality";
-        if (!paramString.equals("birthdayDay")) {
-          break label316;
-        }
+      break;
+    case 2011773919: 
+      if (paramString.equals("birthdayDay")) {
         i = 3;
-        continue;
-        if (!paramString.equals("postalCode")) {
-          break label316;
-        }
+      }
+      break;
+    case 2011152728: 
+      if (paramString.equals("postalCode")) {
         i = 30;
-        continue;
-        if (!paramString.equals("postalAddressExtended")) {
-          break label316;
-        }
+      }
+      break;
+    case 1921869058: 
+      if (paramString.equals("postalAddressExtended")) {
         i = 28;
-        continue;
-        if (!paramString.equals("postalAddress")) {
-          break label316;
-        }
+      }
+      break;
+    case 1662667945: 
+      if (paramString.equals("postalAddress")) {
         i = 27;
-        continue;
-        if (!paramString.equals("givenName")) {
-          break label316;
-        }
+      }
+      break;
+    case 1469046696: 
+      if (paramString.equals("givenName")) {
         i = 17;
-        continue;
-        if (!paramString.equals("password")) {
-          break label316;
-        }
-        continue;
-        if (!paramString.equals("birthday")) {
-          break label316;
-        }
+      }
+      break;
+    case 1216985755: 
+      if (!paramString.equals("password")) {
+        break;
+      }
+      break;
+    case 1069376125: 
+      if (paramString.equals("birthday")) {
         i = 2;
-        continue;
-        if (!paramString.equals("newUsername")) {
-          break label316;
-        }
+      }
+      break;
+    case 991032982: 
+      if (paramString.equals("newUsername")) {
         i = 24;
-        continue;
-        if (!paramString.equals("telephoneNumber")) {
-          break label316;
-        }
+      }
+      break;
+    case 892233837: 
+      if (paramString.equals("telephoneNumber")) {
         i = 31;
-        continue;
-        if (!paramString.equals("familyName")) {
-          break label316;
-        }
+      }
+      break;
+    case 798554127: 
+      if (paramString.equals("familyName")) {
         i = 14;
-        continue;
-        if (!paramString.equals("birthdayMonth")) {
-          break label316;
-        }
+      }
+      break;
+    case 588174851: 
+      if (paramString.equals("birthdayMonth")) {
         i = 4;
-        continue;
-        if (!paramString.equals("addressState")) {
-          break label316;
-        }
+      }
+      break;
+    case 253202685: 
+      if (paramString.equals("addressState")) {
         i = 1;
-        continue;
-        if (!paramString.equals("email")) {
-          break label316;
-        }
+      }
+      break;
+    case 96619420: 
+      if (paramString.equals("email")) {
         i = 13;
-        continue;
-        if (!paramString.equals("name")) {
-          break label316;
-        }
+      }
+      break;
+    case 3373707: 
+      if (paramString.equals("name")) {
         i = 20;
-        continue;
-        if (!paramString.equals("username")) {
-          break label316;
-        }
+      }
+      break;
+    case -265713450: 
+      if (paramString.equals("username")) {
         i = 35;
-        continue;
-        if (!paramString.equals("telephoneNumberCountryCode")) {
-          break label316;
-        }
+      }
+      break;
+    case -549230602: 
+      if (paramString.equals("telephoneNumberCountryCode")) {
         i = 32;
-        continue;
-        if (!paramString.equals("creditCardExpirationYear")) {
-          break label316;
-        }
+      }
+      break;
+    case -613352043: 
+      if (paramString.equals("creditCardExpirationYear")) {
         i = 10;
-        continue;
-        if (!paramString.equals("creditCardExpirationDate")) {
-          break label316;
-        }
+      }
+      break;
+    case -613980922: 
+      if (paramString.equals("creditCardExpirationDate")) {
         i = 7;
-        continue;
-        if (!paramString.equals("nameSuffix")) {
-          break label316;
-        }
+      }
+      break;
+    case -747304516: 
+      if (paramString.equals("nameSuffix")) {
         i = 22;
-        continue;
-        if (!paramString.equals("middleName")) {
-          break label316;
-        }
+      }
+      break;
+    case -818219584: 
+      if (paramString.equals("middleName")) {
         i = 19;
-        continue;
-        if (!paramString.equals("namePrefix")) {
-          break label316;
-        }
+      }
+      break;
+    case -835992323: 
+      if (paramString.equals("namePrefix")) {
         i = 21;
-        continue;
-        if (!paramString.equals("creditCardNumber")) {
-          break label316;
-        }
+      }
+      break;
+    case -1151034798: 
+      if (paramString.equals("creditCardNumber")) {
         i = 11;
-        continue;
-        if (!paramString.equals("postalAddressExtendedPostalCode")) {
-          break label316;
-        }
+      }
+      break;
+    case -1186060294: 
+      if (paramString.equals("postalAddressExtendedPostalCode")) {
         i = 29;
-        continue;
-        if (!paramString.equals("gender")) {
-          break label316;
-        }
+      }
+      break;
+    case -1249512767: 
+      if (paramString.equals("gender")) {
         i = 16;
-        continue;
-        if (!paramString.equals("addressCity")) {
-          break label316;
-        }
+      }
+      break;
+    case -1377792129: 
+      if (paramString.equals("addressCity")) {
         i = 0;
-        continue;
-        if (!paramString.equals("middleInitial")) {
-          break label316;
-        }
+      }
+      break;
+    case -1413737489: 
+      if (paramString.equals("middleInitial")) {
         i = 18;
-        continue;
-        if (!paramString.equals("countryName")) {
-          break label316;
-        }
+      }
+      break;
+    case -1476752575: 
+      if (paramString.equals("countryName")) {
         i = 6;
-        continue;
-        if (!paramString.equals("telephoneNumberDevice")) {
-          break label316;
-        }
+      }
+      break;
+    case -1567118045: 
+      if (paramString.equals("telephoneNumberDevice")) {
         i = 33;
-        continue;
-        if (!paramString.equals("fullStreetAddress")) {
-          break label316;
-        }
+      }
+      break;
+    case -1658955742: 
+      if (paramString.equals("fullStreetAddress")) {
         i = 15;
-        continue;
-        if (!paramString.equals("creditCardExpirationDay")) {
-          break label316;
-        }
+      }
+      break;
+    case -1682373820: 
+      if (paramString.equals("creditCardExpirationDay")) {
         i = 8;
-        continue;
-        if (!paramString.equals("creditCardSecurityCode")) {
-          break label316;
-        }
+      }
+      break;
+    case -1757573738: 
+      if (paramString.equals("creditCardSecurityCode")) {
         i = 12;
-        continue;
-        if (!paramString.equals("newPassword")) {
-          break label316;
-        }
+      }
+      break;
+    case -1821235109: 
+      if (paramString.equals("newPassword")) {
         i = 23;
-        continue;
-        if (!paramString.equals("telephoneNumberNational")) {
-          break label316;
-        }
+      }
+      break;
+    case -1825589953: 
+      if (paramString.equals("telephoneNumberNational")) {
         i = 34;
-        continue;
-        if (!paramString.equals("creditCardExpirationMonth")) {
-          break label316;
-        }
+      }
+      break;
+    case -1844815832: 
+      if (paramString.equals("creditCardExpirationMonth")) {
         i = 9;
-        continue;
-        if (!paramString.equals("oneTimeCode")) {
-          break label316;
-        }
+      }
+      break;
+    case -1917283616: 
+      if (paramString.equals("oneTimeCode")) {
         i = 25;
-        continue;
-        if (!paramString.equals("birthdayYear")) {
-          break label316;
-        }
+      }
+      break;
+    case -2058889126: 
+      if (paramString.equals("birthdayYear")) {
         i = 5;
       }
+      break;
     }
-    return "username";
-    return "phoneNational";
-    return "phoneNumberDevice";
-    return "phoneCountryCode";
-    return "phoneNumber";
-    return "postalCode";
-    return "extendedPostalCode";
-    return "extendedAddress";
-    return "postalAddress";
-    return "password";
-    return "smsOTPCode";
-    return "newUsername";
-    return "newPassword";
-    return "personNameSuffix";
-    return "personNamePrefix";
-    return "personName";
-    return "personMiddleName";
-    return "personMiddleInitial";
-    return "personGivenName";
-    return "gender";
-    return "streetAddress";
-    return "personFamilyName";
-    return "emailAddress";
-    return "creditCardSecurityCode";
-    return "creditCardNumber";
-    return "creditCardExpirationYear";
-    return "creditCardExpirationMonth";
-    return "creditCardExpirationDay";
-    return "creditCardExpirationDate";
-    return "addressCountry";
-    return "birthDateYear";
-    return "birthDateMonth";
-    return "birthDateDay";
-    return "birthDateFull";
-    return "addressRegion";
+    i = -1;
+    switch (i)
+    {
+    default: 
+      return paramString;
+    case 35: 
+      return "username";
+    case 34: 
+      return "phoneNational";
+    case 33: 
+      return "phoneNumberDevice";
+    case 32: 
+      return "phoneCountryCode";
+    case 31: 
+      return "phoneNumber";
+    case 30: 
+      return "postalCode";
+    case 29: 
+      return "extendedPostalCode";
+    case 28: 
+      return "extendedAddress";
+    case 27: 
+      return "postalAddress";
+    case 26: 
+      return "password";
+    case 25: 
+      return "smsOTPCode";
+    case 24: 
+      return "newUsername";
+    case 23: 
+      return "newPassword";
+    case 22: 
+      return "personNameSuffix";
+    case 21: 
+      return "personNamePrefix";
+    case 20: 
+      return "personName";
+    case 19: 
+      return "personMiddleName";
+    case 18: 
+      return "personMiddleInitial";
+    case 17: 
+      return "personGivenName";
+    case 16: 
+      return "gender";
+    case 15: 
+      return "streetAddress";
+    case 14: 
+      return "personFamilyName";
+    case 13: 
+      return "emailAddress";
+    case 12: 
+      return "creditCardSecurityCode";
+    case 11: 
+      return "creditCardNumber";
+    case 10: 
+      return "creditCardExpirationYear";
+    case 9: 
+      return "creditCardExpirationMonth";
+    case 8: 
+      return "creditCardExpirationDay";
+    case 7: 
+      return "creditCardExpirationDate";
+    case 6: 
+      return "addressCountry";
+    case 5: 
+      return "birthDateYear";
+    case 4: 
+      return "birthDateMonth";
+    case 3: 
+      return "birthDateDay";
+    case 2: 
+      return "birthDateFull";
+    case 1: 
+      return "addressRegion";
+    }
+    return "addressLocality";
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     io.flutter.embedding.engine.systemchannels.TextInputChannel.Configuration.Autofill
  * JD-Core Version:    0.7.0.1
  */

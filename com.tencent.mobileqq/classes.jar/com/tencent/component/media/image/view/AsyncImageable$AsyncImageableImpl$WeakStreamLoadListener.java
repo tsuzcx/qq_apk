@@ -23,11 +23,12 @@ class AsyncImageable$AsyncImageableImpl$WeakStreamLoadListener
   public void onApplyToImage(String paramString, Drawable paramDrawable, ImageLoader.Options paramOptions)
   {
     paramOptions = getAsyncImageable();
-    if (paramOptions == null) {}
-    while (AsyncImageable.AsyncImageableImpl.access$400(paramOptions, paramString)) {
+    if (paramOptions == null) {
       return;
     }
-    AsyncImageable.AsyncImageableImpl.access$700(paramOptions, paramDrawable, true);
+    if (!AsyncImageable.AsyncImageableImpl.access$400(paramOptions, paramString)) {
+      AsyncImageable.AsyncImageableImpl.access$700(paramOptions, paramDrawable, true);
+    }
   }
   
   public void onDownloadCanceled(String paramString1, String paramString2, String paramString3) {}
@@ -40,7 +41,7 @@ class AsyncImageable$AsyncImageableImpl$WeakStreamLoadListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.component.media.image.view.AsyncImageable.AsyncImageableImpl.WeakStreamLoadListener
  * JD-Core Version:    0.7.0.1
  */

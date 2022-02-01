@@ -7,14 +7,14 @@ class VisitorsActivity$2
 {
   VisitorsActivity$2(VisitorsActivity paramVisitorsActivity) {}
   
-  public void a(int paramInt1, int paramInt2)
+  public void onTabSelected(int paramInt1, int paramInt2)
   {
     this.a.a(paramInt2);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.VisitorsActivity.2
  * JD-Core Version:    0.7.0.1
  */

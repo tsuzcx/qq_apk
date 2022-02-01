@@ -34,11 +34,13 @@ public final class SavedStateRegistryController
   public void performRestore(@Nullable Bundle paramBundle)
   {
     Lifecycle localLifecycle = this.mOwner.getLifecycle();
-    if (localLifecycle.getCurrentState() != Lifecycle.State.INITIALIZED) {
-      throw new IllegalStateException("Restarter must be created only during owner's initialization stage");
+    if (localLifecycle.getCurrentState() == Lifecycle.State.INITIALIZED)
+    {
+      localLifecycle.addObserver(new Recreator(this.mOwner));
+      this.mRegistry.performRestore(localLifecycle, paramBundle);
+      return;
     }
-    localLifecycle.addObserver(new Recreator(this.mOwner));
-    this.mRegistry.performRestore(localLifecycle, paramBundle);
+    throw new IllegalStateException("Restarter must be created only during owner's initialization stage");
   }
   
   @MainThread
@@ -49,7 +51,7 @@ public final class SavedStateRegistryController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.savedstate.SavedStateRegistryController
  * JD-Core Version:    0.7.0.1
  */

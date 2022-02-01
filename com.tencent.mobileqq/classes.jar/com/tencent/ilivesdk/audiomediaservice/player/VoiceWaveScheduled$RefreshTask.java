@@ -12,15 +12,17 @@ class VoiceWaveScheduled$RefreshTask
     }
     if (VoiceWaveScheduled.a(this.this$0))
     {
-      VoiceWaveScheduled.b(this.this$0, VoiceWaveScheduled.a(this.this$0));
+      localVoiceWaveScheduled = this.this$0;
+      VoiceWaveScheduled.b(localVoiceWaveScheduled, VoiceWaveScheduled.a(localVoiceWaveScheduled));
       return;
     }
-    VoiceWaveScheduled.a(this.this$0, VoiceWaveScheduled.a(this.this$0));
+    VoiceWaveScheduled localVoiceWaveScheduled = this.this$0;
+    VoiceWaveScheduled.a(localVoiceWaveScheduled, VoiceWaveScheduled.a(localVoiceWaveScheduled));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.ilivesdk.audiomediaservice.player.VoiceWaveScheduled.RefreshTask
  * JD-Core Version:    0.7.0.1
  */

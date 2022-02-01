@@ -4,7 +4,6 @@ import android.annotation.TargetApi;
 import android.content.Context;
 import android.content.res.Resources;
 import android.graphics.Rect;
-import android.os.Build.VERSION;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.MotionEvent;
@@ -18,7 +17,7 @@ public class DragTextView
   extends TextView
   implements IDragView
 {
-  private static int jdField_a_of_type_Int = 0;
+  private static int jdField_a_of_type_Int;
   private static int b;
   private static int c;
   private Rect jdField_a_of_type_AndroidGraphicsRect = null;
@@ -49,7 +48,7 @@ public class DragTextView
   {
     if (jdField_a_of_type_Int == 0)
     {
-      float f = 16.0F * paramContext.getResources().getDisplayMetrics().density;
+      float f = paramContext.getResources().getDisplayMetrics().density * 16.0F;
       jdField_a_of_type_Int = (int)f;
       b = (int)(1.5F * f);
       c = (int)(f * 0.5F);
@@ -80,36 +79,12 @@ public class DragTextView
     return this.d;
   }
   
-  public void notifyViewAccessibilityStateChangedIfNeeded(int paramInt)
-  {
-    if (Build.VERSION.SDK_INT >= 19)
-    {
-      if (!isAttachedToWindow()) {
-        if (QLog.isColorLevel()) {
-          QLog.d("DragTextView", 2, "Android 4.4-5.2 DragTextView rejected notifyViewAccessibilityStateChangedIfNeeded");
-        }
-      }
-      do
-      {
-        return;
-        try
-        {
-          super.notifyViewAccessibilityStateChangedIfNeeded(paramInt);
-          return;
-        }
-        catch (NoSuchMethodError localNoSuchMethodError) {}
-      } while (!QLog.isColorLevel());
-      QLog.d("DragTextView", 2, localNoSuchMethodError, new Object[0]);
-      return;
-    }
-    super.notifyViewAccessibilityStateChangedIfNeeded(paramInt);
-  }
-  
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-    if ((this.jdField_a_of_type_AndroidGraphicsRect != null) && (paramBoolean)) {
-      a(this.jdField_a_of_type_AndroidViewView, this.jdField_a_of_type_AndroidGraphicsRect);
+    Rect localRect = this.jdField_a_of_type_AndroidGraphicsRect;
+    if ((localRect != null) && (paramBoolean)) {
+      a(this.jdField_a_of_type_AndroidViewView, localRect);
     }
   }
   
@@ -117,10 +92,11 @@ public class DragTextView
   {
     if ((this.d != -1) && (!this.jdField_a_of_type_Boolean) && (paramMotionEvent.getAction() == 0))
     {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener != null)
+      IDragView.OnChangeModeListener localOnChangeModeListener = this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener;
+      if (localOnChangeModeListener != null)
       {
         this.jdField_a_of_type_Boolean = true;
-        this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener.a(this, this.d);
+        localOnChangeModeListener.a(this, this.d);
         return true;
       }
       return super.onTouchEvent(paramMotionEvent);
@@ -150,8 +126,12 @@ public class DragTextView
   public void setOnModeChangeListener(IDragView.OnChangeModeListener paramOnChangeModeListener)
   {
     this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener = paramOnChangeModeListener;
-    if (QLog.isColorLevel()) {
-      QLog.d("Drag", 2, "setOnModeChangeListener:" + paramOnChangeModeListener);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("setOnModeChangeListener:");
+      localStringBuilder.append(paramOnChangeModeListener);
+      QLog.d("Drag", 2, localStringBuilder.toString());
     }
     if ((this.jdField_a_of_type_ComTencentMobileqqActivityRecentCurIDragView$OnChangeModeListener != null) && (this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidGraphicsRect == null))
     {
@@ -170,7 +150,7 @@ public class DragTextView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.cur.DragTextView
  * JD-Core Version:    0.7.0.1
  */

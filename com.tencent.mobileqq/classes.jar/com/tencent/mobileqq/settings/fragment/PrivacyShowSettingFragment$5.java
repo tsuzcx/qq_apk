@@ -14,13 +14,13 @@ class PrivacyShowSettingFragment$5
   public void onClick(View paramView)
   {
     ReportController.b(this.a.a, "dc00898", "", "", "0X800B868", "0X800B868", 0, 0, "", "", "", "");
-    VipUtils.VipIconUtils.a(this.a.a, this.a.getActivity(), "setting");
+    VipUtils.VipIconUtils.a(this.a.a, this.a.getBaseActivity(), "setting");
     EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.settings.fragment.PrivacyShowSettingFragment.5
  * JD-Core Version:    0.7.0.1
  */

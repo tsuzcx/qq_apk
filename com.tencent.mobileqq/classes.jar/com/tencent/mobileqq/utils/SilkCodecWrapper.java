@@ -57,17 +57,18 @@ public final class SilkCodecWrapper
   
   public int a(byte[] paramArrayOfByte1, byte[] paramArrayOfByte2, int paramInt1, int paramInt2)
   {
-    long l = SystemClock.uptimeMillis();
-    if (this.jdField_a_of_type_Long == 0L) {
+    long l1 = SystemClock.uptimeMillis();
+    long l2 = this.jdField_a_of_type_Long;
+    if (l2 == 0L) {
       return 0;
     }
     try
     {
-      paramInt1 = decode(this.jdField_a_of_type_Long, paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
-      l = SystemClock.uptimeMillis() - l;
-      this.jdField_b_of_type_Long += l;
-      if (l > this.jdField_c_of_type_Long) {
-        this.jdField_c_of_type_Long = l;
+      paramInt1 = decode(l2, paramArrayOfByte1, paramArrayOfByte2, paramInt1, paramInt2);
+      l1 = SystemClock.uptimeMillis() - l1;
+      this.jdField_b_of_type_Long += l1;
+      if (l1 > this.jdField_c_of_type_Long) {
+        this.jdField_c_of_type_Long = l1;
       }
       this.jdField_b_of_type_Int += 1;
       return paramInt1;
@@ -87,7 +88,7 @@ public final class SilkCodecWrapper
     if (l > this.jdField_c_of_type_Long) {
       this.jdField_c_of_type_Long = l;
     }
-    this.jdField_b_of_type_Long = (l + this.jdField_b_of_type_Long);
+    this.jdField_b_of_type_Long += l;
     this.jdField_b_of_type_Int += 1;
     return paramArrayOfByte;
   }
@@ -103,50 +104,51 @@ public final class SilkCodecWrapper
     super.a(paramInt1, paramInt2, paramInt3);
     try
     {
-      if (this.jdField_a_of_type_Boolean) {}
-      for (this.jdField_a_of_type_Long = SilkEncoderNew(paramInt1, paramInt2);; this.jdField_a_of_type_Long = SilkDecoderNew(paramInt1, paramInt2))
-      {
-        this.jdField_a_of_type_Int = QQAudioUtils.a(paramInt1);
-        this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-        this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-        this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
-        this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData = new IAudioProcessor.ProcessData(this.jdField_c_of_type_ArrayOfByte, 0);
-        return;
+      if (this.jdField_a_of_type_Boolean) {
+        this.jdField_a_of_type_Long = SilkEncoderNew(paramInt1, paramInt2);
+      } else {
+        this.jdField_a_of_type_Long = SilkDecoderNew(paramInt1, paramInt2);
       }
     }
     catch (UnsatisfiedLinkError localUnsatisfiedLinkError)
     {
-      for (;;)
+      if (QLog.isColorLevel())
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("SilkCodecWrapper", 2, "init silk codec =" + localUnsatisfiedLinkError.toString());
-        }
-        this.jdField_a_of_type_Long = 0L;
-        jdField_b_of_type_Boolean = false;
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("init silk codec =");
+        localStringBuilder.append(localUnsatisfiedLinkError.toString());
+        QLog.d("SilkCodecWrapper", 2, localStringBuilder.toString());
       }
+      this.jdField_a_of_type_Long = 0L;
+      jdField_b_of_type_Boolean = false;
     }
+    this.jdField_a_of_type_Int = QQAudioUtils.a(paramInt1);
+    this.jdField_a_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+    this.jdField_b_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+    this.jdField_c_of_type_ArrayOfByte = new byte[this.jdField_a_of_type_Int];
+    this.jdField_a_of_type_ComTencentMobileqqQqaudioAudioprocessorIAudioProcessor$ProcessData = new IAudioProcessor.ProcessData(this.jdField_c_of_type_ArrayOfByte, 0);
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_Long != 0L)
+    long l = this.jdField_a_of_type_Long;
+    if (l != 0L)
     {
-      deleteCodec(this.jdField_a_of_type_Long);
-      if ((this.jdField_b_of_type_Long > 0L) && (this.jdField_b_of_type_Int > 0))
+      deleteCodec(l);
+      l = this.jdField_b_of_type_Long;
+      if (l > 0L)
       {
-        if (!this.jdField_a_of_type_Boolean) {
-          break label62;
+        int i = this.jdField_b_of_type_Int;
+        if (i > 0) {
+          if (this.jdField_a_of_type_Boolean) {
+            QQAudioReporter.a(l, i, this.jdField_c_of_type_Long, 0);
+          } else {
+            QQAudioReporter.a(l, i, this.jdField_c_of_type_Long, 1);
+          }
         }
-        QQAudioReporter.a(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 0);
       }
     }
-    for (;;)
-    {
-      this.jdField_a_of_type_Long = 0L;
-      return;
-      label62:
-      QQAudioReporter.a(this.jdField_b_of_type_Long, this.jdField_b_of_type_Int, this.jdField_c_of_type_Long, 1);
-    }
+    this.jdField_a_of_type_Long = 0L;
   }
   
   public void close()
@@ -179,7 +181,7 @@ public final class SilkCodecWrapper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SilkCodecWrapper
  * JD-Core Version:    0.7.0.1
  */

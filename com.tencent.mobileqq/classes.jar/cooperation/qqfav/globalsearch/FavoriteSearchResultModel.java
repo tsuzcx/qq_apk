@@ -3,7 +3,7 @@ package cooperation.qqfav.globalsearch;
 import android.text.SpannableStringBuilder;
 import android.text.style.ForegroundColorSpan;
 import android.view.View;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.search.activity.UniteSearchActivity;
 import com.tencent.mobileqq.search.model.ISearchResultPositionModel;
 import com.tencent.mobileqq.search.util.SearchUtils;
@@ -14,7 +14,7 @@ import mqq.app.AppRuntime;
 public class FavoriteSearchResultModel
   extends ISearchResultPositionModel
 {
-  private static ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(SearchUtils.b());
+  private static ForegroundColorSpan jdField_a_of_type_AndroidTextStyleForegroundColorSpan = new ForegroundColorSpan(SearchUtils.a());
   public int a;
   public long a;
   private CharSequence jdField_a_of_type_JavaLangCharSequence;
@@ -34,31 +34,62 @@ public class FavoriteSearchResultModel
   public int g;
   public int h;
   
+  public int a()
+  {
+    int j = this.e;
+    int i = 1;
+    if (j != 1)
+    {
+      if (j != 2)
+      {
+        if (j != 3) {
+          return 0;
+        }
+        return 101;
+      }
+      i = 4;
+    }
+    return i;
+  }
+  
   public CharSequence a()
   {
-    if ((this.jdField_a_of_type_JavaLangCharSequence == null) && (this.jdField_b_of_type_JavaLangString != null))
+    SpannableStringBuilder localSpannableStringBuilder2 = new SpannableStringBuilder();
+    SpannableStringBuilder localSpannableStringBuilder1 = localSpannableStringBuilder2;
+    if (this.jdField_c_of_type_JavaLangString != null)
     {
-      QQText localQQText = new QQText(this.jdField_b_of_type_JavaLangString, 3, 20);
-      if ((this.jdField_a_of_type_Int == 0) && (this.jdField_c_of_type_Int > this.jdField_b_of_type_Int)) {
-        localQQText.setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int, this.jdField_c_of_type_Int, 33);
+      if (this.jdField_a_of_type_Int == 1)
+      {
+        localSpannableStringBuilder2.append("来自: ").append(this.jdField_c_of_type_JavaLangString).setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int + 4, this.jdField_c_of_type_Int + 4, 33);
+        return localSpannableStringBuilder2;
       }
-      this.jdField_a_of_type_JavaLangCharSequence = localQQText;
+      localSpannableStringBuilder1 = localSpannableStringBuilder2.append("来自: ").append(SearchUtils.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 30));
     }
-    return this.jdField_a_of_type_JavaLangCharSequence;
+    return localSpannableStringBuilder1;
   }
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    if (this.jdField_c_of_type_Long == 0L) {
+      return null;
+    }
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(this.jdField_c_of_type_Long);
+    return localStringBuilder.toString();
   }
   
   public void a(View paramView)
   {
-    BaseActivity localBaseActivity = (BaseActivity)paramView.getContext();
-    QfavHelper.a(localBaseActivity, localBaseActivity.getAppRuntime().getAccount(), this.jdField_a_of_type_Long);
+    QBaseActivity localQBaseActivity = (QBaseActivity)paramView.getContext();
+    QfavHelper.a(localQBaseActivity, localQBaseActivity.getAppRuntime().getAccount(), this.jdField_a_of_type_Long);
     SearchUtils.a(this.jdField_a_of_type_JavaLangString, 60, 0, paramView);
-    if ((localBaseActivity instanceof UniteSearchActivity)) {
-      SearchUtils.a("all_result", "clk_collect", new String[] { "" + this.jdField_a_of_type_JavaLangString });
+    if ((localQBaseActivity instanceof UniteSearchActivity))
+    {
+      paramView = new StringBuilder();
+      paramView.append("");
+      paramView.append(this.jdField_a_of_type_JavaLangString);
+      SearchUtils.a("all_result", "clk_collect", new String[] { paramView.toString() });
     }
   }
   
@@ -69,44 +100,34 @@ public class FavoriteSearchResultModel
   
   public CharSequence b()
   {
-    return null;
+    if (this.jdField_a_of_type_JavaLangCharSequence == null)
+    {
+      Object localObject = this.jdField_b_of_type_JavaLangString;
+      if (localObject != null)
+      {
+        localObject = new QQText((CharSequence)localObject, 3, 20);
+        if (this.jdField_a_of_type_Int == 0)
+        {
+          int i = this.jdField_c_of_type_Int;
+          int j = this.jdField_b_of_type_Int;
+          if (i > j) {
+            ((QQText)localObject).setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, j, i, 33);
+          }
+        }
+        this.jdField_a_of_type_JavaLangCharSequence = ((CharSequence)localObject);
+      }
+    }
+    return this.jdField_a_of_type_JavaLangCharSequence;
   }
   
   public String b()
   {
-    if (this.jdField_c_of_type_Long == 0L) {
-      return null;
-    }
-    return "" + this.jdField_c_of_type_Long;
-  }
-  
-  public int c()
-  {
-    switch (this.e)
-    {
-    default: 
-      return 0;
-    case 1: 
-      return 1;
-    case 2: 
-      return 4;
-    }
-    return 101;
+    return this.jdField_a_of_type_JavaLangString;
   }
   
   public CharSequence c()
   {
-    SpannableStringBuilder localSpannableStringBuilder = new SpannableStringBuilder();
-    if (this.jdField_c_of_type_JavaLangString != null)
-    {
-      if (this.jdField_a_of_type_Int == 1) {
-        localSpannableStringBuilder.append("来自: ").append(this.jdField_c_of_type_JavaLangString).setSpan(jdField_a_of_type_AndroidTextStyleForegroundColorSpan, this.jdField_b_of_type_Int + 4, this.jdField_c_of_type_Int + 4, 33);
-      }
-    }
-    else {
-      return localSpannableStringBuilder;
-    }
-    return localSpannableStringBuilder.append("来自: ").append(SearchUtils.a(this.jdField_c_of_type_JavaLangString, this.jdField_a_of_type_JavaLangString, 30));
+    return null;
   }
   
   public CharSequence d()
@@ -116,7 +137,7 @@ public class FavoriteSearchResultModel
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.globalsearch.FavoriteSearchResultModel
  * JD-Core Version:    0.7.0.1
  */

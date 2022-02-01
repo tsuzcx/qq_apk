@@ -11,30 +11,31 @@ final class TypeAdapters$21
 {
   public URL read(JsonReader paramJsonReader)
   {
-    if (paramJsonReader.peek() == JsonToken.NULL) {
-      paramJsonReader.nextNull();
-    }
-    do
+    if (paramJsonReader.peek() == JsonToken.NULL)
     {
+      paramJsonReader.nextNull();
       return null;
-      paramJsonReader = paramJsonReader.nextString();
-    } while ("null".equals(paramJsonReader));
+    }
+    paramJsonReader = paramJsonReader.nextString();
+    if ("null".equals(paramJsonReader)) {
+      return null;
+    }
     return new URL(paramJsonReader);
   }
   
   public void write(JsonWriter paramJsonWriter, URL paramURL)
   {
-    if (paramURL == null) {}
-    for (paramURL = null;; paramURL = paramURL.toExternalForm())
-    {
-      paramJsonWriter.value(paramURL);
-      return;
+    if (paramURL == null) {
+      paramURL = null;
+    } else {
+      paramURL = paramURL.toExternalForm();
     }
+    paramJsonWriter.value(paramURL);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.google.gson.internal.bind.TypeAdapters.21
  * JD-Core Version:    0.7.0.1
  */

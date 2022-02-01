@@ -10,24 +10,29 @@ class TAVPlayer$4
   
   public void onAudioFocusChange(int paramInt)
   {
-    switch (paramInt)
+    if ((paramInt != -2) && (paramInt != -1))
     {
-    }
-    do
-    {
-      do
-      {
+      if (paramInt != 1) {
         return;
-      } while ((!TAVPlayer.access$200(this.this$0)) || (TAVPlayer.access$000(this.this$0) == null));
-      TAVPlayer.access$000(this.this$0).pause();
-      return;
-    } while (TAVPlayer.access$000(this.this$0) == null);
-    TAVPlayer.access$000(this.this$0).play();
+      }
+      if (TAVPlayer.access$000(this.this$0) != null) {
+        TAVPlayer.access$000(this.this$0).play();
+      }
+    }
+    else
+    {
+      if (!TAVPlayer.access$200(this.this$0)) {
+        return;
+      }
+      if (TAVPlayer.access$000(this.this$0) != null) {
+        TAVPlayer.access$000(this.this$0).pause();
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.tavkit.component.TAVPlayer.4
  * JD-Core Version:    0.7.0.1
  */

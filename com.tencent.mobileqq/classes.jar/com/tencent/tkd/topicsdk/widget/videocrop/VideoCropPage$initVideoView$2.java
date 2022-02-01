@@ -14,7 +14,12 @@ final class VideoCropPage$initVideoView$2
   
   public final boolean onError(MediaPlayer paramMediaPlayer, int paramInt1, int paramInt2)
   {
-    paramMediaPlayer = "VideoView onError, what:" + paramInt1 + ", extra:" + paramInt2;
+    paramMediaPlayer = new StringBuilder();
+    paramMediaPlayer.append("VideoView onError, what:");
+    paramMediaPlayer.append(paramInt1);
+    paramMediaPlayer.append(", extra:");
+    paramMediaPlayer.append(paramInt2);
+    paramMediaPlayer = paramMediaPlayer.toString();
     TLog.d("VideoCropPage", paramMediaPlayer);
     VideoCropPage.a(this.a, paramMediaPlayer);
     paramMediaPlayer = this.a.a();
@@ -26,7 +31,7 @@ final class VideoCropPage$initVideoView$2
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.tkd.topicsdk.widget.videocrop.VideoCropPage.initVideoView.2
  * JD-Core Version:    0.7.0.1
  */

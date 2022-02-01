@@ -12,28 +12,47 @@ public abstract class cp
   
   public static int S(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      return -1;
-    case 0: 
-      return 0;
-    case 2: 
-      return 2;
-    case 1: 
-      return 1;
+      int i = 1;
+      if (paramInt != 1)
+      {
+        i = 2;
+        if (paramInt != 2)
+        {
+          i = 3;
+          if (paramInt != 3) {
+            return -1;
+          }
+        }
+      }
+      return i;
     }
-    return 3;
+    return 0;
   }
   
   public String toString()
   {
-    return "BaseWifiReportBean [sessionKey=" + this.ec + ", bssid=" + this.fZ + ", ssid=" + this.ey + ", wifiType=" + this.eE + ", subWifiType=" + this.fo + ", securityType=" + this.hH + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("BaseWifiReportBean [sessionKey=");
+    localStringBuilder.append(this.ec);
+    localStringBuilder.append(", bssid=");
+    localStringBuilder.append(this.fZ);
+    localStringBuilder.append(", ssid=");
+    localStringBuilder.append(this.ey);
+    localStringBuilder.append(", wifiType=");
+    localStringBuilder.append(this.eE);
+    localStringBuilder.append(", subWifiType=");
+    localStringBuilder.append(this.fo);
+    localStringBuilder.append(", securityType=");
+    localStringBuilder.append(this.hH);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.cp
  * JD-Core Version:    0.7.0.1
  */

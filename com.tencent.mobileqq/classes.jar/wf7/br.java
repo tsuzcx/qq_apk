@@ -45,14 +45,16 @@ public class br
   
   public String aa()
   {
-    if ((this.ge != null) && (this.ge.length == 6)) {}
-    for (String str = cb.c(this.ge);; str = null)
-    {
-      if (cb.k(str)) {
-        return str;
-      }
-      return null;
+    Object localObject = this.ge;
+    if ((localObject != null) && (localObject.length == 6)) {
+      localObject = cb.c((byte[])localObject);
+    } else {
+      localObject = null;
     }
+    if (cb.k((String)localObject)) {
+      return localObject;
+    }
+    return null;
   }
   
   public boolean ag()
@@ -93,6 +95,10 @@ public class br
       }
       return false;
     }
+    for (;;)
+    {
+      throw paramArrayOfByte;
+    }
   }
   
   public int h(String arg1)
@@ -111,6 +117,10 @@ public class br
         }
       }
       return -1;
+    }
+    for (;;)
+    {
+      throw localObject;
     }
   }
   
@@ -134,7 +144,7 @@ public class br
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.br
  * JD-Core Version:    0.7.0.1
  */

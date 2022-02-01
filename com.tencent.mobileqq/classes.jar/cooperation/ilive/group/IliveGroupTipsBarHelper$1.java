@@ -20,40 +20,45 @@ class IliveGroupTipsBarHelper$1
   @UiThread
   public void a(String paramString, IliveGroupTipsEntity paramIliveGroupTipsEntity)
   {
+    boolean bool = true;
     if (paramIliveGroupTipsEntity == null)
     {
       QLog.i("IliveGroupTipsBarHelper", 1, "handleIliveGroupData entity request error");
       return;
     }
     IliveGroupTipsBarHelper.a(this.a, paramIliveGroupTipsEntity);
-    StringBuilder localStringBuilder = new StringBuilder().append("handleIliveGroupData ");
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("handleIliveGroupData ");
     if (IliveGroupTipsBarHelper.a(this.a) == null)
     {
       paramIliveGroupTipsEntity = " data = null";
-      QLog.i("IliveGroupTipsBarHelper", 1, paramIliveGroupTipsEntity + " source = " + paramString);
-      if ((IliveGroupTipsBarHelper.a(this.a) == null) || (!IliveGroupTipsBarHelper.a(this.a).a)) {
-        break label151;
-      }
     }
-    label151:
-    for (boolean bool = true;; bool = false)
+    else
     {
-      IliveGroupTipsBarHelper.a(this.a, bool);
-      if (bool) {
-        break label156;
-      }
+      paramIliveGroupTipsEntity = new StringBuilder();
+      paramIliveGroupTipsEntity.append(" value = ");
+      paramIliveGroupTipsEntity.append(IliveGroupTipsBarHelper.a(this.a).toString());
+      paramIliveGroupTipsEntity = paramIliveGroupTipsEntity.toString();
+    }
+    localStringBuilder.append(paramIliveGroupTipsEntity);
+    localStringBuilder.append(" source = ");
+    localStringBuilder.append(paramString);
+    QLog.i("IliveGroupTipsBarHelper", 1, localStringBuilder.toString());
+    if ((IliveGroupTipsBarHelper.a(this.a) == null) || (!IliveGroupTipsBarHelper.a(this.a).a)) {
+      bool = false;
+    }
+    IliveGroupTipsBarHelper.a(this.a, bool);
+    if (!bool)
+    {
       this.a.c();
       return;
-      paramIliveGroupTipsEntity = " value = " + IliveGroupTipsBarHelper.a(this.a).toString();
-      break;
     }
-    label156:
     this.a.b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupTipsBarHelper.1
  * JD-Core Version:    0.7.0.1
  */

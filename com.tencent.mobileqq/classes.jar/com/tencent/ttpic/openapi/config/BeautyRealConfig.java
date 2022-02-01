@@ -13,35 +13,38 @@ public class BeautyRealConfig
   {
     HashMap localHashMap = new HashMap();
     localHashMap.put(BeautyRealConfig.TYPE.BEAUTY, Integer.valueOf(60));
-    if (paramInt == BeautyRealConfig.TYPE.NONE.value)
+    int j = BeautyRealConfig.TYPE.NONE.value;
+    int i = 0;
+    Integer localInteger = Integer.valueOf(0);
+    if (paramInt == j)
     {
       if (paramBoolean)
       {
-        localHashMap.put(BeautyRealConfig.TYPE.BEAUTY, Integer.valueOf(0));
-        localHashMap.put(BeautyRealConfig.TYPE.BASIC3, Integer.valueOf(0));
+        localHashMap.put(BeautyRealConfig.TYPE.BEAUTY, localInteger);
+        localHashMap.put(BeautyRealConfig.TYPE.BASIC3, localInteger);
       }
-      for (;;)
+      else
       {
-        arrayOfTYPE = SINGLE_TRANS_TYPE_580;
-        i = arrayOfTYPE.length;
-        paramInt = 0;
-        while (paramInt < i)
-        {
-          localHashMap.put(arrayOfTYPE[paramInt], Integer.valueOf(0));
-          paramInt += 1;
-        }
         localHashMap.put(BeautyRealConfig.TYPE.BEAUTY, Integer.valueOf(50));
         localHashMap.put(BeautyRealConfig.TYPE.BASIC3, Integer.valueOf(55));
       }
+      arrayOfTYPE = SINGLE_TRANS_TYPE_580;
+      j = arrayOfTYPE.length;
+      paramInt = 0;
+      while (paramInt < j)
+      {
+        localHashMap.put(arrayOfTYPE[paramInt], localInteger);
+        paramInt += 1;
+      }
     }
     BeautyRealConfig.TYPE[] arrayOfTYPE = SINGLE_TRANS_TYPE_580;
-    int i = arrayOfTYPE.length;
-    paramInt = 0;
-    while (paramInt < i)
+    j = arrayOfTYPE.length;
+    paramInt = i;
+    while (paramInt < j)
     {
       BeautyRealConfig.TYPE localTYPE = arrayOfTYPE[paramInt];
       if (!localHashMap.containsKey(localTYPE)) {
-        localHashMap.put(localTYPE, Integer.valueOf(0));
+        localHashMap.put(localTYPE, localInteger);
       }
       paramInt += 1;
     }
@@ -55,7 +58,7 @@ public class BeautyRealConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tencent.ttpic.openapi.config.BeautyRealConfig
  * JD-Core Version:    0.7.0.1
  */

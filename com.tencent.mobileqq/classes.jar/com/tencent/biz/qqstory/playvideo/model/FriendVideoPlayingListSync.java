@@ -13,28 +13,25 @@ public class FriendVideoPlayingListSync
   protected VidToVideoInfoPuller a()
   {
     Object localObject = ((UserManager)SuperManager.a(2)).b(this.b);
-    String str;
-    if ((localObject != null) && (((QQUserUIItem)localObject).isVip))
-    {
+    int i;
+    if ((localObject != null) && (((QQUserUIItem)localObject).isVip)) {
       i = 1;
-      localObject = this.a;
-      str = this.b;
-      if (i == 0) {
-        break label60;
-      }
-    }
-    label60:
-    for (int i = 5;; i = 7)
-    {
-      return new VidToVideoInfoPuller((String)localObject, str, i);
+    } else {
       i = 0;
-      break;
     }
+    localObject = this.a;
+    String str = this.b;
+    if (i != 0) {
+      i = 5;
+    } else {
+      i = 7;
+    }
+    return new VidToVideoInfoPuller((String)localObject, str, i);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.model.FriendVideoPlayingListSync
  * JD-Core Version:    0.7.0.1
  */

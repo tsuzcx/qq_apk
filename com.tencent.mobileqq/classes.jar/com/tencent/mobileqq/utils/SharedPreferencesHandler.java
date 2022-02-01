@@ -22,8 +22,14 @@ public class SharedPreferencesHandler
       while (i < j)
       {
         Object localObject = paramArrayOfObject[i];
-        str = str + localObject.toString();
-        str = str + " ";
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append(str);
+        localStringBuilder.append(localObject.toString());
+        str = localStringBuilder.toString();
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append(str);
+        ((StringBuilder)localObject).append(" ");
+        str = ((StringBuilder)localObject).toString();
         i += 1;
       }
       paramEditor.putString(paramString, str);
@@ -35,37 +41,29 @@ public class SharedPreferencesHandler
   
   public static Set<String> a(SharedPreferences paramSharedPreferences, String paramString, Set<String> paramSet)
   {
-    paramString = paramSharedPreferences.getString(paramString, "");
-    paramSharedPreferences = paramSet;
-    if (paramString != null)
+    paramSharedPreferences = paramSharedPreferences.getString(paramString, "");
+    if ((paramSharedPreferences != null) && (paramSharedPreferences.length() > 0))
     {
-      paramSharedPreferences = paramSet;
-      if (paramString.length() > 0)
+      paramSharedPreferences = paramSharedPreferences.split(" ");
+      paramString = new HashSet();
+      int j = paramSharedPreferences.length;
+      int i = 0;
+      while (i < j)
       {
-        paramSet = paramString.split(" ");
-        paramString = new HashSet();
-        int j = paramSet.length;
-        int i = 0;
-        for (;;)
-        {
-          paramSharedPreferences = paramString;
-          if (i >= j) {
-            break;
-          }
-          paramSharedPreferences = paramSet[i];
-          if ((paramSharedPreferences != null) && (paramSharedPreferences.length() > 0)) {
-            paramString.add(paramSharedPreferences);
-          }
-          i += 1;
+        paramSet = paramSharedPreferences[i];
+        if ((paramSet != null) && (paramSet.length() > 0)) {
+          paramString.add(paramSet);
         }
+        i += 1;
       }
+      return paramString;
     }
-    return paramSharedPreferences;
+    return paramSet;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.utils.SharedPreferencesHandler
  * JD-Core Version:    0.7.0.1
  */

@@ -2,14 +2,12 @@ package com.tencent.imcore.message;
 
 import com.tencent.mobileqq.app.msgnotify.MsgCacheInfo;
 import com.tencent.mobileqq.data.MessageRecord;
-import com.tencent.mobileqq.imcore.message.IMCoreMessageStub;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.notColumn;
 import java.util.ArrayList;
 
 public class Message
   extends MessageRecord
-  implements IMCoreMessageStub
 {
   public String actMsgContentValue;
   public String action = null;
@@ -40,32 +38,30 @@ public class Message
     this.fileType = -1;
   }
   
-  public Class<? extends Entity> getClassForTable()
+  protected Class<? extends Entity> getClassForTable()
   {
     return Message.class;
   }
   
   public CharSequence getMessageText()
   {
-    if (this.emoRecentMsg == null) {
-      return this.msg;
+    CharSequence localCharSequence = this.emoRecentMsg;
+    Object localObject = localCharSequence;
+    if (localCharSequence == null) {
+      localObject = this.msg;
     }
-    return this.emoRecentMsg;
-  }
-  
-  public long getTime()
-  {
-    return this.time;
+    return localObject;
   }
   
   public boolean needNotification()
   {
-    return (this.bizType == 24) || (this.bizType == 17) || (this.bizType == 16) || (this.bizType == 5) || (this.bizType == 13) || (this.bizType == 27) || (this.bizType == 4) || (this.bizType == 14) || (this.bizType == 12);
+    int i = this.bizType;
+    return (i == 24) || (i == 17) || (i == 16) || (i == 5) || (i == 13) || (i == 26) || (i == 4) || (i == 14) || (i == 12);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.imcore.message.Message
  * JD-Core Version:    0.7.0.1
  */

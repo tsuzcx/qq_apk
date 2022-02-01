@@ -4,10 +4,9 @@ import android.view.View;
 import com.tencent.mobileqq.activity.aio.panel.chatpanelbar.IChatPanelBarData;
 import com.tencent.mobileqq.activity.aio.panel.chatpanelbar.reporter.IPanelBizReporter;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.pluspanel.AIOPanelIconItem;
-import com.tencent.mobileqq.redtouch.RedTouchManager;
 import com.tencent.mobileqq.statistics.ReportController;
+import com.tencent.mobileqq.tianshu.api.IRedTouchManager;
 import com.tencent.mobileqq.troop.widget.RedDotImageView;
 
 public class AudioPanelBizReporter
@@ -15,7 +14,7 @@ public class AudioPanelBizReporter
 {
   public void a(IChatPanelBarData paramIChatPanelBarData, View paramView)
   {
-    ((RedTouchManager)paramIChatPanelBarData.a().getManager(QQManagerFactory.MGR_RED_TOUCH)).b("103100.103300");
+    ((IRedTouchManager)paramIChatPanelBarData.a().getRuntimeService(IRedTouchManager.class, "")).onRedTouchItemClick("103100.103300");
     if ((paramView instanceof RedDotImageView)) {
       ((RedDotImageView)paramView).a(false);
     }
@@ -26,7 +25,7 @@ public class AudioPanelBizReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatpanelbar.reporter.AudioPanelBizReporter
  * JD-Core Version:    0.7.0.1
  */

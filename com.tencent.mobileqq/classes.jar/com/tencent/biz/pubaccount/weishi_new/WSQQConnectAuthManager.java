@@ -6,9 +6,10 @@ import android.text.TextUtils;
 import com.tencent.biz.pubaccount.weishi_new.util.WSLog;
 import com.tencent.biz.pubaccount.weishi_new.util.WeishiUtils;
 import com.tencent.mobileqq.Doraemon.DoraemonAPIManager;
-import com.tencent.mobileqq.Doraemon.DoraemonOpenAPI;
+import com.tencent.mobileqq.Doraemon.IDoraemonService;
 import com.tencent.mobileqq.activity.SplashActivity;
 import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.mobileqq.qroute.QRoute;
 import com.tencent.util.ThreeDes;
 import cooperation.qzone.LocalMultiProcConfig;
 import java.lang.ref.WeakReference;
@@ -19,7 +20,7 @@ import org.json.JSONObject;
 
 public class WSQQConnectAuthManager
 {
-  private static int jdField_a_of_type_Int = 0;
+  private static int jdField_a_of_type_Int;
   private static volatile WSQQConnectAuthManager jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSQQConnectAuthManager;
   private DoraemonAPIManager jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
   private Map<Long, WSQQConnectAuthManager.WSQQConnectData> jdField_a_of_type_JavaUtilMap = new HashMap();
@@ -32,9 +33,11 @@ public class WSQQConnectAuthManager
   
   private Activity a()
   {
-    Activity localActivity = null;
+    Activity localActivity;
     if (SplashActivity.sWeakInstance != null) {
       localActivity = (Activity)SplashActivity.sWeakInstance.get();
+    } else {
+      localActivity = null;
     }
     Object localObject = localActivity;
     if (localActivity == null) {
@@ -45,23 +48,25 @@ public class WSQQConnectAuthManager
   
   private WSQQConnectAuthManager.WSQQConnectData a()
   {
-    if (this.jdField_a_of_type_JavaUtilMap != null) {
-      return (WSQQConnectAuthManager.WSQQConnectData)this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(WeishiUtils.a()));
+    Map localMap = this.jdField_a_of_type_JavaUtilMap;
+    if (localMap != null) {
+      return (WSQQConnectAuthManager.WSQQConnectData)localMap.get(Long.valueOf(WeishiUtils.a()));
     }
     return null;
   }
   
   public static WSQQConnectAuthManager a()
   {
-    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSQQConnectAuthManager == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSQQConnectAuthManager == null) {
-        jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSQQConnectAuthManager = new WSQQConnectAuthManager();
+    if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSQQConnectAuthManager == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSQQConnectAuthManager == null) {
+          jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSQQConnectAuthManager = new WSQQConnectAuthManager();
+        }
       }
-      return jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSQQConnectAuthManager;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentBizPubaccountWeishi_newWSQQConnectAuthManager;
   }
   
   private void a(JSONObject paramJSONObject)
@@ -81,39 +86,45 @@ public class WSQQConnectAuthManager
   
   private boolean a()
   {
-    boolean bool = true;
-    for (;;)
+    try
     {
-      try
-      {
-        long l1 = WeishiUtils.a();
-        Object localObject1 = this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l1));
-        if (localObject1 != null) {
-          return bool;
-        }
-        long l2 = System.currentTimeMillis();
-        long l3 = LocalMultiProcConfig.getLong4Uin("key_qq_connect_auth_time", 0L, l1);
-        WSLog.e("WSQQConnectAuthManager", "now qq connect auth time diff (sec) = " + (l2 - l3) / 1000L);
-        if (l2 - l3 > 1728000000L)
-        {
-          bool = false;
-        }
-        else
-        {
-          localObject1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_open_id", "", l1);
-          String str1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_access_token", "", l1);
-          String str2 = ThreeDes.b((String)localObject1, WeishiUtils.a());
-          String str3 = ThreeDes.b(str1, WeishiUtils.a());
-          WSLog.f("weishi-828", "use sp openId and accessToken encrypted:" + (String)localObject1 + " , " + str1 + ", decrypt:" + str2 + " , " + str3);
-          if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3))) {
-            this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(WeishiUtils.a()), new WSQQConnectAuthManager.WSQQConnectData(str2, str3));
-          } else {
-            bool = false;
-          }
-        }
+      long l1 = WeishiUtils.a();
+      Object localObject1 = this.jdField_a_of_type_JavaUtilMap.get(Long.valueOf(l1));
+      if (localObject1 != null) {
+        return true;
       }
-      finally {}
+      long l2 = System.currentTimeMillis();
+      long l3 = LocalMultiProcConfig.getLong4Uin("key_qq_connect_auth_time", 0L, l1);
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("now qq connect auth time diff (sec) = ");
+      l2 -= l3;
+      ((StringBuilder)localObject1).append(l2 / 1000L);
+      WSLog.e("WSQQConnectAuthManager", ((StringBuilder)localObject1).toString());
+      if (l2 > 1728000000L) {
+        return false;
+      }
+      localObject1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_open_id", "", l1);
+      String str1 = LocalMultiProcConfig.getString4Uin("key_qq_connect_access_token", "", l1);
+      String str2 = ThreeDes.b((String)localObject1, WeishiUtils.a());
+      String str3 = ThreeDes.b(str1, WeishiUtils.a());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("use sp openId and accessToken encrypted:");
+      localStringBuilder.append((String)localObject1);
+      localStringBuilder.append(" , ");
+      localStringBuilder.append(str1);
+      localStringBuilder.append(", decrypt:");
+      localStringBuilder.append(str2);
+      localStringBuilder.append(" , ");
+      localStringBuilder.append(str3);
+      WSLog.f("weishi-828", localStringBuilder.toString());
+      if ((!TextUtils.isEmpty(str2)) && (!TextUtils.isEmpty(str3)))
+      {
+        this.jdField_a_of_type_JavaUtilMap.put(Long.valueOf(WeishiUtils.a()), new WSQQConnectAuthManager.WSQQConnectData(str2, str3));
+        return true;
+      }
+      return false;
     }
+    finally {}
   }
   
   private void c()
@@ -121,10 +132,11 @@ public class WSQQConnectAuthManager
     if (!this.jdField_a_of_type_Boolean)
     {
       this.jdField_a_of_type_Boolean = true;
-      DoraemonOpenAPI.a();
-      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager = DoraemonOpenAPI.a(a(), 6, String.valueOf(1101083114));
-      if (this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager != null) {
-        this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager.a("loginSilent", null, new WSQQConnectAuthManager.1(this));
+      ((IDoraemonService)QRoute.api(IDoraemonService.class)).prepare();
+      this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager = ((IDoraemonService)QRoute.api(IDoraemonService.class)).createAPIManager(a(), 6, String.valueOf(1101083114));
+      DoraemonAPIManager localDoraemonAPIManager = this.jdField_a_of_type_ComTencentMobileqqDoraemonDoraemonAPIManager;
+      if (localDoraemonAPIManager != null) {
+        localDoraemonAPIManager.a("loginSilent", null, new WSQQConnectAuthManager.1(this));
       }
     }
   }
@@ -132,7 +144,10 @@ public class WSQQConnectAuthManager
   private void d()
   {
     jdField_a_of_type_Int += 1;
-    WSLog.g("WSQQConnectAuthManager", "authRetry: " + jdField_a_of_type_Int);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("authRetry: ");
+    localStringBuilder.append(jdField_a_of_type_Int);
+    WSLog.g("WSQQConnectAuthManager", localStringBuilder.toString());
     if (jdField_a_of_type_Int >= 3)
     {
       jdField_a_of_type_Int = 0;
@@ -147,7 +162,12 @@ public class WSQQConnectAuthManager
     WSQQConnectAuthManager.WSQQConnectData localWSQQConnectData = a();
     if (localWSQQConnectData != null)
     {
-      WSLog.f("weishi-828", "use memory openId and accessToken" + localWSQQConnectData.a + " , " + localWSQQConnectData.b);
+      paramString1 = new StringBuilder();
+      paramString1.append("use memory openId and accessToken");
+      paramString1.append(localWSQQConnectData.a);
+      paramString1.append(" , ");
+      paramString1.append(localWSQQConnectData.b);
+      WSLog.f("weishi-828", paramString1.toString());
       return new stAuth(1, localWSQQConnectData.a, localWSQQConnectData.b);
     }
     if (a())
@@ -155,7 +175,12 @@ public class WSQQConnectAuthManager
       localWSQQConnectData = a();
       if (localWSQQConnectData != null)
       {
-        WSLog.f("weishi-828", "use memory openId and accessToken" + localWSQQConnectData.a + " , " + localWSQQConnectData.b);
+        paramString1 = new StringBuilder();
+        paramString1.append("use memory openId and accessToken");
+        paramString1.append(localWSQQConnectData.a);
+        paramString1.append(" , ");
+        paramString1.append(localWSQQConnectData.b);
+        WSLog.f("weishi-828", paramString1.toString());
         return new stAuth(1, localWSQQConnectData.a, localWSQQConnectData.b);
       }
     }
@@ -181,7 +206,7 @@ public class WSQQConnectAuthManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.weishi_new.WSQQConnectAuthManager
  * JD-Core Version:    0.7.0.1
  */

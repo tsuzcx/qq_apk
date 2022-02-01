@@ -28,15 +28,14 @@ public class SubscribeDraftAdapter
   extends MultiViewBlock<SubscribeDraftBean>
   implements SimpleEventReceiver
 {
-  public static int a;
-  public static String a;
+  public static int a = 0;
+  public static String a = "SubscribeDraftAdapter";
   private int jdField_b_of_type_Int = ImmersiveUtils.dpToPx(19.0F);
   private String jdField_b_of_type_JavaLangString;
   private int c = ImmersiveUtils.dpToPx(3.0F);
   
   static
   {
-    jdField_a_of_type_JavaLangString = "SubscribeDraftAdapter";
     jdField_a_of_type_Int = ImmersiveUtils.dpToPx(4.0F);
   }
   
@@ -55,17 +54,19 @@ public class SubscribeDraftAdapter
     return 2;
   }
   
-  public void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
+  protected void a(Rect paramRect, View paramView, RecyclerView paramRecyclerView, RecyclerView.State paramState)
   {
-    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0) {
-      paramRect.left = jdField_a_of_type_Int;
-    }
-    for (paramRect.right = (this.c / 2);; paramRect.right = jdField_a_of_type_Int)
+    if (((StaggeredGridLayoutManager.LayoutParams)paramView.getLayoutParams()).getSpanIndex() % 2 == 0)
     {
-      paramRect.bottom = this.jdField_b_of_type_Int;
-      return;
-      paramRect.left = (this.c / 2);
+      paramRect.left = jdField_a_of_type_Int;
+      paramRect.right = (this.c / 2);
     }
+    else
+    {
+      paramRect.left = (this.c / 2);
+      paramRect.right = jdField_a_of_type_Int;
+    }
+    paramRect.bottom = this.jdField_b_of_type_Int;
   }
   
   public void a(Bundle paramBundle) {}
@@ -87,16 +88,14 @@ public class SubscribeDraftAdapter
     if ((a() != null) && (a() != null) && (((PublicFragmentActivity)a()).app != null))
     {
       this.jdField_b_of_type_JavaLangString = ((PublicFragmentActivity)a()).app.getAccount();
-      if (SubscribeDraftManager.a().a(this.jdField_b_of_type_JavaLangString)) {
+      if (SubscribeDraftManager.a().a(this.jdField_b_of_type_JavaLangString))
+      {
         SubscribeDraftManager.a().a(this.jdField_b_of_type_JavaLangString, new SubscribeDraftAdapter.1(this));
+        return;
       }
+      a();
+      notifyDataSetChanged();
     }
-    else
-    {
-      return;
-    }
-    a();
-    notifyDataSetChanged();
   }
   
   public ArrayList<Class> getEventClass()
@@ -145,7 +144,7 @@ public class SubscribeDraftAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.bizdapters.SubscribeDraftAdapter
  * JD-Core Version:    0.7.0.1
  */

@@ -16,21 +16,17 @@ class QRLoginMgrActivity$5
         QRLoginMgrActivity.a(this.this$0).dismiss();
         QRLoginMgrActivity.a(this.this$0).cancel();
       }
-      QRLoginMgrActivity.a(this.this$0, null);
-      return;
     }
     catch (Throwable localThrowable)
     {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
+      localThrowable.printStackTrace();
     }
+    QRLoginMgrActivity.a(this.this$0, null);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qrcode.activity.QRLoginMgrActivity.5
  * JD-Core Version:    0.7.0.1
  */

@@ -8,64 +8,38 @@ import com.tencent.mobileqq.config.QConfigManager;
 import com.tencent.qphone.base.util.QLog;
 
 public class EmoticonTabSortConfProcessor
-  extends IQConfigProcessor<EmoticonTabSortConfProcessor.EmoticonTabSortConfBean>
+  extends IQConfigProcessor<EmoticonTabSortConfBean>
 {
-  public static EmoticonTabSortConfProcessor.EmoticonTabSortConfBean a()
+  public static EmoticonTabSortConfBean a()
   {
-    return (EmoticonTabSortConfProcessor.EmoticonTabSortConfBean)QConfigManager.a().a(622);
-  }
-  
-  public static String a(int paramInt)
-  {
-    switch (paramInt)
-    {
-    case 5: 
-    case 6: 
-    case 9: 
-    case 10: 
-    case 13: 
-    case 14: 
-    default: 
-      return "";
-    case 7: 
-      return "sysface";
-    case 4: 
-      return "favorite";
-    case 8: 
-      return "recommend";
-    case 11: 
-      return "camera";
-    case 12: 
-      return "hotpic";
-    }
-    return "cmshow";
+    return (EmoticonTabSortConfBean)QConfigManager.a().a(622);
   }
   
   @NonNull
-  public EmoticonTabSortConfProcessor.EmoticonTabSortConfBean a(int paramInt)
+  public EmoticonTabSortConfBean a(int paramInt)
   {
-    return new EmoticonTabSortConfProcessor.EmoticonTabSortConfBean();
+    return new EmoticonTabSortConfBean();
   }
   
   @Nullable
-  public EmoticonTabSortConfProcessor.EmoticonTabSortConfBean a(QConfItem[] paramArrayOfQConfItem)
+  public EmoticonTabSortConfBean a(QConfItem[] paramArrayOfQConfItem)
   {
     if ((paramArrayOfQConfItem != null) && (paramArrayOfQConfItem.length > 0)) {
-      return EmoticonTabSortConfProcessor.EmoticonTabSortConfBean.a(paramArrayOfQConfItem);
+      return EmoticonTabSortConfBean.a(paramArrayOfQConfItem);
     }
     return null;
   }
   
-  public void a(EmoticonTabSortConfProcessor.EmoticonTabSortConfBean paramEmoticonTabSortConfBean)
+  public void a(EmoticonTabSortConfBean paramEmoticonTabSortConfBean)
   {
     if (QLog.isColorLevel()) {
       QLog.d("EmoticonTabSortConfProcessor", 2, "EmoticonTabSortConfProcessor onUpdate");
     }
   }
   
-  public Class<EmoticonTabSortConfProcessor.EmoticonTabSortConfBean> clazz()
+  public Class<EmoticonTabSortConfBean> clazz()
   {
-    return EmoticonTabSortConfProcessor.EmoticonTabSortConfBean.class;
+    return EmoticonTabSortConfBean.class;
   }
   
   public boolean isAccountRelated()
@@ -97,7 +71,7 @@ public class EmoticonTabSortConfProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.config.business.EmoticonTabSortConfProcessor
  * JD-Core Version:    0.7.0.1
  */

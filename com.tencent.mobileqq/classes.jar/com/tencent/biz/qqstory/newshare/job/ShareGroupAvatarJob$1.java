@@ -8,19 +8,19 @@ class ShareGroupAvatarJob$1
 {
   ShareGroupAvatarJob$1(ShareGroupAvatarJob paramShareGroupAvatarJob) {}
   
-  public void a(RestrictedBitmap paramRestrictedBitmap)
+  protected void a(RestrictedBitmap paramRestrictedBitmap)
   {
     this.a.a(paramRestrictedBitmap);
   }
   
-  public void a(Error paramError)
+  protected void a(Error paramError)
   {
     this.a.a(paramError);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.newshare.job.ShareGroupAvatarJob.1
  * JD-Core Version:    0.7.0.1
  */

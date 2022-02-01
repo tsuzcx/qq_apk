@@ -25,10 +25,23 @@ import com.tencent.mqpsdk.INetTransportProvider.INetTransportCodec;
 import com.tencent.mqpsdk.INetTransportProvider.INetTransportEventListener;
 import com.tencent.mqpsdk.MQPSecServiceManager;
 import com.tencent.mqpsdk.util.NetUtil;
+import java.io.ByteArrayInputStream;
+import java.io.StringWriter;
+import java.io.Writer;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import javax.xml.transform.Source;
+import javax.xml.transform.Transformer;
+import javax.xml.transform.TransformerFactory;
+import javax.xml.transform.dom.DOMSource;
+import javax.xml.transform.stream.StreamResult;
 import org.json.JSONObject;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.NodeList;
 
 public class MQPIntChkService
   implements INetTransportProvider.INetTransportEventListener, IIntChkStrikeResultListener
@@ -56,452 +69,361 @@ public class MQPIntChkService
     localAppInfo.uint32_platform_type.set(1);
     String str = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_AndroidContentContext.getPackageName();
     localAppInfo.bytes_package_name.set(ByteStringMicro.copyFromUtf8(str));
-    int i;
-    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString))
-    {
+    if (TextUtils.isEmpty(this.jdField_a_of_type_JavaLangString)) {
       str = "1.0";
-      localAppInfo.bytes_app_version.set(ByteStringMicro.copyFromUtf8(str));
-      localAppInfo.uint32_intchk_module_version.set(jdField_a_of_type_Int);
-      switch (NetUtil.a(this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_AndroidContentContext))
-      {
-      default: 
-        i = 5;
-      }
-    }
-    for (;;)
-    {
-      str = NetUtil.a(this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_AndroidContentContext);
-      int j = i;
-      if (str != null)
-      {
-        j = i;
-        if (str.contains("wap")) {
-          j = 4;
-        }
-      }
-      localAppInfo.uint32_net_type.set(j);
-      return localAppInfo;
+    } else {
       str = this.jdField_a_of_type_JavaLangString;
-      break;
-      i = 3;
-      continue;
-      i = 5;
-      continue;
-      i = 6;
-      continue;
-      i = 7;
     }
+    localAppInfo.bytes_app_version.set(ByteStringMicro.copyFromUtf8(str));
+    localAppInfo.uint32_intchk_module_version.set(jdField_a_of_type_Int);
+    int i = NetUtil.a(this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_AndroidContentContext);
+    if (i != 1)
+    {
+      if (i != 2)
+      {
+        if (i == 3) {
+          break label127;
+        }
+        if (i == 4) {}
+      }
+      else
+      {
+        i = 5;
+        break label135;
+      }
+      i = 7;
+      break label135;
+      label127:
+      i = 6;
+    }
+    else
+    {
+      i = 3;
+    }
+    label135:
+    str = NetUtil.a(this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_AndroidContentContext);
+    int j = i;
+    if (str != null)
+    {
+      j = i;
+      if (str.contains("wap")) {
+        j = 4;
+      }
+    }
+    localAppInfo.uint32_net_type.set(j);
+    return localAppInfo;
   }
   
   private void a(intchk.RspBody paramRspBody)
   {
-    if (paramRspBody.uint32_result.has()) {}
-    for (int i = paramRspBody.uint32_result.get();; i = 2)
+    if (paramRspBody.uint32_result.has()) {
+      i = paramRspBody.uint32_result.get();
+    } else {
+      i = 2;
+    }
+    if (i != 1) {
+      return;
+    }
+    if (!paramRspBody.msg_check_config_rsp.has()) {
+      return;
+    }
+    paramRspBody = (intchk.FetchCheckConfigRsp)paramRspBody.msg_check_config_rsp.get();
+    if (paramRspBody.uint32_need_intchk.has()) {
+      i = paramRspBody.uint32_need_intchk.get();
+    } else {
+      i = 2;
+    }
+    if (i != 1) {
+      return;
+    }
+    if (!paramRspBody.rpt_msg_check_item.has()) {
+      return;
+    }
+    if (paramRspBody.uint32_intchk_id.has()) {
+      i = paramRspBody.uint32_intchk_id.get();
+    } else {
+      i = 0;
+    }
+    Object localObject2 = new intchk.ReportCheckResultReq();
+    ((intchk.ReportCheckResultReq)localObject2).uint32_intchk_id.set(i);
+    Object localObject3 = paramRspBody.rpt_msg_check_item.get();
+    int i = 0;
+    while (i < ((List)localObject3).size())
     {
-      if (i != 1) {
-        break label23;
+      paramRspBody = (intchk.CheckItem)((List)localObject3).get(i);
+      int j;
+      if (paramRspBody.uint32_check_item_id.has()) {
+        j = paramRspBody.uint32_check_item_id.get();
+      } else {
+        j = 0;
       }
-      for (;;)
+      int k;
+      if (paramRspBody.uint32_check_type.has()) {
+        k = paramRspBody.uint32_check_type.get();
+      } else {
+        k = 1;
+      }
+      intchk.CheckResult localCheckResult = new intchk.CheckResult();
+      localCheckResult.uint32_check_item_id.set(j);
+      localCheckResult.uint32_check_type.set(k);
+      if (k != 1)
       {
-        label23:
-        return;
-        label417:
-        label430:
-        if (paramRspBody.msg_check_config_rsp.has())
+        if (k == 2)
         {
-          paramRspBody = (intchk.FetchCheckConfigRsp)paramRspBody.msg_check_config_rsp.get();
-          if (paramRspBody.uint32_need_intchk.has()) {}
-          for (i = paramRspBody.uint32_need_intchk.get();; i = 2)
-          {
-            if ((i != 1) || (!paramRspBody.rpt_msg_check_item.has())) {
-              break label430;
-            }
-            if (paramRspBody.uint32_intchk_id.has()) {}
-            for (i = paramRspBody.uint32_intchk_id.get();; i = 0)
-            {
-              Object localObject2 = new intchk.ReportCheckResultReq();
-              ((intchk.ReportCheckResultReq)localObject2).uint32_intchk_id.set(i);
-              Object localObject3 = paramRspBody.rpt_msg_check_item.get();
-              i = 0;
-              if (i < ((List)localObject3).size())
-              {
-                paramRspBody = (intchk.CheckItem)((List)localObject3).get(i);
-                if (!paramRspBody.uint32_check_item_id.has()) {
-                  break label417;
-                }
-              }
-              for (int j = paramRspBody.uint32_check_item_id.get();; j = 0)
-              {
-                if (paramRspBody.uint32_check_type.has()) {}
-                for (int k = paramRspBody.uint32_check_type.get();; k = 1)
-                {
-                  intchk.CheckResult localCheckResult = new intchk.CheckResult();
-                  localCheckResult.uint32_check_item_id.set(j);
-                  localCheckResult.uint32_check_type.set(k);
-                  switch (k)
-                  {
-                  }
-                  for (;;)
-                  {
-                    ((intchk.ReportCheckResultReq)localObject2).rpt_msg_check_result.add(localCheckResult);
-                    i += 1;
-                    break;
-                    if (a(paramRspBody)) {}
-                    for (j = 1;; j = 2)
-                    {
-                      localCheckResult.uint32_memchk_result.set(j);
-                      break;
-                    }
-                    localObject1 = HexUtil.bytes2HexStr(a(paramRspBody));
-                    paramRspBody = (intchk.RspBody)localObject1;
-                    if (localObject1 == null) {
-                      paramRspBody = "";
-                    }
-                    localCheckResult.bytes_memreport_result.set(ByteStringMicro.copyFromUtf8(paramRspBody));
-                  }
-                  paramRspBody = new intchk.ReqBody();
-                  paramRspBody.uint32_subcmd.set(2);
-                  paramRspBody.msg_app_info.set(a());
-                  paramRspBody.msg_report_check_result_req.set((MessageMicro)localObject2);
-                  localObject2 = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
-                  if (localObject2 == null) {
-                    break;
-                  }
-                  Object localObject1 = paramRspBody.toByteArray();
-                  localObject3 = ((INetTransportProvider)localObject2).getCodec("intchk");
-                  paramRspBody = (intchk.RspBody)localObject1;
-                  if (localObject3 != null) {
-                    paramRspBody = ((INetTransportProvider.INetTransportCodec)localObject3).encode(localObject1);
-                  }
-                  ((INetTransportProvider)localObject2).send(paramRspBody);
-                  return;
-                }
-              }
-            }
+          localObject1 = HexUtil.bytes2HexStr(a(paramRspBody));
+          paramRspBody = (intchk.RspBody)localObject1;
+          if (localObject1 == null) {
+            paramRspBody = "";
           }
+          localCheckResult.bytes_memreport_result.set(ByteStringMicro.copyFromUtf8(paramRspBody));
         }
       }
+      else
+      {
+        if (a(paramRspBody)) {
+          j = 1;
+        } else {
+          j = 2;
+        }
+        localCheckResult.uint32_memchk_result.set(j);
+      }
+      ((intchk.ReportCheckResultReq)localObject2).rpt_msg_check_result.add(localCheckResult);
+      i += 1;
     }
+    paramRspBody = new intchk.ReqBody();
+    paramRspBody.uint32_subcmd.set(2);
+    paramRspBody.msg_app_info.set(a());
+    paramRspBody.msg_report_check_result_req.set((MessageMicro)localObject2);
+    localObject2 = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
+    if (localObject2 == null) {
+      return;
+    }
+    Object localObject1 = paramRspBody.toByteArray();
+    localObject3 = ((INetTransportProvider)localObject2).getCodec("intchk");
+    paramRspBody = (intchk.RspBody)localObject1;
+    if (localObject3 != null) {
+      paramRspBody = ((INetTransportProvider.INetTransportCodec)localObject3).encode(localObject1);
+    }
+    ((INetTransportProvider)localObject2).send(paramRspBody);
   }
   
   private boolean a(intchk.CheckItem paramCheckItem)
   {
-    if (paramCheckItem.uint32_start_offset.has()) {}
-    for (int i = paramCheckItem.uint32_start_offset.get();; i = 0)
-    {
-      if (paramCheckItem.uint32_end_offset.has()) {}
-      for (int j = paramCheckItem.uint32_end_offset.get();; j = 0)
-      {
-        if (j <= i) {}
-        String str1;
-        String str2;
-        do
-        {
-          do
-          {
-            return false;
-            str1 = "";
-            if (paramCheckItem.bytes_module_name.has()) {
-              str1 = paramCheckItem.bytes_module_name.get().toStringUtf8();
-            }
-          } while (TextUtils.isEmpty(str1.trim()));
-          str2 = "";
-          if (paramCheckItem.bytes_match_pattern.has()) {
-            str2 = paramCheckItem.bytes_match_pattern.get().toStringUtf8();
-          }
-        } while (TextUtils.isEmpty(str2.trim()));
-        try
-        {
-          boolean bool = MQPSecUtil.memchk(str1, i, j, HexUtil.hexStr2Bytes(str2));
-          return bool;
-        }
-        catch (Throwable paramCheckItem)
-        {
-          paramCheckItem.printStackTrace();
-          return false;
-        }
-      }
+    int i;
+    if (paramCheckItem.uint32_start_offset.has()) {
+      i = paramCheckItem.uint32_start_offset.get();
+    } else {
+      i = 0;
     }
+    int j;
+    if (paramCheckItem.uint32_end_offset.has()) {
+      j = paramCheckItem.uint32_end_offset.get();
+    } else {
+      j = 0;
+    }
+    if (j <= i) {
+      return false;
+    }
+    boolean bool = paramCheckItem.bytes_module_name.has();
+    String str2 = "";
+    String str1;
+    if (bool) {
+      str1 = paramCheckItem.bytes_module_name.get().toStringUtf8();
+    } else {
+      str1 = "";
+    }
+    if (TextUtils.isEmpty(str1.trim())) {
+      return false;
+    }
+    if (paramCheckItem.bytes_match_pattern.has()) {
+      str2 = paramCheckItem.bytes_match_pattern.get().toStringUtf8();
+    }
+    if (TextUtils.isEmpty(str2.trim())) {
+      return false;
+    }
+    try
+    {
+      bool = MQPSecUtil.memchk(str1, i, j, HexUtil.hexStr2Bytes(str2));
+      return bool;
+    }
+    catch (Throwable paramCheckItem)
+    {
+      paramCheckItem.printStackTrace();
+    }
+    return false;
   }
   
   private byte[] a(intchk.CheckItem paramCheckItem)
   {
-    if (paramCheckItem.uint32_start_offset.has()) {}
-    for (int i = paramCheckItem.uint32_start_offset.get();; i = 0)
-    {
-      if (paramCheckItem.uint32_end_offset.has()) {}
-      for (int j = paramCheckItem.uint32_end_offset.get();; j = 0)
-      {
-        if (j <= i) {}
-        String str;
-        do
-        {
-          return null;
-          str = "";
-          if (paramCheckItem.bytes_module_name.has()) {
-            str = paramCheckItem.bytes_module_name.get().toStringUtf8();
-          }
-        } while (TextUtils.isEmpty(str.trim()));
-        try
-        {
-          paramCheckItem = MQPSecUtil.memreport(str, i, j);
-          return paramCheckItem;
-        }
-        catch (Throwable paramCheckItem)
-        {
-          for (;;)
-          {
-            paramCheckItem.printStackTrace();
-            paramCheckItem = null;
-          }
-        }
-      }
+    boolean bool = paramCheckItem.uint32_start_offset.has();
+    int j = 0;
+    int i;
+    if (bool) {
+      i = paramCheckItem.uint32_start_offset.get();
+    } else {
+      i = 0;
     }
+    if (paramCheckItem.uint32_end_offset.has()) {
+      j = paramCheckItem.uint32_end_offset.get();
+    }
+    if (j <= i) {
+      return null;
+    }
+    if (paramCheckItem.bytes_module_name.has()) {
+      paramCheckItem = paramCheckItem.bytes_module_name.get().toStringUtf8();
+    } else {
+      paramCheckItem = "";
+    }
+    if (TextUtils.isEmpty(paramCheckItem.trim())) {
+      return null;
+    }
+    try
+    {
+      paramCheckItem = MQPSecUtil.memreport(paramCheckItem, i, j);
+      return paramCheckItem;
+    }
+    catch (Throwable paramCheckItem)
+    {
+      paramCheckItem.printStackTrace();
+    }
+    return null;
   }
   
   private void b(intchk.RspBody paramRspBody)
   {
+    boolean bool = paramRspBody.uint32_result.has();
     int j = 2;
-    if (paramRspBody.uint32_result.has()) {}
-    for (int i = paramRspBody.uint32_result.get();; i = 2)
-    {
-      if (i != 1) {}
-      do
-      {
-        do
-        {
-          return;
-        } while (!paramRspBody.msg_report_check_result_rsp.has());
-        paramRspBody = (intchk.ReportCheckResultRsp)paramRspBody.msg_report_check_result_rsp.get();
-        i = j;
-        if (paramRspBody.uint32_need_strike.has()) {
-          i = paramRspBody.uint32_need_strike.get();
-        }
-      } while ((i != 1) || (!paramRspBody.bytes_strike_config.has()));
-      if (paramRspBody.uint32_intchk_id.has()) {
-        this.b = paramRspBody.uint32_intchk_id.get();
-      }
-      c(paramRspBody.bytes_strike_config.get().toStringUtf8());
+    if (bool) {
+      i = paramRspBody.uint32_result.get();
+    } else {
+      i = 2;
+    }
+    if (i != 1) {
       return;
     }
+    if (!paramRspBody.msg_report_check_result_rsp.has()) {
+      return;
+    }
+    paramRspBody = (intchk.ReportCheckResultRsp)paramRspBody.msg_report_check_result_rsp.get();
+    int i = j;
+    if (paramRspBody.uint32_need_strike.has()) {
+      i = paramRspBody.uint32_need_strike.get();
+    }
+    if (i != 1) {
+      return;
+    }
+    if (!paramRspBody.bytes_strike_config.has()) {
+      return;
+    }
+    if (paramRspBody.uint32_intchk_id.has()) {
+      this.b = paramRspBody.uint32_intchk_id.get();
+    }
+    c(paramRspBody.bytes_strike_config.get().toStringUtf8());
   }
   
-  /* Error */
   private void c(String paramString)
   {
-    // Byte code:
-    //   0: aconst_null
-    //   1: astore_2
-    //   2: aload_1
-    //   3: invokevirtual 272	java/lang/String:trim	()Ljava/lang/String;
-    //   6: invokestatic 96	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   9: ifeq +4 -> 13
-    //   12: return
-    //   13: invokestatic 318	javax/xml/parsers/DocumentBuilderFactory:newInstance	()Ljavax/xml/parsers/DocumentBuilderFactory;
-    //   16: astore_3
-    //   17: aload_3
-    //   18: invokevirtual 322	javax/xml/parsers/DocumentBuilderFactory:newDocumentBuilder	()Ljavax/xml/parsers/DocumentBuilder;
-    //   21: new 324	java/io/ByteArrayInputStream
-    //   24: dup
-    //   25: aload_1
-    //   26: invokevirtual 327	java/lang/String:getBytes	()[B
-    //   29: invokespecial 330	java/io/ByteArrayInputStream:<init>	([B)V
-    //   32: invokevirtual 336	javax/xml/parsers/DocumentBuilder:parse	(Ljava/io/InputStream;)Lorg/w3c/dom/Document;
-    //   35: invokeinterface 342 1 0
-    //   40: astore_3
-    //   41: aload_0
-    //   42: iconst_0
-    //   43: putfield 37	com/tencent/mqpsdk/secsrv/MQPIntChkService:c	I
-    //   46: aload_3
-    //   47: ldc_w 344
-    //   50: invokeinterface 350 2 0
-    //   55: astore_1
-    //   56: aload_1
-    //   57: invokevirtual 272	java/lang/String:trim	()Ljava/lang/String;
-    //   60: invokevirtual 353	java/lang/String:length	()I
-    //   63: ifle +11 -> 74
-    //   66: aload_0
-    //   67: aload_1
-    //   68: invokestatic 359	java/lang/Integer:parseInt	(Ljava/lang/String;)I
-    //   71: putfield 37	com/tencent/mqpsdk/secsrv/MQPIntChkService:c	I
-    //   74: aload_0
-    //   75: getfield 37	com/tencent/mqpsdk/secsrv/MQPIntChkService:c	I
-    //   78: tableswitch	default:+345 -> 423, 1:+26->104, 2:+161->239, 3:+216->294
-    //   105: getfield 32	com/tencent/mqpsdk/secsrv/MQPIntChkService:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   108: ifnull -96 -> 12
-    //   111: aload_0
-    //   112: getfield 32	com/tencent/mqpsdk/secsrv/MQPIntChkService:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   115: iconst_1
-    //   116: invokestatic 363	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   119: invokeinterface 369 2 0
-    //   124: ifeq +294 -> 418
-    //   127: aload_0
-    //   128: getfield 32	com/tencent/mqpsdk/secsrv/MQPIntChkService:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   131: iconst_1
-    //   132: invokestatic 363	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   135: invokeinterface 371 2 0
-    //   140: checkcast 373	com/tencent/mqpsdk/secsrv/MQPIntChkService$IIntChkStrike
-    //   143: astore_1
-    //   144: aload_1
-    //   145: ifnull -133 -> 12
-    //   148: new 375	javax/xml/transform/dom/DOMSource
-    //   151: dup
-    //   152: aload_3
-    //   153: invokespecial 378	javax/xml/transform/dom/DOMSource:<init>	(Lorg/w3c/dom/Node;)V
-    //   156: astore_3
-    //   157: new 380	java/io/StringWriter
-    //   160: dup
-    //   161: invokespecial 381	java/io/StringWriter:<init>	()V
-    //   164: astore_2
-    //   165: new 383	javax/xml/transform/stream/StreamResult
-    //   168: dup
-    //   169: aload_2
-    //   170: invokespecial 386	javax/xml/transform/stream/StreamResult:<init>	(Ljava/io/Writer;)V
-    //   173: astore 4
-    //   175: invokestatic 391	javax/xml/transform/TransformerFactory:newInstance	()Ljavax/xml/transform/TransformerFactory;
-    //   178: invokevirtual 395	javax/xml/transform/TransformerFactory:newTransformer	()Ljavax/xml/transform/Transformer;
-    //   181: aload_3
-    //   182: aload 4
-    //   184: invokevirtual 401	javax/xml/transform/Transformer:transform	(Ljavax/xml/transform/Source;Ljavax/xml/transform/Result;)V
-    //   187: new 403	org/json/JSONObject
-    //   190: dup
-    //   191: invokespecial 404	org/json/JSONObject:<init>	()V
-    //   194: astore_3
-    //   195: aload_3
-    //   196: ldc_w 406
-    //   199: aload_2
-    //   200: invokevirtual 409	java/io/StringWriter:toString	()Ljava/lang/String;
-    //   203: invokevirtual 413	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   206: pop
-    //   207: aload_1
-    //   208: aload_3
-    //   209: invokevirtual 414	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   212: aload_0
-    //   213: invokeinterface 418 3 0
-    //   218: return
-    //   219: astore_1
-    //   220: aload_1
-    //   221: invokevirtual 419	java/lang/Exception:printStackTrace	()V
-    //   224: return
-    //   225: astore_1
-    //   226: aload_1
-    //   227: invokevirtual 419	java/lang/Exception:printStackTrace	()V
-    //   230: return
-    //   231: astore_2
-    //   232: aload_2
-    //   233: invokevirtual 419	java/lang/Exception:printStackTrace	()V
-    //   236: goto -29 -> 207
-    //   239: aload_0
-    //   240: getfield 32	com/tencent/mqpsdk/secsrv/MQPIntChkService:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   243: ifnull -231 -> 12
-    //   246: aload_2
-    //   247: astore_1
-    //   248: aload_0
-    //   249: getfield 32	com/tencent/mqpsdk/secsrv/MQPIntChkService:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   252: iconst_2
-    //   253: invokestatic 363	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   256: invokeinterface 369 2 0
-    //   261: ifeq +20 -> 281
-    //   264: aload_0
-    //   265: getfield 32	com/tencent/mqpsdk/secsrv/MQPIntChkService:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   268: iconst_2
-    //   269: invokestatic 363	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   272: invokeinterface 371 2 0
-    //   277: checkcast 373	com/tencent/mqpsdk/secsrv/MQPIntChkService$IIntChkStrike
-    //   280: astore_1
-    //   281: aload_1
-    //   282: ifnull -270 -> 12
-    //   285: aload_1
-    //   286: aconst_null
-    //   287: aload_0
-    //   288: invokeinterface 418 3 0
-    //   293: return
-    //   294: aload_0
-    //   295: getfield 32	com/tencent/mqpsdk/secsrv/MQPIntChkService:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   298: ifnull -286 -> 12
-    //   301: aload_0
-    //   302: getfield 32	com/tencent/mqpsdk/secsrv/MQPIntChkService:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   305: iconst_3
-    //   306: invokestatic 363	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   309: invokeinterface 369 2 0
-    //   314: ifeq +99 -> 413
-    //   317: aload_0
-    //   318: getfield 32	com/tencent/mqpsdk/secsrv/MQPIntChkService:jdField_a_of_type_JavaUtilMap	Ljava/util/Map;
-    //   321: iconst_3
-    //   322: invokestatic 363	java/lang/Integer:valueOf	(I)Ljava/lang/Integer;
-    //   325: invokeinterface 371 2 0
-    //   330: checkcast 373	com/tencent/mqpsdk/secsrv/MQPIntChkService$IIntChkStrike
-    //   333: astore_1
-    //   334: aload_1
-    //   335: ifnull -323 -> 12
-    //   338: aload_3
-    //   339: ldc_w 421
-    //   342: invokeinterface 425 2 0
-    //   347: astore_2
-    //   348: aload_2
-    //   349: invokeinterface 430 1 0
-    //   354: ifeq -342 -> 12
-    //   357: aload_2
-    //   358: iconst_0
-    //   359: invokeinterface 434 2 0
-    //   364: checkcast 346	org/w3c/dom/Element
-    //   367: ldc_w 436
-    //   370: invokeinterface 350 2 0
-    //   375: astore_3
-    //   376: new 403	org/json/JSONObject
-    //   379: dup
-    //   380: invokespecial 404	org/json/JSONObject:<init>	()V
-    //   383: astore_2
-    //   384: aload_2
-    //   385: ldc_w 438
-    //   388: aload_3
-    //   389: invokevirtual 413	org/json/JSONObject:put	(Ljava/lang/String;Ljava/lang/Object;)Lorg/json/JSONObject;
-    //   392: pop
-    //   393: aload_1
-    //   394: aload_2
-    //   395: invokevirtual 414	org/json/JSONObject:toString	()Ljava/lang/String;
-    //   398: aload_0
-    //   399: invokeinterface 418 3 0
-    //   404: return
-    //   405: astore_3
-    //   406: aload_3
-    //   407: invokevirtual 419	java/lang/Exception:printStackTrace	()V
-    //   410: goto -17 -> 393
-    //   413: aconst_null
-    //   414: astore_1
-    //   415: goto -81 -> 334
-    //   418: aconst_null
-    //   419: astore_1
-    //   420: goto -276 -> 144
-    //   423: return
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	424	0	this	MQPIntChkService
-    //   0	424	1	paramString	String
-    //   1	199	2	localStringWriter	java.io.StringWriter
-    //   231	16	2	localException1	Exception
-    //   347	48	2	localObject1	Object
-    //   16	373	3	localObject2	Object
-    //   405	2	3	localException2	Exception
-    //   173	10	4	localStreamResult	javax.xml.transform.stream.StreamResult
-    // Exception table:
-    //   from	to	target	type
-    //   148	195	219	java/lang/Exception
-    //   207	218	219	java/lang/Exception
-    //   232	236	219	java/lang/Exception
-    //   17	74	225	java/lang/Exception
-    //   74	104	225	java/lang/Exception
-    //   104	144	225	java/lang/Exception
-    //   220	224	225	java/lang/Exception
-    //   239	246	225	java/lang/Exception
-    //   248	281	225	java/lang/Exception
-    //   285	293	225	java/lang/Exception
-    //   294	334	225	java/lang/Exception
-    //   338	384	225	java/lang/Exception
-    //   393	404	225	java/lang/Exception
-    //   406	410	225	java/lang/Exception
-    //   195	207	231	java/lang/Exception
-    //   384	393	405	java/lang/Exception
+    if (TextUtils.isEmpty(paramString.trim())) {
+      return;
+    }
+    Object localObject1 = DocumentBuilderFactory.newInstance();
+    for (;;)
+    {
+      try
+      {
+        Object localObject2 = ((DocumentBuilderFactory)localObject1).newDocumentBuilder().parse(new ByteArrayInputStream(paramString.getBytes())).getDocumentElement();
+        this.c = 0;
+        paramString = ((Element)localObject2).getAttribute("type");
+        if (paramString.trim().length() > 0) {
+          this.c = Integer.parseInt(paramString);
+        }
+        int i = this.c;
+        localObject1 = null;
+        paramString = null;
+        if (i != 1)
+        {
+          if (i != 2)
+          {
+            if (i != 3) {
+              return;
+            }
+            if (this.jdField_a_of_type_JavaUtilMap != null)
+            {
+              if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(3))) {
+                paramString = (MQPIntChkService.IIntChkStrike)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(3));
+              }
+              if (paramString != null)
+              {
+                localObject1 = ((Element)localObject2).getElementsByTagName("package");
+                if (((NodeList)localObject1).getLength() == 0) {
+                  return;
+                }
+                localObject2 = ((Element)((NodeList)localObject1).item(0)).getAttribute("val");
+                localObject1 = new JSONObject();
+                try
+                {
+                  ((JSONObject)localObject1).put("launch_package_name", localObject2);
+                }
+                catch (Exception localException2)
+                {
+                  localException2.printStackTrace();
+                }
+                paramString.exec(((JSONObject)localObject1).toString(), this);
+              }
+            }
+          }
+          else if (this.jdField_a_of_type_JavaUtilMap != null)
+          {
+            if (!this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(2))) {
+              break label423;
+            }
+            paramString = (MQPIntChkService.IIntChkStrike)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(2));
+            if (paramString != null) {
+              paramString.exec(null, this);
+            }
+          }
+        }
+        else if (this.jdField_a_of_type_JavaUtilMap != null)
+        {
+          paramString = (String)localObject1;
+          if (this.jdField_a_of_type_JavaUtilMap.containsKey(Integer.valueOf(1))) {
+            paramString = (MQPIntChkService.IIntChkStrike)this.jdField_a_of_type_JavaUtilMap.get(Integer.valueOf(1));
+          }
+          if (paramString != null) {
+            try
+            {
+              Object localObject3 = new DOMSource(localException2);
+              localObject1 = new StringWriter();
+              StreamResult localStreamResult = new StreamResult((Writer)localObject1);
+              TransformerFactory.newInstance().newTransformer().transform((Source)localObject3, localStreamResult);
+              localObject3 = new JSONObject();
+              try
+              {
+                ((JSONObject)localObject3).put("toast_config", ((StringWriter)localObject1).toString());
+              }
+              catch (Exception localException1)
+              {
+                localException1.printStackTrace();
+              }
+              paramString.exec(((JSONObject)localObject3).toString(), this);
+              return;
+            }
+            catch (Exception paramString)
+            {
+              paramString.printStackTrace();
+              return;
+            }
+          }
+        }
+        return;
+      }
+      catch (Exception paramString)
+      {
+        paramString.printStackTrace();
+      }
+      label423:
+      paramString = null;
+    }
   }
   
   public void a(int paramInt, MQPIntChkService.IIntChkStrike paramIIntChkStrike)
@@ -517,9 +439,10 @@ public class MQPIntChkService
   
   public void a(Object paramObject1, Object paramObject2)
   {
-    if (this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager != null)
+    paramObject1 = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager;
+    if (paramObject1 != null)
     {
-      Object localObject = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
+      Object localObject = paramObject1.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
       if (localObject != null)
       {
         paramObject1 = null;
@@ -527,80 +450,79 @@ public class MQPIntChkService
         if (localObject != null) {
           paramObject1 = (byte[])((INetTransportProvider.INetTransportCodec)localObject).decode(paramObject2);
         }
-        if (paramObject1 != null) {
-          break label59;
+        if (paramObject1 == null) {
+          return;
         }
+        paramObject2 = new intchk.RspBody();
       }
     }
-    return;
-    label59:
-    paramObject2 = new intchk.RspBody();
     int i;
-    try
+    label113:
+    do
     {
-      paramObject2.mergeFrom(paramObject1);
-      i = 0;
-      if (!paramObject2.uint32_subcmd.has()) {
-        break label114;
+      try
+      {
+        paramObject2.mergeFrom(paramObject1);
+        i = 0;
+        if (!paramObject2.uint32_subcmd.has()) {
+          break label113;
+        }
+        i = paramObject2.uint32_subcmd.get();
       }
-      i = paramObject2.uint32_subcmd.get();
-    }
-    catch (InvalidProtocolBufferMicroException paramObject1)
-    {
-      paramObject1.printStackTrace();
+      catch (InvalidProtocolBufferMicroException paramObject1)
+      {
+        paramObject1.printStackTrace();
+      }
+      b(paramObject2);
       return;
-    }
-    a(paramObject2);
-    return;
-    b(paramObject2);
-    return;
-    label114:
-    switch (i)
-    {
-    }
+      while (i == 1)
+      {
+        a(paramObject2);
+        return;
+        return;
+      }
+    } while (i == 2);
   }
   
   public void a(String paramString)
   {
-    if (TextUtils.isEmpty(paramString)) {}
-    for (;;)
-    {
+    if (TextUtils.isEmpty(paramString)) {
       return;
-      try
+    }
+    try
+    {
+      paramString = new JSONObject(paramString);
+      if (paramString.has("strike_result"))
       {
-        paramString = new JSONObject(paramString);
-        if (paramString.has("strike_result"))
-        {
-          this.d = paramString.getInt("strike_result");
-          Object localObject = new intchk.ReportStrikeResultReq();
-          ((intchk.ReportStrikeResultReq)localObject).uint32_intchk_id.set(this.b);
-          ((intchk.ReportStrikeResultReq)localObject).uint32_strike_type.set(this.c);
-          ((intchk.ReportStrikeResultReq)localObject).uint32_strike_result.set(this.d);
-          paramString = new intchk.ReqBody();
-          paramString.uint32_subcmd.set(3);
-          paramString.msg_app_info.set(a());
-          paramString.msg_report_strike_result_req.set((MessageMicro)localObject);
-          if (this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager != null)
-          {
-            INetTransportProvider localINetTransportProvider = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
-            if (localINetTransportProvider != null)
-            {
-              localObject = paramString.toByteArray();
-              INetTransportProvider.INetTransportCodec localINetTransportCodec = localINetTransportProvider.getCodec("intchk");
-              paramString = (String)localObject;
-              if (localINetTransportCodec != null) {
-                paramString = localINetTransportCodec.encode(localObject);
-              }
-              localINetTransportProvider.send(paramString);
-              return;
-            }
-          }
+        this.d = paramString.getInt("strike_result");
+        Object localObject = new intchk.ReportStrikeResultReq();
+        ((intchk.ReportStrikeResultReq)localObject).uint32_intchk_id.set(this.b);
+        ((intchk.ReportStrikeResultReq)localObject).uint32_strike_type.set(this.c);
+        ((intchk.ReportStrikeResultReq)localObject).uint32_strike_result.set(this.d);
+        paramString = new intchk.ReqBody();
+        paramString.uint32_subcmd.set(3);
+        paramString.msg_app_info.set(a());
+        paramString.msg_report_strike_result_req.set((MessageMicro)localObject);
+        if (this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager == null) {
+          return;
         }
+        INetTransportProvider localINetTransportProvider = this.jdField_a_of_type_ComTencentMqpsdkMQPSecServiceManager.jdField_a_of_type_ComTencentMqpsdkINetTransportProvider;
+        if (localINetTransportProvider == null) {
+          return;
+        }
+        localObject = paramString.toByteArray();
+        INetTransportProvider.INetTransportCodec localINetTransportCodec = localINetTransportProvider.getCodec("intchk");
+        paramString = (String)localObject;
+        if (localINetTransportCodec != null) {
+          paramString = localINetTransportCodec.encode(localObject);
+        }
+        localINetTransportProvider.send(paramString);
+        return;
       }
-      catch (Exception paramString)
-      {
-        paramString.printStackTrace();
-      }
+    }
+    catch (Exception paramString)
+    {
+      paramString.printStackTrace();
     }
   }
   
@@ -628,7 +550,7 @@ public class MQPIntChkService
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mqpsdk.secsrv.MQPIntChkService
  * JD-Core Version:    0.7.0.1
  */

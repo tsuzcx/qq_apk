@@ -10,16 +10,16 @@ class PublicAccountChatPie$56
   
   public void drawFinished()
   {
-    if ((!this.a.af) && (this.a.ag))
+    if ((!this.a.V) && (this.a.W))
     {
-      this.a.af = true;
+      this.a.V = true;
       PublicTracker.a("SUBSCRIPT_AIO_COST", null);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.PublicAccountChatPie.56
  * JD-Core Version:    0.7.0.1
  */

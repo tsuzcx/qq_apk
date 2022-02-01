@@ -1,7 +1,7 @@
 package com.tencent.mobileqq.activity.photo;
 
-import android.support.v4.app.FragmentActivity;
 import android.view.View;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.utils.AlbumUtil;
 import com.tencent.widget.AdapterView;
 import com.tencent.widget.AdapterView.OnItemClickListener;
@@ -15,8 +15,8 @@ class QzonePhotoPreviewActivity$1
   {
     if (QzonePhotoPreviewActivity.a(this.a))
     {
-      this.a.getActivity().finish();
-      AlbumUtil.anim(this.a.getActivity(), true, false);
+      this.a.getBaseActivity().finish();
+      AlbumUtil.anim(this.a.getBaseActivity(), true, false);
       return;
     }
     this.a.a();
@@ -24,7 +24,7 @@ class QzonePhotoPreviewActivity$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.photo.QzonePhotoPreviewActivity.1
  * JD-Core Version:    0.7.0.1
  */

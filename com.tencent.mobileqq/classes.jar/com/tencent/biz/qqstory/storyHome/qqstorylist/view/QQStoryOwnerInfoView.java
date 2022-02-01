@@ -73,20 +73,20 @@ public class QQStoryOwnerInfoView
   {
     TraceUtils.traceBegin("QQStoryInfoView.init");
     this.jdField_a_of_type_AndroidWidgetImageView = new ImageView(getContext());
-    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131374973);
+    this.jdField_a_of_type_AndroidWidgetImageView.setId(2131374505);
     addView(this.jdField_a_of_type_AndroidWidgetImageView);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView = new StoryQIMBadgeView(getContext());
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561812, this, false));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561668, this, false));
     addView(this.jdField_a_of_type_AndroidWidgetTextView);
-    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561811, this, false));
+    this.jdField_b_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561667, this, false));
     addView(this.jdField_b_of_type_AndroidWidgetTextView);
     this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView = new StoryUserBadgeView(getContext());
     addView(this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView);
-    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561811, this, false));
+    this.jdField_c_of_type_AndroidWidgetTextView = ((TextView)LayoutInflater.from(getContext()).inflate(2131561667, this, false));
     addView(this.jdField_c_of_type_AndroidWidgetTextView);
-    this.jdField_a_of_type_AndroidWidgetButton = ((Button)LayoutInflater.from(getContext()).inflate(2131561810, this, false));
-    this.jdField_a_of_type_AndroidWidgetButton.setId(2131362158);
+    this.jdField_a_of_type_AndroidWidgetButton = ((Button)LayoutInflater.from(getContext()).inflate(2131561666, this, false));
+    this.jdField_a_of_type_AndroidWidgetButton.setId(2131362184);
     addView(this.jdField_a_of_type_AndroidWidgetButton);
     TraceUtils.traceEnd();
   }
@@ -94,88 +94,97 @@ public class QQStoryOwnerInfoView
   private void a(int paramInt1, int paramInt2)
   {
     this.jdField_a_of_type_AndroidWidgetImageView.measure(View.MeasureSpec.makeMeasureSpec(this.jdField_c_of_type_Int, 1073741824), View.MeasureSpec.makeMeasureSpec(this.jdField_d_of_type_Int, 1073741824));
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView != null) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView.getVisibility() != 8)) {
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView;
+    if ((localObject != null) && (((StoryQIMBadgeView)localObject).getVisibility() != 8)) {
       this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView.measure(View.MeasureSpec.makeMeasureSpec(this.g, 1073741824), View.MeasureSpec.makeMeasureSpec(this.h, 1073741824));
     }
-    int i1 = paramInt1 - this.e - this.f - this.jdField_c_of_type_Int - this.p;
-    paramInt1 = paramInt1 - this.e - this.f - this.jdField_c_of_type_Int - this.p;
-    TextPaint localTextPaint;
-    int i2;
-    float f1;
-    if ((this.jdField_a_of_type_AndroidWidgetButton != null) && (this.jdField_a_of_type_AndroidWidgetButton.getVisibility() != 8))
+    int i2 = this.e;
+    int i3 = this.f;
+    int i4 = this.jdField_c_of_type_Int;
+    int i5 = this.p;
+    int i1 = paramInt1 - i2 - i3 - i4 - i5;
+    paramInt1 = paramInt1 - i2 - i3 - i4 - i5;
+    localObject = this.jdField_a_of_type_AndroidWidgetButton;
+    if ((localObject != null) && (((Button)localObject).getVisibility() != 8))
     {
-      localTextPaint = this.jdField_a_of_type_AndroidWidgetButton.getPaint();
+      localObject = this.jdField_a_of_type_AndroidWidgetButton.getPaint();
       this.jdField_c_of_type_JavaLangCharSequence = this.jdField_a_of_type_AndroidWidgetButton.getText();
-      this.m = ((int)localTextPaint.measureText(this.jdField_c_of_type_JavaLangCharSequence, 0, this.jdField_c_of_type_JavaLangCharSequence.length()) + this.jdField_a_of_type_AndroidWidgetButton.getPaddingLeft() + this.jdField_a_of_type_AndroidWidgetButton.getPaddingRight());
+      localCharSequence = this.jdField_c_of_type_JavaLangCharSequence;
+      this.m = ((int)((TextPaint)localObject).measureText(localCharSequence, 0, localCharSequence.length()) + this.jdField_a_of_type_AndroidWidgetButton.getPaddingLeft() + this.jdField_a_of_type_AndroidWidgetButton.getPaddingRight());
       this.jdField_a_of_type_AndroidWidgetButton.measure(View.MeasureSpec.makeMeasureSpec(this.m, 1073741824), View.MeasureSpec.makeMeasureSpec(this.n, 1073741824));
-      i1 = i1 - this.m - this.p - this.o;
-      paramInt1 = paramInt1 - this.m - this.p - this.o;
-      i2 = i1;
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.getVisibility() != 8)
-      {
-        i2 = i1 - this.i - this.k;
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.measure(View.MeasureSpec.makeMeasureSpec(this.i, 1073741824), View.MeasureSpec.makeMeasureSpec(this.j, 1073741824));
-      }
-      localTextPaint = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
-      this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getText();
-      f1 = localTextPaint.measureText(this.jdField_a_of_type_JavaLangCharSequence, 0, this.jdField_a_of_type_JavaLangCharSequence.length());
-      if (f1 <= i2) {
-        break label564;
-      }
-      this.jdField_a_of_type_AndroidWidgetTextView.measure(View.MeasureSpec.makeMeasureSpec(i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648));
+      i2 = this.m;
+      i3 = this.p;
+      i4 = this.o;
+      i1 = i1 - i2 - i3 - i4;
+      paramInt1 = paramInt1 - i2 - i3 - i4;
     }
-    for (;;)
+    else
     {
-      i1 = paramInt1;
-      if (this.jdField_c_of_type_AndroidWidgetTextView != null)
-      {
-        i1 = paramInt1;
-        if (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 8)
-        {
-          localTextPaint = this.jdField_c_of_type_AndroidWidgetTextView.getPaint();
-          this.jdField_d_of_type_JavaLangCharSequence = this.jdField_c_of_type_AndroidWidgetTextView.getText();
-          i2 = (int)localTextPaint.measureText(this.jdField_d_of_type_JavaLangCharSequence, 0, this.jdField_d_of_type_JavaLangCharSequence.length());
-          i1 = paramInt1 - i2 - this.r;
-          this.jdField_c_of_type_AndroidWidgetTextView.measure(View.MeasureSpec.makeMeasureSpec(i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648));
-        }
-      }
-      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 8)
-      {
-        localTextPaint = this.jdField_b_of_type_AndroidWidgetTextView.getPaint();
-        this.jdField_b_of_type_JavaLangCharSequence = this.jdField_b_of_type_AndroidWidgetTextView.getText();
-        f1 = localTextPaint.measureText(this.jdField_b_of_type_JavaLangCharSequence, 0, this.jdField_b_of_type_JavaLangCharSequence.length());
-        if (f1 <= i1) {
-          break label587;
-        }
-        this.jdField_b_of_type_AndroidWidgetTextView.measure(View.MeasureSpec.makeMeasureSpec(i1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648));
-      }
-      return;
       this.m = 0;
-      break;
-      label564:
+    }
+    i2 = i1;
+    if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.getVisibility() != 8)
+    {
+      i3 = this.i;
+      i2 = i1 - i3 - this.k;
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.measure(View.MeasureSpec.makeMeasureSpec(i3, 1073741824), View.MeasureSpec.makeMeasureSpec(this.j, 1073741824));
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetTextView.getPaint();
+    this.jdField_a_of_type_JavaLangCharSequence = this.jdField_a_of_type_AndroidWidgetTextView.getText();
+    CharSequence localCharSequence = this.jdField_a_of_type_JavaLangCharSequence;
+    float f1 = ((TextPaint)localObject).measureText(localCharSequence, 0, localCharSequence.length());
+    if (f1 > i2) {
+      this.jdField_a_of_type_AndroidWidgetTextView.measure(View.MeasureSpec.makeMeasureSpec(i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648));
+    } else {
       this.jdField_a_of_type_AndroidWidgetTextView.measure(View.MeasureSpec.makeMeasureSpec((int)f1, -2147483648), View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648));
     }
-    label587:
-    this.jdField_b_of_type_AndroidWidgetTextView.measure(View.MeasureSpec.makeMeasureSpec((int)f1, -2147483648), View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648));
+    localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+    i1 = paramInt1;
+    if (localObject != null)
+    {
+      i1 = paramInt1;
+      if (((TextView)localObject).getVisibility() != 8)
+      {
+        localObject = this.jdField_c_of_type_AndroidWidgetTextView.getPaint();
+        this.jdField_d_of_type_JavaLangCharSequence = this.jdField_c_of_type_AndroidWidgetTextView.getText();
+        localCharSequence = this.jdField_d_of_type_JavaLangCharSequence;
+        i2 = (int)((TextPaint)localObject).measureText(localCharSequence, 0, localCharSequence.length());
+        i1 = paramInt1 - i2 - this.r;
+        this.jdField_c_of_type_AndroidWidgetTextView.measure(View.MeasureSpec.makeMeasureSpec(i2, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648));
+      }
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 8)
+    {
+      localObject = this.jdField_b_of_type_AndroidWidgetTextView.getPaint();
+      this.jdField_b_of_type_JavaLangCharSequence = this.jdField_b_of_type_AndroidWidgetTextView.getText();
+      localCharSequence = this.jdField_b_of_type_JavaLangCharSequence;
+      f1 = ((TextPaint)localObject).measureText(localCharSequence, 0, localCharSequence.length());
+      if (f1 > i1)
+      {
+        this.jdField_b_of_type_AndroidWidgetTextView.measure(View.MeasureSpec.makeMeasureSpec(i1, 1073741824), View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648));
+        return;
+      }
+      this.jdField_b_of_type_AndroidWidgetTextView.measure(View.MeasureSpec.makeMeasureSpec((int)f1, -2147483648), View.MeasureSpec.makeMeasureSpec(paramInt2, -2147483648));
+    }
   }
   
   private void b()
   {
-    this.jdField_c_of_type_Int = getContext().getResources().getDimensionPixelSize(2131298596);
+    this.jdField_c_of_type_Int = getContext().getResources().getDimensionPixelSize(2131298591);
     this.jdField_d_of_type_Int = this.jdField_c_of_type_Int;
-    this.f = getContext().getResources().getDimensionPixelSize(2131298601);
-    this.e = getContext().getResources().getDimensionPixelSize(2131298597);
-    this.g = getContext().getResources().getDimensionPixelSize(2131298598);
+    this.f = getContext().getResources().getDimensionPixelSize(2131298596);
+    this.e = getContext().getResources().getDimensionPixelSize(2131298592);
+    this.g = getContext().getResources().getDimensionPixelSize(2131298593);
     this.h = this.g;
-    this.q = getContext().getResources().getDimensionPixelSize(2131298600);
-    this.i = getContext().getResources().getDimensionPixelSize(2131298595);
+    this.q = getContext().getResources().getDimensionPixelSize(2131298595);
+    this.i = getContext().getResources().getDimensionPixelSize(2131298590);
     this.j = this.i;
-    this.l = getContext().getResources().getDimensionPixelSize(2131298594);
-    this.k = getContext().getResources().getDimensionPixelSize(2131298593);
+    this.l = getContext().getResources().getDimensionPixelSize(2131298589);
+    this.k = getContext().getResources().getDimensionPixelSize(2131298588);
     this.r = UIUtils.a(getContext(), 2.0F);
     this.o = UIUtils.a(getContext(), 10.0F);
     this.p = UIUtils.a(getContext(), 15.0F);
-    this.n = getContext().getResources().getDimensionPixelSize(2131298599);
+    this.n = getContext().getResources().getDimensionPixelSize(2131298594);
     this.m = 0;
   }
   
@@ -209,55 +218,62 @@ public class QQStoryOwnerInfoView
   
   protected void a(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    paramInt3 = this.e;
-    paramInt4 = (this.jdField_b_of_type_Int - this.jdField_d_of_type_Int) / 2;
-    paramInt1 = this.jdField_c_of_type_Int + paramInt3;
-    paramInt2 = this.jdField_d_of_type_Int + paramInt4;
-    this.jdField_a_of_type_AndroidWidgetImageView.layout(paramInt3, paramInt4, paramInt1, paramInt2);
-    if ((this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView != null) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView.getVisibility() != 8))
+    paramInt2 = this.e;
+    paramInt1 = this.jdField_b_of_type_Int;
+    paramInt3 = this.jdField_d_of_type_Int;
+    paramInt4 = (paramInt1 - paramInt3) / 2;
+    paramInt1 = this.jdField_c_of_type_Int + paramInt2;
+    paramInt3 += paramInt4;
+    this.jdField_a_of_type_AndroidWidgetImageView.layout(paramInt2, paramInt4, paramInt1, paramInt3);
+    Object localObject = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView;
+    if ((localObject != null) && (((StoryQIMBadgeView)localObject).getVisibility() != 8))
     {
-      paramInt3 = this.g;
+      paramInt2 = this.g;
       paramInt4 = this.h;
-      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView.layout(paramInt1 - paramInt3, paramInt2 - paramInt4, paramInt1, paramInt2);
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView.layout(paramInt1 - paramInt2, paramInt3 - paramInt4, paramInt1, paramInt3);
     }
     paramInt2 = paramInt1 + this.f;
-    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 8) {}
-    for (paramInt1 = (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight()) / 2;; paramInt1 = (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight() - this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredHeight() - this.q) / 2)
+    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() == 8) {
+      paramInt1 = (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight()) / 2;
+    } else {
+      paramInt1 = (this.jdField_b_of_type_Int - this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight() - this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredHeight() - this.q) / 2;
+    }
+    paramInt4 = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() + paramInt2;
+    paramInt3 = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight() + paramInt1;
+    this.jdField_a_of_type_AndroidWidgetTextView.layout(paramInt2, paramInt1 + 0, paramInt4, paramInt3);
+    localObject = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView;
+    if ((localObject != null) && (((StoryUserBadgeView)localObject).getVisibility() != 8))
     {
-      paramInt4 = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredWidth() + paramInt2;
-      paramInt3 = this.jdField_a_of_type_AndroidWidgetTextView.getMeasuredHeight() + paramInt1;
-      this.jdField_a_of_type_AndroidWidgetTextView.layout(paramInt2, paramInt1 + 0, paramInt4, paramInt3);
-      if ((this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView != null) && (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.getVisibility() != 8))
+      paramInt4 += this.k;
+      paramInt1 += this.l;
+      int i1 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.getMeasuredWidth();
+      int i2 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.getMeasuredHeight();
+      this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.layout(paramInt4, paramInt1, i1 + paramInt4, i2 + paramInt1);
+    }
+    if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 8)
+    {
+      paramInt1 = paramInt3 + this.q;
+      paramInt3 = this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredWidth() + paramInt2;
+      paramInt4 = this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredHeight();
+      this.jdField_b_of_type_AndroidWidgetTextView.layout(paramInt2, paramInt1, paramInt3, paramInt4 + paramInt1);
+      localObject = this.jdField_c_of_type_AndroidWidgetTextView;
+      if ((localObject != null) && (((TextView)localObject).getVisibility() != 8))
       {
-        paramInt4 += this.k;
-        paramInt1 += this.l;
-        int i1 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.getMeasuredWidth();
-        int i2 = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.getMeasuredHeight();
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryUserBadgeView.layout(paramInt4, paramInt1, i1 + paramInt4, i2 + paramInt1);
+        paramInt2 = paramInt3 + this.r;
+        paramInt3 = this.jdField_c_of_type_AndroidWidgetTextView.getMeasuredWidth();
+        paramInt4 = this.jdField_c_of_type_AndroidWidgetTextView.getMeasuredHeight();
+        this.jdField_c_of_type_AndroidWidgetTextView.layout(paramInt2, paramInt1, paramInt3 + paramInt2, paramInt4 + paramInt1);
       }
-      if (this.jdField_b_of_type_AndroidWidgetTextView.getVisibility() != 8)
-      {
-        paramInt1 = this.q + paramInt3;
-        paramInt3 = this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredWidth() + paramInt2;
-        paramInt4 = this.jdField_b_of_type_AndroidWidgetTextView.getMeasuredHeight();
-        this.jdField_b_of_type_AndroidWidgetTextView.layout(paramInt2, paramInt1, paramInt3, paramInt4 + paramInt1);
-        if ((this.jdField_c_of_type_AndroidWidgetTextView != null) && (this.jdField_c_of_type_AndroidWidgetTextView.getVisibility() != 8))
-        {
-          paramInt2 = this.r + paramInt3;
-          paramInt3 = this.jdField_c_of_type_AndroidWidgetTextView.getMeasuredWidth();
-          paramInt4 = this.jdField_c_of_type_AndroidWidgetTextView.getMeasuredHeight();
-          this.jdField_c_of_type_AndroidWidgetTextView.layout(paramInt2, paramInt1, paramInt3 + paramInt2, paramInt4 + paramInt1);
-        }
-      }
-      if ((this.jdField_a_of_type_AndroidWidgetButton != null) && (this.jdField_a_of_type_AndroidWidgetButton.getVisibility() != 8))
-      {
-        paramInt1 = this.jdField_a_of_type_Int - this.p;
-        paramInt2 = this.m;
-        paramInt3 = (this.jdField_b_of_type_Int - this.n) / 2;
-        paramInt4 = this.n;
-        this.jdField_a_of_type_AndroidWidgetButton.layout(paramInt1 - paramInt2, paramInt3, paramInt1, paramInt4 + paramInt3);
-      }
-      return;
+    }
+    localObject = this.jdField_a_of_type_AndroidWidgetButton;
+    if ((localObject != null) && (((Button)localObject).getVisibility() != 8))
+    {
+      paramInt1 = this.jdField_a_of_type_Int - this.p;
+      paramInt2 = this.m;
+      paramInt4 = this.jdField_b_of_type_Int;
+      paramInt3 = this.n;
+      paramInt4 = (paramInt4 - paramInt3) / 2;
+      this.jdField_a_of_type_AndroidWidgetButton.layout(paramInt1 - paramInt2, paramInt4, paramInt1, paramInt3 + paramInt4);
     }
   }
   
@@ -271,43 +287,128 @@ public class QQStoryOwnerInfoView
     return this.jdField_c_of_type_AndroidWidgetTextView;
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  /* Error */
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
-    TraceUtils.traceBegin("QQStoryInfoView.onLayout");
-    try
-    {
-      a(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
-      return;
-    }
-    catch (Exception localException)
-    {
-      throw new Error("do you know ,this is an error:" + localException);
-    }
-    finally
-    {
-      TraceUtils.traceEnd();
-    }
+    // Byte code:
+    //   0: ldc_w 264
+    //   3: invokestatic 66	com/tencent/widget/TraceUtils:traceBegin	(Ljava/lang/String;)V
+    //   6: aload_0
+    //   7: iload_1
+    //   8: iload_2
+    //   9: iload_3
+    //   10: iload 4
+    //   12: iload 5
+    //   14: invokevirtual 266	com/tencent/biz/qqstory/storyHome/qqstorylist/view/QQStoryOwnerInfoView:a	(ZIIII)V
+    //   17: invokestatic 125	com/tencent/widget/TraceUtils:traceEnd	()V
+    //   20: return
+    //   21: astore 6
+    //   23: goto +44 -> 67
+    //   26: astore 6
+    //   28: new 268	java/lang/StringBuilder
+    //   31: dup
+    //   32: invokespecial 270	java/lang/StringBuilder:<init>	()V
+    //   35: astore 7
+    //   37: aload 7
+    //   39: ldc_w 272
+    //   42: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: aload 7
+    //   48: aload 6
+    //   50: invokevirtual 279	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   53: pop
+    //   54: new 281	java/lang/Error
+    //   57: dup
+    //   58: aload 7
+    //   60: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   63: invokespecial 287	java/lang/Error:<init>	(Ljava/lang/String;)V
+    //   66: athrow
+    //   67: invokestatic 125	com/tencent/widget/TraceUtils:traceEnd	()V
+    //   70: aload 6
+    //   72: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	73	0	this	QQStoryOwnerInfoView
+    //   0	73	1	paramBoolean	boolean
+    //   0	73	2	paramInt1	int
+    //   0	73	3	paramInt2	int
+    //   0	73	4	paramInt3	int
+    //   0	73	5	paramInt4	int
+    //   21	1	6	localObject	Object
+    //   26	45	6	localException	java.lang.Exception
+    //   35	24	7	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   6	17	21	finally
+    //   28	67	21	finally
+    //   6	17	26	java/lang/Exception
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  /* Error */
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
-    TraceUtils.traceBegin("QQStoryInfoView.onMeasure");
-    try
-    {
-      this.jdField_a_of_type_Int = View.MeasureSpec.getSize(paramInt1);
-      this.jdField_b_of_type_Int = View.MeasureSpec.getSize(paramInt2);
-      a(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      setMeasuredDimension(this.jdField_a_of_type_Int, this.jdField_b_of_type_Int);
-      return;
-    }
-    catch (Exception localException)
-    {
-      throw new Error("do you know ,this is an error:" + localException);
-    }
-    finally
-    {
-      TraceUtils.traceEnd();
-    }
+    // Byte code:
+    //   0: ldc_w 290
+    //   3: invokestatic 66	com/tencent/widget/TraceUtils:traceBegin	(Ljava/lang/String;)V
+    //   6: aload_0
+    //   7: iload_1
+    //   8: invokestatic 293	android/view/View$MeasureSpec:getSize	(I)I
+    //   11: putfield 41	com/tencent/biz/qqstory/storyHome/qqstorylist/view/QQStoryOwnerInfoView:jdField_a_of_type_Int	I
+    //   14: aload_0
+    //   15: iload_2
+    //   16: invokestatic 293	android/view/View$MeasureSpec:getSize	(I)I
+    //   19: putfield 43	com/tencent/biz/qqstory/storyHome/qqstorylist/view/QQStoryOwnerInfoView:jdField_b_of_type_Int	I
+    //   22: aload_0
+    //   23: aload_0
+    //   24: getfield 41	com/tencent/biz/qqstory/storyHome/qqstorylist/view/QQStoryOwnerInfoView:jdField_a_of_type_Int	I
+    //   27: aload_0
+    //   28: getfield 43	com/tencent/biz/qqstory/storyHome/qqstorylist/view/QQStoryOwnerInfoView:jdField_b_of_type_Int	I
+    //   31: invokespecial 295	com/tencent/biz/qqstory/storyHome/qqstorylist/view/QQStoryOwnerInfoView:a	(II)V
+    //   34: aload_0
+    //   35: aload_0
+    //   36: getfield 41	com/tencent/biz/qqstory/storyHome/qqstorylist/view/QQStoryOwnerInfoView:jdField_a_of_type_Int	I
+    //   39: aload_0
+    //   40: getfield 43	com/tencent/biz/qqstory/storyHome/qqstorylist/view/QQStoryOwnerInfoView:jdField_b_of_type_Int	I
+    //   43: invokevirtual 298	com/tencent/biz/qqstory/storyHome/qqstorylist/view/QQStoryOwnerInfoView:setMeasuredDimension	(II)V
+    //   46: invokestatic 125	com/tencent/widget/TraceUtils:traceEnd	()V
+    //   49: return
+    //   50: astore_3
+    //   51: goto +42 -> 93
+    //   54: astore_3
+    //   55: new 268	java/lang/StringBuilder
+    //   58: dup
+    //   59: invokespecial 270	java/lang/StringBuilder:<init>	()V
+    //   62: astore 4
+    //   64: aload 4
+    //   66: ldc_w 272
+    //   69: invokevirtual 276	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   72: pop
+    //   73: aload 4
+    //   75: aload_3
+    //   76: invokevirtual 279	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   79: pop
+    //   80: new 281	java/lang/Error
+    //   83: dup
+    //   84: aload 4
+    //   86: invokevirtual 285	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   89: invokespecial 287	java/lang/Error:<init>	(Ljava/lang/String;)V
+    //   92: athrow
+    //   93: invokestatic 125	com/tencent/widget/TraceUtils:traceEnd	()V
+    //   96: aload_3
+    //   97: athrow
+    // Local variable table:
+    //   start	length	slot	name	signature
+    //   0	98	0	this	QQStoryOwnerInfoView
+    //   0	98	1	paramInt1	int
+    //   0	98	2	paramInt2	int
+    //   50	1	3	localObject	Object
+    //   54	43	3	localException	java.lang.Exception
+    //   62	23	4	localStringBuilder	java.lang.StringBuilder
+    // Exception table:
+    //   from	to	target	type
+    //   6	46	50	finally
+    //   55	93	50	finally
+    //   6	46	54	java/lang/Exception
   }
   
   public void setAvatar(@NonNull Drawable paramDrawable)
@@ -356,8 +457,9 @@ public class QQStoryOwnerInfoView
   {
     if (paramDrawable == null)
     {
-      if (this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView != null) {
-        this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView.setVisibility(8);
+      paramDrawable = this.jdField_a_of_type_ComTencentBizQqstoryViewWidgetStoryQIMBadgeView;
+      if (paramDrawable != null) {
+        paramDrawable.setVisibility(8);
       }
       return;
     }
@@ -375,8 +477,9 @@ public class QQStoryOwnerInfoView
     if (TextUtils.isEmpty(paramString))
     {
       this.jdField_b_of_type_JavaLangCharSequence = "";
-      if (this.jdField_b_of_type_AndroidWidgetTextView != null) {
-        this.jdField_b_of_type_AndroidWidgetTextView.setVisibility(8);
+      paramString = this.jdField_b_of_type_AndroidWidgetTextView;
+      if (paramString != null) {
+        paramString.setVisibility(8);
       }
       return;
     }
@@ -400,7 +503,7 @@ public class QQStoryOwnerInfoView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.qqstorylist.view.QQStoryOwnerInfoView
  * JD-Core Version:    0.7.0.1
  */

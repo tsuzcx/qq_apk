@@ -12,13 +12,14 @@ class QCircleFeedItemBuilder$2
   
   public void run()
   {
-    QCircleFeedItemBuilder.a(QCircleFeedItemBuilder.a(this.this$0, this.this$0.a.getApplication().getResources(), this.jdField_a_of_type_JavaLangString));
+    QCircleFeedItemBuilder localQCircleFeedItemBuilder = this.this$0;
+    QCircleFeedItemBuilder.a(QCircleFeedItemBuilder.a(localQCircleFeedItemBuilder, localQCircleFeedItemBuilder.a.getApplication().getResources(), this.jdField_a_of_type_JavaLangString));
     ThreadManager.getUIHandler().post(new QCircleFeedItemBuilder.2.1(this));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.QCircleFeedItemBuilder.2
  * JD-Core Version:    0.7.0.1
  */

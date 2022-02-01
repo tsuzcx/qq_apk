@@ -13,12 +13,26 @@ final class CloudAVEngineImpl$CloudDetectEntry
   
   public String toString()
   {
-    return "[EntryId:" + this.jdField_a_of_type_Int + ",UseCache:" + this.jdField_a_of_type_Boolean + ",rightnow:" + this.jdField_b_of_type_Boolean + ",Retry:" + this.jdField_b_of_type_Int + ",localKey:" + this.jdField_a_of_type_JavaLangString + ",content:" + this.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.toString() + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("[EntryId:");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append(",UseCache:");
+    localStringBuilder.append(this.jdField_a_of_type_Boolean);
+    localStringBuilder.append(",rightnow:");
+    localStringBuilder.append(this.jdField_b_of_type_Boolean);
+    localStringBuilder.append(",Retry:");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append(",localKey:");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(",content:");
+    localStringBuilder.append(this.jdField_a_of_type_ComTencentQqprotectQsecICloudAVEngine$DetectBundle.toString());
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqprotect.qsec.CloudAVEngineImpl.CloudDetectEntry
  * JD-Core Version:    0.7.0.1
  */

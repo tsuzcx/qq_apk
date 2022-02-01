@@ -32,7 +32,7 @@ public class HippyViewGroupController
     mZIndexHash.put(paramView, Integer.valueOf(paramInt));
   }
   
-  public View createViewImpl(Context paramContext)
+  protected View createViewImpl(Context paramContext)
   {
     return new HippyViewGroup(paramContext);
   }
@@ -58,27 +58,23 @@ public class HippyViewGroupController
   @HippyControllerProps(defaultString="origin", defaultType="string", name="backgroundSize")
   public void setBackgroundImageSize(HippyImageView paramHippyImageView, String paramString)
   {
-    if ("contain".equals(paramString))
-    {
-      paramHippyImageView.setScaleType(AsyncImageView.ScaleType.CENTER_INSIDE);
-      return;
+    if ("contain".equals(paramString)) {
+      paramString = AsyncImageView.ScaleType.CENTER_INSIDE;
     }
-    if ("cover".equals(paramString))
+    for (;;)
     {
-      paramHippyImageView.setScaleType(AsyncImageView.ScaleType.CENTER_CROP);
+      paramHippyImageView.setScaleType(paramString);
       return;
+      if ("cover".equals(paramString)) {
+        paramString = AsyncImageView.ScaleType.CENTER_CROP;
+      } else if ("center".equals(paramString)) {
+        paramString = AsyncImageView.ScaleType.CENTER;
+      } else if ("origin".equals(paramString)) {
+        paramString = AsyncImageView.ScaleType.ORIGIN;
+      } else {
+        paramString = AsyncImageView.ScaleType.FIT_XY;
+      }
     }
-    if ("center".equals(paramString))
-    {
-      paramHippyImageView.setScaleType(AsyncImageView.ScaleType.CENTER);
-      return;
-    }
-    if ("origin".equals(paramString))
-    {
-      paramHippyImageView.setScaleType(AsyncImageView.ScaleType.ORIGIN);
-      return;
-    }
-    paramHippyImageView.setScaleType(AsyncImageView.ScaleType.FIT_XY);
   }
   
   @HippyControllerProps(defaultString="visible", defaultType="string", name="overflow")
@@ -89,7 +85,7 @@ public class HippyViewGroupController
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.views.view.HippyViewGroupController
  * JD-Core Version:    0.7.0.1
  */

@@ -5,9 +5,9 @@ import android.text.TextUtils;
 import com.tencent.biz.anonymous.AnonymousChatHelper;
 import com.tencent.mobileqq.activity.aio.BaseBubbleBuilder.ViewHolder;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameExtenderViewBasicAbility;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameLayoutProcessor;
-import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameLayoutProcessor.NickNameLayoutData;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.BaseChatItemLayoutViewBasicAbility;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameChatItemLayoutProcessor;
+import com.tencent.mobileqq.activity.aio.coreui.msglist.basechatItemlayout.NickNameChatItemLayoutProcessor.NickNameLayoutData;
 import com.tencent.mobileqq.app.HotChatManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -43,14 +43,12 @@ class TroopRelevantHandler$TmiCallBackForNickName
   public void a(TroopMemberInfo paramTroopMemberInfo)
   {
     Object localObject1 = (BaseBubbleBuilder.ViewHolder)this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.getTag();
-    Object localObject2;
-    Object localObject3;
     if ((paramTroopMemberInfo != null) && (TextUtils.equals(((BaseBubbleBuilder.ViewHolder)localObject1).jdField_a_of_type_ComTencentMobileqqDataChatMessage.senderuin, paramTroopMemberInfo.memberuin)))
     {
       localObject1 = (HotChatManager)TroopRelevantHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler).getManager(QQManagerFactory.HOT_CHAT_MANAGER);
       localObject1 = new ColorNickText(ContactUtils.a(TroopRelevantHandler.b(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler), paramTroopMemberInfo.troopuin, paramTroopMemberInfo.memberuin, true), 13).a();
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("vip_type");
-      localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("vip_level");
+      Object localObject2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("vip_type");
+      Object localObject3 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("vip_level");
       String str1 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("bigClub_type");
       String str2 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("bigClub_level");
       String str3 = this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.getExtInfoFromExtStr("vip_card_id");
@@ -62,37 +60,33 @@ class TroopRelevantHandler$TmiCallBackForNickName
       int n = VipUtils.a(str3, 0);
       int i1 = VipUtils.a(str4, 0);
       localObject2 = this.jdField_a_of_type_AndroidContentResColorStateList;
+      boolean bool;
       if (((!this.jdField_a_of_type_Boolean) || (!AnonymousChatHelper.b(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage))) && (!TroopConfessUtil.c(this.jdField_a_of_type_ComTencentMobileqqDataChatMessage)) && (!this.jdField_a_of_type_ComTencentMobileqqDataChatMessage.isSend())) {
-        break label419;
+        bool = false;
+      } else {
+        bool = true;
       }
-      bool = true;
-      localObject2 = new NickNameLayoutProcessor.NickNameLayoutData((CharSequence)localObject1, (ColorStateList)localObject2, bool, this.jdField_b_of_type_Boolean, this.d, this.c, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_b_of_type_AndroidContentResColorStateList, this.jdField_a_of_type_JavaLangString, i, j, k, m, n, i1, paramTroopMemberInfo.mIsHideBigClub);
+      localObject2 = new NickNameChatItemLayoutProcessor.NickNameLayoutData((CharSequence)localObject1, (ColorStateList)localObject2, bool, this.jdField_b_of_type_Boolean, this.d, this.c, this.jdField_a_of_type_JavaLangCharSequence, this.jdField_b_of_type_AndroidContentResColorStateList, this.jdField_a_of_type_JavaLangString, i, j, k, m, n, i1, paramTroopMemberInfo.mIsHideBigClub);
       localObject3 = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout;
       if ((localObject1 == null) && (!this.jdField_a_of_type_Boolean)) {
-        break label425;
+        bool = false;
+      } else {
+        bool = true;
       }
-    }
-    label419:
-    label425:
-    for (boolean bool = true;; bool = false)
-    {
-      ((BaseChatItemLayout)localObject3).setNick(bool, (NickNameLayoutProcessor.NickNameLayoutData)localObject2);
+      ((BaseChatItemLayout)localObject3).setNick(bool, (NickNameChatItemLayoutProcessor.NickNameLayoutData)localObject2);
       if (this.jdField_a_of_type_Int == 1) {
         TroopRelevantHandler.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler, ((CharSequence)localObject1).toString(), this.jdField_a_of_type_ComTencentMobileqqDataChatMessage, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout, this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseBubbleBuilder$ViewHolder);
       }
-      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a(NickNameLayoutProcessor.h);
+      localObject2 = this.jdField_a_of_type_ComTencentMobileqqActivityAioBaseChatItemLayout.a(NickNameChatItemLayoutProcessor.h);
       if (localObject2 != null) {
-        ((NickNameExtenderViewBasicAbility)localObject2).setData(new Object[] { TroopRelevantHandler.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler), localObject1, Integer.valueOf(paramTroopMemberInfo.troopColorNickId), Boolean.valueOf(false) });
+        ((BaseChatItemLayoutViewBasicAbility)localObject2).setData(new Object[] { TroopRelevantHandler.c(this.jdField_a_of_type_ComTencentMobileqqActivityAioRebuildChatlayouthandlerTroopRelevantHandler), localObject1, Integer.valueOf(paramTroopMemberInfo.troopColorNickId), Boolean.valueOf(false) });
       }
-      return;
-      bool = false;
-      break;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.rebuild.chatlayouthandler.TroopRelevantHandler.TmiCallBackForNickName
  * JD-Core Version:    0.7.0.1
  */

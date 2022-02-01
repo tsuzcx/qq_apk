@@ -22,13 +22,13 @@ public class RecentPhotoManger
   
   public static void addToRecentPhotoBlacklist(String paramString1, String paramString2)
   {
-    if (TextUtils.isEmpty(paramString2)) {}
-    List localList;
-    do
-    {
+    if (TextUtils.isEmpty(paramString2)) {
       return;
-      localList = getRecentPhotoBlackListPath(paramString1, 500);
-    } while (localList.contains(paramString2));
+    }
+    List localList = getRecentPhotoBlackListPath(paramString1, 500);
+    if (localList.contains(paramString2)) {
+      return;
+    }
     localList.add(0, paramString2);
     if (localList.size() > 500) {
       localList.remove(500);
@@ -67,16 +67,16 @@ public class RecentPhotoManger
   
   public static List<String> getRecentPhotoBlackListPath(String paramString, int paramInt)
   {
-    int i = 0;
     paramString = LocalMultiProcConfig.getString(paramString, "").split(";");
     LinkedList localLinkedList = new LinkedList();
-    if ((paramString.length == 0) || (paramInt <= 0)) {
-      return localLinkedList;
-    }
-    int k;
-    for (int j = 0;; j = k)
+    if (paramString.length != 0)
     {
-      if (i < paramString.length)
+      if (paramInt <= 0) {
+        return localLinkedList;
+      }
+      int i = 0;
+      int k;
+      for (int j = 0; i < paramString.length; j = k)
       {
         CharSequence localCharSequence = paramString[i];
         k = j;
@@ -85,19 +85,18 @@ public class RecentPhotoManger
           localLinkedList.add(localCharSequence);
           k = j + 1;
         }
-        if (k != paramInt) {}
+        if (k == paramInt) {
+          return localLinkedList;
+        }
+        i += 1;
       }
-      else
-      {
-        return localLinkedList;
-      }
-      i += 1;
     }
+    return localLinkedList;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.util.RecentPhotoManger
  * JD-Core Version:    0.7.0.1
  */

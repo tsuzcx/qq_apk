@@ -94,22 +94,25 @@ public final class GetLbsCombinReq_V2
     paramJceOutputStream.write(this.iAccuracy, 6);
     paramJceOutputStream.write(this.iLocateCostTime, 7);
     paramJceOutputStream.write(this.iMood, 8);
-    if (this.stGeoInfo != null) {
-      paramJceOutputStream.write(this.stGeoInfo, 9);
+    Object localObject = this.stGeoInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 9);
     }
     paramJceOutputStream.write(this.iUserTime, 10);
     paramJceOutputStream.write(this.iAppID, 11);
-    if (this.stUserDate != null) {
-      paramJceOutputStream.write(this.stUserDate, 12);
+    localObject = this.stUserDate;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 12);
     }
-    if (this.map_ext != null) {
-      paramJceOutputStream.write(this.map_ext, 13);
+    localObject = this.map_ext;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 13);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     LBS_V2_PROTOCOL.GetLbsCombinReq_V2
  * JD-Core Version:    0.7.0.1
  */

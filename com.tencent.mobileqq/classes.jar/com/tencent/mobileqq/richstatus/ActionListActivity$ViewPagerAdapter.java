@@ -1,11 +1,11 @@
 package com.tencent.mobileqq.richstatus;
 
 import android.graphics.drawable.ColorDrawable;
-import android.support.v4.view.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.GridView;
+import androidx.viewpager.widget.PagerAdapter;
 import java.util.ArrayList;
 import java.util.Iterator;
 
@@ -32,14 +32,16 @@ class ActionListActivity$ViewPagerAdapter
         localGridView.setScrollingCacheEnabled(false);
         localGridView.setAdapter(new ActionListActivity.GridAdapter(this.jdField_a_of_type_ComTencentMobileqqRichstatusActionListActivity, localStateTag.jdField_a_of_type_JavaUtilArrayList));
         this.jdField_a_of_type_JavaUtilArrayList.add(localGridView);
+        continue;
+        label118:
+        System.gc();
       }
-      return;
     }
     catch (OutOfMemoryError localOutOfMemoryError)
     {
-      System.gc();
-      super.notifyDataSetChanged();
+      break label118;
     }
+    super.notifyDataSetChanged();
   }
   
   public void destroyItem(View paramView, int paramInt, Object paramObject) {}
@@ -68,7 +70,7 @@ class ActionListActivity$ViewPagerAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.richstatus.ActionListActivity.ViewPagerAdapter
  * JD-Core Version:    0.7.0.1
  */

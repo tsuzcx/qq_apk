@@ -1,18 +1,19 @@
 package com.tencent.biz.pubaccount.readinjoy.feedspopup.steps;
 
 import android.app.Activity;
-import com.tencent.biz.pubaccount.readinjoy.config.handlers.DailyModeConfigHandler;
-import com.tencent.biz.pubaccount.readinjoy.feedspopup.BasePopupStep;
-import com.tencent.biz.pubaccount.readinjoy.feedspopup.RIJPopupAutomator;
 import com.tencent.biz.pubaccount.readinjoy.struct.AdvertisementInfo;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskConfigMgr;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskDataMgr;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskReportMgr;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.mgr.SuperMaskUIMgr;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.super_mask.step.SuperMaskPopStepProxy;
-import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoyAdLog;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoySuperMaskAdUtil;
 import com.tencent.biz.pubaccount.readinjoyAd.ad.utils.ReadInJoySuperMaskAdUtil.RIJSuperMaskAdEventListener;
+import com.tencent.mobileqq.kandian.ad.api.IRIJAdLogService;
+import com.tencent.mobileqq.kandian.base.automator.BasePopupStep;
+import com.tencent.mobileqq.kandian.base.automator.RIJPopupAutomator;
+import com.tencent.mobileqq.kandian.repo.daily.api.IDailyModeConfigHandler;
+import com.tencent.mobileqq.qroute.QRoute;
 import java.lang.ref.SoftReference;
 import java.util.concurrent.atomic.AtomicInteger;
 import org.jetbrains.annotations.NotNull;
@@ -44,64 +45,49 @@ public class RIJADSuperMaskPopupStep
   
   public void a(int paramInt)
   {
-    if ((paramInt != 0) && (!DailyModeConfigHandler.c(paramInt))) {
+    if ((paramInt != 0) && (!((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(paramInt))) {
       return;
     }
     int i = -1;
     if (paramInt == 0) {
       i = SuperMaskConfigMgr.a.c().getAndAdd(1);
+    } else if (((IDailyModeConfigHandler)QRoute.api(IDailyModeConfigHandler.class)).isDaily(paramInt)) {
+      i = SuperMaskConfigMgr.a.d().getAndAdd(1);
     }
-    while (i != 0)
+    if (i != 0)
     {
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "refreshNum != 0");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoySuperMaskAd", "refreshNum != 0");
       a(false);
       SuperMaskUIMgr.a.a(4);
       return;
-      if (DailyModeConfigHandler.c(paramInt)) {
-        i = SuperMaskConfigMgr.a.d().getAndAdd(1);
-      }
     }
     if (!(SuperMaskDataMgr.a.a() instanceof AdvertisementInfo))
     {
-      ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "未收到蒙层回包");
+      ((IRIJAdLogService)QRoute.api(IRIJAdLogService.class)).d("ReadInJoySuperMaskAd", "未收到蒙层回包");
       a(false);
       SuperMaskUIMgr.a.a(4);
       return;
     }
-    if (SuperMaskUIMgr.a.b())
+    SuperMaskReportMgr.a.a("beginShowMask", "");
+    if (b())
     {
-      SuperMaskReportMgr.a.a("beginShowMask", "");
-      if (b())
-      {
-        SuperMaskUIMgr.a.a(4);
-        SuperMaskReportMgr.a.a("alertManagerShowAfter", "");
-        a(false);
-        return;
-      }
-      SuperMaskReportMgr.a.a("alertManagerShowNow", "");
-      i();
+      SuperMaskUIMgr.a.a(4);
+      SuperMaskReportMgr.a.a("alertManagerShowAfter", "");
+      a(false);
       return;
     }
-    SuperMaskUIMgr.a.a(4);
-    ReadInJoyAdLog.a("ReadInJoySuperMaskAd", "superMask not show, refreshNum = " + i);
-    a(false);
+    SuperMaskReportMgr.a.a("alertManagerShowNow", "");
+    i();
   }
   
   public void a(int paramInt, boolean paramBoolean)
   {
-    if (SuperMaskUIMgr.a.c()) {
-      if (paramBoolean) {
-        break label33;
-      }
-    }
-    label33:
-    for (paramBoolean = true;; paramBoolean = false)
+    if (SuperMaskUIMgr.a.b())
     {
-      this.jdField_a_of_type_Boolean = paramBoolean;
+      this.jdField_a_of_type_Boolean = (paramBoolean ^ true);
       if (this.jdField_a_of_type_Boolean) {
         a(false);
       }
-      return;
     }
   }
   
@@ -124,12 +110,11 @@ public class RIJADSuperMaskPopupStep
   
   public boolean b()
   {
-    boolean bool = false;
     RIJPopupAutomator localRIJPopupAutomator = a();
     if (localRIJPopupAutomator != null) {
-      bool = localRIJPopupAutomator.a();
+      return localRIJPopupAutomator.a();
     }
-    return bool;
+    return false;
   }
   
   public void c()
@@ -152,13 +137,13 @@ public class RIJADSuperMaskPopupStep
     super.f();
   }
   
-  public void g() {}
+  protected void g() {}
   
-  public void h() {}
+  protected void h() {}
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
  * Qualified Name:     com.tencent.biz.pubaccount.readinjoy.feedspopup.steps.RIJADSuperMaskPopupStep
  * JD-Core Version:    0.7.0.1
  */

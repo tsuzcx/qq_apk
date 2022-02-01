@@ -4,6 +4,7 @@ import com.qq.taf.jce.JceInputStream;
 import com.qq.taf.jce.JceOutputStream;
 import com.qq.taf.jce.JceStruct;
 import java.util.ArrayList;
+import java.util.Collection;
 
 public final class FacadeView
   extends JceStruct
@@ -48,21 +49,24 @@ public final class FacadeView
   
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
-    if (this.stFileInfo != null) {
-      paramJceOutputStream.write(this.stFileInfo, 0);
+    Object localObject = this.stFileInfo;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 0);
     }
-    if (this.vecConfRect != null) {
-      paramJceOutputStream.write(this.vecConfRect, 1);
+    localObject = this.vecConfRect;
+    if (localObject != null) {
+      paramJceOutputStream.write((Collection)localObject, 1);
     }
-    if (this.stProfileRect != null) {
-      paramJceOutputStream.write(this.stProfileRect, 2);
+    localObject = this.stProfileRect;
+    if (localObject != null) {
+      paramJceOutputStream.write((JceStruct)localObject, 2);
     }
     paramJceOutputStream.write(this.iNeedProfileAdjust, 3);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     NS_MOBILE_CUSTOM.FacadeView
  * JD-Core Version:    0.7.0.1
  */

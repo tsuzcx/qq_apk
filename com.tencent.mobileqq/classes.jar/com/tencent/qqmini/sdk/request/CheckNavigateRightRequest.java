@@ -44,9 +44,6 @@ public class CheckNavigateRightRequest
     try
     {
       localStCheckNavigateRightRsp.mergeFrom(paramArrayOfByte);
-      if (localStCheckNavigateRightRsp == null) {
-        break label124;
-      }
       int i = localStCheckNavigateRightRsp.actionCode.get();
       paramJSONObject.put("action_code", i);
       paramJSONObject.put("skip_local_check", localStCheckNavigateRightRsp.skipLocalCheck.get());
@@ -55,22 +52,22 @@ public class CheckNavigateRightRequest
         paramJSONObject.put("reason", localStCheckNavigateRightRsp.wording.get());
         return paramJSONObject;
       }
+      paramJSONObject.put("wording", localStCheckNavigateRightRsp.wording.get());
+      return paramJSONObject;
     }
     catch (Exception paramArrayOfByte)
     {
-      QMLog.d("GetNewBaseLibRequest", "onResponse fail." + paramArrayOfByte);
-      return null;
+      paramJSONObject = new StringBuilder();
+      paramJSONObject.append("onResponse fail.");
+      paramJSONObject.append(paramArrayOfByte);
+      QMLog.d("GetNewBaseLibRequest", paramJSONObject.toString());
     }
-    paramJSONObject.put("wording", localStCheckNavigateRightRsp.wording.get());
-    return paramJSONObject;
-    label124:
-    QMLog.d("GetNewBaseLibRequest", "onResponse fail.rsp = null");
     return null;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.request.CheckNavigateRightRequest
  * JD-Core Version:    0.7.0.1
  */

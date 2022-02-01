@@ -1,11 +1,11 @@
 package com.tencent.open.agent;
 
 import android.widget.TextView;
-import com.tencent.mobileqq.adapter.FacePreloadBaseAdapter.ViewHolder;
+import com.tencent.mobileqq.adapter.FacePreloadHolder.ViewHolder;
 import com.tencent.mobileqq.data.troop.TroopInfo;
 
 public class BindGroupAdapter$ViewHolder
-  extends FacePreloadBaseAdapter.ViewHolder
+  extends FacePreloadHolder.ViewHolder
 {
   public TextView a;
   public TroopInfo a;
@@ -13,7 +13,7 @@ public class BindGroupAdapter$ViewHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.agent.BindGroupAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

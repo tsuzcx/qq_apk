@@ -25,26 +25,35 @@ final class SubpackagePlugin$createSubPackageTask$2
   public final void invoke(@NotNull ScriptLoadStatistic paramScriptLoadStatistic)
   {
     Intrinsics.checkParameterIsNotNull(paramScriptLoadStatistic, "it");
-    Logger.i$default("SubpackagePlugin", "loadSubpackage name:" + this.$name + " result:" + paramScriptLoadStatistic.getLoadResult(), null, 4, null);
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("loadSubpackage name:");
+    ((StringBuilder)localObject).append(this.$name);
+    ((StringBuilder)localObject).append(" result:");
+    ((StringBuilder)localObject).append(paramScriptLoadStatistic.getLoadResult());
+    Logger.i$default("SubpackagePlugin", ((StringBuilder)localObject).toString(), null, 4, null);
     if ((!paramScriptLoadStatistic.getLoadResult().isSuccess()) && (paramScriptLoadStatistic.getLoadResult() == ScriptLoadResult.FAIL_COMPILE))
     {
-      Logger.w$default("SubpackagePlugin", "retry loadSubpackage name:" + this.$name + " for js compile fail", null, 4, null);
+      paramScriptLoadStatistic = new StringBuilder();
+      paramScriptLoadStatistic.append("retry loadSubpackage name:");
+      paramScriptLoadStatistic.append(this.$name);
+      paramScriptLoadStatistic.append(" for js compile fail");
+      Logger.w$default("SubpackagePlugin", paramScriptLoadStatistic.toString(), null, 4, null);
       return;
     }
-    JSONObject localJSONObject = new JSONObject();
-    localJSONObject.put("taskId", this.$taskId);
-    if (paramScriptLoadStatistic.getLoadResult().isSuccess()) {}
-    for (paramScriptLoadStatistic = "success";; paramScriptLoadStatistic = "fail")
-    {
-      localJSONObject.put("state", paramScriptLoadStatistic);
-      this.$arguments.subscribe("onLoadSubPackageTaskStateChange", localJSONObject.toString());
-      return;
+    localObject = new JSONObject();
+    ((JSONObject)localObject).put("taskId", this.$taskId);
+    if (paramScriptLoadStatistic.getLoadResult().isSuccess()) {
+      paramScriptLoadStatistic = "success";
+    } else {
+      paramScriptLoadStatistic = "fail";
     }
+    ((JSONObject)localObject).put("state", paramScriptLoadStatistic);
+    this.$arguments.subscribe("onLoadSubPackageTaskStateChange", ((JSONObject)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.plugin.SubpackagePlugin.createSubPackageTask.2
  * JD-Core Version:    0.7.0.1
  */

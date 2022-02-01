@@ -34,7 +34,7 @@ public class VideoCoverListGroupHolder
   
   protected View a(ViewGroup paramViewGroup)
   {
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar = ((VideoCoverListBar)paramViewGroup.findViewById(2131381316));
+    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar = ((VideoCoverListBar)paramViewGroup.findViewById(2131380572));
     return this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar;
   }
   
@@ -51,15 +51,17 @@ public class VideoCoverListGroupHolder
       }
       StoryDispatcher.a().registerSubscriber("", this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoLrtbwidgetVideoCoverListGroupHolder$GetVideoBasicListReceiver);
     }
-    if ((paramGroupInfo.c()) || (paramGroupInfo.b())) {}
-    int i;
-    do
+    if (!paramGroupInfo.c())
     {
-      return;
-      i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider.a().size();
+      if (paramGroupInfo.b()) {
+        return;
+      }
+      int i = this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider.a().size();
       this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider.a(paramInt, paramArrayList, paramGroupInfo.a);
-    } while (i == this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider.a().size());
-    this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a();
+      if (i != this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoDataproviderHoriziotalVideoCoverListDataProvider.a().size()) {
+        this.jdField_a_of_type_ComTencentBizQqstoryPlayvideoVideoCoverListBar.a();
+      }
+    }
   }
   
   public void a(String paramString)
@@ -98,7 +100,7 @@ public class VideoCoverListGroupHolder
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.VideoCoverListGroupHolder
  * JD-Core Version:    0.7.0.1
  */

@@ -42,21 +42,23 @@ public class GeoHashTree
   public String a()
   {
     StringBuilder localStringBuilder = new StringBuilder("AlbumTree=[\n");
-    LinkedList localLinkedList = new LinkedList();
-    localLinkedList.add(this.a);
-    while (localLinkedList.size() > 0)
+    Object localObject1 = new LinkedList();
+    ((Queue)localObject1).add(this.a);
+    while (((Queue)localObject1).size() > 0)
     {
-      int j = localLinkedList.size();
+      int j = ((Queue)localObject1).size();
       int i = 0;
       while (i < j)
       {
-        Object localObject = (GeoHashTree.TreeNode)localLinkedList.poll();
-        if (localObject != null)
+        Object localObject2 = (GeoHashTree.TreeNode)((Queue)localObject1).poll();
+        if (localObject2 != null)
         {
-          localStringBuilder.append(" [").append(((GeoHashTree.TreeNode)localObject).toString()).append("];");
-          localObject = ((GeoHashTree.TreeNode)localObject).a.iterator();
-          while (((Iterator)localObject).hasNext()) {
-            localLinkedList.offer((GeoHashTree.TreeNode)((Iterator)localObject).next());
+          localStringBuilder.append(" [");
+          localStringBuilder.append(((GeoHashTree.TreeNode)localObject2).toString());
+          localStringBuilder.append("];");
+          localObject2 = ((GeoHashTree.TreeNode)localObject2).a.iterator();
+          while (((Iterator)localObject2).hasNext()) {
+            ((Queue)localObject1).offer((GeoHashTree.TreeNode)((Iterator)localObject2).next());
           }
         }
         i += 1;
@@ -64,13 +66,16 @@ public class GeoHashTree
       localStringBuilder.append("\n");
     }
     localStringBuilder.append("\n]");
-    SLog.d("Q.qqstory.recommendAlbum.logic.AlbumTree", "traverse " + localStringBuilder.toString());
+    localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("traverse ");
+    ((StringBuilder)localObject1).append(localStringBuilder.toString());
+    SLog.d("Q.qqstory.recommendAlbum.logic.AlbumTree", ((StringBuilder)localObject1).toString());
     return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.album.tools.GeoHashTree
  * JD-Core Version:    0.7.0.1
  */

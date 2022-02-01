@@ -10,8 +10,8 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.RelativeLayout.LayoutParams;
 import android.widget.TextView;
+import com.tencent.mobileqq.colornote.layout.AutoBgFrameLayout;
 import com.tencent.mobileqq.util.DisplayUtil;
-import com.tencent.mobileqq.widget.AutoBgFrameLayout;
 import com.tencent.mobileqq.widget.RoundImageView;
 
 public class SmallColorNoteItem
@@ -20,7 +20,7 @@ public class SmallColorNoteItem
   private View jdField_a_of_type_AndroidViewView;
   private RelativeLayout jdField_a_of_type_AndroidWidgetRelativeLayout;
   private TextView jdField_a_of_type_AndroidWidgetTextView;
-  private AutoBgFrameLayout jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout;
+  private AutoBgFrameLayout jdField_a_of_type_ComTencentMobileqqColornoteLayoutAutoBgFrameLayout;
   private RoundImageView jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
   private boolean jdField_a_of_type_Boolean;
   private TextView b;
@@ -44,17 +44,17 @@ public class SmallColorNoteItem
   private void a(boolean paramBoolean, ViewGroup paramViewGroup)
   {
     this.jdField_a_of_type_Boolean = paramBoolean;
-    if (paramBoolean) {}
-    for (this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558990, paramViewGroup, false);; this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558989, paramViewGroup, false))
-    {
-      paramViewGroup = this.jdField_a_of_type_AndroidViewView;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131365331));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetAutoBgFrameLayout = ((AutoBgFrameLayout)paramViewGroup.findViewById(2131372382));
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131372383));
-      this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131372393));
-      this.b = ((TextView)paramViewGroup.findViewById(2131372391));
-      return;
+    if (paramBoolean) {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558885, paramViewGroup, false);
+    } else {
+      this.jdField_a_of_type_AndroidViewView = LayoutInflater.from(getContext()).inflate(2131558884, paramViewGroup, false);
     }
+    paramViewGroup = this.jdField_a_of_type_AndroidViewView;
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramViewGroup.findViewById(2131365204));
+    this.jdField_a_of_type_ComTencentMobileqqColornoteLayoutAutoBgFrameLayout = ((AutoBgFrameLayout)paramViewGroup.findViewById(2131371964));
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView = ((RoundImageView)paramViewGroup.findViewById(2131371965));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131371975));
+    this.b = ((TextView)paramViewGroup.findViewById(2131371973));
   }
   
   public View a()
@@ -64,8 +64,9 @@ public class SmallColorNoteItem
   
   public void a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setVisibility(4);
+    RoundImageView localRoundImageView = this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
+    if (localRoundImageView != null) {
+      localRoundImageView.setVisibility(4);
     }
   }
   
@@ -74,106 +75,92 @@ public class SmallColorNoteItem
     Object localObject = new ViewGroup.LayoutParams(-1, paramInt1);
     this.jdField_a_of_type_AndroidViewView.setLayoutParams((ViewGroup.LayoutParams)localObject);
     ((ViewGroup.LayoutParams)localObject).height = paramInt1;
-    float f = 1.0F * paramInt1 / paramInt2;
+    float f = paramInt1 * 1.0F / paramInt2;
     paramInt1 = (int)(DisplayUtil.a(getContext(), 6.0F) * f);
     localObject = this.jdField_a_of_type_AndroidWidgetRelativeLayout;
-    int i;
-    if (this.jdField_a_of_type_Boolean)
-    {
+    if (this.jdField_a_of_type_Boolean) {
       paramInt2 = 0;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label291;
-      }
-      i = paramInt1;
-      label73:
-      ((RelativeLayout)localObject).setPadding(paramInt2, paramInt1, i, paramInt1);
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius((int)(DisplayUtil.a(getContext(), 3.0F) * f), false);
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
-      ((RelativeLayout.LayoutParams)localObject).height = ((int)(DisplayUtil.a(getContext(), 20.0F) * f));
-      ((RelativeLayout.LayoutParams)localObject).width = ((int)(DisplayUtil.a(getContext(), 20.0F) * f));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextSize((int)(8.0F * f));
-      this.b.setTextSize((int)(f * 6.0F));
-      localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
-      paramInt1 = Math.max(DisplayUtil.a(getContext(), 2.0F), (int)(DisplayUtil.a(getContext(), 4.0F) * f));
-      if (!this.jdField_a_of_type_Boolean) {
-        break label297;
-      }
-      paramInt2 = 0;
-      label224:
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = paramInt2;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label302;
-      }
+    } else {
       paramInt2 = paramInt1;
-      label239:
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt2;
-      localObject = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
-      if (!this.jdField_a_of_type_Boolean) {
-        break label307;
-      }
-      paramInt2 = 0;
-      label266:
-      ((RelativeLayout.LayoutParams)localObject).leftMargin = paramInt2;
-      if (!this.jdField_a_of_type_Boolean) {
-        break label312;
-      }
     }
-    for (;;)
-    {
-      ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
-      return;
-      paramInt2 = paramInt1;
-      break;
-      label291:
+    int i;
+    if (this.jdField_a_of_type_Boolean) {
+      i = paramInt1;
+    } else {
       i = 0;
-      break label73;
-      label297:
-      paramInt2 = paramInt1;
-      break label224;
-      label302:
+    }
+    ((RelativeLayout)localObject).setPadding(paramInt2, paramInt1, i, paramInt1);
+    this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setmRadius((int)(DisplayUtil.a(getContext(), 3.0F) * f), false);
+    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.getLayoutParams();
+    ((RelativeLayout.LayoutParams)localObject).height = ((int)(DisplayUtil.a(getContext(), 20.0F) * f));
+    ((RelativeLayout.LayoutParams)localObject).width = ((int)(DisplayUtil.a(getContext(), 20.0F) * f));
+    this.jdField_a_of_type_AndroidWidgetTextView.setTextSize((int)(8.0F * f));
+    this.b.setTextSize((int)(6.0F * f));
+    localObject = (RelativeLayout.LayoutParams)this.jdField_a_of_type_AndroidWidgetTextView.getLayoutParams();
+    paramInt1 = Math.max(DisplayUtil.a(getContext(), 2.0F), (int)(f * DisplayUtil.a(getContext(), 4.0F)));
+    if (this.jdField_a_of_type_Boolean) {
       paramInt2 = 0;
-      break label239;
-      label307:
+    } else {
       paramInt2 = paramInt1;
-      break label266;
-      label312:
+    }
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = paramInt2;
+    if (this.jdField_a_of_type_Boolean) {
+      paramInt2 = paramInt1;
+    } else {
+      paramInt2 = 0;
+    }
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt2;
+    localObject = (RelativeLayout.LayoutParams)this.b.getLayoutParams();
+    if (this.jdField_a_of_type_Boolean) {
+      paramInt2 = 0;
+    } else {
+      paramInt2 = paramInt1;
+    }
+    ((RelativeLayout.LayoutParams)localObject).leftMargin = paramInt2;
+    if (!this.jdField_a_of_type_Boolean) {
       paramInt1 = 0;
     }
+    ((RelativeLayout.LayoutParams)localObject).rightMargin = paramInt1;
   }
   
   public void b()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView != null) {
-      this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView.setVisibility(0);
+    RoundImageView localRoundImageView = this.jdField_a_of_type_ComTencentMobileqqWidgetRoundImageView;
+    if (localRoundImageView != null) {
+      localRoundImageView.setVisibility(0);
     }
   }
   
   public void c()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(4);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setVisibility(4);
     }
-    if (this.b != null) {
-      this.b.setVisibility(4);
+    localTextView = this.b;
+    if (localTextView != null) {
+      localTextView.setVisibility(4);
     }
   }
   
   public void d()
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setVisibility(0);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setVisibility(0);
     }
-    if (this.b != null) {
-      this.b.setVisibility(0);
+    localTextView = this.b;
+    if (localTextView != null) {
+      localTextView.setVisibility(0);
     }
   }
   
-  public void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
+  protected void onLayout(boolean paramBoolean, int paramInt1, int paramInt2, int paramInt3, int paramInt4)
   {
     super.onLayout(paramBoolean, paramInt1, paramInt2, paramInt3, paramInt4);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     super.onMeasure(paramInt1, paramInt2);
   }
@@ -185,21 +172,23 @@ public class SmallColorNoteItem
   
   public void setSubTitle(String paramString)
   {
-    if (this.b != null) {
-      this.b.setText(paramString);
+    TextView localTextView = this.b;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
   
   public void setTitle(String paramString)
   {
-    if (this.jdField_a_of_type_AndroidWidgetTextView != null) {
-      this.jdField_a_of_type_AndroidWidgetTextView.setText(paramString);
+    TextView localTextView = this.jdField_a_of_type_AndroidWidgetTextView;
+    if (localTextView != null) {
+      localTextView.setText(paramString);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.colornote.smallscreen.SmallColorNoteItem
  * JD-Core Version:    0.7.0.1
  */

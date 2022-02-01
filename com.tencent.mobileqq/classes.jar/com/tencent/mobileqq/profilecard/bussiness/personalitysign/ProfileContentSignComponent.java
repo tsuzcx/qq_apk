@@ -18,15 +18,13 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
-import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import com.tencent.av.utils.UITools;
-import com.tencent.mobileqq.activity.ProfileActivity.AllInOne;
-import com.tencent.mobileqq.app.BaseActivity;
+import com.tencent.common.app.AppInterface;
 import com.tencent.mobileqq.app.FriendListObserver;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.app.QBaseActivity;
 import com.tencent.mobileqq.app.QQManagerFactory;
 import com.tencent.mobileqq.app.face.IFaceDecoder;
 import com.tencent.mobileqq.avatar.api.IQQAvatarService;
@@ -40,18 +38,22 @@ import com.tencent.mobileqq.pb.PBRepeatMessageField;
 import com.tencent.mobileqq.pb.PBUInt64Field;
 import com.tencent.mobileqq.persistence.Entity;
 import com.tencent.mobileqq.persistence.EntityManager;
-import com.tencent.mobileqq.persistence.QQEntityManagerFactoryProxy;
+import com.tencent.mobileqq.persistence.EntityManagerFactory;
 import com.tencent.mobileqq.profile.DataTag;
-import com.tencent.mobileqq.profile.ProfileCardInfo;
 import com.tencent.mobileqq.profile.SigTopicManager;
-import com.tencent.mobileqq.profilecard.base.component.AbsProfileContentComponent;
+import com.tencent.mobileqq.profilecard.base.component.AbsQQProfileContentComponent;
 import com.tencent.mobileqq.profilecard.base.component.IProfileActivityDelegate;
 import com.tencent.mobileqq.profilecard.base.framework.IComponentCenter;
 import com.tencent.mobileqq.profilecard.base.utils.ProfileCardUtils;
 import com.tencent.mobileqq.profilecard.base.utils.ProfileSignatureUtils;
 import com.tencent.mobileqq.profilecard.bussiness.personalitysign.utils.RichStatusUtils;
 import com.tencent.mobileqq.profilecard.bussiness.personalitysign.utils.RichStatusUtils.Companion;
-import com.tencent.mobileqq.profilecard.vas.misc.DiyMoreInfoViewHelper;
+import com.tencent.mobileqq.profilecard.data.AllInOne;
+import com.tencent.mobileqq.profilecard.data.ProfileCardInfo;
+import com.tencent.mobileqq.profilecard.template.IDiyMoreInfoManager;
+import com.tencent.mobileqq.profilecard.template.ProfileTemplateApi;
+import com.tencent.mobileqq.profilecard.utils.ProfilePAUtils;
+import com.tencent.mobileqq.profilecard.utils.ProfileUtils;
 import com.tencent.mobileqq.richstatus.RichStatus;
 import com.tencent.mobileqq.richstatus.StatusManager;
 import com.tencent.mobileqq.richstatus.topic.TopicUtil;
@@ -60,11 +62,10 @@ import com.tencent.mobileqq.text.ITopic;
 import com.tencent.mobileqq.text.ITopic.OnTopicClickListener;
 import com.tencent.mobileqq.text.OffsetableImageSpan;
 import com.tencent.mobileqq.text.QQText;
-import com.tencent.mobileqq.theme.ThemeUtil;
 import com.tencent.mobileqq.util.BitmapManager;
 import com.tencent.mobileqq.utils.ImageUtil;
+import com.tencent.mobileqq.vas.theme.api.ThemeUtil;
 import com.tencent.mobileqq.widget.CircleBoarderImageView;
-import com.tencent.mobileqq.widget.ProfileCardMoreInfoView;
 import com.tencent.mobileqq.widget.StatableBitmapDrawable;
 import com.tencent.qphone.base.util.QLog;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
@@ -82,7 +83,7 @@ import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.TopicItem;
 import tencent.im.oidb.oidb_0xd9f.oidb_0xd9f.UinItem;
 
 public class ProfileContentSignComponent
-  extends AbsProfileContentComponent
+  extends AbsQQProfileContentComponent
   implements View.OnClickListener, DecodeTaskCompletionListener, ITopic.OnTopicClickListener, AbsListView.OnScrollListener
 {
   private static final String TAG = "ProfileContentSignComponent";
@@ -97,6 +98,7 @@ public class ProfileContentSignComponent
   private int mPos;
   private ProfileContentSignComponent.RichStatusIconListener mStatusIconListener;
   private String mTopic;
+  private RichStatus richStatus = null;
   
   public ProfileContentSignComponent(IComponentCenter paramIComponentCenter, ProfileCardInfo paramProfileCardInfo)
   {
@@ -106,107 +108,104 @@ public class ProfileContentSignComponent
   private boolean makeOrRefreshSign(Card paramCard, boolean paramBoolean)
   {
     boolean bool;
-    Object localObject1;
-    int i;
+    if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
+      bool = true;
+    } else {
+      bool = false;
+    }
+    paramBoolean = ProfilePAUtils.isPaTypeHasUin(((ProfileCardInfo)this.mData).allInOne);
+    Object localObject1 = this.mActivity.getResources();
     int j;
-    label72:
-    Object localObject2;
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
+    int i;
+    if (ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData))
     {
-      paramBoolean = true;
-      bool = ProfileActivity.AllInOne.g(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne);
-      localObject1 = this.mActivity.getResources();
-      if (!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData)) {
-        break label234;
-      }
-      i = ((Resources)localObject1).getColor(2131167033);
-      j = ((Resources)localObject1).getColor(2131167033);
-      localObject2 = ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus;
-      localObject1 = localObject2;
-      if (localObject2 == null)
+      j = ((Resources)localObject1).getColor(2131167056);
+      i = ((Resources)localObject1).getColor(2131167056);
+    }
+    else
+    {
+      j = -8947849;
+      i = ((Resources)localObject1).getColor(2131165327);
+    }
+    localObject1 = this.richStatus;
+    if ((localObject1 == null) && (paramCard != null)) {
+      localObject1 = RichStatusUtils.Companion.getRichStatus(paramCard);
+    }
+    if (localObject1 != null) {
+      paramCard = new SpannableString(((RichStatus)localObject1).toSpannableStringWithTopic(null, j, i, this));
+    } else {
+      paramCard = null;
+    }
+    Object localObject2 = paramCard;
+    if (paramCard == null) {
+      localObject2 = new SpannableString("");
+    }
+    if (QLog.isColorLevel()) {
+      QLog.d("ProfileContentSignComponent", 2, String.format("makeOrRefreshSign isHost=%s isPaTypeHasUin=%s length=%s", new Object[] { Boolean.valueOf(bool), Boolean.valueOf(paramBoolean), Integer.valueOf(((SpannableString)localObject2).length()) }));
+    }
+    if ((!bool) && ((!paramBoolean) || (((SpannableString)localObject2).length() == 0)))
+    {
+      if (this.mViewContainer != null)
       {
-        localObject1 = localObject2;
-        if (paramCard != null) {
-          localObject1 = RichStatusUtils.Companion.getRichStatus(paramCard);
-        }
+        this.mViewContainer = null;
+        paramBoolean = true;
       }
-      if (localObject1 == null) {
-        break label506;
+      else
+      {
+        paramBoolean = false;
       }
     }
-    label234:
-    label504:
-    label506:
-    for (paramCard = new SpannableString(((RichStatus)localObject1).toSpannableStringWithTopic(null, i, j, this));; paramCard = null)
+    else
     {
-      localObject2 = paramCard;
-      if (paramCard == null) {
-        localObject2 = new SpannableString("");
-      }
-      if (QLog.isColorLevel()) {
-        QLog.d("ProfileContentSignComponent", 2, String.format("makeOrRefreshSign isHost=%s isPaTypeHasUin=%s length=%s", new Object[] { Boolean.valueOf(paramBoolean), Boolean.valueOf(bool), Integer.valueOf(((SpannableString)localObject2).length()) }));
-      }
-      if ((!paramBoolean) && ((!bool) || (((SpannableString)localObject2).length() == 0)))
-      {
-        if (this.mViewContainer == null) {
-          break label504;
-        }
-        this.mViewContainer = null;
-        return true;
-        paramBoolean = false;
-        break;
-        j = ((Resources)localObject1).getColor(2131165357);
-        i = -8947849;
-        break label72;
-      }
-      Object localObject3;
       if (this.mViewContainer == null)
       {
-        localObject3 = this.mDiyHelper.getDiyView(getProfileContentKey());
-        paramCard = (Card)localObject3;
-        if (localObject3 == null) {
-          paramCard = this.mActivity.getLayoutInflater().inflate(2131561528, null);
-        }
-        this.mViewContainer = paramCard;
+        this.mViewContainer = this.mActivity.getLayoutInflater().inflate(2131561369, null);
+        paramBoolean = true;
       }
-      for (bool = true;; bool = false)
+      else
       {
-        View localView = (View)this.mViewContainer;
-        paramCard = localView.findViewById(2131374760);
-        localObject3 = (TextView)localView.findViewById(2131369051);
-        LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131370673);
-        ((TextView)localObject3).setTextColor(i);
-        StatusManager localStatusManager = (StatusManager)this.mApp.getManager(QQManagerFactory.STATUS_MANAGER);
-        updateSignInfo(paramBoolean, (SpannableString)localObject2, (RichStatus)localObject1, (TextView)localObject3, localLinearLayout, localStatusManager);
-        updateSignTopic(paramBoolean, (SpannableString)localObject2, (RichStatus)localObject1, localView, (TextView)localObject3, localLinearLayout);
-        updateSignContentDescription((RichStatus)localObject1, paramCard);
-        updateRichStatusIconListener((RichStatus)localObject1, localStatusManager);
-        localObject1 = (ImageView)localView.findViewById(2131363027);
-        if ((paramBoolean) || (ProfileActivity.AllInOne.b(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne)))
-        {
-          ((ImageView)localObject1).setVisibility(0);
-          paramCard.setTag(new DataTag(3, null));
-          paramCard.setOnClickListener(this);
-        }
-        while (paramBoolean)
-        {
-          updateItemTheme(null, (View)localObject1);
-          return bool;
-          ((ImageView)localObject1).setVisibility(4);
-        }
-        updateItemTheme((TextView)localObject3, (View)localObject1);
-        return bool;
+        paramBoolean = false;
       }
-      return false;
+      View localView = (View)this.mViewContainer;
+      paramCard = localView.findViewById(2131374296);
+      TextView localTextView = (TextView)localView.findViewById(2131368773);
+      LinearLayout localLinearLayout = (LinearLayout)localView.findViewById(2131370313);
+      localTextView.setTextColor(j);
+      StatusManager localStatusManager = (StatusManager)this.mApp.getManager(QQManagerFactory.STATUS_MANAGER);
+      updateSignInfo(bool, (SpannableString)localObject2, (RichStatus)localObject1, localTextView, localLinearLayout, localStatusManager);
+      updateSignTopic(bool, (SpannableString)localObject2, (RichStatus)localObject1, localView, localTextView, localLinearLayout);
+      updateSignContentDescription((RichStatus)localObject1, paramCard);
+      updateRichStatusIconListener((RichStatus)localObject1, localStatusManager);
+      localObject1 = (ImageView)localView.findViewById(2131362975);
+      if ((!bool) && (!ProfilePAUtils.isPaTypeFriend(((ProfileCardInfo)this.mData).allInOne)))
+      {
+        ((ImageView)localObject1).setVisibility(4);
+      }
+      else
+      {
+        ((ImageView)localObject1).setVisibility(0);
+        paramCard.setTag(new DataTag(3, null));
+        paramCard.setOnClickListener(this);
+      }
+      updateItemTheme(paramCard, localTextView, null, (ImageView)localObject1);
     }
+    paramCard = ProfileTemplateApi.getDiyMoreInfoManager(this.mComponentCenter);
+    if (paramCard.isDiy())
+    {
+      if (this.mViewContainer != null) {
+        ((View)this.mViewContainer).setBackgroundResource(2130839435);
+      }
+      paramCard.updateSignForDeepDiy((View)this.mViewContainer);
+    }
+    return paramBoolean;
   }
   
   private void setAvatar(String paramString, CircleBoarderImageView paramCircleBoarderImageView)
   {
-    Object localObject = null;
-    if (this.mDecoder != null)
+    Object localObject = this.mDecoder;
+    if (localObject != null)
     {
-      Bitmap localBitmap = this.mDecoder.getBitmapFromCache(1, paramString);
+      Bitmap localBitmap = ((IFaceDecoder)localObject).getBitmapFromCache(1, paramString);
       localObject = localBitmap;
       if (localBitmap == null)
       {
@@ -219,9 +218,13 @@ public class ProfileContentSignComponent
         }
       }
     }
-    paramString = localObject;
+    else
+    {
+      localObject = null;
+    }
+    paramString = (String)localObject;
     if (localObject == null) {
-      paramString = ImageUtil.c();
+      paramString = ImageUtil.f();
     }
     paramString = new BitmapDrawable(paramString);
     if (ThemeUtil.isInNightMode(this.mApp)) {
@@ -233,44 +236,36 @@ public class ProfileContentSignComponent
   private void setNewSignature(byte[] paramArrayOfByte, long paramLong)
   {
     int i;
-    EntityManager localEntityManager;
-    Object localObject;
-    if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int == 0)
-    {
+    if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
       i = 1;
-      if (i != 0)
-      {
-        localEntityManager = this.mApp.getEntityManagerFactory().createEntityManager();
-        localObject = (FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER);
-        if (localObject != null) {
-          break label153;
-        }
+    } else {
+      i = 0;
+    }
+    if (i != 0)
+    {
+      EntityManager localEntityManager = this.mApp.getEntityManagerFactory().createEntityManager();
+      Object localObject = (FriendsManager)this.mApp.getManager(QQManagerFactory.FRIENDS_MANAGER);
+      if (localObject == null) {
         localObject = null;
-        label59:
-        if (localObject != null) {
-          break label176;
-        }
+      } else {
+        localObject = ((FriendsManager)localObject).a(((ProfileCardInfo)this.mData).allInOne.uin);
+      }
+      if (localObject == null)
+      {
         localObject = new Card();
-        ((Card)localObject).uin = ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString;
+        ((Card)localObject).uin = ((ProfileCardInfo)this.mData).allInOne.uin;
         ((Card)localObject).vRichSign = paramArrayOfByte;
         ((Card)localObject).lSignModifyTime = paramLong;
         localEntityManager.persist((Entity)localObject);
       }
-    }
-    for (paramArrayOfByte = (byte[])localObject;; paramArrayOfByte = (byte[])localObject)
-    {
-      ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = RichStatusUtils.Companion.getRichStatus(paramArrayOfByte);
-      makeOrRefreshSign(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard, false);
-      return;
-      i = 0;
-      break;
-      label153:
-      localObject = ((FriendsManager)localObject).a(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_JavaLangString);
-      break label59;
-      label176:
-      ((Card)localObject).vRichSign = paramArrayOfByte;
-      ((Card)localObject).lSignModifyTime = paramLong;
-      localEntityManager.update((Entity)localObject);
+      else
+      {
+        ((Card)localObject).vRichSign = paramArrayOfByte;
+        ((Card)localObject).lSignModifyTime = paramLong;
+        localEntityManager.update((Entity)localObject);
+      }
+      this.richStatus = RichStatusUtils.Companion.getRichStatus((Card)localObject);
+      makeOrRefreshSign(((ProfileCardInfo)this.mData).card, false);
     }
   }
   
@@ -278,25 +273,27 @@ public class ProfileContentSignComponent
   {
     if ((paramRichStatus != null) && (!TextUtils.isEmpty(paramRichStatus.actionText)))
     {
-      ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = paramRichStatus;
+      this.richStatus = paramRichStatus;
       if ((this.mStatusIconListener == null) && (paramStatusManager != null))
       {
         this.mStatusIconListener = new ProfileContentSignComponent.RichStatusIconListener(this);
         paramStatusManager.a(this.mStatusIconListener);
       }
     }
-    do
+    else
     {
-      return;
-      ((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqRichstatusRichStatus = null;
-    } while ((this.mStatusIconListener == null) || (paramStatusManager == null));
-    paramStatusManager.b(this.mStatusIconListener);
-    this.mStatusIconListener = null;
+      this.richStatus = null;
+      paramRichStatus = this.mStatusIconListener;
+      if ((paramRichStatus != null) && (paramStatusManager != null))
+      {
+        paramStatusManager.b(paramRichStatus);
+        this.mStatusIconListener = null;
+      }
+    }
   }
   
   private void updateSignContentDescription(RichStatus paramRichStatus, View paramView)
   {
-    int j = 0;
     StringBuilder localStringBuilder = new StringBuilder();
     if (paramRichStatus != null)
     {
@@ -306,36 +303,38 @@ public class ProfileContentSignComponent
       if (paramRichStatus.dataText != null) {
         localStringBuilder.append(paramRichStatus.dataText);
       }
+      Object localObject = paramRichStatus.topics;
+      int j = 0;
       int i;
-      if (paramRichStatus.topics != null)
+      if (localObject != null)
       {
         i = 0;
-        if (i < paramRichStatus.topics.size())
+        while (i < paramRichStatus.topics.size())
         {
-          if (TextUtils.isEmpty((CharSequence)((Pair)paramRichStatus.topics.get(i)).second)) {}
-          for (;;)
-          {
-            i += 1;
-            break;
+          if (!TextUtils.isEmpty((CharSequence)((Pair)paramRichStatus.topics.get(i)).second)) {
             localStringBuilder.append((String)((Pair)paramRichStatus.topics.get(i)).second);
           }
+          i += 1;
         }
       }
       if (paramRichStatus.plainText != null) {
         i = paramRichStatus.plainText.size();
+      } else {
+        i = 0;
       }
       while (j < i)
       {
-        String str = (String)paramRichStatus.plainText.get(j);
-        if (!TextUtils.isEmpty(str)) {
-          localStringBuilder.append(str);
+        localObject = (String)paramRichStatus.plainText.get(j);
+        if (!TextUtils.isEmpty((CharSequence)localObject)) {
+          localStringBuilder.append((String)localObject);
         }
         j += 1;
-        continue;
-        i = 0;
       }
     }
-    paramView.setContentDescription(HardCodeUtil.a(2131708465) + localStringBuilder);
+    paramRichStatus = new StringBuilder();
+    paramRichStatus.append(HardCodeUtil.a(2131708471));
+    paramRichStatus.append(localStringBuilder);
+    paramView.setContentDescription(paramRichStatus.toString());
   }
   
   private void updateSignInfo(boolean paramBoolean, SpannableString paramSpannableString, RichStatus paramRichStatus, TextView paramTextView, LinearLayout paramLinearLayout, StatusManager paramStatusManager)
@@ -345,25 +344,26 @@ public class ProfileContentSignComponent
       Resources localResources = this.mActivity.getResources();
       paramLinearLayout = new SpannableStringBuilder(paramSpannableString);
       paramLinearLayout.insert(0, "[S] ");
-      if (paramStatusManager != null) {}
-      for (paramSpannableString = paramStatusManager.a(paramRichStatus.actionId, 200);; paramSpannableString = BitmapManager.a(localResources, 2130849983))
-      {
-        int i = (int)(paramTextView.getTextSize() * 1.1F + 0.5F);
-        paramSpannableString = new StatableBitmapDrawable(localResources, paramSpannableString, false, false);
-        paramSpannableString.setBounds(0, 0, i, i);
-        paramSpannableString = new OffsetableImageSpan(paramSpannableString, 0);
-        paramSpannableString.setOffset(-0.1F);
-        paramLinearLayout.setSpan(paramSpannableString, 0, "[S]".length(), 17);
-        this.mDrawableSize = i;
-        paramTextView.setText(new QQText(paramLinearLayout, 1, 20));
-        paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
-        return;
+      if (paramStatusManager != null) {
+        paramSpannableString = paramStatusManager.a(paramRichStatus.actionId, 200);
+      } else {
+        paramSpannableString = BitmapManager.a(localResources, 2130849881);
       }
+      int i = (int)(paramTextView.getTextSize() * 1.1F + 0.5F);
+      paramSpannableString = new StatableBitmapDrawable(localResources, paramSpannableString, false, false);
+      paramSpannableString.setBounds(0, 0, i, i);
+      paramSpannableString = new OffsetableImageSpan(paramSpannableString, 0);
+      paramSpannableString.setOffset(-0.1F);
+      paramLinearLayout.setSpan(paramSpannableString, 0, 3, 17);
+      this.mDrawableSize = i;
+      paramTextView.setText(new QQText(paramLinearLayout, 1, 20));
+      paramTextView.setMovementMethod(LinkMovementMethod.getInstance());
+      return;
     }
     this.mDrawableSize = 0;
     if ((paramSpannableString.length() == 0) && (paramBoolean))
     {
-      paramTextView.setText(2131699117);
+      paramTextView.setText(2131699221);
       recommendTopicViewControl(paramLinearLayout, paramBoolean);
       return;
     }
@@ -373,174 +373,162 @@ public class ProfileContentSignComponent
   
   private void updateSignTopic(boolean paramBoolean, SpannableString paramSpannableString, RichStatus paramRichStatus, View paramView, TextView paramTextView, LinearLayout paramLinearLayout)
   {
-    int i;
-    if (paramSpannableString.length() >= 0) {
+    if (paramSpannableString.length() >= 0)
+    {
+      int i;
       if ((paramRichStatus != null) && (paramRichStatus.topics != null) && (paramRichStatus.topics.size() > 0))
       {
-        if (!paramBoolean) {
-          break label468;
+        if (paramBoolean) {
+          i = 1;
+        } else {
+          i = 2;
         }
-        i = 1;
+        paramSpannableString = new StringBuilder();
+        paramSpannableString.append("");
+        paramSpannableString.append(i);
+        ReportController.b(null, "dc00898", "", "", "0X800A4D2", "0X800A4D2", i, 0, paramSpannableString.toString(), "0", "", "");
       }
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800A4D2", "0X800A4D2", i, 0, "" + i, "0", "", "");
-      label156:
-      label208:
-      label239:
-      boolean bool1;
-      if ((!SigTopicManager.a().a(this.mApp)) && (paramRichStatus != null) && (paramRichStatus.topics != null) && (paramRichStatus.topics.size() > 0) && (!this.mFromExtendFriend))
+      boolean bool1 = SigTopicManager.a().a(this.mQQAppInterface);
+      Object localObject = null;
+      if ((!bool1) && (paramRichStatus != null) && (paramRichStatus.topics != null) && (paramRichStatus.topics.size() > 0) && (!this.mFromExtendFriend))
       {
-        if ((paramRichStatus.plainText != null) && (paramRichStatus.plainText.size() > 0))
-        {
+        if ((paramRichStatus.plainText != null) && (paramRichStatus.plainText.size() > 0)) {
           paramSpannableString = (String)paramRichStatus.plainText.get(0);
-          this.mPlainText = paramSpannableString;
-          paramRichStatus.sortTopicPos();
-          if ((paramRichStatus.topicsPos == null) || (paramRichStatus.topicsPos.size() <= 0)) {
-            break label479;
-          }
+        } else {
+          paramSpannableString = null;
+        }
+        this.mPlainText = paramSpannableString;
+        paramRichStatus.sortTopicPos();
+        if ((paramRichStatus.topicsPos != null) && (paramRichStatus.topicsPos.size() > 0)) {
           i = ((Integer)((Pair)paramRichStatus.topicsPos.get(0)).second).intValue();
-          this.mPos = i;
-          if (!ProfileCardMoreInfoView.a(paramTextView)) {
-            break label485;
-          }
+        } else {
+          i = 0;
+        }
+        this.mPos = i;
+        if (ProfileUtils.isVisible(paramTextView))
+        {
           paramTextView.post(new ProfileContentSignComponent.3(this, paramTextView, paramRichStatus));
         }
-      }
-      else
-      {
-        SigTopicManager.a().a(this.mApp, paramRichStatus);
-        bool1 = SigTopicManager.a().b(this.mApp);
-        paramRichStatus = (ImageView)paramView.findViewById(2131379549);
-        paramSpannableString = new oidb_0xd9f.RspBody();
-        if ((((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard == null) || (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard.vLongNickTopicInfo == null)) {
-          break label557;
-        }
-      }
-      try
-      {
-        paramSpannableString.mergeFrom(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard.vLongNickTopicInfo);
-        paramSpannableString = (oidb_0xd9f.LongNickItem)paramSpannableString.longnick_item.get();
-        if (paramSpannableString != null) {}
-        for (paramSpannableString = paramSpannableString.rpt_topic_item.get();; paramSpannableString = null)
+        else
         {
-          long l = SigTopicManager.a().a(paramSpannableString);
-          boolean bool2 = SigTopicManager.a().a(this.mApp, l);
-          if ((!bool1) && (!bool2)) {
-            break label549;
-          }
-          i = SigTopicManager.a().a(paramSpannableString);
-          if ((paramSpannableString == null) || (paramSpannableString.size() <= 0) || (i <= 0)) {
-            break label530;
-          }
-          paramLinearLayout.setTag(new DataTag(97, SigTopicManager.a().a(paramSpannableString)));
-          paramLinearLayout.setOnClickListener(this);
-          commonSigTopicViewControl(paramLinearLayout, paramSpannableString);
-          paramRichStatus.setOnTouchListener(UITools.a);
-          paramRichStatus.setOnClickListener(new ProfileContentSignComponent.4(this, paramLinearLayout));
-          return;
-          label468:
-          i = 2;
-          break;
-          paramSpannableString = null;
-          break label156;
-          label479:
-          i = 0;
-          break label208;
-          label485:
           this.mInfo = paramTextView;
           this.mTopic = ((String)((Pair)paramRichStatus.topics.get(0)).second);
           this.mActionText = paramRichStatus.actionText;
-          break label239;
         }
-        label530:
-        recommendTopicViewControl(paramLinearLayout, paramBoolean);
-        return;
       }
-      catch (Exception paramSpannableString)
-      {
-        QLog.e("ProfileContentSignComponent", 1, "", paramSpannableString);
-        return;
+      SigTopicManager.a().a(this.mQQAppInterface, paramRichStatus);
+      bool1 = SigTopicManager.a().b(this.mQQAppInterface);
+      paramRichStatus = (ImageView)paramView.findViewById(2131378896);
+      paramSpannableString = new oidb_0xd9f.RspBody();
+      if ((((ProfileCardInfo)this.mData).card != null) && (((ProfileCardInfo)this.mData).card.vLongNickTopicInfo != null)) {
+        try
+        {
+          paramSpannableString.mergeFrom(((ProfileCardInfo)this.mData).card.vLongNickTopicInfo);
+          paramView = (oidb_0xd9f.LongNickItem)paramSpannableString.longnick_item.get();
+          paramSpannableString = localObject;
+          if (paramView != null) {
+            paramSpannableString = paramView.rpt_topic_item.get();
+          }
+          long l = SigTopicManager.a().a(paramSpannableString);
+          boolean bool2 = SigTopicManager.a().a(this.mQQAppInterface, l);
+          if ((!bool1) && (!bool2))
+          {
+            recommendTopicViewControl(paramLinearLayout, paramBoolean);
+            return;
+          }
+          i = SigTopicManager.a().a(paramSpannableString);
+          if ((paramSpannableString != null) && (paramSpannableString.size() > 0) && (i > 0))
+          {
+            paramLinearLayout.setTag(new DataTag(97, SigTopicManager.a().a(paramSpannableString)));
+            paramLinearLayout.setOnClickListener(this);
+            commonSigTopicViewControl(paramLinearLayout, paramSpannableString);
+            paramRichStatus.setOnTouchListener(UITools.a);
+            paramRichStatus.setOnClickListener(new ProfileContentSignComponent.4(this, paramLinearLayout));
+            return;
+          }
+          recommendTopicViewControl(paramLinearLayout, paramBoolean);
+          return;
+        }
+        catch (Exception paramSpannableString)
+        {
+          QLog.e("ProfileContentSignComponent", 1, "", paramSpannableString);
+          return;
+        }
       }
+      recommendTopicViewControl(paramLinearLayout, paramBoolean);
     }
-    label549:
-    recommendTopicViewControl(paramLinearLayout, paramBoolean);
-    return;
-    label557:
-    recommendTopicViewControl(paramLinearLayout, paramBoolean);
   }
   
   public void commonSigTopicViewControl(View paramView, List<oidb_0xd9f.TopicItem> paramList)
   {
     if (paramView != null)
     {
-      if ((paramList == null) || (paramList.isEmpty())) {
-        paramView.setVisibility(8);
-      }
-    }
-    else {
-      return;
-    }
-    paramView.setVisibility(0);
-    ((RelativeLayout)paramView.findViewById(2131367062)).setVisibility(0);
-    Object localObject = (CircleBoarderImageView)paramView.findViewById(2131364759);
-    CircleBoarderImageView localCircleBoarderImageView1 = (CircleBoarderImageView)paramView.findViewById(2131364760);
-    CircleBoarderImageView localCircleBoarderImageView2 = (CircleBoarderImageView)paramView.findViewById(2131364761);
-    ArrayList localArrayList = new ArrayList();
-    localArrayList.add(localObject);
-    localArrayList.add(localCircleBoarderImageView1);
-    localArrayList.add(localCircleBoarderImageView2);
-    localObject = (TextView)paramView.findViewById(2131380280);
-    Collections.sort(paramList, new ProfileContentSignComponent.5(this));
-    int j = SigTopicManager.a().a(paramList);
-    paramList = SigTopicManager.a().a(paramList);
-    if (paramList.size() > localArrayList.size())
-    {
-      i = 0;
-      while (i < localArrayList.size())
+      if ((paramList != null) && (!paramList.isEmpty()))
       {
-        ((CircleBoarderImageView)localArrayList.get(i)).setVisibility(0);
-        setAvatar(String.valueOf(((oidb_0xd9f.UinItem)paramList.get(i)).uint64_uin.get()), (CircleBoarderImageView)localArrayList.get(i));
-        i += 1;
+        paramView.setVisibility(0);
+        ((RelativeLayout)paramView.findViewById(2131366908)).setVisibility(0);
+        Object localObject = (CircleBoarderImageView)paramView.findViewById(2131364649);
+        CircleBoarderImageView localCircleBoarderImageView1 = (CircleBoarderImageView)paramView.findViewById(2131364650);
+        CircleBoarderImageView localCircleBoarderImageView2 = (CircleBoarderImageView)paramView.findViewById(2131364651);
+        ArrayList localArrayList = new ArrayList();
+        localArrayList.add(localObject);
+        localArrayList.add(localCircleBoarderImageView1);
+        localArrayList.add(localCircleBoarderImageView2);
+        localObject = (TextView)paramView.findViewById(2131379593);
+        Collections.sort(paramList, new ProfileContentSignComponent.5(this));
+        int j = SigTopicManager.a().a(paramList);
+        paramList = SigTopicManager.a().a(paramList);
+        if (paramList.size() > localArrayList.size())
+        {
+          i = 0;
+          while (i < localArrayList.size())
+          {
+            ((CircleBoarderImageView)localArrayList.get(i)).setVisibility(0);
+            setAvatar(String.valueOf(((oidb_0xd9f.UinItem)paramList.get(i)).uint64_uin.get()), (CircleBoarderImageView)localArrayList.get(i));
+            i += 1;
+          }
+        }
+        int i = 0;
+        while (i < localArrayList.size())
+        {
+          if (i < paramList.size())
+          {
+            ((CircleBoarderImageView)localArrayList.get(i)).setVisibility(0);
+            setAvatar(String.valueOf(((oidb_0xd9f.UinItem)paramList.get(i)).uint64_uin.get()), (CircleBoarderImageView)localArrayList.get(i));
+          }
+          else
+          {
+            ((CircleBoarderImageView)localArrayList.get(i)).setVisibility(8);
+          }
+          i += 1;
+        }
+        if (j <= 3)
+        {
+          paramList = new StringBuilder();
+          paramList.append(j);
+          paramList.append(HardCodeUtil.a(2131708468));
+          paramList = paramList.toString();
+        }
+        else
+        {
+          paramList = new StringBuilder();
+          paramList.append(HardCodeUtil.a(2131708438));
+          paramList.append(j);
+          paramList.append(HardCodeUtil.a(2131708417));
+          paramList = paramList.toString();
+        }
+        ((TextView)localObject).setText(paramList);
+        if (ThemeUtil.isNowThemeIsNight(this.mApp, false, null)) {
+          paramView.setBackgroundDrawable(null);
+        } else if (!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData)) {
+          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846043));
+        } else {
+          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846042));
+        }
+        ReportController.b(null, "dc00898", "", "", "0X800A4D4", "0X800A4D4", 0, 0, "1", "0", "", "");
+        return;
       }
-    }
-    int i = 0;
-    if (i < localArrayList.size())
-    {
-      if (i < paramList.size())
-      {
-        ((CircleBoarderImageView)localArrayList.get(i)).setVisibility(0);
-        setAvatar(String.valueOf(((oidb_0xd9f.UinItem)paramList.get(i)).uint64_uin.get()), (CircleBoarderImageView)localArrayList.get(i));
-      }
-      for (;;)
-      {
-        i += 1;
-        break;
-        ((CircleBoarderImageView)localArrayList.get(i)).setVisibility(8);
-      }
-    }
-    if (j <= 3)
-    {
-      paramList = j + HardCodeUtil.a(2131708462);
-      ((TextView)localObject).setText(paramList);
-      if (!ThemeUtil.isNowThemeIsNight(this.mApp, false, null)) {
-        break label463;
-      }
-      paramView.setBackgroundDrawable(null);
-    }
-    for (;;)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800A4D4", "0X800A4D4", 0, 0, "1", "0", "", "");
-      return;
-      paramList = HardCodeUtil.a(2131708432) + j + HardCodeUtil.a(2131708411);
-      break;
-      label463:
-      if (!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData)) {
-        paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846167));
-      } else {
-        paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846166));
-      }
+      paramView.setVisibility(8);
     }
   }
   
@@ -556,20 +544,20 @@ public class ProfileContentSignComponent
   
   public String getProfileContentKey()
   {
-    return "map_key_sig";
+    return "map_key_personal_sign";
   }
   
   public void hideCommonTopicFriendAvatarControl(View paramView)
   {
     if (paramView != null)
     {
-      Object localObject = (RelativeLayout)paramView.findViewById(2131367062);
+      Object localObject = (RelativeLayout)paramView.findViewById(2131366908);
       if (localObject != null) {
         ((RelativeLayout)localObject).setVisibility(8);
       }
-      localObject = (CircleBoarderImageView)paramView.findViewById(2131364759);
-      CircleBoarderImageView localCircleBoarderImageView = (CircleBoarderImageView)paramView.findViewById(2131364760);
-      paramView = (CircleBoarderImageView)paramView.findViewById(2131364761);
+      localObject = (CircleBoarderImageView)paramView.findViewById(2131364649);
+      CircleBoarderImageView localCircleBoarderImageView = (CircleBoarderImageView)paramView.findViewById(2131364650);
+      paramView = (CircleBoarderImageView)paramView.findViewById(2131364651);
       if (localObject != null) {
         ((CircleBoarderImageView)localObject).setVisibility(8);
       }
@@ -584,58 +572,56 @@ public class ProfileContentSignComponent
   
   public void onClick(View paramView)
   {
-    Object localObject;
     if ((paramView.getTag() instanceof DataTag))
     {
-      localObject = (DataTag)paramView.getTag();
-      switch (((DataTag)localObject).jdField_a_of_type_Int)
+      Object localObject = (DataTag)paramView.getTag();
+      int i = ((DataTag)localObject).jdField_a_of_type_Int;
+      if (i != 3)
       {
+        if (i == 97)
+        {
+          localObject = (Pair)((DataTag)localObject).jdField_a_of_type_JavaLangObject;
+          ProfileSignatureUtils.handleSignatureCommonClick(paramView, ((Integer)((Pair)localObject).first).intValue(), (String)((Pair)localObject).second, this.mActivity, this.mQQAppInterface);
+        }
+      }
+      else {
+        ProfileSignatureUtils.handleSignatureClick((ProfileCardInfo)this.mData, this.mActivity, this.mQQAppInterface);
       }
     }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      ProfileSignatureUtils.handleSignatureClick((ProfileCardInfo)this.mData, this.mActivity, this.mApp);
-      continue;
-      localObject = (Pair)((DataTag)localObject).jdField_a_of_type_JavaLangObject;
-      ProfileSignatureUtils.handleSignatureCommonClick(paramView, ((Integer)((Pair)localObject).first).intValue(), (String)((Pair)localObject).second, this.mActivity, this.mApp);
-    }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public void onClick(ITopic paramITopic, View paramView)
   {
-    int j = 1;
     paramITopic = paramITopic.getData();
     if ((paramITopic instanceof Pair))
     {
       paramITopic = (Pair)paramITopic;
       TopicUtil.a(this.mActivity, TopicUtil.a(((Integer)paramITopic.first).intValue(), (String)paramITopic.second), -1);
-      if (((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqActivityProfileActivity$AllInOne.jdField_a_of_type_Int != 0) {
-        break label121;
+      int i;
+      if (((ProfileCardInfo)this.mData).allInOne.pa == 0) {
+        i = 1;
+      } else {
+        i = 0;
       }
-      i = 1;
-      if (i == 0) {
-        break label126;
+      if (i != 0) {
+        i = 1;
+      } else {
+        i = 2;
       }
-    }
-    label121:
-    label126:
-    for (int i = j;; i = 2)
-    {
-      ReportController.b(null, "dc00898", "", "", "0X800A4D3", "0X800A4D3", i, 0, "" + i, "0", "", "");
-      return;
-      i = 0;
-      break;
+      paramITopic = new StringBuilder();
+      paramITopic.append("");
+      paramITopic.append(i);
+      ReportController.b(null, "dc00898", "", "", "0X800A4D3", "0X800A4D3", i, 0, paramITopic.toString(), "0", "", "");
     }
   }
   
-  public void onCreate(@NonNull BaseActivity paramBaseActivity, @Nullable Bundle paramBundle)
+  public void onCreate(QBaseActivity paramQBaseActivity, @Nullable Bundle paramBundle)
   {
-    super.onCreate(paramBaseActivity, paramBundle);
-    paramBaseActivity = this.mActivity.getIntent();
-    if (paramBaseActivity != null) {
-      this.mFromExtendFriend = paramBaseActivity.getBooleanExtra("key_from_extends_friend", false);
+    super.onCreate(paramQBaseActivity, paramBundle);
+    paramQBaseActivity = this.mActivity.getIntent();
+    if (paramQBaseActivity != null) {
+      this.mFromExtendFriend = paramQBaseActivity.getBooleanExtra("key_from_extends_friend", false);
     }
     this.mDecoder = ((IQQAvatarService)this.mApp.getRuntimeService(IQQAvatarService.class, "")).getInstance(this.mApp);
     this.mDecoder.setDecodeTaskCompletionListener(this);
@@ -648,8 +634,7 @@ public class ProfileContentSignComponent
   
   public boolean onDataUpdate(ProfileCardInfo paramProfileCardInfo)
   {
-    boolean bool = super.onDataUpdate(paramProfileCardInfo);
-    return makeOrRefreshSign(((ProfileCardInfo)this.mData).jdField_a_of_type_ComTencentMobileqqDataCard, ((ProfileCardInfo)this.mData).d) | bool;
+    return super.onDataUpdate(paramProfileCardInfo) | makeOrRefreshSign(((ProfileCardInfo)this.mData).card, ((ProfileCardInfo)this.mData).isNetRet);
   }
   
   public void onDecodeTaskCompleted(int paramInt1, int paramInt2, String paramString, Bitmap paramBitmap)
@@ -671,14 +656,16 @@ public class ProfileContentSignComponent
       ((StatusManager)this.mApp.getManager(QQManagerFactory.STATUS_MANAGER)).b(this.mStatusIconListener);
       this.mStatusIconListener = null;
     }
-    if (this.mDecoder != null)
+    Object localObject = this.mDecoder;
+    if (localObject != null)
     {
-      this.mDecoder.destory();
+      ((IFaceDecoder)localObject).destory();
       this.mDecoder = null;
     }
-    if (this.mCommonTopicFriendAvatar != null)
+    localObject = this.mCommonTopicFriendAvatar;
+    if (localObject != null)
     {
-      this.mCommonTopicFriendAvatar.clear();
+      ((Map)localObject).clear();
       this.mCommonTopicFriendAvatar = null;
     }
     super.onDestroy();
@@ -688,7 +675,7 @@ public class ProfileContentSignComponent
   
   public void onScrollStateChanged(AbsListView paramAbsListView, int paramInt)
   {
-    if ((paramInt == 0) && (!SigTopicManager.a().a(this.mApp)) && (ProfileCardMoreInfoView.a(this.mInfo))) {
+    if ((paramInt == 0) && (!SigTopicManager.a().a(this.mQQAppInterface)) && (ProfileUtils.isVisible(this.mInfo))) {
       this.mInfo.post(new ProfileContentSignComponent.2(this));
     }
   }
@@ -697,70 +684,65 @@ public class ProfileContentSignComponent
   {
     if (paramView != null)
     {
-      if (!paramBoolean) {
+      if (!paramBoolean)
+      {
         paramView.setVisibility(8);
+        return;
       }
-    }
-    else {
-      return;
-    }
-    if (!SigTopicManager.a().c(this.mApp))
-    {
-      paramView.setVisibility(8);
-      return;
-    }
-    Object localObject = SigTopicConfProcessor.a();
-    if ((localObject == null) || (((SigTopicConfBean)localObject).a()))
-    {
-      paramView.setVisibility(8);
-      return;
-    }
-    hideCommonTopicFriendAvatarControl(paramView);
-    paramView.setVisibility(0);
-    ArrayList localArrayList = ((SigTopicConfBean)localObject).a().a;
-    TextView localTextView = (TextView)paramView.findViewById(2131380280);
-    ImageView localImageView = (ImageView)paramView.findViewById(2131379549);
-    localTextView.setText(SigTopicManager.a().a((SigTopicConfBean)localObject));
-    int i = 0;
-    int j;
-    while (i < ((SigTopicConfBean)localObject).a().a.size()) {
-      if (TextUtils.isEmpty(((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString))
+      if (!SigTopicManager.a().c(this.mQQAppInterface))
       {
-        i += 1;
+        paramView.setVisibility(8);
+        return;
       }
-      else
+      Object localObject = SigTopicConfProcessor.a();
+      if ((localObject != null) && (!((SigTopicConfBean)localObject).a()))
       {
-        j = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_Int;
-        localObject = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString;
-      }
-    }
-    for (i = j;; i = -1)
-    {
-      if (paramBoolean) {
-        paramView.setOnClickListener(new ProfileContentSignComponent.6(this, (String)localObject, i, paramView));
-      }
-      localImageView.setOnTouchListener(UITools.a);
-      localImageView.setOnClickListener(new ProfileContentSignComponent.7(this, paramView));
-      if (ThemeUtil.isNowThemeIsNight(this.mApp, false, null)) {
-        paramView.setBackgroundDrawable(null);
-      }
-      for (;;)
-      {
+        hideCommonTopicFriendAvatarControl(paramView);
+        paramView.setVisibility(0);
+        ArrayList localArrayList = ((SigTopicConfBean)localObject).a().a;
+        TextView localTextView = (TextView)paramView.findViewById(2131379593);
+        ImageView localImageView = (ImageView)paramView.findViewById(2131378896);
+        localTextView.setText(SigTopicManager.a().a((SigTopicConfBean)localObject));
+        int j = -1;
+        int i = 0;
+        while (i < ((SigTopicConfBean)localObject).a().a.size()) {
+          if (TextUtils.isEmpty(((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString))
+          {
+            i += 1;
+          }
+          else
+          {
+            j = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_Int;
+            localObject = ((SigTopicConfBean.TopicInfo)localArrayList.get(i)).jdField_a_of_type_JavaLangString;
+            i = j;
+            break label205;
+          }
+        }
+        localObject = "";
+        i = j;
+        label205:
+        if (paramBoolean) {
+          paramView.setOnClickListener(new ProfileContentSignComponent.6(this, (String)localObject, i, paramView));
+        }
+        localImageView.setOnTouchListener(UITools.a);
+        localImageView.setOnClickListener(new ProfileContentSignComponent.7(this, paramView));
+        if (ThemeUtil.isNowThemeIsNight(this.mApp, false, null)) {
+          paramView.setBackgroundDrawable(null);
+        } else if (!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData)) {
+          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846043));
+        } else {
+          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846042));
+        }
         ReportController.b(null, "dc00898", "", "", "0X800A4D4", "0X800A4D4", 0, 0, "2", "0", "", "");
         return;
-        if (!ProfileCardUtils.isDefaultProfile((ProfileCardInfo)this.mData)) {
-          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846167));
-        } else {
-          paramView.setBackgroundDrawable(this.mActivity.getResources().getDrawable(2130846166));
-        }
       }
-      localObject = "";
+      paramView.setVisibility(8);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.profilecard.bussiness.personalitysign.ProfileContentSignComponent
  * JD-Core Version:    0.7.0.1
  */

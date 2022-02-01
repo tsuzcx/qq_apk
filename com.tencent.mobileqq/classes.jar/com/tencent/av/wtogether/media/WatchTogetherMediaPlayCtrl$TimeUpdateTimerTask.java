@@ -15,18 +15,19 @@ class WatchTogetherMediaPlayCtrl$TimeUpdateTimerTask
   
   public void run()
   {
-    if (this.a != null)
+    Object localObject = this.a;
+    if (localObject != null)
     {
-      WatchTogetherMediaPlayCtrl localWatchTogetherMediaPlayCtrl = (WatchTogetherMediaPlayCtrl)this.a.get();
-      if (localWatchTogetherMediaPlayCtrl != null) {
-        WatchTogetherMediaPlayCtrl.c(localWatchTogetherMediaPlayCtrl);
+      localObject = (WatchTogetherMediaPlayCtrl)((WeakReference)localObject).get();
+      if (localObject != null) {
+        WatchTogetherMediaPlayCtrl.c((WatchTogetherMediaPlayCtrl)localObject);
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.wtogether.media.WatchTogetherMediaPlayCtrl.TimeUpdateTimerTask
  * JD-Core Version:    0.7.0.1
  */

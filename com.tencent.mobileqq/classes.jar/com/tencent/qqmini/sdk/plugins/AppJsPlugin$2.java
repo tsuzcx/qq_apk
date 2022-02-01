@@ -15,19 +15,24 @@ class AppJsPlugin$2
   
   public void onReceiveResult(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    QMLog.i("AppJsPlugin", "queryApkDownloadInfo succ=" + paramBoolean + " result=" + paramJSONObject);
-    if ((!paramBoolean) || (paramJSONObject == null))
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("queryApkDownloadInfo succ=");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" result=");
+    localStringBuilder.append(paramJSONObject);
+    QMLog.i("AppJsPlugin", localStringBuilder.toString());
+    if ((paramBoolean) && (paramJSONObject != null))
     {
-      paramJSONObject = ApiUtil.wrapCallbackFail(this.val$req.event, null);
-      this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, paramJSONObject.toString());
+      AppJsPlugin.access$100(this.this$0).startDownload(this.val$appid, paramJSONObject, this.val$autoInstall, new AppJsPlugin.2.1(this));
       return;
     }
-    AppJsPlugin.access$100(this.this$0).startDownload(this.val$appid, paramJSONObject, this.val$autoInstall, new AppJsPlugin.2.1(this));
+    paramJSONObject = ApiUtil.wrapCallbackFail(this.val$req.event, null);
+    this.val$req.jsService.evaluateCallbackJs(this.val$req.callbackId, paramJSONObject.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.plugins.AppJsPlugin.2
  * JD-Core Version:    0.7.0.1
  */

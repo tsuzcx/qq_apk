@@ -11,7 +11,10 @@ class AEFilterManager$4
   
   public void OnAssetProcessing(HashMap<String, String> paramHashMap)
   {
-    Log.d("AEFilterManager", "OnAssetProcessing: " + paramHashMap);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnAssetProcessing: ");
+    localStringBuilder.append(paramHashMap);
+    Log.d("AEFilterManager", localStringBuilder.toString());
     if (AEFilterManager.access$500(this.this$0) != null) {
       AEFilterManager.access$500(this.this$0).OnAssetProcessing(paramHashMap);
     }
@@ -19,7 +22,10 @@ class AEFilterManager$4
   
   public void OnLoadAssetError(int paramInt)
   {
-    Log.d("AEFilterManager", "OnLoadAssetError: " + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("OnLoadAssetError: ");
+    localStringBuilder.append(paramInt);
+    Log.d("AEFilterManager", localStringBuilder.toString());
     if (AEFilterManager.access$500(this.this$0) != null) {
       AEFilterManager.access$500(this.this$0).OnLoadAssetError(paramInt);
     }

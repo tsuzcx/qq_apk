@@ -19,36 +19,38 @@ class QQBatteryMonitor$1
     if (i <= 0) {
       return;
     }
-    for (;;)
+    try
     {
-      String str;
-      try
+      String[] arrayOfString = paramString.split("\\|");
+      String str = arrayOfString[1];
+      if ((!str.startsWith("fg30")) || (this.val$controlCount[0] <= this.val$maxReportCount))
       {
-        String[] arrayOfString = paramString.split("\\|");
-        str = arrayOfString[1];
-        if (((str.startsWith("fg30")) && (this.val$controlCount[0] > this.val$maxReportCount)) || ((str.startsWith("bg5")) && (this.val$controlCount[1] > this.val$maxReportCount))) {
-          break;
+        if ((str.startsWith("bg5")) && (this.val$controlCount[1] > this.val$maxReportCount)) {
+          return;
         }
         if (!this.val$rootJson.has(str))
         {
           localObject = new JSONArray();
           this.val$rootJson.put(str, localObject);
-          QQBatteryMonitor.access$000(this.this$0, str, this.val$controlCount, arrayOfString, (JSONArray)localObject);
-          return;
         }
-      }
-      catch (Exception localException)
-      {
-        Logger.INSTANCE.e(new String[] { "QAPM_battery_BatteryMonitor", "bad line = ", paramString, " | ", localException.toString() });
+        else
+        {
+          localObject = this.val$rootJson.getJSONArray(str);
+        }
+        QQBatteryMonitor.access$000(this.this$0, str, this.val$controlCount, arrayOfString, (JSONArray)localObject);
         return;
       }
-      JSONArray localJSONArray = this.val$rootJson.getJSONArray(str);
+    }
+    catch (Exception localException)
+    {
+      Logger.INSTANCE.e(new String[] { "QAPM_battery_BatteryMonitor", "bad line = ", paramString, " | ", localException.toString() });
+      return;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.qqbattery.QQBatteryMonitor.1
  * JD-Core Version:    0.7.0.1
  */

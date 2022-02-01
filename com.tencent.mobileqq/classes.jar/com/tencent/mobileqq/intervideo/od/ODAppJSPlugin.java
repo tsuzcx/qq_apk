@@ -3,18 +3,19 @@ package com.tencent.mobileqq.intervideo.od;
 import android.os.Bundle;
 import android.text.TextUtils;
 import com.tencent.biz.troop.TroopMemberApiClient;
-import com.tencent.biz.troop.TroopMemberApiClient.Callback;
-import com.tencent.mobileqq.intervideo.huayang.HuayangJsPlugin;
+import com.tencent.mobileqq.intervideo.huayang.impl.HuayangJsPluginImpl;
+import com.tencent.mobileqq.troop.api.ITroopMemberApiClientApi.Callback;
 import com.tencent.mobileqq.webview.swift.JsBridgeListener;
 import com.tencent.qphone.base.util.QLog;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 public class ODAppJSPlugin
-  extends HuayangJsPlugin
-  implements TroopMemberApiClient.Callback
+  extends HuayangJsPluginImpl
+  implements ITroopMemberApiClientApi.Callback
 {
-  private String c;
+  public static final String NAMESPACE = "odapp";
+  private String mJsCallback;
   
   public ODAppJSPlugin()
   {
@@ -23,77 +24,88 @@ public class ODAppJSPlugin
   
   public void callback(Bundle paramBundle)
   {
-    if (paramBundle == null) {}
-    while ((!"onOpenRoomResult".equals(paramBundle.getString("method"))) || (this.c == null)) {
+    if (paramBundle == null) {
       return;
     }
-    int i = paramBundle.getInt("code", 0);
-    paramBundle = new JSONObject();
-    try
+    if (("onOpenRoomResult".equals(paramBundle.getString("method"))) && (this.mJsCallback != null))
     {
-      paramBundle.put("code", i);
-      callJs(this.c, new String[] { paramBundle.toString() });
-      return;
-    }
-    catch (JSONException localJSONException)
-    {
-      for (;;)
-      {
-        localJSONException.printStackTrace();
-      }
-    }
-  }
-  
-  public boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
-  {
-    if (!"odapp".equals(paramString2)) {}
-    label129:
-    do
-    {
-      return false;
-      if (QLog.isColorLevel()) {
-        QLog.i("XProxy|ODAppJSPlugin", 2, "handleJsRequest: url = " + paramString1 + ", pkgName = " + paramString2 + ", method = " + paramString3 + ", args = " + paramVarArgs);
-      }
-      if ((TextUtils.equals(paramString3, "open")) || (TextUtils.equals(paramString3, "cancelPage")))
-      {
-        super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
-        return false;
-      }
-      paramString2 = "";
-      paramString1 = "";
-      paramJsBridgeListener = null;
+      int i = paramBundle.getInt("code", 0);
+      paramBundle = new JSONObject();
       try
       {
-        localObject = new JSONObject(paramVarArgs[0]);
-        paramJsBridgeListener = (JsBridgeListener)localObject;
+        paramBundle.put("code", i);
       }
       catch (JSONException localJSONException)
       {
-        Object localObject;
-        break label129;
-        int j = 0;
-        int i = 0;
-        paramJsBridgeListener = paramString2;
-        continue;
+        localJSONException.printStackTrace();
       }
-      if (paramJsBridgeListener == null) {
-        break;
-      }
+      callJs(this.mJsCallback, new String[] { paramBundle.toString() });
+    }
+  }
+  
+  protected boolean handleJsRequest(JsBridgeListener paramJsBridgeListener, String paramString1, String paramString2, String paramString3, String... paramVarArgs)
+  {
+    if (!"odapp".equals(paramString2)) {
+      return false;
+    }
+    Object localObject;
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("handleJsRequest: url = ");
+      ((StringBuilder)localObject).append(paramString1);
+      ((StringBuilder)localObject).append(", pkgName = ");
+      ((StringBuilder)localObject).append(paramString2);
+      ((StringBuilder)localObject).append(", method = ");
+      ((StringBuilder)localObject).append(paramString3);
+      ((StringBuilder)localObject).append(", args = ");
+      ((StringBuilder)localObject).append(paramVarArgs);
+      QLog.i("XProxy|ODAppJSPlugin", 2, ((StringBuilder)localObject).toString());
+    }
+    if ((!TextUtils.equals(paramString3, "open")) && (!TextUtils.equals(paramString3, "cancelPage"))) {
+      paramJsBridgeListener = null;
+    }
+    try
+    {
+      paramString1 = new JSONObject(paramVarArgs[0]);
+      paramJsBridgeListener = paramString1;
+    }
+    catch (JSONException paramString1)
+    {
+      label138:
+      int j;
+      int i;
+      break label138;
+    }
+    if (paramJsBridgeListener != null)
+    {
       localObject = paramJsBridgeListener.optString("callback");
-      i = paramJsBridgeListener.optInt("roomid");
+      j = paramJsBridgeListener.optInt("roomid");
       paramString2 = paramJsBridgeListener.optString("vasname");
       paramString1 = paramJsBridgeListener.optString("userdata");
-      j = paramJsBridgeListener.optInt("fromid");
-      this.c = ((String)localObject);
+      i = paramJsBridgeListener.optInt("fromid");
+      this.mJsCallback = ((String)localObject);
       paramJsBridgeListener = paramString2;
-    } while ((!"odOpenRoom".equals(paramString3)) || (paramVarArgs.length != 1));
-    this.a.a(0, i, paramJsBridgeListener, paramString1, j);
-    return true;
+    }
+    else
+    {
+      paramJsBridgeListener = "";
+      paramString1 = paramJsBridgeListener;
+      j = 0;
+      i = 0;
+    }
+    if (("odOpenRoom".equals(paramString3)) && (paramVarArgs.length == 1))
+    {
+      this.mClient.a(0, j, paramJsBridgeListener, paramString1, i);
+      return true;
+      super.handleJsRequest(paramJsBridgeListener, paramString1, paramString2, paramString3, paramVarArgs);
+    }
+    return false;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.od.ODAppJSPlugin
  * JD-Core Version:    0.7.0.1
  */

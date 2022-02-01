@@ -4,8 +4,11 @@ import android.os.Message;
 import com.tencent.common.config.AppSetting;
 import com.tencent.imcore.message.QQMessageFacade;
 import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.mobileqq.pic.api.IPicBus;
+import com.tencent.mobileqq.pic.api.IPicTransFile;
+import com.tencent.mobileqq.qroute.QRoute;
+import com.tencent.mobileqq.transfile.api.IPttTransProcessorHelper;
 import com.tencent.mobileqq.transfile.api.ITransFileController;
-import com.tencent.mobileqq.transfile.chatpic.PicUploadFileSizeLimit;
 import com.tencent.mobileqq.utils.ImageUtil;
 import com.tencent.mobileqq.utils.httputils.HttpMsg;
 import com.tencent.mobileqq.utils.httputils.IHttpCommunicatorListener;
@@ -39,55 +42,65 @@ public class ForwardImageProcessor
     this.orgUrl = paramString4;
     this.orgUniseq = paramLong2;
     this.orgUinType = paramInt2;
-    this.thandler.addFilter(new Class[] { BuddyTransfileProcessor.class, C2CPicUploadProcessor.class, GroupPttDownloadProcessor.class, C2CPttDownloadProcessor.class });
+    this.thandler.addFilter(new Class[] { BuddyTransfileProcessor.class, ((IPicTransFile)paramQQAppInterface.getRuntimeService(IPicTransFile.class)).getC2CUploadProClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getGroupPttDownloadProcessorClass(), ((IPttTransProcessorHelper)QRoute.api(IPttTransProcessorHelper.class)).getC2CPttDownloadProcessorClass() });
     ((ITransFileController)paramQQAppInterface.getRuntimeService(ITransFileController.class)).addHandle(this.thandler);
   }
   
   private void sendReceiveFailToUI()
   {
     stopListening();
-    ((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).removeProcessor(this.targetUin + this.uniseq);
-    Message localMessage = new Message();
-    localMessage.what = 1005;
-    FileMsg localFileMsg = new FileMsg(this.targetUin, this.filepath, 0);
-    localFileMsg.fileType = 1;
-    localFileMsg.uniseq = this.uniseq;
-    localMessage.obj = localFileMsg;
-    localMessage.arg1 = 0;
-    BaseTransProcessor.sendCustomMessageToUpdateDelay(localMessage, ForwardImageProcessor.class, 0L);
+    Object localObject1 = (ITransFileController)this.app.getRuntimeService(ITransFileController.class);
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(this.targetUin);
+    ((StringBuilder)localObject2).append(this.uniseq);
+    ((ITransFileController)localObject1).removeProcessor(((StringBuilder)localObject2).toString());
+    localObject1 = new Message();
+    ((Message)localObject1).what = 1005;
+    localObject2 = new FileMsg(this.targetUin, this.filepath, 0);
+    ((FileMsg)localObject2).fileType = 1;
+    ((FileMsg)localObject2).uniseq = this.uniseq;
+    ((Message)localObject1).obj = localObject2;
+    ((Message)localObject1).arg1 = 0;
+    BaseTransProcessor.sendCustomMessageToUpdateDelay((Message)localObject1, ForwardImageProcessor.class, 0L);
     this.app.getMessageFacade().a(this.targetUin, this.targetUinType, this.uniseq, this.orgUrl, this.orgUin, this.orgUniseq, this.orgUinType);
   }
   
   private void uploadImage()
   {
-    ((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).removeProcessor(this.targetUin + this.uniseq);
-    if ((this.targetUinType == 1) || (this.targetUinType == 1001) || (this.targetUinType == 10002) || (this.targetUinType == 3000))
+    Object localObject = (ITransFileController)this.app.getRuntimeService(ITransFileController.class);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.targetUin);
+    localStringBuilder.append(this.uniseq);
+    ((ITransFileController)localObject).removeProcessor(localStringBuilder.toString());
+    int i = this.targetUinType;
+    if ((i == 1) || (i == 1001) || (i == 10002) || (i == 3000))
     {
-      if (this.targetUinType == 1001) {}
-      for (long l = AppSetting.c;; l = PicUploadFileSizeLimit.getLimitGroup())
+      long l;
+      if (this.targetUinType == 1001) {
+        l = AppSetting.c;
+      } else {
+        l = ((IPicBus)QRoute.api(IPicBus.class)).getC2CPicSizeLimit();
+      }
+      i = (int)l;
+      if (new File(this.filepath).length() > i)
       {
-        int i = (int)l;
-        if (new File(this.filepath).length() > i)
-        {
-          ImageUtil.a(-1L, this.targetUinType, true, "group_compress", "ForwardImageProcessor.uploadImage");
-          this.filepath = ImageUtil.a(this.app.getApp().getBaseContext(), this.filepath, i);
-        }
-        if (ImageUtil.a(null, this.filepath, 5, null, "ForwardImageProcessor.handleMessage.compress")) {
-          break;
-        }
+        ImageUtil.a(-1L, this.targetUinType, true, "group_compress", "ForwardImageProcessor.uploadImage");
+        this.filepath = ImageUtil.a(this.app.getApp().getBaseContext(), this.filepath, i);
+      }
+      if (!ImageUtil.a(null, this.filepath, 5, null, "ForwardImageProcessor.handleMessage.compress")) {
         return;
       }
     }
-    TransferRequest localTransferRequest = new TransferRequest();
-    localTransferRequest.mSelfUin = this.app.getAccount();
-    localTransferRequest.mPeerUin = this.targetUin;
-    localTransferRequest.mUinType = this.targetUinType;
-    localTransferRequest.mFileType = 1;
-    localTransferRequest.mUniseq = this.uniseq;
-    localTransferRequest.mIsUp = true;
-    localTransferRequest.mBusiType = 1009;
-    localTransferRequest.mLocalPath = this.filepath;
-    ((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).transferAsync(localTransferRequest);
+    localObject = new TransferRequest();
+    ((TransferRequest)localObject).mSelfUin = this.app.getAccount();
+    ((TransferRequest)localObject).mPeerUin = this.targetUin;
+    ((TransferRequest)localObject).mUinType = this.targetUinType;
+    ((TransferRequest)localObject).mFileType = 1;
+    ((TransferRequest)localObject).mUniseq = this.uniseq;
+    ((TransferRequest)localObject).mIsUp = true;
+    ((TransferRequest)localObject).mBusiType = 1009;
+    ((TransferRequest)localObject).mLocalPath = this.filepath;
+    ((ITransFileController)this.app.getRuntimeService(ITransFileController.class)).transferAsync((TransferRequest)localObject);
   }
   
   public void decode(HttpMsg paramHttpMsg1, HttpMsg paramHttpMsg2) {}
@@ -118,7 +131,7 @@ public class ForwardImageProcessor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.transfile.ForwardImageProcessor
  * JD-Core Version:    0.7.0.1
  */

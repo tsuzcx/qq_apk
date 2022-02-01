@@ -45,14 +45,16 @@ public final class oidb_0xe03$RspBody
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
+    Long localLong = Long.valueOf(0L);
     ByteStringMicro localByteStringMicro1 = ByteStringMicro.EMPTY;
     ByteStringMicro localByteStringMicro2 = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 72, 82, 90, 98, 104, 112, 120, 128, 136, 144, 154, 160, 168, 184, 192, 200, 210, 218, 226, 234, 240 }, new String[] { "uint64_uin", "enum_matchopcode", "enum_matchopretcode", "msg_match_info", "uint32_switch", "uint32_default_tag_id", "rpt_tag", "rpt_tips_wording", "bytes_match_fail_wording", "uint32_count", "uint64_uin_list", "uint32_time_out", "uint32_voice_count", "uint64_voice_match_flag", "uint32_flare_switch", "msg_task_info", "uint64_max_match_times", "uint64_matched_times", "uint64_black_times", "uint64_be_blacked_times", "uint64_left_punish_time", "str_black_times_tips", "str_black_times_used_up_tips", "str_black_times_used_up_title", "str_be_black_tips", "uint32_show_gray_tips" }, new Object[] { Long.valueOf(0L), Integer.valueOf(1), Integer.valueOf(0), null, Integer.valueOf(0), Integer.valueOf(0), null, localByteStringMicro1, localByteStringMicro2, Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), Integer.valueOf(0), Long.valueOf(0L), Integer.valueOf(0), null, Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), Long.valueOf(0L), "", "", "", "", Integer.valueOf(0) }, RspBody.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 8, 16, 24, 34, 40, 72, 82, 90, 98, 104, 112, 120, 128, 136, 144, 154, 160, 168, 184, 192, 200, 210, 218, 226, 234, 240 }, new String[] { "uint64_uin", "enum_matchopcode", "enum_matchopretcode", "msg_match_info", "uint32_switch", "uint32_default_tag_id", "rpt_tag", "rpt_tips_wording", "bytes_match_fail_wording", "uint32_count", "uint64_uin_list", "uint32_time_out", "uint32_voice_count", "uint64_voice_match_flag", "uint32_flare_switch", "msg_task_info", "uint64_max_match_times", "uint64_matched_times", "uint64_black_times", "uint64_be_blacked_times", "uint64_left_punish_time", "str_black_times_tips", "str_black_times_used_up_tips", "str_black_times_used_up_title", "str_be_black_tips", "uint32_show_gray_tips" }, new Object[] { localLong, Integer.valueOf(1), localInteger, null, localInteger, localInteger, null, localByteStringMicro1, localByteStringMicro2, localInteger, localLong, localInteger, localInteger, localLong, localInteger, null, localLong, localLong, localLong, localLong, localLong, "", "", "", "", localInteger }, RspBody.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xe03.oidb_0xe03.RspBody
  * JD-Core Version:    0.7.0.1
  */

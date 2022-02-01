@@ -15,17 +15,15 @@ public class CardContent
     this.jdField_a_of_type_Int = -1;
     this.jdField_a_of_type_Long = 0L;
     this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo = paramIntimateInfo;
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo != null) {
-      if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.isFriend) {
-        break label49;
+    paramIntimateInfo = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo;
+    if (paramIntimateInfo != null) {
+      if (!paramIntimateInfo.isFriend) {
+        this.jdField_a_of_type_Int = 1;
+      } else {
+        this.jdField_a_of_type_Int = 0;
       }
     }
-    label49:
-    for (this.jdField_a_of_type_Int = 1;; this.jdField_a_of_type_Int = 0)
-    {
-      this.jdField_a_of_type_Long = System.currentTimeMillis();
-      return;
-    }
+    this.jdField_a_of_type_Long = System.currentTimeMillis();
   }
   
   public int a()
@@ -40,10 +38,11 @@ public class CardContent
   
   public String a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {
+    IntimateInfo localIntimateInfo = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo;
+    if (localIntimateInfo == null) {
       return null;
     }
-    return this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.friendUin;
+    return localIntimateInfo.friendUin;
   }
   
   public void a(String paramString)
@@ -53,10 +52,11 @@ public class CardContent
   
   public boolean a()
   {
-    if (this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo == null) {
+    IntimateInfo localIntimateInfo = this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo;
+    if (localIntimateInfo == null) {
       return false;
     }
-    return IntimateUtil.a(this.jdField_a_of_type_ComTencentMobileqqDataIntimateInfo.maskType);
+    return IntimateUtil.a(localIntimateInfo.maskType);
   }
   
   public String b()
@@ -66,7 +66,7 @@ public class CardContent
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.multicard.CardContent
  * JD-Core Version:    0.7.0.1
  */

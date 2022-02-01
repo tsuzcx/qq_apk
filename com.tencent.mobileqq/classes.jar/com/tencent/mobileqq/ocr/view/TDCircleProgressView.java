@@ -45,7 +45,7 @@ public class TDCircleProgressView
   
   public static int a(Context paramContext, float paramFloat)
   {
-    return (int)(paramContext.getResources().getDisplayMetrics().density * paramFloat + 0.5F);
+    return (int)(paramFloat * paramContext.getResources().getDisplayMetrics().density + 0.5F);
   }
   
   private void a(Context paramContext, AttributeSet paramAttributeSet)
@@ -65,47 +65,44 @@ public class TDCircleProgressView
     this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeWidth(this.jdField_a_of_type_Float);
     this.jdField_b_of_type_AndroidGraphicsPaint.setColor(this.jdField_b_of_type_Int);
     this.jdField_b_of_type_AndroidGraphicsPaint.setStrokeCap(Paint.Cap.ROUND);
-    if (this.jdField_c_of_type_Int == 1) {
+    int i = this.jdField_c_of_type_Int;
+    if (i == 1) {
       this.jdField_b_of_type_Float = -180.0F;
+    } else if (i == 2) {
+      this.jdField_b_of_type_Float = -90.0F;
+    } else if (i == 3) {
+      this.jdField_b_of_type_Float = 0.0F;
+    } else if (i == 4) {
+      this.jdField_b_of_type_Float = 90.0F;
     }
-    for (;;)
-    {
-      this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
-      this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(a(paramContext, 11.0F));
-      this.jdField_c_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
-      this.jdField_c_of_type_AndroidGraphicsPaint.setColor(Color.rgb(144, 144, 144));
-      return;
-      if (this.jdField_c_of_type_Int == 2) {
-        this.jdField_b_of_type_Float = -90.0F;
-      } else if (this.jdField_c_of_type_Int == 3) {
-        this.jdField_b_of_type_Float = 0.0F;
-      } else if (this.jdField_c_of_type_Int == 4) {
-        this.jdField_b_of_type_Float = 90.0F;
-      }
-    }
+    this.jdField_c_of_type_AndroidGraphicsPaint = new Paint();
+    this.jdField_c_of_type_AndroidGraphicsPaint.setTextSize(a(paramContext, 11.0F));
+    this.jdField_c_of_type_AndroidGraphicsPaint.setTextAlign(Paint.Align.CENTER);
+    this.jdField_c_of_type_AndroidGraphicsPaint.setStyle(Paint.Style.FILL);
+    this.jdField_c_of_type_AndroidGraphicsPaint.setColor(Color.rgb(144, 144, 144));
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
-    RectF localRectF = new RectF(this.jdField_a_of_type_Float / 2.0F, this.jdField_a_of_type_Float / 2.0F, getWidth() - this.jdField_a_of_type_Float / 2.0F, getHeight() - this.jdField_a_of_type_Float / 2.0F);
-    paramCanvas.drawArc(localRectF, 0.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
-    float f = this.jdField_a_of_type_Int * 360 / 100;
-    paramCanvas.drawArc(localRectF, this.jdField_b_of_type_Float, f, false, this.jdField_b_of_type_AndroidGraphicsPaint);
-    paramCanvas.drawText(this.jdField_a_of_type_Int + "%", getWidth() / 2, getHeight() / 2 + a(this.jdField_a_of_type_AndroidContentContext, 4.0F), this.jdField_c_of_type_AndroidGraphicsPaint);
+    float f = this.jdField_a_of_type_Float;
+    Object localObject = new RectF(f / 2.0F, f / 2.0F, getWidth() - this.jdField_a_of_type_Float / 2.0F, getHeight() - this.jdField_a_of_type_Float / 2.0F);
+    paramCanvas.drawArc((RectF)localObject, 0.0F, 360.0F, false, this.jdField_a_of_type_AndroidGraphicsPaint);
+    f = this.jdField_a_of_type_Int * 360 / 100;
+    paramCanvas.drawArc((RectF)localObject, this.jdField_b_of_type_Float, f, false, this.jdField_b_of_type_AndroidGraphicsPaint);
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append(this.jdField_a_of_type_Int);
+    ((StringBuilder)localObject).append("%");
+    paramCanvas.drawText(((StringBuilder)localObject).toString(), getWidth() / 2, getHeight() / 2 + a(this.jdField_a_of_type_AndroidContentContext, 4.0F), this.jdField_c_of_type_AndroidGraphicsPaint);
   }
   
-  public void onMeasure(int paramInt1, int paramInt2)
+  protected void onMeasure(int paramInt1, int paramInt2)
   {
     paramInt1 = View.MeasureSpec.getSize(paramInt1);
     paramInt2 = View.MeasureSpec.getSize(paramInt2);
-    if (paramInt1 < paramInt2) {}
-    for (;;)
-    {
-      setMeasuredDimension(paramInt1, paramInt1);
-      return;
+    if (paramInt1 >= paramInt2) {
       paramInt1 = paramInt2;
     }
+    setMeasuredDimension(paramInt1, paramInt1);
   }
   
   public void setCurrent(int paramInt)
@@ -116,7 +113,7 @@ public class TDCircleProgressView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ocr.view.TDCircleProgressView
  * JD-Core Version:    0.7.0.1
  */

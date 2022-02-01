@@ -27,13 +27,13 @@ public class GlRotateAnimation
     paramFloat = paramInterpolator.getInterpolation(paramFloat);
     float f3 = this.a;
     if (this.animationProperty != null) {
-      this.animationProperty.setRotate((f1 - f2) * paramFloat + f3, this.c, this.d, this.e);
+      this.animationProperty.setRotate(f3 + (f1 - f2) * paramFloat, this.c, this.d, this.e);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.map.core.functions.animation.GlRotateAnimation
  * JD-Core Version:    0.7.0.1
  */

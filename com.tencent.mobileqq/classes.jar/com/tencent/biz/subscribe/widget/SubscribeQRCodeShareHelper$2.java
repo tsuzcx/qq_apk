@@ -16,18 +16,18 @@ class SubscribeQRCodeShareHelper$2
   public void run()
   {
     Bitmap localBitmap = SubscribeUtils.a(SubscribeQRCodeShareHelper.b(this.this$0), ScreenUtil.dip2px(50.0F), -16777216, -1, Bitmap.Config.ARGB_8888);
-    if ((localBitmap == null) || (localBitmap.isRecycled()))
+    if ((localBitmap != null) && (!localBitmap.isRecycled()))
     {
-      QLog.d("SubscribeQRCodeShareHelper", 4, "failed to create card code");
+      ThreadManager.getUIHandler().post(new SubscribeQRCodeShareHelper.2.1(this, localBitmap));
+      QLog.d("SubscribeQRCodeShareHelper", 4, " create card code success");
       return;
     }
-    ThreadManager.getUIHandler().post(new SubscribeQRCodeShareHelper.2.1(this, localBitmap));
-    QLog.d("SubscribeQRCodeShareHelper", 4, " create card code success");
+    QLog.d("SubscribeQRCodeShareHelper", 4, "failed to create card code");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.widget.SubscribeQRCodeShareHelper.2
  * JD-Core Version:    0.7.0.1
  */

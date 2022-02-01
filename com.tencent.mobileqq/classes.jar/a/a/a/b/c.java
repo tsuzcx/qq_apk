@@ -5,15 +5,20 @@ import java.security.NoSuchAlgorithmException;
 
 public class c
 {
-  public static final char[] a = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F' };
+  public static final char[] a = { 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 65, 66, 67, 68, 69, 70 };
   
   public static String a(byte[] paramArrayOfByte)
   {
-    if ((paramArrayOfByte == null) || (paramArrayOfByte.length == 0)) {
-      return null;
+    char[] arrayOfChar;
+    int i;
+    if (paramArrayOfByte != null)
+    {
+      if (paramArrayOfByte.length == 0) {
+        return null;
+      }
+      arrayOfChar = new char[paramArrayOfByte.length * 2];
+      i = 0;
     }
-    char[] arrayOfChar = new char[paramArrayOfByte.length * 2];
-    int i = 0;
     try
     {
       while (i < paramArrayOfByte.length)
@@ -29,22 +34,20 @@ public class c
     }
     catch (Exception paramArrayOfByte) {}
     return null;
+    return null;
   }
   
   public static String b(byte[] paramArrayOfByte)
   {
-    Object localObject = null;
+    Object localObject;
     try
     {
       MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localObject = localMessageDigest;
     }
     catch (NoSuchAlgorithmException localNoSuchAlgorithmException)
     {
-      for (;;)
-      {
-        localNoSuchAlgorithmException.printStackTrace();
-      }
+      localNoSuchAlgorithmException.printStackTrace();
+      localObject = null;
     }
     return a(localObject.digest(paramArrayOfByte));
   }

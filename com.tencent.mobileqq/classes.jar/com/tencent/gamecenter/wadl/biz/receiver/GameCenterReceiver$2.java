@@ -18,65 +18,66 @@ class GameCenterReceiver$2
   public void run()
   {
     int i = this.a.getIntExtra("key_event_id", -1);
-    if (QLog.isColorLevel()) {
-      QLog.d("GameCenterReceiver", 2, "receiveGameCenterAction eventId=" + i);
-    }
-    Object localObject4;
-    switch (i)
+    ??? = new StringBuilder();
+    ((StringBuilder)???).append("receiveGameCenterAction eventId=");
+    ((StringBuilder)???).append(i);
+    QLog.d("Wadl_GameCenterReceiver", 1, ((StringBuilder)???).toString());
+    if (i != 1)
     {
-    case 3: 
-    case 4: 
-    case 5: 
-    case 6: 
-    default: 
-      return;
-    case 1: 
-      ((IQQGameConfigService)QRoute.api(IQQGameConfigService.class)).loadConfig();
-      return;
-    case 2: 
+      Object localObject5;
+      if (i != 2)
+      {
+        if (i != 7)
+        {
+          if (i != 8) {
+            return;
+          }
+          synchronized (this.this$0.a)
+          {
+            WadlResult localWadlResult1 = (WadlResult)this.a.getParcelableExtra("key_wadl_result");
+            if (localWadlResult1 != null)
+            {
+              localObject5 = this.this$0.a.iterator();
+              while (((Iterator)localObject5).hasNext()) {
+                ((GameCenterListener)((Iterator)localObject5).next()).onTaskInstall(localWadlResult1);
+              }
+            }
+            return;
+          }
+        }
+        synchronized (this.this$0.a)
+        {
+          WadlResult localWadlResult2 = (WadlResult)this.a.getParcelableExtra("key_wadl_result");
+          if (localWadlResult2 != null)
+          {
+            localObject5 = this.this$0.a.iterator();
+            while (((Iterator)localObject5).hasNext()) {
+              ((GameCenterListener)((Iterator)localObject5).next()).onTaskComplete(localWadlResult2);
+            }
+          }
+          return;
+        }
+      }
       synchronized (this.this$0.a)
       {
         String str = this.a.getStringExtra("key_appid");
-        localObject4 = this.a.getStringExtra("key_pkg_name");
-        if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject4)))
+        localObject5 = this.a.getStringExtra("key_pkg_name");
+        if ((!TextUtils.isEmpty(str)) && (!TextUtils.isEmpty((CharSequence)localObject5)))
         {
           Iterator localIterator = this.this$0.a.iterator();
-          if (localIterator.hasNext()) {
-            ((GameCenterListener)localIterator.next()).onTaskDeleted(str, (String)localObject4);
+          while (localIterator.hasNext()) {
+            ((GameCenterListener)localIterator.next()).onTaskDeleted(str, (String)localObject5);
           }
         }
-      }
-      return;
-    case 7: 
-      synchronized (this.this$0.a)
-      {
-        WadlResult localWadlResult1 = (WadlResult)this.a.getParcelableExtra("key_wadl_result");
-        if (localWadlResult1 != null)
-        {
-          localObject4 = this.this$0.a.iterator();
-          if (((Iterator)localObject4).hasNext()) {
-            ((GameCenterListener)((Iterator)localObject4).next()).onTaskComplete(localWadlResult1);
-          }
-        }
-      }
-      return;
-    }
-    synchronized (this.this$0.a)
-    {
-      WadlResult localWadlResult2 = (WadlResult)this.a.getParcelableExtra("key_wadl_result");
-      if (localWadlResult2 != null)
-      {
-        localObject4 = this.this$0.a.iterator();
-        if (((Iterator)localObject4).hasNext()) {
-          ((GameCenterListener)((Iterator)localObject4).next()).onTaskInstall(localWadlResult2);
-        }
+        return;
       }
     }
+    ((IQQGameConfigService)QRoute.api(IQQGameConfigService.class)).loadConfig();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gamecenter.wadl.biz.receiver.GameCenterReceiver.2
  * JD-Core Version:    0.7.0.1
  */

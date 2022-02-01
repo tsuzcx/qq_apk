@@ -31,7 +31,7 @@ public abstract class FeedListPageLoaderBase<T extends FeedListPageLoaderBase.Fe
   {
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$FeedIdListCache = new FeedListPageLoaderBase.FeedIdListCache();
     this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$OnFeedItemPageLoadListener = paramOnFeedItemPageLoadListener;
-    AssertUtils.a(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$OnFeedItemPageLoadListener);
+    AssertUtils.checkNotNull(this.jdField_a_of_type_ComTencentBizQqstoryStoryHomeModelFeedListPageLoaderBase$OnFeedItemPageLoadListener);
   }
   
   private void d()
@@ -81,7 +81,7 @@ public abstract class FeedListPageLoaderBase<T extends FeedListPageLoaderBase.Fe
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.storyHome.model.FeedListPageLoaderBase
  * JD-Core Version:    0.7.0.1
  */

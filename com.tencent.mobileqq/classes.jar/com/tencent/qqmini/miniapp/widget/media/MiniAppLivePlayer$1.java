@@ -32,16 +32,19 @@ class MiniAppLivePlayer$1
       localJSONObject2.put("VIDEO_HEIGHT", paramBundle.get("VIDEO_HEIGHT"));
       localJSONObject1.put("livePlayerId", this.this$0.livePlayerId);
       localJSONObject1.put("info", localJSONObject2);
-      if (this.this$0.miniAppContextRef != null) {}
-      for (paramBundle = (IMiniAppContext)this.this$0.miniAppContextRef.get();; paramBundle = null)
-      {
-        if (paramBundle != null) {
-          paramBundle.performAction(ServiceSubscribeEvent.obtain("onLivePlayerNetStatus", localJSONObject1.toString(), this.this$0.webviewId));
-        }
-        this.val$req.jsService.evaluateSubscribeJS("onLivePlayerNetStatus", localJSONObject1.toString(), this.this$0.webviewId);
-        QMLog.e("MiniAppLivePlayer", "operate start evaluateSubcribeJS onLivePlayerNetStatus = " + localJSONObject1.toString());
-        return;
+      if (this.this$0.miniAppContextRef != null) {
+        paramBundle = (IMiniAppContext)this.this$0.miniAppContextRef.get();
+      } else {
+        paramBundle = null;
       }
+      if (paramBundle != null) {
+        paramBundle.performAction(ServiceSubscribeEvent.obtain("onLivePlayerNetStatus", localJSONObject1.toString(), this.this$0.webviewId));
+      }
+      this.val$req.jsService.evaluateSubscribeJS("onLivePlayerNetStatus", localJSONObject1.toString(), this.this$0.webviewId);
+      paramBundle = new StringBuilder();
+      paramBundle.append("operate start evaluateSubcribeJS onLivePlayerNetStatus = ");
+      paramBundle.append(localJSONObject1.toString());
+      QMLog.e("MiniAppLivePlayer", paramBundle.toString());
       return;
     }
     catch (JSONException paramBundle)
@@ -52,13 +55,16 @@ class MiniAppLivePlayer$1
   
   public void onPlayEvent(int paramInt, Bundle paramBundle)
   {
-    QMLog.d("MiniAppLivePlayer", "onPlayEvent code:" + paramInt);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onPlayEvent code:");
+    localStringBuilder.append(paramInt);
+    QMLog.d("MiniAppLivePlayer", localStringBuilder.toString());
     MiniAppLivePlayer.access$000(this.this$0, paramInt, paramBundle, this.val$req);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.miniapp.widget.media.MiniAppLivePlayer.1
  * JD-Core Version:    0.7.0.1
  */

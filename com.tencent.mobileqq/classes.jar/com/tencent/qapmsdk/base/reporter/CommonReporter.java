@@ -29,33 +29,41 @@ public class CommonReporter
     }
     try
     {
-      Object localObject = (String)paramObject;
-      File localFile = new File((String)localObject);
-      paramObject = localObject;
+      Object localObject1 = (String)paramObject;
+      File localFile = new File((String)localObject1);
+      paramObject = localObject1;
       if (localFile.exists())
       {
-        paramObject = localObject;
+        paramObject = localObject1;
         if (localFile.isDirectory())
         {
           paramObject = localFile.getParent();
           long l = System.currentTimeMillis();
-          String str = "out_" + l + ".zip";
-          paramObject = paramObject + "/" + str;
-          FileUtil.zipFiles((String)localObject, paramObject, false);
+          Object localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("out_");
+          ((StringBuilder)localObject2).append(l);
+          ((StringBuilder)localObject2).append(".zip");
+          localObject2 = ((StringBuilder)localObject2).toString();
+          StringBuilder localStringBuilder = new StringBuilder();
+          localStringBuilder.append(paramObject);
+          localStringBuilder.append("/");
+          localStringBuilder.append((String)localObject2);
+          paramObject = localStringBuilder.toString();
+          FileUtil.zipFiles((String)localObject1, paramObject, false);
           if (paramObject.length() == 0) {
             return false;
           }
           FileUtil.deleteAllFilesOfDir(localFile);
         }
       }
-      localObject = new JSONObject();
-      ((JSONObject)localObject).put("processname", AppInfo.obtainProcessName(BaseInfo.app));
-      ((JSONObject)localObject).put("fileObj", paramObject);
-      ((JSONObject)localObject).put("plugin", this.plugin);
+      localObject1 = new JSONObject();
+      ((JSONObject)localObject1).put("processname", AppInfo.obtainProcessName(BaseInfo.app));
+      ((JSONObject)localObject1).put("fileObj", paramObject);
+      ((JSONObject)localObject1).put("plugin", this.plugin);
       if (this.extraData != null) {
-        ((JSONObject)localObject).put("extra_data", this.extraData);
+        ((JSONObject)localObject1).put("extra_data", this.extraData);
       }
-      paramObject = new ResultObject(0, "testcase", true, 1L, 1L, (JSONObject)localObject, false, true, BaseInfo.userMeta.uin);
+      paramObject = new ResultObject(0, "testcase", true, 1L, 1L, (JSONObject)localObject1, false, true, BaseInfo.userMeta.uin);
       ReporterMachine.INSTANCE.addResultObj(paramObject);
       return true;
     }
@@ -70,7 +78,7 @@ public class CommonReporter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qapmsdk.base.reporter.CommonReporter
  * JD-Core Version:    0.7.0.1
  */

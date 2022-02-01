@@ -20,40 +20,55 @@ final class ApolloDtReportUtil$report$1
   
   public final void run()
   {
-    String str = this.jdField_a_of_type_JavaLangString + '#' + this.b + '#' + this.c;
-    HashMap localHashMap = new HashMap();
-    Object localObject2 = (Map)localHashMap;
-    Object localObject1 = BaseApplicationImpl.getApplication();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append(this.jdField_a_of_type_JavaLangString);
+    ((StringBuilder)localObject1).append('#');
+    ((StringBuilder)localObject1).append(this.b);
+    ((StringBuilder)localObject1).append('#');
+    ((StringBuilder)localObject1).append(this.c);
+    String str = ((StringBuilder)localObject1).toString();
+    Object localObject2 = new HashMap();
+    Map localMap = (Map)localObject2;
+    localObject1 = BaseApplicationImpl.getApplication();
     Intrinsics.checkExpressionValueIsNotNull(localObject1, "BaseApplicationImpl.getApplication()");
     localObject1 = ((BaseApplicationImpl)localObject1).getRuntime();
     if (localObject1 != null)
     {
       localObject1 = ((AppRuntime)localObject1).getAccount();
-      if (localObject1 == null) {}
+      if (localObject1 != null) {}
     }
-    for (;;)
+    else
     {
-      ((Map)localObject2).put("qqUin", localObject1);
-      ((Map)localHashMap).put("timestamp", String.valueOf(System.currentTimeMillis() / 1000));
-      if (this.jdField_a_of_type_JavaUtilMap != null) {
-        localHashMap.putAll(this.jdField_a_of_type_JavaUtilMap);
-      }
-      localObject1 = new StringBuilder();
-      localObject2 = ((Map)localHashMap).entrySet().iterator();
-      while (((Iterator)localObject2).hasNext())
-      {
-        Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
-        ((StringBuilder)localObject1).append((String)localEntry.getKey()).append(":").append((String)localEntry.getValue()).append(";");
-      }
       localObject1 = "";
     }
-    QLog.d("ApolloDtReportUtil", 1, "report " + str + " ; params:  " + ((StringBuilder)localObject1).toString());
-    UserAction.onUserActionToTunnel("0AND0FB8I14UU93I", str, (Map)localHashMap, true, true);
+    localMap.put("qqUin", localObject1);
+    localMap.put("timestamp", String.valueOf(System.currentTimeMillis() / 1000));
+    localObject1 = this.jdField_a_of_type_JavaUtilMap;
+    if (localObject1 != null) {
+      ((HashMap)localObject2).putAll((Map)localObject1);
+    }
+    localObject1 = new StringBuilder();
+    localObject2 = localMap.entrySet().iterator();
+    while (((Iterator)localObject2).hasNext())
+    {
+      Map.Entry localEntry = (Map.Entry)((Iterator)localObject2).next();
+      ((StringBuilder)localObject1).append((String)localEntry.getKey());
+      ((StringBuilder)localObject1).append(":");
+      ((StringBuilder)localObject1).append((String)localEntry.getValue());
+      ((StringBuilder)localObject1).append(";");
+    }
+    localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append("report ");
+    ((StringBuilder)localObject2).append(str);
+    ((StringBuilder)localObject2).append(" ; params:  ");
+    ((StringBuilder)localObject2).append(((StringBuilder)localObject1).toString());
+    QLog.d("ApolloDtReportUtil", 1, ((StringBuilder)localObject2).toString());
+    UserAction.onUserActionToTunnel("0AND0FB8I14UU93I", str, localMap, true, true);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.apollo.statistics.product.ApolloDtReportUtil.report.1
  * JD-Core Version:    0.7.0.1
  */

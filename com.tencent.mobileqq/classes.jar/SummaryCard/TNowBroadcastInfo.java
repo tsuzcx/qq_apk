@@ -39,14 +39,17 @@ public final class TNowBroadcastInfo
   public void writeTo(JceOutputStream paramJceOutputStream)
   {
     paramJceOutputStream.write(this.iFlag, 0);
-    if (this.strIconURL != null) {
-      paramJceOutputStream.write(this.strIconURL, 1);
+    Object localObject = this.strIconURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 1);
     }
-    if (this.strHrefURL != null) {
-      paramJceOutputStream.write(this.strHrefURL, 2);
+    localObject = this.strHrefURL;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.vAnchorDataRsp != null) {
-      paramJceOutputStream.write(this.vAnchorDataRsp, 3);
+    localObject = this.vAnchorDataRsp;
+    if (localObject != null) {
+      paramJceOutputStream.write((byte[])localObject, 3);
     }
   }
 }

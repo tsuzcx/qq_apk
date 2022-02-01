@@ -23,7 +23,7 @@ public class ThreadOffFunction<IN>
     this.mTAG = paramString;
   }
   
-  public void call(IN paramIN)
+  protected void call(IN paramIN)
   {
     ThreadOffFunction.ThreadOffJob localThreadOffJob = new ThreadOffFunction.ThreadOffJob(this, this.mTAG, null);
     localThreadOffJob.setJobType(this.mJobType);
@@ -35,7 +35,7 @@ public class ThreadOffFunction<IN>
     this.mFuture = Bosses.get().postJob(localThreadOffJob, paramIN);
   }
   
-  public void error(Error paramError)
+  protected void error(Error paramError)
   {
     ThreadOffFunction.ThreadOffErrJob localThreadOffErrJob = new ThreadOffFunction.ThreadOffErrJob(this, this.mTAG, null);
     localThreadOffErrJob.setJobType(this.mJobType);
@@ -47,9 +47,10 @@ public class ThreadOffFunction<IN>
     this.mFuture = Bosses.get().postJob(localThreadOffErrJob, paramError);
   }
   
-  public void onCancel()
+  protected void onCancel()
   {
-    if (this.mFuture == null) {
+    Future localFuture = this.mFuture;
+    if (localFuture == null) {
       return;
     }
     if (this.mNeedSchedule)
@@ -57,7 +58,7 @@ public class ThreadOffFunction<IN>
       Bosses.get().cancelJob(this.mFuture, true);
       return;
     }
-    this.mFuture.cancel(true);
+    localFuture.cancel(true);
   }
   
   public void setNeedSchedule(boolean paramBoolean)
@@ -67,7 +68,7 @@ public class ThreadOffFunction<IN>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     com.tribe.async.async.ThreadOffFunction
  * JD-Core Version:    0.7.0.1
  */

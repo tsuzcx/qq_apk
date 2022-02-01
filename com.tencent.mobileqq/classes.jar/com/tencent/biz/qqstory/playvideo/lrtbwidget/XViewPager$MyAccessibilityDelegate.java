@@ -2,11 +2,11 @@ package com.tencent.biz.qqstory.playvideo.lrtbwidget;
 
 import android.os.Bundle;
 import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
 import android.support.v4.view.accessibility.AccessibilityRecordCompat;
 import android.view.View;
 import android.view.accessibility.AccessibilityEvent;
+import androidx.viewpager.widget.PagerAdapter;
 
 class XViewPager$MyAccessibilityDelegate
   extends AccessibilityDelegateCompat
@@ -50,21 +50,23 @@ class XViewPager$MyAccessibilityDelegate
     if (super.performAccessibilityAction(paramView, paramInt, paramBundle)) {
       return true;
     }
-    switch (paramInt)
+    if (paramInt != 4096)
     {
-    default: 
-      return false;
-    case 4096: 
-      if (this.a.canScrollHorizontally(1))
+      if (paramInt != 8192) {
+        return false;
+      }
+      if (this.a.canScrollHorizontally(-1))
       {
-        this.a.setCurrentItem(XViewPager.a(this.a) + 1);
+        paramView = this.a;
+        paramView.setCurrentItem(XViewPager.a(paramView) - 1);
         return true;
       }
       return false;
     }
-    if (this.a.canScrollHorizontally(-1))
+    if (this.a.canScrollHorizontally(1))
     {
-      this.a.setCurrentItem(XViewPager.a(this.a) - 1);
+      paramView = this.a;
+      paramView.setCurrentItem(XViewPager.a(paramView) + 1);
       return true;
     }
     return false;
@@ -72,7 +74,7 @@ class XViewPager$MyAccessibilityDelegate
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.playvideo.lrtbwidget.XViewPager.MyAccessibilityDelegate
  * JD-Core Version:    0.7.0.1
  */

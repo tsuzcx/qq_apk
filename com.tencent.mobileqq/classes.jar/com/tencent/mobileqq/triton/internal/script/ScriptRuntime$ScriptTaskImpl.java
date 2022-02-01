@@ -41,10 +41,12 @@ final class ScriptRuntime$ScriptTaskImpl
     Intrinsics.checkParameterIsNotNull(paramString, "methodName");
     ScriptRuntime localScriptRuntime = this.this$0;
     int i = this.scriptObjectHandle;
-    if (paramJSONObject != null) {}
-    for (paramJSONObject = paramJSONObject.toString();; paramJSONObject = null) {
-      return ScriptRuntime.access$callScriptMethod(localScriptRuntime, i, paramString, paramJSONObject);
+    if (paramJSONObject != null) {
+      paramJSONObject = paramJSONObject.toString();
+    } else {
+      paramJSONObject = null;
     }
+    return ScriptRuntime.access$callScriptMethod(localScriptRuntime, i, paramString, paramJSONObject);
   }
   
   public void destroy()
@@ -82,7 +84,7 @@ final class ScriptRuntime$ScriptTaskImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\tmp\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.triton.internal.script.ScriptRuntime.ScriptTaskImpl
  * JD-Core Version:    0.7.0.1
  */

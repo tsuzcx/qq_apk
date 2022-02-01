@@ -20,7 +20,6 @@ import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 import com.tencent.qqlive.module.videoreport.collect.EventCollector;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
 import com.tencent.qqmini.sdk.R.drawable;
 import com.tencent.qqmini.sdk.R.id;
 import com.tencent.qqmini.sdk.R.layout;
@@ -99,34 +98,26 @@ public class MoreFragment
   
   public void onClick(View paramView)
   {
-    boolean bool2 = false;
-    int j = -1;
-    int i;
-    boolean bool1;
-    if (paramView == this.mAfRootView)
+    Object localObject = this.mAfRootView;
+    int i = 0;
+    boolean bool;
+    if (paramView == localObject)
     {
-      i = 0;
-      bool1 = bool2;
+      bool = false;
     }
-    for (;;)
+    else if ((paramView != this.mCancelText) && ((paramView instanceof MoreItemView)))
     {
-      dismiss(i, bool1, null);
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      bool1 = bool2;
-      i = j;
-      if (paramView != this.mCancelText)
-      {
-        bool1 = bool2;
-        i = j;
-        if ((paramView instanceof MoreItemView))
-        {
-          MoreItem localMoreItem = ((MoreItemView)paramView).getMoreItem();
-          i = localMoreItem.id;
-          bool1 = localMoreItem.shareInMiniProcess;
-        }
-      }
+      localObject = ((MoreItemView)paramView).getMoreItem();
+      i = ((MoreItem)localObject).id;
+      bool = ((MoreItem)localObject).shareInMiniProcess;
     }
+    else
+    {
+      bool = false;
+      i = -1;
+    }
+    dismiss(i, bool, null);
+    EventCollector.getInstance().onViewClicked(paramView);
   }
   
   public View onCreateView(LayoutInflater paramLayoutInflater, ViewGroup paramViewGroup, Bundle paramBundle)
@@ -135,43 +126,38 @@ public class MoreFragment
     this.mScreenHeight = getActivity().getResources().getDisplayMetrics().heightPixels;
     this.mStatusBarHeight = DisplayUtil.getStatusBarHeight(getActivity());
     paramLayoutInflater = paramLayoutInflater.inflate(R.layout.mini_sdk_more_actionsheet_layout, paramViewGroup, false);
-    if (paramLayoutInflater == null) {
-      getActivity().finish();
-    }
-    for (paramLayoutInflater = null;; paramLayoutInflater = null)
+    if (paramLayoutInflater == null)
     {
-      V4FragmentCollector.onV4FragmentViewCreated(this, paramLayoutInflater);
-      return paramLayoutInflater;
-      this.mAfRootView = paramLayoutInflater.findViewById(R.id.af_root);
-      this.mCancelText = ((TextView)paramLayoutInflater.findViewById(R.id.miniapp_dialog_cancel));
-      this.mCancelText.setOnClickListener(this);
-      paramLayoutInflater.setOnClickListener(this);
-      paramViewGroup = getIntent();
-      if (paramViewGroup != null) {
-        break;
-      }
+      getActivity().finish();
+      return null;
+    }
+    this.mAfRootView = paramLayoutInflater.findViewById(R.id.af_root);
+    this.mCancelText = ((TextView)paramLayoutInflater.findViewById(R.id.miniapp_dialog_cancel));
+    this.mCancelText.setOnClickListener(this);
+    paramLayoutInflater.setOnClickListener(this);
+    paramViewGroup = getIntent();
+    if (paramViewGroup == null)
+    {
       QMLog.w("MoreFragment", "Failed to create MoreFragment, intent is null");
       if (getActivity() != null) {
         getActivity().finish();
       }
+      return null;
     }
     if (paramViewGroup.getBooleanExtra("key_orientation_landscape", false)) {
       getActivity().findViewById(16908290).setBackgroundResource(R.drawable.mini_sdk_more_fragment_background);
     }
     this.mMoreItemListLayout = ((LinearLayout)paramLayoutInflater.findViewById(R.id.more_item_list_layout));
     this.mMoreItemList = paramViewGroup.getParcelableArrayListExtra("key_more_item_list");
-    if (this.mMoreItemList == null)
+    paramViewGroup = this.mMoreItemList;
+    if (paramViewGroup == null)
     {
       QMLog.e("MoreFragment", "Failed to create MoreFragmentView. no items");
       getActivity().finish();
     }
-    for (;;)
+    else
     {
-      this.actionSheet = ((RelativeLayout)paramLayoutInflater);
-      this.actionSheet.setVisibility(0);
-      doActionSheetUpAnimation();
-      break;
-      paramViewGroup = this.mMoreItemList.iterator();
+      paramViewGroup = paramViewGroup.iterator();
       while (paramViewGroup.hasNext())
       {
         paramBundle = (MoreItem)paramViewGroup.next();
@@ -181,6 +167,10 @@ public class MoreFragment
         this.mMoreItemListLayout.addView(localMoreItemView);
       }
     }
+    this.actionSheet = ((RelativeLayout)paramLayoutInflater);
+    this.actionSheet.setVisibility(0);
+    doActionSheetUpAnimation();
+    return paramLayoutInflater;
   }
   
   public void onStop()
@@ -191,7 +181,7 @@ public class MoreFragment
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.ui.MoreFragment
  * JD-Core Version:    0.7.0.1
  */

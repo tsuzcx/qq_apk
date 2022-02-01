@@ -153,10 +153,11 @@ public class FromServiceMsg
   
   public int getBusinessFailCode(int paramInt)
   {
-    if (this.resultCode == -1) {
+    int i = this.resultCode;
+    if (i == -1) {
       return paramInt;
     }
-    return this.resultCode;
+    return i;
   }
   
   public String getBusinessFailMsg()
@@ -203,68 +204,72 @@ public class FromServiceMsg
   {
     try
     {
-      int j = "FromServiceMsg".length();
-      if (this.serviceCmd == null) {}
-      for (int i = 4;; i = this.serviceCmd.length())
-      {
-        StringBuilder localStringBuilder = new StringBuilder(i + (j + 8 + 8 + 10 + 10 + 10 + 5 + 10 + 12) + 7 + 10 + 8 + 10 + 10);
-        localStringBuilder.append("FromServiceMsg");
-        localStringBuilder.append(" msName:");
-        localStringBuilder.append(this.msfCommand);
-        localStringBuilder.append(" ssoSeq:");
-        localStringBuilder.append(getRequestSsoSeq());
-        localStringBuilder.append(" serviceCmd:");
-        localStringBuilder.append(this.serviceCmd);
-        localStringBuilder.append(" appSeq:");
-        localStringBuilder.append(this.appSeq);
-        localStringBuilder.append(" failCode:");
-        localStringBuilder.append(this.resultCode);
-        return localStringBuilder.toString();
+      int i;
+      if (this.serviceCmd == null) {
+        i = 4;
+      } else {
+        i = this.serviceCmd.length();
       }
-      return "fsm getString error";
+      Object localObject = new StringBuilder(87 + i + 7 + 10 + 8 + 10 + 10);
+      ((StringBuilder)localObject).append("FromServiceMsg");
+      ((StringBuilder)localObject).append(" msName:");
+      ((StringBuilder)localObject).append(this.msfCommand);
+      ((StringBuilder)localObject).append(" ssoSeq:");
+      ((StringBuilder)localObject).append(getRequestSsoSeq());
+      ((StringBuilder)localObject).append(" serviceCmd:");
+      ((StringBuilder)localObject).append(this.serviceCmd);
+      ((StringBuilder)localObject).append(" appSeq:");
+      ((StringBuilder)localObject).append(this.appSeq);
+      ((StringBuilder)localObject).append(" failCode:");
+      ((StringBuilder)localObject).append(this.resultCode);
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
+    return "fsm getString error";
   }
   
   public String getStringForLog()
   {
     try
     {
-      int j = "FromServiceMsg".length();
-      int k = this.msfCommand.toString().length();
-      int m = this.errorMsg.length();
-      if (this.serviceCmd == null) {}
-      for (int i = 4;; i = this.serviceCmd.length())
-      {
-        StringBuilder localStringBuilder = new StringBuilder(i + (j + 8 + k + 8 + 10 + 10 + 10 + 10 + m + 5 + 10 + 12) + 7 + 10 + 8 + 10 + 10);
-        localStringBuilder.append("FromServiceMsg");
-        localStringBuilder.append(" msName:");
-        localStringBuilder.append(this.msfCommand);
-        localStringBuilder.append(" ssoSeq:");
-        localStringBuilder.append(getRequestSsoSeq());
-        localStringBuilder.append(" failCode:");
-        localStringBuilder.append(this.resultCode);
-        localStringBuilder.append(" errorMsg:");
-        localStringBuilder.append(this.errorMsg);
-        localStringBuilder.append(" uin:");
-        localStringBuilder.append(MsfSdkUtils.getShortUin(this.uin));
-        localStringBuilder.append(" serviceCmd:");
-        localStringBuilder.append(this.serviceCmd);
-        localStringBuilder.append(" appId:");
-        localStringBuilder.append(this.appId);
-        localStringBuilder.append(" appSeq:");
-        localStringBuilder.append(this.appSeq);
-        return localStringBuilder.toString();
+      int j = this.msfCommand.toString().length();
+      int k = this.errorMsg.length();
+      int i;
+      if (this.serviceCmd == null) {
+        i = 4;
+      } else {
+        i = this.serviceCmd.length();
       }
-      return "fsm getString error";
+      Object localObject = new StringBuilder(22 + j + 8 + 10 + 10 + 10 + 10 + k + 5 + 10 + 12 + i + 7 + 10 + 8 + 10 + 10);
+      ((StringBuilder)localObject).append("FromServiceMsg");
+      ((StringBuilder)localObject).append(" msName:");
+      ((StringBuilder)localObject).append(this.msfCommand);
+      ((StringBuilder)localObject).append(" ssoSeq:");
+      ((StringBuilder)localObject).append(getRequestSsoSeq());
+      ((StringBuilder)localObject).append(" failCode:");
+      ((StringBuilder)localObject).append(this.resultCode);
+      ((StringBuilder)localObject).append(" errorMsg:");
+      ((StringBuilder)localObject).append(this.errorMsg);
+      ((StringBuilder)localObject).append(" uin:");
+      ((StringBuilder)localObject).append(MsfSdkUtils.getShortUin(this.uin));
+      ((StringBuilder)localObject).append(" serviceCmd:");
+      ((StringBuilder)localObject).append(this.serviceCmd);
+      ((StringBuilder)localObject).append(" appId:");
+      ((StringBuilder)localObject).append(this.appId);
+      ((StringBuilder)localObject).append(" appSeq:");
+      ((StringBuilder)localObject).append(this.appSeq);
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
+    return "fsm getString error";
   }
   
   public String getUin()
@@ -396,38 +401,40 @@ public class FromServiceMsg
   {
     try
     {
-      int j = "FromServiceMsg".length();
-      int k = this.msfCommand.toString().length();
-      int m = this.errorMsg.length();
-      if (this.serviceCmd == null) {}
-      for (int i = 4;; i = this.serviceCmd.length())
-      {
-        StringBuilder localStringBuilder = new StringBuilder(i + (j + 8 + k + 8 + 10 + 10 + 10 + 10 + m + 5 + 10 + 12) + 7 + 10 + 8 + 10 + 10);
-        localStringBuilder.append("FromServiceMsg");
-        localStringBuilder.append(" msName:");
-        localStringBuilder.append(this.msfCommand);
-        localStringBuilder.append(" ssoSeq:");
-        localStringBuilder.append(getRequestSsoSeq());
-        localStringBuilder.append(" failCode:");
-        localStringBuilder.append(this.resultCode);
-        localStringBuilder.append(" errorMsg:");
-        localStringBuilder.append(this.errorMsg);
-        localStringBuilder.append(" uin:");
-        localStringBuilder.append(this.uin);
-        localStringBuilder.append(" serviceCmd:");
-        localStringBuilder.append(this.serviceCmd);
-        localStringBuilder.append(" appId:");
-        localStringBuilder.append(this.appId);
-        localStringBuilder.append(" appSeq:");
-        localStringBuilder.append(this.appSeq);
-        return localStringBuilder.toString();
+      int j = this.msfCommand.toString().length();
+      int k = this.errorMsg.length();
+      int i;
+      if (this.serviceCmd == null) {
+        i = 4;
+      } else {
+        i = this.serviceCmd.length();
       }
-      return "fsm toString error";
+      Object localObject = new StringBuilder(22 + j + 8 + 10 + 10 + 10 + 10 + k + 5 + 10 + 12 + i + 7 + 10 + 8 + 10 + 10);
+      ((StringBuilder)localObject).append("FromServiceMsg");
+      ((StringBuilder)localObject).append(" msName:");
+      ((StringBuilder)localObject).append(this.msfCommand);
+      ((StringBuilder)localObject).append(" ssoSeq:");
+      ((StringBuilder)localObject).append(getRequestSsoSeq());
+      ((StringBuilder)localObject).append(" failCode:");
+      ((StringBuilder)localObject).append(this.resultCode);
+      ((StringBuilder)localObject).append(" errorMsg:");
+      ((StringBuilder)localObject).append(this.errorMsg);
+      ((StringBuilder)localObject).append(" uin:");
+      ((StringBuilder)localObject).append(this.uin);
+      ((StringBuilder)localObject).append(" serviceCmd:");
+      ((StringBuilder)localObject).append(this.serviceCmd);
+      ((StringBuilder)localObject).append(" appId:");
+      ((StringBuilder)localObject).append(this.appId);
+      ((StringBuilder)localObject).append(" appSeq:");
+      ((StringBuilder)localObject).append(this.appSeq);
+      localObject = ((StringBuilder)localObject).toString();
+      return localObject;
     }
     catch (Exception localException)
     {
       localException.printStackTrace();
     }
+    return "fsm toString error";
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -463,7 +470,7 @@ public class FromServiceMsg
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qphone.base.remote.FromServiceMsg
  * JD-Core Version:    0.7.0.1
  */

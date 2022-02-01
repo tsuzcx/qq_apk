@@ -42,17 +42,19 @@ public final class tag_together_query_req
   {
     paramJceOutputStream.write(this.uPgcUin, 0);
     paramJceOutputStream.write(this.uPgcAppid, 1);
-    if (this.sPgcFeedKey != null) {
-      paramJceOutputStream.write(this.sPgcFeedKey, 2);
+    Object localObject = this.sPgcFeedKey;
+    if (localObject != null) {
+      paramJceOutputStream.write((String)localObject, 2);
     }
-    if (this.mapExt != null) {
-      paramJceOutputStream.write(this.mapExt, 3);
+    localObject = this.mapExt;
+    if (localObject != null) {
+      paramJceOutputStream.write((Map)localObject, 3);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     ELABORATE_FEED_REPORT.tag_together_query_req
  * JD-Core Version:    0.7.0.1
  */

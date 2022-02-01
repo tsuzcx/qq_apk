@@ -39,13 +39,13 @@ public class TimeMonitor
     if (!this.mEnable) {
       return;
     }
-    if (this.mCurrentEvent != null)
+    HippyEngineMonitorEvent localHippyEngineMonitorEvent = this.mCurrentEvent;
+    if (localHippyEngineMonitorEvent != null)
     {
-      this.mCurrentEvent.endTime = System.currentTimeMillis();
+      localHippyEngineMonitorEvent.endTime = System.currentTimeMillis();
       this.mEvents.add(this.mCurrentEvent);
     }
     this.mTotalTime = ((int)(SystemClock.elapsedRealtime() - this.mStartTime));
-    LogUtils.d("hippy", "hippy endEvent: " + this.mCurrentEvent.eventName);
   }
   
   public List<HippyEngineMonitorEvent> getEvents()
@@ -60,26 +60,35 @@ public class TimeMonitor
   
   public void startEvent(String paramString)
   {
-    if (!this.mEnable) {}
-    do
-    {
+    if (!this.mEnable) {
       return;
-      if (this.mCurrentEvent != null)
-      {
-        this.mCurrentEvent.endTime = System.currentTimeMillis();
-        this.mEvents.add(this.mCurrentEvent);
-        LogUtils.d("hippy", "hippy endEvent: " + this.mCurrentEvent.eventName);
-      }
-    } while (TextUtils.isEmpty(paramString));
+    }
+    Object localObject = this.mCurrentEvent;
+    if (localObject != null)
+    {
+      ((HippyEngineMonitorEvent)localObject).endTime = System.currentTimeMillis();
+      this.mEvents.add(this.mCurrentEvent);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("hippy endEvent: ");
+      ((StringBuilder)localObject).append(this.mCurrentEvent.eventName);
+      LogUtils.d("hippy", ((StringBuilder)localObject).toString());
+    }
+    if (TextUtils.isEmpty(paramString)) {
+      return;
+    }
     this.mCurrentEvent = new HippyEngineMonitorEvent();
-    this.mCurrentEvent.eventName = paramString;
-    this.mCurrentEvent.startTime = System.currentTimeMillis();
-    LogUtils.d("hippy", "hippy startEvent: " + paramString);
+    localObject = this.mCurrentEvent;
+    ((HippyEngineMonitorEvent)localObject).eventName = paramString;
+    ((HippyEngineMonitorEvent)localObject).startTime = System.currentTimeMillis();
+    localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("hippy startEvent: ");
+    ((StringBuilder)localObject).append(paramString);
+    LogUtils.d("hippy", ((StringBuilder)localObject).toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mtt.hippy.utils.TimeMonitor
  * JD-Core Version:    0.7.0.1
  */

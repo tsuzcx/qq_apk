@@ -12,8 +12,12 @@ final class SwiftBrowserCookieMonster$7
   
   public void onPostRun()
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SwiftBrowserCookieMonster", 2, "Web_qqbrowser_pre_get_key, cost=" + (System.currentTimeMillis() - this.a));
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("Web_qqbrowser_pre_get_key, cost=");
+      localStringBuilder.append(System.currentTimeMillis() - this.a);
+      QLog.i("SwiftBrowserCookieMonster", 2, localStringBuilder.toString());
     }
     this.a = 0L;
   }
@@ -25,7 +29,7 @@ final class SwiftBrowserCookieMonster$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.webview.swift.component.SwiftBrowserCookieMonster.7
  * JD-Core Version:    0.7.0.1
  */

@@ -21,26 +21,26 @@ public class MeizuRomUtils
       paramFragment.startActivityForResult(localIntent, 100);
       return;
     }
-    catch (Exception localException)
+    catch (Exception localException) {}
+    try
     {
-      try
-      {
-        Logger.e("MeizuRomUtils", "获取悬浮窗权限, 打开AppSecActivity失败");
-        localException.printStackTrace();
-        FWPermission.commonPermissionApplyInternal(paramFragment);
-        return;
-      }
-      catch (Exception paramFragment)
-      {
-        Logger.e("MeizuRomUtils", "获取悬浮窗权限失败, 通用获取方法失败");
-        localException.printStackTrace();
-      }
+      Logger.e("MeizuRomUtils", "获取悬浮窗权限, 打开AppSecActivity失败");
+      localException.printStackTrace();
+      FWPermission.commonPermissionApplyInternal(paramFragment);
+      return;
     }
+    catch (Exception paramFragment)
+    {
+      label49:
+      break label49;
+    }
+    Logger.e("MeizuRomUtils", "获取悬浮窗权限失败, 通用获取方法失败");
+    localException.printStackTrace();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.falco.base.floatwindow.permission.romutils.MeizuRomUtils
  * JD-Core Version:    0.7.0.1
  */

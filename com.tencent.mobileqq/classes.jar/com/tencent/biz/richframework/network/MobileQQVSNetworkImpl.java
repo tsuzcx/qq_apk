@@ -4,11 +4,10 @@ import com.tencent.biz.richframework.network.delegate.VSBaseNetwork;
 import com.tencent.biz.richframework.network.request.BaseRequest;
 import com.tencent.biz.richframework.network.servlet.VSBaseServlet;
 import com.tencent.mobileqq.qcircle.api.global.QCircleHostGlobalInfo;
-import com.tencent.mobileqq.qcircle.api.impl.QCircleServiceImpl;
-import com.tencent.mobileqq.qcircle.tempapi.api.IQZoneService;
 import cooperation.qqcircle.proxy.QCircleInvokeProxy;
 import cooperation.qqcircle.report.outbox.QCircleReportOutboxTaskQueue;
 import cooperation.qqcircle.report.outbox.SimpleTaskQueue;
+import cooperation.qzone.QUA;
 import mqq.app.AppRuntime;
 import mqq.app.MobileQQ;
 import mqq.app.NewIntent;
@@ -25,7 +24,7 @@ public class MobileQQVSNetworkImpl
   
   public String getQUA()
   {
-    return QCircleServiceImpl.getQZoneService().getQUA3();
+    return QUA.getQUA3();
   }
   
   public boolean isValidLog(String paramString)
@@ -62,7 +61,7 @@ public class MobileQQVSNetworkImpl
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.richframework.network.MobileQQVSNetworkImpl
  * JD-Core Version:    0.7.0.1
  */

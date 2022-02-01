@@ -23,31 +23,32 @@ class AsyncFileDownloader$InnerAIOShortVideoDownloader$1
     {
       paramShortVideoResult = (DownCallBack.DownResult)paramShortVideoResult.jdField_a_of_type_JavaLangObject;
       localDownloadTask = (DownloadTask)this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      if (localDownloadTask != null)
-      {
-        if (!new File(paramShortVideoResult.b).exists()) {
-          break label99;
+      if (localDownloadTask != null) {
+        if (new File(paramShortVideoResult.b).exists())
+        {
+          localDownloadTask.b = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
+          if (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult != null) {
+            localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult.a(localDownloadTask, new ErrorMessage(0, "onDownload"));
+          }
         }
-        localDownloadTask.b = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
-        if (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult != null) {
-          localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult.a(localDownloadTask, new ErrorMessage(0, "onDownload"));
+        else
+        {
+          SLog.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
         }
       }
     }
-    label99:
-    do
+    else
     {
-      do
+      SLog.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(paramShortVideoResult.jdField_a_of_type_Int) });
+      localDownloadTask = (DownloadTask)this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader.a.a.remove(this.jdField_a_of_type_JavaLangString);
+      if (localDownloadTask != null)
       {
-        return;
-        SLog.d("AsyncFileDownloader", "preload success , why file not exist , key : %s", new Object[] { this.jdField_a_of_type_JavaLangString });
-        return;
-        SLog.d("AsyncFileDownloader", "onPreLoadFailed,key=%s,errorCode=%s", new Object[] { this.jdField_a_of_type_JavaLangString, String.valueOf(paramShortVideoResult.jdField_a_of_type_Int) });
-        localDownloadTask = (DownloadTask)this.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$InnerAIOShortVideoDownloader.a.a.remove(this.jdField_a_of_type_JavaLangString);
-      } while (localDownloadTask == null);
-      localDownloadTask.b = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
-    } while (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult == null);
-    localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult.a(localDownloadTask, new ErrorMessage(paramShortVideoResult.jdField_a_of_type_Int, "onFailed"));
+        localDownloadTask.b = (System.currentTimeMillis() - localDownloadTask.jdField_a_of_type_Long);
+        if (localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult != null) {
+          localDownloadTask.jdField_a_of_type_ComTencentBizQqstoryBasePreloadAsyncFileDownloader$DownloadResult.a(localDownloadTask, new ErrorMessage(paramShortVideoResult.jdField_a_of_type_Int, "onFailed"));
+        }
+      }
+    }
   }
   
   public void a(int paramInt, ArrayList<ShortVideoResult> paramArrayList) {}
@@ -56,7 +57,7 @@ class AsyncFileDownloader$InnerAIOShortVideoDownloader$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.preload.AsyncFileDownloader.InnerAIOShortVideoDownloader.1
  * JD-Core Version:    0.7.0.1
  */

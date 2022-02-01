@@ -63,7 +63,14 @@ public class RequestAck
     if (this.cacheIp_send != 0)
     {
       localSegHead.uint32_cache_addr.set(this.cacheIp_send);
-      BdhLogUtil.LogEvent("R", "RequestAck getSegmentHead : cache_addr send to server is : " + this.cacheIp_send + " ( " + intToIP(this.cacheIp_send) + " ) Seq:" + getHwSeq());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("RequestAck getSegmentHead : cache_addr send to server is : ");
+      localStringBuilder.append(this.cacheIp_send);
+      localStringBuilder.append(" ( ");
+      localStringBuilder.append(intToIP(this.cacheIp_send));
+      localStringBuilder.append(" ) Seq:");
+      localStringBuilder.append(getHwSeq());
+      BdhLogUtil.LogEvent("R", localStringBuilder.toString());
     }
     return localSegHead;
   }
@@ -88,7 +95,7 @@ public class RequestAck
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.highway.segment.RequestAck
  * JD-Core Version:    0.7.0.1
  */

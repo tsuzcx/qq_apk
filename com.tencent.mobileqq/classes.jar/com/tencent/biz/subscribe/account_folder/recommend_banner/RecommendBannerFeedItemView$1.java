@@ -16,12 +16,16 @@ class RecommendBannerFeedItemView$1
     if (RecommendBannerFeedItemView.a(this.a) == null) {
       return;
     }
-    VSReporter.a(RecommendBannerFeedItemView.a(this.a).poster.id.get(), "auth_page", "recom_follow_b", 0, 0, new String[] { "", RecommendBannerFeedItemView.a(this.a) + "", RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
+    String str = RecommendBannerFeedItemView.a(this.a).poster.id.get();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(RecommendBannerFeedItemView.a(this.a));
+    localStringBuilder.append("");
+    VSReporter.a(str, "auth_page", "recom_follow_b", 0, 0, new String[] { "", localStringBuilder.toString(), RecommendBannerFeedItemView.a(this.a).poster.nick.get(), RecommendBannerFeedItemView.a(this.a).title.get() });
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.subscribe.account_folder.recommend_banner.RecommendBannerFeedItemView.1
  * JD-Core Version:    0.7.0.1
  */

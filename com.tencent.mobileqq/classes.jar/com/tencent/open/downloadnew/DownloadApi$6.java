@@ -16,25 +16,30 @@ final class DownloadApi$6
     {
       new ArrayList();
       List localList = DownloadManager.a().b(this.jdField_a_of_type_JavaLangString);
-      LogUtility.a(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia result = " + localList);
-      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null) {
+      localObject = DownloadApi.jdField_a_of_type_JavaLangString;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("getQueryDownloadActionByVia result = ");
+      localStringBuilder.append(localList);
+      LogUtility.a((String)localObject, localStringBuilder.toString());
+      if (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener != null)
+      {
         this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(localList);
+        return;
       }
-      return;
     }
     catch (Exception localException)
     {
-      do
-      {
-        LogUtility.c(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
-      } while (this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener == null);
-      this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener.a(-1, localException.getMessage());
+      LogUtility.c(DownloadApi.jdField_a_of_type_JavaLangString, "getQueryDownloadActionByVia Exception>>>", localException);
+      Object localObject = this.jdField_a_of_type_ComTencentOpenDownloadnewDownloadQueryListener;
+      if (localObject != null) {
+        ((DownloadQueryListener)localObject).a(-1, localException.getMessage());
+      }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.open.downloadnew.DownloadApi.6
  * JD-Core Version:    0.7.0.1
  */

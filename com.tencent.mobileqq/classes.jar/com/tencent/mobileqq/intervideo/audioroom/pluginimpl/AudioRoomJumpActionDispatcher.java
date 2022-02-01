@@ -33,19 +33,20 @@ public final class AudioRoomJumpActionDispatcher
     int i = StringsKt.indexOf$default((CharSequence)paramString, "?", 0, false, 6, null);
     if (i >= 0)
     {
-      if (paramString == null) {
-        throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
-      }
-      paramString = paramString.substring(i + 1);
-      Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
-      paramString = ((Iterable)StringsKt.split$default((CharSequence)paramString, new String[] { "&" }, false, 0, 6, null)).iterator();
-      while (paramString.hasNext())
+      if (paramString != null)
       {
-        List localList = StringsKt.split$default((CharSequence)paramString.next(), new String[] { "=" }, false, 0, 6, null);
-        if (localList.size() == 2) {
-          localMap.put(localList.get(0), localList.get(1));
+        paramString = paramString.substring(i + 1);
+        Intrinsics.checkExpressionValueIsNotNull(paramString, "(this as java.lang.String).substring(startIndex)");
+        paramString = ((Iterable)StringsKt.split$default((CharSequence)paramString, new String[] { "&" }, false, 0, 6, null)).iterator();
+        while (paramString.hasNext())
+        {
+          List localList = StringsKt.split$default((CharSequence)paramString.next(), new String[] { "=" }, false, 0, 6, null);
+          if (localList.size() == 2) {
+            localMap.put(localList.get(0), localList.get(1));
+          }
         }
       }
+      throw new TypeCastException("null cannot be cast to non-null type java.lang.String");
     }
     return localMap;
   }
@@ -61,10 +62,13 @@ public final class AudioRoomJumpActionDispatcher
   
   private final void a(String paramString)
   {
-    String str = (String)a(paramString).get("uin");
-    if (str == null)
+    Object localObject = (String)a(paramString).get("uin");
+    if (localObject == null)
     {
-      QLog.w("AudioRoomJumpActionDispatcher", 2, "openStrangerAIO fail: " + paramString);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("openStrangerAIO fail: ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.w("AudioRoomJumpActionDispatcher", 2, ((StringBuilder)localObject).toString());
       return;
     }
     paramString = BaseApplicationImpl.getApplication();
@@ -72,7 +76,7 @@ public final class AudioRoomJumpActionDispatcher
     paramString = paramString.getBaseContext();
     Intent localIntent = new Intent(paramString, ChatActivity.class);
     localIntent.addFlags(268435456);
-    localIntent.putExtra("uin", str);
+    localIntent.putExtra("uin", (String)localObject);
     localIntent.putExtra("uintype", 10010);
     paramString.startActivity(localIntent);
   }
@@ -127,7 +131,7 @@ public final class AudioRoomJumpActionDispatcher
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.audioroom.pluginimpl.AudioRoomJumpActionDispatcher
  * JD-Core Version:    0.7.0.1
  */

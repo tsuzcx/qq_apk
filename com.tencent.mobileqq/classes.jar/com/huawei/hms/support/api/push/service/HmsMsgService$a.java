@@ -6,19 +6,19 @@ import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import com.huawei.hms.push.f;
+import com.huawei.hms.push.c;
 import com.huawei.hms.support.log.HMSLog;
 import com.huawei.hms.utils.HMSPackageManager;
 import com.huawei.hms.utils.PackageManagerHelper.PackageStates;
 import com.huawei.hms.utils.ResourceLoaderUtil;
 import java.util.Objects;
 
-class HmsMsgService$a
+public class HmsMsgService$a
   extends Handler
 {
-  private Context a;
+  public Context a;
   
-  HmsMsgService$a(Context paramContext)
+  public HmsMsgService$a(Context paramContext)
   {
     this.a = paramContext;
   }
@@ -26,34 +26,32 @@ class HmsMsgService$a
   public void handleMessage(Message paramMessage)
   {
     Bundle localBundle = paramMessage.getData();
-    if (Build.VERSION.SDK_INT >= 21) {
-      if ((Objects.equals(this.a.getApplicationContext().getPackageManager().getNameForUid(paramMessage.sendingUid), HMSPackageManager.getInstance(this.a).getHMSPackageName())) && (localBundle != null))
-      {
-        if (HMSPackageManager.getInstance(this.a).getHMSPackageStates() == PackageManagerHelper.PackageStates.ENABLED) {
-          break label79;
-        }
-        HMSLog.i("HmsMsgService", "service not start by hms");
-      }
-    }
-    for (;;)
+    if (Build.VERSION.SDK_INT >= 21)
     {
-      super.handleMessage(paramMessage);
-      return;
-      label79:
-      HMSLog.i("HmsMsgService", "chose push type");
-      if (Objects.equals(f.a(localBundle, "push_action"), "com.huawei.push.msg.NOTIFY_MSG"))
-      {
-        if (ResourceLoaderUtil.getmContext() == null) {
-          ResourceLoaderUtil.setmContext(this.a.getApplicationContext());
+      if ((Objects.equals(this.a.getApplicationContext().getPackageManager().getNameForUid(paramMessage.sendingUid), HMSPackageManager.getInstance(this.a).getHMSPackageName())) && (localBundle != null)) {
+        if (HMSPackageManager.getInstance(this.a).getHMSPackageStates() != PackageManagerHelper.PackageStates.ENABLED)
+        {
+          HMSLog.i("HmsMsgService", "service not start by hms");
         }
-        HMSLog.i("HmsMsgService", "invokeSelfShow");
-        HmsMsgService.a(this.a, localBundle);
+        else
+        {
+          HMSLog.i("HmsMsgService", "chose push type");
+          if (Objects.equals(c.b(localBundle, "push_action"), "com.huawei.push.msg.NOTIFY_MSG"))
+          {
+            if (ResourceLoaderUtil.getmContext() == null) {
+              ResourceLoaderUtil.setmContext(this.a.getApplicationContext());
+            }
+            HMSLog.i("HmsMsgService", "invokeSelfShow");
+            HmsMsgService.a(this.a, localBundle);
+          }
+          else if (Objects.equals(c.b(localBundle, "push_action"), "com.huawei.push.msg.PASSBY_MSG"))
+          {
+            HMSLog.i("HmsMsgService", "sendBroadcastToHms");
+            HmsMsgService.b(this.a, localBundle);
+          }
+        }
       }
-      else if (Objects.equals(f.a(localBundle, "push_action"), "com.huawei.push.msg.PASSBY_MSG"))
-      {
-        HMSLog.i("HmsMsgService", "sendBroadcastToHms");
-        HmsMsgService.b(this.a, localBundle);
-      }
+      super.handleMessage(paramMessage);
     }
   }
 }

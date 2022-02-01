@@ -65,49 +65,60 @@ public class QavInOutAnimation
     paramVideoController = new DecelerateInterpolator();
     paramQavPanel = new AccelerateInterpolator();
     this.jdField_c_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, -1.0F, 1, 0.0F);
-    this.jdField_c_of_type_AndroidViewAnimationAnimation.setDuration(620);
+    paramView1 = this.jdField_c_of_type_AndroidViewAnimationAnimation;
+    long l1 = 620;
+    paramView1.setDuration(l1);
     this.jdField_c_of_type_AndroidViewAnimationAnimation.setInterpolator(paramVideoController);
     this.h = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, -1.0F);
-    this.h.setDuration(620);
+    this.h.setDuration(l1);
     this.h.setInterpolator(paramQavPanel);
     paramInt = UITools.a(paramContext);
-    if (paramInt <= 320) {
-      paramInt = paramContext.getResources().getDimensionPixelSize(2131297803) + paramContext.getResources().getDimensionPixelSize(2131297799);
+    int n;
+    if (paramInt <= 320)
+    {
+      n = paramContext.getResources().getDimensionPixelSize(2131297794);
+      paramInt = paramContext.getResources().getDimensionPixelSize(2131297790);
     }
     for (;;)
     {
-      this.jdField_d_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 0, -paramInt, 1, 0.0F);
-      this.jdField_d_of_type_AndroidViewAnimationAnimation.setDuration(620);
-      this.jdField_d_of_type_AndroidViewAnimationAnimation.setInterpolator(paramVideoController);
-      this.i = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 0, -paramInt);
-      this.i.setDuration(620);
-      this.i.setInterpolator(paramQavPanel);
-      this.jdField_e_of_type_AndroidViewAnimationAnimation = new AlphaAnimation(0.0F, 1.0F);
-      this.jdField_e_of_type_AndroidViewAnimationAnimation.setDuration(620);
-      this.j = new AlphaAnimation(1.0F, 0.0F);
-      this.j.setDuration(620);
-      this.jdField_f_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
-      this.jdField_f_of_type_AndroidViewAnimationAnimation.setDuration(620);
-      this.jdField_f_of_type_AndroidViewAnimationAnimation.setInterpolator(paramVideoController);
-      this.k = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
-      this.k.setDuration(620);
-      this.k.setInterpolator(paramQavPanel);
-      this.l = new AlphaAnimation(0.0F, 0.0F);
-      this.l.setDuration(620);
-      this.jdField_g_of_type_AndroidViewAnimationAnimation = new AlphaAnimation(0.0F, 0.0F);
-      this.jdField_g_of_type_AndroidViewAnimationAnimation.setDuration(620);
-      this.m = new AlphaAnimation(0.0F, 0.0F);
-      this.m.setDuration(620);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new QavInOutAnimation.InAnimationListener(this);
-      this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new QavInOutAnimation.InDelayAnimationListener(this);
-      this.jdField_c_of_type_AndroidViewAnimationAnimation$AnimationListener = new QavInOutAnimation.OutAnimationListener(this);
-      return;
-      if (paramInt <= 480) {
-        paramInt = paramContext.getResources().getDimensionPixelSize(2131297804) + paramContext.getResources().getDimensionPixelSize(2131297800);
-      } else {
-        paramInt = paramContext.getResources().getDimensionPixelSize(2131297806) + paramContext.getResources().getDimensionPixelSize(2131297802);
+      break;
+      if (paramInt <= 480)
+      {
+        n = paramContext.getResources().getDimensionPixelSize(2131297795);
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131297791);
+      }
+      else
+      {
+        n = paramContext.getResources().getDimensionPixelSize(2131297797);
+        paramInt = paramContext.getResources().getDimensionPixelSize(2131297793);
       }
     }
+    float f1 = -(n + paramInt);
+    this.jdField_d_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 0, f1, 1, 0.0F);
+    this.jdField_d_of_type_AndroidViewAnimationAnimation.setDuration(l1);
+    this.jdField_d_of_type_AndroidViewAnimationAnimation.setInterpolator(paramVideoController);
+    this.i = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 0, f1);
+    this.i.setDuration(l1);
+    this.i.setInterpolator(paramQavPanel);
+    this.jdField_e_of_type_AndroidViewAnimationAnimation = new AlphaAnimation(0.0F, 1.0F);
+    this.jdField_e_of_type_AndroidViewAnimationAnimation.setDuration(l1);
+    this.j = new AlphaAnimation(1.0F, 0.0F);
+    this.j.setDuration(l1);
+    this.jdField_f_of_type_AndroidViewAnimationAnimation = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 1.0F, 1, 0.0F);
+    this.jdField_f_of_type_AndroidViewAnimationAnimation.setDuration(l1);
+    this.jdField_f_of_type_AndroidViewAnimationAnimation.setInterpolator(paramVideoController);
+    this.k = new TranslateAnimation(1, 0.0F, 1, 0.0F, 1, 0.0F, 1, 1.0F);
+    this.k.setDuration(l1);
+    this.k.setInterpolator(paramQavPanel);
+    this.l = new AlphaAnimation(0.0F, 0.0F);
+    this.l.setDuration(l1);
+    this.jdField_g_of_type_AndroidViewAnimationAnimation = new AlphaAnimation(0.0F, 0.0F);
+    this.jdField_g_of_type_AndroidViewAnimationAnimation.setDuration(l1);
+    this.m = new AlphaAnimation(0.0F, 0.0F);
+    this.m.setDuration(l1);
+    this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener = new QavInOutAnimation.InAnimationListener(this);
+    this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener = new QavInOutAnimation.InDelayAnimationListener(this);
+    this.jdField_c_of_type_AndroidViewAnimationAnimation$AnimationListener = new QavInOutAnimation.OutAnimationListener(this);
   }
   
   public void a()
@@ -118,121 +129,160 @@ public class QavInOutAnimation
   public void a(QavInOutAnimation.QavInAnimationListener paramQavInAnimationListener)
   {
     this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavInAnimationListener = paramQavInAnimationListener;
-    if ((this.jdField_a_of_type_ComTencentAvVideoController == null) || (this.jdField_a_of_type_ComTencentAvVideoController.a() == null) || (this.jdField_a_of_type_ComTencentAvVideoController.a().au) || (this.jdField_a_of_type_ComTencentAvUiQavPanel == null) || (this.jdField_f_of_type_AndroidViewAnimationAnimation == null) || (this.jdField_a_of_type_AndroidViewAnimationAnimation == null)) {
-      if (this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavInAnimationListener != null)
+    paramQavInAnimationListener = this.jdField_a_of_type_ComTencentAvVideoController;
+    if ((paramQavInAnimationListener != null) && (paramQavInAnimationListener.a() != null) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().ai) && (this.jdField_a_of_type_ComTencentAvUiQavPanel != null))
+    {
+      paramQavInAnimationListener = this.jdField_f_of_type_AndroidViewAnimationAnimation;
+      if ((paramQavInAnimationListener != null) && (this.jdField_a_of_type_AndroidViewAnimationAnimation != null))
       {
-        this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavInAnimationListener.a();
-        this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavInAnimationListener.b();
+        paramQavInAnimationListener.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
+        this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener);
+        this.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
+        paramQavInAnimationListener = this.jdField_a_of_type_AndroidViewView;
+        if (paramQavInAnimationListener != null) {
+          paramQavInAnimationListener.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
+        paramQavInAnimationListener = this.jdField_b_of_type_AndroidViewView;
+        if (paramQavInAnimationListener != null) {
+          paramQavInAnimationListener.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
+        paramQavInAnimationListener = this.jdField_c_of_type_AndroidViewView;
+        if (paramQavInAnimationListener != null) {
+          paramQavInAnimationListener.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
+        paramQavInAnimationListener = this.jdField_d_of_type_AndroidViewView;
+        if (paramQavInAnimationListener != null) {
+          paramQavInAnimationListener.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
+        paramQavInAnimationListener = this.jdField_e_of_type_AndroidViewView;
+        if (paramQavInAnimationListener != null) {
+          paramQavInAnimationListener.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
+        paramQavInAnimationListener = this.jdField_g_of_type_AndroidViewView;
+        if (paramQavInAnimationListener != null) {
+          paramQavInAnimationListener.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+        }
+        return;
       }
     }
-    do
+    paramQavInAnimationListener = this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavInAnimationListener;
+    if (paramQavInAnimationListener != null)
     {
-      return;
-      this.jdField_f_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_a_of_type_AndroidViewAnimationAnimation$AnimationListener);
-      this.jdField_a_of_type_AndroidViewAnimationAnimation.setAnimationListener(this.jdField_b_of_type_AndroidViewAnimationAnimation$AnimationListener);
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(this.jdField_a_of_type_AndroidViewAnimationAnimation);
-      if (this.jdField_a_of_type_AndroidViewView != null) {
-        this.jdField_a_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-      }
-      if (this.jdField_b_of_type_AndroidViewView != null) {
-        this.jdField_b_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-      }
-      if (this.jdField_c_of_type_AndroidViewView != null) {
-        this.jdField_c_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-      }
-      if (this.jdField_d_of_type_AndroidViewView != null) {
-        this.jdField_d_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-      }
-      if (this.jdField_e_of_type_AndroidViewView != null) {
-        this.jdField_e_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
-      }
-    } while (this.jdField_g_of_type_AndroidViewView == null);
-    this.jdField_g_of_type_AndroidViewView.startAnimation(this.jdField_b_of_type_AndroidViewAnimationAnimation);
+      paramQavInAnimationListener.a();
+      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavInAnimationListener.b();
+    }
   }
   
   public void a(QavInOutAnimation.QavOutAnimationListener paramQavOutAnimationListener)
   {
     this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener = paramQavOutAnimationListener;
-    if ((this.jdField_a_of_type_ComTencentAvVideoController == null) || (this.jdField_a_of_type_ComTencentAvVideoController.a() == null) || (this.jdField_a_of_type_ComTencentAvVideoController.a().av) || (this.jdField_a_of_type_ComTencentAvUiQavPanel == null) || (this.k == null))
+    paramQavOutAnimationListener = this.jdField_a_of_type_ComTencentAvVideoController;
+    if ((paramQavOutAnimationListener != null) && (paramQavOutAnimationListener.a() != null) && (!this.jdField_a_of_type_ComTencentAvVideoController.a().aj))
     {
-      if ((this.jdField_a_of_type_ComTencentAvVideoController != null) && (this.jdField_a_of_type_ComTencentAvVideoController.a() != null))
+      QavPanel localQavPanel = this.jdField_a_of_type_ComTencentAvUiQavPanel;
+      if (localQavPanel != null)
       {
-        this.jdField_a_of_type_ComTencentAvVideoController.a().au = false;
-        this.jdField_a_of_type_ComTencentAvVideoController.a().av = false;
+        paramQavOutAnimationListener = this.k;
+        if (paramQavOutAnimationListener != null)
+        {
+          if (localQavPanel.getVisibility() != 0) {
+            paramQavOutAnimationListener = this.l;
+          }
+          paramQavOutAnimationListener.setAnimationListener(this.jdField_c_of_type_AndroidViewAnimationAnimation$AnimationListener);
+          this.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(paramQavOutAnimationListener);
+          if (this.jdField_a_of_type_ComTencentAvUiQavPanel.a() != null) {
+            this.jdField_a_of_type_ComTencentAvUiQavPanel.a().startAnimation(this.m);
+          }
+          paramQavOutAnimationListener = this.jdField_a_of_type_AndroidViewView;
+          if ((paramQavOutAnimationListener != null) && (paramQavOutAnimationListener.getVisibility() == 0)) {
+            this.jdField_a_of_type_AndroidViewView.startAnimation(this.h);
+          }
+          paramQavOutAnimationListener = this.jdField_b_of_type_AndroidViewView;
+          if ((paramQavOutAnimationListener != null) && (paramQavOutAnimationListener.getVisibility() == 0)) {
+            this.jdField_b_of_type_AndroidViewView.startAnimation(this.i);
+          }
+          paramQavOutAnimationListener = this.jdField_c_of_type_AndroidViewView;
+          if ((paramQavOutAnimationListener != null) && (paramQavOutAnimationListener.getVisibility() == 0)) {
+            this.jdField_c_of_type_AndroidViewView.startAnimation(this.i);
+          }
+          paramQavOutAnimationListener = this.jdField_d_of_type_AndroidViewView;
+          if ((paramQavOutAnimationListener != null) && (paramQavOutAnimationListener.getVisibility() == 0)) {
+            this.jdField_d_of_type_AndroidViewView.startAnimation(this.j);
+          }
+          paramQavOutAnimationListener = this.jdField_e_of_type_AndroidViewView;
+          if ((paramQavOutAnimationListener != null) && (paramQavOutAnimationListener.getVisibility() == 0)) {
+            this.jdField_e_of_type_AndroidViewView.startAnimation(this.j);
+          }
+          paramQavOutAnimationListener = this.jdField_g_of_type_AndroidViewView;
+          if ((paramQavOutAnimationListener != null) && (paramQavOutAnimationListener.getVisibility() == 0)) {
+            this.jdField_g_of_type_AndroidViewView.startAnimation(this.j);
+          }
+          this.jdField_a_of_type_ComTencentAvVideoController.a().aj = true;
+          return;
+        }
       }
-      if (this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener != null)
-      {
-        this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener.a();
-        this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener.b();
-      }
-      return;
     }
-    paramQavOutAnimationListener = this.k;
-    if (this.jdField_a_of_type_ComTencentAvUiQavPanel.getVisibility() != 0) {
-      paramQavOutAnimationListener = this.l;
+    paramQavOutAnimationListener = this.jdField_a_of_type_ComTencentAvVideoController;
+    if ((paramQavOutAnimationListener != null) && (paramQavOutAnimationListener.a() != null))
+    {
+      this.jdField_a_of_type_ComTencentAvVideoController.a().ai = false;
+      this.jdField_a_of_type_ComTencentAvVideoController.a().aj = false;
     }
-    paramQavOutAnimationListener.setAnimationListener(this.jdField_c_of_type_AndroidViewAnimationAnimation$AnimationListener);
-    this.jdField_a_of_type_ComTencentAvUiQavPanel.startAnimation(paramQavOutAnimationListener);
-    if (this.jdField_a_of_type_ComTencentAvUiQavPanel.a() != null) {
-      this.jdField_a_of_type_ComTencentAvUiQavPanel.a().startAnimation(this.m);
+    paramQavOutAnimationListener = this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener;
+    if (paramQavOutAnimationListener != null)
+    {
+      paramQavOutAnimationListener.a();
+      this.jdField_a_of_type_ComTencentAvUiQavInOutAnimation$QavOutAnimationListener.b();
     }
-    if ((this.jdField_a_of_type_AndroidViewView != null) && (this.jdField_a_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_a_of_type_AndroidViewView.startAnimation(this.h);
-    }
-    if ((this.jdField_b_of_type_AndroidViewView != null) && (this.jdField_b_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_b_of_type_AndroidViewView.startAnimation(this.i);
-    }
-    if ((this.jdField_c_of_type_AndroidViewView != null) && (this.jdField_c_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_c_of_type_AndroidViewView.startAnimation(this.i);
-    }
-    if ((this.jdField_d_of_type_AndroidViewView != null) && (this.jdField_d_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_d_of_type_AndroidViewView.startAnimation(this.j);
-    }
-    if ((this.jdField_e_of_type_AndroidViewView != null) && (this.jdField_e_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_e_of_type_AndroidViewView.startAnimation(this.j);
-    }
-    if ((this.jdField_g_of_type_AndroidViewView != null) && (this.jdField_g_of_type_AndroidViewView.getVisibility() == 0)) {
-      this.jdField_g_of_type_AndroidViewView.startAnimation(this.j);
-    }
-    this.jdField_a_of_type_ComTencentAvVideoController.a().av = true;
   }
   
   public void b()
   {
     this.jdField_a_of_type_JavaLangRefSoftReference = null;
     this.jdField_a_of_type_ComTencentAvVideoController = null;
-    if (this.jdField_c_of_type_AndroidViewAnimationAnimation != null) {
-      this.jdField_c_of_type_AndroidViewAnimationAnimation.cancel();
+    Animation localAnimation = this.jdField_c_of_type_AndroidViewAnimationAnimation;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.jdField_d_of_type_AndroidViewAnimationAnimation != null) {
-      this.jdField_d_of_type_AndroidViewAnimationAnimation.cancel();
+    localAnimation = this.jdField_d_of_type_AndroidViewAnimationAnimation;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.jdField_e_of_type_AndroidViewAnimationAnimation != null) {
-      this.jdField_e_of_type_AndroidViewAnimationAnimation.cancel();
+    localAnimation = this.jdField_e_of_type_AndroidViewAnimationAnimation;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.jdField_f_of_type_AndroidViewAnimationAnimation != null) {
-      this.jdField_f_of_type_AndroidViewAnimationAnimation.cancel();
+    localAnimation = this.jdField_f_of_type_AndroidViewAnimationAnimation;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.jdField_g_of_type_AndroidViewAnimationAnimation != null) {
-      this.jdField_g_of_type_AndroidViewAnimationAnimation.cancel();
+    localAnimation = this.jdField_g_of_type_AndroidViewAnimationAnimation;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.h != null) {
-      this.h.cancel();
+    localAnimation = this.h;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.i != null) {
-      this.i.cancel();
+    localAnimation = this.i;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.j != null) {
-      this.j.cancel();
+    localAnimation = this.j;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.k != null) {
-      this.k.cancel();
+    localAnimation = this.k;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.l != null) {
-      this.l.cancel();
+    localAnimation = this.l;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
-    if (this.m != null) {
-      this.m.cancel();
+    localAnimation = this.m;
+    if (localAnimation != null) {
+      localAnimation.cancel();
     }
     this.jdField_a_of_type_AndroidViewAnimationAnimation = null;
     this.jdField_b_of_type_AndroidViewAnimationAnimation = null;
@@ -263,7 +313,7 @@ public class QavInOutAnimation
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.ui.QavInOutAnimation
  * JD-Core Version:    0.7.0.1
  */

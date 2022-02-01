@@ -3,35 +3,47 @@ package com.tencent.mobileqq.msgbackup.authentication;
 import android.content.Context;
 import android.net.wifi.WifiInfo;
 import android.net.wifi.WifiManager;
-import com.tencent.common.app.BaseApplicationImpl;
-import com.tencent.mobileqq.app.BusinessHandlerFactory;
-import com.tencent.mobileqq.app.QQAppInterface;
+import com.tencent.common.app.business.BaseQQAppInterface;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData;
 import com.tencent.mobileqq.msgbackup.data.MsgBackupUserData.Builder;
 import com.tencent.mobileqq.msgbackup.transport.MsgBackupTransportProcessor;
 import com.tencent.mobileqq.msgbackup.util.MsgBackupReporter;
+import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.ArrayList;
 import java.util.List;
+import mqq.app.MobileQQ;
 
 public class MsgBackupAuthProcessor
 {
   private static MsgBackupAuthProcessor jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor;
+  public static final String a;
   private int jdField_a_of_type_Int;
-  private String jdField_a_of_type_JavaLangString;
   private String b;
+  private String c;
+  
+  static
+  {
+    jdField_a_of_type_JavaLangString = MsgBackupAuthHandler.class.getName();
+  }
+  
+  private MsgBackupAuthHandler a(BaseQQAppInterface paramBaseQQAppInterface)
+  {
+    return (MsgBackupAuthHandler)paramBaseQQAppInterface.getBusinessHandler(jdField_a_of_type_JavaLangString);
+  }
   
   public static MsgBackupAuthProcessor a()
   {
-    if (jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor == null) {}
-    try
-    {
-      if (jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor == null) {
-        jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor = new MsgBackupAuthProcessor();
+    if (jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor == null) {
+      try
+      {
+        if (jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor == null) {
+          jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor = new MsgBackupAuthProcessor();
+        }
       }
-      return jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor;
+      finally {}
     }
-    finally {}
+    return jdField_a_of_type_ComTencentMobileqqMsgbackupAuthenticationMsgBackupAuthProcessor;
   }
   
   private String[] a(Context paramContext)
@@ -54,44 +66,49 @@ public class MsgBackupAuthProcessor
   
   public String a()
   {
-    return this.jdField_a_of_type_JavaLangString;
+    return this.b;
   }
   
   public void a()
   {
-    Object localObject2 = a(BaseApplicationImpl.getContext());
+    Object localObject2 = a(BaseApplication.getContext());
     Object localObject1 = new MsgBackupUserData.Builder();
     ((MsgBackupUserData.Builder)localObject1).c(localObject2[1]);
     ((MsgBackupUserData.Builder)localObject1).b(localObject2[0]);
     localObject2 = new ArrayList(2);
-    if (this.jdField_a_of_type_Int == 1)
+    int i = this.jdField_a_of_type_Int;
+    if (i == 1)
     {
       ((MsgBackupUserData.Builder)localObject1).a(MsgBackupTransportProcessor.a().b());
       ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().d()));
       ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().c()));
     }
-    for (;;)
+    else if (i == 2)
     {
-      ((MsgBackupUserData.Builder)localObject1).a(4);
-      ((MsgBackupUserData.Builder)localObject1).a((List)localObject2);
-      localObject1 = ((MsgBackupUserData.Builder)localObject1).a();
-      ((MsgBackupAuthHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER)).a((MsgBackupUserData)localObject1, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_Int);
-      if (QLog.isColorLevel()) {
-        QLog.d("MsgBackup.MsgBackupAuthProcessor", 2, "confirmQrReq, userData: " + localObject1 + ", biztype = " + this.jdField_a_of_type_Int + ", qr_sig = " + this.jdField_a_of_type_JavaLangString);
-      }
-      return;
-      if (this.jdField_a_of_type_Int == 2)
-      {
-        ((MsgBackupUserData.Builder)localObject1).a(MsgBackupTransportProcessor.a().a());
-        ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().b()));
-        ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().a()));
-      }
-      else
-      {
-        ((MsgBackupUserData.Builder)localObject1).a(MsgBackupTransportProcessor.a().a());
-        ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().b()));
-        ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().a()));
-      }
+      ((MsgBackupUserData.Builder)localObject1).a(MsgBackupTransportProcessor.a().a());
+      ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().b()));
+      ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().a()));
+    }
+    else
+    {
+      ((MsgBackupUserData.Builder)localObject1).a(MsgBackupTransportProcessor.a().a());
+      ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().b()));
+      ((List)localObject2).add(Integer.valueOf(MsgBackupTransportProcessor.a().a()));
+    }
+    ((MsgBackupUserData.Builder)localObject1).a(4);
+    ((MsgBackupUserData.Builder)localObject1).a((List)localObject2);
+    localObject1 = ((MsgBackupUserData.Builder)localObject1).a();
+    a((BaseQQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime()).a((MsgBackupUserData)localObject1, this.b, this.jdField_a_of_type_Int);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("confirmQrReq, userData: ");
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append(", biztype = ");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(", qr_sig = ");
+      ((StringBuilder)localObject2).append(this.b);
+      QLog.d("MsgBackup.MsgBackupAuthProcessor", 2, ((StringBuilder)localObject2).toString());
     }
   }
   
@@ -104,12 +121,12 @@ public class MsgBackupAuthProcessor
   
   public void a(String paramString)
   {
-    this.jdField_a_of_type_JavaLangString = paramString;
+    this.b = paramString;
   }
   
   public void a(boolean paramBoolean)
   {
-    Object localObject2 = a(BaseApplicationImpl.getContext());
+    Object localObject2 = a(BaseApplication.getContext());
     Object localObject1 = new MsgBackupUserData.Builder();
     ((MsgBackupUserData.Builder)localObject1).c(localObject2[1]);
     ((MsgBackupUserData.Builder)localObject1).b(localObject2[0]);
@@ -120,20 +137,28 @@ public class MsgBackupAuthProcessor
     ((MsgBackupUserData.Builder)localObject1).a(4);
     ((MsgBackupUserData.Builder)localObject1).a((List)localObject2);
     localObject1 = ((MsgBackupUserData.Builder)localObject1).a();
-    ((MsgBackupAuthHandler)((QQAppInterface)BaseApplicationImpl.getApplication().getRuntime()).getBusinessHandler(BusinessHandlerFactory.MSG_BACK_UP_HANDLER)).a((MsgBackupUserData)localObject1, this.jdField_a_of_type_Int, paramBoolean);
-    if (QLog.isColorLevel()) {
-      QLog.d("MsgBackup.MsgBackupAuthProcessor", 2, "requestQR, userData: " + localObject1 + ", biztype = " + this.jdField_a_of_type_Int + ", ispush = " + paramBoolean);
+    a((BaseQQAppInterface)MobileQQ.sMobileQQ.peekAppRuntime()).a((MsgBackupUserData)localObject1, this.jdField_a_of_type_Int, paramBoolean);
+    if (QLog.isColorLevel())
+    {
+      localObject2 = new StringBuilder();
+      ((StringBuilder)localObject2).append("requestQR, userData: ");
+      ((StringBuilder)localObject2).append(localObject1);
+      ((StringBuilder)localObject2).append(", biztype = ");
+      ((StringBuilder)localObject2).append(this.jdField_a_of_type_Int);
+      ((StringBuilder)localObject2).append(", ispush = ");
+      ((StringBuilder)localObject2).append(paramBoolean);
+      QLog.d("MsgBackup.MsgBackupAuthProcessor", 2, ((StringBuilder)localObject2).toString());
     }
   }
   
   public void b(String paramString)
   {
-    this.b = paramString;
+    this.c = paramString;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.msgbackup.authentication.MsgBackupAuthProcessor
  * JD-Core Version:    0.7.0.1
  */

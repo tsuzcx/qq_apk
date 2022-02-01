@@ -25,12 +25,29 @@ public class GetLocationResponse
   
   public String toString()
   {
-    return "GetLocationResponse{mCountry='" + this.a + '\'' + ", mProvince='" + this.c + '\'' + ", mCity='" + this.d + '\'' + ", mDistrict='" + this.e + '\'' + ", mStreet='" + this.f + '\'' + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("GetLocationResponse{mCountry='");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mProvince='");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mCity='");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mDistrict='");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", mStreet='");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append('\'');
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.network.response.GetLocationResponse
  * JD-Core Version:    0.7.0.1
  */

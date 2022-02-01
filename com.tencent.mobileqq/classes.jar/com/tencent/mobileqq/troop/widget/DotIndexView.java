@@ -20,7 +20,7 @@ public class DotIndexView
   public DotIndexView(Context paramContext)
   {
     super(paramContext);
-    this.jdField_a_of_type_Int = 2130844133;
+    this.jdField_a_of_type_Int = 2130844036;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
   }
@@ -28,7 +28,7 @@ public class DotIndexView
   public DotIndexView(Context paramContext, AttributeSet paramAttributeSet)
   {
     super(paramContext, paramAttributeSet);
-    this.jdField_a_of_type_Int = 2130844133;
+    this.jdField_a_of_type_Int = 2130844036;
     this.jdField_a_of_type_AndroidWidgetLinearLayout = new LinearLayout(paramContext);
     this.jdField_a_of_type_AndroidContentContext = this.jdField_a_of_type_AndroidWidgetLinearLayout.getContext();
   }
@@ -56,23 +56,23 @@ public class DotIndexView
   
   public void setDotSelected(int paramInt, boolean paramBoolean)
   {
-    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {}
-    do
-    {
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout == null) {
       return;
-      if (paramBoolean)
+    }
+    if (paramBoolean)
+    {
+      int i = 0;
+      while (i < this.b)
       {
-        int i = 0;
-        while (i < this.b)
-        {
-          if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i) != null) {
-            this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i).setSelected(false);
-          }
-          i += 1;
+        if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i) != null) {
+          this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(i).setSelected(false);
         }
+        i += 1;
       }
-    } while (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt) == null);
-    this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt).setSelected(paramBoolean);
+    }
+    if (this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt) != null) {
+      this.jdField_a_of_type_AndroidWidgetLinearLayout.getChildAt(paramInt).setSelected(paramBoolean);
+    }
   }
   
   public void setMargin(int paramInt)
@@ -82,7 +82,7 @@ public class DotIndexView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.troop.widget.DotIndexView
  * JD-Core Version:    0.7.0.1
  */

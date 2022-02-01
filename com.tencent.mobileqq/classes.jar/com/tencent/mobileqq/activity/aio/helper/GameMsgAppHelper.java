@@ -9,8 +9,7 @@ import com.tencent.mobileqq.activity.aio.drawer.BaseChatDrawer;
 import com.tencent.mobileqq.activity.aio.drawer.GameMsgAppDrawer;
 import com.tencent.mobileqq.activity.aio.rebuild.GameMsgChatPie;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.QQManagerFactory;
-import com.tencent.mobileqq.gamecenter.message.GameMsgManager;
+import com.tencent.mobileqq.gamecenter.api.IGameMsgManagerService;
 import com.tencent.qphone.base.util.QLog;
 
 public class GameMsgAppHelper
@@ -26,27 +25,35 @@ public class GameMsgAppHelper
   {
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
     this.jdField_a_of_type_AndroidContentContext = paramBaseChatPie.jdField_a_of_type_AndroidContentContext;
-    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_AndroidSupportV4AppFragmentActivity;
+    this.jdField_a_of_type_AndroidAppActivity = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqAppBaseActivity;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie = paramBaseChatPie;
     this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo = paramBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
   }
   
   private BaseChatDrawer a()
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo == null) || (TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a)) || (!(this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof GameMsgChatPie)))
+    Object localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo;
+    if ((localObject != null) && (!TextUtils.isEmpty(((SessionInfo)localObject).a)))
     {
-      QLog.d("GameMsgAppHelper", 1, "createChatDrawer, sessionInfo == null or friendUin is empty");
-      return null;
+      localObject = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+      if ((localObject instanceof GameMsgChatPie)) {
+        return new GameMsgAppDrawer((GameMsgChatPie)localObject);
+      }
     }
-    return new GameMsgAppDrawer((GameMsgChatPie)this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie);
+    QLog.d("GameMsgAppHelper", 1, "createChatDrawer, sessionInfo == null or friendUin is empty");
+    return null;
   }
   
   public void a() {}
   
   public void b()
   {
-    if ((!TextUtils.isEmpty(((GameMsgManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.GAME_CENTER_MSG_MANAGER)).e())) && ((this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie instanceof GameMsgChatPie))) {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie.jdField_a_of_type_ComTencentMobileqqActivityAioDrawerBaseChatDrawer = a();
+    if (!TextUtils.isEmpty(((IGameMsgManagerService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IGameMsgManagerService.class, "")).getAioHippyBundleName()))
+    {
+      BaseChatPie localBaseChatPie = this.jdField_a_of_type_ComTencentMobileqqActivityAioCoreBaseChatPie;
+      if ((localBaseChatPie instanceof GameMsgChatPie)) {
+        ((ChatDrawerHelper)localBaseChatPie.a(124)).a = a();
+      }
     }
   }
   
@@ -59,28 +66,30 @@ public class GameMsgAppHelper
   
   public int[] interestedIn()
   {
-    return new int[] { 4, 8, 14 };
+    return new int[] { 4, 9, 15 };
   }
   
   public void onMoveToState(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 4)
     {
-    default: 
-      return;
-    case 4: 
-      b();
-      return;
-    case 8: 
+      if (paramInt != 9)
+      {
+        if (paramInt != 15) {
+          return;
+        }
+        a();
+        return;
+      }
       c();
       return;
     }
-    a();
+    b();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.GameMsgAppHelper
  * JD-Core Version:    0.7.0.1
  */

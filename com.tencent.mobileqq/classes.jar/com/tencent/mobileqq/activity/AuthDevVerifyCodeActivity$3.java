@@ -1,36 +1,23 @@
 package com.tencent.mobileqq.activity;
 
-import com.tencent.mobileqq.widget.QQProgressDialog;
+import android.content.DialogInterface;
+import android.content.DialogInterface.OnClickListener;
 
 class AuthDevVerifyCodeActivity$3
-  implements Runnable
+  implements DialogInterface.OnClickListener
 {
   AuthDevVerifyCodeActivity$3(AuthDevVerifyCodeActivity paramAuthDevVerifyCodeActivity) {}
   
-  public void run()
+  public void onClick(DialogInterface paramDialogInterface, int paramInt)
   {
-    try
-    {
-      if ((AuthDevVerifyCodeActivity.access$100(this.this$0) != null) && (AuthDevVerifyCodeActivity.access$100(this.this$0).isShowing()))
-      {
-        AuthDevVerifyCodeActivity.access$100(this.this$0).dismiss();
-        AuthDevVerifyCodeActivity.access$100(this.this$0).cancel();
-      }
-      AuthDevVerifyCodeActivity.access$102(this.this$0, null);
-      return;
-    }
-    catch (Throwable localThrowable)
-    {
-      for (;;)
-      {
-        localThrowable.printStackTrace();
-      }
-    }
+    paramDialogInterface.dismiss();
+    this.a.report898("0X800BB52");
+    AuthDevVerifyCodeActivity.access$201(this.a);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.AuthDevVerifyCodeActivity.3
  * JD-Core Version:    0.7.0.1
  */

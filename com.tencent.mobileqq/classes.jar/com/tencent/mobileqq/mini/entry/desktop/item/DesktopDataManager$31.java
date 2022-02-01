@@ -15,25 +15,32 @@ class DesktopDataManager$31
   public void run()
   {
     Object localObject = MiniAppUtils.getAppInterface();
-    if (localObject == null) {
+    if (localObject == null)
+    {
       QLog.e("DesktopDataManager", 1, "updateRedDotData, app is null.");
-    }
-    do
-    {
-      return;
-      localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
-    } while (localObject == null);
-    if (DesktopDataManager.access$3300(this.this$0, (EntityManager)localObject, this.val$entity))
-    {
-      QLog.d("DesktopDataManager", 1, "updateRedDotData, success to delete recommend appInfo: " + this.val$entity);
       return;
     }
-    QLog.e("DesktopDataManager", 1, "updateRedDotData, failed to delete recommend appInfo: " + this.val$entity);
+    localObject = ((AppInterface)localObject).getEntityManagerFactory().createEntityManager();
+    if (localObject != null)
+    {
+      if (DesktopDataManager.access$3300(this.this$0, (EntityManager)localObject, this.val$entity))
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("updateRedDotData, success to delete recommend appInfo: ");
+        ((StringBuilder)localObject).append(this.val$entity);
+        QLog.d("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
+        return;
+      }
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("updateRedDotData, failed to delete recommend appInfo: ");
+      ((StringBuilder)localObject).append(this.val$entity);
+      QLog.e("DesktopDataManager", 1, ((StringBuilder)localObject).toString());
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.entry.desktop.item.DesktopDataManager.31
  * JD-Core Version:    0.7.0.1
  */

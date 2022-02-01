@@ -22,43 +22,40 @@ public enum AdLifecycleManager
   
   public void onRunningBackground()
   {
-    if (!this.isOnForeground) {}
-    for (;;)
-    {
+    if (!this.isOnForeground) {
       return;
-      this.isOnForeground = false;
-      Iterator localIterator = this.listeners.iterator();
-      while (localIterator.hasNext())
-      {
-        AdLifecycleManager.a locala = (AdLifecycleManager.a)localIterator.next();
-        if (locala != null) {
-          locala.onBackground();
-        }
+    }
+    this.isOnForeground = false;
+    Iterator localIterator = this.listeners.iterator();
+    while (localIterator.hasNext())
+    {
+      AdLifecycleManager.a locala = (AdLifecycleManager.a)localIterator.next();
+      if (locala != null) {
+        locala.onBackground();
       }
     }
   }
   
   public void onRunningForeground()
   {
-    if (this.isOnForeground) {}
-    for (;;)
-    {
+    if (this.isOnForeground) {
       return;
-      this.isOnForeground = true;
-      Iterator localIterator = this.listeners.iterator();
-      while (localIterator.hasNext())
-      {
-        AdLifecycleManager.a locala = (AdLifecycleManager.a)localIterator.next();
-        if (locala != null) {
-          locala.onForeground();
-        }
+    }
+    this.isOnForeground = true;
+    Iterator localIterator = this.listeners.iterator();
+    while (localIterator.hasNext())
+    {
+      AdLifecycleManager.a locala = (AdLifecycleManager.a)localIterator.next();
+      if (locala != null) {
+        locala.onForeground();
       }
     }
   }
   
   public void registerListener(AdLifecycleManager.a parama)
   {
-    if ((this.listeners != null) && (!this.listeners.contains(parama))) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.listeners;
+    if ((localCopyOnWriteArrayList != null) && (!localCopyOnWriteArrayList.contains(parama))) {
       this.listeners.add(parama);
     }
   }
@@ -70,7 +67,8 @@ public enum AdLifecycleManager
   
   public void unRegisterListener(AdLifecycleManager.a parama)
   {
-    if ((this.listeners != null) && (this.listeners.contains(parama))) {
+    CopyOnWriteArrayList localCopyOnWriteArrayList = this.listeners;
+    if ((localCopyOnWriteArrayList != null) && (localCopyOnWriteArrayList.contains(parama))) {
       this.listeners.remove(parama);
     }
   }

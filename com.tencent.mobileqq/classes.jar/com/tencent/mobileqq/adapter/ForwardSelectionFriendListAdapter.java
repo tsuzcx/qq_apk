@@ -14,8 +14,6 @@ import android.widget.CheckBox;
 import android.widget.TextView;
 import com.tencent.common.config.AppSetting;
 import com.tencent.mobileqq.activity.ForwardFriendListActivity;
-import com.tencent.mobileqq.activity.contact.phonecontact.PhoneContactManagerImp;
-import com.tencent.mobileqq.activity.selectmember.ResultRecord;
 import com.tencent.mobileqq.app.FriendsManager;
 import com.tencent.mobileqq.app.QQAppInterface;
 import com.tencent.mobileqq.app.QQManagerFactory;
@@ -26,6 +24,8 @@ import com.tencent.mobileqq.data.Groups;
 import com.tencent.mobileqq.data.PhoneContact;
 import com.tencent.mobileqq.data.RecentUser;
 import com.tencent.mobileqq.persistence.Entity;
+import com.tencent.mobileqq.phonecontact.api.IPhoneContactService;
+import com.tencent.mobileqq.selectmember.ResultRecord;
 import com.tencent.mobileqq.troop.utils.RobotUtils;
 import com.tencent.mobileqq.util.ImageWorker;
 import com.tencent.mobileqq.util.Utils;
@@ -43,7 +43,7 @@ public class ForwardSelectionFriendListAdapter
   extends BaseFacePreloadExpandableListAdapter
   implements View.OnClickListener
 {
-  public static int a;
+  public static int a = 1003;
   protected float a;
   protected Context a;
   private View.OnClickListener jdField_a_of_type_AndroidViewView$OnClickListener = new ForwardSelectionFriendListAdapter.1(this);
@@ -56,11 +56,6 @@ public class ForwardSelectionFriendListAdapter
   private boolean jdField_a_of_type_Boolean;
   protected HashMap<Integer, String> b = new HashMap();
   
-  static
-  {
-    jdField_a_of_type_Int = 1003;
-  }
-  
   public ForwardSelectionFriendListAdapter(Context paramContext, ExpandableListView paramExpandableListView, QQAppInterface paramQQAppInterface, List<Entity> paramList, ForwardSelectionFriendListAdapter.IForwardFriendListAdapterCallback paramIForwardFriendListAdapterCallback, boolean paramBoolean)
   {
     super(paramContext, paramQQAppInterface, paramExpandableListView);
@@ -72,7 +67,9 @@ public class ForwardSelectionFriendListAdapter
     this.jdField_a_of_type_Boolean = paramBoolean;
     this.jdField_a_of_type_Float = paramContext.getResources().getDisplayMetrics().density;
     this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker = new ImageWorker(paramContext);
-    this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker.a((int)(this.jdField_a_of_type_Float * 100.0F), (int)(this.jdField_a_of_type_Float * 100.0F));
+    paramContext = this.jdField_a_of_type_ComTencentMobileqqUtilImageWorker;
+    float f = this.jdField_a_of_type_Float;
+    paramContext.a((int)(f * 100.0F), (int)(f * 100.0F));
     a(paramList, false);
     if (this.jdField_a_of_type_Boolean) {
       a();
@@ -91,28 +88,33 @@ public class ForwardSelectionFriendListAdapter
   
   private ArrayList<Entity> a(List<RecentUser> paramList)
   {
-    if ((paramList == null) || (paramList.size() == 0)) {
-      return null;
-    }
-    ArrayList localArrayList = new ArrayList();
-    paramList = paramList.iterator();
-    while (paramList.hasNext())
+    if ((paramList != null) && (paramList.size() != 0))
     {
-      RecentUser localRecentUser = (RecentUser)paramList.next();
-      if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() == 0) && (!Utils.c(localRecentUser.uin)) && (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager != null) && (this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.b(localRecentUser.uin))) {
-        localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.e(localRecentUser.uin));
+      ArrayList localArrayList = new ArrayList();
+      paramList = paramList.iterator();
+      while (paramList.hasNext())
+      {
+        RecentUser localRecentUser = (RecentUser)paramList.next();
+        if ((localRecentUser != null) && (!Utils.a(localRecentUser.uin)) && (localRecentUser.getType() == 0) && (!Utils.c(localRecentUser.uin)))
+        {
+          FriendsManager localFriendsManager = this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager;
+          if ((localFriendsManager != null) && (localFriendsManager.b(localRecentUser.uin))) {
+            localArrayList.add(this.jdField_a_of_type_ComTencentMobileqqAppFriendsManager.e(localRecentUser.uin));
+          }
+        }
       }
+      return localArrayList;
     }
-    return localArrayList;
+    return null;
   }
   
   private void a()
   {
-    Object localObject1 = (PhoneContactManagerImp)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.CONTACT_MANAGER);
-    int i = ((PhoneContactManagerImp)localObject1).d();
-    if ((((PhoneContactManagerImp)localObject1).d()) || (i == 8))
+    Object localObject1 = (IPhoneContactService)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getRuntimeService(IPhoneContactService.class, "");
+    int i = ((IPhoneContactService)localObject1).getSelfBindState();
+    if ((((IPhoneContactService)localObject1).isBindContactOk()) || (i == 8))
     {
-      Object localObject2 = ((PhoneContactManagerImp)localObject1).a();
+      Object localObject2 = ((IPhoneContactService)localObject1).getBindNonfriendList();
       if (localObject2 != null)
       {
         localObject1 = new ArrayList();
@@ -121,7 +123,7 @@ public class ForwardSelectionFriendListAdapter
         {
           localObject2 = new Groups();
           ((Groups)localObject2).group_id = 1002;
-          ((Groups)localObject2).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131694800);
+          ((Groups)localObject2).group_name = this.jdField_a_of_type_AndroidContentContext.getString(2131694786);
           ((Groups)localObject2).group_friend_count = 1;
           ((Groups)localObject2).seqid = 0;
           this.jdField_a_of_type_JavaUtilList.add(localObject2);
@@ -146,93 +148,93 @@ public class ForwardSelectionFriendListAdapter
   {
     this.jdField_a_of_type_JavaUtilList = paramList;
     paramList = this.jdField_a_of_type_JavaUtilList.iterator();
+    Groups localGroups;
+    ArrayList localArrayList;
+    Object localObject1;
     if (paramList.hasNext())
     {
-      Groups localGroups = (Groups)paramList.next();
-      ArrayList localArrayList;
-      int i;
-      if ((localGroups.group_id == a()) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(a()))))
+      localGroups = (Groups)paramList.next();
+      int j = localGroups.group_id;
+      int k = a();
+      int i = 0;
+      if ((j == k) && (!this.jdField_a_of_type_JavaUtilHashMap.containsKey(Integer.valueOf(a()))))
       {
         localArrayList = a();
         this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(a()), localArrayList);
-        if (localArrayList == null)
-        {
-          i = 0;
-          label94:
-          localGroups.group_friend_count = i;
+        if (localArrayList != null) {
+          i = localArrayList.size();
         }
+        localGroups.group_friend_count = i;
       }
-      for (;;)
+      else
       {
-        this.b.put(Integer.valueOf(localGroups.group_id), localGroups.group_name);
-        break;
-        i = localArrayList.size();
-        break label94;
-        Object localObject = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(String.valueOf(localGroups.group_id));
+        localObject1 = ((FriendsManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.FRIENDS_MANAGER)).a(String.valueOf(localGroups.group_id));
         localArrayList = new ArrayList();
-        if ((localObject != null) && (!((ArrayList)localObject).isEmpty()))
+        if ((localObject1 != null) && (!((ArrayList)localObject1).isEmpty()))
         {
-          localArrayList.addAll((Collection)localObject);
-          localObject = localArrayList.iterator();
-          label331:
-          while (((Iterator)localObject).hasNext())
-          {
-            try
-            {
-              Friends localFriends = (Friends)((Iterator)localObject).next();
-              if (!Utils.b(localFriends.uin)) {
-                break label249;
-              }
-              ((Iterator)localObject).remove();
-            }
-            catch (Exception localException)
-            {
-              localException.printStackTrace();
-            }
-            continue;
-            label249:
-            if ((TextUtils.equals(localException.uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) && (this.jdField_a_of_type_AndroidContentContext != null) && ((this.jdField_a_of_type_AndroidContentContext instanceof ForwardFriendListActivity)))
-            {
-              Intent localIntent = ((ForwardFriendListActivity)this.jdField_a_of_type_AndroidContentContext).getIntent();
-              if (localIntent != null) {}
-              for (boolean bool = localIntent.getBooleanExtra("choose_friend_isForConfess", false);; bool = false)
-              {
-                if (!bool) {
-                  break label331;
-                }
-                ((Iterator)localObject).remove();
-                break;
-              }
-            }
-          }
+          localArrayList.addAll((Collection)localObject1);
+          localObject1 = localArrayList.iterator();
+          label183:
+          if (!((Iterator)localObject1).hasNext()) {}
         }
-        this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localGroups.group_id), localArrayList);
       }
     }
-    if (paramBoolean) {
-      super.notifyDataSetChanged();
+    for (;;)
+    {
+      try
+      {
+        Object localObject2 = (Friends)((Iterator)localObject1).next();
+        if (Utils.b(((Friends)localObject2).uin))
+        {
+          ((Iterator)localObject1).remove();
+          break label183;
+        }
+        if ((!TextUtils.equals(((Friends)localObject2).uin, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin())) || (this.jdField_a_of_type_AndroidContentContext == null) || (!(this.jdField_a_of_type_AndroidContentContext instanceof ForwardFriendListActivity))) {
+          break label183;
+        }
+        localObject2 = ((ForwardFriendListActivity)this.jdField_a_of_type_AndroidContentContext).getIntent();
+        if (localObject2 == null) {
+          break label368;
+        }
+        bool = ((Intent)localObject2).getBooleanExtra("choose_friend_isForConfess", false);
+        if (!bool) {
+          break label183;
+        }
+        ((Iterator)localObject1).remove();
+      }
+      catch (Exception localException)
+      {
+        localException.printStackTrace();
+      }
+      break label183;
+      this.jdField_a_of_type_JavaUtilHashMap.put(Integer.valueOf(localGroups.group_id), localArrayList);
+      this.b.put(Integer.valueOf(localGroups.group_id), localGroups.group_name);
+      break;
+      if (paramBoolean) {
+        super.notifyDataSetChanged();
+      }
+      return;
+      label368:
+      boolean bool = false;
     }
   }
   
   public void configHeaderView(View paramView, int paramInt)
   {
-    ForwardSelectionFriendListAdapter.GroupViewTag localGroupViewTag = (ForwardSelectionFriendListAdapter.GroupViewTag)paramView.getTag();
-    if (localGroupViewTag == null)
+    Object localObject2 = (ForwardSelectionFriendListAdapter.GroupViewTag)paramView.getTag();
+    Object localObject1 = localObject2;
+    if (localObject2 == null)
     {
-      localGroupViewTag = new ForwardSelectionFriendListAdapter.GroupViewTag();
-      localGroupViewTag.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368102));
-      localGroupViewTag.b = ((TextView)paramView.findViewById(2131365230));
-      paramView.findViewById(2131369653).setVisibility(0);
-      paramView.setTag(localGroupViewTag);
+      localObject1 = new ForwardSelectionFriendListAdapter.GroupViewTag();
+      ((ForwardSelectionFriendListAdapter.GroupViewTag)localObject1).jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131367855));
+      ((ForwardSelectionFriendListAdapter.GroupViewTag)localObject1).b = ((TextView)paramView.findViewById(2131365107));
+      paramView.findViewById(2131369353).setVisibility(0);
+      paramView.setTag(localObject1);
     }
-    for (;;)
-    {
-      Groups localGroups = (Groups)getGroup(paramInt);
-      localGroupViewTag.jdField_a_of_type_AndroidWidgetTextView.setText(localGroups.group_name);
-      localGroupViewTag.b.setText(String.valueOf(localGroups.group_friend_count));
-      ((CheckBox)paramView.findViewById(2131369653)).setChecked(this.jdField_a_of_type_ComTencentWidgetExpandableListView.isGroupExpanded(paramInt));
-      return;
-    }
+    localObject2 = (Groups)getGroup(paramInt);
+    ((ForwardSelectionFriendListAdapter.GroupViewTag)localObject1).jdField_a_of_type_AndroidWidgetTextView.setText(((Groups)localObject2).group_name);
+    ((ForwardSelectionFriendListAdapter.GroupViewTag)localObject1).b.setText(String.valueOf(((Groups)localObject2).group_friend_count));
+    ((CheckBox)paramView.findViewById(2131369353)).setChecked(this.jdField_a_of_type_ComTencentWidgetExpandableListView.isGroupExpanded(paramInt));
   }
   
   public Object getChild(int paramInt1, int paramInt2)
@@ -247,69 +249,66 @@ public class ForwardSelectionFriendListAdapter
   
   public View getChildView(int paramInt1, int paramInt2, boolean paramBoolean, View paramView, ViewGroup paramViewGroup)
   {
-    ForwardRecentItemView localForwardRecentItemView;
-    Object localObject1;
-    Object localObject2;
-    String str;
+    ForwardSelectionFriendListAdapter.ViewTag localViewTag;
     if (paramView == null)
     {
-      localForwardRecentItemView = new ForwardRecentItemView(this.jdField_a_of_type_AndroidContentContext);
-      paramViewGroup = new ForwardSelectionFriendListAdapter.ViewTag();
-      localForwardRecentItemView.setTag(paramViewGroup);
-      localObject1 = getChild(paramInt1, paramInt2);
-      if (!(localObject1 instanceof PhoneContact)) {
-        break label284;
-      }
-      localObject2 = (PhoneContact)localObject1;
-      str = ((PhoneContact)localObject2).name;
-      paramView = ((PhoneContact)localObject2).mobileCode;
-      if (!TextUtils.isEmpty(paramView)) {
-        break label258;
-      }
-      paramView = ((PhoneContact)localObject2).mobileNo;
+      paramViewGroup = new ForwardRecentItemView(this.jdField_a_of_type_AndroidContentContext);
+      localViewTag = new ForwardSelectionFriendListAdapter.ViewTag();
+      paramViewGroup.setTag(localViewTag);
     }
-    label258:
-    label284:
-    label316:
-    for (;;)
+    else
     {
-      label86:
-      paramInt1 = 1006;
-      for (paramViewGroup.jdField_c_of_type_Int = 11;; paramViewGroup.jdField_c_of_type_Int = 1)
-      {
-        paramViewGroup.jdField_c_of_type_AndroidWidgetImageView = localForwardRecentItemView.jdField_a_of_type_AndroidWidgetImageView;
-        paramViewGroup.jdField_a_of_type_JavaLangString = paramView;
-        paramViewGroup.jdField_a_of_type_JavaLangObject = localObject1;
-        paramBoolean = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardSelectionFriendListAdapter$IForwardFriendListAdapterCallback.a(paramView, paramInt1);
-        boolean bool = RobotUtils.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView);
-        localObject2 = localForwardRecentItemView.jdField_a_of_type_ComTencentMobileqqActivitySelectmemberResultRecord;
-        localObject1 = localObject2;
-        if (localObject2 == null) {
-          localObject1 = new ResultRecord();
-        }
-        ((ResultRecord)localObject1).init(paramView, str, paramInt1, "", "");
-        localForwardRecentItemView.a(str, "", null, (ResultRecord)localObject1, this.jdField_a_of_type_Boolean, paramBoolean, bool);
-        a(paramViewGroup, null);
-        localForwardRecentItemView.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
-        if (AppSetting.d) {
-          localForwardRecentItemView.setContentDescription(str);
-        }
-        return localForwardRecentItemView;
-        localForwardRecentItemView = (ForwardRecentItemView)paramView;
-        paramViewGroup = (ForwardSelectionFriendListAdapter.ViewTag)localForwardRecentItemView.getTag();
-        break;
-        paramInt1 = paramView.indexOf("|");
-        if (paramInt1 <= -1) {
-          break label316;
-        }
-        paramView = paramView.substring(0, paramInt1);
-        break label86;
-        paramView = (Friends)localObject1;
-        str = ContactUtils.a(paramView);
-        paramView = paramView.uin;
-        paramInt1 = 0;
-      }
+      paramViewGroup = (ForwardRecentItemView)paramView;
+      localViewTag = (ForwardSelectionFriendListAdapter.ViewTag)paramViewGroup.getTag();
     }
+    Object localObject2 = getChild(paramInt1, paramInt2);
+    String str;
+    if ((localObject2 instanceof PhoneContact))
+    {
+      paramView = (PhoneContact)localObject2;
+      str = paramView.name;
+      localObject1 = paramView.mobileCode;
+      if (TextUtils.isEmpty((CharSequence)localObject1))
+      {
+        paramView = paramView.mobileNo;
+      }
+      else
+      {
+        paramInt1 = ((String)localObject1).indexOf("|");
+        paramView = (View)localObject1;
+        if (paramInt1 > -1) {
+          paramView = ((String)localObject1).substring(0, paramInt1);
+        }
+      }
+      localViewTag.jdField_c_of_type_Int = 11;
+      paramInt1 = 1006;
+    }
+    else
+    {
+      paramView = (Friends)localObject2;
+      str = ContactUtils.a(paramView);
+      paramView = paramView.uin;
+      localViewTag.jdField_c_of_type_Int = 1;
+      paramInt1 = 0;
+    }
+    localViewTag.jdField_c_of_type_AndroidWidgetImageView = paramViewGroup.jdField_a_of_type_AndroidWidgetImageView;
+    localViewTag.jdField_a_of_type_JavaLangString = paramView;
+    localViewTag.jdField_a_of_type_JavaLangObject = localObject2;
+    paramBoolean = this.jdField_a_of_type_ComTencentMobileqqAdapterForwardSelectionFriendListAdapter$IForwardFriendListAdapterCallback.a(paramView, paramInt1);
+    boolean bool = RobotUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, paramView);
+    localObject2 = paramViewGroup.jdField_a_of_type_ComTencentMobileqqSelectmemberResultRecord;
+    Object localObject1 = localObject2;
+    if (localObject2 == null) {
+      localObject1 = new ResultRecord();
+    }
+    ((ResultRecord)localObject1).init(paramView, str, paramInt1, "", "");
+    paramViewGroup.a(str, "", null, (ResultRecord)localObject1, this.jdField_a_of_type_Boolean, paramBoolean, bool);
+    a(localViewTag, null);
+    paramViewGroup.setOnClickListener(this.jdField_a_of_type_AndroidViewView$OnClickListener);
+    if (AppSetting.d) {
+      paramViewGroup.setContentDescription(str);
+    }
+    return paramViewGroup;
   }
   
   public int getChildrenCount(int paramInt)
@@ -339,30 +338,32 @@ public class ForwardSelectionFriendListAdapter
   {
     if (paramView == null)
     {
-      paramView = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131559023, paramViewGroup, false);
-      paramViewGroup = new ForwardSelectionFriendListAdapter.GroupViewTag();
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131368102));
-      paramViewGroup.b = ((TextView)paramView.findViewById(2131365230));
-      paramView.setTag(paramViewGroup);
-      paramView.setOnClickListener(this);
+      paramViewGroup = LayoutInflater.from(this.jdField_a_of_type_AndroidContentContext).inflate(2131558917, paramViewGroup, false);
+      paramView = new ForwardSelectionFriendListAdapter.GroupViewTag();
+      paramView.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramViewGroup.findViewById(2131367855));
+      paramView.b = ((TextView)paramViewGroup.findViewById(2131365107));
+      paramViewGroup.setTag(paramView);
+      paramViewGroup.setOnClickListener(this);
     }
-    for (;;)
+    else
     {
-      Groups localGroups = (Groups)getGroup(paramInt);
-      paramViewGroup.jdField_a_of_type_AndroidWidgetTextView.setText(localGroups.group_name);
-      paramViewGroup.b.setText(String.valueOf(getChildrenCount(paramInt)));
-      paramViewGroup.jdField_a_of_type_Int = paramInt;
-      if (AppSetting.d) {
-        paramView.setContentDescription(localGroups.group_name);
-      }
-      return paramView;
-      paramViewGroup = (ForwardSelectionFriendListAdapter.GroupViewTag)paramView.getTag();
+      localObject = (ForwardSelectionFriendListAdapter.GroupViewTag)paramView.getTag();
+      paramViewGroup = paramView;
+      paramView = (View)localObject;
     }
+    Object localObject = (Groups)getGroup(paramInt);
+    paramView.jdField_a_of_type_AndroidWidgetTextView.setText(((Groups)localObject).group_name);
+    paramView.b.setText(String.valueOf(getChildrenCount(paramInt)));
+    paramView.jdField_a_of_type_Int = paramInt;
+    if (AppSetting.d) {
+      paramViewGroup.setContentDescription(((Groups)localObject).group_name);
+    }
+    return paramViewGroup;
   }
   
   public int getHeaderViewLayoutResourceId()
   {
-    return 2131559023;
+    return 2131558917;
   }
   
   public boolean hasStableIds()
@@ -385,18 +386,15 @@ public class ForwardSelectionFriendListAdapter
     ForwardSelectionFriendListAdapter.GroupViewTag localGroupViewTag = (ForwardSelectionFriendListAdapter.GroupViewTag)paramView.getTag();
     if (this.jdField_a_of_type_ComTencentWidgetExpandableListView.isGroupExpanded(localGroupViewTag.jdField_a_of_type_Int)) {
       this.jdField_a_of_type_ComTencentWidgetExpandableListView.collapseGroup(localGroupViewTag.jdField_a_of_type_Int);
-    }
-    for (;;)
-    {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
+    } else {
       this.jdField_a_of_type_ComTencentWidgetExpandableListView.expandGroup(localGroupViewTag.jdField_a_of_type_Int);
     }
+    EventCollector.getInstance().onViewClicked(paramView);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.adapter.ForwardSelectionFriendListAdapter
  * JD-Core Version:    0.7.0.1
  */

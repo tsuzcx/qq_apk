@@ -1,51 +1,29 @@
 package com.tencent.mobileqq.activity.aio.core;
 
-import android.text.TextUtils;
 import com.tencent.mobileqq.activity.aio.SessionInfo;
-import com.tencent.mobileqq.friends.intimate.IntimateInfoObserver;
-import com.tencent.qphone.base.util.QLog;
+import com.tencent.mobileqq.activity.contact.newfriend.CloneFriendPushHelper;
+import com.tencent.mobileqq.statistics.ReportController;
 
 class FriendChatPie$15
-  extends IntimateInfoObserver
+  implements Runnable
 {
   FriendChatPie$15(FriendChatPie paramFriendChatPie) {}
   
-  public void a(boolean paramBoolean, String paramString)
+  public void run()
   {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.a.a)))
+    if (CloneFriendPushHelper.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a))
     {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onBandIntimateRelationship");
-      }
-      this.a.E();
+      FriendChatPie.b(this.this$0, true);
+      CloneFriendPushHelper.a(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.this$0.jdField_a_of_type_ComTencentMobileqqActivityAioSessionInfo.a);
+      ReportController.b(this.this$0.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X8008072", "0X8008072", 0, 0, "", "", "", "");
+      return;
     }
-  }
-  
-  public void a(boolean paramBoolean, String paramString, int paramInt1, int paramInt2, int paramInt3)
-  {
-    if ((paramBoolean) && (TextUtils.equals(paramString, this.a.a.a)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onUpdateIntimateRelationship");
-      }
-      this.a.E();
-    }
-  }
-  
-  public void a(boolean paramBoolean1, String paramString, boolean paramBoolean2)
-  {
-    if ((paramBoolean1) && (TextUtils.equals(paramString, this.a.a.a)))
-    {
-      if (QLog.isColorLevel()) {
-        QLog.d(this.a.b, 2, "onDisbandIntimateRelationship");
-      }
-      this.a.E();
-    }
+    FriendChatPie.b(this.this$0, false);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.core.FriendChatPie.15
  * JD-Core Version:    0.7.0.1
  */

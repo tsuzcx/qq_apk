@@ -67,6 +67,11 @@ public final class RegionBitmap
           }
         }
       }
+      return;
+    }
+    for (;;)
+    {
+      throw paramCanvas;
     }
   }
   
@@ -89,12 +94,13 @@ public final class RegionBitmap
     }
     this.mCurrentTaskTime = SystemClock.uptimeMillis();
     paramRegionDrawableData.mTaskTime = this.mCurrentTaskTime;
-    this.mWorkHandler.sendMessage(this.mWorkHandler.obtainMessage(1, paramRegionDrawableData));
+    RegionBitmap.WorkHandler localWorkHandler = this.mWorkHandler;
+    localWorkHandler.sendMessage(localWorkHandler.obtainMessage(1, paramRegionDrawableData));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.image.RegionBitmap
  * JD-Core Version:    0.7.0.1
  */

@@ -31,83 +31,96 @@ public class IntimateInfoObserver
   {
     switch (paramInt)
     {
-    }
-    do
-    {
-      do
+    default: 
+    case 8: 
+      if ((paramObject instanceof Object[]))
       {
-        do
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
+        return;
+      }
+      break;
+    case 7: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length >= 2)
         {
-          do
-          {
-            do
-            {
-              do
-              {
-                do
-                {
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
-                    return;
-                  }
-                  a(false, "", null);
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
-                    return;
-                  }
-                  a(paramBoolean, "", false);
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
-                    return;
-                  }
-                  a(false, "");
-                  return;
-                  if ((paramObject instanceof Object[]))
-                  {
-                    paramObject = (Object[])paramObject;
-                    a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
-                    return;
-                  }
-                  a(false, "", -1, -1, -1);
-                  return;
-                  if ((paramBoolean) && ((paramObject instanceof Object[])))
-                  {
-                    a(paramBoolean, (Object[])paramObject);
-                    return;
-                  }
-                  a(false, null);
-                  return;
-                } while (!(paramObject instanceof Object[]));
-                paramObject = (Object[])paramObject;
-              } while (paramObject.length < 2);
-              a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
-              return;
-            } while (!(paramObject instanceof Object[]));
-            paramObject = (Object[])paramObject;
-          } while (paramObject.length < 1);
+          a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
+          return;
+        }
+      }
+      break;
+    case 6: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        if (paramObject.length >= 1)
+        {
           a(paramBoolean, ((Long)paramObject[0]).longValue());
           return;
-        } while (!(paramObject instanceof Object[]));
+        }
+      }
+      break;
+    case 5: 
+      if ((paramObject instanceof Object[]))
+      {
         paramObject = (Object[])paramObject;
-      } while (paramObject.length < 2);
-      a(paramBoolean, (HashMap)paramObject[0], paramObject[1]);
+        if (paramObject.length >= 2)
+        {
+          a(paramBoolean, ((Long)paramObject[0]).longValue(), (ArrayList)paramObject[1]);
+          return;
+        }
+      }
+      break;
+    case 4: 
+      if ((paramBoolean) && ((paramObject instanceof Object[])))
+      {
+        a(paramBoolean, (Object[])paramObject);
+        return;
+      }
+      a(false, null);
       return;
-    } while (!(paramObject instanceof Object[]));
-    paramObject = (Object[])paramObject;
-    a(paramBoolean, ((Integer)paramObject[0]).intValue(), (ArrayList)paramObject[1]);
+    case 3: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (String)paramObject[0], ((Integer)paramObject[1]).intValue(), ((Integer)paramObject[2]).intValue(), ((Integer)paramObject[3]).intValue());
+        return;
+      }
+      a(false, "", -1, -1, -1);
+      return;
+    case 2: 
+      if ((paramObject instanceof Object[]))
+      {
+        a(paramBoolean, (String)((Object[])(Object[])paramObject)[0]);
+        return;
+      }
+      a(false, "");
+      return;
+    case 1: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (String)paramObject[0], ((Boolean)paramObject[1]).booleanValue());
+        return;
+      }
+      a(paramBoolean, "", false);
+      return;
+    case 0: 
+      if ((paramObject instanceof Object[]))
+      {
+        paramObject = (Object[])paramObject;
+        a(paramBoolean, (String)paramObject[0], (IntimateInfo)paramObject[1]);
+        return;
+      }
+      a(false, "", null);
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.friends.intimate.IntimateInfoObserver
  * JD-Core Version:    0.7.0.1
  */

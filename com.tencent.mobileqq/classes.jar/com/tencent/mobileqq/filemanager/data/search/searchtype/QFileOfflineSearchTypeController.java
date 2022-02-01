@@ -25,35 +25,42 @@ public class QFileOfflineSearchTypeController
   
   public void a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    default: 
-      QLog.i("QFileOfflineSearchTypeController", 4, "unknown search type.");
-      return;
-    case 3: 
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 1, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 2: 
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 2, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 0: 
-      ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 3, 0, "", "", "", "");
-      SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
-      return;
-    case 1: 
+      if (paramInt != 1)
+      {
+        if (paramInt != 2)
+        {
+          if (paramInt != 3)
+          {
+            if (paramInt != 11)
+            {
+              QLog.i("QFileOfflineSearchTypeController", 4, "unknown search type.");
+              return;
+            }
+            ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 5, 0, "", "", "", "");
+            SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+            return;
+          }
+          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 1, 0, "", "", "", "");
+          SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+          return;
+        }
+        ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 2, 0, "", "", "", "");
+        SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
+        return;
+      }
       ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 4, 0, "", "", "", "");
       SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
       return;
     }
-    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 5, 0, "", "", "", "");
+    ReportController.b(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "dc00898", "", "", "0X800A0B7", "0X800A0B7", 3, 0, "", "", "", "");
     SearchTypeDetailActivity.a(this.jdField_a_of_type_AndroidContentContext, paramInt, this.jdField_a_of_type_JavaLangString, this.jdField_a_of_type_JavaUtilList);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.filemanager.data.search.searchtype.QFileOfflineSearchTypeController
  * JD-Core Version:    0.7.0.1
  */

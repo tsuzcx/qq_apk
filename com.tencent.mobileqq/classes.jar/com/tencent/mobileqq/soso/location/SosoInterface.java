@@ -7,8 +7,10 @@ import android.content.SharedPreferences.Editor;
 import android.os.Build.VERSION;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.SystemClock;
 import android.text.TextUtils;
+import android.util.AndroidRuntimeException;
 import com.tencent.map.geolocation.TencentLocation;
 import com.tencent.map.geolocation.TencentLocationListener;
 import com.tencent.map.geolocation.TencentLocationManager;
@@ -49,34 +51,34 @@ public class SosoInterface
   public static final int ERR_SCREEN_OF = -10001;
   public static final int ERR_TIMEOUT = -10000;
   public static final int ERR_TOO_EARLY = -10003;
-  private static final Object LOCK;
+  private static final Object LOCK = new Object();
   public static final int MAX_LONG_TIME = 30000;
   public static final int MSG_RESET_TIMEOUT = 1002;
   public static final int MSG_STOP_LOCATION = 1001;
   public static final String PRE = "qq_";
   public static final int REQ_LOCATION = 2;
   public static final int REQ_RAW = 1;
-  private static final SosoInterfaceOnLocationListener REQ_RAW_LOCATION_LISTENER;
+  private static final SosoInterfaceOnLocationListener REQ_RAW_LOCATION_LISTENER = new SosoInterface.5(0, false, false, 0L, false, false, "reqRawData");
   private static final AtomicInteger REQ_STATUS;
   public static final int REQ_STOP = 0;
   public static final String SP_NAME = "soso_lbs";
   public static final String TAG = "SOSO.LBS";
-  private static int consecutiveFailCount;
-  private static int consumeOffset;
-  public static volatile boolean hasGetOaid;
-  private static long lastUpdateTime;
+  private static int consecutiveFailCount = 0;
+  private static int consumeOffset = 0;
+  public static volatile boolean hasGetOaid = false;
+  private static long lastUpdateTime = 0L;
   private static TencentLocationListener locListener;
   private static SosoLbsInfo logSoso;
   private static TencentLocationManager mLocationManager;
-  public static volatile String mOaid;
-  private static long reqLocationTime;
-  public static long reqRawTime;
+  public static volatile String mOaid = "";
+  private static long reqLocationTime = 0L;
+  public static long reqRawTime = 0L;
   public static int sContinuousLocationInterval = 2000;
-  private static boolean sInLaunchTime;
+  private static boolean sInLaunchTime = true;
   private static int sLastErrorCode;
   private static int sLevel3NoCityCodeCount;
   private static HashSet<String> sRegisteredCallers;
-  public static long sResumeFlagFromConversation;
+  public static long sResumeFlagFromConversation = -1L;
   private static boolean sScreenOn;
   private static long sTime;
   private static Handler subHandler;
@@ -85,9 +87,6 @@ public class SosoInterface
   
   static
   {
-    LOCK = new Object();
-    mOaid = "";
-    sResumeFlagFromConversation = -1L;
     ARR_LOC_LISTENER = new ArrayList();
     sLevel3NoCityCodeCount = 0;
     subHandler = new Handler(ThreadManager.getSubThreadLooper(), new SosoInterface.1());
@@ -101,22 +100,16 @@ public class SosoInterface
     try
     {
       MobileQQ.sMobileQQ.getApplicationContext().registerReceiver(local2, localIntentFilter);
-      consecutiveFailCount = 0;
-      consumeOffset = 0;
-      locListener = new SosoInterface.3();
-      REQ_RAW_LOCATION_LISTENER = new SosoInterface.5(0, false, false, 0L, false, false, "reqRawData");
-      sInLaunchTime = true;
-      return;
     }
     catch (Exception localException)
     {
-      for (;;)
-      {
-        if (QLog.isDevelopLevel()) {
-          localException.printStackTrace();
-        }
+      if (QLog.isDevelopLevel()) {
+        localException.printStackTrace();
       }
     }
+    consecutiveFailCount = 0;
+    consumeOffset = 0;
+    locListener = new SosoInterface.3();
   }
   
   private static void addOnLocationListener(SosoInterfaceOnLocationListener paramSosoInterfaceOnLocationListener)
@@ -159,8 +152,12 @@ public class SosoInterface
         paramTencentLocation.put("level_3_no_citycode", String.valueOf(sLevel3NoCityCodeCount));
         str = getCurrentUin();
         StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(str, "actSoSoNoCityCode", true, 0L, 0L, paramTencentLocation, "");
-        if (QLog.isColorLevel()) {
-          QLog.i("SOSO.LBS", 2, "onLocationChanged level is 3, adcode is null, count : " + sLevel3NoCityCodeCount);
+        if (QLog.isColorLevel())
+        {
+          paramTencentLocation = new StringBuilder();
+          paramTencentLocation.append("onLocationChanged level is 3, adcode is null, count : ");
+          paramTencentLocation.append(sLevel3NoCityCodeCount);
+          QLog.i("SOSO.LBS", 2, paramTencentLocation.toString());
         }
       }
     }
@@ -171,89 +168,109 @@ public class SosoInterface
   public static SosoLbsInfo getCanUsedLbsInfoCache(long paramLong, boolean paramBoolean1, int paramInt, boolean paramBoolean2)
   {
     SosoLbsInfo localSosoLbsInfo = null;
-    boolean bool = true;
-    if ((paramLong <= 5000L) || (paramInt == 4))
+    Object localObject1;
+    if ((paramLong > 5000L) && (paramInt != 4))
     {
-      localObject = localSosoLbsInfo;
-      if (QLog.isColorLevel())
+      boolean bool2 = isMainProcess();
+      boolean bool1 = true;
+      Object localObject2;
+      if (bool2)
       {
-        QLog.i("SOSO.LBS", 2, "getCanUsedLbsInfoCache maxCacheInterval is: " + paramLong + " directly return.");
-        localObject = localSosoLbsInfo;
-      }
-    }
-    EIPCResult localEIPCResult;
-    do
-    {
-      do
-      {
-        do
+        long l1 = SystemClock.elapsedRealtime();
+        localObject1 = localSosoLbsInfo;
+        if (paramLong > 0L)
         {
-          long l;
-          do
-          {
-            do
+          localObject1 = localSosoLbsInfo;
+          if (!paramBoolean1) {
+            if (paramBoolean2)
             {
-              do
+              localObject2 = timeUpdate;
+              localObject1 = localSosoLbsInfo;
+              if (localObject2[paramInt] > 0L)
               {
-                do
-                {
-                  do
-                  {
-                    do
-                    {
-                      return localObject;
-                      if (!isMainProcess()) {
-                        break;
-                      }
-                      l = SystemClock.elapsedRealtime();
-                      localObject = localSosoLbsInfo;
-                    } while (paramLong <= 0L);
-                    localObject = localSosoLbsInfo;
-                  } while (paramBoolean1);
-                  if (!paramBoolean2) {
-                    break;
-                  }
-                  localObject = localSosoLbsInfo;
-                } while (timeUpdate[paramInt] <= 0L);
-                localObject = localSosoLbsInfo;
-              } while (l >= timeUpdate[paramInt] + paramLong);
-              return getSosoInfo(paramInt, true);
-              localObject = localSosoLbsInfo;
-            } while (reqRawTime <= 0L);
-            localObject = localSosoLbsInfo;
-          } while (l >= reqRawTime + paramLong);
-          localObject = localSosoLbsInfo;
-        } while (logSoso == null);
-        return getRawSosoInfo(true);
-        localObject = new Bundle();
-        ((Bundle)localObject).putLong("max_cache_interval", paramLong);
-        ((Bundle)localObject).putBoolean("goon", paramBoolean1);
-        ((Bundle)localObject).putInt("level", paramInt);
-        ((Bundle)localObject).putBoolean("req_location", paramBoolean2);
-        localEIPCResult = QIPCClientHelper.getInstance().getClient().callServer("soso_interface", "get_lbs_info", (Bundle)localObject);
-        if ((localEIPCResult == null) || (!localEIPCResult.isSuccess())) {
-          break;
+                localObject1 = localSosoLbsInfo;
+                if (l1 >= localObject2[paramInt] + paramLong) {}
+              }
+            }
+            else
+            {
+              for (localObject1 = getSosoInfo(paramInt, true);; localObject1 = getRawSosoInfo(true))
+              {
+                return localObject1;
+                long l2 = reqRawTime;
+                localObject1 = localSosoLbsInfo;
+                if (l2 <= 0L) {
+                  break;
+                }
+                localObject1 = localSosoLbsInfo;
+                if (l1 >= l2 + paramLong) {
+                  break;
+                }
+                localObject1 = localSosoLbsInfo;
+                if (logSoso == null) {
+                  break;
+                }
+              }
+            }
+          }
         }
-        localEIPCResult.data.setClassLoader(SosoInterface.class.getClassLoader());
-        localSosoLbsInfo = (SosoLbsInfo)localEIPCResult.data.getParcelable("soso_lbs_info");
-        localObject = localSosoLbsInfo;
-      } while (!QLog.isColorLevel());
-      localObject = new StringBuilder().append("getCanUsedLbsInfoCache result is ok ,info is null: ");
-      if (localSosoLbsInfo == null) {}
-      for (paramBoolean1 = bool;; paramBoolean1 = false)
-      {
-        QLog.i("SOSO.LBS", 2, paramBoolean1);
-        return localSosoLbsInfo;
       }
-      localObject = localSosoLbsInfo;
-    } while (!QLog.isColorLevel());
-    Object localObject = new StringBuilder().append("getCanUsedLbsInfoCache result is not ok. code: ");
-    if (localEIPCResult == null) {}
-    for (paramInt = -1;; paramInt = localEIPCResult.code)
-    {
-      QLog.i("SOSO.LBS", 2, paramInt);
-      return null;
+      else
+      {
+        localObject1 = new Bundle();
+        ((Bundle)localObject1).putLong("max_cache_interval", paramLong);
+        ((Bundle)localObject1).putBoolean("goon", paramBoolean1);
+        ((Bundle)localObject1).putInt("level", paramInt);
+        ((Bundle)localObject1).putBoolean("req_location", paramBoolean2);
+        localObject2 = QIPCClientHelper.getInstance().getClient().callServer("soso_interface", "get_lbs_info", (Bundle)localObject1);
+        if ((localObject2 != null) && (((EIPCResult)localObject2).isSuccess()))
+        {
+          ((EIPCResult)localObject2).data.setClassLoader(SosoInterface.class.getClassLoader());
+          localSosoLbsInfo = (SosoLbsInfo)((EIPCResult)localObject2).data.getParcelable("soso_lbs_info");
+          localObject1 = localSosoLbsInfo;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("getCanUsedLbsInfoCache result is ok ,info is null: ");
+            if (localSosoLbsInfo == null) {
+              paramBoolean1 = bool1;
+            } else {
+              paramBoolean1 = false;
+            }
+            ((StringBuilder)localObject1).append(paramBoolean1);
+            QLog.i("SOSO.LBS", 2, ((StringBuilder)localObject1).toString());
+            return localSosoLbsInfo;
+          }
+        }
+        else
+        {
+          localObject1 = localSosoLbsInfo;
+          if (QLog.isColorLevel())
+          {
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("getCanUsedLbsInfoCache result is not ok. code: ");
+            if (localObject2 == null) {
+              paramInt = -1;
+            } else {
+              paramInt = ((EIPCResult)localObject2).code;
+            }
+            ((StringBuilder)localObject1).append(paramInt);
+            QLog.i("SOSO.LBS", 2, ((StringBuilder)localObject1).toString());
+            localObject1 = localSosoLbsInfo;
+          }
+        }
+      }
+      return localObject1;
     }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("getCanUsedLbsInfoCache maxCacheInterval is: ");
+      ((StringBuilder)localObject1).append(paramLong);
+      ((StringBuilder)localObject1).append(" directly return.");
+      QLog.i("SOSO.LBS", 2, ((StringBuilder)localObject1).toString());
+    }
+    return null;
   }
   
   static String getCity()
@@ -282,13 +299,14 @@ public class SosoInterface
   public static String getCurrentUin()
   {
     Object localObject = MobileQQ.sMobileQQ.getApplicationContext();
-    if (Build.VERSION.SDK_INT > 10) {}
-    for (int i = 4;; i = 0)
-    {
-      localObject = ((Context)localObject).getSharedPreferences("Last_Login", i).getString("uin", "");
-      if ((localObject == null) || (((String)localObject).length() <= 0)) {
-        break;
-      }
+    int i;
+    if (Build.VERSION.SDK_INT > 10) {
+      i = 4;
+    } else {
+      i = 0;
+    }
+    localObject = ((Context)localObject).getSharedPreferences("Last_Login", i).getString("uin", "");
+    if ((localObject != null) && (((String)localObject).length() > 0)) {
       return localObject;
     }
     return "10000";
@@ -299,44 +317,21 @@ public class SosoInterface
     return getConfigSp().getLong("normal_enter_conversation_time", 0L);
   }
   
-  /* Error */
   private static String getOaid()
   {
-    // Byte code:
-    //   0: ldc 2
-    //   2: monitorenter
-    //   3: getstatic 530	com/tencent/mobileqq/soso/location/SosoInterface:hasGetOaid	Z
-    //   6: ifeq +12 -> 18
-    //   9: getstatic 88	com/tencent/mobileqq/soso/location/SosoInterface:mOaid	Ljava/lang/String;
-    //   12: astore_0
-    //   13: ldc 2
-    //   15: monitorexit
-    //   16: aload_0
-    //   17: areturn
-    //   18: iconst_1
-    //   19: putstatic 530	com/tencent/mobileqq/soso/location/SosoInterface:hasGetOaid	Z
-    //   22: invokestatic 534	com/tencent/mobileqq/app/ThreadManager:getSubThreadHandler	()Lmqq/os/MqqHandler;
-    //   25: new 536	com/tencent/mobileqq/soso/location/SosoInterface$8
-    //   28: dup
-    //   29: invokespecial 537	com/tencent/mobileqq/soso/location/SosoInterface$8:<init>	()V
-    //   32: invokevirtual 543	mqq/os/MqqHandler:post	(Ljava/lang/Runnable;)Z
-    //   35: pop
-    //   36: getstatic 88	com/tencent/mobileqq/soso/location/SosoInterface:mOaid	Ljava/lang/String;
-    //   39: astore_0
-    //   40: goto -27 -> 13
-    //   43: astore_0
-    //   44: ldc 2
-    //   46: monitorexit
-    //   47: aload_0
-    //   48: athrow
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   12	28	0	str	String
-    //   43	5	0	localObject	Object
-    // Exception table:
-    //   from	to	target	type
-    //   3	13	43	finally
-    //   18	40	43	finally
+    try
+    {
+      if (hasGetOaid)
+      {
+        str = mOaid;
+        return str;
+      }
+      hasGetOaid = true;
+      ThreadManager.getSubThreadHandler().post(new SosoInterface.8());
+      String str = mOaid;
+      return str;
+    }
+    finally {}
   }
   
   public static String getProvince()
@@ -350,29 +345,36 @@ public class SosoInterface
   
   private static SosoInterfaceOnLocationListener getRawLocationListener()
   {
+    int i = ARR_LOC_LISTENER.size();
     Object localObject2 = null;
     Object localObject1 = null;
-    int i;
-    if (ARR_LOC_LISTENER.size() > 0)
+    if (i > 0)
     {
       i = ARR_LOC_LISTENER.size() - 1;
-      localObject2 = localObject1;
-      if (i >= 0)
+      for (;;)
       {
-        localObject2 = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
-        if ((((SosoInterfaceOnLocationListener)localObject2).isRemoved) || (((SosoInterfaceOnLocationListener)localObject2).goonListener) || (((SosoInterfaceOnLocationListener)localObject2).reqLocation)) {
-          break label71;
+        localObject2 = localObject1;
+        if (i < 0) {
+          break;
         }
+        SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
+        localObject2 = localObject1;
+        if (!localSosoInterfaceOnLocationListener.isRemoved)
+        {
+          localObject2 = localObject1;
+          if (!localSosoInterfaceOnLocationListener.goonListener)
+          {
+            localObject2 = localObject1;
+            if (!localSosoInterfaceOnLocationListener.reqLocation) {
+              localObject2 = localSosoInterfaceOnLocationListener;
+            }
+          }
+        }
+        i -= 1;
         localObject1 = localObject2;
       }
     }
-    label71:
-    for (;;)
-    {
-      i -= 1;
-      break;
-      return localObject2;
-    }
+    return localObject2;
   }
   
   @Deprecated
@@ -412,118 +414,141 @@ public class SosoInterface
   
   private static SosoInterfaceOnLocationListener getRequestingGoonListener()
   {
+    int i = ARR_LOC_LISTENER.size();
     Object localObject2 = null;
     Object localObject1 = null;
-    int i;
-    if (ARR_LOC_LISTENER.size() > 0)
+    if (i > 0)
     {
       i = ARR_LOC_LISTENER.size() - 1;
-      localObject2 = localObject1;
-      if (i >= 0)
+      for (;;)
       {
-        localObject2 = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
-        if ((((SosoInterfaceOnLocationListener)localObject2).isRemoved) || (!((SosoInterfaceOnLocationListener)localObject2).goonListener) || (!((SosoInterfaceOnLocationListener)localObject2).requesting)) {
-          break label71;
+        localObject2 = localObject1;
+        if (i < 0) {
+          break;
         }
+        SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
+        localObject2 = localObject1;
+        if (!localSosoInterfaceOnLocationListener.isRemoved)
+        {
+          localObject2 = localObject1;
+          if (localSosoInterfaceOnLocationListener.goonListener)
+          {
+            localObject2 = localObject1;
+            if (localSosoInterfaceOnLocationListener.requesting) {
+              localObject2 = localSosoInterfaceOnLocationListener;
+            }
+          }
+        }
+        i -= 1;
         localObject1 = localObject2;
       }
     }
-    label71:
-    for (;;)
-    {
-      i -= 1;
-      break;
-      return localObject2;
-    }
+    return localObject2;
   }
   
   @Deprecated
   public static SosoLbsInfo getSosoInfo()
   {
-    if ((logSoso == null) || (logSoso.mLocation == null)) {
-      return null;
+    SosoLbsInfo localSosoLbsInfo = logSoso;
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null))
+    {
+      localSosoLbsInfo = new SosoLbsInfo();
+      localSosoLbsInfo.mLocation = logSoso.mLocation.clone(4, true);
+      return localSosoLbsInfo;
     }
-    SosoLbsInfo localSosoLbsInfo = new SosoLbsInfo();
-    localSosoLbsInfo.mLocation = logSoso.mLocation.clone(4, true);
-    return localSosoLbsInfo;
+    return null;
   }
   
   public static SosoLbsInfo getSosoInfo(int paramInt, boolean paramBoolean)
   {
-    if ((logSoso == null) || (logSoso.mLocation == null)) {
-      return null;
+    SosoLbsInfo localSosoLbsInfo = logSoso;
+    if ((localSosoLbsInfo != null) && (localSosoLbsInfo.mLocation != null))
+    {
+      localSosoLbsInfo = new SosoLbsInfo();
+      localSosoLbsInfo.mLocation = logSoso.mLocation.clone(paramInt, paramBoolean);
+      return localSosoLbsInfo;
     }
-    SosoLbsInfo localSosoLbsInfo = new SosoLbsInfo();
-    localSosoLbsInfo.mLocation = logSoso.mLocation.clone(paramInt, paramBoolean);
-    return localSosoLbsInfo;
+    return null;
   }
   
   private static SosoInterfaceOnLocationListener getTopCommonListener()
   {
+    int i = ARR_LOC_LISTENER.size();
     Object localObject2 = null;
     Object localObject1 = null;
-    int i;
-    SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener;
-    if (ARR_LOC_LISTENER.size() > 0)
+    if (i > 0)
     {
       i = ARR_LOC_LISTENER.size() - 1;
-      localObject2 = localObject1;
-      if (i >= 0)
+      for (;;)
       {
-        localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
-        if ((localSosoInterfaceOnLocationListener.isRemoved) || (localSosoInterfaceOnLocationListener.goonListener) || (!localSosoInterfaceOnLocationListener.reqLocation)) {
-          break label90;
+        localObject2 = localObject1;
+        if (i < 0) {
+          break;
         }
-        localObject2 = localSosoInterfaceOnLocationListener;
-        if (localObject1 != null) {
-          if (localObject1.level >= localSosoInterfaceOnLocationListener.level) {
-            break label90;
+        SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
+        localObject2 = localObject1;
+        if (!localSosoInterfaceOnLocationListener.isRemoved)
+        {
+          localObject2 = localObject1;
+          if (!localSosoInterfaceOnLocationListener.goonListener)
+          {
+            localObject2 = localObject1;
+            if (localSosoInterfaceOnLocationListener.reqLocation) {
+              if (localObject1 != null)
+              {
+                localObject2 = localObject1;
+                if (localObject1.level >= localSosoInterfaceOnLocationListener.level) {}
+              }
+              else
+              {
+                localObject2 = localSosoInterfaceOnLocationListener;
+              }
+            }
           }
         }
+        i -= 1;
+        localObject1 = localObject2;
       }
     }
-    label90:
-    for (localObject2 = localSosoInterfaceOnLocationListener;; localObject2 = localObject1)
-    {
-      i -= 1;
-      localObject1 = localObject2;
-      break;
-      return localObject2;
-    }
+    return localObject2;
   }
   
   private static SosoInterfaceOnLocationListener getTopGoonListener()
   {
+    int i = ARR_LOC_LISTENER.size();
     Object localObject2 = null;
     Object localObject1 = null;
-    int i;
-    SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener;
-    if (ARR_LOC_LISTENER.size() > 0)
+    if (i > 0)
     {
       i = ARR_LOC_LISTENER.size() - 1;
-      localObject2 = localObject1;
-      if (i >= 0)
+      for (;;)
       {
-        localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
-        if ((localSosoInterfaceOnLocationListener.isRemoved) || (!localSosoInterfaceOnLocationListener.goonListener)) {
-          break label83;
+        localObject2 = localObject1;
+        if (i < 0) {
+          break;
         }
-        localObject2 = localSosoInterfaceOnLocationListener;
-        if (localObject1 != null) {
-          if (localObject1.level >= localSosoInterfaceOnLocationListener.level) {
-            break label83;
+        SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
+        localObject2 = localObject1;
+        if (!localSosoInterfaceOnLocationListener.isRemoved)
+        {
+          localObject2 = localObject1;
+          if (localSosoInterfaceOnLocationListener.goonListener) {
+            if (localObject1 != null)
+            {
+              localObject2 = localObject1;
+              if (localObject1.level >= localSosoInterfaceOnLocationListener.level) {}
+            }
+            else
+            {
+              localObject2 = localSosoInterfaceOnLocationListener;
+            }
           }
         }
+        i -= 1;
+        localObject1 = localObject2;
       }
     }
-    label83:
-    for (localObject2 = localSosoInterfaceOnLocationListener;; localObject2 = localObject1)
-    {
-      i -= 1;
-      localObject1 = localObject2;
-      break;
-      return localObject2;
-    }
+    return localObject2;
   }
   
   private static void initRegisteredCallers()
@@ -636,10 +661,14 @@ public class SosoInterface
   
   private static boolean isCallerRegistered(String paramString)
   {
-    if ((TextUtils.isEmpty(paramString)) || (sRegisteredCallers == null)) {
-      return false;
+    if (!TextUtils.isEmpty(paramString))
+    {
+      HashSet localHashSet = sRegisteredCallers;
+      if (localHashSet != null) {
+        return localHashSet.contains(paramString);
+      }
     }
-    return sRegisteredCallers.contains(paramString);
+    return false;
   }
   
   public static boolean isInLaunchTime()
@@ -647,8 +676,13 @@ public class SosoInterface
     if (!sInLaunchTime) {
       return false;
     }
-    if (isMainProcess()) {}
-    for (long l = sResumeFlagFromConversation; (l > 0L) && (SystemClock.elapsedRealtime() - l < 60000L); l = getNormalEnterConversationTime()) {
+    long l;
+    if (isMainProcess()) {
+      l = sResumeFlagFromConversation;
+    } else {
+      l = getNormalEnterConversationTime();
+    }
+    if ((l > 0L) && (SystemClock.elapsedRealtime() - l < 60000L)) {
       return true;
     }
     sInLaunchTime = false;
@@ -672,161 +706,157 @@ public class SosoInterface
   
   private static void notifyLocationError()
   {
-    for (;;)
+    int i;
+    synchronized (LOCK)
     {
-      int i;
-      SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener;
-      synchronized (LOCK)
+      if (ARR_LOC_LISTENER.isEmpty()) {
+        return;
+      }
+      i = ARR_LOC_LISTENER.size() - 1;
+      if (i >= 0)
       {
-        if (ARR_LOC_LISTENER.isEmpty()) {
-          return;
-        }
-        i = ARR_LOC_LISTENER.size() - 1;
-        if (i < 0) {
-          break label107;
-        }
-        localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
-        if (localSosoInterfaceOnLocationListener == null) {
-          break label116;
-        }
-        if (localSosoInterfaceOnLocationListener.reqLocation)
+        SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
+        if (localSosoInterfaceOnLocationListener != null)
         {
-          SosoLbsInfo localSosoLbsInfo1 = getSosoInfo(localSosoInterfaceOnLocationListener.level, true);
-          if (!localSosoInterfaceOnLocationListener.uiThread) {
-            break label96;
+          SosoLbsInfo localSosoLbsInfo;
+          if (localSosoInterfaceOnLocationListener.reqLocation) {
+            localSosoLbsInfo = getSosoInfo(localSosoInterfaceOnLocationListener.level, true);
+          } else {
+            localSosoLbsInfo = getRawSosoInfo(true);
           }
-          runOnUI(localSosoInterfaceOnLocationListener, -10000, localSosoLbsInfo1);
+          if (localSosoInterfaceOnLocationListener.uiThread) {
+            runOnUI(localSosoInterfaceOnLocationListener, -10000, localSosoLbsInfo);
+          } else {
+            localSosoInterfaceOnLocationListener.onLocationFinish(-10000, localSosoLbsInfo);
+          }
         }
       }
-      SosoLbsInfo localSosoLbsInfo2 = getRawSosoInfo(true);
-      continue;
-      label96:
-      localSosoInterfaceOnLocationListener.onLocationFinish(-10000, localSosoLbsInfo2);
-      break label116;
-      label107:
-      ARR_LOC_LISTENER.clear();
-      return;
-      label116:
-      i -= 1;
+      else
+      {
+        ARR_LOC_LISTENER.clear();
+        return;
+      }
     }
   }
   
   private static void notifyLocationFinish(TencentLocation paramTencentLocation, int paramInt, String paramString, long paramLong)
   {
+    int j = paramInt;
     int k = paramTencentLocation.getExtra().getInt("qq_level");
     String str = paramTencentLocation.getExtra().getString("qq_caller");
     boolean bool2 = paramTencentLocation.getExtra().getBoolean("qq_reqLocation");
     boolean bool3 = paramTencentLocation.getExtra().getBoolean("qq_allowGps");
     boolean bool1;
-    label84:
-    int j;
-    label94:
-    SosoInterfaceOnLocationListener localSosoInterfaceOnLocationListener;
-    if (paramInt == 0)
-    {
+    if (j == 0) {
       bool1 = true;
-      if (ARR_LOC_LISTENER.size() <= 0) {
-        return;
-      }
-      if (!bool2) {
-        break label284;
-      }
-      paramTencentLocation = getSosoInfo(k, true);
-      j = ARR_LOC_LISTENER.size() - 1;
-      if (j < 0) {
-        return;
-      }
-      localSosoInterfaceOnLocationListener = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(j);
-      if ((localSosoInterfaceOnLocationListener.reqLocation == bool2) && ((!localSosoInterfaceOnLocationListener.reqLocation) || (localSosoInterfaceOnLocationListener.level <= k)))
-      {
-        if (!localSosoInterfaceOnLocationListener.uiThread) {
-          break label292;
-        }
-        runOnUI(localSosoInterfaceOnLocationListener, paramInt, paramTencentLocation);
-        label155:
-        if (!TextUtils.isEmpty(str)) {
-          break label302;
-        }
-        i = 0;
-        label166:
-        if (i == 0) {
-          break label327;
-        }
-        uploadSummaryData(bool1, bool2, paramLong, paramInt, str, paramString, bool3, k, true);
-        label188:
-        if (!localSosoInterfaceOnLocationListener.goonListener) {
-          break label347;
-        }
-        if (QLog.isColorLevel()) {
-          QLog.d("SOSO.LBS", 2, "onLocationChanged() lis=" + localSosoInterfaceOnLocationListener.tag + " goon...");
-        }
-      }
-      label238:
-      if (!localSosoInterfaceOnLocationListener.isRemoved)
-      {
-        if (!localSosoInterfaceOnLocationListener.goonListener) {
-          break label407;
-        }
-        if (consecutiveFailCount > 0) {
-          localSosoInterfaceOnLocationListener.onConsecutiveFailure(paramInt, consecutiveFailCount);
-        }
-      }
-    }
-    label284:
-    label292:
-    label302:
-    label327:
-    label347:
-    while (SystemClock.elapsedRealtime() - localSosoInterfaceOnLocationListener.sTime <= 30000L)
-    {
-      j -= 1;
-      break label94;
+    } else {
       bool1 = false;
-      break;
-      paramTencentLocation = getRawSosoInfo(true);
-      break label84;
-      localSosoInterfaceOnLocationListener.onLocationFinish(paramInt, paramTencentLocation);
-      break label155;
-      if (!str.equals(localSosoInterfaceOnLocationListener.tag))
+    }
+    if (ARR_LOC_LISTENER.size() > 0)
+    {
+      if (bool2) {
+        paramTencentLocation = getSosoInfo(k, true);
+      } else {
+        paramTencentLocation = getRawSosoInfo(true);
+      }
+      int i = ARR_LOC_LISTENER.size() - 1;
+      while (i >= 0)
       {
-        i = 1;
-        break label166;
+        Object localObject2 = (SosoInterfaceOnLocationListener)ARR_LOC_LISTENER.get(i);
+        Object localObject1;
+        if ((((SosoInterfaceOnLocationListener)localObject2).reqLocation == bool2) && ((!((SosoInterfaceOnLocationListener)localObject2).reqLocation) || (((SosoInterfaceOnLocationListener)localObject2).level <= k)))
+        {
+          if (((SosoInterfaceOnLocationListener)localObject2).uiThread) {
+            runOnUI((SosoInterfaceOnLocationListener)localObject2, j, paramTencentLocation);
+          } else {
+            ((SosoInterfaceOnLocationListener)localObject2).onLocationFinish(j, paramTencentLocation);
+          }
+          if (TextUtils.isEmpty(str)) {}
+          while (str.equals(((SosoInterfaceOnLocationListener)localObject2).tag))
+          {
+            j = 0;
+            break;
+          }
+          j = 1;
+          if (j != 0) {
+            uploadSummaryData(bool1, bool2, paramLong, paramInt, str, paramString, bool3, k, true);
+          } else {
+            uploadSummaryData(bool1, bool2, paramLong, paramInt, str, paramString, bool3, k, false);
+          }
+          if (((SosoInterfaceOnLocationListener)localObject2).goonListener)
+          {
+            if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("onLocationChanged() lis=");
+              ((StringBuilder)localObject1).append(((SosoInterfaceOnLocationListener)localObject2).tag);
+              ((StringBuilder)localObject1).append(" goon...");
+              QLog.d("SOSO.LBS", 2, ((StringBuilder)localObject1).toString());
+            }
+            localObject1 = localObject2;
+          }
+          else
+          {
+            localObject1 = ARR_LOC_LISTENER;
+            j = i;
+            ((ArrayList)localObject1).remove(j);
+            ((SosoInterfaceOnLocationListener)localObject2).isRemoved = true;
+            localObject1 = localObject2;
+            i = j;
+            if (QLog.isColorLevel())
+            {
+              localObject1 = new StringBuilder();
+              ((StringBuilder)localObject1).append("onLocationChanged() lis=");
+              ((StringBuilder)localObject1).append(((SosoInterfaceOnLocationListener)localObject2).tag);
+              ((StringBuilder)localObject1).append(" removed normally.");
+              QLog.d("SOSO.LBS", 2, ((StringBuilder)localObject1).toString());
+              localObject1 = localObject2;
+              i = j;
+            }
+          }
+        }
+        else
+        {
+          localObject1 = localObject2;
+        }
+        if (!((SosoInterfaceOnLocationListener)localObject1).isRemoved) {
+          if (((SosoInterfaceOnLocationListener)localObject1).goonListener)
+          {
+            j = consecutiveFailCount;
+            if (j > 0) {
+              ((SosoInterfaceOnLocationListener)localObject1).onConsecutiveFailure(paramInt, j);
+            }
+          }
+          else if (SystemClock.elapsedRealtime() - ((SosoInterfaceOnLocationListener)localObject1).sTime > 30000L)
+          {
+            ARR_LOC_LISTENER.remove(i);
+            ((SosoInterfaceOnLocationListener)localObject1).isRemoved = true;
+            if (((SosoInterfaceOnLocationListener)localObject1).reqLocation) {
+              localObject2 = getSosoInfo(((SosoInterfaceOnLocationListener)localObject1).level, true);
+            } else {
+              localObject2 = getRawSosoInfo(true);
+            }
+            if (localObject2 == null) {
+              j = -10000;
+            } else {
+              j = 0;
+            }
+            ((SosoInterfaceOnLocationListener)localObject1).onLocationFinish(j, (SosoLbsInfo)localObject2);
+            if (QLog.isColorLevel())
+            {
+              localObject2 = new StringBuilder();
+              ((StringBuilder)localObject2).append("lis=");
+              ((StringBuilder)localObject2).append(((SosoInterfaceOnLocationListener)localObject1).tag);
+              ((StringBuilder)localObject2).append(" err_timeout.reqRaw=");
+              ((StringBuilder)localObject2).append(((SosoInterfaceOnLocationListener)localObject1).reqLocation);
+              ((StringBuilder)localObject2).append(". Force 2 remove it.");
+              QLog.d("SOSO.LBS", 2, ((StringBuilder)localObject2).toString());
+            }
+          }
+        }
+        i -= 1;
+        j = paramInt;
       }
-      i = 0;
-      break label166;
-      uploadSummaryData(bool1, bool2, paramLong, paramInt, str, paramString, bool3, k, false);
-      break label188;
-      ARR_LOC_LISTENER.remove(j);
-      localSosoInterfaceOnLocationListener.isRemoved = true;
-      if (!QLog.isColorLevel()) {
-        break label238;
-      }
-      QLog.d("SOSO.LBS", 2, "onLocationChanged() lis=" + localSosoInterfaceOnLocationListener.tag + " removed normally.");
-      break label238;
-    }
-    label407:
-    ARR_LOC_LISTENER.remove(j);
-    localSosoInterfaceOnLocationListener.isRemoved = true;
-    SosoLbsInfo localSosoLbsInfo;
-    if (localSosoInterfaceOnLocationListener.reqLocation)
-    {
-      localSosoLbsInfo = getSosoInfo(localSosoInterfaceOnLocationListener.level, true);
-      label457:
-      if (localSosoLbsInfo != null) {
-        break label544;
-      }
-    }
-    label544:
-    for (int i = -10000;; i = 0)
-    {
-      localSosoInterfaceOnLocationListener.onLocationFinish(i, localSosoLbsInfo);
-      if (!QLog.isColorLevel()) {
-        break;
-      }
-      QLog.d("SOSO.LBS", 2, "lis=" + localSosoInterfaceOnLocationListener.tag + " err_timeout.reqRaw=" + localSosoInterfaceOnLocationListener.reqLocation + ". Force 2 remove it.");
-      break;
-      localSosoLbsInfo = getRawSosoInfo(true);
-      break label457;
     }
   }
   
@@ -847,8 +877,13 @@ public class SosoInterface
       ARR_LOC_LISTENER.remove(paramSosoInterfaceOnLocationListener);
       paramSosoInterfaceOnLocationListener.isRemoved = true;
       paramSosoInterfaceOnLocationListener.requesting = false;
-      if (QLog.isColorLevel()) {
-        QLog.d("SOSO.LBS", 2, "removeOnLocationListener() lis=" + paramSosoInterfaceOnLocationListener.tag + " removed.");
+      if (QLog.isColorLevel())
+      {
+        ??? = new StringBuilder();
+        ((StringBuilder)???).append("removeOnLocationListener() lis=");
+        ((StringBuilder)???).append(paramSosoInterfaceOnLocationListener.tag);
+        ((StringBuilder)???).append(" removed.");
+        QLog.d("SOSO.LBS", 2, ((StringBuilder)???).toString());
       }
       if (ARR_LOC_LISTENER.size() == 0)
       {
@@ -861,270 +896,119 @@ public class SosoInterface
     }
   }
   
-  /* Error */
   @Deprecated
   public static void reqRawLbsData(long paramLong, String paramString)
   {
-    // Byte code:
-    //   0: invokestatic 934	com/tencent/mobileqq/app/ThreadManager:getSubThread	()Ljava/lang/Thread;
-    //   3: invokestatic 939	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   6: if_acmpeq +15 -> 21
-    //   9: invokestatic 939	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   12: invokestatic 944	android/os/Looper:getMainLooper	()Landroid/os/Looper;
-    //   15: invokevirtual 947	android/os/Looper:getThread	()Ljava/lang/Thread;
-    //   18: if_acmpne +31 -> 49
-    //   21: new 949	android/util/AndroidRuntimeException
-    //   24: dup
-    //   25: new 348	java/lang/StringBuilder
-    //   28: dup
-    //   29: invokespecial 349	java/lang/StringBuilder:<init>	()V
-    //   32: ldc_w 951
-    //   35: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   38: aload_2
-    //   39: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   42: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   45: invokespecial 953	android/util/AndroidRuntimeException:<init>	(Ljava/lang/String;)V
-    //   48: athrow
-    //   49: invokestatic 939	java/lang/Thread:currentThread	()Ljava/lang/Thread;
-    //   52: invokevirtual 957	java/lang/Thread:getStackTrace	()[Ljava/lang/StackTraceElement;
-    //   55: astore 12
-    //   57: ldc 86
-    //   59: astore 11
-    //   61: aload 11
-    //   63: astore 10
-    //   65: aload 12
-    //   67: ifnull +95 -> 162
-    //   70: aload 11
-    //   72: astore 10
-    //   74: aload 12
-    //   76: arraylength
-    //   77: iconst_4
-    //   78: if_icmplt +84 -> 162
-    //   81: aload 12
-    //   83: iconst_3
-    //   84: aaload
-    //   85: astore 10
-    //   87: new 348	java/lang/StringBuilder
-    //   90: dup
-    //   91: invokespecial 349	java/lang/StringBuilder:<init>	()V
-    //   94: aload 10
-    //   96: invokevirtual 962	java/lang/StackTraceElement:getClassName	()Ljava/lang/String;
-    //   99: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   102: ldc_w 964
-    //   105: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   108: aload 10
-    //   110: invokevirtual 967	java/lang/StackTraceElement:getMethodName	()Ljava/lang/String;
-    //   113: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   116: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   119: astore 11
-    //   121: aload 11
-    //   123: astore 10
-    //   125: invokestatic 338	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   128: ifeq +34 -> 162
-    //   131: ldc 42
-    //   133: iconst_2
-    //   134: new 348	java/lang/StringBuilder
-    //   137: dup
-    //   138: invokespecial 349	java/lang/StringBuilder:<init>	()V
-    //   141: ldc_w 969
-    //   144: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   147: aload 11
-    //   149: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   152: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   155: invokestatic 344	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   158: aload 11
-    //   160: astore 10
-    //   162: lload_0
-    //   163: lconst_0
-    //   164: lcmp
-    //   165: ifle +142 -> 307
-    //   168: invokestatic 380	android/os/SystemClock:elapsedRealtime	()J
-    //   171: getstatic 386	com/tencent/mobileqq/soso/location/SosoInterface:reqRawTime	J
-    //   174: lload_0
-    //   175: ladd
-    //   176: lcmp
-    //   177: ifge +130 -> 307
-    //   180: invokestatic 338	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   183: ifeq +29 -> 212
-    //   186: ldc 42
-    //   188: iconst_2
-    //   189: new 348	java/lang/StringBuilder
-    //   192: dup
-    //   193: invokespecial 349	java/lang/StringBuilder:<init>	()V
-    //   196: ldc_w 971
-    //   199: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   202: aload_2
-    //   203: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   206: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   209: invokestatic 889	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   212: new 307	java/util/HashMap
-    //   215: dup
-    //   216: invokespecial 308	java/util/HashMap:<init>	()V
-    //   219: astore 11
-    //   221: aload_2
-    //   222: ifnull +20 -> 242
-    //   225: aload_2
-    //   226: invokevirtual 518	java/lang/String:length	()I
-    //   229: ifle +13 -> 242
-    //   232: aload 11
-    //   234: ldc_w 973
-    //   237: aload_2
-    //   238: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   241: pop
-    //   242: aload 10
-    //   244: invokestatic 305	android/text/TextUtils:isEmpty	(Ljava/lang/CharSequence;)Z
-    //   247: ifne +14 -> 261
-    //   250: aload 11
-    //   252: ldc_w 975
-    //   255: aload 10
-    //   257: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   260: pop
-    //   261: aload 11
-    //   263: ldc_w 977
-    //   266: getstatic 983	java/lang/Boolean:TRUE	Ljava/lang/Boolean;
-    //   269: invokevirtual 986	java/lang/Boolean:booleanValue	()Z
-    //   272: invokestatic 989	java/lang/Boolean:toString	(Z)Ljava/lang/String;
-    //   275: invokevirtual 320	java/util/HashMap:put	(Ljava/lang/Object;Ljava/lang/Object;)Ljava/lang/Object;
-    //   278: pop
-    //   279: invokestatic 323	com/tencent/mobileqq/soso/location/SosoInterface:getCurrentUin	()Ljava/lang/String;
-    //   282: astore_2
-    //   283: getstatic 146	mqq/app/MobileQQ:sMobileQQ	Lmqq/app/MobileQQ;
-    //   286: invokevirtual 150	mqq/app/MobileQQ:getApplicationContext	()Landroid/content/Context;
-    //   289: invokestatic 329	com/tencent/mobileqq/statistics/StatisticCollector:getInstance	(Landroid/content/Context;)Lcom/tencent/mobileqq/statistics/StatisticCollector;
-    //   292: aload_2
-    //   293: ldc_w 991
-    //   296: iconst_1
-    //   297: lconst_0
-    //   298: lconst_0
-    //   299: aload 11
-    //   301: ldc 86
-    //   303: invokevirtual 335	com/tencent/mobileqq/statistics/StatisticCollector:collectPerformance	(Ljava/lang/String;Ljava/lang/String;ZJJLjava/util/HashMap;Ljava/lang/String;)V
-    //   306: return
-    //   307: invokestatic 338	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   310: ifeq +39 -> 349
-    //   313: ldc 42
-    //   315: iconst_2
-    //   316: new 348	java/lang/StringBuilder
-    //   319: dup
-    //   320: invokespecial 349	java/lang/StringBuilder:<init>	()V
-    //   323: ldc_w 993
-    //   326: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   329: aload_2
-    //   330: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   333: ldc_w 995
-    //   336: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   339: lload_0
-    //   340: invokevirtual 370	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   343: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   346: invokestatic 889	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   349: getstatic 174	com/tencent/mobileqq/soso/location/SosoInterface:REQ_RAW_LOCATION_LISTENER	Lcom/tencent/mobileqq/soso/location/SosoInterfaceOnLocationListener;
-    //   352: aload_2
-    //   353: putfield 884	com/tencent/mobileqq/soso/location/SosoInterfaceOnLocationListener:tag	Ljava/lang/String;
-    //   356: getstatic 174	com/tencent/mobileqq/soso/location/SosoInterface:REQ_RAW_LOCATION_LISTENER	Lcom/tencent/mobileqq/soso/location/SosoInterfaceOnLocationListener;
-    //   359: invokestatic 998	com/tencent/mobileqq/soso/location/SosoInterface:startLocation	(Lcom/tencent/mobileqq/soso/location/SosoInterfaceOnLocationListener;)V
-    //   362: invokestatic 380	android/os/SystemClock:elapsedRealtime	()J
-    //   365: lstore_0
-    //   366: iconst_0
-    //   367: istore 9
-    //   369: iconst_0
-    //   370: istore 8
-    //   372: iload 8
-    //   374: istore 7
-    //   376: getstatic 84	com/tencent/mobileqq/soso/location/SosoInterface:LOCK	Ljava/lang/Object;
-    //   379: astore 11
-    //   381: iload 8
-    //   383: istore 7
-    //   385: aload 11
-    //   387: monitorenter
-    //   388: iload 9
-    //   390: istore 8
-    //   392: invokestatic 380	android/os/SystemClock:elapsedRealtime	()J
-    //   395: lstore_3
-    //   396: iload 9
-    //   398: istore 8
-    //   400: getstatic 386	com/tencent/mobileqq/soso/location/SosoInterface:reqRawTime	J
-    //   403: lstore 5
-    //   405: lload_3
-    //   406: lload 5
-    //   408: ldc2_w 999
-    //   411: ladd
-    //   412: lcmp
-    //   413: ifge +67 -> 480
-    //   416: iconst_1
-    //   417: istore 7
-    //   419: aload 11
-    //   421: monitorexit
-    //   422: invokestatic 338	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   425: ifeq -119 -> 306
-    //   428: ldc 42
-    //   430: iconst_2
-    //   431: new 348	java/lang/StringBuilder
-    //   434: dup
-    //   435: invokespecial 349	java/lang/StringBuilder:<init>	()V
-    //   438: ldc_w 1002
-    //   441: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   444: aload_2
-    //   445: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   448: ldc_w 1004
-    //   451: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   454: iload 7
-    //   456: invokevirtual 466	java/lang/StringBuilder:append	(Z)Ljava/lang/StringBuilder;
-    //   459: ldc_w 1006
-    //   462: invokevirtual 355	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   465: invokestatic 380	android/os/SystemClock:elapsedRealtime	()J
-    //   468: lload_0
-    //   469: lsub
-    //   470: invokevirtual 370	java/lang/StringBuilder:append	(J)Ljava/lang/StringBuilder;
-    //   473: invokevirtual 361	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   476: invokestatic 889	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   479: return
-    //   480: iload 9
-    //   482: istore 8
-    //   484: getstatic 84	com/tencent/mobileqq/soso/location/SosoInterface:LOCK	Ljava/lang/Object;
-    //   487: ldc2_w 1007
-    //   490: invokevirtual 1012	java/lang/Object:wait	(J)V
-    //   493: iconst_0
-    //   494: istore 7
-    //   496: goto -77 -> 419
-    //   499: iload 7
-    //   501: istore 8
-    //   503: aload 11
-    //   505: monitorexit
-    //   506: aload 10
-    //   508: athrow
-    //   509: astore 10
-    //   511: goto -89 -> 422
-    //   514: astore 10
-    //   516: goto -17 -> 499
-    //   519: astore 10
-    //   521: iload 8
-    //   523: istore 7
-    //   525: goto -26 -> 499
-    // Local variable table:
-    //   start	length	slot	name	signature
-    //   0	528	0	paramLong	long
-    //   0	528	2	paramString	String
-    //   395	11	3	l1	long
-    //   403	4	5	l2	long
-    //   374	150	7	bool1	boolean
-    //   370	152	8	bool2	boolean
-    //   367	114	9	bool3	boolean
-    //   63	444	10	localObject1	Object
-    //   509	1	10	localInterruptedException	java.lang.InterruptedException
-    //   514	1	10	localObject2	Object
-    //   519	1	10	localObject3	Object
-    //   59	445	11	localObject4	Object
-    //   55	27	12	arrayOfStackTraceElement	java.lang.StackTraceElement[]
-    // Exception table:
-    //   from	to	target	type
-    //   376	381	509	java/lang/InterruptedException
-    //   385	388	509	java/lang/InterruptedException
-    //   506	509	509	java/lang/InterruptedException
-    //   419	422	514	finally
-    //   392	396	519	finally
-    //   400	405	519	finally
-    //   484	493	519	finally
-    //   503	506	519	finally
+    boolean bool3;
+    boolean bool4;
+    if ((ThreadManager.getSubThread() != Thread.currentThread()) && (Thread.currentThread() != Looper.getMainLooper().getThread()))
+    {
+      localObject1 = Thread.currentThread().getStackTrace();
+      Object localObject2;
+      if ((localObject1 != null) && (localObject1.length >= 4))
+      {
+        localObject1 = localObject1[3];
+        localObject2 = new StringBuilder();
+        ((StringBuilder)localObject2).append(((StackTraceElement)localObject1).getClassName());
+        ((StringBuilder)localObject2).append(".");
+        ((StringBuilder)localObject2).append(((StackTraceElement)localObject1).getMethodName());
+        localObject2 = ((StringBuilder)localObject2).toString();
+        localObject1 = localObject2;
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("reqRawData caller route: ");
+          ((StringBuilder)localObject1).append((String)localObject2);
+          QLog.i("SOSO.LBS", 2, ((StringBuilder)localObject1).toString());
+          localObject1 = localObject2;
+        }
+      }
+      else
+      {
+        localObject1 = "";
+      }
+      if ((paramLong > 0L) && (SystemClock.elapsedRealtime() < reqRawTime + paramLong))
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("reqRawLbsData() use cache and callback now.caller=");
+          ((StringBuilder)localObject2).append(paramString);
+          QLog.d("SOSO.LBS", 2, ((StringBuilder)localObject2).toString());
+        }
+        localObject2 = new HashMap();
+        if ((paramString != null) && (paramString.length() > 0)) {
+          ((HashMap)localObject2).put("param_caller", paramString);
+        }
+        if (!TextUtils.isEmpty((CharSequence)localObject1)) {
+          ((HashMap)localObject2).put("param_caller_route", localObject1);
+        }
+        ((HashMap)localObject2).put("param_useCache", Boolean.toString(Boolean.TRUE.booleanValue()));
+        paramString = getCurrentUin();
+        StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(paramString, "actSosoRawDataCache", true, 0L, 0L, (HashMap)localObject2, "");
+        return;
+      }
+      if (QLog.isColorLevel())
+      {
+        localObject1 = new StringBuilder();
+        ((StringBuilder)localObject1).append("reqRawLbsData() caller=");
+        ((StringBuilder)localObject1).append(paramString);
+        ((StringBuilder)localObject1).append(" interval=");
+        ((StringBuilder)localObject1).append(paramLong);
+        QLog.d("SOSO.LBS", 2, ((StringBuilder)localObject1).toString());
+      }
+      localObject1 = REQ_RAW_LOCATION_LISTENER;
+      ((SosoInterfaceOnLocationListener)localObject1).tag = paramString;
+      startLocation((SosoInterfaceOnLocationListener)localObject1);
+      paramLong = SystemClock.elapsedRealtime();
+      bool3 = false;
+      bool4 = false;
+      bool1 = false;
+      bool2 = bool4;
+    }
+    try
+    {
+      localObject1 = LOCK;
+      bool2 = bool4;
+      bool2 = bool3;
+      try
+      {
+        if (SystemClock.elapsedRealtime() < reqRawTime + 2000L)
+        {
+          bool1 = true;
+        }
+        else
+        {
+          bool2 = bool3;
+          LOCK.wait(20000L);
+        }
+        bool2 = bool1;
+      }
+      finally {}
+    }
+    catch (InterruptedException localInterruptedException)
+    {
+      for (;;)
+      {
+        bool1 = bool2;
+      }
+    }
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("reqSosoLbsRawData() caller=");
+      ((StringBuilder)localObject1).append(paramString);
+      ((StringBuilder)localObject1).append(" less2s=");
+      ((StringBuilder)localObject1).append(bool1);
+      ((StringBuilder)localObject1).append(" cost=");
+      ((StringBuilder)localObject1).append(SystemClock.elapsedRealtime() - paramLong);
+      QLog.d("SOSO.LBS", 2, ((StringBuilder)localObject1).toString());
+    }
+    return;
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("reqRawLbsData() can't be invoked by SubThread or UIThread.caller=");
+    ((StringBuilder)localObject1).append(paramString);
+    throw new AndroidRuntimeException(((StringBuilder)localObject1).toString());
   }
   
   private static void runOnUI(SosoInterfaceOnLocationListener paramSosoInterfaceOnLocationListener, int paramInt, SosoLbsInfo paramSosoLbsInfo)
@@ -1161,8 +1045,12 @@ public class SosoInterface
   
   public static boolean saveSosoInterfaceConfig(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("SOSO.LBS", 2, "saveSosoInterfaceConfig: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("saveSosoInterfaceConfig: ");
+      localStringBuilder.append(paramString);
+      QLog.i("SOSO.LBS", 2, localStringBuilder.toString());
     }
     if (TextUtils.isEmpty(paramString)) {
       return false;
@@ -1173,141 +1061,154 @@ public class SosoInterface
   
   public static void startLocation(SosoInterfaceOnLocationListener paramSosoInterfaceOnLocationListener)
   {
-    int j = 1;
     if (paramSosoInterfaceOnLocationListener == null) {
       return;
     }
-    for (;;)
+    boolean bool;
+    int j;
+    Object localObject;
+    try
     {
-      boolean bool;
-      label59:
-      try
-      {
-        if (paramSosoInterfaceOnLocationListener.isRemoved) {
-          paramSosoInterfaceOnLocationListener.isRemoved = false;
-        }
-        bool = NetworkUtil.d(MobileQQ.sMobileQQ.getApplicationContext());
-        if ((!isInLaunchTime()) || ("official_location".equals(paramSosoInterfaceOnLocationListener.tag))) {
-          break label157;
-        }
-        i = 1;
+      bool = paramSosoInterfaceOnLocationListener.isRemoved;
+      i = 0;
+      if (bool) {
+        paramSosoInterfaceOnLocationListener.isRemoved = false;
       }
-      finally {}
+      bool = NetworkUtil.isNetSupport(MobileQQ.sMobileQQ.getApplicationContext());
+      if ((!isInLaunchTime()) || ("official_location".equals(paramSosoInterfaceOnLocationListener.tag))) {
+        break label269;
+      }
+      j = 1;
+    }
+    finally {}
+    if (!sScreenOn)
+    {
+      i = -10001;
+    }
+    else if (j != 0)
+    {
+      j = -10003;
+      i = j;
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("发现启动时定位业务：");
+        ((StringBuilder)localObject).append(paramSosoInterfaceOnLocationListener.tag);
+        QLog.i("SOSO.LBS", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    for (int i = j;; i = 1)
+    {
       if (TextUtils.isEmpty(mOaid)) {
         mOaid = getOaid();
       }
       BGLocateMonitor.checkTencentLocateReport(i);
-      SosoLbsInfo localSosoLbsInfo;
       if (i != 0)
       {
-        if (QLog.isColorLevel()) {
-          QLog.d("SOSO.LBS", 2, "startLocation() return. perCheckCode=" + i + " hasNet=" + bool);
-        }
-        localSosoLbsInfo = getSosoInfo(paramSosoInterfaceOnLocationListener.level, true);
-        if (paramSosoInterfaceOnLocationListener.uiThread)
+        if (QLog.isColorLevel())
         {
-          runOnUI(paramSosoInterfaceOnLocationListener, i, localSosoLbsInfo);
-          break;
-          label157:
-          i = 0;
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("startLocation() return. perCheckCode=");
+          ((StringBuilder)localObject).append(i);
+          ((StringBuilder)localObject).append(" hasNet=");
+          ((StringBuilder)localObject).append(bool);
+          QLog.d("SOSO.LBS", 2, ((StringBuilder)localObject).toString());
         }
+        localObject = getSosoInfo(paramSosoInterfaceOnLocationListener.level, true);
+        if (paramSosoInterfaceOnLocationListener.uiThread) {
+          runOnUI(paramSosoInterfaceOnLocationListener, i, (SosoLbsInfo)localObject);
+        } else {
+          paramSosoInterfaceOnLocationListener.onLocationFinish(i, (SosoLbsInfo)localObject);
+        }
+        return;
       }
-      while (bool)
-      {
-        if (!sScreenOn)
-        {
-          i = -10001;
-          break label59;
-        }
-        if (i != 0)
-        {
-          j = -10003;
-          i = j;
-          if (!QLog.isColorLevel()) {
-            break label59;
-          }
-          QLog.i("SOSO.LBS", 2, "发现启动时定位业务：" + paramSosoInterfaceOnLocationListener.tag);
-          i = j;
-          break label59;
-          paramSosoInterfaceOnLocationListener.onLocationFinish(i, localSosoLbsInfo);
-          break;
-          if (tencentLog == null) {}
-          locateInSubThread(paramSosoInterfaceOnLocationListener);
-          break;
-        }
-        i = 0;
-        break label59;
+      localObject = tencentLog;
+      locateInSubThread(paramSosoInterfaceOnLocationListener);
+      return;
+      label269:
+      j = 0;
+      if (bool) {
+        break;
       }
-      int i = j;
     }
   }
   
   private static void startNextLocation(boolean paramBoolean, SosoInterfaceOnLocationListener paramSosoInterfaceOnLocationListener1, SosoInterfaceOnLocationListener paramSosoInterfaceOnLocationListener2, SosoInterfaceOnLocationListener paramSosoInterfaceOnLocationListener3, SosoInterfaceOnLocationListener paramSosoInterfaceOnLocationListener4)
   {
-    StringBuilder localStringBuilder;
-    if (paramBoolean) {
+    Object localObject = "";
+    if (paramBoolean)
+    {
       if (QLog.isColorLevel())
       {
-        localStringBuilder = new StringBuilder().append("onLocationChanged()");
-        if (paramSosoInterfaceOnLocationListener3 == null)
+        paramSosoInterfaceOnLocationListener2 = new StringBuilder();
+        paramSosoInterfaceOnLocationListener2.append("onLocationChanged()");
+        if (paramSosoInterfaceOnLocationListener3 != null)
         {
-          paramSosoInterfaceOnLocationListener2 = "";
-          QLog.d("SOSO.LBS", 2, paramSosoInterfaceOnLocationListener2 + " start:reqRawData");
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" goonLis been truncated:");
+          ((StringBuilder)localObject).append(paramSosoInterfaceOnLocationListener3.tag);
+          localObject = ((StringBuilder)localObject).toString();
         }
+        paramSosoInterfaceOnLocationListener2.append((String)localObject);
+        paramSosoInterfaceOnLocationListener2.append(" start:reqRawData");
+        QLog.d("SOSO.LBS", 2, paramSosoInterfaceOnLocationListener2.toString());
       }
-      else
+      if (paramSosoInterfaceOnLocationListener4 != null) {
+        paramSosoInterfaceOnLocationListener4.requesting = false;
+      }
+      if (paramSosoInterfaceOnLocationListener1 != null)
       {
-        if (paramSosoInterfaceOnLocationListener4 != null) {
-          paramSosoInterfaceOnLocationListener4.requesting = false;
-        }
-        if (paramSosoInterfaceOnLocationListener1 != null)
-        {
-          REQ_RAW_LOCATION_LISTENER.tag = paramSosoInterfaceOnLocationListener1.tag;
-          REQ_RAW_LOCATION_LISTENER.askGPS = paramSosoInterfaceOnLocationListener1.askGPS;
-        }
-        stopLocation();
-        startLocation(REQ_RAW_LOCATION_LISTENER);
+        REQ_RAW_LOCATION_LISTENER.tag = paramSosoInterfaceOnLocationListener1.tag;
+        REQ_RAW_LOCATION_LISTENER.askGPS = paramSosoInterfaceOnLocationListener1.askGPS;
       }
+      stopLocation();
+      startLocation(REQ_RAW_LOCATION_LISTENER);
+      return;
     }
-    label209:
-    do
+    if (paramSosoInterfaceOnLocationListener2 != null)
     {
-      do
+      if (QLog.isColorLevel())
       {
-        return;
-        paramSosoInterfaceOnLocationListener2 = " goonLis been truncated:" + paramSosoInterfaceOnLocationListener3.tag;
-        break;
-        if (paramSosoInterfaceOnLocationListener2 != null)
+        paramSosoInterfaceOnLocationListener1 = new StringBuilder();
+        paramSosoInterfaceOnLocationListener1.append("onLocationChanged()");
+        if (paramSosoInterfaceOnLocationListener3 != null)
         {
-          if (QLog.isColorLevel())
-          {
-            localStringBuilder = new StringBuilder().append("onLocationChanged()");
-            if (paramSosoInterfaceOnLocationListener3 != null) {
-              break label209;
-            }
-          }
-          for (paramSosoInterfaceOnLocationListener1 = "";; paramSosoInterfaceOnLocationListener1 = " goonLis been truncated:" + paramSosoInterfaceOnLocationListener3.tag)
-          {
-            QLog.d("SOSO.LBS", 2, paramSosoInterfaceOnLocationListener1 + " start:" + paramSosoInterfaceOnLocationListener2.tag);
-            if (paramSosoInterfaceOnLocationListener4 != null) {
-              paramSosoInterfaceOnLocationListener4.requesting = false;
-            }
-            stopLocation();
-            paramSosoInterfaceOnLocationListener2.maxCacheInterval = 0L;
-            startLocation(paramSosoInterfaceOnLocationListener2);
-            return;
-          }
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append(" goonLis been truncated:");
+          ((StringBuilder)localObject).append(paramSosoInterfaceOnLocationListener3.tag);
+          localObject = ((StringBuilder)localObject).toString();
         }
-      } while (paramSosoInterfaceOnLocationListener3 == null);
-      if (QLog.isColorLevel()) {
-        QLog.d("SOSO.LBS", 2, "onLocationChanged() goonLis goon after 1000ms:" + paramSosoInterfaceOnLocationListener3.tag);
+        paramSosoInterfaceOnLocationListener1.append((String)localObject);
+        paramSosoInterfaceOnLocationListener1.append(" start:");
+        paramSosoInterfaceOnLocationListener1.append(paramSosoInterfaceOnLocationListener2.tag);
+        QLog.d("SOSO.LBS", 2, paramSosoInterfaceOnLocationListener1.toString());
+      }
+      if (paramSosoInterfaceOnLocationListener4 != null) {
+        paramSosoInterfaceOnLocationListener4.requesting = false;
+      }
+      stopLocation();
+      paramSosoInterfaceOnLocationListener2.maxCacheInterval = 0L;
+      startLocation(paramSosoInterfaceOnLocationListener2);
+      return;
+    }
+    if (paramSosoInterfaceOnLocationListener3 != null)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramSosoInterfaceOnLocationListener1 = new StringBuilder();
+        paramSosoInterfaceOnLocationListener1.append("onLocationChanged() goonLis goon after 1000ms:");
+        paramSosoInterfaceOnLocationListener1.append(paramSosoInterfaceOnLocationListener3.tag);
+        QLog.d("SOSO.LBS", 2, paramSosoInterfaceOnLocationListener1.toString());
       }
       if ((paramSosoInterfaceOnLocationListener4 != null) && (paramSosoInterfaceOnLocationListener4 != paramSosoInterfaceOnLocationListener3)) {
         paramSosoInterfaceOnLocationListener4.requesting = false;
       }
-    } while ((paramSosoInterfaceOnLocationListener3.requesting) || (paramSosoInterfaceOnLocationListener3.isRemoved));
-    stopLocation();
-    ThreadManager.getSubThreadHandler().postDelayed(new SosoInterface.4(paramSosoInterfaceOnLocationListener3), 2000L);
+      if ((!paramSosoInterfaceOnLocationListener3.requesting) && (!paramSosoInterfaceOnLocationListener3.isRemoved))
+      {
+        stopLocation();
+        ThreadManager.getSubThreadHandler().postDelayed(new SosoInterface.4(paramSosoInterfaceOnLocationListener3), 2000L);
+      }
+    }
   }
   
   public static void startOfficialLocation()
@@ -1315,43 +1216,56 @@ public class SosoInterface
     SharedPreferences localSharedPreferences = getConfigSp();
     Object localObject = localSharedPreferences.getString("config", "");
     long l = localSharedPreferences.getLong("lastLocationTime", 0L);
-    if (QLog.isColorLevel()) {
-      QLog.i("SOSO.LBS", 2, "startOfficialLocation. config is: " + (String)localObject + " lastLocationTime: " + l);
-    }
-    if (TextUtils.isEmpty((CharSequence)localObject)) {}
-    do
+    if (QLog.isColorLevel())
     {
-      for (;;)
-      {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("startOfficialLocation. config is: ");
+      localStringBuilder.append((String)localObject);
+      localStringBuilder.append(" lastLocationTime: ");
+      localStringBuilder.append(l);
+      QLog.i("SOSO.LBS", 2, localStringBuilder.toString());
+    }
+    if (TextUtils.isEmpty((CharSequence)localObject)) {
+      return;
+    }
+    try
+    {
+      localObject = new JSONObject((String)localObject);
+      int i = ((JSONObject)localObject).getInt("isLoginLBSOpen");
+      int j = ((JSONObject)localObject).getInt("loginLBSInterval");
+      if (i != 1) {
         return;
-        try
-        {
-          localObject = new JSONObject((String)localObject);
-          int i = ((JSONObject)localObject).getInt("isLoginLBSOpen");
-          int j = ((JSONObject)localObject).getInt("loginLBSInterval");
-          if ((i == 1) && (NetConnInfoCenter.getServerTime() - l >= j))
-          {
-            if (TextUtils.isEmpty(mOaid)) {
-              mOaid = getOaid();
-            }
-            LbsManagerService.startLocation(new SosoInterface.12("official_location", false));
-            localSharedPreferences.edit().putLong("lastLocationTime", NetConnInfoCenter.getServerTime()).commit();
-            return;
-          }
-        }
-        catch (JSONException localJSONException) {}
       }
-    } while (!QLog.isDevelopLevel());
-    localJSONException.printStackTrace();
+      if (NetConnInfoCenter.getServerTime() - l < j) {
+        return;
+      }
+      if (TextUtils.isEmpty(mOaid)) {
+        mOaid = getOaid();
+      }
+      LbsManagerService.startLocation(new SosoInterface.12("official_location", false));
+      localSharedPreferences.edit().putLong("lastLocationTime", NetConnInfoCenter.getServerTime()).commit();
+      return;
+    }
+    catch (JSONException localJSONException)
+    {
+      if (QLog.isDevelopLevel()) {
+        localJSONException.printStackTrace();
+      }
+    }
   }
   
   private static void stopLocation()
   {
     REQ_STATUS.set(0);
-    if ((locListener != null) && (mLocationManager != null))
+    TencentLocationListener localTencentLocationListener = locListener;
+    if (localTencentLocationListener != null)
     {
-      mLocationManager.removeUpdates(locListener);
-      mLocationManager = null;
+      TencentLocationManager localTencentLocationManager = mLocationManager;
+      if (localTencentLocationManager != null)
+      {
+        localTencentLocationManager.removeUpdates(localTencentLocationListener);
+        mLocationManager = null;
+      }
     }
     sLevel3NoCityCodeCount = 0;
     if (QLog.isColorLevel()) {
@@ -1382,68 +1296,85 @@ public class SosoInterface
     logSoso.mLocation.speed = paramTencentLocation.getSpeed();
     logSoso.mLocation.mProviderSource = paramTencentLocation.getSourceProvider();
     Object localObject;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 2: 
-    default: 
-      reqLocationTime = SystemClock.elapsedRealtime();
-      if (reqLocationTime - lastUpdateTime > 3000L)
+      if (paramInt != 1)
       {
-        saveGeogInfo(String.valueOf(paramTencentLocation.getLongitude()), String.valueOf(paramTencentLocation.getLatitude()));
-        lastUpdateTime = reqLocationTime;
-        if (QLog.isColorLevel()) {
-          QLog.d("SOSO.LBS", 2, "saveGeogInfo cost: " + (SystemClock.elapsedRealtime() - lastUpdateTime));
-        }
-      }
-      if (!isMainProcess())
-      {
-        paramTencentLocation = new Bundle();
-        paramTencentLocation.putInt("level", paramInt);
-        paramTencentLocation.putBoolean("req_location", true);
-        paramTencentLocation.putParcelable("soso_lbs_info", logSoso);
-        paramTencentLocation = QIPCClientHelper.getInstance().getClient().callServer("soso_interface", "set_lbs_info", paramTencentLocation);
-        if (QLog.isColorLevel())
+        if (paramInt != 3)
         {
-          localObject = new StringBuilder().append("update location ipc result code: ");
-          if (paramTencentLocation != null) {
-            break label723;
+          if (paramInt == 4)
+          {
+            logSoso.mLocation.poi = paramTencentLocation.getPoiList();
+            timeUpdate[4] = SystemClock.elapsedRealtime();
           }
         }
+        else
+        {
+          logSoso.mLocation.nation = paramTencentLocation.getNation();
+          logSoso.mLocation.province = paramTencentLocation.getProvince();
+          logSoso.mLocation.city = paramTencentLocation.getCity();
+          localObject = paramTencentLocation.getCityCode();
+          if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equalsIgnoreCase("unknown"))) {
+            logSoso.mLocation.cityCode = ((String)localObject);
+          }
+          logSoso.mLocation.district = paramTencentLocation.getDistrict();
+          logSoso.mLocation.town = paramTencentLocation.getTown();
+          logSoso.mLocation.village = paramTencentLocation.getVillage();
+          logSoso.mLocation.street = paramTencentLocation.getStreet();
+          logSoso.mLocation.streetNo = paramTencentLocation.getStreetNo();
+          timeUpdate[3] = SystemClock.elapsedRealtime();
+          getConfigSp().edit().putString("province", logSoso.mLocation.province).apply();
+          getConfigSp().edit().putString("adcode", logSoso.mLocation.cityCode).apply();
+          getConfigSp().edit().putString("city", logSoso.mLocation.city).apply();
+        }
       }
-      break;
+      else
+      {
+        logSoso.mLocation.name = paramTencentLocation.getName();
+        logSoso.mLocation.address = paramTencentLocation.getAddress();
+        timeUpdate[1] = SystemClock.elapsedRealtime();
+      }
     }
-    label723:
-    for (paramInt = -1;; paramInt = paramTencentLocation.code)
+    else
     {
-      QLog.i("SOSO.LBS", 2, paramInt);
-      LbsInfoReportManagerUtils.reportLbsInfo2DC(logSoso.mLocation, paramString);
-      return;
-      logSoso.mLocation.poi = paramTencentLocation.getPoiList();
-      timeUpdate[4] = SystemClock.elapsedRealtime();
-      logSoso.mLocation.nation = paramTencentLocation.getNation();
-      logSoso.mLocation.province = paramTencentLocation.getProvince();
-      logSoso.mLocation.city = paramTencentLocation.getCity();
-      localObject = paramTencentLocation.getCityCode();
-      if ((!TextUtils.isEmpty((CharSequence)localObject)) && (!((String)localObject).equalsIgnoreCase("unknown"))) {
-        logSoso.mLocation.cityCode = ((String)localObject);
-      }
-      logSoso.mLocation.district = paramTencentLocation.getDistrict();
-      logSoso.mLocation.town = paramTencentLocation.getTown();
-      logSoso.mLocation.village = paramTencentLocation.getVillage();
-      logSoso.mLocation.street = paramTencentLocation.getStreet();
-      logSoso.mLocation.streetNo = paramTencentLocation.getStreetNo();
-      timeUpdate[3] = SystemClock.elapsedRealtime();
-      getConfigSp().edit().putString("province", logSoso.mLocation.province).apply();
-      getConfigSp().edit().putString("adcode", logSoso.mLocation.cityCode).apply();
-      getConfigSp().edit().putString("city", logSoso.mLocation.city).apply();
-      logSoso.mLocation.name = paramTencentLocation.getName();
-      logSoso.mLocation.address = paramTencentLocation.getAddress();
-      timeUpdate[1] = SystemClock.elapsedRealtime();
       logSoso.mLocation.altitude = paramTencentLocation.getAltitude();
       logSoso.mLocation.accuracy = paramTencentLocation.getAccuracy();
       timeUpdate[0] = SystemClock.elapsedRealtime();
-      break;
     }
+    reqLocationTime = SystemClock.elapsedRealtime();
+    if (reqLocationTime - lastUpdateTime > 3000L)
+    {
+      saveGeogInfo(String.valueOf(paramTencentLocation.getLongitude()), String.valueOf(paramTencentLocation.getLatitude()));
+      lastUpdateTime = reqLocationTime;
+      if (QLog.isColorLevel())
+      {
+        paramTencentLocation = new StringBuilder();
+        paramTencentLocation.append("saveGeogInfo cost: ");
+        paramTencentLocation.append(SystemClock.elapsedRealtime() - lastUpdateTime);
+        QLog.d("SOSO.LBS", 2, paramTencentLocation.toString());
+      }
+    }
+    if (!isMainProcess())
+    {
+      paramTencentLocation = new Bundle();
+      paramTencentLocation.putInt("level", paramInt);
+      paramTencentLocation.putBoolean("req_location", true);
+      paramTencentLocation.putParcelable("soso_lbs_info", logSoso);
+      paramTencentLocation = QIPCClientHelper.getInstance().getClient().callServer("soso_interface", "set_lbs_info", paramTencentLocation);
+      if (QLog.isColorLevel())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("update location ipc result code: ");
+        if (paramTencentLocation == null) {
+          paramInt = -1;
+        } else {
+          paramInt = paramTencentLocation.code;
+        }
+        ((StringBuilder)localObject).append(paramInt);
+        QLog.i("SOSO.LBS", 2, ((StringBuilder)localObject).toString());
+      }
+    }
+    LbsInfoReportManagerUtils.reportLbsInfo2DC(logSoso.mLocation, paramString);
   }
   
   public static void updateMainProcessCachedLocation(int paramInt, SosoLbsInfo paramSosoLbsInfo)
@@ -1463,239 +1394,238 @@ public class SosoInterface
     logSoso.mLocation.fakeReason = paramSosoLbsInfo.mLocation.fakeReason;
     logSoso.mLocation.locationTime = paramSosoLbsInfo.mLocation.locationTime;
     logSoso.mLocation.mProviderSource = paramSosoLbsInfo.mLocation.mProviderSource;
-    switch (paramInt)
+    if (paramInt != 0)
     {
-    case 2: 
-    default: 
-      return;
-    }
-    for (;;)
-    {
-      logSoso.mLocation.altitude = paramSosoLbsInfo.mLocation.altitude;
-      logSoso.mLocation.accuracy = paramSosoLbsInfo.mLocation.accuracy;
-      timeUpdate[0] = SystemClock.elapsedRealtime();
-      return;
-      logSoso.mLocation.nation = paramSosoLbsInfo.mLocation.nation;
-      logSoso.mLocation.province = paramSosoLbsInfo.mLocation.province;
-      logSoso.mLocation.city = paramSosoLbsInfo.mLocation.city;
-      String str = paramSosoLbsInfo.mLocation.cityCode;
-      if ((!TextUtils.isEmpty(str)) && (!str.equalsIgnoreCase("unknown"))) {
-        logSoso.mLocation.cityCode = str;
+      if (paramInt != 1)
+      {
+        if (paramInt != 3) {
+          return;
+        }
+        logSoso.mLocation.nation = paramSosoLbsInfo.mLocation.nation;
+        logSoso.mLocation.province = paramSosoLbsInfo.mLocation.province;
+        logSoso.mLocation.city = paramSosoLbsInfo.mLocation.city;
+        String str = paramSosoLbsInfo.mLocation.cityCode;
+        if ((!TextUtils.isEmpty(str)) && (!str.equalsIgnoreCase("unknown"))) {
+          logSoso.mLocation.cityCode = str;
+        }
+        logSoso.mLocation.district = paramSosoLbsInfo.mLocation.district;
+        logSoso.mLocation.town = paramSosoLbsInfo.mLocation.town;
+        logSoso.mLocation.village = paramSosoLbsInfo.mLocation.village;
+        logSoso.mLocation.street = paramSosoLbsInfo.mLocation.street;
+        logSoso.mLocation.streetNo = paramSosoLbsInfo.mLocation.streetNo;
+        timeUpdate[3] = SystemClock.elapsedRealtime();
       }
-      logSoso.mLocation.district = paramSosoLbsInfo.mLocation.district;
-      logSoso.mLocation.town = paramSosoLbsInfo.mLocation.town;
-      logSoso.mLocation.village = paramSosoLbsInfo.mLocation.village;
-      logSoso.mLocation.street = paramSosoLbsInfo.mLocation.street;
-      logSoso.mLocation.streetNo = paramSosoLbsInfo.mLocation.streetNo;
-      timeUpdate[3] = SystemClock.elapsedRealtime();
       logSoso.mLocation.name = paramSosoLbsInfo.mLocation.name;
       logSoso.mLocation.address = paramSosoLbsInfo.mLocation.address;
       timeUpdate[1] = SystemClock.elapsedRealtime();
     }
+    logSoso.mLocation.altitude = paramSosoLbsInfo.mLocation.altitude;
+    logSoso.mLocation.accuracy = paramSosoLbsInfo.mLocation.accuracy;
+    timeUpdate[0] = SystemClock.elapsedRealtime();
   }
   
   public static void updateRawData(String paramString, byte[] paramArrayOfByte)
   {
-    if (paramArrayOfByte == null) {}
-    for (;;)
-    {
+    if (paramArrayOfByte == null) {
       return;
-      if (logSoso == null)
-      {
-        logSoso = new SosoLbsInfo();
-        logSoso.mLocation = new SosoLocation();
-      }
+    }
+    if (logSoso == null)
+    {
+      logSoso = new SosoLbsInfo();
+      logSoso.mLocation = new SosoLocation();
+    }
+    try
+    {
+      logSoso.rawData = paramArrayOfByte;
+      localJSONObject = new JSONObject(new String(paramArrayOfByte, "UTF-8"));
+    }
+    catch (Exception localException)
+    {
+      JSONObject localJSONObject;
+      Object localObject1;
+      double d1;
+      double d2;
+      label93:
+      label95:
+      break label527;
+    }
+    try
+    {
+      localObject1 = localJSONObject.getJSONObject("location");
+      d1 = ((JSONObject)localObject1).getDouble("latitude");
+    }
+    catch (JSONException localJSONException1)
+    {
+      break label93;
+    }
+    try
+    {
+      d2 = ((JSONObject)localObject1).getDouble("longitude");
+    }
+    catch (JSONException localJSONException2)
+    {
+      break label95;
+    }
+    d1 = 0.0D;
+    d2 = 0.0D;
+    try
+    {
+      localObject1 = localJSONObject.getJSONObject("attribute");
+      localSosoAttribute = new SosoAttribute(((JSONObject)localObject1).getString("imei"), ((JSONObject)localObject1).getString("imsi"), ((JSONObject)localObject1).getString("phonenum"), ((JSONObject)localObject1).getString("qq"), ((JSONObject)localObject1).getBoolean("roaming"));
+    }
+    catch (JSONException localJSONException3)
+    {
       for (;;)
       {
-        try
-        {
-          logSoso.rawData = paramArrayOfByte;
-          localJSONObject = new JSONObject(new String(paramArrayOfByte, "UTF-8"));
-          d2 = 0.0D;
-          d1 = d2;
+        SosoAttribute localSosoAttribute;
+        ArrayList localArrayList1;
+        int j;
+        int i;
+        Object localObject2;
+        ArrayList localArrayList2;
+        long l1;
+        continue;
+        boolean bool = false;
+      }
+    }
+    localSosoAttribute = new SosoAttribute("", "", "", "", false);
+    localArrayList1 = new ArrayList();
+    localObject1 = localJSONObject.getJSONArray("cells");
+    j = ((JSONArray)localObject1).length();
+    i = 0;
+    while (i < j)
+    {
+      localObject2 = ((JSONArray)localObject1).getJSONObject(i);
+      int k = ((JSONObject)localObject2).getInt("mcc");
+      int m = ((JSONObject)localObject2).getInt("mnc");
+      int n = ((JSONObject)localObject2).getInt("lac");
+      int i1 = ((JSONObject)localObject2).getInt("cellid");
+      int i2 = ((JSONObject)localObject2).getInt("rss");
+      if (i != 0) {
+        break label668;
+      }
+      bool = true;
+      localArrayList1.add(new SosoCell(k, m, n, i1, i2, bool));
+      i += 1;
+    }
+    localArrayList2 = new ArrayList();
+    localObject1 = localJSONObject.getJSONArray("wifis");
+    j = ((JSONArray)localObject1).length();
+    i = 0;
+    while (i < j)
+    {
+      localObject2 = ((JSONArray)localObject1).getJSONObject(i);
+      localArrayList2.add(new SosoWifi(((JSONObject)localObject2).getString("mac"), ((JSONObject)localObject2).getInt("rssi")));
+      i += 1;
+    }
+    localObject1 = "";
+    l1 = 0L;
+    try
+    {
+      localObject2 = localJSONObject.getString("version");
+      localObject1 = localObject2;
+      long l2 = localJSONObject.getLong("source");
+      l1 = l2;
+      localObject1 = localObject2;
+    }
+    catch (JSONException localJSONException4)
+    {
+      label440:
+      break label440;
+    }
+    if (d1 != 0.0D) {
+      logSoso.mLocation.mLat84 = d1;
+    }
+    if (d2 != 0.0D) {
+      logSoso.mLocation.mLon84 = d2;
+    }
+    logSoso.mAttr = localSosoAttribute;
+    logSoso.mCells = localArrayList1;
+    logSoso.mWifis = localArrayList2;
+    logSoso.mSource = l1;
+    logSoso.mVersion = ((String)localObject1);
+    logSoso.provider = paramString;
+    reqRawTime = SystemClock.elapsedRealtime();
+    label527:
+    if (!isMainProcess())
+    {
+      localObject1 = new Bundle();
+      ((Bundle)localObject1).putString("provider", paramString);
+      ((Bundle)localObject1).putByteArray("raw_data", paramArrayOfByte);
+      ((Bundle)localObject1).putBoolean("req_location", false);
+      paramString = QIPCClientHelper.getInstance().getClient().callServer("soso_interface", "set_lbs_info", (Bundle)localObject1);
+      if (QLog.isColorLevel())
+      {
+        paramArrayOfByte = new StringBuilder();
+        paramArrayOfByte.append("update raw data, ipc result code: ");
+        if (paramString == null) {
+          i = -1;
+        } else {
+          i = paramString.code;
         }
-        catch (Exception localException)
-        {
-          JSONObject localJSONObject;
-          Object localObject1;
-          SosoAttribute localSosoAttribute;
-          ArrayList localArrayList1;
-          int j;
-          int i;
-          Object localObject3;
-          ArrayList localArrayList2;
-          Object localObject2;
-          continue;
-        }
-        try
-        {
-          localObject1 = localJSONObject.getJSONObject("location");
-          d1 = d2;
-          d2 = ((JSONObject)localObject1).getDouble("latitude");
-          d1 = d2;
-          d3 = ((JSONObject)localObject1).getDouble("longitude");
-          d1 = d3;
-        }
-        catch (JSONException localJSONException2)
-        {
-          d3 = 0.0D;
-          d2 = d1;
-          d1 = d3;
-          continue;
-          bool = false;
-          continue;
-        }
-        try
-        {
-          localObject1 = localJSONObject.getJSONObject("attribute");
-          localSosoAttribute = new SosoAttribute(((JSONObject)localObject1).getString("imei"), ((JSONObject)localObject1).getString("imsi"), ((JSONObject)localObject1).getString("phonenum"), ((JSONObject)localObject1).getString("qq"), ((JSONObject)localObject1).getBoolean("roaming"));
-          localArrayList1 = new ArrayList();
-          localObject1 = localJSONObject.getJSONArray("cells");
-          j = ((JSONArray)localObject1).length();
-          i = 0;
-          if (i < j)
-          {
-            localObject3 = ((JSONArray)localObject1).getJSONObject(i);
-            int k = ((JSONObject)localObject3).getInt("mcc");
-            int m = ((JSONObject)localObject3).getInt("mnc");
-            int n = ((JSONObject)localObject3).getInt("lac");
-            int i1 = ((JSONObject)localObject3).getInt("cellid");
-            int i2 = ((JSONObject)localObject3).getInt("rss");
-            if (i != 0) {
-              break label666;
-            }
-            bool = true;
-            localArrayList1.add(new SosoCell(k, m, n, i1, i2, bool));
-            i += 1;
-            continue;
-          }
-        }
-        catch (JSONException localJSONException1)
-        {
-          localSosoAttribute = new SosoAttribute("", "", "", "", false);
-          continue;
-          localArrayList2 = new ArrayList();
-          localObject2 = localJSONObject.getJSONArray("wifis");
-          i = 0;
-          j = ((JSONArray)localObject2).length();
-          if (i < j)
-          {
-            localObject3 = ((JSONArray)localObject2).getJSONObject(i);
-            localArrayList2.add(new SosoWifi(((JSONObject)localObject3).getString("mac"), ((JSONObject)localObject3).getInt("rssi")));
-            i += 1;
-            continue;
-          }
-          localObject2 = "";
-          try
-          {
-            localObject3 = localJSONObject.getString("version");
-            localObject2 = localObject3;
-            l = localJSONObject.getLong("source");
-          }
-          catch (JSONException localJSONException3)
-          {
-            long l = 0L;
-            Object localObject4 = localObject2;
-            continue;
-            i = paramString.code;
-            continue;
-          }
-          if (d2 != 0.0D) {
-            logSoso.mLocation.mLat84 = d2;
-          }
-          if (d1 != 0.0D) {
-            logSoso.mLocation.mLon84 = d1;
-          }
-          logSoso.mAttr = localSosoAttribute;
-          logSoso.mCells = localArrayList1;
-          logSoso.mWifis = localArrayList2;
-          logSoso.mSource = l;
-          logSoso.mVersion = ((String)localObject3);
-          logSoso.provider = paramString;
-          reqRawTime = SystemClock.elapsedRealtime();
-          if (isMainProcess()) {
-            break;
-          }
-          localObject2 = new Bundle();
-          ((Bundle)localObject2).putString("provider", paramString);
-          ((Bundle)localObject2).putByteArray("raw_data", paramArrayOfByte);
-          ((Bundle)localObject2).putBoolean("req_location", false);
-          paramString = QIPCClientHelper.getInstance().getClient().callServer("soso_interface", "set_lbs_info", (Bundle)localObject2);
-          if (!QLog.isColorLevel()) {
-            break;
-          }
-          paramArrayOfByte = new StringBuilder().append("update raw data, ipc result code: ");
-          if (paramString == null)
-          {
-            i = -1;
-            QLog.i("SOSO.LBS", 2, i);
-            return;
-          }
-        }
+        paramArrayOfByte.append(i);
+        QLog.i("SOSO.LBS", 2, paramArrayOfByte.toString());
       }
     }
   }
   
   private static void uploadSummaryData(boolean paramBoolean1, boolean paramBoolean2, long paramLong, int paramInt1, String paramString1, String paramString2, boolean paramBoolean3, int paramInt2, boolean paramBoolean4)
   {
-    if ((String.valueOf(paramString2).equals("ERROR_NETWORK")) && ((paramInt1 == -4) || (paramInt1 == -17)))
-    {
-      break label28;
-      break label28;
-    }
-    label28:
-    while (((paramBoolean1) || (!HwNetworkUtil.isNetworkAvailable(MobileQQ.sMobileQQ.getApplicationContext()))) && (!paramBoolean1)) {
+    if ((String.valueOf(paramString2).equals("ERROR_NETWORK")) && ((paramInt1 == -4) || (paramInt1 == -17))) {
       return;
     }
-    HashMap localHashMap = new HashMap();
-    localHashMap.put("param_FailCode", Integer.toString(paramInt1));
-    if ((paramString1 != null) && (paramString1.length() > 0)) {
-      localHashMap.put("param_caller", paramString1);
-    }
-    if ((paramString2 != null) && (paramString2.length() > 0)) {
-      localHashMap.put("param_reason", paramString2);
-    }
-    localHashMap.put("param_useCache", Boolean.toString(paramBoolean4));
-    localHashMap.put("param_askGps", Boolean.toString(paramBoolean3));
-    localHashMap.put("param_costTime", Long.toString(paramLong));
-    localHashMap.put("param_level", String.valueOf(paramInt2));
-    String str = getCurrentUin();
-    if (paramBoolean4) {
-      if (paramBoolean2) {
-        paramString2 = "actSosoLocationCache";
-      }
-    }
-    for (;;)
+    if (((!paramBoolean1) && (HwNetworkUtil.isNetworkAvailable(MobileQQ.sMobileQQ.getApplicationContext()))) || (paramBoolean1))
     {
-      StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(str, paramString2, paramBoolean1, paramLong, 0L, localHashMap, "");
-      MagnifierSDK.a().a().a("requestSoso", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean3), paramString1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
-      if (!isInLaunchTime()) {
-        break;
+      HashMap localHashMap = new HashMap();
+      localHashMap.put("param_FailCode", Integer.toString(paramInt1));
+      if ((paramString1 != null) && (paramString1.length() > 0)) {
+        localHashMap.put("param_caller", paramString1);
       }
-      paramString2 = new HashMap();
-      if ((paramString1 == null) || (paramString1.length() <= 0)) {
-        break;
+      if ((paramString2 != null) && (paramString2.length() > 0)) {
+        localHashMap.put("param_reason", paramString2);
       }
-      paramString2.put("param_caller", paramString1);
-      StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(str, "actLocationEarly", paramBoolean1, paramLong, 0L, paramString2, "");
-      if (!QLog.isColorLevel()) {
-        break;
+      localHashMap.put("param_useCache", Boolean.toString(paramBoolean4));
+      localHashMap.put("param_askGps", Boolean.toString(paramBoolean3));
+      localHashMap.put("param_costTime", Long.toString(paramLong));
+      localHashMap.put("param_level", String.valueOf(paramInt2));
+      String str = getCurrentUin();
+      if (paramBoolean4)
+      {
+        if (paramBoolean2) {
+          paramString2 = "actSosoLocationCache";
+        } else {
+          paramString2 = "actSosoRawDataCache";
+        }
       }
-      QLog.e("SOSO.LBS", 2, "location too early: " + paramString1);
-      return;
-      paramString2 = "actSosoRawDataCache";
-      continue;
-      if (paramBoolean2) {
+      else if (paramBoolean2) {
         paramString2 = "actSosoLocation";
       } else {
         paramString2 = "actSosoRawData";
+      }
+      StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(str, paramString2, paramBoolean1, paramLong, 0L, localHashMap, "");
+      MagnifierSDK.a().a().a("requestSoso", new Object[] { Integer.valueOf(paramInt2), Boolean.valueOf(paramBoolean3), paramString1, Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0), Integer.valueOf(0) });
+      if (isInLaunchTime())
+      {
+        paramString2 = new HashMap();
+        if ((paramString1 != null) && (paramString1.length() > 0))
+        {
+          paramString2.put("param_caller", paramString1);
+          StatisticCollector.getInstance(MobileQQ.sMobileQQ.getApplicationContext()).collectPerformance(str, "actLocationEarly", paramBoolean1, paramLong, 0L, paramString2, "");
+          if (QLog.isColorLevel())
+          {
+            paramString2 = new StringBuilder();
+            paramString2.append("location too early: ");
+            paramString2.append(paramString1);
+            QLog.e("SOSO.LBS", 2, paramString2.toString());
+          }
+        }
       }
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.soso.location.SosoInterface
  * JD-Core Version:    0.7.0.1
  */

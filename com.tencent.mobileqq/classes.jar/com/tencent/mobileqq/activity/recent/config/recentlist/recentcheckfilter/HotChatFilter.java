@@ -11,28 +11,45 @@ public class HotChatFilter
 {
   public String a(RecentUser paramRecentUser, int paramInt)
   {
-    return "invalidate hotchat " + paramInt + "," + paramRecentUser.uin + ";";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("invalidate hotchat ");
+    localStringBuilder.append(paramInt);
+    localStringBuilder.append(",");
+    localStringBuilder.append(paramRecentUser.uin);
+    localStringBuilder.append(";");
+    return localStringBuilder.toString();
   }
   
   public boolean a(BaseQQAppInterface paramBaseQQAppInterface, RecentUser paramRecentUser)
   {
-    boolean bool = true;
-    if (!(paramBaseQQAppInterface instanceof QQAppInterface)) {}
-    while ((paramRecentUser.getType() != 1) || ((paramRecentUser.lFlag & 1L) == 0L)) {
+    boolean bool1 = paramBaseQQAppInterface instanceof QQAppInterface;
+    boolean bool2 = false;
+    if (!bool1) {
       return false;
     }
-    paramBaseQQAppInterface = ((QQAppInterface)paramBaseQQAppInterface).getHotChatMng(true);
-    if ((paramBaseQQAppInterface != null) && (!paramBaseQQAppInterface.b(paramRecentUser.uin))) {}
-    for (;;)
+    bool1 = bool2;
+    if (paramRecentUser.getType() == 1)
     {
-      return bool;
-      bool = false;
+      bool1 = bool2;
+      if ((paramRecentUser.lFlag & 1L) != 0L)
+      {
+        paramBaseQQAppInterface = ((QQAppInterface)paramBaseQQAppInterface).getHotChatMng(true);
+        bool1 = bool2;
+        if (paramBaseQQAppInterface != null)
+        {
+          bool1 = bool2;
+          if (!paramBaseQQAppInterface.b(paramRecentUser.uin)) {
+            bool1 = true;
+          }
+        }
+      }
     }
+    return bool1;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.recent.config.recentlist.recentcheckfilter.HotChatFilter
  * JD-Core Version:    0.7.0.1
  */

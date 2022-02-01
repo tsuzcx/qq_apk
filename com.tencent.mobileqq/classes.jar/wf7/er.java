@@ -18,17 +18,17 @@ public class er
   
   private ed<Long, Integer, JceStruct> a(long paramLong, int paramInt, z paramz)
   {
-    if (paramz == null) {}
-    do
-    {
+    if (paramz == null) {
       return null;
-      if (paramz.cn == 0)
-      {
-        d(1, true);
-        return null;
-      }
-    } while (paramz.cn != 1);
-    d(1, false);
+    }
+    if (paramz.cn == 0)
+    {
+      d(1, true);
+      return null;
+    }
+    if (paramz.cn == 1) {
+      d(1, false);
+    }
     return null;
   }
   
@@ -44,61 +44,51 @@ public class er
   {
     t localt = new t();
     String str = this.lT.cT().ce();
-    if (str != null) {}
-    for (;;)
-    {
-      localt.bR = str;
-      return localt;
+    if (str == null) {
       str = "";
     }
+    localt.bR = str;
+    return localt;
   }
   
   private v e(int paramInt, boolean paramBoolean)
   {
-    Object localObject2 = null;
     String str1 = this.lT.cT().cd();
     String str2 = this.lT.cT().ce();
-    if (str1 != null)
+    if (str1 == null) {
+      str1 = "";
+    }
+    if (str2 == null) {
+      str2 = "";
+    }
+    Object localObject2 = null;
+    if (paramBoolean)
     {
-      if (str2 == null) {
-        break label76;
-      }
-      label35:
-      if (!paramBoolean) {
-        break label83;
-      }
       localObject1 = new v();
       ((v)localObject1).bW = paramInt;
       ((v)localObject1).bX = str1;
       ((v)localObject1).bR = str2;
+      return localObject1;
     }
-    label76:
-    label83:
-    do
+    if (cA()) {
+      return null;
+    }
+    Object localObject1 = localObject2;
+    if (!TextUtils.isEmpty(str1))
     {
-      do
-      {
-        do
-        {
-          do
-          {
-            return localObject1;
-            str1 = "";
-            break;
-            str2 = "";
-            break label35;
-            localObject1 = localObject2;
-          } while (cA());
-          localObject1 = localObject2;
-        } while (TextUtils.isEmpty(str1));
-        localObject1 = localObject2;
-      } while (TextUtils.isEmpty(str2));
       localObject1 = localObject2;
-    } while (str1.equals(str2));
-    Object localObject1 = new v();
-    ((v)localObject1).bW = paramInt;
-    ((v)localObject1).bX = str1;
-    ((v)localObject1).bR = str2;
+      if (!TextUtils.isEmpty(str2))
+      {
+        localObject1 = localObject2;
+        if (!str1.equals(str2))
+        {
+          localObject1 = new v();
+          ((v)localObject1).bW = paramInt;
+          ((v)localObject1).bX = str1;
+          ((v)localObject1).bR = str2;
+        }
+      }
+    }
     return localObject1;
   }
   
@@ -110,20 +100,25 @@ public class er
   
   public void d(int paramInt, boolean paramBoolean)
   {
-    if (!this.lT.cT().cb()) {}
-    v localv;
-    do
-    {
+    if (!this.lT.cT().cb()) {
       return;
-      localv = e(paramInt, paramBoolean);
-    } while (localv == null);
+    }
+    v localv = e(paramInt, paramBoolean);
+    if (localv == null) {
+      return;
+    }
     ea.cw().a(5007, localv, new ac(), 0, new er.2(this), 30000L);
   }
   
   public void dd()
   {
-    if (!this.lT.cT().cb()) {}
-    while ((this.ph) || (!cA())) {
+    if (!this.lT.cT().cb()) {
+      return;
+    }
+    if (this.ph) {
+      return;
+    }
+    if (!cA()) {
       return;
     }
     this.lT.cT().cc();
@@ -133,7 +128,7 @@ public class er
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     wf7.er
  * JD-Core Version:    0.7.0.1
  */

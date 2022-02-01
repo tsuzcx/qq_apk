@@ -38,7 +38,8 @@ public class WeishiBasicInfo
     this.weishi_topicUrl = paramParcel.readString();
     this.weishi_schema = paramParcel.readString();
     this.dc_report = new HashMap();
-    paramParcel.readMap(this.dc_report, this.dc_report.getClass().getClassLoader());
+    Map localMap = this.dc_report;
+    paramParcel.readMap(localMap, localMap.getClass().getClassLoader());
     this.weishi_summary = paramParcel.readString();
   }
   
@@ -83,7 +84,7 @@ public class WeishiBasicInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.model.WeishiBasicInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -6,19 +6,20 @@ import cooperation.vip.vipcomponent.util.VipResourcesListener;
 
 public class VipModule
 {
-  public static VipModule a = null;
+  public static VipModule a;
   
   public static VipModule a()
   {
-    if (a == null) {}
-    try
-    {
-      if (a == null) {
-        a = new VipModule();
+    if (a == null) {
+      try
+      {
+        if (a == null) {
+          a = new VipModule();
+        }
       }
-      return a;
+      finally {}
     }
-    finally {}
+    return a;
   }
   
   public Drawable a(int paramInt1, int paramInt2, boolean paramBoolean1, boolean paramBoolean2, String paramString1, int paramInt3, int paramInt4, String paramString2, VipResourcesListener paramVipResourcesListener)
@@ -33,7 +34,7 @@ public class VipModule
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.vip.vipcomponent.VipModule
  * JD-Core Version:    0.7.0.1
  */

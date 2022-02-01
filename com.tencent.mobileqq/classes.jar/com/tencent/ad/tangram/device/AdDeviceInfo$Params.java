@@ -6,6 +6,7 @@ import android.support.annotation.Keep;
 public final class AdDeviceInfo$Params
 {
   public String businessIdForAidTicketAndTaidTicket;
+  private String[] expIds;
 }
 
 

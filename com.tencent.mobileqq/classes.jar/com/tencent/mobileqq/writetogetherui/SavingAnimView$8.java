@@ -1,10 +1,10 @@
 package com.tencent.mobileqq.writetogetherui;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class SavingAnimView$8
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   SavingAnimView$8(SavingAnimView paramSavingAnimView) {}
   
@@ -18,7 +18,7 @@ class SavingAnimView$8
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
  * Qualified Name:     com.tencent.mobileqq.writetogetherui.SavingAnimView.8
  * JD-Core Version:    0.7.0.1
  */

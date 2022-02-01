@@ -39,11 +39,20 @@ public class ARCommonConfigInfo$NativeSoRes
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("NativeSoRes{");
-    localStringBuffer.append("name = '").append(this.jdField_a_of_type_JavaLangString).append('\'');
-    localStringBuffer.append(", version = '").append(this.b).append('\'');
-    localStringBuffer.append(", url = '").append(this.c).append('\'');
-    localStringBuffer.append(", md5 = '").append(this.d).append('\'');
-    localStringBuffer.append(", size = ").append(this.jdField_a_of_type_Long);
+    localStringBuffer.append("name = '");
+    localStringBuffer.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", version = '");
+    localStringBuffer.append(this.b);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", url = '");
+    localStringBuffer.append(this.c);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", md5 = '");
+    localStringBuffer.append(this.d);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", size = ");
+    localStringBuffer.append(this.jdField_a_of_type_Long);
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
@@ -59,7 +68,7 @@ public class ARCommonConfigInfo$NativeSoRes
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ARCommonConfigInfo.NativeSoRes
  * JD-Core Version:    0.7.0.1
  */

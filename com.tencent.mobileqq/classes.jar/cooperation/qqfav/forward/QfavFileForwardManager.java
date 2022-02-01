@@ -8,7 +8,6 @@ import com.tencent.mobileqq.app.BusinessHandlerFactory;
 import com.tencent.mobileqq.app.DataLineHandler;
 import com.tencent.mobileqq.app.HardCodeUtil;
 import com.tencent.mobileqq.app.QQAppInterface;
-import com.tencent.mobileqq.app.SVIPHandler;
 import com.tencent.mobileqq.app.message.DatalineMessageManager;
 import com.tencent.mobileqq.data.DataLineMsgRecord;
 import com.tencent.mobileqq.data.MessageRecord;
@@ -22,6 +21,7 @@ import com.tencent.mobileqq.troop.data.TroopFileStatusInfo;
 import com.tencent.mobileqq.troop.utils.TroopFileTransferManager;
 import com.tencent.mobileqq.troop.utils.TroopFileUtils;
 import com.tencent.mobileqq.utils.NetworkUtil;
+import com.tencent.mobileqq.vas.svip.api.ISVIPHandler;
 import com.tencent.qphone.base.util.BaseApplication;
 import com.tencent.qphone.base.util.QLog;
 import java.util.Random;
@@ -50,11 +50,17 @@ public class QfavFileForwardManager
   {
     if (paramFileManagerEntity == null)
     {
-      if (QLog.isColorLevel()) {
-        QLog.e("QfavFileForwardManager", 2, "insertWeiYun2OfflineEntity : entity is null, peerUin[" + FileManagerUtil.e(paramString2) + "], peerType[" + paramInt1 + "]");
+      if (QLog.isColorLevel())
+      {
+        paramFileManagerEntity = new StringBuilder();
+        paramFileManagerEntity.append("insertWeiYun2OfflineEntity : entity is null, peerUin[");
+        paramFileManagerEntity.append(FileManagerUtil.d(paramString2));
+        paramFileManagerEntity.append("], peerType[");
+        paramFileManagerEntity.append(paramInt1);
+        paramFileManagerEntity.append("]");
+        QLog.e("QfavFileForwardManager", 2, paramFileManagerEntity.toString());
       }
-      paramFileManagerEntity = null;
-      return paramFileManagerEntity;
+      return null;
     }
     FileManagerEntity localFileManagerEntity = new FileManagerEntity();
     localFileManagerEntity.copyFrom(paramFileManagerEntity);
@@ -77,62 +83,75 @@ public class QfavFileForwardManager
     }
     this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(localFileManagerEntity);
     String str1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getAccount();
-    if ((paramInt1 == 1004) || (paramInt1 == 1000)) {
-      str1 = paramString1;
-    }
-    for (;;)
+    if ((paramInt1 != 1004) && (paramInt1 != 1000))
     {
-      localFileManagerEntity.strThumbPath = paramFileManagerEntity.strThumbPath;
-      localFileManagerEntity.strMiddleThumPath = paramFileManagerEntity.strMiddleThumPath;
-      this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString2, str1, true, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, true, paramInt1, str2, localFileManagerEntity.msgSeq, l, localFileManagerEntity.msgUid, -1L, MessageCache.a());
-      paramFileManagerEntity = localFileManagerEntity;
-      if (!QLog.isColorLevel()) {
-        break;
+      if (paramInt1 != 1006) {
+        break label299;
       }
-      QLog.d("QfavFileForwardManager", 2, "insertWeiYun2OfflineEntity peerType[" + paramInt1 + "],FileManagerEntity:" + FileManagerUtil.a(localFileManagerEntity));
-      return localFileManagerEntity;
-      if (paramInt1 == 1006)
-      {
-        localFileManagerEntity.tmpSessionFromPhone = paramString1;
-        localFileManagerEntity.tmpSessionToPhone = paramString2;
-        str1 = paramString1;
-      }
+      localFileManagerEntity.tmpSessionFromPhone = paramString1;
+      localFileManagerEntity.tmpSessionToPhone = paramString2;
     }
+    str1 = paramString1;
+    label299:
+    localFileManagerEntity.strThumbPath = paramFileManagerEntity.strThumbPath;
+    localFileManagerEntity.strMiddleThumPath = paramFileManagerEntity.strMiddleThumPath;
+    this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getFileManagerDataCenter().a(paramString2, str1, true, localFileManagerEntity.fileName, localFileManagerEntity.fileSize, true, paramInt1, str2, localFileManagerEntity.msgSeq, l, localFileManagerEntity.msgUid, -1L, MessageCache.a());
+    if (QLog.isColorLevel())
+    {
+      paramFileManagerEntity = new StringBuilder();
+      paramFileManagerEntity.append("insertWeiYun2OfflineEntity peerType[");
+      paramFileManagerEntity.append(paramInt1);
+      paramFileManagerEntity.append("],FileManagerEntity:");
+      paramFileManagerEntity.append(FileManagerUtil.a(localFileManagerEntity));
+      QLog.d("QfavFileForwardManager", 2, paramFileManagerEntity.toString());
+    }
+    return localFileManagerEntity;
   }
   
   public void a(FileManagerEntity paramFileManagerEntity, long paramLong1, long paramLong2, int paramInt)
   {
     TroopFileTransferManager localTroopFileTransferManager = TroopFileTransferManager.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, Long.valueOf(paramLong1).longValue());
-    if (localTroopFileTransferManager == null) {}
-    do
+    if (localTroopFileTransferManager == null) {
+      return;
+    }
+    int i = Math.abs(new Random().nextInt());
+    TroopFileStatusInfo localTroopFileStatusInfo = localTroopFileTransferManager.a(paramFileManagerEntity, 102, i, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()));
+    if (localTroopFileStatusInfo == null) {
+      return;
+    }
+    QQAppInterface localQQAppInterface = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("");
+    localStringBuilder.append(paramLong1);
+    TroopFileUtils.a(localQQAppInterface, localStringBuilder.toString(), paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, localTroopFileStatusInfo.a.toString(), i, null, paramFileManagerEntity.nSessionId, paramLong2, paramInt);
+    paramFileManagerEntity.strTroopFileUuid = localTroopFileStatusInfo.a.toString();
+    if (!NetworkUtil.isNetSupport(BaseApplication.getContext()))
     {
-      int i;
-      TroopFileStatusInfo localTroopFileStatusInfo;
-      do
-      {
-        return;
-        i = Math.abs(new Random().nextInt());
-        localTroopFileStatusInfo = localTroopFileTransferManager.a(paramFileManagerEntity, 102, i, Long.parseLong(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin()));
-      } while (localTroopFileStatusInfo == null);
-      TroopFileUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, "" + paramLong1, paramFileManagerEntity.fileName, paramFileManagerEntity.fileSize, localTroopFileStatusInfo.a.toString(), i, null, paramFileManagerEntity.nSessionId, paramLong2, paramInt);
-      paramFileManagerEntity.strTroopFileUuid = localTroopFileStatusInfo.a.toString();
-      if (NetworkUtil.d(BaseApplication.getContext())) {
-        break;
-      }
       paramFileManagerEntity.status = 0;
       paramFileManagerEntity.isReaded = false;
-      localTroopFileTransferManager.a(localTroopFileStatusInfo.a, -1, null, HardCodeUtil.a(2131716749));
-    } while (!QLog.isColorLevel());
-    QLog.i("QfavFileForwardManager", 2, "forwardToTroop : network error");
-    return;
+      localTroopFileTransferManager.a(localTroopFileStatusInfo.a, -1, null, HardCodeUtil.a(2131716399));
+      if (QLog.isColorLevel()) {
+        QLog.i("QfavFileForwardManager", 2, "forwardToTroop : network error");
+      }
+      return;
+    }
     this.jdField_a_of_type_CooperationQqfavForwardQfavFileForwardHandler.a(1, paramFileManagerEntity, paramLong1);
   }
   
   public void b(FileManagerEntity paramFileManagerEntity, long paramLong1, long paramLong2, int paramInt)
   {
-    paramFileManagerEntity = a(paramFileManagerEntity, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramLong1 + "", paramFileManagerEntity.peerType, paramInt);
+    Object localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin();
+    Object localObject2 = new StringBuilder();
+    ((StringBuilder)localObject2).append(paramLong1);
+    ((StringBuilder)localObject2).append("");
+    paramFileManagerEntity = a(paramFileManagerEntity, (String)localObject1, ((StringBuilder)localObject2).toString(), paramFileManagerEntity.peerType, paramInt);
     FileManagerUtil.b(paramFileManagerEntity.nSessionId);
-    FileManagerUtil.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface, this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramLong1 + "", paramFileManagerEntity);
+    localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface;
+    localObject2 = ((QQAppInterface)localObject1).getCurrentAccountUin();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(paramLong1);
+    localStringBuilder.append("");
+    FileManagerUtil.a((QQAppInterface)localObject1, (String)localObject2, localStringBuilder.toString(), paramFileManagerEntity);
     paramFileManagerEntity.status = 2;
     paramFileManagerEntity.fProgress = 0.0F;
     this.jdField_a_of_type_CooperationQqfavForwardQfavFileForwardHandler.a(2, paramFileManagerEntity, paramLong1);
@@ -159,7 +178,7 @@ public class QfavFileForwardManager
     localDataLineMsgRecord.issend = 1;
     localDataLineMsgRecord.isread = true;
     localDataLineMsgRecord.issuc = false;
-    ((SVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localDataLineMsgRecord);
+    ((ISVIPHandler)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getBusinessHandler(BusinessHandlerFactory.SVIP_HANDLER)).a(localDataLineMsgRecord);
     localDataLineMsgRecord.time = MessageCache.a();
     localDataLineMsgRecord.progress = 0.2F;
     localDataLineMsgRecord.fileMsgStatus = 0L;
@@ -181,7 +200,7 @@ public class QfavFileForwardManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.qqfav.forward.QfavFileForwardManager
  * JD-Core Version:    0.7.0.1
  */

@@ -11,12 +11,17 @@ public final class TroopAskAnonymouslyHelper$2
 {
   public void onReplyTroopAskAnonymously(boolean paramBoolean, @Nullable Object paramObject)
   {
-    QLog.i("TroopAskAnonymouslyHelper", 1, "onReplyTroopAskAnonymously() success = " + paramBoolean + " and data is " + paramObject);
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("onReplyTroopAskAnonymously() success = ");
+    localStringBuilder.append(paramBoolean);
+    localStringBuilder.append(" and data is ");
+    localStringBuilder.append(paramObject);
+    QLog.i("TroopAskAnonymouslyHelper", 1, localStringBuilder.toString());
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.helper.TroopAskAnonymouslyHelper.2
  * JD-Core Version:    0.7.0.1
  */

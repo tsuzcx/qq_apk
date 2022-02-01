@@ -20,67 +20,82 @@ class QQMovieFilter$1
   
   public void handleMessage(Message paramMessage)
   {
-    SLog.i("QQMovieFilter", "handle movie filter msg, what = " + paramMessage.what);
-    switch (paramMessage.what)
+    Object localObject = new StringBuilder();
+    ((StringBuilder)localObject).append("handle movie filter msg, what = ");
+    ((StringBuilder)localObject).append(paramMessage.what);
+    SLog.i("QQMovieFilter", ((StringBuilder)localObject).toString());
+    int i = paramMessage.what;
+    if (i != 1)
     {
-    }
-    do
-    {
-      do
+      if (i != 2)
       {
-        do
+        if (i != 3)
         {
-          do
-          {
+          if (i != 4) {
             return;
-            if ((QQMovieFilter.access$000(this.this$0) != null) && (QQMovieFilter.access$000(this.this$0).getCurrentState() == 1))
-            {
-              SLog.i("QQMovieFilter", "DecodePlayer is preparing");
-              return;
-            }
-            Object localObject = (Object[])paramMessage.obj;
-            QQMovieFilter.access$102(this.this$0, (String)localObject[0]);
-            paramMessage = (String)localObject[1];
-            boolean bool = ((Boolean)localObject[2]).booleanValue();
-            QQMovieFilter.access$202(this.this$0, ((Float)localObject[3]).floatValue());
-            QQMovieFilter.access$302(this.this$0, ((Float)localObject[4]).floatValue());
-            localObject = (HWDecodeListener)localObject[5];
-            if (QQMovieFilter.access$000(this.this$0) == null) {
-              QQMovieFilter.access$002(this.this$0, new DecodePlayer());
-            }
-            if (QQMovieFilter.access$400(this.this$0) != null) {
-              QQMovieFilter.access$400(this.this$0).disable();
-            }
-            if (!FileUtil.fileExistsAndNotEmpty(QQMovieFilter.access$100(this.this$0))) {
-              break;
-            }
-            QQMovieFilter.access$000(this.this$0).setFilePath(QQMovieFilter.access$100(this.this$0), paramMessage);
-            QQMovieFilter.access$000(this.this$0).setRepeat(bool);
-            QQMovieFilter.access$000(this.this$0).setDecodeListener((HWDecodeListener)localObject);
-            QQMovieFilter.access$402(this.this$0, new QQMovieFilter.MovieOnFrameAvailableListener(this.this$0));
-            QQMovieFilter.access$000(this.this$0).startPlay(QQMovieFilter.access$500(this.this$0), QQMovieFilter.access$400(this.this$0));
-            QQMovieFilter.access$602(this.this$0, null);
-            QQMovieFilter.access$000(this.this$0).setSpeedType(0);
-          } while (QQMovieFilter.access$700(this.this$0) == null);
-          QQMovieFilter.access$700(this.this$0).adjustVideo(VideoUtil.getHeightWidthRatioOfVideo(QQMovieFilter.access$100(this.this$0)), QQMovieFilter.access$200(this.this$0), QQMovieFilter.access$300(this.this$0));
+          }
+          if (QQMovieFilter.access$000(this.this$0) != null) {
+            QQMovieFilter.access$000(this.this$0).stopMusic();
+          }
+        }
+        else if (QQMovieFilter.access$000(this.this$0) != null)
+        {
+          QQMovieFilter.access$000(this.this$0).resumeMusic();
+        }
+      }
+      else
+      {
+        if ((QQMovieFilter.access$000(this.this$0) != null) && (QQMovieFilter.access$000(this.this$0).getCurrentState() == 1))
+        {
+          SLog.i("QQMovieFilter", "DecodePlayer is preparing");
           return;
+        }
+        localObject = (Object[])paramMessage.obj;
+        QQMovieFilter.access$102(this.this$0, (String)localObject[0]);
+        paramMessage = (String)localObject[1];
+        boolean bool = ((Boolean)localObject[2]).booleanValue();
+        QQMovieFilter.access$202(this.this$0, ((Float)localObject[3]).floatValue());
+        QQMovieFilter.access$302(this.this$0, ((Float)localObject[4]).floatValue());
+        localObject = (HWDecodeListener)localObject[5];
+        if (QQMovieFilter.access$000(this.this$0) == null) {
+          QQMovieFilter.access$002(this.this$0, new DecodePlayer());
+        }
+        if (QQMovieFilter.access$400(this.this$0) != null) {
+          QQMovieFilter.access$400(this.this$0).disable();
+        }
+        if (FileUtil.fileExistsAndNotEmpty(QQMovieFilter.access$100(this.this$0)))
+        {
+          QQMovieFilter.access$000(this.this$0).setFilePath(QQMovieFilter.access$100(this.this$0), paramMessage);
+          QQMovieFilter.access$000(this.this$0).setRepeat(bool);
+          QQMovieFilter.access$000(this.this$0).setDecodeListener((HWDecodeListener)localObject);
+          paramMessage = this.this$0;
+          QQMovieFilter.access$402(paramMessage, new QQMovieFilter.MovieOnFrameAvailableListener(paramMessage));
+          QQMovieFilter.access$000(this.this$0).startPlay(QQMovieFilter.access$500(this.this$0), QQMovieFilter.access$400(this.this$0));
+          QQMovieFilter.access$602(this.this$0, null);
+          QQMovieFilter.access$000(this.this$0).setSpeedType(0);
+          if (QQMovieFilter.access$700(this.this$0) != null) {
+            QQMovieFilter.access$700(this.this$0).adjustVideo(VideoUtil.getHeightWidthRatioOfVideo(QQMovieFilter.access$100(this.this$0)), QQMovieFilter.access$200(this.this$0), QQMovieFilter.access$300(this.this$0));
+          }
+        }
+        else
+        {
           QQMovieFilter.access$800(this.this$0);
           QQMovieFilter.access$000(this.this$0).setFilePath("", "");
-          return;
-        } while (QQMovieFilter.access$000(this.this$0) == null);
-        QQMovieFilter.access$000(this.this$0).resumeMusic();
-        return;
-        QQMovieFilter.access$800(this.this$0);
-      } while (QQMovieFilter.access$000(this.this$0) == null);
-      QQMovieFilter.access$000(this.this$0).setFilePath("", "");
-      return;
-    } while (QQMovieFilter.access$000(this.this$0) == null);
-    QQMovieFilter.access$000(this.this$0).stopMusic();
+        }
+      }
+    }
+    else
+    {
+      QQMovieFilter.access$800(this.this$0);
+      if (QQMovieFilter.access$000(this.this$0) != null) {
+        QQMovieFilter.access$000(this.this$0).setFilePath("", "");
+      }
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.shortvideo.filter.QQMovieFilter.1
  * JD-Core Version:    0.7.0.1
  */

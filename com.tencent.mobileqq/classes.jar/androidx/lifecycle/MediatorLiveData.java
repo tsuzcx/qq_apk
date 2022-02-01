@@ -20,11 +20,12 @@ public class MediatorLiveData<T>
     if ((paramLiveData != null) && (paramLiveData.mObserver != paramObserver)) {
       throw new IllegalArgumentException("This source was already added with the different observer");
     }
-    if (paramLiveData != null) {}
-    while (!hasActiveObservers()) {
+    if (paramLiveData != null) {
       return;
     }
-    localSource.plug();
+    if (hasActiveObservers()) {
+      localSource.plug();
+    }
   }
   
   @CallSuper
@@ -56,7 +57,7 @@ public class MediatorLiveData<T>
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.lifecycle.MediatorLiveData
  * JD-Core Version:    0.7.0.1
  */

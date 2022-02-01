@@ -11,7 +11,11 @@ class IliveGroupTipsManager$1
   {
     if (IliveGroupTipsManager.a(this.this$0) == null)
     {
-      QLog.d("IliveGroupTipsManager", 1, "onGroupPushHandle isLive = " + this.jdField_a_of_type_Boolean + " exit page");
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("onGroupPushHandle isLive = ");
+      localStringBuilder.append(this.jdField_a_of_type_Boolean);
+      localStringBuilder.append(" exit page");
+      QLog.d("IliveGroupTipsManager", 1, localStringBuilder.toString());
       return;
     }
     if (this.jdField_a_of_type_Boolean)
@@ -24,7 +28,7 @@ class IliveGroupTipsManager$1
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
  * Qualified Name:     cooperation.ilive.group.IliveGroupTipsManager.1
  * JD-Core Version:    0.7.0.1
  */

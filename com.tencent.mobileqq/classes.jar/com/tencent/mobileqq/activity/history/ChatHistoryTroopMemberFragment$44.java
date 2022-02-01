@@ -1,52 +1,57 @@
 package com.tencent.mobileqq.activity.history;
 
-import android.content.Intent;
-import android.support.v4.app.FragmentActivity;
-import android.text.TextUtils;
-import android.view.View;
-import android.view.View.OnClickListener;
-import com.tencent.mobileqq.app.HardCodeUtil;
-import com.tencent.mobileqq.statistics.ReportController;
-import com.tencent.mobileqq.widget.QQToast;
-import com.tencent.qqlive.module.videoreport.collect.EventCollector;
+import android.os.Handler;
+import com.tencent.mobileqq.activity.history.helper.TroopMemberAddFrdHelper;
+import com.tencent.mobileqq.pb.PBStringField;
+import com.tencent.mobileqq.pb.PBUInt64Field;
+import com.tencent.mobileqq.troop.observer.TroopFeeObserver;
+import com.tencent.qphone.base.util.QLog;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import tencent.im.oidb.cmd0x406.cmd0x406.GroupFeeMember;
 
 class ChatHistoryTroopMemberFragment$44
-  implements View.OnClickListener
+  extends TroopFeeObserver
 {
-  ChatHistoryTroopMemberFragment$44(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment, String paramString) {}
+  ChatHistoryTroopMemberFragment$44(ChatHistoryTroopMemberFragment paramChatHistoryTroopMemberFragment) {}
   
-  public void onClick(View paramView)
+  protected void a(boolean paramBoolean, List<cmd0x406.GroupFeeMember> paramList)
   {
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.i) && (!ChatHistoryTroopMemberFragment.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment))) {
-      if (((this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) && (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.a > 0)) || (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 3))
-      {
-        Intent localIntent = this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().getIntent();
-        localIntent.putExtra("member_uin", "0");
-        localIntent.putExtra("member_display_name", this.jdField_a_of_type_JavaLangString);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().setResult(-1, localIntent);
-        this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity().finish();
-        if (this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.d == 11) {
-          ReportController.b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_ComTencentMobileqqAppQQAppInterface, "CliOper", "", "", "0X800621D", "0X800621D", 0, 0, "", "", "", "");
-        }
-      }
-    }
-    for (;;)
+    if (!paramBoolean)
     {
-      EventCollector.getInstance().onViewClicked(paramView);
-      return;
-      QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), HardCodeUtil.a(2131701738), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
-      continue;
-      if (!TextUtils.isEmpty(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h)) {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.h, 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
-      } else {
-        QQToast.a(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.getActivity(), HardCodeUtil.a(2131701676), 0).b(this.jdField_a_of_type_ComTencentMobileqqActivityHistoryChatHistoryTroopMemberFragment.jdField_b_of_type_AndroidViewView.getHeight());
+      if (QLog.isColorLevel())
+      {
+        paramList = new StringBuilder();
+        paramList.append("onGetTroopFeeMemberList : isSuccess=");
+        paramList.append(paramBoolean);
+        QLog.d("Q.history.BaseFragment.troop.troop_fee", 2, paramList.toString());
       }
+      return;
     }
+    ArrayList localArrayList = new ArrayList();
+    Iterator localIterator = paramList.iterator();
+    while (localIterator.hasNext())
+    {
+      cmd0x406.GroupFeeMember localGroupFeeMember = (cmd0x406.GroupFeeMember)localIterator.next();
+      ChatHistoryTroopMemberFragment.ATroopMember localATroopMember = new ChatHistoryTroopMemberFragment.ATroopMember();
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append(localGroupFeeMember.uint64_uin.get());
+      localStringBuilder.append("");
+      localATroopMember.a = localStringBuilder.toString();
+      localATroopMember.b = localGroupFeeMember.string_nick_name.get();
+      if (this.a.a != null) {
+        this.a.a.a(localATroopMember);
+      }
+      localArrayList.add(localATroopMember);
+    }
+    this.a.c = paramList.size();
+    this.a.b.sendMessage(this.a.b.obtainMessage(1, new Object[] { localArrayList }));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.history.ChatHistoryTroopMemberFragment.44
  * JD-Core Version:    0.7.0.1
  */

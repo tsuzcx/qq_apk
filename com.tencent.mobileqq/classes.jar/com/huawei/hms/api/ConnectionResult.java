@@ -14,7 +14,7 @@ public final class ConnectionResult
   public static final int BINDFAIL_RESOLUTION_BACKGROUND = 7;
   public static final int BINDFAIL_RESOLUTION_REQUIRED = 6;
   public static final int CANCELED = 13;
-  public static final Parcelable.Creator<ConnectionResult> CREATOR = new ConnectionResult.1();
+  public static final Parcelable.Creator<ConnectionResult> CREATOR = new ConnectionResult.a();
   public static final int DEVELOPER_ERROR = 10;
   public static final int DRIVE_EXTERNAL_STORAGE_REQUIRED = 9002;
   public static final int INTERNAL_ERROR = 8;
@@ -76,48 +76,62 @@ public final class ConnectionResult
   
   static String a(int paramInt)
   {
-    switch (paramInt)
+    if (paramInt != -1)
     {
-    case 4: 
-    case 5: 
-    case 12: 
-    case 15: 
-    case 16: 
-    case 17: 
-    case 18: 
-    case 20: 
-    default: 
-      return "UNKNOWN_ERROR_CODE(" + paramInt + ")";
-    case -1: 
-      return "UNKNOWN";
-    case 0: 
+      if (paramInt != 0)
+      {
+        if (paramInt != 1)
+        {
+          if (paramInt != 2)
+          {
+            if (paramInt != 3)
+            {
+              if (paramInt != 13)
+              {
+                if (paramInt != 14)
+                {
+                  if (paramInt != 19)
+                  {
+                    if (paramInt != 21)
+                    {
+                      switch (paramInt)
+                      {
+                      default: 
+                        StringBuilder localStringBuilder = new StringBuilder();
+                        localStringBuilder.append("UNKNOWN_ERROR_CODE(");
+                        localStringBuilder.append(paramInt);
+                        localStringBuilder.append(")");
+                        return localStringBuilder.toString();
+                      case 11: 
+                        return "LICENSE_CHECK_FAILED";
+                      case 10: 
+                        return "DEVELOPER_ERROR";
+                      case 9: 
+                        return "SERVICE_INVALID";
+                      case 8: 
+                        return "INTERNAL_ERROR";
+                      case 7: 
+                        return "NETWORK_ERROR";
+                      }
+                      return "RESOLUTION_REQUIRED";
+                    }
+                    return "API_VERSION_UPDATE_REQUIRED";
+                  }
+                  return "SERVICE_MISSING_PERMISSION";
+                }
+                return "TIMEOUT";
+              }
+              return "CANCELED";
+            }
+            return "SERVICE_DISABLED";
+          }
+          return "SERVICE_VERSION_UPDATE_REQUIRED";
+        }
+        return "SERVICE_MISSING";
+      }
       return "SUCCESS";
-    case 1: 
-      return "SERVICE_MISSING";
-    case 2: 
-      return "SERVICE_VERSION_UPDATE_REQUIRED";
-    case 3: 
-      return "SERVICE_DISABLED";
-    case 6: 
-      return "RESOLUTION_REQUIRED";
-    case 7: 
-      return "NETWORK_ERROR";
-    case 8: 
-      return "INTERNAL_ERROR";
-    case 9: 
-      return "SERVICE_INVALID";
-    case 10: 
-      return "DEVELOPER_ERROR";
-    case 11: 
-      return "LICENSE_CHECK_FAILED";
-    case 13: 
-      return "CANCELED";
-    case 14: 
-      return "TIMEOUT";
-    case 19: 
-      return "SERVICE_MISSING_PERMISSION";
     }
-    return "API_VERSION_UPDATE_REQUIRED";
+    return "UNKNOWN";
   }
   
   public int describeContents()
@@ -134,15 +148,15 @@ public final class ConnectionResult
     {
       if (((paramObject instanceof ConnectionResult)) && (this.a == ((ConnectionResult)paramObject).a) && (this.d == ((ConnectionResult)paramObject).d) && (this.c.equals(((ConnectionResult)paramObject).c)))
       {
-        bool = this.b.equals(((ConnectionResult)paramObject).b);
-        if (!bool) {}
-      }
-      for (boolean bool = true;; bool = false) {
-        return bool;
+        boolean bool = this.b.equals(((ConnectionResult)paramObject).b);
+        if (bool) {
+          return true;
+        }
       }
       return false;
     }
     catch (Exception paramObject) {}
+    return false;
   }
   
   public int getErrorCode()
@@ -192,7 +206,7 @@ public final class ConnectionResult
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.huawei.hms.api.ConnectionResult
  * JD-Core Version:    0.7.0.1
  */

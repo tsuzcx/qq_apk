@@ -13,13 +13,13 @@ class NewFriendEntryMultiHeadsAdapter$ViewHolder
   public NewFriendEntryMultiHeadsAdapter$ViewHolder(NewFriendEntryMultiHeadsAdapter paramNewFriendEntryMultiHeadsAdapter, View paramView)
   {
     super(paramView);
-    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131368281));
-    this.b = ((FixSizeImageView)paramView.findViewById(2131371065));
+    this.jdField_a_of_type_ComTencentWidgetFixSizeImageView = ((FixSizeImageView)paramView.findViewById(2131368033));
+    this.b = ((FixSizeImageView)paramView.findViewById(2131370699));
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.activity.contacts.newfriendentry.NewFriendEntryMultiHeadsAdapter.ViewHolder
  * JD-Core Version:    0.7.0.1
  */

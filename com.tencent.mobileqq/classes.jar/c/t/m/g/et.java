@@ -46,128 +46,114 @@ public final class et
   @SuppressLint({"NewApi"})
   private static et a(ea paramea, CellInfo paramCellInfo)
   {
-    int n = -88;
-    if ((paramCellInfo == null) || (paramea == null)) {
-      return null;
+    Object localObject;
+    if ((paramCellInfo != null) && (paramea != null))
+    {
+      localObject = paramea.f;
+      paramea = new et();
     }
-    Object localObject = paramea.f;
-    paramea = new et();
-    do
+    try
+    {
+      if (!(paramCellInfo instanceof CellInfoCdma)) {
+        break label133;
+      }
+      paramCellInfo = (CellInfoCdma)paramCellInfo;
+      CellIdentityCdma localCellIdentityCdma = paramCellInfo.getCellIdentity();
+      paramea.a = et.a.c;
+      paramea.a((TelephonyManager)localObject, et.a.c);
+      paramea.c = localCellIdentityCdma.getSystemId();
+      paramea.d = localCellIdentityCdma.getNetworkId();
+      paramea.e = localCellIdentityCdma.getBasestationId();
+      paramea.g = localCellIdentityCdma.getLatitude();
+      paramea.h = localCellIdentityCdma.getLongitude();
+      n = paramCellInfo.getCellSignalStrength().getDbm();
+      if ((n <= -110) || (n >= -40)) {
+        break label428;
+      }
+    }
+    catch (Throwable paramCellInfo)
     {
       for (;;)
       {
-        try
-        {
-          if (!(paramCellInfo instanceof CellInfoCdma)) {
-            continue;
-          }
-          paramCellInfo = (CellInfoCdma)paramCellInfo;
-          CellIdentityCdma localCellIdentityCdma = paramCellInfo.getCellIdentity();
-          paramea.a = et.a.c;
-          paramea.a((TelephonyManager)localObject, et.a.c);
-          paramea.c = localCellIdentityCdma.getSystemId();
-          paramea.d = localCellIdentityCdma.getNetworkId();
-          paramea.e = localCellIdentityCdma.getBasestationId();
-          paramea.g = localCellIdentityCdma.getLatitude();
-          paramea.h = localCellIdentityCdma.getLongitude();
-          i2 = paramCellInfo.getCellSignalStrength().getDbm();
-          i1 = n;
-          if (i2 > -110)
-          {
-            i1 = n;
-            if (i2 < -40) {
-              i1 = i2;
-            }
-          }
-          paramea.f = i1;
-        }
-        catch (Throwable paramCellInfo)
-        {
-          int i2;
-          int i1;
-          continue;
-        }
-        if (paramea.d()) {
-          paramea.j = true;
-        }
-        paramea.k.add(paramea.c());
-        return paramea;
-        if ((paramCellInfo instanceof CellInfoGsm))
-        {
-          paramCellInfo = (CellInfoGsm)paramCellInfo;
-          paramea.a = et.a.b;
-          localObject = paramCellInfo.getCellIdentity();
-          paramea.d = ((CellIdentityGsm)localObject).getLac();
-          paramea.e = ((CellIdentityGsm)localObject).getCid();
-          paramea.b = ((CellIdentityGsm)localObject).getMcc();
-          paramea.c = ((CellIdentityGsm)localObject).getMnc();
-          i2 = paramCellInfo.getCellSignalStrength().getDbm();
-          i1 = n;
-          if (i2 > -110)
-          {
-            i1 = n;
-            if (i2 < -40) {
-              i1 = i2;
-            }
-          }
-          paramea.f = i1;
-        }
-        else
-        {
-          if (!(paramCellInfo instanceof CellInfoWcdma)) {
-            continue;
-          }
-          paramCellInfo = (CellInfoWcdma)paramCellInfo;
-          paramea.a = et.a.d;
-          localObject = paramCellInfo.getCellIdentity();
-          paramea.d = ((CellIdentityWcdma)localObject).getLac();
-          paramea.e = ((CellIdentityWcdma)localObject).getCid();
-          paramea.b = ((CellIdentityWcdma)localObject).getMcc();
-          paramea.c = ((CellIdentityWcdma)localObject).getMnc();
-          i2 = paramCellInfo.getCellSignalStrength().getDbm();
-          i1 = n;
-          if (i2 > -110)
-          {
-            i1 = n;
-            if (i2 < -40) {
-              i1 = i2;
-            }
-          }
-          paramea.f = i1;
-        }
+        continue;
+        int n = -88;
+        continue;
+        n = -88;
+        continue;
+        n = -88;
+        continue;
+        n = -88;
       }
-    } while (!(paramCellInfo instanceof CellInfoLte));
-    paramCellInfo = (CellInfoLte)paramCellInfo;
-    paramea.a = et.a.e;
-    localObject = paramCellInfo.getCellIdentity();
-    paramea.d = ((CellIdentityLte)localObject).getTac();
-    paramea.e = ((CellIdentityLte)localObject).getCi();
-    paramea.b = ((CellIdentityLte)localObject).getMcc();
-    paramea.c = ((CellIdentityLte)localObject).getMnc();
-    n = paramCellInfo.getCellSignalStrength().getDbm();
-    if ((n > -110) && (n < -40)) {}
-    for (;;)
-    {
-      paramea.f = n;
-      break;
-      n = -88;
     }
+    paramea.f = n;
+    break label394;
+    label133:
+    if ((paramCellInfo instanceof CellInfoGsm))
+    {
+      paramCellInfo = (CellInfoGsm)paramCellInfo;
+      paramea.a = et.a.b;
+      localObject = paramCellInfo.getCellIdentity();
+      paramea.d = ((CellIdentityGsm)localObject).getLac();
+      paramea.e = ((CellIdentityGsm)localObject).getCid();
+      paramea.b = ((CellIdentityGsm)localObject).getMcc();
+      paramea.c = ((CellIdentityGsm)localObject).getMnc();
+      n = paramCellInfo.getCellSignalStrength().getDbm();
+      if ((n <= -110) || (n >= -40)) {
+        break label434;
+      }
+      paramea.f = n;
+    }
+    else if ((paramCellInfo instanceof CellInfoWcdma))
+    {
+      paramCellInfo = (CellInfoWcdma)paramCellInfo;
+      paramea.a = et.a.d;
+      localObject = paramCellInfo.getCellIdentity();
+      paramea.d = ((CellIdentityWcdma)localObject).getLac();
+      paramea.e = ((CellIdentityWcdma)localObject).getCid();
+      paramea.b = ((CellIdentityWcdma)localObject).getMcc();
+      paramea.c = ((CellIdentityWcdma)localObject).getMnc();
+      n = paramCellInfo.getCellSignalStrength().getDbm();
+      if ((n <= -110) || (n >= -40)) {
+        break label440;
+      }
+      paramea.f = n;
+    }
+    else if ((paramCellInfo instanceof CellInfoLte))
+    {
+      paramCellInfo = (CellInfoLte)paramCellInfo;
+      paramea.a = et.a.e;
+      localObject = paramCellInfo.getCellIdentity();
+      paramea.d = ((CellIdentityLte)localObject).getTac();
+      paramea.e = ((CellIdentityLte)localObject).getCi();
+      paramea.b = ((CellIdentityLte)localObject).getMcc();
+      paramea.c = ((CellIdentityLte)localObject).getMnc();
+      n = paramCellInfo.getCellSignalStrength().getDbm();
+      if ((n <= -110) || (n >= -40)) {
+        break label446;
+      }
+      paramea.f = n;
+    }
+    label394:
+    if (paramea.d()) {
+      paramea.j = true;
+    }
+    paramea.k.add(paramea.c());
+    return paramea;
+    return null;
   }
   
   public static et a(ea paramea, CellLocation paramCellLocation, SignalStrength paramSignalStrength)
   {
-    if ((!paramea.b()) || (paramCellLocation == null)) {
-      return null;
-    }
-    TelephonyManager localTelephonyManager = paramea.f;
-    paramea = new et();
-    for (;;)
+    TelephonyManager localTelephonyManager;
+    if ((paramea.b()) && (paramCellLocation != null))
     {
-      try
+      localTelephonyManager = paramea.f;
+      paramea = new et();
+    }
+    try
+    {
+      if ((paramCellLocation instanceof CdmaCellLocation))
       {
-        if (!(paramCellLocation instanceof CdmaCellLocation)) {
-          continue;
-        }
         paramCellLocation = (CdmaCellLocation)paramCellLocation;
         paramea.a = et.a.c;
         paramea.a(localTelephonyManager, et.a.c);
@@ -176,146 +162,181 @@ public final class et
         paramea.e = paramCellLocation.getBaseStationId();
         paramea.g = paramCellLocation.getBaseStationLatitude();
         paramea.h = paramCellLocation.getBaseStationLongitude();
-        if (paramSignalStrength != null) {
-          continue;
+        if (paramSignalStrength == null) {
+          paramea.f = -1;
+        } else {
+          paramea.f = paramSignalStrength.getCdmaDbm();
         }
-        paramea.f = -1;
       }
-      catch (Throwable paramCellLocation)
+      else
       {
-        continue;
-      }
-      if (paramea.d()) {
-        paramea.j = true;
-      }
-      paramea.k.add(paramea.c());
-      return paramea;
-      paramea.f = paramSignalStrength.getCdmaDbm();
-      continue;
-      paramCellLocation = (GsmCellLocation)paramCellLocation;
-      paramea.a = et.a.b;
-      paramea.a(localTelephonyManager, et.a.b);
-      paramea.d = paramCellLocation.getLac();
-      paramea.e = paramCellLocation.getCid();
-      if (paramSignalStrength == null) {
-        paramea.f = -1;
-      } else {
-        paramea.f = (paramSignalStrength.getGsmSignalStrength() * 2 - 113);
+        paramCellLocation = (GsmCellLocation)paramCellLocation;
+        paramea.a = et.a.b;
+        paramea.a(localTelephonyManager, et.a.b);
+        paramea.d = paramCellLocation.getLac();
+        paramea.e = paramCellLocation.getCid();
+        if (paramSignalStrength == null) {
+          paramea.f = -1;
+        } else {
+          paramea.f = (paramSignalStrength.getGsmSignalStrength() * 2 - 113);
+        }
       }
     }
+    catch (Throwable paramCellLocation)
+    {
+      label181:
+      break label181;
+    }
+    if (paramea.d()) {
+      paramea.j = true;
+    }
+    paramea.k.add(paramea.c());
+    return paramea;
+    return null;
   }
   
   @SuppressLint({"NewApi"})
   public static et a(ea paramea, List<CellInfo> paramList)
   {
-    if ((paramList == null) || (paramea == null) || (paramList.size() == 0)) {
-      return new et();
-    }
-    ArrayList localArrayList = new ArrayList();
-    Object localObject = new et();
-    Iterator localIterator = paramList.iterator();
-    int n = 1;
-    paramList = (List<CellInfo>)localObject;
-    while (localIterator.hasNext())
+    if ((paramList != null) && (paramea != null) && (paramList.size() != 0))
     {
-      localObject = (CellInfo)localIterator.next();
-      if (((CellInfo)localObject).isRegistered())
+      ArrayList localArrayList = new ArrayList();
+      Object localObject = new et();
+      Iterator localIterator = paramList.iterator();
+      int n = 1;
+      paramList = (List<CellInfo>)localObject;
+      while (localIterator.hasNext())
       {
-        localObject = a(paramea, (CellInfo)localObject);
-        if (((et)localObject).d())
+        localObject = (CellInfo)localIterator.next();
+        if (((CellInfo)localObject).isRegistered())
         {
-          paramList.k.add(((et)localObject).c());
-          if (n != 0)
+          localObject = a(paramea, (CellInfo)localObject);
+          if (((et)localObject).d())
           {
-            ((et)localObject).j = true;
-            n = 0;
-            paramList = (List<CellInfo>)localObject;
-          }
-          else
-          {
-            localArrayList.add(localObject);
-          }
-        }
-      }
-    }
-    paramList.m = localArrayList;
-    return paramList;
-  }
-  
-  private void a(TelephonyManager paramTelephonyManager, et.a parama)
-  {
-    int i2 = 0;
-    int n = 0;
-    paramTelephonyManager = paramTelephonyManager.getNetworkOperator();
-    if ((paramTelephonyManager != null) && (paramTelephonyManager.length() >= 5)) {}
-    for (;;)
-    {
-      int i3;
-      try
-      {
-        i3 = Integer.parseInt(paramTelephonyManager.substring(0, 3));
-      }
-      catch (Throwable paramTelephonyManager)
-      {
-        int i4;
-        i1 = 460;
-        continue;
-      }
-      try
-      {
-        i4 = Integer.parseInt(paramTelephonyManager.substring(3, 5));
-        n = i4;
-        i1 = i3;
-        if (i3 == 460)
-        {
-          n = i4;
-          i1 = i3;
-          if (i4 == 3)
-          {
-            n = i4;
-            i1 = i3;
-            i2 = i4;
-            if (parama != et.a.c)
+            paramList.k.add(((et)localObject).c());
+            if (n != 0)
             {
-              n = i4;
-              i1 = i3;
-              i2 = i4;
-              if (paramTelephonyManager.length() == 11)
-              {
-                i2 = i4;
-                n = Integer.parseInt(paramTelephonyManager.substring(9, 11));
-                i1 = i3;
-              }
+              n = 0;
+              ((et)localObject).j = true;
+              paramList = (List<CellInfo>)localObject;
+            }
+            else
+            {
+              localArrayList.add(localObject);
             }
           }
         }
       }
-      catch (Throwable paramTelephonyManager)
+      paramList.m = localArrayList;
+      return paramList;
+    }
+    return new et();
+  }
+  
+  private void a(TelephonyManager paramTelephonyManager, et.a parama)
+  {
+    paramTelephonyManager = paramTelephonyManager.getNetworkOperator();
+    int i5 = 0;
+    i2 = 0;
+    i4 = 460;
+    n = i2;
+    i1 = i4;
+    if (paramTelephonyManager != null)
+    {
+      n = i2;
+      i1 = i4;
+      if (paramTelephonyManager.length() < 5) {}
+    }
+    try
+    {
+      i3 = Integer.parseInt(paramTelephonyManager.substring(0, 3));
+      i1 = i5;
+    }
+    catch (Throwable paramTelephonyManager)
+    {
+      for (;;)
+      {
+        int i3;
+        label134:
+        n = i2;
+        i1 = i4;
+      }
+    }
+    try
+    {
+      i2 = Integer.parseInt(paramTelephonyManager.substring(3, 5));
+      n = i2;
+      if (i3 == 460)
       {
         n = i2;
-        i1 = i3;
-        continue;
+        if (i2 == 3)
+        {
+          n = i2;
+          i1 = i2;
+          if (parama != et.a.c)
+          {
+            n = i2;
+            i1 = i2;
+            if (paramTelephonyManager.length() == 11)
+            {
+              i1 = i2;
+              n = Integer.parseInt(paramTelephonyManager.substring(9, 11));
+            }
+          }
+        }
       }
-      if ((i1 > 0) && (n >= 0))
-      {
-        this.b = i1;
-        this.c = n;
-      }
-      return;
-      int i1 = 460;
+    }
+    catch (Throwable paramTelephonyManager)
+    {
+      n = i1;
+      break label134;
+    }
+    i1 = i3;
+    if ((i1 > 0) && (n >= 0))
+    {
+      this.b = i1;
+      this.c = n;
     }
   }
   
   private boolean d()
   {
-    boolean bool = true;
-    if (this.a != et.a.c) {
-      if ((this.b < 0) || (this.c < 0) || (this.b == 535) || (this.c == 535) || (this.d < 0) || (this.d == 65535) || (this.d == 25840) || (this.e == 65535) || (this.e == 268435455) || (this.e == 2147483647) || (this.e == 50594049) || (this.e == 8) || (this.e == 10) || (this.e == 33) || (this.e <= 0)) {
-        bool = false;
+    int i1;
+    if (this.a != et.a.c)
+    {
+      n = this.b;
+      if (n >= 0)
+      {
+        i1 = this.c;
+        if ((i1 >= 0) && (n != 535) && (i1 != 535))
+        {
+          n = this.d;
+          if ((n >= 0) && (n != 65535) && (n != 25840))
+          {
+            n = this.e;
+            if ((n != 65535) && (n != 268435455) && (n != 2147483647) && (n != 50594049) && (n != 8) && (n != 10) && (n != 33)) {
+              return n > 0;
+            }
+          }
+        }
       }
+      return false;
     }
-    while ((this.b >= 0) && (this.c >= 0) && (this.b != 535) && (this.c != 535) && (this.d >= 0) && (this.d != 65535) && (this.e != 65535) && (this.e > 0)) {
-      return bool;
+    int n = this.b;
+    if (n >= 0)
+    {
+      i1 = this.c;
+      if ((i1 >= 0) && (n != 535) && (i1 != 535))
+      {
+        n = this.d;
+        if ((n >= 0) && (n != 65535))
+        {
+          n = this.e;
+          if (n != 65535) {
+            return n > 0;
+          }
+        }
+      }
     }
     return false;
   }
@@ -336,16 +357,13 @@ public final class et
   public final void a(List<NeighboringCellInfo> paramList)
   {
     if (paramList != null) {}
-    for (;;)
+    try
     {
-      try
-      {
-        this.l = Collections.unmodifiableList(paramList);
-        return;
-      }
-      finally {}
-      this.l = Collections.emptyList();
+      this.l = Collections.unmodifiableList(paramList);
+      return;
     }
+    finally {}
+    this.l = Collections.emptyList();
   }
   
   public final List<et> b()
@@ -358,17 +376,41 @@ public final class et
   
   public final String c()
   {
-    return this.b + this.c + this.d + this.e;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(this.e);
+    return localStringBuilder.toString();
   }
   
   public final String toString()
   {
-    return "TxCellInfo [PhoneType=" + this.a + ", MCC=" + this.b + ", MNC=" + this.c + ", LAC=" + this.d + ", CID=" + this.e + ", RSSI=" + this.f + ", LAT=" + this.g + ", LNG=" + this.h + ", mTime=" + this.i + "]";
+    StringBuilder localStringBuilder = new StringBuilder("TxCellInfo [PhoneType=");
+    localStringBuilder.append(this.a);
+    localStringBuilder.append(", MCC=");
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(", MNC=");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append(", LAC=");
+    localStringBuilder.append(this.d);
+    localStringBuilder.append(", CID=");
+    localStringBuilder.append(this.e);
+    localStringBuilder.append(", RSSI=");
+    localStringBuilder.append(this.f);
+    localStringBuilder.append(", LAT=");
+    localStringBuilder.append(this.g);
+    localStringBuilder.append(", LNG=");
+    localStringBuilder.append(this.h);
+    localStringBuilder.append(", mTime=");
+    localStringBuilder.append(this.i);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     c.t.m.g.et
  * JD-Core Version:    0.7.0.1
  */

@@ -25,7 +25,7 @@ public class QQEventModule
 {
   static final String CLASSNAME = "QQEventModule";
   private static final String TAG = "QQEventModule";
-  private static volatile BroadcastReceiver sDispatchEventReceiver = null;
+  private static volatile BroadcastReceiver sDispatchEventReceiver;
   public static AtomicInteger sPageCount = new AtomicInteger(0);
   
   public QQEventModule(HippyEngineContext paramHippyEngineContext)
@@ -36,123 +36,126 @@ public class QQEventModule
   
   private void broadcast2WebView(HippyMap paramHippyMap)
   {
-    String str1;
-    String str2;
     for (;;)
     {
+      int i;
       try
       {
-        str1 = paramHippyMap.getString("event");
+        String str1 = paramHippyMap.getString("event");
         if (TextUtils.isEmpty(str1))
         {
           QLog.w("QQEventModule", 2, "param event is requested");
           return;
         }
-        str2 = paramHippyMap.getString("data");
-        if (str2 != null)
+        String str2 = paramHippyMap.getString("data");
+        if (str2 == null) {
+          break label380;
+        }
+        localObject1 = str2.toString();
+        if ((!TextUtils.isEmpty((CharSequence)localObject1)) && (((String)localObject1).length() >= 460800L))
         {
-          localObject1 = str2.toString();
-          if ((TextUtils.isEmpty((CharSequence)localObject1)) || (((String)localObject1).length() < 460800L)) {
-            break;
+          paramHippyMap = new StringBuilder();
+          paramHippyMap.append("param data is over size! ");
+          paramHippyMap.append(((String)localObject1).length());
+          QLog.e("QQEventModule", 1, paramHippyMap.toString());
+          return;
+        }
+        Object localObject2 = paramHippyMap.getString("options");
+        localObject1 = null;
+        if (!TextUtils.isEmpty((CharSequence)localObject2)) {
+          localObject1 = new JSONObject((String)localObject2);
+        }
+        localObject2 = new ArrayList();
+        if (localObject1 == null) {
+          break label394;
+        }
+        boolean bool2 = ((JSONObject)localObject1).optBoolean("broadcast", true);
+        localObject1 = ((JSONObject)localObject1).optJSONArray("domains");
+        bool1 = bool2;
+        if (localObject1 != null)
+        {
+          int j = ((JSONArray)localObject1).length();
+          i = 0;
+          bool1 = bool2;
+          if (i < j)
+          {
+            localObject3 = ((JSONArray)localObject1).optString(i);
+            if (TextUtils.isEmpty((CharSequence)localObject3)) {
+              break label387;
+            }
+            ((ArrayList)localObject2).add(localObject3);
+            break label387;
           }
-          QLog.e("QQEventModule", 1, "param data is over size! " + ((String)localObject1).length());
+        }
+        localObject1 = new JSONObject();
+        ((JSONObject)localObject1).put("url", "");
+        Object localObject3 = new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
+        ((Intent)localObject3).putExtra("broadcast", bool1);
+        ((Intent)localObject3).putExtra("event", str1);
+        if (str2 != null) {
+          ((Intent)localObject3).putExtra("data", str2);
+        }
+        ((Intent)localObject3).putStringArrayListExtra("domains", (ArrayList)localObject2);
+        ((Intent)localObject3).putExtra("source", ((JSONObject)localObject1).toString());
+        BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject3, "com.tencent.msg.permission.pushnotify");
+        if (QLog.isColorLevel())
+        {
+          localObject1 = new StringBuilder();
+          ((StringBuilder)localObject1).append("dispatchEvent:");
+          ((StringBuilder)localObject1).append(paramHippyMap.toJSONObject().toString());
+          QLog.d("QQEventModule", 2, ((StringBuilder)localObject1).toString());
           return;
         }
       }
       catch (Exception paramHippyMap)
       {
         QLog.e("QQEventModule", 1, paramHippyMap, new Object[0]);
-        return;
-      }
-      localObject1 = "";
-    }
-    Object localObject1 = paramHippyMap.getString("options");
-    ArrayList localArrayList;
-    boolean bool1;
-    int i;
-    label193:
-    Object localObject2;
-    if (!TextUtils.isEmpty((CharSequence)localObject1))
-    {
-      localObject1 = new JSONObject((String)localObject1);
-      localArrayList = new ArrayList();
-      if (localObject1 == null) {
-        break label379;
-      }
-      boolean bool2 = ((JSONObject)localObject1).optBoolean("broadcast", true);
-      localObject1 = ((JSONObject)localObject1).optJSONArray("domains");
-      bool1 = bool2;
-      if (localObject1 != null)
-      {
-        int j = ((JSONArray)localObject1).length();
-        i = 0;
-        bool1 = bool2;
-        if (i < j)
-        {
-          localObject2 = ((JSONArray)localObject1).optString(i);
-          if (TextUtils.isEmpty((CharSequence)localObject2)) {
-            break label372;
-          }
-          localArrayList.add(localObject2);
-          break label372;
-        }
-      }
-    }
-    for (;;)
-    {
-      localObject1 = new JSONObject();
-      ((JSONObject)localObject1).put("url", "");
-      localObject2 = new Intent("com.tencent.mobileqq.action.ACTION_WEBVIEW_DISPATCH_EVENT");
-      ((Intent)localObject2).putExtra("broadcast", bool1);
-      ((Intent)localObject2).putExtra("event", str1);
-      if (str2 != null) {
-        ((Intent)localObject2).putExtra("data", str2);
-      }
-      ((Intent)localObject2).putStringArrayListExtra("domains", localArrayList);
-      ((Intent)localObject2).putExtra("source", ((JSONObject)localObject1).toString());
-      BaseApplicationImpl.getContext().sendBroadcast((Intent)localObject2, "com.tencent.msg.permission.pushnotify");
-      if (QLog.isColorLevel())
-      {
-        QLog.d("QQEventModule", 2, "dispatchEvent:" + paramHippyMap.toJSONObject().toString());
-        return;
-        localObject1 = null;
-        break;
       }
       return;
-      label372:
+      label380:
+      Object localObject1 = "";
+      continue;
+      label387:
       i += 1;
-      break label193;
-      label379:
-      bool1 = true;
+      continue;
+      label394:
+      boolean bool1 = true;
     }
   }
   
   private void checkDispatchEvent(Context paramContext, Intent paramIntent)
   {
-    if (!paramIntent.getBooleanExtra("broadcast", true)) {}
-    do
-    {
-      do
-      {
-        return;
-        paramContext = paramIntent.getStringExtra("event");
-      } while (TextUtils.isEmpty(paramContext));
-      paramIntent = paramIntent.getStringExtra("data");
-      if (QLog.isColorLevel()) {
-        QLog.d("QQEventModule", 2, "checkDispatchEvent event:" + paramContext + " dataStr:" + paramIntent);
-      }
-    } while (paramIntent == null);
-    try
-    {
-      paramIntent = new JSONObject(paramIntent);
-      HippyMap localHippyMap = new HippyMap();
-      localHippyMap.pushJSONObject(paramIntent);
-      HippyQQEngine.dispatchEvent(paramContext, null, localHippyMap);
+    if (!paramIntent.getBooleanExtra("broadcast", true)) {
       return;
     }
-    catch (JSONException paramContext)
+    paramContext = paramIntent.getStringExtra("event");
+    if (TextUtils.isEmpty(paramContext)) {
+      return;
+    }
+    paramIntent = paramIntent.getStringExtra("data");
+    Object localObject;
+    if (QLog.isColorLevel())
     {
-      QLog.e("QQEventModule", 1, paramContext, new Object[0]);
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("checkDispatchEvent event:");
+      ((StringBuilder)localObject).append(paramContext);
+      ((StringBuilder)localObject).append(" dataStr:");
+      ((StringBuilder)localObject).append(paramIntent);
+      QLog.d("QQEventModule", 2, ((StringBuilder)localObject).toString());
+    }
+    if (paramIntent != null) {
+      try
+      {
+        paramIntent = new JSONObject(paramIntent);
+        localObject = new HippyMap();
+        ((HippyMap)localObject).pushJSONObject(paramIntent);
+        HippyQQEngine.dispatchEvent(paramContext, null, (HippyMap)localObject);
+        return;
+      }
+      catch (JSONException paramContext)
+      {
+        QLog.e("QQEventModule", 1, paramContext, new Object[0]);
+      }
     }
   }
   
@@ -187,10 +190,16 @@ public class QQEventModule
       broadcast2WebView(paramHippyMap);
     }
   }
+  
+  @HippyMethod(name="dispatchEventToHippy")
+  public void dispatchEventToHippy(String paramString1, String paramString2, HippyMap paramHippyMap)
+  {
+    HippyQQEngine.dispatchEvent(paramString1, paramString2, paramHippyMap);
+  }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.hippy.qq.module.QQEventModule
  * JD-Core Version:    0.7.0.1
  */

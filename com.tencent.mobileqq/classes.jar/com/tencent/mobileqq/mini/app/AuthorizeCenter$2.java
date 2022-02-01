@@ -10,14 +10,15 @@ class AuthorizeCenter$2
   
   public void onCmdListener(boolean paramBoolean, JSONObject paramJSONObject)
   {
-    if (this.val$listener != null) {
-      this.val$listener.onCmdListener(paramBoolean, paramJSONObject);
+    MiniAppCmdInterface localMiniAppCmdInterface = this.val$listener;
+    if (localMiniAppCmdInterface != null) {
+      localMiniAppCmdInterface.onCmdListener(paramBoolean, paramJSONObject);
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes15.jar
  * Qualified Name:     com.tencent.mobileqq.mini.app.AuthorizeCenter.2
  * JD-Core Version:    0.7.0.1
  */

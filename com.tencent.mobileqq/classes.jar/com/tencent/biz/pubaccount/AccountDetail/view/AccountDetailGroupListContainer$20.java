@@ -1,4 +1,4 @@
-package com.tencent.biz.pubaccount.AccountDetail.view;
+package com.tencent.biz.pubaccount.accountdetail.view;
 
 import android.os.Bundle;
 import com.tencent.biz.ProtoUtils.TroopProtocolObserver;
@@ -21,99 +21,110 @@ class AccountDetailGroupListContainer$20
 {
   AccountDetailGroupListContainer$20(AccountDetailGroupListContainer paramAccountDetailGroupListContainer) {}
   
-  public void a(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
+  public void onResult(int paramInt, byte[] paramArrayOfByte, Bundle paramBundle)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, errorCode=" + paramInt);
-    }
-    int i;
-    if ((paramInt != -1) && (paramArrayOfByte != null))
+    if (QLog.isColorLevel())
     {
+      paramBundle = new StringBuilder();
+      paramBundle.append("onResult, errorCode=");
+      paramBundle.append(paramInt);
+      QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, paramBundle.toString());
+    }
+    if ((paramInt != -1) && (paramArrayOfByte != null)) {}
+    for (;;)
+    {
+      int i;
       try
       {
         paramBundle = new oidb_0x487.RspBody();
         paramBundle.mergeFrom(paramArrayOfByte);
-        k = paramBundle.uint32_result.get();
-        if (k != 0) {
-          break label463;
-        }
-        paramArrayOfByte = new ArrayList();
-        if (!paramBundle.msg_groups.has()) {
-          break label458;
-        }
-        localObject1 = paramBundle.msg_groups.get();
-        if (localObject1 == null) {
-          break label458;
-        }
-        int j = ((List)localObject1).size();
-        i = 0;
-        paramInt = j;
-        if (i < j)
+        int k = paramBundle.uint32_result.get();
+        paramArrayOfByte = "";
+        paramInt = 0;
+        boolean bool = false;
+        if (k == 0)
         {
-          localObject2 = ((oidb_0x487.GroupList)((List)localObject1).get(i)).uint64_groupcode.get() + "";
-          ((oidb_0x487.GroupList)((List)localObject1).get(i)).bytes_group_name.get().toStringUtf8();
-          paramArrayOfByte.add(localObject2);
-          if (paramArrayOfByte.size() < 3) {
-            break label469;
+          ArrayList localArrayList = new ArrayList();
+          if (!paramBundle.msg_groups.has()) {
+            break label517;
           }
+          Object localObject1 = paramBundle.msg_groups.get();
+          if (localObject1 == null) {
+            break label517;
+          }
+          int j = ((List)localObject1).size();
+          i = 0;
           paramInt = j;
+          if (i < j)
+          {
+            localObject2 = new StringBuilder();
+            ((StringBuilder)localObject2).append(((oidb_0x487.GroupList)((List)localObject1).get(i)).uint64_groupcode.get());
+            ((StringBuilder)localObject2).append("");
+            localObject2 = ((StringBuilder)localObject2).toString();
+            ((oidb_0x487.GroupList)((List)localObject1).get(i)).bytes_group_name.get().toStringUtf8();
+            localArrayList.add(localObject2);
+            if (localArrayList.size() < 3) {
+              break label508;
+            }
+            paramInt = j;
+          }
+          this.a.jdField_a_of_type_JavaUtilArrayList.clear();
+          this.a.jdField_a_of_type_JavaUtilArrayList.addAll(localArrayList);
+          if (paramBundle.uint32_privilege_flag.has())
+          {
+            localObject1 = this.a;
+            if (paramBundle.uint32_privilege_flag.get() == 1) {
+              bool = true;
+            }
+            ((AccountDetailGroupListContainer)localObject1).d = bool;
+          }
+          localObject1 = (TroopBindPublicAccountMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
+          Object localObject2 = new Bundle();
+          ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.d);
+          ((Bundle)localObject2).putStringArrayList("mBindedTroopUins", localArrayList);
+          ((TroopBindPublicAccountMgr)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
+          this.a.d();
+        }
+        if (QLog.isColorLevel())
+        {
+          if (paramBundle.bytes_errmsg.has()) {
+            paramArrayOfByte = paramBundle.bytes_errmsg.get().toStringUtf8();
+          }
+          paramBundle = new StringBuilder();
+          paramBundle.append("onResult, ret=");
+          paramBundle.append(k);
+          paramBundle.append(",");
+          paramBundle.append(paramInt);
+          paramBundle.append(",");
+          paramBundle.append(paramArrayOfByte);
+          paramBundle.append(",");
+          paramBundle.append(this.a.d);
+          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, paramBundle.toString());
+          return;
         }
       }
       catch (Exception paramArrayOfByte)
       {
-        int k;
-        Object localObject1;
-        Object localObject2;
-        while (QLog.isColorLevel())
+        if (QLog.isColorLevel())
         {
-          QLog.e("PubAccountMoreInfoActivity.bindTroop", 2, "getBindedTroops, exception=" + paramArrayOfByte.toString());
-          return;
-          paramInt = 0;
-          continue;
-          paramInt = 0;
-        }
-      }
-      this.a.jdField_a_of_type_JavaUtilArrayList.clear();
-      this.a.jdField_a_of_type_JavaUtilArrayList.addAll(paramArrayOfByte);
-      if (paramBundle.uint32_privilege_flag.has())
-      {
-        localObject1 = this.a;
-        if (paramBundle.uint32_privilege_flag.get() != 1) {
-          break label478;
-        }
-      }
-    }
-    label458:
-    label463:
-    label469:
-    label478:
-    for (boolean bool = true;; bool = false)
-    {
-      ((AccountDetailGroupListContainer)localObject1).d = bool;
-      localObject1 = (TroopBindPublicAccountMgr)this.a.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.TROOP_BIND_PUBACCOUNT_MANAGER);
-      localObject2 = new Bundle();
-      ((Bundle)localObject2).putBoolean("mIsAbleBindTroop", this.a.d);
-      ((Bundle)localObject2).putStringArrayList("mBindedTroopUins", paramArrayOfByte);
-      ((TroopBindPublicAccountMgr)localObject1).a(this.a.jdField_a_of_type_JavaLangString, (Bundle)localObject2);
-      this.a.d();
-      if (QLog.isColorLevel())
-      {
-        if (paramBundle.bytes_errmsg.has()) {}
-        for (paramArrayOfByte = paramBundle.bytes_errmsg.get().toStringUtf8();; paramArrayOfByte = "")
-        {
-          QLog.d("PubAccountMoreInfoActivity.bindTroop", 2, "onResult, ret=" + k + "," + paramInt + "," + paramArrayOfByte + "," + this.a.d);
-          return;
+          paramBundle = new StringBuilder();
+          paramBundle.append("getBindedTroops, exception=");
+          paramBundle.append(paramArrayOfByte.toString());
+          QLog.e("PubAccountMoreInfoActivity.bindTroop", 2, paramBundle.toString());
         }
       }
       return;
+      label508:
       i += 1;
-      break;
+      continue;
+      label517:
+      paramInt = 0;
     }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
- * Qualified Name:     com.tencent.biz.pubaccount.AccountDetail.view.AccountDetailGroupListContainer.20
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes17.jar
+ * Qualified Name:     com.tencent.biz.pubaccount.accountdetail.view.AccountDetailGroupListContainer.20
  * JD-Core Version:    0.7.0.1
  */

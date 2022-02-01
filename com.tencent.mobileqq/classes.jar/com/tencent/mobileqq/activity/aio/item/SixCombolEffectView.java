@@ -15,7 +15,6 @@ import android.os.Handler.Callback;
 import android.os.Looper;
 import android.os.Message;
 import android.support.annotation.Nullable;
-import android.support.v4.app.FragmentActivity;
 import android.util.AttributeSet;
 import android.util.DisplayMetrics;
 import android.view.View;
@@ -23,11 +22,12 @@ import android.view.animation.AnimationUtils;
 import android.view.animation.DecelerateInterpolator;
 import android.view.animation.LinearInterpolator;
 import com.immersion.stickersampleapp.HapticManager;
-import com.tencent.biz.qqstory.takevideo.doodle.util.DisplayUtil;
+import com.tencent.biz.qqstory.utils.UIUtils;
 import com.tencent.mobileqq.activity.ChatFragment;
 import com.tencent.mobileqq.activity.aio.AIOUtils;
 import com.tencent.mobileqq.activity.aio.ChatAdapter1;
 import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
+import com.tencent.mobileqq.app.BaseActivity;
 import com.tencent.mobileqq.app.utils.PokeBigResHandler;
 import com.tencent.mobileqq.bubble.ChatXListView;
 import com.tencent.mobileqq.data.MessageForPoke;
@@ -41,8 +41,8 @@ public class SixCombolEffectView
   extends View
   implements Handler.Callback
 {
-  public static int a;
-  public static boolean a;
+  public static int a = 0;
+  public static boolean a = false;
   float jdField_a_of_type_Float;
   private long jdField_a_of_type_Long = 0L;
   private ValueAnimator jdField_a_of_type_AndroidAnimationValueAnimator;
@@ -80,12 +80,6 @@ public class SixCombolEffectView
   private int i;
   private int j = ScreenUtil.dip2px(60.0F);
   
-  static
-  {
-    jdField_a_of_type_Boolean = false;
-    jdField_a_of_type_Int = 0;
-  }
-  
   public SixCombolEffectView(Context paramContext)
   {
     super(paramContext);
@@ -106,18 +100,23 @@ public class SixCombolEffectView
   
   private GivingHeartItemBuilder.Holder a()
   {
-    View localView;
-    if ((this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView != null) && (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null))
+    ChatXListView localChatXListView = this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
+    Object localObject2 = null;
+    Object localObject1 = localObject2;
+    if (localChatXListView != null)
     {
-      int k = AIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.uniseq, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
-      localView = AIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, k + 1);
-      if (localView != null) {}
+      localObject1 = localObject2;
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 != null)
+      {
+        int k = AIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.uniseq, this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1);
+        localObject1 = AIOUtils.a(this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView, k + 1);
+        if (localObject1 == null) {
+          return null;
+        }
+        localObject1 = (GivingHeartItemBuilder.Holder)AIOUtils.a((View)localObject1);
+      }
     }
-    else
-    {
-      return null;
-    }
-    return (GivingHeartItemBuilder.Holder)AIOUtils.a(localView);
+    return localObject1;
   }
   
   @TargetApi(11)
@@ -133,19 +132,27 @@ public class SixCombolEffectView
     localOneHeartTracker.jdField_b_of_type_Boolean = false;
     localOneHeartTracker.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator = new SixCombolEffectView.BezierEvaluator(this);
     localOneHeartTracker.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.2F, this.jdField_e_of_type_Float - 0.15F });
-    localOneHeartTracker.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration((int)(paramInt5 * 1.2D));
+    ValueAnimator localValueAnimator = localOneHeartTracker.jdField_a_of_type_AndroidAnimationValueAnimator;
+    double d1 = paramInt5;
+    Double.isNaN(d1);
+    localValueAnimator.setDuration((int)(d1 * 1.2D));
     localOneHeartTracker.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new SixCombolEffectView.9(this, localOneHeartTracker));
     localOneHeartTracker.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.10(this, localOneHeartTracker));
-    localOneHeartTracker.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { this.jdField_e_of_type_Float - 0.15F, this.jdField_e_of_type_Float });
+    float f1 = this.jdField_e_of_type_Float;
+    localOneHeartTracker.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { f1 - 0.15F, f1 });
     localOneHeartTracker.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(paramInt6);
     localOneHeartTracker.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.11(this, localOneHeartTracker));
     localOneHeartTracker.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 2.5F });
-    localOneHeartTracker.jdField_c_of_type_AndroidAnimationValueAnimator.setDuration(((paramInt6 - paramInt5) * 2.1D));
+    localValueAnimator = localOneHeartTracker.jdField_c_of_type_AndroidAnimationValueAnimator;
+    paramInt1 = paramInt6 - paramInt5;
+    d1 = paramInt1;
+    Double.isNaN(d1);
+    localValueAnimator.setDuration((d1 * 2.1D));
     localOneHeartTracker.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
     localOneHeartTracker.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new SixCombolEffectView.12(this));
     localOneHeartTracker.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.13(this, localOneHeartTracker));
     localOneHeartTracker.jdField_d_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, 2.2F });
-    localOneHeartTracker.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(paramInt6 - paramInt5);
+    localOneHeartTracker.jdField_d_of_type_AndroidAnimationValueAnimator.setDuration(paramInt1);
     localOneHeartTracker.jdField_d_of_type_AndroidAnimationValueAnimator.setInterpolator(new LinearInterpolator());
     localOneHeartTracker.jdField_d_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.14(this, localOneHeartTracker));
     return localOneHeartTracker;
@@ -180,67 +187,72 @@ public class SixCombolEffectView
     paramOneHeartTracker.jdField_c_of_type_Int = paramInt1;
     paramOneHeartTracker.jdField_e_of_type_Int = paramInt2;
     paramOneHeartTracker.jdField_b_of_type_Boolean = false;
-    paramOneHeartTracker.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(new PointF[] { new PointF(paramInt1, paramOneHeartTracker.jdField_d_of_type_Int), new PointF(paramInt2, paramOneHeartTracker.jdField_d_of_type_Int - paramInt3), new PointF(paramInt2, paramOneHeartTracker.jdField_f_of_type_Int) });
+    SixCombolEffectView.BezierEvaluator localBezierEvaluator = paramOneHeartTracker.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator;
+    PointF localPointF = new PointF(paramInt1, paramOneHeartTracker.jdField_d_of_type_Int);
+    float f1 = paramInt2;
+    localBezierEvaluator.a(new PointF[] { localPointF, new PointF(f1, paramOneHeartTracker.jdField_d_of_type_Int - paramInt3), new PointF(f1, paramOneHeartTracker.jdField_f_of_type_Int) });
   }
   
   private void b(Context paramContext)
   {
     this.jdField_a_of_type_AndroidContentContext = paramContext;
-    if ((this.jdField_a_of_type_AndroidContentContext instanceof FragmentActivity))
+    paramContext = this.jdField_a_of_type_AndroidContentContext;
+    if ((paramContext instanceof BaseActivity))
     {
-      paramContext = ((FragmentActivity)this.jdField_a_of_type_AndroidContentContext).getChatFragment().a();
+      paramContext = ((BaseActivity)paramContext).getChatFragment().a();
       this.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView = paramContext.jdField_a_of_type_ComTencentMobileqqBubbleChatXListView;
       this.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1 = paramContext.jdField_a_of_type_ComTencentMobileqqActivityAioChatAdapter1;
     }
     setOnTouchListener(new SixCombolEffectView.1(this));
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inSampleSize = 1;
-    this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options.inMutable = true;
-    if (PokeBigResHandler.jdField_a_of_type_Boolean) {}
-    try
-    {
-      this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(PokeBigResHandler.b + "/666_caidan/666send_caidan_hand.png", this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
-    }
-    catch (OutOfMemoryError paramContext)
+    paramContext = this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options;
+    paramContext.inSampleSize = 1;
+    paramContext.inMutable = true;
+    if (PokeBigResHandler.jdField_a_of_type_Boolean)
     {
       try
       {
-        for (;;)
-        {
-          this.jdField_c_of_type_AndroidGraphicsBitmap = ImageUtil.a(PokeBigResHandler.b + "/666_caidan/666send_caidan_hand6.png", this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
-          this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
-          this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { -0.2F, 1.0F });
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.2(this));
-          this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new SixCombolEffectView.3(this));
-          this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F, 0.0F }).setDuration(300L);
-          this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
-          this.jdField_c_of_type_AndroidAnimationValueAnimator.setRepeatCount(7);
-          this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.4(this));
-          this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new SixCombolEffectView.5(this));
-          this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, -0.2F });
-          this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(300L);
-          this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.6(this));
-          this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new SixCombolEffectView.7(this));
-          a(getContext());
-          return;
-          paramContext = paramContext;
-          if (QLog.isColorLevel()) {
-            QLog.d("Six Hand", 2, paramContext.toString());
-          }
-          this.jdField_a_of_type_AndroidGraphicsBitmap = null;
-        }
+        paramContext = new StringBuilder();
+        paramContext.append(PokeBigResHandler.b);
+        paramContext.append("/666_caidan/666send_caidan_hand.png");
+        this.jdField_a_of_type_AndroidGraphicsBitmap = ImageUtil.a(paramContext.toString(), this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
       }
       catch (OutOfMemoryError paramContext)
       {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("Six Six", 2, paramContext.toString());
-          }
-          this.jdField_c_of_type_AndroidGraphicsBitmap = null;
+        if (QLog.isColorLevel()) {
+          QLog.d("Six Hand", 2, paramContext.toString());
         }
+        this.jdField_a_of_type_AndroidGraphicsBitmap = null;
       }
+      try
+      {
+        paramContext = new StringBuilder();
+        paramContext.append(PokeBigResHandler.b);
+        paramContext.append("/666_caidan/666send_caidan_hand6.png");
+        this.jdField_c_of_type_AndroidGraphicsBitmap = ImageUtil.a(paramContext.toString(), this.jdField_a_of_type_AndroidGraphicsBitmapFactory$Options);
+      }
+      catch (OutOfMemoryError paramContext)
+      {
+        if (QLog.isColorLevel()) {
+          QLog.d("Six Six", 2, paramContext.toString());
+        }
+        this.jdField_c_of_type_AndroidGraphicsBitmap = null;
+      }
+      this.jdField_b_of_type_AndroidGraphicsBitmap = a(this.jdField_a_of_type_AndroidGraphicsBitmap);
     }
+    this.jdField_a_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { -0.2F, 1.0F });
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.setDuration(300L);
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.2(this));
+    this.jdField_a_of_type_AndroidAnimationValueAnimator.addListener(new SixCombolEffectView.3(this));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 0.0F, 1.0F, 0.0F }).setDuration(300L);
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.setInterpolator(new DecelerateInterpolator());
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.setRepeatCount(7);
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.4(this));
+    this.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new SixCombolEffectView.5(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator = ValueAnimator.ofFloat(new float[] { 1.0F, -0.2F });
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.setDuration(300L);
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addUpdateListener(new SixCombolEffectView.6(this));
+    this.jdField_b_of_type_AndroidAnimationValueAnimator.addListener(new SixCombolEffectView.7(this));
+    a(getContext());
   }
   
   private void d()
@@ -285,7 +297,6 @@ public class SixCombolEffectView
       catch (OutOfMemoryError paramBitmap)
       {
         paramBitmap.printStackTrace();
-        return null;
       }
     }
     return null;
@@ -337,54 +348,59 @@ public class SixCombolEffectView
   {
     this.jdField_a_of_type_AndroidOsHandler = new Handler(Looper.getMainLooper(), this);
     this.jdField_a_of_type_AndroidGraphicsMatrix = new Matrix();
-    int k = DisplayUtil.a(paramContext);
-    int m = getResources().getDisplayMetrics().heightPixels;
-    this.jdField_f_of_type_Int = k;
-    this.g = m;
+    int m = UIUtils.a(paramContext);
+    int k = getResources().getDisplayMetrics().heightPixels;
+    this.jdField_f_of_type_Int = m;
+    this.g = k;
     this.jdField_e_of_type_Float = (this.jdField_f_of_type_Float / this.jdField_c_of_type_AndroidGraphicsBitmap.getWidth());
     this.jdField_a_of_type_JavaUtilArrayList = new ArrayList();
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 800, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 700, 2000));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 1600, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 600, 1400));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 1800, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 600, 1800));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 0, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 500, 1500));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 600, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 500, 1400));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 1200, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 500, 1500));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 2000, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 500, 1800));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 300, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 500, 1500));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 1000, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 500, 1500));
-    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 1400, m - ScreenUtil.dip2px(70.0F), (int)(m * 0.6F), 500, 1900));
+    paramContext = this.jdField_a_of_type_JavaUtilArrayList;
+    m = ScreenUtil.dip2px(70.0F);
+    int n = (int)(k * 0.6F);
+    paramContext.add(a(0, 800, k - m, n, 700, 2000));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 1600, k - ScreenUtil.dip2px(70.0F), n, 600, 1400));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(0, 1800, k - ScreenUtil.dip2px(70.0F), n, 600, 1800));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 0, k - ScreenUtil.dip2px(70.0F), n, 500, 1500));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 600, k - ScreenUtil.dip2px(70.0F), n, 500, 1400));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 1200, k - ScreenUtil.dip2px(70.0F), n, 500, 1500));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(1, 2000, k - ScreenUtil.dip2px(70.0F), n, 500, 1800));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 300, k - ScreenUtil.dip2px(70.0F), n, 500, 1500));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 1000, k - ScreenUtil.dip2px(70.0F), n, 500, 1500));
+    this.jdField_a_of_type_JavaUtilArrayList.add(a(2, 1400, k - ScreenUtil.dip2px(70.0F), n, 500, 1900));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker = ((SixCombolEffectView.OneHeartTracker)this.jdField_a_of_type_JavaUtilArrayList.get(6));
     this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_c_of_type_AndroidAnimationValueAnimator.addListener(new SixCombolEffectView.8(this));
   }
   
   public void a(GivingHeartItemBuilder.Holder paramHolder, boolean paramBoolean)
   {
-    if (jdField_a_of_type_Boolean) {}
-    do
-    {
+    if (jdField_a_of_type_Boolean) {
       return;
-      this.jdField_d_of_type_Boolean = paramBoolean;
-      d();
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke = ((MessageForPoke)paramHolder.a);
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.mFrameState.jdField_a_of_type_Boolean = true;
-      this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend();
-      jdField_a_of_type_Boolean = true;
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
-    } while (!this.jdField_d_of_type_Boolean);
-    this.h = HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
+    }
+    this.jdField_d_of_type_Boolean = paramBoolean;
+    d();
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke = ((MessageForPoke)paramHolder.a);
+    this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.mFrameState.jdField_a_of_type_Boolean = true;
+    this.jdField_b_of_type_Boolean = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.isSend();
+    jdField_a_of_type_Boolean = true;
+    this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(3);
+    if (this.jdField_d_of_type_Boolean) {
+      this.h = HapticManager.a().a(this.jdField_a_of_type_JavaLangString, 2);
+    }
   }
   
   public void b()
   {
     setVisibility(8);
-    GivingHeartItemBuilder.Holder localHolder = a();
-    if ((this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$ISixAnimationListener != null) && (localHolder != null))
+    Object localObject = a();
+    SixCombolEffectView.ISixAnimationListener localISixAnimationListener = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$ISixAnimationListener;
+    if ((localISixAnimationListener != null) && (localObject != null))
     {
-      this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$ISixAnimationListener.a(localHolder);
+      localISixAnimationListener.a((GivingHeartItemBuilder.Holder)localObject);
       this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$ISixAnimationListener = null;
     }
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke != null) {
-      this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke.mFrameState.jdField_a_of_type_Boolean = false;
+    localObject = this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke;
+    if (localObject != null) {
+      ((MessageForPoke)localObject).mFrameState.jdField_a_of_type_Boolean = false;
     }
     jdField_a_of_type_Boolean = false;
     jdField_a_of_type_Int = 0;
@@ -401,28 +417,24 @@ public class SixCombolEffectView
   
   public boolean handleMessage(Message paramMessage)
   {
-    switch (paramMessage.what)
+    int k = paramMessage.what;
+    if (k != 1)
     {
-    }
-    do
-    {
-      return false;
-      setVisibility(0);
-      requestLayout();
-      jdField_a_of_type_Int = 0;
-      this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
-      return false;
-      this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
-      paramMessage = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-      while (paramMessage.hasNext()) {
-        ((SixCombolEffectView.OneHeartTracker)paramMessage.next()).jdField_a_of_type_Boolean = false;
+      if (k != 2)
+      {
+        if (k != 3) {
+          return false;
+        }
+        setVisibility(0);
+        requestLayout();
+        jdField_a_of_type_Int = 0;
+        this.jdField_a_of_type_AndroidAnimationValueAnimator.start();
+        return false;
       }
-      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
-      return false;
       this.jdField_a_of_type_AndroidOsHandler.removeMessages(2);
       long l1 = AnimationUtils.currentAnimationTimeMillis();
       long l2 = this.jdField_a_of_type_Long;
-      int k = 0;
+      k = 0;
       while (k < this.jdField_a_of_type_JavaUtilArrayList.size())
       {
         paramMessage = (SixCombolEffectView.OneHeartTracker)this.jdField_a_of_type_JavaUtilArrayList.get(k);
@@ -434,100 +446,140 @@ public class SixCombolEffectView
         }
         k += 1;
       }
-    } while (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_a_of_type_Boolean);
-    paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
-    paramMessage.what = 2;
-    this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 25L);
+      if (!this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_a_of_type_Boolean)
+      {
+        paramMessage = this.jdField_a_of_type_AndroidOsHandler.obtainMessage();
+        paramMessage.what = 2;
+        this.jdField_a_of_type_AndroidOsHandler.sendMessageDelayed(paramMessage, 25L);
+        return false;
+      }
+    }
+    else
+    {
+      this.jdField_a_of_type_Long = AnimationUtils.currentAnimationTimeMillis();
+      paramMessage = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      while (paramMessage.hasNext()) {
+        ((SixCombolEffectView.OneHeartTracker)paramMessage.next()).jdField_a_of_type_Boolean = false;
+      }
+      this.jdField_a_of_type_AndroidOsHandler.sendEmptyMessage(2);
+    }
     return false;
   }
   
-  public void onDraw(Canvas paramCanvas)
+  protected void onDraw(Canvas paramCanvas)
   {
     super.onDraw(paramCanvas);
-    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke == null) {}
-    Object localObject2;
-    do
-    {
+    if (this.jdField_a_of_type_ComTencentMobileqqDataMessageForPoke == null) {
       return;
-      localObject1 = a();
-      if (localObject1 == null)
-      {
-        b();
+    }
+    Object localObject1 = a();
+    if (localObject1 == null)
+    {
+      b();
+      return;
+    }
+    Object localObject2 = new int[2];
+    ((GivingHeartItemBuilder.Holder)localObject1).c.getLocationOnScreen((int[])localObject2);
+    int k = localObject2[0];
+    this.i = ((int)(localObject2[1] + this.jdField_d_of_type_Float - this.jdField_e_of_type_Int));
+    if (this.jdField_c_of_type_AndroidGraphicsBitmap != null)
+    {
+      if (this.jdField_a_of_type_AndroidGraphicsBitmap == null) {
         return;
       }
-      localObject2 = new int[2];
-      ((GivingHeartItemBuilder.Holder)localObject1).c.getLocationOnScreen((int[])localObject2);
-      k = localObject2[0];
-      this.i = ((int)(localObject2[1] + this.jdField_d_of_type_Float - this.jdField_e_of_type_Int));
-    } while ((this.jdField_c_of_type_AndroidGraphicsBitmap == null) || (this.jdField_a_of_type_AndroidGraphicsBitmap == null));
-    Object localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
-    float f1;
-    while (((Iterator)localObject1).hasNext())
-    {
-      localObject2 = (SixCombolEffectView.OneHeartTracker)((Iterator)localObject1).next();
-      if (((SixCombolEffectView.OneHeartTracker)localObject2).jdField_a_of_type_Boolean)
+      localObject1 = this.jdField_a_of_type_JavaUtilArrayList.iterator();
+      float f1;
+      double d1;
+      double d2;
+      while (((Iterator)localObject1).hasNext())
       {
-        this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
-        PointF localPointF;
-        if (((SixCombolEffectView.OneHeartTracker)localObject2).jdField_b_of_type_Float <= 1.0F)
+        localObject2 = (SixCombolEffectView.OneHeartTracker)((Iterator)localObject1).next();
+        if (((SixCombolEffectView.OneHeartTracker)localObject2).jdField_a_of_type_Boolean)
         {
-          localPointF = ((SixCombolEffectView.OneHeartTracker)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(((SixCombolEffectView.OneHeartTracker)localObject2).jdField_b_of_type_Float, null, null);
-          this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localPointF.x, localPointF.y - (this.g - this.i) + this.jdField_d_of_type_Int);
-        }
-        for (;;)
-        {
+          this.jdField_a_of_type_AndroidGraphicsMatrix.reset();
+          PointF localPointF;
+          if (((SixCombolEffectView.OneHeartTracker)localObject2).jdField_b_of_type_Float <= 1.0F)
+          {
+            localPointF = ((SixCombolEffectView.OneHeartTracker)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(((SixCombolEffectView.OneHeartTracker)localObject2).jdField_b_of_type_Float, null, null);
+            this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localPointF.x, localPointF.y - (this.g - this.i) + this.jdField_d_of_type_Int);
+          }
+          else
+          {
+            f1 = ((SixCombolEffectView.OneHeartTracker)localObject2).jdField_b_of_type_Float;
+            d1 = this.g;
+            Double.isNaN(d1);
+            d2 = 1.0F - (f1 - 1.0F);
+            Double.isNaN(d2);
+            k = (int)(d1 * 0.6D * d2);
+            localPointF = ((SixCombolEffectView.OneHeartTracker)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(((SixCombolEffectView.OneHeartTracker)localObject2).jdField_b_of_type_Float, null, null);
+            this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localPointF.x, k - (this.g - this.i) + this.jdField_d_of_type_Int);
+          }
           this.jdField_a_of_type_AndroidGraphicsMatrix.preScale(((SixCombolEffectView.OneHeartTracker)localObject2).jdField_a_of_type_Float, ((SixCombolEffectView.OneHeartTracker)localObject2).jdField_a_of_type_Float);
           paramCanvas.drawBitmap(this.jdField_c_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_AndroidGraphicsMatrix, null);
-          break;
-          f1 = ((SixCombolEffectView.OneHeartTracker)localObject2).jdField_b_of_type_Float;
-          k = (int)(this.g * 0.6D * (1.0F - (f1 - 1.0F)));
-          localPointF = ((SixCombolEffectView.OneHeartTracker)localObject2).jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(((SixCombolEffectView.OneHeartTracker)localObject2).jdField_b_of_type_Float, null, null);
-          this.jdField_a_of_type_AndroidGraphicsMatrix.postTranslate(localPointF.x, k - (this.g - this.i) + this.jdField_d_of_type_Int);
         }
       }
-    }
-    if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_a_of_type_Boolean) {
-      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_b_of_type_Float > 1.0F) {
-        break label489;
-      }
-    }
-    label489:
-    double d1;
-    for (int k = (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_b_of_type_Float, null, null).y - (this.g - this.i) + this.jdField_d_of_type_Int);; k = (int)((1.0F - (f1 - 1.0F)) * (d1 * 0.6D)) - (this.g - this.i) + this.jdField_d_of_type_Int)
-    {
-      if (k + this.jdField_c_of_type_AndroidGraphicsBitmap.getHeight() * this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_a_of_type_Float < 0.0F) {
-        b();
-      }
-      switch (jdField_a_of_type_Int)
+      if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_a_of_type_Boolean)
       {
-      default: 
-        return;
-      case 1: 
-        if (!this.jdField_b_of_type_Boolean) {
-          break label538;
+        if (this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_b_of_type_Float <= 1.0F)
+        {
+          k = (int)(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$BezierEvaluator.a(this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_b_of_type_Float, null, null).y - (this.g - this.i) + this.jdField_d_of_type_Int);
         }
+        else
+        {
+          f1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_b_of_type_Float;
+          k = this.g;
+          d1 = k;
+          Double.isNaN(d1);
+          d2 = 1.0F - (f1 - 1.0F);
+          Double.isNaN(d2);
+          k = (int)(d1 * 0.6D * d2) - (k - this.i) + this.jdField_d_of_type_Int;
+        }
+        if (k + this.jdField_c_of_type_AndroidGraphicsBitmap.getHeight() * this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_a_of_type_Float < 0.0F) {
+          b();
+        }
+      }
+      k = jdField_a_of_type_Int;
+      if (k != 1)
+      {
+        if (k != 2)
+        {
+          if (k != 3) {
+            return;
+          }
+          if (this.jdField_b_of_type_Boolean)
+          {
+            localObject1 = this.jdField_a_of_type_AndroidGraphicsBitmap;
+            f1 = this.jdField_a_of_type_Float;
+            f2 = getWidth();
+            f3 = this.jdField_c_of_type_Float / 2.0F;
+            float f4 = this.j;
+            k = this.jdField_d_of_type_Int;
+            a(paramCanvas, null, (Bitmap)localObject1, 90.0F - f1 * 90.0F, f2 - f3 - f4 - k, this.i - this.jdField_d_of_type_Float / 2.0F + k);
+            return;
+          }
+          localObject1 = this.jdField_b_of_type_AndroidGraphicsBitmap;
+          f1 = this.jdField_a_of_type_Float;
+          float f2 = this.jdField_c_of_type_Float / 2.0F;
+          float f3 = this.j;
+          k = this.jdField_d_of_type_Int;
+          a(paramCanvas, null, (Bitmap)localObject1, f1 * 90.0F - 90.0F, f2 + f3 + k, this.i - this.jdField_d_of_type_Float / 2.0F + k);
+          return;
+        }
+        if (this.jdField_b_of_type_Boolean)
+        {
+          a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - this.jdField_c_of_type_Float + (this.jdField_b_of_type_Float - 0.5F) * 100.0F - this.j, this.i - this.jdField_d_of_type_Float);
+          return;
+        }
+        a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -(this.jdField_b_of_type_Float - 0.5F) * 100.0F + this.j, this.i - this.jdField_d_of_type_Float);
+        return;
+      }
+      if (this.jdField_b_of_type_Boolean)
+      {
         a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, 90.0F - this.jdField_a_of_type_Float * 90.0F, getWidth() - this.jdField_c_of_type_Float / 2.0F - this.j, this.i - this.jdField_d_of_type_Float / 2.0F);
         return;
-        f1 = this.jdField_a_of_type_ComTencentMobileqqActivityAioItemSixCombolEffectView$OneHeartTracker.jdField_b_of_type_Float;
-        d1 = this.g;
       }
+      a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, this.jdField_a_of_type_Float * 90.0F - 90.0F, this.jdField_c_of_type_Float / 2.0F + this.j, this.i - this.jdField_d_of_type_Float / 2.0F);
     }
-    label538:
-    a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -90.0F + this.jdField_a_of_type_Float * 90.0F, this.jdField_c_of_type_Float / 2.0F + this.j, this.i - this.jdField_d_of_type_Float / 2.0F);
-    return;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, getWidth() - this.jdField_c_of_type_Float + (this.jdField_b_of_type_Float - 0.5F) * 100.0F - this.j, this.i - this.jdField_d_of_type_Float);
-      return;
-    }
-    a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -(this.jdField_b_of_type_Float - 0.5F) * 100.0F + this.j, this.i - this.jdField_d_of_type_Float);
-    return;
-    if (this.jdField_b_of_type_Boolean)
-    {
-      a(paramCanvas, null, this.jdField_a_of_type_AndroidGraphicsBitmap, 90.0F - this.jdField_a_of_type_Float * 90.0F, getWidth() - this.jdField_c_of_type_Float / 2.0F - this.j - this.jdField_d_of_type_Int, this.i - this.jdField_d_of_type_Float / 2.0F + this.jdField_d_of_type_Int);
-      return;
-    }
-    a(paramCanvas, null, this.jdField_b_of_type_AndroidGraphicsBitmap, -90.0F + this.jdField_a_of_type_Float * 90.0F, this.jdField_c_of_type_Float / 2.0F + this.j + this.jdField_d_of_type_Int, this.i - this.jdField_d_of_type_Float / 2.0F + this.jdField_d_of_type_Int);
   }
   
   public void setListener(SixCombolEffectView.ISixAnimationListener paramISixAnimationListener)
@@ -537,7 +589,7 @@ public class SixCombolEffectView
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
  * Qualified Name:     com.tencent.mobileqq.activity.aio.item.SixCombolEffectView
  * JD-Core Version:    0.7.0.1
  */

@@ -10,7 +10,11 @@ public abstract class LsRecordConfig
 {
   public static void a(QQAppInterface paramQQAppInterface)
   {
-    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putBoolean("UserGuide", true).commit();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LsRecord_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit().putBoolean("UserGuide", true).commit();
     if (QLog.isDevelopLevel()) {
       QLog.d("LsRecord", 4, "markUserGuideFlag");
     }
@@ -18,26 +22,40 @@ public abstract class LsRecordConfig
   
   public static boolean a(QQAppInterface paramQQAppInterface)
   {
-    boolean bool = false;
-    if (!BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getBoolean("UserGuide", false)) {
-      bool = true;
-    }
-    return bool;
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LsRecord_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    return localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).getBoolean("UserGuide", false) ^ true;
   }
   
   public static void b(QQAppInterface paramQQAppInterface)
   {
     long l = System.currentTimeMillis();
-    BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).edit().putLong("UserTips", l);
-    if (QLog.isDevelopLevel()) {
-      QLog.d("LsRecord", 4, "markUserTipsFlag:" + l);
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LsRecord_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    localBaseApplicationImpl.getSharedPreferences(localStringBuilder.toString(), 0).edit().putLong("UserTips", l);
+    if (QLog.isDevelopLevel())
+    {
+      paramQQAppInterface = new StringBuilder();
+      paramQQAppInterface.append("markUserTipsFlag:");
+      paramQQAppInterface.append(l);
+      QLog.d("LsRecord", 4, paramQQAppInterface.toString());
     }
   }
   
   public static boolean b(QQAppInterface paramQQAppInterface)
   {
+    long l = System.currentTimeMillis();
+    BaseApplicationImpl localBaseApplicationImpl = BaseApplicationImpl.sApplication;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("LsRecord_");
+    localStringBuilder.append(paramQQAppInterface.getCurrentAccountUin());
+    paramQQAppInterface = localStringBuilder.toString();
     boolean bool = false;
-    if (Math.abs(System.currentTimeMillis() - BaseApplicationImpl.sApplication.getSharedPreferences("LsRecord_" + paramQQAppInterface.getCurrentAccountUin(), 0).getLong("UserTips", 0L)) >= 3600000L) {
+    if (Math.abs(l - localBaseApplicationImpl.getSharedPreferences(paramQQAppInterface, 0).getLong("UserTips", 0L)) >= 3600000L) {
       bool = true;
     }
     return bool;
@@ -45,7 +63,7 @@ public abstract class LsRecordConfig
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.ptt.LsRecordConfig
  * JD-Core Version:    0.7.0.1
  */

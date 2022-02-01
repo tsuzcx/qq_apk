@@ -24,36 +24,47 @@ public class LebaTableMgrAdpter$PluginViewHolder
   public LebaTableMgrAdpter$PluginViewHolder(View paramView, Context paramContext, GridLayoutManager paramGridLayoutManager, boolean paramBoolean)
   {
     super(paramView);
-    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131380475));
-    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131369690));
+    this.jdField_a_of_type_AndroidWidgetTextView = ((TextView)paramView.findViewById(2131379778));
+    this.jdField_a_of_type_ComTencentWidgetThemeImageView = ((ThemeImageView)paramView.findViewById(2131369387));
     this.jdField_a_of_type_ComTencentWidgetThemeImageView.setMaskShape(ThemeImageWrapper.MODE_OTHER);
-    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369555));
-    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131377194));
+    this.jdField_a_of_type_AndroidWidgetImageView = ((ImageView)paramView.findViewById(2131369269));
+    this.jdField_a_of_type_AndroidWidgetRelativeLayout = ((RelativeLayout)paramView.findViewById(2131376656));
     if (paramBoolean)
     {
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(paramContext.getResources().getColor(2131165773));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131165775));
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(paramContext.getResources().getColor(2131165764));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131165766));
       paramBoolean = true;
     }
-    while ((paramGridLayoutManager != null) && (paramGridLayoutManager.getWidth() > 0))
+    else
+    {
+      paramBoolean = false;
+      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(paramContext.getResources().getColor(2131165763));
+      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131165765));
+    }
+    if ((paramGridLayoutManager != null) && (paramGridLayoutManager.getWidth() > 0))
     {
       paramView = this.jdField_a_of_type_AndroidWidgetRelativeLayout.getLayoutParams();
       paramView.height = (paramGridLayoutManager.getWidth() / 3);
       this.jdField_a_of_type_AndroidWidgetRelativeLayout.setLayoutParams(paramView);
-      if (QLog.isColorLevel()) {
-        QLog.i("LebaTableMgrAdpter", 2, "plugin height =" + paramView.height + ",isNight" + paramBoolean);
+      if (QLog.isColorLevel())
+      {
+        paramContext = new StringBuilder();
+        paramContext.append("plugin height =");
+        paramContext.append(paramView.height);
+        paramContext.append(",isNight");
+        paramContext.append(paramBoolean);
+        QLog.i("LebaTableMgrAdpter", 2, paramContext.toString());
       }
-      return;
-      paramBoolean = false;
-      this.jdField_a_of_type_AndroidWidgetRelativeLayout.setBackgroundColor(paramContext.getResources().getColor(2131165772));
-      this.jdField_a_of_type_AndroidWidgetTextView.setTextColor(paramContext.getResources().getColor(2131165774));
     }
-    QLog.i("LebaTableMgrAdpter", 1, "plugin getWidth error ");
+    else
+    {
+      QLog.i("LebaTableMgrAdpter", 1, "plugin getWidth error ");
+    }
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes9.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes7.jar
  * Qualified Name:     com.tencent.mobileqq.leba.mgr.table.LebaTableMgrAdpter.PluginViewHolder
  * JD-Core Version:    0.7.0.1
  */

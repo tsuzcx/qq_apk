@@ -27,12 +27,12 @@ abstract class MiniGameBeaconReport$ExclusiveVisitor
   public void beginTask(@NotNull TaskExecutionStatics paramTaskExecutionStatics)
   {
     Intrinsics.checkParameterIsNotNull(paramTaskExecutionStatics, "statics");
-    if ((this.skipLevel != 0) || (this.excludedTaskNames.contains(paramTaskExecutionStatics.getName())))
+    if ((this.skipLevel == 0) && (!this.excludedTaskNames.contains(paramTaskExecutionStatics.getName())))
     {
-      this.skipLevel += 1;
+      this.stack.add(paramTaskExecutionStatics);
       return;
     }
-    this.stack.add(paramTaskExecutionStatics);
+    this.skipLevel += 1;
   }
   
   public void endDependencies() {}
@@ -57,7 +57,7 @@ abstract class MiniGameBeaconReport$ExclusiveVisitor
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.minigame.report.MiniGameBeaconReport.ExclusiveVisitor
  * JD-Core Version:    0.7.0.1
  */

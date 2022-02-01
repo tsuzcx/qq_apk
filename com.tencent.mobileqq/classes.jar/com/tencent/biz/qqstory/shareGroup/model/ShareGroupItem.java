@@ -35,7 +35,7 @@ public class ShareGroupItem
   public int isDisband = -1;
   public int isSubscribed = -1;
   public int memberCount = -1;
-  public String name = HardCodeUtil.a(2131713865);
+  public String name = HardCodeUtil.a(2131713793);
   public int ownerType = 1;
   public String ownerUnionId = null;
   public String shareGroupId;
@@ -66,7 +66,7 @@ public class ShareGroupItem
   
   public void assertItem()
   {
-    AssertUtils.a(this.shareGroupId);
+    AssertUtils.checkNotEmpty(this.shareGroupId);
     if (this.type == 2) {
       SLog.d("Q.qqstory.shareGroup", "share group Item owner union id is null %s", new Object[] { this });
     }
@@ -101,27 +101,23 @@ public class ShareGroupItem
   public void convertFrom(qqstory_struct.ShareGroupInfo paramShareGroupInfo)
   {
     convertFrom(paramShareGroupInfo.basic_info);
-    qqstory_struct.ShareGroupExtInfo localShareGroupExtInfo;
     if (paramShareGroupInfo.ext_info.has())
     {
-      localShareGroupExtInfo = (qqstory_struct.ShareGroupExtInfo)paramShareGroupInfo.ext_info.get();
+      qqstory_struct.ShareGroupExtInfo localShareGroupExtInfo = (qqstory_struct.ShareGroupExtInfo)paramShareGroupInfo.ext_info.get();
       if (localShareGroupExtInfo.total_members.has()) {
         this.memberCount = localShareGroupExtInfo.total_members.get();
       }
       if (localShareGroupExtInfo.total_videos.has()) {
         this.videoCount = localShareGroupExtInfo.total_videos.get();
       }
-      if (!localShareGroupExtInfo.has_join.has()) {
-        break label120;
+      if (localShareGroupExtInfo.has_join.has()) {
+        this.isSubscribed = localShareGroupExtInfo.has_join.get();
+      } else {
+        this.isSubscribed = 0;
       }
     }
-    label120:
-    for (this.isSubscribed = localShareGroupExtInfo.has_join.get();; this.isSubscribed = 0)
-    {
-      if (paramShareGroupInfo.ext_info.owner_type.has()) {
-        this.ownerType = paramShareGroupInfo.ext_info.owner_type.get();
-      }
-      return;
+    if (paramShareGroupInfo.ext_info.owner_type.has()) {
+      this.ownerType = paramShareGroupInfo.ext_info.owner_type.get();
     }
   }
   
@@ -154,38 +150,49 @@ public class ShareGroupItem
     this.shareGroupId = paramObject.shareGroupId;
     this.name = paramObject.name;
     this.type = paramObject.type;
-    if (paramObject.groupUin != -1L) {
-      this.groupUin = paramObject.groupUin;
+    long l = paramObject.groupUin;
+    if (l != -1L) {
+      this.groupUin = l;
     }
-    if (paramObject.allowStrangerVisitAndPost != -1) {
-      this.allowStrangerVisitAndPost = paramObject.allowStrangerVisitAndPost;
+    int i = paramObject.allowStrangerVisitAndPost;
+    if (i != -1) {
+      this.allowStrangerVisitAndPost = i;
     }
-    if (paramObject.memberCount != -1) {
-      this.memberCount = paramObject.memberCount;
+    i = paramObject.memberCount;
+    if (i != -1) {
+      this.memberCount = i;
     }
-    if (paramObject.followCount != -1) {
-      this.followCount = paramObject.followCount;
+    i = paramObject.followCount;
+    if (i != -1) {
+      this.followCount = i;
     }
-    if (paramObject.videoCount != -1) {
-      this.videoCount = paramObject.videoCount;
+    i = paramObject.videoCount;
+    if (i != -1) {
+      this.videoCount = i;
     }
-    if (paramObject.ownerType != -1) {
-      this.ownerType = paramObject.ownerType;
+    i = paramObject.ownerType;
+    if (i != -1) {
+      this.ownerType = i;
     }
-    if (paramObject.headerUnionIdList != null) {
-      this.headerUnionIdList = paramObject.headerUnionIdList;
+    Object localObject = paramObject.headerUnionIdList;
+    if (localObject != null) {
+      this.headerUnionIdList = ((List)localObject);
     }
-    if (paramObject.ownerUnionId != null) {
-      this.ownerUnionId = paramObject.ownerUnionId;
+    localObject = paramObject.ownerUnionId;
+    if (localObject != null) {
+      this.ownerUnionId = ((String)localObject);
     }
-    if (paramObject.isSubscribed != -1) {
-      this.isSubscribed = paramObject.isSubscribed;
+    i = paramObject.isSubscribed;
+    if (i != -1) {
+      this.isSubscribed = i;
     }
-    if (paramObject.isDisband != -1) {
-      this.isDisband = paramObject.isDisband;
+    i = paramObject.isDisband;
+    if (i != -1) {
+      this.isDisband = i;
     }
-    if (paramObject.backgroundUrl != null) {
-      this.backgroundUrl = paramObject.backgroundUrl;
+    paramObject = paramObject.backgroundUrl;
+    if (paramObject != null) {
+      this.backgroundUrl = paramObject;
     }
     assertItem();
   }
@@ -197,30 +204,33 @@ public class ShareGroupItem
   
   public int getRelationType()
   {
-    if (this.type == 1) {
+    int i = this.type;
+    if (i == 1) {
       return 2;
     }
-    if (this.type == 2) {
-      return 1;
-    }
+    if (i == 2) {}
     return 1;
   }
   
   public int getReportGroupProp()
   {
+    int j = this.type;
     int i = 1;
-    if (this.type == 1) {
-      i = 3;
+    if (j == 1) {
+      return 3;
     }
-    while (!isPublic()) {
-      return i;
+    if (isPublic()) {
+      i = 2;
     }
-    return 2;
+    return i;
   }
   
   public String getReportUserType()
   {
-    return getReportUserTypeInt() + "";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(getReportUserTypeInt());
+    localStringBuilder.append("");
+    return localStringBuilder.toString();
   }
   
   public int getReportUserTypeInt()
@@ -246,11 +256,15 @@ public class ShareGroupItem
   
   public boolean isInvalid()
   {
-    if (this.type == 1) {}
-    while ((this.isDisband != 1) && (this.videoCount != 0) && (this.memberCount != 0)) {
+    int i = this.type;
+    boolean bool = false;
+    if (i == 1) {
       return false;
     }
-    return true;
+    if ((this.isDisband == 1) || (this.videoCount == 0) || (this.memberCount == 0)) {
+      bool = true;
+    }
+    return bool;
   }
   
   public boolean isMe()
@@ -290,12 +304,46 @@ public class ShareGroupItem
   
   public String toString()
   {
-    return "ShareGroupItem{shareGroupId='" + this.shareGroupId + '\'' + ", name='" + this.name + '\'' + ", allowStrangerVisitAndPost=" + this.allowStrangerVisitAndPost + ", memberCount=" + this.memberCount + ", followCount=" + this.followCount + ", videoCount=" + this.videoCount + ", ownerType=" + this.ownerType + ", headerUnionIdList=" + this.headerUnionIdList + ", isSubscribed=" + this.isSubscribed + ", isDisband=" + this.isDisband + ", ownerUnionId='" + this.ownerUnionId + '\'' + ", backgroundUrl='" + this.backgroundUrl + '\'' + ", type=" + this.type + ", groupUin=" + this.groupUin + '}';
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ShareGroupItem{shareGroupId='");
+    localStringBuilder.append(this.shareGroupId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", name='");
+    localStringBuilder.append(this.name);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", allowStrangerVisitAndPost=");
+    localStringBuilder.append(this.allowStrangerVisitAndPost);
+    localStringBuilder.append(", memberCount=");
+    localStringBuilder.append(this.memberCount);
+    localStringBuilder.append(", followCount=");
+    localStringBuilder.append(this.followCount);
+    localStringBuilder.append(", videoCount=");
+    localStringBuilder.append(this.videoCount);
+    localStringBuilder.append(", ownerType=");
+    localStringBuilder.append(this.ownerType);
+    localStringBuilder.append(", headerUnionIdList=");
+    localStringBuilder.append(this.headerUnionIdList);
+    localStringBuilder.append(", isSubscribed=");
+    localStringBuilder.append(this.isSubscribed);
+    localStringBuilder.append(", isDisband=");
+    localStringBuilder.append(this.isDisband);
+    localStringBuilder.append(", ownerUnionId='");
+    localStringBuilder.append(this.ownerUnionId);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", backgroundUrl='");
+    localStringBuilder.append(this.backgroundUrl);
+    localStringBuilder.append('\'');
+    localStringBuilder.append(", type=");
+    localStringBuilder.append(this.type);
+    localStringBuilder.append(", groupUin=");
+    localStringBuilder.append(this.groupUin);
+    localStringBuilder.append('}');
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.biz.qqstory.shareGroup.model.ShareGroupItem
  * JD-Core Version:    0.7.0.1
  */

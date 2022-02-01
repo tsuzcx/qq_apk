@@ -51,15 +51,19 @@ public class SendInfo
     if (this == paramObject) {
       return true;
     }
-    if ((paramObject == null) || (!(paramObject instanceof SendInfo))) {
-      return false;
+    if ((paramObject != null) && ((paramObject instanceof SendInfo))) {
+      return a((SendInfo)paramObject);
     }
-    return a((SendInfo)paramObject);
+    return false;
   }
   
   public int hashCode()
   {
-    return (this.jdField_a_of_type_JavaLangString + this.b + this.jdField_a_of_type_Long).hashCode();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append(this.b);
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    return localStringBuilder.toString().hashCode();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
@@ -72,7 +76,7 @@ public class SendInfo
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     com.dataline.util.file.SendInfo
  * JD-Core Version:    0.7.0.1
  */

@@ -25,13 +25,14 @@ public final class oidb_cmd0xdcb$IconInfo
   
   static
   {
+    Integer localInteger = Integer.valueOf(0);
     ByteStringMicro localByteStringMicro = ByteStringMicro.EMPTY;
-    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 90, 96, 106, 112, 122 }, new String[] { "feeds_msg_icon_url", "feeds_default_icon_url", "uint32_is_use_gif", "str_jump_schema", "bytes_ext", "uint64_puin", "str_nickname", "uint32_op_type", "str_op_wording" }, new Object[] { "", "", Integer.valueOf(0), "", localByteStringMicro, Long.valueOf(0L), "", Integer.valueOf(0), "" }, IconInfo.class);
+    __fieldMap__ = MessageMicro.initFieldMap(new int[] { 10, 18, 24, 34, 90, 96, 106, 112, 122 }, new String[] { "feeds_msg_icon_url", "feeds_default_icon_url", "uint32_is_use_gif", "str_jump_schema", "bytes_ext", "uint64_puin", "str_nickname", "uint32_op_type", "str_op_wording" }, new Object[] { "", "", localInteger, "", localByteStringMicro, Long.valueOf(0L), "", localInteger, "" }, IconInfo.class);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes14.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     tencent.im.oidb.cmd0xdcb.oidb_cmd0xdcb.IconInfo
  * JD-Core Version:    0.7.0.1
  */

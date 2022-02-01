@@ -50,6 +50,7 @@ public final class AppJsPluginScope
     EVENT_HANDLERS.put("operateAudio", AudioJsPlugin.class);
     EVENT_HANDLERS.put("destroyAudioInstance", AudioJsPlugin.class);
     EVENT_HANDLERS.put("setInnerAudioOption", AudioJsPlugin.class);
+    EVENT_HANDLERS.put("chooseMessageFile", ChooseMessageFileJsPlugin.class);
     EVENT_HANDLERS.put("operateVideoPlayer", MediaJsPlugin.class);
     EVENT_HANDLERS.put("insertVideoPlayer", MediaJsPlugin.class);
     EVENT_HANDLERS.put("updateVideoPlayer", MediaJsPlugin.class);
@@ -61,7 +62,6 @@ public final class AppJsPluginScope
     EVENT_HANDLERS.put("insertTextView", TextViewJsPlugin.class);
     EVENT_HANDLERS.put("updateTextView", TextViewJsPlugin.class);
     EVENT_HANDLERS.put("removeTextView", TextViewJsPlugin.class);
-    EVENT_HANDLERS.put("chooseMessageFile", ChooseMessageFileJsPlugin.class);
     EVENT_HANDLERS.put("createLoadSubPackageTask", SubpackageJsPlugin.class);
     EVENT_HANDLERS.put("getVolume", EmbeddedVideoJsPlugin.class);
     EVENT_HANDLERS.put("setVolume", EmbeddedVideoJsPlugin.class);
@@ -72,10 +72,6 @@ public final class AppJsPluginScope
     EVENT_HANDLERS.put("setDisplayOrientation", EmbeddedVideoJsPlugin.class);
     EVENT_HANDLERS.put("hideVirtualBottomNavigationBar", EmbeddedVideoJsPlugin.class);
     EVENT_HANDLERS.put("showVirtualBottomNavigationBar", EmbeddedVideoJsPlugin.class);
-    EVENT_HANDLERS.put("insertLivePusher", LivePusherJsPlugin.class);
-    EVENT_HANDLERS.put("updateLivePusher", LivePusherJsPlugin.class);
-    EVENT_HANDLERS.put("removeLivePusher", LivePusherJsPlugin.class);
-    EVENT_HANDLERS.put("operateLivePusher", LivePusherJsPlugin.class);
     EVENT_HANDLERS.put("setBackgroundTextStyle", MiniAppUIJsPlugin.class);
     EVENT_HANDLERS.put("setBackgroundColor", MiniAppUIJsPlugin.class);
     EVENT_HANDLERS.put("scrollWebviewTo", MiniAppUIJsPlugin.class);
@@ -84,6 +80,10 @@ public final class AppJsPluginScope
     EVENT_HANDLERS.put("insertHTMLWebView", MiniAppUIJsPlugin.class);
     EVENT_HANDLERS.put("updateHTMLWebView", MiniAppUIJsPlugin.class);
     EVENT_HANDLERS.put("removeHTMLWebView", MiniAppUIJsPlugin.class);
+    EVENT_HANDLERS.put("insertLivePusher", LivePusherJsPlugin.class);
+    EVENT_HANDLERS.put("updateLivePusher", LivePusherJsPlugin.class);
+    EVENT_HANDLERS.put("removeLivePusher", LivePusherJsPlugin.class);
+    EVENT_HANDLERS.put("operateLivePusher", LivePusherJsPlugin.class);
     EVENT_HANDLERS.put("setNavigationBarTitle", NavigationBarPlugin.class);
     EVENT_HANDLERS.put("showNavigationBarLoading", NavigationBarPlugin.class);
     EVENT_HANDLERS.put("hideNavigationBarLoading", NavigationBarPlugin.class);
@@ -150,7 +150,7 @@ public final class AppJsPluginScope
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqmini.sdk.core.generated.AppJsPluginScope
  * JD-Core Version:    0.7.0.1
  */

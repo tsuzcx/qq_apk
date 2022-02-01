@@ -56,67 +56,96 @@ public class ArConfigInfo
       if (i >= 10) {
         this.version = paramParcel.readInt();
       }
-      if (i < 14) {}
-      for (this.version = 0;; this.version = i)
-      {
-        this.aRBegin = paramParcel.readLong();
-        this.aREnd = paramParcel.readLong();
-        this.scanLine1 = paramParcel.readString();
-        this.scanLine2 = paramParcel.readString();
-        this.scanLineLink = paramParcel.readString();
-        this.scanLinkUrl = paramParcel.readString();
-        this.mArCloudConfigInfos = paramParcel.createTypedArrayList(ArCloudConfigInfo.CREATOR);
-        this.aRCloudBegin = paramParcel.readLong();
-        this.aRCloudEnd = paramParcel.readLong();
-        this.aRCloudCacheExpireTime = paramParcel.readLong();
-        if (paramParcel.readByte() != 0) {
-          bool = true;
-        }
-        this.saveConfig = bool;
-        return;
+      boolean bool = false;
+      if (i < 14) {
+        this.version = 0;
+      } else {
+        this.version = i;
       }
+      this.aRBegin = paramParcel.readLong();
+      this.aREnd = paramParcel.readLong();
+      this.scanLine1 = paramParcel.readString();
+      this.scanLine2 = paramParcel.readString();
+      this.scanLineLink = paramParcel.readString();
+      this.scanLinkUrl = paramParcel.readString();
+      this.mArCloudConfigInfos = paramParcel.createTypedArrayList(ArCloudConfigInfo.CREATOR);
+      this.aRCloudBegin = paramParcel.readLong();
+      this.aRCloudEnd = paramParcel.readLong();
+      this.aRCloudCacheExpireTime = paramParcel.readLong();
+      if (paramParcel.readByte() != 0) {
+        bool = true;
+      }
+      this.saveConfig = bool;
       return;
     }
     catch (Exception paramParcel)
     {
-      QLog.i("ArConfigInfo", 1, "ArConfigInfo read fail" + paramParcel.getMessage());
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("ArConfigInfo read fail");
+      localStringBuilder.append(paramParcel.getMessage());
+      QLog.i("ArConfigInfo", 1, localStringBuilder.toString());
     }
   }
   
   public static void deleteConfigFile(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfigInfo", 2, "deleteConfigFile. uin = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("deleteConfigFile. uin = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ArConfigInfo", 2, ((StringBuilder)localObject).toString());
     }
     if (paramString == null) {
       return;
     }
-    deleteConfigFile(BaseApplicationImpl.sApplication.getFilesDir().getPath(), "ar_file_config_v739_" + paramString);
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir().getPath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ar_file_config_v739_");
+    localStringBuilder.append(paramString);
+    deleteConfigFile((String)localObject, localStringBuilder.toString());
   }
   
   public static void deleteConfigFile(String paramString1, String paramString2)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfigInfo", 2, "deleteConfigFile. dir = " + paramString1 + ", filename = " + paramString2);
-    }
-    if ((paramString1 == null) || (paramString1.equals("")) || (paramString2 == null) || (paramString2.equals(""))) {}
-    do
+    if (QLog.isColorLevel())
     {
-      return;
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("deleteConfigFile. dir = ");
+      localStringBuilder.append(paramString1);
+      localStringBuilder.append(", filename = ");
+      localStringBuilder.append(paramString2);
+      QLog.d("ArConfigInfo", 2, localStringBuilder.toString());
+    }
+    if ((paramString1 != null) && (!paramString1.equals("")) && (paramString2 != null))
+    {
+      if (paramString2.equals("")) {
+        return;
+      }
       paramString1 = new File(paramString1, paramString2);
-    } while (!paramString1.exists());
-    paramString1.delete();
+      if (paramString1.exists()) {
+        paramString1.delete();
+      }
+    }
   }
   
   public static ArConfigInfo loadConfigFromFile(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfigInfo", 2, "loadConfigFromFile. uin = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("loadConfigFromFile. uin = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ArConfigInfo", 2, ((StringBuilder)localObject).toString());
     }
     if (paramString == null) {
       return null;
     }
-    return loadConfigFromFile(BaseApplicationImpl.sApplication.getFilesDir().getPath(), "ar_file_config_v739_" + paramString);
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir().getPath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ar_file_config_v739_");
+    localStringBuilder.append(paramString);
+    return loadConfigFromFile((String)localObject, localStringBuilder.toString());
   }
   
   /* Error */
@@ -124,1194 +153,1337 @@ public class ArConfigInfo
   {
     // Byte code:
     //   0: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   3: ifeq +37 -> 40
-    //   6: ldc 15
-    //   8: iconst_2
-    //   9: new 117	java/lang/StringBuilder
-    //   12: dup
-    //   13: invokespecial 118	java/lang/StringBuilder:<init>	()V
-    //   16: ldc 200
-    //   18: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   21: aload_0
-    //   22: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   25: ldc 171
-    //   27: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   30: aload_1
-    //   31: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   34: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   37: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   40: aload_0
-    //   41: ifnull +25 -> 66
-    //   44: aload_0
-    //   45: ldc 173
-    //   47: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   50: ifne +16 -> 66
-    //   53: aload_1
-    //   54: ifnull +12 -> 66
-    //   57: aload_1
-    //   58: ldc 173
-    //   60: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   63: ifeq +7 -> 70
-    //   66: aconst_null
-    //   67: astore_1
-    //   68: aload_1
-    //   69: areturn
-    //   70: new 159	java/io/File
-    //   73: dup
-    //   74: aload_0
-    //   75: aload_1
-    //   76: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   79: astore 4
-    //   81: aload 4
-    //   83: invokevirtual 184	java/io/File:exists	()Z
-    //   86: ifeq +416 -> 502
-    //   89: new 202	java/io/FileInputStream
+    //   3: ifeq +47 -> 50
+    //   6: new 117	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   13: astore_2
+    //   14: aload_2
+    //   15: ldc 200
+    //   17: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   20: pop
+    //   21: aload_2
+    //   22: aload_0
+    //   23: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   26: pop
+    //   27: aload_2
+    //   28: ldc 171
+    //   30: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   33: pop
+    //   34: aload_2
+    //   35: aload_1
+    //   36: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   39: pop
+    //   40: ldc 15
+    //   42: iconst_2
+    //   43: aload_2
+    //   44: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   47: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   50: aconst_null
+    //   51: astore_3
+    //   52: aconst_null
+    //   53: astore 6
+    //   55: aload_3
+    //   56: astore_2
+    //   57: aload_0
+    //   58: ifnull +601 -> 659
+    //   61: aload_3
+    //   62: astore_2
+    //   63: aload_0
+    //   64: ldc 173
+    //   66: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   69: ifne +590 -> 659
+    //   72: aload_3
+    //   73: astore_2
+    //   74: aload_1
+    //   75: ifnull +584 -> 659
+    //   78: aload_1
+    //   79: ldc 173
+    //   81: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   84: ifeq +5 -> 89
+    //   87: aconst_null
+    //   88: areturn
+    //   89: new 159	java/io/File
     //   92: dup
-    //   93: aload 4
-    //   95: invokespecial 205	java/io/FileInputStream:<init>	(Ljava/io/File;)V
-    //   98: astore_1
-    //   99: new 207	java/io/BufferedInputStream
-    //   102: dup
-    //   103: aload_1
-    //   104: invokespecial 210	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
-    //   107: astore_3
-    //   108: aload_1
-    //   109: invokevirtual 213	java/io/FileInputStream:available	()I
-    //   112: newarray byte
-    //   114: astore_2
-    //   115: aload_3
-    //   116: aload_2
-    //   117: invokevirtual 217	java/io/BufferedInputStream:read	([B)I
-    //   120: pop
-    //   121: invokestatic 221	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   124: astore_0
-    //   125: aload_0
-    //   126: aload_2
-    //   127: iconst_0
-    //   128: aload_2
-    //   129: arraylength
-    //   130: invokevirtual 225	android/os/Parcel:unmarshall	([BII)V
-    //   133: aload_0
-    //   134: iconst_0
-    //   135: invokevirtual 229	android/os/Parcel:setDataPosition	(I)V
-    //   138: getstatic 55	com/tencent/mobileqq/ar/aidl/ArConfigInfo:CREATOR	Landroid/os/Parcelable$Creator;
-    //   141: aload_0
-    //   142: invokeinterface 235 2 0
-    //   147: checkcast 2	com/tencent/mobileqq/ar/aidl/ArConfigInfo
-    //   150: astore_2
-    //   151: new 59	java/util/ArrayList
-    //   154: dup
-    //   155: invokespecial 60	java/util/ArrayList:<init>	()V
-    //   158: pop
-    //   159: aload_2
-    //   160: getfield 62	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
-    //   163: astore 5
-    //   165: aload_2
-    //   166: getfield 62	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
-    //   169: invokevirtual 239	java/util/ArrayList:iterator	()Ljava/util/Iterator;
-    //   172: astore 6
-    //   174: aload 6
-    //   176: invokeinterface 244 1 0
-    //   181: ifeq +126 -> 307
-    //   184: aload 6
-    //   186: invokeinterface 248 1 0
-    //   191: checkcast 81	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo
-    //   194: astore 7
-    //   196: aload 7
-    //   198: getfield 251	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:jdField_a_of_type_Boolean	Z
-    //   201: ifne -27 -> 174
-    //   204: aload 5
-    //   206: aload 7
-    //   208: invokevirtual 254	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
-    //   211: pop
-    //   212: goto -38 -> 174
-    //   215: astore 5
-    //   217: ldc 15
-    //   219: iconst_1
-    //   220: new 117	java/lang/StringBuilder
-    //   223: dup
-    //   224: invokespecial 118	java/lang/StringBuilder:<init>	()V
-    //   227: ldc_w 256
-    //   230: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   233: aload 5
-    //   235: invokevirtual 127	java/lang/Exception:getMessage	()Ljava/lang/String;
-    //   238: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   241: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   244: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
-    //   247: aload_0
-    //   248: invokevirtual 259	android/os/Parcel:recycle	()V
-    //   251: aload_3
-    //   252: ifnull +7 -> 259
-    //   255: aload_3
-    //   256: invokevirtual 262	java/io/BufferedInputStream:close	()V
-    //   259: aload_2
-    //   260: astore_0
-    //   261: aload_1
-    //   262: ifnull +9 -> 271
-    //   265: aload_1
-    //   266: invokevirtual 263	java/io/FileInputStream:close	()V
-    //   269: aload_2
-    //   270: astore_0
-    //   271: aload_0
-    //   272: astore_1
-    //   273: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   276: ifeq -208 -> 68
-    //   279: ldc 15
-    //   281: iconst_2
-    //   282: new 117	java/lang/StringBuilder
-    //   285: dup
-    //   286: invokespecial 118	java/lang/StringBuilder:<init>	()V
-    //   289: ldc_w 265
-    //   292: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   295: aload_0
-    //   296: invokevirtual 268	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   299: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   302: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   305: aload_0
-    //   306: areturn
-    //   307: aload_2
-    //   308: aload 5
-    //   310: putfield 62	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
-    //   313: goto -66 -> 247
-    //   316: astore_2
-    //   317: aload_1
-    //   318: astore_0
-    //   319: aload_3
-    //   320: astore_1
-    //   321: aload 4
-    //   323: invokevirtual 187	java/io/File:delete	()Z
-    //   326: pop
-    //   327: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   330: ifeq +29 -> 359
-    //   333: ldc 15
-    //   335: iconst_2
-    //   336: new 117	java/lang/StringBuilder
-    //   339: dup
-    //   340: invokespecial 118	java/lang/StringBuilder:<init>	()V
-    //   343: ldc_w 270
-    //   346: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   349: aload_2
-    //   350: invokevirtual 268	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
-    //   353: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   356: invokestatic 273	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
-    //   359: aload_1
-    //   360: ifnull +7 -> 367
-    //   363: aload_1
-    //   364: invokevirtual 262	java/io/BufferedInputStream:close	()V
+    //   93: aload_0
+    //   94: aload_1
+    //   95: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   98: astore 7
+    //   100: aload_3
+    //   101: astore_2
+    //   102: aload 7
+    //   104: invokevirtual 184	java/io/File:exists	()Z
+    //   107: ifeq +552 -> 659
+    //   110: new 202	java/io/FileInputStream
+    //   113: dup
+    //   114: aload 7
+    //   116: invokespecial 205	java/io/FileInputStream:<init>	(Ljava/io/File;)V
+    //   119: astore_0
+    //   120: new 207	java/io/BufferedInputStream
+    //   123: dup
+    //   124: aload_0
+    //   125: invokespecial 210	java/io/BufferedInputStream:<init>	(Ljava/io/InputStream;)V
+    //   128: astore 5
+    //   130: aload_0
+    //   131: astore_1
+    //   132: aload 5
+    //   134: astore_2
+    //   135: aload_0
+    //   136: invokevirtual 213	java/io/FileInputStream:available	()I
+    //   139: newarray byte
+    //   141: astore_3
+    //   142: aload_0
+    //   143: astore_1
+    //   144: aload 5
+    //   146: astore_2
+    //   147: aload 5
+    //   149: aload_3
+    //   150: invokevirtual 217	java/io/BufferedInputStream:read	([B)I
+    //   153: pop
+    //   154: aload_0
+    //   155: astore_1
+    //   156: aload 5
+    //   158: astore_2
+    //   159: invokestatic 221	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   162: astore 4
+    //   164: aload_0
+    //   165: astore_1
+    //   166: aload 5
+    //   168: astore_2
+    //   169: aload 4
+    //   171: aload_3
+    //   172: iconst_0
+    //   173: aload_3
+    //   174: arraylength
+    //   175: invokevirtual 225	android/os/Parcel:unmarshall	([BII)V
+    //   178: aload_0
+    //   179: astore_1
+    //   180: aload 5
+    //   182: astore_2
+    //   183: aload 4
+    //   185: iconst_0
+    //   186: invokevirtual 229	android/os/Parcel:setDataPosition	(I)V
+    //   189: aload_0
+    //   190: astore_1
+    //   191: aload 5
+    //   193: astore_2
+    //   194: getstatic 55	com/tencent/mobileqq/ar/aidl/ArConfigInfo:CREATOR	Landroid/os/Parcelable$Creator;
+    //   197: aload 4
+    //   199: invokeinterface 235 2 0
+    //   204: checkcast 2	com/tencent/mobileqq/ar/aidl/ArConfigInfo
+    //   207: astore_3
+    //   208: aload_0
+    //   209: astore_1
+    //   210: aload 5
+    //   212: astore_2
+    //   213: new 59	java/util/ArrayList
+    //   216: dup
+    //   217: invokespecial 60	java/util/ArrayList:<init>	()V
+    //   220: pop
+    //   221: aload_0
+    //   222: astore_1
+    //   223: aload 5
+    //   225: astore_2
+    //   226: aload_3
+    //   227: getfield 62	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
+    //   230: astore 8
+    //   232: aload_0
+    //   233: astore_1
+    //   234: aload 5
+    //   236: astore_2
+    //   237: aload_3
+    //   238: getfield 62	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
+    //   241: invokevirtual 239	java/util/ArrayList:iterator	()Ljava/util/Iterator;
+    //   244: astore 9
+    //   246: aload_0
+    //   247: astore_1
+    //   248: aload 5
+    //   250: astore_2
+    //   251: aload 9
+    //   253: invokeinterface 244 1 0
+    //   258: ifeq +49 -> 307
+    //   261: aload_0
+    //   262: astore_1
+    //   263: aload 5
+    //   265: astore_2
+    //   266: aload 9
+    //   268: invokeinterface 248 1 0
+    //   273: checkcast 81	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo
+    //   276: astore 10
+    //   278: aload_0
+    //   279: astore_1
+    //   280: aload 5
+    //   282: astore_2
+    //   283: aload 10
+    //   285: getfield 251	com/tencent/mobileqq/ar/aidl/ArCloudConfigInfo:jdField_a_of_type_Boolean	Z
+    //   288: ifne -42 -> 246
+    //   291: aload_0
+    //   292: astore_1
+    //   293: aload 5
+    //   295: astore_2
+    //   296: aload 8
+    //   298: aload 10
+    //   300: invokevirtual 254	java/util/ArrayList:remove	(Ljava/lang/Object;)Z
+    //   303: pop
+    //   304: goto -58 -> 246
+    //   307: aload_0
+    //   308: astore_1
+    //   309: aload 5
+    //   311: astore_2
+    //   312: aload_3
+    //   313: aload 8
+    //   315: putfield 62	com/tencent/mobileqq/ar/aidl/ArConfigInfo:mArCloudConfigInfos	Ljava/util/ArrayList;
+    //   318: goto +65 -> 383
+    //   321: astore 8
+    //   323: aload_0
+    //   324: astore_1
+    //   325: aload 5
+    //   327: astore_2
+    //   328: new 117	java/lang/StringBuilder
+    //   331: dup
+    //   332: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   335: astore 9
+    //   337: aload_0
+    //   338: astore_1
+    //   339: aload 5
+    //   341: astore_2
+    //   342: aload 9
+    //   344: ldc_w 256
+    //   347: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   350: pop
+    //   351: aload_0
+    //   352: astore_1
+    //   353: aload 5
+    //   355: astore_2
+    //   356: aload 9
+    //   358: aload 8
+    //   360: invokevirtual 127	java/lang/Exception:getMessage	()Ljava/lang/String;
+    //   363: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   366: pop
     //   367: aload_0
-    //   368: ifnull +129 -> 497
-    //   371: aload_0
-    //   372: invokevirtual 263	java/io/FileInputStream:close	()V
-    //   375: aconst_null
-    //   376: astore_0
-    //   377: goto -106 -> 271
-    //   380: astore_0
-    //   381: aload_0
-    //   382: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   385: goto -126 -> 259
-    //   388: astore_0
-    //   389: aload_0
-    //   390: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   393: aload_2
-    //   394: astore_0
-    //   395: goto -124 -> 271
-    //   398: astore_1
-    //   399: aload_1
-    //   400: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   403: goto -36 -> 367
-    //   406: astore_0
-    //   407: aload_0
-    //   408: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   411: aconst_null
-    //   412: astore_0
-    //   413: goto -142 -> 271
-    //   416: astore_0
-    //   417: aconst_null
-    //   418: astore_2
-    //   419: aconst_null
-    //   420: astore_1
-    //   421: aload_1
-    //   422: ifnull +7 -> 429
-    //   425: aload_1
-    //   426: invokevirtual 262	java/io/BufferedInputStream:close	()V
-    //   429: aload_2
-    //   430: ifnull +7 -> 437
-    //   433: aload_2
-    //   434: invokevirtual 263	java/io/FileInputStream:close	()V
-    //   437: aload_0
-    //   438: athrow
-    //   439: astore_1
-    //   440: aload_1
-    //   441: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   444: goto -15 -> 429
-    //   447: astore_1
-    //   448: aload_1
-    //   449: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   452: goto -15 -> 437
-    //   455: astore_0
-    //   456: aconst_null
-    //   457: astore_3
-    //   458: aload_1
-    //   459: astore_2
-    //   460: aload_3
-    //   461: astore_1
-    //   462: goto -41 -> 421
-    //   465: astore_0
-    //   466: aload_1
+    //   368: astore_1
+    //   369: aload 5
+    //   371: astore_2
+    //   372: ldc 15
+    //   374: iconst_1
+    //   375: aload 9
+    //   377: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   380: invokestatic 136	com/tencent/qphone/base/util/QLog:i	(Ljava/lang/String;ILjava/lang/String;)V
+    //   383: aload_0
+    //   384: astore_1
+    //   385: aload 5
+    //   387: astore_2
+    //   388: aload 4
+    //   390: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   393: aload 5
+    //   395: invokevirtual 262	java/io/BufferedInputStream:close	()V
+    //   398: goto +8 -> 406
+    //   401: astore_1
+    //   402: aload_1
+    //   403: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   406: aload_0
+    //   407: invokevirtual 266	java/io/FileInputStream:close	()V
+    //   410: goto +8 -> 418
+    //   413: astore_0
+    //   414: aload_0
+    //   415: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   418: aload_3
+    //   419: astore_0
+    //   420: goto +158 -> 578
+    //   423: astore 4
+    //   425: aload_0
+    //   426: astore_3
+    //   427: aload 5
+    //   429: astore_0
+    //   430: goto +34 -> 464
+    //   433: astore_1
+    //   434: aconst_null
+    //   435: astore_2
+    //   436: goto +189 -> 625
+    //   439: astore 4
+    //   441: aconst_null
+    //   442: astore_1
+    //   443: aload_0
+    //   444: astore_3
+    //   445: aload_1
+    //   446: astore_0
+    //   447: goto +17 -> 464
+    //   450: astore_1
+    //   451: aconst_null
+    //   452: astore_2
+    //   453: aload_2
+    //   454: astore_0
+    //   455: goto +170 -> 625
+    //   458: astore 4
+    //   460: aconst_null
+    //   461: astore_3
+    //   462: aload_3
+    //   463: astore_0
+    //   464: aload_3
+    //   465: astore_1
+    //   466: aload_0
     //   467: astore_2
-    //   468: aload_3
-    //   469: astore_1
-    //   470: goto -49 -> 421
-    //   473: astore_3
-    //   474: aload_0
-    //   475: astore_2
-    //   476: aload_3
-    //   477: astore_0
-    //   478: goto -57 -> 421
-    //   481: astore_2
-    //   482: aconst_null
-    //   483: astore_0
-    //   484: aconst_null
+    //   468: aload 7
+    //   470: invokevirtual 187	java/io/File:delete	()Z
+    //   473: pop
+    //   474: aload_3
+    //   475: astore_1
+    //   476: aload_0
+    //   477: astore_2
+    //   478: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   481: ifeq +56 -> 537
+    //   484: aload_3
     //   485: astore_1
-    //   486: goto -165 -> 321
-    //   489: astore_2
-    //   490: aload_1
-    //   491: astore_0
-    //   492: aconst_null
-    //   493: astore_1
-    //   494: goto -173 -> 321
-    //   497: aconst_null
-    //   498: astore_0
-    //   499: goto -228 -> 271
-    //   502: aconst_null
-    //   503: areturn
+    //   486: aload_0
+    //   487: astore_2
+    //   488: new 117	java/lang/StringBuilder
+    //   491: dup
+    //   492: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   495: astore 5
+    //   497: aload_3
+    //   498: astore_1
+    //   499: aload_0
+    //   500: astore_2
+    //   501: aload 5
+    //   503: ldc_w 268
+    //   506: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   509: pop
+    //   510: aload_3
+    //   511: astore_1
+    //   512: aload_0
+    //   513: astore_2
+    //   514: aload 5
+    //   516: aload 4
+    //   518: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   521: pop
+    //   522: aload_3
+    //   523: astore_1
+    //   524: aload_0
+    //   525: astore_2
+    //   526: ldc 15
+    //   528: iconst_2
+    //   529: aload 5
+    //   531: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   534: invokestatic 274	com/tencent/qphone/base/util/QLog:e	(Ljava/lang/String;ILjava/lang/String;)V
+    //   537: aload_0
+    //   538: ifnull +15 -> 553
+    //   541: aload_0
+    //   542: invokevirtual 262	java/io/BufferedInputStream:close	()V
+    //   545: goto +8 -> 553
+    //   548: astore_0
+    //   549: aload_0
+    //   550: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   553: aload 6
+    //   555: astore_0
+    //   556: aload_3
+    //   557: ifnull +21 -> 578
+    //   560: aload_3
+    //   561: invokevirtual 266	java/io/FileInputStream:close	()V
+    //   564: aload 6
+    //   566: astore_0
+    //   567: goto +11 -> 578
+    //   570: astore_0
+    //   571: aload_0
+    //   572: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   575: aload 6
+    //   577: astore_0
+    //   578: aload_0
+    //   579: astore_2
+    //   580: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   583: ifeq +76 -> 659
+    //   586: new 117	java/lang/StringBuilder
+    //   589: dup
+    //   590: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   593: astore_1
+    //   594: aload_1
+    //   595: ldc_w 276
+    //   598: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   601: pop
+    //   602: aload_1
+    //   603: aload_0
+    //   604: invokevirtual 271	java/lang/StringBuilder:append	(Ljava/lang/Object;)Ljava/lang/StringBuilder;
+    //   607: pop
+    //   608: ldc 15
+    //   610: iconst_2
+    //   611: aload_1
+    //   612: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   615: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   618: aload_0
+    //   619: areturn
+    //   620: astore_3
+    //   621: aload_1
+    //   622: astore_0
+    //   623: aload_3
+    //   624: astore_1
+    //   625: aload_2
+    //   626: ifnull +15 -> 641
+    //   629: aload_2
+    //   630: invokevirtual 262	java/io/BufferedInputStream:close	()V
+    //   633: goto +8 -> 641
+    //   636: astore_2
+    //   637: aload_2
+    //   638: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   641: aload_0
+    //   642: ifnull +15 -> 657
+    //   645: aload_0
+    //   646: invokevirtual 266	java/io/FileInputStream:close	()V
+    //   649: goto +8 -> 657
+    //   652: astore_0
+    //   653: aload_0
+    //   654: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   657: aload_1
+    //   658: athrow
+    //   659: aload_2
+    //   660: areturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	504	0	paramString1	String
-    //   0	504	1	paramString2	String
-    //   114	194	2	localObject1	Object
-    //   316	78	2	localThrowable1	java.lang.Throwable
-    //   418	58	2	str	String
-    //   481	1	2	localThrowable2	java.lang.Throwable
-    //   489	1	2	localThrowable3	java.lang.Throwable
-    //   107	362	3	localBufferedInputStream	java.io.BufferedInputStream
-    //   473	4	3	localObject2	Object
-    //   79	243	4	localFile	File
-    //   163	42	5	localArrayList	ArrayList
-    //   215	94	5	localException	Exception
-    //   172	13	6	localIterator	Iterator
-    //   194	13	7	localArCloudConfigInfo	ArCloudConfigInfo
+    //   0	661	0	paramString1	String
+    //   0	661	1	paramString2	String
+    //   13	617	2	localObject1	Object
+    //   636	24	2	localIOException	java.io.IOException
+    //   51	510	3	localObject2	Object
+    //   620	4	3	localObject3	Object
+    //   162	227	4	localParcel	Parcel
+    //   423	1	4	localThrowable1	java.lang.Throwable
+    //   439	1	4	localThrowable2	java.lang.Throwable
+    //   458	59	4	localThrowable3	java.lang.Throwable
+    //   128	402	5	localObject4	Object
+    //   53	523	6	localObject5	Object
+    //   98	371	7	localFile	File
+    //   230	84	8	localArrayList	ArrayList
+    //   321	38	8	localException	Exception
+    //   244	132	9	localObject6	Object
+    //   276	23	10	localArCloudConfigInfo	ArCloudConfigInfo
     // Exception table:
     //   from	to	target	type
-    //   151	174	215	java/lang/Exception
-    //   174	212	215	java/lang/Exception
-    //   307	313	215	java/lang/Exception
-    //   108	151	316	java/lang/Throwable
-    //   151	174	316	java/lang/Throwable
-    //   174	212	316	java/lang/Throwable
-    //   217	247	316	java/lang/Throwable
-    //   247	251	316	java/lang/Throwable
-    //   307	313	316	java/lang/Throwable
-    //   255	259	380	java/io/IOException
-    //   265	269	388	java/io/IOException
-    //   363	367	398	java/io/IOException
-    //   371	375	406	java/io/IOException
-    //   89	99	416	finally
-    //   425	429	439	java/io/IOException
-    //   433	437	447	java/io/IOException
-    //   99	108	455	finally
-    //   108	151	465	finally
-    //   151	174	465	finally
-    //   174	212	465	finally
-    //   217	247	465	finally
-    //   247	251	465	finally
-    //   307	313	465	finally
-    //   321	359	473	finally
-    //   89	99	481	java/lang/Throwable
-    //   99	108	489	java/lang/Throwable
+    //   213	221	321	java/lang/Exception
+    //   226	232	321	java/lang/Exception
+    //   237	246	321	java/lang/Exception
+    //   251	261	321	java/lang/Exception
+    //   266	278	321	java/lang/Exception
+    //   283	291	321	java/lang/Exception
+    //   296	304	321	java/lang/Exception
+    //   312	318	321	java/lang/Exception
+    //   393	398	401	java/io/IOException
+    //   406	410	413	java/io/IOException
+    //   135	142	423	java/lang/Throwable
+    //   147	154	423	java/lang/Throwable
+    //   159	164	423	java/lang/Throwable
+    //   169	178	423	java/lang/Throwable
+    //   183	189	423	java/lang/Throwable
+    //   194	208	423	java/lang/Throwable
+    //   213	221	423	java/lang/Throwable
+    //   226	232	423	java/lang/Throwable
+    //   237	246	423	java/lang/Throwable
+    //   251	261	423	java/lang/Throwable
+    //   266	278	423	java/lang/Throwable
+    //   283	291	423	java/lang/Throwable
+    //   296	304	423	java/lang/Throwable
+    //   312	318	423	java/lang/Throwable
+    //   328	337	423	java/lang/Throwable
+    //   342	351	423	java/lang/Throwable
+    //   356	367	423	java/lang/Throwable
+    //   372	383	423	java/lang/Throwable
+    //   388	393	423	java/lang/Throwable
+    //   120	130	433	finally
+    //   120	130	439	java/lang/Throwable
+    //   110	120	450	finally
+    //   110	120	458	java/lang/Throwable
+    //   541	545	548	java/io/IOException
+    //   560	564	570	java/io/IOException
+    //   135	142	620	finally
+    //   147	154	620	finally
+    //   159	164	620	finally
+    //   169	178	620	finally
+    //   183	189	620	finally
+    //   194	208	620	finally
+    //   213	221	620	finally
+    //   226	232	620	finally
+    //   237	246	620	finally
+    //   251	261	620	finally
+    //   266	278	620	finally
+    //   283	291	620	finally
+    //   296	304	620	finally
+    //   312	318	620	finally
+    //   328	337	620	finally
+    //   342	351	620	finally
+    //   356	367	620	finally
+    //   372	383	620	finally
+    //   388	393	620	finally
+    //   468	474	620	finally
+    //   478	484	620	finally
+    //   488	497	620	finally
+    //   501	510	620	finally
+    //   514	522	620	finally
+    //   526	537	620	finally
+    //   629	633	636	java/io/IOException
+    //   645	649	652	java/io/IOException
   }
   
   public static ArConfigInfo parseArConfig(String paramString)
   {
-    QLog.i("ArConfigInfo", 1, "parseArConfig. xmlConfigContent:" + paramString);
-    Object localObject1 = Xml.newPullParser();
+    Object localObject1 = new StringBuilder();
+    ((StringBuilder)localObject1).append("parseArConfig. xmlConfigContent:");
+    ((StringBuilder)localObject1).append(paramString);
+    QLog.i("ArConfigInfo", 1, ((StringBuilder)localObject1).toString());
+    localObject1 = Xml.newPullParser();
     ArConfigInfo localArConfigInfo = new ArConfigInfo();
     int i;
-    label224:
-    Object localObject2;
-    label331:
-    int j;
-    label385:
-    boolean bool;
-    int k;
-    label436:
-    label462:
-    Object localObject3;
-    for (;;)
+    try
     {
-      try
-      {
-        ((XmlPullParser)localObject1).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
-        i = ((XmlPullParser)localObject1).getEventType();
+      ((XmlPullParser)localObject1).setInput(new ByteArrayInputStream(paramString.getBytes()), "UTF-8");
+      i = ((XmlPullParser)localObject1).getEventType();
+    }
+    catch (Exception localException1)
+    {
+      Object localObject2;
+      int m;
+      Object localObject3;
+      localArConfigInfo = null;
+      localObject1 = localArConfigInfo;
+      if (!QLog.isColorLevel()) {
+        break label2358;
       }
-      catch (Exception localException1)
-      {
-        String str1;
-        localArConfigInfo = null;
-        localObject1 = localArConfigInfo;
-        if (!QLog.isColorLevel()) {
-          break label224;
-        }
-        QLog.e("ArConfigInfo", 2, paramString, localException1);
-        localObject1 = localArConfigInfo;
-      }
-      i = ((XmlPullParser)localObject1).next();
-      break label2384;
-      str1 = ((XmlPullParser)localObject1).getName();
-      if (str1.equalsIgnoreCase("ScanAR"))
-      {
-        i = ((XmlPullParser)localObject1).next();
-        if (i != 1)
+      QLog.e("ArConfigInfo", 2, paramString, localException1);
+      localObject1 = localArConfigInfo;
+    }
+    localObject2 = ((XmlPullParser)localObject1).getName();
+    boolean bool = ((String)localObject2).equalsIgnoreCase("ScanAR");
+    if (bool) {
+      for (i = ((XmlPullParser)localObject1).next(); i != 1; i = ((XmlPullParser)localObject1).next()) {
+        if (i == 2)
         {
-          if (i != 2) {
-            break label331;
-          }
-          str1 = ((XmlPullParser)localObject1).getName();
-          if (str1.equalsIgnoreCase("Begin"))
-          {
+          localObject2 = ((XmlPullParser)localObject1).getName();
+          if (((String)localObject2).equalsIgnoreCase("Begin")) {
             localArConfigInfo.aRBegin = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
-            i = ((XmlPullParser)localObject1).next();
+          } else if (((String)localObject2).equalsIgnoreCase("End")) {
+            localArConfigInfo.aREnd = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+          } else if (((String)localObject2).equalsIgnoreCase("Scan_Line1")) {
+            localArConfigInfo.scanLine1 = ((XmlPullParser)localObject1).nextText();
+          } else if (((String)localObject2).equalsIgnoreCase("Scan_Line2")) {
+            localArConfigInfo.scanLine2 = ((XmlPullParser)localObject1).nextText();
+          } else if (((String)localObject2).equalsIgnoreCase("Scan_Line3")) {
+            localArConfigInfo.scanLineLink = ((XmlPullParser)localObject1).nextText();
+          } else if (((String)localObject2).equalsIgnoreCase("Scan_Line3_URL")) {
+            localArConfigInfo.scanLinkUrl = ((XmlPullParser)localObject1).nextText();
           }
         }
         else
         {
-          continue;
-        }
-        if (str1.equalsIgnoreCase("End"))
-        {
-          localArConfigInfo.aREnd = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
-          continue;
-          return localObject1;
-        }
-        else if (localException1.equalsIgnoreCase("Scan_Line1"))
-        {
-          localArConfigInfo.scanLine1 = ((XmlPullParser)localObject1).nextText();
-        }
-        else if (localException1.equalsIgnoreCase("Scan_Line2"))
-        {
-          localArConfigInfo.scanLine2 = ((XmlPullParser)localObject1).nextText();
-        }
-        else if (localException1.equalsIgnoreCase("Scan_Line3"))
-        {
-          localArConfigInfo.scanLineLink = ((XmlPullParser)localObject1).nextText();
-        }
-        else if (localException1.equalsIgnoreCase("Scan_Line3_URL"))
-        {
-          localArConfigInfo.scanLinkUrl = ((XmlPullParser)localObject1).nextText();
-          continue;
-          if ((i != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("ScanAR"))) {}
-        }
-      }
-      else
-      {
-        label950:
-        label957:
-        label979:
-        if (localException1.equalsIgnoreCase("Task"))
-        {
-          localObject2 = new ArCloudConfigInfo();
-          j = ((XmlPullParser)localObject1).next();
-          i = 0;
-          if (j != 1)
-          {
-            if (j != 2) {
-              break label2119;
-            }
-            String str2 = ((XmlPullParser)localObject1).getName();
-            bool = str2.equalsIgnoreCase("BusinessId");
-            if (!bool) {
-              break label462;
-            }
-          }
-          for (;;)
-          {
-            try
-            {
-              ((ArCloudConfigInfo)localObject2).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-              k = i;
-            }
-            catch (NumberFormatException localNumberFormatException1)
-            {
-              ((ArCloudConfigInfo)localObject2).jdField_a_of_type_Int = 0;
-              k = i;
-              continue;
-            }
-            j = ((XmlPullParser)localObject1).next();
-            i = k;
-            break label385;
+          if ((i == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("ScanAR"))) {
             break;
-            bool = localNumberFormatException1.equalsIgnoreCase("LotterySet");
-            if (bool)
-            {
-              try
-              {
-                ((ArCloudConfigInfo)localObject2).e = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-                k = i;
-              }
-              catch (NumberFormatException localNumberFormatException2)
-              {
-                ((ArCloudConfigInfo)localObject2).e = 0;
-                k = i;
-              }
-            }
-            else if (localNumberFormatException2.equalsIgnoreCase("PicId"))
-            {
-              ((ArCloudConfigInfo)localObject2).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-              k = i;
-            }
-            else if (localNumberFormatException2.equalsIgnoreCase("SDKVersion"))
-            {
-              ((ArCloudConfigInfo)localObject2).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-              k = i;
-            }
-            else
-            {
-              bool = localNumberFormatException2.equalsIgnoreCase("TrackMode");
-              if (bool)
-              {
-                try
-                {
-                  ((ArCloudConfigInfo)localObject2).jdField_c_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-                  k = i;
-                }
-                catch (NumberFormatException localNumberFormatException3)
-                {
-                  ((ArCloudConfigInfo)localObject2).jdField_c_of_type_Int = 0;
-                  k = i;
-                }
-              }
-              else
-              {
-                bool = localNumberFormatException3.equalsIgnoreCase("Type");
-                if (bool)
-                {
-                  try
-                  {
-                    ((ArCloudConfigInfo)localObject2).jdField_d_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-                    k = i;
-                  }
-                  catch (NumberFormatException localNumberFormatException4)
-                  {
-                    ((ArCloudConfigInfo)localObject2).jdField_d_of_type_Int = 0;
-                    k = i;
-                  }
-                }
-                else
-                {
-                  if (!localNumberFormatException4.equalsIgnoreCase("Feature")) {
-                    break label869;
-                  }
-                  localObject3 = new ArFeatureInfo();
-                  int m = ((XmlPullParser)localObject1).next();
-                  j = i;
-                  k = j;
-                  if (m != 1)
-                  {
-                    String str3;
-                    if (m == 2)
-                    {
-                      str3 = ((XmlPullParser)localObject1).getName();
-                      if (str3.equalsIgnoreCase("FeatureMD5"))
-                      {
-                        ((ArFeatureInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-                        i = 1;
-                      }
-                    }
-                    label741:
-                    do
-                    {
-                      do
-                      {
-                        for (;;)
-                        {
-                          m = ((XmlPullParser)localObject1).next();
-                          j = i;
-                          break;
-                          bool = str3.equalsIgnoreCase("FeatureSize");
-                          if (bool)
-                          {
-                            try
-                            {
-                              ((ArFeatureInfo)localObject3).jdField_a_of_type_Long = Long.parseLong(((XmlPullParser)localObject1).nextText());
-                              i = 1;
-                            }
-                            catch (NumberFormatException localNumberFormatException5)
-                            {
-                              ((ArFeatureInfo)localObject3).jdField_a_of_type_Long = 0L;
-                              i = 1;
-                            }
-                          }
-                          else
-                          {
-                            if (!localNumberFormatException5.equalsIgnoreCase("FeatureUrl")) {
-                              break label2379;
-                            }
-                            ((ArFeatureInfo)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-                            i = 1;
-                          }
-                        }
-                        i = j;
-                      } while (m != 3);
-                      i = j;
-                    } while (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Feature"));
-                    ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = ((ArFeatureInfo)localObject3);
-                    k = j;
-                  }
-                }
-              }
-            }
-          }
-          label869:
-          if (((String)localObject3).equalsIgnoreCase("Web"))
-          {
-            localObject3 = new ArWebInfo();
-            for (j = ((XmlPullParser)localObject1).next();; j = ((XmlPullParser)localObject1).next())
-            {
-              k = i;
-              if (j == 1) {
-                break;
-              }
-              if (j != 2) {
-                break label1058;
-              }
-              String str4 = ((XmlPullParser)localObject1).getName();
-              bool = str4.equalsIgnoreCase("IsUrlTransparent");
-              if (!bool) {
-                break label979;
-              }
-              try
-              {
-                if (Integer.parseInt(((XmlPullParser)localObject1).nextText()) != 1) {
-                  break label2419;
-                }
-                bool = true;
-                ((ArWebInfo)localObject3).b = bool;
-              }
-              catch (NumberFormatException localNumberFormatException6)
-              {
-                for (;;)
-                {
-                  ((ArWebInfo)localObject3).b = false;
-                }
-              }
-            }
-            bool = localNumberFormatException6.equalsIgnoreCase("IsUrlAutoJump");
-            if (!bool) {
-              break;
-            }
           }
         }
       }
     }
-    for (;;)
+    int k;
+    if (((String)localObject2).equalsIgnoreCase("Task"))
     {
-      try
+      localObject2 = new ArCloudConfigInfo();
+      m = ((XmlPullParser)localObject1).next();
+      k = 0;
+      i = 0;
+      for (;;)
       {
-        if (Integer.parseInt(((XmlPullParser)localObject1).nextText()) != 1) {
-          break label2425;
-        }
-        bool = true;
-        ((ArWebInfo)localObject3).jdField_a_of_type_Boolean = bool;
-      }
-      catch (NumberFormatException localNumberFormatException7)
-      {
-        ((ArWebInfo)localObject3).jdField_a_of_type_Boolean = false;
-      }
-      break label957;
-      if (!localNumberFormatException7.equalsIgnoreCase("WebJumpUrl")) {
-        break label957;
-      }
-      ((ArWebInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-      break label957;
-      label1058:
-      if ((j != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Web"))) {
-        break label957;
-      }
-      ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArWebInfo = ((ArWebInfo)localObject3);
-      k = i;
-      break label436;
-      if (((String)localObject3).equalsIgnoreCase("ModelResource"))
-      {
-        localObject3 = new ArModelResource();
-        j = ((XmlPullParser)localObject1).next();
-        k = i;
-        if (j == 1) {
-          break label436;
-        }
-        if (j == 2)
-        {
-          str5 = ((XmlPullParser)localObject1).getName();
-          bool = str5.equalsIgnoreCase("ModelResourceSize");
-          if (!bool) {}
-        }
-        while ((j != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("ModelResource"))) {
-          for (;;)
+        if (m != 1) {
+          if (m == 2)
           {
+            localObject3 = ((XmlPullParser)localObject1).getName();
+            bool = ((String)localObject3).equalsIgnoreCase("BusinessId");
+            if (!bool) {}
+          }
+        }
+        try
+        {
+          ((ArCloudConfigInfo)localObject2).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+        }
+        catch (NumberFormatException localNumberFormatException1)
+        {
+          label417:
+          break label417;
+        }
+        ((ArCloudConfigInfo)localObject2).jdField_a_of_type_Int = k;
+        break label2459;
+        bool = ((String)localObject3).equalsIgnoreCase("LotterySet");
+        if (bool) {}
+        try
+        {
+          ((ArCloudConfigInfo)localObject2).e = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+        }
+        catch (NumberFormatException localNumberFormatException2)
+        {
+          label459:
+          break label459;
+        }
+        ((ArCloudConfigInfo)localObject2).e = k;
+        break label2459;
+        if (((String)localObject3).equalsIgnoreCase("PicId"))
+        {
+          ((ArCloudConfigInfo)localObject2).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+          break label2459;
+        }
+        if (((String)localObject3).equalsIgnoreCase("SDKVersion"))
+        {
+          ((ArCloudConfigInfo)localObject2).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+          break label2459;
+        }
+        bool = ((String)localObject3).equalsIgnoreCase("TrackMode");
+        if (bool) {}
+        try
+        {
+          ((ArCloudConfigInfo)localObject2).jdField_c_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+        }
+        catch (NumberFormatException localNumberFormatException3)
+        {
+          label553:
+          break label553;
+        }
+        ((ArCloudConfigInfo)localObject2).jdField_c_of_type_Int = k;
+        break label2459;
+        bool = ((String)localObject3).equalsIgnoreCase("Type");
+        if (bool) {}
+        try
+        {
+          ((ArCloudConfigInfo)localObject2).jdField_d_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+        }
+        catch (NumberFormatException localNumberFormatException4)
+        {
+          label595:
+          String str;
+          break label595;
+        }
+        ((ArCloudConfigInfo)localObject2).jdField_d_of_type_Int = k;
+        break label2459;
+        bool = ((String)localObject3).equalsIgnoreCase("Feature");
+        j = i;
+        if (bool)
+        {
+          localObject3 = new ArFeatureInfo();
+          k = ((XmlPullParser)localObject1).next();
+          for (i = j;; i = j)
+          {
+            if (k == 1) {
+              break label2469;
+            }
+            if (k == 2)
+            {
+              str = ((XmlPullParser)localObject1).getName();
+              if (str.equalsIgnoreCase("FeatureMD5"))
+              {
+                ((ArFeatureInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+                break;
+              }
+              bool = str.equalsIgnoreCase("FeatureSize");
+              if (!bool) {}
+            }
             try
             {
-              String str5;
-              ((ArModelResource)localObject3).jdField_a_of_type_Long = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-              j = ((XmlPullParser)localObject1).next();
+              ((ArFeatureInfo)localObject3).jdField_a_of_type_Long = Long.parseLong(((XmlPullParser)localObject1).nextText());
             }
-            catch (NumberFormatException localNumberFormatException8)
+            catch (NumberFormatException localNumberFormatException5)
             {
-              ((ArModelResource)localObject3).jdField_a_of_type_Long = 0L;
-              continue;
+              label718:
+              break label718;
             }
-            bool = localNumberFormatException8.equalsIgnoreCase("ModelRepeatTimes");
-            if (bool) {
-              try
+            ((ArFeatureInfo)localObject3).jdField_a_of_type_Long = 0L;
+            break;
+            if (!str.equalsIgnoreCase("FeatureUrl")) {
+              break;
+            }
+            ((ArFeatureInfo)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            break;
+            j = i;
+            if (k == 3)
+            {
+              j = i;
+              if (((XmlPullParser)localObject1).getName().equalsIgnoreCase("Feature"))
               {
-                ((ArModelResource)localObject3).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+                ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArFeatureInfo = ((ArFeatureInfo)localObject3);
+                break label2469;
               }
-              catch (NumberFormatException localNumberFormatException9)
+            }
+            label788:
+            k = ((XmlPullParser)localObject1).next();
+          }
+        }
+        if (((String)localObject3).equalsIgnoreCase("Web"))
+        {
+          localObject3 = new ArWebInfo();
+          for (j = ((XmlPullParser)localObject1).next();; j = ((XmlPullParser)localObject1).next())
+          {
+            if (j == 1) {
+              break label2486;
+            }
+            if (j == 2)
+            {
+              str = ((XmlPullParser)localObject1).getName();
+              bool = str.equalsIgnoreCase("IsUrlTransparent");
+              if (!bool) {}
+            }
+            try
+            {
+              if (Integer.parseInt(((XmlPullParser)localObject1).nextText()) != 1) {
+                break;
+              }
+              bool = true;
+              label883:
+              ((ArWebInfo)localObject3).b = bool;
+            }
+            catch (NumberFormatException localNumberFormatException6)
+            {
+              label893:
+              break label893;
+            }
+            ((ArWebInfo)localObject3).b = false;
+            continue;
+            bool = str.equalsIgnoreCase("IsUrlAutoJump");
+            if (bool) {}
+            try
+            {
+              if (Integer.parseInt(((XmlPullParser)localObject1).nextText()) != 1) {
+                break label2480;
+              }
+              bool = true;
+              label937:
+              ((ArWebInfo)localObject3).jdField_a_of_type_Boolean = bool;
+            }
+            catch (NumberFormatException localNumberFormatException7)
+            {
+              label947:
+              break label947;
+            }
+            ((ArWebInfo)localObject3).jdField_a_of_type_Boolean = false;
+            continue;
+            if (str.equalsIgnoreCase("WebJumpUrl"))
+            {
+              ((ArWebInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+              continue;
+              if ((j == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("Web")))
               {
-                ((ArModelResource)localObject3).jdField_a_of_type_Int = 0;
+                ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArWebInfo = ((ArWebInfo)localObject3);
+                break label2486;
               }
-            } else if (localNumberFormatException9.equalsIgnoreCase("ModelResourceMD5")) {
-              ((ArModelResource)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-            } else if (localNumberFormatException9.equalsIgnoreCase("ModelResourceUrl")) {
-              ((ArModelResource)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-            } else if (localNumberFormatException9.equalsIgnoreCase("ModelResourceBgMusic")) {
-              ((ArModelResource)localObject3).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-            } else if (localNumberFormatException9.equalsIgnoreCase("ModelConfigFile")) {
-              ((ArModelResource)localObject3).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
             }
           }
         }
+        if (((String)localObject3).equalsIgnoreCase("ModelResource"))
+        {
+          localObject3 = new ArModelResource();
+          j = ((XmlPullParser)localObject1).next();
+          label1052:
+          if (j == 1) {
+            break label2486;
+          }
+          if (j == 2)
+          {
+            str = ((XmlPullParser)localObject1).getName();
+            bool = str.equalsIgnoreCase("ModelResourceSize");
+            if (!bool) {}
+          }
+        }
+        try
+        {
+          ((ArModelResource)localObject3).jdField_a_of_type_Long = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+        }
+        catch (NumberFormatException localNumberFormatException8)
+        {
+          label1105:
+          break label1105;
+        }
+        ((ArModelResource)localObject3).jdField_a_of_type_Long = 0L;
+        break label1291;
+        bool = str.equalsIgnoreCase("ModelRepeatTimes");
+        if (!bool) {
+          break;
+        }
+      }
+    }
+    label1291:
+    label1330:
+    label1382:
+    label2022:
+    try
+    {
+      ((ArModelResource)localObject3).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+    }
+    catch (NumberFormatException localNumberFormatException9)
+    {
+      label1147:
+      label1660:
+      break label1147;
+    }
+    ((ArModelResource)localObject3).jdField_a_of_type_Int = 0;
+    break label1291;
+    if (str.equalsIgnoreCase("ModelResourceMD5"))
+    {
+      ((ArModelResource)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+    }
+    else if (str.equalsIgnoreCase("ModelResourceUrl"))
+    {
+      ((ArModelResource)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+    }
+    else if (str.equalsIgnoreCase("ModelResourceBgMusic"))
+    {
+      ((ArModelResource)localObject3).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+    }
+    else if (str.equalsIgnoreCase("ModelConfigFile"))
+    {
+      ((ArModelResource)localObject3).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      break label1291;
+      if ((j == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("ModelResource")))
+      {
         ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArModelResource = ((ArModelResource)localObject3);
-        k = i;
-        break label436;
+        break label2486;
       }
-      if (((String)localObject3).equalsIgnoreCase("Award"))
-      {
-        localObject3 = new ArAwardInfo();
-        j = ((XmlPullParser)localObject1).next();
-        k = i;
-        if (j == 1) {
-          break label436;
-        }
-        if (j == 2)
-        {
-          str6 = ((XmlPullParser)localObject1).getName();
-          bool = str6.equalsIgnoreCase("AwardDistance");
-          if (!bool) {}
-        }
-        while ((j != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Award"))) {
-          for (;;)
-          {
-            try
-            {
-              String str6;
-              ((ArAwardInfo)localObject3).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-              j = ((XmlPullParser)localObject1).next();
-            }
-            catch (NumberFormatException localNumberFormatException10)
-            {
-              ((ArAwardInfo)localObject3).jdField_a_of_type_Int = 0;
-              continue;
-            }
-            if (localNumberFormatException10.equalsIgnoreCase("NotPlayModel"))
-            {
-              if (Integer.parseInt(((XmlPullParser)localObject1).nextText()) == 1) {
-                ((ArAwardInfo)localObject3).jdField_b_of_type_Int = 0;
-              } else {
-                ((ArAwardInfo)localObject3).jdField_b_of_type_Int = 1;
-              }
-            }
-            else if (localNumberFormatException10.equalsIgnoreCase("BusinessBanner")) {
-              ((ArAwardInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-            } else if (localNumberFormatException10.equalsIgnoreCase("BusinessLogo")) {
-              ((ArAwardInfo)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-            } else if (localNumberFormatException10.equalsIgnoreCase("BusinessName")) {
-              ((ArAwardInfo)localObject3).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-            } else if (localNumberFormatException10.equalsIgnoreCase("BusinessWishing")) {
-              ((ArAwardInfo)localObject3).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
-            }
-          }
-        }
-        ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArAwardInfo = ((ArAwardInfo)localObject3);
-        k = i;
-        break label436;
-      }
-      k = i;
-      if (!((String)localObject3).equalsIgnoreCase("VideoResource")) {
-        break label436;
-      }
-      localObject3 = new ArVideoResourceInfo();
+    }
+    int j = ((XmlPullParser)localObject1).next();
+    break label1052;
+    if (((String)localObject3).equalsIgnoreCase("Award"))
+    {
+      localObject3 = new ArAwardInfo();
       j = ((XmlPullParser)localObject1).next();
-      k = i;
       if (j == 1) {
-        break label436;
+        break label2486;
       }
       if (j == 2)
       {
-        str7 = ((XmlPullParser)localObject1).getName();
-        bool = str7.equalsIgnoreCase("VideoConnectType");
+        str = ((XmlPullParser)localObject1).getName();
+        bool = str.equalsIgnoreCase("AwardDistance");
         if (!bool) {}
       }
-      while ((j != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("VideoResource"))) {
-        for (;;)
+    }
+    label1569:
+    label1702:
+    label1848:
+    label2110:
+    label2269:
+    try
+    {
+      ((ArAwardInfo)localObject3).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+    }
+    catch (NumberFormatException localNumberFormatException10)
+    {
+      label1890:
+      break label1382;
+    }
+    ((ArAwardInfo)localObject3).jdField_a_of_type_Int = 0;
+    break label1569;
+    if (str.equalsIgnoreCase("NotPlayModel"))
+    {
+      if (Integer.parseInt(((XmlPullParser)localObject1).nextText()) == 1) {
+        ((ArAwardInfo)localObject3).jdField_b_of_type_Int = 0;
+      } else {
+        ((ArAwardInfo)localObject3).jdField_b_of_type_Int = 1;
+      }
+    }
+    else if (str.equalsIgnoreCase("BusinessBanner"))
+    {
+      ((ArAwardInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+    }
+    else if (str.equalsIgnoreCase("BusinessLogo"))
+    {
+      ((ArAwardInfo)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+    }
+    else if (str.equalsIgnoreCase("BusinessName"))
+    {
+      ((ArAwardInfo)localObject3).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+    }
+    else if (str.equalsIgnoreCase("BusinessWishing"))
+    {
+      ((ArAwardInfo)localObject3).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+      break label1569;
+      if ((j == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("Award")))
+      {
+        ((ArCloudConfigInfo)localObject2).jdField_a_of_type_ComTencentMobileqqArModelArAwardInfo = ((ArAwardInfo)localObject3);
+        break label2486;
+      }
+    }
+    j = ((XmlPullParser)localObject1).next();
+    break label1330;
+    if (((String)localObject3).equalsIgnoreCase("VideoResource"))
+    {
+      localObject3 = new ArVideoResourceInfo();
+      j = ((XmlPullParser)localObject1).next();
+      for (;;)
+      {
+        if (j != 1)
         {
+          if (j == 2)
+          {
+            str = ((XmlPullParser)localObject1).getName();
+            bool = str.equalsIgnoreCase("VideoConnectType");
+            if (!bool) {}
+          }
           try
           {
-            String str7;
             ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-            j = ((XmlPullParser)localObject1).next();
           }
           catch (NumberFormatException localNumberFormatException11)
           {
-            ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Int = 0;
-            continue;
+            break label1660;
           }
-          bool = localNumberFormatException11.equalsIgnoreCase("VideoTrackMode");
-          if (bool)
+          ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Int = 0;
+          break label2491;
+          bool = str.equalsIgnoreCase("VideoTrackMode");
+          if (bool) {}
+          try
           {
-            try
-            {
-              ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-            }
-            catch (NumberFormatException localNumberFormatException12)
-            {
-              ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = 0;
-            }
+            ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
           }
-          else if (localNumberFormatException12.equalsIgnoreCase("VideoKeyingConfig"))
+          catch (NumberFormatException localNumberFormatException12)
+          {
+            break label1702;
+          }
+          ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = 0;
+          break label2491;
+          if (str.equalsIgnoreCase("VideoKeyingConfig"))
           {
             ((ArVideoResourceInfo)localObject3).jdField_a_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            break label2491;
           }
-          else if (localNumberFormatException12.equalsIgnoreCase("VideoLayout"))
+          if (str.equalsIgnoreCase("VideoLayout"))
           {
             ((ArVideoResourceInfo)localObject3).jdField_b_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            break label2491;
           }
-          else if (localNumberFormatException12.equalsIgnoreCase("VideoMD5"))
+          if (str.equalsIgnoreCase("VideoMD5"))
           {
             ((ArVideoResourceInfo)localObject3).jdField_c_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            break label2491;
           }
-          else if (localNumberFormatException12.equalsIgnoreCase("VideoUrl"))
+          if (str.equalsIgnoreCase("VideoUrl"))
           {
             ((ArVideoResourceInfo)localObject3).jdField_d_of_type_JavaLangString = ((XmlPullParser)localObject1).nextText();
+            break label2491;
           }
-          else
+          bool = str.equalsIgnoreCase("VideoRepeatTimes");
+          if (bool) {}
+          try
           {
-            bool = localNumberFormatException12.equalsIgnoreCase("VideoRepeatTimes");
-            if (bool)
+            ((ArVideoResourceInfo)localObject3).jdField_b_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+          }
+          catch (NumberFormatException localNumberFormatException13)
+          {
+            break label1848;
+          }
+          ((ArVideoResourceInfo)localObject3).jdField_b_of_type_Int = 0;
+          break label2491;
+          bool = str.equalsIgnoreCase("VideoType");
+          if (bool) {}
+          try
+          {
+            ((ArVideoResourceInfo)localObject3).jdField_d_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+          }
+          catch (NumberFormatException localNumberFormatException14)
+          {
+            break label1890;
+          }
+          ((ArVideoResourceInfo)localObject3).jdField_d_of_type_Int = 0;
+          break label2491;
+          bool = str.equalsIgnoreCase("VideoSize");
+          if (bool) {}
+          try
+          {
+            ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Long = Long.parseLong(((XmlPullParser)localObject1).nextText());
+          }
+          catch (NumberFormatException localNumberFormatException15)
+          {
+            label1932:
+            break label1932;
+          }
+          ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Long = 0L;
+          break label2491;
+          bool = str.equalsIgnoreCase("VideoTrackMode");
+          if (!bool) {
+            break label2491;
+          }
+          try
+          {
+            ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
+          }
+          catch (NumberFormatException localNumberFormatException16)
+          {
+            label1974:
+            break label1974;
+          }
+          ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = 0;
+          break label2022;
+          k = 0;
+          if ((j == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("VideoResource")))
+          {
+            ((ArCloudConfigInfo)localObject2).jdField_a_of_type_JavaUtilArrayList.add(localObject3);
+            j = k;
+            break label2494;
+          }
+          j = ((XmlPullParser)localObject1).next();
+          continue;
+          j = k;
+          if (m != 3) {
+            break label2494;
+          }
+          j = k;
+          if (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Task")) {
+            break label2494;
+          }
+          if (i != 0)
+          {
+            localArConfigInfo.mArCloudConfigInfos.add(localObject2);
+            break label2269;
+            label2077:
+            m = ((XmlPullParser)localObject1).next();
+            k = j;
+            break;
+            if (((String)localObject2).equalsIgnoreCase("Cloud"))
             {
-              try
-              {
-                ((ArVideoResourceInfo)localObject3).jdField_b_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-              }
-              catch (NumberFormatException localNumberFormatException13)
-              {
-                ((ArVideoResourceInfo)localObject3).jdField_b_of_type_Int = 0;
-              }
-            }
-            else
-            {
-              bool = localNumberFormatException13.equalsIgnoreCase("VideoType");
-              if (bool)
-              {
-                try
+              i = ((XmlPullParser)localObject1).next();
+              if (i != 1) {
+                if (i == 2)
                 {
-                  ((ArVideoResourceInfo)localObject3).jdField_d_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-                }
-                catch (NumberFormatException localNumberFormatException14)
-                {
-                  ((ArVideoResourceInfo)localObject3).jdField_d_of_type_Int = 0;
-                }
-              }
-              else
-              {
-                bool = localNumberFormatException14.equalsIgnoreCase("VideoSize");
-                if (bool)
-                {
-                  try
+                  localObject2 = ((XmlPullParser)localObject1).getName();
+                  if (((String)localObject2).equalsIgnoreCase("Begin"))
                   {
-                    ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Long = Long.parseLong(((XmlPullParser)localObject1).nextText());
+                    localArConfigInfo.aRCloudBegin = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+                    break label2497;
                   }
-                  catch (NumberFormatException localNumberFormatException15)
+                  if (((String)localObject2).equalsIgnoreCase("End"))
                   {
-                    ((ArVideoResourceInfo)localObject3).jdField_a_of_type_Long = 0L;
+                    localArConfigInfo.aRCloudEnd = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+                    break label2497;
                   }
-                }
-                else
-                {
-                  bool = localNumberFormatException15.equalsIgnoreCase("VideoTrackMode");
-                  if (bool) {
-                    try
-                    {
-                      ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = Integer.parseInt(((XmlPullParser)localObject1).nextText());
-                    }
-                    catch (NumberFormatException localNumberFormatException16)
-                    {
-                      ((ArVideoResourceInfo)localObject3).jdField_c_of_type_Int = 0;
-                    }
+                  bool = ((String)localObject2).equalsIgnoreCase("CacheExpireTime");
+                  if (!bool) {
+                    break label2497;
                   }
                 }
               }
             }
           }
+          try
+          {
+            localArConfigInfo.aRCloudCacheExpireTime = Long.valueOf(((XmlPullParser)localObject1).nextText()).longValue();
+          }
+          catch (Exception localException2)
+          {
+            label2223:
+            break label2223;
+          }
+          localArConfigInfo.aRCloudCacheExpireTime = 1440L;
+          break label2497;
+          if ((i == 3) && (((XmlPullParser)localObject1).getName().equalsIgnoreCase("Cloud"))) {}
         }
       }
-      ((ArCloudConfigInfo)localObject2).jdField_a_of_type_JavaUtilArrayList.add(localObject3);
-      k = i;
-      break label436;
-      label2119:
-      k = i;
-      if (j != 3) {
-        break label436;
-      }
-      k = i;
-      if (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Task")) {
-        break label436;
-      }
-      if (i == 0) {
-        break;
-      }
-      localArConfigInfo.mArCloudConfigInfos.add(localObject2);
-      break;
-      if (!((String)localObject2).equalsIgnoreCase("Cloud")) {
-        break;
-      }
+    }
+    label2358:
+    label2486:
+    label2491:
+    label2494:
+    label2497:
+    for (;;)
+    {
       i = ((XmlPullParser)localObject1).next();
-      label2181:
-      if (i != 1)
+      break label2110;
+      for (;;)
       {
-        if (i != 2) {
-          break label2315;
-        }
-        localObject2 = ((XmlPullParser)localObject1).getName();
-        if (!((String)localObject2).equalsIgnoreCase("Begin")) {
-          break label2237;
-        }
-        localArConfigInfo.aRCloudBegin = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
-      }
-      label2237:
-      while ((i != 3) || (!((XmlPullParser)localObject1).getName().equalsIgnoreCase("Cloud"))) {
-        for (;;)
+        i = ((XmlPullParser)localObject1).next();
+        while (i == 1)
         {
-          i = ((XmlPullParser)localObject1).next();
-          break label2181;
-          break;
-          if (((String)localObject2).equalsIgnoreCase("End"))
+          localObject1 = localArConfigInfo;
+          if (QLog.isColorLevel())
           {
-            localArConfigInfo.aRCloudEnd = ArConfigUtils.a(((XmlPullParser)localObject1).nextText());
+            localObject1 = new StringBuilder();
+            ((StringBuilder)localObject1).append("parseConfig success|config=");
+            ((StringBuilder)localObject1).append(localArConfigInfo);
+            QLog.d("ArConfigInfo", 2, ((StringBuilder)localObject1).toString());
+            return localArConfigInfo;
           }
-          else
-          {
-            bool = ((String)localObject2).equalsIgnoreCase("CacheExpireTime");
-            if (bool) {
-              try
-              {
-                localArConfigInfo.aRCloudCacheExpireTime = Long.valueOf(((XmlPullParser)localObject1).nextText()).longValue();
-              }
-              catch (Exception localException2)
-              {
-                localArConfigInfo.aRCloudCacheExpireTime = 1440L;
-              }
-            }
-          }
+          return localObject1;
         }
-      }
-      label2315:
-      break;
-      label2379:
-      label2384:
-      do
-      {
-        localObject1 = localArConfigInfo;
-        if (!QLog.isColorLevel()) {
+        if (i == 2) {
           break;
         }
-        QLog.d("ArConfigInfo", 2, "parseConfig success|config=" + localArConfigInfo);
-        return localArConfigInfo;
-        i = 1;
-        break label741;
-      } while (i == 1);
-      switch (i)
-      {
       }
-      break;
-      label2419:
+      j = k;
+      break label2494;
+      j = 1;
+      break label788;
+      j = 0;
+      break label2077;
       bool = false;
-      break label950;
-      label2425:
+      break label883;
       bool = false;
+      break label937;
+      j = 0;
+      break label2494;
+      break label2022;
+      break label2077;
     }
   }
   
   public static boolean saveArConfigToFile(ArConfigInfo paramArConfigInfo, String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.d("ArConfigInfo", 2, "saveArConfigToFile. uin = " + paramString);
+    if (QLog.isColorLevel())
+    {
+      localObject = new StringBuilder();
+      ((StringBuilder)localObject).append("saveArConfigToFile. uin = ");
+      ((StringBuilder)localObject).append(paramString);
+      QLog.d("ArConfigInfo", 2, ((StringBuilder)localObject).toString());
     }
     if (paramString == null) {
       return false;
     }
-    return saveArConfigToFile(paramArConfigInfo, BaseApplicationImpl.sApplication.getFilesDir().getPath(), "ar_file_config_v739_" + paramString);
+    Object localObject = BaseApplicationImpl.sApplication.getFilesDir().getPath();
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("ar_file_config_v739_");
+    localStringBuilder.append(paramString);
+    return saveArConfigToFile(paramArConfigInfo, (String)localObject, localStringBuilder.toString());
   }
   
   /* Error */
   public static boolean saveArConfigToFile(ArConfigInfo paramArConfigInfo, String paramString1, String paramString2)
   {
     // Byte code:
-    //   0: aconst_null
-    //   1: astore 5
-    //   3: iconst_0
-    //   4: istore 4
-    //   6: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
-    //   9: ifeq +38 -> 47
-    //   12: ldc 15
-    //   14: iconst_2
-    //   15: new 117	java/lang/StringBuilder
-    //   18: dup
-    //   19: invokespecial 118	java/lang/StringBuilder:<init>	()V
-    //   22: ldc_w 534
-    //   25: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   28: aload_1
-    //   29: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   32: ldc 171
-    //   34: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   37: aload_2
-    //   38: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   41: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   44: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
-    //   47: iload 4
-    //   49: istore_3
-    //   50: aload_0
-    //   51: ifnull +41 -> 92
-    //   54: iload 4
-    //   56: istore_3
-    //   57: aload_1
-    //   58: ifnull +34 -> 92
-    //   61: iload 4
-    //   63: istore_3
-    //   64: aload_1
-    //   65: ldc 173
-    //   67: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   70: ifne +22 -> 92
-    //   73: iload 4
-    //   75: istore_3
-    //   76: aload_2
-    //   77: ifnull +15 -> 92
-    //   80: aload_2
-    //   81: ldc 173
-    //   83: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
-    //   86: ifeq +8 -> 94
-    //   89: iload 4
-    //   91: istore_3
-    //   92: iload_3
-    //   93: ireturn
-    //   94: new 159	java/io/File
-    //   97: dup
-    //   98: aload_1
-    //   99: aload_2
-    //   100: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   103: astore 7
-    //   105: new 159	java/io/File
-    //   108: dup
-    //   109: aload_1
-    //   110: new 117	java/lang/StringBuilder
-    //   113: dup
-    //   114: invokespecial 118	java/lang/StringBuilder:<init>	()V
-    //   117: aload_2
-    //   118: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   121: ldc_w 536
-    //   124: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
-    //   127: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
-    //   130: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
-    //   133: astore 8
-    //   135: invokestatic 221	android/os/Parcel:obtain	()Landroid/os/Parcel;
-    //   138: astore 6
-    //   140: aload 6
-    //   142: iconst_0
-    //   143: invokevirtual 229	android/os/Parcel:setDataPosition	(I)V
-    //   146: aload_0
-    //   147: aload 6
-    //   149: iconst_0
-    //   150: invokevirtual 540	com/tencent/mobileqq/ar/aidl/ArConfigInfo:writeToParcel	(Landroid/os/Parcel;I)V
-    //   153: aload 6
-    //   155: invokevirtual 543	android/os/Parcel:marshall	()[B
-    //   158: astore_0
-    //   159: aload 7
-    //   161: invokevirtual 546	java/io/File:getParentFile	()Ljava/io/File;
-    //   164: astore_1
-    //   165: aload_1
-    //   166: invokevirtual 184	java/io/File:exists	()Z
-    //   169: ifne +8 -> 177
-    //   172: aload_1
-    //   173: invokevirtual 549	java/io/File:mkdir	()Z
-    //   176: pop
-    //   177: aload 8
-    //   179: invokevirtual 184	java/io/File:exists	()Z
-    //   182: ifeq +9 -> 191
-    //   185: aload 8
-    //   187: invokevirtual 187	java/io/File:delete	()Z
-    //   190: pop
-    //   191: new 551	java/io/FileOutputStream
-    //   194: dup
-    //   195: aload 8
-    //   197: invokespecial 552	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
-    //   200: astore_2
-    //   201: new 554	java/io/BufferedOutputStream
-    //   204: dup
-    //   205: aload_2
-    //   206: invokespecial 557	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
-    //   209: astore_1
-    //   210: aload_1
-    //   211: aload_0
-    //   212: invokevirtual 560	java/io/BufferedOutputStream:write	([B)V
-    //   215: aload_1
-    //   216: invokevirtual 563	java/io/BufferedOutputStream:flush	()V
-    //   219: aload 8
-    //   221: aload 7
-    //   223: invokestatic 568	com/tencent/mobileqq/utils/FileUtils:b	(Ljava/io/File;Ljava/io/File;)Z
-    //   226: istore_3
-    //   227: iload_3
-    //   228: istore 4
-    //   230: aload 6
-    //   232: invokevirtual 259	android/os/Parcel:recycle	()V
-    //   235: aload_1
-    //   236: ifnull +7 -> 243
-    //   239: aload_1
-    //   240: invokevirtual 569	java/io/BufferedOutputStream:close	()V
-    //   243: iload 4
-    //   245: istore_3
-    //   246: aload_2
-    //   247: ifnull -155 -> 92
-    //   250: aload_2
-    //   251: invokevirtual 570	java/io/FileOutputStream:close	()V
-    //   254: iload 4
-    //   256: ireturn
-    //   257: astore_0
-    //   258: aload_0
-    //   259: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   262: iload 4
-    //   264: ireturn
-    //   265: astore_0
-    //   266: aload_0
-    //   267: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   270: goto -27 -> 243
-    //   273: astore_2
-    //   274: aconst_null
-    //   275: astore_1
-    //   276: aload 5
-    //   278: astore_0
-    //   279: aload_2
-    //   280: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   283: aload 6
-    //   285: invokevirtual 259	android/os/Parcel:recycle	()V
-    //   288: aload_1
-    //   289: ifnull +7 -> 296
-    //   292: aload_1
-    //   293: invokevirtual 569	java/io/BufferedOutputStream:close	()V
-    //   296: iload 4
-    //   298: istore_3
-    //   299: aload_0
-    //   300: ifnull -208 -> 92
-    //   303: aload_0
-    //   304: invokevirtual 570	java/io/FileOutputStream:close	()V
-    //   307: iconst_0
-    //   308: ireturn
-    //   309: astore_0
-    //   310: aload_0
-    //   311: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   314: iconst_0
-    //   315: ireturn
-    //   316: astore_1
-    //   317: aload_1
-    //   318: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   321: goto -25 -> 296
-    //   324: astore_0
-    //   325: aconst_null
-    //   326: astore_1
-    //   327: aconst_null
-    //   328: astore_2
-    //   329: aload 6
-    //   331: invokevirtual 259	android/os/Parcel:recycle	()V
-    //   334: aload_1
-    //   335: ifnull +7 -> 342
-    //   338: aload_1
-    //   339: invokevirtual 569	java/io/BufferedOutputStream:close	()V
-    //   342: aload_2
-    //   343: ifnull +7 -> 350
-    //   346: aload_2
-    //   347: invokevirtual 570	java/io/FileOutputStream:close	()V
-    //   350: aload_0
-    //   351: athrow
-    //   352: astore_1
-    //   353: aload_1
-    //   354: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   357: goto -15 -> 342
-    //   360: astore_1
-    //   361: aload_1
-    //   362: invokevirtual 276	java/io/IOException:printStackTrace	()V
-    //   365: goto -15 -> 350
-    //   368: astore_0
-    //   369: aconst_null
-    //   370: astore_1
-    //   371: goto -42 -> 329
-    //   374: astore_0
-    //   375: goto -46 -> 329
-    //   378: astore 5
-    //   380: aload_0
-    //   381: astore_2
-    //   382: aload 5
-    //   384: astore_0
-    //   385: goto -56 -> 329
-    //   388: astore 5
-    //   390: aconst_null
-    //   391: astore_1
-    //   392: aload_2
-    //   393: astore_0
-    //   394: aload 5
-    //   396: astore_2
-    //   397: goto -118 -> 279
-    //   400: astore 5
-    //   402: aload_2
-    //   403: astore_0
-    //   404: aload 5
-    //   406: astore_2
-    //   407: goto -128 -> 279
+    //   0: invokestatic 142	com/tencent/qphone/base/util/QLog:isColorLevel	()Z
+    //   3: ifeq +54 -> 57
+    //   6: new 117	java/lang/StringBuilder
+    //   9: dup
+    //   10: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   13: astore 4
+    //   15: aload 4
+    //   17: ldc_w 534
+    //   20: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   23: pop
+    //   24: aload 4
+    //   26: aload_1
+    //   27: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   30: pop
+    //   31: aload 4
+    //   33: ldc 171
+    //   35: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   38: pop
+    //   39: aload 4
+    //   41: aload_2
+    //   42: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   45: pop
+    //   46: ldc 15
+    //   48: iconst_2
+    //   49: aload 4
+    //   51: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   54: invokestatic 147	com/tencent/qphone/base/util/QLog:d	(Ljava/lang/String;ILjava/lang/String;)V
+    //   57: aload_0
+    //   58: ifnull +349 -> 407
+    //   61: aload_1
+    //   62: ifnull +345 -> 407
+    //   65: aload_1
+    //   66: ldc 173
+    //   68: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   71: ifne +336 -> 407
+    //   74: aload_2
+    //   75: ifnull +332 -> 407
+    //   78: aload_2
+    //   79: ldc 173
+    //   81: invokevirtual 179	java/lang/String:equals	(Ljava/lang/Object;)Z
+    //   84: ifeq +5 -> 89
+    //   87: iconst_0
+    //   88: ireturn
+    //   89: new 159	java/io/File
+    //   92: dup
+    //   93: aload_1
+    //   94: aload_2
+    //   95: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   98: astore 7
+    //   100: new 117	java/lang/StringBuilder
+    //   103: dup
+    //   104: invokespecial 118	java/lang/StringBuilder:<init>	()V
+    //   107: astore 4
+    //   109: aload 4
+    //   111: aload_2
+    //   112: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   115: pop
+    //   116: aload 4
+    //   118: ldc_w 536
+    //   121: invokevirtual 124	java/lang/StringBuilder:append	(Ljava/lang/String;)Ljava/lang/StringBuilder;
+    //   124: pop
+    //   125: new 159	java/io/File
+    //   128: dup
+    //   129: aload_1
+    //   130: aload 4
+    //   132: invokevirtual 130	java/lang/StringBuilder:toString	()Ljava/lang/String;
+    //   135: invokespecial 181	java/io/File:<init>	(Ljava/lang/String;Ljava/lang/String;)V
+    //   138: astore 8
+    //   140: invokestatic 221	android/os/Parcel:obtain	()Landroid/os/Parcel;
+    //   143: astore 6
+    //   145: aload 6
+    //   147: iconst_0
+    //   148: invokevirtual 229	android/os/Parcel:setDataPosition	(I)V
+    //   151: aload_0
+    //   152: aload 6
+    //   154: iconst_0
+    //   155: invokevirtual 540	com/tencent/mobileqq/ar/aidl/ArConfigInfo:writeToParcel	(Landroid/os/Parcel;I)V
+    //   158: aload 6
+    //   160: invokevirtual 543	android/os/Parcel:marshall	()[B
+    //   163: astore 9
+    //   165: aload 7
+    //   167: invokevirtual 546	java/io/File:getParentFile	()Ljava/io/File;
+    //   170: astore_0
+    //   171: aload_0
+    //   172: invokevirtual 184	java/io/File:exists	()Z
+    //   175: ifne +8 -> 183
+    //   178: aload_0
+    //   179: invokevirtual 549	java/io/File:mkdir	()Z
+    //   182: pop
+    //   183: aload 8
+    //   185: invokevirtual 184	java/io/File:exists	()Z
+    //   188: ifeq +9 -> 197
+    //   191: aload 8
+    //   193: invokevirtual 187	java/io/File:delete	()Z
+    //   196: pop
+    //   197: aconst_null
+    //   198: astore_2
+    //   199: aconst_null
+    //   200: astore 4
+    //   202: aconst_null
+    //   203: astore 5
+    //   205: new 551	java/io/FileOutputStream
+    //   208: dup
+    //   209: aload 8
+    //   211: invokespecial 552	java/io/FileOutputStream:<init>	(Ljava/io/File;)V
+    //   214: astore_0
+    //   215: aload_0
+    //   216: astore_1
+    //   217: new 554	java/io/BufferedOutputStream
+    //   220: dup
+    //   221: aload_0
+    //   222: invokespecial 557	java/io/BufferedOutputStream:<init>	(Ljava/io/OutputStream;)V
+    //   225: astore 4
+    //   227: aload 4
+    //   229: aload 9
+    //   231: invokevirtual 560	java/io/BufferedOutputStream:write	([B)V
+    //   234: aload 4
+    //   236: invokevirtual 563	java/io/BufferedOutputStream:flush	()V
+    //   239: aload 8
+    //   241: aload 7
+    //   243: invokestatic 569	com/tencent/mobileqq/utils/FileUtils:renameFile	(Ljava/io/File;Ljava/io/File;)Z
+    //   246: istore_3
+    //   247: aload 6
+    //   249: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   252: aload 4
+    //   254: invokevirtual 570	java/io/BufferedOutputStream:close	()V
+    //   257: goto +8 -> 265
+    //   260: astore_1
+    //   261: aload_1
+    //   262: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   265: aload_0
+    //   266: invokevirtual 571	java/io/FileOutputStream:close	()V
+    //   269: iload_3
+    //   270: ireturn
+    //   271: astore_0
+    //   272: aload_0
+    //   273: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   276: iload_3
+    //   277: ireturn
+    //   278: astore_2
+    //   279: goto +87 -> 366
+    //   282: astore_1
+    //   283: aload 4
+    //   285: astore 5
+    //   287: aload_1
+    //   288: astore 4
+    //   290: goto +18 -> 308
+    //   293: astore 4
+    //   295: goto +13 -> 308
+    //   298: astore_2
+    //   299: aconst_null
+    //   300: astore_0
+    //   301: goto +65 -> 366
+    //   304: astore 4
+    //   306: aconst_null
+    //   307: astore_0
+    //   308: aload_0
+    //   309: astore_1
+    //   310: aload 5
+    //   312: astore_2
+    //   313: aload 4
+    //   315: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   318: aload 6
+    //   320: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   323: aload 5
+    //   325: ifnull +16 -> 341
+    //   328: aload 5
+    //   330: invokevirtual 570	java/io/BufferedOutputStream:close	()V
+    //   333: goto +8 -> 341
+    //   336: astore_1
+    //   337: aload_1
+    //   338: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   341: aload_0
+    //   342: ifnull +14 -> 356
+    //   345: aload_0
+    //   346: invokevirtual 571	java/io/FileOutputStream:close	()V
+    //   349: iconst_0
+    //   350: ireturn
+    //   351: astore_0
+    //   352: aload_0
+    //   353: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   356: iconst_0
+    //   357: ireturn
+    //   358: astore_0
+    //   359: aload_2
+    //   360: astore 4
+    //   362: aload_0
+    //   363: astore_2
+    //   364: aload_1
+    //   365: astore_0
+    //   366: aload 6
+    //   368: invokevirtual 259	android/os/Parcel:recycle	()V
+    //   371: aload 4
+    //   373: ifnull +16 -> 389
+    //   376: aload 4
+    //   378: invokevirtual 570	java/io/BufferedOutputStream:close	()V
+    //   381: goto +8 -> 389
+    //   384: astore_1
+    //   385: aload_1
+    //   386: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   389: aload_0
+    //   390: ifnull +15 -> 405
+    //   393: aload_0
+    //   394: invokevirtual 571	java/io/FileOutputStream:close	()V
+    //   397: goto +8 -> 405
+    //   400: astore_0
+    //   401: aload_0
+    //   402: invokevirtual 265	java/io/IOException:printStackTrace	()V
+    //   405: aload_2
+    //   406: athrow
+    //   407: iconst_0
+    //   408: ireturn
     // Local variable table:
     //   start	length	slot	name	signature
-    //   0	410	0	paramArConfigInfo	ArConfigInfo
-    //   0	410	1	paramString1	String
-    //   0	410	2	paramString2	String
-    //   49	250	3	bool1	boolean
-    //   4	293	4	bool2	boolean
-    //   1	276	5	localObject1	Object
-    //   378	5	5	localObject2	Object
-    //   388	7	5	localIOException1	java.io.IOException
-    //   400	5	5	localIOException2	java.io.IOException
-    //   138	192	6	localParcel	Parcel
-    //   103	119	7	localFile1	File
-    //   133	87	8	localFile2	File
+    //   0	409	0	paramArConfigInfo	ArConfigInfo
+    //   0	409	1	paramString1	String
+    //   0	409	2	paramString2	String
+    //   246	31	3	bool	boolean
+    //   13	276	4	localObject1	Object
+    //   293	1	4	localIOException1	java.io.IOException
+    //   304	10	4	localIOException2	java.io.IOException
+    //   360	17	4	str	String
+    //   203	126	5	localObject2	Object
+    //   143	224	6	localParcel	Parcel
+    //   98	144	7	localFile1	File
+    //   138	102	8	localFile2	File
+    //   163	67	9	arrayOfByte	byte[]
     // Exception table:
     //   from	to	target	type
-    //   250	254	257	java/io/IOException
-    //   239	243	265	java/io/IOException
-    //   191	201	273	java/io/IOException
-    //   303	307	309	java/io/IOException
-    //   292	296	316	java/io/IOException
-    //   191	201	324	finally
-    //   338	342	352	java/io/IOException
-    //   346	350	360	java/io/IOException
-    //   201	210	368	finally
-    //   210	227	374	finally
-    //   279	283	378	finally
-    //   201	210	388	java/io/IOException
-    //   210	227	400	java/io/IOException
+    //   252	257	260	java/io/IOException
+    //   265	269	271	java/io/IOException
+    //   227	247	278	finally
+    //   227	247	282	java/io/IOException
+    //   217	227	293	java/io/IOException
+    //   205	215	298	finally
+    //   205	215	304	java/io/IOException
+    //   328	333	336	java/io/IOException
+    //   345	349	351	java/io/IOException
+    //   217	227	358	finally
+    //   313	318	358	finally
+    //   376	381	384	java/io/IOException
+    //   393	397	400	java/io/IOException
   }
   
   public int describeContents()
@@ -1338,58 +1510,61 @@ public class ArConfigInfo
           }
         }
       }
-    }
-    catch (Exception paramString)
-    {
       return null;
     }
+    catch (Exception paramString) {}
     return null;
   }
   
   public String toString()
   {
     StringBuffer localStringBuffer = new StringBuffer("ArConfigInfo{");
-    localStringBuffer.append("version='").append(this.version).append('\'');
-    localStringBuffer.append(", aRBegin=").append(this.aRBegin);
-    localStringBuffer.append(", aREnd=").append(this.aREnd);
-    localStringBuffer.append(", scanLine1='").append(this.scanLine1).append('\'');
-    localStringBuffer.append(", scanLine2='").append(this.scanLine2).append('\'');
-    localStringBuffer.append(", scanLineLink='").append(this.scanLineLink).append('\'');
-    localStringBuffer.append(", scanLinkUrl='").append(this.scanLinkUrl).append('\'');
-    localStringBuffer.append(", aRCloudBegin=").append(this.aRCloudBegin).append('\'');
-    localStringBuffer.append(", mArCloudConfigInfos=").append(this.mArCloudConfigInfos).append('\'');
-    localStringBuffer.append(", aRCloudCacheExpireTime=").append(this.aRCloudCacheExpireTime).append('\'');
-    localStringBuffer.append(", aRCloudEnd=").append(this.aRCloudEnd).append('\'');
-    localStringBuffer.append(", saveConfig=").append(this.saveConfig).append('\'');
+    localStringBuffer.append("version='");
+    localStringBuffer.append(this.version);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", aRBegin=");
+    localStringBuffer.append(this.aRBegin);
+    localStringBuffer.append(", aREnd=");
+    localStringBuffer.append(this.aREnd);
+    localStringBuffer.append(", scanLine1='");
+    localStringBuffer.append(this.scanLine1);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scanLine2='");
+    localStringBuffer.append(this.scanLine2);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scanLineLink='");
+    localStringBuffer.append(this.scanLineLink);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", scanLinkUrl='");
+    localStringBuffer.append(this.scanLinkUrl);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", aRCloudBegin=");
+    localStringBuffer.append(this.aRCloudBegin);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", mArCloudConfigInfos=");
+    localStringBuffer.append(this.mArCloudConfigInfos);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", aRCloudCacheExpireTime=");
+    localStringBuffer.append(this.aRCloudCacheExpireTime);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", aRCloudEnd=");
+    localStringBuffer.append(this.aRCloudEnd);
+    localStringBuffer.append('\'');
+    localStringBuffer.append(", saveConfig=");
+    localStringBuffer.append(this.saveConfig);
+    localStringBuffer.append('\'');
     localStringBuffer.append('}');
     return localStringBuffer.toString();
   }
   
   public void writeToParcel(Parcel paramParcel, int paramInt)
   {
-    paramParcel.writeInt(20);
-    paramParcel.writeInt(this.version);
-    paramParcel.writeLong(this.aRBegin);
-    paramParcel.writeLong(this.aREnd);
-    paramParcel.writeString(this.scanLine1);
-    paramParcel.writeString(this.scanLine2);
-    paramParcel.writeString(this.scanLineLink);
-    paramParcel.writeString(this.scanLinkUrl);
-    paramParcel.writeTypedList(this.mArCloudConfigInfos);
-    paramParcel.writeLong(this.aRCloudBegin);
-    paramParcel.writeLong(this.aRCloudEnd);
-    paramParcel.writeLong(this.aRCloudCacheExpireTime);
-    if (this.saveConfig) {}
-    for (byte b = 1;; b = 0)
-    {
-      paramParcel.writeByte(b);
-      return;
-    }
+    throw new Runtime("d2j fail translate: java.lang.RuntimeException: can not merge I and Z\r\n\tat com.googlecode.dex2jar.ir.TypeClass.merge(TypeClass.java:100)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeRef.updateTypeClass(TypeTransformer.java:174)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.provideAs(TypeTransformer.java:780)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.e1expr(TypeTransformer.java:496)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:713)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.enexpr(TypeTransformer.java:698)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:719)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.exExpr(TypeTransformer.java:703)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.s1stmt(TypeTransformer.java:810)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.sxStmt(TypeTransformer.java:840)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer$TypeAnalyze.analyze(TypeTransformer.java:206)\r\n\tat com.googlecode.dex2jar.ir.ts.TypeTransformer.transform(TypeTransformer.java:44)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.optimize(Dex2jar.java:162)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertCode(Dex2Asm.java:414)\r\n\tat com.googlecode.d2j.dex.ExDex2Asm.convertCode(ExDex2Asm.java:42)\r\n\tat com.googlecode.d2j.dex.Dex2jar$2.convertCode(Dex2jar.java:128)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertMethod(Dex2Asm.java:509)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertClass(Dex2Asm.java:406)\r\n\tat com.googlecode.d2j.dex.Dex2Asm.convertDex(Dex2Asm.java:422)\r\n\tat com.googlecode.d2j.dex.Dex2jar.doTranslate(Dex2jar.java:172)\r\n\tat com.googlecode.d2j.dex.Dex2jar.to(Dex2jar.java:272)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.doCommandLine(Dex2jarCmd.java:108)\r\n\tat com.googlecode.dex2jar.tools.BaseCmd.doMain(BaseCmd.java:288)\r\n\tat com.googlecode.dex2jar.tools.Dex2jarCmd.main(Dex2jarCmd.java:32)\r\n");
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
  * Qualified Name:     com.tencent.mobileqq.ar.aidl.ArConfigInfo
  * JD-Core Version:    0.7.0.1
  */

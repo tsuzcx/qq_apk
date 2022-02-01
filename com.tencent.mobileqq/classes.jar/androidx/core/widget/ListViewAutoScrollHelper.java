@@ -24,25 +24,28 @@ public class ListViewAutoScrollHelper
   {
     ListView localListView = this.mTarget;
     int i = localListView.getCount();
-    if (i == 0) {}
-    int j;
-    int k;
-    do
-    {
+    if (i == 0) {
       return false;
-      j = localListView.getChildCount();
-      k = localListView.getFirstVisiblePosition();
-      if (paramInt <= 0) {
-        break;
-      }
-    } while ((k + j >= i) && (localListView.getChildAt(j - 1).getBottom() <= localListView.getHeight()));
-    do
+    }
+    int j = localListView.getChildCount();
+    int k = localListView.getFirstVisiblePosition();
+    if (paramInt > 0)
     {
-      return true;
-      if (paramInt >= 0) {
-        break;
+      if ((k + j >= i) && (localListView.getChildAt(j - 1).getBottom() <= localListView.getHeight())) {
+        return false;
       }
-    } while ((k > 0) || (localListView.getChildAt(0).getTop() < 0));
+    }
+    else
+    {
+      if (paramInt >= 0) {
+        break label89;
+      }
+      if ((k <= 0) && (localListView.getChildAt(0).getTop() >= 0)) {
+        return false;
+      }
+    }
+    return true;
+    label89:
     return false;
   }
   
@@ -53,7 +56,7 @@ public class ListViewAutoScrollHelper
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes.jar
  * Qualified Name:     androidx.core.widget.ListViewAutoScrollHelper
  * JD-Core Version:    0.7.0.1
  */

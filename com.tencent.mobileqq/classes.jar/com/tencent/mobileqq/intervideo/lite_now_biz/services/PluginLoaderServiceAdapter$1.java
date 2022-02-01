@@ -13,24 +13,25 @@ class PluginLoaderServiceAdapter$1
   
   public void onResponse(int paramInt, JSONObject paramJSONObject)
   {
-    if (paramJSONObject == null) {}
-    for (String str = "";; str = paramJSONObject.toString())
+    if (paramJSONObject == null) {
+      str = "";
+    } else {
+      str = paramJSONObject.toString();
+    }
+    String str = String.format("onResponse: code[%d] jsonObject[%s]", new Object[] { Integer.valueOf(paramInt), str });
+    this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesPluginLoaderServiceAdapter.a().i("PluginLoaderService", str, new Object[0]);
+    if ((paramInt == 0) && (paramJSONObject != null))
     {
-      str = String.format("onResponse: code[%d] jsonObject[%s]", new Object[] { Integer.valueOf(paramInt), str });
-      this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesPluginLoaderServiceAdapter.a().i("PluginLoaderService", str, new Object[0]);
-      if ((paramInt == 0) && (paramJSONObject != null)) {
-        break;
-      }
-      this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIGetInstallPlugins.a(null);
-      DataReport.b(str);
+      this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIGetInstallPlugins.a(PluginLoaderServiceAdapter.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesPluginLoaderServiceAdapter, paramJSONObject));
       return;
     }
-    this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIGetInstallPlugins.a(PluginLoaderServiceAdapter.a(this.jdField_a_of_type_ComTencentMobileqqIntervideoLite_now_bizServicesPluginLoaderServiceAdapter, paramJSONObject));
+    this.jdField_a_of_type_ComTencentIlivesdkPluginloaderserviceInterfacesIGetInstallPlugins.a(null);
+    DataReport.b(str);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes16.jar
  * Qualified Name:     com.tencent.mobileqq.intervideo.lite_now_biz.services.PluginLoaderServiceAdapter.1
  * JD-Core Version:    0.7.0.1
  */

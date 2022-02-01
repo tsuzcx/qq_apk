@@ -215,8 +215,10 @@ public class BeaconAdapter
   
   public static void setOmgId(String paramString)
   {
-    if (!beaconEnable) {}
-    while (!sdkVersionBiggerThanThat(UserAction.getSDKVersion(), "3.2.0")) {
+    if (!beaconEnable) {
+      return;
+    }
+    if (!sdkVersionBiggerThanThat(UserAction.getSDKVersion(), "3.2.0")) {
       return;
     }
     UserAction.setOmgId(paramString);
@@ -264,7 +266,7 @@ public class BeaconAdapter
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.comm.BeaconAdapter
  * JD-Core Version:    0.7.0.1
  */

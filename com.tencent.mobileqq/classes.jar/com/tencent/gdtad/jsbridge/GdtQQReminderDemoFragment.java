@@ -19,7 +19,7 @@ import com.tencent.mobileqq.activity.PublicFragmentActivity.Launcher;
 import com.tencent.mobileqq.activity.activateFriend.QQReminderAMSHelper;
 import com.tencent.mobileqq.activity.activateFriend.biz.QQReminderSwitchObserver.QQReminderSwitchListener;
 import com.tencent.mobileqq.fragment.PublicBaseFragment;
-import com.tencent.qqlive.module.videoreport.inject.fragment.V4FragmentCollector;
+import com.tencent.qqlive.module.videoreport.inject.fragment.AndroidXFragmentCollector;
 
 public final class GdtQQReminderDemoFragment
   extends PublicBaseFragment
@@ -121,13 +121,13 @@ public final class GdtQQReminderDemoFragment
     localLinearLayout.addView(localButton1);
     localLinearLayout.addView(localButton2);
     localLinearLayout.addView(this.jdField_a_of_type_AndroidWidgetEditText);
-    V4FragmentCollector.onV4FragmentViewCreated(this, localLinearLayout);
+    AndroidXFragmentCollector.onAndroidXFragmentViewCreated(this, localLinearLayout);
     return localLinearLayout;
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes5.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
  * Qualified Name:     com.tencent.gdtad.jsbridge.GdtQQReminderDemoFragment
  * JD-Core Version:    0.7.0.1
  */

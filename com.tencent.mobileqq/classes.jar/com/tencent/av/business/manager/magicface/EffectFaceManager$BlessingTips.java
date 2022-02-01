@@ -21,12 +21,28 @@ public class EffectFaceManager$BlessingTips
   
   public String toString()
   {
-    return "id[" + this.jdField_a_of_type_JavaLangString + "], text[" + this.jdField_b_of_type_JavaLangString + "], date[" + this.jdField_a_of_type_Long + "->" + this.jdField_b_of_type_Long + "], imageUrl[" + this.c + "], callTimeLen[" + this.jdField_a_of_type_Int + "], showTimeLen[" + this.jdField_b_of_type_Int + "]";
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("id[");
+    localStringBuilder.append(this.jdField_a_of_type_JavaLangString);
+    localStringBuilder.append("], text[");
+    localStringBuilder.append(this.jdField_b_of_type_JavaLangString);
+    localStringBuilder.append("], date[");
+    localStringBuilder.append(this.jdField_a_of_type_Long);
+    localStringBuilder.append("->");
+    localStringBuilder.append(this.jdField_b_of_type_Long);
+    localStringBuilder.append("], imageUrl[");
+    localStringBuilder.append(this.c);
+    localStringBuilder.append("], callTimeLen[");
+    localStringBuilder.append(this.jdField_a_of_type_Int);
+    localStringBuilder.append("], showTimeLen[");
+    localStringBuilder.append(this.jdField_b_of_type_Int);
+    localStringBuilder.append("]");
+    return localStringBuilder.toString();
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.business.manager.magicface.EffectFaceManager.BlessingTips
  * JD-Core Version:    0.7.0.1
  */

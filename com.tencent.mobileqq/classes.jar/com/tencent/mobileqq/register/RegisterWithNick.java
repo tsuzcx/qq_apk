@@ -10,18 +10,13 @@ import mqq.observer.WtloginObserver;
 public class RegisterWithNick
   extends RegisterStepBase
 {
-  protected static final String a;
+  protected static final String a = "RegisterWithNick";
   private WtloginObserver jdField_a_of_type_MqqObserverWtloginObserver = new RegisterWithNick.1(this);
   private boolean jdField_a_of_type_Boolean = false;
   private byte[] jdField_a_of_type_ArrayOfByte = null;
   private String b = null;
   private String c = "";
   private String d = null;
-  
-  static
-  {
-    jdField_a_of_type_JavaLangString = RegisterWithNick.class.getSimpleName();
-  }
   
   public RegisterWithNick(RegisterNewBaseActivity paramRegisterNewBaseActivity)
   {
@@ -50,13 +45,13 @@ public class RegisterWithNick
       if (QLog.isDevelopLevel()) {
         QLog.i(jdField_a_of_type_JavaLangString, 4, String.format(Locale.getDefault(), "doAction nick: %s, unBindUin: %s, smsCode: %s", new Object[] { paramString, this.d, this.c }));
       }
-      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.createWaitingDialog(2131716905);
+      this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.createWaitingDialog(2131716558);
       if (PhoneNumLoginImpl.a().a(this.jdField_a_of_type_MqqAppAppRuntime, this.c.getBytes(), paramString.getBytes(), this.d, this.jdField_a_of_type_MqqObserverWtloginObserver) != 0)
       {
         this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.closeDialog();
-        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(2131716956, 1);
+        this.jdField_a_of_type_ComTencentMobileqqActivityRegisterNewBaseActivity.notifyToast(2131716609, 1);
+        return;
       }
-      return;
     }
     catch (Exception paramString)
     {
@@ -66,7 +61,7 @@ public class RegisterWithNick
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.register.RegisterWithNick
  * JD-Core Version:    0.7.0.1
  */

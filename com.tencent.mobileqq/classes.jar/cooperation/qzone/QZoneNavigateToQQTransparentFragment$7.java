@@ -1,11 +1,11 @@
 package cooperation.qzone;
 
-import android.support.v4.app.FragmentActivity;
+import com.tencent.mobileqq.app.BaseActivity;
 
 final class QZoneNavigateToQQTransparentFragment$7
   implements Runnable
 {
-  QZoneNavigateToQQTransparentFragment$7(FragmentActivity paramFragmentActivity) {}
+  QZoneNavigateToQQTransparentFragment$7(BaseActivity paramBaseActivity) {}
   
   public void run()
   {
@@ -14,7 +14,7 @@ final class QZoneNavigateToQQTransparentFragment$7
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes13.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes12.jar
  * Qualified Name:     cooperation.qzone.QZoneNavigateToQQTransparentFragment.7
  * JD-Core Version:    0.7.0.1
  */

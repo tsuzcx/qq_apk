@@ -42,55 +42,18 @@ public class StructMsgItemTextButton
     paramContext.setOrientation(0);
     paramContext.setGravity(16);
     paramContext.setLayoutParams(new LinearLayout.LayoutParams(-2, -2));
-    paramContext.setId(2131380640);
+    paramContext.setId(2131379921);
     return paramContext;
   }
   
   public View a(Context paramContext, View paramView, Bundle paramBundle)
   {
-    if (paramView != null) {
+    if (paramView != null)
+    {
       paramContext = (StructMsgItemTextButton.ViewHolder)paramView.getTag();
     }
-    for (;;)
+    else
     {
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTag(this);
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextColor(c());
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.requestLayout();
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.DEFAULT, d());
-      paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextSize(b() / 2);
-      if (!TextUtils.isEmpty(this.ac)) {
-        paramContext.jdField_a_of_type_AndroidWidgetTextView.setText(this.ac);
-      }
-      try
-      {
-        if (!TextUtils.isEmpty(this.ad))
-        {
-          paramBundle = URLDrawable.getDrawable(this.ad, this.o, this.o, null, null);
-          paramBundle.setAutoDownload(true);
-          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
-        }
-        if (!TextUtils.isEmpty(this.ae))
-        {
-          paramBundle = URLDrawable.getDrawable(this.ae, this.p, this.p, null, null);
-          paramBundle.setAutoDownload(true);
-          paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
-        }
-      }
-      catch (Exception paramContext)
-      {
-        for (;;)
-        {
-          if (QLog.isColorLevel()) {
-            QLog.d("StructMsg", 2, " URLDrawable.exception illegal url : " + paramContext.getMessage());
-          }
-        }
-      }
-      if ((this.c != null) && (!this.c.equals("")))
-      {
-        paramView.setClickable(true);
-        paramView.setOnClickListener(this);
-      }
-      return paramView;
       paramView = new StructMsgItemTextButton.ViewHolder(this);
       paramView.jdField_a_of_type_AndroidWidgetLinearLayout = a(paramContext);
       paramView.jdField_a_of_type_AndroidWidgetImageView = new ImageView(paramContext);
@@ -106,6 +69,45 @@ public class StructMsgItemTextButton
       paramContext = paramView;
       paramView = paramBundle;
     }
+    paramContext.jdField_a_of_type_AndroidWidgetTextView.setTag(this);
+    paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextColor(c());
+    paramContext.jdField_a_of_type_AndroidWidgetTextView.requestLayout();
+    paramContext.jdField_a_of_type_AndroidWidgetTextView.setTypeface(Typeface.DEFAULT, d());
+    paramContext.jdField_a_of_type_AndroidWidgetTextView.setTextSize(b() / 2);
+    if (!TextUtils.isEmpty(this.ac)) {
+      paramContext.jdField_a_of_type_AndroidWidgetTextView.setText(this.ac);
+    }
+    try
+    {
+      if (!TextUtils.isEmpty(this.ad))
+      {
+        paramBundle = URLDrawable.getDrawable(this.ad, this.o, this.o, null, null);
+        paramBundle.setAutoDownload(true);
+        paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+      }
+      if (!TextUtils.isEmpty(this.ae))
+      {
+        paramBundle = URLDrawable.getDrawable(this.ae, this.p, this.p, null, null);
+        paramBundle.setAutoDownload(true);
+        paramContext.jdField_a_of_type_AndroidWidgetImageView.setImageDrawable(paramBundle);
+      }
+    }
+    catch (Exception paramContext)
+    {
+      if (QLog.isColorLevel())
+      {
+        paramBundle = new StringBuilder();
+        paramBundle.append(" URLDrawable.exception illegal url : ");
+        paramBundle.append(paramContext.getMessage());
+        QLog.d("StructMsg", 2, paramBundle.toString());
+      }
+    }
+    if ((this.c != null) && (!this.c.equals("")))
+    {
+      paramView.setClickable(true);
+      paramView.setOnClickListener(this);
+    }
+    return paramView;
   }
   
   public String a()
@@ -125,40 +127,32 @@ public class StructMsgItemTextButton
   public void a(ObjectOutput paramObjectOutput)
   {
     super.a(paramObjectOutput);
-    if (this.ac == null)
-    {
-      str = "";
-      paramObjectOutput.writeUTF(str);
-      if (this.ad != null) {
-        break label86;
-      }
-      str = "";
-      label32:
-      paramObjectOutput.writeUTF(str);
-      if (this.ae != null) {
-        break label94;
-      }
-      str = "";
-      label49:
-      paramObjectOutput.writeUTF(str);
-      if (this.b != null) {
-        break label102;
-      }
+    Object localObject = this.ac;
+    String str1 = "";
+    if (localObject == null) {
+      localObject = "";
+    } else {
+      localObject = MessageUtils.a((String)localObject, false);
     }
-    label86:
-    label94:
-    label102:
-    for (String str = "";; str = this.b)
-    {
-      paramObjectOutput.writeUTF(str);
-      return;
-      str = MessageUtils.a(this.ac, false);
-      break;
-      str = this.ad;
-      break label32;
-      str = this.ae;
-      break label49;
+    paramObjectOutput.writeUTF((String)localObject);
+    String str2 = this.ad;
+    localObject = str2;
+    if (str2 == null) {
+      localObject = "";
     }
+    paramObjectOutput.writeUTF((String)localObject);
+    str2 = this.ae;
+    localObject = str2;
+    if (str2 == null) {
+      localObject = "";
+    }
+    paramObjectOutput.writeUTF((String)localObject);
+    if (this.b == null) {
+      localObject = str1;
+    } else {
+      localObject = this.b;
+    }
+    paramObjectOutput.writeUTF((String)localObject);
   }
   
   public void a(XmlSerializer paramXmlSerializer)
@@ -218,7 +212,7 @@ public class StructMsgItemTextButton
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
  * Qualified Name:     com.tencent.mobileqq.structmsg.view.StructMsgItemTextButton
  * JD-Core Version:    0.7.0.1
  */

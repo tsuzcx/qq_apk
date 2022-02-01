@@ -1,13 +1,12 @@
 package com.tencent.mobileqq.emoticonview;
 
 import android.animation.Animator;
-import android.animation.Animator.AnimatorListener;
 import com.tencent.mobileqq.activity.aio.BaseChatItemLayout;
-import com.tencent.mobileqq.activity.aio.core.BaseChatPie;
 import com.tencent.mobileqq.activity.fling.TopGestureLayout;
+import com.tencent.mobileqq.widget.D8SafeAnimatorListener;
 
 class StickerGestureDetector$StickerAnimationListener
-  implements Animator.AnimatorListener
+  extends D8SafeAnimatorListener
 {
   private StickerGestureDetector$StickerAnimationListener(StickerGestureDetector paramStickerGestureDetector) {}
   
@@ -19,12 +18,14 @@ class StickerGestureDetector$StickerAnimationListener
     {
       this.this$0.mRootView.post(new StickerGestureDetector.StickerAnimationListener.1(this));
       this.this$0.removeStickerMaskLayout();
-      this.this$0.mBaseChatPie.aS();
-      this.this$0.scale = 1.0D;
-      this.this$0.angle = 0.0D;
-      if (this.this$0.lastIntersectView != null)
+      StickerGestureDetector.access$100(this.this$0);
+      paramAnimator = this.this$0;
+      paramAnimator.scale = 1.0D;
+      paramAnimator.angle = 0.0D;
+      if (paramAnimator.lastIntersectView != null)
       {
-        this.this$0.changeBubbleBg(this.this$0.lastIntersectView, false);
+        paramAnimator = this.this$0;
+        paramAnimator.changeBubbleBg(paramAnimator.lastIntersectView, false);
         this.this$0.currentChooseLayout = null;
       }
       if ((this.this$0.lastIntersectChatLayout != null) && ((this.this$0.lastIntersectChatLayout instanceof BaseChatItemLayout)))
@@ -42,7 +43,7 @@ class StickerGestureDetector$StickerAnimationListener
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes8.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes6.jar
  * Qualified Name:     com.tencent.mobileqq.emoticonview.StickerGestureDetector.StickerAnimationListener
  * JD-Core Version:    0.7.0.1
  */

@@ -34,7 +34,11 @@ public final class RSAUtils
       paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
       return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label21:
+      break label21;
+    }
     return null;
   }
   
@@ -47,7 +51,11 @@ public final class RSAUtils
       paramArrayOfByte = localCipher.doFinal(paramArrayOfByte);
       return paramArrayOfByte;
     }
-    catch (Exception paramArrayOfByte) {}
+    catch (Exception paramArrayOfByte)
+    {
+      label20:
+      break label20;
+    }
     return null;
   }
   
@@ -108,14 +116,26 @@ public final class RSAUtils
   {
     try
     {
-      paramString = paramString + "magicCC";
-      MessageDigest localMessageDigest = MessageDigest.getInstance("MD5");
-      localMessageDigest.update(paramString.getBytes());
-      for (paramString = new BigInteger(1, localMessageDigest.digest()).toString(16).toLowerCase(); paramString.length() < 32; paramString = "0" + paramString) {}
+      Object localObject = new StringBuilder();
+      ((StringBuilder)localObject).append(paramString);
+      ((StringBuilder)localObject).append("magicCC");
+      paramString = ((StringBuilder)localObject).toString();
+      localObject = MessageDigest.getInstance("MD5");
+      ((MessageDigest)localObject).update(paramString.getBytes());
+      for (paramString = new BigInteger(1, ((MessageDigest)localObject).digest()).toString(16).toLowerCase(); paramString.length() < 32; paramString = ((StringBuilder)localObject).toString())
+      {
+        localObject = new StringBuilder();
+        ((StringBuilder)localObject).append("0");
+        ((StringBuilder)localObject).append(paramString);
+      }
       paramString = paramString.substring(0, 12);
       return paramString;
     }
-    catch (Throwable paramString) {}
+    catch (Throwable paramString)
+    {
+      label109:
+      break label109;
+    }
     return "";
   }
   
@@ -152,12 +172,16 @@ public final class RSAUtils
     }
     catch (IOException paramInputStream)
     {
-      throw new Exception("私钥数据读取错误");
+      break label20;
     }
     catch (NullPointerException paramInputStream)
     {
-      throw new Exception("私钥输入流为空");
+      label10:
+      label20:
+      break label10;
     }
+    throw new Exception("私钥输入流为空");
+    throw new Exception("私钥数据读取错误");
   }
   
   public static PrivateKey loadPrivateKey(String paramString)
@@ -170,16 +194,22 @@ public final class RSAUtils
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      throw new Exception("无此算法");
+      break label48;
     }
     catch (InvalidKeySpecException paramString)
     {
-      throw new Exception("私钥非法");
+      break label38;
     }
     catch (NullPointerException paramString)
     {
-      throw new Exception("私钥数据为空");
+      label28:
+      label38:
+      label48:
+      break label28;
     }
+    throw new Exception("私钥数据为空");
+    throw new Exception("私钥非法");
+    throw new Exception("无此算法");
   }
   
   public static PublicKey loadPublicKey(InputStream paramInputStream)
@@ -191,12 +221,16 @@ public final class RSAUtils
     }
     catch (IOException paramInputStream)
     {
-      throw new Exception("公钥数据流读取错误");
+      break label20;
     }
     catch (NullPointerException paramInputStream)
     {
-      throw new Exception("公钥输入流为空");
+      label10:
+      label20:
+      break label10;
     }
+    throw new Exception("公钥输入流为空");
+    throw new Exception("公钥数据流读取错误");
   }
   
   public static PublicKey loadPublicKey(String paramString)
@@ -209,36 +243,74 @@ public final class RSAUtils
     }
     catch (NoSuchAlgorithmException paramString)
     {
-      throw new Exception("无此算法");
+      break label48;
     }
     catch (InvalidKeySpecException paramString)
     {
-      throw new Exception("公钥非法");
+      break label38;
     }
     catch (NullPointerException paramString)
     {
-      throw new Exception("公钥数据为空");
+      label28:
+      label38:
+      label48:
+      break label28;
     }
+    throw new Exception("公钥数据为空");
+    throw new Exception("公钥非法");
+    throw new Exception("无此算法");
   }
   
   public static void printPrivateKeyInfo(PrivateKey paramPrivateKey)
   {
     paramPrivateKey = (RSAPrivateKey)paramPrivateKey;
     System.out.println("----------RSAPrivateKey ----------");
-    System.out.println("Modulus.length=" + paramPrivateKey.getModulus().bitLength());
-    System.out.println("Modulus=" + paramPrivateKey.getModulus().toString());
-    System.out.println("PrivateExponent.length=" + paramPrivateKey.getPrivateExponent().bitLength());
-    System.out.println("PrivatecExponent=" + paramPrivateKey.getPrivateExponent().toString());
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Modulus.length=");
+    localStringBuilder.append(paramPrivateKey.getModulus().bitLength());
+    localPrintStream.println(localStringBuilder.toString());
+    localPrintStream = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Modulus=");
+    localStringBuilder.append(paramPrivateKey.getModulus().toString());
+    localPrintStream.println(localStringBuilder.toString());
+    localPrintStream = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PrivateExponent.length=");
+    localStringBuilder.append(paramPrivateKey.getPrivateExponent().bitLength());
+    localPrintStream.println(localStringBuilder.toString());
+    localPrintStream = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PrivatecExponent=");
+    localStringBuilder.append(paramPrivateKey.getPrivateExponent().toString());
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   public static void printPublicKeyInfo(PublicKey paramPublicKey)
   {
     paramPublicKey = (RSAPublicKey)paramPublicKey;
     System.out.println("----------RSAPublicKey----------");
-    System.out.println("Modulus.length=" + paramPublicKey.getModulus().bitLength());
-    System.out.println("Modulus=" + paramPublicKey.getModulus().toString());
-    System.out.println("PublicExponent.length=" + paramPublicKey.getPublicExponent().bitLength());
-    System.out.println("PublicExponent=" + paramPublicKey.getPublicExponent().toString());
+    PrintStream localPrintStream = System.out;
+    StringBuilder localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Modulus.length=");
+    localStringBuilder.append(paramPublicKey.getModulus().bitLength());
+    localPrintStream.println(localStringBuilder.toString());
+    localPrintStream = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("Modulus=");
+    localStringBuilder.append(paramPublicKey.getModulus().toString());
+    localPrintStream.println(localStringBuilder.toString());
+    localPrintStream = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PublicExponent.length=");
+    localStringBuilder.append(paramPublicKey.getPublicExponent().bitLength());
+    localPrintStream.println(localStringBuilder.toString());
+    localPrintStream = System.out;
+    localStringBuilder = new StringBuilder();
+    localStringBuilder.append("PublicExponent=");
+    localStringBuilder.append(paramPublicKey.getPublicExponent().toString());
+    localPrintStream.println(localStringBuilder.toString());
   }
   
   private static String readKey(InputStream paramInputStream)
@@ -262,7 +334,7 @@ public final class RSAUtils
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes11.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes10.jar
  * Qualified Name:     com.tencent.qqlive.tvkplayer.vinfo.ckey.RSAUtils
  * JD-Core Version:    0.7.0.1
  */

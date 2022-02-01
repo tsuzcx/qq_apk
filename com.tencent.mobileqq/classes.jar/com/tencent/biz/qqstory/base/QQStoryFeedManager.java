@@ -43,20 +43,24 @@ public class QQStoryFeedManager
   
   private void b(String paramString)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQStoryFeedManager", 2, "parseJsonConfig: invoked. Message: json: " + paramString);
+    if (QLog.isColorLevel())
+    {
+      StringBuilder localStringBuilder = new StringBuilder();
+      localStringBuilder.append("parseJsonConfig: invoked. Message: json: ");
+      localStringBuilder.append(paramString);
+      QLog.i("QQStoryFeedManager", 2, localStringBuilder.toString());
     }
     if (TextUtils.isEmpty(paramString))
     {
       this.jdField_a_of_type_JavaLangBoolean = Boolean.valueOf(false);
       return;
     }
-    if (new JSONObject(paramString).optInt("enabled") == 1) {}
-    for (paramString = Boolean.TRUE;; paramString = Boolean.FALSE)
-    {
-      this.jdField_a_of_type_JavaLangBoolean = paramString;
-      return;
+    if (new JSONObject(paramString).optInt("enabled") == 1) {
+      paramString = Boolean.TRUE;
+    } else {
+      paramString = Boolean.FALSE;
     }
+    this.jdField_a_of_type_JavaLangBoolean = paramString;
   }
   
   @NonNull
@@ -77,37 +81,47 @@ public class QQStoryFeedManager
   public void a(ConfigurationService.Config paramConfig)
   {
     int i = paramConfig.version.get();
-    int j = SharedPreUtils.aF(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
-    String str;
+    int j = SharedPreUtils.ay(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin());
     if (i != j)
     {
-      str = ConfigServlet.b(paramConfig, j, paramConfig.type.get());
-      if (QLog.isColorLevel()) {
-        QLog.i("QQStoryFeedManager", 2, "handleConfig: invoked. Message: configJson: " + str);
-      }
-      if (!TextUtils.isEmpty(str)) {
-        break label86;
-      }
-    }
-    label86:
-    do
-    {
-      return;
-      SharedPreUtils.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramConfig.version.get(), str);
-      try
+      Object localObject = ConfigServlet.b(paramConfig, j, paramConfig.type.get());
+      if (QLog.isColorLevel())
       {
-        b(str);
+        StringBuilder localStringBuilder = new StringBuilder();
+        localStringBuilder.append("handleConfig: invoked. Message: configJson: ");
+        localStringBuilder.append((String)localObject);
+        QLog.i("QQStoryFeedManager", 2, localStringBuilder.toString());
+      }
+      if (TextUtils.isEmpty((CharSequence)localObject)) {
         return;
       }
-      catch (Exception paramConfig) {}
-    } while (!QLog.isColorLevel());
-    QLog.e("QQStoryFeedManager", 2, "handleConfig: failed. Message: exception: " + paramConfig);
+      SharedPreUtils.d(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getApp(), this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentAccountUin(), paramConfig.version.get(), (String)localObject);
+      try
+      {
+        b((String)localObject);
+        return;
+      }
+      catch (Exception paramConfig)
+      {
+        if (QLog.isColorLevel())
+        {
+          localObject = new StringBuilder();
+          ((StringBuilder)localObject).append("handleConfig: failed. Message: exception: ");
+          ((StringBuilder)localObject).append(paramConfig);
+          QLog.e("QQStoryFeedManager", 2, ((StringBuilder)localObject).toString());
+        }
+      }
+    }
   }
   
   public void a(@NonNull MessageForQQStoryFeed paramMessageForQQStoryFeed)
   {
-    if (QLog.isColorLevel()) {
-      QLog.i("QQStoryFeedManager", 2, "handleAIOQQStoryFeedMessage: invoked. Message: messageForQQStoryFeed: " + paramMessageForQQStoryFeed);
+    if (QLog.isColorLevel())
+    {
+      localObject1 = new StringBuilder();
+      ((StringBuilder)localObject1).append("handleAIOQQStoryFeedMessage: invoked. Message: messageForQQStoryFeed: ");
+      ((StringBuilder)localObject1).append(paramMessageForQQStoryFeed);
+      QLog.i("QQStoryFeedManager", 2, ((StringBuilder)localObject1).toString());
     }
     if (!a())
     {
@@ -115,19 +129,22 @@ public class QQStoryFeedManager
       return;
     }
     StoryReportor.a("aio_msg", "aio_push", 0, 0, new String[] { paramMessageForQQStoryFeed.frienduin });
-    BeancurdManager localBeancurdManager = (BeancurdManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
-    Object localObject = localBeancurdManager.a(paramMessageForQQStoryFeed.frienduin, 0, 5);
-    int i;
-    if (localObject != null)
+    Object localObject2 = (BeancurdManager)this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getManager(QQManagerFactory.BEANCURD_MANAGER);
+    Object localObject1 = ((BeancurdManager)localObject2).a(paramMessageForQQStoryFeed.frienduin, 0, 5);
+    if (localObject1 != null)
     {
-      if (((BeancurdMsg)localObject).originTime < paramMessageForQQStoryFeed.friendActionMills) {
-        break label355;
-      }
-      i = 0;
+      if (((BeancurdMsg)localObject1).originTime < paramMessageForQQStoryFeed.friendActionMills) {}
     }
-    for (;;)
-    {
-      if (i != 0) {}
+    else {
+      do
+      {
+        i = 0;
+        break;
+        localObject1 = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageForQQStoryFeed.frienduin, 0, new int[] { -2061 });
+      } while ((localObject1 != null) && (((List)localObject1).size() > 0) && (((MessageForQQStoryFeed)((List)localObject1).get(((List)localObject1).size() - 1)).friendActionMills >= paramMessageForQQStoryFeed.friendActionMills));
+    }
+    int i = 1;
+    if (i != 0) {
       try
       {
         BeancurdMsg localBeancurdMsg = new BeancurdMsg();
@@ -138,34 +155,27 @@ public class QQStoryFeedManager
         localBeancurdMsg.originTime = paramMessageForQQStoryFeed.friendActionMills;
         localBeancurdMsg.startTime = paramMessageForQQStoryFeed.mFeedTime;
         localBeancurdMsg.validTime = paramMessageForQQStoryFeed.mKeepTime;
-        localObject = null;
+        localObject1 = null;
         if (!TextUtils.isEmpty(paramMessageForQQStoryFeed.mFeedId)) {
-          localObject = new String(paramMessageForQQStoryFeed.msgData, "ISO_8859_1");
+          localObject1 = new String(paramMessageForQQStoryFeed.msgData, "ISO_8859_1");
         }
-        localBeancurdMsg.buffer = ((String)localObject);
-        localBeancurdManager.a(localBeancurdMsg);
+        localBeancurdMsg.buffer = ((String)localObject1);
+        ((BeancurdManager)localObject2).a(localBeancurdMsg);
       }
       catch (Exception localException)
       {
-        for (;;)
+        localException.printStackTrace();
+        if (QLog.isColorLevel())
         {
-          localException.printStackTrace();
-          if (QLog.isColorLevel()) {
-            QLog.i("QQStoryFeedManager", 2, "handleAIOQQStoryFeedMessage: parse data to MessageRecord has error. Message: " + localException.getMessage());
-          }
+          localObject2 = new StringBuilder();
+          ((StringBuilder)localObject2).append("handleAIOQQStoryFeedMessage: parse data to MessageRecord has error. Message: ");
+          ((StringBuilder)localObject2).append(localException.getMessage());
+          QLog.i("QQStoryFeedManager", 2, ((StringBuilder)localObject2).toString());
         }
       }
-      i = paramMessageForQQStoryFeed.mKeepTime;
-      SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramMessageForQQStoryFeed.frienduin, i);
-      return;
-      localObject = this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getMessageFacade().a(paramMessageForQQStoryFeed.frienduin, 0, new int[] { -2061 });
-      if ((localObject != null) && (((List)localObject).size() > 0) && (((MessageForQQStoryFeed)((List)localObject).get(((List)localObject).size() - 1)).friendActionMills >= paramMessageForQQStoryFeed.friendActionMills)) {
-        i = 0;
-      } else {
-        label355:
-        i = 1;
-      }
     }
+    i = paramMessageForQQStoryFeed.mKeepTime;
+    SharedPreUtils.a(this.jdField_a_of_type_ComTencentMobileqqAppQQAppInterface.getCurrentUin(), paramMessageForQQStoryFeed.frienduin, i);
   }
   
   public void a(String paramString)
@@ -193,7 +203,7 @@ public class QQStoryFeedManager
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes4.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.biz.qqstory.base.QQStoryFeedManager
  * JD-Core Version:    0.7.0.1
  */

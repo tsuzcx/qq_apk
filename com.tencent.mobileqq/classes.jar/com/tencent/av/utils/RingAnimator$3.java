@@ -10,46 +10,52 @@ class RingAnimator$3
   public void handleMessage(Message paramMessage)
   {
     super.handleMessage(paramMessage);
-    if ((!this.a.a) && (10 != paramMessage.what)) {}
-    do
+    if ((!this.a.a) && (10 != paramMessage.what)) {
+      return;
+    }
+    int i = paramMessage.what;
+    if (i != 1)
     {
-      do
+      if (i != 2)
       {
-        return;
-        switch (paramMessage.what)
+        if (i != 3)
         {
-        case 4: 
-        case 5: 
-        case 6: 
-        case 7: 
-        case 8: 
-        default: 
-          return;
-        case 1: 
-          this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
-          this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
-          sendEmptyMessageDelayed(3, 1300L);
+          if (i != 9)
+          {
+            if (i != 10) {
+              return;
+            }
+            removeMessages(1);
+            removeMessages(2);
+            removeMessages(3);
+            return;
+          }
+          sendEmptyMessage(1);
           return;
         }
-      } while (!this.a.a);
+        if (!this.a.a) {
+          return;
+        }
+        this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
+        this.a.jdField_c_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
+        sendEmptyMessageDelayed(1, 3300L);
+        return;
+      }
+      if (!this.a.a) {
+        return;
+      }
       this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
       this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
       return;
-    } while (!this.a.a);
-    this.a.jdField_c_of_type_AndroidWidgetImageView.setVisibility(0);
-    this.a.jdField_c_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_c_of_type_AndroidViewAnimationAnimation);
-    sendEmptyMessageDelayed(1, 3300L);
-    return;
-    sendEmptyMessage(1);
-    return;
-    removeMessages(1);
-    removeMessages(2);
-    removeMessages(3);
+    }
+    this.a.jdField_b_of_type_AndroidWidgetImageView.setVisibility(0);
+    this.a.jdField_b_of_type_AndroidWidgetImageView.startAnimation(this.a.jdField_b_of_type_AndroidViewAnimationAnimation);
+    sendEmptyMessageDelayed(3, 1300L);
   }
 }
 
 
-/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes3.jar
+/* Location:           L:\local\mybackup\temp\qq_apk\com.tencent.mobileqq\classes2.jar
  * Qualified Name:     com.tencent.av.utils.RingAnimator.3
  * JD-Core Version:    0.7.0.1
  */
